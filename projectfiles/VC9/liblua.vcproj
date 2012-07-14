@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9,00"
+	Version="9.00"
 	Name="liblua"
 	ProjectGUID="{01AE7104-A4B1-428E-BA7C-460FE656AE5C}"
 	RootNamespace="lualib"
@@ -205,6 +205,69 @@
 				Name="VCPostBuildEventTool"
 			/>
 		</Configuration>
+		<Configuration
+			Name="Release WITH DBG|Win32"
+			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="4"
+			CharacterSet="1"
+			WholeProgramOptimization="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="2"
+				EnableIntrinsicFunctions="true"
+				PreprocessorDefinitions="WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS"
+				RuntimeLibrary="2"
+				EnableFunctionLevelLinking="true"
+				OpenMP="true"
+				UsePrecompiledHeader="0"
+				WarningLevel="0"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
 	</Configurations>
 	<References>
 	</References>
@@ -244,6 +307,15 @@
 						CompileAs="2"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Lua\"
+						CompileAs="2"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\lua\lauxlib.c"
@@ -268,6 +340,15 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Debug_with_VLD|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Lua\"
+						CompileAs="2"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release WITH DBG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -306,6 +387,15 @@
 						CompileAs="2"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Lua\"
+						CompileAs="2"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\lua\lbitlib.c"
@@ -330,6 +420,15 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Debug_with_VLD|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Lua\"
+						CompileAs="2"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release WITH DBG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -368,6 +467,15 @@
 						CompileAs="2"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Lua\"
+						CompileAs="2"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\lua\lcorolib.c"
@@ -392,6 +500,15 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Debug_with_VLD|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Lua\"
+						CompileAs="2"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release WITH DBG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -430,6 +547,15 @@
 						CompileAs="2"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Lua\"
+						CompileAs="2"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\lua\ldblib.c"
@@ -454,6 +580,15 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Debug_with_VLD|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Lua\"
+						CompileAs="2"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release WITH DBG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -492,6 +627,15 @@
 						CompileAs="2"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Lua\"
+						CompileAs="2"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\lua\ldo.c"
@@ -516,6 +660,15 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Debug_with_VLD|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Lua\"
+						CompileAs="2"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release WITH DBG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -554,6 +707,15 @@
 						CompileAs="2"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Lua\"
+						CompileAs="2"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\lua\lfunc.c"
@@ -578,6 +740,15 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Debug_with_VLD|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Lua\"
+						CompileAs="2"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release WITH DBG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -616,6 +787,15 @@
 						CompileAs="2"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Lua\"
+						CompileAs="2"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\lua\linit.c"
@@ -640,6 +820,15 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Debug_with_VLD|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Lua\"
+						CompileAs="2"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release WITH DBG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -678,6 +867,15 @@
 						CompileAs="2"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Lua\"
+						CompileAs="2"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\lua\llex.c"
@@ -702,6 +900,15 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Debug_with_VLD|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Lua\"
+						CompileAs="2"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release WITH DBG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -740,6 +947,15 @@
 						CompileAs="2"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Lua\"
+						CompileAs="2"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\lua\lmem.c"
@@ -764,6 +980,15 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Debug_with_VLD|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Lua\"
+						CompileAs="2"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release WITH DBG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -802,6 +1027,15 @@
 						CompileAs="2"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Lua\"
+						CompileAs="2"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\lua\lobject.c"
@@ -826,6 +1060,15 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Debug_with_VLD|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Lua\"
+						CompileAs="2"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release WITH DBG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -864,6 +1107,15 @@
 						CompileAs="2"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Lua\"
+						CompileAs="2"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\lua\loslib.c"
@@ -888,6 +1140,15 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Debug_with_VLD|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Lua\"
+						CompileAs="2"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release WITH DBG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -926,6 +1187,15 @@
 						CompileAs="2"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Lua\"
+						CompileAs="2"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\lua\lstate.c"
@@ -950,6 +1220,15 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Debug_with_VLD|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Lua\"
+						CompileAs="2"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release WITH DBG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -988,6 +1267,15 @@
 						CompileAs="2"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Lua\"
+						CompileAs="2"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\lua\lstrlib.c"
@@ -1012,6 +1300,15 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Debug_with_VLD|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Lua\"
+						CompileAs="2"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release WITH DBG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1050,6 +1347,15 @@
 						CompileAs="2"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Lua\"
+						CompileAs="2"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\lua\ltablib.c"
@@ -1074,6 +1380,15 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Debug_with_VLD|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Lua\"
+						CompileAs="2"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release WITH DBG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1112,6 +1427,15 @@
 						CompileAs="2"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Lua\"
+						CompileAs="2"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\lua\lua.c"
@@ -1136,6 +1460,15 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Debug_with_VLD|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Lua\"
+						CompileAs="2"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release WITH DBG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1174,6 +1507,15 @@
 						CompileAs="2"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Lua\"
+						CompileAs="2"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\lua\lundump.c"
@@ -1198,6 +1540,15 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Debug_with_VLD|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Lua\"
+						CompileAs="2"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release WITH DBG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1236,6 +1587,15 @@
 						CompileAs="2"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Lua\"
+						CompileAs="2"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\lua\lzio.c"
@@ -1260,6 +1620,15 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Debug_with_VLD|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Lua\"
+						CompileAs="2"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release WITH DBG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
