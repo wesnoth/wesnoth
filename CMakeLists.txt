@@ -255,6 +255,12 @@ check_compiler_has_flag(
 	HAS_COMPILER_FLAG_WEXTRA
 )
 
+check_compiler_has_flag(
+	CXX_FLAGS_PEDANTIC_COMPILATION
+	"-Winit-self"
+	HAS_COMPILER_FLAG_WINIT_SELF
+)
+
 
 ### Set the final compiler flags.
 
