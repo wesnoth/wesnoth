@@ -52,7 +52,7 @@ goes directly to the campaign with id <id_campaign>. A selection menu will appea
 .B Note:
 When using this switch please ensure that you specify the data directory path as the final argument aswell, otherwise the game will take the campaign/scenario id as the data dir.
 .TP
-.B --campaign-difficulty <difficulty>
+.B --campaign-difficulty [<difficulty>]
 The difficulty of the specified campaign (1 to max). If none specified, the campaign difficulty selection widget will appear.
 .TP
 .B --campaign-scenario <id_scenario>
@@ -157,19 +157,21 @@ runs the game without sounds and music.
 .B --path
 prints the name of the game data directory and exits.
 .TP
-.B --preprocess, -p[=<define1>,<define2>,...] <file/folder> <target directory>
-preprocesses a specified file/folder. The file(s) will be written in specified target
-directory: a plain cfg file and a processed cfg file. If a folder is specified, it will
+.B -p, --preprocess <source file/folder> <target directory>
+preprocesses a specified file/folder. For each file(s) a plain .cfg file and a processed
+.cfg file  will be written in specified target directory. If a folder is specified, it will
 be preprocessed recursively based on the known preprocessor rules. The common macroses
-from the data/core/macros will be preprocessed before the specified resources.
-.B define1,define2,...
-- the extra defines will be added before processing the files. If you want to add them
-you must add the '=' character before.
-If 'SKIP_CORE' is in the define list the data/core won't be preprocessed.
+from the "data/core/macros" directory will be preprocessed before the specified resources.
 Example:
-.B -p ~/wesnoth/data/campaigns/tutorial ~/result
-or
-.B -p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result
+.B -p ~/wesnoth/data/campaigns/tutorial ~/result.
+For details regarding the preprocessor visit: 
+http://wiki.wesnoth.org/PreprocessorRef#Command-line_preprocessor
+
+.TP
+.B --preprocess-defines=DEFINE1,DEFINE2,etc
+comma separated list of defines to be used by the '--preprocess' command. If
+.B SKIP_CORE
+is in the define list the "data/core" directory won't be preprocessed.
 .TP
 .B --preprocess-input-macros <source file>
 used only by the '--preprocess' command.
