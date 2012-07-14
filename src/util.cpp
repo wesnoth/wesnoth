@@ -47,7 +47,7 @@ size_t lexical_cast<size_t, const char*>(const char* a)
 		return res;
 	}
 }
-#endif MSVC_DO_UNIT_TESTS
+#endif
 template<>
 size_t lexical_cast_default<size_t, const std::string&>(const std::string& a, size_t def)
 {
