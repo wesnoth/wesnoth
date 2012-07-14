@@ -231,12 +231,6 @@ static int process_command_args(const commandline_options& cmdline_opts) {
 			std::cerr << SDL_GetTicks() << " Read " << read << " defines.\n";
 		}
 
-		if( cmdline_opts.preprocess_output_macros ) {
-
-			if ( cmdline_opts.preprocess_output_macros->empty() == false )
-				output_macros_file = *cmdline_opts.preprocess_output_macros;
-		}
-
 		const std::string resourceToProcess(*cmdline_opts.preprocess_path);
 		const std::string targetDir(*cmdline_opts.preprocess_target);
 
@@ -299,11 +293,20 @@ static int process_command_args(const commandline_options& cmdline_opts) {
 		std::cerr << "acquired " << (defines_map.size() - input_macros.size())
 					<< " total defines.\n";
 
-		if ( output_macros_file.empty() == false )
+		if( cmdline_opts.preprocess_output_macros && 
+			!cmdline_opts.preprocess_output_macros->empty()) {
+
+				output_macros_file = *cmdline_opts.preprocess_output_macros;
+		}
+
+		if ( cmdline_opts.preprocess_output_macros )
 		{
-			std::string outputPath = targetDir + "/_MACROS_.cfg";
-			if ( output_macros_file.empty() == false )
-				outputPath = output_macros_file;
+			std::string outputFileName = "_MACROS_.cfg";
+			if (!cmdline_opts.preprocess_output_macros->empty()) {
+				outputFileName = *cmdline_opts.preprocess_output_macros;
+			}
+
+			std::string outputPath = targetDir + "/" + outputFileName;
 
 			std::cerr << "writing '" << outputPath << "' with "
 						<< defines_map.size() << " defines.\n";
