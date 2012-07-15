@@ -261,6 +261,12 @@ check_compiler_has_flag(
 	HAS_COMPILER_FLAG_WINIT_SELF
 )
 
+check_compiler_has_flag(
+	CXX_FLAGS_PEDANTIC_COMPILATION
+	"-Wlogical-op"
+	HAS_COMPILER_FLAG_WLOGICAL_OP
+)
+
 
 ### Set the final compiler flags.
 
