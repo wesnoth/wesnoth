@@ -178,6 +178,17 @@ endif(NOT DEFINED CXX_FLAGS_USER)
 
 
 ### Set default Wesnoth project compiler flags
+if(MSVC AND NOT DEFINED CXX_FLAGS_MSVC)
+	# MSVC sets some initial compilation flags, these need to
+	# be preserved.
+	set(CXX_FLAGS_MSVC
+		"${CMAKE_CXX_FLAGS_INIT}"
+		CACHE
+		STRING
+		"The initial CXX flags for MSVC"
+		FORCE
+	)
+endif(MSVC AND NOT DEFINED CXX_FLAGS_MSVC)
 
 set(CXX_FLAGS_PROJECT)
 check_compiler_has_flag(CXX_FLAGS_PROJECT "-std=c++98" HAS_COMPILER_FLAG_STD)
@@ -271,6 +282,9 @@ check_compiler_has_flag(
 ### Set the final compiler flags.
 
 set(COMPILER_FLAGS "${CXX_FLAGS_PROJECT}")
+if(MSVC)
+	set(COMPILER_FLAGS "${CXX_FLAGS_MSVC} ${COMPILER_FLAGS}")
+endif(MSVC)
 if(ENABLE_STRICT_COMPILATION)
 	set(COMPILER_FLAGS "${COMPILER_FLAGS} ${CXX_FLAGS_STRICT_COMPILATION}")
 endif(ENABLE_STRICT_COMPILATION)
