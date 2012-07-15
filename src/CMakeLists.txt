@@ -760,6 +760,7 @@ set(wesnoth-main_SRC
 	save_blocker.cpp
 	savegame.cpp
 	savegame_config.cpp
+	scripting/debug_lua.cpp
 	scripting/lua.cpp
 	settings.cpp
 	sha1.cpp
