@@ -3096,6 +3096,14 @@
 							ObjectFile="$(IntDir)\ai\akihara\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\akihara\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\ai\akihara\recruitment.hpp"
@@ -4356,6 +4364,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Test_Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Editor\Toolkit\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -6412,6 +6428,14 @@
 							ObjectFile="$(IntDir)\Gui\Widgets\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\widgets\vertical_scrollbar.hpp"
@@ -8430,6 +8454,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Test_Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -10539,6 +10571,14 @@
 								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\window_builder\repeating_button.hpp"
@@ -12557,6 +12597,14 @@
 						</FileConfiguration>
 						<FileConfiguration
 							Name="Test_Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
