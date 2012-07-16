@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-05-11 22:06+0200\n"
-"PO-Revision-Date: 2011-12-15 11:57+0300\n"
+"PO-Revision-Date: 2012-03-31 16:14+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
 "Language: Lithuanian\n"
@@ -3069,7 +3069,7 @@ msgstr ""
 
 #: src/gui/dialogs/lobby_main.cpp:662
 msgid "Games: showing $num_shown out of $num_total"
-msgstr ""
+msgstr "Žaidimai: rodoma $num_shown iš $num_total"
 
 #: src/gui/dialogs/lobby_main.cpp:705
 msgid "Observers allowed"
@@ -3370,29 +3370,23 @@ msgstr "Praleisti animaciją"
 
 #. TRANSLATORS: whiteboard menu entry: toggle planning mode
 #: src/hotkeys.cpp:114
-#, fuzzy
-#| msgid "Toggle Planning Mode"
 msgid "whiteboard^Planning Mode"
 msgstr "Planavimo režimas"
 
 #. TRANSLATORS: whiteboard menu entry: execute planned action
 #: src/hotkeys.cpp:116
-#, fuzzy
-#| msgid "Execute All Actions"
 msgid "whiteboard^Execute Action"
-msgstr "Vykdyti visus veiksmus"
+msgstr "Vykdyti veiksmą"
 
 #. TRANSLATORS: whiteboard menu entry: execute all planned actions
 #: src/hotkeys.cpp:118
-#, fuzzy
-#| msgid "Execute All Actions"
 msgid "whiteboard^Execute All Actions"
 msgstr "Vykdyti visus veiksmus"
 
 #. TRANSLATORS: whiteboard menu entry: delete planned action
 #: src/hotkeys.cpp:120
 msgid "whiteboard^Delete Action"
-msgstr ""
+msgstr "Trinti veiksmą"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action up queue
 #: src/hotkeys.cpp:122
@@ -3406,8 +3400,6 @@ msgstr ""
 
 #. TRANSLATORS: whiteboard menu entry: plan as though the chosen unit were dead
 #: src/hotkeys.cpp:126
-#, fuzzy
-#| msgid "Suppose Dead"
 msgid "whiteboard^Suppose Dead"
 msgstr "Laikyti mirusiu"
 
@@ -3493,7 +3485,7 @@ msgstr "Padėti"
 
 #: src/hotkeys.cpp:153
 msgid "Export Selected Coordinates to System Clipboard"
-msgstr ""
+msgstr "Eksportuoti pažymėtas koordinates į sistemos iškarpinę"
 
 #: src/hotkeys.cpp:155
 msgid "Select All"
@@ -3850,9 +3842,3 @@ msgid ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
-
-#~ msgid "Execute Planned Action"
-#~ msgstr "Vykdyti suplanuotą veiksmą"
-
-#~ msgid "Delete Planned Action"
-#~ msgstr "Trinti suplanuotą veiksmą"
