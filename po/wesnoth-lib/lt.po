@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-01-03 10:40+0100\n"
-"PO-Revision-Date: 2011-12-15 11:57+0300\n"
+"POT-Creation-Date: 2012-01-22 15:00+0100\n"
+"PO-Revision-Date: 2012-03-31 16:14+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
 "Language: Lithuanian\n"
@@ -3064,7 +3064,7 @@ msgstr ""
 
 #: src/gui/dialogs/lobby_main.cpp:662
 msgid "Games: showing $num_shown out of $num_total"
-msgstr ""
+msgstr "Žaidimai: rodoma $num_shown iš $num_total"
 
 #: src/gui/dialogs/lobby_main.cpp:705
 msgid "Observers allowed"
@@ -3364,20 +3364,26 @@ msgid "Skip Animation"
 msgstr "Praleisti animaciją"
 
 #: src/hotkeys.cpp:113
+#, fuzzy
+#| msgid "whiteboard^Planning Mode"
 msgid "Toggle Planning Mode"
 msgstr "Planavimo režimas"
 
 #: src/hotkeys.cpp:114
+#, fuzzy
+#| msgid "whiteboard^Execute All Actions"
 msgid "Execute Planned Action"
-msgstr "Vykdyti suplanuotą veiksmą"
+msgstr "Vykdyti visus veiksmus"
 
 #: src/hotkeys.cpp:115
+#, fuzzy
+#| msgid "whiteboard^Execute All Actions"
 msgid "Execute All Actions"
 msgstr "Vykdyti visus veiksmus"
 
 #: src/hotkeys.cpp:116
 msgid "Delete Planned Action"
-msgstr "Trinti suplanuotą veiksmą"
+msgstr ""
 
 #: src/hotkeys.cpp:117
 msgid "Move Action Up Queue"
@@ -3388,6 +3394,8 @@ msgid "Move Action Down Queue"
 msgstr ""
 
 #: src/hotkeys.cpp:119
+#, fuzzy
+#| msgid "whiteboard^Suppose Dead"
 msgid "Suppose Dead"
 msgstr "Laikyti mirusiu"
 
@@ -3473,7 +3481,7 @@ msgstr "Padėti"
 
 #: src/hotkeys.cpp:146
 msgid "Export Selected Coordinates to System Clipboard"
-msgstr ""
+msgstr "Eksportuoti pažymėtas koordinates į sistemos iškarpinę"
 
 #: src/hotkeys.cpp:148
 msgid "Select All"
@@ -3830,3 +3838,9 @@ msgid ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
+
+#~ msgid "whiteboard^Execute Action"
+#~ msgstr "Vykdyti veiksmą"
+
+#~ msgid "whiteboard^Delete Action"
+#~ msgstr "Trinti veiksmą"
