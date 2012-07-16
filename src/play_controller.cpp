@@ -54,6 +54,9 @@ static lg::log_domain log_engine("engine");
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 
+static lg::log_domain log_enginerefac("enginerefac");
+#define LOG_RG LOG_STREAM(info, log_enginerefac)
+
 static void clear_resources()
 {
 	resources::game_map = NULL;
@@ -67,6 +70,8 @@ static void clear_resources()
 	resources::whiteboard = NULL;
 	resources::persist = NULL;
 }
+
+
 
 play_controller::play_controller(const config& level, game_state& state_of_game,
 		int ticks, int num_turns, const config& game_config, CVideo& video,
