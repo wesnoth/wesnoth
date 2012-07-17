@@ -278,6 +278,12 @@ check_compiler_has_flag(
 	HAS_COMPILER_FLAG_WLOGICAL_OP
 )
 
+check_compiler_has_flag(
+	CXX_FLAGS_PEDANTIC_COMPILATION
+	"-Wmissing-declarations"
+	HAS_COMPILER_FLAG_WMISSING_DECLARATIONS
+)
+
 
 ### Set the final compiler flags.
 
