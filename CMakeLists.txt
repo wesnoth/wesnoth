@@ -284,6 +284,12 @@ check_compiler_has_flag(
 	HAS_COMPILER_FLAG_WMISSING_DECLARATIONS
 )
 
+check_compiler_has_flag(
+	CXX_FLAGS_PEDANTIC_COMPILATION
+	"-Wredundant-decls"
+	HAS_COMPILER_FLAG_WREDUNDANT_DECLS
+)
+
 
 ### Set the final compiler flags.
 
