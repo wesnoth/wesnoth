@@ -4,6 +4,9 @@ changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/branches/1.10/changelog
 
 Version 1.10.3+svn:
  * Campaigns:
+   * A Tale of Two Brothers:
+     * Fixed bug #19949: Turns left counter initially incorrect when objectives change and
+       turn limit is extended.
    * Under the Burning Suns:
      * Taking the ring of speed is now optional.
  * Language and i18n:
@@ -18,9 +21,6 @@ Version 1.10.3+svn:
 
 Version 1.10.3:
  * Campaigns:
-   * A Tale of Two Brothers:
-     * Fix bug #19949: Turns left counter initially incorrect when objectives change and
-       turn limit is extended.
    * Heir to the Throne:
      * Fixed bug #19531: scroll to reinforcement units in Blackwater Port.
    * Under the Burning Suns:
