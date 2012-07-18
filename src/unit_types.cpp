@@ -630,7 +630,7 @@ unit_type::unit_type(config &cfg) :
 	icon_(),
 	small_profile_(),
 	big_profile_(),
-	flag_rgb_(),
+	flag_rgb_(cfg["flag_rgb"].str()),
 	num_traits_(0),
 	gender_types_(),
 	variations_(),
@@ -758,7 +758,6 @@ void unit_type::build_full(const movement_type_map &mv_types,
 	    DBG_UT << "no parent found for movement_type " << move_type << "\n";
 	}
 
-	flag_rgb_ = cfg["flag_rgb"].str();
 	game_config::add_color_info(cfg);
 
 
