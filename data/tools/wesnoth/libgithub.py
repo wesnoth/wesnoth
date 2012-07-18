@@ -397,6 +397,8 @@ class GitHub(object):
         return repodata
 
     def _github_api_request(self, url, data=None, method=None, authenticate=False):
+        logging.debug("Making github API request {0}".format(url))
+
         request = urllib2.Request(url)
         if method:
             request.get_method = lambda: method
@@ -422,8 +424,23 @@ class GitHub(object):
         if response.code == 204:
             # 204 = No content
             return None
-        else:
-            return json.load(response)
+
+        json_parsed = json.load(response)
+
+        link_headers = response.info().getallmatchingheaders("Link")
+        if link_headers:
+            logging.debug("Found a Link header in response, analyzing...")
+            link_header = link_headers[0].lstrip("Link:")
+            links_raw = link_header.split(",")
+            links_split_raw = [link.split(";") for link in links_raw]
+            links_split_proc = [(l[1].strip().lstrip('rel="').rstrip('"'), l[0].strip().lstrip("<").rstrip(">")) for l in links_split_raw]
+            links_dict = dict((k,v) for (k,v) in links_split_proc)
+            if "next" in links_dict:
+                logging.debug("Link with rel=\"next\" found, recursing to deal with pagination")
+                rest = self._github_api_request(links_dict["next"], data, method, authenticate)
+                json_parsed += rest
+
+        return json_parsed
 
     def _github_userpass(self):
         if self.userpass:
