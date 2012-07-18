@@ -509,7 +509,7 @@ std::string find_recall_location(const int side, map_location& recall_loc, map_l
 			continue;
 		leader_fit = leader_keep;
 
-		if ( can_recruit_on(*resources::game_map, *leader_fit, recall_loc)) {
+		if ( can_recruit_on(*resources::game_map, *leader_fit, recall_loc) ) {
 			leader_opt = leader_fit;
 			if (resources::units->count(recall_loc) == 1)
 				recall_loc = tmp_location;
@@ -593,7 +593,7 @@ std::string find_recruit_location(const int side, map_location& recruit_location
 			continue;
 		leader_fit = leader_keep;
 
-		if ( can_recruit_on(*resources::game_map, *leader_fit, recruit_location)) {
+		if ( can_recruit_on(*resources::game_map, *leader_fit, recruit_location) ) {
 			leader_opt = leader_fit;
 			if (resources::units->count(recruit_location) == 1)
 				recruit_location = tmp_location;
@@ -3742,13 +3742,13 @@ public:
  * instruction. (The unit itself is whatever unit is at the beginning of the
  * supplied path.)
  *
- * @param move_spectator[in,out]    Will be given information uncovered by the move. If not NULL, this suppresses all changes to the unit's "goto" instruction.
- * @param route[in]                 The route to be travelled. The unit to be moved is at the beginning of the route.
+ * @param move_spectator[out]       Will be given information uncovered by the move. If not NULL, this suppresses all changes to the unit's "goto" instruction.
+ * @param steps[in]                 The route to be travelled. The unit to be moved is at the beginning of this route.
  * @param move_recorder[out]        Will be given the route actually travelled (which might be shorter than the route specified).
- * @param undo_stack[in,out]        If supplied, then either this movement will be added to the stack or the stack will be cleared.
+ * @param undo_stack                If supplied, then either this movement will be added to the stack or the stack will be cleared.
  * @param show_move[in]             Controls whether or not the movement is animated for the player.
- * @param next_unit[out]            If supplied, this is set to where the actual movement ended. (Set to the null location if @a route is empty.)
- * @param continue_move[in]         If set to true, movement is not interrupted (will continue) should units be spotted.
+ * @param next_unit[out]            If supplied, this is set to where the actual movement ended. (Set to the null location if @a steps is empty.)
+ * @param continued_move[in]        If set to true, this is a continuation of an earlier move (movement is not interrupted should units be spotted).
  * @param should_clear_shroud[in]   If set to false, no fog/shroud clearing will occur. If left as true, then clearing depends upon the team's setting (delayed shroud updates).
  * @param replay_dest[in]           If not NULL, then this move is assumed to be a replay that expects the unit to be moved to here. Several normal considerations are ignored in a replay.
  * @param units_sighted_result[out] Returns whether or not any (non-petrified) units were seen as a result of this move clearing fog/shroud.
@@ -3758,17 +3758,17 @@ public:
  * @retval 0 if the movement degenerated to staying put.
  */
 size_t move_unit(move_unit_spectator *move_spectator,
-                 const std::vector<map_location> &route,
+                 const std::vector<map_location> &steps,
                  replay* move_recorder, undo_list* undo_stack,
                  bool show_move, map_location *next_unit,
-                 bool continue_move, bool should_clear_shroud,
+                 bool continued_move, bool should_clear_shroud,
                  const map_location* replay_dest,
                  bool* units_sighted_result)
 {
 	const events::command_disabler disable_commands;
-	const map_location &initial_loc = route.empty() ?
+	const map_location &initial_loc = steps.empty() ?
 		                                  map_location::null_location :
-		                                  route.front();
+		                                  steps.front();
 
 	// Default return values.
 	if ( units_sighted_result )
@@ -3777,13 +3777,13 @@ size_t move_unit(move_unit_spectator *move_spectator,
 		*next_unit = initial_loc;
 
 	// Avoid some silliness.
-	if ( route.size() < 2  ||  (route.size() == 2 && route.front() == route.back()) ) {
+	if ( steps.size() < 2  ||  (steps.size() == 2 && steps.front() == steps.back()) ) {
 		DBG_NG << "Ignoring a unit trying to jump on its hex at " << initial_loc << ".\n";
 		return 0;
 	}
 
 	// Evaluate this move.
-	unit_mover mover(route, move_spectator, should_clear_shroud, continue_move, replay_dest);
+	unit_mover mover(steps, move_spectator, should_clear_shroud, continued_move, replay_dest);
 	if ( !mover.check_expected_movement() )
 		return 0;
 	if ( move_recorder )
