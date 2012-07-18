@@ -94,11 +94,14 @@ void unit_palette::draw_item(SDL_Rect& dstrect, const unit_type& u, std::strings
 
 	surface screen = gui_.video().getSurface();
 
-	const std::string filename = u.image();
-	surface image(image::get_image(filename));
+	std::stringstream filename;
+	filename << u.image() << "~RC(" << u.flag_rgb() << '>'
+	    	 << team::get_side_color_index(gui_.viewing_side()) << ')';
+
+	surface image(image::get_image(filename.str()));
 	if(image == NULL) {
 		tooltip_text << "IMAGE NOT FOUND\n";
-		ERR_ED << "image for terrain: '" << filename << "' not found\n";
+		ERR_ED << "image for unit type: '" << filename << "' not found\n";
 		image = image::get_image(game_config::images::missing);
 		if (image == NULL) {
 			ERR_ED << "Placeholder image not found\n";
