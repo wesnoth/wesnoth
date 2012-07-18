@@ -2854,8 +2854,9 @@ public:
 		{ return (real_end_ == begin_) ? *begin_ : *(real_end_-1); }
 		/// After moving, this indicates if any units were seen.
 		bool saw_units() const  { return !seen_units_.empty(); }
-		/// The hexes actually moved.
-		size_t steps_travelled() const  { return real_end_ - begin_; }
+		/// The number of hexes actually entered.
+		size_t steps_travelled() const
+		{ return real_end_ == begin_ ? 0 : (real_end_ - begin_) - 1; }
 		/// After moving, use this to detect if movement was less than expected.
 		bool stopped_early() const  { return expected_end_ != real_end_; }
 
@@ -3753,9 +3754,10 @@ public:
  * @param replay_dest[in]           If not NULL, then this move is assumed to be a replay that expects the unit to be moved to here. Several normal considerations are ignored in a replay.
  * @param units_sighted_result[out] Returns whether or not any (non-petrified) units were seen as a result of this move clearing fog/shroud.
  *
- * @returns The length of the path actually travelled
- *          (one more than the number of hexes entered).
- * @retval 0 if the movement degenerated to staying put.
+ * @returns The number of hexes entered. This can safely be used as an index
+ *          into @a steps to get the location where movement ended, provided
+ *          @a steps is not empty (the return value is guaranteed to be less
+ *          than steps.size() ).
  */
 size_t move_unit(move_unit_spectator *move_spectator,
                  const std::vector<map_location> &steps,

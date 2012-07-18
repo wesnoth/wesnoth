@@ -732,14 +732,13 @@ bool mouse_handler::move_unit_along_route(pathfind::marked_route const& route, m
 
 	resources::redo_stack->clear();
 
-	assert(moves <= steps.size());
-	const map_location& dst = steps[moves-1];
+	const map_location& dst = steps[moves];
 	const unit_map::const_iterator u = units_.find(dst);
 
 	//u may be equal to units_.end() in the case of e.g. a [teleport]
 	if(u != units_.end()) {
 		if(dst != steps.back()) {
-			// the move was interrupted (or never started)
+			// the move was interrupted
 			if (u->movement_left() > 0) {
 				// reselect the unit (for "press t to continue")
 				select_hex(dst, false);
@@ -750,7 +749,7 @@ bool mouse_handler::move_unit_along_route(pathfind::marked_route const& route, m
 		}
 	}
 
-	return moves == steps.size();
+	return moves + 1 == steps.size();
 }
 
 void mouse_handler::save_whiteboard_attack(const map_location& attacker_loc, const map_location& defender_loc, int weapon_choice)

@@ -1105,8 +1105,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				::move_unit(NULL, steps, NULL, NULL, show_move, NULL, true, true, &early_stop);
 
 			// Verify our destination.
-			const map_location& actual_stop = num_steps == 0 ? steps[0] :
-			                                                   steps[num_steps-1];
+			const map_location& actual_stop = steps[num_steps];
 			if ( actual_stop != early_stop ) {
 				std::stringstream errbuf;
 				errbuf << "Failed to complete movement to "
