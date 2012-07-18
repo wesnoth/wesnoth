@@ -58,9 +58,9 @@ public:
 
 	unit_map::iterator selected_unit();
 
-	pathfind::marked_route get_route(unit* un, map_location go_to, team &team);
+	pathfind::marked_route get_route(unit* un, map_location go_to, team &team) const;
 
-	const pathfind::marked_route& get_current_route() { return current_route_; }
+	const pathfind::marked_route& get_current_route() const { return current_route_; }
 
 	//get visible adjacent enemies of 1-based side around location loc
 	std::set<map_location> get_adj_enemies(const map_location& loc, int side) const;

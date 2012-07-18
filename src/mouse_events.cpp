@@ -405,7 +405,7 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 	return res;
 }
 
-pathfind::marked_route mouse_handler::get_route(unit* un, map_location go_to, team &team)
+pathfind::marked_route mouse_handler::get_route(unit* un, map_location go_to, team &team) const
 {
 	// The pathfinder will check unit visibility (fogged/stealthy).
 	const pathfind::shortest_path_calculator calc(*un, team, units_, teams_, map_);
