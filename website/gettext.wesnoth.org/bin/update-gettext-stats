@@ -15,9 +15,9 @@ svn -q up
 
 #update the wescamp checkout
 cd $SVNCHECKOUTPATH/trunk/
-echo "wescamp.py output" >> $HOME/g.w.o-updates.log
+echo "starting wescamp.py at `date`" >> $HOME/g.w.o-updates.log
 ./data/tools/wesnoth/wescamp.py -scampaigns.wesnoth.org -p15002 -w$SVNCHECKOUTPATH/wescamp-i18n/branch-1.10 -C -g >> $HOME/g.w.o-updates.log
-echo "wescamp.py exited with exit code $?" >> $HOME/g.w.o-updates.log
+echo "wescamp.py exited with exit code $? at `date`" >> $HOME/g.w.o-updates.log
 #TODO: add another line for 1.12 when the add-on server is up
 
 #update the website checkout
@@ -26,6 +26,8 @@ svn -q up
 
 #update the stats
 cd $SVNCHECKOUTPATH/website/gettext.wesnoth.org
-nice --adjustment=5 php grab-stats.php || echo grab-stats failed >> $HOME/g.w.o-updates.log
+echo "starting grab-stats at `date`" >> $HOME/g.w.o-updates.log
+nice --adjustment=5 php grab-stats.php
+echo "grab-stats exited with exit code $? at `date`" >> $HOME/g.w.o-updates.log
 #php grab-stats.php >> $HOME/g.w.o-updates.log
 echo update completed at `date` >> $HOME/g.w.o-updates.log
