@@ -72,7 +72,7 @@ public:
 	void attack_enemy(const map_location& attacker_loc, const map_location& defender_loc, int choice);
 
 	/// Moves a unit across the board for a player.
-	size_t move_unit_along_route(pathfind::marked_route const& route, map_location* next_unit=NULL, bool check_shroud=true, bool* sighted_result = NULL);
+	size_t move_unit_along_route(pathfind::marked_route const& route, map_location* next_unit=NULL, bool check_shroud=true, bool* interrupted = NULL);
 
 	void select_hex(const map_location& hex, const bool browse,
 		const bool highlight = true,

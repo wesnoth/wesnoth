@@ -409,7 +409,7 @@ size_t move_unit(move_unit_spectator* move_spectator,
                  bool show_move, map_location *next_unit = NULL,
                  bool continued_move = false, bool should_clear_shroud = true,
                  const map_location *replay_dest = NULL,
-                 bool* units_sighted_result = NULL);
+                 bool* interrupted = NULL);
 
 /// Function that recalculates the fog of war.
 void recalculate_fog(int side);

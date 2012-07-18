@@ -2853,12 +2853,18 @@ public:
 		const map_location & final_hex() const
 		{ return (real_end_ == begin_) ? *begin_ : *(real_end_-1); }
 		/// After moving, this indicates if any units were seen.
+		/// This includes seen units that would not interrupt movement.
 		bool saw_units() const  { return !seen_units_.empty(); }
 		/// The number of hexes actually entered.
 		size_t steps_travelled() const
 		{ return real_end_ == begin_ ? 0 : (real_end_ - begin_) - 1; }
 		/// After moving, use this to detect if movement was less than expected.
 		bool stopped_early() const  { return expected_end_ != real_end_; }
+		/// After moving, use this to detect if something happened that would
+		/// interrupt movement (even if movement ended for a different reason).
+		bool interrupted() const
+		{ return ambushed_ || blocked_ || event_mutated_ || sighted_ ||
+		         teleport_failed_; }
 
 	private: // functions
 		/// Checks the expected route for hidden units.
@@ -2881,7 +2887,7 @@ public:
 		/// Returns whether or not undoing this move should be blocked.
 		bool undo_blocked() const
 		{ return ambushed_ || blocked_ || event_mutated_ || fog_changed_ ||
-		         sighted_ || teleport_failed_; } // Should not be necessary to check sighted_, but why assume?
+		         saw_units() || teleport_failed_; } // Should not be necessary to check saw_units(), but why assume?
 
 		// The remaining private functions are suggested to be inlined because
 		// each is used in only one place. (They are separate functions to ease
@@ -2942,7 +2948,8 @@ public:
 		bool blocked_; // Blocked by an enemy (non-ambusher) unit
 		bool event_mutated_;
 		bool fog_changed_;
-		bool sighted_;
+		bool sighted_;	// Records if sightings were made that could interrupt movement.
+		bool sighted_stop_;	// Records if sightings were made that did interrupt movement (the same as sighted_ unless movement ended for another reason).
 		bool teleport_failed_;
 		bool report_extra_hex_;
 		std::string ambush_string_;
@@ -2991,6 +2998,7 @@ public:
 		event_mutated_(false),
 		fog_changed_(false),
 		sighted_(false),
+		sighted_stop_(false),
 		teleport_failed_(false),
 		report_extra_hex_(false),
 		ambush_string_(),
@@ -3474,7 +3482,6 @@ public:
 
 		const bool ally_interrupts = preferences::interrupt_when_ally_sighted();
 
-		bool sighted_stop = false;
 		bool obstructed_stop = false;
 
 
@@ -3499,7 +3506,7 @@ public:
 				if ( sighted_ && can_break && !animator.has_displaced_something() &&
 				     is_reasonable_stop(*step_from) )
 				{
-					sighted_stop = true;
+					sighted_stop_ = true;
 					break;
 				}
 				// Already accounted for: ZoC
@@ -3538,7 +3545,6 @@ public:
 		// Some flags were set to indicate why we might stop.
 		// Update those to reflect whether or not we got to them.
 		ambushed_ = ambushed_ && real_end_ == ambush_limit_;
-		sighted_  = sighted_stop;
 		blocked_  = blocked_  && obstructed_stop;
 		teleport_failed_ = teleport_failed_ && obstructed_stop;
 		// event_mutated_ does not get unset, regardless of other reasons for stopping.
@@ -3569,8 +3575,8 @@ public:
 
 		if ( move_it_.valid() ) {
 			// Update the moving unit.
-			move_it_->set_interrupted_move(sighted_ ? *(full_end_-1) :
-			                                          map_location::null_location);
+			move_it_->set_interrupted_move(sighted_stop_ ? *(full_end_-1) :
+			                                               map_location::null_location);
 			if ( ambushed_ || final_hex() == zoc_stop_ )
 				move_it_->set_movement(0);
 
@@ -3714,7 +3720,7 @@ public:
 		}
 
 		// Suggest "continue move"?
-		if ( playing_team_is_viewing && sighted_ && !resources::whiteboard->is_executing_actions() ) {
+		if ( playing_team_is_viewing && sighted_stop_ && !resources::whiteboard->is_executing_actions() ) {
 			// See if the "Continue Move" action has an associated hotkey
 			const hotkey::hotkey_item& hk = hotkey::get_hotkey(hotkey::HOTKEY_CONTINUE_MOVE);
 			if ( !hk.null() ) {
@@ -3743,16 +3749,16 @@ public:
  * instruction. (The unit itself is whatever unit is at the beginning of the
  * supplied path.)
  *
- * @param move_spectator[out]       Will be given information uncovered by the move. If not NULL, this suppresses all changes to the unit's "goto" instruction.
- * @param steps[in]                 The route to be travelled. The unit to be moved is at the beginning of this route.
- * @param move_recorder[out]        Will be given the route actually travelled (which might be shorter than the route specified).
- * @param undo_stack                If supplied, then either this movement will be added to the stack or the stack will be cleared.
- * @param show_move[in]             Controls whether or not the movement is animated for the player.
- * @param next_unit[out]            If supplied, this is set to where the actual movement ended. (Set to the null location if @a steps is empty.)
- * @param continued_move[in]        If set to true, this is a continuation of an earlier move (movement is not interrupted should units be spotted).
- * @param should_clear_shroud[in]   If set to false, no fog/shroud clearing will occur. If left as true, then clearing depends upon the team's setting (delayed shroud updates).
- * @param replay_dest[in]           If not NULL, then this move is assumed to be a replay that expects the unit to be moved to here. Several normal considerations are ignored in a replay.
- * @param units_sighted_result[out] Returns whether or not any (non-petrified) units were seen as a result of this move clearing fog/shroud.
+ * @param[out] move_spectator       Will be given information uncovered by the move. If not NULL, this suppresses all changes to the unit's "goto" instruction.
+ * @param[in]  steps                The route to be travelled. The unit to be moved is at the beginning of this route.
+ * @param[out] move_recorder        Will be given the route actually travelled (which might be shorter than the route specified).
+ * @param      undo_stack           If supplied, then either this movement will be added to the stack or the stack will be cleared.
+ * @param[in]  show_move            Controls whether or not the movement is animated for the player.
+ * @param[out] next_unit            If supplied, this is set to where the actual movement ended. (Set to the null location if @a steps is empty.)
+ * @param[in]  continued_move       If set to true, this is a continuation of an earlier move (movement is not interrupted should units be spotted).
+ * @param[in]  should_clear_shroud  If set to false, no fog/shroud clearing will occur. If left as true, then clearing depends upon the team's setting (delayed shroud updates).
+ * @param[in]  replay_dest          If not NULL, then this move is assumed to be a replay that expects the unit to be moved to here. Several normal considerations are ignored in a replay.
+ * @param[out] interrupted          If supplied, then this is set to true if information was uncovered that warrants interrupting a chain of actions (and set to false otherwise).
  *
  * @returns The number of hexes entered. This can safely be used as an index
  *          into @a steps to get the location where movement ended, provided
@@ -3765,7 +3771,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
                  bool show_move, map_location *next_unit,
                  bool continued_move, bool should_clear_shroud,
                  const map_location* replay_dest,
-                 bool* units_sighted_result)
+                 bool* interrupted)
 {
 	const events::command_disabler disable_commands;
 	const map_location &initial_loc = steps.empty() ?
@@ -3773,8 +3779,8 @@ size_t move_unit(move_unit_spectator *move_spectator,
 		                                  steps.front();
 
 	// Default return values.
-	if ( units_sighted_result )
-		*units_sighted_result = false;
+	if ( interrupted )
+		*interrupted = false;
 	if ( next_unit )
 		*next_unit = initial_loc;
 
@@ -3805,8 +3811,8 @@ size_t move_unit(move_unit_spectator *move_spectator,
 		mover.feedback();
 
 	// Set return values.
-	if ( units_sighted_result )
-		*units_sighted_result = mover.saw_units();
+	if ( interrupted )
+		*interrupted = mover.interrupted();
 	if ( next_unit )
 		*next_unit = mover.final_hex();
 

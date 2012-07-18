@@ -698,14 +698,14 @@ bool mouse_handler::move_unit_along_current_route(bool check_shroud)
  * @param[in]   route           The route to be travelled. The unit to be moved is at the beginning of this route.
  * @param[out]  next_unit       If supplied, this is set to where the actual movement ended. (Not changed if route.steps is empty.)
  * @param[in]   check_shroud    If set to false, no fog/shroud clearing will occur. If left as true, then clearing depends upon the team's setting (delayed shroud updates).
- * @param[out]  sighted_result  If not NULL, this returns whether a "unit sighted" event occurred.
+ * @param[out]  interrupted     If supplied, then this is set to true if information was uncovered that warrants interrupting a chain of actions (and set to false otherwise).
  *
  * @returns The number of hexes entered. This can safely be used as an index
  *          into route.steps to get the location where movement ended, provided
  *          route.steps is not empty (the return value is guaranteed to be less
  *          than route.steps.size() ).
  */
-size_t mouse_handler::move_unit_along_route(pathfind::marked_route const& route, map_location* next_unit, bool check_shroud, bool* sighted_result)
+size_t mouse_handler::move_unit_along_route(pathfind::marked_route const& route, map_location* next_unit, bool check_shroud, bool* interrupted)
 {
 	const std::vector<map_location> steps = route.steps;
 	if(steps.empty()) {
@@ -734,7 +734,7 @@ size_t mouse_handler::move_unit_along_route(pathfind::marked_route const& route,
 
 	size_t moves = 0;
 	try {
-		moves = ::move_unit(NULL, steps, &recorder, resources::undo_stack, true, next_unit, false, check_shroud, NULL, sighted_result);
+		moves = ::move_unit(NULL, steps, &recorder, resources::undo_stack, true, next_unit, false, check_shroud, NULL, interrupted);
 	} catch(end_turn_exception&) {
 		cursor::set(cursor::NORMAL);
 		gui().invalidate_game_status();
