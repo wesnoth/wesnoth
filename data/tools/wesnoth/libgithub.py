@@ -365,8 +365,7 @@ class GitHub(object):
         Returns a list of tuples that contain the add-on name and the url.
         """
         url = _GITHUB_API_BASE + _GITHUB_API_REPOS
-        request = urllib2.Request(url)
-        repos = self._github_api_request(request)
+        repos = self._github_api_request(url)
 
         version_suffix = "-{0}".format(self.version)
         return [(repo["name"][:-len(version_suffix)], repo["git_url"] if readonly else repo["ssh_url"])
@@ -380,27 +379,28 @@ class GitHub(object):
         reponame = "{0}-{1}".format(name, self.version)
 
         url = _GITHUB_API_BASE + _GITHUB_API_REPOS
-        request = urllib2.Request(url)
         requestdata = { "name" : reponame }
-        repodata = self._github_api_request(request, requestdata, authenticate=True)
+        repodata = self._github_api_request(url, requestdata, authenticate=True)
 
         url = _GITHUB_API_BASE + _GITHUB_API_TEAMS
-        request = urllib2.Request(url)
-        teams = self._github_api_request(request, authenticate=True)
+        teams = self._github_api_request(url, authenticate=True)
 
         # This can probably be cleaner
         team_number = [team["id"] for team in teams if team["name"] == "Developers"][0]
 
         # PUT /teams/:id/repos/:org/:repo
-        url = _GITHUB_API_BASE + _GITHUB_API_TEAM_REPO
-        request = urllib2.Request(url.format(team_number, reponame))
-        request.get_method = lambda: "PUT"
+        baseurl = _GITHUB_API_BASE + _GITHUB_API_TEAM_REPO
+        url = baseurl.format(team_number, reponame)
         # Github requires data for every modifying request, even if there is none
-        self._github_api_request(request, data="", authenticate=True)
+        self._github_api_request(url, data="", method="PUT", authenticate=True)
 
         return repodata
 
-    def _github_api_request(self, request, data=None, authenticate=False):
+    def _github_api_request(self, url, data=None, method=None, authenticate=False):
+        request = urllib2.Request(url)
+        if method:
+            request.get_method = lambda: method
+
         if data == "":
             # Workaround for PUTs requiring data, even if you have nothing to pass
             request.add_data(data)
