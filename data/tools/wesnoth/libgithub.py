@@ -343,7 +343,7 @@ class GitHub(object):
         """
         changed = False
         github_list = self._github_repos_list()
-        local_list = self._get_local_addons
+        local_list = self._get_local_addons()
         for repo in github_list:
             if repo[0] not in local_list:
                 self._clone(repo[0], repo[1])
