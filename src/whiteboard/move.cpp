@@ -221,7 +221,8 @@ void move::execute(bool& success, bool& complete)
 	{
 		team const& owner_team = resources::teams->at(team_index());
 		try {
-			steps_finished = mouse_handler.move_unit_along_route(*route_, &final_location, owner_team.auto_shroud_updates(), &enemy_sighted);
+			size_t num_steps = mouse_handler.move_unit_along_route(*route_, &final_location, owner_team.auto_shroud_updates(), &enemy_sighted);
+			steps_finished = num_steps > 0  &&  num_steps + 1 == route_->steps.size();
 		} catch (end_turn_exception&) {
 			set_arrow_brightness(ARROW_BRIGHTNESS_STANDARD);
 			throw; // we rely on the caller to delete this action

@@ -679,7 +679,8 @@ bool mouse_handler::move_unit_along_current_route(bool check_shroud)
 	selected_hex_ = map_location();
 	gui().select_hex(map_location());
 
-	bool finished_moves = move_unit_along_route(current_route_, &next_unit_, check_shroud);
+	size_t num_moves = move_unit_along_route(current_route_, &next_unit_, check_shroud);
+	bool finished_moves = num_moves > 0  &&  num_moves + 1 == current_route_.steps.size();
 
 	// invalid after the move
 	current_paths_ = pathfind::paths();
@@ -688,11 +689,27 @@ bool mouse_handler::move_unit_along_current_route(bool check_shroud)
 	return finished_moves;
 }
 
-bool mouse_handler::move_unit_along_route(pathfind::marked_route const& route, map_location* next_unit, bool check_shroud, bool* sighted_result)
+/**
+ * Moves a unit across the board for a player.
+ * This is specifically for movement at the time it is initiated by a player,
+ * whether via a mouse click or executing whiteboard actions. Continued moves
+ * (including goto execution) can bypass this and call ::move_unit() directly.
+ *
+ * @param[in]   route           The route to be travelled. The unit to be moved is at the beginning of this route.
+ * @param[out]  next_unit       If supplied, this is set to where the actual movement ended. (Not changed if route.steps is empty.)
+ * @param[in]   check_shroud    If set to false, no fog/shroud clearing will occur. If left as true, then clearing depends upon the team's setting (delayed shroud updates).
+ * @param[out]  sighted_result  If not NULL, this returns whether a "unit sighted" event occurred.
+ *
+ * @returns The number of hexes entered. This can safely be used as an index
+ *          into route.steps to get the location where movement ended, provided
+ *          route.steps is not empty (the return value is guaranteed to be less
+ *          than route.steps.size() ).
+ */
+size_t mouse_handler::move_unit_along_route(pathfind::marked_route const& route, map_location* next_unit, bool check_shroud, bool* sighted_result)
 {
 	const std::vector<map_location> steps = route.steps;
 	if(steps.empty()) {
-		return false;
+		return 0;
 	}
 
 	//If this is a leader on a keep, ask permission to the whiteboard to move it
@@ -711,7 +728,7 @@ bool mouse_handler::move_unit_along_route(pathfind::marked_route const& route, m
 
 			if(next_unit)
 				*next_unit = steps.front();
-			return false;
+			return 0;
 		}
 	}
 
@@ -728,7 +745,7 @@ bool mouse_handler::move_unit_along_route(pathfind::marked_route const& route, m
 	gui().invalidate_game_status();
 
 	if(moves == 0)
-		return false;
+		return 0;
 
 	resources::redo_stack->clear();
 
@@ -749,7 +766,7 @@ bool mouse_handler::move_unit_along_route(pathfind::marked_route const& route, m
 		}
 	}
 
-	return moves + 1 == steps.size();
+	return moves;
 }
 
 void mouse_handler::save_whiteboard_attack(const map_location& attacker_loc, const map_location& defender_loc, int weapon_choice)
