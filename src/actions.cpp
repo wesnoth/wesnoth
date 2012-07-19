@@ -2864,7 +2864,7 @@ public:
 		/// interrupt movement (even if movement ended for a different reason).
 		bool interrupted() const
 		{ return ambushed_ || blocked_ || event_mutated_ || sighted_ ||
-		         teleport_failed_; }
+		         teleport_failed_ || !move_it_.valid(); }
 
 	private: // functions
 		/// Checks the expected route for hidden units.
