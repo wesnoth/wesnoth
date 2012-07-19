@@ -669,8 +669,17 @@ void mouse_handler::deselect_hex() {
 	select_hex(map_location(), true);
 }
 
+/**
+ * Moves a unit along the currently cached route.
+ *
+ * @param[in]   check_shroud    If set to false, no fog/shroud clearing will occur. If left as true, then clearing depends upon the team's setting (delayed shroud updates).
+ *
+ * @returns  true if the end of the route was reached; false otherwise.
+ */
 bool mouse_handler::move_unit_along_current_route(bool check_shroud)
 {
+	bool finished_moves = false;
+
 	// do not show footsteps during movement
 	gui().set_route(NULL);
 	gui().unhighlight_reach();
@@ -679,8 +688,13 @@ bool mouse_handler::move_unit_along_current_route(bool check_shroud)
 	selected_hex_ = map_location();
 	gui().select_hex(map_location());
 
-	size_t num_moves = move_unit_along_route(current_route_, &next_unit_, check_shroud);
-	bool finished_moves = num_moves > 0  &&  num_moves + 1 == current_route_.steps.size();
+	if ( current_route_.steps.size() > 1 )
+	{
+		size_t num_moves = move_unit_along_route(current_route_, NULL, check_shroud);
+
+		finished_moves = num_moves + 1 == current_route_.steps.size();
+		next_unit_ = current_route_.steps[num_moves];
+	}
 
 	// invalid after the move
 	current_paths_ = pathfind::paths();
@@ -709,32 +723,43 @@ size_t mouse_handler::move_unit_along_route(pathfind::marked_route const& route,
 {
 	const std::vector<map_location> steps = route.steps;
 	if(steps.empty()) {
+		if ( next_unit )
+			*next_unit = map_location::null_location;
+		if ( interrupted )
+			*interrupted = false;
 		return 0;
 	}
 
+	// Default return values.
+	if ( next_unit )
+		*next_unit = steps.front();
+	if ( interrupted )
+		*interrupted = true;
+
 	//If this is a leader on a keep, ask permission to the whiteboard to move it
 	//since otherwise it may cause planned recruits to be erased.
+	if ( resources::game_map->is_keep(steps.front()) )
 	{
 		unit_map::const_iterator const u = units_.find(steps.front());
 
-		if (u != units_.end()
-				&& u->can_recruit()
-				&& u->side() == gui().viewing_side()
-				&& resources::game_map->is_keep(u->get_location())
-				&& !resources::whiteboard->allow_leader_to_move(*u))
+		if ( u != units_.end()  &&  u->can_recruit()  &&
+		     u->side() == gui().viewing_side()        &&
+		     !resources::whiteboard->allow_leader_to_move(*u) )
 		{
 			gui2::show_transient_message(gui_->video(), "",
-					_("You cannot move your leader away from the keep with some planned recruits or recalls left."));
-
-			if(next_unit)
-				*next_unit = steps.front();
+				_("You cannot move your leader away from the keep with some planned recruits or recalls left."));
 			return 0;
 		}
 	}
 
+	bool local_interrupted = false;
 	size_t moves = 0;
 	try {
-		moves = ::move_unit(NULL, steps, &recorder, resources::undo_stack, true, next_unit, false, check_shroud, NULL, interrupted);
+		moves = ::move_unit(NULL, steps, &recorder, resources::undo_stack, true, NULL, false, check_shroud, NULL, &local_interrupted);
+		if ( next_unit )
+			*next_unit = steps[moves];
+		if ( interrupted )
+			*interrupted = local_interrupted;
 	} catch(end_turn_exception&) {
 		cursor::set(cursor::NORMAL);
 		gui().invalidate_game_status();
@@ -749,21 +774,11 @@ size_t mouse_handler::move_unit_along_route(pathfind::marked_route const& route,
 
 	resources::redo_stack->clear();
 
-	const map_location& dst = steps[moves];
-	const unit_map::const_iterator u = units_.find(dst);
-
-	//u may be equal to units_.end() in the case of e.g. a [teleport]
-	if(u != units_.end()) {
-		if(dst != steps.back()) {
-			// the move was interrupted
-			if (u->movement_left() > 0) {
-				// reselect the unit (for "press t to continue")
-				select_hex(dst, false);
-				// the new discovery is more important than the new movement range
-				show_partial_move_ = true;
-				gui().unhighlight_reach();
-			}
-		}
+	if ( local_interrupted ) {
+		// reselect the unit (for "press t to continue")
+		select_hex(steps[moves], false, false, false);
+		// the new discovery is more important than the new movement range
+		show_partial_move_ = true;
 	}
 
 	return moves;
