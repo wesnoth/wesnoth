@@ -212,93 +212,54 @@ void move::execute(bool& success, bool& complete)
 	set_arrow_brightness(ARROW_BRIGHTNESS_HIGHLIGHTED);
 	hide_fake_unit();
 
-	events::mouse_handler& mouse_handler = resources::controller->get_mouse_handler_base();
-	std::set<map_location> adj_enemies = mouse_handler.get_adj_enemies(get_dest_hex(), side_number());
-
-	map_location final_location;
-	bool steps_finished;
-	bool enemy_sighted;
-	{
-		team const& owner_team = resources::teams->at(team_index());
-		try {
-			size_t num_steps = mouse_handler.move_unit_along_route(*route_, &final_location, owner_team.auto_shroud_updates(), &enemy_sighted);
-			steps_finished = num_steps > 0  &&  num_steps + 1 == route_->steps.size();
-		} catch (end_turn_exception&) {
-			set_arrow_brightness(ARROW_BRIGHTNESS_STANDARD);
-			throw; // we rely on the caller to delete this action
-		}
-		// final_location now contains the final unit location
-		// if that isn't needed, pass NULL rather than &final_location
-		// Also, enemy_sighted now tells whether a unit was sighted during the move
+	size_t num_steps;
+	bool interrupted;
+	try {
+		events::mouse_handler& mouse_handler = resources::controller->get_mouse_handler_base();
+		num_steps = mouse_handler.move_unit_along_route(*route_, NULL, true, &interrupted);
+	} catch (end_turn_exception&) {
+		set_arrow_brightness(ARROW_BRIGHTNESS_STANDARD);
+		throw; // we rely on the caller to delete this action
 	}
-	if(mouse_handler.get_adj_enemies(final_location,side_number()) != adj_enemies)
-		enemy_sighted = true; //< "ambushed" on last hex
+	const map_location final_location = route_->steps[num_steps];
+	unit_map::const_iterator unit_it = resources::units->find(final_location);
 
-	unit_map::const_iterator unit_it;
-
-	if (final_location == route_->steps.front())
+	if ( num_steps == 0 )
 	{
 		LOG_WB << "Move execution resulted in zero movement.\n";
 		success = false;
 		complete = true;
 	}
-	else if (final_location.valid() &&
-			(unit_it = resources::units->find(final_location)) != resources::units->end()
-			&& unit_it->id() == unit_id_)
-	{
-		if (steps_finished && route_->steps.back() == final_location) //reached destination
-		{
-			complete = true;
-
-			//check if new enemies are now visible
-			if(enemy_sighted)
-			{
-				LOG_WB << "Move completed, but interrupted on final hex. Halting.\n";
-				//reset to a single-hex path, just in case *this is a wb::attack
-				arrow_.reset();
-				route_->steps = std::vector<map_location>(1,route_->steps.back());
-				success = false;
-			}
-			else // Everything went smoothly
-				success = true;
-		}
-		else // Move was interrupted, probably by enemy unit sighted
-		{
-			success = false;
-
-			LOG_WB << "Move finished at (" << final_location << ") instead of at (" << get_dest_hex() << "), analyzing\n";
-			std::vector<map_location>::iterator start_new_path;
-			bool found = false;
-			for (start_new_path = route_->steps.begin(); ((start_new_path != route_->steps.end()) && !found); ++start_new_path)
-			{
-				if (*start_new_path == final_location)
-				{
-					found = true;
-				}
-			}
-			if (found)
-			{
-				--start_new_path; //since the for loop incremented the iterator once after we found the right one.
-				std::vector<map_location> new_path(start_new_path, route_->steps.end());
-				LOG_WB << "Setting new path for this move from (" << new_path.front()
-						<< ") to (" << new_path.back() << ").\n";
-				//FIXME: probably better to use the new calculate_new_route instead of doing this
-				route_->steps = new_path;
-				arrow_->set_path(new_path);
-				complete = false;
-			}
-			else //Unit ended up in location outside path, likely due to a WML event
-			{
-				WRN_WB << "Unit ended up in location outside path during move execution.\n";
-				complete = true;
-			}
-		}
-	}
-	else //Unit disappeared from the map, likely due to a WML event
+	else if ( unit_it == resources::units->end()  ||  unit_it->id() != unit_id_ )
 	{
 		WRN_WB << "Unit disappeared from map during move execution.\n";
 		success = false;
 		complete = true;
+	}
+	else
+	{
+		complete = num_steps + 1 == route_->steps.size();
+		success = complete && !interrupted;
+
+		if ( !success )
+		{
+			if ( complete )
+			{
+				LOG_WB << "Move completed, but interrupted on final hex. Halting.\n";
+				//reset to a single-hex path, just in case *this is a wb::attack
+				route_->steps = std::vector<map_location>(1, final_location);
+				arrow_.reset();
+			}
+			else
+			{
+				LOG_WB << "Move finished at (" << final_location << ") instead of at (" << get_dest_hex() << "). Setting new path.\n";
+				route_->steps = std::vector<map_location>(route_->steps.begin() + num_steps, route_->steps.end());
+				//FIXME: probably better to use the new calculate_new_route() instead of the above:
+				//calculate_new_route(final_location, route_->steps.back());
+				// Of course, "better" would need to be verified.
+				arrow_->set_path(route_->steps);
+			}
+		}
 	}
 
 	if(!complete)
