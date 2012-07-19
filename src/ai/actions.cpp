@@ -464,7 +464,7 @@ void move_result::do_execute()
 	move_spectator_.set_unit(resources::units->find(from_));
 
 	if (from_ != to_) {
-		move_unit(
+		size_t num_steps = move_unit(
 			/*move_unit_spectator* move_spectator*/ &move_spectator_,
 			/*std::vector<map_location> route*/ route_->steps,
 			/*replay* move_recorder*/ &recorder,
@@ -473,13 +473,12 @@ void move_result::do_execute()
 			/*map_location *next_unit*/ NULL,
 			/*bool continue_move*/ true); ///@todo 1.9 set to false after implemeting interrupt awareness
 
-		if ( move_spectator_.get_ambusher().valid() || !move_spectator_.get_seen_enemies().empty() || !move_spectator_.get_seen_friends().empty() ) {
+		if ( num_steps > 0 ) {
 			set_gamestate_changed();
-		} else if (move_spectator_.get_unit().valid()){
-			unit_location_ = move_spectator_.get_unit()->get_location();
-			if (unit_location_ != from_) {
-				set_gamestate_changed();
-			}
+		} else if ( move_spectator_.get_ambusher().valid() ) {
+			// Unlikely, but some types of strange WML (or bad pathfinding)
+			// could cause an ambusher to be found without moving.
+			set_gamestate_changed();
 		}
 	} else {
 		assert(remove_movement_);
