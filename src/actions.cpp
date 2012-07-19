@@ -3575,8 +3575,10 @@ public:
 
 		if ( move_it_.valid() ) {
 			// Update the moving unit.
-			move_it_->set_interrupted_move(sighted_stop_ ? *(full_end_-1) :
-			                                               map_location::null_location);
+			move_it_->set_interrupted_move(
+				sighted_stop_ && !resources::whiteboard->is_executing_actions() ?
+					*(full_end_-1) :
+					map_location::null_location);
 			if ( ambushed_ || final_hex() == zoc_stop_ )
 				move_it_->set_movement(0);
 
