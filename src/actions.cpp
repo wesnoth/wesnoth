@@ -2599,7 +2599,8 @@ size_t move_unit(move_unit_spectator *move_spectator,
 	// If we can't get all the way there and have to set a go-to.
 	if(steps.size() != route.size() && discovered_unit == false) {
 		if(seen_units.empty() == false) {
-			ui->set_interrupted_move(route.back());
+			if ( !resources::whiteboard->is_executing_actions() )
+				ui->set_interrupted_move(route.back());
 		} else {
 
 			//don't modify goto if we're have a spectator
