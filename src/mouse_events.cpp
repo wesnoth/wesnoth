@@ -536,18 +536,12 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 
 				if (resources::whiteboard->is_active()) {
 					save_whiteboard_attack(attack_from, hex, choice);
-				} else {
-					// move the unit without clearing fog (to avoid interruption)
-					//TODO: clear fog and interrupt+resume move
-					if(!move_unit_along_current_route(false)) {
-						// interrupted move
-						// we assume that move_unit() did the cleaning
-						// (update shroud/fog, clear undo if needed)
-						return false;
-					}
-
+				}
+				else if ( move_unit_along_current_route(true) ) {
 					attack_enemy(attack_from, hex, choice); // Fight !!
 				}
+				//TODO: Maybe store the attack choice so "press t to continue"
+				//      can also continue the attack?
 				return false;
 			}
 		}
