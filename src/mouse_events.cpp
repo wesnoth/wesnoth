@@ -537,11 +537,6 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 				if (resources::whiteboard->is_active()) {
 					save_whiteboard_attack(attack_from, hex, choice);
 				} else {
-					// store side, since u may be invalidated later
-					int side = u->side();
-					//record visible enemies adjacent to destination
-					std::set<map_location> adj_enemies = get_adj_enemies(attack_from, side);
-
 					// move the unit without clearing fog (to avoid interruption)
 					//TODO: clear fog and interrupt+resume move
 					if(!move_unit_along_current_route(false)) {
@@ -550,10 +545,6 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 						// (update shroud/fog, clear undo if needed)
 						return false;
 					}
-
-					//check if new enemies are now visible
-					if(get_adj_enemies(attack_from, side) != adj_enemies)
-						return false; //ambush, interrupt attack
 
 					attack_enemy(attack_from, hex, choice); // Fight !!
 				}
@@ -596,7 +587,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 				return false;
 			}
 
-			move_unit_along_current_route(current_team().auto_shroud_updates());
+			move_unit_along_current_route(true);
 			// during the move, we may have selected another unit
 			// (but without triggering a select event (command was disabled)
 			// in that case reselect it now to fire the event (+ anim & sound)
@@ -674,12 +665,12 @@ void mouse_handler::deselect_hex() {
  *
  * @param[in]   check_shroud    If set to false, no fog/shroud clearing will occur. If left as true, then clearing depends upon the team's setting (delayed shroud updates).
  *
- * @returns  true if the end of the route was reached; false otherwise.
+ * @returns  true if the end of the route was reached and no information was
+ *           uncovered that would warrant interrupting a chain of actions;
+ *           false otherwise.
  */
 bool mouse_handler::move_unit_along_current_route(bool check_shroud)
 {
-	bool finished_moves = false;
-
 	// do not show footsteps during movement
 	gui().set_route(NULL);
 	gui().unhighlight_reach();
@@ -688,11 +679,12 @@ bool mouse_handler::move_unit_along_current_route(bool check_shroud)
 	selected_hex_ = map_location();
 	gui().select_hex(map_location());
 
+	bool interrupted = false;
 	if ( current_route_.steps.size() > 1 )
 	{
-		size_t num_moves = move_unit_along_route(current_route_, NULL, check_shroud);
+		size_t num_moves = move_unit_along_route(current_route_, NULL, check_shroud, &interrupted);
 
-		finished_moves = num_moves + 1 == current_route_.steps.size();
+		interrupted =  interrupted || num_moves + 1 < current_route_.steps.size();
 		next_unit_ = current_route_.steps[num_moves];
 	}
 
@@ -700,7 +692,7 @@ bool mouse_handler::move_unit_along_current_route(bool check_shroud)
 	current_paths_ = pathfind::paths();
 	current_route_.steps.clear();
 
-	return finished_moves;
+	return !interrupted;
 }
 
 /**
