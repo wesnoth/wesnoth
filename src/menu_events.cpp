@@ -1718,7 +1718,9 @@ void menu_handler::move_unit_to_loc(const unit_map::iterator &ui,
 	assert(route.steps.front() == ui->get_location());
 
 	gui_->set_route(&route);
+	gui_->unhighlight_reach();
 	move_unit(NULL, route.steps, &recorder, resources::undo_stack, true, NULL, continue_move);
+	gui_->set_route(NULL);
 	gui_->invalidate_game_status();
 }
 
