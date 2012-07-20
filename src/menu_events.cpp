@@ -832,14 +832,13 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 		resources::redo_stack->clear();
 		assert(new_unit.type());
 
-		// Dissallow undoing of recruits. Can be enabled again once the unit's
-		// description= key doesn't use random anymore.
 		const bool shroud_cleared = clear_shroud(side_num);
+		resources::undo_stack->push_back(undo_action(new_unit, loc, recruited_from, undo_action::RECRUIT));
+		// Disallow undoing of recruits. Can be enabled again once the unit's
+		// description= key doesn't use random anymore.
 		if (shroud_cleared || new_unit.type()->genders().size() > 1
 			|| new_unit.type()->has_random_traits()) {
 			clear_undo_stack(side_num);
-		} else {
-			resources::undo_stack->push_back(undo_action(new_unit, loc, recruited_from, undo_action::RECRUIT));
 		}
 
 		gui_->redraw_minimap();

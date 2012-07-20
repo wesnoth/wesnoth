@@ -3304,6 +3304,7 @@ public:
 
 		if ( event || !valid )
 			event_mutated_ = true;
+
 		return event || !valid;
 	}
 
@@ -3890,8 +3891,11 @@ void apply_shroud_changes(undo_list &undos, int side)
 		// Cache the unit's current actual location for raising the sighted events.
 		const map_location actual_location = unit_itor->get_location();
 
+		std::vector<map_location> route(un->route.begin(), un->route.end());
+		if ( un->recall_loc.valid() )
+			route.push_back(un->recall_loc);
 		std::vector<map_location>::const_iterator step;
-		for(step = un->route.begin(); step != un->route.end(); ++step) {
+		for(step = route.begin(); step != route.end(); ++step) {
 			// Clear the shroud, and collect new seen_units
 			std::set<map_location> seen_units;
 			std::set<map_location> petrified_units;
