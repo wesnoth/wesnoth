@@ -216,7 +216,7 @@ void move::execute(bool& success, bool& complete)
 	bool interrupted;
 	try {
 		events::mouse_handler& mouse_handler = resources::controller->get_mouse_handler_base();
-		num_steps = mouse_handler.move_unit_along_route(*route_, NULL, true, &interrupted);
+		num_steps = mouse_handler.move_unit_along_route(*route_, interrupted);
 	} catch (end_turn_exception&) {
 		set_arrow_brightness(ARROW_BRIGHTNESS_STANDARD);
 		throw; // we rely on the caller to delete this action

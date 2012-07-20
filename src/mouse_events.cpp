@@ -537,7 +537,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 				if (resources::whiteboard->is_active()) {
 					save_whiteboard_attack(attack_from, hex, choice);
 				}
-				else if ( move_unit_along_current_route(true) ) {
+				else if ( move_unit_along_current_route() ) {
 					attack_enemy(attack_from, hex, choice); // Fight !!
 				}
 				//TODO: Maybe store the attack choice so "press t to continue"
@@ -581,7 +581,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 				return false;
 			}
 
-			move_unit_along_current_route(true);
+			move_unit_along_current_route();
 			// during the move, we may have selected another unit
 			// (but without triggering a select event (command was disabled)
 			// in that case reselect it now to fire the event (+ anim & sound)
@@ -657,13 +657,11 @@ void mouse_handler::deselect_hex() {
 /**
  * Moves a unit along the currently cached route.
  *
- * @param[in]   check_shroud    If set to false, no fog/shroud clearing will occur. If left as true, then clearing depends upon the team's setting (delayed shroud updates).
- *
  * @returns  true if the end of the route was reached and no information was
  *           uncovered that would warrant interrupting a chain of actions;
  *           false otherwise.
  */
-bool mouse_handler::move_unit_along_current_route(bool check_shroud)
+bool mouse_handler::move_unit_along_current_route()
 {
 	// do not show footsteps during movement
 	gui().set_route(NULL);
@@ -676,7 +674,7 @@ bool mouse_handler::move_unit_along_current_route(bool check_shroud)
 	bool interrupted = false;
 	if ( current_route_.steps.size() > 1 )
 	{
-		size_t num_moves = move_unit_along_route(current_route_, NULL, check_shroud, &interrupted);
+		size_t num_moves = move_unit_along_route(current_route_, interrupted);
 
 		interrupted =  interrupted || num_moves + 1 < current_route_.steps.size();
 		next_unit_ = current_route_.steps[num_moves];
@@ -696,31 +694,23 @@ bool mouse_handler::move_unit_along_current_route(bool check_shroud)
  * (including goto execution) can bypass this and call ::move_unit() directly.
  *
  * @param[in]   route           The route to be travelled. The unit to be moved is at the beginning of this route.
- * @param[out]  next_unit       If supplied, this is set to where the actual movement ended. (Not changed if route.steps is empty.)
- * @param[in]   check_shroud    If set to false, no fog/shroud clearing will occur. If left as true, then clearing depends upon the team's setting (delayed shroud updates).
- * @param[out]  interrupted     If supplied, then this is set to true if information was uncovered that warrants interrupting a chain of actions (and set to false otherwise).
+ * @param[out]  interrupted     This is set to true if information was uncovered that warrants interrupting a chain of actions (and set to false otherwise).
  *
  * @returns The number of hexes entered. This can safely be used as an index
  *          into route.steps to get the location where movement ended, provided
  *          route.steps is not empty (the return value is guaranteed to be less
  *          than route.steps.size() ).
  */
-size_t mouse_handler::move_unit_along_route(pathfind::marked_route const& route, map_location* next_unit, bool check_shroud, bool* interrupted)
+size_t mouse_handler::move_unit_along_route(pathfind::marked_route const& route, bool & interrupted)
 {
 	const std::vector<map_location> steps = route.steps;
 	if(steps.empty()) {
-		if ( next_unit )
-			*next_unit = map_location::null_location;
-		if ( interrupted )
-			*interrupted = false;
+		interrupted = false;
 		return 0;
 	}
 
-	// Default return values.
-	if ( next_unit )
-		*next_unit = steps.front();
-	if ( interrupted )
-		*interrupted = true;
+	// Default return value.
+	interrupted = true;
 
 	//If this is a leader on a keep, ask permission to the whiteboard to move it
 	//since otherwise it may cause planned recruits to be erased.
@@ -738,14 +728,9 @@ size_t mouse_handler::move_unit_along_route(pathfind::marked_route const& route,
 		}
 	}
 
-	bool local_interrupted = false;
 	size_t moves = 0;
 	try {
-		moves = ::move_unit(NULL, steps, &recorder, resources::undo_stack, true, NULL, false, check_shroud, NULL, &local_interrupted);
-		if ( next_unit )
-			*next_unit = steps[moves];
-		if ( interrupted )
-			*interrupted = local_interrupted;
+		moves = ::move_unit(NULL, steps, &recorder, resources::undo_stack, true, NULL, false, true, NULL, &interrupted);
 	} catch(end_turn_exception&) {
 		cursor::set(cursor::NORMAL);
 		gui().invalidate_game_status();
@@ -760,7 +745,7 @@ size_t mouse_handler::move_unit_along_route(pathfind::marked_route const& route,
 
 	resources::redo_stack->clear();
 
-	if ( local_interrupted ) {
+	if ( interrupted ) {
 		// reselect the unit (for "press t to continue")
 		select_hex(steps[moves], false, false, false);
 		// the new discovery is more important than the new movement range

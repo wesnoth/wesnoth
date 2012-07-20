@@ -72,7 +72,7 @@ public:
 	void attack_enemy(const map_location& attacker_loc, const map_location& defender_loc, int choice);
 
 	/// Moves a unit across the board for a player.
-	size_t move_unit_along_route(pathfind::marked_route const& route, map_location* next_unit=NULL, bool check_shroud=true, bool* interrupted = NULL);
+	size_t move_unit_along_route(pathfind::marked_route const& route, bool & interrupted);
 
 	void select_hex(const map_location& hex, const bool browse,
 		const bool highlight = true,
@@ -97,7 +97,7 @@ protected:
 	void mouse_motion(int x, int y, const bool browse, bool update=false, map_location loc = map_location::null_location);
 	bool right_click_show_menu(int x, int y, const bool browse);
 	bool left_click(int x, int y, const bool browse);
-	bool move_unit_along_current_route(bool check_shroud);
+	bool move_unit_along_current_route();
 
 	void save_whiteboard_attack(const map_location& attacker_loc, const map_location& defender_loc, int weapon_choice);
 
