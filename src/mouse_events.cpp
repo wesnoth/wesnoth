@@ -745,7 +745,7 @@ size_t mouse_handler::move_unit_along_route(pathfind::marked_route const& route,
 
 	resources::redo_stack->clear();
 
-	if ( interrupted ) {
+	if ( interrupted  &&  moves + 1 < steps.size() ) {
 		// reselect the unit (for "press t to continue")
 		select_hex(steps[moves], false, false, false);
 		// the new discovery is more important than the new movement range

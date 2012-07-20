@@ -2862,9 +2862,12 @@ public:
 		bool stopped_early() const  { return expected_end_ != real_end_; }
 		/// After moving, use this to detect if something happened that would
 		/// interrupt movement (even if movement ended for a different reason).
-		bool interrupted() const
-		{ return ambushed_ || blocked_ || event_mutated_ || sighted_ ||
-		         teleport_failed_ || !move_it_.valid(); }
+		bool interrupted(bool include_end_of_move_events=true) const
+		{
+			return ambushed_ || blocked_ || sighted_ || teleport_failed_ ||
+			       (include_end_of_move_events ? event_mutated_ : event_mutated_mid_move_ ) ||
+			       !move_it_.valid();
+		}
 
 	private: // functions
 		/// Checks the expected route for hidden units.
@@ -2947,6 +2950,7 @@ public:
 		bool ambushed_;
 		bool blocked_; // Blocked by an enemy (non-ambusher) unit
 		bool event_mutated_;
+		bool event_mutated_mid_move_; // Cache of event_mutated_ from just before the end-of-move handling.
 		bool fog_changed_;
 		bool sighted_;	// Records if sightings were made that could interrupt movement.
 		bool sighted_stop_;	// Records if sightings were made that did interrupt movement (the same as sighted_ unless movement ended for another reason).
@@ -2996,6 +3000,7 @@ public:
 		ambushed_(false),
 		blocked_(false),
 		event_mutated_(false),
+		event_mutated_mid_move_(false),
 		fog_changed_(false),
 		sighted_(false),
 		sighted_stop_(false),
@@ -3020,12 +3025,13 @@ public:
 			if ( spectator_ != NULL )
 				// When a spectator is supplied, it should be as if we never changed
 				// the goto.
+				// NOTE: Currently (July 2012), spectator_ != NULL implies that
+				// this is an AI move.
 				move_it_->set_goto(goto_);
 			else
 				// Only set the goto if movement was not complete and was not
 				// interrupted.
-				if ( real_end_ != full_end_  && !ambushed_ && !blocked_ && !sighted_ )
-					if ( !event_mutated_ || real_end_ == expected_end_  ) // End-of-move-events do not cancel a goto. (Use case: tutorial S2.)
+				if ( real_end_ != full_end_  &&  !interrupted(false) ) // End-of-move-events do not cancel a goto. (Use case: tutorial S2.)
 						move_it_->set_goto(goto_);
 		}
 	}
@@ -3302,7 +3308,6 @@ public:
 
 		if ( event || !valid )
 			event_mutated_ = true;
-
 		return event || !valid;
 	}
 
@@ -3547,7 +3552,9 @@ public:
 		ambushed_ = ambushed_ && real_end_ == ambush_limit_;
 		blocked_  = blocked_  && obstructed_stop;
 		teleport_failed_ = teleport_failed_ && obstructed_stop;
-		// event_mutated_ does not get unset, regardless of other reasons for stopping.
+		// event_mutated_ does not get unset, regardless of other reasons
+		// for stopping, but we do save its current value.
+		event_mutated_mid_move_ = event_mutated_;
 
 		// Need the default ambush message?
 		if ( ambushed_  &&  ambush_string_.empty() )
