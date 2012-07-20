@@ -70,7 +70,7 @@ unit const* find_backup_leader(unit const& leader)
 	{
 		if (unit.can_recruit() && unit.id() != leader.id())
 		{
-			if ( can_recruit_on(*resources::game_map, unit, leader.get_location()) )
+			if ( can_recruit_on(unit, leader.get_location()) )
 				return &unit;
 		}
 	}
@@ -79,15 +79,13 @@ unit const* find_backup_leader(unit const& leader)
 
 unit* find_recruiter(size_t team_index, map_location const& hex)
 {
-	gamemap& map = *resources::game_map;
-
-	if(!map.is_castle(hex))
+	if ( !resources::game_map->is_castle(hex) )
 		return NULL;
 
 	BOOST_FOREACH(unit& u, *resources::units)
 		if(u.can_recruit()
 				&& u.side() == static_cast<int>(team_index+1)
-				&& can_recruit_on(map, u, hex))
+				&& can_recruit_on(u, hex))
 			return &u;
 	return NULL;
 }

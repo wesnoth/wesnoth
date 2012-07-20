@@ -69,12 +69,12 @@ private:
 
 
 /// Checks to see if a leader at @a leader_loc could recruit on @a recruit_loc.
-bool can_recruit_on(const gamemap& map, const map_location& leader_loc, const map_location& recruit_loc, int side);
+bool can_recruit_on(const map_location& leader_loc, const map_location& recruit_loc, int side);
 /// Checks to see if @a leader (assumed a leader) can recruit on @a recruit_loc.
 /// This takes into account terrain, shroud, and whether or not there is already
 /// a visible unit at recruit_loc.
-inline bool can_recruit_on(const gamemap& map, const unit& leader, const map_location& recruit_loc)
-{ return can_recruit_on(map, leader.get_location(), recruit_loc, leader.side()); }
+inline bool can_recruit_on(const unit& leader, const map_location& recruit_loc)
+{ return can_recruit_on(leader.get_location(), recruit_loc, leader.side()); }
 
 /**
  * Finds a location to place a unit.

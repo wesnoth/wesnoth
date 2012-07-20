@@ -340,8 +340,10 @@ void unit_creator::post_create(const map_location &loc, const unit &new_unit, bo
  * not there is already a visible unit at recruit_loc.
  * The behavior for an invalid @a side is subject to change for future needs.
  */
-bool can_recruit_on(const gamemap& map, const map_location& leader_loc, const map_location& recruit_loc, int side)
+bool can_recruit_on(const map_location& leader_loc, const map_location& recruit_loc, int side)
 {
+	const gamemap& map = *resources::game_map;
+
 	if( !map.is_castle(recruit_loc) )
 		return false;
 
@@ -394,7 +396,7 @@ const std::set<std::string> get_recruits_for_location(int side, const map_locati
 			continue;
 
 		// Check if the leader is on a connected keep.
-		if ( can_recruit_on(*resources::game_map, *u, recruit_loc) ) {
+		if ( can_recruit_on(*u, recruit_loc) ) {
 			leader_in_place= true;
 			local_result.insert(u->recruits().begin(), u->recruits().end());
 		} else
@@ -439,7 +441,7 @@ const std::vector<const unit*> get_recalls_for_location(int side, const map_loca
 				continue;
 
 			// Check if the leader is on a connected keep.
-			if ( can_recruit_on(*resources::game_map, *u, recall_loc) )
+			if ( can_recruit_on(*u, recall_loc) )
 				leader_in_place= true;
 			else continue;
 
@@ -509,7 +511,7 @@ std::string find_recall_location(const int side, map_location& recall_loc, map_l
 			continue;
 		leader_fit = leader_keep;
 
-		if ( can_recruit_on(*resources::game_map, *leader_fit, recall_loc) ) {
+		if ( can_recruit_on(*leader_fit, recall_loc) ) {
 			leader_opt = leader_fit;
 			if (resources::units->count(recall_loc) == 1)
 				recall_loc = tmp_location;
@@ -593,7 +595,7 @@ std::string find_recruit_location(const int side, map_location& recruit_location
 			continue;
 		leader_fit = leader_keep;
 
-		if ( can_recruit_on(*resources::game_map, *leader_fit, recruit_location) ) {
+		if ( can_recruit_on(*leader_fit, recruit_location) ) {
 			leader_opt = leader_fit;
 			if (resources::units->count(recruit_location) == 1)
 				recruit_location = tmp_location;
@@ -674,7 +676,7 @@ void place_recruit(const unit &u, const map_location &recruit_location, const ma
 	for(; leader != resources::units->end(); ++leader)
 		if (leader->can_recruit() &&
 		    leader->side() == new_unit.side() &&
-		    can_recruit_on(*resources::game_map, *leader, recruit_location))
+		    can_recruit_on(*leader, recruit_location))
 			break;
 	if (show) {
 		if (leader.valid()) {

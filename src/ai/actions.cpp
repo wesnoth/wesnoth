@@ -578,7 +578,7 @@ bool recall_result::test_suitable_recall_location(const unit &my_leader)
 		recall_location_ = pathfind::find_vacant_castle(my_leader);
 	}
 
-	if ( !can_recruit_on(*resources::game_map, my_leader, recall_location_) ) {
+	if ( !can_recruit_on(my_leader, recall_location_) ) {
 		set_error(E_BAD_RECALL_LOCATION);
 		return false;
 	}
@@ -778,7 +778,7 @@ bool recruit_result::test_suitable_recruit_location(const unit &my_leader)
 		recruit_location_ = pathfind::find_vacant_castle(my_leader);
 	}
 
-	if ( !can_recruit_on(*resources::game_map, my_leader, recruit_location_) ) {
+	if ( !can_recruit_on(my_leader, recruit_location_) ) {
 		set_error(E_BAD_RECRUIT_LOCATION);
 		return false;
 	}

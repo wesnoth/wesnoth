@@ -277,7 +277,7 @@ bool manager::allow_leader_to_move(unit const& leader) const
 		if(recruit || recall)
 		{
 			map_location const target_hex = recruit?recruit->get_recruit_hex():recall->get_recall_hex();
-			if ( can_recruit_on(*resources::game_map, leader, target_hex) )
+			if ( can_recruit_on(leader, target_hex) )
 				return false;
 		}
 	}
