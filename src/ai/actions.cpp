@@ -465,13 +465,13 @@ void move_result::do_execute()
 
 	if (from_ != to_) {
 		size_t num_steps = move_unit(
-			/*move_unit_spectator* move_spectator*/ &move_spectator_,
-			/*std::vector<map_location> route*/ route_->steps,
+			/*std::vector<map_location> steps*/ route_->steps,
 			/*replay* move_recorder*/ &recorder,
 			/*undo_list* undo_stack*/ NULL,
+			/*bool continue_move*/ true, ///@todo 1.9 set to false after implemeting interrupt awareness
 			/*bool show_move*/ preferences::show_ai_moves(),
-			/*map_location *next_unit*/ NULL,
-			/*bool continue_move*/ true); ///@todo 1.9 set to false after implemeting interrupt awareness
+			/*bool* interrupted*/ NULL,
+			/*move_unit_spectator* move_spectator*/ &move_spectator_);
 
 		if ( num_steps > 0 ) {
 			set_gamestate_changed();

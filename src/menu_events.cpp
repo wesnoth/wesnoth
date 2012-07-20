@@ -1719,7 +1719,7 @@ void menu_handler::move_unit_to_loc(const unit_map::iterator &ui,
 
 	gui_->set_route(&route);
 	gui_->unhighlight_reach();
-	move_unit(NULL, route.steps, &recorder, resources::undo_stack, true, NULL, continue_move);
+	move_unit(route.steps, &recorder, resources::undo_stack, continue_move);
 	gui_->set_route(NULL);
 	gui_->invalidate_game_status();
 }
@@ -1788,7 +1788,7 @@ void menu_handler::execute_gotos(mouse_handler &mousehandler, int side)
 			}
 
 			gui_->set_route(&route);
-			int moves = ::move_unit(NULL, route.steps, &recorder, resources::undo_stack, true, NULL, false);
+			int moves = ::move_unit(route.steps, &recorder, resources::undo_stack);
 			change = moves > 0;
 
 			if (change) {

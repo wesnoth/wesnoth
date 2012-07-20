@@ -2833,8 +2833,7 @@ public:
 	public:
 		unit_mover(const std::vector<map_location> & route,
 		           move_unit_spectator *move_spectator,
-		           bool should_clear_shroud, bool skip_sightings,
-		           const map_location *replay_dest);
+		           bool skip_sightings, const map_location *replay_dest);
 		~unit_mover();
 
 		/// Determines how far along the route the unit can expect to move this turn.
@@ -2915,7 +2914,6 @@ public:
 		// Movement parameters (these decrease the number of parameters needed
 		// for individual functions).
 		move_unit_spectator * const spectator_;
-		const bool fog_shroud_;
 		const bool is_replay_;
 		const map_location & replay_dest_;
 		const bool skip_sighting_;
@@ -2969,10 +2967,8 @@ public:
 	/// Iterators into @a route must remain valid for the life of this object.
 	unit_mover::unit_mover(const std::vector<map_location> & route,
 	                       move_unit_spectator *move_spectator,
-	                       bool should_clear_shroud, bool skip_sightings,
-	                       const map_location *replay_dest) :
+	                       bool skip_sightings, const map_location *replay_dest) :
 		spectator_(move_spectator),
-		fog_shroud_(should_clear_shroud),
 		is_replay_(replay_dest != NULL),
 		replay_dest_(is_replay_ ? *replay_dest : route.back()),
 		skip_sighting_(is_replay_ || skip_sightings),
@@ -2992,7 +2988,7 @@ public:
 		goto_(spectator_ == NULL ? route.back() : move_it_->get_goto()),
 		current_side_(orig_side_),
 		current_team_(&(*resources::teams)[current_side_-1]),
-		current_uses_fog_(fog_shroud_  &&  current_team_->fog_or_shroud()  &&
+		current_uses_fog_(current_team_->fog_or_shroud()  &&
 		                  current_team_->auto_shroud_updates()),
 		// The remaining fields are set to some sort of "zero state".
 		zoc_stop_(map_location::null_location),
@@ -3397,7 +3393,7 @@ public:
 		// Update the current unit data.
 		current_side_ = found ? move_it_->side() : orig_side_;
 		current_team_ = &(*resources::teams)[current_side_-1];
-		current_uses_fog_ = fog_shroud_  &&  current_team_->fog_or_shroud()  &&
+		current_uses_fog_ = current_team_->fog_or_shroud()  &&
 		                    ( current_side_ != orig_side_  ||
 		                      current_team_->auto_shroud_updates() );
 
@@ -3586,7 +3582,7 @@ public:
 				sighted_stop_ && !resources::whiteboard->is_executing_actions() ?
 					*(full_end_-1) :
 					map_location::null_location);
-			if ( ambushed_ || final_hex() == zoc_stop_ )
+			if ( ambushed_ || final_loc == zoc_stop_ )
 				move_it_->set_movement(0);
 
 			// Village capturing.
@@ -3758,49 +3754,42 @@ public:
  * instruction. (The unit itself is whatever unit is at the beginning of the
  * supplied path.)
  *
- * @param[out] move_spectator       Will be given information uncovered by the move. If not NULL, this suppresses all changes to the unit's "goto" instruction.
  * @param[in]  steps                The route to be travelled. The unit to be moved is at the beginning of this route.
- * @param[out] move_recorder        Will be given the route actually travelled (which might be shorter than the route specified).
+ * @param[out] move_recorder        Will be given the route actually travelled (which might be shorter than the route specified) so it can be stored in the replay.
  * @param      undo_stack           If supplied, then either this movement will be added to the stack or the stack will be cleared.
- * @param[in]  show_move            Controls whether or not the movement is animated for the player.
- * @param[out] next_unit            If supplied, this is set to where the actual movement ended. (Set to the null location if @a steps is empty.)
  * @param[in]  continued_move       If set to true, this is a continuation of an earlier move (movement is not interrupted should units be spotted).
- * @param[in]  should_clear_shroud  If set to false, no fog/shroud clearing will occur. If left as true, then clearing depends upon the team's setting (delayed shroud updates).
- * @param[in]  replay_dest          If not NULL, then this move is assumed to be a replay that expects the unit to be moved to here. Several normal considerations are ignored in a replay.
+ * @param[in]  show_move            Controls whether or not the movement is animated for the player.
  * @param[out] interrupted          If supplied, then this is set to true if information was uncovered that warrants interrupting a chain of actions (and set to false otherwise).
+ * @param[out] move_spectator       If supplied, this will be given the information uncovered by the move (and the unit's "goto" instruction will be preserved).
+ * @param[in]  replay_dest          If not NULL, then this move is assumed to be a replay that expects the unit to be moved to here. Several normal considerations are ignored in a replay.
  *
  * @returns The number of hexes entered. This can safely be used as an index
  *          into @a steps to get the location where movement ended, provided
  *          @a steps is not empty (the return value is guaranteed to be less
  *          than steps.size() ).
  */
-size_t move_unit(move_unit_spectator *move_spectator,
-                 const std::vector<map_location> &steps,
+size_t move_unit(const std::vector<map_location> &steps,
                  replay* move_recorder, undo_list* undo_stack,
-                 bool show_move, map_location *next_unit,
-                 bool continued_move, bool should_clear_shroud,
-                 const map_location* replay_dest,
-                 bool* interrupted)
+                 bool continued_move, bool show_move,
+                 bool* interrupted,
+                 move_unit_spectator* move_spectator,
+                 const map_location* replay_dest)
 {
 	const events::command_disabler disable_commands;
-	const map_location &initial_loc = steps.empty() ?
-		                                  map_location::null_location :
-		                                  steps.front();
 
-	// Default return values.
+	// Default return value.
 	if ( interrupted )
 		*interrupted = false;
-	if ( next_unit )
-		*next_unit = initial_loc;
 
 	// Avoid some silliness.
 	if ( steps.size() < 2  ||  (steps.size() == 2 && steps.front() == steps.back()) ) {
-		DBG_NG << "Ignoring a unit trying to jump on its hex at " << initial_loc << ".\n";
+		DBG_NG << "Ignoring a unit trying to jump on its hex at " <<
+		          ( steps.empty() ? map_location::null_location : steps.front() ) << ".\n";
 		return 0;
 	}
 
 	// Evaluate this move.
-	unit_mover mover(steps, move_spectator, should_clear_shroud, continued_move, replay_dest);
+	unit_mover mover(steps, move_spectator, continued_move, replay_dest);
 	if ( !mover.check_expected_movement() )
 		return 0;
 	if ( move_recorder )
@@ -3819,11 +3808,9 @@ size_t move_unit(move_unit_spectator *move_spectator,
 	if ( show_move )
 		mover.feedback();
 
-	// Set return values.
+	// Set return value.
 	if ( interrupted )
 		*interrupted = mover.interrupted();
-	if ( next_unit )
-		*next_unit = mover.final_hex();
 
 	return mover.steps_travelled();
 }

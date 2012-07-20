@@ -730,7 +730,7 @@ size_t mouse_handler::move_unit_along_route(pathfind::marked_route const& route,
 
 	size_t moves = 0;
 	try {
-		moves = ::move_unit(NULL, steps, &recorder, resources::undo_stack, true, NULL, false, true, NULL, &interrupted);
+		moves = ::move_unit(steps, &recorder, resources::undo_stack, false, true, &interrupted);
 	} catch(end_turn_exception&) {
 		cursor::set(cursor::NORMAL);
 		gui().invalidate_game_status();

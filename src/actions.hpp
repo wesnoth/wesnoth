@@ -403,13 +403,12 @@ struct undo_action {
 typedef std::vector<undo_action> undo_list;
 
 /// Moves a unit across the board.
-size_t move_unit(move_unit_spectator* move_spectator,
-                 const std::vector<map_location> &steps,
+size_t move_unit(const std::vector<map_location> &steps,
                  replay* move_recorder, undo_list* undo_stack,
-                 bool show_move, map_location *next_unit = NULL,
-                 bool continued_move = false, bool should_clear_shroud = true,
-                 const map_location *replay_dest = NULL,
-                 bool* interrupted = NULL);
+                 bool continued_move = false, bool show_move = true,
+                 bool* interrupted = NULL,
+                 move_unit_spectator* move_spectator = NULL,
+                 const map_location* replay_dest = NULL);
 
 /// Function that recalculates the fog of war.
 void recalculate_fog(int side);
