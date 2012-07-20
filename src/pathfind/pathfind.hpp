@@ -42,9 +42,7 @@ enum PATH_TYPE { MOVE, VISION, JAMMING };
 
 /// Function that will find a location on the board that is as near
 /// to @a loc as possible, but which is unoccupied by any units.
-map_location find_vacant_tile(const gamemap& map,
-                              const unit_map& un,
-                              const map_location& loc,
+map_location find_vacant_tile(const map_location& loc,
                               VACANT_TILE_TYPE vacancy=VACANT_ANY,
                               const unit* pass_check=NULL,
                               const team* shroud_check=NULL);

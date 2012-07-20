@@ -237,9 +237,9 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 
 		if(loc.valid() && resources::game_map->on_board(loc)) {
 			if (pass) {
-		  		loc = find_vacant_tile(*resources::game_map, *resources::units, loc, pathfind::VACANT_ANY, pass_check);
+		  		loc = find_vacant_tile(loc, pathfind::VACANT_ANY, pass_check);
 			} else {
-				loc = find_vacant_tile(*resources::game_map, *resources::units, loc, pathfind::VACANT_ANY);
+				loc = find_vacant_tile(loc, pathfind::VACANT_ANY);
 			}
 			if(loc.valid() && resources::game_map->on_board(loc)) {
 				return loc;
@@ -2644,8 +2644,6 @@ class unit_move_animator : public boost::noncopyable
 		unit_map::iterator displaced_unit = m_.find(from);
 		if(displaced_unit != m_.end()) {
 			displaced_ = pathfind::find_vacant_tile(
-				*resources::game_map,
-				m_,
 				from,
 				pathfind::VACANT_ANY,
 				&*displaced_unit);
@@ -2753,7 +2751,7 @@ public:
 		if ( has_displaced_something()  &&  ui != m_.end() ) {
 			// Get the moving unit out of the way of undisplacement.
 			map_location empty_hex =
-				pathfind::find_vacant_tile(*resources::game_map, m_, route_.front());
+				pathfind::find_vacant_tile(route_.front());
 			std::pair<unit_map::iterator, bool> move_result =
 				m_.move(*loc_, empty_hex);
 			if ( move_result.second )

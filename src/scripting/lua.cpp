@@ -2452,8 +2452,8 @@ static int intf_find_vacant_tile(lua_State *L)
 		}
 	}
 
-	map_location res = find_vacant_tile(*resources::game_map,
-		*resources::units, map_location(x, y), pathfind::VACANT_ANY, u);
+	map_location res = find_vacant_tile(map_location(x, y),
+	                                    pathfind::VACANT_ANY, u);
 
 	if (fake_unit) delete u;
 

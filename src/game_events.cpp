@@ -863,7 +863,7 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 	}
 	else if (cfg["check_passability"].to_bool(true))
 		pass_check = &*u;
-	const map_location vacant_dst = find_vacant_tile(*resources::game_map, *resources::units, dst, pathfind::VACANT_ANY, pass_check);
+	const map_location vacant_dst = find_vacant_tile(dst, pathfind::VACANT_ANY, pass_check);
 	if (!resources::game_map->on_board(vacant_dst)) return;
 
 	int side = u->side();
@@ -1928,8 +1928,7 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 						if(!resources::game_map->on_board(loc))
 							loc = leader->get_location();
 						if(pass_check || (resources::units->count(loc) > 0))
-							loc = pathfind::find_vacant_tile(*resources::game_map,
-									*resources::units, loc, pathfind::VACANT_ANY, pass_check);
+							loc = pathfind::find_vacant_tile(loc, pathfind::VACANT_ANY, pass_check);
 						if(resources::game_map->on_board(loc)) {
 							DBG_NG << "...valid location for the recall found. Recalling.\n";
 							avail.erase(u);	// Erase before recruiting, since recruiting can fire more events
@@ -1942,8 +1941,7 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 				if (resources::game_map->on_board(cfg_loc)) {
 					map_location loc = cfg_loc;
 					if(pass_check || (resources::units->count(loc) > 0))
-						loc = pathfind::find_vacant_tile(*resources::game_map,
-								*resources::units, loc, pathfind::VACANT_ANY, pass_check);
+						loc = pathfind::find_vacant_tile(loc, pathfind::VACANT_ANY, pass_check);
 					// Check if we still have a valid location
 					if (resources::game_map->on_board(loc)) {
 						DBG_NG << "No usable leader found, but found usable location. Recalling.\n";
@@ -2354,8 +2352,6 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 				const unit* pass_check = NULL;
 				if (cfg["check_passability"].to_bool(true)) pass_check = &u;
 				loc = pathfind::find_vacant_tile(
-						*resources::game_map,
-						*resources::units,
 						loc,
 						pathfind::VACANT_ANY,
 						pass_check);

@@ -52,13 +52,14 @@ static lg::log_domain log_engine("engine");
  * If @a shroud_check is provided, only locations not covered by this
  * team's shroud will be considered.
  */
-map_location pathfind::find_vacant_tile(const gamemap& map,
-                                        const unit_map& units,
-                                        const map_location& loc,
+map_location pathfind::find_vacant_tile(const map_location& loc,
                                         pathfind::VACANT_TILE_TYPE vacancy,
                                         const unit* pass_check,
                                         const team* shroud_check)
 {
+	const gamemap & map = *resources::game_map;
+	const unit_map & units = *resources::units;
+
 	if (!map.on_board(loc)) return map_location();
 
 	const bool do_shroud = shroud_check  &&  shroud_check->uses_shroud();
@@ -116,8 +117,7 @@ map_location pathfind::find_vacant_tile(const gamemap& map,
  */
 map_location pathfind::find_vacant_castle(const unit & leader)
 {
-	return find_vacant_tile(*resources::game_map, *resources::units,
-	                        leader.get_location(), VACANT_CASTLE,
+	return find_vacant_tile(leader.get_location(), VACANT_CASTLE,
 	                        NULL, &(*resources::teams)[leader.side()-1]);
 }
 
