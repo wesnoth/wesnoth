@@ -302,6 +302,12 @@ check_compiler_has_flag(
 	HAS_COMPILER_FLAG_WNON_VIRTUAL_DTOR
 )
 
+check_compiler_has_flag(
+	CXX_FLAGS_PEDANTIC_COMPILATION
+	"-Wdouble-promotion"
+	HAS_COMPILER_FLAG_WDOUBLE_PROMOTION
+)
+
 
 ### Set the final compiler flags.
 
