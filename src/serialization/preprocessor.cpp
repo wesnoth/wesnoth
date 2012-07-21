@@ -1143,10 +1143,9 @@ preprocessor_deleter::~preprocessor_deleter()
 	delete defines_;
 }
 
-
 std::istream *preprocess_file(std::string const &fname, preproc_map *defines)
 {
-	log_scope("preprocessing file...");
+	log_scope("preprocessing file " + fname + " ...");
 	preproc_map *owned_defines = NULL;
 	if (!defines) {
 		// If no preproc_map has been given, create a new one,
@@ -1157,6 +1156,7 @@ std::istream *preprocess_file(std::string const &fname, preproc_map *defines)
 		defines = owned_defines;
 	}
 	preprocessor_streambuf *buf = new preprocessor_streambuf(defines);
+
 	new preprocessor_file(*buf, fname);
 	return new preprocessor_deleter(buf, owned_defines);
 }
@@ -1173,54 +1173,58 @@ void preprocess_resource(const std::string& res_name, preproc_map *defines_map,
 		// subdirectories
 		BOOST_FOREACH(const std::string& dir, dirs)
 		{
-			LOG_PREPROC<<"processing sub-dir: "<<dir<<'\n';
-			preprocess_resource(dir,defines_map,write_cfg,write_plain_cfg,target_directory);
+			LOG_PREPROC << "processing sub-dir: " << dir << '\n';
+			preprocess_resource(dir, defines_map, write_cfg, write_plain_cfg, target_directory);
 		}
 
 		// files in current directory
 		BOOST_FOREACH(const std::string& file, files)
 		{
-			preprocess_resource(file,defines_map,write_cfg,write_plain_cfg,target_directory);
+			preprocess_resource(file, defines_map, write_cfg, write_plain_cfg, target_directory);
 		}
 		return;
 	}
 
 	// process only config files.
-	if (ends_with(res_name,".cfg") == false)
+	if (ends_with(res_name, ".cfg") == false)
 		return;
 
-	LOG_PREPROC<<"processing resource: "<<res_name<<'\n';
+	LOG_PREPROC << "processing resource: " << res_name << '\n';
 
 	//disable filename encoding to get clear #line in cfg.plain
 	encode_filename = false;
 
 	scoped_istream stream = preprocess_file(res_name, defines_map);
 	std::stringstream ss;
-	ss<<(*stream).rdbuf();
-	std::string streamContent = ss.str();
+	ss.exceptions(std::ios_base::failbit);
 
-	config cfg;
+	ss << (*stream).rdbuf();
+
+	LOG_PREPROC << "processing finished\n";
 
 	if (write_cfg == true || write_plain_cfg == true)
 	{
+		config cfg;
+		std::string streamContent = ss.str();
+
 		read(cfg, streamContent);
 		const std::string preproc_res_name = target_directory + "/" + file_name(res_name);
 
 		// write the processed cfg file
 		if (write_cfg == true)
 		{
-			LOG_PREPROC<<"writing cfg file: "<<preproc_res_name<<'\n';
+			LOG_PREPROC << "writing cfg file: " << preproc_res_name << '\n';
 			create_directory_if_missing_recursive(directory_name(preproc_res_name));
 			scoped_ostream outStream(ostream_file(preproc_res_name));
-			write(*outStream,cfg);
+			write(*outStream, cfg);
 		}
 
 		// write the plain cfg file
 		if (write_plain_cfg == true)
 		{
-			LOG_PREPROC<<"writing plain cfg file: "<<(preproc_res_name+".plain")<<'\n';
+			LOG_PREPROC << "writing plain cfg file: " << (preproc_res_name + ".plain") << '\n';
 			create_directory_if_missing_recursive(directory_name(preproc_res_name));
-			write_file(preproc_res_name+".plain",streamContent);
+			write_file(preproc_res_name + ".plain", streamContent);
 		}
 	}
 }
