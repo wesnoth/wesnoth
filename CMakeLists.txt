@@ -308,6 +308,12 @@ check_compiler_has_flag(
 	HAS_COMPILER_FLAG_WDOUBLE_PROMOTION
 )
 
+check_compiler_has_flag(
+	CXX_FLAGS_PEDANTIC_COMPILATION
+	"-Wmismatched-tags"
+	HAS_COMPILER_FLAG_WMISMATCHED_TAGS
+)
+
 
 ### Set the final compiler flags.
 
