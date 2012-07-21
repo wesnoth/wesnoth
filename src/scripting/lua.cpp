@@ -3189,6 +3189,34 @@ static int intf_get_locations(lua_State *L)
 }
 
 /**
+ * Gets all the villages matching a given filter, or all the villages on the map if no filter is given.
+ * - Arg 1: WML table (optional).
+ * - Ret 1: array of integer pairs.
+ */
+static int intf_get_villages(lua_State *L)
+{
+	std::vector<map_location> locs = resources::game_map->villages();
+	lua_newtable(L);
+	int i = 1;
+	
+	vconfig filter = luaW_checkvconfig(L, 1);
+	
+	for(std::vector<map_location>::const_iterator it = locs.begin(); it != locs.end(); ++it) {
+		bool matches = terrain_filter(filter, *resources::units).match(*it);
+		if (matches) {
+			lua_createtable(L, 2, 0);
+			lua_pushinteger(L, it->x + 1);
+			lua_rawseti(L, -2, 1);
+			lua_pushinteger(L, it->y + 1);
+			lua_rawseti(L, -2, 2);
+			lua_rawseti(L, -2, i);
+			i++;
+		}
+	}
+	return 1;
+}
+
+/**
  * Matches a location against the given filter.
  * - Args 1,2: integers.
  * - Arg 3: WML table.
@@ -3525,6 +3553,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "get_units",                &intf_get_units                },
 		{ "get_variable",             &intf_get_variable             },
 		{ "get_village_owner",        &intf_get_village_owner        },
+		{ "get_villages",             &intf_get_villages             },
 		{ "highlight_hex",            &intf_highlight_hex            },
 		{ "is_enemy",                 &intf_is_enemy                 },
 		{ "lock_view",                &intf_lock_view                },
