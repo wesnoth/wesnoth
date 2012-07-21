@@ -296,6 +296,12 @@ check_compiler_has_flag(
 	HAS_COMPILER_FLAG_WCTOR_DTOR_PRIVACY
 )
 
+check_compiler_has_flag(
+	CXX_FLAGS_PEDANTIC_COMPILATION
+	"-Wnon-virtual-dtor"
+	HAS_COMPILER_FLAG_WNON_VIRTUAL_DTOR
+)
+
 
 ### Set the final compiler flags.
 
