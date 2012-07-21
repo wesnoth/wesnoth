@@ -290,6 +290,12 @@ check_compiler_has_flag(
 	HAS_COMPILER_FLAG_WREDUNDANT_DECLS
 )
 
+check_compiler_has_flag(
+	CXX_FLAGS_PEDANTIC_COMPILATION
+	"-Wctor-dtor-privacy"
+	HAS_COMPILER_FLAG_WCTOR_DTOR_PRIVACY
+)
+
 
 ### Set the final compiler flags.
 
