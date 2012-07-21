@@ -1130,3 +1130,18 @@ function wml_actions.store_starting_location(cfg)
 		end
 	end
 end
+
+function wml_actions.store_villages( cfg )
+	local villages = wesnoth.get_villages( cfg )
+	local variable = cfg.variable or "location"
+
+	for index, village in ipairs( villages ) do
+		wesnoth.set_variable( string.format( "%s[%d]", variable, index-1 ),
+				      { x = village[1],
+				        y = village[2],
+				        terrain = wesnoth.get_terrain( village[1], village[2] ),
+				        owner_side = wesnoth.get_village_owner( village[1], village[2] ) or 0
+				      }
+				    )
+	end
+end

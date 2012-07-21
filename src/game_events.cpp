@@ -2448,38 +2448,6 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 	}
 }
 
-/* [store_villages] : store villages into an array
- * Keys:
- * - variable (mandatory): variable to store in
- * - side: if present, the village should be owned by this side (0=unowned villages)
- * - terrain: if present, filter the village types against this list of terrain types
- */
-WML_HANDLER_FUNCTION(store_villages, /*event_info*/, cfg)
-{
-	log_scope("store_villages");
-	std::string variable = cfg["variable"];
-	if (variable.empty()) {
-		variable="location";
-	}
-	config to_store;
-	variable_info varinfo(variable, true, variable_info::TYPE_ARRAY);
-
-	std::vector<map_location> locs = resources::game_map->villages();
-
-	for(std::vector<map_location>::const_iterator j = locs.begin(); j != locs.end(); ++j) {
-		bool matches = terrain_filter(cfg, *resources::units).match(*j);
-		if(matches) {
-			config &loc_store = to_store.add_child(varinfo.key);
-			j->write(loc_store);
-			resources::game_map->write_terrain(*j, loc_store);
-			int side = village_owner(*j, *resources::teams) + 1;
-			loc_store["owner_side"] = side;
-		}
-	}
-	varinfo.vars->clear_children(varinfo.key);
-	varinfo.vars->append(to_store);
-}
-
 WML_HANDLER_FUNCTION(end_turn, /*event_info*/, /*cfg*/)
 {
 	resources::controller->force_end_turn();
