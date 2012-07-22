@@ -169,9 +169,16 @@ editor_action* mouse_action_unit::drag_end_right(editor_display& disp, int x, in
 }
 
 
-void mouse_action_unit::set_mouse_overlay(editor_display& /*disp*/)
+void mouse_action_unit::set_mouse_overlay(editor_display& disp)
 {
-	//set_mouse_overlay_image(disp, "editor/tool-overlay-unit.png");
+	const unit_type& u = unit_palette_.selected_fg_item();
+
+	std::stringstream filename;
+		filename << u.image() << "~RC(" << u.flag_rgb() << '>'
+		    	 << team::get_side_color_index(disp.viewing_side()) << ')';
+
+	surface image(image::get_image(filename.str()));
+	disp.set_mouseover_hex_overlay(image);
 }
 
 
