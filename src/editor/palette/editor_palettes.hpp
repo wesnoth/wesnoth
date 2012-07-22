@@ -17,7 +17,6 @@
 #define EDITOR_PALETTES_H_INCLUDED
 
 #include "../editor_display.hpp"
-#include "palette_layout.hpp"
 #include "common_palette.hpp"
 
 namespace editor {
@@ -27,16 +26,15 @@ class editor_palette : public common_palette {
 
 public:
 
-	editor_palette(editor_display &gui, const size_specs &sizes, const config& /*cfg*/
+	editor_palette(editor_display &gui, const config& /*cfg*/
 			, size_t item_size, size_t item_width, mouse_action** active_mouse_action)
 		: groups_()
 		, gui_(gui)
-		, size_specs_(sizes)
 		, item_size_(item_size)
 		, item_width_(item_width)
 		, item_space_(item_size + 3)
-		, palette_y_(sizes.palette_y)
-		, palette_x_(sizes.palette_x)
+		, palette_y_(0)
+		, palette_x_(0)
 		, group_map_()
 		, item_map_()
 		, nitems_(0)
@@ -78,7 +76,7 @@ public:
 	 *
 	 * Use if the size_specs have changed.
 	 */
-	void adjust_size(const size_specs& size);
+	void adjust_size(const SDL_Rect& target);
 
 	virtual bool scroll_up();
 	virtual bool scroll_down();
@@ -142,7 +140,6 @@ protected:
 	std::vector<item_group> groups_;
 
 	editor_display &gui_;
-	const size_specs &size_specs_;
 
 	int item_size_;
 	int item_width_;

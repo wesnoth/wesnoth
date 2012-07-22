@@ -205,11 +205,10 @@ void terrain_palette::draw_item(SDL_Rect& dstrect, const t_translation::t_terrai
 	}
 }
 
-terrain_palette::terrain_palette(editor_display &gui, const size_specs &sizes,
-								 const config& cfg,
+terrain_palette::terrain_palette(editor_display &gui, const config& cfg,
 								 mouse_action** active_mouse_action)
 //TODO avoid magic numbers
-	:	editor_palette<t_translation::t_terrain>(gui, sizes, cfg, 36, 4, active_mouse_action)
+	:	editor_palette<t_translation::t_terrain>(gui, cfg, 36, 4, active_mouse_action)
 {
 }
 

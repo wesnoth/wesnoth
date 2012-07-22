@@ -29,9 +29,9 @@ namespace editor {
 class empty_palette : public editor_palette<unit_type> {
 public:
 
-	empty_palette(editor_display &gui, const size_specs &sizes, const config& cfg,
+	empty_palette(editor_display &gui, const config& cfg,
 			mouse_action** active_mouse_action)
-	: editor_palette<unit_type>(gui, sizes, cfg, 0, 0, active_mouse_action) {};
+	: editor_palette<unit_type>(gui, cfg, 0, 0, active_mouse_action) {};
 
 	// think about removing it
 	virtual void setup(const config& /*cfg*/) {};

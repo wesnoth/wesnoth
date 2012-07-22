@@ -192,19 +192,19 @@ template const config editor_palette<unit_type>::active_group_report();
 //template const config editor_palette<void*>::active_group_report();
 
 template<class Item>
-void editor_palette<Item>::adjust_size(const size_specs& size)
+void editor_palette<Item>::adjust_size(const SDL_Rect& target)
 {
-	palette_x_ = size.palette_x;
-	palette_y_ = size.palette_y;
-	const size_t space_for_items = size.palette_h;
+	palette_x_ = target.x;
+	palette_y_ = target.y;
+	const size_t space_for_items = target.h;
 	const unsigned items_fitting =
 		static_cast<unsigned> (space_for_items / item_space_) *
 		item_width_;
 	nitems_ = std::min<int>(items_fitting, nmax_items_);
 }
-template void editor_palette<t_translation::t_terrain>::adjust_size(const size_specs& size);
-template void editor_palette<unit_type>::adjust_size(const size_specs& size);
-//template void editor_palette<void*>::adjust_size(const size_specs& size);
+template void editor_palette<t_translation::t_terrain>::adjust_size(const SDL_Rect& target);
+template void editor_palette<unit_type>::adjust_size(const SDL_Rect& target);
+//template void editor_palette<void*>::adjust_size(const SDL_Rect& target);
 
 template<class Item>
 void editor_palette<Item>::select_fg_item(std::string item_id)
@@ -319,7 +319,7 @@ template<class Item>
 int editor_palette<Item>::tile_selected(const int x, const int y) const
 {
 	for(unsigned int i = 0; i != nitems_; i++) {
-		const int px = size_specs_.palette_x + (i % item_width_) * item_space_;
+		const int px = palette_x_ + (i % item_width_) * item_space_;
 		const int py = palette_y_ + (i / item_width_) * item_space_;
 		const int pw = item_space_;
 		const int ph = item_space_;

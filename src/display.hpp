@@ -166,6 +166,8 @@ public:
 	int h() const { return screen_.gety(); }	/**< height */
 	const SDL_Rect& minimap_area() const
 		{ return theme_.mini_map_location(screen_area()); }
+	const SDL_Rect& palette_area() const
+		{ return theme_.palette_location(screen_area()); }
 	const SDL_Rect& unit_image_area() const
 		{ return theme_.unit_image_location(screen_area()); }
 

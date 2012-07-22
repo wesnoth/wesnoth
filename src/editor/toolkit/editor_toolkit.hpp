@@ -86,10 +86,6 @@ private:
 	/** TODO */
 	boost::scoped_ptr<palette_manager> palette_manager_;
 
-private:
-	/** Legacy object required by the legacy terrain palette and brush bar */
-	boost::scoped_ptr<size_specs> size_specs_;
-
 //Toolbar
 
 	/** Toolbar-requires-redraw flag */

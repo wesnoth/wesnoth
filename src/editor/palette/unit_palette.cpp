@@ -119,11 +119,10 @@ void unit_palette::draw_item(SDL_Rect& dstrect, const unit_type& u, std::strings
 	tooltip_text << u.type_name();
 }
 
-unit_palette::unit_palette(editor_display &gui, const size_specs &sizes,
-								 const config& cfg,
+unit_palette::unit_palette(editor_display &gui, const config& cfg,
 								 mouse_action** active_mouse_action)
 //TODO avoid magic numbers
-	:	editor_palette<unit_type>(gui, sizes, cfg, 72, 2, active_mouse_action)
+	:	editor_palette<unit_type>(gui, cfg, 72, 2, active_mouse_action)
 {
 }
 

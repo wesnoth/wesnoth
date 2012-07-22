@@ -17,7 +17,8 @@
 #define COMMON_PALETTES_H_INCLUDED
 
 #include "config.hpp"
-#include "palette_layout.hpp"
+
+class SDL_Rect;
 
 namespace editor {
 
@@ -54,7 +55,7 @@ public:
 	virtual bool scroll_down() = 0;
 
 	//drawing
-	virtual void adjust_size(const size_specs& size) = 0;
+	virtual void adjust_size(const SDL_Rect& target) = 0;
 	virtual void draw(bool) = 0;
 
 	//group

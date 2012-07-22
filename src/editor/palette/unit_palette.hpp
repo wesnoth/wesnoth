@@ -30,11 +30,9 @@ namespace editor {
 class unit_palette : public editor_palette<unit_type> {
 public:
 
-	unit_palette(editor_display &gui, const size_specs &sizes,
-					const config& cfg,
-					mouse_action** active_mouse_action);
-	//				unit_type& fore,
-	//				unit_type& back);
+	unit_palette(editor_display &gui,
+			const config& cfg,
+			mouse_action** active_mouse_action);
 
 	virtual void setup(const config& cfg);
 

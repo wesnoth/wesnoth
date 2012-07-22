@@ -23,16 +23,15 @@
 
 namespace editor {
 
-palette_manager::palette_manager(editor_display& gui, const size_specs &sizes, const config& cfg
+palette_manager::palette_manager(editor_display& gui, const config& cfg
 		, mouse_action** active_mouse_action)
 		: gui::widget(gui.video()),
 		  gui_(gui),
-		  size_specs_(sizes),
-		  palette_start_(sizes.palette_y),
+		  palette_start_(0),
 		  mouse_action_(active_mouse_action),
-		  terrain_palette_(new terrain_palette(gui, sizes, cfg, active_mouse_action)),
-		  unit_palette_(new unit_palette(gui,sizes,cfg,active_mouse_action)),
-		  empty_palette_(new empty_palette(gui,sizes,cfg,active_mouse_action))
+		  terrain_palette_(new terrain_palette(gui, cfg, active_mouse_action)),
+		  unit_palette_(new unit_palette(gui, cfg, active_mouse_action)),
+		  empty_palette_(new empty_palette(gui, cfg, active_mouse_action))
 {
 	unit_palette_->setup(cfg);
 	terrain_palette_->setup(cfg);
@@ -47,17 +46,11 @@ void palette_manager::set_group(size_t index)
 void palette_manager::adjust_size()
 {
 	scroll_top();
-
-	SDL_Rect rect = create_rect(size_specs_.palette_x
-			, size_specs_.palette_y
-			, size_specs_.palette_w
-			, size_specs_.palette_h);
-
+	const SDL_Rect& rect = gui_.palette_area();
 	set_location(rect);
-	palette_start_ = size_specs_.palette_y;
-
+	palette_start_ = rect.y;
 	bg_register(rect);
-	active_palette().adjust_size(size_specs_);
+	active_palette().adjust_size(rect);
 	set_dirty();
 }
 
@@ -67,11 +60,7 @@ void palette_manager::scroll_down()
 
 	if (scrolled) {
 
-		SDL_Rect rect = create_rect(size_specs_.palette_x
-				, size_specs_.palette_y
-				, size_specs_.palette_w
-				, size_specs_.palette_h);
-
+		const SDL_Rect& rect = gui_.palette_area();
 		bg_restore(rect);
 		set_dirty();
 	}
@@ -81,12 +70,7 @@ void palette_manager::scroll_up()
 {
 	bool scrolled_up = active_palette().scroll_up();
 	if(scrolled_up) {
-
-		SDL_Rect rect = create_rect(size_specs_.palette_x
-				, size_specs_.palette_y
-				, size_specs_.palette_w
-				, size_specs_.palette_h);
-
+		const SDL_Rect rect = gui_.palette_area();
 		bg_restore(rect);
 		set_dirty();
 	}
@@ -94,11 +78,7 @@ void palette_manager::scroll_up()
 
 void palette_manager::scroll_top()
 {
-	SDL_Rect rect = create_rect(size_specs_.palette_x
-			, size_specs_.palette_y
-			, size_specs_.palette_w
-			, size_specs_.palette_h);
-
+	const SDL_Rect rect = gui_.palette_area();
 	active_palette().set_start_item(0);
 	bg_restore(rect);
 	set_dirty();

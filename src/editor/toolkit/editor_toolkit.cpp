@@ -28,7 +28,6 @@ editor_toolkit::editor_toolkit(editor_display& gui, const CKey& key, const confi
 	: gui_(gui)
 	, key_(key)
 	, palette_manager_()
-	, size_specs_()
 	, toolbar_dirty_(true)
 	, mouse_action_(NULL)
 	, mouse_actions_()
@@ -68,10 +67,8 @@ void editor_toolkit::init_brushes(const config& game_config)
 
 void editor_toolkit::init_sidebar(const config& game_config)
 {
-	size_specs_.reset(new size_specs());
-	adjust_sizes(gui_, *size_specs_);
 	brush_bar_.reset(new brush_bar(gui_, brushes_, &brush_));
-	palette_manager_.reset(new palette_manager(gui_, *size_specs_, game_config, &mouse_action_));
+	palette_manager_.reset(new palette_manager(gui_, game_config, &mouse_action_));
 }
 
 void editor_toolkit::init_mouse_actions(const config& game_config)
@@ -90,8 +87,8 @@ void editor_toolkit::init_mouse_actions(const config& game_config)
 		new mouse_action_unit(key_, *palette_manager_->unit_palette_.get())));
 
 	//TODO
-//	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_PASTE,
-//		new mouse_action_paste(clipboard_, key_, *palette_manager_->empty_palette_.get())));
+	//	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_PASTE,
+	//		new mouse_action_paste(clipboard_, key_, *palette_manager_->empty_palette_.get())));
 
 	BOOST_FOREACH(const theme::menu& menu, gui_.get_theme().menus()) {
 		if (menu.items().size() == 1) {
@@ -174,8 +171,6 @@ void editor_toolkit::cycle_brush()
 
 void editor_toolkit::adjust_size()
 {
-	adjust_sizes(gui_, *size_specs_);
-
 	palette_manager_->adjust_size();
 	palette_manager_->draw(true);
 

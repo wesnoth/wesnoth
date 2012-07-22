@@ -35,7 +35,7 @@ public:
 
 	//palette_manager();
 
-	palette_manager(editor_display &gui, const size_specs &sizes, const config& cfg
+	palette_manager(editor_display &gui, const config& cfg
 				, mouse_action** active_mouse_action);
 
 	void set_group(size_t index);
@@ -80,12 +80,14 @@ public:
 	void right_mouse_click(const int mousex, const int mousey);
 
 	/** Return the number of the tile that is at coordinates (x, y) in the panel. */
+	//TODO
 //	int tile_selected(const int x, const int y) const;
 
 
 public:
 
-	common_palette& active_palette(); //{ return (*mouse_action_)->get_palette(); };
+	common_palette& active_palette();
+	//TODO { return (*mouse_action_)->get_palette(); };
 
 	//TODO
 //	terrain_palette* terrain_palette() { return terrain_palette_; };
@@ -95,7 +97,6 @@ public:
 private:
 
 	editor_display& gui_;
-	const size_specs &size_specs_;
 	int palette_start_;
 
 	mouse_action** mouse_action_;

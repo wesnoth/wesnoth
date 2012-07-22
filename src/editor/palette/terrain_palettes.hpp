@@ -38,9 +38,8 @@ void set_selected_bg_terrain(t_translation::t_terrain terrain);
 /** Palette where the terrain to be drawn can be selected. */
 class terrain_palette : public editor_palette<t_translation::t_terrain> {
 public:
-	terrain_palette(editor_display &gui, const size_specs &sizes,
-					const config& cfg,
-					mouse_action** active_mouse_action);
+	terrain_palette(editor_display &gui, const config& cfg,
+			mouse_action** active_mouse_action);
 
 	const gamemap& map() const { return gui_.get_map(); }
 
