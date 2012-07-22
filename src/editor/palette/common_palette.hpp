@@ -18,7 +18,7 @@
 
 #include "config.hpp"
 
-class SDL_Rect;
+struct SDL_Rect;
 
 namespace editor {
 
