@@ -19,7 +19,7 @@
 
 #include "../../editor_display.hpp"
 
-#include "gui/dialogs/edit_label.hpp"
+#include "gui/dialogs/editor/editor_edit_label.hpp"
 
 namespace editor {
 
@@ -73,7 +73,7 @@ editor_action* mouse_action_map_label::up_left(editor_display& disp, int x, int 
 	bool visible_fog      = old_label ? old_label->visible_in_fog()    : true;
 	bool immutable        = old_label ? old_label->immutable()         : true;
 
-	gui2::tedit_label d(label, visible_fog);
+	gui2::teditor_edit_label d(label, immutable, visible_fog, visible_shroud);
 
 	editor_action* a = NULL;
 	if(d.show(disp.video())) {

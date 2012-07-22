@@ -37,6 +37,7 @@ editor_action_unit* editor_action_unit::clone() const
 editor_action* editor_action_unit::perform(map_context& mc) const
 {
 	std::auto_ptr<editor_action> undo(new editor_action_unit_delete(loc_));
+	//TODO
 //	boost::shared_ptr<editor_action> undo(new editor_action_unit_delete(loc_));
 	perform_without_undo(mc);
 	return undo.release();
@@ -58,8 +59,8 @@ editor_action_unit_delete* editor_action_unit_delete::clone() const
 editor_action* editor_action_unit_delete::perform(map_context& mc) const
 {
 	std::auto_ptr<editor_action> undo;
+	//TODO
 	//boost::scoped_ptr<editor_action> undo;
-
 
 	unit_map& units = mc.get_map().get_units();
 	unit_map::const_unit_iterator unit_it = units.find(loc_);

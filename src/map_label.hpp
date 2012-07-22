@@ -114,6 +114,13 @@ public:
 					 const std::string&,
 					 const SDL_Color);
 
+	void update_info(const t_string& text,
+			const std::string& team_name,
+			const SDL_Color color,
+			const bool visible_in_fog,
+			const bool visible_in_shroud,
+			const bool immutable);
+
 	void recalculate();
 	void calculate_shroud() const;
 

@@ -210,13 +210,12 @@ void context_manager::expand_sides_menu(std::vector<std::string>& items)
                        items.erase(items.begin() + i);
                        std::vector<std::string> contexts;
                        for (size_t mci = 0; mci < get_map().get_teams().size(); ++mci) {
-                               std::string name = get_map().get_teams()[mci].name();
-                               if (name.empty()) {
-                                       name = _("(New Side)");
-                               }
-                               std::string label = "[" + lexical_cast<std::string>(mci) + "] "
-                                       + name;
-                               contexts.push_back(label);
+
+                    	   	   const team& t = get_map().get_teams()[mci];
+                               std::stringstream label;
+                               label << "[" << mci+1 << "] ";
+                               label << t.name().empty() ? _("(New Side)") : t.name();
+                               contexts.push_back(label.str());
                        }
                        items.insert(items.begin() + i, contexts.begin(), contexts.end());
                        break;

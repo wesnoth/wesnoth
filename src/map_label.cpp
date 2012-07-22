@@ -174,7 +174,7 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 		}
 		else
 		{
-			current_label->second->update_info(text, team_name, color);
+			current_label->second->update_info(text, team_name, color, visible_in_fog, visible_in_shroud, immutable);
 			res = current_label->second;
 		}
 	}
@@ -423,6 +423,19 @@ void terrain_label::update_info(const t_string& text,
 	text_ = text;
 	team_name_ = team_name;
 	draw();
+}
+
+void terrain_label::update_info(const t_string& text,
+								const std::string& team_name,
+								const SDL_Color color,
+								const bool visible_in_fog,
+								const bool visible_in_shroud,
+								const bool immutable)
+{
+	visible_in_fog_ = visible_in_fog;
+	visible_in_shroud_ = visible_in_shroud;
+	immutable_ = immutable;
+	update_info(text, team_name, color);
 }
 
 void terrain_label::recalculate()
