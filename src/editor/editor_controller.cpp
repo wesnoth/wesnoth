@@ -382,6 +382,7 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			case SIDE:
 				gui_->set_team(index, true);
 				gui_->set_playing_team(index);
+				toolkit_->get_palette_manager()->draw(true);
 				return true;
 			case AREA:
 				//TODO
