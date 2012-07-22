@@ -142,7 +142,7 @@ namespace image {
 	extern mini_terrain_cache_map mini_terrain_cache;
 	extern mini_terrain_cache_map mini_fogged_terrain_cache;
 
-	///light_string store colors info of central and adjacents hexes.
+	///light_string store colors info of central and adjacent hexes.
 	///The structure is one or several 4 chars blocks (L,R,G,B)
 	///where RGB is the color and L is the lightmap to use:
 	///(-1:none, 0-5:transition in each direction, 6:full hex)
@@ -150,7 +150,7 @@ namespace image {
 	///return light_string of one light operation(see above)
 	light_string get_light_string(int op, int r, int g, int b);
 
-	// pair each light possibilty with its lighted surface
+	// pair each light possibility with its lighted surface
 	typedef std::map<light_string, surface> lit_variants;
 	// lighted variants for each locator
 	typedef cache_type<lit_variants> lit_cache;
