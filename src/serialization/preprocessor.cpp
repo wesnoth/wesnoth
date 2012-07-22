@@ -1196,6 +1196,10 @@ void preprocess_resource(const std::string& res_name, preproc_map *defines_map,
 
 	scoped_istream stream = preprocess_file(res_name, defines_map);
 	std::stringstream ss;
+	// Set the failbit so if we get any preprocessor exceptions (e.g.:preproc_config::error)
+	// they will be propagated in the main program, instead of just setting the
+	// failbit on the stream. This was necessary in order for the MSVC and GCC
+	// binaries to behave the same way.
 	ss.exceptions(std::ios_base::failbit);
 
 	ss << (*stream).rdbuf();
