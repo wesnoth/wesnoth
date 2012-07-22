@@ -352,7 +352,9 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 					return ACTION_STATELESS;
 				case editor::AREA:
 				case editor::SIDE:
-					return (size_t)index == gui_->playing_team() ? ACTION_ON : ACTION_OFF;
+					return static_cast<size_t>(index) == gui_->playing_team()
+							? ACTION_ON
+							: ACTION_OFF;
 			}
 			return ACTION_ON;
 		default:
