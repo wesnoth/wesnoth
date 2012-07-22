@@ -744,7 +744,7 @@ bool editor_controller::left_click(int x, int y, const bool browse)
 
 void editor_controller::left_drag_end(int x, int y, const bool /*browse*/)
 {
-	editor_action* a = toolkit_->get_mouse_action()->drag_end(*gui_, x, y);
+	editor_action* a = toolkit_->get_mouse_action()->drag_end_left(*gui_, x, y);
 	perform_delete(a);
 }
 
@@ -772,7 +772,7 @@ bool editor_controller::right_click(int x, int y, const bool browse)
 
 void editor_controller::right_drag_end(int x, int y, const bool /*browse*/)
 {
-	editor_action* a = toolkit_->get_mouse_action()->drag_end(*gui_, x, y);
+	editor_action* a = toolkit_->get_mouse_action()->drag_end_right(*gui_, x, y);
 	perform_delete(a);
 }
 

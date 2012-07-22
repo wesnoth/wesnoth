@@ -88,8 +88,9 @@ public:
 	/**
 	 * The end of dragging. Defaults to no action.
 	 */
-	virtual editor_action* drag_end(editor_display& disp, int x, int y);
+	virtual editor_action* drag_end_left(editor_display& disp, int x, int y);
 
+	virtual editor_action* drag_end_right(editor_display& disp, int x, int y);
 
 	virtual editor_action* up_left(editor_display& disp, int x, int y);
 

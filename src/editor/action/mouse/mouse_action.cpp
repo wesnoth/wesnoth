@@ -64,7 +64,13 @@ editor_action* mouse_action::drag_right(editor_display& /*disp*/,
 	return NULL;
 }
 
-editor_action* mouse_action::drag_end(
+editor_action* mouse_action::drag_end_left(
+		editor_display& /*disp*/, int /*x*/, int /*y*/)
+{
+	return NULL;
+}
+
+editor_action* mouse_action::drag_end_right(
 		editor_display& /*disp*/, int /*x*/, int /*y*/)
 {
 	return NULL;

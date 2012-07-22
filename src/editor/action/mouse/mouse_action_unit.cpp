@@ -36,7 +36,12 @@ editor_action* mouse_action_unit::click_left(editor_display& disp, int x, int y)
 
 	const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
 	if (unit_it != units.end()) {
-		//set_mouse_overlay_surface(disp, unit_it->still_image());
+
+		std::stringstream filename;
+		filename << unit_it->absolute_image() << unit_it->image_mods();
+
+		surface image(image::get_image(filename.str()));
+		disp.set_mouseover_hex_overlay(image);
 		//TODO set the mouse pointer to a dragging one.
 	}
 
@@ -44,10 +49,10 @@ editor_action* mouse_action_unit::click_left(editor_display& disp, int x, int y)
 	return NULL;
 }
 
-editor_action* mouse_action_unit::drag_left(editor_display& /*disp*/, int /*x*/, int /*y*/, bool& /*partial*/, editor_action* /*last_undo*/)
+editor_action* mouse_action_unit::drag_left(editor_display& disp, int x, int y, bool& /*partial*/, editor_action* /*last_undo*/)
 {
-	//TODO
-	//click_ = false;
+	map_location hex = disp.hex_clicked_on(x, y);
+	click_ = (hex == start_hex_);
 	return NULL;
 }
 
@@ -97,6 +102,7 @@ editor_action* mouse_action_unit::click_right(editor_display& disp, int x, int y
 {
 	map_location hex = disp.hex_clicked_on(x, y);
 	start_hex_ = hex;
+	previous_move_hex_ = hex;
 
 	//const unit_map& units = disp.get_editor_map().get_const_units();
 	//const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
@@ -111,26 +117,26 @@ editor_action* mouse_action_unit::click_right(editor_display& disp, int x, int y
 
 editor_action* mouse_action_unit::drag_right(editor_display& disp, int x, int y, bool& /*partial*/, editor_action* /*last_undo*/)
 {
-	click_ = false;
-
 	map_location hex = disp.hex_clicked_on(x, y);
-	if (previous_move_hex_ != hex) {
+	if (previous_move_hex_ == hex)
+		return NULL;
+
+	click_ = (start_hex_ == hex);
+	previous_move_hex_ = hex;
+
 	const unit_map& units = disp.map().get_units();
 
-		const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
-		if (unit_it != units.end()) {
-			for (map_location::DIRECTION new_direction = map_location::NORTH;
-					new_direction <= map_location::NORTH_WEST;
-					new_direction = map_location::DIRECTION(new_direction +1)){
-				if (unit_it->get_location().get_direction(new_direction, 1) == hex) {
-					//TODO
-//					unit_it->set_facing(new_direction);
-//					unit_it->set_standing();
-					new_direction_ = new_direction;
-				}
+	const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
+	if (unit_it != units.end()) {
+		for (map_location::DIRECTION new_direction = map_location::NORTH;
+				new_direction <= map_location::NORTH_WEST;
+				new_direction = map_location::DIRECTION(new_direction +1)){
+			if (unit_it->get_location().get_direction(new_direction, 1) == hex) {
+				return new editor_action_unit_facing(start_hex_, new_direction, old_direction_);
 			}
 		}
 	}
+
 	return NULL;
 }
 
