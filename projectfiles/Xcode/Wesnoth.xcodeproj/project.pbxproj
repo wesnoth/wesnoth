@@ -43,7 +43,6 @@
 		6295C3C3150FC9750077D8C5 /* map_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6295C3BE150FC9750077D8C5 /* map_context.cpp */; };
 		6295C3C4150FC9750077D8C5 /* map_fragment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6295C3C0150FC9750077D8C5 /* map_fragment.cpp */; };
 		6295C3D6150FC9EB0077D8C5 /* editor_palettes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6295C3CB150FC9EB0077D8C5 /* editor_palettes.cpp */; };
-		6295C3D7150FC9EB0077D8C5 /* palette_layout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6295C3CE150FC9EB0077D8C5 /* palette_layout.cpp */; };
 		6295C3D8150FC9EB0077D8C5 /* terrain_palettes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6295C3D0150FC9EB0077D8C5 /* terrain_palettes.cpp */; };
 		6295C3D9150FC9EB0077D8C5 /* unit_palette.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6295C3D2150FC9EB0077D8C5 /* unit_palette.cpp */; };
 		62D24F2D1519982500350848 /* brush.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F271519982500350848 /* brush.cpp */; };
@@ -1067,8 +1066,6 @@
 		6295C3CB150FC9EB0077D8C5 /* editor_palettes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = editor_palettes.cpp; sourceTree = "<group>"; };
 		6295C3CC150FC9EB0077D8C5 /* editor_palettes.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = editor_palettes.hpp; sourceTree = "<group>"; };
 		6295C3CD150FC9EB0077D8C5 /* empty_palette.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = empty_palette.hpp; sourceTree = "<group>"; };
-		6295C3CE150FC9EB0077D8C5 /* palette_layout.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = palette_layout.cpp; sourceTree = "<group>"; };
-		6295C3CF150FC9EB0077D8C5 /* palette_layout.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = palette_layout.hpp; sourceTree = "<group>"; };
 		6295C3D0150FC9EB0077D8C5 /* terrain_palettes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = terrain_palettes.cpp; sourceTree = "<group>"; };
 		6295C3D1150FC9EB0077D8C5 /* terrain_palettes.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = terrain_palettes.hpp; sourceTree = "<group>"; };
 		6295C3D2150FC9EB0077D8C5 /* unit_palette.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unit_palette.cpp; sourceTree = "<group>"; };
@@ -2608,8 +2605,6 @@
 				6295C3CB150FC9EB0077D8C5 /* editor_palettes.cpp */,
 				6295C3CC150FC9EB0077D8C5 /* editor_palettes.hpp */,
 				6295C3CD150FC9EB0077D8C5 /* empty_palette.hpp */,
-				6295C3CE150FC9EB0077D8C5 /* palette_layout.cpp */,
-				6295C3CF150FC9EB0077D8C5 /* palette_layout.hpp */,
 				6295C3D0150FC9EB0077D8C5 /* terrain_palettes.cpp */,
 				6295C3D1150FC9EB0077D8C5 /* terrain_palettes.hpp */,
 				6295C3D2150FC9EB0077D8C5 /* unit_palette.cpp */,
@@ -4110,7 +4105,6 @@
 				6295C3C3150FC9750077D8C5 /* map_context.cpp in Sources */,
 				6295C3C4150FC9750077D8C5 /* map_fragment.cpp in Sources */,
 				6295C3D6150FC9EB0077D8C5 /* editor_palettes.cpp in Sources */,
-				6295C3D7150FC9EB0077D8C5 /* palette_layout.cpp in Sources */,
 				6295C3D8150FC9EB0077D8C5 /* terrain_palettes.cpp in Sources */,
 				6295C3D9150FC9EB0077D8C5 /* unit_palette.cpp in Sources */,
 				F4D5483E15198D060058C8A7 /* lua_jailbreak_exception.cpp in Sources */,
