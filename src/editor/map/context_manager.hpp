@@ -111,6 +111,9 @@ public:
 	/** Menu expanding for open maps list */
 	void expand_open_maps_menu(std::vector<std::string>& items);
 
+	/** Menu expanding for the map's player sides */
+	void expand_sides_menu(std::vector<std::string>& items);
+
 	/** Display a load map dialog and process user input. */
 	void load_map_dialog(bool force_same_context = false);
 

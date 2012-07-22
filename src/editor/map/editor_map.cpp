@@ -63,12 +63,14 @@ editor_map::editor_map(const config& terrain_cfg, const config& level, const dis
 {
 	labels_.read(level);
 
+	resources::teams = &teams_;
+
 	BOOST_FOREACH(const config& side, level.child_range("side"))
 	{
 		team t;
 		t.build(side, *this, 100);
 		//this is done because we don't count as observer is there is a human controller
-		t.change_controller("null");
+		//t.change_controller("null");
 		//TODO alternative? : gamestatus::teambuilder
 
 		teams_.push_back(t);
@@ -447,6 +449,37 @@ void editor_map::write(config& cfg) const {
 	config& map = cfg.add_child("map");
 	gamemap::write(map);
 	labels_.write(cfg);
+
+    std::stringstream buf;
+
+    for(std::vector<team>::const_iterator t = teams_.begin(); t != teams_.end(); ++t) {
+    	int side_num = t - teams_.begin() + 1;
+
+    	config& side = cfg.add_child("side");
+    	t->write(side);
+    	// TODO make this customizable via gui
+    	side["no_leader"] = "no";
+    	side["allow_player"] = "yes";
+    	side.remove_attribute("color");
+    	side.remove_attribute("recruit");
+    	side.remove_attribute("recall_cost");
+    	side.remove_attribute("gold");
+    	side.remove_attribute("start_gold");
+    	side.remove_attribute("hidden");
+    	buf.str(std::string());
+    	buf << side_num;
+    	side["side"] = buf.str();
+
+    	//current visible units
+    	for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
+    		if(i->side() == side_num) {
+    			config& u = side.add_child("unit");
+    			i->get_location().write(u); // TODO: Needed?
+    			i->write(u);
+    		}
+    	}
+    }
+
 }
 
 } //end namespace editor

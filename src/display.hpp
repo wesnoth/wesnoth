@@ -63,8 +63,6 @@ public:
 	virtual ~display();
 	static display* get_singleton() { return singleton_ ;}
 
-	//TODO sort
-
 	bool show_everything() const { return !viewpoint_; }
 
 	const std::vector<team>& get_teams() {return *teams_;}
@@ -77,6 +75,18 @@ public:
 	/** The viewing team is the team currently viewing the game. */
 	size_t viewing_team() const { return currentTeam_; }
 	int viewing_side() const { return currentTeam_ + 1; }
+
+	/**
+	 * Sets the team controlled by the player using the computer.
+	 * Data from this team will be displayed in the game status.
+	 */
+	void set_team(size_t team, bool observe=false);
+
+	/**
+	 * set_playing_team sets the team whose turn it currently is
+	 */
+	void set_playing_team(size_t team);
+
 
 	/**
 	 * Cancels all the exclusive draw requests.

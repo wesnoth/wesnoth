@@ -138,6 +138,8 @@ const struct {
 	{ hotkey::HOTKEY_EDITOR_MAP_SAVE_ALL, "editor-map-save-all", N_("Save All Maps"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_MAP_REVERT, "editor-map-revert", N_("Revert All Changes"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_MAP_INFO, "editor-map-info", N_("Map Information"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_SIDE_NEW, "editor-side-new", N_("Add new Side"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_SIDE_SWITCH, "editor-side-switch", N_("Switch Side"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_PALETTE_ITEM_SWAP, "editor-terrain-palette-swap",
 		N_("Swap Foreground/Background Terrains"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_PALETTE_GROUPS, "editor-palette-groups", N_("Change Palette Group"), false, hotkey::SCOPE_EDITOR },

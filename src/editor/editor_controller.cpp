@@ -102,6 +102,12 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 
 void editor_controller::init_gui()
 {
+	//TODO duplicate code, see the map_context_refresher
+	resources::game_map = &context_manager_->get_map();
+	resources::units = &context_manager_->get_map().get_units();
+	resources::tod_manager = &context_manager_->get_map().get_time_manager();
+	resources::teams = &context_manager_->get_map().get_teams();
+
 	gui_->change_map(&context_manager_->get_map());
 	gui_->change_units(&context_manager_->get_map().get_units());
 	gui_->change_teams(&context_manager_->get_map().get_teams());
@@ -262,6 +268,8 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_QUIT_TO_DESKTOP:
 		case HOTKEY_EDITOR_SETTINGS:
 		case HOTKEY_EDITOR_MAP_NEW:
+		case HOTKEY_EDITOR_SIDE_NEW:
+		case HOTKEY_EDITOR_SIDE_SWITCH:
 		case HOTKEY_EDITOR_MAP_LOAD:
 		case HOTKEY_EDITOR_MAP_SAVE_AS:
 		case HOTKEY_EDITOR_BRUSH_NEXT:
@@ -344,7 +352,7 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 					return ACTION_STATELESS;
 				case editor::AREA:
 				case editor::SIDE:
-					return ACTION_ON;
+					return (size_t)index == gui_->playing_team() ? ACTION_ON : ACTION_OFF;
 			}
 			return ACTION_ON;
 		default:
@@ -372,7 +380,9 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 				toolkit_->get_palette_manager()->set_group(index);
 				return true;
 			case SIDE:
-				//TODO
+				gui_->set_team(index, true);
+				gui_->set_playing_team(index);
+				return true;
 			case AREA:
 				//TODO
 				return true;
@@ -463,7 +473,6 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			context_manager_->perform_refresh(editor_action_select_none());
 			return true;
 		case HOTKEY_EDITOR_SELECTION_FILL:
-			//TODO
             context_manager_->fill_selection();
 			return true;
 		case HOTKEY_EDITOR_SELECTION_RANDOMIZE:
@@ -481,6 +490,9 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			return true;
 		case HOTKEY_EDITOR_MAP_NEW:
 			context_manager_->new_map_dialog();
+			return true;
+		case HOTKEY_EDITOR_SIDE_NEW:
+			context_manager_->get_map().new_side();
 			return true;
 		case HOTKEY_EDITOR_MAP_SAVE:
 			save_map();
@@ -531,8 +543,6 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 	}
 }
 
-
-
 void editor_controller::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu)
 {
 	if (context_menu) {
@@ -577,6 +587,12 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 		toolkit_->get_palette_manager()->active_palette().expand_palette_groups_menu(items);
 		context_menu = true; //FIXME hack to display a one-item menu
 	}
+	if (!items.empty() && items.front() == "editor-side-switch") {
+		active_menu_ = editor::SIDE;
+		context_manager_->expand_sides_menu(items);
+		context_menu = true; //FIXME hack to display a one-item menu
+	}
+
 	command_executor::show_menu(items, xloc, yloc, context_menu, gui());
 }
 

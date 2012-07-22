@@ -76,6 +76,11 @@ class editor_map : public gamemap
 {
 public:
 
+	/** Adds a new side to the map */
+	void new_side() {
+    	teams_.push_back(team());
+    }
+
 	/** Get the team from the current map context object */
 	std::vector<team>& get_teams() {
 		return teams_;

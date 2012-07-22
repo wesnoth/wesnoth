@@ -203,6 +203,27 @@ void context_manager::expand_open_maps_menu(std::vector<std::string>& items)
 	}
 }
 
+void context_manager::expand_sides_menu(std::vector<std::string>& items)
+{
+       for (unsigned int i = 0; i < items.size(); ++i) {
+               if (items[i] == "editor-side-switch") {
+                       items.erase(items.begin() + i);
+                       std::vector<std::string> contexts;
+                       for (size_t mci = 0; mci < get_map().get_teams().size(); ++mci) {
+                               std::string name = get_map().get_teams()[mci].name();
+                               if (name.empty()) {
+                                       name = _("(New Side)");
+                               }
+                               std::string label = "[" + lexical_cast<std::string>(mci) + "] "
+                                       + name;
+                               contexts.push_back(label);
+                       }
+                       items.insert(items.begin() + i, contexts.begin(), contexts.end());
+                       break;
+               }
+       }
+}
+
 void context_manager::apply_mask_dialog()
 {
 	std::string fn = get_map_context().get_filename();

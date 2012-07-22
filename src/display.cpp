@@ -37,6 +37,7 @@
 #include "arrow.hpp"
 #include "tod_manager.hpp"
 #include "resources.hpp"
+#include "whiteboard/manager.hpp"
 
 #include "SDL_image.h"
 
@@ -182,6 +183,31 @@ struct is_energy_color {
 												  (color&0x000000FF) < 0x00000010; }
 };
 
+void display::set_team(size_t teamindex, bool show_everything)
+{
+	assert(teamindex < teams_->size());
+	currentTeam_ = teamindex;
+	if (!show_everything)
+	{
+		labels().set_team(&(*teams_)[teamindex]);
+		viewpoint_ = &(*teams_)[teamindex];
+	}
+	else
+	{
+		labels().set_team(NULL);
+		viewpoint_ = NULL;
+	}
+	labels().recalculate_labels();
+	if(resources::whiteboard)
+		resources::whiteboard->on_viewer_change(teamindex);
+}
+
+void display::set_playing_team(size_t teamindex)
+{
+	assert(teamindex < teams_->size());
+	activeTeam_ = teamindex;
+	invalidate_game_status();
+}
 
 const SDL_Rect& display::calculate_energy_bar(surface surf)
 {
