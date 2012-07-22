@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9,00"
+	Version="9.00"
 	Name="wesnoth"
 	ProjectGUID="{65ACA13F-5F5C-4768-A89A-ECF6C16F1512}"
 	RootNamespace="wesnoth"
@@ -3757,62 +3757,6 @@
 				</File>
 				<File
 					RelativePath="..\..\src\editor\palette\editor_palettes.hpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\editor\palette\palette_layout.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Editor\Palette\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Editor\Palette\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug_with_VLD|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Editor\Palette\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Test_Debug|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Editor\Palette\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Test_Release|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Editor\Palette\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="ReleaseDEBUG|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Editor\Palette\"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\src\editor\palette\palette_layout.hpp"
 					>
 				</File>
 				<File
@@ -15410,13 +15354,6 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Test_Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="ReleaseDEBUG|Win32"
 					ExcludedFromBuild="true"
 					>
@@ -15788,13 +15725,6 @@
 					<Tool
 						Name="VCCLCompilerTool"
 						ObjectFile="$(IntDir)\Tests\"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Test_Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
