@@ -32,8 +32,6 @@ editor_action* mouse_action_unit::click_left(editor_display& disp, int x, int y)
 	}
 
 	const unit_map& units = disp.map().get_units();
-
-
 	const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
 	if (unit_it != units.end()) {
 
@@ -85,15 +83,18 @@ editor_action* mouse_action_unit::up_left(editor_display& disp, int x, int y)
 editor_action* mouse_action_unit::drag_end_left(editor_display& disp, int x, int y)
 {
 	if (click_) return NULL;
-
 	editor_action* action = NULL;
 
 	map_location hex = disp.hex_clicked_on(x, y);
 	if (!disp.get_map().on_board(hex))
 		return NULL;
 
-	action = new editor_action_unit_replace(start_hex_, hex);
+	const unit_map& units = disp.map().get_units();
+	const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
+	if (unit_it == units.end())
+		return NULL;
 
+	action = new editor_action_unit_replace(start_hex_, hex);
 	return action;
 }
 
