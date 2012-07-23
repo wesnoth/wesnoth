@@ -107,6 +107,7 @@ void editor_controller::init_gui()
 	resources::units = &context_manager_->get_map().get_units();
 	resources::tod_manager = &context_manager_->get_map().get_time_manager();
 	resources::teams = &context_manager_->get_map().get_teams();
+	resources::state_of_game = &context_manager_->get_map().get_game_state();
 
 	gui_->change_map(&context_manager_->get_map());
 	gui_->change_units(&context_manager_->get_map().get_units());
