@@ -103,7 +103,7 @@ editor_action* mouse_action_map_label::up_right(editor_display& disp, int x, int
 void mouse_action_map_label::set_mouse_overlay(editor_display& disp)
 {
 	//TODO
-	surface image = image::get_image("editor/tool-overlay-starting-position.png");
+	surface image = image::get_image("editor/tool-overlay-label.png");
 	Uint8 alpha = 196;
 	int size = image->w;
 	int zoom = static_cast<int>(size * disp.get_zoom_factor());
