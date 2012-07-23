@@ -150,8 +150,8 @@ msgstr ""
 "Project-Id-Version: el_gr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-10-07 22:09+0200\n"
-"PO-Revision-Date: 2006-12-15 16:18+0200\n"
-"Last-Translator: Κωνσταντίνος Έγκαρχος <atixos@gmail.com>\n"
+"PO-Revision-Date: 2012-07-20 16:07+0100\n"
+"Last-Translator: nikos\n"
 "Language-Team:  <el@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -163,7 +163,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:4
 msgid "4p — A New Land"
-msgstr ""
+msgstr "4π - Νεα Γη"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:6
@@ -171,6 +171,9 @@ msgid ""
 "This 4p survival scenario allows you to construct buildings and terraform "
 "the land. Use map settings. The recommended starting gold is 100."
 msgstr ""
+"Αυτή η εκστρατεία επιβίωσης για 4 παίκτες σου επιτρέπει να κατασκευάσεις "
+"κτίρια και να επεξεργαστείς τη γη. Χρησιμοποίησε τις ρυθμίσεις του χάρτη. "
+"Προτείνεται να ξεκινήσεις την αποστολή με 100 χρυσά νομίσματα."
 
 #. [part]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:24
@@ -180,16 +183,21 @@ msgid ""
 "armies that had crushed their homeland, the leaders of the resistance hoped "
 "only for enough time to rebuild their forces."
 msgstr ""
+"Μετά από έναν μεγαλο πόλεμο ό,τι έχει απομείνει από την ανθρωπότητα έχει "
+"καταφύγει σε μια απόμερη και καλά κρυμμένη κοιλάδα. Παρόλο που γνωρίζουν "
+"πολύ καλά ότι δεν μπορούν να κρύβονται από τους πανίσχυρους στρατούς που "
+"κατέστρεψαν την πατρίδα τους για πάντα, οι αρχηγοί της αντίστασης ελπίζουν "
+"να κερδίσουν έστω λίγο χρόνο για να ανασυγκροτήσουν τις δυνάμεις τους."
 
 #. [objectives]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:32
 msgid "Right-click on your leader during your turn for help"
-msgstr ""
+msgstr "Κάνε δεξί κλικ στον αρχηγό σου στη διάρκεια του γύρου σου για οδηγίες."
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:34
 msgid "You must survive until turn 25."
-msgstr ""
+msgstr "Πρέπει να επιβιώσεις μέχρι τον 25ο γύρο."
 
 #. [side]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:51
@@ -213,24 +221,32 @@ msgstr "Ομάδα 2"
 msgid ""
 "You destroy the mushroom mine. The northwest undead now have 10 less income."
 msgstr ""
+"Κατέστρεψες το ορυχείο μανιταριών. Το εισόδημα των απέθαντων στα "
+"βορειοδυτικά μειώθηκε κατά 10 νομίσματα."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:430
 msgid ""
 "You destroy the mushroom mine. The northeast orcs now have 10 less income."
 msgstr ""
+"Κατέστρεψες το ορυχείο μανιταριών. Το εισόδημα των Ορκ στα βορειοανατολικά "
+"μειώθηκε κατά 10 νομίσματα."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:453
 msgid ""
 "You destroy the mushroom mine. The southwest orcs now have 10 less income."
 msgstr ""
+"Κατέστρεψες το ορυχείο μανιταριών. Το εισόδημα των Ορκ στα νοτιοδυτικά "
+"μειώθηκε κατά 10 νομίσματα."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:476
 msgid ""
 "You destroy the mushroom mine. The southeast undead now have 10 less income."
 msgstr ""
+"Κατέστρεψες το ορυχείο μανιταριών. Το εισόδημα των απέθαντων στα "
+"νοτιοανατολικά μειώθηκε κατά 10 νομίσματα."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:585
@@ -238,6 +254,8 @@ msgid ""
 "One of your peasants has happened upon some spiders’ nests in the north and "
 "south."
 msgstr ""
+"Ένας από τους αγρότες σου βρήκε κατα τύχη φωλιές αραχνών στα βόρεια και τα "
+"νότια."
 
 #. [message]: type=Peasant
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:591
@@ -245,6 +263,8 @@ msgid ""
 "I swear I saw somebody trapped in the spider’s web. Maybe we should rescue "
 "him?"
 msgstr ""
+"Ορκίζομαι ότι είδα κάποιον παγιδευμένο στον ιστό της αράχνης. Ίσως θα "
+"μπορούσαμε να τον σώσουμε..."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:613
@@ -253,12 +273,18 @@ msgid ""
 "spiders guarding each captive are currently wounded, the sooner you get "
 "there the better chance you have of killing them."
 msgstr ""
+"Μετακίνησε οποιαδήποτε μονάδα δίπλα στους αιχμαλώτους, και θα προσχωρήσουν "
+"αμέσως στον στρατό σου. Οι αράχνες που φυλάγουν τους αιχμαλώτους είναι "
+"τραυματισμένες, οπότε όσο πιο γρήγορα φτάσεις εκεί, τόσο πιο εύκολο θα είναι "
+"να τις σκοτώσεις."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:625
 msgid ""
 "Your men report strange sounds coming from some caves to the east and west."
 msgstr ""
+"Οι άντρες σου αναφέρουν περίεργους ήχους στις σπηλιές στα ανατολικά και τα "
+"δυτικά σου."
 
 #. [message]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:631
@@ -267,6 +293,9 @@ msgid ""
 "it must be where the mainstay of their resources are produced. If we could "
 "destroy them our chances wouldn’t nearly be so slim."
 msgstr ""
+"Φαίνεται ότι οι αντίπαλοι έχουν σκάψει ορυχεία μανιταριών εδώ κοντά - είναι "
+"σίγουρα η κύρια πηγή εισοδήματος που έχουν. Αν καταφέρναμε να καταστρέψουμε "
+"τα ορυχεία θα είχαμε σίγουρα το πάνω χέρι."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:653
@@ -274,11 +303,14 @@ msgid ""
 "Move any unit onto these villages to destroy the mine. Each one you destroy "
 "will reduce the enemy’s income by 10."
 msgstr ""
+"Μετακίνησε οποιαδήποτε μονάδα σε αυτά τα χωριά για να καταστρέψεις τα "
+"ορυχεία. Κάθε κατεστραμμένο ορυχείο μειώνει το εισόδημα των αντιπάλων σου "
+"κατά 10 χρυσά νομίσματα."
 
 #. [message]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:666
 msgid "This battle is nearly at an end. Victory is close at hand!"
-msgstr ""
+msgstr "Η μάχη πλησιάζει το τέλος της! Η νίκη είναι κοντά!"
 
 #. [message]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:678
@@ -286,48 +318,50 @@ msgid ""
 "We have survived the onslaught! The tide of the battle has turned, victory "
 "cannot elude us now!"
 msgstr ""
+"Τα καταφέραμε! Επιβιώσαμε! Δεν υπάρχει περίπτωση η νίκη να μην στεφανώσει τα "
+"όπλα μας!"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:682
 msgid "You have won the game, but you may continue if you wish..."
-msgstr ""
+msgstr "Κέρδισες το παιχνίδι, αλλά μπορείς να συνεχίσεις αν θέλεις..."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:698
 msgid "I have fallen, but all is not lost!"
-msgstr ""
+msgstr "Πέφτω στη μάχη, αλλά δεν χάθηκαν όλα!"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:711
 msgid "I am done for, but we have yet to lose this battle!"
-msgstr ""
+msgstr "Ο χρόνος μου εδώ τελειώνει, αλλά δεν έχουμε ηττηθεί ακόμα!"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:724
 msgid "Comrades, avenge me!"
-msgstr ""
+msgstr "Σύντροφοι, εκδικηθείτε με!"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:737
 msgid "Do not fear, there is hope for us still!"
-msgstr ""
+msgstr "Μη φοβάστε, υπάρχει ακόμα ελπίδα!"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_general_macros.cfg:34
 msgid "The chest contains $oc_treasure gold."
-msgstr ""
+msgstr "Το σεντούκι περιέχει $oc_treasure χρυσά νομίσματα."
 
 #. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:5
 msgid "Return to menu"
-msgstr ""
+msgstr "Επιστροφή στο μενού"
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:16
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:125
 msgid "Peasants"
-msgstr ""
+msgstr "Αγρότες"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:19
@@ -336,13 +370,16 @@ msgid ""
 "peasant allows you to terraform the landscape and/or build castles, mines, "
 "farms, villages and universities."
 msgstr ""
+"Οι αγρότες είναι οι εργάτες σου. Ανάλογα με τον τύπο εδάφους στον οποίο "
+"βρίσκονται, δεξί κλικ σε έναν αγρότη σου επιτρέπει να χτίσεις κάστρα, "
+"ορυχεία, φάρμες, χωριά και πανεπιστήμια."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:27
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:132
 msgid "Mages"
-msgstr ""
+msgstr "Μάγοι"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:29
@@ -350,13 +387,16 @@ msgid ""
 "Mages are your wise men. They can study at universities, pursuing advances "
 "in mining, farming and recruitment."
 msgstr ""
+"Οι μάγοι είναι οι σοφοί σου. Μπορούν να σπουδάσουν στα πανεπιστήμια, "
+"προωθώντας καινοτομίες στην εξόρυξη μεταλλευμάτων, την γεωργία και την "
+"πολεμική τεχνολογία."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:37
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:139
 msgid "Farms"
-msgstr ""
+msgstr "Χωράφια"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:39
@@ -364,13 +404,16 @@ msgid ""
 "Farms can only be planted on grassland. Move a peasant onto a farm and he "
 "will begin to automatically harvest the cash crop."
 msgstr ""
+"Χωράφια μπορούν να καλλιεργηθούν μόνο στην πεδιάδα. Μετακίνησε έναν αγρότη "
+"πάνω σε ένα χωράφι και θα αρχίσει αυτόματα να συλλέγει την σοδειά και να "
+"παράγει εισόδημα."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:47
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:146
 msgid "Villages"
-msgstr ""
+msgstr "Χωριά"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:49
@@ -379,14 +422,16 @@ msgid ""
 "usual. Right-click on a peasant in a village and you can establish a "
 "university."
 msgstr ""
+"Χωριά μπορούν να χτιστούν μόνο στην πεδιάδα. Παρέχουν εισόδημα και θεραπεία, "
+"όπως συνηθως. Κάνοντας δεξί κλικ σε έναν εργάτη που βρίσκεται σε ένα χωριό "
+"μπορείς να δημιουργήσεις ένα πανεπιστήμιο."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:57
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:153
-#, fuzzy
 msgid "Mines"
-msgstr "Κινήσεις"
+msgstr "Ορυχεία"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:59
@@ -394,13 +439,15 @@ msgid ""
 "Mines can be built on hills or mountains. A peasant on a mine will "
 "automatically dig for gold at the start of your turn."
 msgstr ""
+"Ορυχεία χτίζονται σε λόφους ή βουνά. Ένας εργάτης σε ένα ορυχείο θα αρχίσει "
+"να σκάβει για χρυσάφι αυτόματα στην αρχη κάθε γύρου."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:67
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:160
 msgid "Universities"
-msgstr ""
+msgstr "Πανεπιστήμια"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:69
@@ -410,6 +457,11 @@ msgid ""
 "your chosen research target. Right-click on a mage in a university to change "
 "research target."
 msgstr ""
+"Τα χωριά σε στιλ ξωτικών αναπαριστούν πανεπιστήμια. Στην αρχη του κάθε "
+"γύρου, Μάγοι που βρίσκονται στα πανεπιστήμιά σου θα προσθέσουν αυτόματα στην "
+"συνολική πρόοδο του θέματος που επέλεξες να ερευνήσεις. Κάνε δεξί κλικ σε "
+"έναν μάγο που βρίσκεται σε ένα πανεπιστήμιο για να επιλέξεις νέες "
+"ερευνητικές κατευθύνσεις."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
@@ -418,7 +470,7 @@ msgstr ""
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:167
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:196
 msgid "Diplomacy"
-msgstr ""
+msgstr "Διπλωματία"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:79
@@ -426,31 +478,34 @@ msgid ""
 "Right-clicking on your leader when in a university allows you to select "
 "special diplomatic options."
 msgstr ""
+"Κάνοντας δεξί κλικ στον αρχηγό σου όταν βρίσκεται σε ένα πανεπιστήμιο σου "
+"επιτρέπει να κάνεις διπλωματικές επιλογές."
 
 #. [set_menu_item]: id=anl_help
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:87
 msgid "Help"
-msgstr ""
+msgstr "Βοήθεια"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:111
 msgid "A New Land — Help"
-msgstr ""
+msgstr "Νέα Γη - Βοήθεια"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:112
 msgid "Select a topic."
-msgstr ""
+msgstr "Επέλεξε κατηγορία"
 
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:115
 msgid "Done"
-msgstr ""
+msgstr "Τέλος"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:47
 msgid "I hereby donate 20 gold to the coffers of $df_player_name|."
 msgstr ""
+"Δια τούτου δωρίζω 20 χρυσά νομίσματα στα ταμεία του/της $df_player_name|."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:100
@@ -458,6 +513,8 @@ msgid ""
 "$sf_player_name|, since our wisdom exceeds yours I have instructed my "
 "scholars to further your understanding of agriculture."
 msgstr ""
+"$df_player_name|, καθώς η σοφία και η γνώση μας υπερβαίνει την δική σας, "
+"ανέθεσα στους σπουδαστές μας να επαυξήσουν τις γεωργικές σας γνώσεις."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:138
@@ -466,6 +523,9 @@ msgid ""
 "instructed my scholars to aid you in your efforts to learn the science of "
 "mining."
 msgstr ""
+"$df_player_name|, επειδή η σοφία του λαού μου ξεπερνά το επίπεδο της γνώσης "
+"σας, οι επιστήμονές μας θα δράσουν ως αρωγοί στην προσπάθειά σας να "
+"κατανοήσετε την τέχνη της μετάλλευσης."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:183
@@ -473,6 +533,9 @@ msgid ""
 "You know worryingly little about the arts of war, $sw_player_name|. I feel "
 "an obligation to instruct you in this vital matter."
 msgstr ""
+"Γνωρίζετε ανησυχητικά λίγα πράγματα για τις τέχνες του πολέμου, "
+"$df_player_name|. Αισθάνομαι υποχρεωμένος να σας διαφωτίσω σε αυτό το ζωτικό "
+"θέμα."
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:250
@@ -480,6 +543,8 @@ msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of agriculture"
 msgstr ""
+"<span color='green'>$player_name</span>\n"
+"Μοιράσου αγροτικές γνώσεις"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:257
@@ -487,6 +552,8 @@ msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of mining"
 msgstr ""
+"<span color='green'>$player_name</span>\n"
+"Μοιράσου εξορυκτικές τεχνικές"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:264
@@ -494,24 +561,26 @@ msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of warfare"
 msgstr ""
+"<span color='green'>$player_name</span>\n"
+"Μοιράσου πολεμικές γνώσεις"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:293
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:330
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:374
 msgid "Diplomatic Options"
-msgstr ""
+msgstr "Επιλογές Διπλωματίας"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:296
 msgid "What shall I do?"
-msgstr ""
+msgstr "Τι να κάνω;"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:302
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:54
 msgid "Nothing"
-msgstr ""
+msgstr "Τίποτα"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:315
@@ -519,17 +588,19 @@ msgid ""
 "<span color='green'>Donate Funds</span>\n"
 "Give 20 gold to another player"
 msgstr ""
+"<span color='green'>Δώρισε Χρήματα</span>\n"
+"Δώρισε 20 χρυσά νομίσματα σε έναν άλλο παίκτη"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:333
 msgid "Who will you donate funds to?"
-msgstr ""
+msgstr "Σε ποιον θέλεις να δωρίσεις τα χρήματα;"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:336
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:380
 msgid "Back"
-msgstr ""
+msgstr "Πίσω"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:359
@@ -537,11 +608,13 @@ msgid ""
 "<span color='green'>Share Knowledge</span>\n"
 "Help an ally with their research"
 msgstr ""
+"<span color='green'>Μοιράσου Γνώση</span>\n"
+"Βοήθησε έναν σύμμαχο στο επιστημονικό πεδίο"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:377
 msgid "Who will you share knowledge with?"
-msgstr ""
+msgstr "Με ποιον θέλεις να μοιραστείς τις γνώσεις σου;"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:417
@@ -551,6 +624,10 @@ msgid ""
 "Negotiation Progress: $player_$side_number|.leader_option_1.progress|/"
 "$player_$side_number|.leader_option_1.target"
 msgstr ""
+"<span color='green'>Διαπραγματεύσεις με τους Νάνους</span>\n"
+"Σου επιτρέπει να στρατολογήσεις μια μονάδα των Νάνων\n"
+"Πρόοδος των διαπραγματεύσεων: $player_$side_number|.leader_option_1."
+"progress|/$player_$side_number|.leader_option_1.target"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:472
@@ -560,12 +637,16 @@ msgid ""
 "Negotiation Progress: $player_$side_number|.leader_option_2.progress|/"
 "$player_$side_number|.leader_option_2.target"
 msgstr ""
+"<span color='green'>Διαπραγματεύσεις με τα Ξωτικά</span>\n"
+"Σου επιτρέπει να στρατολογήσεις μια μονάδα των Ξωτικών\n"
+"Πρόοδος των διαπραγματεύσεων: $player_$side_number|.leader_option_2."
+"progress|/$player_$side_number|.leader_option_2.target"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:538
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:570
 msgid "Negotiation Complete"
-msgstr ""
+msgstr "Τέλος διαπραγματεύσεων"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:541
@@ -573,6 +654,8 @@ msgid ""
 "Our talks are complete — the Dwarves will gladly fight by your side. Which "
 "of our brethren do you want to recruit?"
 msgstr ""
+"Οι συνομιλίες μας έφτασαν στο τέλος τους - οι Νάνοι θα πολεμήσουν με χαρά "
+"στο πλευρό σου. Ποιους από εμάς θέλεις να στρατολογήσεις;"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:573
@@ -580,11 +663,13 @@ msgid ""
 "Our talks are complete — the Elves shall aid you in this battle. Which our "
 "of kin do you wish to recruit?"
 msgstr ""
+"Οι συνομιλίες μας ολοκληρώθηκαν -  τα Ξωτικά θα σε βοηθήσουν σε αυτή την "
+"μάχη. Ποιους από εμάς επιθυμείς να στρατολογήσεις;"
 
 #. [set_menu_item]: id=anl_choose_new_recruit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:34
 msgid "Choose New Recruit"
-msgstr ""
+msgstr "Επιλογή Νέας Μονάδας"
 
 #. [message]: speaker=unit
 #. [message]: speaker=narrator
@@ -593,22 +678,22 @@ msgstr ""
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:277
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:304
 msgid "Study Complete"
-msgstr ""
+msgstr "Ολοκλήρωση Ερευνητικής Διαδικασίας"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:64
 msgid "Which type of unit would you like to be able to recruit?"
-msgstr ""
+msgstr "Ποιο τύπο μονάδας θέλεις να μπορείς να στρατολογείς;"
 
 #. [set_menu_item]: id=anl_oversee_research
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:89
 msgid "Oversee Research"
-msgstr ""
+msgstr "Επίβλεψη Έρευνας"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:138
 msgid "Research"
-msgstr ""
+msgstr "Έρευνα"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:144
@@ -620,11 +705,16 @@ msgid ""
 "Our farms produce $player_$side_number|.farming.gold|g\n"
 "Our mines produce $player_$side_number|.mining.gold|g\n"
 msgstr ""
+"Αντικείμενο μελέτης: $player_$side_number|.research.target_language_name|\n"
+"Σε ποια κατεύθυνση να αφιερώσουμε τους επιστήμονές μας;\n"
+"\n"
+"Τα χωράφια μας παράγουν $player_$side_number|.farming.gold| χρυσά νομίσματα\n"
+"Τα ορυχεία μας παράγουν $player_$side_number|.mining.gold| χρυσά νομίσματα\n"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:148
 msgid "Continue as before"
-msgstr ""
+msgstr "Συνεχίστε όπως πριν"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:167
@@ -634,13 +724,17 @@ msgid ""
 "Study Progress: $player_$side_number|.farming.progress|/$player_"
 "$side_number|.farming.target"
 msgstr ""
+"<span color='green'>Γεωργία</span>\n"
+"Εργάτες σε χωράφια παράγουν +1 χρυσά νομίσματα\n"
+"Πρόοδος της έρευνας: $player_$side_number|.farming.progress|/$player_"
+"$side_number|.farming.target"
 
 #. [command]
 #. [research]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:169
 #: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:102
 msgid "agriculture"
-msgstr ""
+msgstr "γεωργία"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:178
@@ -650,11 +744,15 @@ msgid ""
 "Study Progress: $player_$side_number|.mining.progress|/$player_$side_number|."
 "mining.target"
 msgstr ""
+"<span color='green'>Εξόρυξη Μεταλλευμάτων</span>\n"
+"Εργάτες στα ορυχεία παράγουν +1 χρυσά νομίσματα\n"
+"Πρόοδος της έρευνας: $player_$side_number|.mining.progress|/$player_"
+"$side_number|.mining.target"
 
 #. [command]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:180
 msgid "mining"
-msgstr ""
+msgstr "εξώρυξη μεταλλευμάτων"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:189
@@ -664,11 +762,15 @@ msgid ""
 "Study Progress: $player_$side_number|.warfare.progress|/$player_"
 "$side_number|.warfare.target"
 msgstr ""
+"<span color='green'>Πόλεμος</span>\n"
+"Επιτρέπει την στρατολόγηση ενός νέου τύπου μονάδας\n"
+"Πρόοδος της έρευνας: $player_$side_number|.warfare.progress|/$player_"
+"$side_number|.warfare.target"
 
 #. [command]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:198
 msgid "warfare"
-msgstr ""
+msgstr "πόλεμος"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:247
@@ -676,6 +778,8 @@ msgid ""
 "$player_$side_number|.name|’s farms now produce $player_$side_number|."
 "farming.gold gold."
 msgstr ""
+"Τα χωράφια του $player_$side_number|.name| παράγουν $player_$side_number|."
+"farming.gold χρυσά νομίσματα."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:279
@@ -683,6 +787,8 @@ msgid ""
 "$player_$side_number|.name|’s mines now produce $player_$side_number|.mining."
 "gold gold."
 msgstr ""
+"Τα ορυχεία του $player_$side_number|.name| παράγουν $player_$side_number|."
+"mining.gold χρυσά νομίσματα."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:306
@@ -690,31 +796,34 @@ msgid ""
 "$player_$side_number|.name|, we have finished researching warfare. Right-"
 "click on a mage in a university to select a unit to recruit."
 msgstr ""
+"$player_$side_number|.name|, τελειώσαμε την πολεμική μας έρευνα. Κάνε δεξί "
+"κλικ σε έναν μάγο σε οποιοδήποτε πανεπιστήμιο για να επιλέξεις την νέα "
+"μονάδα που θα στρατολογείς."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:197
 msgid "Let’s cut you free!"
-msgstr ""
+msgstr "Για να σε βγάλουμε απο 'δω πέρα!"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:201
 msgid "You release the creature from the web and it agrees to help you."
-msgstr ""
+msgstr "Ελευθερώνεις το πλάσμα από τον ιστό, και συμφωνεί να σε βοηθήσει."
 
 #. [set_menu_item]: id=anl_get_to_work
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:6
 msgid "Get to Work!"
-msgstr ""
+msgstr "Εμπρός! Στη δουλειά!"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:50
 msgid "What shall I do my liege?"
-msgstr ""
+msgstr "Τι να κάνω, κύριέ μου;"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:69
 msgid "Convert to Grassland"
-msgstr ""
+msgstr "Μετάτρεψε σε λιβάδι"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:69
@@ -722,144 +831,144 @@ msgstr ""
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:352
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:547
 msgid "Cost: 0g"
-msgstr ""
+msgstr "Κόστος: 0 χρυσά νομίσματα"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:86
 msgid "Plant Farm"
-msgstr ""
+msgstr "Σπείρε χωράφι"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:100
 msgid "Build Village"
-msgstr ""
+msgstr "Χτίσε χωριό"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:100
 msgid "Cost: 15g"
-msgstr ""
+msgstr "Κόστος: 15 χρυσά νομίσματα"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:122
 msgid "Build Castle"
-msgstr ""
+msgstr "Χτίσε κάστρο"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:122
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:498
 msgid "Cost: 6g"
-msgstr ""
+msgstr "Κόστος: 6 χρυσά νομίσματα"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:143
 msgid "Cost: 4g"
-msgstr ""
+msgstr "Κόστος: 4 χρυσά νομίσματα"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:143
 msgid "Flood the Field"
-msgstr ""
+msgstr "Πλημμύρισε το έδαφος"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:166
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:375
 msgid "Cost: 1g"
-msgstr ""
+msgstr "Κόστος: 1 χρυσά νομίσματα"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:166
 msgid "Plant Saplings"
-msgstr ""
+msgstr "Φύτεψε δενδρύλλια"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:192
 msgid "Chop Down Forest"
-msgstr ""
+msgstr "Κόψε τα δέντρα"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:192
 msgid "Earns: 1g"
-msgstr ""
+msgstr "Έσοδα: 1 χρυσό νόμισμα"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:247
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:272
 msgid "Build Mine"
-msgstr ""
+msgstr "Χτίσε ορυχείο"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:247
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:272
 msgid "Cost: 25g"
-msgstr ""
+msgstr "Κόστος: 25 χρυσά νομίσματα"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:297
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:427
 msgid "Cost: 3g"
-msgstr ""
+msgstr "Κόστος: 3 χρυσά νομίσματα"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:297
 msgid "Make a Ford"
-msgstr ""
+msgstr "Δημιούργησε πέρασμα"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:323
 msgid "Cost: 5g"
-msgstr ""
+msgstr "Κόστος: 5 χρυσά νομίσματα"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:323
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:375
 msgid "Landfill"
-msgstr ""
+msgstr "Γέμισε με χώμα"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:352
 msgid "Destroy the Ford"
-msgstr ""
+msgstr "Κατάστρεψε πέρασμα"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:404
 msgid "Cost: 2g"
-msgstr ""
+msgstr "Κόστος: 2 χρυσά νομίσματα"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:404
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:427
 msgid "Smash Cave Floor"
-msgstr ""
+msgstr "Κατάστρεψε το έδαφος της σπηλιάς"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:450
 msgid "Earns: 3g"
-msgstr ""
+msgstr "Έσοδα> 3 χρυσά νομίσματα"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:450
 msgid "Harvest Mushrooms"
-msgstr ""
+msgstr "Μάζεψε τα μανιτάρια"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:498
 msgid "Build a Keep"
-msgstr ""
+msgstr "Χτίσε Κεντρικό Πύργο"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:522
 msgid "Cost: 7g"
-msgstr ""
+msgstr "Κόστος: 7 χρυσά νομίσματα"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:522
 msgid "Establish University"
-msgstr ""
+msgstr "Ίδρυσε Πανεπιστήμιο"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:547
 msgid "Clear the Ground"
-msgstr ""
+msgstr "Καθάρισε το έδαφος"
 
 #~ msgid "User Map"
 #~ msgstr " χάρτης Χρήστη"
