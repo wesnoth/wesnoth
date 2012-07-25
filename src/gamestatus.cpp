@@ -866,8 +866,18 @@ protected:
 	void init()
 	{
 		side_ = side_cfg_["side"].to_int(1);
-		if (unsigned(side_ - 1) >= teams_.size() || teams_[side_ - 1].side() != 0)
-			throw config::error("Invalid side number.");
+		if (side_ == 0) // Otherwise falls into the next error, with a very confusing message
+			throw config::error("Side number 0 encountered. Side numbers start at 1");
+		if (unsigned(side_ - 1) >= teams_.size()) {
+			std::stringstream ss;
+			ss << "Side number " << side_ << " higher than number of sides (" << teams_.size() << ")";
+			throw config::error(ss.str());
+		}
+		if (teams_[side_ - 1].side() != 0) {
+			std::stringstream ss;
+			ss << "Duplicate definition of side " << side_;
+			throw config::error(ss.str());
+		}
 		t_ = &teams_[side_ - 1];
 
 		log_step("init");
