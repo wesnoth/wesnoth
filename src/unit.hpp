@@ -72,10 +72,9 @@ public:
 
 
 	/** Advances this unit to another type */
-	void advance_to(const unit_type *t, bool use_traits = false,
-		game_state *state = 0)
+	void advance_to(const unit_type *t, bool use_traits = false)
 	{
-		advance_to(cfg_, t, use_traits, state);
+		advance_to(cfg_, t, use_traits);
 	}
 	const std::vector<std::string>& advances_to() const { return advances_to_; }
 	const std::vector<std::string> advances_to_translated() const;
@@ -330,7 +329,7 @@ public:
 
 	void backup_state();
 	void apply_modifications();
-	void generate_traits(bool musthaveonly=false, game_state* state = 0);
+	void generate_traits(bool musthaveonly=false);
 	void generate_name(rand_rng::simple_rng *rng = 0);
 
 	// Only see_all=true use caching
@@ -361,7 +360,7 @@ public:
 
 private:
 	void advance_to(const config &old_cfg, const unit_type *t,
-		bool use_traits, game_state *state);
+		bool use_traits);
 
 	bool internal_matches_filter(const vconfig& cfg,const map_location& loc,
 		bool use_flat_tod) const;

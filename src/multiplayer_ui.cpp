@@ -110,7 +110,7 @@ void level_to_gamestate(config& level, game_state& state)
 	const std::string seed = level["random_seed"];
 	if(! seed.empty()) {
 		const unsigned calls = lexical_cast_default<unsigned>(level["random_calls"]);
-		state.rng().seed_random(lexical_cast<int>(seed), calls);
+		state.carryover_sides.rng().seed_random(lexical_cast<int>(seed), calls);
 	} else {
 		ERR_NG << "No random seed found, random "
 			"events will probably be out of sync.\n";
@@ -132,9 +132,9 @@ void level_to_gamestate(config& level, game_state& state)
 	state.classification().version = level["version"].str();
 
 	if (const config &vars = level.child("variables")) {
-		state.set_variables(vars);
+		state.carryover_sides.set_variables(vars);
 	}
-	state.set_menu_items(level.child_range("menu_item"));
+	state.carryover_sides.wml_menu_items.set_menu_items(level.child_range("menu_item"));
 	state.mp_settings().set_from_config(level);
 
 	//Check whether it is a save-game by looking for snapshot data
@@ -151,9 +151,9 @@ void level_to_gamestate(config& level, game_state& state)
 	if (saved_game) {
 		state.snapshot = snapshot;
 		if (const config &v = snapshot.child("variables")) {
-			state.set_variables(v);
+			state.carryover_sides.set_variables(v);
 		}
-		state.set_menu_items(snapshot.child_range("menu_item"));
+		state.carryover_sides.wml_menu_items.set_menu_items(snapshot.child_range("menu_item"));
 	}
 
 	//In any type of reload(normal save or start-of-scenario) the players could have
@@ -181,11 +181,11 @@ void level_to_gamestate(config& level, game_state& state)
 			}
 		}
 	}
-	if(state.get_variables().empty()) {
+	if(state.carryover_sides.get_variables().empty()) {
 		LOG_NG << "No variables were found for the game_state." << std::endl;
 	} else {
 		LOG_NG << "Variables found and loaded into game_state:" << std::endl;
-		LOG_NG << state.get_variables();
+		LOG_NG << state.carryover_sides.get_variables();
 	}
 }
 

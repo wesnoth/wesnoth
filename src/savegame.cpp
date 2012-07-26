@@ -691,9 +691,12 @@ void loadgame::set_gamestate()
 	// proper location.
 	// For normal loading also restore the call count.
 	int seed = load_config_["random_seed"].to_int(42);
+	if(seed == 42){
+		config cfg = load_config_.child_or_empty("carryover_sides");
+		seed = cfg["random_seed"].to_int(42);
+	}
 	unsigned calls = show_replay_ ? 0 : gamestate_.snapshot["random_calls"].to_int();
-	gamestate_.rng().seed_random(seed, calls);
-	LOG_RG << "after random "<<gamestate_.carryover_sides.get_all_sides().size()<<"\n";
+	gamestate_.carryover_sides.rng().seed_random(seed, calls);
 }
 
 void loadgame::load_multiplayer_game()

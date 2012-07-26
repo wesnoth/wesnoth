@@ -1656,7 +1656,7 @@ void connect::load_game()
 		}
 
 		level_["experience_modifier"] = params_.xp_modifier;
-		level_["random_seed"] = state_.rng().get_random_seed();
+		level_["random_seed"] = state_.carryover_sides.rng().get_random_seed();
 	}
 
 	// Add the map name to the title.

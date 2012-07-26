@@ -82,7 +82,7 @@ void map_labels::read(const config &cfg)
 
 	BOOST_FOREACH(const config &i, cfg.child_range("label"))
 	{
-		const map_location loc(i, resources::state_of_game);
+		const map_location loc(i, resources::gamedata);
 		terrain_label *label = new terrain_label(*this, i);
 		add_label(loc, label);
 	}
@@ -325,7 +325,7 @@ terrain_label::~terrain_label()
 
 void terrain_label::read(const config &cfg)
 {
-	const variable_set &vs = *resources::state_of_game;
+	const variable_set &vs = *resources::gamedata;
 	loc_ = map_location(cfg, &vs);
 	SDL_Color color = font::LABEL_COLOR;
 

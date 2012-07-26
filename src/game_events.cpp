@@ -136,18 +136,18 @@ namespace {
 	class pump_manager {
 		public:
 		pump_manager() :
-			x1_(resources::state_of_game->get_variable("x1")),
-			x2_(resources::state_of_game->get_variable("x2")),
-			y1_(resources::state_of_game->get_variable("y1")),
-			y2_(resources::state_of_game->get_variable("y2"))
+			x1_(resources::gamedata->get_variable("x1")),
+			x2_(resources::gamedata->get_variable("x2")),
+			y1_(resources::gamedata->get_variable("y1")),
+			y2_(resources::gamedata->get_variable("y2"))
 		{
 			++instance_count;
 		}
 		~pump_manager() {
-			resources::state_of_game->get_variable("x1") = x1_;
-			resources::state_of_game->get_variable("x2") = x2_;
-			resources::state_of_game->get_variable("y1") = y1_;
-			resources::state_of_game->get_variable("y2") = y2_;
+			resources::gamedata->get_variable("x1") = x1_;
+			resources::gamedata->get_variable("x2") = x2_;
+			resources::gamedata->get_variable("y1") = y1_;
+			resources::gamedata->get_variable("y2") = y2_;
 			--instance_count;
 		}
 		static unsigned count() {
@@ -400,7 +400,7 @@ namespace game_events {
 		BOOST_FOREACH(const vconfig &values, variables)
 		{
 			const std::string name = values["name"];
-			config::attribute_value value = resources::state_of_game->get_variable_const(name);
+			config::attribute_value value = resources::gamedata->get_variable_const(name);
 			std::string str_value = value.str();
 			double num_value = value.to_double();
 
@@ -1328,14 +1328,14 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 {
-	game_state *state_of_game = resources::state_of_game;
+	game_data *gameinfo = resources::gamedata;
 
 	const std::string name = cfg["name"];
 	if(name.empty()) {
 		ERR_NG << "trying to set a variable with an empty name:\n" << cfg.get_config().debug();
 		return;
 	}
-	config::attribute_value &var = state_of_game->get_variable(name);
+	config::attribute_value &var = gameinfo->get_variable(name);
 
 	config::attribute_value literal = cfg.get_config()["literal"]; // no $var substitution
 	if (!literal.blank()) {
@@ -1349,7 +1349,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 
 	const std::string to_variable = cfg["to_variable"];
 	if(to_variable.empty() == false) {
-		var = state_of_game->get_variable(to_variable);
+		var = gameinfo->get_variable(to_variable);
 	}
 
 	config::attribute_value add = cfg["add"];
@@ -1438,7 +1438,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 
 	// The new random generator, the logic is a copy paste of the old random.
 	if(rand.empty() == false) {
-		assert(state_of_game);
+		assert(gameinfo);
 
 		std::string random_value;
 
@@ -1503,10 +1503,10 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 					<< 0x3fffffff
 					<< ".\n";
 		}
-		int choice = state_of_game->rng().get_next_random();
+		int choice = gameinfo->rng().get_next_random();
 		if(num_choices >= 32768) {
 			choice <<= 15;
-			choice += state_of_game->rng().get_next_random();
+			choice += gameinfo->rng().get_next_random();
 		}
 		choice %= num_choices;
 		int tmp = 0;
@@ -1846,7 +1846,7 @@ WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
 	{
 		parsed_cfg.remove_attribute("to_variable");
 		unit new_unit(parsed_cfg, true, resources::state_of_game);
-		config &var = resources::state_of_game->get_variable_cfg(to_variable);
+		config &var = resources::gamedata->get_variable_cfg(to_variable);
 		var.clear();
 		new_unit.write(var);
 		if (const config::attribute_value *v = parsed_cfg.get("x")) var["x"] = *v;
@@ -2240,7 +2240,7 @@ WML_HANDLER_FUNCTION(set_menu_item, /*event_info*/, cfg)
 	   [/set_menu_item]
 	   */
 	std::string id = cfg["id"];
-	wml_menu_item*& mref = resources::state_of_game->wml_menu_items[id];
+	wml_menu_item*& mref = resources::gamedata->wml_menu_items.get_item(id);
 	if(mref == NULL) {
 		mref = new wml_menu_item(id);
 	}
@@ -2276,7 +2276,7 @@ WML_HANDLER_FUNCTION(clear_menu_item, /*event_info*/, cfg)
 			continue;
 		}
 
-		std::map<std::string, wml_menu_item*>& menu_items = resources::state_of_game->wml_menu_items;
+		std::map<std::string, wml_menu_item*>& menu_items = resources::gamedata->wml_menu_items.get_menu_items();
 		if(menu_items.find(id) == menu_items.end()) {
 			WRN_NG << "trying to remove non-existent menu item '" << id << "', ignoring\n";
 			continue;
@@ -2337,7 +2337,7 @@ struct unstore_unit_advance_choice: mp_sync::user_choice
 // Unit serialization to variables
 WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 {
-	const config &var = resources::state_of_game->get_variable_cfg(cfg["variable"]);
+	const config &var = resources::gamedata->get_variable_cfg(cfg["variable"]);
 
 	try {
 		config tmp_cfg(var);
@@ -2632,7 +2632,7 @@ WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 		if (heal_amount_to_set)
 		{
 			heal_amount_to_set = false;
-			resources::state_of_game->get_variable("heal_amount") = heal_amount;
+			resources::gamedata->get_variable("heal_amount") = heal_amount;
 		}
 
 		if(animate) unit_display::unit_healing(*u, u->get_location(), healers, heal_amount);
@@ -2951,7 +2951,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 		std::string variable_name=text_input_element["variable"];
 		if(variable_name.empty())
 			variable_name="input";
-		resources::state_of_game->set_variable(variable_name, text_input_result);
+		resources::gamedata->set_variable(variable_name, text_input_result);
 	}
 }
 
@@ -3002,12 +3002,12 @@ WML_HANDLER_FUNCTION(replace_schedule, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(allow_end_turn, /*event_info*/, /*cfg*/)
 {
-	resources::state_of_game->set_allow_end_turn(true);
+	resources::gamedata->set_allow_end_turn(true);
 }
 
 WML_HANDLER_FUNCTION(disallow_end_turn, /*event_info*/, /*cfg*/)
 {
-	resources::state_of_game->set_allow_end_turn(false);
+	resources::gamedata->set_allow_end_turn(false);
 }
 
 // Adding new events
@@ -3098,7 +3098,7 @@ static void commit_wmi_commands() {
 		wmi_command_change wcc = wmi_command_changes.front();
 		const bool is_empty_command = wcc.second->empty();
 
-		wml_menu_item*& mref = resources::state_of_game->wml_menu_items[wcc.first];
+		wml_menu_item*& mref = resources::gamedata->wml_menu_items.get_item(wcc.first);
 		const bool has_current_handler = !mref->command.empty();
 
 		config::attribute_value event_id = (*wcc.second)["id"];
@@ -3223,7 +3223,7 @@ static bool process_event(game_events::event_handler& handler, const game_events
 	handler.handle_event(ev);
 
 	if(ev.name == "select") {
-		resources::state_of_game->last_selected = ev.loc1;
+		resources::gamedata->last_selected = ev.loc1;
 	}
 
 	if (screen_needs_rebuild) {
@@ -3413,7 +3413,7 @@ namespace game_events {
 		}
 		int wmi_count = 0;
 		typedef std::pair<std::string, wml_menu_item *> item;
-		BOOST_FOREACH(const item &itor, resources::state_of_game->wml_menu_items) {
+		BOOST_FOREACH(const item &itor, resources::gamedata->wml_menu_items.get_menu_items()) {
 			if (!itor.second->command.empty()) {
 				event_handlers.add_event_handler(game_events::event_handler(itor.second->command, true));
 			}
@@ -3574,10 +3574,10 @@ namespace game_events {
 					continue;
 				// Set the variables for the event
 				if (init_event_vars) {
-					resources::state_of_game->get_variable("x1") = ev.loc1.x + 1;
-					resources::state_of_game->get_variable("y1") = ev.loc1.y + 1;
-					resources::state_of_game->get_variable("x2") = ev.loc2.x + 1;
-					resources::state_of_game->get_variable("y2") = ev.loc2.y + 1;
+					resources::gamedata->get_variable("x1") = ev.loc1.x + 1;
+					resources::gamedata->get_variable("y1") = ev.loc1.y + 1;
+					resources::gamedata->get_variable("x2") = ev.loc2.x + 1;
+					resources::gamedata->get_variable("y2") = ev.loc2.y + 1;
 					init_event_vars = false;
 				}
 

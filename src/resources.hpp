@@ -21,6 +21,7 @@
 class game_display;
 class gamemap;
 class game_state;
+class game_data;
 class LuaKernel;
 class play_controller;
 class team;
@@ -43,6 +44,7 @@ namespace resources
 	extern unit_map *units;
 	extern std::vector<team> *teams;
 	extern game_state *state_of_game;
+	extern game_data *gamedata;
 	extern LuaKernel *lua_kernel;
 	extern play_controller *controller;
 	extern tod_manager *tod_manager;

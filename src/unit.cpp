@@ -53,6 +53,9 @@ static lg::log_domain log_config("config");
 #define WRN_CF LOG_STREAM(warn, log_config)
 #define ERR_CONFIG LOG_STREAM(err, log_config)
 
+static lg::log_domain log_enginerefac("enginerefac");
+#define LOG_RG LOG_STREAM(info, log_enginerefac)
+
 namespace {
 	const std::string ModificationTypes[] = { "advance", "trait", "object" };
 	const size_t NumModificationTypes = sizeof(ModificationTypes)/
@@ -83,7 +86,7 @@ static unit_race::GENDER generate_gender(const std::string &type_id, bool random
 	} else if(random_gender == false || genders.size() == 1) {
 		return genders.front();
 	} else {
-		int random = state ? state->rng().get_next_random() : get_random_nocheck();
+		int random = state ? resources::gamedata->rng().get_next_random() : get_random_nocheck();
 		return genders[random % genders.size()];
 	}
 }
@@ -318,7 +321,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 		modifications_ = mods;
 	}
 
-	advance_to(cfg, type(), use_traits, state);
+	advance_to(cfg, type(), use_traits);
 	if (const config::attribute_value *v = cfg.get("race")) {
 		if (const unit_race *r = unit_types.find_race(*v)) {
 			race_ = r;
@@ -514,7 +517,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 		alignment_ = unit_type::NEUTRAL;
 	}
 
-	generate_name(state ? &(state->rng()) : 0);
+	generate_name(resources::gamedata ? &(resources::gamedata->rng()) : 0);
 
 	// Make the default upkeep "full"
 	if(cfg_["upkeep"].empty()) {
@@ -727,7 +730,7 @@ void unit::generate_name(rand_rng::simple_rng* rng)
 // @musthaveonly is true when you don't want to generate random traits or
 // you don't want to give any optional traits to a unit.
 
-void unit::generate_traits(bool musthaveonly, game_state* state)
+void unit::generate_traits(bool musthaveonly)
 {
 	LOG_UT << "Generating a trait for unit type " << type_id() << " with musthaveonly " << musthaveonly << "\n";
 	const unit_type *type = unit_types.find(type_id());
@@ -781,7 +784,7 @@ void unit::generate_traits(bool musthaveonly, game_state* state)
 	int max_traits = type->num_traits();
 	for (; nb_traits < max_traits && !candidate_traits.empty(); ++nb_traits)
 	{
-		int num = (state ? state->rng().get_next_random() : get_random_nocheck())
+		int num = (resources::gamedata ? resources::gamedata->rng().get_next_random() : get_random_nocheck())
 		          % candidate_traits.size();
 		modifications_.add_child("trait", candidate_traits[num]);
 		candidate_traits.erase(candidate_traits.begin() + num);
@@ -806,7 +809,7 @@ std::vector<std::string> unit::get_traits_list() const
 }
 
 void unit::advance_to(const config &old_cfg, const unit_type *t,
-	bool use_traits, game_state *state)
+	bool use_traits)
 {
 	t = &t->get_gender_unit_type(gender_).get_variation(variation_);
 
@@ -902,7 +905,7 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 	}
 
 	if (cfg_["random_traits"].to_bool(true)) {
-		generate_traits(!use_traits, state);
+		generate_traits(!use_traits);
 	} else {
 		// This will add any "musthave" traits to the new unit that it doesn't already have.
 		// This covers the Dark Sorcerer advancing to Lich and gaining the "undead" trait,

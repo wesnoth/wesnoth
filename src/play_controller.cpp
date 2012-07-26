@@ -63,6 +63,7 @@ static void clear_resources()
 	resources::units = NULL;
 	resources::teams = NULL;
 	resources::state_of_game = NULL;
+	resources::gamedata = NULL;
 	resources::controller = NULL;
 	resources::screen = NULL;
 	resources::soundsources = NULL;
@@ -97,6 +98,7 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	level_(level),
 	teams_(),
 	gamestate_(state_of_game),
+	gamedata_(level),
 	map_(game_config, level),
 	units_(),
 	undo_stack_(),
@@ -124,6 +126,7 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	resources::units = &units_;
 	resources::teams = &teams_;
 	resources::state_of_game = &gamestate_;
+	resources::gamedata = &gamedata_;
 	resources::controller = this;
 	resources::tod_manager = &tod_manager_;
 	resources::undo_stack = &undo_stack_;
@@ -211,16 +214,16 @@ void play_controller::init(CVideo& video){
 				first_human_team_ = team_num;
 			}
 		}
-		team_builder_ptr tb_ptr = gamestate_.create_team_builder(side,
-			save_id, teams_, level_, map_, units_, snapshot);
+		team_builder_ptr tb_ptr = gamedata_.create_team_builder(side,
+			save_id, teams_, level_, map_, units_, snapshot, gamestate_.starting_pos);
 		++team_num;
-		gamestate_.build_team_stage_one(tb_ptr);
+		gamedata_.build_team_stage_one(tb_ptr);
 		team_builders.push_back(tb_ptr);
 	}
 
 	BOOST_FOREACH(team_builder_ptr tb_ptr, team_builders)
 	{
-		gamestate_.build_team_stage_two(tb_ptr);
+		gamedata_.build_team_stage_two(tb_ptr);
 	}
 
 	// mouse_handler expects at least one team for linger mode to work.
@@ -511,7 +514,7 @@ void play_controller::search(){
 void play_controller::fire_prestart(bool execute)
 {
 	// Run initialization scripts, even if loading from a snapshot.
-	resources::state_of_game->set_phase(game_state::PRELOAD);
+	gamedata_.set_phase(game_data::PRELOAD);
 	resources::lua_kernel->initialize();
 	game_events::fire("preload");
 
@@ -519,7 +522,7 @@ void play_controller::fire_prestart(bool execute)
 	// as those may cause the display to be refreshed.
 	if (execute){
 		update_locker lock_display(gui_->video());
-		resources::state_of_game->set_phase(game_state::PRESTART);
+		gamedata_.set_phase(game_data::PRESTART);
 		game_events::fire("prestart");
 		check_end_level();
 		// prestart event may modify start turn with WML, reflect any changes.
@@ -529,16 +532,16 @@ void play_controller::fire_prestart(bool execute)
 
 void play_controller::fire_start(bool execute){
 	if(execute) {
-		resources::state_of_game->set_phase(game_state::START);
+		gamedata_.set_phase(game_data::START);
 		game_events::fire("start");
 		check_end_level();
 		// start event may modify start turn with WML, reflect any changes.
 		start_turn_ = turn();
-		gamestate_.get_variable("turn_number") = int(start_turn_);
+		gamedata_.get_variable("turn_number") = int(start_turn_);
 	} else {
 		it_is_a_new_turn_ = false;
 	}
-	resources::state_of_game->set_phase(game_state::PLAY);
+	gamedata_.set_phase(game_data::PLAY);
 }
 
 void play_controller::init_gui(){
@@ -562,8 +565,8 @@ void play_controller::init_side(const unsigned int team_index, bool is_replay){
 	}
 	gui_->set_playing_team(size_t(team_index));
 
-	gamestate_.get_variable("side_number") = player_number_;
-	gamestate_.last_selected = map_location::null_location;
+	gamedata_.get_variable("side_number") = player_number_;
+	gamedata_.last_selected = map_location::null_location;
 
 	maybe_do_init_side(team_index, is_replay);
 }
@@ -789,8 +792,8 @@ bool play_controller::execute_command(hotkey::HOTKEY_COMMAND command, int index)
 			throw game::load_game_exception(savenames_[i],false,false,false,"");
 
 		} else if (i < wml_commands_.size() && wml_commands_[i] != NULL) {
-			if(gamestate_.last_selected.valid() && wml_commands_[i]->needs_select) {
-				recorder.add_event("select", gamestate_.last_selected);
+			if(gamedata_.last_selected.valid() && wml_commands_[i]->needs_select) {
+				recorder.add_event("select", gamedata_.last_selected);
 			}
 			map_location const& menu_hex = mouse_handler_.get_last_hex();
 			recorder.add_event(wml_commands_[i]->name, menu_hex);
@@ -1155,14 +1158,14 @@ void play_controller::expand_wml_commands(std::vector<std::string>& items)
 	for (unsigned int i = 0; i < items.size(); ++i) {
 		if (items[i] == "wml") {
 			items.erase(items.begin() + i);
-			std::map<std::string, wml_menu_item*>& gs_wmi = gamestate_.wml_menu_items;
+			std::map<std::string, wml_menu_item*>& gs_wmi = gamedata_.wml_menu_items.get_menu_items();
 			if(gs_wmi.empty())
 				break;
 			std::vector<std::string> newitems;
 
 			const map_location& hex = mouse_handler_.get_last_hex();
-			gamestate_.get_variable("x1") = hex.x + 1;
-			gamestate_.get_variable("y1") = hex.y + 1;
+			gamedata_.get_variable("x1") = hex.x + 1;
+			gamedata_.get_variable("y1") = hex.y + 1;
 			scoped_xy_unit highlighted_unit("unit", hex.x, hex.y, units_);
 
 			std::map<std::string, wml_menu_item*>::iterator itor;
@@ -1175,7 +1178,7 @@ void play_controller::expand_wml_commands(std::vector<std::string>& items)
 				&& (filter_location.empty()
 					|| terrain_filter(vconfig(filter_location), units_)(hex))
 				&& (!itor->second->needs_select
-					|| gamestate_.last_selected.valid()))
+					|| gamedata_.last_selected.valid()))
 				{
 					wml_commands_.push_back(itor->second);
 					std::string newitem = itor->second->description;

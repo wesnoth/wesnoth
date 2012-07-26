@@ -232,7 +232,7 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 		}
 
 		if (place=="map" || place == "map_passable") {
-			loc = map_location(cfg,resources::state_of_game);
+			loc = map_location(cfg,resources::gamedata);
 		}
 
 		if(loc.valid() && resources::game_map->on_board(loc)) {
@@ -1480,7 +1480,7 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 	int damage = 0;
 	if (hits) {
 		damage = attacker.damage_;
-		resources::state_of_game->get_variable("damage_inflicted") = damage;
+		resources::gamedata->get_variable("damage_inflicted") = damage;
 	}
 
 	// Make sure that if we're serializing a game here,

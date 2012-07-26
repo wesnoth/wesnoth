@@ -356,11 +356,11 @@ struct vconfig_expand_visitor : boost::static_visitor<void>
 	template<typename T> void operator()(T const &) const {}
 	void operator()(const std::string &s) const
 	{
-		result = utils::interpolate_variables_into_string(s, *repos);
+		result = utils::interpolate_variables_into_string(s, *(resources::gamedata));
 	}
 	void operator()(const t_string &s) const
 	{
-		result = utils::interpolate_variables_into_tstring(s, *repos);
+		result = utils::interpolate_variables_into_tstring(s, *(resources::gamedata));
 	}
 };
 
@@ -470,16 +470,16 @@ scoped_wml_variable::scoped_wml_variable(const std::string& var_name) :
 	var_name_(var_name),
 	activated_(false)
 {
-	repos->scoped_variables.push_back(this);
+	resources::gamedata->scoped_variables.push_back(this);
 }
 
 config &scoped_wml_variable::store(const config &var_value)
 {
-	BOOST_FOREACH(const config &i, repos->get_variables().child_range(var_name_)) {
+	BOOST_FOREACH(const config &i, resources::gamedata->get_variables().child_range(var_name_)) {
 		previous_val_.add_child(var_name_, i);
 	}
-	repos->clear_variable_cfg(var_name_);
-	config &res = repos->add_variable_cfg(var_name_, var_value);
+	resources::gamedata->clear_variable_cfg(var_name_);
+	config &res = resources::gamedata->add_variable_cfg(var_name_, var_value);
 	LOG_NG << "scoped_wml_variable: var_name \"" << var_name_ << "\" has been auto-stored.\n";
 	activated_ = true;
 	return res;
@@ -488,14 +488,14 @@ config &scoped_wml_variable::store(const config &var_value)
 scoped_wml_variable::~scoped_wml_variable()
 {
 	if(activated_) {
-		repos->clear_variable_cfg(var_name_);
+		resources::gamedata->clear_variable_cfg(var_name_);
 		BOOST_FOREACH(const config &i, previous_val_.child_range(var_name_)) {
-			repos->add_variable_cfg(var_name_, i);
+			resources::gamedata->add_variable_cfg(var_name_, i);
 		}
 		LOG_NG << "scoped_wml_variable: var_name \"" << var_name_ << "\" has been reverted.\n";
 	}
-	assert(repos->scoped_variables.back() == this);
-	repos->scoped_variables.pop_back();
+	assert(resources::gamedata->scoped_variables.back() == this);
+	resources::gamedata->scoped_variables.pop_back();
 }
 
 void scoped_xy_unit::activate()
@@ -559,7 +559,7 @@ void activate_scope_variable(std::string var_name)
 		var_name.erase(itor, var_name.end());
 	}
 	std::vector<scoped_wml_variable*>::reverse_iterator rit;
-	for(rit = repos->scoped_variables.rbegin(); rit != repos->scoped_variables.rend(); ++rit) {
+	for(rit = resources::gamedata->scoped_variables.rbegin(); rit != resources::gamedata->scoped_variables.rend(); ++rit) {
 		if((**rit).name() == var_name) {
 			recursive_activation = true;
 			if(!(**rit).activated()) {
@@ -584,7 +584,7 @@ variable_info::variable_info(const std::string& varname,
 	assert(repos != NULL);
 	activate_scope_variable(varname);
 
-	vars = &repos->variables_;
+	vars = &resources::gamedata->variables_;
 	key = varname;
 	std::string::const_iterator itor = std::find(key.begin(),key.end(),'.');
 	int dot_index = key.find('.');
@@ -639,17 +639,17 @@ variable_info::variable_info(const std::string& varname,
 			case variable_info::TYPE_CONTAINER:
 				WRN_NG << "variable_info: using reserved WML variable as wrong type, "
 					<< varname << std::endl;
-				is_valid = force_valid || repos->temporaries_.child(varname);
+				is_valid = force_valid || resources::gamedata->temporaries_.child(varname);
 				break;
 			case variable_info::TYPE_SCALAR:
 			default:
 				// Store the length of the array as a temporary variable
-				repos->temporaries_[varname] = int(size);
+				resources::gamedata->temporaries_[varname] = int(size);
 				is_valid = true;
 				break;
 			}
 			key = varname;
-			vars = &repos->temporaries_;
+			vars = &resources::gamedata->temporaries_;
 			return;
 		}
 

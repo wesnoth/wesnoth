@@ -59,14 +59,14 @@ static void get_global_variable(persist_context &ctx, const vconfig &pcfg)
 	if (cfg) {
 		size_t arrsize = cfg.child_count(global);
 		if (arrsize == 0) {
-			resources::state_of_game->set_variable(local,cfg[global]);
+			resources::gamedata->set_variable(local,cfg[global]);
 		} else {
-			resources::state_of_game->clear_variable(local);
+			resources::gamedata->clear_variable(local);
 			for (size_t i = 0; i < arrsize; i++)
-				resources::state_of_game->add_variable_cfg(local,cfg.child(global,i));
+				resources::gamedata->add_variable_cfg(local,cfg.child(global,i));
 		}
 	} else {
-		resources::state_of_game->set_variable(local,"");
+		resources::gamedata->set_variable(local,"");
 	}
 }
 
@@ -84,10 +84,10 @@ static void set_global_variable(persist_context &ctx, const vconfig &pcfg)
 		std::string global = pcfg["to_global"];
 		std::string local = pcfg["from_local"];
 		config val;
-		const config &vars = resources::state_of_game->get_variables();
+		const config &vars = resources::gamedata->get_variables();
 		size_t arraylen = vars.child_count(local);
 		if (arraylen == 0) {
-			val = pack_scalar(global,resources::state_of_game->get_variable(local));
+			val = pack_scalar(global,resources::gamedata->get_variable(local));
 		} else {
 			for (size_t i = 0; i < arraylen; i++)
 				val.add_child(global,vars.child(local,i));

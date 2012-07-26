@@ -644,7 +644,7 @@ double move_leader_to_goals_phase::evaluate()
 	double max_risk = goal["max_risk"].to_double(1 - get_caution());
 	auto_remove_ = goal["auto_remove"].to_bool();
 
-	dst_ = map_location(goal, resources::state_of_game);
+	dst_ = map_location(goal, resources::gamedata);
 	if (!dst_.valid()) {
 		ERR_AI_TESTING_AI_DEFAULT << "Invalid goal: "<<std::endl<<goal;
 		return BAD_SCORE;

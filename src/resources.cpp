@@ -24,6 +24,7 @@ namespace resources
 	unit_map *units = NULL;
 	std::vector<team> *teams = NULL;
 	game_state *state_of_game = NULL;
+	game_data *gamedata = NULL;
 	LuaKernel *lua_kernel = NULL;
 	play_controller *controller = NULL;
 	::tod_manager *tod_manager = NULL;

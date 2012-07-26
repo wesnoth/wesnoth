@@ -274,7 +274,7 @@ void tod_manager::set_turn(const int num, const bool increase_limit_if_needed)
 		set_number_of_turns(new_turn);
 	}
 	turn_ = new_turn;
-	resources::state_of_game->get_variable("turn_number") = new_turn;
+	resources::gamedata->get_variable("turn_number") = new_turn;
 }
 
 void tod_manager::set_new_current_times(const int new_current_turn_number)

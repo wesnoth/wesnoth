@@ -186,7 +186,7 @@ public:
 		model_.clear_stuff_list();
 
 		const config &vars = resources::state_of_game
-				? resources::state_of_game->get_variables()
+				? resources::gamedata->get_variables()
 				: config();
 
 		BOOST_FOREACH( const config::attribute &a, vars.attribute_range()) {
@@ -211,7 +211,7 @@ public:
 
 		int i = 0;///@todo replace with precached data
 		const config &vars = resources::state_of_game
-				? resources::state_of_game->get_variables()
+				? resources::gamedata->get_variables()
 				: config();
 
 		BOOST_FOREACH( const config::attribute &a, vars.attribute_range()) {

@@ -1378,7 +1378,7 @@ void menu_handler::update_shroud_now(int side_num)
 
 bool menu_handler::end_turn(int side_num)
 {
-	if(!resources::state_of_game->allow_end_turn()) {
+	if(!resources::gamedata->allow_end_turn()) {
 		gui2::show_message((*gui_).video(), "", _("You cannot end your turn yet!"), gui2::tmessage::ok_button);
 		return false;
 	}
@@ -3498,13 +3498,13 @@ void console_handler::do_set_var() {
 	if(j != data.end()) {
 		const std::string name(data.begin(),j);
 		const std::string value(j+1,data.end());
-		menu_handler_.gamestate_.set_variable(name,value);
+		resources::gamedata->set_variable(name,value);
 	} else {
 		command_failed(_("Variable not found"));
 	}
 }
 void console_handler::do_show_var() {
-	gui2::show_transient_message((*menu_handler_.gui_).video(),"",menu_handler_.gamestate_.get_variable(get_data()));
+	gui2::show_transient_message((*menu_handler_.gui_).video(),"",resources::gamedata->get_variable(get_data()));
 }
 
 

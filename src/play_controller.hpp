@@ -26,11 +26,13 @@
 #include "persist_manager.hpp"
 #include "statistics.hpp"
 #include "tod_manager.hpp"
+#include "gamestatus.hpp"
 
 #include <boost/scoped_ptr.hpp>
 
 class game_display;
 class game_state;
+class game_data;
 class team;
 struct wml_menu_item;
 
@@ -213,6 +215,7 @@ protected:
 	const config& level_;
 	std::vector<team> teams_;
 	game_state& gamestate_;
+	game_data gamedata_;
 	gamemap map_;
 	unit_map units_;
 	undo_list undo_stack_;

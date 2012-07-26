@@ -333,7 +333,7 @@ void team::build(const config &cfg, const gamemap& map, int gold)
 	// Load in the villages the side controls at the start
 	BOOST_FOREACH(const config &v, cfg.child_range("village"))
 	{
-		map_location loc(v, resources::state_of_game);
+		map_location loc(v, resources::gamedata);
 		if (map.is_village(loc)) {
 			villages_.insert(loc);
 		} else {
@@ -374,12 +374,12 @@ bool team::get_village(const map_location& loc, const int owner_side, const bool
 	villages_.insert(loc);
 	bool gamestate_changed = false;
 	if(fire_event) {
-		config::attribute_value& var = resources::state_of_game->get_variable("owner_side");
+		config::attribute_value& var = resources::gamedata->get_variable("owner_side");
 		const config::attribute_value old_value = var;
 		var = owner_side;
 		gamestate_changed = game_events::fire("capture",loc);
 		if(old_value.blank())
-			resources::state_of_game->clear_variable("owner_side");
+			resources::gamedata->clear_variable("owner_side");
 		else
 			var = old_value;
 	}

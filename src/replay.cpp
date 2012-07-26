@@ -67,7 +67,7 @@ static void verify(const unit_map& units, const config& cfg) {
 		std::set<map_location> locs;
 		BOOST_FOREACH(const config &u, cfg.child_range("unit"))
 		{
-			const map_location loc(u, resources::state_of_game);
+			const map_location loc(u, resources::gamedata);
 			locs.insert(loc);
 
 			if(units.count(loc) == 0) {
@@ -88,7 +88,7 @@ static void verify(const unit_map& units, const config& cfg) {
 
 	BOOST_FOREACH(const config &un, cfg.child_range("unit"))
 	{
-		const map_location loc(un, resources::state_of_game);
+		const map_location loc(un, resources::gamedata);
 		const unit_map::const_iterator u = units.find(loc);
 		if(u == units.end()) {
 			errbuf << "SYNC VERIFICATION FAILED: data source says there is a '"
@@ -601,7 +601,7 @@ void replay::undo()
 			BOOST_FOREACH(const async_cmd &ac, async_cmds)
 			{
 				if (config &async_child = ac.cfg->child("rename")) {
-					map_location aloc(async_child, resources::state_of_game);
+					map_location aloc(async_child, resources::gamedata);
 					if (dst == aloc) src.write(async_child);
 				}
 			}
@@ -614,12 +614,12 @@ void replay::undo()
 		if (*chld) {
 			// A unit is being un-recruited or un-recalled.
 			// Remove unsynced commands that would act on that unit.
-			map_location src(*chld, resources::state_of_game);
+			map_location src(*chld, resources::gamedata);
 			BOOST_FOREACH(const async_cmd &ac, async_cmds)
 			{
 				if (config &async_child = ac.cfg->child("rename"))
 				{
-					map_location aloc(async_child, resources::state_of_game);
+					map_location aloc(async_child, resources::gamedata);
 					if (src == aloc) remove_command(ac.num);
 				}
 			}
@@ -771,7 +771,7 @@ static void check_checksums(const config &cfg)
 	}
 	BOOST_FOREACH(const config &ch, cfg.child_range("checksum"))
 	{
-		map_location loc(ch, resources::state_of_game);
+		map_location loc(ch, resources::gamedata);
 		unit_map::const_iterator u = resources::units->find(loc);
 		if (!u.valid()) {
 			std::stringstream message;
@@ -908,7 +908,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 		}
 		else if (const config &child = cfg->child("rename"))
 		{
-			const map_location loc(child, resources::state_of_game);
+			const map_location loc(child, resources::gamedata);
 			const std::string &name = child["name"];
 
 			unit_map::iterator u = resources::units->find(loc);
@@ -949,8 +949,8 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 		{
 			int val = child["value"];
 
-			map_location loc(child, resources::state_of_game);
-			map_location from(child.child_or_empty("from"), resources::state_of_game);
+			map_location loc(child, resources::gamedata);
+			map_location from(child.child_or_empty("from"), resources::gamedata);
 
 			unit_map::unit_iterator u = resources::units->find(from);
 
@@ -1012,8 +1012,8 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 		else if (const config &child = cfg->child("recall"))
 		{
 			const std::string& unit_id = child["value"];
-			map_location loc(child, resources::state_of_game);
-			map_location from(child.child_or_empty("from"), resources::state_of_game);
+			map_location loc(child, resources::gamedata);
+			map_location from(child.child_or_empty("from"), resources::gamedata);
 
 			std::vector<unit>::iterator recall_unit =
 				find_if_matches_id(current_team.recall_list(), unit_id);
@@ -1128,8 +1128,8 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 
 			//we must get locations by value instead of by references, because the iterators
 			//may become invalidated later
-			const map_location src(source, resources::state_of_game);
-			const map_location dst(destination, resources::state_of_game);
+			const map_location src(source, resources::gamedata);
+			const map_location dst(destination, resources::gamedata);
 
 			int weapon_num = child["weapon"];
 			int def_weapon_num = child["defender_weapon"].to_int(-2);
@@ -1198,11 +1198,11 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 		else if (const config &child = cfg->child("fire_event"))
 		{
 			BOOST_FOREACH(const config &v, child.child_range("set_variable")) {
-				resources::state_of_game->set_variable(v["name"], v["value"]);
+				resources::gamedata->set_variable(v["name"], v["value"]);
 			}
 			const std::string &event = child["raise"];
 			if (const config &source = child.child("source")) {
-				game_events::fire(event, map_location(source, resources::state_of_game));
+				game_events::fire(event, map_location(source, resources::gamedata));
 			} else {
 				game_events::fire(event);
 			}
@@ -1210,7 +1210,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 		}
 		else if (const config &child = cfg->child("advance_unit"))
 		{
-			const map_location loc(child, resources::state_of_game);
+			const map_location loc(child, resources::gamedata);
 			get_replay_source().add_expected_advancement(loc);
 			DBG_REPLAY << "got an explicit advance\n";
 
@@ -1277,7 +1277,7 @@ config mp_sync::get_user_choice(const std::string &name, const user_choice &uch,
 	int side, bool force_sp)
 {
 	if (force_sp && network::nconnections() != 0 &&
-	    resources::state_of_game->phase() != game_state::PLAY)
+	    resources::gamedata->phase() != game_data::PLAY)
 	{
 		/* We are in a multiplayer game, during an early event which
 		   prevents synchronization, and the WML is not interested
@@ -1288,7 +1288,7 @@ config mp_sync::get_user_choice(const std::string &name, const user_choice &uch,
 		ERR_REPLAY << "MP synchronization does not work during prestart and start events.";
 		throw end_level_exception(QUIT);
 	}
-	if (resources::state_of_game->phase() == game_state::PLAY || force_sp)
+	if (resources::gamedata->phase() == game_data::PLAY || force_sp)
 	{
 		/* We have to communicate with the player and store the
 		   choices in the replay. So a decision will be made on
@@ -1340,6 +1340,6 @@ config mp_sync::get_user_choice(const std::string &name, const user_choice &uch,
 		   The result is not stored in the replay, since the
 		   other clients have already taken the same decision. */
 		DBG_REPLAY << "MP synchronization: synchronized choice\n";
-		return uch.random_choice(resources::state_of_game->rng());
+		return uch.random_choice(resources::gamedata->rng());
 	}
 }

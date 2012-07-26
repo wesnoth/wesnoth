@@ -39,6 +39,36 @@ namespace t_translation {
 class team_builder;
 typedef boost::shared_ptr<team_builder> team_builder_ptr;
 
+struct wml_menu_item
+{
+	wml_menu_item(const std::string& id, const config* cfg=NULL);
+	std::string name;
+	const std::string event_id;
+	std::string image;
+	t_string description;
+	bool needs_select;
+	config show_if;
+	config filter_location;
+	config command;
+};
+
+class wmi_container{
+public:
+	wmi_container();
+	explicit wmi_container(std::map<std::string, wml_menu_item*> wml_menu_items);
+	explicit wmi_container(const wmi_container& container);
+
+	std::map<std::string, wml_menu_item*>& get_menu_items() { return wml_menu_items_; };
+	void set_menu_items(const config::const_child_itors &menu_items);
+	void clear_wmi();
+	void to_config(config& cfg);
+	void from_config(const config& cfg);
+
+	wml_menu_item*& get_item(const std::string id) { return wml_menu_items_[id]; };
+private:
+	std::map<std::string, wml_menu_item*> wml_menu_items_;
+};
+
 class carryover{
 public:
 	carryover()
@@ -91,15 +121,102 @@ public:
 	std::vector<carryover>& get_all_sides();
 	void add_side(const config& cfg);
 	void add_side(const team& t, const int gold, const bool add);
-	//TODO: remove
 	void set_end_level(const end_level_data& end_level) { end_level_ = end_level; };
+
 	void transfer_from(const team& t, int carryover_gold);
 	void transfer_all_to(config& side_cfg);
+
+	void transfer_from(const game_data& gamedata);
+	void transfer_to(config& level);
+
+	void set_variables(const config& vars) { variables_ = vars; }
+	const config& get_variables() const { return variables_; }
+
+	const rand_rng::simple_rng& rng() const { return rng_; }
+	rand_rng::simple_rng& rng() { return rng_; }
+
 	const end_level_data& get_end_level() const;
 	const config to_config();
+
+	wmi_container wml_menu_items;
 private:
 	std::vector<carryover> carryover_sides_;
 	end_level_data end_level_;
+	config variables_;
+	rand_rng::simple_rng rng_;
+};
+
+class game_data  : public variable_set  {
+public:
+	game_data();
+	game_data(const config& level);
+	game_data(const game_data& data);
+
+	~game_data();
+
+	std::vector<scoped_wml_variable*> scoped_variables;
+	wmi_container wml_menu_items;
+
+	const config& get_variables() const { return variables_; }
+	void set_variables(const config& vars);
+
+	// Variable access
+	config::attribute_value &get_variable(const std::string &varname);
+	virtual config::attribute_value get_variable_const(const std::string& varname) const;
+	config& get_variable_cfg(const std::string& varname);
+
+	void set_variable(const std::string& varname, const t_string& value);
+	config& add_variable_cfg(const std::string& varname, const config& value=config());
+
+	void clear_variable(const std::string& varname);
+	void clear_variable_cfg(const std::string& varname); // Clears only the config children
+
+	const rand_rng::simple_rng& rng() const { return rng_; }
+	rand_rng::simple_rng& rng() { return rng_; }
+
+	void set_vars(const config& cfg);
+
+	enum PHASE {
+		INITIAL,
+		PRELOAD,
+		PRESTART,
+		START,
+		PLAY
+	};
+	PHASE phase() const { return phase_; }
+	void set_phase(PHASE phase) { phase_ = phase; }
+
+	//create an object responsible for creating and populating a team from a config
+	team_builder_ptr create_team_builder(const config& side_cfg, std::string save_id
+			, std::vector<team>& teams, const config& level, gamemap& map
+			, unit_map& units, bool snapshot, const config& starting_pos);
+
+	//do first stage of team initialization (everything except unit placement)
+	void build_team_stage_one(team_builder_ptr tb_ptr);
+
+	//do second stage of team initialization (unit placement)
+	void build_team_stage_two(team_builder_ptr tb_ptr);
+
+	bool allow_end_turn() const { return can_end_turn_; }
+	void set_allow_end_turn(bool value) { can_end_turn_ = value; }
+
+	/** the last location where a select event fired. */
+	map_location last_selected;
+
+	void write_snapshot(config& cfg);
+	void write_config(config_writer& out, bool write_variables);
+
+	game_data& operator=(const game_data& info);
+	game_data* operator=(const game_data* info);
+
+private:
+	rand_rng::simple_rng rng_;
+	config variables_;
+	mutable config temporaries_; // lengths of arrays, etc.
+	const rand_rng::set_random_generator generator_setter_; /**< Make sure that rng is initialized first */
+	friend struct variable_info;
+	PHASE phase_;
+	bool can_end_turn_;
 };
 
 //meta information of the game
@@ -131,77 +248,20 @@ public:
 	std::string difficulty; /**< The difficulty level the game is being played on. */
 };
 
-struct wml_menu_item
-{
-	wml_menu_item(const std::string& id, const config* cfg=NULL);
-	std::string name;
-	const std::string event_id;
-	std::string image;
-	t_string description;
-	bool needs_select;
-	config show_if;
-	config filter_location;
-	config command;
-};
-
-class game_state : public variable_set
+class game_state
 {
 public:
 	game_state();
 	game_state(const game_state& state);
 	game_state(const config& cfg, bool show_replay = false);
 
-	~game_state();
+	~game_state(){};
 	game_state& operator=(const game_state& state);
-
-	std::vector<scoped_wml_variable*> scoped_variables;
-	std::map<std::string, wml_menu_item*> wml_menu_items;
-
-	const config& get_variables() const { return variables_; }
-	void set_variables(const config& vars);
-
-	void set_menu_items(const config::const_child_itors &menu_items);
 
 	//write the gamestate into a config object
 	void write_snapshot(config& cfg) const;
 	//write the config information into a stream (file)
 	void write_config(config_writer& out, bool write_variables=true) const;
-
-	// Variable access
-
-	config::attribute_value &get_variable(const std::string &varname);
-	virtual config::attribute_value get_variable_const(const std::string& varname) const;
-	config& get_variable_cfg(const std::string& varname);
-
-	void set_variable(const std::string& varname, const t_string& value);
-	config& add_variable_cfg(const std::string& varname, const config& value=config());
-
-	void clear_variable(const std::string& varname);
-	void clear_variable_cfg(const std::string& varname); // Clears only the config children
-
-	const rand_rng::simple_rng& rng() const { return rng_; }
-	rand_rng::simple_rng& rng() { return rng_; }
-
-	enum PHASE {
-		INITIAL,
-		PRELOAD,
-		PRESTART,
-		START,
-		PLAY
-	};
-	PHASE phase() const { return phase_; }
-	void set_phase(PHASE phase) { phase_ = phase; }
-
-	//create an object responsible for creating and populating a team from a config
-	team_builder_ptr create_team_builder(const config& side_cfg, std::string save_id
-			, std::vector<team>& teams, const config& level, gamemap& map
-			, unit_map& units, bool snapshot);
-
-	//do first stage of team initialization (everything except unit placement)
-	void build_team_stage_one(team_builder_ptr tb_ptr);
-
-	//do second stage of team initialization (unit placement)
-	void build_team_stage_two(team_builder_ptr tb_ptr);
 
 	game_classification& classification() { return classification_; }
 	const game_classification& classification() const { return classification_; } //FIXME: const getter to allow use from const gamestatus::sog() (see ai.cpp:344) - remove after merge?
@@ -209,9 +269,6 @@ public:
 	/** Multiplayer parameters for this game */
 	mp_game_settings& mp_settings() { return mp_settings_; }
 	const mp_game_settings& mp_settings() const { return mp_settings_; }
-
-	bool allow_end_turn() const { return can_end_turn_; }
-	void set_allow_end_turn(bool value) { can_end_turn_ = value; }
 
 	/**
 	 * If the game is saved mid-level, we have a series of replay steps
@@ -235,22 +292,12 @@ public:
 	 */
 	config snapshot;
 
-	/** the last location where a select event fired. */
-	map_location last_selected;
-
 	/** The carryover information for all sides*/
 	carryover_info carryover_sides;
 
 private:
-	rand_rng::simple_rng rng_;
-	config variables_;
-	mutable config temporaries_; // lengths of arrays, etc.
-	const rand_rng::set_random_generator generator_setter_; /**< Make sure that rng is initialized first */
-	friend struct variable_info;
 	game_classification classification_;
 	mp_game_settings mp_settings_;
-	PHASE phase_;
-	bool can_end_turn_;
 };
 
 

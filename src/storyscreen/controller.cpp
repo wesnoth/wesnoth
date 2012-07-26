@@ -87,7 +87,7 @@ void controller::resolve_wml(const vconfig& cfg)
 		// [switch]
 		else if(key == "switch") {
 			const std::string var_name = node["variable"];
-			const std::string var_actual_value = resources::state_of_game->get_variable_const(var_name);
+			const std::string var_actual_value = resources::gamedata->get_variable_const(var_name);
 			bool case_not_found = true;
 
 			for(vconfig::all_children_iterator j = node.ordered_begin(); j != node.ordered_end(); ++j) {
