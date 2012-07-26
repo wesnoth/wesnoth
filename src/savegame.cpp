@@ -49,8 +49,8 @@ static lg::log_domain log_engine("engine");
 #define LOG_SAVE LOG_STREAM(info, log_engine)
 #define ERR_SAVE LOG_STREAM(err, log_engine)
 
-static lg::log_domain log_ngrefac("ngrefac");
-#define LOG_RG LOG_STREAM(info, log_ngrefac)
+static lg::log_domain log_enginerefac("enginerefac");
+#define LOG_RG LOG_STREAM(info, log_enginerefac)
 
 #ifdef _WIN32
 	#ifdef INADDR_ANY

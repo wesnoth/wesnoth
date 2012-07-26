@@ -134,7 +134,7 @@ void level_to_gamestate(config& level, game_state& state)
 	if (const config &vars = level.child("variables")) {
 		state.carryover_sides.set_variables(vars);
 	}
-	state.carryover_sides.wml_menu_items.set_menu_items(level.child_range("menu_item"));
+	state.carryover_sides.wml_menu_items.set_menu_items(level);
 	state.mp_settings().set_from_config(level);
 
 	//Check whether it is a save-game by looking for snapshot data
@@ -153,7 +153,7 @@ void level_to_gamestate(config& level, game_state& state)
 		if (const config &v = snapshot.child("variables")) {
 			state.carryover_sides.set_variables(v);
 		}
-		state.carryover_sides.wml_menu_items.set_menu_items(snapshot.child_range("menu_item"));
+		state.carryover_sides.wml_menu_items.set_menu_items(snapshot);
 	}
 
 	//In any type of reload(normal save or start-of-scenario) the players could have

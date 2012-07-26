@@ -59,10 +59,9 @@ public:
 	explicit wmi_container(const wmi_container& container);
 
 	std::map<std::string, wml_menu_item*>& get_menu_items() { return wml_menu_items_; };
-	void set_menu_items(const config::const_child_itors &menu_items);
 	void clear_wmi();
 	void to_config(config& cfg);
-	void from_config(const config& cfg);
+	void set_menu_items(const config& cfg);
 
 	wml_menu_item*& get_item(const std::string id) { return wml_menu_items_[id]; };
 private:

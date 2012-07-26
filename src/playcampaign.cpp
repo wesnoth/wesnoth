@@ -346,7 +346,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		if (const config &vars = gamestate.snapshot.child("variables")) {
 			gamestate.carryover_sides.set_variables(vars);
 		}
-		gamestate.carryover_sides.wml_menu_items.set_menu_items(gamestate.snapshot.child_range("menu_item"));
+		gamestate.carryover_sides.wml_menu_items.set_menu_items(gamestate.snapshot);
 		// Replace game label with that from snapshot
 		if (!gamestate.snapshot["label"].empty()){
 			gamestate.classification().label = gamestate.snapshot["label"].str();

@@ -120,25 +120,10 @@ void wmi_container::clear_wmi()
 	wml_menu_items_.clear();
 }
 
-void wmi_container::set_menu_items(const config::const_child_itors &menu_items)
-{
-	clear_wmi();
-	BOOST_FOREACH(const config &item, menu_items)
-	{
-		std::string id = item["id"];
-		wml_menu_item*& mref = wml_menu_items_[id];
-		if(mref == NULL) {
-			mref = new wml_menu_item(id, &item);
-		} else {
-			WRN_NG << "duplicate menu item (" << id << ") while loading gamestate\n";
-		}
-	}
-}
-
 void wmi_container::to_config(config& cfg){
 	for(std::map<std::string, wml_menu_item *>::const_iterator j=wml_menu_items_.begin();
-		j!=wml_menu_items_.end(); ++j) {
-		config new_cfg = cfg.add_child("menu_item");
+		j!=wml_menu_items_.end(); j++) {
+		config new_cfg;
 		new_cfg["id"]=j->first;
 		new_cfg["image"]=j->second->image;
 		new_cfg["description"]=j->second->description;
@@ -149,10 +134,11 @@ void wmi_container::to_config(config& cfg){
 			new_cfg.add_child("filter_location", j->second->filter_location);
 		if(!j->second->command.empty())
 			new_cfg.add_child("command", j->second->command);
+		cfg.add_child("menu_item", new_cfg);
 	}
 }
 
-void wmi_container::from_config(const config& cfg){
+void wmi_container::set_menu_items(const config& cfg){
 	clear_wmi();
 	BOOST_FOREACH(const config &item, cfg.child_range("menu_item"))
 	{
@@ -161,7 +147,7 @@ void wmi_container::from_config(const config& cfg){
 		if(mref == NULL) {
 			mref = new wml_menu_item(id, &item);
 		} else {
-			WRN_NG << "duplicate menu item (" << id << ") while loading\n";
+			WRN_NG << "duplicate menu item (" << id << ") while loading from config\n";
 		}
 	}
 }
@@ -296,7 +282,7 @@ carryover_info::carryover_info(const config& cfg)
 		this->carryover_sides_.push_back(carryover(side));
 	}
 
-	wml_menu_items.from_config(cfg);
+	wml_menu_items.set_menu_items(cfg);
 }
 
 std::vector<carryover>& carryover_info::get_all_sides() {
@@ -352,7 +338,9 @@ void carryover_info::transfer_to(config& level){
 	level["random_seed"] = str_cast<int>(rng_.get_random_seed());
 	level["random_calls"] = str_cast<int>(rng_.get_random_calls());
 
-	wml_menu_items.to_config(level);
+	if(!level.has_child("menu_item")){
+		wml_menu_items.to_config(level);
+	}
 
 }
 
@@ -720,7 +708,7 @@ game_data::game_data(const config& level)
 		, phase_(INITIAL)
 		, can_end_turn_(true)
 {
-	wml_menu_items.set_menu_items(level.child_range("menu_item"));
+	wml_menu_items.set_menu_items(level);
 	can_end_turn_ = level["can_end_turn"].to_bool(true);
 
 	if(const config &vars = level.child("variables")){
