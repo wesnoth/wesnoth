@@ -77,56 +77,9 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 		reach_map_(),
 		reach_map_old_(),
 		reach_map_changed_(true),
-		game_mode_(RUNNING),
-		flags_()
+		game_mode_(RUNNING)
 {
 
-	// Inits the flag list and the team colors used by ~TC
-	flags_.reserve(teams_->size());
-
-	std::vector<std::string> side_colors;
-	side_colors.reserve(teams_->size());
-
-	for(size_t i = 0; i != teams_->size(); ++i) {
-		std::string side_color = team::get_side_color_index(i+1);
-		side_colors.push_back(side_color);
-		std::string flag = (*teams_)[i].flag();
-		std::string old_rgb = game_config::flag_rgb;
-		std::string new_rgb = side_color;
-
-		if(flag.empty()) {
-			flag = game_config::images::flag;
-		}
-
-		LOG_DP << "Adding flag for team " << i << " from animation " << flag << "\n";
-
-		// Must recolor flag image
-		animated<image::locator> temp_anim;
-
-		std::vector<std::string> items = utils::split(flag);
-		std::vector<std::string>::const_iterator itor = items.begin();
-		for(; itor != items.end(); ++itor) {
-			const std::vector<std::string>& items = utils::split(*itor, ':');
-			std::string str;
-			int time;
-
-			if(items.size() > 1) {
-				str = items.front();
-				time = atoi(items.back().c_str());
-			} else {
-				str = *itor;
-				time = 100;
-			}
-			std::stringstream temp;
-			temp << str << "~RC(" << old_rgb << ">"<< new_rgb << ")";
-			image::locator flag_image(temp.str());
-			temp_anim.add_frame(time, flag_image);
-		}
-		flags_.push_back(temp_anim);
-
-		flags_.back().start_animation(rand()%flags_.back().get_end_time(), true);
-	}
-	image::set_team_colors(&side_colors);
 	clear_screen();
 }
 
@@ -340,8 +293,6 @@ void game_display::draw_hex(const map_location& loc)
 					image::get_image(overlays.first->second.image,image_type));
 			}
 		}
-		// village-control flags.
-		drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, get_flag(loc));
 	}
 
 	// Draw reach_map information.
@@ -600,27 +551,7 @@ std::vector<surface> game_display::footsteps_images(const map_location& loc)
 	return res;
 }
 
-surface game_display::get_flag(const map_location& loc)
-{
-	t_translation::t_terrain terrain = get_map().get_terrain(loc);
 
-	if(!get_map().is_village(terrain)) {
-		return surface(NULL);
-	}
-
-	for(size_t i = 0; i != teams_->size(); ++i) {
-		if((*teams_)[i].owns_village(loc) &&
-		  (!fogged(loc) || !(*teams_)[currentTeam_].is_enemy(i+1)))
-		{
-			flags_[i].update_last_draw_time();
-			const image::locator &image_flag = animate_map_ ?
-				flags_[i].get_current_frame() : flags_[i].get_first_frame();
-			return image::get_image(image_flag, image::TOD_COLORED);
-		}
-	}
-
-	return surface(NULL);
-}
 
 void game_display::highlight_reach(const pathfind::paths &paths_list)
 {
@@ -725,15 +656,6 @@ void game_display::float_label(const map_location& loc, const std::string& text,
 	font::add_floating_label(flabel);
 }
 
-void game_display::invalidate_animations_location(const map_location& loc) {
-	if (get_map().is_village(loc)) {
-		const int owner = player_teams::village_owner(loc);
-		if (owner >= 0 && flags_[owner].need_update()
-		&& (!fogged(loc) || !(*teams_)[currentTeam_].is_enemy(owner+1))) {
-			invalidate(loc);
-		}
-	}
-}
 
 void game_display::invalidate_animations()
 {

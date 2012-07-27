@@ -159,11 +159,6 @@ protected:
 	 */
 	void invalidate_animations();
 
-	/**
-	 * Extra game per-location invalidation (village ownership)
-	 */
-	void invalidate_animations_location(const map_location& loc);
-
 
 public:
 	/** A temporary unit that can be placed on the map.
@@ -316,9 +311,6 @@ private:
 
 	void draw_sidebar();
 
-	// This surface must be freed by the caller
-	surface get_flag(const map_location& loc);
-
 	/// collection of units destined to be drawn but not put into the unit map
 	std::deque<unit*> fake_units_;
 
@@ -387,8 +379,6 @@ private:
 	// For debug mode
 	static std::map<map_location, int> debugHighlights_;
 
-	/** Animated flags for each team */
-	std::vector<animated<image::locator> > flags_;
 
 
 };

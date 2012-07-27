@@ -121,6 +121,7 @@ display::display(unit_map* units, CVideo& video, const gamemap* map, const std::
 	keys_(),
 	animate_map_(true),
 	local_tod_light_(false),
+	flags_(),
 	activeTeam_(0),
 	drawing_buffer_(),
 	map_screenshot_(false),
@@ -156,6 +157,8 @@ display::display(unit_map* units, CVideo& video, const gamemap* map, const std::
 
 	image::set_zoom(zoom_);
 
+	init_flags();
+
 #if defined(__GLIBC__)
 	// Runtime checks for bug #17573
 	// Get glibc runtime version information
@@ -176,12 +179,87 @@ display::~display()
 	singleton_ = NULL;
 }
 
+
+void display::init_flags() {
+
+	flags_.clear();
+	if (!teams_) return;
+	flags_.reserve(teams_->size());
+
+	std::vector<std::string> side_colors;
+	side_colors.reserve(teams_->size());
+
+	for(size_t i = 0; i != teams_->size(); ++i) {
+		std::string side_color = team::get_side_color_index(i+1);
+		side_colors.push_back(side_color);
+		std::string flag = (*teams_)[i].flag();
+		std::string old_rgb = game_config::flag_rgb;
+		std::string new_rgb = side_color;
+
+		if(flag.empty()) {
+			flag = game_config::images::flag;
+		}
+
+		LOG_DP << "Adding flag for team " << i << " from animation " << flag << "\n";
+
+		// Must recolor flag image
+		animated<image::locator> temp_anim;
+
+		std::vector<std::string> items = utils::split(flag);
+		std::vector<std::string>::const_iterator itor = items.begin();
+		for(; itor != items.end(); ++itor) {
+			const std::vector<std::string>& items = utils::split(*itor, ':');
+			std::string str;
+			int time;
+
+			if(items.size() > 1) {
+				str = items.front();
+				time = atoi(items.back().c_str());
+			} else {
+				str = *itor;
+				time = 100;
+			}
+			std::stringstream temp;
+			temp << str << "~RC(" << old_rgb << ">"<< new_rgb << ")";
+			image::locator flag_image(temp.str());
+			temp_anim.add_frame(time, flag_image);
+		}
+		flags_.push_back(temp_anim);
+
+		flags_.back().start_animation(rand()%flags_.back().get_end_time(), true);
+	}
+	image::set_team_colors(&side_colors);
+}
+
+
 struct is_energy_color {
 	bool operator()(Uint32 color) const { return (color&0xFF000000) > 0x10000000 &&
 	                                              (color&0x00FF0000) < 0x00100000 &&
 												  (color&0x0000FF00) < 0x00001000 &&
 												  (color&0x000000FF) < 0x00000010; }
 };
+
+surface display::get_flag(const map_location& loc)
+{
+	t_translation::t_terrain terrain = get_map().get_terrain(loc);
+
+	if(!get_map().is_village(terrain)) {
+		return surface(NULL);
+	}
+
+	for(size_t i = 0; i != teams_->size(); ++i) {
+		if((*teams_)[i].owns_village(loc) &&
+		  (!fogged(loc) || !(*teams_)[currentTeam_].is_enemy(i+1)))
+		{
+			flags_[i].update_last_draw_time();
+			const image::locator &image_flag = animate_map_ ?
+				flags_[i].get_current_frame() : flags_[i].get_first_frame();
+			return image::get_image(image_flag, image::TOD_COLORED);
+		}
+	}
+
+	return surface(NULL);
+}
 
 void display::set_team(size_t teamindex, bool show_everything)
 {
@@ -2270,6 +2348,8 @@ void display::draw_hex(const map_location& loc) {
 			drawing_buffer_add(LAYER_GRID_BOTTOM, loc, xpos, ypos,
 				image::get_image(grid_bottom, image::TOD_COLORED));
 		}
+		// village-control flags.
+		drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, get_flag(loc));
 	}
 
 	// Draw the time-of-day mask on top of the terrain in the hex.
@@ -2674,6 +2754,16 @@ bool display::invalidate_locations_in_rect(const SDL_Rect& rect)
 		result |= invalidate(loc);
 	}
 	return result;
+}
+
+void display::invalidate_animations_location(const map_location& loc) {
+	if (get_map().is_village(loc)) {
+		const int owner = player_teams::village_owner(loc);
+		if (owner >= 0 && flags_[owner].need_update()
+		&& (!fogged(loc) || !(*teams_)[currentTeam_].is_enemy(owner+1))) {
+			invalidate(loc);
+		}
+	}
 }
 
 void display::invalidate_animations()

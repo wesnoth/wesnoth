@@ -67,6 +67,7 @@ public:
 		ec_.reload_map();
 
 		resources::state_of_game = &ec_.get_map().get_game_state();
+		ec_.gui().init_flags();
 	}
 private:
 	context_manager& ec_;

@@ -149,6 +149,7 @@ void editor_controller::init_music(const config& game_config)
 editor_controller::~editor_controller()
 {
 	//TODO is not working like expected
+//	delete &toolkit_;
 //	delete toolkit_.get();
 //	delete context_manager_.get();
 }
@@ -291,6 +292,7 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_TOOL_LABEL:
 			return true;
 		case HOTKEY_EDITOR_TOOL_UNIT:
+		case HOTKEY_EDITOR_TOOL_VILLAGE:
 			return !context_manager_->get_map().get_teams().empty();
 		case HOTKEY_EDITOR_CUT:
 		case HOTKEY_EDITOR_COPY:
@@ -340,6 +342,7 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 		case HOTKEY_EDITOR_TOOL_SELECT:
 		case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
 		case HOTKEY_EDITOR_TOOL_UNIT:
+		case HOTKEY_EDITOR_TOOL_VILLAGE:
 			return toolkit_->is_mouse_action_set(command) ? ACTION_ON : ACTION_OFF;
 		case HOTKEY_EDITOR_DRAW_COORDINATES:
 			return gui_->get_draw_coordinates() ? ACTION_ON : ACTION_OFF;
@@ -432,6 +435,7 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 		case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
 		case HOTKEY_EDITOR_TOOL_LABEL:
 		case HOTKEY_EDITOR_TOOL_UNIT:
+		case HOTKEY_EDITOR_TOOL_VILLAGE:
 			toolkit_->hotkey_set_mouse_action(command);
 			return true;
 		case HOTKEY_EDITOR_PASTE: //paste is somewhat different as it might be "one action then revert to previous mode"
@@ -497,6 +501,7 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			return true;
 		case HOTKEY_EDITOR_SIDE_NEW:
 			context_manager_->get_map().new_side();
+			gui_->init_flags();
 			return true;
 		case HOTKEY_EDITOR_MAP_SAVE:
 			save_map();

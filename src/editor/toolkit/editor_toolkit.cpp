@@ -19,6 +19,7 @@
 #include "editor/action/mouse/mouse_action.hpp"
 #include "editor/action/mouse/mouse_action_map_label.hpp"
 #include "editor/action/mouse/mouse_action_unit.hpp"
+#include "editor/action/mouse/mouse_action_village.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -85,6 +86,8 @@ void editor_toolkit::init_mouse_actions(const config& game_config)
 		new mouse_action_map_label(key_, *palette_manager_->empty_palette_.get())));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_UNIT,
 		new mouse_action_unit(key_, *palette_manager_->unit_palette_.get())));
+	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_VILLAGE,
+			new mouse_action_village(key_, *palette_manager_->empty_palette_.get())));
 
 	//TODO
 	//	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_PASTE,

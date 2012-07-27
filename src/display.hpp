@@ -383,9 +383,9 @@ public:
 
 	/**
 	 * Per-location invalidation called by invalidate_animations()
-	 * defaults to no action, overridden by derived classes
+	 * Extra game per-location invalidation (village ownership)
 	 */
-	virtual void invalidate_animations_location(const map_location& /*loc*/) {}
+	void invalidate_animations_location(const map_location& loc);
 
 	const gamemap& get_map() const { return *map_; }
 
@@ -558,6 +558,11 @@ public:
 private:
 	void read(const config& cfg);
 
+public:
+	/** Inits the flag list and the team colors used by ~TC */
+	void init_flags();
+
+private:
 	/**
 	 * Finds the start and end rows on the energy bar image.
 	 *
@@ -724,6 +729,14 @@ protected:
 
 	/** Local cache for preferences "local_tod_lighting" */
 	bool local_tod_light_;
+
+private:
+
+	// This surface must be freed by the caller
+	surface get_flag(const map_location& loc);
+
+	/** Animated flags for each team */
+	std::vector<animated<image::locator> > flags_;
 
 public:
 	/**

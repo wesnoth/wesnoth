@@ -155,6 +155,8 @@ const struct {
 		N_("Label Tool"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_TOOL_UNIT, "editor-tool-unit",
 		N_("Unit Tool"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_TOOL_VILLAGE, "editor-tool-village",
+		N_("Village Tool"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_BRUSH_NEXT, "editor-brush-next", N_("Next Brush"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_BRUSH_DEFAULT, "editor-brush-default", N_("Default Brush"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_CUT, "editor-cut", N_("Cut"), false, hotkey::SCOPE_EDITOR },
