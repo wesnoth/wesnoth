@@ -45,6 +45,8 @@
 		6295C3D6150FC9EB0077D8C5 /* editor_palettes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6295C3CB150FC9EB0077D8C5 /* editor_palettes.cpp */; };
 		6295C3D8150FC9EB0077D8C5 /* terrain_palettes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6295C3D0150FC9EB0077D8C5 /* terrain_palettes.cpp */; };
 		6295C3D9150FC9EB0077D8C5 /* unit_palette.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6295C3D2150FC9EB0077D8C5 /* unit_palette.cpp */; };
+		62973FDE15C2EA7800D18140 /* action_village.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62973FDC15C2EA7800D18140 /* action_village.cpp */; };
+		62973FE215C2EAF300D18140 /* mouse_action_village.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62973FE015C2EAF300D18140 /* mouse_action_village.cpp */; };
 		62D24F2D1519982500350848 /* brush.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F271519982500350848 /* brush.cpp */; };
 		62D24F2E1519982500350848 /* brush_bar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F291519982500350848 /* brush_bar.cpp */; };
 		62D24F2F1519982500350848 /* editor_toolkit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F2B1519982500350848 /* editor_toolkit.cpp */; };
@@ -1071,6 +1073,10 @@
 		6295C3D1150FC9EB0077D8C5 /* terrain_palettes.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = terrain_palettes.hpp; sourceTree = "<group>"; };
 		6295C3D2150FC9EB0077D8C5 /* unit_palette.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unit_palette.cpp; sourceTree = "<group>"; };
 		6295C3D3150FC9EB0077D8C5 /* unit_palette.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unit_palette.hpp; sourceTree = "<group>"; };
+		62973FDC15C2EA7800D18140 /* action_village.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = action_village.cpp; sourceTree = "<group>"; };
+		62973FDD15C2EA7800D18140 /* action_village.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = action_village.hpp; sourceTree = "<group>"; };
+		62973FE015C2EAF300D18140 /* mouse_action_village.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mouse_action_village.cpp; sourceTree = "<group>"; };
+		62973FE115C2EAF300D18140 /* mouse_action_village.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mouse_action_village.hpp; sourceTree = "<group>"; };
 		62D24F271519982500350848 /* brush.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = brush.cpp; sourceTree = "<group>"; };
 		62D24F281519982500350848 /* brush.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = brush.hpp; sourceTree = "<group>"; };
 		62D24F291519982500350848 /* brush_bar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = brush_bar.cpp; sourceTree = "<group>"; };
@@ -2566,6 +2572,8 @@
 				6295C3AB150FC95C0077D8C5 /* action_label.hpp */,
 				6295C3AC150FC95C0077D8C5 /* action_unit.cpp */,
 				6295C3AD150FC95C0077D8C5 /* action_unit.hpp */,
+				62973FDC15C2EA7800D18140 /* action_village.cpp */,
+				62973FDD15C2EA7800D18140 /* action_village.hpp */,
 				6295C3AE150FC95C0077D8C5 /* mouse */,
 			);
 			path = action;
@@ -2580,6 +2588,8 @@
 				6295C3B2150FC95C0077D8C5 /* mouse_action_map_label.hpp */,
 				6295C3B3150FC95C0077D8C5 /* mouse_action_unit.cpp */,
 				6295C3B4150FC95C0077D8C5 /* mouse_action_unit.hpp */,
+				62973FE015C2EAF300D18140 /* mouse_action_village.cpp */,
+				62973FE115C2EAF300D18140 /* mouse_action_village.hpp */,
 			);
 			path = mouse;
 			sourceTree = "<group>";
@@ -4142,6 +4152,8 @@
 				621DEB8415A7BA1F00FEE18A /* highlighter.cpp in Sources */,
 				F49F12BB15B1E4E400B64B0B /* recruitment.cpp in Sources */,
 				F49F134A15BC627C00B64B0B /* editor_edit_label.cpp in Sources */,
+				62973FDE15C2EA7800D18140 /* action_village.cpp in Sources */,
+				62973FE215C2EAF300D18140 /* mouse_action_village.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
