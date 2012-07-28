@@ -109,9 +109,11 @@ private:
 
 class carryover_info{
 public:
-	carryover_info():
-		carryover_sides_(),
-		end_level_()
+	carryover_info()
+		: carryover_sides_()
+		, end_level_()
+		, variables_()
+		, rng_()
 	{};
 	// Turns config from a loaded savegame into carryover_info
 	explicit carryover_info(const config& cfg);
