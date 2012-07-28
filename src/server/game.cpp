@@ -119,7 +119,7 @@ namespace {
 std::string describe_turns(int turn, const simple_wml::string_span& num_turns)
 {
 	char buf[50];
-	snprintf(buf,sizeof(buf),"%d/",int(turn));
+	snprintf(buf,sizeof(buf),"%d/",turn);
 
 	if(num_turns == "-1") {
 		return buf + std::string("-");
