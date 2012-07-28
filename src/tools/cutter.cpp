@@ -85,9 +85,10 @@ int main(int argc, char* argv[])
 				itor != surfaces.end(); ++itor) {
 			const cutter::mask &mask = itor->second.mask;
 
-			surface surf = surface(
-					create_compatible_surface(itor->second.image,
-					mask.cut.w, mask.cut.h));
+			surface surf = create_compatible_surface(
+					  itor->second.image
+					, mask.cut.w
+					, mask.cut.h);
 
 			masked_overwrite_surface(surf, itor->second.image, mask.image,
 					mask.cut.x - mask.shift.x, mask.cut.y - mask.shift.y);
