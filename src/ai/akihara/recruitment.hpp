@@ -36,6 +36,16 @@ namespace akihara_recruitment {
 
 struct situation {
 
+	situation()
+		: depth(0)
+		, score(0.)
+		, current_team_side(0)
+		, new_unit()
+		, ally_new_unit()
+		, enemy_new_unit()
+	{
+	}
+
 	int depth;
 
 	//Score of the current situation;
