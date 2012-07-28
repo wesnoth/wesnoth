@@ -739,7 +739,7 @@ static surface get_scaled_to_zoom(const locator& i_locator)
 static surface get_brightened(const locator& i_locator)
 {
 	surface image(get_image(i_locator, TOD_COLORED));
-	return surface(brighten_image(image, ftofxp(game_config::hex_brightening)));
+	return brighten_image(image, ftofxp(game_config::hex_brightening));
 }
 
 ///translate type to a simpler one when possible
