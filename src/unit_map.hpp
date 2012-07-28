@@ -338,7 +338,7 @@ public:
 	std::vector<unit_iterator> find_leaders(int side);
 	std::vector<const_unit_iterator> find_leaders(int side) const;
 
-	size_t count(const map_location& loc) const { return static_cast<size_t>(lmap_.count(loc)); }
+	size_t count(const map_location& loc) const { return lmap_.count(loc); }
 
 	unit_iterator begin() { return make_unit_iterator( begin_core() ); }
 	const_unit_iterator begin() const { return make_const_unit_iterator( begin_core() ); }
