@@ -299,8 +299,8 @@ public class WorkspaceUtils
     public static String getTemporaryFolder( )
     {
         if( temporaryFolder_ == null || temporaryFolder_.isEmpty( ) ) {
-            temporaryFolder_ = System.getProperty( "java.io.tmpdir" ) + //$NON-NLS-1$
-                IPath.SEPARATOR + "wesnoth_plugin" + IPath.SEPARATOR; //$NON-NLS-1$
+            temporaryFolder_ = System.getProperty( "user.home" ) + //$NON-NLS-1$
+                IPath.SEPARATOR + ".wesnoth_umcide" + IPath.SEPARATOR; //$NON-NLS-1$
 
             File tmpFile = new File( temporaryFolder_ );
 
