@@ -413,7 +413,7 @@ void save_preview_pane::draw_contents()
 
 				map_surf = image::getMinimap(minimap_size, minimap_size, *map_);
 				if(map_surf != NULL) {
-					map_cache_.insert(std::pair<std::string,surface>(map_data,surface(map_surf)));
+					map_cache_.insert(std::pair<std::string,surface>(map_data, map_surf));
 				}
 			} catch(incorrect_map_format_error& e) {
 				ERR_CF << "map could not be loaded: " << e.message << '\n';
