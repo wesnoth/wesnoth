@@ -114,7 +114,7 @@ public:
 		, end_level_()
 		, variables_()
 		, rng_()
-	{};
+	{}
 	// Turns config from a loaded savegame into carryover_info
 	explicit carryover_info(const config& cfg);
 	~carryover_info(){};
@@ -122,7 +122,7 @@ public:
 	std::vector<carryover>& get_all_sides();
 	void add_side(const config& cfg);
 	void add_side(const team& t, const int gold, const bool add);
-	void set_end_level(const end_level_data& end_level) { end_level_ = end_level; };
+	void set_end_level(const end_level_data& end_level) { end_level_ = end_level; }
 
 	void transfer_from(const team& t, int carryover_gold);
 	void transfer_all_to(config& side_cfg);
