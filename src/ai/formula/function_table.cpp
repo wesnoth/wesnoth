@@ -748,7 +748,8 @@ private:
 class akihara_battle_evaluation : public function_expression {
 public:
 	akihara_battle_evaluation(const args_list& args, const formula_ai& ai)
-	: function_expression("aki_eval", args, 4, 4), ai_(ai) {
+		: function_expression("aki_eval", args, 4, 4), ai_(ai)
+	{
 	}
 
 private:
@@ -856,8 +857,6 @@ private:
 	}
 
 	const formula_ai& ai_;
-
-	std::vector<variant> vars;
 };
 
 
