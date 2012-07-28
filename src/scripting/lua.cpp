@@ -3198,9 +3198,9 @@ static int intf_get_villages(lua_State *L)
 	std::vector<map_location> locs = resources::game_map->villages();
 	lua_newtable(L);
 	int i = 1;
-	
+
 	vconfig filter = luaW_checkvconfig(L, 1);
-	
+
 	for(std::vector<map_location>::const_iterator it = locs.begin(); it != locs.end(); ++it) {
 		bool matches = terrain_filter(filter, *resources::units).match(*it);
 		if (matches) {
