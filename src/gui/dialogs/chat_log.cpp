@@ -130,7 +130,6 @@ public:
 				const std::string & color = t.color();
 				std::string nick_prefix = "<span color=\""+color+"\">";
 				std::string nick_suffix ="</span> ";
-				std::map<std::string, string_map> data;
 				if (me) {
 					str << nick_prefix << "&lt;" << escape(t.nick()) << escape(t.text().substr(3))<<"&gt;" <<nick_suffix << std::endl;
 				} else {
