@@ -1262,23 +1262,23 @@ static void draw_label(CVideo& video, surface target, const theme::label& label)
 {
 	//log_scope("draw label");
 
-        std::stringstream temp;
+	std::stringstream temp;
 	Uint32 RGB=label.font_rgb();
-        int red = (RGB & 0x00FF0000)>>16;
-        int green = (RGB & 0x0000FF00)>>8;
-        int blue = (RGB & 0x000000FF);
+	int red = (RGB & 0x00FF0000)>>16;
+	int green = (RGB & 0x0000FF00)>>8;
+	int blue = (RGB & 0x000000FF);
 
-        std::string c_start="<";
-        std::string c_sep=",";
-        std::string c_end=">";
-        std::stringstream color;
-        color<< c_start << red << c_sep << green << c_sep << blue << c_end;
-        std::string text = label.text();
+	std::string c_start="<";
+	std::string c_sep=",";
+	std::string c_end=">";
+	std::stringstream color;
+	color<< c_start << red << c_sep << green << c_sep << blue << c_end;
+	std::string text = label.text();
 
-        if(label.font_rgb_set()) {
+	if(label.font_rgb_set()) {
 		color<<text;
 		text = color.str();
-        }
+	}
 	const std::string& icon = label.icon();
 	SDL_Rect& loc = label.location(screen_area());
 
