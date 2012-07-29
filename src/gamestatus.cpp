@@ -534,8 +534,8 @@ void init(){
 		log_step("previous recruits");
 		// If the game state specifies units that
 		// can be recruited for the player, add them.
-		if (!side_cfg_) return;
-		if (const config::attribute_value *v = side_cfg_.get("previous_recruits")) {
+		if (!player_cfg_) return;
+		if (const config::attribute_value *v = player_cfg_->get("previous_recruits")) {
 			BOOST_FOREACH(const std::string &rec, utils::split(*v)) {
 				DBG_NG_TC << "adding previous recruit: " << rec << '\n';
 				t_->add_recruit(rec);
