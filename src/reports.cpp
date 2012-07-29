@@ -493,7 +493,6 @@ static config unit_defense(unit* u, const map_location& displayed_unit_hex)
 	tooltip << _("Terrain: ") << "<b>" << map.get_terrain_info(terrain).description() << "</b>\n";
 
 	const t_translation::t_list &underlyings = map.underlying_def_terrain(terrain);
-	std::vector<int> t_defs;
 	bool revert = false;
 	if (underlyings.size() != 1 || underlyings.front() != terrain)
 	{
