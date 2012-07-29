@@ -1770,8 +1770,6 @@ void generate_races_sections(const config *help_cfg, section &sec, int level)
 		}
 	}
 
-	std::stringstream text;
-
 	for(std::set<std::string, string_less>::iterator it = races.begin(); it != races.end(); ++it) {
 		section race_section;
 		config section_cfg;
