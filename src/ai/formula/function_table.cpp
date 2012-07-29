@@ -758,7 +758,6 @@ private:
 		std::vector<variant> vars;
 		std::vector<variant> terrain;
 		std::vector<variant> unit_t;
-		std::vector<variant> max_hp;
 		std::vector<variant> score_list;
 
 		map_location att_loc = convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"aki_eval:attacker_current_location")))->loc();
