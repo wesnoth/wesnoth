@@ -25,6 +25,7 @@ import org.eclipse.core.resources.WorkspaceJob;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.preference.PreferenceDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -398,9 +399,14 @@ public class WorkspaceUtils
                             projectName = "_Mainline_" + file.getName( ); //$NON-NLS-1$
                         }
 
-                        ProjectUtils.createWesnothProject( projectName,
-                            file.getAbsolutePath( ),
-                            paths.getInstallName( ), monitor );
+                        try {
+                            ProjectUtils.createWesnothProject( projectName,
+                                file.getAbsolutePath( ),
+                                paths.getInstallName( ), monitor );
+                        } catch( OperationCanceledException e ) {
+                            // do nothing
+                        }
+
 
                         monitor.worked( 10 );
                     }
