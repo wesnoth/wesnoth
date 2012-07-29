@@ -18,10 +18,10 @@ import java.util.Map;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.preference.DirectoryFieldEditor;
-import org.eclipse.jface.preference.FieldEditor;
 import org.eclipse.jface.preference.FileFieldEditor;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.StringFieldEditor;
+import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ITableLabelProvider;
@@ -137,12 +137,11 @@ public class WesnothInstallsPage extends AbstractPreferencePage
     @Override
     protected void createFieldEditors( )
     {
-        ModifyListener listener = new ModifyListener( ) {
+        ModifyListener modifyListener = new ModifyListener( ) {
 
             @Override
             public void modifyText( ModifyEvent e )
             {
-                checkState( );
                 guessDefaultPaths( );
             }
         };
@@ -163,20 +162,13 @@ public class WesnothInstallsPage extends AbstractPreferencePage
                 }
             } );
         wesnothExecutableField_.getTextControl( getFieldEditorParent( ) )
-            .addModifyListener( new ModifyListener( ) {
-
-                @Override
-                public void modifyText( ModifyEvent e )
-                {
-                    guessDefaultPaths( );
-                }
-            } );
+            .addModifyListener( modifyListener );
         addField( wesnothExecutableField_, Messages.WesnothPreferencesPage_6 );
 
         wesnothWorkingDirField_ = new DirectoryFieldEditor( "", //$NON-NLS-1$
             Messages.WesnothPreferencesPage_7, getFieldEditorParent( ) );
         wesnothWorkingDirField_.getTextControl( getFieldEditorParent( ) )
-            .addModifyListener( listener );
+            .addModifyListener( modifyListener );
         addField( wesnothWorkingDirField_, Messages.WesnothPreferencesPage_8 );
 
         wesnothUserDirField_ = new DirectoryFieldEditor( "", //$NON-NLS-1$
@@ -310,7 +302,8 @@ public class WesnothInstallsPage extends AbstractPreferencePage
 
                 }
                 else {
-                    e.doit = isCharOk( e.character ) || e.keyCode == SWT.BS
+                    e.doit = isCharOk( e.character )
+                        || e.keyCode == SWT.BS
                         || e.keyCode == SWT.ARROW_LEFT
                         || e.keyCode == SWT.ARROW_RIGHT
                         || e.keyCode == SWT.DEL;
@@ -332,6 +325,26 @@ public class WesnothInstallsPage extends AbstractPreferencePage
 
         // create fields
         parentComposite_ = ( Composite ) super.createContents( parent );
+
+        // Fixes the path to the Wesnoth executable on the Mac OS X systems
+        IPropertyChangeListener macApplicationPathCorrecter = new IPropertyChangeListener( ) {
+            @Override
+            public void propertyChange( PropertyChangeEvent event )
+            {
+                if( event.getProperty( ) != FileFieldEditor.VALUE ||
+                    ! Constants.IS_MAC_MACHINE ) {
+                    return;
+                }
+
+                String newPath = ( String ) event.getNewValue( );
+
+                if( newPath.replace( "/", "" ).endsWith( ".app" ) ) {
+                    wesnothExecutableField_.setStringValue( newPath + "/Contents/MacOS/Wesnoth" );
+                }
+            }
+        };
+
+        wesnothExecutableField_.setPropertyChangeListener( macApplicationPathCorrecter );
 
         return parentComposite_;
     }
@@ -456,7 +469,7 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         testAndSetPaths( wesnothDataDirPaths_, wesnothWorkingDirField_ );
         testAndSetPaths( wesnothUserDirPaths_, wesnothUserDirField_ );
 
-        // guess the working dir based on executable's path
+        // guess the working dir based on the executable's path
         Text textControl = wesnothWorkingDirField_
             .getTextControl( getFieldEditorParent( ) );
 
@@ -653,15 +666,6 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         super.checkState( );
         // we won't stop the user saving wrong values.
         setValid( true );
-    }
-
-    @Override
-    public void propertyChange( PropertyChangeEvent event )
-    {
-        super.propertyChange( event );
-        if( event.getProperty( ).equals( FieldEditor.VALUE ) ) {
-            checkState( );
-        }
     }
 
     private static class TableLabelProvider extends LabelProvider implements
