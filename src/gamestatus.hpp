@@ -63,7 +63,7 @@ public:
 	void to_config(config& cfg);
 	void set_menu_items(const config& cfg);
 
-	wml_menu_item*& get_item(const std::string id) { return wml_menu_items_[id]; };
+	wml_menu_item*& get_item(const std::string& id) { return wml_menu_items_[id]; };
 private:
 	std::map<std::string, wml_menu_item*> wml_menu_items_;
 };
