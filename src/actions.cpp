@@ -237,7 +237,7 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 
 		if(loc.valid() && resources::game_map->on_board(loc)) {
 			if (pass) {
-		  		loc = find_vacant_tile(loc, pathfind::VACANT_ANY, pass_check);
+				loc = find_vacant_tile(loc, pathfind::VACANT_ANY, pass_check);
 			} else {
 				loc = find_vacant_tile(loc, pathfind::VACANT_ANY);
 			}
