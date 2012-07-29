@@ -422,6 +422,7 @@ litigation.
       <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
       <plugin id="org.wesnoth" autoStart="false" startLevel="5" />
+      <property name="org.eclipse.update.reconcile" value="false" />
    </configurations>
 
 </product>
