@@ -108,7 +108,7 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 	// later, so it ought to be empty before proceeding.
 	type_ids_.clear();
 
-	std::vector< std::string > type_labels, race_labels;
+	std::vector< std::string > type_labels;
 
 	BOOST_FOREACH(const unit_type_data::unit_type_map::value_type &i, unit_types.types())
 	{
