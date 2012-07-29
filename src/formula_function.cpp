@@ -795,7 +795,6 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		std::vector<variant> list_vars;
 		std::map<variant,variant> map_vars;
 		const variant items = args()[0]->evaluate(variables,fdb);
 
