@@ -43,7 +43,7 @@ class theme
 
 		// This supports relocating of theme elements ingame.
 		// It is needed for [change] tags in theme WML.
-		void modify_location(const _rect rect);
+		void modify_location(const _rect& rect);
 		void modify_location(std::string rect_str, SDL_Rect rect_ref);
 
 		// All on-screen objects have 'anchoring' in the x and y dimensions.

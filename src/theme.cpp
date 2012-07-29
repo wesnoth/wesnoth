@@ -386,7 +386,7 @@ theme::object::ANCHORING theme::object::read_anchor(const std::string& str)
 		return FIXED;
 }
 
-void theme::object::modify_location(const _rect rect){
+void theme::object::modify_location(const _rect& rect){
 	loc_.x = rect.x1;
 	loc_.y = rect.y1;
 	loc_.w = rect.x2 - rect.x1;
