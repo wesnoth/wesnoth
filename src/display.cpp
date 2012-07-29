@@ -1262,7 +1262,6 @@ static void draw_label(CVideo& video, surface target, const theme::label& label)
 {
 	//log_scope("draw label");
 
-	std::stringstream temp;
 	Uint32 RGB=label.font_rgb();
 	int red = (RGB & 0x00FF0000)>>16;
 	int green = (RGB & 0x0000FF00)>>8;
