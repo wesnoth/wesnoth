@@ -1017,7 +1017,6 @@ bool game_controller::play_multiplayer()
 		}
 
 		if(res == 3) {
-			std::vector<std::string> chat;
 			config game_data;
 
 			const mp::controller cntr = mp::CNTR_LOCAL;
