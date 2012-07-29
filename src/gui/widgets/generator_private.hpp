@@ -179,7 +179,7 @@ struct thorizontal_list
 	/**
 	 * Tries to reduce the width for the generator.
 	 *
-	 * @see @ref layout_algorihm for more information.
+	 * @see @ref layout_algorithm for more information.
 	 *
 	 * @param maximum_width       The wanted maximum width.
 	 */
@@ -188,7 +188,7 @@ struct thorizontal_list
 	/**
 	 * Tries to reduce the height for the generator.
 	 *
-	 * @see @ref layout_algorihm for more information.
+	 * @see @ref layout_algorithm for more information.
 	 *
 	 * @param maximum_height      The wanted maximum height.
 	 */

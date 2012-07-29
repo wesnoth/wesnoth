@@ -1475,7 +1475,7 @@ void twindow::signal_handler_request_placement(
  *   cells fit this algorithm makes sure the widgets are put in the optimal
  *   state in their grid cell.
  *
- * @section layout_algorihm_window Window
+ * @section layout_algorithm_window Window
  *
  * Here is the algorithm used to layout the window:
  *

@@ -572,14 +572,14 @@ private:
 	 * This part does the pre and post processing for the actual layout
 	 * algorithm.
 	 *
-	 * @see layout_algorihm for more information.
+	 * @see layout_algorithm for more information.
 	 */
 	void layout();
 
 	/**
 	 * Layouts the linked widgets.
 	 *
-	 * @see layout_algorihm for more information.
+	 * @see layout_algorithm for more information.
 	 */
 	void layout_linked_widgets();
 

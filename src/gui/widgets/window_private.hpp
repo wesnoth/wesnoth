@@ -43,7 +43,7 @@ struct twindow_implementation
 	 *
 	 * This part handles the actual layouting of the window.
 	 *
-	 * @see layout_algorihm for more information.
+	 * @see layout_algorithm for more information.
 	 *
 	 * @param window              The window to operate upon.
 	 * @param maximum_width       The maximum width of the window.
