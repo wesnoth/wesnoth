@@ -153,7 +153,7 @@ void wmi_container::set_menu_items(const config& cfg){
 }
 
 carryover::carryover(const config& side)
-		: add_(side["gold_add"].to_bool())
+		: add_(side["add"].to_bool())
 		, color_(side["color"])
 		, current_player_(side["current_player"])
 		, gold_(side["gold"].to_int())
