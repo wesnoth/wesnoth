@@ -696,7 +696,9 @@ void loadgame::set_gamestate()
 		seed = cfg["random_seed"].to_int(42);
 	}
 	unsigned calls = show_replay_ ? 0 : gamestate_.snapshot["random_calls"].to_int();
-	gamestate_.carryover_sides.rng().seed_random(seed, calls);
+	carryover_info sides(gamestate_.carryover_sides);
+	sides.rng().seed_random(seed, calls);
+	gamestate_.carryover_sides = sides.to_config();
 }
 
 void loadgame::load_multiplayer_game()
@@ -790,7 +792,7 @@ void loadgame::copy_era(config &cfg)
 savegame::savegame(game_state& gamestate, const bool compress_saves, const std::string& title)
 	: gamestate_(gamestate)
 	, snapshot_()
-	, carryover_sides_(gamestate.carryover_sides.to_config())
+	, carryover_sides_(gamestate.carryover_sides)
 	, filename_()
 	, title_(title)
 	, error_message_(_("The game could not be saved: "))

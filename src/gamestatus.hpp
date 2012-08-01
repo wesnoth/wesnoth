@@ -114,6 +114,7 @@ public:
 		, end_level_()
 		, variables_()
 		, rng_()
+		, wml_menu_items_()
 	{}
 	// Turns config from a loaded savegame into carryover_info
 	explicit carryover_info(const config& cfg);
@@ -127,24 +128,25 @@ public:
 	void transfer_from(const team& t, int carryover_gold);
 	void transfer_all_to(config& side_cfg);
 
-	void transfer_from(const game_data& gamedata);
+	void transfer_from(game_data& gamedata);
 	void transfer_to(config& level);
 
 	void set_variables(const config& vars) { variables_ = vars; }
 	const config& get_variables() const { return variables_; }
+
+	wmi_container& get_wml_menu_items() { return wml_menu_items_; }
 
 	const rand_rng::simple_rng& rng() const { return rng_; }
 	rand_rng::simple_rng& rng() { return rng_; }
 
 	const end_level_data& get_end_level() const;
 	const config to_config();
-
-	wmi_container wml_menu_items;
 private:
 	std::vector<carryover> carryover_sides_;
 	end_level_data end_level_;
 	config variables_;
 	rand_rng::simple_rng rng_;
+	wmi_container wml_menu_items_;
 };
 
 class game_data  : public variable_set  {
@@ -156,7 +158,6 @@ public:
 	~game_data();
 
 	std::vector<scoped_wml_variable*> scoped_variables;
-	wmi_container wml_menu_items;
 
 	const config& get_variables() const { return variables_; }
 	void set_variables(const config& vars);
@@ -171,6 +172,8 @@ public:
 
 	void clear_variable(const std::string& varname);
 	void clear_variable_cfg(const std::string& varname); // Clears only the config children
+
+	wmi_container& get_wml_menu_items() { return wml_menu_items_; }
 
 	const rand_rng::simple_rng& rng() const { return rng_; }
 	rand_rng::simple_rng& rng() { return rng_; }
@@ -211,6 +214,7 @@ public:
 	game_data* operator=(const game_data* info);
 
 private:
+	wmi_container wml_menu_items_;
 	rand_rng::simple_rng rng_;
 	config variables_;
 	mutable config temporaries_; // lengths of arrays, etc.
@@ -294,7 +298,7 @@ public:
 	config snapshot;
 
 	/** The carryover information for all sides*/
-	carryover_info carryover_sides;
+	config carryover_sides;
 
 private:
 	game_classification classification_;

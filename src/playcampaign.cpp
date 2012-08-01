@@ -74,17 +74,23 @@ typedef std::map<std::string, player_controller> controller_map;
 
 
 static void team_init(config& level, game_state& gamestate){
-	gamestate.carryover_sides.transfer_to(level);
+	carryover_info sides(gamestate.carryover_sides);
+
+	sides.transfer_to(level);
 	BOOST_FOREACH(config& side_cfg, level.child_range("side")){
-		gamestate.carryover_sides.transfer_all_to(side_cfg);
+		sides.transfer_all_to(side_cfg);
 	}
+
+	gamestate.carryover_sides = sides.to_config();
 }
 
 static void store_carryover(game_state& gamestate, playsingle_controller& playcontroller, display& disp){
 	bool has_next_scenario = !gamestate.classification().next_scenario.empty() &&
 			gamestate.classification().next_scenario != "null";
 
-	gamestate.carryover_sides.transfer_from(*resources::gamedata);
+	carryover_info sides(gamestate.carryover_sides);
+
+	sides.transfer_from(*resources::gamedata);
 
 	std::ostringstream report;
 	std::string title;
@@ -106,7 +112,7 @@ static void store_carryover(game_state& gamestate, playsingle_controller& playco
 		}
 	}
 
-	const end_level_data& end_level = gamestate.carryover_sides.get_end_level();
+	const end_level_data& end_level = sides.get_end_level();
 
 	if (persistent_teams > 0 && (has_next_scenario ||
 			gamestate.classification().campaign_type == "test"))
@@ -127,7 +133,7 @@ static void store_carryover(game_state& gamestate, playsingle_controller& playco
 				continue;
 			}
 			int carryover_gold = div100rounded((t.gold() + finishing_bonus) * end_level.carryover_percentage);
-			gamestate.carryover_sides.transfer_from(t, carryover_gold);
+			sides.transfer_from(t, carryover_gold);
 
 			if (!t.is_human()){
 				continue;
@@ -144,6 +150,8 @@ static void store_carryover(game_state& gamestate, playsingle_controller& playco
 	if (end_level.carryover_report) {
 		gui2::show_transient_message(disp.video(), title, report.str(), "", true);
 	}
+
+	gamestate.carryover_sides = sides.to_config();
 }
 
 
@@ -167,7 +175,7 @@ void play_replay(display& disp, game_state& gamestate, const config& game_config
 
 	//for replays, use the variables specified in starting_pos
 	if (const config &vars = starting_pos.child("variables")) {
-		gamestate.carryover_sides.set_variables(vars);
+		gamestate.carryover_sides["variables"] = vars;
 	}
 
 	try {
@@ -211,7 +219,8 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 
 	LEVEL_RESULT res = playcontroller.play_scenario(story, skip_replay);
 	end_level = playcontroller.get_end_level_data_const();
-	state_of_game.carryover_sides.set_end_level(end_level);
+	config& cfg_end_level = state_of_game.carryover_sides.child("end_level_data");
+	end_level.write(cfg_end_level);
 
 	if (res == DEFEAT) {
 		if (resources::persist != NULL)
@@ -255,7 +264,9 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 		game_config, disp.video(), skip_replay, io_type == IO_SERVER);
 	LEVEL_RESULT res = playcontroller.play_scenario(story, skip_replay);
 	end_level = playcontroller.get_end_level_data_const();
-	state_of_game.carryover_sides.set_end_level(end_level);
+
+	config& cfg_end_level = state_of_game.carryover_sides.child("end_level_data");
+	end_level.write(cfg_end_level);
 
 	//Check if the player started as mp client and changed to host
 	if (io_type == IO_CLIENT && playcontroller.is_host())
@@ -307,6 +318,8 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 	// 'starting_pos' will contain the position we start the game from.
 	config starting_pos;
 
+	carryover_info sides = carryover_info(gamestate.carryover_sides);
+
 	// Do we have any snapshot data?
 	// yes => this must be a savegame
 	// no  => we are starting a fresh scenario
@@ -344,14 +357,16 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		// When starting wesnoth --multiplayer there might be
 		// no variables which leads to a segfault
 		if (const config &vars = gamestate.snapshot.child("variables")) {
-			gamestate.carryover_sides.set_variables(vars);
+			sides.set_variables(vars);
 		}
-		gamestate.carryover_sides.wml_menu_items.set_menu_items(gamestate.snapshot);
+		sides.get_wml_menu_items().set_menu_items(gamestate.snapshot);
 		// Replace game label with that from snapshot
 		if (!gamestate.snapshot["label"].empty()){
 			gamestate.classification().label = gamestate.snapshot["label"].str();
 		}
 	}
+
+	gamestate.carryover_sides = sides.to_config();
 
 	controller_map controllers;
 
@@ -455,7 +470,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			const config &wmlvars = gamestate.starting_pos.child("variables");
 			if (!wmlvars || wmlvars.empty()){
 				gamestate.starting_pos.clear_children("variables");
-				gamestate.starting_pos.add_child("variables", gamestate.carryover_sides.get_variables());
+				gamestate.starting_pos.add_child("variables", gamestate.carryover_sides.child_or_empty("variables"));
 			}
 
 			switch (io_type){
@@ -530,7 +545,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 		// Switch to the next scenario.
 		gamestate.classification().scenario = gamestate.classification().next_scenario;
-		gamestate.carryover_sides.rng().rotate_random();
+		sides.rng().rotate_random();
 
 		if(io_type == IO_CLIENT) {
 			if (gamestate.classification().next_scenario.empty()) {
@@ -677,7 +692,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				}
 
 				//add the variables to the starting position
-				gamestate.starting_pos.add_child("variables", gamestate.carryover_sides.get_variables());
+				gamestate.starting_pos.add_child("variables", sides.get_variables());
 
 				savegame::scenariostart_savegame save(gamestate, preferences::compress_saves());
 
@@ -687,12 +702,14 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			if (gamestate.classification().campaign_type != "multiplayer"){
 				gamestate.starting_pos = *scenario;
 				//add the variables to the starting position
-				gamestate.starting_pos.add_child("variables", gamestate.carryover_sides.get_variables());
+				gamestate.starting_pos.add_child("variables", sides.get_variables());
 				write_players(gamestate, gamestate.starting_pos, true, true);
 			}
 		}
 		gamestate.snapshot = config();
 	}
+
+	gamestate.carryover_sides = sides.to_config();
 
 	if (!gamestate.classification().scenario.empty() && gamestate.classification().scenario != "null") {
 		std::string message = _("Unknown scenario: '$scenario|'");

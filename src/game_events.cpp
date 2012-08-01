@@ -2240,7 +2240,7 @@ WML_HANDLER_FUNCTION(set_menu_item, /*event_info*/, cfg)
 	   [/set_menu_item]
 	   */
 	std::string id = cfg["id"];
-	wml_menu_item*& mref = resources::gamedata->wml_menu_items.get_item(id);
+	wml_menu_item*& mref = resources::gamedata->get_wml_menu_items().get_item(id);
 	if(mref == NULL) {
 		mref = new wml_menu_item(id);
 	}
@@ -2276,7 +2276,7 @@ WML_HANDLER_FUNCTION(clear_menu_item, /*event_info*/, cfg)
 			continue;
 		}
 
-		std::map<std::string, wml_menu_item*>& menu_items = resources::gamedata->wml_menu_items.get_menu_items();
+		std::map<std::string, wml_menu_item*>& menu_items = resources::gamedata->get_wml_menu_items().get_menu_items();
 		if(menu_items.find(id) == menu_items.end()) {
 			WRN_NG << "trying to remove non-existent menu item '" << id << "', ignoring\n";
 			continue;
@@ -3098,7 +3098,7 @@ static void commit_wmi_commands() {
 		wmi_command_change wcc = wmi_command_changes.front();
 		const bool is_empty_command = wcc.second->empty();
 
-		wml_menu_item*& mref = resources::gamedata->wml_menu_items.get_item(wcc.first);
+		wml_menu_item*& mref = resources::gamedata->get_wml_menu_items().get_item(wcc.first);
 		const bool has_current_handler = !mref->command.empty();
 
 		config::attribute_value event_id = (*wcc.second)["id"];
@@ -3413,7 +3413,7 @@ namespace game_events {
 		}
 		int wmi_count = 0;
 		typedef std::pair<std::string, wml_menu_item *> item;
-		BOOST_FOREACH(const item &itor, resources::gamedata->wml_menu_items.get_menu_items()) {
+		BOOST_FOREACH(const item &itor, resources::gamedata->get_wml_menu_items().get_menu_items()) {
 			if (!itor.second->command.empty()) {
 				event_handlers.add_event_handler(game_events::event_handler(itor.second->command, true));
 			}

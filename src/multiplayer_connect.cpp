@@ -51,6 +51,9 @@ static lg::log_domain log_config("config");
 static lg::log_domain log_mp_connect("mp/connect");
 #define DBG_MP LOG_STREAM(debug, log_mp_connect)
 
+static lg::log_domain log_enginerefac("enginerefac");
+#define LOG_RG LOG_STREAM(info, log_enginerefac)
+
 namespace {
 	const char* controller_names[] = {
 		"network",
@@ -1656,7 +1659,7 @@ void connect::load_game()
 		}
 
 		level_["experience_modifier"] = params_.xp_modifier;
-		level_["random_seed"] = state_.carryover_sides.rng().get_random_seed();
+		level_["random_seed"] = state_.carryover_sides["random_seed"];
 	}
 
 	// Add the map name to the title.

@@ -142,6 +142,8 @@ void wmi_container::set_menu_items(const config& cfg){
 	clear_wmi();
 	BOOST_FOREACH(const config &item, cfg.child_range("menu_item"))
 	{
+		if(!item.has_attribute("id")){ continue; }
+
 		std::string id = item["id"];
 		wml_menu_item*& mref = wml_menu_items_[id];
 		if(mref == NULL) {
@@ -271,18 +273,18 @@ void carryover::to_config(config& cfg){
 }
 
 carryover_info::carryover_info(const config& cfg)
-	:  wml_menu_items()
-	,  carryover_sides_()
+	: carryover_sides_()
 	, end_level_()
 	, variables_(cfg.child_or_empty("variables"))
 	, rng_(cfg)
+	, wml_menu_items_()
 {
-	end_level_.read(cfg.child("end_level_data"));
+	end_level_.read(cfg.child_or_empty("end_level_data"));
 	BOOST_FOREACH(const config& side, cfg.child_range("side")){
 		this->carryover_sides_.push_back(carryover(side));
 	}
 
-	wml_menu_items.set_menu_items(cfg);
+	wml_menu_items_.set_menu_items(cfg);
 }
 
 std::vector<carryover>& carryover_info::get_all_sides() {
@@ -323,9 +325,9 @@ void carryover_info::transfer_all_to(config& side_cfg){
 	}
 }
 
-void carryover_info::transfer_from(const game_data& gamedata){
+void carryover_info::transfer_from(game_data& gamedata){
 	variables_ = gamedata.get_variables();
-	wml_menu_items = gamedata.wml_menu_items;
+	wml_menu_items_ = gamedata.get_wml_menu_items();
 	rng_ = gamedata.rng();
 }
 
@@ -339,7 +341,7 @@ void carryover_info::transfer_to(config& level){
 	level["random_calls"] = str_cast<int>(rng_.get_random_calls());
 
 	if(!level.has_child("menu_item")){
-		wml_menu_items.to_config(level);
+		wml_menu_items_.to_config(level);
 	}
 
 }
@@ -357,7 +359,7 @@ const config carryover_info::to_config() {
 
 	cfg.add_child("variables", variables_);
 
-	wml_menu_items.to_config(cfg);
+	wml_menu_items_.to_config(cfg);
 
 	return cfg;
 }
@@ -687,8 +689,8 @@ void init(){
 
 game_data::game_data()
 		: scoped_variables()
-		, wml_menu_items()
 		, last_selected(map_location::null_location)
+		, wml_menu_items_()
 		, rng_()
 		, variables_()
 		, temporaries_()
@@ -699,8 +701,8 @@ game_data::game_data()
 
 game_data::game_data(const config& level)
 		: scoped_variables()
-		, wml_menu_items()
 		, last_selected(map_location::null_location)
+		, wml_menu_items_()
 		, rng_(level)
 		, variables_()
 		, temporaries_()
@@ -708,7 +710,7 @@ game_data::game_data(const config& level)
 		, phase_(INITIAL)
 		, can_end_turn_(true)
 {
-	wml_menu_items.set_menu_items(level);
+	wml_menu_items_.set_menu_items(level);
 	can_end_turn_ = level["can_end_turn"].to_bool(true);
 
 	if(const config &vars = level.child("variables")){
@@ -719,8 +721,8 @@ game_data::game_data(const config& level)
 game_data::game_data(const game_data& data)
 		: variable_set() // Not sure why empty, copied from old code
 		, scoped_variables(data.scoped_variables)
-		, wml_menu_items(data.wml_menu_items)
 		, last_selected(data.last_selected)
+		, wml_menu_items_(data.wml_menu_items_)
 		, rng_(data.rng_)
 		, variables_(data.variables_)
 		, temporaries_()
@@ -730,7 +732,7 @@ game_data::game_data(const game_data& data)
 {}
 
 game_data::~game_data(){
-	wml_menu_items.clear_wmi();
+	wml_menu_items_.clear_wmi();
 };
 
 config::attribute_value &game_data::get_variable(const std::string& key)
@@ -814,7 +816,7 @@ void game_data::write_snapshot(config& cfg){
 
 	cfg.add_child("variables", variables_);
 
-	wml_menu_items.to_config(cfg);
+	wml_menu_items_.to_config(cfg);
 }
 
 void game_data::write_config(config_writer& out, bool write_variables){
@@ -825,7 +827,7 @@ void game_data::write_config(config_writer& out, bool write_variables){
 	}
 
 	config cfg;
-	wml_menu_items.to_config(cfg);
+	wml_menu_items_.to_config(cfg);
 	out.write_child("menu_item", cfg);
 }
 
@@ -953,21 +955,12 @@ config game_classification::to_config() const
 }
 
 game_state::game_state()  :
-		//scoped_variables(),
-		//wml_menu_items(),
 		replay_data(),
 		starting_pos(),
 		snapshot(),
-		//last_selected(map_location::null_location),
-		carryover_sides(),
-		//rng_(),
-		//variables_(),
-		//temporaries_(),
-		//generator_setter_(&recorder),
+		carryover_sides(carryover_info().to_config()),
 		classification_(),
 		mp_settings_()
-		//phase_(INITIAL),
-		//can_end_turn_(true)
 		{}
 
 void write_players(game_state& gamestate, config& cfg, const bool use_snapshot, const bool merge_side)
@@ -1053,25 +1046,17 @@ void write_players(game_state& gamestate, config& cfg, const bool use_snapshot, 
 }
 
 game_state::game_state(const config& cfg, bool show_replay) :
-	//	scoped_variables(),
-	//	wml_menu_items(),
 		replay_data(),
 		starting_pos(),
 		snapshot(),
-	//	last_selected(map_location::null_location),
-		carryover_sides(cfg.child_or_empty("carryover_sides")),
-	//	rng_(cfg),
-//		variables_(),
-//		temporaries_(),
-//		generator_setter_(&recorder),
+	//	carryover_sides(cfg.child_or_empty("carryover_sides")),
 		classification_(cfg),
 		mp_settings_(cfg)
-	//	phase_(INITIAL),
-	//	can_end_turn_(true)
 {
-//	*gamedata = game_data(cfg);
 	n_unit::id_manager::instance().set_save_id(cfg["next_underlying_unit_id"]);
 	log_scope("read_game");
+
+	carryover_info sides(cfg.child_or_empty("carryover_sides"));
 
 	const config &snapshot = cfg.child("snapshot");
 	const config &replay_start = cfg.child("replay_start");
@@ -1082,43 +1067,25 @@ game_state::game_state(const config& cfg, bool show_replay) :
 		this->snapshot = snapshot;
 		//for backwards compatibility
 		if(snapshot.has_child("variables")){
-		carryover_sides.set_variables(snapshot.child("variables"));
+		sides.set_variables(snapshot.child("variables"));
 		}
 	} else {
 		assert(replay_start);
 		//for backwards compatibility
 		if(replay_start.has_child("variables")){
-			carryover_sides.set_variables(replay_start.child("variables"));
+			sides.set_variables(replay_start.child("variables"));
 		}
 	}
 
 	//for backwards compatibility
 	if(cfg.has_child("variables")){
-		carryover_sides.set_variables(cfg.child("variables"));
+		sides.set_variables(cfg.child("variables"));
 	}
 
-	//can_end_turn_ = cfg["can_end_turn"].to_bool(true);
+	carryover_sides = sides.to_config();
 
 	LOG_NG << "scenario: '" << classification_.scenario << "'\n";
 	LOG_NG << "next_scenario: '" << classification_.next_scenario << "'\n";
-
-	//TODO: remove once gamedata is verified
-//	//priority of populating wml variables:
-//	//snapshot -> replay_start -> root
-//	if (load_snapshot) {
-//		if (const config &vars = snapshot.child("variables")) {
-//			set_variables(vars);
-//		} else if (const config &vars = cfg.child("variables")) {
-//			set_variables(vars);
-//		}
-//	}
-//	else if (const config &vars = replay_start.child("variables")) {
-//		set_variables(vars);
-//	}
-//	else if (const config &vars = cfg.child("variables")) {
-//		set_variables(vars);
-//	}
-	//set_menu_items(cfg.child_range("menu_item"));
 
 	if (const config &replay = cfg.child("replay")) {
 		replay_data = replay;
@@ -1167,33 +1134,10 @@ void game_state::write_snapshot(config& cfg) const
 	cfg["campaign_define"] = classification_.campaign_define;
 	cfg["campaign_extra_defines"] = utils::join(classification_.campaign_xtra_defines);
 	cfg["next_underlying_unit_id"] = str_cast(n_unit::id_manager::instance().get_save_id());
-//	cfg["can_end_turn"] = can_end_turn_;
-//
-//	cfg["random_seed"] = rng_.get_random_seed();
-//	cfg["random_calls"] = rng_.get_random_calls();
 
 	cfg["end_credits"] = classification_.end_credits;
 	cfg["end_text"] = classification_.end_text;
 	cfg["end_text_duration"] = str_cast<unsigned int>(classification_.end_text_duration);
-
-//TODO: remove once gamedata is verified
-//	cfg.add_child("variables", variables_);
-//
-//	for(std::map<std::string, wml_menu_item *>::const_iterator j=wml_menu_items.begin();
-//	    j!=wml_menu_items.end(); ++j) {
-//		config new_cfg;
-//		new_cfg["id"]=j->first;
-//		new_cfg["image"]=j->second->image;
-//		new_cfg["description"]=j->second->description;
-//		new_cfg["needs_select"] = j->second->needs_select;
-//		if(!j->second->show_if.empty())
-//			new_cfg.add_child("show_if", j->second->show_if);
-//		if(!j->second->filter_location.empty())
-//			new_cfg.add_child("filter_location", j->second->filter_location);
-//		if(!j->second->command.empty())
-//			new_cfg.add_child("command", j->second->command);
-//		cfg.add_child("menu_item", new_cfg);
-//	}
 
 	if(resources::gamedata != NULL){
 		resources::gamedata->write_snapshot(cfg);
@@ -1296,30 +1240,13 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 }
 
 game_state::game_state(const game_state& state) :
-//	scoped_variables(state.scoped_variables),
-//	wml_menu_items(),
 	replay_data(state.replay_data),
 	starting_pos(state.starting_pos),
 	snapshot(state.snapshot),
-//	last_selected(state.last_selected),
 	carryover_sides(state.carryover_sides),
-//	rng_(state.rng_),
-//	variables_(state.variables_),
-//	temporaries_(), // Not sure why empty, copied from old code
-//	generator_setter_(state.generator_setter_),
 	classification_(state.classification_),
 	mp_settings_(state.mp_settings_)
-//	phase_(state.phase_),
-//	can_end_turn_(state.can_end_turn_)
-{
-	//TODO: remove once gamedata is verified
-//	clear_wmi(wml_menu_items);
-//	std::map<std::string, wml_menu_item*>::const_iterator itor;
-//	for (itor = state.wml_menu_items.begin(); itor != state.wml_menu_items.end(); ++itor) {
-//		wml_menu_item*& mref = wml_menu_items[itor->first];
-//		mref = new wml_menu_item(*(itor->second));
-//	}
-}
+{}
 
 game_state& game_state::operator=(const game_state& state)
 {

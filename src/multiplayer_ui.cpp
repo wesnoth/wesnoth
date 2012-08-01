@@ -45,6 +45,9 @@ static lg::log_domain log_network("network");
 #define LOG_NW LOG_STREAM(info, log_network)
 #define ERR_NW LOG_STREAM(err, log_network)
 
+static lg::log_domain log_enginerefac("enginerefac");
+#define LOG_RG LOG_STREAM(info, log_enginerefac)
+
 namespace {
 
 	/** The maximum number of messages in the chat history. */
@@ -106,11 +109,13 @@ void level_to_gamestate(config& level, game_state& state)
 		}
 	}
 
+	carryover_info sides = carryover_info(state.carryover_sides);
+
 	//set random
 	const std::string seed = level["random_seed"];
-	if(! seed.empty()) {
+	if(!seed.empty()) {
 		const unsigned calls = lexical_cast_default<unsigned>(level["random_calls"]);
-		state.carryover_sides.rng().seed_random(lexical_cast<int>(seed), calls);
+		sides.rng().seed_random(lexical_cast<int>(seed), calls);
 	} else {
 		ERR_NG << "No random seed found, random "
 			"events will probably be out of sync.\n";
@@ -132,9 +137,9 @@ void level_to_gamestate(config& level, game_state& state)
 	state.classification().version = level["version"].str();
 
 	if (const config &vars = level.child("variables")) {
-		state.carryover_sides.set_variables(vars);
+		sides.set_variables(vars);
 	}
-	state.carryover_sides.wml_menu_items.set_menu_items(level);
+	sides.get_wml_menu_items().set_menu_items(level);
 	state.mp_settings().set_from_config(level);
 
 	//Check whether it is a save-game by looking for snapshot data
@@ -151,9 +156,9 @@ void level_to_gamestate(config& level, game_state& state)
 	if (saved_game) {
 		state.snapshot = snapshot;
 		if (const config &v = snapshot.child("variables")) {
-			state.carryover_sides.set_variables(v);
+			sides.set_variables(v);
 		}
-		state.carryover_sides.wml_menu_items.set_menu_items(snapshot);
+		sides.get_wml_menu_items().set_menu_items(snapshot);
 	}
 
 	//In any type of reload(normal save or start-of-scenario) the players could have
@@ -181,12 +186,14 @@ void level_to_gamestate(config& level, game_state& state)
 			}
 		}
 	}
-	if(state.carryover_sides.get_variables().empty()) {
+	if(sides.get_variables().empty()) {
 		LOG_NG << "No variables were found for the game_state." << std::endl;
 	} else {
 		LOG_NG << "Variables found and loaded into game_state:" << std::endl;
-		LOG_NG << state.carryover_sides.get_variables();
+		LOG_NG << sides.get_variables();
 	}
+
+	state.carryover_sides = sides.to_config();
 }
 
 std::string get_color_string(int id)
