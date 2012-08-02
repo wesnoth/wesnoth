@@ -380,17 +380,32 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 		parse_location_range(cfg_["x"], cfg_["y"], with_border);
 	std::set<map_location> xy_set(xy_vector.begin(), xy_vector.end());
 	if (!cfg_.has_attribute("x") && !cfg_.has_attribute("y")) {
-		//consider all locations on the map
-		int bs = resources::game_map->border_size();
-		int w = with_border ? resources::game_map->w() + bs : resources::game_map->w();
-		int h = with_border ? resources::game_map->h() + bs : resources::game_map->h();
-		for (int x = with_border ? 0 - bs : 0; x < w; ++x) {
-			for (int y = with_border ? 0 - bs : 0; y < h; ++y) {
-				xy_set.insert(map_location(x,y));
+		if(cfg_.has_attribute("find_in")) {
+			//use content of find_in as starting set
+			variable_info vi(cfg_["find_in"], false, variable_info::TYPE_CONTAINER);
+			if(!vi.is_valid) {
+				xy_set.clear();
+			} else if(vi.explicit_index) {
+				map_location test_loc(vi.as_container(),NULL);
+				xy_set.insert(test_loc);
+			} else {
+				BOOST_FOREACH(const config &cfg, vi.as_array()) {
+					map_location test_loc(cfg, NULL);
+					xy_set.insert(test_loc);
+				}
+			}
+		} else {
+			//consider all locations on the map
+			int bs = resources::game_map->border_size();
+			int w = with_border ? resources::game_map->w() + bs : resources::game_map->w();
+			int h = with_border ? resources::game_map->h() + bs : resources::game_map->h();
+			for (int x = with_border ? 0 - bs : 0; x < w; ++x) {
+				for (int y = with_border ? 0 - bs : 0; y < h; ++y) {
+					xy_set.insert(map_location(x,y));
+				}
 			}
 		}
-	}
-	if(cfg_.has_attribute("find_in")) {
+	} else if(cfg_.has_attribute("find_in")) {
 		//remove any locations not found in the specified variable
 		variable_info vi(cfg_["find_in"], false, variable_info::TYPE_CONTAINER);
 		if(!vi.is_valid) {
