@@ -116,7 +116,7 @@ struct queued_event_context
 	{ current_qe = previous_qe; }
 };
 
-game_events::queued_event const *queued_event_context::current_qe = 0;
+game_events::queued_event const *queued_event_context::current_qe = NULL;
 game_events::queued_event queued_event_context::default_qe
 	("_from_lua", map_location(), map_location(), config());
 
