@@ -1545,11 +1545,12 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 			std::set<int> viewers;
 			if (i->has_attribute("viewing_side")) {
 				ERR_NG << "[filter_vision]viewing_side= is deprecated, use side=\n";
+				const int max_side = static_cast<int>(teams_manager::get_teams().size());
 				std::vector<std::pair<int,int> > ranges = utils::parse_ranges((*i)["viewing_side"]);
 				std::vector<std::pair<int,int> >::const_iterator range, range_end = ranges.end();
 				for (range = ranges.begin(); range != range_end; ++range) {
 					for (int i=range->first; i<=range->second; ++i) {
-						if (i > 0 && static_cast<size_t>(i) <= teams_manager::get_teams().size()) {
+						if ( 0 < i  &&  i <= max_side ) {
 							viewers.insert(i);
 						}
 					}
