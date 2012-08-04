@@ -309,6 +309,7 @@ Version 1.11.0-svn:
    * Fixed CALL_FUNCTION macro (bug #19805)
    * Added [effect] apply_to=halo
    * Converted [store_villages] from C++ to Lua
+   * Introduced [unstore_unit]animate=yes|no (def. yes) parameter
  * Miscellaneous and bug fixes:
    * Fix wrong preferences path suffix (1.1 instead of 1.10) on Linux and other
      platforms using XDG layout (no compiled-in preferences path override,
