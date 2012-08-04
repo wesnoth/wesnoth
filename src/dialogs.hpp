@@ -57,7 +57,7 @@ int advance_unit_dialog(const map_location &loc);
  * to be used to implement advances from any nonstandard situation. It does
  * not add a replay.
  */
-bool animate_unit_advancement(const map_location &loc, size_t choice, const bool &fire_event = true);
+bool animate_unit_advancement(const map_location &loc, size_t choice, const bool &fire_event = true, const bool animate = true);
 
 void show_objectives(const config &level, const std::string &objectives);
 

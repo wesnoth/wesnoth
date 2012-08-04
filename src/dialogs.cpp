@@ -181,7 +181,7 @@ void advance_unit(const map_location &loc, bool random_choice, bool add_replay_e
 	}
 }
 
-bool animate_unit_advancement(const map_location &loc, size_t choice, const bool &fire_event)
+bool animate_unit_advancement(const map_location &loc, size_t choice, const bool &fire_event, const bool animate)
 {
 	const events::command_disabler cmd_disabler;
 
@@ -205,7 +205,7 @@ bool animate_unit_advancement(const map_location &loc, size_t choice, const bool
 	// When the unit advances, it fades to white, and then switches
 	// to the new unit, then fades back to the normal color
 
-	if (!resources::screen->video().update_locked()) {
+	if (animate && !resources::screen->video().update_locked()) {
 		unit_animator animator;
 		bool with_bars = true;
 		animator.add_animation(&*u,"levelout", u->get_location(), map_location(), 0, with_bars);
@@ -242,7 +242,7 @@ bool animate_unit_advancement(const map_location &loc, size_t choice, const bool
 	u = resources::units->find(loc);
 	resources::screen->invalidate_unit();
 
-	if (u != resources::units->end() && !resources::screen->video().update_locked()) {
+	if (animate && u != resources::units->end() && !resources::screen->video().update_locked()) {
 		unit_animator animator;
 		animator.add_animation(&*u, "levelin", u->get_location(), map_location(), 0, true);
 		animator.start_animations();
