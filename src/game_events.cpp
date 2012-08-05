@@ -2186,7 +2186,7 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 		if (fire_event) {
 			game_events::fire("die", death_loc, killer_loc);
 			unit_map::iterator iun = resources::units->find(death_loc);
-			if (iun != resources::units->end() && death_loc.matches_unit(*iun)) {
+			if ( death_loc.matches_unit(iun) ) {
 				resources::units->erase(iun);
 			}
 		}
@@ -3128,13 +3128,15 @@ static void commit_wmi_commands() {
 	}
 }
 
+/**
+ * Returns true iff the given event passes all its filters.
+ */
 static bool filter_event(const game_events::event_handler& handler,
                          const game_events::queued_event& ev)
 {
 	unit_map *units = resources::units;
 	unit_map::iterator unit1 = units->find(ev.loc1);
 	unit_map::iterator unit2 = units->find(ev.loc2);
-	bool filtered_unit1 = false, filtered_unit2 = false;
 	vconfig filters(handler.get_config());
 
 	BOOST_FOREACH(const vconfig &condition, filters.get_children("filter_condition"))
@@ -3153,11 +3155,8 @@ static bool filter_event(const game_events::event_handler& handler,
 
 	BOOST_FOREACH(const vconfig &f, filters.get_children("filter"))
 	{
-		if (unit1 == units->end() || !game_events::unit_matches_filter(*unit1, f)) {
+		if ( !ev.loc1.matches_unit_filter(unit1, f) ) {
 			return false;
-		}
-		if (!f.empty()) {
-			filtered_unit1 = true;
 		}
 	}
 
@@ -3165,13 +3164,14 @@ static bool filter_event(const game_events::event_handler& handler,
 	bool special_matches = special_filters.empty();
 	if ( !special_matches  &&  unit1 != units->end() )
 	{
+		const bool matches_unit = ev.loc1.matches_unit(unit1);
 		const config & attack = ev.data.child("first");
 		BOOST_FOREACH(const vconfig &f, special_filters)
 		{
 			if ( f.empty() )
 				special_matches = true;
-			else
-				filtered_unit1 = true;
+			else if ( !matches_unit )
+				return false;
 
 			special_matches = special_matches ||
 			                  game_events::matches_special_filter(attack, f);
@@ -3180,19 +3180,11 @@ static bool filter_event(const game_events::event_handler& handler,
 	if(!special_matches) {
 		return false;
 	}
-	if (ev.loc1.requires_unit() && filtered_unit1 &&
-	    (unit1 == units->end() || !ev.loc1.matches_unit(*unit1))) {
-		// Wrong or missing entity at src location
-		return false;
-	}
 
 	BOOST_FOREACH(const vconfig &f, filters.get_children("filter_second"))
 	{
-		if (unit2 == units->end() || !game_events::unit_matches_filter(*unit2, f)) {
+		if ( !ev.loc2.matches_unit_filter(unit2, f) ) {
 			return false;
-		}
-		if (!f.empty()) {
-			filtered_unit2 = true;
 		}
 	}
 
@@ -3200,24 +3192,20 @@ static bool filter_event(const game_events::event_handler& handler,
 	special_matches = special_filters.empty();
 	if ( !special_matches  &&  unit2 != units->end() )
 	{
+		const bool matches_unit = ev.loc2.matches_unit(unit2);
 		const config & attack = ev.data.child("second");
 		BOOST_FOREACH(const vconfig &f, special_filters)
 		{
 			if ( f.empty() )
 				special_matches = true;
-			else				
-				filtered_unit2 = true;
+			else if ( !matches_unit )
+				return false;
 
 			special_matches = special_matches ||
 			                  game_events::matches_special_filter(attack, f);
 		}
 	}
 	if(!special_matches) {
-		return false;
-	}
-	if (ev.loc2.requires_unit() && filtered_unit2 &&
-	    (unit2 == units->end() || !ev.loc2.matches_unit(*unit2))) {
-		// Wrong or missing entity at dst location
 		return false;
 	}
 
@@ -3626,14 +3614,36 @@ namespace game_events {
 		: map_location(u.get_location()), id_(u.underlying_id())
 	{}
 
-	bool entity_location::matches_unit(const unit& u) const
+	/**
+	 * Determines if @a un_it matches (using underlying ID) the unit that was
+	 * supplied when this was constructed.
+	 * If no unit was supplied, then all units (including non-existent units)
+	 * match.
+	 */
+	bool entity_location::matches_unit(const unit_map::iterator & un_it) const
 	{
-		return id_ == u.underlying_id();
+		return id_ == 0  ||  ( un_it.valid() && id_ == un_it->underlying_id() );
 	}
 
-	bool entity_location::requires_unit() const
+	/**
+	 * Determines if @a un_it matches @a filter. If the filter is not empty,
+	 * the unit is required to additionally match the unit that was supplied
+	 * when this was constructed.
+	 */
+	bool entity_location::matches_unit_filter(const unit_map::iterator & un_it,
+	                                          const vconfig & filter) const
 	{
-		return id_ > 0;
+		if ( !un_it.valid() )
+			return false;
+
+		if ( filter.empty() )
+			// Skip the check for un_it matching *this.
+			return true;
+
+		// The intended (and currently only) use of this function is to check
+		// the at this location. So map_location(*this) should equal
+		// un_it->get_location().
+		return un_it->matches_filter(filter, *this)  &&  matches_unit(un_it);
 	}
 
 } // end namespace game_events (2)

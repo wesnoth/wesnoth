@@ -17,6 +17,7 @@
 #define GAME_EVENTS_H_INCLUDED
 
 #include "map.hpp"
+#include "unit_map.hpp"
 #include "variable.hpp"
 
 /**
@@ -63,9 +64,12 @@ namespace game_events
 	struct entity_location : public map_location {
 		entity_location(const map_location &loc, size_t id = 0);
 		explicit entity_location(const unit &);
-		bool requires_unit() const;
-		bool matches_unit(const unit& u) const;
-		private:
+
+		bool matches_unit(const unit_map::iterator & un_it) const;
+		bool matches_unit_filter(const unit_map::iterator & un_it,
+		                         const vconfig & filter) const;
+
+	private:
 		size_t id_;
 	};
 
