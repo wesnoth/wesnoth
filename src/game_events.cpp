@@ -3128,21 +3128,14 @@ static void commit_wmi_commands() {
 	}
 }
 
-static bool process_event(game_events::event_handler& handler, const game_events::queued_event& ev)
+static bool filter_event(const game_events::event_handler& handler,
+                         const game_events::queued_event& ev)
 {
-	if(handler.disabled())
-		return false;
-
 	unit_map *units = resources::units;
 	unit_map::iterator unit1 = units->find(ev.loc1);
 	unit_map::iterator unit2 = units->find(ev.loc2);
 	bool filtered_unit1 = false, filtered_unit2 = false;
-	scoped_xy_unit first_unit("unit", ev.loc1.x, ev.loc1.y, *units);
-	scoped_xy_unit second_unit("second_unit", ev.loc2.x, ev.loc2.y, *units);
-	scoped_weapon_info first_weapon("weapon", ev.data.child("first"));
-	scoped_weapon_info second_weapon("second_weapon", ev.data.child("second"));
 	vconfig filters(handler.get_config());
-
 
 	BOOST_FOREACH(const vconfig &condition, filters.get_children("filter_condition"))
 	{
@@ -3218,6 +3211,24 @@ static bool process_event(game_events::event_handler& handler, const game_events
 		return false;
 	}
 
+	// All filters passed.
+	return true;
+}
+
+static bool process_event(game_events::event_handler& handler, const game_events::queued_event& ev)
+{
+	if(handler.disabled())
+		return false;
+
+	unit_map *units = resources::units;
+	scoped_xy_unit first_unit("unit", ev.loc1.x, ev.loc1.y, *units);
+	scoped_xy_unit second_unit("second_unit", ev.loc2.x, ev.loc2.y, *units);
+	scoped_weapon_info first_weapon("weapon", ev.data.child("first"));
+	scoped_weapon_info second_weapon("second_weapon", ev.data.child("second"));
+
+	if ( !filter_event(handler, ev) )
+		return false;
+
 	// The event hasn't been filtered out, so execute the handler.
 	scoped_context evc;
 	handler.handle_event(ev);
@@ -3233,7 +3244,6 @@ static bool process_event(game_events::event_handler& handler, const game_events
 		screen->invalidate_all();
 		screen->rebuild_all();
 	}
-
 
 	return current_context->mutated;
 }
