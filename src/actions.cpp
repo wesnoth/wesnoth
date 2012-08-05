@@ -2584,7 +2584,6 @@ class unit_move_animator : public boost::noncopyable
 	const bool show_move_;
 	const std::vector<map_location> &route_;
 	std::vector<map_location>::const_iterator loc_;
-	map_location displaced_;
 
 	/**
 	 * Places a temporary unit on the display when constructed,
@@ -2630,52 +2629,6 @@ class unit_move_animator : public boost::noncopyable
 		}
 	};
 
-	/**
-	 * Empties a tile by displacing the occupying
-	 * unit to a nearby tile. This can be reversed
-	 * by a subsequent call to undisplace().
-	 *
-	 * This fails silently if there is no acceptable
-	 * tile to move the unit to.
-	 */
-	void displace(const map_location &from) {
-		game_display &disp = *resources::screen;
-
-		unit_map::iterator displaced_unit = m_.find(from);
-		if(displaced_unit != m_.end()) {
-			displaced_ = pathfind::find_vacant_tile(
-				from,
-				pathfind::VACANT_ANY,
-				&*displaced_unit);
-			m_.move(from, displaced_);
-
-			disp.invalidate_unit_after_move(from, displaced_);
-			disp.invalidate(from);
-			disp.invalidate(displaced_);
-			m_.find(displaced_)->set_standing();
-		}
-	}
-
-	/**
-	 * Returns the displaced unit to the tile it came from.
-	 *
-	 * This fails silently if the tile is already occupied.
-	 */
-	void undisplace() {
-		game_display &disp = *resources::screen;
-
-		if(displaced_ != map_location::null_location)
-		{
-			m_.move(displaced_, *loc_);
-
-			disp.invalidate_unit_after_move(displaced_, *loc_);
-			disp.invalidate(displaced_);
-			disp.invalidate(*loc_);
-			m_.find(*loc_)->set_standing();
-
-			displaced_ = map_location::null_location;
-		}
-	}
 public:
 	/**
 	 * Constructor
@@ -2688,17 +2641,8 @@ public:
 		movement_started_(false),
 		show_move_(show_move),
 		route_(route),
-		loc_(route.begin()),
-		displaced_(map_location::null_location)
+		loc_(route.begin())
 	{}
-
-	/**
-	 * @returns true if this is currently tracking a displaced unit.
-	 */
-	bool has_displaced_something()
-	{
-		return displaced_ != map_location::null_location;
-	}
 
 	/**
 	 * Displays the unit's starting animation, if necessary.
@@ -2710,8 +2654,6 @@ public:
 			return;
 		movement_started_ = true;
 
-		std::vector<team> &teams = *resources::teams;
-
 		unit_map::iterator ui = m_.find(*loc_);
 		if(ui == m_.end())
 			return;
@@ -2719,7 +2661,7 @@ public:
 		if(show_move_)
 		{
 			// show the movement start animation
-			team &tm = teams[ui->side() - 1];
+			const team &tm = (*resources::teams)[ui->side() - 1];
 
 			animation_unit_placer placer(*ui);
 
@@ -2736,56 +2678,23 @@ public:
 	 *                  This location must always be later in the route than
 	 *                  the unit's current position.
 	 */
-	void continue_movement(const std::vector<map_location>::const_iterator dest)
+	void continue_movement(const unit_map::iterator & ui, const std::vector<map_location>::const_iterator & dest)
 	{
 		start_movement();
-
-		std::vector<team> &teams = *resources::teams;
-		game_display &disp = *resources::screen;
 
 		assert(loc_ < dest);
 		assert(dest < route_.end());
 
-		unit_map::iterator ui = m_.find(*loc_);
-
-		if ( has_displaced_something()  &&  ui != m_.end() ) {
-			// Get the moving unit out of the way of undisplacement.
-			map_location empty_hex =
-				pathfind::find_vacant_tile(route_.front());
-			std::pair<unit_map::iterator, bool> move_result =
-				m_.move(*loc_, empty_hex);
-			if ( move_result.second )
-				ui = move_result.first;
-		}
-
-		undisplace();
-
 		if ( show_move_  &&  ui != m_.end() )
 		{
 			// show the movement animation
-			team &tm = teams[ui->side() - 1];
+			const team &tm = (*resources::teams)[ui->side() - 1];
 
 			animation_unit_placer placer(*ui);
 
 			for(std::vector<map_location>::const_iterator step = loc_; step != dest; ++step) {
 				unit_display::move_unit_step(route_, step - route_.begin(), placer.temp_unit, tm);
 			}
-		}
-		if ( ui.valid() )
-		{
-			displace(*dest);
-
-			// move the real unit
-			std::pair<unit_map::iterator, bool> move_result =
-				m_.move(ui->get_location(), *dest);
-			if ( move_result.second )
-				ui = move_result.first;
-
-			ui->set_facing((dest-1)->get_relative_dir(*dest));
-			ui->set_standing();
-			disp.invalidate_unit_after_move(*loc_, *dest);
-			disp.invalidate(*loc_);
-			disp.invalidate(*dest);
 		}
 
 		loc_ = dest;
@@ -2813,14 +2722,6 @@ public:
 
 			// Show the final move animation step
 			resources::screen->draw();
-		}
-
-		if(m_.count(*loc_) == 0)
-		{
-			// Apparently the moving unit was removed by an event
-			// while over an occupied tile.  Put the displaced
-			// unit back where it was.
-			undisplace();
 		}
 	}
 };
@@ -2850,13 +2751,13 @@ public:
 		{ return std::vector<map_location>(begin_, expected_end_); }
 		/// After moving, this is the final hex reached.
 		const map_location & final_hex() const
-		{ return (real_end_ == begin_) ? *begin_ : *(real_end_-1); }
+		{ return *move_loc_; }
 		/// After moving, this indicates if any units were seen.
 		/// This includes seen units that would not interrupt movement.
 		bool saw_units() const  { return !seen_units_.empty(); }
 		/// The number of hexes actually entered.
 		size_t steps_travelled() const
-		{ return real_end_ == begin_ ? 0 : (real_end_ - begin_) - 1; }
+		{ return move_loc_ - begin_; }
 		/// After moving, use this to detect if movement was less than expected.
 		bool stopped_early() const  { return expected_end_ != real_end_; }
 		/// After moving, use this to detect if something happened that would
@@ -2880,7 +2781,8 @@ public:
 		route_iterator plot_turn(const route_iterator & start,
 		                         const route_iterator & stop);
 		/// Updates our stored info after a WML event might have changed something.
-		bool post_wml(const route_iterator & step, bool movement_done=false);
+		bool post_wml(const route_iterator & step);
+		bool post_wml() { return post_wml(full_end_); }
 		/// Fires the sighted events that were raised earlier.
 		bool pump_sighted(const route_iterator & from);
 		/// If ambush_string_ is empty, set it to the "alert" for the given unit.
@@ -2900,6 +2802,10 @@ public:
 		/// Makes sure the path is not obstructed by a unit.
 		inline bool check_for_obstructing_unit(const map_location & hex,
 		                                       const map_location & prev_hex);
+		/// Moves the unit the next step.
+		inline void do_move(const route_iterator & step_from,
+		                    const route_iterator & step_to,
+		                    unit_move_animator & animator);
 		/// Clears fog/shroud and handles units being sighted.
 		inline void handle_fog(const map_location & hex, bool ally_interrupts);
 		inline bool is_reasonable_stop(const map_location & hex) const;
@@ -2941,6 +2847,7 @@ public:
 		int current_side_;
 		team * current_team_;	// Will default to the original team if the moving unit becomes invalid.
 		bool current_uses_fog_;
+		route_iterator move_loc_; // Will point to the last moved-to location (in case the moving unit disappears).
 
 		// Data accumulated while making the move.
 		map_location zoc_stop_;
@@ -2990,6 +2897,7 @@ public:
 		current_team_(&(*resources::teams)[current_side_-1]),
 		current_uses_fog_(current_team_->fog_or_shroud()  &&
 		                  current_team_->auto_shroud_updates()),
+		move_loc_(begin_),
 		// The remaining fields are set to some sort of "zero state".
 		zoc_stop_(map_location::null_location),
 		ambush_stop_(map_location::null_location),
@@ -3100,6 +3008,47 @@ public:
 
 
 	/**
+	 * Moves the unit the next step.
+	 * @a step_to is the hex being moved to.
+	 * @a step_from is the hex before that in the route.
+	 * (The unit is actually at *move_loc_.)
+	 * @a animator is the unit_move_animator being used.
+	 */
+	inline void unit_mover::do_move(const route_iterator & step_from,
+	                                const route_iterator & step_to,
+	                                unit_move_animator & animator)
+	{
+		game_display &disp = *resources::screen;
+
+		// Adjust the movement even if we cannot move yet.
+		// We will eventually be able to move if nothing unexpected
+		// happens, and if something does happen, this movement is the
+		// cost to discover it.
+		move_it_->set_movement(moves_left_.front());
+		moves_left_.pop_front();
+
+		// Attempt actually moving.
+		// (Fails if *step_to is occupied).
+		std::pair<unit_map::iterator, bool> move_result =
+			resources::units->move(*move_loc_, *step_to);
+		if ( move_result.second )
+		{
+			// Update the moving unit.
+			move_it_ = move_result.first;
+			move_it_->set_standing(false);
+			move_it_->set_facing(step_from->get_relative_dir(*step_to));
+			disp.invalidate_unit_after_move(*move_loc_, *step_to);
+			disp.invalidate(*move_loc_);
+			disp.invalidate(*step_to);
+			move_loc_ = step_to;
+
+			// Show this move.
+			animator.continue_movement(move_it_, step_to);
+		}
+	}
+
+
+	/**
 	 * Clears fog/shroud and raises events for units being sighted.
 	 * Only call this if the current team uses fog or shroud.
 	 * @a hex is both the center of fog clearing and the assumed location of
@@ -3154,11 +3103,10 @@ public:
 	 */
 	inline bool unit_mover::is_reasonable_stop(const map_location & hex) const
 	{
-		// We cannot reasonably stop if the hex is occupied.
-		// (Currently handled elsewhere, as when this function is called, the
-		// hex is always occupied by the moving unit.)
-		//if ( resources::units->count(hex) != 0 )
-		//	return false;
+		// We cannot reasonably stop if move_it_ could not be moved to this
+		// hex (the hex was occupied by someone else).
+		if ( *move_loc_ != hex )
+			return false;
 
 		// We can reasonably stop if the hex is not an unowned village.
 		return !resources::game_map->is_village(hex) ||
@@ -3378,17 +3326,15 @@ public:
 	/**
 	 * Updates our stored info after a WML event might have changed something.
 	 *
-	 * @param step           Indicates the position of the moving unit. How it does this depends on @a post_move.
-	 * @param movement_done  If true, then step points one past the location of the moving unit and the possible path will not be recalculated.
-	 *                       If false, then step points to the location of the moving unit and the possible path will be recalculated.
+	 * @param step      Indicates the position in the path where we might need to start recalculating movement.
+	 *                  Set this to full_end_ (or do not supply it) to skip such recalculations (because movement has finished).
 	 *
 	 * @returns false if continuing is impossible (i.e. we lost the moving unit).
 	 */
-	bool unit_mover::post_wml(const route_iterator & step, bool movement_done)
+	bool unit_mover::post_wml(const route_iterator & /* step */)
 	{
-		// Relocate the moving unit.
-		move_it_ = resources::units->find(movement_done  &&  step != begin_ ?
-		                                  *(step-1) : *step);
+		// Re-find the moving unit.
+		move_it_ = resources::units->find(*move_loc_);
 		bool found = move_it_ != resources::units->end();
 
 		// Update the current unit data.
@@ -3401,9 +3347,7 @@ public:
 		// The following lines will only be useful if there comes a way to
 		// flag an event that makes changes without interrupting movement.
 		// (It's been suggested, but might be too complicated to implement.)
-		//if ( found  &&  !movement_done ) {
-		//	// TODO: When plotting the turn, the displaced unit (if any)
-		//	// should be ignored.
+		//if ( found  &&  step != full_end_ ) {
 		//	const route_iterator new_limit = plot_turn(step, expected_end_);
 		//	cache_hidden_units(step, new_limit);
 		//	// Just in case: length 0 paths become length 1 paths.
@@ -3494,6 +3438,7 @@ public:
 		if ( begin_ != ambush_limit_ ) {
 			// Prepare to animate.
 			unit_move_animator animator(route_, show); // Should really end at expected_end_.
+			animator.start_movement();
 
 			// Traverse the route to the hex where we need to stop.
 			// Each iteration performs the move from real_end_-1 to real_end_.
@@ -3505,8 +3450,7 @@ public:
 				// Already accounted for: ambusher
 				if ( event_mutated_  &&  can_break )
 					break;
-				if ( sighted_ && can_break && !animator.has_displaced_something() &&
-				     is_reasonable_stop(*step_from) )
+				if ( sighted_ && can_break && is_reasonable_stop(*step_from) )
 				{
 					sighted_stop_ = true;
 					break;
@@ -3531,18 +3475,21 @@ public:
 					break;
 
 				// We can leave *step_from. Make the move to *real_end_.
-				animator.continue_movement(real_end_);
-				move_it_->set_movement(moves_left_.front());
-				moves_left_.pop_front();
+				do_move(step_from, real_end_, animator);
+
+				// Update the fog.
 				if ( current_uses_fog_ )
 					handle_fog(*real_end_, ally_interrupts);
-				// Finish animation by here
 
 				// Fire the events for this move.
 				pump_sighted(real_end_); // Ignore the return value, as there are more events to try to fire, and real_end_ still needs to be incremented.
 				fire_hex_event(enter_hex_str, real_end_, step_from); // Ignore the return value, as real_end_ still needs to be incremented.
 			}//for
 		}//if
+
+		// Done moving. Resume standing/idle animations (with bars).
+		if ( move_it_.valid() )
+			move_it_->set_standing(true);
 
 		// Some flags were set to indicate why we might stop.
 		// Update those to reflect whether or not we got to them.
@@ -3594,14 +3541,14 @@ public:
 					// Captured. Zap movement and take over the village.
 					move_it_->set_movement(0);
 					event_mutated_ |= get_village(final_loc, current_side_, &action_time_bonus);
-					post_wml(real_end_, true);
+					post_wml();
 				}
 			}
 		}
 
 		// Finally, the moveto event.
 		event_mutated_ |= game_events::fire("moveto", final_loc, *begin_);
-		post_wml(real_end_, true);
+		post_wml();
 
 		// Record keeping.
 		if ( spectator_ )
