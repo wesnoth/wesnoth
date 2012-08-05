@@ -3144,6 +3144,13 @@ static bool filter_event(const game_events::event_handler& handler,
 		}
 	}
 
+	BOOST_FOREACH(const vconfig &f, filters.get_children("filter_side"))
+	{
+		side_filter ssf(f);
+		const int current_side = resources::controller->current_side();
+		if(!ssf.match(current_side)) return false;
+	}
+
 	BOOST_FOREACH(const vconfig &f, filters.get_children("filter"))
 	{
 		if (unit1 == units->end() || !game_events::unit_matches_filter(*unit1, f)) {
@@ -3154,25 +3161,28 @@ static bool filter_event(const game_events::event_handler& handler,
 		}
 	}
 
-	BOOST_FOREACH(const vconfig &f, filters.get_children("filter_side"))
-	{
-		side_filter ssf(f);
-		const int current_side = resources::controller->current_side();
-		if(!ssf.match(current_side)) return false;
-	}
-
 	vconfig::child_list special_filters = filters.get_children("filter_attack");
 	bool special_matches = special_filters.empty();
-	BOOST_FOREACH(const vconfig &f, special_filters)
+	if ( !special_matches  &&  unit1 != units->end() )
 	{
-		if (unit1 != units->end() && game_events::matches_special_filter(ev.data.child("first"), f)) {
-			special_matches = true;
-		}
-		if (!f.empty()) {
-			filtered_unit1 = true;
+		const config & attack = ev.data.child("first");
+		BOOST_FOREACH(const vconfig &f, special_filters)
+		{
+			if ( f.empty() )
+				special_matches = true;
+			else
+				filtered_unit1 = true;
+
+			special_matches = special_matches ||
+			                  game_events::matches_special_filter(attack, f);
 		}
 	}
 	if(!special_matches) {
+		return false;
+	}
+	if (ev.loc1.requires_unit() && filtered_unit1 &&
+	    (unit1 == units->end() || !ev.loc1.matches_unit(*unit1))) {
+		// Wrong or missing entity at src location
 		return false;
 	}
 
@@ -3188,21 +3198,21 @@ static bool filter_event(const game_events::event_handler& handler,
 
 	special_filters = filters.get_children("filter_second_attack");
 	special_matches = special_filters.empty();
-	BOOST_FOREACH(const vconfig &f, special_filters)
+	if ( !special_matches  &&  unit2 != units->end() )
 	{
-		if (unit2 != units->end() && game_events::matches_special_filter(ev.data.child("second"), f)) {
-			special_matches = true;
-		}
-		if (!f.empty()) {
-			filtered_unit2 = true;
+		const config & attack = ev.data.child("second");
+		BOOST_FOREACH(const vconfig &f, special_filters)
+		{
+			if ( f.empty() )
+				special_matches = true;
+			else				
+				filtered_unit2 = true;
+
+			special_matches = special_matches ||
+			                  game_events::matches_special_filter(attack, f);
 		}
 	}
 	if(!special_matches) {
-		return false;
-	}
-	if (ev.loc1.requires_unit() && filtered_unit1 &&
-	    (unit1 == units->end() || !ev.loc1.matches_unit(*unit1))) {
-		// Wrong or missing entity at src location
 		return false;
 	}
 	if (ev.loc2.requires_unit() && filtered_unit2 &&
