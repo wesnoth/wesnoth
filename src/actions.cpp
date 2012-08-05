@@ -3068,11 +3068,12 @@ public:
 		                                  NULL, &newly_seen_units, &petrified_units);
 
 		// Raise sighted events.
+		const game_events::entity_location viewer(*move_it_, hex);
 		BOOST_FOREACH(const map_location &here, newly_seen_units) {
-			game_events::raise(sighted_str, here, hex);
+			game_events::raise(sighted_str, here, viewer);
 		}
 		BOOST_FOREACH(const map_location &here, petrified_units) {
-			game_events::raise(sighted_str, here, hex);
+			game_events::raise(sighted_str, here, viewer);
 		}
 
 		// Check for sighted units?
@@ -3245,7 +3246,8 @@ public:
 		                            const route_iterator & current,
 	                                const route_iterator & other)
 	{
-		const bool event = game_events::fire(event_name, *current, *other);
+		const game_events::entity_location mover(*move_it_, *current);
+		const bool event = game_events::fire(event_name, mover, *other);
 		/// @todo: It would be nice to know if any WML was executed.
 		/// If not, we do not really need to call post_wml().
 		const bool valid = post_wml(current);
