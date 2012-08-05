@@ -150,8 +150,8 @@ msgstr ""
 "Project-Id-Version: el_gr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-01-22 15:00+0100\n"
-"PO-Revision-Date: 2008-01-21 18:54+0200\n"
-"Last-Translator: Konstantinos Egarhos <atixos@gmail.com>\n"
+"PO-Revision-Date: 2012-08-05 00:40+0200\n"
+"Last-Translator: \n"
 "Language-Team:  <el@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -1871,7 +1871,7 @@ msgstr ""
 #. [language]
 #: data/english.cfg:23
 msgid "$name|’s Bridge,$name|’s Crossing"
-msgstr ""
+msgstr "Γέφυρα $name| , Διασταύρωση $name|"
 
 #. [language]
 #: data/english.cfg:24
@@ -1881,17 +1881,17 @@ msgstr ""
 #. [language]
 #: data/english.cfg:25
 msgid "$name River,River $name"
-msgstr "$name ποταμός,ποταμός $name"
+msgstr "$name Ποταμός,Ποταμός $name"
 
 #. [language]
 #: data/english.cfg:26
 msgid "$name Forest,$name|’s Forest"
-msgstr "$name δάσος,$name|s δάσος"
+msgstr "$name Δάσος,$name|s Δάσος"
 
 #. [language]
 #: data/english.cfg:27
 msgid "$name Lake"
-msgstr "$name λίμνη"
+msgstr "$name Λίμνη"
 
 #. [language]
 #: data/english.cfg:28
@@ -3030,9 +3030,8 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: src/actions.cpp:2777
-#, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
-msgstr "Εθεάθησαν μονάδες! ($friends φιλικές, $enemies εχθρικές)"
+msgstr "Εθεάθησαν μονάδες! ($friendphrase, $enemyphrase)"
 
 #: src/actions.cpp:2786
 msgid "(press $hotkey to keep moving)"
@@ -5231,7 +5230,7 @@ msgstr "Δέν βρέθηκαν εποχές"
 
 #: src/multiplayer_create.cpp:238
 msgid "$login|’s game"
-msgstr "Παράταξη"
+msgstr "Του $login|"
 
 #: src/multiplayer_create.cpp:304
 msgid "Invalid era selected"
@@ -5621,7 +5620,7 @@ msgstr ""
 
 #: src/playsingle_controller.cpp:691
 msgid "It is now $name|’s turn"
-msgstr "Τέλος σεναρίου"
+msgstr "Είναι η σειρά του $name|"
 
 #: src/playsingle_controller.cpp:929
 msgid "Scenario Report"
@@ -6267,57 +6266,46 @@ msgstr "Αντικατάσταση με $player"
 msgid "Whiteboard Options"
 msgstr ""
 
-#, fuzzy
 #~| msgid "Easy"
 #~ msgid "(Easy)"
 #~ msgstr "Εύκολο"
 
-#, fuzzy
 #~| msgid "Normal"
 #~ msgid "(Normal)"
 #~ msgstr "Κανονικό"
 
-#, fuzzy
 #~| msgid "Hard"
 #~ msgid "(Hard)"
 #~ msgstr "Δύσκολο"
 
-#, fuzzy
 #~| msgid "Players: "
 #~ msgid "Players"
 #~ msgstr "Παίκτες: "
 
-#, fuzzy
 #~| msgid "Enemy village"
 #~ msgid "Enemies"
 #~ msgstr " Εχθρικό χωριό"
 
-#, fuzzy
 #~| msgid "Difficulty: "
 #~ msgid "Difficulty: Easy"
 #~ msgstr "Δυσκολία: "
 
-#, fuzzy
 #~| msgid "Difficulty: "
 #~ msgid "Difficulty: Normal"
 #~ msgstr "Δυσκολία: "
 
-#, fuzzy
 #~| msgid "Difficulty: "
 #~ msgid "Difficulty: Hard"
 #~ msgstr "Δυσκολία: "
 
-#, fuzzy
 #~| msgid "Campaign: $campaign_name"
 #~ msgid "Main campaign define"
 #~ msgstr "Εκστρατεία: $campaign_name"
 
-#, fuzzy
 #~| msgid "Campaign Design"
 #~ msgid "Extra campaign define"
 #~ msgstr "Σχεδιαστές Εκστρατείων"
 
-#, fuzzy
 #~| msgid "Multiplayer"
 #~ msgid "Multiplayer define"
 #~ msgstr "Δικτυακό Παιχνίδι"
