@@ -3582,10 +3582,10 @@ namespace game_events {
 					continue;
 				// Set the variables for the event
 				if (init_event_vars) {
-					resources::gamedata->get_variable("x1") = ev.loc1.x + 1;
-					resources::gamedata->get_variable("y1") = ev.loc1.y + 1;
-					resources::gamedata->get_variable("x2") = ev.loc2.x + 1;
-					resources::gamedata->get_variable("y2") = ev.loc2.y + 1;
+					resources::gamedata->get_variable("x1") = ev.loc1.filter_x() + 1;
+					resources::gamedata->get_variable("y1") = ev.loc1.filter_y() + 1;
+					resources::gamedata->get_variable("x2") = ev.loc2.filter_x() + 1;
+					resources::gamedata->get_variable("y2") = ev.loc2.filter_y() + 1;
 					init_event_vars = false;
 				}
 
@@ -3606,12 +3606,43 @@ namespace game_events {
 		return result;
 	}
 
+	/**
+	 * Constructor for when an event has a location but not necessarily a unit.
+	 * Can also be used if the event has a unit and the caller already has the
+	 * unit's location and underlying ID.
+	 */
 	entity_location::entity_location(const map_location &loc, size_t id)
-		: map_location(loc), id_(id)
+		: map_location(loc), id_(id), filter_loc_(loc)
 	{}
 
+	/**
+	 * Constructor for when an event has a unit that needs to be filtered as if
+	 * it was in a different location.
+	 */
+	entity_location::entity_location(const map_location &loc, size_t id,
+	                                 const map_location & filter_loc)
+		: map_location(loc), id_(id), filter_loc_(filter_loc)
+	{}
+
+	/**
+	 * Convenience constructor for when an event has a unit, saving the caller
+	 * the need to explicitly get the location and underlying ID.
+	 */
 	entity_location::entity_location(const unit &u)
-		: map_location(u.get_location()), id_(u.underlying_id())
+		: map_location(u.get_location())
+		, id_(u.underlying_id())
+		, filter_loc_(*this)
+	{}
+
+	/**
+	 * Convenience constructor for when an event has a unit that needs to be
+	 * filtered as if it was in a different location, and the caller does not
+	 * want to explicitly get the unit's location and underlying ID.
+	 */
+	entity_location::entity_location(const unit &u, const map_location & filter_loc)
+		: map_location(u.get_location())
+		, id_(u.underlying_id())
+		, filter_loc_(filter_loc)
 	{}
 
 	/**
@@ -3640,10 +3671,10 @@ namespace game_events {
 			// Skip the check for un_it matching *this.
 			return true;
 
-		// The intended (and currently only) use of this function is to check
-		// the at this location. So map_location(*this) should equal
-		// un_it->get_location().
-		return un_it->matches_filter(filter, *this)  &&  matches_unit(un_it);
+		// Filter the unit at the filter location (should be the unit's
+		// location if no special filter location was specified).
+		return un_it->matches_filter(filter, filter_loc_)  &&
+		       matches_unit(un_it);
 	}
 
 } // end namespace game_events (2)

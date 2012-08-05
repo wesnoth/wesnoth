@@ -63,14 +63,26 @@ namespace game_events
 
 	struct entity_location : public map_location {
 		entity_location(const map_location &loc, size_t id = 0);
+		entity_location(const map_location &loc, size_t id,
+		                const map_location &filter_loc);
 		explicit entity_location(const unit &);
+		entity_location(const unit &u, const map_location &filter_loc);
 
+		int filter_x() const { return filter_loc_.x; }
+		int filter_y() const { return filter_loc_.y; }
 		bool matches_unit(const unit_map::iterator & un_it) const;
 		bool matches_unit_filter(const unit_map::iterator & un_it,
 		                         const vconfig & filter) const;
 
 	private:
+		/// The underlying ID of the unit associated with this.
+		/// Set to 0 if there is no associated unit.
 		size_t id_;
+
+		/// This map_location allows a unit to be filtered as if it were
+		/// somewhere other than where it is. (Use the parent struct if
+		/// you want to locate the unit.)
+		map_location filter_loc_;
 	};
 
 
