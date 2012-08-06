@@ -278,6 +278,20 @@ const std::string holder::get_ai_identifier() const
 	return cfg_["id"];
 }
 
+component* holder::get_component(component *root, const std::string &path) {
+	if (!game_config::debug) // Debug guard
+	{
+		return NULL;
+	}
+	
+	if (root == NULL) // Return root component(ai_)
+	{
+		return &*this->ai_;
+	}
+	
+	return component_manager::get_component(root, path);
+}
+
 // =======================================================================
 // LIFECYCLE
 // =======================================================================
@@ -700,6 +714,15 @@ std::string manager::get_active_ai_structure_for_side( side_number side)
 std::string manager::get_active_ai_identifier_for_side( side_number side )
 {
 	return get_active_ai_holder_for_side(side).get_ai_identifier();
+}
+
+ai::holder& manager::get_active_ai_holder_for_side_dbg(side_number side)
+{
+	if (!game_config::debug) 
+	{
+		return *(new ai::holder(side, config()));
+	}
+	return get_active_ai_holder_for_side(side);
 }
 
 

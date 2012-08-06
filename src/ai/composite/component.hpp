@@ -87,6 +87,8 @@ public:
 	static bool change_component(component *root, const std::string &path, const config &cfg);
 	static bool delete_component(component *root, const std::string &path);
 	static std::string print_component_tree(component *root, const std::string &path);
+	
+	static component* get_component(component *root, const std::string &path);
 };
 
 

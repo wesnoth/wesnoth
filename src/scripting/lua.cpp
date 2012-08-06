@@ -37,6 +37,8 @@
 
 #include "actions.hpp"
 #include "ai/manager.hpp"
+#include "ai/composite/component.hpp"
+#include "ai/testing/stage_rca.hpp"
 #include "attack_prediction.hpp"
 #include "filesystem.hpp"
 #include "game_display.hpp"
@@ -3434,6 +3436,120 @@ static int intf_modify_ai(lua_State *L)
 	return 0;
 }
 
+static int cfun_exec_candidate_action(lua_State *L) 
+{
+	bool exec = lua_toboolean(L, -1);
+	lua_pop(L, 1);
+	
+	lua_getfield(L, -1, "ca_ptr");
+	
+	ai::candidate_action *ca = static_cast<ai::candidate_action*>(lua_touserdata(L, -1));
+	lua_pop(L, 2);
+	if (exec) {
+		ca->execute();
+		return 0;
+	}
+	lua_pushinteger(L, ca->evaluate());
+	return 1;
+}
+
+static int cfun_exec_stage(lua_State *L)
+{
+	lua_getfield(L, -1, "stg_ptr");
+	ai::stage *stg = static_cast<ai::stage*>(lua_touserdata(L, -1));
+	lua_pop(L, 2);
+	stg->play_stage();
+	return 0;
+}
+
+static void push_component(lua_State *L, ai::component* c, const std::string &ct = "")
+{	
+	lua_createtable(L, 0, 0); // Table for a component
+	
+	lua_pushstring(L, "name");
+	lua_pushstring(L, c->get_name().c_str());
+	lua_rawset(L, -3);
+	
+	lua_pushstring(L, "engine");
+	lua_pushstring(L, c->get_engine().c_str());
+	lua_rawset(L, -3);
+	
+	lua_pushstring(L, "id");
+	lua_pushstring(L, c->get_id().c_str());
+	lua_rawset(L, -3);
+	
+	if (ct == "candidate_action") {
+		lua_pushstring(L, "ca_ptr");
+		lua_pushlightuserdata(L, c);
+		lua_rawset(L, -3);
+		
+		lua_pushstring(L, "exec");
+		lua_pushcclosure(L, &cfun_exec_candidate_action, 0);
+		lua_rawset(L, -3);
+	}
+	
+	if (ct == "stage") {
+		lua_pushstring(L, "stg_ptr");
+		lua_pushlightuserdata(L, c);
+		lua_rawset(L, -3);
+		
+		lua_pushstring(L, "exec");
+		lua_pushcclosure(L, &cfun_exec_stage, 0);
+		lua_rawset(L, -3);
+	}
+	
+	
+	std::vector<std::string> c_types = c->get_children_types();
+	
+	for (std::vector<std::string>::const_iterator t = c_types.begin(); t != c_types.end(); t++) 
+	{
+		std::vector<ai::component*> children = c->get_children(*t);
+		std::string type = *t;
+		if (type == "aspect" || type == "goal" || type == "engine") 
+		{
+			continue;
+		}
+		
+		lua_pushstring(L, type.c_str());
+		lua_createtable(L, 0, 0); // this table will be on top of the stack during recursive calls
+		
+		for (std::vector<ai::component*>::const_iterator i = children.begin(); i != children.end(); i++)
+		{
+			lua_pushstring(L, (*i)->get_name().c_str());
+			push_component(L, *i, type);
+			lua_rawset(L, -3);
+			
+			//if (type == "candidate_action")
+			//{
+			//	ai::candidate_action *ca = dynamic_cast<ai::candidate_action*>(*i);
+			//	ca->execute();
+			//}
+		}
+		
+		lua_rawset(L, -3); // setting the child table
+	}
+	
+	
+}
+
+/** 
+ * Debug access to the ai tables
+ * - Arg 1: int
+ * - Ret 1: ai table
+ */
+static int intf_debug_ai(lua_State *L)
+{
+	if (!game_config::debug) { // This function works in debug mode only
+		return 0;
+	}
+	int side = lua_tointeger(L, 1);
+	ai::component* c = ai::manager::get_active_ai_holder_for_side_dbg(side).get_component(NULL, "");
+	
+	push_component(L, c);
+	
+	return 1;
+}
+
 struct lua_report_generator : reports::generator
 {
 	lua_State *mState;
@@ -3526,6 +3642,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "copy_unit",                &intf_copy_unit                },
 		{ "create_unit",              &intf_create_unit              },
 		{ "debug",                    &intf_debug                    },
+		{ "debug_ai",                 &intf_debug_ai                 },
 		{ "delay",                    &intf_delay                    },
 		{ "dofile",                   &intf_dofile                   },
 		{ "eval_conditional",         &intf_eval_conditional         },
