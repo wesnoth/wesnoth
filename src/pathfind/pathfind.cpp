@@ -244,7 +244,9 @@ static void find_routes(const gamemap& map, const unit& u, const map_location& l
 	  teleports = pathfind::get_teleport_locations(u, viewing_team, see_all, ignore_units);
 	}
 
-	const int total_movement = move_left;
+	/// @todo: total_movement is not set correctly for vision and "jamming" maps,
+	/// but those maps currently do not make use of total_movement (so not urgent).
+	const int total_movement = u.total_movement();
 
 	search_counter += 2;
 	if (search_counter == 0) search_counter = 2;
