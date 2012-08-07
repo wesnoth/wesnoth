@@ -14,6 +14,8 @@
 
 /** @file clipboard.cpp */
 
+#include <unistd.h>
+
 #include "global.hpp"
 
 #include "clipboard.hpp"
