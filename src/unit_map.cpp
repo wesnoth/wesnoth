@@ -92,6 +92,15 @@ unit_map::unit_iterator unit_map::unit_iterator::operator++(int){
 	return unit_iterator(iter, map_);
 }
 
+bool unit_map::unit_iterator::operator==(const unit_iterator &that) const{
+	return that.i_ == this->i_;
+}
+bool unit_map::unit_iterator::operator!=(const unit_iterator &that) const{
+	return that.i_ != this->i_;
+}
+bool unit_map::unit_iterator::valid() const{
+	return i_ != map_->map_.end() && i_->second.first;
+}
 // Due to unit <-> unit_map dependencies, must be out of line.
 const std::pair<map_location,unit>* unit_map::const_unit_iterator::operator->() const
 {
@@ -142,6 +151,15 @@ unit_map::const_unit_iterator unit_map::const_unit_iterator::operator++(int){
 	}
 
 	return const_unit_iterator(iter, map_);
+}
+bool unit_map::const_unit_iterator::operator==(const const_unit_iterator &that) const{
+	return that.i_ == this->i_;
+}
+bool unit_map::const_unit_iterator::operator!=(const const_unit_iterator &that) const{
+	return that.i_ != this->i_;
+}
+bool unit_map::const_unit_iterator::valid() const{
+	return i_ != map_->map_.end() && i_->second.first;
 }
 
 unit_map::unit_xy_iterator::unit_xy_iterator(const unit_iterator &i) :
@@ -199,6 +217,12 @@ unit_map::unit_xy_iterator unit_map::unit_xy_iterator::operator++(int){
 	return unit_xy_iterator(iter, map_, pre_loc);
 }
 
+bool unit_map::unit_xy_iterator::operator==(const unit_xy_iterator &that) const{
+	return that.i_ == this->i_;
+}
+bool unit_map::unit_xy_iterator::operator!=(const unit_xy_iterator &that) const{
+	return that.i_ != this->i_;
+}
 bool unit_map::unit_xy_iterator::valid() const {
 	return i_ != map_->map_.end() && i_->second.first && loc_ == i_->second.second->first;
 }
@@ -264,6 +288,12 @@ unit_map::const_unit_xy_iterator unit_map::const_unit_xy_iterator::operator++(in
 	return const_unit_xy_iterator(iter, map_, pre_loc);
 }
 
+bool unit_map::const_unit_xy_iterator::operator==(const const_unit_xy_iterator &that) const{
+	return that.i_ == this->i_;
+}
+bool unit_map::const_unit_xy_iterator::operator!=(const const_unit_xy_iterator &that) const{
+	return that.i_ != this->i_;
+}
 bool unit_map::const_unit_xy_iterator::valid() const {
 	return i_ != map_->map_.end() && i_->second.first && loc_ == i_->second.second->first;
 }
@@ -458,6 +488,13 @@ unit_map::unit_iterator unit_map::begin() {
 		}
 		return unit_iterator(i, this);
 }
+unit_map::const_unit_iterator unit_map::begin() const {
+	umap::const_iterator i = map_.begin();
+	while (i != map_.end() && !i->second.first) {
+		++i;
+	}
+	return const_unit_iterator(i, this);
+}
 
 void unit_map::add(const map_location &l, const unit &u)
 {
@@ -603,5 +640,18 @@ void unit_map::clean_invalid() {
 	num_invalid_ -= num_cleaned;
 
 	LOG_NG << "unit_map::clean_invalid - removed " << num_cleaned << " invalid map entries.\n";
+}
+
+void unit_map::invalidate(umap::iterator i) {
+	if(i == map_.end())
+		return;
+	i->second.first = false;
+	++num_invalid_;
+}
+void unit_map::validate(umap::iterator i) {
+	if(i == map_.end())
+		return;
+	i->second.first = true;
+	--num_invalid_;
 }
 

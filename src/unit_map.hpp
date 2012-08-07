@@ -114,14 +114,11 @@ public:
 		unit_iterator operator++(int);
 
 
-		bool operator==(const unit_iterator &that) const
-			{ return that.i_ == this->i_; }
+		bool operator==(const unit_iterator &that) const;
 
-		bool operator!=(const unit_iterator &that) const
-			{ return that.i_ != this->i_; }
+		bool operator!=(const unit_iterator &that) const;
 
-		bool valid() const
-			{ return i_ != map_->map_.end() && i_->second.first; }
+		bool valid() const;
 
 		friend struct const_unit_iterator;
 		friend struct unit_xy_iterator;
@@ -158,14 +155,11 @@ public:
 
 		const_unit_iterator operator--();
 
-		bool operator==(const const_unit_iterator &that) const
-			{ return that.i_ == this->i_; }
+		bool operator==(const const_unit_iterator &that) const;
 
-		bool operator!=(const const_unit_iterator &that) const
-			{ return that.i_ != this->i_; }
+		bool operator!=(const const_unit_iterator &that) const;
 
-		bool valid() const
-			{ return i_ != map_->map_.end() && i_->second.first; }
+		bool valid() const;
 
 		friend struct const_unit_xy_iterator;
 		friend struct const_xy_accessor;
@@ -212,11 +206,9 @@ public:
 
 		unit_xy_iterator operator++(int);
 
-		bool operator==(const unit_xy_iterator &that) const
-			{ return that.i_ == this->i_; }
+		bool operator==(const unit_xy_iterator &that) const;
 
-		bool operator!=(const unit_xy_iterator &that) const
-			{ return that.i_ != this->i_; }
+		bool operator!=(const unit_xy_iterator &that) const;
 
 		bool valid() const;
 
@@ -271,11 +263,9 @@ public:
 
 		const_unit_xy_iterator operator++(int);
 
-		bool operator==(const const_unit_xy_iterator &that) const
-			{ return that.i_ == this->i_; }
+		bool operator==(const const_unit_xy_iterator &that) const;
 
-		bool operator!=(const const_unit_xy_iterator &that) const
-			{ return that.i_ != this->i_; }
+		bool operator!=(const const_unit_xy_iterator &that) const;
 
 		bool valid() const;
 
@@ -379,13 +369,7 @@ public:
 	 * Return object can be implicity converted to any of the other const
 	 * iterators or accessors
 	 */
-	const_unit_iterator begin() const {
-		umap::const_iterator i = map_.begin();
-		while (i != map_.end() && !i->second.first) {
-			++i;
-		}
-		return const_unit_iterator(i, this);
-	}
+	const_unit_iterator begin() const;
 
 	/**
 	 * Return object can be implicitly converted to any of the other iterators
@@ -447,10 +431,8 @@ private:
 	/** Removes invalid entries in map_. Called automatically when safe and needed. */
 	void clean_invalid();
 
-	void invalidate(umap::iterator i)
-		{if(i == map_.end()) return; i->second.first = false; ++num_invalid_;}
-	void validate(umap::iterator i)
-		{if(i == map_.end()) return; i->second.first = true; --num_invalid_;}
+	void invalidate(umap::iterator i);
+	void validate(umap::iterator i);
 
 	void delete_all();
 
