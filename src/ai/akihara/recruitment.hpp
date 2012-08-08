@@ -132,7 +132,7 @@ public:
 	void describe_terrain();
 
 private:
-	std::map<const std::string, double> terrain_percentage_;
+	std::map<std::string, double> terrain_percentage_;
 
 	std::vector<field_couple> couple_field_list_;
 
