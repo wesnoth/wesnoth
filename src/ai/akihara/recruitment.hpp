@@ -41,7 +41,7 @@ public:
 	virtual ~recruitment();
 	virtual double evaluate();
 	virtual void execute();
-	void do_describe(struct situation);
+	void do_describe(class situation);
 
 private:
 	int depth_;
