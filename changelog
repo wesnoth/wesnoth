@@ -17,6 +17,10 @@ Version 1.11.0-svn:
    * Reject add-ons with names or titles that begin with a WML text format
      markup character (any of *, `, ~, {, ^, }, |, @, #, <, &)
  * AI:
+   * In akihara_recruitment, analyzing battle field - we take village as
+   important spot. The aim of it is to list terrain couple according to these
+   important spot so we can evaluate battle simulation on them.
+   * In akihara_recruitment, the struct situation became a class.
    * New AI formula 'aki_eval' for testing a battle evaluation
    * AI now properly considers the expected damage from poison when attacking using poisoners.
    * Adding a new scenario for the ai-arena-small in order to test the new AI.

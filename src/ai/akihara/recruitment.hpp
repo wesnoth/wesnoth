@@ -18,8 +18,8 @@
  * Strategic recruitment routine, for experimentation
  */
 
-#ifndef AKIHARA_AI_HPP_INCLUDED
-#define AKIHARA_AI_HPP_INCLUDED
+#ifndef AI_AKIHARA_RECRUITMENT_HPP_INCLUDED
+#define AI_AKIHARA_RECRUITMENT_HPP_INCLUDED
 
 #include "../composite/rca.hpp"
 #include "../../team.hpp"
@@ -34,47 +34,13 @@ namespace ai {
 
 namespace akihara_recruitment {
 
-struct situation {
-
-	situation()
-		: depth(0)
-		, score(0.)
-		, current_team_side(0)
-		, new_unit()
-		, ally_new_unit()
-		, enemy_new_unit()
-	{
-	}
-
-	int depth;
-
-	//Score of the current situation;
-	double score;
-
-	//Current team to analyze
-	int current_team_side;
-
-	//New unit of AI
-	std::string new_unit;
-
-	//New unit of allies
-	std::set<std::string> ally_new_unit;
-
-	//New unit of enemies
-	std::set<std::string> enemy_new_unit;
-};
-
 class recruitment : public candidate_action {
 public:
 
 	recruitment( rca_context &context , const config &cfg );
-
 	virtual ~recruitment();
-
 	virtual double evaluate();
-
 	virtual void execute();
-
 	void do_describe(struct situation);
 
 private:
@@ -86,18 +52,101 @@ private:
 
 	void do_recruit(int max_units_to_recruit, double quality_factor);
 
-	struct situation get_next_stage(std::string unit, situation current);
+	situation add_new_unit(std::string unit, situation current);
 
 	double analyze_situation();
-	double evaluate_unit(situation current);
+
 	situation do_min_max(situation current);
-	int get_next_team(int current_side);
+
 	team get_current_team_recruit(int side);
+
+	situation get_next_situation(situation& current, std::string unit);
 
 
 };
 
+class situation {
+
+public:
+	situation(int depth, int ai_team);
+	situation(const situation& my_situation);
+	//virtual ~situation();
+
+	void evaluate();
+	void describe();
+	double evaluate_unit();
+	double get_battle_score(const unit& attacker, const unit& defender, const map_location& att_loc, const map_location& def_loc);
+
+	int getDepth();
+	double getScore();
+	int getSide();
+	int getAISide();
+	const team& getAITeam();
+	std::set<std::string> getNewUnit();
+	std::set<std::string> getNewEnemyUnit();
+
+	void setScore(double score);
+	void setSide(int side);
+	void setDepth(int depth);
+	void setNewUnit(std::set<std::string> unit);
+	void setNewEnemyUnit(std::set<std::string> unit);
+
+
+
+
+private:
+	int depth_;
+	//Score of the current situation;
+	double score_;
+	//Current team to analyze
+	int current_team_side_;
+	int ai_team_;
+	//New unit of AI
+	//std::string new_unit_;
+	//New unit
+	std::set<std::string> new_unit_;
+	//New unit of enemies
+	std::set<std::string> enemy_new_unit_;
+
+};
+
 } // of namespace testing_ai_default
+
+namespace akihara_terrain_analyze {
+
+struct field_couple {
+	field_couple(const map_location&, const map_location&);
+
+	std::pair<int, int> first_location;
+	std::pair<int, int> second_location;
+	std::string first_field_type;
+	std::string second_field_type;
+	int number;
+};
+
+class terrain_analyze {
+public:
+	terrain_analyze();
+
+	void analyze();
+	void describe_terrain();
+
+private:
+	std::map<const std::string, double> terrain_percentage_;
+
+	std::vector<field_couple> couple_field_list_;
+
+	std::vector<map_location> village_location_;
+
+
+	void search();
+	void get_village_terrain();
+	void add_terrain(const std::string& terrain);
+	void add_village_battle(const map_location& village, const map_location& adj);
+	bool compareFieldCouple(field_couple& couple, std::string& first, std::string& second);
+};
+
+}
 
 } // of namespace ai
 
