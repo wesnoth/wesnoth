@@ -482,3 +482,37 @@ class GitHub(object):
 
         return out, err
 
+def get_build_system(possible_dirs=[]):
+    """Create a special 'add-on', containing the wescamp build system.
+
+    possible_dirs: List of paths to possible existing.
+    Returns: The Addon object of the build-system
+    """
+    logging.debug("get_build_system with paths: %s", ";".join(possible_dirs))
+
+    if not isinstance(possible_dirs, list):
+        raise Error, "Incorrect argument type passed, {0} instead of {1}".format(str(type(possible_dirs)), str(list))
+
+    def is_good_checkout(addon):
+        try:
+            out, err = addon._execute(["git", "remote", "-v"], check_error=True)
+            test = "wescamp/build-system.git"
+            return test in out
+        except:
+            return False
+
+    for path in possible_dirs:
+        base, rest = os.path.split(path.rstrip(os.sep))
+        fake_github = GitHub(base, "system")
+        fake_build = Addon(fake_github, rest, True)
+        if is_good_checkout(fake_build):
+            logging.debug("Found {0} to be valid build-system checkout".format(path))
+            return fake_build
+        else:
+            logging.debug("Discarded possible checkout {0}".format(path))
+
+    logging.debug("No candidates left, creating new checkout")
+
+    realish_github = GitHub(tempfile.mkdtemp(),"system")
+    build_system = realish_github.addon("build", readonly=True)
+    return build_system
