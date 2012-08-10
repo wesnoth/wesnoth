@@ -131,8 +131,9 @@ if __name__ == "__main__":
     addon               The name of the addon.
     temp_dir            The directory where the unpacked campaign can be stored.
     wescamp_dir         The directory containing a checkout of wescamp.
+    build_sys_dir       Possible directory containing a checkout of build-system.
     """
-    def upload(server, addon, temp_dir, wescamp_dir):
+    def upload(server, addon, temp_dir, wescamp_dir, build_sys_dir=None):
 
         logging.debug("upload addon to wescamp server = '%s' addon = '%s' "
             + "temp_dir = '%s' wescamp_dir = '%s'",
@@ -183,8 +184,11 @@ if __name__ == "__main__":
         if is_new_addon:
             # Grab the build system
             below_branch = os.path.basename(wescamp_dir.rstrip(os.sep))
-            possible_build_path = os.path.join(below_branch, "build-system")
-            build_system = libgithub.get_build_system([possible_build_path])
+            possible_build_paths = []
+            if build_sys_dir:
+                possible_build_paths.append(build_sys_dir)
+            possible_build_paths.append(os.path.join(below_branch, "build-system"))
+            build_system = libgithub.get_build_system(possible_build_paths)
             build_system.update()
             init_script = os.path.join(build_system.get_dir(), "init-build-sys.sh")
 
@@ -374,6 +378,9 @@ if __name__ == "__main__":
         help = "Create a read-only branch checkout directory. "
         + "Can also be used to update existing checkout directories.")
 
+    optionparser.add_option("-b", "--build-system",
+        help = "Path to a github.com/wescamp/build-system checkout.")
+
     options, args = optionparser.parse_args()
 
     if(options.verbosity == "verbose"):
@@ -417,6 +424,7 @@ if __name__ == "__main__":
         wescamp = options.wescamp_checkout
 
     password = options.password
+    build_sys_dir = options.build_system
 
     if(options.git):
         pass
@@ -461,7 +469,7 @@ if __name__ == "__main__":
             sys.exit(2)
 
         try:
-            upload(server, options.upload, target, wescamp)
+            upload(server, options.upload, target, wescamp, build_sys_dir)
         except libgithub.Error, e:
             print "[ERROR github] " + str(e)
             sys.exit(1)
@@ -490,7 +498,7 @@ if __name__ == "__main__":
                 logging.info("Processing addon '%s'", k)
                 # Create a new temp dir for every upload.
                 tmp = tempdir()
-                upload(server, k, tmp.path, wescamp)
+                upload(server, k, tmp.path, wescamp, build_sys_dir)
             except libgithub.Error, e:
                 print "[ERROR github] in addon '" + k + "'" + str(e)
                 error = True
@@ -561,7 +569,7 @@ if __name__ == "__main__":
 
                         # upload in wescamp
                         tmp = tempdir()
-                        upload(server, k , tmp.path, wescamp)
+                        upload(server, k , tmp.path, wescamp, build_sys_dir)
 
                         # if the timestamp has changed we need to download again
                         if(get_timestamp(server, k) == timestamp):
