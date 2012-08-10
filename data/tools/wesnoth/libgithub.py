@@ -45,14 +45,6 @@ class Addon(object):
         self.name = name
         self.readonly = readonly
 
-    def erase(self):
-        """Erase this add-on.
-
-        Always raises NotImplementedError.
-        """
-        logging.debug("Erasing add-on {0}".format(self.name))
-        raise NotImplementedError("This would cause the permanent loss of the repository, including history.")
-
     def update(self):
         """Update this add-on.
 
