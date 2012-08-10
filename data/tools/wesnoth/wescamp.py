@@ -151,10 +151,10 @@ if __name__ == "__main__":
         github = libgithub.GitHub(wescamp_dir, git_version, userpass=git_userpass)
 
         # If the checkout doesn't exist we need to create it.
-        if(os.path.isdir(wescamp_dir + "/" + addon) == False):
+        if(os.path.isdir(os.path.join(wescamp_dir, addon)) == False):
 
             logging.info("Checking out '%s'.",
-                wescamp_dir + "/" + addon)
+                os.path.join(wescamp_dir, addon))
 
             if not github.addon_exists(addon):
                 github.create_addon(addon)
@@ -206,8 +206,8 @@ if __name__ == "__main__":
         addon_obj.update()
 
         # test whether the checkout has a translations dir, if not we can stop
-        if(os.path.isdir(wescamp + "/"
-            + addon + "/" + addon + "/translations") == False):
+        if(os.path.isdir(os.path.join(wescamp, addon, addon, "translations"))
+            == False):
 
             logging.info("Wescamp has no translations directory so we can stop.")
             if(stamp == None):
@@ -221,8 +221,8 @@ if __name__ == "__main__":
         shutil.copytree(source, dest)
 
         # If it is the old format with the addon.cfg copy that as well.
-        wescamp_cfg = wescamp + "/" + addon + "/" + addon + ".cfg"
-        temp_cfg = temp_dir + "/" + addon + ".cfg"
+        wescamp_cfg = os.path.join(wescamp, addon, addon + ".cfg")
+        temp_cfg = os.path.join(temp_dir, addon + ".cfg")
         if(os.path.isfile(wescamp_cfg)):
             logging.debug("Found old format config file")
             shutil.copy(wescamp_cfg, temp_cfg)
@@ -236,8 +236,8 @@ if __name__ == "__main__":
         stuff["passphrase"] = password
         if(stamp == None):
             wml.put_campaign(addon
-                    , temp_dir + "/" + addon + "/_main.cfg"
-                    , temp_dir + "/" + addon + "/"
+                    , os.path.join(temp_dir, addon, "_main.cfg")
+                    , os.path.join(temp_dir, addon, "")
                     , ignore
                     , stuff)
 
@@ -245,8 +245,8 @@ if __name__ == "__main__":
         else:
             if(stamp == get_timestamp(server, addon)):
                 wml.put_campaign(addon
-                        , temp_dir + "/" + addon + "/_main.cfg"
-                        , temp_dir + "/" + addon + "/"
+                        , os.path.join(temp_dir, addon, "_main.cfg")
+                        , os.path.join(temp_dir, addon, "")
                         , ignore
                         , stuff)
                 logging.info("New version of addon '%s' downloaded.", addon)
