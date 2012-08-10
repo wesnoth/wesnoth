@@ -203,94 +203,6 @@ if __name__ == "__main__":
             addon_obj.commit("Initialize build-system")
 
 
-    """Update the translations from wescamp to the server.
-
-    server              The url of the addon server eg
-                        add-ons.wesnoth.org:15005.
-    addon               The name of the addon.
-    temp_dir            The directory where the unpacked campaign can be stored.
-    wescamp_dir         The directory containing a checkout of wescamp.
-    password            The master upload password.
-    stamp               Only upload if the timestamp is equal to this value
-                        if None it's ignored. This is needed to avoid an upload
-                        of wescamp overwriting a campaign authors fresh upload,
-                        there's still a small possibility of a race condition
-                        but it would be really bad luck if that happens.
-    returns             if stamp is used it returns False if the upload failed
-                        due to a newer version on the server, True otherwise.
-    """
-    def download(server, addon, temp_dir, wescamp_dir, password, stamp = None):
-
-        logging.debug("download addon from wescamp server = '%s' addon = '%s' "
-            + "temp_dir = '%s' wescamp_dir = '%s' password is not shown",
-            server, addon, temp_dir, wescamp_dir)
-
-        # update the wescamp checkout for the translation,
-        addon_obj = libgithub.GitHub(wescamp, git_version, userpass=git_userpass).addon(addon)
-
-        # The result of the update can be ignored, no changes when updating
-        # doesn't mean no changes to the translations.
-        addon_obj.update()
-
-        # test whether the checkout has a translations dir, if not we can stop
-        if(os.path.isdir(os.path.join(wescamp, addon, addon, "translations"))
-            == False):
-
-            logging.info("Wescamp has no translations directory so we can stop.")
-            if(stamp == None):
-                return
-            else:
-                return True
-
-        # Export the entire addon data dir.
-        source = os.path.join(wescamp, addon, addon)
-        dest = os.path.join(temp_dir, addon)
-        shutil.copytree(source, dest)
-
-        # If it is the old format with the addon.cfg copy that as well.
-        wescamp_cfg = os.path.join(wescamp, addon, addon + ".cfg")
-        temp_cfg = os.path.join(temp_dir, addon + ".cfg")
-        if(os.path.isfile(wescamp_cfg)):
-            logging.debug("Found old format config file")
-            shutil.copy(wescamp_cfg, temp_cfg)
-
-        # We don't test for changes, just upload the stuff.
-        # NOTE wml.put_campaign tests whether the addon.cfg exists so
-        # send it unconditionally.
-        wml = libwml.CampaignClient(server, quiet_libwml)
-        ignore = {}
-        stuff = {}
-        stuff["passphrase"] = password
-        if(stamp == None):
-            wml.put_campaign(addon
-                    , os.path.join(temp_dir, addon, "_main.cfg")
-                    , os.path.join(temp_dir, addon, "")
-                    , ignore
-                    , stuff)
-
-            logging.info("New version of addon '%s' downloaded.", addon)
-        else:
-            if(stamp == get_timestamp(server, addon)):
-                wml.put_campaign(addon
-                        , os.path.join(temp_dir, addon, "_main.cfg")
-                        , os.path.join(temp_dir, addon, "")
-                        , ignore
-                        , stuff)
-                logging.info("New version of addon '%s' downloaded.", addon)
-                return True
-            else:
-                return False
-
-    def erase(addon, wescamp_dir):
-
-        logging.debug("Erase addon from wescamp addon = '%s' wescamp_dir = '%s'",
-            addon, wescamp_dir)
-
-        addon_obj = libgithub.GitHub(wescamp_dir, git_version, userpass=git_userpass).addon(addon)
-
-        # Note: this is probably not implemented, as it would destroy a repository, including the history.
-        addon_obj.erase()
-
     """Checkout all add-ons of one wesnoth version from wescamp.
 
     wescamp             The directory where all checkouts should be stored.
@@ -325,20 +237,6 @@ if __name__ == "__main__":
     optionparser.add_option("-U", "--upload-all", action = "store_true",
         help = "Upload all addons to wescamp. Usage WESCAMP-CHECKOUT "
         + " [SERVER [PORT]] [VERBOSE]")
-
-    optionparser.add_option("-d", "--download",
-        help = "Download the translations from wescamp and upload to the addon "
-        + "server. Usage 'addon' WESCAMP-CHECKOUT PASSWORD [SERVER [PORT]] "
-        + "[TEMP-DIR] [VERBOSE]")
-
-    optionparser.add_option("-D", "--download-all", action = "store_true",
-        help = "Download all translations from wescamp and upload them to the "
-        + "addon server. Usage WESCAMP-CHECKOUT PASSWORD [SERVER [PORT]] "
-        + " [VERBOSE]")
-
-    optionparser.add_option("-e", "--erase",
-        help = "Erase an addon from wescamp. Usage 'addon' WESCAMP-CHECKOUT "
-                + "[VERBOSE]")
 
     optionparser.add_option("-s", "--server",
         help = "Server to connect to [localhost]")
@@ -407,10 +305,6 @@ if __name__ == "__main__":
     target = None
     tmp = tempdir()
     if(options.temp_dir != None):
-        if(options.download_all != None):
-            logging.error("TEMP-DIR not allowed for DOWNLOAD-ALL.")
-            sys.exit(2)
-
         if(options.upload_all != None):
             logging.error("TEMP-DIR not allowed for UPLOAD-ALL.")
             sys.exit(2)
@@ -511,114 +405,6 @@ if __name__ == "__main__":
 
         if(error):
             sys.exit(1)
-
-    # Download an addon from wescamp.
-    elif(options.download != None):
-
-        if(wescamp == None):
-            logging.error("No wescamp checkout specified.")
-            sys.exit(2)
-
-        if(password == None):
-            logging.error("No upload password specified.")
-            sys.exit(2)
-
-        try:
-            download(server, options.download, target, wescamp, password)
-        except libgithub.Error, e:
-            print "[ERROR github] " + str(e)
-            sys.exit(1)
-        except socket.error, e:
-            print "Socket error: " + str(e)
-            sys.exit(e[0])
-        except IOError, e:
-            print "Unexpected error occured: " + str(e)
-            sys.exit(e[0])
-
-    # Download all addons from wescamp.
-    elif(options.download_all != None):
-
-        if(wescamp == None):
-            logging.error("No wescamp checkout specified.")
-            sys.exit(2)
-
-        if(password == None):
-            logging.error("No upload password specified.")
-            sys.exit(2)
-
-        error = False
-        try:
-            addons = list_addons(server, True)
-        except socket.error, e:
-            print "Socket error: " + str(e)
-            sys.exit(e[0])
-        for k, v in addons.iteritems():
-            try:
-                # since we modify the data on the campaign server and the author
-                # can do the same we need to try to minimize the odds of our
-                # upload to wipe out the new upload
-
-                logging.info("Processing addon '%s'", k)
-                while(True): # download loop
-
-                    timestamp = 0
-                    while(True): # upload loop
-
-                        # get the upload timestamp of the addon
-                        timestamp = get_timestamp(server, k)
-
-                        # upload in wescamp
-                        tmp = tempdir()
-                        upload(server, k , tmp.path, wescamp, build_sys_dir)
-
-                        # if the timestamp has changed we need to download again
-                        if(get_timestamp(server, k) == timestamp):
-                            break
-                        else:
-                            logging.warning("Addon '%s' has been modified on "
-                                + "the campaign server, force another"
-                                + "wescamp sync", k)
-
-                    # Create a new temp dir for every download.
-                    tmp = tempdir()
-                    if(download(server, k, tmp.path, wescamp, password, timestamp)):
-                        break
-                    else:
-                        logging.warning("Addon '%s' has been modified on "
-                            + "the campaign server and isn't uploaded "
-                            + "force another full sync cycle", k)
-
-            except libgithub.Error, e:
-                print "[ERROR github] in addon '" + k + "'" + str(e)
-                error = True
-            except socket.error, e:
-                print "Socket error: " + str(e)
-                error = True
-            except IOError, e:
-                print "Unexpected error occured: " + str(e)
-                error = True
-
-        if(error):
-            sys.exit(1)
-
-    # Erase an addon from wescamp
-    elif(options.erase != None):
-
-        if(wescamp == None):
-            logging.error("No wescamp checkout specified.")
-            sys.exit(2)
-
-        try:
-            erase(options.erase, wescamp)
-        except libgithub.Error, e:
-            print "[ERROR github] " + str(e)
-            sys.exit(1)
-        except socket.error, e:
-            print "Socket error: " + str(e)
-            sys.exit(e[0])
-        except IOError, e:
-            print "Unexpected error occured: " + str(e)
-            sys.exit(e[0])
 
     elif(options.checkout != None or options.checkout_readonly != None):
 
