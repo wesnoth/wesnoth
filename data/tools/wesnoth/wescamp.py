@@ -427,8 +427,8 @@ if __name__ == "__main__":
     build_sys_dir = options.build_system
 
     if(options.git):
-        pass
-        #TODO: warning of not being needed any more
+        logging.warn("--git is no longer required, as svn is no longer supported")
+        #TODO: remove entirely
     git_userpass = options.github_login
     if not wescamp:
         logging.error("No wescamp checkout specified. Needed for git usage.")
