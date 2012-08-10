@@ -60,6 +60,7 @@ class Addon(object):
         """
         logging.debug("Updating add-on {0}".format(self.name))
         # Stuff gets printed to stderr on a checkout of a fresh (empty) repository
+        # TODO: error checking
         out, err = self._execute(["git", "pull"], check_error=False)
 
 
@@ -155,6 +156,7 @@ class Addon(object):
         self._execute(["git", "commit", "-F", tmpname], check_error=True)
         os.remove(tmpname)
         # Apparently, push writes to stderr on success
+        # TODO: error checking
         self._execute(["git", "push", "-u", "origin", "master"], check_error=False)
 
     # Internal functions
