@@ -150,6 +150,8 @@ if __name__ == "__main__":
 
         github = libgithub.GitHub(wescamp_dir, git_version, userpass=git_userpass)
 
+        is_new_addon = False
+
         # If the checkout doesn't exist we need to create it.
         if(os.path.isdir(os.path.join(wescamp_dir, addon)) == False):
 
@@ -158,6 +160,8 @@ if __name__ == "__main__":
 
             if not github.addon_exists(addon):
                 github.create_addon(addon)
+
+                is_new_addon = True
 
         # Update the directory
         addon_obj = github.addon(addon)
@@ -175,6 +179,25 @@ if __name__ == "__main__":
         else:
             logging.info("Addon '%s' hasn't been modified, thus not uploaded.",
                 addon)
+
+        if is_new_addon:
+            # Grab the build system
+            below_branch = os.path.basename(wescamp_dir.rstrip(os.sep))
+            possible_build_path = os.path.join(below_branch, "build-system")
+            build_system = libgithub.get_build_system([possible_build_path])
+            build_system.update()
+            init_script = os.path.join(build_system.get_dir(), "init-build-sys.sh")
+
+            # Uglyness
+            out, err = addon_obj._execute([init_script, "--{0}".format(git_version), addon, "."], check_error=False)
+
+            if not out.strip().endswith("Done."):
+                logging.error("Failed to init the build-system for addon {0}".format(addon))
+                return
+
+            out, err = addon_obj._execute(["git", "add", "po", "campaign.def", "Makefile"], check_error=True)
+            addon_obj.commit("Initialize build-system")
+
 
     """Update the translations from wescamp to the server.
 
