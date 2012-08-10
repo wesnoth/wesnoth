@@ -68,7 +68,7 @@ class Addon(object):
             untracked = [line.replace("?? ","",1) for line in self._status() if line.find("??") != -1]
             for item in untracked:
                 try:
-                    path = os.path.join(self._get_dir(), item)
+                    path = os.path.join(self.get_dir(), item)
                     if item.endswith("/"):
                         shutil.rmtree(path)
                     else:
@@ -135,7 +135,7 @@ class Addon(object):
 
         self._rmtree(".", exclude)
         #actual copying
-        self._copytree(src, self._get_dir(), ignore=lambda src,names: [n for n in names if n in exclude])
+        self._copytree(src, self.get_dir(), ignore=lambda src,names: [n for n in names if n in exclude])
         self._execute(["git", "add", "."], check_error=True)
 
         status = self._status()
@@ -159,6 +159,11 @@ class Addon(object):
         # TODO: error checking
         self._execute(["git", "push", "-u", "origin", "master"], check_error=False)
 
+    def get_dir(self):
+        """Return the directory this add-on's checkout is in.
+        """
+        return os.path.join(self.github.directory, self.name)
+
     # Internal functions
 
     def _rmtree(self, directory, exclude):
@@ -167,8 +172,8 @@ class Addon(object):
         # Ensure the os calls all happen in the right directory
         # not needed for _execute, as that does the cwd manipulation itself
         # so only the os.chdir and os.path.isdir here need it
-        # Another option would be to os.path.join with self._get_dir
-        os.chdir(self._get_dir())
+        # Another option would be to os.path.join with self.get_dir
+        os.chdir(self.get_dir())
         for entry in os.listdir(directory):
             if entry in exclude:
                 continue
@@ -229,10 +234,8 @@ class Addon(object):
         if err:
             raise Error("Status failed with message: {0}".format(err))
         return [line for line in out.split('\n') if len(line)]
-    def _get_dir(self):
-        return os.path.join(self.github.directory, self.name)
     def _execute(self, command, check_error = False):
-        return self.github._execute(command, cwd=self._get_dir(), check_error=check_error)
+        return self.github._execute(command, cwd=self.get_dir(), check_error=check_error)
 
 _GITHUB_API_BASE = "https://api.github.com/"
 _GITHUB_API_REPOS = "orgs/wescamp/repos"
