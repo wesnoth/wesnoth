@@ -46,19 +46,17 @@ namespace unit_display
  *
  * @param path
  * @param u
- * @param teams
  * @param animate If set to false, only side-effects of move
  *        are applied (correct unit facing, path hexes redrawing).
  * @param dir Unit will be set facing this direction after move.
  *        If nothing passed, direction will be set based on path.
  */
 void move_unit(const std::vector<map_location>& path, unit& u,
-	const std::vector<team>& teams, bool animate=true,
+	bool animate=true,
 	map_location::DIRECTION dir=map_location::NDIRECTIONS);
-void move_unit_start(const std::vector<map_location>& path, unit& temp_unit,
-	const team& tm);
+void move_unit_start(const std::vector<map_location>& path, unit& temp_unit);
 void move_unit_step(const std::vector<map_location>& path, size_t i,
-	unit& temp_unit, const team& tm);
+	unit& temp_unit);
 void move_unit_finish(const std::vector<map_location>& path, unit& temp_unit);
 
 /**

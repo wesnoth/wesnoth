@@ -115,8 +115,7 @@ namespace unit_display
 {
 
 void move_unit(const std::vector<map_location>& path, unit& u,
-		const std::vector<team>& teams, bool animate,
-		map_location::DIRECTION dir)
+               bool animate, map_location::DIRECTION dir)
 {
 	game_display* disp = game_display::get_singleton();
 	assert(!path.empty());
@@ -144,10 +143,10 @@ void move_unit(const std::vector<map_location>& path, unit& u,
 	temp_unit.set_hidden(false);
 	temp_unit.place_on_game_display(disp);
 
-	move_unit_start(path, temp_unit, teams[temp_unit.side()-1]);
+	move_unit_start(path, temp_unit);
 
 	for(size_t i = 0; i+1 < path.size(); ++i) {
-		move_unit_step(path, i, temp_unit, teams[temp_unit.side()-1]);
+		move_unit_step(path, i, temp_unit);
 	}
 
 	move_unit_finish(path, temp_unit);
@@ -158,8 +157,7 @@ void move_unit(const std::vector<map_location>& path, unit& u,
 	u.set_hidden(was_hidden);
 }
 
-void move_unit_start(const std::vector<map_location>& path, unit& temp_unit,
-		const team& tm)
+void move_unit_start(const std::vector<map_location>& path, unit& temp_unit)
 {
 	game_display* disp = game_display::get_singleton();
 	assert(!path.empty());
@@ -170,6 +168,7 @@ void move_unit_start(const std::vector<map_location>& path, unit& temp_unit,
 	if(path.size() == 1)
 		return;
 
+	const team& tm = (*resources::teams)[temp_unit.side()-1];
 	bool invisible = tm.is_enemy(int(disp->viewing_team()+1)) &&
 		temp_unit.invisible(path[0]);
 	if(!invisible) {
@@ -204,7 +203,7 @@ void move_unit_start(const std::vector<map_location>& path, unit& temp_unit,
 }
 
 void move_unit_step(const std::vector<map_location>& path, size_t i,
-		unit& temp_unit, const team& tm)
+		unit& temp_unit)
 {
 	game_display* disp = game_display::get_singleton();
 	assert(path.size() > i+1);
@@ -215,6 +214,7 @@ void move_unit_step(const std::vector<map_location>& path, size_t i,
 	if(path.size() <= i+1)
 		return;
 
+	const team& tm = (*resources::teams)[temp_unit.side()-1];
 	bool invisible = tm.is_enemy(int(disp->viewing_team()+1)) &&
 			temp_unit.invisible(path[i]) &&
 			temp_unit.invisible(path[i+1]);

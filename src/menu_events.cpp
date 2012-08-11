@@ -1155,7 +1155,7 @@ void menu_handler::undo(int side_num)
 
 		undo_action action_copy(action);
 
-		unit_display::move_unit(route, *u, teams_, true, action_copy.starting_dir);
+		unit_display::move_unit(route, *u, true, action_copy.starting_dir);
 
 		units_.move(u->get_location(), route.back());
 		unit::clear_status_caches();
@@ -1292,7 +1292,7 @@ void menu_handler::redo(int side_num)
 
 		undo_action action_copy(action);
 
-		unit_display::move_unit(route, *u, teams_);
+		unit_display::move_unit(route, *u);
 
 		units_.move(u->get_location(), route.back());
 		u = units_.find(route.back());

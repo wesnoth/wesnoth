@@ -2661,11 +2661,9 @@ public:
 		if(show_move_)
 		{
 			// show the movement start animation
-			const team &tm = (*resources::teams)[ui->side() - 1];
-
 			animation_unit_placer placer(*ui);
 
-			unit_display::move_unit_start(route_, placer.temp_unit, tm);
+			unit_display::move_unit_start(route_, placer.temp_unit);
 		}
 	}
 
@@ -2688,12 +2686,10 @@ public:
 		if ( show_move_  &&  ui != m_.end() )
 		{
 			// show the movement animation
-			const team &tm = (*resources::teams)[ui->side() - 1];
-
 			animation_unit_placer placer(*ui);
 
 			for(std::vector<map_location>::const_iterator step = loc_; step != dest; ++step) {
-				unit_display::move_unit_step(route_, step - route_.begin(), placer.temp_unit, tm);
+				unit_display::move_unit_step(route_, step - route_.begin(), placer.temp_unit);
 			}
 		}
 

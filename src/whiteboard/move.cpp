@@ -133,7 +133,7 @@ move::move(config const& cfg, bool hidden)
 		fake_unit_->set_hidden(true);
 	fake_unit_->place_on_game_display(resources::screen);
 	fake_unit_->set_ghosted(true);
-	unit_display::move_unit(route_->steps, *fake_unit_, *resources::teams, false); //get facing right
+	unit_display::move_unit(route_->steps, *fake_unit_, false); //get facing right
 	fake_unit_->set_location(route_->steps.back());
 
 	this->init();

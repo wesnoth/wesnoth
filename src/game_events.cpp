@@ -877,7 +877,7 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 	teleport_path.push_back(src_loc);
 	teleport_path.push_back(vacant_dst);
 	bool animate = cfg["animate"].to_bool();
-	unit_display::move_unit(teleport_path, *u, *resources::teams, animate);
+	unit_display::move_unit(teleport_path, *u, animate);
 
 	resources::units->move(src_loc, vacant_dst);
 	unit::clear_status_caches();
@@ -1264,7 +1264,7 @@ WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 
 	const std::vector<map_location>& path = fake_unit_path(*dummy_unit, xvals, yvals);
 	if (!path.empty())
-		unit_display::move_unit(path, *dummy_unit, *resources::teams);
+		unit_display::move_unit(path, *dummy_unit);
 }
 
 WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
@@ -1311,7 +1311,7 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 			DBG_NG << "Moving unit " << un << ", doing step " << step << '\n';
 			path_step[0] = paths[un][step - 1];
 			path_step[1] = paths[un][step];
-			unit_display::move_unit(path_step, *units[un], *resources::teams);
+			unit_display::move_unit(path_step, *units[un]);
 			units[un]->set_location(path_step[1]);
 			units[un]->set_standing();
 		}

@@ -709,8 +709,7 @@ void manager::create_temp_move()
 					fake_unit->set_ghosted(true);
 				}
 
-				unit_display::move_unit(path, *fake_unit, *resources::teams,
-						false); //get facing right
+				unit_display::move_unit(path, *fake_unit, false); //get facing right
 				fake_unit->invalidate(fake_unit->get_location());
 				fake_unit->set_location(*curr_itor);
 				fake_unit->set_ghosted(true);
