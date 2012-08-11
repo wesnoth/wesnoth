@@ -38,18 +38,6 @@ namespace unit_display
 
 /**
  * Display a unit moving along a given path.
- *
- * Note: Hide the unit in its current location,
- * but don't actually remove it until the move is done,
- * so that while the unit is moving status etc.
- * will still display the correct number of units.
- *
- * @param path
- * @param u
- * @param animate If set to false, only side-effects of move
- *        are applied (correct unit facing, path hexes redrawing).
- * @param dir Unit will be set facing this direction after move.
- *        If nothing passed, direction will be set based on path.
  */
 void move_unit(const std::vector<map_location>& path, unit& u,
 	bool animate=true,
