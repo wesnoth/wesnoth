@@ -687,15 +687,45 @@ int& game_display::debug_highlight(const map_location& loc)
 
 game_display::fake_unit::fake_unit(unit const & u) : unit(u), my_display_(NULL){ }
 game_display::fake_unit::fake_unit(fake_unit const & a) : unit(a), my_display_(NULL){ }
-game_display::fake_unit & game_display::fake_unit::operator=(fake_unit const & a) {
-	if(this != &a){
-		this->unit::operator=(a);
-		my_display_= a.my_display_;
+
+/**
+ * Assignment operator.
+ *
+ * This function is unsuitable for derived classes and MUST be overridden.
+ * Furthermore, derived classes must not explicitly call this version.
+ *
+ * The overriding function can be almost the same, except "new (this)" should
+ * be followed by the derived class instead of "fake_unit(a)".
+ */
+game_display::fake_unit & game_display::fake_unit::operator=(fake_unit const & a)
+{
+	if ( this != &a ) {
+		// Use the copy constructor to make sure we are coherant.
+		// (Methodology copied from unit::operator=)
+		this->~fake_unit();
+		new (this) fake_unit(a);
+		my_display_ = a.my_display_;
 	}
 	return *this;
 }
-game_display::fake_unit & game_display::fake_unit::operator=(unit const & a) {
-	this->unit::operator=(a);
+
+/**
+ * Assignment operator.
+ *
+ * This function is unsuitable for derived classes and MUST be overridden.
+ * Furthermore, derived classes must not explicitly call this version.
+ *
+ * The overriding function can be almost the same, except "new (this)" should
+ * be followed by the derived class instead of "fake_unit(a)".
+ */
+game_display::fake_unit & game_display::fake_unit::operator=(unit const & a)
+{
+	if ( this != &a ) {
+		// Use the copy constructor to make sure we are coherant.
+		// (Methodology copied from unit::operator=)
+		this->~fake_unit();
+		new (this) fake_unit(a);
+	}
 	return *this;
 }
 

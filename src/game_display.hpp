@@ -175,7 +175,7 @@ public:
 		fake_unit(fake_unit const & u);
 		fake_unit & operator=(fake_unit const & u);
 		///If already in the queue, the copied unit will replace the one in the queue
-		fake_unit & operator=(unit const & u);
+		virtual fake_unit & operator=(unit const & u);
 
 		///Removes from fake_units list if necessary
 		~fake_unit();

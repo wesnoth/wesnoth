@@ -68,7 +68,7 @@ public:
 	unit(const unit_type* t, int side, bool real_unit,
 		unit_race::GENDER gender = unit_race::NUM_GENDERS);
 	virtual ~unit();
-	unit& operator=(const unit&);
+	virtual unit& operator=(const unit&);
 
 
 	/** Advances this unit to another type */

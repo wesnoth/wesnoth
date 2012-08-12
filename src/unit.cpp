@@ -699,6 +699,17 @@ unit::~unit()
 
 
 
+/**
+ * Assignment operator.
+ *
+ * This function is unsuitable for derived classes and MUST be overridden.
+ * Furthermore, derived classes must not explicitly call this version.
+ *
+ * The overriding function can be almost the same, except "new (this)" should
+ * be followed by the derived class instead of "unit(u)".
+ * (There was only one derived class when this was written, so this approach
+ * might be simplest.)
+ */
 unit& unit::operator=(const unit& u)
 {
 	// Use copy constructor to make sure we are coherant
