@@ -152,6 +152,7 @@ if __name__ == "__main__":
         github = libgithub.GitHub(wescamp_dir, git_version, userpass=git_userpass)
 
         is_new_addon = False
+        has_updated = False
 
         # If the checkout doesn't exist we need to create it.
         if(os.path.isdir(os.path.join(wescamp_dir, addon)) == False):
@@ -177,6 +178,7 @@ if __name__ == "__main__":
             addon_obj.commit("wescamp_client: automatic update of addon '"
                 + addon + "'")
             logging.info("New version of addon '%s' uploaded.", addon)
+            has_updated = True
         else:
             logging.info("Addon '%s' hasn't been modified, thus not uploaded.",
                 addon)
@@ -201,6 +203,34 @@ if __name__ == "__main__":
 
             out, err = addon_obj._execute(["git", "add", "po", "campaign.def", "Makefile"], check_error=True)
             addon_obj.commit("Initialize build-system")
+
+        if has_updated:
+            if not os.path.exists(os.path.join(addon_obj.get_dir(), "Makefile")):
+                logging.warn("Cannot pot-update: build system does not exist for add-on {0}.".format(addon))
+                return
+            # Uglyness, again
+            out, err = addon_obj._execute(["make"])
+            if len(err):
+                logging.warn("In addon {0}:\n{1}".format(addon, err))
+                # TODO: bail?
+            outlines = addon_obj._status()
+
+            to_rm = []
+            to_add = []
+            longname = "wesnoth-{0}".format(addon)
+            for line in outlines:
+                mod, name = line.split()
+                if mod == "D":
+                    to_rm.append(name)
+                elif mod == "M" and name.endswith((".po", "LC_MESSAGES/{0}.mo".format(longname), "po/{0}.pot".format(longname), "po/Makefile")):
+                    to_add.append(name)
+                else:
+                    logging.info("Ignoring {0}".format(line))
+            if to_rm:
+                out, err = addon_obj._execute(["git", "rm"] + to_rm, check_error=True)
+            if to_add:
+                out, err = addon_obj._execute(["git", "add"] + to_add, check_error=True)
+            addon_obj.commit("Pot-update")
 
 
     """Checkout all add-ons of one wesnoth version from wescamp.
