@@ -685,8 +685,6 @@ int& game_display::debug_highlight(const map_location& loc)
 	return debugHighlights_[loc];
 }
 
-game_display::fake_unit::fake_unit(unit const & u) : unit(u), my_display_(NULL){ }
-game_display::fake_unit::fake_unit(fake_unit const & a) : unit(a), my_display_(NULL){ }
 
 /**
  * Assignment operator.
@@ -711,6 +709,7 @@ game_display::fake_unit & game_display::fake_unit::operator=(fake_unit const & a
 
 /**
  * Assignment operator.
+ * If already in the queue, the copied unit will replace the one in the queue.
  *
  * This function is unsuitable for derived classes and MUST be overridden.
  * Furthermore, derived classes must not explicitly call this version.
@@ -729,16 +728,33 @@ game_display::fake_unit & game_display::fake_unit::operator=(unit const & a)
 	return *this;
 }
 
-game_display::fake_unit::~fake_unit() {
-	///The whole fake_unit exists for this one line to remove the temp unit from the
-	///fake_unit deque in the event of an exception
+/**
+ * Removes @a this from the fake_units_ list if necessary.
+ */
+game_display::fake_unit::~fake_unit()
+{
+	// The fake_unit class exists for this one line, which removes the
+	// fake_unit from the display's fake_unit_ deque in the event of an
+	// exception.
 	if(my_display_){remove_from_game_display();}
 }
+
+/**
+ * Place @a this on @a display's fake_units_ deque.
+ * This will be added at the end (drawn last, over all other units).
+ * Duplicate additions are not allowed.
+ */
 void game_display::fake_unit::place_on_game_display(game_display * display){
 	assert(my_display_ == NULL); //Can only be placed on 1 game_display
 	my_display_=display;
 	my_display_->place_temporary_unit(this);
 }
+
+/**
+ * Removes @a this from whatever fake_units_ list it is on (if any).
+ * @returns the number of fake_units deleted, which should be 0 or 1
+ *          (any other number indicates an error).
+ */
 int game_display::fake_unit::remove_from_game_display(){
 	int ret(0);
 	if(my_display_ != NULL){

@@ -171,23 +171,18 @@ public:
 	 */
 	class fake_unit : public unit {
 	public:
-		explicit fake_unit(unit const & u);
-		fake_unit(fake_unit const & u);
+		explicit fake_unit(unit const & u) : unit(u), my_display_(NULL) {}
+		fake_unit(fake_unit const & u) : unit(u), my_display_(NULL) {}
 		fake_unit & operator=(fake_unit const & u);
-		///If already in the queue, the copied unit will replace the one in the queue
 		virtual fake_unit & operator=(unit const & u);
-
-		///Removes from fake_units list if necessary
+		/// Removes @a this from the fake_units_ list if necessary.
 		~fake_unit();
-		/**Place on the fake_units deque at the end of the deque
-		 * drawn last over all other units.
-		 * Duplicate additions are not allowed.
-		 */
+
+		/// Place @a this on @a display's fake_units_ deque.
 		void place_on_game_display(game_display * d);
-		/** Removes any instances of this temporary unit from the temporary unit vector.
-		 *  Returns the number of temp units deleted (0 or 1, any other number indicates an error).
-		 */
+		/// Removes @a this from whatever fake_units_ list it is on (if any).
 		int remove_from_game_display();
+
 	private :
 		game_display * my_display_;
 	};
