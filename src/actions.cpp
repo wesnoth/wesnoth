@@ -3040,6 +3040,7 @@ public:
 
 			// Show this move.
 			animator.continue_movement(move_it_, step_to);
+			disp.redraw_minimap();
 		}
 	}
 
@@ -3060,8 +3061,12 @@ public:
 		std::set<map_location> petrified_units;
 
 		// Clear the fog.
-		fog_changed_ |= clear_shroud_unit(hex, *move_it_, *current_team_, jamming_,
-		                                  NULL, &newly_seen_units, &petrified_units);
+		if ( clear_shroud_unit(hex, *move_it_, *current_team_, jamming_,
+		                       NULL, &newly_seen_units, &petrified_units) )
+		{
+			invalidate_after_clearing_shroud();
+			fog_changed_ = true;
+		}
 
 		// Raise sighted events.
 		const game_events::entity_location viewer(*move_it_, hex);
