@@ -196,6 +196,9 @@ if __name__ == "__main__":
 
             # Uglyness
             out, err = addon_obj._execute([init_script, "--{0}".format(git_version), addon, "."], check_error=False)
+            if len(err):
+                logging.warn("In add-on {0}:\n{1}".format(addon, err))
+                #TODO: bail?
 
             if not out.strip().endswith("Done."):
                 logging.error("Failed to init the build-system for addon {0}".format(addon))
