@@ -189,14 +189,14 @@ void move_unit_start(const std::vector<map_location>& path, unit& temp_unit)
 	if(!invisible) {
 		// Scroll to the path, but only if it fully fits on screen.
 		// If it does not fit we might be able to do a better scroll later.
-		disp->scroll_to_tiles(path, game_display::ONSCREEN, true, true,0.0,false);
+		disp->scroll_to_tiles(path, game_display::ONSCREEN, true, true, 0.0, false);
 	}
 	// We need to clear big invalidation before the move and have a smooth animation
-	// (mainly black stripes and invalidation after canceling atatck dialog)
-	// Two draw calls are needed to also redraw the previously invalidated hexes
+	// (mainly black stripes and invalidation after canceling attack dialog).
+	// Two draw calls are needed to also redraw the previously invalidated hexes.
 	// We use update=false because we don't need delay here (no time wasted)
 	// and no screen refresh (will be done by last 3rd draw() and it optimizes
-	// the double blitting done by these invalidations)
+	// the double blitting done by these invalidations).
 	disp->draw(false);
 	disp->draw(false);
 
@@ -206,7 +206,7 @@ void move_unit_start(const std::vector<map_location>& path, unit& temp_unit)
 	//       don't forget to change the previous draw(false) to true
 	disp->draw(true);
 
-	// extra immobile mvt anim for take-off
+	// extra immobile movement animation for take-off
 	temp_unit.set_location(path[0]);
 	disp->invalidate(temp_unit.get_location());
 	temp_unit.set_facing(path[0].get_relative_dir(path[1]));
