@@ -154,9 +154,26 @@ class Addon(object):
         tmpname = tmpfile.name
         self._execute(["git", "commit", "-F", tmpname], check_error=True)
         os.remove(tmpname)
-        # Apparently, push writes to stderr on success
-        # TODO: error checking
-        self._execute(["git", "push", "-u", "origin", "master"], check_error=False)
+        out, err = self._execute(["git", "push", "-u", "--porcelain", "origin", "master"], check_error=False)
+        statusline = filter(lambda x: x.find("refs/heads/master") != -1, out.splitlines())
+        if not statusline:
+            raise Error, "No statusline produced by git push in add-on {0}".format(self.name)
+        else:
+            status = statusline[0][0]
+            refs, summary = statusline[0][1:].split(None, 1)
+            if status == " ":
+                # Fast forward
+                pass
+            elif status == "*":
+                # Freshly inited repository
+                pass
+            elif status == "=":
+                # Up to date?
+                logging.warn("Commit to add-on {0} with message {1} has not made any changes".format(self.name, message))
+            elif status == "!":
+                raise Error, "Commit to add-on {0} with message {1} failed for reason {2}".format(self.name, message, summary)
+            else:
+                raise Error, "Commit to add-on {0} with message {1} has done something unexpected: {2}".format(self.name, message, statusline[0])
 
     def get_dir(self):
         """Return the directory this add-on's checkout is in.
