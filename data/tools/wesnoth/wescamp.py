@@ -204,7 +204,7 @@ if __name__ == "__main__":
                 logging.error("Failed to init the build-system for addon {0}".format(addon))
                 return
 
-            out, err = addon_obj._execute(["git", "add", "po", "campaign.def", "Makefile"], check_error=True)
+            addon_obj._execute(["git", "add", "po", "campaign.def", "Makefile"], check_error=True)
             addon_obj.commit("Initialize build-system")
 
         if has_updated:
@@ -230,9 +230,9 @@ if __name__ == "__main__":
                 else:
                     logging.info("Ignoring {0}".format(line))
             if to_rm:
-                out, err = addon_obj._execute(["git", "rm"] + to_rm, check_error=True)
+                addon_obj._execute(["git", "rm"] + to_rm, check_error=True)
             if to_add:
-                out, err = addon_obj._execute(["git", "add"] + to_add, check_error=True)
+                addon_obj._execute(["git", "add"] + to_add, check_error=True)
             addon_obj.commit("Pot-update")
 
 
