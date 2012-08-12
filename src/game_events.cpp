@@ -1159,13 +1159,14 @@ game_display::fake_unit *create_fake_unit(const vconfig& cfg)
 	std::string variation = cfg["variation"];
 	std::string img_mods = cfg["image_mods"];
 
-	size_t side_num = cfg["side"].to_int(1) - 1;
-	if (side_num >= resources::teams->size()) side_num = 0;
+	size_t side_num = cfg["side"].to_int(1);
+	if ( side_num == 0  ||  side_num > resources::teams->size() )
+		side_num = 1;
 
 	unit_race::GENDER gender = string_gender(cfg["gender"]);
 	const unit_type *ut = unit_types.find(type);
 	if (!ut) return NULL;
-	game_display::fake_unit * fake_unit = new game_display::fake_unit(unit(ut, side_num + 1, false, gender));
+	game_display::fake_unit * fake_unit = new game_display::fake_unit(ut, side_num, gender);
 
 	if(!variation.empty()) {
 		config mod;
