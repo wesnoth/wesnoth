@@ -688,6 +688,8 @@ int& game_display::debug_highlight(const map_location& loc)
 
 /**
  * Assignment operator.
+ * If already in the queue, @a this will be moved to the end (drawn last)
+ * of the queue.
  *
  * This function is unsuitable for derived classes and MUST be overridden.
  * Furthermore, derived classes must not explicitly call this version.
@@ -698,18 +700,23 @@ int& game_display::debug_highlight(const map_location& loc)
 game_display::fake_unit & game_display::fake_unit::operator=(fake_unit const & a)
 {
 	if ( this != &a ) {
+		game_display * display = my_display_;
+
 		// Use the copy constructor to make sure we are coherant.
 		// (Methodology copied from unit::operator=)
 		this->~fake_unit();
 		new (this) fake_unit(a);
-		my_display_ = a.my_display_;
+		// Restore our old display.
+		if ( display != NULL )
+			place_on_game_display(display);
 	}
 	return *this;
 }
 
 /**
  * Assignment operator.
- * If already in the queue, the copied unit will replace the one in the queue.
+ * If already in the queue, @a this will be moved to the end (drawn last)
+ * of the queue.
  *
  * This function is unsuitable for derived classes and MUST be overridden.
  * Furthermore, derived classes must not explicitly call this version.
@@ -720,10 +727,15 @@ game_display::fake_unit & game_display::fake_unit::operator=(fake_unit const & a
 game_display::fake_unit & game_display::fake_unit::operator=(unit const & a)
 {
 	if ( this != &a ) {
+		game_display * display = my_display_;
+
 		// Use the copy constructor to make sure we are coherant.
 		// (Methodology copied from unit::operator=)
 		this->~fake_unit();
 		new (this) fake_unit(a);
+		// Restore our old display.
+		if ( display != NULL )
+			place_on_game_display(display);
 	}
 	return *this;
 }
@@ -734,7 +746,7 @@ game_display::fake_unit & game_display::fake_unit::operator=(unit const & a)
 game_display::fake_unit::~fake_unit()
 {
 	// The fake_unit class exists for this one line, which removes the
-	// fake_unit from the display's fake_unit_ deque in the event of an
+	// fake_unit from the display's fake_units_ deque in the event of an
 	// exception.
 	if(my_display_){remove_from_game_display();}
 }
