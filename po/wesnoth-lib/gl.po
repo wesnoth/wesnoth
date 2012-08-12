@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-05-18 12:28+0200\n"
+"POT-Creation-Date: 2012-08-12 10:25+0200\n"
 "PO-Revision-Date: 2012-05-22 07:00+0200\n"
 "Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
@@ -1125,8 +1125,8 @@ msgstr "Fóra do mapa"
 msgid "Experimental Fake Map Edge"
 msgstr "Bordo falso de mapa experimental"
 
-#. [toggle_button]: id=shroud
 #. [terrain_type]: id=shroud
+#. [toggle_button]: id=shroud
 #: data/core/terrain.cfg:2066 data/gui/default/window/mp_create_game.cfg:479
 msgid "Shroud"
 msgstr "Manto do descoñecido"
@@ -1157,17 +1157,17 @@ msgid "Unwalkable"
 msgstr "Intransitábel"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=click_dismiss
-#. [button]: id=ok
 #. [button]: id=cancel
+#. [button]: id=ok
 #. [button]: id=close_window
+#. [button]: id=click_dismiss
 #: data/gui/default/widget/window_default.cfg:140
 #: data/gui/default/window/chat_log.cfg:121
 #: data/gui/default/window/gamestate_inspector.cfg:339
 #: data/gui/default/window/lobby_main.cfg:619
 #: data/gui/default/window/lobby_player_info.cfg:200
 #: data/gui/default/window/message.cfg:133 src/construct_dialog.cpp:134
-#: src/mapgen_dialog.cpp:110 src/preferences_display.cpp:272
+#: src/mapgen_dialog.cpp:110 src/preferences_display.cpp:273
 msgid "Close"
 msgstr "Pechar"
 
@@ -1242,7 +1242,7 @@ msgstr "Conectarse"
 #: data/gui/default/window/unit_attack.cfg:208
 #: data/gui/default/window/unit_create.cfg:209
 #: data/gui/default/window/unit_create.cfg:210 src/construct_dialog.cpp:128
-#: src/construct_dialog.cpp:131 src/hotkeys.cpp:52
+#: src/construct_dialog.cpp:131 src/hotkeys.cpp:53
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -1329,8 +1329,8 @@ msgstr "Xogar unha campaña"
 #: data/gui/default/window/unit_create.cfg:198
 #: data/gui/default/window/wml_message.cfg:485
 #: data/gui/default/window/wml_message.cfg:714 src/construct_dialog.cpp:120
-#: src/construct_dialog.cpp:127 src/gui/dialogs/message.cpp:162
-#: src/gui/dialogs/message.cpp:169
+#: src/construct_dialog.cpp:127 src/gui/dialogs/message.cpp:163
+#: src/gui/dialogs/message.cpp:170
 msgid "OK"
 msgstr "Aceptar"
 
@@ -1359,16 +1359,16 @@ msgstr "Páxina:"
 msgid "Last"
 msgstr "Última"
 
-#. [button]: id=previous_page
 #. [button]: id=previous_tip
+#. [button]: id=previous_page
 #: data/gui/default/window/chat_log.cfg:79
 #: data/gui/default/window/title_screen.cfg:162
 msgid "Previous"
 msgstr "Anterior"
 
 #. [button]: id=next_tod
-#. [button]: id=next_page
 #. [button]: id=next_tip
+#. [button]: id=next_page
 #: data/gui/default/window/chat_log.cfg:89
 #: data/gui/default/window/editor_settings.cfg:79
 #: data/gui/default/window/editor_settings.cfg:80
@@ -1464,7 +1464,7 @@ msgstr "Xerar"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:35 src/hotkeys.cpp:133
+#: data/gui/default/window/editor_new_map.cfg:35 src/hotkeys.cpp:134
 msgid "New Map"
 msgstr "Novo mapa"
 
@@ -1491,7 +1491,7 @@ msgstr "Crear un novo mapa"
 #. [button]: id=ok
 #: data/gui/default/window/editor_resize_map.cfg:35
 #: data/gui/default/window/editor_resize_map.cfg:270
-#: data/gui/default/window/editor_resize_map.cfg:271 src/hotkeys.cpp:179
+#: data/gui/default/window/editor_resize_map.cfg:271 src/hotkeys.cpp:180
 msgid "Resize Map"
 msgstr "Cambiar as dimensións"
 
@@ -1539,7 +1539,7 @@ msgstr "Que xogador debería empezar aquí?"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_settings.cfg:35 src/hotkeys.cpp:131
+#: data/gui/default/window/editor_settings.cfg:35 src/hotkeys.cpp:132
 msgid "Editor Settings"
 msgstr "Configuración do editor"
 
@@ -1655,13 +1655,13 @@ msgid "Execution trace"
 msgstr "Execución paso a paso"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [grid]
 #. [button]: id=cancel
 #. [button]: id=quit
-#. [grid]
 #: data/gui/default/window/formula_debugger.cfg:234
 #: data/gui/default/window/lobby_main.cfg:660
-#: data/gui/default/window/title_screen.cfg:232 src/hotkeys.cpp:882
-#: src/hotkeys.cpp:1227
+#: data/gui/default/window/title_screen.cfg:232 src/hotkeys.cpp:883
+#: src/hotkeys.cpp:1228
 msgid "Quit"
 msgstr "Saír"
 
@@ -1690,7 +1690,7 @@ msgstr "Non volver preguntar."
 #: data/gui/default/window/game_save_oos.cfg:198
 #: data/gui/default/window/game_save_overwrite.cfg:96
 #: data/gui/default/window/game_save_overwrite.cfg:97
-#: src/construct_dialog.cpp:123 src/gui/dialogs/message.cpp:176
+#: src/construct_dialog.cpp:123 src/gui/dialogs/message.cpp:177
 msgid "Yes"
 msgstr "Si"
 
@@ -1700,14 +1700,14 @@ msgstr "Si"
 #: data/gui/default/window/game_save_message.cfg:162
 #: data/gui/default/window/game_save_oos.cfg:212
 #: data/gui/default/window/game_save_overwrite.cfg:111
-#: src/construct_dialog.cpp:124 src/gui/dialogs/message.cpp:178
+#: src/construct_dialog.cpp:124 src/gui/dialogs/message.cpp:179
 msgid "No"
 msgstr "Non"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_load.cfg:50
-#: src/gui/dialogs/mp_create_game.cpp:95 src/hotkeys.cpp:75
+#: src/gui/dialogs/mp_create_game.cpp:95 src/hotkeys.cpp:76
 msgid "Load Game"
 msgstr "Cargar unha partida"
 
@@ -1731,7 +1731,7 @@ msgstr "Cancelar as ordes"
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_save.cfg:40
 #: data/gui/default/window/game_save_message.cfg:40
-#: data/gui/default/window/game_save_oos.cfg:42 src/hotkeys.cpp:72
+#: data/gui/default/window/game_save_oos.cfg:42 src/hotkeys.cpp:73
 msgid "Save Game"
 msgstr "Gardar a partida"
 
@@ -1754,7 +1754,7 @@ msgstr "Ignoralas todas"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit_game
-#: data/gui/default/window/game_save_oos.cfg:170 src/hotkeys.cpp:94
+#: data/gui/default/window/game_save_oos.cfg:170 src/hotkeys.cpp:95
 msgid "Quit Game"
 msgstr "Saír da partida"
 
@@ -1788,8 +1788,8 @@ msgstr "Contido"
 msgid "Inspection window"
 msgstr "Xanela de inspección"
 
-#. [label]: id=unit_type
 #. [label]: id=typename
+#. [label]: id=unit_type
 #: data/gui/default/window/gamestate_inspector.cfg:153
 #: data/gui/default/window/unit_create.cfg:131
 msgid "Type"
@@ -1815,7 +1815,7 @@ msgstr "Escolle a lingua que prefiras:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/default/window/language_selection.cfg:128
-#: data/gui/default/window/language_selection.cfg:129 src/hotkeys.cpp:211
+#: data/gui/default/window/language_selection.cfg:129 src/hotkeys.cpp:212
 msgid "Change Language"
 msgstr "Cambiar de lingua"
 
@@ -1970,11 +1970,11 @@ msgid "Send"
 msgstr "Enviar"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=show_preferences
 #. [grid]
+#. [button]: id=show_preferences
 #: data/gui/default/window/lobby_main.cfg:666
 #: data/gui/default/window/title_screen.cfg:230
-#: src/game_preferences_display.cpp:64 src/hotkeys.cpp:88
+#: src/game_preferences_display.cpp:64 src/hotkeys.cpp:89
 msgid "Preferences"
 msgstr "Configuración"
 
@@ -2163,8 +2163,8 @@ msgstr "Era:"
 msgid "Default"
 msgstr "Predeterminado"
 
-#. [button]: id=password
 #. [label]: id=title
+#. [button]: id=password
 #: data/gui/default/window/mp_create_game.cfg:226
 #: data/gui/default/window/mp_create_game_set_password.cfg:42
 msgid "Set Password"
@@ -2322,7 +2322,7 @@ msgstr "Seleccionar"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=help
-#: data/gui/default/window/title_screen.cfg:146 src/hotkeys.cpp:209
+#: data/gui/default/window/title_screen.cfg:146 src/hotkeys.cpp:210
 msgid "Help"
 msgstr "Axuda"
 
@@ -2440,7 +2440,7 @@ msgstr "Atacar ao inimigo"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/unit_create.cfg:45 src/hotkeys.cpp:86
+#: data/gui/default/window/unit_create.cfg:45 src/hotkeys.cpp:87
 msgid "Create Unit (Debug!)"
 msgstr "Crear unha unidade (depuración!)"
 
@@ -2480,19 +2480,19 @@ msgstr "Non se puido eliminar o ficheiro."
 msgid "Creation of the directory failed."
 msgstr "Non se puido crear o directorio."
 
-#: src/game_preferences.cpp:315
+#: src/game_preferences.cpp:316
 msgid "No server has been defined."
 msgstr "Non se estableceu ningún servidor."
 
-#: src/game_preferences.cpp:395
+#: src/game_preferences.cpp:396
 msgid "player"
 msgstr "xogador"
 
-#: src/game_preferences.cpp:837
+#: src/game_preferences.cpp:838
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/game_preferences.cpp:840
+#: src/game_preferences.cpp:841
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
@@ -2995,29 +2995,29 @@ msgstr "Non hai temas visuais coñecidos. Proba a cambialos desde unha partida."
 msgid "Find $filename server binary to host networked games"
 msgstr "Buscar o binario do servidor «$filename|»"
 
-#: src/gui/auxiliary/canvas.cpp:596
+#: src/gui/auxiliary/canvas.cpp:597
 msgid "Line doesn't fit on canvas."
 msgstr "A liña non colle no lenzo."
 
-#: src/gui/auxiliary/canvas.cpp:735
+#: src/gui/auxiliary/canvas.cpp:736
 msgid "Rectangle doesn't fit on canvas."
 msgstr "O rectángulo non colle no lenzo."
 
-#: src/gui/auxiliary/canvas.cpp:868 src/gui/auxiliary/canvas.cpp:873
-#: src/gui/auxiliary/canvas.cpp:878 src/gui/auxiliary/canvas.cpp:884
+#: src/gui/auxiliary/canvas.cpp:869 src/gui/auxiliary/canvas.cpp:874
+#: src/gui/auxiliary/canvas.cpp:879 src/gui/auxiliary/canvas.cpp:885
 msgid "Circle doesn't fit on canvas."
 msgstr "O círculo non colle no lenzo."
 
-#: src/gui/auxiliary/canvas.cpp:1070 src/gui/auxiliary/canvas.cpp:1077
-#: src/gui/auxiliary/canvas.cpp:1087 src/gui/auxiliary/canvas.cpp:1094
+#: src/gui/auxiliary/canvas.cpp:1071 src/gui/auxiliary/canvas.cpp:1078
+#: src/gui/auxiliary/canvas.cpp:1088 src/gui/auxiliary/canvas.cpp:1095
 msgid "Image doesn't fit on canvas."
 msgstr "A imaxe non colle no lenzo."
 
-#: src/gui/auxiliary/canvas.cpp:1302
+#: src/gui/auxiliary/canvas.cpp:1303
 msgid "Text has a font size of 0."
 msgstr "O tamaño da letra do texto é 0."
 
-#: src/gui/auxiliary/canvas.cpp:1371
+#: src/gui/auxiliary/canvas.cpp:1372
 msgid "Text doesn't start on canvas."
 msgstr "O texto non comeza no lenzo."
 
@@ -3060,50 +3060,50 @@ msgstr "O número de columnas difire."
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr "Atopouse un trebello con axuda pero sen explicación."
 
-#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:47
-#: src/gui/auxiliary/window_builder/listbox.cpp:58
+#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:48
+#: src/gui/auxiliary/window_builder/listbox.cpp:59
 #: src/gui/auxiliary/window_builder/scrollbar_panel.cpp:42
 msgid "No list defined."
 msgstr "Non se definiu ningunha lista."
 
-#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:51
-#: src/gui/auxiliary/window_builder/listbox.cpp:62
+#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:52
+#: src/gui/auxiliary/window_builder/listbox.cpp:63
 msgid "A 'list_definition' should contain one row."
 msgstr ""
 "Toda “list_definition” («definición de lista») debería conter unha fila."
 
-#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:67
-#: src/gui/auxiliary/window_builder/listbox.cpp:81
-#: src/gui/auxiliary/window_builder/multi_page.cpp:61
+#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:68
+#: src/gui/auxiliary/window_builder/listbox.cpp:82
+#: src/gui/auxiliary/window_builder/multi_page.cpp:62
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 "“list_data” («datos da lista») debe ter o mesmo número de columnas que "
 "“list_definition” («definición da lista»)."
 
-#: src/gui/auxiliary/window_builder/multi_page.cpp:39
+#: src/gui/auxiliary/window_builder/multi_page.cpp:40
 msgid "No page defined."
 msgstr "Non se definiu ningunha páxina."
 
-#: src/gui/auxiliary/window_builder/slider.cpp:66
+#: src/gui/auxiliary/window_builder/slider.cpp:67
 msgid "The number of value_labels and values don't match."
 msgstr ""
 "Os números de “value_labels” («valores do elemento») e “values” («valores») "
 "non coinciden."
 
-#: src/gui/auxiliary/window_builder/stacked_widget.cpp:37
+#: src/gui/auxiliary/window_builder/stacked_widget.cpp:38
 msgid "No stack defined."
 msgstr "Non se definiu ningunha pila."
 
-#: src/gui/auxiliary/window_builder/tree_view.cpp:46
+#: src/gui/auxiliary/window_builder/tree_view.cpp:47
 msgid "No nodes defined for a tree view."
 msgstr "Non se definiu ningún nodo para unha vista de árbore."
 
-#: src/gui/auxiliary/window_builder/tree_view.cpp:86
+#: src/gui/auxiliary/window_builder/tree_view.cpp:87
 msgid "[node]id 'root' is reserved for the implementation."
 msgstr "O [node]id («identificador do nodo») “root” está reservado."
 
-#: src/gui/auxiliary/window_builder/tree_view.cpp:90
+#: src/gui/auxiliary/window_builder/tree_view.cpp:91
 msgid "No node defined."
 msgstr "Non se definiu ningún nodo."
 
@@ -3190,7 +3190,7 @@ msgstr "Fai falla un contrasinal para unirse a esta partida."
 msgid "Password: "
 msgstr "Contrasinal: "
 
-#: src/gui/dialogs/message.cpp:190 src/gui/dialogs/transient_message.cpp:62
+#: src/gui/dialogs/message.cpp:191 src/gui/dialogs/transient_message.cpp:62
 msgid "Error"
 msgstr "Houbo un erro"
 
@@ -3202,16 +3202,16 @@ msgstr "Bando $side"
 msgid "Load Game..."
 msgstr "Cargar unha partida…"
 
-#: src/gui/dialogs/network_transmission.cpp:55
-#: src/gui/dialogs/network_transmission.cpp:57 src/hotkeys.cpp:1185
+#: src/gui/dialogs/network_transmission.cpp:54
+#: src/gui/dialogs/network_transmission.cpp:56 src/hotkeys.cpp:1186
 msgid "unit_byte^B"
 msgstr "B"
 
-#: src/gui/dialogs/title_screen.cpp:296
+#: src/gui/dialogs/title_screen.cpp:297
 msgid "Version "
 msgstr "Versión "
 
-#: src/gui/dialogs/title_screen.cpp:299
+#: src/gui/dialogs/title_screen.cpp:300
 msgid "Version"
 msgstr "Versión"
 
@@ -3219,21 +3219,21 @@ msgstr "Versión"
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Non se definiu o trebello obrigatorio “$id|”."
 
-#: src/gui/widgets/settings.cpp:440
+#: src/gui/widgets/settings.cpp:441
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 "A definición do trebello “$definition|” non contén a definición de “$id|”."
 
-#: src/gui/widgets/settings.cpp:506
+#: src/gui/widgets/settings.cpp:507
 msgid "No default gui defined."
 msgstr "Non se definiu unha interface gráfica predeterminada."
 
-#: src/gui/widgets/settings.cpp:536
+#: src/gui/widgets/settings.cpp:537
 msgid "No state or draw section defined."
 msgstr "Non se definiu ningunha sección de debuxo ou de estado."
 
-#: src/gui/widgets/tree_view_node.cpp:103
+#: src/gui/widgets/tree_view_node.cpp:104
 msgid "Unknown builder id for tree view node."
 msgstr ""
 "Non se coñece o identificador do construtor para o nodo da vista de árbore."
@@ -3247,518 +3247,518 @@ msgstr "Para premer «Rexeitar» fai falla un botón “click_dismiss“ ou “o
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Non se puido amosar un dos diálogos, non collía na pantalla."
 
-#: src/hotkeys.cpp:53
+#: src/hotkeys.cpp:54
 msgid "Left Mouse Click"
 msgstr "Botón esquerdo do rato"
 
-#: src/hotkeys.cpp:54
+#: src/hotkeys.cpp:55
 msgid "Right Mouse Click"
 msgstr "Botón dereito do rato"
 
 # Accesible dende:
 # «Configuración → Visualización».
-#: src/hotkeys.cpp:55
+#: src/hotkeys.cpp:56
 msgid "Animate Map"
 msgstr "Amosar as animacións do mapa."
 
-#: src/hotkeys.cpp:56
+#: src/hotkeys.cpp:57
 msgid "Next Unit"
 msgstr "Seguinte unidade"
 
-#: src/hotkeys.cpp:57
+#: src/hotkeys.cpp:58
 msgid "Previous Unit"
 msgstr "Unidade anterior"
 
-#: src/hotkeys.cpp:58
+#: src/hotkeys.cpp:59
 msgid "Hold Position"
 msgstr "Manter a posición"
 
-#: src/hotkeys.cpp:59
+#: src/hotkeys.cpp:60
 msgid "End Unit Turn"
 msgstr "Rematar a quenda da unidade"
 
-#: src/hotkeys.cpp:60
+#: src/hotkeys.cpp:61
 msgid "Leader"
 msgstr "Líder"
 
-#: src/hotkeys.cpp:61
+#: src/hotkeys.cpp:62
 msgid "Undo"
 msgstr "Desfacer"
 
-#: src/hotkeys.cpp:62
+#: src/hotkeys.cpp:63
 msgid "Redo"
 msgstr "Refacer"
 
-#: src/hotkeys.cpp:63
+#: src/hotkeys.cpp:64
 msgid "Zoom In"
 msgstr "Achegar"
 
-#: src/hotkeys.cpp:64
+#: src/hotkeys.cpp:65
 msgid "Zoom Out"
 msgstr "Afastar"
 
-#: src/hotkeys.cpp:65
+#: src/hotkeys.cpp:66
 msgid "Default Zoom"
 msgstr "Distancia predeterminada"
 
-#: src/hotkeys.cpp:66
+#: src/hotkeys.cpp:67
 msgid "Toggle Full Screen"
 msgstr "Pór a pantalla completa"
 
-#: src/hotkeys.cpp:67 src/hotkeys.cpp:1179
+#: src/hotkeys.cpp:68 src/hotkeys.cpp:1180
 msgid "Screenshot"
 msgstr "Facer unha captura do xogo"
 
-#: src/hotkeys.cpp:68
+#: src/hotkeys.cpp:69
 msgid "Map Screenshot"
 msgstr "Facer unha captura do mapa"
 
-#: src/hotkeys.cpp:69
+#: src/hotkeys.cpp:70
 msgid "Accelerated"
 msgstr "Activar a velocidade acelerada"
 
-#: src/hotkeys.cpp:70
+#: src/hotkeys.cpp:71
 msgid "Unit Description"
 msgstr "Descrición da unidade"
 
-#: src/hotkeys.cpp:71
+#: src/hotkeys.cpp:72
 msgid "Rename Unit"
 msgstr "Cambiarlle o nome á unidade"
 
-#: src/hotkeys.cpp:73
+#: src/hotkeys.cpp:74
 msgid "Save Replay"
 msgstr "Gardar a repetición"
 
 # Aparece no editor de mapas, menú «Ficheiro».
-#: src/hotkeys.cpp:74 src/hotkeys.cpp:135
+#: src/hotkeys.cpp:75 src/hotkeys.cpp:136
 msgid "Save Map"
 msgstr "Gardar o mapa"
 
-#: src/hotkeys.cpp:76
+#: src/hotkeys.cpp:77
 msgid "Recruit"
 msgstr "Recrutar"
 
-#: src/hotkeys.cpp:77
+#: src/hotkeys.cpp:78
 msgid "Repeat Recruit"
 msgstr "Repetir o recrutamento"
 
-#: src/hotkeys.cpp:78
+#: src/hotkeys.cpp:79
 msgid "Recall"
 msgstr "Reincorporar"
 
-#: src/hotkeys.cpp:79
+#: src/hotkeys.cpp:80
 msgid "End Turn"
 msgstr "Rematar a quenda"
 
-#: src/hotkeys.cpp:80
+#: src/hotkeys.cpp:81
 msgid "Toggle Ellipses"
 msgstr "Activar as elipses"
 
-#: src/hotkeys.cpp:81
+#: src/hotkeys.cpp:82
 msgid "Toggle Grid"
 msgstr "Activar a grade"
 
-#: src/hotkeys.cpp:82
+#: src/hotkeys.cpp:83
 msgid "Mouse Scrolling"
 msgstr "Desprazamento co rato."
 
-#: src/hotkeys.cpp:83
+#: src/hotkeys.cpp:84
 msgid "Status Table"
 msgstr "Cadro da situación"
 
-#: src/hotkeys.cpp:84
+#: src/hotkeys.cpp:85
 msgid "Mute"
 msgstr "Silenciar"
 
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:86
 msgid "Speak"
 msgstr "Escribir unha mensaxe"
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:88
 msgid "Change Side (Debug!)"
 msgstr "Cambiar de bando (depuración!)"
 
-#: src/hotkeys.cpp:89
+#: src/hotkeys.cpp:90
 msgid "Scenario Objectives"
 msgstr "Obxectivos do escenario"
 
-#: src/hotkeys.cpp:90
+#: src/hotkeys.cpp:91
 msgid "Unit List"
 msgstr "Lista de unidades"
 
-#: src/hotkeys.cpp:91
+#: src/hotkeys.cpp:92
 msgid "Statistics"
 msgstr "Estatísticas"
 
-#: src/hotkeys.cpp:92
+#: src/hotkeys.cpp:93
 msgid "Pause Network Game"
 msgstr "Deter a partida en rede"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:94
 msgid "Continue Network Game"
 msgstr "Continuar a partida en rede"
 
-#: src/hotkeys.cpp:95
+#: src/hotkeys.cpp:96
 msgid "Set Team Label"
 msgstr "Poñer unha etiqueta do equipo"
 
-#: src/hotkeys.cpp:96
+#: src/hotkeys.cpp:97
 msgid "Set Label"
 msgstr "Poñer unha etiqueta"
 
-#: src/hotkeys.cpp:97
+#: src/hotkeys.cpp:98
 msgid "Clear Labels"
 msgstr "Quitar as etiquetas"
 
-#: src/hotkeys.cpp:98
+#: src/hotkeys.cpp:99
 msgid "Show Enemy Moves"
 msgstr "Amosar os movementos do inimigo"
 
-#: src/hotkeys.cpp:99
+#: src/hotkeys.cpp:100
 msgid "Best Possible Enemy Moves"
 msgstr "Mellores movementos posíbeis do inimigo"
 
-#: src/hotkeys.cpp:100
+#: src/hotkeys.cpp:101
 msgid "Play Replay"
 msgstr "Reproducir a repetición"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:102
 msgid "Reset Replay"
 msgstr "Restaurar a repetición"
 
-#: src/hotkeys.cpp:102
+#: src/hotkeys.cpp:103
 msgid "Stop Replay"
 msgstr "Deter a repetición"
 
-#: src/hotkeys.cpp:103
+#: src/hotkeys.cpp:104
 msgid "Next Turn"
 msgstr "Seguinte rolda"
 
-#: src/hotkeys.cpp:104
+#: src/hotkeys.cpp:105
 msgid "Next Side"
 msgstr "Seguinte bando"
 
-#: src/hotkeys.cpp:106
+#: src/hotkeys.cpp:107
 msgid "Full Map"
 msgstr "Mapa completo"
 
-#: src/hotkeys.cpp:108
+#: src/hotkeys.cpp:109
 msgid "Each Team"
 msgstr "Cada equipo"
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:111
 msgid "Team 1"
 msgstr "Equipo 1"
 
-#: src/hotkeys.cpp:111
+#: src/hotkeys.cpp:112
 msgid "Skip Animation"
 msgstr "Saltarse a animación"
 
 #. TRANSLATORS: whiteboard menu entry: toggle planning mode
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:115
 msgid "whiteboard^Planning Mode"
 msgstr "Modo de planificación"
 
 #. TRANSLATORS: whiteboard menu entry: execute planned action
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:117
 msgid "whiteboard^Execute Action"
 msgstr "Executar a acción"
 
 #. TRANSLATORS: whiteboard menu entry: execute all planned actions
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:119
 msgid "whiteboard^Execute All Actions"
 msgstr "Executar as accións"
 
 #. TRANSLATORS: whiteboard menu entry: delete planned action
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:121
 msgid "whiteboard^Delete Action"
 msgstr "Eliminar a acción"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action up queue
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:123
 msgid "whiteboard^Move Action Up"
 msgstr "Adiantar a acción"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action down queue
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:125
 msgid "whiteboard^Move Action Down"
 msgstr "Atrasar a acción"
 
 #. TRANSLATORS: whiteboard menu entry: plan as though the chosen unit were dead
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:127
 msgid "whiteboard^Suppose Dead"
 msgstr "Dar por morto"
 
-#: src/hotkeys.cpp:128
+#: src/hotkeys.cpp:129
 msgid "Quit to Desktop"
 msgstr "Saír ao escritorio"
 
-#: src/hotkeys.cpp:129
+#: src/hotkeys.cpp:130
 msgid "Close Map"
 msgstr "Pechar o mapa"
 
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:131
 msgid "Switch Map"
 msgstr "Cambiar de mapa"
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:133
 msgid "Partial Undo"
 msgstr "Desfacer parcialmente"
 
 # Aparece no editor de mapas, menú «Ficheiro».
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:135
 msgid "Load Map"
 msgstr "Cargar un mapa"
 
 # Aparece no editor de mapas, menú «Ficheiro».
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:137
 msgid "Save Map As"
 msgstr "Gardar o mapa como"
 
 # Aparece no editor de mapas, menú «Ficheiro».
-#: src/hotkeys.cpp:137
+#: src/hotkeys.cpp:138
 msgid "Save All Maps"
 msgstr "Gardar todos os mapas"
 
-#: src/hotkeys.cpp:138
+#: src/hotkeys.cpp:139
 msgid "Revert All Changes"
 msgstr "Desbotar todos os cambios"
 
-#: src/hotkeys.cpp:139
+#: src/hotkeys.cpp:140
 msgid "Map Information"
 msgstr "Información do mapa"
 
-#: src/hotkeys.cpp:141
+#: src/hotkeys.cpp:142
 msgid "Swap Foreground/Background Terrains"
 msgstr "Intercambiar os terreos en primeiro e segundo plano"
 
-#: src/hotkeys.cpp:142
+#: src/hotkeys.cpp:143
 msgid "Next Tool"
 msgstr "Seguinte ferramenta"
 
-#: src/hotkeys.cpp:143
+#: src/hotkeys.cpp:144
 msgid "Paint Tool"
 msgstr "Ferramenta de pintura"
 
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:145
 msgid "Fill Tool"
 msgstr "Ferramenta de recheo"
 
-#: src/hotkeys.cpp:145
+#: src/hotkeys.cpp:146
 msgid "Selection Tool"
 msgstr "Ferramenta de selección"
 
-#: src/hotkeys.cpp:147
+#: src/hotkeys.cpp:148
 msgid "Set Starting Positions Tool"
 msgstr "Ferramenta de definición das posicións iniciais"
 
-#: src/hotkeys.cpp:148
+#: src/hotkeys.cpp:149
 msgid "Next Brush"
 msgstr "Seguinte brocha"
 
-#: src/hotkeys.cpp:149
+#: src/hotkeys.cpp:150
 msgid "Default Brush"
 msgstr "Brocha predeterminada"
 
-#: src/hotkeys.cpp:150
+#: src/hotkeys.cpp:151
 msgid "Cut"
 msgstr "Cortar"
 
-#: src/hotkeys.cpp:151
+#: src/hotkeys.cpp:152
 msgid "Copy"
 msgstr "Copiar"
 
-#: src/hotkeys.cpp:152
+#: src/hotkeys.cpp:153
 msgid "Paste"
 msgstr "Pegar"
 
-#: src/hotkeys.cpp:153
+#: src/hotkeys.cpp:154
 msgid "Export Selected Coordinates to System Clipboard"
 msgstr "Exportar as coordenadas seleccionadas ao portarretallos do sistema"
 
-#: src/hotkeys.cpp:155
+#: src/hotkeys.cpp:156
 msgid "Select All"
 msgstr "Seleccionalo todo"
 
-#: src/hotkeys.cpp:157
+#: src/hotkeys.cpp:158
 msgid "Select Inverse"
 msgstr "Inverter a selección"
 
-#: src/hotkeys.cpp:159
+#: src/hotkeys.cpp:160
 msgid "Select None"
 msgstr "Non seleccionar nada"
 
-#: src/hotkeys.cpp:161
+#: src/hotkeys.cpp:162
 msgid "Rotate Clipboard Clockwise"
 msgstr "Rotar o que hai no portarretallos no sentido das agullas do reloxo"
 
-#: src/hotkeys.cpp:163
+#: src/hotkeys.cpp:164
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr ""
 "Rotar o que hai no portarretallos no sentido contrario ao das agullas do "
 "reloxo"
 
-#: src/hotkeys.cpp:165
+#: src/hotkeys.cpp:166
 msgid "Flip Clipboard Horizontally"
 msgstr "Voltear horizontalmente o que hai no portarretallos"
 
-#: src/hotkeys.cpp:167
+#: src/hotkeys.cpp:168
 msgid "Flip Clipboard Vertically"
 msgstr "Voltear verticalmente o que hai no portarretallos"
 
-#: src/hotkeys.cpp:169
+#: src/hotkeys.cpp:170
 msgid "Rotate Selection"
 msgstr "Rotar a selección"
 
-#: src/hotkeys.cpp:171
+#: src/hotkeys.cpp:172
 msgid "Flip Selection"
 msgstr "Voltear a selección"
 
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:174
 msgid "Fill Selection"
 msgstr "Encher a selección"
 
-#: src/hotkeys.cpp:175
+#: src/hotkeys.cpp:176
 msgid "Generate Tiles In Selection"
 msgstr "Xerar hexágonos na selección"
 
-#: src/hotkeys.cpp:177
+#: src/hotkeys.cpp:178
 msgid "Randomize Tiles In Selection"
 msgstr "Xerar ao chou os hexágonos da selección"
 
-#: src/hotkeys.cpp:181
+#: src/hotkeys.cpp:182
 msgid "Rotate Map"
 msgstr "Rotar o mapa"
 
-#: src/hotkeys.cpp:183
+#: src/hotkeys.cpp:184
 msgid "Generate Map"
 msgstr "Xerar un mapa"
 
-#: src/hotkeys.cpp:185
+#: src/hotkeys.cpp:186
 msgid "Apply a Mask"
 msgstr "Aplicar unha máscara"
 
-#: src/hotkeys.cpp:187
+#: src/hotkeys.cpp:188
 msgid "Create Mask"
 msgstr "Crear unha máscara"
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:190
 msgid "Refresh Display"
 msgstr "Actualizar a pantalla"
 
-#: src/hotkeys.cpp:191
+#: src/hotkeys.cpp:192
 msgid "Update Terrain Transitions"
 msgstr "Actualizar as transicións dos terreos"
 
-#: src/hotkeys.cpp:193
+#: src/hotkeys.cpp:194
 msgid "Auto-update Terrain Transitions"
 msgstr "Actualizar automaticamente as transicións dos terreos"
 
-#: src/hotkeys.cpp:195
+#: src/hotkeys.cpp:196
 msgid "Refresh Image Cache"
 msgstr "Actualizar a caché das imaxes"
 
-#: src/hotkeys.cpp:197
+#: src/hotkeys.cpp:198
 msgid "Draw Hex Coordinates"
 msgstr "Amosar as coordenadas dos hexágonos"
 
-#: src/hotkeys.cpp:199
+#: src/hotkeys.cpp:200
 msgid "Draw Terrain Codes"
 msgstr "Amosar os códigos dos terreos"
 
-#: src/hotkeys.cpp:203
+#: src/hotkeys.cpp:204
 msgid "Delay Shroud Updates"
 msgstr "Retardar as actualizacións do manto do descoñecido"
 
-#: src/hotkeys.cpp:204
+#: src/hotkeys.cpp:205
 msgid "Update Shroud Now"
 msgstr "Actualizar o manto do descoñecido"
 
-#: src/hotkeys.cpp:205
+#: src/hotkeys.cpp:206
 msgid "Continue Move"
 msgstr "Continuar o movemento"
 
-#: src/hotkeys.cpp:206
+#: src/hotkeys.cpp:207
 msgid "Find Label or Unit"
 msgstr "Buscar un elemento ou unidade"
 
-#: src/hotkeys.cpp:207
+#: src/hotkeys.cpp:208
 msgid "Speak to Ally"
 msgstr "Escribirlles unha mensaxe aos aliados"
 
-#: src/hotkeys.cpp:208
+#: src/hotkeys.cpp:209
 msgid "Speak to All"
 msgstr "Escribirlle unha mensaxe a todo o mundo"
 
-#: src/hotkeys.cpp:210
+#: src/hotkeys.cpp:211
 msgid "View Chat Log"
 msgstr "Ver o rexistro das conversas"
 
-#: src/hotkeys.cpp:213
+#: src/hotkeys.cpp:214
 msgid "Enter User Command"
 msgstr "Escribir unha orde"
 
-#: src/hotkeys.cpp:214
+#: src/hotkeys.cpp:215
 msgid "Custom Command"
 msgstr "Orde personalizada"
 
-#: src/hotkeys.cpp:215
+#: src/hotkeys.cpp:216
 msgid "Run Formula"
 msgstr "Executar o código Formula"
 
-#: src/hotkeys.cpp:216
+#: src/hotkeys.cpp:217
 msgid "Clear Messages"
 msgstr "Quitar as mensaxes"
 
-#: src/hotkeys.cpp:220
+#: src/hotkeys.cpp:221
 msgid "Refresh WML"
 msgstr "Actualizar o WML"
 
-#: src/hotkeys.cpp:227
+#: src/hotkeys.cpp:228
 msgid "Next Tip of the Day"
 msgstr "Seguinte consello"
 
-#: src/hotkeys.cpp:234
+#: src/hotkeys.cpp:235
 msgid "Previous Tip of the Day"
 msgstr "Consello anterior"
 
-#: src/hotkeys.cpp:241
+#: src/hotkeys.cpp:242
 msgid "Start Tutorial"
 msgstr "Comezar a aprendizaxe"
 
-#: src/hotkeys.cpp:248
+#: src/hotkeys.cpp:249
 msgid "Start Campaign"
 msgstr "Comezar unha campaña"
 
-#: src/hotkeys.cpp:255
+#: src/hotkeys.cpp:256
 msgid "Start Multiplayer Game"
 msgstr "Comezar unha partida con varios xogadores"
 
-#: src/hotkeys.cpp:262
+#: src/hotkeys.cpp:263
 msgid "Manage Add-ons"
 msgstr "Xestionar os complementos"
 
-#: src/hotkeys.cpp:269
+#: src/hotkeys.cpp:270
 msgid "Start Editor"
 msgstr "Iniciar o editor de mapas"
 
-#: src/hotkeys.cpp:276
+#: src/hotkeys.cpp:277
 msgid "Show Credits"
 msgstr "Amosar a lista dos autores"
 
-#: src/hotkeys.cpp:284
+#: src/hotkeys.cpp:285
 msgid "Show Helptip"
 msgstr "Amosar a axuda"
 
-#: src/hotkeys.cpp:882 src/hotkeys.cpp:1227
+#: src/hotkeys.cpp:883 src/hotkeys.cpp:1228
 msgid "Do you really want to quit?"
 msgstr "Seguro que quere saír?"
 
-#: src/hotkeys.cpp:1179
+#: src/hotkeys.cpp:1180
 msgid "Map-Screenshot"
 msgstr "Captura-do-mapa"
 
-#: src/hotkeys.cpp:1186 src/hotkeys.cpp:1188
+#: src/hotkeys.cpp:1187 src/hotkeys.cpp:1189
 msgid "Screenshot done"
 msgstr "Fíxose a captura"
 
@@ -3829,7 +3829,7 @@ msgstr "Illa"
 msgid "The maximum text width is less than 1."
 msgstr "O ancho máximo do texto é inferior a 1."
 
-#: src/preferences_display.cpp:123 src/preferences_display.cpp:179
+#: src/preferences_display.cpp:124 src/preferences_display.cpp:180
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -3840,36 +3840,36 @@ msgstr ""
 "pantalla debe ser compatíbel cunha resolución de 1024×768×16 para empregar o "
 "xogo a pantalla completa."
 
-#: src/preferences_display.cpp:276
+#: src/preferences_display.cpp:277
 msgid "Hotkey Settings"
 msgstr "Configuración dos atallos"
 
-#: src/preferences_display.cpp:282 src/preferences_display.cpp:351
+#: src/preferences_display.cpp:283 src/preferences_display.cpp:352
 msgid "Press desired hotkey (Esc cancels)"
 msgstr "Prema a tecla que queira empregar («Esc» para cancelar)."
 
-#: src/preferences_display.cpp:301
+#: src/preferences_display.cpp:302
 msgid "Action"
 msgstr "Acción"
 
-#: src/preferences_display.cpp:301
+#: src/preferences_display.cpp:302
 msgid "Binding"
 msgstr "Asociación"
 
-#: src/preferences_display.cpp:313
+#: src/preferences_display.cpp:314
 msgid "Change Hotkey"
 msgstr "Cambiar o atallo"
 
-#: src/preferences_display.cpp:316
+#: src/preferences_display.cpp:317
 msgid "Clear Hotkey"
 msgstr "Eliminar o atallo"
 
-#: src/preferences_display.cpp:394 src/preferences_display.cpp:402
-#: src/preferences_display.cpp:414
+#: src/preferences_display.cpp:395 src/preferences_display.cpp:403
+#: src/preferences_display.cpp:415
 msgid "This hotkey is already in use."
 msgstr "Este atallo xa se está a empregar."
 
-#: src/preferences_display.cpp:429
+#: src/preferences_display.cpp:430
 msgid ""
 "Screenshot hotkeys should be combined with the Control, Alt or Meta "
 "modifiers to avoid problems."
@@ -3877,19 +3877,19 @@ msgstr ""
 "Os atallos de capturas non se deberían combinar cos modificadores «Ctrl», "
 "«Alt» e «Meta»."
 
-#: src/preferences_display.cpp:429
+#: src/preferences_display.cpp:430
 msgid "Warning"
 msgstr "Advertencia"
 
-#: src/preferences_display.cpp:530
+#: src/preferences_display.cpp:531
 msgid "There are no alternative video modes available"
 msgstr "Non hai modos de vídeo alternativos dispoñíbeis."
 
-#: src/preferences_display.cpp:561
+#: src/preferences_display.cpp:562
 msgid " (widescreen)"
 msgstr " (panorámica)"
 
-#: src/preferences_display.cpp:565
+#: src/preferences_display.cpp:566
 msgid "Choose Resolution"
 msgstr "Escoller a resolución"
 

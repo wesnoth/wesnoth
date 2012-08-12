@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-01-22 15:00+0100\n"
+"POT-Creation-Date: 2012-08-12 10:25+0200\n"
 "PO-Revision-Date: 2011-12-24 00:02+0100\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
@@ -102,10 +102,10 @@ msgstr ""
 msgid "A Summer of Storms"
 msgstr ""
 
-#. [side]: id=Prince Haldric, type=Noble Commander
 #. [side]: type=Noble Commander, id=Prince Haldric
-#. [side]: type=Noble Fighter, id=Prince Haldric
+#. [side]: id=Prince Haldric, type=Noble Commander
 #. [side]: type=Noble Youth, type=Noble Fighter, id=Prince Haldric
+#. [side]: type=Noble Fighter, id=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:24
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:21
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:21
@@ -372,26 +372,26 @@ msgstr "Tararbagus"
 #. [side]: type=Orcish Warlord, id=Tan-Harak
 #. [side]: type=Orcish Warlord, id=Tan-Hork
 #. [side]: type=Orcish Warlord, id=Tan-Gulo
-#. [side]: type=Orcish Warlord, id=Tan-Vragar
-#. [side]: type=Orcish Warlord, id=Tan-Burg
-#. [side]: type=Orcish Warlord, id=Ut'Tan-Vrork
-#. [side]: type=Draug, id=General Heravan
-#. [side]: type=Orcish Warlord, id=Tan-Halg
-#. [side]: type=Orcish Warlord, id=Tan-Rinak
-#. [side]: type=Orcish Warlord, id=Tan-Rarbag
-#. [side]: type=Orcish Warrior, id=Tan-Erang
 #. [side]: type=Orcish Warlord, id=Tan-Erirt
 #. [side]: type=Orcish Warlord, id=Tan-Gagar
 #. [side]: type=Troll Warrior, id=Thruf
-#. [side]: type=Orcish Warlord, id=Ut'Tan-Grilg
-#. [side]: type=Orcish Warlord, id=Tan-Pulk
+#. [side]: type=Orcish Warlord, id=Tan-Rarbag
+#. [side]: type=Orcish Warrior, id=Tan-Erang
 #. [side]: type=Orcish Warlord, id=Tan-Gralg
 #. [side]: type=Orcish Warlord, id=Tan-Rugar
+#. [side]: type=Orcish Warlord, id=Ut'Tan-Grilg
+#. [side]: type=Orcish Warlord, id=Tan-Pulk
+#. [side]: type=Orcish Warlord, id=Tan-Schmog
+#. [side]: type=Orcish Warlord, id=Tan-NauVong
+#. [side]: type=Draug, id=General Heravan
+#. [side]: type=Orcish Warlord, id=Tan-Halg
+#. [side]: type=Orcish Warlord, id=Tan-Rinak
+#. [side]: type=Orcish Warlord, id=Tan-Vragar
+#. [side]: type=Orcish Warlord, id=Tan-Burg
+#. [side]: type=Orcish Warlord, id=Ut'Tan-Vrork
 #. [side]: type=Orcish Warlord, id=Tan-Vrodis
 #. [side]: type=Orcish Warlord, id=Tan-Bok
 #. [side]: type=Orcish Warlord, id=Tan-Hogar
-#. [side]: type=Orcish Warlord, id=Tan-Schmog
-#. [side]: type=Orcish Warlord, id=Tan-NauVong
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:70
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:94
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:41
@@ -1943,8 +1943,8 @@ msgstr ""
 msgid "Humans"
 msgstr "Homines"
 
-#. [side]: type=Lieutenant, id=Commander Aethyr
 #. [case]
+#. [side]: type=Lieutenant, id=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:41
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:527
 msgid "Commander Aethyr"
@@ -3080,11 +3080,11 @@ msgstr ""
 msgid "Under the same terms?"
 msgstr ""
 
+#. [message]: speaker=Lord El’Isomithir
+#. [message]: speaker=Lord Logalmier
 #. [message]: speaker=Lady Jessene
 #. [message]: speaker=Lady Dionli
 #. [message]: speaker=Lord Aryad
-#. [message]: speaker=Lord El’Isomithir
-#. [message]: speaker=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:396
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:421
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:425
@@ -3647,8 +3647,8 @@ msgid ""
 "with you until the end. You’ve been a good friend. Just no more sea voyages."
 msgstr ""
 
-#. [event]
 #. [side]: type=Elvish Shyde, id=Lady Dionli
+#. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:233
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:34
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:34
@@ -6015,8 +6015,8 @@ msgstr ""
 msgid "female^Wesfolk Lady"
 msgstr "Domina Vesigenorum"
 
-#. [unit_type]: id=Wesfolk Leader, race=human
 #. [unit_type]: id=Wesfolk Lady, race=human
+#. [unit_type]: id=Wesfolk Leader, race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Lady.cfg:22
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Leader.cfg:23
 msgid ""

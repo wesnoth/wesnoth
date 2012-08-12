@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-lib_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-05-11 22:06+0200\n"
+"POT-Creation-Date: 2012-08-12 10:25+0200\n"
 "PO-Revision-Date: 2012-04-01 12:11+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
@@ -1109,8 +1109,8 @@ msgstr "Térképen kívül"
 msgid "Experimental Fake Map Edge"
 msgstr "Kísérleti áltérképszél"
 
-#. [toggle_button]: id=shroud
 #. [terrain_type]: id=shroud
+#. [toggle_button]: id=shroud
 #: data/core/terrain.cfg:2066 data/gui/default/window/mp_create_game.cfg:479
 msgid "Shroud"
 msgstr "Eltakarás"
@@ -1141,17 +1141,17 @@ msgid "Unwalkable"
 msgstr "Járhatatlan terület"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=click_dismiss
-#. [button]: id=ok
 #. [button]: id=cancel
+#. [button]: id=ok
 #. [button]: id=close_window
+#. [button]: id=click_dismiss
 #: data/gui/default/widget/window_default.cfg:140
 #: data/gui/default/window/chat_log.cfg:121
 #: data/gui/default/window/gamestate_inspector.cfg:339
 #: data/gui/default/window/lobby_main.cfg:619
 #: data/gui/default/window/lobby_player_info.cfg:200
 #: data/gui/default/window/message.cfg:133 src/construct_dialog.cpp:134
-#: src/mapgen_dialog.cpp:110 src/preferences_display.cpp:272
+#: src/mapgen_dialog.cpp:110 src/preferences_display.cpp:273
 msgid "Close"
 msgstr "Bezár"
 
@@ -1226,7 +1226,7 @@ msgstr "Kapcsolódás"
 #: data/gui/default/window/unit_attack.cfg:208
 #: data/gui/default/window/unit_create.cfg:209
 #: data/gui/default/window/unit_create.cfg:210 src/construct_dialog.cpp:128
-#: src/construct_dialog.cpp:131 src/hotkeys.cpp:52
+#: src/construct_dialog.cpp:131 src/hotkeys.cpp:53
 msgid "Cancel"
 msgstr "Mégsem"
 
@@ -1312,8 +1312,8 @@ msgstr "Hadjárat"
 #: data/gui/default/window/unit_create.cfg:198
 #: data/gui/default/window/wml_message.cfg:485
 #: data/gui/default/window/wml_message.cfg:714 src/construct_dialog.cpp:120
-#: src/construct_dialog.cpp:127 src/gui/dialogs/message.cpp:162
-#: src/gui/dialogs/message.cpp:169
+#: src/construct_dialog.cpp:127 src/gui/dialogs/message.cpp:163
+#: src/gui/dialogs/message.cpp:170
 msgid "OK"
 msgstr "Rendben"
 
@@ -1342,16 +1342,16 @@ msgstr "Oldal:"
 msgid "Last"
 msgstr "Utolsó"
 
-#. [button]: id=previous_page
 #. [button]: id=previous_tip
+#. [button]: id=previous_page
 #: data/gui/default/window/chat_log.cfg:79
 #: data/gui/default/window/title_screen.cfg:162
 msgid "Previous"
 msgstr "Előző"
 
 #. [button]: id=next_tod
-#. [button]: id=next_page
 #. [button]: id=next_tip
+#. [button]: id=next_page
 #: data/gui/default/window/chat_log.cfg:89
 #: data/gui/default/window/editor_settings.cfg:79
 #: data/gui/default/window/editor_settings.cfg:80
@@ -1447,7 +1447,7 @@ msgstr "Megrajzolás"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:35 src/hotkeys.cpp:133
+#: data/gui/default/window/editor_new_map.cfg:35 src/hotkeys.cpp:134
 msgid "New Map"
 msgstr "Új pálya"
 
@@ -1474,7 +1474,7 @@ msgstr "Új pálya készítése"
 #. [button]: id=ok
 #: data/gui/default/window/editor_resize_map.cfg:35
 #: data/gui/default/window/editor_resize_map.cfg:270
-#: data/gui/default/window/editor_resize_map.cfg:271 src/hotkeys.cpp:179
+#: data/gui/default/window/editor_resize_map.cfg:271 src/hotkeys.cpp:180
 msgid "Resize Map"
 msgstr "Pálya átméretezése"
 
@@ -1520,7 +1520,7 @@ msgstr "Melyik játékos kezdjen itt?"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_settings.cfg:35 src/hotkeys.cpp:131
+#: data/gui/default/window/editor_settings.cfg:35 src/hotkeys.cpp:132
 msgid "Editor Settings"
 msgstr "Szerkesztő-beállítások"
 
@@ -1632,13 +1632,13 @@ msgid "Execution trace"
 msgstr "Végrehajtási nyom"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [grid]
 #. [button]: id=cancel
 #. [button]: id=quit
-#. [grid]
 #: data/gui/default/window/formula_debugger.cfg:234
 #: data/gui/default/window/lobby_main.cfg:660
-#: data/gui/default/window/title_screen.cfg:232 src/hotkeys.cpp:882
-#: src/hotkeys.cpp:1227
+#: data/gui/default/window/title_screen.cfg:232 src/hotkeys.cpp:883
+#: src/hotkeys.cpp:1228
 msgid "Quit"
 msgstr "Kilépés"
 
@@ -1667,7 +1667,7 @@ msgstr "Többször ne tegye fel ezt a kérdést."
 #: data/gui/default/window/game_save_oos.cfg:198
 #: data/gui/default/window/game_save_overwrite.cfg:96
 #: data/gui/default/window/game_save_overwrite.cfg:97
-#: src/construct_dialog.cpp:123 src/gui/dialogs/message.cpp:176
+#: src/construct_dialog.cpp:123 src/gui/dialogs/message.cpp:177
 msgid "Yes"
 msgstr "Igen"
 
@@ -1677,14 +1677,14 @@ msgstr "Igen"
 #: data/gui/default/window/game_save_message.cfg:162
 #: data/gui/default/window/game_save_oos.cfg:212
 #: data/gui/default/window/game_save_overwrite.cfg:111
-#: src/construct_dialog.cpp:124 src/gui/dialogs/message.cpp:178
+#: src/construct_dialog.cpp:124 src/gui/dialogs/message.cpp:179
 msgid "No"
 msgstr "Nem"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_load.cfg:50
-#: src/gui/dialogs/mp_create_game.cpp:95 src/hotkeys.cpp:75
+#: src/gui/dialogs/mp_create_game.cpp:95 src/hotkeys.cpp:76
 msgid "Load Game"
 msgstr "Játék betöltése"
 
@@ -1708,7 +1708,7 @@ msgstr "Parancsok visszavonása"
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_save.cfg:40
 #: data/gui/default/window/game_save_message.cfg:40
-#: data/gui/default/window/game_save_oos.cfg:42 src/hotkeys.cpp:72
+#: data/gui/default/window/game_save_oos.cfg:42 src/hotkeys.cpp:73
 msgid "Save Game"
 msgstr "Állás mentése"
 
@@ -1729,7 +1729,7 @@ msgstr "Mindent mellőz"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit_game
-#: data/gui/default/window/game_save_oos.cfg:170 src/hotkeys.cpp:94
+#: data/gui/default/window/game_save_oos.cfg:170 src/hotkeys.cpp:95
 msgid "Quit Game"
 msgstr "Kilépés a játékból"
 
@@ -1763,8 +1763,8 @@ msgstr "Tartalom"
 msgid "Inspection window"
 msgstr "Megfigyelőablak"
 
-#. [label]: id=unit_type
 #. [label]: id=typename
+#. [label]: id=unit_type
 #: data/gui/default/window/gamestate_inspector.cfg:153
 #: data/gui/default/window/unit_create.cfg:131
 msgid "Type"
@@ -1790,7 +1790,7 @@ msgstr "A megfelelő nyelv kiválasztása:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/default/window/language_selection.cfg:128
-#: data/gui/default/window/language_selection.cfg:129 src/hotkeys.cpp:211
+#: data/gui/default/window/language_selection.cfg:129 src/hotkeys.cpp:212
 msgid "Change Language"
 msgstr "Nyelv megváltoztatása"
 
@@ -1940,11 +1940,11 @@ msgid "Send"
 msgstr "Küldés"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=show_preferences
 #. [grid]
+#. [button]: id=show_preferences
 #: data/gui/default/window/lobby_main.cfg:666
 #: data/gui/default/window/title_screen.cfg:230
-#: src/game_preferences_display.cpp:64 src/hotkeys.cpp:88
+#: src/game_preferences_display.cpp:64 src/hotkeys.cpp:89
 msgid "Preferences"
 msgstr "Beállítások"
 
@@ -2129,8 +2129,8 @@ msgstr "Korszak: "
 msgid "Default"
 msgstr "Alapértelmezett"
 
-#. [button]: id=password
 #. [label]: id=title
+#. [button]: id=password
 #: data/gui/default/window/mp_create_game.cfg:226
 #: data/gui/default/window/mp_create_game_set_password.cfg:42
 msgid "Set Password"
@@ -2286,7 +2286,7 @@ msgstr "Kiválasztás"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=help
-#: data/gui/default/window/title_screen.cfg:146 src/hotkeys.cpp:209
+#: data/gui/default/window/title_screen.cfg:146 src/hotkeys.cpp:210
 msgid "Help"
 msgstr "Segítség"
 
@@ -2403,7 +2403,7 @@ msgstr "Ellenség megtámadása"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/unit_create.cfg:45 src/hotkeys.cpp:86
+#: data/gui/default/window/unit_create.cfg:45 src/hotkeys.cpp:87
 msgid "Create Unit (Debug!)"
 msgstr "Egység létrehozása (hibajavítás!)"
 
@@ -2443,19 +2443,19 @@ msgstr "A fájl törlése sikertelen"
 msgid "Creation of the directory failed."
 msgstr "Nem sikerült létrehozni a könyvtárat"
 
-#: src/game_preferences.cpp:315
+#: src/game_preferences.cpp:316
 msgid "No server has been defined."
 msgstr "Egy kiszolgáló sincs megadva."
 
-#: src/game_preferences.cpp:395
+#: src/game_preferences.cpp:396
 msgid "player"
 msgstr "játékos"
 
-#: src/game_preferences.cpp:837
+#: src/game_preferences.cpp:838
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/game_preferences.cpp:840
+#: src/game_preferences.cpp:841
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
@@ -2943,29 +2943,29 @@ msgstr ""
 msgid "Find $filename server binary to host networked games"
 msgstr "A $filename kiszolgáló megkeresése (hálózati játék készítéséhez)"
 
-#: src/gui/auxiliary/canvas.cpp:596
+#: src/gui/auxiliary/canvas.cpp:597
 msgid "Line doesn't fit on canvas."
 msgstr "A vonal nem illeszkedik a vászonra."
 
-#: src/gui/auxiliary/canvas.cpp:735
+#: src/gui/auxiliary/canvas.cpp:736
 msgid "Rectangle doesn't fit on canvas."
 msgstr "A téglalap nem illeszkedik a vászonra."
 
-#: src/gui/auxiliary/canvas.cpp:868 src/gui/auxiliary/canvas.cpp:873
-#: src/gui/auxiliary/canvas.cpp:878 src/gui/auxiliary/canvas.cpp:884
+#: src/gui/auxiliary/canvas.cpp:869 src/gui/auxiliary/canvas.cpp:874
+#: src/gui/auxiliary/canvas.cpp:879 src/gui/auxiliary/canvas.cpp:885
 msgid "Circle doesn't fit on canvas."
 msgstr "A kör nem illeszkedik a vászonra."
 
-#: src/gui/auxiliary/canvas.cpp:1070 src/gui/auxiliary/canvas.cpp:1077
-#: src/gui/auxiliary/canvas.cpp:1087 src/gui/auxiliary/canvas.cpp:1094
+#: src/gui/auxiliary/canvas.cpp:1071 src/gui/auxiliary/canvas.cpp:1078
+#: src/gui/auxiliary/canvas.cpp:1088 src/gui/auxiliary/canvas.cpp:1095
 msgid "Image doesn't fit on canvas."
 msgstr "A kép nem illeszkedik a vászonra."
 
-#: src/gui/auxiliary/canvas.cpp:1302
+#: src/gui/auxiliary/canvas.cpp:1303
 msgid "Text has a font size of 0."
 msgstr "A szöveg betűmérete 0."
 
-#: src/gui/auxiliary/canvas.cpp:1371
+#: src/gui/auxiliary/canvas.cpp:1372
 msgid "Text doesn't start on canvas."
 msgstr "A szöveg kezdete lelóg a vászonról."
 
@@ -3009,47 +3009,47 @@ msgid "Found a widget with a helptip and without a tooltip."
 msgstr ""
 "Találtam egy vezérlőeszközt, amelyikhez tartozik szöveg, de súgóbuborék nem."
 
-#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:47
-#: src/gui/auxiliary/window_builder/listbox.cpp:58
+#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:48
+#: src/gui/auxiliary/window_builder/listbox.cpp:59
 #: src/gui/auxiliary/window_builder/scrollbar_panel.cpp:42
 msgid "No list defined."
 msgstr "Nincs lista megadva."
 
-#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:51
-#: src/gui/auxiliary/window_builder/listbox.cpp:62
+#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:52
+#: src/gui/auxiliary/window_builder/listbox.cpp:63
 msgid "A 'list_definition' should contain one row."
 msgstr "A „lista_meghatározás”-nak tartalmaznia kell egy sort."
 
-#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:67
-#: src/gui/auxiliary/window_builder/listbox.cpp:81
-#: src/gui/auxiliary/window_builder/multi_page.cpp:61
+#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:68
+#: src/gui/auxiliary/window_builder/listbox.cpp:82
+#: src/gui/auxiliary/window_builder/multi_page.cpp:62
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 "A „lista_adat”-ban ugyanannyi oszlopnak kell lennie, mint a "
 "„lista_meghatározás”-ban."
 
-#: src/gui/auxiliary/window_builder/multi_page.cpp:39
+#: src/gui/auxiliary/window_builder/multi_page.cpp:40
 msgid "No page defined."
 msgstr "Nincs oldal megadva."
 
-#: src/gui/auxiliary/window_builder/slider.cpp:66
+#: src/gui/auxiliary/window_builder/slider.cpp:67
 msgid "The number of value_labels and values don't match."
 msgstr "Az értékek és az „értékcímkék” száma nem egyezik."
 
-#: src/gui/auxiliary/window_builder/stacked_widget.cpp:37
+#: src/gui/auxiliary/window_builder/stacked_widget.cpp:38
 msgid "No stack defined."
 msgstr "Nincs halmaz megadva."
 
-#: src/gui/auxiliary/window_builder/tree_view.cpp:46
+#: src/gui/auxiliary/window_builder/tree_view.cpp:47
 msgid "No nodes defined for a tree view."
 msgstr "Nincsenek csomópontok megadva a fanézethez."
 
-#: src/gui/auxiliary/window_builder/tree_view.cpp:86
+#: src/gui/auxiliary/window_builder/tree_view.cpp:87
 msgid "[node]id 'root' is reserved for the implementation."
 msgstr "A „root” csomópontnév a végrehajtáshoz van fenntartva."
 
-#: src/gui/auxiliary/window_builder/tree_view.cpp:90
+#: src/gui/auxiliary/window_builder/tree_view.cpp:91
 msgid "No node defined."
 msgstr "Nincs csomópont megadva."
 
@@ -3134,7 +3134,7 @@ msgstr "A játékhoz való csatlakozáshoz jelszó szükséges."
 msgid "Password: "
 msgstr "Jelszó: "
 
-#: src/gui/dialogs/message.cpp:190 src/gui/dialogs/transient_message.cpp:62
+#: src/gui/dialogs/message.cpp:191 src/gui/dialogs/transient_message.cpp:62
 msgid "Error"
 msgstr "Hiba"
 
@@ -3146,16 +3146,16 @@ msgstr "$side oldal"
 msgid "Load Game..."
 msgstr "Játék betöltése..."
 
-#: src/gui/dialogs/network_transmission.cpp:55
-#: src/gui/dialogs/network_transmission.cpp:57 src/hotkeys.cpp:1185
+#: src/gui/dialogs/network_transmission.cpp:54
+#: src/gui/dialogs/network_transmission.cpp:56 src/hotkeys.cpp:1186
 msgid "unit_byte^B"
 msgstr "B"
 
-#: src/gui/dialogs/title_screen.cpp:296
+#: src/gui/dialogs/title_screen.cpp:297
 msgid "Version "
 msgstr "Verzió "
 
-#: src/gui/dialogs/title_screen.cpp:299
+#: src/gui/dialogs/title_screen.cpp:300
 msgid "Version"
 msgstr "Verzió"
 
@@ -3163,22 +3163,22 @@ msgstr "Verzió"
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Ez a nélkülözhetetlen vezérlőeszköz nincs megadva: „$id”."
 
-#: src/gui/widgets/settings.cpp:440
+#: src/gui/widgets/settings.cpp:441
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 "A meghatározás („$definition”) nem tartalmaz adatokat erről a "
 "vezérlőeszközről: „$id”."
 
-#: src/gui/widgets/settings.cpp:506
+#: src/gui/widgets/settings.cpp:507
 msgid "No default gui defined."
 msgstr "Nincs alapértelmezett grafikus felület megadva."
 
-#: src/gui/widgets/settings.cpp:536
+#: src/gui/widgets/settings.cpp:537
 msgid "No state or draw section defined."
 msgstr "Az állapot vagy a térképrészlet nincs megadva."
 
-#: src/gui/widgets/tree_view_node.cpp:103
+#: src/gui/widgets/tree_view_node.cpp:104
 msgid "Unknown builder id for tree view node."
 msgstr "Ismeretlen elnevezésű csomópont."
 
@@ -3192,510 +3192,510 @@ msgstr ""
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Egy párbeszédablak nem jeleníthető meg, mert nem fér el a képernyőn."
 
-#: src/hotkeys.cpp:53
+#: src/hotkeys.cpp:54
 msgid "Left Mouse Click"
 msgstr "Bal kattintás"
 
-#: src/hotkeys.cpp:54
+#: src/hotkeys.cpp:55
 msgid "Right Mouse Click"
 msgstr "Jobb kattintás"
 
-#: src/hotkeys.cpp:55
+#: src/hotkeys.cpp:56
 msgid "Animate Map"
 msgstr "Térkép animálása"
 
-#: src/hotkeys.cpp:56
+#: src/hotkeys.cpp:57
 msgid "Next Unit"
 msgstr "Következő egység"
 
-#: src/hotkeys.cpp:57
+#: src/hotkeys.cpp:58
 msgid "Previous Unit"
 msgstr "Előző egység"
 
-#: src/hotkeys.cpp:58
+#: src/hotkeys.cpp:59
 msgid "Hold Position"
 msgstr "Állás megtartása"
 
-#: src/hotkeys.cpp:59
+#: src/hotkeys.cpp:60
 msgid "End Unit Turn"
 msgstr "Egység körének vége"
 
-#: src/hotkeys.cpp:60
+#: src/hotkeys.cpp:61
 msgid "Leader"
 msgstr "Vezér"
 
-#: src/hotkeys.cpp:61
+#: src/hotkeys.cpp:62
 msgid "Undo"
 msgstr "Visszavonás"
 
-#: src/hotkeys.cpp:62
+#: src/hotkeys.cpp:63
 msgid "Redo"
 msgstr "Megismétlés"
 
-#: src/hotkeys.cpp:63
+#: src/hotkeys.cpp:64
 msgid "Zoom In"
 msgstr "Ráközelítés"
 
-#: src/hotkeys.cpp:64
+#: src/hotkeys.cpp:65
 msgid "Zoom Out"
 msgstr "Eltávolítás"
 
-#: src/hotkeys.cpp:65
+#: src/hotkeys.cpp:66
 msgid "Default Zoom"
 msgstr "Alap ráközelítés"
 
-#: src/hotkeys.cpp:66
+#: src/hotkeys.cpp:67
 msgid "Toggle Full Screen"
 msgstr "Teljes képernyős mód beállítása"
 
-#: src/hotkeys.cpp:67 src/hotkeys.cpp:1179
+#: src/hotkeys.cpp:68 src/hotkeys.cpp:1180
 msgid "Screenshot"
 msgstr "Képernyőkép"
 
-#: src/hotkeys.cpp:68
+#: src/hotkeys.cpp:69
 msgid "Map Screenshot"
 msgstr "Képernyőkép a térképről"
 
-#: src/hotkeys.cpp:69
+#: src/hotkeys.cpp:70
 msgid "Accelerated"
 msgstr "Felgyorsítva"
 
-#: src/hotkeys.cpp:70
+#: src/hotkeys.cpp:71
 msgid "Unit Description"
 msgstr "Egység leírása"
 
-#: src/hotkeys.cpp:71
+#: src/hotkeys.cpp:72
 msgid "Rename Unit"
 msgstr "Egység átnevezése"
 
-#: src/hotkeys.cpp:73
+#: src/hotkeys.cpp:74
 msgid "Save Replay"
 msgstr "Visszajátszás mentése"
 
-#: src/hotkeys.cpp:74 src/hotkeys.cpp:135
+#: src/hotkeys.cpp:75 src/hotkeys.cpp:136
 msgid "Save Map"
 msgstr "Pálya mentése"
 
-#: src/hotkeys.cpp:76
+#: src/hotkeys.cpp:77
 msgid "Recruit"
 msgstr "Toborzás"
 
-#: src/hotkeys.cpp:77
+#: src/hotkeys.cpp:78
 msgid "Repeat Recruit"
 msgstr "Toborzás megismétlése"
 
-#: src/hotkeys.cpp:78
+#: src/hotkeys.cpp:79
 msgid "Recall"
 msgstr "Visszahívás"
 
-#: src/hotkeys.cpp:79
+#: src/hotkeys.cpp:80
 msgid "End Turn"
 msgstr "Kör vége"
 
-#: src/hotkeys.cpp:80
+#: src/hotkeys.cpp:81
 msgid "Toggle Ellipses"
 msgstr "Ellipszisek átkapcsolása"
 
-#: src/hotkeys.cpp:81
+#: src/hotkeys.cpp:82
 msgid "Toggle Grid"
 msgstr "Rács átkapcsolása"
 
-#: src/hotkeys.cpp:82
+#: src/hotkeys.cpp:83
 msgid "Mouse Scrolling"
 msgstr "Egérgörgetés"
 
-#: src/hotkeys.cpp:83
+#: src/hotkeys.cpp:84
 msgid "Status Table"
 msgstr "Csapatok adatai"
 
-#: src/hotkeys.cpp:84
+#: src/hotkeys.cpp:85
 msgid "Mute"
 msgstr "Elnémítás"
 
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:86
 msgid "Speak"
 msgstr "Beszélés"
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:88
 msgid "Change Side (Debug!)"
 msgstr "Oldal átállítása (hibajavítás!)"
 
-#: src/hotkeys.cpp:89
+#: src/hotkeys.cpp:90
 msgid "Scenario Objectives"
 msgstr "Pálya céljai"
 
-#: src/hotkeys.cpp:90
+#: src/hotkeys.cpp:91
 msgid "Unit List"
 msgstr "Egységlista"
 
-#: src/hotkeys.cpp:91
+#: src/hotkeys.cpp:92
 msgid "Statistics"
 msgstr "Statisztikák"
 
-#: src/hotkeys.cpp:92
+#: src/hotkeys.cpp:93
 msgid "Pause Network Game"
 msgstr "Hálózati játék szüneteltetése"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:94
 msgid "Continue Network Game"
 msgstr "Hálózati játék folytatása"
 
-#: src/hotkeys.cpp:95
+#: src/hotkeys.cpp:96
 msgid "Set Team Label"
 msgstr "Csapat címkéjének megadása"
 
-#: src/hotkeys.cpp:96
+#: src/hotkeys.cpp:97
 msgid "Set Label"
 msgstr "Címke megadása"
 
-#: src/hotkeys.cpp:97
+#: src/hotkeys.cpp:98
 msgid "Clear Labels"
 msgstr "Címkék kitörlése"
 
-#: src/hotkeys.cpp:98
+#: src/hotkeys.cpp:99
 msgid "Show Enemy Moves"
 msgstr "Ellenséges lépések mutatása"
 
-#: src/hotkeys.cpp:99
+#: src/hotkeys.cpp:100
 msgid "Best Possible Enemy Moves"
 msgstr "Legjobb lehetséges ellenséges lépések"
 
-#: src/hotkeys.cpp:100
+#: src/hotkeys.cpp:101
 msgid "Play Replay"
 msgstr "Visszajátszás mutatása"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:102
 msgid "Reset Replay"
 msgstr "Visszajátszás visszatekerése"
 
-#: src/hotkeys.cpp:102
+#: src/hotkeys.cpp:103
 msgid "Stop Replay"
 msgstr "Visszajátszás megállítása"
 
-#: src/hotkeys.cpp:103
+#: src/hotkeys.cpp:104
 msgid "Next Turn"
 msgstr "Következő kör"
 
-#: src/hotkeys.cpp:104
+#: src/hotkeys.cpp:105
 msgid "Next Side"
 msgstr "Következő játékos"
 
-#: src/hotkeys.cpp:106
+#: src/hotkeys.cpp:107
 msgid "Full Map"
 msgstr "Teljes pálya"
 
-#: src/hotkeys.cpp:108
+#: src/hotkeys.cpp:109
 msgid "Each Team"
 msgstr "Mindegyik csapat"
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:111
 msgid "Team 1"
 msgstr "1-es csapat"
 
-#: src/hotkeys.cpp:111
+#: src/hotkeys.cpp:112
 msgid "Skip Animation"
 msgstr "Animációk átugrása"
 
 #. TRANSLATORS: whiteboard menu entry: toggle planning mode
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:115
 msgid "whiteboard^Planning Mode"
 msgstr "Lépéstervező"
 
 #. TRANSLATORS: whiteboard menu entry: execute planned action
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:117
 msgid "whiteboard^Execute Action"
 msgstr "Terv végrehajtása"
 
 #. TRANSLATORS: whiteboard menu entry: execute all planned actions
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:119
 msgid "whiteboard^Execute All Actions"
 msgstr "Összes terv végrehajtása"
 
 #. TRANSLATORS: whiteboard menu entry: delete planned action
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:121
 msgid "whiteboard^Delete Action"
 msgstr "Terv törlése"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action up queue
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:123
 msgid "whiteboard^Move Action Up"
 msgstr "Terv előrehozása a listán"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action down queue
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:125
 msgid "whiteboard^Move Action Down"
 msgstr "Terv hátratolása a listán"
 
 #. TRANSLATORS: whiteboard menu entry: plan as though the chosen unit were dead
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:127
 msgid "whiteboard^Suppose Dead"
 msgstr "Feltételezetten elesik"
 
-#: src/hotkeys.cpp:128
+#: src/hotkeys.cpp:129
 msgid "Quit to Desktop"
 msgstr "Kilépés az asztalra"
 
-#: src/hotkeys.cpp:129
+#: src/hotkeys.cpp:130
 msgid "Close Map"
 msgstr "Térkép bezárása"
 
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:131
 msgid "Switch Map"
 msgstr "Térképváltás"
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:133
 msgid "Partial Undo"
 msgstr "Részleges visszavonás"
 
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:135
 msgid "Load Map"
 msgstr "Pálya betöltése"
 
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:137
 msgid "Save Map As"
 msgstr "Térkép mentése más néven"
 
-#: src/hotkeys.cpp:137
+#: src/hotkeys.cpp:138
 msgid "Save All Maps"
 msgstr "Összes térkép mentése"
 
-#: src/hotkeys.cpp:138
+#: src/hotkeys.cpp:139
 msgid "Revert All Changes"
 msgstr "Összes változás visszavonása"
 
-#: src/hotkeys.cpp:139
+#: src/hotkeys.cpp:140
 msgid "Map Information"
 msgstr "Térképinformáció"
 
-#: src/hotkeys.cpp:141
+#: src/hotkeys.cpp:142
 msgid "Swap Foreground/Background Terrains"
 msgstr "Az előtér és a háttér terepeinek felcserélése"
 
-#: src/hotkeys.cpp:142
+#: src/hotkeys.cpp:143
 msgid "Next Tool"
 msgstr "Következő eszköz"
 
-#: src/hotkeys.cpp:143
+#: src/hotkeys.cpp:144
 msgid "Paint Tool"
 msgstr "Festőeszköz"
 
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:145
 msgid "Fill Tool"
 msgstr "Kitöltőeszköz"
 
-#: src/hotkeys.cpp:145
+#: src/hotkeys.cpp:146
 msgid "Selection Tool"
 msgstr "Kijelölőeszköz"
 
-#: src/hotkeys.cpp:147
+#: src/hotkeys.cpp:148
 msgid "Set Starting Positions Tool"
 msgstr "Kezdőhelymegadó-eszköz"
 
-#: src/hotkeys.cpp:148
+#: src/hotkeys.cpp:149
 msgid "Next Brush"
 msgstr "Következő ecset"
 
-#: src/hotkeys.cpp:149
+#: src/hotkeys.cpp:150
 msgid "Default Brush"
 msgstr "Alapértelmezett ecset"
 
-#: src/hotkeys.cpp:150
+#: src/hotkeys.cpp:151
 msgid "Cut"
 msgstr "Kivágás"
 
-#: src/hotkeys.cpp:151
+#: src/hotkeys.cpp:152
 msgid "Copy"
 msgstr "Másolás"
 
-#: src/hotkeys.cpp:152
+#: src/hotkeys.cpp:153
 msgid "Paste"
 msgstr "Beillesztés"
 
-#: src/hotkeys.cpp:153
+#: src/hotkeys.cpp:154
 msgid "Export Selected Coordinates to System Clipboard"
 msgstr "A kijelölt koordináták exportálása a vágólapra"
 
-#: src/hotkeys.cpp:155
+#: src/hotkeys.cpp:156
 msgid "Select All"
 msgstr "Minden kijelölése"
 
-#: src/hotkeys.cpp:157
+#: src/hotkeys.cpp:158
 msgid "Select Inverse"
 msgstr "Kijelölés megfordítása"
 
-#: src/hotkeys.cpp:159
+#: src/hotkeys.cpp:160
 msgid "Select None"
 msgstr "Kijelölés törlése"
 
-#: src/hotkeys.cpp:161
+#: src/hotkeys.cpp:162
 msgid "Rotate Clipboard Clockwise"
 msgstr "A vágólap elforgatása az óramutató járásának megfelelően "
 
-#: src/hotkeys.cpp:163
+#: src/hotkeys.cpp:164
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr "A vágólap elforgatása az óramutató járásával ellentétesen"
 
-#: src/hotkeys.cpp:165
+#: src/hotkeys.cpp:166
 msgid "Flip Clipboard Horizontally"
 msgstr "A vágólap vízszintes tükrözése"
 
-#: src/hotkeys.cpp:167
+#: src/hotkeys.cpp:168
 msgid "Flip Clipboard Vertically"
 msgstr "A vágólap függőleges tükrözése"
 
-#: src/hotkeys.cpp:169
+#: src/hotkeys.cpp:170
 msgid "Rotate Selection"
 msgstr "A kijelölt terület elforgatása"
 
-#: src/hotkeys.cpp:171
+#: src/hotkeys.cpp:172
 msgid "Flip Selection"
 msgstr "A kijelölt terület tükrözése"
 
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:174
 msgid "Fill Selection"
 msgstr "A kijelölt terület kitöltése"
 
-#: src/hotkeys.cpp:175
+#: src/hotkeys.cpp:176
 msgid "Generate Tiles In Selection"
 msgstr "Mezők rajzolása a kijelölt területen"
 
-#: src/hotkeys.cpp:177
+#: src/hotkeys.cpp:178
 msgid "Randomize Tiles In Selection"
 msgstr "Mezők véletlenszerűvé tétele a kijelölt területen"
 
-#: src/hotkeys.cpp:181
+#: src/hotkeys.cpp:182
 msgid "Rotate Map"
 msgstr "A térkép elforgatása"
 
-#: src/hotkeys.cpp:183
+#: src/hotkeys.cpp:184
 msgid "Generate Map"
 msgstr "Pálya generálása"
 
-#: src/hotkeys.cpp:185
+#: src/hotkeys.cpp:186
 msgid "Apply a Mask"
 msgstr "Maszk alkalmazása"
 
-#: src/hotkeys.cpp:187
+#: src/hotkeys.cpp:188
 msgid "Create Mask"
 msgstr "Maszk létrehozása"
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:190
 msgid "Refresh Display"
 msgstr "Képernyő frissítése"
 
-#: src/hotkeys.cpp:191
+#: src/hotkeys.cpp:192
 msgid "Update Terrain Transitions"
 msgstr "Terepáttűnések frissítése"
 
-#: src/hotkeys.cpp:193
+#: src/hotkeys.cpp:194
 msgid "Auto-update Terrain Transitions"
 msgstr "Terepáttűnések automatikus frissítése"
 
-#: src/hotkeys.cpp:195
+#: src/hotkeys.cpp:196
 msgid "Refresh Image Cache"
 msgstr "Képek átmeneti tárolójának frissítése"
 
-#: src/hotkeys.cpp:197
+#: src/hotkeys.cpp:198
 msgid "Draw Hex Coordinates"
 msgstr "Mezőkoordináták megjelenítése"
 
-#: src/hotkeys.cpp:199
+#: src/hotkeys.cpp:200
 msgid "Draw Terrain Codes"
 msgstr "Terepkódok megjelenítése"
 
-#: src/hotkeys.cpp:203
+#: src/hotkeys.cpp:204
 msgid "Delay Shroud Updates"
 msgstr "Eltakarás frissítésének késleltetése"
 
-#: src/hotkeys.cpp:204
+#: src/hotkeys.cpp:205
 msgid "Update Shroud Now"
 msgstr "Eltakarás frissítése most"
 
-#: src/hotkeys.cpp:205
+#: src/hotkeys.cpp:206
 msgid "Continue Move"
 msgstr "Lépés folytatása"
 
-#: src/hotkeys.cpp:206
+#: src/hotkeys.cpp:207
 msgid "Find Label or Unit"
 msgstr "Címke vagy egység keresése"
 
-#: src/hotkeys.cpp:207
+#: src/hotkeys.cpp:208
 msgid "Speak to Ally"
 msgstr "Szólás a szövetségesekhez"
 
-#: src/hotkeys.cpp:208
+#: src/hotkeys.cpp:209
 msgid "Speak to All"
 msgstr "Szólás mindenkihez"
 
-#: src/hotkeys.cpp:210
+#: src/hotkeys.cpp:211
 msgid "View Chat Log"
 msgstr "Csevegésnapló megtekintése"
 
-#: src/hotkeys.cpp:213
+#: src/hotkeys.cpp:214
 msgid "Enter User Command"
 msgstr "Felhasználói parancs megadása"
 
-#: src/hotkeys.cpp:214
+#: src/hotkeys.cpp:215
 msgid "Custom Command"
 msgstr "Tetszőleges parancs"
 
-#: src/hotkeys.cpp:215
+#: src/hotkeys.cpp:216
 msgid "Run Formula"
 msgstr "Minta futtatása"
 
-#: src/hotkeys.cpp:216
+#: src/hotkeys.cpp:217
 msgid "Clear Messages"
 msgstr "Üzenetek kitörlése"
 
-#: src/hotkeys.cpp:220
+#: src/hotkeys.cpp:221
 msgid "Refresh WML"
 msgstr "WML frissítése"
 
-#: src/hotkeys.cpp:227
+#: src/hotkeys.cpp:228
 msgid "Next Tip of the Day"
 msgstr "Következő napi tanács"
 
-#: src/hotkeys.cpp:234
+#: src/hotkeys.cpp:235
 msgid "Previous Tip of the Day"
 msgstr "Előző napi tanács"
 
-#: src/hotkeys.cpp:241
+#: src/hotkeys.cpp:242
 msgid "Start Tutorial"
 msgstr "Gyakorlás indítása"
 
-#: src/hotkeys.cpp:248
+#: src/hotkeys.cpp:249
 msgid "Start Campaign"
 msgstr "Hadjárat indítása"
 
-#: src/hotkeys.cpp:255
+#: src/hotkeys.cpp:256
 msgid "Start Multiplayer Game"
 msgstr "Többjátékos játék indítása"
 
-#: src/hotkeys.cpp:262
+#: src/hotkeys.cpp:263
 msgid "Manage Add-ons"
 msgstr "Kiegészítések kezelése"
 
-#: src/hotkeys.cpp:269
+#: src/hotkeys.cpp:270
 msgid "Start Editor"
 msgstr "Szerkesztő indítása"
 
-#: src/hotkeys.cpp:276
+#: src/hotkeys.cpp:277
 msgid "Show Credits"
 msgstr "Készítők listájának mutatása"
 
-#: src/hotkeys.cpp:284
+#: src/hotkeys.cpp:285
 msgid "Show Helptip"
 msgstr "Eszközleírás mutatása"
 
-#: src/hotkeys.cpp:882 src/hotkeys.cpp:1227
+#: src/hotkeys.cpp:883 src/hotkeys.cpp:1228
 msgid "Do you really want to quit?"
 msgstr "Biztos ki akarsz lépni?"
 
-#: src/hotkeys.cpp:1179
+#: src/hotkeys.cpp:1180
 msgid "Map-Screenshot"
 msgstr "Képernyőkép a térképről"
 
-#: src/hotkeys.cpp:1186 src/hotkeys.cpp:1188
+#: src/hotkeys.cpp:1187 src/hotkeys.cpp:1189
 msgid "Screenshot done"
 msgstr "Képernyőkép elkészítve"
 
@@ -3765,7 +3765,7 @@ msgstr "Sziget"
 msgid "The maximum text width is less than 1."
 msgstr "A legnagyobb szövegszélesség kisebb, mint 1."
 
-#: src/preferences_display.cpp:123 src/preferences_display.cpp:179
+#: src/preferences_display.cpp:124 src/preferences_display.cpp:180
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -3776,36 +3776,36 @@ msgstr ""
 "Emellett a képernyődnek támogatnia kell az 1024x768-as felbontást ahhoz, "
 "hogy a játék teljes képernyőn fusson."
 
-#: src/preferences_display.cpp:276
+#: src/preferences_display.cpp:277
 msgid "Hotkey Settings"
 msgstr "Gyorsbillentyűk beállításai"
 
-#: src/preferences_display.cpp:282 src/preferences_display.cpp:351
+#: src/preferences_display.cpp:283 src/preferences_display.cpp:352
 msgid "Press desired hotkey (Esc cancels)"
 msgstr "Nyomd le a kívánt gyorsbillentyűt (Esc a visszalépéshez)"
 
-#: src/preferences_display.cpp:301
+#: src/preferences_display.cpp:302
 msgid "Action"
 msgstr "Cselekvés"
 
-#: src/preferences_display.cpp:301
+#: src/preferences_display.cpp:302
 msgid "Binding"
 msgstr "Összekötés"
 
-#: src/preferences_display.cpp:313
+#: src/preferences_display.cpp:314
 msgid "Change Hotkey"
 msgstr "Gyorsbillentyű megváltoztatása"
 
-#: src/preferences_display.cpp:316
+#: src/preferences_display.cpp:317
 msgid "Clear Hotkey"
 msgstr "Gyorsbillentyű törlése"
 
-#: src/preferences_display.cpp:394 src/preferences_display.cpp:402
-#: src/preferences_display.cpp:414
+#: src/preferences_display.cpp:395 src/preferences_display.cpp:403
+#: src/preferences_display.cpp:415
 msgid "This hotkey is already in use."
 msgstr "Ez a gyorsbillentyű már használatban van."
 
-#: src/preferences_display.cpp:429
+#: src/preferences_display.cpp:430
 msgid ""
 "Screenshot hotkeys should be combined with the Control, Alt or Meta "
 "modifiers to avoid problems."
@@ -3813,19 +3813,19 @@ msgstr ""
 "A képernyőkép-készítés gyorsbillentyűjét ajánlatos Control, Alt vagy Meta "
 "billentyűvel kombinálni a problémák elkerülése érdekében."
 
-#: src/preferences_display.cpp:429
+#: src/preferences_display.cpp:430
 msgid "Warning"
 msgstr "Figyelmeztetés "
 
-#: src/preferences_display.cpp:530
+#: src/preferences_display.cpp:531
 msgid "There are no alternative video modes available"
 msgstr "Nincsenek más megjelenítési módok"
 
-#: src/preferences_display.cpp:561
+#: src/preferences_display.cpp:562
 msgid " (widescreen)"
 msgstr " (széles képernyő)"
 
-#: src/preferences_display.cpp:565
+#: src/preferences_display.cpp:566
 msgid "Choose Resolution"
 msgstr "Felbontás kiválasztása"
 

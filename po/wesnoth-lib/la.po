@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-05-11 22:06+0200\n"
+"POT-Creation-Date: 2012-08-12 10:25+0200\n"
 "PO-Revision-Date: 2012-03-31 21:02+0100\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
@@ -1111,8 +1111,8 @@ msgstr "Praeter Chartam "
 msgid "Experimental Fake Map Edge"
 msgstr ""
 
-#. [toggle_button]: id=shroud
 #. [terrain_type]: id=shroud
+#. [toggle_button]: id=shroud
 #: data/core/terrain.cfg:2066 data/gui/default/window/mp_create_game.cfg:479
 msgid "Shroud"
 msgstr "Absconsus"
@@ -1143,17 +1143,17 @@ msgid "Unwalkable"
 msgstr "Nonterra"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=click_dismiss
-#. [button]: id=ok
 #. [button]: id=cancel
+#. [button]: id=ok
 #. [button]: id=close_window
+#. [button]: id=click_dismiss
 #: data/gui/default/widget/window_default.cfg:140
 #: data/gui/default/window/chat_log.cfg:121
 #: data/gui/default/window/gamestate_inspector.cfg:339
 #: data/gui/default/window/lobby_main.cfg:619
 #: data/gui/default/window/lobby_player_info.cfg:200
 #: data/gui/default/window/message.cfg:133 src/construct_dialog.cpp:134
-#: src/mapgen_dialog.cpp:110 src/preferences_display.cpp:272
+#: src/mapgen_dialog.cpp:110 src/preferences_display.cpp:273
 msgid "Close"
 msgstr "Exire"
 
@@ -1227,7 +1227,7 @@ msgstr "Applicare"
 #: data/gui/default/window/unit_attack.cfg:208
 #: data/gui/default/window/unit_create.cfg:209
 #: data/gui/default/window/unit_create.cfg:210 src/construct_dialog.cpp:128
-#: src/construct_dialog.cpp:131 src/hotkeys.cpp:52
+#: src/construct_dialog.cpp:131 src/hotkeys.cpp:53
 msgid "Cancel"
 msgstr "Vetare"
 
@@ -1313,8 +1313,8 @@ msgstr "Militiam Ludere"
 #: data/gui/default/window/unit_create.cfg:198
 #: data/gui/default/window/wml_message.cfg:485
 #: data/gui/default/window/wml_message.cfg:714 src/construct_dialog.cpp:120
-#: src/construct_dialog.cpp:127 src/gui/dialogs/message.cpp:162
-#: src/gui/dialogs/message.cpp:169
+#: src/construct_dialog.cpp:127 src/gui/dialogs/message.cpp:163
+#: src/gui/dialogs/message.cpp:170
 msgid "OK"
 msgstr "Confirmare"
 
@@ -1343,16 +1343,16 @@ msgstr "Pagina:"
 msgid "Last"
 msgstr "Suprema"
 
-#. [button]: id=previous_page
 #. [button]: id=previous_tip
+#. [button]: id=previous_page
 #: data/gui/default/window/chat_log.cfg:79
 #: data/gui/default/window/title_screen.cfg:162
 msgid "Previous"
 msgstr "Rursus"
 
 #. [button]: id=next_tod
-#. [button]: id=next_page
 #. [button]: id=next_tip
+#. [button]: id=next_page
 #: data/gui/default/window/chat_log.cfg:89
 #: data/gui/default/window/editor_settings.cfg:79
 #: data/gui/default/window/editor_settings.cfg:80
@@ -1448,7 +1448,7 @@ msgstr "Generare"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:35 src/hotkeys.cpp:133
+#: data/gui/default/window/editor_new_map.cfg:35 src/hotkeys.cpp:134
 msgid "New Map"
 msgstr "Charta Nova"
 
@@ -1475,7 +1475,7 @@ msgstr "Chartam Novam Creare"
 #. [button]: id=ok
 #: data/gui/default/window/editor_resize_map.cfg:35
 #: data/gui/default/window/editor_resize_map.cfg:270
-#: data/gui/default/window/editor_resize_map.cfg:271 src/hotkeys.cpp:179
+#: data/gui/default/window/editor_resize_map.cfg:271 src/hotkeys.cpp:180
 msgid "Resize Map"
 msgstr "Magnitudinem Chartae Mutare"
 
@@ -1521,7 +1521,7 @@ msgstr "Quis lusor hic incipere debet?"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_settings.cfg:35 src/hotkeys.cpp:131
+#: data/gui/default/window/editor_settings.cfg:35 src/hotkeys.cpp:132
 msgid "Editor Settings"
 msgstr "Electiones Chartographiae"
 
@@ -1635,13 +1635,13 @@ msgid "Execution trace"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [grid]
 #. [button]: id=cancel
 #. [button]: id=quit
-#. [grid]
 #: data/gui/default/window/formula_debugger.cfg:234
 #: data/gui/default/window/lobby_main.cfg:660
-#: data/gui/default/window/title_screen.cfg:232 src/hotkeys.cpp:882
-#: src/hotkeys.cpp:1227
+#: data/gui/default/window/title_screen.cfg:232 src/hotkeys.cpp:883
+#: src/hotkeys.cpp:1228
 msgid "Quit"
 msgstr "Exire"
 
@@ -1670,7 +1670,7 @@ msgstr "Noli me iterum rogare!"
 #: data/gui/default/window/game_save_oos.cfg:198
 #: data/gui/default/window/game_save_overwrite.cfg:96
 #: data/gui/default/window/game_save_overwrite.cfg:97
-#: src/construct_dialog.cpp:123 src/gui/dialogs/message.cpp:176
+#: src/construct_dialog.cpp:123 src/gui/dialogs/message.cpp:177
 msgid "Yes"
 msgstr "Ita"
 
@@ -1680,14 +1680,14 @@ msgstr "Ita"
 #: data/gui/default/window/game_save_message.cfg:162
 #: data/gui/default/window/game_save_oos.cfg:212
 #: data/gui/default/window/game_save_overwrite.cfg:111
-#: src/construct_dialog.cpp:124 src/gui/dialogs/message.cpp:178
+#: src/construct_dialog.cpp:124 src/gui/dialogs/message.cpp:179
 msgid "No"
 msgstr "Non"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_load.cfg:50
-#: src/gui/dialogs/mp_create_game.cpp:95 src/hotkeys.cpp:75
+#: src/gui/dialogs/mp_create_game.cpp:95 src/hotkeys.cpp:76
 msgid "Load Game"
 msgstr "Ludum Restituere"
 
@@ -1711,7 +1711,7 @@ msgstr "Mandata delere"
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_save.cfg:40
 #: data/gui/default/window/game_save_message.cfg:40
-#: data/gui/default/window/game_save_oos.cfg:42 src/hotkeys.cpp:72
+#: data/gui/default/window/game_save_oos.cfg:42 src/hotkeys.cpp:73
 msgid "Save Game"
 msgstr "Ludum Servare"
 
@@ -1732,7 +1732,7 @@ msgstr "Omnia ignorare"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit_game
-#: data/gui/default/window/game_save_oos.cfg:170 src/hotkeys.cpp:94
+#: data/gui/default/window/game_save_oos.cfg:170 src/hotkeys.cpp:95
 msgid "Quit Game"
 msgstr "Ludum Exire"
 
@@ -1766,8 +1766,8 @@ msgstr "Tractum "
 msgid "Inspection window"
 msgstr ""
 
-#. [label]: id=unit_type
 #. [label]: id=typename
+#. [label]: id=unit_type
 #: data/gui/default/window/gamestate_inspector.cfg:153
 #: data/gui/default/window/unit_create.cfg:131
 msgid "Type"
@@ -1793,7 +1793,7 @@ msgstr "Opta linguam praelatam:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/default/window/language_selection.cfg:128
-#: data/gui/default/window/language_selection.cfg:129 src/hotkeys.cpp:211
+#: data/gui/default/window/language_selection.cfg:129 src/hotkeys.cpp:212
 msgid "Change Language"
 msgstr "Linguam Mutare"
 
@@ -1944,11 +1944,11 @@ msgid "Send"
 msgstr "Mittere"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=show_preferences
 #. [grid]
+#. [button]: id=show_preferences
 #: data/gui/default/window/lobby_main.cfg:666
 #: data/gui/default/window/title_screen.cfg:230
-#: src/game_preferences_display.cpp:64 src/hotkeys.cpp:88
+#: src/game_preferences_display.cpp:64 src/hotkeys.cpp:89
 msgid "Preferences"
 msgstr "Electiones"
 
@@ -2133,8 +2133,8 @@ msgstr "Aetas:"
 msgid "Default"
 msgstr "Usitata"
 
-#. [button]: id=password
 #. [label]: id=title
+#. [button]: id=password
 #: data/gui/default/window/mp_create_game.cfg:226
 #: data/gui/default/window/mp_create_game_set_password.cfg:42
 msgid "Set Password"
@@ -2280,7 +2280,7 @@ msgstr "Eligere"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=help
-#: data/gui/default/window/title_screen.cfg:146 src/hotkeys.cpp:209
+#: data/gui/default/window/title_screen.cfg:146 src/hotkeys.cpp:210
 msgid "Help"
 msgstr "Auxilium"
 
@@ -2395,7 +2395,7 @@ msgstr "Hostibus pugnare"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/unit_create.cfg:45 src/hotkeys.cpp:86
+#: data/gui/default/window/unit_create.cfg:45 src/hotkeys.cpp:87
 msgid "Create Unit (Debug!)"
 msgstr "Actorem Creare (Cimicare!)"
 
@@ -2436,19 +2436,19 @@ msgstr "Interitus facisculi defuit."
 msgid "Creation of the directory failed."
 msgstr "Deletio pligae fallitur."
 
-#: src/game_preferences.cpp:315
+#: src/game_preferences.cpp:316
 msgid "No server has been defined."
 msgstr "Nullum servatrum ostensum est."
 
-#: src/game_preferences.cpp:395
+#: src/game_preferences.cpp:396
 msgid "player"
 msgstr "lusor"
 
-#: src/game_preferences.cpp:837
+#: src/game_preferences.cpp:838
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/game_preferences.cpp:840
+#: src/game_preferences.cpp:841
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
@@ -2954,29 +2954,29 @@ msgstr "Nulli modi visivi noti.  Forsitan potes mutare inter lusum existens."
 msgid "Find $filename server binary to host networked games"
 msgstr ""
 
-#: src/gui/auxiliary/canvas.cpp:596
+#: src/gui/auxiliary/canvas.cpp:597
 msgid "Line doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/auxiliary/canvas.cpp:735
+#: src/gui/auxiliary/canvas.cpp:736
 msgid "Rectangle doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/auxiliary/canvas.cpp:868 src/gui/auxiliary/canvas.cpp:873
-#: src/gui/auxiliary/canvas.cpp:878 src/gui/auxiliary/canvas.cpp:884
+#: src/gui/auxiliary/canvas.cpp:869 src/gui/auxiliary/canvas.cpp:874
+#: src/gui/auxiliary/canvas.cpp:879 src/gui/auxiliary/canvas.cpp:885
 msgid "Circle doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/auxiliary/canvas.cpp:1070 src/gui/auxiliary/canvas.cpp:1077
-#: src/gui/auxiliary/canvas.cpp:1087 src/gui/auxiliary/canvas.cpp:1094
+#: src/gui/auxiliary/canvas.cpp:1071 src/gui/auxiliary/canvas.cpp:1078
+#: src/gui/auxiliary/canvas.cpp:1088 src/gui/auxiliary/canvas.cpp:1095
 msgid "Image doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/auxiliary/canvas.cpp:1302
+#: src/gui/auxiliary/canvas.cpp:1303
 msgid "Text has a font size of 0."
 msgstr ""
 
-#: src/gui/auxiliary/canvas.cpp:1371
+#: src/gui/auxiliary/canvas.cpp:1372
 msgid "Text doesn't start on canvas."
 msgstr ""
 
@@ -3017,45 +3017,45 @@ msgstr ""
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:47
-#: src/gui/auxiliary/window_builder/listbox.cpp:58
+#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:48
+#: src/gui/auxiliary/window_builder/listbox.cpp:59
 #: src/gui/auxiliary/window_builder/scrollbar_panel.cpp:42
 msgid "No list defined."
 msgstr "Nulla tabula ostensa"
 
-#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:51
-#: src/gui/auxiliary/window_builder/listbox.cpp:62
+#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:52
+#: src/gui/auxiliary/window_builder/listbox.cpp:63
 msgid "A 'list_definition' should contain one row."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:67
-#: src/gui/auxiliary/window_builder/listbox.cpp:81
-#: src/gui/auxiliary/window_builder/multi_page.cpp:61
+#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:68
+#: src/gui/auxiliary/window_builder/listbox.cpp:82
+#: src/gui/auxiliary/window_builder/multi_page.cpp:62
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder/multi_page.cpp:39
+#: src/gui/auxiliary/window_builder/multi_page.cpp:40
 msgid "No page defined."
 msgstr "Nulla pagina ostensa."
 
-#: src/gui/auxiliary/window_builder/slider.cpp:66
+#: src/gui/auxiliary/window_builder/slider.cpp:67
 msgid "The number of value_labels and values don't match."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder/stacked_widget.cpp:37
+#: src/gui/auxiliary/window_builder/stacked_widget.cpp:38
 msgid "No stack defined."
 msgstr "Nullus acervus ostensus"
 
-#: src/gui/auxiliary/window_builder/tree_view.cpp:46
+#: src/gui/auxiliary/window_builder/tree_view.cpp:47
 msgid "No nodes defined for a tree view."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder/tree_view.cpp:86
+#: src/gui/auxiliary/window_builder/tree_view.cpp:87
 msgid "[node]id 'root' is reserved for the implementation."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder/tree_view.cpp:90
+#: src/gui/auxiliary/window_builder/tree_view.cpp:91
 #, fuzzy
 msgid "No node defined."
 msgstr "Creatio chartae fefellit."
@@ -3138,7 +3138,7 @@ msgstr "Tesseram dare debes ut ad ludum convenias."
 msgid "Password: "
 msgstr "Tessera: "
 
-#: src/gui/dialogs/message.cpp:190 src/gui/dialogs/transient_message.cpp:62
+#: src/gui/dialogs/message.cpp:191 src/gui/dialogs/transient_message.cpp:62
 msgid "Error"
 msgstr "Error"
 
@@ -3150,16 +3150,16 @@ msgstr "Manus $side"
 msgid "Load Game..."
 msgstr "Ludum Restituere..."
 
-#: src/gui/dialogs/network_transmission.cpp:55
-#: src/gui/dialogs/network_transmission.cpp:57 src/hotkeys.cpp:1185
+#: src/gui/dialogs/network_transmission.cpp:54
+#: src/gui/dialogs/network_transmission.cpp:56 src/hotkeys.cpp:1186
 msgid "unit_byte^B"
 msgstr "B"
 
-#: src/gui/dialogs/title_screen.cpp:296
+#: src/gui/dialogs/title_screen.cpp:297
 msgid "Version "
 msgstr "Versio"
 
-#: src/gui/dialogs/title_screen.cpp:299
+#: src/gui/dialogs/title_screen.cpp:300
 msgid "Version"
 msgstr "Versio"
 
@@ -3167,20 +3167,20 @@ msgstr "Versio"
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:440
+#: src/gui/widgets/settings.cpp:441
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:506
+#: src/gui/widgets/settings.cpp:507
 msgid "No default gui defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:536
+#: src/gui/widgets/settings.cpp:537
 msgid "No state or draw section defined."
 msgstr ""
 
-#: src/gui/widgets/tree_view_node.cpp:103
+#: src/gui/widgets/tree_view_node.cpp:104
 msgid "Unknown builder id for tree view node."
 msgstr ""
 
@@ -3193,543 +3193,543 @@ msgstr ""
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr ""
 
-#: src/hotkeys.cpp:53
+#: src/hotkeys.cpp:54
 msgid "Left Mouse Click"
 msgstr ""
 
-#: src/hotkeys.cpp:54
+#: src/hotkeys.cpp:55
 msgid "Right Mouse Click"
 msgstr ""
 
-#: src/hotkeys.cpp:55
+#: src/hotkeys.cpp:56
 msgid "Animate Map"
 msgstr "Chartam Animare"
 
-#: src/hotkeys.cpp:56
+#: src/hotkeys.cpp:57
 msgid "Next Unit"
 msgstr "Actor Secundus"
 
-#: src/hotkeys.cpp:57
+#: src/hotkeys.cpp:58
 msgid "Previous Unit"
 msgstr "Actor Anterior"
 
-#: src/hotkeys.cpp:58
+#: src/hotkeys.cpp:59
 msgid "Hold Position"
 msgstr "Positionem Tenere"
 
-#: src/hotkeys.cpp:59
+#: src/hotkeys.cpp:60
 msgid "End Unit Turn"
 msgstr "Vicem Actoris Finire"
 
-#: src/hotkeys.cpp:60
+#: src/hotkeys.cpp:61
 msgid "Leader"
 msgstr "Dux"
 
-#: src/hotkeys.cpp:61
+#: src/hotkeys.cpp:62
 msgid "Undo"
 msgstr "Reddere"
 
-#: src/hotkeys.cpp:62
+#: src/hotkeys.cpp:63
 msgid "Redo"
 msgstr "Reponere"
 
-#: src/hotkeys.cpp:63
+#: src/hotkeys.cpp:64
 msgid "Zoom In"
 msgstr "Amplificare"
 
-#: src/hotkeys.cpp:64
+#: src/hotkeys.cpp:65
 msgid "Zoom Out"
 msgstr "Minuere"
 
-#: src/hotkeys.cpp:65
+#: src/hotkeys.cpp:66
 #, fuzzy
 msgid "Default Zoom"
 msgstr "Conspectus Solitus"
 
-#: src/hotkeys.cpp:66
+#: src/hotkeys.cpp:67
 #, fuzzy
 msgid "Toggle Full Screen"
 msgstr "Scrinium Totum vel in Fenestra Permutare"
 
-#: src/hotkeys.cpp:67 src/hotkeys.cpp:1179
+#: src/hotkeys.cpp:68 src/hotkeys.cpp:1180
 #, fuzzy
 msgid "Screenshot"
 msgstr "Imago Scrinii"
 
-#: src/hotkeys.cpp:68
+#: src/hotkeys.cpp:69
 #, fuzzy
 msgid "Map Screenshot"
 msgstr "Imago Scrinii"
 
-#: src/hotkeys.cpp:69
+#: src/hotkeys.cpp:70
 msgid "Accelerated"
 msgstr "Celerior"
 
-#: src/hotkeys.cpp:70
+#: src/hotkeys.cpp:71
 msgid "Unit Description"
 msgstr "Descriptio Actoris"
 
-#: src/hotkeys.cpp:71
+#: src/hotkeys.cpp:72
 msgid "Rename Unit"
 msgstr "Nomen Actoris Mutare"
 
-#: src/hotkeys.cpp:73
+#: src/hotkeys.cpp:74
 msgid "Save Replay"
 msgstr "Restitutum Servare"
 
-#: src/hotkeys.cpp:74 src/hotkeys.cpp:135
+#: src/hotkeys.cpp:75 src/hotkeys.cpp:136
 msgid "Save Map"
 msgstr "Chartam Servare"
 
-#: src/hotkeys.cpp:76
+#: src/hotkeys.cpp:77
 msgid "Recruit"
 msgstr "Adlegere"
 
-#: src/hotkeys.cpp:77
+#: src/hotkeys.cpp:78
 msgid "Repeat Recruit"
 msgstr "Idem Adlegere"
 
-#: src/hotkeys.cpp:78
+#: src/hotkeys.cpp:79
 msgid "Recall"
 msgstr "Revocare"
 
-#: src/hotkeys.cpp:79
+#: src/hotkeys.cpp:80
 msgid "End Turn"
 msgstr "Vicem Finire"
 
-#: src/hotkeys.cpp:80
+#: src/hotkeys.cpp:81
 msgid "Toggle Ellipses"
 msgstr "Circulos Variare"
 
-#: src/hotkeys.cpp:81
+#: src/hotkeys.cpp:82
 msgid "Toggle Grid"
 msgstr "Cancellos Variare"
 
-#: src/hotkeys.cpp:82
+#: src/hotkeys.cpp:83
 #, fuzzy
 #| msgid "Mouse Scrolling"
 msgid "Mouse Scrolling"
 msgstr "Gyrum Muris"
 
-#: src/hotkeys.cpp:83
+#: src/hotkeys.cpp:84
 msgid "Status Table"
 msgstr "Mensa Status"
 
-#: src/hotkeys.cpp:84
+#: src/hotkeys.cpp:85
 msgid "Mute"
 msgstr "Deprimere"
 
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:86
 msgid "Speak"
 msgstr "Loqui"
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:88
 msgid "Change Side (Debug!)"
 msgstr "Manum Mutare (Cimicare!)"
 
-#: src/hotkeys.cpp:89
+#: src/hotkeys.cpp:90
 msgid "Scenario Objectives"
 msgstr "Propositum Scaenarii"
 
-#: src/hotkeys.cpp:90
+#: src/hotkeys.cpp:91
 msgid "Unit List"
 msgstr "Tabula Actorum"
 
-#: src/hotkeys.cpp:91
+#: src/hotkeys.cpp:92
 msgid "Statistics"
 msgstr "Rationes Breviariae"
 
-#: src/hotkeys.cpp:92
+#: src/hotkeys.cpp:93
 #, fuzzy
 #| msgid "Host Networked Game"
 msgid "Pause Network Game"
 msgstr "Ludum Reticuli Hospitare"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:94
 #, fuzzy
 #| msgid "Host Networked Game"
 msgid "Continue Network Game"
 msgstr "Ludum Reticuli Hospitare"
 
-#: src/hotkeys.cpp:95
+#: src/hotkeys.cpp:96
 msgid "Set Team Label"
 msgstr "Titulum Manus Ponere"
 
-#: src/hotkeys.cpp:96
+#: src/hotkeys.cpp:97
 msgid "Set Label"
 msgstr "Titulum Ponere"
 
-#: src/hotkeys.cpp:97
+#: src/hotkeys.cpp:98
 msgid "Clear Labels"
 msgstr "Titulos Delere"
 
-#: src/hotkeys.cpp:98
+#: src/hotkeys.cpp:99
 msgid "Show Enemy Moves"
 msgstr "Motus Hostium Ostendere"
 
-#: src/hotkeys.cpp:99
+#: src/hotkeys.cpp:100
 msgid "Best Possible Enemy Moves"
 msgstr "Optimi Motus Hostium"
 
-#: src/hotkeys.cpp:100
+#: src/hotkeys.cpp:101
 #, fuzzy
 #| msgid "Save Replay"
 msgid "Play Replay"
 msgstr "Restitutum Servare"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:102
 #, fuzzy
 #| msgid "Save Replay"
 msgid "Reset Replay"
 msgstr "Restitutum Servare"
 
-#: src/hotkeys.cpp:102
+#: src/hotkeys.cpp:103
 #, fuzzy
 #| msgid "Save Replay"
 msgid "Stop Replay"
 msgstr "Restitutum Servare"
 
-#: src/hotkeys.cpp:103
+#: src/hotkeys.cpp:104
 msgid "Next Turn"
 msgstr "Vicis Secunda"
 
-#: src/hotkeys.cpp:104
+#: src/hotkeys.cpp:105
 msgid "Next Side"
 msgstr "Manus Secunda"
 
-#: src/hotkeys.cpp:106
+#: src/hotkeys.cpp:107
 msgid "Full Map"
 msgstr "Tota Charta"
 
-#: src/hotkeys.cpp:108
+#: src/hotkeys.cpp:109
 msgid "Each Team"
 msgstr "Quaeque Manus"
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:111
 msgid "Team 1"
 msgstr "Manus I"
 
-#: src/hotkeys.cpp:111
+#: src/hotkeys.cpp:112
 msgid "Skip Animation"
 msgstr "Animationem Praeterire"
 
 #. TRANSLATORS: whiteboard menu entry: toggle planning mode
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:115
 msgid "whiteboard^Planning Mode"
 msgstr "Modus Parandi"
 
 #. TRANSLATORS: whiteboard menu entry: execute planned action
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:117
 msgid "whiteboard^Execute Action"
 msgstr "Actionem Agere"
 
 #. TRANSLATORS: whiteboard menu entry: execute all planned actions
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:119
 msgid "whiteboard^Execute All Actions"
 msgstr "Omnes Actiones Agere"
 
 #. TRANSLATORS: whiteboard menu entry: delete planned action
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:121
 msgid "whiteboard^Delete Action"
 msgstr ""
 
 #. TRANSLATORS: whiteboard menu entry: move planned action up queue
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:123
 msgid "whiteboard^Move Action Up"
 msgstr ""
 
 #. TRANSLATORS: whiteboard menu entry: move planned action down queue
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:125
 msgid "whiteboard^Move Action Down"
 msgstr ""
 
 #. TRANSLATORS: whiteboard menu entry: plan as though the chosen unit were dead
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:127
 msgid "whiteboard^Suppose Dead"
 msgstr "Mortuum Putare"
 
-#: src/hotkeys.cpp:128
+#: src/hotkeys.cpp:129
 #, fuzzy
 msgid "Quit to Desktop"
 msgstr "(To Desktop) Exire"
 
-#: src/hotkeys.cpp:129
+#: src/hotkeys.cpp:130
 msgid "Close Map"
 msgstr "Chartam Claudere"
 
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:131
 msgid "Switch Map"
 msgstr "Chartam Permutare"
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:133
 msgid "Partial Undo"
 msgstr "Particularem Reddere"
 
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:135
 msgid "Load Map"
 msgstr "Chartam Restituere"
 
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:137
 msgid "Save Map As"
 msgstr "Chartam Servare Ut"
 
-#: src/hotkeys.cpp:137
+#: src/hotkeys.cpp:138
 msgid "Save All Maps"
 msgstr "Omnes Chartam Servare"
 
-#: src/hotkeys.cpp:138
+#: src/hotkeys.cpp:139
 msgid "Revert All Changes"
 msgstr ""
 
-#: src/hotkeys.cpp:139
+#: src/hotkeys.cpp:140
 msgid "Map Information"
 msgstr "Descriptio Chartae"
 
-#: src/hotkeys.cpp:141
+#: src/hotkeys.cpp:142
 msgid "Swap Foreground/Background Terrains"
 msgstr ""
 
-#: src/hotkeys.cpp:142
+#: src/hotkeys.cpp:143
 msgid "Next Tool"
 msgstr "Instrumentum Secundum"
 
-#: src/hotkeys.cpp:143
+#: src/hotkeys.cpp:144
 msgid "Paint Tool"
 msgstr "Instrumentum Pigmenti"
 
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:145
 msgid "Fill Tool"
 msgstr "Instrumentum Complendi"
 
-#: src/hotkeys.cpp:145
+#: src/hotkeys.cpp:146
 msgid "Selection Tool"
 msgstr "Instrumentum Eligendi"
 
-#: src/hotkeys.cpp:147
+#: src/hotkeys.cpp:148
 msgid "Set Starting Positions Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:148
+#: src/hotkeys.cpp:149
 msgid "Next Brush"
 msgstr "Peniculus Secundus"
 
-#: src/hotkeys.cpp:149
+#: src/hotkeys.cpp:150
 msgid "Default Brush"
 msgstr "Peniculus Usitatus"
 
-#: src/hotkeys.cpp:150
+#: src/hotkeys.cpp:151
 msgid "Cut"
 msgstr "Excidere"
 
-#: src/hotkeys.cpp:151
+#: src/hotkeys.cpp:152
 msgid "Copy"
 msgstr "Exscribere"
 
-#: src/hotkeys.cpp:152
+#: src/hotkeys.cpp:153
 msgid "Paste"
 msgstr "Glutinare"
 
-#: src/hotkeys.cpp:153
+#: src/hotkeys.cpp:154
 msgid "Export Selected Coordinates to System Clipboard"
 msgstr ""
 
-#: src/hotkeys.cpp:155
+#: src/hotkeys.cpp:156
 msgid "Select All"
 msgstr "Omnia Eligere"
 
-#: src/hotkeys.cpp:157
+#: src/hotkeys.cpp:158
 msgid "Select Inverse"
 msgstr ""
 
-#: src/hotkeys.cpp:159
+#: src/hotkeys.cpp:160
 msgid "Select None"
 msgstr "Nulla Eligere"
 
-#: src/hotkeys.cpp:161
+#: src/hotkeys.cpp:162
 msgid "Rotate Clipboard Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:163
+#: src/hotkeys.cpp:164
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:165
+#: src/hotkeys.cpp:166
 msgid "Flip Clipboard Horizontally"
 msgstr ""
 
-#: src/hotkeys.cpp:167
+#: src/hotkeys.cpp:168
 msgid "Flip Clipboard Vertically"
 msgstr ""
 
-#: src/hotkeys.cpp:169
+#: src/hotkeys.cpp:170
 #, fuzzy
 msgid "Rotate Selection"
 msgstr "Electionem Implere"
 
-#: src/hotkeys.cpp:171
+#: src/hotkeys.cpp:172
 #, fuzzy
 msgid "Flip Selection"
 msgstr "Electionem Implere"
 
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:174
 #, fuzzy
 msgid "Fill Selection"
 msgstr "Electionem Implere"
 
-#: src/hotkeys.cpp:175
+#: src/hotkeys.cpp:176
 #, fuzzy
 msgid "Generate Tiles In Selection"
 msgstr "Electionem Implere"
 
-#: src/hotkeys.cpp:177
+#: src/hotkeys.cpp:178
 msgid "Randomize Tiles In Selection"
 msgstr ""
 
-#: src/hotkeys.cpp:181
+#: src/hotkeys.cpp:182
 msgid "Rotate Map"
 msgstr "Chartam Convertere"
 
-#: src/hotkeys.cpp:183
+#: src/hotkeys.cpp:184
 msgid "Generate Map"
 msgstr "Chartam Generare"
 
-#: src/hotkeys.cpp:185
+#: src/hotkeys.cpp:186
 msgid "Apply a Mask"
 msgstr "Aptare Personam"
 
-#: src/hotkeys.cpp:187
+#: src/hotkeys.cpp:188
 msgid "Create Mask"
 msgstr "Personam Creare"
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:190
 #, fuzzy
 msgid "Refresh Display"
 msgstr "Scrinium"
 
-#: src/hotkeys.cpp:191
+#: src/hotkeys.cpp:192
 msgid "Update Terrain Transitions"
 msgstr ""
 
-#: src/hotkeys.cpp:193
+#: src/hotkeys.cpp:194
 msgid "Auto-update Terrain Transitions"
 msgstr ""
 
-#: src/hotkeys.cpp:195
+#: src/hotkeys.cpp:196
 #, fuzzy
 msgid "Refresh Image Cache"
 msgstr "Thesaurum Imaginum Renovare"
 
-#: src/hotkeys.cpp:197
+#: src/hotkeys.cpp:198
 msgid "Draw Hex Coordinates"
 msgstr "Locos Hexagonorum Pingere"
 
-#: src/hotkeys.cpp:199
+#: src/hotkeys.cpp:200
 #, fuzzy
 msgid "Draw Terrain Codes"
 msgstr "Agros Pingere"
 
-#: src/hotkeys.cpp:203
+#: src/hotkeys.cpp:204
 msgid "Delay Shroud Updates"
 msgstr "Mutationem Absconsi Differre"
 
-#: src/hotkeys.cpp:204
+#: src/hotkeys.cpp:205
 msgid "Update Shroud Now"
 msgstr "Absconsum Nunc Mutare"
 
-#: src/hotkeys.cpp:205
+#: src/hotkeys.cpp:206
 msgid "Continue Move"
 msgstr "Vicem Pergere"
 
-#: src/hotkeys.cpp:206
+#: src/hotkeys.cpp:207
 msgid "Find Label or Unit"
 msgstr "Titulum aut Actorem Invenire"
 
-#: src/hotkeys.cpp:207
+#: src/hotkeys.cpp:208
 msgid "Speak to Ally"
 msgstr "Cum Socio Loqui"
 
-#: src/hotkeys.cpp:208
+#: src/hotkeys.cpp:209
 msgid "Speak to All"
 msgstr "Cum Omnibus Loqui"
 
-#: src/hotkeys.cpp:210
+#: src/hotkeys.cpp:211
 msgid "View Chat Log"
 msgstr "Colloquium Videre"
 
-#: src/hotkeys.cpp:213
+#: src/hotkeys.cpp:214
 #, fuzzy
 msgid "Enter User Command"
 msgstr "Imperium utentis dare"
 
-#: src/hotkeys.cpp:214
+#: src/hotkeys.cpp:215
 #, fuzzy
 msgid "Custom Command"
 msgstr "Imperium utentis dare"
 
-#: src/hotkeys.cpp:215
+#: src/hotkeys.cpp:216
 msgid "Run Formula"
 msgstr ""
 
-#: src/hotkeys.cpp:216
+#: src/hotkeys.cpp:217
 msgid "Clear Messages"
 msgstr "Nuntios Delere"
 
-#: src/hotkeys.cpp:220
+#: src/hotkeys.cpp:221
 msgid "Refresh WML"
 msgstr "VML Novare"
 
-#: src/hotkeys.cpp:227
+#: src/hotkeys.cpp:228
 #, fuzzy
 #| msgid "Next tip of the day"
 msgid "Next Tip of the Day"
 msgstr "Consilium secundum diei"
 
-#: src/hotkeys.cpp:234
+#: src/hotkeys.cpp:235
 #, fuzzy
 msgid "Previous Tip of the Day"
 msgstr "Actor Anterior"
 
-#: src/hotkeys.cpp:241
+#: src/hotkeys.cpp:242
 msgid "Start Tutorial"
 msgstr "Rudimentum Incipere"
 
-#: src/hotkeys.cpp:248
+#: src/hotkeys.cpp:249
 msgid "Start Campaign"
 msgstr "Militiam Incipere"
 
-#: src/hotkeys.cpp:255
+#: src/hotkeys.cpp:256
 msgid "Start Multiplayer Game"
 msgstr "Ludum cum Pluribus Lusoribus Incipere"
 
-#: src/hotkeys.cpp:262
+#: src/hotkeys.cpp:263
 #, fuzzy
 msgid "Manage Add-ons"
 msgstr "Appendices Novare"
 
-#: src/hotkeys.cpp:269
+#: src/hotkeys.cpp:270
 msgid "Start Editor"
 msgstr "Mutatorem Incipere"
 
-#: src/hotkeys.cpp:276
+#: src/hotkeys.cpp:277
 msgid "Show Credits"
 msgstr "Agnitiones Ostendere"
 
-#: src/hotkeys.cpp:284
+#: src/hotkeys.cpp:285
 #, fuzzy
 #| msgid "Show the credits"
 msgid "Show Helptip"
 msgstr "Agnitiones ostendere"
 
-#: src/hotkeys.cpp:882 src/hotkeys.cpp:1227
+#: src/hotkeys.cpp:883 src/hotkeys.cpp:1228
 msgid "Do you really want to quit?"
 msgstr "Itane vis exire?"
 
-#: src/hotkeys.cpp:1179
+#: src/hotkeys.cpp:1180
 #, fuzzy
 msgid "Map-Screenshot"
 msgstr "Imago Scrinii"
 
-#: src/hotkeys.cpp:1186 src/hotkeys.cpp:1188
+#: src/hotkeys.cpp:1187 src/hotkeys.cpp:1189
 #, fuzzy
 msgid "Screenshot done"
 msgstr "Imago Scrinii"
@@ -3800,7 +3800,7 @@ msgstr "Insula"
 msgid "The maximum text width is less than 1."
 msgstr ""
 
-#: src/preferences_display.cpp:123 src/preferences_display.cpp:179
+#: src/preferences_display.cpp:124 src/preferences_display.cpp:180
 #, fuzzy
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
@@ -3812,60 +3812,60 @@ msgstr ""
 "luso cum scrinio toto uti, necesse est habere modum MXXIV x DCCLXVIII x XVI "
 "in scrinio."
 
-#: src/preferences_display.cpp:276
+#: src/preferences_display.cpp:277
 #, fuzzy
 msgid "Hotkey Settings"
 msgstr "Impostationes Clavium Notarum"
 
-#: src/preferences_display.cpp:282 src/preferences_display.cpp:351
+#: src/preferences_display.cpp:283 src/preferences_display.cpp:352
 #, fuzzy
 msgid "Press desired hotkey (Esc cancels)"
 msgstr "Premere Clavem Notarum volutam"
 
-#: src/preferences_display.cpp:301
+#: src/preferences_display.cpp:302
 msgid "Action"
 msgstr "Actio"
 
-#: src/preferences_display.cpp:301
+#: src/preferences_display.cpp:302
 msgid "Binding"
 msgstr "Adligatio"
 
-#: src/preferences_display.cpp:313
+#: src/preferences_display.cpp:314
 #, fuzzy
 msgid "Change Hotkey"
 msgstr "Clavem Notarum Mutare"
 
-#: src/preferences_display.cpp:316
+#: src/preferences_display.cpp:317
 #, fuzzy
 msgid "Clear Hotkey"
 msgstr "Clavem Notarum Mutare"
 
-#: src/preferences_display.cpp:394 src/preferences_display.cpp:402
-#: src/preferences_display.cpp:414
+#: src/preferences_display.cpp:395 src/preferences_display.cpp:403
+#: src/preferences_display.cpp:415
 #, fuzzy
 msgid "This hotkey is already in use."
 msgstr "Haec Clavis Notarum iam usum habet."
 
-#: src/preferences_display.cpp:429
+#: src/preferences_display.cpp:430
 msgid ""
 "Screenshot hotkeys should be combined with the Control, Alt or Meta "
 "modifiers to avoid problems."
 msgstr ""
 
-#: src/preferences_display.cpp:429
+#: src/preferences_display.cpp:430
 msgid "Warning"
 msgstr "Admonitus"
 
-#: src/preferences_display.cpp:530
+#: src/preferences_display.cpp:531
 #, fuzzy
 msgid "There are no alternative video modes available"
 msgstr "Carent alteris modis visivis"
 
-#: src/preferences_display.cpp:561
+#: src/preferences_display.cpp:562
 msgid " (widescreen)"
 msgstr ""
 
-#: src/preferences_display.cpp:565
+#: src/preferences_display.cpp:566
 #, fuzzy
 msgid "Choose Resolution"
 msgstr "Resolutionem Eligere"

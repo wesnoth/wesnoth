@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-03-25 14:42+0200\n"
+"POT-Creation-Date: 2012-08-12 10:25+0200\n"
 "PO-Revision-Date: 2010-08-30 22:06+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
@@ -144,10 +144,10 @@ msgid "Death of Kapou’e"
 msgstr "卡破尔阵亡"
 
 #. [side]: type=Orcish Leader, id=Kapou'e
-#. [side]: type=Orcish Slayer, id=Rugh
-#. [side]: type=General, id=Howgarth III
-#. [side]: id=gruu_recall_enabling_hack_leader, type=Great Troll
 #. [side]
+#. [side]: id=gruu_recall_enabling_hack_leader, type=Great Troll
+#. [side]: type=General, id=Howgarth III
+#. [side]: type=Orcish Slayer, id=Rugh
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:58
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:65
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:42
@@ -203,8 +203,8 @@ msgstr "卡破尔"
 msgid "Alber"
 msgstr "阿尔伯特"
 
-#. [side]: type=Lieutenant, id=Alber
 #. [side]: type=General, id=Lanbec'h
+#. [side]: type=Lieutenant, id=Alber
 #. [side]: type=General, id=Slowhand
 #. [side]
 #. [side]: type=General, id=Harman
@@ -1001,12 +1001,12 @@ msgstr "萨满祭司之死"
 msgid "Etheliel"
 msgstr "伊特立尔"
 
+#. [side]: type=Elvish Shyde, id=Lucile
+#. [side]: type=Elvish Captain, id=Raceme
 #. [side]: type=Elvish Marshal, id=Etheliel
 #. [side]: type=Elvish Marshal, id=Hida'tul
 #. [side]: type=Elvish Marshal, id=Ammon
 #. [side]: type=Elvish Marshal, id=Sammual
-#. [side]: type=Elvish Shyde, id=Lucile
-#. [side]: type=Elvish Captain, id=Raceme
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:71
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:107
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:122
@@ -1037,22 +1037,22 @@ msgstr "阿们"
 msgid "Sammual"
 msgstr "撒马耳"
 
-#. [event]
 #. [event]: role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordewarlord1}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordewarlord2}
+#. [event]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:190
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1101
 msgid "Pirk"
 msgstr "帕克"
 
-#. [event]
 #. [event]: role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordewarlord1}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordewarlord2}
+#. [event]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:191
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1102
 msgid "Gork"
 msgstr "古洛"
 
-#. [event]
 #. [event]: role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordewarlord1}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordewarlord2}
+#. [event]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:192
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1103
 msgid "Vraurk"
@@ -1211,8 +1211,8 @@ msgstr "说吧，库鲁。"
 msgid "We go and we kill all of them. What do you think?"
 msgstr "我们去把他们全杀了，你觉得怎样？"
 
-#. [message]: speaker=Kapou'e
 #. [message]: speaker=Shan Taum
+#. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:446
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:266
 msgid "..."
@@ -1747,20 +1747,20 @@ msgstr "到达绿洲"
 msgid "Ar-Dant"
 msgstr "亚单"
 
-#. [side]: type=Dwarvish Steelclad, id=Darstang
-#. [side]: type=Bandit, id=Sagmar
-#. [side]: type=General, id=Arthain
-#. [side]: type=Lieutenant, id=Hanak
-#. [side]: type=Elvish Champion, id=Thelarion
-#. [side]: type=General, id=Earl Lanbec'h
-#. [side]
-#. [side]: type=Grand Marshal, id=Earl Lanbec'h
-#. [side]: type=Assassin, type=Rogue, id=Ar-Dant
-#. [side]: type=Giant Scorpion
-#. [side]: type=Orcish Warlord, id=Shan Taum
 #. [side]: type=General, id=Telthys
+#. [side]: type=Elvish Champion, id=Thelarion
 #. [side]: type=General, id=Fredor
 #. [side]: type=General, id=Georan
+#. [side]: type=Grand Marshal, id=Earl Lanbec'h
+#. [side]: type=Orcish Warlord, id=Shan Taum
+#. [side]: type=Dwarvish Steelclad, id=Darstang
+#. [side]: type=General, id=Earl Lanbec'h
+#. [side]
+#. [side]: type=Assassin, type=Rogue, id=Ar-Dant
+#. [side]: type=Giant Scorpion
+#. [side]: type=General, id=Arthain
+#. [side]: type=Lieutenant, id=Hanak
+#. [side]: type=Bandit, id=Sagmar
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:70
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:96
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:106
@@ -2290,8 +2290,8 @@ msgstr ""
 msgid "At last, here are the Mourned Hills! We can only hope for the best."
 msgstr "这里就是哀悼山峦！我希望一切顺利。"
 
-#. [message]: speaker=Grüü
 #. [message]: role=cannonfodder
+#. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:118
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:280
 msgid "Why?"
@@ -2490,8 +2490,8 @@ msgstr "为了之后招募蜥蜴人，需要依诺斯和他的至少四个同胞
 msgid "Note: whoever detonates the bridge will die."
 msgstr "注意：引爆桥梁的人会死。\n"
 
-#. [unit]: type=Elvish Champion, id=Thelarion
 #. [side]: type=Elvish Champion, id=Thelarion
+#. [unit]: type=Elvish Champion, id=Thelarion
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:92
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:70
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:189
@@ -2720,8 +2720,8 @@ msgstr "这花的时间太多了。我们要派出所有的部队送这些生物
 msgid "It won’t be said that Elves were braver than us, everyone attack!"
 msgstr "再也不会说精灵比我们更勇猛了，全员进击！"
 
-#. [side]: type=General, id=Earl Lanbec'h
 #. [side]: type=Grand Marshal, id=Earl Lanbec'h
+#. [side]: type=General, id=Earl Lanbec'h
 #. [unit]: type=General, id=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:663
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:122
@@ -3622,13 +3622,13 @@ msgstr "把卡破尔移动到西南山区尽头的标志。"
 msgid "Braga"
 msgstr "布拉嘎"
 
+#. [side]: type=Orcish Warlord, id=Orga
+#. [side]: type=Orcish Grunt, id=Knorgh
+#. [side]: type=Orcish Grunt, id=Nofhug
 #. [side]: type=Orcish Warlord, id=Braga
 #. [side]: type=Orcish Warlord, id=Meato
 #. [side]: type=Orcish Warlord, id=Ragvan
 #. [side]: type=Orcish Warlord, id=Kergai
-#. [side]: type=Orcish Warlord, id=Orga
-#. [side]: type=Orcish Grunt, id=Knorgh
-#. [side]: type=Orcish Grunt, id=Nofhug
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:81
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:101
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:121
@@ -4100,8 +4100,8 @@ msgstr "我们到了，我的主人。"
 msgid "Ahhh, perfect, more reinforcements."
 msgstr "啊哈，很好，更多增援。"
 
-#. [unit]: type=General, id=Howgarth III
 #. [side]: type=General, id=Howgarth III
+#. [unit]: type=General, id=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:650
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:145
 msgid "Howgarth III"

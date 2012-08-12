@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-11-16 12:43+0100\n"
+"POT-Creation-Date: 2012-08-12 10:25+0200\n"
 "PO-Revision-Date: 2011-12-24 00:10+0100\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
@@ -115,10 +115,10 @@ msgid "Deoran"
 msgstr "Deoranus"
 
 #. [side]: type=Horseman Commander, id=Deoran
+#. [side]: id=Deoran
+#. [side]: type=Lieutenant, id=Plynry
 #. [side]: type=Troll Hero, id=Grek
 #. [side]
-#. [side]: type=Lieutenant, id=Plynry
-#. [side]: id=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:35
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:44
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:35
@@ -144,12 +144,12 @@ msgstr "Legio Auster"
 msgid "Urza Mathin"
 msgstr "Urza Mathinus"
 
-#. [side]: type=Rogue, id=Urza Fastik
+#. [side]: type=Bandit, id=Urza Mathin
 #. [side]: type=Outlaw, id=Urza Afalas
+#. [side]: type=Rogue, id=Urza Fastik
+#. [side]: type=Outlaw, id=Tharzo Kalain
 #. [side]: type=Outlaw, id=Urza Nalmath
 #. [side]
-#. [side]: type=Outlaw, id=Tharzo Kalain
-#. [side]: type=Bandit, id=Urza Mathin
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:57
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:66
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:103
@@ -1058,12 +1058,12 @@ msgstr "Mal Akae"
 
 #. [side]: type=Ancient Lich, id=Mal M'Brin
 #. [side]: type=Lich, id=Mal Tera
-#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer, id=Mal A'kai
-#. [side]: type=Outlaw, id=Jera Ilras
+#. [side]
 #. [side]: type=Soulless, id=Gruth
 #. [side]: type=Lich, id=Mal M'Brin
+#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer, id=Mal A'kai
+#. [side]: type=Outlaw, id=Jera Ilras
 #. [side]: type=Soulless, id=Groth
-#. [side]
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:74
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:117
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:91
@@ -1583,8 +1583,8 @@ msgstr ""
 msgid "Defeat Urza Afalas"
 msgstr "Urzam Afalam vincere"
 
-#. [message]: speaker=Urza Afalas
 #. [message]: speaker=unit
+#. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:665
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1120
 msgid "Now I pay for my crimes. But how many others will also suffer for them?"

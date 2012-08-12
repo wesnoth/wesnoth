@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-03-25 14:42+0200\n"
+"POT-Creation-Date: 2012-08-12 10:25+0200\n"
 "PO-Revision-Date: 2012-03-29 20:13+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
@@ -364,13 +364,13 @@ msgstr ""
 "这是卡伦茨和兰达尔的故事，也是人类韦诺初期精灵族的故事。"
 
 #. [side]
-#. [side]: id=Velon, type=Elvish Captain
 #. [modify_side]
+#. [side]: id=Velon, type=Elvish Captain
 #. [side]: type=Elvish Marshal, id=Eradion
-#. [side]: type=Elder Mage, id=Crelanu
 #. [side]: type=General, id=Aldar
 #. [side]: type=Elvish Ranger, id=Antaril
 #. [side]: type=Elvish Captain, id=East
+#. [side]: type=Elder Mage, id=Crelanu
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:104
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:167
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:352
@@ -432,40 +432,40 @@ msgstr "维伦"
 msgid "T’baran"
 msgstr "特巴兰"
 
+#. [modify_side]
+#. [side]: type=Troll Hero, type=Great Troll, id=Grugl
 #. [side]: id=Tbaran, type=Orcish Warrior
 #. [side]: id=Wrulf, type=Orcish Warrior
 #. [side]: type=Orcish Warrior, id=Qumseh
 #. [side]: type=Orcish Warrior, id=Graur-Tan
-#. [modify_side]
-#. [side]: type=Troll Hero, type=Great Troll, id=Grugl
-#. [side]: id=Hraurg, type=Saurian Ambusher
-#. [side]: type=Saurian Ambusher, id=Spahr
+#. [side]: type=Orcish Warlord, id=Urug-Tar
+#. [side]: type=Orcish Warlord, id=Graur-Tan
+#. [side]: type=Troll Warrior, id=Traur
 #. [side]: type=Orcish Warlord, id=Mordrum
 #. [side]: type=Orcish Warlord, id=Urug-Pir
 #. [side]: type=Great Troll, id=Truugl
 #. [side]: type=Orcish Warlord, id=Grubr
 #. [side]: type=Saurian Ambusher, id=Shurm
 #. [side]: type=Saurian Ambusher, id=Trigr
-#. [side]: type=Orcish Warlord, id=Urug-Tar
-#. [side]: type=Orcish Warlord, id=Graur-Tan
-#. [side]: type=Troll Warrior, id=Traur
-#. [side]: type=Troll Warrior, id=Tafrul
-#. [side]: type=Saurian Flanker, id=Huurgh
-#. [side]: type=Saurian Oracle, id=Shhar
-#. [side]: type=Arch Mage, id=Aquagar
-#. [side]: type=Troll Warrior, id=Trigrul
+#. [side]: id=Hraurg, type=Saurian Ambusher
+#. [side]: type=Saurian Ambusher, id=Spahr
+#. [side]: type=Orcish Warlord, id=Kior-Pur
+#. [side]: type=Orcish Warlord, id=Mbiran
+#. [side]: type=Orcish Warlord, id=Tan-Durr
 #. [side]: type=Orcish Warlord, id=Pirror
 #. [side]: type=Orcish Warlord, id=Tan-Grub
 #. [side]: type=Great Troll, id=Grol
 #. [side]: type=Orcish Warlord, id=Khafa-Urg
 #. [side]
-#. [side]: type=Orcish Warlord, id=Kior-Pur
-#. [side]: type=Orcish Warlord, id=Mbiran
-#. [side]: type=Orcish Warlord, id=Tan-Durr
 #. [side]: type=Elvish Marshal, id=Crintil
 #. [side]: type=Elvish Captain, id=Oblil
 #. [side]: type=Saurian Flanker, id=Spahr
 #. [side]: type=Saurian Flanker, id=Hgyr
+#. [side]: type=Saurian Flanker, id=Huurgh
+#. [side]: type=Saurian Oracle, id=Shhar
+#. [side]: type=Arch Mage, id=Aquagar
+#. [side]: type=Troll Warrior, id=Trigrul
+#. [side]: type=Troll Warrior, id=Tafrul
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:196
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:235
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:272
@@ -1219,8 +1219,8 @@ msgstr "沙门"
 msgid "Trigr"
 msgstr "泰格"
 
-#. [objectives]
 #. [objective]: condition=win
+#. [objectives]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:188
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:218
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:339
@@ -1896,8 +1896,8 @@ msgid ""
 "next scenario with a preset amount."
 msgstr "把找回的金子放进精灵金库。你会以预设的数量开始下一幕。"
 
-#. [message]: speaker=narrator
 #. [part]
+#. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:772
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:40
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:50
@@ -1939,8 +1939,8 @@ msgstr "把找回的金子放进精灵金库。你会以预设的数量开始下
 msgid "Kalenz"
 msgstr "卡伦茨"
 
-#. [message]: speaker=narrator
 #. [part]
+#. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:778
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:60
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:80
@@ -2544,8 +2544,8 @@ msgid ""
 "and guard it."
 msgstr "在兰达尔离开灵魂莲前，他曾下令$left_behind_landar留下保卫灵魂莲。"
 
-#. [side]: type=Gryphon, id=Gryphon Leader
 #. [side]
+#. [side]: type=Gryphon, id=Gryphon Leader
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:476
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:140
 msgid "Creatures"
@@ -3451,8 +3451,8 @@ msgid ""
 "With the human-elf alliance revived, our heroes hurried to the battlefield..."
 msgstr "人类—精灵再度结盟，我们的英雄们又奔向战场……"
 
-#. [side]: type=General, id=Aldar
 #. [part]
+#. [side]: type=General, id=Aldar
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:206
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/15_The_Treaty.cfg:30
 msgid "Aldar"

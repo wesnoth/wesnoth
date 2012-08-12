@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.19+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-01-21 01:34+0100\n"
+"POT-Creation-Date: 2012-08-12 10:25+0200\n"
 "PO-Revision-Date: 2009-04-15 22:48+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: chinese\n"
@@ -98,10 +98,10 @@ msgstr ""
 msgid "A Summer of Storms"
 msgstr "風暴之夏"
 
-#. [side]: id=Prince Haldric, type=Noble Commander
 #. [side]: type=Noble Commander, id=Prince Haldric
-#. [side]: type=Noble Fighter, id=Prince Haldric
+#. [side]: id=Prince Haldric, type=Noble Commander
 #. [side]: type=Noble Youth, type=Noble Fighter, id=Prince Haldric
+#. [side]: type=Noble Fighter, id=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:24
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:21
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:21
@@ -381,26 +381,26 @@ msgstr "丹-羅貝各"
 #. [side]: type=Orcish Warlord, id=Tan-Harak
 #. [side]: type=Orcish Warlord, id=Tan-Hork
 #. [side]: type=Orcish Warlord, id=Tan-Gulo
-#. [side]: type=Orcish Warlord, id=Tan-Vragar
-#. [side]: type=Orcish Warlord, id=Tan-Burg
-#. [side]: type=Orcish Warlord, id=Ut'Tan-Vrork
-#. [side]: type=Draug, id=General Heravan
-#. [side]: type=Orcish Warlord, id=Tan-Halg
-#. [side]: type=Orcish Warlord, id=Tan-Rinak
-#. [side]: type=Orcish Warlord, id=Tan-Rarbag
-#. [side]: type=Orcish Warrior, id=Tan-Erang
 #. [side]: type=Orcish Warlord, id=Tan-Erirt
 #. [side]: type=Orcish Warlord, id=Tan-Gagar
 #. [side]: type=Troll Warrior, id=Thruf
-#. [side]: type=Orcish Warlord, id=Ut'Tan-Grilg
-#. [side]: type=Orcish Warlord, id=Tan-Pulk
+#. [side]: type=Orcish Warlord, id=Tan-Rarbag
+#. [side]: type=Orcish Warrior, id=Tan-Erang
 #. [side]: type=Orcish Warlord, id=Tan-Gralg
 #. [side]: type=Orcish Warlord, id=Tan-Rugar
+#. [side]: type=Orcish Warlord, id=Ut'Tan-Grilg
+#. [side]: type=Orcish Warlord, id=Tan-Pulk
+#. [side]: type=Orcish Warlord, id=Tan-Schmog
+#. [side]: type=Orcish Warlord, id=Tan-NauVong
+#. [side]: type=Draug, id=General Heravan
+#. [side]: type=Orcish Warlord, id=Tan-Halg
+#. [side]: type=Orcish Warlord, id=Tan-Rinak
+#. [side]: type=Orcish Warlord, id=Tan-Vragar
+#. [side]: type=Orcish Warlord, id=Tan-Burg
+#. [side]: type=Orcish Warlord, id=Ut'Tan-Vrork
 #. [side]: type=Orcish Warlord, id=Tan-Vrodis
 #. [side]: type=Orcish Warlord, id=Tan-Bok
 #. [side]: type=Orcish Warlord, id=Tan-Hogar
-#. [side]: type=Orcish Warlord, id=Tan-Schmog
-#. [side]: type=Orcish Warlord, id=Tan-NauVong
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:70
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:94
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:41
@@ -2113,8 +2113,8 @@ msgstr "清水港"
 msgid "Humans"
 msgstr "人類"
 
-#. [side]: type=Lieutenant, id=Commander Aethyr
 #. [case]
+#. [side]: type=Lieutenant, id=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:41
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:527
 msgid "Commander Aethyr"
@@ -3395,11 +3395,11 @@ msgstr "王儲已經死了，不過我們再次需要你們的幫助──"
 msgid "Under the same terms?"
 msgstr "條件不變？"
 
+#. [message]: speaker=Lord El’Isomithir
+#. [message]: speaker=Lord Logalmier
 #. [message]: speaker=Lady Jessene
 #. [message]: speaker=Lady Dionli
 #. [message]: speaker=Lord Aryad
-#. [message]: speaker=Lord El’Isomithir
-#. [message]: speaker=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:396
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:421
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:425
@@ -4010,8 +4010,8 @@ msgstr ""
 "我的人民遠在南方，我不知道這裡發生了什麼事，我將永遠站在你這邊。你確實是個好"
 "朋友，只是不要再有海上的旅行了。"
 
-#. [event]
 #. [side]: type=Elvish Shyde, id=Lady Dionli
+#. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:233
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:34
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:34
@@ -6613,8 +6613,8 @@ msgstr ""
 msgid "female^Wesfolk Lady"
 msgstr "韋族貴婦"
 
-#. [unit_type]: id=Wesfolk Leader, race=human
 #. [unit_type]: id=Wesfolk Lady, race=human
+#. [unit_type]: id=Wesfolk Leader, race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Lady.cfg:22
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Leader.cfg:23
 msgid ""
