@@ -51,9 +51,16 @@ class Addon(object):
         Returns whether anything changed.
         """
         logging.debug("Updating add-on {0}".format(self.name))
-        # Stuff gets printed to stderr on a checkout of a fresh (empty) repository
-        # TODO: error checking
         out, err = self._execute(["git", "pull"], check_error=False)
+        if len(err):
+            real_errs = []
+            for line in err.splitlines():
+                if line == "Your configuration specifies to merge with the ref 'master'" or line == "from the remote, but no such ref was fetched.":
+                    # This means the repository has no commits yet
+                    continue
+                real_errs.append(line)
+            if real_errs:
+                raise Error("Error pulling add-on {0}:\n{1}".format(addon, "\n".join(real_errs)))
 
 
         def remove_untracked():
