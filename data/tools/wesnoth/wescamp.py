@@ -233,7 +233,7 @@ if __name__ == "__main__":
                 addon_obj._execute(["git", "rm"] + to_rm, check_error=True)
             if to_add:
                 addon_obj._execute(["git", "add"] + to_add, check_error=True)
-            addon_obj.commit("Pot-update")
+            addon_obj.commit("pot-update")
 
 
     """Checkout all add-ons of one wesnoth version from wescamp.
