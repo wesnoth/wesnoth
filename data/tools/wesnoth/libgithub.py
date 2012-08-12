@@ -156,7 +156,7 @@ class Addon(object):
         out, err = self._execute(["git", "push", "-u", "--porcelain", "origin", "master"], check_error=False)
         statusline = filter(lambda x: x.find("refs/heads/master") != -1, out.splitlines())
         if not statusline:
-            raise Error, "No statusline produced by git push in add-on {0}".format(self.name)
+            raise Error("No statusline produced by git push in add-on {0}".format(self.name))
         else:
             status = statusline[0][0]
             refs, summary = statusline[0][1:].split(None, 1)
@@ -170,9 +170,9 @@ class Addon(object):
                 # Up to date?
                 logging.warn("Commit to add-on {0} with message {1} has not made any changes".format(self.name, message))
             elif status == "!":
-                raise Error, "Commit to add-on {0} with message {1} failed for reason {2}".format(self.name, message, summary)
+                raise Error("Commit to add-on {0} with message {1} failed for reason {2}".format(self.name, message, summary))
             else:
-                raise Error, "Commit to add-on {0} with message {1} has done something unexpected: {2}".format(self.name, message, statusline[0])
+                raise Error("Commit to add-on {0} with message {1} has done something unexpected: {2}".format(self.name, message, statusline[0]))
 
     def get_dir(self):
         """Return the directory this add-on's checkout is in.
@@ -243,7 +243,7 @@ class Addon(object):
             else:
                 errors.extend((src, dst, str(why)))
         if errors:
-            raise Error, errors
+            raise Error(errors)
     def _status(self):
         out, err = self._execute(["git", "status", "--porcelain"])
         if err:
@@ -506,7 +506,7 @@ def get_build_system(possible_dirs=[]):
     logging.debug("get_build_system with paths: %s", ";".join(possible_dirs))
 
     if not isinstance(possible_dirs, list):
-        raise Error, "Incorrect argument type passed, {0} instead of {1}".format(str(type(possible_dirs)), str(list))
+        raise Error("Incorrect argument type passed, {0} instead of {1}".format(str(type(possible_dirs)), str(list)))
 
     def is_good_checkout(addon):
         try:
