@@ -20,7 +20,6 @@ import urllib2
 
 
 #TODO: document and log where missing
-#TODO: every _execute with check_error=False is a place where more sophisticated checking should be done
 
 class Error(Exception):
     """Base class for exceptions in this module."""
@@ -55,7 +54,7 @@ class Addon(object):
         if len(err):
             real_errs = []
             for line in err.splitlines():
-                if line == "Your configuration specifies to merge with the ref 'master'" or line == "from the remote, but no such ref was fetched.":
+                if line in ["Your configuration specifies to merge with the ref 'master'", "from the remote, but no such ref was fetched."]:
                     # This means the repository has no commits yet
                     continue
                 real_errs.append(line)
