@@ -57,7 +57,7 @@ class Addon(object):
 
 
         def remove_untracked():
-            untracked = [line.replace("?? ","",1) for line in self._status() if line.find("??") != -1]
+            untracked = [line.replace("?? ","",1) for line in self._status() if line.startswith("??")]
             for item in untracked:
                 try:
                     path = os.path.join(self.get_dir(), item)
