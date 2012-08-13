@@ -2576,153 +2576,6 @@ bool clear_shroud(int side, bool reset_fog)
 
 namespace { // Private helpers for move_unit()
 
-/// Handles animating unit movement in controllable stages
-class unit_move_animator : public boost::noncopyable
-{
-	unit_map& m_;
-	bool movement_started_;
-	const bool show_move_;
-	const std::vector<map_location> &route_;
-	std::vector<map_location>::const_iterator loc_;
-
-	/**
-	 * Places a temporary unit on the display when constructed,
-	 * and removes it when destructed.  The real unit will be
-	 * hidden during that period.
-	 */
-	class animation_unit_placer : public boost::noncopyable
-	{
-		unit &ui_;
-		bool was_hidden_;
-
-	public:
-		/// The temporary unit available for use while this class
-		/// is in scope
-		game_display::fake_unit temp_unit;
-
-		/**
-		 * Creates a temporary unit, hides the real unit, and places
-		 * the temporary unit on the display.
-		 *
-		 * @param ui[in]	The real unit to base the temporary unit on
-		 */
-		animation_unit_placer(unit &ui) :
-			ui_(ui),
-			was_hidden_(ui.get_hidden()),
-			temp_unit(ui)
-		{
-			ui_.set_hidden(true);
-			temp_unit.set_standing(false);
-			temp_unit.set_hidden(false);
-			temp_unit.place_on_game_display(resources::screen);
-		}
-
-		/**
-		 * Removes the temporary unit from the display,
-		 * and returns the real unit that it was based
-		 * on to its previous hidden/shown state.
-		 */
-		~animation_unit_placer()
-		{
-			temp_unit.remove_from_game_display();
-			ui_.set_hidden(was_hidden_);
-		}
-	};
-
-public:
-	/**
-	 * Constructor
-	 *
-	 * @param route[in]      the path to follow
-	 * @param show_move[in]  whether or not the move is shown to the player
-	 */
-	unit_move_animator(const std::vector<map_location> &route, bool show_move) :
-		m_(*resources::units),
-		movement_started_(false),
-		show_move_(show_move),
-		route_(route),
-		loc_(route.begin())
-	{}
-
-	/**
-	 * Displays the unit's starting animation, if necessary.
-	 * This will be called by continue_movement() as needed.
-	 */
-	void start_movement()
-	{
-		if(movement_started_)
-			return;
-		movement_started_ = true;
-
-		unit_map::iterator ui = m_.find(*loc_);
-		if(ui == m_.end())
-			return;
-
-		if(show_move_)
-		{
-			// show the movement start animation
-			animation_unit_placer placer(*ui);
-
-			unit_display::move_unit_start(route_, placer.temp_unit);
-		}
-	}
-
-	/**
-	 * Moves the unit to a later position in the route. This
-	 * should usually by the next tile, but does not have to be.
-	 *
-	 * @param dest[in]  An iterator into the route provided to the constructor,
-	 *                  indicating which location to move the unit to.
-	 *                  This location must always be later in the route than
-	 *                  the unit's current position.
-	 */
-	void continue_movement(const unit_map::iterator & ui, const std::vector<map_location>::const_iterator & dest)
-	{
-		start_movement();
-
-		assert(loc_ < dest);
-		assert(dest < route_.end());
-
-		if ( show_move_  &&  ui != m_.end() )
-		{
-			// show the movement animation
-			animation_unit_placer placer(*ui);
-
-			for(std::vector<map_location>::const_iterator step = loc_; step != dest; ++step) {
-				unit_display::move_unit_step(route_, step - route_.begin(), placer.temp_unit);
-			}
-		}
-
-		loc_ = dest;
-	}
-
-	/**
-	 * Ends the unit's animation, displaying the unit's movement
-	 * end animation if necessary and returning any displaced unit
-	 * to the field.
-	 */
-	~unit_move_animator()
-	{
-		if(!movement_started_)
-			return;
-
-		unit_map::iterator ui = m_.find(*loc_);
-
-		if(ui != m_.end() && show_move_)
-		{
-			// show the movement finish animation
-			animation_unit_placer placer(*ui);
-
-			std::vector<map_location> steps(route_.begin(),loc_+1);
-			unit_display::move_unit_finish(steps, placer.temp_unit);
-
-			// Show the final move animation step
-			resources::screen->draw();
-		}
-	}
-};
-
-
 	/// Helper class for move_unit().
 	class unit_mover : public boost::noncopyable {
 		typedef std::vector<map_location>::const_iterator route_iterator;
@@ -2801,7 +2654,7 @@ public:
 		/// Moves the unit the next step.
 		inline void do_move(const route_iterator & step_from,
 		                    const route_iterator & step_to,
-		                    unit_move_animator & animator);
+		                    unit_display::unit_mover & animator);
 		/// Clears fog/shroud and handles units being sighted.
 		inline void handle_fog(const map_location & hex, bool ally_interrupts);
 		inline bool is_reasonable_stop(const map_location & hex) const;
@@ -3008,11 +2861,11 @@ public:
 	 * @a step_to is the hex being moved to.
 	 * @a step_from is the hex before that in the route.
 	 * (The unit is actually at *move_loc_.)
-	 * @a animator is the unit_move_animator being used.
+	 * @a animator is the unit_display::unit_mover being used.
 	 */
 	inline void unit_mover::do_move(const route_iterator & step_from,
 	                                const route_iterator & step_to,
-	                                unit_move_animator & animator)
+	                                unit_display::unit_mover & animator)
 	{
 		game_display &disp = *resources::screen;
 
@@ -3031,15 +2884,15 @@ public:
 		{
 			// Update the moving unit.
 			move_it_ = move_result.first;
-			move_it_->set_standing(false);
 			move_it_->set_facing(step_from->get_relative_dir(*step_to));
+			move_it_->set_standing(false);
 			disp.invalidate_unit_after_move(*move_loc_, *step_to);
 			disp.invalidate(*move_loc_);
 			disp.invalidate(*step_to);
 			move_loc_ = step_to;
 
 			// Show this move.
-			animator.continue_movement(move_it_, step_to);
+			animator.proceed_to(*move_it_, step_to - begin_);
 			disp.redraw_minimap();
 		}
 	}
@@ -3357,6 +3210,7 @@ public:
 		//	if ( ambush_limit_ == step )
 		//		++ambush_limit_;
 		//}
+		// Also affected would be the call to animator.proceed_to in do_move().
 
 		return found;
 	}
@@ -3440,8 +3294,8 @@ public:
 
 		if ( begin_ != ambush_limit_ ) {
 			// Prepare to animate.
-			unit_move_animator animator(route_, show); // Should really end at expected_end_.
-			animator.start_movement();
+			unit_display::unit_mover animator(route_, show);
+			animator.start(*move_it_);
 
 			// Traverse the route to the hex where we need to stop.
 			// Each iteration performs the move from real_end_-1 to real_end_.
@@ -3488,11 +3342,9 @@ public:
 				pump_sighted(real_end_); // Ignore the return value, as there are more events to try to fire, and real_end_ still needs to be incremented.
 				fire_hex_event(enter_hex_str, real_end_, step_from); // Ignore the return value, as real_end_ still needs to be incremented.
 			}//for
+			if ( move_it_.valid() )
+				animator.finish(*move_it_);
 		}//if
-
-		// Done moving. Resume standing/idle animations (with bars).
-		if ( move_it_.valid() )
-			move_it_->set_standing(true);
 
 		// Some flags were set to indicate why we might stop.
 		// Update those to reflect whether or not we got to them.

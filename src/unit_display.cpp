@@ -115,78 +115,93 @@ namespace unit_display
 {
 
 /**
- * Display a unit moving along a given path.
- *
- * @param path
- * @param u
- * @param animate  If set to false, only side-effects of move are applied
- *                 (correct unit facing, path hexes redrawing).
- * @param dir      Unit will be set facing this direction after move.
- *                 If nothing passed, direction will be set based on path.
+ * The path must remain unchanged for the life of this object.
  */
-/* Note: Hide the unit in its current location,
- * but don't actually remove it until the move is done,
- * so that while the unit is moving status etc.
- * will still display the correct number of units.
- */
-void move_unit(const std::vector<map_location>& path, unit& u,
-               bool animate, map_location::DIRECTION dir)
+unit_mover::unit_mover(const std::vector<map_location>& the_path, bool animate) :
+	disp(game_display::get_singleton()),
+	can_draw_(disp  &&  !disp->video().update_locked()  &&
+	          !disp->video().faked()  &&  the_path.size() > 1),
+	animate_(animate),
+	path(the_path),
+	current_(0),
+	temp_unit_ptr_(NULL),
+	// Somewhat arbitrary default values.
+	was_hidden_(false),
+	is_enemy_(true)
 {
-	game_display* disp = game_display::get_singleton();
+	// Some error conditions that indicate something has gone very wrong.
+	// (This class can handle these conditions, but someone wanted them
+	// to be assertions.)
 	assert(!path.empty());
 	assert(disp);
-	if(!disp || disp->video().update_locked() || disp->video().faked())
-		return;
-	// One hex path (strange), nothing to do
-	if(path.size() == 1)
-		return;
-	if(dir == map_location::NDIRECTIONS)
-		dir = path[path.size()-2].get_relative_dir(path.back());
-	// Don't animate, only set facing and redraw path ends
-	if(!animate) {
-		u.set_facing(dir);
-		disp->invalidate(path.front());
-		disp->invalidate(path.back());
-		return;
-	}
-
-	bool was_hidden = u.get_hidden();
-	// Original unit is usually hidden (but still on map, so count is correct)
-	game_display::fake_unit temp_unit(u);
-	u.set_hidden(true);
-	temp_unit.set_standing(false);
-	temp_unit.set_hidden(false);
-	temp_unit.place_on_game_display(disp);
-
-	move_unit_start(path, temp_unit);
-
-	for(size_t i = 0; i+1 < path.size(); ++i) {
-		move_unit_step(path, i, temp_unit);
-	}
-
-	move_unit_finish(path, temp_unit);
-
-	temp_unit.remove_from_game_display();
-
-	u.set_facing(dir);
-	u.set_hidden(was_hidden);
 }
 
-void move_unit_start(const std::vector<map_location>& path, unit& temp_unit)
+
+unit_mover::~unit_mover()
 {
-	game_display* disp = game_display::get_singleton();
-	assert(!path.empty());
-	assert(disp);
-	if(!disp || disp->video().update_locked() || disp->video().faked())
-		return;
-	// One hex path (strange), nothing to do
-	if(path.size() == 1)
+	if ( temp_unit_ptr_ != NULL )
+		// Its destructor will remove the temp unit from the display.
+		delete temp_unit_ptr_;
+}
+
+
+/**
+ * Makes the temporary unit used by this match the supplied unit.
+ * This is called when setting the initial unit, as well as replacing it with
+ * something new.
+ * When this finishes, the supplied unit is hidden, while the temporary unit
+ * is not hidden.
+ */
+/* Note: Hide the unit in its current location; do not actually remove it.
+ * Otherwise the status displays will be wrong during the movement.
+ */
+void unit_mover::replace_temporary(unit & u)
+{
+	if ( disp == NULL )
+		// No point in creating a temp unit with no way to display it.
 		return;
 
-	const team& tm = (*resources::teams)[temp_unit.side()-1];
-	bool invisible = tm.is_enemy(int(disp->viewing_team()+1)) &&
-		temp_unit.invisible(path[0]);
-	if(!invisible) {
+	// Save the hidden state of the unit.
+	was_hidden_ = u.get_hidden();
+
+	// Make our temporary unit mostly match u...
+	if ( temp_unit_ptr_ == NULL ) {
+		temp_unit_ptr_ = new game_display::fake_unit(u);
+		temp_unit_ptr_->place_on_game_display(disp);
+	}
+	else
+		*temp_unit_ptr_ = u;
+	// ... but keep the temporary unhidden and hide the original.
+	temp_unit_ptr_->set_hidden(false);
+	u.set_hidden(true);
+
+	// Update cached data.
+	is_enemy_ =	(*resources::teams)[u.side()-1].is_enemy(disp->viewing_side());
+}
+ 
+
+/**
+ * Initiates the display of movement for the supplied unit.
+ * This should be called before attempting to display moving to a new hex.
+ */
+void unit_mover::start(unit& u)
+{
+	// Nothing to do here if there is nothing to animate.
+	if ( !can_draw_  || !animate_ )
+		return;
+
+	// Visually replace the original unit with the temporary.
+	// (Original unit is left on the map, so the unit count is correct.)
+	replace_temporary(u);
+
+	// Initialize our temporary unit for the move.
+	temp_unit_ptr_->set_location(path[0]);
+	temp_unit_ptr_->set_facing(path[0].get_relative_dir(path[1]));
+	temp_unit_ptr_->set_standing(false);
+	disp->invalidate(path[0]);
+
+	// If the unit can be seen here by the viewing side:
+	if ( !is_enemy_ || !temp_unit_ptr_->invisible(path[0]) ) {
 		// Scroll to the path, but only if it fully fits on screen.
 		// If it does not fit we might be able to do a better scroll later.
 		disp->scroll_to_tiles(path, game_display::ONSCREEN, true, true, 0.0, false);
@@ -207,86 +222,162 @@ void move_unit_start(const std::vector<map_location>& path, unit& temp_unit)
 	disp->draw(true);
 
 	// extra immobile movement animation for take-off
-	temp_unit.set_location(path[0]);
-	disp->invalidate(temp_unit.get_location());
-	temp_unit.set_facing(path[0].get_relative_dir(path[1]));
-
 	unit_animator animator;
-	animator.add_animation(&temp_unit,"pre_movement",path[0],path[1]);
+	animator.add_animation(temp_unit_ptr_, "pre_movement", path[0], path[1]);
 	animator.start_animations();
 	animator.wait_for_end();
+
+	// Switch the display back to the real unit.
+	u.set_facing(temp_unit_ptr_->facing());
+	u.set_standing(false);	// Need to reset u's animation so the new facing takes effect.
+	u.set_hidden(was_hidden_);
+	temp_unit_ptr_->set_hidden(true);
 }
 
-void move_unit_step(const std::vector<map_location>& path, size_t i,
-		unit& temp_unit)
+
+/**
+ * Visually moves a unit from the last hex we drew to the one specified by
+ * @a path_index. If @a path_index points to an earlier hex, we do nothing.
+ * The moving unit will only be updated if update is set to true; otherwise,
+ * the provided unit is merely hidden during the movement and re-shown after.
+ * (Not updating the unit can produce smoother animations in some cases.)
+ */
+void unit_mover::proceed_to(unit& u, size_t path_index, bool update)
 {
-	game_display* disp = game_display::get_singleton();
-	assert(path.size() > i+1);
-	assert(disp);
-	if(!disp || disp->video().update_locked() || disp->video().faked())
-		return;
-	// already reached end of path - this should never happen
-	if(path.size() <= i+1)
+	// Nothing to do here if animations can/should not be shown.
+	if ( !can_draw_  || !animate_ )
 		return;
 
-	const team& tm = (*resources::teams)[temp_unit.side()-1];
-	bool invisible = tm.is_enemy(int(disp->viewing_team()+1)) &&
-			temp_unit.invisible(path[i]) &&
-			temp_unit.invisible(path[i+1]);
-	if(invisible)
-		return;
+	if ( update  ||  temp_unit_ptr_ == NULL )
+		// Replace the temp unit (which also hides u and shows our temporary).
+		replace_temporary(u);
+	else
+	{
+		// Just switch the display from the real unit to our fake one.
+		temp_unit_ptr_->set_hidden(false);
+		u.set_hidden(true);
+	}
 
-	if (!disp->tile_fully_on_screen(path[i]) || !disp->tile_fully_on_screen(path[i+1])) {
-		// prevent the unit from disappearing if we scroll here with i == 0
-		temp_unit.set_location(path[i]);
-		disp->invalidate(temp_unit.get_location());
-		// scroll in as much of the remaining path as possible
-		std::vector<map_location> remaining_path;
-		for(size_t j = i; j < path.size(); ++j) {
-			remaining_path.push_back(path[j]);
+	// Safety check.
+	path_index = std::min(path_index, path.size()-1);
+
+	for ( ; current_ < path_index; ++current_ )
+		// If the unit can be seen by the viewing side while making this step:
+		if ( !is_enemy_ || !temp_unit_ptr_->invisible(path[current_]) ||
+		     !temp_unit_ptr_->invisible(path[current_+1]) )
+		{
+			if ( !disp->tile_fully_on_screen(path[current_]) ||
+			     !disp->tile_fully_on_screen(path[current_+1]))
+			{
+				// prevent the unit from disappearing if we scroll here with i == 0
+				temp_unit_ptr_->set_location(path[current_]);
+				disp->invalidate(path[current_]);
+				// scroll in as much of the remaining path as possible
+				// TODO: Should not need to construct a new vector.
+				std::vector<map_location> remaining_path;
+				for(size_t j = current_; j < path.size(); ++j) {
+					remaining_path.push_back(path[j]);
+				}
+				temp_unit_ptr_->get_animation()->pause_animation();
+				disp->scroll_to_tiles(remaining_path, game_display::ONSCREEN,
+				                       true, false, 0.0, false);
+				temp_unit_ptr_->get_animation()->restart_animation();
+			}
+
+			if ( tiles_adjacent(path[current_], path[current_+1]) )
+				move_unit_between(path[current_], path[current_+1],
+				                  *temp_unit_ptr_, current_,
+				                  path.size() - (current_+2));
+			else if ( path[current_] != path[current_+1] )
+				teleport_unit_between(path[current_], path[current_+1],
+				                      *temp_unit_ptr_);
 		}
-		temp_unit.get_animation()->pause_animation();
-		disp->scroll_to_tiles(remaining_path,
-					game_display::ONSCREEN, true,false,0.0,false);
-		temp_unit.get_animation()->restart_animation();
-	}
 
-	if(tiles_adjacent(path[i], path[i+1])) {
-		move_unit_between(path[i],path[i+1],temp_unit,i,path.size()-2-i);
-	} else if (path[i] != path[i+1]) {
-		teleport_unit_between(path[i],path[i+1],temp_unit);
-	} else {
-		// no move needed
-	}
+	// Switch the display back to the real unit.
+	u.set_facing(temp_unit_ptr_->facing());
+	u.set_standing(false);	// Need to reset u's animation so the new facing takes effect.
+	u.set_hidden(was_hidden_);
+	temp_unit_ptr_->set_hidden(true);
 }
 
-void move_unit_finish(const std::vector<map_location>& path, unit& temp_unit)
+
+/**
+ * Finishes the display of movement for the supplied unit.
+ * If called before showing the unit reach the end of the path, it will be
+ * assumed that the movement ended early.
+ * If @a dir is not supplied, the final direction will be determined by (the
+ * last two traversed hexes of) the path.
+ */
+void unit_mover::finish(unit &u, map_location::DIRECTION dir)
 {
-	game_display* disp = game_display::get_singleton();
-	assert(!path.empty());
-	assert(disp);
-	if(!disp || disp->video().update_locked() || disp->video().faked())
+	// Nothing to do here if the display is not valid.
+	if ( !can_draw_ )
 		return;
-	// One hex path (strange), nothing to do
-	if(path.size() == 1)
-		return;
+ 
+	const map_location & end_loc = path[current_];
+	const map_location::DIRECTION final_dir = current_ == 0 ?
+		path[0].get_relative_dir(path[1]) :
+		path[current_-1].get_relative_dir(end_loc);
 
-	temp_unit.set_location(path[path.size() - 1]);
-	temp_unit.set_facing(path[path.size()-2].get_relative_dir(path[path.size()-1]));
+	if ( animate_ )
+	{
+		// Make sure the displayed unit is correct.
+		replace_temporary(u);
+		temp_unit_ptr_->set_location(end_loc);
+		temp_unit_ptr_->set_facing(final_dir);
 
-	unit_animator animator;
-	animator.add_animation(&temp_unit,"post_movement",path[path.size()-1],map_location::null_location);
-	animator.start_animations();
-	animator.wait_for_end();
+		// Animation
+		unit_animator animator;
+		animator.add_animation(temp_unit_ptr_, "post_movement", end_loc);
+		animator.start_animations();
+		animator.wait_for_end();
 
-	events::mouse_handler* mousehandler = events::mouse_handler::get_singleton();
-	if (mousehandler) {
-		mousehandler->invalidate_reachmap();
+		// Switch the display back to the real unit.
+		u.set_hidden(was_hidden_);
+		temp_unit_ptr_->set_hidden(true);
+
+		events::mouse_handler* mousehandler = events::mouse_handler::get_singleton();
+		if ( mousehandler ) {
+			mousehandler->invalidate_reachmap();
+		}
 	}
 
+	// Facing gets set even when not animating.
+	u.set_facing(dir == map_location::NDIRECTIONS ? final_dir : dir);
+	u.set_standing(true);	// Need to reset u's animation so the new facing takes effect.
+
+	// Redraw path ends (even if not animating).
 	disp->invalidate(path.front());
-	disp->invalidate(path.back());
+	disp->invalidate(end_loc);
 }
+
+
+/**
+ * Display a unit moving along a given path.
+ *
+ * @param path     The path to traverse.
+ * @param u        The unit to show being moved. Its facing will be updated,
+ *                 but not its position.
+ * @param animate  If set to false, only side-effects of move are applied
+ *                 (correct unit facing, path hexes redrawing).
+ * @param dir      Unit will be set facing this direction after move.
+ *                 If nothing passed, direction will be set based on path.
+ */
+/* Note: Hide the unit in its current location,
+ * but don't actually remove it until the move is done,
+ * so that while the unit is moving status etc.
+ * will still display the correct number of units.
+ */
+void move_unit(const std::vector<map_location>& path, unit& u,
+               bool animate, map_location::DIRECTION dir)
+{
+	unit_mover mover(path, animate);
+
+	mover.start(u);
+	mover.proceed_to(u, path.size());
+	mover.finish(u, dir);
+}
+
 
 void reset_helpers(const unit *attacker,const unit *defender);
 

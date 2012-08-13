@@ -23,6 +23,7 @@
 
 #include "unit_map.hpp"
 #include "gamestatus.hpp"
+#include "game_display.hpp"
 
 class attack_type;
 class team;
@@ -37,15 +38,40 @@ namespace unit_display
 {
 
 /**
+ * A class to encapsulate the steps of drawing a unit's move.
+ * If control over how far the unit moves is not needed, move_unit() may
+ * be a more convenient interface.
+ */
+class unit_mover : public boost::noncopyable {
+public:
+	explicit unit_mover(const std::vector<map_location>& path, bool animate=true);
+	~unit_mover();
+
+	void start(unit& u);
+	void proceed_to(unit& u, size_t path_index, bool update = false);
+	void finish(unit &u, map_location::DIRECTION dir = map_location::NDIRECTIONS);
+
+private: // functions
+	void replace_temporary(unit & u);
+
+private: // data
+	game_display * const disp;
+	const bool can_draw_;
+	const bool animate_;
+	const std::vector<map_location>& path;
+	size_t current_;
+	game_display::fake_unit * temp_unit_ptr_;
+	bool was_hidden_;
+	bool is_enemy_;
+};
+
+
+/**
  * Display a unit moving along a given path.
  */
 void move_unit(const std::vector<map_location>& path, unit& u,
 	bool animate=true,
 	map_location::DIRECTION dir=map_location::NDIRECTIONS);
-void move_unit_start(const std::vector<map_location>& path, unit& temp_unit);
-void move_unit_step(const std::vector<map_location>& path, size_t i,
-	unit& temp_unit);
-void move_unit_finish(const std::vector<map_location>& path, unit& temp_unit);
 
 /**
  * Play a pre-fight animation
