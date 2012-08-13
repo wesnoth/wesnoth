@@ -117,12 +117,12 @@ namespace unit_display
 /**
  * The path must remain unchanged for the life of this object.
  */
-unit_mover::unit_mover(const std::vector<map_location>& the_path, bool animate) :
-	disp(game_display::get_singleton()),
-	can_draw_(disp  &&  !disp->video().update_locked()  &&
-	          !disp->video().faked()  &&  the_path.size() > 1),
+unit_mover::unit_mover(const std::vector<map_location>& path, bool animate) :
+	disp_(game_display::get_singleton()),
+	can_draw_(disp_  &&  !disp_->video().update_locked()  &&
+	          !disp_->video().faked()  &&  path.size() > 1),
 	animate_(animate),
-	path(the_path),
+	path_(path),
 	current_(0),
 	temp_unit_ptr_(NULL),
 	// Somewhat arbitrary default values.
@@ -132,8 +132,8 @@ unit_mover::unit_mover(const std::vector<map_location>& the_path, bool animate) 
 	// Some error conditions that indicate something has gone very wrong.
 	// (This class can handle these conditions, but someone wanted them
 	// to be assertions.)
-	assert(!path.empty());
-	assert(disp);
+	assert(!path_.empty());
+	assert(disp_);
 }
 
 
@@ -157,7 +157,7 @@ unit_mover::~unit_mover()
  */
 void unit_mover::replace_temporary(unit & u)
 {
-	if ( disp == NULL )
+	if ( disp_ == NULL )
 		// No point in creating a temp unit with no way to display it.
 		return;
 
@@ -167,7 +167,7 @@ void unit_mover::replace_temporary(unit & u)
 	// Make our temporary unit mostly match u...
 	if ( temp_unit_ptr_ == NULL ) {
 		temp_unit_ptr_ = new game_display::fake_unit(u);
-		temp_unit_ptr_->place_on_game_display(disp);
+		temp_unit_ptr_->place_on_game_display(disp_);
 	}
 	else
 		*temp_unit_ptr_ = u;
@@ -176,7 +176,7 @@ void unit_mover::replace_temporary(unit & u)
 	u.set_hidden(true);
 
 	// Update cached data.
-	is_enemy_ =	(*resources::teams)[u.side()-1].is_enemy(disp->viewing_side());
+	is_enemy_ =	(*resources::teams)[u.side()-1].is_enemy(disp_->viewing_side());
 }
  
 
@@ -195,16 +195,16 @@ void unit_mover::start(unit& u)
 	replace_temporary(u);
 
 	// Initialize our temporary unit for the move.
-	temp_unit_ptr_->set_location(path[0]);
-	temp_unit_ptr_->set_facing(path[0].get_relative_dir(path[1]));
+	temp_unit_ptr_->set_location(path_[0]);
+	temp_unit_ptr_->set_facing(path_[0].get_relative_dir(path_[1]));
 	temp_unit_ptr_->set_standing(false);
-	disp->invalidate(path[0]);
+	disp_->invalidate(path_[0]);
 
 	// If the unit can be seen here by the viewing side:
-	if ( !is_enemy_ || !temp_unit_ptr_->invisible(path[0]) ) {
+	if ( !is_enemy_ || !temp_unit_ptr_->invisible(path_[0]) ) {
 		// Scroll to the path, but only if it fully fits on screen.
 		// If it does not fit we might be able to do a better scroll later.
-		disp->scroll_to_tiles(path, game_display::ONSCREEN, true, true, 0.0, false);
+		disp_->scroll_to_tiles(path_, game_display::ONSCREEN, true, true, 0.0, false);
 	}
 	// We need to clear big invalidation before the move and have a smooth animation
 	// (mainly black stripes and invalidation after canceling attack dialog).
@@ -212,18 +212,18 @@ void unit_mover::start(unit& u)
 	// We use update=false because we don't need delay here (no time wasted)
 	// and no screen refresh (will be done by last 3rd draw() and it optimizes
 	// the double blitting done by these invalidations).
-	disp->draw(false);
-	disp->draw(false);
+	disp_->draw(false);
+	disp_->draw(false);
 
 	// The last draw() was still slow, and its initial new_animation_frame() call
 	// is now old, so we do another draw() to get a fresh one
 	// TODO: replace that by a new_animation_frame() before starting anims
 	//       don't forget to change the previous draw(false) to true
-	disp->draw(true);
+	disp_->draw(true);
 
 	// extra immobile movement animation for take-off
 	unit_animator animator;
-	animator.add_animation(temp_unit_ptr_, "pre_movement", path[0], path[1]);
+	animator.add_animation(temp_unit_ptr_, "pre_movement", path_[0], path_[1]);
 	animator.start_animations();
 	animator.wait_for_end();
 
@@ -259,37 +259,37 @@ void unit_mover::proceed_to(unit& u, size_t path_index, bool update)
 	}
 
 	// Safety check.
-	path_index = std::min(path_index, path.size()-1);
+	path_index = std::min(path_index, path_.size()-1);
 
 	for ( ; current_ < path_index; ++current_ )
 		// If the unit can be seen by the viewing side while making this step:
-		if ( !is_enemy_ || !temp_unit_ptr_->invisible(path[current_]) ||
-		     !temp_unit_ptr_->invisible(path[current_+1]) )
+		if ( !is_enemy_ || !temp_unit_ptr_->invisible(path_[current_]) ||
+		     !temp_unit_ptr_->invisible(path_[current_+1]) )
 		{
-			if ( !disp->tile_fully_on_screen(path[current_]) ||
-			     !disp->tile_fully_on_screen(path[current_+1]))
+			if ( !disp_->tile_fully_on_screen(path_[current_]) ||
+			     !disp_->tile_fully_on_screen(path_[current_+1]))
 			{
 				// prevent the unit from disappearing if we scroll here with i == 0
-				temp_unit_ptr_->set_location(path[current_]);
-				disp->invalidate(path[current_]);
+				temp_unit_ptr_->set_location(path_[current_]);
+				disp_->invalidate(path_[current_]);
 				// scroll in as much of the remaining path as possible
 				// TODO: Should not need to construct a new vector.
 				std::vector<map_location> remaining_path;
-				for(size_t j = current_; j < path.size(); ++j) {
-					remaining_path.push_back(path[j]);
+				for(size_t j = current_; j < path_.size(); ++j) {
+					remaining_path.push_back(path_[j]);
 				}
 				temp_unit_ptr_->get_animation()->pause_animation();
-				disp->scroll_to_tiles(remaining_path, game_display::ONSCREEN,
+				disp_->scroll_to_tiles(remaining_path, game_display::ONSCREEN,
 				                       true, false, 0.0, false);
 				temp_unit_ptr_->get_animation()->restart_animation();
 			}
 
-			if ( tiles_adjacent(path[current_], path[current_+1]) )
-				move_unit_between(path[current_], path[current_+1],
+			if ( tiles_adjacent(path_[current_], path_[current_+1]) )
+				move_unit_between(path_[current_], path_[current_+1],
 				                  *temp_unit_ptr_, current_,
-				                  path.size() - (current_+2));
-			else if ( path[current_] != path[current_+1] )
-				teleport_unit_between(path[current_], path[current_+1],
+				                  path_.size() - (current_+2));
+			else if ( path_[current_] != path_[current_+1] )
+				teleport_unit_between(path_[current_], path_[current_+1],
 				                      *temp_unit_ptr_);
 		}
 
@@ -314,10 +314,10 @@ void unit_mover::finish(unit &u, map_location::DIRECTION dir)
 	if ( !can_draw_ )
 		return;
  
-	const map_location & end_loc = path[current_];
+	const map_location & end_loc = path_[current_];
 	const map_location::DIRECTION final_dir = current_ == 0 ?
-		path[0].get_relative_dir(path[1]) :
-		path[current_-1].get_relative_dir(end_loc);
+		path_[0].get_relative_dir(path_[1]) :
+		path_[current_-1].get_relative_dir(end_loc);
 
 	if ( animate_ )
 	{
@@ -347,8 +347,8 @@ void unit_mover::finish(unit &u, map_location::DIRECTION dir)
 	u.set_standing(true);	// Need to reset u's animation so the new facing takes effect.
 
 	// Redraw path ends (even if not animating).
-	disp->invalidate(path.front());
-	disp->invalidate(end_loc);
+	disp_->invalidate(path_.front());
+	disp_->invalidate(end_loc);
 }
 
 

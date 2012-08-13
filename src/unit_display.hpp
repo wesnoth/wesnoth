@@ -55,10 +55,10 @@ private: // functions
 	void replace_temporary(unit & u);
 
 private: // data
-	game_display * const disp;
+	game_display * const disp_;
 	const bool can_draw_;
 	const bool animate_;
-	const std::vector<map_location>& path;
+	const std::vector<map_location>& path_;
 	size_t current_;
 	game_display::fake_unit * temp_unit_ptr_;
 	bool was_hidden_;
