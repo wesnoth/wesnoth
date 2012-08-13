@@ -1977,9 +1977,10 @@ void display::scroll_to_tiles(map_location loc1, map_location loc2,
 	scroll_to_tiles(locs, scroll_type, check_fogged, false, add_spacing,force);
 }
 
-void display::scroll_to_tiles(const std::vector<map_location>& locs,
+void display::scroll_to_tiles(const std::vector<map_location>::const_iterator & begin,
+                              const std::vector<map_location>::const_iterator & end,
                               SCROLL_TYPE scroll_type, bool check_fogged,
-			      bool only_if_possible, double add_spacing, bool force)
+                              bool only_if_possible, double add_spacing, bool force)
 {
 	// basically we calculate the min/max coordinates we want to have on-screen
 	int minx = 0;
@@ -1988,7 +1989,7 @@ void display::scroll_to_tiles(const std::vector<map_location>& locs,
 	int maxy = 0;
 	bool valid = false;
 
-	for(std::vector<map_location>::const_iterator itor = locs.begin(); itor != locs.end() ; ++itor) {
+	for(std::vector<map_location>::const_iterator itor = begin; itor != end ; ++itor) {
 		if(get_map().on_board(*itor) == false) continue;
 		if(check_fogged && fogged(*itor)) continue;
 
@@ -2020,7 +2021,7 @@ void display::scroll_to_tiles(const std::vector<map_location>& locs,
 			maxy = maxy_new;
 		}
 	}
-	//if everything is fogged or the locs list is empty
+	//if everything is fogged or the location list is empty
 	if(!valid) return;
 
 	if (scroll_type == ONSCREEN || ONSCREEN_WARP) {

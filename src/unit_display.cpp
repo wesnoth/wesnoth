@@ -273,13 +273,9 @@ void unit_mover::proceed_to(unit& u, size_t path_index, bool update)
 				temp_unit_ptr_->set_location(path_[current_]);
 				disp_->invalidate(path_[current_]);
 				// scroll in as much of the remaining path as possible
-				// TODO: Should not need to construct a new vector.
-				std::vector<map_location> remaining_path;
-				for(size_t j = current_; j < path_.size(); ++j) {
-					remaining_path.push_back(path_[j]);
-				}
 				temp_unit_ptr_->get_animation()->pause_animation();
-				disp_->scroll_to_tiles(remaining_path, game_display::ONSCREEN,
+				disp_->scroll_to_tiles(path_.begin() + current_,
+				                       path_.end(), game_display::ONSCREEN,
 				                       true, false, 0.0, false);
 				temp_unit_ptr_->get_animation()->restart_animation();
 			}
