@@ -263,9 +263,16 @@ engine_lua::~engine_lua()
 
 bool engine_lua::is_ok() const
 {
-    return lua_ai_context_ ? true : false;
+	return lua_ai_context_ ? true : false;
 }
 
+void engine_lua::push_ai_table()
+{
+	if (game_config::debug) 
+	{
+		lua_ai_context_->load();
+	}
+}
 
 void engine_lua::do_parse_candidate_action_from_config( rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr > > b ){
 	if (!cfg) {

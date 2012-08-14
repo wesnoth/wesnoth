@@ -38,6 +38,7 @@
 #include "actions.hpp"
 #include "ai/manager.hpp"
 #include "ai/composite/component.hpp"
+#include "ai/composite/engine_lua.hpp"
 #include "ai/testing/stage_rca.hpp"
 #include "attack_prediction.hpp"
 #include "filesystem.hpp"
@@ -3543,9 +3544,36 @@ static int intf_debug_ai(lua_State *L)
 		return 0;
 	}
 	int side = lua_tointeger(L, 1);
+	lua_pop(L, 1);
+	
 	ai::component* c = ai::manager::get_active_ai_holder_for_side_dbg(side).get_component(NULL, "");
 	
-	push_component(L, c);
+	// Bad, but works
+	std::vector<ai::component*> engines = c->get_children("engine");
+	ai::engine_lua* lua_engine = NULL;
+	for (std::vector<ai::component*>::const_iterator i = engines.begin(); i != engines.end(); i++)
+	{
+		if ((*i)->get_name() == "lua") 
+		{
+			lua_engine = dynamic_cast<ai::engine_lua *>(*i);
+		}
+	}
+	
+	// Better way, but doesn't work
+	//ai::component* e = ai::manager::get_active_ai_holder_for_side_dbg(side).get_component(c, "engine[lua]");
+	//ai::engine_lua* lua_engine = dynamic_cast<ai::engine_lua *>(e);
+
+	if (lua_engine == NULL) 
+	{
+		lua_createtable(L, 0, 0);
+		return 1;
+	} 
+	
+	lua_engine->push_ai_table(); // stack: [-1: ai_context]
+	
+	lua_pushstring(L, "components");	
+	push_component(L, c); // stack: [-1: component tree; -2: ai context]	
+	lua_rawset(L, -3);
 	
 	return 1;
 }
