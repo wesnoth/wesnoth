@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ang@latin\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-01-22 15:00+0100\n"
-"PO-Revision-Date: 2012-05-17 12:08-0500\n"
+"PO-Revision-Date: 2012-06-05 17:41-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: Old English <http://wiki.wesnoth.org/OldEnglishTranslation>\n"
 "Language: ang@latin\n"
@@ -814,12 +814,12 @@ msgstr "Dƿeorgisc Þorp"
 #. [terrain_type]: id=hut_village
 #: data/core/terrain.cfg:1412
 msgid "Hut"
-msgstr ""
+msgstr "Hulc"
 
 #. [terrain_type]: id=hut_snow_village
 #: data/core/terrain.cfg:1425
 msgid "Snowy Hut"
-msgstr ""
+msgstr "Snaƿig Hulc"
 
 #. [terrain_type]: id=logcabin_village
 #: data/core/terrain.cfg:1438
@@ -1112,7 +1112,7 @@ msgstr ""
 #. [terrain_type]: id=shroud
 #: data/core/terrain.cfg:2066 data/gui/default/window/mp_create_game.cfg:479
 msgid "Shroud"
-msgstr ""
+msgstr "Deorcness"
 
 #. [terrain_type]: id=fog
 #: data/core/terrain.cfg:2075
@@ -1121,7 +1121,6 @@ msgstr "Mist"
 
 #. [terrain_type]: id=flat
 #: data/core/terrain.cfg:2116
-#, fuzzy
 msgid "Flat"
 msgstr "Fild"
 
@@ -1153,7 +1152,7 @@ msgstr ""
 #: data/gui/default/window/message.cfg:133 src/construct_dialog.cpp:134
 #: src/mapgen_dialog.cpp:110 src/preferences_display.cpp:272
 msgid "Close"
-msgstr ""
+msgstr "Tynan"
 
 #. [label]
 #. [column]
@@ -1266,7 +1265,7 @@ msgstr "Nana"
 #. [label]
 #: data/gui/default/window/addon_uninstall_list.cfg:51
 msgid "Uninstall Add-ons"
-msgstr ""
+msgstr "Æteacan Unonstellan"
 
 #. [scroll_label]
 #: data/gui/default/window/addon_uninstall_list.cfg:70
@@ -1333,7 +1332,7 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/chat_log.cfg:56
 msgid "Page:"
-msgstr ""
+msgstr "Trament:"
 
 #. [slider]: id=page_number
 #: data/gui/default/window/chat_log.cfg:69
@@ -1424,12 +1423,11 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/editor_generate_map.cfg:35
 msgid "Generate Random Map"
-msgstr ""
+msgstr "Gelimplicu Landcartan Cinnan"
 
 #. [button]: id=next_generator
 #: data/gui/default/window/editor_generate_map.cfg:64
 #: data/gui/default/window/editor_generate_map.cfg:65
-#, fuzzy
 msgid "Next Generator"
 msgstr "Niehst Cinnend"
 
@@ -1520,7 +1518,6 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:35 src/hotkeys.cpp:124
-#, fuzzy
 msgid "Editor Settings"
 msgstr "Adihtendes Costas"
 
@@ -2004,8 +2001,9 @@ msgstr ""
 #. [button]: id=kick
 #: data/gui/default/window/lobby_player_info.cfg:168
 #: data/gui/default/window/mp_cmd_wrapper.cfg:389
+#, fuzzy
 msgid "Kick"
-msgstr ""
+msgstr "Utspornettan"
 
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:175
@@ -2014,8 +2012,9 @@ msgstr ""
 
 #. [button]: id=kick_ban
 #: data/gui/default/window/lobby_player_info.cfg:188
+#, fuzzy
 msgid "Kick/ban"
-msgstr ""
+msgstr "Utspornettan/forsendan"
 
 #. [label]: id=side_title
 #: data/gui/default/window/mp_change_control.cfg:21
@@ -2084,8 +2083,9 @@ msgstr ""
 
 #. [button]: id=ban
 #: data/gui/default/window/mp_cmd_wrapper.cfg:404
+#, fuzzy
 msgid "Ban"
-msgstr ""
+msgstr "Forsendan"
 
 #. [label]
 #: data/gui/default/window/mp_connect.cfg:60
@@ -2333,7 +2333,7 @@ msgstr ""
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:227
 msgid "Add-ons"
-msgstr ""
+msgstr "Æteacan"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:227
@@ -2342,14 +2342,14 @@ msgstr ""
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:228
-#, fuzzy
 msgid "Map Editor"
 msgstr "Landcartan Adihtend"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:228
+#, fuzzy
 msgid "Start the map editor"
-msgstr ""
+msgstr "Þone landcartan adihtend styrtan"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:229
@@ -2558,7 +2558,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:202
 msgid "Theme"
-msgstr ""
+msgstr "Andtimber"
 
 #: src/game_preferences_display.cpp:203
 msgid "Hotkeys"
@@ -2895,7 +2895,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:1292
 msgid "Choose Theme"
-msgstr ""
+msgstr "Andtimber Ceosan"
 
 #: src/game_preferences_display.cpp:1307
 msgid "New theme will take effect on next new or loaded game."
@@ -3161,9 +3161,8 @@ msgid "Animate Map"
 msgstr ""
 
 #: src/hotkeys.cpp:56
-#, fuzzy
 msgid "Next Unit"
-msgstr "Niehstu Ƿiht"
+msgstr "Niehst Ƿiht"
 
 #: src/hotkeys.cpp:57
 msgid "Previous Unit"
@@ -3338,7 +3337,6 @@ msgid "Next Side"
 msgstr ""
 
 #: src/hotkeys.cpp:106
-#, fuzzy
 msgid "Full Map"
 msgstr "Fullu Landcarte"
 
@@ -3387,7 +3385,6 @@ msgid "Quit to Desktop"
 msgstr ""
 
 #: src/hotkeys.cpp:122
-#, fuzzy
 msgid "Close Map"
 msgstr "Landcartan Tynan"
 
@@ -3424,21 +3421,20 @@ msgid "Swap Foreground/Background Terrains"
 msgstr ""
 
 #: src/hotkeys.cpp:135
-#, fuzzy
 msgid "Next Tool"
 msgstr "Niehst Tol"
 
 #: src/hotkeys.cpp:136
 msgid "Paint Tool"
-msgstr ""
+msgstr "Metingtol"
 
 #: src/hotkeys.cpp:137
 msgid "Fill Tool"
-msgstr ""
+msgstr "Fyllingtol"
 
 #: src/hotkeys.cpp:138
 msgid "Selection Tool"
-msgstr ""
+msgstr "Ceosungtol"
 
 #: src/hotkeys.cpp:140
 msgid "Set Starting Positions Tool"
@@ -3453,7 +3449,6 @@ msgid "Default Brush"
 msgstr ""
 
 #: src/hotkeys.cpp:143
-#, fuzzy
 msgid "Cut"
 msgstr "Utsniðan"
 
@@ -3474,8 +3469,9 @@ msgid "Select All"
 msgstr "Eall Ceosan"
 
 #: src/hotkeys.cpp:150
+#, fuzzy
 msgid "Select Inverse"
-msgstr ""
+msgstr "Ceosunge Onhƿirfan"
 
 #: src/hotkeys.cpp:152
 msgid "Select None"
@@ -3498,7 +3494,6 @@ msgid "Flip Clipboard Vertically"
 msgstr ""
 
 #: src/hotkeys.cpp:162
-#, fuzzy
 msgid "Rotate Selection"
 msgstr "Ceosunge Turnian"
 
@@ -3507,20 +3502,19 @@ msgid "Flip Selection"
 msgstr ""
 
 #: src/hotkeys.cpp:166
-#, fuzzy
 msgid "Fill Selection"
 msgstr "Ceosunge Fyllan"
 
 #: src/hotkeys.cpp:168
+#, fuzzy
 msgid "Generate Tiles In Selection"
-msgstr ""
+msgstr "Tigelan On Ceosunge Cinnan"
 
 #: src/hotkeys.cpp:170
 msgid "Randomize Tiles In Selection"
 msgstr ""
 
 #: src/hotkeys.cpp:174
-#, fuzzy
 msgid "Rotate Map"
 msgstr "Landcartan Turnian"
 
@@ -3633,7 +3627,6 @@ msgid "Manage Add-ons"
 msgstr ""
 
 #: src/hotkeys.cpp:262
-#, fuzzy
 msgid "Start Editor"
 msgstr "Adihtend Styrtan"
 
@@ -3672,7 +3665,6 @@ msgid "language code for localized resources^en_US"
 msgstr "ang@latin"
 
 #: src/mapgen_dialog.cpp:113
-#, fuzzy
 msgid "Map Generator"
 msgstr "Landcartcinnend"
 

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ang@latin\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-01-22 15:00+0100\n"
-"PO-Revision-Date: 2012-05-17 12:13-0500\n"
+"PO-Revision-Date: 2012-08-15 12:46-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: Old English <http://wiki.wesnoth.org/OldEnglishTranslation>\n"
 "Language: ang@latin\n"
@@ -326,13 +326,16 @@ msgstr "Arabisc Geþeodnes"
 
 #. [about]
 #: data/core/about.cfg:1261
+#, fuzzy
 msgid "Basque Translation"
-msgstr ""
+msgstr "Ƿascisc Geþeodnes"
 
+# Espreon asketh: "Or should I be using 'Pulgarisc'? 'Bulgarisc' is valid, but..."
 #. [about]
 #: data/core/about.cfg:1274
+#, fuzzy
 msgid "Bulgarian Translation"
-msgstr ""
+msgstr "Bulgarisc Geþeodnes"
 
 #. [about]
 #: data/core/about.cfg:1293
@@ -383,14 +386,14 @@ msgstr "Niƿe Englisc (on Scaƿes stæfrofe) Geþeodnes"
 
 #. [about]
 #: data/core/about.cfg:1620
-#, fuzzy
 msgid "Esperanto Translation"
 msgstr "Esperantisc Geþeodnes"
 
 #. [about]
 #: data/core/about.cfg:1639
+#, fuzzy
 msgid "Estonian Translation"
-msgstr ""
+msgstr "Estnisc Geþeodnes"
 
 #. [about]
 #: data/core/about.cfg:1649
@@ -420,7 +423,7 @@ msgstr ""
 #. [about]
 #: data/core/about.cfg:1907
 msgid "German Translation"
-msgstr ""
+msgstr "Þeodisc Geþeodnes"
 
 #. [about]
 #: data/core/about.cfg:1974
@@ -760,20 +763,23 @@ msgid "Set special orders..."
 msgstr ""
 
 #: data/core/macros/ai_controller.cfg:976
+#, fuzzy
 msgid "Move leader to..."
-msgstr ""
+msgstr "Ƿegan lædere to..."
 
 #: data/core/macros/ai_controller.cfg:977
 msgid "Right-click to select a location to move leader to"
 msgstr ""
 
 #: data/core/macros/ai_controller.cfg:978
+#, fuzzy
 msgid "Move leader here"
-msgstr ""
+msgstr "Lædere her ƿegan"
 
 #: data/core/macros/ai_controller.cfg:979
+#, fuzzy
 msgid "moving leader to $x1|,$y1|."
-msgstr ""
+msgstr "ƿegende lædere to $x1|,$y1|."
 
 #: data/core/macros/ai_controller.cfg:980
 msgid "Clear special orders"
@@ -925,7 +931,7 @@ msgstr ""
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:460
 msgid "Staff of Swiftness"
-msgstr ""
+msgstr "Sƿiftnesse Stæf"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:463
@@ -2432,12 +2438,10 @@ msgid "slowed"
 msgstr "geforslæƿed"
 
 #: data/lua/wml-tags.lua:825 src/actions.cpp:1502
-#, fuzzy
 msgid "female^petrified"
 msgstr "forstanodu"
 
 #: data/lua/wml-tags.lua:825 src/actions.cpp:1502
-#, fuzzy
 msgid "petrified"
 msgstr "forstanod"
 
@@ -2525,7 +2529,6 @@ msgstr ""
 #. [menu]: id=button-endturn
 #: data/themes/default.cfg:156 data/themes/dfool.cfg:167
 #: data/themes/widescreen.cfg:188
-#, fuzzy
 msgid "End Scenario"
 msgstr "Capitol Endian"
 
@@ -2585,7 +2588,7 @@ msgstr ""
 #: data/themes/experimental.cfg:376 data/themes/widescreen.cfg:500
 #: data/themes/widescreen.cfg:626
 msgid "statuspanel^level"
-msgstr ""
+msgstr "mæþ"
 
 #. [unit_moves]: id=unit-moves
 #. [selected_unit_moves]: id=selected-unit-moves
@@ -2674,7 +2677,6 @@ msgstr ""
 
 #: src/about.cpp:208 src/menu_events.cpp:325 src/menu_events.cpp:352
 #: src/statistics_dialog.cpp:114
-#, fuzzy
 msgid "Close"
 msgstr "Tynan"
 
@@ -2813,7 +2815,7 @@ msgstr ""
 
 #: src/addon/manager.cpp:529
 msgid "Sending add-on"
-msgstr ""
+msgstr "Sendende æteacan"
 
 #: src/addon/manager.cpp:534 src/addon/manager.cpp:559
 msgid "The server responded with an error: \""
@@ -2847,7 +2849,7 @@ msgstr ""
 
 #: src/addon/manager.cpp:648
 msgid "Add-on Installed"
-msgstr ""
+msgstr "Æteacan Geonsteald"
 
 #: src/addon/manager.cpp:748 src/addon/manager.cpp:934
 #: src/addon/manager.cpp:1163 src/dialogs.cpp:609 src/menu_events.cpp:213
@@ -3020,7 +3022,7 @@ msgstr ""
 
 #: src/addon/manager.cpp:1284
 msgid "Get add-ons"
-msgstr ""
+msgstr "Æteacan gietan"
 
 #: src/addon/manager.cpp:1285
 msgid "Choose the add-on to download."
@@ -3262,8 +3264,9 @@ msgid "Profile"
 msgstr ""
 
 #: src/dialogs.cpp:827
+#, fuzzy
 msgid "level"
-msgstr ""
+msgstr "mæþ"
 
 #: src/dialogs.cpp:840
 msgid "HP: "
@@ -3423,7 +3426,7 @@ msgstr "Mist"
 #: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_create.cpp:90
 #: src/multiplayer_lobby.cpp:564 src/multiplayer_lobby.cpp:570
 msgid "Shroud"
-msgstr ""
+msgstr "Deorcness"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:314 src/multiplayer_lobby.cpp:574
 #, fuzzy
@@ -3477,7 +3480,7 @@ msgstr ""
 #: src/leader_list.cpp:138 src/menu_events.cpp:1565
 #: src/multiplayer_connect.cpp:224 src/multiplayer_connect.cpp:268
 msgid "gender^Random"
-msgstr ""
+msgstr "Gelimplicu"
 
 #: src/leader_list.cpp:148 src/multiplayer_connect.cpp:220
 #: src/multiplayer_connect.cpp:264
@@ -3490,8 +3493,9 @@ msgid "Male ♂"
 msgstr "Ƿerlic ♂"
 
 #: src/leader_list.cpp:163 src/leader_list.cpp:188
+#, fuzzy
 msgid "Random"
-msgstr ""
+msgstr "Gelimplic"
 
 #: src/leader_list.cpp:236 src/leader_list.cpp:242
 msgid "?"
@@ -3605,7 +3609,7 @@ msgstr ""
 
 #: src/menu_events.cpp:217 src/menu_events.cpp:888
 msgid "Level^Lvl."
-msgstr ""
+msgstr "Mæþ"
 
 #: src/menu_events.cpp:219
 msgid "unit list^Traits"
@@ -3688,7 +3692,7 @@ msgstr "Mist"
 
 #: src/menu_events.cpp:514
 msgid "scenario settings^Shroud"
-msgstr ""
+msgstr "Deorcness"
 
 #: src/menu_events.cpp:563 src/menu_events.cpp:564
 msgid "no"
@@ -3803,9 +3807,8 @@ msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 
 #: src/menu_events.cpp:1458
-#, fuzzy
 msgid "Rename Unit"
-msgstr "Ƿihte Eftnaman"
+msgstr "Ƿihte Eftnemnan"
 
 #: src/menu_events.cpp:1538
 msgid "Race"
@@ -4716,7 +4719,7 @@ msgstr ""
 
 #: src/multiplayer_create.cpp:95
 msgid "Regenerate"
-msgstr ""
+msgstr "Eftcinnan"
 
 #: src/multiplayer_create.cpp:96
 msgid "Settings..."
@@ -4904,7 +4907,7 @@ msgstr ""
 
 #: src/multiplayer_lobby.cpp:747
 msgid "Invert"
-msgstr ""
+msgstr "Onhƿirfan"
 
 #: src/multiplayer_lobby.cpp:748
 msgid "Vacant slots"
@@ -4960,7 +4963,6 @@ msgid "Invalid Color"
 msgstr ""
 
 #: src/multiplayer_ui.cpp:425
-#, fuzzy
 msgid "Selected user: "
 msgstr "Gecoren brucend: "
 
@@ -5239,7 +5241,7 @@ msgstr "Cynn: "
 
 #: src/reports.cpp:237
 msgid "Level: "
-msgstr ""
+msgstr "Mæþ: "
 
 #: src/reports.cpp:240
 msgid "No advancement"
@@ -5315,7 +5317,6 @@ msgid "Experience Modifier: "
 msgstr ""
 
 #: src/reports.cpp:493
-#, fuzzy
 msgid "Terrain: "
 msgstr "Land: "
 
@@ -5397,19 +5398,19 @@ msgstr ""
 
 #: src/reports.cpp:964
 msgid "Lawful units: "
-msgstr ""
+msgstr "Dæglica ƿihta: "
 
 #: src/reports.cpp:965
 msgid "Neutral units: "
-msgstr ""
+msgstr "Efena ƿihta: "
 
 #: src/reports.cpp:966
 msgid "Chaotic units: "
-msgstr ""
+msgstr "Nihtlica ƿihta: "
 
 #: src/reports.cpp:967
 msgid "Liminal units: "
-msgstr ""
+msgstr "Glomlica ƿihta: "
 
 #: src/reports.cpp:1180
 msgid "Observers:"
@@ -5734,35 +5735,35 @@ msgstr ""
 
 #: src/unit_types.cpp:976
 msgid "chaotic"
-msgstr ""
+msgstr "nihtlic"
 
 #: src/unit_types.cpp:976
 msgid "lawful"
-msgstr ""
+msgstr "dæglic"
 
 #: src/unit_types.cpp:976
 msgid "liminal"
-msgstr ""
+msgstr "glomlic"
 
 #: src/unit_types.cpp:976
 msgid "neutral"
-msgstr ""
+msgstr "efen"
 
 #: src/unit_types.cpp:977
 msgid "female^chaotic"
-msgstr ""
+msgstr "nihtlicu"
 
 #: src/unit_types.cpp:977
 msgid "female^lawful"
-msgstr ""
+msgstr "dæglicu"
 
 #: src/unit_types.cpp:977
 msgid "female^liminal"
-msgstr ""
+msgstr "glomlicu"
 
 #: src/unit_types.cpp:977
 msgid "female^neutral"
-msgstr ""
+msgstr "efenu"
 
 #: src/whiteboard/manager.cpp:1083
 msgid "SHOW ALL allies’ plans"

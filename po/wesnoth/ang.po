@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ang\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-01-22 15:00+0100\n"
-"PO-Revision-Date: 2012-05-18 06:08-0500\n"
+"PO-Revision-Date: 2012-08-15 12:37-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: Old English <http://wiki.wesnoth.org/OldEnglishTranslation>\n"
 "Language: ang\n"
@@ -326,13 +326,17 @@ msgstr "ᚪᚱᚪᛒᛁᛋᚳ ᚷᛖᚦᛇᛞᚾᛖᛋ"
 
 #. [about]
 #: data/core/about.cfg:1261
+#, fuzzy
 msgid "Basque Translation"
-msgstr ""
+msgstr "ᚹᚪᛋᚳᛁᛋᚳ ᚷᛖᚦᛇᛞᚾᛖᛋ"
 
+# Espreon asketh: "Or should I be using 'Pulgarisc'? 'Bulgarisc' is valid,
+# but..."
 #. [about]
 #: data/core/about.cfg:1274
+#, fuzzy
 msgid "Bulgarian Translation"
-msgstr ""
+msgstr "ᛒᚢᛚᚷᚪᚱᛁᛋᚳ ᚷᛖᚦᛇᛞᚾᛖᛋ"
 
 #. [about]
 #: data/core/about.cfg:1293
@@ -388,8 +392,9 @@ msgstr "ᛖᛋᛈᛖᚱᚪᚾᛏᛁᛋᚳ ᚷᛖᚦᛇᛞᚾᛖᛋ"
 
 #. [about]
 #: data/core/about.cfg:1639
+#, fuzzy
 msgid "Estonian Translation"
-msgstr ""
+msgstr "ᛖᛋᛏᚾᛁᛋᚳ ᚷᛖᚦᛇᛞᚾᛖᛋ"
 
 #. [about]
 #: data/core/about.cfg:1649
@@ -419,7 +424,7 @@ msgstr ""
 #. [about]
 #: data/core/about.cfg:1907
 msgid "German Translation"
-msgstr ""
+msgstr "ᚦᛇᛞᛁᛋᚳ ᚷᛖᚦᛇᛞᚾᛖᛋ"
 
 #. [about]
 #: data/core/about.cfg:1974
@@ -551,7 +556,6 @@ msgstr "ᛋᛈᛇᚾᛁᛋᚳ ᚷᛖᚦᛇᛞᚾᛖᛋ"
 msgid "Swedish Translation"
 msgstr "ᛋᚹᛇᚾᛁᛋᚳ ᚷᛖᚦᛇᛞᚾᛖᛋ"
 
-# Espreon sayeth: I dunno, I felt like using cealc...
 #. [about]
 #: data/core/about.cfg:2717
 msgid "Turkish Translation"
@@ -760,20 +764,23 @@ msgid "Set special orders..."
 msgstr ""
 
 #: data/core/macros/ai_controller.cfg:976
+#, fuzzy
 msgid "Move leader to..."
-msgstr ""
+msgstr "ᚹᛖᚷᚪᚾ ᛚᚫᛞᛖᚱᛖ ᛏᚩ..."
 
 #: data/core/macros/ai_controller.cfg:977
 msgid "Right-click to select a location to move leader to"
 msgstr ""
 
 #: data/core/macros/ai_controller.cfg:978
+#, fuzzy
 msgid "Move leader here"
-msgstr ""
+msgstr "ᛚᚫᛞᛖᚱᛖ ᚻᛖᚱ ᚹᛖᚷᚪᚾ"
 
 #: data/core/macros/ai_controller.cfg:979
+#, fuzzy
 msgid "moving leader to $x1|,$y1|."
-msgstr ""
+msgstr "ᚹᛖᚷᛖᚾᛞᛖ ᛚᚫᛞᛖᚱᛖ ᛏᚩ $x1|,$y1|."
 
 #: data/core/macros/ai_controller.cfg:980
 msgid "Clear special orders"
@@ -925,7 +932,7 @@ msgstr ""
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:460
 msgid "Staff of Swiftness"
-msgstr ""
+msgstr "ᛋᚹᛁᚠᛏᚾᛖᛋᛋᛖ ᛋᛏᚫᚠ"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:463
@@ -2384,7 +2391,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:221 data/hardwired/tips.cfg:233
-#, fuzzy
 msgid "<i>― Lord Hamel of Knalga</i>"
 msgstr "<i>― ᚳᚾᚪᛚᚷᚪᚾ ᚻᚪᛗᛖᛚ ᚻᛚᚪᚠᚩᚱᛞ</i>"
 
@@ -2436,12 +2442,10 @@ msgid "slowed"
 msgstr "ᚷᛖᚠᚩᚱᛋᛚᚫᚹᛖᛞ"
 
 #: data/lua/wml-tags.lua:825 src/actions.cpp:1502
-#, fuzzy
 msgid "female^petrified"
 msgstr "ᚠᚩᚱᛋᛏᚪᚾᚩᛞᚢ"
 
 #: data/lua/wml-tags.lua:825 src/actions.cpp:1502
-#, fuzzy
 msgid "petrified"
 msgstr "ᚠᚩᚱᛋᛏᚪᚾᚩᛞ"
 
@@ -2530,7 +2534,6 @@ msgstr ""
 #. [menu]: id=button-endturn
 #: data/themes/default.cfg:156 data/themes/dfool.cfg:167
 #: data/themes/widescreen.cfg:188
-#, fuzzy
 msgid "End Scenario"
 msgstr "ᚳᚪᛈᛁᛏᚩᛚ ᛖᚾᛞᛁᚪᚾ"
 
@@ -2590,7 +2593,7 @@ msgstr ""
 #: data/themes/experimental.cfg:376 data/themes/widescreen.cfg:500
 #: data/themes/widescreen.cfg:626
 msgid "statuspanel^level"
-msgstr ""
+msgstr "ᛗᚫᚦ"
 
 #. [unit_moves]: id=unit-moves
 #. [selected_unit_moves]: id=selected-unit-moves
@@ -2679,7 +2682,6 @@ msgstr ""
 
 #: src/about.cpp:208 src/menu_events.cpp:325 src/menu_events.cpp:352
 #: src/statistics_dialog.cpp:114
-#, fuzzy
 msgid "Close"
 msgstr "ᛏᚣᚾᚪᚾ"
 
@@ -2818,7 +2820,7 @@ msgstr ""
 
 #: src/addon/manager.cpp:529
 msgid "Sending add-on"
-msgstr ""
+msgstr "ᛋᛖᚾᛞᛖᚾᛞᛖ ᚫᛏᛠᚳᚪᚾ"
 
 #: src/addon/manager.cpp:534 src/addon/manager.cpp:559
 msgid "The server responded with an error: \""
@@ -2852,7 +2854,7 @@ msgstr ""
 
 #: src/addon/manager.cpp:648
 msgid "Add-on Installed"
-msgstr ""
+msgstr "ᚫᛏᛠᚳᚪᚾ ᚷᛖᚩᚾᛋᛏᛠᛚᛞ"
 
 #: src/addon/manager.cpp:748 src/addon/manager.cpp:934
 #: src/addon/manager.cpp:1163 src/dialogs.cpp:609 src/menu_events.cpp:213
@@ -3025,7 +3027,7 @@ msgstr ""
 
 #: src/addon/manager.cpp:1284
 msgid "Get add-ons"
-msgstr ""
+msgstr "ᚫᛏᛠᚳᚪᚾ ᚷᛁᛖᛏᚪᚾ"
 
 #: src/addon/manager.cpp:1285
 msgid "Choose the add-on to download."
@@ -3267,8 +3269,9 @@ msgid "Profile"
 msgstr ""
 
 #: src/dialogs.cpp:827
+#, fuzzy
 msgid "level"
-msgstr ""
+msgstr "ᛗᚫᚦ"
 
 #: src/dialogs.cpp:840
 msgid "HP: "
@@ -3428,7 +3431,7 @@ msgstr "ᛗᛁᛋᛏ"
 #: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_create.cpp:90
 #: src/multiplayer_lobby.cpp:564 src/multiplayer_lobby.cpp:570
 msgid "Shroud"
-msgstr ""
+msgstr "ᛞᛇᚱᚳᚾᛖᛋᛋ"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:314 src/multiplayer_lobby.cpp:574
 #, fuzzy
@@ -3482,7 +3485,7 @@ msgstr ""
 #: src/leader_list.cpp:138 src/menu_events.cpp:1565
 #: src/multiplayer_connect.cpp:224 src/multiplayer_connect.cpp:268
 msgid "gender^Random"
-msgstr ""
+msgstr "ᚷᛖᛚᛁᛗᛈᛚᛁᚳᚢ"
 
 #: src/leader_list.cpp:148 src/multiplayer_connect.cpp:220
 #: src/multiplayer_connect.cpp:264
@@ -3495,8 +3498,9 @@ msgid "Male ♂"
 msgstr "ᚹᛖᚱᛚᛁᚳ ♂"
 
 #: src/leader_list.cpp:163 src/leader_list.cpp:188
+#, fuzzy
 msgid "Random"
-msgstr ""
+msgstr "ᚷᛖᛚᛁᛗᛈᛚᛁᚳ"
 
 #: src/leader_list.cpp:236 src/leader_list.cpp:242
 msgid "?"
@@ -3610,7 +3614,7 @@ msgstr ""
 
 #: src/menu_events.cpp:217 src/menu_events.cpp:888
 msgid "Level^Lvl."
-msgstr ""
+msgstr "ᛗᚫᚦ"
 
 #: src/menu_events.cpp:219
 msgid "unit list^Traits"
@@ -3693,7 +3697,7 @@ msgstr "ᛗᛁᛋᛏ"
 
 #: src/menu_events.cpp:514
 msgid "scenario settings^Shroud"
-msgstr ""
+msgstr "ᛞᛇᚱᚳᚾᛖᛋᛋ"
 
 #: src/menu_events.cpp:563 src/menu_events.cpp:564
 msgid "no"
@@ -3808,9 +3812,8 @@ msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 
 #: src/menu_events.cpp:1458
-#, fuzzy
 msgid "Rename Unit"
-msgstr "ᚹᛁᚻᛏᛖ ᛖᚠᛏᚾᚪᛗᚪᚾ"
+msgstr "ᚹᛁᚻᛏᛖ ᛖᚠᛏᚾᛖᛗᚾᚪᚾ"
 
 #: src/menu_events.cpp:1538
 msgid "Race"
@@ -4721,7 +4724,7 @@ msgstr ""
 
 #: src/multiplayer_create.cpp:95
 msgid "Regenerate"
-msgstr ""
+msgstr "ᛖᚠᛏᚳᛁᚾᚾᚪᚾ"
 
 #: src/multiplayer_create.cpp:96
 msgid "Settings..."
@@ -4909,7 +4912,7 @@ msgstr ""
 
 #: src/multiplayer_lobby.cpp:747
 msgid "Invert"
-msgstr ""
+msgstr "ᚩᚾᚻᚹᛁᚱᚠᚪᚾ"
 
 #: src/multiplayer_lobby.cpp:748
 msgid "Vacant slots"
@@ -4965,7 +4968,6 @@ msgid "Invalid Color"
 msgstr ""
 
 #: src/multiplayer_ui.cpp:425
-#, fuzzy
 msgid "Selected user: "
 msgstr "ᚷᛖᚳᚩᚱᛖᚾ ᛒᚱᚢᚳᛖᚾᛞ: "
 
@@ -5244,7 +5246,7 @@ msgstr "ᚳᚣᚾᚾ: "
 
 #: src/reports.cpp:237
 msgid "Level: "
-msgstr ""
+msgstr "ᛗᚫᚦ: "
 
 #: src/reports.cpp:240
 msgid "No advancement"
@@ -5320,7 +5322,6 @@ msgid "Experience Modifier: "
 msgstr ""
 
 #: src/reports.cpp:493
-#, fuzzy
 msgid "Terrain: "
 msgstr "ᛚᚪᚾᛞ: "
 
@@ -5402,19 +5403,19 @@ msgstr ""
 
 #: src/reports.cpp:964
 msgid "Lawful units: "
-msgstr ""
+msgstr "ᛞᚫᚷᛚᛁᚳᚪ ᚹᛁᚻᛏᚪ: "
 
 #: src/reports.cpp:965
 msgid "Neutral units: "
-msgstr ""
+msgstr "ᛖᚠᛖᚾᚪ ᚹᛁᚻᛏᚪ: "
 
 #: src/reports.cpp:966
 msgid "Chaotic units: "
-msgstr ""
+msgstr "ᚾᛁᚻᛏᛚᛁᚳᚪ ᚹᛁᚻᛏᚪ: "
 
 #: src/reports.cpp:967
 msgid "Liminal units: "
-msgstr ""
+msgstr "ᚷᛚᚩᛗᛚᛁᚳᚪ ᚹᛁᚻᛏᚪ: "
 
 #: src/reports.cpp:1180
 msgid "Observers:"
@@ -5739,35 +5740,35 @@ msgstr ""
 
 #: src/unit_types.cpp:976
 msgid "chaotic"
-msgstr ""
+msgstr "ᚾᛁᚻᛏᛚᛁᚳ"
 
 #: src/unit_types.cpp:976
 msgid "lawful"
-msgstr ""
+msgstr "ᛞᚫᚷᛚᛁᚳ"
 
 #: src/unit_types.cpp:976
 msgid "liminal"
-msgstr ""
+msgstr "ᚷᛚᚩᛗᛚᛁᚳ"
 
 #: src/unit_types.cpp:976
 msgid "neutral"
-msgstr ""
+msgstr "ᛖᚠᛖᚾ"
 
 #: src/unit_types.cpp:977
 msgid "female^chaotic"
-msgstr ""
+msgstr "ᚾᛁᚻᛏᛚᛁᚳᚢ"
 
 #: src/unit_types.cpp:977
 msgid "female^lawful"
-msgstr ""
+msgstr "ᛞᚫᚷᛚᛁᚳᚢ"
 
 #: src/unit_types.cpp:977
 msgid "female^liminal"
-msgstr ""
+msgstr "ᚷᛚᚩᛗᛚᛁᚳᚢ"
 
 #: src/unit_types.cpp:977
 msgid "female^neutral"
-msgstr ""
+msgstr "ᛖᚠᛖᚾᚢ"
 
 #: src/whiteboard/manager.cpp:1083
 msgid "SHOW ALL allies’ plans"
