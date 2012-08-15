@@ -3560,10 +3560,7 @@ namespace game_events {
 			DBG_EH << "processing queued events: " << ss.str() << "\n";
 		}
 
-		//Notify the whiteboard of any event; this is used to track when moves, recruits, etc. happen
-		if(!events_queue.empty()) {
-			resources::whiteboard->on_gamestate_change();
-		}
+		const size_t old_wml_track = internal_wml_tracking;
 
 		bool result = false;
 		while(events_queue.empty() == false) {
@@ -3607,6 +3604,11 @@ namespace game_events {
 			// Only commit new handlers when finished iterating over event_handlers.
 			commit();
 		}
+
+		if ( old_wml_track != internal_wml_tracking )
+			// Notify the whiteboard of any event.
+			// This is used to track when moves, recruits, etc. happen.
+			resources::whiteboard->on_gamestate_change();
 
 		return result;
 	}
