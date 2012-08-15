@@ -172,6 +172,11 @@ namespace game_events
 
 	typedef void (*action_handler)(const game_events::queued_event &, const vconfig &);
 
+	/**
+	 * This function can be used to detect when no WML/Lua has been executed.
+	 */
+	size_t wml_tracking();
+
 } // end namespace game_events
 
 #endif

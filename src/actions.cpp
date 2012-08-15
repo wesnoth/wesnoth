@@ -2697,6 +2697,7 @@ namespace { // Private helpers for move_unit()
 		team * current_team_;	// Will default to the original team if the moving unit becomes invalid.
 		bool current_uses_fog_;
 		route_iterator move_loc_; // Will point to the last moved-to location (in case the moving unit disappears).
+		size_t do_move_track_;	// Tracks whether or not do_move() needs to update the displayed (fake) unit. Should only be touched by do_move() and the constructor.
 
 		// Data accumulated while making the move.
 		map_location zoc_stop_;
@@ -2747,6 +2748,7 @@ namespace { // Private helpers for move_unit()
 		current_uses_fog_(current_team_->fog_or_shroud()  &&
 		                  current_team_->auto_shroud_updates()),
 		move_loc_(begin_),
+		do_move_track_(game_events::wml_tracking()),
 		// The remaining fields are set to some sort of "zero state".
 		zoc_stop_(map_location::null_location),
 		ambush_stop_(map_location::null_location),
@@ -2892,7 +2894,10 @@ namespace { // Private helpers for move_unit()
 			move_loc_ = step_to;
 
 			// Show this move.
-			animator.proceed_to(*move_it_, step_to - begin_);
+			const size_t current_tracking = game_events::wml_tracking();
+			animator.proceed_to(*move_it_, step_to - begin_,
+			                    current_tracking != do_move_track_);
+			do_move_track_ = current_tracking;
 			disp.redraw_minimap();
 		}
 	}
@@ -3100,11 +3105,15 @@ namespace { // Private helpers for move_unit()
 		                            const route_iterator & current,
 	                                const route_iterator & other)
 	{
+		const size_t track = game_events::wml_tracking();
+		bool valid = true;
+
 		const game_events::entity_location mover(*move_it_, *current);
 		const bool event = game_events::fire(event_name, mover, *other);
-		/// @todo: It would be nice to know if any WML was executed.
-		/// If not, we do not really need to call post_wml().
-		const bool valid = post_wml(current);
+
+		if ( track != game_events::wml_tracking() )
+			// Some WML fired, so update our status.
+			valid = post_wml(current);
 
 		if ( event || !valid )
 			event_mutated_ = true;
@@ -3187,11 +3196,11 @@ namespace { // Private helpers for move_unit()
 	 *
 	 * @returns false if continuing is impossible (i.e. we lost the moving unit).
 	 */
-	bool unit_mover::post_wml(const route_iterator & /* step */)
+	bool unit_mover::post_wml(const route_iterator & step)
 	{
 		// Re-find the moving unit.
 		move_it_ = resources::units->find(*move_loc_);
-		bool found = move_it_ != resources::units->end();
+		const bool found = move_it_ != resources::units->end();
 
 		// Update the current unit data.
 		current_side_ = found ? move_it_->side() : orig_side_;
@@ -3200,17 +3209,14 @@ namespace { // Private helpers for move_unit()
 		                    ( current_side_ != orig_side_  ||
 		                      current_team_->auto_shroud_updates() );
 
-		// The following lines will only be useful if there comes a way to
-		// flag an event that makes changes without interrupting movement.
-		// (It's been suggested, but might be too complicated to implement.)
-		//if ( found  &&  step != full_end_ ) {
-		//	const route_iterator new_limit = plot_turn(step, expected_end_);
-		//	cache_hidden_units(step, new_limit);
-		//	// Just in case: length 0 paths become length 1 paths.
-		//	if ( ambush_limit_ == step )
-		//		++ambush_limit_;
-		//}
-		// Also affected would be the call to animator.proceed_to in do_move().
+		// Update the path.
+		if ( found  &&  step != full_end_ ) {
+			const route_iterator new_limit = plot_turn(step, expected_end_);
+			cache_hidden_units(step, new_limit);
+			// Just in case: length 0 paths become length 1 paths.
+			if ( ambush_limit_ == step )
+				++ambush_limit_;
+		}
 
 		return found;
 	}
@@ -3225,10 +3231,14 @@ namespace { // Private helpers for move_unit()
 	 */
 	bool unit_mover::pump_sighted(const route_iterator & from)
 	{
+		const size_t track = game_events::wml_tracking();
+		bool valid = true;
+
 		const bool event = game_events::pump();
-		/// @todo: It would be nice to know if any WML was executed.
-		/// If not, we do not really need to call post_wml().
-		const bool valid = post_wml(from);
+
+		if ( track != game_events::wml_tracking() )
+			// Some WML fired, so update our status.
+			valid = post_wml(from);
 
 		if ( event || !valid )
 			event_mutated_ = true;

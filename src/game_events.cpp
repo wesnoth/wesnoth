@@ -119,6 +119,8 @@ struct scoped_context
 };
 
 static bool screen_needs_rebuild;
+// The value returned by wml_tracking();
+static size_t internal_wml_tracking = 0;
 
 namespace {
 
@@ -3229,6 +3231,7 @@ static bool process_event(game_events::event_handler& handler, const game_events
 		return false;
 
 	// The event hasn't been filtered out, so execute the handler.
+	++internal_wml_tracking;
 	scoped_context evc;
 	handler.handle_event(ev);
 
@@ -3574,7 +3577,8 @@ namespace game_events {
 			// due to status changes by WML. Every event will flush the cache.
 			unit::clear_status_caches();
 
-			/* bool lua_event_triggered = */ resources::lua_kernel->run_event(ev);
+			if ( resources::lua_kernel->run_event(ev) )
+				++internal_wml_tracking;
 
 			bool init_event_vars = true;
 
@@ -3605,6 +3609,26 @@ namespace game_events {
 		}
 
 		return result;
+	}
+
+	/**
+	 * This function can be used to detect when no WML/Lua has been executed.
+	 *
+	 * If two calls to this function return the same value, then one can
+	 * assume that the usual game mechanics have been followed, and code does
+	 * not have to account for all the things WML/Lua can do. If the return
+	 * values are different, then something unusual might have happened between
+	 * those calls.
+	 *
+	 * This is not intended as a precise metric. Rather, it is motivated by
+	 * how large the number of fired WML events is, compared to the (typical)
+	 * number of WML event handlers. It is intended for code that can benefit
+	 * from caching some aspect of the game state and that cannot rely on
+	 * [allow_undo] not being used when that state changes.
+	 */
+	size_t wml_tracking()
+	{
+		return internal_wml_tracking;
 	}
 
 	/**
