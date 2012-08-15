@@ -215,7 +215,7 @@ void play_controller::init(CVideo& video){
 			}
 		}
 		team_builder_ptr tb_ptr = gamedata_.create_team_builder(side,
-			save_id, teams_, level_, map_, units_, snapshot, gamestate_.starting_pos);
+			save_id, teams_, level_, map_, units_, snapshot, gamestate_.replay_start());
 		++team_num;
 		gamedata_.build_team_stage_one(tb_ptr);
 		team_builders.push_back(tb_ptr);
@@ -393,7 +393,7 @@ void play_controller::status_table(){
 void play_controller::save_game(){
 	if(save_blocker::try_block()) {
 		save_blocker::save_unblocker unblocker;
-		savegame::game_savegame save(gamestate_, *gui_, to_config(), preferences::compress_saves());
+		savegame::ingame_savegame save(gamestate_, *gui_, to_config(), preferences::compress_saves());
 		save.save_game_interactive(gui_->video(), "", gui::OK_CANCEL);
 	} else {
 		save_blocker::on_unblock(this,&play_controller::save_game);

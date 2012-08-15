@@ -109,7 +109,7 @@ void level_to_gamestate(config& level, game_state& state)
 		}
 	}
 
-	carryover_info sides = carryover_info(state.carryover_sides);
+	carryover_info sides = carryover_info(state.carryover_sides_start);
 
 	//set random
 	const std::string seed = level["random_seed"];
@@ -129,7 +129,7 @@ void level_to_gamestate(config& level, game_state& state)
 	//this is important, if it does not happen, the starting position is missing and
 	//will be drawn from the snapshot instead (which is not what we want since we have
 	//all needed information here already)
-	state.starting_pos = level.child("replay_start");
+	state.replay_start() = level.child("replay_start");
 
 	level["campaign_type"] = "multiplayer";
 	state.classification().campaign_type = "multiplayer";
@@ -149,7 +149,7 @@ void level_to_gamestate(config& level, game_state& state)
 	//It might be a MP campaign start-of-scenario save
 	//In this case, it's not entirely a new game, but not a save, either
 	//Check whether it is no savegame and the starting_pos contains [player] information
-	bool start_of_scenario = !saved_game && state.starting_pos.child("player");
+	bool start_of_scenario = !saved_game && state.replay_start().child("player");
 
 	//If we start a fresh game, there won't be any snapshot information. If however this
 	//is a savegame, we got a valid snapshot here.
@@ -166,7 +166,7 @@ void level_to_gamestate(config& level, game_state& state)
 	if(saved_game || start_of_scenario){
 		config::child_itors saved_sides = saved_game ?
 			state.snapshot.child_range("side") :
-			state.starting_pos.child_range("side");
+			state.replay_start().child_range("side");
 		config::const_child_itors level_sides = level.child_range("side");
 
 		BOOST_FOREACH(config &side, saved_sides)
@@ -193,7 +193,7 @@ void level_to_gamestate(config& level, game_state& state)
 		LOG_NG << sides.get_variables();
 	}
 
-	state.carryover_sides = sides.to_config();
+	state.carryover_sides_start = sides.to_config();
 }
 
 std::string get_color_string(int id)

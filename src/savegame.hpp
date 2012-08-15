@@ -167,13 +167,15 @@ protected:
 	/** Customize the standard error message */
 	void set_error_message(const std::string& error_message) { error_message_ = error_message; }
 
-	const std::string& title() const { return title_; }
-	game_state& gamestate() const { return gamestate_; }
+	const std::string& title() { return title_; }
+	game_state& gamestate() { return gamestate_; }
 	config& snapshot() { return snapshot_; }
-	config& carryover_sides() { return carryover_sides_; }
 
 	/** If there needs to be some data fiddling before saving the game, this is the place to go. */
 	virtual void before_save();
+
+	/** Writing the savegame config to a file. */
+	virtual void write_game(config_writer &out);
 
 private:
 	/** Checks if a certain character is allowed in a savefile name. */
@@ -191,8 +193,6 @@ private:
 		data manipulation has to happen before calling this method. */
 	void write_game_to_disk(const std::string& filename);
 
-	/** Writing the savegame config to a file. */
-	void write_game(config_writer &out) const;
 	/** Update the save_index */
 	void finish_save_game(const config_writer &out);
 	/** Throws game::save_game_failed. */
@@ -204,8 +204,6 @@ private:
 	/** Gamestate information at the time of saving. Note that this object is needed here, since
 		even if it is empty the code relies on it to be there. */
 	config snapshot_;
-
-	config carryover_sides_;
 
 	std::string filename_; /** Filename of the savegame file on disk */
 
@@ -220,10 +218,10 @@ private:
 
 /** Class for "normal" midgame saves. The additional members are needed for creating the snapshot
 	information. */
-class game_savegame : public savegame
+class ingame_savegame : public savegame
 {
 public:
-	game_savegame(game_state& gamestate,
+	ingame_savegame(game_state& gamestate,
 		game_display& gui, const config& snapshot_cfg, const bool compress_saves);
 
 private:
@@ -233,8 +231,7 @@ private:
 	/** Builds the snapshot config. */
 	virtual void before_save();
 
-	/** For normal game saves. Builds a snapshot config object out of the relevant information. */
-	void write_game_snapshot();
+	void write_game(config_writer &out);
 
 protected:
 	game_display& gui_;
@@ -249,10 +246,12 @@ public:
 private:
 	/** Create a filename for automatic saves */
 	virtual void create_filename();
+
+	void write_game(config_writer &out);
 };
 
 /** Class for autosaves. */
-class autosave_savegame : public game_savegame
+class autosave_savegame : public ingame_savegame
 {
 public:
 	autosave_savegame(game_state &gamestate,
@@ -264,7 +263,7 @@ private:
 	virtual void create_filename();
 };
 
-class oos_savegame : public game_savegame
+class oos_savegame : public ingame_savegame
 {
 public:
 	oos_savegame(const config& snapshot_cfg);
@@ -281,8 +280,7 @@ public:
 	scenariostart_savegame(game_state& gamestate, const bool compress_saves);
 
 private:
-	/** Adds the player information to the starting position (= [replay_start]). */
-	virtual void before_save();
+	void write_game(config_writer &out);
 };
 
 } //end of namespace savegame

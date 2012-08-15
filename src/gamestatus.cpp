@@ -40,6 +40,10 @@
 #include "map.hpp"
 #include "pathfind/pathfind.hpp"
 #include "whiteboard/side_actions.hpp"
+#include "sound.hpp"
+#include "soundsource.hpp"
+#include "game_events.hpp"
+#include "map_label.hpp"
 
 #include <boost/bind.hpp>
 #include <boost/foreach.hpp>
@@ -819,12 +823,10 @@ void game_data::write_snapshot(config& cfg){
 	wml_menu_items_.to_config(cfg);
 }
 
-void game_data::write_config(config_writer& out, bool write_variables){
+void game_data::write_config(config_writer& out){
 	out.write_key_val("random_seed", lexical_cast<std::string>(rng_.get_random_seed()));
 	out.write_key_val("random_calls", lexical_cast<std::string>(rng_.get_random_calls()));
-	if (write_variables) {
-		out.write_child("variables", variables_);
-	}
+	out.write_child("variables", variables_);
 
 	config cfg;
 	wml_menu_items_.to_config(cfg);
@@ -956,9 +958,9 @@ config game_classification::to_config() const
 
 game_state::game_state()  :
 		replay_data(),
-		starting_pos(),
 		snapshot(),
-		carryover_sides(carryover_info().to_config()),
+		carryover_sides(),
+		carryover_sides_start(carryover_info().to_config()),
 		classification_(),
 		mp_settings_()
 		{}
@@ -973,9 +975,9 @@ void write_players(game_state& gamestate, config& cfg, const bool use_snapshot, 
 
 	config *source = NULL;
 	if (use_snapshot) {
-		source = &gamestate.snapshot;
+		source = &gamestate.carryover_sides_start;
 	} else {
-		source = &gamestate.starting_pos;
+		source = &gamestate.replay_start();
 	}
 
 	if (merge_side) {
@@ -1047,65 +1049,42 @@ void write_players(game_state& gamestate, config& cfg, const bool use_snapshot, 
 
 game_state::game_state(const config& cfg, bool show_replay) :
 		replay_data(),
-		starting_pos(),
 		snapshot(),
-	//	carryover_sides(cfg.child_or_empty("carryover_sides")),
+		carryover_sides(),
+		carryover_sides_start(),
+		replay_start_(),
 		classification_(cfg),
 		mp_settings_(cfg)
 {
 	n_unit::id_manager::instance().set_save_id(cfg["next_underlying_unit_id"]);
 	log_scope("read_game");
 
-	carryover_info sides(cfg.child_or_empty("carryover_sides"));
+	if(cfg.has_child("carryover_sides")){
+		carryover_sides = cfg.child("carryover_sides");
+	}
+	if(cfg.has_child("carryover_sides_start")){
+		carryover_sides_start = cfg.child("carryover_sides_start");
+	}
 
-	const config &snapshot = cfg.child("snapshot");
-	const config &replay_start = cfg.child("replay_start");
-	// We're loading a snapshot if we have it and the user didn't request a replay.
-	bool load_snapshot = !show_replay && snapshot && !snapshot.empty();
-
-	if (load_snapshot) {
-		this->snapshot = snapshot;
-		//for backwards compatibility
-		if(snapshot.has_child("variables")){
-		sides.set_variables(snapshot.child("variables"));
+	if(show_replay){
+		//If replay_start and replay_data couldn't be loaded
+		if(!load_replay(cfg)){
+			//TODO: notify user of failure
+			ERR_NG<<"Could not load as replay \n";
 		}
 	} else {
-		assert(replay_start);
-		//for backwards compatibility
-		if(replay_start.has_child("variables")){
-			sides.set_variables(replay_start.child("variables"));
+		if(const config& snapshot = cfg.child("snapshot")){
+			this->snapshot = snapshot;
+			load_replay(cfg);
+		} else if(carryover_sides_start.empty() && !carryover_sides.empty()){
+			//if we are loading a start of scenario save and don't have carryover_sides_start, use carryover_sides
+			carryover_sides_start = carryover_sides;
 		}
+		//TODO: check if loading fails completely
 	}
-
-	//for backwards compatibility
-	if(cfg.has_child("variables")){
-		sides.set_variables(cfg.child("variables"));
-	}
-
-	carryover_sides = sides.to_config();
 
 	LOG_NG << "scenario: '" << classification_.scenario << "'\n";
 	LOG_NG << "next_scenario: '" << classification_.next_scenario << "'\n";
-
-	if (const config &replay = cfg.child("replay")) {
-		replay_data = replay;
-	}
-
-	if (replay_start) {
-		starting_pos = replay_start;
-		//This is a quick hack to make replays for campaigns work again:
-		//The [player] information needs to be stored somewhere within the gamestate,
-		//because we need it later on when creating the replay savegame.
-		//We therefore put it inside the starting_pos, so it doesn't get lost.
-		//See also playcampaign::play_game, where after finishing the scenario the replay
-		//will be saved.
-		if(!starting_pos.empty()) {
-			BOOST_FOREACH(const config &p, cfg.child_range("player")) {
-				config& cfg_player = starting_pos.add_child("player");
-				cfg_player.merge_with(p);
-			}
-		}
-	}
 
 	if (const config &stats = cfg.child("statistics")) {
 		statistics::fresh_stats();
@@ -1114,9 +1093,124 @@ game_state::game_state(const config& cfg, bool show_replay) :
 
 }
 
-void game_state::write_snapshot(config& cfg) const
+bool game_state::load_replay(const config& cfg){
+	bool replay_loaded = false;
+
+	if(const config& replay_start = cfg.child("replay_start")){
+		replay_start_ = replay_start;
+		if(const config& replay = cfg.child("replay")){
+			this->replay_data = replay;
+			replay_loaded = true;
+		}
+	}
+
+	return replay_loaded;
+}
+
+void convert_old_saves(config& cfg){
+	if(!cfg.has_child("snapshot")){
+		return;
+	}
+
+	const config& snapshot = cfg.child("snapshot");
+	const config& replay_start = cfg.child("replay_start");
+	const config& replay = cfg.child("replay");
+
+	if(!cfg.has_child("carryover_sides") && !cfg.has_child("carryover_sides_start")){
+		config carryover;
+		//copy rng and menu items from toplevel to new carryover_sides
+		carryover["random_seed"] = cfg["random_seed"];
+		carryover["random_calls"] = cfg["random_calls"];
+		BOOST_FOREACH(const config& menu_item, cfg.child_range("menu_item")){
+			carryover.add_child("menu_item", menu_item);
+		}
+
+		config carryover_start = carryover;
+
+		//copy sides from either snapshot or replay_start to new carryover_sides
+		if(!snapshot.empty()){
+			BOOST_FOREACH(const config& side, snapshot.child_range("side")){
+				carryover.add_child("side", side);
+			}
+			//for compatibility with old savegames that use player instead of side
+			BOOST_FOREACH(const config& side, snapshot.child_range("player")){
+				carryover.add_child("side", side);
+			}
+			//save the sides from replay_start in carryover_sides_start
+			BOOST_FOREACH(const config& side, replay_start.child_range("side")){
+				carryover_start.add_child("side", side);
+			}
+			//for compatibility with old savegames that use player instead of side
+			BOOST_FOREACH(const config& side, replay_start.child_range("player")){
+				carryover_start.add_child("side", side);
+			}
+		} else if (!replay_start.empty()){
+			BOOST_FOREACH(const config& side, replay_start.child_range("side")){
+				carryover.add_child("side", side);
+				carryover_start.add_child("side", side);
+			}
+			//for compatibility with old savegames that use player instead of side
+			BOOST_FOREACH(const config& side, replay_start.child_range("player")){
+				carryover.add_child("side", side);
+				carryover_start.add_child("side", side);
+			}
+		}
+
+		//get variables according to old hierarchy and copy them to new carryover_sides
+		if(!snapshot.empty()){
+			if(const config& variables = snapshot.child("variables")){
+				carryover.add_child("variables", variables);
+				carryover_start.add_child("variables", replay_start.child_or_empty("variables"));
+			} else if (const config& variables = cfg.child("variables")){
+				carryover.add_child("variables", variables);
+				carryover_start.add_child("variables", variables);
+			}
+		} else if (!replay_start.empty()){
+			if(const config& variables = replay_start.child("variables")){
+				carryover.add_child("variables", variables);
+				carryover_start.add_child("variables", variables);
+			}
+		} else {
+			carryover.add_child("variables", cfg.child("variables"));
+			carryover_start.add_child("variables", cfg.child("variables"));
+		}
+
+		cfg.add_child("carryover_sides", carryover);
+		cfg.add_child("carryover_sides_start", carryover_start);
+	}
+
+	//if replay and snapshot are empty we've got a start of scenario save and don't want replay_start either
+	if(replay.empty() && snapshot.empty()){
+		LOG_RG<<"removing replay_start \n";
+		cfg.remove_child("replay_start", 0);
+	}
+
+	//remove empty replay or snapshot so type of save can be detected more easily
+	if(replay.empty()){
+		LOG_RG<<"removing replay \n";
+		cfg.remove_child("replay", 0);
+	}
+
+	if(snapshot.empty()){
+		LOG_RG<<"removing snapshot \n";
+		cfg.remove_child("snapshot", 0);
+	}
+
+	LOG_RG<<"cfg after conversion "<<cfg<<"\n";
+}
+
+void game_state::write_snapshot(config& cfg, game_display* gui) const
 {
 	log_scope("write_game");
+	if(gui != NULL){
+		cfg["snapshot"] = true;
+		cfg["playing_team"] = str_cast(gui->playing_team());
+
+		game_events::write_events(cfg);
+
+		sound::write_music_play_list(cfg);
+	}
+
 	cfg["label"] = classification_.label;
 	cfg["history"] = classification_.history;
 	cfg["abbrev"] = classification_.abbrev;
@@ -1141,6 +1235,10 @@ void game_state::write_snapshot(config& cfg) const
 
 	if(resources::gamedata != NULL){
 		resources::gamedata->write_snapshot(cfg);
+	}
+
+	if(gui != NULL){
+		gui->labels().write(cfg);
 	}
 }
 
@@ -1241,9 +1339,10 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 
 game_state::game_state(const game_state& state) :
 	replay_data(state.replay_data),
-	starting_pos(state.starting_pos),
 	snapshot(state.snapshot),
 	carryover_sides(state.carryover_sides),
+	carryover_sides_start(state.carryover_sides_start),
+	replay_start_(state.replay_start_),
 	classification_(state.classification_),
 	mp_settings_(state.mp_settings_)
 {}
@@ -1259,20 +1358,10 @@ game_state& game_state::operator=(const game_state& state)
 }
 
 
-void game_state::write_config(config_writer& out, bool write_variables) const
+void game_state::write_config(config_writer& out) const
 {
 	out.write(classification_.to_config());
 	if (classification_.campaign_type == "multiplayer")
 		out.write_child("multiplayer", mp_settings_.to_config());
-
-	if(resources::gamedata != NULL){
-		resources::gamedata->write_config(out, write_variables);
-	}
-
-	if (!replay_data.child("replay")) {
-		out.write_child("replay", replay_data);
-	}
-
-	out.write_child("replay_start",starting_pos);
 }
 

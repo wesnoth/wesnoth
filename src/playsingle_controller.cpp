@@ -53,6 +53,9 @@ static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
 
+static lg::log_domain log_enginerefac("enginerefac");
+#define LOG_RG LOG_STREAM(info, log_enginerefac)
+
 playsingle_controller::playsingle_controller(const config& level,
 		game_state& state_of_game, const int ticks, const int num_turns,
 		const config& game_config, CVideo& video, bool skip_replay) :
@@ -381,6 +384,12 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			throw end_level_exception(SKIP_TO_LINGER);
 		}
 
+		//before first turn, save a snapshot as replay_start
+		if(gamestate_.snapshot.empty()){
+			gamestate_.write_snapshot(gamestate_.replay_start(), gui_.get());
+			gamestate_.replay_start().merge_with(to_config());
+		}
+
 		// Avoid autosaving after loading, but still
 		// allow the first turn to have an autosave.
 		bool save = !loading_game_;
@@ -526,7 +535,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			disconnect = true;
 		}
 
-		savegame::game_savegame save(gamestate_, *gui_, to_config(), preferences::compress_saves());
+		savegame::ingame_savegame save(gamestate_, *gui_, to_config(), preferences::compress_saves());
 		save.save_game_interactive(gui_->video(), _("A network disconnection has occurred, and the game cannot continue. Do you want to save the game?"), gui::YES_NO);
 		if(disconnect) {
 			throw network::error();
@@ -878,121 +887,6 @@ void playsingle_controller::check_time_over(){
 		throw end_level_exception(DEFEAT);
 	}
 }
-
-//TODO: remove store_recalls() and store_gold() once everything is moved and works correctly
-
-//void playsingle_controller::store_recalls() {
-//	std::set<std::string> side_ids;
-//	std::vector<team>::iterator i;
-//	for(i=teams_.begin(); i!=teams_.end(); ++i) {
-//		side_ids.insert(i->save_id());
-//		if (i->persistent()) {
-//			config& new_side = gamestate_.snapshot.add_child("side");
-//			new_side["save_id"] = i->save_id();
-//			new_side["name"] = i->current_player();
-//			std::stringstream can_recruit;
-//			std::copy(i->recruits().begin(),i->recruits().end(),std::ostream_iterator<std::string>(can_recruit,","));
-//			std::string can_recruit_str = can_recruit.str();
-//			// Remove the trailing comma
-//			if(can_recruit_str.empty() == false) {
-//				can_recruit_str.resize(can_recruit_str.size()-1);
-//			}
-//			new_side["previous_recruits"] = can_recruit_str;
-//			LOG_NG << "stored side in snapshot:\n" << new_side["save_id"] << std::endl;
-//			//add the units of the recall list
-//			BOOST_FOREACH(const unit& u, i->recall_list()) {
-//				config& new_unit = new_side.add_child("unit");
-//				u.write(new_unit);
-//			}
-//		}
-//	}
-//	//add any players from starting_pos that do not have a team in the current scenario
-//	BOOST_FOREACH(const config &player_cfg, gamestate_.starting_pos.child_range("player")) {
-//		if (side_ids.count(player_cfg["save_id"]) == 0) {
-//			LOG_NG << "stored inactive side in snapshot:\n" << player_cfg["save_id"] << std::endl;
-//			gamestate_.snapshot.add_child("side", player_cfg);
-//		}
-//	}
-//}
-//
-//void playsingle_controller::store_gold(bool obs)
-//{
-//	bool has_next_scenario = !gamestate_.classification().next_scenario.empty() &&
-//		gamestate_.classification().next_scenario != "null";
-//
-//	std::ostringstream report;
-//	std::string title;
-//
-//	if (obs) {
-//		title = _("Scenario Report");
-//	} else {
-//		persist_.end_transaction();
-//		title = _("Victory");
-//		report << "<b>" << _("You have emerged victorious!") << "</b>\n\n";
-//	}
-//
-//	int persistent_teams = 0;
-//	BOOST_FOREACH(const team &t, teams_) {
-//		if (t.persistent()) ++persistent_teams;
-//	}
-//
-//	const end_level_data &end_level = get_end_level_data_const();
-//
-//	if (persistent_teams > 0 && (has_next_scenario ||
-//		gamestate_.classification().campaign_type == "test"))
-//	{
-//		int finishing_bonus_per_turn =
-//			map_.villages().size() * game_config::village_income +
-//			game_config::base_income;
-//		int turns_left = std::max<int>(0, tod_manager_.number_of_turns() - turn());
-//		int finishing_bonus = (end_level.gold_bonus && turns_left > -1) ?
-//			finishing_bonus_per_turn * turns_left : 0;
-//		BOOST_FOREACH(const team &t, teams_)
-//		{
-//			if (!t.persistent()) continue;
-//			int carryover_gold = div100rounded((t.gold() + finishing_bonus) * end_level.carryover_percentage);
-//			config::child_itors side_range = gamestate_.snapshot.child_range("side");
-//			config::child_iterator side_it = side_range.first;
-//
-//			// Check if this side already exists in the snapshot.
-//			while (side_it != side_range.second) {
-//				if ((*side_it)["save_id"] == t.save_id()) {
-//					(*side_it)["gold"] = str_cast<int>(carryover_gold);
-//					(*side_it)["gold_add"] = end_level.carryover_add;
-//					(*side_it)["color"] = t.color();
-//					(*side_it)["current_player"] = t.current_player();
-//					(*side_it)["name"] = t.name();
-//					break;
-//				}
-//				++side_it;
-//			}
-//
-//			// If it doesn't, add a new child.
-//			if (side_it == side_range.second) {
-//				config &new_side = gamestate_.snapshot.add_child("side");
-//				new_side["save_id"] = t.save_id();
-//				new_side["gold"] = str_cast<int>(carryover_gold);
-//				new_side["gold_add"] = end_level.carryover_add;
-//				new_side["color"] = t.color();
-//				new_side["current_player"] = t.current_player();
-//				new_side["name"] = t.name();
-//			}
-//
-//			// Only show the report for ourselves.
-//			if (!t.is_human()) continue;
-//
-//			if (persistent_teams > 1) {
-//				report << "\n<b>" << t.current_player() << "</b>\n";
-//			}
-//
-//			report_victory(report, carryover_gold, t.gold(), finishing_bonus_per_turn, turns_left, finishing_bonus);
-//		}
-//	}
-//
-//	if (end_level.carryover_report) {
-//		gui2::show_transient_message(gui_->video(), title, report.str(), "", true);
-//	}
-//}
 
 bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int index) const
 {

@@ -32,6 +32,8 @@ class scoped_wml_variable;
 class team;
 class gamemap;
 
+void convert_old_saves(config& cfg);
+
 namespace t_translation {
 	struct t_match;
 }
@@ -208,7 +210,7 @@ public:
 	map_location last_selected;
 
 	void write_snapshot(config& cfg);
-	void write_config(config_writer& out, bool write_variables);
+	void write_config(config_writer& out);
 
 	game_data& operator=(const game_data& info);
 	game_data* operator=(const game_data* info);
@@ -264,9 +266,9 @@ public:
 	game_state& operator=(const game_state& state);
 
 	//write the gamestate into a config object
-	void write_snapshot(config& cfg) const;
+	void write_snapshot(config& cfg, game_display* gui = NULL) const;
 	//write the config information into a stream (file)
-	void write_config(config_writer& out, bool write_variables=true) const;
+	void write_config(config_writer& out) const;
 
 	game_classification& classification() { return classification_; }
 	const game_classification& classification() const { return classification_; } //FIXME: const getter to allow use from const gamestatus::sog() (see ai.cpp:344) - remove after merge?
@@ -275,19 +277,15 @@ public:
 	mp_game_settings& mp_settings() { return mp_settings_; }
 	const mp_game_settings& mp_settings() const { return mp_settings_; }
 
+	bool load_replay(const config& cfg);
+
+	config& replay_start() { return replay_start_; }
+
 	/**
 	 * If the game is saved mid-level, we have a series of replay steps
 	 * to take the game up to the position it was saved at.
 	 */
 	config replay_data;
-
-	/**
-	 * Saved starting state of the game.
-	 *
-	 * For multiplayer games, the position the game started in may be different
-	 * to the scenario.
-	 */
-	config starting_pos;
 
 	/**
 	 * Snapshot of the game's current contents.
@@ -300,7 +298,13 @@ public:
 	/** The carryover information for all sides*/
 	config carryover_sides;
 
+	/** The carryover information for all sides as it was before the scenario started*/
+	config carryover_sides_start;
+
 private:
+	/** First turn snapshot for replays, contains starting position */
+	config replay_start_;
+
 	game_classification classification_;
 	mp_game_settings mp_settings_;
 };

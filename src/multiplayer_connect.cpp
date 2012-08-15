@@ -1659,7 +1659,7 @@ void connect::load_game()
 		}
 
 		level_["experience_modifier"] = params_.xp_modifier;
-		level_["random_seed"] = state_.carryover_sides["random_seed"];
+		level_["random_seed"] = state_.carryover_sides_start["random_seed"];
 	}
 
 	// Add the map name to the title.
@@ -1720,7 +1720,7 @@ config* connect::current_config(){
 		cfg_level = &snapshot;
 	} else if (!level_.child("side")) {
 		// Start-of-scenario save, the info has to be taken from the starting_pos
-		cfg_level = &state_.starting_pos;
+		cfg_level = &state_.replay_start();
 	} else {
 		// Fresh game, no snapshot available
 		cfg_level = &level_;
