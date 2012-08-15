@@ -17,6 +17,7 @@ Version 1.10.3+svn:
    * Trying to initiate movement (or an attack) before previous movement is
      finished no longer unselects the current unit (bug #19734). (The new
      movement command is still deliberately ignored.)
+   * Fixed bug #19783: Disable commands while WML menu items are executing.
  * WML engine:
    * Fixed CALL_FUNCTION macro (bug #19805)
  * Miscellaneous and bug fixes:
