@@ -357,10 +357,12 @@ int combat_modifier(const map_location &loc,
 struct undo_action {
 	enum ACTION_TYPE { NONE, RECRUIT, RECALL, DISMISS };
 
-	undo_action(const unit& u, const std::vector<map_location>& rt, int sm,
-		int timebonus=0, int orig=-1,
-		const map_location::DIRECTION dir=map_location::NDIRECTIONS) :
-			route(rt),
+	undo_action(const unit& u,
+	            const std::vector<map_location>::const_iterator & begin,
+	            const std::vector<map_location>::const_iterator & end,
+	            int sm, int timebonus=0, int orig=-1,
+	            const map_location::DIRECTION dir=map_location::NDIRECTIONS) :
+			route(begin, end),
 			starting_moves(sm),
 			original_village_owner(orig),
 			recall_loc(),
@@ -373,7 +375,7 @@ struct undo_action {
 		}
 
 	undo_action(const unit& u, const map_location& loc, const map_location& from,
-		const ACTION_TYPE action_type=NONE) :
+	            const ACTION_TYPE action_type=NONE) :
 			route(),
 			starting_moves(),
 			original_village_owner(),

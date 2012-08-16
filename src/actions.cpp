@@ -3422,10 +3422,9 @@ namespace { // Private helpers for move_unit()
 			const bool mover_valid = move_it_.valid();
 
 			if ( mover_valid ) {
-				std::vector<map_location> steps(begin_, real_end_);
 				// MP_COUNTDOWN: added param
 				undo_stack->push_back(
-					undo_action(*move_it_, steps, orig_moves_,
+					undo_action(*move_it_, begin_, real_end_, orig_moves_,
 						action_time_bonus, orig_village_owner, orig_dir_));
 			}
 
