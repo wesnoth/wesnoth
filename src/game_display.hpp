@@ -177,7 +177,12 @@ public:
 			: unit(t, side, false, gender)
 			, my_display_(NULL)
 		{}
-		fake_unit & operator=(fake_unit const & u);
+		/// Assignment operator, taking a fake_unit.
+		/// If already in the queue, @a this will be moved to the end of the
+		/// queue (drawn last). The queue (if any) of the parameter is ignored.
+		fake_unit & operator=(fake_unit const & u)
+		{ return operator=(static_cast<unit const &>(u)); }
+		/// Assignment operator, taking a unit.
 		virtual fake_unit & operator=(unit const & u);
 		/// Removes @a this from the fake_units_ list if necessary.
 		~fake_unit();

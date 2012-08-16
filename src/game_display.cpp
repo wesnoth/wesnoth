@@ -687,36 +687,9 @@ int& game_display::debug_highlight(const map_location& loc)
 
 
 /**
- * Assignment operator.
- * If already in the queue, @a this will be moved to the end (drawn last)
- * of the queue.
- *
- * This function is unsuitable for derived classes and MUST be overridden.
- * Furthermore, derived classes must not explicitly call this version.
- *
- * The overriding function can be almost the same, except "new (this)" should
- * be followed by the derived class instead of "fake_unit(a)".
- */
-game_display::fake_unit & game_display::fake_unit::operator=(fake_unit const & a)
-{
-	if ( this != &a ) {
-		game_display * display = my_display_;
-
-		// Use the copy constructor to make sure we are coherant.
-		// (Methodology copied from unit::operator=)
-		this->~fake_unit();
-		new (this) fake_unit(a);
-		// Restore our old display.
-		if ( display != NULL )
-			place_on_game_display(display);
-	}
-	return *this;
-}
-
-/**
- * Assignment operator.
- * If already in the queue, @a this will be moved to the end (drawn last)
- * of the queue.
+ * Assignment operator, taking a unit.
+ * If already in the queue, @a this will be moved to the end of the
+ * queue (drawn last).
  *
  * This function is unsuitable for derived classes and MUST be overridden.
  * Furthermore, derived classes must not explicitly call this version.
