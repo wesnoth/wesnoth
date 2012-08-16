@@ -2672,7 +2672,7 @@ namespace { // Private helpers for move_unit()
 		const bool is_replay_;
 		const map_location & replay_dest_;
 		const bool skip_sighting_;
-		// Currently needed to interface with the animation class.
+		// Needed to interface with unit_display::unit_mover.
 		const std::vector<map_location> & route_;
 
 		// The route to traverse.
