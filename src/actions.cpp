@@ -2771,24 +2771,23 @@ namespace { // Private helpers for move_unit()
 		seen_units_(),
 		to_reveal_()
 	{
-		// Clear the "goto" instruction during movement (so that the orb is not red).
-		move_it_->set_goto(map_location::null_location);
+		if ( !is_ai_move() )
+			// Clear the "goto" instruction during movement.
+			// (It will be reset in the destructor if needed.)
+			move_it_->set_goto(map_location::null_location);
 	}
 
 
 	unit_mover::~unit_mover()
 	{
-		// Set the "goto" order? (Not if WML set it during movement.)
-		if ( move_it_.valid()  &&  move_it_->get_goto() == map_location::null_location )
+		// Set the "goto" order? (Not if WML set it.)
+		if ( !is_ai_move()  &&  move_it_.valid()  &&
+		     move_it_->get_goto() == map_location::null_location )
 		{
-			if ( is_ai_move() )
-				// For AI moves, it should be as if we never changed the goto.
+			// Only set the goto if movement was not complete and was not
+			// interrupted.
+			if ( real_end_ != full_end_  &&  !interrupted(false) ) // End-of-move-events do not cancel a goto. (Use case: tutorial S2.)
 				move_it_->set_goto(goto_);
-			else
-				// Only set the goto if movement was not complete and was not
-				// interrupted.
-				if ( real_end_ != full_end_  &&  !interrupted(false) ) // End-of-move-events do not cancel a goto. (Use case: tutorial S2.)
-						move_it_->set_goto(goto_);
 		}
 	}
 
