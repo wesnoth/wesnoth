@@ -270,15 +270,7 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 		//make a temporary unit
 		boost::scoped_ptr<unit> temp_unit(new unit(temp_cfg, true, resources::state_of_game, vcfg));
 		map_location loc = find_location(temp_cfg, temp_unit.get());
-		if(!loc.valid()) {
-			if(add_to_recall_) {
-				//add to recall list
-				unit *new_unit = temp_unit.get();
-				recall_list.push_back(*new_unit);
-				DBG_NG << "inserting unit with id=["<<id<<"] on recall list for side " << new_unit->side() << "\n";
-				preferences::encountered_units().insert(new_unit->type_id());
-			}
-		} else {
+		if ( loc.valid() ) {
 			unit *new_unit = temp_unit.get();
 			//add temporary unit to map
 			assert( resources::units->find(loc) == resources::units->end() );
@@ -286,18 +278,25 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 			LOG_NG << "inserting unit for side " << new_unit->side() << "\n";
 			post_create(loc,*(resources::units->find(loc)),animate);
 		}
+		else if ( add_to_recall_ ) {
+			//add to recall list
+			unit *new_unit = temp_unit.get();
+			recall_list.push_back(*new_unit);
+			DBG_NG << "inserting unit with id=["<<id<<"] on recall list for side " << new_unit->side() << "\n";
+			preferences::encountered_units().insert(new_unit->type_id());
+		}
 	} else {
 		//get unit from recall list
 		map_location loc = find_location(temp_cfg, &(*recall_list_element));
-		if(!loc.valid()) {
-			LOG_NG << "wanted to insert unit on recall list, but recall list for side " << (cfg)["side"] << "already contains id=" <<id<<"\n";
-			return;
-		} else {
+		if ( loc.valid() ) {
 			resources::units->add(loc, *recall_list_element);
 			LOG_NG << "inserting unit from recall list for side " << recall_list_element->side()<< " with id="<< id << "\n";
 			post_create(loc,*(resources::units->find(loc)),animate);
 			//if id is not empty, delete units with this ID from recall list
 			erase_if_matches_id(recall_list, id);
+		} else {
+			LOG_NG << "wanted to insert unit on recall list, but recall list for side " << (cfg)["side"] << "already contains id=" <<id<<"\n";
+			return;
 		}
 	}
 }
