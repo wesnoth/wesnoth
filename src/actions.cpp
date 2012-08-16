@@ -294,7 +294,8 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 			post_create(loc,*(resources::units->find(loc)),animate);
 			//if id is not empty, delete units with this ID from recall list
 			erase_if_matches_id(recall_list, id);
-		} else {
+		}
+		else if ( add_to_recall_ ) {
 			LOG_NG << "wanted to insert unit on recall list, but recall list for side " << (cfg)["side"] << "already contains id=" <<id<<"\n";
 			return;
 		}
