@@ -2626,6 +2626,8 @@ namespace { // Private helpers for move_unit()
 		bool fire_hex_event(const std::string & event_name,
 		                    const route_iterator & current,
 	                        const route_iterator & other);
+		/// AI moves are supposed to not change the "goto" order.
+		bool is_ai_move() const	{ return spectator_ != NULL; }
 		/// Checks how far it appears we can move this turn.
 		route_iterator plot_turn(const route_iterator & start,
 		                         const route_iterator & stop);
@@ -2722,6 +2724,8 @@ namespace { // Private helpers for move_unit()
 	/// This constructor assumes @a route is not empty, and it will assert() that
 	/// there is a unit at route.front().
 	/// Iterators into @a route must remain valid for the life of this object.
+	/// It is assumed that move_spectator is only supplied for AI moves (only
+	/// affects whether or not gotos are changed).
 	unit_mover::unit_mover(const std::vector<map_location> & route,
 	                       move_unit_spectator *move_spectator,
 	                       bool skip_sightings, const map_location *replay_dest) :
@@ -2742,7 +2746,7 @@ namespace { // Private helpers for move_unit()
 		             move_it_->side() )),
 		orig_moves_(move_it_->movement_left()),
 		orig_dir_(move_it_->facing()),
-		goto_(spectator_ == NULL ? route.back() : move_it_->get_goto()),
+		goto_( is_ai_move() ? move_it_->get_goto() : route.back() ),
 		current_side_(orig_side_),
 		current_team_(&(*resources::teams)[current_side_-1]),
 		current_uses_fog_(current_team_->fog_or_shroud()  &&
@@ -2777,11 +2781,8 @@ namespace { // Private helpers for move_unit()
 		// Set the "goto" order? (Not if WML set it during movement.)
 		if ( move_it_.valid()  &&  move_it_->get_goto() == map_location::null_location )
 		{
-			if ( spectator_ != NULL )
-				// When a spectator is supplied, it should be as if we never changed
-				// the goto.
-				// NOTE: Currently (July 2012), spectator_ != NULL implies that
-				// this is an AI move.
+			if ( is_ai_move() )
+				// For AI moves, it should be as if we never changed the goto.
 				move_it_->set_goto(goto_);
 			else
 				// Only set the goto if movement was not complete and was not
