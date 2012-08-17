@@ -69,7 +69,6 @@ move::move(size_t team_index, bool hidden, unit& u, const pathfind::marked_route
   turn_number_(0),
   arrow_(arrow),
   fake_unit_(fake_unit),
-  valid_(true),
   arrow_brightness_(),
   arrow_texture_(),
   mover_(),
@@ -92,7 +91,6 @@ move::move(config const& cfg, bool hidden)
 	, turn_number_(0)
 	, arrow_(new arrow(hidden))
 	, fake_unit_()
-	, valid_(true)
 	, arrow_brightness_()
 	, arrow_texture_()
 	, mover_()
@@ -194,14 +192,14 @@ void move::accept(visitor& v)
 
 void move::execute(bool& success, bool& complete)
 {
-	if (!valid_) {
+	if(!valid()) {
 		success = false;
 		//Setting complete to true signifies to side_actions to delete the planned action.
 		complete = true;
 		return;
 	}
 
-	if (get_source_hex() == get_dest_hex()) {
+	if(get_source_hex() == get_dest_hex()) {
 		//zero-hex move, used by attack subclass
 		success = complete = true;
 		return;
@@ -409,54 +407,51 @@ map_location move::get_numbering_hex() const
 	return get_dest_hex();
 }
 
-void move::set_valid(bool valid)
+action::error move::check() const
 {
-	if(valid_ != valid)
-	{
-		valid_ = valid;
-		if(valid_)
-			set_arrow_texture(ARROW_TEXTURE_VALID);
-		else
-			set_arrow_texture(ARROW_TEXTURE_INVALID);
-	}
-}
+	// Used to deal with multiple return paths.
+	class arrow_texture_setter {
+	public:
+		arrow_texture_setter(const move *target, move::ARROW_TEXTURE current_texture, move::ARROW_TEXTURE setting_texture):
+			target(target),
+			current_texture(current_texture),
+			setting_texture(setting_texture) {}
 
-// This helper function determines whether there are any invalid actions planned for (*itor)->get_unit()
-// that occur earlier in viewer_actions() than itor.
-static bool no_previous_invalids(side_actions::iterator const& itor)
-{
-	if(itor == viewer_actions()->begin()) {
-		return true;
-	}
-	side_actions::iterator prev_action_of_unit = viewer_actions()->find_last_action_of(*((*itor)->get_unit()),itor-1);
-	if(prev_action_of_unit == viewer_actions()->end()) {
-		return true;
-	}
-	return (*prev_action_of_unit)->is_valid();
-}
+		~arrow_texture_setter() {
+			if(current_texture!=setting_texture) {
+				target->set_arrow_texture(setting_texture);
+			}
+		}
 
-move::VALIDITY move::evaluate_validity()
-{
+		void set_texture(move::ARROW_TEXTURE texture) { setting_texture=texture; }
+
+	private:
+		const move *target;
+		move::ARROW_TEXTURE current_texture, setting_texture;
+	};
+
+	arrow_texture_setter setter(this, arrow_texture_, ARROW_TEXTURE_INVALID);
+
 	if(!(get_source_hex().valid() && get_dest_hex().valid())) {
-		return WORTHLESS;
+		return INVALID_LOCATION;
 	}
 
 	//Check that the unit still exists in the source hex
 	unit_map::iterator unit_it;
 	unit_it = resources::units->find(get_source_hex());
 	if(unit_it == resources::units->end()) {
-		return WORTHLESS;
+		return NO_UNIT;
 	}
 
 	//check if the unit in the source hex has the same unit id as before,
 	//i.e. that it's the same unit
 	if(unit_id_ != unit_it->id() || unit_underlying_id_ != unit_it->underlying_id()) {
-		return WORTHLESS;
+		return UNIT_CHANGED;
 	}
 
 	//If the path has at least two hexes (it can have less with the attack subclass), ensure destination hex is free
 	if(get_route().steps.size() >= 2 && get_visible_unit(get_dest_hex(),resources::teams->at(viewer_team())) != NULL) {
-		return WORTHLESS;
+		return LOCATION_OCCUPIED;
 	}
 
 	//check that the path is good
@@ -466,43 +461,14 @@ move::VALIDITY move::evaluate_validity()
 		pathfind::marked_route checked_route = pathfind::mark_route(get_route().route);
 
 		if(checked_route.marks[checked_route.steps.back()].turns != 1) {
-			return OBSTRUCTED;
+			return TOO_FAR;
 		}
 	}
 
-	return VALID;
-}
+	// The move is valid, so correct the setter.
+	setter.set_texture(ARROW_TEXTURE_VALID);
 
-bool move::validate()
-{
-	DBG_WB <<"validating move from " << get_source_hex()
-			<< " to " << get_dest_hex() << "\n";
-	//invalidate start and end hexes so number display is updated properly
-	resources::screen->invalidate(get_source_hex());
-	resources::screen->invalidate(get_dest_hex());
-
-	switch(evaluate_validity()) { //< private helper fcn
-	case VALID:
-		// Now call the superclass to apply the result of this move to the unit map,
-		// so that further pathfinding takes it into account.
-		set_valid(true);
-		break;
-	case OBSTRUCTED:
-		set_valid(false);
-		break;
-	case WORTHLESS: {
-		set_valid(false);
-		// Erase only if no previous invalid actions are planned for this unit -- otherwise, just mark it invalid.
-		// Otherwise, we wouldn't be able to keep invalid actions that depend on previous invalid actions.
-		side_actions::iterator itor = viewer_actions()->get_position_of(shared_from_this());
-		if(viewer_team() == team_index() && no_previous_invalids(itor)) { //< Don't mess with any other team's queue -- only our own
-			LOG_WB << "Worthless invalid move detected, adding to actions_to_erase_.\n";
-			return false;
-		}
-		break;
-	}
-	}
-	return true;
+	return OK;
 }
 
 config move::to_config() const
@@ -564,6 +530,13 @@ void move::calculate_move_cost()
 			 movement_cost_ = route_->move_cost;
 		 }
 	}
+}
+
+void move::redraw()
+{
+	resources::screen->invalidate(get_source_hex());
+	resources::screen->invalidate(get_dest_hex());
+	update_arrow_style();
 }
 
 //If you add more arrow styles, this will need to change

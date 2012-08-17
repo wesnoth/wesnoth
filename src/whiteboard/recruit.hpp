@@ -42,6 +42,14 @@ public:
 
 	virtual void execute(bool& success, bool& complete);
 
+	/**
+	 * Check the validity of the action.
+	 *
+	 * @return the error preventing the action from being executed.
+	 * @retval OK if there isn't any error (the action can be executed.)
+	 */
+	virtual error check() const;
+
 	/** Applies temporarily the result of this action to the specified unit map. */
 	virtual void apply_temp_modifier(unit_map& unit_map);
 	/** Removes the result of this action from the specified unit map. */
@@ -49,6 +57,8 @@ public:
 
 	/** Gets called by display when drawing a hex, to allow actions to draw to the screen. */
 	virtual void draw_hex(map_location const& hex);
+	/** Redrawing function, called each time the action situation might have changed. */
+	virtual void redraw();
 
 	/**
 	 * @return the preferred hex to draw the numbering for this action.
@@ -62,14 +72,6 @@ public:
 
 	map_location const get_recruit_hex() const { return recruit_hex_; }
 
-	/**
-	 * Indicates to an action whether its status is invalid, and whether it should change its
-	 * display (and avoid any change to the game state) accordingly
-	 */
-	virtual void set_valid(bool valid) { valid_ = valid; }
-	virtual bool is_valid() const { return valid_; }
-	bool validate();
-
 	virtual config to_config() const;
 
 protected:
@@ -82,7 +84,6 @@ protected:
 	map_location recruit_hex_;
 	//Temp unit to insert in the future unit map when needed
 	std::auto_ptr<unit> temp_unit_;
-	bool valid_;
 	fake_unit_ptr fake_unit_;
 	int cost_;
 

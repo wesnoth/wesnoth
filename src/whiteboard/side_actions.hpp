@@ -474,24 +474,16 @@ public:
 	 * @return The position, or end() if not found.
 	 */
 	iterator find_last_action_of(unit const& unit, iterator start_position);
+	/** const variant of the previous function */
+	const_iterator find_last_action_of(unit const& unit, const_iterator start_position) const;
 	/** Variant of the previous method that always start searching at the end of the queue */
 	iterator find_last_action_of(unit const& unit);
 	/** const variant of the previous function */
-	const_iterator find_last_action_of(unit const& unit, const_iterator start_position) const;
+	const_iterator find_last_action_of(unit const& unit) const;
 
 	bool unit_has_actions(unit const& unit);
 	size_t count_actions_of(unit const& unit);
 	std::deque<action_ptr> actions_of(unit const& unit);
-
-	/** Removes all invalid actions "attached" to the unit */
-	void remove_invalid_of(unit const*);
-
-	/**
-	 * Find the first valid action belonging to this unit.
-	 *
-	 * @return The position, or end() if not found.
-	 */
-	const_iterator find_last_valid_of(unit const& u) const;
 
 	/**
 	 * Determines the appropriate turn number for the next action planned for this unit
@@ -501,9 +493,6 @@ public:
 	 * @retval 0 if the unit doesn't have any planned action
 	 */
 	size_t get_turn_num_of(unit const&) const;
-
-	/** Validates all planned actions in the queue */
-	void validate_actions();
 
 	/** Used to track gold spending by recruits/recalls when building the future unit map */
 	int get_gold_spent() const { return gold_spent_; }

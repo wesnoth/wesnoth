@@ -41,19 +41,19 @@ public:
 	mapbuilder(unit_map& unit_map);
 	virtual ~mapbuilder();
 
-	/** Builds every team's actions as far into the future as possible, in the correct order. */
+	/**
+	 * Builds every team's actions as far into the future as possible, in the correct order.
+	 *
+	 * @return whether all the actions were valid.
+	 * */
 	void build_map();
 
 private:
 	/** Function called on each action. */
-	bool process(action_ptr action);
-	bool process_helper(action_ptr const&);
+	void process(side_actions &sa, side_actions::iterator action_it);
 
 	/** Function called after visiting a team. */
-	bool post_visit_team(team&, size_t turn);
-
-	/** For validate_visitor to override. */
-	virtual void validate(side_actions::iterator const&) {}
+	void post_visit_team(size_t turn);
 
 	/** Does various preliminary actions on the unit map such as resetting moves for some units. */
 	void pre_build();
@@ -69,8 +69,10 @@ private:
 	boost::ptr_vector<unit_movement_resetter> resetters_;
 	boost::ptr_vector<temporary_unit_remover> removers_;
 
-	//Used by visit()
+	//Used by process()
 	std::set<unit const*> acted_this_turn_;
+	std::set<unit const*> has_invalid_actions_;
+	std::list<side_actions::iterator> invalid_actions_; ///< Conserved invalid actions.
 };
 
 }

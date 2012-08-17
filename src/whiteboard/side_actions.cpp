@@ -26,13 +26,13 @@
 #include "action.hpp"
 #include "attack.hpp"
 #include "manager.hpp"
+#include "mapbuilder.hpp"
 #include "move.hpp"
 #include "recall.hpp"
 #include "recruit.hpp"
 #include "suppose_dead.hpp"
 #include "highlighter.hpp"
 #include "utility.hpp"
-#include "validate_visitor.hpp"
 
 #include "actions.hpp"
 #include "game_display.hpp"
@@ -323,7 +323,7 @@ bool side_actions::execute(side_actions::iterator position)
 
 	action_ptr action = *position;
 
-	if(!action->is_valid()) {
+	if(!action->valid()) {
 		LOG_WB << "Invalid action sent to execution, deleting.\n";
 		synced_erase(position);
 		return true;
@@ -363,7 +363,7 @@ bool side_actions::execute(side_actions::iterator position)
 	ss << *this << "\n";
 	LOG_WB << ss.str();
 
-	validate_actions();
+	resources::whiteboard->validate_viewer_actions();
 	return action_successful;
 }
 
@@ -400,7 +400,7 @@ side_actions::iterator side_actions::insert_action(iterator position, action_ptr
 	iterator valid_position = synced_insert(position, action);
 	LOG_WB << "Inserted into turn #" << get_turn(valid_position) << " at position #"
 			<< actions_.position_in_turn(valid_position) << " : " << action <<"\n";
-	validate_actions();
+	resources::whiteboard->validate_viewer_actions();
 	return valid_position;
 }
 
@@ -411,7 +411,7 @@ side_actions::iterator side_actions::queue_action(size_t turn_num, action_ptr ac
 	}
 	iterator result = synced_enqueue(turn_num, action);
 	LOG_WB << "Queue into turn #" << turn_num << " : " << action <<"\n";
-	validate_actions();
+	resources::whiteboard->validate_viewer_actions();
 	return result;
 }
 
@@ -520,7 +520,7 @@ side_actions::iterator side_actions::remove_action(side_actions::iterator positi
 	position = synced_erase(position);
 
 	if(validate_after_delete) {
-		validate_actions();
+		resources::whiteboard->validate_viewer_actions();
 	}
 
 	return position;
@@ -543,6 +543,11 @@ side_actions::const_iterator side_actions::find_last_action_of(unit const& unit,
 side_actions::iterator side_actions::find_last_action_of(unit const& unit, side_actions::iterator start_position)
 {
 	return find_first_action_of(actions_.get<container::by_unit>().equal_range(unit.underlying_id()), start_position, std::greater<iterator>());
+}
+
+side_actions::const_iterator side_actions::find_last_action_of(unit const& unit) const
+{
+	return find_last_action_of(unit, end() - 1);
 }
 
 side_actions::iterator side_actions::find_last_action_of(unit const& unit)
@@ -570,65 +575,13 @@ std::deque<action_ptr> side_actions::actions_of(unit const &target)
 	return actions;
 }
 
-void side_actions::remove_invalid_of(unit const* u)
-{
-	if(u == NULL)
-		return;
-
-	iterator i = begin();
-	while(i != end()) {
-		action& act = **i;
-		if(!act.is_valid() && u == act.get_unit()) {
-			i = remove_action(i,false);
-		} else {
-			++i;
-		}
-	}
-}
-
-side_actions::const_iterator side_actions::find_last_valid_of(unit const& u) const
-{
-	typedef container::action_set::index<container::by_unit>::type::const_iterator unit_iterator;
-
-	std::pair<unit_iterator, unit_iterator> acts = actions_.get<container::by_unit>().equal_range(u.underlying_id());
-
-	const_iterator last = end();
-
-	for(unit_iterator it = acts.first; it != acts.second; ++it) {
-		if((*it)->is_valid()) {
-			const_iterator chrono_it = actions_.project<container::chronological>(it);
-			if(last == end() || chrono_it > last) {
-				last = chrono_it;
-			}
-		}
-	}
-
-	return last;
-}
-
 size_t side_actions::get_turn_num_of(unit const& u) const
 {
-	const_iterator itor = find_last_valid_of(u);
+	const_iterator itor = find_last_action_of(u);
 	if(itor == end()) {
 		return 0;
 	}
 	return get_turn(itor);
-}
-
-void side_actions::validate_actions()
-{
-	assert(!resources::whiteboard->has_planned_unit_map());
-
-	bool validation_finished = false;
-	int passes = 1;
-	while(!validation_finished) {
-		log_scope2("whiteboard", "Validating actions for side "
-				+ lexical_cast<std::string>(team_index() + 1) + ", pass "
-				+ lexical_cast<std::string>(passes));
-		validate_visitor validator(*resources::units);
-		validation_finished = validator.validate_actions();
-		++passes;
-	}
 }
 
 void side_actions::change_gold_spent_by(int difference)
@@ -813,7 +766,7 @@ void side_actions::execute_net_cmd(net_cmd const& cmd)
 		return;
 	}
 
-	validate_actions();
+	resources::whiteboard->validate_viewer_actions();
 }
 
 side_actions::net_cmd side_actions::make_net_cmd_insert(size_t turn_num, size_t pos, action_const_ptr act) const

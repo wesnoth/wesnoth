@@ -362,7 +362,7 @@ void manager::update_plan_hiding(size_t team_index)
 				t.get_side_actions()->show();
 		}
 	}
-	resources::teams->at(team_index).get_side_actions()->validate_actions();
+	validate_viewer_actions();
 }
 void manager::update_plan_hiding()
 	{update_plan_hiding(viewer_team());}
@@ -414,11 +414,13 @@ bool manager::current_side_has_actions()
 
 void manager::validate_viewer_actions()
 {
-	assert(!executing_actions_);
 	LOG_WB << "'gamestate_mutated_' flag dirty, validating actions.\n";
 	gamestate_mutated_ = false;
-	if (viewer_actions()->empty()) return;
-	viewer_actions()->validate_actions();
+	if(has_planned_unit_map()) {
+		real_map();
+	} else {
+		future_map();
+	}
 }
 
 //helper fcn
@@ -480,13 +482,17 @@ namespace
 		}
 
 		virtual void visit(move_ptr move) {
-			move_owners_.insert(move->get_unit_id());
+			if(size_t id = move->get_unit_id()) {
+				move_owners_.insert(id);
+			}
 		}
 
 		virtual void visit(attack_ptr attack) {
 			//also add attacks if they have an associated move
-			if (boost::static_pointer_cast<move>(attack)->get_route().steps.size() >= 2) {
-				move_owners_.insert(attack->get_unit_id());
+			if(attack->get_route().steps.size() >= 2) {
+				if(size_t id = attack->get_unit_id()) {
+					move_owners_.insert(id);
+				}
 			}
 		}
 		virtual void visit(recruit_ptr){}
@@ -750,7 +756,7 @@ void manager::save_temp_move()
 		assert(u);
 		size_t first_turn = sa.get_turn_num_of(*u);
 
-		on_save_action(u);
+		validate_viewer_actions();
 
 		assert(move_arrows_.size() == fake_units_.size());
 		size_t size = move_arrows_.size();
@@ -819,7 +825,7 @@ void manager::save_temp_attack(const map_location& attacker_loc, const map_locat
 		unit* attacking_unit = future_visible_unit(source_hex);
 		assert(attacking_unit);
 
-		on_save_action(attacking_unit);
+		validate_viewer_actions();
 
 		side_actions& sa = *viewer_actions();
 		sa.queue_attack(sa.get_turn_num_of(*attacking_unit),*attacking_unit,defender_loc,weapon_choice,*route_,move_arrow,fake_unit);
@@ -845,8 +851,6 @@ bool manager::save_recruit(const std::string& name, int side_num, const map_loca
 		}
 		else
 		{
-			on_save_action(NULL);
-
 			side_actions& sa = *viewer_actions();
 			unit* recruiter;
 			{ wb::future_map raii;
@@ -876,8 +880,6 @@ bool manager::save_recall(const unit& unit, int side_num, const map_location& re
 		}
 		else
 		{
-			on_save_action(NULL);
-
 			side_actions& sa = *viewer_actions();
 			size_t turn = sa.num_turns();
 			if(turn > 0)
@@ -895,16 +897,10 @@ void manager::save_suppose_dead(unit& curr_unit, map_location const& loc)
 {
 	if(active_ && !executing_actions_ && !resources::controller->is_linger_mode())
 	{
-		on_save_action(&curr_unit);
+		validate_viewer_actions();
 		side_actions& sa = *viewer_actions();
 		sa.queue_suppose_dead(sa.get_turn_num_of(curr_unit),curr_unit,loc);
 	}
-}
-
-void manager::on_save_action(unit const* u) const
-{
-	if(u)
-		viewer_actions()->remove_invalid_of(u);
 }
 
 void manager::contextual_execute()
@@ -1016,34 +1012,26 @@ void manager::continue_execute_all()
 void manager::contextual_delete()
 {
 	validate_viewer_actions();
-	if (can_enable_modifier_hotkeys())
-	{
+	if(can_enable_modifier_hotkeys()) {
 		erase_temp_move();
 
 		action_ptr action;
 		side_actions::iterator it = viewer_actions()->end();
 		unit const* selected_unit = future_visible_unit(resources::controller->get_mouse_handler_base().get_selected_hex(), viewer_side());
-		if (selected_unit &&
-				(it = viewer_actions()->find_first_action_of(*selected_unit)) != viewer_actions()->end())
-		{
+		if(selected_unit && (it = viewer_actions()->find_first_action_of(*selected_unit)) != viewer_actions()->end()) {
 			///@todo Shouldn't it be "find_last_action_of" instead of "find_first_action_of" above?
 			viewer_actions()->remove_action(it);
 			///@todo Shouldn't we probably deselect the unit at this point?
-		}
-		else if (highlighter_ && (action = highlighter_->get_delete_target()) &&
-				(it = viewer_actions()->get_position_of(action)) != viewer_actions()->end())
-		{
+		} else if(highlighter_ && (action = highlighter_->get_delete_target()) && (it = viewer_actions()->get_position_of(action)) != viewer_actions()->end()) {
 			viewer_actions()->remove_action(it);
-			viewer_actions()->remove_invalid_of(action->get_unit());
+			validate_viewer_actions();
 			highlighter_->set_mouseover_hex(highlighter_->get_mouseover_hex());
 			highlighter_->highlight();
-		}
-		else //we already check above for viewer_actions()->empty()
-		{
+		} else { //we already check above for viewer_actions()->empty()
 			it = (viewer_actions()->end() - 1);
 			action = *it;
 			viewer_actions()->remove_action(it);
-			viewer_actions()->remove_invalid_of(action->get_unit());
+			validate_viewer_actions();
 		}
 	}
 }
@@ -1051,12 +1039,11 @@ void manager::contextual_delete()
 void manager::contextual_bump_up_action()
 {
 	validate_viewer_actions();
-	if(can_enable_reorder_hotkeys())
-	{
+	if(can_enable_reorder_hotkeys()) {
 		action_ptr action = highlighter_->get_bump_target();
-		if (action)
-		{
+		if(action) {
 			viewer_actions()->bump_earlier(viewer_actions()->get_position_of(action));
+			validate_viewer_actions(); // Redraw arrows
 		}
 	}
 }
@@ -1064,12 +1051,11 @@ void manager::contextual_bump_up_action()
 void manager::contextual_bump_down_action()
 {
 	validate_viewer_actions();
-	if(can_enable_reorder_hotkeys())
-	{
+	if(can_enable_reorder_hotkeys()) {
 		action_ptr action = highlighter_->get_bump_target();
-		if (action)
-		{
+		if(action) {
 			viewer_actions()->bump_later(viewer_actions()->get_position_of(action));
+			validate_viewer_actions(); // Redraw arrows
 		}
 	}
 }
@@ -1178,7 +1164,6 @@ void manager::set_planned_unit_map()
 		return;
 	}
 
-	validate_actions_if_needed();
 	log_scope2("whiteboard", "Building planned unit map");
 	mapbuilder_.reset(new mapbuilder(*resources::units));
 	mapbuilder_->build_map();

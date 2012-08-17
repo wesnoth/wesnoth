@@ -48,6 +48,14 @@ public:
 
 	virtual void execute(bool& success, bool& complete);
 
+	/**
+	 * Check the validity of the action.
+	 *
+	 * @return the error preventing the action from being executed.
+	 * @retval OK if there isn't any error (the action can be executed.)
+	 */
+	virtual error check() const;
+
 	/** Applies temporarily the result of this action to the specified unit map. */
 	virtual void apply_temp_modifier(unit_map& unit_map);
 	/** Removes the result of this action from the specified unit map. */
@@ -55,12 +63,10 @@ public:
 
 	/** Gets called by display when drawing a hex, to allow actions to draw to the screen. */
 	virtual void draw_hex(const map_location& hex);
+	/** Redrawing function, called each time the action situation might have changed. */
+	virtual void redraw();
 
 	virtual map_location get_numbering_hex() const { return loc_; }
-
-	virtual void set_valid(bool valid);
-	virtual bool is_valid() const { return valid_; }
-	bool validate();
 
 	virtual config to_config() const;
 
@@ -73,8 +79,6 @@ protected:
 	size_t unit_underlying_id_;
 	std::string unit_id_;
 	map_location loc_;
-
-	bool valid_;
 
 private:
 	void init();

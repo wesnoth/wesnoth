@@ -57,7 +57,6 @@ recall::recall(size_t team_index, bool hidden, const unit& unit, const map_locat
 		action(team_index,hidden),
 		temp_unit_(new class unit(unit)),
 		recall_hex_(recall_hex),
-		valid_(true),
 		fake_unit_(new game_display::fake_unit(unit) )
 {
 	this->init();
@@ -67,7 +66,6 @@ recall::recall(config const& cfg, bool hidden)
 	: action(cfg,hidden)
 	, temp_unit_()
 	, recall_hex_(cfg.child("recall_hex_")["x"],cfg.child("recall_hex_")["y"])
-	, valid_(true)
 	, fake_unit_()
 {
 	// Construct and validate temp_unit_
@@ -112,7 +110,7 @@ void recall::accept(visitor& v)
 
 void recall::execute(bool& success, bool& complete)
 {
-	assert(valid_);
+	assert(valid());
 	assert(temp_unit_.get());
 	temporary_unit_hider const raii(*fake_unit_);
 	//Give back the spent gold so we don't get "not enough gold" message
@@ -127,7 +125,7 @@ void recall::execute(bool& success, bool& complete)
 
 void recall::apply_temp_modifier(unit_map& unit_map)
 {
-	assert(valid_);
+	assert(valid());
 	temp_unit_->set_location(recall_hex_);
 
 	DBG_WB << "Inserting future recall " << temp_unit_->name() << " [" << temp_unit_->id()
@@ -176,44 +174,32 @@ void recall::draw_hex(map_location const& hex)
 	}
 }
 
-bool recall::validate()
+void recall::redraw()
 {
-	DBG_WB << "validating recall on hex " << recall_hex_ << "\n";
-	//invalidate recall hex so number display is updated properly
 	resources::screen->invalidate(recall_hex_);
+}
 
+action::error recall::check() const
+{
 	//Check that destination hex is still free
 	if(resources::units->find(recall_hex_) != resources::units->end()) {
-		LOG_WB << "Recall set as invalid because target hex is occupied.\n";
-		set_valid(false);
+		return LOCATION_OCCUPIED;
 	}
 	//Check that unit to recall is still in side's recall list
-	if(is_valid()) {
-		const std::vector<unit>& recalls = (*resources::teams)[team_index()].recall_list();
-		if( find_if_matches_id(recalls, temp_unit_->id()) == recalls.end() ) {
-			set_valid(false);
-			LOG_WB << " Validate visitor: Planned recall invalid since unit is not in recall list anymore.\n";
-		}
+	const std::vector<unit>& recalls = (*resources::teams)[team_index()].recall_list();
+	if( find_if_matches_id(recalls, temp_unit_->id()) == recalls.end() ) {
+		return UNIT_UNAVAILABLE;
 	}
 	//Check that there is still enough gold to recall this unit
-	if(is_valid() && (*resources::teams)[team_index()].recall_cost() > (*resources::teams)[team_index()].gold()) {
-		LOG_WB << "Recall set as invalid, team doesn't have enough gold.\n";
-		set_valid(false);
+	if((*resources::teams)[team_index()].recall_cost() > (*resources::teams)[team_index()].gold()) {
+		return NOT_ENOUGH_GOLD;
 	}
 	//Check that there is a leader available to recall this unit
-	if(is_valid() && !find_recruiter(team_index(),get_recall_hex())) {
-		LOG_WB << "Recall set as invalid, no leader can recall this unit.\n";
-		set_valid(false);
+	if(!find_recruiter(team_index(),get_recall_hex())) {
+		return NO_LEADER;
 	}
 
-	if(!is_valid()) {
-		if(viewer_team() == team_index()) { //< Don't mess with any other team's queue -- only our own
-			LOG_WB << "Invalid recall detected, adding to actions_to_erase_.\n";
-			return false;
-		}
-	}
-
-	return true;
+	return OK;
 }
 
 ///@todo Find a better way to serialize unit_ because underlying_id isn't cutting it

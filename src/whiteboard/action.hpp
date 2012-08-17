@@ -54,6 +54,8 @@ public:
 
 	/** Gets called by display when drawing a hex, to allow actions to draw to the screen. */
 	virtual void draw_hex(const map_location& hex) = 0;
+	/** Redrawing function, called each time the action situation might have changed. */
+	virtual void redraw(){}
 
 	/** Sets whether or not the action should be drawn on the screen. */
 	void hide();
@@ -83,20 +85,6 @@ public:
 		return static_cast<int>(team_index_) + 1;
 	}
 
-	/**
-	 * Indicates to an action whether its status is invalid, and whether it should change its
-	 * display (and avoid any change to the game state) accordingly
-	 */
-	virtual void set_valid(bool valid) = 0;
-	virtual bool is_valid() const = 0;
-
-	/**
-	 * Recalculate the validity of the action.
-	 *
-	 * @return whether the action should be kept.
-	 * */
-	virtual bool validate() = 0;
-
 	/** Constructs and returns a config object representing this object. */
 	virtual config to_config() const;
 	/** Constructs an object of a subclass of wb::action using a config. Current behavior is to return a null pointer for unrecognized config. */
@@ -106,6 +94,42 @@ public:
 	{
 		ctor_err(const std::string& message) : game::error(message){}
 	};
+
+	/**
+	 * Possible errors.
+	 *
+	 * Returned by the @ref check function.
+	 */
+	enum error
+	{
+		OK,
+		INVALID_LOCATION,
+		NO_UNIT,
+		UNIT_CHANGED,
+		LOCATION_OCCUPIED,
+		TOO_FAR,
+		NO_TARGET,
+		NO_ATTACK_LEFT,
+		NOT_AN_ENEMY,
+		UNIT_UNAVAILABLE,
+		NOT_ENOUGH_GOLD,
+		NO_LEADER
+	};
+
+	/**
+	 * Check the validity of the action.
+	 *
+	 * @return the error preventing the action from being executed.
+	 * @retval OK if there isn't any error (the action can be executed.)
+	 */
+	virtual error check() const = 0;
+
+	/**
+	 * Returns whether this action is valid or not.
+	 *
+	 * @note This value is now calculated each time the function is called.
+	 */
+	bool valid(){ return check()==OK; }
 
 private:
 	/** Called by the non-virtual hide() and show(), respectively. */

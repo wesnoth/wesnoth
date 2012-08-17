@@ -60,21 +60,19 @@ std::ostream& suppose_dead::print(std::ostream &s) const
 }
 
 suppose_dead::suppose_dead(size_t team_index, bool hidden, unit& curr_unit, map_location const& loc)
-: action(team_index,hidden)
-, unit_underlying_id_(curr_unit.underlying_id())
-, unit_id_(curr_unit.id())
-, loc_(loc)
-, valid_(true)
+	: action(team_index,hidden)
+	, unit_underlying_id_(curr_unit.underlying_id())
+	, unit_id_(curr_unit.id())
+	, loc_(loc)
 {
 	this->init();
 }
 
 suppose_dead::suppose_dead(config const& cfg, bool hidden)
-: action(cfg,hidden)
-, unit_underlying_id_(0)
-, unit_id_()
-, loc_(cfg.child("loc_")["x"],cfg.child("loc_")["y"])
-, valid_(true)
+	: action(cfg,hidden)
+	, unit_underlying_id_(0)
+	, unit_id_()
+	, loc_(cfg.child("loc_")["x"],cfg.child("loc_")["y"])
 {
 	// Construct and validate unit_
 	unit_map::iterator unit_itor = resources::units->find(cfg["unit_"]);
@@ -152,45 +150,28 @@ void suppose_dead::draw_hex(const map_location& hex)
 	}
 }
 
-void suppose_dead::set_valid(bool valid)
+void suppose_dead::redraw()
 {
-	valid_ = valid;
+	resources::screen->invalidate(loc_);
 }
 
-bool suppose_dead::validate()
+action::error suppose_dead::check() const
 {
-	DBG_WB << "validating suppose_dead on hex " << loc_ << "\n";
-	//invalidate suppose-dead hex so number display is updated properly
-	resources::screen->invalidate(loc_);
-
 	if(!get_source_hex().valid()) {
-		set_valid(false);
+		return INVALID_LOCATION;
 	}
-
-	unit_map::const_iterator unit_it;
 	//Check that the unit still exists in the source hex
-	if(is_valid()) {
-		unit_it = resources::units->find(get_source_hex());
-
-		if(unit_it == resources::units->end()) {
-			set_valid(false);
-		}
+	unit_map::const_iterator unit_it = resources::units->find(get_source_hex());
+	if(unit_it == resources::units->end()) {
+		return NO_UNIT;
 	}
-
 	//check if the unit in the source hex has the same unit id as before,
 	//i.e. that it's the same unit
-	if(is_valid() && unit_id_ != unit_it->id()) {
-		set_valid(false);
+	if(unit_id_ != unit_it->id()) {
+		return UNIT_CHANGED;
 	}
 
-	if(!is_valid()) {
-		if(viewer_team() == team_index()) { //< Don't mess with any other team's queue -- only our own
-			LOG_WB << "Invalid suppose_dead detected, adding to actions_to_erase_.\n";
-			return false;
-		}
-	}
-
-	return true;
+	return OK;
 }
 
 config suppose_dead::to_config() const

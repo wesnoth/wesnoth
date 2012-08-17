@@ -57,7 +57,6 @@ recruit::recruit(size_t team_index, bool hidden, const std::string& unit_name, c
 		unit_name_(unit_name),
 		recruit_hex_(recruit_hex),
 		temp_unit_(create_corresponding_unit()), //auto-ptr ownership transfer
-		valid_(true),
 		fake_unit_(new game_display::fake_unit(*temp_unit_)), //temp_unit_ *copied* into new fake unit
 		cost_(0)
 {
@@ -69,7 +68,6 @@ recruit::recruit(config const& cfg, bool hidden)
 	, unit_name_(cfg["unit_name_"])
 	, recruit_hex_(cfg.child("recruit_hex_")["x"],cfg.child("recruit_hex_")["y"])
 	, temp_unit_()
-	, valid_(true)
 	, fake_unit_()
 	, cost_(0)
 {
@@ -106,7 +104,7 @@ void recruit::accept(visitor& v)
 
 void recruit::execute(bool& success, bool& complete)
 {
-	assert(valid_);
+	assert(valid());
 	temporary_unit_hider const raii(*fake_unit_);
 	int const side_num = team_index() + 1;
 	//Give back the spent gold so we don't get "not enough gold" message
@@ -121,7 +119,7 @@ void recruit::execute(bool& success, bool& complete)
 
 void recruit::apply_temp_modifier(unit_map& unit_map)
 {
-	assert(valid_);
+	assert(valid());
 	temp_unit_->set_location(recruit_hex_);
 
 	DBG_WB << "Inserting future recruit [" << temp_unit_->id()
@@ -161,6 +159,12 @@ void recruit::draw_hex(map_location const& hex)
 	}
 }
 
+void recruit::redraw()
+{
+	resources::screen->invalidate(recruit_hex_);
+}
+
+
 std::auto_ptr<unit> recruit::create_corresponding_unit()
 {
 	unit_type const* type = unit_types.find(unit_name_);
@@ -174,44 +178,27 @@ std::auto_ptr<unit> recruit::create_corresponding_unit()
 	return result; //ownership gets transferred to returned auto_ptr copy
 }
 
-bool recruit::validate()
+action::error recruit::check() const
 {
-	DBG_WB << "validating recruit on hex " << recruit_hex_ << "\n";
-	//invalidate recruit hex so number display is updated properly
-	resources::screen->invalidate(recruit_hex_);
-
 	//Check that destination hex is still free
 	if(resources::units->find(recruit_hex_) != resources::units->end()) {
-		LOG_WB << "Recruit set as invalid because target hex is occupied.\n";
-		set_valid(false);
+		return LOCATION_OCCUPIED;
 	}
 	//Check that unit to recruit is still in side's recruit list
-	if(is_valid()) {
-		const std::set<std::string>& recruits = (*resources::teams)[team_index()].recruits();
-		if(recruits.find(unit_name_) == recruits.end()) {
-			set_valid(false);
-			LOG_WB << " Validate visitor: Planned recruit invalid since unit is not in recruit list anymore.\n";
-		}
+	const std::set<std::string>& recruits = (*resources::teams)[team_index()].recruits();
+	if(recruits.find(unit_name_) == recruits.end()) {
+		return UNIT_UNAVAILABLE;
 	}
 	//Check that there is still enough gold to recruit this unit
-	if(is_valid() && temp_unit_->cost() > (*resources::teams)[team_index()].gold()) {
-		LOG_WB << "Recruit set as invalid, team doesn't have enough gold.\n";
-		set_valid(false);
+	if(temp_unit_->cost() > (*resources::teams)[team_index()].gold()) {
+		return NOT_ENOUGH_GOLD;
 	}
 	//Check that there is a leader available to recruit this unit
-	if(is_valid() && !find_recruiter(team_index(),get_recruit_hex())) {
-		LOG_WB << "Recruit set as invalid, no leader can recruit this unit.\n";
-		set_valid(false);
+	if(!find_recruiter(team_index(),get_recruit_hex())) {
+		return NO_LEADER;
 	}
 
-	if(!is_valid()) {
-		if(viewer_team() == team_index()) { //< Don't mess with any other team's queue -- only our own
-			LOG_WB << "Invalid recruit detected, adding to actions_to_erase_.\n";
-			return false;
-		}
-	}
-
-	return true;
+	return OK;
 }
 
 config recruit::to_config() const

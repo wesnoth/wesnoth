@@ -44,6 +44,14 @@ public:
 
 	virtual void execute(bool& success, bool& complete);
 
+	/**
+	 * Check the validity of the action.
+	 *
+	 * @return the error preventing the action from being executed.
+	 * @retval OK if there isn't any error (the action can be executed.)
+	 */
+	virtual error check() const;
+
 	/** Return the unit targeted by this action. Null if unit doesn't exist. */
 	virtual unit* get_unit() const;
 	/** @return pointer to the fake unit used only for visuals */
@@ -67,22 +75,21 @@ public:
 
 	/** Gets called by display when drawing a hex, to allow actions to draw to the screen. */
 	virtual void draw_hex(map_location const& hex);
+	/** Redrawing function, called each time the action situation might have changed. */
+	void redraw();
+
 	/** Assigns a turn number to display to this planned move. Assigning zero removes any turn number. */
 	virtual void set_turn_number(int turn) { turn_number_ = turn; }
 
 	virtual map_location get_numbering_hex() const;
 
-	virtual void set_valid(bool valid);
-	virtual bool is_valid() const { return valid_; }
-	bool validate();
-
 	virtual config to_config() const;
 
 	///@todo Make use of safe_enum idiom?
 	enum ARROW_BRIGHTNESS {ARROW_BRIGHTNESS_STANDARD, ARROW_BRIGHTNESS_HIGHLIGHTED, ARROW_BRIGHTNESS_FOCUS};
-	void set_arrow_brightness(ARROW_BRIGHTNESS x) {arrow_brightness_=x; update_arrow_style();}
+	void set_arrow_brightness(ARROW_BRIGHTNESS x) const {arrow_brightness_=x; }
 	enum ARROW_TEXTURE {ARROW_TEXTURE_VALID, ARROW_TEXTURE_INVALID};
-	void set_arrow_texture(ARROW_TEXTURE x) {arrow_texture_=x; update_arrow_style();}
+	void set_arrow_texture(ARROW_TEXTURE x) const {arrow_texture_=x; }
 
 protected:
 
@@ -102,10 +109,8 @@ protected:
 	arrow_ptr arrow_;
 	fake_unit_ptr fake_unit_;
 
-	bool valid_;
-
-	ARROW_BRIGHTNESS arrow_brightness_;
-	ARROW_TEXTURE arrow_texture_;
+	mutable ARROW_BRIGHTNESS arrow_brightness_;
+	mutable ARROW_TEXTURE arrow_texture_;
 
 private:
 	virtual void do_hide();
@@ -113,9 +118,6 @@ private:
 
 	void hide_fake_unit();
 	void show_fake_unit();
-
-	enum VALIDITY {VALID, OBSTRUCTED, WORTHLESS};
-	VALIDITY evaluate_validity();
 
 	void init();
 	void update_arrow_style();

@@ -110,7 +110,7 @@ void attack::invalidate()
 
 void attack::execute(bool& success, bool& complete)
 {
-	if (!valid_) {
+	if(!valid()) {
 		success = false;
 		//Setting complete to true signifies to side_actions to delete the planned action: nothing more to do with it.
 		complete = true;
@@ -215,40 +215,38 @@ void attack::draw_hex(const map_location& hex)
 	}
 }
 
-bool attack::validate()
+void attack::redraw()
 {
-	DBG_WB <<"validating attack from " << get_dest_hex()
-			<< " to " << target_hex_ << "\n";
-	//invalidate target hex to make sure attack indicators are updated
-	resources::screen->invalidate(get_dest_hex());
+	move::redraw();
 	resources::screen->invalidate(target_hex_);
+}
 
-	if(
-			// Verify that the unit that planned this attack exists
-			get_unit()
-			// Verify that the target hex is still valid
-			&& target_hex_.valid()
-			// Verify that the target hex isn't empty
-			&& resources::units->find(target_hex_) != resources::units->end()
-			// Verify that the attacking unit has attacks left
-			&& get_unit()->attacks_left() > 0
-			// Verify that the attacker and target are enemies
-			&& (*resources::teams)[get_unit()->side() - 1].is_enemy(resources::units->find(target_hex_)->side())
-
-			//@todo: (maybe) verify that the target hex contains the same unit that before,
-			// comparing for example the unit ID
-		) {
-		//All checks pass, so call validate on the superclass
-		return move::validate();
-	} else {
-		set_valid(false);
-
-		if(viewer_team() == team_index()) { //< Don't mess with any other team's queue -- only our own
-			LOG_WB << "Worthless invalid attack detected, adding to actions_to_erase_.\n";
-			return false;
-		}
+action::error attack::check() const
+{
+	// Verify that the unit that planned this attack exists
+	if(!get_unit()) {
+		return NO_UNIT;
 	}
-	return true;
+	// Verify that the target hex is still valid
+	if(!target_hex_.valid()) {
+		return INVALID_LOCATION;
+	}
+	// Verify that the target hex isn't empty
+	if(resources::units->find(target_hex_) == resources::units->end()){
+		return NO_TARGET;
+	}
+	// Verify that the attacking unit has attacks left
+	if(get_unit()->attacks_left() <= 0) {
+		return NO_ATTACK_LEFT;
+	}
+	// Verify that the attacker and target are enemies
+	if(!(*resources::teams)[get_unit()->side() - 1].is_enemy(resources::units->find(target_hex_)->side())){
+		return NOT_AN_ENEMY;
+	}
+	//@todo: (maybe) verify that the target hex contains the same unit that before,
+	// comparing for example the unit ID
+
+	return move::check();
 }
 
 config attack::to_config() const

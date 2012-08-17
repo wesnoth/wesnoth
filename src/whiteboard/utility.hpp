@@ -115,34 +115,20 @@ bool has_actions();
  */
 typedef boost::function<bool(team&)> team_filter;
 
-/**
- * Callable object class to filter turns and teams.
- *
- * The first argument is the team to consider.
- * The second argument is the relative turn number.
- */
-typedef boost::function<bool(team&,size_t)> turn_team_filter;
-
 /** Returns whether a given team's plan is visible. */
-bool team_has_visible_plan(team&...);
-
-/** Always returns true. */
-inline bool default_team_filter(team&...){ return true; }
+bool team_has_visible_plan(team&);
 
 /**
  * Apply a function to all the actions of the whiteboard.
  *
  * The actions are processed chronologically.
- * The second parameter is a @ref turn_team_filter, it is called for each team, if it returns false, the actions of this team won't be processed.
- * The third parameter is also a @ref turn_team_filter, it is called for each team after visiting its actions, if it returns false, for_each_action returns.
+ * The second parameter is a @ref team_filter, it is called for each team, if it returns false, the actions of this team won't be processed.
  *
  * @param function the function to execute.
- * @param pre_team_filter select whether a team is visited (default to @ref team_has_visible_plan).
- * @param post_team_filter stop condition, called after visiting each team (default to @ref default_team_filter).
+ * @param team_filter select whether a team is visited (default to @ref team_has_visible_plan).
  */
 void for_each_action(boost::function<void(action_ptr)> function,
-                     turn_team_filter pre_team_filter = team_has_visible_plan,
-                     turn_team_filter post_team_filter = default_team_filter);
+                     team_filter team_filter = team_has_visible_plan);
 
 /**
  * Find the first action occuring on a given hex.
@@ -151,10 +137,10 @@ void for_each_action(boost::function<void(action_ptr)> function,
  * The second parameter is a @ref team_filter, it is called for each team, if it returns false, the actions of this team won't be considered.
  *
  * @param hex where to search for an action.
- * @param pre_team_filter select whether a team is visited (default to @ref team_has_visible_plan).
+ * @param team_filter select whether a team is visited (default to @ref team_has_visible_plan).
  * @retval action_ptr() when no action verifying the team_filter are present on the given hex.
  */
-action_ptr find_action_at(map_location hex, team_filter pre_team_filter = team_has_visible_plan);
+action_ptr find_action_at(map_location hex, team_filter team_filter = team_has_visible_plan);
 
 /**
  * Find the actions of an unit.
