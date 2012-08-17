@@ -176,6 +176,46 @@ void recall::draw_hex(map_location const& hex)
 	}
 }
 
+bool recall::validate()
+{
+	DBG_WB << "validating recall on hex " << recall_hex_ << "\n";
+	//invalidate recall hex so number display is updated properly
+	resources::screen->invalidate(recall_hex_);
+
+	//Check that destination hex is still free
+	if(resources::units->find(recall_hex_) != resources::units->end()) {
+		LOG_WB << "Recall set as invalid because target hex is occupied.\n";
+		set_valid(false);
+	}
+	//Check that unit to recall is still in side's recall list
+	if(is_valid()) {
+		const std::vector<unit>& recalls = (*resources::teams)[team_index()].recall_list();
+		if( find_if_matches_id(recalls, temp_unit_->id()) == recalls.end() ) {
+			set_valid(false);
+			LOG_WB << " Validate visitor: Planned recall invalid since unit is not in recall list anymore.\n";
+		}
+	}
+	//Check that there is still enough gold to recall this unit
+	if(is_valid() && (*resources::teams)[team_index()].recall_cost() > (*resources::teams)[team_index()].gold()) {
+		LOG_WB << "Recall set as invalid, team doesn't have enough gold.\n";
+		set_valid(false);
+	}
+	//Check that there is a leader available to recall this unit
+	if(is_valid() && !find_recruiter(team_index(),get_recall_hex())) {
+		LOG_WB << "Recall set as invalid, no leader can recall this unit.\n";
+		set_valid(false);
+	}
+
+	if(!is_valid()) {
+		if(viewer_team() == team_index()) { //< Don't mess with any other team's queue -- only our own
+			LOG_WB << "Invalid recall detected, adding to actions_to_erase_.\n";
+			return false;
+		}
+	}
+
+	return true;
+}
+
 ///@todo Find a better way to serialize unit_ because underlying_id isn't cutting it
 config recall::to_config() const
 {

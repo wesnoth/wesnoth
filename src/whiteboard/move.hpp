@@ -33,8 +33,6 @@ namespace wb {
 class move : public action
 {
 public:
-	friend class validate_visitor;
-
 	move(size_t team_index, bool hidden, unit& mover, const pathfind::marked_route& route,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
 	move(config const&, bool hidden); // For deserialization
@@ -76,6 +74,7 @@ public:
 
 	virtual void set_valid(bool valid);
 	virtual bool is_valid() const { return valid_; }
+	bool validate();
 
 	virtual config to_config() const;
 
@@ -114,6 +113,9 @@ private:
 
 	void hide_fake_unit();
 	void show_fake_unit();
+
+	enum VALIDITY {VALID, OBSTRUCTED, WORTHLESS};
+	VALIDITY evaluate_validity();
 
 	void init();
 	void update_arrow_style();

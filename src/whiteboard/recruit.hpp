@@ -36,8 +36,6 @@ public:
 	recruit(config const&, bool hidden); // For deserialization
 	virtual ~recruit();
 
-	friend class validate_visitor;
-
 	virtual std::ostream& print(std::ostream& s) const;
 
 	virtual void accept(visitor& v);
@@ -70,6 +68,7 @@ public:
 	 */
 	virtual void set_valid(bool valid) { valid_ = valid; }
 	virtual bool is_valid() const { return valid_; }
+	bool validate();
 
 	virtual config to_config() const;
 

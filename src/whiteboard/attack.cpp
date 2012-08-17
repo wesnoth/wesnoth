@@ -20,6 +20,7 @@
 #include "attack.hpp"
 
 #include "visitor.hpp"
+#include "utility.hpp"
 
 #include "arrow.hpp"
 #include "play_controller.hpp"
@@ -212,6 +213,42 @@ void attack::draw_hex(const map_location& hex)
 					image::get_image("whiteboard/attack-indicator-dst-" + direction_text + ".png", image::SCALED_TO_HEX));
 		}
 	}
+}
+
+bool attack::validate()
+{
+	DBG_WB <<"validating attack from " << get_dest_hex()
+			<< " to " << target_hex_ << "\n";
+	//invalidate target hex to make sure attack indicators are updated
+	resources::screen->invalidate(get_dest_hex());
+	resources::screen->invalidate(target_hex_);
+
+	if(
+			// Verify that the unit that planned this attack exists
+			get_unit()
+			// Verify that the target hex is still valid
+			&& target_hex_.valid()
+			// Verify that the target hex isn't empty
+			&& resources::units->find(target_hex_) != resources::units->end()
+			// Verify that the attacking unit has attacks left
+			&& get_unit()->attacks_left() > 0
+			// Verify that the attacker and target are enemies
+			&& (*resources::teams)[get_unit()->side() - 1].is_enemy(resources::units->find(target_hex_)->side())
+
+			//@todo: (maybe) verify that the target hex contains the same unit that before,
+			// comparing for example the unit ID
+		) {
+		//All checks pass, so call validate on the superclass
+		return move::validate();
+	} else {
+		set_valid(false);
+
+		if(viewer_team() == team_index()) { //< Don't mess with any other team's queue -- only our own
+			LOG_WB << "Worthless invalid attack detected, adding to actions_to_erase_.\n";
+			return false;
+		}
+	}
+	return true;
 }
 
 config attack::to_config() const

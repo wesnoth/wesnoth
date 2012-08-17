@@ -36,7 +36,6 @@ namespace wb
  *   * Some invalid actions are deleted.
  */
 class validate_visitor
-	: private visitor
 {
 public:
 	explicit validate_visitor(unit_map& unit_map);
@@ -47,17 +46,6 @@ public:
 	bool validate_actions();
 
 private:
-	virtual void visit(move_ptr move);
-	virtual void visit(attack_ptr attack);
-	virtual void visit(recruit_ptr recruit);
-	virtual void visit(recall_ptr recall);
-	virtual void visit(suppose_dead_ptr sup_d);
-
-	enum VALIDITY {VALID, OBSTRUCTED, WORTHLESS};
-	VALIDITY evaluate_move_validity(move_ptr);
-
-	bool no_previous_invalids(side_actions::iterator const&);
-
 	struct helper: public mapbuilder
 	{
 		helper(unit_map& umap, validate_visitor& parent)

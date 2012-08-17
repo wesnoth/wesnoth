@@ -421,6 +421,90 @@ void move::set_valid(bool valid)
 	}
 }
 
+// This helper function determines whether there are any invalid actions planned for (*itor)->get_unit()
+// that occur earlier in viewer_actions() than itor.
+static bool no_previous_invalids(side_actions::iterator const& itor)
+{
+	if(itor == viewer_actions()->begin()) {
+		return true;
+	}
+	side_actions::iterator prev_action_of_unit = viewer_actions()->find_last_action_of(*((*itor)->get_unit()),itor-1);
+	if(prev_action_of_unit == viewer_actions()->end()) {
+		return true;
+	}
+	return (*prev_action_of_unit)->is_valid();
+}
+
+move::VALIDITY move::evaluate_validity()
+{
+	if(!(get_source_hex().valid() && get_dest_hex().valid())) {
+		return WORTHLESS;
+	}
+
+	//Check that the unit still exists in the source hex
+	unit_map::iterator unit_it;
+	unit_it = resources::units->find(get_source_hex());
+	if(unit_it == resources::units->end()) {
+		return WORTHLESS;
+	}
+
+	//check if the unit in the source hex has the same unit id as before,
+	//i.e. that it's the same unit
+	if(unit_id_ != unit_it->id() || unit_underlying_id_ != unit_it->underlying_id()) {
+		return WORTHLESS;
+	}
+
+	//If the path has at least two hexes (it can have less with the attack subclass), ensure destination hex is free
+	if(get_route().steps.size() >= 2 && get_visible_unit(get_dest_hex(),resources::teams->at(viewer_team())) != NULL) {
+		return WORTHLESS;
+	}
+
+	//check that the path is good
+	if(get_source_hex() != get_dest_hex()) { //skip zero-hex move used by attack subclass
+		// Mark the plain route to see if the move can still be done in one turn,
+		// which is always the case for planned moves
+		pathfind::marked_route checked_route = pathfind::mark_route(get_route().route);
+
+		if(checked_route.marks[checked_route.steps.back()].turns != 1) {
+			return OBSTRUCTED;
+		}
+	}
+
+	return VALID;
+}
+
+bool move::validate()
+{
+	DBG_WB <<"validating move from " << get_source_hex()
+			<< " to " << get_dest_hex() << "\n";
+	//invalidate start and end hexes so number display is updated properly
+	resources::screen->invalidate(get_source_hex());
+	resources::screen->invalidate(get_dest_hex());
+
+	switch(evaluate_validity()) { //< private helper fcn
+	case VALID:
+		// Now call the superclass to apply the result of this move to the unit map,
+		// so that further pathfinding takes it into account.
+		set_valid(true);
+		break;
+	case OBSTRUCTED:
+		set_valid(false);
+		break;
+	case WORTHLESS: {
+		set_valid(false);
+		// Erase only if no previous invalid actions are planned for this unit -- otherwise, just mark it invalid.
+		// Otherwise, we wouldn't be able to keep invalid actions that depend on previous invalid actions.
+		side_actions::iterator itor = viewer_actions()->get_position_of(shared_from_this());
+		if(viewer_team() == team_index() && no_previous_invalids(itor)) { //< Don't mess with any other team's queue -- only our own
+			LOG_WB << "Worthless invalid move detected, adding to actions_to_erase_.\n";
+			return false;
+		}
+		break;
+	}
+	}
+	return true;
+}
+
 config move::to_config() const
 {
 	config final_cfg = action::to_config();

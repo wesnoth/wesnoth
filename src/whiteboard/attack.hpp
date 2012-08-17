@@ -28,8 +28,6 @@ namespace wb
 class attack: public move
 {
 public:
-	friend class validate_visitor;
-
 	attack(size_t team_index, bool hidden, unit& mover, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
 	attack(config const&, bool hidden); // For deserialization
@@ -50,6 +48,8 @@ public:
 	virtual void draw_hex(const map_location& hex);
 
 	map_location const& get_target_hex() const {return target_hex_; }
+
+	bool validate();
 
 	virtual config to_config() const;
 

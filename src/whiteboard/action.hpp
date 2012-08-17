@@ -90,6 +90,13 @@ public:
 	virtual void set_valid(bool valid) = 0;
 	virtual bool is_valid() const = 0;
 
+	/**
+	 * Recalculate the validity of the action.
+	 *
+	 * @return whether the action should be kept.
+	 * */
+	virtual bool validate() = 0;
+
 	/** Constructs and returns a config object representing this object. */
 	virtual config to_config() const;
 	/** Constructs an object of a subclass of wb::action using a config. Current behavior is to return a null pointer for unrecognized config. */

@@ -42,6 +42,7 @@ struct dummy_action: action{
 	fake_unit_ptr get_fake_unit(){ return fake_unit_ptr(); }
 	void set_valid(bool){}
 	bool is_valid() const { return true; }
+	bool validate(){ return action_ptr(); }
 };
 
 BOOST_AUTO_TEST_SUITE( whiteboard_side_actions_container )
