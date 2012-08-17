@@ -415,6 +415,60 @@ side_actions::iterator side_actions::queue_action(size_t turn_num, action_ptr ac
 	return result;
 }
 
+namespace
+{
+	/**
+	 * Check whether a move is swapable with a given action.
+	 */
+	struct swapable_with_move: public visitor
+	{
+	public:
+		swapable_with_move(side_actions &sa, side_actions::iterator position, move_ptr second): sa_(sa), valid_(false), position_(position), second_(second) {}
+		bool valid() const { return valid_; }
+
+		void visit(move_ptr first) {
+			valid_ = second_->get_dest_hex() != first->get_source_hex();
+		}
+
+		void visit(attack_ptr first) {
+			visit(boost::static_pointer_cast<move>(first));
+		}
+
+		void visit(recruit_ptr first) {
+			check_recruit_recall(first->get_recruit_hex());
+		}
+
+		void visit(recall_ptr first) {
+			check_recruit_recall(first->get_recall_hex());
+		}
+
+		void visit(suppose_dead_ptr) {
+			valid_ = true;
+		}
+
+	private:
+		side_actions &sa_;
+		bool valid_;
+		side_actions::iterator position_;
+		move_ptr second_;
+
+		void check_recruit_recall(const map_location &loc) {
+			unit const* leader = second_->get_unit();
+			if(leader->can_recruit() && can_recruit_on(*leader, loc)) {
+				if(unit const* backup_leader = find_backup_leader(*leader)) {
+					side_actions::iterator it = sa_.find_first_action_of(*backup_leader);
+					if(!(it == sa_.end() || position_ < it)) {
+						return; //backup leader but he moves before us, refuse bump
+					}
+				} else {
+					return; //no backup leader, refuse bump
+				}
+			}
+			valid_ = true;
+		}
+	};
+}
+
 //move action toward front of queue
 side_actions::iterator side_actions::bump_earlier(side_actions::iterator position)
 {
@@ -431,46 +485,19 @@ side_actions::iterator side_actions::bump_earlier(side_actions::iterator positio
 	}
 
 	side_actions::iterator previous = position - 1;
+
 	//Verify we're not moving an action out-of-order compared to other action of the same unit
-	//@todo move this code in a visitor
-	{
-		unit const* previous_ptr = (*previous)->get_unit();
-		unit const* current_ptr = (*position)->get_unit();
-		if(previous_ptr && current_ptr && previous_ptr == current_ptr) {
-			return end();
-		}
+	unit const* previous_ptr = (*previous)->get_unit();
+	unit const* current_ptr = (*position)->get_unit();
+	if(previous_ptr && current_ptr && previous_ptr == current_ptr) {
+		return end();
 	}
 
-	{
-		using boost::dynamic_pointer_cast;
-		//If this is a move, verify that it doesn't depend on a previous move for freeing its destination
-		if(move_ptr bump_earlier = dynamic_pointer_cast<move>(*position)) {
-			if(move_ptr previous_move = dynamic_pointer_cast<move>(*previous)) {
-				if(bump_earlier->get_dest_hex() == previous_move->get_source_hex()) {
-					return end();
-				}
-			}
-			//Also check the case of reordering a leader's move with respect to a recruit that depend on him
-			map_location recruit_recall_loc;
-			if(recruit_ptr previous_recruit = dynamic_pointer_cast<recruit>(*previous)) {
-				recruit_recall_loc = previous_recruit->get_recruit_hex();
-			} else if(recall_ptr previous_recall = dynamic_pointer_cast<recall>(*previous)) {
-				recruit_recall_loc = previous_recall->get_recall_hex();
-			}
-			if(recruit_recall_loc.valid()) {
-				unit const* leader = bump_earlier->get_unit();
-				if(leader->can_recruit()
-					&& can_recruit_on(*leader, recruit_recall_loc)) {
-					if(unit const* backup_leader = find_backup_leader(*leader)) {
-						side_actions::iterator it = find_first_action_of(*backup_leader);
-						if(!(it == end() || position < it)) {
-							return end(); //backup leader but he moves before us, refuse bump
-						}
-					} else {
-						return end(); //no backup leader, refuse bump
-					}
-				}
-			}
+	if(move_ptr second = boost::dynamic_pointer_cast<move>(*position)) {
+		swapable_with_move check(*this, position, second);
+		(*previous)->accept(check);
+		if(!check.valid()) {
+			return end();
 		}
 	}
 
