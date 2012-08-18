@@ -143,7 +143,6 @@
 		B52EE91B12135AC300CFBDAB /* recall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE90A12135AC300CFBDAB /* recall.cpp */; };
 		B52EE91C12135AC300CFBDAB /* recruit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE90C12135AC300CFBDAB /* recruit.cpp */; };
 		B52EE91D12135AC300CFBDAB /* side_actions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE90E12135AC300CFBDAB /* side_actions.cpp */; };
-		B52EE91E12135AC300CFBDAB /* validate_visitor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE91112135AC300CFBDAB /* validate_visitor.cpp */; };
 		B52EE92012135AC300CFBDAB /* action.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8FE12135AC300CFBDAB /* action.cpp */; };
 		B52EE92112135AC300CFBDAB /* attack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE90012135AC300CFBDAB /* attack.cpp */; };
 		B52EE92312135AC300CFBDAB /* manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE90412135AC300CFBDAB /* manager.cpp */; };
@@ -151,7 +150,6 @@
 		B52EE92612135AC300CFBDAB /* recall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE90A12135AC300CFBDAB /* recall.cpp */; };
 		B52EE92712135AC300CFBDAB /* recruit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE90C12135AC300CFBDAB /* recruit.cpp */; };
 		B52EE92812135AC300CFBDAB /* side_actions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE90E12135AC300CFBDAB /* side_actions.cpp */; };
-		B52EE92912135AC300CFBDAB /* validate_visitor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE91112135AC300CFBDAB /* validate_visitor.cpp */; };
 		B52EE96112135B6B00CFBDAB /* client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE93812135B6B00CFBDAB /* client.cpp */; };
 		B52EE96312135B6B00CFBDAB /* asio_client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE94012135B6B00CFBDAB /* asio_client.cpp */; };
 		B52EE96412135B6B00CFBDAB /* asio_listener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE94212135B6B00CFBDAB /* asio_listener.cpp */; };
@@ -1192,8 +1190,6 @@
 		B52EE90E12135AC300CFBDAB /* side_actions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = side_actions.cpp; sourceTree = "<group>"; };
 		B52EE90F12135AC300CFBDAB /* side_actions.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = side_actions.hpp; sourceTree = "<group>"; };
 		B52EE91012135AC300CFBDAB /* typedefs.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = typedefs.hpp; sourceTree = "<group>"; };
-		B52EE91112135AC300CFBDAB /* validate_visitor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = validate_visitor.cpp; sourceTree = "<group>"; };
-		B52EE91212135AC300CFBDAB /* validate_visitor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = validate_visitor.hpp; sourceTree = "<group>"; };
 		B52EE91412135AC300CFBDAB /* visitor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = visitor.hpp; sourceTree = "<group>"; };
 		B52EE92F12135B6B00CFBDAB /* ana.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ana.hpp; sourceTree = "<group>"; };
 		B52EE93012135B6B00CFBDAB /* binary_streams.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = binary_streams.hpp; sourceTree = "<group>"; };
@@ -2665,8 +2661,6 @@
 				B52EE90E12135AC300CFBDAB /* side_actions.cpp */,
 				B52EE90F12135AC300CFBDAB /* side_actions.hpp */,
 				B52EE91012135AC300CFBDAB /* typedefs.hpp */,
-				B52EE91112135AC300CFBDAB /* validate_visitor.cpp */,
-				B52EE91212135AC300CFBDAB /* validate_visitor.hpp */,
 				B52EE91412135AC300CFBDAB /* visitor.hpp */,
 			);
 			path = whiteboard;
@@ -4057,7 +4051,6 @@
 				B52EE91B12135AC300CFBDAB /* recall.cpp in Sources */,
 				B52EE91C12135AC300CFBDAB /* recruit.cpp in Sources */,
 				B52EE91D12135AC300CFBDAB /* side_actions.cpp in Sources */,
-				B52EE91E12135AC300CFBDAB /* validate_visitor.cpp in Sources */,
 				B52EE9A6121363EB00CFBDAB /* core.cpp in Sources */,
 				B52EE9AD1213640400CFBDAB /* manager.cpp in Sources */,
 				B52EE9AE1213640400CFBDAB /* validation.cpp in Sources */,
@@ -4525,7 +4518,6 @@
 				B52EE92612135AC300CFBDAB /* recall.cpp in Sources */,
 				B52EE92712135AC300CFBDAB /* recruit.cpp in Sources */,
 				B52EE92812135AC300CFBDAB /* side_actions.cpp in Sources */,
-				B52EE92912135AC300CFBDAB /* validate_visitor.cpp in Sources */,
 				B52EE96112135B6B00CFBDAB /* client.cpp in Sources */,
 				B52EE96312135B6B00CFBDAB /* asio_client.cpp in Sources */,
 				B52EE96412135B6B00CFBDAB /* asio_listener.cpp in Sources */,
