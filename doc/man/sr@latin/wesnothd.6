@@ -1,0 +1,295 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTHD 6 2011 wesnothd "Višeigrački mrežni domar \(dqBoja za Vesnot\(dq"
+.
+.SH IME
+.
+wesnothd \-\- višeigrački mrežni domar "Boja za \fBVesnot\fP"
+.
+.SH PREGLED
+.
+\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIputanja\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
+\fIbroj\fP\|] [\|\fB\-T\fP \fIbroj\fP\|]
+.br
+\fBwesnothd\fP \fB\-V\fP
+.
+.SH OPIS
+.
+Upravlja višeigračkim partijama "Boja za Vesnot". Pogledajte
+http://www.wesnoth.org/wiki/ServerAdministration za naredbe koje server
+prihvata preko klijenta (/query ...) ili fifoa.
+.
+.SH OPCIJE
+.
+.TP 
+\fB\-c\ \fP\fIputanja\fP\fB,\ \-\-config\fP\fI\ putanja\fP
+kazuje domaru gde se nalazi postavna datoteka. Za sintaksu pogledajte
+odeljak \fBPOSTAVA SERVERA\fP ispod. Postavu možete ponovo učitati slanjem
+SIGHUP serverskom procesu.
+.TP 
+\fB\-d, \-\-daemon\fP
+pokreće wesnothd kao domar.
+.TP 
+\fB\-h, \-\-help\fP
+govori vam šta čine opcije komandne linije.
+.TP 
+\fB\-\-log\-\fP\fInivo\fP\fB=\fP\fIdomen1\fP\fB,\fP\fIdomen2\fP\fB,\fP\fI...\fP
+postavlja nivo ozbiljnosti domena beleženja. \fBall\fP se može upotrebiti za
+poklapanje svih domena, a dostupni su: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Podrazumevano se koristi \fBerror\fP, osim za domen \fBserver\fP gde
+\fBinfo\fP.
+.TP 
+\fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
+vezuje server za navedeni port. Ako se port ne navede, podrazumevano se
+koristi \fB15000\fP.
+.TP 
+\fB\-t\ \fP\fIbroj\fP\fB,\ \-\-threads\fP\fI\ broj\fP
+postavlja najveći broj radnih niti na čekanju za mrežni U/I (podrazumevano:
+\fB5\fP,\ najviše:\ \fB30\fP).
+.TP 
+\fB\-T\ \fP\fIbroj\fP\fB,\ \-\-max\-threads\fP\fI\ broj\fP
+postavlja najveći broj radnih niti koje mogu biti stvorene; ako se zada
+\fB0\fP, nema ograničenja (podrazumevano: \fB0\fP).
+.TP 
+\fB\-V, \-\-version\fP
+prikazuje broj verzije i izlazi.
+.TP 
+\fB\-v, \-\-verbose\fP
+uključuje ispravljačko beleženje.
+.
+.SH "POSTAVA SERVERA"
+.
+.SS "Opšta sintaksa je:"
+.
+.P
+[\fIoznaka\fP]
+.IP
+\fIključ\fP="\fIvrednost\fP"
+.IP
+\fIključ\fP="\fIvrednost\fP,\fIvrednost\fP,..."
+.P
+[/\fIoznaka\fP]
+.
+.SS "Globalni ključevi:"
+.
+.TP 
+\fBallow_remote_shutdown\fP
+ako se zada \fBno\fP (podrazumevano), zahtevi za gašenje i ponovno pokretanje
+se ignorišu osim ako stižu iz fifoa. Zadajte \fByes\fP da dozvolite udaljeno
+gašenje na /query administratora.
+.TP 
+\fBban_save_file\fP
+Puna ili relativna putanja do (gzipovane) datoteke koju server može da čita
+i piše. Zabrane će biti zapisivane u nju, i čitane po narednom pokretanju
+servera.
+.TP 
+\fBcompress_stored_rooms\fP
+određuje da li datoteku soba treba čitati i pisati u kompresovanom
+obliku. Podrazumevano \fByes\fP.
+.TP 
+\fBconnections_allowed\fP
+broj dozvoljenih veza sa iste IP adrese, \fB0\fP znači bezbroj (podrazumevno:
+\fB5\fP)
+.TP 
+\fBdisallow_names\fP
+imena/nadimci koje server ne prihvata. Prihvataju se \fB*\fP i \fB?\fP kao džokeri
+(pogledajte \fBglob\fP(7) za više detalja). Podrazumevane vrednosti, koje se
+koriste ako se ništa ne zada, su:
+\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
+.TP 
+\fBfifo_path\fP
+putanja do fifoa iz kojeg server može da čita naredbe (iste kao /query
+\&... iz igre). Ako nije zadata, spada na ugrađenu (podrazumevano:
+\fB/var/run/socket/wesnothd/socket\fP).
+.TP 
+\fBmax_messages\fP
+broj dozvoljenih poruka za vreme \fBmessages_time_period\fP (podrazumevano:
+\fB4\fP)
+.TP 
+\fBmessages_time_period\fP
+vremenski period u sekundama koji se razmatra za otkrivanje poplave poruka
+(podrazumevano: \fB10\fP sekundi)
+.TP 
+\fBmotd\fP
+poruka dana
+.TP 
+\fBnew_room_policy\fP
+određuje ko može da stvara nove sobe na serveru. Moguće vrednosti su
+\fBeveryone\fP, \fBregistered\fP, \fBadmin\fP i \fBnobody\fP, dajući dozvolu, redom,
+svima, registrovanim korisnicima, administratorima i nikome. Podrazumevana
+vrednost je \fBeveryone\fP.
+.TP 
+\fBpasswd\fP
+lozinka za sticanje administratorskih ovlašćenja (putem \fB/query admin
+\fP\fIlozinka\fP).
+.TP 
+\fBreplay_save_path\fP
+Direktorijum gde server smešta snimke partija (ne zaboravite prateće
+/!). Podrazumevano je \*(rq (prazno), što znači direktorijum u kojem je
+wesnothd pokrenut.
+.TP 
+\fBrestart_command\fP
+Naredba kojom server pokreće novi serverski proces pri naredbi
+\fBrestart\fP. (Može se izdati samo preko fifoa. Vidi postavku
+\fBallow_remote_shutdown\fP.)
+.TP 
+\fBroom_save_file\fP
+putanja do datoteke gde se skladište podaci sobe. Ovu datoteku čita server
+pri pokretanju, i kasnije upisuje. Ako je prazno ili nije zadato, sobe se ne
+učitavaju niti upisuju.
+.TP 
+\fBsave_replays\fP
+Određuje da li server automatski upisuje snimke partija (podrazumevno:
+\fBfalse\fP).
+.TP 
+\fBversions_accepted\fP
+Zapetama razdvojen spisak niski verzija koje server prihvata. Prihvataju se
+\fB*\fP i \fB?\fP kao džokeri (podrazumevana je verzija klijenta koja odgovara
+verziji servera)
+.br
+Primer: \fBversions_accepted="*"\fP prihvata bilo koju nisku verzije.
+.TP  
+\fBuser_handler\fP
+Ime rukovaoca korisnicima. Trenutno dostupni su \fBforum\fP (server se povezuje
+sa phpBB bazom podataka foruma) i \fBsample\fP (primerna izvedba sučelja
+rukovaoca korisnicima, ludi ste ako ovo upotrebite negde
+zaozbiljno). Podrazumevana vrednost je \fBforum\fP. Takođe morate dodati
+odeljak \fB[user_handler]\fP, v. ispod.
+.
+.SS "Globalne oznake:"
+.
+.P
+\fB[redirect]\fP oznaka za navođenje servera na koji se preusmeravaju neke
+verzije klijenta
+.RS
+.TP 
+\fBhost\fP
+adresa servera na koji se preusmerava
+.TP 
+\fBport\fP
+port na koji se povezuje
+.TP 
+\fBversion\fP
+zapetama razdvojen spisak verzija koje se preusmeravaju. Ponaša se isto kao
+i \fBversions_accepted\fP u pogledu džokera
+.RE
+.P
+\fB[ban_time]\fP oznaka za određivanje zgodnih ključnih reči za privremene
+zabrane.
+.RS
+.TP 
+\fBname\fP
+Ime koje upućuje na trajanje zabrane.
+.TP 
+\fBtime\fP
+Trajanje. Format je %d[%s[%d%s[...]]] gde s iz %s označava sekunde, m
+minute, h sate, D dane, M mesece, Y godine, a d je broj. Ako nije dat
+modifikator, pretpostavljaju se minuti (m). Primer: \fBtime="1D12h30m"\fP znači
+zabranu u trajanju od jednog dana, 12 sati i 30 minuta.
+.RE
+.P
+\fB[proxy]\fP oznaka koja govori serveru da se ponaša kao posrednik i
+prosleđuje zahteve povezanih klijenata na određeni server. Prihvata iste
+ključeve kao i \fB[redirect]\fP
+.RE
+.P
+\fB[user_handler]\fP podešava rukovalac korisnicima. Dostupnost ključeva zavisi
+od toga koji je rukovalac postavljen ključem \fBuser_handler\fP. Ako u postavi
+nema odeljka \fB[user_handler]\fP, server neće pružati uslugu registrovanja
+nadimaka.
+.RS
+.TP  
+\fBdb_host\fP
+(za user_handler=forum) ime domaćina servera baze podataka
+.TP  
+\fBdb_name\fP
+(za user_handler=forum) ime baze podataka
+.TP  
+\fBdb_user\fP
+(za user_handler=forum) ime korisnika pod kojim se prijavljuje u bazu
+podataka
+.TP  
+\fBdb_password\fP
+(za user_handler=forum) lozinka zadatog korisnika
+.TP  
+\fBdb_users_table\fP
+(za user_handler=forum) ime tabele u kojoj phpBB forumi upisuju podatke o
+korisnicima. Najverovatnije će to biti <prefiks\-tabele>_users
+(npr. phpbb3_users).
+.TP  
+\fBdb_extra_table\fP
+(za user_handler=forum) ime tabele u koju wesnothd upisuje svoje podatke o
+korisnicima. Ovu tabelu moraćete ručno da napravite, npr.: \fBCREATE TABLE
+<ime\-tabele>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT
+UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
+0);\fP
+.TP  
+\fBuser_expiration\fP
+(za user_handler=sample) vreme po kojem registrovani nadimak ističe (u
+danima).
+.RE
+.P
+\fB[mail]\fP podešava SMTP server kroz koji rukovalac korisnicima šalje
+poštu. Trenutno samo za primerni rukovalac.
+.RS
+.TP  
+\fBserver\fP
+Ime domaćina udaljenog servera
+.TP  
+\fBusername\fP
+Korisničko ime za prijavljivanje na poštanski server.
+.TP  
+\fBpassword\fP
+Korisnikova lozinka.
+.TP  
+\fBfrom_address\fP
+Adresa za odgovore na vašu poštu.
+.TP  
+\fBmail_port\fP
+Port na kojem sluša poštanski server. Podrazumevano 25.
+.
+.SH "IZLAZNO STANJE"
+.
+Redovno izlazno stanje je 0, kada je server pravilno ugašen. Stanje 2
+ukazuje na grešku u opcijama komandne linije.
+.
+.SH AUTOR
+.
+Napisao Dejvid Vajt (David White) <davidnwhite@verizon.net>. Uredili
+Nils Knojper (Nils Kneuper) <crazy\-ivanovic@gmx.net>, ott
+<ott@gaon.net>, Soliton <soliton.de@gmail.com> i Tomas
+Baumhauer (Thomas Baumhauer) <thomas.baumhauer@gmail.com>. Ovu
+uputnu stranicu prvobitno je napisao Siril Butor (Cyril Bouthors)
+<cyril@bouthors.org>.
+.br
+Posetite zvaničnu domaću stranicu: http://www.wesnoth.org/
+.
+.SH "AUTORSKA PRAVA"
+.
+Autorska prava \(co 2003\-2011 Dejvid Vajt (David White)
+<davidnwhite@verizon.net>.
+.br
+Ovo je slobodan softver; licenciran je pod uslovima OJL verzije 2  (GPLv2),
+koju izdaje Zadužbina za slobodni softver. Nema BILO KAKVE GARANCIJE; čak ni
+za KOMERCIJALNU VREDNOST ili ISPUNJAVANJE ODREĐENE POTREBE.
+.
+.SH "POGLEDATI JOŠ"
+.
+\fBwesnoth\fP(6).

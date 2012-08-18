@@ -1,0 +1,259 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTHD 6 2011 wesnothd "Battle for Wesnoth マルチプレイヤー・ネットワーク・デーモン"
+.
+.SH 名前
+.
+wesnothd \- Battle for \fBWesnoth\fP マルチプレイヤー・ネットワーク・デーモン
+.
+.SH 書式
+.
+\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
+\fInumber\fP\|] [\|\fB\-T\fP \fInumber\fP\|]
+.br
+\fBwesnothd\fP \fB\-V\fP
+.
+.SH 説明
+.
+Battle for Wesnoth のマルチプレイヤーゲームを管理する。 wesnoth クライアント(/query ...)や fifo
+を通して、サーバがどのようなコマンドを受けつけるかについては
+http://www.wesnoth.org/wiki/ServerAdministration を参照。
+.
+.SH オプション
+.
+.TP 
+\fB\-c\ \fP\fIpath\fP\fB,\ \-\-config\fP\fI\ path\fP
+wesnothd が使用する設定ファイルがどこにあるかを伝える。文法については後述の \fBサーバー設定\fP の章を参照。サーバープロセスに SIGHUP
+を送ることによって設定をリロードすることができる。
+.TP 
+\fB\-d, \-\-daemon\fP
+wesnothd をデーモンとして実行する。
+.TP 
+\fB\-h, \-\-help\fP
+コマンドラインオプションで何が行えるかを表示する。
+.TP 
+\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
+ログ領域(domain)の厳密さのレベルを設定する。 \fBall\fP は、どのログ領域にも対応させるために利用できる。有効なレベルは以下の通り。
+\fBerror\fP、\ \fBwarning\fP、\ \fBinfo\fP、\ \fBdebug\fP。既定値では \fBerror\fP レベルが使用され、\fBserver\fP
+領域には \fBinfo\fP が使用される。
+.TP 
+\fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
+指定ポートにサーバをバインドする。もしポートが指定されないなら、 \fB15000\fP番ポートが使用される。
+.TP 
+\fB\-t\ \fP\fInumber\fP\fB,\ \-\-threads\fP\fI\ number\fP
+ネットワーク I/O 用の作業スレッドの数の最大値を n に設定する。(既定値: \fB5\fP、\ 最大: \fB30\fP)
+.TP 
+\fB\-T\ \fP\fInumber\fP\fB,\ \-\-max\-threads\fP\fI\ number\fP
+作成される作業スレッドの数の最大値を設定する。 \fB0\fP が指定された場合、制限なしとなる。(既定値: \fB0\fP)
+.TP 
+\fB\-V, \-\-version\fP
+バージョン番号を表示して、終了する。
+.TP 
+\fB\-v, \-\-verbose\fP
+よりデバッグログを有効にする。
+.
+.SH サーバー設定
+.
+.SS 一般的な文法：
+.
+.P
+[\fItag\fP]
+.IP
+\fIkey\fP="\fIvalue\fP"
+.IP
+\fIkey\fP="\fIvalue\fP,\fIvalue\fP,..."
+.P
+[/\fItag\fP]
+.
+.SS グローバルキー:
+.
+.TP 
+\fBallow_remote_shutdown\fP
+\fBno\fP (既定値)に設定した場合、 fifo から来たものでない限り停止と再起動の要求は無視される。 \fByes\fP に設定した場合、管理者による
+/query での遠隔停止を許容する。
+.TP 
+\fBban_save_file\fP
+サーバが読み書きする(gzip 圧縮の)ファイルへの完全パスまたは相対パス。 ban はこのファイルへ保存され、サーバ開始時に再度読み込まれる。
+.TP 
+\fBcompress_stored_rooms\fP
+部屋ファイルが圧縮形式で読み書きされるか決定する。既定値は \fByes\fP。
+.TP 
+\fBconnections_allowed\fP
+同じ IP から許可される接続数。 \fB0\fP は無限大を意味する。(既定値: \fB5\fP)
+.TP 
+\fBdisallow_names\fP
+サーバによって受けつけられない名前やニックネーム。 \fB*\fP と \fB?\fP からなるワイルドカードのパターンに対応。詳細は \fBglob\fP(7)
+を参照。既定の値(何も指定されなかった際に使用される)は
+\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP。
+.TP 
+\fBfifo_path\fP
+サーバコマンド(wesnoth からの /query ... と同じ)をエコーする fifo
+へのパス。指定されない場合の既定値はコンパイル時に指定されたパス(既定値: \fB/var/run/socket/wesnothd/socket\fP)。
+.TP 
+\fBmax_messages\fP
+\fBmessages_time_period\fP の時間内に許可されるメッセージ数。(既定値: \fB4\fP)
+.TP 
+\fBmessages_time_period\fP
+メッセージの殺到(flood)が検出される時間周期(秒単位)。(既定値: \fB10\fP 秒)
+.TP 
+\fBmotd\fP
+本日のメッセージ。
+.TP 
+\fBnew_room_policy\fP
+サーバ上で新しい部屋を立てられる者を決定する。使用可能な値は \fBeveryone\fP と \fBregistered\fP と \fBadmin\fP と
+\fBnobody\fP で、それぞれ全員、登録ユーザ、管理者ユーザに権限を与えるか、新しい部屋を立てられなくする。既定値は \fBeveryone\fP。
+.TP 
+\fBpasswd\fP
+管理者権限の獲得に用いられるパスワード。(\fB/query admin \fP\fIpassword\fP で)
+.TP 
+\fBreplay_save_path\fP
+サーバがゲームのリプレイを置くディレクトリ。(/! をつけるのを忘れないこと) 既定値の `' は wesnothd が開始したディレクトリを意味する。
+.TP 
+\fBrestart_command\fP
+\fBrestart\fP コマンドで新しいサーバプロセスを開始するのにサーバが使用するコマンド。(fifo で問題があるときのみ。)
+.TP 
+\fBroom_save_file\fP
+部屋情報が置かれるファイルへのパス。このファイルはサーバ開始時に読み込まれ、後で書き出される。空欄か未設定の場合は、部屋は読み込まれず保存されない。
+.TP 
+\fBsave_replays\fP
+サーバが自動的にゲームのリプレイを保存するか定義する。(既定値: \fBfalse\fP)
+.TP 
+\fBversions_accepted\fP
+カンマで区切られた、サーバに受けつけられるバージョン文字列のリスト。 \fB*\fP と \fB?\fP からなるワイルドカードのパターンに対応。(既定値では
+wesnoth のバージョンに一致する)
+.br
+例: \fBversions_accepted="*"\fP で、どのようなバージョン文字列も受けつける。
+.TP  
+\fBuser_handler\fP
+使用するユーザハンドラの名前。現在利用可能なユーザハンドラは \fBforum\fP (wesnothd を phpbb フォーラムデータベースに接続する)
+と \fBsample\fP (ユーザハンドラインターフェースのサンプル実装。もし何かしら本当にこれを使用するならあなたは発狂する)。既定値は
+\fBforum\fP。下記の \fB[user_handler]\fP セクションも追加しなければならならい。
+.
+.SS グローバルタグ:
+.
+.P
+\fB[redirect]\fP クライアントのバージョンでリダイレクトするサーバを指定するためのタグ。
+.RS
+.TP 
+\fBhost\fP
+リダイレクトするサーバのアドレス。
+.TP 
+\fBport\fP
+接続するポート。
+.TP 
+\fBversion\fP
+カンマで区切られた、リダイレクトするバージョンのリスト。ワイルドカードのパターンに関しては、 \fBversions_accepted\fP
+と同様に振る舞う。
+.RE
+.P
+\fB[ban_time]\fP 一時的な ban 時間の長さの短縮キーワードを定義するタグ。
+.RS
+.TP 
+\fBname\fP
+ban 時間の参照に使用される名前。
+.TP 
+\fBtime\fP
+時間の長さの定義。書式は %d[%s[%d%s[...]]] で %s は s (秒)、 m (分)、 h (時)、 D (日)、 M (月) または
+Y (年) で %d は数字。もし時間修飾子がない場合は分(m)が指定されたものとする。例: \fBtime="1D12h30m"\fP は ban 時間が
+1 日と 12 時間 30 分となる。
+.RE
+.P
+\fB[proxy]\fP プロキシとして振る舞い、接続クライアントのリクエストを指定したサーバへと転送するよう指定するよう、サーバに伝えるタグ。
+\fB[redirect]\fP と同じキーを受けつける。
+.RE
+.P
+\fB[user_handler]\fP でユーザハンドラを指定する。利用可能なキーは \fBuser_handler\fP
+キーに設定されているユーザハンドラによって変化する。もし \fB[user_handler]\fP
+セクションが設定中に存在しなければ、サーバはニックネーム登録サービスなしで実行される。
+.RS
+.TP  
+\fBdb_host\fP
+(user_handler=forum のとき) データベースサーバのホスト名
+.TP  
+\fBdb_name\fP
+(user_handler=forum のとき) データベース名
+.TP  
+\fBdb_user\fP
+(user_handler=forum のとき) データベースにログインするユーザ名
+.TP  
+\fBdb_password\fP
+(user_handler=forum のとき) このユーザのパスワード
+.TP  
+\fBdb_users_table\fP
+(user_handler=forum のとき) あなたの phpbb フォーラムがユーザデータを保存するテーブル名。最もありそうなのは
+<table\-prefix>_users (例えば phpbb3_users)。
+.TP  
+\fBdb_extra_table\fP
+(user_handler=forum のとき) wesnothd
+がユーザについてのデータを保存するテーブル名。このテーブルは手動で作成しなければならない。例: \fBCREATE TABLE
+<table\-name>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT
+UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
+0);\fP
+.TP  
+\fBuser_expiration\fP
+(user_handler=sample のとき) 登録されたニックネームが期限切れになる時間(単位は日)。
+.RE
+.P
+\fB[mail]\fP で SMTP サーバユーザハンドラがメールを送れるサーバを設定する。現在はサンプルのユーザハンドラとしてのみ使用される。
+.RS
+.TP  
+\fBserver\fP
+メールサーバのホスト名
+.TP  
+\fBusername\fP
+メールサーバにログインするユーザ名。
+.TP  
+\fBpassword\fP
+このユーザのパスワード。
+.TP  
+\fBfrom_address\fP
+あなたのメールの返信先アドレス。
+.TP  
+\fBmail_port\fP
+あなたのメールサーバが動作しているポート。既定値は 25。
+.
+.SH "EXIT STATUS"
+.
+Normal exit status is 0 when the server was properly shutdown. An exit
+status of 2 indicates an error with the command line options.
+.
+.SH 著者
+.
+David White <davidnwhite@verizon.net> によって書かれた。 Nils Kneuper
+<crazy\-ivanovic@gmx.net> と ott <ott@gaon.net> と Soliton
+<soliton.de@gmail.com> と Thomas Baumhauer
+<thomas.baumhauer@gmail.com> によって編集された。 このマニュアルページは Cyril Bouthors
+<cyril@bouthors.org> によって最初に書かれた。 岡田信人 <okyada@gmail.com>
+によって日本語に翻訳され、いいむらなおき <amatubu@gmail.com> によって編集された。
+.br
+公式ホームページ http://www.wesnoth.org/ を訪問して下さい。
+.
+.SH 著作権
+.
+Copyright \(co 2003\-2011 David White <davidnwhite@verizon.net>
+.br
+This is Free Software; this software is licensed under the GPL version 2, as
+published by the Free Software Foundation.  There is NO warranty; not even
+for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+.
+.SH 関連項目
+.
+\fBwesnoth\fP(6).

@@ -1,0 +1,293 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTHD 6 2011 wesnothd "Mūšio dėl Vesnoto daugelio žaidėjų žaidimo tinklo demonas"
+.
+.SH PAVADINIMAS
+.
+wesnothd \- Mūšio dėl \fBVesnoto\fP daugelio žaidėjų žaidimo tinklo demonas
+.
+.SH REZIUMĖ
+.
+\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIkelias\fP\|] [\|\fB\-p\fP \fIprievadas\fP\|]
+[\|\fB\-t\fP \fIskaičius\fP\|] [\|\fB\-T\fP \fIskaičius\fP\|]
+.br
+\fBwesnothd\fP \fB\-V\fP
+.
+.SH APRAŠYMAS
+.
+Tvarko Mūšio dėl Vesnoto daugelio žaidėjų žaidimus. Žiūrėkite
+http://www.wesnoth.org/wiki/ServerAdministration kurias komandas priima
+serveris iš wesnoth kliento (/query ...) arba per fifo.
+.
+.SH PARAMETRAI
+.
+.TP 
+\fB\-c\ \fP\fIkelias\fP\fB,\ \-\-config\fP\fI\ kelias\fP
+tells wesnothd where to find the config file to use. See the section
+\fBSERVER CONFIG\fP below for the syntax. You can reload the config with
+sending SIGHUP to the server process.
+.TP 
+\fB\-d, \-\-daemon\fP
+paleidžia wesnothd kaip demoną.
+.TP 
+\fB\-h, \-\-help\fP
+pasako Jums, ką daro komandinės eilutės parametrai.
+.TP 
+\fB\-\-log\-\fP\fIlygis\fP\fB=\fP\fIdomenas1\fP\fB,\fP\fIdomenas2\fP\fB,\fP\fI...\fP
+sets the severity level of the log domains.  \fBall\fP can be used to match any
+log domain. Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP.
+By default the \fBerror\fP level is used and the \fBinfo\fP level for the
+\fBserver\fP domain.
+.TP 
+\fB\-p\ \fP\fIprievadas\fP\fB,\ \-\-port\fP\fI\ prievadas\fP
+susieja serverį su nurodytu prievadu. Jeigu prievadas nenurodytas, tai bus
+naudojamas \fB15000\fP prievadas.
+.TP 
+\fB\-t\ \fP\fIskaičius\fP\fB,\ \-\-threads\fP\fI\ skaičius\fP
+nustato didžiausią laukiančių darbinių tinklo Į/I gijų skaičių į n
+(numatyta: \fB5\fP),\ daugiausiai:\ \fB30\fP).
+.TP 
+\fB\-T\ \fP\fIskaičius\fP\fB,\ \-\-max\-threads\fP\fI\ skaičius\fP
+nustato maksimalų darbinių gijų, kurios bus sukurtos, skaičių. Jei nustatyta
+\fB0\fP, tai nebus jokių apribojimų (numatyta: \fB0\fP).
+.TP 
+\fB\-V, \-\-version\fP
+parodo versijos numerį ir išsijungia.
+.TP 
+\fB\-v, \-\-verbose\fP
+įjungia derinimo režimo išvestį.
+.
+.SH "SERVERIO KONFIGŪRACIJA"
+.
+.SS "Bendra sintaksė:"
+.
+.P
+[\fIelementas\fP]
+.IP
+\fIraktas\fP="\fIvertė\fP"
+.IP
+\fIraktas\fP=„\fIvertė\fP,\fIvertė\fP,...“
+.P
+[/\fIelementas\fP]
+.
+.SS "Globalūs raktai:"
+.
+.TP 
+\fBallow_remote_shutdown\fP
+If set to \fBno\fP (default), shut_down and restart requests are ignored unless
+they come from the fifo.  Set it to \fByes\fP to allow remote shutdown via a
+/query by an administrator.
+.TP 
+\fBban_save_file\fP
+Full or relative path to a (gzip compressed) file that the server can read
+and write.  Bans will be saved to this file and read again on server start.
+.TP 
+\fBcompress_stored_rooms\fP
+Determines whether the rooms file should be read and written to in
+compressed form. Defaults to \fByes\fP.
+.TP 
+\fBconnections_allowed\fP
+Leidžiamų prisijungimų skaičius iš to paties IP. \fB0\fP reiškia
+begalybė. (numatyta: \fB5\fP)
+.TP 
+\fBdisallow_names\fP
+Names/nicks that are not accepted by the server. \fB*\fP and \fB?\fP from wildcard
+patterns are supported. See \fBglob\fP(7)  for more details.  Default values
+(used if nothing is specified) are:
+\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
+.TP 
+\fBfifo_path\fP
+The path to the fifo you can echo server commands into (same as /query
+\&... from wesnoth).  If not specified defaults to the compile\-time path
+(default: \fB/var/run/socket/wesnothd/socket\fP).
+.TP 
+\fBmax_messages\fP
+Leidžiamų pranešimų skaičius esančių \fBmessages_time_period\fP. (numatyta:
+\fB4\fP)
+.TP 
+\fBmessages_time_period\fP
+Laiko trukmė (sekundėmis), kurioje aptinkamas užliejimas
+žinutėmis. (numatyta: \fB10\fP sekundžių)
+.TP 
+\fBmotd\fP
+Dienos pranešimas.
+.TP 
+\fBnew_room_policy\fP
+Determines who can create new rooms on the server. Available values are
+\fBeveryone\fP, \fBregistered\fP, \fBadmin\fP and \fBnobody\fP, and give the permission
+respectively to everyone, registered users, admin users or disables new room
+creation. Default value is \fBeveryone\fP.
+.TP 
+\fBpasswd\fP
+Slaptažodis, naudojamas gauti administratoriaus teises (per \fB/query admin
+\fP\fIslaptažodis\fP).
+.TP 
+\fBreplay_save_path\fP
+Aplankas, kuriame serveris saugos žaidimų pakartojimus (gale nepamirškite
+/!). Numatyta „“, kas reiškia tą patį aplanką, kur buvo paleistas serveris.
+.TP 
+\fBrestart_command\fP
+Komandos, kurias serveris naudoja paleisti naują serverio procesą su
+\fBrestart\fP komanda. (Gali būti iškviesta per fifo. Žiūrėkite
+\fBallow_remote_shutdown\fP nustatymą.)
+.TP 
+\fBroom_save_file\fP
+Path to a file where the room info should be stored. This file is read on
+server startup and written to later. If empty or not set, rooms are not
+loaded and not saved.
+.TP 
+\fBsave_replays\fP
+Nurodo ar serveris automatiškai saugos žaidimų pakartojimus. (numatyta:
+\fBfalse\fP)
+.TP 
+\fBversions_accepted\fP
+Kableliais atskirtų versijų, kurias pripažįsta serveris, sąrašas. Leidžia
+naudoti \fB*\fP ir \fB?\fP kaip pakaitos šablonus.  (numatytoji reikšmė: tokia
+pati versija, kaip ir serverio)
+.br
+Pavyzdys: \fBversions_accepted="*"\fP priima bet kokią versiją.
+.TP  
+\fBuser_handler\fP
+The name of the user handler to use. Currently available user handlers are
+\fBforum\fP (to connect wesnothd to a phpbb forum database) and \fBsample\fP (a
+sample implementation of the user handler interface, if you use this on
+anything real you are insane). The default value is \fBforum\fP. You must also
+add a \fB[user_handler]\fP section, see below.
+.
+.SS "Globalūs elementai:"
+.
+.P
+\fB[redirect]\fP Elementas, nurodantis serveriui kur peradresuoti tam tikras
+klientų versijas.
+.RS
+.TP 
+\fBhost\fP
+Serverio, į kurį peradresuoti, adresas.
+.TP 
+\fBport\fP
+Prievadas, prie kurio jungtis.
+.TP 
+\fBversion\fP
+Kableliais atskirtų versijų, kurias reikia peradresuoti, sąrašas. Pakaitos
+šablonų atžvilgiu, elgiasi taip pat, kaip ir \fBversions_accepted\fP.
+.RE
+.P
+\fB[ban_time]\fP A tag to define convenient keywords for temporary ban time
+lengths.
+.RS
+.TP 
+\fBname\fP
+The name used to reference the ban time.
+.TP 
+\fBtime\fP
+The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s
+(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d
+is a number.  If no time modifier is given minutes (m) are assumed.
+Example: \fBtime="1D12h30m"\fP results in a ban time of 1 day, 12 hours and 30
+minutes.
+.RE
+.P
+\fB[proxy]\fP Elementas, nurodantis serveriui elgtis kaip tarpiniam serveriui
+ir persiųsti visus prisijungusius klientus į nurodytą serverį.  Priima tuos
+pačius raktus kaip ir \fB[redirect]\fP.
+.RE
+.P
+\fB[user_handler]\fP Configures the user handler. Available keys vary depending
+on which user handler is set with the \fBuser_handler\fP key. If no
+\fB[user_handler]\fP section is present in the configuration the server will
+run without any nick registration service.
+.RS
+.TP  
+\fBdb_host\fP
+(skirtas user_handler=forum) Duomenų bazės serverio vardas
+.TP  
+\fBdb_name\fP
+(skirtas user_handler=forum) Duomenų bazės pavadinimas
+.TP  
+\fBdb_user\fP
+(skirtas user_handler=forum) Naudotojo vardas, kuriuo jungtis prie duomenų
+bazės
+.TP  
+\fBdb_password\fP
+(skirtas user_handler=forum) Šio naudotojo slaptažodis
+.TP  
+\fBdb_users_table\fP
+(skirtas user_handler=forum) Lentelės pavadinimas, kurioje jūsų phpbb
+forumas saugo savo naudotojų duomenis. Labiausiai tikėtina, kad tai bus
+<lentelės\-priešdėlis>_users (pavyzdžiui, phpbb3_users).
+.TP  
+\fBdb_extra_table\fP
+(skirtas user_handler=forum) Lentelės pavadinimas, kurioje wesnothd saugos
+savo duomenis apie naudotojus. Lentelę turėsite sukurti patys. Pavyzdžiui,
+šitaip: \fBCREATE TABLE <table\-name>(username VARCHAR(255) PRIMARY
+KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator
+TINYINT(4) NOT NULL DEFAULT 0);\fP
+.TP  
+\fBuser_expiration\fP
+(skirtas user_handler=sample) Laikas, per kurį pasensta naudotojo
+registracija (dienomis).
+.RE
+.P
+\fB[mail]\fP Configures an SMTP server through which the user handler can send
+mail. Currently only used by the sample user handler.
+.RS
+.TP  
+\fBserver\fP
+Pašto serverio vardas
+.TP  
+\fBusername\fP
+Naudotojo vardas, kuriuo bus jungiamasi prie pašto serverio.
+.TP  
+\fBpassword\fP
+Naudotojo slaptažodis.
+.TP  
+\fBfrom_address\fP
+Jūsų pašto atbulinio atsakymo adresas.
+.TP  
+\fBmail_port\fP
+Prievadas, kuriame veikia jūsų pašto serveris. Numatytas yra 25.
+.
+.SH "IŠĖJIMO BŪSENA"
+.
+Normal exit status is 0 when the server was properly shutdown. An exit
+status of 2 indicates an error with the command line options.
+.
+.SH AUTORIUS
+.
+Parašė David White <davidnwhite@verizon.net>.  Redagavo Nils Kneuper
+<crazy\-ivanovic@gmx.net>, ott <ott@gaon.net>, Soliton
+<soliton.de@gmail.com> ir Thomas Baumhauer
+<thomas.baumhauer@gmail.com>.  Šį dokumentacijos puslapį iš pradžių
+parašė Cyril Bouthors <cyril@bouthors.org>.
+.br
+Aplankykite oficialų puslapį: http://www.wesnoth.org/
+.
+.SH COPYRIGHT
+.
+Copyright \(co 2003\-2011 David White <davidnwhite@verizon.net>
+.br
+Tai yra laisva programa; ši programa licencijuota Free Software Foundation
+(Laisvos programinės įrangos fondo) paskelbta GPL 2 versija.  Nėra JOKIOS
+garantijos; netgi PERKAMUMO ar TINKAMUMO KONKRETIEMS TIKSLAMS.
+.
+.SH "TAIP PAT ŽIŪRĖKITE"
+.
+\fBwesnoth\fP(6).

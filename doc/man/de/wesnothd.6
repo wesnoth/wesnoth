@@ -1,0 +1,318 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTHD 6 2011 wesnothd "Battle for Wesnoth\-Mehrspielernetzwerkdaemon"
+.
+.SH NAME
+.
+wesnothd \- Battle for \fBWesnoth\fP Mehrspielernetzwerkdaemon
+.
+.SH ZUSAMMENFASSUNG
+.
+\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIPfad\fP\|] [\|\fB\-p\fP \fIPort\fP\|] [\|\fB\-t\fP
+\fINummer\fP\|] [\|\fB\-T\fP \fINummer\fP\|]
+.br
+\fBwesnothd\fP \fB\-V\fP
+.
+.SH BESCHREIBUNG
+.
+Verwaltet Battle for Wesnoth Mehrspieler Partien. Siehe auf
+http://www.wesnoth.org/wiki/ServerAdministration für die Befehle, die der
+Server von Wesnoth (/query ...) oder über die FIFO entgegennimmt.
+.
+.SH KOMMANDOZEILENOPTIONEN
+.
+.TP 
+\fB\-c\ \fP\fIPfad\fP\fB,\ \-\-config\fP\fI\ Pfad\fP
+sagt wesnothd wo er die zu benutzende Konfigurationsdatei findet. Siehe im
+Abschnitt \fBSERVER KONFIGURATION\fP unterhalb für den genauen Syntax. Sie
+können die Konfigurationsdatei durch senden eines SIGHUP an den
+Serverprozess neuladen.
+.TP 
+\fB\-d, \-\-daemon\fP
+startet wesnothd als Dämon.
+.TP 
+\fB\-h, \-\-help\fP
+Gibt die möglichen Kommandozeilenoptionen aus.
+.TP 
+\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIDomäne1\fP\fB,\fP\fIDomäne2\fP\fB,\fP\fI...\fP
+Setzt die Stufe der Debugausgabe. Verwenden Sie \fBall\fP, um sämtliche Domänen
+zu verwenden. Verfügbare Stufen: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Standardmäßig werden die Stufe \fBerror\fP für die Domäne des Spieles
+und die Stufe \fBinfo\fP für die Domäne des Servers verwendet.
+.TP 
+\fB\-p\ \fP\fIPort\fP\fB,\ \-\-port\fP\fI\ Port\fP
+bindet den Server an den angegebenen Port. Wenn kein Port angegeben ist,
+wird Port \fB15000\fP genommen.
+.TP 
+\fB\-t\ \fP\fINummer\fP\fB,\ \-\-threads\fP\fI\ Nummer\fP
+Legt die maximale Anzahl an Arbeiterprozessen für Netzwerk I/O
+fest. (Standard: \fB5\fP,\ Maximum:\ \fB30\fP)
+.TP 
+\fB\-t,\ \-\-max\-threads\fP\fI\ Wert\fP
+Legt die maximal zu erzeugende Anzahl an Arbeiterprozessen fest. Bei einem
+Wert von \fB0\fP gibt es keine Beschränkung. (Standard: \fB0\fP)
+.TP 
+\fB\-V, \-\-version\fP
+Zeigt die Versionsnummer an und beendet das Programm.
+.TP 
+\fB\-v, \-\-verbose\fP
+aktiviert mehr Details in der Logausgabe.
+.
+.SH "SERVER KONFIGURATION"
+.
+.SS "Der allgemeine Syntax ist:"
+.
+.P
+[\fIElement\fP]
+.IP
+\fISchlüssel\fP="\fIWert\fP"
+.IP
+\fISchlüssel\fP="\fIWert\fP,\fIWert\fP,..."
+.P
+[/\fIElement\fP]
+.
+.SS "Globale Schlüssel:"
+.
+.TP 
+\fBallow_remote_shutdown\fP
+Wenn es auf \fBno\fP (Voreinstellung) gestellt ist, werden Anfragen zum
+Herunterfahren und Neustart ignoriert, falls sie nicht über die FIFO\-Datei
+kommen. Ein Einstellen auf \fByes\fP erlaubt es einem Administrator durch ein
+/query ein entferntes Herunterfahren.
+.TP 
+\fBban_save_file\fP
+Kompletter oder relativer Pfad zu einer (gzip\-komprimierten) Datei, die der
+Server lesen und schreiben kann. Bans werden in diese Datei gespeichert und
+beim Start vom Server eingelesen.
+.TP 
+\fBcompress_stored_rooms\fP
+Legt fest, ob die Datei für die Räume in komprimierter Form gelesen und
+geschrieben werden soll. Die Voreinstellung ist \fByes\fP.
+.TP 
+\fBconnections_allowed\fP
+Die Anzahl zulässiger Verbindungen von der gleichen IP Adresse. \fB0\fP heißt
+unendlich. (Standard: \fB5\fP)
+.TP 
+\fBdisallow_names\fP
+Namen/Spitznamen die der Server nicht akzeptiert. \fB*\fP und \fB?\fP sind als
+Platzhalter unterstützt. Siehe \fBglob\fP(7) für mehr Details. Standardwerte
+(wenn sonst nichts angegeben wurde) sind:
+\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
+.TP 
+\fBfifo_path\fP
+Der Pfad zur FIFO\-Datei, in die Befehle für den Server geschrieben werden
+können (das gleiche wie /query ... aus Wesnoth selbst heraus). Falls nicht
+angegeben, wird die einkompilierte Voreinstellung verwendet (Standard:
+\fB/var/run/socket/wesnothd/socket\fP).
+.TP 
+\fBmax_messages\fP
+Die Anzahl der erlaubten Nachrichten in \fBmessages_time_period\fP. (Standard:
+\fB4\fP)
+.TP 
+\fBmessages_time_period\fP
+Der Zeitraum (in Sekunden) in dem "message flooding" erkannt
+wird. (Standard: \fB10\fP)
+.TP 
+\fBmotd\fP
+Die "Nachricht des Tages".
+.TP 
+\fBnew_room_policy\fP
+Legt fest, wer neue Räume auf dem Server erstellen kann. Verwendbare Werte
+sind \fBeveryone\fP, \fBregistered\fP, \fBadmin\fP und \fBnobody\fP und erteilen die
+Berechtigung entsprechend an jeden, registrierte Benutzer, Administratoren
+beziehungsweise deaktiviert die Erstellung neuer Räume. Der voreingestellte
+Wert ist \fBeveryone\fP (jeder).
+.TP 
+\fBpasswd\fP
+Das Passwort, um auf dem Server Administratorrechte zu erhalten (über
+\fB/query admin \fP\fIPasswort\fP).
+.TP 
+\fBreplay_save_path\fP
+Legt den Ordner fest, in dem der Server Wiederholungen
+abspeichert. (Vergesst das abschließende /! nicht) Standardmäßig wird »«
+verwendet, was für den Ordner steht, in dem wesnothd gestartet wurde.
+.TP 
+\fBrestart_command\fP
+Der Befehl, den der Server verwendet, um einen neuen Server\-Prozess über den
+\fBrestart\fP\-Befehl zu starten. (Kann nur über die FIFO angefordert
+werden. Siehe die \fBallow_remote_shutdown\fP\-Einstellung.)
+.TP 
+\fBroom_save_file\fP
+Pfad zu einer Datei, in die die Rauminformationen gespeichert werden
+sollen. Die Datei wird beim Starten des Servers gelesen und später
+beschrieben. Falls der Wert leer oder nicht gesetzt ist, werden Räume weder
+geladen noch gespeichert.
+.TP 
+\fBsave_replays\fP
+Legt fest, ob vom Server automatisch Wiederholungen gespeichert werden
+sollen. (Standard: \fBfalse\fP)
+.TP 
+\fBversions_accepted\fP
+Eine durch Komma getrennte Liste der Programmversionen, die der Server
+zulässt. \fB*\fP und \fB?\fP sind erlaubt. (Standard: Die aktuell installierte
+Wesnoth\-Version)
+.br
+Beispiel: \fBversions_accepted="*"\fP akzeptiert alle Versionen.
+.TP  
+\fBuser_handler\fP
+Der Name der zu verwendenden Nutzerverwaltung. Momentan sind als
+Nutzerverwaltungen \fBforum\fP (um via wesnothd eine Verbindung zu einer phpbb
+Forum Datenbank aufzubauen) und \fBsample\fP (eine Beispielimplementierung der
+Nutzerverwaltungsschnittstelle, diese dient nur als Beispiel und sollte
+nicht genutzt werden) verfügbar. Standardmäßig wird die Nutzerverwaltung
+\fBforum\fP verwendet. Außerdem muss ein \fB[user_handler]\fP angelegt werden. Der
+Aufbau von diesem ist weiter unten beschrieben.
+.
+.SS "Globale Elemente:"
+.
+.P
+\fB[redirect]\fP Ein Element, um bestimmte Programmversionen anzugeben, die auf
+einen anderen Server umgeleitet werden sollen.
+.RS
+.TP 
+\fBhost\fP
+Die Adresse des Rechners, zu dem umgeleitet wird.
+.TP 
+\fBport\fP
+Der dabei zu verwendende Port.
+.TP 
+\fBversion\fP
+Eine durch Komma getrennte Liste der Versionen, die umgeleitet werden
+sollen. Verhält sich in Bezug auf Wildcards genauso wie
+\fBversions_accepted\fP.
+.RE
+.P
+\fB[ban_time]\fP Eine Markierung, um A tag to define convenient keywords for
+temporary ban time lengths.
+.RS
+.TP 
+\fBname\fP
+Der Name, um die Ban\-Zeit zu referenzieren.
+.TP 
+\fBtime\fP
+Die Zeitlängen\-Definition. Das Format lautet: %d[%s[%d%s[...]]] wobei %s für
+s (Sekunden), m (Minuten), h (Stunden), D (Tage), M (Monate) oder Y (Jahre)
+und %d für eine Nummer steht. Falls keine Zeitdefinition verwendet wird,
+werden Minuten (m) angenommen. Beispiel: \fBtime="1D12h30m"\fP steht für eine
+Ban\-Zeit von einem Tag, 12 Stunden und 30 Minuten.
+.RE
+.P
+\fB[proxy]\fP Ein Element, das benutzt wird, um dem Server mitzuteilen, wie ein
+Proxy zu agieren und somit alle Anfragen des mit ihm verbundenen Rechners an
+den angegebenen Server weiterzuleiten. Es werden die gleichen Schlüssel wie
+bei \fB[redirect]\fP akzeptiert.
+.RE
+.P
+\fB[user_handler]\fP Dies Konfiguriert die Nutzerverwaltung. Die verwendbaren
+Schlüssel hängen davon ab, welche Nutzerverwaltung beim \fBuser_handler\fP
+Schlüssel festgelegt wurde. Ist kein \fB[user_handler]\fP\-Bereich vorhanden, so
+ist es nicht möglich registrierte Nutzernamen auf dem Server zu verwenden.
+.RS
+.TP  
+\fBdb_host\fP
+(für user_handler=forum) Der Hostname des Datenbank\-Servers
+.TP  
+\fBdb_name\fP
+(für user_handler=forum) Der Name der zu nutzenden Datenbank
+.TP  
+\fBdb_user\fP
+(für user_handler=forum) Der Benutzername, der zur Anmeldung an der
+Datenbank verwendet werden soll
+.TP  
+\fBdb_password\fP
+(für user_handler=forum) Das zugehörige Passwort für den Nutzer
+.TP  
+\fBdb_users_table\fP
+(für user_handler=forum) Der Name der Tabelle, in der das phpbb Forum die
+Nutzerdaten ablegt. Dies ist höchstwahrscheinlich
+<table\-prefix>_users (z.B. phpbb3_users).
+.TP  
+\fBdb_extra_table\fP
+(für user_handler=forum) Der Name der Tabelle, in der wesnothd spezifische
+Nutzerdaten abgelegt werden sollen. Diese Tabelle muss manuell angelegt
+werden. Dies erfolgt z.B. mit einem Befehl wie diesem: \fBCREATE TABLE
+<table\-name>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT
+UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
+0);\fP
+.TP  
+\fBuser_expiration\fP
+(für user_handler=sample) Zeit (in Tagen) nach der ein registrierter
+Benutzername verfällt.
+.RE
+.P
+\fB[mail]\fP Konfiguriert einen SMTP\-Server über den die Nutzerverwaltung
+Benachrichtigungen verschicken kann. Dies wird momentan nur von der
+Nutzerverwaltung »sample« verwendet.
+.RS
+.TP  
+\fBserver\fP
+Der Hostname des Mail\-Servers.
+.TP  
+\fBusername\fP
+Der Nutzername mit welchem man sich beim Mail\-Server anmeldet.
+.TP  
+\fBpassword\fP
+Das Passwort dieses Nutzers.
+.TP  
+\fBfrom_address\fP
+Die Antwortadresse für ausgehende Mails.
+.TP  
+\fBmail_port\fP
+Der Port, auf welchem der Mailserver arbeitet. Standardmäßig wird Port 25
+verwendet.
+.
+.SH RÜCKGABEWERT
+.
+Der reguläre Rückgabewert ist 0, wenn der Server ordnungsgemäß
+heruntergefahren wurde. Ein Rückgabewert von 2 deutet auf einen Fehler mit
+den Optionen auf der Befehlszeile hin.
+.
+.SH AUTOR
+.
+Geschrieben von David White <davidnwhite@verizon.net>.  Bearbeitet
+von Nils Kneuper <crazy\-ivanovic@gmx.net>, ott
+<ott@gaon.net>, Soliton  <soliton.de@gmail.com> und Thomas
+Baumhauer <thomas.baumhauer@gmail.com>.  Übersetzt von Jan\-Heiner
+Laberenz <Jan\-Heiner@arcor.de>, Nils Kneuper
+<crazy\-ivanovic@gmx.net>und Soliton <soliton.de@gmail.com>.
+Diese Beschreibung stammt im Original von Cyril Bouthors
+<cyril@bouthors.org>.
+.br
+Besuchen Sie auch die offizielle Webseite: http://www.wesnoth.org/
+.
+.SH COPYRIGHT
+.
+Copyright \(co 2003\-2011 David White <davidnwhite@verizon.net>
+.br
+Dieses Programm ist freie Software. Sie können es unter den Bedingungen der
+GNU General Public License, wie von der Free Software Foundation
+veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 2
+der Lizenz oder (nach Ihrer Option) jeder späteren Version. Die
+Veröffentlichung dieses Programms erfolgt in der Hoffnung, dass es Ihnen von
+Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die implizite
+Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN BESTIMMTEN
+ZWECK. Details finden Sie in der GNU General Public License. Sie sollten
+eine Kopie der GNU General Public License zusammen mit diesem Programm
+erhalten haben. Falls nicht, schreiben Sie an die Free Software Foundation,
+Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110\-1301, USA.
+.
+.SH ANDERE
+.
+\fBwesnoth\fP(6).

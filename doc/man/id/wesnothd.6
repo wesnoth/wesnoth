@@ -1,0 +1,298 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTHD 6 2011 wesnothd "Pertempuran demi Wesnoth multipemain jaringan daemon"
+.
+.SH NAMA
+.
+wesnothd \- Pertempuran untuk  \fBWesnoth\fP daemon multiplayer jaringan
+.
+.SH SINOPSIS
+.
+\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
+\fInumber\fP\|] [\|\fB\-T\fP \fInumber\fP\|]
+.br
+\fBwesnothd\fP \fB\-V\fP
+.
+.SH PENJELASAN
+.
+Mengatur Pertempuran demi Wesnoth permainan\-permainan multiplayer. Lihat
+http://www.wesnoth.org/wiki/ServerAdministration untuk mengetahui perintah
+apa yang server terima melalui klien Wesnoth (/ query ...) atau fifo
+tersebut.
+.
+.SH PILIHAN
+.
+.TP 
+\fB\-c\ \fP\fIpath\fP\fB,\ \-\-config\fP\fI\ path\fP
+memberitahu wesnothd dimana untuk mencari file config untuk digunakan. Lihat
+bagian \fBSERVER CONFIG\fP di bawah ini untuk sintaks. Anda dapat kembali
+memuat config dengan mengirimkan SIGHUP untuk proses server.
+.TP 
+\fB\-d, \-\-daemon\fP
+jalanakan wesnothd sebagai daemon.
+.TP 
+\fB\-h, \-\-help\fP
+memberitahukan kepadamu apa yang pilihan garis perintah lakukan.
+.TP 
+\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
+menentukan tingkat keparahan dari domain log. \fBall\fP dapat digunakan untuk
+menyesuaikan dengan semua domain log. Tersedia tingkatan: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Secara default tingkat \fBerror\fP digunakan
+dan tingkat \fBinfo\fP untuk domain \fBserver\fP.
+.TP 
+\fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
+mengikat server ke port tertentu. Jika port tidak ditentukan, port \fB15000\fP
+akan digunakan.
+.TP 
+\fB\-t\ \fP\fInumber\fP\fB,\ \-\-threads\fP\fI\ number\fP
+menetapkan jumlah maksimum menunggu urutan pekerja untuk jaringan I/O untuk
+n (default: \fB5\fP,\ max: \ \fB30\fP).
+.TP 
+\fB\-T\ \fP\fInumber\fP\fB,\ \-\-max\-threads\fP\fI\ number\fP
+menetapkan jumlah maksimum dari urutan pekerja yang akan dibuat. Jika diatur
+ke \fB0\fP tidak akan ada batas (default: \fB0\fP).
+.TP 
+\fB\-V, \-\-version\fP
+menunjukkan nomor versi dan keluar.
+.TP 
+\fB\-v, \-\-verbose\fP
+putaran debug membukukan terpasang.
+.
+.SH "PENGATURAN SERVER"
+.
+.SS "syntax umumnya adalah:"
+.
+.P
+[\fItag\fP]
+.IP
+\fIkey\fP="\fIvalue\fP"
+.IP
+\fIkey\fP="\fIvalue\fP,\fIvalue\fP,..."
+.P
+[/\fItag\fP]
+.
+.SS "Kunci\-kunci global:"
+.
+.TP 
+\fBallow_remote_shutdown\fP
+Jika diatur ke \fBno\fP (default), shut_down dan restart permintaan diabaikan
+kecuali jika mereka datang dari fifo tersebut. Set ke \fByes\fP untuk
+membolehkan remote shutdown melalui permintaan /oleh administrator.
+.TP 
+\fBban_save_file\fP
+Penuh atau path relatif ke (gzip terkompresi) file yang server dapat membaca
+dan menulis. Larangan akan disimpan ke file ini dan membaca lagi pada
+permulaan server.
+.TP 
+\fBcompress_stored_rooms\fP
+Menentukan apakah kamar file harus dibaca dan ditulis ke dalam bentuk
+terkompresi. Default untuk \fByes\fP.
+.TP 
+\fBconnections_allowed\fP
+Jumlah koneksi diizinkan dari IP yang sama. \fB0\fP berarti tak
+terbatas. (Default: \fB5\fP)
+.TP 
+\fBdisallow_names\fP
+Nama / nick yang tidak diterima oleh server. \fB*\fP dan \fB?\fP Dari pola
+wildcard yang didukung. Lihat \fBglob\fP(7) untuk lebih jelasnya. nilai default
+(digunakan jika tidak ada yang khusus) adalah:
+\fB*admin*,*admln*,*server*,ai,ai?,komputer, manusia, jaringan,pemain\fP.
+.TP 
+\fBfifo_path\fP
+Path ke fifo Anda dapat echo perintah ke server (sama seperti /query
+\&... dari Wesnoth). Jika tidak ditentukan default ke jalan saat kompilasi
+(default: \fB/var/run/socket/wesnothd/socket\fP).
+.TP 
+\fBmax_messages\fP
+Jumlah pesan yang diperbolehkan dalam \fBmessages_time_period\fP. (default:
+\fB4\fP)
+.TP 
+\fBmessages_time_period\fP
+Jangka waktu (dalam detik) banjir pesan terdeteksi masuk (default: \fB10\fP
+detik)
+.TP 
+\fBmotd\fP
+Pesan hari ini.
+.TP 
+\fBnew_room_policy\fP
+Menentukan siapa yang dapat membuat kamar baru pada server. nilai\-nilai yang
+tersedia adalah \fBeveryone\fP, \fBregistered\fP, \fBadmin\fP and \fBnobody\fP, dan
+masing\-masing memberikan izin kepada semua orang, pengguna terdaftar, admin
+pengguna atau menonaktifkan penciptaan kamar baru. Default adalah nilai
+\fBeveryone\fP.
+.TP 
+\fBpasswd\fP
+sandi yang digunakan untuk mendapatkan hak istimewa admin (via \fB/query
+admin \fP\fIpassword\fP).
+.TP 
+\fBreplay_save_path\fP
+Direktori tempat menyimpan server game replays. (Jangan lupa trailing /!)
+Default ke `' yang berarti direktori wesnothd mulai masuk
+.TP 
+\fBrestart_command\fP
+Perintah yang menggunakan server untuk memulai proses server baru melalui
+perintah \fBrestart\fP. (Bisa hanya akan dikeluarkan melalui fifo. Lihat
+pengaturan \fBallow_remote_shutdown\fP setting.)
+.TP 
+\fBroom_save_file\fP
+Path ke file mana info kamar harus disimpan. File ini dibaca pada startup
+server dan ditulis untuk nanti. Jika kosong atau tidak disetel, kamar tidak
+dimuat dan tidak disimpan.
+.TP 
+\fBsave_replays\fP
+Mendefinisikan apakah server secara otomatis akan menyimpan replay
+permainan. (default: \fBfalse\fP)
+.TP 
+\fBversions_accepted\fP
+Sebuah koma daftar terpisah versi string untuk diterima oleh server. \fB*\fP
+dan \fB?\fP Dari pola wildcard yang didukung. (Default ke versi yang sesuai
+Wesnoth)
+.br
+Contoh: \fBversions_accepted="*"\fP terima versi string manapun.
+.TP  
+\fBuser_handler\fP
+Nama pengguna untuk menggunakan pengendali. Saat ini penangan pengguna yang
+tersedia adalah \fBforum\fP  (untuk menghubungkan wesnothd ke database phpbb
+forum) dan \fBsample\fP (contoh implementasi pengendali interface pengguna,
+jika Anda menggunakan ini maka kamu benar\-benar luar biasa). Nilai default
+adalah \fBforum\fP. Anda juga harus menambahkan \fB[user_handler]\fP bagian, lihat
+di bawah.
+.
+.SS "Label Global :"
+.
+.P
+\fB[redirect]\fP Suatu label untuk menetapkan suatu server untuk mengalihkan
+jurusan versi klien tertentu ke.
+.RS
+.TP 
+\fBhost\fP
+Menunjukkan server mengalihkan jurusan ke.
+.TP 
+\fBport\fP
+pintu untuk menghubungkan ke
+.TP 
+\fBversion\fP
+Suatu tanda koma memisahkan daftar versi untuk mengalihkan jurusan. Sama
+seperti \fBversions_accepted\fP dalam hubungan dengan pola wildcard.
+.RE
+.P
+\fB[ban_time]\fP Sebuah tag untuk menentukan kata kunci yang mudah digunakan
+untuk jangka waktu larangan sementara.
+.RS
+.TP 
+\fBname\fP
+Nama yang digunakan untuk referensi waktu larangan.
+.TP 
+\fBtime\fP
+Definisi waktu panjang. Formatnya adalah: %d[%s[%d%s[...]]] dimana %s adalah
+s (detik), m (menit), h (jam), D (hari), M (bulan) atau Y (tahun) dan %d
+adalah angka. Jika tidak ada pengubah waktu diberikan menit (m)
+diasumsikan. Contoh: \fBtime="1D12h30m"\fP hasil dalam waktu larangan 1 hari,
+12 jam dan 30 menit.
+.RE
+.P
+\fB[proxy]\fP Sebuah tag untuk memberitahu server untuk bertindak sebagai proxy
+dan meneruskan permintaan klien terhubung ke server tertentu. Menerima sama
+tombol sebagai \fB[redirect]\fP.
+.RE
+.P
+\fB[user_handler]\fP Mengkonfigurasi penangan pengguna. Tersedia tombol
+bervariasi tergantung pada penangan pengguna diatur dengan tombol
+\fBuser_handler\fP. Jika tidak ada \fB[user_handler]\fP bagian hadir di
+konfigurasi server akan berjalan tanpa ada layanan pendaftaran nick.
+.RS
+.TP  
+\fBdb_host\fP
+(for user_handler=forum) hostname dari server basisdata
+.TP  
+\fBdb_name\fP
+(for user_handler=forum) nama dari basisdata
+.TP  
+\fBdb_user\fP
+(for user_handler=forum) Nama pemain yang mana  telah membukukan ke dalam
+basisdata
+.TP  
+\fBdb_password\fP
+(for user_handler=forum) Ini adalah kata sandi pengguna
+.TP  
+\fBdb_users_table\fP
+(for user_handler=forum) Nama pada tabel di mana phpbb forum mu menyimpan
+data pemakai nya. hampir bisa dipastikan Ini nantinya
+<table\-prefix>_users (e.g. phpbb3_users).
+.TP  
+\fBdb_extra_table\fP
+(for user_handler=forum) Nama pada tabel di mana wesnothd akan menyimpankan
+data\-data para pemakai. Kamu akan harus membuat tabelnya sendiri, e.g.:
+\fBCREATE TABLE <table\-name>(username VARCHAR(255) PRIMARY KEY,
+user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4)
+NOT NULL DEFAULT 0);\fP
+.TP  
+\fBuser_expiration\fP
+(for user_handler=sample) Waktu setelah mana nick terdaftar berakhir (dalam
+hitungan hari).
+.RE
+.P
+\fB[mail]\fP Mengkonfigurasi server SMTP melalui mana pengendali user dapat
+mengirim surat. Saat ini hanya digunakan oleh pengguna penangan sampel.
+.RS
+.TP  
+\fBserver\fP
+Nama Host pos server
+.TP  
+\fBusername\fP
+Nama Pemain di bawah ini adalah yang telah mencatatkan ke dalam server pos.
+.TP  
+\fBpassword\fP
+Ini adalah kata sandi pengguna
+.TP  
+\fBfrom_address\fP
+Pesan balasan\-dikirimkan ke alamat emailmu
+.TP  
+\fBmail_port\fP
+Sambungan dimana server pos berada sedang berjalan. Defaultnya 25.
+.
+.SH "KELUAR "
+.
+Status keluar normal adalah 0 ketika server dengan baik shutdown. Suatu
+status keluar 2 menandai adanya suatu kesalahan dengan pilihan garis
+perintah.
+.
+.SH PENGARANG
+.
+Ditulis Oleh David White <davidnwhite@verizon.net>.  Diperiksa Oleh
+Nils Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net>,
+Soliton <soliton.de@gmail.com> dan Thomas Baumhauer
+<thomas.baumhauer@gmail.com>.  Halaman pedoman ini ditulis oleh
+Cyril Bouthors <cyril@bouthors.org>.
+.br
+Kunjungi halaman resmi kami di: http://www.wesnoth.org/
+.
+.SH "HAK CIPTA"
+.
+Hak Cipta \(co 2003\-2011 David White <davidnwhite@verizon.net>
+.br
+Ini adalah perangkat lunak gratis, perangkat lunak ini berlisensi di bawah
+GPL versi 2, seperti dipublikasikan oleh Free Software Foundation. TIDAK ADA
+garansi; bahkan tidak juga untuk PENJUALAN atau KESESUAIAN UNTUK TUJUAN
+TERTENTU.
+.
+.SH "KUNJUNGI JUGA"
+.
+\fBwesnoth\fP(6).

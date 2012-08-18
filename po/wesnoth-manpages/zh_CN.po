@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.10\n"
-"POT-Creation-Date: 2012-01-06 12:00+0100\n"
+"POT-Creation-Date: 2012-08-18 09:40+0300\n"
 "PO-Revision-Date: 2012-02-19 14:15+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
@@ -131,8 +131,9 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:54
-#, no-wrap
-msgid "B<--campaign-difficulty E<lt>difficultyE<gt>>"
+#, fuzzy, no-wrap
+#| msgid "B<--campaign-difficulty E<lt>difficultyE<gt>>"
+msgid "B<--campaign-difficulty [E<lt>difficultyE<gt>]>"
 msgstr "B<--campaign-difficulty E<lt>难度E<gt>>"
 
 #. type: Plain text
@@ -428,23 +429,34 @@ msgstr "显示游戏数据目录的名称并退出。"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:159
-#, no-wrap
-msgid "B<--preprocess, -p[=E<lt>define1E<gt>,E<lt>define2E<gt>,...] E<lt>file/folderE<gt> E<lt>target directoryE<gt>>"
+#, fuzzy, no-wrap
+#| msgid "B<--preprocess, -p[=E<lt>define1E<gt>,E<lt>define2E<gt>,...] E<lt>file/folderE<gt> E<lt>target directoryE<gt>>"
+msgid "B<-p, --preprocess E<lt>source file/folderE<gt> E<lt>target directoryE<gt>>"
 msgstr "B<--preprocess, -p[=E<lt>define1E<gt>,E<lt>define2E<gt>,...] E<lt>file/folderE<gt> E<lt>target directoryE<gt>>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:173
+#: ../../doc/man/wesnoth.6:169
+#, fuzzy
+#| msgid ""
+#| "preprocesses a specified file/folder. The file(s) will be written in "
+#| "specified target directory: a plain cfg file and a processed cfg file. If "
+#| "a folder is specified, it will be preprocessed recursively based on the "
+#| "known preprocessor rules. The common macroses from the data/core/macros "
+#| "will be preprocessed before the specified resources.  B<define1,"
+#| "define2,...> - the extra defines will be added before processing the "
+#| "files. If you want to add them you must add the '=' character before.  If "
+#| "'SKIP_CORE' is in the define list the data/core won't be preprocessed.  "
+#| "Example: B<-p ~/wesnoth/data/campaigns/tutorial ~/result> or B<-"
+#| "p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result>"
 msgid ""
-"preprocesses a specified file/folder. The file(s) will be written in "
-"specified target directory: a plain cfg file and a processed cfg file. If a "
+"preprocesses a specified file/folder. For each file(s) a plain .cfg file and "
+"a processed .cfg file will be written in specified target directory. If a "
 "folder is specified, it will be preprocessed recursively based on the known "
-"preprocessor rules. The common macroses from the data/core/macros will be "
-"preprocessed before the specified resources.  B<define1,define2,...> - the "
-"extra defines will be added before processing the files. If you want to add "
-"them you must add the '=' character before.  If 'SKIP_CORE' is in the define "
-"list the data/core won't be preprocessed.  Example: B<-p ~/wesnoth/data/"
-"campaigns/tutorial ~/result> or B<-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/"
-"data/campaign/camp ~/result>"
+"preprocessor rules. The common macroses from the \"data/core/macros\" "
+"directory will be preprocessed before the specified resources.  Example: B<-"
+"p ~/wesnoth/data/campaigns/tutorial ~/result.> For details regarding the "
+"preprocessor visit: http://wiki.wesnoth.org/PreprocessorRef#Command-"
+"line_preprocessor"
 msgstr ""
 "预处理所指定的文件/文件夹。这些文件将被写入所指定的目标目录：包括一个普通的"
 "cfg文件和一个处理过的cfg文件。如果指定的是个文件夹，那么将根据已知的预处理器"
@@ -455,13 +467,27 @@ msgstr ""
 "p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result>"
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:173
+#: ../../doc/man/wesnoth.6:170
+#, no-wrap
+msgid "B<--preprocess-defines=DEFINE1,DEFINE2,etc>"
+msgstr ""
+
+#. type: Plain text
+#: ../../doc/man/wesnoth.6:175
+msgid ""
+"comma separated list of defines to be used by the '--preprocess' command. If "
+"B<SKIP_CORE> is in the define list the \"data/core\" directory won't be "
+"preprocessed."
+msgstr ""
+
+#. type: TP
+#: ../../doc/man/wesnoth.6:175
 #, no-wrap
 msgid "B<--preprocess-input-macros E<lt>source fileE<gt>>"
 msgstr "B<--preprocess-input-macros E<lt>source fileE<gt>>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:177
+#: ../../doc/man/wesnoth.6:179
 msgid ""
 "used only by the '--preprocess' command.  Specifies a file that contains "
 "[preproc_define]s to be included before preprocessing."
@@ -470,13 +496,13 @@ msgstr ""
 "其中的定义将在预处理开始前生效。"
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:177
+#: ../../doc/man/wesnoth.6:179
 #, no-wrap
 msgid "B<--preprocess-output-macros [E<lt>target fileE<gt>]>"
 msgstr "B<--preprocess-output-macros [E<lt>target fileE<gt>]>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:183
+#: ../../doc/man/wesnoth.6:185
 msgid ""
 "used only by the '--preprocess' command.  Will output all preprocessed "
 "macros in the target file. If the file is not specified the output will be "
@@ -488,24 +514,24 @@ msgstr ""
 "这个开关选项必须出现在--preprocess命令之前。"
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:183
+#: ../../doc/man/wesnoth.6:185
 #, no-wrap
 msgid "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 msgstr "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:187
+#: ../../doc/man/wesnoth.6:189
 msgid "sets the screen resolution. Example: B<-r 800x600>"
 msgstr "设定屏幕分辨率。例如：B<-r 800x600>"
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:187
+#: ../../doc/man/wesnoth.6:189
 #, no-wrap
 msgid "B<-s,\\ --server\\ [host]>"
 msgstr "B<-s,\\ --server\\ [host]>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:191
+#: ../../doc/man/wesnoth.6:193
 msgid ""
 "connects to the specified host if any, otherwise connect to the first server "
 "in preferences. Example: B<--server server.wesnoth.org>"
@@ -514,79 +540,105 @@ msgstr ""
 "如：B<--server server.wesnoth.org>"
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:191
+#: ../../doc/man/wesnoth.6:193
+#, no-wrap
+msgid "B<--username>I<E<lt>usernameE<gt>>"
+msgstr ""
+
+#. type: Plain text
+#: ../../doc/man/wesnoth.6:196
+msgid ""
+"uses E<lt>usernameE<gt> when connecting to a server, ignoring other "
+"preferences."
+msgstr ""
+
+#. type: TP
+#: ../../doc/man/wesnoth.6:196
+#, no-wrap
+msgid "B<--password>I<E<lt>passwordE<gt>>"
+msgstr ""
+
+#. type: Plain text
+#: ../../doc/man/wesnoth.6:199
+msgid ""
+"uses E<lt>passwordE<gt> when connecting to a server, ignoring other "
+"preferences. Unsafe."
+msgstr ""
+
+#. type: TP
+#: ../../doc/man/wesnoth.6:199
 #, no-wrap
 msgid "B<--strict-validation>"
 msgstr "B<--strict-validation>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:194
+#: ../../doc/man/wesnoth.6:202
 msgid "validation errors are treated as fatal errors."
 msgstr "将验证错误视为致命错误。"
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:194
+#: ../../doc/man/wesnoth.6:202
 #, no-wrap
 msgid "B<-t, --test>"
 msgstr "B<-t, --test>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:197
+#: ../../doc/man/wesnoth.6:205
 msgid "runs the game in a small test scenario."
 msgstr "使用一个小测试场景启动游戏。"
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:197
+#: ../../doc/man/wesnoth.6:205
 #, no-wrap
 msgid "B<--validcache>"
 msgstr "B<--validcache>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:200
+#: ../../doc/man/wesnoth.6:208
 msgid "assumes that the cache is valid. (dangerous)"
 msgstr "假定缓存是有效的。（因此不进行缓存验证，危险）"
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:200
+#: ../../doc/man/wesnoth.6:208
 #, no-wrap
 msgid "B<-v, --version>"
 msgstr "B<-v, --version>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:203
+#: ../../doc/man/wesnoth.6:211
 msgid "shows the version number and exits."
 msgstr "显示版本号并退出。"
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:203
+#: ../../doc/man/wesnoth.6:211
 #, no-wrap
 msgid "B<-w, --windowed>"
 msgstr "B<-w, --windowed>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:206
+#: ../../doc/man/wesnoth.6:214
 msgid "runs the game in windowed mode."
 msgstr "使用窗口模式进入游戏。"
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:206
+#: ../../doc/man/wesnoth.6:214
 #, no-wrap
 msgid "B<--with-replay>"
 msgstr "B<--with-replay>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:211
+#: ../../doc/man/wesnoth.6:219
 msgid "replays the game loaded with the B<--load> option."
 msgstr "通过和B<--load>选项一起使用，播放游戏录像。"
 
 #. type: SH
-#: ../../doc/man/wesnoth.6:212
+#: ../../doc/man/wesnoth.6:220
 #, no-wrap
 msgid "Options for --multiplayer"
 msgstr "--multiplayer的额外选项"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:219
+#: ../../doc/man/wesnoth.6:227
 msgid ""
 "The side-specific multiplayer options are marked with I<number>.  I<number> "
 "has to be replaced by a side number. It usually is 1 or 2 but depends on the "
@@ -596,25 +648,25 @@ msgstr ""
 "数字替换。这个数字一般是1或者2，不过这取决于所选定场景中的玩家数量。"
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:219
+#: ../../doc/man/wesnoth.6:227
 #, no-wrap
 msgid "B<--ai_config>I<number>B<=>I<value>"
 msgstr "B<--ai_config>I<number>B<=>I<value>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:222
+#: ../../doc/man/wesnoth.6:230
 msgid ""
 "selects a configuration file to load for the AI controller for this side."
 msgstr "为该阵营的AI控制者选择一个配置文件来读取。"
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:222
+#: ../../doc/man/wesnoth.6:230
 #, no-wrap
 msgid "B<--algorithm>I<number>B<=>I<value>"
 msgstr "B<--algorithm>I<number>B<=>I<value>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:229
+#: ../../doc/man/wesnoth.6:237
 msgid ""
 "selects a non-standard algorithm to be used by the AI controller for this "
 "side. Available values: B<idle_ai> and B<sample_ai>."
@@ -623,25 +675,25 @@ msgstr ""
 "B<sample_ai>。"
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:229
+#: ../../doc/man/wesnoth.6:237
 #, no-wrap
 msgid "B<--controller>I<number>B<=>I<value>"
 msgstr "B<--controller>I<number>B<=>I<value>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:235
+#: ../../doc/man/wesnoth.6:243
 msgid ""
 "selects the controller for this side. Available values: B<human> and B<ai>."
 msgstr "选择该阵营的控制者。可选值有：B<human>和B<ai>。"
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:235
+#: ../../doc/man/wesnoth.6:243
 #, no-wrap
 msgid "B<--era=>I<value>"
 msgstr "B<--era=>I<value>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:242
+#: ../../doc/man/wesnoth.6:250
 msgid ""
 "use this option to play in the selected era instead of the B<Default> era. "
 "The era is chosen by an id. Eras are described in the B<data/multiplayer/"
@@ -651,13 +703,13 @@ msgstr ""
 "B<data/multiplayer/eras.cfg>文件中描述。"
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:242
+#: ../../doc/man/wesnoth.6:250
 #, no-wrap
 msgid "B<--exit-at-end>"
 msgstr "B<--exit-at-end>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:246
+#: ../../doc/man/wesnoth.6:254
 msgid ""
 "exits once the scenario is over, without displaying victory/defeat dialog "
 "which requires the user to click OK.  This is also used for scriptable "
@@ -667,13 +719,13 @@ msgstr ""
 "选项也可以用来进行脚本化的性能基准测试。"
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:246
+#: ../../doc/man/wesnoth.6:254
 #, no-wrap
 msgid "B<--nogui>"
 msgstr "B<--nogui>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:251
+#: ../../doc/man/wesnoth.6:259
 msgid ""
 "runs the game without the GUI. Must appear before B<--multiplayer> to have "
 "the desired effect."
@@ -682,13 +734,13 @@ msgstr ""
 "有效。"
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:251
+#: ../../doc/man/wesnoth.6:259
 #, no-wrap
 msgid "B<--parm>I<number>B<=>I<name>B<:>I<value>"
 msgstr "B<--parm>I<number>B<=>I<name>B<:>I<value>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:260
+#: ../../doc/man/wesnoth.6:268
 msgid ""
 "sets additional parameters for this side. This parameter depends on the "
 "options used with B<--controller> and B<--algorithm>.  It should only be "
@@ -698,26 +750,26 @@ msgstr ""
 "况。这个选项应该只对自己设计AI的人比较有用。（目前还没有完整的文档）"
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:260
+#: ../../doc/man/wesnoth.6:268
 #, no-wrap
 msgid "B<--scenario=>I<value>"
 msgstr "B<--scenario=>I<value>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:264
+#: ../../doc/man/wesnoth.6:272
 msgid ""
 "selects a multiplayer scenario by id. The default scenario id is "
 "B<multiplayer_The_Freelands>."
 msgstr "通过id选择多人游戏地图。默认地图id是B<multiplayer_The_Freelands>。"
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:264
+#: ../../doc/man/wesnoth.6:272
 #, no-wrap
 msgid "B<--side>I<number>B<=>I<value>"
 msgstr "B<--side>I<number>B<=>I<value>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:269
+#: ../../doc/man/wesnoth.6:277
 msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
 "an id. Factions are described in the data/multiplayer.cfg file."
@@ -726,24 +778,24 @@ msgstr ""
 "multiplayer.cfg文件中描述。"
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:269
+#: ../../doc/man/wesnoth.6:277
 #, no-wrap
 msgid "B<--turns=>I<value>"
 msgstr "B<--turns=>I<value>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:273
+#: ../../doc/man/wesnoth.6:281
 msgid "sets the number of turns for the chosen scenario. The default is B<50>."
 msgstr "设置所选场景的回合数限制。默认值为B<50>。"
 
 #. type: SH
-#: ../../doc/man/wesnoth.6:274 ../../doc/man/wesnothd.6:265
+#: ../../doc/man/wesnoth.6:282 ../../doc/man/wesnothd.6:265
 #, no-wrap
 msgid "EXIT STATUS"
 msgstr "退出状态码"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:277
+#: ../../doc/man/wesnoth.6:285
 msgid ""
 "Normal exit status is 0. An exit status of 1 indicates an (SDL, video, "
 "fonts, etc) initialization error. An exit status of 2 indicates an error "
@@ -753,18 +805,18 @@ msgstr ""
 "码2代表命令行选项中有错误。"
 
 #. type: SH
-#: ../../doc/man/wesnoth.6:278 ../../doc/man/wesnothd.6:269
+#: ../../doc/man/wesnoth.6:286 ../../doc/man/wesnothd.6:269
 #, no-wrap
 msgid "AUTHOR"
 msgstr "作者"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:281
+#: ../../doc/man/wesnoth.6:289
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
 msgstr "由David White E<lt>davidnwhite@verizon.netE<gt> 编写。"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:283
+#: ../../doc/man/wesnoth.6:291
 msgid ""
 "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
 "netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
@@ -773,32 +825,32 @@ msgstr ""
 "和 Soliton E<lt>soliton.de@gmail.comE<gt> 编辑。"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:285
+#: ../../doc/man/wesnoth.6:293
 msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
 msgstr "这个手册页最初由 Cyril Bouthors E<lt>cyril@bouthors.orgE<gt> 编写。"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:287 ../../doc/man/wesnothd.6:276
+#: ../../doc/man/wesnoth.6:295 ../../doc/man/wesnothd.6:276
 msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgstr ""
 "请访问官方主页：http://www.wesnoth.org/\n"
 "以及Wesnoth中文爱好者主页：http://www.wesnoth.cn"
 
 #. type: SH
-#: ../../doc/man/wesnoth.6:288 ../../doc/man/wesnothd.6:277
+#: ../../doc/man/wesnoth.6:296 ../../doc/man/wesnothd.6:277
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "版权"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:291 ../../doc/man/wesnothd.6:280
+#: ../../doc/man/wesnoth.6:299 ../../doc/man/wesnothd.6:280
 msgid "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr "版权所有 \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:294 ../../doc/man/wesnothd.6:283
+#: ../../doc/man/wesnoth.6:302 ../../doc/man/wesnothd.6:283
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -809,13 +861,13 @@ msgstr ""
 "文翻译不具有法律效力，只有GPL英文原本才具有法律效力。"
 
 #. type: SH
-#: ../../doc/man/wesnoth.6:295 ../../doc/man/wesnothd.6:284
+#: ../../doc/man/wesnoth.6:303 ../../doc/man/wesnothd.6:284
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "参见"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:297
+#: ../../doc/man/wesnoth.6:305
 msgid "B<wesnothd>(6)."
 msgstr "B<wesnothd>(6)."
 

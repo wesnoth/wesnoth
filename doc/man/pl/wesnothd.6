@@ -1,0 +1,304 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTHD 6 2011 wesnothd "demon sieciowy gier wieloosobowych Bitwy o Wesnoth"
+.
+.SH NAZWA
+.
+wesnothd \- demon sieciowy gier wieloosobowych Bitwy o \fBWesnoth\fP
+.
+.SH SKŁADNIA
+.
+\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIścieżka\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
+\fIliczba\fP\|] [\|\fB\-T\fP \fIliczba\fP\|]
+.br
+\fBwesnothd\fP \fB\-V\fP
+.
+.SH OPIS
+.
+Zarządza grami wieloosobowymi Bitwy o Wesnoth. Więcej informacji o
+poleceniach akceptowanych przez serwer za pośrednictwem klienta wesnoth
+(/query ...) lub kolejki można znaleźć pod adresem
+http://www.wesnoth.org/wiki/ServerAdministration.
+.
+.SH OPCJE
+.
+.TP 
+\fB\-c\ \fP\fIścieżka\fP\fB,\ \-\-config\fP\fI\ ścieżka\fP
+informuje demona wesnothd o lokalizacji pliku konfiguracyjnego. Zobacz
+rozdział \fBKONFIGURACJA SERWERA\fP poniżej, aby uzyskać informacje o
+składni. Konfigurację można przeładować wysyłając procesowi serwera proces
+SIGHUP.
+.TP 
+\fB\-d, \-\-daemon\fP
+uruchamia wesnothd w trybie demona.
+.TP 
+\fB\-h, \-\-help\fP
+wyświetla informacje o opcjach wiersza poleceń.
+.TP 
+\fB\-\-log\-\fP\fIpoziom\fP\fB=\fP\fIdomena1\fP\fB,\fP\fIdomena2\fP\fB,\fP\fI...\fP
+określa poziom istotności domen debugowania. \fBall\fP oznacza dopasowanie
+wszystkich domen debugowania. Dostępne poziomy: \fBerror\fP (błędy),\ \fBwarning\fP (ostrzeżenia),\ \fBinfo\fP (informacje),\ \fBdebug\fP
+(debugowanie). Poziom domyślny to \fBerror\fP lub \fBinfo\fP (w przypadku domeny
+\fBserver\fP).
+.TP 
+\fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
+przypisuje serwer do określonego portu. Jeśli nie podano żadnego portu,
+używany będzie port \fB15000\fP.
+.TP 
+\fB\-t\ \fP\fIliczba\fP\fB,\ \-\-threads\fP\fI\ liczba\fP
+ustawia maksymalną liczbę oczekujących wątków roboczych dla wejścia/wyjścia
+sieci na wartość n (domyślnie: \fB5\fP,\ maksymalnie:\ \fB30\fP).
+.TP 
+\fB\-T\ \fP\fIliczba\fP\fB,\ \-\-max\-threads\fP\fI\ liczba\fP
+ustawia maksymalną ilość wątków roboczych, które zostaną utworzone. Wartość
+\fB0\fP (domyślna) oznacza brak limitu.
+.TP 
+\fB\-V, \-\-version\fP
+wyświetla numer wersji i kończy działanie programu.
+.TP 
+\fB\-v, \-\-verbose\fP
+włącza zapis dzienników debugowania.
+.
+.SH "KONFIGURACJA SERWERA"
+.
+.SS "Ogólna składnia jest następująca:"
+.
+.P
+[\fItag\fP]
+.IP
+\fIklucz\fP="\fIwartość\fP"
+.IP
+\fIklucz\fP="\fIwartość\fP,\fIwartość\fP,..."
+.P
+[/\fItag\fP]
+.
+.SS "Klawisze globalne:"
+.
+.TP 
+\fBallow_remote_shutdown\fP
+Wartość \fBno\fP (nie \- wartość domyślna) oznacza, że żądania shut_down i
+restart będą ignorowane, jeśli nie zostaną przesłane poprzez
+kolejkę. Ustawienie wartości \fByes\fP (tak) umożliwi administratorowi zdalne
+wyłączanie poprzez polecenie /query.
+.TP 
+\fBban_save_file\fP
+Pełna lub względna ścieżka do pliku (archiwum gzip), do którego serwer ma
+dostęp do odczytu i zapisu. Blokady będą zapisywane w tym pliku i wczytywane
+ponownie podczas uruchamiania serwera.
+.TP 
+\fBcompress_stored_rooms\fP
+Określa, czy odczyty i zapisy pliku pokoi powinny być dokonywane w postaci
+skompresowanej. Wartość domyślna: \fByes\fP (tak).
+.TP 
+\fBconnections_allowed\fP
+Dozwolona liczba połączeń z tego samego adresu IP. \fB0\fP oznacza brak
+ograniczeń. (domyślnie: \fB5\fP)
+.TP 
+\fBdisallow_names\fP
+Nazwy/pseudonimy, które nie są akceptowane przez serwer. Obsługiwane są
+symbole \fB*\fP i \fB?\fP z wzorców wieloznacznych. Zobacz stronę \fBglob\fP(7), aby
+uzyskać szczegółowe informacje. Wartości domyślne (używane, gdy żadne inne
+wartości nie zostaną
+podane):\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
+.TP 
+\fBfifo_path\fP
+Ścieżka do kolejki, do której można przesyłać echem polecenia serwera
+(działanie równoważne do polecenia /query ... z wesnoth). Jeśli nie zostanie
+podana, przyjmowana jest ścieżka określona podczas kompilacji (domyślnie:
+\fB/var/run/socket/wesnothd/socket\fP).
+.TP 
+\fBmax_messages\fP
+Liczba wiadomości dopuszczanych w przedziale czasowym
+\fBmessages_time_period\fP (domyślnie: \fB4\fP).
+.TP 
+\fBmessages_time_period\fP
+Przedział czasowy (w sekundach), na przestrzeni którego wykrywane jest
+zalewanie komunikatami (domyślnie: \fB10\fP sekund).
+.TP 
+\fBmotd\fP
+Wiadomość dnia.
+.TP 
+\fBnew_room_policy\fP
+Określa, kto ma uprawnienia do tworzenia nowych pokoi na serwerze. Możliwe
+wartości: \fBeveryone\fP (wszyscy użytkownicy), \fBregistered\fP (tylko
+zarejestrowani użytkownicy), \fBadmin\fP (tylko administratorzy) i \fBnobody\fP
+(nikt). Wartość domyślna: \fBeveryone\fP.
+.TP 
+\fBpasswd\fP
+Hasło używane do uzyskania uprawnień administratora (poprzez \fB/query admin
+\fP\fIhasło\fP).
+.TP 
+\fBreplay_save_path\fP
+Katalog na serwerze, w którym są zapisywane powtórki gier, koniecznie z
+ukośnikiem (/) na końcu. Domyślnie jest to katalog, w którym uruchomiono
+wesnothd.
+.TP 
+\fBrestart_command\fP
+Polecenie używane przez serwer do uruchomienia nowego procesu serwera
+poleceniem \fBrestart\fP. (Może zostać wydane wyłącznie poprzez kolejkę \- patrz
+ustawienie \fBallow_remote_shutdown\fP).
+.TP 
+\fBroom_save_file\fP
+Ścieżka do pliku, w którym należy zapisać dane pokoju. Plik jest odczytywany
+przy uruchamianiu serwera i zapisywany podczas jego pracy. Jeśli parametr
+jest pusty lub zostanie pominięty, pokoje nie będą ładowane ani zapisywane.
+.TP 
+\fBsave_replays\fP
+Określa, czy serwer będzie automatycznie zapisywać powtórki gier. Domyślnie
+wyłączone (wartość \fBfalse\fP).
+.TP 
+\fBversions_accepted\fP
+Oddzielana przecinkami lista łańcuchów wersji akceptowanych przez
+serwer. Obsługiwane są symbole \fB*\fP i \fB?\fP ze wzorców
+wieloznacznych. (Domyślnie: odpowiednia wersja wesnoth).
+.br
+Przykład: \fBversions_accepted="*"\fP odpowiada akceptowaniu dowolnego numeru
+wersji.
+.TP  
+\fBuser_handler\fP
+Nazwa obiektu obsługi użytkowników, który ma być używany. Obecnie dostępne
+obiekty to \fBforum\fP (aby podłączyć wesnothd do bazy danych forum phpbb) i
+\fBsample\fP (przykładowa implementacja interfejsu obiektu obsługi
+użytkowników, której nikt przy zdrowych zmysłach nie powinien używać w
+poważnych zastosowaniach). Wartość domyślna to \fBforum\fP. Należy też dodać
+sekcję \fB[user_handler]\fP (patrz poniżej).
+.
+.SS "Globalne etykiety:"
+.
+.P
+\fB[redirect]\fP Etykieta określająca serwer, na który przekierowywane są
+okreslone wersje klientów.
+.RS
+.TP 
+\fBhost\fP
+Adres serwera, na który ma nastąpić przekierownie.
+.TP 
+\fBport\fP
+Numer portu, z którym ma nastąpić połączenie.
+.TP 
+\fBversion\fP
+Oddzielana przecinkami lista wersji, które mają zostać przekierowane. Działa
+tak, jak \fBversions_accepted\fP w przypadku wzorców wieloznacznych.
+.RE
+.P
+\fB[ban_time]\fP Znacznik do definiowania wygodnych słów kluczowych,
+określających przedziały czasu tymczasowych blokad.
+.RS
+.TP 
+\fBname\fP
+Nazwa używana do określenia danego czasu blokady.
+.TP 
+\fBtime\fP
+Definicja przedziału czasowego. Format: %d[%s[%d%s[...]]], gdzie %s ma
+wartość s (sekundy), m (minuty), h (godziny), D (dni), M (miesiące) lub Y
+(lata), a %d jest liczbą. Jeśli nie zostanie podany żaden modyfikator czasu,
+przyjmowane są minuty (m). Przykład: \fBtime="1D12h30m"\fP spowoduje nałożenie
+blokady trwającej 1 dzień, 12 godzin i 30 minut.
+.RE
+.P
+\fB[proxy]\fP Etykieta instruująca serwer, by działał jak serwer proxy i
+przekierowywał żądanie klienta do określonego serwera. Akceptuje takie same
+klucze, jak [redirect].
+.RE
+.P
+\fB[user_handler]\fP Konfiguruje obiekt obsługi użytkowników. Dostępne
+parametry zależą od obiektu ustawionego za pomocą parametru
+\fBuser_handler\fP. W przypadku braku sekcji \fB[user_handler]\fP w konfiguracji
+serwer zostanie uruchomiony bez żadnej usługi rejestrowania pseudonimów.
+.RS
+.TP  
+\fBdb_host\fP
+(dotyczy user_handler=forum) Nazwa hosta serwera bazy danych
+.TP  
+\fBdb_name\fP
+(dotyczy user_handler=forum) Nazwa bazy danych
+.TP  
+\fBdb_user\fP
+(dotyczy user_handler=forum) Nazwa użytkownika, która umożliwia zalogowanie
+się do bazy danych
+.TP  
+\fBdb_password\fP
+(dotyczy user_handler=forum) Hasło tego użytkownika
+.TP  
+\fBdb_users_table\fP
+(dotyczy user_handler=forum) Nazwa tabeli, w której używane forum phpbb
+zapisuje dane użytkowników. Najczęściej będzie to
+<przedrostek\-nazwy\-tabeli>_users (np. phpbb3_users).
+.TP  
+\fBdb_extra_table\fP
+(dotyczy user_handler=forum) Nazwa tabeli, w której wesnothd będzie
+zapisywać własne dane o użytkownikach. Tabelę trzeba utworzyć ręcznie,
+np. poleceniem: \fBCREATE TABLE <nazwa\-tabeli>(username VARCHAR(255)
+PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0,
+user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);\fP
+.TP  
+\fBuser_expiration\fP
+(dotyczy user_handler=sample) Czas ważności zarejestrowanego pseudonimu (w
+dniach).
+.RE
+.P
+\fB[mail]\fP Konfiguruje serwer SMTP, za pośrednictwem którego obiekt obsługi
+użytkowników może wysyłać pocztę elektroniczną. Obecnie używane tylko przez
+obiekt 'sample'.
+.RS
+.TP  
+\fBserver\fP
+Nazwa hosta serwera poczty.
+.TP  
+\fBusername\fP
+Nazwa użytkownika używana do zalogowania się na serwer poczty.
+.TP  
+\fBpassword\fP
+Hasło tego użytkownika.
+.TP  
+\fBfrom_address\fP
+Adres do odpowiedzi w wysyłanej poczcie.
+.TP  
+\fBmail_port\fP
+Port, na którym jest uruchomiony serwer poczty. Domyślnie: 25.
+.
+.SH "KOD WYJŚCIA"
+.
+Prawidłowy kod wyjścia to 0, co odpowiada poprawnemu zakończeniu pracy
+serwera. Kod wyjścia równy 2 sygnalizuje błąd opcji wiersza poleceń.
+.
+.SH AUTOR
+.
+Autor: David White <davidnwhite@verizon.net>. Modyfikacje: Nils
+Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net>,
+Soliton <soliton.de@gmail.com> i Thomas Baumhauer
+<thomas.baumhauer@gmail.com>. Autorem pierwotnej wersji tej strony
+manuala jest Cyril Bouthors <cyril@bouthors.org>.
+.br
+Odwiedź oficjalną stronę WWW: http://www.wesnoth.org/
+.
+.SH "PRAWA AUTORSKIE"
+.
+Copyright \(co 2003\-20011 David White <davidnwhite@verizon.net>
+.br
+Oprogramowanie typu Free Software. Oprogramowanie oparte na licencji GPL
+wersja 2 opublikowanej przez Free Software Foundation. Nie udziela się
+ŻADNEJ gwarancji, łącznie z RĘKOJMIĄ oraz GWARANCJĄ PRZYDATNOŚCI DO
+OKREŚLONEGO CELU.
+.
+.SH "ZOBACZ TAKŻE"
+.
+\fBwesnoth\fP(6).

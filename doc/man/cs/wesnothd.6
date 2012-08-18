@@ -1,0 +1,293 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTHD 6 2011 wesnothd "Bitva o Wesnoth \- síťový server pro hru více hráčů"
+.
+.SH NÁZEV
+.
+Bitva o \fBWesnoth\fP \- síťový server pro hru více hráčů
+.
+.SH POUŽITÍ
+.
+\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIcesta\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
+\fIpočet_vláken\fP\|] [\|\fB\-T\fP \fIpočet_vláken\fP\|]
+.br
+\fBwesnothd\fP \fB\-V\fP
+.
+.SH POPIS
+.
+Součást Bitvy o Wesnoth spravující hry více hráčů. Na
+http://www.wesnoth.org/wiki/ServerAdministration lze nalézt příkazy, které
+server akceptuje, a to jak přes fifo, tak přímo od klienta wesnoth.
+.
+.SH VOLBY
+.
+.TP 
+\fB\-c\ \fP\fIcesta\fP\fB,\ \-\-config\fP\fI\ cesta\fP
+specifikuje cestu, kde má wesnothd hledat konfigurační soubor. Syntaxe
+souboru je popsána v sekci \fBKONFIGURACE SERVERU\fP níže. Konfiguraci je možno
+znovu načíst posláním SIGHUP procesu serveru.
+.TP 
+\fB\-d, \-\-daemon\fP
+spouští wesnothd jako démona.
+.TP 
+\fB\-h, \-\-help\fP
+zobrazuje nápovědu k parametrům příkazové řádky.
+.TP 
+\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIkategorie1\fP\fB,\fP\fIkategorie2\fP\fB,\fP\fI...\fP
+nastavuje úroveň závažnosti pro jednotlivé kategorie. \fBall\fP znamená, že
+budou vypisovány všechny kategorie. Dostupné kategorie: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP.\ Implicitně je aktivována kategorie
+\fBerror\fP a pro kategorii \fBserver\fP také \fBinfo\fP.
+.TP 
+\fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
+určuje, který port má server používat. Implicitní hodnota je \fB15000\fP.
+.TP 
+\fB\-t,\ \fP\fIpočet\fP\fB,\ \-\-threads\fP\fI\ počet\fP
+nastavuje limit pro počet nečinných vláken čekajících na síťová spojení
+(implicitně: \fB5\fP,\ max:\ \fB30\fP).
+.TP 
+\fB\-T,\ \fP\fIpočet\fP\fB,\ \-\-max\-threads\fP\fI\ počet\fP
+nastavuje nejvyšší počet vláken, které wesnothd vytvoří; \fB0\fP znamená bez
+omezení (implicitně: \fB0\fP).
+.TP 
+\fB\-V, \-\-version\fP
+zobrazí verzi wesnothd a skončí.
+.TP 
+\fB\-v, \-\-verbose\fP
+zapíná výpis rozšířených logovacích informací.
+.
+.SH "KONFIGURACE SERVERU"
+.
+.SS "Obecná syntaxe je:"
+.
+.P
+[\fIznačka\fP]
+.IP
+\fIklíč\fP="\fIhodnota\fP"
+.IP
+\fIklíč\fP="\fIhodnota\fP,\fIhodnota\fP,..."
+.P
+[/\fIznačka\fP]
+.
+.SS "Globální klíče:"
+.
+.TP 
+\fBallow_remote_shutdown\fP
+Při nastavení na \fBno\fP (výchozí), požadavky shut_down a restart jsou
+ignorovány, pokud nepocházejí z fifo. Při nastavení \fByes\fP může správce
+vzdáleně vypnout server pomocí /query.
+.TP 
+\fBban_save_file\fP
+Plná či relativní cesta k souboru (komprese gzip), jenž může server číst a
+přepisovat. Do tohoto souboru jsou ukládány zákazy přístupu (ban) a načítány
+při spuštění.
+.TP 
+\fBcompress_stored_rooms\fP
+Určuje, zda je soubor s místnostmi čten a zapisován jako
+komprimovaný. Výchozí hodnota \fByes\fP.
+.TP 
+\fBconnections_allowed\fP
+Počet povolených spojení z jedné IP adresy. \fB0\fP znamená
+nekonečno. (implicitně \fB5\fP)
+.TP 
+\fBdisallow_names\fP
+Jména/přezdívky, které nejsou serverem akceptována. Je možno použít
+metaznaky \fB*\fP a \fB?\fP. Více viz. \fBglob\fP(7). Implicitní hodnota je:
+\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
+.TP 
+\fBfifo_path\fP
+Cesta k fifo, do nějž můžete posílat příkazy serveru (stejně jako pomocí
+/query z klienta). Pokud není explicitně určena, je použita výchozí hodnota
+určená při kompilaci (běžně \fB/var/run/socket/wesnothd/socket\fP).
+.TP 
+\fBmax_messages\fP
+Maximální počet zpráv, které jsou přijaty během
+\fBmessages_time_period\fP. (implicitně \fB4\fP)
+.TP 
+\fBmessages_time_period\fP
+Časová perioda (ve vteřinách), po které se nuluje počítadlo přijatých
+zpráv. (implicitně \fB10\fP sekund)
+.TP 
+\fBmotd\fP
+Zpráva dne.
+.TP 
+\fBnew_room_policy\fP
+Určuje, kdo může vytvářet na serveru nové místnosti. Dostupné hodnoty
+zahrnují \fBeveryone\fP, \fBregistered\fP, \fBadmin\fP a \fBnobody\fP \- místosti pak
+může vytvářet každý, registrovaní uživatelé, pouze správci nebo
+nikdo. Výchozí hodnota je \fBeveryone\fP.
+.TP 
+\fBpasswd\fP
+Heslo pro získání administrátorských práv. (Přes \fB/query admin
+\fP\fIpassword\fP.)
+.TP 
+\fBreplay_save_path\fP
+Adresář, do nějž server ukládá záznamy her (nezapomeňte na / na
+konci!). Výchozí hodnota je `', neboli adresář v němž byl server spuštěn.
+.TP 
+\fBrestart_command\fP
+Příkaz, který server použije pro spuštění nového procesu sebe sama při
+příkazu \fBrestart\fP. (Lze nastavit pouze přes fifo. Více viz
+\fBallow_remote_shutdown\fP.)
+.TP 
+\fBroom_save_file\fP
+Cesta k souboru, v němž jsou ukládány informace o místnostech. Tento soubor
+je načten při spuštění serveru a poté přepisován. Pokud je prázdný nebo není
+nastaven, ukládání a načítání místností nebude aktivní.
+.TP 
+\fBsave_replays\fP
+Určuje, zda bude server automaticky ukládat záznamy her (výchozí hodnota:
+\fBfalse\fP).
+.TP 
+\fBversions_accepted\fP
+Seznam čárkou oddělených řetězců verzí Wesnothu, které jsou serverem
+akceptovány. Je možno použít zástupné znaky \fB*\fP a \fB?\fP. Implicitní hodnota
+odpovídá příslušné verzi wesnothu.
+.br
+Příklad: \fBversions_accepted="*"\fP akceptuje všechny verze.
+.TP  
+\fBuser_handler\fP
+Název handleru uživatelů, jenž má být použit. V tuto chvíli jsou dostupné
+handlery \fBforum\fP (propojení s databází phpbb) a \fBsample\fP (vzorová
+implementace rozhraní, prakticky nepoužitelná). Výchozí hodnota je
+\fBforum\fP. Handler musí být dále konfigurován v sekci \fB[user_handler]\fP \- viz
+níže.
+.
+.SS "Globální značky:"
+.
+.P
+\fB[redirect]\fP Značka udávající server, na který bude přesměrován požadavek
+pro konkrétní verzi klienta.
+.RS
+.TP 
+\fBhost\fP
+Adresa serveru pro přesměrování.
+.TP 
+\fBport\fP
+Port, na kterém poslouchá vzdálený wesnothd.
+.TP 
+\fBversion\fP
+Seznam čárkou oddělených řetězců verzí Wesnothu, pro které jsou požadavky
+přesměrovány na tento vzdálený server. Obdobný zápis jako u
+\fBversions_accepted\fP.
+.RE
+.P
+\fB[ban_time]\fP Tag umožňující definovat klíčová slova pro délky zákazů
+přístupu (ban).
+.RS
+.TP 
+\fBname\fP
+Název pro období.
+.TP 
+\fBtime\fP
+Definice doby trvání. Formát je %d[%s[%d%s[...]]] kde %s je "s" (sekundy),
+"m" (minuty), "h" (hodiny), "D" (dny), "M" (měsíce) nebo "Y" (roky) a %d je
+číslo. Pokud není zadán druh délky, jsou předpokládány minuty (m). Například
+\fBtime="1D12H30m"\fP představuje zákaz pro jeden den, 12 hodin a 30 minut.
+.RE
+.P
+\fB[proxy]\fP Značka říkající serveru, aby se choval jako proxy a přesměrovával
+na určený server klientské požadavky. Akceptuje stejné klíče jako
+\fB[redirect]\fP.
+.RE
+.P
+\fB[user_handler]\fP Konfiguruje uživatelský handler. Dostupné klíče se liší
+podle toho, který handler je použit \- nastaveno klíčem
+\fBuser_handler\fP. Pokud není v konfiguraci nalezena žádná sekce
+\fB[user_handler]\fP, server poběží bez služeb správy přezdívek.
+.RS
+.TP  
+\fBdb_host\fP
+(pro user_handler=forum) Hostitelský databázový server
+.TP  
+\fBdb_name\fP
+(pro user_handler=forum) Jméno databáze
+.TP  
+\fBdb_user\fP
+(pro user_handler=forum) Uživatelské jméno pro přihlášení k databázi
+.TP  
+\fBdb_password\fP
+(pro user_handler=forum) Heslo pro databázi
+.TP  
+\fBdb_users_table\fP
+(pro user_handler=forum) Název tabulky, v níž ukládá vaše fórum (typu phpbb)
+data o uživatelích. Pravděpodobně to je <prefix>_users (například
+phpbb3_users).
+.TP  
+\fBdb_extra_table\fP
+(pro user_handler=forum) Název tabulky, v níž bude wesnothd ukládat svá
+vlastní data o uživatelích. Tuto tabulku budete muset vytvořit ručně \-
+například: \fBCREATE TABLE <jméno_tabulky>(username VARCHAR(255)
+PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0,
+user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);\fP
+.TP  
+\fBuser_expiration\fP
+(pro user_handler=sample) Čas, po němž vyprší platnost registrovaného
+uživatelského jména (dny).
+.RE
+.P
+\fB[mail]\fP Konfiguruje SMTP server skrz nějž je možno odesílat poštu
+uživatelského handleru. V tuto chvíli jej používá pouze vzorový handler.
+.RS
+.TP  
+\fBserver\fP
+Hostitelský server emailu
+.TP  
+\fBusername\fP
+Uživatelské jméno pro emailový server.
+.TP  
+\fBpassword\fP
+Heslo pro emailový server.
+.TP  
+\fBfrom_address\fP
+Adresa vložená do hlavičky Reply\-To odesílaných mailů.
+.TP  
+\fBmail_port\fP
+Port, na němž běží emailový server. Výchozí hodnota 25.
+.
+.SH "NÁVRATOVÝ STATUS"
+.
+Status normálního ukončení, tedy když se server korektně vypne, je
+0. Návratový status 2 pak signalizuje chybu při zpracování nějaké volby z
+příkazového řádku.
+.
+.SH AUTOŘI
+.
+Vytvořil David White <davidnwhite@verizon.net>. Upravili Nils
+Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net>,
+Soliton <soliton@sonnenkinder.org>a Thomas Baumhauer
+<thomas.baumhauer@gmail.com>. Tuto manovou stránku původně vytvořil
+Cyril Bouthors <cyril@bouthors.org>. Překlad Oto 'tapik' Buchta
+<tapik@buchtovi.cz> a Vladimír Slávik
+<slavik.vladimir@seznam.cz>.
+.br
+Navštivte oficiální stránky: http://www.wesnoth.org/
+.
+.SH COPYRIGHT
+.
+Copyright \(co 2003\-2011 David White <davidnwhite@verizon.net>
+.br
+Toto je Svobodný Software; je licencován pod licencí GPL verze 2, tak jak je
+publikována nadací Free Software Foundation. Tento program je bez záruky, a
+to i co se týká obchodovatelnosti a použitelnosti.
+.
+.SH "VIZ TAKÉ"
+.
+\fBwesnoth\fP(6).

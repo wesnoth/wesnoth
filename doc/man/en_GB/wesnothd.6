@@ -1,0 +1,293 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTHD 6 2011 wesnothd "Battle for Wesnoth multiplayer network daemon"
+.
+.SH NAME
+.
+wesnothd \- Battle for \fBWesnoth\fP multiplayer network daemon
+.
+.SH SYNOPSIS
+.
+\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
+\fInumber\fP\|] [\|\fB\-T\fP \fInumber\fP\|]
+.br
+\fBwesnothd\fP \fB\-V\fP
+.
+.SH DESCRIPTION
+.
+Manages Battle for Wesnoth multiplayer games. See
+http://www.wesnoth.org/wiki/ServerAdministration on what commands the server
+accepts via the wesnoth client (/query ...) or the fifo.
+.
+.SH OPTIONS
+.
+.TP 
+\fB\-c\ \fP\fIpath\fP\fB,\ \-\-config\fP\fI\ path\fP
+tells wesnothd where to find the config file to use. See the section
+\fBSERVER CONFIG\fP below for the syntax. You can reload the config with
+sending SIGHUP to the server process.
+.TP 
+\fB\-d, \-\-daemon\fP
+runs wesnothd as a daemon.
+.TP 
+\fB\-h, \-\-help\fP
+tells you what the command line options do.
+.TP 
+\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
+sets the severity level of the log domains.  \fBall\fP can be used to match any
+log domain. Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP.
+By default the \fBerror\fP level is used and the \fBinfo\fP level for the
+\fBserver\fP domain.
+.TP 
+\fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
+binds the server to the specified port. If no port is specified, port
+\fB15000\fP will be used.
+.TP 
+\fB\-t\ \fP\fInumber\fP\fB,\ \-\-threads\fP\fI\ number\fP
+sets the maximum number of waiting worker threads for network I/O to n
+(default: \fB5\fP,\ max:\ \fB30\fP).
+.TP 
+\fB\-T\ \fP\fInumber\fP\fB,\ \-\-max\-threads\fP\fI\ number\fP
+sets the maximum number of worker threads that will be created.  If set to
+\fB0\fP there will be no limit (default: \fB0\fP).
+.TP 
+\fB\-V, \-\-version\fP
+shows version number and exits.
+.TP 
+\fB\-v, \-\-verbose\fP
+turns debug logging on.
+.
+.SH "SERVER CONFIG"
+.
+.SS "The general syntax is:"
+.
+.P
+[\fItag\fP]
+.IP
+\fIkey\fP="\fIvalue\fP"
+.IP
+\fIkey\fP="\fIvalue\fP,\fIvalue\fP,..."
+.P
+[/\fItag\fP]
+.
+.SS "Global keys:"
+.
+.TP 
+\fBallow_remote_shutdown\fP
+If set to \fBno\fP (default), shut_down and restart requests are ignored unless
+they come from the fifo.  Set it to \fByes\fP to allow remote shutdown via a
+/query by an administrator.
+.TP 
+\fBban_save_file\fP
+Full or relative path to a (gzip compressed) file that the server can read
+and write.  Bans will be saved to this file and read again on server start.
+.TP 
+\fBcompress_stored_rooms\fP
+Determines whether the rooms file should be read and written to in
+compressed form. Defaults to \fByes\fP.
+.TP 
+\fBconnections_allowed\fP
+The number of allowed connections from the same IP. \fB0\fP means
+infinite. (default: \fB5\fP)
+.TP 
+\fBdisallow_names\fP
+Names/nicks that are not accepted by the server. \fB*\fP and \fB?\fP from wildcard
+patterns are supported. See \fBglob\fP(7)  for more details.  Default values
+(used if nothing is specified) are:
+\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
+.TP 
+\fBfifo_path\fP
+The path to the fifo you can echo server commands into (same as /query
+\&... from wesnoth).  If not specified defaults to the compile\-time path
+(default: \fB/var/run/socket/wesnothd/socket\fP).
+.TP 
+\fBmax_messages\fP
+The number of allowed messages in \fBmessages_time_period\fP. (default: \fB4\fP)
+.TP 
+\fBmessages_time_period\fP
+The time period (in seconds) message flooding is detected in. (default:
+\fB10\fP seconds)
+.TP 
+\fBmotd\fP
+The message of the day.
+.TP 
+\fBnew_room_policy\fP
+Determines who can create new rooms on the server. Available values are
+\fBeveryone\fP, \fBregistered\fP, \fBadmin\fP and \fBnobody\fP, and give the permission
+respectively to everyone, registered users, admin users or disables new room
+creation. Default value is \fBeveryone\fP.
+.TP 
+\fBpasswd\fP
+The password used to gain admin privileges (via \fB/query admin
+\fP\fIpassword\fP).
+.TP 
+\fBreplay_save_path\fP
+The directory where the server stores game replays. (Don't forget the
+trailing /!) Defaults to `' which means the directory wesnothd was started
+in.
+.TP 
+\fBrestart_command\fP
+The command that the server uses to start a new server process via the
+\fBrestart\fP command. (Can only be issued via the fifo. See the
+\fBallow_remote_shutdown\fP setting.)
+.TP 
+\fBroom_save_file\fP
+Path to a file where the room info should be stored. This file is read on
+server startup and written to later. If empty or not set, rooms are not
+loaded and not saved.
+.TP 
+\fBsave_replays\fP
+Defines whether the server will automatically save replays of
+games. (default: \fBfalse\fP)
+.TP 
+\fBversions_accepted\fP
+A comma separated list of version strings to be accepted by the server. \fB*\fP
+and \fB?\fP from wildcard patterns are supported.  (defaults to the
+corresponding wesnoth version)
+.br
+Example: \fBversions_accepted="*"\fP accepts any version string.
+.TP  
+\fBuser_handler\fP
+The name of the user handler to use. Currently available user handlers are
+\fBforum\fP (to connect wesnothd to a phpbb forum database) and \fBsample\fP (a
+sample implementation of the user handler interface, if you use this on
+anything real you are insane). The default value is \fBforum\fP. You must also
+add a \fB[user_handler]\fP section, see below.
+.
+.SS "Global tags:"
+.
+.P
+\fB[redirect]\fP A tag to specify a server to redirect certain client versions
+to.
+.RS
+.TP 
+\fBhost\fP
+The address of the server to redirect to.
+.TP 
+\fBport\fP
+The port to connect to.
+.TP 
+\fBversion\fP
+A comma separated list of versions to redirect. Behaves the same way as
+\fBversions_accepted\fP in regard to wildcard patterns.
+.RE
+.P
+\fB[ban_time]\fP A tag to define convenient keywords for temporary ban time
+lengths.
+.RS
+.TP 
+\fBname\fP
+The name used to reference the ban time.
+.TP 
+\fBtime\fP
+The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s
+(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d
+is a number.  If no time modifier is given minutes (m) are assumed.
+Example: \fBtime="1D12h30m"\fP results in a ban time of 1 day, 12 hours and 30
+minutes.
+.RE
+.P
+\fB[proxy]\fP A tag to tell the server to act as a proxy and forward the
+connected client's requests to the specified server.  Accepts the same keys
+as \fB[redirect]\fP.
+.RE
+.P
+\fB[user_handler]\fP Configures the user handler. Available keys vary depending
+on which user handler is set with the \fBuser_handler\fP key. If no
+\fB[user_handler]\fP section is present in the configuration the server will
+run without any nick registration service.
+.RS
+.TP  
+\fBdb_host\fP
+(for user_handler=forum) The hostname of the database server
+.TP  
+\fBdb_name\fP
+(for user_handler=forum) The name of the database
+.TP  
+\fBdb_user\fP
+(for user_handler=forum) The name of the user under which to log into the
+database
+.TP  
+\fBdb_password\fP
+(for user_handler=forum) This user's password
+.TP  
+\fBdb_users_table\fP
+(for user_handler=forum) The name of the table in which your phpbb forums
+saves its user data. Most likely this will be <table\-prefix>_users
+(e.g. phpbb3_users).
+.TP  
+\fBdb_extra_table\fP
+(for user_handler=forum) The name of the table in which wesnothd will save
+its own data about users. You will have to create this table manually, e.g.:
+\fBCREATE TABLE <table\-name>(username VARCHAR(255) PRIMARY KEY,
+user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4)
+NOT NULL DEFAULT 0);\fP
+.TP  
+\fBuser_expiration\fP
+(for user_handler=sample) The time after which a registered nick expires (in
+days).
+.RE
+.P
+\fB[mail]\fP Configures an SMTP server through which the user handler can send
+mail. Currently only used by the sample user handler.
+.RS
+.TP  
+\fBserver\fP
+The hostname of the mail server
+.TP  
+\fBusername\fP
+The user name under which to log into the mail server.
+.TP  
+\fBpassword\fP
+This user's password.
+.TP  
+\fBfrom_address\fP
+The reply\-to address of you mail.
+.TP  
+\fBmail_port\fP
+The port on which your mail server is running. Default is 25.
+.
+.SH "EXIT STATUS"
+.
+Normal exit status is 0 when the server was properly shutdown. An exit
+status of 2 indicates an error with the command line options.
+.
+.SH AUTHOR
+.
+Written by David White <davidnwhite@verizon.net>.  Edited by Nils
+Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net>,
+Soliton <soliton.de@gmail.com> and Thomas Baumhauer
+<thomas.baumhauer@gmail.com>.  This manual page was originally
+written by Cyril Bouthors <cyril@bouthors.org>.
+.br
+Visit the official homepage: http://www.wesnoth.org/
+.
+.SH COPYRIGHT
+.
+Copyright \(co 2003\-2011 David White <davidnwhite@verizon.net>
+.br
+This is Free Software; this software is licensed under the GPL version 2, as
+published by the Free Software Foundation.  There is NO warranty; not even
+for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+.
+.SH "SEE ALSO"
+.
+\fBwesnoth\fP(6).

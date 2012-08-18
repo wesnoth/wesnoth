@@ -1,0 +1,297 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTHD 6 2011 wesnothd "Deamon de rede para jogos multijogadores de Battle for Wesnoth"
+.
+.SH NOME
+.
+wesnothd \- deamon de rede para jogos multijogadores de Battle for \fBWesnoth\fP
+.
+.SH SINOPSE
+.
+\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIcaminho\fP\|] [\|\fB\-p\fP \fIporta\fP\|]
+[\|\fB\-t\fP \fInúmero\fP\|] [\|\fB\-T\fP \fInúmero\fP\|]
+.br
+\fBwesnothd\fP \fB\-V\fP
+.
+.SH DESCRIÇÃO
+.
+Gerencia jogos multijogadores de Battle for Wesnoth. Veja
+http://www.wesnoth.org/wiki/ServerAdministration para saber que comandos o
+servidor aceita via o clitente wesnoth (/query) ou via fifo.
+.
+.SH OPÇÕES
+.
+.TP 
+\fB\-c\ \fP\fIcaminho\fP\fB,\ \-\-config\fP\fI\ caminho\fP
+diz a wesnothd onde achar o arquivo de configuração a ser usado. Veja a
+seção \fBCONFIGURAÇÃO DO SERVIDOR\fP abaixo para a sintaxe. Você pode
+recarregar a configuração enviando SIGHUP para o processo do servidor.
+.TP 
+\fB\-d, \-\-daemon\fP
+executa wesnothd como um daemon.
+.TP 
+\fB\-h, \-\-help\fP
+explica o que as opções de linha de comando fazem.
+.TP 
+\fB\-\-log\-\fP\fInível\fP\fB=\fP\fIdomínio1\fP\fB,\fP\fIdomínio2\fP\fB,\fP\fI...\fP
+Ajusta o nível de severidade dos dompinios de log.  \fBall\fP (todos) pode ser
+usado para casar com qualquer domínio de log. Níveis disponíveis: \fBerror\fP
+(erro),\ \fBwarning\fP (aviso),\ \fBinfo\fP (informação),\ \fBdebug\fP (depuração).
+Por padrão, o nível \fBerror\fP é usado e o nível \fBinfo\fP para o domínio do
+\fBservidor\fP.
+.TP 
+\fB\-p\ \fP\fIporta\fP\fB,\ \-\-port\fP\fI\ porta\fP
+conecta o servidor à porta escolhida. Se nenhuma porta for escolhida, a
+porta \fB15000\fP será usada.
+.TP 
+\fB\-t\ \fP\fInúmero\fP\fB,\ \-\-threads\fP\fI\ número\fP
+muda para n a quantidade máxima de threads de trabalho em espera para E/S de
+rede (padrão: \fB5\fP,\ max:\ \fB30\fP).
+.TP 
+\fB\-T\ \fP\fInúmero\fP\fB,\ \-\-max\-threads\fP\fI\ número\fP
+configura o número máximo de threads de trabalho que serão criadas. Se
+ajustado para \fB0\fP, não haverá limites (padrão: \fB0\fP).
+.TP 
+\fB\-V, \-\-version\fP
+mostra o número da versão e termina.
+.TP 
+\fB\-v, \-\-verbose\fP
+liga o log de depuração.
+.
+.SH "CONFIGURAÇAO DO SERVIDOR"
+.
+.SS "A sintaxe geral é:"
+.
+.P
+[\fItag\fP]
+.IP
+\fIkey\fP="\fIvalor\fP"
+.IP
+\fIchave\fP="\fIvalor\fP,\fIvalor\fP,..."
+.P
+[/\fItag\fP]
+.
+.SS "Chaves globais:"
+.
+.TP 
+\fBallow_remote_shutdown\fP
+se ajustado para \fBno\fP (o padrão), pedidos de desligar e reiniciar serão
+ignorados, a menos que venham do fifo.  Coloque como \fByes\fP para permitir
+desligamento remoto via um /query de um administrador.
+.TP 
+\fBban_save_file\fP
+caminho completo ou relativo para um arquivo (comprimido com gzip) que o
+servior possa ler e escrever.  Bans serão gravados para o arquivo e lidos de
+novo ao ligar o servidor.
+.TP 
+\fBcompress_stored_rooms\fP
+Determina quando o arquivo 'rooms' pode ser lido e escrito em forma
+compacta. O padrão é \fByes\fP.
+.TP 
+\fBconnections_allowed\fP
+O número de conexões permitidas do mesmo IP. \fB0\fP para infinito. (padrão:
+\fB5\fP)
+.TP 
+\fBdisallow_names\fP
+Nomes/apelidos que não são aceitos pelo servidor. \fB*\fP e \fB?\fP podem ser
+usados como coringas. Veja \fBglob\fP(7) para mais detalhes. Os valores padrão
+(usados se nada for especificado) são:
+\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
+.TP 
+\fBfifo_path\fP
+O caminho para o fifo que exibe os comandos do servidor (o mesmo que /query
+\&... do wesnoth).  Se não especificado, o padrão é o caminho da compilação
+(padrão: \fB/var/run/socket/wesnothd/socket\fP).
+.TP 
+\fBmax_messages\fP
+O número de mensagens permitidas no período de
+\fBmessages_time_period\fP. (padrão: \fB4\fP)
+.TP 
+\fBmessages_time_period\fP
+O período de tempo (em segundos) de flood (inundação) de mensagens é
+detectado em (padrão: \fB10\fP segundos)
+.TP 
+\fBmotd\fP
+A mensagem do dia.
+.TP 
+\fBnew_room_policy\fP
+Determina quem pode criar novas 'rooms' n o servidor. Available values are
+\fBeveryone\fP, \fBregistered\fP, \fBadmin\fP and \fBnobody\fP, and give the permission
+respectively to everyone, registered users, admin users or disables new room
+creation. Default value is \fBeveryone\fP.
+.TP 
+\fBpasswd\fP
+A senha usada para ganhar privilégios admnistrativos. (via \fB/query
+admin\fP\fIsenha\fP).
+.TP 
+\fBreplay_save_path\fP
+O diretório onde o servidor armazena replays de jogos. (não esqueça a /
+final!) O padrão é `' que é a pasta onde o wesnothd começou.
+.TP 
+\fBrestart_command\fP
+O comando que o servidor usa para começar um novo processo de servidor via o
+comando \fBrestart\fP. (Só pode ser dado no fifo. Veja a configuração
+\fBallow_remote_shutdown\fP.)
+.TP 
+\fBroom_save_file\fP
+Caminho para um arquivo onde as informações de 'room' devem ser
+guardadas. Este arquivo é lido quando o servidor começa e escrito depois. Se
+em branco ou não definidas, 'rooms' não são carregadas nem salvas.
+.TP 
+\fBsave_replays\fP
+Define se o servidor vai gravar automaticamente os replays dos
+jogos. (padrão: \fBfalse\fP)
+.TP 
+\fBversions_accepted\fP
+Uma lista, separada por vírgulas de strings de versão que serão aceitas pelo
+servidor. \fB*\fPe \fB?\fP podem ser usados para formar coringas. (padrão é a
+versão desta instalação do wesnoth)
+.br
+Exemplo: \fBversions_accepted="*"\fP aceita qualquer string de versão.
+.TP  
+\fBuser_handler\fP
+The name of the user handler to use. Currently available user handlers are
+\fBforum\fP (to connect wesnothd to a phpbb forum database) and \fBsample\fP (a
+sample implementation of the user handler interface, if you use this on
+anything real you are insane). The default value is \fBforum\fP. You must also
+add a \fB[user_handler]\fP section, see below.
+.
+.SS "Tags Globais:"
+.
+.P
+\fB[redirect]\fP Uma tag para especificar um servidor ao qual redirecionar
+certas versões de clientes.
+.RS
+.TP 
+\fBhost\fP
+O endereço do servidor para o qual redirecionar.
+.TP 
+\fBport\fP
+A porta para a qual se conectar.
+.TP 
+\fBversion\fP
+Uma lista separada por vírgulas de versões para redirecionar. Se comporta do
+mesmo modo que \fBversions_accepted\fP em relação a coringas.
+.RE
+.P
+\fB[ban_time]\fP Uma etiqueta para definir palavras\-chave convenientes para
+intervalos de tempo de banimento temporários.
+.RS
+.TP 
+\fBnome\fP
+The name used to reference the ban time.
+.TP 
+\fBtime\fP
+The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s
+(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d
+is a number.  If no time modifier is given minutes (m) are assumed.
+Example: \fBtime="1D12h30m"\fP results in a ban time of 1 day, 12 hours and 30
+minutes.
+.RE
+.P
+\fB[proxy]\fP Uma etiqueta que diz ao servidor para agir como proxy, e enviar
+as requisições dos clientes conectados para um outro servidor
+especificado. Aceita as mesmas chaves que \fB[redirect]\fP.
+.RE
+.P
+\fB[user_handler]\fP Configures the user handler. Available keys vary depending
+on which user handler is set with the \fBuser_handler\fP key. If no
+\fB[user_handler]\fP section is present in the configuration the server will
+run without any nick registration service.
+.RS
+.TP  
+\fBdb_host\fP
+(para user_handler=forum) o nome da máquina do servidor de banco de dados
+.TP  
+\fBdb_name\fP
+(para user_handler=forum) o nome do banco de dados
+.TP  
+\fBdb_user\fP
+(para user_handler=forum) O nome do usuário com o qual se registrar no banco
+de dados
+.TP  
+\fBdb_password\fP
+(para user_handler=forum) a senha deste usuário
+.TP  
+\fBdb_users_table\fP
+(for user_handler=forum) The name of the table in which your phpbb forums
+saves its user data. Most likely this will be <table\-prefix>_users
+(e.g. phpbb3_users).
+.TP  
+\fBdb_extra_table\fP
+(for user_handler=forum) The name of the table in which wesnothd will save
+its own data about users. You will have to create this table manually, e.g.:
+\fBCREATE TABLE <table\-name>(username VARCHAR(255) PRIMARY KEY,
+user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4)
+NOT NULL DEFAULT 0);\fP
+.TP  
+\fBuser_expiration\fP
+(para user_handler=sample) O tempo após o qual um apelido registrado expira
+(em dias).
+.RE
+.P
+\fB[mail]\fP configura um servidor de SMTP através do qual o controlador de
+usuários pode mandar e\-mails. Atualmente usado apenas pelo controlador de
+usuário de exemplo.
+.RS
+.TP  
+\fBserver\fP
+O nome da máquina do servidor de correio
+.TP  
+\fBusername\fP
+O nome de usuário com o qual se registrar no servidor de correio.
+.TP  
+\fBpassword\fP
+A senha deste usuário.
+.TP  
+\fBfrom_address\fP
+O endereço reply\-to (remetente) de seu e\-mail
+.TP  
+\fBmail_port\fP
+A porta na qual seu servidor de correio está rodando. O padrão é 25.
+.
+.SH "EXIT STATUS"
+.
+Normal exit status is 0 when the server was properly shutdown. An exit
+status of 2 indicates an error with the command line options.
+.
+.SH AUTOR
+.
+Escrito por David White <davidnwhite@verizon.net>. Editado por Nils
+Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> e
+Soliton <soliton.de@gmail.com> e Thomas Baumhauer
+<thomas.baumhauer@gmail.com>. Esta página de manual foi
+originalmente escrita por Cyril Bouthors <cyril@bouthors.org>.
+.br
+Visite a página oficial do projeto: http://www.wesnoth.org/
+.
+.SH COPYRIGHT
+.
+Copyright \(co 2003\-2011 David White <davidnwhite@verizon.net>
+.br
+Este programa é Free Software; este programa esta licensiado sob a GPL
+versão 2, conforme publicada pela Free Software Foundation. NÃO há QUALQUER
+garantia para o programa; nem mesmo a garantia de COMERCIALIZAÇÃO, e as de
+ADEQUAÇÃO A QUALQUER PROPÓSITO.
+.
+.SH "VEJA TAMBÉM"
+.
+\fBwesnoth\fP(6).

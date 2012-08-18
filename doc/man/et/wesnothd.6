@@ -1,0 +1,282 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTHD 6 2011 wesnothd "Wesnothi Lahingu mitmemängija\-võrgumoodul"
+.
+.SH NIMI
+.
+wesnothd \- Battle for \fBWesnoth\fPi mitmemängija\-võrgumoodul
+.
+.SH LÜHIDALT
+.
+\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIkataloog\fP\|] [\|\fB\-p\fP \fIport\fP\|]
+[\|\fB\-t\fP \fInumber\fP\|] [\|\fB\-T\fP \fInumber\fP\|]
+.br
+\fBwesnothd\fP \fB\-V\fP
+.
+.SH KIRJELDUS
+.
+Haldab Wesnothi Lahingu mitmemängija mänge. Vt
+http://www.wesnoth.org/wiki/ServerAdministration käskude kohta, mida saab
+anda klientprogrammist (/query ...) või käsujärjekorra kaudu..
+.
+.SH VALIKUD
+.
+.TP 
+\fB\-c\ \fP\fIkataloog\fP\fB,\ \-\-config\fP\fI\ kataloog\fP
+ütleb wesnothd\-le häälestusfailide asukoha. Vt süntaksi  \fBSERVER CONFIG\fP
+alt. Häälestust saab uuesti laadida, saates serveriprotsessile käsu SIGHUP.
+.TP 
+\fB\-d, \-\-daemon\fP
+käitab wesnothd taustarežiimis (daemon)
+.TP 
+\fB\-h, \-\-help\fP
+ütleb, mida käsureavalikud teevad.
+.TP 
+\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
+määrab logimise taseme.  \fBall\fP valib kõik tasemed.  Tasemeteks on:
+\fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP.  Vaikimisi on kasutusel \fBerror\fP
+ning \fBserver\fPi jaoks \fBinfo\fP.
+.TP 
+\fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
+seob serveri konkreetse pordiga. Kui muud pole määratud, on kasutusel
+\fB15000\fP.
+.TP 
+\fB\-t\ \fP\fIarv\fP\fB,\ \-\-threads\fP\fI\ arv\fP
+määrab võrgu S/V lõimede maksimumarvu (vaikimisi: \fB5\fP,\ maksimum:\ \fB30\fP).
+.TP 
+\fB\-T\ \fP\fIarv\fP\fB,\ \-\-max\-threads\fP\fI\ arv\fP
+määrab maksimaalse lõimede arvu.  Kui \fB0\fP, siis piirang puudub (vaikimisi:
+\fB0\fP).
+.TP 
+\fB\-V, \-\-version\fP
+näitab versiooninumbrit ja väljub programmist.
+.TP 
+\fB\-v, \-\-verbose\fP
+lülitab silumislogi sisse.
+.
+.SH SERVERIHÄÄLESTUS
+.
+.SS "Üldsüntaks on järgmine:"
+.
+.P
+[\fItag\fP]
+.IP
+\fIklahv\fP="\fIväärtus\fP"
+.IP
+\fIklahv\fP="\fIväärtus\fP,\fIväärtus\fP,..."
+.P
+[/\fItag\fP]
+.
+.SS "Globaalsed võtmed:"
+.
+.TP 
+\fBallow_remote_shutdown\fP
+Negatiivse väärtuse (vaikimisi) korral ignoreeritakse kõiki sulgemis\- ja
+taaskäivituskäske peale FIFO omade.  Positiivse (jah) väärtuse korral lubab
+administraatoril mängu eemalt sulgeda.
+.TP 
+\fBban_save_file\fP
+Absoluutne või suhteline kataloogitee (gzip\-pakitud) failini, mida server
+saab lugeda ja kirjutada. Keelud salvestatakse sellesse faili ja loetakse
+serveri käivitamisel sisse.
+.TP 
+\fBcompress_stored_rooms\fP
+Määrab, kas ruumidefaili saab lugeda ja kirjutada pakitud kujul. Vaikimisi
+on 'jah'.
+.TP 
+\fBconnections_allowed\fP
+Lubatud ühenduste arv samalt IP\-aadressilt. \fB0\fP tähendab lõputut
+hulka. (vaikimisi: \fB5\fP)
+.TP 
+\fBdisallow_names\fP
+Nimed ja hüüdnimed, mida server ei tunnista. Metamärgid `*' ja `?' on
+toetatud. Lisainfoks vt. \fBglob\fP(7) .  Vaikimisi väärtused (kui muud ei
+määrata) on:
+\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
+.TP 
+\fBfifo_path\fP
+Serveri käsujärjekorra (FIFO) kataloog (nagu wesnothi /query ... ).  Kui
+pole määratud, kasutatakse kompileerimisaegset vaikimisi väärtust
+(vaikimisi: /var/run/socket/wesnothd/socket).
+.TP 
+\fBmax_messages\fP
+Lubatud sõnumite arv perioodil \fBmessages_time_period\fP. (vaikimisi: \fB4\fP)
+.TP 
+\fBmessages_time_period\fP
+Ajavahemik (sekundites), mille jooksul kontrollitakse sõnumitega
+üleujutamist (vaikimisi: \fB10\fP sekundit).
+.TP 
+\fBmotd\fP
+Päevasõna.
+.TP 
+\fBnew_room_policy\fP
+Määrab, kes saab serveris uusi ruume luua. Võimalikud väärtused on
+\&'everyone' (igaüks), 'registered' (registreeritud kasutajad), 'admin'
+(haldur) ja 'nobody' (mitte keegi). Vaikimisi väärtuseks on 'everyone'.
+.TP 
+\fBpasswd\fP
+Administraatori salasõna (vt \fB/query admin\fP\fIparool\fP).
+.TP 
+\fBreplay_save_path\fP
+Mängusalvestuste kataloog. (Ära unusta alguse kaldkriipsu!) Vaikmisi on `'
+ehk wesnothd käivituskataloog.
+.TP 
+\fBrestart_command\fP
+Käsk, mida server kasutab uue serveriprotsessi käivitamiseks läbi
+`restart'\-käsu. (Kasutatav vaid käsujärjekorra kaudu. Vt
+\fBallow_remote_shutdown\fP \-sätet.)
+.TP 
+\fBroom_save_file\fP
+Kataloogitee ruumiandmete failini. Seda faili loetakse serveri käivitumisel
+ja hiljem ka kirjutatakse sinna. Kui see on tühi või määramata, siis ruume
+ei laeta ega salvestata.
+.TP 
+\fBsave_replays\fP
+Määrab, kas server salvestab mängu käigu automaatselt. (vaikimisi:
+\fBfalse\fP).
+.TP 
+\fBversions_accepted\fP
+Komadega eraldatud tunnusstringide loetelu, mida server
+tunnistab. Metamärgid `*' and `?' on toetatud.  (vaikimisi on vastav
+Wesnothi versioon)
+.br
+N: \fBversions_accepted="*"\fP tunnistab kõiki versioone.
+.TP  
+\fBuser_handler\fP
+Kasutajahalduri nimi. Hetkel on saadaval 'forum' (wesnothd ühendamiseks
+phpbb foorumi andmebaasiga) ja 'sample' (näitrealisatsioon kasutajate
+haldusliidesest. Kes seda tegelikult kasutab, on hull). Vaikimisi väärtuseks
+on 'forum'. Pead ka lisama \fB[user_handler]\fP\-sektsiooni.
+.
+.SS "Globaalsed märgendid:"
+.
+.P
+\fB[redirect]\fP Määrab serveri, kuhu kindlad klienttarkvara versioonid
+suunatakse.
+.RS
+.TP 
+\fBhost\fP
+Ümbersuunatava serveri aadress.
+.TP 
+\fBport\fP
+Port, kuhu ühendutakse.
+.TP 
+\fBversion\fP
+Komadega eraldatud nimekiri ümbersuunatavatest versioonidest. Metamärkide
+osas käitub nagu \fBversions_accepted\fP.
+.RE
+.P
+\fB[ban_time]\fP Võtmesõnade määramiseks ajutiste keeldude nimekirja jaoks.
+.RS
+.TP 
+\fBname\fP
+Nimi keeluajale viitamiseks.
+.TP 
+\fBtime\fP
+Ajapikkuse defineerimine. Vorming:: %d[%s[%d%s[...]]] , kus %s on s
+(sekundid), m (minutid), h (tunnid), D (päevad), M (kuud) või Y (aastad) ja
+%d on arv.  Kui  pole määratud, kasutatakse m\-i (minutid). N:
+time="1D12h30m" annab keelu pikkuseks 1 päeva, 12 tundi ja 30 minutit.
+.RE
+.P
+\fB[proxy]\fP Käsib serveril toimida puhvrina ja edastada ühendunud kliendi
+soovid konkreetsele serverile.   Samad võtmed kui \fB[redirect]\fP juures.
+.RE
+.P
+\fB[user_handler]\fP Käivitab kasutajahalduri. Võtmed sõltuvad konkreetsest
+haldurist, mis määratakse \fBuser_handler\fP võtmega. Kui [user_handler]
+\-sektsioon on häälestusfailis olemas, toimib server ilma kasutajate
+registreerimiseta.
+.RS
+.TP  
+\fBdb_host\fP
+(user_handler=forum korral) Andmebaasiserveri masina nimi
+.TP  
+\fBdb_name\fP
+(handler=forum jaoks) Andmebaasi nimi
+.TP  
+\fBdb_user\fP
+(user_handler=forum jaoks) Kasutajanimi, millega baasi sisse logida
+.TP  
+\fBdb_password\fP
+(user_handler=forum jaoks) Kasutaja salasõna
+.TP  
+\fBdb_users_table\fP
+(user_handler=forum jaoks) Tabeli nimi, kuhu salvestatakse phpbb foorumi
+kasutajainfo. Tõenäoliselt on see <table\-prefix>_users
+(e.g. phpbb3_users).
+.TP  
+\fBdb_extra_table\fP
+(user_handler=forum jaoks) Tabeli nimi, kuhu wesnothd salvestab
+kasutajainfo. See tuleb luua käsitsi. N: CREATE TABLE
+<tabel>(kasutaja VARCHAR(255) PRIMARY KEY, user_lastvisit INT
+UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
+0);
+.TP  
+\fBuser_expiration\fP
+ (user_handler=sample jaoks). Aeg päevades, mille möödumisel konto aegub.
+.RE
+.P
+\fB[mail]\fP Häälestab SMTP\-serveri, mille kaudu kasutajahaldur saab saata
+e\-kirju. Praegu saadaval vaid 'sample'\-kasutajahaldurile..
+.RS
+.TP  
+\fBserver\fP
+Postiserveri nimi
+.TP  
+\fBusername\fP
+Postiserveri kasutajanimi
+.TP  
+\fBpassword\fP
+Kasutaja parool.
+.TP  
+\fBfrom_address\fP
+Sinu sõnumi vastuseaadress.
+.TP  
+\fBmail_port\fP
+Port, kus e\-postiserver jookseb. Vaikimisi on see 25.
+.
+.SH VÄLJUMISOLEK
+.
+Tavapärane väljumisolek on 0, kui server korralikult peatati. Olek 2
+tähistab käsureaparameetrite viga.
+.
+.SH AUTOR
+.
+Kirjutaja David White <davidnwhite@verizon.net>. Muutjad:  Nils
+Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net>,
+Soliton <soliton.de@gmail.com> ja Thomas Baumhauer
+<thomas.baumhauer@gmail.com>.  Selle manuaalilehe algne autor oli
+Cyril Bouthors <cyril@bouthors.org>.
+.br
+Külasta ametlikku kodulehte: http://www.wesnoth.org/
+.
+.SH AUTORIÕIGUS
+.
+Copyright \(co 2003\-2011 David White <davidnwhite@verizon.net>
+.br
+See on vaba tarkvara \- see tarkvara kasutab Vaba Tarkvara Sihtasutuse
+koostatud GPL litsentsi versiooni 2. Garantiid EI OLE, isegi mitte
+müügikõlbulikkuse või kindlaks otstarbeks kasutuskõlbulikkuse suhtes.
+.
+.SH LISAINFO
+.
+\fBwesnoth\fP(6).
