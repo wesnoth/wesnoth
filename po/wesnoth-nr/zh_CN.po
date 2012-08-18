@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-03-31 10:45+0200\n"
+"POT-Creation-Date: 2012-08-18 09:27+0200\n"
 "PO-Revision-Date: 2012-04-04 11:27+0800\n"
 "Last-Translator: MrKing <yideey@gmail.com>\n"
 "Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
@@ -73,12 +73,7 @@ msgid "Royal Guard"
 msgstr "皇家卫兵"
 
 #. [campaign]: id=Northern_Rebirth
-#: data/campaigns/Northern_Rebirth/_main.cfg:22
-msgid "(Expert level, 13 scenarios.)"
-msgstr "（专家级别，13幕场景。）"
-
-#. [campaign]: id=Northern_Rebirth
-#: data/campaigns/Northern_Rebirth/_main.cfg:22
+#: data/campaigns/Northern_Rebirth/_main.cfg:20
 msgid ""
 "For the people of Dwarven Doors the choice was stark: either drudge as "
 "downtrodden slaves for the orcs until the end of their brief and miserable "
@@ -91,6 +86,11 @@ msgstr ""
 "念在折磨里终结；要么为了争取自由，站起来反抗残暴的君主。他们几乎没有意识到，"
 "自己的斗争将成为恢复北方大地光辉与荣耀的系列事件的关键。\n"
 "\n"
+
+#. [campaign]: id=Northern_Rebirth
+#: data/campaigns/Northern_Rebirth/_main.cfg:22
+msgid "(Expert level, 13 scenarios.)"
+msgstr "（专家级别，13幕场景。）"
 
 #. [about]
 #: data/campaigns/Northern_Rebirth/_main.cfg:27
@@ -304,9 +304,9 @@ msgstr ""
 "着多年的观察、偷听和计划，他成功地从沃塔那里偷走了一些武器和少量的金币。他逃"
 "到了森林里一处被遗弃的废墟，在这里召集了跟随他的农民。"
 
-#. [side]: type=Peasant, id=Tallin
-#. [side]: type=Lieutenant, id=Tallin
 #. [part]
+#. [side]: type=Lieutenant, id=Tallin
+#. [side]: type=Peasant, id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:78
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:47
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_the_Mines.cfg:20
@@ -359,7 +359,7 @@ msgstr "打败众敌将"
 #. [objective]: condition=lose
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:184
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:192
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:617
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:618
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_the_Mines.cfg:166
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:324
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:407
@@ -663,8 +663,8 @@ msgstr ""
 "在兽人的手下毁灭，或者在纳尔迦隧道中遭遇未知的命运，泰林选择了后者。人们快速"
 "集合起来，收集了尽可能多的食品和武器，进入了黑暗的洞穴。"
 
-#. [side]: type=Peasant, id=Tallin
 #. [side]: type=Dwarvish Lord, id=Hamel
+#. [side]: type=Peasant, id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:54
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:96
 msgid "Rebels"
@@ -675,15 +675,15 @@ msgstr "叛民"
 msgid "Knash"
 msgstr "克纳什"
 
-#. [side]: type=Troll, id=Knash
-#. [side]: type=Troll, id=Krog
+#. [side]: type=Troll Warrior, id=Bor
+#. [side]: type=Troll Warrior, id=Glu
+#. [side]: type=Troll Warrior, id=Oof
 #. [side]: type=Troll Warrior, id=Thung
+#. [side]: type=Troll Warrior, id=Tor
 #. [side]: type=Troll, id=Franik
 #. [side]: type=Troll, id=Henie
-#. [side]: type=Troll Warrior, id=Tor
-#. [side]: type=Troll Warrior, id=Bor
-#. [side]: type=Troll Warrior, id=Oof
-#. [side]: type=Troll Warrior, id=Glu
+#. [side]: type=Troll, id=Knash
+#. [side]: type=Troll, id=Krog
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:69
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:82
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:125
@@ -701,8 +701,8 @@ msgstr "巨魔"
 msgid "Krog"
 msgstr "克洛格"
 
-#. [side]: type=Dwarvish Lord, id=Hamel
 #. [part]
+#. [side]: type=Dwarvish Lord, id=Hamel
 #. [unit]: type=Dwarvish Lord, id=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:89
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_the_Mines.cfg:15
@@ -721,18 +721,18 @@ msgid "Hamel"
 msgstr "哈默尔"
 
 #. [side]: type=Ancient Lich, id=Malifor
-#. [side]: type=Draug, id=Thorin
-#. [side]: type=Draug, id=Herlin
+#. [side]: type=Death Knight
+#. [side]: type=Death Knight, id=Antrasis
+#. [side]: type=Death Knight, id=Author
+#. [side]: type=Death Knight, id=Boblin
+#. [side]: type=Death Knight, id=Hettel
+#. [side]: type=Death Knight, id=Samlan
+#. [side]: type=Death Knight, id=Tervor
+#. [side]: type=Death Knight, id=Thor
 #. [side]: type=Draug, id=Fervin
 #. [side]: type=Draug, id=Hellian
-#. [side]: type=Death Knight
-#. [side]: type=Death Knight, id=Hettel
-#. [side]: type=Death Knight, id=Thor
-#. [side]: type=Death Knight, id=Tervor
-#. [side]: type=Death Knight, id=Author
-#. [side]: type=Death Knight, id=Samlan
-#. [side]: type=Death Knight, id=Boblin
-#. [side]: type=Death Knight, id=Antrasis
+#. [side]: type=Draug, id=Herlin
+#. [side]: type=Draug, id=Thorin
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:112
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:136
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:148
@@ -769,7 +769,7 @@ msgstr "清理洞穴"
 
 #. [objective]: condition=lose
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:196
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:621
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:622
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_the_Mines.cfg:170
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:328
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:782
@@ -809,10 +809,10 @@ msgid ""
 msgstr ""
 "冷静。不管遇到什么，我们一定都能解决的。现在行动起来，让我们找到那些矮人！"
 
-#. [unit]: type=Arch Mage, id=Camerin
 #. [side]: type=Great Mage, id=Camerin
+#. [unit]: type=Arch Mage, id=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:260
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:733
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:734
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:122
 msgid "Camerin"
 msgstr "卡莫林"
@@ -851,7 +851,9 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:292
-msgid "... Uh ok!"
+#, fuzzy
+#| msgid "... Uh ok!"
+msgid "... Uh, sure!"
 msgstr "......哦，是的！"
 
 #. [message]: speaker=Camerin
@@ -876,61 +878,63 @@ msgid "Hordes of trolls and skeletons! Where?! Let’s go burn ’em all!"
 msgstr "一大群巨魔和骷髅兵！在哪儿？让我烧死他们！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:308
-msgid "Er... ok..."
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:309
+#, fuzzy
+#| msgid "Er... ok..."
+msgid "Er... let’s go..."
 msgstr "呃......好的......"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:312
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:313
 msgid "whisper^Is it safe to have this lunatic with us?"
 msgstr "（耳语）真的要带上这个疯子吗？"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:328
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:329
 msgid "<i>Burn, you disgusting filth!</i>"
 msgstr "<i>烧死你们，你们这些恶心的渣滓！</i>"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:332
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:333
 msgid "Ahhh! Fire!"
 msgstr "啊！火！"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:345
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:346
 msgid "<i>Yeah! Die, scum, die!</i>"
 msgstr "<i>耶！去死吧，垃圾，去死吧！</i>"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:362
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:363
 msgid "This tunnel keeps on going..."
 msgstr "这个坑道很长......"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:366
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:367
 msgid ""
 "I think we should finish searching this part of Knalga first before we go "
 "deeper into the caves."
 msgstr "我想我们完成了纳尔迦的这个部分的搜索，我们将去更深的地方。"
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:382
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:383
 msgid "Grim Gods of Darkness, what are those things!"
 msgstr "黑暗之神，这是些什么东西！"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:386
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:387
 msgid "Skeletons!"
 msgstr "骷髅兵！"
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:390
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:391
 msgid ""
 "Look at the axes they bear. At one time those skeletons must have been "
 "dwarves!"
 msgstr "看他们的斧子。他们曾经也是矮人！"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:394
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:395
 msgid ""
 "Stand firm, men. The dwarven defenders of Knalga rise again. Now it remains "
 "to be seen whether or not they recognize us as friends."
@@ -939,71 +943,71 @@ msgstr ""
 "友。"
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:410
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:411
 msgid "They are attacking us!"
 msgstr "他们在攻击我们！"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:414
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:415
 msgid "Destroy them!"
 msgstr "消灭他们！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:436
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:490
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:437
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:491
 msgid ""
 "Hey look, it’s an ancient door. It seems the trolls were too stupid to find "
 "how to open it."
 msgstr "嘿，看！这有一个古代的门。看来愚蠢的巨魔没有找到开启它的方法。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:442
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:496
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:443
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:497
 msgid ""
 "Hey look, it’s an ancient door. It seems the skeletons were too stupid to "
 "find how to open it."
 msgstr "嘿，看！这有一个古代的门。看来愚蠢的骷髅没有找到开启它的方法。"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:448
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:502
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:449
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:503
 msgid "Well, let’s see what’s behind it."
 msgstr "好，让我们看看门后面有什么。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:452
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:506
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:453
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:507
 msgid ""
 "All right. (<i>Grunt... strain...</i>) It’s not moving. It seems to be stuck."
 msgstr "好的。（<i>嘎吱......拉门的声音......</i>）拉不动，好像卡住了。"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:456
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:510
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:457
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:511
 msgid "Well, just kick it down then."
 msgstr "那么就把它踢倒。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:460
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:514
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:461
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:515
 msgid "... Right."
 msgstr "......好的。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:464
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:518
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:465
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:519
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1897
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1920
 msgid "(<i>Smash</i>)"
 msgstr "（<i>粉碎</i>）"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:538
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:539
 msgid "Wow, this place is interesting."
 msgstr "噢。这个地方真好。"
 
 #. [message]: speaker=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:542
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:543
 msgid ""
 "This is how we get our food, me lad. Since we are a tad close to the surface "
 "here, some sunlight shines down through the cracks in the roof. If we baby "
@@ -1015,14 +1019,14 @@ msgstr ""
 "凭借这些活了这么多年。"
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:555
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:556
 msgid ""
 "Tallin, this situation is hopeless — there are endless monsters swarming "
 "from all directions!"
 msgstr "泰林，情况糟透了，无穷无尽的怪物正从四面八方涌来。"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:559
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:560
 msgid ""
 "We are in a dire situation indeed — but just see — the trolls and the "
 "skeletons are also attacking each other. We must all stay together in one "
@@ -1034,7 +1038,7 @@ msgstr ""
 "因此惧怕，转而寻找更弱小的猎物。"
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:563
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:564
 msgid ""
 "But still, Tallin, we will take losses, and for each one of us, there is no "
 "replacement — whereas for every monster we kill, it seems that two more come "
@@ -1044,7 +1048,7 @@ msgstr ""
 "乎就会有两个怪物来代替它的位置！"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:567
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:568
 msgid ""
 "Which is why we must make haste to find the dwarves. Dwarves are hardy "
 "creatures and they know their caves backwards and forwards — so I am sure at "
@@ -1057,24 +1061,24 @@ msgstr ""
 "是在地面上还是在这下面，我们怎么选都面临着毁灭的威胁！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:583
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:584
 msgid "Stand where ye be, you... Och! A human!"
 msgstr "不许动！你......哦！一个人类！"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:587
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:588
 msgid "Greetings from the people of Dwarven Doors, friend."
 msgstr "朋友，矮人之门的人类向你们问候。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:591
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:592
 msgid ""
 "Dwarven Doors? I thought ye surface humans had been enslaved or slain by the "
 "orcs years ago."
 msgstr "矮人之门？我以为人类现在正被兽人奴役，或者多年前就被屠杀了。"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:595
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:596
 msgid ""
 "Yes, we were enslaved, but we rose against Al’Tar and defeated his warband. "
 "In order to stay free, we seek help and equipment from our old allies, the "
@@ -1084,7 +1088,7 @@ msgstr ""
 "自由，我们需要老朋友，矮人的帮助和装备。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:599
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:600
 msgid ""
 "Och, the dwarves of Knalga are themselves in desperate straits — but we "
 "havena’ forgotten the old bonds. Be welcome to our keep. Aye, and have "
@@ -1093,11 +1097,11 @@ msgstr ""
 "呀，纳尔迦的矮人们自己也过得非常艰难呢。但是我们没有忘记过去的盟约。欢迎来到"
 "矮人的营地。来吧，和我们的首领哈默尔领主谈谈吧。"
 
-#. [message]: speaker=Tallin
-#. [message]: speaker=unit
 #. [message]: id=Father Morvin
 #. [message]: id=Ro'Arthian
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:603
+#. [message]: speaker=Tallin
+#. [message]: speaker=unit
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:604
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1650
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2459
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2510
@@ -1109,37 +1113,37 @@ msgid "Very well."
 msgstr "好的。"
 
 #. [objective]: condition=win
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:609
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:610
 msgid "Move Tallin to a Dwarvish castle keep or..."
 msgstr "移动泰林到矮人的城堡或......"
 
 #. [objective]: condition=win
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:613
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:614
 msgid "Clear the caves (Bonus)"
 msgstr "清理洞穴内的敌人（奖励）"
 
 #. [message]: speaker=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:643
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:644
 msgid "Well met, Tallin. My men have told me of your victory against Al’Tar."
 msgstr "很高兴见到你，泰林。我的人已经和我说了你战胜沃塔的事。"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:647
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:648
 msgid "Thank you and well-met indeed, Lord Hamel."
 msgstr "谢谢，我也很高兴和你见面，哈默尔领主。"
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:651
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:652
 msgid "Whew, we did it!"
 msgstr "哇！我们做到了！"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:655
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:656
 msgid "Awww! Are we done already?"
 msgstr "哇哇！我们真的做到了？"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:675
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:676
 msgid ""
 "Good, we managed to clear the caves... for now, anyway. Now let’s get to the "
 "dwarven keep and dicker for better weapons."
@@ -1148,7 +1152,7 @@ msgstr ""
 "地，从他们那里讨点好武器来。"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:681
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:682
 msgid ""
 "Good, there are no more monsters lurking in these parts of the tunnels. I "
 "think I can hear the clamor of dwarves just ahead. Come on men, let’s go "
@@ -1158,62 +1162,62 @@ msgstr ""
 "我们去找他们吧。"
 
 #. [message]: role=Messenger
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:703
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:704
 msgid ""
 "Tallin, we have just received the news that the dwarvish Lord Hamel has just "
 "been slain. We are too late!"
 msgstr "泰林，我们刚刚得到消息，矮人的首领哈默尔领主已经死了，我们来的太晚了！"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:707
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:708
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:846
 msgid "No! Without the dwarvish weapons we have no hope!"
 msgstr "不！没有矮人们的武器我们就没有希望！"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:746
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:747
 msgid "Hey, what’s going on in here?"
 msgstr "嘿，这里发生了什么事？"
 
 #. [message]: role=Admirer
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:795
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:796
 msgid "We are killing lots of trolls and skeletons."
 msgstr "我们正在与巨魔和骷髅兵作战。"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:799
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:800
 msgid "Really! Did you save any for me?"
 msgstr "真的？你们有给我留几个吗？"
 
 #. [message]: role=Admirer
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:803
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:804
 msgid "Uh, not really..."
 msgstr "哦，恐怕没有......"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:807
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:808
 msgid "Awww!"
 msgstr "嗷！"
 
 #. [message]: role=Admirer
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:811
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:812
 msgid ""
 "But hey, if you want to join us, I am sure we will be fighting a lot more "
 "orcs, trolls and skeletons in the near future."
 msgstr "不过，如果你加入我们，我保证我们不久要收拾更多的兽人，巨魔和骷髅兵。"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:815
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:816
 msgid "Really! Oh yeah, I am in!"
 msgstr "真的！噢耶，我加入！"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:819
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:820
 msgid "... That was rather odd. Who is this guy?"
 msgstr "......太奇怪了，这家伙是谁？"
 
 #. [message]: speaker=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:829
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:830
 msgid ""
 "Oh, dinna’ mind him, that’d be Camerin. He used to be yer usual scholarly "
 "mage, and he moved awa’ up here to be alone and study. But then when the "
@@ -1501,12 +1505,12 @@ msgstr "这“主人”是什么来头？我开始有点紧张了。"
 msgid "Clearing the Mines"
 msgstr "清理矿脉"
 
-#. [side]: type=Peasant, id=Tallin
-#. [side]: type=Lieutenant, id=Tallin
+#. [side]
 #. [side]: type=Drake Burner, id=Krash
 #. [side]: type=Dwarvish Lord, id=Hamel
-#. [side]
 #. [side]: type=Elvish Avenger, id=Sisal
+#. [side]: type=Lieutenant, id=Tallin
+#. [side]: type=Peasant, id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:26
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:33
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:315
@@ -2003,8 +2007,8 @@ msgstr "他们正试图解救那些囚犯！拦住他们！"
 msgid "Good luck, my friend."
 msgstr "祝你好运，我的朋友。"
 
-#. [unit]: type=White Mage, id=Father Morvin
 #. [unit]: type=$type_check.type, id=Father Morvin
+#. [unit]: type=White Mage, id=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:554
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:407
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:615
@@ -2113,9 +2117,9 @@ msgid ""
 msgstr ""
 "噢，不必客气。我们之间何言恩惠。让我们像盟友一样携手并进恢复北方大地的安宁。"
 
+#. [message]: id=Elenia
 #. [message]: speaker=Father Morvin
 #. [message]: speaker=Sister Thera
-#. [message]: id=Elenia
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:629
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:742
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:269
@@ -2137,8 +2141,8 @@ msgstr ""
 msgid "(<i>Giggle</i>)"
 msgstr "（<i>呵呵呵</i>）"
 
-#. [unit]: type=White Mage, id=Sister Thera
 #. [unit]: type=$type_check.type, id=Sister Thera
+#. [unit]: type=White Mage, id=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:670
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:425
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:633
@@ -2551,8 +2555,8 @@ msgstr "我们来了。"
 msgid "Intruders! Get them!"
 msgstr "入侵者！抓住他们！"
 
-#. [message]: speaker=unit
 #. [message]: role=Supporter
+#. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1191
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1292
 msgid "Bring it on!"
@@ -3169,8 +3173,8 @@ msgstr "嘶嘶！我听到一些声响。"
 msgid "ROOOAAARRR!"
 msgstr "喔喔哦哦喔喔哦！"
 
-#. [message]: speaker=unit
 #. [message]: speaker=Tallin
+#. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2341
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:431
 msgid "Ahhh!"
@@ -3217,8 +3221,8 @@ msgstr "没有。我来打开它吗？"
 msgid "Go for it!"
 msgstr "去吧！"
 
-#. [message]: speaker=unit
 #. [message]: speaker=Sister Thera
+#. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2450
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2501
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2587
@@ -3364,8 +3368,8 @@ msgstr ""
 "你，你这该死的泰林！你悲惨的生命将充满不幸！你的人民将永远得不到自由！你所亲"
 "近和珍爱的都将远离你！我诅咒雷电劈在你的头顶！我诅咒......"
 
-#. [message]: speaker=Tallin
 #. [message]: speaker=Sister Thera
+#. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2805
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:468
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:677
@@ -3381,8 +3385,8 @@ msgstr ""
 "大地将裂开，然后吞噬你！你所有的牙齿都会掉光！你会变成一个虚弱的皮包骨头的老"
 "男人！你......"
 
-#. [message]: speaker=second_unit
 #. [message]: speaker=Father Morvin
+#. [message]: speaker=second_unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2813
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:483
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:692
@@ -3595,9 +3599,9 @@ msgstr ""
 "工作了，他们可怕的主人要召见他。经过一个血腥可怕的仪式，莫利弗给了他操纵尸体"
 "的力量。随后，他被派往一个遥远的坑道网络去消灭在那里定居的巨魔群。"
 
-#. [side]: type=Peasant, id=Tallin
 #. [side]: type=Ancient Lich, id=Malifor
 #. [side]: type=Dark Adept, id=Deory
+#. [side]: type=Peasant, id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05b_Compelled.cfg:44
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:75
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:62
@@ -3878,10 +3882,10 @@ msgstr ""
 "他们经过讨论，决定让泰林带着他的人主动出击去会会兽人，而哈默尔则率部退守洞"
 "穴。"
 
-#. [side]: type=Peasant, id=Tallin
-#. [side]: type=Lieutenant, id=Tallin
 #. [side]: type=Dwarvish Lord, id=Stalrag
 #. [side]: type=Great Mage, id=Camerin
+#. [side]: type=Lieutenant, id=Tallin
+#. [side]: type=Peasant, id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:141
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:205
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:222
@@ -3891,8 +3895,8 @@ msgstr ""
 msgid "Knalgans"
 msgstr "纳尔迦人"
 
-#. [unit]: type=Orcish Sovereign, id=Rakshas
 #. [side]: type=Orcish Sovereign, id=Rakshas
+#. [unit]: type=Orcish Sovereign, id=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:151
 #: data/campaigns/Northern_Rebirth/scenarios/09b_Judgment.cfg:43
 #: data/campaigns/Northern_Rebirth/scenarios/11a_The_Eastern_Flank.cfg:198
@@ -3900,20 +3904,20 @@ msgstr "纳尔迦人"
 msgid "Rakshas"
 msgstr "拉克夏斯"
 
-#. [side]: type=Troll Warrior, id=Gore
-#. [side]: type=Orcish Warlord, id=Carron
-#. [side]: type=Orcish Warlord, id=Rash
-#. [side]: type=Orcish Warlord, id=Al'Mar
-#. [side]: type=Orcish Warlord, id=Ha'Tang
-#. [side]: type=Orcish Sovereign, id=Rakshas
-#. [side]: type=Orcish Warlord, id=Drung
-#. [side]: type=Orcish Warlord, id=Poul
-#. [side]: type=Orcish Warlord, id=Ha'Tuil
-#. [side]: type=Orcish Warlord, id=Ar'Muff
-#. [side]: type=Orcish Warlord, id=Calter
-#. [side]: type=Orcish Warlord, id=Halter
-#. [side]: type=Orcish Warlord, id=Atul
 #. [side]
+#. [side]: type=Orcish Sovereign, id=Rakshas
+#. [side]: type=Orcish Warlord, id=Al'Mar
+#. [side]: type=Orcish Warlord, id=Ar'Muff
+#. [side]: type=Orcish Warlord, id=Atul
+#. [side]: type=Orcish Warlord, id=Calter
+#. [side]: type=Orcish Warlord, id=Carron
+#. [side]: type=Orcish Warlord, id=Drung
+#. [side]: type=Orcish Warlord, id=Ha'Tang
+#. [side]: type=Orcish Warlord, id=Ha'Tuil
+#. [side]: type=Orcish Warlord, id=Halter
+#. [side]: type=Orcish Warlord, id=Poul
+#. [side]: type=Orcish Warlord, id=Rash
+#. [side]: type=Troll Warrior, id=Gore
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:158
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:179
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:198
@@ -4581,8 +4585,8 @@ msgstr ""
 msgid "Those filthy elves! I’ll..."
 msgstr "那些丑恶的精灵！我会......"
 
-#. [part]
 #. [message]: speaker=Sister Thera
+#. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:135
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:749
 msgid "See?"
@@ -4683,16 +4687,16 @@ msgstr "就这样吧。我们具体该怎样到达那个山口？"
 msgid "And so Tallin and his party set out to secure the help of the mages."
 msgstr "随后泰林和他的部队出发去寻求法师的帮助。"
 
-#. [unit]: type=Dwarvish Lord, id=Stalrag
 #. [side]: type=Dwarvish Lord, id=Stalrag
+#. [unit]: type=Dwarvish Lord, id=Stalrag
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:215
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:227
 #: data/campaigns/Northern_Rebirth/utils/utils.cfg:67
 msgid "Stalrag"
 msgstr "斯托莱格"
 
-#. [unit]: type=Ancient Lich, id=Ro'Arthian
 #. [side]: type=Ancient Lich, id=Ro'Arthian
+#. [unit]: type=Ancient Lich, id=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:244
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:241
 msgid "Ro’Arthian"
@@ -5151,14 +5155,14 @@ msgid ""
 "these wretched mages?!"
 msgstr "等一等，泰林。你是说要把我们的家园送给这些可恶的法师？！"
 
-#. [message]: speaker=Eryssa
-#. [message]: id=Ro'Sothian
-#. [message]: speaker=Ro'Sothian
 #. [message]: id=Ro'Arthian
+#. [message]: id=Ro'Sothian
+#. [message]: speaker=Eryssa
+#. [message]: speaker=Ro'Sothian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:797
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1124
 #: data/campaigns/Northern_Rebirth/scenarios/11a_The_Eastern_Flank.cfg:450
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:838
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:840
 msgid "(<i>Snicker</i>)"
 msgstr "（<i>窃笑</i>）"
 
@@ -6102,14 +6106,14 @@ msgstr "那我们必须找到这个法杖。带路吧，朋友。"
 msgid "Machador"
 msgstr "玛崔德"
 
-#. [side]: type=Fire Dragon, id=Machador
 #. [side]: type=Blood Bat, id=Blood Bat 3
 #. [side]: type=Blood Bat, id=Blood Bat 4
 #. [side]: type=Blood Bat, id=Blood Bat 5
 #. [side]: type=Blood Bat, id=Blood Bat 6
 #. [side]: type=Blood Bat, id=Blood Bat 7
-#. [side]: type=Troll Warrior, id=Gurk
 #. [side]: type=Drake Flare, id=Kishmish
+#. [side]: type=Fire Dragon, id=Machador
+#. [side]: type=Troll Warrior, id=Gurk
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:158
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:169
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:196
@@ -7670,8 +7674,8 @@ msgstr "闭嘴，你这个胆小鬼！"
 msgid "Help Tallin defeat the enemy leaders or"
 msgstr "帮助泰林打败敌军首领或"
 
-#. [unit]: type=Elvish Marshal, id=Hidel
 #. [unit]: id=Hidel, type=Elvish Marshal
+#. [unit]: type=Elvish Marshal, id=Hidel
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:825
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1146
 #: data/campaigns/Northern_Rebirth/scenarios/11a_The_Eastern_Flank.cfg:223
@@ -7898,8 +7902,8 @@ msgstr "......前面的路已经清理完毕，我迫不及待想要多杀几个
 msgid "Right. Onward men!"
 msgstr "说的对，前进！"
 
-#. [unit]: type=Elvish Avenger, id=Sisal
 #. [side]: type=Elvish Avenger, id=Sisal
+#. [unit]: type=Elvish Avenger, id=Sisal
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1164
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:138
 msgid "Sisal"
@@ -8590,7 +8594,7 @@ msgstr "高兴吧，你那失败的人生就要结束了......（<i>窃笑</i>�
 
 #. [message]: id=Sisal
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:507
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:894
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:896
 msgid "Ahhhh! Farewell, friends. I now go to join Hidel."
 msgstr "啊！再见了，朋友们。我现在去见海达尔了。"
 
@@ -8863,17 +8867,17 @@ msgid "FOR THE FREE PEOPLES OF THE NORTH! FALL ON THEM, MEN!!"
 msgstr "为了北方的自由的人民！兄弟们，打败他们！"
 
 #. [message]: id=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:794
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:796
 msgid "Sweet gods, look at all those orcs pouring out of that fortress."
 msgstr "看哪，所有的兽人从据点中倾巢出动了。"
 
 #. [message]: id=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:798
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:800
 msgid "Aye, and not just any orcs either, those are all hardened veterans!"
 msgstr "不仅仅是兽人，他们全部出动了！"
 
 #. [message]: id=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:802
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:804
 msgid ""
 "Yeah. Obviously this is going to take some time. If necessary we can sit "
 "tight in our fortifications and besiege them until they starve!"
@@ -8882,39 +8886,39 @@ msgstr ""
 "直到他们弹尽粮绝。"
 
 #. [message]: id=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:814
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:816
 msgid ""
 "Die, you murderous beast! No longer shall you terrorize the people of the "
 "North."
 msgstr "去死吧！你这个杀人不眨眼的野兽！你再也不能让北方的人民感到恐惧了！"
 
 #. [message]: id=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:818
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:820
 msgid "Learn the fate of one who offends the Dwarves of Knalga."
 msgstr "这就是你破坏纳尔迦的矮人的下场。"
 
 #. [message]: id=Eryssa
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:822
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:824
 msgid "Or the elves of the Northern Forests."
 msgstr "还有北方森林中的精灵。"
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:826
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:828
 msgid "Or the humans of Dwarven Doors."
 msgstr "还有矮人之门的人类。"
 
 #. [message]: id=Rakshas
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:830
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:832
 msgid "(<i>Gurgle</i>) No...! This... cannot... be... happening... to... me..."
 msgstr "（<i>汩汩</i>）不！这......不可能......发生......在......我身上......"
 
 #. [message]: id=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:834
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:836
 msgid "Such were the last words of Rakshas the great!"
 msgstr "这就是拉克夏斯大帝的最后遗言！"
 
 #. [message]: id=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:847
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:849
 msgid ""
 "At last! Rakshas has been slain, and the orcish host has been crushed. Peace "
 "and prosperity will come to the Northlands once again!"
@@ -8922,20 +8926,20 @@ msgstr ""
 "最后！拉克夏斯被战胜了，兽人的据点也毁了。和平和繁荣将再次降临北方大地！"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:851
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:853
 msgid ""
 "At these words all the allied forces gave out a combined and thunderous "
 "cheer. Their long ordeal was finally over."
 msgstr "这句话引发了所有人的欢呼雀跃。他们经历的痛苦折磨结束了。"
 
 #. [message]: id=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:856
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:858
 msgid "(<i>Small voice lost in the uproar</i>) Awww, is it over already?"
 msgstr "（<i>喧嚣中有个微弱的声音</i>）噢，一切都结束了吗？"
 
 #. [message]: id=Hamel
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:873
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:875
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:554
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:565
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:587
@@ -8943,14 +8947,14 @@ msgid "Argh!"
 msgstr "啊！"
 
 #. [message]: id=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:877
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:879
 msgid ""
 "Hamel! Blast it, without the dwarves to hold the western flank we are as "
 "good as defeated."
 msgstr "哈默尔！坚持住，没有矮人把守西面防线，我们几乎就算是被打败了。"
 
 #. [message]: id=Eryssa
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:898
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:900
 msgid "Sisal! Noooo! Not you too!"
 msgstr "塞索！不！你不能也——！"
 
@@ -9553,8 +9557,8 @@ msgstr "可恶的怪兽！你们会为此付出代价！"
 msgid "Awww, I liked that guy!"
 msgstr "啊，我挺喜欢这个家伙！"
 
-#. [message]: speaker=Ro'Sothian
 #. [message]: speaker=Ro'Arthian
+#. [message]: speaker=Ro'Sothian
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:62
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:86
 msgid "I have had enough! Come on brother, let’s get outta here."
@@ -9763,8 +9767,8 @@ msgstr "（<i>咯咯笑</i>）谢谢你，亲爱的。"
 msgid "Thank the Lords of Light, not me!"
 msgstr "谢谢光明之神吧，别谢我！"
 
-#. [message]: speaker=Sister Thera
 #. [message]: speaker=Father Morvin
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:456
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:702
 msgid "Ouch! That hurts. Let’s try not to do that again, shall we?"

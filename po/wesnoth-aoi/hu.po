@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-aoi\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-01-21 01:34+0100\n"
+"POT-Creation-Date: 2012-08-18 09:27+0200\n"
 "PO-Revision-Date: 2012-01-02 16:08+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
@@ -63,12 +63,7 @@ msgid "High Lord"
 msgstr "Nagyúr"
 
 #. [campaign]: id=An_Orcish_Incursion
-#: data/campaigns/An_Orcish_Incursion/_main.cfg:22
-msgid "(Novice level, 7 scenarios.)"
-msgstr "(Újonc szint, 7 pálya)"
-
-#. [campaign]: id=An_Orcish_Incursion
-#: data/campaigns/An_Orcish_Incursion/_main.cfg:22
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:20
 msgid ""
 "Defend the forests of the elves against the first orcs to reach the Great "
 "Continent, learning valuable tactics as you do so.\n"
@@ -77,6 +72,11 @@ msgstr ""
 "Védd meg a tündék erdejét a Nagy Kontinensre érkező első orkoktól, miközben "
 "tovább csiszolhatod harci taktikádat.\n"
 "\n"
+
+#. [campaign]: id=An_Orcish_Incursion
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:22
+msgid "(Novice level, 7 scenarios.)"
+msgstr "(Újonc szint, 7 pálya)"
 
 #. [about]
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:35
@@ -130,12 +130,12 @@ msgstr "Tündék"
 msgid "Urugha"
 msgstr "Urugha"
 
-#. [side]: type=Orcish Warlord, id=Gnargha
-#. [side]: type=Orcish Warrior, id=Urugha
-#. [side]: type=Orcish Sovereign, id=Rualsha
 #. [side]: type=Lich, id=Keremal
 #. [side]: type=Orcish Slayer, id=Gharlsa
+#. [side]: type=Orcish Sovereign, id=Rualsha
+#. [side]: type=Orcish Warlord, id=Gnargha
 #. [side]: type=Orcish Warlord, id=Krughnar
+#. [side]: type=Orcish Warrior, id=Urugha
 #: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:49
 #: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:44
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:45
@@ -203,7 +203,7 @@ msgstr ""
 "Az orkokat a nagy Wesmere-erdő északi határairól pillantották meg először."
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:99
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:98
 msgid ""
 "Hint:\n"
 "Elves can move quickly and safely among the trees. Pick off the enemy grunts "
@@ -421,7 +421,7 @@ msgstr ""
 "legtöbb patak mentén. A tündéket igencsak váratlan helyzet fogadta."
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:90
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:89
 msgid ""
 "Hint:\n"
 "Assassins are hard to hit, and their poison is insidious. Stay close to the "
@@ -581,7 +581,7 @@ msgstr ""
 "másnap reggelt."
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:86
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:85
 msgid ""
 "Hint:\n"
 "There are no villages in this scenario — you must use healers instead. Use "
@@ -863,7 +863,7 @@ msgstr ""
 "lévő hegyoldalakon, nem érhette őket készületlenül."
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:160
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:159
 msgid ""
 "Hint:\n"
 "Trolls are poor fighters when not on rugged terrain and fare even worse "
@@ -1132,7 +1132,7 @@ msgid "Wizards"
 msgstr "Mágusok"
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:109
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:108
 msgid ""
 "Hint:\n"
 "Use Elven Scouts and Linaera’s power of teleportation to mount hit-and-run "
@@ -1365,7 +1365,7 @@ msgid "Keremal"
 msgstr "Keremal"
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:61
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:60
 msgid ""
 "Hint:\n"
 "Undead are resistant to physical attack. Use mages to attack the undead, and "
@@ -1436,7 +1436,7 @@ msgid "Rualsha"
 msgstr "Rualsha"
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:114
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:113
 msgid ""
 "Hint:\n"
 "Your enemy is well-defended against attacks from the south. Use rangers to "
@@ -1452,7 +1452,7 @@ msgid "Defeat Rualsha"
 msgstr "Legyőzöd Rualshát"
 
 #. [message]: speaker=Lomarfel
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:222
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:223
 msgid ""
 "My lord! We have ridden hard for over a week to catch up with you! The "
 "Ka’lian has deliberated, and asks you to defeat Rualsha quickly before he "
@@ -1463,7 +1463,7 @@ msgstr ""
 "még képes volna egy nagyobb erejű inváziós hadsereget fölállítani."
 
 #. [message]: speaker=Rualsha
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:226
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:227
 msgid ""
 "Puny elves! My full army will be here soon, and then we will crush you. You "
 "will beg for a quick death!"
@@ -1472,7 +1472,7 @@ msgstr ""
 "titeket. A minél gyorsabb halálért fogtok könyörögni!"
 
 #. [message]: speaker=unit
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:236
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:237
 msgid ""
 "You may slay me, Erlornas, but my people live on. They will not forget! They "
 "will pursue you, and destroy you utterly... we will... we... arrgh..."
@@ -1482,7 +1482,7 @@ msgstr ""
 "nélkül végezni fognak veled... mi... meg... öl... arrgh..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:247
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:248
 msgid ""
 "But Rualsha overestimated the will of his troops. With their leader dead, "
 "they scattered, and fled from the elves back to their fastnesses in the far "
@@ -1493,14 +1493,14 @@ msgstr ""
 "erődítményeikbe a tündék elől."
 
 #. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:259
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:260
 msgid "It grieves me to take life, even of a barbarian such as Rualsha."
 msgstr ""
 "Elszomorít, ha egy életet kell kioltanom, még ha egy olyan barbár lényről is "
 "van szó, mint Rualsha."
 
 #. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:263
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:264
 msgid ""
 "If the orcs press us, we shall need to become more accustomed to fighting."
 msgstr ""
@@ -1508,7 +1508,7 @@ msgstr ""
 "majd szoknunk a csatákhoz."
 
 #. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:267
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:268
 msgid ""
 "I fear it will be so. We have won a first victory here, but dark times come "
 "upon its heels."

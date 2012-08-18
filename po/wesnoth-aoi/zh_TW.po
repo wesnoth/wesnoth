@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.19+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-01-21 01:34+0100\n"
+"POT-Creation-Date: 2012-08-18 09:27+0200\n"
 "PO-Revision-Date: 2009-05-08 16:09+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: none\n"
@@ -52,12 +52,7 @@ msgid "High Lord"
 msgstr "精靈王"
 
 #. [campaign]: id=An_Orcish_Incursion
-#: data/campaigns/An_Orcish_Incursion/_main.cfg:22
-msgid "(Novice level, 7 scenarios.)"
-msgstr ""
-
-#. [campaign]: id=An_Orcish_Incursion
-#: data/campaigns/An_Orcish_Incursion/_main.cfg:22
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:20
 #, fuzzy
 msgid ""
 "Defend the forests of the elves against the first orcs to reach the Great "
@@ -67,6 +62,11 @@ msgstr ""
 "守住精靈的森林不讓一個獸人到達大陸，在防衛中學習寶貴的戰術。\n"
 "\n"
 "(新手 等級，七個任務)"
+
+#. [campaign]: id=An_Orcish_Incursion
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:22
+msgid "(Novice level, 7 scenarios.)"
+msgstr ""
 
 #. [about]
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:35
@@ -120,12 +120,12 @@ msgstr "精靈"
 msgid "Urugha"
 msgstr "尤陸卡"
 
-#. [side]: type=Orcish Warlord, id=Gnargha
-#. [side]: type=Orcish Warrior, id=Urugha
-#. [side]: type=Orcish Sovereign, id=Rualsha
 #. [side]: type=Lich, id=Keremal
 #. [side]: type=Orcish Slayer, id=Gharlsa
+#. [side]: type=Orcish Sovereign, id=Rualsha
+#. [side]: type=Orcish Warlord, id=Gnargha
 #. [side]: type=Orcish Warlord, id=Krughnar
+#. [side]: type=Orcish Warrior, id=Urugha
 #: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:49
 #: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:44
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:45
@@ -187,7 +187,7 @@ msgid ""
 msgstr "直到某一天...獸人的蹤跡又再度被發現在尉斯米爾森林的北方大道上。"
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:99
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:98
 msgid ""
 "Hint:\n"
 "Elves can move quickly and safely among the trees. Pick off the enemy grunts "
@@ -395,7 +395,7 @@ msgstr ""
 "不到的事情。"
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:90
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:89
 msgid ""
 "Hint:\n"
 "Assassins are hard to hit, and their poison is insidious. Stay close to the "
@@ -551,7 +551,7 @@ msgstr ""
 "不足以讓其他的獸人部落感到害怕。 明天一早，精靈們處於備戰狀態。"
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:86
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:85
 msgid ""
 "Hint:\n"
 "There are no villages in this scenario — you must use healers instead. Use "
@@ -806,7 +806,7 @@ msgstr ""
 "來，都會發現精靈們是有備而來的。"
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:160
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:159
 msgid ""
 "Hint:\n"
 "Trolls are poor fighters when not on rugged terrain and fare even worse "
@@ -1056,7 +1056,7 @@ msgid "Wizards"
 msgstr "巫師"
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:109
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:108
 #, fuzzy
 msgid ""
 "Hint:\n"
@@ -1277,7 +1277,7 @@ msgid "Keremal"
 msgstr "科瑞姆"
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:61
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:60
 msgid ""
 "Hint:\n"
 "Undead are resistant to physical attack. Use mages to attack the undead, and "
@@ -1342,7 +1342,7 @@ msgid "Rualsha"
 msgstr "盧拉夏-坦"
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:114
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:113
 #, fuzzy
 msgid ""
 "Hint:\n"
@@ -1359,7 +1359,7 @@ msgid "Defeat Rualsha"
 msgstr "擊敗盧拉夏-坦"
 
 #. [message]: speaker=Lomarfel
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:222
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:223
 #, fuzzy
 msgid ""
 "My lord! We have ridden hard for over a week to catch up with you! The "
@@ -1370,7 +1370,7 @@ msgstr ""
 "調集人馬之前迅速擊敗他。 "
 
 #. [message]: speaker=Rualsha
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:226
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:227
 msgid ""
 "Puny elves! My full army will be here soon, and then we will crush you. You "
 "will beg for a quick death!"
@@ -1379,7 +1379,7 @@ msgstr ""
 "的！"
 
 #. [message]: speaker=unit
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:236
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:237
 msgid ""
 "You may slay me, Erlornas, but my people live on. They will not forget! They "
 "will pursue you, and destroy you utterly... we will... we... arrgh..."
@@ -1388,7 +1388,7 @@ msgstr ""
 "找你直到殺掉你為止...我們將會...我們...啊..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:247
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:248
 msgid ""
 "But Rualsha overestimated the will of his troops. With their leader dead, "
 "they scattered, and fled from the elves back to their fastnesses in the far "
@@ -1398,18 +1398,18 @@ msgstr ""
 "北方的根據地。"
 
 #. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:259
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:260
 msgid "It grieves me to take life, even of a barbarian such as Rualsha."
 msgstr "親手結束他人的生命認我感到哀傷，那怕如盧拉夏這種野蠻人般作惡多端。"
 
 #. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:263
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:264
 msgid ""
 "If the orcs press us, we shall need to become more accustomed to fighting."
 msgstr "如果獸人繼續進逼，我們得習慣於抗爭。"
 
 #. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:267
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:268
 msgid ""
 "I fear it will be so. We have won a first victory here, but dark times come "
 "upon its heels."

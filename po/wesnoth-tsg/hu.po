@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-tsg_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-12-15 10:39+0100\n"
+"POT-Creation-Date: 2012-08-18 09:27+0200\n"
 "PO-Revision-Date: 2011-12-11 22:13+0100\n"
 "Last-Translator: Gábor Udvari <gabor.udvari@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -29,12 +29,7 @@ msgid "TSG"
 msgstr "ADŐ"
 
 #. [campaign]: id=The_South_Guard
-#: data/campaigns/The_South_Guard/_main.cfg:19
-msgid "(Novice level, 9 scenarios.)"
-msgstr "(Újonc szint, 9 pálya)"
-
-#. [campaign]: id=The_South_Guard
-#: data/campaigns/The_South_Guard/_main.cfg:19
+#: data/campaigns/The_South_Guard/_main.cfg:17
 msgid ""
 "A young Knight, Deoran, is dispatched to take command of the South Guard... "
 "Note: This campaign is designed as an introduction to Wesnoth. The "
@@ -45,6 +40,11 @@ msgstr ""
 "Megjegyzés: ez a küldetés bevezetést nyújt a Wesnothba. A „Civil” nehézségi "
 "szint megfelelő lehet a játékkal még csak most ismerkedőknek is.\n"
 "\n"
+
+#. [campaign]: id=The_South_Guard
+#: data/campaigns/The_South_Guard/_main.cfg:19
+msgid "(Novice level, 9 scenarios.)"
+msgstr "(Újonc szint, 9 pálya)"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:22
@@ -96,8 +96,8 @@ msgstr "Illusztrációk és grafikai arculat"
 msgid "Born to the Banner"
 msgstr "Lobogóra születve"
 
-#. [side]: type=Horseman Commander, id=Deoran
 #. [side]: id=Deoran
+#. [side]: type=Horseman Commander, id=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:30
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:40
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:31
@@ -115,11 +115,11 @@ msgstr "Lobogóra születve"
 msgid "Deoran"
 msgstr "Deoran"
 
-#. [side]: type=Horseman Commander, id=Deoran
-#. [side]: type=Troll Hero, id=Grek
 #. [side]
-#. [side]: type=Lieutenant, id=Plynry
 #. [side]: id=Deoran
+#. [side]: type=Horseman Commander, id=Deoran
+#. [side]: type=Lieutenant, id=Plynry
+#. [side]: type=Troll Hero, id=Grek
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:35
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:44
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:35
@@ -145,12 +145,12 @@ msgstr "A Déli Őrhely serege"
 msgid "Urza Mathin"
 msgstr "Urza Mathin"
 
-#. [side]: type=Rogue, id=Urza Fastik
+#. [side]
+#. [side]: type=Bandit, id=Urza Mathin
+#. [side]: type=Outlaw, id=Tharzo Kalain
 #. [side]: type=Outlaw, id=Urza Afalas
 #. [side]: type=Outlaw, id=Urza Nalmath
-#. [side]
-#. [side]: type=Outlaw, id=Tharzo Kalain
-#. [side]: type=Bandit, id=Urza Mathin
+#. [side]: type=Rogue, id=Urza Fastik
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:57
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:66
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:103
@@ -185,16 +185,16 @@ msgstr "Legyőzöd Urza Mathint"
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:172
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:230
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:250
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:555
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:621
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:647
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:713
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:522
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:276
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:458
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:516
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_to_Kerlath.cfg:41
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:415
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:432
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:477
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:412
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:430
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:476
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:259
 msgid "Death of Deoran"
 msgstr "Deoran elesik"
@@ -345,8 +345,8 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:176
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:234
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:254
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:559
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:625
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:651
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:717
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:217
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:300
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:526
@@ -816,8 +816,8 @@ msgstr "Megölöd Urza Nalmathot, a banditák vezérét"
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:180
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:238
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:258
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:563
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:629
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:655
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:721
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:530
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:280
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:462
@@ -1242,14 +1242,14 @@ msgstr "Könnyek völgye"
 msgid "Mal A’kai"
 msgstr "Mal A’kai"
 
-#. [side]: type=Ancient Lich, id=Mal M'Brin
-#. [side]: type=Lich, id=Mal Tera
-#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer, id=Mal A'kai
-#. [side]: type=Outlaw, id=Jera Ilras
-#. [side]: type=Soulless, id=Gruth
-#. [side]: type=Lich, id=Mal M'Brin
-#. [side]: type=Soulless, id=Groth
 #. [side]
+#. [side]: type=Ancient Lich, id=Mal M'Brin
+#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer, id=Mal A'kai
+#. [side]: type=Lich, id=Mal M'Brin
+#. [side]: type=Lich, id=Mal Tera
+#. [side]: type=Outlaw, id=Jera Ilras
+#. [side]: type=Soulless, id=Groth
+#. [side]: type=Soulless, id=Gruth
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:74
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:117
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:91
@@ -1364,7 +1364,7 @@ msgstr "Elvezeted Ethilielt Mebrin falujába"
 #. [objective]: condition=lose
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:242
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:262
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:633
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:725
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:284
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:466
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:524
@@ -1421,8 +1421,8 @@ msgstr ""
 msgid "You shall not die in vain! My bodyguard will avenge you!"
 msgstr "A halálod nem hiábavaló! A testőrségem bosszút áll majd érted!"
 
-#. [message]: speaker=Sir Gerrick
 #. [message]: speaker=Deoran
+#. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:326
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:331
 msgid "You have a bodyguard?!"
@@ -1471,8 +1471,8 @@ msgstr "Legalább te nem okozol több bajt nekünk!"
 msgid "Mebrin! Are you there? We have come to seek your aid!"
 msgstr "Mebrin! Merre vagy? A segítségedért jöttünk!"
 
-#. [message]: speaker=narrator
 #. [message]: speaker=Kramak
+#. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:548
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:559
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:376
@@ -1536,9 +1536,7 @@ msgid "Choice in the Fog"
 msgstr "Válaszút a ködben"
 
 #. [side]: type=Outlaw, id=Urza Afalas
-#. [unit]: type=Outlaw, id=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:62
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:483
 msgid "Urza Afalas"
 msgstr "Urza Afalas"
 
@@ -1640,8 +1638,8 @@ msgstr "Rendben. Megkeressük a folyót és kikutatjuk a titkait."
 msgid "Investigate the areas to the south of the Black River"
 msgstr "Felderíted a Fekete-folyótól délre lévő területeket"
 
-#. [message]: speaker=second_unit
 #. [message]: speaker=Sir Gerrick
+#. [message]: speaker=second_unit
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:303
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:310
 msgid "The master of the undead is defeated!"
@@ -1661,19 +1659,26 @@ msgstr ""
 "Az élőholt megszállásnak minden bizonnyal nem lehet ilyen könnyen véget "
 "vetni. Csupán egy sokkal sötétebb mester tanítványát pusztítottuk el."
 
+#. [message]: speaker=Deoran
 #. [message]: speaker=second_unit
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:369
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:377
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:411
+msgid "We found the lich!"
+msgstr ""
+
+#. [message]: speaker=second_unit
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:458
 msgid ""
 "I think I see something moving in the fog... it looks like an encampment!"
 msgstr "Azt hiszem, látok valami mozgást a ködben... egy tábornak tűnik!"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:378
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:484
 msgid "Thank heaven! You’re alive!"
 msgstr "Hál’Isten! Te élsz!"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:383
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:489
 msgid ""
 "Save your thanks! We are here to root out all the evil from these woods, and "
 "that means you!"
@@ -1682,7 +1687,7 @@ msgstr ""
 "ezekből az erdőkből."
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:388
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:494
 msgid ""
 "Draw your swords and say your prayers! You cannot stand against us! You will "
 "pay for your crimes!"
@@ -1691,7 +1696,7 @@ msgstr ""
 "bűneidért!"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:393
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:499
 msgid ""
 "But have you not seen the undead in these forests? I know you have seen them "
 "under the control of the many bandit leaders before..."
@@ -1700,12 +1705,12 @@ msgstr ""
 "már velük a banditavezérek irányítása alatt..."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:398
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:504
 msgid "What of them?"
 msgstr "Mi van velük?"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:403
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:509
 msgid ""
 "A year ago we ventured into the land of the elves in secret, and we captured "
 "a great sage. We forced him to teach us the secrets of this forest and of "
@@ -1716,7 +1721,7 @@ msgstr ""
 "élőholtak titkait."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:408
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:514
 msgid ""
 "You imprisoned Mebrin?! For that you must surely pay. Speak swiftly so that "
 "we may end this parley and dispatch you quickly! We will have vengeance!"
@@ -1725,7 +1730,7 @@ msgstr ""
 "nem szenvedsz sokat! Bosszúra szomjazunk!"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:413
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:519
 msgid ""
 "Hear me out! He taught us to summon the dead to fight for us. We were weak "
 "and foolish and soon summoned undead that we could not control. Mebrin too "
@@ -1738,19 +1743,19 @@ msgstr ""
 "ideig nekünk segített, de most teljesen megőrült és állandóan ellenünk támad!"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:419
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:525
 msgid "Lies! Mebrin would never fight for the undead, much less lead them!"
 msgstr ""
 "Hazugság! Mebrin sose harcolna az élőholtak oldalán, még kevésbé állna az "
 "élükre!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:424
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:530
 msgid "But what do you want us to do about it? You are criminals!"
 msgstr "De mit akarsz tőlünk? Ti egyszerű bűnözők vagytok!"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:429
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:535
 msgid ""
 "Join us in the fight! Together we can drive off these cruel undead and "
 "restore peace to the land."
@@ -1759,7 +1764,7 @@ msgstr ""
 "élőhalottakat és helyreállíthatjuk a békét ezen a földön."
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:434
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:540
 msgid ""
 "My lord, they could be valuable allies, and the undead are a greater threat "
 "to our lands. Justice can wait until we are all safely in Westin."
@@ -1769,7 +1774,7 @@ msgstr ""
 "Westinben."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:440
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:546
 msgid ""
 "But think of the destruction they wrought on your borders! You cannot ally "
 "yourselves with these evil men! Vengeance!"
@@ -1778,7 +1783,7 @@ msgstr ""
 "ezekkel a gonosz emberekkel! Bosszút!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:445
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:551
 msgid ""
 "Hmm... I have to consider this... If I ally with the elves, I must fight the "
 "bandits, but if I ally with the bandits I will make enemies of the elves..."
@@ -1788,18 +1793,18 @@ msgstr ""
 "ellenség..."
 
 #. [option]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:447
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:553
 msgid "Very well. All men must unite against the undead."
 msgstr "Rendben. Az összes embernek egyesülnie kell az élőhalottak ellen!"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:505
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:597
 msgid ""
 "We will now fight alongside you. Come, my thugs and footpads, rally to me!"
 msgstr "Melletted fogunk harcolni, gyerünk banditák és útonállók, kövessetek!"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:511
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:603
 msgid ""
 "You are no better than these criminals! We shall see if you can find your "
 "own way out of the forest! Come, my people, let us return to our lands. We "
@@ -1813,78 +1818,78 @@ msgstr ""
 "csak szenvedést!"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:523
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:615
 msgid ""
 "The elves have abandoned us in this accursed forest! We are surely lost!"
 msgstr ""
 "A tündék magunkra hagytak ebben az átkozott erdőben! Biztosan elvesztünk!"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:528
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:620
 msgid "Do not fear, I can lead you out when the time is right."
 msgstr "Ne félj, kivezetlek, amint eljön az ideje."
 
 #. [objective]: condition=win
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:551
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:613
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:643
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:705
 msgid "Find the source of the undead and destroy it"
 msgstr "Megtalálod az élőholtak forrását, és elpusztítod"
 
 #. [objective]: condition=lose
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:567
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:659
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:534
 msgid "Death of Urza Afalas"
 msgstr "Urza Afalas elesik"
 
 #. [option]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:582
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:674
 msgid ""
 "Your crimes are too great. You will fall with the rest of the foul undead!"
 msgstr ""
 "A bűneitek túl nagyok. El kell pusztulnotok az ocsmány élőholtakkal együtt!"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:596
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:688
 msgid "Then this parley is over! You may have sounded the doom of all of us!"
 msgstr "Akkor nincs alku! Talán mindannyiunk vesztét jelentik a szavaid!"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:602
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:694
 msgid "You will pay for taking Mebrin from us! If he is harmed..."
 msgstr ""
 "Megfizettek azért, hogy Mebrint elraboltátok tőlünk! Ha egy haja szála is "
 "meggörbül..."
 
 #. [objective]: condition=win
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:617
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:709
 msgid "Defeat Urza Afalas"
 msgstr "Legyőzöd Urza Afalast"
 
 #. [message]: speaker=Urza Afalas
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:665
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:765
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1120
 msgid "Now I pay for my crimes. But how many others will also suffer for them?"
 msgstr "Most fizetek a bűneimért. De vajon hányan fognak még szenvedni értük?"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:674
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:779
 msgid "Fools! That lich will be the death of us all! You have sealed our doom!"
 msgstr ""
 "Bolondok! Ez a delevény mindannyiunk halála lesz! Megpecsételődött a sorsunk!"
 
 #. [unit]: type=Water Serpent, id=Beast of the Lake
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:693
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:805
 msgid "Beast of the Lake"
 msgstr "A tó szörnye"
 
 #. [message]: speaker=Beast of the Lake
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:699
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:811
 msgid "Graar!"
 msgstr "Grrr!"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:722
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:834
 msgid ""
 "Well! That was easier than I thought it’d be. Looks like the undead aren’t "
 "so tough after all!"
@@ -1893,12 +1898,12 @@ msgstr ""
 "annyira kitartóak!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:727
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:839
 msgid "Indeed. The dark king has fallen."
 msgstr "Valóban. A Sötét Király elesett."
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:731
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:843
 msgid ""
 "I’m afraid it is not so. This was not the real Mebrin we destroyed, but a "
 "mere phantom. He resides in catacombs deep underneath the castle, but they "
@@ -1909,7 +1914,7 @@ msgstr ""
 "varázslat segítsége nélkül nem lehet bejutni."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:736
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:848
 msgid ""
 "We spared your life in order to defeat the source of these undead, and now "
 "you tell us we cannot even reach it?! Ethiliel could have dispelled these "
@@ -1920,7 +1925,7 @@ msgstr ""
 "ezeket a mágikus falakat ha nem hittük volna el a hazugságaidat!"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:740
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:852
 msgid ""
 "If I had told you, you and the elves would have killed me! I didn’t have a "
 "choice!"
@@ -1929,12 +1934,12 @@ msgstr ""
 "volt más választásom!"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:744
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:856
 msgid "Perhaps we should correct that error now."
 msgstr "Talán itt az ideje helyrehozni ezt a tévedésünket."
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:748
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:860
 msgid ""
 "Then you would surely be lost in these woods forever at the mercy of the "
 "undead. I can lead you and your men back to the lands of Wesnoth if you will "
@@ -1945,7 +1950,7 @@ msgstr ""
 "embereiteket Wesnoth földjére, ha megkegyelmeztek nekem."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:753
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:865
 msgid ""
 "Now that the elves have abandoned us, that would seem to be our only choice. "
 "But what about Mebrin? The undead will keep attacking our homes unless we "
@@ -1956,7 +1961,7 @@ msgstr ""
 "otthonainkat, hacsak nem irtjuk ki őket gyökerestül."
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:757
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:869
 msgid ""
 "I do not know. But if we cannot storm his underground fastness we must "
 "either flee or wait here and certainly perish fighting him on his own terms. "
@@ -1970,7 +1975,7 @@ msgstr ""
 "felkészületlenül ekkora seregtől nem tudja megvédeni magát."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:762
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:874
 msgid ""
 "Then we shall retreat towards Westin and prepare for the oncoming battle. I "
 "pray our only chance at victory was not lost today."
@@ -1980,12 +1985,17 @@ msgstr ""
 "alkonyát."
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:774
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:891
+msgid "Now, on with those bandits!"
+msgstr ""
+
+#. [message]: speaker=Sir Gerrick
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:909
 msgid "We have beaten them both, criminals and undead!"
 msgstr "Legyőztük mindannyiukat, a bűnözőket és az élőholtakat is!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:779
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:914
 msgid ""
 "We should make haste to return to Wesnoth before the harvest. Fall arrived "
 "some time ago."
@@ -1994,7 +2004,7 @@ msgstr ""
 "itt az ősz."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:783
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:918
 msgid ""
 "Do not be so hasty; great mages are no mere tricksters to be easily "
 "defeated. I fear that there are tunnels and catacombs buried beneath his "
@@ -2008,7 +2018,7 @@ msgstr ""
 "akarjuk tisztítani a vidéket a gonosztól, le kell ereszkednünk a sötétségbe."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:787
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:922
 msgid ""
 "There are strong magical wards placed here that would prevent you from "
 "entering, but I am capable of opening them to let us all pass."
@@ -2017,12 +2027,12 @@ msgstr ""
 "de én képes vagyok megnyitni őket, hogy átengedjenek minket."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:792
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:927
 msgid "My men are not dwarves! How are we to fight in catacombs and tunnels?"
 msgstr "Az embereim nem törpök! Hogy harcoljunk katakombákban és alagutakban?"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:796
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:931
 msgid ""
 "Someone must take news back to Wesnoth of this new evil that lurks near our "
 "borders. Who knows how many more of these undead are hiding in the forest?"
@@ -2031,7 +2041,7 @@ msgstr ""
 "határainknál leselkedik. Ki tudja, mennyi élőholt rejtőzik még az erdőben."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:800
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:935
 msgid ""
 "Go, Sir Gerrick, and take with you an escort of elves, if Ethiliel will "
 "permit it."
@@ -2039,12 +2049,12 @@ msgstr ""
 "Menj, Sir Gerrick, és vigyél tünde kíséretet is, ha Ethiliel engedélyt ad rá."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:804
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:939
 msgid "Indeed I will. My kinsfolk will protect you and your message!"
 msgstr "Természetesen engedélyt adok. A népem megvéd téged és az üzeneted!"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:808
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:943
 msgid ""
 "Fare well, Deoran! I will be there to greet you when you return to Kerlath "
 "Province."
@@ -3183,21 +3193,21 @@ msgid "The Tides of War"
 msgstr "A háború hullámai"
 
 #. [value]
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:124
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:133
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:160
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:165
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:170
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:122
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:131
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:158
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:163
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:168
 msgid "Provincial Guard"
 msgstr "Tartományi őr"
 
 #. [value]
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:154
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:152
 msgid "Lt. Nilaf"
 msgstr "Nilaf hadnagy"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:290
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:287
 msgid ""
 "Look! The undead army has broken through Sir Gerrick’s lines! Alas, he is "
 "lost!"
@@ -3205,7 +3215,7 @@ msgstr ""
 "Nézzétek! Az élőholtak serege áttört Sir Gerrick vonalain! Sajnos elbukott!"
 
 #. [message]: speaker=Moreth
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:295
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:292
 msgid ""
 "Since I was a boy, Gerrick was my leader, and there was no one braver. Today "
 "we shall defend our homes, and avenge him!"
@@ -3214,7 +3224,7 @@ msgstr ""
 "Ma meg kell védenünk az otthonainkat, és meg kell bosszulnunk őt!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:310
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:307
 msgid ""
 "But in the narrow window his valiant stand gave us, we have roused some of "
 "the provincial guard and reinforced our defenses!"
@@ -3223,7 +3233,7 @@ msgstr ""
 "riadóztassunk néhány tartományi őrt, és megerősítsük a védelmünket!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:326
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:323
 msgid ""
 "But in the narrow window his valiant stand gave us, we have roused the whole "
 "provincial guard and reinforced our defenses!"
@@ -3232,7 +3242,7 @@ msgstr ""
 "riadóztassuk a teljes tartományi őrsereget, és megerősítsük a védelmünket!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:342
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:339
 msgid ""
 "But in the narrow window his valiant stand gave us, we have roused the whole "
 "provincial guard and fully embattled the city!"
@@ -3242,24 +3252,24 @@ msgstr ""
 "a harcra!"
 
 #. [message]: speaker=Lt. Nilaf
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:353
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:350
 msgid "Indeed, Lord, we are ready to defend our homes!"
 msgstr "Így van uram, készen állunk megvédeni otthonainkat!"
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:364
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:361
 msgid "I have summoned the great Council of Westin!"
 msgstr "Összehívtam Westin nagy Tanácsát!"
 
-#. [then]
 #. [else]
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:367
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:381
+#. [then]
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:364
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:378
 msgid "Minister Mefel"
 msgstr "Mefel atya"
 
 #. [message]: speaker=Minister Mefel
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:370
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:367
 msgid ""
 "Hylas, I have made all possible haste, but my Council brethren are not as "
 "swift as I. It will take more time for them to arrive."
@@ -3268,7 +3278,7 @@ msgstr ""
 "én. Attól tartok, nem fognak időben megérkezni."
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:379
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:376
 msgid ""
 "And I have summoned the great Council of Westin! They will battle with all "
 "their might!"
@@ -3278,22 +3288,22 @@ msgstr ""
 
 #. [else]
 #. [then]
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:382
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:456
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:379
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:455
 msgid "Minister Romand"
 msgstr "Romand atya"
 
 #. [else]
 #. [then]
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:383
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:457
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:380
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:456
 msgid "Minister Alanafel"
 msgstr "Alanafel atya"
 
 #. [message]: speaker=Minister Mefel
 #. [message]: speaker=Minister Romand
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:388
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:462
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:385
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:461
 msgid ""
 "We have heard your summons, and we shall send these dark foes back to the "
 "abyss that spawned them!"
@@ -3302,8 +3312,8 @@ msgstr ""
 "teremtményeket!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:392
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:466
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:389
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:465
 msgid ""
 "Council of Westin, we are cheered by your presence. Your aid will be most "
 "welcome."
@@ -3312,7 +3322,7 @@ msgstr ""
 "segítségeteket."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:399
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:396
 msgid ""
 "We have rallied all the forces that we will be able to! Let us not make Sir "
 "Gerrick’s sacrifice a vain one. For Wesnoth!"
@@ -3321,20 +3331,20 @@ msgstr ""
 "Wesnothért!"
 
 #. [objective]: condition=win
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:411
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:428
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:473
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:408
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:426
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:472
 msgid "Defeat Mal M’Brin"
 msgstr "Legyőzöd Mal M’Brint"
 
 #. [objectives]
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:421
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:419
 msgid "The Council of Westin will arrive on turn $council_arrive_turn|."
 msgstr "Westin tanácsa a $council_arrive_turn|. körben fog megérkezni."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:511
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:322
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:324
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:12
 msgid "I have failed my kingdom and duty..."
 msgstr "Elbuktam a királyságom és a kötelességem..."
@@ -3467,8 +3477,8 @@ msgstr ""
 "most meg megölték a vezetőnket! Nem tűrhetjük! Velük együtt halsz meg!"
 
 #. [event]
-#. [unit]: type=$unit_type
 #. [message]
+#. [unit]: type=$unit_type
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:222
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:223
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:224
@@ -3476,8 +3486,8 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:226
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:227
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:228
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:297
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:309
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:299
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:311
 msgid "Disciple of Mebrin"
 msgstr "Mebrin tanítványa"
 
@@ -3515,18 +3525,18 @@ msgid "Send Ethiliel to the Great Tree and parley with Ithelden"
 msgstr "Eljuttatod Ethilielt a Nagy Fához, és beszélsz Itheldennel"
 
 #. [message]
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:310
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:312
 msgid "For every one of us you strike down, more will rise!"
 msgstr "Minden megölt társunk helyére újak fognak lépni!"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:336
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:338
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:64
 msgid "I have given my all for my kingdom! Avenge me, Deoran!"
 msgstr "Mindenem odaadtam a királyságomért! Bosszulj meg, Deoran!"
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:349
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:351
 msgid ""
 "Ithelden’s elves have killed Ethiliel! Now we have no chance to come to an "
 "agreement with them. A war with the Elves is imminent."
@@ -3535,7 +3545,7 @@ msgstr ""
 "jussunk velük. A tündékkel folytatott háború a küszöbön áll."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:353
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:355
 msgid ""
 "We are far away from Weldyn. We’ll surely all be killed long before any "
 "reinforcements arrive."
@@ -3543,8 +3553,8 @@ msgstr ""
 "Messze vagyunk Weldyntől. Minden bizonnyal az utolsó szálig elpusztulunk, "
 "mielőtt bármi erősítés érkezne."
 
-#. [scenario]: id=10a_Elf_Epilogue
 #. [scenario]: id=09b_Bandit_Epilogue
+#. [scenario]: id=10a_Elf_Epilogue
 #: data/campaigns/The_South_Guard/scenarios/09b_Bandit_Epilogue.cfg:5
 #: data/campaigns/The_South_Guard/scenarios/10a_Elf_Epilogue.cfg:5
 msgid "Epilogue"

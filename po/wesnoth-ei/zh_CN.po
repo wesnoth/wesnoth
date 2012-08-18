@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-03-25 14:42+0200\n"
+"POT-Creation-Date: 2012-08-18 09:27+0200\n"
 "PO-Revision-Date: 2011-12-20 20:20+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
@@ -59,12 +59,7 @@ msgid "Royal Guard"
 msgstr "皇家卫兵"
 
 #. [campaign]: id=Eastern_Invasion
-#: data/campaigns/Eastern_Invasion/_main.cfg:21
-msgid "(Intermediate level, 16 scenarios.)"
-msgstr "（中等级别，16幕场景。）"
-
-#. [campaign]: id=Eastern_Invasion
-#: data/campaigns/Eastern_Invasion/_main.cfg:21
+#: data/campaigns/Eastern_Invasion/_main.cfg:19
 msgid ""
 "There are rumors of undead attacks on the eastern border of Wesnoth. You, an "
 "officer in the Royal Army, have been sent to the eastern front to protect "
@@ -74,6 +69,11 @@ msgstr ""
 "有传闻说，韦诺的东部边境遭受死灵侵袭。你，一名皇家军队的军官，被派往东部前线"
 "保护村民并查明状况。\n"
 "\n"
+
+#. [campaign]: id=Eastern_Invasion
+#: data/campaigns/Eastern_Invasion/_main.cfg:21
+msgid "(Intermediate level, 16 scenarios.)"
+msgstr "（中等级别，16幕场景。）"
 
 #. [about]
 #: data/campaigns/Eastern_Invasion/_main.cfg:25
@@ -192,9 +192,9 @@ msgstr ""
 "国王的军队到来之后，一切都很正常。有好几周都没有遇到袭击，格温德利的部队开始"
 "松懈起来。而后，在某一天的黎明，格温德利和他的部队被守夜人惊恐的叫声吵醒了……"
 
-#. [side]: type=Lieutenant, id=Gweddry
 #. [side]: race=Humans, type=Lieutenant, id=Gweddry
 #. [side]: type=General, id=Gweddry
+#. [side]: type=Lieutenant, id=Gweddry
 #. [side]: type=Sergeant, id=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:59
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:20
@@ -221,17 +221,17 @@ msgstr ""
 msgid "Gweddry"
 msgstr "格温德利"
 
-#. [side]: type=Lieutenant, id=Gweddry
 #. [side]
-#. [side]: type=Mounted Fighter, id=Owaec
-#. [side]: type=General, id=Konrad II
-#. [side]: type=Great Mage, id=Kaldor
 #. [side]: race=Humans, type=Lieutenant, id=Gweddry
 #. [side]: type=Dwarvish Steelclad, id=Knutan
+#. [side]: type=General, id=Gweddry
 #. [side]: type=General, id=Halrad
 #. [side]: type=General, id=Halric
 #. [side]: type=General, id=Halrod
-#. [side]: type=General, id=Gweddry
+#. [side]: type=General, id=Konrad II
+#. [side]: type=Great Mage, id=Kaldor
+#. [side]: type=Lieutenant, id=Gweddry
+#. [side]: type=Mounted Fighter, id=Owaec
 #. [side]: type=Sergeant, id=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:67
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:26
@@ -268,8 +268,8 @@ msgstr "格温德利"
 msgid "Wesnothians"
 msgstr "韦诺人"
 
-#. [unit]: type=White Mage, id=Dacyn
 #. [message]
+#. [unit]: type=White Mage, id=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:71
 #: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:453
 msgid "Dacyn"
@@ -280,34 +280,34 @@ msgstr "达辛"
 msgid "Mal-Sakkat"
 msgstr "玛尔-萨卡特"
 
-#. [side]: type=Dark Sorcerer, id=Mal-Skraat
-#. [side]: type=Dark Adept, id=Mal-Tar
-#. [side]: type=Dark Sorcerer, id=Mal-Kallat
-#. [side]: type=Revenant, id=Garnad
-#. [side]: type=Dark Sorcerer, id=Mal-Marak
-#. [side]: type=Dark Sorcerer, id=Mal-Galkar
-#. [side]: type=Death Knight, id=Ravanal-Guard
 #. [side]: type=Ancient Lich, id=Mal-Ravanal
-#. [side]: type=Revenant, id=Lanar-Skal
-#. [side]: type=Lich, id=Mal-Drakanal
+#. [side]: type=Dark Adept, id=Mal-Tar
+#. [side]: type=Dark Sorcerer, id=Mal-Bakral
+#. [side]: type=Dark Sorcerer, id=Mal-Galkar
+#. [side]: type=Dark Sorcerer, id=Mal-Kallat
+#. [side]: type=Dark Sorcerer, id=Mal-Marak
+#. [side]: type=Dark Sorcerer, id=Mal-Sakkat
+#. [side]: type=Dark Sorcerer, id=Mal-Skraat
+#. [side]: type=Dark Sorcerer, id=Mal-Talar
+#. [side]: type=Death Knight, id=Ravanal-Guard
 #. [side]: type=Lich, id=Lich3
 #. [side]: type=Lich, id=Lich4
 #. [side]: type=Lich, id=Lich5
 #. [side]: type=Lich, id=Lich6
 #. [side]: type=Lich, id=Lich7
 #. [side]: type=Lich, id=Lich8
-#. [side]: type=Necromancer, id=Mal-un-Karad
-#. [side]: type=Lich, id=Mal-Telnarad
-#. [side]: type=Dark Sorcerer, id=Mal-Bakral
+#. [side]: type=Lich, id=Mal-Drakanal
 #. [side]: type=Lich, id=Mal-Grekulak
-#. [side]: type=Lich, id=Mal-Xakralan
+#. [side]: type=Lich, id=Mal-Telnarad
 #. [side]: type=Lich, id=Mal-Uknalu
-#. [side]: type=Dark Sorcerer, id=Mal-Sakkat
-#. [side]: type=Dark Sorcerer, id=Mal-Talar
 #. [side]: type=Lich, id=Mal-Uldhar
+#. [side]: type=Lich, id=Mal-Xakralan
 #. [side]: type=Necromancer, id=Mal-un-Darak
-#. [side]: type=Necromancer, id=Mal-un-Zanrad
+#. [side]: type=Necromancer, id=Mal-un-Karad
 #. [side]: type=Necromancer, id=Mal-un-Xadrux
+#. [side]: type=Necromancer, id=Mal-un-Zanrad
+#. [side]: type=Revenant, id=Garnad
+#. [side]: type=Revenant, id=Lanar-Skal
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:118
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:140
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:161
@@ -399,15 +399,15 @@ msgid ""
 msgstr ""
 "看，看东面！亡灵来了！不过，等一下……我感觉到了什么……一定不能让它们发现我……"
 
-#. [side]: type=Ancient Lich, id=Mal-Ravanal
 #. [event]
-#. [variable]
+#. [side]: type=Ancient Lich, id=Mal-Ravanal
 #. [unit]: type=Ancient Lich, id=Mal-Ravanal
+#. [variable]
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:241
 #: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:108
 #: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:31
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:212
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:260
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:213
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:261
 msgid "Mal-Ravanal"
 msgstr "玛尔-拉法纳尔"
 
@@ -530,12 +530,12 @@ msgstr "离脱隧道"
 msgid "Kabak"
 msgstr "卡巴克"
 
+#. [side]
+#. [side]: type=Gryphon, id=Kraagak
 #. [side]: type=Ogre, id=Grug
 #. [side]: type=Orcish Warrior, id=Gruga-Har
-#. [side]: type=Troll, id=Kabak
-#. [side]
 #. [side]: type=Troll Warrior, id=Darg
-#. [side]: type=Gryphon, id=Kraagak
+#. [side]: type=Troll, id=Kabak
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:41
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:67
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:81
@@ -643,8 +643,8 @@ msgstr "俺的部落在这个洞穴里过了好几百年了，俺们不会为了
 msgid "Very well. The best of luck in your battle."
 msgstr "那也好，祝你们在战斗中好运。"
 
-#. [scenario]: id=05_Northern_Outpost
 #. [scenario]: id=02_The_Escape_Tunnel
+#. [scenario]: id=05_Northern_Outpost
 #. [scenario]: id=09_Xenophobia
 #. [scenario]: id=11_Captured
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:215
@@ -656,8 +656,8 @@ msgid ""
 "damage!"
 msgstr "装备这个护身符将使得你的每次攻击都造成<i>奥术</i>伤害！"
 
-#. [scenario]: id=05_Northern_Outpost
 #. [scenario]: id=02_The_Escape_Tunnel
+#. [scenario]: id=05_Northern_Outpost
 #. [scenario]: id=09_Xenophobia
 #. [scenario]: id=11_Captured
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:216
@@ -667,8 +667,8 @@ msgstr "装备这个护身符将使得你的每次攻击都造成<i>奥术</i>�
 msgid "holy amulet^Take it"
 msgstr "取走"
 
-#. [scenario]: id=05_Northern_Outpost
 #. [scenario]: id=02_The_Escape_Tunnel
+#. [scenario]: id=05_Northern_Outpost
 #. [scenario]: id=09_Xenophobia
 #. [scenario]: id=11_Captured
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:217
@@ -678,8 +678,8 @@ msgstr "取走"
 msgid "holy amulet^Leave it"
 msgstr "留下"
 
-#. [scenario]: id=05_Northern_Outpost
 #. [scenario]: id=02_The_Escape_Tunnel
+#. [scenario]: id=05_Northern_Outpost
 #. [scenario]: id=09_Xenophobia
 #. [scenario]: id=11_Captured
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:218
@@ -831,8 +831,8 @@ msgstr ""
 "他们从伊斯特玛克山脚出发，朝着一个很少有韦诺人去过的方向，进入大河南部陌生的"
 "森林国度。"
 
-#. [side]: type=Lieutenant, id=Gweddry
 #. [side]: type=Elvish Ranger, id=Volas
+#. [side]: type=Lieutenant, id=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:34
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:51
 msgid "Allies"
@@ -1280,14 +1280,14 @@ msgstr "Owaec"
 msgid "Lanar-Skal"
 msgstr "Lanar-Skal"
 
-#. [side]: type=Orcish Warlord, id=Draka-Kura
 #. [side]
-#. [side]: type=Orcish Warlord, id=Wak-Rano
 #. [side]: type=Dark Sorcerer, id=Mal-Arnai
+#. [side]: type=Orcish Warlord, id=Draka-Kura
 #. [side]: type=Orcish Warlord, id=King Dra-Nak
-#. [side]: type=Orcish Warlord, id=Varrak-Klar
-#. [side]: type=Troll Warrior, id=Unhk
 #. [side]: type=Orcish Warlord, id=Ran-Lar
+#. [side]: type=Orcish Warlord, id=Varrak-Klar
+#. [side]: type=Orcish Warlord, id=Wak-Rano
+#. [side]: type=Troll Warrior, id=Unhk
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:86
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:49
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:68
@@ -2497,8 +2497,8 @@ msgstr "溺死平原"
 msgid "Defeat Khrakrahs"
 msgstr "打败Khrakrahs，这个骨龙"
 
-#. [unit]: type=Skeletal Dragon, id=Khrakrahs
 #. [message]
+#. [unit]: type=Skeletal Dragon, id=Khrakrahs
 #: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:160
 #: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:408
 msgid "Khrakrahs"
@@ -3007,14 +3007,14 @@ msgid "Defeat Mal-Ravanal"
 msgstr "打败 Mal-Ravanal"
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:83
+#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:85
 msgid ""
 "I have waited a long time for this day to come. Prepare to die, Gweddry of "
 "Wesnoth!"
 msgstr "我等这一天已经很长时间了。准备受死吧，韦诺的Gweddry！"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:94
+#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:93
 msgid ""
 "The rules of the duel are these:\n"
 "You may recruit or recall up to 6 units.\n"
@@ -3028,26 +3028,26 @@ msgstr ""
 "最先失败的领袖会在决斗中输掉。"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:142
+#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:144
 msgid ""
 "Wait — what just happened? He called more warriors out of the ground! That’s "
 "not allowed!"
 msgstr "等等——刚才发生什么了？他从地底召来了更多的战士！这是不允许的！"
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:146
+#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:148
 msgid ""
 "Stop talking and fight! The rules do not stop me from bringing up warriors "
 "that were already here."
 msgstr "闭嘴，给我战斗！规则并没说不能让我带更多已经在那儿的勇士。"
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:157
+#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:159
 msgid "I... lose?..."
 msgstr "我....输了？..."
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:172
+#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:174
 msgid "And more!"
 msgstr "和更多！"
 
@@ -3087,7 +3087,7 @@ msgid "Letting any enemy unit on to your keep"
 msgstr "让任何敌人处于你的掌握之中"
 
 #. [message]: speaker=Mal-Drakanal
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:201
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:202
 msgid ""
 "You people are fools! You rejected my master’s offer to duel... very well, "
 "you will <i>all</i> die! And know this; my master is here to enjoy your "
@@ -3102,67 +3102,67 @@ msgstr ""
 "真实的名字。"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:205
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:206
 msgid "Remember, we have to kill Mal-Ravanal. He’s here somewhere..."
 msgstr "记住，我们不得不杀死Mal-Ravanal。他就在这里的某处..."
 
 #. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:207
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:208
 msgid "Mal-Hadanak"
 msgstr "Mal-Hadanak"
 
 #. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:208
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:209
 msgid "Mal-Katklagad"
 msgstr "Mal-Katklagad"
 
 #. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:209
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:210
 msgid "Mal-Xaskanat"
 msgstr "Mal-Xaskanat"
 
 #. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:210
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:211
 msgid "Mal-Akranbral"
 msgstr "Mal-Akranbral"
 
 #. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:211
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:212
 msgid "Mal-Larakan"
 msgstr "Mal-Larakan"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:279
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:280
 msgid "There he is!"
 msgstr "他们在这儿！"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:286
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:287
 msgid "That isn’t him..."
 msgstr "（耳语）那不是他。。。"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:298
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:299
 msgid "You dare to attack me? Now you will pay!"
 msgstr "你胆敢攻击我？受死！"
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:316
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:317
 msgid "How did you know...?"
 msgstr "你怎么知道...？"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:338
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:339
 msgid "Kill the king!"
 msgstr "杀死他们的王！"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:342
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:343
 msgid "They killed Konrad... now, even if we save Weldyn, Wesnoth has fallen."
 msgstr "他们杀掉了Konrad... 现在，即使我们拯救了Weldyn，韦诺也已沦陷。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:358
+#: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:359
 msgid "The Kingdom of Wesnoth dies with me!"
 msgstr "我一死，韦诺王国也完了！"
 
@@ -3172,7 +3172,7 @@ msgid "Epilogue"
 msgstr "尾声"
 
 #. [part]
-#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:20
+#: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:18
 msgid ""
 "When Mal-Ravanal fell, the living creatures under his banner broke and fled; "
 "the undead simply collapsed like puppets with their strings cut. As the "
@@ -3375,8 +3375,8 @@ msgid "shock"
 msgstr "震击"
 
 #. [attacks]: id=shock
-#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:11
-#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:13
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:10
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:12
 msgid ""
 "Shock:\n"
 "When this attack is used on offense, the opponent will retaliate with one "

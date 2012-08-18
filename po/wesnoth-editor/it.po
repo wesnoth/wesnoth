@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-01-08 18:12+0100\n"
+"POT-Creation-Date: 2012-08-18 09:27+0200\n"
 "PO-Revision-Date: 2012-01-29 22:50+0100\n"
 "Last-Translator: Antonio \"Antro\" Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -37,86 +37,98 @@ msgid "Radius 2 Hex"
 msgstr "Raggio 2 esagoni"
 
 #. [brush]
-#: data/core/editor/brushes.cfg:55
+#: data/core/editor/brushes.cfg:46
 msgid "Hex Line NW-SE"
 msgstr "Linea di esagoni NO-SE"
 
+#. [brush]
+#: data/core/editor/brushes.cfg:62
+#, fuzzy
+#| msgid "Hex Line NW-SE"
+msgid "Hex Line SE-NW"
+msgstr "Linea di esagoni NO-SE"
+
 #. [editor_group]: id=all
-#: data/core/editor/terrain-groups.cfg:10
+#: data/core/editor/terrain-groups.cfg:11
 msgid "all"
 msgstr "tutti"
 
 #. [editor_group]: id=water
-#: data/core/editor/terrain-groups.cfg:16
+#: data/core/editor/terrain-groups.cfg:17
 msgid "water"
 msgstr "acqua"
 
 #. [editor_group]: id=flat
-#: data/core/editor/terrain-groups.cfg:23
+#: data/core/editor/terrain-groups.cfg:24
 msgid "flat"
 msgstr "pianeggiante"
 
 #. [editor_group]: id=desert
-#: data/core/editor/terrain-groups.cfg:30
+#: data/core/editor/terrain-groups.cfg:31
 msgid "desert"
 msgstr "deserto"
 
 #. [editor_group]: id=embellishments
-#: data/core/editor/terrain-groups.cfg:37
+#: data/core/editor/terrain-groups.cfg:38
 msgid "embellishments"
 msgstr "abbellimenti"
 
 #. [editor_group]: id=forest
-#: data/core/editor/terrain-groups.cfg:44
+#: data/core/editor/terrain-groups.cfg:45
 msgid "forest"
 msgstr "foresta"
 
+#. [editor_group]: id=fall
+#: data/core/editor/terrain-groups.cfg:52
+msgid "fall"
+msgstr ""
+
 #. [editor_group]: id=frozen
-#: data/core/editor/terrain-groups.cfg:51
+#: data/core/editor/terrain-groups.cfg:59
 msgid "frozen"
 msgstr "congelato"
 
 #. [editor_group]: id=rough
-#: data/core/editor/terrain-groups.cfg:58
+#: data/core/editor/terrain-groups.cfg:66
 msgid "rough"
 msgstr "impervio"
 
 #. [editor_group]: id=cave
-#: data/core/editor/terrain-groups.cfg:65
+#: data/core/editor/terrain-groups.cfg:73
 msgid "cave"
 msgstr "grotta"
 
 #. [editor_group]: id=obstacle
-#: data/core/editor/terrain-groups.cfg:72
+#: data/core/editor/terrain-groups.cfg:80
 msgid "obstacle"
 msgstr "ostacolo"
 
 #. [editor_group]: id=village
-#: data/core/editor/terrain-groups.cfg:79
+#: data/core/editor/terrain-groups.cfg:87
 msgid "village"
 msgstr "villaggio"
 
 #. [editor_group]: id=castle
-#: data/core/editor/terrain-groups.cfg:86
+#: data/core/editor/terrain-groups.cfg:94
 msgid "castle"
 msgstr "castello"
 
 #. [editor_group]: id=bridge
-#: data/core/editor/terrain-groups.cfg:93
+#: data/core/editor/terrain-groups.cfg:101
 msgid "bridge"
 msgstr "ponte"
 
 #. [editor_group]: id=special
-#: data/core/editor/terrain-groups.cfg:100
+#: data/core/editor/terrain-groups.cfg:108
 msgid "special"
 msgstr "speciale"
 
-#. [editor_tool_hint]: id=editor-tool-paint
 #. [editor_tool_hint]: id=editor-tool-fill
+#. [editor_tool_hint]: id=editor-tool-paint
 #. [menu]: id=draw_button_editor
 #. [menu]: id=flood_button_editor
 #: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
-#: data/themes/editor.cfg:181 data/themes/editor.cfg:194
+#: data/themes/editor.cfg:220 data/themes/editor.cfg:279
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
@@ -127,7 +139,7 @@ msgstr ""
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
-#: data/core/editor/tool-hints.cfg:19 data/themes/editor.cfg:216
+#: data/core/editor/tool-hints.cfg:19 data/themes/editor.cfg:291
 msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
@@ -138,7 +150,7 @@ msgstr ""
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #. [menu]: id=start_position_button_editor
-#: data/core/editor/tool-hints.cfg:25 data/themes/editor.cfg:205
+#: data/core/editor/tool-hints.cfg:25 data/themes/editor.cfg:243
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
 "scroll to the starting position, alt+number sets respective starting "
@@ -159,12 +171,12 @@ msgstr ""
 "vuoi incollare (ruotarlo, immagine speculare)."
 
 #. [menu]: id=menu-editor-file
-#: data/themes/editor.cfg:122
+#: data/themes/editor.cfg:116
 msgid "File"
 msgstr "File"
 
 #. [menu]: id=menu-editor-edit
-#: data/themes/editor.cfg:133
+#: data/themes/editor.cfg:130
 msgid "Edit"
 msgstr "Modifica"
 
@@ -174,32 +186,85 @@ msgid "Map"
 msgstr "Mappa"
 
 #. [menu]: id=menu-editor-window
-#: data/themes/editor.cfg:153
+#: data/themes/editor.cfg:156
 msgid "Window"
 msgstr "Finestra"
 
+#. [menu]: id=menu-editor-side
+#: data/themes/editor.cfg:179
+msgid "Side"
+msgstr ""
+
+#. [menu]: id=pipette_button_editor
+#: data/themes/editor.cfg:231
+msgid ""
+"Pipette Tool, Use left/right mouse button to select a terrain from the map. "
+"Not implemented yet."
+msgstr ""
+
+#. [menu]: id=item_button_editor
+#: data/themes/editor.cfg:255
+msgid ""
+"Item Placement Tool, Left mouse button sets a new item or moves it via drag "
+"and drop, right clears. Not implemented yet."
+msgstr ""
+
+#. [menu]: id=village_button_editor
+#: data/themes/editor.cfg:266
+msgid ""
+"Left mouse button sets the village ownership to the current side, right "
+"clears."
+msgstr ""
+
+#. [menu]: id=label_button_editor
+#: data/themes/editor.cfg:301
+msgid "Left mouse button sets or drags a label, right clears."
+msgstr ""
+
+#. [menu]: id=soundsource_button_editor
+#: data/themes/editor.cfg:311
+msgid ""
+"Left mouse button sets or drags a sound source, right clears. Not "
+"implemented yet."
+msgstr ""
+
+#. [menu]: id=unit_button_editor
+#: data/themes/editor.cfg:321
+msgid ""
+"Left mouse button sets a new unit or moves a unit via drag and drop, right "
+"clears."
+msgstr ""
+
+#. [menu]: id=flip_map_button_editor
+#: data/themes/editor.cfg:400
+#, fuzzy
+#| msgid "Action not implemented"
+msgid "Flip Map - Not implemented yet."
+msgstr "Azione non implementata"
+
+#. [menu]: id=menu-editor-terrain
+#: data/themes/editor.cfg:437
+msgid "Group"
+msgstr ""
+
 #. [label]: id=villages-icon
-#: data/themes/editor.cfg:272
+#: data/themes/editor.cfg:460
 msgid "villages"
 msgstr "villaggi"
 
-#: src/editor/editor_controller.cpp:132
+#: src/editor/editor_controller.cpp:78
 msgid "Quit Editor"
 msgstr "Esci dall’editor"
 
-#: src/editor/editor_controller.cpp:286
+#: src/editor/editor_controller.cpp:164
 msgid "Fatal error"
 msgstr "Errore fatale"
 
-#: src/editor/editor_controller.cpp:311 src/editor/editor_controller.cpp:1098
-msgid "(New Map)"
-msgstr "(Nuova mappa)"
-
-#: src/editor/editor_controller.cpp:317
+#: src/editor/editor_controller.cpp:188
 msgid "Do you really want to quit?"
 msgstr "Vuoi davvero uscire?"
 
-#: src/editor/editor_controller.cpp:319
+#: src/editor/editor_controller.cpp:190
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
@@ -207,7 +272,7 @@ msgstr ""
 "Vuoi veramente uscire? Le modifiche alla mappa dall’ultimo salvataggio "
 "saranno perdute."
 
-#: src/editor/editor_controller.cpp:321
+#: src/editor/editor_controller.cpp:192
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -215,141 +280,49 @@ msgstr ""
 "Vuoi veramente uscire? Le seguenti mappe sono state modificate e le "
 "modifiche successive all’ultimo salvataggio saranno perdute:"
 
-#: src/editor/editor_controller.cpp:326
+#: src/editor/editor_controller.cpp:195
 msgid "Quit"
 msgstr "Esci"
 
-#: src/editor/editor_controller.cpp:391
+#: src/editor/editor_controller.cpp:206
 msgid "No editor time-of-day found."
 msgstr "Non ho trovato un editor per il tempo del giorno."
 
-#: src/editor/editor_controller.cpp:412
-msgid ""
-"Do you want to discard all changes you made to the map since the last save?"
-msgstr ""
-"Vuoi scartare tutte le modifiche fatte alla mappa dall’ultimo salvataggio?"
-
-#: src/editor/editor_controller.cpp:412
-msgid "Unsaved Changes"
-msgstr "Modifiche non salvate"
-
-#: src/editor/editor_controller.cpp:434
-msgid "Choose a Map to Open"
-msgstr "Scegli una mappa da aprire"
-
-#: src/editor/editor_controller.cpp:468
-msgid "Save the Map As"
-msgstr "Salva la mappa come"
-
-#: src/editor/editor_controller.cpp:471
-msgid "The file already exists. Do you want to overwrite it?"
-msgstr "Un file con questo nome esiste già. Vuoi sovrascriverlo?"
-
-#: src/editor/editor_controller.cpp:488
-msgid "No random map generators found."
-msgstr "Non sono stati trovati generatori casuali di mappe."
-
-#: src/editor/editor_controller.cpp:501 src/editor/editor_controller.cpp:505
-msgid "Map creation failed."
-msgstr "La creazione della mappa non è riuscita."
-
-#: src/editor/editor_controller.cpp:520
-msgid "Choose a Mask to Apply"
-msgstr "Scegli una maschera da applicare"
-
-#: src/editor/editor_controller.cpp:527
-msgid "Error loading mask"
-msgstr "Errore di caricamento della maschera"
-
-#: src/editor/editor_controller.cpp:542
-msgid "Choose Target Map"
-msgstr "Scegli la mappa"
-
-#: src/editor/editor_controller.cpp:549 src/editor/editor_controller.cpp:739
-msgid "Error loading map"
-msgstr "Errore di caricamento della mappa"
-
-#: src/editor/editor_controller.cpp:653 src/editor/editor_controller.cpp:695
-msgid "This map is already open."
-msgstr "La mappa è già aperta."
-
-#: src/editor/editor_controller.cpp:674
-msgid "Map saved."
-msgstr "Mappa salvata."
-
-#: src/editor/editor_controller.cpp:718
-msgid "Loaded embedded map data"
-msgstr "Caricati dati della mappa integrata"
-
-#: src/editor/editor_controller.cpp:719 src/editor/editor_controller.cpp:733
-msgid "Map loaded from scenario"
-msgstr "Mappa caricata dallo scenario"
-
-#: src/editor/editor_controller.cpp:729
-msgid ""
-"Loaded referenced map file:\n"
-"$new"
-msgstr ""
-"Caricato il file di mappa referenziato:\n"
-"$new"
-
-#: src/editor/editor_controller.cpp:1128
+#: src/editor/editor_controller.cpp:570
 msgid "Undo"
 msgstr "Annulla"
 
-#: src/editor/editor_controller.cpp:1130
+#: src/editor/editor_controller.cpp:572
 msgid "Can’t Undo"
 msgstr "Non è possibile annullare"
 
-#: src/editor/editor_controller.cpp:1134
+#: src/editor/editor_controller.cpp:576
 msgid "Redo"
 msgstr "Ripeti"
 
-#: src/editor/editor_controller.cpp:1136
+#: src/editor/editor_controller.cpp:578
 msgid "Can’t Redo"
 msgstr "Non è possibile rifare"
 
-#: src/editor/editor_controller.cpp:1141
-msgid "Auto-update Terrain Transitions: Yes"
-msgstr "Aggiornamento automatico delle transizioni del terreno: Sì"
-
-#: src/editor/editor_controller.cpp:1144
-msgid "Auto-update Terrain Transitions: Partial"
-msgstr "Aggiornamento automatico delle transizioni del terreno: Parziale"
-
-#: src/editor/editor_controller.cpp:1148
-msgid "Auto-update Terrain Transitions: No"
-msgstr "Aggiornamento automatico delle transizioni del terreno: No"
-
-#: src/editor/editor_map.cpp:150
+#: src/editor/map/editor_map.cpp:209
 msgid "Player"
 msgstr "Giocatore"
 
-#: src/editor/editor_map.cpp:257
+#: src/editor/map/editor_map.cpp:316
 msgid "The size of the target map is different from the current map"
 msgstr "La dimensione della mappa destinazione è diversa da quella attuale"
 
-#: src/editor/editor_palettes.cpp:503
-msgid "(non-core)"
-msgstr "(non-core)"
-
-#: src/editor/editor_palettes.cpp:504
-msgid "Will not work in game without extra care."
-msgstr "non funziona nel gioco senza particolari attenzioni."
-
-#: src/editor/editor_palettes.cpp:532
-msgid "FG: "
-msgstr "PP"
-
-#: src/editor/editor_palettes.cpp:533
-msgid "BG: "
-msgstr "SF:"
-
-#: src/editor/map_context.cpp:71
+#: src/editor/map/map_context.cpp:74
 msgid "File not found"
 msgstr "File non trovato"
 
-#: src/editor/map_context.cpp:85
+#: src/editor/map/map_context.cpp:80
+#, fuzzy
+#| msgid "Empty map file"
+msgid "Empty file"
+msgstr "File di mappa vuoto"
+
+#: src/editor/map/map_context.cpp:104
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -357,17 +330,37 @@ msgstr ""
 "Il file di mappa sembra uno scenario, ma il valore di map_data non punta ad "
 "un file esistente"
 
-#: src/editor/map_context.cpp:100
+#: src/editor/map/map_context.cpp:119
 msgid "Empty map file"
 msgstr "File di mappa vuoto"
 
-#: src/editor/map_context.cpp:220
+#: src/editor/map/map_context.cpp:264
 msgid "Could not save into scenario"
 msgstr "Impossibile salvare nello scenario"
 
-#: src/editor/map_context.cpp:227
+#: src/editor/map/map_context.cpp:272
 msgid "Could not save the map: $msg"
 msgstr "Impossibile salvare la mappa: $msg"
+
+#: src/editor/palette/editor_palettes.cpp:48
+msgid "(Unknown Group)"
+msgstr ""
+
+#: src/editor/palette/editor_palettes.cpp:305
+msgid "(non-core)"
+msgstr "(non-core)"
+
+#: src/editor/palette/editor_palettes.cpp:306
+msgid "Will not work in game without extra care."
+msgstr "non funziona nel gioco senza particolari attenzioni."
+
+#: src/editor/palette/terrain_palettes.cpp:55
+msgid "FG: "
+msgstr "PP"
+
+#: src/editor/palette/terrain_palettes.cpp:56
+msgid "BG: "
+msgstr "SF:"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:84
 msgid "player^None"
@@ -377,9 +370,76 @@ msgstr "Nessuno"
 msgid "Player $player_number"
 msgstr "Giocatore $player_number"
 
-#: src/gui/dialogs/editor_settings.cpp:148
+#: src/gui/dialogs/editor_settings.cpp:166
 msgid "Custom setting"
 msgstr "Personalizzazioni"
+
+#~ msgid "(New Map)"
+#~ msgstr "(Nuova mappa)"
+
+#~ msgid ""
+#~ "Do you want to discard all changes you made to the map since the last "
+#~ "save?"
+#~ msgstr ""
+#~ "Vuoi scartare tutte le modifiche fatte alla mappa dall’ultimo salvataggio?"
+
+#~ msgid "Unsaved Changes"
+#~ msgstr "Modifiche non salvate"
+
+#~ msgid "Choose a Map to Open"
+#~ msgstr "Scegli una mappa da aprire"
+
+#~ msgid "Save the Map As"
+#~ msgstr "Salva la mappa come"
+
+#~ msgid "The file already exists. Do you want to overwrite it?"
+#~ msgstr "Un file con questo nome esiste già. Vuoi sovrascriverlo?"
+
+#~ msgid "No random map generators found."
+#~ msgstr "Non sono stati trovati generatori casuali di mappe."
+
+#~ msgid "Map creation failed."
+#~ msgstr "La creazione della mappa non è riuscita."
+
+#~ msgid "Choose a Mask to Apply"
+#~ msgstr "Scegli una maschera da applicare"
+
+#~ msgid "Error loading mask"
+#~ msgstr "Errore di caricamento della maschera"
+
+#~ msgid "Choose Target Map"
+#~ msgstr "Scegli la mappa"
+
+#~ msgid "Error loading map"
+#~ msgstr "Errore di caricamento della mappa"
+
+#~ msgid "This map is already open."
+#~ msgstr "La mappa è già aperta."
+
+#~ msgid "Map saved."
+#~ msgstr "Mappa salvata."
+
+#~ msgid "Loaded embedded map data"
+#~ msgstr "Caricati dati della mappa integrata"
+
+#~ msgid "Map loaded from scenario"
+#~ msgstr "Mappa caricata dallo scenario"
+
+#~ msgid ""
+#~ "Loaded referenced map file:\n"
+#~ "$new"
+#~ msgstr ""
+#~ "Caricato il file di mappa referenziato:\n"
+#~ "$new"
+
+#~ msgid "Auto-update Terrain Transitions: Yes"
+#~ msgstr "Aggiornamento automatico delle transizioni del terreno: Sì"
+
+#~ msgid "Auto-update Terrain Transitions: Partial"
+#~ msgstr "Aggiornamento automatico delle transizioni del terreno: Parziale"
+
+#~ msgid "Auto-update Terrain Transitions: No"
+#~ msgstr "Aggiornamento automatico delle transizioni del terreno: No"
 
 #~ msgid "Choose player"
 #~ msgstr "Scegli giocatore"
@@ -404,9 +464,6 @@ msgstr "Personalizzazioni"
 
 #~ msgid "Error creating action object"
 #~ msgstr "Errore nella creazione dell’oggetto di azione"
-
-#~ msgid "Action not implemented"
-#~ msgstr "Azione non implementata"
 
 #~ msgid "Error"
 #~ msgstr "Errore"

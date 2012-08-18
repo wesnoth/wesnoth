@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4.2+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-01-03 10:40+0100\n"
+"POT-Creation-Date: 2012-08-18 09:27+0200\n"
 "PO-Revision-Date: 2008-07-01 17:35-0000\n"
 "Last-Translator: amnay <amnay@operamail.com>\n"
 "Language-Team: none\n"
@@ -33,94 +33,104 @@ msgid "Radius 2 Hex"
 msgstr ""
 
 #. [brush]
-#: data/core/editor/brushes.cfg:55
+#: data/core/editor/brushes.cfg:46
 msgid "Hex Line NW-SE"
 msgstr ""
 
+#. [brush]
+#: data/core/editor/brushes.cfg:62
+msgid "Hex Line SE-NW"
+msgstr ""
+
 #. [editor_group]: id=all
-#: data/core/editor/terrain-groups.cfg:10
+#: data/core/editor/terrain-groups.cfg:11
 #, fuzzy
 msgid "all"
 msgstr "استدعاء"
 
 #. [editor_group]: id=water
-#: data/core/editor/terrain-groups.cfg:16
+#: data/core/editor/terrain-groups.cfg:17
 #, fuzzy
 msgid "water"
 msgstr "حفرة"
 
 #. [editor_group]: id=flat
-#: data/core/editor/terrain-groups.cfg:23
+#: data/core/editor/terrain-groups.cfg:24
 msgid "flat"
 msgstr ""
 
 #. [editor_group]: id=desert
-#: data/core/editor/terrain-groups.cfg:30
+#: data/core/editor/terrain-groups.cfg:31
 #, fuzzy
 msgid "desert"
 msgstr "صحراء"
 
 #. [editor_group]: id=embellishments
-#: data/core/editor/terrain-groups.cfg:37
+#: data/core/editor/terrain-groups.cfg:38
 msgid "embellishments"
 msgstr ""
 
 #. [editor_group]: id=forest
-#: data/core/editor/terrain-groups.cfg:44
+#: data/core/editor/terrain-groups.cfg:45
 #, fuzzy
 msgid "forest"
 msgstr "غابة"
 
+#. [editor_group]: id=fall
+#: data/core/editor/terrain-groups.cfg:52
+msgid "fall"
+msgstr ""
+
 #. [editor_group]: id=frozen
-#: data/core/editor/terrain-groups.cfg:51
+#: data/core/editor/terrain-groups.cfg:59
 msgid "frozen"
 msgstr ""
 
 #. [editor_group]: id=rough
-#: data/core/editor/terrain-groups.cfg:58
+#: data/core/editor/terrain-groups.cfg:66
 msgid "rough"
 msgstr ""
 
 #. [editor_group]: id=cave
-#: data/core/editor/terrain-groups.cfg:65
+#: data/core/editor/terrain-groups.cfg:73
 #, fuzzy
 msgid "cave"
 msgstr "كهف"
 
 #. [editor_group]: id=obstacle
-#: data/core/editor/terrain-groups.cfg:72
+#: data/core/editor/terrain-groups.cfg:80
 msgid "obstacle"
 msgstr ""
 
 #. [editor_group]: id=village
-#: data/core/editor/terrain-groups.cfg:79
+#: data/core/editor/terrain-groups.cfg:87
 #, fuzzy
 msgid "village"
 msgstr "قرية"
 
 #. [editor_group]: id=castle
-#: data/core/editor/terrain-groups.cfg:86
+#: data/core/editor/terrain-groups.cfg:94
 #, fuzzy
 msgid "castle"
 msgstr "قصر"
 
 #. [editor_group]: id=bridge
-#: data/core/editor/terrain-groups.cfg:93
+#: data/core/editor/terrain-groups.cfg:101
 #, fuzzy
 msgid "bridge"
 msgstr "جسر"
 
 #. [editor_group]: id=special
-#: data/core/editor/terrain-groups.cfg:100
+#: data/core/editor/terrain-groups.cfg:108
 msgid "special"
 msgstr ""
 
-#. [editor_tool_hint]: id=editor-tool-paint
 #. [editor_tool_hint]: id=editor-tool-fill
+#. [editor_tool_hint]: id=editor-tool-paint
 #. [menu]: id=draw_button_editor
 #. [menu]: id=flood_button_editor
 #: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
-#: data/themes/editor.cfg:181 data/themes/editor.cfg:194
+#: data/themes/editor.cfg:220 data/themes/editor.cfg:279
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
@@ -128,7 +138,7 @@ msgstr ""
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
-#: data/core/editor/tool-hints.cfg:19 data/themes/editor.cfg:216
+#: data/core/editor/tool-hints.cfg:19 data/themes/editor.cfg:291
 msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
@@ -136,7 +146,7 @@ msgstr ""
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #. [menu]: id=start_position_button_editor
-#: data/core/editor/tool-hints.cfg:25 data/themes/editor.cfg:205
+#: data/core/editor/tool-hints.cfg:25 data/themes/editor.cfg:243
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
 "scroll to the starting position, alt+number sets respective starting "
@@ -151,13 +161,13 @@ msgid ""
 msgstr ""
 
 #. [menu]: id=menu-editor-file
-#: data/themes/editor.cfg:122
+#: data/themes/editor.cfg:116
 #, fuzzy
 msgid "File"
 msgstr "الملف:"
 
 #. [menu]: id=menu-editor-edit
-#: data/themes/editor.cfg:133
+#: data/themes/editor.cfg:130
 msgid "Edit"
 msgstr ""
 
@@ -168,198 +178,175 @@ msgid "Map"
 msgstr "خريطة جديدة"
 
 #. [menu]: id=menu-editor-window
-#: data/themes/editor.cfg:153
+#: data/themes/editor.cfg:156
 #, fuzzy
 msgid "Window"
 msgstr "غلق النافدة"
 
+#. [menu]: id=menu-editor-side
+#: data/themes/editor.cfg:179
+#, fuzzy
+#| msgid "Next Side"
+msgid "Side"
+msgstr "الطرف التالي"
+
+#. [menu]: id=pipette_button_editor
+#: data/themes/editor.cfg:231
+msgid ""
+"Pipette Tool, Use left/right mouse button to select a terrain from the map. "
+"Not implemented yet."
+msgstr ""
+
+#. [menu]: id=item_button_editor
+#: data/themes/editor.cfg:255
+msgid ""
+"Item Placement Tool, Left mouse button sets a new item or moves it via drag "
+"and drop, right clears. Not implemented yet."
+msgstr ""
+
+#. [menu]: id=village_button_editor
+#: data/themes/editor.cfg:266
+msgid ""
+"Left mouse button sets the village ownership to the current side, right "
+"clears."
+msgstr ""
+
+#. [menu]: id=label_button_editor
+#: data/themes/editor.cfg:301
+msgid "Left mouse button sets or drags a label, right clears."
+msgstr ""
+
+#. [menu]: id=soundsource_button_editor
+#: data/themes/editor.cfg:311
+msgid ""
+"Left mouse button sets or drags a sound source, right clears. Not "
+"implemented yet."
+msgstr ""
+
+#. [menu]: id=unit_button_editor
+#: data/themes/editor.cfg:321
+msgid ""
+"Left mouse button sets a new unit or moves a unit via drag and drop, right "
+"clears."
+msgstr ""
+
+#. [menu]: id=flip_map_button_editor
+#: data/themes/editor.cfg:400
+msgid "Flip Map - Not implemented yet."
+msgstr ""
+
+#. [menu]: id=menu-editor-terrain
+#: data/themes/editor.cfg:437
+msgid "Group"
+msgstr ""
+
 #. [label]: id=villages-icon
-#: data/themes/editor.cfg:272
+#: data/themes/editor.cfg:460
 #, fuzzy
 msgid "villages"
 msgstr "القرى"
 
-#: src/editor/editor_controller.cpp:132
+#: src/editor/editor_controller.cpp:78
 msgid "Quit Editor"
 msgstr "مغادرة المحرّر"
 
-#: src/editor/editor_controller.cpp:286
+#: src/editor/editor_controller.cpp:164
 msgid "Fatal error"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:311 src/editor/editor_controller.cpp:1098
-#, fuzzy
-msgid "(New Map)"
-msgstr "إنشاء خريطة جديدة"
-
-#: src/editor/editor_controller.cpp:317
+#: src/editor/editor_controller.cpp:188
 msgid "Do you really want to quit?"
 msgstr "أتريد فعلاً المغادرة؟"
 
-#: src/editor/editor_controller.cpp:319
+#: src/editor/editor_controller.cpp:190
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr ""
 
-#: src/editor/editor_controller.cpp:321
+#: src/editor/editor_controller.cpp:192
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:326
+#: src/editor/editor_controller.cpp:195
 msgid "Quit"
 msgstr "مغادرة"
 
-#: src/editor/editor_controller.cpp:391
+#: src/editor/editor_controller.cpp:206
 msgid "No editor time-of-day found."
 msgstr ""
 
-#: src/editor/editor_controller.cpp:412
-msgid ""
-"Do you want to discard all changes you made to the map since the last save?"
-msgstr ""
-
-#: src/editor/editor_controller.cpp:412
-msgid "Unsaved Changes"
-msgstr ""
-
-#: src/editor/editor_controller.cpp:434
-msgid "Choose a Map to Open"
-msgstr ""
-
-#: src/editor/editor_controller.cpp:468
-#, fuzzy
-msgid "Save the Map As"
-msgstr "حفظ الخريطة"
-
-#: src/editor/editor_controller.cpp:471
-msgid "The file already exists. Do you want to overwrite it?"
-msgstr ""
-
-#: src/editor/editor_controller.cpp:488
-msgid "No random map generators found."
-msgstr ""
-
-#: src/editor/editor_controller.cpp:501 src/editor/editor_controller.cpp:505
-msgid "Map creation failed."
-msgstr "فشل إعداد الخرطة"
-
-#: src/editor/editor_controller.cpp:520
-msgid "Choose a Mask to Apply"
-msgstr ""
-
-#: src/editor/editor_controller.cpp:527
-msgid "Error loading mask"
-msgstr ""
-
-#: src/editor/editor_controller.cpp:542
-#, fuzzy
-msgid "Choose Target Map"
-msgstr "لاعب"
-
-#: src/editor/editor_controller.cpp:549 src/editor/editor_controller.cpp:739
-msgid "Error loading map"
-msgstr ""
-
-#: src/editor/editor_controller.cpp:653 src/editor/editor_controller.cpp:695
-#, fuzzy
-msgid "This map is already open."
-msgstr "هذا المفتاح مُستعمَلٌ"
-
-#: src/editor/editor_controller.cpp:674
-msgid "Map saved."
-msgstr ""
-
-#: src/editor/editor_controller.cpp:718
-msgid "Loaded embedded map data"
-msgstr ""
-
-#: src/editor/editor_controller.cpp:719 src/editor/editor_controller.cpp:733
-msgid "Map loaded from scenario"
-msgstr ""
-
-#: src/editor/editor_controller.cpp:729
-msgid ""
-"Loaded referenced map file:\n"
-"$new"
-msgstr ""
-
-#: src/editor/editor_controller.cpp:1128
+#: src/editor/editor_controller.cpp:570
 msgid "Undo"
 msgstr "تراجع"
 
-#: src/editor/editor_controller.cpp:1130
+#: src/editor/editor_controller.cpp:572
 msgid "Can’t Undo"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:1134
+#: src/editor/editor_controller.cpp:576
 msgid "Redo"
 msgstr "إعادة"
 
-#: src/editor/editor_controller.cpp:1136
+#: src/editor/editor_controller.cpp:578
 msgid "Can’t Redo"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:1141
-msgid "Auto-update Terrain Transitions: Yes"
-msgstr ""
-
-#: src/editor/editor_controller.cpp:1144
-msgid "Auto-update Terrain Transitions: Partial"
-msgstr ""
-
-#: src/editor/editor_controller.cpp:1148
-#, fuzzy
-msgid "Auto-update Terrain Transitions: No"
-msgstr "تجديد الإنتقال بين الخانات"
-
-#: src/editor/editor_map.cpp:150
+#: src/editor/map/editor_map.cpp:209
 #, fuzzy
 msgid "Player"
 msgstr "اللاعبون:"
 
-#: src/editor/editor_map.cpp:257
+#: src/editor/map/editor_map.cpp:316
 msgid "The size of the target map is different from the current map"
 msgstr ""
 
-#: src/editor/editor_palettes.cpp:503
-msgid "(non-core)"
-msgstr ""
-
-#: src/editor/editor_palettes.cpp:504
-msgid "Will not work in game without extra care."
-msgstr ""
-
-#: src/editor/editor_palettes.cpp:532
-msgid "FG: "
-msgstr ""
-
-#: src/editor/editor_palettes.cpp:533
-msgid "BG: "
-msgstr ""
-
-#: src/editor/map_context.cpp:71
+#: src/editor/map/map_context.cpp:74
 msgid "File not found"
 msgstr ""
 
-#: src/editor/map_context.cpp:85
+#: src/editor/map/map_context.cpp:80
+msgid "Empty file"
+msgstr ""
+
+#: src/editor/map/map_context.cpp:104
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
 
-#: src/editor/map_context.cpp:100
+#: src/editor/map/map_context.cpp:119
 msgid "Empty map file"
 msgstr ""
 
-#: src/editor/map_context.cpp:220
+#: src/editor/map/map_context.cpp:264
 msgid "Could not save into scenario"
 msgstr ""
 
-#: src/editor/map_context.cpp:227
+#: src/editor/map/map_context.cpp:272
 msgid "Could not save the map: $msg"
+msgstr ""
+
+#: src/editor/palette/editor_palettes.cpp:48
+msgid "(Unknown Group)"
+msgstr ""
+
+#: src/editor/palette/editor_palettes.cpp:305
+msgid "(non-core)"
+msgstr ""
+
+#: src/editor/palette/editor_palettes.cpp:306
+msgid "Will not work in game without extra care."
+msgstr ""
+
+#: src/editor/palette/terrain_palettes.cpp:55
+msgid "FG: "
+msgstr ""
+
+#: src/editor/palette/terrain_palettes.cpp:56
+msgid "BG: "
 msgstr ""
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:84
@@ -371,10 +358,33 @@ msgstr "اللاعبون:"
 msgid "Player $player_number"
 msgstr ""
 
-#: src/gui/dialogs/editor_settings.cpp:148
+#: src/gui/dialogs/editor_settings.cpp:166
 #, fuzzy
 msgid "Custom setting"
 msgstr "مخصص"
+
+#, fuzzy
+#~ msgid "(New Map)"
+#~ msgstr "إنشاء خريطة جديدة"
+
+#, fuzzy
+#~ msgid "Save the Map As"
+#~ msgstr "حفظ الخريطة"
+
+#~ msgid "Map creation failed."
+#~ msgstr "فشل إعداد الخرطة"
+
+#, fuzzy
+#~ msgid "Choose Target Map"
+#~ msgstr "لاعب"
+
+#, fuzzy
+#~ msgid "This map is already open."
+#~ msgstr "هذا المفتاح مُستعمَلٌ"
+
+#, fuzzy
+#~ msgid "Auto-update Terrain Transitions: No"
+#~ msgstr "تجديد الإنتقال بين الخانات"
 
 #, fuzzy
 #~ msgid "Choose player"
@@ -1028,9 +1038,6 @@ msgstr "مخصص"
 
 #~ msgid "Next Turn"
 #~ msgstr "الدور التالي"
-
-#~ msgid "Next Side"
-#~ msgstr "الطرف التالي"
 
 #~ msgid "Full map"
 #~ msgstr "خريطة كاملة"

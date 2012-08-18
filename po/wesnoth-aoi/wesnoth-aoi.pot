@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  wesnoth-aoi.cpp.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-01-22 15:00+0100\n"
+"POT-Creation-Date: 2012-08-18 09:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "#-#-#-#-#  wesnoth-aoi.wml.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-01-22 14:59+0100\n"
+"POT-Creation-Date: 2012-08-18 09:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -70,16 +70,16 @@ msgid "High Lord"
 msgstr ""
 
 #. [campaign]: id=An_Orcish_Incursion
-#: data/campaigns/An_Orcish_Incursion/_main.cfg:22
-msgid "(Novice level, 7 scenarios.)"
-msgstr ""
-
-#. [campaign]: id=An_Orcish_Incursion
-#: data/campaigns/An_Orcish_Incursion/_main.cfg:22
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:20
 msgid ""
 "Defend the forests of the elves against the first orcs to reach the Great "
 "Continent, learning valuable tactics as you do so.\n"
 "\n"
+msgstr ""
+
+#. [campaign]: id=An_Orcish_Incursion
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:22
+msgid "(Novice level, 7 scenarios.)"
 msgstr ""
 
 #. [about]
@@ -134,12 +134,12 @@ msgstr ""
 msgid "Urugha"
 msgstr ""
 
-#. [side]: type=Orcish Warlord, id=Gnargha
-#. [side]: type=Orcish Warrior, id=Urugha
-#. [side]: type=Orcish Sovereign, id=Rualsha
 #. [side]: type=Lich, id=Keremal
 #. [side]: type=Orcish Slayer, id=Gharlsa
+#. [side]: type=Orcish Sovereign, id=Rualsha
+#. [side]: type=Orcish Warlord, id=Gnargha
 #. [side]: type=Orcish Warlord, id=Krughnar
+#. [side]: type=Orcish Warrior, id=Urugha
 #: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:49
 #: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:44
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:45
@@ -192,7 +192,7 @@ msgid ""
 msgstr ""
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:99
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:98
 msgid ""
 "Hint:\n"
 "Elves can move quickly and safely among the trees. Pick off the enemy grunts "
@@ -366,7 +366,7 @@ msgid ""
 msgstr ""
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:90
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:89
 msgid ""
 "Hint:\n"
 "Assassins are hard to hit, and their poison is insidious. Stay close to the "
@@ -494,7 +494,7 @@ msgid ""
 msgstr ""
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:86
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:85
 msgid ""
 "Hint:\n"
 "There are no villages in this scenario — you must use healers instead. Use "
@@ -709,7 +709,7 @@ msgid ""
 msgstr ""
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:160
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:159
 msgid ""
 "Hint:\n"
 "Trolls are poor fighters when not on rugged terrain and fare even worse "
@@ -923,7 +923,7 @@ msgid "Wizards"
 msgstr ""
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:109
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:108
 msgid ""
 "Hint:\n"
 "Use Elven Scouts and Linaera’s power of teleportation to mount hit-and-run "
@@ -1109,7 +1109,7 @@ msgid "Keremal"
 msgstr ""
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:61
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:60
 msgid ""
 "Hint:\n"
 "Undead are resistant to physical attack. Use mages to attack the undead, and "
@@ -1166,7 +1166,7 @@ msgid "Rualsha"
 msgstr ""
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:114
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:113
 msgid ""
 "Hint:\n"
 "Your enemy is well-defended against attacks from the south. Use rangers to "
@@ -1179,7 +1179,7 @@ msgid "Defeat Rualsha"
 msgstr ""
 
 #. [message]: speaker=Lomarfel
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:222
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:223
 msgid ""
 "My lord! We have ridden hard for over a week to catch up with you! The "
 "Ka’lian has deliberated, and asks you to defeat Rualsha quickly before he "
@@ -1187,21 +1187,21 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Rualsha
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:226
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:227
 msgid ""
 "Puny elves! My full army will be here soon, and then we will crush you. You "
 "will beg for a quick death!"
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:236
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:237
 msgid ""
 "You may slay me, Erlornas, but my people live on. They will not forget! They "
 "will pursue you, and destroy you utterly... we will... we... arrgh..."
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:247
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:248
 msgid ""
 "But Rualsha overestimated the will of his troops. With their leader dead, "
 "they scattered, and fled from the elves back to their fastnesses in the far "
@@ -1209,18 +1209,18 @@ msgid ""
 msgstr ""
 
 #. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:259
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:260
 msgid "It grieves me to take life, even of a barbarian such as Rualsha."
 msgstr ""
 
 #. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:263
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:264
 msgid ""
 "If the orcs press us, we shall need to become more accustomed to fighting."
 msgstr ""
 
 #. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:267
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:268
 msgid ""
 "I fear it will be so. We have won a first victory here, but dark times come "
 "upon its heels."

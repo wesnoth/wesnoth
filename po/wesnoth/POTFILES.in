@@ -1,6 +1,10 @@
 src/about.cpp
 src/actions.cpp
+src/addon/client.cpp
+src/addon/info.cpp
 src/addon/manager.cpp
+src/addon/manager_ui.cpp
+src/addon/state.cpp
 src/addon/validation.cpp
 src/ai/actions.cpp
 src/ai/akihara/recruitment.cpp
@@ -68,7 +72,10 @@ src/controller_base.cpp
 src/cursor.cpp
 src/dialogs.cpp
 src/display.cpp
+src/editor/action/mouse/mouse_action_village.cpp
 src/editor/editor_preferences.cpp
+src/editor/map/context_manager.cpp
+src/editor/toolkit/editor_toolkit.cpp
 src/events.cpp
 src/filesystem.cpp
 src/floating_textbox.cpp
@@ -84,6 +91,7 @@ src/game_controller.cpp
 src/game_controller_new.cpp
 src/game.cpp
 src/game_display.cpp
+src/game_end_exceptions.cpp
 src/game_errors.cpp
 src/game_events.cpp
 src/game_instance.cpp
@@ -97,6 +105,7 @@ src/gui/dialogs/game_delete.cpp
 src/gui/dialogs/lobby/lobby_data.cpp
 src/gui/dialogs/lobby/lobby_info.cpp
 src/gui/dialogs/lobby_player_info.cpp
+src/gui/dialogs/mp_host_game_prompt.cpp
 src/halo.cpp
 src/hash.cpp
 src/intro.cpp
@@ -189,6 +198,8 @@ src/storyscreen/part.cpp
 src/storyscreen/render.cpp
 src/team.cpp
 src/terrain.cpp
+src/tests/create_images.cpp
+src/tests/floating_point_emulation.cpp
 src/tests/test_unit_map.cpp
 src/theme.cpp
 src/thread.cpp
@@ -207,6 +218,7 @@ src/tools/schema/sourceparser.cpp
 src/tools/schema/tag.cpp
 src/tools/validator/validator_tool.cpp
 src/tooltips.cpp
+src/tracer.cpp
 src/tstring.cpp
 src/unit_abilities.cpp
 src/unit_animation.cpp
@@ -222,9 +234,13 @@ src/variable.cpp
 src/variant.cpp
 src/version.cpp
 src/video.cpp
+src/wesmage/exit.cpp
+src/wesmage/filter.cpp
+src/wesmage/options.cpp
+src/wesmage/wesmage.cpp
 src/whiteboard/action.cpp
 src/whiteboard/attack.cpp
-src/whiteboard/highlight_visitor.cpp
+src/whiteboard/highlighter.cpp
 src/whiteboard/manager.cpp
 src/whiteboard/mapbuilder.cpp
 src/whiteboard/move.cpp
@@ -233,4 +249,3 @@ src/whiteboard/recruit.cpp
 src/whiteboard/side_actions.cpp
 src/whiteboard/suppose_dead.cpp
 src/whiteboard/utility.cpp
-src/whiteboard/validate_visitor.cpp

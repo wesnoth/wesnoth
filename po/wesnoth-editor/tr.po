@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-01-03 10:40+0100\n"
+"POT-Creation-Date: 2012-08-18 09:27+0200\n"
 "PO-Revision-Date: 2009-02-23 19:16+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -35,86 +35,98 @@ msgid "Radius 2 Hex"
 msgstr "Yarıçapı 2 Altıgen"
 
 #. [brush]
-#: data/core/editor/brushes.cfg:55
+#: data/core/editor/brushes.cfg:46
 msgid "Hex Line NW-SE"
 msgstr "KB-GD Altıgen Hattı"
 
+#. [brush]
+#: data/core/editor/brushes.cfg:62
+#, fuzzy
+#| msgid "Hex Line NW-SE"
+msgid "Hex Line SE-NW"
+msgstr "KB-GD Altıgen Hattı"
+
 #. [editor_group]: id=all
-#: data/core/editor/terrain-groups.cfg:10
+#: data/core/editor/terrain-groups.cfg:11
 msgid "all"
 msgstr "tümü"
 
 #. [editor_group]: id=water
-#: data/core/editor/terrain-groups.cfg:16
+#: data/core/editor/terrain-groups.cfg:17
 msgid "water"
 msgstr "sulak"
 
 #. [editor_group]: id=flat
-#: data/core/editor/terrain-groups.cfg:23
+#: data/core/editor/terrain-groups.cfg:24
 msgid "flat"
 msgstr "düzlük"
 
 #. [editor_group]: id=desert
-#: data/core/editor/terrain-groups.cfg:30
+#: data/core/editor/terrain-groups.cfg:31
 msgid "desert"
 msgstr "çöl"
 
 #. [editor_group]: id=embellishments
-#: data/core/editor/terrain-groups.cfg:37
+#: data/core/editor/terrain-groups.cfg:38
 msgid "embellishments"
 msgstr ""
 
 #. [editor_group]: id=forest
-#: data/core/editor/terrain-groups.cfg:44
+#: data/core/editor/terrain-groups.cfg:45
 msgid "forest"
 msgstr "orman"
 
+#. [editor_group]: id=fall
+#: data/core/editor/terrain-groups.cfg:52
+msgid "fall"
+msgstr ""
+
 #. [editor_group]: id=frozen
-#: data/core/editor/terrain-groups.cfg:51
+#: data/core/editor/terrain-groups.cfg:59
 msgid "frozen"
 msgstr "donuk"
 
 #. [editor_group]: id=rough
-#: data/core/editor/terrain-groups.cfg:58
+#: data/core/editor/terrain-groups.cfg:66
 msgid "rough"
 msgstr "engebeli"
 
 #. [editor_group]: id=cave
-#: data/core/editor/terrain-groups.cfg:65
+#: data/core/editor/terrain-groups.cfg:73
 msgid "cave"
 msgstr "mağara"
 
 #. [editor_group]: id=obstacle
-#: data/core/editor/terrain-groups.cfg:72
+#: data/core/editor/terrain-groups.cfg:80
 msgid "obstacle"
 msgstr ""
 
 #. [editor_group]: id=village
-#: data/core/editor/terrain-groups.cfg:79
+#: data/core/editor/terrain-groups.cfg:87
 msgid "village"
 msgstr "köy"
 
 #. [editor_group]: id=castle
-#: data/core/editor/terrain-groups.cfg:86
+#: data/core/editor/terrain-groups.cfg:94
 msgid "castle"
 msgstr "kale"
 
 #. [editor_group]: id=bridge
-#: data/core/editor/terrain-groups.cfg:93
+#: data/core/editor/terrain-groups.cfg:101
 msgid "bridge"
 msgstr ""
 
 #. [editor_group]: id=special
-#: data/core/editor/terrain-groups.cfg:100
+#: data/core/editor/terrain-groups.cfg:108
 msgid "special"
 msgstr "özel"
 
-#. [editor_tool_hint]: id=editor-tool-paint
 #. [editor_tool_hint]: id=editor-tool-fill
+#. [editor_tool_hint]: id=editor-tool-paint
 #. [menu]: id=draw_button_editor
 #. [menu]: id=flood_button_editor
 #: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
-#: data/themes/editor.cfg:181 data/themes/editor.cfg:194
+#: data/themes/editor.cfg:220 data/themes/editor.cfg:279
 #, fuzzy
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
@@ -126,7 +138,7 @@ msgstr ""
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
-#: data/core/editor/tool-hints.cfg:19 data/themes/editor.cfg:216
+#: data/core/editor/tool-hints.cfg:19 data/themes/editor.cfg:291
 msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
@@ -136,7 +148,7 @@ msgstr ""
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #. [menu]: id=start_position_button_editor
-#: data/core/editor/tool-hints.cfg:25 data/themes/editor.cfg:205
+#: data/core/editor/tool-hints.cfg:25 data/themes/editor.cfg:243
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
 "scroll to the starting position, alt+number sets respective starting "
@@ -157,12 +169,12 @@ msgstr ""
 "yansılamak gibi) için düzenleme menüsünü kullanın."
 
 #. [menu]: id=menu-editor-file
-#: data/themes/editor.cfg:122
+#: data/themes/editor.cfg:116
 msgid "File"
 msgstr "Dosya"
 
 #. [menu]: id=menu-editor-edit
-#: data/themes/editor.cfg:133
+#: data/themes/editor.cfg:130
 msgid "Edit"
 msgstr "Düzenle"
 
@@ -172,32 +184,85 @@ msgid "Map"
 msgstr "Harita"
 
 #. [menu]: id=menu-editor-window
-#: data/themes/editor.cfg:153
+#: data/themes/editor.cfg:156
 msgid "Window"
 msgstr "Pencere"
 
+#. [menu]: id=menu-editor-side
+#: data/themes/editor.cfg:179
+msgid "Side"
+msgstr ""
+
+#. [menu]: id=pipette_button_editor
+#: data/themes/editor.cfg:231
+msgid ""
+"Pipette Tool, Use left/right mouse button to select a terrain from the map. "
+"Not implemented yet."
+msgstr ""
+
+#. [menu]: id=item_button_editor
+#: data/themes/editor.cfg:255
+msgid ""
+"Item Placement Tool, Left mouse button sets a new item or moves it via drag "
+"and drop, right clears. Not implemented yet."
+msgstr ""
+
+#. [menu]: id=village_button_editor
+#: data/themes/editor.cfg:266
+msgid ""
+"Left mouse button sets the village ownership to the current side, right "
+"clears."
+msgstr ""
+
+#. [menu]: id=label_button_editor
+#: data/themes/editor.cfg:301
+msgid "Left mouse button sets or drags a label, right clears."
+msgstr ""
+
+#. [menu]: id=soundsource_button_editor
+#: data/themes/editor.cfg:311
+msgid ""
+"Left mouse button sets or drags a sound source, right clears. Not "
+"implemented yet."
+msgstr ""
+
+#. [menu]: id=unit_button_editor
+#: data/themes/editor.cfg:321
+msgid ""
+"Left mouse button sets a new unit or moves a unit via drag and drop, right "
+"clears."
+msgstr ""
+
+#. [menu]: id=flip_map_button_editor
+#: data/themes/editor.cfg:400
+#, fuzzy
+#| msgid "Action not implemented"
+msgid "Flip Map - Not implemented yet."
+msgstr "Eylem gerçeklenmedi"
+
+#. [menu]: id=menu-editor-terrain
+#: data/themes/editor.cfg:437
+msgid "Group"
+msgstr ""
+
 #. [label]: id=villages-icon
-#: data/themes/editor.cfg:272
+#: data/themes/editor.cfg:460
 msgid "villages"
 msgstr "köyler"
 
-#: src/editor/editor_controller.cpp:132
+#: src/editor/editor_controller.cpp:78
 msgid "Quit Editor"
 msgstr "Düzenleyiciden çıkılsın mı?"
 
-#: src/editor/editor_controller.cpp:286
+#: src/editor/editor_controller.cpp:164
 msgid "Fatal error"
 msgstr "Ölümcül hata"
 
-#: src/editor/editor_controller.cpp:311 src/editor/editor_controller.cpp:1098
-msgid "(New Map)"
-msgstr "(Yeni Harita)"
-
-#: src/editor/editor_controller.cpp:317
+#: src/editor/editor_controller.cpp:188
 msgid "Do you really want to quit?"
 msgstr "Gerçekten çıkmak istiyor musunuz?"
 
-#: src/editor/editor_controller.cpp:319
+#: src/editor/editor_controller.cpp:190
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
@@ -205,7 +270,7 @@ msgstr ""
 "Gerçekten çıkmak mı istiyorsunuz? Son kayıttan beri yaptığınız "
 "değişiklikleri kaybedeceksiniz."
 
-#: src/editor/editor_controller.cpp:321
+#: src/editor/editor_controller.cpp:192
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -213,158 +278,86 @@ msgstr ""
 "Gerçekten çıkmak mı istiyorsunuz? Son kayıttan beri yaptığınız tüm "
 "değişiklikleri kaybedeceksiniz. Değiştirdiğiniz haritalar:"
 
-#: src/editor/editor_controller.cpp:326
+#: src/editor/editor_controller.cpp:195
 msgid "Quit"
 msgstr "Çık"
 
-#: src/editor/editor_controller.cpp:391
+#: src/editor/editor_controller.cpp:206
 msgid "No editor time-of-day found."
 msgstr "Bir vakit düzenleyici yok."
 
-#: src/editor/editor_controller.cpp:412
-msgid ""
-"Do you want to discard all changes you made to the map since the last save?"
-msgstr ""
-"Son kayıttan beri haritada yaptığınız değişiklikleri iptal etmek mi "
-"istiyorsunuz?"
-
-#: src/editor/editor_controller.cpp:412
-msgid "Unsaved Changes"
-msgstr "Kaydedilmemiş Değişiklikler"
-
-#: src/editor/editor_controller.cpp:434
-msgid "Choose a Map to Open"
-msgstr "Açmak için Harita Seç"
-
-#: src/editor/editor_controller.cpp:468
-msgid "Save the Map As"
-msgstr "Haritayı Farklı Kaydet"
-
-#: src/editor/editor_controller.cpp:471
-msgid "The file already exists. Do you want to overwrite it?"
-msgstr "Bu isimde bir dosya zaten var. Üzerine yazmak ister misiniz?"
-
-#: src/editor/editor_controller.cpp:488
-msgid "No random map generators found."
-msgstr "Bir rasgele harita üreteci yok."
-
-#: src/editor/editor_controller.cpp:501 src/editor/editor_controller.cpp:505
-msgid "Map creation failed."
-msgstr "Harita oluşturulamadı."
-
-#: src/editor/editor_controller.cpp:520
-msgid "Choose a Mask to Apply"
-msgstr "Uygulanacak örüntüyü seçiniz"
-
-#: src/editor/editor_controller.cpp:527
-msgid "Error loading mask"
-msgstr "Örüntü yüklenirken hata"
-
-#: src/editor/editor_controller.cpp:542
-msgid "Choose Target Map"
-msgstr "Hedef haritayı seçiniz"
-
-#: src/editor/editor_controller.cpp:549 src/editor/editor_controller.cpp:739
-msgid "Error loading map"
-msgstr "Harita yüklenirken hata"
-
-#: src/editor/editor_controller.cpp:653 src/editor/editor_controller.cpp:695
-msgid "This map is already open."
-msgstr "Bu harita zaten açık."
-
-#: src/editor/editor_controller.cpp:674
-msgid "Map saved."
-msgstr "Harita kaydedildi."
-
-#: src/editor/editor_controller.cpp:718
-msgid "Loaded embedded map data"
-msgstr ""
-
-#: src/editor/editor_controller.cpp:719 src/editor/editor_controller.cpp:733
-msgid "Map loaded from scenario"
-msgstr ""
-
-#: src/editor/editor_controller.cpp:729
-msgid ""
-"Loaded referenced map file:\n"
-"$new"
-msgstr ""
-
-#: src/editor/editor_controller.cpp:1128
+#: src/editor/editor_controller.cpp:570
 msgid "Undo"
 msgstr "Geri al"
 
-#: src/editor/editor_controller.cpp:1130
+#: src/editor/editor_controller.cpp:572
 msgid "Can’t Undo"
 msgstr "Geri Alınamaz"
 
-#: src/editor/editor_controller.cpp:1134
+#: src/editor/editor_controller.cpp:576
 msgid "Redo"
 msgstr "Tekrar yap"
 
-#: src/editor/editor_controller.cpp:1136
+#: src/editor/editor_controller.cpp:578
 msgid "Can’t Redo"
 msgstr "Tekrarlanamaz"
 
-#: src/editor/editor_controller.cpp:1141
-msgid "Auto-update Terrain Transitions: Yes"
-msgstr ""
-
-#: src/editor/editor_controller.cpp:1144
-msgid "Auto-update Terrain Transitions: Partial"
-msgstr ""
-
-#: src/editor/editor_controller.cpp:1148
-msgid "Auto-update Terrain Transitions: No"
-msgstr ""
-
-#: src/editor/editor_map.cpp:150
+#: src/editor/map/editor_map.cpp:209
 msgid "Player"
 msgstr "Oyuncu"
 
-#: src/editor/editor_map.cpp:257
+#: src/editor/map/editor_map.cpp:316
 msgid "The size of the target map is different from the current map"
 msgstr "Hedef harita bundan farklı boyutlarda"
 
-#: src/editor/editor_palettes.cpp:503
-msgid "(non-core)"
-msgstr ""
-
-#: src/editor/editor_palettes.cpp:504
-msgid "Will not work in game without extra care."
-msgstr ""
-
-#: src/editor/editor_palettes.cpp:532
-msgid "FG: "
-msgstr ""
-
-#: src/editor/editor_palettes.cpp:533
-msgid "BG: "
-msgstr ""
-
-#: src/editor/map_context.cpp:71
+#: src/editor/map/map_context.cpp:74
 msgid "File not found"
 msgstr ""
 
-#: src/editor/map_context.cpp:85
+#: src/editor/map/map_context.cpp:80
+#, fuzzy
+msgid "Empty file"
+msgstr "Harita dosyası ya boş ya da yok."
+
+#: src/editor/map/map_context.cpp:104
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
 
-#: src/editor/map_context.cpp:100
+#: src/editor/map/map_context.cpp:119
 #, fuzzy
 msgid "Empty map file"
 msgstr "Harita dosyası ya boş ya da yok."
 
-#: src/editor/map_context.cpp:220
+#: src/editor/map/map_context.cpp:264
 #, fuzzy
 msgid "Could not save into scenario"
 msgstr "Harita kaydedilemedi: $msg"
 
-#: src/editor/map_context.cpp:227
+#: src/editor/map/map_context.cpp:272
 msgid "Could not save the map: $msg"
 msgstr "Harita kaydedilemedi: $msg"
+
+#: src/editor/palette/editor_palettes.cpp:48
+msgid "(Unknown Group)"
+msgstr ""
+
+#: src/editor/palette/editor_palettes.cpp:305
+msgid "(non-core)"
+msgstr ""
+
+#: src/editor/palette/editor_palettes.cpp:306
+msgid "Will not work in game without extra care."
+msgstr ""
+
+#: src/editor/palette/terrain_palettes.cpp:55
+msgid "FG: "
+msgstr ""
+
+#: src/editor/palette/terrain_palettes.cpp:56
+msgid "BG: "
+msgstr ""
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:84
 #, fuzzy
@@ -376,9 +369,55 @@ msgstr "Hiçbiri"
 msgid "Player $player_number"
 msgstr ""
 
-#: src/gui/dialogs/editor_settings.cpp:148
+#: src/gui/dialogs/editor_settings.cpp:166
 msgid "Custom setting"
 msgstr "Özel Ayarlar"
+
+#~ msgid "(New Map)"
+#~ msgstr "(Yeni Harita)"
+
+#~ msgid ""
+#~ "Do you want to discard all changes you made to the map since the last "
+#~ "save?"
+#~ msgstr ""
+#~ "Son kayıttan beri haritada yaptığınız değişiklikleri iptal etmek mi "
+#~ "istiyorsunuz?"
+
+#~ msgid "Unsaved Changes"
+#~ msgstr "Kaydedilmemiş Değişiklikler"
+
+#~ msgid "Choose a Map to Open"
+#~ msgstr "Açmak için Harita Seç"
+
+#~ msgid "Save the Map As"
+#~ msgstr "Haritayı Farklı Kaydet"
+
+#~ msgid "The file already exists. Do you want to overwrite it?"
+#~ msgstr "Bu isimde bir dosya zaten var. Üzerine yazmak ister misiniz?"
+
+#~ msgid "No random map generators found."
+#~ msgstr "Bir rasgele harita üreteci yok."
+
+#~ msgid "Map creation failed."
+#~ msgstr "Harita oluşturulamadı."
+
+#~ msgid "Choose a Mask to Apply"
+#~ msgstr "Uygulanacak örüntüyü seçiniz"
+
+#~ msgid "Error loading mask"
+#~ msgstr "Örüntü yüklenirken hata"
+
+#~ msgid "Choose Target Map"
+#~ msgstr "Hedef haritayı seçiniz"
+
+#~ msgid "Error loading map"
+#~ msgstr "Harita yüklenirken hata"
+
+#~ msgid "This map is already open."
+#~ msgstr "Bu harita zaten açık."
+
+#~ msgid "Map saved."
+#~ msgstr "Harita kaydedildi."
 
 #~ msgid "Choose player"
 #~ msgstr "Oyuncu seçiniz"
@@ -402,9 +441,6 @@ msgstr "Özel Ayarlar"
 
 #~ msgid "Error creating action object"
 #~ msgstr "Eylem nesnesi oluşturulurken hata"
-
-#~ msgid "Action not implemented"
-#~ msgstr "Eylem gerçeklenmedi"
 
 #~ msgid "Error"
 #~ msgstr "Hata"

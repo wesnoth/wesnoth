@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-01-22 15:00+0100\n"
+"POT-Creation-Date: 2012-08-18 09:27+0200\n"
 "PO-Revision-Date: 2009-10-09 19:50-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -32,40 +32,43 @@ msgid "Random"
 msgstr "𐑮𐑨𐑯𐑛𐑩𐑥"
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
-#: data/multiplayer/eras.cfg:126
+#: data/multiplayer/eras.cfg:116
+msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
+msgstr ""
+
+#. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
+#: data/multiplayer/eras.cfg:132
 msgid ""
 "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
 "score = %d  Gold = %d"
 msgstr ""
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
-#: data/multiplayer/eras.cfg:126
+#: data/multiplayer/eras.cfg:132
 msgid "Grand total: <b>%d</b>"
 msgstr ""
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
-#: data/multiplayer/eras.cfg:136
+#: data/multiplayer/eras.cfg:142
 msgid "<span foreground='%s'>Side %d</span> has the advantage."
 msgstr ""
 
 #. [era]: id=era_default
-#: data/multiplayer/eras.cfg:160
+#: data/multiplayer/eras.cfg:166
 msgid "Default"
 msgstr "𐑛𐑰𐑓𐑷𐑤𐑑"
 
 #. [era]: id=era_heroes
-#: data/multiplayer/eras.cfg:180
+#: data/multiplayer/eras.cfg:186
 msgid "Age of Heroes"
 msgstr "𐑱𐑡 𐑝 𐑣𐑽𐑴𐑟"
 
-#. [multiplayer_side]: id=Drakes, type=Drake Flare
 #. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
 #: data/multiplayer/factions/drakes-default.cfg:4
 msgid "Drakes"
 msgstr "𐑛𐑮𐑱𐑒𐑕"
 
-#. [multiplayer_side]: id=Knalgan Alliance, type=Dwarvish Steelclad
 #. [multiplayer_side]: id=Knalgan Alliance, type=random
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
 #: data/multiplayer/factions/knalgans-default.cfg:4
@@ -73,7 +76,6 @@ msgstr "𐑛𐑮𐑱𐑒𐑕"
 msgid "Knalgan Alliance"
 msgstr "Knalgan 𐑩𐑤𐑲𐑩𐑯𐑕"
 
-#. [multiplayer_side]: id=Loyalists, type=Lieutenant
 #. [multiplayer_side]: id=Loyalists, type=random
 #: data/multiplayer/factions/loyalists-aoh.cfg:4
 #: data/multiplayer/factions/loyalists-default.cfg:4
@@ -81,20 +83,17 @@ msgid "Loyalists"
 msgstr "𐑤𐑶𐑩𐑤𐑦𐑕𐑑𐑕"
 
 #. [multiplayer_side]: id=Northerners, type=random
-#. [multiplayer_side]: id=Northerners, type=Orcish Warrior
 #: data/multiplayer/factions/northerners-aoh.cfg:4
 #: data/multiplayer/factions/northerners-default.cfg:4
 msgid "Northerners"
 msgstr "𐑯𐑹𐑞𐑻𐑯𐑻𐑟"
 
 #. [multiplayer_side]: id=Rebels, type=random
-#. [multiplayer_side]: id=Rebels, type=Elvish Captain
 #: data/multiplayer/factions/rebels-aoh.cfg:4
 #: data/multiplayer/factions/rebels-default.cfg:4
 msgid "Rebels"
 msgstr "𐑮𐑩𐑚𐑧𐑤𐑟"
 
-#. [multiplayer_side]: id=Undead, type=Dark Sorcerer
 #. [multiplayer_side]: id=Undead, type=random
 #: data/multiplayer/factions/undead-aoh.cfg:4
 #: data/multiplayer/factions/undead-default.cfg:4
@@ -190,7 +189,7 @@ msgid "Aethermaw — Created by Doc Paterson"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:302
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:292
 msgid ""
 "The Great Mage Sulla has transported your armies to this bizarre nexus, and "
 "demands that you amuse her by doing battle.\n"
@@ -244,8 +243,8 @@ msgstr ""
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:22
-#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:32
-#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:38
+#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:38
+#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:32
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:31
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:31
 #: data/multiplayer/scenarios/3p_Morituri.cfg:31
@@ -274,8 +273,8 @@ msgstr "𐑰𐑕𐑑"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:35
-#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:21
-#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:27
+#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:27
+#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:21
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:42
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:42
 #: data/multiplayer/scenarios/3p_Morituri.cfg:42
@@ -320,7 +319,7 @@ msgstr ""
 "𐑐𐑧𐑑𐑮𐑩𐑓𐑲𐑛 𐑓𐑹𐑥𐑟 𐑝 𐑣𐑦𐑟 𐑝𐑦𐑒𐑑𐑩𐑥𐑟 𐑮𐑦𐑥𐑱𐑯 𐑨𐑟 𐑥𐑭𐑯𐑘𐑩𐑥𐑩𐑯𐑑𐑕 𐑑 𐑣𐑦𐑟 𐑕𐑨𐑝𐑦𐑡 𐑐𐑬𐑼."
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:101
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:82
 #, fuzzy
 msgid ""
 "The winds of the dark sky blew so cold,\n"
@@ -460,7 +459,7 @@ msgstr ""
 "𐑪𐑯 𐑣𐑦𐑟 𐑡𐑻𐑯𐑰..."
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:129
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:122
 #, fuzzy
 msgid ""
 "Slim of Stature, dexterous Hands\n"
@@ -487,7 +486,7 @@ msgid "Blum Duk"
 msgstr "𐑚𐑤𐑵𐑥 𐑛𐑩𐑒"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:138
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:135
 #, fuzzy
 msgid ""
 "Blum Duk was renowned among his goblin clan for having tamed one of the Dire "
@@ -546,7 +545,7 @@ msgstr ""
 "𐑣𐑳𐑯𐑑....."
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:152
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:151
 msgid ""
 "He had lived there for ages upon ages, in the depths of the water, preying "
 "upon the various fish and frogs and merfolk that entered his domain. It was "
@@ -564,21 +563,21 @@ msgstr ""
 "(𐑦𐑯𐑕𐑒𐑮𐑲𐑚𐑛 𐑚𐑲 𐑑𐑘𐑫𐑮𐑦𐑯)"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:160
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:159
 msgid ""
 "It would seem that no one knows the tale of this brave spider.\n"
 "(inscribed by WinnerA)"
 msgstr ""
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:168
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:167
 msgid ""
 "The tale of this unlucky highwayman is yet to be told.\n"
 "(inscribed by WinnerB)"
 msgstr ""
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:176
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:175
 #, fuzzy
 msgid ""
 "A brave hero of Wesnoth’s Golden Age, this great rider and commander of men "
@@ -603,7 +602,7 @@ msgid "Bramwythl"
 msgstr "Bramwythl"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:185
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:182
 #, fuzzy
 msgid ""
 "Bramwythl the Wose was always considered a slow, taciturn fellow, even by "
@@ -658,7 +657,7 @@ msgid "Aethec Corryn"
 msgstr "Aethec Corryn"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:200
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:198
 #, fuzzy
 msgid ""
 "The last words spoken by Grand Marshal Aethec Corryn: “Talael Ryndoc! I am "
@@ -682,7 +681,7 @@ msgid "Rilhon"
 msgstr "Rilhon"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:207
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:206
 #, fuzzy
 msgid ""
 "This brave warrior, known as Rilhon among the Naga, heard tell of a fabulous "
@@ -708,7 +707,7 @@ msgstr ""
 "(𐑦𐑯𐑕𐑒𐑮𐑲𐑚𐑛 𐑚𐑲 𐑐𐑨𐑑𐑻𐑕𐑩𐑯)"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:228
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:214
 #, fuzzy
 msgid ""
 "Through waves and rocky channels\n"
@@ -765,7 +764,7 @@ msgid "2p — Dark Forecast (Survival)"
 msgstr "2p — 𐑛𐑸𐑒 𐑓𐑹𐑒𐑭𐑕𐑑 (𐑕𐑻𐑝𐑲𐑝𐑩𐑤)"
 
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:8
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:6
 #, fuzzy
 #| msgid ""
 #| "Dark Forecast is a survival scenario for solitaire or two-player team-"
@@ -883,7 +882,7 @@ msgid "Dark Forecast — a random survival scenario"
 msgstr "𐑛𐑸𐑒 𐑓𐑹𐑒𐑭𐑕𐑑 - 𐑩 𐑮𐑨𐑯𐑛𐑩𐑥 𐑕𐑻𐑝𐑲𐑝𐑩𐑤 𐑕𐑦𐑯𐑺𐑰𐑴"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1452
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1437
 #, fuzzy
 msgid ""
 "Your aim is to survive the spawning waves of units and defeat the final "
@@ -1206,7 +1205,7 @@ msgstr ""
 "𐑥𐑨𐑐."
 
 #. [effect]: type=arcane
-#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:82
+#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:76
 msgid "evil eye"
 msgstr ""
 
@@ -1426,19 +1425,19 @@ msgstr ""
 msgid "3p — Alirok Marsh"
 msgstr "3p — Alirok 𐑥𐑸𐑖"
 
-#. [multiplayer]: id=multiplayer_Blue_Water_Province
-#. [multiplayer]: id=multiplayer_Loris_River
-#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
-#. [multiplayer]: id=multiplayer_Clash
-#. [multiplayer]: id=multiplayer_4p_Hamlets
-#. [multiplayer]: id=multiplayer_8p_Morituri
-#. [multiplayer]: id=multiplayer_Alirok_Marsh
 #. [multiplayer]: id=multiplayer_3p_Morituri
-#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
+#. [multiplayer]: id=multiplayer_4p_Hamlets
 #. [multiplayer]: id=multiplayer_4p_Morituri
-#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
 #. [multiplayer]: id=multiplayer_4p_Underworld
 #. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
+#. [multiplayer]: id=multiplayer_8p_Morituri
+#. [multiplayer]: id=multiplayer_Alirok_Marsh
+#. [multiplayer]: id=multiplayer_Blue_Water_Province
+#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
+#. [multiplayer]: id=multiplayer_Clash
+#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
+#. [multiplayer]: id=multiplayer_Loris_River
+#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
@@ -1655,25 +1654,6 @@ msgstr "𐑕𐑬𐑔𐑰𐑕𐑑"
 msgid "teamname^Northwest"
 msgstr "𐑯𐑹𐑔𐑢𐑧𐑕𐑑"
 
-#. [multiplayer]: id=multiplayer_Lagoon
-#: data/multiplayer/scenarios/4p_Lagoon.cfg:5
-msgid "4p — Lagoon"
-msgstr "4p — 𐑤𐑩𐑜𐑵𐑯"
-
-#. [multiplayer]: id=multiplayer_Crusaders_Field
-#. [multiplayer]: id=multiplayer_The_Wilderlands
-#. [multiplayer]: id=multiplayer_Lagoon
-#: data/multiplayer/scenarios/4p_Lagoon.cfg:6
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:38
-#: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
-msgid " Recommended setting of 1 gold per village."
-msgstr "𐑮𐑧𐑒𐑩𐑥𐑧𐑯𐑛𐑩𐑛 𐑕𐑧𐑑𐑦𐑙 𐑝 1 𐑜𐑴𐑤𐑛 𐑐𐑻 𐑝𐑦𐑤𐑦𐑡."
-
-#. [multiplayer]: id=multiplayer_Lagoon
-#: data/multiplayer/scenarios/4p_Lagoon.cfg:6
-msgid "Four factions contend for dominance over this watery settlement."
-msgstr "𐑓𐑹 𐑓𐑨𐑒𐑖𐑩𐑯𐑟 𐑒𐑩𐑯𐑑𐑧𐑯𐑛 𐑓𐑹 𐑛𐑭𐑥𐑩𐑯𐑩𐑯𐑕 𐑴𐑝𐑼 𐑞𐑦𐑕 𐑢𐑷𐑑𐑼𐑦 𐑕𐑧𐑑𐑩𐑤𐑥𐑩𐑯𐑑."
-
 #. [multiplayer]: id=multiplayer_Loris_River
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:7
 msgid "4p — Loris River"
@@ -1812,6 +1792,13 @@ msgstr "𐑦𐑯 𐑞𐑦𐑕 𐑥𐑦𐑒𐑕𐑑 𐑤𐑨𐑯𐑛𐑕𐑒𐑨�
 msgid "5p — The Wilderlands"
 msgstr "5p — 𐑞 Wilderlands"
 
+#. [multiplayer]: id=multiplayer_Crusaders_Field
+#. [multiplayer]: id=multiplayer_The_Wilderlands
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:38
+#: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
+msgid " Recommended setting of 1 gold per village."
+msgstr "𐑮𐑧𐑒𐑩𐑥𐑧𐑯𐑛𐑩𐑛 𐑕𐑧𐑑𐑦𐑙 𐑝 1 𐑜𐑴𐑤𐑛 𐑐𐑻 𐑝𐑦𐑤𐑦𐑡."
+
 #. [multiplayer]: id=multiplayer_The_Wilderlands
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:38
 msgid ""
@@ -1863,75 +1850,75 @@ msgid "Attacker"
 msgstr "𐑩𐑑𐑨𐑒𐑻"
 
 #. [side]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:344
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:357
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:370
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:383
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:396
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:409
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:346
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:359
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:372
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:385
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:398
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:411
 msgid "Defender"
 msgstr "𐑛𐑦𐑓𐑧𐑯𐑛𐑼"
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:426
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:428
 #, fuzzy
 msgid "Survive all enemy attacks"
 msgstr "𐑕𐑻𐑝𐑲𐑝 𐑷𐑤 𐑧𐑯𐑩𐑥𐑦 𐑩𐑑𐑨𐑒𐑕."
 
 #. [objective]: condition=lose
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:432
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:434
 #, fuzzy
 msgid "Death of your team leaders"
 msgstr "𐑛𐑧𐑔 𐑝 𐑿𐑼 𐑑𐑰𐑥 𐑤𐑰𐑛𐑼𐑟."
 
 #. [note]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:437
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:439
 msgid "Hint: Learning the enemy spawn points and types helps a lot."
 msgstr "𐑣𐑦𐑯𐑑: 𐑤𐑻𐑯𐑦𐑙 𐑞 𐑧𐑯𐑩𐑥𐑦 𐑕𐑐𐑭𐑯𐑐𐑶𐑯𐑑𐑕 𐑯 𐑑𐑲𐑐𐑕 𐑣𐑧𐑤𐑐𐑕 𐑩𐑤𐑭𐑑."
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:443
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:445
 msgid "Turn 2: Loyalists"
 msgstr "𐑑𐑻𐑯 2: 𐑤𐑶𐑩𐑤𐑦𐑕𐑑𐑕"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:448
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:450
 #, fuzzy
 msgid "Turn 5: Knalgans"
 msgstr "𐑑𐑻𐑯 5: Knalgans"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:453
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:455
 msgid "Turn 8: Rebels"
 msgstr "𐑑𐑻𐑯 8: 𐑮𐑩𐑚𐑧𐑤𐑟"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:458
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:460
 msgid "Turn 11: Northerners"
 msgstr "𐑑𐑻𐑯 11: 𐑯𐑹𐑞𐑻𐑯𐑻𐑟"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:463
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:465
 msgid "Turn 14: Drakes"
 msgstr "𐑑𐑻𐑯 14: 𐑛𐑮𐑱𐑒𐑕"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:468
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:470
 msgid "Turn 17: Undead"
 msgstr "𐑑𐑻𐑯 17: 𐑳𐑯𐑛𐑧𐑛"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:473
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:475
 msgid "Tower of Doom"
 msgstr "𐑑𐑬𐑼 𐑝 𐑛𐑵𐑥"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:580
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:582
 msgid "Faery"
 msgstr "𐑓𐑺𐑮𐑰"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:581
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:583
 #, fuzzy
 msgid ""
 "Congratulations for surviving the map that so many people claim is "
@@ -1943,12 +1930,12 @@ msgstr ""
 "roze@roze.𐑥𐑲𐑯.𐑯𐑵. 𐑔𐑨𐑙𐑒 𐑿!"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:595
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:597
 msgid "Death"
 msgstr "𐑛𐑧𐑔"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:597
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:599
 #, fuzzy
 msgid ""
 "You have lost this game, but fear not. You can always try again. And again. "
@@ -2058,8 +2045,8 @@ msgstr ""
 "𐑝𐑻𐑕𐑩𐑟. 𐑕𐑬𐑔𐑢𐑧𐑕𐑑). 𐑞𐑺 𐑸 𐑝𐑧𐑮𐑦 𐑓𐑿 𐑝𐑦𐑤𐑦𐑡𐑦𐑟 𐑐𐑻 𐑐𐑤𐑱𐑻, 𐑕𐑴 3 𐑜𐑴𐑤𐑛 𐑐𐑻 𐑝𐑦𐑤𐑦𐑡𐑦𐑟 𐑦𐑟 "
 "𐑮𐑧𐑒𐑩𐑥𐑧𐑯𐑛𐑩𐑛."
 
-#. [scenario]: id=multiplayer_Random_Map
 #. [multiplayer]: id=multiplayer_Random_Map
+#. [scenario]: id=multiplayer_Random_Map
 #: data/multiplayer/scenarios/Random_Scenario.cfg:6
 #: data/multiplayer/scenarios/Random_Scenario.cfg:11
 msgid "Random map"
@@ -2074,8 +2061,8 @@ msgstr ""
 "𐑮𐑨𐑯𐑛𐑩𐑥𐑤𐑦 𐑡𐑧𐑯𐑼𐑱𐑑𐑩𐑛 𐑥𐑨𐑐. 𐑯𐑴𐑑: 𐑮𐑨𐑯𐑛𐑩𐑥 𐑥𐑨𐑐𐑕 𐑸 𐑪𐑓𐑩𐑯 𐑩𐑯𐑚𐑨𐑤𐑩𐑯𐑕𐑑, 𐑚𐑳𐑑 𐑦𐑓 𐑿 𐑣𐑨𐑝 𐑑𐑲𐑥, "
 "𐑿 𐑒𐑨𐑯 𐑮𐑰𐑡𐑧𐑯𐑻𐑱𐑑 𐑞𐑧𐑥 𐑳𐑯𐑑𐑦𐑤 𐑿 𐑜𐑧𐑑 𐑩 𐑜𐑫𐑛 𐑢𐑳𐑯."
 
-#. [scenario]: id=multiplayer_Random_Map_Desert
 #. [multiplayer]: id=multiplayer_Random_Map_Desert
+#. [scenario]: id=multiplayer_Random_Map_Desert
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:10
 msgid "Random map (Desert)"
@@ -2091,8 +2078,8 @@ msgstr ""
 "𐑩 𐑮𐑨𐑯𐑛𐑩𐑥 𐑥𐑨𐑐 𐑢𐑦𐑞 𐑕𐑭𐑯𐑛 𐑨𐑟 𐑞 𐑐𐑮𐑲𐑥𐑩𐑮𐑦 𐑑𐑻𐑱𐑯. 𐑯𐑴𐑑: 𐑮𐑨𐑯𐑛𐑩𐑥 𐑥𐑨𐑐𐑕 𐑸 𐑪𐑓𐑩𐑯 𐑩𐑯𐑚𐑨𐑤𐑩𐑯𐑕𐑑, "
 "𐑚𐑳𐑑 𐑦𐑓 𐑿 𐑣𐑨𐑝 𐑑𐑲𐑥, 𐑿 𐑒𐑨𐑯 𐑮𐑰𐑡𐑧𐑯𐑻𐑱𐑑 𐑞𐑧𐑥 𐑳𐑯𐑑𐑦𐑤 𐑿 𐑜𐑧𐑑 𐑩 𐑜𐑫𐑛 𐑢𐑳𐑯."
 
-#. [scenario]: id=multiplayer_Random_Map_Marsh
 #. [multiplayer]: id=multiplayer_Random_Map_Marsh
+#. [scenario]: id=multiplayer_Random_Map_Marsh
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:10
 msgid "Random map (Marsh)"
@@ -2108,8 +2095,8 @@ msgstr ""
 "𐑩 𐑮𐑨𐑯𐑛𐑩𐑥 𐑥𐑨𐑐 𐑢𐑦𐑞 𐑕𐑢𐑭𐑥𐑐 𐑨𐑟 𐑞 𐑐𐑮𐑲𐑥𐑩𐑮𐑦 𐑑𐑻𐑱𐑯. 𐑯𐑴𐑑: 𐑮𐑨𐑯𐑛𐑩𐑥 𐑥𐑨𐑐𐑕 𐑸 𐑪𐑓𐑩𐑯 𐑩𐑯𐑚𐑨𐑤𐑩𐑯𐑕𐑑, "
 "𐑚𐑳𐑑 𐑦𐑓 𐑿 𐑣𐑨𐑝 𐑑𐑲𐑥, 𐑿 𐑒𐑨𐑯 𐑮𐑰𐑡𐑧𐑯𐑻𐑱𐑑 𐑞𐑧𐑥 𐑳𐑯𐑑𐑦𐑤 𐑿 𐑜𐑧𐑑 𐑩 𐑜𐑫𐑛 𐑢𐑳𐑯."
 
-#. [scenario]: id=multiplayer_Random_Map_Winter
 #. [multiplayer]: id=multiplayer_Random_Map_Winter
+#. [scenario]: id=multiplayer_Random_Map_Winter
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:10
 msgid "Random map (Winter)"
@@ -2167,6 +2154,12 @@ msgid ""
 msgstr ""
 "𐑩 ·𐑢𐑧𐑕𐑯𐑷𐑔 𐑚𐑧𐑯𐑗𐑥𐑸𐑒, 𐑿𐑟 --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
+
+#~ msgid "4p — Lagoon"
+#~ msgstr "4p — 𐑤𐑩𐑜𐑵𐑯"
+
+#~ msgid "Four factions contend for dominance over this watery settlement."
+#~ msgstr "𐑓𐑹 𐑓𐑨𐑒𐑖𐑩𐑯𐑟 𐑒𐑩𐑯𐑑𐑧𐑯𐑛 𐑓𐑹 𐑛𐑭𐑥𐑩𐑯𐑩𐑯𐑕 𐑴𐑝𐑼 𐑞𐑦𐑕 𐑢𐑷𐑑𐑼𐑦 𐑕𐑧𐑑𐑩𐑤𐑥𐑩𐑯𐑑."
 
 #~ msgid "Single player mode — uses the reduced strength spawns."
 #~ msgstr "𐑕𐑦𐑙𐑜𐑩𐑤 𐑐𐑤𐑱𐑻 𐑥𐑴𐑛 - 𐑿𐑟𐑩𐑟 𐑞 𐑮𐑦𐑛𐑿𐑕𐑑 𐑕𐑑𐑮𐑧𐑙𐑔 𐑕𐑐𐑭𐑯𐑟."

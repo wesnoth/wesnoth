@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-editor_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-01-03 10:40+0100\n"
+"POT-Creation-Date: 2012-08-18 09:27+0200\n"
 "PO-Revision-Date: 2011-12-17 13:45+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
@@ -34,86 +34,98 @@ msgid "Radius 2 Hex"
 msgstr "2 mező sugarú terület"
 
 #. [brush]
-#: data/core/editor/brushes.cfg:55
+#: data/core/editor/brushes.cfg:46
 msgid "Hex Line NW-SE"
 msgstr "ÉNy-DK vonal"
 
+#. [brush]
+#: data/core/editor/brushes.cfg:62
+#, fuzzy
+#| msgid "Hex Line NW-SE"
+msgid "Hex Line SE-NW"
+msgstr "ÉNy-DK vonal"
+
 #. [editor_group]: id=all
-#: data/core/editor/terrain-groups.cfg:10
+#: data/core/editor/terrain-groups.cfg:11
 msgid "all"
 msgstr "mind"
 
 #. [editor_group]: id=water
-#: data/core/editor/terrain-groups.cfg:16
+#: data/core/editor/terrain-groups.cfg:17
 msgid "water"
 msgstr "víz"
 
 #. [editor_group]: id=flat
-#: data/core/editor/terrain-groups.cfg:23
+#: data/core/editor/terrain-groups.cfg:24
 msgid "flat"
 msgstr "síkság"
 
 #. [editor_group]: id=desert
-#: data/core/editor/terrain-groups.cfg:30
+#: data/core/editor/terrain-groups.cfg:31
 msgid "desert"
 msgstr "sivatag"
 
 #. [editor_group]: id=embellishments
-#: data/core/editor/terrain-groups.cfg:37
+#: data/core/editor/terrain-groups.cfg:38
 msgid "embellishments"
 msgstr "díszítések"
 
 #. [editor_group]: id=forest
-#: data/core/editor/terrain-groups.cfg:44
+#: data/core/editor/terrain-groups.cfg:45
 msgid "forest"
 msgstr "erdő"
 
+#. [editor_group]: id=fall
+#: data/core/editor/terrain-groups.cfg:52
+msgid "fall"
+msgstr ""
+
 #. [editor_group]: id=frozen
-#: data/core/editor/terrain-groups.cfg:51
+#: data/core/editor/terrain-groups.cfg:59
 msgid "frozen"
 msgstr "jégvidék"
 
 #. [editor_group]: id=rough
-#: data/core/editor/terrain-groups.cfg:58
+#: data/core/editor/terrain-groups.cfg:66
 msgid "rough"
 msgstr "rögös"
 
 #. [editor_group]: id=cave
-#: data/core/editor/terrain-groups.cfg:65
+#: data/core/editor/terrain-groups.cfg:73
 msgid "cave"
 msgstr "barlang"
 
 #. [editor_group]: id=obstacle
-#: data/core/editor/terrain-groups.cfg:72
+#: data/core/editor/terrain-groups.cfg:80
 msgid "obstacle"
 msgstr "akadály"
 
 #. [editor_group]: id=village
-#: data/core/editor/terrain-groups.cfg:79
+#: data/core/editor/terrain-groups.cfg:87
 msgid "village"
 msgstr "falu"
 
 #. [editor_group]: id=castle
-#: data/core/editor/terrain-groups.cfg:86
+#: data/core/editor/terrain-groups.cfg:94
 msgid "castle"
 msgstr "vár"
 
 #. [editor_group]: id=bridge
-#: data/core/editor/terrain-groups.cfg:93
+#: data/core/editor/terrain-groups.cfg:101
 msgid "bridge"
 msgstr "híd"
 
 #. [editor_group]: id=special
-#: data/core/editor/terrain-groups.cfg:100
+#: data/core/editor/terrain-groups.cfg:108
 msgid "special"
 msgstr "különleges"
 
-#. [editor_tool_hint]: id=editor-tool-paint
 #. [editor_tool_hint]: id=editor-tool-fill
+#. [editor_tool_hint]: id=editor-tool-paint
 #. [menu]: id=draw_button_editor
 #. [menu]: id=flood_button_editor
 #: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
-#: data/themes/editor.cfg:181 data/themes/editor.cfg:194
+#: data/themes/editor.cfg:220 data/themes/editor.cfg:279
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
@@ -124,7 +136,7 @@ msgstr ""
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
-#: data/core/editor/tool-hints.cfg:19 data/themes/editor.cfg:216
+#: data/core/editor/tool-hints.cfg:19 data/themes/editor.cfg:291
 msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
@@ -134,7 +146,7 @@ msgstr ""
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #. [menu]: id=start_position_button_editor
-#: data/core/editor/tool-hints.cfg:25 data/themes/editor.cfg:205
+#: data/core/editor/tool-hints.cfg:25 data/themes/editor.cfg:243
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
 "scroll to the starting position, alt+number sets respective starting "
@@ -155,12 +167,12 @@ msgstr ""
 "transzformációjához (forgatás, tükrözés)."
 
 #. [menu]: id=menu-editor-file
-#: data/themes/editor.cfg:122
+#: data/themes/editor.cfg:116
 msgid "File"
 msgstr "Fájl"
 
 #. [menu]: id=menu-editor-edit
-#: data/themes/editor.cfg:133
+#: data/themes/editor.cfg:130
 msgid "Edit"
 msgstr "Szerkesztés"
 
@@ -170,32 +182,83 @@ msgid "Map"
 msgstr "Pálya"
 
 #. [menu]: id=menu-editor-window
-#: data/themes/editor.cfg:153
+#: data/themes/editor.cfg:156
 msgid "Window"
 msgstr "Ablak"
 
+#. [menu]: id=menu-editor-side
+#: data/themes/editor.cfg:179
+msgid "Side"
+msgstr ""
+
+#. [menu]: id=pipette_button_editor
+#: data/themes/editor.cfg:231
+msgid ""
+"Pipette Tool, Use left/right mouse button to select a terrain from the map. "
+"Not implemented yet."
+msgstr ""
+
+#. [menu]: id=item_button_editor
+#: data/themes/editor.cfg:255
+msgid ""
+"Item Placement Tool, Left mouse button sets a new item or moves it via drag "
+"and drop, right clears. Not implemented yet."
+msgstr ""
+
+#. [menu]: id=village_button_editor
+#: data/themes/editor.cfg:266
+msgid ""
+"Left mouse button sets the village ownership to the current side, right "
+"clears."
+msgstr ""
+
+#. [menu]: id=label_button_editor
+#: data/themes/editor.cfg:301
+msgid "Left mouse button sets or drags a label, right clears."
+msgstr ""
+
+#. [menu]: id=soundsource_button_editor
+#: data/themes/editor.cfg:311
+msgid ""
+"Left mouse button sets or drags a sound source, right clears. Not "
+"implemented yet."
+msgstr ""
+
+#. [menu]: id=unit_button_editor
+#: data/themes/editor.cfg:321
+msgid ""
+"Left mouse button sets a new unit or moves a unit via drag and drop, right "
+"clears."
+msgstr ""
+
+#. [menu]: id=flip_map_button_editor
+#: data/themes/editor.cfg:400
+msgid "Flip Map - Not implemented yet."
+msgstr ""
+
+#. [menu]: id=menu-editor-terrain
+#: data/themes/editor.cfg:437
+msgid "Group"
+msgstr ""
+
 #. [label]: id=villages-icon
-#: data/themes/editor.cfg:272
+#: data/themes/editor.cfg:460
 msgid "villages"
 msgstr "falvak"
 
-#: src/editor/editor_controller.cpp:132
+#: src/editor/editor_controller.cpp:78
 msgid "Quit Editor"
 msgstr "Kilépés a szerkesztőből"
 
-#: src/editor/editor_controller.cpp:286
+#: src/editor/editor_controller.cpp:164
 msgid "Fatal error"
 msgstr "Végzetes hiba"
 
-#: src/editor/editor_controller.cpp:311 src/editor/editor_controller.cpp:1098
-msgid "(New Map)"
-msgstr "(Új pálya)"
-
-#: src/editor/editor_controller.cpp:317
+#: src/editor/editor_controller.cpp:188
 msgid "Do you really want to quit?"
 msgstr "Valóban ki akarsz lépni?"
 
-#: src/editor/editor_controller.cpp:319
+#: src/editor/editor_controller.cpp:190
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
@@ -203,7 +266,7 @@ msgstr ""
 "Valóban ki akarsz lépni? Az utolsó mentés utáni változtatások a térképen el "
 "fognak veszni."
 
-#: src/editor/editor_controller.cpp:321
+#: src/editor/editor_controller.cpp:192
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -211,160 +274,87 @@ msgstr ""
 "Valóban ki akarsz lépni? Az alábbi térképek lettek módosítva, és az utolsó "
 "mentés utáni összes változtatás el fog veszni:"
 
-#: src/editor/editor_controller.cpp:326
+#: src/editor/editor_controller.cpp:195
 msgid "Quit"
 msgstr "Kilépés"
 
-#: src/editor/editor_controller.cpp:391
+#: src/editor/editor_controller.cpp:206
 msgid "No editor time-of-day found."
 msgstr "Nem található a szerkesztői napszak."
 
-#: src/editor/editor_controller.cpp:412
-msgid ""
-"Do you want to discard all changes you made to the map since the last save?"
-msgstr ""
-"El akarod vetni az összes változtatást, amit a pálya utolsó mentése óta "
-"végeztél?"
-
-#: src/editor/editor_controller.cpp:412
-msgid "Unsaved Changes"
-msgstr "Mentetlen változtatások"
-
-#: src/editor/editor_controller.cpp:434
-msgid "Choose a Map to Open"
-msgstr "Válaszd ki a betöltendő pályát"
-
-#: src/editor/editor_controller.cpp:468
-msgid "Save the Map As"
-msgstr "Pálya mentése másként"
-
-#: src/editor/editor_controller.cpp:471
-msgid "The file already exists. Do you want to overwrite it?"
-msgstr "A fájl már létezik. Felül akarod írni?"
-
-#: src/editor/editor_controller.cpp:488
-msgid "No random map generators found."
-msgstr "Nem található véletlenszerű pályakészítő."
-
-#: src/editor/editor_controller.cpp:501 src/editor/editor_controller.cpp:505
-msgid "Map creation failed."
-msgstr "A pálya elkészítése meghiúsult."
-
-#: src/editor/editor_controller.cpp:520
-msgid "Choose a Mask to Apply"
-msgstr "Válassz ki egy alkalmazandó maszkot"
-
-#: src/editor/editor_controller.cpp:527
-msgid "Error loading mask"
-msgstr "Hiba a maszk betöltésekor"
-
-#: src/editor/editor_controller.cpp:542
-msgid "Choose Target Map"
-msgstr "Válaszd ki a célpályát"
-
-#: src/editor/editor_controller.cpp:549 src/editor/editor_controller.cpp:739
-msgid "Error loading map"
-msgstr "Hiba a pálya betöltése közben"
-
-#: src/editor/editor_controller.cpp:653 src/editor/editor_controller.cpp:695
-msgid "This map is already open."
-msgstr "A pálya már meg van nyitva."
-
-#: src/editor/editor_controller.cpp:674
-msgid "Map saved."
-msgstr "Pálya sikeresen elmentve."
-
-#: src/editor/editor_controller.cpp:718
-msgid "Loaded embedded map data"
-msgstr "A beágyazott térkép adatai betöltődtek"
-
-#: src/editor/editor_controller.cpp:719 src/editor/editor_controller.cpp:733
-msgid "Map loaded from scenario"
-msgstr "A küldetés térképe betöltődött"
-
-#: src/editor/editor_controller.cpp:729
-msgid ""
-"Loaded referenced map file:\n"
-"$new"
-msgstr ""
-"Az alábbi térképfájl betöltődött:\n"
-"$new"
-
-#: src/editor/editor_controller.cpp:1128
+#: src/editor/editor_controller.cpp:570
 msgid "Undo"
 msgstr "Visszavonás"
 
-#: src/editor/editor_controller.cpp:1130
+#: src/editor/editor_controller.cpp:572
 msgid "Can’t Undo"
 msgstr "Nem vonható vissza"
 
-#: src/editor/editor_controller.cpp:1134
+#: src/editor/editor_controller.cpp:576
 msgid "Redo"
 msgstr "Megismétlés"
 
-#: src/editor/editor_controller.cpp:1136
+#: src/editor/editor_controller.cpp:578
 msgid "Can’t Redo"
 msgstr "Nem ismételhető meg"
 
-#: src/editor/editor_controller.cpp:1141
-msgid "Auto-update Terrain Transitions: Yes"
-msgstr "Terepáttűnések automatikus frissítése: Igen"
-
-#: src/editor/editor_controller.cpp:1144
-msgid "Auto-update Terrain Transitions: Partial"
-msgstr "Terepáttűnések automatikus frissítése: Részleges"
-
-#: src/editor/editor_controller.cpp:1148
-msgid "Auto-update Terrain Transitions: No"
-msgstr "Terepáttűnések automatikus frissítése: Nem"
-
-#: src/editor/editor_map.cpp:150
+#: src/editor/map/editor_map.cpp:209
 msgid "Player"
 msgstr "Játékos"
 
-#: src/editor/editor_map.cpp:257
+#: src/editor/map/editor_map.cpp:316
 msgid "The size of the target map is different from the current map"
 msgstr "A célpálya mérete különbözik a jelenlegi pálya méretétől"
 
-#: src/editor/editor_palettes.cpp:503
-msgid "(non-core)"
-msgstr "(speciális terep)"
-
-#: src/editor/editor_palettes.cpp:504
-msgid "Will not work in game without extra care."
-msgstr ""
-"Külön odafigyelést igényel, ellenkező esetben nem fog működni a játékban"
-
-#: src/editor/editor_palettes.cpp:532
-msgid "FG: "
-msgstr "Előtér: "
-
-#: src/editor/editor_palettes.cpp:533
-msgid "BG: "
-msgstr "Háttér: "
-
-#: src/editor/map_context.cpp:71
+#: src/editor/map/map_context.cpp:74
 msgid "File not found"
 msgstr "A fájl nem található"
 
-#: src/editor/map_context.cpp:85
+#: src/editor/map/map_context.cpp:80
+#, fuzzy
+#| msgid "Empty map file"
+msgid "Empty file"
+msgstr "Üres térképfájl"
+
+#: src/editor/map/map_context.cpp:104
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
 "Ez a térkép egy pályának tűnik, de a map_data nem mutat egy létező fájlra sem"
 
-#: src/editor/map_context.cpp:100
+#: src/editor/map/map_context.cpp:119
 msgid "Empty map file"
 msgstr "Üres térképfájl"
 
-#: src/editor/map_context.cpp:220
+#: src/editor/map/map_context.cpp:264
 msgid "Could not save into scenario"
 msgstr "Nem sikerült a pályába menteni"
 
-#: src/editor/map_context.cpp:227
+#: src/editor/map/map_context.cpp:272
 msgid "Could not save the map: $msg"
 msgstr "A következő pályát nem lehet elmenteni: $msg"
+
+#: src/editor/palette/editor_palettes.cpp:48
+msgid "(Unknown Group)"
+msgstr ""
+
+#: src/editor/palette/editor_palettes.cpp:305
+msgid "(non-core)"
+msgstr "(speciális terep)"
+
+#: src/editor/palette/editor_palettes.cpp:306
+msgid "Will not work in game without extra care."
+msgstr ""
+"Külön odafigyelést igényel, ellenkező esetben nem fog működni a játékban"
+
+#: src/editor/palette/terrain_palettes.cpp:55
+msgid "FG: "
+msgstr "Előtér: "
+
+#: src/editor/palette/terrain_palettes.cpp:56
+msgid "BG: "
+msgstr "Háttér: "
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:84
 msgid "player^None"
@@ -374,6 +364,74 @@ msgstr "Senki"
 msgid "Player $player_number"
 msgstr "$player_number. játékos"
 
-#: src/gui/dialogs/editor_settings.cpp:148
+#: src/gui/dialogs/editor_settings.cpp:166
 msgid "Custom setting"
 msgstr "Egyedi beállítások"
+
+#~ msgid "(New Map)"
+#~ msgstr "(Új pálya)"
+
+#~ msgid ""
+#~ "Do you want to discard all changes you made to the map since the last "
+#~ "save?"
+#~ msgstr ""
+#~ "El akarod vetni az összes változtatást, amit a pálya utolsó mentése óta "
+#~ "végeztél?"
+
+#~ msgid "Unsaved Changes"
+#~ msgstr "Mentetlen változtatások"
+
+#~ msgid "Choose a Map to Open"
+#~ msgstr "Válaszd ki a betöltendő pályát"
+
+#~ msgid "Save the Map As"
+#~ msgstr "Pálya mentése másként"
+
+#~ msgid "The file already exists. Do you want to overwrite it?"
+#~ msgstr "A fájl már létezik. Felül akarod írni?"
+
+#~ msgid "No random map generators found."
+#~ msgstr "Nem található véletlenszerű pályakészítő."
+
+#~ msgid "Map creation failed."
+#~ msgstr "A pálya elkészítése meghiúsult."
+
+#~ msgid "Choose a Mask to Apply"
+#~ msgstr "Válassz ki egy alkalmazandó maszkot"
+
+#~ msgid "Error loading mask"
+#~ msgstr "Hiba a maszk betöltésekor"
+
+#~ msgid "Choose Target Map"
+#~ msgstr "Válaszd ki a célpályát"
+
+#~ msgid "Error loading map"
+#~ msgstr "Hiba a pálya betöltése közben"
+
+#~ msgid "This map is already open."
+#~ msgstr "A pálya már meg van nyitva."
+
+#~ msgid "Map saved."
+#~ msgstr "Pálya sikeresen elmentve."
+
+#~ msgid "Loaded embedded map data"
+#~ msgstr "A beágyazott térkép adatai betöltődtek"
+
+#~ msgid "Map loaded from scenario"
+#~ msgstr "A küldetés térképe betöltődött"
+
+#~ msgid ""
+#~ "Loaded referenced map file:\n"
+#~ "$new"
+#~ msgstr ""
+#~ "Az alábbi térképfájl betöltődött:\n"
+#~ "$new"
+
+#~ msgid "Auto-update Terrain Transitions: Yes"
+#~ msgstr "Terepáttűnések automatikus frissítése: Igen"
+
+#~ msgid "Auto-update Terrain Transitions: Partial"
+#~ msgstr "Terepáttűnések automatikus frissítése: Részleges"
+
+#~ msgid "Auto-update Terrain Transitions: No"
+#~ msgstr "Terepáttűnések automatikus frissítése: Nem"

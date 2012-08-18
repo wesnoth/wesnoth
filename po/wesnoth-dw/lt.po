@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-01-22 15:00+0100\n"
+"POT-Creation-Date: 2012-08-18 09:27+0200\n"
 "PO-Revision-Date: 2012-07-17 17:19+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: none\n"
@@ -67,12 +67,7 @@ msgid "Triton"
 msgstr "Tritonas"
 
 #. [campaign]: id=Dead_Water
-#: data/campaigns/Dead_Water/_main.cfg:22
-msgid "(Intermediate level, 10 scenarios.)"
-msgstr "(Vidutinis lygis, 10 scenarijų.)"
-
-#. [campaign]: id=Dead_Water
-#: data/campaigns/Dead_Water/_main.cfg:22
+#: data/campaigns/Dead_Water/_main.cfg:20
 msgid ""
 "You are Kai Krellis, son and heir of the last merman king but only a child. "
 "A necromancer is turning your subjects into undead slaves! Lead your people "
@@ -89,6 +84,11 @@ msgstr ""
 "išmonės ir drąsos, kad išgyventumėte. Bet pirmiausia turėsi įgauti savo "
 "žmonių pasitikėjimą!\n"
 "\n"
+
+#. [campaign]: id=Dead_Water
+#: data/campaigns/Dead_Water/_main.cfg:22
+msgid "(Intermediate level, 10 scenarios.)"
+msgstr "(Vidutinis lygis, 10 scenarijų.)"
 
 #. [about]
 #: data/campaigns/Dead_Water/_main.cfg:28
@@ -177,6 +177,14 @@ msgstr ""
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:83
 msgid "Undead Forces"
 msgstr "Nemirėlių pajėgos"
+
+#. [side]: type=Dark Sorcerer, id=Mal-Kevek
+#. [side]: type=Lich, id=Mal-Kevek
+#: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:89
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:122
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:134
+msgid "Mal-Kevek"
+msgstr "Mal-Kevekas"
 
 #. [objective]: condition=win
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:202
@@ -363,10 +371,10 @@ msgstr ""
 msgid "Defeat all enemy leaders"
 msgstr "Nugalėkite visus priešų vadus"
 
+#. [side]
+#. [side]: type=Death Knight, id=Dead Knight
 #. [side]: type=Lich, id=Mal-Kevek
 #. [side]: type=Necromancer, id=Mel Daveth
-#. [side]: type=Death Knight, id=Dead Knight
-#. [side]
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:117
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:141
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:160
@@ -376,12 +384,6 @@ msgstr "Nugalėkite visus priešų vadus"
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:200
 msgid "Mal-Ravanal’s Forces"
 msgstr "Mal-Ravanalo pajėgos"
-
-#. [side]: type=Lich, id=Mal-Kevek
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:122
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:134
-msgid "Mal-Kevek"
-msgstr "Mal-Kevekas"
 
 #. [side]: type=Necromancer, id=Mel Daveth
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:146
@@ -405,7 +407,7 @@ msgstr "Palik keletą jų ir man."
 
 #. [message]: speaker=Dead Knight
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:288
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:611
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:613
 msgid "Uhhh."
 msgstr "Och."
 
@@ -513,7 +515,7 @@ msgstr ""
 
 #. [message]: speaker=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:414
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:802
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:804
 msgid "This is impossible!"
 msgstr "To negali būti!"
 
@@ -598,9 +600,9 @@ msgstr "Na tai užmušk jį ir judam toliau."
 msgid "But look, it’s licking my hand."
 msgstr "Bet pažvelk, jis laižo man ranką."
 
+#. [message]: speaker=$unit.id
 #. [message]: speaker=Friendly Bat
 #. This should just be "translated" to whatever noise a bat makes in your language.
-#. [message]: speaker=$unit.id
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:583
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:609
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:723
@@ -807,7 +809,7 @@ msgstr "Trišakis yra 14-2, magiškas, šaudo <i>ugnimi</i>."
 
 #. [option]: speaker=$unit.id
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:301
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:923
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:925
 msgid "That sounds great! I’ll take it."
 msgstr "Skamba puikiai! Aš jį paimsiu."
 
@@ -1889,8 +1891,8 @@ msgstr ""
 "Čia tinkama vieta dideliam jų būriui, tad nesunku patikėti, kad greitai "
 "rasim jų ir daugiau."
 
-#. [unit]: type=Silver Mage, id=Caladon
 #. [side]: id=Caladon
+#. [unit]: type=Silver Mage, id=Caladon
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:489
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:152
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:154
@@ -2402,7 +2404,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Nebthun
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:532
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:534
 msgid ""
 "Kai Krellis! You live! We thought you and your people had all been killed "
 "when Jotha fell."
@@ -2411,7 +2413,7 @@ msgstr ""
 "kai krito Jota."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:536
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:538
 msgid ""
 "No, most of us escaped. I thought your settlements might be far enough away "
 "to escape harm, but you look as if you had seen battle."
@@ -2420,7 +2422,7 @@ msgstr ""
 "išvengtumėte žalos, bet atrodote kaip ragavę mūšio."
 
 #. [message]: speaker=Nebthun
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:540
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:542
 msgid ""
 "Indeed, though we have not been hard pressed. The creatures have been busy "
 "fouling the waters and making the bay more to their liking. We worry that "
@@ -2428,14 +2430,14 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:544
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:546
 msgid ""
 "We come prepared for battle, and have brought help. We will reclaim our home "
 "and make yours safe as well. Mal-Ravanal will pay this day."
 msgstr ""
 
 #. [message]: speaker=Nebthun
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:548
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:550
 msgid ""
 "Good. We will join you. You will be impressed with how quickly Tabomo here "
 "crushes skeletons. I think we should make the ruined castle on the mainland "
@@ -2444,87 +2446,87 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:585
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:587
 msgid "At dawn, the mermen got a good look at their opponents."
 msgstr "Auštant vandeniai gerai apžiūrėjo savo priešininkus."
 
 #. [message]: speaker=Tyegea
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:591
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:593
 msgid "This doesn’t look too bad."
 msgstr "Neatrodo per daug blogai."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:596
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:598
 msgid "Maybe not yet, but just wait."
 msgstr "Gal dar ir ne, bet luktelėk."
 
 #. [message]: speaker=Mel Daveth
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:601
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:603
 msgid ""
 "The mermen...they came back! Bring back the search parties! Call back the "
 "hordes!"
 msgstr ""
 
 #. [message]: speaker=Mal-Kevek
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:606
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:608
 msgid ""
 "Just make some more, you fool. There are plenty of corpses to go around."
 msgstr ""
 
 #. [message]: speaker=Tyegea
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:636
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:638
 msgid ""
 "I suppose this <i>does</i> look a little overwhelming. I may enjoy it "
 "though. It can be satisfying to rain holy fire down on misbehaving spirits."
 msgstr ""
 
 #. [message]: speaker=Gwabbo
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:641
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:643
 msgid "Absolutely! Bring ’em on!"
 msgstr ""
 
 #. [message]: speaker=Carallcyn
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:718
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:720
 msgid "We searched up the coast for miles, and here they are!"
 msgstr ""
 
 #. [message]: speaker=Tyegea
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:780
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:782
 msgid "I was wrong. You are no grandson of <i>mine</i>!"
 msgstr "Aš klydau. <i>Man</i> tu ne vaikaitis!"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:791
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:793
 msgid "I have failed my people."
 msgstr "Apvyliau savo tautą."
 
 #. [message]: speaker=Dead Knight
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:814
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:816
 msgid "Gruh!"
 msgstr "Grh!"
 
 #. [message]: speaker=Mel Daveth
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:826
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:828
 msgid "Save me Lord Rava...uhh!"
 msgstr ""
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:843
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:845
 msgid "We have retaken our home!"
 msgstr "Atsiėmėme savo namus!"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:854
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:856
 msgid "Cylanna! I will miss you."
 msgstr "Silana! Man tavęs trūks."
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:865
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:867
 msgid "Tyegëa! No!"
 msgstr "Tiegėja! Ne!"
 
 #. [message]: speaker=$unit.id
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:904
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:906
 msgid ""
 "This man was wearing a necklace with a pendant on it. I’m sure the shape "
 "means something."
@@ -2533,29 +2535,29 @@ msgstr ""
 "reiškia."
 
 #. [message]: speaker=Tyegea
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:911
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:913
 msgid ""
 "It does indeed. It is an ankh, and that pendant will strengthen your life "
 "force."
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:916
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:918
 msgid "The ankh necklace provides 70% resistance to <i>arcane</i> damage."
 msgstr ""
 
 #. [option]: speaker=$unit.id
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:932
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:934
 msgid "It doesn’t seem to have helped its previous owner. I don’t want it."
 msgstr "Nepanašu, kad ankstesniam šeimininkui padėjo. Man tokio nereikia."
 
 #. [option]: speaker=$unit.id
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:969
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:971
 msgid "I would like my life force protected."
 msgstr "Norėčiau, kad mano gyvastis būtų saugoma."
 
 #. [option]: speaker=$unit.id
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:978
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:980
 msgid "My life force feels fine as it is."
 msgstr "Aš gyvastim ir taip nesiskundžiu."
 
@@ -2599,8 +2601,8 @@ msgstr ""
 msgid ""
 "Cylanna never traveled far again, but stayed in Jotha as a respected elder. "
 "She remained a royal advisor, but her main work was healing the sick, and "
-"presiding at christenings and weddings. All this agreed with her disposition "
-"much better than battling undead."
+"presiding at naming ceremonies and weddings. All this agreed with her "
+"disposition much better than battling undead."
 msgstr ""
 
 #. [message]: speaker=narrator
@@ -2680,12 +2682,14 @@ msgid "tail"
 msgstr "uodega"
 
 #. [set_variable]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:197
+#: data/campaigns/Dead_Water/units/Brawler.cfg:198
+#: data/campaigns/Dead_Water/units/Brawler.cfg:278
 msgid "female^stunned"
 msgstr "pritrenkta"
 
 #. [set_variable]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:204
+#: data/campaigns/Dead_Water/units/Brawler.cfg:205
+#: data/campaigns/Dead_Water/units/Brawler.cfg:285
 msgid "stunned"
 msgstr "pritrenktas"
 

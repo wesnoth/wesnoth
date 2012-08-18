@@ -72,6 +72,7 @@ src/gui/auxiliary/window_builder/vertical_scrollbar.cpp
 src/gui/auxiliary/window_builder/viewport.cpp
 src/gui/dialogs/addon_connect.cpp
 src/gui/dialogs/addon/description.cpp
+src/gui/dialogs/addon/filter_options.cpp
 src/gui/dialogs/addon_list.cpp
 src/gui/dialogs/campaign_difficulty.cpp
 src/gui/dialogs/campaign_selection.cpp
@@ -80,6 +81,7 @@ src/gui/dialogs/data_manage.cpp
 src/gui/dialogs/debug_clock.cpp
 src/gui/dialogs/dialog.cpp
 src/gui/dialogs/edit_label.cpp
+src/gui/dialogs/editor/editor_edit_label.cpp
 src/gui/dialogs/folder_create.cpp
 src/gui/dialogs/formula_debugger.cpp
 src/gui/dialogs/game_load.cpp
@@ -117,8 +119,8 @@ src/gui/widgets/horizontal_scrollbar.cpp
 src/gui/widgets/image.cpp
 src/gui/widgets/label.cpp
 src/gui/widgets/listbox.cpp
-src/gui/widgets/matrix.cpp
 src/gui/widgets/list.cpp
+src/gui/widgets/matrix.cpp
 src/gui/widgets/minimap.cpp
 src/gui/widgets/multi_page.cpp
 src/gui/widgets/pane.cpp
@@ -141,6 +143,7 @@ src/gui/widgets/toggle_panel.cpp
 src/gui/widgets/tree_view.cpp
 src/gui/widgets/tree_view_node.cpp
 src/gui/widgets/vertical_scrollbar.cpp
+src/gui/widgets/viewport.cpp
 src/gui/widgets/widget.cpp
 src/gui/widgets/window.cpp
 src/hotkeys.cpp
@@ -174,6 +177,5 @@ src/widgets/scrollbar.cpp
 src/widgets/scrollpane.cpp
 src/widgets/slider.cpp
 src/widgets/textbox.cpp
-src/widgets/viewport.cpp
 src/widgets/widget.cpp
 src/wml_exception.cpp

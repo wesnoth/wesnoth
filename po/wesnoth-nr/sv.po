@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-01-21 01:34+0100\n"
+"POT-Creation-Date: 2012-08-18 09:27+0200\n"
 "PO-Revision-Date: 2008-04-03 10:29+0100\n"
 "Last-Translator: Gustav Tiger <admin@tigge.org>\n"
 "Language-Team: Swedish\n"
@@ -68,12 +68,7 @@ msgid "Royal Guard"
 msgstr "Livgardist"
 
 #. [campaign]: id=Northern_Rebirth
-#: data/campaigns/Northern_Rebirth/_main.cfg:22
-msgid "(Expert level, 13 scenarios.)"
-msgstr ""
-
-#. [campaign]: id=Northern_Rebirth
-#: data/campaigns/Northern_Rebirth/_main.cfg:22
+#: data/campaigns/Northern_Rebirth/_main.cfg:20
 #, fuzzy
 msgid ""
 "For the people of Dwarven Doors the choice was stark: either drudge as "
@@ -90,6 +85,11 @@ msgstr ""
 "återställa nordländerna till deras forna glans.\n"
 "\n"
 "(Expertnivå, 14 scenarier.)"
+
+#. [campaign]: id=Northern_Rebirth
+#: data/campaigns/Northern_Rebirth/_main.cfg:22
+msgid "(Expert level, 13 scenarios.)"
+msgstr ""
 
 #. [about]
 #: data/campaigns/Northern_Rebirth/_main.cfg:27
@@ -338,9 +338,9 @@ msgstr ""
 "planerande lyckades han stjäla ett fåtal vapen och liten del av Al'Tars "
 "guld. Han flydde till en övergiven ruin i skogen för att samla sin bönder."
 
-#. [side]: type=Peasant, id=Tallin
-#. [side]: type=Lieutenant, id=Tallin
 #. [part]
+#. [side]: type=Lieutenant, id=Tallin
+#. [side]: type=Peasant, id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:78
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:47
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_the_Mines.cfg:20
@@ -393,7 +393,7 @@ msgstr "Besegra alla fiendeledare"
 #. [objective]: condition=lose
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:184
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:192
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:617
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:618
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_the_Mines.cfg:166
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:324
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:407
@@ -738,8 +738,8 @@ msgstr ""
 "grottor så valde Tallin det senare. Folket samlade snabbt ihop så mycket "
 "proviant och vapen de kunde få tag på och gav sig av ner i grottornas mörker."
 
-#. [side]: type=Peasant, id=Tallin
 #. [side]: type=Dwarvish Lord, id=Hamel
+#. [side]: type=Peasant, id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:54
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:96
 msgid "Rebels"
@@ -750,15 +750,15 @@ msgstr ""
 msgid "Knash"
 msgstr "Knash"
 
-#. [side]: type=Troll, id=Knash
-#. [side]: type=Troll, id=Krog
+#. [side]: type=Troll Warrior, id=Bor
+#. [side]: type=Troll Warrior, id=Glu
+#. [side]: type=Troll Warrior, id=Oof
 #. [side]: type=Troll Warrior, id=Thung
+#. [side]: type=Troll Warrior, id=Tor
 #. [side]: type=Troll, id=Franik
 #. [side]: type=Troll, id=Henie
-#. [side]: type=Troll Warrior, id=Tor
-#. [side]: type=Troll Warrior, id=Bor
-#. [side]: type=Troll Warrior, id=Oof
-#. [side]: type=Troll Warrior, id=Glu
+#. [side]: type=Troll, id=Knash
+#. [side]: type=Troll, id=Krog
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:69
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:82
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:125
@@ -776,8 +776,8 @@ msgstr ""
 msgid "Krog"
 msgstr ""
 
-#. [side]: type=Dwarvish Lord, id=Hamel
 #. [part]
+#. [side]: type=Dwarvish Lord, id=Hamel
 #. [unit]: type=Dwarvish Lord, id=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:89
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_the_Mines.cfg:15
@@ -796,18 +796,18 @@ msgid "Hamel"
 msgstr "Hamel"
 
 #. [side]: type=Ancient Lich, id=Malifor
-#. [side]: type=Draug, id=Thorin
-#. [side]: type=Draug, id=Herlin
+#. [side]: type=Death Knight
+#. [side]: type=Death Knight, id=Antrasis
+#. [side]: type=Death Knight, id=Author
+#. [side]: type=Death Knight, id=Boblin
+#. [side]: type=Death Knight, id=Hettel
+#. [side]: type=Death Knight, id=Samlan
+#. [side]: type=Death Knight, id=Tervor
+#. [side]: type=Death Knight, id=Thor
 #. [side]: type=Draug, id=Fervin
 #. [side]: type=Draug, id=Hellian
-#. [side]: type=Death Knight
-#. [side]: type=Death Knight, id=Hettel
-#. [side]: type=Death Knight, id=Thor
-#. [side]: type=Death Knight, id=Tervor
-#. [side]: type=Death Knight, id=Author
-#. [side]: type=Death Knight, id=Samlan
-#. [side]: type=Death Knight, id=Boblin
-#. [side]: type=Death Knight, id=Antrasis
+#. [side]: type=Draug, id=Herlin
+#. [side]: type=Draug, id=Thorin
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:112
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:136
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:148
@@ -844,7 +844,7 @@ msgstr "Rensa gruvorna"
 
 #. [objective]: condition=lose
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:196
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:621
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:622
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_the_Mines.cfg:170
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:328
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:782
@@ -889,10 +889,10 @@ msgstr ""
 "Lugna dig, $name.user_description. Vad som än händer, så klarar vi av det. "
 "Kom nu, låt oss leta reda på de där dvärgarna!"
 
-#. [unit]: type=Arch Mage, id=Camerin
 #. [side]: type=Great Mage, id=Camerin
+#. [unit]: type=Arch Mage, id=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:260
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:733
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:734
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:122
 msgid "Camerin"
 msgstr "Camerin"
@@ -936,7 +936,7 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:292
 #, fuzzy
-msgid "... Uh ok!"
+msgid "... Uh, sure!"
 msgstr "...åh ok!"
 
 #. [message]: speaker=Camerin
@@ -965,39 +965,39 @@ msgid "Hordes of trolls and skeletons! Where?! Let’s go burn ’em all!"
 msgstr "Horder av troll och skelett! Var då? Nu går vi och bränner ihjäl dem!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:308
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:309
 #, fuzzy
-msgid "Er... ok..."
+msgid "Er... let’s go..."
 msgstr "Äh... Okej då..."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:312
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:313
 #, fuzzy
 msgid "whisper^Is it safe to have this lunatic with us?"
 msgstr " *Är det verkligen säkert att ha den här dåren med oss?*"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:328
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:329
 msgid "<i>Burn, you disgusting filth!</i>"
 msgstr ""
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:332
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:333
 msgid "Ahhh! Fire!"
 msgstr "Ahhh! Eld!"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:345
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:346
 msgid "<i>Yeah! Die, scum, die!</i>"
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:362
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:363
 msgid "This tunnel keeps on going..."
 msgstr "Den här tunneln bara fortsätter..."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:366
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:367
 msgid ""
 "I think we should finish searching this part of Knalga first before we go "
 "deeper into the caves."
@@ -1006,24 +1006,24 @@ msgstr ""
 "ger oss längre ner i grottorna."
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:382
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:383
 msgid "Grim Gods of Darkness, what are those things!"
 msgstr "Vad i hela friden är det där för något?!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:386
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:387
 msgid "Skeletons!"
 msgstr "Skelett!"
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:390
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:391
 msgid ""
 "Look at the axes they bear. At one time those skeletons must have been "
 "dwarves!"
 msgstr "Se på yxorna de bär. De där skeletten var nog dvärgar en gång i tiden!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:394
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:395
 msgid ""
 "Stand firm, men. The dwarven defenders of Knalga rise again. Now it remains "
 "to be seen whether or not they recognize us as friends."
@@ -1032,18 +1032,18 @@ msgstr ""
 "se om de känner igen oss som vänner eller ej."
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:410
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:411
 msgid "They are attacking us!"
 msgstr "De anfaller oss!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:414
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:415
 msgid "Destroy them!"
 msgstr "På dem!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:436
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:490
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:437
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:491
 msgid ""
 "Hey look, it’s an ancient door. It seems the trolls were too stupid to find "
 "how to open it."
@@ -1052,8 +1052,8 @@ msgstr ""
 "förstå hur man öppnar den."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:442
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:496
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:443
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:497
 msgid ""
 "Hey look, it’s an ancient door. It seems the skeletons were too stupid to "
 "find how to open it."
@@ -1062,47 +1062,47 @@ msgstr ""
 "att förstå hur man öppnar den."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:448
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:502
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:449
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:503
 msgid "Well, let’s see what’s behind it."
 msgstr "Nå, låt oss då se vad som finns bakom den."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:452
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:506
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:453
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:507
 #, fuzzy
 msgid ""
 "All right. (<i>Grunt... strain...</i>) It’s not moving. It seems to be stuck."
 msgstr "Okej. *Stön* *Spräck* Den rör inte på sig, den verkar sitta fast."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:456
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:510
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:457
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:511
 msgid "Well, just kick it down then."
 msgstr "Nå, men sparka in den då."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:460
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:514
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:461
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:515
 #, fuzzy
 msgid "... Right."
 msgstr "...precis."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:464
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:518
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:465
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:519
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1897
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1920
 msgid "(<i>Smash</i>)"
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:538
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:539
 msgid "Wow, this place is interesting."
 msgstr "Oj, den här platsen är intressant."
 
 #. [message]: speaker=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:542
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:543
 #, fuzzy
 msgid ""
 "This is how we get our food, me lad. Since we are a tad close to the surface "
@@ -1116,7 +1116,7 @@ msgstr ""
 "är så vi har överlevt alla dessa långa år."
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:555
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:556
 #, fuzzy
 msgid ""
 "Tallin, this situation is hopeless — there are endless monsters swarming "
@@ -1125,7 +1125,7 @@ msgstr ""
 "Tallin, det här är hopplöst - det kommer oändligt med monster från alla håll!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:559
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:560
 #, fuzzy
 msgid ""
 "We are in a dire situation indeed — but just see — the trolls and the "
@@ -1139,7 +1139,7 @@ msgstr ""
 "undviker oss och istället anfaller lättare byten."
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:563
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:564
 #, fuzzy
 msgid ""
 "But still, Tallin, we will take losses, and for each one of us, there is no "
@@ -1151,7 +1151,7 @@ msgstr ""
 "två till att ta dess plats!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:567
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:568
 #, fuzzy
 msgid ""
 "Which is why we must make haste to find the dwarves. Dwarves are hardy "
@@ -1167,17 +1167,17 @@ msgstr ""
 "kommer att möta en säker undergång!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:583
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:584
 msgid "Stand where ye be, you... Och! A human!"
 msgstr "Stanna där du är, du... Oj! En människa!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:587
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:588
 msgid "Greetings from the people of Dwarven Doors, friend."
 msgstr "Dvärgportarnas folk hälsar dig, vän."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:591
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:592
 msgid ""
 "Dwarven Doors? I thought ye surface humans had been enslaved or slain by the "
 "orcs years ago."
@@ -1186,7 +1186,7 @@ msgstr ""
 "av orcherna för många år sedan."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:595
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:596
 #, fuzzy
 msgid ""
 "Yes, we were enslaved, but we rose against Al’Tar and defeated his warband. "
@@ -1198,7 +1198,7 @@ msgstr ""
 "utrustning av våra forna allierade, dvärgarna."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:599
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:600
 #, fuzzy
 msgid ""
 "Och, the dwarves of Knalga are themselves in desperate straits — but we "
@@ -1208,11 +1208,11 @@ msgstr ""
 "Ack, Knalgas dvärgar är själva i trångmål - men vi har inte glömt de gamla "
 "banden. Välkomna till vår borg. Och ja, tala med vår hövding, furst Hamel."
 
-#. [message]: speaker=Tallin
-#. [message]: speaker=unit
 #. [message]: id=Father Morvin
 #. [message]: id=Ro'Arthian
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:603
+#. [message]: speaker=Tallin
+#. [message]: speaker=unit
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:604
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1650
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2459
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2510
@@ -1224,40 +1224,40 @@ msgid "Very well."
 msgstr "Okej."
 
 #. [objective]: condition=win
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:609
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:610
 #, fuzzy
 msgid "Move Tallin to a Dwarvish castle keep or..."
 msgstr "Flytta Tallin till dvärgarnas torn eller..."
 
 #. [objective]: condition=win
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:613
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:614
 #, fuzzy
 msgid "Clear the caves (Bonus)"
 msgstr "Rensa gruvorna (Bonus)"
 
 #. [message]: speaker=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:643
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:644
 msgid "Well met, Tallin. My men have told me of your victory against Al’Tar."
 msgstr ""
 "Väl mött, Tallin. Mina män har berättat för mig om din seger mot Al'Tar."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:647
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:648
 msgid "Thank you and well-met indeed, Lord Hamel."
 msgstr "Tack så mycket, furst Hamel, och verkligen väl mött."
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:651
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:652
 msgid "Whew, we did it!"
 msgstr "Puh, vi gjorde det!"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:655
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:656
 msgid "Awww! Are we done already?"
 msgstr "Åhhh! Är vi klara redan?"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:675
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:676
 msgid ""
 "Good, we managed to clear the caves... for now, anyway. Now let’s get to the "
 "dwarven keep and dicker for better weapons."
@@ -1266,7 +1266,7 @@ msgstr ""
 "dvärgborgen och förhandlar om vapen."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:681
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:682
 msgid ""
 "Good, there are no more monsters lurking in these parts of the tunnels. I "
 "think I can hear the clamor of dwarves just ahead. Come on men, let’s go "
@@ -1277,7 +1277,7 @@ msgstr ""
 "gå och träffa dem."
 
 #. [message]: role=Messenger
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:703
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:704
 msgid ""
 "Tallin, we have just received the news that the dwarvish Lord Hamel has just "
 "been slain. We are too late!"
@@ -1286,39 +1286,39 @@ msgstr ""
 "dödats. Vi har kommit för sent!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:707
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:708
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:846
 msgid "No! Without the dwarvish weapons we have no hope!"
 msgstr "Nej, utan vapen från dvärgarna så är allt hopp ute!"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:746
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:747
 msgid "Hey, what’s going on in here?"
 msgstr "Hej, vad försiggår här?"
 
 #. [message]: role=Admirer
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:795
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:796
 msgid "We are killing lots of trolls and skeletons."
 msgstr "Vi håller på att slå ihjäl en massa troll och skelett."
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:799
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:800
 msgid "Really! Did you save any for me?"
 msgstr "Verkligen! Sparade ni några till mig?"
 
 #. [message]: role=Admirer
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:803
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:804
 msgid "Uh, not really..."
 msgstr "Öh, nej, inte riktigt..."
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:807
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:808
 #, fuzzy
 msgid "Awww!"
 msgstr "Aaoooh."
 
 #. [message]: role=Admirer
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:811
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:812
 msgid ""
 "But hey, if you want to join us, I am sure we will be fighting a lot more "
 "orcs, trolls and skeletons in the near future."
@@ -1327,18 +1327,18 @@ msgstr ""
 "slåss mot en massa mer orcher, troll och skelett."
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:815
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:816
 msgid "Really! Oh yeah, I am in!"
 msgstr "Verkligen! Jippi, jag kommer med er!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:819
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:820
 #, fuzzy
 msgid "... That was rather odd. Who is this guy?"
 msgstr "...det där var rätt konstigt. Vem är det här?"
 
 #. [message]: speaker=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:829
+#: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:830
 msgid ""
 "Oh, dinna’ mind him, that’d be Camerin. He used to be yer usual scholarly "
 "mage, and he moved awa’ up here to be alone and study. But then when the "
@@ -1669,12 +1669,12 @@ msgstr ""
 msgid "Clearing the Mines"
 msgstr "Gruvorna rensas"
 
-#. [side]: type=Peasant, id=Tallin
-#. [side]: type=Lieutenant, id=Tallin
+#. [side]
 #. [side]: type=Drake Burner, id=Krash
 #. [side]: type=Dwarvish Lord, id=Hamel
-#. [side]
 #. [side]: type=Elvish Avenger, id=Sisal
+#. [side]: type=Lieutenant, id=Tallin
+#. [side]: type=Peasant, id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:26
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:33
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:315
@@ -2228,8 +2228,8 @@ msgstr "De försöker befria fångarna! Stoppa dem!"
 msgid "Good luck, my friend."
 msgstr "Lycka till, min vän."
 
-#. [unit]: type=White Mage, id=Father Morvin
 #. [unit]: type=$type_check.type, id=Father Morvin
+#. [unit]: type=White Mage, id=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:554
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:407
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:615
@@ -2352,9 +2352,9 @@ msgstr ""
 "förena dig istället med mig i strävan om att återbörda förnuftet till "
 "nordländerna."
 
+#. [message]: id=Elenia
 #. [message]: speaker=Father Morvin
 #. [message]: speaker=Sister Thera
-#. [message]: id=Elenia
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:629
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:742
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:269
@@ -2377,8 +2377,8 @@ msgstr ""
 msgid "(<i>Giggle</i>)"
 msgstr ""
 
-#. [unit]: type=White Mage, id=Sister Thera
 #. [unit]: type=$type_check.type, id=Sister Thera
+#. [unit]: type=White Mage, id=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:670
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:425
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:633
@@ -2836,8 +2836,8 @@ msgstr "Se där, ja."
 msgid "Intruders! Get them!"
 msgstr "Inkräktare! På dem!"
 
-#. [message]: speaker=unit
 #. [message]: role=Supporter
+#. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1191
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1292
 msgid "Bring it on!"
@@ -3525,8 +3525,8 @@ msgstr "Ssssh! Jag hör någonting."
 msgid "ROOOAAARRR!"
 msgstr "ROOOAAARRR!"
 
-#. [message]: speaker=unit
 #. [message]: speaker=Tallin
+#. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2341
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:431
 #, fuzzy
@@ -3575,8 +3575,8 @@ msgstr "Näpp. Skall jag öppna den?"
 msgid "Go for it!"
 msgstr "Kör hårt!"
 
-#. [message]: speaker=unit
 #. [message]: speaker=Sister Thera
+#. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2450
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2501
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2587
@@ -3734,8 +3734,8 @@ msgstr ""
 "BLI FRITT! MÅ ALLA DINA NÄRA OCH KÄRA ÖVERGE DIG! MÅTTE EN ÅSKVIGG SLÅ NER I "
 "DITT HUVUD! MÅTTE..."
 
-#. [message]: speaker=Tallin
 #. [message]: speaker=Sister Thera
+#. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2805
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:468
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:677
@@ -3752,8 +3752,8 @@ msgstr ""
 "MÅTTE JORDEN ÖPPNA SIG OCH UPPSLUKA DIG! MÅTTE ALLA DINA TÄNDER FALLA UT! "
 "MÅTTE DU BLI EN SVAG BENIG GAMMAL GUBBE! MÅTTE..."
 
-#. [message]: speaker=second_unit
 #. [message]: speaker=Father Morvin
+#. [message]: speaker=second_unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2813
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:483
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:692
@@ -3991,9 +3991,9 @@ msgstr ""
 "till en avlägset nätverk av tunnlar för att rensa bort en grupp troll som "
 "hade bosatt sig där."
 
-#. [side]: type=Peasant, id=Tallin
 #. [side]: type=Ancient Lich, id=Malifor
 #. [side]: type=Dark Adept, id=Deory
+#. [side]: type=Peasant, id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05b_Compelled.cfg:44
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:75
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:62
@@ -4308,10 +4308,10 @@ msgstr ""
 "Det bestämdes att Tallins mannar skulle ge sig av för att möta orcherna "
 "medan Hammels mannar skulle hålla deras reträttvägar till grottorna öppna."
 
-#. [side]: type=Peasant, id=Tallin
-#. [side]: type=Lieutenant, id=Tallin
 #. [side]: type=Dwarvish Lord, id=Stalrag
 #. [side]: type=Great Mage, id=Camerin
+#. [side]: type=Lieutenant, id=Tallin
+#. [side]: type=Peasant, id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:141
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:205
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:222
@@ -4322,8 +4322,8 @@ msgstr ""
 msgid "Knalgans"
 msgstr "Knash"
 
-#. [unit]: type=Orcish Sovereign, id=Rakshas
 #. [side]: type=Orcish Sovereign, id=Rakshas
+#. [unit]: type=Orcish Sovereign, id=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:151
 #: data/campaigns/Northern_Rebirth/scenarios/09b_Judgment.cfg:43
 #: data/campaigns/Northern_Rebirth/scenarios/11a_The_Eastern_Flank.cfg:198
@@ -4331,20 +4331,20 @@ msgstr "Knash"
 msgid "Rakshas"
 msgstr "Rakshas"
 
-#. [side]: type=Troll Warrior, id=Gore
-#. [side]: type=Orcish Warlord, id=Carron
-#. [side]: type=Orcish Warlord, id=Rash
-#. [side]: type=Orcish Warlord, id=Al'Mar
-#. [side]: type=Orcish Warlord, id=Ha'Tang
-#. [side]: type=Orcish Sovereign, id=Rakshas
-#. [side]: type=Orcish Warlord, id=Drung
-#. [side]: type=Orcish Warlord, id=Poul
-#. [side]: type=Orcish Warlord, id=Ha'Tuil
-#. [side]: type=Orcish Warlord, id=Ar'Muff
-#. [side]: type=Orcish Warlord, id=Calter
-#. [side]: type=Orcish Warlord, id=Halter
-#. [side]: type=Orcish Warlord, id=Atul
 #. [side]
+#. [side]: type=Orcish Sovereign, id=Rakshas
+#. [side]: type=Orcish Warlord, id=Al'Mar
+#. [side]: type=Orcish Warlord, id=Ar'Muff
+#. [side]: type=Orcish Warlord, id=Atul
+#. [side]: type=Orcish Warlord, id=Calter
+#. [side]: type=Orcish Warlord, id=Carron
+#. [side]: type=Orcish Warlord, id=Drung
+#. [side]: type=Orcish Warlord, id=Ha'Tang
+#. [side]: type=Orcish Warlord, id=Ha'Tuil
+#. [side]: type=Orcish Warlord, id=Halter
+#. [side]: type=Orcish Warlord, id=Poul
+#. [side]: type=Orcish Warlord, id=Rash
+#. [side]: type=Troll Warrior, id=Gore
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:158
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:179
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:198
@@ -5106,8 +5106,8 @@ msgstr ""
 msgid "Those filthy elves! I’ll..."
 msgstr "De där smutsiga alverna! Jag skall..."
 
-#. [part]
 #. [message]: speaker=Sister Thera
+#. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:135
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:749
 msgid "See?"
@@ -5219,16 +5219,16 @@ msgid "And so Tallin and his party set out to secure the help of the mages."
 msgstr ""
 "Så gav Tallin och hans grupp sig av för att försäkra sig om magikernas hjälp."
 
-#. [unit]: type=Dwarvish Lord, id=Stalrag
 #. [side]: type=Dwarvish Lord, id=Stalrag
+#. [unit]: type=Dwarvish Lord, id=Stalrag
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:215
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:227
 #: data/campaigns/Northern_Rebirth/utils/utils.cfg:67
 msgid "Stalrag"
 msgstr "Stalrag"
 
-#. [unit]: type=Ancient Lich, id=Ro'Arthian
 #. [side]: type=Ancient Lich, id=Ro'Arthian
+#. [unit]: type=Ancient Lich, id=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:244
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:241
 msgid "Ro’Arthian"
@@ -5740,14 +5740,14 @@ msgstr ""
 "Vänta en sekund, Tallin. Säger du att vi skall ge upp vårt hemland till "
 "dessa ondskefulla magiker?!"
 
-#. [message]: speaker=Eryssa
-#. [message]: id=Ro'Sothian
-#. [message]: speaker=Ro'Sothian
 #. [message]: id=Ro'Arthian
+#. [message]: id=Ro'Sothian
+#. [message]: speaker=Eryssa
+#. [message]: speaker=Ro'Sothian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:797
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1124
 #: data/campaigns/Northern_Rebirth/scenarios/11a_The_Eastern_Flank.cfg:450
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:838
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:840
 msgid "(<i>Snicker</i>)"
 msgstr ""
 
@@ -6825,14 +6825,14 @@ msgstr "Vi måste hitta den här staven då. Gå först du, min vän."
 msgid "Machador"
 msgstr "Machador"
 
-#. [side]: type=Fire Dragon, id=Machador
 #. [side]: type=Blood Bat, id=Blood Bat 3
 #. [side]: type=Blood Bat, id=Blood Bat 4
 #. [side]: type=Blood Bat, id=Blood Bat 5
 #. [side]: type=Blood Bat, id=Blood Bat 6
 #. [side]: type=Blood Bat, id=Blood Bat 7
-#. [side]: type=Troll Warrior, id=Gurk
 #. [side]: type=Drake Flare, id=Kishmish
+#. [side]: type=Fire Dragon, id=Machador
+#. [side]: type=Troll Warrior, id=Gurk
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:158
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:169
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:196
@@ -8585,8 +8585,8 @@ msgstr "Håll tyst din fegis!"
 msgid "Help Tallin defeat the enemy leaders or"
 msgstr "Hjälp Tallin att besegra alla fiendeledare, eller"
 
-#. [unit]: type=Elvish Marshal, id=Hidel
 #. [unit]: id=Hidel, type=Elvish Marshal
+#. [unit]: type=Elvish Marshal, id=Hidel
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:825
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1146
 #: data/campaigns/Northern_Rebirth/scenarios/11a_The_Eastern_Flank.cfg:223
@@ -8839,8 +8839,8 @@ msgstr ""
 msgid "Right. Onward men!"
 msgstr "Sant. Framåt mannar!"
 
-#. [unit]: type=Elvish Avenger, id=Sisal
 #. [side]: type=Elvish Avenger, id=Sisal
+#. [unit]: type=Elvish Avenger, id=Sisal
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1164
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:138
 msgid "Sisal"
@@ -9633,7 +9633,7 @@ msgstr ""
 
 #. [message]: id=Sisal
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:507
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:894
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:896
 msgid "Ahhhh! Farewell, friends. I now go to join Hidel."
 msgstr "Ahhhh! Farväl, mina vänner. Jag går för att förena mig med Hidel."
 
@@ -9940,19 +9940,19 @@ msgid "FOR THE FREE PEOPLES OF THE NORTH! FALL ON THEM, MEN!!"
 msgstr "FÖR NORDLANDEN! PÅ DEM MANNAR!!!"
 
 #. [message]: id=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:794
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:796
 msgid "Sweet gods, look at all those orcs pouring out of that fortress."
 msgstr "Åh gud, se på alla orcher som strömmar ur de där fortet."
 
 #. [message]: id=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:798
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:800
 msgid "Aye, and not just any orcs either, those are all hardened veterans!"
 msgstr ""
 "Ah, och inte vilka orcher som helst heller, alla de där är härdade "
 "veterander!"
 
 #. [message]: id=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:802
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:804
 #, fuzzy
 msgid ""
 "Yeah. Obviously this is going to take some time. If necessary we can sit "
@@ -9962,7 +9962,7 @@ msgstr ""
 "sitta kvar i våra skyddsverk och belägra dem tills de svälter ihjäl."
 
 #. [message]: id=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:814
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:816
 msgid ""
 "Die, you murderous beast! No longer shall you terrorize the people of the "
 "North."
@@ -9970,33 +9970,33 @@ msgstr ""
 "Dö, din mördande best! Du skall inte längre terrorisera folken i norr. "
 
 #. [message]: id=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:818
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:820
 msgid "Learn the fate of one who offends the Dwarves of Knalga."
 msgstr "Skåda ödet som drabbar den som förorättar Knalgas dvärgar."
 
 #. [message]: id=Eryssa
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:822
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:824
 msgid "Or the elves of the Northern Forests."
 msgstr "Eller alverna från norra skogen."
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:826
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:828
 msgid "Or the humans of Dwarven Doors."
 msgstr "Eller människorna från Dvärgportarna."
 
 #. [message]: id=Rakshas
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:830
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:832
 #, fuzzy
 msgid "(<i>Gurgle</i>) No...! This... cannot... be... happening... to... me..."
 msgstr " *gurglande* Nej!... det... här... kan... inte... hända... med... mig."
 
 #. [message]: id=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:834
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:836
 msgid "Such were the last words of Rakshas the great!"
 msgstr "Så lät Rakshas den stores sista ord!"
 
 #. [message]: id=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:847
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:849
 msgid ""
 "At last! Rakshas has been slain, and the orcish host has been crushed. Peace "
 "and prosperity will come to the Northlands once again!"
@@ -10005,7 +10005,7 @@ msgstr ""
 "välstånd kommer åter igen att komma till nordlanden."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:851
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:853
 msgid ""
 "At these words all the allied forces gave out a combined and thunderous "
 "cheer. Their long ordeal was finally over."
@@ -10014,14 +10014,14 @@ msgstr ""
 "åsklikt hurrarop. Deras långa kamp var till slut över."
 
 #. [message]: id=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:856
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:858
 #, fuzzy
 msgid "(<i>Small voice lost in the uproar</i>) Awww, is it over already?"
 msgstr " *liten röst förlorad i allt stohej* Åhhh, är det redan över?"
 
 #. [message]: id=Hamel
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:873
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:875
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:554
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:565
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:587
@@ -10029,7 +10029,7 @@ msgid "Argh!"
 msgstr "Argh!"
 
 #. [message]: id=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:877
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:879
 msgid ""
 "Hamel! Blast it, without the dwarves to hold the western flank we are as "
 "good as defeated."
@@ -10038,7 +10038,7 @@ msgstr ""
 "besegrade."
 
 #. [message]: id=Eryssa
-#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:898
+#: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:900
 msgid "Sisal! Noooo! Not you too!"
 msgstr "Sisal! Neeej! Inte du också!"
 
@@ -10724,8 +10724,8 @@ msgstr "Era eländiga monster! Ni kommer att få betala för detta!"
 msgid "Awww, I liked that guy!"
 msgstr "Åhhh, jag gillade honom!"
 
-#. [message]: speaker=Ro'Sothian
 #. [message]: speaker=Ro'Arthian
+#. [message]: speaker=Ro'Sothian
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:62
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:86
 msgid "I have had enough! Come on brother, let’s get outta here."
@@ -10958,8 +10958,8 @@ msgstr " *fniss* Tack raring."
 msgid "Thank the Lords of Light, not me!"
 msgstr "Tacka Ljusets herrar, inte mig!"
 
-#. [message]: speaker=Sister Thera
 #. [message]: speaker=Father Morvin
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:456
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:702
 #, fuzzy

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-01-21 01:34+0100\n"
+"POT-Creation-Date: 2012-08-18 09:27+0200\n"
 "PO-Revision-Date: 2011-10-01 22:19+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -53,12 +53,7 @@ msgid "High Lord"
 msgstr "대군주"
 
 #. [campaign]: id=An_Orcish_Incursion
-#: data/campaigns/An_Orcish_Incursion/_main.cfg:22
-msgid "(Novice level, 7 scenarios.)"
-msgstr "(초보자 레벨, 7 개 시나리오.)"
-
-#. [campaign]: id=An_Orcish_Incursion
-#: data/campaigns/An_Orcish_Incursion/_main.cfg:22
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:20
 msgid ""
 "Defend the forests of the elves against the first orcs to reach the Great "
 "Continent, learning valuable tactics as you do so.\n"
@@ -67,6 +62,11 @@ msgstr ""
 "유용한 전략들을 익혀 가면서 대륙에 도착한 첫번째 오크 무리로부터 엘프의 숲을 "
 "지켜 냅시다.\n"
 "\n"
+
+#. [campaign]: id=An_Orcish_Incursion
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:22
+msgid "(Novice level, 7 scenarios.)"
+msgstr "(초보자 레벨, 7 개 시나리오.)"
 
 #. [about]
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:35
@@ -120,12 +120,12 @@ msgstr "엘프"
 msgid "Urugha"
 msgstr "Urugha"
 
-#. [side]: type=Orcish Warlord, id=Gnargha
-#. [side]: type=Orcish Warrior, id=Urugha
-#. [side]: type=Orcish Sovereign, id=Rualsha
 #. [side]: type=Lich, id=Keremal
 #. [side]: type=Orcish Slayer, id=Gharlsa
+#. [side]: type=Orcish Sovereign, id=Rualsha
+#. [side]: type=Orcish Warlord, id=Gnargha
 #. [side]: type=Orcish Warlord, id=Krughnar
+#. [side]: type=Orcish Warrior, id=Urugha
 #: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:49
 #: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:44
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:45
@@ -189,7 +189,7 @@ msgid ""
 msgstr "오크들은 Wesmere 대삼림이 쭉 이어지는 북쪽에서 처음으로 발견되었다."
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:99
+#: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:98
 msgid ""
 "Hint:\n"
 "Elves can move quickly and safely among the trees. Pick off the enemy grunts "
@@ -399,7 +399,7 @@ msgstr ""
 "을 발견하게 된다."
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:90
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:89
 msgid ""
 "Hint:\n"
 "Assassins are hard to hit, and their poison is insidious. Stay close to the "
@@ -555,7 +555,7 @@ msgstr ""
 "다."
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:86
+#: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:85
 msgid ""
 "Hint:\n"
 "There are no villages in this scenario — you must use healers instead. Use "
@@ -825,7 +825,7 @@ msgstr ""
 "간에, 그들은 대비가 되어 있었다."
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:160
+#: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:159
 msgid ""
 "Hint:\n"
 "Trolls are poor fighters when not on rugged terrain and fare even worse "
@@ -1083,7 +1083,7 @@ msgid "Wizards"
 msgstr "마법사들"
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:109
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:108
 msgid ""
 "Hint:\n"
 "Use Elven Scouts and Linaera’s power of teleportation to mount hit-and-run "
@@ -1309,7 +1309,7 @@ msgid "Keremal"
 msgstr "Keremal"
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:61
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:60
 msgid ""
 "Hint:\n"
 "Undead are resistant to physical attack. Use mages to attack the undead, and "
@@ -1378,7 +1378,7 @@ msgid "Rualsha"
 msgstr "Rualsha"
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:114
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:113
 msgid ""
 "Hint:\n"
 "Your enemy is well-defended against attacks from the south. Use rangers to "
@@ -1394,7 +1394,7 @@ msgid "Defeat Rualsha"
 msgstr "Rualsha를 격파"
 
 #. [message]: speaker=Lomarfel
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:222
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:223
 msgid ""
 "My lord! We have ridden hard for over a week to catch up with you! The "
 "Ka’lian has deliberated, and asks you to defeat Rualsha quickly before he "
@@ -1405,7 +1405,7 @@ msgstr ""
 "을 요청했습니다."
 
 #. [message]: speaker=Rualsha
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:226
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:227
 msgid ""
 "Puny elves! My full army will be here soon, and then we will crush you. You "
 "will beg for a quick death!"
@@ -1414,7 +1414,7 @@ msgstr ""
 "서 죽여달라고 애원하게 될거다!"
 
 #. [message]: speaker=unit
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:236
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:237
 msgid ""
 "You may slay me, Erlornas, but my people live on. They will not forget! They "
 "will pursue you, and destroy you utterly... we will... we... arrgh..."
@@ -1424,7 +1424,7 @@ msgstr ""
 "악..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:247
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:248
 msgid ""
 "But Rualsha overestimated the will of his troops. With their leader dead, "
 "they scattered, and fled from the elves back to their fastnesses in the far "
@@ -1434,19 +1434,19 @@ msgstr ""
 "어져서 엘프들을 등지고 먼 북쪽에 있는 그들의 요새로 달아났다."
 
 #. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:259
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:260
 msgid "It grieves me to take life, even of a barbarian such as Rualsha."
 msgstr "Rualsha와 같은 야만인이라고 해도, 생명을 해치는 건 비통한 일이다."
 
 #. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:263
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:264
 msgid ""
 "If the orcs press us, we shall need to become more accustomed to fighting."
 msgstr ""
 "오크들이 우릴 압박하려 든다면, 우린 좀더 전투에 익숙해질 필요가 있습니다."
 
 #. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:267
+#: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:268
 msgid ""
 "I fear it will be so. We have won a first victory here, but dark times come "
 "upon its heels."
