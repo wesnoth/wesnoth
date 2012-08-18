@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-18 09:27+0200\n"
+"POT-Creation-Date: 2012-08-18 09:41+0200\n"
 "PO-Revision-Date: 2012-04-06 15:19+0400\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3680,8 +3680,6 @@ msgstr "Пропустить анимацию"
 
 #. TRANSLATORS: whiteboard menu entry: toggle planning mode
 #: src/hotkeys.cpp:115
-#, fuzzy
-#| msgid "whiteboard^Planning Mode"
 msgid "whiteboard^Planning Mode"
 msgstr "Режим планирования"
 
@@ -3692,10 +3690,8 @@ msgstr "Выполнить действие"
 
 #. TRANSLATORS: whiteboard menu entry: execute all planned actions
 #: src/hotkeys.cpp:119
-#, fuzzy
-#| msgid "whiteboard^Execute Action"
 msgid "whiteboard^Execute All Actions"
-msgstr "Выполнить действие"
+msgstr "Выполнить все действия"
 
 #. TRANSLATORS: whiteboard menu entry: delete planned action
 #: src/hotkeys.cpp:121
@@ -3704,22 +3700,16 @@ msgstr "Удалить действие"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action up queue
 #: src/hotkeys.cpp:123
-#, fuzzy
-#| msgid "whiteboard^Delete Action"
 msgid "whiteboard^Move Action Up"
-msgstr "Удалить действие"
+msgstr "Сдвинуть действие вперед"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action down queue
 #: src/hotkeys.cpp:125
-#, fuzzy
-#| msgid "whiteboard^Delete Action"
 msgid "whiteboard^Move Action Down"
-msgstr "Удалить действие"
+msgstr "Сдвинуть действие назад"
 
 #. TRANSLATORS: whiteboard menu entry: plan as though the chosen unit were dead
 #: src/hotkeys.cpp:127
-#, fuzzy
-#| msgid "whiteboard^Suppose Dead"
 msgid "whiteboard^Suppose Dead"
 msgstr "Планирую убить"
 
@@ -4274,23 +4264,3 @@ msgstr ""
 #~ msgstr ""
 #~ "Автоматически удалять автосохранения побед (одиночная игра и мультиплеер) "
 #~ "и поражений (только мультиплеер)"
-
-#, fuzzy
-#~| msgid "whiteboard^Execute All Actions"
-#~ msgid "Execute Planned Action"
-#~ msgstr "Выполнить все действия"
-
-#, fuzzy
-#~| msgid "whiteboard^Execute All Actions"
-#~ msgid "Execute All Actions"
-#~ msgstr "Выполнить все действия"
-
-#, fuzzy
-#~| msgid "whiteboard^Move Action Up"
-#~ msgid "Move Action Up Queue"
-#~ msgstr "Сдвинуть действие вперед"
-
-#, fuzzy
-#~| msgid "whiteboard^Move Action Down"
-#~ msgid "Move Action Down Queue"
-#~ msgstr "Сдвинуть действие назад"

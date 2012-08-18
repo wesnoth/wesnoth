@@ -4,13 +4,13 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Automatically generated, 2004.
-# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2007-2009, 2010, 2011.
+# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2007-2009, 2010, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: hu-lib_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-18 09:27+0200\n"
-"PO-Revision-Date: 2011-12-17 13:47+0100\n"
+"POT-Creation-Date: 2012-08-18 09:41+0200\n"
+"PO-Revision-Date: 2012-04-01 12:11+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
 "Language: hu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Lokalize 1.4\n"
 
 #. [terrain_type]: id=deep_water
 #. [terrain_type]: id=deep_water_gray
@@ -3695,48 +3695,36 @@ msgstr "Animációk átugrása"
 
 #. TRANSLATORS: whiteboard menu entry: toggle planning mode
 #: src/hotkeys.cpp:115
-#, fuzzy
-#| msgid "Toggle Planning Mode"
 msgid "whiteboard^Planning Mode"
-msgstr "Lépéstervező átkapcsolása"
+msgstr "Lépéstervező"
 
 #. TRANSLATORS: whiteboard menu entry: execute planned action
 #: src/hotkeys.cpp:117
-#, fuzzy
-#| msgid "Execute All Actions"
 msgid "whiteboard^Execute Action"
-msgstr "Összes terv végrehajtása"
+msgstr "Terv végrehajtása"
 
 #. TRANSLATORS: whiteboard menu entry: execute all planned actions
 #: src/hotkeys.cpp:119
-#, fuzzy
-#| msgid "Execute All Actions"
 msgid "whiteboard^Execute All Actions"
 msgstr "Összes terv végrehajtása"
 
 #. TRANSLATORS: whiteboard menu entry: delete planned action
 #: src/hotkeys.cpp:121
 msgid "whiteboard^Delete Action"
-msgstr ""
+msgstr "Terv törlése"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action up queue
 #: src/hotkeys.cpp:123
-#, fuzzy
-#| msgid "Move Action Up Queue"
 msgid "whiteboard^Move Action Up"
 msgstr "Terv előrehozása a listán"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action down queue
 #: src/hotkeys.cpp:125
-#, fuzzy
-#| msgid "Move Action Down Queue"
 msgid "whiteboard^Move Action Down"
 msgstr "Terv hátratolása a listán"
 
 #. TRANSLATORS: whiteboard menu entry: plan as though the chosen unit were dead
 #: src/hotkeys.cpp:127
-#, fuzzy
-#| msgid "Suppose Dead"
 msgid "whiteboard^Suppose Dead"
 msgstr "Feltételezetten elesik"
 

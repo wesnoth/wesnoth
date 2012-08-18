@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-18 09:27+0200\n"
+"POT-Creation-Date: 2012-08-18 09:41+0200\n"
 "PO-Revision-Date: 2012-04-02 21:53+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: none\n"
@@ -3664,8 +3664,6 @@ msgstr "Jäta animatsioon vahele"
 
 #. TRANSLATORS: whiteboard menu entry: toggle planning mode
 #: src/hotkeys.cpp:115
-#, fuzzy
-#| msgid "whiteboard^Planning Mode"
 msgid "whiteboard^Planning Mode"
 msgstr "Plaanimisrežiim"
 
@@ -3686,22 +3684,16 @@ msgstr "Tühista tegevus"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action up queue
 #: src/hotkeys.cpp:123
-#, fuzzy
-#| msgid "whiteboard^Delete Action"
 msgid "whiteboard^Move Action Up"
-msgstr "Tühista tegevus"
+msgstr "Liiguta tegevus järjekorras ettepoole"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action down queue
 #: src/hotkeys.cpp:125
-#, fuzzy
-#| msgid "whiteboard^Delete Action"
 msgid "whiteboard^Move Action Down"
-msgstr "Tühista tegevus"
+msgstr "Liiguta tegevus järjekorras tahapoole"
 
 #. TRANSLATORS: whiteboard menu entry: plan as though the chosen unit were dead
 #: src/hotkeys.cpp:127
-#, fuzzy
-#| msgid "whiteboard^Suppose Dead"
 msgid "whiteboard^Suppose Dead"
 msgstr "Eelda olevat surnud"
 
@@ -4261,23 +4253,8 @@ msgstr ""
 #~ msgid "Execute Planned Action"
 #~ msgstr "Käivita plaanitud tegevus"
 
-#, fuzzy
-#~| msgid "Execute Planned Action"
-#~ msgid "Execute All Actions"
-#~ msgstr "Käivita plaanitud tegevus"
-
 #~ msgid "Delete Planned Action"
 #~ msgstr "Kustuta plaanitud tegevus"
-
-#, fuzzy
-#~| msgid "whiteboard^Move Action Up"
-#~ msgid "Move Action Up Queue"
-#~ msgstr "Liiguta tegevus järjekorras ettepoole"
-
-#, fuzzy
-#~| msgid "whiteboard^Move Action Down"
-#~ msgid "Move Action Down Queue"
-#~ msgstr "Liiguta tegevus järjekorras tahapoole"
 
 #~ msgid "Resize map"
 #~ msgstr "Muuda kaardi mõõtmeid"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-18 09:27+0200\n"
+"POT-Creation-Date: 2012-08-18 09:41+0200\n"
 "PO-Revision-Date: 2012-04-04 18:51+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
@@ -3661,8 +3661,6 @@ msgstr "略过动画"
 
 #. TRANSLATORS: whiteboard menu entry: toggle planning mode
 #: src/hotkeys.cpp:115
-#, fuzzy
-#| msgid "whiteboard^Planning Mode"
 msgid "whiteboard^Planning Mode"
 msgstr "计划模式"
 
@@ -3673,10 +3671,8 @@ msgstr "执行行动"
 
 #. TRANSLATORS: whiteboard menu entry: execute all planned actions
 #: src/hotkeys.cpp:119
-#, fuzzy
-#| msgid "whiteboard^Execute Action"
 msgid "whiteboard^Execute All Actions"
-msgstr "执行行动"
+msgstr "执行全部行动"
 
 #. TRANSLATORS: whiteboard menu entry: delete planned action
 #: src/hotkeys.cpp:121
@@ -3685,22 +3681,16 @@ msgstr "删除行动"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action up queue
 #: src/hotkeys.cpp:123
-#, fuzzy
-#| msgid "whiteboard^Delete Action"
 msgid "whiteboard^Move Action Up"
-msgstr "删除行动"
+msgstr "将行动前移"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action down queue
 #: src/hotkeys.cpp:125
-#, fuzzy
-#| msgid "whiteboard^Delete Action"
 msgid "whiteboard^Move Action Down"
-msgstr "删除行动"
+msgstr "将行动后移"
 
 #. TRANSLATORS: whiteboard menu entry: plan as though the chosen unit were dead
 #: src/hotkeys.cpp:127
-#, fuzzy
-#| msgid "whiteboard^Suppose Dead"
 msgid "whiteboard^Suppose Dead"
 msgstr "认为已死亡"
 
@@ -4246,23 +4236,3 @@ msgstr ""
 
 #~ msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 #~ msgstr "游戏胜利或者多人游戏失败时，删除自动存档"
-
-#, fuzzy
-#~| msgid "whiteboard^Execute All Actions"
-#~ msgid "Execute Planned Action"
-#~ msgstr "执行全部行动"
-
-#, fuzzy
-#~| msgid "whiteboard^Execute All Actions"
-#~ msgid "Execute All Actions"
-#~ msgstr "执行全部行动"
-
-#, fuzzy
-#~| msgid "whiteboard^Move Action Up"
-#~ msgid "Move Action Up Queue"
-#~ msgstr "将行动前移"
-
-#, fuzzy
-#~| msgid "whiteboard^Move Action Down"
-#~ msgid "Move Action Down Queue"
-#~ msgstr "将行动后移"

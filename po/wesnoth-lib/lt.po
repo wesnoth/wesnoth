@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-18 09:27+0200\n"
+"POT-Creation-Date: 2012-08-18 09:41+0200\n"
 "PO-Revision-Date: 2012-08-13 15:35+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -3664,8 +3664,6 @@ msgstr "Praleisti animaciją"
 
 #. TRANSLATORS: whiteboard menu entry: toggle planning mode
 #: src/hotkeys.cpp:115
-#, fuzzy
-#| msgid "whiteboard^Planning Mode"
 msgid "whiteboard^Planning Mode"
 msgstr "Planavimo režimas"
 
@@ -3676,10 +3674,8 @@ msgstr "Vykdyti veiksmą"
 
 #. TRANSLATORS: whiteboard menu entry: execute all planned actions
 #: src/hotkeys.cpp:119
-#, fuzzy
-#| msgid "whiteboard^Execute Action"
 msgid "whiteboard^Execute All Actions"
-msgstr "Vykdyti veiksmą"
+msgstr "Vykdyti visus veiksmus"
 
 #. TRANSLATORS: whiteboard menu entry: delete planned action
 #: src/hotkeys.cpp:121
@@ -3688,22 +3684,16 @@ msgstr "Trinti veiksmą"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action up queue
 #: src/hotkeys.cpp:123
-#, fuzzy
-#| msgid "whiteboard^Delete Action"
 msgid "whiteboard^Move Action Up"
-msgstr "Trinti veiksmą"
+msgstr ""
 
 #. TRANSLATORS: whiteboard menu entry: move planned action down queue
 #: src/hotkeys.cpp:125
-#, fuzzy
-#| msgid "whiteboard^Delete Action"
 msgid "whiteboard^Move Action Down"
-msgstr "Trinti veiksmą"
+msgstr ""
 
 #. TRANSLATORS: whiteboard menu entry: plan as though the chosen unit were dead
 #: src/hotkeys.cpp:127
-#, fuzzy
-#| msgid "whiteboard^Suppose Dead"
 msgid "whiteboard^Suppose Dead"
 msgstr "Laikyti mirusiu"
 
@@ -4244,13 +4234,3 @@ msgstr ""
 
 #~ msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 #~ msgstr "Ištrinti autoišsaugojimus laimėjus VŽ/DŽ arba pralaimėjus DŽ"
-
-#, fuzzy
-#~| msgid "whiteboard^Execute All Actions"
-#~ msgid "Execute Planned Action"
-#~ msgstr "Vykdyti visus veiksmus"
-
-#, fuzzy
-#~| msgid "whiteboard^Execute All Actions"
-#~ msgid "Execute All Actions"
-#~ msgstr "Vykdyti visus veiksmus"
