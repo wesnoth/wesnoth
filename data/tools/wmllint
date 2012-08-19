@@ -1321,7 +1321,7 @@ def global_sanity_check(filename, lines):
                 if markcheck and has_tr_mark and not ("wmllint: ignore" in comment or "wmllint: noconvert" in comment):
                     print '"%s", line %d: %s should not have a translation mark' \
                               % (filename, i+1, key)
-                    lines[i] = lines[i].replace("_", "", 1)
+                    lines[i] = prefix + value.replace("_", "", 1) + comment + '\n'
     # Now that we know who's present, register all these names as spellings
     declared_spellings[filename] = map(lambda x: x.lower(), present)
     # Check for textdomain strings; should be exactly one, on line 1
