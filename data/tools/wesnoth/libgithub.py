@@ -84,7 +84,7 @@ class Addon(object):
         elif out.find("CONFLICT") != -1:
             #This means that a conflicting local commit was done
             #Its author will have to fix it
-            logging.error("CONFLICT in add-on {0}. Please mer".format(self.name))
+            logging.error("CONFLICT in add-on {0}. Please merge".format(self.name))
             return False
         elif err.find("local changes") != -1:
             logging.error("Found local changes in add-on {0}.".format(self.name))
