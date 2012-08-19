@@ -155,7 +155,7 @@ void suppose_dead::redraw()
 	resources::screen->invalidate(loc_);
 }
 
-action::error suppose_dead::check() const
+action::error suppose_dead::check_validity() const
 {
 	if(!get_source_hex().valid()) {
 		return INVALID_LOCATION;

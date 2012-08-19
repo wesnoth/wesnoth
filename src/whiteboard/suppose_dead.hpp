@@ -54,7 +54,7 @@ public:
 	 * @return the error preventing the action from being executed.
 	 * @retval OK if there isn't any error (the action can be executed.)
 	 */
-	virtual error check() const;
+	virtual error check_validity() const;
 
 	/** Applies temporarily the result of this action to the specified unit map. */
 	virtual void apply_temp_modifier(unit_map& unit_map);

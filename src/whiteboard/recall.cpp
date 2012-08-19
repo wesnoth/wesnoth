@@ -179,7 +179,7 @@ void recall::redraw()
 	resources::screen->invalidate(recall_hex_);
 }
 
-action::error recall::check() const
+action::error recall::check_validity() const
 {
 	//Check that destination hex is still free
 	if(resources::units->find(recall_hex_) != resources::units->end()) {

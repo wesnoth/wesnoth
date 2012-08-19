@@ -178,7 +178,7 @@ std::auto_ptr<unit> recruit::create_corresponding_unit()
 	return result; //ownership gets transferred to returned auto_ptr copy
 }
 
-action::error recruit::check() const
+action::error recruit::check_validity() const
 {
 	//Check that destination hex is still free
 	if(resources::units->find(recruit_hex_) != resources::units->end()) {

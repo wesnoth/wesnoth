@@ -407,7 +407,7 @@ map_location move::get_numbering_hex() const
 	return get_dest_hex();
 }
 
-action::error move::check() const
+action::error move::check_validity() const
 {
 	// Used to deal with multiple return paths.
 	class arrow_texture_setter {

@@ -122,14 +122,14 @@ public:
 	 * @return the error preventing the action from being executed.
 	 * @retval OK if there isn't any error (the action can be executed.)
 	 */
-	virtual error check() const = 0;
+	virtual error check_validity() const = 0;
 
 	/**
 	 * Returns whether this action is valid or not.
 	 *
 	 * @note This value is now calculated each time the function is called.
 	 */
-	bool valid(){ return check()==OK; }
+	bool valid(){ return check_validity()==OK; }
 
 private:
 	/** Called by the non-virtual hide() and show(), respectively. */

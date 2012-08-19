@@ -221,7 +221,7 @@ void attack::redraw()
 	resources::screen->invalidate(target_hex_);
 }
 
-action::error attack::check() const
+action::error attack::check_validity() const
 {
 	// Verify that the unit that planned this attack exists
 	if(!get_unit()) {
@@ -246,7 +246,7 @@ action::error attack::check() const
 	//@todo: (maybe) verify that the target hex contains the same unit that before,
 	// comparing for example the unit ID
 
-	return move::check();
+	return move::check_validity();
 }
 
 config attack::to_config() const

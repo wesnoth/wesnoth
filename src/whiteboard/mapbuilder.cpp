@@ -125,7 +125,7 @@ void mapbuilder::process(side_actions &sa, side_actions::iterator action_it)
 	}
 
 	// Validity check
-	action::error erval = action->check();
+	action::error erval = action->check_validity();
 	action->redraw();
 
 	if(erval != action::OK) {

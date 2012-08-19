@@ -50,7 +50,7 @@ public:
 	 * @return the error preventing the action from being executed.
 	 * @retval OK if there isn't any error (the action can be executed.)
 	 */
-	virtual error check() const;
+	virtual error check_validity() const;
 
 	/** Return the unit targeted by this action. Null if unit doesn't exist. */
 	virtual unit* get_unit() const;
