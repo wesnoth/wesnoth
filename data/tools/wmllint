@@ -1008,7 +1008,7 @@ def global_sanity_check(filename, lines):
                 if fields:
                     (key, prefix, value, comment) = fields
                     if key in ("id", "speaker"):
-                        if deathcheck and (value == filter_subject) or (value == "unit"):
+                        if deathcheck and ((value == filter_subject) or (value == "unit")):
                             print '"%s", line %d: %s speaks in his/her death event' % (filename, nav.lineno+1, value)
     # Collect information on defined movement types and races
     for nav in WmllintIterator(lines, filename):
