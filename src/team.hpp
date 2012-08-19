@@ -323,9 +323,11 @@ namespace teams_manager {
 	const std::vector<team> &get_teams();
 }
 
-namespace player_teams {
-	int village_owner(const map_location& loc);
-}
+/**
+ * Given the location of a village, will return the 0-based index
+ * of the team that currently owns it, and -1 if it is unowned.
+ */
+int village_owner(const map_location& loc);
 
 //FIXME: this global method really needs to be moved into play_controller,
 //or somewhere else that makes sense.

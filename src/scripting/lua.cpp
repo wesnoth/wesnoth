@@ -35,7 +35,6 @@
 #include "scripting/lua.hpp"
 #include "scripting/lua_api.hpp"
 
-#include "actions.hpp"
 #include "ai/manager.hpp"
 #include "ai/composite/component.hpp"
 #include "ai/composite/engine_lua.hpp"
@@ -1809,7 +1808,7 @@ static int intf_get_village_owner(lua_State *L)
 	if (!resources::game_map->is_village(loc))
 		return 0;
 
-	int side = village_owner(loc, *resources::teams) + 1;
+	int side = village_owner(loc) + 1;
 	if (!side) return 0;
 	lua_pushinteger(L, side);
 	return 1;
@@ -1831,7 +1830,7 @@ static int intf_set_village_owner(lua_State *L)
 	if (!resources::game_map->is_village(loc))
 		return 0;
 
-	int old_side = village_owner(loc, teams) + 1;
+	int old_side = village_owner(loc) + 1;
 	if (new_side == old_side
 			|| new_side < 0
 			|| new_side > static_cast<int>(teams.size())

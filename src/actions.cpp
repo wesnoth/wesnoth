@@ -1925,16 +1925,6 @@ void attack::perform()
 }
 
 
-int village_owner(const map_location& loc, const std::vector<team>& teams)
-{
-	for(size_t i = 0; i != teams.size(); ++i) {
-		if(teams[i].owns_village(loc))
-			return i;
-	}
-
-	return -1;
-}
-
 bool get_village(const map_location& loc, int side, int *action_timebonus)
 {
 	std::vector<team> &teams = *resources::teams;
@@ -3401,7 +3391,7 @@ namespace { // Private helpers for move_unit()
 			// Village capturing.
 			if ( resources::game_map->is_village(final_loc) ) {
 				// Is this a capture?
-				orig_village_owner = village_owner(final_loc, *resources::teams);
+				orig_village_owner = village_owner(final_loc);
 				if ( orig_village_owner != current_side_-1 ) {
 					// Captured. Zap movement and take over the village.
 					move_it_->set_movement(0);

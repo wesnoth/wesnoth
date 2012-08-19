@@ -1630,7 +1630,7 @@ void menu_handler::change_side(mouse_handler& mousehandler)
 			return;
 
 		// village_owner returns -1 for free village, so team 0 will get it
-		int team = village_owner(loc, teams_) + 1;
+		int team = village_owner(loc) + 1;
 		// team is 0-based so team=team::nteams() is not a team
 		// but this will make get_village free it
 		if(team > team::nteams()) {

@@ -15,7 +15,6 @@
 
 #include "global.hpp"
 
-#include "actions.hpp"
 #include "attack_prediction.hpp"
 #include "editor/editor_controller.hpp"
 #include "editor/palette/terrain_palettes.hpp"
@@ -1101,7 +1100,7 @@ REPORT_GENERATOR(terrain)
 	std::ostringstream str;
 	if (map.is_village(mouseover_hex))
 	{
-		int owner = village_owner(mouseover_hex, *resources::teams) + 1;
+		int owner = village_owner(mouseover_hex) + 1;
 		if (owner == 0 || viewing_team.fogged(mouseover_hex)) {
 			str << map.get_terrain_info(terrain).income_description();
 		} else if (owner == viewing_side) {

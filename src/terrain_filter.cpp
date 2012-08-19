@@ -17,7 +17,6 @@
 
 #include "global.hpp"
 
-#include "actions.hpp"
 #include "config.hpp"
 #include "log.hpp"
 #include "map.hpp"
@@ -284,7 +283,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 		side_filter ssf(filter_owner);
 		const std::vector<int>& sides = ssf.get_teams();
 		bool found = false;
-		if(sides.empty() && village_owner(loc, *resources::teams) == -1)
+		if(sides.empty() && village_owner(loc) == -1)
 			found = true;
 		BOOST_FOREACH(const int side, sides) {
 			if(resources::teams->at(side - 1).owns_village(loc)) {
@@ -297,7 +296,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 	}
 	else if(!owner_side.empty()) {
 		const int side_index = lexical_cast_default<int>(owner_side,0) - 1;
-		if(village_owner(loc, *resources::teams) != side_index) {
+		if(village_owner(loc) != side_index) {
 			return false;
 		}
 	}

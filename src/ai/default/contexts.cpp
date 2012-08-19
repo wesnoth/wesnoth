@@ -21,7 +21,6 @@
 
 #include "contexts.hpp"
 
-#include "../../actions.hpp"
 #include "../../log.hpp"
 #include "../../map.hpp"
 #include "../../resources.hpp"
@@ -118,7 +117,7 @@ int default_ai_context_impl::rate_terrain(const unit& u, const map_location& loc
 	}
 
 	if(map_.is_village(terrain)) {
-		int owner = village_owner(loc, *resources::teams) + 1;
+		int owner = village_owner(loc) + 1;
 
 		if(owner == get_side()) {
 			rating += friendly_village_value;

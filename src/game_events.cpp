@@ -1782,7 +1782,7 @@ void change_terrain(const map_location &loc, const t_translation::t_terrain &t,
 	preferences::encountered_terrains().insert(new_t);
 
 	if (game_map->is_village(old_t) && !game_map->is_village(new_t)) {
-		int owner = village_owner(loc, *resources::teams);
+		int owner = village_owner(loc);
 		if (owner != -1)
 			(*resources::teams)[owner].lose_village(loc);
 	}

@@ -300,12 +300,6 @@ private:
 };
 
 /**
- * Given the location of a village, will return the 0-based index
- * of the team that currently owns it, and -1 if it is unowned.
- */
-int village_owner(const map_location& loc, const std::vector<team>& teams);
-
-/**
  * Makes it so the village at the given location is owned by the given side.
  * Returns true if getting the village triggered a mutating event.
  */
