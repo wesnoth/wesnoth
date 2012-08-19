@@ -1160,6 +1160,7 @@ def global_sanity_check(filename, lines):
     #this avoids complaints about unknown [event]id=something, but keeps the check
     #in case some [filter]id= comes in this [event]
     directly_in_event = []
+    in_time_area = False
     ignoreable = False
     preamble_seen = False
     sentence_end = re.compile("(?<=[.!?;:])  +")
@@ -1240,6 +1241,10 @@ def global_sanity_check(filename, lines):
             in_option = False
         elif "[option]" in lines[i]:
             in_option = True
+        elif "[time_area]" in lines[i]:
+            in_time_area = True
+        elif "[/time_area]" in lines[i]:
+            in_time_area = False
         elif "[label]" in lines[i] or "[chamber]" in lines[i] or "[time]" in lines[i]:
             ignore_id = True
         elif "[/label]" in lines[i] or "[/chamber]" in lines[i] or "[/time]" in lines[i]:
@@ -1320,7 +1325,7 @@ def global_sanity_check(filename, lines):
                         present.append(value)
                     elif value and value[0] in ("$", "{"):
                         continue
-                    elif preamble_seen and subtag_depth > 0 and not ignore_id and not in_object and not in_cfg and not in_facet and not in_sound_source and not in_remove_sound_source and not in_stage and not in_goal and not in_set_menu_item and not directly_in_event[-1]:
+                    elif preamble_seen and subtag_depth > 0 and not ignore_id and not in_object and not in_cfg and not in_facet and not in_sound_source and not in_remove_sound_source and not in_stage and not in_goal and not in_set_menu_item and not directly_in_event[-1] and not in_time_area:
                         ids = value.split(",")
                         for j in range(len(ids)):
                             # removal of leading whitespace of items in comma-separated lists
