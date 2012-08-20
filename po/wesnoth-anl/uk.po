@@ -5,10 +5,10 @@
 # Igor Paliychuk <mansonigor@gmail.com>, 2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-18 09:41+0200\n"
-"PO-Revision-Date: 2012-07-22 15:05+0200\n"
+"POT-Creation-Date: 2012-08-18 09:52+0200\n"
+"PO-Revision-Date: 2012-08-18 19:31+0200\n"
 "Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: uk\n"
@@ -29,6 +29,9 @@ msgid ""
 "This 4p survival scenario allows you to construct buildings and terraform "
 "the land. Use map settings. The recommended starting gold is 100."
 msgstr ""
+"Сценарій на виживання для 4 гравців дозволяє будувати будівлі і "
+"видозмінювати місцевість. Використовуйте параметри карти. Рекомендоване "
+"стартове золото - 100."
 
 #. [part]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:24
@@ -38,11 +41,17 @@ msgid ""
 "armies that had crushed their homeland, the leaders of the resistance hoped "
 "only for enough time to rebuild their forces."
 msgstr ""
+"Після довгої війни залишки людей знайшли притулок в загубленій тихій долині. "
+"Лідери опору знали, що їм не сховатися від могутніх армій, що зруйнували "
+"їхній край. Але вони сподівалися, що їм все ж таки вистачить часу відновити "
+"сили."
 
 #. [objectives]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:32
 msgid "Right-click on your leader during your turn for help"
 msgstr ""
+"Допомогу можна отримати, якщо на своєму ходу клацнути правою кнопкою миші на "
+"своєму лідері"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:34
@@ -103,7 +112,7 @@ msgstr ""
 msgid ""
 "One of your peasants has happened upon some spiders’ nests in the north and "
 "south."
-msgstr ""
+msgstr "Один з ваших селян виявив павукові гнізда на півночі і півдні."
 
 #. [message]: type=Peasant
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:591
@@ -111,6 +120,7 @@ msgid ""
 "I swear I saw somebody trapped in the spider’s web. Maybe we should rescue "
 "him?"
 msgstr ""
+"Можу поклястися, я бачив, як хтось заплутався в павутині. Може врятуємо його?"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:613
@@ -119,12 +129,17 @@ msgid ""
 "spiders guarding each captive are currently wounded, the sooner you get "
 "there the better chance you have of killing them."
 msgstr ""
+"Підведіть будь-якого бійця до полонених і вони перейдуть на вашу сторону. "
+"Павуки, що охороняють полонених, поранені, тому чим раніше ви туди "
+"доберетеся, тим більше у вас шансів їх вбити."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:625
 msgid ""
 "Your men report strange sounds coming from some caves to the east and west."
 msgstr ""
+"Ваші люди повідомляють про дивні звуки, що доносяться з деяких печер на "
+"сході та заході."
 
 #. [message]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:631
@@ -133,6 +148,9 @@ msgid ""
 "it must be where the mainstay of their resources are produced. If we could "
 "destroy them our chances wouldn’t nearly be so slim."
 msgstr ""
+"Схоже, що ворогові вдалося вибудувати неподалік підземні грибні копальні. "
+"Напевне саме там і добувається більшість їхніх ресурсів. Якщо б ми змогли їх "
+"знищити, наші шанси не були б такими нікчемними."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:653
@@ -140,6 +158,8 @@ msgid ""
 "Move any unit onto these villages to destroy the mine. Each one you destroy "
 "will reduce the enemy’s income by 10."
 msgstr ""
+"Помістіть будь-якого бійця в село, щоб знищити копальню. Кожна знищена "
+"копальня зменшить прибуток ворога на 10 золотих."
 
 #. [message]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:666
@@ -152,6 +172,7 @@ msgid ""
 "We have survived the onslaught! The tide of the battle has turned, victory "
 "cannot elude us now!"
 msgstr ""
+"Ми відбили атаку! Почалася зовсім інша битва, тепер перемога буде наша!"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:682
@@ -166,7 +187,7 @@ msgstr "Мене перемогли, але не все ще втрачено!"
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:711
 msgid "I am done for, but we have yet to lose this battle!"
-msgstr ""
+msgstr "Я більше не можу, але ми все ще можемо виграти цей бій!"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:724
@@ -202,6 +223,9 @@ msgid ""
 "peasant allows you to terraform the landscape and/or build castles, mines, "
 "farms, villages and universities."
 msgstr ""
+"Селяни - це ваші робітники. Натискання правої кнопки миші на будь-якому з "
+"них в залежності від типу поверхні дозволить вам видозмінювати ландшафт і/"
+"або будувати замки, копальні, ферми та університети."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
@@ -216,6 +240,8 @@ msgid ""
 "Mages are your wise men. They can study at universities, pursuing advances "
 "in mining, farming and recruitment."
 msgstr ""
+"Маги - це ваші мудреці. Вони можуть займатися наукою в університетах, "
+"поліпшувати гірничу справу, сільське господарство та вербування."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
@@ -230,6 +256,8 @@ msgid ""
 "Farms can only be planted on grassland. Move a peasant onto a farm and he "
 "will begin to automatically harvest the cash crop."
 msgstr ""
+"Ферми можна будувати лише на луках. Помістіть селянина в ферму і він сам "
+"почне збирати урожай."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
@@ -245,13 +273,16 @@ msgid ""
 "usual. Right-click on a peasant in a village and you can establish a "
 "university."
 msgstr ""
+"Села можна будувати лише на луках. Села забезпечують прибуток та зцілення. "
+"Клацнувши правою кнопкою миші на селянинові в селі, ви можете заснувати "
+"університет."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:57
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:153
 msgid "Mines"
-msgstr "Шахти"
+msgstr "Копальні"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:59
@@ -259,6 +290,8 @@ msgid ""
 "Mines can be built on hills or mountains. A peasant on a mine will "
 "automatically dig for gold at the start of your turn."
 msgstr ""
+"Копальні можна будувати на пагорбах і в горах. Селянин, поміщений в "
+"копальню, буде добувати золото на початку вашого ходу."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
@@ -275,6 +308,10 @@ msgid ""
 "your chosen research target. Right-click on a mage in a university to change "
 "research target."
 msgstr ""
+"Будь-яке ’ельфійське’ село є університетом. Якщо маг знаходиться в "
+"університеті, то на початку кожного ходу прогрес досліджуваної дисципліни "
+"збільшується. Щоб змінити досліджувану дисципліну, натисніть правою кнопкою "
+"миші на мага, коли той перебуває в університеті."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
@@ -291,6 +328,8 @@ msgid ""
 "Right-clicking on your leader when in a university allows you to select "
 "special diplomatic options."
 msgstr ""
+"Для того, щоб вибрати спеціальні опції димпломатії, клацніть правою кнопкою "
+"миші на свого лідера, коли він знаходиться в університеті."
 
 #. [set_menu_item]: id=anl_help
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:87
@@ -315,7 +354,7 @@ msgstr "Готово"
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:47
 msgid "I hereby donate 20 gold to the coffers of $df_player_name|."
-msgstr ""
+msgstr "Я жертвую 20 золотих в казну гравця $df_player_name|."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:100
@@ -323,6 +362,9 @@ msgid ""
 "$sf_player_name|, since our wisdom exceeds yours I have instructed my "
 "scholars to further your understanding of agriculture."
 msgstr ""
+"$sf_player_name|, оскільки ми володіємо знаннями, яких немає в тебе, я "
+"віддав своїм вченим розпорядження допомогти тобі в освоєнні сільського "
+"господарства."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:138
@@ -331,6 +373,8 @@ msgid ""
 "instructed my scholars to aid you in your efforts to learn the science of "
 "mining."
 msgstr ""
+"$sm_player_name|, оскільки ми володіємо знаннями, яких немає в тебе, я "
+"віддав своїм вченим розпорядження допомогти тобі в освоєнні гірничої справи."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:183
@@ -338,6 +382,9 @@ msgid ""
 "You know worryingly little about the arts of war, $sw_player_name|. I feel "
 "an obligation to instruct you in this vital matter."
 msgstr ""
+"$sw_player_name|, ти майже нічого не знаєш про мистецтво ведення війни. Я "
+"вважаю своїм обов'язком допомогти тобі в освоєнні цього життєво важливого "
+"ремесла."
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:249
@@ -456,6 +503,8 @@ msgid ""
 "Our talks are complete — the Dwarves will gladly fight by your side. Which "
 "of our brethren do you want to recruit?"
 msgstr ""
+"Наші переговори завершені — гноми згодні битися на вашому боці. Кого з наших "
+"побратимів ви хочете завербувати?"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:573
@@ -463,6 +512,8 @@ msgid ""
 "Our talks are complete — the Elves shall aid you in this battle. Which our "
 "of kin do you wish to recruit?"
 msgstr ""
+"Наші переговори завершені — ельфи згодні битися на вашому боці. Кого з наших "
+"побратимів ви хочете завербувати?"
 
 #. [set_menu_item]: id=anl_choose_new_recruit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:34
@@ -503,6 +554,11 @@ msgid ""
 "Our farms produce $player_$side_number|.farming.gold|g\n"
 "Our mines produce $player_$side_number|.mining.gold|g\n"
 msgstr ""
+"На даний момент ми вивчаємо $player_$side_number|.research."
+"target_language_name|. Чому наші вчені повинні присвятити свої думки?\n"
+"\n"
+"Ферми приносять нам $player_$side_number|.farming.gold| золотих\n"
+"Копальні приносять нам $player_$side_number|.mining.gold| золотих\n"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:148
@@ -517,6 +573,10 @@ msgid ""
 "Study Progress: $player_$side_number|.farming.progress|/$player_"
 "$side_number|.farming.target"
 msgstr ""
+"<span color='green'>Сільське господарство</span>\n"
+"Фермери приносять один золотий\n"
+"Прогрес навчання: $player_$side_number|.farming.progress|/$player_"
+"$side_number|.farming.target"
 
 #. [command]
 #. [research]
@@ -533,6 +593,10 @@ msgid ""
 "Study Progress: $player_$side_number|.mining.progress|/$player_$side_number|."
 "mining.target"
 msgstr ""
+"<span color='green'>Гірництво</span>\n"
+"Гірники приносять один золотий\n"
+"Прогрес навчання: $player_$side_number|.mining.progress|/$player_"
+"$side_number|.mining.target"
 
 #. [command]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:180
@@ -547,6 +611,10 @@ msgid ""
 "Study Progress: $player_$side_number|.warfare.progress|/$player_"
 "$side_number|.warfare.target"
 msgstr ""
+"<span color='green'>Військова справа</span>\n"
+"Дозволяє вам вербувати бійців нового типу\n"
+"Прогрес навчання: $player_$side_number|.warfare.progress|/$player_"
+"$side_number|.warfare.target"
 
 #. [command]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:198
@@ -568,7 +636,7 @@ msgid ""
 "$player_$side_number|.name|’s mines now produce $player_$side_number|.mining."
 "gold gold."
 msgstr ""
-"Тепер шахти гравця $player_$side_number|.name| приносять $player_"
+"Тепер копальні гравця $player_$side_number|.name| приносять $player_"
 "$side_number|.mining.gold золотих."
 
 #. [message]: speaker=narrator
@@ -675,7 +743,7 @@ msgstr "Заробіток: 1g"
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:247
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:272
 msgid "Build Mine"
-msgstr "Збудувати шахту"
+msgstr "Збудувати копальню"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:247

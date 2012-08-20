@@ -5,10 +5,10 @@
 # Igor Paliychuk <mansonigor@gmail.com>, 2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-18 09:41+0200\n"
-"PO-Revision-Date: 2012-07-22 15:52+0200\n"
+"POT-Creation-Date: 2012-08-18 09:52+0200\n"
+"PO-Revision-Date: 2012-08-18 20:22+0200\n"
 "Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: uk\n"
@@ -39,16 +39,18 @@ msgid ""
 "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
 "score = %d  Gold = %d"
 msgstr ""
+"<span foreground='#%02x%02x%02x'>Сторона %d</span>:  Рахунок прибутку = %d  "
+"Рахунок бійців = %d  Золото = %d"
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
 #: data/multiplayer/eras.cfg:132
 msgid "Grand total: <b>%d</b>"
-msgstr ""
+msgstr "Загальний підсумок: <b>%d</b>"
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
 #: data/multiplayer/eras.cfg:142
 msgid "<span foreground='%s'>Side %d</span> has the advantage."
-msgstr ""
+msgstr "<span foreground='%s'>Сторона %d</span> має перевагу."
 
 #. [era]: id=era_default
 #: data/multiplayer/eras.cfg:166
@@ -117,6 +119,17 @@ msgid ""
 "herself by arranging battles between the mortal beings unlucky enough to be "
 "drawn into its depths. Designed by Doc Paterson."
 msgstr ""
+"Давним-давно, Велика Мага Сулла була замкнена в Ефірну кулю, узи з містичної "
+"енергії, чия хаотична природа була в змозі запобігти втечі. Проте, протягом "
+"століть Сулла поступово накопичувала свої сили для боротьби з Ефіром, а "
+"тепер почала проектувати свій вплив на матеріальний план, спираючись на цілі "
+"регіони землі з сотень різних світів, реальностей та часових періодів. Вона "
+"експериментує з цими розрізненими частинами космосу, маніпулюючи ними, "
+"зливаючи їх і відправляючи туди і назад між Ефірною кулею і місцями їх "
+"походження. Можливо, оскільки її влада над Ефірною кулею росте, Сулла в один "
+"прекрасний день зможе вирватися зі своєї в'язниці. До того дня вона буде "
+"продовжувати розважати себе, влаштовуючи бої між смертними істотами, яким не "
+"пощастило бути втягнутими в глибини кулі. Створив Doc Paterson."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:22
@@ -181,7 +194,7 @@ msgstr "Південь"
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:288
 msgid "Aethermaw — Created by Doc Paterson"
-msgstr ""
+msgstr "Ефірна куля. Автор - Doc Paterson."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:292
@@ -201,12 +214,27 @@ msgid ""
 "unite the two halves of the battlefield. The process will be complete by the "
 "end of turn 6.</span>\n"
 msgstr ""
+"Велика мага Сулла перенесла ваші армії до цього дивного місця, і вимагає, "
+"щоб ви розважити її, проводячи бої.\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"<span color='red'>Примітка:</span>\n"
+"\n"
+"<span color='green'>Бійці не можуть переходити на поля з кам'яними "
+"пірамідами. Проте вони можуть бути найняті в таких полях та виходити з них.</"
+"span>\n"
+"\n"
+"<span color='green'>Починаючи з четвертого ходу Велика мага Сулла почне "
+"об'єднувати дві половини поля бою. Цей процес буде завершений до кінця "
+"шостого ходу.</span>\n"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:315
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:332
 msgid "The Aethermaw growls."
-msgstr ""
+msgstr "Гуркіт Ефірної кулі."
 
 #. [multiplayer]: id=multiplayer_Arcanclave_Citadel
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:6
@@ -235,6 +263,22 @@ msgid ""
 "Great Mage Dauntless, may yet remain hidden, lost somewhere within the "
 "granite and obsidian walls of Arcanclave Citadel. Designed by Doc Paterson."
 msgstr ""
+"Дуже давно, задовго до часів Хальдріка, і далеко за межами лісу Лінтанір, "
+"велися великі та жахливі війни. Записи розповідають про могутнього бойового "
+"мага, блискучого тактика і практика таємних мистецтв, який був удостоєний "
+"звання Безстрашний його послідовниками. У битві при Арканклаві, Безстрашний "
+"і його армії билися з лютою расою чаклунів-демонів відомих як Ках Руук. "
+"Оточений десятками тисяч Ках Руук, Безстрашний використав свою магію, щоб "
+"викликати могутнього елементаля землі (який, з невідомих причин, був у боргу "
+"перед Безстрашним). Елементаль підняв з глибин величезні камені, і сформував "
+"з них, в лічені миті, зубчаті стіни масивної фортеці. Тисячі Ках Руук "
+"загинули в їх спробі захопити Цитадель Арканклав, і в той день Безстрашний "
+"та його люди перемогли. Більше тисячі років потому, воїн-королева Синсун "
+"Перша прогнала клан некромантів з руїн Цитаделі Арканклав, і в наступні "
+"роки, перетворила регіон в військовою фортецею. Ходять чутки, що деякі "
+"могутні артефакти, залишки від правління великого мага Безстрашного, "
+"можливо, ще приховуються десь поміж гранітних та обсидіанових стін Цитаделі "
+"Арканклаву. Створив Doc Paterson."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:22
@@ -309,6 +353,9 @@ msgid ""
 "Basilisk. The petrified forms of his victims remain as monuments to his "
 "savage power."
 msgstr ""
+"Колись ці печери були лігвом Чак'ксо Ней'їкса, легендарного Старшого "
+"Василіска. Скам'янілі фігури його жертв є монументами, що вказують на його "
+"страхітливу силу."
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:82
@@ -334,6 +381,26 @@ msgid ""
 "His home to steal the Basilisk’s gold.\n"
 "(inscribed by Flametrooper)"
 msgstr ""
+"У темному небі дув вітер холодний,\n"
+"Ніч пізня була, а місяць високо,\n"
+"Хоробрий був дрейк, що покинув свій дім\n"
+"Щоб вкрасти золото Василіска.\n"
+"\n"
+"Небо пінилось тієї темної ночі,\n"
+"Він викинув із голови всі пройдені уроки,\n"
+"В печеру Василіска, безглуздо та сміливо\n"
+"Влетів, набравши полум'я на повні груди.\n"
+"\n"
+"Та більш нічого він не спалить,\n"
+"Бо було досить реву Василіска,\n"
+"Холодний подих обернув його на камінь,\n"
+"І став той монументом вічним.\n"
+"\n"
+"У темному небі дув вітер холодний,\n"
+"Минали роки, мінялись часи,\n"
+"Стоїть ще той дрейк, що покинув свій дім\n"
+"Щоб вкрасти золото Василіска.\n"
+"(написав Flametrooper)"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:104
@@ -342,7 +409,6 @@ msgstr "Ксікріск"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:110
-#, fuzzy
 msgid ""
 "Xikkrisx of Syrsszk was a powerful Saurian warrior, sent to this region by "
 "the Elders of the Rysssrylosszkk Clan (translation: “The Hunts-Foes-In-"
@@ -363,7 +429,24 @@ msgid ""
 "back to the domain of the Rysssrylosszkk Clan. Exhausted, and not having "
 "traveled far from the lake, Xikkrisx set the statue down inside of a small "
 "cave, and lay down to rest. He was awoken by a bone-chilling roar."
-msgstr "Ксікріск"
+msgstr ""
+"Ксікріскс з Сірсшка був могутнім воїном ящірів, відправленим у цей регіон "
+"старійшинами клану Рисссрилосскк (що означає “Клан тих, хто полює на ворогів "
+"в киплячих річках“). Старійшини готувалися напасти на форпост людей, і вкрай "
+"потребували могутньої магії Оксріска, ящіра-містика, якого бачили прямуючим "
+"до озера Руаскколін. Ксікріскс виявив скам'яніле тіло Оксріска, а поруч з "
+"ним - акуратно згорнутий згорток, який, мабуть, впав у невелику тріщину в "
+"підлозі печери. Він розгорнув згорток, і прочитав короткий уривок з "
+"середини: “Після того, як він був зв'язаний і вигнаний з Верхнього Світу, "
+"розлючений дух Чак'ксо шукав звільнення, і зміг поширити свій поганий вплив "
+"на певні регіони Верхнього Світу, використовуючи для цього ‘кам'яні шляхи‘, "
+"що йшли з поверхні в глибини Нижніх Меж. Ця лють змінила яйця великих "
+"ящірів, і їх форма і дух стали втіленням ненависті Чак'ксо“. Збентежений, "
+"Ксікріскс зосередив увагу на завданні. Вважаючи, що, можливо, старійшини "
+"зможуть знайти спосіб оживити Оксріска, він почав довгу і нудну роботу з "
+"доставки його статуї у володіння клану. Виснажений, і не далеко відійшовши "
+"від озера, він помістив статую всередину невеликої печери, і приліг "
+"відпочити. Розбудив його рев, від якого кров застигала в венах."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:113
@@ -372,7 +455,6 @@ msgstr "Оксрікс"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:116
-#, fuzzy
 msgid ""
 "Oxsrrsk was a powerful Saurian Oracle, who had, in a raid against the rival "
 "Xraxss Clan, acquired (from the vaults of the now-dead Oracle Hesx-Rzzak) a "
@@ -393,7 +475,23 @@ msgid ""
 "or “The Eldest Child,” in the modern tongue. Supremely convinced of his "
 "ability to locate and bind this powerful creature into his service, Oxsrrsk "
 "set out on his journey..."
-msgstr "Оксрікс"
+msgstr ""
+"Оксріск був могутнім Оракулом ящірів, який в набізі проти конкурентного "
+"Ксракхсс, здобув чарівний згорток (із скарбниці нині покійного оракула Хескс-"
+"Рззака). Згорток називався “Ней'йікс Гранітного Погляду“, і розповідав про "
+"істоту на ім'я Чак'ксо Ней'йікс“, що в перекладі з стародавньої мови ящірів "
+"- “Старший син Чак'ксо“. Кажуть, що Чак'ксо був могутнім напівбогом Нижніх "
+"Меж, Ельфійські Хроніки також називали його 'великий демон землі'. Згідно з "
+"цими записами, Чак'ксо одного разу захотів перетворити все живе на землі в "
+"камінь; така велика була його ненависть до істот з плоті і крові. Його "
+"полонили і скували могутньою магією; але за століття після його вигнання (в "
+"підземний світ), в Хроніках почали згадуватися нові, небачені істоти, що "
+"здатні перетворювати плоть на камінь. Був час, коли Василіски (так їх "
+"назвали) плюндрували світ живих, перетворюючи в камінь тисячі живих істот. "
+"Одного за іншим, з великими втратами, їх перебили. Схоже, всіх, крім одного; "
+"Василіска на ім'я “Ней'йікс“, або, на сучасній мові, “Старший син“. "
+"Абсолютно впевнений у своїй здатності знайти, скувати і приручити цю істоту, "
+"Оксріск відправився в дорогу..."
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:122
@@ -407,6 +505,14 @@ msgid ""
 "— Seven Stones — and the Elven\n"
 "(inscribed by Gauteamus)"
 msgstr ""
+"Витончене тіло, спритні руки\n"
+"— Сім каменів і цей восьмий\n"
+"Убив ворогів своїх граціозно\n"
+"— Сім каменів і цей восьмий\n"
+"Стрілець, Смерть Драконів\n"
+"тут смерть прийшла до нього\n"
+"— Сім каменів і цей ельф\n"
+"(написане Гаутімусом)"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:133
@@ -431,6 +537,19 @@ msgid ""
 "words: Good Gog, dog, are yer legs made of stone?!\n"
 "(inscribed by Elvish Pillager)"
 msgstr ""
+"Блам Дак був знаменитий у своєму гоблінському клані завдяки прирученому в "
+"горах жахливому вовку і неймовірній хоробрості. Його лідерство і навички "
+"дозволили гоблінам жити посеред людей і ельфів. Легенди кажуть, що його вовк "
+"загриз п'ятьдесять людей і сотню ельфів.\n"
+"Тому одного разу, коли він почув, що неподалік з'явилось жахливе чудовисько, "
+"він негайно вирішив з ним битись. Всі інші гобліни вірили, що він вб'є "
+"чудовисько і приволочить його труп на бенкет.\n"
+"Він швидко досяг місця. Але як тільки Блам Дак побачив Василіска, його "
+"охопив страх. Він намагався повернути свого вовка та втікти, проте той "
+"навіть не поворухнувся. Коли чудовисько впритул підійшло до нього, останніми "
+"словами, які прокричав гоблін, були: Славний Гог, песику, у тебе що, ноги "
+"скам'яніли?!\n"
+"(написав Ельфійський Мародер)"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:142
@@ -450,6 +569,15 @@ msgid ""
 "Terowydlithrol, who had been seen entering the region but a day ago. Burning "
 "for vengeance, Rah Ihn Mar began the hunt....."
 msgstr ""
+"Рах Ін Мар, Володар Палаючих Пагорбів, пройшов шлях до озера Руаскколін в "
+"гонитві за ельфійським героєм Теровидлісролем, відомим серед ельфів як "
+"\"Смерть Драконів\". Говорили, що Теровидлісроль вбив Вогняного дракона, що "
+"напав на ельфійське село, і організував \"контратаку\", в якій були вбиті 37 "
+"дрейків, що зупинилися на сусідній рівнині, і яких вважали союзниками "
+"дракона. Знаючи, що ці дрейки були невинні, Рах Ін Мар прийшов до озера "
+"Руаскколін, щоб вислідити і убити Теровидлісроля. Того бачили на день "
+"раніше, як він підходив до озера. Палаючи бажанням помсти, Рах Ін Мар почав "
+"полювання..."
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:151
@@ -462,6 +590,12 @@ msgid ""
 "arrived.\n"
 "(inscribed by Turin)"
 msgstr ""
+"Він жив там упродовж віків, у глибинах води, полюючи на риб, жаб і водяних, "
+"які посміли заплисти в його володіння. Це було його озеро, нічиє більше, "
+"воно було невелике, але він був його хазяїном. А потім з'явився Василіск, що "
+"поглянув йому в очі. Та Змій не помер, хоча і перестав жити. Так з'явився "
+"новий повелитель озера.\n"
+"(написано Туріном)"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:159
@@ -469,6 +603,8 @@ msgid ""
 "It would seem that no one knows the tale of this brave spider.\n"
 "(inscribed by WinnerA)"
 msgstr ""
+"Здається, ніхто не знає історію цього хороброго павука.\n"
+"(написав WinnerA)"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:167
@@ -476,6 +612,8 @@ msgid ""
 "The tale of this unlucky highwayman is yet to be told.\n"
 "(inscribed by WinnerB)"
 msgstr ""
+"Історію цього нещасного грабіжника ще належить розповісти.\n"
+"(написав WinnerB)"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:175
@@ -488,6 +626,13 @@ msgid ""
 "of his once great bearing and strength.\n"
 "(inscribed by Fynmiir)"
 msgstr ""
+"Сміливий герой Золотого Віку Весноту, цей великий вершник і командир прибув "
+"в це зле місце, переслідуючи орків. Потрапивши в пастку і втративши своїх "
+"товаришів, він продовжував відважно битися, убивши безліч ворогів. Але на "
+"жаль! Підлий Василіск перетворив його на камінь, як тільки той вбив "
+"останнього орка. Він і донині там стоїть, нагадуючи про його величність та "
+"силу.\n"
+"(написане Файнміром)"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:180
@@ -513,6 +658,20 @@ msgid ""
 "granted.\n"
 "(inscribed by Elvish Pillager)"
 msgstr ""
+"Лісовик Брамвіцл завжди був повільним і мовчазним, навіть як для лісовика. "
+"Більше за інших лісовиків він любив просто стояти самотньо під сонцем, "
+"піднявши вгору руки і насолоджуючись красою чистого неба. Один раз, правда, "
+"він повідав своєму другу, що хотів би вічно грітися під променями сонця.\n"
+"Однак, трохи пізніше, спільнота лісовиків почула про наближення жахливого "
+"монстра, досить могутнього, щоб запросто знищити невелику купку лісовиків, "
+"які жили на цій землі. Вони швидко покинули ці землі (швидко як для "
+"лісовиків), але Брамвіцл залишився позаду — в поспіху ніхто не згадав про "
+"нього і не попередив про загрозу.\n"
+"Він був захоплений зненацька Василіском і перетворений на камінь, ще до "
+"того, як він зрозумів, що за звір  перед ним стоїть. Його скам'яніле тіло до "
+"цих пір там стоїть, і зігрівається сонцем під відкритим небом. Його "
+"заповітне бажання було здійснено.\n"
+"(написано Ельфійським Мародером)"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:189
@@ -525,6 +684,8 @@ msgid ""
 "General Talael Ryndoc came to this place to fight a duel with the Grand "
 "Marshal Aethec Corryn, but the two men never found one another. "
 msgstr ""
+"Генерал Талаель Риндок прийшов в це місце, щоб битися на дуелі з Великим "
+"Маршалом Етеком Коррином, але вони так і не знайшли один одного. "
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:195
@@ -541,6 +702,12 @@ msgid ""
 "\n"
 "Perhaps he should not have shouted quite so loudly.... "
 msgstr ""
+"Останні слова, сказані Великим Маршалом Етеком Коррином : “Талаель Риндок! Я "
+"шукав тебе всюди! Зараз я повертаюся в Зал Халдріка і оголошу при дворі, що "
+"ти був занадто боязкий, щоб прийти на дуель! Твоя ганьба буде для тебе "
+"тяжчою, ніж смерть, яку ти прийняв би від моєї руки!”\n"
+"\n"
+"Мабуть, йому не варто було так голосно кричати..."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:204
@@ -562,6 +729,16 @@ msgid ""
 "enough, in possession of all of his teeth.\n"
 "(inscribed by Paterson)"
 msgstr ""
+"Сміливий воїн, відомий серед нагів як Рілхон, почув про легендарний скарб, "
+"загублений в цих підводних печерах — спис, чий наконечник, як говорили, був "
+"зроблений з ікла Чак'ксо Ней'їкса, Старшого Василіска, давно вбитого "
+"ельфійським героєм Елоралдуелем. Згідно з легендою, зброя залишилася десь на "
+"дні цього озера (озеро Руаскколін, назване на честь відомого Морського Змія, "
+"який колись там оселився). Добре підготувавшись до сутички зі Змієм, Рілхон "
+"зустрівся з двома несподіванками. Перша — це скам'янілий змій Руаскколін. "
+"Другий — навіть дуже живий Чак'ксо Ней'їкс, у якого до того ж всі зуби були "
+"на місці.\n"
+"(написав Paterson)"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:214
@@ -582,11 +759,26 @@ msgid ""
 "\n"
 "(inscribed by MJQ)"
 msgstr ""
+"Крізь хвилі і кам'янисті канали\n"
+"сині та білі\n"
+"вона керувала припливом\n"
+"і вчила риб говорити з планетами\n"
+"срібляста зелень\n"
+"за допомогою магії,\n"
+"що тече з її душі до водоростей і раковин равликів,\n"
+"що зміцнює її тіло і руки\n"
+"вона доносила свої пісні до двоногих на березі\n"
+"але раптом\n"
+"але раптом дивна пауза\n"
+"на століття\n"
+"вона не може рушити з місця\n"
+"\n"
+"(написав MJQ)"
 
 #. [multiplayer]: id=multiplayer_Cynsaun_Battlefield
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:6
 msgid "2p — Cynsaun Battlefield"
-msgstr "2г — Поле бою Цинзауна"
+msgstr "2г — Поле бою Цинзаун"
 
 #. [multiplayer]: id=multiplayer_Cynsaun_Battlefield
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:8
@@ -594,11 +786,13 @@ msgid ""
 "Cynsaun Province was named for Warrior-Queen Cynsaun the First, who drove "
 "the necromancers from these lands in 961 YW."
 msgstr ""
+"Провінція Цинзаун була названа на честь Королеви-воячки Цинзаун Першої, яка "
+"вигнала некромантів з цих земель в 961 році Е.В."
 
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:5
 msgid "2p — Dark Forecast (Survival)"
-msgstr "2г — Сумний прогноз (виживання)"
+msgstr "2г — Неясний прогноз (виживання)"
 
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:6
@@ -611,6 +805,13 @@ msgid ""
 "Note: You need to use the default map settings for the scenario to work "
 "right."
 msgstr ""
+"Неясний Прогноз - сценарій на виживання для одного або двох гравців, які "
+"грають разом проти випадково породжених військ комп'ютера. Ви переможете, "
+"якщо переживете всі хвилі нападників. Під час гри ландшафт буде змінюватись "
+"залежно від випадкової погоди.\n"
+"\n"
+"Примітка: Щоб сценарій працював вірно, використовуйте типові налаштування "
+"карти."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:434
@@ -619,6 +820,9 @@ msgid ""
 "blood soaked blade from the last of the rebels. There will be no more "
 "resistance from the local scum. Your reign has finally earned stability."
 msgstr ""
+"Крики і благання про пощаду нарешті стихають, коли ви висмикуєте залитий "
+"кров'ю клинок з останнього повстанця. Більше місцеві покидьки не наважаться "
+"бунтувати. Ваше правління нарешті стало стабільним."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:795
@@ -626,6 +830,8 @@ msgid ""
 "The last and most powerful of these creatures are almost upon us. I feel "
 "that if we can finish them off in time, we shall be victorious."
 msgstr ""
+"Останні, наймогутніші з цих тварюк йдуть на нас. Думаю, якщо ми з ними "
+"справимося, то переможемо остаточно."
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:972
@@ -675,27 +881,30 @@ msgid ""
 "Since your team has only one leader, the enemy waves will not be at full "
 "strength."
 msgstr ""
+"Оскільки у вашої команди лише один лідер, хвилі ворогів підуть в неповну "
+"силу."
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1390
 msgid "Death of both of your team’s leaders"
-msgstr ""
+msgstr "Загибель обох лідерів вашої команди"
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1391
 msgid ""
 "Since your team has two leaders, the enemy waves will be at full strength."
 msgstr ""
+"Оскільки у вашої команди два лідери, хвилі ворогів будуть йти на повну силу."
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1412
 msgid "Survive and defeat all enemy waves"
-msgstr ""
+msgstr "Виживіть і відбийте всі атаки противника"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1432
 msgid "Dark Forecast — a random survival scenario"
-msgstr ""
+msgstr "Неясний прогноз - випадковий сценарій на виживання"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1437
@@ -721,11 +930,30 @@ msgid ""
 "<span color='green'>Rhuvaen:</span>\n"
 "• WML implementation"
 msgstr ""
+"Ваша мета — вижити, відбити хвилі ворогів, а під кінець - перемогти їх "
+"ватажків.\n"
+"\n"
+"Хвилі генеруються випадково, і будуть різними кожен раз, коли ви граєте в "
+"Неясний Прогноз.\n"
+"\n"
+"Вони з'являються на північному, південному і західному краях карти — хоча "
+"найбільш ймовірно на західному. Хвилі йдуть з майже рівними інтервалами.\n"
+"\n"
+"Тако буде випадково змінюватись погода, впливаючи на карту.\n"
+"\n"
+"\n"
+"<b>Неясний Прогноз створили:</b>\n"
+"\n"
+"<span color='green'>jb:</span>\n"
+"• Дизайн карти, породження хвиль і концепція сценарію\n"
+"\n"
+"<span color='green'>Rhuvaen:</span>\n"
+"• Реалізовано на WML"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1457
 msgid "So this is the accursed valley — a land ours for the taking."
-msgstr ""
+msgstr "Ось це і є проклята долина. Ця земля буде нашою."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1461
@@ -734,6 +962,9 @@ msgid ""
 "our claim is not going to be unopposed. We must be prepared for the "
 "surprises of this land."
 msgstr ""
+"Говорять, місцеві жителі - це дивний союз людей і чудовиськ, і наші "
+"претензії зустрінуть відсіч. У цьому місці потрібно бути готовим до "
+"несподіванок."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1465
@@ -741,6 +972,7 @@ msgid ""
 "Then let us discover what lies in waiting and teach them not to oppose our "
 "claim."
 msgstr ""
+"Тоді подивимося, що нас тут чекає, і навчимо їх не чинити опір нашим планам."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1502
@@ -748,6 +980,7 @@ msgid ""
 "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
 "me..."
 msgstr ""
+"Охх! Як таке можливо? Прості варвари мене перемогли! Боги покинули мене..."
 
 #. [message]: speaker=second_unit
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1516
@@ -755,6 +988,8 @@ msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
 msgstr ""
+"Останнє, що ви чуєте, зісковзуючи в забуття смерті - радісні крики ворогів..."
+"їх радість наповнює останні хвилини вашого життя сліпою ненавистю."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1538
@@ -763,6 +998,9 @@ msgid ""
 "ghostly wisps drain away your will, you realize that your time in this land "
 "is over."
 msgstr ""
+"Вороги тріумфують, дивлячись, як чорний туман, піднімаючись із землі, "
+"охоплює вас. Коли примарний шепіт подавлює вашу волю, ви розумієте, що ваш "
+"час на цій землі добіг кінця."
 
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
@@ -780,6 +1018,12 @@ msgid ""
 "the Den of Onis, hoping to unlock the strange and mysterious magics of its "
 "creators."
 msgstr ""
+"Найбільш незвичайна печера була колись знана як Зала Регочучих Дияволів, і "
+"була внутрішньою цитаделлю Ках Руук Оні. Ках Руук були злісною і хитрою "
+"расою демонів-людожерів, які наводили страх на Східні Землі майже чотириста "
+"років, поки не зникли з Ірдіі без сліду. З тих пір багато угруповань "
+"змагалися за панування над Лігвом Оніса, сподіваючись розкрити дивну і "
+"загадкову магію його творців."
 
 #. [multiplayer]: id=multiplayer_elensefar_courtyard
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:5
@@ -792,6 +1036,8 @@ msgid ""
 "Fight through corridors and gardens, and dominate the eastern courtyard of "
 "what used to be the glorious city of Elensefar."
 msgstr ""
+"Пробийтеся через сади і коридори і підкоріть східний двір того, що колись "
+"було славним містом Еленсефар."
 
 #. [time]: id=underground_illum
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:114
@@ -801,7 +1047,7 @@ msgstr "Підземелля"
 #. [multiplayer]: id=multiplayer_Fallenstar_Lake
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:5
 msgid "2p — Fallenstar Lake"
-msgstr "2г — Озеро упавшої зірки"
+msgstr "2г — Озеро впавшої зірки"
 
 #. [multiplayer]: id=multiplayer_Fallenstar_Lake
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:6
@@ -809,6 +1055,8 @@ msgid ""
 "Long ago, a great star fell from the heavens, leaving its mark on this "
 "coniferous region."
 msgstr ""
+"Дуже давно, величезна зірка впала з небес, залишивши свою відмітину на цій "
+"порослій хвойними лісами землі."
 
 #. [multiplayer]: id=multiplayer_Hamlets
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:6
@@ -821,6 +1069,8 @@ msgid ""
 "Warfare transforms the simple farms and villages of a peaceful region into a "
 "subtly parceled battlefield. Designed by Doc Paterson."
 msgstr ""
+"Війна перетворила прості ферми і селища мирного регіону на химерно розбите "
+"на шматки поле бою. Створив Doc Paterson."
 
 #. [multiplayer]: id=multiplayer_Hornshark_Island
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:24
@@ -833,6 +1083,8 @@ msgid ""
 "Players must forge strange alliances with the local inhabitants, in order to "
 "survive on this most unusual of islands. Designed by Doc Paterson."
 msgstr ""
+"Щоб вижити на найбільш незвичайному з островів, гравцям доведеться створити "
+"дивні союзи з місцевими жителями. Створив Doc Paterson."
 
 #. [unit]: type=Young Ogre, id=Baby Baby Bo
 #. [unit]: type=Young Ogre, id=Big Baby Bo
@@ -866,7 +1118,7 @@ msgstr "Вільгельм Віскітайнайрі"
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:717
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:729
 msgid "Clockwork Boy"
-msgstr ""
+msgstr "Заведений парубок"
 
 #. [unit]: type=Orcish Leader, id=Neki the Brutal
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:322
@@ -944,6 +1196,8 @@ msgid ""
 "Little remains of this once wealthy mining colony, now a haven for raiders "
 "and thieves."
 msgstr ""
+"Мало що залишилося від колись багатої гірницької колонії. Тепер це притулок "
+"для бандитів і злодіїв."
 
 #. [multiplayer]: id=multiplayer_Sablestone_Delta
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:5
@@ -956,6 +1210,8 @@ msgid ""
 "Two armies collide on this disjointed coastal landscape of hidden caves and "
 "jagged rivers."
 msgstr ""
+"Дві армії стикаються на розділеному узбережжі прихованих печер і бурхливих "
+"річок."
 
 #. [multiplayer]: id=multiplayer_Silverhead_Crossing
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:5
@@ -968,6 +1224,8 @@ msgid ""
 "Players must traverse all manner of terrain in pursuit of victory on this "
 "multi-fronted duel map."
 msgstr ""
+"Гравці повинні перетнути всі типи ландшафту в гонитві за перемогою на цій "
+"багатогранній дуельний карті."
 
 #. [effect]: type=arcane
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:76
@@ -1762,6 +2020,8 @@ msgid ""
 "Teamwork and tactics are key to victory in this unusual battlefield, where "
 "eight armies fight to the finish."
 msgstr ""
+"Командна гра та гарна тактика є ключем до перемоги на цьому незвичайному "
+"полі бою, де зійшлися лицем до лиця вісім армій."
 
 #. [multiplayer]: id=multiplayer_Merkwuerdigliebe
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:7
@@ -1776,6 +2036,10 @@ msgid ""
 "vs. southeast vs. southwest). There are very few villages per player, so 3 "
 "gold per villages is recommended."
 msgstr ""
+"Дуже маленька карта для 3 на 3 на 3. Через велику кількість гравців "
+"рекомендується встановити таймер на 60 секунд. Гравці розбиті на команди 159 "
+"проти 267 проти 348 (північ - південний схід - південний захід). Тут дуже "
+"мало сіл на гравця, тому рекомендовано 3 золотих на село."
 
 #. [multiplayer]: id=multiplayer_Random_Map
 #. [scenario]: id=multiplayer_Random_Map
@@ -1790,6 +2054,8 @@ msgid ""
 "Randomly generated map. Note: random maps are often unbalanced, but if you "
 "have time, you can regenerate them until you get a good one."
 msgstr ""
+"Випадково згенерована карта. Увага: випадкові карти часто не збалансовані, "
+"але якщо у вас є час, ви можете згенерувати нові, поки не отримаєте хорошу."
 
 #. [multiplayer]: id=multiplayer_Random_Map_Desert
 #. [scenario]: id=multiplayer_Random_Map_Desert
@@ -1805,6 +2071,8 @@ msgid ""
 "unbalanced, but if you have time, you can regenerate them until you get a "
 "good one."
 msgstr ""
+"Випадкова карта з пісками. Увага: випадкові карти часто не збалансовані, але "
+"якщо у вас є час, ви можете згенерувати нові, поки не отримаєте хорошу."
 
 #. [multiplayer]: id=multiplayer_Random_Map_Marsh
 #. [scenario]: id=multiplayer_Random_Map_Marsh
@@ -1820,6 +2088,8 @@ msgid ""
 "unbalanced, but if you have time, you can regenerate them until you get a "
 "good one."
 msgstr ""
+"Випадкова карта з болотами. Увага: випадкові карти часто не збалансовані, "
+"але якщо у вас є час, ви можете згенерувати нові, поки не отримаєте хорошу."
 
 #. [multiplayer]: id=multiplayer_Random_Map_Winter
 #. [scenario]: id=multiplayer_Random_Map_Winter
@@ -1835,6 +2105,9 @@ msgid ""
 "terrains. Note: random maps are often unbalanced, but if you have time, you "
 "can regenerate them until you get a good one."
 msgstr ""
+"Випадкова карта між осінню та зимою, переважно зі сніговим покривом. Увага: "
+"випадкові карти часто не збалансовані, але якщо у вас є час, ви можете "
+"згенерувати нові, поки не отримаєте хорошу."
 
 #. [multiplayer]: id=wesbench_ai
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:9
