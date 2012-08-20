@@ -627,7 +627,6 @@ void loadgame::load_game(
 	if (!difficulty_.empty())
 		load_config_["difficulty"] = difficulty_;
 
-	gamestate_.classification().difficulty = load_config_["difficulty"].str();
 	gamestate_.classification().campaign_define = load_config_["campaign_define"].str();
 	gamestate_.classification().campaign_type = load_config_["campaign_type"].str();
 	gamestate_.classification().campaign_xtra_defines = utils::split(load_config_["campaign_extra_defines"]);

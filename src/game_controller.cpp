@@ -332,7 +332,7 @@ bool game_controller::play_test()
 	first_time = false;
 
 	state_.classification().campaign_type = "test";
-	state_.classification().scenario = test_scenario_;
+	state_.carryover_sides_start["next_scenario"] = test_scenario_;
 	state_.classification().campaign_define = "TEST";
 	cache_.add_define("TEST");
 
@@ -466,7 +466,7 @@ bool game_controller::play_multiplayer_mode()
 	}
 
 	state_.classification().campaign_type = "multiplayer";
-	state_.classification().scenario = "";
+	state_.carryover_sides_start["next_scenario"] = "";
 	state_.snapshot = config();
 
 	config level = lvl;
@@ -601,7 +601,7 @@ bool game_controller::load_game()
 		load.load_game(game::load_game_exception::game, game::load_game_exception::show_replay, game::load_game_exception::cancel_orders, game::load_game_exception::select_difficulty, game::load_game_exception::difficulty);
 
 		cache_.clear_defines();
-		game_config::scoped_preproc_define dificulty_def(state_.classification().difficulty);
+		game_config::scoped_preproc_define dificulty_def(state_.carryover_sides_start["difficulty"]);
 
 		game_config::scoped_preproc_define campaign_define_def(state_.classification().campaign_define, !state_.classification().campaign_define.empty());
 
@@ -714,7 +714,7 @@ void game_controller::set_tutorial()
 {
 	state_ = game_state();
 	state_.classification().campaign_type = "tutorial";
-	state_.classification().scenario = "tutorial";
+	state_.carryover_sides_start["next_scenario"] = "tutorial";
 	state_.classification().campaign_define = "TUTORIAL";
 	cache_.clear_defines();
 	cache_.add_define("TUTORIAL");
@@ -792,9 +792,9 @@ bool game_controller::new_campaign()
 
 	// we didn't specify in the command line the scenario to be started
 	if (jump_to_campaign_.scenario_id_.empty())
-		state_.classification().scenario = campaign["first_scenario"].str();
+		state_.carryover_sides_start["next_scenario"] = campaign["first_scenario"].str();
 	else
-		state_.classification().scenario = jump_to_campaign_.scenario_id_;
+		state_.carryover_sides_start["next_scenario"] = jump_to_campaign_.scenario_id_;
 
 	state_.classification().end_text = campaign["end_text"].str();
 	state_.classification().end_text_duration = campaign["end_text_duration"];
@@ -841,7 +841,7 @@ bool game_controller::new_campaign()
 			}
 		}
 
-		state_.classification().difficulty = difficulties[difficulty];
+		state_.carryover_sides_start["difficulty"] = difficulties[difficulty];
 		cache_.clear_defines();
 		cache_.add_define(difficulties[difficulty]);
 	} else {

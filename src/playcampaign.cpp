@@ -90,8 +90,8 @@ static void team_init(config& level, game_state& gamestate){
 }
 
 static void store_carryover(game_state& gamestate, playsingle_controller& playcontroller, display& disp){
-	bool has_next_scenario = !gamestate.classification().next_scenario.empty() &&
-			gamestate.classification().next_scenario != "null";
+	bool has_next_scenario = !resources::gamedata->next_scenario().empty() &&
+			resources::gamedata->next_scenario() != "null";
 
 	carryover_info sides(gamestate.carryover_sides);
 
@@ -172,7 +172,7 @@ void play_replay(display& disp, game_state& gamestate, const config& game_config
 
 	if (gamestate.replay_start().empty()){
 		// Backwards compatibility code for 1.2 and 1.2.1
-		const config &scenario = game_config.find_child(type,"id",gamestate.classification().scenario);
+		const config &scenario = game_config.find_child(type,"id",gamestate.carryover_sides_start["next_scenario"]);
 		assert(scenario);
 		gamestate.replay_start() = scenario;
 	}
@@ -340,8 +340,8 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			scenario = &starting_pos;
 		} else {
 			//reload of the scenario, as starting_pos contains carryover information only
-			LOG_G << "loading scenario: '" << gamestate.classification().scenario << "'\n";
-			scenario = &game_config.find_child(type, "id", gamestate.classification().scenario);
+			LOG_G << "loading scenario: '" << sides.next_scenario() << "'\n";
+			scenario = &game_config.find_child(type, "id", sides.next_scenario());
 
 			if(!*scenario){
 				scenario = NULL;
@@ -416,7 +416,8 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		}
 
 		config::const_child_itors story = scenario->child_range("story");
-		gamestate.classification().next_scenario = (*scenario)["next_scenario"].str();
+		//TODO: remove once scenario in carryover_info/gamedata is confirmed
+//		gamestate.classification().next_scenario = (*scenario)["next_scenario"].str();
 
 		bool save_game_after_scenario = true;
 
@@ -539,7 +540,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		// On DEFEAT, QUIT, or OBSERVER_END, we're done now
 		if (res != VICTORY)
 		{
-			if (res != OBSERVER_END || gamestate.classification().next_scenario.empty()) {
+			if (res != OBSERVER_END || gamestate.carryover_sides_start["next_scenario"].empty()) {
 				gamestate.snapshot = config();
 				return res;
 			}
@@ -559,15 +560,16 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		if (!end_level.prescenario_save)
 			save_game_after_scenario = false;
 
+		//TODO: remove once scenario in carryover_info/gamedata is confirmed
 		// Switch to the next scenario.
-		gamestate.classification().scenario = gamestate.classification().next_scenario;
+		//gamestate.classification().scenario = gamestate.classification().next_scenario;
 
 		sides = carryover_info(gamestate.carryover_sides_start);
 		sides.rng().rotate_random();
 		gamestate.carryover_sides_start = sides.to_config();
 
 		if(io_type == IO_CLIENT) {
-			if (gamestate.classification().next_scenario.empty()) {
+			if (gamestate.carryover_sides_start["next_scenario"].empty()) {
 				gamestate.snapshot = config();
 				return res;
 			}
@@ -595,7 +597,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				return QUIT;
 			}
 		} else {
-			scenario = &game_config.find_child(type, "id", gamestate.classification().scenario);
+			scenario = &game_config.find_child(type, "id", gamestate.carryover_sides_start["next_scenario"]);
 			if (!*scenario)
 				scenario = NULL;
 			else
@@ -731,10 +733,10 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		gamestate.snapshot = config();
 	}
 
-	if (!gamestate.classification().scenario.empty() && gamestate.classification().scenario != "null") {
+	if (!gamestate.carryover_sides_start["next_scenario"].empty() && gamestate.carryover_sides_start["next_scenario"] != "null") {
 		std::string message = _("Unknown scenario: '$scenario|'");
 		utils::string_map symbols;
-		symbols["scenario"] = gamestate.classification().scenario;
+		symbols["scenario"] = gamestate.carryover_sides_start["next_scenario"];
 		message = utils::interpolate_variables_into_string(message, &symbols);
 		gui2::show_error_message(disp.video(), message);
 		return QUIT;

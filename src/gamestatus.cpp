@@ -282,6 +282,8 @@ carryover_info::carryover_info(const config& cfg)
 	, variables_(cfg.child_or_empty("variables"))
 	, rng_(cfg)
 	, wml_menu_items_()
+	, difficulty_(cfg["difficulty"].empty() ? "NORMAL" : cfg["difficulty"].str())
+	, next_scenario_(cfg["next_scenario"])
 {
 	end_level_.read(cfg.child_or_empty("end_level_data"));
 	BOOST_FOREACH(const config& side, cfg.child_range("side")){
@@ -333,6 +335,8 @@ void carryover_info::transfer_from(game_data& gamedata){
 	variables_ = gamedata.get_variables();
 	wml_menu_items_ = gamedata.get_wml_menu_items();
 	rng_ = gamedata.rng();
+	difficulty_ = gamedata.difficulty();
+	next_scenario_ = gamedata.next_scenario();
 }
 
 void carryover_info::transfer_to(config& level){
@@ -348,10 +352,18 @@ void carryover_info::transfer_to(config& level){
 		wml_menu_items_.to_config(level);
 	}
 
+	level["difficulty"] = difficulty_;
+	difficulty_ = "";
+	next_scenario_ = "";
+
 }
 
 const config carryover_info::to_config() {
 	config cfg;
+
+	cfg["difficulty"] = difficulty_;
+	cfg["next_scenario"] = next_scenario_;
+
 	BOOST_FOREACH(carryover& c, carryover_sides_){
 		c.to_config(cfg);
 	}
@@ -701,6 +713,9 @@ game_data::game_data()
 		, generator_setter_(&recorder)
 		, phase_(INITIAL)
 		, can_end_turn_(true)
+		, difficulty_("NORMAL")
+		, scenario_()
+		, next_scenario_()
 		{}
 
 game_data::game_data(const config& level)
@@ -713,6 +728,9 @@ game_data::game_data(const config& level)
 		, generator_setter_(&recorder)
 		, phase_(INITIAL)
 		, can_end_turn_(true)
+		, difficulty_(level["difficulty"].empty() ? "NORMAL" : level["difficulty"].str())
+		, scenario_(level["id"])
+		, next_scenario_(level["next_scenario"])
 {
 	wml_menu_items_.set_menu_items(level);
 	can_end_turn_ = level["can_end_turn"].to_bool(true);
@@ -733,6 +751,9 @@ game_data::game_data(const game_data& data)
 		, generator_setter_(data.generator_setter_)
 		, phase_(data.phase_)
 		, can_end_turn_(data.can_end_turn_)
+		, difficulty_(data.difficulty_)
+		, scenario_(data.scenario_)
+		, next_scenario_(data.next_scenario_)
 {}
 
 game_data::~game_data(){
@@ -813,6 +834,10 @@ void game_data::set_vars(const config& cfg){
 }
 
 void game_data::write_snapshot(config& cfg){
+	cfg["difficulty"] = difficulty_;
+	cfg["scenario"] = scenario_;
+	cfg["next_scenario"] = next_scenario_;
+
 	cfg["can_end_turn"] = can_end_turn_;
 
 	cfg["random_seed"] = rng_.get_random_seed();
@@ -824,6 +849,10 @@ void game_data::write_snapshot(config& cfg){
 }
 
 void game_data::write_config(config_writer& out){
+	out.write_key_val("difficulty", difficulty_);
+	out.write_key_val("scenario", scenario_);
+	out.write_key_val("next_scenario", next_scenario_);
+
 	out.write_key_val("random_seed", lexical_cast<std::string>(rng_.get_random_seed()));
 	out.write_key_val("random_calls", lexical_cast<std::string>(rng_.get_random_calls()));
 	out.write_child("variables", variables_);
@@ -882,13 +911,10 @@ game_classification::game_classification():
 	campaign(),
 	history(),
 	abbrev(),
-	scenario(),
-	next_scenario(),
 	completion(),
 	end_credits(true),
 	end_text(),
-	end_text_duration(),
-	difficulty("NORMAL")
+	end_text_duration()
 	{}
 
 game_classification::game_classification(const config& cfg):
@@ -902,13 +928,10 @@ game_classification::game_classification(const config& cfg):
 	campaign(cfg["campaign"]),
 	history(cfg["history"]),
 	abbrev(cfg["abbrev"]),
-	scenario(cfg["scenario"]),
-	next_scenario(cfg["next_scenario"]),
 	completion(cfg["completion"]),
 	end_credits(cfg["end_credits"].to_bool(true)),
 	end_text(cfg["end_text"]),
-	end_text_duration(cfg["end_text_duration"]),
-	difficulty(cfg["difficulty"].empty() ? "NORMAL" : cfg["difficulty"].str())
+	end_text_duration(cfg["end_text_duration"])
 	{}
 
 game_classification::game_classification(const game_classification& gc):
@@ -922,13 +945,10 @@ game_classification::game_classification(const game_classification& gc):
 	campaign(gc.campaign),
 	history(gc.history),
 	abbrev(gc.abbrev),
-	scenario(gc.scenario),
-	next_scenario(gc.next_scenario),
 	completion(gc.completion),
 	end_credits(gc.end_credits),
 	end_text(gc.end_text),
-	end_text_duration(gc.end_text_duration),
-	difficulty(gc.difficulty)
+	end_text_duration(gc.end_text_duration)
 {
 }
 
@@ -945,13 +965,10 @@ config game_classification::to_config() const
 	cfg["campaign"] = campaign;
 	cfg["history"] = history;
 	cfg["abbrev"] = abbrev;
-	cfg["scenario"] = scenario;
-	cfg["next_scenario"] = next_scenario;
 	cfg["completion"] = completion;
 	cfg["end_credits"] = end_credits;
 	cfg["end_text"] = end_text;
 	cfg["end_text_duration"] = str_cast<unsigned int>(end_text_duration);
-	cfg["difficulty"] = difficulty;
 
 	return cfg;
 }
@@ -1083,8 +1100,7 @@ game_state::game_state(const config& cfg, bool show_replay) :
 		//TODO: check if loading fails completely
 	}
 
-	LOG_NG << "scenario: '" << classification_.scenario << "'\n";
-	LOG_NG << "next_scenario: '" << classification_.next_scenario << "'\n";
+	LOG_NG << "scenario: '" << carryover_sides_start["next_scenario"] << "'\n";
 
 	if (const config &stats = cfg.child("statistics")) {
 		statistics::fresh_stats();
@@ -1124,6 +1140,9 @@ void convert_old_saves(config& cfg){
 		BOOST_FOREACH(const config& menu_item, cfg.child_range("menu_item")){
 			carryover.add_child("menu_item", menu_item);
 		}
+		carryover["difficulty"] = cfg["difficulty"];
+		//the scenario to be played is always stored as next_scenario in carryover_sides_start
+		carryover["next_scenario"] = cfg["scenario"];
 
 		config carryover_start = carryover;
 
@@ -1216,14 +1235,10 @@ void game_state::write_snapshot(config& cfg, game_display* gui) const
 	cfg["abbrev"] = classification_.abbrev;
 	cfg["version"] = game_config::version;
 
-	cfg["scenario"] = classification_.scenario;
-	cfg["next_scenario"] = classification_.next_scenario;
-
 	cfg["completion"] = classification_.completion;
 
 	cfg["campaign"] = classification_.campaign;
 	cfg["campaign_type"] = classification_.campaign_type;
-	cfg["difficulty"] = classification_.difficulty;
 
 	cfg["campaign_define"] = classification_.campaign_define;
 	cfg["campaign_extra_defines"] = utils::join(classification_.campaign_xtra_defines);

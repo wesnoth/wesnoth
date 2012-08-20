@@ -2483,7 +2483,7 @@ WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 
 	std::string next_scenario = cfg["next_scenario"];
 	if (!next_scenario.empty()) {
-		state_of_game->classification().next_scenario = next_scenario;
+		resources::gamedata->set_next_scenario(next_scenario);
 	}
 
 	std::string end_of_campaign_text = cfg["end_text"];

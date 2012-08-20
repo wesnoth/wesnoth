@@ -3348,7 +3348,7 @@ void console_handler::do_nosaves() {
 void console_handler::do_next_level()
 {
 	if (!get_data().empty())
-		menu_handler_.gamestate_.classification().next_scenario = get_data();
+		resources::gamedata->set_next_scenario(get_data());
 	end_level_data &e = resources::controller->get_end_level_data();
 	e.carryover_percentage = 100;
 	e.carryover_add = false;
@@ -3366,7 +3366,7 @@ void console_handler::do_choose_level() {
 	{
 		const std::string &id = sc["id"];
 		options.push_back(id);
-		if (id == menu_handler_.gamestate_.classification().next_scenario)
+		if (id == resources::gamedata->next_scenario())
 			next = nb;
 		++nb;
 	}
@@ -3379,7 +3379,7 @@ void console_handler::do_choose_level() {
 		{
 			const std::string &id = mp["id"];
 			options.push_back(id);
-			if (id == menu_handler_.gamestate_.classification().next_scenario)
+			if (id == resources::gamedata->next_scenario())
 				next = nb;
 			++nb;
 			scenario = mp["next_scenario"].str();
@@ -3398,7 +3398,7 @@ void console_handler::do_choose_level() {
 		return;
 
 	if (size_t(choice) < options.size()) {
-		menu_handler_.gamestate_.classification().next_scenario = options[choice];
+		resources::gamedata->set_next_scenario(options[choice]);
 		end_level_data &e = resources::controller->get_end_level_data();
 		e.carryover_percentage = 100;
 		e.carryover_add = false;

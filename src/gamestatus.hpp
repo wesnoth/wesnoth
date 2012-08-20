@@ -117,6 +117,8 @@ public:
 		, variables_()
 		, rng_()
 		, wml_menu_items_()
+		, difficulty_("NORMAL")
+		, next_scenario_()
 	{}
 	// Turns config from a loaded savegame into carryover_info
 	explicit carryover_info(const config& cfg);
@@ -142,6 +144,10 @@ public:
 	rand_rng::simple_rng& rng() { return rng_; }
 
 	const end_level_data& get_end_level() const;
+
+	const std::string& difficulty() const { return difficulty_; }
+	const std::string& next_scenario() const { return next_scenario_; }
+
 	const config to_config();
 private:
 	std::vector<carryover> carryover_sides_;
@@ -149,6 +155,8 @@ private:
 	config variables_;
 	rand_rng::simple_rng rng_;
 	wmi_container wml_menu_items_;
+	std::string difficulty_; 	/**< The difficulty level the game is being played on. */
+	std::string next_scenario_;    /**< the scenario coming next (for campaigns) */
 };
 
 class game_data  : public variable_set  {
@@ -212,6 +220,10 @@ public:
 	void write_snapshot(config& cfg);
 	void write_config(config_writer& out);
 
+	const std::string& difficulty() const { return difficulty_; }
+	const std::string& next_scenario() const { return next_scenario_; }
+	void set_next_scenario(const std::string& next_scenario) { next_scenario_ = next_scenario; }
+
 	game_data& operator=(const game_data& info);
 	game_data* operator=(const game_data* info);
 
@@ -224,6 +236,9 @@ private:
 	friend struct variable_info;
 	PHASE phase_;
 	bool can_end_turn_;
+	std::string difficulty_; /**< The difficulty level the game is being played on. */
+	std::string scenario_;                            /**< the scenario being played */
+	std::string next_scenario_;                       /**< the scenario coming next (for campaigns) */
 };
 
 //meta information of the game
@@ -246,13 +261,13 @@ public:
 	std::string campaign;                            /**< the campaign being played */
 	std::string history;                             /**< ancestral IDs */
 	std::string abbrev;                              /**< the campaign abbreviation */
-	std::string scenario;                            /**< the scenario being played */
-	std::string next_scenario;                       /**< the scenario coming next (for campaigns) */
+//	std::string scenario;                            /**< the scenario being played */
+//	std::string next_scenario;                       /**< the scenario coming next (for campaigns) */
 	std::string completion;                          /**< running. victory, or defeat */
 	bool end_credits;                                /**< whether to show the standard credits at the end */
 	std::string end_text;                            /**< end-of-campaign text */
 	unsigned int end_text_duration;                  /**< for how long the end-of-campaign text is shown */
-	std::string difficulty; /**< The difficulty level the game is being played on. */
+//	std::string difficulty; /**< The difficulty level the game is being played on. */
 };
 
 class game_state
