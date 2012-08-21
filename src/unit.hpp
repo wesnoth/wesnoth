@@ -147,15 +147,15 @@ public:
 	int movement_left() const { return (movement_ == 0 || incapacitated()) ? 0 : movement_; }
 	int vision() const { return vision_ < 0 ? max_movement_ : vision_; }
 	int jamming() const { return jamming_; }
-	void set_hold_position(bool value) { hold_position_ = value; }
+	void toggle_hold_position() { hold_position_ = !hold_position_; if ( hold_position_ ) end_turn_ = true; }
 	bool hold_position() const { return hold_position_; }
 	void set_user_end_turn(bool value=true) { end_turn_ = value; }
+	void toggle_user_end_turn() { end_turn_ = !end_turn_; if ( !end_turn_ ) hold_position_ = false; }
 	bool user_end_turn() const { return end_turn_; }
 	int attacks_left() const { return (attacks_left_ == 0 || incapacitated()) ? 0 : attacks_left_; }
 	int max_attacks() const { return max_attacks_; }
 	void set_movement(int moves);
 	void set_attacks(int left) { attacks_left_ = std::max<int>(0, left); }
-	void unit_hold_position() { hold_position_ = end_turn_ = true; }
 	void new_turn();
 	void end_turn();
 	void new_scenario();

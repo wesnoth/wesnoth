@@ -1826,14 +1826,13 @@ void menu_handler::unit_hold_position(mouse_handler &mousehandler, int side_num)
 	const unit_map::iterator un = units_.find(mousehandler.get_selected_hex());
 	if (un != units_.end() && un->side() == side_num && un->movement_left() >= 0)
 	{
-		un->set_hold_position(!un->hold_position());
+		un->toggle_hold_position();
 		gui_->invalidate(mousehandler.get_selected_hex());
 
 		mousehandler.set_current_paths(pathfind::paths());
 		gui_->draw();
 
 		if (un->hold_position()) {
-			un->set_user_end_turn(true);
 			mousehandler.cycle_units(false);
 		}
 	}
@@ -1844,10 +1843,7 @@ void menu_handler::end_unit_turn(mouse_handler &mousehandler, int side_num)
 	const unit_map::iterator un = units_.find(mousehandler.get_selected_hex());
 	if (un != units_.end() && un->side() == side_num && un->movement_left() >= 0)
 	{
-		un->set_user_end_turn(!un->user_end_turn());
-		if (un->hold_position() && !un->user_end_turn()) {
-			un->set_hold_position(false);
-		}
+		un->toggle_user_end_turn();
 		gui_->invalidate(mousehandler.get_selected_hex());
 
 		mousehandler.set_current_paths(pathfind::paths());

@@ -1097,7 +1097,7 @@ void unit::set_movement(int moves)
 
 void unit::new_turn()
 {
-	end_turn_ = false;
+	end_turn_ = hold_position_;
 	movement_ = total_movement();
 	attacks_left_ = max_attacks_;
 	set_state(STATE_UNCOVERED, false);
@@ -1124,10 +1124,6 @@ void unit::new_turn()
 		advance_to(type());
 		if(hit_points_ > old_hp)
 			hit_points_ = old_hp;
-	}
-
-	if (hold_position_) {
-		end_turn_ = true;
 	}
 }
 void unit::end_turn()
