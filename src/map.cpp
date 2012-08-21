@@ -560,12 +560,9 @@ bool gamemap::on_board(const map_location& loc) const
 
 bool gamemap::on_board_with_border(const map_location& loc) const
 {
-	if(tiles_.empty()) {
-		return false;
-	} else {
-		return loc.x >= (0 - border_size_) && loc.x < (w_ + border_size_) &&
-			loc.y >= (0 - border_size_) && loc.y < (h_ + border_size_);
-	}
+	return !tiles_.empty()  &&
+	       loc.x >= -border_size_  &&  loc.x < w_ + border_size_  &&
+	       loc.y >= -border_size_  &&  loc.y < h_ + border_size_;
 }
 
 const terrain_type& gamemap::get_terrain_info(const t_translation::t_terrain terrain) const
