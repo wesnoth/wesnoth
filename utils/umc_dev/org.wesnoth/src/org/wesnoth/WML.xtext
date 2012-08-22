@@ -42,7 +42,7 @@ WMLMacroDefine:
 	endName = ENDDEF;
 
 WMLPreprocIF:
-	name=(IFDEF | IFNDEF | IFHAVE | IFNHAVE)
+	name=(IFDEF | IFNDEF | IFHAVE | IFNHAVE | IFVER | IFNVER)
 		Expressions += WMLValuedExpression *
 		(
 		  Elses = ELSE 
@@ -77,11 +77,13 @@ MacroTokens:
 
 terminal LUA_CODE   : '<<' -> '>>';
 // Preprocessor terminals
-terminal IFHAVE	 : '#ifhave' !('\n'|'\r')* ('\r'? '\n')?;
-terminal IFNHAVE	 : '#ifnhave' !('\n'|'\r')* ('\r'? '\n')?;
-terminal IFDEF		 : '#ifdef' !('\n'|'\r')* ('\r'? '\n')?;
-terminal IFNDEF	 : '#ifndef' !('\n'|'\r')* ('\r'? '\n')?;
-terminal ELSE		 : '#else' !('\n'|'\r')* ('\r'? '\n')?;
+terminal IFHAVE	    : '#ifhave' !('\n'|'\r')* ('\r'? '\n')?;
+terminal IFNHAVE	: '#ifnhave' !('\n'|'\r')* ('\r'? '\n')?;
+terminal IFDEF		: '#ifdef' !('\n'|'\r')* ('\r'? '\n')?;
+terminal IFVER      : '#ifver' !('\n'|'\r')* ('\r'? '\n')?;
+terminal IFNVER     : '#ifnver' !('\n'|'\r')* ('\r'? '\n')?;
+terminal IFNDEF	    : '#ifndef' !('\n'|'\r')* ('\r'? '\n')?;
+terminal ELSE		: '#else' !('\n'|'\r')* ('\r'? '\n')?;
 terminal ENDIF      : '#endif' !('\n'|'\r')* ('\r'? '\n')?;
 terminal DEFINE     : '#define' !('\n'|'\r')* ('\r'? '\n')?;
 terminal ENDDEF     : '#enddef' !('\n'|'\r')* ('\r'? '\n')?;
@@ -89,7 +91,7 @@ terminal TEXTDOMAIN : '#textdomain' !('\n'|'\r')* ('\r'? '\n')?;
 // end preprocessor terminals
 terminal STRING     : '"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\') | !('\\'|'"') )* '"';
 terminal ID         : ('a'..'z'|'A'..'Z'|'0'..'9'|'_'|'-'|',')+;
-terminal EOL		 : ('\r'? '\n');
+terminal EOL		: ('\r'? '\n');
 terminal WS         : (' '|'\t')+;
 terminal ANY_OTHER  : .;
 terminal SL_COMMENT : '#' !('\n'|'\r')* ('\r'? '\n')?;

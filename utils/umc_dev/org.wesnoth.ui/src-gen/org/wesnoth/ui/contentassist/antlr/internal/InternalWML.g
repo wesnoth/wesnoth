@@ -652,6 +652,18 @@ rule__WMLPreprocIF__NameAlternatives_0_0
 { after(grammarAccess.getWMLPreprocIFAccess().getNameIFNHAVETerminalRuleCall_0_0_3()); }
 )
 
+    |(
+{ before(grammarAccess.getWMLPreprocIFAccess().getNameIFVERTerminalRuleCall_0_0_4()); }
+	RULE_IFVER
+{ after(grammarAccess.getWMLPreprocIFAccess().getNameIFVERTerminalRuleCall_0_0_4()); }
+)
+
+    |(
+{ before(grammarAccess.getWMLPreprocIFAccess().getNameIFNVERTerminalRuleCall_0_0_5()); }
+	RULE_IFNVER
+{ after(grammarAccess.getWMLPreprocIFAccess().getNameIFNVERTerminalRuleCall_0_0_5()); }
+)
+
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -2452,6 +2464,10 @@ RULE_IFHAVE : '#ifhave' ~(('\n'|'\r'))* ('\r'? '\n')?;
 RULE_IFNHAVE : '#ifnhave' ~(('\n'|'\r'))* ('\r'? '\n')?;
 
 RULE_IFDEF : '#ifdef' ~(('\n'|'\r'))* ('\r'? '\n')?;
+
+RULE_IFVER : '#ifver' ~(('\n'|'\r'))* ('\r'? '\n')?;
+
+RULE_IFNVER : '#ifnver' ~(('\n'|'\r'))* ('\r'? '\n')?;
 
 RULE_IFNDEF : '#ifndef' ~(('\n'|'\r'))* ('\r'? '\n')?;
 

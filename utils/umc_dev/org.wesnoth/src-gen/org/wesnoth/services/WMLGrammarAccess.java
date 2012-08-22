@@ -366,6 +366,8 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cNameIFNDEFTerminalRuleCall_0_0_1 = (RuleCall)cNameAlternatives_0_0.eContents().get(1);
 		private final RuleCall cNameIFHAVETerminalRuleCall_0_0_2 = (RuleCall)cNameAlternatives_0_0.eContents().get(2);
 		private final RuleCall cNameIFNHAVETerminalRuleCall_0_0_3 = (RuleCall)cNameAlternatives_0_0.eContents().get(3);
+		private final RuleCall cNameIFVERTerminalRuleCall_0_0_4 = (RuleCall)cNameAlternatives_0_0.eContents().get(4);
+		private final RuleCall cNameIFNVERTerminalRuleCall_0_0_5 = (RuleCall)cNameAlternatives_0_0.eContents().get(5);
 		private final Assignment cExpressionsAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cExpressionsWMLValuedExpressionParserRuleCall_1_0 = (RuleCall)cExpressionsAssignment_1.eContents().get(0);
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
@@ -377,18 +379,18 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cEndNameENDIFTerminalRuleCall_3_0 = (RuleCall)cEndNameAssignment_3.eContents().get(0);
 		
 		//WMLPreprocIF:
-		//	name=(IFDEF | IFNDEF | IFHAVE | IFNHAVE) Expressions+=WMLValuedExpression* (Elses=ELSE
+		//	name=(IFDEF | IFNDEF | IFHAVE | IFNHAVE | IFVER | IFNVER) Expressions+=WMLValuedExpression* (Elses=ELSE
 		//	ElseExpressions+=WMLValuedExpression+)? endName=ENDIF;
 		public ParserRule getRule() { return rule; }
 
-		//name=(IFDEF | IFNDEF | IFHAVE | IFNHAVE) Expressions+=WMLValuedExpression* (Elses=ELSE
+		//name=(IFDEF | IFNDEF | IFHAVE | IFNHAVE | IFVER | IFNVER) Expressions+=WMLValuedExpression* (Elses=ELSE
 		//ElseExpressions+=WMLValuedExpression+)? endName=ENDIF
 		public Group getGroup() { return cGroup; }
 
-		//name=(IFDEF | IFNDEF | IFHAVE | IFNHAVE)
+		//name=(IFDEF | IFNDEF | IFHAVE | IFNHAVE | IFVER | IFNVER)
 		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
 
-		//IFDEF | IFNDEF | IFHAVE | IFNHAVE
+		//IFDEF | IFNDEF | IFHAVE | IFNHAVE | IFVER | IFNVER
 		public Alternatives getNameAlternatives_0_0() { return cNameAlternatives_0_0; }
 
 		//IFDEF
@@ -402,6 +404,12 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 
 		//IFNHAVE
 		public RuleCall getNameIFNHAVETerminalRuleCall_0_0_3() { return cNameIFNHAVETerminalRuleCall_0_0_3; }
+
+		//IFVER
+		public RuleCall getNameIFVERTerminalRuleCall_0_0_4() { return cNameIFVERTerminalRuleCall_0_0_4; }
+
+		//IFNVER
+		public RuleCall getNameIFNVERTerminalRuleCall_0_0_5() { return cNameIFNVERTerminalRuleCall_0_0_5; }
 
 		//Expressions+=WMLValuedExpression*
 		public Assignment getExpressionsAssignment_1() { return cExpressionsAssignment_1; }
@@ -676,6 +684,8 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 	private TerminalRule tIFHAVE;
 	private TerminalRule tIFNHAVE;
 	private TerminalRule tIFDEF;
+	private TerminalRule tIFVER;
+	private TerminalRule tIFNVER;
 	private TerminalRule tIFNDEF;
 	private TerminalRule tELSE;
 	private TerminalRule tENDIF;
@@ -794,7 +804,7 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//WMLPreprocIF:
-	//	name=(IFDEF | IFNDEF | IFHAVE | IFNHAVE) Expressions+=WMLValuedExpression* (Elses=ELSE
+	//	name=(IFDEF | IFNDEF | IFHAVE | IFNHAVE | IFVER | IFNVER) Expressions+=WMLValuedExpression* (Elses=ELSE
 	//	ElseExpressions+=WMLValuedExpression+)? endName=ENDIF;
 	public WMLPreprocIFElements getWMLPreprocIFAccess() {
 		return (pWMLPreprocIF != null) ? pWMLPreprocIF : (pWMLPreprocIF = new WMLPreprocIFElements());
@@ -909,6 +919,18 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 	//	"#ifdef" !("\n" | "\r")* ("\r"? "\n")?;
 	public TerminalRule getIFDEFRule() {
 		return (tIFDEF != null) ? tIFDEF : (tIFDEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "IFDEF"));
+	} 
+
+	//terminal IFVER:
+	//	"#ifver" !("\n" | "\r")* ("\r"? "\n")?;
+	public TerminalRule getIFVERRule() {
+		return (tIFVER != null) ? tIFVER : (tIFVER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "IFVER"));
+	} 
+
+	//terminal IFNVER:
+	//	"#ifnver" !("\n" | "\r")* ("\r"? "\n")?;
+	public TerminalRule getIFNVERRule() {
+		return (tIFNVER != null) ? tIFNVER : (tIFNVER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "IFNVER"));
 	} 
 
 	//terminal IFNDEF:

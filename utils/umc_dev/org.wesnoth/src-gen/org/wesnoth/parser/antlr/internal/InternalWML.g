@@ -741,6 +741,36 @@ ruleWMLPreprocIF returns [EObject current=null]
         		"IFNHAVE");
 	    }
 
+    |		lv_name_0_5=RULE_IFVER
+		{
+			newLeafNode(lv_name_0_5, grammarAccess.getWMLPreprocIFAccess().getNameIFVERTerminalRuleCall_0_0_4()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getWMLPreprocIFRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_0_5, 
+        		"IFVER");
+	    }
+
+    |		lv_name_0_6=RULE_IFNVER
+		{
+			newLeafNode(lv_name_0_6, grammarAccess.getWMLPreprocIFAccess().getNameIFNVERTerminalRuleCall_0_0_5()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getWMLPreprocIFRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_0_6, 
+        		"IFNVER");
+	    }
+
 )
 
 )
@@ -1353,6 +1383,10 @@ RULE_IFHAVE : '#ifhave' ~(('\n'|'\r'))* ('\r'? '\n')?;
 RULE_IFNHAVE : '#ifnhave' ~(('\n'|'\r'))* ('\r'? '\n')?;
 
 RULE_IFDEF : '#ifdef' ~(('\n'|'\r'))* ('\r'? '\n')?;
+
+RULE_IFVER : '#ifver' ~(('\n'|'\r'))* ('\r'? '\n')?;
+
+RULE_IFNVER : '#ifnver' ~(('\n'|'\r'))* ('\r'? '\n')?;
 
 RULE_IFNDEF : '#ifndef' ~(('\n'|'\r'))* ('\r'? '\n')?;
 

@@ -1704,12 +1704,12 @@ protected class WMLMacroDefine_EndNameAssignment_2 extends AssignmentToken  {
 /************ begin Rule WMLPreprocIF ****************
  *
  * WMLPreprocIF:
- * 	name=(IFDEF | IFNDEF | IFHAVE | IFNHAVE) Expressions+=WMLValuedExpression* (Elses=ELSE
+ * 	name=(IFDEF | IFNDEF | IFHAVE | IFNHAVE | IFVER | IFNVER) Expressions+=WMLValuedExpression* (Elses=ELSE
  * 	ElseExpressions+=WMLValuedExpression+)? endName=ENDIF;
  *
  **/
 
-// name=(IFDEF | IFNDEF | IFHAVE | IFNHAVE) Expressions+=WMLValuedExpression* (Elses=ELSE
+// name=(IFDEF | IFNDEF | IFHAVE | IFNHAVE | IFVER | IFNVER) Expressions+=WMLValuedExpression* (Elses=ELSE
 // ElseExpressions+=WMLValuedExpression+)? endName=ENDIF
 protected class WMLPreprocIF_Group extends GroupToken {
 	
@@ -1739,7 +1739,7 @@ protected class WMLPreprocIF_Group extends GroupToken {
 
 }
 
-// name=(IFDEF | IFNDEF | IFHAVE | IFNHAVE)
+// name=(IFDEF | IFNDEF | IFHAVE | IFNHAVE | IFVER | IFNVER)
 protected class WMLPreprocIF_NameAssignment_0 extends AssignmentToken  {
 	
 	public WMLPreprocIF_NameAssignment_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1780,6 +1780,16 @@ protected class WMLPreprocIF_NameAssignment_0 extends AssignmentToken  {
 		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getWMLPreprocIFAccess().getNameIFNHAVETerminalRuleCall_0_0_3(), value, null)) {
 			type = AssignmentType.TERMINAL_RULE_CALL;
 			element = grammarAccess.getWMLPreprocIFAccess().getNameIFNHAVETerminalRuleCall_0_0_3();
+			return obj;
+		}
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getWMLPreprocIFAccess().getNameIFVERTerminalRuleCall_0_0_4(), value, null)) {
+			type = AssignmentType.TERMINAL_RULE_CALL;
+			element = grammarAccess.getWMLPreprocIFAccess().getNameIFVERTerminalRuleCall_0_0_4();
+			return obj;
+		}
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getWMLPreprocIFAccess().getNameIFNVERTerminalRuleCall_0_0_5(), value, null)) {
+			type = AssignmentType.TERMINAL_RULE_CALL;
+			element = grammarAccess.getWMLPreprocIFAccess().getNameIFNVERTerminalRuleCall_0_0_5();
 			return obj;
 		}
 		return null;
