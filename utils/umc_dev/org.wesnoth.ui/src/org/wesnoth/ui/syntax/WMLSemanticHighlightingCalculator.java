@@ -89,6 +89,11 @@ public class WMLSemanticHighlightingCalculator implements
 
                 toColor.add( Pair.create(
                     getFirstFeatureNode( current,
+                        WmlPackage.Literals.WML_PREPROC_IF__ELSES ),
+                    WMLHighlightingConfiguration.RULE_WML_IF ) );
+
+                toColor.add( Pair.create(
+                    getFirstFeatureNode( current,
                         WmlPackage.Literals.WML_PREPROC_IF__END_NAME ),
                     WMLHighlightingConfiguration.RULE_WML_IF ) );
             }
