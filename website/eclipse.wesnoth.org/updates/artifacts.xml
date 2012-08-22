@@ -2,7 +2,7 @@
 <?artifactRepository version='1.1.0'?>
 <repository name='Wesnoth Eclipse Plugins' type='org.eclipse.equinox.p2.artifact.repository.simpleRepository' version='1.0.0'>
   <properties size='2'>
-    <property name='p2.timestamp' value='1343587981415'/>
+    <property name='p2.timestamp' value='1345667958535'/>
     <property name='p2.compressed' value='false'/>
   </properties>
   <mappings size='3'>
@@ -39,6 +39,12 @@
         <property name='download.md5' value='ff8eca37c379bf7d89afe617101deed4'/>
       </properties>
     </artifact>
+    <artifact classifier='osgi.bundle' id='org.wesnoth.ui' version='2.0.2.201208222338'>
+      <properties size='2'>
+        <property name='artifact.size' value='4096'/>
+        <property name='download.size' value='141764'/>
+      </properties>
+    </artifact>
     <artifact classifier='osgi.bundle' id='org.eclipse.jdt.core' version='3.7.0.v_B61'>
       <properties size='3'>
         <property name='artifact.size' value='4550470'/>
@@ -57,6 +63,11 @@
         <property name='artifact.size' value='43997'/>
         <property name='download.size' value='43997'/>
         <property name='download.md5' value='d46acfe18868e4928e0c09a2c2f4eedc'/>
+      </properties>
+    </artifact>
+    <artifact classifier='binary' id='org.wesnoth.product_root.gtk.linux.x86_64' version='2.0.2.201208222338'>
+      <properties size='1'>
+        <property name='download.size' value='194106'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.eclipse.core.filesystem.linux.x86_64' version='1.2.0.v20110423-0524'>
@@ -149,12 +160,6 @@
         <property name='download.size' value='78067'/>
       </properties>
     </artifact>
-    <artifact classifier='org.eclipse.update.feature' id='org.wesnoth.dependencies' version='2.0.1.201207292151'>
-      <properties size='2'>
-        <property name='download.contentType' value='application/zip'/>
-        <property name='download.size' value='5037'/>
-      </properties>
-    </artifact>
     <artifact classifier='osgi.bundle' id='org.eclipse.xtext.builder' version='2.0.0.v201106070531'>
       <properties size='3'>
         <property name='artifact.size' value='144968'/>
@@ -166,11 +171,6 @@
       <properties size='2'>
         <property name='artifact.size' value='4096'/>
         <property name='download.size' value='1634964'/>
-      </properties>
-    </artifact>
-    <artifact classifier='binary' id='org.wesnoth.product_root.cocoa.macosx.x86_64' version='2.0.1.201207292151'>
-      <properties size='1'>
-        <property name='download.size' value='11615'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.apache.lucene.queries' version='2.9.1.v20100421-0704'>
@@ -225,6 +225,11 @@
         <property name='artifact.size' value='33030'/>
         <property name='download.size' value='33030'/>
         <property name='download.md5' value='54100d397bd9e862d1d9df9237dcbb3b'/>
+      </properties>
+    </artifact>
+    <artifact classifier='binary' id='org.wesnoth.product_root.win32.win32.x86_64' version='2.0.2.201208222338'>
+      <properties size='1'>
+        <property name='download.size' value='22639'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.eclipse.ui.console' version='3.5.100.v20110511'>
@@ -308,6 +313,12 @@
         <property name='download.md5' value='8690daa37259608b568d973b9933b2aa'/>
       </properties>
     </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='org.wesnoth' version='2.0.2.201208222338'>
+      <properties size='2'>
+        <property name='download.contentType' value='application/zip'/>
+        <property name='download.size' value='5003'/>
+      </properties>
+    </artifact>
     <artifact classifier='binary' id='org.eclipse.xtend.ui_root' version='1.1.0.v201106070515'>
       <properties size='1'>
         <property name='download.size' value='7754'/>
@@ -320,11 +331,9 @@
         <property name='download.md5' value='4d6789993e7a5a7c7e197db475e592e1'/>
       </properties>
     </artifact>
-    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.p2.console' version='1.0.300.v20110502-1955'>
-      <properties size='3'>
-        <property name='artifact.size' value='26964'/>
-        <property name='download.size' value='26964'/>
-        <property name='download.md5' value='53fbfa2f2e6cb8da84d87fc6b92b70fc'/>
+    <artifact classifier='binary' id='org.wesnoth.product_root.gtk.linux.x86' version='2.0.2.201208222338'>
+      <properties size='1'>
+        <property name='download.size' value='175665'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.eclipse.osgi.util' version='3.2.200.v20110110'>
@@ -332,6 +341,13 @@
         <property name='artifact.size' value='23761'/>
         <property name='download.size' value='23761'/>
         <property name='download.md5' value='83a8254d47bc633d01da3ba6e59e6667'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.p2.console' version='1.0.300.v20110502-1955'>
+      <properties size='3'>
+        <property name='artifact.size' value='26964'/>
+        <property name='download.size' value='26964'/>
+        <property name='download.md5' value='53fbfa2f2e6cb8da84d87fc6b92b70fc'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.eclipse.core.net' version='1.2.100.I20110511-0800'>
@@ -387,18 +403,18 @@
         <property name='download.size' value='7754'/>
       </properties>
     </artifact>
-    <artifact classifier='osgi.bundle' id='org.antlr.runtime' version='3.2.0.v201101311130'>
-      <properties size='3'>
-        <property name='artifact.size' value='205962'/>
-        <property name='download.size' value='205962'/>
-        <property name='download.md5' value='c7ced825d3ea2d68647206bf2db5e4c1'/>
-      </properties>
-    </artifact>
     <artifact classifier='osgi.bundle' id='org.eclipse.ui.views' version='3.6.0.I20110412-0800'>
       <properties size='3'>
         <property name='artifact.size' value='90135'/>
         <property name='download.size' value='90135'/>
         <property name='download.md5' value='adb9bd303c54bc06423fdf27ddaa70dd'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.antlr.runtime' version='3.2.0.v201101311130'>
+      <properties size='3'>
+        <property name='artifact.size' value='205962'/>
+        <property name='download.size' value='205962'/>
+        <property name='download.md5' value='c7ced825d3ea2d68647206bf2db5e4c1'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.eclipse.xtend' version='1.1.0.v201106070515'>
@@ -434,12 +450,6 @@
         <property name='download.md5' value='0f7a947b8efe46dc2f15aa91783a1ef8'/>
       </properties>
     </artifact>
-    <artifact classifier='osgi.bundle' id='org.wesnoth.ui' version='2.0.1.201207292151'>
-      <properties size='2'>
-        <property name='artifact.size' value='4096'/>
-        <property name='download.size' value='140510'/>
-      </properties>
-    </artifact>
     <artifact classifier='osgi.bundle' id='org.eclipse.ecf' version='3.1.300.v20110531-2218'>
       <properties size='3'>
         <property name='artifact.size' value='93249'/>
@@ -466,6 +476,11 @@
         <property name='artifact.size' value='115717'/>
         <property name='download.size' value='115717'/>
         <property name='download.md5' value='62fc5137377dab08c89755963f0798fe'/>
+      </properties>
+    </artifact>
+    <artifact classifier='binary' id='org.wesnoth.product.root.feature_root' version='2.0.2.201208222338'>
+      <properties size='1'>
+        <property name='download.size' value='262'/>
       </properties>
     </artifact>
     <artifact classifier='org.eclipse.update.feature' id='org.eclipse.xtext.runtime' version='2.0.0.v201106070531'>
@@ -621,11 +636,10 @@
         <property name='download.md5' value='02f170b2ff70419e4023661fafc98e73'/>
       </properties>
     </artifact>
-    <artifact classifier='osgi.bundle' id='org.eclipse.core.filesystem.win32.x86' version='1.1.300.v20110423-0524'>
-      <properties size='3'>
-        <property name='artifact.size' value='30065'/>
-        <property name='download.size' value='30065'/>
-        <property name='download.md5' value='bec5a7a0d3cb9bb143f9542efee8be50'/>
+    <artifact classifier='org.eclipse.update.feature' id='org.wesnoth.dependencies' version='2.0.2.201208222338'>
+      <properties size='2'>
+        <property name='download.contentType' value='application/zip'/>
+        <property name='download.size' value='5037'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.eclipse.equinox.p2.ui' version='2.1.0.v20110601'>
@@ -633,6 +647,13 @@
         <property name='artifact.size' value='514257'/>
         <property name='download.size' value='514257'/>
         <property name='download.md5' value='46691d836f4333d6602b751f8beee09f'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.core.filesystem.win32.x86' version='1.1.300.v20110423-0524'>
+      <properties size='3'>
+        <property name='artifact.size' value='30065'/>
+        <property name='download.size' value='30065'/>
+        <property name='download.md5' value='bec5a7a0d3cb9bb143f9542efee8be50'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.eclipse.emf.edit' version='2.7.0.v20110606-0949'>
@@ -696,18 +717,18 @@
         <property name='download.md5' value='12395d89fd610b68ae42ec3cd9aa4be2'/>
       </properties>
     </artifact>
-    <artifact classifier='osgi.bundle' id='org.eclipse.osgi' version='3.7.0.v20110613'>
-      <properties size='3'>
-        <property name='artifact.size' value='1362240'/>
-        <property name='download.size' value='1362240'/>
-        <property name='download.md5' value='48af3a67643ee897a070d85931b3823e'/>
-      </properties>
-    </artifact>
     <artifact classifier='osgi.bundle' id='org.eclipse.xpand' version='1.1.0.v201106070515'>
       <properties size='3'>
         <property name='artifact.size' value='238302'/>
         <property name='download.size' value='238302'/>
         <property name='download.md5' value='f01c1d247cced77340e933c34ef80c78'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.osgi' version='3.7.0.v20110613'>
+      <properties size='3'>
+        <property name='artifact.size' value='1362240'/>
+        <property name='download.size' value='1362240'/>
+        <property name='download.md5' value='48af3a67643ee897a070d85931b3823e'/>
       </properties>
     </artifact>
     <artifact classifier='binary' id='org.eclipse.equinox.executable_root.motif.linux.x86' version='3.5.0.v20110530-7P7NFUFFLWUl76mart'>
@@ -873,11 +894,6 @@
         <property name='download.md5' value='06a05be0f317433a7596a8007bed8a67'/>
       </properties>
     </artifact>
-    <artifact classifier='binary' id='org.wesnoth.product_root.win32.win32.x86_64' version='2.0.1.201207292151'>
-      <properties size='1'>
-        <property name='download.size' value='22639'/>
-      </properties>
-    </artifact>
     <artifact classifier='osgi.bundle' id='org.eclipse.equinox.p2.touchpoint.natives' version='1.0.300.v20110502-1955'>
       <properties size='3'>
         <property name='artifact.size' value='50202'/>
@@ -890,6 +906,11 @@
         <property name='artifact.size' value='37750'/>
         <property name='download.size' value='37750'/>
         <property name='download.md5' value='23b421be7660af1077d1c1f5f165fb8a'/>
+      </properties>
+    </artifact>
+    <artifact classifier='binary' id='org.wesnoth.product_root.win32.win32.x86' version='2.0.2.201208222338'>
+      <properties size='1'>
+        <property name='download.size' value='20966'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.eclipse.core.runtime.compatibility.auth' version='3.2.200.v20110110'>
@@ -1035,6 +1056,12 @@
         <property name='download.md5' value='8fa829097c75ebac101c82708f456c63'/>
       </properties>
     </artifact>
+    <artifact classifier='osgi.bundle' id='org.wesnoth' version='2.0.2.201208222338'>
+      <properties size='2'>
+        <property name='artifact.size' value='4096'/>
+        <property name='download.size' value='1216087'/>
+      </properties>
+    </artifact>
     <artifact classifier='osgi.bundle' id='org.apache.lucene.memory' version='2.9.1.v20100421-0704'>
       <properties size='1'>
         <property name='download.size' value='72720'/>
@@ -1045,11 +1072,6 @@
         <property name='artifact.size' value='16730'/>
         <property name='download.size' value='16730'/>
         <property name='download.md5' value='35efaa8e563c5f3add22ac2cb31d2005'/>
-      </properties>
-    </artifact>
-    <artifact classifier='binary' id='org.wesnoth.product_root.gtk.linux.x86_64' version='2.0.1.201207292151'>
-      <properties size='1'>
-        <property name='download.size' value='194106'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.apache.lucene.analysis' version='2.9.1.v201101211721'>
@@ -1090,11 +1112,6 @@
         <property name='artifact.size' value='118838'/>
         <property name='download.size' value='118838'/>
         <property name='download.md5' value='954f398b209ad0d321c83c8d47a03a09'/>
-      </properties>
-    </artifact>
-    <artifact classifier='binary' id='org.wesnoth.product_root.gtk.linux.x86' version='2.0.1.201207292151'>
-      <properties size='1'>
-        <property name='download.size' value='175665'/>
       </properties>
     </artifact>
     <artifact classifier='binary' id='org.eclipse.equinox.executable_root.wpf.win32.x86' version='3.5.0.v20110530-7P7NFUFFLWUl76mart'>
@@ -1197,14 +1214,14 @@
         <property name='download.md5' value='467367e0751b472e6674f99c78cc5744'/>
       </properties>
     </artifact>
-    <artifact classifier='binary' id='org.eclipse.equinox.executable_root.gtk.solaris.x86' version='3.5.0.v20110530-7P7NFUFFLWUl76mart'>
-      <properties size='1'>
-        <property name='download.size' value='11036'/>
-      </properties>
-    </artifact>
     <artifact classifier='binary' id='org.eclipse.equinox.executable_root.carbon.macosx.x86' version='3.5.0.v20110530-7P7NFUFFLWUl76mart'>
       <properties size='1'>
         <property name='download.size' value='17923'/>
+      </properties>
+    </artifact>
+    <artifact classifier='binary' id='org.eclipse.equinox.executable_root.gtk.solaris.x86' version='3.5.0.v20110530-7P7NFUFFLWUl76mart'>
+      <properties size='1'>
+        <property name='download.size' value='11036'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.eclipse.equinox.p2.publisher.eclipse' version='1.0.0.v20110511'>
@@ -1253,13 +1270,6 @@
         <property name='download.md5' value='03be7c775183f6c0058181233cb8b5a3'/>
       </properties>
     </artifact>
-    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.p2.garbagecollector' version='1.0.200.v20110510'>
-      <properties size='3'>
-        <property name='artifact.size' value='24987'/>
-        <property name='download.size' value='24987'/>
-        <property name='download.md5' value='14977ee1c0ce7de8becfcc2e4f9c86b7'/>
-      </properties>
-    </artifact>
     <artifact classifier='osgi.bundle' id='org.eclipse.ui.navigator' version='3.5.100.I20110524-0800'>
       <properties size='3'>
         <property name='artifact.size' value='404892'/>
@@ -1267,9 +1277,11 @@
         <property name='download.md5' value='98cc3dc394a6ad00669f158a0db5e9d3'/>
       </properties>
     </artifact>
-    <artifact classifier='osgi.bundle' id='org.eclipse.emf.mwe2.lib' version='2.0.0.v201106070424'>
-      <properties size='1'>
-        <property name='download.size' value='28596'/>
+    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.p2.garbagecollector' version='1.0.200.v20110510'>
+      <properties size='3'>
+        <property name='artifact.size' value='24987'/>
+        <property name='download.size' value='24987'/>
+        <property name='download.md5' value='14977ee1c0ce7de8becfcc2e4f9c86b7'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.apache.commons.logging' version='1.0.4.v201101211617'>
@@ -1277,6 +1289,11 @@
         <property name='artifact.size' value='45405'/>
         <property name='download.size' value='45405'/>
         <property name='download.md5' value='d5063f3bb64c7039056f6269a3f9ecc2'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.emf.mwe2.lib' version='2.0.0.v201106070424'>
+      <properties size='1'>
+        <property name='download.size' value='28596'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.eclipse.emf.ecore.editor' version='2.7.0.v20110606-0949'>
@@ -1561,12 +1578,6 @@
         <property name='download.md5' value='b68981e35f6365a4cf09691038a02641'/>
       </properties>
     </artifact>
-    <artifact classifier='osgi.bundle' id='org.wesnoth' version='2.0.1.201207292151'>
-      <properties size='2'>
-        <property name='artifact.size' value='4096'/>
-        <property name='download.size' value='1214549'/>
-      </properties>
-    </artifact>
     <artifact classifier='osgi.bundle' id='org.eclipse.core.filesystem' version='1.3.100.v20110423-0524'>
       <properties size='3'>
         <property name='artifact.size' value='53218'/>
@@ -1616,11 +1627,6 @@
         <property name='download.md5' value='1009d685fe09b1cade80c3f778b6801c'/>
       </properties>
     </artifact>
-    <artifact classifier='binary' id='org.wesnoth.product_root.win32.win32.x86' version='2.0.1.201207292151'>
-      <properties size='1'>
-        <property name='download.size' value='20966'/>
-      </properties>
-    </artifact>
     <artifact classifier='osgi.bundle' id='org.eclipse.equinox.http.servlet' version='1.1.200.v20110502'>
       <properties size='3'>
         <property name='artifact.size' value='42548'/>
@@ -1666,11 +1672,6 @@
         <property name='download.contentType' value='application/zip'/>
       </properties>
     </artifact>
-    <artifact classifier='binary' id='org.wesnoth.product.root.feature_root' version='2.0.1.201207292151'>
-      <properties size='1'>
-        <property name='download.size' value='262'/>
-      </properties>
-    </artifact>
     <artifact classifier='osgi.bundle' id='org.eclipse.update.core' version='3.2.500.v20110330'>
       <properties size='3'>
         <property name='artifact.size' value='595821'/>
@@ -1704,10 +1705,9 @@
         <property name='download.md5' value='c80cc084e4a48336dcaac4a5c5f0bde2'/>
       </properties>
     </artifact>
-    <artifact classifier='org.eclipse.update.feature' id='org.wesnoth' version='2.0.1.201207292151'>
-      <properties size='2'>
-        <property name='download.contentType' value='application/zip'/>
-        <property name='download.size' value='5003'/>
+    <artifact classifier='binary' id='org.wesnoth.product_root.cocoa.macosx.x86_64' version='2.0.2.201208222338'>
+      <properties size='1'>
+        <property name='download.size' value='11615'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.eclipse.xtend.check.ui' version='1.0.1.v201106070515'>
