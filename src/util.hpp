@@ -28,13 +28,10 @@
 #include <sstream>
 
 template<typename T>
-inline bool is_odd(T num) {
-  int n = static_cast< int >(num);
-  return static_cast< unsigned int >(n >= 0 ? n : -n) & 1;
-}
+inline bool is_even(T num) { return num % 2 == 0; }
 
 template<typename T>
-inline bool is_even(T num) { return !is_odd(num); }
+inline bool is_odd(T num) { return !is_even(num); }
 
 /** Guarantees portable results for division by 100; round towards 0 */
 inline int div100rounded(int num) {
