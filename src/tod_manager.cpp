@@ -106,11 +106,14 @@ const time_of_day& tod_manager::get_time_of_day(const map_location& loc, int n_t
 	if(n_turn == 0)
 		n_turn = turn_;
 
-	for (std::vector<area_time_of_day>::const_reverse_iterator
-		 i = areas_.rbegin(), i_end = areas_.rend(); i != i_end; ++i)
+	if ( loc != map_location::null_location )
 	{
-		if (i->hexes.find(loc) != i->hexes.end())
-			return get_time_of_day_turn(i->times, n_turn, i->currentTime);
+		for ( std::vector<area_time_of_day>::const_reverse_iterator
+		      i = areas_.rbegin(), i_end = areas_.rend(); i != i_end; ++i )
+		{
+			if (i->hexes.find(loc) != i->hexes.end())
+				return get_time_of_day_turn(i->times, n_turn, i->currentTime);
+		}
 	}
 
 	return get_time_of_day_turn(times_, n_turn, currentTime_);
@@ -118,18 +121,19 @@ const time_of_day& tod_manager::get_time_of_day(const map_location& loc, int n_t
 
 const time_of_day tod_manager::get_illuminated_time_of_day(const map_location& loc, int for_turn) const
 {
-	// get ToD ignoring illumination
-	time_of_day tod = get_time_of_day(loc, for_turn);
-
-	// now add illumination
 	const gamemap& map = *resources::game_map;
 	const unit_map& units = *resources::units;
-	int light_modif =  map.get_terrain_info(map.get_terrain(loc)).light_modification();
 
-	int light = tod.lawful_bonus + light_modif;
-	int illum_light = light;
+	// get ToD ignoring illumination
+	time_of_day tod = get_time_of_day(loc, for_turn);
+	int illum_light = tod.lawful_bonus;
 
-	if(loc.valid()) {
+	if ( map.on_board_with_border(loc) )
+	{
+		// now add illumination
+		illum_light += map.get_terrain_info(map.get_terrain(loc)).light_modification();
+		int light = illum_light;
+
 		map_location locs[7];
 		locs[0] = loc;
 		get_adjacent_tiles(loc,locs+1);
@@ -153,7 +157,6 @@ const time_of_day tod_manager::get_illuminated_time_of_day(const map_location& l
 				} else if (illum_light < min) {
 					illum_light = min;
 				}
-
 			}
 		}
 	}
