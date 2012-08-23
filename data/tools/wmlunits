@@ -47,6 +47,12 @@ def shell(com):
 
     return p.returncode
 
+def shell_out(com):
+    p = subprocess.Popen(com,
+        stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+    out, err = p.communicate()
+    return out
+
 def bash(name):
     return "'" + name.replace("'", "'\\''") + "'"
 
@@ -429,6 +435,7 @@ if __name__ == '__main__':
     wiki_output.options = options
 
     if not options.output and not options.wiki:
+        sys.stderr.write("Need --output (or --wiki).\n")
         op.print_help()
         sys.exit(-1)
 
@@ -437,6 +444,14 @@ if __name__ == '__main__':
 
     if not options.wesnoth:
         options.wesnoth = "wesnoth"
+
+    if not options.data_dir:
+        options.data_dir = shell_out([options.wesnoth, "--path"]).strip()
+        print("Using " + options.data_dir + " as data dir.")
+
+    if not options.config_dir:
+        options.config_dir = shell_out([options.wesnoth, "--config-path"]).strip()
+        print("Using " + options.config_dir + " as config dir.")
 
     if not options.transdir:
         options.transdir = os.getcwd()
@@ -464,6 +479,10 @@ if __name__ == '__main__':
         languages.sort()
     else:
         languages = options.language.split(",")
+
+    if not options.list and not options.batch:
+        sys.stderr.write("Need --list or --batch (or both).\n")
+        sys.exit(-1)
         
     if options.output:
         # Generate output dir.
