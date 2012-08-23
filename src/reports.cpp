@@ -567,11 +567,10 @@ static int attack_info(const attack_type &at, config &res, unit *u, const map_lo
 	if (under_leadership(*resources::units, displayed_unit_hex, &leader_bonus).valid())
 		damage_multiplier += leader_bonus;
 
-	// Assume no specific resistance.
-	damage_multiplier *= 100;
 	bool slowed = u->get_state(unit::STATE_SLOWED);
 	int damage_divisor = slowed ? 20000 : 10000;
-	int damage = round_damage(base_damage, damage_multiplier, damage_divisor);
+	// Assume no specific resistance (i.e. multiply by 100).
+	int damage = round_damage(base_damage, damage_multiplier * 100, damage_divisor);
 
 	int base_nattacks = at.num_attacks();
 	int nattacks = base_nattacks;
@@ -653,11 +652,6 @@ static int attack_info(const attack_type &at, config &res, unit *u, const map_lo
 			resistances[resistance].insert(enemy.type_name());
 		}
 	}
-
-	// Get global ToD.
-	damage_multiplier = 100;
-	tod_bonus = combat_modifier(map_location::null_location, u->alignment(), u->is_fearless());
-	damage_multiplier += tod_bonus;
 
 	typedef std::pair<int, std::set<std::string> > resist_units;
 	BOOST_FOREACH(const resist_units &resist, resistances) {
