@@ -1,0 +1,4 @@
+Import("env")
+
+env.ScanReplace("wesnothd.service", "wesnothd.service.scons.in")
+env.ScanReplace("wesnothd.conf", "wesnothd.tmpfiles.conf.in")

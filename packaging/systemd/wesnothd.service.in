@@ -1,0 +1,9 @@
+[Unit]
+Description=Wesnoth Server Daemon
+After=network.target
+
+[Service]
+ExecStart=@CMAKE_INSTALL_PREFIX@/@BINDIR@/wesnothd
+
+[Install]
+WantedBy=multi-user.target

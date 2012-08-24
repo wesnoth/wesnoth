@@ -59,6 +59,7 @@ opts.AddVariables(
     PathVariable('fifodir', 'directory for the wesnothd fifo socket file', "/var/run/wesnothd", PathVariable.PathAccept),
     BoolVariable('fribidi','Clear to disable bidirectional-language support', True),
     BoolVariable('desktop_entry','Clear to disable desktop-entry', True),
+    BoolVariable('systemd','Install systemd unit file for wesnothd', bool(WhereIs("systemd"))),
     PathVariable('datarootdir', 'sets the root of data directories to a non-default location', "share", PathVariable.PathAccept),
     PathVariable('datadirname', 'sets the name of data directory', "wesnoth$version_suffix", PathVariable.PathAccept),
     PathVariable('desktopdir', 'sets the desktop entry directory to a non-default location', "$datarootdir/applications", PathVariable.PathAccept),
@@ -461,7 +462,7 @@ else:
         env["svnrev"] = ""
 
 Export(Split("env client_env test_env have_client_prereqs have_server_prereqs have_test_prereqs"))
-SConscript(dirs = Split("po doc packaging/windows"))
+SConscript(dirs = Split("po doc packaging/windows packaging/systemd"))
 
 binaries = Split("wesnoth wesnothd cutter exploder campaignd test")
 builds = {
@@ -572,6 +573,9 @@ if not access(fifodir, F_OK):
         ])
     AlwaysBuild(fifodir)
     env.Alias("install-wesnothd", fifodir)
+if env["systemd"]:
+    env.InstallData("prefix", "wesnothd", "#packaging/systemd/wesnothd.service", "lib/systemd/system")
+    env.InstallData("prefix", "wesnothd", "#packaging/systemd/wesnothd.conf", "lib/tmpfiles.d")
 
 # Wesnoth campaign server
 env.InstallBinary(campaignd)
