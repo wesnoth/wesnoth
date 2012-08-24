@@ -2,6 +2,11 @@ This is meant to be a concise list of player-visible changes (very minor
 changes may be omitted). For a complete list of changes, see the main
 changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/branches/1.10/changelog
 
+Version 1.10.4+svn:
+ * Language and i18n:
+   * Updated translations:
+
+
 Version 1.10.4:
  * Campaigns:
    * A Tale of Two Brothers:
@@ -11,18 +16,22 @@ Version 1.10.4:
      * Keep recall list at end of scenario 7.
    * Under the Burning Suns:
      * Taking the ring of speed is now optional.
+
  * Language and i18n:
    * Updated translations: British English, Chinese (Simplified). Chinese
      (Traditional), French, Galician, German, Greek, Hungarian, Japanese, Latin,
      Lithuanian, Old English, Russian, Serbian, Slovak, Spanish, Ukrainian.
+
  * Terrain:
    * Improve appearance of sand near dirt with transitions.
+
  * User interface:
    * Trying to initiate movement (or an attack) before previous movement is
      finished no longer unselects the current unit (bug #19734). (The new
      movement command is still deliberately ignored.)
    * Fixed bug #19783: Disable commands while WML menu items are executing.
    * Fixed bug #19533: Both damage tooltips now take into account local factors.
+
 
 Version 1.10.3:
  * Campaigns:
@@ -31,13 +40,16 @@ Version 1.10.3:
    * Under the Burning Suns:
      * Made it so that all units are rehydrated quietly upon victory in scenario
        two.
+
  * Language and i18n:
    * Updated translations: Chinese (Simplified), Finnish, French, Galician,
      Irish, Italian, Korean, Latin, Old English, Portuguese (Brazil), Russian.
+
  * Multiplayer:
    * A New Land:
      * Made it so that the "Elvish Shaman" option in the elvish unit selection
        menu gets translated. Fixes bug #19677.
+
  * Whiteboard:
    * Fixed bug #19613: Multiple attacks after planning attacks in whiteboard.
    * Fixed bug #19619: In local games, units keep ghosted appearance during
@@ -45,6 +57,7 @@ Version 1.10.3:
    * Fixed bug #19618: Problems with ending turn with impossible moves.
    * Fixed bug #19615: Can see part of opponents' planned moves in local
      multiplayer game.
+
  * Miscellaneous and bug fixes:
    * Fixed: Out-of-sync message in EI::16_Weldyn_under_Attack (bug #19735)
 
