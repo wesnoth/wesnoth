@@ -40,7 +40,7 @@ struct dummy_action: action{
 	map_location get_numbering_hex() const { return map_location(); }
 	unit* get_unit() const { return 0; }
 	fake_unit_ptr get_fake_unit(){ return fake_unit_ptr(); }
-	error check() const { return OK; }
+	error check_validity() const { return OK; }
 };
 
 BOOST_AUTO_TEST_SUITE( whiteboard_side_actions_container )
