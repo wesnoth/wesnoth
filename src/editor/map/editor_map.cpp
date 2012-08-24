@@ -14,16 +14,16 @@
 */
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
-#include "editor/action/action_base.hpp"
+#include "../action/action_base.hpp"
 #include "editor_map.hpp"
 #include "formula_string_utils.hpp"
 
-#include "display.hpp"
-#include "filesystem.hpp"
-#include "gettext.hpp"
-#include "map_exception.hpp"
-#include "map_label.hpp"
-#include "wml_exception.hpp"
+#include "../../display.hpp"
+#include "../../filesystem.hpp"
+#include "../../gettext.hpp"
+#include "../../map_exception.hpp"
+#include "../../map_label.hpp"
+#include "../../wml_exception.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -41,64 +41,23 @@ editor_map_load_exception wrap_exc(const char* type, const std::string& e_msg, c
 	return editor_map_load_exception(filename, msg);
 }
 
-editor_map::editor_map(const config& terrain_cfg, const display& disp)
-	: gamemap(terrain_cfg, "")
+editor_map::editor_map(const config& terrain_cfg)
+	: gamemap(terrain_cfg, gamemap::default_map_header)
 	, selection_()
-	, labels_(disp, NULL)
-	, units_()
-	, teams_()
-	, tod_manager_()
-	, state_()
 {
 }
 
-editor_map::editor_map(const config& terrain_cfg, const config& level, const display& disp)
-	: gamemap(terrain_cfg, level)
-	, selection_()
-	, labels_(disp, NULL)
-	, units_()
-	, teams_()
-	, tod_manager_(level)
-	, state_()
-{
-	labels_.read(level);
-
-	resources::teams = &teams_;
-
-	BOOST_FOREACH(const config& side, level.child_range("side"))
-	{
-		team t;
-		t.build(side, *this, 100);
-		//this is done because we don't count as observer is there is a human controller
-		//t.change_controller("null");
-		//TODO alternative? : gamestatus::teambuilder
-
-		teams_.push_back(t);
-		BOOST_FOREACH(const config &a_unit, side.child_range("unit")) {
-			map_location loc(a_unit, NULL);
-			units_.add(loc, unit(a_unit, true));
-		}
-	}
-
-	sanity_check();
-}
-
-editor_map::editor_map(const config& terrain_cfg, const std::string& data, const display& disp)
+editor_map::editor_map(const config& terrain_cfg, const std::string& data)
 	: gamemap(terrain_cfg, data)
 	, selection_()
-	, labels_(disp, NULL)
-	, units_()
-	, teams_()
-	, tod_manager_()
-	, state_()
 {
 	sanity_check();
 }
 
-editor_map editor_map::from_string(const config& terrain_cfg, const std::string& data, const display& disp)
+editor_map editor_map::from_string(const config& terrain_cfg, const std::string& data)
 {
 	try {
-		return editor_map(terrain_cfg, data, disp);
+		return editor_map(terrain_cfg, data);
 	} catch (incorrect_map_format_error& e) {
 		throw wrap_exc("format", e.message, "");
 	} catch (twml_exception& e) {
@@ -108,35 +67,17 @@ editor_map editor_map::from_string(const config& terrain_cfg, const std::string&
 	}
 }
 
-editor_map::editor_map(
-		  const config& terrain_cfg
-		, size_t width
-		, size_t height
-		, t_translation::t_terrain filler
-		, const display& disp)
-	: gamemap(
-			  terrain_cfg
-			, t_translation::write_game_map(t_translation::t_map(
-				  width + 2
-				, t_translation::t_list(height + 2, filler))))
+editor_map::editor_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler)
+	: gamemap(terrain_cfg, gamemap::default_map_header + t_translation::write_game_map(
+		t_translation::t_map(width + 2, t_translation::t_list(height + 2, filler))))
 	, selection_()
-	, labels_(disp, NULL)
-	, units_()
-	, teams_()
-	, tod_manager_()
-	, state_()
 {
 	sanity_check();
 }
 
-editor_map::editor_map(const gamemap& map, const display& disp)
+editor_map::editor_map(const gamemap& map)
 	: gamemap(map)
 	, selection_()
-	, labels_(disp, NULL)
-	, units_()
-	, teams_()
-	, tod_manager_()
-	, state_()
 {
 	sanity_check();
 }
@@ -310,12 +251,12 @@ void editor_map::resize(int width, int height, int x_offset, int y_offset,
 	sanity_check();
 }
 
-editor_map editor_map::mask_to(const editor_map& target) const
+gamemap editor_map::mask_to(const gamemap& target) const
 {
 	if (target.w() != w() || target.h() != h()) {
 		throw editor_action_exception(_("The size of the target map is different from the current map"));
 	}
-	editor_map mask(target);
+	gamemap mask(target);
 	map_location iter;
 	for (iter.x = -border_size(); iter.x < w() + border_size(); ++iter.x) {
 		for (iter.y = -border_size(); iter.y < h() + border_size(); ++iter.y) {
@@ -445,41 +386,6 @@ void editor_map::shrink_bottom(int count)
 	total_height_ -= count;
 }
 
-void editor_map::write(config& cfg) const {
-	config& map = cfg.add_child("map");
-	gamemap::write(map);
-	labels_.write(cfg);
 
-    std::stringstream buf;
-
-    for(std::vector<team>::const_iterator t = teams_.begin(); t != teams_.end(); ++t) {
-    	int side_num = t - teams_.begin() + 1;
-
-    	config& side = cfg.add_child("side");
-    	t->write(side);
-    	// TODO make this customizable via gui
-    	side["no_leader"] = "no";
-    	side["allow_player"] = "yes";
-    	side.remove_attribute("color");
-    	side.remove_attribute("recruit");
-    	side.remove_attribute("recall_cost");
-    	side.remove_attribute("gold");
-    	side.remove_attribute("start_gold");
-    	side.remove_attribute("hidden");
-    	buf.str(std::string());
-    	buf << side_num;
-    	side["side"] = buf.str();
-
-    	//current visible units
-    	for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
-    		if(i->side() == side_num) {
-    			config& u = side.add_child("unit");
-    			i->get_location().write(u); // TODO: Needed?
-    			i->write(u);
-    		}
-    	}
-    }
-
-}
 
 } //end namespace editor

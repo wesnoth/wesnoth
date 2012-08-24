@@ -119,7 +119,7 @@ public:
 
 	void read(const std::string& data, const bool allow_invalid = true, const int border_size = 1, const std::string usage = "map");
 
-	virtual void write(config&) const;
+	std::string write() const;
 
 	/** Overlays another map onto this one at the given position. */
 	void overlay(const gamemap& m, const config& rules, int x=0, int y=0, bool border=false);
@@ -224,6 +224,12 @@ public:
 
 	/** Returns the usage of the map. */
 	tusage get_usage() const { return usage_; }
+
+	/**
+	 * The default map header, needed for maps created with
+	 * terrain_translation::write_game_map().
+	 */
+	static const std::string default_map_header;
 
 	/** The default border style for a map. */
 	static const tborder default_border;

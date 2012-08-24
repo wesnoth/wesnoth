@@ -19,10 +19,6 @@
 #include "../editor_common.hpp"
 
 #include "../../map.hpp"
-#include "../../map_label.hpp"
-#include "unit_map.hpp"
-#include "tod_manager.hpp"
-#include "gamestatus.hpp"
 
 #include <deque>
 
@@ -76,62 +72,32 @@ class editor_map : public gamemap
 {
 public:
 
-	/** Adds a new side to the map */
-	void new_side() {
-    	teams_.push_back(team());
-    }
-
-	/** Get the team from the current map context object */
-	std::vector<team>& get_teams() {
-		return teams_;
-	}
-
-	/** Get the unit map from the current map context object */
-	unit_map& get_units() {
-		return units_;
-	}
-
-	const unit_map& get_units() const {
-		return units_;
-	}
-
-	tod_manager& get_time_manager() {
-		return tod_manager_;
-	}
-
-	game_state& get_game_state() {
-		return state_;
-	}
-
-
 	/**
 	 * Empty map constructor
 	 */
-	explicit editor_map(const config& terrain_cfg, const display& disp);
+	explicit editor_map(const config& terrain_cfg);
 
 	/**
 	 * Create an editor map from a map data string
 	 */
-	editor_map(const config& terrain_cfg, const config& level, const display& disp);
-
-	editor_map(const config& terrain_cfg, const std::string& data, const display& disp);
+	editor_map(const config& terrain_cfg, const std::string& data);
 
 	/**
 	 * Wrapper around editor_map(cfg, data) that catches possible exceptions
 	 * and wraps them in a editor_map_load_exception
 	 */
-	static editor_map from_string(const config& terrain_cfg, const std::string& data, const display& disp);
+	static editor_map from_string(const config& terrain_cfg, const std::string& data);
 
 	/**
 	 * Create an editor map with the given dimensions and filler terrain
 	 */
-	editor_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler, const display& disp);
+	editor_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler);
 
 	/**
 	 * Create an editor_map by upgrading an existing gamemap. The map data is
-	 * copied. Marked "explicit" to avoid potentially harmful automatic conversions.
+	 * copied. Marked "explicit" to avoid potentially harmful autmatic conversions.
 	 */
-	explicit editor_map(const gamemap& map, const display& disp);
+	explicit editor_map(const gamemap& map);
 
 	/**
 	 * editor_map destructor
@@ -149,14 +115,6 @@ public:
 	 * @return a contiguous set of locations that will always contain at least the starting element
 	 */
 	std::set<map_location> get_contiguous_terrain_tiles(const map_location& start) const;
-
-	/**
-	 * @return the map labels of the map
-	 */
-	map_labels& get_map_labels() { return labels_; };
-
-
-	const map_labels& get_map_labels() const { return labels_; };
 
 	/**
 	 * Set labels for staring positions in the given display object.
@@ -217,15 +175,13 @@ public:
 	 * A sort-of diff operation returning a mask that, when applied to the current editor_map,
 	 * will transform it into the target map.
 	 */
-	editor_map mask_to(const editor_map& target) const;
+	gamemap mask_to(const gamemap& target) const;
 
 	/**
 	 * A precondition to several map operations
 	 * @return true if this map has the same dimensions as the other map
 	 */
 	bool same_size_as(const gamemap& other) const;
-
-	void write(config&) const;
 
 protected:
 	t_translation::t_list clone_column(int x, t_translation::t_terrain filler);
@@ -244,25 +200,6 @@ protected:
 	 * The selected hexes
 	 */
 	std::set<map_location> selection_;
-
-private:
-
-	/**
-	 * The labels of this map.
-	 */
-	map_labels labels_;
-
-	/**
-	 * TODO
-	 */
-	unit_map units_;
-
-	std::vector<team> teams_;
-
-	tod_manager tod_manager_;
-
-	game_state state_;
-
 };
 
 

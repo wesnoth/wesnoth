@@ -104,14 +104,14 @@ void editor_controller::init_gui()
 {
 	//TODO duplicate code, see the map_context_refresher
 	resources::game_map = &context_manager_->get_map();
-	resources::units = &context_manager_->get_map().get_units();
-	resources::tod_manager = &context_manager_->get_map().get_time_manager();
-	resources::teams = &context_manager_->get_map().get_teams();
-	resources::state_of_game = &context_manager_->get_map().get_game_state();
+	resources::units = &context_manager_->get_map_context().get_units();
+	resources::tod_manager = &context_manager_->get_map_context().get_time_manager();
+	resources::teams = &context_manager_->get_map_context().get_teams();
+	resources::state_of_game = &context_manager_->get_map_context().get_game_state();
 
 	gui_->change_map(&context_manager_->get_map());
-	gui_->change_units(&context_manager_->get_map().get_units());
-	gui_->change_teams(&context_manager_->get_map().get_teams());
+	gui_->change_units(&context_manager_->get_map_context().get_units());
+	gui_->change_teams(&context_manager_->get_map_context().get_teams());
 	gui_->set_grid(preferences::grid());
 	prefs_disp_manager_.reset(new preferences::display_manager(&gui()));
 	gui_->add_redraw_observer(boost::bind(&editor_controller::display_redraw_callback, this, _1));
@@ -293,7 +293,7 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 			return true;
 		case HOTKEY_EDITOR_TOOL_UNIT:
 		case HOTKEY_EDITOR_TOOL_VILLAGE:
-			return !context_manager_->get_map().get_teams().empty();
+		//	return !context_manager_->get_map().get_teams().empty();
 		case HOTKEY_EDITOR_CUT:
 		case HOTKEY_EDITOR_COPY:
 		case HOTKEY_EDITOR_EXPORT_SELECTION_COORDS:
@@ -500,7 +500,7 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			context_manager_->new_map_dialog();
 			return true;
 		case HOTKEY_EDITOR_SIDE_NEW:
-			context_manager_->get_map().new_side();
+		//	context_manager_->get_map().new_side();
 			gui_->init_flags();
 			return true;
 		case HOTKEY_EDITOR_MAP_SAVE:

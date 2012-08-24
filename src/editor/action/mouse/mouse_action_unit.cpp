@@ -31,17 +31,17 @@ editor_action* mouse_action_unit::click_left(editor_display& disp, int x, int y)
 		return NULL;
 	}
 
-	const unit_map& units = disp.map().get_units();
-	const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
-	if (unit_it != units.end()) {
+//	const unit_map& units = disp.map().get_units();
+//	const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
+//	if (unit_it != units.end()) {
 
-		std::stringstream filename;
-		filename << unit_it->absolute_image() << unit_it->image_mods();
+//		std::stringstream filename;
+	//	filename << unit_it->absolute_image() << unit_it->image_mods();
 
-		surface image(image::get_image(filename.str()));
-		disp.set_mouseover_hex_overlay(image);
+	//	surface image(image::get_image(filename.str()));
+	//	disp.set_mouseover_hex_overlay(image);
 		//TODO set the mouse pointer to a dragging one.
-	}
+	//}
 
 	click_ = true;
 	return NULL;
@@ -89,10 +89,10 @@ editor_action* mouse_action_unit::drag_end_left(editor_display& disp, int x, int
 	if (!disp.get_map().on_board(hex))
 		return NULL;
 
-	const unit_map& units = disp.map().get_units();
-	const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
-	if (unit_it == units.end())
-		return NULL;
+	//const unit_map& units = disp.map().get_units();
+	//const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
+	//if (unit_it == units.end())
+	//	return NULL;
 
 	action = new editor_action_unit_replace(start_hex_, hex);
 	return action;
@@ -125,32 +125,32 @@ editor_action* mouse_action_unit::drag_right(editor_display& disp, int x, int y,
 	click_ = (start_hex_ == hex);
 	previous_move_hex_ = hex;
 
-	const unit_map& units = disp.map().get_units();
+	//const unit_map& units = disp.map().get_units();
 
-	const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
-	if (unit_it != units.end()) {
-		for (map_location::DIRECTION new_direction = map_location::NORTH;
-				new_direction <= map_location::NORTH_WEST;
-				new_direction = map_location::DIRECTION(new_direction +1)){
-			if (unit_it->get_location().get_direction(new_direction, 1) == hex) {
-				return new editor_action_unit_facing(start_hex_, new_direction, old_direction_);
-			}
-		}
-	}
+	//const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
+	//if (unit_it != units.end()) {
+	//	for (map_location::DIRECTION new_direction = map_location::NORTH;
+	//			new_direction <= map_location::NORTH_WEST;
+	//			new_direction = map_location::DIRECTION(new_direction +1)){
+	//		if (unit_it->get_location().get_direction(new_direction, 1) == hex) {
+	//			return new editor_action_unit_facing(start_hex_, new_direction, old_direction_);
+	//		}
+	//	}
+	//}
 
 	return NULL;
 }
 
-editor_action* mouse_action_unit::up_right(editor_display& disp, int /*x*/, int /*y*/)
+editor_action* mouse_action_unit::up_right(editor_display& /*disp*/, int /*x*/, int /*y*/)
 {
 	if (!click_) return NULL;
 	click_ = false;
 
-	const unit_map& units = disp.map().get_units();
-	const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
-	if (unit_it != units.end()) {
-		return new editor_action_unit_delete(start_hex_);
-	}
+	//const unit_map& units = disp.map().get_units();
+	//const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
+	//if (unit_it != units.end()) {
+	//	return new editor_action_unit_delete(start_hex_);
+	//}
 
 	return NULL;
 }
@@ -165,11 +165,11 @@ editor_action* mouse_action_unit::drag_end_right(editor_display& disp, int x, in
 
 	if(new_direction_ != old_direction_) {
 
-	const unit_map& units = disp.map().get_units();
-	const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
-		if (unit_it != units.end()) {
-			return new editor_action_unit_facing(start_hex_, new_direction_, old_direction_);
-		}
+	//const unit_map& units = disp.map().get_units();
+	//const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
+	//	if (unit_it != units.end()) {
+	//		return new editor_action_unit_facing(start_hex_, new_direction_, old_direction_);
+	//	}
 	}
 
 	return NULL;

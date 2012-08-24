@@ -718,10 +718,8 @@ config play_controller::to_config() const
 	}
 
 	//write out the current state of the map
-
-	config& map = cfg.add_child("map");
-	map_.write(map);
-
+	//write out the current state of the map
+	cfg["map_data"] = map_.write();
 	cfg.merge_with(pathfind_manager_->to_config());
 
 	config display;
@@ -729,6 +727,7 @@ config play_controller::to_config() const
 	cfg.add_child("display", display);
 
 	return cfg;
+
 }
 
 void play_controller::finish_side_turn(){

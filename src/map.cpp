@@ -37,6 +37,7 @@ static lg::log_domain log_config("config");
 #define LOG_G LOG_STREAM(info, lg::general)
 #define DBG_G LOG_STREAM(debug, lg::general)
 
+const std::string gamemap::default_map_header = "usage=map\nborder_size=1\n\n";
 const gamemap::tborder gamemap::default_border = gamemap::SINGLE_TILE_BORDER;
 
 const t_translation::t_list& gamemap::underlying_mvt_terrain(t_translation::t_terrain terrain) const
@@ -338,6 +339,28 @@ int gamemap::read_header(const std::string& data)
 }
 
 
+std::string gamemap::write() const
+{
+	// Convert the starting positions to a map
+	std::map<int, t_translation::coordinate> starting_positions;
+	for (int i = 0; i < MAX_PLAYERS + 1; ++i)
+	{
+		if (!on_board(startingPositions_[i])) continue;
+		t_translation::coordinate position(
+				  startingPositions_[i].x + border_size_
+				, startingPositions_[i].y + border_size_);
+		starting_positions[i] = position;
+	}
+
+	// Let the low level convertor do the conversion
+	std::ostringstream s;
+	s << "border_size=" << border_size_ << "\nusage="
+		<< (usage_ == IS_MAP ? "map" : "mask") << "\n\n"
+		<< t_translation::write_game_map(tiles_, starting_positions);
+	return s.str();
+}
+
+/*
 void gamemap::write(config& cfg) const
 {
 	// Convert the starting positions to a map
@@ -358,6 +381,7 @@ void gamemap::write(config& cfg) const
 	s << t_translation::write_game_map(tiles_, starting_positions);
 	cfg["data"] = s.str();
 }
+*/
 
 void gamemap::overlay(const gamemap& m, const config& rules_cfg, int xpos, int ypos, bool border)
 {

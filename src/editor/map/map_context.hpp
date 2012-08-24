@@ -18,6 +18,9 @@
 
 #include "editor_map.hpp"
 #include "map_label.hpp"
+#include "unit_map.hpp"
+#include "tod_manager.hpp"
+#include "gamestatus.hpp"
 
 #include <boost/utility.hpp>
 
@@ -38,7 +41,7 @@ public:
 	 * empty, indicating a new map.
 	 * Marked "explicit" to avoid automatic conversions.
 	 */
-	explicit map_context(const editor_map& map);
+	explicit map_context(const editor_map& map, const display& disp);
 
 	/**
 	 * Create map_context from a map file. If the map cannot be loaded, an
@@ -64,6 +67,33 @@ public:
 	 * Map accesor - const version
 	 */
 	const editor_map& get_map() const { return map_; }
+
+	/** Adds a new side to the map */
+	void new_side() {
+    	teams_.push_back(team());
+    }
+
+	/** Get the team from the current map context object */
+	std::vector<team>& get_teams() {
+		return teams_;
+	}
+
+	/** Get the unit map from the current map context object */
+	unit_map& get_units() {
+		return units_;
+	}
+
+	const unit_map& get_units() const {
+		return units_;
+	}
+
+	tod_manager& get_time_manager() {
+		return tod_manager_;
+	}
+
+	game_state& get_game_state() {
+		return state_;
+	}
 
 	/**
 	 * Draw a terrain on a single location on the map.
@@ -300,6 +330,15 @@ protected:
 
 	std::set<map_location> changed_locations_;
 	bool everything_changed_;
+
+private:
+
+	map_labels labels_;
+	unit_map units_;
+	std::vector<team> teams_;
+	tod_manager tod_manager_;
+	game_state state_;
+
 };
 
 

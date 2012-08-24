@@ -58,15 +58,15 @@ public:
 	void refresh() {
 		ec_.gui().change_map(&ec_.get_map());
 		resources::game_map = &ec_.get_map();
-		ec_.gui().change_units(&ec_.get_map().get_units());
-		resources::units = &ec_.get_map().get_units();
+		//ec_.gui().change_units(&ec_.get_map().get_units());
+		//resources::units = &ec_.get_map().get_units();
 		// TODO register the tod_manager with the gui?
-		resources::tod_manager = &ec_.get_map().get_time_manager();
-		ec_.gui().change_teams(&ec_.get_map().get_teams());
-		resources::teams = &ec_.get_map().get_teams();
+		//resources::tod_manager = &ec_.get_map().get_time_manager();
+		//ec_.gui().change_teams(&ec_.get_map().get_teams());
+		//resources::teams = &ec_.get_map().get_teams();
 		ec_.reload_map();
 
-		resources::state_of_game = &ec_.get_map().get_game_state();
+		//resources::state_of_game = &ec_.get_map().get_game_state();
 		ec_.gui().init_flags();
 	}
 private:
@@ -210,6 +210,7 @@ void context_manager::expand_sides_menu(std::vector<std::string>& items)
                if (items[i] == "editor-side-switch") {
                        items.erase(items.begin() + i);
                        std::vector<std::string> contexts;
+                       /*
                        for (size_t mci = 0; mci < get_map().get_teams().size(); ++mci) {
 
                     	   	   const team& t = get_map().get_teams()[mci];
@@ -218,6 +219,7 @@ void context_manager::expand_sides_menu(std::vector<std::string>& items)
                                label << (t.name().empty() ? _("(New Side)") : t.name());
                                contexts.push_back(label.str());
                        }
+                       */
                        items.insert(items.begin() + i, contexts.begin(), contexts.end());
                        break;
                }
@@ -439,7 +441,7 @@ void context_manager::generate_map_dialog()
 		if (map_string.empty()) {
 			gui2::show_transient_message(gui_.video(), "", _("Map creation failed."));
 		} else {
-			editor_map new_map(game_config_, map_string, gui_);
+			editor_map new_map(game_config_, map_string);
 			editor_action_whole_map a(new_map);
 			perform_refresh(a);
 		}
@@ -466,7 +468,7 @@ int context_manager::add_map_context(map_context* mc)
 void context_manager::create_default_context()
 {
 	if(saved_windows_.empty()) {
-		map_context* mc = new map_context(editor_map(game_config_, 44, 33, t_translation::GRASS_LAND, gui_));
+		map_context* mc = new map_context(editor_map(game_config_, 44, 33, t_translation::GRASS_LAND), gui_);
 		add_map_context(mc);
 	} else {
 		BOOST_FOREACH(const std::string& filename, saved_windows_) {
@@ -643,12 +645,12 @@ void context_manager::revert_map()
 
 void context_manager::new_map(int width, int height, t_translation::t_terrain fill, bool new_context)
 {
-	editor_map m(game_config_, width, height, fill, gui_);
+	editor_map m(game_config_, width, height, fill);
 	if (new_context) {
-		int new_id = add_map_context(new map_context(m));
+		int new_id = add_map_context(new map_context(m, gui_));
 		switch_context(new_id);
 	} else {
-		replace_map_context(new map_context(m));
+		replace_map_context(new map_context(m, gui_));
 	}
 }
 

@@ -402,7 +402,8 @@ editor_action_create_mask* editor_action_create_mask::clone() const
 }
 void editor_action_create_mask::perform_without_undo(map_context& mc) const
 {
-	mc.get_map() = mc.get_map().mask_to(target_);
+	//TODO
+	//mc.get_map() = mc.get_map().mask_to(target_);
 	mc.set_needs_terrain_rebuild();
 }
 
