@@ -18,6 +18,7 @@ import unit_tree.helpers as helpers
 import unit_tree.animations as animations
 import unit_tree.html_output as html_output
 import unit_tree.overview
+import unit_tree.wiki_output as wiki_output
 
 def copy_images():
     print("Recolorizing pictures.")
@@ -45,6 +46,12 @@ def shell(com):
     #if err: sys.stdout.write(err)
 
     return p.returncode
+
+def shell_out(com):
+    p = subprocess.Popen(com,
+        stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+    out, err = p.communicate()
+    return out
 
 def bash(name):
     return "'" + name.replace("'", "'\\''") + "'"
@@ -107,7 +114,10 @@ def list_contents():
 
         for campaign in campaigns:
             cid = campaign.get_text_val("id")
-            append(info, cid, campaign.get_text_val("define"), c = campaign)
+            d = campaign.get_text_val("define")
+            d2 = campaign.get_text_val("extra_defines")
+            if d2: d += "," + d2
+            append(info, cid, d, c = campaign)
 
         return info
 
@@ -223,7 +233,7 @@ def process_campaign_or_era(addon, cid, define, batchlist):
     else:
         if addon == "mainline":
             if cid != "mainline":
-                wesnoth.parser.parse_text("{campaigns}", "NORMAL," + define)
+                wesnoth.parser.parse_text("{core}{campaigns}", "SKIP_CORE,NORMAL," + define)
                 wesnoth.add_units(cid)
         else:
             wesnoth.parser.parse_text("{core}{~add-ons}", "SKIP_CORE," + define)
@@ -415,32 +425,45 @@ if __name__ == '__main__':
     op.add_option("-A", "--addons-only", action = "store_true",
         help = "Do only process addons (for debugging).")
     op.add_option("-v", "--verbose", action = "store_true")
+    op.add_option("-W", "--wiki", action = "store_true",
+        help = "write wikified units list to stdout")
     options, args = op.parse_args()
     
     html_output.options = options
     helpers.options = options
     unit_tree.overview.options = options
+    wiki_output.options = options
 
-    if not options.output:
+    if not options.output and not options.wiki:
+        sys.stderr.write("Need --output (or --wiki).\n")
         op.print_help()
         sys.exit(-1)
 
-    options.output = os.path.expanduser(options.output)
+    if options.output:
+        options.output = os.path.expanduser(options.output)
 
     if not options.wesnoth:
         options.wesnoth = "wesnoth"
 
+    if not options.data_dir:
+        options.data_dir = shell_out([options.wesnoth, "--path"]).strip()
+        print("Using " + options.data_dir + " as data dir.")
+
+    if not options.config_dir:
+        options.config_dir = shell_out([options.wesnoth, "--config-path"]).strip()
+        print("Using " + options.config_dir + " as config dir.")
+
     if not options.transdir:
         options.transdir = os.getcwd()
+    
+    if options.wiki:
+        wiki_output.main()
+        sys.exit(0)
 
     image_collector = helpers.ImageCollector(options.wesnoth,
         options.config_dir, options.data_dir)
     html_output.image_collector = image_collector
 
-    # Generate output dir.
-    if not os.path.isdir(options.output):
-        os.mkdir(options.output)
-        
     if options.language == "all":
         languages = []
         parser = wmlparser2.Parser(options.wesnoth, options.config_dir,
@@ -456,6 +479,15 @@ if __name__ == '__main__':
         languages.sort()
     else:
         languages = options.language.split(",")
+
+    if not options.list and not options.batch:
+        sys.stderr.write("Need --list or --batch (or both).\n")
+        sys.exit(-1)
+        
+    if options.output:
+        # Generate output dir.
+        if not os.path.isdir(options.output):
+            os.mkdir(options.output)
         
     if options.list:
         list_contents()

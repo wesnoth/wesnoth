@@ -176,7 +176,7 @@ class HTMLOutput:
     def translate(self, string, domain):
         return self.translation.translate(string, domain)
 
-    def analyze_units(self, grouper):
+    def analyze_units(self, grouper, add_parents):
         """
         This takes all units belonging to a campaign, then groups them either
         by race or faction, and creates an advancements tree out of it.
@@ -208,18 +208,19 @@ class HTMLOutput:
                         forest.add_node(helpers.UnitNode(au))
                         new_units_added[auid] = au
             units_added = new_units_added
-        
-        # Also add parent units
-        added = True
-        while added:
-            added = False
-            for uid, u in self.wesnoth.unit_lookup.items():
-                if uid in forest.lookup: continue
-                for auid in u.advance:
-                    if auid in forest.lookup:
-                        forest.add_node(helpers.UnitNode(u))
-                        added = True
-                        break
+
+        if add_parents:
+            # Also add parent units
+            added = True
+            while added:
+                added = False
+                for uid, u in self.wesnoth.unit_lookup.items():
+                    if uid in forest.lookup: continue
+                    for auid in u.advance:
+                        if auid in forest.lookup:
+                            forest.add_node(helpers.UnitNode(u))
+                            added = True
+                            break
 
         forest.update()
 
@@ -672,11 +673,11 @@ class HTMLOutput:
             write("</tr>\n")
         write("</table>\n")
 
-    def write_units_tree(self, grouper, title):
+    def write_units_tree(self, grouper, title, add_parents):
         self.output.write(html_header % {"path": "../../",
             "title": title})
 
-        n = self.analyze_units(grouper)
+        n = self.analyze_units(grouper, add_parents)
         self.write_navbar("units_tree")
 
         self.output.write("<div class=\"main\">")
@@ -1027,7 +1028,7 @@ def generate_campaign_report(addon, isocode, campaign, wesnoth):
     if not title:
         title = cid
 
-    n = html.write_units_tree(grouper, title)
+    n = html.write_units_tree(grouper, title, True)
     
     output.close()
     
@@ -1048,7 +1049,7 @@ def generate_era_report(addon, isocode, era, wesnoth):
     grouper = GroupByFaction(wesnoth, eid)
 
     ename = era.get_text_val("name", translation = html.translate)
-    n = html.write_units_tree(grouper, ename)
+    n = html.write_units_tree(grouper, ename, False)
     
     output.close()
     
@@ -1061,7 +1062,7 @@ def generate_single_unit_reports(addon, isocode, wesnoth):
 
     html = HTMLOutput(isocode, None, addon, "units", False, wesnoth)
     grouper = GroupByNothing()
-    html.analyze_units(grouper)
+    html.analyze_units(grouper, True)
 
     for uid, unit in wesnoth.unit_lookup.items():
         if "mainline" in unit.campaigns and addon != "mainline": continue
