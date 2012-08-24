@@ -110,7 +110,7 @@ namespace test_utils {
 
 		game_state& state = end->get_state();
 		state.classification().campaign_type = "test";
-		state.classification().scenario = id_;
+		state.carryover_sides_start["next_scenario"] = id_;
 		play_game(get_fake_display(1024, 768), state, game_config_);
 	}
 
