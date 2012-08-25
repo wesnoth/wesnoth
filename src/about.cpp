@@ -284,7 +284,7 @@ void show_about(display &disp, const std::string &campaign)
 				static_cast<int>(text.size())))){
 
 			image_count++;
-			surface temp=surface(scale_surface(image::get_image(image_list[image_count]), screen->w, screen->h));
+			surface temp=scale_surface(image::get_image(image_list[image_count]), screen->w, screen->h);
 			map_image=temp?temp:map_image;
 			redraw_mapimage = true;
 		}
