@@ -121,7 +121,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 				controller_ = CNTR_EMPTY;
 			} else {
 				cfg_["controller"] = controller_names[CNTR_COMPUTER];
-				controller_ = static_cast<mp::controller>(CNTR_COMPUTER);
+				controller_ = CNTR_COMPUTER;
 			}
 		} else {
 			if (cfg_["controller"] == "network"
