@@ -801,7 +801,7 @@ manager::manager(size_t p_min_threads,size_t p_max_threads) : active_(!managed)
 		for(size_t shard = 0; shard != NUM_SHARDS; ++shard) {
 			const threading::lock lock(*shard_mutexes[shard]);
 			for(size_t n = 0; n != p_min_threads; ++n) {
-				threading::thread * tmp = new threading::thread(process_queue,(void*)uintptr_t(shard));
+				threading::thread * tmp = new threading::thread(process_queue,(void*)(shard));
 				threads[shard][tmp->get_id()] = tmp;
 			}
 		}
