@@ -39,7 +39,6 @@ static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 
 
-// Simple algorithm: no maximum number of patients per healer.
 void reset_resting(unit_map& units, int side)
 {
 	BOOST_FOREACH(unit &u, units) {
@@ -55,6 +54,7 @@ struct unit_healing_struct {
 	int healing;
 };
 
+// Simple algorithm: no maximum number of patients per healer.
 void calculate_healing(int side, bool update_display)
 {
 	DBG_NG << "beginning of healing calculations\n";
