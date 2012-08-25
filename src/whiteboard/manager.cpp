@@ -1068,7 +1068,6 @@ bool manager::has_actions() const
 
 bool manager::unit_has_actions(unit const* unit) const
 {
-	assert(!wait_for_side_init_);
 	assert(unit != NULL);
 	return viewer_actions()->unit_has_actions(*unit);
 }
