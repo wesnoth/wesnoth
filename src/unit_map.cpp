@@ -359,7 +359,7 @@ unit_map::unit_iterator unit_map::find_first_leader(int side) {
 	unit_map::iterator first_leader = end();
 
 	for (; i != i_end; ++i) {
-		if (static_cast<int>(i->side()) == side && i->can_recruit()){
+		if (i->side() == side && i->can_recruit()){
 			if ((first_leader == end()) || (i->underlying_id() < first_leader->underlying_id()) )
 				first_leader = i;
 		}
