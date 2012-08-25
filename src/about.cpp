@@ -203,7 +203,7 @@ void show_about(display &disp, const std::string &campaign)
 
 	if(!map_image){
 		image_list[0]=game_config::images::game_title;
-		map_image=surface(scale_surface(image::get_image(image_list[0]), screen->w, screen->h));
+		map_image=scale_surface(image::get_image(image_list[0]), screen->w, screen->h);
 	}
 
 	gui::button close(video,_("Close"));
