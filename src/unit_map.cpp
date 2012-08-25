@@ -371,7 +371,7 @@ std::vector<unit_map::unit_iterator> unit_map::find_leaders(int side) {
 	unit_map::unit_iterator i = begin(), i_end = end();
 	std::vector<unit_map::unit_iterator> leaders;
 	for(;i != i_end; ++i){
-		if(static_cast<int>(i->side()) == side && i->can_recruit()){
+		if(i->side() == side && i->can_recruit()){
 			leaders.push_back(i);
 		}
 	}
