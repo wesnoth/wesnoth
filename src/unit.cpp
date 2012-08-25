@@ -2284,9 +2284,9 @@ int unit::resistance_against(const std::string& damage_name,bool attacker,const 
 	}
 
 	unit_ability_list resistance_abilities = get_abilities("resistance",loc);
-	for (std::vector<std::pair<const config *,map_location> >::iterator i = resistance_abilities.cfgs.begin(); i != resistance_abilities.cfgs.end();) {
+	for (unit_ability_list::iterator i = resistance_abilities.begin(); i != resistance_abilities.end();) {
 		if(!resistance_filter_matches(*i->first, attacker, damage_name, res)) {
-			i = resistance_abilities.cfgs.erase(i);
+			i = resistance_abilities.erase(i);
 		} else {
 			++i;
 		}

@@ -29,20 +29,42 @@ class game_state;
 class vconfig;
 class team;
 
+/// The things contained within a unit_ability_list.
+typedef std::pair<const config *, map_location> unit_ability;
+
 class unit_ability_list
 {
 public:
 	unit_ability_list() :
-		cfgs()
+		cfgs_()
 	{
 	}
 
-	bool empty() const;
-
+	// Implemented in unit_abilities.cpp:
 	std::pair<int,map_location> highest(const std::string& key, int def=0) const;
 	std::pair<int,map_location> lowest(const std::string& key, int def=0) const;
 
-	std::vector<std::pair<const config *, map_location> > cfgs;
+	// The following make this class usable with BOOST_FOREACH:
+	typedef std::vector<unit_ability>::iterator       iterator;
+	typedef std::vector<unit_ability>::const_iterator const_iterator;
+	iterator       begin()        { return cfgs_.begin(); }
+	const_iterator begin() const  { return cfgs_.begin(); }
+	iterator       end()          { return cfgs_.end();   }
+	const_iterator end()   const  { return cfgs_.end();   }
+
+	// Vector access:
+	bool                 empty() const  { return cfgs_.empty(); }
+	unit_ability &       front()        { return cfgs_.front(); }
+	const unit_ability & front() const  { return cfgs_.front(); }
+	unit_ability &       back()         { return cfgs_.back();  }
+	const unit_ability & back()  const  { return cfgs_.back();  }
+
+	iterator erase(const iterator & erase_it)  { return cfgs_.erase(erase_it); }
+	void push_back(const unit_ability & ability)  { cfgs_.push_back(ability); }
+
+private:
+	// Data:
+	std::vector<unit_ability> cfgs_;
 };
 
 

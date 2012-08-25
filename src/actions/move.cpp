@@ -851,13 +851,14 @@ namespace { // Private helpers for move_unit()
 	 */
 	void unit_mover::read_ambush_string(const unit_map::const_iterator & ambush_it)
 	{
-		const unit_ability_list hides = ambush_it->get_abilities("hides");
-		std::vector<std::pair<const config *, map_location> >::const_iterator hide_it;
-		for ( hide_it = hides.cfgs.begin();
-		      hide_it != hides.cfgs.end()  &&  ambush_string_.empty();
-		      ++hide_it )
+		if ( !ambush_string_.empty() )
+			return;
+
+		BOOST_FOREACH (const unit_ability &hide, ambush_it->get_abilities("hides"))
 		{
-			ambush_string_ = (*hide_it->first)["alert"].str();
+			ambush_string_ = (*hide.first)["alert"].str();
+			if ( !ambush_string_.empty() )
+				return;
 		}
 	}
 

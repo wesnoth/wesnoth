@@ -443,7 +443,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u,
 			strcmp(opp.undead_variation().c_str(), "null") && !resources::game_map->is_village(opp_loc);
 
 		if (plagues) {
-			plague_type = (*plague_specials.cfgs.front().first)["type"].str();
+			plague_type = (*plague_specials.front().first)["type"].str();
 			if (plague_type.empty())
 				plague_type = u.type_id();
 		}

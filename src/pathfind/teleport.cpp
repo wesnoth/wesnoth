@@ -178,18 +178,11 @@ const pathfind::teleport_map pathfind::get_teleport_locations(const unit &u,
 	std::vector<teleport_group> groups;
 
 	if (u.get_ability_bool("teleport")) {
-
-		unit_ability_list teleport_list = u.get_abilities("teleport");
-
-		std::vector<std::pair<const config *, map_location> > teleports = teleport_list.cfgs;
-		std::vector<std::pair<const config *, map_location> >::const_iterator it = teleports.begin();
-
-		for(; it != teleports.end(); ++it) {
-			const int tunnel_count = (it->first)->child_count("tunnel");
+		BOOST_FOREACH (const unit_ability & teleport, u.get_abilities("teleport")) {
+			const int tunnel_count = (teleport.first)->child_count("tunnel");
 			for(int i = 0; i < tunnel_count; ++i) {
-				config teleport_group_cfg = (it->first)->child("tunnel", i);
-				teleport_group group = teleport_group(vconfig(teleport_group_cfg, true), false);
-				groups.push_back(group);
+				config teleport_group_cfg = (teleport.first)->child("tunnel", i);
+				groups.push_back(teleport_group(vconfig(teleport_group_cfg, true), false));
 			}
 		}
 	}

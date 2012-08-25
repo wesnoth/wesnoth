@@ -517,23 +517,23 @@ void unit_attack(
 	animator.add_animation(&defender, defender_anim, def->get_location(),
 		true,  text , display::rgb(255, 0, 0));
 
-	for (std::vector<std::pair<const config *, map_location> >::iterator itor = leaders.cfgs.begin(); itor != leaders.cfgs.end(); ++itor) {
-		if(itor->second == a) continue;
-		if(itor->second == b) continue;
-		unit_map::iterator leader = units.find(itor->second);
+	BOOST_FOREACH (const unit_ability & ability, leaders) {
+		if(ability.second == a) continue;
+		if(ability.second == b) continue;
+		unit_map::iterator leader = units.find(ability.second);
 		assert(leader != units.end());
-		leader->set_facing(itor->second.get_relative_dir(a));
-		animator.add_animation(&*leader, "leading", itor->second,
+		leader->set_facing(ability.second.get_relative_dir(a));
+		animator.add_animation(&*leader, "leading", ability.second,
 			att->get_location(), damage, true,  "", 0,
 			hit_type, &attack, secondary_attack, swing);
 	}
-	for (std::vector<std::pair<const config *, map_location> >::iterator itor = helpers.cfgs.begin(); itor != helpers.cfgs.end(); ++itor) {
-		if(itor->second == a) continue;
-		if(itor->second == b) continue;
-		unit_map::iterator helper = units.find(itor->second);
+	BOOST_FOREACH (const unit_ability & ability, helpers) {
+		if(ability.second == a) continue;
+		if(ability.second == b) continue;
+		unit_map::iterator helper = units.find(ability.second);
 		assert(helper != units.end());
-		helper->set_facing(itor->second.get_relative_dir(b));
-		animator.add_animation(&*helper, "resistance", itor->second,
+		helper->set_facing(ability.second.get_relative_dir(b));
+		animator.add_animation(&*helper, "resistance", ability.second,
 			def->get_location(), damage, true,  "", 0,
 			hit_type, &attack, secondary_attack, swing);
 	}
@@ -565,8 +565,8 @@ void reset_helpers(const unit *attacker,const unit *defender)
 	unit_map& units = disp->get_units();
 	if(attacker) {
 		unit_ability_list leaders = attacker->get_abilities("leadership");
-		for (std::vector<std::pair<const config *, map_location> >::iterator itor = leaders.cfgs.begin(); itor != leaders.cfgs.end(); ++itor) {
-			unit_map::iterator leader = units.find(itor->second);
+		BOOST_FOREACH (const unit_ability & ability, leaders) {
+			unit_map::iterator leader = units.find(ability.second);
 			assert(leader != units.end());
 			leader->set_standing();
 		}
@@ -574,8 +574,8 @@ void reset_helpers(const unit *attacker,const unit *defender)
 
 	if(defender) {
 		unit_ability_list helpers = defender->get_abilities("resistance");
-		for (std::vector<std::pair<const config *, map_location> >::iterator itor = helpers.cfgs.begin(); itor != helpers.cfgs.end(); ++itor) {
-			unit_map::iterator helper = units.find(itor->second);
+		BOOST_FOREACH (const unit_ability & ability, helpers) {
+			unit_map::iterator helper = units.find(ability.second);
 			assert(helper != units.end());
 			helper->set_standing();
 		}

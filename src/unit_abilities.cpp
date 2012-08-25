@@ -162,7 +162,7 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 		BOOST_FOREACH(const config &i, abilities.child_range(tag_name)) {
 			if (ability_active(tag_name, i, loc) &&
 			    ability_affects_self(tag_name, i, loc))
-				res.cfgs.push_back(std::pair<const config *, map_location>(&i, loc));
+				res.push_back(unit_ability(&i, loc));
 		}
 	}
 
@@ -180,7 +180,7 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 			if (unit_abilities::affects_side(j, teams_manager::get_teams(), side(), it->side()) &&
 			    it->ability_active(tag_name, j, adjacent[i]) &&
 			    ability_affects_adjacent(tag_name, j, i, loc))
-				res.cfgs.push_back(std::pair<const config *, map_location>(&j, adjacent[i]));
+				res.push_back(unit_ability(&j, adjacent[i]));
 		}
 	}
 
@@ -349,14 +349,9 @@ bool unit::has_ability_type(const std::string& ability) const
 }
 
 
-bool unit_ability_list::empty() const
-{
-	return cfgs.empty();
-}
-
 std::pair<int,map_location> unit_ability_list::highest(const std::string& key, int def) const
 {
-	if (cfgs.empty()) {
+	if ( cfgs_.empty() ) {
 		return std::make_pair(def, map_location());
 	}
 	// The returned location is the best non-cumulative one, if any,
@@ -366,8 +361,7 @@ std::pair<int,map_location> unit_ability_list::highest(const std::string& key, i
 	int abs_max = 0;
 	int flat = 0;
 	int stack = 0;
-	typedef std::pair<const config *, map_location> pt;
-	BOOST_FOREACH(pt const &p, cfgs)
+	BOOST_FOREACH(unit_ability const &p, cfgs_)
 	{
 		int value = (*p.first)[key].to_int(def);
 		if ((*p.first)["cumulative"].to_bool()) {
@@ -388,7 +382,7 @@ std::pair<int,map_location> unit_ability_list::highest(const std::string& key, i
 
 std::pair<int,map_location> unit_ability_list::lowest(const std::string& key, int def) const
 {
-	if (cfgs.empty()) {
+	if ( cfgs_.empty() ) {
 		return std::make_pair(def, map_location());
 	}
 	// The returned location is the best non-cumulative one, if any,
@@ -398,8 +392,7 @@ std::pair<int,map_location> unit_ability_list::lowest(const std::string& key, in
 	int abs_max = 0;
 	int flat = 0;
 	int stack = 0;
-	typedef std::pair<const config *, map_location> pt;
-	BOOST_FOREACH(pt const &p, cfgs)
+	BOOST_FOREACH(unit_ability const &p, cfgs_)
 	{
 		int value = (*p.first)[key].to_int(def);
 		if ((*p.first)["cumulative"].to_bool()) {
@@ -498,8 +491,7 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
 	{
 		BOOST_FOREACH(const config &i, specials.child_range(special)) {
 			if (special_active(i, true))
-				res.cfgs.push_back(std::pair<const config *, map_location>
-					(&i, attacker_ ? aloc_ : dloc_));
+				res.push_back(unit_ability(&i, attacker_ ? aloc_ : dloc_));
 		}
 	}
 	if (!other_attack_) return res;
@@ -507,8 +499,7 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
 	{
 		BOOST_FOREACH(const config &i, specials.child_range(special)) {
 			if (other_attack_->special_active(i, false))
-				res.cfgs.push_back(std::pair<const config *, map_location>
-					(&i, attacker_ ? dloc_ : aloc_));
+				res.push_back(unit_ability(&i, attacker_ ? dloc_ : aloc_));
 		}
 	}
 	return res;
@@ -818,9 +809,8 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 
 	individual_effect set_effect;
 
-	for (std::vector< std::pair<const config *, map_location> >::const_iterator
-	     i = list.cfgs.begin(), i_end = list.cfgs.end(); i != i_end; ++i) {
-		const config& cfg = (*i->first);
+	BOOST_FOREACH (const unit_ability & ability, list) {
+		const config& cfg = *ability.first;
 		std::string const &effect_id = cfg[cfg["id"].empty() ? "name" : "id"];
 
 		if (!backstab && cfg["backstab"].to_bool())
@@ -833,12 +823,12 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 			bool cumulative = cfg["cumulative"].to_bool();
 			if (!value_is_set && !cumulative) {
 				value_set = value;
-				set_effect.set(SET, value, i->first, i->second);
+				set_effect.set(SET, value, ability.first, ability.second);
 			} else {
 				if (cumulative) value_set = std::max<int>(value_set, def);
 				if (value > value_set) {
 					value_set = value;
-					set_effect.set(SET, value, i->first, i->second);
+					set_effect.set(SET, value, ability.first, ability.second);
 				}
 			}
 			value_is_set = true;
@@ -848,21 +838,21 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 			int add = *v;
 			std::map<std::string,individual_effect>::iterator add_effect = values_add.find(effect_id);
 			if(add_effect == values_add.end() || add > add_effect->second.value) {
-				values_add[effect_id].set(ADD,add,i->first,i->second);
+				values_add[effect_id].set(ADD, add, ability.first, ability.second);
 			}
 		}
 		if (const config::attribute_value *v = cfg.get("sub")) {
 			int sub = - *v;
 			std::map<std::string,individual_effect>::iterator sub_effect = values_add.find(effect_id);
 			if(sub_effect == values_add.end() || sub > sub_effect->second.value) {
-				values_add[effect_id].set(ADD,sub,i->first,i->second);
+				values_add[effect_id].set(ADD, sub, ability.first, ability.second);
 			}
 		}
 		if (const config::attribute_value *v = cfg.get("multiply")) {
 			int multiply = int(v->to_double() * 100);
 			std::map<std::string,individual_effect>::iterator mul_effect = values_mul.find(effect_id);
 			if(mul_effect == values_mul.end() || multiply > mul_effect->second.value) {
-				values_mul[effect_id].set(MUL,multiply,i->first,i->second);
+				values_mul[effect_id].set(MUL, multiply, ability.first, ability.second);
 			}
 		}
 		if (const config::attribute_value *v = cfg.get("divide")) {
@@ -873,7 +863,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 				int divide = int(v->to_double() * 100);
 				std::map<std::string,individual_effect>::iterator div_effect = values_div.find(effect_id);
 				if(div_effect == values_div.end() || divide > div_effect->second.value) {
-					values_div[effect_id].set(DIV,divide,i->first,i->second);
+					values_div[effect_id].set(DIV, divide, ability.first, ability.second);
 				}
 			}
 		}
