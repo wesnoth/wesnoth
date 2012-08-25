@@ -879,7 +879,7 @@ int filter_textbox::get_index(int selection) const {
 	//then subtract it from the result to return the index not including
 	//the possible header row.
 
-	if (size_t(selection+header_row_) >= index_map_.size()) {
+	if (selection + header_row_ >= index_map_.size()) {
 		return -1; // bad index, cancel
 	}
 
