@@ -83,13 +83,13 @@ void MD5::update (uint1 *input, uint4 input_length) {
   }
 
   // Compute number of bytes mod 64
-  buffer_index = static_cast<uint4>(((count[0] >> 3) & 0x3F));
+  buffer_index = ((count[0] >> 3) & 0x3F);
 
   // Update number of bits
-  if (  (count[0] += (static_cast<uint4>(input_length) << 3))<(static_cast<uint4>(input_length) << 3) )
+  if (  (count[0] += (input_length << 3))<(input_length << 3) )
     count[1]++;
 
-  count[1] += (static_cast<uint4>(input_length) >> 29);
+  count[1] += (input_length >> 29);
 
 
   buffer_space = 64 - buffer_index;  // how much space is left in buffer
@@ -138,7 +138,7 @@ void MD5::finalize (){
   encode (bits, count, 8);
 
   // Pad out to 56 mod 64.
-  index = static_cast<uint4>((count[0] >> 3) & 0x3f);
+  index = (count[0] >> 3) & 0x3f;
   padLen = (index < 56) ? (56 - index) : (120 - index);
   update (PADDING, padLen);
 
