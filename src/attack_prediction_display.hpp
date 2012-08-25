@@ -19,7 +19,7 @@
 
 class  attack_type;
 class  battle_context;
-class  battle_context_unit_stats;
+struct  battle_context_unit_stats;
 struct map_location;
 class  unit;
 #include "show_dialog.hpp"
