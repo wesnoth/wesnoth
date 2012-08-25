@@ -25,6 +25,7 @@ struct map_location;
 class  team;
 class  unit;
 
+#include <cstring>
 #include <map>
 #include <set>
 
