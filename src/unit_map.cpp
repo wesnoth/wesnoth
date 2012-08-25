@@ -348,7 +348,7 @@ unit_map::unit_iterator unit_map::find(const map_location &loc) {
 unit_map::unit_iterator unit_map::find_leader(int side) {
 	unit_map::iterator i = begin(), i_end = end();
 	for (; i != i_end; ++i) {
-		if (static_cast<int>(i->side()) == side && i->can_recruit())
+		if (i->side() == side && i->can_recruit())
 			return i;
 	}
 	return i_end;
