@@ -642,7 +642,7 @@ inline void check_socket_result(TCPsocket& sock, SOCKET_STATE& result)
 
 static int process_queue(void* shard_num)
 {
-	size_t shard = static_cast<size_t>(reinterpret_cast<uintptr_t>(shard_num));
+	size_t shard = reinterpret_cast<uintptr_t>(shard_num);
 	DBG_NW << "thread started...\n";
 	for(;;) {
 
