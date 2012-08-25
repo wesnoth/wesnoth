@@ -82,7 +82,7 @@ void cutter::load_masks(const config& conf)
 			if(tmp == NULL)
 				throw exploder_failure("Unable to load mask image " + image);
 
-			cur_mask.image = surface(make_neutral_surface(tmp));
+			cur_mask.image = make_neutral_surface(tmp);
 		}
 
 		if(masks_[name].image == NULL)
