@@ -146,7 +146,7 @@ void cutter::add_sub_image(const surface &surf, surface_map &map, const config* 
 	typedef std::pair<std::string, positioned_surface> sme;
 
 	positioned_surface ps;
-	ps.image = surface(::cut_surface(surf, cut));
+	ps.image = ::cut_surface(surf, cut);
 	if(ps.image == NULL)
 		throw exploder_failure("Unable to cut surface!");
 	ps.name = name;
