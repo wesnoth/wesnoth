@@ -340,8 +340,7 @@ void scrollbar::handle_event(const SDL_Event& event)
 			new_state = on_grip ? ACTIVE : NORMAL;
 		} else if (state_ == DRAGGED && groove.h != grip.h) {
 			int y_dep = e.y - grip.y - mousey_on_grip_;
-			int dep = y_dep * static_cast<int>(full_height_ - grip_height_) /
-                static_cast<int>(groove.h - grip.h);
+			int dep = y_dep * static_cast<int>(full_height_ - grip_height_) / (groove.h - grip.h);
 			move_position(dep);
 		}
 		break;
