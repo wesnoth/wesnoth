@@ -1,4 +1,4 @@
-Version 1.11.0-svn:
+Version 1.11.0:
  * Add-ons client:
    * The Update Add-ons dialog has been replaced with an alternate view mode
      for the main Add-ons Manager
@@ -23,22 +23,25 @@ Version 1.11.0-svn:
      important spot so we can evaluate battle simulation on them.
    * In akihara_recruitment, the struct situation became a class.
    * New AI formula 'aki_eval' for testing a battle evaluation
-   * AI now properly considers the expected damage from poison when attacking using poisoners.
+   * AI now properly considers the expected damage from poison when attacking
+     using poisoners.
    * Adding a new scenario for the ai-arena-small in order to test the new AI.
    * Adding new files for the new AI (ai/akihara/recruitment.?pp)
  * Campaigns:
    * Added a note to all final scenarios, stating which one is the last scenario
    * A Tale of Two Brothers:
-     * Fix bug #19949: Turns left counter initially incorrect when objectives change and
-       turn limit is extended
-     * The Chase: fixed some missing messages if no unit with role=speaker is present
+     * Fix bug #19949: Turns left counter initially incorrect when objectives
+       change and turn limit is extended
+     * The Chase: fixed some missing messages if no unit with role=speaker is
+       present
    * Dead Water:
      * Updated the Stun weapon special code to use [object] duration=turn
    * Delfadors Memoirs:
      * Showdown in the Northern Swamp: added to conditional notes in objectives
        about who should kill Iliah-Malal
    * Dead Water:
-     * Changed uses of "ai turn" to "side # turn" ("[event]name=ai turn" breaks replays)
+     * Changed uses of "ai turn" to "side # turn" ("[event]name=ai turn" breaks
+       replays)
    * Descent into Darkness:
      * Fix most possible cases for Darken Volk becoming "stuck"
        in 09_A_Small_Favor3.
@@ -48,11 +51,12 @@ Version 1.11.0-svn:
      * Implemented FR #19418: the Orcs destroy the villages near Konrad's castle
        when capturing them in The Elves Besieged
      * Fixed bug #19531: scroll to reinforcement units in Blackwater Port
-     * Fixed bug #19517: The injured sergeant in HttT: Cliffs of Thoria will now always
-       become visible when he is discovered.
+     * Fixed bug #19517: The injured sergeant in HttT: Cliffs of Thoria will now
+       always become visible when he is discovered.
    * Legend of Wesmere:
      * Fix bug #19577 - some terrain was not snow covered
-     * Fix bug #19565 - yetis remaining under fog when they appear in scenario 10
+     * Fix bug #19565 - yetis remaining under fog when they appear in scenario
+       10
    * Liberty:
      * Fixed unknown unit type errors in 04_Unlawful_Orders
    * Sceptre of Fire:
@@ -62,20 +66,20 @@ Version 1.11.0-svn:
    * Son of the Black Eye:
      * Removed Al'Brock and Flar'Tar death as defeat condition in objectives in
        Civil War
-     * Fixed bug #19684: Kapou'e says a different message if he kills the first Elf
-       in Silent Forest
+     * Fixed bug #19684: Kapou'e says a different message if he kills the first
+       Elf in Silent Forest
      * Silent Forest: the messages that appear upon killing the first Elf can be
        translated differently depending on the Elf's gender
-     * Fixed bug #19686: fixed two variable checks that prevented some strings from
-       being displayed in Back Home
+     * Fixed bug #19686: fixed two variable checks that prevented some strings
+       from being displayed in Back Home
    * The Hammer of Thursagan:
-     * Fixed bug #19743: in Mages and Drakes, Perrin has two different messages about
-       apprentices, depending on the difficult level
+     * Fixed bug #19743: in Mages and Drakes, Perrin has two different messages
+       about apprentices, depending on the difficult level
      * Karrag now gets enough gold to actually recruit when met
    * The South Guard:
-     * Fixed bug #19758: Urza Afalas' sighted event is fired also when the Lich is seen,
-       and if the player allies with the Elves, then both Urza Afalas and Mal M'Brin must
-       be defeated
+     * Fixed bug #19758: Urza Afalas' sighted event is fired also when the Lich
+       is seen, and if the player allies with the Elves, then both Urza Afalas
+       and Mal M'Brin must be defeated
    * Tutorial:
      * Applied patch #3203: Allow to end the scenario via the right-click menu.
      * Fixed bug #19316: Narrator messages are now translated.
@@ -90,16 +94,19 @@ Version 1.11.0-svn:
      * Fix bug #19630
      * Fix some minor unreported bugs
      * Minor spelling and grammar corrections
-     * Made it so that all units are rehydrated quietly upon victory in scenario two
+     * Made it so that all units are rehydrated quietly upon victory in scenario
+       two
      * Updated the Stun weapon special code to use [object] duration=turn
-     * The Human Commander unit now uses the smallfoot movetype instead of woodland
+     * The Human Commander unit now uses the smallfoot movetype instead of
+       woodland
      * Display dehydration status in the sidebar
-     * Ensure player always has positive gold leaving the cave in Out of the Frying Pan
+     * Ensure player always has positive gold leaving the cave in Out of the
+       Frying Pan
      * New AI for human messenger in "Out of the Frying Pan"
      * Taking all items is now optional
      * Finding the map in scenario 3 is now useful
-     * Healers now prevent dehydration instead of removing it, so they no longer heal
-       dehydrated units
+     * Healers now prevent dehydration instead of removing it, so they no longer
+       heal dehydrated units
      * New art for Dark Assassin
  * Editor:
    * New gui theme, fixes the editor being broken on low resolutions.
@@ -233,19 +240,24 @@ Version 1.11.0-svn:
    * Fixed bug #19533: Both damage tooltips now take into account local factors.
  * Whiteboard:
    * Fixed bug #19626: segfaults on window resize
-   * Fixed bug #19369: Using planning mode can cause losing ability to move my units
+   * Fixed bug #19369: Using planning mode can cause losing ability to move my
+     units
    * Fixed bug #19408: Crash shortly after executing invalid multi-turn move
    * Fixed bug #19581: Leader can still move after a planned recall
    * Shortened all context menu items
-   * Fixed bug #19619: In local games, units keep ghosted appearance during opponent's turn
+   * Fixed bug #19619: In local games, units keep ghosted appearance during
+     opponent's turn
    * Fixed bug #19613: Multiple attacks after planning attacks in whiteboard
    * Fixed bug #19618: Problems with ending turn with impossible moves
-   * Fixed bug #19615: Can see part of opponents' planned moves in local multiplayer game
+   * Fixed bug #19615: Can see part of opponents' planned moves in local
+     multiplayer game
    * Refactored wb::side_actions
    * Refactored the highlighter and the visitor
  * WML engine:
-   * new key: [unit]/[unit_type] vision=<number>, decouples movement and sight range.
-   * new tag: [movement_type] [vision_costs], used for calculating sight range if present.
+   * new key: [unit]/[unit_type] vision=<number>, decouples movement and sight
+     range.
+   * new tag: [movement_type] [vision_costs], used for calculating sight range
+     if present.
    * new action tag: [clear_menu_item] id=...
    * new key: [set_menu_item][command]delayed_variable_substitution=yes|no
    * Removed support for the deprecated "colour=", "debug_border_colour=",
@@ -262,8 +274,8 @@ Version 1.11.0-svn:
      percentage) (feature/bug #11590)
    * [find_path] now returns a "hexes" key instead of a "length" key inside
      the output array
-   * Introduce inline SSF support in action tags [allow_recruit], [disallow_recruit],
-     [set_recruit], [gold] and [modify_ai]
+   * Introduce inline SSF support in action tags [allow_recruit],
+     [disallow_recruit], [set_recruit], [gold] and [modify_ai]
    * [gold][filter_side] and [modify_ai][filter_side] are deprecated, use inline
      SSF instead
    * Action tags [modify_side], [place_shroud] and [remove_shroud] now default
@@ -274,9 +286,11 @@ Version 1.11.0-svn:
      This also adds SSF support in [store_villages].
    * Added support for resistance_multiplier= key in [harm_unit]
    * Fixed bug #19498: [modify_unit] duplicating units if x,y changed
-   * Added inline SLF support in [scroll_to], by using the first matching location
+   * Added inline SLF support in [scroll_to], by using the first matching
+     location
    * Introduce inline SSF support in [objectives] and [show_objectives]
-   * The [drain] weapon special now supports value=, multiply=, divide=, add= and sub=
+   * The [drain] weapon special now supports value=, multiply=, divide=, add=
+     and sub=
    * Added [heal_on_hit] for healing/harming the user by a fixed amount
    * Drained HP amounts can now be negative.  Trigger this by setting
      a negative value in the [drain] or [heal_on_hit] weapon special
@@ -298,7 +312,8 @@ Version 1.11.0-svn:
      instead
    * Border hexes are included when using radius= in the SLF of [remove_shroud]
      and [place_shroud] (they were already included for directly matched hexes).
-   * Retrofitted CLEAR_FOG and UNCLEAR_FOG macros to make use of [lift_fog] and [reset_fog]
+   * Retrofitted CLEAR_FOG and UNCLEAR_FOG macros to make use of [lift_fog] and
+     [reset_fog]
    * Replaced variable i by TRANSFORM_UNIT_i in macro TRANSFORM_UNIT
    * Fix $owner_side in capture events fired due to unit movement
    * Introduce [item]redraw=yes|no (def yes) parameter
@@ -350,13 +365,15 @@ Version 1.11.0-svn:
    * Fixed: A preprocessor bug looking beyond the end of a buffer.
    * Fixed: Binding a temporary in the network code, possibly causing
      crashing.
-   * Fixed bug #19658: In replays, units sometimes refresh movement when it is not their turn
+   * Fixed bug #19658: In replays, units sometimes refresh movement when it is
+     not their turn
    * Added: Enabled BREAKPOINT and WES_HALT macros on the Pandora.
    * Fixed bug #19678: Escape the pipe-symbol in the wiki: TerrainCodeTableWML.
    * Fixed bug #19469: Missing scenario hash results in Remote scenario always
      added to game description
    * Fixed bug #19322: Empty sides not being listed at the status table
-   * Fixed bug #19681: Use the created cache instead of rebuilding it all the time
+   * Fixed bug #19681: Use the created cache instead of rebuilding it all the
+     time
    * Fixed bug #16544: Fail to read `empty' cache files.
    * Fix bug #19681: Cache is never valid
    * Added shroud_data to the inspection window (FR #19623).
