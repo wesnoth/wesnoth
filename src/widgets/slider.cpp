@@ -127,8 +127,7 @@ SDL_Rect slider::slider_area() const
 	if (image_.null() || image_->w >= loc.w)
 		return default_value;
 
-	int xpos = loc.x + (value_ - min_) *
-		static_cast<int>(loc.w - image_->w) / (max_ - min_);
+	int xpos = loc.x + (value_ - min_) * (loc.w - image_->w) / (max_ - min_);
 	return create_rect(xpos, loc.y, image_->w, image_->h);
 }
 
