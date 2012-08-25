@@ -430,7 +430,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				if (gamestate.classification().abbrev.empty())
 					gamestate.classification().label = (*scenario)["name"].str();
 				else {
-					gamestate.classification().label = std::string(gamestate.classification().abbrev);
+					gamestate.classification().label = gamestate.classification().abbrev;
 					gamestate.classification().label.append("-");
 					gamestate.classification().label.append((*scenario)["name"]);
 				}
