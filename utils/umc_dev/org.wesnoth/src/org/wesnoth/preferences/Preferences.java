@@ -153,7 +153,7 @@ public class Preferences extends AbstractPreferenceInitializer
         store.setDefault( ADDON_MANAGER_PASSWORD, "" ); //$NON-NLS-1$
         store.setDefault( ADDON_MANAGER_VERBOSE, false );
         store.setDefault( ADDON_MANAGER_ADDRESS, "add-ons.wesnoth.org" ); //$NON-NLS-1$
-        store.setDefault( ADDON_MANAGER_PORT, 15002 );
+        store.setDefault( ADDON_MANAGER_PORT, 15006 );
 
         // advanced
         store.setDefault( NO_TERRAIN_GFX, true );
