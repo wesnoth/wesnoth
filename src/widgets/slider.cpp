@@ -169,7 +169,7 @@ void slider::set_slider_position(int x)
 	if (tmp > loc.w - image_->w)
 		tmp = loc.w - image_->w;
 
-	set_value(tmp * (max_ - min_) / static_cast<int>(loc.w - image_->w) + min_);
+	set_value(tmp * (max_ - min_) / (loc.w - image_->w) + min_);
 }
 
 void slider::mouse_motion(const SDL_MouseMotionEvent& event)
