@@ -327,7 +327,7 @@ void scrollbar::handle_event(const SDL_Event& event)
 				move_position(grip_height_);
 		} else if (on_groove && e.button == SDL_BUTTON_MIDDLE) {
 			int y_dep = e.y - grip.y - grip.h/2;
-			int dep = y_dep * int(full_height_ - grip_height_)/ int(groove.h - grip.h);
+			int dep = y_dep * int(full_height_ - grip_height_)/ (groove.h - grip.h);
 			move_position(dep);
 		}
 		break;
