@@ -461,7 +461,7 @@ static std::vector<potential_recruit> ai_choose_best_recruits(fake_team &t, int 
    {
       if(recruited < max_units_to_recruit)
       {
-         int possible_amount = static_cast<int>(gold / i->cost());
+         int possible_amount = gold / i->cost();
          if(possible_amount > max_units_to_recruit - recruited)
          {
             possible_amount = max_units_to_recruit - recruited;
