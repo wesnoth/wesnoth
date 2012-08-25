@@ -955,7 +955,7 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 				std::vector<expression_ptr> args;
 				parse_args(i1+2,i2-1,&args,symbols);
 				try{
-					return expression_ptr( create_function(std::string(i1->begin,i1->end),args,symbols) );
+					return create_function(std::string(i1->begin,i1->end),args,symbols);
 				}
 				catch(formula_error& e) {
 					throw formula_error(e.type, tokens_to_string(begin,end), *i1->filename, i1->line_number);
