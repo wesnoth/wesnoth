@@ -17,7 +17,7 @@
 #ifndef PLAY_CONTROLLER_H_INCLUDED
 #define PLAY_CONTROLLER_H_INCLUDED
 
-#include "actions.hpp"
+#include "actions/undo.hpp"
 #include "controller_base.hpp"
 #include "game_end_exceptions.hpp"
 #include "help.hpp"

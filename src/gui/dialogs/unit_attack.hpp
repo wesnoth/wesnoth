@@ -16,7 +16,7 @@
 #ifndef GUI_DIALOGS_UNIT_ATTACK_HPP_INCLUDED
 #define GUI_DIALOGS_UNIT_ATTACK_HPP_INCLUDED
 
-#include "actions.hpp"
+#include "actions/attack.hpp"
 #include "gui/dialogs/dialog.hpp"
 #include "unit_map.hpp"
 

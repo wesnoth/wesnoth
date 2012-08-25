@@ -36,7 +36,9 @@
 #include "actions.hpp"
 #include "manager.hpp"
 
-#include "../actions.hpp"
+#include "../actions/attack.hpp"
+#include "../actions/create.hpp"
+#include "../actions/move.hpp"
 #include "../dialogs.hpp"
 #include "../game_end_exceptions.hpp"
 #include "../game_preferences.hpp"

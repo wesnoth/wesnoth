@@ -20,6 +20,7 @@
 
 #include "unit.hpp"
 
+#include "actions/move.hpp"
 #include "callable_objects.hpp"
 #include "formula.hpp"
 #include "game_display.hpp"

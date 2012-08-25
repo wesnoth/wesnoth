@@ -15,6 +15,7 @@
 
 #include "global.hpp"
 
+#include "actions/attack.hpp"
 #include "attack_prediction.hpp"
 #include "editor/editor_controller.hpp"
 #include "editor/palette/terrain_palettes.hpp"

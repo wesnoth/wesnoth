@@ -20,7 +20,7 @@
 
 #include "global.hpp"
 
-#include "actions.hpp"
+#include "actions/attack.hpp"
 #include "dialogs.hpp"
 #include "game_events.hpp"
 #include "game_display.hpp"

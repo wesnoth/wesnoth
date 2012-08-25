@@ -21,7 +21,7 @@
 #include "aspect_attacks.hpp"
 
 #include "../manager.hpp"
-#include "../../actions.hpp"
+#include "../../actions/attack.hpp"
 #include "../../log.hpp"
 #include "../../map.hpp"
 #include "../../team.hpp"

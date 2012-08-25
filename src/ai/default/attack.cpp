@@ -21,9 +21,9 @@
 #include "../../global.hpp"
 
 #include "ai.hpp"
-#include "../actions.hpp"
 #include "../manager.hpp"
 
+#include "../../actions/attack.hpp"
 #include "../../attack_prediction.hpp"
 #include "../../game_config.hpp"
 #include "../../log.hpp"

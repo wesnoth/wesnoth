@@ -22,6 +22,10 @@
 
 #include "global.hpp"
 
+#include "actions/attack.hpp"
+#include "actions/create.hpp"
+#include "actions/move.hpp"
+#include "actions/vision.hpp"
 #include "dialogs.hpp"
 #include "game_display.hpp"
 #include "game_end_exceptions.hpp"

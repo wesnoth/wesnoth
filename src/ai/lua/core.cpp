@@ -31,8 +31,6 @@
 #include "../../scripting/lua_api.hpp"
 #include "lua_object.hpp" // (Nephro)
 
-
-#include "../../actions.hpp"
 #include "../../attack_prediction.hpp"
 #include "../../filesystem.hpp"
 #include "../../game_display.hpp"

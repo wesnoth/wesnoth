@@ -16,7 +16,7 @@
 #define	FORMULA_AI_CALLABLE_OBJECTS_HPP_INCLUDED
 
 #include "../game_info.hpp"
-#include "../../actions.hpp"
+#include "../../actions/attack.hpp"
 #include "../../callable_objects.hpp"
 #include "../../formula.hpp"
 #include "../../formula_callable.hpp"

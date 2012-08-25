@@ -21,6 +21,7 @@
 #include <boost/foreach.hpp>
 #include <map>
 
+#include "../../actions/attack.hpp"
 #include "../../attack_prediction.hpp"
 #include "../../resources.hpp"
 #include "../../log.hpp"
@@ -29,7 +30,6 @@
 #include "../../unit_display.hpp"
 #include "../../unit_map.hpp"
 #include "../../unit_types.hpp"
-#include "../actions.hpp"
 #include "../composite/rca.hpp"
 #include "../default/ai.hpp"
 

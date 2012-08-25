@@ -582,7 +582,12 @@ add_library(wesnoth-schema_validator
 
 set(wesnoth-main_SRC
 	about.cpp
-	actions.cpp
+	actions/attack.cpp
+	actions/create.cpp
+	actions/heal.cpp
+	actions/move.cpp
+	actions/undo.cpp
+	actions/vision.cpp
 	addon/client.cpp
 	addon/info.cpp
 	addon/manager.cpp

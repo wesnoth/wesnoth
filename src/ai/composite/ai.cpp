@@ -26,7 +26,7 @@
 #include "property_handler.hpp"
 #include "stage.hpp"
 #include "../manager.hpp"
-#include "../../actions.hpp"
+#include "../../actions/attack.hpp"
 #include "../../log.hpp"
 
 #include <boost/bind.hpp>

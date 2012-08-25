@@ -16,6 +16,7 @@
 
 #include "global.hpp"
 
+#include "actions/vision.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_events.hpp"
 #include "gettext.hpp"

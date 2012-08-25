@@ -23,7 +23,7 @@
 
 #include "gamestatus.hpp"
 
-#include "actions.hpp"
+#include "actions/create.hpp"
 #include "filesystem.hpp"
 #include "gettext.hpp"
 #include "log.hpp"

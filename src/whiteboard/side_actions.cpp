@@ -34,7 +34,7 @@
 #include "highlighter.hpp"
 #include "utility.hpp"
 
-#include "actions.hpp"
+#include "actions/create.hpp"
 #include "game_display.hpp"
 #include "game_end_exceptions.hpp"
 #include "map.hpp"

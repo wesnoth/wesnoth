@@ -23,12 +23,14 @@
 
 #include "game_info.hpp"
 
-#include "../actions.hpp"
+#include "../actions/move.hpp"
 
 namespace pathfind {
 struct plain_route;
 } // of namespace pathfind
 
+class unit;
+class unit_type;
 class team;
 class gamemap;
 

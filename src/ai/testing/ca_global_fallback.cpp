@@ -22,8 +22,6 @@
 
 #include "../composite/ai.hpp"
 
-#include "../actions.hpp"
-
 #include "../../game_display.hpp"
 #include "../../log.hpp"
 #include "../../map.hpp"

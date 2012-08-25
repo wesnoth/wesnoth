@@ -20,7 +20,9 @@
 
 #include "global.hpp"
 
-#include "actions.hpp"
+#include "actions/create.hpp"
+#include "actions/move.hpp"
+#include "actions/vision.hpp"
 #include "ai/manager.hpp"
 #include "dialogs.hpp"
 #include "game_display.hpp"

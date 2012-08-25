@@ -20,6 +20,9 @@
  */
 
 #include "play_controller.hpp"
+#include "actions/create.hpp"
+#include "actions/heal.hpp"
+#include "actions/vision.hpp"
 #include "dialogs.hpp"
 #include "game_events.hpp"
 #include "gettext.hpp"

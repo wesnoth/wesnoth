@@ -16,6 +16,7 @@
 
 #include "attack_prediction_display.hpp"
 
+#include "actions/attack.hpp"
 #include "attack_prediction.hpp"
 #include "gettext.hpp"
 #include "game_display.hpp"

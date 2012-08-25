@@ -29,9 +29,8 @@
 
 #include "default/ai.hpp"
 
-#include "../callable_objects.hpp"
+#include "../actions/attack.hpp"
 #include "../formula.hpp"
-#include "../formula_callable.hpp"
 #include "../formula_function.hpp"
 #include "../formula_fwd.hpp"
 #include "../game_display.hpp"
