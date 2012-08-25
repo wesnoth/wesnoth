@@ -2624,7 +2624,7 @@ void display::refresh_report(std::string const &report_name, const config &_repo
 
 			if (area.w < img->w && image_count) {
 				// We have more than one image, and this one doesn't fit.
-				img = surface(image::get_image(game_config::images::ellipsis));
+				img = image::get_image(game_config::images::ellipsis);
 				used_ellipsis = true;
 			}
 
