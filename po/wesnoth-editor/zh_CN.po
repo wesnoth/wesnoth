@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-18 09:52+0200\n"
+"POT-Creation-Date: 2012-08-25 12:35+0200\n"
 "PO-Revision-Date: 2011-12-14 21:17+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
@@ -294,40 +294,34 @@ msgstr "恢复"
 msgid "Can’t Redo"
 msgstr "无法恢复"
 
-#: src/editor/map/editor_map.cpp:209
+#: src/editor/map/editor_map.cpp:150
 msgid "Player"
 msgstr "玩家"
 
-#: src/editor/map/editor_map.cpp:316
+#: src/editor/map/editor_map.cpp:257
 msgid "The size of the target map is different from the current map"
 msgstr "目标地图的尺寸与当前地图不同"
 
-#: src/editor/map/map_context.cpp:74
+#: src/editor/map/map_context.cpp:95
 msgid "File not found"
 msgstr "文件不存在"
 
-#: src/editor/map/map_context.cpp:80
-#, fuzzy
-#| msgid "Empty map file"
-msgid "Empty file"
-msgstr "空地图文件"
-
-#: src/editor/map/map_context.cpp:104
+#: src/editor/map/map_context.cpp:109
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
 "这个地图文件看起来像是一个场景，但是map_data的值指向了一个不存在的文件。"
 
-#: src/editor/map/map_context.cpp:119
+#: src/editor/map/map_context.cpp:125
 msgid "Empty map file"
 msgstr "空地图文件"
 
-#: src/editor/map/map_context.cpp:264
+#: src/editor/map/map_context.cpp:298
 msgid "Could not save into scenario"
 msgstr "无法保存到场景"
 
-#: src/editor/map/map_context.cpp:272
+#: src/editor/map/map_context.cpp:305
 msgid "Could not save the map: $msg"
 msgstr "无法保存地图：$msg"
 
@@ -362,6 +356,11 @@ msgstr "玩家 $player_number"
 #: src/gui/dialogs/editor_settings.cpp:166
 msgid "Custom setting"
 msgstr "自定义设置"
+
+#, fuzzy
+#~| msgid "Empty map file"
+#~ msgid "Empty file"
+#~ msgstr "空地图文件"
 
 #~ msgid "(New Map)"
 #~ msgstr "（新建地图）"

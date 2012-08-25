@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-18 09:41+0200\n"
+"POT-Creation-Date: 2012-08-25 12:35+0200\n"
 "PO-Revision-Date: 2009-10-08 21:45-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -296,25 +296,19 @@ msgstr "𐑮𐑰𐑛𐑵"
 msgid "Can’t Redo"
 msgstr "𐑒𐑭𐑯𐑑 𐑮𐑰𐑛𐑵"
 
-#: src/editor/map/editor_map.cpp:209
+#: src/editor/map/editor_map.cpp:150
 msgid "Player"
 msgstr "𐑐𐑤𐑱𐑻"
 
-#: src/editor/map/editor_map.cpp:316
+#: src/editor/map/editor_map.cpp:257
 msgid "The size of the target map is different from the current map"
 msgstr "𐑞 𐑕𐑲𐑟 𐑝 𐑞 𐑑𐑸𐑜𐑧𐑑 𐑥𐑨𐑐 𐑦𐑟 𐑛𐑦𐑓𐑼𐑩𐑯𐑑 𐑓𐑮𐑪𐑥 𐑞 𐑒𐑳𐑮𐑩𐑯𐑑 𐑥𐑨𐑐"
 
-#: src/editor/map/map_context.cpp:74
+#: src/editor/map/map_context.cpp:95
 msgid "File not found"
 msgstr "𐑓𐑲𐑤 𐑯𐑪𐑑 𐑓𐑬𐑯𐑛"
 
-#: src/editor/map/map_context.cpp:80
-#, fuzzy
-#| msgid "Empty map file"
-msgid "Empty file"
-msgstr "𐑧𐑥𐑐𐑑𐑦 𐑥𐑨𐑐 𐑓𐑲𐑤"
-
-#: src/editor/map/map_context.cpp:104
+#: src/editor/map/map_context.cpp:109
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -322,15 +316,15 @@ msgstr ""
 "𐑞 𐑥𐑨𐑐 𐑓𐑲𐑤 𐑤𐑫𐑒𐑕 𐑤𐑲𐑒 𐑩 𐑕𐑦𐑯𐑺𐑰𐑴, 𐑚𐑳𐑑 𐑞 map_data 𐑝𐑨𐑤𐑿 𐑛𐑳𐑟 𐑯𐑪𐑑 𐑐𐑶𐑯𐑑 𐑑 𐑩𐑯 𐑧𐑒𐑟𐑦𐑕𐑑𐑦𐑙 "
 "𐑓𐑲𐑤"
 
-#: src/editor/map/map_context.cpp:119
+#: src/editor/map/map_context.cpp:125
 msgid "Empty map file"
 msgstr "𐑧𐑥𐑐𐑑𐑦 𐑥𐑨𐑐 𐑓𐑲𐑤"
 
-#: src/editor/map/map_context.cpp:264
+#: src/editor/map/map_context.cpp:298
 msgid "Could not save into scenario"
 msgstr "𐑒𐑫𐑛 𐑯𐑪𐑑 𐑕𐑱𐑝 𐑦𐑯𐑑𐑫 𐑕𐑦𐑯𐑺𐑰𐑴"
 
-#: src/editor/map/map_context.cpp:272
+#: src/editor/map/map_context.cpp:305
 msgid "Could not save the map: $msg"
 msgstr "𐑒𐑫𐑛 𐑯𐑪𐑑 𐑕𐑱𐑝 𐑞 𐑥𐑨𐑐: $msg"
 
@@ -367,6 +361,11 @@ msgstr ""
 #: src/gui/dialogs/editor_settings.cpp:166
 msgid "Custom setting"
 msgstr "𐑒𐑳𐑕𐑑𐑩𐑥 𐑕𐑧𐑑𐑦𐑙"
+
+#, fuzzy
+#~| msgid "Empty map file"
+#~ msgid "Empty file"
+#~ msgstr "𐑧𐑥𐑐𐑑𐑦 𐑥𐑨𐑐 𐑓𐑲𐑤"
 
 #~ msgid "(New Map)"
 #~ msgstr "(𐑯𐑿 𐑥𐑨𐑐)"

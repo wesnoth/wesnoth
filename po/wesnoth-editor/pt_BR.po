@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-18 09:41+0200\n"
+"POT-Creation-Date: 2012-08-25 12:35+0200\n"
 "PO-Revision-Date: 2011-02-05 22:45-0300\n"
 "Last-Translator: Diego Inácio Goergen <thegoergen@gmail.com>\n"
 "Language-Team: Portuguese/Brazil\n"
@@ -299,25 +299,19 @@ msgstr "Refazer"
 msgid "Can’t Redo"
 msgstr "Não pode refazer"
 
-#: src/editor/map/editor_map.cpp:209
+#: src/editor/map/editor_map.cpp:150
 msgid "Player"
 msgstr "Jogador"
 
-#: src/editor/map/editor_map.cpp:316
+#: src/editor/map/editor_map.cpp:257
 msgid "The size of the target map is different from the current map"
 msgstr "O tamanho do mapa alvo é diferente do mapa atual"
 
-#: src/editor/map/map_context.cpp:74
+#: src/editor/map/map_context.cpp:95
 msgid "File not found"
 msgstr "Arquivo não encontrado"
 
-#: src/editor/map/map_context.cpp:80
-#, fuzzy
-#| msgid "Empty map file"
-msgid "Empty file"
-msgstr "Arquivo de mapa vazio"
-
-#: src/editor/map/map_context.cpp:104
+#: src/editor/map/map_context.cpp:109
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -325,15 +319,15 @@ msgstr ""
 "O arquivo de mapa parece um cenário, mas o valor map_data aponta para um "
 "arquivo não-existente"
 
-#: src/editor/map/map_context.cpp:119
+#: src/editor/map/map_context.cpp:125
 msgid "Empty map file"
 msgstr "Arquivo de mapa vazio"
 
-#: src/editor/map/map_context.cpp:264
+#: src/editor/map/map_context.cpp:298
 msgid "Could not save into scenario"
 msgstr "Não foi possível salvar no cenário"
 
-#: src/editor/map/map_context.cpp:272
+#: src/editor/map/map_context.cpp:305
 msgid "Could not save the map: $msg"
 msgstr "Não foi possível salvar o mapa: $msg"
 
@@ -372,6 +366,11 @@ msgstr ""
 #: src/gui/dialogs/editor_settings.cpp:166
 msgid "Custom setting"
 msgstr "Configuração customizada"
+
+#, fuzzy
+#~| msgid "Empty map file"
+#~ msgid "Empty file"
+#~ msgstr "Arquivo de mapa vazio"
 
 #~ msgid "(New Map)"
 #~ msgstr "(Novo Mapa)"

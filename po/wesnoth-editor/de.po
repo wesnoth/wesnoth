@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-18 09:41+0200\n"
+"POT-Creation-Date: 2012-08-25 12:35+0200\n"
 "PO-Revision-Date: 2011-11-30 13:52+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -301,25 +301,19 @@ msgstr "Wiederherstellen"
 msgid "Can’t Redo"
 msgstr "Wiederholen machen nicht möglich"
 
-#: src/editor/map/editor_map.cpp:209
+#: src/editor/map/editor_map.cpp:150
 msgid "Player"
 msgstr "Spieler"
 
-#: src/editor/map/editor_map.cpp:316
+#: src/editor/map/editor_map.cpp:257
 msgid "The size of the target map is different from the current map"
 msgstr "Die Größe der Ziel-Karte weicht von der aktuellen Karte ab"
 
-#: src/editor/map/map_context.cpp:74
+#: src/editor/map/map_context.cpp:95
 msgid "File not found"
 msgstr "Datei nicht gefunden"
 
-#: src/editor/map/map_context.cpp:80
-#, fuzzy
-#| msgid "Empty map file"
-msgid "Empty file"
-msgstr "Leere Karte"
-
-#: src/editor/map/map_context.cpp:104
+#: src/editor/map/map_context.cpp:109
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -327,15 +321,15 @@ msgstr ""
 "Diese angegebene Karte scheint eine Szenario Datei zu sein, doch der Wert "
 "für »map_data« verweist nicht auf eine existierende Datei"
 
-#: src/editor/map/map_context.cpp:119
+#: src/editor/map/map_context.cpp:125
 msgid "Empty map file"
 msgstr "Leere Karte"
 
-#: src/editor/map/map_context.cpp:264
+#: src/editor/map/map_context.cpp:298
 msgid "Could not save into scenario"
 msgstr "Konnte nicht in die Szenario Datei speichern"
 
-#: src/editor/map/map_context.cpp:272
+#: src/editor/map/map_context.cpp:305
 msgid "Could not save the map: $msg"
 msgstr "Die Karte konnte leider nicht gespeichert werden: $msg"
 
@@ -372,6 +366,11 @@ msgstr "Spieler $player_number"
 #: src/gui/dialogs/editor_settings.cpp:166
 msgid "Custom setting"
 msgstr "Eigene Einstellungen"
+
+#, fuzzy
+#~| msgid "Empty map file"
+#~ msgid "Empty file"
+#~ msgstr "Leere Karte"
 
 #~ msgid "(New Map)"
 #~ msgstr "(Neue Karte)"

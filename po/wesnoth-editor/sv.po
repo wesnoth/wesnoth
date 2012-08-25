@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-18 09:41+0200\n"
+"POT-Creation-Date: 2012-08-25 12:35+0200\n"
 "PO-Revision-Date: 2011-04-25 04:55+0100\n"
 "Last-Translator: Niklas Bolmdahl <niklas.spamfilter@karragard.com>\n"
 "Language-Team: Swedish\n"
@@ -302,25 +302,19 @@ msgstr "Gör om"
 msgid "Can’t Redo"
 msgstr "Kan inte göra om"
 
-#: src/editor/map/editor_map.cpp:209
+#: src/editor/map/editor_map.cpp:150
 msgid "Player"
 msgstr "Spelare"
 
-#: src/editor/map/editor_map.cpp:316
+#: src/editor/map/editor_map.cpp:257
 msgid "The size of the target map is different from the current map"
 msgstr "Storleken på målkartan är skiljer sig från den aktuella kartan"
 
-#: src/editor/map/map_context.cpp:74
+#: src/editor/map/map_context.cpp:95
 msgid "File not found"
 msgstr "Filen kunde inte hittas"
 
-#: src/editor/map/map_context.cpp:80
-#, fuzzy
-#| msgid "Empty map file"
-msgid "Empty file"
-msgstr "Tom kartfil"
-
-#: src/editor/map/map_context.cpp:104
+#: src/editor/map/map_context.cpp:109
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -328,15 +322,15 @@ msgstr ""
 "Kartfilen ser ut som ett scenario, men värdet i map_data pekar inte på en "
 "existerande fil"
 
-#: src/editor/map/map_context.cpp:119
+#: src/editor/map/map_context.cpp:125
 msgid "Empty map file"
 msgstr "Tom kartfil"
 
-#: src/editor/map/map_context.cpp:264
+#: src/editor/map/map_context.cpp:298
 msgid "Could not save into scenario"
 msgstr "Kunde inte spara till ett scenario"
 
-#: src/editor/map/map_context.cpp:272
+#: src/editor/map/map_context.cpp:305
 msgid "Could not save the map: $msg"
 msgstr "Kunde inte spara kartan: $msg"
 
@@ -373,6 +367,11 @@ msgstr ""
 #: src/gui/dialogs/editor_settings.cpp:166
 msgid "Custom setting"
 msgstr "Egen inställning"
+
+#, fuzzy
+#~| msgid "Empty map file"
+#~ msgid "Empty file"
+#~ msgstr "Tom kartfil"
 
 #~ msgid "(New Map)"
 #~ msgstr "(Ny karta)"
