@@ -39,21 +39,23 @@ struct individual_effect
 	map_location loc;
 };
 
-typedef std::vector<individual_effect> effect_list;
-
 class effect
 {
 	public:
 		effect(const unit_ability_list& list, int def, bool backstab);
 
+		// Provide read-only access to the effect list:
+		typedef std::vector<individual_effect>::const_iterator iterator;
+		typedef std::vector<individual_effect>::const_iterator const_iterator;
+
 		int get_composite_value() const
 		{ return composite_value_; }
-		effect_list::const_iterator begin() const
+		const_iterator begin() const
 		{ return effect_list_.begin(); }
-		effect_list::const_iterator end() const
+		const_iterator end() const
 		{ return effect_list_.end(); }
 	private:
-		effect_list effect_list_;
+		std::vector<individual_effect> effect_list_;
 		int composite_value_;
 };
 

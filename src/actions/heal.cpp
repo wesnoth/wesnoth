@@ -128,8 +128,8 @@ void calculate_healing(int side, bool update_display)
 		unit_abilities::effect heal_effect(heal,0,false);
 		healing = heal_effect.get_composite_value();
 
-		for(std::vector<unit_abilities::individual_effect>::const_iterator heal_loc = heal_effect.begin(); heal_loc != heal_effect.end(); ++heal_loc) {
-			healers.push_back(&*units.find(heal_loc->loc));
+		BOOST_FOREACH (const unit_abilities::individual_effect &heal_loc, heal_effect ) {
+			healers.push_back(&*units.find(heal_loc.loc));
 		}
 
 		if (!healers.empty()) {

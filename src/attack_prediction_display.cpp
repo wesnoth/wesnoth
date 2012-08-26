@@ -162,7 +162,7 @@ void battle_prediction_pane::get_unit_strings(const battle_context_unit_stats& s
 
 		// Get the SET damage modifier, if any.
 		const unit_abilities::individual_effect *set_dmg_effect = NULL;
-		unit_abilities::effect_list::const_iterator i;
+		unit_abilities::effect::const_iterator i;
 		for(i = dmg_effect.begin(); i != dmg_effect.end(); ++i) {
 			if(i->type == unit_abilities::SET) {
 				set_dmg_effect = &*i;
