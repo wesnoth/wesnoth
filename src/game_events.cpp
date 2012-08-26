@@ -2640,7 +2640,7 @@ WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 			resources::gamedata->get_variable("heal_amount") = heal_amount;
 		}
 
-		if(animate) unit_display::unit_healing(*u, u->get_location(), healers, heal_amount);
+		if(animate) unit_display::unit_healing(*u, healers, heal_amount);
 		if(only_unit_at_loc1) return;
 	}
 }

@@ -610,10 +610,10 @@ void unit_recruited(const map_location& loc,const map_location& leader_loc)
 	if (loc==disp->mouseover_hex()) disp->invalidate_unit();
 }
 
-void unit_healing(unit &healed, const map_location &healed_loc,
-	const std::vector<unit *> &healers, int healing)
+void unit_healing(unit &healed, const std::vector<unit *> &healers, int healing)
 {
 	game_display* disp = game_display::get_singleton();
+	const map_location &healed_loc = healed.get_location();
 	if(!disp || disp->video().update_locked() || disp->video().faked() || disp->fogged(healed_loc)) return;
 	if(healing==0) return;
 	// This is all the pretty stuff.

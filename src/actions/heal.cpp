@@ -231,8 +231,7 @@ void calculate_healing(int side, bool update_display)
 		unit_healing_struct uhs = l.front();
 		l.pop_front();
 
-		unit_display::unit_healing(*uhs.healed, uhs.healed->get_location(),
-			uhs.healers, uhs.healing);
+		unit_display::unit_healing(*uhs.healed, uhs.healers, uhs.healing);
 
 		/* next unit to be healed is nearest from uhs left in list l */
 		while (!l.empty()) {
@@ -254,8 +253,7 @@ void calculate_healing(int side, bool update_display)
 			uhs = *nearest;
 			l.erase(nearest);
 
-			unit_display::unit_healing(*uhs.healed, uhs.healed->get_location(),
-				uhs.healers, uhs.healing);
+			unit_display::unit_healing(*uhs.healed, uhs.healers, uhs.healing);
 		}
 	}
 
