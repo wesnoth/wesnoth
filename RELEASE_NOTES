@@ -41,8 +41,7 @@ Players are encouraged to try these scenarios and comment on the difficulty chan
 [/section]
 
 [section="Lua updated to 5.2"]
-Lua interpreter was updated to 5.2
-Some of the changes are not compatible, but still work due to the compatibility mode. The compatibility mode would be disabled after several minor releases, so it's best to rework the code according to [url]http://www.lua.org/manual/5.2/manual.html#8[/url]. Some of the changes in interpreter are not compatible but don't have a compatibility mode.
+The Lua interpreter was updated to version 5.2. Some of the changes in this version break old code; other changes will still work with old code due to compatibility mode, which will be disabled after several minor releases. See the full [url=http://www.lua.org/manual/5.2/manual.html#8]Lua 5.2 incompatibilities[/url] list for more details and information about updating old code.
 [/section]
 
 [section="Removed deprecated terrains"]
