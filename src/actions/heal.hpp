@@ -21,15 +21,6 @@
 #ifndef ACTIONS_HEAL_H_INCLUDED
 #define ACTIONS_HEAL_H_INCLUDED
 
-class unit_map;
-
-
-/**
- * Resets resting for all units on this side: should be called after calculate_healing().
- * @todo FIXME: Try moving this to unit::new_turn, then move it above calculate_healing().
- */
-void reset_resting(unit_map& units, int side);
-
 /**
  * Calculates healing for all units for the given side.
  * Should be called at the beginning of a side's turn.

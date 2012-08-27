@@ -39,14 +39,6 @@ static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 
 
-void reset_resting(unit_map& units, int side)
-{
-	BOOST_FOREACH(unit &u, units) {
-		if (u.side() == side)
-			u.set_resting(true);
-	}
-}
-
 namespace {
 
 	// Contains the data needed to display healing.
@@ -258,8 +250,11 @@ void calculate_healing(int side, bool update_display)
 	// We look for all allied units, then we see if our healer is near them.
 	BOOST_FOREACH(unit &patient, *resources::units) {
 
-		if ( patient.get_state("unhealable") || patient.incapacitated() )
+		if ( patient.get_state("unhealable") || patient.incapacitated() ) {
+			if ( patient.side() == side )
+				patient.set_resting(true);
 			continue;
+		}
 
 		DBG_NG << "found healable unit at (" << patient.get_location() << ")\n";
 
@@ -269,9 +264,11 @@ void calculate_healing(int side, bool update_display)
 
 
 		// Rest healing.
-		if ( patient.side() == side )
+		if ( patient.side() == side ) {
 			if ( patient.resting() || patient.is_healthy() )
 				healing += game_config::rest_heal_amount;
+			patient.set_resting(true);
+		}
 
 		// Main healing.
 		if ( !patient.get_state(unit::STATE_POISONED) ) {

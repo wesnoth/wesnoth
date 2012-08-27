@@ -643,7 +643,6 @@ void play_controller::do_init_side(const unsigned int team_index, bool is_replay
 		}
 
 		calculate_healing(player_number_, !skip_replay_);
-		reset_resting(units_, player_number_);
 	}
 
 	if (!loading_game_) {
