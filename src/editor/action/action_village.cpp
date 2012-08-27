@@ -1,4 +1,4 @@
-/* $Id: action_village.cpp 49125 2011-04-09 15:38:06Z fendrin $ */
+/* $Id$ */
 /*
    Copyright (C) 2008 - 2011 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/

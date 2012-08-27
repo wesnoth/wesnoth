@@ -1,4 +1,4 @@
-/* $Id: ca_testing_recruitment.hpp 52533 2012-01-07 02:35:17 +0000 (Sat, 07 Jan 2012) shadowmaster $ */
+/* $Id$ */
 /*
    Copyright (C) 2009 - 2012 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
