@@ -177,7 +177,7 @@ std::string fuh::user_info(const std::string& name) {
 	if(ll_date) {
 		ll_string = ctime(&ll_date);
 	} else {
-		ll_string = "Never";
+		ll_string = "Never\n";
 	}
 
 	std::stringstream info;
