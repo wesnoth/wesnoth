@@ -348,6 +348,10 @@ private:
 
 void save_preview_pane::draw_contents()
 {
+	if(size_t(index_) >= info_->size()) {
+		return;
+	}
+
 	surface screen = video().getSurface();
 
 	SDL_Rect const &loc = location();
@@ -361,6 +365,7 @@ void save_preview_pane::draw_contents()
 	int ypos = area.y;
 
 	bool have_leader_image = false;
+
 	const config& summary = ((*info_)[index_]).summary();
 	const std::string& leader_image = summary["leader_image"].str();
 
