@@ -43,19 +43,23 @@ namespace {
 
 	// Contains the data needed to display healing.
 	struct heal_unit {
-		heal_unit(unit &patient, const std::vector<unit *> &treaters, int healing) :
+		heal_unit(unit &patient, const std::vector<unit *> &treaters, int healing,
+		          bool poison) :
 			healed(patient),
 			healers(treaters),
-			amount(healing)
+			amount(healing),
+			cure_poison(poison)
 		{}
 
 		unit & healed;
 		std::vector<unit *> healers;
 		int amount;
+		bool cure_poison;
 	};
 
 	// Keep these ordered from weakest cure to strongest cure.
 	enum POISON_STATUS { POISON_NORMAL, POISON_SLOW , POISON_CURE };
+
 
 	/**
 	 * Converts a string into its corresponding POISON_STATUS.
@@ -75,7 +79,7 @@ namespace {
 
 	/**
 	 * Determines if @a patient is affected by anything that impacts poison.
-	 * If cured by a unit, that unit is returned through (added to) @a healers.
+	 * If cured by a unit, that unit is added to @a healers.
 	 */
 	POISON_STATUS poison_progress(int side, const unit & patient,
 	                              std::vector<unit *> & healers)
@@ -151,7 +155,7 @@ namespace {
 
 	/**
 	 * Calculate how much @patient heals this turn.
-	 * If cured by units, those units are returned through (added to) @a healers.
+	 * If healed by units, those units are added to @a healers.
 	 */
 	int heal_amount(int side, const unit & patient, std::vector<unit *> & healers)
 	{
@@ -205,6 +209,21 @@ namespace {
 
 
 	/**
+	 * Handles the actual healing.
+	 */
+	void do_heal(unit &patient, int amount, bool cure_poison)
+	{
+		if ( cure_poison )
+			patient.set_state(unit::STATE_POISONED, false);
+		if ( amount > 0)
+			patient.heal(amount);
+		else if ( amount < 0 )
+			patient.take_hit(-amount);
+		resources::screen->invalidate_unit();
+	}
+
+
+	/**
 	 * Animates the healings in the provided list.
 	 * (The list will be empty when this returns.)
 	 */
@@ -231,9 +250,13 @@ namespace {
 				}
 			}
 
-			last_loc = nearest->healed.get_location();
+			// The heal (animated, then actual):
 			unit_display::unit_healing(nearest->healed, nearest->healers,
 			                           nearest->amount);
+			do_heal(nearest->healed, nearest->amount, nearest->cure_poison);
+
+			// Update the loop variables.
+			last_loc = nearest->healed.get_location();
 			unit_list.erase(nearest);
 		}
 	}
@@ -303,15 +326,13 @@ void calculate_healing(int side, bool update_display)
 		if (!recorder.is_skipping() && update_display &&
 		    patient.is_visible_to_team(viewing_team, false) )
 		{
-			unit_list.push_front(heal_unit(patient, healers, healing));
+			unit_list.push_front(heal_unit(patient, healers, healing, curing == POISON_CURE));
 		}
-		if ( curing == POISON_CURE )
-			patient.set_state(unit::STATE_POISONED, false);
-		if (healing > 0)
-			patient.heal(healing);
-		else if (healing < 0)
-			patient.take_hit(-healing);
-		resources::screen->invalidate_unit();
+		else
+		{
+			// Do the healing now since it will not be animated.
+			do_heal(patient, healing, curing == POISON_CURE);
+		}
 	}
 
 	animate_heals(unit_list);
