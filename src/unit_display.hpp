@@ -116,7 +116,8 @@ void unit_recruited(const map_location& loc,
 /**
  * This will use a poisoning anim if healing<0.
  */
-void unit_healing(unit &healed, const std::vector<unit *> &healers, int healing);
+void unit_healing(unit &healed, const std::vector<unit *> &healers, int healing,
+                  const std::string & extra_text="");
 
 
 /**

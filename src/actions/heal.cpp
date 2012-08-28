@@ -21,6 +21,7 @@
 #include "heal.hpp"
 
 #include "../game_display.hpp"
+#include "../gettext.hpp"
 #include "../log.hpp"
 #include "../map.hpp"
 #include "../replay.hpp"
@@ -250,9 +251,14 @@ namespace {
 				}
 			}
 
+			std::string cure_text = "";
+			if ( nearest->cure_poison )
+				cure_text = nearest->healed.gender() == unit_race::FEMALE ?
+					            _("female^cured") : _("cured");
+
 			// The heal (animated, then actual):
 			unit_display::unit_healing(nearest->healed, nearest->healers,
-			                           nearest->amount);
+			                           nearest->amount, cure_text);
 			do_heal(nearest->healed, nearest->amount, nearest->cure_poison);
 
 			// Update the loop variables.

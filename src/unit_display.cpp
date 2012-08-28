@@ -29,6 +29,29 @@
 
 #define LOG_DP LOG_STREAM(info, display)
 
+
+/**
+ * Returns a string whose first line is @a number, centered over a second line,
+ * which consists of @a text.
+ * If the number is 0, the first line is suppressed.
+ */
+static std::string number_and_text(int number, const std::string & text)
+{
+	// Simple case.
+	if ( number == 0 )
+		return text;
+
+ 	std::ostringstream result;
+
+	if ( text.empty() )
+		result << number;
+	else
+		result << std::string((text.size()+1)/2, ' ') << number << '\n' << text;
+
+	return result.str();
+}
+
+
 static void teleport_unit_between( const map_location& a, const map_location& b, unit& temp_unit)
 {
 	display* disp = display::get_singleton();
@@ -77,9 +100,9 @@ static void move_unit_between(const map_location& a, const map_location& b, unit
 	animator.replace_anim_if_invalid(&temp_unit,"movement",a,b,step_num,
 			false,"",0,unit_animation::INVALID,NULL,NULL,step_left);
 	animator.start_animations();
-        animator.pause_animation();
+	animator.pause_animation();
 	disp->scroll_to_tiles(a,b,game_display::ONSCREEN,true,0.0,false);
-        animator.restart_animation();
+	animator.restart_animation();
 
 	// useless now, previous short draw() just did one
 	// new_animation_frame();
@@ -483,19 +506,8 @@ void unit_attack(
 	unit_ability_list leaders = attacker.get_abilities("leadership");
 	unit_ability_list helpers = defender.get_abilities("resistance");
 
-	std::string text ;
-	if(damage) text = lexical_cast<std::string>(damage);
-	if(!hit_text.empty()) {
-		text.insert(text.begin(),hit_text.size()/2,' ');
-		text = text + "\n" + hit_text;
-	}
-
-	std::string text_2 ;
-	if(drain_amount) text_2 = lexical_cast<std::string>(drain_amount > 0 ? drain_amount : -drain_amount);
-	if(!att_text.empty()) {
-		text_2.insert(text_2.begin(),att_text.size()/2,' ');
-		text_2 = text_2 + "\n" + att_text;
-	}
+	std::string text   = number_and_text(damage, hit_text);
+	std::string text_2 = number_and_text(abs(drain_amount), att_text);
 
 	unit_animation::hit_type hit_type;
 	if(damage >= defender.hitpoints()) {
@@ -610,12 +622,13 @@ void unit_recruited(const map_location& loc,const map_location& leader_loc)
 	if (loc==disp->mouseover_hex()) disp->invalidate_unit();
 }
 
-void unit_healing(unit &healed, const std::vector<unit *> &healers, int healing)
+void unit_healing(unit &healed, const std::vector<unit *> &healers, int healing,
+                  const std::string & extra_text)
 {
 	game_display* disp = game_display::get_singleton();
 	const map_location &healed_loc = healed.get_location();
 	if(!disp || disp->video().update_locked() || disp->video().faked() || disp->fogged(healed_loc)) return;
-	if(healing==0) return;
+
 	// This is all the pretty stuff.
 	disp->scroll_to_tile(healed_loc, game_display::ONSCREEN,true,false);
 	disp->display_unit_hex(healed_loc);
@@ -626,15 +639,25 @@ void unit_healing(unit &healed, const std::vector<unit *> &healers, int healing)
 		animator.add_animation(h, "healing", h->get_location(),
 			healed_loc, healing);
 	}
+
 	if (healing < 0) {
-		animator.add_animation(&healed,"poisoned",healed_loc,map_location::null_location,-healing,false,lexical_cast<std::string>(-healing), display::rgb(255,0,0));
+		animator.add_animation(&healed, "poisoned", healed_loc,
+		                       map_location::null_location, -healing, false,
+		                       number_and_text(-healing, extra_text),
+		                       display::rgb(255,0,0));
+	} else if ( healing > 0 ) {
+		animator.add_animation(&healed, "healed", healed_loc,
+		                       map_location::null_location, healing, false,
+		                       number_and_text(healing, extra_text),
+		                       display::rgb(0,255,0));
 	} else {
-		animator.add_animation(&healed,"healed",healed_loc,map_location::null_location,healing,false,lexical_cast<std::string>(healing), display::rgb(0,255,0));
+		animator.add_animation(&healed, "healed", healed_loc,
+		                       map_location::null_location, 0, false,
+		                       extra_text, display::rgb(0,255,0));
 	}
 	animator.start_animations();
 	animator.wait_for_end();
 	animator.set_all_standing();
-
 }
 
 void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const map_location &default_location = map_location::null_location);
