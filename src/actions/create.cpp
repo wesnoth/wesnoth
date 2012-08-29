@@ -251,6 +251,33 @@ void unit_creator::post_create(const map_location &loc, const unit &new_unit, bo
 
 
 /**
+ * Checks to see if a leader at @a leader_loc could recruit somewhere.
+ * This takes into account terrain, shroud (for side @a side), and the presence
+ * of visible units.
+ * The behavior for an invalid @a side is subject to change for future needs.
+ */
+bool can_recruit_from(const map_location& leader_loc, int side)
+{
+	const gamemap& map = *resources::game_map;
+
+	if( !map.is_keep(leader_loc) )
+		return false;
+
+	if ( side < 1  ||  resources::teams == NULL  ||
+	     resources::teams->size() < static_cast<size_t>(side) ) {
+		// Invalid side specified.
+		// Currently this cannot happen, but it could conceivably be used in
+		// the future to request that shroud and visibility be ignored. Until
+		// that comes to pass, just return.
+ 		return false;
+	}
+
+	return pathfind::find_vacant_tile(leader_loc, pathfind::VACANT_CASTLE, NULL,
+	                                  &(*resources::teams)[side-1])
+	       != map_location::null_location;
+}
+
+/**
  * Checks to see if a leader at @a leader_loc could recruit on @a recruit_loc.
  * This takes into account terrain, shroud (for side @a side), and whether or
  * not there is already a visible unit at recruit_loc.
@@ -294,59 +321,139 @@ bool can_recruit_on(const map_location& leader_loc, const map_location& recruit_
 
 const std::set<std::string> get_recruits_for_location(int side, const map_location &recruit_loc)
 {
+	const team & current_team = (*resources::teams)[side -1];
+
 	LOG_NG << "getting recruit list for side " << side << " at location " << recruit_loc << "\n";
 
-	const std::set<std::string>& recruit_list = (*resources::teams)[side -1].recruits();
 	std::set<std::string> local_result;
 	std::set<std::string> global_result;
-
 	unit_map::const_iterator u = resources::units->begin(),
 			u_end = resources::units->end();
 
 	bool leader_in_place = false;
-	bool recruit_loc_is_castle = resources::game_map->is_castle(recruit_loc);
+	bool allow_local = resources::game_map->is_castle(recruit_loc);
 
-	for(; u != u_end; ++u) {
-		//Only consider leaders on this side.
-		if (!(u->can_recruit() && u->side() == side))
-			continue;
 
-		// Check if the leader is on a connected keep.
-		if ( can_recruit_on(*u, recruit_loc) ) {
-			leader_in_place= true;
-			local_result.insert(u->recruits().begin(), u->recruits().end());
-		} else
-			global_result.insert(u->recruits().begin(), u->recruits().end());
+	// Check for a leader at recruit_loc (means we are recruiting from there,
+	// rather than to there).
+	unit_map::const_iterator find_it = resources::units->find(recruit_loc);
+	if ( find_it != u_end ) {
+		if ( find_it->can_recruit()  &&  find_it->side() == side  &&
+		     resources::game_map->is_keep(recruit_loc) )
+		{
+			// We have been requested to get the recruit list for this
+			// particular leader.
+			leader_in_place = true;
+			local_result.insert(find_it->recruits().begin(),
+			                    find_it->recruits().end());
+		}
+		else if ( find_it->is_visible_to_team(current_team, false) )
+		{
+			// This hex is visibly occupied, so we cannot recruit here.
+			allow_local = false;
+		}
 	}
 
-	bool global = !(recruit_loc_is_castle && leader_in_place);
+	if ( !leader_in_place ) {
+		// Check all leaders for their ability to recruit here.
+		for( ; u != u_end; ++u ) {
+			// Only consider leaders on this side.
+			if ( !(u->can_recruit() && u->side() == side) )
+				continue;
 
-	if (global)
-		global_result.insert(recruit_list.begin(),recruit_list.end());
-	else if (leader_in_place)
-		local_result.insert(recruit_list.begin(),recruit_list.end());
+			// Check if the leader is on a connected keep.
+			if ( allow_local && can_recruit_on(*u, recruit_loc) ) {
+				leader_in_place= true;
+				local_result.insert(u->recruits().begin(), u->recruits().end());
+			}
+			else if ( !leader_in_place )
+				global_result.insert(u->recruits().begin(), u->recruits().end());
+		}
+	}
 
-	return global ? global_result : local_result;
+	// Determine which result set to use.
+	std::set<std::string> & result = leader_in_place ? local_result : global_result;
+
+	// Add the team-wide recruit list.
+	const std::set<std::string>& recruit_list = current_team.recruits();
+	result.insert(recruit_list.begin(), recruit_list.end());
+
+	return result;
 }
 
-const std::vector<const unit*> get_recalls_for_location(int side, const map_location &recall_loc) {
+
+/**
+ * Adds to @a result those units that @a leader (assumed a leader) can recall.
+ * If @a already_added is supplied, it contains the underlying IDs of units
+ * that can be skipped (because they are already in @a result), and the
+ * underlying ID of units added to @a result will be added to @a already_added.
+ */
+static void add_leader_filtered_recalls(const unit & leader,
+                                        std::vector<const unit*> & result,
+                                        std::set<size_t> * already_added = NULL)
+{
+	const team& leader_team = (*resources::teams)[leader.side()-1];
+	const std::vector<unit>& recall_list = leader_team.recall_list();
+	const std::string& save_id = leader_team.save_id();
+
+	BOOST_FOREACH(const unit& recall_unit, recall_list)
+	{
+		// Do not add a unit twice.
+		size_t underlying_id = recall_unit.underlying_id();
+		if ( !already_added  ||  already_added->count(underlying_id) == 0 )
+		{
+			// Only units that match the leader's recall filter are valid.
+			scoped_recall_unit this_unit("this_unit", save_id, &recall_unit - &recall_list[0]);
+
+			if ( recall_unit.matches_filter(vconfig(leader.recall_filter()), map_location::null_location) )
+			{
+				result.push_back(&recall_unit);
+				if ( already_added != NULL )
+					already_added->insert(underlying_id);
+			}
+		}
+	}
+}
+
+
+const std::vector<const unit*> get_recalls_for_location(int side, const map_location &recall_loc)
+{
 	LOG_NG << "getting recall list for side " << side << " at location " << recall_loc << "\n";
 
-	const team& t = (*resources::teams)[side-1];
-	const std::vector<unit>& recall_list = t.recall_list();
 	std::vector<const unit*> result;
 
 	/*
-	 * We have two use cases:
-	 * 1. A castle tile is highlighted, we only present the units recallable there.
-	 * 2. A non castle tile is highlighted, we present all units in the recall list.
+	 * We have three use cases:
+	 * 1. An empty castle tile is highlighted; we return only the units recallable there.
+	 * 2. A leader on a keep is highlighted; we return only the units recallable by that leader.
+	 * 3. Otherwise, we return all units in the recall list.
 	 */
 
 	bool leader_in_place = false;
-	bool recall_loc_is_castle = resources::game_map->is_castle(recall_loc);
+	bool allow_local = resources::game_map->is_castle(recall_loc);
 
-	if (recall_loc_is_castle) {
 
+	// Check for a leader at recall_loc (means we are recalling from there,
+	// rather than to there).
+	unit_map::const_iterator find_it = resources::units->find(recall_loc);
+	if ( find_it != resources::units->end() ) {
+		if ( find_it->can_recruit()  &&  find_it->side() == side  &&
+		     resources::game_map->is_keep(recall_loc) )
+		{
+			// We have been requested to get the recalls for this
+			// particular leader.
+			add_leader_filtered_recalls(*find_it, result);
+			return result;			
+		}
+		else if ( find_it->is_visible_to_team((*resources::teams)[side-1], false) )
+		{
+			// This hex is visibly occupied, so we cannot recall here.
+			allow_local = false;
+		}
+	}
+
+	if ( allow_local )
+	{
 		unit_map::const_iterator u = resources::units->begin(),
 				u_end = resources::units->end();
 		std::set<size_t> valid_local_recalls;
@@ -357,28 +464,18 @@ const std::vector<const unit*> get_recalls_for_location(int side, const map_loca
 				continue;
 
 			// Check if the leader is on a connected keep.
-			if ( can_recruit_on(*u, recall_loc) )
-				leader_in_place= true;
-			else continue;
+			if ( !can_recruit_on(*u, recall_loc) )
+				continue;
+			leader_in_place= true;
 
-			BOOST_FOREACH(const unit& recall_unit, recall_list)
-			{
-				//Only units which match the leaders recall filter are valid.
-				scoped_recall_unit this_unit("this_unit", t.save_id(), &recall_unit - &recall_list[0]);
-				if (!(recall_unit.matches_filter(vconfig(u->recall_filter()), map_location::null_location)))
-					continue;
-
-				//Do not add a unit twice.
-				if (valid_local_recalls.find(recall_unit.underlying_id())
-						== valid_local_recalls.end()) {
-				valid_local_recalls.insert(recall_unit.underlying_id());
-				result.push_back(&recall_unit);
-				}
-			}
+			add_leader_filtered_recalls(*u, result, &valid_local_recalls);
 		}
 	}
 
-	if (!(recall_loc_is_castle && leader_in_place)) {
+	if ( !leader_in_place )
+	{
+		// Return the full recall list.
+		const std::vector<unit>& recall_list = (*resources::teams)[side-1].recall_list();
 		BOOST_FOREACH(const unit &recall, recall_list)
 		{
 			result.push_back(&recall);

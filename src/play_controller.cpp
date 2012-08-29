@@ -1244,16 +1244,30 @@ bool play_controller::in_context_menu(hotkey::HOTKEY_COMMAND command) const
 	case hotkey::HOTKEY_RECRUIT:
 	case hotkey::HOTKEY_REPEAT_RECRUIT:
 	case hotkey::HOTKEY_RECALL: {
-		wb::future_map future; //< lasts until method returns.
 		// last_hex_ is set by mouse_events::mouse_motion
-		// Enable recruit/recall on castle/keep tiles
-		for(unit_map::const_iterator leader = units_.begin();
-				leader != units_.end();++leader) {
-			if (leader->can_recruit() &&
-			    leader->side() == resources::screen->viewing_side() &&
-				can_recruit_on(*leader, mouse_handler_.get_last_hex()))
-				return true;
-		}
+		const map_location & last_hex = mouse_handler_.get_last_hex();
+		const int viewing_side = resources::screen->viewing_side();
+
+		// A quick check to save us having to create the future map and
+		// possibly loop through all units.
+		if ( !resources::game_map->is_keep(last_hex)  &&
+		     !resources::game_map->is_castle(last_hex) )
+			return false;
+
+		wb::future_map future; //< lasts until method returns.
+
+		unit_map::const_iterator leader = units_.find(last_hex);
+		if ( leader != units_.end() )
+			return leader->can_recruit()  &&  leader->side() == viewing_side  &&
+			       can_recruit_from(*leader);
+		else
+			// Look for a leader who can recruit on last_hex.
+			for ( leader = units_.begin(); leader != units_.end(); ++leader) {
+				if ( leader->can_recruit()  &&  leader->side() == viewing_side  &&
+				     can_recruit_on(*leader, last_hex) )
+					return true;
+			}
+		// No leader found who can recruit at last_hex.
 		return false;
 	}
 	default:
