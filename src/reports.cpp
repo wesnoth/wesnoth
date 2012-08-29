@@ -118,14 +118,14 @@ struct report_generator_helper
 
 static char const *naps = "</span>";
 
-static unit *get_visible_unit()
+static const unit *get_visible_unit()
 {
 	return get_visible_unit(resources::screen->displayed_unit_hex(),
 		(*resources::teams)[resources::screen->viewing_team()],
 		resources::screen->show_everything());
 }
 
-static unit *get_selected_unit()
+static const unit *get_selected_unit()
 {
 	return get_visible_unit(resources::screen->selected_hex(),
 		(*resources::teams)[resources::screen->viewing_team()],
@@ -139,7 +139,7 @@ static config gray_inactive(const std::string &str)
 	return text_report(span_color(font::GRAY_COLOR) + str + naps);
 }
 
-static config unit_name(unit *u)
+static config unit_name(const unit *u)
 {
 	if (!u) {
 		return report();
@@ -158,16 +158,16 @@ static config unit_name(unit *u)
 
 REPORT_GENERATOR(unit_name)
 {
-	unit *u = get_visible_unit();
+	const unit *u = get_visible_unit();
 	return unit_name(u);
 }
 REPORT_GENERATOR(selected_unit_name)
 {
-	unit *u = get_selected_unit();
+	const unit *u = get_selected_unit();
 	return unit_name(u);
 }
 
-static config unit_type(unit* u)
+static config unit_type(const unit* u)
 {
 	if (!u) return report();
 	std::ostringstream str, tooltip;
@@ -178,16 +178,16 @@ static config unit_type(unit* u)
 }
 REPORT_GENERATOR(unit_type)
 {
-	unit *u = get_visible_unit();
+	const unit *u = get_visible_unit();
 	return unit_type(u);
 }
 REPORT_GENERATOR(selected_unit_type)
 {
-	unit *u = get_selected_unit();
+	const unit *u = get_selected_unit();
 	return unit_type(u);
 }
 
-static config unit_race(unit* u)
+static config unit_race(const unit* u)
 {
 	if (!u) return report();
 	std::ostringstream str, tooltip;
@@ -197,16 +197,16 @@ static config unit_race(unit* u)
 }
 REPORT_GENERATOR(unit_race)
 {
-	unit *u = get_visible_unit();
+	const unit *u = get_visible_unit();
 	return unit_race(u);
 }
 REPORT_GENERATOR(selected_unit_race)
 {
-	unit *u = get_selected_unit();
+	const unit *u = get_selected_unit();
 	return unit_race(u);
 }
 
-static config unit_side(unit* u)
+static config unit_side(const unit* u)
 {
 	if (!u) return report();
 	const team &u_team = (*resources::teams)[u->side() - 1];
@@ -220,16 +220,16 @@ static config unit_side(unit* u)
 }
 REPORT_GENERATOR(unit_side)
 {
-	unit *u = get_visible_unit();
+	const unit *u = get_visible_unit();
 	return unit_side(u);
 }
 REPORT_GENERATOR(selected_unit_side)
 {
-	unit *u = get_selected_unit();
+	const unit *u = get_selected_unit();
 	return unit_side(u);
 }
 
-static config unit_level(unit* u)
+static config unit_level(const unit* u)
 {
 	if (!u) return report();
 	std::ostringstream str, tooltip;
@@ -245,18 +245,18 @@ static config unit_level(unit* u)
 }
 REPORT_GENERATOR(unit_level)
 {
-	unit *u = get_visible_unit();
+	const unit *u = get_visible_unit();
 	return unit_level(u);
 }
 REPORT_GENERATOR(selected_unit_level)
 {
-	unit *u = get_selected_unit();
+	const unit *u = get_selected_unit();
 	return unit_level(u);
 }
 
 REPORT_GENERATOR(unit_amla)
 {
-	unit *u = get_visible_unit();
+	const unit *u = get_visible_unit();
 	if (!u) return report();
 	config res;
 	typedef std::pair<std::string, std::string> pair_string;
@@ -266,9 +266,8 @@ REPORT_GENERATOR(unit_amla)
 	return res;
 }
 
-static config unit_traits(unit* u)
+static config unit_traits(const unit* u)
 {
-
 	if (!u) return report();
 	config res;
 	const std::vector<t_string> &traits = u->trait_names();
@@ -287,16 +286,16 @@ static config unit_traits(unit* u)
 }
 REPORT_GENERATOR(unit_traits)
 {
-	unit *u = get_visible_unit();
+	const unit *u = get_visible_unit();
 	return unit_traits(u);
 }
 REPORT_GENERATOR(selected_unit_traits)
 {
-	unit *u = get_selected_unit();
+	const unit *u = get_selected_unit();
 	return unit_traits(u);
 }
 
-static config unit_status(unit* u)
+static config unit_status(const unit* u)
 {
 	if (!u) return report();
 	config res;
@@ -321,16 +320,16 @@ static config unit_status(unit* u)
 }
 REPORT_GENERATOR(unit_status)
 {
-	unit *u = get_visible_unit();
+	const unit *u = get_visible_unit();
 	return unit_status(u);
 }
 REPORT_GENERATOR(selected_unit_status)
 {
-	unit *u = get_selected_unit();
+	const unit *u = get_selected_unit();
 	return unit_status(u);
 }
 
-static config unit_alignment(unit* u)
+static config unit_alignment(const unit* u)
 {
 	if (!u) return report();
 	std::ostringstream str, tooltip;
@@ -344,17 +343,17 @@ static config unit_alignment(unit* u)
 }
 REPORT_GENERATOR(unit_alignment)
 {
-	unit *u = get_visible_unit();
+	const unit *u = get_visible_unit();
 	return unit_alignment(u);
 }
 REPORT_GENERATOR(selected_unit_alignment)
 {
-	unit *u = get_selected_unit();
+	const unit *u = get_selected_unit();
 	return unit_alignment(u);
 }
 
 
-static config unit_abilities(unit* u)
+static config unit_abilities(const unit* u)
 {
 	if (!u) return report();
 	config res;
@@ -373,17 +372,17 @@ static config unit_abilities(unit* u)
 }
 REPORT_GENERATOR(unit_abilities)
 {
-	unit *u = get_visible_unit();
+	const unit *u = get_visible_unit();
 	return unit_abilities(u);
 }
 REPORT_GENERATOR(selected_unit_abilities)
 {
-	unit *u = get_selected_unit();
+	const unit *u = get_selected_unit();
 	return unit_abilities(u);
 }
 
 
-static config unit_hp(unit* u)
+static config unit_hp(const unit* u)
 {
 	if (!u) return report();
 	std::ostringstream str, tooltip;
@@ -422,16 +421,16 @@ static config unit_hp(unit* u)
 }
 REPORT_GENERATOR(unit_hp)
 {
-	unit *u = get_visible_unit();
+	const unit *u = get_visible_unit();
 	return unit_hp(u);
 }
 REPORT_GENERATOR(selected_unit_hp)
 {
-	unit *u = get_selected_unit();
+	const unit *u = get_selected_unit();
 	return unit_hp(u);
 }
 
-static config unit_xp(unit* u)
+static config unit_xp(const unit* u)
 {
 	if (!u) return report();
 	std::ostringstream str, tooltip;
@@ -444,16 +443,16 @@ static config unit_xp(unit* u)
 }
 REPORT_GENERATOR(unit_xp)
 {
-	unit *u = get_visible_unit();
+	const unit *u = get_visible_unit();
 	return unit_xp(u);
 }
 REPORT_GENERATOR(selected_unit_xp)
 {
-	unit *u = get_selected_unit();
+	const unit *u = get_selected_unit();
 	return unit_xp(u);
 }
 
-static config unit_advancement_options(unit* u)
+static config unit_advancement_options(const unit* u)
 {
 	if (!u) return report();
 	config res;
@@ -465,16 +464,16 @@ static config unit_advancement_options(unit* u)
 }
 REPORT_GENERATOR(unit_advancement_options)
 {
-	unit *u = get_visible_unit();
+	const unit *u = get_visible_unit();
 	return unit_advancement_options(u);
 }
 REPORT_GENERATOR(selected_unit_advancement_options)
 {
-	unit *u = get_selected_unit();
+	const unit *u = get_selected_unit();
 	return unit_advancement_options(u);
 }
 
-static config unit_defense(unit* u, const map_location& displayed_unit_hex)
+static config unit_defense(const unit* u, const map_location& displayed_unit_hex)
 {
 	if(!u) {
 		return report();
@@ -517,18 +516,18 @@ static config unit_defense(unit* u, const map_location& displayed_unit_hex)
 }
 REPORT_GENERATOR(unit_defense)
 {
-	unit *u = get_visible_unit();
+	const unit *u = get_visible_unit();
 	const map_location& displayed_unit_hex = resources::screen->displayed_unit_hex();
 	return unit_defense(u, displayed_unit_hex);
 }
 REPORT_GENERATOR(selected_unit_defense)
 {
-	unit *u = get_selected_unit();
+	const unit *u = get_selected_unit();
 	const map_location& selected_hex = resources::screen->selected_hex();
 	return unit_defense(u, selected_hex);
 }
 
-static config unit_moves(unit* u)
+static config unit_moves(const unit* u)
 {
 	if (!u) return report();
 	std::ostringstream str;
@@ -546,16 +545,16 @@ static config unit_moves(unit* u)
 }
 REPORT_GENERATOR(unit_moves)
 {
-	unit *u = get_visible_unit();
+	const unit *u = get_visible_unit();
 	return unit_moves(u);
 }
 REPORT_GENERATOR(selected_unit_moves)
 {
-	unit *u = get_selected_unit();
+	const unit *u = get_selected_unit();
 	return unit_moves(u);
 }
 
-static int attack_info(const attack_type &at, config &res, unit *u, const map_location &displayed_unit_hex)
+static int attack_info(const attack_type &at, config &res, const unit *u, const map_location &displayed_unit_hex)
 {
 	std::ostringstream str, tooltip;
 
@@ -729,11 +728,11 @@ static void format_hp(char str_buf[10], int hp)
 	str_buf[9] = '\0';  //prevents _snprintf error
 }
 
-static config unit_weapons(unit *attacker, const map_location &attacker_pos, unit *defender, bool show_attacker)
+static config unit_weapons(const unit *attacker, const map_location &attacker_pos, const unit *defender, bool show_attacker)
 {
 	if (!attacker || !defender) return report();
 
-	unit* u = show_attacker ? attacker : defender;
+	const unit* u = show_attacker ? attacker : defender;
 	const map_location unit_loc = show_attacker ? attacker_pos : defender->get_location();
 
 	std::ostringstream str, tooltip;
@@ -856,7 +855,7 @@ static config unit_weapons(unit *attacker, const map_location &attacker_pos, uni
 	return res;
 }
 
-static config unit_weapons(unit *u)
+static config unit_weapons(const unit *u)
 {
 	if (!u) return report();
 	map_location displayed_unit_hex = resources::screen->displayed_unit_hex();
@@ -870,15 +869,15 @@ static config unit_weapons(unit *u)
 }
 REPORT_GENERATOR(unit_weapons)
 {
-	unit *u = get_visible_unit();
+	const unit *u = get_visible_unit();
 	if (!u) return config();
 
 	return unit_weapons(u);
 }
 REPORT_GENERATOR(highlighted_unit_weapons)
 {
-	unit *u = get_selected_unit();
-	unit *sec_u = get_visible_unit();
+	const unit *u = get_selected_unit();
+	const unit *sec_u = get_visible_unit();
 
 	if (!u) return config();
 	if (!sec_u || u == sec_u) return unit_weapons(sec_u);
@@ -894,8 +893,8 @@ REPORT_GENERATOR(highlighted_unit_weapons)
 }
 REPORT_GENERATOR(selected_unit_weapons)
 {
-	unit *u = get_selected_unit();
-	unit *sec_u = get_visible_unit();
+	const unit *u = get_selected_unit();
+	const unit *sec_u = get_visible_unit();
 
 	if (!u) return config();
 	if (!sec_u || u == sec_u) return unit_weapons(u);
@@ -912,31 +911,31 @@ REPORT_GENERATOR(selected_unit_weapons)
 
 REPORT_GENERATOR(unit_image)
 {
-	unit *u = get_visible_unit();
+	const unit *u = get_visible_unit();
 	if (!u) return report();
 	return image_report(u->absolute_image() + u->image_mods());
 }
 REPORT_GENERATOR(selected_unit_image)
 {
-	unit *u = get_selected_unit();
+	const unit *u = get_selected_unit();
 	if (!u) return report();
 	return image_report(u->absolute_image() + u->image_mods());
 }
 
 REPORT_GENERATOR(selected_unit_profile)
 {
-	unit *u = get_selected_unit();
+	const unit *u = get_selected_unit();
 	if (!u) return report();
 	return image_report(u->small_profile());
 }
 REPORT_GENERATOR(unit_profile)
 {
-	unit *u = get_visible_unit();
+	const unit *u = get_visible_unit();
 	if (!u) return report();
 	return image_report(u->small_profile());
 }
 
-static config time_of_day_at(map_location& mouseover_hex)
+static config time_of_day_at(const map_location& mouseover_hex)
 {
 	std::ostringstream tooltip;
 	time_of_day tod;
@@ -1081,7 +1080,7 @@ REPORT_GENERATOR(income)
 
 REPORT_GENERATOR(terrain)
 {
-	gamemap &map = *resources::game_map;
+	const gamemap &map = *resources::game_map;
 	int viewing_side = resources::screen->viewing_side();
 	const team &viewing_team = (*resources::teams)[viewing_side - 1];
 	map_location mouseover_hex = resources::screen->mouseover_hex();
@@ -1119,7 +1118,7 @@ REPORT_GENERATOR(terrain)
 
 REPORT_GENERATOR(position)
 {
-	gamemap &map = *resources::game_map;
+	const gamemap &map = *resources::game_map;
 	map_location mouseover_hex = resources::screen->mouseover_hex(),
 		displayed_unit_hex = resources::screen->displayed_unit_hex();
 	if (!map.on_board(mouseover_hex))

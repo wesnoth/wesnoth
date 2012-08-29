@@ -70,8 +70,8 @@ namespace game_events
 
 		int filter_x() const { return filter_loc_.x; }
 		int filter_y() const { return filter_loc_.y; }
-		bool matches_unit(const unit_map::iterator & un_it) const;
-		bool matches_unit_filter(const unit_map::iterator & un_it,
+		bool matches_unit(const unit_map::const_iterator & un_it) const;
+		bool matches_unit_filter(const unit_map::const_iterator & un_it,
 		                         const vconfig & filter) const;
 
 	private:

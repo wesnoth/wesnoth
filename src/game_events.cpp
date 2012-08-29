@@ -3680,7 +3680,7 @@ namespace game_events {
 	 * If no unit was supplied, then all units (including non-existent units)
 	 * match.
 	 */
-	bool entity_location::matches_unit(const unit_map::iterator & un_it) const
+	bool entity_location::matches_unit(const unit_map::const_iterator & un_it) const
 	{
 		return id_ == 0  ||  ( un_it.valid() && id_ == un_it->underlying_id() );
 	}
@@ -3690,7 +3690,7 @@ namespace game_events {
 	 * the unit is required to additionally match the unit that was supplied
 	 * when this was constructed.
 	 */
-	bool entity_location::matches_unit_filter(const unit_map::iterator & un_it,
+	bool entity_location::matches_unit_filter(const unit_map::const_iterator & un_it,
 	                                          const vconfig & filter) const
 	{
 		if ( !un_it.valid() )
