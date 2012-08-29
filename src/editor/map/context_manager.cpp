@@ -12,6 +12,7 @@
 
    See the COPYING file for more details.
 */
+#define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "context_manager.hpp"
 #include "display.hpp"
