@@ -1327,12 +1327,24 @@ void advance_unit(map_location loc, const std::string &advance_to,
 	}
 	resources::units->replace(loc, new_unit);
 
+	// Update fog/shroud.
+	actions::shroud_clearer clearer;
+	team & current_team = (*resources::teams)[new_unit.side()-1];
+	if ( current_team.fog_or_shroud() )
+	{
+		clearer.clear_unit(loc, new_unit, current_team);
+		clearer.invalidate_after_clear();
+	}
+
 	// "post_advance" event.
 	if(fire_event)
 	{
 		LOG_NG << "Firing post_advance event at " << loc << ".\n";
 		game_events::fire("post_advance",loc);
 	}
+
+	// "sighted" event(s).
+	clearer.fire_events();
 
 	resources::whiteboard->on_gamestate_change();
 }
