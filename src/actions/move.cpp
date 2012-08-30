@@ -937,10 +937,18 @@ namespace { // Private helpers for move_unit()
 				if ( current_uses_fog_ )
 					handle_fog(*real_end_, ally_interrupts);
 
-				// Fire the events for this move.
-				pump_sighted(real_end_); // Ignore the return value, as there are more events to try to fire, and real_end_ still needs to be incremented.
-				fire_hex_event(enter_hex_str, real_end_, step_from); // Ignore the return value, as real_end_ still needs to be incremented.
+				// Fire the events for this step.
+				// (These return values are not checked since real_end_ still
+				// needs to be incremented. The event_mutated_ check will break
+				// us out of the loop if needed.)
+				fire_hex_event(enter_hex_str, real_end_, step_from);
+				// Sighted events only fire if we could stop due to sighting.
+				if ( is_reasonable_stop(*real_end_) )
+					pump_sighted(real_end_);
 			}//for
+			// Make sure any remaining sighted events get fired.
+			pump_sighted(real_end_-1);
+			// Finish animating.
 			if ( move_it_.valid() )
 				animator.finish(*move_it_);
 		}//if
