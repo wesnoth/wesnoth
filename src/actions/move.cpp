@@ -200,9 +200,6 @@ namespace { // Private helpers for move_unit()
 		/// After moving, this is the final hex reached.
 		const map_location & final_hex() const
 		{ return *move_loc_; }
-		/// After moving, this indicates if any units were seen.
-		/// This includes seen units that would not interrupt movement.
-		bool saw_units() const  { return !seen_units_.empty(); }
 		/// The number of hexes actually entered.
 		size_t steps_travelled() const
 		{ return move_loc_ - begin_; }
@@ -241,7 +238,7 @@ namespace { // Private helpers for move_unit()
 		/// Returns whether or not undoing this move should be blocked.
 		bool undo_blocked() const
 		{ return ambushed_ || blocked_ || event_mutated_ || fog_changed_ ||
-		         saw_units() || teleport_failed_; } // Should not be necessary to check saw_units(), but why assume?
+		         teleport_failed_; }
 
 		// The remaining private functions are suggested to be inlined because
 		// each is used in only one place. (They are separate functions to ease
@@ -312,9 +309,10 @@ namespace { // Private helpers for move_unit()
 		bool sighted_stop_;	// Records if sightings were made that did interrupt movement (the same as sighted_ unless movement ended for another reason).
 		bool teleport_failed_;
 		bool report_extra_hex_;
+		size_t enemy_count_;
+		size_t friend_count_;
 		std::string ambush_string_;
 		std::deque<int> moves_left_;	// The front value is what the moving unit's remaining moves should be set to after the next step through the route.
-		std::set<map_location> seen_units_;
 		std::vector<map_location> to_reveal_;
 
 		actions::shroud_clearer clearer_;
@@ -365,9 +363,10 @@ namespace { // Private helpers for move_unit()
 		sighted_stop_(false),
 		teleport_failed_(false),
 		report_extra_hex_(false),
+		enemy_count_(0),
+		friend_count_(0),
 		ambush_string_(),
 		moves_left_(),
-		seen_units_(),
 		to_reveal_(),
 		clearer_()
 	{
@@ -506,43 +505,26 @@ namespace { // Private helpers for move_unit()
 	/**
 	 * Clears fog/shroud and raises events for units being sighted.
 	 * Only call this if the current team uses fog or shroud.
-	 * @a hex is both the center of fog clearing and the assumed location of
+	 * @a hex is both the center of fog clearing and the filtered location of
 	 * the moving unit when the sighted events will be fired.
 	 */
 	inline void unit_mover::handle_fog(const map_location & hex, bool ally_interrupts)
 	{
 		static const std::string sighted_str("sighted");
 
-		const unit_map & units = *resources::units;
-
-		std::set<map_location> newly_seen_units;
-
 		// Clear the fog.
 		if ( clearer_.clear_unit(hex, *move_it_, *current_team_, NULL,
-		                         &newly_seen_units) )
+		                         &enemy_count_, &friend_count_, spectator_) )
 		{
 			clearer_.invalidate_after_clear();
 			fog_changed_ = true;
 		}
 
 		// Check for sighted units?
-		if ( !skip_sighting_ && !sighted_ ) {
-			if ( ally_interrupts )
-				// Interrupt if any unit was sighted.
-				sighted_ = !newly_seen_units.empty();
-			else {
-				// Check whether any sighted unit is an enemy.
-				BOOST_FOREACH(const map_location &here, newly_seen_units) {
-					if ( current_team_->is_enemy(units.find(here)->side()) ) {
-						sighted_ = true;
-						break;
-					}
-				}
-			}
+		if ( !skip_sighting_ ) {
+			sighted_ = enemy_count_ != 0  ||
+			           (ally_interrupts  &&  friend_count_ != 0 );
 		}
-
-		// Merge the seen units.
-		seen_units_.insert(newly_seen_units.begin(), newly_seen_units.end());
 	}
 
 
@@ -1045,7 +1027,6 @@ namespace { // Private helpers for move_unit()
 	void unit_mover::feedback() const
 	{
 		// Alias some resources.
-		const unit_map &units = *resources::units;
 		game_display &disp = *resources::screen;
 
 		bool redraw = false;
@@ -1080,52 +1061,28 @@ namespace { // Private helpers for move_unit()
 		}
 
 		// Sighted units feedback?
-		if ( playing_team_is_viewing  &&  saw_units() ) {
-			// Count the number of allies and enemies sighted.
-			int friends = 0, enemies = 0;
-			BOOST_FOREACH(const map_location &loc, seen_units_) {
-				DBG_NG << "Processing unit at " << loc << "...\n";
-				const unit_map::const_iterator seen_it = units.find(loc);
-
-				// Unit may have been removed by an event.
-				if ( seen_it == units.end() ) {
-					DBG_NG << "...was removed.\n";
-					continue;
-				}
-
-				if ( current_team_->is_enemy(seen_it->side()) ) {
-					++enemies;
-					if ( spectator_ )
-						spectator_->add_seen_enemy(seen_it);
-				} else {
-					++friends;
-					if ( spectator_ )
-						spectator_->add_seen_friend(seen_it);
-				}
-				DBG_NG << "...processed.\n";
-			}
-
+		if ( playing_team_is_viewing  &&  (enemy_count_ != 0 || friend_count_ != 0) ) {
 			// Create the message to display (depends on whether firends,
 			// enemies, or both were sighted, and on how many of each).
 			utils::string_map symbols;
-			symbols["friends"] = lexical_cast<std::string>(friends);
-			symbols["enemies"] = lexical_cast<std::string>(enemies);
+			symbols["enemies"] = lexical_cast<std::string>(enemy_count_);
+			symbols["friends"] = lexical_cast<std::string>(friend_count_);
 			std::string message;
 			SDL_Color msg_color;
-			if ( friends > 0  &&  enemies > 0 ) {
+			if ( friend_count_ != 0  &&  enemy_count_ != 0 ) {
 				// Both friends and enemies sighted -- neutral message.
-				symbols["friendphrase"] = vngettext("Part of 'Units sighted! (...)' sentence^1 friendly", "$friends friendly", friends, symbols);
-				symbols["enemyphrase"] = vngettext("Part of 'Units sighted! (...)' sentence^1 enemy", "$enemies enemy", enemies, symbols);
+				symbols["friendphrase"] = vngettext("Part of 'Units sighted! (...)' sentence^1 friendly", "$friends friendly", friend_count_, symbols);
+				symbols["enemyphrase"] = vngettext("Part of 'Units sighted! (...)' sentence^1 enemy", "$enemies enemy", enemy_count_, symbols);
 				message = vgettext("Units sighted! ($friendphrase, $enemyphrase)", symbols);
 				msg_color = font::NORMAL_COLOR;
-			} else if ( friends > 0 ) {
-				// Only friends sighted -- good message.
-				message = vngettext("Friendly unit sighted", "$friends friendly units sighted", friends, symbols);
-				msg_color = font::GOOD_COLOR;
-			} else if ( enemies > 0 ) {
+			} else if ( enemy_count_ != 0 ) {
 				// Only enemies sighted -- bad message.
-				message = vngettext("Enemy unit sighted!", "$enemies enemy units sighted!", enemies, symbols);
+				message = vngettext("Enemy unit sighted!", "$enemies enemy units sighted!", enemy_count_, symbols);
 				msg_color = font::BAD_COLOR;
+			} else if ( friend_count_ != 0 ) {
+				// Only friends sighted -- good message.
+				message = vngettext("Friendly unit sighted", "$friends friendly units sighted", friend_count_, symbols);
+				msg_color = font::GOOD_COLOR;
 			}
 
 			disp.announce(message_prefix + message, msg_color);

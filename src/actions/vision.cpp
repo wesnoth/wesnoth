@@ -20,6 +20,8 @@
 
 #include "vision.hpp"
 
+#include "move.hpp"
+
 #include "../game_display.hpp"
 #include "../game_events.hpp"
 #include "../log.hpp"
@@ -129,21 +131,18 @@ void shroud_clearer::calculate_jamming(const team * new_team)
  * @param loc              The location to clear.
  * @param viewer           The unit doing the viewing (for sighted events).
  * @param view_loc         The location viewer is assumed at (for sighted events).
- * @param seen_units       If the location was cleared and contained a visible,
- *                         non-petrified unit, it gets added to this set.
- * @param petrified_units  If the location was cleared and contained a visible,
- *                         petrified unit, it gets added to this set.
- * @param known_units      These locations are excluded from being added to
- *                         seen_units and petrified_units.
+ * @param check_units      If false, there is no checking for an uncovered unit.
+ * @param enemy_count      Incremented if an enemy is uncovered.
+ * @param friend_count     Incremented if a friend is uncovered.
+ * @param spectator        Will be told if a unit is uncovered.
  *
  * @return whether or not information was uncovered (i.e. returns true if
  *         the specified location was fogged/ shrouded under shared vision/maps).
  */
-bool shroud_clearer::clear_loc(team &tm, const map_location& loc,
+bool shroud_clearer::clear_loc(team &tm, const map_location &loc,
                                const unit & viewer, const map_location &view_loc,
-                               std::set<map_location>* seen_units,
-                               std::set<map_location>* petrified_units,
-                               const std::set<map_location>* known_units)
+                               bool check_units, size_t &enemy_count,
+                               size_t &friend_count, move_unit_spectator * spectator)
 {
 	gamemap &map = *resources::game_map;
 	// This counts as clearing a tile for the return value if it is on the
@@ -196,35 +195,23 @@ bool shroud_clearer::clear_loc(team &tm, const map_location& loc,
 			resources::screen->invalidate(adjacent[i]);
 	}
 
-	// Sighted event recording.
-	if ( result  &&  loc != viewer.get_location() ) {
+	// Check for units?
+	if ( result  &&  check_units  &&  loc != viewer.get_location() ) {
 		// Uncovered a unit?
 		unit_map::const_iterator sight_it = find_visible_unit(loc, tm);
 		if ( sight_it.valid() ) {
 			record_sighting(loc, viewer, view_loc);
-		}
-	}
 
-	// Does the caller want a list of discovered units?
-	if ( result  &&  (seen_units || petrified_units) ) {
-		// Allow known_units to override fogged().
-		if ( loc != viewer.get_location()  &&
-		     (known_units == NULL  ||  known_units->count(loc) == 0) )
-		{
-			// Is there a visible unit here?
-			const unit_map::const_iterator sighted = resources::units->find(loc);
-			if ( sighted.valid() ) {
-				if ( !tm.is_enemy(sighted->side()) ||
-				     !sighted->invisible(loc) )
-				{
-					// Add this unit to the appropriate list.
-					if ( !sighted->get_state(unit::STATE_PETRIFIED) )
-					{
-						if ( seen_units != NULL )
-							seen_units->insert(loc);
-					}
-					else if ( petrified_units != NULL )
-						petrified_units->insert(loc);
+			// Track this?
+			if ( !sight_it->get_state(unit::STATE_PETRIFIED) ) {
+				if ( tm.is_enemy(sight_it->side()) ) {
+					++enemy_count;
+					if ( spectator )
+						spectator->add_seen_enemy(sight_it);
+				} else {
+					++friend_count;
+					if ( spectator )
+						spectator->add_seen_friend(sight_it);
 				}
 			}
 		}
@@ -240,12 +227,10 @@ bool shroud_clearer::clear_loc(team &tm, const map_location& loc,
  * This will also record sighted events, which should be either fired or
  * explicitly cleared.
  *
- * @param known_units      These locations are excluded from being added to
- *                         seen_units and petrified_units.
- * @param seen_units       Occupied uncovered locations will be added to this set
- *                         unless the occupier is petrified or not visible.
- * @param petrified_units  Occupied uncovered locations will be added to this set
- *                         if the occupier is visible and petrified.
+ * @param known_units      These locations are not checked for uncovered units.
+ * @param enemy_count      Incremented for each enemy uncovered (excluding known_units).
+ * @param friend_count     Incremented for each friend uncovered (excluding known_units).
+ * @param spectator        Will be told of uncovered units (excluding known_units).
  *
  * @return whether or not information was uncovered (i.e. returns true if any
  *         locations in visual range were fogged/shrouded under shared vision/maps).
@@ -253,10 +238,16 @@ bool shroud_clearer::clear_loc(team &tm, const map_location& loc,
 bool shroud_clearer::clear_unit(const map_location &view_loc,
                                 const unit &viewer, team &view_team,
                                 const std::set<map_location>* known_units,
-                                std::set<map_location>* seen_units,
-                                std::set<map_location>* petrified_units)
+                                size_t * enemy_count, size_t * friend_count,
+                                move_unit_spectator * spectator)
 {
 	bool cleared_something = false;
+	// Dummy variables to make some logic simpler.
+	size_t enemies=0, friends=0;
+	if ( enemy_count == NULL )
+		enemy_count = &enemies;
+	if ( friend_count == NULL )
+		friend_count = &friends;
 
 	// Make sure the jamming map is up-to-date.
 	if ( view_team_ != &view_team )
@@ -265,14 +256,16 @@ bool shroud_clearer::clear_unit(const map_location &view_loc,
 	// Clear the fog.
 	pathfind::vision_path sight(*resources::game_map, viewer, view_loc, jamming_);
 	BOOST_FOREACH (const pathfind::paths::step &dest, sight.destinations) {
-		if ( clear_loc(view_team, dest.curr, viewer, view_loc,
-		               seen_units, petrified_units, known_units) )
+		bool known = known_units  &&  known_units->count(dest.curr) != 0;
+		if ( clear_loc(view_team, dest.curr, viewer, view_loc, !known,
+		               *enemy_count, *friend_count, spectator) )
 			cleared_something = true;
 	}
 	//TODO guard with game_config option
 	BOOST_FOREACH (const map_location &dest, sight.edges) {
-		if ( clear_loc(view_team, dest, viewer, view_loc,
-		               seen_units, petrified_units, known_units) )
+		bool known = known_units  &&  known_units->count(dest) != 0;
+		if ( clear_loc(view_team, dest, viewer, view_loc, !known,
+		               *enemy_count, *friend_count, spectator) )
 			cleared_something = true;
 	}
 

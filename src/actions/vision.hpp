@@ -22,6 +22,7 @@
 #define ACTIONS_VISION_H_INCLUDED
 
 struct map_location;
+class  move_unit_spectator;
 class  team;
 class  unit;
 
@@ -59,8 +60,8 @@ public:
 	bool clear_unit(const map_location &view_loc,
 	                const unit &viewer, team &view_team,
     	            const std::set<map_location>* known_units = NULL,
-    	            std::set<map_location>* seen_units = NULL,
-    	            std::set<map_location>* petrified_units = NULL);
+	                size_t * enemy_count = NULL, size_t * friend_count = NULL,
+	                move_unit_spectator * spectator = NULL);
 
 	/// Erases the record of sighted events from earlier fog/shroud clearing.
 	void drop_events();
@@ -81,11 +82,10 @@ private:
 	void calculate_jamming(const team * new_team);
 
 	/// Clears shroud from a single location.
-	bool clear_loc(team &tm, const map_location& loc,
+	bool clear_loc(team &tm, const map_location &loc,
 	               const unit & viewer, const map_location &view_loc,
-	               std::set<map_location>* seen_units = NULL,
-	               std::set<map_location>* petrified_units = NULL,
-	               const std::set<map_location>* known_units = NULL);
+	               bool check_units, size_t &enemy_count, size_t &friend_count,
+	               move_unit_spectator * spectator = NULL);
 
 	/// Convenience wrapper for adding sighting data to the sightings_ vector.
 	inline void record_sighting(const map_location & seen_loc, const unit & sighter,
