@@ -3139,9 +3139,9 @@ static void commit_wmi_commands() {
 static bool filter_event(const game_events::event_handler& handler,
                          const game_events::queued_event& ev)
 {
-	unit_map *units = resources::units;
-	unit_map::iterator unit1 = units->find(ev.loc1);
-	unit_map::iterator unit2 = units->find(ev.loc2);
+	const unit_map *units = resources::units;
+	unit_map::const_iterator unit1 = units->find(ev.loc1);
+	unit_map::const_iterator unit2 = units->find(ev.loc2);
 	vconfig filters(handler.get_config());
 
 	BOOST_FOREACH(const vconfig &condition, filters.get_children("filter_condition"))
