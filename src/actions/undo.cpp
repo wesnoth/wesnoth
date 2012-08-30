@@ -55,8 +55,8 @@ void apply_shroud_changes(undo_list &undos, int side)
 	   7. fix up associated display stuff (done in a similar way to turn_info::undo())
 	*/
 
+	actions::shroud_clearer clearer;
 	bool cleared_shroud = false;  // for further optimization
-	bool sighted_event = false;
 
 	for(undo_list::iterator un = undos.begin(); un != undos.end(); ++un) {
 		LOG_NG << "Turning an undo...\n";
@@ -72,60 +72,29 @@ void apply_shroud_changes(undo_list &undos, int side)
 		if(unit_itor == units.end())
 			continue;
 
-		// Cache the unit's current actual location for raising the sighted events.
-		const map_location actual_location = unit_itor->get_location();
-
 		std::vector<map_location> route(un->route.begin(), un->route.end());
 		if ( un->recall_loc.valid() )
 			route.push_back(un->recall_loc);
 		std::vector<map_location>::const_iterator step;
 		for(step = route.begin(); step != route.end(); ++step) {
-			// Clear the shroud, and collect new seen_units
-			std::set<map_location> seen_units;
-			std::set<map_location> petrified_units;
-			std::map<map_location, int> jamming_map;
-			calculate_jamming(side, jamming_map);
-			cleared_shroud |= clear_shroud_unit(*step, *unit_itor, tm, jamming_map,
-			                                    NULL, &seen_units, &petrified_units);
-
-			// Fire sighted events
-			// Try to keep same order (petrified units after normal units)
-			// as with move_unit for replay
-			for (std::set<map_location>::iterator sight_it = seen_units.begin();
-				sight_it != seen_units.end(); ++sight_it)
-			{
-				unit_map::const_iterator new_unit = units.find(*sight_it);
-				assert(new_unit != units.end());
-
-				game_events::raise("sighted", *sight_it, actual_location);
-				sighted_event = true;
-			}
-			for (std::set<map_location>::iterator sight_it = petrified_units.begin();
-				sight_it != petrified_units.end(); ++sight_it)
-			{
-				unit_map::const_iterator new_unit = units.find(*sight_it);
-				assert(new_unit != units.end());
-
-				game_events::raise("sighted", *sight_it, actual_location);
-				sighted_event = true;
-			}
+			// Clear the shroud, collecting new sighted events.
+			cleared_shroud |= clearer.clear_unit(*step, *unit_itor, tm);
 		}
 	}
 
-	// Optimization: if nothing was cleared and there are no sighted events,
-	// then there is nothing to redraw. (Technically, "nothing was cleared"
-	// implies "no sighted events", but checking both is cheap.)
-	if ( cleared_shroud  || sighted_event ) {
+	// Optimization: if nothing was cleared, then there is nothing to redraw.
+	if ( cleared_shroud ) {
 		// Update the display before pumping events.
-		invalidate_after_clearing_shroud();
+		clearer.invalidate_after_clear();
 		disp.draw();
+	}
 
-		if ( sighted_event  &&  game_events::pump() ) {
-			// Updates in case WML changed stuff.
-			disp.invalidate_unit();
-			clear_shroud(side);
-			disp.draw();
-		}
+	// Fire sighted events
+	if ( clearer.fire_events() ) {
+		// Updates in case WML changed stuff.
+		clear_shroud(side);
+		disp.invalidate_unit();
+		disp.draw();
 	}
 }
 

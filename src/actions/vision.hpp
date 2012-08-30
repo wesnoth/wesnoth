@@ -25,24 +25,80 @@ struct map_location;
 class  team;
 class  unit;
 
+#include <boost/noncopyable.hpp>
 #include <cstring>
 #include <map>
 #include <set>
+#include <vector>
 
 
-/// Clears shroud (and fog) around the provided location for @a view_team as
-/// if a unit with @a viewer's sight range was standing there.
-bool clear_shroud_unit(const map_location &view_loc, const unit &viewer,
-                       team &view_team, const std::map<map_location, int>& jamming_map,
-                       const std::set<map_location>* known_units = NULL,
-                       std::set<map_location>* seen_units = NULL,
-                       std::set<map_location>* petrified_units = NULL);
+namespace actions {
 
-/// Wrapper for the invalidations that should occur after fog or
-/// shroud is cleared.
-void invalidate_after_clearing_shroud();
+/// Class to encapsulate fog/shroud clearing and the resultant sighted events.
+/// Note: This class uses teams as parameters (instead of sides) since a
+/// function using this should first check to see if fog/shroud is in use (to
+/// save processing when it is not), which implies the team is readily available.
+class shroud_clearer : public boost::noncopyable {
+public:
+	shroud_clearer();
+	~shroud_clearer();
 
-void calculate_jamming(int side, std::map<map_location, int>& jamming_map);
+	/// Function to be called if units have moved or otherwise changed.
+	/// It can also be called if it is desirable to calculate the cache
+	/// in advance of fog clearing.
+	/// @param[in] new_team  The team whose vision will be used. If left as
+	///                      NULL, the cache will be just be cleared (to be
+	///                      recalculated later as needed).
+	void cache_units(const team * new_team=NULL) { calculate_jamming(new_team); }
+	// cache_units() is currently a near-synonym for calculate_jamming(). The
+	// reason for the two names is so the private function says what it does,
+	// while the public one says why it might be invoked.
+
+	/// Clears shroud (and fog) around the provided location for @a view_team
+	/// as if @a viewer was standing there.
+	bool clear_unit(const map_location &view_loc,
+	                const unit &viewer, team &view_team,
+    	            const std::set<map_location>* known_units = NULL,
+    	            std::set<map_location>* seen_units = NULL,
+    	            std::set<map_location>* petrified_units = NULL);
+
+	/// Erases the record of sighted events from earlier fog/shroud clearing.
+	void drop_events();
+
+	/// Fires the sighted events that were earlier recorded by fog/shroud clearing.
+	bool fire_events();
+
+	/// The invalidations that should occur after invoking clear_shroud_unit().
+	/// This is separate since clear_shroud_unit() might be invoked several
+	/// times in a row, and the invalidations might only need to be done once.
+	void invalidate_after_clear();
+
+private:
+	/// A record of a sighting event.
+	struct sight_data;
+
+	/// Causes this object's "jamming" map to be recalculated.
+	void calculate_jamming(const team * new_team);
+
+	/// Clears shroud from a single location.
+	bool clear_loc(team &tm, const map_location& loc,
+	               const unit & viewer, const map_location &view_loc,
+	               std::set<map_location>* seen_units = NULL,
+	               std::set<map_location>* petrified_units = NULL,
+	               const std::set<map_location>* known_units = NULL);
+
+	/// Convenience wrapper for adding sighting data to the sightings_ vector.
+	inline void record_sighting(const map_location & seen_loc, const unit & sighter,
+	                            const map_location & sighter_loc);
+
+private: // data
+	std::map<map_location, int> jamming_;
+	std::vector<sight_data> sightings_;
+	/// Keeps track of the team associated with jamming_.
+	const team * view_team_;
+};
+
+}//namespace actions
 
 /// Function that recalculates the fog of war.
 void recalculate_fog(int side);

@@ -313,10 +313,11 @@ namespace { // Private helpers for move_unit()
 		bool teleport_failed_;
 		bool report_extra_hex_;
 		std::string ambush_string_;
-		std::map<map_location, int> jamming_;
 		std::deque<int> moves_left_;	// The front value is what the moving unit's remaining moves should be set to after the next step through the route.
 		std::set<map_location> seen_units_;
 		std::vector<map_location> to_reveal_;
+
+		actions::shroud_clearer clearer_;
 	};
 
 
@@ -365,10 +366,10 @@ namespace { // Private helpers for move_unit()
 		teleport_failed_(false),
 		report_extra_hex_(false),
 		ambush_string_(),
-		jamming_(),
 		moves_left_(),
 		seen_units_(),
-		to_reveal_()
+		to_reveal_(),
+		clearer_()
 	{
 		if ( !is_ai_move() )
 			// Clear the "goto" instruction during movement.
@@ -515,23 +516,13 @@ namespace { // Private helpers for move_unit()
 		const unit_map & units = *resources::units;
 
 		std::set<map_location> newly_seen_units;
-		std::set<map_location> petrified_units;
 
 		// Clear the fog.
-		if ( clear_shroud_unit(hex, *move_it_, *current_team_, jamming_, NULL,
-		                       &newly_seen_units, &petrified_units) )
+		if ( clearer_.clear_unit(hex, *move_it_, *current_team_, NULL,
+		                         &newly_seen_units) )
 		{
-			invalidate_after_clearing_shroud();
+			clearer_.invalidate_after_clear();
 			fog_changed_ = true;
-		}
-
-		// Raise sighted events.
-		const game_events::entity_location viewer(*move_it_, hex);
-		BOOST_FOREACH(const map_location &here, newly_seen_units) {
-			game_events::raise(sighted_str, here, viewer);
-		}
-		BOOST_FOREACH(const map_location &here, petrified_units) {
-			game_events::raise(sighted_str, here, viewer);
 		}
 
 		// Check for sighted units?
@@ -643,7 +634,6 @@ namespace { // Private helpers for move_unit()
 		obstructed_ = full_end_;
 		blocked_ = false;
 		teleport_failed_ = false;
-		jamming_.clear();
 		// The ambush cache needs special treatment since we cannot re-detect
 		// an ambush if we are already at the ambushed location.
 		ambushed_ =  ambushed_  &&  ambush_stop_ == *start;
@@ -657,9 +647,8 @@ namespace { // Private helpers for move_unit()
 			to_reveal_.clear();
 		}
 
-		// Calculate the jamming map?
-		if ( current_uses_fog_ )
-			calculate_jamming(current_side_, jamming_);
+		// Update the shroud clearer.
+		clearer_.cache_units(current_uses_fog_ ? current_team_ : NULL);
 
 
 		// Abort for null routes.
@@ -833,7 +822,7 @@ namespace { // Private helpers for move_unit()
 		const size_t track = game_events::wml_tracking();
 		bool valid = true;
 
-		const bool event = game_events::pump();
+		const bool event = clearer_.fire_events();
 
 		if ( track != game_events::wml_tracking() )
 			// Some WML fired, so update our status.
