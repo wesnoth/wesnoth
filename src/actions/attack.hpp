@@ -148,17 +148,24 @@ void attack_unit(const map_location &attacker, const map_location &defender,
                  int attack_with, int defend_with, bool update_display = true);
 
 /**
- * Returns the advanced version of unit (with traits and items retained).
+ * Returns the advanced version of a unit (with traits and items retained).
  */
 unit get_advanced_unit(const unit &u, const std::string &advance_to);
 
 /**
+ * Returns the AMLA-advanced version of a unit (with traits and items retained).
+ */
+unit get_amla_unit(const unit &u, const config &mod_option);
+
+/**
  * Function which will advance the unit at @a loc to 'advance_to'.
+ * (Unless mod_option is supplied, in which case an AMLA is performed.)
  * Note that 'loc' is not a reference, because if it were a reference,
  * we couldn't safely pass in a reference to the item in the map
  * that we're going to delete, since deletion would invalidate the reference.
  */
-void advance_unit(map_location loc, const std::string &advance_to, const bool &fire_event = true);
+void advance_unit(map_location loc, const std::string &advance_to,
+                  const bool &fire_event = true, const config * mod_option = NULL);
 
 /**
  * function which tests if the unit at loc is currently affected by leadership.

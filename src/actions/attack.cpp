@@ -1277,7 +1277,21 @@ unit get_advanced_unit(const unit &u, const std::string& advance_to)
 	return new_unit;
 }
 
-void advance_unit(map_location loc, const std::string &advance_to, const bool &fire_event)
+
+/**
+ * Returns the AMLA-advanced version of a unit (with traits and items retained).
+ */
+unit get_amla_unit(const unit &u, const config &mod_option)
+{
+	unit amla_unit(u);
+	amla_unit.set_experience(amla_unit.experience() - amla_unit.max_experience());
+	amla_unit.add_modification("advance", mod_option);
+	return amla_unit;
+}
+
+
+void advance_unit(map_location loc, const std::string &advance_to,
+                  const bool &fire_event, const config * mod_option)
 {
 	unit_map::unit_iterator u = resources::units->find(loc);
 	if(!u.valid()) {
@@ -1286,31 +1300,37 @@ void advance_unit(map_location loc, const std::string &advance_to, const bool &f
 	// original_type is not a reference, since the unit may disappear at any moment.
 	std::string original_type = u->type_id();
 
+	// "advance" event.
 	if(fire_event)
 	{
-		LOG_NG << "firing advance event at " << loc <<"\n";
+		LOG_NG << "Firing advance event at " << loc <<".\n";
 		game_events::fire("advance",loc);
 
 		if (!u.valid() || u->experience() < u->max_experience() ||
 			u->type_id() != original_type)
 		{
-			LOG_NG << "WML has invalidated the advancing unit, abort\n";
+			LOG_NG << "WML has invalidated the advancing unit. Aborting.\n";
 			return;
 		}
 	}
 
-
+	// Create the advanced unit.
 	loc = u->get_location();
-	unit new_unit = get_advanced_unit(*u, advance_to);
-	statistics::advance_unit(new_unit);
-
-	preferences::encountered_units().insert(new_unit.type_id());
-	LOG_CF << "Added '" << new_unit.type_id() << "' to encountered units\n";
-
+	bool use_amla = mod_option != NULL;
+	unit new_unit = use_amla ? get_amla_unit(*u, *mod_option) :
+	                           get_advanced_unit(*u, advance_to);
+	if ( !use_amla )
+	{
+		statistics::advance_unit(new_unit);
+		preferences::encountered_units().insert(new_unit.type_id());
+		LOG_CF << "Added '" << new_unit.type_id() << "' to the encountered units.\n";
+	}
 	resources::units->replace(loc, new_unit);
+
+	// "post_advance" event.
 	if(fire_event)
 	{
-		LOG_NG << "firing post_advance event at " << loc << "\n";
+		LOG_NG << "Firing post_advance event at " << loc << ".\n";
 		game_events::fire("post_advance",loc);
 	}
 

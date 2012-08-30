@@ -173,11 +173,11 @@ void advance_unit(const map_location &loc, bool random_choice, bool add_replay_e
 			// doesn't handle cascading advancement since it just calls animate_unit_advancement().
 			advance_unit(loc, random_choice, true);
 		} else {
-			ERR_CF << "Unit has an too high amount of " << u->experience()
-				<< " XP left, cascade leveling disabled\n";
+			ERR_CF << "Unit has too many (" << u->experience()
+				<< ") XP left; cascade leveling disabled.\n";
 		}
 	} else {
-		ERR_NG << "Unit advanced no longer exists\n";
+		ERR_NG << "Unit advanced no longer exists.\n";
 	}
 }
 
@@ -218,25 +218,8 @@ bool animate_unit_advancement(const map_location &loc, size_t choice, const bool
 		std::string chosen_unit = options[choice];
 		::advance_unit(loc, chosen_unit, fire_event);
 	} else {
-		unit amla_unit(*u);
 		const config &mod_option = mod_options[choice - options.size()];
-
-		if(fire_event)
-		{
-			LOG_NG << "firing advance event (AMLA)\n";
-			game_events::fire("advance",loc);
-		}
-
-		amla_unit.set_experience(amla_unit.experience() - amla_unit.max_experience());
-		amla_unit.add_modification("advance",mod_option);
-		resources::units->replace(loc, amla_unit);
-
-		if(fire_event)
-		{
-			LOG_NG << "firing post_advance event (AMLA)\n";
-			game_events::fire("post_advance",loc);
-		}
-
+		::advance_unit(loc, "", fire_event, &mod_option);
 	}
 
 	u = resources::units->find(loc);
