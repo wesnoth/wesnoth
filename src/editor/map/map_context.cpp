@@ -74,6 +74,10 @@ map_context::map_context(const config& game_config, const std::string& filename,
 	, changed_locations_()
 	, everything_changed_(false)
 	, labels_(disp, NULL)
+	, units_()
+	, teams_()
+	, tod_manager_()
+	, state_()
 {
 	/*
 	 * Overview of situations possibly found in the file:
