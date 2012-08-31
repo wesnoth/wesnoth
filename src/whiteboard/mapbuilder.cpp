@@ -41,6 +41,8 @@ mapbuilder::mapbuilder(unit_map& unit_map)
 	, resetters_()
 	, removers_()
 	, acted_this_turn_()
+	, has_invalid_actions_()
+	, invalid_actions_()
 {
 }
 
