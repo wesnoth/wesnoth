@@ -52,6 +52,10 @@ map_context::map_context(const editor_map& map, const display& disp)
 	, changed_locations_()
 	, everything_changed_(false)
 	, labels_(disp, NULL)
+	, units_()
+	, teams_()
+	, tod_manager_()
+	, state_()
 {
 }
 
