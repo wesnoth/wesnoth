@@ -49,13 +49,15 @@ namespace actions {
  * time of the sighting, and the location of the sighted unit.
  */
 struct shroud_clearer::sight_data {
-	sight_data(const map_location & viewed_loc, size_t viewer_id,
-	           const map_location & viewer_loc) :
-		seen_loc(viewed_loc), sighter_id(viewer_id), sighter_loc(viewer_loc)
+	sight_data(size_t viewed_id, const map_location & viewed_loc,
+	           size_t viewer_id, const map_location & viewer_loc) :
+		seen_id(viewed_id),    seen_loc(viewed_loc),
+		sighter_id(viewer_id), sighter_loc(viewer_loc)
 	{}
 
+	size_t       seen_id;
 	map_location seen_loc;
-	size_t sighter_id;
+	size_t       sighter_id;
 	map_location sighter_loc;
 };
 
@@ -63,11 +65,12 @@ struct shroud_clearer::sight_data {
 /**
  * Convenience wrapper for adding sighting data to the sightings_ vector.
  */
-inline void shroud_clearer::record_sighting(const map_location & seen_loc,
-                                            const unit & sighter,
-                                            const map_location & sighter_loc)
+inline void shroud_clearer::record_sighting(
+	const unit & seen,    const map_location & seen_loc,
+	const unit & sighter, const map_location & sighter_loc)
 {
-	sightings_.push_back(sight_data(seen_loc, sighter.underlying_id(), sighter_loc));
+	sightings_.push_back(sight_data(seen.underlying_id(),    seen_loc,
+	                                sighter.underlying_id(), sighter_loc));
 }
 
 
@@ -200,7 +203,7 @@ bool shroud_clearer::clear_loc(team &tm, const map_location &loc,
 		// Uncovered a unit?
 		unit_map::const_iterator sight_it = find_visible_unit(loc, tm);
 		if ( sight_it.valid() ) {
-			record_sighting(loc, viewer, view_loc);
+			record_sighting(*sight_it, loc, viewer, view_loc);
 
 			// Track this?
 			if ( !sight_it->get_state(unit::STATE_PETRIFIED) ) {
@@ -313,7 +316,8 @@ bool shroud_clearer::fire_events()
 
 		{	// Raise the event based on the latest data.
 			using namespace game_events;
-			raise(sighted_str, event.seen_loc,
+			raise(sighted_str,
+			      entity_location(event.seen_loc, event.seen_id),
 			      entity_location(sight_loc, event.sighter_id, event.sighter_loc));
 		}
 	}

@@ -88,8 +88,8 @@ private:
 	               move_unit_spectator * spectator = NULL);
 
 	/// Convenience wrapper for adding sighting data to the sightings_ vector.
-	inline void record_sighting(const map_location & seen_loc, const unit & sighter,
-	                            const map_location & sighter_loc);
+	inline void record_sighting(const unit & seen,    const map_location & seen_loc,
+	                            const unit & sighter, const map_location & sighter_loc);
 
 private: // data
 	std::map<map_location, int> jamming_;
