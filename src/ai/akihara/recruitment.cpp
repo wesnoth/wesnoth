@@ -350,7 +350,9 @@ int situation::getAISide() {
 
 recruitment::recruitment(rca_context &context, const config &cfg)
 : candidate_action(context,cfg),
-  depth_(2)
+  depth_(2),
+  ally_(),
+  enemy_()
 {
 	BOOST_FOREACH( team &t, *resources::teams) {
 		if (current_team().is_enemy(t.side())) {
