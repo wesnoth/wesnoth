@@ -57,12 +57,12 @@ public:
 	virtual void do_parse_goal_from_config(const config &cfg, std::back_insert_iterator<std::vector< goal_ptr > > b );
 
 	virtual std::string evaluate(const std::string &str);
-	
+
 	/**
 	 * Method that pushes the AI table of the lua_context on the stack
 	 * for debugging purposes
 	 */
-	
+
 	virtual void push_ai_table();
 
 	/**

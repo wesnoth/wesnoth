@@ -443,7 +443,7 @@ const std::vector<const unit*> get_recalls_for_location(int side, const map_loca
 			// We have been requested to get the recalls for this
 			// particular leader.
 			add_leader_filtered_recalls(*find_it, result);
-			return result;			
+			return result;
 		}
 		else if ( find_it->is_visible_to_team((*resources::teams)[side-1], false) )
 		{

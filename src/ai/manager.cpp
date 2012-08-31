@@ -283,12 +283,12 @@ component* holder::get_component(component *root, const std::string &path) {
 	{
 		return NULL;
 	}
-	
+
 	if (root == NULL) // Return root component(ai_)
 	{
 		return &*this->ai_;
 	}
-	
+
 	return component_manager::get_component(root, path);
 }
 
@@ -718,7 +718,7 @@ std::string manager::get_active_ai_identifier_for_side( side_number side )
 
 ai::holder& manager::get_active_ai_holder_for_side_dbg(side_number side)
 {
-	if (!game_config::debug) 
+	if (!game_config::debug)
 	{
 		return *(new ai::holder(side, config()));
 	}

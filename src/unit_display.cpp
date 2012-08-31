@@ -201,7 +201,7 @@ void unit_mover::replace_temporary(unit & u)
 	// Update cached data.
 	is_enemy_ =	(*resources::teams)[u.side()-1].is_enemy(disp_->viewing_side());
 }
- 
+
 
 /**
  * Initiates the display of movement for the supplied unit.
@@ -332,7 +332,7 @@ void unit_mover::finish(unit &u, map_location::DIRECTION dir)
 	// Nothing to do here if the display is not valid.
 	if ( !can_draw_ )
 		return;
- 
+
 	const map_location & end_loc = path_[current_];
 	const map_location::DIRECTION final_dir = current_ == 0 ?
 		path_[0].get_relative_dir(path_[1]) :

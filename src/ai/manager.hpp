@@ -75,8 +75,8 @@ public:
 
 
 	const std::string get_ai_identifier() const;
-	
-	component* get_component(component *root, const std::string &path); // Ai debug method 
+
+	component* get_component(component *root, const std::string &path); // Ai debug method
 
 private:
 	void init( side_number side );
@@ -396,13 +396,13 @@ public:
 	static std::string get_active_ai_identifier_for_side( side_number side );
 
 	/**
-	 * Gets the active AI holder for debug purposes. 
+	 * Gets the active AI holder for debug purposes.
 	 * Will only work in debug mode, otherwise returns a reference to an empty holder
 	 * @param side side number(1-based)
 	 * @return debug ? active holder : empty holder
 	 */
 	static ai::holder& get_active_ai_holder_for_side_dbg(side_number side);
-	
+
 	/**
 	 * Gets AI config for active AI of the given @a side.
 	 * @param side side number (1-based).

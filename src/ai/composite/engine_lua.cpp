@@ -268,7 +268,7 @@ bool engine_lua::is_ok() const
 
 void engine_lua::push_ai_table()
 {
-	if (game_config::debug) 
+	if (game_config::debug)
 	{
 		lua_ai_context_->load();
 	}

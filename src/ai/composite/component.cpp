@@ -266,11 +266,11 @@ std::string component_manager::print_component_tree(component *root, const std::
 	return s.str();
 }
 
-component* component_manager::get_component(component *root, const std::string &path) 
+component* component_manager::get_component(component *root, const std::string &path)
 {
 	path_element tail;
 	component *c;
-	if (!path.empty()) 
+	if (!path.empty())
 	{
 		c = find_component(root, path, tail);
 		return c;

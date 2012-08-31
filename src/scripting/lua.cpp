@@ -3437,13 +3437,13 @@ static int intf_modify_ai(lua_State *L)
 	return 0;
 }
 
-static int cfun_exec_candidate_action(lua_State *L) 
+static int cfun_exec_candidate_action(lua_State *L)
 {
 	bool exec = lua_toboolean(L, -1);
 	lua_pop(L, 1);
-	
+
 	lua_getfield(L, -1, "ca_ptr");
-	
+
 	ai::candidate_action *ca = static_cast<ai::candidate_action*>(lua_touserdata(L, -1));
 	lua_pop(L, 2);
 	if (exec) {
@@ -3464,76 +3464,76 @@ static int cfun_exec_stage(lua_State *L)
 }
 
 static void push_component(lua_State *L, ai::component* c, const std::string &ct = "")
-{	
+{
 	lua_createtable(L, 0, 0); // Table for a component
-	
+
 	lua_pushstring(L, "name");
 	lua_pushstring(L, c->get_name().c_str());
 	lua_rawset(L, -3);
-	
+
 	lua_pushstring(L, "engine");
 	lua_pushstring(L, c->get_engine().c_str());
 	lua_rawset(L, -3);
-	
+
 	lua_pushstring(L, "id");
 	lua_pushstring(L, c->get_id().c_str());
 	lua_rawset(L, -3);
-	
+
 	if (ct == "candidate_action") {
 		lua_pushstring(L, "ca_ptr");
 		lua_pushlightuserdata(L, c);
 		lua_rawset(L, -3);
-		
+
 		lua_pushstring(L, "exec");
 		lua_pushcclosure(L, &cfun_exec_candidate_action, 0);
 		lua_rawset(L, -3);
 	}
-	
+
 	if (ct == "stage") {
 		lua_pushstring(L, "stg_ptr");
 		lua_pushlightuserdata(L, c);
 		lua_rawset(L, -3);
-		
+
 		lua_pushstring(L, "exec");
 		lua_pushcclosure(L, &cfun_exec_stage, 0);
 		lua_rawset(L, -3);
 	}
-	
-	
+
+
 	std::vector<std::string> c_types = c->get_children_types();
-	
-	for (std::vector<std::string>::const_iterator t = c_types.begin(); t != c_types.end(); t++) 
+
+	for (std::vector<std::string>::const_iterator t = c_types.begin(); t != c_types.end(); t++)
 	{
 		std::vector<ai::component*> children = c->get_children(*t);
 		std::string type = *t;
-		if (type == "aspect" || type == "goal" || type == "engine") 
+		if (type == "aspect" || type == "goal" || type == "engine")
 		{
 			continue;
 		}
-		
+
 		lua_pushstring(L, type.c_str());
 		lua_createtable(L, 0, 0); // this table will be on top of the stack during recursive calls
-		
+
 		for (std::vector<ai::component*>::const_iterator i = children.begin(); i != children.end(); i++)
 		{
 			lua_pushstring(L, (*i)->get_name().c_str());
 			push_component(L, *i, type);
 			lua_rawset(L, -3);
-			
+
 			//if (type == "candidate_action")
 			//{
 			//	ai::candidate_action *ca = dynamic_cast<ai::candidate_action*>(*i);
 			//	ca->execute();
 			//}
 		}
-		
+
 		lua_rawset(L, -3); // setting the child table
 	}
-	
-	
+
+
 }
 
-/** 
+/**
  * Debug access to the ai tables
  * - Arg 1: int
  * - Ret 1: ai table
@@ -3545,36 +3545,36 @@ static int intf_debug_ai(lua_State *L)
 	}
 	int side = lua_tointeger(L, 1);
 	lua_pop(L, 1);
-	
+
 	ai::component* c = ai::manager::get_active_ai_holder_for_side_dbg(side).get_component(NULL, "");
-	
+
 	// Bad, but works
 	std::vector<ai::component*> engines = c->get_children("engine");
 	ai::engine_lua* lua_engine = NULL;
 	for (std::vector<ai::component*>::const_iterator i = engines.begin(); i != engines.end(); i++)
 	{
-		if ((*i)->get_name() == "lua") 
+		if ((*i)->get_name() == "lua")
 		{
 			lua_engine = dynamic_cast<ai::engine_lua *>(*i);
 		}
 	}
-	
+
 	// Better way, but doesn't work
 	//ai::component* e = ai::manager::get_active_ai_holder_for_side_dbg(side).get_component(c, "engine[lua]");
 	//ai::engine_lua* lua_engine = dynamic_cast<ai::engine_lua *>(e);
 
-	if (lua_engine == NULL) 
+	if (lua_engine == NULL)
 	{
 		lua_createtable(L, 0, 0);
 		return 1;
-	} 
-	
+	}
+
 	lua_engine->push_ai_table(); // stack: [-1: ai_context]
-	
-	lua_pushstring(L, "components");	
-	push_component(L, c); // stack: [-1: component tree; -2: ai context]	
+
+	lua_pushstring(L, "components");
+	push_component(L, c); // stack: [-1: component tree; -2: ai context]
 	lua_rawset(L, -3);
-	
+
 	return 1;
 }
 
