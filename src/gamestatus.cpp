@@ -978,6 +978,7 @@ game_state::game_state()  :
 		snapshot(),
 		carryover_sides(),
 		carryover_sides_start(carryover_info().to_config()),
+		replay_start_(),
 		classification_(),
 		mp_settings_()
 		{}
