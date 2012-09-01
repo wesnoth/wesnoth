@@ -1312,10 +1312,16 @@ void advance_unit(map_location loc, const std::string &advance_to,
 			LOG_NG << "WML has invalidated the advancing unit. Aborting.\n";
 			return;
 		}
+		// In case WML moved the unit:
+		loc = u->get_location();
 	}
 
+	// This is not normally necessary, but if a unit loses power when leveling
+	// (e.g. loses "jamming" or ambush), it could be discovered as a result of
+	// the advancement.
+	std::vector<int> not_seeing = actions::get_sides_not_seeing(*u);
+
 	// Create the advanced unit.
-	loc = u->get_location();
 	bool use_amla = mod_option != NULL;
 	unit new_unit = use_amla ? get_amla_unit(*u, *mod_option) :
 	                           get_advanced_unit(*u, advance_to);
@@ -1325,7 +1331,7 @@ void advance_unit(map_location loc, const std::string &advance_to,
 		preferences::encountered_units().insert(new_unit.type_id());
 		LOG_CF << "Added '" << new_unit.type_id() << "' to the encountered units.\n";
 	}
-	resources::units->replace(loc, new_unit);
+	u = resources::units->replace(loc, new_unit).first;
 
 	// Update fog/shroud.
 	actions::shroud_clearer clearer;
@@ -1345,6 +1351,8 @@ void advance_unit(map_location loc, const std::string &advance_to,
 
 	// "sighted" event(s).
 	clearer.fire_events();
+	if ( u.valid() )
+		actions::actor_sighted(*u, &not_seeing);
 
 	resources::whiteboard->on_gamestate_change();
 }

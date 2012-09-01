@@ -874,6 +874,9 @@ namespace { // Private helpers for move_unit()
 		cache_hidden_units(begin_, expected_end_);
 
 		if ( begin_ != ambush_limit_ ) {
+			// Cache the moving unit's visibility.
+			std::vector<int> not_seeing = actions::get_sides_not_seeing(*move_it_);
+
 			// Prepare to animate.
 			unit_display::unit_mover animator(route_, show);
 			animator.start(*move_it_);
@@ -930,9 +933,13 @@ namespace { // Private helpers for move_unit()
 			}//for
 			// Make sure any remaining sighted events get fired.
 			pump_sighted(real_end_-1);
-			// Finish animating.
-			if ( move_it_.valid() )
+
+			if ( move_it_.valid() ) {
+				// Finish animating.
 				animator.finish(*move_it_);
+				// Check for the moving unit being seen.
+				event_mutated_ = actions::actor_sighted(*move_it_, &not_seeing);
+			}
 		}//if
 
 		// Some flags were set to indicate why we might stop.

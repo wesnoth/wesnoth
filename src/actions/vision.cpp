@@ -40,6 +40,57 @@ static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 
 
+static const std::string sighted_str("sighted");
+
+
+/**
+ * Sets @a jamming to the (newly calculated) "jamming" map for @a view_team.
+ */
+static void create_jamming_map(std::map<map_location, int> & jamming,
+                               const team & view_team)
+{
+	// Reset the map.
+	jamming.clear();
+
+	// Build the map.
+	BOOST_FOREACH (const unit &u, *resources::units)
+	{
+		if ( u.jamming() < 1  ||  !view_team.is_enemy(u.side()) )
+			continue;
+
+		pathfind::jamming_path jam_path(*resources::game_map, u, u.get_location());
+		BOOST_FOREACH(const pathfind::paths::step& st, jam_path.destinations) {
+			if ( jamming[st.curr] < st.move_left )
+				jamming[st.curr] = st.move_left;
+		}
+	}
+}
+
+
+/**
+ * Determines if @a loc is within @a viewer's visual range.
+ * This is a moderately expensive function (vision is recalculated
+ * with each call), so avoid using it heavily.
+ * If @a jamming is left as NULL, the jamming map is also calculated
+ * with each invocation.
+ */
+static bool can_see(const unit & viewer, const map_location & loc,
+                    const std::map<map_location, int> * jamming = NULL)
+{
+	// Make sure we have a "jamming" map.
+	std::map<map_location, int> local_jamming;
+	if ( jamming == NULL ) {
+		create_jamming_map(local_jamming, (*resources::teams)[viewer.side()-1]);
+		jamming = &local_jamming;
+	}
+
+	// Determine which hexes this unit can see.
+	pathfind::vision_path sight(*resources::game_map, viewer, viewer.get_location(), *jamming);
+
+	return sight.destinations.contains(loc)  ||  sight.edges.count(loc) != 0;
+}
+
+
 namespace actions {
 
 
@@ -110,17 +161,7 @@ void shroud_clearer::calculate_jamming(const team * new_team)
 		return;
 
 	// Build the map.
-	BOOST_FOREACH (const unit &u, *resources::units)
-	{
-		if ( u.jamming() < 1  ||  !view_team_->is_enemy(u.side()) )
-			continue;
-
-		pathfind::jamming_path jam_path(*resources::game_map, u, u.get_location());
-		BOOST_FOREACH(const pathfind::paths::step& st, jam_path.destinations) {
-			if ( jamming_[st.curr] < st.move_left )
-				jamming_[st.curr] = st.move_left;
-		}
-	}
+	create_jamming_map(jamming_, *view_team_);
 }
 
 
@@ -296,7 +337,6 @@ void shroud_clearer::drop_events()
  */
 bool shroud_clearer::fire_events()
 {
-	static const std::string sighted_str("sighted");
 	const unit_map & units = *resources::units;
 
 	// Possible/probable quick abort.
@@ -338,6 +378,108 @@ void shroud_clearer::invalidate_after_clear()
 	resources::screen->labels().recalculate_shroud();
 	// The tiles are invalidated as they are cleared, so no need
 	// to invalidate them here.
+}
+
+
+/**
+ * Returns the sides that cannot currently see @a target.
+ * (Used to cache visibility before a move.)
+ */
+std::vector<int> get_sides_not_seeing(const unit & target)
+{
+	const std::vector<team> & teams = *resources::teams;
+	std::vector<int> not_seeing;
+
+	size_t team_size = teams.size();
+	for ( size_t i = 0; i != team_size; ++i)
+		if ( !target.is_visible_to_team(teams[i], false) )
+			// not_see contains side numbers; i is a team index, so add 1.
+			not_seeing.push_back(i+1);
+
+	return not_seeing;
+}
+
+
+/**
+ * Fires sighted events for the sides that can see @a target.
+ * If @a cache is supplied, only those sides might get events.
+ * If @a cache is NULL, all sides might get events.
+ * This function is for the sighting *of* units that clear the shroud; it is
+ * the complement of shroud_clearer::fire_events(), which handles sighting *by*
+ * units that clear the shroud.
+ *
+ * See get_sides_not_seeing() for a way to obtain a cache.
+ *
+ * @returns true if an event has mutated the game state.
+ */
+bool actor_sighted(const unit & target, const std::vector<int> * cache)
+/* Current logic:
+ * 1) One event is fired per side that can see the target.
+ * 2) The second unit for the event is one that can see the target, if possible.
+ * 3) If no units on a side can see the target, a second unit is chosen as
+ *    close as possible (but this behavior should not be relied on; it is
+ *    subject to change at any time, should it become inconvenient).
+ * 4) A side with no units at all will not get a sighted event.
+ * 5) Sides that do not use fog or shroud CAN get sighted events.
+ */
+{
+	const std::vector<team> & teams = *resources::teams;
+	const size_t teams_size = teams.size();
+	const map_location & target_loc = target.get_location();
+
+	// Determine the teams that (probably) should get events.
+	std::vector<bool> needs_event(teams_size, cache == NULL);
+	if ( cache != NULL ) {
+		// Flag just the sides in the cache as needing events.
+		BOOST_FOREACH (int side, *cache)
+			needs_event[side-1] = true;
+	}
+	// Exclude the target's own team.
+	needs_event[target.side()-1] = false;
+	// Exclude those teams that cannot see the target.
+	for ( size_t i = 0; i != teams_size; ++i )
+		needs_event[i] = needs_event[i] && target.is_visible_to_team(teams[i], false);
+
+	// Cache "jamming".
+	std::vector< std::map<map_location, int> > jamming_cache(teams_size);
+	for ( size_t i = 0; i != teams_size; ++i )
+		if ( needs_event[i] )
+			create_jamming_map(jamming_cache[i], teams[i]);
+
+	// Look for units that can be used as the second unit in sighted events.
+	std::vector<const unit *> second_units(teams_size, NULL);
+	std::vector<size_t> distances(teams_size, UINT_MAX);
+	BOOST_FOREACH (const unit & viewer, *resources::units) {
+		const size_t index = viewer.side() - 1;
+		// Does viewer belong to a team for which we still need a unit?
+		if ( needs_event[index]  &&  distances[index] != 0 ) {
+			if ( can_see(viewer, target_loc, &jamming_cache[index]) ) {
+				// Definitely use viewer as the second unit.
+				second_units[index] = &viewer;
+				distances[index] = 0;
+			}
+			else {
+				// Consider viewer as a backup if it is close.
+				size_t viewer_distance =
+					distance_between(target_loc, viewer.get_location());
+				if ( viewer_distance < distances[index] ) {
+					second_units[index] = &viewer;
+					distances[index] = viewer_distance;
+				}
+			}
+		}
+	}
+
+	// Raise events for the appropriate teams.
+	const game_events::entity_location target_entity(target);
+	for ( size_t i = 0; i != teams_size; ++i )
+		if ( second_units[i] != NULL ) {
+			using namespace game_events;
+			raise(sighted_str, target_entity, entity_location(*second_units[i]));
+		}
+
+	// Fire the events and return.
+	return game_events::pump();
 }
 
 

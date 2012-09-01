@@ -98,6 +98,13 @@ private: // data
 	const team * view_team_;
 };
 
+
+/// Returns the sides that cannot currently see @a target.
+std::vector<int> get_sides_not_seeing(const unit & target);
+/// Fires sighted events for the sides that can see @a target.
+bool actor_sighted(const unit & target, const std::vector<int> * cache =  NULL);
+
+
 }//namespace actions
 
 /// Function that recalculates the fog of war.
