@@ -1,5 +1,10 @@
 src/about.cpp
-src/actions.cpp
+src/actions/attack.cpp
+src/actions/create.cpp
+src/actions/heal.cpp
+src/actions/move.cpp
+src/actions/undo.cpp
+src/actions/vision.cpp
 src/addon/client.cpp
 src/addon/info.cpp
 src/addon/manager.cpp
@@ -74,7 +79,6 @@ src/dialogs.cpp
 src/display.cpp
 src/editor/action/mouse/mouse_action_village.cpp
 src/editor/editor_preferences.cpp
-src/editor/map/context_manager.cpp
 src/editor/toolkit/editor_toolkit.cpp
 src/events.cpp
 src/filesystem.cpp

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-25 12:35+0200\n"
+"POT-Creation-Date: 2012-09-01 18:47+0200\n"
 "PO-Revision-Date: 2010-12-27 17:53+0100\n"
 "Last-Translator: Alexander van Gessel <ai0867@gmail.com>\n"
 "Language-Team: Dutch <AI0867@gmail.com>\n"
@@ -300,6 +300,97 @@ msgstr "Opnieuw"
 msgid "Can’t Redo"
 msgstr "Kan niet herhalen"
 
+#: src/editor/map/context_manager.cpp:82
+msgid "Auto-update Terrain Transitions: Yes"
+msgstr "Update terreinovergangen automatisch: Ja"
+
+#: src/editor/map/context_manager.cpp:85
+msgid "Auto-update Terrain Transitions: Partial"
+msgstr "Update terreinovergangen automatisch: Gedeeltelijk"
+
+#: src/editor/map/context_manager.cpp:89
+msgid "Auto-update Terrain Transitions: No"
+msgstr "Update terreinovergangen automatisch: Nee"
+
+#: src/editor/map/context_manager.cpp:101
+#: src/editor/map/context_manager.cpp:193
+msgid "(New Map)"
+msgstr "(Nieuwe kaart)"
+
+#: src/editor/map/context_manager.cpp:162
+msgid "Choose a Map to Open"
+msgstr "Kies een kaart om in te lezen"
+
+#: src/editor/map/context_manager.cpp:236
+msgid "Choose a Mask to Apply"
+msgstr "Kies een masker om toe te passen"
+
+#: src/editor/map/context_manager.cpp:243
+msgid "Error loading mask"
+msgstr "Fout bij het laden van het masker"
+
+#: src/editor/map/context_manager.cpp:264
+msgid "Choose Target Map"
+msgstr "Kies doelkaart"
+
+#: src/editor/map/context_manager.cpp:271
+#: src/editor/map/context_manager.cpp:631
+msgid "Error loading map"
+msgstr "Fout bij het laden van de kaart"
+
+#: src/editor/map/context_manager.cpp:389
+msgid "Save the Map As"
+msgstr "Sla de kaart op als"
+
+#: src/editor/map/context_manager.cpp:392
+msgid "The file already exists. Do you want to overwrite it?"
+msgstr "Het bestand bestaat al. Wilt u de bestaande kaart overschrijven?"
+
+#: src/editor/map/context_manager.cpp:426
+msgid "No random map generators found."
+msgstr "Geen generator van willekeurige kaarten gevonden."
+
+#: src/editor/map/context_manager.cpp:439
+#: src/editor/map/context_manager.cpp:443
+msgid "Map creation failed."
+msgstr "Kaart aanmaken mislukt."
+
+#: src/editor/map/context_manager.cpp:455
+msgid "Unsaved Changes"
+msgstr "Onopgeslagen wijzigingen"
+
+#: src/editor/map/context_manager.cpp:456
+msgid ""
+"Do you want to discard all changes you made to the map since the last save?"
+msgstr ""
+"Wilt u alle wijzigingen sinds u laatst de kaart opsloeg ongedaan maken?"
+
+#: src/editor/map/context_manager.cpp:546
+#: src/editor/map/context_manager.cpp:587
+msgid "This map is already open."
+msgstr "Deze kaart is al open"
+
+#: src/editor/map/context_manager.cpp:567
+msgid "Map saved."
+msgstr "Kaart opgeslagen."
+
+#: src/editor/map/context_manager.cpp:610
+msgid "Loaded embedded map data"
+msgstr "Ingebedde kaartgegevens geladen"
+
+#: src/editor/map/context_manager.cpp:611
+#: src/editor/map/context_manager.cpp:625
+msgid "Map loaded from scenario"
+msgstr "Kaart geladen uit scenario"
+
+#: src/editor/map/context_manager.cpp:621
+msgid ""
+"Loaded referenced map file:\n"
+"$new"
+msgstr ""
+"Geladen gerefereerde kaartbestand:\n"
+"$new"
+
 #: src/editor/map/editor_map.cpp:150
 msgid "Player"
 msgstr "Speler"
@@ -308,11 +399,11 @@ msgstr "Speler"
 msgid "The size of the target map is different from the current map"
 msgstr "De grootte van de doelkaart verschilt van die van de huidige kaart"
 
-#: src/editor/map/map_context.cpp:95
+#: src/editor/map/map_context.cpp:103
 msgid "File not found"
 msgstr "Bestand niet gevonden"
 
-#: src/editor/map/map_context.cpp:109
+#: src/editor/map/map_context.cpp:117
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -320,15 +411,15 @@ msgstr ""
 "Het kaartbestand lijkt op een scenario, maar de map_data waarde wijst niet "
 "naar een bestaand bestand"
 
-#: src/editor/map/map_context.cpp:125
+#: src/editor/map/map_context.cpp:133
 msgid "Empty map file"
 msgstr "Leeg kaartbestand"
 
-#: src/editor/map/map_context.cpp:298
+#: src/editor/map/map_context.cpp:306
 msgid "Could not save into scenario"
 msgstr "Kaart opslaan in scenario mislukt"
 
-#: src/editor/map/map_context.cpp:305
+#: src/editor/map/map_context.cpp:313
 msgid "Could not save the map: $msg"
 msgstr "Kaart opslaan mislukt: $msg"
 
@@ -370,73 +461,6 @@ msgstr "Eigen instelling"
 #~| msgid "Empty map file"
 #~ msgid "Empty file"
 #~ msgstr "Leeg kaartbestand"
-
-#~ msgid "(New Map)"
-#~ msgstr "(Nieuwe kaart)"
-
-#~ msgid ""
-#~ "Do you want to discard all changes you made to the map since the last "
-#~ "save?"
-#~ msgstr ""
-#~ "Wilt u alle wijzigingen sinds u laatst de kaart opsloeg ongedaan maken?"
-
-#~ msgid "Unsaved Changes"
-#~ msgstr "Onopgeslagen wijzigingen"
-
-#~ msgid "Choose a Map to Open"
-#~ msgstr "Kies een kaart om in te lezen"
-
-#~ msgid "Save the Map As"
-#~ msgstr "Sla de kaart op als"
-
-#~ msgid "The file already exists. Do you want to overwrite it?"
-#~ msgstr "Het bestand bestaat al. Wilt u de bestaande kaart overschrijven?"
-
-#~ msgid "No random map generators found."
-#~ msgstr "Geen generator van willekeurige kaarten gevonden."
-
-#~ msgid "Map creation failed."
-#~ msgstr "Kaart aanmaken mislukt."
-
-#~ msgid "Choose a Mask to Apply"
-#~ msgstr "Kies een masker om toe te passen"
-
-#~ msgid "Error loading mask"
-#~ msgstr "Fout bij het laden van het masker"
-
-#~ msgid "Choose Target Map"
-#~ msgstr "Kies doelkaart"
-
-#~ msgid "Error loading map"
-#~ msgstr "Fout bij het laden van de kaart"
-
-#~ msgid "This map is already open."
-#~ msgstr "Deze kaart is al open"
-
-#~ msgid "Map saved."
-#~ msgstr "Kaart opgeslagen."
-
-#~ msgid "Loaded embedded map data"
-#~ msgstr "Ingebedde kaartgegevens geladen"
-
-#~ msgid "Map loaded from scenario"
-#~ msgstr "Kaart geladen uit scenario"
-
-#~ msgid ""
-#~ "Loaded referenced map file:\n"
-#~ "$new"
-#~ msgstr ""
-#~ "Geladen gerefereerde kaartbestand:\n"
-#~ "$new"
-
-#~ msgid "Auto-update Terrain Transitions: Yes"
-#~ msgstr "Update terreinovergangen automatisch: Ja"
-
-#~ msgid "Auto-update Terrain Transitions: Partial"
-#~ msgstr "Update terreinovergangen automatisch: Gedeeltelijk"
-
-#~ msgid "Auto-update Terrain Transitions: No"
-#~ msgstr "Update terreinovergangen automatisch: Nee"
 
 #~ msgid "Choose player"
 #~ msgstr "Kies speler"

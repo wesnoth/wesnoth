@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-25 12:35+0200\n"
+"POT-Creation-Date: 2012-09-01 18:47+0200\n"
 "PO-Revision-Date: 2012-01-02 20:00-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: Spanish <http://wiki.wesnoth.org/SpanishTranslation>\n"
@@ -306,6 +306,98 @@ msgstr "Rehacer"
 msgid "Can’t Redo"
 msgstr "No se puede rehacer"
 
+#: src/editor/map/context_manager.cpp:82
+msgid "Auto-update Terrain Transitions: Yes"
+msgstr "Actualizar automáticamente transiciones de terreno: Sí"
+
+#: src/editor/map/context_manager.cpp:85
+msgid "Auto-update Terrain Transitions: Partial"
+msgstr "Actualizar automáticamente transiciones de terreno: Parcialmente"
+
+#: src/editor/map/context_manager.cpp:89
+msgid "Auto-update Terrain Transitions: No"
+msgstr "Actualizar automáticamente transiciones de terreno: No"
+
+#: src/editor/map/context_manager.cpp:101
+#: src/editor/map/context_manager.cpp:193
+msgid "(New Map)"
+msgstr "(Nuevo mapa)"
+
+#: src/editor/map/context_manager.cpp:162
+msgid "Choose a Map to Open"
+msgstr "Escoja un mapa a cargar"
+
+#: src/editor/map/context_manager.cpp:236
+msgid "Choose a Mask to Apply"
+msgstr "Escoja una máscara a aplicar"
+
+#: src/editor/map/context_manager.cpp:243
+msgid "Error loading mask"
+msgstr "Error al cargar la máscara"
+
+#: src/editor/map/context_manager.cpp:264
+msgid "Choose Target Map"
+msgstr "Escoja mapa de destino"
+
+#: src/editor/map/context_manager.cpp:271
+#: src/editor/map/context_manager.cpp:631
+msgid "Error loading map"
+msgstr "Error al cargar el mapa"
+
+#: src/editor/map/context_manager.cpp:389
+msgid "Save the Map As"
+msgstr "Guardar el mapa como"
+
+#: src/editor/map/context_manager.cpp:392
+msgid "The file already exists. Do you want to overwrite it?"
+msgstr "El mapa ya existe. ¿Desea sobreescribirlo?"
+
+#: src/editor/map/context_manager.cpp:426
+msgid "No random map generators found."
+msgstr "No se encontraron generadores de mapas aleatorios."
+
+#: src/editor/map/context_manager.cpp:439
+#: src/editor/map/context_manager.cpp:443
+msgid "Map creation failed."
+msgstr "Falló la creación del mapa."
+
+#: src/editor/map/context_manager.cpp:455
+msgid "Unsaved Changes"
+msgstr "Cambios sin guardar"
+
+#: src/editor/map/context_manager.cpp:456
+msgid ""
+"Do you want to discard all changes you made to the map since the last save?"
+msgstr ""
+"¿Desea abandonar todos los cambios efectuados en el mapa desde que lo guardó "
+"por última vez?"
+
+#: src/editor/map/context_manager.cpp:546
+#: src/editor/map/context_manager.cpp:587
+msgid "This map is already open."
+msgstr "Este mapa ya se encuentra abierto."
+
+#: src/editor/map/context_manager.cpp:567
+msgid "Map saved."
+msgstr "Mapa guardado."
+
+#: src/editor/map/context_manager.cpp:610
+msgid "Loaded embedded map data"
+msgstr "Cargados los datos de mapa incrustados"
+
+#: src/editor/map/context_manager.cpp:611
+#: src/editor/map/context_manager.cpp:625
+msgid "Map loaded from scenario"
+msgstr "Mapa cargado desde escenario"
+
+#: src/editor/map/context_manager.cpp:621
+msgid ""
+"Loaded referenced map file:\n"
+"$new"
+msgstr ""
+"Cargado el archivo de mapa indicado:\n"
+"$new"
+
 #: src/editor/map/editor_map.cpp:150
 msgid "Player"
 msgstr "Jugador"
@@ -314,11 +406,11 @@ msgstr "Jugador"
 msgid "The size of the target map is different from the current map"
 msgstr "El tamaño del mapa de destino difiere del mapa actual"
 
-#: src/editor/map/map_context.cpp:95
+#: src/editor/map/map_context.cpp:103
 msgid "File not found"
 msgstr "Archivo no encontrado"
 
-#: src/editor/map/map_context.cpp:109
+#: src/editor/map/map_context.cpp:117
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -326,15 +418,15 @@ msgstr ""
 "El mapa parece un escenario, pero el valor de map_data no apunta a un "
 "archivo existente"
 
-#: src/editor/map/map_context.cpp:125
+#: src/editor/map/map_context.cpp:133
 msgid "Empty map file"
 msgstr "Archivo de mapa vacío"
 
-#: src/editor/map/map_context.cpp:298
+#: src/editor/map/map_context.cpp:306
 msgid "Could not save into scenario"
 msgstr "No se pudo guardar en el escenario"
 
-#: src/editor/map/map_context.cpp:305
+#: src/editor/map/map_context.cpp:313
 msgid "Could not save the map: $msg"
 msgstr "No se pudo guardar el mapa: $msg"
 
@@ -374,71 +466,3 @@ msgstr "Ajustes predeterminados"
 #~| msgid "Empty map file"
 #~ msgid "Empty file"
 #~ msgstr "Archivo de mapa vacío"
-
-#~ msgid "(New Map)"
-#~ msgstr "(Nuevo mapa)"
-
-#~ msgid ""
-#~ "Do you want to discard all changes you made to the map since the last "
-#~ "save?"
-#~ msgstr ""
-#~ "¿Desea abandonar todos los cambios efectuados en el mapa desde que lo "
-#~ "guardó por última vez?"
-
-#~ msgid "Unsaved Changes"
-#~ msgstr "Cambios sin guardar"
-
-#~ msgid "Choose a Map to Open"
-#~ msgstr "Escoja un mapa a cargar"
-
-#~ msgid "Save the Map As"
-#~ msgstr "Guardar el mapa como"
-
-#~ msgid "The file already exists. Do you want to overwrite it?"
-#~ msgstr "El mapa ya existe. ¿Desea sobreescribirlo?"
-
-#~ msgid "No random map generators found."
-#~ msgstr "No se encontraron generadores de mapas aleatorios."
-
-#~ msgid "Map creation failed."
-#~ msgstr "Falló la creación del mapa."
-
-#~ msgid "Choose a Mask to Apply"
-#~ msgstr "Escoja una máscara a aplicar"
-
-#~ msgid "Error loading mask"
-#~ msgstr "Error al cargar la máscara"
-
-#~ msgid "Choose Target Map"
-#~ msgstr "Escoja mapa de destino"
-
-#~ msgid "Error loading map"
-#~ msgstr "Error al cargar el mapa"
-
-#~ msgid "This map is already open."
-#~ msgstr "Este mapa ya se encuentra abierto."
-
-#~ msgid "Map saved."
-#~ msgstr "Mapa guardado."
-
-#~ msgid "Loaded embedded map data"
-#~ msgstr "Cargados los datos de mapa incrustados"
-
-#~ msgid "Map loaded from scenario"
-#~ msgstr "Mapa cargado desde escenario"
-
-#~ msgid ""
-#~ "Loaded referenced map file:\n"
-#~ "$new"
-#~ msgstr ""
-#~ "Cargado el archivo de mapa indicado:\n"
-#~ "$new"
-
-#~ msgid "Auto-update Terrain Transitions: Yes"
-#~ msgstr "Actualizar automáticamente transiciones de terreno: Sí"
-
-#~ msgid "Auto-update Terrain Transitions: Partial"
-#~ msgstr "Actualizar automáticamente transiciones de terreno: Parcialmente"
-
-#~ msgid "Auto-update Terrain Transitions: No"
-#~ msgstr "Actualizar automáticamente transiciones de terreno: No"

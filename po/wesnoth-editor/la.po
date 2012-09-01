@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth-editor 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-25 12:35+0200\n"
+"POT-Creation-Date: 2012-09-01 18:47+0200\n"
 "PO-Revision-Date: 2011-12-22 21:52+0100\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
@@ -294,6 +294,95 @@ msgstr "Reponere"
 msgid "Can’t Redo"
 msgstr "Nequit Reponere"
 
+#: src/editor/map/context_manager.cpp:82
+msgid "Auto-update Terrain Transitions: Yes"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:85
+msgid "Auto-update Terrain Transitions: Partial"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:89
+msgid "Auto-update Terrain Transitions: No"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:101
+#: src/editor/map/context_manager.cpp:193
+msgid "(New Map)"
+msgstr "(Charta Nova)"
+
+#: src/editor/map/context_manager.cpp:162
+msgid "Choose a Map to Open"
+msgstr "Chartam Eligere ut Aperiatur"
+
+#: src/editor/map/context_manager.cpp:236
+msgid "Choose a Mask to Apply"
+msgstr "Personam elige ad aptandum"
+
+#: src/editor/map/context_manager.cpp:243
+msgid "Error loading mask"
+msgstr "Error dum velamen arcessitur"
+
+#: src/editor/map/context_manager.cpp:264
+msgid "Choose Target Map"
+msgstr "Chartam deligere."
+
+#: src/editor/map/context_manager.cpp:271
+#: src/editor/map/context_manager.cpp:631
+msgid "Error loading map"
+msgstr "Error dum charta arcessitur"
+
+#: src/editor/map/context_manager.cpp:389
+msgid "Save the Map As"
+msgstr "Chartam servare ut..."
+
+#: src/editor/map/context_manager.cpp:392
+msgid "The file already exists. Do you want to overwrite it?"
+msgstr "Fasciculus iam adest. Visne eum superscribere?"
+
+#: src/editor/map/context_manager.cpp:426
+msgid "No random map generators found."
+msgstr "Nollus generatores chartarum fortunae inventi sunt."
+
+#: src/editor/map/context_manager.cpp:439
+#: src/editor/map/context_manager.cpp:443
+msgid "Map creation failed."
+msgstr "Chartam creare male evenit."
+
+#: src/editor/map/context_manager.cpp:455
+msgid "Unsaved Changes"
+msgstr "Mutationes Non Servatae"
+
+#: src/editor/map/context_manager.cpp:456
+#, fuzzy
+msgid ""
+"Do you want to discard all changes you made to the map since the last save?"
+msgstr "Visne repudiare omnes commutationes nonservatas?"
+
+#: src/editor/map/context_manager.cpp:546
+#: src/editor/map/context_manager.cpp:587
+msgid "This map is already open."
+msgstr "Charta iam aperta est."
+
+#: src/editor/map/context_manager.cpp:567
+msgid "Map saved."
+msgstr "Charta servata est."
+
+#: src/editor/map/context_manager.cpp:610
+msgid "Loaded embedded map data"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:611
+#: src/editor/map/context_manager.cpp:625
+msgid "Map loaded from scenario"
+msgstr "Charta ab scaenario adepta"
+
+#: src/editor/map/context_manager.cpp:621
+msgid ""
+"Loaded referenced map file:\n"
+"$new"
+msgstr ""
+
 #: src/editor/map/editor_map.cpp:150
 msgid "Player"
 msgstr "Lusor"
@@ -302,25 +391,25 @@ msgstr "Lusor"
 msgid "The size of the target map is different from the current map"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:95
+#: src/editor/map/map_context.cpp:103
 msgid "File not found"
 msgstr "Fasciculus non inventus est"
 
-#: src/editor/map/map_context.cpp:109
+#: src/editor/map/map_context.cpp:117
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:125
+#: src/editor/map/map_context.cpp:133
 msgid "Empty map file"
 msgstr "Fasciculus inanis chartae"
 
-#: src/editor/map/map_context.cpp:298
+#: src/editor/map/map_context.cpp:306
 msgid "Could not save into scenario"
 msgstr "Non potis est ad scaenarium servare"
 
-#: src/editor/map/map_context.cpp:305
+#: src/editor/map/map_context.cpp:313
 msgid "Could not save the map: $msg"
 msgstr "Non potis est chartam servare: $msg"
 
@@ -362,54 +451,6 @@ msgstr "Electio lusoris"
 #~| msgid "Empty map file"
 #~ msgid "Empty file"
 #~ msgstr "Fasciculus inanis chartae"
-
-#~ msgid "(New Map)"
-#~ msgstr "(Charta Nova)"
-
-#, fuzzy
-#~ msgid ""
-#~ "Do you want to discard all changes you made to the map since the last "
-#~ "save?"
-#~ msgstr "Visne repudiare omnes commutationes nonservatas?"
-
-#~ msgid "Unsaved Changes"
-#~ msgstr "Mutationes Non Servatae"
-
-#~ msgid "Choose a Map to Open"
-#~ msgstr "Chartam Eligere ut Aperiatur"
-
-#~ msgid "Save the Map As"
-#~ msgstr "Chartam servare ut..."
-
-#~ msgid "The file already exists. Do you want to overwrite it?"
-#~ msgstr "Fasciculus iam adest. Visne eum superscribere?"
-
-#~ msgid "No random map generators found."
-#~ msgstr "Nollus generatores chartarum fortunae inventi sunt."
-
-#~ msgid "Map creation failed."
-#~ msgstr "Chartam creare male evenit."
-
-#~ msgid "Choose a Mask to Apply"
-#~ msgstr "Personam elige ad aptandum"
-
-#~ msgid "Error loading mask"
-#~ msgstr "Error dum velamen arcessitur"
-
-#~ msgid "Choose Target Map"
-#~ msgstr "Chartam deligere."
-
-#~ msgid "Error loading map"
-#~ msgstr "Error dum charta arcessitur"
-
-#~ msgid "This map is already open."
-#~ msgstr "Charta iam aperta est."
-
-#~ msgid "Map saved."
-#~ msgstr "Charta servata est."
-
-#~ msgid "Map loaded from scenario"
-#~ msgstr "Charta ab scaenario adepta"
 
 #~ msgid "Choose player"
 #~ msgstr "Lusorem eligere"

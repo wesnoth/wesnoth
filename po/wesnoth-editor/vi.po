@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-25 12:35+0200\n"
+"POT-Creation-Date: 2012-09-01 18:47+0200\n"
 "PO-Revision-Date: 2011-05-31 09:30+0700\n"
 "Last-Translator: Huynh Yen Loc <nightgaunt13@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
@@ -294,6 +294,98 @@ msgstr "Làm lại"
 msgid "Can’t Redo"
 msgstr "Không thể làm lại"
 
+#: src/editor/map/context_manager.cpp:82
+msgid "Auto-update Terrain Transitions: Yes"
+msgstr "Tự động cập nhật chuyển tiếp địa hình: Có"
+
+#: src/editor/map/context_manager.cpp:85
+msgid "Auto-update Terrain Transitions: Partial"
+msgstr "Tự động cập nhật chuyển tiếp địa hình: Một phần"
+
+#: src/editor/map/context_manager.cpp:89
+msgid "Auto-update Terrain Transitions: No"
+msgstr "Tự động cập nhật chuyển tiếp địa hình: Không"
+
+#: src/editor/map/context_manager.cpp:101
+#: src/editor/map/context_manager.cpp:193
+msgid "(New Map)"
+msgstr "(Bản đồ mới)"
+
+#: src/editor/map/context_manager.cpp:162
+msgid "Choose a Map to Open"
+msgstr "Chọn bản đồ cần mở"
+
+#: src/editor/map/context_manager.cpp:236
+msgid "Choose a Mask to Apply"
+msgstr "Chọn mặt nạ cần áp dụng"
+
+#: src/editor/map/context_manager.cpp:243
+msgid "Error loading mask"
+msgstr "Lỗi khi tải mặt nạ"
+
+#: src/editor/map/context_manager.cpp:264
+msgid "Choose Target Map"
+msgstr "Chọn bản đồ đích"
+
+#: src/editor/map/context_manager.cpp:271
+#: src/editor/map/context_manager.cpp:631
+msgid "Error loading map"
+msgstr "Lỗi khi tải bản đồ"
+
+#: src/editor/map/context_manager.cpp:389
+msgid "Save the Map As"
+msgstr "Lưu bản đồ thành"
+
+#: src/editor/map/context_manager.cpp:392
+msgid "The file already exists. Do you want to overwrite it?"
+msgstr "Tập tin đã tồn tại. Bạn có muốn ghi đè lên nó không?"
+
+#: src/editor/map/context_manager.cpp:426
+msgid "No random map generators found."
+msgstr "Không tìm thấy trình tạo bản đồ ngẫu nhiên."
+
+#: src/editor/map/context_manager.cpp:439
+#: src/editor/map/context_manager.cpp:443
+msgid "Map creation failed."
+msgstr "Tạo bản đồ thất bại."
+
+#: src/editor/map/context_manager.cpp:455
+msgid "Unsaved Changes"
+msgstr "Thay đổi không được lưu"
+
+#: src/editor/map/context_manager.cpp:456
+msgid ""
+"Do you want to discard all changes you made to the map since the last save?"
+msgstr ""
+"Bạn có thực sự muốn loại bỏ tất cả các thay đổi bạn đã thực hiện với bản đồ "
+"kể từ lần lưu cuối cùng không?"
+
+#: src/editor/map/context_manager.cpp:546
+#: src/editor/map/context_manager.cpp:587
+msgid "This map is already open."
+msgstr "Bản đồ này đã được mở."
+
+#: src/editor/map/context_manager.cpp:567
+msgid "Map saved."
+msgstr "Đã lưu bản đồ."
+
+#: src/editor/map/context_manager.cpp:610
+msgid "Loaded embedded map data"
+msgstr "Dữ liệu bản đồ nhúng đã tải"
+
+#: src/editor/map/context_manager.cpp:611
+#: src/editor/map/context_manager.cpp:625
+msgid "Map loaded from scenario"
+msgstr "Bản đồ tải từ màn chơi"
+
+#: src/editor/map/context_manager.cpp:621
+msgid ""
+"Loaded referenced map file:\n"
+"$new"
+msgstr ""
+"Tập tin bản đồ tham chiếu đã tải:\n"
+"$new"
+
 #: src/editor/map/editor_map.cpp:150
 msgid "Player"
 msgstr "Người chơi"
@@ -302,11 +394,11 @@ msgstr "Người chơi"
 msgid "The size of the target map is different from the current map"
 msgstr "Kích thước của bản đồ đích khác với bản đồ hiện thời"
 
-#: src/editor/map/map_context.cpp:95
+#: src/editor/map/map_context.cpp:103
 msgid "File not found"
 msgstr "Không tìm thấy tập tin"
 
-#: src/editor/map/map_context.cpp:109
+#: src/editor/map/map_context.cpp:117
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -314,15 +406,15 @@ msgstr ""
 "Tập tin bản đồ trông giống như một màn chơi, nhưng giá trị map_data không "
 "chỉ đến một tập tin tồn tại."
 
-#: src/editor/map/map_context.cpp:125
+#: src/editor/map/map_context.cpp:133
 msgid "Empty map file"
 msgstr "Tập tin bản đồ rỗng"
 
-#: src/editor/map/map_context.cpp:298
+#: src/editor/map/map_context.cpp:306
 msgid "Could not save into scenario"
 msgstr "Không thể lưu vào màn chơi"
 
-#: src/editor/map/map_context.cpp:305
+#: src/editor/map/map_context.cpp:313
 msgid "Could not save the map: $msg"
 msgstr "Không thể lưu bản đồ: $msg"
 
@@ -364,74 +456,6 @@ msgstr "Thiết lập tùy chỉnh"
 #~| msgid "Empty map file"
 #~ msgid "Empty file"
 #~ msgstr "Tập tin bản đồ rỗng"
-
-#~ msgid "(New Map)"
-#~ msgstr "(Bản đồ mới)"
-
-#~ msgid ""
-#~ "Do you want to discard all changes you made to the map since the last "
-#~ "save?"
-#~ msgstr ""
-#~ "Bạn có thực sự muốn loại bỏ tất cả các thay đổi bạn đã thực hiện với bản "
-#~ "đồ kể từ lần lưu cuối cùng không?"
-
-#~ msgid "Unsaved Changes"
-#~ msgstr "Thay đổi không được lưu"
-
-#~ msgid "Choose a Map to Open"
-#~ msgstr "Chọn bản đồ cần mở"
-
-#~ msgid "Save the Map As"
-#~ msgstr "Lưu bản đồ thành"
-
-#~ msgid "The file already exists. Do you want to overwrite it?"
-#~ msgstr "Tập tin đã tồn tại. Bạn có muốn ghi đè lên nó không?"
-
-#~ msgid "No random map generators found."
-#~ msgstr "Không tìm thấy trình tạo bản đồ ngẫu nhiên."
-
-#~ msgid "Map creation failed."
-#~ msgstr "Tạo bản đồ thất bại."
-
-#~ msgid "Choose a Mask to Apply"
-#~ msgstr "Chọn mặt nạ cần áp dụng"
-
-#~ msgid "Error loading mask"
-#~ msgstr "Lỗi khi tải mặt nạ"
-
-#~ msgid "Choose Target Map"
-#~ msgstr "Chọn bản đồ đích"
-
-#~ msgid "Error loading map"
-#~ msgstr "Lỗi khi tải bản đồ"
-
-#~ msgid "This map is already open."
-#~ msgstr "Bản đồ này đã được mở."
-
-#~ msgid "Map saved."
-#~ msgstr "Đã lưu bản đồ."
-
-#~ msgid "Loaded embedded map data"
-#~ msgstr "Dữ liệu bản đồ nhúng đã tải"
-
-#~ msgid "Map loaded from scenario"
-#~ msgstr "Bản đồ tải từ màn chơi"
-
-#~ msgid ""
-#~ "Loaded referenced map file:\n"
-#~ "$new"
-#~ msgstr ""
-#~ "Tập tin bản đồ tham chiếu đã tải:\n"
-#~ "$new"
-
-#~ msgid "Auto-update Terrain Transitions: Yes"
-#~ msgstr "Tự động cập nhật chuyển tiếp địa hình: Có"
-
-#~ msgid "Auto-update Terrain Transitions: Partial"
-#~ msgstr "Tự động cập nhật chuyển tiếp địa hình: Một phần"
-
-#~ msgid "Auto-update Terrain Transitions: No"
-#~ msgstr "Tự động cập nhật chuyển tiếp địa hình: Không"
 
 #~ msgid "Choose player"
 #~ msgstr "Chọn người chơi"

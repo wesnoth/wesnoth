@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-25 12:35+0200\n"
+"POT-Creation-Date: 2012-09-01 18:47+0200\n"
 "PO-Revision-Date: 2009-05-12 18:51-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: none\n"
@@ -301,6 +301,97 @@ msgstr "Endurkalla"
 msgid "Can’t Redo"
 msgstr "Endurkalla"
 
+#: src/editor/map/context_manager.cpp:82
+msgid "Auto-update Terrain Transitions: Yes"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:85
+msgid "Auto-update Terrain Transitions: Partial"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:89
+msgid "Auto-update Terrain Transitions: No"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:101
+#: src/editor/map/context_manager.cpp:193
+msgid "(New Map)"
+msgstr "(Nýtt kort)"
+
+#: src/editor/map/context_manager.cpp:162
+msgid "Choose a Map to Open"
+msgstr "Veldu kort til að opna"
+
+#: src/editor/map/context_manager.cpp:236
+msgid "Choose a Mask to Apply"
+msgstr "Veldu skugga til setningar"
+
+#: src/editor/map/context_manager.cpp:243
+msgid "Error loading mask"
+msgstr "Villa við hlöðun skugga"
+
+#: src/editor/map/context_manager.cpp:264
+msgid "Choose Target Map"
+msgstr "Veldu miðkort"
+
+#: src/editor/map/context_manager.cpp:271
+#: src/editor/map/context_manager.cpp:631
+msgid "Error loading map"
+msgstr "Villa við hlöðun korts"
+
+#: src/editor/map/context_manager.cpp:389
+msgid "Save the Map As"
+msgstr "Vista kort sem"
+
+#: src/editor/map/context_manager.cpp:392
+msgid "The file already exists. Do you want to overwrite it?"
+msgstr "Skráin er nú þegar til staðar. Viltu yfirskrifa hana?"
+
+#: src/editor/map/context_manager.cpp:426
+msgid "No random map generators found."
+msgstr "Engar sjálfvirkar kortagerðarforrit fundust."
+
+#: src/editor/map/context_manager.cpp:439
+#: src/editor/map/context_manager.cpp:443
+msgid "Map creation failed."
+msgstr "Gerð korts mistókst."
+
+#: src/editor/map/context_manager.cpp:455
+msgid "Unsaved Changes"
+msgstr "Óvistaðar breytingar"
+
+#: src/editor/map/context_manager.cpp:456
+msgid ""
+"Do you want to discard all changes you made to the map since the last save?"
+msgstr ""
+"Viltu eyða öllum breytingum sem hafa verið gerðar síðan síðustu vistun?"
+
+#: src/editor/map/context_manager.cpp:546
+#: src/editor/map/context_manager.cpp:587
+msgid "This map is already open."
+msgstr "Þetta kort er nú þegar opið."
+
+#: src/editor/map/context_manager.cpp:567
+msgid "Map saved."
+msgstr "Kort vistað."
+
+#: src/editor/map/context_manager.cpp:610
+msgid "Loaded embedded map data"
+msgstr "Hlóð fylgigögn korts"
+
+#: src/editor/map/context_manager.cpp:611
+#: src/editor/map/context_manager.cpp:625
+msgid "Map loaded from scenario"
+msgstr "Kort hlaðið úr atburðarás"
+
+#: src/editor/map/context_manager.cpp:621
+msgid ""
+"Loaded referenced map file:\n"
+"$new"
+msgstr ""
+"Hlóð ávísað kort:\n"
+"$new"
+
 #: src/editor/map/editor_map.cpp:150
 msgid "Player"
 msgstr "Spilari"
@@ -309,11 +400,11 @@ msgstr "Spilari"
 msgid "The size of the target map is different from the current map"
 msgstr "Stærð miðkortsins er ekki sú sama og núverandi kort"
 
-#: src/editor/map/map_context.cpp:95
+#: src/editor/map/map_context.cpp:103
 msgid "File not found"
 msgstr "Skrá ekki fundin"
 
-#: src/editor/map/map_context.cpp:109
+#: src/editor/map/map_context.cpp:117
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -321,15 +412,15 @@ msgstr ""
 "Þetta kort lýtur út fyrir að vera atburðarás, en breytan map_data vísar ekki "
 "yfir í gilda skrá"
 
-#: src/editor/map/map_context.cpp:125
+#: src/editor/map/map_context.cpp:133
 msgid "Empty map file"
 msgstr "Tómt kort"
 
-#: src/editor/map/map_context.cpp:298
+#: src/editor/map/map_context.cpp:306
 msgid "Could not save into scenario"
 msgstr "Gat ekki vistað yfir í atburðarás"
 
-#: src/editor/map/map_context.cpp:305
+#: src/editor/map/map_context.cpp:313
 msgid "Could not save the map: $msg"
 msgstr "Gat ekki vistað kortið: $msg"
 
@@ -371,64 +462,6 @@ msgstr "Sérstakar stillingar"
 #~| msgid "Empty map file"
 #~ msgid "Empty file"
 #~ msgstr "Tómt kort"
-
-#~ msgid "(New Map)"
-#~ msgstr "(Nýtt kort)"
-
-#~ msgid ""
-#~ "Do you want to discard all changes you made to the map since the last "
-#~ "save?"
-#~ msgstr ""
-#~ "Viltu eyða öllum breytingum sem hafa verið gerðar síðan síðustu vistun?"
-
-#~ msgid "Unsaved Changes"
-#~ msgstr "Óvistaðar breytingar"
-
-#~ msgid "Choose a Map to Open"
-#~ msgstr "Veldu kort til að opna"
-
-#~ msgid "Save the Map As"
-#~ msgstr "Vista kort sem"
-
-#~ msgid "The file already exists. Do you want to overwrite it?"
-#~ msgstr "Skráin er nú þegar til staðar. Viltu yfirskrifa hana?"
-
-#~ msgid "No random map generators found."
-#~ msgstr "Engar sjálfvirkar kortagerðarforrit fundust."
-
-#~ msgid "Map creation failed."
-#~ msgstr "Gerð korts mistókst."
-
-#~ msgid "Choose a Mask to Apply"
-#~ msgstr "Veldu skugga til setningar"
-
-#~ msgid "Error loading mask"
-#~ msgstr "Villa við hlöðun skugga"
-
-#~ msgid "Choose Target Map"
-#~ msgstr "Veldu miðkort"
-
-#~ msgid "Error loading map"
-#~ msgstr "Villa við hlöðun korts"
-
-#~ msgid "This map is already open."
-#~ msgstr "Þetta kort er nú þegar opið."
-
-#~ msgid "Map saved."
-#~ msgstr "Kort vistað."
-
-#~ msgid "Loaded embedded map data"
-#~ msgstr "Hlóð fylgigögn korts"
-
-#~ msgid "Map loaded from scenario"
-#~ msgstr "Kort hlaðið úr atburðarás"
-
-#~ msgid ""
-#~ "Loaded referenced map file:\n"
-#~ "$new"
-#~ msgstr ""
-#~ "Hlóð ávísað kort:\n"
-#~ "$new"
 
 #~ msgid "Choose player"
 #~ msgstr "Veldu spilara"

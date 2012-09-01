@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4.2+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-25 12:35+0200\n"
+"POT-Creation-Date: 2012-09-01 18:47+0200\n"
 "PO-Revision-Date: 2008-07-01 17:35-0000\n"
 "Last-Translator: amnay <amnay@operamail.com>\n"
 "Language-Team: none\n"
@@ -294,6 +294,103 @@ msgstr "إعادة"
 msgid "Can’t Redo"
 msgstr ""
 
+#: src/editor/map/context_manager.cpp:82
+#, fuzzy
+msgid "Auto-update Terrain Transitions: Yes"
+msgstr "تجديد الإنتقال بين الخانات"
+
+#: src/editor/map/context_manager.cpp:85
+#, fuzzy
+msgid "Auto-update Terrain Transitions: Partial"
+msgstr "تجديد الإنتقال بين الخانات"
+
+#: src/editor/map/context_manager.cpp:89
+#, fuzzy
+msgid "Auto-update Terrain Transitions: No"
+msgstr "تجديد الإنتقال بين الخانات"
+
+#: src/editor/map/context_manager.cpp:101
+#: src/editor/map/context_manager.cpp:193
+#, fuzzy
+msgid "(New Map)"
+msgstr "إنشاء خريطة جديدة"
+
+#: src/editor/map/context_manager.cpp:162
+#, fuzzy
+msgid "Choose a Map to Open"
+msgstr "لاعب"
+
+#: src/editor/map/context_manager.cpp:236
+#, fuzzy
+msgid "Choose a Mask to Apply"
+msgstr "لاعب"
+
+#: src/editor/map/context_manager.cpp:243
+msgid "Error loading mask"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:264
+#, fuzzy
+msgid "Choose Target Map"
+msgstr "لاعب"
+
+#: src/editor/map/context_manager.cpp:271
+#: src/editor/map/context_manager.cpp:631
+msgid "Error loading map"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:389
+#, fuzzy
+msgid "Save the Map As"
+msgstr "حفظ الخريطة"
+
+#: src/editor/map/context_manager.cpp:392
+msgid "The file already exists. Do you want to overwrite it?"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:426
+msgid "No random map generators found."
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:439
+#: src/editor/map/context_manager.cpp:443
+msgid "Map creation failed."
+msgstr "فشل إعداد الخرطة"
+
+#: src/editor/map/context_manager.cpp:455
+msgid "Unsaved Changes"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:456
+msgid ""
+"Do you want to discard all changes you made to the map since the last save?"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:546
+#: src/editor/map/context_manager.cpp:587
+#, fuzzy
+msgid "This map is already open."
+msgstr "هذا المفتاح مُستعمَلٌ"
+
+#: src/editor/map/context_manager.cpp:567
+msgid "Map saved."
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:610
+msgid "Loaded embedded map data"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:611
+#: src/editor/map/context_manager.cpp:625
+msgid "Map loaded from scenario"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:621
+msgid ""
+"Loaded referenced map file:\n"
+"$new"
+msgstr ""
+
 #: src/editor/map/editor_map.cpp:150
 #, fuzzy
 msgid "Player"
@@ -303,25 +400,25 @@ msgstr "اللاعبون:"
 msgid "The size of the target map is different from the current map"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:95
+#: src/editor/map/map_context.cpp:103
 msgid "File not found"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:109
+#: src/editor/map/map_context.cpp:117
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:125
+#: src/editor/map/map_context.cpp:133
 msgid "Empty map file"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:298
+#: src/editor/map/map_context.cpp:306
 msgid "Could not save into scenario"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:305
+#: src/editor/map/map_context.cpp:313
 msgid "Could not save the map: $msg"
 msgstr ""
 
@@ -358,29 +455,6 @@ msgstr ""
 #, fuzzy
 msgid "Custom setting"
 msgstr "مخصص"
-
-#, fuzzy
-#~ msgid "(New Map)"
-#~ msgstr "إنشاء خريطة جديدة"
-
-#, fuzzy
-#~ msgid "Save the Map As"
-#~ msgstr "حفظ الخريطة"
-
-#~ msgid "Map creation failed."
-#~ msgstr "فشل إعداد الخرطة"
-
-#, fuzzy
-#~ msgid "Choose Target Map"
-#~ msgstr "لاعب"
-
-#, fuzzy
-#~ msgid "This map is already open."
-#~ msgstr "هذا المفتاح مُستعمَلٌ"
-
-#, fuzzy
-#~ msgid "Auto-update Terrain Transitions: No"
-#~ msgstr "تجديد الإنتقال بين الخانات"
 
 #, fuzzy
 #~ msgid "Choose player"

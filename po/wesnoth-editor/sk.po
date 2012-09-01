@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-25 12:35+0200\n"
+"POT-Creation-Date: 2012-09-01 18:47+0200\n"
 "PO-Revision-Date: 2011-11-27 16:58+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
@@ -299,6 +299,96 @@ msgstr "Späť"
 msgid "Can’t Redo"
 msgstr "Nemôžem urobiť znovu"
 
+#: src/editor/map/context_manager.cpp:82
+msgid "Auto-update Terrain Transitions: Yes"
+msgstr "Aktualizovať prechody terénu: Áno"
+
+#: src/editor/map/context_manager.cpp:85
+msgid "Auto-update Terrain Transitions: Partial"
+msgstr "Aktualizovať prechody terénu: Čiastočne"
+
+#: src/editor/map/context_manager.cpp:89
+msgid "Auto-update Terrain Transitions: No"
+msgstr "Aktualizovať prechody terénu: Nie"
+
+#: src/editor/map/context_manager.cpp:101
+#: src/editor/map/context_manager.cpp:193
+msgid "(New Map)"
+msgstr "(Nová mapa)"
+
+#: src/editor/map/context_manager.cpp:162
+msgid "Choose a Map to Open"
+msgstr "Vyberte si mapu na nahranie"
+
+#: src/editor/map/context_manager.cpp:236
+msgid "Choose a Mask to Apply"
+msgstr "Vyberte si masku, ktorá sa má použiť"
+
+#: src/editor/map/context_manager.cpp:243
+msgid "Error loading mask"
+msgstr "Chyba pri čítaní masky"
+
+#: src/editor/map/context_manager.cpp:264
+msgid "Choose Target Map"
+msgstr "Vyberte si cieľovú mapu"
+
+#: src/editor/map/context_manager.cpp:271
+#: src/editor/map/context_manager.cpp:631
+msgid "Error loading map"
+msgstr "Chyba pri načítavaní mapy"
+
+#: src/editor/map/context_manager.cpp:389
+msgid "Save the Map As"
+msgstr "Ulož mapu ako"
+
+#: src/editor/map/context_manager.cpp:392
+msgid "The file already exists. Do you want to overwrite it?"
+msgstr "Takýto súbor už existuje. Chcete ho prepísať?"
+
+#: src/editor/map/context_manager.cpp:426
+msgid "No random map generators found."
+msgstr "Nenašiel sa náhodný generátor mapy."
+
+#: src/editor/map/context_manager.cpp:439
+#: src/editor/map/context_manager.cpp:443
+msgid "Map creation failed."
+msgstr "Nepodarilo sa vytvoriť mapu."
+
+#: src/editor/map/context_manager.cpp:455
+msgid "Unsaved Changes"
+msgstr "Neuložené zmeny"
+
+#: src/editor/map/context_manager.cpp:456
+msgid ""
+"Do you want to discard all changes you made to the map since the last save?"
+msgstr "Chcete zrušiť všetky zmeny v mape od posledného uloženia?"
+
+#: src/editor/map/context_manager.cpp:546
+#: src/editor/map/context_manager.cpp:587
+msgid "This map is already open."
+msgstr "Táto mapa je už otvorená."
+
+#: src/editor/map/context_manager.cpp:567
+msgid "Map saved."
+msgstr "Mapa uložená."
+
+#: src/editor/map/context_manager.cpp:610
+msgid "Loaded embedded map data"
+msgstr "Načítali sa vložené dáta mapy"
+
+#: src/editor/map/context_manager.cpp:611
+#: src/editor/map/context_manager.cpp:625
+msgid "Map loaded from scenario"
+msgstr "Mapa načítaná zo scény"
+
+#: src/editor/map/context_manager.cpp:621
+msgid ""
+"Loaded referenced map file:\n"
+"$new"
+msgstr ""
+"Načítal sa odkazovaný súbor mapy:\n"
+"$new"
+
 #: src/editor/map/editor_map.cpp:150
 msgid "Player"
 msgstr "Hráč"
@@ -307,11 +397,11 @@ msgstr "Hráč"
 msgid "The size of the target map is different from the current map"
 msgstr "Veľkosť cieľovej mapy sa líši od súčasnej mapy"
 
-#: src/editor/map/map_context.cpp:95
+#: src/editor/map/map_context.cpp:103
 msgid "File not found"
 msgstr "Súbor sa nenašiel"
 
-#: src/editor/map/map_context.cpp:109
+#: src/editor/map/map_context.cpp:117
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -319,15 +409,15 @@ msgstr ""
 "Mapový súbor vyzerá ako scéna, ale hodnota map_data neukazuje na existujúci "
 "súbor"
 
-#: src/editor/map/map_context.cpp:125
+#: src/editor/map/map_context.cpp:133
 msgid "Empty map file"
 msgstr "Prázdny súbor mapy"
 
-#: src/editor/map/map_context.cpp:298
+#: src/editor/map/map_context.cpp:306
 msgid "Could not save into scenario"
 msgstr "Nepodarilo sa uložiť do scény"
 
-#: src/editor/map/map_context.cpp:305
+#: src/editor/map/map_context.cpp:313
 msgid "Could not save the map: $msg"
 msgstr "Neviem uložiť mapu: $msg"
 
@@ -367,72 +457,6 @@ msgstr "Vlastné nastavenie"
 #~| msgid "Empty map file"
 #~ msgid "Empty file"
 #~ msgstr "Prázdny súbor mapy"
-
-#~ msgid "(New Map)"
-#~ msgstr "(Nová mapa)"
-
-#~ msgid ""
-#~ "Do you want to discard all changes you made to the map since the last "
-#~ "save?"
-#~ msgstr "Chcete zrušiť všetky zmeny v mape od posledného uloženia?"
-
-#~ msgid "Unsaved Changes"
-#~ msgstr "Neuložené zmeny"
-
-#~ msgid "Choose a Map to Open"
-#~ msgstr "Vyberte si mapu na nahranie"
-
-#~ msgid "Save the Map As"
-#~ msgstr "Ulož mapu ako"
-
-#~ msgid "The file already exists. Do you want to overwrite it?"
-#~ msgstr "Takýto súbor už existuje. Chcete ho prepísať?"
-
-#~ msgid "No random map generators found."
-#~ msgstr "Nenašiel sa náhodný generátor mapy."
-
-#~ msgid "Map creation failed."
-#~ msgstr "Nepodarilo sa vytvoriť mapu."
-
-#~ msgid "Choose a Mask to Apply"
-#~ msgstr "Vyberte si masku, ktorá sa má použiť"
-
-#~ msgid "Error loading mask"
-#~ msgstr "Chyba pri čítaní masky"
-
-#~ msgid "Choose Target Map"
-#~ msgstr "Vyberte si cieľovú mapu"
-
-#~ msgid "Error loading map"
-#~ msgstr "Chyba pri načítavaní mapy"
-
-#~ msgid "This map is already open."
-#~ msgstr "Táto mapa je už otvorená."
-
-#~ msgid "Map saved."
-#~ msgstr "Mapa uložená."
-
-#~ msgid "Loaded embedded map data"
-#~ msgstr "Načítali sa vložené dáta mapy"
-
-#~ msgid "Map loaded from scenario"
-#~ msgstr "Mapa načítaná zo scény"
-
-#~ msgid ""
-#~ "Loaded referenced map file:\n"
-#~ "$new"
-#~ msgstr ""
-#~ "Načítal sa odkazovaný súbor mapy:\n"
-#~ "$new"
-
-#~ msgid "Auto-update Terrain Transitions: Yes"
-#~ msgstr "Aktualizovať prechody terénu: Áno"
-
-#~ msgid "Auto-update Terrain Transitions: Partial"
-#~ msgstr "Aktualizovať prechody terénu: Čiastočne"
-
-#~ msgid "Auto-update Terrain Transitions: No"
-#~ msgstr "Aktualizovať prechody terénu: Nie"
 
 #~ msgid "Choose player"
 #~ msgstr "Vyberte si hráča"

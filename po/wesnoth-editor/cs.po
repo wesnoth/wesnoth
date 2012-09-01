@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-25 12:35+0200\n"
+"POT-Creation-Date: 2012-09-01 18:47+0200\n"
 "PO-Revision-Date: 2011-11-22 20:09+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -305,6 +305,97 @@ msgstr "Vrať"
 msgid "Can’t Redo"
 msgstr "Nelze opakovat"
 
+#: src/editor/map/context_manager.cpp:82
+msgid "Auto-update Terrain Transitions: Yes"
+msgstr "Automaticky aktualizovat přechody terénu: Ano"
+
+#: src/editor/map/context_manager.cpp:85
+msgid "Auto-update Terrain Transitions: Partial"
+msgstr "Automaticky aktualizovat přechody terénu: Částečně"
+
+#: src/editor/map/context_manager.cpp:89
+msgid "Auto-update Terrain Transitions: No"
+msgstr "Automaticky aktualizovat přechody terénu: Ne"
+
+#: src/editor/map/context_manager.cpp:101
+#: src/editor/map/context_manager.cpp:193
+msgid "(New Map)"
+msgstr "(Nová mapa)"
+
+#: src/editor/map/context_manager.cpp:162
+msgid "Choose a Map to Open"
+msgstr "Vyber mapu k načtení"
+
+# co je zase toto?
+#: src/editor/map/context_manager.cpp:236
+msgid "Choose a Mask to Apply"
+msgstr "Vyber masku k aplikaci"
+
+#: src/editor/map/context_manager.cpp:243
+msgid "Error loading mask"
+msgstr "Chyba při načítání masky"
+
+#: src/editor/map/context_manager.cpp:264
+msgid "Choose Target Map"
+msgstr "vyber cílovou mapu"
+
+#: src/editor/map/context_manager.cpp:271
+#: src/editor/map/context_manager.cpp:631
+msgid "Error loading map"
+msgstr "Chyba načítání mapy"
+
+#: src/editor/map/context_manager.cpp:389
+msgid "Save the Map As"
+msgstr "Ulož mapu jako"
+
+#: src/editor/map/context_manager.cpp:392
+msgid "The file already exists. Do you want to overwrite it?"
+msgstr "Mapa už existuje. Přeješ si ji přepsat?"
+
+#: src/editor/map/context_manager.cpp:426
+msgid "No random map generators found."
+msgstr "Nebyly nalezeny žádné generátory map."
+
+#: src/editor/map/context_manager.cpp:439
+#: src/editor/map/context_manager.cpp:443
+msgid "Map creation failed."
+msgstr "Mapu se nepodařilo vygenerovat."
+
+#: src/editor/map/context_manager.cpp:455
+msgid "Unsaved Changes"
+msgstr "Neuložené změny"
+
+#: src/editor/map/context_manager.cpp:456
+msgid ""
+"Do you want to discard all changes you made to the map since the last save?"
+msgstr "Opravdu si přeješ zahodit všechny změny v mapě od posledního uložení?"
+
+#: src/editor/map/context_manager.cpp:546
+#: src/editor/map/context_manager.cpp:587
+msgid "This map is already open."
+msgstr "Tato mapa již je otevřena."
+
+#: src/editor/map/context_manager.cpp:567
+msgid "Map saved."
+msgstr "Mapa byla uložena."
+
+#: src/editor/map/context_manager.cpp:610
+msgid "Loaded embedded map data"
+msgstr "Načtena vložená data mapy"
+
+#: src/editor/map/context_manager.cpp:611
+#: src/editor/map/context_manager.cpp:625
+msgid "Map loaded from scenario"
+msgstr "Mapa načtena ze scénáře"
+
+#: src/editor/map/context_manager.cpp:621
+msgid ""
+"Loaded referenced map file:\n"
+"$new"
+msgstr ""
+"Načten odkazovaný soubor mapy:\n"
+"$new"
+
 #: src/editor/map/editor_map.cpp:150
 msgid "Player"
 msgstr "Hráč"
@@ -313,11 +404,11 @@ msgstr "Hráč"
 msgid "The size of the target map is different from the current map"
 msgstr "Velikost cílové mapy je odlišná od současné mapy"
 
-#: src/editor/map/map_context.cpp:95
+#: src/editor/map/map_context.cpp:103
 msgid "File not found"
 msgstr "Soubor nebyl nalezen"
 
-#: src/editor/map/map_context.cpp:109
+#: src/editor/map/map_context.cpp:117
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -325,15 +416,15 @@ msgstr ""
 "Soubor mapy se zdá být scénářem, ale klíč map_data není odkazem na "
 "existující soubor"
 
-#: src/editor/map/map_context.cpp:125
+#: src/editor/map/map_context.cpp:133
 msgid "Empty map file"
 msgstr "Prázdný soubor mapy"
 
-#: src/editor/map/map_context.cpp:298
+#: src/editor/map/map_context.cpp:306
 msgid "Could not save into scenario"
 msgstr "Nebylo možno uložit do scénáře"
 
-#: src/editor/map/map_context.cpp:305
+#: src/editor/map/map_context.cpp:313
 msgid "Could not save the map: $msg"
 msgstr "Nepodařilo se uložit mapu: $msg"
 
@@ -374,71 +465,3 @@ msgstr "Vlastní nastavení"
 #~| msgid "Empty map file"
 #~ msgid "Empty file"
 #~ msgstr "Prázdný soubor mapy"
-
-#~ msgid "(New Map)"
-#~ msgstr "(Nová mapa)"
-
-#~ msgid ""
-#~ "Do you want to discard all changes you made to the map since the last "
-#~ "save?"
-#~ msgstr ""
-#~ "Opravdu si přeješ zahodit všechny změny v mapě od posledního uložení?"
-
-#~ msgid "Unsaved Changes"
-#~ msgstr "Neuložené změny"
-
-#~ msgid "Choose a Map to Open"
-#~ msgstr "Vyber mapu k načtení"
-
-#~ msgid "Save the Map As"
-#~ msgstr "Ulož mapu jako"
-
-#~ msgid "The file already exists. Do you want to overwrite it?"
-#~ msgstr "Mapa už existuje. Přeješ si ji přepsat?"
-
-#~ msgid "No random map generators found."
-#~ msgstr "Nebyly nalezeny žádné generátory map."
-
-#~ msgid "Map creation failed."
-#~ msgstr "Mapu se nepodařilo vygenerovat."
-
-# co je zase toto?
-#~ msgid "Choose a Mask to Apply"
-#~ msgstr "Vyber masku k aplikaci"
-
-#~ msgid "Error loading mask"
-#~ msgstr "Chyba při načítání masky"
-
-#~ msgid "Choose Target Map"
-#~ msgstr "vyber cílovou mapu"
-
-#~ msgid "Error loading map"
-#~ msgstr "Chyba načítání mapy"
-
-#~ msgid "This map is already open."
-#~ msgstr "Tato mapa již je otevřena."
-
-#~ msgid "Map saved."
-#~ msgstr "Mapa byla uložena."
-
-#~ msgid "Loaded embedded map data"
-#~ msgstr "Načtena vložená data mapy"
-
-#~ msgid "Map loaded from scenario"
-#~ msgstr "Mapa načtena ze scénáře"
-
-#~ msgid ""
-#~ "Loaded referenced map file:\n"
-#~ "$new"
-#~ msgstr ""
-#~ "Načten odkazovaný soubor mapy:\n"
-#~ "$new"
-
-#~ msgid "Auto-update Terrain Transitions: Yes"
-#~ msgstr "Automaticky aktualizovat přechody terénu: Ano"
-
-#~ msgid "Auto-update Terrain Transitions: Partial"
-#~ msgstr "Automaticky aktualizovat přechody terénu: Částečně"
-
-#~ msgid "Auto-update Terrain Transitions: No"
-#~ msgstr "Automaticky aktualizovat přechody terénu: Ne"

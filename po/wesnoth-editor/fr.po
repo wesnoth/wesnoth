@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-25 12:35+0200\n"
+"POT-Creation-Date: 2012-09-01 18:47+0200\n"
 "PO-Revision-Date: 2011-11-26 10:01+0100\n"
 "Last-Translator: Guillaume Pascal <guillaume.pascal43@laposte.net>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -303,6 +303,99 @@ msgstr "Refaire"
 msgid "Can’t Redo"
 msgstr "Impossible de refaire"
 
+# FIXME : taille des chaînes sans doute trop longues
+#: src/editor/map/context_manager.cpp:82
+msgid "Auto-update Terrain Transitions: Yes"
+msgstr "Mettre à jour automatiquement les transitions entre terrains : Oui"
+
+#: src/editor/map/context_manager.cpp:85
+msgid "Auto-update Terrain Transitions: Partial"
+msgstr "Mettre à jour automatiquement les transitions entre terrains : Partiel"
+
+#: src/editor/map/context_manager.cpp:89
+msgid "Auto-update Terrain Transitions: No"
+msgstr "Mettre à jour automatiquement les transitions entre terrains : Non"
+
+#: src/editor/map/context_manager.cpp:101
+#: src/editor/map/context_manager.cpp:193
+msgid "(New Map)"
+msgstr "(Nouvelle carte)"
+
+#: src/editor/map/context_manager.cpp:162
+msgid "Choose a Map to Open"
+msgstr "Choisir la carte à ouvrir"
+
+#: src/editor/map/context_manager.cpp:236
+msgid "Choose a Mask to Apply"
+msgstr "Choisir le masque à appliquer"
+
+#: src/editor/map/context_manager.cpp:243
+msgid "Error loading mask"
+msgstr "Erreur lord du chargement du masque"
+
+#: src/editor/map/context_manager.cpp:264
+msgid "Choose Target Map"
+msgstr "Choisir la carte de destination"
+
+#: src/editor/map/context_manager.cpp:271
+#: src/editor/map/context_manager.cpp:631
+msgid "Error loading map"
+msgstr "Erreur lors du chargement de la carte"
+
+#: src/editor/map/context_manager.cpp:389
+msgid "Save the Map As"
+msgstr "Enregistrer la carte sous"
+
+#: src/editor/map/context_manager.cpp:392
+msgid "The file already exists. Do you want to overwrite it?"
+msgstr "Le fichier existe déjà. Souhaitez-vous l'écraser ?"
+
+#: src/editor/map/context_manager.cpp:426
+msgid "No random map generators found."
+msgstr "Aucun générateur de carte aléatoire trouvé."
+
+#: src/editor/map/context_manager.cpp:439
+#: src/editor/map/context_manager.cpp:443
+msgid "Map creation failed."
+msgstr "Échec de création de la carte."
+
+#: src/editor/map/context_manager.cpp:455
+msgid "Unsaved Changes"
+msgstr "Modifications non sauvegardées"
+
+#: src/editor/map/context_manager.cpp:456
+msgid ""
+"Do you want to discard all changes you made to the map since the last save?"
+msgstr ""
+"Voulez-vous annuler toutes les modifications de la carte depuis la dernière "
+"sauvegarde ?"
+
+#: src/editor/map/context_manager.cpp:546
+#: src/editor/map/context_manager.cpp:587
+msgid "This map is already open."
+msgstr "Cette carte est déjà ouverte."
+
+#: src/editor/map/context_manager.cpp:567
+msgid "Map saved."
+msgstr "Carte sauvegardée."
+
+#: src/editor/map/context_manager.cpp:610
+msgid "Loaded embedded map data"
+msgstr "Données de carte embarquée chargées"
+
+#: src/editor/map/context_manager.cpp:611
+#: src/editor/map/context_manager.cpp:625
+msgid "Map loaded from scenario"
+msgstr "Carte chargée depuis le scénario"
+
+#: src/editor/map/context_manager.cpp:621
+msgid ""
+"Loaded referenced map file:\n"
+"$new"
+msgstr ""
+"Fichier de carte référencée chargé :\n"
+"$new"
+
 #: src/editor/map/editor_map.cpp:150
 msgid "Player"
 msgstr "Joueur"
@@ -313,11 +406,11 @@ msgstr ""
 "La taille de la carte de destination est différente de celle de la carte "
 "actuelle"
 
-#: src/editor/map/map_context.cpp:95
+#: src/editor/map/map_context.cpp:103
 msgid "File not found"
 msgstr "Fichier non trouvé"
 
-#: src/editor/map/map_context.cpp:109
+#: src/editor/map/map_context.cpp:117
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -325,15 +418,15 @@ msgstr ""
 "Ce fichier ressemble à un scénario, mais la valeur de map_data n'indique pas "
 "un nom de fichier existant."
 
-#: src/editor/map/map_context.cpp:125
+#: src/editor/map/map_context.cpp:133
 msgid "Empty map file"
 msgstr "Fichier de carte vide"
 
-#: src/editor/map/map_context.cpp:298
+#: src/editor/map/map_context.cpp:306
 msgid "Could not save into scenario"
 msgstr "Impossible de sauvegarder dans le scénario"
 
-#: src/editor/map/map_context.cpp:305
+#: src/editor/map/map_context.cpp:313
 msgid "Could not save the map: $msg"
 msgstr "Impossible de sauvegarder la carte : $msg"
 
@@ -368,76 +461,6 @@ msgstr "Joueur $player_number"
 #: src/gui/dialogs/editor_settings.cpp:166
 msgid "Custom setting"
 msgstr "Réglages personnalisés"
-
-#~ msgid "(New Map)"
-#~ msgstr "(Nouvelle carte)"
-
-#~ msgid ""
-#~ "Do you want to discard all changes you made to the map since the last "
-#~ "save?"
-#~ msgstr ""
-#~ "Voulez-vous annuler toutes les modifications de la carte depuis la "
-#~ "dernière sauvegarde ?"
-
-#~ msgid "Unsaved Changes"
-#~ msgstr "Modifications non sauvegardées"
-
-#~ msgid "Choose a Map to Open"
-#~ msgstr "Choisir la carte à ouvrir"
-
-#~ msgid "Save the Map As"
-#~ msgstr "Enregistrer la carte sous"
-
-#~ msgid "The file already exists. Do you want to overwrite it?"
-#~ msgstr "Le fichier existe déjà. Souhaitez-vous l'écraser ?"
-
-#~ msgid "No random map generators found."
-#~ msgstr "Aucun générateur de carte aléatoire trouvé."
-
-#~ msgid "Map creation failed."
-#~ msgstr "Échec de création de la carte."
-
-#~ msgid "Choose a Mask to Apply"
-#~ msgstr "Choisir le masque à appliquer"
-
-#~ msgid "Error loading mask"
-#~ msgstr "Erreur lord du chargement du masque"
-
-#~ msgid "Choose Target Map"
-#~ msgstr "Choisir la carte de destination"
-
-#~ msgid "Error loading map"
-#~ msgstr "Erreur lors du chargement de la carte"
-
-#~ msgid "This map is already open."
-#~ msgstr "Cette carte est déjà ouverte."
-
-#~ msgid "Map saved."
-#~ msgstr "Carte sauvegardée."
-
-#~ msgid "Loaded embedded map data"
-#~ msgstr "Données de carte embarquée chargées"
-
-#~ msgid "Map loaded from scenario"
-#~ msgstr "Carte chargée depuis le scénario"
-
-#~ msgid ""
-#~ "Loaded referenced map file:\n"
-#~ "$new"
-#~ msgstr ""
-#~ "Fichier de carte référencée chargé :\n"
-#~ "$new"
-
-# FIXME : taille des chaînes sans doute trop longues
-#~ msgid "Auto-update Terrain Transitions: Yes"
-#~ msgstr "Mettre à jour automatiquement les transitions entre terrains : Oui"
-
-#~ msgid "Auto-update Terrain Transitions: Partial"
-#~ msgstr ""
-#~ "Mettre à jour automatiquement les transitions entre terrains : Partiel"
-
-#~ msgid "Auto-update Terrain Transitions: No"
-#~ msgstr "Mettre à jour automatiquement les transitions entre terrains : Non"
 
 #~ msgid "Choose player"
 #~ msgstr "Choisir le joueur"

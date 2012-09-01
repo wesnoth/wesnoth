@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-25 12:35+0200\n"
+"POT-Creation-Date: 2012-09-01 18:47+0200\n"
 "PO-Revision-Date: 2012-01-15 15:29+0200\n"
 "Last-Translator: Jarkko Patteri <jarkkopatteri@gmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
@@ -301,6 +301,98 @@ msgstr "Tee uudelleen"
 msgid "Can’t Redo"
 msgstr "Ei voi tehdä uudelleen"
 
+#: src/editor/map/context_manager.cpp:82
+msgid "Auto-update Terrain Transitions: Yes"
+msgstr "Maastomuutosten automaattinen päivitys: Kyllä"
+
+#: src/editor/map/context_manager.cpp:85
+msgid "Auto-update Terrain Transitions: Partial"
+msgstr "Maastomuutosten automaattinen päivitys: Osittain"
+
+#: src/editor/map/context_manager.cpp:89
+msgid "Auto-update Terrain Transitions: No"
+msgstr "Maastomuutosten automaattinen päivitys: Ei"
+
+#: src/editor/map/context_manager.cpp:101
+#: src/editor/map/context_manager.cpp:193
+msgid "(New Map)"
+msgstr "(uusi kartta)"
+
+#: src/editor/map/context_manager.cpp:162
+msgid "Choose a Map to Open"
+msgstr "Valitse avattava kartta"
+
+#: src/editor/map/context_manager.cpp:236
+msgid "Choose a Mask to Apply"
+msgstr "Valitse käytettävä maski"
+
+#: src/editor/map/context_manager.cpp:243
+msgid "Error loading mask"
+msgstr "Maskin lataus epäonnistui."
+
+#: src/editor/map/context_manager.cpp:264
+msgid "Choose Target Map"
+msgstr "Valitse kohdekartta"
+
+#: src/editor/map/context_manager.cpp:271
+#: src/editor/map/context_manager.cpp:631
+msgid "Error loading map"
+msgstr "Kartan lataus epännistui."
+
+#: src/editor/map/context_manager.cpp:389
+msgid "Save the Map As"
+msgstr "Tallenna kartta nimellä"
+
+#: src/editor/map/context_manager.cpp:392
+msgid "The file already exists. Do you want to overwrite it?"
+msgstr "Tiedosto on jo olemassa. Haluatko korvata sen?"
+
+#: src/editor/map/context_manager.cpp:426
+msgid "No random map generators found."
+msgstr "Kartan satunnaisgeneraattoreita ei löydy."
+
+#: src/editor/map/context_manager.cpp:439
+#: src/editor/map/context_manager.cpp:443
+msgid "Map creation failed."
+msgstr "Kartan luonti epäonnistui."
+
+#: src/editor/map/context_manager.cpp:455
+msgid "Unsaved Changes"
+msgstr "Tallentamattomat muutokset"
+
+#: src/editor/map/context_manager.cpp:456
+msgid ""
+"Do you want to discard all changes you made to the map since the last save?"
+msgstr ""
+"Haluatko hävittää kaikki viime tallennuksen jälkeen karttaan tekemäsi "
+"muutokset?"
+
+#: src/editor/map/context_manager.cpp:546
+#: src/editor/map/context_manager.cpp:587
+msgid "This map is already open."
+msgstr "Valittu kartta on jo avoinna."
+
+#: src/editor/map/context_manager.cpp:567
+msgid "Map saved."
+msgstr "Kartta tallennettu."
+
+#: src/editor/map/context_manager.cpp:610
+msgid "Loaded embedded map data"
+msgstr "Ladattu sisäinen karttadata."
+
+#: src/editor/map/context_manager.cpp:611
+#: src/editor/map/context_manager.cpp:625
+msgid "Map loaded from scenario"
+msgstr "Kartta skenaariosta ladattu"
+
+#: src/editor/map/context_manager.cpp:621
+msgid ""
+"Loaded referenced map file:\n"
+"$new"
+msgstr ""
+"Ladattu viitattu karttatiedosto:\n"
+"$new"
+
 #: src/editor/map/editor_map.cpp:150
 msgid "Player"
 msgstr "Pelaaja"
@@ -309,11 +401,11 @@ msgstr "Pelaaja"
 msgid "The size of the target map is different from the current map"
 msgstr "Kohdekartta on eri kokoinen kuin tämänhetkinen kartta."
 
-#: src/editor/map/map_context.cpp:95
+#: src/editor/map/map_context.cpp:103
 msgid "File not found"
 msgstr "Tiedostoa ei löydy"
 
-#: src/editor/map/map_context.cpp:109
+#: src/editor/map/map_context.cpp:117
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -321,15 +413,15 @@ msgstr ""
 "Karttatiedosto näyttää skenaariolta, mutta map_data -arvo ei viittaa "
 "olemassaolevaan tiedostoon"
 
-#: src/editor/map/map_context.cpp:125
+#: src/editor/map/map_context.cpp:133
 msgid "Empty map file"
 msgstr "Tyhjä karttatiedosto"
 
-#: src/editor/map/map_context.cpp:298
+#: src/editor/map/map_context.cpp:306
 msgid "Could not save into scenario"
 msgstr "Skenaarioon ei voida tallentaa"
 
-#: src/editor/map/map_context.cpp:305
+#: src/editor/map/map_context.cpp:313
 msgid "Could not save the map: $msg"
 msgstr "Karttaa ei voitu tallentaa: $msg"
 
@@ -369,74 +461,6 @@ msgstr "Muokattu asetus"
 #~| msgid "Empty map file"
 #~ msgid "Empty file"
 #~ msgstr "Tyhjä karttatiedosto"
-
-#~ msgid "(New Map)"
-#~ msgstr "(uusi kartta)"
-
-#~ msgid ""
-#~ "Do you want to discard all changes you made to the map since the last "
-#~ "save?"
-#~ msgstr ""
-#~ "Haluatko hävittää kaikki viime tallennuksen jälkeen karttaan tekemäsi "
-#~ "muutokset?"
-
-#~ msgid "Unsaved Changes"
-#~ msgstr "Tallentamattomat muutokset"
-
-#~ msgid "Choose a Map to Open"
-#~ msgstr "Valitse avattava kartta"
-
-#~ msgid "Save the Map As"
-#~ msgstr "Tallenna kartta nimellä"
-
-#~ msgid "The file already exists. Do you want to overwrite it?"
-#~ msgstr "Tiedosto on jo olemassa. Haluatko korvata sen?"
-
-#~ msgid "No random map generators found."
-#~ msgstr "Kartan satunnaisgeneraattoreita ei löydy."
-
-#~ msgid "Map creation failed."
-#~ msgstr "Kartan luonti epäonnistui."
-
-#~ msgid "Choose a Mask to Apply"
-#~ msgstr "Valitse käytettävä maski"
-
-#~ msgid "Error loading mask"
-#~ msgstr "Maskin lataus epäonnistui."
-
-#~ msgid "Choose Target Map"
-#~ msgstr "Valitse kohdekartta"
-
-#~ msgid "Error loading map"
-#~ msgstr "Kartan lataus epännistui."
-
-#~ msgid "This map is already open."
-#~ msgstr "Valittu kartta on jo avoinna."
-
-#~ msgid "Map saved."
-#~ msgstr "Kartta tallennettu."
-
-#~ msgid "Loaded embedded map data"
-#~ msgstr "Ladattu sisäinen karttadata."
-
-#~ msgid "Map loaded from scenario"
-#~ msgstr "Kartta skenaariosta ladattu"
-
-#~ msgid ""
-#~ "Loaded referenced map file:\n"
-#~ "$new"
-#~ msgstr ""
-#~ "Ladattu viitattu karttatiedosto:\n"
-#~ "$new"
-
-#~ msgid "Auto-update Terrain Transitions: Yes"
-#~ msgstr "Maastomuutosten automaattinen päivitys: Kyllä"
-
-#~ msgid "Auto-update Terrain Transitions: Partial"
-#~ msgstr "Maastomuutosten automaattinen päivitys: Osittain"
-
-#~ msgid "Auto-update Terrain Transitions: No"
-#~ msgstr "Maastomuutosten automaattinen päivitys: Ei"
 
 #~ msgid "Choose player"
 #~ msgstr "Valitse pelaaja"

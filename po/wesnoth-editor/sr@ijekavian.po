@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-25 12:35+0200\n"
+"POT-Creation-Date: 2012-09-01 18:47+0200\n"
 "PO-Revision-Date: 2011-11-30 16:10+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -302,6 +302,100 @@ msgstr "Понови"
 msgid "Can’t Redo"
 msgstr "Понављање неизводљиво"
 
+#: src/editor/map/context_manager.cpp:82
+msgid "Auto-update Terrain Transitions: Yes"
+msgstr "Самоажурирање прелаза терена: да"
+
+#: src/editor/map/context_manager.cpp:85
+msgid "Auto-update Terrain Transitions: Partial"
+msgstr "Самоажурирање прелаза терена: делимично"
+
+#: src/editor/map/context_manager.cpp:89
+msgid "Auto-update Terrain Transitions: No"
+msgstr "Самоажурирање прелаза терена: не"
+
+#: src/editor/map/context_manager.cpp:101
+#: src/editor/map/context_manager.cpp:193
+msgid "(New Map)"
+msgstr "(нова мапа)"
+
+# наслов
+#: src/editor/map/context_manager.cpp:162
+msgid "Choose a Map to Open"
+msgstr "Избор мапе за отварање"
+
+# наслов
+#: src/editor/map/context_manager.cpp:236
+msgid "Choose a Mask to Apply"
+msgstr "Избор маске за примјењивање"
+
+#: src/editor/map/context_manager.cpp:243
+msgid "Error loading mask"
+msgstr "Грешка при учитавању маске"
+
+# наслов
+#: src/editor/map/context_manager.cpp:264
+msgid "Choose Target Map"
+msgstr "Избор циљне мапе"
+
+#: src/editor/map/context_manager.cpp:271
+#: src/editor/map/context_manager.cpp:631
+msgid "Error loading map"
+msgstr "Грешка при учитавању мапе"
+
+#: src/editor/map/context_manager.cpp:389
+msgid "Save the Map As"
+msgstr "Сачувај мапу као"
+
+#: src/editor/map/context_manager.cpp:392
+msgid "The file already exists. Do you want to overwrite it?"
+msgstr "Датотека већ постоји. Желите ли да је пребришете?"
+
+#: src/editor/map/context_manager.cpp:426
+msgid "No random map generators found."
+msgstr "Нема ниједног генератора насумичних мапа."
+
+#: src/editor/map/context_manager.cpp:439
+#: src/editor/map/context_manager.cpp:443
+msgid "Map creation failed."
+msgstr "Стварање мапе није успјело."
+
+#: src/editor/map/context_manager.cpp:455
+msgid "Unsaved Changes"
+msgstr "Несачуване измене"
+
+#: src/editor/map/context_manager.cpp:456
+msgid ""
+"Do you want to discard all changes you made to the map since the last save?"
+msgstr "Желите ли да одбаците све измјене над мапом од посљедњег уписа?"
+
+#: src/editor/map/context_manager.cpp:546
+#: src/editor/map/context_manager.cpp:587
+msgid "This map is already open."
+msgstr "Ова мапа је већ отворена."
+
+#: src/editor/map/context_manager.cpp:567
+msgid "Map saved."
+msgstr "Мапа је сачувана."
+
+#: src/editor/map/context_manager.cpp:610
+msgid "Loaded embedded map data"
+msgstr "Учитани угнијежђени подаци мапе."
+
+# >> @title:window
+#: src/editor/map/context_manager.cpp:611
+#: src/editor/map/context_manager.cpp:625
+msgid "Map loaded from scenario"
+msgstr "Мапа учитана из сценарија"
+
+#: src/editor/map/context_manager.cpp:621
+msgid ""
+"Loaded referenced map file:\n"
+"$new"
+msgstr ""
+"Учитана поменута датотека мапе:\n"
+"$new"
+
 #: src/editor/map/editor_map.cpp:150
 msgid "Player"
 msgstr "Играч"
@@ -310,11 +404,11 @@ msgstr "Играч"
 msgid "The size of the target map is different from the current map"
 msgstr "Величина циљне мапе је различита од текуће"
 
-#: src/editor/map/map_context.cpp:95
+#: src/editor/map/map_context.cpp:103
 msgid "File not found"
 msgstr "Датотека није нађена."
 
-#: src/editor/map/map_context.cpp:109
+#: src/editor/map/map_context.cpp:117
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -322,15 +416,15 @@ msgstr ""
 "Датотека мапе личи на сценарио, али вриједност map_data не показује на "
 "постојећу датотеку."
 
-#: src/editor/map/map_context.cpp:125
+#: src/editor/map/map_context.cpp:133
 msgid "Empty map file"
 msgstr "Празна датотека мапе."
 
-#: src/editor/map/map_context.cpp:298
+#: src/editor/map/map_context.cpp:306
 msgid "Could not save into scenario"
 msgstr "Не могу да сачувам у сценарио."
 
-#: src/editor/map/map_context.cpp:305
+#: src/editor/map/map_context.cpp:313
 msgid "Could not save the map: $msg"
 msgstr "Не могу да сачувам мапу: $msg"
 
@@ -373,73 +467,3 @@ msgstr "Посебна поставка"
 #~| msgid "Empty map file"
 #~ msgid "Empty file"
 #~ msgstr "Празна датотека мапе."
-
-#~ msgid "(New Map)"
-#~ msgstr "(нова мапа)"
-
-#~ msgid ""
-#~ "Do you want to discard all changes you made to the map since the last "
-#~ "save?"
-#~ msgstr "Желите ли да одбаците све измјене над мапом од посљедњег уписа?"
-
-#~ msgid "Unsaved Changes"
-#~ msgstr "Несачуване измене"
-
-# наслов
-#~ msgid "Choose a Map to Open"
-#~ msgstr "Избор мапе за отварање"
-
-#~ msgid "Save the Map As"
-#~ msgstr "Сачувај мапу као"
-
-#~ msgid "The file already exists. Do you want to overwrite it?"
-#~ msgstr "Датотека већ постоји. Желите ли да је пребришете?"
-
-#~ msgid "No random map generators found."
-#~ msgstr "Нема ниједног генератора насумичних мапа."
-
-#~ msgid "Map creation failed."
-#~ msgstr "Стварање мапе није успјело."
-
-# наслов
-#~ msgid "Choose a Mask to Apply"
-#~ msgstr "Избор маске за примјењивање"
-
-#~ msgid "Error loading mask"
-#~ msgstr "Грешка при учитавању маске"
-
-# наслов
-#~ msgid "Choose Target Map"
-#~ msgstr "Избор циљне мапе"
-
-#~ msgid "Error loading map"
-#~ msgstr "Грешка при учитавању мапе"
-
-#~ msgid "This map is already open."
-#~ msgstr "Ова мапа је већ отворена."
-
-#~ msgid "Map saved."
-#~ msgstr "Мапа је сачувана."
-
-#~ msgid "Loaded embedded map data"
-#~ msgstr "Учитани угнијежђени подаци мапе."
-
-# >> @title:window
-#~ msgid "Map loaded from scenario"
-#~ msgstr "Мапа учитана из сценарија"
-
-#~ msgid ""
-#~ "Loaded referenced map file:\n"
-#~ "$new"
-#~ msgstr ""
-#~ "Учитана поменута датотека мапе:\n"
-#~ "$new"
-
-#~ msgid "Auto-update Terrain Transitions: Yes"
-#~ msgstr "Самоажурирање прелаза терена: да"
-
-#~ msgid "Auto-update Terrain Transitions: Partial"
-#~ msgstr "Самоажурирање прелаза терена: делимично"
-
-#~ msgid "Auto-update Terrain Transitions: No"
-#~ msgstr "Самоажурирање прелаза терена: не"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-25 12:35+0200\n"
+"POT-Creation-Date: 2012-09-01 18:47+0200\n"
 "PO-Revision-Date: 2010-06-25 13:28+0800\n"
 "Last-Translator: YP_Lin <yenpinlin@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -289,6 +289,96 @@ msgstr "重作"
 msgid "Can’t Redo"
 msgstr "無法重作"
 
+#: src/editor/map/context_manager.cpp:82
+msgid "Auto-update Terrain Transitions: Yes"
+msgstr "自動更新地形轉換：是"
+
+#: src/editor/map/context_manager.cpp:85
+msgid "Auto-update Terrain Transitions: Partial"
+msgstr "自動更新地形轉換：部分"
+
+#: src/editor/map/context_manager.cpp:89
+msgid "Auto-update Terrain Transitions: No"
+msgstr "自動更新地形轉換：否"
+
+#: src/editor/map/context_manager.cpp:101
+#: src/editor/map/context_manager.cpp:193
+msgid "(New Map)"
+msgstr "（新地圖）"
+
+#: src/editor/map/context_manager.cpp:162
+msgid "Choose a Map to Open"
+msgstr "選擇地圖載入"
+
+#: src/editor/map/context_manager.cpp:236
+msgid "Choose a Mask to Apply"
+msgstr "選擇要套用的遮罩"
+
+#: src/editor/map/context_manager.cpp:243
+msgid "Error loading mask"
+msgstr "讀取遮罩時錯誤"
+
+#: src/editor/map/context_manager.cpp:264
+msgid "Choose Target Map"
+msgstr "選擇目標地圖"
+
+#: src/editor/map/context_manager.cpp:271
+#: src/editor/map/context_manager.cpp:631
+msgid "Error loading map"
+msgstr "讀取地圖錯誤"
+
+#: src/editor/map/context_manager.cpp:389
+msgid "Save the Map As"
+msgstr "另存地圖"
+
+#: src/editor/map/context_manager.cpp:392
+msgid "The file already exists. Do you want to overwrite it?"
+msgstr "地圖名稱已存在，確定要覆蓋？"
+
+#: src/editor/map/context_manager.cpp:426
+msgid "No random map generators found."
+msgstr "沒有找到隨機地圖產生器？"
+
+#: src/editor/map/context_manager.cpp:439
+#: src/editor/map/context_manager.cpp:443
+msgid "Map creation failed."
+msgstr "創造地圖失敗。"
+
+#: src/editor/map/context_manager.cpp:455
+msgid "Unsaved Changes"
+msgstr "未儲存的更動"
+
+#: src/editor/map/context_manager.cpp:456
+msgid ""
+"Do you want to discard all changes you made to the map since the last save?"
+msgstr "您確定要放棄所有對地圖的更動？"
+
+#: src/editor/map/context_manager.cpp:546
+#: src/editor/map/context_manager.cpp:587
+msgid "This map is already open."
+msgstr "這個地圖已被開啟。"
+
+#: src/editor/map/context_manager.cpp:567
+msgid "Map saved."
+msgstr "地圖已儲存。"
+
+#: src/editor/map/context_manager.cpp:610
+msgid "Loaded embedded map data"
+msgstr "已讀取嵌入地圖的資料"
+
+#: src/editor/map/context_manager.cpp:611
+#: src/editor/map/context_manager.cpp:625
+msgid "Map loaded from scenario"
+msgstr "已從任務中讀取地圖"
+
+#: src/editor/map/context_manager.cpp:621
+msgid ""
+"Loaded referenced map file:\n"
+"$new"
+msgstr ""
+"已讀取地圖引用檔案:\n"
+"$new"
+
 #: src/editor/map/editor_map.cpp:150
 msgid "Player"
 msgstr "玩家"
@@ -297,25 +387,25 @@ msgstr "玩家"
 msgid "The size of the target map is different from the current map"
 msgstr "目標地圖尺寸與當前地圖不同"
 
-#: src/editor/map/map_context.cpp:95
+#: src/editor/map/map_context.cpp:103
 msgid "File not found"
 msgstr "檔案不存在"
 
-#: src/editor/map/map_context.cpp:109
+#: src/editor/map/map_context.cpp:117
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr "這份地圖檔案像是一個任務，但是地圖資料連結一個不存在的檔案。"
 
-#: src/editor/map/map_context.cpp:125
+#: src/editor/map/map_context.cpp:133
 msgid "Empty map file"
 msgstr "空白地圖檔案"
 
-#: src/editor/map/map_context.cpp:298
+#: src/editor/map/map_context.cpp:306
 msgid "Could not save into scenario"
 msgstr "無法儲存地圖"
 
-#: src/editor/map/map_context.cpp:305
+#: src/editor/map/map_context.cpp:313
 msgid "Could not save the map: $msg"
 msgstr "無法儲存地圖： $msg"
 
@@ -357,72 +447,6 @@ msgstr "自選設定"
 #~| msgid "Empty map file"
 #~ msgid "Empty file"
 #~ msgstr "空白地圖檔案"
-
-#~ msgid "(New Map)"
-#~ msgstr "（新地圖）"
-
-#~ msgid ""
-#~ "Do you want to discard all changes you made to the map since the last "
-#~ "save?"
-#~ msgstr "您確定要放棄所有對地圖的更動？"
-
-#~ msgid "Unsaved Changes"
-#~ msgstr "未儲存的更動"
-
-#~ msgid "Choose a Map to Open"
-#~ msgstr "選擇地圖載入"
-
-#~ msgid "Save the Map As"
-#~ msgstr "另存地圖"
-
-#~ msgid "The file already exists. Do you want to overwrite it?"
-#~ msgstr "地圖名稱已存在，確定要覆蓋？"
-
-#~ msgid "No random map generators found."
-#~ msgstr "沒有找到隨機地圖產生器？"
-
-#~ msgid "Map creation failed."
-#~ msgstr "創造地圖失敗。"
-
-#~ msgid "Choose a Mask to Apply"
-#~ msgstr "選擇要套用的遮罩"
-
-#~ msgid "Error loading mask"
-#~ msgstr "讀取遮罩時錯誤"
-
-#~ msgid "Choose Target Map"
-#~ msgstr "選擇目標地圖"
-
-#~ msgid "Error loading map"
-#~ msgstr "讀取地圖錯誤"
-
-#~ msgid "This map is already open."
-#~ msgstr "這個地圖已被開啟。"
-
-#~ msgid "Map saved."
-#~ msgstr "地圖已儲存。"
-
-#~ msgid "Loaded embedded map data"
-#~ msgstr "已讀取嵌入地圖的資料"
-
-#~ msgid "Map loaded from scenario"
-#~ msgstr "已從任務中讀取地圖"
-
-#~ msgid ""
-#~ "Loaded referenced map file:\n"
-#~ "$new"
-#~ msgstr ""
-#~ "已讀取地圖引用檔案:\n"
-#~ "$new"
-
-#~ msgid "Auto-update Terrain Transitions: Yes"
-#~ msgstr "自動更新地形轉換：是"
-
-#~ msgid "Auto-update Terrain Transitions: Partial"
-#~ msgstr "自動更新地形轉換：部分"
-
-#~ msgid "Auto-update Terrain Transitions: No"
-#~ msgstr "自動更新地形轉換：否"
 
 #~ msgid "Choose player"
 #~ msgstr "選擇玩家"

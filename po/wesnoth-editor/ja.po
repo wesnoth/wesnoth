@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.x-SVN\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-25 12:35+0200\n"
+"POT-Creation-Date: 2012-09-01 18:47+0200\n"
 "PO-Revision-Date: 2010-01-31 12:03+0900\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -302,6 +302,96 @@ msgstr "やり直す"
 msgid "Can’t Redo"
 msgstr "リドゥできません"
 
+#: src/editor/map/context_manager.cpp:82
+msgid "Auto-update Terrain Transitions: Yes"
+msgstr "地形変化を自動的に更新: 有効"
+
+#: src/editor/map/context_manager.cpp:85
+msgid "Auto-update Terrain Transitions: Partial"
+msgstr "地形変化を自動的に更新: 部分的"
+
+#: src/editor/map/context_manager.cpp:89
+msgid "Auto-update Terrain Transitions: No"
+msgstr "地形変化を自動的に更新: 無効"
+
+#: src/editor/map/context_manager.cpp:101
+#: src/editor/map/context_manager.cpp:193
+msgid "(New Map)"
+msgstr "（新規マップ）"
+
+#: src/editor/map/context_manager.cpp:162
+msgid "Choose a Map to Open"
+msgstr "読み込むマップを選択"
+
+#: src/editor/map/context_manager.cpp:236
+msgid "Choose a Mask to Apply"
+msgstr "適用するマスクを選択"
+
+#: src/editor/map/context_manager.cpp:243
+msgid "Error loading mask"
+msgstr "マスクの読み込みに失敗"
+
+#: src/editor/map/context_manager.cpp:264
+msgid "Choose Target Map"
+msgstr "ターゲットマップを選択"
+
+#: src/editor/map/context_manager.cpp:271
+#: src/editor/map/context_manager.cpp:631
+msgid "Error loading map"
+msgstr "マップの読み込みに失敗"
+
+#: src/editor/map/context_manager.cpp:389
+msgid "Save the Map As"
+msgstr "マップに名前を付けて保存"
+
+#: src/editor/map/context_manager.cpp:392
+msgid "The file already exists. Do you want to overwrite it?"
+msgstr "マップはすでに存在します。上書きしますか？"
+
+#: src/editor/map/context_manager.cpp:426
+msgid "No random map generators found."
+msgstr "ランダムマップジェネレータがありません。"
+
+#: src/editor/map/context_manager.cpp:439
+#: src/editor/map/context_manager.cpp:443
+msgid "Map creation failed."
+msgstr "マップの作成に失敗しました。"
+
+#: src/editor/map/context_manager.cpp:455
+msgid "Unsaved Changes"
+msgstr "保存されていない変更点"
+
+#: src/editor/map/context_manager.cpp:456
+msgid ""
+"Do you want to discard all changes you made to the map since the last save?"
+msgstr "最後に保存したところからの変更を全て放棄しますか？"
+
+#: src/editor/map/context_manager.cpp:546
+#: src/editor/map/context_manager.cpp:587
+msgid "This map is already open."
+msgstr "このマップは既に開かれています。"
+
+#: src/editor/map/context_manager.cpp:567
+msgid "Map saved."
+msgstr "マップを保存しました。"
+
+#: src/editor/map/context_manager.cpp:610
+msgid "Loaded embedded map data"
+msgstr "読み込まれた埋め込みマップデータ"
+
+#: src/editor/map/context_manager.cpp:611
+#: src/editor/map/context_manager.cpp:625
+msgid "Map loaded from scenario"
+msgstr "シナリオからを読み込まれたマップ"
+
+#: src/editor/map/context_manager.cpp:621
+msgid ""
+"Loaded referenced map file:\n"
+"$new"
+msgstr ""
+"読み込まれた参照マップ:\n"
+"$new"
+
 #: src/editor/map/editor_map.cpp:150
 msgid "Player"
 msgstr "プレイヤー"
@@ -310,11 +400,11 @@ msgstr "プレイヤー"
 msgid "The size of the target map is different from the current map"
 msgstr "ターゲットマップのサイズが現在のマップのサイズと異なります"
 
-#: src/editor/map/map_context.cpp:95
+#: src/editor/map/map_context.cpp:103
 msgid "File not found"
 msgstr "ファイルが見つかりません"
 
-#: src/editor/map/map_context.cpp:109
+#: src/editor/map/map_context.cpp:117
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -322,15 +412,15 @@ msgstr ""
 "マップファイルはシナリオのようですが、map_data 値が存在するファイルを指し示し"
 "ていません"
 
-#: src/editor/map/map_context.cpp:125
+#: src/editor/map/map_context.cpp:133
 msgid "Empty map file"
 msgstr "空のマップファイル"
 
-#: src/editor/map/map_context.cpp:298
+#: src/editor/map/map_context.cpp:306
 msgid "Could not save into scenario"
 msgstr "シナリオに保存できませんでした。"
 
-#: src/editor/map/map_context.cpp:305
+#: src/editor/map/map_context.cpp:313
 msgid "Could not save the map: $msg"
 msgstr "マップを保存できませんでした: $msg"
 
@@ -372,72 +462,6 @@ msgstr "設定の変更"
 #~| msgid "Empty map file"
 #~ msgid "Empty file"
 #~ msgstr "空のマップファイル"
-
-#~ msgid "(New Map)"
-#~ msgstr "（新規マップ）"
-
-#~ msgid ""
-#~ "Do you want to discard all changes you made to the map since the last "
-#~ "save?"
-#~ msgstr "最後に保存したところからの変更を全て放棄しますか？"
-
-#~ msgid "Unsaved Changes"
-#~ msgstr "保存されていない変更点"
-
-#~ msgid "Choose a Map to Open"
-#~ msgstr "読み込むマップを選択"
-
-#~ msgid "Save the Map As"
-#~ msgstr "マップに名前を付けて保存"
-
-#~ msgid "The file already exists. Do you want to overwrite it?"
-#~ msgstr "マップはすでに存在します。上書きしますか？"
-
-#~ msgid "No random map generators found."
-#~ msgstr "ランダムマップジェネレータがありません。"
-
-#~ msgid "Map creation failed."
-#~ msgstr "マップの作成に失敗しました。"
-
-#~ msgid "Choose a Mask to Apply"
-#~ msgstr "適用するマスクを選択"
-
-#~ msgid "Error loading mask"
-#~ msgstr "マスクの読み込みに失敗"
-
-#~ msgid "Choose Target Map"
-#~ msgstr "ターゲットマップを選択"
-
-#~ msgid "Error loading map"
-#~ msgstr "マップの読み込みに失敗"
-
-#~ msgid "This map is already open."
-#~ msgstr "このマップは既に開かれています。"
-
-#~ msgid "Map saved."
-#~ msgstr "マップを保存しました。"
-
-#~ msgid "Loaded embedded map data"
-#~ msgstr "読み込まれた埋め込みマップデータ"
-
-#~ msgid "Map loaded from scenario"
-#~ msgstr "シナリオからを読み込まれたマップ"
-
-#~ msgid ""
-#~ "Loaded referenced map file:\n"
-#~ "$new"
-#~ msgstr ""
-#~ "読み込まれた参照マップ:\n"
-#~ "$new"
-
-#~ msgid "Auto-update Terrain Transitions: Yes"
-#~ msgstr "地形変化を自動的に更新: 有効"
-
-#~ msgid "Auto-update Terrain Transitions: Partial"
-#~ msgstr "地形変化を自動的に更新: 部分的"
-
-#~ msgid "Auto-update Terrain Transitions: No"
-#~ msgstr "地形変化を自動的に更新: 無効"
 
 #~ msgid "Choose player"
 #~ msgstr "プレイヤーを選んでください"

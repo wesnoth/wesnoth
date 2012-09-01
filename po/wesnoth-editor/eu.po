@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-25 12:35+0200\n"
+"POT-Creation-Date: 2012-09-01 18:47+0200\n"
 "PO-Revision-Date: 2005-08-10 17:05+0200\n"
 "Last-Translator: Mikel Olasagasti <hey_neken@mundurat.net>\n"
 "Language-Team: Basque\n"
@@ -285,6 +285,98 @@ msgstr "Berregin"
 msgid "Can’t Redo"
 msgstr ""
 
+#: src/editor/map/context_manager.cpp:82
+msgid "Auto-update Terrain Transitions: Yes"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:85
+msgid "Auto-update Terrain Transitions: Partial"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:89
+msgid "Auto-update Terrain Transitions: No"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:101
+#: src/editor/map/context_manager.cpp:193
+msgid "(New Map)"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:162
+#, fuzzy
+msgid "Choose a Map to Open"
+msgstr "Hautatu kargatzeko mapa bat"
+
+#: src/editor/map/context_manager.cpp:236
+#, fuzzy
+msgid "Choose a Mask to Apply"
+msgstr "Hautatu kargatzeko mapa bat"
+
+#: src/editor/map/context_manager.cpp:243
+msgid "Error loading mask"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:264
+#, fuzzy
+msgid "Choose Target Map"
+msgstr "Hautatu kargatzeko mapa bat"
+
+#: src/editor/map/context_manager.cpp:271
+#: src/editor/map/context_manager.cpp:631
+msgid "Error loading map"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:389
+msgid "Save the Map As"
+msgstr "Gorde mapa honela"
+
+#: src/editor/map/context_manager.cpp:392
+#, fuzzy
+msgid "The file already exists. Do you want to overwrite it?"
+msgstr "Mapa aurretik existitzen da. Gainidatzea nahi duzu?"
+
+#: src/editor/map/context_manager.cpp:426
+msgid "No random map generators found."
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:439
+#: src/editor/map/context_manager.cpp:443
+msgid "Map creation failed."
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:455
+msgid "Unsaved Changes"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:456
+msgid ""
+"Do you want to discard all changes you made to the map since the last save?"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:546
+#: src/editor/map/context_manager.cpp:587
+msgid "This map is already open."
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:567
+msgid "Map saved."
+msgstr "Mapa gordeta."
+
+#: src/editor/map/context_manager.cpp:610
+msgid "Loaded embedded map data"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:611
+#: src/editor/map/context_manager.cpp:625
+msgid "Map loaded from scenario"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:621
+msgid ""
+"Loaded referenced map file:\n"
+"$new"
+msgstr ""
+
 #: src/editor/map/editor_map.cpp:150
 msgid "Player"
 msgstr "Jokalaria"
@@ -293,26 +385,26 @@ msgstr "Jokalaria"
 msgid "The size of the target map is different from the current map"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:95
+#: src/editor/map/map_context.cpp:103
 msgid "File not found"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:109
+#: src/editor/map/map_context.cpp:117
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:125
+#: src/editor/map/map_context.cpp:133
 msgid "Empty map file"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:298
+#: src/editor/map/map_context.cpp:306
 #, fuzzy
 msgid "Could not save into scenario"
 msgstr "Ezin izan da mapa gorde: $msg"
 
-#: src/editor/map/map_context.cpp:305
+#: src/editor/map/map_context.cpp:313
 msgid "Could not save the map: $msg"
 msgstr "Ezin izan da mapa gorde: $msg"
 
@@ -348,24 +440,6 @@ msgstr ""
 #: src/gui/dialogs/editor_settings.cpp:166
 msgid "Custom setting"
 msgstr ""
-
-#, fuzzy
-#~ msgid "Choose a Map to Open"
-#~ msgstr "Hautatu kargatzeko mapa bat"
-
-#~ msgid "Save the Map As"
-#~ msgstr "Gorde mapa honela"
-
-#, fuzzy
-#~ msgid "The file already exists. Do you want to overwrite it?"
-#~ msgstr "Mapa aurretik existitzen da. Gainidatzea nahi duzu?"
-
-#, fuzzy
-#~ msgid "Choose a Mask to Apply"
-#~ msgstr "Hautatu kargatzeko mapa bat"
-
-#~ msgid "Map saved."
-#~ msgstr "Mapa gordeta."
 
 #~ msgid "FG"
 #~ msgstr "Aurrean"

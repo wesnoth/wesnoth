@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-25 12:35+0200\n"
+"POT-Creation-Date: 2012-09-01 18:47+0200\n"
 "PO-Revision-Date: 2012-01-09 20:07+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -296,6 +296,98 @@ msgstr "Atstatyti"
 msgid "Can’t Redo"
 msgstr "Negalima pakartoti"
 
+#: src/editor/map/context_manager.cpp:82
+msgid "Auto-update Terrain Transitions: Yes"
+msgstr "Automatiškai atnaujinti perėjimus tarp langelių: Taip"
+
+#: src/editor/map/context_manager.cpp:85
+msgid "Auto-update Terrain Transitions: Partial"
+msgstr "Automatiškai atnaujinti perėjimus tarp langelių: Dalinai"
+
+#: src/editor/map/context_manager.cpp:89
+msgid "Auto-update Terrain Transitions: No"
+msgstr "Automatiškai atnaujinti perėjimus tarp langelių: Ne"
+
+#: src/editor/map/context_manager.cpp:101
+#: src/editor/map/context_manager.cpp:193
+msgid "(New Map)"
+msgstr "(Naujas žemėlapis)"
+
+#: src/editor/map/context_manager.cpp:162
+msgid "Choose a Map to Open"
+msgstr "Pasirinkite atveriamą žemėlapį"
+
+#: src/editor/map/context_manager.cpp:236
+msgid "Choose a Mask to Apply"
+msgstr "Pasirinkite kaukę, kurią pritaikysite"
+
+#: src/editor/map/context_manager.cpp:243
+msgid "Error loading mask"
+msgstr "Klaida, įkeliant kaukę"
+
+#: src/editor/map/context_manager.cpp:264
+msgid "Choose Target Map"
+msgstr "Pasirinkite žemėlapį"
+
+#: src/editor/map/context_manager.cpp:271
+#: src/editor/map/context_manager.cpp:631
+msgid "Error loading map"
+msgstr "Klaida, įkeliant žemėlapį"
+
+#: src/editor/map/context_manager.cpp:389
+msgid "Save the Map As"
+msgstr "Išsaugoti žemėlapį kaip"
+
+#: src/editor/map/context_manager.cpp:392
+msgid "The file already exists. Do you want to overwrite it?"
+msgstr "Failas jau egzistuoja. Ar norite jį perrašyti?"
+
+#: src/editor/map/context_manager.cpp:426
+msgid "No random map generators found."
+msgstr "Nerasta atsitiktinių žemėlapių generatorių."
+
+#: src/editor/map/context_manager.cpp:439
+#: src/editor/map/context_manager.cpp:443
+msgid "Map creation failed."
+msgstr "Žemėlapio sukūrimas nepavyko."
+
+#: src/editor/map/context_manager.cpp:455
+msgid "Unsaved Changes"
+msgstr "Neišsaugoti pakeitimai"
+
+#: src/editor/map/context_manager.cpp:456
+msgid ""
+"Do you want to discard all changes you made to the map since the last save?"
+msgstr ""
+"Ar norite atsisakyti visų pakeitimų, kuriuos padarėte žemėlapyje po "
+"paskutinio išsaugojimo?"
+
+#: src/editor/map/context_manager.cpp:546
+#: src/editor/map/context_manager.cpp:587
+msgid "This map is already open."
+msgstr "Šis žemėlapis jau yra atvertas."
+
+#: src/editor/map/context_manager.cpp:567
+msgid "Map saved."
+msgstr "Žemėlapis išsaugotas."
+
+#: src/editor/map/context_manager.cpp:610
+msgid "Loaded embedded map data"
+msgstr "Įkelti integruoti žemėlapio duomenys"
+
+#: src/editor/map/context_manager.cpp:611
+#: src/editor/map/context_manager.cpp:625
+msgid "Map loaded from scenario"
+msgstr "Žemėlapis įkeltas iš scenarijaus"
+
+#: src/editor/map/context_manager.cpp:621
+msgid ""
+"Loaded referenced map file:\n"
+"$new"
+msgstr ""
+"Užkrautas priklausomas žemėlapis:\n"
+"$new"
+
 #: src/editor/map/editor_map.cpp:150
 msgid "Player"
 msgstr "Žaidėjas"
@@ -304,11 +396,11 @@ msgstr "Žaidėjas"
 msgid "The size of the target map is different from the current map"
 msgstr "Pritaikomo žemėlapio dydis skiriasi nuo dabartinio žemėlapio dydžio"
 
-#: src/editor/map/map_context.cpp:95
+#: src/editor/map/map_context.cpp:103
 msgid "File not found"
 msgstr "Failas nerastas"
 
-#: src/editor/map/map_context.cpp:109
+#: src/editor/map/map_context.cpp:117
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -316,15 +408,15 @@ msgstr ""
 "Žemėlapio failas atrodo kaip scenarijus, tačiau map_data vertė nerodo į "
 "egzistuojantį failą"
 
-#: src/editor/map/map_context.cpp:125
+#: src/editor/map/map_context.cpp:133
 msgid "Empty map file"
 msgstr "Tuščias žemėlapio failas"
 
-#: src/editor/map/map_context.cpp:298
+#: src/editor/map/map_context.cpp:306
 msgid "Could not save into scenario"
 msgstr "Nepavyksta įrašyti į scenarijų"
 
-#: src/editor/map/map_context.cpp:305
+#: src/editor/map/map_context.cpp:313
 msgid "Could not save the map: $msg"
 msgstr "Nepavyksta išsaugoti žemėlapio: $msg"
 
@@ -364,71 +456,3 @@ msgstr "Savas nustatymas"
 #~| msgid "Empty map file"
 #~ msgid "Empty file"
 #~ msgstr "Tuščias žemėlapio failas"
-
-#~ msgid "(New Map)"
-#~ msgstr "(Naujas žemėlapis)"
-
-#~ msgid ""
-#~ "Do you want to discard all changes you made to the map since the last "
-#~ "save?"
-#~ msgstr ""
-#~ "Ar norite atsisakyti visų pakeitimų, kuriuos padarėte žemėlapyje po "
-#~ "paskutinio išsaugojimo?"
-
-#~ msgid "Unsaved Changes"
-#~ msgstr "Neišsaugoti pakeitimai"
-
-#~ msgid "Choose a Map to Open"
-#~ msgstr "Pasirinkite atveriamą žemėlapį"
-
-#~ msgid "Save the Map As"
-#~ msgstr "Išsaugoti žemėlapį kaip"
-
-#~ msgid "The file already exists. Do you want to overwrite it?"
-#~ msgstr "Failas jau egzistuoja. Ar norite jį perrašyti?"
-
-#~ msgid "No random map generators found."
-#~ msgstr "Nerasta atsitiktinių žemėlapių generatorių."
-
-#~ msgid "Map creation failed."
-#~ msgstr "Žemėlapio sukūrimas nepavyko."
-
-#~ msgid "Choose a Mask to Apply"
-#~ msgstr "Pasirinkite kaukę, kurią pritaikysite"
-
-#~ msgid "Error loading mask"
-#~ msgstr "Klaida, įkeliant kaukę"
-
-#~ msgid "Choose Target Map"
-#~ msgstr "Pasirinkite žemėlapį"
-
-#~ msgid "Error loading map"
-#~ msgstr "Klaida, įkeliant žemėlapį"
-
-#~ msgid "This map is already open."
-#~ msgstr "Šis žemėlapis jau yra atvertas."
-
-#~ msgid "Map saved."
-#~ msgstr "Žemėlapis išsaugotas."
-
-#~ msgid "Loaded embedded map data"
-#~ msgstr "Įkelti integruoti žemėlapio duomenys"
-
-#~ msgid "Map loaded from scenario"
-#~ msgstr "Žemėlapis įkeltas iš scenarijaus"
-
-#~ msgid ""
-#~ "Loaded referenced map file:\n"
-#~ "$new"
-#~ msgstr ""
-#~ "Užkrautas priklausomas žemėlapis:\n"
-#~ "$new"
-
-#~ msgid "Auto-update Terrain Transitions: Yes"
-#~ msgstr "Automatiškai atnaujinti perėjimus tarp langelių: Taip"
-
-#~ msgid "Auto-update Terrain Transitions: Partial"
-#~ msgstr "Automatiškai atnaujinti perėjimus tarp langelių: Dalinai"
-
-#~ msgid "Auto-update Terrain Transitions: No"
-#~ msgstr "Automatiškai atnaujinti perėjimus tarp langelių: Ne"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-25 12:35+0200\n"
+"POT-Creation-Date: 2012-09-01 18:47+0200\n"
 "PO-Revision-Date: 2011-04-23 23:39-0000\n"
 "Last-Translator: Len vanDalsen <l.dog.96@gmail.com>\n"
 "Language-Team: afrikaans\n"
@@ -282,6 +282,99 @@ msgstr "Doen weer"
 msgid "Can’t Redo"
 msgstr "Kan nie weer doen nie"
 
+#: src/editor/map/context_manager.cpp:82
+msgid "Auto-update Terrain Transitions: Yes"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:85
+msgid "Auto-update Terrain Transitions: Partial"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:89
+msgid "Auto-update Terrain Transitions: No"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:101
+#: src/editor/map/context_manager.cpp:193
+msgid "(New Map)"
+msgstr "(Nuwe Kaart)"
+
+#: src/editor/map/context_manager.cpp:162
+msgid "Choose a Map to Open"
+msgstr "Kies 'n kaart om oop te maak"
+
+#: src/editor/map/context_manager.cpp:236
+#, fuzzy
+msgid "Choose a Mask to Apply"
+msgstr "Kies 'n kaart om te laai"
+
+#: src/editor/map/context_manager.cpp:243
+#, fuzzy
+#| msgid "Error loading map"
+msgid "Error loading mask"
+msgstr "Fout met Kaart laaiing"
+
+#: src/editor/map/context_manager.cpp:264
+#, fuzzy
+#| msgid "Choose a Map to Open"
+msgid "Choose Target Map"
+msgstr "Kies 'n kaart om oop te maak"
+
+#: src/editor/map/context_manager.cpp:271
+#: src/editor/map/context_manager.cpp:631
+msgid "Error loading map"
+msgstr "Fout met Kaart laaiing"
+
+#: src/editor/map/context_manager.cpp:389
+msgid "Save the Map As"
+msgstr "Stoor die Kaart As"
+
+#: src/editor/map/context_manager.cpp:392
+msgid "The file already exists. Do you want to overwrite it?"
+msgstr "Kaart bestaan alklaar. Wil jy dit vervang?"
+
+#: src/editor/map/context_manager.cpp:426
+msgid "No random map generators found."
+msgstr "Geen lukraak kaart makers gekry nie"
+
+#: src/editor/map/context_manager.cpp:439
+#: src/editor/map/context_manager.cpp:443
+msgid "Map creation failed."
+msgstr "Kaart skeping het misluk"
+
+#: src/editor/map/context_manager.cpp:455
+msgid "Unsaved Changes"
+msgstr "Ongestoorde veranderinge"
+
+#: src/editor/map/context_manager.cpp:456
+msgid ""
+"Do you want to discard all changes you made to the map since the last save?"
+msgstr "wil jy al die veranderinge sedert jou laaste stoor vergeet?"
+
+#: src/editor/map/context_manager.cpp:546
+#: src/editor/map/context_manager.cpp:587
+msgid "This map is already open."
+msgstr "Hierdie kaart is al klaar oop"
+
+#: src/editor/map/context_manager.cpp:567
+msgid "Map saved."
+msgstr "Kaart gestoor."
+
+#: src/editor/map/context_manager.cpp:610
+msgid "Loaded embedded map data"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:611
+#: src/editor/map/context_manager.cpp:625
+msgid "Map loaded from scenario"
+msgstr "Kaart gelaai van draaiboek af"
+
+#: src/editor/map/context_manager.cpp:621
+msgid ""
+"Loaded referenced map file:\n"
+"$new"
+msgstr ""
+
 #: src/editor/map/editor_map.cpp:150
 msgid "Player"
 msgstr "Speler"
@@ -290,25 +383,25 @@ msgstr "Speler"
 msgid "The size of the target map is different from the current map"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:95
+#: src/editor/map/map_context.cpp:103
 msgid "File not found"
 msgstr "Kan nie leer kry nier"
 
-#: src/editor/map/map_context.cpp:109
+#: src/editor/map/map_context.cpp:117
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:125
+#: src/editor/map/map_context.cpp:133
 msgid "Empty map file"
 msgstr "Leeg kaart leer"
 
-#: src/editor/map/map_context.cpp:298
+#: src/editor/map/map_context.cpp:306
 msgid "Could not save into scenario"
 msgstr "Kon nie die draaiboek stoor nie: $msg"
 
-#: src/editor/map/map_context.cpp:305
+#: src/editor/map/map_context.cpp:313
 msgid "Could not save the map: $msg"
 msgstr "Kon nie die kaart stoor nie: $msg"
 
@@ -350,48 +443,6 @@ msgstr ""
 #~| msgid "Empty map file"
 #~ msgid "Empty file"
 #~ msgstr "Leeg kaart leer"
-
-#~ msgid "(New Map)"
-#~ msgstr "(Nuwe Kaart)"
-
-#~ msgid ""
-#~ "Do you want to discard all changes you made to the map since the last "
-#~ "save?"
-#~ msgstr "wil jy al die veranderinge sedert jou laaste stoor vergeet?"
-
-#~ msgid "Unsaved Changes"
-#~ msgstr "Ongestoorde veranderinge"
-
-#~ msgid "Choose a Map to Open"
-#~ msgstr "Kies 'n kaart om oop te maak"
-
-#~ msgid "Save the Map As"
-#~ msgstr "Stoor die Kaart As"
-
-#~ msgid "The file already exists. Do you want to overwrite it?"
-#~ msgstr "Kaart bestaan alklaar. Wil jy dit vervang?"
-
-#~ msgid "No random map generators found."
-#~ msgstr "Geen lukraak kaart makers gekry nie"
-
-#~ msgid "Map creation failed."
-#~ msgstr "Kaart skeping het misluk"
-
-#, fuzzy
-#~ msgid "Choose a Mask to Apply"
-#~ msgstr "Kies 'n kaart om te laai"
-
-#~ msgid "Error loading map"
-#~ msgstr "Fout met Kaart laaiing"
-
-#~ msgid "This map is already open."
-#~ msgstr "Hierdie kaart is al klaar oop"
-
-#~ msgid "Map saved."
-#~ msgstr "Kaart gestoor."
-
-#~ msgid "Map loaded from scenario"
-#~ msgstr "Kaart gelaai van draaiboek af"
 
 #~ msgid "Choose player"
 #~ msgstr "Kies speler"

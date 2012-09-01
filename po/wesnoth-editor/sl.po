@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ed-sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-25 12:35+0200\n"
+"POT-Creation-Date: 2012-09-01 18:47+0200\n"
 "PO-Revision-Date: 2010-09-14 14:56+0100\n"
 "Last-Translator: Klemen Košir <klemen913@gmail.com>\n"
 "Language-Team: sl\n"
@@ -284,6 +284,99 @@ msgstr "Uveljavi"
 msgid "Can’t Redo"
 msgstr "Ni mogoče uveljaviti"
 
+#: src/editor/map/context_manager.cpp:82
+msgid "Auto-update Terrain Transitions: Yes"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:85
+msgid "Auto-update Terrain Transitions: Partial"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:89
+msgid "Auto-update Terrain Transitions: No"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:101
+#: src/editor/map/context_manager.cpp:193
+msgid "(New Map)"
+msgstr "(Nova karta)"
+
+#: src/editor/map/context_manager.cpp:162
+#, fuzzy
+msgid "Choose a Map to Open"
+msgstr "Izberi karto za nalaganje"
+
+#: src/editor/map/context_manager.cpp:236
+#, fuzzy
+msgid "Choose a Mask to Apply"
+msgstr "Izberi karto za nalaganje"
+
+#: src/editor/map/context_manager.cpp:243
+#, fuzzy
+#| msgid "Error loading map"
+msgid "Error loading mask"
+msgstr "Napaka med nalaganjem karte"
+
+#: src/editor/map/context_manager.cpp:264
+#, fuzzy
+msgid "Choose Target Map"
+msgstr "Izberi karto za nalaganje"
+
+#: src/editor/map/context_manager.cpp:271
+#: src/editor/map/context_manager.cpp:631
+msgid "Error loading map"
+msgstr "Napaka med nalaganjem karte"
+
+#: src/editor/map/context_manager.cpp:389
+msgid "Save the Map As"
+msgstr "Shrani karto kot"
+
+#: src/editor/map/context_manager.cpp:392
+msgid "The file already exists. Do you want to overwrite it?"
+msgstr "Datoteka že obstaja. Jo želite prepisati?"
+
+#: src/editor/map/context_manager.cpp:426
+msgid "No random map generators found."
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:439
+#: src/editor/map/context_manager.cpp:443
+msgid "Map creation failed."
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:455
+msgid "Unsaved Changes"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:456
+msgid ""
+"Do you want to discard all changes you made to the map since the last save?"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:546
+#: src/editor/map/context_manager.cpp:587
+msgid "This map is already open."
+msgstr "Ta karta je že odprta."
+
+#: src/editor/map/context_manager.cpp:567
+msgid "Map saved."
+msgstr "Karta shranjena."
+
+#: src/editor/map/context_manager.cpp:610
+msgid "Loaded embedded map data"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:611
+#: src/editor/map/context_manager.cpp:625
+msgid "Map loaded from scenario"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:621
+msgid ""
+"Loaded referenced map file:\n"
+"$new"
+msgstr ""
+
 #: src/editor/map/editor_map.cpp:150
 msgid "Player"
 msgstr "Igralec"
@@ -292,26 +385,26 @@ msgstr "Igralec"
 msgid "The size of the target map is different from the current map"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:95
+#: src/editor/map/map_context.cpp:103
 msgid "File not found"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:109
+#: src/editor/map/map_context.cpp:117
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:125
+#: src/editor/map/map_context.cpp:133
 msgid "Empty map file"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:298
+#: src/editor/map/map_context.cpp:306
 #, fuzzy
 msgid "Could not save into scenario"
 msgstr "Karte nisem mogel shraniti: $msg"
 
-#: src/editor/map/map_context.cpp:305
+#: src/editor/map/map_context.cpp:313
 msgid "Could not save the map: $msg"
 msgstr "Karte ni mogoče shraniti: $msg"
 
@@ -347,32 +440,6 @@ msgstr ""
 #: src/gui/dialogs/editor_settings.cpp:166
 msgid "Custom setting"
 msgstr ""
-
-#~ msgid "(New Map)"
-#~ msgstr "(Nova karta)"
-
-#, fuzzy
-#~ msgid "Choose a Map to Open"
-#~ msgstr "Izberi karto za nalaganje"
-
-#~ msgid "Save the Map As"
-#~ msgstr "Shrani karto kot"
-
-#~ msgid "The file already exists. Do you want to overwrite it?"
-#~ msgstr "Datoteka že obstaja. Jo želite prepisati?"
-
-#, fuzzy
-#~ msgid "Choose a Mask to Apply"
-#~ msgstr "Izberi karto za nalaganje"
-
-#~ msgid "Error loading map"
-#~ msgstr "Napaka med nalaganjem karte"
-
-#~ msgid "This map is already open."
-#~ msgstr "Ta karta je že odprta."
-
-#~ msgid "Map saved."
-#~ msgstr "Karta shranjena."
 
 #, fuzzy
 #~ msgid "FG"
