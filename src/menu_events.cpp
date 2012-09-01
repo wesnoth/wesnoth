@@ -856,7 +856,7 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 		//create a unit with traits
 		recorder.add_recruit(recruit_num, loc, recruited_from);
 		const unit new_unit(u_type, side_num, true);
-		place_recruit(new_unit, loc, recruited_from, false, true);
+		bool mutated = place_recruit(new_unit, loc, recruited_from, false, true);
 		current_team.spend_gold(u_type->cost());
 		statistics::recruit_unit(new_unit);
 
@@ -870,7 +870,7 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 		resources::undo_stack->push_back(undo_action(new_unit, loc, recruited_from, undo_action::RECRUIT));
 		// Disallow undoing of recruits. Can be enabled again once the unit's
 		// description= key doesn't use random anymore.
-		if (shroud_cleared || new_unit.type()->genders().size() > 1
+		if (shroud_cleared || mutated || new_unit.type()->genders().size() > 1
 			|| new_unit.type()->has_random_traits()) {
 			clear_undo_stack(side_num);
 		}
@@ -1077,15 +1077,14 @@ bool menu_handler::do_recall(const unit& un, int side_num, const map_location& r
 
 	recall_list_team.erase(it);
 	recorder.add_recall(un.id(), recall_location, recall_from);
-	place_recruit(un, recall_location, recall_from, true, true);
+	bool mutated = place_recruit(un, recall_location, recall_from, true, true);
 	statistics::recall_unit(un);
 	current_team.spend_gold(current_team.recall_cost());
 
 	bool shroud_cleared = clear_shroud(side_num);
-	if (shroud_cleared) {
+	resources::undo_stack->push_back(undo_action(un, recall_location, recall_from, undo_action::RECALL));
+	if ( shroud_cleared || mutated ) {
 		clear_undo_stack(side_num);
-	} else {
-		resources::undo_stack->push_back(undo_action(un, recall_location, recall_from, undo_action::RECALL));
 	}
 
 	resources::redo_stack->clear();

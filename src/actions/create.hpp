@@ -134,8 +134,9 @@ const std::vector<const unit*> get_recalls_for_location(int side, const map_loca
  * Place a unit into the game.
  * The unit will be placed on @a recruit_location, which should be retrieved
  * through a call to recruit_location().
+ * @returns true if an event has mutated the game state.
  */
-void place_recruit(const unit &u, const map_location &recruit_location, const map_location& recruited_from,
+bool place_recruit(const unit &u, const map_location &recruit_location, const map_location& recruited_from,
 	bool is_recall, bool show = false, bool fire_event = true, bool full_movement = false,
 	bool wml_triggered = false);
 

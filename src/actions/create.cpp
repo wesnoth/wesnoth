@@ -649,13 +649,12 @@ std::string find_recruit_location(const int side, map_location& recruit_location
  */
 static void recruit_checksums(const unit &new_unit, bool wml_triggered)
 {
-	const std::string checksum = get_checksum(new_unit);
-
 	const config* ran_results = get_random_results();
 	if ( ran_results != NULL ) {
 		// When recalling from WML there should be no random results, if we use
 		// random we might get the replay out of sync.
 		assert(!wml_triggered);
+		const std::string checksum = get_checksum(new_unit);
 		const std::string rc = (*ran_results)["checksum"];
 		if ( rc != checksum ) {
 			std::stringstream error_msg;
@@ -672,19 +671,40 @@ static void recruit_checksums(const unit &new_unit, bool wml_triggered)
 
 	} else if ( wml_triggered == false ) {
 		config cfg;
-		cfg["checksum"] = checksum;
+		cfg["checksum"] = get_checksum(new_unit);
 		set_random_results(cfg);
 	}
 }
 
-void place_recruit(const unit &u, const map_location &recruit_location, const map_location& recruited_from,
+/**
+ * Tries to make @a un_it valid, and updates @a current_loc.
+ * Used by place_recruit() after WML might have changed something.
+ * @returns true if the iterator was made valid.
+ */
+static bool validate_recruit_iterator(unit_map::iterator & un_it,
+                                      map_location & current_loc)
+{
+	if ( !un_it.valid() ) {
+		// Maybe WML provided a replacement?
+		un_it = resources::units->find(current_loc);
+		if ( un_it == resources::units->end() )
+			// The unit is gone.
+			return false;
+	}
+	current_loc = un_it->get_location();
+	return true;
+}
+
+bool place_recruit(const unit &u, const map_location &recruit_location, const map_location& recruited_from,
     bool is_recall, bool show, bool fire_event, bool full_movement,
     bool wml_triggered)
 {
+	// Alias
+	unit_map & units = *resources::units;
+
 	LOG_NG << "placing new unit on location " << recruit_location << "\n";
 
-	assert(resources::units->count(recruit_location) == 0);
-
+	bool mutated = false;
 	unit new_unit = u;
 	if (full_movement) {
 		new_unit.set_movement(new_unit.total_movement());
@@ -695,58 +715,63 @@ void place_recruit(const unit &u, const map_location &recruit_location, const ma
 	new_unit.heal_all();
 	new_unit.set_hidden(true);
 
-	resources::units->add(recruit_location, new_unit);
+	std::pair<unit_map::iterator, bool> add_result =  units.add(recruit_location, new_unit);
+	assert(add_result.second);
+	unit_map::iterator & new_unit_itor = add_result.first;
+	map_location current_loc = recruit_location;
+
+	// Do some bookkeeping.
 	recruit_checksums(new_unit, wml_triggered);
 	resources::whiteboard->on_gamestate_change();
 
-	if (is_recall)
-	{
-		if (fire_event) {
-			LOG_NG << "firing prerecall event\n";
-			game_events::fire("prerecall",recruit_location, recruited_from);
+	if ( fire_event ) {
+		const std::string event_name = is_recall ? "prerecall" : "prerecruit";
+		LOG_NG << "firing " << event_name << " event\n";
+		{
+			using namespace game_events;
+			mutated |= fire(event_name, entity_location(*new_unit_itor), recruited_from);
 		}
+		if ( !validate_recruit_iterator(new_unit_itor, current_loc) )
+			return true;
+		new_unit_itor->set_hidden(true);
+	}
+	preferences::encountered_units().insert(new_unit_itor->type_id());
+
+	if ( show ) {
+		// Find a leader to animate.
+		map_location leader_loc = map_location::null_location;
+		for ( unit_map::iterator leader = units.begin(); leader != units.end(); ++leader )
+			if ( leader->can_recruit() &&
+			     leader->side() == new_unit.side() && // Match the original side.
+			     can_recruit_on(*leader, recruit_location) )
+			{
+				leader_loc = leader->get_location();
+				break;
+			}
+		unit_display::unit_recruited(current_loc, leader_loc);
 	}
 	else
-	{
-		LOG_NG << "firing prerecruit event\n";
-		game_events::fire("prerecruit",recruit_location, recruited_from);
-	}
-
-	unit_map::iterator leader = resources::units->begin();
-	for(; leader != resources::units->end(); ++leader)
-		if (leader->can_recruit() &&
-		    leader->side() == new_unit.side() &&
-		    can_recruit_on(*leader, recruit_location))
-			break;
-	if (show) {
-		if (leader.valid()) {
-			unit_display::unit_recruited(recruit_location, leader->get_location());
-		} else {
-			unit_display::unit_recruited(recruit_location);
-		}
-	}
-
-	const unit_map::iterator new_unit_itor = resources::units->find(recruit_location);
-	if (new_unit_itor.valid()) {
+		// Just make the unit appear.
 		new_unit_itor->set_hidden(false);
-		if (resources::game_map->is_village(recruit_location)) {
-			get_village(recruit_location,new_unit_itor->side());
-		}
-		preferences::encountered_units().insert(new_unit_itor->type_id());
 
+	// Village capturing.
+	if ( resources::game_map->is_village(current_loc) ) {
+		mutated |= get_village(current_loc, new_unit_itor->side());
+		if ( !validate_recruit_iterator(new_unit_itor, current_loc) )
+			return true;
 	}
 
-	if (is_recall)
-	{
-		if (fire_event) {
-			LOG_NG << "firing recall event\n";
-			game_events::fire("recall", recruit_location, recruited_from);
+	if ( fire_event ) {
+		const std::string event_name = is_recall ? "recall" : "recruit";
+		LOG_NG << "firing " << event_name << " event\n";
+		{
+			using namespace game_events;
+			mutated |= fire(event_name, entity_location(*new_unit_itor), recruited_from);
 		}
+		if ( !validate_recruit_iterator(new_unit_itor, current_loc) )
+			return true;
 	}
-	else
-	{
-		LOG_NG << "firing recruit event\n";
-		game_events::fire("recruit",recruit_location, recruited_from);
-	}
+
+	return mutated;
 }
 
