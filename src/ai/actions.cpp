@@ -678,9 +678,8 @@ void recall_result::do_execute()
 
 		unit &un = *rec;
 		recorder.add_recall(un.id(), recall_location_, recall_from_);
-		place_recruit(un, recall_location_, recall_from_, true, true);
+		place_recruit(un, recall_location_, recall_from_, my_team.recall_cost(), true, true);
 		statistics::recall_unit(un);
-		my_team.spend_gold(my_team.recall_cost());
 
 		my_team.recall_list().erase(rec);
 		if (resources::screen!=NULL) {
@@ -885,9 +884,8 @@ void recruit_result::do_execute()
 	const std::string recruit_err = find_recruit_location(get_side(), recruit_location_, recruit_from_, u->id());
 	if(recruit_err.empty()) {
 		const unit new_unit(u, get_side(), true);
-		place_recruit(new_unit, recruit_location_, recruit_from_, false, preferences::show_ai_moves());
+		place_recruit(new_unit, recruit_location_, recruit_from_, u->cost(), false, preferences::show_ai_moves());
 		statistics::recruit_unit(new_unit);
-		get_my_team().spend_gold(u->cost());
 		// Confirm the transaction - i.e. don't undo recruitment
 		replay_guard.confirm_transaction();
 		set_gamestate_changed();

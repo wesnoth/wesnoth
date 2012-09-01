@@ -15,6 +15,8 @@ Version 1.11.0+svn:
  * WML engine:
    * The recall, recruit, prerecall, and prerecruit events will now block
      undoing unless they contain [allow_undo].
+   * The cost of a recall/recruit is now paid between the prerecall/prerecruit
+     and recall/recruit events. (FR #16711)
  * Miscellaneous and bug fixes:
    * Fix invalid memory access crash resulting from deleting all saved games
      in the Load Game dialog

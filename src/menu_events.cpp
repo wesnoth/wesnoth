@@ -856,8 +856,7 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 		//create a unit with traits
 		recorder.add_recruit(recruit_num, loc, recruited_from);
 		const unit new_unit(u_type, side_num, true);
-		bool mutated = place_recruit(new_unit, loc, recruited_from, false, true);
-		current_team.spend_gold(u_type->cost());
+		bool mutated = place_recruit(new_unit, loc, recruited_from, u_type->cost(), false, true);
 		statistics::recruit_unit(new_unit);
 
 		//MP_COUNTDOWN grant time bonus for recruiting
@@ -1077,9 +1076,8 @@ bool menu_handler::do_recall(const unit& un, int side_num, const map_location& r
 
 	recall_list_team.erase(it);
 	recorder.add_recall(un.id(), recall_location, recall_from);
-	bool mutated = place_recruit(un, recall_location, recall_from, true, true);
+	bool mutated = place_recruit(un, recall_location, recall_from, current_team.recall_cost(), true, true);
 	statistics::recall_unit(un);
-	current_team.spend_gold(current_team.recall_cost());
 
 	bool shroud_cleared = clear_shroud(side_num);
 	resources::undo_stack->push_back(undo_action(un, recall_location, recall_from, undo_action::RECALL));
@@ -1256,9 +1254,8 @@ void menu_handler::redo(int side_num)
 			assert(unit_it != current_team.recall_list().end());
 			current_team.recall_list().erase(unit_it);
 
-			place_recruit(un, loc, from, true, true);
+			place_recruit(un, loc, from, current_team.recall_cost(), true, true);
 			statistics::recall_unit(un);
-			current_team.spend_gold(current_team.recall_cost());
 			gui_->invalidate(loc);
 			recorder.add_checksum_check(loc);
 		} else {
@@ -1295,8 +1292,7 @@ void menu_handler::redo(int side_num)
 		if(msg.empty()) {
 			const unit new_unit = action.affected_unit;
 			//unit new_unit(action.affected_unit.type(),team_num_,true);
-			place_recruit(new_unit, loc, from, false, true);
-			current_team.spend_gold(new_unit.type()->cost());
+			place_recruit(new_unit, loc, from, new_unit.type()->cost(), false, true);
 			statistics::recruit_unit(new_unit);
 			gui_->invalidate(loc);
 

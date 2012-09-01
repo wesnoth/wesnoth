@@ -987,28 +987,30 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 
 			const std::string res = find_recruit_location(side_num, loc, from, u_type->id());
 			const unit new_unit(u_type, side_num, true);
+			const int beginning_gold = current_team.gold();
+
 			if (res.empty()) {
-				place_recruit(new_unit, loc, from, false, !get_replay_source().is_skipping());
+				place_recruit(new_unit, loc, from, u_type->cost(), false, !get_replay_source().is_skipping());
 			} else {
 				std::stringstream errbuf;
 				errbuf << "cannot recruit unit: " << res << "\n";
 				replay::process_error(errbuf.str());
+				// Keep the gold total right.
+				current_team.spend_gold(u_type->cost());
 			}
 
-			if (u_type->cost() > current_team.gold()) {
+			if ( u_type->cost() > beginning_gold ) {
 				std::stringstream errbuf;
 				errbuf << "unit '" << u_type->id() << "' is too expensive to recruit: "
-					<< u_type->cost() << "/" << current_team.gold() << "\n";
+					<< u_type->cost() << "/" << beginning_gold << "\n";
 				replay::process_error(errbuf.str());
 			}
 			LOG_REPLAY << "recruit: team=" << side_num << " '" << u_type->id() << "' at (" << loc
-				<< ") cost=" << u_type->cost() << " from gold=" << current_team.gold() << ' ';
-
+			           << ") cost=" << u_type->cost() << " from gold=" << beginning_gold << ' '
+			           << "-> " << current_team.gold() << "\n";
 
 			statistics::recruit_unit(new_unit);
 
-			current_team.spend_gold(u_type->cost());
-			LOG_REPLAY << "-> " << (current_team.gold()) << "\n";
 			fix_shroud = true;
 			check_checksums(*cfg);
 		}
@@ -1024,9 +1026,8 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 
 			if (recall_unit != current_team.recall_list().end()) {
 				statistics::recall_unit(*recall_unit);
-				place_recruit(*recall_unit, loc, from, true, !get_replay_source().is_skipping());
+				place_recruit(*recall_unit, loc, from, current_team.recall_cost(), true, !get_replay_source().is_skipping());
 				current_team.recall_list().erase(recall_unit);
-				current_team.spend_gold(current_team.recall_cost());
 				fix_shroud = true;
 			} else {
 				replay::process_error("illegal recall: unit_id '" + unit_id + "' could not be found within the recall list.\n");

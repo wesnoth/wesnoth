@@ -696,7 +696,7 @@ static bool validate_recruit_iterator(unit_map::iterator & un_it,
 }
 
 bool place_recruit(const unit &u, const map_location &recruit_location, const map_location& recruited_from,
-    bool is_recall, bool show, bool fire_event, bool full_movement,
+    int cost, bool is_recall, bool show, bool fire_event, bool full_movement,
     bool wml_triggered)
 {
 	// Alias
@@ -736,6 +736,7 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 		new_unit_itor->set_hidden(true);
 	}
 	preferences::encountered_units().insert(new_unit_itor->type_id());
+	(*resources::teams)[new_unit.side()-1].spend_gold(cost);
 
 	if ( show ) {
 		// Find a leader to animate.
