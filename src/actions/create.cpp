@@ -643,6 +643,40 @@ std::string find_recruit_location(const int side, map_location& recruit_location
 	return std::string();
 }
 
+
+/**
+ * Performs a checksum check on a newly recruited/recalled unit.
+ */
+static void recruit_checksums(const unit &new_unit, bool wml_triggered)
+{
+	const std::string checksum = get_checksum(new_unit);
+
+	const config* ran_results = get_random_results();
+	if ( ran_results != NULL ) {
+		// When recalling from WML there should be no random results, if we use
+		// random we might get the replay out of sync.
+		assert(!wml_triggered);
+		const std::string rc = (*ran_results)["checksum"];
+		if ( rc != checksum ) {
+			std::stringstream error_msg;
+			error_msg << "SYNC: In recruit " << new_unit.type_id() <<
+				": has checksum " << checksum <<
+				" while datasource has checksum " << rc << "\n";
+			ERR_NG << error_msg.str();
+
+			config cfg_unit1;
+			new_unit.write(cfg_unit1);
+			DBG_NG << cfg_unit1;
+			replay::process_error(error_msg.str());
+		}
+
+	} else if ( wml_triggered == false ) {
+		config cfg;
+		cfg["checksum"] = checksum;
+		set_random_results(cfg);
+	}
+}
+
 void place_recruit(const unit &u, const map_location &recruit_location, const map_location& recruited_from,
     bool is_recall, bool show, bool fire_event, bool full_movement,
     bool wml_triggered)
@@ -662,6 +696,8 @@ void place_recruit(const unit &u, const map_location &recruit_location, const ma
 	new_unit.set_hidden(true);
 
 	resources::units->add(recruit_location, new_unit);
+	recruit_checksums(new_unit, wml_triggered);
+	resources::whiteboard->on_gamestate_change();
 
 	if (is_recall)
 	{
@@ -674,15 +710,6 @@ void place_recruit(const unit &u, const map_location &recruit_location, const ma
 	{
 		LOG_NG << "firing prerecruit event\n";
 		game_events::fire("prerecruit",recruit_location, recruited_from);
-	}
-	const unit_map::iterator new_unit_itor = resources::units->find(recruit_location);
-	if (new_unit_itor.valid()) {
-		new_unit_itor->set_hidden(false);
-		if (resources::game_map->is_village(recruit_location)) {
-			get_village(recruit_location,new_unit_itor->side());
-		}
-		preferences::encountered_units().insert(new_unit_itor->type_id());
-
 	}
 
 	unit_map::iterator leader = resources::units->begin();
@@ -698,6 +725,17 @@ void place_recruit(const unit &u, const map_location &recruit_location, const ma
 			unit_display::unit_recruited(recruit_location);
 		}
 	}
+
+	const unit_map::iterator new_unit_itor = resources::units->find(recruit_location);
+	if (new_unit_itor.valid()) {
+		new_unit_itor->set_hidden(false);
+		if (resources::game_map->is_village(recruit_location)) {
+			get_village(recruit_location,new_unit_itor->side());
+		}
+		preferences::encountered_units().insert(new_unit_itor->type_id());
+
+	}
+
 	if (is_recall)
 	{
 		if (fire_event) {
@@ -710,35 +748,5 @@ void place_recruit(const unit &u, const map_location &recruit_location, const ma
 		LOG_NG << "firing recruit event\n";
 		game_events::fire("recruit",recruit_location, recruited_from);
 	}
-
-	const std::string checksum = get_checksum(new_unit);
-
-	const config* ran_results = get_random_results();
-	if(ran_results != NULL) {
-		// When recalling from WML there should be no random results, if we use
-		// random we might get the replay out of sync.
-		assert(!wml_triggered);
-		const std::string rc = (*ran_results)["checksum"];
-		if(rc != checksum) {
-			std::stringstream error_msg;
-			error_msg << "SYNC: In recruit " << new_unit.type_id() <<
-				": has checksum " << checksum <<
-				" while datasource has checksum " <<
-				rc << "\n";
-			ERR_NG << error_msg.str();
-
-			config cfg_unit1;
-			new_unit.write(cfg_unit1);
-			DBG_NG << cfg_unit1;
-			replay::process_error(error_msg.str());
-		}
-
-	} else if(wml_triggered == false) {
-		config cfg;
-		cfg["checksum"] = checksum;
-		set_random_results(cfg);
-	}
-
-	resources::whiteboard->on_gamestate_change();
 }
 
