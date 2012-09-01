@@ -60,14 +60,16 @@ inline int relative_size(int size)
 }
 
 // automatic computation of other font sizes, to be made a default for theme-provided values
-const int
-	SIZE_TINY       = relative_size(10),
-	SIZE_SMALL      = relative_size(12),
+// The actual definitions have been moved to font.cpp in order to suppress
+// spurious compiler warnings that were appended to legitimate errors.
+extern const int
+	SIZE_TINY,  //    = relative_size(10),
+	SIZE_SMALL, //    = relative_size(12),
 
-	SIZE_15         = relative_size(15),
-	SIZE_PLUS       = relative_size(16),
-	SIZE_LARGE      = relative_size(18),
-	SIZE_XLARGE     = relative_size(24)
+	SIZE_15,    //    = relative_size(15),
+	SIZE_PLUS,  //    = relative_size(16),
+	SIZE_LARGE, //    = relative_size(18),
+	SIZE_XLARGE //    = relative_size(24)
   ;
 
 // Returns a SDL surface containing the text rendered in a given color.
