@@ -3635,6 +3635,9 @@ namespace game_events {
 		return internal_wml_tracking;
 	}
 
+
+	const entity_location entity_location::null_entity(map_location::null_location);
+
 	/**
 	 * Constructor for when an event has a location but not necessarily a unit.
 	 * Can also be used if the event has a unit and the caller already has the

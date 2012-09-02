@@ -74,6 +74,8 @@ namespace game_events
 		bool matches_unit_filter(const unit_map::const_iterator & un_it,
 		                         const vconfig & filter) const;
 
+		static const entity_location null_entity;
+
 	private:
 		/// The underlying ID of the unit associated with this.
 		/// Set to 0 if there is no associated unit.
@@ -152,13 +154,13 @@ namespace game_events
 	 * Events may have up to two arguments, both of which must be locations.
 	 */
 	bool fire(const std::string& event,
-			const entity_location& loc1=map_location::null_location,
-			const entity_location& loc2=map_location::null_location,
+			const entity_location& loc1=entity_location::null_entity,
+			const entity_location& loc2=entity_location::null_entity,
 			const config& data=config());
 
 	void raise(const std::string& event,
-			const entity_location& loc1=map_location::null_location,
-			const entity_location& loc2=map_location::null_location,
+			const entity_location& loc1=entity_location::null_entity,
+			const entity_location& loc2=entity_location::null_entity,
 			const config& data=config());
 
 	bool conditional_passed(const vconfig& cond, bool backwards_compat=true);
