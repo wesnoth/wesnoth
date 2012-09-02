@@ -47,6 +47,8 @@ static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 
 
+namespace {
+
 struct castle_cost_calculator : pathfind::cost_calculator
 {
 	castle_cost_calculator(const gamemap& map, const team & view_team) :
@@ -72,6 +74,7 @@ private:
 	const bool use_shroud_; // Allows faster checks when shroud is disabled.
 };
 
+}
 
 unit_creator::unit_creator(team &tm, const map_location &start_pos)
   : add_to_recall_(false),discover_(false),get_village_(false),invalidate_(false), rename_side_(false), show_(false), start_pos_(start_pos), team_(tm)
@@ -677,6 +680,32 @@ static void recruit_checksums(const unit &new_unit, bool wml_triggered)
 }
 
 /**
+ * Locates a leader on side @a side who can recruit at @a recruit_location.
+ * A leader at @a recruited_from is chosen in preference to others.
+ */
+static const map_location & find_recruit_leader(int side,
+	const map_location &recruit_location, const map_location &recruited_from)
+{
+	const unit_map & units = *resources::units;
+
+	// See if the preferred location is an option.
+	unit_map::const_iterator leader = units.find(recruited_from);
+	if ( leader != units.end()  &&  leader->can_recruit()  &&
+	     leader->side() == side &&  can_recruit_on(*leader, recruit_location) )
+		return leader->get_location();
+
+	// Check all units.
+	for ( leader = units.begin(); leader != units.end(); ++leader )
+		if ( leader->can_recruit()  &&  leader->side() == side  &&
+		     can_recruit_on(*leader, recruit_location) )
+			return leader->get_location();
+
+	// No usable leader found.
+	return map_location::null_location;
+}
+
+
+/**
  * Tries to make @a un_it valid, and updates @a current_loc.
  * Used by place_recruit() after WML might have changed something.
  * @returns true if the iterator was made valid.
@@ -699,9 +728,6 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
     int cost, bool is_recall, bool show, bool fire_event, bool full_movement,
     bool wml_triggered)
 {
-	// Alias
-	unit_map & units = *resources::units;
-
 	LOG_NG << "placing new unit on location " << recruit_location << "\n";
 
 	bool mutated = false;
@@ -715,7 +741,13 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 	new_unit.heal_all();
 	new_unit.set_hidden(true);
 
-	std::pair<unit_map::iterator, bool> add_result =  units.add(recruit_location, new_unit);
+	// Get the leader location before adding the unit to the board.
+	const map_location leader_loc = !show ? map_location::null_location :
+			find_recruit_leader(new_unit.side(), recruit_location, recruited_from);
+
+	// Add the unit to the board.
+	std::pair<unit_map::iterator, bool> add_result =
+			resources::units->add(recruit_location, new_unit);
 	assert(add_result.second);
 	unit_map::iterator & new_unit_itor = add_result.first;
 	map_location current_loc = recruit_location;
@@ -739,21 +771,10 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 	(*resources::teams)[new_unit.side()-1].spend_gold(cost);
 
 	if ( show ) {
-		// Find a leader to animate.
-		map_location leader_loc = map_location::null_location;
-		for ( unit_map::iterator leader = units.begin(); leader != units.end(); ++leader )
-			if ( leader->can_recruit() &&
-			     leader->side() == new_unit.side() && // Match the original side.
-			     can_recruit_on(*leader, recruit_location) )
-			{
-				leader_loc = leader->get_location();
-				break;
-			}
 		unit_display::unit_recruited(current_loc, leader_loc);
 	}
-	else
-		// Just make the unit appear.
-		new_unit_itor->set_hidden(false);
+	// Make sure the unit appears (either !show or the animation is suppressed).
+	new_unit_itor->set_hidden(false);
 
 	// Village capturing.
 	if ( resources::game_map->is_village(current_loc) ) {
