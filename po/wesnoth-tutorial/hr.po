@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.0-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-18 09:41+0200\n"
-"PO-Revision-Date: 2008-03-02 14:04+0100\n"
+"POT-Creation-Date: 2012-09-01 18:48+0200\n"
+"PO-Revision-Date: 2012-08-29 10:28+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -18,6 +18,8 @@ msgid ""
 "\n"
 "<big>Click a mouse button or press the spacebar to continue...</big>"
 msgstr ""
+"\n"
+"<big>Klikni mišem ili pritisni Razmak za nastavak...</big>"
 
 #. [tutorial]: id=tutorial
 #. Hello translators! Tutorial is meant to be a bit funny at the start,
@@ -25,7 +27,7 @@ msgstr ""
 #. Any questions email rusty@rustcorp.com.au!"
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:49
 msgid "Wesnoth Tutorial Part I"
-msgstr ""
+msgstr "Wesnoth Tutorial Prvi Dio"
 
 #. [command]
 #. [option]: speaker=narrator
@@ -35,14 +37,14 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:177
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:356
 msgid "Konrad"
-msgstr ""
+msgstr "Konrad"
 
 #. [event]
 #. [unit]: id=Delfador, type=Elder Mage
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:140
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:147
 msgid "Delfador"
-msgstr ""
+msgstr "Delfador"
 
 #. [objectives]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:151
@@ -53,21 +55,26 @@ msgid ""
 "Healing\n"
 "Recruiting"
 msgstr ""
+"Naučit ćeš osnove:\n"
+"Kretanja\n"
+"Napadanja\n"
+"Lječenja\n"
+"Novačenja"
 
 #. [objective]: condition=win
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:157
 msgid "Destroy a fierce enemy"
-msgstr ""
+msgstr "Uništi zlobnog neprijatelja"
 
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:161
 msgid "Get yourself killed"
-msgstr ""
+msgstr "Ubi se"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:173
 msgid "Who would you like to play?"
-msgstr ""
+msgstr "S kim želiš igrati?"
 
 #. [command]
 #. [option]: speaker=narrator
@@ -77,13 +84,13 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:197
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:431
 msgid "Li’sar"
-msgstr ""
+msgstr "Li'sar"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:212
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:218
 msgid "Welcome to Wesnoth!"
-msgstr ""
+msgstr "Dobrodošao u Wesnoth!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:213
@@ -92,6 +99,8 @@ msgid ""
 "You are standing in the keep, and your mentor Delfador is on the east side "
 "of the river."
 msgstr ""
+"U ovom tutorijalu, igraš kao Konrad.\n"
+"Stojiš u dvorcu i tvoj mentor Delfador je na istočnoj strani rijeke."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:219
@@ -100,6 +109,8 @@ msgid ""
 "You are standing in the keep, and your mentor Delfador is on the east side "
 "of the river."
 msgstr ""
+"U ovom tutorijalu, igraš kao Li'sar.\n"
+"Stojiš u dvorcu i tvoj mentor Delfador je na istočnoj strani rijeke."
 
 #. [event]
 #. [event]: id=student moves 0}
@@ -108,7 +119,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:410
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:532
 msgid "Left click on Konrad"
-msgstr ""
+msgstr "Klikni da Konrada lijevom tipkom miša"
 
 #. [event]
 #. [event]: id=student moves 0}
@@ -117,7 +128,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:411
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:533
 msgid "Left click on Li’sar"
-msgstr ""
+msgstr "Klikni na Li'sar lijevom tipkom miša"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:243
@@ -125,6 +136,8 @@ msgid ""
 "<big>You have selected Konrad.</big>\n"
 "The places he can move to are highlighted."
 msgstr ""
+"<big>Odabrao si Konrada.</big>\n"
+"Mjesta na koje se možeš pomaknuti su osvjetljena."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:250
@@ -132,33 +145,39 @@ msgid ""
 "<big>You have selected Li’sar.</big>\n"
 "The places she can move to are highlighted."
 msgstr ""
+"<big>Odabrao si Li'sar.</big>\n"
+"Mjesta na koje se možeš pomaknuti su osvijetljena."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:256
 msgid "Here"
-msgstr ""
+msgstr "Ovdje"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:262
 msgid ""
 "Move Konrad next to Delfador by clicking on the tile marked <b>Here</b>."
 msgstr ""
+"Pomakni Konrada do Delfadora tako da klikneš na polje označeno sa <b>Ovdje</"
+"b>."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:266
 msgid ""
 "Move Li’sar next to Delfador by clicking on the tile marked <b>Here</b>."
 msgstr ""
+"Pomakni Li'sar do Delfadora tako da klikneš  na polje označeno sa <b>Ovdje</"
+"b>."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:271
 msgid "Left click on tile labeled <b>Here</b>"
-msgstr ""
+msgstr "Klikni na polje označeno <b>Ovdje</b>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:296
 msgid "Oops!"
-msgstr ""
+msgstr "Ups!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:298
@@ -166,38 +185,40 @@ msgid ""
 "You moved to the wrong place! After this message, you can press <b>u</b> to "
 "undo, then try again."
 msgstr ""
+"Pomaknuo si se na krivo mjesto! Nakon ove poruke pritisni slovo <b>u</b> da "
+"poništiš potez i probaš ponovo."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:320
 msgid "Good morning, Delfador! Is it time to attack things?"
-msgstr ""
+msgstr "Dobro jutro, Delfadore! Je li vrijeme za borbu?"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:324
 msgid "Um, well..."
-msgstr ""
+msgstr "Uh, pa..."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:328
 msgid "Have you found an orc for me to fight, huh? A troll?"
-msgstr ""
+msgstr "Jesi li našao jednog orka za mene? Ili trola?"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:332
 msgid "Quiet! I will summon an enemy for you..."
-msgstr ""
+msgstr "Tišina! Sada ću prizvati neprijatelja za tebe..."
 
 #. [event]: id=student moves 0}
 #. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:360
 #: data/campaigns/tutorial/units/Quintain.cfg:4
 msgid "Quintain"
-msgstr ""
+msgstr "Lutka"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:364
 msgid "... this quintain!"
-msgstr ""
+msgstr "...ovu lutku"
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:368
@@ -207,7 +228,7 @@ msgstr ""
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:375
 msgid "You have 32 hitpoints and a sword, boy. I’m fairly sure you’ll win."
-msgstr ""
+msgstr "Imaš 32 bodova života i mač, dječaće. Siguran sam da ćeš pobjediti."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:380
@@ -220,7 +241,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:388
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:394
 msgid "Attacking"
-msgstr ""
+msgstr "Napad"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:390
@@ -229,6 +250,9 @@ msgid ""
 "(the quintain). You will see an attack description. When you click <b>OK</"
 "b>, Konrad will attack."
 msgstr ""
+"Da bi napao lutku, prvo označi napadača (Konrada), a onda metu (lutku). "
+"Vidjeti ćeš detalje o napadu. Kada ih vidiš, klikni <b>OK</> i Konrad će "
+"napasti."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:395
@@ -237,16 +261,19 @@ msgid ""
 "(the quintain). You will see an attack description. When you click <b>OK</"
 "b>, Li’sar will attack."
 msgstr ""
+"Da bi napao lutku, prvo označi napadača (Li'sar), a onda metu (lutku). "
+"Vidjeti ćeš detalje o napadu. Kada ih vidiš, klikni <b>OK</> i Li'sar će "
+"napasti."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:406
 msgid "Click on the quintain to attack it"
-msgstr ""
+msgstr "Klikni na lutku da ju napadneš"
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:442
 msgid "Hey! This quintain fights back!"
-msgstr ""
+msgstr "Hej! Ova lutka uzvraća napad!"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:446
@@ -256,18 +283,18 @@ msgstr ""
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:450
 msgid "Should I retreat?"
-msgstr ""
+msgstr "Trebam li se povući?"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:454
 msgid "Good idea!"
-msgstr ""
+msgstr "Dobra ideja!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:459
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:463
 msgid "Crowns"
-msgstr ""
+msgstr "Krune"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:460
@@ -275,6 +302,8 @@ msgid ""
 "The tiny metal crown above Delfador means you will lose the game if he is "
 "killed. You will also lose the game if your leader (Konrad) is killed."
 msgstr ""
+"Mala metalna kruna iznad Delfadora znači da ćeš izgubiti igru ako je on "
+"ubijen. Isto tako vrijedi i za tvojeg vođu (Konrada)."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:464
@@ -282,6 +311,8 @@ msgid ""
 "The tiny metal crown above Delfador means you will lose the game if he is "
 "killed. You will also lose the game if your leader (Li’sar) is killed."
 msgstr ""
+"Mala metalna kruna iznad Delfadora znači da ćeš izgubiti igru ako je on "
+"ubijen. Isto tako vrijedi i za tvojeg vođu (Li'sar)."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:476
@@ -1621,15 +1652,18 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1561
+#, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
 "I am particularly good with the sword, dealing 8 damage in 4 attacks."
 msgstr ""
+"Napredovanje me potpuna izliječilo!\n"
+"Posebno sam dobar sa mačem, dajem"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1730
 msgid "You took too long! We’ll never be rid of these orcs!"
-msgstr ""
+msgstr "Treba ti previše vremena! Sada se nikada nećemo riješiti orka!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1753
@@ -1640,11 +1674,15 @@ msgid ""
 "was specifically designed as a beginner’s campaign. Konrad, Li’sar and "
 "Delfador are characters from <i>Heir to the Throne</i>."
 msgstr ""
+"Pobijedio si orke! sada bi mogao probati neke kamanje za početnike, kao: "
+"<i>Južna Straža</i>, <i>Napad Orka</i>, <i>Priča o Dva Brata<i>, ili "
+"<i>Nasljednik Trona</i>. <i>Južna Straža</i> je posebno dizajnirana za "
+"početnike. Konrad, Li'sar i Delfador su likovi iz <i>Nasljednik Trona</i>."
 
 #. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:4
 msgid "Fighter"
-msgstr ""
+msgstr "Borac"
 
 #. [unit_type]: id=Fighter, race=human
 #. [unit_type]: id=Fighteress, race=human
@@ -1655,21 +1693,23 @@ msgid ""
 "attack from enemies. However, they have the potential to become great "
 "warriors one day."
 msgstr ""
+"Mladi i jaki, Borci su vješti u mačevanju i ranjivi napadima neprijatelja. "
+"Ipak, imaju potencijal biti veliki ratnici."
 
 #. [attack]: type=blade
 #: data/campaigns/tutorial/units/Fighter.cfg:24
 msgid "sword"
-msgstr ""
+msgstr "mač"
 
 #. [unit_type]: id=Fighteress, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:4
 msgid "female^Fighter"
-msgstr ""
+msgstr "žena^Borac"
 
 #. [attack]: type=blade
 #: data/campaigns/tutorial/units/Fighteress.cfg:24
 msgid "saber"
-msgstr ""
+msgstr "oštrica"
 
 #. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/tutorial/units/Quintain.cfg:16
@@ -1677,8 +1717,10 @@ msgid ""
 "Quintains are used to practice swordplay and jousting on. It would be "
 "extremely unusual to be attacked by one."
 msgstr ""
+"Lutke se koriste za treniranje mačevanja. Bilo bi jako čudno da nekoga "
+"napadnu."
 
 #. [attack]: type=impact
 #: data/campaigns/tutorial/units/Quintain.cfg:24
 msgid "flail"
-msgstr ""
+msgstr "mlat"
