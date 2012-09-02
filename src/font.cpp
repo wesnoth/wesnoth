@@ -447,18 +447,6 @@ const SDL_Color NORMAL_COLOR = {0xDD,0xDD,0xDD,0},
 				BIGMAP_COLOR = {0xFF,0xFF,0xFF,0};
 const SDL_Color DISABLED_COLOR = inverse(PETRIFIED_COLOR);
 
-// automatic computation of other font sizes, to be made a default for
-// theme-provided values
-const int
-	SIZE_TINY       = relative_size(10),
-	SIZE_SMALL      = relative_size(12),
-
-	SIZE_15         = relative_size(15),
-	SIZE_PLUS       = relative_size(16),
-	SIZE_LARGE      = relative_size(18),
-	SIZE_XLARGE     = relative_size(24)
-  ;
-
 namespace {
 
 static const size_t max_text_line_width = 4096;
