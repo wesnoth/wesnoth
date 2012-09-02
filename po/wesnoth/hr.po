@@ -9,17 +9,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-08-24 21:37+0200\n"
-"PO-Revision-Date: 2008-04-01 15:36+0100\n"
+"PO-Revision-Date: 2012-08-19 13:32+0100\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
-"Language: \n"
+"Language: hr_HR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Poedit-Language: Croatian\n"
-"X-Poedit-Country: CROATIA\n"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:4
@@ -29,7 +27,7 @@ msgstr "Sažimanje spremljenih igara"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:11
 msgid "Confirm deleting saves"
-msgstr ""
+msgstr "Potvrdi brisanje spremljene igre"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:18
@@ -38,24 +36,23 @@ msgstr "Listanje mišem"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:25
-#, fuzzy
 msgid "Middle-click scrolling"
-msgstr "Listanje mišem"
+msgstr "Listanje srednjom tipkom miša"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:32
 msgid "Keep scrolling when mouse leaves window"
-msgstr ""
+msgstr "Paniranje se nastavlja kad miš napusti prozor"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:39
 msgid "Local time of day area lighting"
-msgstr ""
+msgstr "Osvijetljenje područja prema lokalnom dobu dana"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:46
 msgid "Show titlescreen animation"
-msgstr ""
+msgstr "Animiraj naslovni ekran"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:53
@@ -77,12 +74,12 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:71
 msgid "Accept whispers from friends only"
-msgstr ""
+msgstr "Šaptanja primaj samo od prijatelja"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:78
 msgid "Auto-open whisper windows in lobby"
-msgstr ""
+msgstr "Prozori za šaptanje se sami otvaraju u lobby-u"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:85
@@ -97,22 +94,22 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:99
 msgid "Disable notifications"
-msgstr ""
+msgstr "Bez obavijesti."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:106
 msgid "Reverse time graphics"
-msgstr ""
+msgstr "Obrnuta grafika vremena"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:107
 msgid "Choose whether the sun moves left-to-right or right-to-left"
-msgstr ""
+msgstr "Odaberi da se sunce miče s lijeva na desno ili obrnuto"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:114
 msgid "Follow unit actions"
-msgstr ""
+msgstr "Slijedi pokrete jedinice"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:115
@@ -120,11 +117,13 @@ msgid ""
 "Choose whether the map view should scroll to a unit when an action or move "
 "is animated"
 msgstr ""
+"Odaberi treba li prikaz mape otklizati do jedinice pri animaciji radnje ili "
+"pomicanja"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:131
 msgid "Chat message aging"
-msgstr ""
+msgstr "Starenje poruka u chatu"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:132
@@ -132,21 +131,23 @@ msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable"
 msgstr ""
+"Minuta pričekati prije nego se izbriše poruka chata u igri. Postavite 0 da "
+"isključite."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:142
 msgid "Use 12-hour clock format"
-msgstr ""
+msgstr "Koristi format 12 sati."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:149
 msgid "Confirm loading of saves from a different version"
-msgstr ""
+msgstr "Potvrdi učitavanje spremljenih igra sa druge verzije"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:156
 msgid "Show all unit types in help"
-msgstr ""
+msgstr "Pokaži sve tipove jedinica u Pomoći"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:157
@@ -154,11 +155,13 @@ msgid ""
 "Show all unit types in the help (requires restart). This does not alter the "
 "list of encountered units"
 msgstr ""
+"Pokaži sve tipove jedinica u Pomoći (potrebno ponovno pokretanje). Ovo ne "
+"mijenja listu poznatih jedinica."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:165
 msgid "Joystick support"
-msgstr ""
+msgstr "Podrška za jostick"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:172
@@ -253,14 +256,14 @@ msgstr ""
 #. [ai]: id=testing_ai_default
 #: data/ai/ais/testing_ai_default.cfg:5
 msgid "Multiplayer_AI^RCA AI"
-msgstr ""
+msgstr "Multiplayer_AI^RCA AI"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:309
 #: data/lua/wml-tags.lua:824 src/actions.cpp:1492
 msgid "poisoned"
-msgstr ""
+msgstr "otrovan"
 
 #. [about]
 #: data/core/about.cfg:7
@@ -295,7 +298,7 @@ msgstr "Dizajn kampanje"
 #. [about]
 #: data/core/about.cfg:762
 msgid "Multiplayer Maps and Balancing"
-msgstr "Mape za multiplayer i balansiranje"
+msgstr "Multiplayer mapa i balansiranje"
 
 #. [about]
 #: data/core/about.cfg:803
@@ -325,9 +328,8 @@ msgstr "Afrički prijevod"
 
 #. [about]
 #: data/core/about.cfg:1258
-#, fuzzy
 msgid "Arabic Translation"
-msgstr "Srpski prijevod"
+msgstr "Arapski prijevod"
 
 #. [about]
 #: data/core/about.cfg:1265
@@ -356,9 +358,8 @@ msgstr "Kineski (Tajvan) prijevod"
 
 #. [about]
 #: data/core/about.cfg:1422
-#, fuzzy
 msgid "Croatian Translation"
-msgstr "Katalanski prijevod"
+msgstr "Hrvatski prijevod"
 
 #. [about]
 #: data/core/about.cfg:1429
@@ -389,7 +390,7 @@ msgstr "Engleski (Velika Britanija) prijevod"
 #. [about]
 #: data/core/about.cfg:1630
 msgid "Esperanto Translation"
-msgstr ""
+msgstr "Esperanto prijevod"
 
 #. [about]
 #: data/core/about.cfg:1649
@@ -444,9 +445,8 @@ msgstr "Mađarski prijevod"
 
 #. [about]
 #: data/core/about.cfg:2105
-#, fuzzy
 msgid "Icelandic Translation"
-msgstr "Talijanski prijevod"
+msgstr "Islandski prijevod"
 
 #. [about]
 #: data/core/about.cfg:2115
@@ -455,9 +455,8 @@ msgstr "Indonezijski prijevod"
 
 #. [about]
 #: data/core/about.cfg:2138
-#, fuzzy
 msgid "Irish Translation"
-msgstr "Turski prijevod"
+msgstr "Irski prijevod"
 
 #. [about]
 #: data/core/about.cfg:2145
@@ -481,9 +480,8 @@ msgstr "Latinski prijevod"
 
 #. [about]
 #: data/core/about.cfg:2291
-#, fuzzy
 msgid "Latvian Translation"
-msgstr "Latinski prijevod"
+msgstr "Latvijski prijevod"
 
 #. [about]
 #: data/core/about.cfg:2302
@@ -492,9 +490,8 @@ msgstr "Litavski prijevod "
 
 #. [about]
 #: data/core/about.cfg:2324
-#, fuzzy
 msgid "Macedonian Translation"
-msgstr "Indonezijski prijevod"
+msgstr "Makedonski prijevod"
 
 #. [about]
 #: data/core/about.cfg:2331
@@ -509,9 +506,8 @@ msgstr "Norveški prijevod"
 
 #. [about]
 #: data/core/about.cfg:2365
-#, fuzzy
 msgid "Old English Translation"
-msgstr "Engleski (Velika Britanija) prijevod"
+msgstr "Staroengleski  prijevod"
 
 #. [about]
 #: data/core/about.cfg:2383
@@ -530,9 +526,8 @@ msgstr "Portugalski (Brazil) prijevod"
 
 #. [about]
 #: data/core/about.cfg:2478
-#, fuzzy
 msgid "Romanian Translation"
-msgstr "Estonski prijevod"
+msgstr "rumunjski prijevod"
 
 #. [about]
 #: data/core/about.cfg:2486
@@ -571,9 +566,8 @@ msgstr "Turski prijevod"
 
 #. [about]
 #: data/core/about.cfg:2779
-#, fuzzy
 msgid "Ukrainian Translation"
-msgstr "Estonski prijevod"
+msgstr "Ukrajinski prijevod"
 
 #. [about]
 #: data/core/about.cfg:2792
@@ -582,15 +576,13 @@ msgstr "Velancijski (južno katalanski) prijevod"
 
 #. [about]
 #: data/core/about.cfg:2805
-#, fuzzy
 msgid "Vietnamese Translation"
-msgstr "Kineski prijevod"
+msgstr "Vijetnamski prijevod"
 
 #. [about]
 #: data/core/about.cfg:2824
-#, fuzzy
 msgid "RACV’s Translation"
-msgstr "Kineski prijevod"
+msgstr "RACV prijevod"
 
 #. [about]
 #: data/core/about.cfg:2831
@@ -634,28 +626,27 @@ msgstr ""
 #. [aggression]
 #: data/core/macros/ai_controller.cfg:41
 msgid "Be more aggressive"
-msgstr ""
+msgstr "Budi agresivniji"
 
 #. [aggression]
 #: data/core/macros/ai_controller.cfg:42
 msgid "aggressive."
-msgstr ""
+msgstr "agresivan."
 
 #. [caution]
 #: data/core/macros/ai_controller.cfg:59
 msgid "Be more defensive"
-msgstr ""
+msgstr "Budi više defenzivan"
 
 #. [caution]
 #: data/core/macros/ai_controller.cfg:60
-#, fuzzy
 msgid "defensive."
-msgstr "Obrana"
+msgstr "obrambeno."
 
 #. [focus_on_enemy]
 #: data/core/macros/ai_controller.cfg:71
 msgid "Focus on defeating..."
-msgstr ""
+msgstr "Fokusiraj se na pobjedu..."
 
 #. [focus_on_enemy]
 #: data/core/macros/ai_controller.cfg:72
@@ -690,14 +681,13 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:320
 #: data/core/macros/ai_controller.cfg:709
 #: data/core/macros/ai_controller.cfg:800
-#, fuzzy
 msgid "Back"
-msgstr " < Natrag"
+msgstr "Natrag"
 
 #. [protect]
 #: data/core/macros/ai_controller.cfg:201
 msgid "Focus on protecting..."
-msgstr ""
+msgstr "Fokusiraj se na štićenje..."
 
 #. [protect]
 #: data/core/macros/ai_controller.cfg:202
@@ -708,20 +698,18 @@ msgstr ""
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:352
-#, fuzzy
 msgid "Defend a location..."
-msgstr "Indonezijski prijevod"
+msgstr "Obrani lokaciju..."
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:368
 msgid "Right-click to select a location to defend"
-msgstr ""
+msgstr "Desni klik miša odabire likaciju koju treba zaštititi."
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
 #: data/core/macros/ai_controller.cfg:375
-#, fuzzy
 msgid "Defend this location"
-msgstr "Indonezijski prijevod"
+msgstr "Obrani ovu lokaciju"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:392
@@ -731,7 +719,7 @@ msgstr ""
 #. [print]
 #: data/core/macros/ai_controller.cfg:434
 msgid "Location selection canceled"
-msgstr ""
+msgstr "Odabir lokacije prekinut"
 
 #. [revoke_objective_orders]
 #: data/core/macros/ai_controller.cfg:449
@@ -746,14 +734,13 @@ msgstr ""
 #. [revoke_all_orders]
 #: data/core/macros/ai_controller.cfg:474
 msgid "Clear all orders"
-msgstr ""
+msgstr "Očisti sve naredbe"
 
 #. [then]
 #: data/core/macros/ai_controller.cfg:591
 #: data/core/macros/ai_controller.cfg:602
-#, fuzzy
 msgid "none set."
-msgstr "ništa"
+msgstr "ništa postavljeno"
 
 #. [do]
 #: data/core/macros/ai_controller.cfg:644
@@ -767,23 +754,21 @@ msgstr ""
 #. [literal]
 #: data/core/macros/ai_controller.cfg:652
 msgid "Set objective..."
-msgstr ""
+msgstr "Postavi zadatak..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:743
-#, fuzzy
 msgid "Set behavior..."
-msgstr "Postavi lozinku..."
+msgstr "Postavi ponašanje..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:848
 msgid "Exit"
-msgstr ""
+msgstr "Izađi"
 
 #: data/core/macros/ai_controller.cfg:975
-#, fuzzy
 msgid "Set special orders..."
-msgstr "Postavi lozinku..."
+msgstr "Postavi posebne naredbe..."
 
 #: data/core/macros/ai_controller.cfg:976
 msgid "Move leader to..."
@@ -831,7 +816,7 @@ msgstr ""
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:40
 msgid "Lots of gold"
-msgstr ""
+msgstr "Puno zlata."
 
 #. [message]: speaker=unit
 #: data/core/macros/items.cfg:48
@@ -841,17 +826,17 @@ msgstr ""
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:54
 msgid "Peace throughout Wesnoth."
-msgstr ""
+msgstr "Mir kroz wesnoth."
 
 #. [message]: speaker=unit
 #: data/core/macros/items.cfg:62
 msgid "The only thing worth wishing for is peace throughout the land."
-msgstr ""
+msgstr "Jedina stvar vrijedna želje je mir kroz zemlju."
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:68
 msgid "Don’t make a wish."
-msgstr ""
+msgstr "Nemoj ništa poželjeti."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:206
@@ -866,12 +851,12 @@ msgstr ""
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:210
 msgid "You are not worthy of healing."
-msgstr ""
+msgstr "Nisi vrijedan liječenja."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:244
 msgid "Poison"
-msgstr ""
+msgstr "Otrov"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:247
@@ -886,20 +871,20 @@ msgstr ""
 
 #: data/core/macros/items.cfg:268
 msgid "holy water^Take it"
-msgstr ""
+msgstr "sveta voda^Uzmi je"
 
 #: data/core/macros/items.cfg:269
 msgid "holy water^Leave it"
-msgstr ""
+msgstr "sveta voda^Ostavi je"
 
 #: data/core/macros/items.cfg:270
 msgid "I am not suited to the use of this item! Let another take it."
-msgstr ""
+msgstr "Ne mogu koristiti ovaj predmet. Nega ga netko drugi uzme."
 
 #. [object]
 #: data/core/macros/items.cfg:272
 msgid "Holy Water"
-msgstr ""
+msgstr "Sveta voda"
 
 #. [object]
 #: data/core/macros/items.cfg:275
@@ -911,7 +896,7 @@ msgstr ""
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:304
 msgid "Potion of Strength"
-msgstr ""
+msgstr "Otrov snage"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:307
@@ -931,12 +916,12 @@ msgstr ""
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:384
 msgid "Ring of Regeneration"
-msgstr ""
+msgstr "Prsten regeneracije"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:387
 msgid "This ring will heal the bearer a little each turn."
-msgstr ""
+msgstr "Ovaj prsten će izlječiti onog koji ga nosi malo svaki potez."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:423
@@ -1513,9 +1498,8 @@ msgstr ""
 
 #. [objective]: condition=lose
 #: data/core/macros/objective-utils.cfg:7
-#, fuzzy
 msgid "Turns run out"
-msgstr "Poteza:"
+msgstr ""
 
 #: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:114
 msgid "Early finish bonus."
@@ -1556,21 +1540,17 @@ msgid ""
 msgstr ""
 
 #: data/core/macros/objective-utils.cfg:48
-#, fuzzy
 msgid "Alternative objective:"
-msgstr "Alternativni Wesnoth server"
+msgstr "Alternativni zadatak:"
 
 #: data/core/macros/objective-utils.cfg:52
-#, fuzzy
 msgid "Bonus objective:"
-msgstr "Alternativni Wesnoth server"
+msgstr "Bonus zadatak:"
 
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:74
-#, fuzzy
-#| msgid "End scenario"
 msgid "This is the last scenario."
-msgstr "Završi scenarij"
+msgstr "Ovo je zadnji scenarij."
 
 #. [message]: speaker=narrator
 #: data/core/macros/scenario-utils.cfg:62
@@ -1583,85 +1563,85 @@ msgstr ""
 #. [color_range]: id=1
 #: data/core/team-colors.cfg:14 data/core/team-colors.cfg:83
 msgid "Red"
-msgstr ""
+msgstr "Crveno"
 
 #. [color_range]: id=lightred
 #: data/core/team-colors.cfg:20
 msgid "Light Red"
-msgstr ""
+msgstr "Svijetlocrveno"
 
 #. [color_range]: id=darkred
 #: data/core/team-colors.cfg:26
 msgid "Dark Red"
-msgstr ""
+msgstr "Tamnocrveno"
 
 #. [color_range]: id=blue
 #. [color_range]: id=2
 #: data/core/team-colors.cfg:32 data/core/team-colors.cfg:89
 msgid "Blue"
-msgstr ""
+msgstr "Plavo"
 
 #. [color_range]: id=green
 #. [color_range]: id=3
 #: data/core/team-colors.cfg:38 data/core/team-colors.cfg:95
 msgid "Green"
-msgstr ""
+msgstr "Zeleno"
 
 #. [color_range]: id=purple
 #. [color_range]: id=4
 #: data/core/team-colors.cfg:44 data/core/team-colors.cfg:101
 msgid "Purple"
-msgstr ""
+msgstr "Ljubičasto"
 
 #. [color_range]: id=black
 #. [color_range]: id=5
 #: data/core/team-colors.cfg:50 data/core/team-colors.cfg:113
 msgid "Black"
-msgstr ""
+msgstr "Crno"
 
 #. [color_range]: id=brown
 #. [color_range]: id=6
 #: data/core/team-colors.cfg:56 data/core/team-colors.cfg:125
 msgid "Brown"
-msgstr ""
+msgstr "Smeđe"
 
 #. [color_range]: id=orange
 #. [color_range]: id=7
 #: data/core/team-colors.cfg:62 data/core/team-colors.cfg:107
 msgid "Orange"
-msgstr ""
+msgstr "Narančasto"
 
 #. [color_range]: id=white
 #. [color_range]: id=8
 #: data/core/team-colors.cfg:68 data/core/team-colors.cfg:119
 msgid "White"
-msgstr ""
+msgstr "Bijelo"
 
 #. [color_range]: id=teal
 #. [color_range]: id=9
 #: data/core/team-colors.cfg:74 data/core/team-colors.cfg:131
 msgid "Teal"
-msgstr ""
+msgstr "Tirkizno"
 
 #. [language]
 #: data/english.cfg:3
 msgid "Easy"
-msgstr ""
+msgstr "Lagano"
 
 #. [language]
 #: data/english.cfg:4
 msgid "Medium"
-msgstr ""
+msgstr "Normalno"
 
 #. [language]
 #: data/english.cfg:5
 msgid "Hard"
-msgstr ""
+msgstr "Teško"
 
 #. [language]
 #: data/english.cfg:6
 msgid "Nightmare"
-msgstr ""
+msgstr "Noćna mora"
 
 #. [language]
 #: data/english.cfg:11
@@ -2680,10 +2660,8 @@ msgstr ""
 
 #. [menu]: id=skip-animation, type=checkbox
 #: data/themes/macros.cfg:147
-#, fuzzy
-#| msgid "Slovak Translation"
 msgid "Skip animation"
-msgstr "Slovački prijevod"
+msgstr "Preskoči animaciju"
 
 #: src/about.cpp:209 src/menu_events.cpp:325 src/menu_events.cpp:352
 #: src/statistics_dialog.cpp:114
@@ -3009,10 +2987,8 @@ msgid "Confirm"
 msgstr ""
 
 #: src/addon/manager.cpp:1129
-#, fuzzy
-#| msgid "Settings..."
 msgid "Connecting..."
-msgstr "Opcije..."
+msgstr "Spajanje..."
 
 #: src/addon/manager.cpp:1129
 msgid "Requesting list of add-ons"
@@ -3123,9 +3099,8 @@ msgid "Attacker"
 msgstr ""
 
 #: src/attack_prediction_display.cpp:106 src/attack_prediction_display.cpp:236
-#, fuzzy
 msgid "Defender"
-msgstr "Obrana"
+msgstr ""
 
 #: src/attack_prediction_display.cpp:124
 msgid "Expected Battle Result (HP)"
@@ -3156,9 +3131,8 @@ msgid "Total damage"
 msgstr ""
 
 #: src/attack_prediction_display.cpp:261 src/mouse_events.cpp:842
-#, fuzzy
 msgid "No usable weapon"
-msgstr "Odaberi oružje:"
+msgstr "Nema raspoloživog oružja"
 
 #: src/attack_prediction_display.cpp:266
 msgid "Chance of being unscathed"
@@ -3205,10 +3179,8 @@ msgid "Tutorial"
 msgstr ""
 
 #: src/dialogs.cpp:499
-#, fuzzy
-#| msgid "End scenario"
 msgid "Test scenario"
-msgstr "Završi scenarij"
+msgstr "Testiraj scenarij"
 
 #: src/dialogs.cpp:509 src/savegame.cpp:1051
 msgid "Turn"
@@ -3392,14 +3364,12 @@ msgid "' (The game will now exit)"
 msgstr ""
 
 #: src/game_events.cpp:182
-#, fuzzy
 msgid "Error: "
-msgstr "greška"
+msgstr "Greška:"
 
 #: src/game_events.cpp:185
-#, fuzzy
 msgid "Warning: "
-msgstr "Jutro"
+msgstr "Upozorenje:"
 
 #: src/game_events.cpp:188
 msgid "Debug: "
@@ -3463,9 +3433,8 @@ msgid "none"
 msgstr "ništa"
 
 #: src/gui/dialogs/lobby_player_info.cpp:98
-#, fuzzy
 msgid "In game:"
-msgstr "Ime:"
+msgstr "U igri:"
 
 #: src/gui/dialogs/lobby_player_info.cpp:100
 msgid "(observing)"
@@ -3547,9 +3516,8 @@ msgid "Reading files and creating cache"
 msgstr ""
 
 #: src/loadscreen.cpp:226 src/loadscreen.cpp:233
-#, fuzzy
 msgid "Reading unit files"
-msgstr "Čitam sa servera..."
+msgstr "Ćitam podatke jedinica"
 
 #: src/loadscreen.cpp:227
 msgid "Reinitialize fonts for the current language"
@@ -3878,9 +3846,8 @@ msgid "do not translate the 'all'^[all|<command>]"
 msgstr ""
 
 #: src/menu_events.cpp:2106
-#, fuzzy
 msgid "Error:"
-msgstr "greška"
+msgstr "Greška:"
 
 #: src/menu_events.cpp:2112
 msgid "Missing argument $arg_id"
@@ -3905,9 +3872,8 @@ msgid " No help available."
 msgstr ""
 
 #: src/menu_events.cpp:2177
-#, fuzzy
 msgid "Usage:"
-msgstr "Poruka:"
+msgstr "Korištenje:"
 
 #: src/menu_events.cpp:2182
 msgid "aliases:"
@@ -3966,9 +3932,8 @@ msgid ""
 msgstr ""
 
 #: src/menu_events.cpp:2360
-#, fuzzy
 msgid "<message>"
-msgstr "Poruka:"
+msgstr "<poruka>"
 
 #: src/menu_events.cpp:2360
 msgid "Send an emotion or personal action in chat."
@@ -3981,9 +3946,8 @@ msgid ""
 msgstr ""
 
 #: src/menu_events.cpp:2365
-#, fuzzy
 msgid "<nickname> <message>"
-msgstr "Poruka:"
+msgstr "<nadimak><poruka>"
 
 #: src/menu_events.cpp:2369
 msgid "<level> <domain>"
@@ -4054,9 +4018,8 @@ msgid "Part a room."
 msgstr ""
 
 #: src/menu_events.cpp:2398
-#, fuzzy
 msgid "List room members."
-msgstr "Popis servera"
+msgstr "Popis članova sobe"
 
 #: src/menu_events.cpp:2400
 msgid "List available rooms."
@@ -4087,9 +4050,8 @@ msgid "(debug command)"
 msgstr ""
 
 #: src/menu_events.cpp:2516
-#, fuzzy
 msgid "(network only)"
-msgstr "Mrežni igrač"
+msgstr "(samo mrežno)"
 
 #: src/menu_events.cpp:2541
 msgid "Refresh gui."
@@ -4132,12 +4094,10 @@ msgid "Show fps."
 msgstr ""
 
 #: src/menu_events.cpp:2557
-#, fuzzy
 msgid "Save game."
-msgstr "Naziv igre:"
+msgstr "Spremi igru."
 
 #: src/menu_events.cpp:2559
-#, fuzzy
 msgid "Quit game."
 msgstr "Prekini igru"
 
@@ -4162,9 +4122,8 @@ msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr ""
 
 #: src/menu_events.cpp:2573
-#, fuzzy
 msgid "Choose next scenario"
-msgstr "Završi scenarij"
+msgstr "Odaberi sljedeći scenarij"
 
 #: src/menu_events.cpp:2576
 msgid ""
@@ -4259,9 +4218,8 @@ msgid "'Undiscover' all units in help."
 msgstr ""
 
 #: src/menu_events.cpp:2616
-#, fuzzy
 msgid "Create a unit."
-msgstr "Kreiraj igru"
+msgstr "Kreiraj jedinicu."
 
 #: src/menu_events.cpp:2618
 msgid "Toggle fog for the current player."
@@ -4321,9 +4279,8 @@ msgstr ""
 
 #: src/menu_events.cpp:2871 src/menu_events.cpp:2890
 #: src/multiplayer_connect.cpp:665
-#, fuzzy
 msgid "(empty)"
-msgstr "Prazno"
+msgstr "(prazno)"
 
 #: src/menu_events.cpp:2871 src/menu_events.cpp:2877 src/menu_events.cpp:2927
 msgid "ignores list"
@@ -4407,9 +4364,8 @@ msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr ""
 
 #: src/menu_events.cpp:3312
-#, fuzzy
 msgid "Layers"
-msgstr "Igrači:"
+msgstr "Slojevi:"
 
 #: src/menu_events.cpp:3385
 msgid "Choose Scenario (Debug!)"
@@ -4461,9 +4417,8 @@ msgid "Invalid unit type"
 msgstr ""
 
 #: src/menu_events.cpp:3628
-#, fuzzy
 msgid "Invalid location"
-msgstr "Talijanski prijevod"
+msgstr "Pogrešna lokacija"
 
 #: src/menu_events.cpp:3663
 msgid "Planning mode activated!"
@@ -4529,9 +4484,8 @@ msgid "Do you want to continue?"
 msgstr ""
 
 #: src/multiplayer.cpp:251
-#, fuzzy
 msgid "Warning"
-msgstr "Jutro"
+msgstr "Upozorenje"
 
 #: src/multiplayer.cpp:295
 msgid "Bad data received from server"
@@ -4692,7 +4646,6 @@ msgid "Enter a name for the new player"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:1117 src/reports.cpp:155 src/savegame.cpp:723
-#, fuzzy
 msgid "Name: "
 msgstr "Ime:"
 
@@ -4865,9 +4818,8 @@ msgid "Invalid era selected"
 msgstr ""
 
 #: src/multiplayer_create.cpp:352
-#, fuzzy
 msgid "The map is invalid."
-msgstr "Igra je završena."
+msgstr "Mapa nije valjana."
 
 #: src/multiplayer_create.cpp:354
 msgid "You must enter a name."
@@ -4918,14 +4870,12 @@ msgid "--no games open--"
 msgstr ""
 
 #: src/multiplayer_lobby.cpp:160
-#, fuzzy
 msgid " (Unknown Era)"
-msgstr "Nepoznata jedinica"
+msgstr "(Nepoznata era)"
 
 #: src/multiplayer_lobby.cpp:553 src/multiplayer_lobby.cpp:892
-#, fuzzy
 msgid "Password Required"
-msgstr "Lozinka:"
+msgstr "Potrebna lozinka"
 
 #: src/multiplayer_lobby.cpp:736 src/multiplayer_wait.cpp:179
 msgid "Game Lobby"
@@ -4968,7 +4918,6 @@ msgid "Friends in game"
 msgstr ""
 
 #: src/multiplayer_lobby.cpp:751
-#, fuzzy
 msgid "Search:"
 msgstr "Pretraži"
 
@@ -5042,9 +4991,8 @@ msgid "No multiplayer sides found"
 msgstr ""
 
 #: src/multiplayer_wait.cpp:313
-#, fuzzy
 msgid "Choose your faction:"
-msgstr "Odaberi oružje:"
+msgstr "Odaberi frakciju:"
 
 #: src/multiplayer_wait.cpp:313
 msgid "Starting position: "
@@ -5080,9 +5028,8 @@ msgstr ""
 
 #: src/network_manager_ana.cpp:650 src/network_manager_ana.cpp:667
 #: src/network_manager_ana.cpp:689
-#, fuzzy
 msgid "Could not connect to host"
-msgstr "Spoji se na centralno računalo"
+msgstr "Nije se moguće povezati na poslužitelja"
 
 #: src/pathfind/pathfind.cpp:456
 msgid "Terrain with a movement cost less than 1 encountered."
@@ -5112,9 +5059,8 @@ msgid ""
 msgstr ""
 
 #: src/play_controller.cpp:1366 src/replay_controller.cpp:323
-#, fuzzy
 msgid "Error details:"
-msgstr "greška"
+msgstr "Detalji greške:"
 
 #: src/playcampaign.cpp:138 src/playcampaign.cpp:177
 msgid "Defeat"
@@ -5298,22 +5244,18 @@ msgid "Race: "
 msgstr ""
 
 #: src/reports.cpp:237
-#, fuzzy
 msgid "Level: "
-msgstr "Oznaka:"
+msgstr "Razina:"
 
 #: src/reports.cpp:240
-#, fuzzy
 msgid "No advancement"
-msgstr "Pomicanje"
+msgstr "Nema napredovanja"
 
 #: src/reports.cpp:242
-#, fuzzy
 msgid "Advances to:"
-msgstr "Pomicanje"
+msgstr "Napreduje u:"
 
 #: src/reports.cpp:282
-#, fuzzy
 msgid "Trait: "
 msgstr "Osobina"
 
@@ -5362,9 +5304,8 @@ msgid "Alignment: "
 msgstr ""
 
 #: src/reports.cpp:369
-#, fuzzy
 msgid "Ability: "
-msgstr "Sposobnosti"
+msgstr "Sposobnost:"
 
 #: src/reports.cpp:414
 msgid "Resistances: "
@@ -5379,9 +5320,8 @@ msgid "Experience Modifier: "
 msgstr ""
 
 #: src/reports.cpp:493
-#, fuzzy
 msgid "Terrain: "
-msgstr "Teren"
+msgstr "Teren:"
 
 #: src/reports.cpp:511
 msgid "maximum^max."
@@ -5392,14 +5332,12 @@ msgid "minimum^min."
 msgstr ""
 
 #: src/reports.cpp:516
-#, fuzzy
 msgid "Defense: "
-msgstr "Obrana"
+msgstr "Obrana:"
 
 #: src/reports.cpp:598 src/reports.cpp:783 src/reports.cpp:795
-#, fuzzy
 msgid "Weapon: "
-msgstr "Posebnosti oružja"
+msgstr "Oružje:"
 
 #: src/reports.cpp:599 src/reports.cpp:784
 msgid "Damage: "
@@ -5410,17 +5348,14 @@ msgid "Base damage: "
 msgstr ""
 
 #: src/reports.cpp:605
-#, fuzzy
 msgid "Time of day: "
 msgstr "Doba dana"
 
 #: src/reports.cpp:609
-#, fuzzy
 msgid "Leadership: "
 msgstr "Vodstvo"
 
 #: src/reports.cpp:613
-#, fuzzy
 msgid "Slowed: "
 msgstr "Usporen"
 
@@ -5457,7 +5392,6 @@ msgid "Parry:"
 msgstr ""
 
 #: src/reports.cpp:696
-#, fuzzy
 msgid "Weapon special: "
 msgstr "Posebnosti oružja"
 
@@ -5508,32 +5442,28 @@ msgid "This is not a multiplayer save"
 msgstr ""
 
 #: src/savegame.cpp:638
-#, fuzzy
 msgid "The game could not be saved: "
-msgstr "Igra je završena."
+msgstr "Igra se ne može spremiti:"
 
 #: src/savegame.cpp:723
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr ""
 
 #: src/savegame.cpp:724
-#, fuzzy
 msgid "Overwrite?"
-msgstr "Pregled"
+msgstr "Prebriši?"
 
 #: src/savegame.cpp:734
 msgid "Save names should not end on '.gz'. Please choose a different name."
 msgstr ""
 
 #: src/savegame.cpp:800
-#, fuzzy
 msgid "Saved"
 msgstr "Spremljeno"
 
 #: src/savegame.cpp:800
-#, fuzzy
 msgid "The game has been saved"
-msgstr "Igra je završena."
+msgstr "Igra je spremljena."
 
 #: src/savegame.cpp:834 src/savegame.cpp:859
 msgid "Could not write to file"
@@ -5542,7 +5472,7 @@ msgstr ""
 #: src/savegame.cpp:972
 #, fuzzy
 msgid "Save Replay"
-msgstr "Igrivost"
+msgstr "Spremi replay"
 
 #: src/savegame.cpp:981
 msgid "replay"
@@ -5554,7 +5484,7 @@ msgstr ""
 
 #: src/savegame.cpp:1039
 msgid "Save Game"
-msgstr ""
+msgstr "Spremi igru"
 
 #: src/serialization/parser.cpp:127
 msgid "Unexpected characters at line start"
@@ -5693,18 +5623,16 @@ msgid "Recalls"
 msgstr ""
 
 #: src/statistics_dialog.cpp:78 src/statistics_dialog.cpp:147
-#, fuzzy
 msgid "Advancements"
-msgstr "Pomicanje"
+msgstr "Unapređenja"
 
 #: src/statistics_dialog.cpp:82 src/statistics_dialog.cpp:155
 msgid "Losses"
 msgstr ""
 
 #: src/statistics_dialog.cpp:87 src/statistics_dialog.cpp:166
-#, fuzzy
 msgid "Kills"
-msgstr "Brda"
+msgstr "Ubojstva"
 
 #: src/statistics_dialog.cpp:107
 msgid "Details"
@@ -5812,7 +5740,7 @@ msgstr ""
 
 #: src/unit_types.cpp:976
 msgid "chaotic"
-msgstr ""
+msgstr "kaotičan"
 
 #: src/unit_types.cpp:976
 msgid "lawful"
@@ -5825,7 +5753,7 @@ msgstr "Vodstvo"
 
 #: src/unit_types.cpp:976
 msgid "neutral"
-msgstr ""
+msgstr "neutralan"
 
 #: src/unit_types.cpp:977
 msgid "female^chaotic"
@@ -5864,22 +5792,18 @@ msgstr ""
 msgid "Whiteboard Options"
 msgstr ""
 
-#, fuzzy
 #~| msgid "Players: "
 #~ msgid "Players"
 #~ msgstr "Igrači:"
 
-#, fuzzy
 #~| msgid "Campaign Design"
 #~ msgid "Main campaign define"
 #~ msgstr "Dizajn kampanje"
 
-#, fuzzy
 #~| msgid "Campaign Design"
 #~ msgid "Extra campaign define"
 #~ msgstr "Dizajn kampanje"
 
-#, fuzzy
 #~| msgid "Multiplayer Maps and Balancing"
 #~ msgid "Multiplayer define"
 #~ msgstr "Mape za multiplayer i balansiranje"
