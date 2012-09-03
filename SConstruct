@@ -516,7 +516,7 @@ env.Clean(all, 'TAGS')
 #
 
 for d in installdirs:
-    exec d + ' = os.path.join(env["destdir"], env[d].lstrip("/"))'
+    locals()[d] = os.path.join(env["destdir"], env[d].lstrip("/"))
 installable_subs = Split('data fonts images sounds')
 if os.path.isabs(env["localedirname"]):
     env["localedir"] = env["localedirname"]

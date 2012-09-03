@@ -514,7 +514,7 @@ def WesnothProgram(env, target, source, can_build, **kw):
     else:
         bin = env.Alias(target, [], error_action)
         AlwaysBuild(bin)
-    exec target + " = bin"
+    locals()[target] = bin
     Export(target)
 
 for env in [test_env, client_env, env]:
