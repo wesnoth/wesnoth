@@ -49,6 +49,70 @@ if __name__ == "__main__":
     git_userpass = None
     quiet_libwml = True
 
+    """Initialize the build-system.
+
+    addon_obj           libgithub.Addon objectof the addon.
+    addon_name          Name of the addon.
+    wescamp_dir         The directory containing a checkout of wescamp.
+    build_sys_dir       Possible directory containing a checkout of build-system.
+    """
+    def init_build_system(addon_obj, addon_name, wescamp_dir, build_sys_dir):
+        # Grab the build system
+        below_branch = os.path.basename(wescamp_dir.rstrip(os.sep))
+        possible_build_paths = []
+        if build_sys_dir:
+            possible_build_paths.append(build_sys_dir)
+        possible_build_paths.append(os.path.join(below_branch, "build-system"))
+        build_system = libgithub.get_build_system(possible_build_paths)
+        build_system.update()
+        init_script = os.path.join(build_system.get_dir(), "init-build-sys.sh")
+
+        # Uglyness
+        out, err = addon_obj._execute([init_script, "--{0}".format(git_version), addon_name, "."], check_error=False)
+        if len(err):
+            logging.warn("In add-on {0}:\n{1}".format(addon_name, err))
+            #TODO: bail?
+
+        if not out.strip().endswith("Done."):
+            logging.error("Failed to init the build-system for addon {0}".format(addon_name))
+            return
+
+        addon_obj._execute(["git", "add", "po", "campaign.def", "Makefile"], check_error=True)
+        addon_obj.commit("Initialize build-system")
+
+    """Update the translation catalogs.
+
+    addon_obj           libgithub.Addon objectof the addon.
+    addon_name          Name of the addon.
+    """
+    def pot_update(addon_obj, addon_name):
+        if not os.path.exists(os.path.join(addon_obj.get_dir(), "Makefile")):
+            logging.warn("Cannot pot-update: build system does not exist for add-on {0}.".format(addon_name))
+            return
+        # Uglyness, again
+        out, err = addon_obj._execute(["make"])
+        if len(err):
+            logging.warn("In addon {0}:\n{1}".format(addon_name, err))
+            # TODO: bail?
+        outlines = addon_obj._status()
+
+        to_rm = []
+        to_add = []
+        longname = "wesnoth-{0}".format(addon_name)
+        for line in outlines:
+            mod, name = line.split()
+            if mod == "D":
+                to_rm.append(name)
+            elif mod == "M" and name.endswith((".po", "LC_MESSAGES/{0}.mo".format(longname), "po/{0}.pot".format(longname), "po/Makefile")):
+                to_add.append(name)
+            else:
+                logging.info("Ignoring {0}".format(line))
+        if to_rm:
+            addon_obj._execute(["git", "rm"] + to_rm, check_error=True)
+        if to_add:
+            addon_obj._execute(["git", "add"] + to_add, check_error=True)
+        addon_obj.commit("pot-update")
+
     """Download an addon from the server.
 
     server              The url of the addon server eg
@@ -184,68 +248,21 @@ if __name__ == "__main__":
                 addon)
 
         if is_new_addon:
-            # Grab the build system
-            below_branch = os.path.basename(wescamp_dir.rstrip(os.sep))
-            possible_build_paths = []
-            if build_sys_dir:
-                possible_build_paths.append(build_sys_dir)
-            possible_build_paths.append(os.path.join(below_branch, "build-system"))
-            build_system = libgithub.get_build_system(possible_build_paths)
-            build_system.update()
-            init_script = os.path.join(build_system.get_dir(), "init-build-sys.sh")
-
-            # Uglyness
-            out, err = addon_obj._execute([init_script, "--{0}".format(git_version), addon, "."], check_error=False)
-            if len(err):
-                logging.warn("In add-on {0}:\n{1}".format(addon, err))
-                #TODO: bail?
-
-            if not out.strip().endswith("Done."):
-                logging.error("Failed to init the build-system for addon {0}".format(addon))
-                return
-
-            addon_obj._execute(["git", "add", "po", "campaign.def", "Makefile"], check_error=True)
-            addon_obj.commit("Initialize build-system")
+            init_build_system(addon_obj, addon, wescamp_dir, build_sys_dir)
 
         if has_updated:
-            if not os.path.exists(os.path.join(addon_obj.get_dir(), "Makefile")):
-                logging.warn("Cannot pot-update: build system does not exist for add-on {0}.".format(addon))
-                return
-            # Uglyness, again
-            out, err = addon_obj._execute(["make"])
-            if len(err):
-                logging.warn("In addon {0}:\n{1}".format(addon, err))
-                # TODO: bail?
-            outlines = addon_obj._status()
-
-            to_rm = []
-            to_add = []
-            longname = "wesnoth-{0}".format(addon)
-            for line in outlines:
-                mod, name = line.split()
-                if mod == "D":
-                    to_rm.append(name)
-                elif mod == "M" and name.endswith((".po", "LC_MESSAGES/{0}.mo".format(longname), "po/{0}.pot".format(longname), "po/Makefile")):
-                    to_add.append(name)
-                else:
-                    logging.info("Ignoring {0}".format(line))
-            if to_rm:
-                addon_obj._execute(["git", "rm"] + to_rm, check_error=True)
-            if to_add:
-                addon_obj._execute(["git", "add"] + to_add, check_error=True)
-            addon_obj.commit("pot-update")
+            pot_update(addon_obj, addon)
 
 
     """Checkout all add-ons of one wesnoth version from wescamp.
 
     wescamp             The directory where all checkouts should be stored.
-    wesnoth_version     The wesnoth version we should checkout add-ons for.
     userpass            Authentication data. Shouldn't be needed.
     readonly            Makes a read-only checkout that doesn't require authentication.
     """
-    def checkout(wescamp, wesnoth_version, userpass=None, readonly=False):
+    def checkout(wescamp, userpass=None, readonly=False):
 
-        logging.debug("checking out add-ons from wesnoth version = '%s' to directory '%s'", wesnoth_version, wescamp)
+        logging.debug("checking out add-ons from wesnoth version = '%s' to directory '%s'", git_version, wescamp)
 
         github = libgithub.GitHub(wescamp, git_version, userpass=git_userpass)
 
@@ -455,7 +472,7 @@ if __name__ == "__main__":
             sys.exit(2)
 
         try:
-            checkout(wescamp, git_version, userpass=git_userpass, readonly=(options.checkout_readonly != None))
+            checkout(wescamp, userpass=git_userpass, readonly=(options.checkout_readonly != None))
         except libgithub.AddonError, e:
             print "[ERROR github in {0}] {1}".format(e.addon, str(e.args))
             sys.exit(1)
