@@ -21,6 +21,7 @@
 #include "create.hpp"
 
 #include "move.hpp"
+#include "vision.hpp"
 
 #include "../config.hpp"
 #include "../game_display.hpp"
@@ -773,7 +774,7 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 	if ( show ) {
 		unit_display::unit_recruited(current_loc, leader_loc);
 	}
-	// Make sure the unit appears (either !show or the animation is suppressed).
+	// Make sure the unit appears (if either !show or the animation is suppressed).
 	new_unit_itor->set_hidden(false);
 
 	// Village capturing.
@@ -783,6 +784,11 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 			return true;
 	}
 
+	// Fog clearing.
+	actions::shroud_clearer clearer;
+	if ( !wml_triggered ) // To preserve current WML behavior.
+		mutated |= clearer.clear_unit(current_loc, *new_unit_itor, true);
+
 	if ( fire_event ) {
 		const std::string event_name = is_recall ? "recall" : "recruit";
 		LOG_NG << "firing " << event_name << " event\n";
@@ -790,9 +796,12 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 			using namespace game_events;
 			mutated |= fire(event_name, entity_location(*new_unit_itor), recruited_from);
 		}
-		if ( !validate_recruit_iterator(new_unit_itor, current_loc) )
-			return true;
 	}
+
+	// "sighted" event(s).
+	mutated |= clearer.fire_events();
+	if ( new_unit_itor.valid() )
+		mutated |= actions::actor_sighted(*new_unit_itor);
 
 	return mutated;
 }

@@ -65,7 +65,7 @@ public:
 	/// Clears shroud (and fog) around the provided location as if @a viewer
 	/// was standing there.
 	bool clear_unit(const map_location &view_loc, const unit &viewer,
-	                bool invalidate = true);
+	                bool can_delay = false, bool invalidate = true);
 
 	/// Erases the record of sighted events from earlier fog/shroud clearing.
 	void drop_events();

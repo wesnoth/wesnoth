@@ -29,6 +29,7 @@
 #include "../map_label.hpp"
 #include "../map_location.hpp"
 #include "../pathfind/pathfind.hpp"
+#include "../play_controller.hpp"
 #include "../resources.hpp"
 #include "../team.hpp"
 #include "../unit.hpp"
@@ -271,6 +272,9 @@ bool shroud_clearer::clear_loc(team &tm, const map_location &loc,
  * This will also record sighted events, which should be either fired or
  * explicitly dropped.
  *
+ * This should only be called if delayed shroud updates is off.
+ * It is wasteful to call this if view_team uses neither fog nor shroud.
+ *
  * @param known_units      These locations are not checked for uncovered units.
  * @param enemy_count      Incremented for each enemy uncovered (excluding known_units).
  * @param friend_count     Incremented for each friend uncovered (excluding known_units).
@@ -321,8 +325,10 @@ bool shroud_clearer::clear_unit(const map_location &view_loc,
  * Clears shroud (and fog) around the provided location as if @a viewer
  * was standing there.
  * This version of shroud_clearer::clear_unit() will abort if the viewer's
- * team uses neither fog nor shroud. (Not supplying a team suggests that
- * it would be inconvenient for the caller to make that check.)
+ * team uses neither fog nor shroud. If @a can_delay is left as true, then
+ * this function also aborts on the viewing team's turn if delayed shroud
+ * updates is on. (Not supplying a team suggests that it would be inconvenient
+ * for the caller to check these.)
  * In addition, if @a invalidate is left as true, invalidate_after_clear()
  * will be called.
  *
@@ -330,12 +336,15 @@ bool shroud_clearer::clear_unit(const map_location &view_loc,
  *         locations in visual range were fogged/shrouded under shared vision/maps).
  */
 bool shroud_clearer::clear_unit(const map_location &view_loc, const unit &viewer,
-                                bool invalidate)
+                                bool can_delay, bool invalidate)
 {
 	team & viewing_team = (*resources::teams)[viewer.side()-1];
 
 	// Abort if there is nothing to clear.
 	if ( !viewing_team.fog_or_shroud() )
+		return false;
+	if ( can_delay  &&  !viewing_team.auto_shroud_updates()  &&
+	     viewer.side() == resources::controller->current_side()  )
 		return false;
 
 	if ( !clear_unit(view_loc, viewer, viewing_team) )

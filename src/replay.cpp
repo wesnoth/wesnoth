@@ -25,7 +25,6 @@
 #include "actions/attack.hpp"
 #include "actions/create.hpp"
 #include "actions/move.hpp"
-#include "actions/vision.hpp"
 #include "dialogs.hpp"
 #include "game_display.hpp"
 #include "game_end_exceptions.hpp"
@@ -822,9 +821,6 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 	for(;;) {
 		const config *cfg = get_replay_source().get_next_action();
 
-		//do we need to recalculate shroud after this action is processed?
-		bool fix_shroud = false;
-
 		if (cfg)
 		{
 			DBG_REPLAY << "Replay data:\n" << *cfg << "\n";
@@ -1010,8 +1006,6 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			           << "-> " << current_team.gold() << "\n";
 
 			statistics::recruit_unit(new_unit);
-
-			fix_shroud = true;
 			check_checksums(*cfg);
 		}
 
@@ -1029,7 +1023,6 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				current_team.recall_list().erase(recall_unit);
 				place_recruit(new_unit, loc, from, current_team.recall_cost(), true, !get_replay_source().is_skipping());
 				statistics::recall_unit(new_unit);
-				fix_shroud = true;
 			} else {
 				replay::process_error("illegal recall: unit_id '" + unit_id + "' could not be found within the recall list.\n");
 			}
@@ -1199,7 +1192,6 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			if(get_replay_source().expected_advancements().empty()) {
 				resources::controller->check_victory();
 			}
-			fix_shroud = true;
 		}
 		else if (const config &child = cfg->child("fire_event"))
 		{
@@ -1227,13 +1219,6 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			} else {
 				check_checksums(*cfg);
 			}
-		}
-
-		// Check if we should refresh the shroud.
-		// This is needed for shared vision to work properly.
-		if ( fix_shroud  &&  !get_replay_source().is_skipping() ) {
-		     if ( clear_shroud(side_num)  &&  !recorder.is_skipping() ) /// @todo: Do we really want to check recorder here? Seems either redundant or the wrong thing to check.
-				resources::screen->draw();
 		}
 
 		if (const config &child = cfg->child("verify")) {
