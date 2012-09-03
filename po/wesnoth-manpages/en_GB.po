@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "POT-Creation-Date: 2012-08-18 09:40+0300\n"
-"PO-Revision-Date: 2012-01-06 17:44-0500\n"
+"PO-Revision-Date: 2012-09-02 23:24-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -138,10 +138,9 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:54
-#, fuzzy, no-wrap
-#| msgid "B<--campaign-difficulty E<lt>difficultyE<gt>>"
+#, no-wrap
 msgid "B<--campaign-difficulty [E<lt>difficultyE<gt>]>"
-msgstr "B<--campaign-difficulty E<lt>difficultyE<gt>>"
+msgstr "B<--campaign-difficulty [E<lt>difficultyE<gt>]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:57
@@ -451,25 +450,13 @@ msgstr "prints the name of the game data directory and exits."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:159
-#, fuzzy, no-wrap
-#| msgid "B<--preprocess, -p[=E<lt>define1E<gt>,E<lt>define2E<gt>,...] E<lt>file/folderE<gt> E<lt>target directoryE<gt>>"
+#, no-wrap
 msgid "B<-p, --preprocess E<lt>source file/folderE<gt> E<lt>target directoryE<gt>>"
-msgstr "B<--preprocess, -p[=E<lt>define1E<gt>,E<lt>define2E<gt>,...] E<lt>file/folderE<gt> E<lt>target directoryE<gt>>"
+msgstr "B<-p, --preprocess E<lt>source file/folderE<gt> E<lt>target directoryE<gt>>"
 
+# TODO: port changes to the original
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:169
-#, fuzzy
-#| msgid ""
-#| "preprocesses a specified file/folder. The file(s) will be written in "
-#| "specified target directory: a plain cfg file and a processed cfg file. If "
-#| "a folder is specified, it will be preprocessed recursively based on the "
-#| "known preprocessor rules. The common macroses from the data/core/macros "
-#| "will be preprocessed before the specified resources.  B<define1,"
-#| "define2,...> - the extra defines will be added before processing the "
-#| "files. If you want to add them you must add the '=' character before.  If "
-#| "'SKIP_CORE' is in the define list the data/core won't be preprocessed.  "
-#| "Example: B<-p ~/wesnoth/data/campaigns/tutorial ~/result> or B<-"
-#| "p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result>"
 msgid ""
 "preprocesses a specified file/folder. For each file(s) a plain .cfg file and "
 "a processed .cfg file will be written in specified target directory. If a "
@@ -480,23 +467,22 @@ msgid ""
 "preprocessor visit: http://wiki.wesnoth.org/PreprocessorRef#Command-"
 "line_preprocessor"
 msgstr ""
-"preprocesses a specified file/folder. The file(s) will be written in "
-"specified target directory: a plain cfg file and a processed cfg file. If a "
+"preprocesses a specified file/folder. For each file, a plain .cfg file and a "
+"processed .cfg file will be written in the specified target directory. If a "
 "folder is specified, it will be preprocessed recursively based on the known "
-"preprocessor rules. The common macroses from the data/core/macros will be "
-"preprocessed before the specified resources.  B<define1,define2,...> - the "
-"extra defines will be added before processing the files. If you want to add "
-"them you must add the '=' character before.  If 'SKIP_CORE' is in the define "
-"list the data/core won't be preprocessed.  Example: B<-p ~/wesnoth/data/"
-"campaigns/tutorial ~/result> or B<-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/"
-"data/campaign/camp ~/result>"
+"preprocessor rules. The common macros from the \"data/core/macros\" "
+"directory will be preprocessed before the specified resources.  Example: B<-"
+"p ~/wesnoth/data/campaigns/tutorial ~/result.> For details regarding the "
+"preprocessor, visit: http://wiki.wesnoth.org/PreprocessorRef#Command-"
+"line_preprocessor"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:170
 #, no-wrap
 msgid "B<--preprocess-defines=DEFINE1,DEFINE2,etc>"
-msgstr ""
+msgstr "B<--preprocess-defines=DEFINE1,DEFINE2,etc>"
 
+# TODO: hyphenate "comma separated" in the original; perhaps change "defines" to "definitions"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:175
 msgid ""
@@ -504,6 +490,9 @@ msgid ""
 "B<SKIP_CORE> is in the define list the \"data/core\" directory won't be "
 "preprocessed."
 msgstr ""
+"comma-separated list of defines to be used by the '--preprocess' command. If "
+"B<SKIP_CORE> is in the define list the \"data/core\" directory won't be "
+"preprocessed."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:175
@@ -569,7 +558,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:193
 #, no-wrap
 msgid "B<--username>I<E<lt>usernameE<gt>>"
-msgstr ""
+msgstr "B<--username>I<E<lt>usernameE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:196
@@ -577,12 +566,14 @@ msgid ""
 "uses E<lt>usernameE<gt> when connecting to a server, ignoring other "
 "preferences."
 msgstr ""
+"uses E<lt>usernameE<gt> when connecting to a server, ignoring other "
+"preferences."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:196
 #, no-wrap
 msgid "B<--password>I<E<lt>passwordE<gt>>"
-msgstr ""
+msgstr "B<--password>I<E<lt>passwordE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:199
@@ -590,6 +581,8 @@ msgid ""
 "uses E<lt>passwordE<gt> when connecting to a server, ignoring other "
 "preferences. Unsafe."
 msgstr ""
+"uses E<lt>passwordE<gt> when connecting to a server, ignoring other "
+"preferences. Unsafe."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:199

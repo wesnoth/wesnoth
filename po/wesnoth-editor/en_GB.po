@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-09-01 18:47+0200\n"
-"PO-Revision-Date: 2011-10-31 16:34-0500\n"
+"PO-Revision-Date: 2012-09-01 16:50-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -30,17 +30,17 @@ msgstr "Radius 1 Hex"
 msgid "Radius 2 Hex"
 msgstr "Radius 2 Hex"
 
+# TODO: hyphen-minus to en dash in the original
 #. [brush]
 #: data/core/editor/brushes.cfg:46
 msgid "Hex Line NW-SE"
-msgstr "Hex Line NW-SE"
+msgstr "Hex Line NW–SE"
 
+# TODO: hyphen-minus to en dash
 #. [brush]
 #: data/core/editor/brushes.cfg:62
-#, fuzzy
-#| msgid "Hex Line NW-SE"
 msgid "Hex Line SE-NW"
-msgstr "Hex Line NW-SE"
+msgstr "Hex Line SE–NW"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:11
@@ -75,7 +75,7 @@ msgstr "forest"
 #. [editor_group]: id=fall
 #: data/core/editor/terrain-groups.cfg:52
 msgid "fall"
-msgstr ""
+msgstr "autumn"
 
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:59
@@ -184,7 +184,7 @@ msgstr "Window"
 #. [menu]: id=menu-editor-side
 #: data/themes/editor.cfg:179
 msgid "Side"
-msgstr ""
+msgstr "Side"
 
 #. [menu]: id=pipette_button_editor
 #: data/themes/editor.cfg:231
@@ -234,7 +234,7 @@ msgstr ""
 #. [menu]: id=menu-editor-terrain
 #: data/themes/editor.cfg:437
 msgid "Group"
-msgstr ""
+msgstr "Group"
 
 #. [label]: id=villages-icon
 #: data/themes/editor.cfg:460
@@ -418,7 +418,7 @@ msgstr "Could not save the map: $msg"
 
 #: src/editor/palette/editor_palettes.cpp:48
 msgid "(Unknown Group)"
-msgstr ""
+msgstr "(Unknown Group)"
 
 #: src/editor/palette/editor_palettes.cpp:305
 msgid "(non-core)"

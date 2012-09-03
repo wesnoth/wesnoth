@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-25 12:35+0200\n"
-"PO-Revision-Date: 2012-08-16 10:13-0500\n"
+"POT-Creation-Date: 2012-09-01 18:47+0200\n"
+"PO-Revision-Date: 2012-09-02 23:10-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -1244,15 +1244,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:316
-#, fuzzy
-#| msgid ""
-#| "During the daytime (Dawn, Morning, Midday, Afternoon, and Dusk) at the "
-#| "beginning of each your turns, every unit in a sand, road, rubble or sand "
-#| "dune hex will suffer from thirst. Each turn of thirst reduces a unit’s "
-#| "attack damage and causes $dehydration_loss hitpoints of damage. Only by "
-#| "being cared for by a healer or refreshing at an oasis (any shallow water "
-#| "hex) at the start of your turn will your units regain full attack "
-#| "strength."
 msgid ""
 "During the daytime (Dawn, Morning, Midday, Afternoon, and Dusk) at the "
 "beginning of each your turns, every unit in a sand, road, rubble or sand "
@@ -1265,9 +1256,10 @@ msgstr ""
 "During the daytime (Dawn, Morning, Midday, Afternoon, and Dusk) at the "
 "beginning of each your turns, every unit in a sand, road, rubble or sand "
 "dune hex will suffer from thirst. Each turn of thirst reduces a unit’s "
-"attack damage and causes $dehydration_loss hitpoints of damage. Only by "
-"being cared for by a healer or refreshing at an oasis (any shallow water "
-"hex) at the start of your turn will your units regain full attack strength."
+"attack damage and causes $dehydration_loss hitpoints of damage. Healers can "
+"prevent dehydration from becoming worse, but cannot heal it. Only by "
+"refreshing at an oasis (any water hex) at the start of your turn will your "
+"units regain full attack strength."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:322
@@ -1306,11 +1298,9 @@ msgstr "What? I don’t see a thing."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:415
-#, fuzzy
-#| msgid ""
-#| "See that shining speckles ahead? Scorpions. Large. Whole nest of them."
 msgid "See those shining speckles ahead? Scorpions. Large. Whole nest of them."
-msgstr "See that shining speckles ahead? Scorpions. Large. Whole nest of them."
+msgstr ""
+"See those shining speckles ahead? Scorpions. Large. Whole nest of them."
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:422
@@ -1845,17 +1835,13 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1662
-#, fuzzy
-#| msgid "Should I take this sword?"
 msgid "Should I take the holy water?"
-msgstr "Should I take this sword?"
+msgstr "Should I take the holy water?"
 
 #. [object]: id=PureWater
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1669
-#, fuzzy
-#| msgid "Pure Water"
 msgid "Holy Water"
-msgstr "Pure Water"
+msgstr "Holy Water"
 
 #. [object]: id=PureWater
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1671
@@ -1868,10 +1854,8 @@ msgstr ""
 
 #. [option]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1693
-#, fuzzy
-#| msgid "No, I think someone else should wear it."
 msgid "No, I think someone else should take it."
-msgstr "No, I think someone else should wear it."
+msgstr "No, I think someone else should take it."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1735
@@ -3063,17 +3047,13 @@ msgstr "Ug’lok"
 
 #. [objectives]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:209
-#, fuzzy
-#| msgid "New Objectives:"
 msgid "Objectives:"
-msgstr "New Objectives:"
+msgstr "Objectives:"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:211
-#, fuzzy
-#| msgid "Kaleh Must Reach the Exit Tunnel at the North Edge of the Map"
 msgid "Kaleh must reach the exit tunnel at the north edge of the map"
-msgstr "Kaleh Must Reach the Exit Tunnel at the North Edge of the Map"
+msgstr "Kaleh must reach the exit tunnel at the north edge of the map"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:368
@@ -3595,7 +3575,7 @@ msgstr "A Subterranean Struggle"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:89
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1398
 msgid "team_name^Trolls"
-msgstr ""
+msgstr "Troll"
 
 #. [modify_side]
 #. [side]
@@ -3603,7 +3583,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:174
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1331
 msgid "team_name^Dwarves"
-msgstr ""
+msgstr "Dwarves"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:296
@@ -4254,7 +4234,7 @@ msgstr "Uh..."
 #. [message]: speaker=Dwarf Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1258
 msgid "What by the names of my forefathers are they?"
-msgstr ""
+msgstr "What by the names of my forefathers are they?"
 
 #. [message]: speaker=first_dwarf
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1263
@@ -4509,19 +4489,14 @@ msgstr "More accursed troll magic. Fall back!"
 
 #. [message]: speaker=Dwarf Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1965
-#, fuzzy
-#| msgid ""
-#| "I need to go back and rally more reinforcements. We’re hurtin’, Kaleh, "
-#| "I’ll need your men to cover for us. Do you best, boy, and may Moradin "
-#| "watch over you."
 msgid ""
 "I need to go back and rally more reinforcements. We’re hurtin’, Kaleh, I’ll "
 "need your men to cover for us. Do your best, boy, and may your ancestors "
 "watch over you."
 msgstr ""
 "I need to go back and rally more reinforcements. We’re hurtin’, Kaleh, I’ll "
-"need your men to cover for us. Do you best, boy, and may Moradin watch over "
-"you."
+"need your men to cover for us. Do your best, boy, and may your ancestors "
+"watch over you."
 
 #. [else]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1985
@@ -5027,16 +5002,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1003
-#, fuzzy
-#| msgid ""
-#| "Any unit that ends its turn on a lava hex, except the Desert Shyde and "
-#| "Star who can fly over the lava, will take 25 damage at the beginning of "
-#| "the next turn. This lava damage can kill units. Desert Shydes and Stars "
-#| "will just take $temp_damage damage per turn when flying over lava, though "
-#| "they too can die if they spend too much time over lava. Also because of "
-#| "the heat in the cavern, all units on cave floor hexes will take "
-#| "$temp_damage damage at the start of each turn. This heat damage can "
-#| "reduce a unit to 1 hit point, but it can’t kill it."
 msgid ""
 "Any unit that ends its turn on a lava hex, except the Desert Shyde and Star "
 "who can fly over the lava, will take 25 damage at the beginning of the next "
@@ -5050,9 +5015,9 @@ msgstr ""
 "Any unit that ends its turn on a lava hex, except the Desert Shyde and Star "
 "who can fly over the lava, will take 25 damage at the beginning of the next "
 "turn. This lava damage can kill units. Desert Shydes and Stars will just "
-"take $temp_damage damage per turn when flying over lava, though they too can "
+"take $heat_damage damage per turn when flying over lava, though they too can "
 "die if they spend too much time over lava. Also because of the heat in the "
-"cavern, all units on cave floor hexes will take $temp_damage damage at the "
+"cavern, all units on cave floor hexes will take $heat_damage damage at the "
 "start of each turn. This heat damage can reduce a unit to 1 hit point, but "
 "it can’t kill it."
 
@@ -5069,12 +5034,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1037
-#, fuzzy
-#| msgid ""
-#| "At the start of each turn, any unit currently in this pool will heal 10 "
-#| "hitpoints and will not be affected by the heat in the cavern. Of course, "
-#| "if the unit leaves this pool, it will suffer the standard $temp_damage "
-#| "damage each turn from the heat."
 msgid ""
 "At the start of each turn, any unit currently in this pool will heal 10 "
 "hitpoints and will not be affected by the heat in the cavern. Of course, if "
@@ -5083,7 +5042,7 @@ msgid ""
 msgstr ""
 "At the start of each turn, any unit currently in this pool will heal 10 "
 "hitpoints and will not be affected by the heat in the cavern. Of course, if "
-"the unit leaves this pool, it will suffer the standard $temp_damage damage "
+"the unit leaves this pool, it will suffer the standard $heat_damage damage "
 "each turn from the heat."
 
 #. [message]: role=Troll High Shaman
@@ -5368,18 +5327,12 @@ msgstr ""
 
 #. [message]: speaker=Dwarf Ghost
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1855
-#, fuzzy
-#| msgid ""
-#| "Thank you. You have done for me what all my dwarven kin never could. I "
-#| "will no longer block your way. May Moradin bless you and watch over you. "
-#| "I leave now for the halls of my ancestors..."
 msgid ""
 "Thank you. You have done for me what all my dwarven kin never could. I will "
 "no longer block your way. I leave now for the halls of my ancestors..."
 msgstr ""
 "Thank you. You have done for me what all my dwarven kin never could. I will "
-"no longer block your way. May Moradin bless you and watch over you. I leave "
-"now for the halls of my ancestors..."
+"no longer block your way. I leave now for the halls of my ancestors..."
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1875
@@ -5643,6 +5596,9 @@ msgid ""
 "dwarves an easy access route if they defeated us. So much for an escape "
 "route, I guess we’ll just have to be sure not to fail."
 msgstr ""
+"Zurg must have collapsed the tunnel. Perhaps he didn’t want to give the "
+"dwarves an easy access route if they defeated us. So much for an escape "
+"route, I guess we’ll just have to be sure not to fail."
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:641
@@ -5704,12 +5660,12 @@ msgstr ""
 #. [message]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:697
 msgid "No, it’s an elf!"
-msgstr ""
+msgstr "No, it’s an elf!"
 
 #. [message]: id=Dwarf Sergeant
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:702
 msgid "What...?! Right... First task, boys, kill the intruder!"
-msgstr ""
+msgstr "What...?! Right... First task, boys, kill the intruder!"
 
 #. [message]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:708
@@ -5776,16 +5732,12 @@ msgstr "They’re coming this way too! Blow the charges!"
 #. [message]: speaker=West Scout
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:881
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:952
-#, fuzzy
-#| msgid ""
-#| "What?! Nothing happened! Who in Moradin’s name rigged the darn charges "
-#| "anyway? I’m going to have to hold them off by myself."
 msgid ""
 "What?! Nothing happened! Who rigged the darn charges anyway? I’m going to "
 "have to hold them off by myself."
 msgstr ""
-"What?! Nothing happened! Who in Moradin’s name rigged the darn charges "
-"anyway? I’m going to have to hold them off by myself."
+"What?! Nothing happened! Who rigged the darn charges anyway? I’m going to "
+"have to hold them off by myself."
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:978
@@ -7330,15 +7282,11 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1296
-#, fuzzy
-#| msgid ""
-#| "Okay, this is the end of the tunnel. Which means the other secret door "
-#| "should be right here."
 msgid ""
 "Well, this is the end of the tunnel. Which means the other secret door "
 "should be right here."
 msgstr ""
-"Okay, this is the end of the tunnel. Which means the other secret door "
+"Well, this is the end of the tunnel. Which means the other secret door "
 "should be right here."
 
 #. [message]: speaker=unit
@@ -8323,10 +8271,8 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2753
-#, fuzzy
-#| msgid "Okay Nym, just be careful."
 msgid "You can go Nym, just be careful."
-msgstr "Okay Nym, just be careful."
+msgstr "You can go Nym, just be careful."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2758
@@ -8702,10 +8648,8 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3258
-#, fuzzy
-#| msgid "$speaker.name|, be quiet, I’ll explain it all later."
 msgid "$unit.name|, be quiet, I’ll explain it all later."
-msgstr "$speaker.name|, be quiet, I’ll explain it all later."
+msgstr "$unit.name|, be quiet, I’ll explain it all later."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3275
@@ -8889,12 +8833,6 @@ msgstr ""
 
 #. [message]: speaker=Sergeant Durstrag
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3419
-#, fuzzy
-#| msgid ""
-#| "A dwarf! This just gets better and better. We haven’t seen one of your "
-#| "kind up here for many years, but we have a long memories. I remember how "
-#| "your ‘traders’ used to come up and cheat us out of our valuables. You’ll "
-#| "find we’re not so easy to fool this time."
 msgid ""
 "A dwarf! This just gets better and better. We haven’t seen one of your kind "
 "up here for many years, but we have long memories. I remember how your "
@@ -8902,7 +8840,7 @@ msgid ""
 "we’re not so easy to fool this time."
 msgstr ""
 "A dwarf! This just gets better and better. We haven’t seen one of your kind "
-"up here for many years, but we have a long memories. I remember how your "
+"up here for many years, but we have long memories. I remember how your "
 "‘traders’ used to come up and cheat us out of our valuables. You’ll find "
 "we’re not so easy to fool this time."
 
@@ -9555,10 +9493,8 @@ msgstr "Several hours pass..."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4505
-#, fuzzy
-#| msgid "In Eloh’s name, Nym, you look terrible. Are you okay?"
 msgid "In Eloh’s name, Nym, you look terrible. Are you well?"
-msgstr "In Eloh’s name, Nym, you look terrible. Are you okay?"
+msgstr "In Eloh’s name, Nym, you look terrible. Are you well?"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4510
@@ -9582,10 +9518,8 @@ msgstr "Relax, he’s a friend. Just let me explain."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4562
-#, fuzzy
-#| msgid "You’re really beat up, Nym. Are you sure you’re okay?"
 msgid "You’re really beat up, Nym. Are you sure you’re fine?"
-msgstr "You’re really beat up, Nym. Are you sure you’re okay?"
+msgstr "You’re really beat up, Nym. Are you sure you’re fine?"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4567
@@ -10010,17 +9944,12 @@ msgstr ""
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:560
-#, fuzzy
-#| msgid ""
-#| "It’s okay, you’re not used to being on dry ground, and you’ve been "
-#| "through a lot. Even if the humans know we’re coming, we can still take "
-#| "them. Just be careful and stay in the back until we reach the water again."
 msgid ""
 "It’s fine, you’re not used to being on dry ground, and you’ve been through a "
 "lot. Even if the humans know we’re coming, we can still take them. Just be "
 "careful and stay in the back until we reach the water again."
 msgstr ""
-"It’s okay, you’re not used to being on dry ground, and you’ve been through a "
+"It’s fine, you’re not used to being on dry ground, and you’ve been through a "
 "lot. Even if the humans know we’re coming, we can still take them. Just be "
 "careful and stay in the back until we reach the water again."
 
@@ -10157,10 +10086,6 @@ msgstr "We’ll ask later, for now we’ve got to keep fighting."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:779
-#, fuzzy
-#| msgid ""
-#| "Indeed you have done well, far better than I could have hoped. We shall "
-#| "talk more later, but for now we have to free the rest of our brethren."
 msgid ""
 "female_speaker^Indeed you have done well, far better than I could have "
 "hoped. We shall talk more later, but for now we have to free the rest of our "
@@ -10171,11 +10096,6 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:786
-#, fuzzy
-#| msgid ""
-#| "Greetings. Esanoo told us that you were looking for us, and he bravely "
-#| "led us here. Though he has fallen in combat, we have come to rescue the "
-#| "rest of your kind."
 msgid ""
 "female_addressed^Greetings. Esanoo told us that you were looking for us, and "
 "he bravely led us here. Though he has fallen in combat, we have come to "
@@ -10187,11 +10107,6 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:790
-#, fuzzy
-#| msgid ""
-#| "Yes, I recognize your face, young elf. We will remember Esanoo’s "
-#| "sacrifice. But for now we must rescue the rest of my brethren before they "
-#| "too are slain by the foul humans."
 msgid ""
 "female_speaker^Yes, I recognize your face, young elf. We will remember "
 "Esanoo’s sacrifice. But for now we must rescue the rest of my brethren "
@@ -10203,10 +10118,8 @@ msgstr ""
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:794
-#, fuzzy
-#| msgid "How could he recognize your face? We’ve never seen him before."
 msgid "How could she recognize your face? We’ve never seen her before."
-msgstr "How could he recognize your face? We’ve never seen him before."
+msgstr "How could she recognize your face? We’ve never seen her before."
 
 #. [unit]: type=Merman Warrior, id=Urruga
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:821
@@ -10303,22 +10216,16 @@ msgstr "Thank you for rescuing me. How did you manage to escape?"
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1079
-#, fuzzy
-#| msgid ""
-#| "Esanoo found the elves that we were searching for. He brought them back "
-#| "and they helped free us. I can’t believe the humans imprisoned you in "
-#| "such a horrible place. To be stuck in the darkness with those undead. We "
-#| "will make them pay for what they have done!"
 msgid ""
 "One of the elves we were searching for helped me get away before I was "
 "caught. I can’t believe the humans imprisoned you in such a horrible place. "
 "To be stuck in the darkness with those undead. We will make them pay for "
 "what they have done!"
 msgstr ""
-"Esanoo found the elves that we were searching for. He brought them back and "
-"they helped free us. I can’t believe the humans imprisoned you in such a "
-"horrible place. To be stuck in the darkness with those undead. We will make "
-"them pay for what they have done!"
+"One of the elves we were searching for helped me get away before I was "
+"caught. I can’t believe the humans imprisoned you in such a horrible place. "
+"To be stuck in the darkness with those undead. We will make them pay for "
+"what they have done!"
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1085
@@ -10412,16 +10319,11 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1220
-#, fuzzy
-#| msgid ""
-#| "If I was a landwalker, I might think the view from this sandbar to be "
-#| "amazing. But I am a creature of the sea and I see views like this every "
-#| "day."
 msgid ""
 "If I were a landwalker, I might think the view from this sandbar to be "
 "amazing. But I am a creature of the sea and I see views like this every day."
 msgstr ""
-"If I was a landwalker, I might think the view from this sandbar to be "
+"If I were a landwalker, I might think the view from this sandbar to be "
 "amazing. But I am a creature of the sea and I see views like this every day."
 
 #. [message]: speaker=Zelgant
@@ -10502,16 +10404,12 @@ msgstr ""
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1418
-#, fuzzy
-#| msgid ""
-#| "Esanoo said there were five merfolk captured. We only found four. Where "
-#| "did they hide the last one? What horrible fate has befallen her?"
 msgid ""
 "Esanoo said there were five merfolk captured. We only found four. Where did "
 "they hide the last one? What horrible acts have these humans committed?"
 msgstr ""
 "Esanoo said there were five merfolk captured. We only found four. Where did "
-"they hide the last one? What horrible fate has befallen her?"
+"they hide the last one? What horrible acts have these humans committed?"
 
 #. [message]: race=merman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1423
@@ -12037,13 +11935,6 @@ msgstr ""
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:309
-#, fuzzy
-#| msgid ""
-#| "The island was declared cursed, and we stayed as far away from it as we "
-#| "could. Some said we should flee the islands, but the waters were great "
-#| "for hunting, and the cursed naga who often raided our settlements did not "
-#| "trouble us here. So we remained and told ourselves that if we kept our "
-#| "distance everything would be okay."
 msgid ""
 "The island was declared cursed, and we stayed as far away from it as we "
 "could. Some said we should flee the islands, but the waters were great for "
@@ -12055,7 +11946,7 @@ msgstr ""
 "could. Some said we should flee the islands, but the waters were great for "
 "hunting, and the cursed naga who often raided our settlements did not "
 "trouble us here. So we remained and told ourselves that if we kept our "
-"distance everything would be okay."
+"distance everything would be fine."
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:314
@@ -13444,13 +13335,6 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1374
-#, fuzzy
-#| msgid ""
-#| "I must go and end this. But first I want to thank you all for your faith "
-#| "in me throughout this long journey. If I do not prevail than please flee "
-#| "this place with the merfolk and find somewhere where you can have peace "
-#| "and safety. My last wish is that no matter what happens you all live long "
-#| "and fruitful lives. Don’t let our sacrifices be forgotten..."
 msgid ""
 "I must go and end this. But first I want to thank you all for your faith in "
 "me throughout this long journey. If I do not prevail then please flee this "
@@ -13459,7 +13343,7 @@ msgid ""
 "fruitful lives. Don’t let our sacrifices be forgotten..."
 msgstr ""
 "I must go and end this. But first I want to thank you all for your faith in "
-"me throughout this long journey. If I do not prevail than please flee this "
+"me throughout this long journey. If I do not prevail then please flee this "
 "place with the merfolk and find somewhere where you can have peace and "
 "safety. My last wish is that no matter what happens you all live long and "
 "fruitful lives. Don’t let our sacrifices be forgotten..."
@@ -16239,6 +16123,7 @@ msgstr "thirst"
 msgid "refreshed"
 msgstr "refreshed"
 
+# TODO: fix the clause that talks about damage reduction
 #. [lua]
 #: data/campaigns/Under_the_Burning_Suns/utils/dehydration-utils.cfg:199
 msgid ""
@@ -16248,6 +16133,11 @@ msgid ""
 "\n"
 "Units cannot be killed or deal no damage as a result of dehydration."
 msgstr ""
+"dehydrated: This unit is dehydrated. It will lose 4 HP and have its damage "
+"reduced by 1 each turn during the day unless prevented by healers or cured "
+"by water at an oasis.\n"
+"\n"
+"Units cannot be killed or deal no damage as a result of dehydration."
 
 #. [set_variable]
 #: data/campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg:37

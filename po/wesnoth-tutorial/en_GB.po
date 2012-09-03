@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-18 09:41+0200\n"
-"PO-Revision-Date: 2012-08-16 12:52-0500\n"
+"POT-Creation-Date: 2012-09-01 18:48+0200\n"
+"PO-Revision-Date: 2012-09-02 23:46-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -801,10 +801,11 @@ msgstr ""
 "These dummies only attack if you are a single tile away. With care, you "
 "should be able to kill them one at a time."
 
+# TODO: maybe move this out of this textdomain
 #. [set_menu_item]: id=skip_item
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1131
 msgid "End Scenario"
-msgstr ""
+msgstr "End Scenario"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1144
@@ -812,6 +813,8 @@ msgid ""
 "Do you want to keep practicing? You can complete this scenario at any time "
 "using the right click."
 msgstr ""
+"Do you want to keep practising? You can end this scenario at any time by "
+"using the <b>End Scenario</b> item in the context menu."
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1146
@@ -1392,29 +1395,22 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:982
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1107
 msgid "Attack the orc with an Archer"
-msgstr "Attack the Orc with an Archer"
+msgstr "Attack the orc with an archer"
 
+# TODO: add the period to the original
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:983
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "To review the capabilities of any unit—including an enemy—hover the mouse "
-#| "over it, and you will see a unit summary on the right of the screen"
 msgid ""
 "To review the capabilities of any unit—including an enemy—hover the mouse "
 "over it, and you will see a unit summary on the right of the screen"
 msgstr ""
-"\n"
 "To review the capabilities of any unit—including an enemy—hover the mouse "
-"over it, and you will see a unit summary on the right of the screen"
+"over it, and you will see a unit summary on the right of the screen."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:983
-#, fuzzy
-#| msgid "<big>Unit Summaries</big>"
 msgid "Unit Summaries"
-msgstr "<big>Unit Summaries</big>"
+msgstr "Unit Summaries"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:991
@@ -1457,25 +1453,16 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1020
-#, fuzzy
-#| msgid "<big>Long-distance Movement</big>"
 msgid "Long-distance Movement"
-msgstr "<big>Long-distance Movement</big>"
+msgstr "Long-distance Movement"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1020
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "You can order a unit to move for multiple turns by selecting the unit and "
-#| "clicking on the destination. A number will indicate how many turns it "
-#| "will take to get there."
 msgid ""
 "You can order a unit to move for multiple turns by selecting the unit and "
 "clicking on the destination. A number will indicate how many turns it will "
 "take to get there."
 msgstr ""
-"\n"
 "You can order a unit to move for multiple turns by selecting the unit and "
 "clicking on the destination. A number will indicate how many turns it will "
 "take to get there."
@@ -1668,28 +1655,19 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1242
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "After this dialog, hold the mouse over the landscape image below the "
-#| "minimap on the right. This brings up a description of the time of day, "
-#| "showing who has the advantage."
 msgid ""
 "After this dialog, hold the mouse over the landscape image below the minimap "
 "on the right. This brings up a description of the time of day, showing who "
 "has the advantage."
 msgstr ""
-"\n"
 "After this dialog, hold the mouse over the landscape image below the minimap "
 "on the right. This brings up a description of the time of day, showing who "
 "has the advantage."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1242
-#, fuzzy
-#| msgid "<big>Time of Day</big>"
 msgid "Time of Day"
-msgstr "<big>Time of Day</big>"
+msgstr "Time of Day"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1249
@@ -1718,21 +1696,11 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1263
-#, fuzzy
-#| msgid "<big>Tracking Unused Units</big>"
 msgid "Tracking Unused Units"
-msgstr "<big>Tracking Unused Units</big>"
+msgstr "Tracking Unused Units"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1263
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "You can ensure you use all your troops by pressing <b>n</b> to step from "
-#| "one unit to the next. If you press <b>space</b>, you can mark the "
-#| "currently selected unit as having finished its turn, which stops you "
-#| "moving it by accident later on. When <b>n</b> no longer selects a new "
-#| "unit, it’s safe to end your turn."
 msgid ""
 "You can ensure you use all your troops by pressing <b>n</b> to step from one "
 "unit to the next. If you press <b>space</b>, you can mark the currently "
@@ -1740,7 +1708,6 @@ msgid ""
 "accident later on. When <b>n</b> no longer selects a new unit, it’s safe to "
 "end your turn."
 msgstr ""
-"\n"
 "You can ensure you use all your troops by pressing <b>n</b> to step from one "
 "unit to the next. If you press <b>space</b>, you can mark the currently "
 "selected unit as having finished its turn, which stops you moving it by "
@@ -1749,48 +1716,32 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1268
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "In this scenario, you only need to defeat the orc leader to win. (Victory "
-#| "conditions for a scenario are given under <b>Scenario Objectives</b> in "
-#| "the <b>Main Menu</b>)."
 msgid ""
 "In this scenario, you only need to defeat the orc leader to win. (Victory "
 "conditions for a scenario are given under <b>Scenario Objectives</b> in the "
 "<b>Main Menu</b>)."
 msgstr ""
-"\n"
 "In this scenario, you only need to defeat the orc leader to win. (Victory "
 "conditions for a scenario are given under <b>Scenario Objectives</b> in the "
 "<b>Main Menu</b>)."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1268
-#, fuzzy
-#| msgid "<big>Victory Conditions</big>"
 msgid "Victory Conditions"
-msgstr "<big>Victory Conditions</big>"
+msgstr "Victory Conditions"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1273
-#, fuzzy
-#| msgid "<big>Recruit the Right Unit Types</big>"
 msgid "Recruit the Right Unit Types"
-msgstr "<big>Recruit the Right Unit Types</big>"
+msgstr "Recruit the Right Unit Types"
 
+# TODO: maybe add a serial comma to this and the original
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1273
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Remember to recruit troops useful for the situation. Archers are "
-#| "particularly effective against Grunts, Wolf Riders and the orcish leader."
 msgid ""
 "Remember to recruit troops useful for the situation. Archers are "
 "particularly effective against Grunts, Wolf Riders and the orcish leader."
 msgstr ""
-"\n"
 "Remember to recruit troops useful for the situation. Archers are "
 "particularly effective against Grunts, Wolf Riders and the orcish leader."
 
@@ -1887,25 +1838,16 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1468
-#, fuzzy
-#| msgid "<big>Tracking Enemy Movement</big>"
 msgid "Tracking Enemy Movement"
-msgstr "<big>Tracking Enemy Movement</big>"
+msgstr "Tracking Enemy Movement"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1468
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "You can see where an enemy can reach by moving the mouse over them. You "
-#| "can see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
-#| "command from the <b>Actions</b> menu."
 msgid ""
 "You can see where an enemy can reach by moving the mouse over them. You can "
 "see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
 "command from the <b>Actions</b> menu."
 msgstr ""
-"\n"
 "You can see where an enemy can reach by moving the mouse over them. You can "
 "see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
 "command from the <b>Actions</b> menu."
