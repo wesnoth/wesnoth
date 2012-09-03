@@ -266,6 +266,8 @@ _GITHUB_API_REPOS = "orgs/wescamp/repos"
 _GITHUB_API_TEAMS = "orgs/wescamp/teams"
 # PUT /teams/:id/repos/:org/:repo
 _GITHUB_API_TEAM_REPO = "teams/{0}/repos/wescamp/{1}"
+# POST /repos/:user/:repo/hooks
+_GITHUB_API_HOOKS = "repos/wescamp/{0}/hooks"
 
 class GitHub(object):
     """Interface to a github checkout directory. Such a directory contains all translatable add-ons for a certain wesnoth version.
@@ -407,21 +409,36 @@ class GitHub(object):
         """
         reponame = "{0}-{1}".format(name, self.version)
 
+        # Create the repository
         url = _GITHUB_API_BASE + _GITHUB_API_REPOS
         requestdata = { "name" : reponame }
         repodata = self._github_api_request(url, requestdata, authenticate=True)
 
+        # Request the teams
         url = _GITHUB_API_BASE + _GITHUB_API_TEAMS
         teams = self._github_api_request(url, authenticate=True)
 
+        # Find the right team number
         # This can probably be cleaner
         team_number = [team["id"] for team in teams if team["name"] == "Developers"][0]
 
+        # Add the repository to the team
         # PUT /teams/:id/repos/:org/:repo
         baseurl = _GITHUB_API_BASE + _GITHUB_API_TEAM_REPO
         url = baseurl.format(team_number, reponame)
         # Github requires data for every modifying request, even if there is none
         self._github_api_request(url, data="", method="PUT", authenticate=True)
+
+        # Add commit hook
+        baseurl = _GITHUB_API_BASE + _GITHUB_API_HOOKS
+        url = baseurl.format(reponame)
+        requestdata = { "name" : "cia", "events" : ["push"], "active" : True,
+            "config" : {
+                "project" : "wescamp",
+                "module" : reponame
+            }
+        }
+        self._github_api_request(url, requestdata, authenticate=True)
 
         return repodata
 
