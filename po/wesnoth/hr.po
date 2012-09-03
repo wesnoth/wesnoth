@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-09-01 18:47+0200\n"
-"PO-Revision-Date: 2012-08-19 13:32+0100\n"
+"PO-Revision-Date: 2012-09-03 17:35+0100\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
 "Language: hr_HR\n"
@@ -256,7 +256,7 @@ msgstr ""
 #. [ai]: id=testing_ai_default
 #: data/ai/ais/testing_ai_default.cfg:5
 msgid "Multiplayer_AI^RCA AI"
-msgstr "Multiplayer_AI^RCA AI"
+msgstr "RCA AI"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
@@ -384,9 +384,8 @@ msgstr "Engleski (Velika Britanija) prijevod"
 
 #. [about]
 #: data/core/about.cfg:1637
-#, fuzzy
 msgid "English (Shaw) Translation"
-msgstr "Engleski (Velika Britanija) prijevod"
+msgstr "Engleski (Shaw) prijevod"
 
 #. [about]
 #: data/core/about.cfg:1655
@@ -415,9 +414,8 @@ msgstr "Francuski prijevod"
 
 #. [about]
 #: data/core/about.cfg:1899
-#, fuzzy
 msgid "Friulian Translation"
-msgstr "Filipinski prijevod"
+msgstr "Friulianski prijevod"
 
 #. [about]
 #: data/core/about.cfg:1906
@@ -496,9 +494,8 @@ msgstr "Makedonski prijevod"
 
 #. [about]
 #: data/core/about.cfg:2356
-#, fuzzy
 msgid "Marathi Translation"
-msgstr "Latinski prijevod"
+msgstr "Marathi prijevod"
 
 #. [about]
 #: data/core/about.cfg:2365
@@ -872,11 +869,11 @@ msgstr ""
 
 #: data/core/macros/items.cfg:266
 msgid "holy water^Take it"
-msgstr "sveta voda^Uzmi je"
+msgstr "Uzmi je"
 
 #: data/core/macros/items.cfg:267
 msgid "holy water^Leave it"
-msgstr "sveta voda^Ostavi je"
+msgstr "Ostavi je"
 
 #: data/core/macros/items.cfg:268
 msgid "I am not suited to the use of this item! Let another take it."
@@ -2443,9 +2440,8 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml-tags.lua:1268 src/actions/attack.cpp:887
-#, fuzzy
 msgid "female^petrified"
-msgstr "Vodstvo"
+msgstr "okamenjena"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
@@ -2455,9 +2451,8 @@ msgstr ""
 
 #. [lua]: set_status
 #: data/lua/wml-tags.lua:1269
-#, fuzzy
 msgid "female^unhealable"
-msgstr "Vodstvo"
+msgstr "neizlječiva"
 
 #. [lua]: set_status
 #: data/lua/wml-tags.lua:1269
@@ -2508,8 +2503,9 @@ msgstr ""
 #. [hides]: id=invisible
 #: data/scenario-movethrough.cfg:66 data/scenario-movethrough.cfg:68
 #, fuzzy
+#| msgid "female^unhealable"
 msgid "female^invisible"
-msgstr "Vodstvo"
+msgstr "neizlječiva"
 
 #. [message]: speaker=unit
 #: data/scenario-movethrough.cfg:92
@@ -3842,7 +3838,7 @@ msgstr ""
 
 #: src/loadscreen.cpp:226 src/loadscreen.cpp:233
 msgid "Reading unit files"
-msgstr "Ćitam podatke jedinica"
+msgstr "Čitam podatke jedinica"
 
 #: src/loadscreen.cpp:227
 msgid "Reinitialize fonts for the current language"
@@ -4138,7 +4134,7 @@ msgstr ""
 
 #: src/menu_events.cpp:1577
 msgid "Race"
-msgstr "Rasa"
+msgstr "Vrsta"
 
 #: src/menu_events.cpp:1601
 msgid "Create Unit (Debug!)"
@@ -4952,9 +4948,8 @@ msgid "I’m Ready"
 msgstr "Spreman sam"
 
 #: src/multiplayer_connect.cpp:1039
-#, fuzzy
 msgid "Add named local player"
-msgstr "Zamijeni s lokalnim igračem"
+msgstr "Dodaj imenovanog lokalnog igrača"
 
 #: src/multiplayer_connect.cpp:1049
 msgid "The scenario is invalid because it has no id."
@@ -5811,9 +5806,8 @@ msgid "Could not write to file"
 msgstr ""
 
 #: src/savegame.cpp:1048
-#, fuzzy
 msgid "Save Replay"
-msgstr "Spremi replay"
+msgstr "Spremi snimku"
 
 #: src/savegame.cpp:1057
 msgid "replay"
@@ -6088,9 +6082,8 @@ msgid "lawful"
 msgstr ""
 
 #: src/unit_types.cpp:989
-#, fuzzy
 msgid "liminal"
-msgstr "Vodstvo"
+msgstr "liminalno"
 
 #: src/unit_types.cpp:989
 msgid "neutral"
@@ -6105,9 +6098,8 @@ msgid "female^lawful"
 msgstr ""
 
 #: src/unit_types.cpp:990
-#, fuzzy
 msgid "female^liminal"
-msgstr "Vodstvo"
+msgstr "liminalna"
 
 #: src/unit_types.cpp:990
 msgid "female^neutral"
