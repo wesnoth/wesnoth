@@ -25,6 +25,15 @@ class Error(Exception):
     """Base class for exceptions in this module."""
     pass
 
+class AddonError(Error):
+    """Class for exceptions that belong to an add-on."""
+    def __init__(self, addon, message):
+        self.addon = addon
+        self.message = message
+        self.args = (addon, message)
+    def __str__(self):
+        return "{0}: {1}".format(str(self.addon), str(self.message))
+
 class Addon(object):
     """Represents an add-on from a github directory.
 
@@ -59,7 +68,7 @@ class Addon(object):
                     continue
                 real_errs.append(line)
             if real_errs:
-                raise Error("Error pulling add-on {0}:\n{1}".format(addon, "\n".join(real_errs)))
+                raise AddonError(self.name, "Error pulling:\n{0}".format("\n".join(real_errs)))
 
 
         def remove_untracked():
@@ -129,7 +138,7 @@ class Addon(object):
 
         status = self._status()
         if status:
-            raise Error("Checkout is not clean:\n{0}".format("\n".join(status)))
+            raise AddonError(self.name, "Checkout is not clean:\n{0}".format("\n".join(status)))
 
         self._rmtree(".", exclude)
         #actual copying
@@ -156,7 +165,7 @@ class Addon(object):
         out, err = self._execute(["git", "push", "-u", "--porcelain", "origin", "master"], check_error=False)
         statusline = filter(lambda x: x.find("refs/heads/master") != -1, out.splitlines())
         if not statusline:
-            raise Error("No statusline produced by git push in add-on {0}".format(self.name))
+            raise AddonError(self.name, "No statusline produced by git push")
         else:
             status = statusline[0][0]
             refs, summary = statusline[0][1:].split(None, 1)
@@ -170,9 +179,9 @@ class Addon(object):
                 # Up to date?
                 logging.warn("Commit to add-on {0} with message {1} has not made any changes".format(self.name, message))
             elif status == "!":
-                raise Error("Commit to add-on {0} with message {1} failed for reason {2}".format(self.name, message, summary))
+                raise AddonError(self.name, "Commit with message {0} failed for reason {1}".format(message, summary))
             else:
-                raise Error("Commit to add-on {0} with message {1} has done something unexpected: {2}".format(self.name, message, statusline[0]))
+                raise AddonError(self.name, "Commit with message {0} has done something unexpected: {1}".format(message, statusline[0]))
 
     def get_dir(self):
         """Return the directory this add-on's checkout is in.
@@ -243,11 +252,11 @@ class Addon(object):
             else:
                 errors.extend((src, dst, str(why)))
         if errors:
-            raise Error(errors)
+            raise AddonError(self.name, "Errors attempting to sync:\n{0}".format("\n".join(errors)))
     def _status(self):
         out, err = self._execute(["git", "status", "--porcelain"])
         if err:
-            raise Error("Status failed with message: {0}".format(err))
+            raise AddonError(self.name, "Status failed with message: {0}".format(err))
         return [line for line in out.split('\n') if len(line)]
     def _execute(self, command, check_error = False):
         return self.github._execute(command, cwd=self.get_dir(), check_error=check_error)
@@ -305,7 +314,7 @@ class GitHub(object):
                 repo = matches[0]
                 self._clone(repo[0], repo[1])
             else:
-                raise Error("No such add-on found")
+                raise AddonError(name, "Add-on not found")
         return Addon(self, name, readonly)
 
     def create_addon(self, name):
@@ -354,7 +363,7 @@ class GitHub(object):
                     got_error = True
                     break
             if got_error:
-                raise Error("Error cloning an add-on: " + err)
+                raise AddonError(name, "Error cloning: " + err)
 
     def _get_new_addons(self):
         """Check out any new add-ons.

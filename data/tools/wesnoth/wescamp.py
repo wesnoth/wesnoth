@@ -372,6 +372,9 @@ if __name__ == "__main__":
 
         try:
             addons = list_addons(server, options.list_translatable)
+        except libgithub.AddonError, e:
+            print "[ERROR github in {0}] {1}".format(e.addon, str(e.args))
+            sys.exit(1)
         except libgithub.Error, e:
             print "[ERROR github] " + str(e)
             sys.exit(1)
@@ -397,6 +400,9 @@ if __name__ == "__main__":
 
         try:
             upload(server, options.upload, target, wescamp, build_sys_dir)
+        except libgithub.AddonError, e:
+            print "[ERROR github in {0}] {1}".format(e.addon, str(e.args))
+            sys.exit(1)
         except libgithub.Error, e:
             print "[ERROR github] " + str(e)
             sys.exit(1)
@@ -426,6 +432,9 @@ if __name__ == "__main__":
                 # Create a new temp dir for every upload.
                 tmp = tempdir()
                 upload(server, k, tmp.path, wescamp, build_sys_dir)
+            except libgithub.AddonError, e:
+                print "[ERROR github in {0}] {1}".format(e.addon, str(e.args))
+                error = True
             except libgithub.Error, e:
                 print "[ERROR github] in addon '" + k + "'" + str(e)
                 error = True
@@ -447,6 +456,9 @@ if __name__ == "__main__":
 
         try:
             checkout(wescamp, git_version, userpass=git_userpass, readonly=(options.checkout_readonly != None))
+        except libgithub.AddonError, e:
+            print "[ERROR github in {0}] {1}".format(e.addon, str(e.args))
+            sys.exit(1)
         except libgithub.Error, e:
             print "[ERROR github] " + str(e)
             sys.exit(1)
