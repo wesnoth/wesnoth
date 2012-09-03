@@ -390,7 +390,7 @@ if __name__ == "__main__":
         try:
             addons = list_addons(server, options.list_translatable)
         except libgithub.AddonError, e:
-            print "[ERROR github in {0}] {1}".format(e.addon, str(e.args))
+            print "[ERROR github in {0}] {1}".format(e.addon, str(e.message))
             sys.exit(1)
         except libgithub.Error, e:
             print "[ERROR github] " + str(e)
@@ -418,7 +418,7 @@ if __name__ == "__main__":
         try:
             upload(server, options.upload, target, wescamp, build_sys_dir)
         except libgithub.AddonError, e:
-            print "[ERROR github in {0}] {1}".format(e.addon, str(e.args))
+            print "[ERROR github in {0}] {1}".format(e.addon, str(e.message))
             sys.exit(1)
         except libgithub.Error, e:
             print "[ERROR github] " + str(e)
@@ -450,7 +450,7 @@ if __name__ == "__main__":
                 tmp = tempdir()
                 upload(server, k, tmp.path, wescamp, build_sys_dir)
             except libgithub.AddonError, e:
-                print "[ERROR github in {0}] {1}".format(e.addon, str(e.args))
+                print "[ERROR github in {0}] {1}".format(e.addon, str(e.message))
                 error = True
             except libgithub.Error, e:
                 print "[ERROR github] in addon '" + k + "'" + str(e)
@@ -474,7 +474,7 @@ if __name__ == "__main__":
         try:
             checkout(wescamp, userpass=git_userpass, readonly=(options.checkout_readonly != None))
         except libgithub.AddonError, e:
-            print "[ERROR github in {0}] {1}".format(e.addon, str(e.args))
+            print "[ERROR github in {0}] {1}".format(e.addon, str(e.message))
             sys.exit(1)
         except libgithub.Error, e:
             print "[ERROR github] " + str(e)
