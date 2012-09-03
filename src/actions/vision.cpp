@@ -269,7 +269,7 @@ bool shroud_clearer::clear_loc(team &tm, const map_location &loc,
  * Clears shroud (and fog) around the provided location for @a view_team
  * as if @a viewer was standing there.
  * This will also record sighted events, which should be either fired or
- * explicitly cleared.
+ * explicitly dropped.
  *
  * @param known_units      These locations are not checked for uncovered units.
  * @param enemy_count      Incremented for each enemy uncovered (excluding known_units).
@@ -314,6 +314,38 @@ bool shroud_clearer::clear_unit(const map_location &view_loc,
 	}
 
 	return cleared_something;
+}
+
+
+/**
+ * Clears shroud (and fog) around the provided location as if @a viewer
+ * was standing there.
+ * This version of shroud_clearer::clear_unit() will abort if the viewer's
+ * team uses neither fog nor shroud. (Not supplying a team suggests that
+ * it would be inconvenient for the caller to make that check.)
+ * In addition, if @a invalidate is left as true, invalidate_after_clear()
+ * will be called.
+ *
+ * @return whether or not information was uncovered (i.e. returns true if any
+ *         locations in visual range were fogged/shrouded under shared vision/maps).
+ */
+bool shroud_clearer::clear_unit(const map_location &view_loc, const unit &viewer,
+                                bool invalidate)
+{
+	team & viewing_team = (*resources::teams)[viewer.side()-1];
+
+	// Abort if there is nothing to clear.
+	if ( !viewing_team.fog_or_shroud() )
+		return false;
+
+	if ( !clear_unit(view_loc, viewer, viewing_team) )
+		// Nothing uncovered.
+		return false;
+
+	if ( invalidate )
+		invalidate_after_clear();
+
+	return true;
 }
 
 

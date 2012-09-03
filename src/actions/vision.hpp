@@ -62,6 +62,10 @@ public:
     	            const std::set<map_location>* known_units = NULL,
 	                size_t * enemy_count = NULL, size_t * friend_count = NULL,
 	                move_unit_spectator * spectator = NULL);
+	/// Clears shroud (and fog) around the provided location as if @a viewer
+	/// was standing there.
+	bool clear_unit(const map_location &view_loc, const unit &viewer,
+	                bool invalidate = true);
 
 	/// Erases the record of sighted events from earlier fog/shroud clearing.
 	void drop_events();

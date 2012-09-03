@@ -1335,12 +1335,7 @@ void advance_unit(map_location loc, const std::string &advance_to,
 
 	// Update fog/shroud.
 	actions::shroud_clearer clearer;
-	team & current_team = (*resources::teams)[new_unit.side()-1];
-	if ( current_team.fog_or_shroud() )
-	{
-		clearer.clear_unit(loc, new_unit, current_team);
-		clearer.invalidate_after_clear();
-	}
+	clearer.clear_unit(loc, new_unit);
 
 	// "post_advance" event.
 	if(fire_event)
