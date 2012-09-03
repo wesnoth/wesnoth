@@ -26,10 +26,6 @@
 #include "gui/widgets/window.hpp"
 #include "gettext.hpp"
 
-namespace {
-
-} // end anonymous namespace
-
 namespace gui2 {
 
 /*WIKI
