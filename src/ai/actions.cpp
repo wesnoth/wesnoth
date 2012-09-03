@@ -676,12 +676,12 @@ void recall_result::do_execute()
 		return;
 	} else {
 
-		unit &un = *rec;
+		unit un(*rec);
+		my_team.recall_list().erase(rec);
 		recorder.add_recall(un.id(), recall_location_, recall_from_);
 		place_recruit(un, recall_location_, recall_from_, my_team.recall_cost(), true, true);
 		statistics::recall_unit(un);
 
-		my_team.recall_list().erase(rec);
 		if (resources::screen!=NULL) {
 			resources::screen->invalidate_game_status();
 			resources::screen->invalidate_all();

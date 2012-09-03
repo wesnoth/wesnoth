@@ -1025,9 +1025,10 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				find_if_matches_id(current_team.recall_list(), unit_id);
 
 			if (recall_unit != current_team.recall_list().end()) {
-				statistics::recall_unit(*recall_unit);
-				place_recruit(*recall_unit, loc, from, current_team.recall_cost(), true, !get_replay_source().is_skipping());
+				unit new_unit(*recall_unit);
 				current_team.recall_list().erase(recall_unit);
+				place_recruit(new_unit, loc, from, current_team.recall_cost(), true, !get_replay_source().is_skipping());
+				statistics::recall_unit(new_unit);
 				fix_shroud = true;
 			} else {
 				replay::process_error("illegal recall: unit_id '" + unit_id + "' could not be found within the recall list.\n");
