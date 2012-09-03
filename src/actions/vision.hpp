@@ -73,9 +73,7 @@ public:
 	/// Fires the sighted events that were earlier recorded by fog/shroud clearing.
 	bool fire_events();
 
-	/// The invalidations that should occur after invoking clear_shroud_unit().
-	/// This is separate since clear_shroud_unit() might be invoked several
-	/// times in a row, and the invalidations might only need to be done once.
+	/// The invalidations that should occur after invoking clear_unit().
 	void invalidate_after_clear();
 
 private:

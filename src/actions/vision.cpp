@@ -408,8 +408,8 @@ bool shroud_clearer::fire_events()
 
 
 /**
- * The invalidations that should occur after invoking clear_shroud_unit().
- * This is separate since clear_shroud_unit() might be invoked several
+ * The invalidations that should occur after invoking clear_unit().
+ * This is separate since clear_unit() might be invoked several
  * times in a row, and the invalidations might only need to be done once.
  */
 void shroud_clearer::invalidate_after_clear()
