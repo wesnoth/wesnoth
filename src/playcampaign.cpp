@@ -180,7 +180,7 @@ void play_replay(display& disp, game_state& gamestate, const config& game_config
 
 	//for replays, use the variables specified in starting_pos
 	if (const config &vars = starting_pos.child("variables")) {
-		gamestate.carryover_sides_start["variables"] = vars;
+		gamestate.carryover_sides_start.child_or_add("variables") = vars;
 	}
 
 	try {
