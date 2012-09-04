@@ -100,6 +100,7 @@ public:
 	bool show_replay() const { return show_replay_; }
 	bool cancel_orders() const { return cancel_orders_; }
 	const std::string filename() const { return filename_; }
+	const config load_config() const { return load_config_; }
 
 private:
 	/** Display the load-game dialog. */

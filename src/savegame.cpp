@@ -612,6 +612,8 @@ void loadgame::load_game(
 	std::string error_log;
 	read_save_file(filename_, load_config_, &error_log);
 
+	convert_old_saves(load_config_);
+
 	if(!error_log.empty()) {
         try {
 		    gui2::show_error_message(gui_.video(),
@@ -624,8 +626,9 @@ void loadgame::load_game(
         }
 	}
 
-	if (!difficulty_.empty())
-		load_config_["difficulty"] = difficulty_;
+	if (!difficulty_.empty()){
+		load_config_.child("carryover_sides_start")["difficulty"] = difficulty_;
+	}
 
 	gamestate_.classification().campaign_define = load_config_["campaign_define"].str();
 	gamestate_.classification().campaign_type = load_config_["campaign_type"].str();
@@ -683,7 +686,6 @@ void loadgame::check_version_compatibility()
 
 void loadgame::set_gamestate()
 {
-	convert_old_saves(load_config_);
 	gamestate_ = game_state(load_config_, show_replay_);
 
 	// Get the status of the random in the snapshot.

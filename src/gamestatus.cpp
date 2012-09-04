@@ -352,7 +352,9 @@ void carryover_info::transfer_to(config& level){
 		wml_menu_items_.to_config(level);
 	}
 
-	level["difficulty"] = difficulty_;
+	if(level["difficulty"].empty()){
+		level["difficulty"] = difficulty_;
+	}
 	difficulty_ = "";
 	next_scenario_ = "";
 
@@ -1273,9 +1275,15 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	cfg_summary["label"] = cfg_save["label"];
 	cfg_summary["parent"] = cfg_save["parent"];
 	cfg_summary["campaign_type"] = cfg_save["campaign_type"];
-	cfg_summary["scenario"] = cfg_save["scenario"];
+
+	if(cfg_save.has_child("carryover_sides_start")){
+		cfg_summary["scenario"] = cfg_save.child("carryover_sides_start")["next_scenario"];
+		cfg_summary["difficulty"] = cfg_save.child("carryover_sides_start")["difficulty"];
+	} else {
+		cfg_summary["scenario"] = cfg_save["scenario"];
+		cfg_summary["difficulty"] = cfg_save["difficulty"];
+	}
 	cfg_summary["campaign"] = cfg_save["campaign"];
-	cfg_summary["difficulty"] = cfg_save["difficulty"];
 	cfg_summary["version"] = cfg_save["version"];
 	cfg_summary["corrupt"] = "";
 
