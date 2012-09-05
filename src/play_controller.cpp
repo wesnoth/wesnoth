@@ -552,7 +552,7 @@ void play_controller::init_gui(){
 	gui_->update_tod();
 
 	for(std::vector<team>::iterator t = teams_.begin(); t != teams_.end(); ++t) {
-		clear_shroud(t - teams_.begin() + 1);
+		clear_shroud(t - teams_.begin() + 1, false, false);
 	}
 }
 
@@ -657,8 +657,10 @@ void play_controller::do_init_side(const unsigned int team_index, bool is_replay
 	if (int(team_index) + 1 == first_player_)
 		sound::play_sound(tod.sounds, sound::SOUND_SOURCES);
 
+	// Make sure vision is accurate.
+	clear_shroud(team_index + 1, !loading_game_);
+
 	if (!recorder.is_skipping()){
-		clear_shroud(team_index + 1, !loading_game_);
 		gui_->invalidate_all();
 	}
 
@@ -740,6 +742,8 @@ void play_controller::finish_side_turn(){
 		if (uit->side() == player_number_)
 			uit->end_turn();
 	}
+	// Clear shroud, in case units had been slowed for the turn.
+	clear_shroud(player_number_);
 
 	const std::string turn_num = str_cast(turn());
 	const std::string side_num = str_cast(player_number_);

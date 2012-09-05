@@ -457,13 +457,11 @@ void replay_controller::update_teams(){
 		next_team = 1;
 	}
 
-	if (!show_team_) {
+	if ( show_team_ == 0 ) {
 		gui_->set_team(next_team - 1, show_everything_);
 	} else {
 		gui_->set_team(show_team_ - 1, show_everything_);
 	}
-
-	clear_shroud(next_team);
 
 	gui_->set_playing_team(next_team - 1);
 	gui_->invalidate_all();

@@ -113,6 +113,6 @@ bool actor_sighted(const unit & target, const std::vector<int> * cache =  NULL);
 void recalculate_fog(int side);
 
 /// Function that will clear shroud (and fog) based on current unit positions.
-bool clear_shroud(int side, bool reset_fog=false);
+bool clear_shroud(int side, bool reset_fog = false, bool fire_events = true);
 
 #endif

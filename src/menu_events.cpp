@@ -1351,13 +1351,6 @@ void menu_handler::redo(int side_num)
 	gui_->draw();
 }
 
-bool menu_handler::clear_shroud(int side_num)
-{
-	bool cleared = teams_[side_num - 1].auto_shroud_updates() &&
-		::clear_shroud(side_num);
-	return cleared;
-}
-
 void menu_handler::clear_undo_stack(int side_num)
 {
 	if (!teams_[side_num - 1].auto_shroud_updates())
@@ -1465,7 +1458,6 @@ void menu_handler::goto_leader(int side_num)
 {
 	unit_map::const_iterator i = units_.find_leader(side_num);
 	if(i != units_.end()) {
-		clear_shroud(side_num);
 		gui_->scroll_to_tile(i->get_location(), game_display::WARP);
 	}
 }
@@ -3665,7 +3657,7 @@ void console_handler::do_fog() {
 }
 void console_handler::do_shroud() {
 	menu_handler_.teams_[team_num_ - 1].set_shroud( !menu_handler_.teams_[team_num_ - 1].uses_shroud() );
-	menu_handler_.clear_shroud(team_num_);
+	clear_shroud(team_num_);
 	menu_handler_.gui_->recalculate_minimap();
 	menu_handler_.gui_->redraw_everything();
 }

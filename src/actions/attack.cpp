@@ -654,8 +654,8 @@ void attack::fire_event(const std::string& n)
 	// defender, so we have to make sure they still exist
 	refresh_bc();
 	if(!a_.valid() || !d_.valid() || !(*resources::teams)[a_.get_unit().side() - 1].is_enemy(d_.get_unit().side())) {
+		recalculate_fog(defender_side);
 		if (update_display_){
-			recalculate_fog(defender_side);
 			resources::screen->redraw_minimap();
 			resources::screen->draw(true, true);
 		}
@@ -1219,14 +1219,12 @@ void attack::perform()
 		}
 	}
 
-	// TODO: if we knew the viewing team, we could skip some of these display update
-	if (update_def_fog_ && (*resources::teams)[defender_side - 1].uses_fog())
+	if ( update_def_fog_ )
 	{
-		if (update_display_) {
-			recalculate_fog(defender_side);
-		}
+		recalculate_fog(defender_side);
 	}
 
+	// TODO: if we knew the viewing team, we could skip this display update
 	if (update_minimap_ && update_display_) {
 		resources::screen->redraw_minimap();
 	}

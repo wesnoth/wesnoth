@@ -12,11 +12,14 @@ Version 1.11.0+svn:
    * The recruit and recall commands are restored when right-clicking on a
      leader, but with new semantics -- only that leader's recruits/recalls will
      be presented as options.
+   * Fog/shroud clearing has been reworked to be more timely and consistent.
  * WML engine:
    * The recall, recruit, prerecall, and prerecruit events will now block
      undoing unless they contain [allow_undo].
    * The cost of a recall/recruit is now paid between the prerecall/prerecruit
      and recall/recruit events. (FR #16711)
+   * Sighted events should be reliable, provided the player does not activate
+     delayed shroud updates (which is still a major caveat).
  * Miscellaneous and bug fixes:
    * Fix invalid memory access crash resulting from deleting all saved games
      in the Load Game dialog

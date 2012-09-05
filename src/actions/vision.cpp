@@ -534,6 +534,7 @@ bool actor_sighted(const unit & target, const std::vector<int> * cache)
  * combat. As a back-up, it is also called when clearing shroud at the
  * beginning of a turn.
  * This function does nothing if the indicated side does not use fog.
+ * This function ignores the "delayed shroud updates" setting.
  * The display is invalidated as needed.
  *
  * @param[in] side The side whose fog will be recalculated.
@@ -545,7 +546,7 @@ void recalculate_fog(int side)
 	if (!tm.uses_fog())
 		return;
 
-	// Exclude currently seen units from sighting events.
+	// Exclude currently seen units from sighted events.
 	std::set<map_location> visible_locs;
 	BOOST_FOREACH (const unit &u, *resources::units) {
 		const map_location & u_location = u.get_location();
@@ -568,23 +569,26 @@ void recalculate_fog(int side)
 	// Update the screen.
 	clearer.invalidate_after_clear();
 
-	//FIXME: We should possibly stop dropping these events.
-	clearer.drop_events();
+	// Fire any sighted events we picked up.
+	clearer.fire_events();
 }
+
 
 /**
  * Function that will clear shroud (and fog) based on current unit positions.
  *
  * This will not re-fog hexes unless reset_fog is set to true.
  * This function will do nothing if the side uses neither shroud nor fog.
+ * This function ignores the "delayed shroud updates" setting.
  * The display is invalidated as needed.
  *
- * @param[in] side      The side whose shroud (and fog) will be cleared.
- * @param[in] reset_fog If set to true, the fog will also be recalculated
- *                      (refogging hexes that can no longer be seen).
+ * @param[in] side         The side whose shroud (and fog) will be cleared.
+ * @param[in] reset_fog    If set to true, the fog will also be recalculated
+ *                         (refogging hexes that can no longer be seen).
+ * @param[in] fire_events  If set to false, sighted events will not be fired.
  * @returns true if some shroud/fog is actually cleared away.
  */
-bool clear_shroud(int side, bool reset_fog)
+bool clear_shroud(int side, bool reset_fog, bool fire_events)
 {
 	team &tm = (*resources::teams)[side - 1];
 	if (!tm.uses_shroud() && !tm.uses_fog())
@@ -602,11 +606,15 @@ bool clear_shroud(int side, bool reset_fog)
 	if ( result )
 		clearer.invalidate_after_clear();
 
-	//FIXME: We should probably stop dropping these events.
-	clearer.drop_events();
+	// Sighted events.
+	if ( fire_events )
+		clearer.fire_events();
+	else
+		clearer.drop_events();
 
 	if ( reset_fog ) {
 		// Note: This will not reveal any new tiles, so result is not affected.
+		//       Also, we do not have to check fire_events at this point.
 		recalculate_fog(side);
 	}
 

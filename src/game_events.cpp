@@ -870,9 +870,9 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 	const map_location vacant_dst = find_vacant_tile(dst, pathfind::VACANT_ANY, pass_check);
 	if (!resources::game_map->on_board(vacant_dst)) return;
 
-	int side = u->side();
+	actions::shroud_clearer clearer;
 	if (cfg["clear_shroud"].to_bool(true)) {
-		clear_shroud(side);
+		clearer.clear_unit(vacant_dst, *u);
 	}
 
 	map_location src_loc = u->get_location();
@@ -890,12 +890,15 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 	u->set_standing();
 
 	if (resources::game_map->is_village(vacant_dst)) {
-		get_village(vacant_dst, side);
+		get_village(vacant_dst, u->side());
 	}
 
 	resources::screen->invalidate_unit_after_move(src_loc, dst);
 
 	resources::screen->draw();
+
+	// Sighted events.
+	clearer.fire_events();
 }
 
 WML_HANDLER_FUNCTION(volume, /*event_info*/, cfg)

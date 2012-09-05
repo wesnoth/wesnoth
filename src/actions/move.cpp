@@ -510,8 +510,6 @@ namespace { // Private helpers for move_unit()
 	 */
 	inline void unit_mover::handle_fog(const map_location & hex, bool ally_interrupts)
 	{
-		static const std::string sighted_str("sighted");
-
 		// Clear the fog.
 		if ( clearer_.clear_unit(hex, *move_it_, *current_team_, NULL,
 		                         &enemy_count_, &friend_count_, spectator_) )
