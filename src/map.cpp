@@ -588,7 +588,7 @@ bool gamemap::on_board(const map_location& loc) const
 
 bool gamemap::on_board_with_border(const map_location& loc) const
 {
-	return !tiles_.empty()  &&
+	return !(tiles_.empty()  ||  tiles_[0].empty())  &&  // tiles_ is not empty when initialized.
 	       loc.x >= -border_size_  &&  loc.x < w_ + border_size_  &&
 	       loc.y >= -border_size_  &&  loc.y < h_ + border_size_;
 }
