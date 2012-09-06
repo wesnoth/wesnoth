@@ -1866,12 +1866,12 @@ void unit::start_animation(int start_time, const unit_animation *animation,
 	bool with_bars,  const std::string &text, Uint32 text_color, STATE state)
 {
 	const display * disp =  display::get_singleton();
-	state_ = state;
-	if (!animation) {
-		if (state != STATE_STANDING)
+	if (anim_ && !animation) {
+		if (state_ != STATE_STANDING)
 			set_standing(with_bars);
 		return ;
 	}
+	state_ = state;
 	// everything except standing select and idle
 	bool accelerate = (state != STATE_FORGET && state != STATE_STANDING);
 	draw_bars_ =  with_bars;
