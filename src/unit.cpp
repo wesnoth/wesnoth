@@ -1866,8 +1866,8 @@ void unit::start_animation(int start_time, const unit_animation *animation,
 	bool with_bars,  const std::string &text, Uint32 text_color, STATE state)
 {
 	const display * disp =  display::get_singleton();
-	if (anim_ && !animation) {
-		if (state_ != STATE_STANDING)
+	if (!animation) {
+		if (!anim_ || state_ != STATE_STANDING)
 			set_standing(with_bars);
 		return ;
 	}
