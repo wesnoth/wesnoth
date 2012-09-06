@@ -761,8 +761,7 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 		const std::string event_name = is_recall ? "prerecall" : "prerecruit";
 		LOG_NG << "firing " << event_name << " event\n";
 		{
-			using namespace game_events;
-			mutated |= fire(event_name, entity_location(*new_unit_itor), recruited_from);
+			mutated |= game_events::fire(event_name, current_loc, recruited_from);
 		}
 		if ( !validate_recruit_iterator(new_unit_itor, current_loc) )
 			return true;
@@ -793,8 +792,7 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 		const std::string event_name = is_recall ? "recall" : "recruit";
 		LOG_NG << "firing " << event_name << " event\n";
 		{
-			using namespace game_events;
-			mutated |= fire(event_name, entity_location(*new_unit_itor), recruited_from);
+			mutated |= game_events::fire(event_name, current_loc, recruited_from);
 		}
 	}
 
