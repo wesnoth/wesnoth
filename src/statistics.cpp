@@ -37,6 +37,7 @@ namespace {
 bool mid_scenario = false;
 
 typedef statistics::stats stats;
+typedef std::map<std::string,stats> team_stats_t;
 
 struct scenario_stats
 {
@@ -50,7 +51,7 @@ struct scenario_stats
 	config write() const;
 	void write(config_writer &out) const;
 
-	std::map<std::string,stats> team_stats;
+	team_stats_t team_stats;
 	std::string scenario_name;
 };
 
@@ -67,7 +68,7 @@ config scenario_stats::write() const
 {
 	config res;
 	res["scenario"] = scenario_name;
-	for(std::map<std::string,stats>::const_iterator i = team_stats.begin(); i != team_stats.end(); ++i) {
+	for(team_stats_t::const_iterator i = team_stats.begin(); i != team_stats.end(); ++i) {
 		res.add_child("team",i->second.write());
 	}
 
@@ -77,7 +78,7 @@ config scenario_stats::write() const
 void scenario_stats::write(config_writer &out) const
 {
 	out.write_key_val("scenario", scenario_name);
-	for(std::map<std::string,stats>::const_iterator i = team_stats.begin(); i != team_stats.end(); ++i) {
+	for(team_stats_t::const_iterator i = team_stats.begin(); i != team_stats.end(); ++i) {
 		out.open_child("team");
 		i->second.write(out);
 		out.close_child("team");
@@ -94,7 +95,7 @@ static stats &get_stats(const std::string &save_id)
 		master_stats.push_back(scenario_stats(std::string()));
 	}
 
-	std::map<std::string,stats>& team_stats = master_stats.back().team_stats;
+	team_stats_t& team_stats = master_stats.back().team_stats;
 	return team_stats[save_id];
 }
 
