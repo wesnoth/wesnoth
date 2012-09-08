@@ -241,13 +241,17 @@ void dialog::set_menu(const std::vector<std::string> &menu_items, menu::sorter* 
 		-1, dialog::max_menu_width, sorter, &menu::default_style, false));
 }
 
-void dialog::set_menu_items(const std::vector<std::string> &menu_items)
+/**
+ * Changes (or sets, if not previously set) the dialog's menu items to the
+ * provided list. If @a keep_selected is true, the selection will remain at
+ * the same index if possible (otherwise it gets reset to zero).
+ */
+void dialog::set_menu_items(const std::vector<std::string> &menu_items, bool keep_selection)
 {
 	if(menu_ == empty_menu) {
 		set_menu(menu_items);
 	} else {
-		menu_->set_items(menu_items);
-		menu_->reset_selection();
+		menu_->set_items(menu_items, true, keep_selection);
 
 		for(pp_iterator i = preview_panes_.begin(); i != preview_panes_.end(); ++i) {
 			(**i).set_selection(menu_->selection());
