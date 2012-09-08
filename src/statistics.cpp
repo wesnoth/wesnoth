@@ -554,7 +554,7 @@ void advance_unit(const unit& u)
 	s.advanced_to[u.type_id()]++;
 }
 
-void reset_turn_stats(std::string save_id)
+void reset_turn_stats(const std::string & save_id)
 {
 	stats &s = get_stats(save_id);
 	s.turn_damage_inflicted = 0;
@@ -564,7 +564,7 @@ void reset_turn_stats(std::string save_id)
 	s.save_id = save_id;
 }
 
-stats calculate_stats(int category, std::string save_id)
+stats calculate_stats(int category, const std::string & save_id)
 {
 	DBG_NG << "calculate_stats, category: " << category << " side: " << save_id << " master_stats.size: " << master_stats.size() << "\n";
 	if(category == 0) {

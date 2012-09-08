@@ -109,8 +109,8 @@ namespace statistics
 	void fresh_stats();
 	void clear_current_scenario();
 
-	void reset_turn_stats(std::string save_id);
-	stats calculate_stats(int category, std::string save_id);
+	void reset_turn_stats(const std::string & save_id);
+	stats calculate_stats(int category, const std::string & save_id);
 } // end namespace statistics
 
 #endif
