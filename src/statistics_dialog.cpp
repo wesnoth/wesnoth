@@ -144,7 +144,7 @@ statistics_dialog::statistics_dialog(game_display &disp,
 	add_button(new gui::standard_dialog_button(disp.video(), _("Close"), 1, true),
 				gui::dialog::BUTTON_STANDARD);
 
-	stats_ = statistics::calculate_stats(0, team_id);
+	stats_ = statistics::calculate_stats(team_id);
 	int n, cost;
 	std::vector<std::string> items;
 	// Prepare the menu items

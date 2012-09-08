@@ -565,25 +565,20 @@ void reset_turn_stats(const std::string & save_id)
 	s.save_id = save_id;
 }
 
-stats calculate_stats(int category, const std::string & save_id)
+stats calculate_stats(const std::string & save_id)
 {
-	DBG_NG << "calculate_stats, category: " << category << " side: " << save_id << " master_stats.size: " << master_stats.size() << "\n";
-	if(category == 0) {
-		stats res;
-		// We are going from last to first to include correct turn stats in result
-		for(int i = int(master_stats.size()); i > 0 ; --i) {
-			merge_stats(res,calculate_stats(i,save_id));
-		}
+	stats res;
 
-		return res;
-	} else {
-		const size_t index = master_stats.size() - size_t(category);
-		if(index < master_stats.size() && master_stats[index].team_stats.find(save_id) != master_stats[index].team_stats.end()) {
-			return master_stats[index].team_stats[save_id];
-		} else {
-			return stats();
-		}
+	DBG_NG << "calculate_stats, side: " << save_id << " master_stats.size: " << master_stats.size() << "\n";
+	// The order of this loop matters since the turn stats are taken from the
+	// last stats merged.
+	for ( size_t i = 0; i != master_stats.size(); ++i ) {
+		team_stats_t::const_iterator find_it = master_stats[i].team_stats.find(save_id);
+		if ( find_it != master_stats[i].team_stats.end() )
+			merge_stats(res, find_it->second);
 	}
+
+	return res;
 }
 
 config write_stats()

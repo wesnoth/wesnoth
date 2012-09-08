@@ -110,7 +110,7 @@ namespace statistics
 	void clear_current_scenario();
 
 	void reset_turn_stats(const std::string & save_id);
-	stats calculate_stats(int category, const std::string & save_id);
+	stats calculate_stats(const std::string & save_id);
 } // end namespace statistics
 
 #endif
