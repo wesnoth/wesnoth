@@ -24,7 +24,6 @@
 #include "game_display.hpp"
 #include "game_preferences.hpp"
 #include "construct_dialog.hpp"
-#include "serialization/parser.hpp"
 #include "settings.hpp"
 #include "map.hpp"
 #include "map_exception.hpp"
@@ -352,7 +351,7 @@ void create::process_event()
 
 	if(launch_game_.pressed() || maps_menu_.double_clicked()) {
 		// check if the map is valid
-		const std::string& map_data = parameters_.scenario_data.child_or_empty("map")["data"];
+		const std::string& map_data = parameters_.scenario_data["map_data"];
 		util::unique_ptr<gamemap> map;
 		try {
 			map.reset(new gamemap(game_config(), map_data));
@@ -457,21 +456,11 @@ void create::process_event()
 
 		const size_t select = size_t(maps_menu_.selection());
 
-		//One of the pure maps
 		if(select > 0 && select <= user_maps_.size()) {
 			parameters_.saved_game = false;
 			if (const config &generic_multiplayer = game_config().child("generic_multiplayer")) {
 				parameters_.scenario_data = generic_multiplayer;
-
-				const std::string mapfile = read_map(user_maps_[select-1]);
-				config level;
-				try {
-					read(level, mapfile);
-					parameters_.scenario_data.merge_with(level);
-				} catch(config::error&) {
-					config& map = parameters_.scenario_data.add_child("map");
-					map["data"] = mapfile;
-				}
+				parameters_.scenario_data["map_data"] = read_map(user_maps_[select-1]);
 			}
 
 		} else if(select > user_maps_.size() && select <= maps_menu_.number_of_items()-1) {
@@ -490,12 +479,11 @@ void create::process_event()
 			{
 				const config &level = *levels.first;
 				parameters_.scenario_data = level;
+				std::string map_data = level["map_data"];
 
-				const std::string map_data = level["map_data"].empty() ?
-						(level.child_or_empty("map")["data"].empty() ?
-								read_map(level["map"]) :
-								level.child("map")["data"]) :
-						level["map_data"];
+				if (map_data.empty() && !level["map"].empty()) {
+					map_data = read_map(level["map"]);
+				}
 
 				// If the map should be randomly generated.
 				if (!level["map_generation"].empty()) {
@@ -540,11 +528,7 @@ void create::process_event()
 		generator_settings_.hide(generator_ == NULL);
 		regenerate_map_.hide(generator_ == NULL);
 
-		const std::string& map_data =
-					parameters_.scenario_data.child_or_empty("map")["data"].empty() ?
-							parameters_.scenario_data["map_data"]:
-							parameters_.scenario_data.child("map")["data"];
-
+		const std::string& map_data = parameters_.scenario_data["map_data"];
 		parameters_.hash = parameters_.scenario_data.hash();
 		util::unique_ptr<gamemap> map;
 		try {
@@ -706,10 +690,7 @@ void create::hide_children(bool hide)
 	} else {
 		minimap_restorer_.assign(new surface_restorer(&video(), minimap_rect_));
 
-		const std::string& map_data =
-				parameters_.scenario_data.child_or_empty("map")["data"].empty() ?
-						parameters_.scenario_data["map_data"]:
-						parameters_.scenario_data.child("map")["data"];
+		const std::string& map_data = parameters_.scenario_data["map_data"];
 
 		try {
 			gamemap map(game_config(), map_data);

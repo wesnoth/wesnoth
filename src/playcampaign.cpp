@@ -453,11 +453,13 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 //				gamestate.starting_pos = temp;
 				scenario = &scenario2;
 			}
-
 			std::string map_data = (*scenario)["map_data"];
+			if(map_data.empty() && (*scenario)["map"] != "") {
+				map_data = read_map((*scenario)["map"]);
+			}
 
 			// If the map should be randomly generated
-			if ( (*scenario).child_or_empty("map").empty() && map_data.empty() && (*scenario)["map_generation"] != "") {
+			if(map_data.empty() && (*scenario)["map_generation"] != "") {
 				const cursor::setter cursor_setter(cursor::WAIT);
 				map_data = random_generate_map((*scenario)["map_generation"],scenario->child("generator"));
 
@@ -466,10 +468,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				// it will not ask for the map to be generated again on reload
 				static config new_level;
 				new_level = *scenario;
-				config& map = new_level.add_child("map");
-				map["data"] = map_data;
-				map["usage"] = "map";
-				map["border_size"] = 1;
+				new_level["map_data"] = map_data;
 				scenario = &new_level;
 
 				//merge carryover information into the scenario
@@ -645,6 +644,9 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 					scenario = &scenario2;
 				}
 				std::string map_data = (*scenario)["map_data"];
+				if(map_data.empty() && (*scenario)["map"] != "") {
+					map_data = read_map((*scenario)["map"]);
+				}
 
 				// If the map should be randomly generated
 				if(map_data.empty() && (*scenario)["map_generation"] != "") {
@@ -656,10 +658,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 					// it will not ask for the map to be generated again on reload
 					static config new_level;
 					new_level = *scenario;
-					config& map = new_level.add_child("map");
-					map["data"] = map_data;
-					map["usage"] = "map";
-					map["border_size"] = 1;
+					new_level["map_data"] = map_data;
 					scenario = &new_level;
 					//TODO: remove once replay_start is confirmed
 					//gamestate.starting_pos = new_level;
