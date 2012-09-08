@@ -78,7 +78,7 @@ if __name__ == "__main__":
             return
 
         addon_obj._execute(["git", "add", "po", "campaign.def", "Makefile"], check_error=True)
-        addon_obj.commit("Initialize build-system")
+        addon_obj.commit("wescamp.py: Initialize build-system")
 
     """Update the translation catalogs.
 
@@ -111,7 +111,7 @@ if __name__ == "__main__":
             addon_obj._execute(["git", "rm"] + to_rm, check_error=True)
         if to_add:
             addon_obj._execute(["git", "add"] + to_add, check_error=True)
-        addon_obj.commit("pot-update")
+        addon_obj.commit("wescamp.py: pot-update")
 
     """Download an addon from the server.
 
@@ -239,8 +239,7 @@ if __name__ == "__main__":
             "config.status", "Makefile"]
         if(addon_obj.sync_from(temp_dir, ignore_list)):
 
-            addon_obj.commit("wescamp_client: automatic update of addon '"
-                + addon + "'")
+            addon_obj.commit("wescamp.py: Update from add-on server")
             logging.info("New version of addon '%s' uploaded.", addon)
             has_updated = True
         else:
