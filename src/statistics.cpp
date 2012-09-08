@@ -581,6 +581,42 @@ stats calculate_stats(const std::string & save_id)
 	return res;
 }
 
+
+/**
+ * Returns a list of names and stats for each scenario in the current campaign.
+ * The front of the list is the oldest scenario; the back of the list is the
+ * (most) current scenario.
+ * Only scenarios with stats for the given @a side_id are included, but if no
+ * scenarios are applicable, then a vector containing a single dummy entry will
+ * be returned. (I.e., this never returns an empty vector.)
+ * This list is intended for the statistics dialog and may become invalid if
+ * new stats are recorded.
+ */
+levels level_stats(const std::string & save_id)
+{
+	static const stats null_stats;
+	static const std::string null_name("");
+
+	levels level_list;
+
+	for ( size_t level = 0; level != master_stats.size(); ++level ) {
+		const team_stats_t & team_stats = master_stats[level].team_stats;
+
+		team_stats_t::const_iterator find_it = team_stats.find(save_id);
+		if ( find_it != team_stats.end() )
+			level_list.push_back(make_pair(&master_stats[level].scenario_name,
+			                               &find_it->second));
+	}
+
+	// Make sure we do return something (so other code does not have to deal
+	// with an empty list).
+	if ( level_list.empty() )
+			level_list.push_back(make_pair(&null_name, &null_stats));
+
+	return level_list;
+}
+
+
 config write_stats()
 {
 	config res;

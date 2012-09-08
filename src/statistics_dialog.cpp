@@ -22,6 +22,12 @@
 #include "game_display.hpp"
 
 
+bool statistics_dialog::use_campaign_ = false;
+// These values just need to be larger than the number of rows in the dialog.
+static const int BUTTON_SCENE  = 101;
+static const int BUTTON_TOGGLE = 102;
+
+
 namespace {
 
 #ifdef LOW_MEM
@@ -51,7 +57,8 @@ std::vector<std::string> create_unit_table(const statistics::stats::str_int_map&
 
 void make_damage_line(std::vector<std::string>& items, const std::string& header,
                       const long long& damage, const long long& expected,
-                      const long long& turn_damage, const long long& turn_expected)
+                      const long long& turn_damage, const long long& turn_expected,
+                      bool show_this_turn)
 {
 	int shift = statistics::stats::decimal_shift;
 
@@ -64,19 +71,30 @@ void make_damage_line(std::vector<std::string>& items, const std::string& header
 	    << (expected * 10 + shift / 2) / shift * 0.1
 	    << COLUMN_SEPARATOR
 	    << ((dsa < 0) ^ (expected < 0) ? "" : "+")
-	    << (expected == 0 ? 0 : 100 * dsa / expected)
-	    << '%' << COLUMN_SEPARATOR
-	    << COLUMN_SEPARATOR
-	    << turn_damage << " / "
-	    << (turn_expected * 10 + shift / 2) / shift * 0.1
-	    << COLUMN_SEPARATOR
-	    << ((dst < 0) ^ (turn_expected < 0) ? "" : "+")
-	    << (turn_expected == 0 ? 0 : 100 * dst / turn_expected)
-	    << '%';
+	    << (expected == 0 ? 0 : 100 * dsa / expected) << '%';
+	if ( show_this_turn ) {
+		str << COLUMN_SEPARATOR
+		    << COLUMN_SEPARATOR
+		    << turn_damage << " / "
+		    << (turn_expected * 10 + shift / 2) / shift * 0.1
+		    << COLUMN_SEPARATOR
+		    << ((dst < 0) ^ (turn_expected < 0) ? "" : "+")
+		    << (turn_expected == 0 ? 0 : 100 * dst / turn_expected) << '%';
+	}
 	items.push_back(str.str());
 }
 
 } //end anonymous namespace
+
+
+/**
+ * Picks out the stats structure that was selected for displaying.
+ */
+inline const statistics::stats & statistics_dialog::current_stats()
+{
+	return use_campaign_ ? campaign_ : *scenarios_[scenario_index_].second;
+}
+
 
 void statistics_dialog::action(gui::dialog_process_info &dp_info)
 {
@@ -96,26 +114,38 @@ void statistics_dialog::action(gui::dialog_process_info &dp_info)
 	case gui::CLOSE_DIALOG:
 		break;
 	case 0:
-		items_sub = create_unit_table(stats_.recruits, team_num_);
+		items_sub = create_unit_table(current_stats().recruits, team_num_);
 		title = _("Recruits");
 		break;
 	case 1:
-		items_sub = create_unit_table(stats_.recalls, team_num_);
+		items_sub = create_unit_table(current_stats().recalls, team_num_);
 		title = _("Recalls");
 		break;
 	case 2:
-		items_sub = create_unit_table(stats_.advanced_to, team_num_);
+		items_sub = create_unit_table(current_stats().advanced_to, team_num_);
 		title = _("Advancements");
 		break;
 	case 3:
-		items_sub = create_unit_table(stats_.deaths, team_num_);
+		items_sub = create_unit_table(current_stats().deaths, team_num_);
 		title = _("Losses");
 		break;
 	case 4:
-		items_sub = create_unit_table(stats_.killed, team_num_);
-		/** @todo FIXME? Perhaps killed units shouldn't have the same team-color as your own. */
+		// Give kills a (probably) different team color.
+		items_sub = create_unit_table(current_stats().killed, team_num_ == 1 ? 2 : 1);
 		title = _("Kills");
 		break;
+
+	case BUTTON_SCENE:
+		// Scenario selection.
+		do_scene_selection();
+		set_result(gui::CONTINUE_DIALOG);
+		break;
+	case BUTTON_TOGGLE:
+		// Toggle between campaign and scenario stats.
+		display_stats(!use_campaign_);
+		set_result(gui::CONTINUE_DIALOG);
+		break;
+
 	default:
 		break;
 	}
@@ -128,6 +158,7 @@ void statistics_dialog::action(gui::dialog_process_info &dp_info)
 	}
 }
 
+
 statistics_dialog::statistics_dialog(game_display &disp,
 		const std::string& title,
 		const unsigned int team,
@@ -135,23 +166,71 @@ statistics_dialog::statistics_dialog(game_display &disp,
 		const std::string& player) :
 	dialog(disp, title, "", gui::NULL_DIALOG),
 	detail_btn_(new gui::standard_dialog_button(disp.video(), _("Details"), 0 , false)),
+	toggle_btn_(new gui::dialog_button(disp.video(), "", gui::button::TYPE_PRESS, BUTTON_TOGGLE)),
+	scene_btn_(new gui::dialog_button(disp.video(), _("Select Scenario"), gui::button::TYPE_PRESS, BUTTON_SCENE)),
 	player_name_(player),
-	stats_(),
+	campaign_(statistics::calculate_stats(team_id)),
+	scenarios_(statistics::level_stats(team_id)),
+	scenario_index_(scenarios_.size() - 1), // current scenario
 	team_num_(team),
 	unit_count_(5,0)
 {
+	if ( scenarios_.size() > 1 ) {
+		add_button(scene_btn_, gui::dialog::BUTTON_EXTRA_LEFT);
+		add_button(toggle_btn_, gui::dialog::BUTTON_EXTRA_LEFT);
+	}
 	add_button(detail_btn_, gui::dialog::BUTTON_EXTRA);
 	add_button(new gui::standard_dialog_button(disp.video(), _("Close"), 1, true),
-				gui::dialog::BUTTON_STANDARD);
+	           gui::dialog::BUTTON_STANDARD);
 
-	stats_ = statistics::calculate_stats(team_id);
+	// Initialize the displayed data.
+	if ( use_campaign_  ||  scenarios_.size() == 1 )
+		display_stats(use_campaign_);
+	else {
+		// Starting with the scenario stats, but we need to make sure the
+		// window is wide enough for the campaign stats.
+		display_stats(true);
+		layout();
+		display_stats(false);
+	}
+}
+
+
+statistics_dialog::~statistics_dialog()
+{
+}
+
+
+/**
+ * Fills in the text to be displayed in the dialog.
+ * This also updates the scenario/campaign toggle button.
+ *
+ * @param[in]  campaign  Indicates whether or not the campaign stats are to
+ *                       be displayed.
+ */
+void statistics_dialog::display_stats(bool campaign)
+{
+	// Record which stats we will display.
+	use_campaign_ = campaign;
+	const statistics::stats & stats = current_stats();
+	const bool show_this_turn =
+		use_campaign_ || scenario_index_ + 1 == scenarios_.size();
+
 	int n, cost;
 	std::vector<std::string> items;
+	// The heading for the menu items:
+	{
+		std::stringstream str;
+		str << HEADING_PREFIX
+		    << COLUMN_SEPARATOR
+		    << font::BOLD_TEXT << (use_campaign_ ? _("Campaign") : _("Scenario"));
+		items.push_back(str.str());
+	}
 	// Prepare the menu items
 	{
 		std::stringstream str;
-		n = statistics::sum_str_int_map(stats_.recruits);
-		cost = stats_.recruit_cost;
+		n = statistics::sum_str_int_map(stats.recruits);
+		cost = stats.recruit_cost;
 		unit_count_[0] = n;
 		str << _("Recruits") << COLUMN_SEPARATOR << n
 		    << COLUMN_SEPARATOR
@@ -161,8 +240,8 @@ statistics_dialog::statistics_dialog(game_display &disp,
 	}
 	{
 		std::stringstream str;
-		n = statistics::sum_str_int_map(stats_.recalls);
-		cost = stats_.recall_cost;
+		n = statistics::sum_str_int_map(stats.recalls);
+		cost = stats.recall_cost;
 		unit_count_[1] = n;
 		str << _("Recalls") << COLUMN_SEPARATOR << n
 		    << COLUMN_SEPARATOR
@@ -172,16 +251,16 @@ statistics_dialog::statistics_dialog(game_display &disp,
 	}
 	{
 		std::stringstream str;
-		n = statistics::sum_str_int_map(stats_.advanced_to);
+		n = statistics::sum_str_int_map(stats.advanced_to);
 		unit_count_[2] = n;
 		str << _("Advancements") << COLUMN_SEPARATOR << n;
 		items.push_back(str.str());
 	}
 	{
 		std::stringstream str;
-		n = statistics::sum_str_int_map(stats_.deaths);
+		n = statistics::sum_str_int_map(stats.deaths);
 		unit_count_[3] = n;
-		cost = statistics::sum_cost_str_int_map(stats_.deaths);
+		cost = statistics::sum_cost_str_int_map(stats.deaths);
 		str << _("Losses") << COLUMN_SEPARATOR << n
 		    << COLUMN_SEPARATOR
 		    << COLUMN_SEPARATOR << IMAGE_PREFIX << "themes/gold-t.png"
@@ -190,9 +269,9 @@ statistics_dialog::statistics_dialog(game_display &disp,
 	}
 	{
 		std::stringstream str;
-		n = statistics::sum_str_int_map(stats_.killed);
+		n = statistics::sum_str_int_map(stats.killed);
 		unit_count_[4] = n;
-		cost = statistics::sum_cost_str_int_map(stats_.killed);
+		cost = statistics::sum_cost_str_int_map(stats.killed);
 		str << _("Kills") << COLUMN_SEPARATOR << n
 		    << COLUMN_SEPARATOR
 		    << COLUMN_SEPARATOR << IMAGE_PREFIX << "themes/gold-t.png"
@@ -203,27 +282,52 @@ statistics_dialog::statistics_dialog(game_display &disp,
 	{
 		std::stringstream str;
 		str << font::BOLD_TEXT << _("Damage")
-		    << COLUMN_SEPARATOR << _("Overall") << COLUMN_SEPARATOR
-		    << COLUMN_SEPARATOR
-		    << COLUMN_SEPARATOR << _("This Turn");
+		    << COLUMN_SEPARATOR << _("Overall");
+		if ( show_this_turn ) {
+			str << COLUMN_SEPARATOR
+			    << COLUMN_SEPARATOR
+			    << COLUMN_SEPARATOR << _("This Turn");
+		}
 		items.push_back(str.str());
 	}
 
 	make_damage_line(items, _("Inflicted"),
-			stats_.damage_inflicted,
-			stats_.expected_damage_inflicted,
-			stats_.turn_damage_inflicted,
-			stats_.turn_expected_damage_inflicted);
+	                 stats.damage_inflicted, stats.expected_damage_inflicted,
+	                 stats.turn_damage_inflicted, stats.turn_expected_damage_inflicted,
+	                 show_this_turn);
 	make_damage_line(items, _("Taken"),
-			stats_.damage_taken,
-			stats_.expected_damage_taken,
-			stats_.turn_damage_taken,
-			stats_.turn_expected_damage_taken);
+	                 stats.damage_taken, stats.expected_damage_taken,
+	                 stats.turn_damage_taken, stats.turn_expected_damage_taken,
+	                 show_this_turn);
 
-	set_menu(items);
+	set_menu_items(items, true);
+	toggle_btn_->set_label(use_campaign_ ? _("Scenario") : _("Campaign"));
+	scene_btn_->enable(!use_campaign_);
 }
 
-statistics_dialog::~statistics_dialog()
+
+/**
+ * Implements the scenario selection popup.
+ */
+void statistics_dialog::do_scene_selection()
 {
+	// Prepare a list of scenario names.
+	std::vector<std::string> names;
+	for ( size_t i = 0; i != scenarios_.size(); ++i )
+		names.push_back(*scenarios_[i].first);
+
+	// Let the player choose a scenario.
+	SDL_Rect const &loc = scene_btn_->location();
+	size_t new_scenario = gui::show_dialog(get_display(), NULL, "", "",
+	                                       gui::MESSAGE, &names, NULL, "", NULL,
+	                                       -1, NULL, loc.x, loc.y + loc.h);
+
+	if ( new_scenario != scenario_index_  &&  new_scenario < scenarios_.size() )
+	{
+		// Switch the displayed data to the selected scenario.
+		scenario_index_ = new_scenario;
+		scene_btn_->set_label(*scenarios_[new_scenario].first);
+		display_stats(false);
+	}
 }
 

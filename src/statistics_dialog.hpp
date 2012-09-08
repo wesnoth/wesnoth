@@ -37,11 +37,25 @@ public:
 protected:
 	void action(gui::dialog_process_info &dp_info);
 private:
+	/// Picks out the stats structure that was selected for displaying.
+	inline const statistics::stats & current_stats();
+	/// Fills in the text to be displayed in the dialog.
+	void display_stats(bool campaign);
+	/// Implements the scenario selection popup.
+	void do_scene_selection();
+
 	gui::dialog_button *detail_btn_;
+	gui::dialog_button *toggle_btn_;
+	gui::dialog_button *scene_btn_;
 	std::string player_name_;
-	statistics::stats stats_;
+	const statistics::stats  campaign_;
+	const statistics::levels scenarios_;
+	size_t scenario_index_;
 	unsigned int team_num_;
 	std::vector<int> unit_count_;
+
+	// This is static so the setting can be remembered throughout the session.
+	static bool use_campaign_;
 };
 
 #endif
