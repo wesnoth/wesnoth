@@ -37,7 +37,6 @@ public:
 protected:
 	void action(gui::dialog_process_info &dp_info);
 private:
-	void make_damage_line(std::vector<std::string>&,const std::string&,const long long&,const long long&,const long long&,const long long&);
 	gui::dialog_button *detail_btn_;
 	std::string player_name_;
 	statistics::stats stats_;

@@ -23,6 +23,7 @@
 
 
 namespace {
+
 #ifdef LOW_MEM
 std::vector<std::string> create_unit_table(const statistics::stats::str_int_map& m, unsigned int /*team*/)
 #else
@@ -46,6 +47,35 @@ std::vector<std::string> create_unit_table(const statistics::stats::str_int_map&
 
 	return table;
 }
+
+
+void make_damage_line(std::vector<std::string>& items, const std::string& header,
+                      const long long& damage, const long long& expected,
+                      const long long& turn_damage, const long long& turn_expected)
+{
+	int shift = statistics::stats::decimal_shift;
+
+	long long dsa = shift * damage      - expected;
+	long long dst = shift * turn_damage - turn_expected;
+
+	std::ostringstream str;
+	str << header << COLUMN_SEPARATOR
+	    << damage << " / "
+	    << (expected * 10 + shift / 2) / shift * 0.1
+	    << COLUMN_SEPARATOR
+	    << ((dsa < 0) ^ (expected < 0) ? "" : "+")
+	    << (expected == 0 ? 0 : 100 * dsa / expected)
+	    << '%' << COLUMN_SEPARATOR
+	    << COLUMN_SEPARATOR
+	    << turn_damage << " / "
+	    << (turn_expected * 10 + shift / 2) / shift * 0.1
+	    << COLUMN_SEPARATOR
+	    << ((dst < 0) ^ (turn_expected < 0) ? "" : "+")
+	    << (turn_expected == 0 ? 0 : 100 * dst / turn_expected)
+	    << '%';
+	items.push_back(str.str());
+}
+
 } //end anonymous namespace
 
 void statistics_dialog::action(gui::dialog_process_info &dp_info)
@@ -179,12 +209,12 @@ statistics_dialog::statistics_dialog(game_display &disp,
 		items.push_back(str.str());
 	}
 
-	statistics_dialog::make_damage_line(items, _("Inflicted"),
+	make_damage_line(items, _("Inflicted"),
 			stats_.damage_inflicted,
 			stats_.expected_damage_inflicted,
 			stats_.turn_damage_inflicted,
 			stats_.turn_expected_damage_inflicted);
-	statistics_dialog::make_damage_line(items, _("Taken"),
+	make_damage_line(items, _("Taken"),
 			stats_.damage_taken,
 			stats_.expected_damage_taken,
 			stats_.turn_damage_taken,
@@ -197,33 +227,3 @@ statistics_dialog::~statistics_dialog()
 {
 }
 
-void statistics_dialog::make_damage_line(std::vector<std::string>& items,
-					 const std::string& header,
-					 const long long& damage,
-					 const long long& expected,
-					 const long long& turn_damage,
-					 const long long& turn_expected)
-{
-	int shift = statistics::stats::decimal_shift;
-
-	long long dsa = shift * damage      - expected;
-	long long dst = shift * turn_damage - turn_expected;
-
-	std::ostringstream str;
-	str << header << COLUMN_SEPARATOR
-		<< damage << " / "
-		<< (expected * 10 + shift / 2) / shift * 0.1
-		<< COLUMN_SEPARATOR
-		<< ((dsa < 0) ^ (expected < 0) ? "" : "+")
-		<< (expected == 0 ? 0 : 100 * dsa / expected)
-		<< '%' << COLUMN_SEPARATOR
-		<< COLUMN_SEPARATOR
-		<< turn_damage << " / "
-		<< (turn_expected * 10 + shift / 2) / shift * 0.1
-		<< COLUMN_SEPARATOR
-		<< ((dst < 0) ^ (turn_expected < 0) ? "" : "+")
-		<< (turn_expected == 0 ? 0 : 100 * dst / turn_expected)
-		<< '%';
-	items.push_back(str.str());
-
-}
