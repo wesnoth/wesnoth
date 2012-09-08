@@ -24,6 +24,7 @@
 #include "animated.hpp"
 #include "map_location.hpp"
 #include "terrain_translation.hpp"
+#include "game_config.hpp"
 
 class config;
 class gamemap;
@@ -54,12 +55,6 @@ public:
 						* drawn in front of them.
 						 */
 	};
-
-	/** The tile width used when using basex and basey. This is not,
-	 * necessarily, the tile width in pixels, this is totally
-	 * arbitrary. However, it will be set to 72 for convenience.
-	 */
-	static const int TILEWIDTH = 72;
 
 	/** The position of unit graphics in a tile. Graphics whose y
 	 * position is below this value are considered background for
@@ -343,6 +338,13 @@ public:
 	tile* get_tile(const map_location &loc);
 
 private:
+
+	/** The tile width used when using basex and basey. This is not,
+	 * necessarily, the tile width in pixels, this is totally
+	 * arbitrary. However, it will be set to 72 for convenience.
+	 */
+	const int tilewidth_;  // = game_config::tile_size;
+
 	/**
 	 * The list of constraints attached to a terrain_graphics WML rule.
 	 */

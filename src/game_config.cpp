@@ -43,10 +43,12 @@ namespace game_config
 	int rest_heal_amount= 2;
 	int recall_cost = 20;
 	int kill_experience = 8;
+	int tile_size = 72;
 	unsigned lobby_network_timer = 100;
 	unsigned lobby_refresh = 4000;
 	const int gold_carryover_percentage = 80;
 	const std::string version = VERSION;
+	std::string default_terrain;
 #ifdef REVISION
 	const std::string revision = VERSION " (" REVISION ")";
 #else
@@ -182,6 +184,8 @@ namespace game_config
 		recall_cost = v["recall_cost"].to_int(20);
 		kill_experience = v["kill_experience"].to_int(8);
 		lobby_refresh = v["lobby_refresh"].to_int(2000);
+		default_terrain = v["default_terrain"].str();
+		tile_size = v["tile_size"].to_int(72);
 
 		title_music = v["title_music"].str();
 		lobby_music = v["lobby_music"].str();

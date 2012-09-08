@@ -164,6 +164,7 @@ const terrain_builder::tile& terrain_builder::tilemap::operator[] (const map_loc
 
 terrain_builder::terrain_builder(const config& level,
 		const gamemap* m, const std::string& offmap_image) :
+	tilewidth_(game_config::tile_size),
 	map_(m),
 	tile_map_(m ? map().w() : 0, m ? map().h() :0),
 	terrain_by_type_()
@@ -469,14 +470,14 @@ void terrain_builder::rotate(terrain_constraint &ret, int angle)
 
 		double vx, vy, rx, ry;
 
-		vx = double(itor->basex) - double(TILEWIDTH)/2;
-		vy = double(itor->basey) - double(TILEWIDTH)/2;
+		vx = double(itor->basex) - double(tilewidth_)/2;
+		vy = double(itor->basey) - double(tilewidth_)/2;
 
 		rx = xyrotations[angle].xx * vx + xyrotations[angle].xy * vy;
 		ry = xyrotations[angle].yx * vx + xyrotations[angle].yy * vy;
 
-		itor->basex = int(rx + TILEWIDTH/2);
-		itor->basey = int(ry + TILEWIDTH/2);
+		itor->basex = int(rx + tilewidth_/2);
+		itor->basey = int(ry + tilewidth_/2);
 
 		//std::cerr << "Rotation: from " << vx << ", " << vy << " to " << itor->basex <<
 		//	", " << itor->basey << "\n";
@@ -587,7 +588,7 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 	{
 		int layer = img["layer"];
 
-		int basex = TILEWIDTH / 2 + dx, basey = TILEWIDTH / 2 + dy;
+		int basex = tilewidth_ / 2 + dx, basey = tilewidth_ / 2 + dy;
 		if (const config::attribute_value *base_ = img.get("base")) {
 			std::vector<std::string> base = utils::split(*base_);
 			if(base.size() >= 2) {
@@ -650,8 +651,8 @@ terrain_builder::terrain_constraint &terrain_builder::add_constraints(
 		cons->terrain_types_match = type;
 	}
 
-	int x = loc.x * TILEWIDTH * 3 / 4;
-	int y = loc.y * TILEWIDTH + (loc.x % 2) * TILEWIDTH / 2;
+	int x = loc.x * tilewidth_ * 3 / 4;
+	int y = loc.y * tilewidth_ + (loc.x % 2) * tilewidth_ / 2;
 	add_images_from_config(cons->images, global_images, true, x, y);
 
 	return *cons;

@@ -19,12 +19,13 @@
 #include "map_location.hpp"
 #include "sdl_utils.hpp"
 #include "terrain_translation.hpp"
+#include "game_config.hpp"
 
 ///this module manages the cache of images. With an image name, you can get
 ///the surface corresponding to that image.
 //
 namespace image {
-	const int tile_size = 72;
+	const int tile_size = game_config::tile_size;
 
 	template<typename T>
 	class cache_type;

@@ -36,6 +36,8 @@
 
 #include <boost/foreach.hpp>
 
+#include "terrain_translation.hpp"
+
 namespace {
 static std::vector<std::string> saved_windows_;
 }
@@ -469,7 +471,11 @@ int context_manager::add_map_context(map_context* mc)
 void context_manager::create_default_context()
 {
 	if(saved_windows_.empty()) {
-		map_context* mc = new map_context(editor_map(game_config_, 44, 33, t_translation::GRASS_LAND), gui_);
+
+		t_translation::t_terrain default_terrain =
+				t_translation::read_terrain_code(game_config::default_terrain);
+
+		map_context* mc = new map_context(editor_map(game_config_, 44, 33, default_terrain), gui_);
 		add_map_context(mc);
 	} else {
 		BOOST_FOREACH(const std::string& filename, saved_windows_) {
