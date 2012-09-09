@@ -31,6 +31,8 @@ class CampaignClient:
         self.quiet = quiet
 
         if address != None:
+            self.canceled = False
+            self.error = False
             s = address.split(":")
             if len(s) == 2:
                 self.host, self.port = s
@@ -38,8 +40,6 @@ class CampaignClient:
                 self.host = s[0]
                 self.port = self.portmap[0][0]
             self.port = int(self.port)
-            self.canceled = False
-            self.error = False
             addr = socket.getaddrinfo(self.host, self.port, socket.AF_INET,
                 socket.SOCK_STREAM, socket.IPPROTO_TCP)[0]
             if not self.quiet:
@@ -80,6 +80,8 @@ class CampaignClient:
             self.sock.shutdown(2)
         except socket.error:
             pass # Well, what can we do?
+        except AttributeError:
+            pass # Socket not yet created
 
 
     def make_packet(self, doc):
