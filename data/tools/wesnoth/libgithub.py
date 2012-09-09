@@ -34,6 +34,17 @@ class AddonError(Error):
     def __str__(self):
         return "{0}: {1}".format(str(self.addon), str(self.message))
 
+class _execresult(object):
+    """Store the results of GitHub._execute and Addon._execute"""
+    def __init__(self, out, err, returncode):
+        self.out = out
+        self.err = err
+        self.returncode = returncode
+    def __iter__(self):
+        yield self.out
+        yield self.err
+        yield self.returncode
+
 class Addon(object):
     """Represents an add-on from a github directory.
 
@@ -59,7 +70,7 @@ class Addon(object):
         Returns whether anything changed.
         """
         logging.debug("Updating add-on {0}".format(self.name))
-        out, err = self._execute(["git", "pull"], check_error=False)
+        out, err, ret = self._execute(["git", "pull"], check_error=False)
         if len(err):
             real_errs = []
             for line in err.splitlines():
@@ -162,7 +173,7 @@ class Addon(object):
         tmpname = tmpfile.name
         self._execute(["git", "commit", "-F", tmpname], check_error=True)
         os.remove(tmpname)
-        out, err = self._execute(["git", "push", "-u", "--porcelain", "origin", "master"], check_error=False)
+        out, err, ret = self._execute(["git", "push", "-u", "--porcelain", "origin", "master"], check_error=False)
         statusline = filter(lambda x: x.find("refs/heads/master") != -1, out.splitlines())
         if not statusline:
             raise AddonError(self.name, "No statusline produced by git push")
@@ -254,7 +265,7 @@ class Addon(object):
         if errors:
             raise AddonError(self.name, "Errors attempting to sync:\n{0}".format("\n".join(errors)))
     def _status(self):
-        out, err = self._execute(["git", "status", "--porcelain"])
+        out, err, ret = self._execute(["git", "status", "--porcelain"])
         if err:
             raise AddonError(self.name, "Status failed with message: {0}".format(err))
         return [line for line in out.split('\n') if len(line)]
@@ -295,7 +306,7 @@ class GitHub(object):
         changed |= self._get_new_addons()
 
         for addon in self._get_local_addons():
-            changed |= addon.update()
+            changed |= self.addon(addon).update()
 
         return changed
 
@@ -354,7 +365,7 @@ class GitHub(object):
 
     def _clone(self, name, url):
         target = self._absolute_path(name)
-        out, err = self._execute(["git", "clone", url, target])
+        out, err, ret = self._execute(["git", "clone", url, target])
 
         # Rather hacky
         if len(err):
@@ -495,6 +506,7 @@ class GitHub(object):
             raise Error("Authentication required")
 
     def _execute(self, command, cwd=None, check_error=False):
+        #TODO: have an errorcheck that actually checks the returncode?
         """Executes a command.
 
         command: The command to execute.
@@ -521,7 +533,7 @@ class GitHub(object):
         if check_error and len(err):
             raise Error("Failure executing command '{0}': {1}".format(" ".join(command), err))
 
-        return out, err
+        return _execresult(out, err, p.returncode)
 
 def get_build_system(possible_dirs=[]):
     """Create a special 'add-on', containing the wescamp build system.
@@ -536,7 +548,7 @@ def get_build_system(possible_dirs=[]):
 
     def is_good_checkout(addon):
         try:
-            out, err = addon._execute(["git", "remote", "-v"], check_error=True)
+            out, err, ret = addon._execute(["git", "remote", "-v"], check_error=True)
             test = "wescamp/build-system.git"
             return test in out
         except:

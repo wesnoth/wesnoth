@@ -68,7 +68,7 @@ if __name__ == "__main__":
         init_script = os.path.join(build_system.get_dir(), "init-build-sys.sh")
 
         # Uglyness
-        out, err = addon_obj._execute([init_script, "--{0}".format(git_version), addon_name, "."], check_error=False)
+        out, err, res = addon_obj._execute([init_script, "--{0}".format(git_version), addon_name, "."], check_error=False)
         if len(err):
             logging.warn("In add-on {0}:\n{1}".format(addon_name, err))
             #TODO: bail?
@@ -90,7 +90,7 @@ if __name__ == "__main__":
             logging.warn("Cannot pot-update: build system does not exist for add-on {0}.".format(addon_name))
             return
         # Uglyness, again
-        out, err = addon_obj._execute(["make"])
+        out, err, res = addon_obj._execute(["make"])
         if len(err):
             logging.warn("In addon {0}:\n{1}".format(addon_name, err))
             # TODO: bail?
