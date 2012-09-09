@@ -76,8 +76,12 @@ class Addon(object):
             for line in err.splitlines():
                 if line in ["Your configuration specifies to merge with the ref 'master'", "from the remote, but no such ref was fetched."]:
                     # This means the repository has no commits yet
-                    continue
-                real_errs.append(line)
+                    pass
+                elif "From" in line or "origin/master" in line:
+                    # Regular fetch stuff
+                    pass
+                else:
+                    real_errs.append(line)
             if real_errs:
                 raise AddonError(self.name, "Error pulling:\n{0}".format("\n".join(real_errs)))
 
