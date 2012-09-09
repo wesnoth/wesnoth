@@ -80,6 +80,10 @@ class Addon(object):
                 elif "From" in line or "origin/master" in line:
                     # Regular fetch stuff
                     pass
+                elif "Checking out files" in line:
+                    # Irregular fetch stuff
+                    # not being attached to a terminal *should* squelch progress reports
+                    pass
                 else:
                     real_errs.append(line)
             if real_errs:
