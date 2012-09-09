@@ -92,7 +92,7 @@ if __name__ == "__main__":
     options, args = optionparser.parse_args()
 
     port = options.port
-    if "." in options.port:
+    if not options.port.isdigit():
         for (portnum, version) in CampaignClient.portmap:
             if options.port == version:
                 port = portnum
