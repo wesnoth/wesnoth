@@ -656,28 +656,14 @@ void game_display::float_label(const map_location& loc, const std::string& text,
 	font::add_floating_label(flabel);
 }
 
-
-void game_display::invalidate_animations()
-{
-	display::invalidate_animations();
-	BOOST_FOREACH(unit* temp_unit, fake_units_) {
-		temp_unit->refresh();
-	}
-	std::vector<unit*> unit_list;
+std::vector<unit*> game_display::get_unit_list_for_invalidation() {
+	std::vector<unit*> unit_list = display::get_unit_list_for_invalidation();;
 	BOOST_FOREACH(unit *u, fake_units_) {
 		unit_list.push_back(u);
 	}
-	bool new_inval;
-	do {
-		new_inval = false;
-#ifdef _OPENMP
-#pragma omp parallel for reduction(|:new_inval) shared(unit_list) schedule(guided)
-#endif //_OPENMP
-		for(int i=0; i < static_cast<int>(unit_list.size()); i++) {
-			new_inval |=  unit_list[i]->invalidate(unit_list[i]->get_location());
-		}
-	}while(new_inval);
+	return unit_list;;
 }
+
 
 int& game_display::debug_highlight(const map_location& loc)
 {

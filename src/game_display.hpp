@@ -155,9 +155,9 @@ protected:
 	void draw_hex(const map_location& loc);
 
 	/**
-	 * Animated hex invalidation specific to gameplay
+	 * the list of units we need to look at, game_display adds fake units
 	 */
-	void invalidate_animations();
+	virtual std::vector<unit*> get_unit_list_for_invalidation();
 
 
 public:

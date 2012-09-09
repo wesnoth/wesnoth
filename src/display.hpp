@@ -377,9 +377,14 @@ public:
 	bool invalidate_visible_locations_in_rect(const SDL_Rect& rect);
 
 	/**
-	 * Function to invalidate animated terrains which may have changed.
+	 * Function to invalidate animated terrains and unitswhich may have changed.
 	 */
-	virtual void invalidate_animations();
+	void invalidate_animations();
+	/**
+	  * helper function for invalidate_animations
+	  * returns a list of units to check for invalidation
+	  */
+	virtual std::vector<unit*> get_unit_list_for_invalidation();
 
 	/**
 	 * Per-location invalidation called by invalidate_animations()

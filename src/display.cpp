@@ -2766,6 +2766,14 @@ void display::invalidate_animations_location(const map_location& loc) {
 	}
 }
 
+
+std::vector<unit*> display::get_unit_list_for_invalidation() {
+	std::vector<unit*> unit_list;
+	BOOST_FOREACH(unit &u, *units_) {
+		unit_list.push_back(&u);
+	}
+	return unit_list;;
+}
 void display::invalidate_animations()
 {
 	new_animation_frame();
@@ -2781,12 +2789,9 @@ void display::invalidate_animations()
 			}
 		}
 	}
-	BOOST_FOREACH(unit& u, *units_) {
-		u.refresh();
-	}
-	std::vector<unit*> unit_list;
-	BOOST_FOREACH(unit &u, *units_) {
-		unit_list.push_back(&u);
+	std::vector<unit*> unit_list=get_unit_list_for_invalidation();
+	BOOST_FOREACH(unit* u, unit_list) {
+		u->refresh();
 	}
 	bool new_inval;
 	do {
