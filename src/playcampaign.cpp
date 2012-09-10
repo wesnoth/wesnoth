@@ -89,7 +89,7 @@ static void team_init(config& level, game_state& gamestate){
 	gamestate.carryover_sides = sides.to_config();
 }
 
-static void store_carryover(game_state& gamestate, playsingle_controller& playcontroller, display& disp){
+static void store_carryover(game_state& gamestate, playsingle_controller& playcontroller, display& disp, const end_level_data& end_level){
 	bool has_next_scenario = !resources::gamedata->next_scenario().empty() &&
 			resources::gamedata->next_scenario() != "null";
 
@@ -116,8 +116,6 @@ static void store_carryover(game_state& gamestate, playsingle_controller& playco
 			++persistent_teams;
 		}
 	}
-
-	const end_level_data& end_level = sides.get_end_level();
 
 	if (persistent_teams > 0 && (has_next_scenario ||
 			gamestate.classification().campaign_type == "test"))
@@ -152,7 +150,7 @@ static void store_carryover(game_state& gamestate, playsingle_controller& playco
 		}
 	}
 
-	if (end_level.carryover_report) {
+	if (end_level.transient.carryover_report) {
 		gui2::show_transient_message(disp.video(), title, report.str(), "", true);
 	}
 
@@ -236,10 +234,10 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 				    );
 	}
 	else if(res == VICTORY){
-		store_carryover(state_of_game, playcontroller, disp);
+		store_carryover(state_of_game, playcontroller, disp, end_level);
 	}
 
-	if (!disp.video().faked() && res != QUIT && end_level.linger_mode)
+	if (!disp.video().faked() && res != QUIT && end_level.transient.linger_mode)
 	{
 		try {
 			playcontroller.linger();
@@ -286,11 +284,11 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 				    );
 	}
 	else if(res == VICTORY){
-		store_carryover(state_of_game, playcontroller, disp);
+		store_carryover(state_of_game, playcontroller, disp, end_level);
 	}
 
 	if (!disp.video().faked() && res != QUIT) {
-		if (!end_level.linger_mode) {
+		if (!end_level.transient.linger_mode) {
 			if(!playcontroller.is_host()) {
 				// If we continue without lingering we need to
 				// make sure the host uploads the next scenario

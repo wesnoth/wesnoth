@@ -19,17 +19,21 @@
 #include "config.hpp"
 #include "game_config.hpp"
 
-end_level_data::end_level_data()
+transient_end_level::transient_end_level()
 	: carryover_report(true)
-	, prescenario_save(true)
-	, replay_save(true)
 	, linger_mode(true)
-	, gold_bonus(true)
-	, carryover_percentage(game_config::gold_carryover_percentage)
-	, carryover_add(false)
 	, custom_endlevel_music()
 	, reveal_map(true)
 	, disabled(false)
+{}
+
+end_level_data::end_level_data()
+	: prescenario_save(true)
+	, replay_save(true)
+	, gold_bonus(true)
+	, carryover_percentage(game_config::gold_carryover_percentage)
+	, carryover_add(false)
+	, transient()
 {
 }
 

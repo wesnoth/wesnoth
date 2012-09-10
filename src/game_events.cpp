@@ -2464,11 +2464,11 @@ WML_HANDLER_FUNCTION(end_turn, /*event_info*/, /*cfg*/)
 WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 {
 	end_level_data &data = resources::controller->get_end_level_data();
-	if(data.disabled) {
+	if(data.transient.disabled) {
 		WRN_NG << "repeated [endlevel] execution, ignoring\n";
 		return;
 	}
-	data.disabled = true;
+	data.transient.disabled = true;
 
 	game_state *state_of_game = resources::state_of_game;
 	unit_map *units = resources::units;
@@ -2512,13 +2512,13 @@ WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 			  result.empty() || result == "victory" || result == "defeat"
 			, _("Invalid value in the result key for [end_level]")
 			, "result = '"  + result + "'.");
-	data.custom_endlevel_music = cfg["music"].str();
-	data.carryover_report = cfg["carryover_report"].to_bool(true);
+	data.transient.custom_endlevel_music = cfg["music"].str();
+	data.transient.carryover_report = cfg["carryover_report"].to_bool(true);
 	data.prescenario_save = cfg["save"].to_bool(true);
 	data.replay_save = cfg["replay_save"].to_bool(true);
-	data.linger_mode = cfg["linger_mode"].to_bool(true)
+	data.transient.linger_mode = cfg["linger_mode"].to_bool(true)
 		&& !resources::teams->empty();
-	data.reveal_map = cfg["reveal_map"].to_bool(true);
+	data.transient.reveal_map = cfg["reveal_map"].to_bool(true);
 	data.gold_bonus = cfg["bonus"].to_bool(true);
 	data.carryover_percentage = cfg["carryover_percentage"].to_int(game_config::gold_carryover_percentage);
 	data.carryover_add = cfg["carryover_add"].to_bool();

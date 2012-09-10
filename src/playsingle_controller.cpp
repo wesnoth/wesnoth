@@ -378,8 +378,8 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		if (linger_) {
 			//determine the bonus gold handling for this scenario
 			end_level.read(level_.child_or_empty("endlevel"));
-			end_level.carryover_report = false;
-			end_level.disabled = true;
+			end_level.transient.carryover_report = false;
+			end_level.transient.disabled = true;
 			throw end_level_exception(SKIP_TO_LINGER);
 		}
 
@@ -421,11 +421,11 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 
 		ai_testing::log_game_end();
 		LEVEL_RESULT end_level_result = end_level_exn.result;
-		if (!end_level.custom_endlevel_music.empty()) {
+		if (!end_level.transient.custom_endlevel_music.empty()) {
 			if (end_level_result == DEFEAT) {
-				set_defeat_music_list(end_level.custom_endlevel_music);
+				set_defeat_music_list(end_level.transient.custom_endlevel_music);
 			} else {
-				set_victory_music_list(end_level.custom_endlevel_music);
+				set_victory_music_list(end_level.transient.custom_endlevel_music);
 			}
 		}
 
@@ -480,7 +480,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		else if (end_level_result == VICTORY)
 		{
 			gamestate_.classification().completion =
-				!end_level.linger_mode ? "running" : "victory";
+				!end_level.transient.linger_mode ? "running" : "victory";
 			game_events::fire("victory");
 
 			//
@@ -492,7 +492,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			// a victory, so let them use [music] tags
 			// instead should they want special music.
 			//
-			if (!obs && end_level.linger_mode) {
+			if (!obs && end_level.transient.linger_mode) {
 				const std::string& victory_music = select_victory_music();
 				if(victory_music.empty() != true)
 					sound::play_music_once(victory_music);

@@ -80,6 +80,19 @@ private:
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(end_level_exception)
 };
 
+/**
+ * The non-persistent part of end_level_data
+ */
+struct transient_end_level{
+
+	transient_end_level();
+
+	bool carryover_report;             /**< Should a summary of the scenario outcome be displayed? */
+	bool linger_mode;                  /**< Should linger mode be invoked? */
+	std::string custom_endlevel_music; /**< Custom short music played at the end. */
+	bool reveal_map;                   /**< Should we reveal map when game is ended? (Multiplayer only) */
+	bool disabled;                     /**< Limits execution of tag [endlevel] to a single time > */
+};
 
 /**
  * Additional information on the game outcome which can be provided by WML.
@@ -88,16 +101,13 @@ struct end_level_data
 {
 	end_level_data();
 
-	bool carryover_report;             /**< Should a summary of the scenario outcome be displayed? */
+
 	bool prescenario_save;             /**< Should a prescenario be created the next game? */
 	bool replay_save;                  /**< Should a replay save be made? */
-	bool linger_mode;                  /**< Should linger mode be invoked? */
 	bool gold_bonus;                   /**< Should early-finish bonus be applied? */
 	int carryover_percentage;          /**< How much gold is carried over to next scenario. */
 	bool carryover_add;                /**< Add or replace next scenario's minimum starting gold. */
-	std::string custom_endlevel_music; /**< Custom short music played at the end. */
-	bool reveal_map;                   /**< Should we reveal map when game is ended? (Multiplayer only) */
-	bool disabled;                     /**< Limits execution of tag [endlevel] to a single time > */
+	transient_end_level transient;
 
 	void write(config& cfg) const;
 

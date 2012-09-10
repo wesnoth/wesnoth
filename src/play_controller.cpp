@@ -230,7 +230,7 @@ void play_controller::init(CVideo& video){
 	}
 
 	// mouse_handler expects at least one team for linger mode to work.
-	if (teams_.empty()) end_level_data_.linger_mode = false;
+	if (teams_.empty()) end_level_data_.transient.linger_mode = false;
 
 	LOG_NG << "loading units..." << (SDL_GetTicks() - ticks_) << "\n";
 	loadscreen::start_stage("load units");

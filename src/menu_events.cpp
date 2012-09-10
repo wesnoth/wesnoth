@@ -3368,9 +3368,9 @@ void console_handler::do_next_level()
 	e.carryover_percentage = 100;
 	e.carryover_add = false;
 	e.gold_bonus = false;
-	e.carryover_report = false;
+	e.transient.carryover_report = false;
 	e.prescenario_save = true;
-	e.linger_mode = false;
+	e.transient.linger_mode = false;
 	throw end_level_exception(VICTORY);
 }
 
@@ -3418,9 +3418,9 @@ void console_handler::do_choose_level() {
 		e.carryover_percentage = 100;
 		e.carryover_add = false;
 		e.gold_bonus = false;
-		e.carryover_report = false;
+		e.transient.carryover_report = false;
 		e.prescenario_save = true;
-		e.linger_mode = false;
+		e.transient.linger_mode = false;
 		throw end_level_exception(VICTORY);
 	}
 }
