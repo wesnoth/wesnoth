@@ -103,7 +103,7 @@ if __name__ == "__main__":
             mod, name = line.split()
             if mod == "D":
                 to_rm.append(name)
-            elif mod == "M" and name.endswith((".po", "LC_MESSAGES/{0}.mo".format(longname), "po/{0}.pot".format(longname), "po/Makefile")):
+            elif mod == "M" and name.endswith((".po", "LC_MESSAGES/{0}.mo".format(longname), "po/{0}.pot".format(longname))):
                 to_add.append(name)
             else:
                 logging.info("Ignoring {0}".format(line))
