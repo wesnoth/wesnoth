@@ -258,10 +258,12 @@ if __name__ == "__main__":
             logging.info("Addon '%s' hasn't been modified, thus not uploaded.",
                 addon)
 
-        if is_new_addon:
-            init_build_system(addon_obj, addon, wescamp_dir, build_sys_dir)
+        has_build_system = os.path.exists(os.path.join(addon_obj.get_dir(), "Makefile"))
 
-        if has_updated:
+        if is_new_addon or not has_build_system:
+            has_build_system = init_build_system(addon_obj, addon, wescamp_dir, build_sys_dir)
+
+        if has_updated and has_build_system:
             pot_update(addon_obj, addon)
 
 
