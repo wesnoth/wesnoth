@@ -55,6 +55,7 @@ if __name__ == "__main__":
     addon_name          Name of the addon.
     wescamp_dir         The directory containing a checkout of wescamp.
     build_sys_dir       Possible directory containing a checkout of build-system.
+    returns             Boolean indicating whether the operation was successful.
     """
     def init_build_system(addon_obj, addon_name, wescamp_dir, build_sys_dir):
         # Grab the build system
@@ -76,20 +77,22 @@ if __name__ == "__main__":
             logging.error("Failed to init the build-system for add-on {0}".format(addon_name))
             addon_obj._execute(["rm", "-rf", "po", "campaign.def", "Makefile"])
             addon_obj._execute(["git", "reset", "--hard"])
-            return
+            return False
 
         addon_obj._execute(["git", "add", "po", "campaign.def", "Makefile"], check_error=True)
         addon_obj.commit("wescamp.py: Initialize build-system")
+        return True
 
     """Update the translation catalogs.
 
     addon_obj           libgithub.Addon objectof the addon.
     addon_name          Name of the addon.
+    returns             Boolean indicating whether the operation was successful.
     """
     def pot_update(addon_obj, addon_name):
         if not os.path.exists(os.path.join(addon_obj.get_dir(), "Makefile")):
             logging.warn("Cannot pot-update: build system does not exist for add-on {0}.".format(addon_name))
-            return
+            return False
         # Uglyness, again
         out, err, res = addon_obj._execute(["make"])
         if len(err):
@@ -100,7 +103,7 @@ if __name__ == "__main__":
             logging.error("Failed to pot-update for add-on {0}".format(addon_name))
             addon_obj._execute(["rm", "-rf", "po", addon_name])
             addon_obj._execute(["git", "reset", "--hard"])
-            return
+            return False
 
         outlines = addon_obj._status()
 
@@ -120,6 +123,7 @@ if __name__ == "__main__":
         if to_add:
             addon_obj._execute(["git", "add"] + to_add, check_error=True)
         addon_obj.commit("wescamp.py: pot-update")
+        return True
 
     """Download an addon from the server.
 
