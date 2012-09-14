@@ -227,7 +227,9 @@ class Addon(object):
 
             if os.path.isdir(relpath):
                 self._rmtree(relpath, exclude)
-                self._execute(["rmdir", "--ignore-fail-on-non-empty", relpath])
+                # git rm removes directories that it empties
+                if os.path.exists(relpath):
+                    self._execute(["rmdir", "--ignore-fail-on-non-empty", relpath])
             else:
                 self._execute(["git", "rm", relpath], check_error=True)
 
