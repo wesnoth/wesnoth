@@ -535,8 +535,8 @@ class GitHub(object):
         out += p.stdout.read()
         err += p.stderr.read()
 
-        logging.debug("===== stdout ====\n\n\n%s\n\n\n===== stdout ====", out)
-        logging.debug("===== stderr ====\n\n\n%s\n\n\n===== stderr ====", err)
+        logging.debug("===== stdout ====\n%s\n===== stdout ====", out)
+        logging.debug("===== stderr ====\n%s\n===== stderr ====", err)
 
         if check_error and len(err):
             raise Error("Failure executing command '{0}': {1}".format(" ".join(command), err))
