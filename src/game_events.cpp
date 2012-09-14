@@ -2596,10 +2596,9 @@ WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 	const bool animate = cfg["animate"].to_bool(false);
 
 	const vconfig healed_filter = cfg.child("filter");
-	unit_map::unit_iterator u;
 	bool only_unit_at_loc1 = healed_filter.null();
 	bool heal_amount_to_set = true;
-	for(u  = units->begin(); u != units->end(); ++u) {
+	for(unit_map::unit_iterator u  = units->begin(); u != units->end(); ++u) {
 		if (only_unit_at_loc1)
 		{
 			u = units->find(event_info.loc1);
@@ -2611,7 +2610,7 @@ WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 		if(amount.blank() || amount == "full") u->set_hitpoints(u->max_hitpoints());
 		else {
 			heal_amount = lexical_cast_default<int, config::attribute_value> (amount, heal_amount);
-			const int& new_hitpoints = std::max(1, std::min(u->max_hitpoints(), u->hitpoints() + heal_amount));
+			const int new_hitpoints = std::max(1, std::min(u->max_hitpoints(), u->hitpoints() + heal_amount));
 			heal_amount = new_hitpoints - u->hitpoints();
 			u->set_hitpoints(new_hitpoints);
 		}
