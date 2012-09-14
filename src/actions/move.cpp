@@ -477,6 +477,9 @@ namespace { // Private helpers for move_unit()
 		move_it_->set_movement(moves_left_.front());
 		moves_left_.pop_front();
 
+		// Invalidate before moving so we invalidate neighbor hexes if needed.
+		move_it_->invalidate(*move_loc_);
+
 		// Attempt actually moving.
 		// (Fails if *step_to is occupied).
 		std::pair<unit_map::iterator, bool> move_result =
@@ -488,7 +491,6 @@ namespace { // Private helpers for move_unit()
 			move_it_->set_facing(step_from->get_relative_dir(*step_to));
 			move_it_->set_standing(false);
 			disp.invalidate_unit_after_move(*move_loc_, *step_to);
-			disp.invalidate(*move_loc_);
 			disp.invalidate(*step_to);
 			move_loc_ = step_to;
 

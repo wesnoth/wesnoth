@@ -775,6 +775,7 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 	}
 	// Make sure the unit appears (if either !show or the animation is suppressed).
 	new_unit_itor->set_hidden(false);
+	resources::screen->invalidate(current_loc);
 
 	// Village capturing.
 	if ( resources::game_map->is_village(current_loc) ) {
