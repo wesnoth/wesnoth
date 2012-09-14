@@ -126,43 +126,62 @@ const time_of_day tod_manager::get_illuminated_time_of_day(const map_location& l
 
 	// get ToD ignoring illumination
 	time_of_day tod = get_time_of_day(loc, for_turn);
-	int illum_light = tod.lawful_bonus;
 
 	if ( map.on_board_with_border(loc) )
 	{
 		// now add illumination
-		illum_light += map.get_terrain_info(map.get_terrain(loc)).light_modification();
-		int light = illum_light;
+		const int terrain_light = map.get_terrain_info(loc).light_modification()
+		                          + tod.lawful_bonus;
 
+		std::vector<int> mod_list;
+		std::vector<int> max_list;
+		std::vector<int> min_list;
+		int most_add = 0;
+		int most_sub = 0;
+
+		// Find the "illuminates" effects from units that can affect loc.
 		map_location locs[7];
 		locs[0] = loc;
 		get_adjacent_tiles(loc,locs+1);
-
-		for(int i = 0; i != 7; ++i) {
+		for ( size_t i = 0; i != 7; ++i ) {
 			const unit_map::const_iterator itor = units.find(locs[i]);
-			if(itor != units.end() &&
+			if (itor != units.end() &&
 			    itor->get_ability_bool("illuminates") &&
 			    !itor->incapacitated())
 			{
 				unit_ability_list illum = itor->get_abilities("illuminates");
-				unit_abilities::effect illum_effect(illum, light, false);
+				unit_abilities::effect illum_effect(illum, terrain_light, false);
+				const int unit_mod = illum_effect.get_composite_value();
 
-				illum_light = light + illum_effect.get_composite_value();
-				//max_value and min_value control the final result
-				//unless ToD + terrain effect is stronger
-				int max = std::max(light, illum.highest("max_value").first);
-				int min = std::min(light, illum.lowest("min_value").first);
-				if(illum_light > max) {
-					illum_light = max;
-				} else if (illum_light < min) {
-					illum_light = min;
-				}
+				// Record this value.
+				mod_list.push_back(unit_mod);
+				max_list.push_back(illum.highest("max_value").first);
+				min_list.push_back(illum.lowest("min_value").first);
+				if ( unit_mod > most_add )
+					most_add = unit_mod;
+				else if ( unit_mod < most_sub )
+					most_sub = unit_mod;
 			}
 		}
-	}
+		const bool net_darker = most_add < -most_sub;
 
-	tod.bonus_modified = illum_light - tod.lawful_bonus;
-	tod.lawful_bonus = illum_light;
+		// Apply each unit's effect, tracking the best result.
+		int best_result = terrain_light;
+		const int base_light = terrain_light + (net_darker ? most_add : most_sub);
+		for ( size_t i = 0; i != mod_list.size(); ++i ) {
+			int result =
+				bounded_add(base_light, mod_list[i], max_list[i], min_list[i]);
+
+			if ( net_darker  &&  result < best_result )
+				best_result = result;
+			else if ( !net_darker  &&  result > best_result )
+				best_result = result;
+		}
+
+		// Update the object we will return.
+		tod.bonus_modified = best_result - tod.lawful_bonus;
+		tod.lawful_bonus = best_result;
+	}
 
 	return tod;
 }

@@ -33,6 +33,18 @@ inline bool is_even(T num) { return num % 2 == 0; }
 template<typename T>
 inline bool is_odd(T num) { return !is_even(num); }
 
+/**
+ * Returns base + increment, but will not increase base above max_sum, nor
+ * decrease it below min_sum.
+ * (If base is already beyond the applicable limit, base will be returned.)
+ */
+inline int bounded_add(int base, int increment, int max_sum, int min_sum=0) {
+	if ( increment >= 0 )
+		return std::min(base+increment, std::max(base, max_sum));
+	else
+		return std::max(base+increment, std::min(base, min_sum));
+}
+
 /** Guarantees portable results for division by 100; round towards 0 */
 inline int div100rounded(int num) {
 	return (num < 0) ? -(((-num) + 50) / 100) : (num + 50) / 100;
