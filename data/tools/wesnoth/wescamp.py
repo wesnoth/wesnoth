@@ -70,11 +70,12 @@ if __name__ == "__main__":
         # Uglyness
         out, err, res = addon_obj._execute([init_script, "--{0}".format(git_version), addon_name, "."], check_error=False)
         if len(err):
-            logging.warn("In add-on {0}:\n{1}".format(addon_name, err))
-            #TODO: bail?
+            logging.warn("init-build-sys.sh in add-on {0}:\n{1}".format(addon_name, err))
 
-        if not out.strip().endswith("Done."):
-            logging.error("Failed to init the build-system for addon {0}".format(addon_name))
+        if not out.strip().endswith("Done.") or res != 0:
+            logging.error("Failed to init the build-system for add-on {0}".format(addon_name))
+            addon_obj._execute(["rm", "-rf", "po", "campaign.def", "Makefile"])
+            addon_obj._execute(["git", "reset", "--hard"])
             return
 
         addon_obj._execute(["git", "add", "po", "campaign.def", "Makefile"], check_error=True)
@@ -92,8 +93,15 @@ if __name__ == "__main__":
         # Uglyness, again
         out, err, res = addon_obj._execute(["make"])
         if len(err):
-            logging.warn("In addon {0}:\n{1}".format(addon_name, err))
+            logging.warn("pot-update in addon {0}:\n{1}".format(addon_name, err))
             # TODO: bail?
+
+        if res != 0:
+            logging.error("Failed to pot-update for add-on {0}".format(addon_name))
+            addon_obj._execute(["rm", "-rf", "po", addon_name])
+            addon_obj._execute(["git", "reset", "--hard"])
+            return
+
         outlines = addon_obj._status()
 
         to_rm = []
