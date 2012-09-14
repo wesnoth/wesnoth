@@ -1353,23 +1353,21 @@ void advance_unit(map_location loc, const std::string &advance_to,
 int combat_modifier(const map_location &loc, unit_type::ALIGNMENT alignment,
                     bool is_fearless)
 {
-	const time_of_day &tod = resources::tod_manager->get_illuminated_time_of_day(loc);
+	const tod_manager & tod_m = *resources::tod_manager;
 
 	int bonus;
-	int lawful_bonus = tod.lawful_bonus;
-
 	switch(alignment) {
 		case unit_type::LAWFUL:
-			bonus = lawful_bonus;
+			bonus = tod_m.get_illuminated_time_of_day(loc).lawful_bonus;
 			break;
 		case unit_type::NEUTRAL:
 			bonus = 0;
 			break;
 		case unit_type::CHAOTIC:
-			bonus = -lawful_bonus;
+			bonus = -tod_m.get_illuminated_time_of_day(loc).lawful_bonus;
 			break;
 		case unit_type::LIMINAL:
-			bonus = -(abs(lawful_bonus));
+			bonus = -abs(tod_m.get_illuminated_time_of_day(loc).lawful_bonus);
 			break;
 		default:
 			bonus = 0;
