@@ -119,14 +119,16 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 		//add dismissal to the undo stack
 		resources::undo_stack->push_back(undo_action(u, map_location(), map_location(), undo_action::DISMISS));
 
-		//remove the unit from the recall list
+		// Find the unit in the recall list.
 		std::vector<unit>& recall_list = (*resources::teams)[u.side() -1].recall_list();
 		assert(!recall_list.empty());
 		std::vector<unit>::iterator dismissed_unit =
 				std::find_if(recall_list.begin(), recall_list.end(), boost::bind(&unit::matches_id, _1, u.id()));
 		assert(dismissed_unit != recall_list.end());
-		recall_list.erase(dismissed_unit);
+		
+		// Record the dismissal, then delete the unit.
 		recorder.add_disband(dismissed_unit->id());
+		recall_list.erase(dismissed_unit);
 
 		//clear the redo stack to avoid duplication of dismissals
 		resources::redo_stack->clear();
