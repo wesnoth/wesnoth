@@ -105,7 +105,6 @@ std::pair<unit_map::unit_iterator, bool> unit_map::move(const map_location &src,
 
 	p->set_location(dst);
 
-	///@todo upgrade to quick_erase when boost 1.42 supported by wesnoth
 	lmap_.erase(i);
 
 	std::pair<t_lmap::iterator,bool> res = lmap_.insert(std::make_pair(dst, lit));
@@ -203,7 +202,6 @@ std::pair<unit_map::unit_iterator, bool> unit_map::insert(unit *p) {
 		if(lit->ref_count == 0) {
 			//Undo a virgin insertion
 			ilist_.pop_front();
-			///@todo replace with quick_erase(i) when wesnoth supports  boost 1.42 min version
 			umap_.erase(uinsert.first);
 		} else {
 			//undo a reinsertion
