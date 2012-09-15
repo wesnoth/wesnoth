@@ -98,8 +98,7 @@ int advance_unit_dialog(const map_location &loc)
 	BOOST_FOREACH(const config &mod, u->get_modification_advances())
 	{
 		if (mod["always_display"].to_bool()) always_display = true;
-		sample_units.push_back(::get_advanced_unit(*u, u->type_id()));
-		sample_units.back().add_modification("advance", mod);
+		sample_units.push_back(::get_amla_unit(*u, mod));
 		const unit& type = sample_units.back();
 		if (!mod["image"].empty()) {
 			lang_options.push_back(IMAGE_PREFIX + mod["image"].str() + COLUMN_SEPARATOR + mod["description"].str());
