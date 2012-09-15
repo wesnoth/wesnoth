@@ -565,6 +565,35 @@ bool battle_context::better_attack(class battle_context &that, double harm_weigh
 			that.get_attacker_combatant(), that.get_defender_combatant(), harm_weight);
 }
 
+
+namespace {
+	void refresh_weapon_index(int& weap_index, std::string const& weap_id, std::vector<attack_type> const& attacks)
+	{
+		if(attacks.empty()) {
+			//no attacks to choose from
+			weap_index = -1;
+			return;
+		}
+		if(weap_index >= 0 && weap_index < static_cast<int>(attacks.size()) && attacks[weap_index].id() == weap_id) {
+			//the currently selected attack fits
+			return;
+		}
+		if(!weap_id.empty()) {
+			//lookup the weapon by id
+			for(int i=0; i<static_cast<int>(attacks.size()); ++i) {
+				if(attacks[i].id() == weap_id) {
+					weap_index = i;
+					return;
+				}
+			}
+		}
+		//lookup has failed
+		weap_index = -1;
+		return;
+	}
+} //end anonymous namespace
+
+
 /** Helper class for performing an attack. */
 class attack
 {
@@ -622,6 +651,69 @@ class attack
 	bool OOS_error_;
 };
 
+
+attack::unit_info::unit_info(const map_location& loc, int weapon, unit_map& units) :
+	loc_(loc),
+	weapon_(weapon),
+	units_(units),
+	id_(),
+	weap_id_(),
+	orig_attacks_(0),
+	n_attacks_(0),
+	cth_(0),
+	damage_(0),
+	xp_(0)
+{
+	unit_map::iterator i = units_.find(loc_);
+	if (!i.valid()) return;
+	id_ = i->underlying_id();
+}
+
+unit &attack::unit_info::get_unit()
+{
+	unit_map::iterator i = units_.find(loc_);
+	assert(i.valid() && i->underlying_id() == id_);
+	return *i;
+}
+
+bool attack::unit_info::valid()
+{
+	unit_map::iterator i = units_.find(loc_);
+	return i.valid() && i->underlying_id() == id_;
+}
+
+std::string attack::unit_info::dump()
+{
+	std::stringstream s;
+	s << get_unit().type_id() << " (" << loc_.x + 1 << ',' << loc_.y + 1 << ')';
+	return s.str();
+}
+
+
+attack::attack(const map_location &attacker, const map_location &defender,
+		int attack_with, int defend_with, bool update_display) :
+	bc_(0),
+	a_stats_(0),
+	d_stats_(0),
+	abs_n_attack_(0),
+	abs_n_defend_(0),
+	update_att_fog_(false),
+	update_def_fog_(false),
+	update_minimap_(false),
+	a_(attacker, attack_with, *resources::units),
+	d_(defender, defend_with, *resources::units),
+	units_(*resources::units),
+	errbuf_(),
+	update_display_(update_display),
+	OOS_error_(false)
+{
+}
+
+attack::~attack()
+{
+	delete bc_;
+}
+
 void attack::fire_event(const std::string& n)
 {
 	LOG_NG << "firing " << n << " event\n";
@@ -664,33 +756,6 @@ void attack::fire_event(const std::string& n)
 	}
 }
 
-namespace {
-	void refresh_weapon_index(int& weap_index, std::string const& weap_id, std::vector<attack_type> const& attacks)
-	{
-		if(attacks.empty()) {
-			//no attacks to choose from
-			weap_index = -1;
-			return;
-		}
-		if(weap_index >= 0 && weap_index < static_cast<int>(attacks.size()) && attacks[weap_index].id() == weap_id) {
-			//the currently selected attack fits
-			return;
-		}
-		if(!weap_id.empty()) {
-			//lookup the weapon by id
-			for(int i=0; i<static_cast<int>(attacks.size()); ++i) {
-				if(attacks[i].id() == weap_id) {
-					weap_index = i;
-					return;
-				}
-			}
-		}
-		//lookup has failed
-		weap_index = -1;
-		return;
-	}
-} //end anonymous namespace
-
 void attack::refresh_bc()
 {
 	// Fix index of weapons
@@ -720,74 +785,6 @@ void attack::refresh_bc()
 	d_.cth_ = d_stats_->chance_to_hit;
 	a_.damage_ = a_stats_->damage;
 	d_.damage_ = d_stats_->damage;
-}
-
-attack::~attack()
-{
-	delete bc_;
-}
-
-attack::unit_info::unit_info(const map_location& loc, int weapon, unit_map& units) :
-	loc_(loc),
-	weapon_(weapon),
-	units_(units),
-	id_(),
-	weap_id_(),
-	orig_attacks_(0),
-	n_attacks_(0),
-	cth_(0),
-	damage_(0),
-	xp_(0)
-{
-	unit_map::iterator i = units_.find(loc_);
-	if (!i.valid()) return;
-	id_ = i->underlying_id();
-}
-
-unit &attack::unit_info::get_unit()
-{
-	unit_map::iterator i = units_.find(loc_);
-	assert(i.valid() && i->underlying_id() == id_);
-	return *i;
-}
-
-bool attack::unit_info::valid()
-{
-	unit_map::iterator i = units_.find(loc_);
-	return i.valid() && i->underlying_id() == id_;
-}
-
-std::string attack::unit_info::dump()
-{
-	std::stringstream s;
-	s << get_unit().type_id() << " (" << loc_.x + 1 << ',' << loc_.y + 1 << ')';
-	return s.str();
-}
-
-void attack_unit(const map_location &attacker, const map_location &defender,
-	int attack_with, int defend_with, bool update_display)
-{
-	attack dummy(attacker, defender, attack_with, defend_with, update_display);
-	dummy.perform();
-}
-
-attack::attack(const map_location &attacker, const map_location &defender,
-		int attack_with, int defend_with, bool update_display) :
-	bc_(0),
-	a_stats_(0),
-	d_stats_(0),
-	abs_n_attack_(0),
-	abs_n_defend_(0),
-	update_att_fog_(false),
-	update_def_fog_(false),
-	update_minimap_(false),
-	a_(attacker, attack_with, *resources::units),
-	d_(defender, defend_with, *resources::units),
-	units_(*resources::units),
-	errbuf_(),
-	update_display_(update_display),
-	OOS_error_(false)
-{
 }
 
 bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
@@ -1257,6 +1254,14 @@ void attack::perform()
 }
 
 
+void attack_unit(const map_location &attacker, const map_location &defender,
+	int attack_with, int defend_with, bool update_display)
+{
+	attack dummy(attacker, defender, attack_with, defend_with, update_display);
+	dummy.perform();
+}
+
+
 unit get_advanced_unit(const unit &u, const std::string& advance_to)
 {
 	const unit_type *new_type = unit_types.find(advance_to);
@@ -1406,3 +1411,4 @@ bool backstab_check(const map_location& attacker_loc,
 		return true; // Defender and opposite are enemies
 	return false; // Defender and opposite are friends
 }
+
