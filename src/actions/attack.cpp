@@ -591,22 +591,21 @@ namespace {
 		weap_index = -1;
 		return;
 	}
-} //end anonymous namespace
 
 
 /** Helper class for performing an attack. */
 class attack
 {
-	friend void attack_unit(const map_location &, const map_location &,
-		int, int, bool);
-
+public:
 	attack(const map_location &attacker, const map_location &defender,
 		int attack_with, int defend_with, bool update_display = true);
-	void perform();
-	bool perform_hit(bool, statistics::attack_context &);
 	~attack();
 
+	void perform();
+
+private:
 	class attack_end_exception {};
+	bool perform_hit(bool, statistics::attack_context &);
 	void fire_event(const std::string& n);
 	void refresh_bc();
 
@@ -1252,6 +1251,8 @@ void attack::perform()
 		replay::process_error(errbuf_.str());
 	}
 }
+
+} //end anonymous namespace
 
 
 void attack_unit(const map_location &attacker, const map_location &defender,
