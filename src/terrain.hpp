@@ -17,6 +17,7 @@
 
 #include "config.hpp"
 #include "terrain_translation.hpp"
+#include "util.hpp"
 
 class terrain_type
 {
@@ -46,7 +47,10 @@ public:
 
 	bool is_nonnull() const { return  (number_ != t_translation::NONE_TERRAIN) &&
 		(number_ != t_translation::VOID_TERRAIN ); }
-	int light_modification() const { return light_modification_; }
+	/// Returns the light (lawful) bonus for this terrain when the time of day
+	/// gives a @a base bonus.
+	int light_bonus(int base) const
+		{ return bounded_add(base, light_modification_, max_light_, min_light_); }
 
 	int unit_height_adjust() const { return height_adjust_; }
 	double unit_submerge() const { return submerge_; }
@@ -103,7 +107,10 @@ private:
 	double submerge_;
 	bool submerge_set_;
 
-	int light_modification_, heals_;
+	int light_modification_;
+	int max_light_;
+	int min_light_;
+	int heals_;
 
 	t_string income_description_;
 	t_string income_description_ally_;

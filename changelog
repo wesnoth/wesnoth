@@ -28,6 +28,7 @@ Version 1.11.0+svn:
    * Sighted events should be reliable, provided the player does not activate
      delayed shroud updates (which is still a major caveat).
    * Added [effect] apply_to=overlay
+   * Added [terrain_type] max_light= and min_light=.
  * Miscellaneous and bug fixes:
    * Fix invalid memory access crash resulting from deleting all saved games
      in the Load Game dialog

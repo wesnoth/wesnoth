@@ -48,6 +48,8 @@ terrain_type::terrain_type() :
 		submerge_(0.0),
 		submerge_set_(false),
 		light_modification_(0),
+		max_light_(0),
+		min_light_(0),
 		heals_(0),
 		income_description_(),
 		income_description_ally_(),
@@ -80,6 +82,8 @@ terrain_type::terrain_type(const config& cfg) :
 		submerge_(cfg["submerge"].to_double()),
 		submerge_set_(!cfg["submerge"].empty()),
 		light_modification_(cfg["light"]),
+		max_light_(cfg["max_light"].to_int(light_modification_)),
+		min_light_(cfg["min_light"].to_int(light_modification_)),
 		heals_(cfg["heals"]),
 		income_description_(),
 		income_description_ally_(),
@@ -98,7 +102,7 @@ terrain_type::terrain_type(const config& cfg) :
  *  @todo reenable these validations. The problem is that all MP
  *  scenarios/campaigns share the same namespace and one rogue scenario
  *  can avoid the player to create a MP game. So every scenario/campaign
- *  should get it's own namespace to be safe.
+ *  should get its own namespace to be safe.
  */
 #if 0
 	VALIDATE(number_ != t_translation::NONE_TERRAIN,
@@ -189,6 +193,8 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 	submerge_(base.submerge_),
 	submerge_set_(base.submerge_set_),
 	light_modification_(base.light_modification_ + overlay.light_modification_),
+	max_light_(std::max(base.max_light_, overlay.max_light_)),
+	min_light_(std::min(base.min_light_, overlay.min_light_)),
 	heals_(std::max<int>(base.heals_, overlay.heals_)),
 	income_description_(),
 	income_description_ally_(),
@@ -272,6 +278,8 @@ bool terrain_type::operator==(const terrain_type& other) const {
 		&& submerge_              == other.submerge_
 		&& submerge_set_          == other.submerge_set_
 		&& light_modification_    == other.light_modification_
+		&& max_light_             == other.max_light_
+		&& min_light_             == other.min_light_
 		&& heals_                 == other.heals_
 		&& village_               == other.village_
 		&& castle_                == other.castle_

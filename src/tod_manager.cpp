@@ -129,9 +129,8 @@ const time_of_day tod_manager::get_illuminated_time_of_day(const map_location& l
 
 	if ( map.on_board_with_border(loc) )
 	{
-		// now add illumination
-		const int terrain_light = map.get_terrain_info(loc).light_modification()
-		                          + tod.lawful_bonus;
+		// Now add terrain illumination.
+		const int terrain_light = map.get_terrain_info(loc).light_bonus(tod.lawful_bonus);
 
 		std::vector<int> mod_list;
 		std::vector<int> max_list;
