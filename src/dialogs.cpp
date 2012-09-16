@@ -41,6 +41,7 @@
 #include "savegame.hpp"
 #include "thread.hpp"
 #include "unit_helper.hpp"
+#include "unit_types.hpp"
 #include "wml_separators.hpp"
 #include "widgets/progressbar.hpp"
 #include "wml_exception.hpp"
@@ -1052,7 +1053,22 @@ void show_unit_description(const unit &u)
 
 void show_unit_description(const unit_type &t)
 {
-	help::show_unit_help(*resources::screen, t.id(), t.hide_help());
+	const std::string &var = t.get_cfg()["variation_name"];
+	bool hide_help = t.hide_help();
+	bool use_variation = false;
+	if (!var.empty()) {
+		const unit_type *parent = unit_types.find(t.id());
+		if (hide_help) {
+			hide_help = parent->hide_help();
+		} else {
+			use_variation = true;
+		}
+	}
+
+	if (use_variation)
+		help::show_variation_help(*resources::screen, t.id(), var, hide_help);
+	else
+		help::show_unit_help(*resources::screen, t.id(), hide_help);
 }
 
 static network::connection network_data_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num, network::statistics (*get_stats)(network::connection handle))

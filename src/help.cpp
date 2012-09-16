@@ -21,7 +21,7 @@
 #define GETTEXT_DOMAIN "wesnoth-help"
 
 #include "global.hpp"
-
+#include "asserts.hpp"
 #include "help.hpp"
 
 #include "about.hpp"
@@ -625,6 +625,7 @@ namespace {
 	const std::string unit_prefix = "unit_";
 	const std::string race_prefix = "race_";
 	const std::string faction_prefix = "faction_";
+	const std::string variation_prefix = "variation_";
 
 	// id starting with '.' are hidden
 	static std::string hidden_symbol(bool hidden = true) {
@@ -1311,12 +1312,13 @@ std::vector<topic> generate_faction_topics(const bool sort_generated)
 class unit_topic_generator: public topic_generator
 {
 	const unit_type& type_;
+	const std::string variation_;
 	typedef std::pair< std::string, unsigned > item;
 	void push_header(std::vector< item > &row, char const *name) const {
 		row.push_back(item(bold(name), font::line_width(name, normal_font_size, TTF_STYLE_BOLD)));
 	}
 public:
-	unit_topic_generator(const unit_type &t): type_(t) {}
+	unit_topic_generator(const unit_type &t, std::string variation="") : type_(t), variation_(variation) {}
 	virtual std::string operator()() const {
 		// this will force the lazy loading to build this unit
 		unit_types.find(type_.id(), unit_type::WITHOUT_ANIMATIONS);
@@ -1362,39 +1364,73 @@ public:
 		// Cross reference to the topics containing information about those units.
 		const bool first_reverse_value = true;
 		bool reverse = first_reverse_value;
-		do {
-			std::vector<std::string> adv_units =
-				reverse ? type_.advances_from() : type_.advances_to();
-			bool first = true;
+		if (variation_.empty()) {
+			do {
+				std::vector<std::string> adv_units =
+					reverse ? type_.advances_from() : type_.advances_to();
+				bool first = true;
 
-			BOOST_FOREACH(const std::string &adv, adv_units)
-			{
-				const unit_type *type = unit_types.find(adv);
-				if (!type || type->hide_help()) continue;
+				BOOST_FOREACH(const std::string &adv, adv_units)
+				{
+					const unit_type *type = unit_types.find(adv);
+					if (!type || type->hide_help()) continue;
+
+					if (first) {
+						if (reverse)
+							ss << _("Advances from: ");
+						else
+							ss << _("Advances to: ");
+						first = false;
+					} else
+						ss << ", ";
+
+					std::string lang_unit = type->type_name();
+					std::string ref_id;
+					if (description_type(*type) == FULL_DESCRIPTION) {
+						ref_id = unit_prefix + type->id();
+					} else {
+						ref_id = unknown_unit_topic;
+						lang_unit += " (?)";
+					}
+					ss << "<ref>dst='" << escape(ref_id) << "' text='" << escape(lang_unit) << "'</ref>";
+				}
+				ss << "\n"; //added even if empty, to avoid shifting
+
+				reverse = !reverse; //switch direction
+			} while(reverse != first_reverse_value); // don't restart
+		}
+
+		if (!variation_.empty()) {
+			const unit_type *parent = unit_types.find(type_.id());
+			ss << _("Base unit: ") << "<ref>dst='" << unit_prefix + type_.id() << "' text='" << escape(parent->type_name()) << "'</ref>\n";
+		}
+
+		if (variation_.empty()) {
+			bool first = true;
+			BOOST_FOREACH(const std::string &var, type_.variations()) {
+				const unit_type &type = type_.get_variation(var);
+				if (type.hide_help()) continue;
 
 				if (first) {
-					if (reverse)
-						ss << _("Advances from: ");
-					else
-						ss << _("Advances to: ");
+					ss << _("Variations: ");
 					first = false;
 				} else
 					ss << ", ";
 
-				std::string lang_unit = type->type_name();
 				std::string ref_id;
-				if (description_type(*type) == FULL_DESCRIPTION) {
-					ref_id = unit_prefix + type->id();
+				std::string var_name = var;
+				if (description_type(type) == FULL_DESCRIPTION) {
+					ref_id = variation_prefix + type.id() + "_" + var;
 				} else {
 					ref_id = unknown_unit_topic;
-					lang_unit += " (?)";
+					var_name += " (?)";
 				}
-				ss << "<ref>dst='" << escape(ref_id) << "' text='" << escape(lang_unit) << "'</ref>";
+
+				ss << "<ref>dst='" << escape(ref_id) << "' text='" << escape(var_name) << "'</ref>";
+				//std::cerr << "Link-to: " << ref_id << " = " << escape(var_name) << "\n";
 			}
 			ss << "\n"; //added even if empty, to avoid shifting
-
-			reverse = !reverse; //switch direction
-		} while(reverse != first_reverse_value); // don't restart
+		}
 
 		// Print the race of the unit, cross-reference it to the
 		// respective topic.
@@ -1806,6 +1842,19 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 
 		if (type.race() != race)
 			continue;
+
+		BOOST_FOREACH(const std::string &variation_name, type.variations()) {
+			// TODO: Do we apply encountered stuff to variations?
+			const unit_type &var_type = type.get_variation(variation_name);
+			const std::string topic_name = var_type.type_name() + "\n" + variation_name;
+			const std::string var_ref = hidden_symbol(var_type.hide_help()) + variation_prefix + var_type.id() + "_" + variation_name;
+
+			topic var_topic(topic_name, var_ref, "");
+			var_topic.text = new unit_topic_generator(var_type, variation_name);
+			topics.push_back(var_topic);
+			std::cerr << "Pushed back a topic with name " << topic_name << "\n";
+		}
+
 		UNIT_DESCRIPTION_TYPE desc_type = description_type(type);
 		if (desc_type != FULL_DESCRIPTION)
 			continue;
@@ -3185,6 +3234,14 @@ void show_help(display &disp, const std::string& show_topic, int xloc, int yloc)
 void show_unit_help(display &disp, const std::string& show_topic, bool hidden, int xloc, int yloc)
 {
 	show_help(disp, toplevel, hidden_symbol(hidden) + unit_prefix + show_topic, xloc, yloc);
+}
+
+/**
+ * Open the help browser, show the variation of the unit matching.
+ */
+void show_variation_help(display &disp, const std::string& unit, const std::string &variation, bool hidden, int xloc, int yloc)
+{
+	show_help(disp, toplevel, hidden_symbol(hidden) + variation_prefix + unit + "_" + variation, xloc, yloc);
 }
 
 /**
