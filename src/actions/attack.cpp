@@ -194,21 +194,21 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u,
 		// Compute the number of blows and handle swarm.
 		unit_ability_list swarm_specials = weapon->get_specials("swarm");
 
+		num_blows = weapon->num_attacks();
+		unit_ability_list attacks_specials = weapon->get_specials("attacks");
+		unit_abilities::effect attacks_effect(attacks_specials,num_blows,backstab_pos);
+		const int num_blows_with_specials = attacks_effect.get_composite_value();
+		if(num_blows_with_specials >= 0) {
+			num_blows = num_blows_with_specials;
+		}
+		else { ERR_NG << "negative number of strikes after applying weapon specials\n"; }
 		if (!swarm_specials.empty()) {
 			swarm = true;
 			swarm_min = swarm_specials.highest("swarm_attacks_min").first;
-			swarm_max = swarm_specials.highest("swarm_attacks_max", weapon->num_attacks()).first;
+			swarm_max = swarm_specials.highest("swarm_attacks_max", num_blows).first;
 			num_blows = swarm_min + (swarm_max - swarm_min) * hp / max_hp;
 		} else {
 			swarm = false;
-			num_blows = weapon->num_attacks();
-			unit_ability_list attacks_specials = weapon->get_specials("attacks");
-			unit_abilities::effect attacks_effect(attacks_specials,num_blows,backstab_pos);
-			const int num_blows_with_specials = attacks_effect.get_composite_value();
-			if(num_blows_with_specials >= 0) {
-				num_blows = num_blows_with_specials;
-			}
-			else { ERR_NG << "negative number of strikes after applying weapon specials\n"; }
 			swarm_min = num_blows;
 			swarm_max = num_blows;
 		}
