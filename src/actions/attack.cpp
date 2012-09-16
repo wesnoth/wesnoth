@@ -59,7 +59,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u,
 		const map_location& u_loc, int u_attack_num, bool attacking,
 		const unit &opp, const map_location& opp_loc,
 		const attack_type *opp_weapon, const unit_map& units) :
-	weapon(0),
+	weapon(NULL),
 	attack_num(u_attack_num),
 	is_attacker(attacking),
 	is_poisoned(u.get_state(unit::STATE_POISONED)),
@@ -96,7 +96,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u,
 		LOG_CF << "Unit with " << u.hitpoints() << " hitpoints found, set to 0 for damage calculations\n";
 		hp = 0;
 	} else if(u.hitpoints() > u.max_hitpoints()) {
-		// If a unit has more hp as it's maximum the engine will fail
+		// If a unit has more hp than its maximum, the engine will fail
 		// with an assertion failure due to accessing the prob_matrix
 		// out of bounds.
 		hp = u.max_hitpoints();
@@ -299,8 +299,8 @@ battle_context::battle_context(const battle_context_unit_stats &att,
                                const battle_context_unit_stats &def) :
 	attacker_stats_(new battle_context_unit_stats(att)),
 	defender_stats_(new battle_context_unit_stats(def)),
-	attacker_combatant_(0),
-	defender_combatant_(0)
+	attacker_combatant_(NULL),
+	defender_combatant_(NULL)
 {
 }
 
@@ -683,9 +683,9 @@ namespace {
 
 	attack::attack(const map_location &attacker, const map_location &defender,
 			int attack_with, int defend_with, bool update_display) :
-		bc_(0),
-		a_stats_(0),
-		d_stats_(0),
+		bc_(NULL),
+		a_stats_(NULL),
+		d_stats_(NULL),
 		abs_n_attack_(0),
 		abs_n_defend_(0),
 		update_att_fog_(false),
