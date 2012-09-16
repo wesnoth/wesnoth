@@ -53,318 +53,7 @@ static lg::log_domain log_config("config");
 #define LOG_CF LOG_STREAM(info, log_config)
 
 
-map_location under_leadership(const unit_map& units, const map_location& loc,
-                              int* bonus)
-{
-	const unit_map::const_iterator un = units.find(loc);
-	if(un == units.end()) {
-		return map_location::null_location;
-	}
-	unit_ability_list abil = un->get_abilities("leadership");
-	if(bonus) {
-		*bonus = abil.highest("value").first;
-	}
-	return abil.highest("value").second;
-}
-
-battle_context::battle_context(const unit_map& units,
-		const map_location& attacker_loc, const map_location& defender_loc,
-		int attacker_weapon, int defender_weapon, double aggression,
-		const combatant *prev_def, const unit* attacker_ptr) :
-	attacker_stats_(NULL), defender_stats_(NULL), attacker_combatant_(NULL),
-	defender_combatant_(NULL)
-{
-	const unit &attacker = attacker_ptr ? *attacker_ptr : *units.find(attacker_loc);
-	const unit &defender = *units.find(defender_loc);
-	const double harm_weight = 1.0 - aggression;
-
-	if (attacker_weapon == -1 && attacker.attacks().size() == 1 && attacker.attacks()[0].attack_weight() > 0 )
-		attacker_weapon = 0;
-
-	if (attacker_weapon == -1) {
-		attacker_weapon = choose_attacker_weapon(attacker, defender, units,
-			attacker_loc, defender_loc,
-				harm_weight, &defender_weapon, prev_def);
-	} else if (defender_weapon == -1) {
-		defender_weapon = choose_defender_weapon(attacker, defender, attacker_weapon,
-			units, attacker_loc, defender_loc, prev_def);
-	}
-
-	// If those didn't have to generate statistics, do so now.
-	if (!attacker_stats_) {
-		const attack_type *adef = NULL;
-		const attack_type *ddef = NULL;
-		if (attacker_weapon >= 0) {
-			VALIDATE(attacker_weapon < static_cast<int>(attacker.attacks().size()),
-					_("An invalid attacker weapon got selected."));
-			adef = &attacker.attacks()[attacker_weapon];
-		}
-		if (defender_weapon >= 0) {
-			VALIDATE(defender_weapon < static_cast<int>(defender.attacks().size()),
-					_("An invalid defender weapon got selected."));
-			ddef = &defender.attacks()[defender_weapon];
-		}
-		assert(!defender_stats_ && !attacker_combatant_ && !defender_combatant_);
-		attacker_stats_ = new battle_context_unit_stats(attacker, attacker_loc, attacker_weapon,
-				true, defender, defender_loc, ddef, units);
-		defender_stats_ = new battle_context_unit_stats(defender, defender_loc, defender_weapon, false,
-				attacker, attacker_loc, adef, units);
-	}
-}
-
-battle_context::battle_context(const battle_context &other) :
-	attacker_stats_(NULL), defender_stats_(NULL), attacker_combatant_(NULL),
-	defender_combatant_(NULL)
-{
-	*this = other;
-}
-
-battle_context::battle_context(const battle_context_unit_stats &att,
-                               const battle_context_unit_stats &def) :
-	attacker_stats_(new battle_context_unit_stats(att)),
-	defender_stats_(new battle_context_unit_stats(def)),
-	attacker_combatant_(0),
-	defender_combatant_(0)
-{
-}
-
-battle_context::~battle_context()
-{
-	delete attacker_stats_;
-	delete defender_stats_;
-	delete attacker_combatant_;
-	delete defender_combatant_;
-}
-battle_context& battle_context::operator=(const battle_context &other)
-{
-	if (&other != this) {
-		delete attacker_stats_;
-		delete defender_stats_;
-		delete attacker_combatant_;
-		delete defender_combatant_;
-		attacker_stats_ = new battle_context_unit_stats(*other.attacker_stats_);
-		defender_stats_ = new battle_context_unit_stats(*other.defender_stats_);
-		attacker_combatant_ = other.attacker_combatant_ ? new combatant(*other.attacker_combatant_, *attacker_stats_) : NULL;
-		defender_combatant_ = other.defender_combatant_ ? new combatant(*other.defender_combatant_, *defender_stats_) : NULL;
-	}
-	return *this;
-}
-
-/** @todo FIXME: Hand previous defender unit in here. */
-int battle_context::choose_defender_weapon(const unit &attacker,
-		const unit &defender, unsigned attacker_weapon, const unit_map& units,
-		const map_location& attacker_loc, const map_location& defender_loc,
-		const combatant *prev_def)
-{
-	VALIDATE(attacker_weapon < attacker.attacks().size(),
-			_("An invalid attacker weapon got selected."));
-	const attack_type &att = attacker.attacks()[attacker_weapon];
-	std::vector<unsigned int> choices;
-
-	// What options does defender have?
-	unsigned int i;
-	for (i = 0; i < defender.attacks().size(); ++i) {
-		const attack_type &def = defender.attacks()[i];
-		if (def.range() == att.range() && def.defense_weight() > 0) {
-			choices.push_back(i);
-		}
-	}
-	if (choices.empty())
-		return -1;
-	if (choices.size() == 1)
-		return choices[0];
-
-	// Multiple options:
-	// First pass : get the best weight and the minimum simple rating for this weight.
-	// simple rating = number of blows * damage per blows (resistance taken in account) * cth * weight
-	// Elligible attacks for defense should have a simple rating greater or equal to this weight.
-
-	double max_weight = 0.0;
-	int min_rating = 0;
-
-	for (i = 0; i < choices.size(); ++i) {
-		const attack_type &def = defender.attacks()[choices[i]];
-		if (def.defense_weight() >= max_weight) {
-			max_weight = def.defense_weight();
-			const battle_context_unit_stats def_stats(defender, defender_loc,
-					choices[i], false, attacker, attacker_loc, &att, units);
-			int rating = static_cast<int>(def_stats.num_blows * def_stats.damage *
-					def_stats.chance_to_hit * def.defense_weight());
-			if (def.defense_weight() > max_weight || rating < min_rating ) {
-				min_rating = rating;
-			}
-		}
-	}
-
-	// Multiple options: simulate them, save best.
-	for (i = 0; i < choices.size(); ++i) {
-		const attack_type &def = defender.attacks()[choices[i]];
-		battle_context_unit_stats *att_stats = new battle_context_unit_stats(attacker, attacker_loc, attacker_weapon,
-				true, defender, defender_loc, &def, units);
-		battle_context_unit_stats *def_stats = new battle_context_unit_stats(defender, defender_loc, choices[i], false,
-				attacker, attacker_loc, &att, units);
-
-		combatant *att_comb = new combatant(*att_stats);
-		combatant *def_comb = new combatant(*def_stats, prev_def);
-		att_comb->fight(*def_comb);
-
-		int simple_rating = static_cast<int>(def_stats->num_blows *
-				def_stats->damage * def_stats->chance_to_hit * def.defense_weight());
-
-		if (simple_rating >= min_rating &&
-				( !attacker_combatant_ || better_combat(*def_comb, *att_comb, *defender_combatant_, *attacker_combatant_, 1.0) )
-		   ) {
-			delete attacker_combatant_;
-			delete defender_combatant_;
-			delete attacker_stats_;
-			delete defender_stats_;
-			attacker_combatant_ = att_comb;
-			defender_combatant_ = def_comb;
-			attacker_stats_ = att_stats;
-			defender_stats_ = def_stats;
-		} else {
-			delete att_comb;
-			delete def_comb;
-			delete att_stats;
-			delete def_stats;
-		}
-	}
-
-	return defender_stats_->attack_num;
-}
-
-int battle_context::choose_attacker_weapon(const unit &attacker,
-		const unit &defender, const unit_map& units,
-		const map_location& attacker_loc, const map_location& defender_loc,
-		double harm_weight, int *defender_weapon, const combatant *prev_def)
-{
-	std::vector<unsigned int> choices;
-
-	// What options does attacker have?
-	unsigned int i;
-	for (i = 0; i < attacker.attacks().size(); ++i) {
-		const attack_type &att = attacker.attacks()[i];
-		if (att.attack_weight() > 0) {
-			choices.push_back(i);
-		}
-	}
-	if (choices.empty())
-		return -1;
-	if (choices.size() == 1) {
-		*defender_weapon = choose_defender_weapon(attacker, defender, choices[0], units,
-			attacker_loc, defender_loc, prev_def);
-		return choices[0];
-	}
-
-	// Multiple options: simulate them, save best.
-	battle_context_unit_stats *best_att_stats = NULL, *best_def_stats = NULL;
-	combatant *best_att_comb = NULL, *best_def_comb = NULL;
-
-	for (i = 0; i < choices.size(); ++i) {
-		const attack_type &att = attacker.attacks()[choices[i]];
-		int def_weapon = choose_defender_weapon(attacker, defender, choices[i], units,
-			attacker_loc, defender_loc, prev_def);
-		// If that didn't simulate, do so now.
-		if (!attacker_combatant_) {
-			const attack_type *def = NULL;
-			if (def_weapon >= 0) {
-				def = &defender.attacks()[def_weapon];
-			}
-			attacker_stats_ = new battle_context_unit_stats(attacker, attacker_loc, choices[i],
-				true, defender, defender_loc, def, units);
-			defender_stats_ = new battle_context_unit_stats(defender, defender_loc, def_weapon, false,
-				attacker, attacker_loc, &att, units);
-			attacker_combatant_ = new combatant(*attacker_stats_);
-			defender_combatant_ = new combatant(*defender_stats_, prev_def);
-			attacker_combatant_->fight(*defender_combatant_);
-		}
-		if (!best_att_comb || better_combat(*attacker_combatant_, *defender_combatant_,
-					*best_att_comb, *best_def_comb, harm_weight)) {
-			delete best_att_comb;
-			delete best_def_comb;
-			delete best_att_stats;
-			delete best_def_stats;
-			best_att_comb = attacker_combatant_;
-			best_def_comb = defender_combatant_;
-			best_att_stats = attacker_stats_;
-			best_def_stats = defender_stats_;
-		} else {
-			delete attacker_combatant_;
-			delete defender_combatant_;
-			delete attacker_stats_;
-			delete defender_stats_;
-		}
-		attacker_combatant_ = NULL;
-		defender_combatant_ = NULL;
-		attacker_stats_ = NULL;
-		defender_stats_ = NULL;
-	}
-
-	attacker_combatant_ = best_att_comb;
-	defender_combatant_ = best_def_comb;
-	attacker_stats_ = best_att_stats;
-	defender_stats_ = best_def_stats;
-
-	*defender_weapon = defender_stats_->attack_num;
-	return attacker_stats_->attack_num;
-}
-
-// Does combat A give us a better result than combat B?
-bool battle_context::better_combat(const combatant &us_a, const combatant &them_a,
-		const combatant &us_b, const combatant &them_b, double harm_weight)
-{
-	double a, b;
-
-	// Compare: P(we kill them) - P(they kill us).
-	a = them_a.hp_dist[0] - us_a.hp_dist[0] * harm_weight;
-	b = them_b.hp_dist[0] - us_b.hp_dist[0] * harm_weight;
-	if (a - b < -0.01)
-		return false;
-	if (a - b > 0.01)
-		return true;
-
-	// Add poison to calculations
-	double poison_a_us = (us_a.poisoned) * game_config::poison_amount;
-	double poison_a_them = (them_a.poisoned) * game_config::poison_amount;
-	double poison_b_us = (us_b.poisoned) * game_config::poison_amount;
-	double poison_b_them = (them_b.poisoned) * game_config::poison_amount;
-	// Compare: damage to them - damage to us (average_hp replaces -damage)
-	a = (us_a.average_hp()-poison_a_us)*harm_weight - (them_a.average_hp()-poison_a_them);
-	b = (us_b.average_hp()-poison_b_us)*harm_weight - (them_b.average_hp()-poison_b_them);
-	if (a - b < -0.01)
-		return false;
-	if (a - b > 0.01)
-		return true;
-
-	// All else equal: go for most damage.
-	return them_a.average_hp() < them_b.average_hp();
-}
-
-/** @todo FIXME: better to initialize combatant initially (move into
-                 battle_context_unit_stats?), just do fight() when required. */
-const combatant &battle_context::get_attacker_combatant(const combatant *prev_def)
-{
-	// We calculate this lazily, since AI doesn't always need it.
-	if (!attacker_combatant_) {
-		assert(!defender_combatant_);
-		attacker_combatant_ = new combatant(*attacker_stats_);
-		defender_combatant_ = new combatant(*defender_stats_, prev_def);
-		attacker_combatant_->fight(*defender_combatant_);
-	}
-	return *attacker_combatant_;
-}
-
-const combatant &battle_context::get_defender_combatant(const combatant *prev_def)
-{
-	// We calculate this lazily, since AI doesn't always need it.
-	if (!defender_combatant_) {
-		assert(!attacker_combatant_);
-		attacker_combatant_ = new combatant(*attacker_stats_);
-		defender_combatant_ = new combatant(*defender_stats_, prev_def);
-		attacker_combatant_->fight(*defender_combatant_);
-	}
-	return *defender_combatant_;
-}
+		/* battle_context_unit_stats */
 
 battle_context_unit_stats::battle_context_unit_stats(const unit &u,
 		const map_location& u_loc, int u_attack_num, bool attacking,
@@ -558,11 +247,314 @@ void battle_context_unit_stats::dump() const
 	printf("\n");
 }
 
+
+		/* battle_context */
+
+battle_context::battle_context(const unit_map& units,
+		const map_location& attacker_loc, const map_location& defender_loc,
+		int attacker_weapon, int defender_weapon, double aggression,
+		const combatant *prev_def, const unit* attacker_ptr) :
+	attacker_stats_(NULL), defender_stats_(NULL), attacker_combatant_(NULL),
+	defender_combatant_(NULL)
+{
+	const unit &attacker = attacker_ptr ? *attacker_ptr : *units.find(attacker_loc);
+	const unit &defender = *units.find(defender_loc);
+	const double harm_weight = 1.0 - aggression;
+
+	if (attacker_weapon == -1 && attacker.attacks().size() == 1 && attacker.attacks()[0].attack_weight() > 0 )
+		attacker_weapon = 0;
+
+	if (attacker_weapon == -1) {
+		attacker_weapon = choose_attacker_weapon(attacker, defender, units,
+			attacker_loc, defender_loc,
+				harm_weight, &defender_weapon, prev_def);
+	} else if (defender_weapon == -1) {
+		defender_weapon = choose_defender_weapon(attacker, defender, attacker_weapon,
+			units, attacker_loc, defender_loc, prev_def);
+	}
+
+	// If those didn't have to generate statistics, do so now.
+	if (!attacker_stats_) {
+		const attack_type *adef = NULL;
+		const attack_type *ddef = NULL;
+		if (attacker_weapon >= 0) {
+			VALIDATE(attacker_weapon < static_cast<int>(attacker.attacks().size()),
+					_("An invalid attacker weapon got selected."));
+			adef = &attacker.attacks()[attacker_weapon];
+		}
+		if (defender_weapon >= 0) {
+			VALIDATE(defender_weapon < static_cast<int>(defender.attacks().size()),
+					_("An invalid defender weapon got selected."));
+			ddef = &defender.attacks()[defender_weapon];
+		}
+		assert(!defender_stats_ && !attacker_combatant_ && !defender_combatant_);
+		attacker_stats_ = new battle_context_unit_stats(attacker, attacker_loc, attacker_weapon,
+				true, defender, defender_loc, ddef, units);
+		defender_stats_ = new battle_context_unit_stats(defender, defender_loc, defender_weapon, false,
+				attacker, attacker_loc, adef, units);
+	}
+}
+
+battle_context::battle_context(const battle_context_unit_stats &att,
+                               const battle_context_unit_stats &def) :
+	attacker_stats_(new battle_context_unit_stats(att)),
+	defender_stats_(new battle_context_unit_stats(def)),
+	attacker_combatant_(0),
+	defender_combatant_(0)
+{
+}
+
+battle_context::battle_context(const battle_context &other) :
+	attacker_stats_(NULL), defender_stats_(NULL), attacker_combatant_(NULL),
+	defender_combatant_(NULL)
+{
+	*this = other;
+}
+
+battle_context::~battle_context()
+{
+	delete attacker_stats_;
+	delete defender_stats_;
+	delete attacker_combatant_;
+	delete defender_combatant_;
+}
+
+battle_context& battle_context::operator=(const battle_context &other)
+{
+	if (&other != this) {
+		delete attacker_stats_;
+		delete defender_stats_;
+		delete attacker_combatant_;
+		delete defender_combatant_;
+		attacker_stats_ = new battle_context_unit_stats(*other.attacker_stats_);
+		defender_stats_ = new battle_context_unit_stats(*other.defender_stats_);
+		attacker_combatant_ = other.attacker_combatant_ ? new combatant(*other.attacker_combatant_, *attacker_stats_) : NULL;
+		defender_combatant_ = other.defender_combatant_ ? new combatant(*other.defender_combatant_, *defender_stats_) : NULL;
+	}
+	return *this;
+}
+
+/** @todo FIXME: better to initialize combatant initially (move into
+                 battle_context_unit_stats?), just do fight() when required. */
+const combatant &battle_context::get_attacker_combatant(const combatant *prev_def)
+{
+	// We calculate this lazily, since AI doesn't always need it.
+	if (!attacker_combatant_) {
+		assert(!defender_combatant_);
+		attacker_combatant_ = new combatant(*attacker_stats_);
+		defender_combatant_ = new combatant(*defender_stats_, prev_def);
+		attacker_combatant_->fight(*defender_combatant_);
+	}
+	return *attacker_combatant_;
+}
+
+const combatant &battle_context::get_defender_combatant(const combatant *prev_def)
+{
+	// We calculate this lazily, since AI doesn't always need it.
+	if (!defender_combatant_) {
+		assert(!attacker_combatant_);
+		attacker_combatant_ = new combatant(*attacker_stats_);
+		defender_combatant_ = new combatant(*defender_stats_, prev_def);
+		attacker_combatant_->fight(*defender_combatant_);
+	}
+	return *defender_combatant_;
+}
+
 // Given this harm_weight, are we better than this other context?
 bool battle_context::better_attack(class battle_context &that, double harm_weight)
 {
 	return better_combat(get_attacker_combatant(), get_defender_combatant(),
 			that.get_attacker_combatant(), that.get_defender_combatant(), harm_weight);
+}
+
+// Does combat A give us a better result than combat B?
+bool battle_context::better_combat(const combatant &us_a, const combatant &them_a,
+		const combatant &us_b, const combatant &them_b, double harm_weight)
+{
+	double a, b;
+
+	// Compare: P(we kill them) - P(they kill us).
+	a = them_a.hp_dist[0] - us_a.hp_dist[0] * harm_weight;
+	b = them_b.hp_dist[0] - us_b.hp_dist[0] * harm_weight;
+	if (a - b < -0.01)
+		return false;
+	if (a - b > 0.01)
+		return true;
+
+	// Add poison to calculations
+	double poison_a_us = (us_a.poisoned) * game_config::poison_amount;
+	double poison_a_them = (them_a.poisoned) * game_config::poison_amount;
+	double poison_b_us = (us_b.poisoned) * game_config::poison_amount;
+	double poison_b_them = (them_b.poisoned) * game_config::poison_amount;
+	// Compare: damage to them - damage to us (average_hp replaces -damage)
+	a = (us_a.average_hp()-poison_a_us)*harm_weight - (them_a.average_hp()-poison_a_them);
+	b = (us_b.average_hp()-poison_b_us)*harm_weight - (them_b.average_hp()-poison_b_them);
+	if (a - b < -0.01)
+		return false;
+	if (a - b > 0.01)
+		return true;
+
+	// All else equal: go for most damage.
+	return them_a.average_hp() < them_b.average_hp();
+}
+
+int battle_context::choose_attacker_weapon(const unit &attacker,
+		const unit &defender, const unit_map& units,
+		const map_location& attacker_loc, const map_location& defender_loc,
+		double harm_weight, int *defender_weapon, const combatant *prev_def)
+{
+	std::vector<unsigned int> choices;
+
+	// What options does attacker have?
+	unsigned int i;
+	for (i = 0; i < attacker.attacks().size(); ++i) {
+		const attack_type &att = attacker.attacks()[i];
+		if (att.attack_weight() > 0) {
+			choices.push_back(i);
+		}
+	}
+	if (choices.empty())
+		return -1;
+	if (choices.size() == 1) {
+		*defender_weapon = choose_defender_weapon(attacker, defender, choices[0], units,
+			attacker_loc, defender_loc, prev_def);
+		return choices[0];
+	}
+
+	// Multiple options: simulate them, save best.
+	battle_context_unit_stats *best_att_stats = NULL, *best_def_stats = NULL;
+	combatant *best_att_comb = NULL, *best_def_comb = NULL;
+
+	for (i = 0; i < choices.size(); ++i) {
+		const attack_type &att = attacker.attacks()[choices[i]];
+		int def_weapon = choose_defender_weapon(attacker, defender, choices[i], units,
+			attacker_loc, defender_loc, prev_def);
+		// If that didn't simulate, do so now.
+		if (!attacker_combatant_) {
+			const attack_type *def = NULL;
+			if (def_weapon >= 0) {
+				def = &defender.attacks()[def_weapon];
+			}
+			attacker_stats_ = new battle_context_unit_stats(attacker, attacker_loc, choices[i],
+				true, defender, defender_loc, def, units);
+			defender_stats_ = new battle_context_unit_stats(defender, defender_loc, def_weapon, false,
+				attacker, attacker_loc, &att, units);
+			attacker_combatant_ = new combatant(*attacker_stats_);
+			defender_combatant_ = new combatant(*defender_stats_, prev_def);
+			attacker_combatant_->fight(*defender_combatant_);
+		}
+		if (!best_att_comb || better_combat(*attacker_combatant_, *defender_combatant_,
+					*best_att_comb, *best_def_comb, harm_weight)) {
+			delete best_att_comb;
+			delete best_def_comb;
+			delete best_att_stats;
+			delete best_def_stats;
+			best_att_comb = attacker_combatant_;
+			best_def_comb = defender_combatant_;
+			best_att_stats = attacker_stats_;
+			best_def_stats = defender_stats_;
+		} else {
+			delete attacker_combatant_;
+			delete defender_combatant_;
+			delete attacker_stats_;
+			delete defender_stats_;
+		}
+		attacker_combatant_ = NULL;
+		defender_combatant_ = NULL;
+		attacker_stats_ = NULL;
+		defender_stats_ = NULL;
+	}
+
+	attacker_combatant_ = best_att_comb;
+	defender_combatant_ = best_def_comb;
+	attacker_stats_ = best_att_stats;
+	defender_stats_ = best_def_stats;
+
+	*defender_weapon = defender_stats_->attack_num;
+	return attacker_stats_->attack_num;
+}
+
+/** @todo FIXME: Hand previous defender unit in here. */
+int battle_context::choose_defender_weapon(const unit &attacker,
+		const unit &defender, unsigned attacker_weapon, const unit_map& units,
+		const map_location& attacker_loc, const map_location& defender_loc,
+		const combatant *prev_def)
+{
+	VALIDATE(attacker_weapon < attacker.attacks().size(),
+			_("An invalid attacker weapon got selected."));
+	const attack_type &att = attacker.attacks()[attacker_weapon];
+	std::vector<unsigned int> choices;
+
+	// What options does defender have?
+	unsigned int i;
+	for (i = 0; i < defender.attacks().size(); ++i) {
+		const attack_type &def = defender.attacks()[i];
+		if (def.range() == att.range() && def.defense_weight() > 0) {
+			choices.push_back(i);
+		}
+	}
+	if (choices.empty())
+		return -1;
+	if (choices.size() == 1)
+		return choices[0];
+
+	// Multiple options:
+	// First pass : get the best weight and the minimum simple rating for this weight.
+	// simple rating = number of blows * damage per blows (resistance taken in account) * cth * weight
+	// Elligible attacks for defense should have a simple rating greater or equal to this weight.
+
+	double max_weight = 0.0;
+	int min_rating = 0;
+
+	for (i = 0; i < choices.size(); ++i) {
+		const attack_type &def = defender.attacks()[choices[i]];
+		if (def.defense_weight() >= max_weight) {
+			max_weight = def.defense_weight();
+			const battle_context_unit_stats def_stats(defender, defender_loc,
+					choices[i], false, attacker, attacker_loc, &att, units);
+			int rating = static_cast<int>(def_stats.num_blows * def_stats.damage *
+					def_stats.chance_to_hit * def.defense_weight());
+			if (def.defense_weight() > max_weight || rating < min_rating ) {
+				min_rating = rating;
+			}
+		}
+	}
+
+	// Multiple options: simulate them, save best.
+	for (i = 0; i < choices.size(); ++i) {
+		const attack_type &def = defender.attacks()[choices[i]];
+		battle_context_unit_stats *att_stats = new battle_context_unit_stats(attacker, attacker_loc, attacker_weapon,
+				true, defender, defender_loc, &def, units);
+		battle_context_unit_stats *def_stats = new battle_context_unit_stats(defender, defender_loc, choices[i], false,
+				attacker, attacker_loc, &att, units);
+
+		combatant *att_comb = new combatant(*att_stats);
+		combatant *def_comb = new combatant(*def_stats, prev_def);
+		att_comb->fight(*def_comb);
+
+		int simple_rating = static_cast<int>(def_stats->num_blows *
+				def_stats->damage * def_stats->chance_to_hit * def.defense_weight());
+
+		if (simple_rating >= min_rating &&
+				( !attacker_combatant_ || better_combat(*def_comb, *att_comb, *defender_combatant_, *attacker_combatant_, 1.0) )
+		   ) {
+			delete attacker_combatant_;
+			delete defender_combatant_;
+			delete attacker_stats_;
+			delete defender_stats_;
+			attacker_combatant_ = att_comb;
+			defender_combatant_ = def_comb;
+			attacker_stats_ = att_stats;
+			defender_stats_ = def_stats;
+		} else {
+			delete att_comb;
+			delete def_comb;
+			delete att_stats;
+			delete def_stats;
+		}
+	}
+
+	return defender_stats_->attack_num;
 }
 
 
@@ -1354,6 +1346,20 @@ void advance_unit(map_location loc, const std::string &advance_to,
 		actions::actor_sighted(*u, &not_seeing);
 
 	resources::whiteboard->on_gamestate_change();
+}
+
+map_location under_leadership(const unit_map& units, const map_location& loc,
+                              int* bonus)
+{
+	const unit_map::const_iterator un = units.find(loc);
+	if(un == units.end()) {
+		return map_location::null_location;
+	}
+	unit_ability_list abil = un->get_abilities("leadership");
+	if(bonus) {
+		*bonus = abil.highest("value").first;
+	}
+	return abil.highest("value").second;
 }
 
 int combat_modifier(const map_location &loc, unit_type::ALIGNMENT alignment,
