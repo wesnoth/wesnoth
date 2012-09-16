@@ -288,6 +288,7 @@ public:
 	bool has_random_traits() const;
 
 	const std::vector<unit_race::GENDER>& genders() const { return genders_; }
+	std::vector<std::string> variations() const;
 
 	const std::string race() const { return cfg_["race"]; } //race_->id(); }
 	bool hide_help() const;

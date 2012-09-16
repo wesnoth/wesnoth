@@ -673,27 +673,7 @@ void unit_type::build_full(const movement_type_map &mv_types,
 	if (build_status_ == NOT_BUILT || build_status_ == CREATED)
 		build_help_index(mv_types, races, traits);
 
-	config &cfg = cfg_;
-
-	movementType_ = unit_movement_type(cfg);
-	alpha_ = ftofxp(1.0);
-
-	BOOST_FOREACH(const config &t, traits)
-	{
-		possibleTraits_.add_child("trait", t);
-	}
-	BOOST_FOREACH(config &var_cfg, cfg.child_range("variation"))
-	{
-		if (var_cfg["inherit"].to_bool()) {
-			config nvar_cfg(cfg);
-			nvar_cfg.merge_with(var_cfg);
-			nvar_cfg.clear_children("variation");
-			var_cfg.swap(nvar_cfg);
-		}
-		unit_type *ut = new unit_type(var_cfg);
-		ut->build_full(mv_types, races, traits);
-		variations_.insert(std::make_pair(var_cfg["variation_name"], ut));
-	}
+	const config &cfg = cfg_;
 
 	for (int i = 0; i < 2; ++i) {
 		if (gender_types_[i])
@@ -776,7 +756,7 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	if (build_status_ == NOT_BUILT)
 		build_created(mv_types, races, traits);
 
-	const config &cfg = cfg_;
+	config &cfg = cfg_;
 
 	type_name_ = cfg_["name"];
 	description_ = cfg_["description"];
@@ -845,6 +825,26 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 				}
 			}
 		}
+	}
+
+	movementType_ = unit_movement_type(cfg);
+	alpha_ = ftofxp(1.0);
+
+	BOOST_FOREACH(const config &t, traits)
+	{
+		possibleTraits_.add_child("trait", t);
+	}
+	BOOST_FOREACH(config &var_cfg, cfg.child_range("variation"))
+	{
+		if (var_cfg["inherit"].to_bool()) {
+			config nvar_cfg(cfg);
+			nvar_cfg.merge_with(var_cfg);
+			nvar_cfg.clear_children("variation");
+			var_cfg.swap(nvar_cfg);
+		}
+		unit_type *ut = new unit_type(var_cfg);
+		ut->build_full(mv_types, races, traits);
+		variations_.insert(std::make_pair(var_cfg["variation_name"], ut));
 	}
 
 	hide_help_= cfg["hide_help"].to_bool();
@@ -1425,6 +1425,16 @@ bool unit_type::has_random_traits() const
 		++t.first;
 	}
 	return false;
+}
+
+std::vector<std::string> unit_type::variations() const
+{
+	std::vector<std::string> retval;
+	retval.reserve(variations_.size());
+	BOOST_FOREACH(const variations_map::value_type &val, variations_) {
+		retval.push_back(val.first);
+	}
+	return retval;
 }
 
 unit_type_data unit_types;
