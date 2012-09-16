@@ -80,7 +80,7 @@ public:
 	tcontrol *msg_label;
 	const std::vector<chat_msg> &chat_log_history;
 	int page;
-	static const int COUNT_PER_PAGE = 1000;
+	static const int COUNT_PER_PAGE = 100;
 	tslider *page_number;
 	tbutton *previous_page;
 	tbutton *next_page;
