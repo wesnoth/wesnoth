@@ -545,37 +545,58 @@ class GitHub(object):
 
         return _execresult(out, err, p.returncode)
 
+def _gen(possible_dirs):
+    def _get_build_system(possible_dirs):
+        logging.debug("get_build_system with paths: %s", ";".join(possible_dirs))
+
+        if not isinstance(possible_dirs, list):
+            raise Error("Incorrect argument type passed, {0} instead of {1}".format(str(type(possible_dirs)), str(list)))
+
+        def is_good_checkout(addon):
+            try:
+                out, err, ret = addon._execute(["git", "remote", "-v"], check_error=True)
+                test = "wescamp/build-system"
+                return test in out
+            except:
+                return False
+
+        for path in possible_dirs:
+            base, rest = os.path.split(path.rstrip(os.sep))
+            fake_github = GitHub(base, "system")
+            fake_build = Addon(fake_github, rest, True)
+            if is_good_checkout(fake_build):
+                logging.debug("Found {0} to be valid build-system checkout".format(path))
+                return fake_build, False
+            else:
+                logging.debug("Discarded possible checkout {0}".format(path))
+
+        logging.debug("No candidates left, creating new checkout")
+
+        realish_github = GitHub(tempfile.mkdtemp(),"system")
+        build_system = realish_github.addon("build", readonly=True)
+        return build_system, True
+    bs, fresh = _get_build_system(possible_dirs)
+    # Add references to shutil and os to ensure we're destructed before they are
+    stored_shutil = shutil
+    stored_os = os
+    try:
+        while True:
+            # Don't make a fresh clone every call
+            yield bs
+    except GeneratorExit:
+        # Clean up our temporary clone
+        if fresh:
+            stored_shutil.rmtree(bs.get_dir())
+            stored_os.rmdir(os.path.dirname(bs.get_dir()))
+
+_g = None
 def get_build_system(possible_dirs=[]):
     """Create a special 'add-on', containing the wescamp build system.
 
     possible_dirs: List of paths to possible existing.
     Returns: The Addon object of the build-system
     """
-    logging.debug("get_build_system with paths: %s", ";".join(possible_dirs))
-
-    if not isinstance(possible_dirs, list):
-        raise Error("Incorrect argument type passed, {0} instead of {1}".format(str(type(possible_dirs)), str(list)))
-
-    def is_good_checkout(addon):
-        try:
-            out, err, ret = addon._execute(["git", "remote", "-v"], check_error=True)
-            test = "wescamp/build-system.git"
-            return test in out
-        except:
-            return False
-
-    for path in possible_dirs:
-        base, rest = os.path.split(path.rstrip(os.sep))
-        fake_github = GitHub(base, "system")
-        fake_build = Addon(fake_github, rest, True)
-        if is_good_checkout(fake_build):
-            logging.debug("Found {0} to be valid build-system checkout".format(path))
-            return fake_build
-        else:
-            logging.debug("Discarded possible checkout {0}".format(path))
-
-    logging.debug("No candidates left, creating new checkout")
-
-    realish_github = GitHub(tempfile.mkdtemp(),"system")
-    build_system = realish_github.addon("build", readonly=True)
-    return build_system
+    global _g
+    if _g == None:
+        _g = _gen(possible_dirs)
+    return _g.next()
