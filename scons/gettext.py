@@ -86,7 +86,7 @@ def CheckGettextLibintl(context):
             LIBPATH = [join(includes[0][0], "lib")]
         )
     env.AppendUnique(LIBS = ["intl"])
-    if context.TryLink("/* exteral libintl*/\n" + test_program, ".c"):
+    if context.TryLink("/* external libintl*/\n" + test_program, ".c"):
         context.Result("external")
         return True
 
