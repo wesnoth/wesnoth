@@ -35,9 +35,10 @@ class tempdir:
         self.path = tempfile.mkdtemp()
         logging.debug("created tempdir '%s'", self.path)
 
-        # for some reason we need to need a variable to shutil otherwise the
-        #__del__() will fail. This is caused by import of campaignserver_client
-        # or libsvn, according to esr it's a bug in Python.
+        # We need to add a reference to shutil, otherwise __del__() will fail.
+        # This is because when the object is destructed other globals may
+        #have already been torn down.
+        # In C++ this is known as the static deinitialization fiasco.
         self.dummy = shutil
 
     def __del__(self):
