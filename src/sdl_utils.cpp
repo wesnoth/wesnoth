@@ -932,7 +932,7 @@ surface mask_surface(const surface &surf, const surface &mask, bool* empty_resul
 		if(!filename.empty()) ss << filename << ": ";
 		ss << nsurf->w << "x" << nsurf->h << "\n";
 		std::cerr << ss.str();
-		std::cerr << "It will not be masked, please use :"<< nmask->w << "x" << nmask->h << "\n";
+		std::cerr << "It will not be masked, please use: "<< nmask->w << "x" << nmask->h << "\n";
 		return nsurf;
 	}
 
@@ -1105,8 +1105,8 @@ surface light_surface(const surface &surf, const surface &lightmap, bool optimiz
 		// (different height is not a real problem)
 		// This function is used on all hexes and usually only for that
 		// so better keep it simple and efficient for the normal case
-		std::cerr << "Detected an image with bad dimensions :" << nsurf->w << "x" << nsurf->h << "\n";
-		std::cerr << "It will not be lighted, please use :"<< lightmap->w << "x" << lightmap->h << "\n";
+		std::cerr << "Detected an image with bad dimensions: " << nsurf->w << "x" << nsurf->h << "\n";
+		std::cerr << "It will not be lighted, please use: "<< lightmap->w << "x" << lightmap->h << "\n";
 		return nsurf;
 	}
 	{
