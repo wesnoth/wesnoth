@@ -61,7 +61,6 @@ public:
 
 	int movement_used() const { return cfg_["movement_used"].to_int(100000); }
 
-	config& get_cfg() { return cfg_; }
 	const config& get_cfg() const { return cfg_; }
 	mutable map_location aloc_,dloc_;
 	mutable bool attacker_;
@@ -120,7 +119,7 @@ int movement_cost_internal(std::map<t_translation::t_terrain, int> &move_costs,
 class unit_movement_type
 {
 public:
-        //this move distance means a hex is unreachable
+	//this move distance means a hex is unreachable
 	//if there is an UNREACHABLE macro declared in the data tree
 	//it should match this value.
 	static const int UNREACHABLE = 99;
