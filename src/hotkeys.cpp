@@ -848,7 +848,7 @@ hotkey_item& get_hotkey(const SDL_JoyHatEvent& event)
 	return get_hotkey(hotkey_item::JHAT, event.which, event.hat, event.value, shift, ctrl, alt, cmd);
 }
 
-hotkey_item& get_hotkey(const SDL_MouseButtonEvent& event)
+static hotkey_item& get_hotkey(const SDL_MouseButtonEvent& event)
 {
 	Uint8 *keystate = SDL_GetKeyState(NULL);
 	bool alt   = keystate[SDLK_RALT]   || keystate[SDLK_LALT];
