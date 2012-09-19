@@ -173,9 +173,6 @@ typedef std::map<std::string,unit_movement_type> movement_type_map;
 class unit_type
 {
 public:
-	friend class unit;
-	friend class unit_type_data;
-
 	/**
 	 * Creates a unit type for the given config, but delays its build
 	 * till later.
@@ -291,6 +288,7 @@ public:
 	std::vector<std::string> variations() const;
 
 	const std::string race() const { return cfg_["race"]; } //race_->id(); }
+	const unit_race* race_ptr() const { return race_; }
 	bool hide_help() const;
 
     enum BUILD_STATUS {NOT_BUILT, CREATED, HELP_INDEX, WITHOUT_ANIMATIONS, FULL};

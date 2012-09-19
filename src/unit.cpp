@@ -853,7 +853,7 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 		new_cfg.merge_with(t->movement_type().get_parent()->get_cfg());
 	}
 
-	new_cfg.merge_with(t->cfg_);
+	new_cfg.merge_with(t->get_cfg());
 
 	// Remove pure unit_type attributes.
 	static char const *unit_type_attrs[] = { "movement", "movement_type",
@@ -884,7 +884,7 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 
 	advances_to_ = t->advances_to();
 
-	race_ = t->race_;
+	race_ = t->race_ptr();
 	type_name_ = t->type_name();
 	cfg_["description"] = t->unit_description();
 	undead_variation_ = t->undead_variation();
