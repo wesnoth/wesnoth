@@ -474,7 +474,7 @@ namespace { // Private helpers for move_unit()
 		// We will eventually be able to move if nothing unexpected
 		// happens, and if something does happen, this movement is the
 		// cost to discover it.
-		move_it_->set_movement(moves_left_.front());
+		move_it_->set_movement(moves_left_.front(), true);
 		moves_left_.pop_front();
 
 		// Invalidate before moving so we invalidate neighbor hexes if needed.
@@ -982,7 +982,7 @@ namespace { // Private helpers for move_unit()
 					*(full_end_-1) :
 					map_location::null_location);
 			if ( ambushed_ || final_loc == zoc_stop_ )
-				move_it_->set_movement(0);
+				move_it_->set_movement(0, true);
 
 			// Village capturing.
 			if ( resources::game_map->is_village(final_loc) ) {
@@ -990,7 +990,7 @@ namespace { // Private helpers for move_unit()
 				orig_village_owner = village_owner(final_loc);
 				if ( orig_village_owner != current_side_-1 ) {
 					// Captured. Zap movement and take over the village.
-					move_it_->set_movement(0);
+					move_it_->set_movement(0, true);
 					event_mutated_ |= get_village(final_loc, current_side_, &action_time_bonus);
 					post_wml();
 				}
@@ -1100,9 +1100,7 @@ namespace { // Private helpers for move_unit()
 		// Suggest "continue move"?
 		if ( playing_team_is_viewing && sighted_stop_ && !resources::whiteboard->is_executing_actions() ) {
 			// See if the "Continue Move" action has an associated hotkey
-
 			std::string name = hotkey::get_names(hotkey::HOTKEY_CONTINUE_MOVE);
-
 			if ( !name.empty() ) {
 				utils::string_map symbols;
 				symbols["hotkey"] = name;

@@ -89,11 +89,11 @@ recall::recall(config const& cfg, bool hidden)
 
 void recall::init()
 {
-	temp_unit_->set_movement(0);
+	temp_unit_->set_movement(0, true);
 	temp_unit_->set_attacks(0);
 
 	fake_unit_->set_location(recall_hex_);
-	fake_unit_->set_movement(0);
+	fake_unit_->set_movement(0, true);
 	fake_unit_->set_attacks(0);
 	fake_unit_->set_ghosted(false);
 	fake_unit_->place_on_game_display( resources::screen);

@@ -2616,13 +2616,13 @@ WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 		}
 
 		if(!moves.blank()) {
-			if(moves == "full") u->set_movement(u->total_movement());
+			if(moves == "full") u->set_movement(u->total_movement(), false);
 			else {
 				// set_movement doesn't set below 0
 				u->set_movement(std::min<int>(
 					u->total_movement(),
 					u->movement_left() + lexical_cast_default<int, config::attribute_value> (moves, 0)
-					));
+					), false);
 			}
 		}
 

@@ -159,12 +159,12 @@ void attack::apply_temp_modifier(unit_map& unit_map)
 	DBG_WB << "Attack: Changing movement points for unit " << unit.name() << " [" << unit.id()
 				<< "] from " << unit.movement_left() << " to "
 				<< unit.movement_left() - temp_movement_subtracted_ << ".\n";
-	unit.set_movement(unit.movement_left() - temp_movement_subtracted_);
+	unit.set_movement(unit.movement_left() - temp_movement_subtracted_, true);
 
 	//Update status of fake unit (not undone by remove_temp_modifiers)
 	//@todo this contradicts the name "temp_modifiers"
 	if (fake_unit_) { //Attacks that are not attack-moves don't have fake units
-		fake_unit_->set_movement(unit.movement_left());
+		fake_unit_->set_movement(unit.movement_left(), true);
 		fake_unit_->set_attacks(unit.attacks_left());
 	}
 }
@@ -179,7 +179,7 @@ void attack::remove_temp_modifier(unit_map& unit_map)
 	DBG_WB << "Attack: Changing movement points for unit " << unit.name() << " [" << unit.id()
 				<< "] from " << unit.movement_left() << " to "
 				<< unit.movement_left() + temp_movement_subtracted_ << ".\n";
-	unit.set_movement(unit.movement_left() + temp_movement_subtracted_);
+	unit.set_movement(unit.movement_left() + temp_movement_subtracted_, true);
 	temp_movement_subtracted_ = 0;
 	move::remove_temp_modifier(unit_map);
 }

@@ -1069,7 +1069,7 @@ namespace {
 				unit newunit(reanimator, attacker.get_unit().side(),
 					true, unit_race::MALE);
 				newunit.set_attacks(0);
-				newunit.set_movement(0);
+				newunit.set_movement(0, true);
 				// Apply variation
 				if (undead_variation != "null")
 				{
@@ -1105,7 +1105,7 @@ namespace {
 		// no attack weapon => stop here and don't attack
 		if (a_.weapon_ < 0) {
 			a_.get_unit().set_attacks(a_.get_unit().attacks_left()-1);
-			a_.get_unit().set_movement(-1);
+			a_.get_unit().set_movement(-1, true);
 			return;
 		}
 
@@ -1113,7 +1113,7 @@ namespace {
 		VALIDATE(a_.weapon_ < static_cast<int>(a_.get_unit().attacks().size()),
 			_("An invalid attacker weapon got selected."));
 		a_.get_unit().set_movement(a_.get_unit().movement_left() -
-			a_.get_unit().attacks()[a_.weapon_].movement_used());
+			a_.get_unit().attacks()[a_.weapon_].movement_used(), true);
 		a_.get_unit().set_state(unit::STATE_NOT_MOVED,false);
 		a_.get_unit().set_resting(false);
 		d_.get_unit().set_resting(false);

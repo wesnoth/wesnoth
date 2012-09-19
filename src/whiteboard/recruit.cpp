@@ -85,7 +85,7 @@ recruit::recruit(config const& cfg, bool hidden)
 void recruit::init()
 {
 	fake_unit_->set_location(recruit_hex_);
-	fake_unit_->set_movement(0);
+	fake_unit_->set_movement(0, true);
 	fake_unit_->set_attacks(0);
 	fake_unit_->set_ghosted(false);
 	fake_unit_->place_on_game_display(resources::screen);
@@ -173,7 +173,7 @@ std::auto_ptr<unit> recruit::create_corresponding_unit()
 	//real_unit = false needed to avoid generating random traits and causing OOS
 	bool real_unit = false;
 	std::auto_ptr<unit> result(new unit(type, side_num, real_unit));
-	result->set_movement(0);
+	result->set_movement(0, true);
 	result->set_attacks(0);
 	return result; //ownership gets transferred to returned auto_ptr copy
 }

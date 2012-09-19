@@ -734,9 +734,9 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 	bool mutated = false;
 	unit new_unit = u;
 	if (full_movement) {
-		new_unit.set_movement(new_unit.total_movement());
+		new_unit.set_movement(new_unit.total_movement(), true);
 	} else {
-		new_unit.set_movement(0);
+		new_unit.set_movement(0, true);
 		new_unit.set_attacks(0);
 	}
 	new_unit.heal_all();

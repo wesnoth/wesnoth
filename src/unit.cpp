@@ -1088,11 +1088,18 @@ void unit::set_advances_to(const std::vector<std::string>& advances_to)
 
 std::string unit::side_id() const {return teams_manager::get_teams()[side()-1].save_id(); }
 
-void unit::set_movement(int moves)
+/**
+ * Set the unit's remaining movement to @a moves.
+ * If @a unit_action is set to true, then additionally the "end turn" and
+ * "hold position" flags will be cleared (as they should be if a unit acts,
+ * as opposed to the movement being set by the engine for other reasons).
+ */
+void unit::set_movement(int moves, bool unit_action)
 {
-	//FIXME: we shouldn't set those here, other code use this a simple setter.
-	hold_position_ = false;
-	end_turn_ = false;
+	// If this was because the unit acted, clear its "not acting" flags.
+	if ( unit_action )
+		end_turn_ = hold_position_ = false;
+
 	movement_ = std::max<int>(0, moves);
 }
 
@@ -3216,7 +3223,7 @@ void unit::remove_movement_ai()
 	if (movement_left() == total_movement()) {
 		set_state(STATE_NOT_MOVED,true);
 	}
-	set_movement(0);
+	set_movement(0, true);
 }
 
 

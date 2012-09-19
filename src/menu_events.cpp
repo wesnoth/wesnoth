@@ -1193,7 +1193,7 @@ void menu_handler::undo(int side_num)
 
 		u = units_.find(route.back());
 		u->set_goto(map_location());
-		u->set_movement(starting_moves);
+		u->set_movement(starting_moves, true);
 		u->set_standing();
 
 		gui_->invalidate_unit_after_move(route.front(), route.back());
@@ -1328,7 +1328,7 @@ void menu_handler::redo(int side_num)
 
 		unit::clear_status_caches();
 		u->set_goto(action_copy.affected_unit.get_goto());
-		u->set_movement(starting_moves);
+		u->set_movement(starting_moves, true);
 		u->set_standing();
 
 		if(map_.is_village(route.back())) {

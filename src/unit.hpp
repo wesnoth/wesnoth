@@ -176,7 +176,7 @@ public:
 	bool user_end_turn() const { return end_turn_; }
 	int attacks_left() const { return (attacks_left_ == 0 || incapacitated()) ? 0 : attacks_left_; }
 	int max_attacks() const { return max_attacks_; }
-	void set_movement(int moves);
+	void set_movement(int moves, bool unit_action);
 	void set_attacks(int left) { attacks_left_ = std::max<int>(0, left); }
 	void new_turn();
 	void end_turn();
