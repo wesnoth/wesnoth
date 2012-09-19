@@ -314,6 +314,10 @@ void move::apply_temp_modifier(unit_map& unit_map)
 	if (get_source_hex() == get_dest_hex())
 		return; //zero-hex move, used by attack subclass
 
+	// Safety: Make sure the old temporary_unit_mover (if any) is destroyed
+	// before creating a new one.
+	mover_.reset();
+
 	//@todo: deal with multi-turn moves, which may for instance end their first turn
 	// by capturing a village
 
