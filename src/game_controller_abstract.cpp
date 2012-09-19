@@ -102,8 +102,6 @@ bool game_controller_abstract::init_language()
 		SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
 	}
 
-	hotkey::load_descriptions();
-
 	return true;
 }
 

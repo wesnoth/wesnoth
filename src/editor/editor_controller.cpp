@@ -75,19 +75,9 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	init_music(game_config);
 	rng_.reset(new rand_rng::rng());
 	rng_setter_.reset(new rand_rng::set_random_generator(rng_.get()));
-	hotkey::get_hotkey(hotkey::HOTKEY_QUIT_GAME).set_description(_("Quit Editor"));
 	context_manager_->get_map_context().set_starting_position_labels(gui());
 	cursor::set(cursor::NORMAL);
 	image::set_color_adjustment(preferences::editor::tod_r(), preferences::editor::tod_g(), preferences::editor::tod_b());
-//  TODO enable if you can say what the purpose of the code is. I think it is old stuff and deserves to be removed.
-/*	theme& theme = gui().get_theme();
-	const theme::menu* default_tool_menu = NULL;
-	BOOST_FOREACH(const theme::menu& m, theme.menus()) {
-		if (m.get_id() == "draw_button_editor") {
-			default_tool_menu = &m;
-			break;
-		}
-	}*/
 
 	gui().redraw_everything();
     events::raise_draw_event();
@@ -261,9 +251,9 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_QUIT_GAME:
 			return true; //general hotkeys we can always do
 		case HOTKEY_UNDO:
-			return true;
+			return context_manager_->get_map_context().can_undo();
 		case HOTKEY_REDO:
-			return true;
+			return context_manager_->get_map_context().can_redo();
 		case HOTKEY_EDITOR_PARTIAL_UNDO:
 			return true;
 		case TITLE_SCREEN__RELOAD_WML:
@@ -561,26 +551,22 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 	}
 
 	std::vector<std::string> items = items_arg;
-	hotkey::HOTKEY_COMMAND command;
 	std::vector<std::string>::iterator i = items.begin();
 	while(i != items.end()) {
-		command = hotkey::get_hotkey(*i).get_id();
-		if (command == hotkey::HOTKEY_UNDO) {
-			if (context_manager_->get_map_context().can_undo()) {
-				hotkey::get_hotkey(*i).set_description(_("Undo"));
-			} else {
-				hotkey::get_hotkey(*i).set_description(_("Can’t Undo"));
+
+		if ( (*i == "editor-update-transitions-enabled")
+				|| (*i == "editor-update-transitions-partial")
+				|| (*i == "editor-update-transitions-disabled") ) {
+
+			if (!context_manager_->is_active_transitions_hotkey(*i)) {
+				i = items.erase(i);
+				continue;
 			}
-		} else if (command == hotkey::HOTKEY_REDO) {
-			if (context_manager_->get_map_context().can_redo()) {
-				hotkey::get_hotkey(*i).set_description(_("Redo"));
-			} else {
-				hotkey::get_hotkey(*i).set_description(_("Can’t Redo"));
-			}
-		} else if (command == hotkey::HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS) {
-			context_manager_->set_update_transitions_hotkey(command);
-		} else if(!can_execute_command(command)
-		|| (context_menu && !in_context_menu(command))) {
+		}
+
+		hotkey::HOTKEY_COMMAND command = hotkey::get_id(*i);
+		if(!can_execute_command(command)
+				|| (context_menu && !in_context_menu(command))) {
 			i = items.erase(i);
 			continue;
 		}

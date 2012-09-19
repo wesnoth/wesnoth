@@ -69,11 +69,11 @@ void controller_base::handle_event(const SDL_Event& event)
 		break;
 	case SDL_JOYBUTTONDOWN:
 		process_keydown_event(event);
-		hotkey::button_event(get_display(), event.jbutton,this);
+		hotkey::jbutton_event(get_display(), event.jbutton, this);
 		break;
 	case SDL_JOYHATMOTION:
 		process_keydown_event(event);
-		hotkey::hat_event(get_display(), event.jhat, this);
+		hotkey::jhat_event(get_display(), event.jhat, this);
 		break;
 	case SDL_MOUSEMOTION:
 		// Ignore old mouse motion events in the event queue
@@ -88,6 +88,9 @@ void controller_base::handle_event(const SDL_Event& event)
 		}
 		break;
 	case SDL_MOUSEBUTTONDOWN:
+		process_keydown_event(event);
+		hotkey::mbutton_event(get_display(), event.button, this);
+		// intentionally fall-through
 	case SDL_MOUSEBUTTONUP:
 		get_mouse_handler_base().mouse_press(event.button, browse_);
 		post_mouse_press(event);
@@ -276,7 +279,7 @@ void controller_base::show_menu(const std::vector<std::string>& items_arg, int x
 	hotkey::HOTKEY_COMMAND command;
 	std::vector<std::string>::iterator i = items.begin();
 	while(i != items.end()) {
-		command = hotkey::get_hotkey(*i).get_id();
+		command = hotkey::get_id(*i);
 		if(!can_execute_command(command)
 		|| (context_menu && !in_context_menu(command))) {
 			i = items.erase(i);

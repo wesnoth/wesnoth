@@ -35,7 +35,9 @@ enum scope {
 	SCOPE_EDITOR,
 	SCOPE_COUNT
 };
-
+void deactivate_all_scopes();
+void set_scope_active(scope s, bool set = true);
+bool is_scope_active(scope s);
 
 enum HOTKEY_COMMAND {
 	HOTKEY_CYCLE_UNITS,HOTKEY_CYCLE_BACK_UNITS,
@@ -98,8 +100,8 @@ enum HOTKEY_COMMAND {
 	HOTKEY_EDITOR_MAP_RESIZE, HOTKEY_EDITOR_MAP_ROTATE,
 	HOTKEY_EDITOR_MAP_GENERATE, HOTKEY_EDITOR_MAP_APPLY_MASK,
 	HOTKEY_EDITOR_MAP_CREATE_MASK_TO,
-	HOTKEY_EDITOR_REFRESH, HOTKEY_EDITOR_UPDATE_TRANSITIONS,
-	HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS,
+	HOTKEY_EDITOR_REFRESH,
+	HOTKEY_EDITOR_UPDATE_TRANSITIONS, HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS,
 	HOTKEY_EDITOR_REFRESH_IMAGE_CACHE,
 	HOTKEY_EDITOR_DRAW_COORDINATES, HOTKEY_EDITOR_DRAW_TERRAIN_CODES,
 	HOTKEY_EDITOR_SIDE_NEW, HOTKEY_EDITOR_SIDE_SWITCH,
@@ -109,6 +111,7 @@ enum HOTKEY_COMMAND {
 	HOTKEY_CUSTOM_CMD,
 	HOTKEY_AI_FORMULA,
 	HOTKEY_CLEAR_MSG,
+
 	/* Gui2 specific hotkeys. */
 	TITLE_SCREEN__RELOAD_WML,
 	TITLE_SCREEN__NEXT_TIP,
@@ -120,21 +123,40 @@ enum HOTKEY_COMMAND {
 	TITLE_SCREEN__EDITOR,
 	TITLE_SCREEN__CREDITS,
 	GLOBAL__HELPTIP,
+
 	HOTKEY_NULL
 };
 
-void deactivate_all_scopes();
-void set_scope_active(scope s, bool set = true);
-bool is_scope_active(scope s);
+struct hotkey_command {
+	// This binds the command to a function. Does not need to be unique
+	hotkey::HOTKEY_COMMAND id;
+	// The command is unique
+	const char* command;
+	// note: The description is untranslated.
+	const char* description;
+	// don't show the command in the hotkey preferences.
+	bool hidden;
+	// The visibility scope of the command
+	hotkey::scope scope;
+};
+
+const hotkey_command* get_hotkey_commands();
 
 class hotkey_item {
 public:
 
-	hotkey_item() :
-		id_(HOTKEY_NULL),
-		command_(),
-		description_(),
-		scope_(SCOPE_GENERAL),
+	enum type {
+		UNBOUND,
+		BY_KEYCODE,
+		BY_CHARACTER,
+		CLEARED,
+		JBUTTON,
+		JHAT,
+		MBUTTON
+	};
+
+	hotkey_item(const std::string& command) :
+		command_(command),
 		type_(UNBOUND),
 		character_(0),
 		ctrl_(false),
@@ -142,72 +164,66 @@ public:
 		cmd_(false),
 		shift_(false),
 		keycode_(0),
+		device_(0),
 		button_(0),
-		joystick_(0),
-		hat_(0),
-		value_(0),
-		hidden_(false)
+		value_(0)
 		{}
 
-	hotkey_item(HOTKEY_COMMAND id, const std::string& command,
-		const t_string &description, bool hidden = false,
-		scope s=SCOPE_GENERAL);
-
-	HOTKEY_COMMAND get_id() const { return id_; };
-	const std::string& get_command() const { return command_; };
-	const t_string &get_description() const { return description_; };
-
+	hotkey_item(const config& cfg);
 	void load_from_config(const config& cfg);
 
-	void set_description(const t_string &description);
+	HOTKEY_COMMAND get_id() const;
+
+	void set_command(const std::string& command);
+
+	/* get the string name of the HOTKEY_COMMAND */
+	const std::string get_command() const { return command_; };
+	/** The translated description */
+	const std::string get_description() const;
+    /** @ return if the item should appear in the hotkey preferences */
+	bool hidden() const;
+	/** @return the visibility scope of this hotkey */
+	scope get_scope() const;
+
 	void clear_hotkey();
 
-	void set_button(int button, int joystick);
-	void set_hat(int joystick, int hat, int value);
-
+	void set_jbutton(int button, int joystick, bool shift, bool ctrl, bool alt, bool cmd);
+	void set_jhat(int joystick, int hat, int value, bool shift, bool ctrl, bool alt, bool cmd);
 	void set_key(int character, int keycode, bool shift, bool ctrl, bool alt, bool cmd);
+	void set_mbutton(int device, int button, bool shift, bool ctrl, bool alt, bool cmd);
 
-	enum type {
-		UNBOUND,
-		BY_KEYCODE,
-		BY_CHARACTER,
-		CLEARED,
-		BUTTON,
-		HAT
-	};
 
 	enum type get_type() const { return type_; }
 
 
-	/** @return the scope of this hotkey */
-	scope get_scope() const { return scope_; }
-
 	bool is_in_active_scope() const { return is_scope_active(get_scope()); }
-
-	// Returns unicode value of keypress.
-	int get_character() const { return character_; }
-	int get_button() const { return button_; }
-	int get_joystick() const { return joystick_; }
-	int get_hat() const { return hat_; }
-	int get_value() const { return value_; }
-	bool get_alt() const { return alt_; }
-	bool get_cmd() const { return cmd_; }
-	bool get_ctrl() const { return ctrl_; }
 
 	// Return the actual key code.
 	int get_keycode() const { return keycode_; }
+	// Returns unicode value of keypress.
+	int get_character() const { return character_; }
+
+	/* for buttons on devices */
+	int get_button() const { return button_; }
+	int get_device() const { return device_; }
+	int get_value() const { return value_; }
+
+	/* modifiers */
+	bool get_alt() const { return alt_; }
+	bool get_cmd() const { return cmd_; }
+	bool get_ctrl() const { return ctrl_; }
 	bool get_shift() const { return shift_; }
 
 	// Return "name" of hotkey for example :"ctrl+alt+g"
 	std::string get_name() const;
 
-	bool null() const { return id_ == HOTKEY_NULL; };
-	bool hidden() const { return hidden_; };
+	bool null() const { return type_ == UNBOUND; };
+
 private:
-	HOTKEY_COMMAND id_;
+
+	// The unique command associated with this item.
+	// used to bind to a hotkey_command struct
 	std::string command_;
-	t_string description_;
-	scope scope_;
 
 	// UNBOUND means unset, CHARACTER means see character_, KEY means keycode_.
 	// BUTTON means gamepad/joystick button_.
@@ -224,17 +240,12 @@ private:
 	bool shift_;
 	int keycode_;
 
-	// In case type=BUTTON
+	// In case type==*BUTTON or JHAT
+	int device_;
 	int button_;
-	int joystick_;
-	int hat_;
 	int value_;
 
-	bool hidden_;
-
 };
-
-
 
 class manager {
 public:
@@ -246,35 +257,35 @@ public:
 
 class scope_changer {
 public:
-	scope_changer(const config& cfg, const std::string& hotkey_tag);
+	scope_changer(const config& cfg);
 	~scope_changer();
 private:
 	const config& cfg_;
-	std::string prev_tag_name_;
 	std::vector<bool> prev_scope_active_;
 };
 
-void load_descriptions();
-
-void set_hotkey_tag_name(const std::string& name);
 void load_hotkeys(const config& cfg, bool set_as_default = false);
 void reset_default_hotkeys();
 void save_hotkeys(config& cfg);
 
-hotkey_item& get_hotkey(HOTKEY_COMMAND id);
-hotkey_item& get_hotkey(const std::string& command);
+HOTKEY_COMMAND get_id(const std::string& command);
+const std::string get_description(const std::string& command);
 
-hotkey_item& get_hotkey(int joy_num, int button_num);
-hotkey_item& get_hotkey(int joy_num, int hat_num, int hat_value);
-hotkey_item& get_hotkey(int character, int keycode, bool shift,
-		bool ctrl, bool alt, bool cmd);
+std::string get_names(hotkey::HOTKEY_COMMAND id);
+void add_hotkey(const hotkey_item& item);
+void clear_hotkeys(const std::string& command);
+
+hotkey_item& get_hotkey(hotkey_item::type ty,
+		int device, int button, int value,
+		bool shift, bool ctrl, bool alt, bool cmd);
+hotkey_item& get_hotkey(int character, int keycode,
+		bool shift,	bool ctrl, bool alt, bool cmd);
+
 hotkey_item& get_hotkey(const SDL_JoyButtonEvent& event);
 hotkey_item& get_hotkey(const SDL_JoyHatEvent& event);
 hotkey_item& get_hotkey(const SDL_KeyboardEvent& event);
 
 HOTKEY_COMMAND get_hotkey_command(const std::string& command);
-
-hotkey_item& get_visible_hotkey(int index);
 
 std::vector<hotkey_item>& get_hotkeys();
 
@@ -366,13 +377,14 @@ public:
 	virtual bool execute_command(HOTKEY_COMMAND command, int index=-1);
 };
 
-//function to be called every time a key event is intercepted. Will
-//call the relevant function in executor if the keyboard event is
-//not NULL. Also handles some events in the function itself, and so
-//is still meaningful to call with executor=NULL
+//functions to be called every time a event is intercepted.
+//Will call the relevant function in executor if the event is not NULL.
+//Also handles some events in the function itself,
+//and so is still meaningful to call with executor=NULL
+void jbutton_event(display& disp, const SDL_JoyButtonEvent& event, command_executor* executor);
+void jhat_event(display& disp, const SDL_JoyHatEvent& event, command_executor* executor);
 void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* executor);
-void button_event(display& disp, const SDL_JoyButtonEvent& event, command_executor* executor);
-void hat_event(display& disp, const SDL_JoyHatEvent& event, command_executor* executor);
+void mbutton_event(display& disp, const SDL_MouseButtonEvent& event, command_executor* executor);
 
 void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* executor, int index=-1);
 

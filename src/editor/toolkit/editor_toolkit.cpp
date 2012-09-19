@@ -95,7 +95,7 @@ void editor_toolkit::init_mouse_actions(const config& game_config)
 
 	BOOST_FOREACH(const theme::menu& menu, gui_.get_theme().menus()) {
 		if (menu.items().size() == 1) {
-			hotkey::HOTKEY_COMMAND hk = hotkey::get_hotkey(menu.items().front()).get_id();
+			hotkey::HOTKEY_COMMAND hk = hotkey::get_id(menu.items().front());
 			mouse_action_map::iterator i = mouse_actions_.find(hk);
 			if (i != mouse_actions_.end()) {
 				i->second->set_toolbar_button(&menu);
@@ -104,7 +104,7 @@ void editor_toolkit::init_mouse_actions(const config& game_config)
 	}
 	BOOST_FOREACH(const config &c, game_config.child_range("editor_tool_hint")) {
 		mouse_action_map::iterator i =
-			mouse_actions_.find(hotkey::get_hotkey(c["id"]).get_id());
+			mouse_actions_.find(hotkey::get_id(c["id"]));
 		if (i != mouse_actions_.end()) {
 			mouse_action_hints_.insert(std::make_pair(i->first, c["text"]));
 		}

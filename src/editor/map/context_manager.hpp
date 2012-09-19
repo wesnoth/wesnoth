@@ -30,13 +30,11 @@ class context_manager {
 
 public:
 
-	void set_update_transitions_hotkey(hotkey::HOTKEY_COMMAND i);
+	bool is_active_transitions_hotkey(const std::string& item);
 
 	size_t modified_maps(std::string& modified);
 
-	//TODO move implementation
 	bool toggle_update_transitions() {
-		//TODO move to context_manager and make the member privat
 		auto_update_transitions_ = (auto_update_transitions_ + 1)
 				% preferences::editor::TransitionUpdateMode::count;
 		preferences::editor::set_auto_update_transitions(

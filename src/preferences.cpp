@@ -714,7 +714,7 @@ void _set_color_cursors(bool value)
 
 void load_hotkeys()
 {
-	hotkey::load_hotkeys(prefs);
+	hotkey::load_hotkeys(prefs, false);
 }
 
 void save_hotkeys()

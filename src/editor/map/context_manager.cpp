@@ -78,19 +78,17 @@ private:
 	bool refreshed_;
 };
 
-void context_manager::set_update_transitions_hotkey(hotkey::HOTKEY_COMMAND i) {
+bool context_manager::is_active_transitions_hotkey(const std::string& item) {
 	switch (auto_update_transitions_) {
+
 		case preferences::editor::TransitionUpdateMode::on:
-			hotkey::get_hotkey(i).set_description(_("Auto-update Terrain Transitions: Yes"));
-			break;
+			return (item == "editor-update-transitions-enabled");
 		case preferences::editor::TransitionUpdateMode::partial:
-			hotkey::get_hotkey(i).set_description(_("Auto-update Terrain Transitions: Partial"));
-			break;
+			return (item == "editor-update-transitions-partial");
 		case preferences::editor::TransitionUpdateMode::off:
-		default:
-			hotkey::get_hotkey(i).set_description(_("Auto-update Terrain Transitions: No"));
-			break;
+			return (item == "editor-update-transitions-disabled");
 	}
+	return true; //should not be reached
 }
 
 size_t context_manager::modified_maps(std::string& message) {

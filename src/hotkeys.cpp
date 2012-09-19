@@ -32,6 +32,7 @@
 #include "wesconfig.h"
 #include "wml_separators.hpp"
 
+#include <map>
 #include <boost/foreach.hpp>
 
 static lg::log_domain log_config("config");
@@ -42,13 +43,21 @@ static lg::log_domain log_config("config");
 
 namespace {
 
-const struct {
-	hotkey::HOTKEY_COMMAND id;
-	const char* command;
-	const char* description;
-	bool hidden;
-	hotkey::scope scope;
-} hotkey_list_[] = {
+std::vector<hotkey::hotkey_item> hotkeys_;
+std::map<std::string, size_t> command_map_;
+
+hotkey::hotkey_item null_hotkey_("null");
+
+std::vector<bool> scope_active_(hotkey::SCOPE_COUNT, false);
+
+config default_hotkey_cfg_;
+
+}
+
+
+namespace hotkey {
+
+const hotkey_command hotkey_list_[] = {
 
 	{ hotkey::HOTKEY_CANCEL, "cancel", N_("Cancel"), false, hotkey::SCOPE_GENERAL },
 	{ hotkey::HOTKEY_LEFT_MOUSE_CLICK, "leftmouseclick", N_("Left Mouse Click"), false, hotkey::SCOPE_GENERAL },
@@ -93,6 +102,7 @@ const struct {
 	{ hotkey::HOTKEY_STOP_NETWORK, "stopnetwork", N_("Pause Network Game"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_START_NETWORK, "startnetwork", N_("Continue Network Game"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_QUIT_GAME, "quit", N_("Quit Game"), false, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_QUIT_GAME, "quit-editor", N_("Quit Editor"), true, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_LABEL_TEAM_TERRAIN, "labelteamterrain", N_("Set Team Label"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_LABEL_TERRAIN, "labelterrain", N_("Set Label"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_CLEAR_LABELS, "clearlabels", N_("Clear Labels"), false, hotkey::SCOPE_GAME },
@@ -103,12 +113,9 @@ const struct {
 	{ hotkey::HOTKEY_STOP_REPLAY, "stopreplay", N_("Stop Replay"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_REPLAY_NEXT_TURN, "replaynextturn", N_("Next Turn"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_REPLAY_NEXT_SIDE, "replaynextside", N_("Next Side"), false, hotkey::SCOPE_GAME },
-	{ hotkey::HOTKEY_REPLAY_SHOW_EVERYTHING, "replayshoweverything",
-	  N_("Full Map"), false, hotkey::SCOPE_GAME },
-	{ hotkey::HOTKEY_REPLAY_SHOW_EACH, "replayshoweach",
-	  N_("Each Team"), false, hotkey::SCOPE_GAME },
-	{ hotkey::HOTKEY_REPLAY_SHOW_TEAM1, "replayshowteam1",
-	  N_("Team 1"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_REPLAY_SHOW_EVERYTHING, "replayshoweverything", N_("Full Map"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_REPLAY_SHOW_EACH, "replayshoweach", N_("Each Team"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_REPLAY_SHOW_TEAM1, "replayshowteam1", N_("Team 1"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_REPLAY_SKIP_ANIMATION, "replayskipanimation", N_("Skip Animation"), false, hotkey::SCOPE_GAME },
 	// Whiteboard commands
 	// TRANSLATORS: whiteboard menu entry: toggle planning mode
@@ -140,8 +147,7 @@ const struct {
 	{ hotkey::HOTKEY_EDITOR_MAP_INFO, "editor-map-info", N_("Map Information"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_SIDE_NEW, "editor-side-new", N_("Add New Side"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_SIDE_SWITCH, "editor-side-switch", N_("Switch Side"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_PALETTE_ITEM_SWAP, "editor-terrain-palette-swap",
-		N_("Swap Foreground/Background Terrains"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_PALETTE_ITEM_SWAP, "editor-terrain-palette-swap", N_("Swap Foreground/Background Terrains"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_PALETTE_GROUPS, "editor-palette-groups", N_("Change Palette Group"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_PALETTE_UPSCROLL, "editor-palette-upscroll", N_("Scroll Palette Left"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_PALETTE_DOWNSCROLL, "editor-palette-downscroll", N_("Scroll Palette Right"), false, hotkey::SCOPE_EDITOR },
@@ -149,68 +155,45 @@ const struct {
 	{ hotkey::HOTKEY_EDITOR_TOOL_PAINT, "editor-tool-paint", N_("Paint Tool"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_TOOL_FILL, "editor-tool-fill", N_("Fill Tool"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_TOOL_SELECT, "editor-tool-select", N_("Selection Tool"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_TOOL_STARTING_POSITION, "editor-tool-starting-position",
-		N_("Starting Positions Tool"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_TOOL_LABEL, "editor-tool-label",
-		N_("Label Tool"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_TOOL_UNIT, "editor-tool-unit",
-		N_("Unit Tool"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_TOOL_VILLAGE, "editor-tool-village",
-		N_("Village Tool"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_TOOL_STARTING_POSITION, "editor-tool-starting-position", N_("Starting Positions Tool"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_TOOL_LABEL, "editor-tool-label", N_("Label Tool"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_TOOL_UNIT, "editor-tool-unit", N_("Unit Tool"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_TOOL_VILLAGE, "editor-tool-village", N_("Village Tool"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_BRUSH_NEXT, "editor-brush-next", N_("Next Brush"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_BRUSH_DEFAULT, "editor-brush-default", N_("Default Brush"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_CUT, "editor-cut", N_("Cut"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_COPY, "editor-copy", N_("Copy"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_PASTE, "editor-paste", N_("Paste"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_EXPORT_SELECTION_COORDS, "editor-export-selection-coords", N_("Export Selected Coordinates to System Clipboard"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_SELECT_ALL, "editor-select-all",
-		 N_("Select All"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_SELECT_INVERSE, "editor-select-inverse",
-		 N_("Select Inverse"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_SELECT_NONE, "editor-select-none",
-		 N_("Select None"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_CLIPBOARD_ROTATE_CW, "editor-clipboard-rotate-cw",
-		 N_("Rotate Clipboard Clockwise"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_CLIPBOARD_ROTATE_CCW, "editor-clipboard-rotate-ccw",
-		 N_("Rotate Clipboard Counter-Clockwise"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_CLIPBOARD_FLIP_HORIZONTAL, "editor-clipboard-flip-horizontal",
-		N_("Flip Clipboard Horizontally"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_CLIPBOARD_FLIP_VERTICAL, "editor-clipboard-flip-vertical",
-		N_("Flip Clipboard Vertically"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_SELECTION_ROTATE, "editor-selection-rotate",
-		N_("Rotate Selection"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_SELECTION_FLIP, "editor-selection-flip",
-		N_("Flip Selection"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_SELECTION_FILL, "editor-selection-fill",
-		N_("Fill Selection"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_SELECTION_GENERATE, "editor-selection-generate",
-		N_("Generate Tiles In Selection"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_SELECTION_RANDOMIZE, "editor-selection-randomize",
-		N_("Randomize Tiles In Selection"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_MAP_RESIZE, "editor-map-resize",
-		N_("Resize Map"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_MAP_ROTATE, "editor-map-rotate",
-		N_("Rotate Map"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_MAP_GENERATE, "editor-map-generate",
-		 N_("Generate Map"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_MAP_APPLY_MASK, "editor-map-apply-mask",
-		 N_("Apply a Mask"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_MAP_CREATE_MASK_TO, "editor-map-create-mask-to",
-		 N_("Create Mask"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_REFRESH, "editor-refresh",
-		N_("Refresh Display"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_UPDATE_TRANSITIONS, "editor-update-transitions",
-		N_("Update Terrain Transitions"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS, "editor-auto-update-transitions",
-		N_("Auto-update Terrain Transitions"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_REFRESH_IMAGE_CACHE, "editor-refresh-image-cache",
-		N_("Refresh Image Cache"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_DRAW_COORDINATES, "editor-draw-coordinates",
-		N_("Draw Hex Coordinates"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_DRAW_TERRAIN_CODES, "editor-draw-terrain-codes",
-		N_("Draw Terrain Codes"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_SELECT_ALL, "editor-select-all", N_("Select All"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_SELECT_INVERSE, "editor-select-inverse", N_("Select Inverse"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_SELECT_NONE, "editor-select-none", N_("Select None"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_CLIPBOARD_ROTATE_CW, "editor-clipboard-rotate-cw", N_("Rotate Clipboard Clockwise"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_CLIPBOARD_ROTATE_CCW, "editor-clipboard-rotate-ccw", N_("Rotate Clipboard Counter-Clockwise"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_CLIPBOARD_FLIP_HORIZONTAL, "editor-clipboard-flip-horizontal", N_("Flip Clipboard Horizontally"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_CLIPBOARD_FLIP_VERTICAL, "editor-clipboard-flip-vertical", N_("Flip Clipboard Vertically"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_SELECTION_ROTATE, "editor-selection-rotate", N_("Rotate Selection"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_SELECTION_FLIP, "editor-selection-flip", N_("Flip Selection"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_SELECTION_FILL, "editor-selection-fill", N_("Fill Selection"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_SELECTION_GENERATE, "editor-selection-generate", N_("Generate Tiles In Selection"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_SELECTION_RANDOMIZE, "editor-selection-randomize", N_("Randomize Tiles In Selection"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_MAP_RESIZE, "editor-map-resize", N_("Resize Map"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_MAP_ROTATE, "editor-map-rotate", N_("Rotate Map"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_MAP_GENERATE, "editor-map-generate", N_("Generate Map"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_MAP_APPLY_MASK, "editor-map-apply-mask", N_("Apply a Mask"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_MAP_CREATE_MASK_TO, "editor-map-create-mask-to", N_("Create Mask"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_REFRESH, "editor-refresh", N_("Refresh Display"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_UPDATE_TRANSITIONS, "editor-update-transitions", N_("Update Terrain Transitions"), false, hotkey::SCOPE_EDITOR },
+		// This item is for binding in the preferences
+	{ hotkey::HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS, "editor-auto-update-transitions", N_("Auto-update Terrain Transitions"), false, hotkey::SCOPE_EDITOR },
+		// The next three are for displaying the different states in the menu
+	{ hotkey::HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS, "editor-update-transitions-enabled", N_("Auto-update Terrain Transitions: Yes"), true, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS, "editor-update-transitions-disabled", N_("Auto-update Terrain Transitions: No"), true, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS, "editor-update-transitions-partial", N_("Auto-update Terrain Transitions: Partial"), true, hotkey::SCOPE_EDITOR },
 
-
+	{ hotkey::HOTKEY_EDITOR_REFRESH_IMAGE_CACHE, "editor-refresh-image-cache", N_("Refresh Image Cache"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_DRAW_COORDINATES, "editor-draw-coordinates", N_("Draw Hex Coordinates"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_DRAW_TERRAIN_CODES, "editor-draw-terrain-codes", N_("Draw Terrain Codes"), false, hotkey::SCOPE_EDITOR },
 
 	{ hotkey::HOTKEY_DELAY_SHROUD, "delayshroud", N_("Delay Shroud Updates"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_UPDATE_SHROUD, "updateshroud", N_("Update Shroud Now"), false, hotkey::SCOPE_GAME },
@@ -221,98 +204,28 @@ const struct {
 	{ hotkey::HOTKEY_HELP, "help", N_("Help"), false, hotkey::SCOPE_GENERAL },
 	{ hotkey::HOTKEY_CHAT_LOG, "chatlog", N_("View Chat Log"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_LANGUAGE, "changelanguage", N_("Change Language"), false, hotkey::SCOPE_GENERAL },
-
 	{ hotkey::HOTKEY_USER_CMD, "command", N_("Enter User Command"), false, hotkey::SCOPE_GENERAL },
 	{ hotkey::HOTKEY_CUSTOM_CMD, "customcommand", N_("Custom Command"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_AI_FORMULA, "aiformula", N_("Run Formula"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_CLEAR_MSG, "clearmessages", N_("Clear Messages"), false, hotkey::SCOPE_GAME },
-	{
-		  hotkey::TITLE_SCREEN__RELOAD_WML
-		, "title_screen__reload_wml"
-		, N_("Refresh WML")
-		, true
-		, hotkey::SCOPE_GENERAL
-	},
-	{
-		  hotkey::TITLE_SCREEN__NEXT_TIP
-		, "title_screen__next_tip"
-		, N_("Next Tip of the Day")
-		, false
-		, hotkey::SCOPE_GENERAL
-	},
-	{
-		  hotkey::TITLE_SCREEN__PREVIOUS_TIP
-		, "title_screen__previous_tip"
-		, N_("Previous Tip of the Day")
-		, false
-		, hotkey::SCOPE_GENERAL
-	},
-	{
-		  hotkey::TITLE_SCREEN__TUTORIAL
-		, "title_screen__tutorial"
-		, N_("Start Tutorial")
-		, false
-		, hotkey::SCOPE_GENERAL
-	},
-	{
-		  hotkey::TITLE_SCREEN__CAMPAIGN
-		, "title_screen__campaign"
-		, N_("Start Campaign")
-		, false
-		, hotkey::SCOPE_GENERAL
-	},
-	{
-		  hotkey::TITLE_SCREEN__MULTIPLAYER
-		, "title_screen__multiplayer"
-		, N_("Start Multiplayer Game")
-		, false
-		, hotkey::SCOPE_GENERAL
-	},
-	{
-		  hotkey::TITLE_SCREEN__ADDONS
-		, "title_screen__addons"
-		, N_("Manage Add-ons")
-		, false
-		, hotkey::SCOPE_GENERAL
-	},
-	{
-		  hotkey::TITLE_SCREEN__EDITOR
-		, "title_screen__editor"
-		, N_("Start Editor")
-		, false
-		, hotkey::SCOPE_GENERAL
-	},
-	{
-		  hotkey::TITLE_SCREEN__CREDITS
-		, "title_screen__credits"
-		, N_("Show Credits")
-		, false
-		, hotkey::SCOPE_GENERAL
-	},
+	{ hotkey::TITLE_SCREEN__RELOAD_WML, "title_screen__reload_wml", N_("Refresh WML"), true ,hotkey::SCOPE_GENERAL },
+	{ hotkey::TITLE_SCREEN__NEXT_TIP, "title_screen__next_tip", N_("Next Tip of the Day"), false, hotkey::SCOPE_GENERAL },
+	{ hotkey::TITLE_SCREEN__PREVIOUS_TIP, "title_screen__previous_tip", N_("Previous Tip of the Day"), false, hotkey::SCOPE_GENERAL },
+	{ hotkey::TITLE_SCREEN__TUTORIAL, "title_screen__tutorial", N_("Start Tutorial"), false	, hotkey::SCOPE_GENERAL	},
+	{ hotkey::TITLE_SCREEN__CAMPAIGN, "title_screen__campaign", N_("Start Campaign"), false	, hotkey::SCOPE_GENERAL },
+	{ hotkey::TITLE_SCREEN__MULTIPLAYER, "title_screen__multiplayer", N_("Start Multiplayer Game"), false, hotkey::SCOPE_GENERAL },
+	{ hotkey::TITLE_SCREEN__ADDONS, "title_screen__addons", N_("Manage Add-ons"), false	, hotkey::SCOPE_GENERAL	},
+	{ hotkey::TITLE_SCREEN__EDITOR, "title_screen__editor", N_("Start Editor"), false, hotkey::SCOPE_GENERAL },
+	{ hotkey::TITLE_SCREEN__CREDITS, "title_screen__credits", N_("Show Credits"), false	, hotkey::SCOPE_GENERAL },
+	{ hotkey::GLOBAL__HELPTIP, "global__helptip", N_("Show Helptip"), false, hotkey::SCOPE_GENERAL },
 
-	{
-		  hotkey::GLOBAL__HELPTIP
-		, "global__helptip"
-		, N_("Show Helptip")
-		, false
-		, hotkey::SCOPE_GENERAL
-	},
-
-	{ hotkey::HOTKEY_NULL, NULL, NULL, true, hotkey::SCOPE_GENERAL }
+	//This list item must stay at the end since it is used as terminator for iterating.
+	{ hotkey::HOTKEY_NULL, "null", NULL, true, hotkey::SCOPE_GENERAL }
 };
 
-std::vector<hotkey::hotkey_item> hotkeys_;
-hotkey::hotkey_item null_hotkey_;
-
-config default_hotkeys_cfg_;
-
-std::string hotkey_tag_name = "hotkey";
-
-std::vector<bool> scope_active_(hotkey::SCOPE_COUNT, false);
+const hotkey_command* get_hotkey_commands() {
+	return hotkey_list_;
 }
-
-namespace hotkey {
-
 
 void deactivate_all_scopes()
 {
@@ -332,18 +245,14 @@ bool is_scope_active(scope s)
 }
 
 static void key_event_execute(display& disp, const SDL_KeyboardEvent& event, command_executor* executor);
-static void button_event_execute(display& disp, const SDL_JoyButtonEvent& event, command_executor* executor);
-static void hat_event_execute(display& disp, const SDL_JoyHatEvent& event, command_executor* executor);
+static void jbutton_event_execute(display& disp, const SDL_JoyButtonEvent& event, command_executor* executor);
+static void jhat_event_execute(display& disp, const SDL_JoyHatEvent& event, command_executor* executor);
+static void mbutton_event_execute(display& disp, const SDL_MouseButtonEvent& event, command_executor* executor);
 
 const std::string CLEARED_TEXT = "__none__";
 
-hotkey_item::hotkey_item(HOTKEY_COMMAND id,
-		const std::string& command, const t_string &description, bool hidden,
-		scope s) :
-	id_(id),
-	command_(command),
-	description_(description),
-	scope_(s),
+hotkey_item::hotkey_item(const config& cfg) :
+	command_(),
 	type_(UNBOUND),
 	character_(0),
 	ctrl_(false),
@@ -351,12 +260,24 @@ hotkey_item::hotkey_item(HOTKEY_COMMAND id,
 	cmd_(false),
 	shift_(false),
 	keycode_(0),
+	device_(0),
 	button_(0),
-	joystick_(0),
-	hat_(0),
-	value_(0),
-	hidden_(hidden)
+	value_(0)
 {
+	load_from_config(cfg);
+}
+
+scope hotkey_item::get_scope() const {
+	return hotkey_list_[command_map_[get_command()]].scope;
+}
+
+
+HOTKEY_COMMAND hotkey_item::get_id() const {
+	return hotkey_list_[command_map_[get_command()]].id;
+}
+
+const std::string hotkey_item::get_description() const {
+	return hotkey::get_description(get_command());
 }
 
 // There are two kinds of "key" values.  One refers to actual keys, like
@@ -368,27 +289,34 @@ hotkey_item::hotkey_item(HOTKEY_COMMAND id,
 // produces a SPACE character.
 void hotkey_item::load_from_config(const config& cfg)
 {
-	const std::string& button = cfg["button"];
-	if (!button.empty()) {
-		joystick_ = cfg["joystick"].to_int();
+	command_ = cfg["command"].str();
+
+	const std::string& mouse = cfg["mouse"];
+	if (!mouse.empty()) {
+			device_ = cfg["mouse"].to_int();
+			button_ = cfg["button"].to_int();
+			type_ = hotkey_item::MBUTTON;
+	}
+	const std::string& joystick = cfg["joystick"];
+	if (!joystick.empty()) {
+		device_ = cfg["joystick"].to_int();
 		button_ = cfg["button"].to_int();
-		type_ = hotkey_item::BUTTON;
+		type_ = hotkey_item::JBUTTON;
 	}
 	const std::string& hat = cfg["hat"];
 	if (!hat.empty()) {
-		joystick_ = cfg["joystick"].to_int();
-		hat_ = cfg["hat"].to_int();
+		device_ = cfg["joystick"].to_int();
+		button_ = cfg["hat"].to_int();
 		value_ = cfg["value"].to_int();
-		type_ = hotkey_item::HAT;
+		type_ = hotkey_item::JHAT;
 	}
-
-	const std::string& key = cfg["key"];
 
 	alt_ = cfg["alt"].to_bool();
 	cmd_ = cfg["cmd"].to_bool();
 	ctrl_ = cfg["ctrl"].to_bool();
 	shift_ = cfg["shift"].to_bool();
 
+	const std::string& key = cfg["key"];
 	if (key.empty()) return;
 
 	if (key == CLEARED_TEXT)
@@ -432,10 +360,33 @@ void hotkey_item::load_from_config(const config& cfg)
 	}
 }
 
+void hotkey_item::set_command(const std::string& command) {
+	command_ = command;
+}
+
 std::string hotkey_item::get_name() const
 {
 	std::stringstream str;
-	if (type_ == BY_CHARACTER) {
+
+	switch (type_) {
+
+	case UNBOUND:
+	case CLEARED:
+		break;
+
+	case MBUTTON:
+		if (alt_)
+			str << "alt+";
+		if (ctrl_)
+			str << "ctrl+";
+		if (shift_)
+			str << "shift+";
+		if (cmd_)
+			str << "cmd+";
+		str << "Mouse" << device_ << "Btn" << button_;
+		break;
+
+	case BY_CHARACTER:
 		if (alt_)
 			str << "alt+";
 		if (cmd_)
@@ -443,7 +394,9 @@ std::string hotkey_item::get_name() const
 		if (ctrl_)
 			str << "ctrl+";
 		str << static_cast<char>(character_);
-	} else if (type_ == BY_KEYCODE) {
+		break;
+
+	case BY_KEYCODE:
 		if (alt_)
 			str << "alt+";
 		if (ctrl_)
@@ -453,9 +406,29 @@ std::string hotkey_item::get_name() const
 		if (cmd_)
 			str << "cmd+";
 		str << SDL_GetKeyName(SDLKey(keycode_));
-	} else if (type_ == BUTTON) {
-		str << "Joy" << joystick_ << "Btn" << button_;
-	} else if (type_ == HAT) {
+		break;
+
+	case JBUTTON:
+		if (alt_)
+			str << "alt+";
+		if (ctrl_)
+			str << "ctrl+";
+		if (shift_)
+			str << "shift+";
+		if (cmd_)
+			str << "cmd+";
+		str << "Joy" << device_ << "Btn" << button_;
+		break;
+
+	case JHAT:
+		if (alt_)
+			str << "alt+";
+		if (ctrl_)
+			str << "ctrl+";
+		if (shift_)
+			str << "shift+";
+		if (cmd_)
+			str << "cmd+";
 		std::string direction;
 		switch (value_) {
 			case SDL_HAT_CENTERED:
@@ -487,34 +460,51 @@ std::string hotkey_item::get_name() const
 				break;
 			default:
 				direction = "Unknown";
+				break;
 		}
-		str << "Joy" << joystick_ << "Hat" << hat_ << direction;
+		str << "Joy" << device_ << "Hat" << button_ << direction;
+		break;
 	}
 	return str.str();
 }
 
-void hotkey_item::set_description(const t_string &description)
-{
-	description_ = description;
-}
 void hotkey_item::clear_hotkey()
 {
 	type_ = CLEARED;
 }
 
-void hotkey_item::set_button(int button, int joystick)
+void hotkey_item::set_jbutton(int joystick, int button, bool shift, bool ctrl, bool alt, bool cmd)
 {
-	joystick_ = joystick;
+	device_ = joystick;
 	button_ = button;
-	type_ = BUTTON;
+	type_ = JBUTTON;
+	shift_ = shift;
+	ctrl_ = ctrl;
+	alt_ = alt;
+	cmd_ = cmd;
 }
 
-void hotkey_item::set_hat(int joystick, int hat, int value)
+void hotkey_item::set_jhat(int joystick, int hat, int value, bool shift, bool ctrl, bool alt, bool cmd)
 {
-	joystick_ = joystick;
-	hat_ = hat;
+	device_ = joystick;
+	button_ = hat;
 	value_ = value;
-	type_ = HAT;
+	type_ = JHAT;
+	shift_ = shift;
+	ctrl_ = ctrl;
+	alt_ = alt;
+	cmd_ = cmd;
+}
+
+void hotkey_item::set_mbutton(int mouse, int button, bool shift, bool ctrl, bool alt, bool cmd)
+{
+	device_ = mouse;
+	button_ = button;
+	type_ = MBUTTON;
+	shift_ = shift;
+	ctrl_ = ctrl;
+	alt_ = alt;
+	cmd_ = cmd;
 }
 
 void hotkey_item::set_key(int character, int keycode, bool shift, bool ctrl, bool alt, bool cmd)
@@ -566,15 +556,15 @@ manager::manager()
 
 void manager::init()
 {
-	for (int i = 0; hotkey_list_[i].command; ++i) {
-		hotkeys_.push_back(hotkey_item(hotkey_list_[i].id, hotkey_list_[i].command,
-				"", hotkey_list_[i].hidden, hotkey_list_[i].scope));
+	for (size_t i = 0; hotkey_list_[i].id != hotkey::HOTKEY_NULL; ++i) {
+		command_map_[hotkey_list_[i].command] = i;
 	}
 }
 
 void manager::wipe()
 {
 	hotkeys_.clear();
+	command_map_.clear();
 }
 
 manager::~manager()
@@ -582,16 +572,12 @@ manager::~manager()
 	wipe();
 }
 
-scope_changer::scope_changer(const config& cfg, const std::string& hotkey_tag)
+scope_changer::scope_changer(const config& cfg)
 : cfg_(cfg)
-, prev_tag_name_(hotkey_tag_name)
 , prev_scope_active_(scope_active_)
 {
 	manager::wipe();
 	manager::init();
-	hotkey::load_descriptions();
-	load_hotkeys(cfg_);
-	set_hotkey_tag_name(hotkey_tag);
 }
 
 scope_changer::~scope_changer()
@@ -599,49 +585,40 @@ scope_changer::~scope_changer()
 	scope_active_.swap(prev_scope_active_);
 	manager::wipe();
 	manager::init();
-	hotkey::load_descriptions();
-	set_hotkey_tag_name(prev_tag_name_);
-	load_hotkeys(cfg_);
+	load_hotkeys(cfg_, false);
 }
 
-void load_descriptions()
+void clear_hotkeys(const std::string& command)
 {
-	for (size_t i = 0; hotkey_list_[i].command; ++i) {
-		if (i >= hotkeys_.size()) {
-			ERR_G << "Hotkey list too short: " << hotkeys_.size() << "\n";
-		}
-		hotkeys_[i].set_description(t_string(hotkey_list_[i].description, PACKAGE "-lib"));
+	BOOST_FOREACH(hotkey::hotkey_item& item, hotkeys_) {
+
+		if (item.get_command() == command)
+			item.clear_hotkey();
 	}
-}
-
-void set_hotkey_tag_name(const std::string& name)
-{
-	hotkey_tag_name = name;
 }
 
 void load_hotkeys(const config& cfg, bool set_as_default)
 {
-	BOOST_FOREACH(const config &hk, cfg.child_range(hotkey_tag_name))
+	hotkeys_.clear();
+	BOOST_FOREACH(const config &hk, cfg.child_range("hotkey"))
 	{
-		hotkey_item& h = get_hotkey(hk["command"]);
-		if(h.get_id() != HOTKEY_NULL) {
-			h.load_from_config(hk);
-		}
+		hotkey_item h(hk);
+		hotkeys_.push_back(h);
 	}
 
-	if(set_as_default) {
-		default_hotkeys_cfg_ = cfg;
+	if (hotkeys_.empty())
+		reset_default_hotkeys();
+	else if (set_as_default) {
+		default_hotkey_cfg_ = cfg;
 	}
 }
 
 void reset_default_hotkeys()
 {
-	BOOST_FOREACH(hotkey_item& hi, hotkeys_) {
-		hi.clear_hotkey();
-	}
+	hotkeys_.clear();
 
-	if(!default_hotkeys_cfg_.empty()) {
-		load_hotkeys(default_hotkeys_cfg_);
+	if(!default_hotkey_cfg_.empty()) {
+		load_hotkeys(default_hotkey_cfg_, false);
 	} else {
 		ERR_G << "no default hotkeys set yet; all hotkeys are now unassigned!\n";
 	}
@@ -649,116 +626,134 @@ void reset_default_hotkeys()
 
 void save_hotkeys(config& cfg)
 {
-	cfg.clear_children(hotkey_tag_name);
+	cfg.clear_children("hotkey");
 
 	for(std::vector<hotkey_item>::iterator i = hotkeys_.begin(); i != hotkeys_.end(); ++i) {
-		if (i->hidden() || i->get_type() == hotkey_item::UNBOUND || !i->is_in_active_scope())
+
+		if (i->get_type() == hotkey_item::UNBOUND)
 			continue;
 
-		config& item = cfg.add_child(hotkey_tag_name);
+		config& item = cfg.add_child("hotkey");
 		item["command"] = i->get_command();
-		if (i->get_type() == hotkey_item::CLEARED)
-		{
+
+		switch (i->get_type()) {
+
+		case hotkey_item::CLEARED:
 			item["key"] = CLEARED_TEXT;
 			continue;
-		}
-
-		if (i->get_type() == hotkey_item::BUTTON)
-		{
-			item["joystick"] = i->get_joystick();
+		case hotkey_item::JBUTTON:
+			item["joystick"] = i->get_device();
 			item["button"] = i->get_button();
-		}
-
-		if (i->get_type() == hotkey_item::HAT)
-		{
-			item["joystick"] = i->get_joystick();
-			item["hat"] = i->get_hat();
+			item["shift"] = i->get_shift();
+			break;
+		case hotkey_item::JHAT:
+			item["joystick"] = i->get_device();
+			item["hat"] = i->get_button();
 			item["value"] = i->get_value();
-		}
-
-		if (i->get_type() == hotkey_item::BY_KEYCODE) {
+			break;
+		case hotkey_item::BY_KEYCODE:
 			item["key"] = SDL_GetKeyName(SDLKey(i->get_keycode()));
 			item["shift"] = i->get_shift();
-		} else if (i->get_type() == hotkey_item::BY_CHARACTER) {
+			break;
+		case hotkey_item::BY_CHARACTER:
 			item["key"] = utils::wchar_to_string(i->get_character());
+			break;
+		case hotkey_item::MBUTTON:
+			item["mouse"] = i->get_device();
+			item["button"] = i->get_button();
+			break;
+		case hotkey_item::UNBOUND:
+			break;
 		}
+
 		item["alt"] = i->get_alt();
 		item["ctrl"] = i->get_ctrl();
 		item["cmd"] = i->get_cmd();
 	}
 }
 
-hotkey_item& get_hotkey(HOTKEY_COMMAND id)
-{
-	std::vector<hotkey_item>::iterator itor;
-
-	for (itor = hotkeys_.begin(); itor != hotkeys_.end(); ++itor) {
-		if (itor->get_id() == id)
-			break;
-	}
-
-	if (itor == hotkeys_.end())
-		return null_hotkey_;
-
-	return *itor;
+const std::string get_description(const std::string& command) {
+	return t_string(hotkey_list_[command_map_[command]].description, PACKAGE "-lib");
 }
 
-hotkey_item& get_hotkey(const std::string& command)
-{
-	std::vector<hotkey_item>::iterator itor;
+HOTKEY_COMMAND get_id(const std::string& command) {
+	if (command_map_.find(command) == command_map_.end())
+		return HOTKEY_NULL;
+	return hotkey_list_[command_map_[command]].id;
+}
 
-	for (itor = hotkeys_.begin(); itor != hotkeys_.end(); ++itor) {
-		if (itor->get_command() == command)
-			break;
+std::string get_names(HOTKEY_COMMAND id) {
+
+	std::map<hotkey::HOTKEY_COMMAND, std::vector<hotkey::hotkey_item> > hotkey_map;
+	BOOST_FOREACH(const hotkey::hotkey_item& item, hotkeys_) {
+		hotkey_map[item.get_id()].push_back(item);
 	}
 
-	if (itor == hotkeys_.end())
-		return null_hotkey_;
-
-	return *itor;
+	std::stringstream names;
+	BOOST_FOREACH(const hotkey::hotkey_item& item, hotkey_map[id]) {
+		names << item.get_name() << ", ";
+	}
+	std::string name_str = names.str();
+	std::string::iterator it = name_str.end() -2;
+	if (it >= name_str.begin())
+		name_str.erase(it);
+	return name_str;
 }
 
 HOTKEY_COMMAND get_hotkey_command(const std::string& command)
 {
-	for (size_t i = 0; hotkey_list_[i].command; ++i) {
-		if (hotkey_list_[i].command == command)
-			return hotkey_list_[i].id;
-	}
+	if (command_map_.find(command) != command_map_.end())
+		return HOTKEY_NULL;
 
-	return HOTKEY_NULL;
+	return hotkey_list_[command_map_[command]].id;
 }
 
-hotkey_item& get_hotkey(int joy_num, int button_num)
+hotkey_item& get_hotkey(hotkey_item::type ty, int device, int button, int value,
+		bool shift, bool ctrl, bool alt, bool cmd)
 {
 	std::vector<hotkey_item>::iterator itor;
-
+	bool found = false;
 	for (itor = hotkeys_.begin(); itor != hotkeys_.end(); ++itor) {
-		if (joy_num == itor->get_joystick() &&  button_num == itor->get_button() && (itor->get_type() == hotkey_item::BUTTON) )
+
+		if (!(itor->is_in_active_scope()))
+			continue;
+
+		if ( itor->get_shift() != shift || itor->get_ctrl() != ctrl
+				|| itor->get_alt() != alt || itor->get_cmd() != cmd )
+			continue;
+
+		if ( itor->get_device() != device || itor->get_button() != button)
+			continue;
+
+		switch (ty) {
+
+		case hotkey_item::JBUTTON:
+			if (itor->get_type() == hotkey_item::JBUTTON)
+				found = true;
 			break;
+		case hotkey_item::JHAT:
+			if ( (itor->get_type() == hotkey_item::JHAT)
+					&& value == itor->get_value() )
+				found = true;
+			break;
+		case hotkey_item::MBUTTON:
+			if (itor->get_type() == hotkey_item::MBUTTON)
+				found = true;
+			break;
+		default:
+			break;
+		}
+
+		if (found) break;
 	}
-	if (itor == hotkeys_.end())
+	if (!found)
 		return null_hotkey_;
 
 	return *itor;
 }
 
-hotkey_item& get_hotkey(int joy_num, int hat_num, int hat_value)
-{
-	std::vector<hotkey_item>::iterator itor;
-
-	for (itor = hotkeys_.begin(); itor != hotkeys_.end(); ++itor) {
-		if (joy_num == itor->get_joystick() &&  hat_num == itor->get_hat()
-				&& hat_value == itor->get_value() && (itor->get_type() == hotkey_item::HAT) )
-			break;
-	}
-	if (itor == hotkeys_.end())
-		return null_hotkey_;
-
-	return *itor;
-}
-
-hotkey_item& get_hotkey(int character, int keycode, bool shift, bool ctrl,
-	bool alt, bool cmd)
+hotkey_item& get_hotkey(int character, int keycode,
+		bool shift, bool ctrl,	bool alt, bool cmd)
 {
 	std::vector<hotkey_item>::iterator itor;
 
@@ -783,6 +778,8 @@ hotkey_item& get_hotkey(int character, int keycode, bool shift, bool ctrl,
 	if (cmd && character > 96 && character < 123 && shift)
 		character -= 32;
 
+	bool found = false;
+
 	for (itor = hotkeys_.begin(); itor != hotkeys_.end(); ++itor) {
 		if (itor->get_type() == hotkey_item::BY_CHARACTER) {
 			if (character == itor->get_character()) {
@@ -791,6 +788,7 @@ hotkey_item& get_hotkey(int character, int keycode, bool shift, bool ctrl,
 						&& cmd == itor->get_cmd()) {
 					if (itor->is_in_active_scope()) {
 						DBG_G << "Could match by character..." << "yes\n";
+						found = true;
 						break;
 					} else {
 						DBG_G << "Could match by character..." << "yes, but scope is inactive\n";
@@ -806,6 +804,7 @@ hotkey_item& get_hotkey(int character, int keycode, bool shift, bool ctrl,
 						&& cmd == itor->get_cmd()) {
 					if (itor->is_in_active_scope()) {
 						DBG_G << "Could match by keycode..." << "yes\n";
+						found = true;
 						break;
 					} else {
 						DBG_G << "Could match by keycode..." << "yes, but scope is inactive\n";
@@ -814,22 +813,50 @@ hotkey_item& get_hotkey(int character, int keycode, bool shift, bool ctrl,
 				DBG_G << "Could match by keycode..." << "but modifiers different\n";
 			}
 		}
+		if (found) break;
 	}
 
-	if (itor == hotkeys_.end())
+	if (!found)
 		return null_hotkey_;
 
 	return *itor;
 }
 
+void add_hotkey(const hotkey_item& item) {
+	hotkeys_.push_back(item);
+}
+
 hotkey_item& get_hotkey(const SDL_JoyButtonEvent& event)
 {
-	return get_hotkey(event.which, event.button);
+	Uint8 *keystate = SDL_GetKeyState(NULL);
+	bool alt   = keystate[SDLK_RALT]   || keystate[SDLK_LALT];
+	bool ctrl  = keystate[SDLK_RCTRL]  || keystate[SDLK_LCTRL];
+	bool shift = keystate[SDLK_RSHIFT] || keystate[SDLK_RSHIFT];
+	bool cmd   = keystate[SDLK_RMETA] || keystate[SDLK_RMETA];
+
+	return get_hotkey(hotkey_item::JBUTTON, event.which, event.button, 0, shift, ctrl, alt, cmd);
 }
 
 hotkey_item& get_hotkey(const SDL_JoyHatEvent& event)
 {
-	return get_hotkey(event.which, event.hat, event.value);
+	Uint8 *keystate = SDL_GetKeyState(NULL);
+	bool alt   = keystate[SDLK_RALT]   || keystate[SDLK_LALT];
+	bool ctrl  = keystate[SDLK_RCTRL]  || keystate[SDLK_LCTRL];
+	bool shift = keystate[SDLK_RSHIFT] || keystate[SDLK_RSHIFT];
+	bool cmd   = keystate[SDLK_RMETA] || keystate[SDLK_RMETA];
+
+	return get_hotkey(hotkey_item::JHAT, event.which, event.hat, event.value, shift, ctrl, alt, cmd);
+}
+
+hotkey_item& get_hotkey(const SDL_MouseButtonEvent& event)
+{
+	Uint8 *keystate = SDL_GetKeyState(NULL);
+	bool alt   = keystate[SDLK_RALT]   || keystate[SDLK_LALT];
+	bool ctrl  = keystate[SDLK_RCTRL]  || keystate[SDLK_LCTRL];
+	bool shift = keystate[SDLK_RSHIFT] || keystate[SDLK_RSHIFT];
+	bool cmd   = keystate[SDLK_RMETA] || keystate[SDLK_RMETA];
+
+	return get_hotkey(hotkey_item::MBUTTON, event.which, event.button, 0, shift, ctrl, alt, cmd);
 }
 
 hotkey_item& get_hotkey(const SDL_KeyboardEvent& event)
@@ -845,31 +872,6 @@ hotkey_item& get_hotkey(const SDL_KeyboardEvent& event)
 			);
 }
 
-static void _get_visible_hotkey_itor(int index, std::vector<hotkey_item>::iterator& itor)
-{
-	int counter = 0;
-	for (itor = hotkeys_.begin(); itor != hotkeys_.end(); ++itor) {
-		if (itor->hidden() || !itor->is_in_active_scope())
-			continue;
-
-		if (index == counter)
-			break;
-
-		counter++;
-	}
-}
-
-hotkey_item& get_visible_hotkey(int index)
-{
-
-	std::vector<hotkey_item>::iterator itor;
-	_get_visible_hotkey_itor(index, itor);
-	if (itor == hotkeys_.end())
-		return null_hotkey_;
-
-	return *itor;
-}
-
 std::vector<hotkey_item>& get_hotkeys()
 {
 	return hotkeys_;
@@ -879,8 +881,11 @@ basic_handler::basic_handler(display* disp, command_executor* exec) : disp_(disp
 
 void basic_handler::handle_event(const SDL_Event& event)
 {
-	if(event.type == SDL_KEYDOWN && disp_ != NULL) {
+	if (disp_ == NULL) return;
 
+	switch (event.type) {
+
+	case SDL_KEYDOWN:
 		//if we're in a dialog we only want to handle things that are explicitly handled
 		//by the executor. If we're not in a dialog we can call the regular key event handler
 		if(!gui::in_dialog()) {
@@ -888,20 +893,38 @@ void basic_handler::handle_event(const SDL_Event& event)
 		} else if(exec_ != NULL) {
 			key_event_execute(*disp_,event.key,exec_);
 		}
-	}
-	if(event.type == SDL_JOYBUTTONDOWN && disp_ != NULL) {
-		button_event_execute(*disp_, event.jbutton, exec_);
+		break;
+	case SDL_JOYBUTTONDOWN:
+		if(!gui::in_dialog()) {
+			jbutton_event(*disp_,event.jbutton,exec_);
+		} else if(exec_ != NULL) {
+			jbutton_event_execute(*disp_,event.jbutton,exec_);
+		}
+		break;
+	case SDL_MOUSEBUTTONDOWN:
+		if(!gui::in_dialog()) {
+			mbutton_event(*disp_,event.button,exec_);
+		} else if(exec_ != NULL) {
+			mbutton_event_execute(*disp_,event.button,exec_);
+		}
+		break;
 	}
 }
 
-void button_event(display& disp, const SDL_JoyButtonEvent& event, command_executor* executor)
+void mbutton_event(display& disp, const SDL_MouseButtonEvent& event, command_executor* executor)
 {
-	button_event_execute(disp,event,executor);
+	mbutton_event_execute(disp,event,executor);
 }
 
-void hat_event(display& disp, const SDL_JoyHatEvent& event, command_executor* executor)
+
+void jbutton_event(display& disp, const SDL_JoyButtonEvent& event, command_executor* executor)
 {
-	hat_event_execute(disp,event,executor);
+	jbutton_event_execute(disp,event,executor);
+}
+
+void jhat_event(display& disp, const SDL_JoyHatEvent& event, command_executor* executor)
+{
+	jhat_event_execute(disp,event,executor);
 }
 
 void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* executor)
@@ -919,17 +942,9 @@ void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* 
 	key_event_execute(disp,event,executor);
 }
 
-void button_event_execute(display& disp, const SDL_JoyButtonEvent& event, command_executor* executor)
+void mbutton_event_execute(display& disp, const SDL_MouseButtonEvent& event, command_executor* executor)
 {
 	const hotkey_item* hk = &get_hotkey(event);
-
-#if 0
-	// This is not generally possible without knowing keyboard layout.
-	if(hk->null()) {
-		//no matching hotkey was found, but try an in-exact match.
-		hk = &get_hotkey(event, true);
-	}
-#endif
 
 	if(hk->null())
 		return;
@@ -937,17 +952,19 @@ void button_event_execute(display& disp, const SDL_JoyButtonEvent& event, comman
 	execute_command(disp,hk->get_id(),executor);
 }
 
-void hat_event_execute(display& disp, const SDL_JoyHatEvent& event, command_executor* executor)
+void jbutton_event_execute(display& disp, const SDL_JoyButtonEvent& event, command_executor* executor)
 {
 	const hotkey_item* hk = &get_hotkey(event);
 
-#if 0
-	// This is not generally possible without knowing keyboard layout.
-	if(hk->null()) {
-		//no matching hotkey was found, but try an in-exact match.
-		hk = &get_hotkey(event, true);
-	}
-#endif
+	if(hk->null())
+		return;
+
+	execute_command(disp,hk->get_id(),executor);
+}
+
+void jhat_event_execute(display& disp, const SDL_JoyHatEvent& event, command_executor* executor)
+{
+	const hotkey_item* hk = &get_hotkey(event);
 
 	if(hk->null())
 		return;
@@ -1115,65 +1132,65 @@ bool command_executor::execute_command(HOTKEY_COMMAND command, int /*index*/)
 		case HOTKEY_CLEAR_MSG:
 			clear_messages();
 			break;
-		 case HOTKEY_LANGUAGE:
+		case HOTKEY_LANGUAGE:
 			change_language();
 			break;
-		 case HOTKEY_PLAY_REPLAY:
+		case HOTKEY_PLAY_REPLAY:
 			play_replay();
-			 break;
-		 case HOTKEY_RESET_REPLAY:
+			break;
+		case HOTKEY_RESET_REPLAY:
 			reset_replay();
-			 break;
-		 case HOTKEY_STOP_REPLAY:
-			 stop_replay();
-			 break;
-		 case HOTKEY_REPLAY_NEXT_TURN:
+			break;
+		case HOTKEY_STOP_REPLAY:
+			stop_replay();
+			break;
+		case HOTKEY_REPLAY_NEXT_TURN:
 			replay_next_turn();
-			 break;
-		 case HOTKEY_REPLAY_NEXT_SIDE:
+			break;
+		case HOTKEY_REPLAY_NEXT_SIDE:
 			replay_next_side();
-			 break;
-		 case HOTKEY_REPLAY_SHOW_EVERYTHING:
+			break;
+		case HOTKEY_REPLAY_SHOW_EVERYTHING:
 			replay_show_everything();
-			 break;
-		 case HOTKEY_REPLAY_SHOW_EACH:
+			break;
+		case HOTKEY_REPLAY_SHOW_EACH:
 			replay_show_each();
-			 break;
-		 case HOTKEY_REPLAY_SHOW_TEAM1:
+			break;
+		case HOTKEY_REPLAY_SHOW_TEAM1:
 			replay_show_team1();
-			 break;
-		 case HOTKEY_REPLAY_SKIP_ANIMATION:
+			break;
+		case HOTKEY_REPLAY_SKIP_ANIMATION:
 			replay_skip_animation();
-			 break;
-		 case HOTKEY_WB_TOGGLE:
-			 whiteboard_toggle();
-			 break;
-		 case HOTKEY_WB_EXECUTE_ACTION:
-			 whiteboard_execute_action();
-			 break;
-		 case HOTKEY_WB_EXECUTE_ALL_ACTIONS:
-			 whiteboard_execute_all_actions();
-			 break;
-		 case HOTKEY_WB_DELETE_ACTION:
-			 whiteboard_delete_action();
-			 break;
-		 case HOTKEY_WB_BUMP_UP_ACTION:
-			 whiteboard_bump_up_action();
-			 break;
-		 case HOTKEY_WB_BUMP_DOWN_ACTION:
-			 whiteboard_bump_down_action();
-			 break;
-		 case HOTKEY_WB_SUPPOSE_DEAD:
-			 whiteboard_suppose_dead();
-			 break;
-		 case HOTKEY_LEFT_MOUSE_CLICK:
-			 left_mouse_click();
-			 break;
-		 case HOTKEY_RIGHT_MOUSE_CLICK:
-			 right_mouse_click();
-			 break;
-		 default:
-			 return false;
+			break;
+		case HOTKEY_WB_TOGGLE:
+			whiteboard_toggle();
+			break;
+		case HOTKEY_WB_EXECUTE_ACTION:
+			whiteboard_execute_action();
+			break;
+		case HOTKEY_WB_EXECUTE_ALL_ACTIONS:
+			whiteboard_execute_all_actions();
+			break;
+		case HOTKEY_WB_DELETE_ACTION:
+			whiteboard_delete_action();
+			break;
+		case HOTKEY_WB_BUMP_UP_ACTION:
+			whiteboard_bump_up_action();
+			break;
+		case HOTKEY_WB_BUMP_DOWN_ACTION:
+			whiteboard_bump_down_action();
+			break;
+		case HOTKEY_WB_SUPPOSE_DEAD:
+			whiteboard_suppose_dead();
+			break;
+		case HOTKEY_LEFT_MOUSE_CLICK:
+			left_mouse_click();
+			break;
+		case HOTKEY_RIGHT_MOUSE_CLICK:
+			right_mouse_click();
+			break;
+		default:
+			return false;
 	}
 	return true;
 }
@@ -1272,10 +1289,10 @@ void command_executor::show_menu(const std::vector<std::string>& items_arg, int 
 	std::vector<std::string> items = items_arg;
 	if (items.empty())
 		return;
-	if (can_execute_command(hotkey::get_hotkey(items.front()).get_id(), 0)){
+	if (can_execute_command(hotkey::get_id(items.front()), 0)){
 		//if just one item is passed in, that means we should execute that item
 		if(!context_menu && items.size() == 1 && items_arg.size() == 1) {
-			hotkey::execute_command(gui,hotkey::get_hotkey(items.front()).get_id(),this);
+			hotkey::execute_command(gui,hotkey::get_id(items.front()), this);
 			return;
 		}
 
@@ -1291,7 +1308,7 @@ void command_executor::show_menu(const std::vector<std::string>& items_arg, int 
 		if (res < 0 || size_t(res) >= items.size())
 			return;
 
-		const hotkey::HOTKEY_COMMAND cmd = hotkey::get_hotkey(items[res]).get_id();
+		const hotkey::HOTKEY_COMMAND cmd = hotkey::get_id(items[res]);
 		hotkey::execute_command(gui,cmd,this,res);
 	}
 }
@@ -1304,33 +1321,33 @@ std::string command_executor::get_menu_image(hotkey::HOTKEY_COMMAND command, int
 	}
 }
 
-std::vector<std::string> command_executor::get_menu_images(display &disp, const std::vector<std::string>& items){
+std::vector<std::string> command_executor::get_menu_images(display& disp, const std::vector<std::string>& items){
 	std::vector<std::string> result;
 	bool has_image = false;
 
 	for(size_t i = 0; i < items.size(); ++i) {
 		std::string const& item = items[i];
-		const hotkey::hotkey_item hk = hotkey::get_hotkey(item);
+		const hotkey::HOTKEY_COMMAND hk = hotkey::get_id(item);
 
 		std::stringstream str;
 		//see if this menu item has an associated image
-		std::string img(get_menu_image(hk.get_id(), i));
+		std::string img(get_menu_image(hk, i));
 		if(img.empty() == false) {
 			has_image = true;
 			str << IMAGE_PREFIX << img << COLUMN_SEPARATOR;
 		}
 
-		if (hk.get_id() == hotkey::HOTKEY_NULL) {
+		if (hk == hotkey::HOTKEY_NULL) {
 			str << item.substr(0, item.find_last_not_of(' ') + 1) << COLUMN_SEPARATOR;
 		} else {
-			std::string desc = hk.get_description();
-			if (hk.get_id() == HOTKEY_ENDTURN) {
+			std::string desc = hotkey::get_description(item);
+			if (hk == HOTKEY_ENDTURN) {
 				const theme::menu *b = disp.get_theme().get_menu_item("button-endturn");
 				if(b) {
 					desc = b->title();
 				}
 			}
-			str << desc << COLUMN_SEPARATOR << hk.get_name();
+			str << desc << COLUMN_SEPARATOR << hotkey::get_names(hk);
 		}
 
 		result.push_back(str.str());

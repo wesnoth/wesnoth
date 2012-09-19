@@ -36,6 +36,7 @@
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "wml_separators.hpp"
+#include "formula_string_utils.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -255,19 +256,26 @@ private:
 	bool escape_pressed_;
 };
 
-void repopulate_hotkeys_menu(std::vector<std::string>& menu_items)
+void repopulate_hotkeys_menu(std::vector<std::string>& menu_items,
+		std::vector<std::string>& item_commands)
 {
-	menu_items.clear();;
+	menu_items.clear();
+	item_commands.clear();
 
-	std::vector<hotkey::hotkey_item>& hotkeys = hotkey::get_hotkeys();
+	const hotkey::hotkey_command* list = hotkey::get_hotkey_commands();
 
-	BOOST_FOREACH(const hotkey::hotkey_item& hi, hotkeys) {
-		if(hi.hidden() || !hi.is_in_active_scope())
-			continue;
+	for (size_t i = 0; list[i].id != hotkey::HOTKEY_NULL; ++i) {
 
-		menu_items.push_back((formatter() << hi.get_description() << COLUMN_SEPARATOR << font::NULL_MARKUP << hi.get_name()).str());
+		const hotkey::scope& scope = list[i].scope;
+		if (list[i].hidden || !(hotkey::is_scope_active(scope)) )
+				continue;
+
+		const std::string& description = hotkey::get_description(list[i].command);
+		const std::string& name = hotkey::get_names(list[i].id);
+
+		menu_items.push_back((formatter() << description << COLUMN_SEPARATOR << font::NULL_MARKUP << name).str());
+		item_commands.push_back(list[i].command);
 	}
-
 	menu_items.push_back((formatter() << HEADING_PREFIX << _("Action") << COLUMN_SEPARATOR << _("Binding")).str());
 }
 
@@ -285,7 +293,7 @@ void show_hotkeys_dialog(display & disp)
 
 	const int centerx = disp.w()/2;
 	const int centery = disp.h()/2;
-	const int width  = 700;
+	const int width  = 750;
 	const int height = disp.video().gety() < 600 ? 380 : 500;
 	const int xpos = centerx  - width/2;
 	const int ypos = centery  - height/2;
@@ -307,15 +315,16 @@ void show_hotkeys_dialog(display & disp)
 	sorter.set_alpha_sort(0).set_alpha_sort(1);
 
 	std::vector<std::string> menu_items;
-	repopulate_hotkeys_menu(menu_items);
+	std::vector<std::string> item_commands;
+	repopulate_hotkeys_menu(menu_items, item_commands);
 
 	gui::menu menu_(disp.video(), menu_items, false, height - font::relative_size(10), -1, &sorter, &gui::menu::bluebg_style);
 	menu_.sort_by(0);
 	menu_.reset_selection();
-	menu_.set_width(font::relative_size(500));
+	menu_.set_width(font::relative_size(550));
 	menu_.set_location(xpos + font::relative_size(10), ypos + font::relative_size(10));
 
-	gui::button change_button(disp.video(), _("Change Hotkey"));
+	gui::button change_button(disp.video(), _("Add Hotkey"));
 	change_button.set_location(xpos + width - change_button.width () - font::relative_size(30), ypos + font::relative_size(30));
 
 	gui::button clear_button(disp.video(), _("Clear Hotkey"));
@@ -334,6 +343,9 @@ void show_hotkeys_dialog(display & disp)
 			break;
 		}
 
+		bool repopulate = false;
+		const int selected = menu_.selection();
+		const std::string id = item_commands[selected];
 		if (change_button.pressed () || menu_.double_clicked()) {
 			// Lets change this hotkey......
 			SDL_Rect dlgr = create_rect(centerx - text_size.w / 2 - 30
@@ -356,104 +368,136 @@ void show_hotkeys_dialog(display & disp)
 			SDL_Event event;
 			event.type = 0;
 			int character = 0, keycode = 0, mod = 0; // Just to avoid warning
-			int joystick = 0, button = 0, hat = 0, value = 0;
+			int device = 0, button = 0, hat = 0, value = 0;
 			const int any_mod = KMOD_CTRL | KMOD_ALT | KMOD_LMETA;
 
-			while (event.type!=SDL_KEYDOWN && event.type!=SDL_JOYBUTTONDOWN && event.type!= SDL_JOYHATMOTION) SDL_PollEvent(&event);
+			while (event.type!=SDL_KEYDOWN
+					&& event.type!=SDL_JOYBUTTONDOWN && event.type!= SDL_JOYHATMOTION
+					&& (event.type!=SDL_MOUSEBUTTONDOWN || event.button.button < 8) )
+				SDL_PollEvent(&event);
+
 			do {
-				if (event.type==SDL_KEYDOWN)
-				{
-					keycode=event.key.keysym.sym;
-					character=event.key.keysym.unicode;
-					mod=event.key.keysym.mod;
-				};
-				if (event.type==SDL_JOYBUTTONDOWN) {
-					joystick = event.jbutton.which;
-					button = event.jbutton.button;
+				switch (event.type) {
+
+					case SDL_KEYDOWN:
+						keycode=event.key.keysym.sym;
+						character=event.key.keysym.unicode;
+						mod=event.key.keysym.mod;
+						break;
+					case SDL_JOYBUTTONDOWN:
+						device = event.jbutton.which;
+						button = event.jbutton.button;
+						break;
+					case SDL_JOYHATMOTION:
+						device = event.jhat.which;
+						hat = event.jhat.hat;
+						value = event.jhat.value;
+						break;
+					case SDL_MOUSEBUTTONDOWN:
+						device = event.button.which;
+						button = event.button.button;
+						break;
 				}
-				if (event.type==SDL_JOYHATMOTION) {
-					joystick = event.jhat.which;
-					hat = event.jhat.hat;
-					value = event.jhat.value;
-				}
+
 				SDL_PollEvent(&event);
 				disp.flip();
 				disp.delay(10);
-			} while (event.type!=SDL_KEYUP && event.type!=SDL_JOYBUTTONUP && event.type!=SDL_JOYHATMOTION);
+			} while (event.type!=SDL_KEYUP
+					&& event.type!=SDL_JOYBUTTONUP && event.type!=SDL_JOYHATMOTION
+					&& event.type!=SDL_MOUSEBUTTONUP);
+
 			restorer.restore();
 			disp.update_display();
-			if (keycode == SDLK_ESCAPE && (mod & any_mod) == 0) {
-				//cancel -- no action
-			} else {
-				const hotkey::hotkey_item& oldhk = hotkey::get_hotkey(character, keycode, (mod & KMOD_SHIFT) != 0,
-						(mod & KMOD_CTRL) != 0, (mod & KMOD_ALT) != 0, (mod & KMOD_LMETA) != 0);
 
-				hotkey::hotkey_item& newhk = hotkey::get_visible_hotkey(menu_.selection());
+			// only if not canceled.
+			if (!(keycode == SDLK_ESCAPE && (mod & any_mod) == 0)) {
 
-				if(oldhk.get_id() != newhk.get_id() && !oldhk.null()) {
-					std::stringstream msg;
-					msg << "   " << oldhk.get_description() << " : " << oldhk.get_name();
-					gui2::show_transient_message(disp.video(),_("This hotkey is already in use."),msg.str());
-				} else {
-					if (event.type == SDL_JOYHATMOTION) {
-						const hotkey::hotkey_item& oldhkhat = hotkey::get_hotkey(joystick, hat, value);
+				hotkey::hotkey_item newhk(id);
+				hotkey::hotkey_item* oldhk = NULL;
 
-						if(oldhkhat.get_id() != newhk.get_id() && !oldhkhat.null()) {
-							std::stringstream msg;
-							msg << "   " << oldhkhat.get_description() << " : " << oldhkhat.get_name();
-							gui2::show_transient_message(disp.video(),_("This hotkey is already in use."),msg.str());
-						} else {
-							newhk.set_hat(joystick, hat, value);
-							menu_.change_item(menu_.selection(), 1, font::NULL_MARKUP + newhk.get_name());
-						}
-					} else
-					if (event.type == SDL_JOYBUTTONUP) {
-						const hotkey::hotkey_item& oldhkbtn = hotkey::get_hotkey(button, joystick);
+				Uint8 *keystate = SDL_GetKeyState(NULL);
+				bool alt   = keystate[SDLK_RALT]   || keystate[SDLK_LALT];
+				bool ctrl  = keystate[SDLK_RCTRL]  || keystate[SDLK_LCTRL];
+				bool shift = keystate[SDLK_RSHIFT] || keystate[SDLK_LSHIFT];
+				bool cmd   = keystate[SDLK_RMETA]  || keystate[SDLK_LMETA];
 
-						if(oldhkbtn.get_id() != newhk.get_id() && !oldhkbtn.null()) {
-							std::stringstream msg;
-							msg << "   " << oldhkbtn.get_description() << " : " << oldhkbtn.get_name();
-							gui2::show_transient_message(disp.video(),_("This hotkey is already in use."),msg.str());
-						} else {
-							newhk.set_button(button, joystick);
-							menu_.change_item(menu_.selection(), 1, font::NULL_MARKUP + newhk.get_name());
-						}
-					} else {
+				switch (event.type) {
 
-						newhk.set_key(character, keycode, (mod & KMOD_SHIFT) != 0,
-								(mod & KMOD_CTRL) != 0, (mod & KMOD_ALT) != 0, (mod & KMOD_LMETA) != 0);
+				case SDL_JOYHATMOTION:
+					oldhk = &hotkey::get_hotkey(hotkey::hotkey_item::JHAT, device, hat, value, shift, ctrl, alt, cmd);
+					newhk.set_jhat(device, hat, value, shift, ctrl, alt, cmd);
+					break;
+				case SDL_JOYBUTTONUP:
+					oldhk = &hotkey::get_hotkey(hotkey::hotkey_item::JBUTTON, device, button, 0, shift, ctrl, alt, cmd);
+					newhk.set_jbutton(device, button, shift, ctrl, alt, cmd);
+					break;
+				case SDL_MOUSEBUTTONUP:
+					oldhk = &hotkey::get_hotkey(hotkey::hotkey_item::MBUTTON, device, button, 0, shift, ctrl, alt, cmd);
+					newhk.set_mbutton(device, button, shift, ctrl, alt, cmd);
+					break;
+				case SDL_KEYUP:
+					oldhk = &hotkey::get_hotkey(character, keycode, (mod & KMOD_SHIFT) != 0,
+					 	(mod & KMOD_CTRL) != 0, (mod & KMOD_ALT) != 0, (mod & KMOD_LMETA) != 0);
+					newhk.set_key(character, keycode, (mod & KMOD_SHIFT) != 0,
+							(mod & KMOD_CTRL) != 0, (mod & KMOD_ALT) != 0, (mod & KMOD_LMETA) != 0);
 
-						menu_.change_item(menu_.selection(), 1, font::NULL_MARKUP + newhk.get_name());
+					if ( (newhk.get_id() == hotkey::HOTKEY_SCREENSHOT
+							|| newhk.get_id() == hotkey::HOTKEY_MAP_SCREENSHOT)
+							&& (mod & any_mod) == 0 ) {
+						gui2::show_transient_message(disp.video(), _("Warning"),
+								_("Screenshot hotkeys should be combined with the Control, Alt or Meta modifiers to avoid problems."));
+					}
+					break;
+				}
 
-						if ((newhk.get_id() == hotkey::HOTKEY_SCREENSHOT
-								|| newhk.get_id() == hotkey::HOTKEY_MAP_SCREENSHOT)
-								&& (mod & any_mod) == 0) {
-							gui2::show_transient_message(disp.video(), _("Warning"), _("Screenshot hotkeys should be combined with the Control, Alt or Meta modifiers to avoid problems."));
+				if ((oldhk && (!(oldhk->null())) )) {
+					if (oldhk->get_command() != id) {
+
+						utils::string_map symbols;
+						symbols["hotkey_sequence"]   = oldhk->get_name();
+						symbols["old_hotkey_action"] = oldhk->get_description();
+						symbols["new_hotkey_action"] = newhk.get_description();
+
+						std::string text = vgettext("\"$hotkey_sequence|\" is in use by \"$old_hotkey_action|\".\nDo you wish to reassign it to \"$new_hotkey_action|\"?"
+								, symbols);
+						text += "\n\n";
+
+						const int res = gui2::show_message(disp.video(), _("Hotkey is already in use.")
+								, text, gui2::tmessage::yes_no_buttons);
+						if(res == gui2::twindow::OK) {
+							oldhk->set_command(id);
+							repopulate = true;
 						}
 					}
+				} else {
+					hotkey::add_hotkey(newhk);
+					repopulate = true;
 				}
 			}
 		}
 
 		if (clear_button.pressed()) {
 			// clear hotkey
-			hotkey::hotkey_item& newhk = hotkey::get_visible_hotkey(menu_.selection());
-			newhk.clear_hotkey();
-			menu_.change_item(menu_.selection(), 1, font::NULL_MARKUP + newhk.get_name());
+			hotkey::clear_hotkeys(id);
+			repopulate = true;
 		}
 
 		if (reset_button.pressed()) {
 			const int res = gui2::show_message(
-				disp.video(), _("Reset Hotkeys"),
-				_("This will reset all hotkeys to their default values. Do you want to continue?"), gui2::tmessage::yes_no_buttons);
+					disp.video(), _("Reset Hotkeys"),
+					_("This will reset all hotkeys to their default values. Do you wish to continue?"), gui2::tmessage::yes_no_buttons);
 
 			if(res != gui2::twindow::CANCEL) {
 				clear_hotkeys();
-				repopulate_hotkeys_menu(menu_items);
-				menu_.set_items(menu_items);
-
+				repopulate = true;
 				gui2::show_transient_message(disp.video(), _("Hotkeys Reset"), _("All hotkeys have been reset to their default values."));
 			}
+		}
+
+		if (repopulate) {
+			repopulate_hotkeys_menu(menu_items, item_commands);
+			menu_.set_items(menu_items,true,true);
+			menu_.move_selection_keeping_viewport(selected);
 		}
 
 		menu_.process();
@@ -463,7 +507,6 @@ void show_hotkeys_dialog(display & disp)
 		events::raise_draw_event();
 
 		disp.update_display();
-
 		disp.delay(10);
 	}
 }

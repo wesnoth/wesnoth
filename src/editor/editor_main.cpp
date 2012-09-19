@@ -31,7 +31,7 @@ EXIT_STATUS start(const config& game_conf, CVideo& video, const std::string& fil
 {
 	EXIT_STATUS e = EXIT_ERROR;
 	try {
-		hotkey::scope_changer h_(game_conf, "hotkey_editor");
+		hotkey::scope_changer h_(game_conf);
 		hotkey::deactivate_all_scopes();
 		hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
 		hotkey::set_scope_active(hotkey::SCOPE_EDITOR);
@@ -39,7 +39,7 @@ EXIT_STATUS start(const config& game_conf, CVideo& video, const std::string& fil
 		if (!filename.empty()) {
 			if (is_directory(filename)) {
 //TODO
-				//			editor.set_default_dir(filename);
+				//editor.set_default_dir(filename);
 				editor.context_manager_->load_map_dialog(true);
 			} else {
 				editor.context_manager_->load_map(filename, false);

@@ -1212,7 +1212,7 @@ void play_controller::show_menu(const std::vector<std::string>& items_arg, int x
 			// Autosave visibility is similar to LOAD_GAME hotkey
 			command = hotkey::HOTKEY_LOAD_GAME;
 		} else {
-			command = hotkey::get_hotkey(*i).get_id();
+			command = hotkey::get_id(*i);
 		}
 		// Remove WML commands if they would not be allowed here
 		if(*i == "wml") {

@@ -1100,10 +1100,12 @@ namespace { // Private helpers for move_unit()
 		// Suggest "continue move"?
 		if ( playing_team_is_viewing && sighted_stop_ && !resources::whiteboard->is_executing_actions() ) {
 			// See if the "Continue Move" action has an associated hotkey
-			const hotkey::hotkey_item& hk = hotkey::get_hotkey(hotkey::HOTKEY_CONTINUE_MOVE);
-			if ( !hk.null() ) {
+
+			std::string name = hotkey::get_names(hotkey::HOTKEY_CONTINUE_MOVE);
+
+			if ( !name.empty() ) {
 				utils::string_map symbols;
-				symbols["hotkey"] = hk.get_name();
+				symbols["hotkey"] = name;
 				std::string message = vgettext("(press $hotkey to keep moving)", symbols);
 				disp.announce(message_prefix + message, font::NORMAL_COLOR);
 				message_prefix += " \n";

@@ -497,7 +497,7 @@ void tcontrol::signal_handler_show_tooltip(
 		if(!help_message_.empty()) {
 			utils::string_map symbols;
 			symbols["hotkey"] =
-					hotkey::get_hotkey(hotkey::GLOBAL__HELPTIP).get_name();
+					hotkey::get_names(hotkey::GLOBAL__HELPTIP);
 
 			tip = tooltip_ + utils::interpolate_variables_into_string(
 					  settings::has_helptip_message
