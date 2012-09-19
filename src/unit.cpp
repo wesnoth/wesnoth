@@ -3163,26 +3163,35 @@ temporary_unit_remover::~temporary_unit_remover()
 
 /**
  * Constructor
- * If @a new_moves is non-negative, then the moved unit's movement will be set
- * to this value when the unit is moved (and restored to its previous value
- * upon this object's destruction).
+ * This version will change the unit's current movement to @a new_moves while
+ * the unit is moved (and restored to its previous value upon this object's
+ * destruction).
  */
 temporary_unit_mover::temporary_unit_mover(unit_map& m, const map_location& src,
                                            const map_location& dst, int new_moves)
-	: m_(m), src_(src), dst_(dst), old_moves_(-1), temp_(NULL)
+	: m_(m), src_(src), dst_(dst), old_moves_(-1),
+	  temp_(src == dst ? NULL : m.extract(dst))
 {
-	// Avoid extracting the unit we want to move.
-	if ( src != dst )
-		temp_ = m.extract(dst);
-
 	std::pair<unit_map::iterator, bool> move_result = m.move(src_, dst_);
 
-	// Set the movement?
-	if ( move_result.second  &&  new_moves >= 0 )
+	// Set the movement.
+	if ( move_result.second )
 	{
 		old_moves_ = move_result.first->movement_left(true);
 		move_result.first->set_movement(new_moves);
 	}
+}
+
+/**
+ * Constructor
+ * This version does not change (nor restore) the unit's movement.
+ */
+temporary_unit_mover::temporary_unit_mover(unit_map& m, const map_location& src,
+                                           const map_location& dst)
+	: m_(m), src_(src), dst_(dst), old_moves_(-1),
+	  temp_(src == dst ? NULL : m.extract(dst))
+{
+	m.move(src_, dst_);
 }
 
 temporary_unit_mover::~temporary_unit_mover()

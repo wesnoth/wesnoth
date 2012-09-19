@@ -612,7 +612,9 @@ private:
 struct temporary_unit_mover
 {
 	temporary_unit_mover(unit_map& m, const map_location& src,
-	                     const map_location& dst, int new_moves=-1);
+	                     const map_location& dst, int new_moves);
+	temporary_unit_mover(unit_map& m, const map_location& src,
+	                     const map_location& dst);
 	virtual  ~temporary_unit_mover();
 
 private:
