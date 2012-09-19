@@ -62,6 +62,10 @@ public:
 	int movement_used() const { return cfg_["movement_used"].to_int(100000); }
 
 	const config& get_cfg() const { return cfg_; }
+
+private:
+	// Used via set_specials_context to control which specials are
+	// considered active.
 	mutable map_location aloc_,dloc_;
 	mutable bool attacker_;
 	mutable const unit_map* unitmap_;
@@ -73,7 +77,6 @@ public:
 	bool special_affects_opponent(const config& cfg) const;
 	bool special_affects_self(const config& cfg) const;
 
-private:
 	config cfg_;
 	t_string description_;
 	std::string id_;
