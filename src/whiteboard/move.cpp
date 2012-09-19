@@ -329,12 +329,11 @@ void move::apply_temp_modifier(unit_map& unit_map)
 	DBG_WB <<"Move: Changing movement points for unit " << unit->name() << " [" << unit->id()
 			<< "] from " << unit->movement_left() << " to "
 			<< unit->movement_left() - movement_cost_ << ".\n";
-	unit->set_movement(unit->movement_left() - movement_cost_, true);
-
 	// Move the unit
 	DBG_WB << "Move: Temporarily moving unit " << unit->name() << " [" << unit->id()
 			<< "] from (" << get_source_hex() << ") to (" << get_dest_hex() <<")\n";
-	mover_.reset(new temporary_unit_mover(unit_map,get_source_hex(), get_dest_hex()));
+	mover_.reset(new temporary_unit_mover(unit_map, get_source_hex(), get_dest_hex(),
+	                                      unit->movement_left() - movement_cost_));
 
 	//Update status of fake unit (not undone by remove_temp_modifiers)
 	//@todo this contradicts the name "temp_modifiers"
@@ -346,20 +345,18 @@ void move::remove_temp_modifier(unit_map&)
 	if (get_source_hex() == get_dest_hex())
 		return; //zero-hex move, probably used by attack subclass
 
+	// Debug movement points
 	unit* unit;
 	{
 		unit_map::iterator unit_it = resources::units->find(get_dest_hex());
 		assert(unit_it != resources::units->end());
 		unit = &*unit_it;
 	}
-
-	// Restore movement points
-	DBG_WB << "Move: Changing movement points for unit " << unit->name() << " [" << unit->id()
-				<< "] from " << unit->movement_left() << " to "
+	DBG_WB << "Move: Movement points for unit " << unit->name() << " [" << unit->id()
+				<< "] should get changed from " << unit->movement_left() << " to "
 				<< unit->movement_left() + movement_cost_ << ".\n";
-	unit->set_movement(unit->movement_left() + movement_cost_, true);
 
-	// Restore the unit to its original position
+	// Restore the unit to its original position and movement.
 	mover_.reset();
 }
 

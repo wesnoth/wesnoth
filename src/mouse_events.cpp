@@ -511,22 +511,13 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 						// not supposed to happen, so abort
 						return false;
 					}
-					// update movement_left as if we did the move
-					int move_left_dst = itor->move_left;
-					int move_left_src = u->movement_left();
-					u->set_movement(move_left_dst);
 
 					// block where we temporary move the unit
 					{
-						temporary_unit_mover temp_mover(units_, src, attack_from);
-
-							choice = show_attack_dialog(attack_from, clicked_u->get_location());
-
+						temporary_unit_mover temp_mover(units_, src, attack_from,
+						                                itor->move_left);
+						choice = show_attack_dialog(attack_from, clicked_u->get_location());
 					}
-					// restore unit as before
-					u = units_.find(src);
-					u->set_movement(move_left_src);
-					u->set_standing();
 
 					if (choice < 0) {
 						// user hit cancel, don't start move+attack
