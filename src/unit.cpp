@@ -3169,8 +3169,12 @@ temporary_unit_remover::~temporary_unit_remover()
  */
 temporary_unit_mover::temporary_unit_mover(unit_map& m, const map_location& src,
                                            const map_location& dst, int new_moves)
-	: m_(m), src_(src), dst_(dst), old_moves_(-1), temp_(m.extract(dst))
+	: m_(m), src_(src), dst_(dst), old_moves_(-1), temp_(NULL)
 {
+	// Avoid extracting the unit we want to move.
+	if ( src != dst )
+		temp_ = m.extract(dst);
+
 	std::pair<unit_map::iterator, bool> move_result = m.move(src_, dst_);
 
 	// Set the movement?
