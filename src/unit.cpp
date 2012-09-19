@@ -2984,10 +2984,10 @@ unit& unit::clone(bool is_temporary)
 
 
 unit_movement_resetter::unit_movement_resetter(unit &u, bool operate) :
-	u_(u), moves_(u.movement_)
+	u_(u), moves_(u.movement_left(true))
 {
 	if (operate) {
-		u.movement_ = u.total_movement();
+		u.set_movement(u.total_movement());
 	}
 }
 
@@ -2998,11 +2998,11 @@ unit_movement_resetter::~unit_movement_resetter()
 	if(!resources::units->has_unit(&u_)) {
 		/*
 		 * It might be valid that the unit is not in the unit map.
-		 * It might also mean a not longer valid unit will be assigned to.
+		 * It might also mean a no longer valid unit will be assigned to.
 		 */
 		DBG_UT << "The unit to be removed is not in the unit map.\n";
 	}
-	u_.movement_ = moves_;
+	u_.set_movement(moves_);
 }
 
 bool unit::matches_id(const std::string& unit_id) const

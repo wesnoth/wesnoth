@@ -77,7 +77,6 @@ public:
 	 */
 	static void clear_status_caches();
 
-	friend struct unit_movement_resetter;
 	// Copy constructor
 	unit(const unit& u);
 	/** Initializes a unit from a config */
@@ -166,7 +165,10 @@ public:
 
 	bool incapacitated() const { return get_state(STATE_PETRIFIED); }
 	int total_movement() const { return max_movement_; }
+	/// Returns how far a unit can move this turn (zero if incapacitated).
 	int movement_left() const { return (movement_ == 0 || incapacitated()) ? 0 : movement_; }
+	/// Providing a true parameter to movement_left() causes it to ignore incapacitation.
+	int movement_left(bool base_value) const { return base_value ? movement_ : movement_left(); }
 	int vision() const { return vision_ < 0 ? max_movement_ : vision_; }
 	int jamming() const { return jamming_; }
 	void toggle_hold_position() { hold_position_ = !hold_position_; if ( hold_position_ ) end_turn_ = true; }
