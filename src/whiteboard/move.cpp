@@ -346,15 +346,18 @@ void move::remove_temp_modifier(unit_map&)
 		return; //zero-hex move, probably used by attack subclass
 
 	// Debug movement points
-	unit* unit;
+	if ( !lg::debug.dont_log(log_whiteboard) )
 	{
-		unit_map::iterator unit_it = resources::units->find(get_dest_hex());
-		assert(unit_it != resources::units->end());
-		unit = &*unit_it;
+		unit* unit;
+		{
+			unit_map::iterator unit_it = resources::units->find(get_dest_hex());
+			assert(unit_it != resources::units->end());
+			unit = &*unit_it;
+		}
+		DBG_WB << "Move: Movement points for unit " << unit->name() << " [" << unit->id()
+					<< "] should get changed from " << unit->movement_left() << " to "
+					<< unit->movement_left() + movement_cost_ << ".\n";
 	}
-	DBG_WB << "Move: Movement points for unit " << unit->name() << " [" << unit->id()
-				<< "] should get changed from " << unit->movement_left() << " to "
-				<< unit->movement_left() + movement_cost_ << ".\n";
 
 	// Restore the unit to its original position and movement.
 	mover_.reset();
