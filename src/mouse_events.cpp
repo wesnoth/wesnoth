@@ -514,7 +514,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 					// update movement_left as if we did the move
 					int move_left_dst = itor->move_left;
 					int move_left_src = u->movement_left();
-					u->set_movement(move_left_dst, false);
+					u->set_movement(move_left_dst);
 
 					// block where we temporary move the unit
 					{
@@ -525,7 +525,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 					}
 					// restore unit as before
 					u = units_.find(src);
-					u->set_movement(move_left_src, false);
+					u->set_movement(move_left_src);
 					u->set_standing();
 
 					if (choice < 0) {

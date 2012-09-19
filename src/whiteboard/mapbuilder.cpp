@@ -122,7 +122,7 @@ void mapbuilder::process(side_actions &sa, side_actions::iterator action_it)
 
 	if(acted_this_turn_.find(unit) == acted_this_turn_.end()) {
 		//reset MP
-		unit->set_movement(unit->total_movement(), false);
+		unit->set_movement(unit->total_movement());
 		acted=true;
 	}
 
