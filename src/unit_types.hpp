@@ -69,18 +69,16 @@ public:
 	const config& get_cfg() const { return cfg_; }
 
 private:
-	// Used via set_specials_context to control which specials are
+	// In unit_abilities.cpp:
+
+	bool special_active(const config& special, bool self) const;
+
+	// Used via set_specials_context() to control which specials are
 	// considered active.
 	mutable map_location aloc_,dloc_;
 	mutable bool attacker_;
 	mutable const unit_map* unitmap_;
 	mutable const attack_type* other_attack_;
-	/*
-	 * cfg: a weapon special WML structure
-	 */
-	bool special_active(const config& special, bool self) const;
-	bool special_affects_opponent(const config& special) const;
-	bool special_affects_self(const config& special) const;
 
 	config cfg_;
 	t_string description_;

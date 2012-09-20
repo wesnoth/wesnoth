@@ -604,6 +604,55 @@ std::string attack_type::weapon_specials(bool force_active) const
 }
 
 
+namespace { // Helpers for attack_type::special_active()
+
+	/**
+	 * Returns whether or not the given special affects the opponent of the unit
+	 * with the special.
+	 * @param[in]  special      a weapon special WML structure
+	 * @param[in]  is_attacker  whether or not the unit with the special is the attacker
+	 */
+	bool special_affects_opponent(const config& special, bool is_attacker)
+	{
+		//log_scope("special_affects_opponent");
+		std::string const &apply_to = special["apply_to"];
+		if ( apply_to.empty() )
+			return false;
+		if ( apply_to == "both" )
+			return true;
+		if ( apply_to == "opponent" )
+			return true;
+		if ( is_attacker  &&  apply_to == "defender" )
+			return true;
+		if ( !is_attacker &&  apply_to == "attacker" )
+			return true;
+		return false;
+	}
+
+	/**
+	 * Returns whether or not the given special affects the unit with the special.
+	 * @param[in]  special      a weapon special WML structure
+	 * @param[in]  is_attacker  whether or not the unit with the special is the attacker
+	 */
+	bool special_affects_self(const config& special, bool is_attacker)
+	{
+		//log_scope("special_affects_self");
+		std::string const &apply_to = special["apply_to"];
+		if ( apply_to.empty() )
+			return true;
+		if ( apply_to == "both" )
+			return true;
+		if ( apply_to == "self" )
+			return true;
+		if ( is_attacker  &&  apply_to == "attacker" )
+			return true;
+		if ( !is_attacker &&  apply_to == "defender")
+			return true;
+		return false;
+	}
+
+}//anonymous namespace
+
 /**
  * Returns whether or not the given special is active for the current unit,
  * based on the current context (see set_specials_context).
@@ -619,10 +668,10 @@ bool attack_type::special_active(const config& special, bool self) const
 	unit_map::const_iterator def = unitmap_->find(dloc_);
 
 	if(self) {
-		if ( !special_affects_self(special) )
+		if ( !special_affects_self(special, attacker_) )
 			return false;
 	} else {
-		if ( !special_affects_opponent(special) )
+		if ( !special_affects_opponent(special, !attacker_) )
 			return false;
 	}
 
@@ -752,57 +801,6 @@ bool attack_type::special_active(const config& special, bool self) const
 		}
 	}
 	return true;
-}
-
-/**
- * Returns whether or not the given special affects the opponent of the unit
- * with the special, based on the current context (see set_specials_context),
- * and with the assumption that the special is from the opponent of the
- * current unit.
- * (That is, if the special is from the opponent, this returns whether or
- * not it affects the current unit.)
- * @param[in]  special  a weapon special WML structure
- */
-bool attack_type::special_affects_opponent(const config& special) const
-{
-	//log_scope("special_affects_opponent");
-	std::string const &apply_to = special["apply_to"];
-	if (apply_to.empty())
-		return false;
-	if (apply_to == "both")
-		return true;
-	if (apply_to == "opponent")
-		return true;
-	if (attacker_ && apply_to == "defender")
-		return true;
-	if (!attacker_ && apply_to == "attacker")
-		return true;
-	return false;
-}
-
-/**
- * Returns whether or not the given special affects the unit with the special,
- * based on the current context (see set_specials_context), and with the
- * assumption that the special is from the current unit.
- * (That is, if the special is from the current unit, this returns whether or
- * not it affects the current unit.)
- * @param[in]  special  a weapon special WML structure
- */
-bool attack_type::special_affects_self(const config& special) const
-{
-	//log_scope("special_affects_self");
-	std::string const &apply_to = special["apply_to"];
-	if (apply_to.empty())
-		return true;
-	if (apply_to == "both")
-		return true;
-	if (apply_to == "self")
-		return true;
-	if (attacker_ && apply_to == "attacker")
-		return true;
-	if (!attacker_ && apply_to == "defender")
-		return true;
-	return false;
 }
 
 /**
