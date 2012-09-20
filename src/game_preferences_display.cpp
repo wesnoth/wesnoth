@@ -28,6 +28,11 @@
 #include "wml_separators.hpp"
 #include "widgets/slider.hpp"
 #include "formula_string_utils.hpp"
+#include "hotkeys.hpp"
+#include "marked-up_text.hpp"
+#include "formatter.hpp"
+#include "gui/dialogs/message.hpp"
+#include "gui/widgets/window.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -92,25 +97,33 @@ public:
 	};
 
 	virtual handler_vector handler_members();
+
+	void set_widgets_dirty();
+	void main_menu();
+	void input_menu();
+	void hotkey_menu();
+
 private:
 
 	void process_event();
 	bool left_side() const { return false; }
+
 	void set_selection(int index);
 	void update_location(SDL_Rect const &rect);
 	const config* get_advanced_pref() const;
 	void set_advanced_menu();
+	std::vector<std::string> set_hotkey_menu();
 	void sort_advanced_preferences();
 	void set_friends_menu();
 	std::vector<std::string> friends_names_;
 
-//
 	// change
 	gui::slider music_slider_, sound_slider_, UI_sound_slider_, bell_slider_,
 	            scroll_slider_, chat_lines_slider_,
 	  buffer_size_slider_, idle_anim_slider_, autosavemax_slider_, advanced_slider_;
 	gui::list_slider<double> turbo_slider_;
-	gui::button fullscreen_button_, turbo_button_, show_ai_moves_button_,
+	gui::button joystick_support_button_,
+	        fullscreen_button_, turbo_button_, show_ai_moves_button_,
 			interrupt_when_ally_sighted_button_,
 			show_grid_button_, save_replays_button_, delete_saves_button_,
 			show_lobby_joins_button1_,
@@ -133,7 +146,12 @@ private:
 			sample_rate_button2_, sample_rate_button3_,
 			confirm_sound_button_, idle_anim_button_,
 			standing_anim_button_,
-			animate_map_button_;
+			animate_map_button_,
+			hotkey_change_button_,
+	        hotkey_clear_button_,
+		    hotkey_reset_button_;
+
+
 	gui::label music_label_, sound_label_, UI_sound_label_, bell_label_,
 	           scroll_label_, chat_lines_label_,
 	           turbo_slider_label_, sample_rate_label_, buffer_size_label_,
@@ -143,12 +161,20 @@ private:
 
 	unsigned slider_label_width_;
 
-	gui::menu advanced_, friends_;
+	gui::menu::basic_sorter hotkey_sorter_;
+	gui::menu advanced_, friends_, hotkeys_;
 	int advanced_selection_, friends_selection_;
 
-	enum TAB {	GENERAL_TAB, DISPLAY_TAB, SOUND_TAB, MULTIPLAYER_TAB, ADVANCED_TAB,
+	enum TAB {	GENERAL_TAB, INPUT_TAB, DISPLAY_TAB, SOUND_TAB, MULTIPLAYER_TAB, ADVANCED_TAB,
+				/*Input subtab*/
+				INPUT_MOUSE_TAB, INPUT_HOTKEY_TAB, INPUT_JOYSTICK_TAB,
+				/*Hotkey subtab*/
+				INPUT_HOTKEY_GENERIC_TAB, INPUT_HOTKEY_GAME_TAB, INPUT_HOTKEY_EDITOR_TAB,
 				/*extra tab*/
-				ADVANCED_SOUND_TAB, FRIENDS_TAB};
+				ADVANCED_SOUND_TAB, FRIENDS_TAB,
+				/*       */
+				NULL_TAB
+				};
 	TAB tab_;
 	display &disp_;
 	const config& game_cfg_;
@@ -169,6 +195,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  advanced_slider_(disp.video()),
 	  turbo_slider_(disp.video()),
 
+	  joystick_support_button_(disp.video(), _("Enable joystick support"), gui::button::TYPE_CHECK),
 
 	  fullscreen_button_(disp.video(), _("Full screen"), gui::button::TYPE_CHECK),
 	  turbo_button_(disp.video(), _("Accelerated speed"), gui::button::TYPE_CHECK),
@@ -215,6 +242,9 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  idle_anim_button_(disp.video(), _("Show unit idle animations"), gui::button::TYPE_CHECK),
 	  standing_anim_button_(disp.video(), _("Show unit standing animations"), gui::button::TYPE_CHECK),
 	  animate_map_button_(disp.video(), _("Animate map"), gui::button::TYPE_CHECK),
+	  hotkey_change_button_(disp.video(), _("Add Hotkey")),
+	  hotkey_clear_button_(disp.video(), _("Clear Hotkey")),
+	  hotkey_reset_button_(disp.video(), _("Reset All")),
 
 	  music_label_(disp.video(), _("Volume:"), font::SIZE_SMALL),
 	  sound_label_(disp.video(), _("Volume:"), font::SIZE_SMALL),
@@ -233,8 +263,11 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  friends_input_(disp.video(), 170),
 
 	  slider_label_width_(0),
+
+	  hotkey_sorter_(),
 	  advanced_(disp.video(),std::vector<std::string>(),false,-1,-1,NULL,&gui::menu::bluebg_style),
 	  friends_(disp.video(),std::vector<std::string>(),false,-1,-1,NULL,&gui::menu::bluebg_style),
+	  hotkeys_(disp.video(), set_hotkey_menu(), false, -1, -1, &hotkey_sorter_, &gui::menu::bluebg_style),
 
 	  advanced_selection_(-1),
 	  friends_selection_(-1),
@@ -244,7 +277,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	sort_advanced_preferences();
 
 	// FIXME: this box should be vertically centered on the screen, but is not
-	set_measurements(465, 400);
+	set_measurements(465, 460);
 
 
 	sound_button_.set_check(sound_on());
@@ -315,6 +348,9 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 
 	fullscreen_button_.set_check(fullscreen());
 	fullscreen_button_.set_help_string(_("Choose whether the game should run full screen or in a window"));
+
+	joystick_support_button_.set_check(joystick_support_enabled());
+	joystick_support_button_.set_help_string(_("Choose whether to support joystick devices"));
 
 	turbo_button_.set_check(turbo());
 	turbo_button_.set_help_string(_("Make units move and fight faster"));
@@ -434,11 +470,19 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 
 	set_advanced_menu();
 	set_friends_menu();
+	set_hotkey_menu();
+	hotkey_sorter_.set_alpha_sort(0).set_alpha_sort(1);
+	hotkeys_.set_sorter(&hotkey_sorter_);
+	hotkeys_.sort_by(0);
+	hotkeys_.reset_selection();
 }
 
 handler_vector preferences_dialog::handler_members()
 {
 	handler_vector h;
+
+	h.push_back(&joystick_support_button_);
+
 	h.push_back(&music_slider_);
 	h.push_back(&sound_slider_);
 	h.push_back(&bell_slider_);
@@ -487,6 +531,9 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&theme_button_);
 	h.push_back(&hotkeys_button_);
 	h.push_back(&advanced_button_);
+	h.push_back(&hotkey_change_button_);
+	h.push_back(&hotkey_clear_button_);
+	h.push_back(&hotkey_reset_button_);
 	h.push_back(&sound_button_);
 	h.push_back(&music_button_);
 	h.push_back(&chat_timestamp_button_);
@@ -511,7 +558,89 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&sample_rate_input_);
 	h.push_back(&advanced_);
 	h.push_back(&friends_);
+	h.push_back(&hotkeys_);
 	return h;
+}
+
+void preferences_dialog::set_widgets_dirty() {
+	joystick_support_button_.set_dirty();
+
+		 music_slider_.set_dirty();
+		 sound_slider_.set_dirty();
+		 bell_slider_.set_dirty();
+		 UI_sound_slider_.set_dirty();
+		 scroll_slider_.set_dirty();
+		 chat_lines_slider_.set_dirty();
+		 turbo_slider_.set_dirty();
+		 idle_anim_slider_.set_dirty();
+		 autosavemax_slider_.set_dirty();
+		 buffer_size_slider_.set_dirty();
+		 advanced_slider_.set_dirty();
+		 fullscreen_button_.set_dirty();
+		 turbo_button_.set_dirty();
+		 idle_anim_button_.set_dirty();
+		 standing_anim_button_.set_dirty();
+		 animate_map_button_.set_dirty();
+		 show_ai_moves_button_.set_dirty();
+		 interrupt_when_ally_sighted_button_.set_dirty();
+		 save_replays_button_.set_dirty();
+		 delete_saves_button_.set_dirty();
+		show_grid_button_.set_dirty();
+		 sort_list_by_group_button_.set_dirty();
+		 iconize_list_button_.set_dirty();
+		 remember_pw_button_.set_dirty();
+		 show_lobby_joins_button1_.set_dirty();
+		 show_lobby_joins_button2_.set_dirty();
+		 show_lobby_joins_button3_.set_dirty();
+		 new_lobby_button_.set_dirty();
+		 mp_server_search_button_.set_dirty();
+		 friends_list_button_.set_dirty();
+		 friends_back_button_.set_dirty();
+		 friends_add_friend_button_.set_dirty();
+		 friends_add_ignore_button_.set_dirty();
+		 friends_remove_button_.set_dirty();
+		 friends_input_.set_dirty();
+		 show_floating_labels_button_.set_dirty();
+		 turn_dialog_button_.set_dirty();
+		 whiteboard_on_start_button_.set_dirty();
+		 hide_whiteboard_button_.set_dirty();
+		 turn_bell_button_.set_dirty();
+		 UI_sound_button_.set_dirty();
+		 show_team_colors_button_.set_dirty();
+		 show_color_cursors_button_.set_dirty();
+		 show_haloing_button_.set_dirty();
+		 video_mode_button_.set_dirty();
+		 theme_button_.set_dirty();
+		 hotkeys_button_.set_dirty();
+		 advanced_button_.set_dirty();
+		 hotkey_change_button_.set_dirty();
+		 hotkey_clear_button_.set_dirty();
+		 hotkey_reset_button_.set_dirty();
+		 sound_button_.set_dirty();
+		 music_button_.set_dirty();
+		 chat_timestamp_button_.set_dirty();
+		 advanced_sound_button_.set_dirty();
+		 normal_sound_button_.set_dirty();
+		 sample_rate_button1_.set_dirty();
+		 sample_rate_button2_.set_dirty();
+		 sample_rate_button3_.set_dirty();
+		 confirm_sound_button_.set_dirty();
+		 music_label_.set_dirty();
+		 sound_label_.set_dirty();
+		 bell_label_.set_dirty();
+		 UI_sound_label_.set_dirty();
+		 scroll_label_.set_dirty();
+		 turbo_slider_label_.set_dirty();
+		 idle_anim_slider_label_.set_dirty();
+		 autosavemax_slider_label_.set_dirty();
+		 advanced_slider_label_.set_dirty();
+		 chat_lines_label_.set_dirty();
+		 sample_rate_label_.set_dirty();
+		 buffer_size_label_.set_dirty();
+		 sample_rate_input_.set_dirty();
+		 advanced_.set_dirty();
+		 friends_.set_dirty();
+		 hotkeys_.set_dirty();
 }
 
 void preferences_dialog::update_location(SDL_Rect const &rect)
@@ -561,6 +690,10 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 
 	autosavemax_slider_.set_location(autosavemax_rect);
 	hotkeys_button_.set_location(rect.x, bottom_row_y - hotkeys_button_.height());
+
+	// Joystick tab
+	ypos = rect.y + top_border;
+	joystick_support_button_.set_location(rect.x, ypos);
 
 	// Display tab
 	ypos = rect.y + top_border;
@@ -707,6 +840,26 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += short_interline+3; friends_remove_button_.set_location(friends_xpos,ypos);
 	friends_back_button_.set_location(rect.x, bottom_row_y - friends_back_button_.height());
 
+	//hotkey tabs
+	ypos = rect.y + top_border;
+	hotkeys_.set_location(rect.x,ypos);
+	hotkeys_.set_max_height(height()-75);
+	hotkeys_.set_height(height()-75);
+
+	hotkeys_.set_width(font::relative_size(460));
+	hotkeys_.set_max_width(font::relative_size(460));
+	//hotkeys_.set_location(rect.x + font::relative_size(10), ypos + font::relative_size(10));
+
+
+	ypos += hotkeys_.height() + font::relative_size(14);
+	int xpos = rect.x;
+
+	hotkey_change_button_.set_location(xpos, ypos);
+	xpos += hotkey_change_button_.width() + font::relative_size(14);
+	hotkey_reset_button_.set_location(xpos, ypos);
+	xpos += hotkey_reset_button_.width() + font::relative_size(14);
+	hotkey_clear_button_.set_location(xpos, ypos);
+
 	//Advanced tab
 	ypos = rect.y + top_border;
 	advanced_.set_location(rect.x,ypos);
@@ -766,6 +919,17 @@ void preferences_dialog::process_event()
 		else
 			buf2 << _("Maximum auto-saves: ") << autosavemax_slider_.value();
 		autosavemax_slider_label_.set_text(buf2.str());
+
+		return;
+	}
+
+	if (tab_ == INPUT_TAB) {
+
+		if (joystick_support_button_.pressed()) {
+			//TODO enable (show_color_cursors_button_.checked());
+		}
+
+
 
 		return;
 	}
@@ -996,6 +1160,182 @@ void preferences_dialog::process_event()
 		return;
 	}
 
+	if ( (tab_ == INPUT_HOTKEY_GENERIC_TAB)
+			|| (tab_ == INPUT_HOTKEY_GAME_TAB)
+			|| (tab_ == INPUT_HOTKEY_EDITOR_TAB) ) {
+
+		if (hotkey_change_button_.pressed () || hotkeys_.double_clicked()) {
+				// Lets change this hotkey......
+
+			    SDL_Rect clip_rect = create_rect(0, 0, disp_.w (), disp_.h ());
+				SDL_Rect text_size = font::draw_text(NULL, clip_rect, font::SIZE_LARGE,
+								     font::NORMAL_COLOR,_("Press desired hotkey (Esc cancels)"),
+								     0, 0);
+
+				const int centerx = disp_.w()/2;
+				const int centery = disp_.h()/2;
+				//const int width  = 750;
+				//const int height = disp_.video().gety() < 600 ? 380 : 500;
+				//const int xpos = centerx  - width/2;
+				//const int ypos = centery  - height/2;
+
+				SDL_Rect dlgr = create_rect(centerx - text_size.w / 2 - 30
+						, centery - text_size.h / 2 - 16
+						, text_size.w + 60
+						, text_size.h + 32);
+
+				surface_restorer restorer(&disp_.video(),dlgr);
+				gui::dialog_frame mini_frame(disp_.video());
+				mini_frame.layout(centerx-text_size.w/2 - 20,
+										centery-text_size.h/2 - 6,
+										text_size.w+40,
+										text_size.h+12);
+				mini_frame.draw_background();
+				mini_frame.draw_border();
+				font::draw_text (&disp_.video(), clip_rect, font::SIZE_LARGE,font::NORMAL_COLOR,
+					 _("Press desired hotkey (Esc cancels)"),centerx-text_size.w/2,
+					 centery-text_size.h/2);
+				disp_.update_display();
+				SDL_Event event;
+				event.type = 0;
+				int character = 0, keycode = 0, mod = 0; // Just to avoid warning
+				int device = 0, button = 0, hat = 0, value = 0;
+				const int any_mod = KMOD_CTRL | KMOD_ALT | KMOD_LMETA;
+
+				while (event.type!=SDL_KEYDOWN
+						&& event.type!=SDL_JOYBUTTONDOWN && event.type!= SDL_JOYHATMOTION
+						&& (event.type!=SDL_MOUSEBUTTONDOWN || event.button.button < 8) )
+					SDL_PollEvent(&event);
+
+				do {
+					switch (event.type) {
+
+						case SDL_KEYDOWN:
+							keycode=event.key.keysym.sym;
+							character=event.key.keysym.unicode;
+							mod=event.key.keysym.mod;
+							break;
+						case SDL_JOYBUTTONDOWN:
+							device = event.jbutton.which;
+							button = event.jbutton.button;
+							break;
+						case SDL_JOYHATMOTION:
+							device = event.jhat.which;
+							hat = event.jhat.hat;
+							value = event.jhat.value;
+							break;
+						case SDL_MOUSEBUTTONDOWN:
+							device = event.button.which;
+							button = event.button.button;
+							break;
+					}
+
+					SDL_PollEvent(&event);
+					disp_.flip();
+					disp_.delay(10);
+				} while (event.type!=SDL_KEYUP
+						&& event.type!=SDL_JOYBUTTONUP && event.type!=SDL_JOYHATMOTION
+						&& event.type!=SDL_MOUSEBUTTONUP);
+
+				restorer.restore();
+				disp_.update_display();
+
+				// only if not canceled.
+				if (!(keycode == SDLK_ESCAPE && (mod & any_mod) == 0)) {
+
+					std::string id = "blah";
+					hotkey::hotkey_item newhk(id);
+					hotkey::hotkey_item* oldhk = NULL;
+
+					Uint8 *keystate = SDL_GetKeyState(NULL);
+					bool alt   = keystate[SDLK_RALT]   || keystate[SDLK_LALT];
+					bool ctrl  = keystate[SDLK_RCTRL]  || keystate[SDLK_LCTRL];
+					bool shift = keystate[SDLK_RSHIFT] || keystate[SDLK_LSHIFT];
+					bool cmd   = keystate[SDLK_RMETA]  || keystate[SDLK_LMETA];
+
+					switch (event.type) {
+
+					case SDL_JOYHATMOTION:
+						oldhk = &hotkey::get_hotkey(hotkey::hotkey_item::JHAT, device, hat, value, shift, ctrl, alt, cmd);
+						newhk.set_jhat(device, hat, value, shift, ctrl, alt, cmd);
+						break;
+					case SDL_JOYBUTTONUP:
+						oldhk = &hotkey::get_hotkey(hotkey::hotkey_item::JBUTTON, device, button, 0, shift, ctrl, alt, cmd);
+						newhk.set_jbutton(device, button, shift, ctrl, alt, cmd);
+						break;
+					case SDL_MOUSEBUTTONUP:
+						oldhk = &hotkey::get_hotkey(hotkey::hotkey_item::MBUTTON, device, button, 0, shift, ctrl, alt, cmd);
+						newhk.set_mbutton(device, button, shift, ctrl, alt, cmd);
+						break;
+					case SDL_KEYUP:
+						oldhk = &hotkey::get_hotkey(character, keycode, (mod & KMOD_SHIFT) != 0,
+						 	(mod & KMOD_CTRL) != 0, (mod & KMOD_ALT) != 0, (mod & KMOD_LMETA) != 0);
+						newhk.set_key(character, keycode, (mod & KMOD_SHIFT) != 0,
+								(mod & KMOD_CTRL) != 0, (mod & KMOD_ALT) != 0, (mod & KMOD_LMETA) != 0);
+
+						if ( (newhk.get_id() == hotkey::HOTKEY_SCREENSHOT
+								|| newhk.get_id() == hotkey::HOTKEY_MAP_SCREENSHOT)
+								&& (mod & any_mod) == 0 ) {
+							gui2::show_transient_message(disp_.video(), _("Warning"),
+									_("Screenshot hotkeys should be combined with the Control, Alt or Meta modifiers to avoid problems."));
+						}
+						break;
+					}
+
+					if ((oldhk && (!(oldhk->null())) )) {
+						if (oldhk->get_command() != id) {
+
+							utils::string_map symbols;
+							symbols["hotkey_sequence"]   = oldhk->get_name();
+							symbols["old_hotkey_action"] = oldhk->get_description();
+							symbols["new_hotkey_action"] = newhk.get_description();
+
+							std::string text = vgettext("\"$hotkey_sequence|\" is in use by \"$old_hotkey_action|\".\nDo you wish to reassign it to \"$new_hotkey_action|\"?"
+									, symbols);
+							text += "\n\n";
+
+							const int res = gui2::show_message(disp_.video(), _("Hotkey is already in use.")
+									, text, gui2::tmessage::yes_no_buttons);
+							if(res == gui2::twindow::OK) {
+								oldhk->set_command(id);
+								set_hotkey_menu();
+							//	repopulate = true;
+							}
+						}
+					} else {
+						hotkey::add_hotkey(newhk);
+						set_hotkey_menu();
+						//repopulate = true;
+					}
+				}
+			}
+
+
+
+
+
+
+		if (hotkey_clear_button_.pressed()) {
+			// clear hotkey
+		//	hotkey::clear_hotkeys(id);
+		    set_hotkey_menu();
+		}
+
+
+		if (hotkey_reset_button_.pressed()) {
+			const int res = gui2::show_message(
+					disp_.video(), _("Reset Hotkeys"),
+					_("This will reset all hotkeys to their default values. Do you wish to continue?"), gui2::tmessage::yes_no_buttons);
+
+			if(res != gui2::twindow::CANCEL) {
+				clear_hotkeys();
+				set_hotkey_menu();
+				gui2::show_transient_message(disp_.video(), _("Hotkeys Reset"), _("All hotkeys have been reset to their default values."));
+			}
+		}
+
+	}
+
 	if (tab_ == ADVANCED_TAB) {
 		if(advanced_.selection() != advanced_selection_) {
 			advanced_selection_ = advanced_.selection();
@@ -1092,6 +1432,40 @@ void preferences_dialog::set_advanced_menu()
 	advanced_.set_items(advanced_items,true,true);
 }
 
+std::vector<std::string> preferences_dialog::set_hotkey_menu() {
+
+	std::vector<std::string> menu_items;
+	const hotkey::hotkey_command* list = hotkey::get_hotkey_commands();
+
+	for (size_t i = 0; list[i].id != hotkey::HOTKEY_NULL; ++i) {
+
+		const hotkey::scope& scope = list[i].scope;
+		if (list[i].hidden || !(hotkey::is_scope_active(scope)) )
+				continue;
+
+		const std::string& description = hotkey::get_description(list[i].command);
+		const std::string& name = hotkey::get_names(list[i].id);
+
+		menu_items.push_back((formatter() << description << COLUMN_SEPARATOR << font::NULL_MARKUP << name).str());
+		//item_commands.push_back(list[i].command);
+	}
+	menu_items.push_back((formatter() << HEADING_PREFIX << _("Action") << COLUMN_SEPARATOR << _("Binding")).str());
+
+	return menu_items;
+
+	//hotkeys_.set_items(menu_items, true, true);
+	//hotkeys_.get_sort_by(1);
+	//hotkey_sorter_.set_alpha_sort(0).set_alpha_sort(1);
+	//int height = 500;
+	//hotkeys_ = gui::menu(disp_.video(), menu_items, false, -1, -1, &hotkey_sorter_, &gui::menu::bluebg_style);
+	//hotkeys_.set_sorter(&hotkey_sorter_);
+	//hotkeys_.sort_by(0);
+	//hotkeys_.reset_selection();
+	//hotkeys_.set_heading(menu_items);
+	//hotkeys_.set_dirty();
+}
+
+
 void preferences_dialog::sort_advanced_preferences()
 {
 	adv_preferences_cfg_.clear();
@@ -1133,12 +1507,108 @@ void preferences_dialog::set_friends_menu()
 	friends_.set_items(friends_items,true,true);
 }
 
+void preferences_dialog::main_menu() {
+
+	std::vector<std::string> items;
+	std::string const pre = IMAGE_PREFIX + std::string("icons/icon-");
+	char const sep = COLUMN_SEPARATOR;
+
+	items.push_back(pre + "general.png" + sep + sgettext("Prefs section^General"));
+	items.push_back(pre + "ai.png" + sep + sgettext("Prefs section^Input"));
+	items.push_back(pre + "display.png" + sep + sgettext("Prefs section^Display"));
+	items.push_back(pre + "music.png" + sep + sgettext("Prefs section^Sound"));
+	items.push_back(pre + "multiplayer.png" + sep + sgettext("Prefs section^Multiplayer"));
+	items.push_back(pre + "advanced.png" + sep + sgettext("Advanced section^Advanced"));
+
+	tab_ = GENERAL_TAB;
+	parent->set_menu_items(items);
+}
+
+void preferences_dialog::input_menu() {
+
+	std::vector<std::string> items;
+	std::string const pre = IMAGE_PREFIX + std::string("icons/icon-");
+	char const sep = COLUMN_SEPARATOR;
+
+	items.push_back(pre + "ai.png" + sep + sgettext("Prefs section^Input"));
+	items.push_back(pre + "display.png" + sep + sgettext("Prefs section^Hotkey"));
+	items.push_back(pre + "mouse.png"   + sep + sgettext("Prefs section^Mouse"));
+	//items.push_back(pre + "display.png" + sep + sgettext("Prefs section^Joystick"));
+	items.push_back(pre + "general.png" + sep + sgettext("Prefs section^Main"));
+
+	tab_ = INPUT_MOUSE_TAB;
+	parent->set_menu_items(items);
+}
+
+void preferences_dialog::hotkey_menu() {
+
+	std::vector<std::string> items;
+
+	std::string const pre = IMAGE_PREFIX + std::string("icons/icon-");
+	char const sep = COLUMN_SEPARATOR;
+
+	items.push_back(pre + "generic.png"   + sep + sgettext("Prefs section^Generic"));
+	items.push_back(pre + "game.png" + sep + sgettext("Prefs section^Game"));
+	items.push_back(pre + "editor.png" + sep + sgettext("Prefs section^Editor"));
+	items.push_back(pre + "ai.png" + sep + sgettext("Prefs section^Input"));
+
+	tab_ = INPUT_HOTKEY_GENERIC_TAB;
+	parent->set_menu_items(items);
+}
+
 void preferences_dialog::set_selection(int index)
 {
-	tab_ = TAB(index);
+	// switch over the current selection to get the context right
+	switch (tab_) {
+	case NULL_TAB:
+		// we are in the main menu
+	case GENERAL_TAB:
+	case DISPLAY_TAB:
+	case SOUND_TAB:
+	case MULTIPLAYER_TAB:
+	case ADVANCED_TAB:
+	case ADVANCED_SOUND_TAB:
+	case FRIENDS_TAB:
+	case INPUT_TAB:
+		if (index == 1) {
+			input_menu();
+			return;
+		} else tab_ = TAB(index);
+		break;
+		// we are in the input menu
+	case INPUT_MOUSE_TAB:
+	case INPUT_JOYSTICK_TAB:
+	case INPUT_HOTKEY_TAB:
+
+		// Hotkey tab was selected
+		if (index == 1) {
+			hotkey_menu();
+			return;
+		}
+
+		// Back tab was selected
+		if (index == 3) {
+			main_menu();
+			return;
+		}
+
+		tab_ = TAB(INPUT_MOUSE_TAB + index);
+		break;
+	case INPUT_HOTKEY_GENERIC_TAB:
+	case INPUT_HOTKEY_GAME_TAB:
+	case INPUT_HOTKEY_EDITOR_TAB:
+		if (index == 3) {
+			input_menu();
+			return;
+		} else
+			tab_ = TAB(INPUT_HOTKEY_GENERIC_TAB + index);
+		break;
+	}
 	set_dirty();
+	set_widgets_dirty();
 	bg_restore();
 
+	//ERR_GUI_D << "Das active tab ist: " << tab_ << "\n";
 	const bool hide_general = tab_ != GENERAL_TAB;
 	scroll_label_.hide(hide_general);
 	scroll_slider_.hide(hide_general);
@@ -1176,6 +1646,12 @@ void preferences_dialog::set_selection(int index)
 	theme_button_.hide(hide_display);
 	show_team_colors_button_.hide(hide_display);
 	show_grid_button_.hide(hide_display);
+
+	const bool hide_joystick = tab_ != INPUT_JOYSTICK_TAB;
+	joystick_support_button_.hide(hide_joystick);
+
+	const bool hide_mouse = tab_ != INPUT_MOUSE_TAB;
+	joystick_support_button_.hide(hide_mouse);
 
 	const bool hide_sound = tab_ != SOUND_TAB;
 	music_button_.hide(hide_sound);
@@ -1233,6 +1709,40 @@ void preferences_dialog::set_selection(int index)
 	friends_remove_button_.hide(hide_friends);
 	friends_input_.hide(hide_friends);
 
+	if (tab_ == INPUT_HOTKEY_GENERIC_TAB) {
+		hotkey::deactivate_all_scopes();
+		hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
+		hotkeys_.set_items(set_hotkey_menu(), true, false);
+		hotkeys_.sort_by(0);
+		hotkeys_.reset_selection();
+		hotkeys_.set_dirty();
+	}
+	if (tab_ == INPUT_HOTKEY_GAME_TAB) {
+		hotkey::deactivate_all_scopes();
+		hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
+		hotkey::set_scope_active(hotkey::SCOPE_GAME);
+		hotkeys_.set_items(set_hotkey_menu(), true, false);
+		hotkeys_.sort_by(0);
+		hotkeys_.reset_selection();
+		hotkeys_.set_dirty();
+	}
+	if (tab_ == INPUT_HOTKEY_EDITOR_TAB) {
+		hotkey::deactivate_all_scopes();
+		hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
+		hotkey::set_scope_active(hotkey::SCOPE_EDITOR);
+		hotkeys_.set_items(set_hotkey_menu(), true, false);
+		hotkeys_.sort_by(0);
+		hotkeys_.reset_selection();
+		hotkeys_.set_dirty();
+	}
+
+	const bool hide_hotkey = (tab_ != INPUT_HOTKEY_GENERIC_TAB)
+			&& (tab_ != INPUT_HOTKEY_EDITOR_TAB) && (tab_ != INPUT_HOTKEY_GAME_TAB);
+	hotkeys_.hide(hide_hotkey);
+	hotkey_change_button_.hide(hide_hotkey);
+	hotkey_clear_button_.hide(hide_hotkey);
+	hotkey_reset_button_.hide(hide_hotkey);
+
 	const bool hide_advanced = tab_ != ADVANCED_TAB;
 	advanced_.hide(hide_advanced);
 	std::string adv_type = get_advanced_pref() != NULL ? (*get_advanced_pref())["type"].str() : "";
@@ -1241,28 +1751,19 @@ void preferences_dialog::set_selection(int index)
 	advanced_button_.hide(hide_advanced_bool);
 	advanced_slider_label_.hide(hide_advanced_int);
 	advanced_slider_.hide(hide_advanced_int);
+
 }
 
 }
 
 void show_preferences_dialog(display& disp, const config& game_cfg)
 {
-	std::vector<std::string> items;
-
-	std::string const pre = IMAGE_PREFIX + std::string("icons/icon-");
-	char const sep = COLUMN_SEPARATOR;
-	items.push_back(pre + "general.png" + sep + sgettext("Prefs section^General"));
-	items.push_back(pre + "display.png" + sep + sgettext("Prefs section^Display"));
-	items.push_back(pre + "music.png" + sep + sgettext("Prefs section^Sound"));
-	items.push_back(pre + "multiplayer.png" + sep + sgettext("Prefs section^Multiplayer"));
-	items.push_back(pre + "advanced.png" + sep + sgettext("Advanced section^Advanced"));
-
 	for(;;) {
 		try {
 			preferences_dialog dialog(disp,game_cfg);
 			dialog.parent.assign(new preferences_parent_dialog(disp));
-			dialog.parent->set_menu(items);
 			dialog.parent->add_pane(&dialog);
+			dialog.main_menu();
 			dialog.parent->show();
 			return;
 		} catch(preferences_dialog::video_mode_change_exception& e) {
@@ -1278,9 +1779,9 @@ void show_preferences_dialog(display& disp, const config& game_cfg)
 				break;
 			}
 
-			if(items[1].empty() || items[1][0] != '*') {
-				items[1] = "*" + items[1];
-			}
+		//	if(items[1].empty() || items[1][0] != '*') {
+		//		items[1] = "*" + items[1];
+		//	}
 		}
 	}
 }
