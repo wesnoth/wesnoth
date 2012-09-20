@@ -26,6 +26,7 @@ class unit_map;
 class unit_type_data;
 
 
+//the 'attack type' is the type of attack, how many times it strikes,
 //and how much damage it does.
 class attack_type
 {
