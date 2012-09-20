@@ -47,15 +47,19 @@ public:
 	double attack_weight() const { return attack_weight_; }
 	double defense_weight() const { return defense_weight_; }
 
-	bool get_special_bool(const std::string& special,bool force=false) const;
+	// In unit_abilities.cpp:
+
+	bool get_special_bool(const std::string& special, bool simple_check=false) const;
 	unit_ability_list get_specials(const std::string& special) const;
-	std::vector<t_string> special_tooltips(bool force=false) const;
-	std::string weapon_specials(bool force=false) const;
+	std::vector<t_string> special_tooltips(bool force_active=false) const;
+	std::string weapon_specials(bool force_active=false) const;
 	void set_specials_context(const map_location& aloc,const map_location& dloc,
 		const unit_map &unitmap, bool attacker, const attack_type *other_attack) const;
 	void set_specials_context(const map_location& loc,const map_location& dloc, const unit& un, bool attacker =true) const;
 
-	bool matches_filter(const config& cfg,bool self=false) const;
+	// In unit_types.cpp:
+
+	bool matches_filter(const config& filter, bool ignore_special=false) const;
 	bool apply_modification(const config& cfg,std::string* description);
 	bool describe_modification(const config& cfg,std::string* description);
 
@@ -73,9 +77,9 @@ private:
 	/*
 	 * cfg: a weapon special WML structure
 	 */
-	bool special_active(const config& cfg, bool self) const;
-	bool special_affects_opponent(const config& cfg) const;
-	bool special_affects_self(const config& cfg) const;
+	bool special_active(const config& special, bool self) const;
+	bool special_affects_opponent(const config& special) const;
+	bool special_affects_self(const config& special) const;
 
 	config cfg_;
 	t_string description_;

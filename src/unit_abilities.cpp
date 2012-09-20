@@ -440,13 +440,25 @@ std::pair<int,map_location> unit_ability_list::lowest(const std::string& key, in
  */
 
 namespace {
+
+	/**
+	 * Gets the children of @parent (which should be the specials for an
+	 * attack_type) and places the ones whose tag or id= matches @a id into
+	 * @a result.
+	 * If @a just_peeking is set to true, then @a result is not touched;
+	 * instead the return value is used to indicate if any matching children
+	 * were found.
+	 *
+	 * @returns  true if @a just_peeking is true and a match was found;
+	 *           false otherwise.
+	 */
 	bool get_special_children(std::vector<const config*>& result, const config& parent,
 	                           const std::string& id, bool just_peeking=false) {
 		BOOST_FOREACH(const config::any_child &sp, parent.all_children_range())
 		{
 			if (sp.key == id || sp.cfg["id"] == id) {
 				if(just_peeking) {
-					return true; // peek succeeded, abort
+					return true; // peek succeeded; done
 				} else {
 					result.push_back(&sp.cfg);
 				}
@@ -456,20 +468,36 @@ namespace {
 	}
 }
 
-bool attack_type::get_special_bool(const std::string& special,bool force) const
+/**
+ * Returns whether or not @a *this has a special with a tag or id equal to
+ * @a special. If @a simple_check is set to true, then the check is merely
+ * for being present. Otherwise (the default), the check is for a special
+ * active in the current context (see set_specials_context), including
+ * specials obtained from the opponent's attack.
+ */
+bool attack_type::get_special_bool(const std::string& special, bool simple_check) const
 {
-//	log_scope("get_special_bool");
+	//log_scope("get_special_bool");
 	if (const config &specials = cfg_.child("specials"))
 	{
 		std::vector<const config*> list;
-		if (get_special_children(list, specials, special, force)) return true;
+		if ( get_special_children(list, specials, special, simple_check) )
+			return true;
+
+		// If we make it to here, then either list.empty() or !simple_check.
+		// So if the list is not empty, then this is not a simple check and
+		// we need to check each special in the list to see if any are active.
 		for (std::vector<const config*>::iterator i = list.begin(),
 		     i_end = list.end(); i != i_end; ++i) {
 			if (special_active(**i, true))
 				return true;
 		}
 	}
-	if (force || !other_attack_) return false;
+
+	// Skip checking the opponent's attack?
+	if ( simple_check || !other_attack_ )
+		return false;
+
 	if (const config &specials = other_attack_->cfg_.child("specials"))
 	{
 		std::vector<const config*> list;
@@ -483,9 +511,13 @@ bool attack_type::get_special_bool(const std::string& special,bool force) const
 	return false;
 }
 
+/**
+ * Returns the currently active specials as an ability list, given the current
+ * context (see set_specials_context).
+ */
 unit_ability_list attack_type::get_specials(const std::string& special) const
 {
-//	log_scope("get_specials");
+	//log_scope("get_specials");
 	unit_ability_list res;
 	if (const config &specials = cfg_.child("specials"))
 	{
@@ -504,16 +536,27 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
 	}
 	return res;
 }
-std::vector<t_string> attack_type::special_tooltips(bool force) const
+
+/**
+ * Returns a vector of names and decriptions for the specials of *this.
+ * The vector has the format: name, description, name, description, etc.
+ * (So the length is always even.)
+ *
+ * This chooses between active and inactive names and descriptions, based
+ * on the current context (see set_specials_context). Setting @a force_active
+ * to true causes all specials to be assumed active. If the appropriate
+ * name is empty, the special is skipped.
+ */
+std::vector<t_string> attack_type::special_tooltips(bool force_active) const
 {
-//	log_scope("special_tooltips");
+	//log_scope("special_tooltips");
 	std::vector<t_string> res;
 	const config &specials = cfg_.child("specials");
 	if (!specials) return res;
 
 	BOOST_FOREACH(const config::any_child &sp, specials.all_children_range())
 	{
-		if (force || special_active(sp.cfg, true)) {
+		if ( force_active || special_active(sp.cfg, true) ) {
 			const t_string &name = sp.cfg["name"];
 			if (!name.empty()) {
 				res.push_back(name);
@@ -529,16 +572,25 @@ std::vector<t_string> attack_type::special_tooltips(bool force) const
 	}
 	return res;
 }
-std::string attack_type::weapon_specials(bool force) const
+
+/**
+ * Returns a comma-separated string of names for the specials of *this.
+ *
+ * This chooses between active and inactive names, based on the current
+ * context (see set_specials_context). Setting @a force_active to true
+ * causes all specials to be assumed active. If the appropriate name is
+ * empty, the special is skipped.
+ */
+std::string attack_type::weapon_specials(bool force_active) const
 {
-//	log_scope("weapon_specials");
+	//log_scope("weapon_specials");
 	std::string res;
 	const config &specials = cfg_.child("specials");
 	if (!specials) return res;
 
 	BOOST_FOREACH(const config::any_child &sp, specials.all_children_range())
 	{
-		char const *s = force || special_active(sp.cfg, true) ?
+		char const *s = force_active || special_active(sp.cfg, true) ?
 			"name" : "name_inactive";
 		std::string const &name = sp.cfg[s];
 
@@ -552,36 +604,35 @@ std::string attack_type::weapon_specials(bool force) const
 }
 
 
-
-/*
- *
- * cfg: a weapon special WML structure
- *
+/**
+ * Returns whether or not the given special is active for the current unit,
+ * based on the current context (see set_specials_context).
+ * @param[in]  special  a weapon special WML structure
+ * @param[in]  self     true if the special is from the current unit;
+ *                      false if it is from the opponent.
  */
-bool attack_type::special_active(const config& cfg, bool self) const
+bool attack_type::special_active(const config& special, bool self) const
 {
-//	log_scope("special_active");
+	//log_scope("special_active");
 	assert(unitmap_ != NULL);
 	unit_map::const_iterator att = unitmap_->find(aloc_);
 	unit_map::const_iterator def = unitmap_->find(dloc_);
 
 	if(self) {
-		if(!special_affects_self(cfg)) {
+		if ( !special_affects_self(special) )
 			return false;
-		}
 	} else {
-		if(!special_affects_opponent(cfg)) {
+		if ( !special_affects_opponent(special) )
 			return false;
-		}
 	}
 
 	if(attacker_) {
 		{
-			std::string const &active = cfg["active_on"];
+			std::string const &active = special["active_on"];
 			if (!active.empty() && active != "offense")
 				return false;
 		}
-		if (const config &filter_self = cfg.child("filter_self"))
+		if (const config &filter_self = special.child("filter_self"))
 		{
 			if (att == unitmap_->end() ||
 			    !att->matches_filter(vconfig(filter_self), aloc_))
@@ -591,7 +642,7 @@ bool attack_type::special_active(const config& cfg, bool self) const
 					return false;
 			}
 		}
-		if (const config &filter_opponent = cfg.child("filter_opponent"))
+		if (const config &filter_opponent = special.child("filter_opponent"))
 		{
 			if (def == unitmap_->end() ||
 			    !def->matches_filter(vconfig(filter_opponent), dloc_))
@@ -604,11 +655,11 @@ bool attack_type::special_active(const config& cfg, bool self) const
 		}
 	} else {
 		{
-			std::string const &active = cfg["active_on"];
+			std::string const &active = special["active_on"];
 			if (!active.empty() && active != "defense")
 				return false;
 		}
-		if (const config &filter_self = cfg.child("filter_self"))
+		if (const config &filter_self = special.child("filter_self"))
 		{
 			if (def == unitmap_->end() ||
 			    !def->matches_filter(vconfig(filter_self), dloc_))
@@ -618,7 +669,7 @@ bool attack_type::special_active(const config& cfg, bool self) const
 					return false;
 			}
 		}
-		if (const config &filter_opponent = cfg.child("filter_opponent"))
+		if (const config &filter_opponent = special.child("filter_opponent"))
 		{
 			if (att == unitmap_->end() ||
 			    !att->matches_filter(vconfig(filter_opponent), aloc_))
@@ -630,7 +681,7 @@ bool attack_type::special_active(const config& cfg, bool self) const
 			}
 		}
 	}
-	if (const config &filter_attacker = cfg.child("filter_attacker"))
+	if (const config &filter_attacker = special.child("filter_attacker"))
 	{
 		if (att == unitmap_->end() ||
 		    !att->matches_filter(vconfig(filter_attacker), aloc_))
@@ -647,7 +698,7 @@ bool attack_type::special_active(const config& cfg, bool self) const
 			}
 		}
 	}
-	if (const config &filter_defender = cfg.child("filter_defender"))
+	if (const config &filter_defender = special.child("filter_defender"))
 	{
 		if (def == unitmap_->end() ||
 		    !def->matches_filter(vconfig(filter_defender), dloc_))
@@ -671,7 +722,7 @@ bool attack_type::special_active(const config& cfg, bool self) const
 		get_adjacent_tiles(dloc_,adjacent);
 	}
 
-	BOOST_FOREACH(const config &i, cfg.child_range("filter_adjacent"))
+	BOOST_FOREACH(const config &i, special.child_range("filter_adjacent"))
 	{
 		BOOST_FOREACH(const std::string &j, utils::split(i["adjacent"]))
 		{
@@ -686,7 +737,7 @@ bool attack_type::special_active(const config& cfg, bool self) const
 		}
 	}
 
-	BOOST_FOREACH(const config &i, cfg.child_range("filter_adjacent_location"))
+	BOOST_FOREACH(const config &i, special.child_range("filter_adjacent_location"))
 	{
 		BOOST_FOREACH(const std::string &j, utils::split(i["adjacent"]))
 		{
@@ -702,15 +753,20 @@ bool attack_type::special_active(const config& cfg, bool self) const
 	}
 	return true;
 }
-/*
- *
- * cfg: a weapon special WML structure
- *
+
+/**
+ * Returns whether or not the given special affects the opponent of the unit
+ * with the special, based on the current context (see set_specials_context),
+ * and with the assumption that the special is from the opponent of the
+ * current unit.
+ * (That is, if the special is from the opponent, this returns whether or
+ * not it affects the current unit.)
+ * @param[in]  special  a weapon special WML structure
  */
-bool attack_type::special_affects_opponent(const config& cfg) const
+bool attack_type::special_affects_opponent(const config& special) const
 {
-//	log_scope("special_affects_opponent");
-	std::string const &apply_to = cfg["apply_to"];
+	//log_scope("special_affects_opponent");
+	std::string const &apply_to = special["apply_to"];
 	if (apply_to.empty())
 		return false;
 	if (apply_to == "both")
@@ -723,15 +779,19 @@ bool attack_type::special_affects_opponent(const config& cfg) const
 		return true;
 	return false;
 }
-/*
- *
- * cfg: a weapon special WML structure
- *
+
+/**
+ * Returns whether or not the given special affects the unit with the special,
+ * based on the current context (see set_specials_context), and with the
+ * assumption that the special is from the current unit.
+ * (That is, if the special is from the current unit, this returns whether or
+ * not it affects the current unit.)
+ * @param[in]  special  a weapon special WML structure
  */
-bool attack_type::special_affects_self(const config& cfg) const
+bool attack_type::special_affects_self(const config& special) const
 {
-//	log_scope("special_affects_self");
-	std::string const &apply_to = cfg["apply_to"];
+	//log_scope("special_affects_self");
+	std::string const &apply_to = special["apply_to"];
 	if (apply_to.empty())
 		return true;
 	if (apply_to == "both")
@@ -744,6 +804,15 @@ bool attack_type::special_affects_self(const config& cfg) const
 		return true;
 	return false;
 }
+
+/**
+ * Sets the context under which specials will be checked for being active.
+ * @param[in]  aloc          The location of the attacker.
+ * @param[in]  dloc          The location of the defender.
+ * @param[in]  unitmap       The unit_map used to find units based on location.
+ * @param[in]  attacker      Whether or not the current unit is the attacker.
+ * @param[in]  other_attack  The attack used by the other unit.
+ */
 void attack_type::set_specials_context(const map_location& aloc,const map_location& dloc,
 	const unit_map &unitmap, bool attacker, const attack_type *other_attack) const
 {
@@ -754,6 +823,13 @@ void attack_type::set_specials_context(const map_location& aloc,const map_locati
 	other_attack_ = other_attack;
 }
 
+/**
+ * Sets the context under which specials will be checked for being active.
+ * @param[in]  loc           The location of the attacker.
+ * @param[in]  dloc          The location of the defender.
+ * @param[in]  unit          Unused
+ * @param[in]  attacker      Whether or not the current unit is the attacker.
+ */
 void attack_type::set_specials_context(const map_location& loc, const map_location& dloc, const unit& /*un*/, bool attacker) const
 {
 	aloc_ = loc;
@@ -762,7 +838,6 @@ void attack_type::set_specials_context(const map_location& loc, const map_locati
 	attacker_ = attacker;
 	other_attack_ = NULL;
 }
-
 
 
 

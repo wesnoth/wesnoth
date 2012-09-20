@@ -90,13 +90,18 @@ std::string attack_type::accuracy_parry_description() const
 	return s.str();
 }
 
-bool attack_type::matches_filter(const config& cfg,bool self) const
+/**
+ * Returns whether or not *this matches the given @a filter.
+ * If @a ignore_special is set to true, then the special= attribute of the
+ * filter is ignored.
+ */
+bool attack_type::matches_filter(const config& filter, bool ignore_special) const
 {
-	const std::vector<std::string>& filter_range = utils::split(cfg["range"]);
-	const std::string& filter_damage = cfg["damage"];
-	const std::vector<std::string> filter_name = utils::split(cfg["name"]);
-	const std::vector<std::string> filter_type = utils::split(cfg["type"]);
-	const std::string filter_special = cfg["special"];
+	const std::vector<std::string>& filter_range = utils::split(filter["range"]);
+	const std::string& filter_damage = filter["damage"];
+	const std::vector<std::string> filter_name = utils::split(filter["name"]);
+	const std::vector<std::string> filter_type = utils::split(filter["type"]);
+	const std::string filter_special = filter["special"];
 
 	if(filter_range.empty() == false && std::find(filter_range.begin(),filter_range.end(),range()) == filter_range.end())
 			return false;
@@ -111,12 +116,22 @@ bool attack_type::matches_filter(const config& cfg,bool self) const
 	if(filter_type.empty() == false && std::find(filter_type.begin(),filter_type.end(),type()) == filter_type.end())
 		return false;
 
-	if(!self && filter_special.empty() == false && !get_special_bool(filter_special,true))
+	if ( !ignore_special && !filter_special.empty() && !get_special_bool(filter_special, true) )
 		return false;
 
 	return true;
 }
 
+/**
+ * Modifies *this using the specifications in @a cfg, but only if *this matches
+ * @a cfg viewed as a filter.
+ * 
+ * If *description is provided, it will be set to a (translated) description
+ * of the modification(s) applied (currently only changes to the number of
+ * strikes, damage, accuracy, and parry are included in this description).
+ *
+ * @returns whether or not @this matched the @cfg as a filter.
+ */
 bool attack_type::apply_modification(const config& cfg,std::string* description)
 {
 	if(!matches_filter(cfg,0))
@@ -244,7 +259,17 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 	return true;
 }
 
-// Same as above, except only update the descriptions
+/**
+ * Trimmed down version of apply_modification(), with no modifications actually
+ * made. This can be used to get a description of the modification(s) specified
+ * by @a cfg (if *this matches cfg as a filter).
+ * 
+ * If *description is provided, it will be set to a (translated) description
+ * of the modification(s) that would be applied to the number of strikes
+ * and damage.
+ *
+ * @returns whether or not @this matched the @cfg as a filter.
+ */
 bool attack_type::describe_modification(const config& cfg,std::string* description)
 {
 	if(!matches_filter(cfg,0))
