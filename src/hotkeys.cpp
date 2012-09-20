@@ -631,8 +631,10 @@ void save_hotkeys(config& cfg)
 
 	for(std::vector<hotkey_item>::iterator i = hotkeys_.begin(); i != hotkeys_.end(); ++i) {
 
+		if (i->get_type() == hotkey_item::UNBOUND || i->get_type() == hotkey_item::CLEARED)
+			continue;
+
 		config& item = cfg.add_child("hotkey");
-		item["command"] = i->get_command();
 
 		switch (i->get_type()) {
 
@@ -662,6 +664,7 @@ void save_hotkeys(config& cfg)
 			continue;
 		}
 
+		item["command"] = i->get_command();
 		item["alt"] = i->get_alt();
 		item["ctrl"] = i->get_ctrl();
 		item["cmd"] = i->get_cmd();
