@@ -71,7 +71,7 @@ public:
 private:
 	// In unit_abilities.cpp:
 
-	bool special_active(const config& special, bool self) const;
+	bool special_active(const config& special, bool affect_self) const;
 
 	// Used via set_specials_context() to control which specials are
 	// considered active.

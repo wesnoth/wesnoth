@@ -651,126 +651,100 @@ namespace { // Helpers for attack_type::special_active()
 		return false;
 	}
 
+	/**
+	 * Determines if a unit/weapon combination matches the specified child
+	 * (normally a [filter_*] child) of the provided filter.
+	 * @param[in]  un_it      The unit to filter.
+	 * @param[in]  loc        The presumed location of @a un_it.
+	 * @param[in]  weapon     The attack_type to filter.
+	 * @param[in]  filter     The filter containing the child filter to use.
+	 * @param[in]  child_tag  The tag of the child filter to use.
+	 */
+	static bool special_unit_matches(const unit_map::const_iterator & un_it,
+		                             const map_location & loc,
+		                             const attack_type * weapon,
+		                             const config & filter,
+		                             const std::string & child_tag)
+	{
+		const config & filter_child = filter.child(child_tag);
+		if ( !filter_child )
+			// The special does not filter on this unit, so we pass.
+			return true;
+
+		// Check for a unit match.
+		if ( !un_it.valid() || !un_it->matches_filter(vconfig(filter_child), loc) )
+			return false;
+
+		// Check for a weapon match.
+		if ( const config & filter_weapon = filter_child.child("filter_weapon") ) {
+			if ( !weapon || !weapon->matches_filter(filter_weapon, true) )
+				return false;
+		}
+
+		// Passed.
+		return true;
+	}
+
 }//anonymous namespace
 
 /**
- * Returns whether or not the given special is active for the current unit,
+ * Returns whether or not the given special is active for the specified unit,
  * based on the current context (see set_specials_context).
- * @param[in]  special  a weapon special WML structure
- * @param[in]  self     true if the special is from the current unit;
- *                      false if it is from the opponent.
+ * @param[in]  special      a weapon special WML structure
+ * @param[in]  affect_self  true if checking active for the current unit;
+ *                          false if for the opponent.
  */
-bool attack_type::special_active(const config& special, bool self) const
+bool attack_type::special_active(const config& special, bool affect_self) const
 {
 	//log_scope("special_active");
-	assert(unitmap_ != NULL);
-	unit_map::const_iterator att = unitmap_->find(aloc_);
-	unit_map::const_iterator def = unitmap_->find(dloc_);
 
-	if(self) {
+	// Does this affect the specified unit?
+	if ( affect_self ) {
 		if ( !special_affects_self(special, attacker_) )
 			return false;
 	} else {
-		if ( !special_affects_opponent(special, !attacker_) )
+		if ( !special_affects_opponent(special, attacker_) )
 			return false;
 	}
 
-	if(attacker_) {
-		{
-			std::string const &active = special["active_on"];
-			if (!active.empty() && active != "offense")
-				return false;
-		}
-		if (const config &filter_self = special.child("filter_self"))
-		{
-			if (att == unitmap_->end() ||
-			    !att->matches_filter(vconfig(filter_self), aloc_))
-				return false;
-			if (const config &filter_weapon = filter_self.child("filter_weapon")) {
-				if (!matches_filter(filter_weapon, true))
-					return false;
-			}
-		}
-		if (const config &filter_opponent = special.child("filter_opponent"))
-		{
-			if (def == unitmap_->end() ||
-			    !def->matches_filter(vconfig(filter_opponent), dloc_))
-				return false;
-			if (const config &filter_weapon = filter_opponent.child("filter_weapon")) {
-				if (!other_attack_ ||
-				    !other_attack_->matches_filter(filter_weapon, true))
-					return false;
-			}
-		}
-	} else {
-		{
-			std::string const &active = special["active_on"];
-			if (!active.empty() && active != "defense")
-				return false;
-		}
-		if (const config &filter_self = special.child("filter_self"))
-		{
-			if (def == unitmap_->end() ||
-			    !def->matches_filter(vconfig(filter_self), dloc_))
-				return false;
-			if (const config &filter_weapon = filter_self.child("filter_weapon")) {
-				if (!matches_filter(filter_weapon, true))
-					return false;
-			}
-		}
-		if (const config &filter_opponent = special.child("filter_opponent"))
-		{
-			if (att == unitmap_->end() ||
-			    !att->matches_filter(vconfig(filter_opponent), aloc_))
-				return false;
-			if (const config &filter_weapon = filter_opponent.child("filter_weapon")) {
-				if (!other_attack_ ||
-				    !other_attack_->matches_filter(filter_weapon, true))
-					return false;
-			}
-		}
-	}
-	if (const config &filter_attacker = special.child("filter_attacker"))
-	{
-		if (att == unitmap_->end() ||
-		    !att->matches_filter(vconfig(filter_attacker), aloc_))
+	// Is this active on attack/defense?
+	const std::string & active_on = special["active_on"];
+	if ( !active_on.empty() ) {
+		if ( attacker_  &&  active_on != "offense" )
 			return false;
-		if (const config &filter_weapon = filter_attacker.child("filter_weapon"))
-		{
-			if (attacker_) {
-				if (!matches_filter(filter_weapon, true))
-					return false;
-			} else {
-				if (!other_attack_ ||
-				    !other_attack_->matches_filter(filter_weapon, true))
-					return false;
-			}
-		}
-	}
-	if (const config &filter_defender = special.child("filter_defender"))
-	{
-		if (def == unitmap_->end() ||
-		    !def->matches_filter(vconfig(filter_defender), dloc_))
+		if ( !attacker_  &&  active_on != "defense" )
 			return false;
-		if (const config &filter_weapon = filter_defender.child("filter_weapon"))
-		{
-			if (!attacker_) {
-				if(!matches_filter(filter_weapon, true))
-					return false;
-			} else {
-				if (!other_attack_ ||
-				    !other_attack_->matches_filter(filter_weapon, true))
-					return false;
-			}
-		}
 	}
+
+	// Get the units involved.
+	assert(unitmap_ != NULL);
+	unit_map::const_iterator att = unitmap_->find(aloc_);
+	unit_map::const_iterator def = unitmap_->find(dloc_);
+	unit_map::const_iterator & self  = attacker_ ? att : def;
+	unit_map::const_iterator & other = attacker_ ? def : att;
+
+	// Translate our context into terms of "self" and "other"
+	const map_location & self_loc  = attacker_ ? aloc_ : dloc_;
+	const map_location & other_loc = attacker_ ? dloc_ : aloc_;
+
+	// Translate our context into terms of "attacker" and "defender"
+	const attack_type * att_weapon = attacker_ ? this : other_attack_;
+	const attack_type * def_weapon = attacker_ ? other_attack_ : this;
+
+	// Filter the units involved.
+	if ( !special_unit_matches(self, self_loc, this, special, "filter_self") )
+		return false;
+	if ( !special_unit_matches(other, other_loc, other_attack_, special, "filter_opponent") )
+		return false;
+	if ( !special_unit_matches(att, aloc_, att_weapon, special, "filter_attacker") )
+		return false;
+	if ( !special_unit_matches(def, dloc_, def_weapon, special, "filter_defender") )
+		return false;
+
 	map_location adjacent[6];
-	if(attacker_) {
-		get_adjacent_tiles(aloc_,adjacent);
-	} else {
-		get_adjacent_tiles(dloc_,adjacent);
-	}
+	get_adjacent_tiles(self_loc, adjacent);
 
+	// Filter the adjacent units.
 	BOOST_FOREACH(const config &i, special.child_range("filter_adjacent"))
 	{
 		BOOST_FOREACH(const std::string &j, utils::split(i["adjacent"]))
@@ -786,6 +760,7 @@ bool attack_type::special_active(const config& special, bool self) const
 		}
 	}
 
+	// Filter the adjacent locations.
 	BOOST_FOREACH(const config &i, special.child_range("filter_adjacent_location"))
 	{
 		BOOST_FOREACH(const std::string &j, utils::split(i["adjacent"]))
@@ -800,6 +775,7 @@ bool attack_type::special_active(const config& special, bool self) const
 			}
 		}
 	}
+
 	return true;
 }
 
