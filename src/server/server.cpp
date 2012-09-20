@@ -1011,13 +1011,16 @@ void server::process_login(const network::connection sock,
 			<< "\tplayer joined using unknown version " << version_str
 			<< ":\trejecting them\n";
 		config response;
-		if (!accepted_versions_.empty()) {
-			response["version"] = *accepted_versions_.begin();
-		} else if (redirected_versions_.empty() == false) {
-			response["version"] = redirected_versions_.begin()->first;
-		} else {
+
+		// For compatibility with older clients
+		response["version"] = *accepted_versions_.begin();
+
+		config &reject = response.add_child("reject");
+		reject["accepted_versions"] = utils::join(accepted_versions_);
+
+		if (accepted_versions_.empty()) {
+			// This cannot happen with the current way accepted_versions_ is populated
 			ERR_SERVER << "ERROR: This server doesn't accept any versions at all.\n";
-			response["version"] = "null";
 		}
 		network::send_data(response, sock, "error");
 		return;
