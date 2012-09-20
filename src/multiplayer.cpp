@@ -161,13 +161,19 @@ static server_type open_connection(game_display& disp, const std::string& origin
 		if (!data_res) return ABORT_SERVER;
 		mp::check_response(data_res, data);
 
-		// Backwards-compatibility "version" attribute
-		const std::string& version = data["version"];
-		if(version.empty() == false && version != game_config::version) {
+		if (data.has_child("reject") || data.has_attribute("version")) {
+			std::string version;
+			if (const config &reject = data.child("reject")) {
+				version = reject["accepted_versions"].str();
+			} else {
+				// Backwards-compatibility "version" attribute
+				version = data["version"].str();
+			}
+
 			utils::string_map i18n_symbols;
 			i18n_symbols["version1"] = version;
 			i18n_symbols["version2"] = game_config::version;
-			const std::string errorstring = vgettext("The server requires version '$version1' while you are using version '$version2'", i18n_symbols);
+			const std::string errorstring = vgettext("The server accepts versions '$version1' while you are using version '$version2'", i18n_symbols);
 			throw network::error(errorstring);
 		}
 
