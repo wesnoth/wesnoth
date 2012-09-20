@@ -246,20 +246,13 @@ std::vector<boost::tuple<t_string,t_string,t_string> > unit::ability_tooltips(bo
  * cfg: an ability WML structure
  *
  */
-static bool cache_illuminates(int &cache, std::string const &ability)
-{
-	if (cache < 0)
-		cache = (ability == "illuminates");
-	return (cache != 0);
-}
-
 bool unit::ability_active(const std::string& ability,const config& cfg,const map_location& loc) const
 {
-	int illuminates = -1;
+	bool illuminates = ability == "illuminates";
 	assert(resources::units && resources::game_map && resources::teams && resources::tod_manager);
 
 	if (const config &afilter = cfg.child("filter"))
-		if (!matches_filter(vconfig(afilter), loc, cache_illuminates(illuminates, ability)))
+		if ( !matches_filter(vconfig(afilter), loc, illuminates) )
 			return false;
 
 	map_location adjacent[6];
@@ -277,8 +270,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 			unit_map::const_iterator unit = units.find(adjacent[index]);
 			if (unit == units.end())
 				return false;
-			if (!unit->matches_filter(vconfig(i), unit->get_location(),
-				cache_illuminates(illuminates, ability)))
+			if (!unit->matches_filter(vconfig(i), unit->get_location(), illuminates))
 				return false;
 		}
 	}
@@ -292,7 +284,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 				continue;
 			}
 			terrain_filter adj_filter(vconfig(i), units);
-			adj_filter.flatten(cache_illuminates(illuminates, ability));
+			adj_filter.flatten(illuminates);
 			if(!adj_filter.match(adjacent[index])) {
 				return false;
 			}
@@ -307,7 +299,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
  */
 bool unit::ability_affects_adjacent(const std::string& ability, const config& cfg,int dir,const map_location& loc) const
 {
-	int illuminates = -1;
+	bool illuminates = ability == "illuminates";
 
 	assert(dir >=0 && dir <= 5);
 	static const std::string adjacent_names[6] = {"n","ne","se","s","sw","nw"};
@@ -316,8 +308,7 @@ bool unit::ability_affects_adjacent(const std::string& ability, const config& cf
 		std::vector<std::string> dirs = utils::split(i["adjacent"]);
 		if(std::find(dirs.begin(),dirs.end(),adjacent_names[dir]) != dirs.end()) {
 			if (const config &filter = i.child("filter")) {
-				if (matches_filter(vconfig(filter), loc,
-					cache_illuminates(illuminates, ability)))
+				if ( matches_filter(vconfig(filter), loc, illuminates) )
 					return true;
 			} else
 				return true;
@@ -332,11 +323,10 @@ bool unit::ability_affects_adjacent(const std::string& ability, const config& cf
  */
 bool unit::ability_affects_self(const std::string& ability,const config& cfg,const map_location& loc) const
 {
-	int illuminates = -1;
 	const config &filter = cfg.child("filter_self");
 	bool affect_self = cfg["affect_self"].to_bool(true);
 	if (!filter || !affect_self) return affect_self;
-	return matches_filter(vconfig(filter), loc,cache_illuminates(illuminates, ability));
+	return matches_filter(vconfig(filter), loc, ability == "illuminates");
 }
 
 bool unit::has_ability_type(const std::string& ability) const
