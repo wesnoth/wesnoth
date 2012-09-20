@@ -164,7 +164,7 @@ const hotkey_command hotkey_list_[] = {
 	{ hotkey::HOTKEY_EDITOR_CUT, "editor-cut", N_("Cut"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_COPY, "editor-copy", N_("Copy"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_PASTE, "editor-paste", N_("Paste"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_EXPORT_SELECTION_COORDS, "editor-export-selection-coords", N_("Export Selected Coordinates to System Clipboard"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_EXPORT_SELECTION_COORDS, "editor-export-selection-coords", N_("Export Selected Coordinates to System Clipboard"), true, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_SELECT_ALL, "editor-select-all", N_("Select All"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_SELECT_INVERSE, "editor-select-inverse", N_("Select Inverse"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_SELECT_NONE, "editor-select-none", N_("Select None"), false, hotkey::SCOPE_EDITOR },
@@ -603,7 +603,8 @@ void load_hotkeys(const config& cfg, bool set_as_default)
 	BOOST_FOREACH(const config &hk, cfg.child_range("hotkey"))
 	{
 		hotkey_item h(hk);
-		hotkeys_.push_back(h);
+		if (h.get_type() != hotkey_item::CLEARED && h.get_type() != hotkey_item::UNBOUND)
+			hotkeys_.push_back(h);
 	}
 
 	if (hotkeys_.empty())
@@ -630,17 +631,11 @@ void save_hotkeys(config& cfg)
 
 	for(std::vector<hotkey_item>::iterator i = hotkeys_.begin(); i != hotkeys_.end(); ++i) {
 
-		if (i->get_type() == hotkey_item::UNBOUND)
-			continue;
-
 		config& item = cfg.add_child("hotkey");
 		item["command"] = i->get_command();
 
 		switch (i->get_type()) {
 
-		case hotkey_item::CLEARED:
-			item["key"] = CLEARED_TEXT;
-			continue;
 		case hotkey_item::JBUTTON:
 			item["joystick"] = i->get_device();
 			item["button"] = i->get_button();
@@ -663,7 +658,8 @@ void save_hotkeys(config& cfg)
 			item["button"] = i->get_button();
 			break;
 		case hotkey_item::UNBOUND:
-			break;
+		case hotkey_item::CLEARED:
+			continue;
 		}
 
 		item["alt"] = i->get_alt();
@@ -686,7 +682,8 @@ std::string get_names(HOTKEY_COMMAND id) {
 
 	std::map<hotkey::HOTKEY_COMMAND, std::vector<hotkey::hotkey_item> > hotkey_map;
 	BOOST_FOREACH(const hotkey::hotkey_item& item, hotkeys_) {
-		hotkey_map[item.get_id()].push_back(item);
+		if (item.get_type() != hotkey_item::UNBOUND && item.get_type() != hotkey_item::CLEARED)
+			hotkey_map[item.get_id()].push_back(item);
 	}
 
 	std::stringstream names;
