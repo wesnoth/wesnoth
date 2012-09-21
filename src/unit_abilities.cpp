@@ -667,7 +667,7 @@ namespace { // Helpers for attack_type::special_active()
 
 		// Check for a weapon match.
 		if ( const config & filter_weapon = filter_child.child("filter_weapon") ) {
-			if ( !weapon || !weapon->matches_filter(filter_weapon, true) )
+			if ( !weapon || !weapon->matches_filter(filter_weapon) )
 				return false;
 		}
 

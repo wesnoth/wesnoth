@@ -60,7 +60,7 @@ public:
 
 	// In unit_types.cpp:
 
-	bool matches_filter(const config& filter, bool ignore_special=false) const;
+	bool matches_filter(const config& filter) const;
 	bool apply_modification(const config& cfg,std::string* description);
 	bool describe_modification(const config& cfg,std::string* description);
 

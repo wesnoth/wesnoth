@@ -95,7 +95,7 @@ std::string attack_type::accuracy_parry_description() const
  * If @a ignore_special is set to true, then the special= attribute of the
  * filter is ignored.
  */
-bool attack_type::matches_filter(const config& filter, bool ignore_special) const
+bool attack_type::matches_filter(const config& filter) const
 {
 	const std::vector<std::string>& filter_range = utils::split(filter["range"]);
 	const std::string& filter_damage = filter["damage"];
@@ -116,7 +116,7 @@ bool attack_type::matches_filter(const config& filter, bool ignore_special) cons
 	if(filter_type.empty() == false && std::find(filter_type.begin(),filter_type.end(),type()) == filter_type.end())
 		return false;
 
-	if ( !ignore_special && !filter_special.empty() && !get_special_bool(filter_special, true) )
+	if ( !filter_special.empty() && !get_special_bool(filter_special, true) )
 		return false;
 
 	return true;
@@ -134,7 +134,7 @@ bool attack_type::matches_filter(const config& filter, bool ignore_special) cons
  */
 bool attack_type::apply_modification(const config& cfg,std::string* description)
 {
-	if(!matches_filter(cfg,0))
+	if( !matches_filter(cfg) )
 		return false;
 
 	const std::string& set_name = cfg["set_name"];
@@ -272,7 +272,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
  */
 bool attack_type::describe_modification(const config& cfg,std::string* description)
 {
-	if(!matches_filter(cfg,0))
+	if( !matches_filter(cfg) )
 		return false;
 
 	const std::string& increase_damage = cfg["increase_damage"];

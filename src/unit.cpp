@@ -2487,7 +2487,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 				} else if(apply_to == "remove_attacks") {
 					std::vector<attack_type>::iterator a = attacks_.begin();
 					while(a != attacks_.end()) {
-						if(a->matches_filter(effect, false)) {
+						if(a->matches_filter(effect)) {
 							a = attacks_.erase(a);
 							continue;
 						}
