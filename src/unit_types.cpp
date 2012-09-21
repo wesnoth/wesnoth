@@ -781,10 +781,10 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	if (build_status_ == NOT_BUILT)
 		build_created(mv_types, races, traits);
 
-	config &cfg = cfg_;
+	const config &cfg = cfg_;
 
-	type_name_ = cfg_["name"];
-	description_ = cfg_["description"];
+	type_name_ = cfg["name"];
+	description_ = cfg["description"];
 	hitpoints_ = cfg["hitpoints"].to_int(1);
 	level_ = cfg["level"];
 	movement_ = cfg["movement"].to_int(1);
@@ -792,12 +792,12 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	jamming_ = cfg["jamming"].to_int(0);
 	max_attacks_ = cfg["attacks"].to_int(1);
 	cost_ = cfg["cost"].to_int(1);
-	usage_ = cfg_["usage"].str();
-	undead_variation_ = cfg_["undead_variation"].str();
-	image_ = cfg_["image"].str();
-	icon_ = cfg_["image_icon"].str();
-	small_profile_ = cfg_["small_profile"].str();
-	big_profile_ = cfg_["profile"].str();
+	usage_ = cfg["usage"].str();
+	undead_variation_ = cfg["undead_variation"].str();
+	image_ = cfg["image"].str();
+	icon_ = cfg["image_icon"].str();
+	small_profile_ = cfg["small_profile"].str();
+	big_profile_ = cfg["profile"].str();
 	adjust_profile(small_profile_, big_profile_, image_);
 
 	for (int i = 0; i < 2; ++i) {
@@ -859,7 +859,7 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	{
 		possibleTraits_.add_child("trait", t);
 	}
-	BOOST_FOREACH(config &var_cfg, cfg.child_range("variation"))
+	BOOST_FOREACH(config &var_cfg, cfg_.child_range("variation"))
 	{
 		if (var_cfg["inherit"].to_bool()) {
 			config nvar_cfg(cfg);
@@ -883,9 +883,9 @@ void unit_type::build_created(const movement_type_map &mv_types,
 	gender_types_[0] = NULL;
 	gender_types_[1] = NULL;
 
-	config &cfg = cfg_;
+	const config &cfg = cfg_;
 
-	if (config &male_cfg = cfg.child("male"))
+	if (config &male_cfg = cfg_.child("male"))
 	{
 		if (male_cfg["inherit"].to_bool(true)) {
 			config m_cfg(cfg);
@@ -897,7 +897,7 @@ void unit_type::build_created(const movement_type_map &mv_types,
 		gender_types_[0] = new unit_type(male_cfg);
 	}
 
-	if (config &female_cfg = cfg.child("female"))
+	if (config &female_cfg = cfg_.child("female"))
 	{
 		if (female_cfg["inherit"].to_bool(true)) {
 			config f_cfg(cfg);
