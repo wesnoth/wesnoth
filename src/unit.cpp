@@ -855,10 +855,12 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 
 	new_cfg.merge_with(t->get_cfg());
 
-	// Remove pure unit_type attributes.
-	static char const *unit_type_attrs[] = { "movement", "movement_type",
-		"die_sound", "flies", "inherit", "variation_name",
-		"ignore_race_traits", "hide_help" };
+	// Remove "pure" unit_type attributes (attributes that do not get directly
+	// copied to units; some do get copied, but under different keys).
+	static char const *unit_type_attrs[] = { "attacks", "die_sound",
+		"experience", "flies", "hide_help", "hitpoints", "id",
+		"ignore_race_traits", "inherit", "movement", "movement_type",
+		"name", "num_traits", "variation_name" };
 	BOOST_FOREACH(const char *attr, unit_type_attrs) {
 		new_cfg.remove_attribute(attr);
 	}
