@@ -15,9 +15,8 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-09-01 18:47+0200\n"
-"PO-Revision-Date: 2012-05-22 07:00+0200\n"
-"Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
-"com>\n"
+"PO-Revision-Date: 2012-09-22 08:25+0200\n"
+"Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
@@ -32,8 +31,9 @@ msgstr ""
 "com>\n"
 "com>\n"
 "com>\n"
+"com>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.4\n"
+"X-Generator: Lokalize 1.5\n"
 
 #. [terrain_type]: id=deep_water
 #. [terrain_type]: id=deep_water_gray
@@ -278,10 +278,8 @@ msgstr "Muíño de vento"
 
 #. [terrain_type]: id=campfire
 #: data/core/terrain.cfg:409
-#, fuzzy
-#| msgid "Campaign"
 msgid "Campfire"
-msgstr "Campaña"
+msgstr "Fogueira"
 
 #. [terrain_type]: id=fence
 #: data/core/terrain.cfg:418
@@ -345,10 +343,8 @@ msgstr "Selva tropical"
 
 #. [terrain_type]: id=palm_forest
 #: data/core/terrain.cfg:497
-#, fuzzy
-#| msgid "Pine Forest"
 msgid "Palm Forest"
-msgstr "Bosque de piñeiros"
+msgstr "Bosque de palmeiras"
 
 #. [terrain_type]: id=pine_forest
 #: data/core/terrain.cfg:509
@@ -520,17 +516,13 @@ msgstr "Bosque frondoso elevado nevado"
 
 #. [terrain_type]: id=forest_tropical_hills
 #: data/core/terrain.cfg:820
-#, fuzzy
-#| msgid "Tropical Forest"
 msgid "Tropical Forested Hills"
-msgstr "Selva tropical"
+msgstr "Bosque tropical elevado"
 
 #. [terrain_type]: id=forest_palm_hills
 #: data/core/terrain.cfg:831
-#, fuzzy
-#| msgid "Forested Hills"
 msgid "Palm Forested Hills"
-msgstr "Bosque elevado"
+msgstr "Bosque de palmeiras elevado"
 
 #. [terrain_type]
 #: data/core/terrain.cfg:843
@@ -1159,30 +1151,24 @@ msgstr "Ponte abismal dunha cova"
 #. [terrain_type]: id=hangingbridgediag2
 #: data/core/terrain.cfg:2087 data/core/terrain.cfg:2098
 #: data/core/terrain.cfg:2109
-#, fuzzy
-#| msgid "Rotting Bridge"
 msgid "Hanging Bridge"
-msgstr "Ponte de madeira podre"
+msgstr "Ponte colgante"
 
 #. [terrain_type]: id=stonechasmbridge
 #. [terrain_type]: id=stonechasmbridgediag1
 #. [terrain_type]: id=stonechasmbridgediag2
 #: data/core/terrain.cfg:2123 data/core/terrain.cfg:2133
 #: data/core/terrain.cfg:2143
-#, fuzzy
-#| msgid "Cave Chasm Bridge"
 msgid "Stone Chasm Bridge"
-msgstr "Ponte abismal dunha cova"
+msgstr "Ponte abismal de pedra"
 
 #. [terrain_type]: id=plankbridge
 #. [terrain_type]: id=plankbridgediag1
 #. [terrain_type]: id=plankbridgediag2
 #: data/core/terrain.cfg:2155 data/core/terrain.cfg:2165
 #: data/core/terrain.cfg:2175
-#, fuzzy
-#| msgid "Bridge"
 msgid "Plank Bridge"
-msgstr "Ponte"
+msgstr "Ponte de táboas"
 
 #. [terrain_type]: id=off_map
 #: data/core/terrain.cfg:2191
@@ -1228,7 +1214,7 @@ msgstr "Intransitábel"
 #. [terrain_type]: id=rails
 #: data/core/terrain.cfg:2274
 msgid "Rails"
-msgstr ""
+msgstr "Raís"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
@@ -1318,10 +1304,8 @@ msgstr "Cancelar"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:88
-#, fuzzy
-#| msgid "Type"
 msgid "Type:"
-msgstr "Tipo"
+msgstr "Tipo:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:120
@@ -1335,10 +1319,8 @@ msgstr "Versión:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:180
-#, fuzzy
-#| msgid "Status"
 msgid "Status:"
-msgstr "Estado"
+msgstr "Estado:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:212
@@ -1348,7 +1330,7 @@ msgstr "Tamaño:"
 #. [label]
 #: data/gui/default/window/addon_description.cfg:243
 msgid "Downloads:"
-msgstr ""
+msgstr "Descargas:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:274
@@ -1373,78 +1355,72 @@ msgstr "ningunha."
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:22
 msgid "addons_of_type^Campaigns"
-msgstr ""
+msgstr "Campañas"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:23
 msgid "addons_of_type^MP eras"
-msgstr ""
+msgstr "Eras mult."
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:26
 msgid "addons_of_type^Scenarios"
-msgstr ""
+msgstr "Escenarios"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:27
 msgid "addons_of_type^MP factions"
-msgstr ""
+msgstr "Faccións mult."
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:30
 msgid "addons_of_type^MP campaigns"
-msgstr ""
+msgstr "Campañas mult."
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:31
 msgid "addons_of_type^Resources"
-msgstr ""
+msgstr "Recursos"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:34
 msgid "addons_of_type^MP scenarios"
-msgstr ""
+msgstr "Escenarios mult."
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:36
 msgid "addons_of_type^Other"
-msgstr ""
+msgstr "Outro"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:39
 msgid "addons_of_type^MP map-packs"
-msgstr ""
+msgstr "Mapas mult."
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:40
 msgid "addons_of_type^Unknown"
-msgstr ""
+msgstr "Descoñecido"
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:140
-#, fuzzy
-#| msgid "Multiplayer Options"
 msgid "Filter Options"
-msgstr "Volver"
+msgstr "Opcións do filtro"
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:154
 msgid "Add-ons matching the following criteria will be displayed."
-msgstr ""
+msgstr "Amosaranse os complementos que coincidan co seguinte criterio."
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:181
-#, fuzzy
-#| msgid "Add-ons"
 msgid "Add-on types:"
-msgstr "Complementos"
+msgstr "Tipos de complementos:"
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:193
-#, fuzzy
-#| msgid "Translations:"
 msgid "Installation status:"
-msgstr "Traducións:"
+msgstr "Estado de instalación:"
 
 #. [label]
 #: data/gui/default/window/addon_uninstall_list.cfg:51
@@ -1466,12 +1442,12 @@ msgid "Remove"
 msgstr "Eliminar"
 
 # Aparece encabezando a lista de campañas, convidando ao usuario a xogar unha.
+#
+# É posíbel instalar, mediante complementos, escenarios individuais que aparezan tamén listados, de aí a tradución.
 #. [label]
 #: data/gui/default/window/campaign_dialog.cfg:55
-#, fuzzy
-#| msgid "Play a campaign"
 msgid "Play a Campaign"
-msgstr "Xogar unha campaña"
+msgstr "Xogar unha campaña ou escenario"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -1614,20 +1590,18 @@ msgstr "Só co equipo"
 
 #. [toggle_button]: id=immutable_toggle
 #: data/gui/default/window/editor_edit_label.cfg:112
-#, fuzzy
-#| msgid "Impassable"
 msgid "Immutable"
-msgstr "Infranqueábel"
+msgstr "Inmutábel"
 
 #. [toggle_button]: id=visible_fog_toggle
 #: data/gui/default/window/editor_edit_label.cfg:130
 msgid "Visible in fog"
-msgstr ""
+msgstr "Visíbel na néboa"
 
 #. [toggle_button]: id=visible_shroud_toggle
 #: data/gui/default/window/editor_edit_label.cfg:148
 msgid "Visible in shroud"
-msgstr ""
+msgstr "Visíbel no manto"
 
 #. [label]
 #: data/gui/default/window/editor_generate_map.cfg:35
@@ -1671,10 +1645,8 @@ msgstr "Alto:"
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_new_map.cfg:115
-#, fuzzy
-#| msgid "Create Game"
 msgid "Create"
-msgstr "Crear unha partida"
+msgstr "Crear"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -1705,10 +1677,8 @@ msgstr "Alto anterior:"
 # Traducido sen coñecer o contexto, conste.
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:154
-#, fuzzy
-#| msgid "Expand / shrink direction"
 msgid "Expand/shrink direction:"
-msgstr "Encoller ou expandir a dirección"
+msgstr "Encoller ou expandir a dirección:"
 
 #. [toggle_button]: id=copy_edge_terrain
 #: data/gui/default/window/editor_resize_map.cfg:253
@@ -1717,10 +1687,8 @@ msgstr "Copiar o terreo dos bordos"
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_resize_map.cfg:274
-#, fuzzy
-#| msgid "Resize Map"
 msgid "Resize"
-msgstr "Cambiar as dimensións"
+msgstr "Cambiar de tamaño"
 
 # Non o vin no contexto.
 #. [label]: id=title
@@ -1875,10 +1843,8 @@ msgstr "Está seguro de que quere eliminar a partida?"
 #. [toggle_button]: id=dont_ask_again
 #: data/gui/default/window/game_delete.cfg:80
 #: data/gui/default/window/mp_host_game_prompt.cfg:79
-#, fuzzy
-#| msgid "Do not show lobby joins"
 msgid "Do not show again"
-msgstr "Non avisar de quen entra na sala de espera."
+msgstr "Non volver amosar."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -1921,15 +1887,13 @@ msgstr "Eliminar"
 
 #. [toggle_button]: id=change_difficulty
 #: data/gui/default/window/game_load.cfg:383
-#, fuzzy
-#| msgid "Difficulty"
 msgid "Change difficulty"
-msgstr "Dificultade"
+msgstr "Cambiar a dificultade"
 
 #. [toggle_button]: id=change_difficulty
 #: data/gui/default/window/game_load.cfg:384
 msgid "Change campaign difficulty before loading"
-msgstr ""
+msgstr "Cambiar a dificultade da campaña antes de cargala."
 
 #. [toggle_button]: id=show_replay
 #: data/gui/default/window/game_load.cfg:403
@@ -1939,7 +1903,7 @@ msgstr "Amosar a repetición"
 #. [toggle_button]: id=show_replay
 #: data/gui/default/window/game_load.cfg:404
 msgid "Play the embedded replay from the saved game if applicable"
-msgstr ""
+msgstr "Reproducir a repetición incluída na partida de ser posíbel."
 
 #. [toggle_button]: id=cancel_orders
 #: data/gui/default/window/game_load.cfg:422
@@ -1949,7 +1913,7 @@ msgstr "Cancelar as ordes"
 #. [toggle_button]: id=cancel_orders
 #: data/gui/default/window/game_load.cfg:423
 msgid "Cancel any pending unit movements in the saved game"
-msgstr ""
+msgstr "Cancelar calquera movemento pendente na partida."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
@@ -2432,6 +2396,9 @@ msgid ""
 "The server will run as a background process until all users have "
 "disconnected. Do you wish to continue?"
 msgstr ""
+"Para aloxar unha partida en rede é necesario iniciar un servidor local. O "
+"servidor executarase en segundo plano, e deterase unha vez se desconecten "
+"todos os xogadores. Queres continuar?"
 
 #. [window]: id=mp_login
 #: data/gui/default/window/mp_login.cfg:8
@@ -2567,12 +2534,12 @@ msgstr "Aprendizaxe"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:224
 msgid "Campaign"
-msgstr "Campaña"
+msgstr "Un xogador"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:224
 msgid "Start a new single player campaign"
-msgstr "Comezar unha campaña para un só xogador."
+msgstr "Comezar unha campaña ou escenario para un só xogador."
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:225
@@ -2731,11 +2698,11 @@ msgstr "Amosar a grade."
 
 #: src/game_preferences_display.cpp:178
 msgid "Save replays at the end of scenarios"
-msgstr ""
+msgstr "Gardar as repeticións ao final dos escenarios."
 
 #: src/game_preferences_display.cpp:179
 msgid "Delete auto-saves at the end of scenarios"
-msgstr ""
+msgstr "Eliminar as partidas gardadas automaticamente ao final dos escenarios."
 
 #: src/game_preferences_display.cpp:180
 msgid "Do not show lobby joins"
@@ -2998,17 +2965,17 @@ msgstr "Interromper o movemento das unidades propias ao avistar aliados."
 msgid ""
 "Saves replays of games on victory in all modes and defeat in multiplayer"
 msgstr ""
+"Garda a repetición das partidas ao gañar unha partida individual, e sempre "
+"ao xogar contra varios xogadores."
 
 # Configuración → Xeral.
-#
 # A súa lonxitude está limitada polo ancho fixo do cadro en que se amosa. O de «en ditas ocasións» utilizouse para aforrar texto, dado que esta acción é para os casos enunciados na cadea anterior, que tamén aparece antes desta no menú de configuración.
-#
 #: src/game_preferences_display.cpp:372
-#, fuzzy
-#| msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgid ""
 "Deletes previous auto-saves on victory in all modes and defeat in multiplayer"
-msgstr "Eliminar as partidas gardadas automaticamente en ditas ocasións."
+msgstr ""
+"Eliminar as partidas gardadas automaticamente ao gañar unha partida "
+"individual, e sempre ao xogar contra varios xogadores."
 
 #: src/game_preferences_display.cpp:374
 msgid "Overlay a grid onto the map"
@@ -3019,14 +2986,10 @@ msgid "Sort the player list in the lobby by player groups"
 msgstr "Organizar por grupos a lista de xogadores na sala de espera."
 
 #: src/game_preferences_display.cpp:380
-#, fuzzy
-#| msgid "Show icons in front of the player names in the lobby."
 msgid "Show icons in front of the player names in the lobby"
 msgstr "Amosar iconas diante dos nomes dos xogadores na sala de espera."
 
 #: src/game_preferences_display.cpp:383
-#, fuzzy
-#| msgid "Uncheck to delete the saved password (on exit)."
 msgid "Uncheck to delete the saved password (on exit)"
 msgstr "Desmárquese para eliminar o contrasinal gardado (ao saír)."
 
@@ -3048,8 +3011,6 @@ msgstr "Empregar a nova interface da sala de espera."
 
 # MX=multixogador
 #: src/game_preferences_display.cpp:396
-#, fuzzy
-#| msgid "Find and set path to MP server to host LAN games."
 msgid "Find and set path to MP server to host LAN games"
 msgstr ""
 "Buscar e definir a ruta ao servidor de partidas con varios xogadores para "
@@ -3304,7 +3265,7 @@ msgstr "Non se definiu ningunha páxina."
 
 #: src/gui/auxiliary/window_builder/pane.cpp:34
 msgid "Need at least 1 parallel item."
-msgstr ""
+msgstr "Necesítase polo menos un elemento en paralelo."
 
 #: src/gui/auxiliary/window_builder/slider.cpp:67
 msgid "The number of value_labels and values don't match."
@@ -3330,73 +3291,71 @@ msgstr "Non se definiu ningún nodo."
 
 #: src/gui/dialogs/addon/description.cpp:49
 msgid "addon_state^Not installed"
-msgstr ""
+msgstr "Non instalado"
 
 #: src/gui/dialogs/addon/description.cpp:51
 msgid "addon_state^Published, not installed"
-msgstr ""
+msgstr "Publicado, non instalado"
 
 #: src/gui/dialogs/addon/description.cpp:57
 msgid "addon_state^Installed"
-msgstr ""
+msgstr "Instalado"
 
 #: src/gui/dialogs/addon/description.cpp:59
 msgid "addon_state^Published"
-msgstr ""
+msgstr "Publicado"
 
 #: src/gui/dialogs/addon/description.cpp:66
 msgid "addon_state^Installed, not tracking local version"
-msgstr ""
+msgstr "Instalado, versión local sen seguimento"
 
 #: src/gui/dialogs/addon/description.cpp:70
 msgid "addon_state^Published, not tracking local version"
-msgstr ""
+msgstr "Publicado, versión local sen seguimento"
 
 #: src/gui/dialogs/addon/description.cpp:78
 msgid "addon_state^Installed ($local_version|), upgradable"
-msgstr ""
+msgstr "addon_state^Instalado ($local_version|), anovábel"
 
 #: src/gui/dialogs/addon/description.cpp:79
 msgid "addon_state^Published ($local_version| installed), upgradable"
-msgstr ""
+msgstr "addon_state^Publicado ($local_version|), anovábel"
 
 #: src/gui/dialogs/addon/description.cpp:88
 msgid "addon_state^Installed ($local_version|), outdated on server"
-msgstr ""
+msgstr "addon_state^Instalado ($local_version|), obsoleto no servidor"
 
 #: src/gui/dialogs/addon/description.cpp:89
 msgid "addon_state^Published ($local_version| installed), outdated on server"
-msgstr ""
+msgstr "addon_state^Publicado ($local_version|), obsoleto no servidor"
 
 #: src/gui/dialogs/addon/description.cpp:97
 msgid "addon_state^Installed, broken"
-msgstr ""
+msgstr "Instalado, roto"
 
 #: src/gui/dialogs/addon/description.cpp:99
 msgid "addon_state^Published, broken"
-msgstr ""
+msgstr "Publicado, roto"
 
 #: src/gui/dialogs/addon/description.cpp:105
 msgid "addon_state^Unknown"
-msgstr ""
+msgstr "Descoñecido"
 
 #: src/gui/dialogs/addon/filter_options.cpp:112
 msgid "addons_view^Not Installed"
-msgstr ""
+msgstr "Non instalado"
 
 #: src/gui/dialogs/addon/filter_options.cpp:114
 msgid "addons_view^Upgradable"
-msgstr ""
+msgstr "Anovábel"
 
 #: src/gui/dialogs/addon/filter_options.cpp:116
 msgid "addons_view^Installed"
-msgstr ""
+msgstr "Instalado"
 
 #: src/gui/dialogs/addon/filter_options.cpp:118
-#, fuzzy
-#| msgid "Uninstall Add-ons"
 msgid "addons_view^All Add-ons"
-msgstr "Eliminar complementos"
+msgstr "Todos os complementos"
 
 #: src/gui/dialogs/addon_list.cpp:256
 #: src/gui/dialogs/network_transmission.cpp:54
@@ -3821,16 +3780,12 @@ msgid "Map Information"
 msgstr "Información do mapa"
 
 #: src/hotkeys.cpp:141
-#, fuzzy
-#| msgid "Next Side"
 msgid "Add New Side"
-msgstr "Seguinte bando"
+msgstr "Engadir un bando"
 
 #: src/hotkeys.cpp:142
-#, fuzzy
-#| msgid "Switch Map"
 msgid "Switch Side"
-msgstr "Cambiar de mapa"
+msgstr "Cambiar de bando"
 
 #: src/hotkeys.cpp:144
 msgid "Swap Foreground/Background Terrains"
@@ -3838,15 +3793,15 @@ msgstr "Intercambiar os terreos en primeiro e segundo plano"
 
 #: src/hotkeys.cpp:145
 msgid "Change Palette Group"
-msgstr ""
+msgstr "Cambiar o grupo da paleta"
 
 #: src/hotkeys.cpp:146
 msgid "Scroll Palette Left"
-msgstr ""
+msgstr "Mover a paleta á esquerda"
 
 #: src/hotkeys.cpp:147
 msgid "Scroll Palette Right"
-msgstr ""
+msgstr "Mover a paleta á dereita"
 
 #: src/hotkeys.cpp:148
 msgid "Next Tool"
@@ -3865,28 +3820,20 @@ msgid "Selection Tool"
 msgstr "Ferramenta de selección"
 
 #: src/hotkeys.cpp:153
-#, fuzzy
-#| msgid "Set Starting Positions Tool"
 msgid "Starting Positions Tool"
-msgstr "Ferramenta de definición das posicións iniciais"
+msgstr "Ferramenta das posicións iniciais"
 
 #: src/hotkeys.cpp:155
-#, fuzzy
-#| msgid "Fill Tool"
 msgid "Label Tool"
-msgstr "Ferramenta de recheo"
+msgstr "Ferramenta de etiquetas"
 
 #: src/hotkeys.cpp:157
-#, fuzzy
-#| msgid "Paint Tool"
 msgid "Unit Tool"
-msgstr "Ferramenta de pintura"
+msgstr "Ferramenta de unidades"
 
 #: src/hotkeys.cpp:159
-#, fuzzy
-#| msgid "Village gold"
 msgid "Village Tool"
-msgstr "Ouro das vilas"
+msgstr "Ferramenta de vilas"
 
 #: src/hotkeys.cpp:160
 msgid "Next Brush"
@@ -4068,7 +4015,7 @@ msgstr "Comezar a aprendizaxe"
 
 #: src/hotkeys.cpp:260
 msgid "Start Campaign"
-msgstr "Comezar unha campaña"
+msgstr "Comezar unha partida individual"
 
 #: src/hotkeys.cpp:267
 msgid "Start Multiplayer Game"
@@ -4205,10 +4152,8 @@ msgid "Clear Hotkey"
 msgstr "Eliminar o atallo"
 
 #: src/preferences_display.cpp:324
-#, fuzzy
-#| msgid "Select All"
 msgid "Reset All"
-msgstr "Seleccionalo todo"
+msgstr "Restablecelo todo"
 
 #: src/preferences_display.cpp:396 src/preferences_display.cpp:404
 #: src/preferences_display.cpp:416
@@ -4228,25 +4173,23 @@ msgid "Warning"
 msgstr "Advertencia"
 
 #: src/preferences_display.cpp:447
-#, fuzzy
-#| msgid "Hotkeys"
 msgid "Reset Hotkeys"
-msgstr "Atallos"
+msgstr "Restablecer os atallos"
 
 #: src/preferences_display.cpp:448
 msgid ""
 "This will reset all hotkeys to their default values. Do you want to continue?"
 msgstr ""
+"Isto restablecerá todos os atallos aos seus valores predeterminados. Queres "
+"continuar?"
 
 #: src/preferences_display.cpp:455
 msgid "All hotkeys have been reset to their default values."
-msgstr ""
+msgstr "Restablecéronse todos os atallos aos seus valores predeterminados."
 
 #: src/preferences_display.cpp:455
-#, fuzzy
-#| msgid "Hotkeys"
 msgid "Hotkeys Reset"
-msgstr "Atallos"
+msgstr "Restablecemento dos atallos"
 
 #: src/preferences_display.cpp:539
 msgid "There are no alternative video modes available"

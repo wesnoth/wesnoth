@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-09-01 18:47+0200\n"
-"PO-Revision-Date: 2012-05-03 20:50+0200\n"
+"PO-Revision-Date: 2012-09-22 07:59+0200\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: gl\n"
@@ -23,7 +23,7 @@ msgstr ""
 "com>\n"
 "com>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.4\n"
+"X-Generator: Lokalize 1.5\n"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:5
@@ -40,19 +40,16 @@ msgstr "Hexágono de raio 1"
 msgid "Radius 2 Hex"
 msgstr "Hexágono de raio 2"
 
-# O comentario sobre a dirección paréceme que está de máis, e dálle excesiba loxitude ao texto.
 #. [brush]
 #: data/core/editor/brushes.cfg:46
 msgid "Hex Line NW-SE"
-msgstr "Liña de hexágonos"
+msgstr "Liña de hexágonos NO-SL"
 
 # O comentario sobre a dirección paréceme que está de máis, e dálle excesiba loxitude ao texto.
 #. [brush]
 #: data/core/editor/brushes.cfg:62
-#, fuzzy
-#| msgid "Hex Line NW-SE"
 msgid "Hex Line SE-NW"
-msgstr "Liña de hexágonos"
+msgstr "Liña de hexágonos SL-NO"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:11
@@ -87,7 +84,7 @@ msgstr "Bosque"
 #. [editor_group]: id=fall
 #: data/core/editor/terrain-groups.cfg:52
 msgid "fall"
-msgstr ""
+msgstr "Caída"
 
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:59
@@ -201,7 +198,7 @@ msgstr "Xanela"
 #. [menu]: id=menu-editor-side
 #: data/themes/editor.cfg:179
 msgid "Side"
-msgstr ""
+msgstr "Bando"
 
 #. [menu]: id=pipette_button_editor
 #: data/themes/editor.cfg:231
@@ -209,6 +206,8 @@ msgid ""
 "Pipette Tool, Use left/right mouse button to select a terrain from the map. "
 "Not implemented yet."
 msgstr ""
+"Ferramenta de pipeta. Emprega os botóns principal e secundario para "
+"seleccionar un terreo do mapa. Aínda non funciona."
 
 #. [menu]: id=item_button_editor
 #: data/themes/editor.cfg:255
@@ -216,6 +215,9 @@ msgid ""
 "Item Placement Tool, Left mouse button sets a new item or moves it via drag "
 "and drop, right clears. Not implemented yet."
 msgstr ""
+"Ferramenta de colocación. O botón principal establece un novo elemento ou "
+"move un existente —arrastrar e soltar—, o botón secundario sóltao. Aínda non "
+"funciona."
 
 #. [menu]: id=village_button_editor
 #: data/themes/editor.cfg:266
@@ -223,11 +225,14 @@ msgid ""
 "Left mouse button sets the village ownership to the current side, right "
 "clears."
 msgstr ""
+"O botón principal establece a propiedade da vila ao bando actual, o "
+"secundario quita a propiedade."
 
 #. [menu]: id=label_button_editor
 #: data/themes/editor.cfg:301
 msgid "Left mouse button sets or drags a label, right clears."
 msgstr ""
+"O botón principal establece ou arrastra a etiqueta, o secundario elimínaa."
 
 #. [menu]: id=soundsource_button_editor
 #: data/themes/editor.cfg:311
@@ -235,6 +240,8 @@ msgid ""
 "Left mouse button sets or drags a sound source, right clears. Not "
 "implemented yet."
 msgstr ""
+"O botón principal establece ou arrastra a fonte do son, o secundario "
+"elimínaa. Aínda non funciona."
 
 #. [menu]: id=unit_button_editor
 #: data/themes/editor.cfg:321
@@ -242,18 +249,18 @@ msgid ""
 "Left mouse button sets a new unit or moves a unit via drag and drop, right "
 "clears."
 msgstr ""
+"O botón principal establece unha nova unidade ou move unha existente —"
+"arrastrar e soltar—, o secundario elimínaa."
 
 #. [menu]: id=flip_map_button_editor
 #: data/themes/editor.cfg:400
-#, fuzzy
-#| msgid "Action not implemented"
 msgid "Flip Map - Not implemented yet."
-msgstr "A acción non está integrada"
+msgstr "Voltear o mapa. Aínda non funciona."
 
 #. [menu]: id=menu-editor-terrain
 #: data/themes/editor.cfg:437
 msgid "Group"
-msgstr ""
+msgstr "Grupo"
 
 #. [label]: id=villages-icon
 #: data/themes/editor.cfg:460
@@ -438,7 +445,7 @@ msgstr "Non se puido gardar o mapa: $msg"
 
 #: src/editor/palette/editor_palettes.cpp:48
 msgid "(Unknown Group)"
-msgstr ""
+msgstr "(Grupo descoñecido)"
 
 #: src/editor/palette/editor_palettes.cpp:305
 msgid "(non-core)"
