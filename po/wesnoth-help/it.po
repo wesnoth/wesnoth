@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-25 12:35+0200\n"
-"PO-Revision-Date: 2012-03-25 19:47+0100\n"
+"POT-Creation-Date: 2012-09-01 18:47+0200\n"
+"PO-Revision-Date: 2012-09-22 11:56+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
 "Language: it\n"
@@ -1181,7 +1181,7 @@ msgstr "Terreni"
 #. [topic]: id=..addons
 #: data/core/help.cfg:70 data/core/help.cfg:793
 msgid "Add-ons"
-msgstr ""
+msgstr "Estensioni"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
@@ -1191,6 +1191,7 @@ msgstr "Comandi"
 
 #. [topic]: id=..units
 #: data/core/help.cfg:91
+#, fuzzy
 msgid ""
 "This section will list all the units you discover as you explore the world "
 "of Wesnoth. When you see a new unit during a campaign or multiplayer "
@@ -1199,15 +1200,18 @@ msgid ""
 "its statistics, attacks, resistances, and movement and defense values.\n"
 "\n"
 msgstr ""
+"In questa sezione verranno elencate tutte le unità che scopri man mano che "
+"da parte tua procede l’esplorazione del mondo di Wesnoth. Quando vedi per la "
+"prima volta all’interno di una campagna o di uno scenario multigiocatore una "
+"nuova unità, essa verrà aggiunta nella sezione appropriata per la sua razza. "
+"A questo punto potrai vedere le informazioni di una unità ogni volta che lo "
+"desideri. La pagina di una unità fornisce una sua descrizione generale, le "
+"sue statistiche, gli attacchi, i coefficienti di resistenza, movimento e "
+"difesa.\n"
+"\n"
 
 #. [topic]: id=..abilities_section
 #: data/core/help.cfg:100
-#, fuzzy
-#| msgid ""
-#| "Certain units have abilities that either directly affect other units, or "
-#| "have an impact on how the unit interacts with other units. These "
-#| "abilities will be listed under this topic as you encounter them.\n"
-#| "\n"
 msgid ""
 "Certain units have abilities that either directly affect other units or have "
 "an impact on how the unit interacts with other units. These abilities will "
@@ -1217,8 +1221,11 @@ msgid ""
 "\n"
 msgstr ""
 "Alcune unità hanno delle abilità che influiscono direttamente sulle altre "
-"unità o su come esse interagiscono con le altre. Queste abilità saranno "
-"elencate sotto questo argomento quando vengono incontrate.\n"
+"unità o che influenzano il modo con cui esse interagiscono con le altre "
+"unità. Queste abilità saranno elencate sotto questo argomento man mano che "
+"vengono incontrate nel corso del gioco. Ogni pagina fornirà quindi una "
+"descrizione, aggiornata allo stato attuale delle conoscenze note al "
+"giocatore, di cosa faccia un’abilità e di quale unità ne sia dotata.\n"
 "\n"
 
 #. [topic]: id=..weapon_specials
@@ -1231,6 +1238,13 @@ msgid ""
 "weapon special does and which (currently discovered) units have it.\n"
 "\n"
 msgstr ""
+"Alcune armi hanno delle caratteristiche speciali che aumentano l’efficacia "
+"degli attacchi. Quando vedi una nuova arma speciale durante una campagna o "
+"uno scenario multigiocatore, essa verrà aggiunta in questa lista. Potrai "
+"quindi vedere le informazioni ad essa legate ogni volta che lo desideri. "
+"Ogni pagina informazioni fornirà una descrizione di cosa faccia l’arma "
+"speciale e quali unità (già incontrate in precedenza) possano utilizzarla.\n"
+"\n"
 
 #. [topic]: id=.unknown_unit
 #: data/core/help.cfg:118
@@ -3524,15 +3538,10 @@ msgstr ""
 #. [topic]: id=using_addons
 #: data/core/help.cfg:804
 msgid "Using Add-ons"
-msgstr ""
+msgstr "Utilizzare le estensioni"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:805
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -3540,7 +3549,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Danno</header>"
+"<header>text='Campagne e scenari'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:805
@@ -3548,6 +3557,8 @@ msgid ""
 "The game supports various types of add-ons that are used differently "
 "according to their purpose."
 msgstr ""
+"Il gioco supporta diversi tipi di estensioni che vengono utilizzate in "
+"maniera diversa a seconda del loro scopo."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:807
@@ -3559,16 +3570,26 @@ msgid ""
 "and regular campaigns are available from the <italic>text='Campaigns'</"
 "italic> menu in the title screen."
 msgstr ""
+"\n"
+"\n"
+"Le campagne per singoli giocatori sono delle collezioni di scenari "
+"raggruppati in modo da raccontare una storia. Sia gli scenari singoli — se "
+"pensati per essere giocati come tali — che le campagne regolari sono "
+"disponibili dal menù<italic>text='Campagne'</italic> menu della schermata "
+"iniziale."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:809
 #, fuzzy
-#| msgid "<header>text='Units having this special attack'</header>"
 msgid ""
 "\n"
 "\n"
 "<header>text='Multiplayer Campaigns, Scenarios, and Map Packs'</header>"
-msgstr "<header>text='Unità con questo attacco speciale'</header>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='Campagne, scenari e pacchetti di mappe per multigiocatore'</"
+"header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:811
@@ -3583,11 +3604,6 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:813
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Order and Number of Strikes'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3595,7 +3611,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Ordine e numero di attacchi'</header>"
+"<header>text='Ere e fazioni per multigiocatore'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:815
@@ -3611,14 +3627,20 @@ msgid ""
 "creating a new game, and players can pick from the available factions for "
 "that era when setting up their sides and teams."
 msgstr ""
+"\n"
+"\n"
+"Per ragioni di gioco, alcune razze di creature nel mondo cooperano tra loro "
+"in fazioni. Le fazioni sono raggruppate in insiemi bilanciati con un tema "
+"comune; ad esempio, le fazioni principali di Wesnoth possono essere trovate "
+"nell’Era Default.\n"
+"\n"
+"In modalità <italic>text='multigiocatore'</italic>, puoi scegliere un’era "
+"quando crei una nuova partita e i giocatori possono scegliere una fra le "
+"fazioni disponibili per quell’era quando approntano le loro fazioni ed le "
+"loro squadre."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:819
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Chance to Hit'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3626,7 +3648,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Probabilità di colpire'</header>"
+"<header>text='Risorse per creativi'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:821
@@ -3639,14 +3661,25 @@ msgid ""
 "directly used in-game on their own; however, other playable add-ons may "
 "depend on them and suggest or require their installation during download."
 msgstr ""
+"\n"
+"\n"
+"Chiunque voglia creare dei contenuti per il gioco può utilizzare dei "
+"pacchetti di risorse disponibili sul server delle estensioni. Con questi "
+"pacchetti è possibile arricchire le proprie creazioni utilizzando tutta una "
+"serie di contenuti già disponibili come immagini, musiche e codice. "
+"Generalmente, questi contenuti non sono destinati ad essere utilizzati "
+"direttamente dai giocatori e perciò non possono essere utilizzati nel gioco "
+"da soli. Di solito può essere necessario o obbligatorio installarli durante "
+"lo scaricamento di altre estensioni che dipendono da essi.. "
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:830
 msgid "Installing Add-ons"
-msgstr ""
+msgstr "Installare le estensioni"
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:831
+#, fuzzy
 msgid ""
 "User-made add-ons can be obtained and updated through the <italic>text='Add-"
 "ons'</italic> option in the main menu. After connecting to the add-ons "
@@ -3670,11 +3703,13 @@ msgid ""
 "about the add-on, such as its full description, installation status, and "
 "available languages."
 msgstr ""
+"Le estensioni create dagli utenti possono essere ottenute e mantenute "
+"aggiornate tramite "
 
 #. [topic]: id=removing_addons
 #: data/core/help.cfg:844
 msgid "Removing Add-ons"
-msgstr ""
+msgstr "Rimuovere le estensioni"
 
 #. [topic]: id=removing_addons
 #: data/core/help.cfg:845
@@ -3731,7 +3766,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Attiva la modalità di debug (non funziona in multiplayer). Vedi "
+"Attiva la modalità di debug (non funziona in modalità multigiocatore). Vedi "
 "<ref>dst='debug_commands' text='comandi di debug'</ref>.\n"
 "La modalità debug si disattiva abbandonando la partita o usando :nodebug.\n"
 "\n"
@@ -6240,11 +6275,12 @@ msgstr "Mosse: "
 
 #: src/help.cpp:1451
 msgid "Vision: "
-msgstr ""
+msgstr "Visione:"
 
 #: src/help.cpp:1453
+#, fuzzy
 msgid "Jamming: "
-msgstr ""
+msgstr "Jamming: "
 
 #: src/help.cpp:1454
 msgid "Cost: "

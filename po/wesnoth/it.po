@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-09-01 18:47+0200\n"
-"PO-Revision-Date: 2012-04-02 19:46+0100\n"
+"PO-Revision-Date: 2012-09-22 08:44+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -142,8 +142,8 @@ msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable"
 msgstr ""
-"Numero di minutio di attesa prima di eliminare i messaggi di chat in "
-"partita. Disabilita l’invecchiamento dei messaggi con 0"
+"Numero di minuti di attesa prima di eliminare i messaggi di chat in partita. "
+"Disabilita l’invecchiamento dei messaggi con 0"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:142
@@ -3021,8 +3021,8 @@ msgid ""
 "as inevitably happens from time to time."
 msgstr ""
 "Prova a gestire un basso numero di unità con attacchi potenti come gli "
-"Adetti dell’Oscurità, Cavalerizzi, Guerrieri Orchi o i Nani Tonanti "
-"posizionadoli a coppie o a tre. Ti daranno sempre una chance in più ogni "
+"Adepti dell’Oscurità, Cavallerizzi, Guerrieri Orchi o i Nani Tonanti "
+"posizionandoli a coppie o a tre. Ti daranno sempre una chance in più ogni "
 "volta che i tuoi colpi falliranno, come può sempre accadere."
 
 #. [tip]
@@ -3196,17 +3196,13 @@ msgstr "%d%% di oro riportato nello scenario successivo."
 
 #. [hides]: id=invisible
 #: data/scenario-movethrough.cfg:65 data/scenario-movethrough.cfg:67
-#, fuzzy
-#| msgid "invisible: "
 msgid "invisible"
-msgstr "invisibile: "
+msgstr "invisibile"
 
 #. [hides]: id=invisible
 #: data/scenario-movethrough.cfg:66 data/scenario-movethrough.cfg:68
-#, fuzzy
-#| msgid "female^slowed"
 msgid "female^invisible"
-msgstr "rallentata"
+msgstr "invisibile"
 
 #. [message]: speaker=unit
 #: data/scenario-movethrough.cfg:92
@@ -3259,15 +3255,13 @@ msgstr ""
 
 #. [effect]: type=blade
 #: data/scenario-test.cfg:247
-#, fuzzy
-#| msgid "Password: "
 msgid "sword"
-msgstr "Parola d’ordine: "
+msgstr "spada"
 
 #. [drains]: id=life_vortex
 #: data/scenario-test.cfg:253
 msgid "Life Vortex"
-msgstr ""
+msgstr "Vortice vitale"
 
 #. [drains]: id=life_vortex
 #: data/scenario-test.cfg:254
@@ -3277,11 +3271,15 @@ msgid ""
 "to gain the health that his attack removed from the target.  This has no "
 "effect against nonliving targets."
 msgstr ""
+"Vortice vitale:\n"
+"Ogni colpo portato con successo in una battaglia che coinvolga questo tipo "
+"di attacco fa si che l'attaccante venga curato per l’ammontare dei punti "
+"ferita inflitti al bersaglio. Non ho effetti contro bersagli non viventi."
 
 #. [heal_on_hit]: id=entropy
 #: data/scenario-test.cfg:262
 msgid "Entropy"
-msgstr ""
+msgstr "Entropia"
 
 #. [heal_on_hit]: id=entropy
 #: data/scenario-test.cfg:263
@@ -3290,16 +3288,20 @@ msgid ""
 "Each successful strike in a battle involving this attack causes the attacker "
 "to lose 4 HP.  This has no effect against nonliving targets."
 msgstr ""
+"Entropia:\n"
+"Ogni colpo portato con successo in una battaglia con questo tipo di attacco "
+"fa perdere 4 PF all’attaccante. Non ha alcun effetto contro bersagli non-"
+"viventi."
 
 #. [effect]: type=pierce
 #: data/scenario-test.cfg:285
 msgid "bow"
-msgstr ""
+msgstr "arco"
 
 #. [drains]: id=empathic_weapon
 #: data/scenario-test.cfg:291
 msgid "Empathic Weapon"
-msgstr ""
+msgstr "Arma empatica"
 
 #. [drains]: id=empathic_weapon
 #: data/scenario-test.cfg:292
@@ -3308,11 +3310,14 @@ msgid ""
 "All damage dealt by this attack to a living target is dealt to the user as "
 "well"
 msgstr ""
+"Arma empatica:\n"
+"Tutto il danno inflitto con questo attacco ad un bersaglio vivente viene "
+"accusato anche da chi brandisce l’arma"
 
 #. [heal_on_hit]: id=rejuvenating_weapon
 #: data/scenario-test.cfg:298
 msgid "Rejuvenating Weapon (10)"
-msgstr ""
+msgstr "Arma rinvigorente (10)"
 
 #. [heal_on_hit]: id=rejuvenating_weapon
 #: data/scenario-test.cfg:299
@@ -3320,16 +3325,18 @@ msgid ""
 "Rejuvenating Weapon (10):\n"
 "Each successful strike with this weapon heals the user for 10 HP"
 msgstr ""
+"Arma rinvigorente (10):\n"
+"Ogni colpo portato con successo con questa arma cura 10 PF del portatore "
 
 #. [effect]: type=pierce
 #: data/scenario-test.cfg:311
 msgid "longbow"
-msgstr ""
+msgstr "arco lungo"
 
 #. [drains]: id=drains
 #: data/scenario-test.cfg:318
 msgid "drains 20%"
-msgstr ""
+msgstr "assorbimento 20%"
 
 #. [drains]: id=drains
 #: data/scenario-test.cfg:319
@@ -3338,11 +3345,14 @@ msgid ""
 "This unit drains health from living units, healing itself for 20% of the "
 "amount of damage it deals (rounded down)."
 msgstr ""
+"Assorbimento 20%:\n"
+"Questa unità è in grado di assorbire energia dalle unità viventi, "
+"utilizzando il 20% del danno inflitto (arrotondato per difetto) per curarsi. "
 
 #. [heal_on_hit]: id=drains
 #: data/scenario-test.cfg:325
 msgid "sacrifice 5"
-msgstr ""
+msgstr "sacrificio 5"
 
 #. [heal_on_hit]: id=drains
 #: data/scenario-test.cfg:326
@@ -3350,6 +3360,8 @@ msgid ""
 "Sacrifice 5:\n"
 "Each successful attack costs this unit 5 HP."
 msgstr ""
+"Sacrificio 5:\n"
+"Ogni attacco portato con successo costa a questa unità 5 PF."
 
 #. [effect]: type=impact
 #: data/scenario-test.cfg:338
@@ -3407,10 +3419,8 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/scenario-test.cfg:487
-#, fuzzy
-#| msgid "invisible: "
 msgid "It is invisible!"
-msgstr "invisibile: "
+msgstr "É invisibile! "
 
 #. [heal_on_hit]: id=fiery
 #: data/scenario-test.cfg:691 data/scenario-test.cfg:692
@@ -3432,7 +3442,7 @@ msgstr ""
 #. [drains]: id=drains
 #: data/scenario-test.cfg:712
 msgid "drains 100%"
-msgstr ""
+msgstr "assorbimento 100%"
 
 #. [drains]: id=drains
 #: data/scenario-test.cfg:713
@@ -3441,6 +3451,10 @@ msgid ""
 "This unit drains health from living units, healing itself for 100% of the "
 "amount of damage it deals (rounded down)."
 msgstr ""
+"Assorbimento 100%:\n"
+"Questa unità è in grado di assorbire energia dalle unità viventi, "
+"utilizzando il 100% del danno inflitto (arrotondato per difetto) per "
+"curarsi. "
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
@@ -3680,10 +3694,8 @@ msgid "cured"
 msgstr ""
 
 #: src/actions/heal.cpp:257
-#, fuzzy
-#| msgid "female^slowed"
 msgid "female^cured"
-msgstr "rallentata"
+msgstr "curata"
 
 #: src/actions/move.cpp:956
 msgid "Ambushed!"
@@ -3726,28 +3738,20 @@ msgid "(press $hotkey to keep moving)"
 msgstr "(premi $hotkey per continuare la mossa)"
 
 #: src/addon/client.cpp:66
-#, fuzzy
-#| msgid "Connecting to Server..."
 msgid "Connecting to $server_address|..."
-msgstr "Connessione al server..."
+msgstr "Connessione al server $server_address|..."
 
 #: src/addon/client.cpp:78
-#, fuzzy
-#| msgid "Requesting list of add-ons"
 msgid "Downloading list of add-ons..."
-msgstr "Sto richiedendo la lista delle estensioni"
+msgstr "Sto scaricando la lista delle estensioni..."
 
 #: src/addon/client.cpp:92
-#, fuzzy
-#| msgid "Requesting terms"
 msgid "Requesting distribution terms..."
-msgstr "Sto richiedendo i termini"
+msgstr "Sto richiedendo i termini..."
 
 #: src/addon/client.cpp:141
-#, fuzzy
-#| msgid "Downloading add-on: $addon_title|..."
 msgid "Sending add-on <i>$addon_title</i>..."
-msgstr "Scaricamento estensione: $addon_title|..."
+msgstr "Sto inviando l’estensione <i>$addon_title</i>..."
 
 #: src/addon/client.cpp:175
 #, fuzzy
@@ -3756,27 +3760,20 @@ msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "Scaricamento estensione: $addon_title|..."
 
 #: src/addon/client.cpp:199
-#, fuzzy
-#| msgid "Downloading add-on: $addon_title|..."
 msgid "Downloading add-on <i>$addon_title</i>..."
-msgstr "Scaricamento estensione: $addon_title|..."
+msgstr "Scaricamento estensione <i>$addon_title</i>..."
 
 #: src/addon/client.cpp:213
-#, fuzzy
-#| msgid ""
-#| "The add-on has an invalid file or directory name and cannot be installed."
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
 msgstr ""
-"Questa estensione ha un nome di directory o di file non valido e quindi non "
-"può essere installata."
+"L’estensione <i>$addon_title</i> ha un nome di directory o di file non "
+"valido e quindi non può essere installata."
 
 #: src/addon/client.cpp:301 src/addon/manager_ui.cpp:682
-#, fuzzy
-#| msgid "Add-on Installed"
 msgid "Add-ons Manager"
-msgstr "Estensione installata"
+msgstr "Gestore delle estensioni"
 
 #: src/addon/info.cpp:149
 msgid "addon_type^Campaign"
@@ -3823,54 +3820,48 @@ msgid "unit_byte^B"
 msgstr "B"
 
 #: src/addon/manager_ui.cpp:97
-#, fuzzy
-#| msgid "Add-on Installed"
 msgid "addon_state^Not installed"
-msgstr "Estensione installata"
+msgstr "Non installata"
 
 #: src/addon/manager_ui.cpp:97
 msgid "addon_state^Published, not installed"
-msgstr ""
+msgstr "Pubblicata, non installata"
 
 #: src/addon/manager_ui.cpp:104
-#, fuzzy
-#| msgid "Add-on Installed"
 msgid "addon_state^Installed"
-msgstr "Estensione installata"
+msgstr "Installata"
 
 #: src/addon/manager_ui.cpp:104
 msgid "addon_state^Published"
-msgstr ""
+msgstr "Pubblicata"
 
 #: src/addon/manager_ui.cpp:107
 msgid "addon_state^Installed, upgradable"
-msgstr ""
+msgstr "Installata, aggiornabile"
 
 #: src/addon/manager_ui.cpp:107
 msgid "addon_state^Published, upgradable"
-msgstr ""
+msgstr "Pubblicata, aggiornabile"
 
 #: src/addon/manager_ui.cpp:110
 msgid "addon_state^Installed, outdated on server"
-msgstr ""
+msgstr "Installata, non aggiornata sul server"
 
 #: src/addon/manager_ui.cpp:110
 msgid "addon_state^Published, outdated on server"
-msgstr ""
+msgstr "Pubblicata, non aggiornata sul server"
 
 #: src/addon/manager_ui.cpp:113
 msgid "addon_state^Installed, broken"
-msgstr ""
+msgstr "Installata, non soddisfatta"
 
 #: src/addon/manager_ui.cpp:113
 msgid "addon_state^Published, broken"
-msgstr ""
+msgstr "Pubblicata, non soddisfatta"
 
 #: src/addon/manager_ui.cpp:115
-#, fuzzy
-#| msgid "addon_type^(unknown)"
 msgid "addon_state^Unknown"
-msgstr "(sconosciuta)"
+msgstr "Sconosciuta"
 
 #: src/addon/manager_ui.cpp:148
 #, fuzzy
@@ -3892,10 +3883,8 @@ msgstr[1] ""
 "Le estensioni selezionate hanno le seguenti dipendenze. Vuoi installarle?"
 
 #: src/addon/manager_ui.cpp:157
-#, fuzzy
-#| msgid "Install dependencies"
 msgid "Broken Dependencies"
-msgstr "Installa dipendenze"
+msgstr "Dipendenze non soddisfatte"
 
 #: src/addon/manager_ui.cpp:173 src/addon/manager_ui.cpp:519
 msgid "Author"
@@ -3920,19 +3909,10 @@ msgid "Type"
 msgstr "Tipo"
 
 #: src/addon/manager_ui.cpp:204
-#, fuzzy
-#| msgid "Install dependencies"
 msgid "Install Dependencies"
 msgstr "Installa dipendenze"
 
 #: src/addon/manager_ui.cpp:205
-#, fuzzy
-#| msgid ""
-#| "The selected add-on has the following dependency. Do you want to install "
-#| "it?"
-#| msgid_plural ""
-#| "The selected add-on has the following dependencies. Do you want to "
-#| "install them?"
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed. Do you wish to install it before continuing?"
@@ -3940,17 +3920,17 @@ msgid_plural ""
 "The selected add-on has the following dependencies, which are not currently "
 "installed. Do you wish to install them before continuing?"
 msgstr[0] ""
-"L’estensione selezionata ha le seguenti dipendenze. Vuoi installarla?"
+"L’estensione selezionata ha la seguente dipendenza che attualmente non è "
+"presente. Vuoi installarla prima di continuare?"
 msgstr[1] ""
-"Le estensioni selezionate hanno le seguenti dipendenze. Vuoi installarle?"
+"L’estensione selezionata ha le seguenti dipendenze che attualmente non sono "
+"presenti. Vuoi installarle prima di continuare?"
 
 #: src/addon/manager_ui.cpp:241 src/addon/manager_ui.cpp:313
 #: src/addon/manager_ui.cpp:328 src/addon/manager_ui.cpp:333
 #: src/addon/manager_ui.cpp:815
-#, fuzzy
-#| msgid "The server responded with an error: \""
 msgid "The server responded with an error:"
-msgstr "Il server ha risposto con un errore: \""
+msgstr "Il server ha risposto con un errore:"
 
 #: src/addon/manager_ui.cpp:252
 msgid ""
@@ -3983,10 +3963,8 @@ msgid "Version control system (VCS) information"
 msgstr ""
 
 #: src/addon/manager_ui.cpp:291
-#, fuzzy
-#| msgid "Do you want to continue?"
 msgid "Do you really wish to continue?"
-msgstr "Vuoi continuare?"
+msgstr "Vuoi veramente continuare?"
 
 #: src/addon/manager_ui.cpp:293 src/addon/manager_ui.cpp:304
 #: src/addon/manager_ui.cpp:970 src/multiplayer.cpp:265
@@ -4012,14 +3990,10 @@ msgid "Terms"
 msgstr "Termini"
 
 #: src/addon/manager_ui.cpp:515
-#, fuzzy
-#| msgid "New version"
 msgid "New Version"
 msgstr "Nuova versione"
 
 #: src/addon/manager_ui.cpp:515
-#, fuzzy
-#| msgid "Old version"
 msgid "Old Version"
 msgstr "Vecchia versione"
 
@@ -4028,26 +4002,22 @@ msgid "Downloads"
 msgstr "Scaricamenti"
 
 #: src/addon/manager_ui.cpp:642
-#, fuzzy
-#| msgid "Publish add-on: "
 msgid "Publish: $addon_title"
-msgstr "Pubblica estensione: "
+msgstr "Pubblica estensione: $addon_title"
 
 #: src/addon/manager_ui.cpp:651
-#, fuzzy
-#| msgid "Delete add-on: "
 msgid "Delete: $addon_title"
-msgstr "Cancella estensione: "
+msgstr "Cancella estensione: $addon_title"
 
 #: src/addon/manager_ui.cpp:678
 msgid "There are no add-ons available for download from this server."
 msgstr "Nessuna estensione disponibile per il download da questo server."
 
 #: src/addon/manager_ui.cpp:679
-#, fuzzy
-#| msgid "There are no add-ons available for download from this server."
 msgid "There are no add-ons matching the specified criteria on this server."
-msgstr "Nessuna estensione disponibile per il download da questo server."
+msgstr ""
+"Su questo server non ci sono estensioni che corrispondano al criterio di "
+"selezione specificato."
 
 #: src/addon/manager_ui.cpp:701 src/dialogs.cpp:601 src/menu_events.cpp:998
 #: src/menu_events.cpp:1614
@@ -4059,91 +4029,67 @@ msgid "Description"
 msgstr "Descrizione"
 
 #: src/addon/manager_ui.cpp:716
-#, fuzzy
-#| msgid "Update all"
 msgid "Update All"
 msgstr "Aggiorna tutte"
 
 #: src/addon/manager_ui.cpp:723
-#, fuzzy
-#| msgid "Whiteboard Options"
 msgid "filter^Options"
-msgstr "Opzioni della lavagna"
+msgstr "Opzioni"
 
 #: src/addon/manager_ui.cpp:829
 msgid "Add-on Installed"
 msgstr "Estensione installata"
 
 #: src/addon/manager_ui.cpp:829
-#, fuzzy
-#| msgid "Add-on Deleted"
-#| msgid_plural "Add-ons Deleted"
 msgid "Add-on Updated"
-msgstr "Estensione eliminata"
+msgstr "Estensione aggiornata"
 
 #: src/addon/manager_ui.cpp:830
 msgid "The add-on '$addon_title|' has been successfully installed."
 msgstr "L’estensione «$addon_title|» è stata installata."
 
 #: src/addon/manager_ui.cpp:830
-#, fuzzy
-#| msgid "The add-on '$addon_title|' has been successfully installed."
 msgid "The add-on '$addon_title|' has been successfully updated."
-msgstr "L’estensione «$addon_title|» è stata installata."
+msgstr "L’estensione «$addon_title|» è stata aggiornata correttamente."
 
 #: src/addon/manager_ui.cpp:835
-#, fuzzy
-#| msgid "Add-on Installed"
 msgid "Add-ons Installed"
-msgstr "Estensione installata"
+msgstr "Estensioni installate"
 
 #: src/addon/manager_ui.cpp:835
-#, fuzzy
-#| msgid "Add-on Deleted"
-#| msgid_plural "Add-ons Deleted"
 msgid "Add-ons Updated"
-msgstr "Estensione eliminata"
+msgstr "Estensioni aggiornate"
 
 #: src/addon/manager_ui.cpp:836
-#, fuzzy
-#| msgid "All add-ons updated successfully."
 msgid "All add-ons installed successfully."
-msgstr "Tutte le estensioni aggiornate correttamente."
+msgstr "Tutte le estensioni installate correttamente."
 
 #: src/addon/manager_ui.cpp:836
 msgid "All add-ons updated successfully."
 msgstr "Tutte le estensioni aggiornate correttamente."
 
 #: src/addon/manager_ui.cpp:840
-#, fuzzy
-#| msgid "Installation failed"
 msgid "Installation Failed"
 msgstr "Installazione non riuscita"
 
 #: src/addon/manager_ui.cpp:840
-#, fuzzy
-#| msgid "Update failed"
 msgid "Update Failed"
 msgstr "Aggiornamento non riuscito"
 
 #: src/addon/manager_ui.cpp:842
-#, fuzzy
-#| msgid ""
-#| "The following add-on could not be downloaded or updated successfully:"
-#| msgid_plural ""
-#| "The following add-ons could not be downloaded or updated successfully:"
 msgid "The following add-on could not be downloaded or installed successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or installed successfully:"
-msgstr[0] "La seguente estensione ha degli errori e non si riesce a caricare:"
+msgstr[0] ""
+"La seguente estensione ha degli errori e non si riesce a scaricare o "
+"installare:"
 msgstr[1] ""
-"Le seguenti estensioni hanno degli errori e non si riescono a caricare:"
+"Le seguenti estensioni hanno degli errori e non si riescono a scaricare o "
+"installare:"
 
 #: src/addon/manager_ui.cpp:884 src/addon/manager_ui.cpp:894
-#, fuzzy
-#| msgid "An error occurred while communicating with the server."
 msgid "An error occurred while downloading the add-ons list from the server."
-msgstr "Errore durante la comunicazione con il server."
+msgstr "Errore durante il recupero della lista delle estensioni dal server."
 
 #: src/addon/manager_ui.cpp:912
 msgid "Network communication error."
@@ -4163,7 +4109,7 @@ msgstr ""
 
 #: src/addon/manager_ui.cpp:927
 msgid "The add-ons server address specified is not valid."
-msgstr ""
+msgstr "L’indirizzo specificato per il server delle estensioni non è valido."
 
 #: src/addon/manager_ui.cpp:941
 msgid "You have no add-ons installed."
@@ -4375,14 +4321,12 @@ msgid "Cancel any pending unit movements in the saved game"
 msgstr ""
 
 #: src/dialogs.cpp:624
-#, fuzzy
-#| msgid "Difficulty: "
 msgid "Change difficulty"
-msgstr "Difficoltà: "
+msgstr "Cambia difficoltà"
 
 #: src/dialogs.cpp:626
 msgid "Change campaign difficulty before loading"
-msgstr ""
+msgstr "Cambia il livello di difficoltà della campagna prima di caricarla"
 
 #: src/dialogs.cpp:633
 msgid "Delete Save"
@@ -4707,16 +4651,12 @@ msgid "Do you really want to dismiss her?"
 msgstr "Vuoi davvero congedarla?"
 
 #: src/menu_events.cpp:105
-#, fuzzy
-#| msgid "My lord, this unit is an experienced one, having advanced levels! "
 msgid "This unit is an experienced one, having advanced levels."
-msgstr "Mio signore, questa è un’unità esperta che è già avanzata di livello!"
+msgstr "Questa è un’unità esperta che è già avanzata di livello!"
 
 #: src/menu_events.cpp:109
-#, fuzzy
-#| msgid "My lord, this unit is close to advancing a level! "
 msgid "This unit is close to advancing a level."
-msgstr "Mio signore, questa unità sta per avanzare di livello!"
+msgstr "Questa unità sta per avanzare di livello."
 
 #: src/menu_events.cpp:114 src/menu_events.cpp:1002
 msgid "Dismiss Unit"
@@ -4820,10 +4760,6 @@ msgstr ""
 "villaggio"
 
 #: src/menu_events.cpp:515
-#, fuzzy
-#| msgid ""
-#| "scenario settings^Gold Per\n"
-#| "Village"
 msgid ""
 "scenario settings^Support Per\n"
 "Village"
@@ -5300,7 +5236,7 @@ msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
 msgstr ""
-"Cambia il nunmero del turno )e l’ora del giorno), o incrementalo di uno se "
+"Cambia il numero del turno (e l’ora del giorno), o incrementalo di uno se "
 "non è specificato alcun numero."
 
 #: src/menu_events.cpp:2612
@@ -6478,7 +6414,7 @@ msgid ""
 "The replay is corrupt/out of sync. It might not make much sense to continue. "
 "Do you want to save the game?"
 msgstr ""
-"Il replay è danneggiato o fuoriu sincrono. Potrebbe non aver molto senso "
+"Il replay è danneggiato o fuori sincrono. Potrebbe non aver molto senso "
 "proseguire. Vuoi salvare la partita?"
 
 #: src/reports.cpp:175
@@ -6684,25 +6620,20 @@ msgstr ""
 "caricarlo comunque.\n"
 
 #: src/savegame.cpp:663
-#, fuzzy
-#| msgid "This save is from a version too old to be loaded."
 msgid ""
 "This save is from an old, unsupported version ($version_number|) and cannot "
 "be loaded."
 msgstr ""
-"Questo salvataggio è di una versione troppo vecchia per riuscire a caricarlo."
+"Questo salvataggio è di una versione troppo vecchia e non più supportata "
+"($version_number|) per riuscire a caricarlo."
 
 #: src/savegame.cpp:672
-#, fuzzy
-#| msgid ""
-#| "This save is from a different version of the game. Do you want to try to "
-#| "load it?"
 msgid ""
 "This save is from a different version of the game ($version_number|). Do you "
 "wish to try to load it?"
 msgstr ""
-"Questo salvataggio è di una versione differente del gioco. Vuoi provare a "
-"caricarlo?"
+"Questo salvataggio è di una versione differente del gioco "
+"($version_number|). Vuoi provare a caricarlo?"
 
 #: src/savegame.cpp:730
 msgid "This is not a multiplayer save"
@@ -6761,10 +6692,9 @@ msgid "Unexpected characters at line start"
 msgstr "Carattere non atteso sulla linea di avvio"
 
 #: src/serialization/parser.cpp:145
-#, fuzzy
-#| msgid "Missing closing tag for tag $tag at $pos"
 msgid "Missing closing tag for tag [$tag] at $pos"
-msgstr "Manca l’etichetta di chiusura per $tag su $pos"
+msgstr ""
+"Manca l’etichetta di chiusura per l’etichetta [$tag] alla posizione $pos"
 
 #: src/serialization/parser.cpp:158
 msgid "Unterminated [element] tag"
@@ -6791,12 +6721,10 @@ msgid "Unexpected closing tag"
 msgstr "Etichetta di chiusura non attesa"
 
 #: src/serialization/parser.cpp:208
-#, fuzzy
-#| msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
 msgid "Found invalid closing tag [/$tag2] for tag [$tag1] (opened at $pos)"
 msgstr ""
-"L’etichetta $tag2 non è valida per chiudere l’etichetta $tag1 (aperta alla "
-"posizione $pos)"
+"L’etichetta [$tag2] non è valida per chiudere l’etichetta [$tag1] (aperta "
+"alla posizione $pos)"
 
 #: src/serialization/parser.cpp:237 src/serialization/parser.cpp:249
 msgid "Empty variable name"
@@ -7065,143 +6993,3 @@ msgstr "Nascondi i piani di $player"
 #: src/whiteboard/manager.cpp:1120
 msgid "Whiteboard Options"
 msgstr "Opzioni della lavagna"
-
-#, fuzzy
-#~| msgid "Choose weapon:"
-#~ msgid "Choose a Map to Open"
-#~ msgstr "Scegli l’arma:"
-
-#, fuzzy
-#~| msgid "Choose the game to load"
-#~ msgid "Choose a Mask to Apply"
-#~ msgstr "Scegli la partita da caricare"
-
-#, fuzzy
-#~| msgid "Choose weapon:"
-#~ msgid "Choose Target Map"
-#~ msgstr "Scegli l’arma:"
-
-#, fuzzy
-#~| msgid "The map already exists. Do you want to overwrite it?"
-#~ msgid "The file already exists. Do you want to overwrite it?"
-#~ msgstr "Esiste già una mappa con questo nome. Vuoi sovrascriverla?"
-
-#, fuzzy
-#~| msgid "No era information found."
-#~ msgid "No random map generators found."
-#~ msgstr "Nessuna informazione trovata sull’era."
-
-#, fuzzy
-#~| msgid "Installation failed"
-#~ msgid "Map creation failed."
-#~ msgstr "Installazione non riuscita"
-
-#, fuzzy
-#~| msgid "The map is invalid."
-#~ msgid "This map is already open."
-#~ msgstr "La mappa non è valida."
-
-#, fuzzy
-#~| msgid "Next Side"
-#~ msgid "(New Side)"
-#~ msgstr "Prossimo giocatore"
-
-#~ msgid "The server responded with an error: \"$error|\""
-#~ msgstr "Il server ha risposto con un errore: «$error|»"
-
-#~ msgid "Sending add-on"
-#~ msgstr "Invio estensione"
-
-#~ msgid "Requesting the addon to be deleted"
-#~ msgstr "Sto richiedendo la lista delle estensioni da eliminare"
-
-#~ msgid "Downloading..."
-#~ msgstr "Scaricamento..."
-
-#~ msgid "Installation of a dependency failed"
-#~ msgstr "Installazione di una dipendenza non riuscita"
-
-#~ msgid ""
-#~ "While the add-on has been installed, a dependency is missing. Try to "
-#~ "update the installed add-ons."
-#~ msgstr ""
-#~ "L’estensione è stata installata, ma una dipendenze è mancante. Prova ad "
-#~ "aggiornare le estensioni installate."
-
-#~ msgid "Outdated add-ons"
-#~ msgstr "Estensioni obsolete"
-
-#~ msgid ""
-#~ "An outdated local add-on has publishing information attached. It will not "
-#~ "be offered for updating."
-#~ msgid_plural ""
-#~ "Some outdated local add-ons have publishing information attached. They "
-#~ "will not be offered for updating."
-#~ msgstr[0] ""
-#~ "Un’estensione locale antiquata ha le informazioni di pubblicazione "
-#~ "allegate. Non verrà proposta per l’aggiornamento."
-#~ msgstr[1] ""
-#~ "Alcune estensioni locali antiquate hanno le informazioni di pubblicazione "
-#~ "allegate. Non verranno proposte per l’aggiornamento."
-
-#~ msgid "No add-ons to update"
-#~ msgstr "Non ci sono estensioni da aggiornare"
-
-#~ msgid "Could not find any updated add-ons on this server."
-#~ msgstr "Non sono stati trovate estensioni aggiornate sul server."
-
-#~ msgid "Update add-ons"
-#~ msgstr "Aggiorna estensioni"
-
-#~ msgid "Select an add-on to update:"
-#~ msgstr "Seleziona l’estensione da aggiornare:"
-
-#~ msgid "Installation of some dependency failed"
-#~ msgstr "Installazione di alcune dipendenze non riuscita"
-
-#~ msgid ""
-#~ "While the add-on has been installed, some dependency is missing. Try to "
-#~ "update the installed add-ons."
-#~ msgstr ""
-#~ "L’estensione è stata installata, ma delle dipendenze sono mancanti. Prova "
-#~ "ad aggiornare le estensioni installate."
-
-#~ msgid "Update succeeded"
-#~ msgstr "Aggiornamento riuscito"
-
-#~ msgid "Add-on updated successfully."
-#~ msgstr "Estensione aggiornata correttamente."
-
-#~ msgid ""
-#~ "You seem to be the author of '$addon|'. Downloading '$addon|' may "
-#~ "overwrite any changes you have made since the last upload and may delete "
-#~ "your pbl file. Do you really wish to continue?"
-#~ msgstr ""
-#~ "Sembra che tu sia l’autore di «$addon|». Lo scaricamento di «$addon|» "
-#~ "potrebbe sovrascrivere i cambiamenti fatti dall’ultimo invio e cancellare "
-#~ "il tuo file pbl. Sei sicuro di voler continuare?"
-
-#~ msgid "Connecting..."
-#~ msgstr "Connessione..."
-
-#~ msgid "Get add-ons"
-#~ msgstr "Scarica estensioni"
-
-#~ msgid "Choose the add-on to download."
-#~ msgstr "Scegli l’estensione da scaricare."
-
-#~ msgid "Do you really want to start the server?"
-#~ msgstr "Vuoi davvero avviare il server?"
-
-#~ msgid ""
-#~ "The server will run in a background process until all users have "
-#~ "disconnected."
-#~ msgstr ""
-#~ "Il server resterà in esecuzione in sottofondo finché tutti gli utenti non "
-#~ "si saranno disconnessi."
-
-#~ msgid "Don’t show again"
-#~ msgstr "Non mostrare più"
-
-#~ msgid "A map without a header is not supported"
-#~ msgstr "Le mappe senza intestazione non sono supportate"

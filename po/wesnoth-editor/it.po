@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-09-01 18:47+0200\n"
-"PO-Revision-Date: 2012-01-29 22:50+0100\n"
-"Last-Translator: Antonio \"Antro\" Rosella <arosella@yahoo.com>\n"
+"PO-Revision-Date: 2012-09-22 11:34+0100\n"
+"Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -43,10 +43,8 @@ msgstr "Linea di esagoni NO-SE"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:62
-#, fuzzy
-#| msgid "Hex Line NW-SE"
 msgid "Hex Line SE-NW"
-msgstr "Linea di esagoni NO-SE"
+msgstr "Linea di esagoni SE-NO"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:11
@@ -80,8 +78,9 @@ msgstr "foresta"
 
 #. [editor_group]: id=fall
 #: data/core/editor/terrain-groups.cfg:52
+#, fuzzy
 msgid "fall"
-msgstr ""
+msgstr "caduta"
 
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:59
@@ -193,7 +192,7 @@ msgstr "Finestra"
 #. [menu]: id=menu-editor-side
 #: data/themes/editor.cfg:179
 msgid "Side"
-msgstr ""
+msgstr "Fazione"
 
 #. [menu]: id=pipette_button_editor
 #: data/themes/editor.cfg:231
@@ -201,6 +200,8 @@ msgid ""
 "Pipette Tool, Use left/right mouse button to select a terrain from the map. "
 "Not implemented yet."
 msgstr ""
+"Contagocce, utilizza il bottone sinistro/destro per scegliere un terreno "
+"dalla mappa. Non ancora implementato."
 
 #. [menu]: id=item_button_editor
 #: data/themes/editor.cfg:255
@@ -208,6 +209,9 @@ msgid ""
 "Item Placement Tool, Left mouse button sets a new item or moves it via drag "
 "and drop, right clears. Not implemented yet."
 msgstr ""
+"Piazzamento elementi, utilizza il bottone sinistro del mouse per piazzare un "
+"nuovo elemento o muoverlo tramite «drag and drop», il tasto destro annulla. "
+"Non ancora implementato."
 
 #. [menu]: id=village_button_editor
 #: data/themes/editor.cfg:266
@@ -215,11 +219,15 @@ msgid ""
 "Left mouse button sets the village ownership to the current side, right "
 "clears."
 msgstr ""
+"Un click con il tasto sinistro del mouse imposta assegna il possesso del "
+"villaggio alla fazione selezionata, con il tasto destro la rimuove. "
 
 #. [menu]: id=label_button_editor
 #: data/themes/editor.cfg:301
 msgid "Left mouse button sets or drags a label, right clears."
 msgstr ""
+"Un click con il tasto sinistro del mouse imposta o trascina un’etichetta, "
+"con il destro la rimuove."
 
 #. [menu]: id=soundsource_button_editor
 #: data/themes/editor.cfg:311
@@ -227,6 +235,8 @@ msgid ""
 "Left mouse button sets or drags a sound source, right clears. Not "
 "implemented yet."
 msgstr ""
+"Un click con il tasto sinistro del mouse imposta o trascina una sorgente "
+"sonora, con il destro la rimuove."
 
 #. [menu]: id=unit_button_editor
 #: data/themes/editor.cfg:321
@@ -234,18 +244,18 @@ msgid ""
 "Left mouse button sets a new unit or moves a unit via drag and drop, right "
 "clears."
 msgstr ""
+"Un click con il tasto sinistro del mouse imposta una nuova unità o la muove "
+"tramite «drag and drop», con il destro la rimuove."
 
 #. [menu]: id=flip_map_button_editor
 #: data/themes/editor.cfg:400
-#, fuzzy
-#| msgid "Action not implemented"
 msgid "Flip Map - Not implemented yet."
-msgstr "Azione non implementata"
+msgstr "Ribalta la mappa - Azione non ancora implementata."
 
 #. [menu]: id=menu-editor-terrain
 #: data/themes/editor.cfg:437
 msgid "Group"
-msgstr ""
+msgstr "Gruppo"
 
 #. [label]: id=villages-icon
 #: data/themes/editor.cfg:460
@@ -429,7 +439,7 @@ msgstr "Impossibile salvare la mappa: $msg"
 
 #: src/editor/palette/editor_palettes.cpp:48
 msgid "(Unknown Group)"
-msgstr ""
+msgstr "(Gruppo sconosciuto)"
 
 #: src/editor/palette/editor_palettes.cpp:305
 msgid "(non-core)"
@@ -458,35 +468,3 @@ msgstr "Giocatore $player_number"
 #: src/gui/dialogs/editor_settings.cpp:166
 msgid "Custom setting"
 msgstr "Personalizzazioni"
-
-#, fuzzy
-#~| msgid "Empty map file"
-#~ msgid "Empty file"
-#~ msgstr "File di mappa vuoto"
-
-#~ msgid "Choose player"
-#~ msgstr "Scegli giocatore"
-
-#~ msgid ""
-#~ "Which player should start here? You can use alt and a number key to set "
-#~ "the starting position for a player, and del to clear the starting "
-#~ "position under the cursor. Pressing a number key by itself will scroll to "
-#~ "that player’s starting position."
-#~ msgstr ""
-#~ "Quale giocatore deve iniziare da qui? Puoi usare Alt e un tasto numerico "
-#~ "per impostare la posizione iniziale di tale giocatore, e Canc per "
-#~ "eliminare la posizione iniziale sotto il cursore. Se premi un tasto "
-#~ "numerico da solo la mappa scorrerà per far vedere la posizione iniziale "
-#~ "di tale giocatore."
-
-#~ msgid "FG"
-#~ msgstr "Primo piano"
-
-#~ msgid "BG"
-#~ msgstr "Sfondo"
-
-#~ msgid "Error creating action object"
-#~ msgstr "Errore nella creazione dell’oggetto di azione"
-
-#~ msgid "Error"
-#~ msgstr "Errore"
