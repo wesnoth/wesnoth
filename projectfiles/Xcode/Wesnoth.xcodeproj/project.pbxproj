@@ -901,6 +901,7 @@
 		F444917713C5562C003B6442 /* folder_create.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F444917513C5562C003B6442 /* folder_create.cpp */; };
 		F444918813C55729003B6442 /* libpng12.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4448F3B13C547FF003B6442 /* libpng12.0.dylib */; };
 		F449349C13FF652800DF01D5 /* validator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F449349913FF652800DF01D5 /* validator.cpp */; };
+		F469F29B160F9FB2008B209B /* hotkey_preferences_display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F469F29A160F9FB2008B209B /* hotkey_preferences_display.cpp */; };
 		F46C5DCC13A5074C00DD0816 /* game_controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F46C5DC513A5074C00DD0816 /* game_controller.cpp */; };
 		F46C5DCD13A5074C00DD0816 /* game_controller_new.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F46C5DC713A5074C00DD0816 /* game_controller_new.cpp */; };
 		F46C5DCE13A5074C00DD0816 /* game_controller_abstract.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F46C5DC913A5074C00DD0816 /* game_controller_abstract.cpp */; };
@@ -1988,6 +1989,7 @@
 		F444917613C5562C003B6442 /* folder_create.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = folder_create.hpp; sourceTree = "<group>"; };
 		F449349913FF652800DF01D5 /* validator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = validator.cpp; sourceTree = "<group>"; };
 		F449349A13FF652800DF01D5 /* validator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = validator.hpp; sourceTree = "<group>"; };
+		F469F29A160F9FB2008B209B /* hotkey_preferences_display.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hotkey_preferences_display.cpp; sourceTree = "<group>"; };
 		F46C5DC413A5074C00DD0816 /* game_controller.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game_controller.hpp; sourceTree = "<group>"; };
 		F46C5DC513A5074C00DD0816 /* game_controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_controller.cpp; sourceTree = "<group>"; };
 		F46C5DC613A5074C00DD0816 /* game_controller_new.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game_controller_new.hpp; sourceTree = "<group>"; };
@@ -2189,6 +2191,7 @@
 		29B97315FDCFA39411CA2CEA /* src */ = {
 			isa = PBXGroup;
 			children = (
+				F469F29A160F9FB2008B209B /* hotkey_preferences_display.cpp */,
 				620A386115E9364E00A4F513 /* actions */,
 				F419A1F314E21246002F9ADC /* game_end_exceptions.cpp */,
 				F480CD2D14035038007175D6 /* tools */,
@@ -4182,6 +4185,7 @@
 				620A387115E9364F00A4F513 /* move.cpp in Sources */,
 				620A387215E9364F00A4F513 /* undo.cpp in Sources */,
 				620A387315E9364F00A4F513 /* vision.cpp in Sources */,
+				F469F29B160F9FB2008B209B /* hotkey_preferences_display.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
