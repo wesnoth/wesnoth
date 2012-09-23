@@ -58,7 +58,6 @@ editor_action_unit_delete* editor_action_unit_delete::clone() const
 
 editor_action* editor_action_unit_delete::perform(map_context& /*mc*/) const
 {
-	std::auto_ptr<editor_action> undo;
 	//TODO
 	//boost::scoped_ptr<editor_action> undo;
 
