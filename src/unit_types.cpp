@@ -91,11 +91,10 @@ std::string attack_type::accuracy_parry_description() const
 }
 
 /**
- * Returns whether or not *this matches the given @a filter.
- * If @a ignore_special is set to true, then the special= attribute of the
- * filter is ignored.
+ * Returns whether or not *this matches the given @a filter, ignoring the
+ * complexities introduced by [and], [or], and [not].
  */
-bool attack_type::matches_filter(const config& filter) const
+static bool matches_simple_filter(const attack_type & attack, const config & filter)
 {
 	const std::vector<std::string>& filter_range = utils::split(filter["range"]);
 	const std::string& filter_damage = filter["damage"];
@@ -103,24 +102,52 @@ bool attack_type::matches_filter(const config& filter) const
 	const std::vector<std::string> filter_type = utils::split(filter["type"]);
 	const std::string filter_special = filter["special"];
 
-	if(filter_range.empty() == false && std::find(filter_range.begin(),filter_range.end(),range()) == filter_range.end())
-			return false;
-
-	if(filter_damage.empty() == false && !in_ranges(damage(), utils::parse_ranges(filter_damage))) {
-		return false;
-	}
-
-	if(filter_name.empty() == false && std::find(filter_name.begin(),filter_name.end(),id()) == filter_name.end())
+	if ( !filter_range.empty() && std::find(filter_range.begin(), filter_range.end(), attack.range()) == filter_range.end() )
 		return false;
 
-	if(filter_type.empty() == false && std::find(filter_type.begin(),filter_type.end(),type()) == filter_type.end())
+	if ( !filter_damage.empty() && !in_ranges(attack.damage(), utils::parse_ranges(filter_damage)) )
 		return false;
 
-	if ( !filter_special.empty() && !get_special_bool(filter_special, true) )
+	if ( !filter_name.empty() && std::find(filter_name.begin(), filter_name.end(), attack.id()) == filter_name.end() )
 		return false;
 
+	if ( !filter_type.empty() && std::find(filter_type.begin(), filter_type.end(), attack.type()) == filter_type.end() )
+		return false;
+
+	if ( !filter_special.empty() && !attack.get_special_bool(filter_special, true) )
+		return false;
+
+	// Passed all tests.
 	return true;
 }
+
+/**
+ * Returns whether or not *this matches the given @a filter.
+ */
+bool attack_type::matches_filter(const config& filter) const
+{
+	// Handle the basic filter.
+	bool matches = matches_simple_filter(*this, filter);
+
+	// Handle [and], [or], and [not] with in-order precedence
+	BOOST_FOREACH( const config::any_child &condition, filter.all_children_range() )
+	{
+		// Handle [and]
+		if ( condition.key == "and" )
+			matches = matches && matches_filter(condition.cfg);
+
+		// Handle [or]
+		else if ( condition.key == "or" )
+			matches = matches || matches_filter(condition.cfg);
+
+		// Handle [not]
+		else if ( condition.key == "not" )
+			matches = matches && !matches_filter(condition.cfg);
+	}
+
+	return matches;
+}
+
 
 /**
  * Modifies *this using the specifications in @a cfg, but only if *this matches

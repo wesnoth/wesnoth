@@ -3365,34 +3365,7 @@ namespace game_events {
 			return false;
 		}
 		const attack_type attack(cfg);
-		bool matches = attack.matches_filter(filter.get_parsed_config());
-
-		// Handle [and], [or], and [not] with in-order precedence
-		vconfig::all_children_iterator cond_i = filter.ordered_begin();
-		vconfig::all_children_iterator cond_end = filter.ordered_end();
-		while(cond_i != cond_end)
-		{
-			const std::string& cond_name = cond_i.get_key();
-			const vconfig& cond_filter = cond_i.get_child();
-
-			// Handle [and]
-			if(cond_name == "and")
-			{
-				matches = matches && matches_special_filter(cfg, cond_filter);
-			}
-			// Handle [or]
-			else if(cond_name == "or")
-			{
-				matches = matches || matches_special_filter(cfg, cond_filter);
-			}
-			// Handle [not]
-			else if(cond_name == "not")
-			{
-				matches = matches && !matches_special_filter(cfg, cond_filter);
-			}
-			++cond_i;
-		}
-		return matches;
+		return attack.matches_filter(filter.get_parsed_config());
 	}
 
 	bool unit_matches_filter(const unit &u, const vconfig& filter)

@@ -33,6 +33,8 @@ Version 1.11.0+svn:
      delayed shroud updates (which is still a major caveat).
    * Added [effect] apply_to=overlay
    * Added [terrain_type] max_light= and min_light=.
+   * Standardize weapon filters, supporting special=, [and], [or], and [not]
+     wherever weapons can be filtered.
  * Miscellaneous and bug fixes:
    * Fix invalid memory access crash resulting from deleting all saved games
      in the Load Game dialog
