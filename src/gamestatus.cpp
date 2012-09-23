@@ -126,7 +126,7 @@ void wmi_container::clear_wmi()
 
 void wmi_container::to_config(config& cfg){
 	for(std::map<std::string, wml_menu_item *>::const_iterator j=wml_menu_items_.begin();
-		j!=wml_menu_items_.end(); j++) {
+		j!=wml_menu_items_.end(); ++j) {
 		config new_cfg;
 		new_cfg["id"]=j->first;
 		new_cfg["image"]=j->second->image;
