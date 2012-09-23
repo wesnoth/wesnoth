@@ -294,7 +294,7 @@ void prob_matrix::shift_cols(unsigned dst, unsigned src,
 	int drainmax = (drain_percent*(static_cast<signed>(damage))/100+drain_constant);
 
 	if(drain_constant || drain_percent) {
-		debug(("Drains %i (%i%% of %i plus %i)\n", drainmax, drain_percent, damage, drain_constant));
+		debug(("Drains %i (%i%% of %u plus %i)\n", drainmax, drain_percent, damage, drain_constant));
 	}
 
 	if (damage >= cols_)
