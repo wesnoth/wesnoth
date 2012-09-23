@@ -243,13 +243,15 @@ class CampaignClient:
         """
         pass
 
-    def list_campaigns(self):
+    def list_campaigns(self, addon=None):
         """
         Returns a WML object containing all available info from the server.
         """
         if self.error:
             return None
         request = wmldata.DataSub("request_campaign_list")
+        if addon:
+            request.insert_text("name", addon)
         self.send_packet(self.make_packet(request))
 
         return self.decode(self.read_packet())

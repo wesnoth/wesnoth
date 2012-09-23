@@ -196,7 +196,7 @@ if __name__ == "__main__":
             server, addon)
 
         wml = libwml.CampaignClient(server, quiet_libwml)
-        data = wml.list_campaigns()
+        data = wml.list_campaigns(addon)
 
         # Item [0] hardcoded seems to work
         campaigns = data.data[0]
