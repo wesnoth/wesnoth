@@ -243,8 +243,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 {
 	sort_advanced_preferences();
 
-	// FIXME: this box should be vertically centered on the screen, but is not
-	set_measurements(465, 400);
+	set_measurements(preferences::width, preferences::height);
 
 
 	sound_button_.set_check(sound_on());
@@ -748,7 +747,7 @@ void preferences_dialog::process_event()
 		if (hide_whiteboard_button_.pressed())
 			set_hide_whiteboard(hide_whiteboard_button_.checked());
 		if (hotkeys_button_.pressed()) {
-			show_hotkeys_dialog(disp_);
+			show_hotkeys_preferences_dialog(disp_);
 			parent->clear_buttons();
 		}
 

@@ -24,6 +24,10 @@ class display;
 
 namespace preferences {
 
+    // FIXME: this box should be vertically centered on the screen, but is not
+	static const int height = 400;
+	static const int width = 465;
+
 	struct display_manager
 	{
 		display_manager(display* disp);
@@ -77,7 +81,7 @@ namespace preferences {
 
 	// If prefs is non-null, save the hotkeys in that config
 	// instead of the default.
-	void show_hotkeys_dialog(display & disp);
+	void show_hotkeys_preferences_dialog(display & disp);
 } // end namespace preferences
 
 #endif

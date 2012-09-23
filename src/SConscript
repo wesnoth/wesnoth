@@ -491,6 +491,7 @@ wesnoth_sources = Split("""
     """)
 
 wesnoth_sources.extend(client_env.Object("game_preferences_display.cpp", EXTRA_DEFINE = env["PLATFORM"] != "win32" and "WESNOTH_PREFIX='\"$prefix\"'" or None))
+wesnoth_sources.extend(client_env.Object("hotkey_preferences_display.cpp", EXTRA_DEFINE = env["PLATFORM"] != "win32" and "WESNOTH_PREFIX='\"$prefix\"'" or None))
 
 libwesnoth_extras = client_env.Library("wesnoth_extras", wesnoth_sources)
 

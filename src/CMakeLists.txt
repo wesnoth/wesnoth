@@ -735,6 +735,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/wml_message.cpp
 	halo.cpp
 	help.cpp
+	hotkey_preferences_display.cpp
 	intro.cpp
 	leader_list.cpp
 	map.cpp

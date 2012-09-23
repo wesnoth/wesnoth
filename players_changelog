@@ -18,6 +18,15 @@ Version 1.11.0+svn:
 
  * User interface:
    * Healing animations are now played when poison is cured.
+   * Preferences
+     * "Hotkey Settings" dialog redisigned.
+	* Features a tab for each hotkey scope.
+	* Truncates hotkey descriptions to keep the dialog functional,
+	  but shows their full description as help tooltips.
+	* Allows reasigning hotkeys
+	* Cancel button to discard any changes
+	* Assigning of more than one hotkey per action possible
+	* Support for assigning mouse buttons to actions
    * The recruit and recall commands are restored when right-clicking on a
      leader, but with new semantics -- only that leader's recruits/recalls will
      be presented as options.
