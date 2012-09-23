@@ -385,7 +385,9 @@ foreach my $occurence (@revmessages) {
       my ($file, $line) = @{$msg};
       push @msgsfmt, "$file:$line";
     }
-    printf "#: %s\n", join(" ", @msgsfmt);
+    my $locationdata = join(" ", @msgsfmt);
+    die "Translatable empty string at $locationdata" if $key =~ /^""\n$/;
+    printf "#: %s\n", $locationdata;
     print "msgid $key";
     print "msgstr \"\"\n\n";
 
