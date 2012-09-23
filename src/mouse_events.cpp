@@ -839,14 +839,14 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 
 
 	std::vector<std::string> items;
+	const config tmp_config;
+	const attack_type no_weapon(tmp_config);
 
 	for (unsigned int i = 0; i < bc_vector.size(); i++) {
 		const battle_context_unit_stats& att = bc_vector[i].get_attacker_stats();
 		const battle_context_unit_stats& def = bc_vector[i].get_defender_stats();
-		config tmp_config;
-		attack_type no_weapon(tmp_config);
-		const attack_type& attw = attack_type(*att.weapon);
-		const attack_type& defw = attack_type(def.weapon ? *def.weapon : no_weapon);
+		const attack_type& attw = *att.weapon;
+		const attack_type& defw = def.weapon ? *def.weapon : no_weapon;
 
 		attw.set_specials_context(attacker->get_location(), defender->get_location(), *attacker, true);
 		defw.set_specials_context(attacker->get_location(), defender->get_location(), *attacker, false);

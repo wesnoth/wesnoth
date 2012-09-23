@@ -106,7 +106,7 @@ static void set_weapon_info(twindow& window
 	window.keyboard_capture(&weapon_list);
 
 	const config empty;
-	attack_type no_weapon(empty);
+	const attack_type no_weapon(empty);
 
 	BOOST_FOREACH(const battle_context& weapon, weapons) {
 		const battle_context_unit_stats& attacker =
@@ -115,9 +115,9 @@ static void set_weapon_info(twindow& window
 		const battle_context_unit_stats& defender =
 				weapon.get_defender_stats();
 
-		const attack_type& attacker_weapon = attack_type(*attacker.weapon);
-		const attack_type& defender_weapon = attack_type(
-				defender.weapon ? *defender.weapon : no_weapon);
+		const attack_type& attacker_weapon = *attacker.weapon;
+		const attack_type& defender_weapon =
+				defender.weapon ? *defender.weapon : no_weapon;
 
 		std::map<std::string, string_map> data;
 		string_map item;
