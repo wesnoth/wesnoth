@@ -224,7 +224,7 @@ void carryover::transfer_all_recalls_to(config& side_cfg){
 
 std::string carryover::get_recruits(bool erase){
 	std::stringstream can_recruit;
-	for(std::set<std::string>::iterator i = previous_recruits_.begin(); i != previous_recruits_.end(); i++){
+	for(std::set<std::string>::iterator i = previous_recruits_.begin(); i != previous_recruits_.end(); ++i){
 		can_recruit << *i << ",";
 		if(erase){
 			previous_recruits_.erase(i);
