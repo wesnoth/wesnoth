@@ -803,18 +803,15 @@ savegame::savegame(game_state& gamestate, const bool compress_saves, const std::
 
 bool savegame::save_game_automatic(CVideo& video, bool ask_for_overwrite, const std::string& filename)
 {
-	bool overwrite = true;
-
 	if (filename == "")
 		create_filename();
 	else
 		filename_ = filename;
 
 	if (ask_for_overwrite){
-		overwrite = check_overwrite(video);
-
-		if (!overwrite)
+		if (!check_overwrite(video)) {
 			return save_game_interactive(video, "", gui::OK_CANCEL);
+        }
 	}
 
 	return save_game(&video);
