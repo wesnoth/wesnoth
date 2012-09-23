@@ -52,15 +52,15 @@ class CampaignClient:
                     sys.stderr.write("\n")
             self.sock = socket.socket(addr[0], addr[1], addr[2])
             self.sock.connect(addr[4])
-            self.sock.send(struct.pack("!l", 0))
+            self.sock.send(struct.pack("!I", 0))
             try:
                 connection_num = self.sock.recv(4)
             except socket.error:
-                connection_num = struct.pack("!l", -1)
+                connection_num = struct.pack("!I", -1)
                 self.error = True
             if not self.quiet:
                 sys.stderr.write("Connected as %d.\n" % struct.unpack(
-                    "!l", connection_num))
+                    "!I", connection_num))
 
     def async_cancel(self):
         """
@@ -100,7 +100,7 @@ class CampaignClient:
         z.close()
         zdata = io.getvalue()
 
-        zpacket = struct.pack("!i", len(zdata)) + zdata
+        zpacket = struct.pack("!I", len(zdata)) + zdata
         self.sock.sendall(zpacket)
 
     def read_packet(self):
@@ -116,7 +116,7 @@ class CampaignClient:
         if self.canceled:
             return None
 
-        self.length = l = struct.unpack("!i", packet)[0]
+        self.length = l = struct.unpack("!I", packet)[0]
 
         if not self.quiet:
             sys.stderr.write("Receiving %d bytes.\n" % self.length)
