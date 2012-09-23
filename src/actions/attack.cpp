@@ -234,16 +234,16 @@ void battle_context_unit_stats::dump() const
 	printf("rounds:	%d\n", static_cast<int>(rounds));
 	printf("firststrike:	%d\n", static_cast<int>(firststrike));
 	printf("\n");
-	printf("hp:		%d\n", hp);
-	printf("max_hp:		%d\n", max_hp);
-	printf("chance_to_hit:	%d\n", chance_to_hit);
+	printf("hp:		%u\n", hp);
+	printf("max_hp:		%u\n", max_hp);
+	printf("chance_to_hit:	%u\n", chance_to_hit);
 	printf("damage:		%d\n", damage);
 	printf("slow_damage:	%d\n", slow_damage);
 	printf("drain_percent:	%d\n", drain_percent);
 	printf("drain_constant:	%d\n", drain_constant);
-	printf("num_blows:	%d\n", num_blows);
-	printf("swarm_min:	%d\n", swarm_min);
-	printf("swarm_max:	%d\n", swarm_max);
+	printf("num_blows:	%u\n", num_blows);
+	printf("swarm_min:	%u\n", swarm_min);
+	printf("swarm_max:	%u\n", swarm_max);
 	printf("\n");
 }
 
