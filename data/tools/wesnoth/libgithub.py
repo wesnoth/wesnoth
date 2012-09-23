@@ -576,6 +576,7 @@ def _gen(possible_dirs):
         build_system = realish_github.addon("build", readonly=True)
         return build_system, True
     bs, fresh = _get_build_system(possible_dirs)
+    bs.update()
     # Add references to shutil and os to ensure we're destructed before they are
     stored_shutil = shutil
     stored_os = os

@@ -66,7 +66,6 @@ if __name__ == "__main__":
             possible_build_paths.append(build_sys_dir)
         possible_build_paths.append(os.path.join(below_branch, "build-system"))
         build_system = libgithub.get_build_system(possible_build_paths)
-        build_system.update()
         init_script = os.path.join(build_system.get_dir(), "init-build-sys.sh")
 
         # Uglyness
