@@ -494,7 +494,7 @@ static config unit_defense(const unit* u, const map_location& displayed_unit_hex
 	const t_translation::t_list &underlyings = map.underlying_def_terrain(terrain);
 	if (underlyings.size() != 1 || underlyings.front() != terrain)
 	{
-	    bool revert = false;
+		bool revert = false;
 		BOOST_FOREACH(const t_translation::t_terrain &t, underlyings)
 		{
 			if (t == t_translation::MINUS) {
@@ -511,7 +511,7 @@ static config unit_defense(const unit* u, const map_location& displayed_unit_hex
 		}
 	}
 
-    tooltip << "<b>" << _("Defense: ") << span_color(color)  << def << "%</span></b>";
+	tooltip << "<b>" << _("Defense: ") << span_color(color)  << def << "%</span></b>";
 	return text_report(str.str(), tooltip.str());
 }
 REPORT_GENERATOR(unit_defense)

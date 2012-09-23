@@ -451,7 +451,7 @@ void copy_to_clipboard(const std::string& text, const bool)
 	{
 		be_clipboard->Clear();
 
-	    BMessage *clip;
+		BMessage *clip;
 		if ((clip = be_clipboard->Data()))
 		{
 			clip->AddData("text/plain", B_MIME_TYPE, text.c_str(), text.size()+1);

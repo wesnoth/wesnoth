@@ -268,11 +268,11 @@ std::string component_manager::print_component_tree(component *root, const std::
 
 component* component_manager::get_component(component *root, const std::string &path)
 {
-    if(!path.empty()) {
-        path_element tail;
-        return find_component(root, path, tail);
-    }
-    return NULL;
+	if(!path.empty()) {
+		path_element tail;
+		return find_component(root, path, tail);
+	}
+	return NULL;
 }
 
 } //end of namespace ai
