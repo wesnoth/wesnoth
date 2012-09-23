@@ -73,10 +73,10 @@ struct map_location {
 	int do_compare(const map_location& a) const {return x == a.x ? y - a.y : x - a.x; }
 
 	// Adds an absolute location to a "delta" location
-	// This is not the mathematically correct behaviour, it is neither
+	// This is not the mathematically correct behavior, it is neither
 	// commutative nor associative. Negative coordinates may give strange
 	// results. It is retained because terrain builder code relies in this
-	// broken behaviour. Best avoid.
+	// broken behavior. Best avoid.
 	map_location legacy_negation() const;
 	map_location legacy_sum(const map_location &a) const;
 	map_location& legacy_sum_assign(const map_location &a);

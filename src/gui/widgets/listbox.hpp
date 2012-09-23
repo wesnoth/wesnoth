@@ -76,7 +76,7 @@ public:
 	 *                            the wanted id (if any). If the member id is an
 	 *                            empty string, it is send to all members.
 	 *                            Having both empty and non-empty id's gives
-	 *                            undefined behaviour.
+	 *                            undefined behavior.
 	 * @param index               The item before which to add the new item,
 	 *                            0 == begin, -1 == end.
 	 */

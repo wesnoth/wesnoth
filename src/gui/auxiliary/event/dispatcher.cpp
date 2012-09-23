@@ -26,7 +26,7 @@ namespace event {
 /***** tdispatcher class. *****/
 
 tdispatcher::tdispatcher()
-	: mouse_behaviour_(all)
+	: mouse_behavior_(all)
 	, want_keyboard_input_(true)
 	, signal_queue_()
 	, signal_mouse_queue_()
@@ -462,7 +462,7 @@ bool tdispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id)
  * to solve with the first solution:
  *
  * Assume there is a listbox with toggle panels and on the panel there are a
- * few buttons, the wanted behaviour is:
+ * few buttons, the wanted behavior is:
  * - if clicked on the panel it should toggle, which may or may not be allowed.
  * - if clicked on a button in the panel, we want to make sure the panel is
  *   selected, which again may or may not be allowed.

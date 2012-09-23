@@ -175,7 +175,7 @@ private:
  *
  * Depending on the @p type_ the @p list_iterator_ and the @p map_iterator_ are
  * a valid iterator or singular. Since most actions on singular iterators
- * result in Undefined Behaviour care should be taken when copying the
+ * result in Undefined Behavior care should be taken when copying the
  * @p list_iterator_ and @p map_iterator_.
  */
 class variant_iterator {

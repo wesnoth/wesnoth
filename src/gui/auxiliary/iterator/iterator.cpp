@@ -49,7 +49,7 @@ namespace iterator {
  * level allows the user to only visit a part of the widget tree.
  *
  * @note At the moment when gui2::iterator::twalker_::widget is skipped the
- * child class also skips its children. This behaviour might change.
+ * child class also skips its children. This behavior might change.
  *
  *
  * @section gui2_iterator_walker Walker
@@ -132,7 +132,7 @@ namespace iterator {
  *
  * When during the iteration a widget is added to or removed from the
  * widget-tree being walked the iterator becomes invalid. Using the iterator
- * when it is invalid results in Undefined Behaviour.
+ * when it is invalid results in Undefined Behavior.
  *
  * When it's certain there's at least one widget to visit a simple do while loop
  * can be used. It the policy visits the widget, it's certain there is at least

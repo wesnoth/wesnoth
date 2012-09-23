@@ -237,7 +237,7 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 /** Process commandline-arguments */
 static int process_command_args(const commandline_options& cmdline_opts) {
 
-	// Options that don't change behaviour based on any others should be checked alphabetically below.
+	// Options that don't change behavior based on any others should be checked alphabetically below.
 
 	if(cmdline_opts.config_dir) {
 		set_preferences_dir(*cmdline_opts.config_dir);
@@ -327,7 +327,7 @@ static int process_command_args(const commandline_options& cmdline_opts) {
 		return 0;
 	}
 
-	// Options changing their behaviour dependant on some others should be checked below.
+	// Options changing their behavior dependant on some others should be checked below.
 
 	if ( cmdline_opts.preprocess ) {
 		handle_preprocess_command(cmdline_opts);

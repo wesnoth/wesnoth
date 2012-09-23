@@ -471,7 +471,7 @@ public:
 	}
 
 	/**
-	 * The behaviour of the mouse events.
+	 * The behavior of the mouse events.
 	 *
 	 * Normally for mouse events there's first cheched whether a dispatcher has
 	 * captured the mouse if so it gets the event.
@@ -487,7 +487,7 @@ public:
 	 *
 	 * If after these tests no dispatcher is found the event is ignored.
 	 */
-	enum tmouse_behaviour
+	enum tmouse_behavior
 	{
 		  all
 		, hit
@@ -508,14 +508,14 @@ public:
 
 	/***** ***** ***** setters/getters ***** ***** *****/
 
-	void set_mouse_behaviour(const tmouse_behaviour mouse_behaviour)
+	void set_mouse_behavior(const tmouse_behavior mouse_behavior)
 	{
-		mouse_behaviour_ = mouse_behaviour;
+		mouse_behavior_ = mouse_behavior;
 	}
 
-	tmouse_behaviour get_mouse_behaviour() const
+	tmouse_behavior get_mouse_behavior() const
 	{
-		return mouse_behaviour_;
+		return mouse_behavior_;
 	}
 
 	void set_want_keyboard_input(const bool want_keyboard_input)
@@ -673,8 +673,8 @@ public:
 
 private:
 
-	/** The mouse behaviour for the dispatcher. */
-	tmouse_behaviour mouse_behaviour_;
+	/** The mouse behavior for the dispatcher. */
+	tmouse_behavior mouse_behavior_;
 
 	/**
 	 * Does the dispatcher want to receive keyboard input.

@@ -54,7 +54,7 @@ class editor_action
 		 * Perform the action, returning an undo action that,
 		 * when performed, shall reverse any effects of this
 		 * action.  The undo action object is owned by the
-		 * caller. Default behaviour is to create a whole-map
+		 * caller. Default behavior is to create a whole-map
 		 * undo, call the perform_without_undo function and
 		 * return the undo object.
 		 */

@@ -127,7 +127,7 @@ public:
 	 * Else is goes through all selected items and returns the first one
 	 * selected.
 	 *
-	 * @note tstacked_widget depends on that behaviour it always has all items
+	 * @note tstacked_widget depends on that behavior it always has all items
 	 * selected and thus shown and by default the last selected item (the top
 	 * one) is active.
 	 *

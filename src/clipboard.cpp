@@ -181,7 +181,7 @@ static std::string clipboard_string;
 
 /**
  The following string is used for the mouse selection aka PRIMARY
- Unix behaviour is mouse selection is stored in primary
+ Unix behavior is mouse selection is stored in primary
  active selection goes to CLIPBOARD.
 */
 static std::string primary_string;

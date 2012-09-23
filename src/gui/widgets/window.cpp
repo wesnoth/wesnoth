@@ -508,7 +508,7 @@ void twindow::show_tooltip(/*const unsigned auto_close_timeout*/)
 
 	assert(status_ == NEW);
 
-	set_mouse_behaviour(event::tdispatcher::none);
+	set_mouse_behavior(event::tdispatcher::none);
 	set_want_keyboard_input(false);
 
 	show_mode_ = tooltip;
@@ -530,7 +530,7 @@ void twindow::show_non_modal(/*const unsigned auto_close_timeout*/)
 
 	assert(status_ == NEW);
 
-	set_mouse_behaviour(event::tdispatcher::hit);
+	set_mouse_behavior(event::tdispatcher::hit);
 
 	show_mode_ = modal;
 
@@ -1437,7 +1437,7 @@ void twindow::signal_handler_request_placement(
  *
  * - @ref gui2::tgrid::tchild "Grid cell"; Every widget which is in a grid is
  *   put in a grid cell. These cells also hold the information about the gaps
- *   between widgets the behaviour on growing etc. All grid cells must have a
+ *   between widgets the behavior on growing etc. All grid cells must have a
  *   widget inside them.
  *
  * - @ref gui2::twindow "Window"; A window is a top level item which has a

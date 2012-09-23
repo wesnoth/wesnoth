@@ -51,7 +51,7 @@ tlistbox_definition::tresolution::tresolution(const config& cfg)
  * @begin{table}{config}
  *     scrollbar & section & &            A grid containing the widgets for the
  *                                     scrollbar. The scrollbar has some special
- *                                     widgets so it can make default behaviour
+ *                                     widgets so it can make default behavior
  *                                     for certain widgets. $
  * @end{table}
  * @begin{table}{dialog_widgets}

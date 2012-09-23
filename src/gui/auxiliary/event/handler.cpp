@@ -524,13 +524,13 @@ void thandler::mouse(const tevent event, const tpoint& position)
 		for(std::vector<tdispatcher*>::reverse_iterator ritor =
 				dispatchers_.rbegin(); ritor != dispatchers_.rend(); ++ritor) {
 
-			if((**ritor).get_mouse_behaviour() == tdispatcher::all) {
+			if((**ritor).get_mouse_behavior() == tdispatcher::all) {
 				(**ritor).fire(event
 						, dynamic_cast<twidget&>(**ritor)
 						, position);
 				break;
 			}
-			if((**ritor).get_mouse_behaviour() == tdispatcher::none) {
+			if((**ritor).get_mouse_behavior() == tdispatcher::none) {
 				continue;
 			}
 			if((**ritor).is_at(position)) {

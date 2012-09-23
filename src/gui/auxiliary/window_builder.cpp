@@ -329,16 +329,16 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
  *
  *
  * click_dismiss & bool & false &
- *     Does the window need click dismiss behaviour? Click dismiss behaviour
+ *     Does the window need click dismiss behavior? Click dismiss behavior
  *     means that any mouse click will close the dialog. Note certain widgets
- *     will automatically disable this behaviour since they need to process the
+ *     will automatically disable this behavior since they need to process the
  *     clicks as well, for example buttons do need a click and a misclick on
- *     button shouldn't close the dialog. NOTE with some widgets this behaviour
- *     depends on their contents (like scrolling labels) so the behaviour might
+ *     button shouldn't close the dialog. NOTE with some widgets this behavior
+ *     depends on their contents (like scrolling labels) so the behavior might
  *     get changed depending on the data in the dialog. NOTE the default
- *     behaviour might be changed since it will be disabled when can't be used
+ *     behavior might be changed since it will be disabled when can't be used
  *     due to widgets which use the mouse, including buttons, so it might be
- *     wise to set the behaviour explicitly when not wanted and no mouse using
+ *     wise to set the behavior explicitly when not wanted and no mouse using
  *     widgets are available. This means enter, escape or an external source
  *     needs to be used to close the dialog (which is valid). $
  *

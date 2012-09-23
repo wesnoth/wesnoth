@@ -83,7 +83,7 @@ protected:
 	/**
 	 * Process mouse- and keypress-events from SDL.
 	 * Not virtual but calls various virtual function to allow specialized
-	 * behaviour of derived classes.
+	 * behavior of derived classes.
 	 */
 	void handle_event(const SDL_Event& event);
 

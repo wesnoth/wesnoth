@@ -242,7 +242,7 @@ private:
  *
  * @param T                       The type of the item to show in the widget.
  * @param W                       The type of widget to show, this is not a
- *                                widget class but a behaviour class.
+ *                                widget class but a behavior class.
  * @param CT                      The type tp be used in the
  *                                callback_save_value callback. Normally this
  *                                is const T but for example with strings it

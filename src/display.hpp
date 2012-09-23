@@ -542,7 +542,7 @@ public:
 	 * If update is true, will also copy the display to the frame buffer.
 	 * If force is true, will not skip frames, even if running behind.
 	 * Not virtual, since it gathers common actions. Calls various protected
-	 * virtuals (further below) to allow specialized behaviour in derived classes.
+	 * virtuals (further below) to allow specialized behavior in derived classes.
 	 */
 	void draw(bool update=true, bool force=false);
 

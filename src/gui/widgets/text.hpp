@@ -224,7 +224,7 @@ private:
 	/****** handling of special keys first the pure virtuals *****/
 
 	/**
-	 * Every key can have several behaviours.
+	 * Every key can have several behaviors.
 	 *
 	 * Unmodified                 No modifier is pressed.
 	 * Control                    The control key is pressed.
@@ -251,14 +251,14 @@ private:
 	/**
 	 * Up arrow key pressed.
 	 *
-	 * The behaviour is implementation defined.
+	 * The behavior is implementation defined.
 	 */
 	virtual void handle_key_up_arrow(SDLMod modifier, bool& handled) = 0;
 
 	/**
 	 * Down arrow key pressed.
 	 *
-	 * The behaviour is implementation defined.
+	 * The behavior is implementation defined.
 	 */
 	virtual void handle_key_down_arrow(SDLMod modifier, bool& handled) = 0;
 

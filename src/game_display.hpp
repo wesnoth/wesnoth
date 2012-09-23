@@ -296,7 +296,7 @@ public:
 	/**
 	 * Sets the linger mode for the display.
 	 * There have been some discussions on what to do with fog and shroud
-	 * the extra variables make it easier to modify the behaviour. There
+	 * the extra variables make it easier to modify the behavior. There
 	 * might even be a split between victory and defeat.
 	 *
 	 * @todo if the current implementation is wanted we can change

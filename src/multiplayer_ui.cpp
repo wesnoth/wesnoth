@@ -629,7 +629,7 @@ void ui::process_network_error(network::error& error)
 {
 	ERR_NW << "Caught networking error: " << error.message << "\n";
 
-	// Default behaviour is to re-throw the error. May be overridden.
+	// Default behavior is to re-throw the error. May be overridden.
 	throw error;
 }
 

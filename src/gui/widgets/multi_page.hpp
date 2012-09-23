@@ -63,7 +63,7 @@ public:
 	 *                            has the wanted id (if any). If the member
 	 *                            id is an empty string, it is send to all
 	 *                            members. Having both empty and non-empty
-	 *                            id's gives undefined behaviour.
+	 *                            id's gives undefined behavior.
 	 */
 	void add_page(const std::map<std::string /* widget id */,
 			string_map>& data);

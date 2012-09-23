@@ -64,7 +64,7 @@ class editor_action_extendable : public editor_action
 		}
 		/**
 		 * The crux of the extendable contract. This member function must be
-		 * implemented so that the undo behaviour is consistent, exactly the
+		 * implemented so that the undo behavior is consistent, exactly the
 		 * same as would be with separate undo actions for every part of
 		 * the drag.
 		 */

@@ -140,7 +140,7 @@ protected:
 	/**
 	 * Processes any pending network data. Called by the public
 	 * process_network() method. Overridden by subclasses who add more
-	 * behaviour for network.
+	 * behavior for network.
 	 */
 	virtual void process_network_data(const config& data, const network::connection sock);
 
@@ -182,7 +182,7 @@ protected:
 
 	/**
 	 * Called each time the gamelist_ variable is updated. May be
-	 * overridden by child classes to add custom gamelist behaviour.
+	 * overridden by child classes to add custom gamelist behavior.
 	 */
 	virtual void gamelist_updated(bool silent=true);
 

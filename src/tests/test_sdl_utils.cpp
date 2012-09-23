@@ -76,18 +76,18 @@ compare_image(
 }
 
 static void
-test_blend(const surface& dst, const Uint8 amount, const Uint32 colour)
+test_blend(const surface& dst, const Uint8 amount, const Uint32 color)
 {
 	std::stringstream sstr;
 	sstr << std::hex << std::setfill('0')
 			<< "Blend image amount »"
 			<< std::setw(2) << static_cast<Uint32>(amount)
-			<< "« colour »"
-			<< std::setw(8) << colour
+			<< "« color »"
+			<< std::setw(8) << color
 			<< "« : ";
 
 	const std::string filename =
-			blend_get_filename("data/test/test/image/blend/", amount, colour);
+			blend_get_filename("data/test/test/image/blend/", amount, color);
 
 	BOOST_REQUIRE_EQUAL(image::exists(filename), true);
 

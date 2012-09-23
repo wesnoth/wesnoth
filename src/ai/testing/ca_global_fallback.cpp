@@ -15,7 +15,7 @@
 
 /**
  * @file
- * Defensive fallback, to be used during unfavourable conditions
+ * Defensive fallback, to be used during unfavorable conditions
  */
 
 #include "ca_global_fallback.hpp"

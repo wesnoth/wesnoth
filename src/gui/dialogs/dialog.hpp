@@ -317,7 +317,7 @@ private:
 	 *
 	 * Most windows should restore the display after showing so this value
 	 * defaults to true. Toplevel windows (like the titlescreen don't want this
-	 * behaviour so they can change it in pre_show().
+	 * behavior so they can change it in pre_show().
 	 */
 	bool restore_;
 

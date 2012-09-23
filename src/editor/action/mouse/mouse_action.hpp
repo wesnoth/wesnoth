@@ -296,7 +296,7 @@ public:
 	}
 
 	/**
-	 * Overridden to allow special behaviour based on modifier keys
+	 * Overridden to allow special behavior based on modifier keys
 	 */
 	std::set<map_location> affected_hexes(editor_display& disp, const map_location& hex);
 

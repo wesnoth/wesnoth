@@ -28,7 +28,7 @@ class twindow;
  * The popup class shows windows that are shown non-modal.
  *
  * At the moment these windows also don't capture the mouse and keyboard so can
- * only be used for things like tooltips. This behaviour might change later.
+ * only be used for things like tooltips. This behavior might change later.
  */
 class tpopup
 {

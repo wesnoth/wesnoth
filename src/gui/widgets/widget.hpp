@@ -621,7 +621,7 @@ private:
 	 * the next drawing cycle, setting it to dirty also need to set it's parent
 	 * dirty so at so point the toplevel parent knows which item to redraw.
 	 *
-	 * NOTE dirtying the parent might be inefficient and this behaviour might be
+	 * NOTE dirtying the parent might be inefficient and this behavior might be
 	 * optimized later on.
 	 */
 	bool dirty_;

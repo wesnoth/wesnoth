@@ -81,9 +81,9 @@ create_image_blend_functor(
 		  const surface& dst
 		, const std::string root
 		, const Uint8 amount
-		, const Uint32 colour)
+		, const Uint32 color)
 {
-	const std::string filename = blend_get_filename(root, amount, colour);
+	const std::string filename = blend_get_filename(root, amount, color);
 
 	save_image(dst, filename);
 }

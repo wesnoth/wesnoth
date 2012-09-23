@@ -349,7 +349,7 @@ private:
 	 * Load class dependant config settings.
 	 *
 	 * load_config will call this method after loading the config, by default it
-	 * does nothing but classes can override it to implement custom behaviour.
+	 * does nothing but classes can override it to implement custom behavior.
 	 */
 	virtual void load_config_extra() {}
 

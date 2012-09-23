@@ -144,7 +144,7 @@ namespace game_events
 	void handle_deprecated_message(const config& cfg);
 
 	/** Gets a vector of sides from side= attribute in a given config node.
-     * Promotes consistent behaviour.
+     * Promotes consistent behavior.
 	*/
 	std::vector<int> get_sides_vector(const vconfig& cfg);
 

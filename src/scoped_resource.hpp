@@ -97,7 +97,7 @@ public:
 
   /**
   * This function provides explicit access to the resource.
-  * Its behaviour is identical to operator resource_type()
+  * Its behavior is identical to operator resource_type()
   *
   * @return the underlying resource
   */
@@ -162,7 +162,7 @@ struct scoped_ptr : public scoped_resource<T*,delete_item>
 };
 
 /**
-* This class has identical behaviour to @ref scoped_ptr, except it
+* This class has identical behavior to @ref scoped_ptr, except it
 * manages heap-allocated arrays instead of heap-allocated single objects
 *
 * Usage example:

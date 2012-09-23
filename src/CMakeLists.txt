@@ -289,7 +289,7 @@ if(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
 	# It needs the files to be forced as c++ manually, it might be a newer
 	# version of cmake will be able to this for us.
 	#
-	# Also silence some Clang specific warnings due to extra parenthesis in if statements when comparing instead 
+	# Also silence some Clang specific warnings due to extra parenthesis in if statements when comparing instead
 	set_source_files_properties(
 		${libwesnoth-lua_STAT_SRC}
 		PROPERTIES COMPILE_FLAGS
@@ -412,7 +412,7 @@ add_library(wesnoth-gui_tooltip
 
 # This library contains the widget code.
 # It contains the core code of the wigets which determines the
-# behaviour of the widgets. It also contains the builder code
+# behavior of the widgets. It also contains the builder code
 # for the widgets since the code has inter dependencies.
 set(wesnoth-gui_widget_SRC
 	gui/widgets/button.cpp
@@ -441,13 +441,13 @@ set(wesnoth-gui_widget_SRC
 	gui/widgets/scrollbar_container.cpp
 	gui/widgets/scrollbar_panel.cpp
 	gui/widgets/settings.cpp
-	gui/widgets/slider.cpp 
+	gui/widgets/slider.cpp
 	gui/widgets/spacer.cpp
 	gui/widgets/stacked_widget.cpp
 	gui/widgets/text.cpp
 	gui/widgets/text_box.cpp
-	gui/widgets/toggle_button.cpp 
-	gui/widgets/toggle_panel.cpp 
+	gui/widgets/toggle_button.cpp
+	gui/widgets/toggle_panel.cpp
 	gui/widgets/tree_view.cpp
 	gui/widgets/tree_view_node.cpp
 	gui/widgets/vertical_scrollbar.cpp
@@ -962,7 +962,7 @@ set(wesnothd_SRC
 	server/forum_user_handler.cpp
 	server/sample_user_handler.cpp
 	${network_implementation_files}
-	loadscreen_empty.cpp 
+	loadscreen_empty.cpp
 )
 
 add_executable(wesnothd WIN32
@@ -1067,7 +1067,7 @@ set(schema_validator_SRC
 
 add_executable(schema_validator ${schema_validator_SRC})
 target_link_libraries(schema_validator wesnoth-core ${common-external-libs})
-set_target_properties(schema_validator PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}schema_validator${BINARY_SUFFIX} 
+set_target_properties(schema_validator PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}schema_validator${BINARY_SUFFIX}
 							COMPILE_DEFINITIONS VALIDATION_ERRORS_LOG)
 
 install(TARGETS schema_validator DESTINATION ${BINDIR})
@@ -1100,8 +1100,8 @@ if(ENABLE_TESTS)
 	set(test_SRC
 		tests/floating_point_emulation.cpp
 		tests/main.cpp
-		tests/utils/fake_display.cpp 
-		tests/utils/fake_event_source.cpp 
+		tests/utils/fake_display.cpp
+		tests/utils/fake_event_source.cpp
 		tests/utils/game_config_manager.cpp
 		tests/utils/play_scenario.cpp
 		tests/test_addons.cpp

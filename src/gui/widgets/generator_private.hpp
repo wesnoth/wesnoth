@@ -530,7 +530,7 @@ struct tshow
 /**
  * Basic template class to generate new items.
  *
- * The class is policy based so the behaviour can be selected.
+ * The class is policy based so the behavior can be selected.
  */
 template
 	    < class minimum_selection

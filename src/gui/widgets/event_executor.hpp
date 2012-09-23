@@ -27,7 +27,7 @@ class tevent_handler;
  *
  * Base class with all possible events, most widgets can ignore most of these,
  * but they are available. In order to use an event simply override the
- * execution function and implement the wanted behaviour. The default behaviour
+ * execution function and implement the wanted behavior. The default behavior
  * defined here is to do nothing.
  *
  * For more info about the event handling have a look at the tevent_handler
