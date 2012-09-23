@@ -570,7 +570,7 @@ void menu::move_selection_keeping_viewport(size_t id)
 
 void menu::reset_selection()
 {
-	set_selection_pos(0);
+	set_selection_pos(0, true);
 }
 
 void menu::key_press(SDLKey key)
