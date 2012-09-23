@@ -69,6 +69,12 @@ if __name__ == "__main__":
         init_script = os.path.join(build_system.get_dir(), "init-build-sys.sh")
 
         # Uglyness
+        out, err, res = build_system._execute(["git", "show", "--pretty=oneline", "--summary"])
+        build_system_version = out.split()[0]
+        if len(build_system_version) != 40:
+            logging.warn("Incorrect SHA1 for build system checkout: {0}".format(build_system_version))
+
+        # Uglyness
         out, err, res = addon_obj._execute([init_script, "--{0}".format(git_version), addon_name, "."], check_error=False)
         if len(err):
             logging.warn("init-build-sys.sh in add-on {0}:\n{1}".format(addon_name, err))
@@ -79,7 +85,10 @@ if __name__ == "__main__":
             addon_obj._execute(["git", "reset", "--hard"])
             return False
 
-        addon_obj._execute(["git", "add", "po", "campaign.def", "Makefile"], check_error=True)
+        with open(os.path.join(addon_obj.get_dir(), "build-system.version"), "w") as version_file:
+            version_file.write(build_system_version)
+
+        addon_obj._execute(["git", "add", "po", "campaign.def", "Makefile", "build-system.version"], check_error=True)
         addon_obj.commit("wescamp.py: Initialize build-system")
         return True
 
@@ -222,8 +231,7 @@ if __name__ == "__main__":
                 + "upload aborted.", addon)
             return
 
-        # Download the addon.
-        extract(server,  addon, temp_dir)
+        timestamp = get_timestamp(server, addon)
 
         github = libgithub.GitHub(wescamp_dir, git_version, userpass=git_userpass)
 
@@ -244,12 +252,19 @@ if __name__ == "__main__":
         # Update the directory
         addon_obj = github.addon(addon)
         addon_obj.update()
+
+        # Download the addon.
+        extract(server,  addon, temp_dir)
+
         # Translation needs to be prevented from the campaign to overwrite
         # the ones in wescamp.
         # The other files are present in wescamp and shouldn't be deleted.
         ignore_list = ["translations", "po", "campaign.def",
             "config.status", "Makefile"]
         if(addon_obj.sync_from(temp_dir, ignore_list)):
+            with open(os.path.join(addon_obj.get_dir(), "addon.timestamp"), "w") as timestamp_file:
+                timestamp_file.write(timestamp)
+                addon_obj._execute(["git", "add", "addon.timestamp"])
 
             addon_obj.commit("wescamp.py: Update from add-on server")
             logging.info("New version of addon '%s' uploaded.", addon)
