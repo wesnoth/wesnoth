@@ -572,20 +572,13 @@ manager::~manager()
 	wipe();
 }
 
-scope_changer::scope_changer(const config& cfg)
-: cfg_(cfg)
-, prev_scope_active_(scope_active_)
-{
-	manager::wipe();
-	manager::init();
-}
+scope_changer::scope_changer()
+: prev_scope_active_(scope_active_)
+{}
 
 scope_changer::~scope_changer()
 {
 	scope_active_.swap(prev_scope_active_);
-	manager::wipe();
-	manager::init();
-	load_hotkeys(cfg_, false);
 }
 
 void clear_hotkeys(const std::string& command)

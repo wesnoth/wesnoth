@@ -257,10 +257,9 @@ public:
 
 class scope_changer {
 public:
-	scope_changer(const config& cfg);
+	scope_changer();
 	~scope_changer();
 private:
-	const config& cfg_;
 	std::vector<bool> prev_scope_active_;
 };
 
