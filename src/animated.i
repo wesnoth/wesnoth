@@ -348,7 +348,7 @@ int last_start_time = starting_frame_time_;
 typename std::vector<frame>::iterator current_frame = frames_.begin();
         while (last_start_time  < new_ending_time && current_frame != frames_.end()) {
                 last_start_time += current_frame->duration_;
-                current_frame++;
+                ++current_frame;
         }
         // at this point last_start_time is set to the beginning of the first frame past the end
         // or set to frames_.end()
