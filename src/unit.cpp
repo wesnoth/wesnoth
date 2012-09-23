@@ -2717,7 +2717,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					if (!add.empty()) {
 						std::vector<std::string> temp_overlays = utils::parenthetical_split(add, ',');
 						std::vector<std::string>::iterator it;
-						for (it=temp_overlays.begin();it<temp_overlays.end();it++) {
+						for (it=temp_overlays.begin();it<temp_overlays.end();++it) {
 							overlays_.push_back( *it );
 						}
 					}
