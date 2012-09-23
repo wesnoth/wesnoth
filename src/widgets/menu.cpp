@@ -1181,6 +1181,8 @@ size_t menu::get_item_height(int) const
 
 void menu::process_help_string(int mousex, int mousey)
 {
+	if (hidden()) return;
+
 	const std::pair<int,int> loc(hit(mousex,mousey), hit_column(mousex));
 	if(loc == cur_help_) {
 		return;
@@ -1193,7 +1195,7 @@ void menu::process_help_string(int mousex, int mousey)
 			help_string_ = -1;
 		}
 		if(size_t(loc.first) < items_.size()) {
-			const std::vector<std::string>& row = items_[loc.first].help;
+			const std::vector<std::string>& row = items_[item_pos_[loc.first]].help;
 			if(size_t(loc.second) < row.size()) {
 				const std::string& help = row[loc.second];
 				if(help.empty() == false) {
