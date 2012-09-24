@@ -29,6 +29,9 @@ import wesnoth.campaignserver_client as libwml
 #import the github library
 import wesnoth.libgithub as libgithub
 
+# Some constants
+BUILDSYS_FILE = "build-system.version"
+ADDONVER_FILE = "addon.timestamp"
 
 class tempdir:
     def __init__(self):
@@ -56,9 +59,12 @@ if __name__ == "__main__":
     addon_name          Name of the addon.
     wescamp_dir         The directory containing a checkout of wescamp.
     build_sys_dir       Possible directory containing a checkout of build-system.
-    returns             Boolean indicating whether the operation was successful.
+    returns             Boolean indicating whether the add-on now has a build-system.
     """
-    def init_build_system(addon_obj, addon_name, wescamp_dir, build_sys_dir):
+    def update_build_system(addon_obj, addon_name, wescamp_dir, build_sys_dir):
+        logging.info("Checking if build system for add-on {0} needs to be updated".format(addon_name))
+        previously_initialized = os.path.exists(os.path.join(addon_obj.get_dir(), "Makefile"))
+
         # Grab the build system
         below_branch = os.path.basename(wescamp_dir.rstrip(os.sep))
         possible_build_paths = []
@@ -68,11 +74,20 @@ if __name__ == "__main__":
         build_system = libgithub.get_build_system(possible_build_paths)
         init_script = os.path.join(build_system.get_dir(), "init-build-sys.sh")
 
+        # Grab master build system's version
         # Uglyness
         out, err, res = build_system._execute(["git", "show", "--pretty=oneline", "--summary"])
         build_system_version = out.split()[0]
         if len(build_system_version) != 40:
             logging.warn("Incorrect SHA1 for build system checkout: {0}".format(build_system_version))
+
+        # Check if build system version in add-on is up-to-date
+        if os.path.exists(os.path.join(addon_obj.get_dir(), BUILDSYS_FILE)):
+            with open(os.path.join(addon_obj.get_dir(), BUILDSYS_FILE), "r") as stamp_file:
+                addon_build_version = stamp_file.read()
+            if addon_build_version == build_system_version:
+                logging.info("Build system for add-on {0} is up-to-date".format(addon_name))
+                return True
 
         # Uglyness
         out, err, res = addon_obj._execute([init_script, "--{0}".format(git_version), addon_name, "."], check_error=False)
@@ -85,11 +100,17 @@ if __name__ == "__main__":
             addon_obj._execute(["git", "reset", "--hard"])
             return False
 
-        with open(os.path.join(addon_obj.get_dir(), "build-system.version"), "w") as version_file:
+        # Store build system version
+        with open(os.path.join(addon_obj.get_dir(), BUILDSYS_FILE), "w") as version_file:
             version_file.write(build_system_version)
 
-        addon_obj._execute(["git", "add", "po", "campaign.def", "Makefile", "build-system.version"], check_error=True)
-        addon_obj.commit("wescamp.py: Initialize build-system")
+        addon_obj._execute(["git", "add", "po", "campaign.def", "Makefile", BUILDSYS_FILE], check_error=True)
+        if previously_initialized:
+            logging.info("Updated build system for add-on {0}".format(addon_name))
+            addon_obj.commit("wescamp.py: Update build-system")
+        else:
+            logging.info("Initialized build system for add-on {0}".format(addon_name))
+            addon_obj.commit("wescamp.py: Initialize build-system")
         return True
 
     """Update the translation catalogs.
@@ -260,11 +281,12 @@ if __name__ == "__main__":
         # the ones in wescamp.
         # The other files are present in wescamp and shouldn't be deleted.
         ignore_list = ["translations", "po", "campaign.def",
-            "config.status", "Makefile"]
+            "config.status", "Makefile", BUILDSYS_FILE, ADDONVER_FILE]
         if(addon_obj.sync_from(temp_dir, ignore_list)):
-            with open(os.path.join(addon_obj.get_dir(), "addon.timestamp"), "w") as timestamp_file:
-                timestamp_file.write(timestamp)
-                addon_obj._execute(["git", "add", "addon.timestamp"])
+            # Store add-on timestamp
+            with open(os.path.join(addon_obj.get_dir(), ADDONVER_FILE), "w") as timestamp_file:
+                timestamp_file.write(str(timestamp))
+                addon_obj._execute(["git", "add", ADDONVER_FILE])
 
             addon_obj.commit("wescamp.py: Update from add-on server")
             logging.info("New version of addon '%s' uploaded.", addon)
@@ -273,10 +295,7 @@ if __name__ == "__main__":
             logging.info("Addon '%s' hasn't been modified, thus not uploaded.",
                 addon)
 
-        has_build_system = os.path.exists(os.path.join(addon_obj.get_dir(), "Makefile"))
-
-        if is_new_addon or not has_build_system:
-            has_build_system = init_build_system(addon_obj, addon, wescamp_dir, build_sys_dir)
+        has_build_system = update_build_system(addon_obj, addon, wescamp_dir, build_sys_dir)
 
         if has_updated and has_build_system:
             pot_update(addon_obj, addon)
