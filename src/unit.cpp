@@ -2588,6 +2588,21 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 
 					if(movement_ > max_movement_)
 						movement_ = max_movement_;
+				} else if(apply_to == "experience") {
+					const std::string &increase = effect["increase"];
+					const std::string &set = effect["set"];
+
+					if(set.empty() == false) {
+						if(set[set.size()-1] == '%') {
+							experience_ = lexical_cast_default<int>(set)*max_experience_/100;
+						} else {
+							experience_ = lexical_cast_default<int>(set);
+						}
+					}
+
+					if(increase.empty() == false) {
+						experience_ = utils::apply_modifier(experience_, increase, 1);
+					}
 				} else if(apply_to == "max_experience") {
 					const std::string &increase = effect["increase"];
 
