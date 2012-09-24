@@ -256,7 +256,6 @@ if __name__ == "__main__":
 
         github = libgithub.GitHub(wescamp_dir, git_version, userpass=git_userpass)
 
-        is_new_addon = False
         has_updated = False
 
         # If the checkout doesn't exist we need to create it.
@@ -267,8 +266,6 @@ if __name__ == "__main__":
 
             if not github.addon_exists(addon):
                 github.create_addon(addon)
-
-                is_new_addon = True
 
         # Update the directory
         addon_obj = github.addon(addon)
