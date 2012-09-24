@@ -53,6 +53,50 @@ if __name__ == "__main__":
     git_userpass = None
     quiet_libwml = True
 
+    def update_addon(addon_obj, addon_name, addon_server, temp_dir):
+        """Update the add-on from addon-server
+
+        addon_obj       Github.Addon object for the add-on
+        addon_name      Name of the add-on
+        addon_server    CampaignClient instance
+        temp_dir            The directory where the unpacked campaign can be stored.
+
+        returns         Whether anything was changed.
+        """
+        # Grab timestamp from server
+        server_timestamp = get_timestamp(addon_server, addon_name)
+
+        # Check local timestamp to see if the add-on server version is newer
+        if os.path.exists(os.path.join(addon_obj.get_dir(), ADDONVER_FILE)):
+            with open(os.path.join(addon_obj.get_dir(), ADDONVER_FILE), "r") as stamp_file:
+                str_timestamp = stamp_file.read()
+            local_timestamp = int(str_timestamp)
+            if local_timestamp == server_timestamp:
+                logging.info("Addon '%s' is up-to-date.", addon_name)
+                return False
+
+        # Download the addon.
+        extract(addon_server,  addon_name, temp_dir)
+
+        # Translation needs to be prevented from the campaign to overwrite
+        # the ones in wescamp.
+        # The other files are present in wescamp and shouldn't be deleted.
+        ignore_list = ["translations", "po", "campaign.def",
+            "config.status", "Makefile", BUILDSYS_FILE, ADDONVER_FILE]
+        if(addon_obj.sync_from(temp_dir, ignore_list)):
+            # Store add-on timestamp
+            with open(os.path.join(addon_obj.get_dir(), ADDONVER_FILE), "w") as timestamp_file:
+                timestamp_file.write(str(server_timestamp))
+                addon_obj._execute(["git", "add", ADDONVER_FILE])
+
+            addon_obj.commit("wescamp.py: Update from add-on server")
+            logging.info("New version of addon '%s' uploaded.", addon_name)
+            return True
+        else:
+            logging.info("Addon '%s' hasn't been modified, thus not uploaded.",
+                addon_name)
+            return False
+
     """Initialize the build-system.
 
     addon_obj           libgithub.Addon objectof the addon.
@@ -252,14 +296,12 @@ if __name__ == "__main__":
                 + "upload aborted.", addon)
             return
 
-        timestamp = get_timestamp(server, addon)
-
         github = libgithub.GitHub(wescamp_dir, git_version, userpass=git_userpass)
 
         has_updated = False
 
         # If the checkout doesn't exist we need to create it.
-        if(os.path.isdir(os.path.join(wescamp_dir, addon)) == False):
+        if not os.path.isdir(os.path.join(wescamp_dir, addon)):
 
             logging.info("Checking out '%s'.",
                 os.path.join(wescamp_dir, addon))
@@ -271,26 +313,7 @@ if __name__ == "__main__":
         addon_obj = github.addon(addon)
         addon_obj.update()
 
-        # Download the addon.
-        extract(server,  addon, temp_dir)
-
-        # Translation needs to be prevented from the campaign to overwrite
-        # the ones in wescamp.
-        # The other files are present in wescamp and shouldn't be deleted.
-        ignore_list = ["translations", "po", "campaign.def",
-            "config.status", "Makefile", BUILDSYS_FILE, ADDONVER_FILE]
-        if(addon_obj.sync_from(temp_dir, ignore_list)):
-            # Store add-on timestamp
-            with open(os.path.join(addon_obj.get_dir(), ADDONVER_FILE), "w") as timestamp_file:
-                timestamp_file.write(str(timestamp))
-                addon_obj._execute(["git", "add", ADDONVER_FILE])
-
-            addon_obj.commit("wescamp.py: Update from add-on server")
-            logging.info("New version of addon '%s' uploaded.", addon)
-            has_updated = True
-        else:
-            logging.info("Addon '%s' hasn't been modified, thus not uploaded.",
-                addon)
+        has_updated = update_addon(addon_obj, addon, server, temp_dir)
 
         has_build_system = update_build_system(addon_obj, addon, wescamp_dir, build_sys_dir)
 
