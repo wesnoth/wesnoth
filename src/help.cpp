@@ -1427,7 +1427,6 @@ public:
 				}
 
 				ss << "<ref>dst='" << escape(ref_id) << "' text='" << escape(var_name) << "'</ref>";
-				//std::cerr << "Link-to: " << ref_id << " = " << escape(var_name) << "\n";
 			}
 			ss << "\n"; //added even if empty, to avoid shifting
 		}
@@ -1852,7 +1851,6 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 			topic var_topic(topic_name, var_ref, "");
 			var_topic.text = new unit_topic_generator(var_type, variation_name);
 			topics.push_back(var_topic);
-			std::cerr << "Pushed back a topic with name " << topic_name << "\n";
 		}
 
 		UNIT_DESCRIPTION_TYPE desc_type = description_type(type);
