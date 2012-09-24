@@ -55,7 +55,6 @@ public:
 	}
 
 	~hotkey_preferences_parent_dialog() {
-		ERR_GUI_D << "resulte ist" << result() << "\n";
 		// save or restore depending on the exit result
 		if (result() >= 0)
 			save_hotkeys();
