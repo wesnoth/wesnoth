@@ -463,6 +463,10 @@ void hotkey_preferences_dialog::update_location(SDL_Rect const &rect) {
 	clear_button_.set_location(xpos, ypos);
 }
 
+#ifdef _MSC_VER
+#pragma warning (push)
+#pragma warning (disable:4701)
+#endif
 void hotkey_preferences_dialog::show_binding_dialog(const std::string& id) {
 
 	// Lets change this hotkey......
@@ -607,7 +611,9 @@ void hotkey_preferences_dialog::show_binding_dialog(const std::string& id) {
 	}
 
 }
-
+#ifdef _MSC_VER
+#pragma warning (pop)
+#endif
 
 } // end namespace preferences
 
