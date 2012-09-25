@@ -70,10 +70,13 @@ if __name__ == "__main__":
         if os.path.exists(os.path.join(addon_obj.get_dir(), ADDONVER_FILE)):
             with open(os.path.join(addon_obj.get_dir(), ADDONVER_FILE), "r") as stamp_file:
                 str_timestamp = stamp_file.read()
-            local_timestamp = int(str_timestamp)
-            if local_timestamp == server_timestamp:
-                logging.info("Addon '%s' is up-to-date.", addon_name)
-                return False
+            try:
+                local_timestamp = int(str_timestamp)
+                if local_timestamp == server_timestamp:
+                    logging.info("Addon '%s' is up-to-date.", addon_name)
+                    return False
+            except:
+                pass
 
         # Download the addon.
         extract(addon_server,  addon_name, temp_dir)
