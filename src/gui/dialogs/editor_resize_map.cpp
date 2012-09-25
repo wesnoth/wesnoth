@@ -67,7 +67,7 @@ namespace gui2 {
  *         Determines in which direction to expand, shows the east marker. $
  *
  * expand4 & & toggle_button & m &
- *         Determines in which direction to expand, shows the centre marker. $
+ *         Determines in which direction to expand, shows the center marker. $
  *
  * expand5 & & toggle_button & m &
  *         Determines in which direction to expand, shows the west marker. $

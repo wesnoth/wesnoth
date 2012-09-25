@@ -203,15 +203,15 @@ static void draw_line(
  * @param canvas          The canvas to draw upon, the caller should lock the
  *                        surface before calling.
  * @param color           The color of the circle to draw.
- * @param x_centre        The x coordinate of the centre of the circle to draw.
- * @param y_centre        The y coordinate of the centre of the circle to draw.
+ * @param x_center        The x coordinate of the center of the circle to draw.
+ * @param y_center        The y coordinate of the center of the circle to draw.
  * @param radius          The radius of the circle to draw.
  */
 static void draw_circle(
 		  surface& canvas
 		, Uint32 color
-		, const unsigned x_centre
-		, const unsigned y_centre
+		, const unsigned x_center
+		, const unsigned y_center
 		, const unsigned radius)
 {
 	color = SDL_MapRGBA(canvas->format,
@@ -224,15 +224,15 @@ static void draw_circle(
 	unsigned w = canvas->w;
 
 	DBG_GUI_D << "Shape: draw circle at "
-			<< x_centre << ',' << y_centre
+			<< x_center << ',' << y_center
 			<< " with radius " << radius
 			<< " canvas width " << w << " canvas height "
 			<< canvas->h << ".\n";
 
-	assert(static_cast<int>(x_centre + radius) < canvas->w);
-	assert(static_cast<int>(x_centre - radius) >= 0);
-	assert(static_cast<int>(y_centre + radius) < canvas->h);
-	assert(static_cast<int>(y_centre - radius) >= 0);
+	assert(static_cast<int>(x_center + radius) < canvas->w);
+	assert(static_cast<int>(x_center - radius) >= 0);
+	assert(static_cast<int>(y_center + radius) < canvas->h);
+	assert(static_cast<int>(y_center - radius) >= 0);
 
 	// Algorithm based on
 	// http://de.wikipedia.org/wiki/Rasterung_von_Kreisen#Methode_von_Horn
@@ -241,15 +241,15 @@ static void draw_circle(
 	int x = radius;
 	int y = 0;
 	while(!(y > x)) {
-		put_pixel(start, color, w, x_centre + x, y_centre + y);
-		put_pixel(start, color, w, x_centre + x, y_centre - y);
-		put_pixel(start, color, w, x_centre - x, y_centre + y);
-		put_pixel(start, color, w, x_centre - x, y_centre - y);
+		put_pixel(start, color, w, x_center + x, y_center + y);
+		put_pixel(start, color, w, x_center + x, y_center - y);
+		put_pixel(start, color, w, x_center - x, y_center + y);
+		put_pixel(start, color, w, x_center - x, y_center - y);
 
-		put_pixel(start, color, w, x_centre + y, y_centre + x);
-		put_pixel(start, color, w, x_centre + y, y_centre - x);
-		put_pixel(start, color, w, x_centre - y, y_centre + x);
-		put_pixel(start, color, w, x_centre - y, y_centre - x);
+		put_pixel(start, color, w, x_center + y, y_center + x);
+		put_pixel(start, color, w, x_center + y, y_center - x);
+		put_pixel(start, color, w, x_center - y, y_center + x);
+		put_pixel(start, color, w, x_center - y, y_center - x);
 
 		d += 2 * y + 1;
 		++y;
@@ -812,8 +812,8 @@ public:
 
 private:
 	tformula<unsigned>
-		x_,       /**< The centre x coordinate of the circle. */
-		y_,       /**< The centre y coordinate of the circle. */
+		x_,       /**< The center x coordinate of the circle. */
+		y_,       /**< The center y coordinate of the circle. */
 		radius_;  /**< The radius of the circle. */
 
 	/** The color of the circle. */
@@ -839,8 +839,8 @@ tcircle::tcircle(const config& cfg)
  *
  * Keys:
  * @begin{table}{config}
- * x      & f_unsigned & 0 &       The x coordinate of the centre. $
- * y      & f_unsigned & 0 &       The y coordinate of the centre. $
+ * x      & f_unsigned & 0 &       The x coordinate of the center. $
+ * y      & f_unsigned & 0 &       The y coordinate of the center. $
  * radius & f_unsigned & 0 &       The radius of the circle if 0 nothing is
  *                                 drawn. $
  * color & color & "" &            The color of the circle. $

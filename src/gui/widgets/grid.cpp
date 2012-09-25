@@ -816,7 +816,7 @@ void tgrid::tchild::place(tpoint origin, tpoint size)
 	} else if(v_flag == VERTICAL_ALIGN_CENTER) {
 
 		widget_orig.y += (size.y - widget_size.y) / 2;
-		DBG_GUI_L << LOG_CHILD_HEADER << " vertically centred.\n";
+		DBG_GUI_L << LOG_CHILD_HEADER << " vertically centered.\n";
 
 	} else if(v_flag == VERTICAL_ALIGN_BOTTOM) {
 
@@ -850,7 +850,7 @@ void tgrid::tchild::place(tpoint origin, tpoint size)
 	} else if(h_flag == HORIZONTAL_ALIGN_CENTER) {
 
 		widget_orig.x += (size.x - widget_size.x) / 2;
-		DBG_GUI_L << LOG_CHILD_HEADER << " horizontally centred.\n";
+		DBG_GUI_L << LOG_CHILD_HEADER << " horizontally centered.\n";
 
 	} else if(h_flag == HORIZONTAL_ALIGN_RIGHT) {
 
