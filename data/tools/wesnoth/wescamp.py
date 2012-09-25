@@ -87,7 +87,7 @@ if __name__ == "__main__":
             # Store add-on timestamp
             with open(os.path.join(addon_obj.get_dir(), ADDONVER_FILE), "w") as timestamp_file:
                 timestamp_file.write(str(server_timestamp))
-                addon_obj._execute(["git", "add", ADDONVER_FILE])
+            addon_obj._execute(["git", "add", ADDONVER_FILE])
 
             addon_obj.commit("wescamp.py: Update from add-on server")
             logging.info("New version of addon '%s' uploaded.", addon_name)
