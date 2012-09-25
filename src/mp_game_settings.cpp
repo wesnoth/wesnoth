@@ -20,6 +20,7 @@
  */
 
 #include "mp_game_settings.hpp"
+#include "formula_string_utils.hpp"
 
 mp_game_settings::mp_game_settings() :
 	savegame_config(),
@@ -28,6 +29,7 @@ mp_game_settings::mp_game_settings() :
 	hash(),
 	mp_era(),
 	mp_scenario(),
+	active_mods(),
 	village_gold(0),
 	village_support(1),
 	xp_modifier(0),
@@ -45,6 +47,7 @@ mp_game_settings::mp_game_settings() :
 	share_view(false),
 	share_maps(false),
 	saved_game(false),
+	options(),
 	scenario_data()
 
 { reset(); }
@@ -56,6 +59,7 @@ mp_game_settings::mp_game_settings(const config& cfg) :
 	hash(),
 	mp_era(),
 	mp_scenario(),
+	active_mods(),
 	village_gold(0),
 	village_support(1),
 	xp_modifier(0),
@@ -73,6 +77,7 @@ mp_game_settings::mp_game_settings(const config& cfg) :
 	share_view(false),
 	share_maps(false),
 	saved_game(false),
+	options(),
 	scenario_data()
 {
 	set_from_config(cfg);
@@ -85,6 +90,7 @@ mp_game_settings::mp_game_settings(const mp_game_settings& settings)
 	, hash(settings.hash)
 	, mp_era(settings.mp_era)
 	, mp_scenario(settings.mp_scenario)
+	, active_mods(settings.active_mods)
 	, village_gold(settings.village_gold)
 	, village_support(settings.village_support)
 	, xp_modifier(settings.xp_modifier)
@@ -102,6 +108,7 @@ mp_game_settings::mp_game_settings(const mp_game_settings& settings)
 	, share_view(settings.share_view)
 	, share_maps(settings.share_maps)
 	, saved_game(settings.saved_game)
+	, options(settings.options)
 	, scenario_data(settings.scenario_data)
 {
 }
@@ -116,6 +123,7 @@ void mp_game_settings::set_from_config(const config& game_cfg)
 	hash = cfg["hash"].str();
 	mp_era = cfg["mp_era"].str();
 	mp_scenario = cfg["mp_scenario"].str();
+	active_mods = utils::split(cfg["active_mods"], ',');
 	xp_modifier = cfg["experience_modifier"];
 	use_map_settings = cfg["mp_use_map_settings"].to_bool();
 	fog_game = cfg["mp_fog"].to_bool();
@@ -130,6 +138,7 @@ void mp_game_settings::set_from_config(const config& game_cfg)
 	allow_observers = cfg["observer"].to_bool();
 	shuffle_sides = cfg["shuffle_sides"].to_bool();
 	saved_game = cfg["savegame"].to_bool();
+	options = cfg.child_or_empty("options");
 }
 
 void mp_game_settings::reset()
@@ -139,6 +148,7 @@ void mp_game_settings::reset()
 	hash = "";
 	mp_era = "";
 	mp_scenario = "";
+	active_mods.clear();
 	village_gold = 0;
 	village_support = 1;
 	xp_modifier = 0;
@@ -148,6 +158,7 @@ void mp_game_settings::reset()
 	mp_countdown_action_bonus=0;
 	mp_countdown=false;
 	use_map_settings = random_start_time = fog_game = shroud_game = allow_observers = shuffle_sides = share_view = share_maps = false;
+	options.clear();
 
 	scenario_data.clear();
 }
@@ -160,6 +171,7 @@ config mp_game_settings::to_config() const
 	cfg["hash"] = hash;
 	cfg["mp_era"] = mp_era;
 	cfg["mp_scenario"] = mp_scenario;
+	cfg["active_mods"] = utils::join(active_mods, ",");
 	cfg["experience_modifier"] = xp_modifier;
 	cfg["mp_countdown"] = mp_countdown;
 	cfg["mp_countdown_init_time"] = mp_countdown_init_time;
@@ -174,6 +186,7 @@ config mp_game_settings::to_config() const
 	cfg["observer"] = allow_observers;
 	cfg["shuffle_sides"] = shuffle_sides;
 	cfg["savegame"] = saved_game;
+	cfg.add_child("options", options);
 
 	return cfg;
 }

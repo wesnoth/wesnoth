@@ -39,6 +39,7 @@ struct mp_game_settings : public savegame::savegame_config
 	std::string hash;
 	std::string mp_era;
 	std::string mp_scenario;
+	std::vector<std::string> active_mods;
 
 	int village_gold;
 	int village_support;
@@ -58,6 +59,8 @@ struct mp_game_settings : public savegame::savegame_config
 	bool share_maps;
 
 	bool saved_game;
+
+	config options;
 
 	/**
 	 * If the game is to be randomly generated, the map generator

@@ -159,6 +159,9 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 		font_color = font::DISABLED_COLOR;
 		no_era_string = _(" (Unknown Era)");
 	}
+	if(!game.have_all_mods && font_color != font::BAD_COLOR) {
+		font_color = font::DISABLED_COLOR;
+	}
 
 	const surface status_text(font::get_rendered_text(game.status,
 	    font::SIZE_NORMAL, font_color));
@@ -179,7 +182,7 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 	}
 
 	// Second line
-	ypos = item_rect.y + item_rect.h/2;
+	ypos = item_rect.y + item_rect.h/3 + margin_;
 
 	// Draw map info
 	const surface map_info_surf(font::get_rendered_text(
@@ -191,6 +194,18 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 	}
 
 	// Third line
+	ypos = item_rect.y + 2*item_rect.h/3 - margin_;
+
+	// Draw modifications info
+	const surface mod_info_surf(font::get_rendered_text(
+	    font::make_text_ellipsis(game.mod_info, font::SIZE_NORMAL,
+	        (item_rect.x + item_rect.w) - xpos - margin_),
+		font::SIZE_NORMAL, font::NORMAL_COLOR));
+	if(mod_info_surf) {
+		video().blit_surface(xpos, ypos - mod_info_surf->h/2, mod_info_surf);
+	}
+
+	// Fourth line
 	ypos = item_rect.y + item_rect.h  - margin_;
 
 	// Draw observer icon
@@ -525,6 +540,32 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 			games_.back().map_info += _("Unknown scenario");
 			verified = false;
 		}
+
+		games_.back().mod_info += "Modifications: ";
+
+		if (!game.child_or_empty("modification").empty()) {
+			games_.back().have_all_mods = true;
+			BOOST_FOREACH (const config& m, game.child_range("modification")) {
+				const config& mod_cfg = game_config.find_child("modification", "id", m["id"]);
+				if (mod_cfg) {
+					games_.back().mod_info += mod_cfg["name"].str();
+					games_.back().mod_info += ", ";
+				} else {
+					games_.back().mod_info += m["id"].str();
+					if (m["require_modification"].to_bool(false)) {
+						games_.back().have_all_mods = false;
+						games_.back().mod_info += _(" (missing)");
+					}
+					games_.back().mod_info += ", ";
+				}
+			}
+			games_.back().mod_info.erase(games_.back().mod_info.size()-2, 2);
+		} else {
+			games_.back().mod_info += "none";
+			games_.back().have_all_mods = true;
+		}
+
+
 		if (games_.back().reloaded) {
 			games_.back().map_info += " — ";
 			games_.back().map_info += _("Reloaded game");

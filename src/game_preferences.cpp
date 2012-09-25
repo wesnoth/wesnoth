@@ -53,6 +53,12 @@ std::set<std::string> ignores;
 bool friends_initialized = false;
 bool ignores_initialized = false;
 
+std::vector<std::string> mp_modifications;
+bool modifications_initialized = false;
+
+config option_values;
+bool options_initialized = false;
+
 bool authenticated = false;
 
 const char WRAP_CHAR = '@';
@@ -77,9 +83,16 @@ std::string parse_wrapped_credentials_field(const std::string& raw)
 	return raw.substr(1, raw.length() - 2);
 }
 
+void initialize_modifications()
+{
+	mp_modifications = utils::split(preferences::get("modifications"), ',');
+	modifications_initialized = true;
+}
+
 } // anon namespace
 
 namespace preferences {
+
 
 manager::manager() :
 	base()
@@ -580,6 +593,32 @@ void set_turns(int value)
 	preferences::set("mp_turns", value);
 }
 
+const config& options()
+{
+	if (options_initialized) {
+		return option_values;
+	}
+
+	if (!preferences::get_child("options")) {
+		// It may be an invalid config, which would cause problems in
+		// multiplayer_create, so let's replace it with an empty but valid
+		// config
+		option_values = config();
+	} else {
+		option_values = preferences::get_child("options");
+	}
+	
+	options_initialized = true;
+
+	return option_values;
+}
+
+void set_options(const config& values)
+{
+	preferences::set_child("options", values);
+	options_initialized = false;
+}
+
 bool skip_mp_replay()
 {
 	return preferences::get("skip_mp_replay", false);
@@ -692,6 +731,20 @@ int map()
 void set_map(int value)
 {
 	preferences::set("mp_map", value);
+}
+
+const std::vector<std::string>& modifications()
+{
+	if (!modifications_initialized)
+		initialize_modifications();
+
+	return mp_modifications;
+}
+
+void set_modifications(const std::vector<std::string>& value)
+{
+	preferences::set("modifications", utils::join(value, ","));
+	modifications_initialized = false;
 }
 
 bool show_ai_moves()

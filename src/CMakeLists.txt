@@ -721,7 +721,10 @@ set(wesnoth-main_SRC
 	gui/dialogs/mp_cmd_wrapper.cpp
 	gui/dialogs/mp_connect.cpp
 	gui/dialogs/mp_create_game.cpp
+	gui/dialogs/mp_create_game_choose_mods.cpp
 	gui/dialogs/mp_create_game_set_password.cpp
+	gui/dialogs/mp_depcheck_confirm_change.cpp
+	gui/dialogs/mp_depcheck_select_new.cpp
 	gui/dialogs/mp_host_game_prompt.cpp
 	gui/dialogs/mp_login.cpp
 	gui/dialogs/mp_method_selection.cpp
@@ -743,7 +746,9 @@ set(wesnoth-main_SRC
 	menu_events.cpp
 	mouse_events.cpp
 	mouse_handler_base.cpp
+	mp_depcheck.cpp
 	mp_game_settings.cpp
+	mp_options.cpp
 	multiplayer.cpp
 	multiplayer_connect.cpp
 	multiplayer_create.cpp

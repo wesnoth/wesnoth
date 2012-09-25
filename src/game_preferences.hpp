@@ -23,6 +23,7 @@ class unit_map;
 #include "preferences.hpp"
 
 #include <set>
+#include <vector>
 
 namespace preferences {
 
@@ -143,6 +144,9 @@ namespace preferences {
 	int turns();
 	void set_turns(int value);
 
+	const config& options();
+	void set_options(const config& values);
+
 	bool skip_mp_replay();
 	void set_skip_mp_replay(bool value);
 
@@ -171,6 +175,9 @@ namespace preferences {
 
 	int map();
 	void set_map(int value);
+
+	const std::vector<std::string>& modifications();
+	void set_modifications(const std::vector<std::string>& value);
 
 	bool show_ai_moves();
 	void set_show_ai_moves(bool value);

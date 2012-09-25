@@ -242,6 +242,10 @@ public:
 		return root().child(name);
 	}
 
+	const node::child_list& children(const char* name) const {
+		return root().children(name);
+	}
+
 	node& set_attr(const char* key, const char* value) {
 		return root().set_attr(key, value);
 	}

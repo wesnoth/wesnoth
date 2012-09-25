@@ -18,7 +18,9 @@
 #ifndef MULTIPLAYER_CREATE_HPP_INCLUDED
 #define MULTIPLAYER_CREATE_HPP_INCLUDED
 
+#include "mp_depcheck.hpp"
 #include "mp_game_settings.hpp"
+#include "mp_options.hpp"
 #include "multiplayer_ui.hpp"
 #include "widgets/slider.hpp"
 #include "widgets/combo.hpp"
@@ -43,9 +45,12 @@ protected:
 
 private:
 
+	void synchronize_selections();
+
 	bool local_players_only_;
 
 	tooltips::manager tooltip_manager_;
+	int era_selection_;
 	int map_selection_;
 	int mp_countdown_init_time_;
 	int mp_countdown_reservoir_time_;
@@ -53,6 +58,7 @@ private:
 
 	std::vector<std::string> user_maps_;
 	std::vector<std::string> map_options_;
+	config available_mods_;
 
 	/**
 	 * Due to maps not available the index of the selected map and mp scenarios
@@ -91,11 +97,13 @@ private:
 	gui::button shroud_game_;
 	gui::button observers_game_;
 	gui::button shuffle_sides_;
+	gui::button options_;
 	gui::button cancel_game_;
 	gui::button launch_game_;
 	gui::button regenerate_map_;
 	gui::button generator_settings_;
 	gui::button password_button_;
+	gui::button choose_mods_;
 
 	gui::combo era_combo_;
 	gui::combo vision_combo_;
@@ -108,6 +116,9 @@ private:
 
 	int num_turns_;
 	mp_game_settings parameters_;
+
+	depcheck::manager dependency_manager_;
+	options::manager options_manager_;
 };
 
 } // end namespace mp

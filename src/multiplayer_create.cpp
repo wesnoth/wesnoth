@@ -29,6 +29,7 @@
 #include "map_exception.hpp"
 #include "map_create.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/mp_create_game_choose_mods.hpp"
 #include "gui/dialogs/mp_create_game_set_password.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "minimap.hpp"
@@ -58,11 +59,13 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 
 	local_players_only_(local_players_only),
 	tooltip_manager_(disp.video()),
+	era_selection_(-1),
 	map_selection_(-1),
 	mp_countdown_init_time_(270),
 	mp_countdown_reservoir_time_(330),
 	user_maps_(),
 	map_options_(),
+	available_mods_(),
 	map_index_(),
 
 	maps_menu_(disp.video(), std::vector<std::string>()),
@@ -94,11 +97,13 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	shroud_game_(disp.video(), _("Shroud"), gui::button::TYPE_CHECK),
 	observers_game_(disp.video(), _("Observers"), gui::button::TYPE_CHECK),
 	shuffle_sides_(disp.video(), _("Shuffle sides"), gui::button::TYPE_CHECK),
+	options_(disp.video(), _("Options...")),
 	cancel_game_(disp.video(), _("Cancel")),
 	launch_game_(disp.video(), _("OK")),
 	regenerate_map_(disp.video(), _("Regenerate")),
 	generator_settings_(disp.video(), _("Settings...")),
 	password_button_(disp.video(), _("Set Password...")),
+	choose_mods_(disp.video(), _("Modifications...")),
 	era_combo_(disp, std::vector<std::string>()),
 	vision_combo_(disp, std::vector<std::string>()),
 	name_entry_(disp.video(), 32),
@@ -106,7 +111,9 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	minimap_rect_(null_rect),
 	generator_(NULL),
 	num_turns_(0),
-	parameters_()
+	parameters_(),
+	dependency_manager_(cfg, disp.video()),
+	options_manager_(cfg, disp.video(), preferences::options())
 {
 	// Build the list of scenarios to play
 
@@ -127,6 +134,22 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	{
 		menu_help_str = help_sep + user_maps_[i];
 		map_options_.push_back(user_maps_[i] + menu_help_str);
+
+		// Since user maps are treated as scenarios,
+		// some dependency info is required
+		config depinfo;
+
+		depinfo["id"] = user_maps_[i];
+		depinfo["name"] = user_maps_[i];
+
+		dependency_manager_.insert_element(depcheck::SCENARIO, depinfo, i);
+
+		// Same with options
+		// FIXME: options::elem_type duplicates depcheck::component_type
+		//        Perhaps they should me merged?
+		config optinfo = depinfo;
+
+		options_manager_.insert_element(options::SCENARIO, optinfo, i);
 	}
 
 	// Standard maps
@@ -145,8 +168,11 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 
 	// Create the scenarios menu
 	maps_menu_.set_items(map_options_);
-	if (size_t(preferences::map()) < map_options_.size())
+	if (size_t(preferences::map()) < map_options_.size()) {
 		maps_menu_.move_selection(preferences::map());
+		dependency_manager_.try_scenario_by_index(preferences::map(), true);
+		options_manager_.set_scenario_by_index(preferences::map());
+	}
 	maps_menu_.set_numeric_keypress_selection(false);
 
 	turns_slider_.set_min(settings::turns_min);
@@ -238,8 +264,24 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	if (size_t(preferences::era()) < eras.size()) {
 		era_combo_.set_selected(preferences::era());
 	} else {
-		era_combo_.set_selected(0);
+		era_combo_.set_selected(preferences::era());
 	}
+
+	dependency_manager_.try_era_by_index(era_selection_, true);
+	options_manager_.set_era_by_index(era_selection_);
+
+	// Available modifications
+	BOOST_FOREACH (const config& mod, cfg.child_range("modification")) {
+		available_mods_.add_child("modification", mod);
+	}
+
+	BOOST_FOREACH (const std::string& str, preferences::modifications()) {
+		if (cfg.find_child("modification", "id", str))
+			parameters_.active_mods.push_back(str);
+	}
+
+	dependency_manager_.try_modifications(parameters_.active_mods, true);
+	options_manager_.set_modifications(parameters_.active_mods);
 
 
 	utils::string_map i18n_symbols;
@@ -271,8 +313,10 @@ create::~create()
 	preferences::set_countdown_turn_bonus(parameters_.mp_countdown_turn_bonus);
 	preferences::set_countdown_reservoir_time(parameters_.mp_countdown_reservoir_time);
 	preferences::set_countdown_action_bonus(parameters_.mp_countdown_action_bonus);
-	preferences::set_era(era_combo_.selected()); /** @todo FIXME: may be broken if new eras are added. */
+	preferences::set_era(era_selection_); /** @todo FIXME: may be broken if new eras are added. */
 	preferences::set_map(map_selection_);
+	preferences::set_modifications(parameters_.active_mods);
+	preferences::set_options(parameters_.options);
 
 	// When using map settings, the following variables are determined by the map,
 	// so don't store them as the new preferences.
@@ -334,6 +378,7 @@ mp_game_settings& create::get_parameters()
 	parameters_.shuffle_sides = shuffle_sides_.checked();
 	parameters_.share_view = vision_combo_.selected() == 0;
 	parameters_.share_maps = vision_combo_.selected() == 1;
+	parameters_.options = options_manager_.get_values();
 
 	return parameters_;
 }
@@ -368,10 +413,33 @@ void create::process_event()
 		}
 	}
 
+	if(options_.pressed()) {
+		options_manager_.show_dialog();
+	}
+
 	if(password_button_.pressed()) {
 		gui2::tmp_create_game_set_password::execute(
 				  parameters_.password
 				, disp_.video());
+	}
+
+	if(choose_mods_.pressed()) {
+		if (available_mods_.empty()) {
+			gui2::show_transient_message(disp_.video(), "",
+			_(	"There are no modifications currently installed." \
+				" To download modifications, connect to the add-ons server" \
+				" by choosing the 'Add-ons' option on the main screen."		));
+		} else {
+
+			gui2::tmp_create_game_choose_mods
+						dialog(available_mods_, parameters_.active_mods);
+
+			dialog.show(disp_.video());
+
+			dependency_manager_.try_modifications(parameters_.active_mods);
+			options_manager_.set_modifications(parameters_.active_mods);
+			synchronize_selections();
+		}
 	}
 
 	// Turns per game
@@ -446,8 +514,23 @@ void create::process_event()
 
 	xp_modifier_label_.set_text(buf.str());
 
+	bool era_changed = era_selection_ != era_combo_.selected();
+	era_selection_ = era_combo_.selected();
+
+	if (era_changed) {
+		dependency_manager_.try_era_by_index(era_selection_);
+		options_manager_.set_era_by_index(era_selection_);
+		synchronize_selections();
+	}
+
 	bool map_changed = map_selection_ != maps_menu_.selection();
 	map_selection_ = maps_menu_.selection();
+
+	if (map_changed) {
+		dependency_manager_.try_scenario_by_index(map_selection_);
+		options_manager_.set_scenario_by_index(map_selection_);
+		synchronize_selections();
+	}
 
 	if(map_changed) {
 		generator_.assign(NULL);
@@ -757,6 +840,8 @@ void create::layout_children(const SDL_Rect& rect)
 	ypos += era_label_.height() + border_size;
 	era_combo_.set_location(xpos, ypos);
 	ypos += era_combo_.height() + border_size;
+	choose_mods_.set_location(xpos, ypos);
+	ypos += choose_mods_.height() + border_size;
 	if(!local_players_only_) {
 		password_button_.set_location(xpos, ypos);
 		ypos += password_button_.height() + border_size;
@@ -857,6 +942,28 @@ void create::layout_children(const SDL_Rect& rect)
 	                           ca.y + ca.h - right_button->height());
 	left_button->set_location(right_button->location().x - left_button->width() -
 	                          gui::ButtonHPadding, ca.y + ca.h - left_button->height());
+
+	options_.set_location(left_button->location().x - options_.width() -
+					gui::ButtonHPadding, ca.y + ca.h - options_.height());
+}
+
+void create::synchronize_selections()
+{
+	DBG_MP << "Synchronizing with the dependency manager" << std::endl;
+	if (era_selection_ != dependency_manager_.get_era_index()) {
+		era_combo_.set_selected(dependency_manager_.get_era_index());
+		process_event();
+	}
+
+	if (map_selection_ != dependency_manager_.get_scenario_index()) {
+		maps_menu_.move_selection(dependency_manager_.get_scenario_index());
+		process_event();
+	}
+
+	parameters_.active_mods = dependency_manager_.get_modifications();
+	options_manager_.set_modifications(dependency_manager_.get_modifications());
+	options_manager_.set_era(dependency_manager_.get_era());
+	options_manager_.set_scenario(dependency_manager_.get_scenario());
 }
 
 } // namespace mp

@@ -2404,6 +2404,7 @@ void server::process_data_game(const network::connection sock,
 				rooms_.lobby().send_server_message("The scenario data is missing the [multiplayer] tag which contains the game settings. Game aborted.", sock);
 				return;
 			}
+
 			g->set_description(&desc);
 			desc.set_attr_dup("id", lexical_cast<std::string>(g->id()).c_str());
 		} else {
@@ -2426,6 +2427,14 @@ void server::process_data_game(const network::connection sock,
 			if (!e->attr("require_era").to_bool(true)) {
 				desc.set_attr("require_era", "no");
 			}
+		}
+
+		const simple_wml::node::child_list& mlist = data.children("modification");
+		BOOST_FOREACH (const simple_wml::node* m, mlist) {
+			desc.add_child_at("modification", 0);
+			desc.child("modification")->set_attr_dup("id", m->attr("id"));
+			if (m->attr("require_modification").to_bool(false))
+				desc.child("modification")->set_attr("require_modification", "yes");
 		}
 
 		// Record the full scenario in g->level()
@@ -2497,6 +2506,7 @@ void server::process_data_game(const network::connection sock,
 			rooms_.lobby().send_server_message("The scenario data is missing the [multiplayer] tag which contains the game settings. Game aborted.", sock);
 			return;
 		}
+
 		// If there is no shroud, then tell players in the lobby
 		// what the map looks like.
 		const simple_wml::node& s = g->level().root();
