@@ -827,9 +827,6 @@ void unit_preview_pane::draw_contents()
 
 		for(std::vector<attack_type>::const_iterator at_it = det.attacks.begin();
 		    at_it != det.attacks.end(); ++at_it) {
-			// specials_context seems not needed here
-			//at_it->set_specials_context(map_location(),u);
-
 			// see generate_report() in generate_report.cpp
 			text << font::weapon
 				<< at_it->damage()

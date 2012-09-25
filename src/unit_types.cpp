@@ -40,10 +40,9 @@ static lg::log_domain log_unit("unit");
 #define DBG_UT LOG_STREAM(debug, log_unit)
 
 attack_type::attack_type(const config& cfg) :
-	aloc_(),
-	dloc_(),
-	attacker_(false),
-	unitmap_(NULL),
+	self_loc_(),
+	other_loc_(),
+	is_attacker_(false),
 	other_attack_(NULL),
 	cfg_(cfg),
 	description_(cfg["description"].t_str()),

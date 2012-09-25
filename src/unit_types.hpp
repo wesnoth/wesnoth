@@ -54,9 +54,9 @@ public:
 	unit_ability_list get_specials(const std::string& special) const;
 	std::vector<t_string> special_tooltips(bool force_active=false) const;
 	std::string weapon_specials(bool force_active=false) const;
-	void set_specials_context(const map_location& aloc,const map_location& dloc,
-		const unit_map &unitmap, bool attacker, const attack_type *other_attack) const;
-	void set_specials_context(const map_location& loc,const map_location& dloc, const unit& un, bool attacker =true) const;
+	void set_specials_context(const map_location& unit_loc, const map_location& other_loc,
+	                          bool attacking, const attack_type *other_attack) const;
+	void set_specials_context(const map_location& loc, bool attacking = true) const;
 
 	// In unit_types.cpp:
 
@@ -75,9 +75,8 @@ private:
 
 	// Used via set_specials_context() to control which specials are
 	// considered active.
-	mutable map_location aloc_,dloc_;
-	mutable bool attacker_;
-	mutable const unit_map* unitmap_;
+	mutable map_location self_loc_, other_loc_;
+	mutable bool is_attacker_;
 	mutable const attack_type* other_attack_;
 
 	config cfg_;

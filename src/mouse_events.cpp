@@ -917,8 +917,8 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 		const attack_type& attw = *att.weapon;
 		const attack_type& defw = def.weapon ? *def.weapon : no_weapon;
 
-		attw.set_specials_context(attacker->get_location(), defender->get_location(), *attacker, true);
-		defw.set_specials_context(attacker->get_location(), defender->get_location(), *attacker, false);
+		attw.set_specials_context(attacker_loc, defender_loc, true,  def.weapon);
+		defw.set_specials_context(defender_loc, attacker_loc, false, att.weapon);
 
 		// if missing, add dummy special, to be sure to have
 		// big enough minimum width (weapon's name can be very short)

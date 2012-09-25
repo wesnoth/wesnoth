@@ -103,20 +103,12 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u,
 	} else {
 		hp = u.hitpoints();
 	}
-	const map_location* aloc = &u_loc;
-	const map_location* dloc = &opp_loc;
-
-	if (!attacking)
-	{
-		aloc = &opp_loc;
-		dloc = &u_loc;
-	}
 
 	// Get the weapon characteristics, if any.
 	if (weapon) {
-		weapon->set_specials_context(*aloc, *dloc, units, attacking, opp_weapon);
+		weapon->set_specials_context(u_loc, opp_loc, attacking, opp_weapon);
 		if (opp_weapon)
-			opp_weapon->set_specials_context(*aloc, *dloc, units, !attacking, weapon);
+			opp_weapon->set_specials_context(opp_loc, u_loc, !attacking, weapon);
 		bool not_living = opp.get_state("not_living");
 		slows = weapon->get_special_bool("slow");
 		drains = !not_living && weapon->get_special_bool("drains");

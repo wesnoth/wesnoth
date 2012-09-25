@@ -513,7 +513,7 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
 	{
 		BOOST_FOREACH(const config &i, specials.child_range(special)) {
 			if (special_active(i, true))
-				res.push_back(unit_ability(&i, attacker_ ? aloc_ : dloc_));
+				res.push_back(unit_ability(&i, self_loc_));
 		}
 	}
 	if (!other_attack_) return res;
@@ -521,7 +521,7 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
 	{
 		BOOST_FOREACH(const config &i, specials.child_range(special)) {
 			if (other_attack_->special_active(i, false))
-				res.push_back(unit_ability(&i, attacker_ ? dloc_ : aloc_));
+				res.push_back(unit_ability(&i, other_loc_));
 		}
 	}
 	return res;
@@ -591,6 +591,40 @@ std::string attack_type::weapon_specials(bool force_active) const
 	}
 
 	return res;
+}
+
+
+/**
+ * Sets the context under which specials will be checked for being active.
+ * This version is appropriate if both units in a combat are known.
+ * @param[in]  unit_loc      The location of the unit with this weapon.
+ * @param[in]  other_loc     The location of the other unit in the combat.
+ * @param[in]  attacking     Whether or not the unit with this weapon is the attacker.
+ * @param[in]  other_attack  The attack used by the other unit.
+ */
+void attack_type::set_specials_context(const map_location& unit_loc,
+                                       const map_location& other_loc,
+                                       bool attacking,
+                                       const attack_type *other_attack) const
+{
+	self_loc_ = unit_loc;
+	other_loc_ = other_loc;
+	is_attacker_ = attacking;
+	other_attack_ = other_attack;
+}
+
+/**
+ * Sets the context under which specials will be checked for being active.
+ * This version is appropriate if there is no specific combat being considered.
+ * @param[in]  loc           The location of the unit with this weapon.
+ * @param[in]  attacking     Whether or not the unit with this weapon is the attacker.
+ */
+void attack_type::set_specials_context(const map_location& loc, bool attacking) const
+{
+	self_loc_ = loc;
+	other_loc_ = map_location::null_location;
+	is_attacker_ = attacking;
+	other_attack_ = NULL;
 }
 
 
@@ -690,49 +724,47 @@ bool attack_type::special_active(const config& special, bool affect_self) const
 
 	// Does this affect the specified unit?
 	if ( affect_self ) {
-		if ( !special_affects_self(special, attacker_) )
+		if ( !special_affects_self(special, is_attacker_) )
 			return false;
 	} else {
-		if ( !special_affects_opponent(special, attacker_) )
+		if ( !special_affects_opponent(special, is_attacker_) )
 			return false;
 	}
 
 	// Is this active on attack/defense?
 	const std::string & active_on = special["active_on"];
 	if ( !active_on.empty() ) {
-		if ( attacker_  &&  active_on != "offense" )
+		if ( is_attacker_  &&  active_on != "offense" )
 			return false;
-		if ( !attacker_  &&  active_on != "defense" )
+		if ( !is_attacker_  &&  active_on != "defense" )
 			return false;
 	}
 
 	// Get the units involved.
-	assert(unitmap_ != NULL);
-	unit_map::const_iterator att = unitmap_->find(aloc_);
-	unit_map::const_iterator def = unitmap_->find(dloc_);
-	unit_map::const_iterator & self  = attacker_ ? att : def;
-	unit_map::const_iterator & other = attacker_ ? def : att;
+	const unit_map & units = *resources::units;
+	unit_map::const_iterator self  = units.find(self_loc_);
+	unit_map::const_iterator other = units.find(other_loc_);
 
-	// Translate our context into terms of "self" and "other"
-	const map_location & self_loc  = attacker_ ? aloc_ : dloc_;
-	const map_location & other_loc = attacker_ ? dloc_ : aloc_;
-
-	// Translate our context into terms of "attacker" and "defender"
-	const attack_type * att_weapon = attacker_ ? this : other_attack_;
-	const attack_type * def_weapon = attacker_ ? other_attack_ : this;
+	// Translate our context into terms of "attacker" and "defender".
+	unit_map::const_iterator & att = is_attacker_ ? self : other;
+	unit_map::const_iterator & def = is_attacker_ ? other : self;
+	const map_location & att_loc   = is_attacker_ ? self_loc_ : other_loc_;
+	const map_location & def_loc   = is_attacker_ ? other_loc_ : self_loc_;
+	const attack_type * att_weapon = is_attacker_ ? this : other_attack_;
+	const attack_type * def_weapon = is_attacker_ ? other_attack_ : this;
 
 	// Filter the units involved.
-	if ( !special_unit_matches(self, self_loc, this, special, "filter_self") )
+	if ( !special_unit_matches(self, self_loc_, this, special, "filter_self") )
 		return false;
-	if ( !special_unit_matches(other, other_loc, other_attack_, special, "filter_opponent") )
+	if ( !special_unit_matches(other, other_loc_, other_attack_, special, "filter_opponent") )
 		return false;
-	if ( !special_unit_matches(att, aloc_, att_weapon, special, "filter_attacker") )
+	if ( !special_unit_matches(att, att_loc, att_weapon, special, "filter_attacker") )
 		return false;
-	if ( !special_unit_matches(def, dloc_, def_weapon, special, "filter_defender") )
+	if ( !special_unit_matches(def, def_loc, def_weapon, special, "filter_defender") )
 		return false;
 
 	map_location adjacent[6];
-	get_adjacent_tiles(self_loc, adjacent);
+	get_adjacent_tiles(self_loc_, adjacent);
 
 	// Filter the adjacent units.
 	BOOST_FOREACH(const config &i, special.child_range("filter_adjacent"))
@@ -743,9 +775,9 @@ bool attack_type::special_active(const config& special, bool affect_self) const
 				map_location::parse_direction(j);
 			if (index == map_location::NDIRECTIONS)
 				continue;
-			unit_map::const_iterator unit = unitmap_->find(adjacent[index]);
-			if (unit == unitmap_->end() ||
-			    !unit->matches_filter(vconfig(i), unit->get_location()))
+			unit_map::const_iterator unit = units.find(adjacent[index]);
+			if ( unit == units.end() ||
+			     !unit->matches_filter(vconfig(i), adjacent[index]) )
 				return false;
 		}
 	}
@@ -759,7 +791,7 @@ bool attack_type::special_active(const config& special, bool affect_self) const
 				map_location::parse_direction(j);
 			if (index == map_location::NDIRECTIONS)
 				continue;
-			terrain_filter adj_filter(vconfig(i), *unitmap_);
+			terrain_filter adj_filter(vconfig(i), units);
 			if(!adj_filter.match(adjacent[index])) {
 				return false;
 			}
@@ -767,40 +799,6 @@ bool attack_type::special_active(const config& special, bool affect_self) const
 	}
 
 	return true;
-}
-
-/**
- * Sets the context under which specials will be checked for being active.
- * @param[in]  aloc          The location of the attacker.
- * @param[in]  dloc          The location of the defender.
- * @param[in]  unitmap       The unit_map used to find units based on location.
- * @param[in]  attacker      Whether or not the current unit is the attacker.
- * @param[in]  other_attack  The attack used by the other unit.
- */
-void attack_type::set_specials_context(const map_location& aloc,const map_location& dloc,
-	const unit_map &unitmap, bool attacker, const attack_type *other_attack) const
-{
-	aloc_ = aloc;
-	dloc_ = dloc;
-	unitmap_ = &unitmap;
-	attacker_ = attacker;
-	other_attack_ = other_attack;
-}
-
-/**
- * Sets the context under which specials will be checked for being active.
- * @param[in]  loc           The location of the attacker.
- * @param[in]  dloc          The location of the defender.
- * @param[in]  unit          Unused
- * @param[in]  attacker      Whether or not the current unit is the attacker.
- */
-void attack_type::set_specials_context(const map_location& loc, const map_location& dloc, const unit& /*un*/, bool attacker) const
-{
-	aloc_ = loc;
-	dloc_ = dloc;
-	unitmap_ = resources::units;
-	attacker_ = attacker;
-	other_attack_ = NULL;
 }
 
 

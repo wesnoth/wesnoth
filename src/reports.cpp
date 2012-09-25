@@ -558,7 +558,7 @@ static int attack_info(const attack_type &at, config &res, const unit *u, const 
 {
 	std::ostringstream str, tooltip;
 
-	at.set_specials_context(displayed_unit_hex, map_location(), *u);
+	at.set_specials_context(displayed_unit_hex);
 	int base_damage = at.damage();
 	int damage_multiplier = 100;
 	int tod_bonus = combat_modifier(displayed_unit_hex, u->alignment(), u->is_fearless());
