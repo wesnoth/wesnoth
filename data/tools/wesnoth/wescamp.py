@@ -100,15 +100,15 @@ if __name__ == "__main__":
                 addon_name)
             return False
 
-    """Initialize or update the build-system.
-
-    addon_obj           libgithub.Addon objectof the addon.
-    addon_name          Name of the addon.
-    wescamp_dir         The directory containing a checkout of wescamp.
-    build_sys_dir       Possible directory containing a checkout of build-system.
-    returns             Boolean indicating whether the add-on now has a build-system.
-    """
     def update_build_system(addon_obj, addon_name, wescamp_dir, build_sys_dir):
+        """Initialize or update the build-system.
+
+        addon_obj           libgithub.Addon objectof the addon.
+        addon_name          Name of the addon.
+        wescamp_dir         The directory containing a checkout of wescamp.
+        build_sys_dir       Possible directory containing a checkout of build-system.
+        returns             Boolean indicating whether the add-on now has a build-system.
+        """
         logging.info("Checking if build system for add-on {0} needs to be updated".format(addon_name))
         previously_initialized = os.path.exists(os.path.join(addon_obj.get_dir(), "Makefile"))
 
@@ -160,13 +160,13 @@ if __name__ == "__main__":
             addon_obj.commit("wescamp.py: Initialize build-system")
         return True
 
-    """Update the translation catalogs.
-
-    addon_obj           libgithub.Addon objectof the addon.
-    addon_name          Name of the addon.
-    returns             Boolean indicating whether the operation was successful.
-    """
     def pot_update(addon_obj, addon_name):
+        """Update the translation catalogs.
+
+        addon_obj           libgithub.Addon objectof the addon.
+        addon_name          Name of the addon.
+        returns             Boolean indicating whether the operation was successful.
+        """
         if not os.path.exists(os.path.join(addon_obj.get_dir(), "Makefile")):
             logging.warn("Cannot pot-update: build system does not exist for add-on {0}.".format(addon_name))
             return False
@@ -202,15 +202,15 @@ if __name__ == "__main__":
         addon_obj.commit("wescamp.py: pot-update")
         return True
 
-    """Download an addon from the server.
-
-    server              The url of the addon server eg
-                        add-ons.wesnoth.org:15005.
-    addon               The name of the addon.
-    path                Directory to unpack the campaign in.
-    returns             Nothing.
-    """
     def extract(server, addon, path):
+        """Download an addon from the server.
+
+        server              The url of the addon server eg
+                            add-ons.wesnoth.org:15005.
+        addon               The name of the addon.
+        path                Directory to unpack the campaign in.
+        returns             Nothing.
+        """
 
         logging.debug("extract addon server = '%s' addon = '%s' path = '%s'",
             server, addon, path)
@@ -219,15 +219,15 @@ if __name__ == "__main__":
         data = wml.get_campaign(addon)
         wml.unpackdir(data, path)
 
-    """Get a list of addons on the server.
-
-    server              The url of the addon server eg
-                        add-ons.wesnoth.org:15005.
-    translatable_only   If True only returns translatable addons.
-    returns             A dictonary with the addon as key and the translatable
-                        status as value.
-    """
     def list_addons(server, translatable_only):
+        """Get a list of addons on the server.
+
+        server              The url of the addon server eg
+                            add-ons.wesnoth.org:15005.
+        translatable_only   If True only returns translatable addons.
+        returns             A dictonary with the addon as key and the translatable
+                            status as value.
+        """
 
         logging.debug("list addons server = '%s' translatable_only = %s",
             server, translatable_only)
@@ -251,14 +251,14 @@ if __name__ == "__main__":
 
         return result
 
-    """Get the timestamp of a campaign on the server.
-
-    server              The url of the addon server eg
-                        add-ons.wesnoth.org:15005.
-    addon               The name of the addon.
-    returns             The timestamp of the campaign, -1 if not on the server.
-    """
     def get_timestamp(server, addon):
+        """Get the timestamp of a campaign on the server.
+
+        server              The url of the addon server eg
+                            add-ons.wesnoth.org:15005.
+        addon               The name of the addon.
+        returns             The timestamp of the campaign, -1 if not on the server.
+        """
 
         logging.debug("get_timestamp server = '%s' addon = %s",
             server, addon)
@@ -277,16 +277,16 @@ if __name__ == "__main__":
 
         return -1
 
-    """Upload a addon from the server to wescamp.
-
-    server              The url of the addon server eg
-                        add-ons.wesnoth.org:15005.
-    addon               The name of the addon.
-    temp_dir            The directory where the unpacked campaign can be stored.
-    wescamp_dir         The directory containing a checkout of wescamp.
-    build_sys_dir       Possible directory containing a checkout of build-system.
-    """
     def upload(server, addon, temp_dir, wescamp_dir, build_sys_dir=None):
+        """Upload a addon from the server to wescamp.
+
+        server              The url of the addon server eg
+                            add-ons.wesnoth.org:15005.
+        addon               The name of the addon.
+        temp_dir            The directory where the unpacked campaign can be stored.
+        wescamp_dir         The directory containing a checkout of wescamp.
+        build_sys_dir       Possible directory containing a checkout of build-system.
+        """
 
         logging.debug("upload addon to wescamp server = '%s' addon = '%s' "
             + "temp_dir = '%s' wescamp_dir = '%s'",
@@ -324,13 +324,13 @@ if __name__ == "__main__":
             pot_update(addon_obj, addon)
 
 
-    """Checkout all add-ons of one wesnoth version from wescamp.
-
-    wescamp             The directory where all checkouts should be stored.
-    userpass            Authentication data. Shouldn't be needed.
-    readonly            Makes a read-only checkout that doesn't require authentication.
-    """
     def checkout(wescamp, userpass=None, readonly=False):
+        """Checkout all add-ons of one wesnoth version from wescamp.
+
+        wescamp             The directory where all checkouts should be stored.
+        userpass            Authentication data. Shouldn't be needed.
+        readonly            Makes a read-only checkout that doesn't require authentication.
+        """
 
         logging.debug("checking out add-ons from wesnoth version = '%s' to directory '%s'", git_version, wescamp)
 
