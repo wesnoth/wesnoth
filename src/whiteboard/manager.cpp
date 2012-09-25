@@ -652,17 +652,19 @@ void manager::create_temp_move()
 
 	if (route.steps.empty() || route.steps.size() < 2) return;
 
-	unit const* selected_unit =
+	unit* temp_moved_unit =
 			future_visible_unit(resources::controller->get_mouse_handler_base().get_selected_hex(), viewer_side());
-	if (!selected_unit) return;
-	if (selected_unit->side() != resources::screen->viewing_side()) return;
+	if (!temp_moved_unit) temp_moved_unit =
+			future_visible_unit(resources::controller->get_mouse_handler_base().get_last_hex(), viewer_side());
+	if (!temp_moved_unit) return;
+	if (temp_moved_unit->side() != resources::screen->viewing_side()) return;
 
 	/*
 	 * DONE CHECKING PRE-CONDITIONS, CREATE THE TEMP MOVE
 	 * (This section has only one return path.)
 	 */
 
-	temp_move_unit_underlying_id_ = selected_unit->underlying_id();
+	temp_move_unit_underlying_id_ = temp_moved_unit->underlying_id();
 
 	//@todo: May be appropriate to replace these separate components by a temporary
 	//      wb::move object
@@ -710,7 +712,7 @@ void manager::create_temp_move()
 				if(!fake_unit)
 				{
 					// Create temp ghost unit
-					fake_unit.reset(new game_display::fake_unit(*selected_unit));
+					fake_unit.reset(new game_display::fake_unit(*temp_moved_unit));
 					fake_unit->place_on_game_display( resources::screen);
 					fake_unit->set_ghosted(true);
 				}

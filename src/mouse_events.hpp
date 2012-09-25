@@ -58,7 +58,7 @@ public:
 
 	unit_map::iterator selected_unit();
 
-	pathfind::marked_route get_route(unit* un, map_location go_to, team &team) const;
+	pathfind::marked_route get_route(const unit* un, map_location go_to, team &team) const;
 
 	const pathfind::marked_route& get_current_route() const { return current_route_; }
 

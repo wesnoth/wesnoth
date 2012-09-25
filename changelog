@@ -21,6 +21,10 @@ Version 1.11.0+svn:
    * Updated brown lich alternative portrait
  * User interface:
    * Healing animations are now played when poison is cured.
+   * Moving units to a selected hex field
+     * Units in reach of a hex field are highlighted during selection.
+     * Highlighting and labeling the selected hex field with the amount of in range units.
+     * Left click on a controlled one triggers the move.
    * The recruit and recall commands are restored when right-clicking on a
      leader, but with new semantics -- only that leader's recruits/recalls will
      be presented as options.
