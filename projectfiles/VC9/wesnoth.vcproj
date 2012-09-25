@@ -8250,6 +8250,62 @@
 					>
 				</File>
 				<File
+					RelativePath="..\..\src\gui\dialogs\mp_create_game_choose_mods.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug_with_VLD|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Test_Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Test_Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\dialogs\mp_create_game_choose_mods.hpp"
+					>
+				</File>
+				<File
 					RelativePath="..\..\src\gui\dialogs\mp_create_game_set_password.cpp"
 					>
 					<FileConfiguration
@@ -8303,6 +8359,118 @@
 				</File>
 				<File
 					RelativePath="..\..\src\gui\dialogs\mp_create_game_set_password.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\dialogs\mp_depcheck_confirm_change.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug_with_VLD|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Test_Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Test_Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\dialogs\mp_depcheck_confirm_change.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\dialogs\mp_depcheck_select_new.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug_with_VLD|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Test_Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Test_Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\dialogs\mp_depcheck_select_new.hpp"
 					>
 				</File>
 				<File
@@ -17642,11 +17810,27 @@
 			>
 		</File>
 		<File
+			RelativePath="..\..\src\mp_depcheck.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\mp_depcheck.hpp"
+			>
+		</File>
+		<File
 			RelativePath="..\..\src\mp_game_settings.cpp"
 			>
 		</File>
 		<File
 			RelativePath="..\..\src\mp_game_settings.hpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\mp_options.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\mp_options.hpp"
 			>
 		</File>
 		<File
