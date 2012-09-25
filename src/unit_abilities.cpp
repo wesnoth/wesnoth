@@ -532,10 +532,12 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
  * The vector has the format: name, description, name, description, etc.
  * (So the length is always even.)
  *
- * This chooses between active and inactive names and descriptions, based
- * on the current context (see set_specials_context). Setting @a force_active
- * to true causes all specials to be assumed active. If the appropriate
+ * This uses either the active or inactive name/description for each special,
+ * based on the current context (see set_specials_context). If the appropriate
  * name is empty, the special is skipped.
+ *
+ * Setting @a force_active to true causes all specials to be assumed active
+ * (the context is ignored in this case).
  */
 std::vector<t_string> attack_type::special_tooltips(bool force_active) const
 {
@@ -566,10 +568,13 @@ std::vector<t_string> attack_type::special_tooltips(bool force_active) const
 /**
  * Returns a comma-separated string of names for the specials of *this.
  *
- * This chooses between active and inactive names, based on the current
- * context (see set_specials_context). Setting @a force_active to true
- * causes all specials to be assumed active. If the appropriate name is
- * empty, the special is skipped.
+ * This uses either the active or inactive name for each special, based on
+ * the current context (see set_specials_context). If the appropriate name
+ * is empty, the special is skipped.
+ *
+ * Setting @a force_active to true causes all specials to be assumed active
+ * (the context is ignored in this case).
+ * 
  */
 std::string attack_type::weapon_specials(bool force_active) const
 {
