@@ -64,7 +64,7 @@ public:
 	bool apply_modification(const config& cfg,std::string* description);
 	bool describe_modification(const config& cfg,std::string* description);
 
-	int movement_used() const { return cfg_["movement_used"].to_int(100000); }
+	int movement_used() const { return movement_used_; }
 
 	const config& get_cfg() const { return cfg_; }
 
@@ -91,6 +91,7 @@ private:
 	double defense_weight_;
 
 	int accuracy_;
+	int movement_used_;
 	int parry_;
 };
 

@@ -55,6 +55,7 @@ attack_type::attack_type(const config& cfg) :
 	attack_weight_(cfg["attack_weight"].to_double(1.0)),
 	defense_weight_(cfg["defense_weight"].to_double(1.0)),
 	accuracy_(cfg["accuracy"]),
+	movement_used_(cfg["movement_used"].to_int(100000)),
 	parry_(cfg["parry"])
 
 {
