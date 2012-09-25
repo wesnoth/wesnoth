@@ -58,8 +58,8 @@ if __name__ == "__main__":
 
         addon_obj       Github.Addon object for the add-on
         addon_name      Name of the add-on
-        addon_server    CampaignClient instance
-        temp_dir            The directory where the unpacked campaign can be stored.
+        addon_server    Url to the add-on server
+        temp_dir        The directory where the unpacked campaign can be stored.
 
         returns         Whether anything was changed.
         """
@@ -79,14 +79,14 @@ if __name__ == "__main__":
                 pass
 
         # Download the addon.
-        extract(addon_server,  addon_name, temp_dir)
+        extract(addon_server, addon_name, temp_dir)
 
         # Translation needs to be prevented from the campaign to overwrite
         # the ones in wescamp.
         # The other files are present in wescamp and shouldn't be deleted.
         ignore_list = ["translations", "po", "campaign.def",
             "config.status", "Makefile", BUILDSYS_FILE, ADDONVER_FILE]
-        if(addon_obj.sync_from(temp_dir, ignore_list)):
+        if addon_obj.sync_from(temp_dir, ignore_list):
             # Store add-on timestamp
             with open(os.path.join(addon_obj.get_dir(), ADDONVER_FILE), "w") as timestamp_file:
                 timestamp_file.write(str(server_timestamp))
@@ -100,7 +100,7 @@ if __name__ == "__main__":
                 addon_name)
             return False
 
-    """Initialize the build-system.
+    """Initialize or update the build-system.
 
     addon_obj           libgithub.Addon objectof the addon.
     addon_name          Name of the addon.
