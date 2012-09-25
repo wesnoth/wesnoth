@@ -88,7 +88,7 @@ void tmp_create_game_choose_mods::pre_show(CVideo &/*video*/, twindow &window)
 					find_widget<ttoggle_button>(grid, "checkbox", false);
 
 		checkbox.set_value(std::find(	result_.begin(), result_.end(),
-										mod["id"]) != result_.end());
+								mod["id"].str()) != result_.end());
 	}
 
 }
