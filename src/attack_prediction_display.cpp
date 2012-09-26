@@ -268,7 +268,7 @@ void battle_prediction_pane::get_unit_strings(const battle_context_unit_stats& s
 	format_prob(str_buf, u_unscathed);
 	right_strings.push_back(str_buf);
 
-#if 0 // might not be en English!
+#if 0 // might not be in English!
 	// Fix capitalization of left strings.
 	for(int i = 0; i < (int) left_strings.size(); i++)
 		if(left_strings[i].size() > 0) left_strings[i][0] = toupper(left_strings[i][0]);
@@ -430,7 +430,7 @@ void battle_prediction_pane::get_hp_distrib_surface(const std::vector<std::pair<
 	// Create the surface.
 	surf = create_neutral_surface(width, height);
 
-	// Dsiable alpha channel to avoid problem with sdl_blit
+	// Disable alpha channel to avoid problem with sdl_blit
 	SDL_SetAlpha(surf, 0, SDL_ALPHA_OPAQUE);
 
 	SDL_Rect clip_rect = create_rect(0, 0, width, height);
