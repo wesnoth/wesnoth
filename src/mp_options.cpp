@@ -396,10 +396,9 @@ void manager::add_checkbox(const config& data, config& column) const
 config& manager::get_value_cfg(const std::string& id)
 {
 	{
-		const manager* m = this;
-		config& value_cfg = const_cast<config&>(m->get_value_cfg(id));
+		const config& value_cfg = get_value_cfg_or_empty(id);
 		if (!value_cfg.empty()) {
-			return value_cfg;
+			return const_cast<config&>(value_cfg);
 		}
 	}
 
@@ -418,7 +417,7 @@ config& manager::get_value_cfg(const std::string& id)
 	return value_cfg;
 }
 
-const config& manager::get_value_cfg(const std::string& id) const
+const config& manager::get_value_cfg_or_empty(const std::string& id) const
 {
 	static const config empty;
 	
@@ -470,9 +469,9 @@ const config& manager::get_option_info_cfg(const std::string& id) const
 
 config::attribute_value manager::get_stored_value(const std::string& id) const
 {
-	const config& valcfg = get_value_cfg(id);
+	const config& valcfg = get_value_cfg_or_empty(id);
 
-	if (!valcfg["value"].empty()) {
+	if (!valcfg.empty()) {
 		// There's a saved value for this option
 		return valcfg["value"];
 	}

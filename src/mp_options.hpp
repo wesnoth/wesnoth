@@ -221,7 +221,7 @@ private:
 	 * 								for this option should be written into or
 	 * 								an empty config if that doesn't exist.
 	 */
-	const config& get_value_cfg(const std::string& id) const;
+	const config& get_value_cfg_or_empty(const std::string& id) const;
 
 	/**
 	 * Returns the information about an option.
