@@ -150,7 +150,7 @@ std::string file_dialog::format_dirname(const std::string& dirname) const
 	// Take the prefix of the dir (ie. /home/ or c:/) put three dot's behind it
 	// and shorten the rest of the dir:
 	// /home/.../rest_of_the_dir
-	// Note that this is a dirty hack and fundemental changes in the widget subdir
+	// Note that this is a dirty hack and fundamental changes in the widget subdir
 	// needs to be made...
 	if(font::line_width(tmp, menu_font_size) <= 390) {
 		return tmp;
