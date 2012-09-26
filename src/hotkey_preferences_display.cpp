@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
- Copyright (C) 2012 by Fabian Mueler <fabianmueller5@gmx.de>
+ Copyright (C) 2012 by Fabian Mueller <fabianmueller5@gmx.de>
  Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
  This program is free software; you can redistribute it and/or modify
@@ -42,41 +42,7 @@
 
 namespace preferences {
 
-
-class hotkey_preferences_parent_dialog: public gui::dialog {
-public:
-	hotkey_preferences_parent_dialog(display &disp) :
-			dialog(disp, _("Hotkey Settings"), "", gui::OK_CANCEL),
-			clear_buttons_(false),
-			hotkey_cfg_()
-	{
-		// keep the old config in case the user cancels the dialog
-		hotkey::save_hotkeys(hotkey_cfg_);
-	}
-
-	~hotkey_preferences_parent_dialog() {
-		// save or restore depending on the exit result
-		if (result() >= 0)
-			save_hotkeys();
-		else hotkey::load_hotkeys(hotkey_cfg_, false);
-	}
-
-	void action(gui::dialog_process_info &info) {
-		if (clear_buttons_) {
-			info.clear_buttons();
-			clear_buttons_ = false;
-		}
-	}
-
-	void clear_buttons() {
-		clear_buttons_ = true;
-	}
-
-private:
-	bool clear_buttons_;
-	config hotkey_cfg_;
-
-};
+class hotkey_preferences_parent_dialog;
 
 class hotkey_preferences_dialog: public gui::preview_pane {
 
@@ -86,6 +52,13 @@ private	:
 
 public:
 	hotkey_preferences_dialog(display& disp);
+
+	/**
+	 * Populates, sorts and redraws the hotkey menu
+	 * specified by tab_.
+	 * @param keep_viewport feeds the keep_viewport param of menu::set_menu_items()
+	 */
+	void set_hotkey_menu(bool keep_viewport);
 
 private:
 
@@ -107,13 +80,6 @@ private:
 	}
 
 	/**
-	 * Populates, sorts and redraws the hotkey menu
-	 * specified by tab_.
-	 * @param keep_viewport feeds the keep_viewport param of menu::set_menu_items()
-	 */
-	void set_hotkey_menu(bool keep_viewport);
-
-	/**
 	 * Sub-dialog, recognizing the hotkey sequence
 	 * @param command add the new binding to this item
 	 */
@@ -123,7 +89,7 @@ private:
 	 * Buttons to trigger the tools involved in hotkey assignment.
 	 * The buttons are shared by all scope tabs.
 	 */
-	gui::button add_button_, clear_button_, reset_button_;
+	gui::button add_button_, clear_button_;
 
 	/** The dialog features a tab for each hotkey scope (except the SCOPE_COUNTER)*/
 	hotkey::scope tab_;
@@ -158,6 +124,73 @@ public:
 	util::scoped_ptr<hotkey_preferences_parent_dialog> parent;
 };
 
+class hotkey_resetter : public gui::dialog_button_action
+{
+public:
+	hotkey_resetter(display& disp, hotkey_preferences_dialog& dialog) :
+		disp_(disp),
+		dialog_(dialog)
+	{};
+
+	// This method is called when the button is pressed.
+	RESULT button_pressed(int /*selection*/)
+	{
+		clear_hotkeys();
+		gui2::show_transient_message(disp_.video(), _("Hotkeys Reset"),
+				_("All hotkeys have been reset to their default values."));
+		dialog_.set_hotkey_menu(true);
+		return gui::CONTINUE_DIALOG;
+	};
+
+private:
+	display& disp_;
+	hotkey_preferences_dialog& dialog_;
+};
+
+class hotkey_preferences_parent_dialog: public gui::dialog {
+
+public:
+
+	hotkey_preferences_parent_dialog(display &disp, hotkey_preferences_dialog& hotkey_preferences_dialog) :
+			dialog(disp, _("Hotkey Settings"), "", gui::OK_CANCEL),
+			clear_buttons_(false),
+			hotkey_cfg_(),
+			resetter_(disp, hotkey_preferences_dialog)
+	{
+		gui::dialog_button* reset_button = new gui::dialog_button(disp.video(), _("Reset Defaults"),
+				gui::button::TYPE_PRESS, gui::CONTINUE_DIALOG, &resetter_);
+		reset_button->set_help_string(_("Reset all bindings to the default values"));
+		add_button(reset_button, dialog::BUTTON_HELP);
+
+		// keep the old config in case the user cancels the dialog
+		hotkey::save_hotkeys(hotkey_cfg_);
+	}
+
+	~hotkey_preferences_parent_dialog() {
+		// save or restore depending on the exit result
+		if (result() >= 0)
+			save_hotkeys();
+		else hotkey::load_hotkeys(hotkey_cfg_, false);
+	}
+
+	void action(gui::dialog_process_info &info) {
+		if (clear_buttons_) {
+			info.clear_buttons();
+			clear_buttons_ = false;
+		}
+	}
+
+	void clear_buttons() {
+		clear_buttons_ = true;
+	}
+
+private:
+	bool clear_buttons_;
+	config hotkey_cfg_;
+	hotkey_resetter resetter_;
+};
+
+
 void show_hotkeys_preferences_dialog(display& disp) {
 
 	std::vector<std::string> items;
@@ -179,7 +212,7 @@ void show_hotkeys_preferences_dialog(display& disp) {
 	// when it runs out of the function's scope
 	hotkey::scope_changer scope_restorer;
 	hotkey_preferences_dialog dialog(disp);
-	dialog.parent.assign(new hotkey_preferences_parent_dialog(disp));
+	dialog.parent.assign(new hotkey_preferences_parent_dialog(disp, dialog));
 	dialog.parent->set_menu(items);
 	dialog.parent->add_pane(&dialog);
 	// select the tab corresponding to the current scope.
@@ -195,7 +228,6 @@ hotkey_preferences_dialog::hotkey_preferences_dialog(display& disp) :
 		gui::preview_pane(disp.video()),
 		add_button_(disp.video(), _("Add Hotkey")),
 		clear_button_(disp.video(),	_("Clear Hotkey")),
-		reset_button_(disp.video(),	_("Reset All")),
 		tab_(hotkey::SCOPE_GENERAL),
 		general_commands_(),
 		game_commands_(),
@@ -250,7 +282,6 @@ hotkey_preferences_dialog::hotkey_preferences_dialog(display& disp) :
 	///@todo adjust them corresponding to the selected item
 	clear_button_.set_help_string(_("Clears the selected actions's bindings"));
 	add_button_.set_help_string(_("Add additional binding to the selected action"));
-	reset_button_.set_help_string(_("Reset all bindings to the default values"));
 
 	// Initialize sorters.
 	general_sorter_.set_alpha_sort(0).set_alpha_sort(1);
@@ -272,7 +303,6 @@ void hotkey_preferences_dialog::set_hotkey_menu(bool keep_viewport) {
 	 * we might have redrawing glitches otherwise.
 	 */
 	add_button_.hide(true);
-	reset_button_.hide(true);
 	clear_button_.hide(true);
 	game_hotkeys_.hide(true);
 	editor_hotkeys_.hide(true);
@@ -331,7 +361,6 @@ void hotkey_preferences_dialog::set_hotkey_menu(bool keep_viewport) {
 	    // !hide and thus redraw only the current tab_'s items
 		active_hotkeys->hide(false);
 		add_button_.hide(false);
-		reset_button_.hide(false);
 		clear_button_.hide(false);
 	}
 }
@@ -340,7 +369,6 @@ handler_vector hotkey_preferences_dialog::handler_members() {
 	handler_vector h;
 	h.push_back(&add_button_);
 	h.push_back(&clear_button_);
-	h.push_back(&reset_button_);
 	h.push_back(&general_hotkeys_);
 	h.push_back(&game_hotkeys_);
 	h.push_back(&editor_hotkeys_);
@@ -410,20 +438,6 @@ void hotkey_preferences_dialog::process_event() {
 		set_hotkey_menu(true);
 	}
 
-	if (reset_button_.pressed()) {
-		// reset all bindings to default
-		const int res =
-				gui2::show_message(disp_.video(), _("Reset Hotkeys"),
-						_("This will reset all hotkeys to their default values. Do you wish to continue?"),
-						gui2::tmessage::yes_no_buttons);
-
-		if (res != gui2::twindow::CANCEL) {
-			clear_hotkeys();
-			gui2::show_transient_message(disp_.video(), _("Hotkeys Reset"),
-					_("All hotkeys have been reset to their default values."));
-			set_hotkey_menu(true);
-		}
-	}
 }
 
 void hotkey_preferences_dialog::update_location(SDL_Rect const &rect) {
@@ -462,8 +476,6 @@ void hotkey_preferences_dialog::update_location(SDL_Rect const &rect) {
 
 	add_button_.set_location(xpos, ypos);
 	xpos += add_button_.width() + font::relative_size(14);
-	reset_button_.set_location(xpos, ypos);
-	xpos += reset_button_.width() + font::relative_size(14);
 	clear_button_.set_location(xpos, ypos);
 }
 
@@ -473,7 +485,7 @@ void hotkey_preferences_dialog::update_location(SDL_Rect const &rect) {
 #endif
 void hotkey_preferences_dialog::show_binding_dialog(const std::string& id) {
 
-	// Lets change this hotkey......
+	// Lets bind a hotkey......
 
 	SDL_Rect clip_rect = create_rect(0, 0, disp_.w(), disp_.h());
 	SDL_Rect text_size = font::draw_text(NULL, clip_rect, font::SIZE_LARGE,
@@ -596,12 +608,11 @@ void hotkey_preferences_dialog::show_binding_dialog(const std::string& id) {
 				symbols["new_hotkey_action"] = newhk.get_description();
 
 				std::string text =
-						vgettext("\"$hotkey_sequence|\" is in use by \"$old_hotkey_action|\".\nDo you wish to reassign it to \"$new_hotkey_action|\"?",
+						vgettext("\"$hotkey_sequence|\" is in use by \"$old_hotkey_action|\". Do you wish to reassign it to \"$new_hotkey_action|\"?",
 								symbols);
-				text += "\n\n";
 
 				const int res = gui2::show_message(disp_.video(),
-						_("Hotkey is already in use."), text,
+						_("Reassign Hotkey"), text,
 						gui2::tmessage::yes_no_buttons);
 				if (res == gui2::twindow::OK) {
 					oldhk->set_command(id);
