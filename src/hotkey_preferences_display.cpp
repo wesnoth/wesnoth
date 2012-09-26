@@ -81,7 +81,7 @@ private:
 class hotkey_preferences_dialog: public gui::preview_pane {
 
 private	:
-	/* nice little magic number, the size of the truncated hotkey command */
+	/** nice little magic number, the size of the truncated hotkey command */
 	static const int truncate_at = 25;
 
 public:
@@ -89,67 +89,70 @@ public:
 
 private:
 
-	// overrides events::handler::process_event
+	/// overrides events::handler::process_event
 	void process_event();
 
-	// overrides gui::widget::update_location
+	/// overrides gui::widget::update_location
 	void update_location(SDL_Rect const &rect);
 
-	// overrides gui::preview_pane::handler_members
+	/// overrides gui::preview_pane::handler_members
 	virtual handler_vector handler_members();
 
-	// implements gui::preview_pane::set_selection
+	/// implements gui::preview_pane::set_selection
 	void set_selection(int index);
 
-	// implements gui::preview_pane::left_side
+	/// implements gui::preview_pane::left_side
 	bool left_side() const {
 		return false;
 	}
 
-	/*
+	/**
 	 * Populates, sorts and redraws the hotkey menu
 	 * specified by tab_.
-	 * @keep_viewport feeds the keep_viewport param of menu::set_menu_items()
+	 * @param keep_viewport feeds the keep_viewport param of menu::set_menu_items()
 	 */
 	void set_hotkey_menu(bool keep_viewport);
 
-	/* Subdialog, recognizing the hotkey sequence
-	 * @command add the result of the dialog to this item
+	/**
+	 * Sub-dialog, recognizing the hotkey sequence
+	 * @param command add the new binding to this item
 	 */
 	void show_binding_dialog(const std::string& command);
 
-	/*
+	/**
 	 * Buttons to trigger the tools involved in hotkey assignment.
 	 * The buttons are shared by all scope tabs.
 	 */
 	gui::button add_button_, clear_button_, reset_button_;
 
-	/* The dialog features a tab for each hotkey scope (except the SCOPE_COUNTER)*/
+	/** The dialog features a tab for each hotkey scope (except the SCOPE_COUNTER)*/
 	hotkey::scope tab_;
 
-	/* These are to map the menu selection to the corresponding command
+	/**
+	 * These are to map the menu selection to the corresponding command
 	 * example: std::string selected_general_command = general_commands_[general_hotkey_.get_selected()];
 	 */
 	std::vector<std::string> general_commands_;
 	std::vector<std::string> game_commands_;
 	std::vector<std::string> editor_commands_;
 
-	/* The header of all the scope menus */
+	/** The header of all the scope menus */
 	const std::string heading_;
 
-	/* Every scope gets its own menu and sorter to allow keeping the viewport
+	/**
+	 * Every scope gets its own menu and sorter to allow keeping the viewport
 	 * while switching through the tabs.
 	 */
 	int selected_command_;
 	gui::menu::basic_sorter general_sorter_, game_sorter_, editor_sorter_;
 	gui::menu general_hotkeys_, game_hotkeys_, editor_hotkeys_;
 
-	/* The display, for usage by child dialogs */
+	/** The display, for usage by child dialogs */
 	display &disp_;
 
 public:
-	/*
-	 * TODO Okay, we have here a public member in a class.
+	/**
+	 * @todo Okay, we have here a public member in a class.
 	 * Like in game_preferences_dialog.
 	 */
 	util::scoped_ptr<hotkey_preferences_parent_dialog> parent;
@@ -186,7 +189,8 @@ void show_hotkeys_preferences_dialog(display& disp) {
 }
 
 
-/************ hotkey_preferences_dialog members ************************/
+/* hotkey_preferences_dialog members ************************/
+
 hotkey_preferences_dialog::hotkey_preferences_dialog(display& disp) :
 		gui::preview_pane(disp.video()),
 		add_button_(disp.video(), _("Add Hotkey")),
@@ -239,11 +243,11 @@ hotkey_preferences_dialog::hotkey_preferences_dialog(display& disp) :
 		}
 	}
 
-	//TODO move to the caller?
+	///@todo move to the caller?
 	disp_.video().clear_all_help_strings();
 
-	// Add help tooltips to the buttons
-	//TODO adjust them corresponding to the selected item
+	//Add help tooltips to the buttons
+	///@todo adjust them corresponding to the selected item
 	clear_button_.set_help_string(_("Clears the selected actions's bindings"));
 	add_button_.set_help_string(_("Add additional binding to the selected action"));
 	reset_button_.set_help_string(_("Reset all bindings to the default values"));
@@ -426,8 +430,8 @@ void hotkey_preferences_dialog::update_location(SDL_Rect const &rect) {
 
 	bg_register(rect);
 
-	// some magic numbers :-P
-	// TODO they match the ones in game_preferences_dialog.
+	/** some magic numbers :-P
+	@TODO they match the ones in game_preferences_dialog. */
 	const int top_border = 10;
 	const int right_border = font::relative_size(10);
 	const int h = height() - 75; // well, this one not.
@@ -502,7 +506,7 @@ void hotkey_preferences_dialog::show_binding_dialog(const std::string& id) {
 
 	while (event.type != SDL_KEYDOWN && event.type != SDL_JOYBUTTONDOWN
 			&& event.type != SDL_JOYHATMOTION
-			&& (event.type != SDL_MOUSEBUTTONDOWN || event.button.button < 8))
+			&& (event.type != SDL_MOUSEBUTTONDOWN || event.button.button < 4))
 		SDL_PollEvent(&event);
 
 	do {
