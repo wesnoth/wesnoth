@@ -298,7 +298,7 @@ static void compare_results(const double res[], const struct unit *u,
 	if (touched == -1)
 		assert(strcmp(label, "Attacker #2") == 0);
 	else if (abs((val - (1.0 - touched))*100) > 1.0)
-		printf("Warning: expected %f untouched, got %f battle %u %s\n",
+		printf("Warning: expected %f untouched, but got %f (battle %u %s).\n",
 		       1.0 - touched, val, battle, label);
 
 	for (i = 0; i < u->max_hp+1; i++) {
@@ -311,7 +311,7 @@ static void compare_results(const double res[], const struct unit *u,
 			     battle, label, i, val, res[i]*100);
 #endif
 		if (abs(val - res[i]*100) > 1.0)
-			printf("Warning: battle %u %s hp %u %f should be %f\n",
+			printf("Warning: in battle %u, %s hp %u chance was %f; should be %f.\n",
 			       battle, label, i, val, res[i]*100);
 	}
 	fscanf(f, "\n");
