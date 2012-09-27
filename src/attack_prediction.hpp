@@ -56,7 +56,7 @@ struct combatant
 
 #if defined(BENCHMARK) || defined(CHECK)
 	// Functions used in the stand-alone version of attack_prediction.cpp
-	void print(const char label[], unsigned int battle) const;
+	void print(const char label[], unsigned int battle, unsigned int fighter) const;
 	void reset();
 #endif
 

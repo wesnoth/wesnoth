@@ -1085,8 +1085,39 @@ void battle_context_unit_stats::dump() const
 }
 
 
-#ifdef CHECK
-void combatant::print(const char label[], unsigned int battle) const
+#ifdef HUMAN_READABLE
+void combatant::print(const char label[], unsigned int battle, unsigned int fighter) const
+{
+	printf("#%06u: (%02u) %s%*c %u-%d; %uhp; %02u%% to hit; %.2f%% unscathed; ",
+	       battle, fighter, label, int(strlen(label))-12, ':',
+	       u_.swarm_max, u_.damage, u_.hp, u_.chance_to_hit, untouched * 100.0);
+	if ( u_.drains )
+		printf("drains,");
+	if ( u_.slows )
+		printf("slows,");
+	if ( u_.rounds > 1 )
+		printf("berserk,");
+	if ( u_.swarm_max != u_.swarm_min )
+		printf("swarm,");
+	if ( u_.firststrike )
+		printf("firststrike,");
+	printf("maxhp=%zu ", hp_dist.size()-1);
+
+	int num_outputs = 0;
+	for ( unsigned int i = 0; i < hp_dist.size(); ++i )
+		if ( hp_dist[i] != 0.0 )
+		{
+			if ( num_outputs++ % 6 == 0 )
+				printf("\n\t");
+			else
+				printf("  ");
+			printf("%2u: %5.2f", i, hp_dist[i] * 100);
+		}
+
+	printf("\n");
+}
+#elif defined(CHECK)
+void combatant::print(const char label[], unsigned int battle, unsigned int /*fighter*/) const
 {
 	printf("#%u: %s: %d %u %u %2g%% ", battle, label,
 		   u_.damage, u_.swarm_max, u_.hp, static_cast<float>(u_.chance_to_hit));
@@ -1107,7 +1138,7 @@ void combatant::print(const char label[], unsigned int battle) const
 	printf("\n");
 }
 #else  // ... BENCHMARK
-void combatant::print(const char /*label*/[], unsigned int /*battle*/) const
+void combatant::print(const char /*label*/[], unsigned int /*battle*/, unsigned int /*fighter*/) const
 {
 }
 #endif
@@ -1164,9 +1195,9 @@ static void run(unsigned specific_battle)
 				u[j]->fight(*u[i]);
 				u[k]->fight(*u[i]);
 				// Results.
-				u[i]->print("Defender", battle);
-				u[j]->print("Attacker #1", battle);
-				u[k]->print("Attacker #2", battle);
+				u[i]->print("Defender", battle, i+1);
+				u[j]->print("Attacker #1", battle, j+1);
+				u[k]->print("Attacker #2", battle, k+1);
 				// Start the next fight fresh.
 				u[i]->reset();
 				u[j]->reset();
@@ -1284,9 +1315,9 @@ int main(int argc, char *argv[])
 		att[i]->fight(*def);
 	}
 
-	def->print("Defender", 0);
+	def->print("Defender", 0, 0);
 	for (i = 0; att[i]; ++i)
-		att[i]->print("Attacker", 0);
+		att[i]->print("Attacker", 0, i+1);
 
 	for (i = 0; att[i]; ++i) {
 		delete att[i];
