@@ -129,8 +129,13 @@ struct prob_matrix
 	void extract_results(std::vector<double> summary_a[2],
 						 std::vector<double> summary_b[2]);
 
-	// What's the chance one is dead?
-	double dead_prob() const;
+	// Some wrappers for dead_prob(bool, bool) that make for more readable code:
+	/// What is the chance that one of the combatants is dead?
+	double dead_prob() const    { return dead_prob(true, true); }
+	/// What is the chance that combatant 'a' is dead?
+	double dead_prob_a() const  { return dead_prob(true, false); }
+	/// What is the chance that combatant 'b' is dead?
+	double dead_prob_b() const  { return dead_prob(false, true); }
 
 	void dump() const;
 
@@ -163,6 +168,11 @@ private:
 	// Shift rows on this plane (a taking damage).  Returns new min row.
 	void shift_rows(unsigned dst, unsigned src,
 					unsigned damage, double prob, int drain_constant, int drain_percent);
+
+	/// What is the chance that an indicated combatant (one of them) is dead?
+	double dead_prob(bool check_a, bool check_b) const;
+	// (This function is private to encourage use of the more readable wrappers.)
+
 
 	/** @todo FIXME: rename using _ at end. */
 	unsigned int rows_, cols_;
@@ -529,20 +539,26 @@ void prob_matrix::extract_results(std::vector<double> summary_a[2],
 	}
 }
 
-// What's the chance one is dead?
-double prob_matrix::dead_prob() const
+/**
+ * What is the chance that an indicated combatant (one of them) is dead?
+ */
+double prob_matrix::dead_prob(bool check_a, bool check_b) const
 {
-	unsigned int p, row, col;
 	double prob = 0.0;
 
-	for (p = 0; p < 4; ++p) {
+	for (unsigned p = 0; p < 4; ++p) {
 		if (!plane_[p])
 			continue;
-		// We might count 0,0 twice, but that is always 0 anyway.
-		for (row = min_row_[p]; row < rows_; ++row)
-			prob += val(p, row, 0);
-		for (col = min_col_[p]; col < cols_; ++col)
-			prob += val(p, 0, col);
+		// Column 0 is where b is dead.
+		if ( check_b )
+			for (unsigned row = min_row_[p]; row < rows_; ++row)
+				prob += val(p, row, 0);
+		// Row 0 is where a is dead.
+		if ( check_a )
+			for (unsigned col = min_col_[p]; col < cols_; ++col)
+				prob += val(p, 0, col);
+		// Theoretically, if checking both, we should subtract the chance that
+		// both are dead, but that chance is zero, so don't worry about it.
 	}
 	return prob;
 }
@@ -776,7 +792,8 @@ static void conditional_levelup(std::vector<double> &hp_dist, double kill_prob)
 }
 
 // Combat without chance of death, berserk, slow or drain is simple.
-void combatant::no_death_fight(combatant &opp, bool levelup_considered)
+void combatant::no_death_fight(combatant &opp, bool levelup_considered,
+                               double & self_not_hit, double & opp_not_hit)
 {
 	if (summary[0].empty()) {
 		// Starts with a known HP, so Pascal's triangle.
@@ -788,6 +805,7 @@ void combatant::no_death_fight(combatant &opp, bool levelup_considered)
 				summary[0][u_.hp - j * opp.u_.damage] -= move;
 				summary[0][u_.hp - (j+1) * opp.u_.damage] += move;
 			}
+			self_not_hit *= 1.0 - opp.hit_chances_[i];
 		}
 	} else {
 		// HP could be spread anywhere, iterate through whole thing.
@@ -797,6 +815,7 @@ void combatant::no_death_fight(combatant &opp, bool levelup_considered)
 				summary[0][j] -= move;
 				summary[0][j - opp.u_.damage] += move;
 			}
+			self_not_hit *= 1.0 - opp.hit_chances_[i];
 		}
 	}
 
@@ -810,6 +829,7 @@ void combatant::no_death_fight(combatant &opp, bool levelup_considered)
 				opp.summary[0][opp.u_.hp - j * u_.damage] -= move;
 				opp.summary[0][opp.u_.hp - (j+1) * u_.damage] += move;
 			}
+			opp_not_hit *= 1.0 - hit_chances_[i];
 		}
 	} else {
 		// HP could be spread anywhere, iterate through whole thing.
@@ -819,6 +839,7 @@ void combatant::no_death_fight(combatant &opp, bool levelup_considered)
 				opp.summary[0][j] -= move;
 				opp.summary[0][j - u_.damage] += move;
 			}
+			opp_not_hit *= 1.0 - hit_chances_[i];
 		}
 	}
 
@@ -834,13 +855,15 @@ void combatant::no_death_fight(combatant &opp, bool levelup_considered)
 }
 
 // Combat with <= 1 strike each is simple, too.
-void combatant::one_strike_fight(combatant &opp, bool levelup_considered)
+void combatant::one_strike_fight(combatant &opp, bool levelup_considered,
+                                 double & self_not_hit, double & opp_not_hit)
 {
 	if (opp.summary[0].empty()) {
 		opp.summary[0] = std::vector<double>(opp.u_.max_hp+1);
 		if (hit_chances_.size() == 1) {
 			opp.summary[0][opp.u_.hp] = 1.0 - hit_chances_[0];
 			opp.summary[0][std::max<int>(opp.u_.hp - u_.damage, 0)] = hit_chances_[0];
+			opp_not_hit *= 1.0 - hit_chances_[0];
 		} else {
 			assert(hit_chances_.empty());
 			opp.summary[0][opp.u_.hp] = 1.0;
@@ -852,6 +875,7 @@ void combatant::one_strike_fight(combatant &opp, bool levelup_considered)
 				opp.summary[0][i] -= move;
 				opp.summary[0][std::max<int>(i - u_.damage, 0)] += move;
 			}
+			opp_not_hit *= 1.0 - hit_chances_[0];
 		}
 	}
 
@@ -862,6 +886,7 @@ void combatant::one_strike_fight(combatant &opp, bool levelup_considered)
 		if (opp.hit_chances_.size() == 1) {
 			summary[0][u_.hp] = 1.0 - opp.hit_chances_[0] * opp_alive_prob;
 			summary[0][std::max<int>(u_.hp - opp.u_.damage, 0)] = opp.hit_chances_[0] * opp_alive_prob;
+			self_not_hit *= 1.0 - opp.hit_chances_[0] * opp_alive_prob;
 		} else {
 			assert(opp.hit_chances_.empty());
 			summary[0][u_.hp] = 1.0;
@@ -873,6 +898,7 @@ void combatant::one_strike_fight(combatant &opp, bool levelup_considered)
 				summary[0][i] -= move;
 				summary[0][std::max<int>(i - opp.u_.damage, 0)] += move;
 			}
+			self_not_hit *= 1.0 - opp.hit_chances_[0] * opp_alive_prob;
 		}
 	}
 
@@ -891,7 +917,8 @@ void combatant::one_strike_fight(combatant &opp, bool levelup_considered)
 	}
 }
 
-void combatant::complex_fight(combatant &opp, unsigned rounds, bool levelup_considered)
+void combatant::complex_fight(combatant &opp, unsigned rounds, bool levelup_considered,
+                              double & self_not_hit, double & opp_not_hit)
 {
 	prob_matrix m(hp_dist.size()-1, opp.hp_dist.size()-1,
 				  u_.slows && !opp.u_.is_slowed, opp.u_.slows && !u_.is_slowed,
@@ -918,12 +945,14 @@ void combatant::complex_fight(combatant &opp, unsigned rounds, bool levelup_cons
 				m.receive_blow_b(a_damage, a_slow_damage, hit_chances_[i],
 								 u_.slows && !opp.u_.is_slowed, u_.drain_constant, u_.drain_percent);
 				m.dump();
+				opp_not_hit *= 1.0 - hit_chances_[i]*(1.0-m.dead_prob_a());
 			}
 			if (i < opp.hit_chances_.size()) {
 				debug(("B strikes\n"));
 				m.receive_blow_a(b_damage, b_slow_damage, opp.hit_chances_[i],
 								 opp.u_.slows && !u_.is_slowed, opp.u_.drain_constant, opp.u_.drain_percent);
 				m.dump();
+				self_not_hit *= 1.0 - opp.hit_chances_[i]*(1.0-m.dead_prob_b());
 			}
 		}
 
@@ -988,20 +1017,24 @@ void combatant::fight(combatant &opp, bool levelup_considered)
 	opp.summary[0] = opp_prev;
 #endif
 
+	// The chance so far of not being hit this combat:
+	double self_not_hit = 1.0;
+	double opp_not_hit = 1.0;
+
 	// Optimize the simple cases.
 	if (rounds == 1 && !u_.slows && !opp.u_.slows &&
 		!u_.drains && !opp.u_.drains && !u_.petrifies && !opp.u_.petrifies &&
 		summary[1].empty() && opp.summary[1].empty()) {
 		if (hit_chances_.size() <= 1 && opp.hit_chances_.size() <= 1) {
-			one_strike_fight(opp, levelup_considered);
+			one_strike_fight(opp, levelup_considered, self_not_hit, opp_not_hit);
 		} else if (hit_chances_.size() * u_.damage < opp.min_hp() &&
 			opp.hit_chances_.size() * opp.u_.damage < min_hp()) {
-			no_death_fight(opp, levelup_considered);
+			no_death_fight(opp, levelup_considered, self_not_hit, opp_not_hit);
 		} else {
-			complex_fight(opp, rounds, levelup_considered);
+			complex_fight(opp, rounds, levelup_considered, self_not_hit, opp_not_hit);
 		}
 	} else {
-			complex_fight(opp, rounds, levelup_considered);
+			complex_fight(opp, rounds, levelup_considered, self_not_hit, opp_not_hit);
 	}
 
 #if 0
@@ -1035,15 +1068,9 @@ void combatant::fight(combatant &opp, bool levelup_considered)
 			opp.hp_dist[i] = opp.summary[0][i] + opp.summary[1][i];
 	}
 
-	// Make sure we don't try to access the vectors out of bounds,
-	// drain increases HPs so we determine the number of HP here
-	// and make sure it stays within bounds
-	const unsigned int hp = std::min<unsigned int>(u_.hp, hp_dist.size() - 1);
-	const unsigned int opp_hp = std::min<unsigned int>(opp.u_.hp, opp.hp_dist.size() - 1);
-
 	// Chance that we / they were touched this time.
-	double touched = untouched - hp_dist[hp];
-	double opp_touched = opp.untouched - opp.hp_dist[opp_hp];
+	double touched = 1.0 - self_not_hit;
+	double opp_touched = 1.0 - opp_not_hit;
 	if (opp.u_.poisons)
 		poisoned += (1 - poisoned) * touched;
 	if (u_.poisons)
@@ -1054,9 +1081,8 @@ void combatant::fight(combatant &opp, bool levelup_considered)
 	if (u_.slows)
 		opp.slowed += (1 - opp.slowed) * opp_touched;
 
-	/** @todo FIXME: This is approximate: we could drain, then get hit. */
-	untouched = hp_dist[hp];
-	opp.untouched = opp.hp_dist[opp_hp];
+	untouched *= self_not_hit;
+	opp.untouched *= opp_not_hit;
 }
 
 double combatant::average_hp(unsigned int healing) const

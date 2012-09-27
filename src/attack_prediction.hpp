@@ -71,13 +71,16 @@ private:
 	static unsigned hp_dist_size(const battle_context_unit_stats &u, const combatant *prev);
 
 	/** Combat without chance of death, berserk, slow or drain is simple. */
-	void no_death_fight(combatant &opponent, bool levelup_considered);
+	void no_death_fight(combatant &opponent, bool levelup_considered,
+	                    double & self_not_hit, double & opp_not_hit);
 
 	/** Combat with <= 1 strike each is simple, too. */
-	void one_strike_fight(combatant &opponent, bool levelup_considered);
+	void one_strike_fight(combatant &opponent, bool levelup_considered,
+	                      double & self_not_hit, double & opp_not_hit);
 
 	/** All other cases. */
-	void complex_fight(combatant &opponent, unsigned rounds, bool levelup_considered);
+	void complex_fight(combatant &opponent, unsigned rounds, bool levelup_considered,
+	                   double & self_not_hit, double & opp_not_hit);
 
 	/** We must adjust for swarm after every combat. */
 	void adjust_hitchance();
