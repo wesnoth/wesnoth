@@ -1023,6 +1023,8 @@ double combatant::average_hp(unsigned int healing) const
 	return total;
 }
 
+	/* ** The stand-alone program ** */
+
 #if defined(BENCHMARK) || defined(CHECK)
 // We create a significant number of nasty-to-calculate units,
 // and test each one against the others.
@@ -1038,6 +1040,14 @@ double combatant::average_hp(unsigned int healing) const
       (result)->tv_usec += 1000000;					      \
     }									      \
   } while (0)
+
+unsigned combatant::num_attacks(unsigned int hp) const
+{
+	if (swarm_)
+		return base_num_attacks_ - (base_num_attacks_*(max_hp_-hp)/max_hp_);
+	else
+		return base_num_attacks_;
+}
 
 #ifdef CHECK
 void combatant::print(const char label[], unsigned int battle) const
@@ -1065,6 +1075,66 @@ void combatant::print(const char label[], unsigned int battle) const
 {
 }
 #endif
+
+void combatant::reset()
+{
+	for (unsigned int i = 0; i < hp_dist.size(); i++)
+		hp_dist[i] = 0.0;
+	summary[0] = std::vector<double>();
+	summary[1] = std::vector<double>();
+	hit_chances_ = std::vector<double>(num_attacks(hp_), base_hit_chance_);
+}
+
+// Set effect against this particular opponent.
+void combatant::set_effectiveness(unsigned damage, double hit_chance,
+								  bool slows)
+{
+	slows_ = slows;
+	base_hit_chance_ = hit_chance;
+	if (slowed_)
+		damage_ = damage / 2;
+	else
+		damage_ = damage;
+
+	if (!swarm_ || summary[0].empty())
+		hit_chances_ = std::vector<double>(num_attacks(hp_), hit_chance);
+	else {
+		// Whether we get an attack depends on HP distribution from previous
+		// combat.  So we roll this into our P(hitting), since no attack is
+		// equivalent to missing.
+		hit_chances_ = std::vector<double>(base_num_attacks_);
+		double alive_prob;
+
+		if (summary[1].empty())
+			alive_prob = 1 - summary[0][0];
+		else
+			alive_prob = 1 - summary[0][0] - summary[1][0];
+
+		for (unsigned int i = 1; i <= max_hp_; i++) {
+			double prob = summary[0][i];
+			if (!summary[1].empty())
+				prob += summary[1][i];
+			for (unsigned int j = 0; j < num_attacks(i); j++)
+				hit_chances_[j] += prob * hit_chance / alive_prob;
+		}
+	}
+	debug(("\nhit_chances_ (base %u%%):", (unsigned)(hit_chance * 100.0 + 0.5)));
+	for (unsigned int i = 0; i < base_num_attacks_; i++)
+		debug((" %.2f", hit_chances_[i]));
+	debug(("\n"));
+}
+
+// Select a weapon.
+void combatant::set_weapon(unsigned num_attacks, bool drains, bool berserk,
+						   bool swarm, bool firststrike)
+{
+	base_num_attacks_ = num_attacks;
+	drains_ = drains;
+	berserk_ = berserk;
+	swarm_ = swarm;
+	firststrike_ = firststrike;
+}
+
 
 static void run(unsigned specific_battle)
 {
