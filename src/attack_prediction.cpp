@@ -20,7 +20,17 @@
 
 /**
  * @file
- * Simulate combat to calculate attacks. Standalone program, benchmark.
+ * Simulate combat to calculate attacks.
+ * This can be compiled as a stand-alone program to either verify
+ * correctness or to benchmark performance.
+ *
+ * Compile with -O3 -DBENCHMARK for speed testing, and with -DCHECK for
+ * testing correctness (redirect the output to a file, then compile
+ * utils/wesnoth-attack-sim.c and run that with the arguments
+ * --check <file name>).
+ * For either option, use -DHUMAN_READABLE if you want to see the results
+ * from each combat displayed in a prettier format (but no longer suitable
+ * for wesnoth-attack-sim.c).
  */
 
 #include <cfloat>
@@ -30,14 +40,17 @@
 #include "actions/attack.hpp"
 #include "game_config.hpp"
 
-// Compile with -O3 -DBENCHMARK for speed testing,
-// -DCHECK for testing correctness
-// (run tools/wesnoth-attack-sim.c --check on output)
 #if defined(BENCHMARK) || defined(CHECK)
 #include <time.h>
 #include <sys/time.h>
 #include <stdio.h>
 #include <stdlib.h>
+
+// Set some default values so this file can stand alone.
+namespace game_config {
+	int kill_experience = 8;
+	int tile_size = 72; // Not really needed, but it's used in image.hpp.
+}
 #endif
 
 #ifdef ATTACK_PREDICTION_DEBUG
@@ -229,7 +242,7 @@ const double &prob_matrix::val(unsigned p, unsigned row, unsigned col) const
 	return plane_[p][row * cols_ + col];
 }
 
-#ifdef CHECK
+#if defined(CHECK) && defined(ATTACK_PREDICTION_DEBUG)
 void prob_matrix::dump() const
 {
 	unsigned int row, col, m;
@@ -852,7 +865,7 @@ void combatant::complex_fight(combatant &opp, unsigned rounds, bool levelup_cons
 
 	unsigned max_attacks = std::max(hit_chances_.size(), opp.hit_chances_.size());
 
-	debug(("A gets %u attacks, B %u\n", hit_chances_.size(), opp.hit_chances_.size()));
+	debug(("A gets %zu attacks, B %zu\n", hit_chances_.size(), opp.hit_chances_.size()));
 
 	unsigned int a_damage = u_.damage, a_slow_damage = u_.slow_damage;
 	unsigned int b_damage = opp.u_.damage, b_slow_damage = opp.u_.slow_damage;
@@ -1041,37 +1054,60 @@ double combatant::average_hp(unsigned int healing) const
     }									      \
   } while (0)
 
-unsigned combatant::num_attacks(unsigned int hp) const
+
+// Copied from attack/attack.cpp
+void battle_context_unit_stats::dump() const
 {
-	if (swarm_)
-		return base_num_attacks_ - (base_num_attacks_*(max_hp_-hp)/max_hp_);
-	else
-		return base_num_attacks_;
+	printf("==================================\n");
+	printf("is_attacker:	%d\n", static_cast<int>(is_attacker));
+	printf("is_poisoned:	%d\n", static_cast<int>(is_poisoned));
+	printf("is_slowed:	%d\n", static_cast<int>(is_slowed));
+	printf("slows:		%d\n", static_cast<int>(slows));
+	printf("drains:		%d\n", static_cast<int>(drains));
+	printf("petrifies:	%d\n", static_cast<int>(petrifies));
+	printf("poisons:	%d\n", static_cast<int>(poisons));
+	printf("backstab_pos:	%d\n", static_cast<int>(backstab_pos));
+	printf("swarm:		%d\n", static_cast<int>(swarm));
+	printf("rounds:	%d\n", static_cast<int>(rounds));
+	printf("firststrike:	%d\n", static_cast<int>(firststrike));
+	printf("\n");
+	printf("hp:		%u\n", hp);
+	printf("max_hp:		%u\n", max_hp);
+	printf("chance_to_hit:	%u\n", chance_to_hit);
+	printf("damage:		%d\n", damage);
+	printf("slow_damage:	%d\n", slow_damage);
+	printf("drain_percent:	%d\n", drain_percent);
+	printf("drain_constant:	%d\n", drain_constant);
+	printf("num_blows:	%u\n", num_blows);
+	printf("swarm_min:	%u\n", swarm_min);
+	printf("swarm_max:	%u\n", swarm_max);
+	printf("\n");
 }
+
 
 #ifdef CHECK
 void combatant::print(const char label[], unsigned int battle) const
 {
-	printf("#%u: %s: %u %u %u %2g%% ", battle,
-		   label, damage_, base_num_attacks_, hp_, base_hit_chance_*100.0);
-	if (drains_)
+	printf("#%u: %s: %d %u %u %2g%% ", battle, label,
+		   u_.damage, u_.swarm_max, u_.hp, static_cast<float>(u_.chance_to_hit));
+	if ( u_.drains )
 		printf("drains,");
-	if (slows_)
+	if ( u_.slows )
 		printf("slows,");
-	if (berserk_)
+	if ( u_.rounds > 1 )
 		printf("berserk,");
-	if (swarm_)
+	if ( u_.swarm_max != u_.swarm_min )
 		printf("swarm,");
-	if (firststrike_)
+	if ( u_.firststrike )
 		printf("firststrike,");
-	printf("maxhp=%u ", hp_dist.size()-1);
+	printf("maxhp=%zu ", hp_dist.size()-1);
 	printf(" %.2f", untouched);
 	for (unsigned int i = 0; i < hp_dist.size(); ++i)
 		printf(" %.2f", hp_dist[i] * 100);
 	printf("\n");
 }
 #else  // ... BENCHMARK
-void combatant::print(const char label[], unsigned int battle) const
+void combatant::print(const char /*label*/[], unsigned int /*battle*/) const
 {
 }
 #endif
@@ -1080,76 +1116,36 @@ void combatant::reset()
 {
 	for (unsigned int i = 0; i < hp_dist.size(); i++)
 		hp_dist[i] = 0.0;
+	untouched = 1.0;
+	poisoned = u_.is_poisoned ? 1.0 : 0.0;
+	slowed = u_.is_slowed ? 1.0 : 0.0;
+	hit_chances_ = std::vector<double>(u_.num_blows, u_.chance_to_hit / 100.0);
 	summary[0] = std::vector<double>();
 	summary[1] = std::vector<double>();
-	hit_chances_ = std::vector<double>(num_attacks(hp_), base_hit_chance_);
-}
-
-// Set effect against this particular opponent.
-void combatant::set_effectiveness(unsigned damage, double hit_chance,
-								  bool slows)
-{
-	slows_ = slows;
-	base_hit_chance_ = hit_chance;
-	if (slowed_)
-		damage_ = damage / 2;
-	else
-		damage_ = damage;
-
-	if (!swarm_ || summary[0].empty())
-		hit_chances_ = std::vector<double>(num_attacks(hp_), hit_chance);
-	else {
-		// Whether we get an attack depends on HP distribution from previous
-		// combat.  So we roll this into our P(hitting), since no attack is
-		// equivalent to missing.
-		hit_chances_ = std::vector<double>(base_num_attacks_);
-		double alive_prob;
-
-		if (summary[1].empty())
-			alive_prob = 1 - summary[0][0];
-		else
-			alive_prob = 1 - summary[0][0] - summary[1][0];
-
-		for (unsigned int i = 1; i <= max_hp_; i++) {
-			double prob = summary[0][i];
-			if (!summary[1].empty())
-				prob += summary[1][i];
-			for (unsigned int j = 0; j < num_attacks(i); j++)
-				hit_chances_[j] += prob * hit_chance / alive_prob;
-		}
-	}
-	debug(("\nhit_chances_ (base %u%%):", (unsigned)(hit_chance * 100.0 + 0.5)));
-	for (unsigned int i = 0; i < base_num_attacks_; i++)
-		debug((" %.2f", hit_chances_[i]));
-	debug(("\n"));
-}
-
-// Select a weapon.
-void combatant::set_weapon(unsigned num_attacks, bool drains, bool berserk,
-						   bool swarm, bool firststrike)
-{
-	base_num_attacks_ = num_attacks;
-	drains_ = drains;
-	berserk_ = berserk;
-	swarm_ = swarm;
-	firststrike_ = firststrike;
 }
 
 
 static void run(unsigned specific_battle)
 {
 	// N^2 battles
+	struct battle_context_unit_stats *stats[NUM_UNITS];
 	struct combatant *u[NUM_UNITS];
 	unsigned int i, j, k, battle = 0;
 	struct timeval start, end, total;
 
 	for (i = 0; i < NUM_UNITS; ++i) {
 		unsigned hp = 1 + ((i*3)%23);
-		u[i] = new combatant(hp, hp + (i+7)%17, false);
-		u[i]->set_weapon((i % 4) + 1, (i % 9) == 0, (i % 5) == 0,
-						 ((i+4) % 4) == 0,
-						 ((i+3) % 5) == 0);
-		u[i]->set_effectiveness((i % 7) + 2, 0.3 + (i % 6)*0.1, (i % 8) == 0);
+		stats[i] = new battle_context_unit_stats(i%7 + 2,        // damage
+		                                         i%4 + 1,        // number of strikes
+		                                         hp, hp + (i+7)%17,
+		                                         30 + (i%6)*10,  // hit chance
+		                                         i % 9 == 0,     // drains
+		                                         i % 8 == 0,     // slows
+		                                         false,          // slowed
+		                                         i % 5 == 0,     // berserk
+		                                         (i+3) % 5 == 0, // firststrike
+		                                         (i+4) % 4 == 0);// swarm
+		u[i] = new combatant(*stats[i]);
 	}
 
 	gettimeofday(&start, NULL);
@@ -1164,10 +1160,6 @@ static void run(unsigned specific_battle)
 				if (specific_battle && battle != specific_battle)
 					continue;
 				u[j]->fight(*u[i]);
-				// We need this here, because swarm means
-				// out num hits can change.
-				u[i]->set_effectiveness((i % 7) + 2, 0.3 + (i % 6)*0.1,
-										(i % 8) == 0);
 				u[k]->fight(*u[i]);
 				u[i]->print("Defender", battle);
 				u[j]->print("Attacker #1", battle);
@@ -1194,24 +1186,27 @@ static void run(unsigned specific_battle)
 
 	for (i = 0; i < NUM_UNITS; ++i) {
 		delete u[i];
+		delete stats[i];
 	}
 
 	exit(0);
 }
 
-static combatant *parse_unit(char ***argv,
-							 unsigned *damagep = NULL,
-							 double *hit_chancep = NULL,
-							 bool *slowsp = NULL)
+// Note: The exits in this function are not really necessary, unless they
+//       are intended as (extreme) warnings.
+static battle_context_unit_stats *parse_unit(char ***argv)
 {
-	unsigned damage, num_attacks, hp, max_hp, hit_chance;
+	// There are four required parameters.
+	int add_to_argv = 4;
+	int damage, num_attacks, hp, max_hp, hit_chance;
 	bool slows, slowed, drains, berserk, swarm, firststrike;
-	combatant *u;
-
 	damage = atoi((*argv)[1]);
 	num_attacks = atoi((*argv)[2]);
 	hp = max_hp = atoi((*argv)[3]);
 	hit_chance = atoi((*argv)[4]);
+
+
+	// Parse the optional (fifth) parameter.
 	slows = false;
 	slowed = false;
 	drains = false;
@@ -1219,20 +1214,15 @@ static combatant *parse_unit(char ***argv,
 	swarm = false;
 	firststrike = false;
 
-	if (damagep)
-		*damagep = damage;
-	if (hit_chancep)
-		*hit_chancep = hit_chance/100.0;
-	if (slowsp)
-		*slowsp = slows;
-
 	if ((*argv)[5] && atoi((*argv)[5]) == 0) {
+		// Optional parameter is present.
+		++add_to_argv;
 		char *max = strstr((*argv)[5], "maxhp=");
 
 		if (max) {
 			max_hp = atoi(max + strlen("maxhp="));
 			if (max_hp < hp) {
-				fprintf(stderr, "maxhp must be > hitpoints");
+				fprintf(stderr, "maxhp must be at least hitpoints.");
 				exit(1);
 			}
 		}
@@ -1258,42 +1248,43 @@ static combatant *parse_unit(char ***argv,
 			}
 			swarm = true;
 		}
-		*argv += 5;
-	} else {
-		*argv += 4;
 	}
-	u = new combatant(hp, max_hp, slowed, true);
-	u->set_weapon(num_attacks, drains, berserk, swarm, firststrike);
-	u->set_effectiveness(damage, hit_chance/100.0, slows);
-	return u;
+
+	// Update argv.
+	*argv += add_to_argv;
+
+	// Construct the stats and return.
+	return new battle_context_unit_stats(damage, num_attacks, hp, max_hp,
+	                                     hit_chance, drains, slows, slowed,
+	                                     berserk, firststrike, swarm);
 }
 
 int main(int argc, char *argv[])
 {
+	battle_context_unit_stats *def_stats, *att_stats[20];
 	combatant *def, *att[20];
-	double hit_chance;
-	unsigned damage;
-	bool slows;
 	unsigned int i;
 
 	if (argc < 3)
 		run(argv[1] ? atoi(argv[1]) : 0);
 
 	if (argc < 9) {
-		fprintf(stderr,"Usage: %s <damage> <attacks> <hp> <hitprob> [drain,slows,slowed,swarm,firststrike,berserk,maxhp=<num>] <damage> <attacks> <hp> <hitprob> [drain,slows,slowed,berserk,firststrike,swarm,maxhp=<num>] ...",
-				argv[0]);
+		fprintf(stderr, "Usage: %s [<battle>]\n"
+		        "\t%s <damage> <attacks> <hp> <hitprob> [drain,slows,slowed,swarm,firststrike,berserk,maxhp=<num>] <damage> <attacks> <hp> <hitprob> [drain,slows,slowed,berserk,firststrike,swarm,maxhp=<num>] ...\n",
+				argv[0], argv[0]);
 		exit(1);
 	}
 
-	def = parse_unit(&argv, &damage, &hit_chance, &slows);
-	for (i = 0; argv[1]; ++i)
-		att[i] = parse_unit(&argv);
+	def_stats = parse_unit(&argv);
+	def = new combatant(*def_stats);
+	for (i = 0; argv[1] && i < 19; ++i) {
+		att_stats[i] = parse_unit(&argv);
+		att[i] = new combatant(*att_stats[i]);
+	}
 	att[i] = NULL;
 
 	for (i = 0; att[i]; ++i) {
-		// In case defender has swarm, effectiveness changes.
 		debug(("Fighting next attacker\n"));
-		def->set_effectiveness(damage, hit_chance, slows);
 		att[i]->fight(*def);
 	}
 
@@ -1302,8 +1293,11 @@ int main(int argc, char *argv[])
 		att[i]->print("Attacker", 0);
 
 	delete def;
-	for (i = 0; att[i]; ++i)
+	delete def_stats;
+	for (i = 0; att[i]; ++i) {
 		delete att[i];
+		delete att_stats[i];
+	}
 
 	return 0;
 }

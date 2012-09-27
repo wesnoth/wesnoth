@@ -75,7 +75,35 @@ struct battle_context_unit_stats
 		   const unit &opp, const map_location& opp_loc,
 		   const attack_type *opp_weapon,
 		   const unit_map& units);
-	~battle_context_unit_stats();
+	~battle_context_unit_stats()
+	{}
+
+#if defined(BENCHMARK) || defined(CHECK)
+	/// Special constructor for the stand-alone version of attack_prediction.cpp.
+	/// (This hardcodes some standard abilities for testing purposes.)
+	battle_context_unit_stats(int dmg, int blows, int hitpoints, int maximum_hp,
+	                          int hit_chance, bool drain, bool slows, bool slowed,
+	                          bool berserk, bool first, bool do_swarm) :
+		weapon(NULL), attack_num(0), is_attacker(true), // These are not used in attack prediction.
+		is_poisoned(false), is_slowed(slowed),
+		slows(slows), drains(drain), petrifies(false), plagues(false),
+		poisons(false), backstab_pos(false), swarm(do_swarm), firststrike(first),
+		experience(0), max_experience(50), level(1), // No units should advance in the attack prediction tests.
+		rounds(berserk ? 30 : 1),
+		hp(std::max<int>(0, hitpoints)), max_hp(std::max<int>(1, maximum_hp)),
+		chance_to_hit(hit_chance),
+		damage(std::max(0, dmg)), slow_damage(round_damage(damage, 1, 2)),
+		drain_percent(drain ? 50 : 0), drain_constant(0),
+		num_blows(do_swarm ? blows * hp / max_hp : blows),
+		swarm_min(do_swarm ? 0 : blows), swarm_max(blows),
+		plague_type()
+	{
+		if ( slowed )
+			damage = slow_damage;
+		if ( hp > max_hp )
+			hp = max_hp; // Keeps the prob_matrix from going out of bounds.
+	}
+#endif
 
 	/** Dumps the statistics of a unit on stdout. Remove it eventually. */
 	void dump() const;

@@ -207,10 +207,6 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u,
 	}
 }
 
-battle_context_unit_stats::~battle_context_unit_stats()
-{
-}
-
 void battle_context_unit_stats::dump() const
 {
 	printf("==================================\n");

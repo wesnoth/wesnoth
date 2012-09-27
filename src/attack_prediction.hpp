@@ -54,6 +54,12 @@ struct combatant
 	/** What's the average hp (weighted average of hp_dist). */
 	double average_hp(unsigned int healing = 0) const;
 
+#if defined(BENCHMARK) || defined(CHECK)
+	// Functions used in the stand-alone version of attack_prediction.cpp
+	void print(const char label[], unsigned int battle) const;
+	void reset();
+#endif
+
 private:
 	combatant(const combatant &that);
 	combatant& operator=(const combatant &);
