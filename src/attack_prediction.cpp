@@ -1114,7 +1114,7 @@ void combatant::print(const char /*label*/[], unsigned int /*battle*/) const
 
 void combatant::reset()
 {
-	for (unsigned int i = 0; i < hp_dist.size(); i++)
+	for ( unsigned int i = 0; i < hp_dist.size(); ++i )
 		hp_dist[i] = 0.0;
 	untouched = 1.0;
 	poisoned = u_.is_poisoned ? 1.0 : 0.0;
@@ -1149,6 +1149,7 @@ static void run(unsigned specific_battle)
 	}
 
 	gettimeofday(&start, NULL);
+	// Go through all fights with two attackers (j and k attacking i).
 	for (i = 0; i < NUM_UNITS; ++i) {
 		for (j = 0; j < NUM_UNITS; ++j) {
 			if (i == j)
@@ -1159,11 +1160,14 @@ static void run(unsigned specific_battle)
 				++battle;
 				if (specific_battle && battle != specific_battle)
 					continue;
+				// Fight!
 				u[j]->fight(*u[i]);
 				u[k]->fight(*u[i]);
+				// Results.
 				u[i]->print("Defender", battle);
 				u[j]->print("Attacker #1", battle);
 				u[k]->print("Attacker #2", battle);
+				// Start the next fight fresh.
 				u[i]->reset();
 				u[j]->reset();
 				u[k]->reset();
@@ -1198,30 +1202,22 @@ static battle_context_unit_stats *parse_unit(char ***argv)
 {
 	// There are four required parameters.
 	int add_to_argv = 4;
-	int damage, num_attacks, hp, max_hp, hit_chance;
-	bool slows, slowed, drains, berserk, swarm, firststrike;
-	damage = atoi((*argv)[1]);
-	num_attacks = atoi((*argv)[2]);
-	hp = max_hp = atoi((*argv)[3]);
-	hit_chance = atoi((*argv)[4]);
-
+	int damage      = atoi((*argv)[1]);
+	int num_attacks = atoi((*argv)[2]);
+	int hitpoints   = atoi((*argv)[3]), max_hp = hitpoints;
+	int hit_chance  = atoi((*argv)[4]);
 
 	// Parse the optional (fifth) parameter.
-	slows = false;
-	slowed = false;
-	drains = false;
-	berserk = false;
-	swarm = false;
-	firststrike = false;
-
+	bool drains = false, slows = false, slowed = false, berserk = false,
+	     firststrike = false, swarm = false;
 	if ((*argv)[5] && atoi((*argv)[5]) == 0) {
 		// Optional parameter is present.
 		++add_to_argv;
-		char *max = strstr((*argv)[5], "maxhp=");
 
+		char *max = strstr((*argv)[5], "maxhp=");
 		if (max) {
 			max_hp = atoi(max + strlen("maxhp="));
-			if (max_hp < hp) {
+			if ( max_hp < hitpoints ) {
 				fprintf(stderr, "maxhp must be at least hitpoints.");
 				exit(1);
 			}
@@ -1254,7 +1250,7 @@ static battle_context_unit_stats *parse_unit(char ***argv)
 	*argv += add_to_argv;
 
 	// Construct the stats and return.
-	return new battle_context_unit_stats(damage, num_attacks, hp, max_hp,
+	return new battle_context_unit_stats(damage, num_attacks, hitpoints, max_hp,
 	                                     hit_chance, drains, slows, slowed,
 	                                     berserk, firststrike, swarm);
 }
@@ -1292,12 +1288,12 @@ int main(int argc, char *argv[])
 	for (i = 0; att[i]; ++i)
 		att[i]->print("Attacker", 0);
 
-	delete def;
-	delete def_stats;
 	for (i = 0; att[i]; ++i) {
 		delete att[i];
 		delete att_stats[i];
 	}
+	delete def;
+	delete def_stats;
 
 	return 0;
 }
