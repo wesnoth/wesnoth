@@ -1092,7 +1092,10 @@ void play_controller::process_keyup_event(const SDL_Event& event) {
 				                       mouse_handler_.get_path_turns()));
 
 				gui_->highlight_reach(mouse_handler_.current_paths());
+			} else {
+				mouse_handler_.select_hex(mouse_handler_.get_selected_hex(), false, false, false);
 			}
+
 		}
 	} else if (event.key.keysym.sym == SDLK_TAB) {
 		static CKey keys;
