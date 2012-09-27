@@ -62,7 +62,7 @@ static void strike(struct unit *attacker, struct unit *defender)
 		damage = defender->hp;
 	if (attacker->slows && !defender->slowed) {
 		defender->slowed = true;
-		defender->damage /= 2;
+		defender->damage = (defender->damage + 1) / 2;
 	}
 	if (attacker->drains) {
 		attacker->hp += damage/2;
@@ -100,7 +100,7 @@ static unsigned int num_attacks(unsigned base, unsigned max, unsigned hp,
 	if (!swarm)
 		return base;
 	/* Swarm scales num attacks by hp. */
-	return base - (base*(max-hp) / max);
+	return base * hp / max;
 }
 
 /* This gives a max variation of around 1%. */
