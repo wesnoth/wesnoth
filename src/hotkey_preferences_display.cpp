@@ -205,7 +205,7 @@ void show_hotkeys_preferences_dialog(display& disp) {
 	// determine the current scope, but not general
 	int scope;
 	for (scope = 1; scope != hotkey::SCOPE_COUNT; scope++)
-		if (hotkey::is_scope_active((hotkey::scope)scope))
+		if (hotkey::is_scope_active(static_cast<hotkey::scope>(scope)))
 			break;
 
 	// The restorer will change the scope back to where we came from
