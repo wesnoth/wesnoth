@@ -297,7 +297,7 @@ static void compare_results(const double res[], const struct unit *u,
 	/* We *must* have result for defender and attacker 1. */
 	if (touched == -1)
 		assert(strcmp(label, "Attacker #2") == 0);
-	else if (abs((val - (1.0 - touched))*100) > 1.0)
+	else if ( abs(val - (1.0 - touched)) > 0.01 )
 		printf("Warning: expected %f untouched, but got %f (battle %u %s).\n",
 		       1.0 - touched, val, battle, label);
 
@@ -381,10 +381,8 @@ static void check(const char *filename)
 				attacker_res[1] = k_result;
 				attackers[0] = &u[j];
 				attackers[1] = &u[k];
-				calculate_attack(&u[i], i_result, &i_touched,
-						 touched,
-						 attackers, attacker_res, 2,
-						 10000);
+				calculate_attack(&u[i], i_result, &i_touched, touched,
+						 attackers, attacker_res, 2, 20000);
 				battle++;
 				check_sum(i_result, u[i].max_hp);
 				check_sum(j_result, u[j].max_hp);
