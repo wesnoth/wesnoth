@@ -177,7 +177,7 @@ static void calculate_attack(const struct unit *defender,
 
 static struct unit *parse_unit(char ***argv)
 {
-	struct unit *u = malloc(sizeof(*u));
+	struct unit *u = (unit *)malloc(sizeof(*u));
 
 	u->damage = atoi((*argv)[1]);
 	u->num_attacks = atoi((*argv)[2]);
@@ -288,7 +288,7 @@ static void compare_results(const double res[], const struct unit *u,
 
 	if (strncmp(line, cmp, strlen(cmp)) != 0)
 		barf("Battle %u is different: '%.*s' should be '%s'",
-		     battle, strlen(cmp), line, cmp);
+		     battle, (int)strlen(cmp), line, cmp);
 
 	if (fscanf(f, " %lf", &val) != 1)
 		barf("Malformed untouched: %s battle %u", 
@@ -421,10 +421,10 @@ int main(int argc, char *argv[])
 		     argv[0], argv[0]);
 
 	def = parse_unit(&argv);
-	res_def = calloc(sizeof(double), def->max_hp+1);
+	res_def = (double *)calloc(sizeof(double), def->max_hp+1);
 	for (i = 0; argv[1]; i++) {
 		attacker[i] = parse_unit(&argv);
-		res_att[i] = calloc(sizeof(double), attacker[i]->max_hp+1);
+		res_att[i] = (double *)calloc(sizeof(double), attacker[i]->max_hp+1);
 	}
 	attacker[i] = NULL;
 
