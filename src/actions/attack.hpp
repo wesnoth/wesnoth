@@ -104,9 +104,6 @@ struct battle_context_unit_stats
 			hp = max_hp; // Keeps the prob_matrix from going out of bounds.
 	}
 #endif
-
-	/** Dumps the statistics of a unit on stdout. Remove it eventually. */
-	void dump() const;
 };
 
 /** Computes the statistics of a battle between an attacker and a defender unit. */

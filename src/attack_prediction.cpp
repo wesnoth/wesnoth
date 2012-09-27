@@ -59,6 +59,40 @@ namespace game_config {
 #define debug(x)
 #endif
 
+#ifdef ATTACK_PREDICTION_DEBUG
+namespace {
+	/** Dumps the statistics of a unit on stdout. Remove it eventually. */
+	// Moved from attack/attack.cpp
+	void dump(const battle_context_unit_stats & stats)
+	{
+		printf("==================================\n");
+		printf("is_attacker:    %d\n", static_cast<int>(stats.is_attacker));
+		printf("is_poisoned:    %d\n", static_cast<int>(stats.is_poisoned));
+		printf("is_slowed:      %d\n", static_cast<int>(stats.is_slowed));
+		printf("slows:          %d\n", static_cast<int>(stats.slows));
+		printf("drains:         %d\n", static_cast<int>(stats.drains));
+		printf("petrifies:      %d\n", static_cast<int>(stats.petrifies));
+		printf("poisons:        %d\n", static_cast<int>(stats.poisons));
+		printf("backstab_pos:   %d\n", static_cast<int>(stats.backstab_pos));
+		printf("swarm:          %d\n", static_cast<int>(stats.swarm));
+		printf("rounds:         %u\n", stats.rounds);
+		printf("firststrike:    %d\n", static_cast<int>(stats.firststrike));
+		printf("\n");
+		printf("hp:             %u\n", stats.hp);
+		printf("max_hp:         %u\n", stats.max_hp);
+		printf("chance_to_hit:  %u\n", stats.chance_to_hit);
+		printf("damage:         %d\n", stats.damage);
+		printf("slow_damage:    %d\n", stats.slow_damage);
+		printf("drain_percent:  %d\n", stats.drain_percent);
+		printf("drain_constant: %d\n", stats.drain_constant);
+		printf("num_blows:      %u\n", stats.num_blows);
+		printf("swarm_min:      %u\n", stats.swarm_min);
+		printf("swarm_max:      %u\n", stats.swarm_max);
+		printf("\n");
+	}
+}
+#endif
+
 namespace
 {
 /** A matrix of A's hitpoints vs B's hitpoints. */
@@ -937,9 +971,9 @@ void combatant::fight(combatant &opp, bool levelup_considered)
 
 #ifdef ATTACK_PREDICTION_DEBUG
 	printf("A:\n");
-	u_.dump();
+	dump(u_);
 	printf("B:\n");
-	opp.u_.dump();
+	dump(opp.u_);
 #endif
 
 	// If we've fought before and we have swarm, we must adjust cth array.
@@ -1053,36 +1087,6 @@ double combatant::average_hp(unsigned int healing) const
       (result)->tv_usec += 1000000;					      \
     }									      \
   } while (0)
-
-
-// Copied from attack/attack.cpp
-void battle_context_unit_stats::dump() const
-{
-	printf("==================================\n");
-	printf("is_attacker:	%d\n", static_cast<int>(is_attacker));
-	printf("is_poisoned:	%d\n", static_cast<int>(is_poisoned));
-	printf("is_slowed:	%d\n", static_cast<int>(is_slowed));
-	printf("slows:		%d\n", static_cast<int>(slows));
-	printf("drains:		%d\n", static_cast<int>(drains));
-	printf("petrifies:	%d\n", static_cast<int>(petrifies));
-	printf("poisons:	%d\n", static_cast<int>(poisons));
-	printf("backstab_pos:	%d\n", static_cast<int>(backstab_pos));
-	printf("swarm:		%d\n", static_cast<int>(swarm));
-	printf("rounds:	%d\n", static_cast<int>(rounds));
-	printf("firststrike:	%d\n", static_cast<int>(firststrike));
-	printf("\n");
-	printf("hp:		%u\n", hp);
-	printf("max_hp:		%u\n", max_hp);
-	printf("chance_to_hit:	%u\n", chance_to_hit);
-	printf("damage:		%d\n", damage);
-	printf("slow_damage:	%d\n", slow_damage);
-	printf("drain_percent:	%d\n", drain_percent);
-	printf("drain_constant:	%d\n", drain_constant);
-	printf("num_blows:	%u\n", num_blows);
-	printf("swarm_min:	%u\n", swarm_min);
-	printf("swarm_max:	%u\n", swarm_max);
-	printf("\n");
-}
 
 
 #ifdef HUMAN_READABLE

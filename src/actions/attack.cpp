@@ -207,34 +207,6 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u,
 	}
 }
 
-void battle_context_unit_stats::dump() const
-{
-	printf("==================================\n");
-	printf("is_attacker:	%d\n", static_cast<int>(is_attacker));
-	printf("is_poisoned:	%d\n", static_cast<int>(is_poisoned));
-	printf("is_slowed:	%d\n", static_cast<int>(is_slowed));
-	printf("slows:		%d\n", static_cast<int>(slows));
-	printf("drains:		%d\n", static_cast<int>(drains));
-	printf("petrifies:	%d\n", static_cast<int>(petrifies));
-	printf("poisons:	%d\n", static_cast<int>(poisons));
-	printf("backstab_pos:	%d\n", static_cast<int>(backstab_pos));
-	printf("swarm:		%d\n", static_cast<int>(swarm));
-	printf("rounds:	%d\n", static_cast<int>(rounds));
-	printf("firststrike:	%d\n", static_cast<int>(firststrike));
-	printf("\n");
-	printf("hp:		%u\n", hp);
-	printf("max_hp:		%u\n", max_hp);
-	printf("chance_to_hit:	%u\n", chance_to_hit);
-	printf("damage:		%d\n", damage);
-	printf("slow_damage:	%d\n", slow_damage);
-	printf("drain_percent:	%d\n", drain_percent);
-	printf("drain_constant:	%d\n", drain_constant);
-	printf("num_blows:	%u\n", num_blows);
-	printf("swarm_min:	%u\n", swarm_min);
-	printf("swarm_max:	%u\n", swarm_max);
-	printf("\n");
-}
-
 
 		/* battle_context */
 
