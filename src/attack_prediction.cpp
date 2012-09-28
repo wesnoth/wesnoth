@@ -795,51 +795,61 @@ static void conditional_levelup(std::vector<double> &hp_dist, double kill_prob)
 void combatant::no_death_fight(combatant &opp, bool levelup_considered,
                                double & self_not_hit, double & opp_not_hit)
 {
+	// If opponent was killed in an earlier fight, they don't get to attack.
+	double opp_alive_prob = opp.summary[0].empty() ? 1.0 : 1.0 - opp.summary[0][0];
 	if (summary[0].empty()) {
 		// Starts with a known HP, so Pascal's triangle.
 		summary[0] = std::vector<double>(u_.max_hp+1);
 		summary[0][u_.hp] = 1.0;
 		for (unsigned int i = 0; i < opp.hit_chances_.size(); ++i) {
+			const double hit_chance = opp.hit_chances_[i] * opp_alive_prob;
 			for (int j = i; j >= 0; j--) {
-				double move = summary[0][u_.hp - j * opp.u_.damage] * opp.hit_chances_[i];
+				double move = summary[0][u_.hp - j * opp.u_.damage] * hit_chance;
 				summary[0][u_.hp - j * opp.u_.damage] -= move;
 				summary[0][u_.hp - (j+1) * opp.u_.damage] += move;
 			}
-			self_not_hit *= 1.0 - opp.hit_chances_[i];
+			self_not_hit *= 1.0 - hit_chance;
 		}
 	} else {
 		// HP could be spread anywhere, iterate through whole thing.
 		for (unsigned int i = 0; i < opp.hit_chances_.size(); ++i) {
+			const double hit_chance = opp.hit_chances_[i] * opp_alive_prob;
 			for (unsigned int j = opp.u_.damage; j <= u_.hp; ++j) {
-				double move = summary[0][j] * opp.hit_chances_[i];
+				double move = summary[0][j] * hit_chance;
 				summary[0][j] -= move;
 				summary[0][j - opp.u_.damage] += move;
 			}
-			self_not_hit *= 1.0 - opp.hit_chances_[i];
+			self_not_hit *= 1.0 - hit_chance;
 		}
 	}
 
+	// If we were killed in an earlier fight, we don't get to attack.
+	// (Most likely case: we are a first striking defender subject to a series
+	// of attacks.)
+	double alive_prob = summary[0].empty() ? 1.0 : 1.0 - summary[0][0];
 	if (opp.summary[0].empty()) {
 		// Starts with a known HP, so Pascal's triangle.
 		opp.summary[0] = std::vector<double>(opp.u_.max_hp+1);
 		opp.summary[0][opp.u_.hp] = 1.0;
 		for (unsigned int i = 0; i < hit_chances_.size(); ++i) {
+			const double hit_chance = hit_chances_[i] * alive_prob;
 			for (int j = i; j >= 0; j--) {
-				double move = opp.summary[0][opp.u_.hp - j * u_.damage] * hit_chances_[i];
+				double move = opp.summary[0][opp.u_.hp - j * u_.damage] * hit_chance;
 				opp.summary[0][opp.u_.hp - j * u_.damage] -= move;
 				opp.summary[0][opp.u_.hp - (j+1) * u_.damage] += move;
 			}
-			opp_not_hit *= 1.0 - hit_chances_[i];
+			opp_not_hit *= 1.0 - hit_chance;
 		}
 	} else {
 		// HP could be spread anywhere, iterate through whole thing.
 		for (unsigned int i = 0; i < hit_chances_.size(); ++i) {
+			const double hit_chance = hit_chances_[i] * alive_prob;
 			for (unsigned int j = u_.damage; j <= opp.u_.hp; ++j) {
-				double move = opp.summary[0][j] * hit_chances_[i];
+				double move = opp.summary[0][j] * hit_chance;
 				opp.summary[0][j] -= move;
 				opp.summary[0][j - u_.damage] += move;
 			}
-			opp_not_hit *= 1.0 - hit_chances_[i];
+			opp_not_hit *= 1.0 - hit_chance;
 		}
 	}
 
@@ -858,47 +868,55 @@ void combatant::no_death_fight(combatant &opp, bool levelup_considered,
 void combatant::one_strike_fight(combatant &opp, bool levelup_considered,
                                  double & self_not_hit, double & opp_not_hit)
 {
+	// If we were killed in an earlier fight, we don't get to attack.
+	// (Most likely case: we are a first striking defender subject to a series
+	// of attacks.)
+	double alive_prob = summary[0].empty() ? 1.0 : 1.0 - summary[0][0];
 	if (opp.summary[0].empty()) {
 		opp.summary[0] = std::vector<double>(opp.u_.max_hp+1);
 		if (hit_chances_.size() == 1) {
-			opp.summary[0][opp.u_.hp] = 1.0 - hit_chances_[0];
-			opp.summary[0][std::max<int>(opp.u_.hp - u_.damage, 0)] = hit_chances_[0];
-			opp_not_hit *= 1.0 - hit_chances_[0];
+			const double hit_chance = hit_chances_[0] * alive_prob;
+			opp.summary[0][opp.u_.hp] = 1.0 - hit_chance;
+			opp.summary[0][std::max<int>(opp.u_.hp - u_.damage, 0)] = hit_chance;
+			opp_not_hit *= 1.0 - hit_chance;
 		} else {
 			assert(hit_chances_.empty());
 			opp.summary[0][opp.u_.hp] = 1.0;
 		}
 	} else {
 		if (hit_chances_.size() == 1) {
+			const double hit_chance = hit_chances_[0] * alive_prob;
 			for (unsigned int i = 1; i < opp.summary[0].size(); ++i) {
-				double move = opp.summary[0][i] * hit_chances_[0];
+				double move = opp.summary[0][i] * hit_chance;
 				opp.summary[0][i] -= move;
 				opp.summary[0][std::max<int>(i - u_.damage, 0)] += move;
 			}
-			opp_not_hit *= 1.0 - hit_chances_[0];
+			opp_not_hit *= 1.0 - hit_chance;
 		}
 	}
 
 	// If we killed opponent, it won't attack us.
-	double opp_alive_prob = 1.0 - opp.summary[0][0];
+	double opp_alive_prob = 1.0 - opp.summary[0][0] / alive_prob;
 	if (summary[0].empty()) {
 		summary[0] = std::vector<double>(u_.max_hp+1);
 		if (opp.hit_chances_.size() == 1) {
-			summary[0][u_.hp] = 1.0 - opp.hit_chances_[0] * opp_alive_prob;
-			summary[0][std::max<int>(u_.hp - opp.u_.damage, 0)] = opp.hit_chances_[0] * opp_alive_prob;
-			self_not_hit *= 1.0 - opp.hit_chances_[0] * opp_alive_prob;
+			const double hit_chance = opp.hit_chances_[0] * opp_alive_prob;
+			summary[0][u_.hp] = 1.0 - hit_chance;
+			summary[0][std::max<int>(u_.hp - opp.u_.damage, 0)] = hit_chance;
+			self_not_hit *= 1.0 - hit_chance;
 		} else {
 			assert(opp.hit_chances_.empty());
 			summary[0][u_.hp] = 1.0;
 		}
 	} else {
 		if (opp.hit_chances_.size() == 1) {
+			const double hit_chance = opp.hit_chances_[0] * opp_alive_prob;
 			for (unsigned int i = 1; i < summary[0].size(); ++i) {
-				double move = summary[0][i] * opp.hit_chances_[0] * opp_alive_prob;
+				double move = summary[0][i] * hit_chance;
 				summary[0][i] -= move;
 				summary[0][std::max<int>(i - opp.u_.damage, 0)] += move;
 			}
-			self_not_hit *= 1.0 - opp.hit_chances_[0] * opp_alive_prob;
+			self_not_hit *= 1.0 - hit_chance;
 		}
 	}
 
