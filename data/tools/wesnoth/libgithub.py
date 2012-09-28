@@ -456,7 +456,8 @@ class GitHub(object):
         requestdata = { "name" : "cia", "events" : ["push"], "active" : True,
             "config" : {
                 "project" : "wescamp",
-                "module" : reponame
+                "module" : reponame,
+                "address" : "http://ai0867.net:8000/RPC2"
             }
         }
         self._github_api_request(url, requestdata, authenticate=True)
