@@ -256,29 +256,6 @@ private:
 	bool escape_pressed_;
 };
 
-void repopulate_hotkeys_menu(std::vector<std::string>& menu_items,
-		std::vector<std::string>& item_commands)
-{
-	menu_items.clear();
-	item_commands.clear();
-
-	const hotkey::hotkey_command* list = hotkey::get_hotkey_commands();
-
-	for (size_t i = 0; list[i].id != hotkey::HOTKEY_NULL; ++i) {
-
-		const hotkey::scope& scope = list[i].scope;
-		if (list[i].hidden || !(hotkey::is_scope_active(scope)) )
-				continue;
-
-		const std::string& description = hotkey::get_description(list[i].command);
-		const std::string& name = hotkey::get_names(list[i].id);
-
-		menu_items.push_back((formatter() << description << COLUMN_SEPARATOR << font::NULL_MARKUP << name).str());
-		item_commands.push_back(list[i].command);
-	}
-	menu_items.push_back((formatter() << HEADING_PREFIX << _("Action") << COLUMN_SEPARATOR << _("Binding")).str());
-}
-
 } // end anonymous namespace
 
 
