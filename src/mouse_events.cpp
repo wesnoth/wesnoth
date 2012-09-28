@@ -723,6 +723,9 @@ void mouse_handler::deselect_hex() {
  */
 bool mouse_handler::move_unit_along_current_route()
 {
+	// Copy the current route to ensure it remains valid throughout the animation.
+	const std::vector<map_location> steps = current_route_.steps;
+
 	// do not show footsteps during movement
 	gui().set_route(NULL);
 	gui().unhighlight_reach();
@@ -732,12 +735,12 @@ bool mouse_handler::move_unit_along_current_route()
 	gui().select_hex(map_location());
 
 	bool interrupted = false;
-	if ( current_route_.steps.size() > 1 )
+	if ( steps.size() > 1 )
 	{
-		size_t num_moves = move_unit_along_route(current_route_, interrupted);
+		size_t num_moves = move_unit_along_route(steps, interrupted);
 
-		interrupted =  interrupted || num_moves + 1 < current_route_.steps.size();
-		next_unit_ = current_route_.steps[num_moves];
+		interrupted =  interrupted || num_moves + 1 < steps.size();
+		next_unit_ = steps[num_moves];
 	}
 
 	// invalid after the move
@@ -752,18 +755,21 @@ bool mouse_handler::move_unit_along_current_route()
  * This is specifically for movement at the time it is initiated by a player,
  * whether via a mouse click or executing whiteboard actions. Continued moves
  * (including goto execution) can bypass this and call ::move_unit() directly.
+ * This function call may include time for an animation, so make sure the
+ * provided route will remain unchanged (the caller should probably make a local
+ * copy).
  *
- * @param[in]   route           The route to be traveled. The unit to be moved is at the beginning of this route.
+ * @param[in]   steps           The route to be traveled. The unit to be moved is at the beginning of this route.
  * @param[out]  interrupted     This is set to true if information was uncovered that warrants interrupting a chain of actions (and set to false otherwise).
  *
  * @returns The number of hexes entered. This can safely be used as an index
- *          into route.steps to get the location where movement ended, provided
- *          route.steps is not empty (the return value is guaranteed to be less
- *          than route.steps.size() ).
+ *          into steps to get the location where movement ended, provided
+ *          steps is not empty (the return value is guaranteed to be less
+ *          than steps.size() ).
  */
-size_t mouse_handler::move_unit_along_route(pathfind::marked_route const& route, bool & interrupted)
+size_t mouse_handler::move_unit_along_route(const std::vector<map_location> & steps,
+                                            bool & interrupted)
 {
-	const std::vector<map_location> steps = route.steps;
 	if(steps.empty()) {
 		interrupted = false;
 		return 0;

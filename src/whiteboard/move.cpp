@@ -207,6 +207,9 @@ void move::execute(bool& success, bool& complete)
 
 	LOG_WB << "Executing: " << shared_from_this() << "\n";
 
+	// Copy the current route to ensure it remains valid throughout the animation.
+	const std::vector<map_location> steps = route_->steps;
+
 	set_arrow_brightness(ARROW_BRIGHTNESS_HIGHLIGHTED);
 	hide_fake_unit();
 
@@ -214,12 +217,12 @@ void move::execute(bool& success, bool& complete)
 	bool interrupted;
 	try {
 		events::mouse_handler& mouse_handler = resources::controller->get_mouse_handler_base();
-		num_steps = mouse_handler.move_unit_along_route(*route_, interrupted);
+		num_steps = mouse_handler.move_unit_along_route(steps, interrupted);
 	} catch (end_turn_exception&) {
 		set_arrow_brightness(ARROW_BRIGHTNESS_STANDARD);
 		throw; // we rely on the caller to delete this action
 	}
-	const map_location final_location = route_->steps[num_steps];
+	const map_location & final_location = steps[num_steps];
 	unit_map::const_iterator unit_it = resources::units->find(final_location);
 
 	if ( num_steps == 0 )
@@ -236,7 +239,7 @@ void move::execute(bool& success, bool& complete)
 	}
 	else
 	{
-		complete = num_steps + 1 == route_->steps.size();
+		complete = num_steps + 1 == steps.size();
 		success = complete && !interrupted;
 
 		if ( !success )
@@ -251,9 +254,9 @@ void move::execute(bool& success, bool& complete)
 			else
 			{
 				LOG_WB << "Move finished at (" << final_location << ") instead of at (" << get_dest_hex() << "). Setting new path.\n";
-				route_->steps = std::vector<map_location>(route_->steps.begin() + num_steps, route_->steps.end());
+				route_->steps = std::vector<map_location>(steps.begin() + num_steps, steps.end());
 				//FIXME: probably better to use the new calculate_new_route() instead of the above:
-				//calculate_new_route(final_location, route_->steps.back());
+				//calculate_new_route(final_location, steps.back());
 				// Of course, "better" would need to be verified.
 				arrow_->set_path(route_->steps);
 			}
