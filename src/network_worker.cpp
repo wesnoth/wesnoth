@@ -33,6 +33,8 @@
 #include "serialization/parser.hpp"
 #include "wesconfig.h"
 
+#include <boost/iostreams/filter/gzip.hpp>
+
 #include <cerrno>
 #include <deque>
 #include <sstream>
@@ -763,8 +765,9 @@ static int process_queue(void* shard_num)
 			std::istringstream stream(buffer);
 			try {
 				read_gz(received_data->config_buf, stream);
-			} catch(config::error &e)
-			{
+			} catch(boost::iostreams::gzip_error&) {
+				received_data->config_error = "Malformed compressed data";
+			} catch(config::error &e) {
 				received_data->config_error = e.message;
 			}
 		}
