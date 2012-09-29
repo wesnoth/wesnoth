@@ -35,6 +35,43 @@ static lg::log_domain log_display("display");
 namespace image {
 
 
+/** Adds @a mod to the queue (unless mod is NULL). */
+void modification_queue::push(modification * mod)
+{
+	// Null pointers do not get stored. (Shouldn't happen, but just in case.)
+	if ( mod != NULL )
+		priorities_[mod->priority()].push_back(mod);
+}
+
+/** Removes the top element from the queue */
+void modification_queue::pop()
+{
+	map_type::iterator top_pair = priorities_.begin();
+	std::vector<modification *> & top_vector = top_pair->second;
+
+	// Erase the top element.
+	top_vector.erase(top_vector.begin());
+	if ( top_vector.empty() )
+		// We need to keep the map clean.
+		priorities_.erase(top_pair);
+}
+
+/** Returns the number of elements in the queue. */
+size_t modification_queue::size() const
+{
+	size_t count = 0;
+	BOOST_FOREACH ( const map_type::value_type & pair, priorities_ )
+		count += pair.second.size();
+	return count;
+}
+
+/** Returns the top element in the queue . */
+modification * modification_queue::top() const
+{
+	return priorities_.begin()->second.front();
+}
+
+
 namespace {
 
 /// A function used to parse modification arguments
@@ -111,13 +148,6 @@ modification_queue modification::decode(const std::string& encoded_mods)
 	}
 
 	return mods;
-}
-
-/// Compares two modification pointers, providing descending priority order
-bool mod_ptr_comparator_::operator()(const modification* a,
-				     const modification* b) const
-{
-	return a->priority() < b->priority();
 }
 
 surface rc_modification::operator()(const surface& src) const

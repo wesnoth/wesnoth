@@ -24,11 +24,32 @@
 namespace image {
 
 class modification;
-struct mod_ptr_comparator_;
-/// A priority queue used to enforce using the rc modifications first
-typedef std::priority_queue<modification*,
-			    std::vector<modification*>,
-			    mod_ptr_comparator_> modification_queue;
+
+
+/// A modified priority queue used to order image modifications.
+/// The priorities for this queue are to order modifications by priority(),
+/// then by the order they are added to the queue.
+class modification_queue {
+	// Invariant for this class:
+	// At the beginning and end of each member function call, there
+	// are no empty vectors in priorities_.
+public:
+	modification_queue() {}
+	~modification_queue() {}
+
+	bool empty() const  { return priorities_.empty(); }
+	void push(modification * mod);
+	void pop();
+	size_t size() const;
+	modification * top() const;
+
+private: // data
+	/// Map from a mod's priority() to the mods having that priority.
+	typedef std::map<int, std::vector<modification *>, std::greater<int> > map_type;
+	/// Map from a mod's priority() to the mods having that priority.
+	map_type priorities_;
+};
+
 
 /// Base abstract class for an image-path modification
 class modification
@@ -79,13 +100,6 @@ public:
 
 	/// Specifies the priority of the modification
 	virtual int priority() const { return 0; }
-};
-
-/// A functor for comparing modification pointers
-struct mod_ptr_comparator_
-{
-	/// Provides a descending priority ordering
-	bool operator()(const modification* a, const modification* b) const;
 };
 
 /**

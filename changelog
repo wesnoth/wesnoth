@@ -44,6 +44,7 @@ Version 1.11.0+svn:
    * Added [terrain_type] max_light= and min_light=.
    * Standardize weapon filters, supporting special=, [and], [or], and [not]
      wherever weapons can be filtered.
+   * Image path functions again evaluated left-to-right. Fixes bug #20196.
  * Miscellaneous and bug fixes:
    * Fix invalid memory access crash resulting from deleting all saved games
      in the Load Game dialog
