@@ -20,6 +20,7 @@ $langs['en@shaw'] = 'English (Shavian chars)';
 $langs['eo'] = 'Esperanto';
 $langs['et'] = 'Estonian';
 $langs['ga'] = 'Irish';
+$langs['gd'] = 'Scottish Gaelic';
 $langs['gl'] = 'Galician';
 $langs['he'] = 'Hebrew';
 $langs['hr'] = 'Croatian';
