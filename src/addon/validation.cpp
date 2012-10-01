@@ -25,7 +25,7 @@ const unsigned short default_campaignd_port = 15006;
 namespace {
 	const std::string addon_type_strings[] = {
 		"unknown", "campaign", "scenario", "campaign_mp", "scenario_mp",
-		"map_pack", "era", "faction", /* "mod", "gui", */ "media", "other",
+		"map_pack", "era", "faction", "mod_mp", /*"gui", */ "media", "other",
 		""
 	};
 }

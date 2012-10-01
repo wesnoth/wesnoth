@@ -60,6 +60,7 @@ taddon_filter_options::taddon_filter_options()
 	register_bool("show_mp_maps", true, displayed_types_[ADDON_MP_MAPS]);
 	register_bool("show_mp_eras", true, displayed_types_[ADDON_MP_ERA]);
 	register_bool("show_mp_factions", true, displayed_types_[ADDON_MP_FACTION]);
+	register_bool("show_mp_mods", true, displayed_types_[ADDON_MP_MOD]);
 	register_bool("show_media", true, displayed_types_[ADDON_MEDIA]);
 	// FIXME: (also in WML) should this and Unknown be a single option in the UI?
 	register_bool("show_other", true, displayed_types_[ADDON_OTHER]);
