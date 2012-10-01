@@ -644,7 +644,7 @@ bool is_observer()
 	}
 
 	BOOST_FOREACH(const team &t, *teams) {
-		if (t.is_human())
+		if (t.is_human() || t.is_human_ai())
 			return false;
 	}
 

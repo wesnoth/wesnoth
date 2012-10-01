@@ -174,10 +174,6 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				leader->rename(player);
 
 			if (controller == "human" && !tm.is_human()) {
-				if (!(*resources::teams)[resources::screen->playing_team()].is_human())
-				{
-					resources::screen->set_team(index);
-				}
 				tm.make_human();
 			} else if (controller == "human_ai" && !tm.is_human_ai()) {
 				tm.make_human_ai();
@@ -191,6 +187,16 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			else
 			{
 				restart = false;
+			}
+
+			if (is_observer() || (*resources::teams)[resources::screen->playing_team()].is_human()) {
+				resources::screen->set_team(resources::screen->playing_team());
+				resources::screen->redraw_everything();
+				resources::screen->recalculate_minimap();
+			} else if (controller == "human") {
+				resources::screen->set_team(index);
+				resources::screen->redraw_everything();
+				resources::screen->recalculate_minimap();
 			}
 
 			resources::controller->maybe_do_init_side(index);
@@ -288,6 +294,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				tm.make_human();
 				tm.set_current_player("human" + side_drop);
 				if (have_leader) leader->rename("human" + side_drop);
+				change_controller(side_drop, "human");
 
 				resources::controller->maybe_do_init_side(side_index);
 
