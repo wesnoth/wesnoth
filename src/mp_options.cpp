@@ -471,7 +471,7 @@ config::attribute_value manager::get_stored_value(const std::string& id) const
 {
 	const config& valcfg = get_value_cfg_or_empty(id);
 
-	if (!valcfg.empty()) {
+	if (!valcfg["value"].empty()) {
 		// There's a saved value for this option
 		return valcfg["value"];
 	}
