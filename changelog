@@ -11,7 +11,8 @@ Version 1.11.0+svn:
        dwarvish borders with enter_hex events
    * Under the Burning Suns:
      * Keep a spawned unit from disappearing on reload in scenario 6b
-     * Stunned units are now marked with a status icon.
+     * Stunned units are now marked with a status icon
+     * Fix bug #19303: dwarf sometimes spawns in cave wall
  * Graphics:
    * Updated brown lich alternative portrait
  * Language and i18n:
@@ -51,6 +52,7 @@ Version 1.11.0+svn:
      in the Load Game dialog
    * Redesigned the hotkey preferences dialog
    * Removed two Khalifate leftovers (Hakim portrait and KHALIFATE_NAMES macro)
+   * Ambush now works for desert palms and dead great trees (bug #20207)
    * Hex field size and default terrain are wml configurable
    * Fix OOS when dismissing a recall in a multiplayer campaign (bug #19924).
 
