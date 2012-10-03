@@ -31,7 +31,10 @@ $ignore_langs = "sr@ijekavianlatin sr@latin sr@ijekavian";
 //trunk
 $packarray = array();
 $dir = opendir($extratbasedir); //trunk
-while (false !== ($file = readdir($dir))) { 
+// PHP manual says readdir returns false on failure and that false-evaluating non-booleans may be returned on successful execution.
+// Testing shows that readdir may return NULL on failure, causing infinite loops.
+// For our purposes, an empty string is equivalent to a failure anyway.
+while (false != ($file = readdir($dir))) {
 	if($file[0] != '.'){
 		$packarray[] = $file;
 	}
@@ -43,7 +46,10 @@ $extratpackages = implode(" ", $packarray);
 //branch
 $packarray = array();
 $dir = opendir($extrabbasedir); //branch
-while (false !== ($file = readdir($dir))) { 
+// PHP manual says readdir returns false on failure and that false-evaluating non-booleans may be returned on successful execution.
+// Testing shows that readdir may return NULL on failure, causing infinite loops.
+// For our purposes, an empty string is equivalent to a failure anyway.
+while (false != ($file = readdir($dir))) { 
 	if($file[0] != '.'){
 		$packarray[] = $file;
 	}
