@@ -15,10 +15,12 @@ svn -q up
 
 #update the wescamp checkout
 cd $SVNCHECKOUTPATH/trunk/
-echo "starting wescamp.py at `date`" >> $HOME/g.w.o-updates.log
+echo "starting wescamp.py for 1.10 at `date`" >> $HOME/g.w.o-updates.log
 ./data/tools/wesnoth/wescamp.py -scampaigns.wesnoth.org -p15002 -w$SVNCHECKOUTPATH/wescamp-i18n/branch-1.10 -C >> $HOME/g.w.o-updates.log
-echo "wescamp.py exited with exit code $? at `date`" >> $HOME/g.w.o-updates.log
-#TODO: add another line for 1.12 when the add-on server is up
+echo "wescamp.py 1.10 exited with exit code $? at `date`" >> $HOME/g.w.o-updates.log
+echo "starting wescamp.py for 1.12 at `date`" >> $HOME/g.w.o-updates.log
+./data/tools/wesnoth/wescamp.py -scampaigns.wesnoth.org -p15006 -w$SVNCHECKOUTPATH/wescamp-i18n/branch-1.12 -C >> $HOME/g.w.o-updates.log
+echo "wescamp.py 1.12 exited with exit code $? at `date`" >> $HOME/g.w.o-updates.log
 
 #update the website checkout
 cd $SVNCHECKOUTPATH/website/
