@@ -30,33 +30,35 @@ $ignore_langs = "sr@ijekavianlatin sr@latin sr@ijekavian";
 //get unofficial packages
 //trunk
 $packarray = array();
-$dir = opendir($extratbasedir); //trunk
-// PHP manual says readdir returns false on failure and that false-evaluating non-booleans may be returned on successful execution.
-// Testing shows that readdir may return NULL on failure, causing infinite loops.
-// For our purposes, an empty string is equivalent to a failure anyway.
-while (false != ($file = readdir($dir))) {
-	if($file[0] != '.'){
-		$packarray[] = $file;
-	}
+if ($dir = opendir($extratbasedir)) { //trunk
+    // PHP manual says readdir returns false on failure and that false-evaluating non-booleans may be returned on successful execution.
+    // Testing shows that readdir may return NULL on failure, causing infinite loops.
+    // For our purposes, an empty string is equivalent to a failure anyway.
+    while (false != ($file = readdir($dir))) {
+        if($file[0] != '.'){
+            $packarray[] = $file;
+        }
+    }
+    closedir($dir);
+    sort($packarray);
+    $extratpackages = implode(" ", $packarray);
 }
-closedir($dir);
-sort($packarray);
-$extratpackages = implode(" ", $packarray);
 
 //branch
 $packarray = array();
-$dir = opendir($extrabbasedir); //branch
-// PHP manual says readdir returns false on failure and that false-evaluating non-booleans may be returned on successful execution.
-// Testing shows that readdir may return NULL on failure, causing infinite loops.
-// For our purposes, an empty string is equivalent to a failure anyway.
-while (false != ($file = readdir($dir))) { 
-	if($file[0] != '.'){
-		$packarray[] = $file;
-	}
+if ($dir = opendir($extrabbasedir)) { //branch
+    // PHP manual says readdir returns false on failure and that false-evaluating non-booleans may be returned on successful execution.
+    // Testing shows that readdir may return NULL on failure, causing infinite loops.
+    // For our purposes, an empty string is equivalent to a failure anyway.
+    while (false != ($file = readdir($dir))) { 
+        if($file[0] != '.'){
+            $packarray[] = $file;
+        }
+    }
+    closedir($dir);
+    sort($packarray);
+    $extrabpackages = implode(" ", $packarray);
 }
-closedir($dir);
-sort($packarray);
-$extrabpackages = implode(" ", $packarray);
 
 $ignore_langs = explode(" ", $ignore_langs);
 
