@@ -77,23 +77,23 @@ static void safe_exit(int res) {
 // maybe this should go in a util file somewhere?
 static void gzip_codec(const std::string & input_file, const std::string & output_file, bool encode)
 {
-	try {
-		std::ofstream ofile(output_file.c_str(), std::ios_base::out
-				| std::ios_base::binary);
-		std::ifstream ifile(input_file.c_str(),
-		std::ios_base::in | std::ios_base::binary);
-		boost::iostreams::filtering_streambuf<boost::iostreams::input> in;
-		if(encode)
-			in.push(boost::iostreams::gzip_compressor());
-		else
-			in.push(boost::iostreams::gzip_decompressor());
-		in.push(ifile);
-		boost::iostreams::copy(in, ofile);
-			ifile.close();
-		safe_exit(remove(input_file.c_str()));
-		}  catch(io_exception& e) {
-		std::cerr << "IO error: " << e.what() << "\n";
-	}
+    try {
+        std::ofstream ofile(output_file.c_str(), std::ios_base::out
+                | std::ios_base::binary);
+        std::ifstream ifile(input_file.c_str(),
+                std::ios_base::in | std::ios_base::binary);
+        boost::iostreams::filtering_streambuf<boost::iostreams::input> in;
+        if(encode)
+            in.push(boost::iostreams::gzip_compressor());
+        else
+            in.push(boost::iostreams::gzip_decompressor());
+        in.push(ifile);
+        boost::iostreams::copy(in, ofile);
+        ifile.close();
+        safe_exit(remove(input_file.c_str()));
+    }  catch(io_exception& e) {
+        std::cerr << "IO error: " << e.what() << "\n";
+    }
 }
 
 static void gzip_encode(const std::string & input_file, const std::string & output_file)
