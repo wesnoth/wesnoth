@@ -9,16 +9,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-08-24 21:37+0200\n"
-"PO-Revision-Date: 2012-10-02 23:53+0100\n"
-"Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
+"PO-Revision-Date: 2012-10-03 13:41-0000\n"
+"Last-Translator: GunChleoc <fiosAIGforamnagaidhligDOTnet>\n"
 "Language-Team: Fòram na Gàidhlig http://www.foramnagaidhlig.net\n"
 "Language: gd\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=nplurals=4; plural=(n==1 || n==11) ? 0 : "
-"(n==2 || n==12) ? 1 : (n > 2 && n < 20) ? 2 : 3;\n"
-"X-Generator: Virtaal 0.7.0\n"
+"Plural-Forms: nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : "
+"(n > 2 && n < 20) ? 2 : 3;\n"
+"X-Generator: Poedit 1.5.3\n"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:4
@@ -2987,26 +2987,34 @@ msgstr "Dh'fhàillig an tele-phortachadh! Chan eil an doras a-mach falamh"
 #: src/actions.cpp:2772
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
-msgstr[0] "Aonad càirdeail air fàire"
-msgstr[1] "Aonad càirdeail aig $friends air fàire"
+msgstr[0] "Aonad càirdeil air fàire"
+msgstr[1] "$friends aonad càirdeil air fàire"
+msgstr[2] "$friends aonadan càirdeil air fàire"
+msgstr[3] "$friends aonad càirdeil air fàire"
 
 #: src/actions.cpp:2775
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Aonad nàmhad air faire!"
-msgstr[1] "Aonadan nàmhad aig $enemies air faire!"
+msgstr[1] "$enemies aonad nàmhad air faire!"
+msgstr[2] "$enemies aonadan nàmhad air faire!"
+msgstr[3] "$enemies aonad nàmhad air faire!"
 
 #: src/actions.cpp:2780
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "caraid"
-msgstr[1] "$friends c(h)àirdeil"
+msgstr[1] "$friends chàirdeil"
+msgstr[2] "$friends càirdeil"
+msgstr[3] "$friends càirdeil"
 
 #: src/actions.cpp:2781
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "nàmhaid"
-msgstr[1] "$enemies nàmhad"
+msgstr[1] "$enemies nàmhaid"
+msgstr[2] "$enemies nàimhdean"
+msgstr[3] "$enemies nàmhaid"
 
 #: src/actions.cpp:2782
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
@@ -3061,8 +3069,6 @@ msgid "addon_type^(unknown)"
 msgstr "(neo-aithnichte)"
 
 #: src/addon/manager.cpp:482
-#, fuzzy
-#| msgid "Requesting terms"
 msgid "Requesting terms"
 msgstr "Ag iarraidh teirmichean"
 
@@ -3079,8 +3085,6 @@ msgid "Sending add-on"
 msgstr "A' cur tuilleadan"
 
 #: src/addon/manager.cpp:535 src/addon/manager.cpp:560
-#, fuzzy
-#| msgid "The server responded with an error: \""
 msgid "The server responded with an error: \""
 msgstr "Dh'fhreagair am frithealaiche le mearachd: \""
 
@@ -3094,19 +3098,14 @@ msgid "Requesting the addon to be deleted"
 msgstr "Ag iarraidh sguabadh às dhe tuilleadan"
 
 #: src/addon/manager.cpp:581
-#, fuzzy
-#| msgid "Downloading add-on: $addon_title|..."
 msgid "Downloading add-on: $addon_title|..."
-msgstr "A' lughadh a-nuas tuilleadan: $addon_title|..."
+msgstr "A' luchdadh a-nuas tuilleadan: $addon_title|..."
 
 #: src/addon/manager.cpp:587 src/addon/manager.cpp:1136
 msgid "Downloading..."
 msgstr "Ga luchdadh a-nuas..."
 
 #: src/addon/manager.cpp:599
-#, fuzzy
-#| msgid ""
-#| "The add-on has an invalid file or directory name and cannot be installed."
 msgid ""
 "The add-on has an invalid file or directory name and cannot be installed."
 msgstr ""
@@ -3158,12 +3157,12 @@ msgid_plural ""
 "them?"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: src/addon/manager.cpp:829
-#, fuzzy
-#| msgid "Installation failed"
 msgid "Installation of a dependency failed"
-msgstr "Dh'fhàillig an stàladh"
+msgstr ""
 
 #: src/addon/manager.cpp:831
 msgid ""
@@ -3172,30 +3171,26 @@ msgid ""
 msgstr ""
 
 #: src/addon/manager.cpp:845
-#, fuzzy
-#| msgid "Installation failed"
 msgid "Installation failed"
 msgstr "Dh'fhàillig an stàladh"
 
 #: src/addon/manager.cpp:847 src/addon/manager.cpp:1075
-#, fuzzy
-#| msgid ""
-#| "The following add-on could not be downloaded or updated successfully:"
-#| msgid_plural ""
-#| "The following add-ons could not be downloaded or updated successfully:"
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or updated successfully:"
 msgstr[0] ""
 "Cha do ghabh an tuilleadan seo luchdadh a-nuas no ùrachadh gu soirbheachail:"
 msgstr[1] ""
+"Cha do ghabh an dà thuilleadan seo luchdadh a-nuas no ùrachadh gu "
+"soirbheachail:"
+msgstr[2] ""
+"Cha do ghabh na tuilleadain seo luchdadh a-nuas no ùrachadh gu soirbheachail:"
+msgstr[3] ""
 "Cha do ghabh na tuilleadain seo luchdadh a-nuas no ùrachadh gu soirbheachail:"
 
 #: src/addon/manager.cpp:908
-#, fuzzy
-#| msgid "Update add-ons"
 msgid "Outdated add-ons"
-msgstr "Ùraich tuilleadain"
+msgstr ""
 
 #: src/addon/manager.cpp:910
 msgid ""
@@ -3206,6 +3201,8 @@ msgid_plural ""
 "not be offered for updating."
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: src/addon/manager.cpp:922
 msgid "No add-ons to update"
@@ -3216,14 +3213,10 @@ msgid "Could not find any updated add-ons on this server."
 msgstr "Cha deach tuilleadan air ùrachadh a lorg air an fhrithealaiche seo."
 
 #: src/addon/manager.cpp:935
-#, fuzzy
-#| msgid "New version"
 msgid "New version"
 msgstr "Tionndadh ùr"
 
 #: src/addon/manager.cpp:935
-#, fuzzy
-#| msgid "Old version"
 msgid "Old version"
 msgstr "Seann tionndadh"
 
@@ -3236,17 +3229,13 @@ msgid "Select an add-on to update:"
 msgstr "Tagh tuilleadan airson ùrachadh:"
 
 #: src/addon/manager.cpp:1002
-#, fuzzy
-#| msgid "Update all"
 msgid "Update all"
 msgstr "Ùraich na h-uile"
 
 #: src/addon/manager.cpp:1040 src/addon/manager.cpp:1057
 #: src/addon/manager.cpp:1347
-#, fuzzy
-#| msgid "Installation failed"
 msgid "Installation of some dependency failed"
-msgstr "Dh'fhàillig an stàladh"
+msgstr ""
 
 #: src/addon/manager.cpp:1042 src/addon/manager.cpp:1059
 #: src/addon/manager.cpp:1349
@@ -3256,8 +3245,6 @@ msgid ""
 msgstr ""
 
 #: src/addon/manager.cpp:1073
-#, fuzzy
-#| msgid "Update failed"
 msgid "Update failed"
 msgstr "Dh'fhàillig an t-ùrachadh"
 
@@ -3294,14 +3281,10 @@ msgid "Connecting..."
 msgstr "A' ceangal..."
 
 #: src/addon/manager.cpp:1129
-#, fuzzy
-#| msgid "Requesting list of add-ons"
 msgid "Requesting list of add-ons"
 msgstr "Ag iarraidh liosta dhe thuilleadain"
 
 #: src/addon/manager.cpp:1148
-#, fuzzy
-#| msgid "An error occurred while communicating with the server."
 msgid "An error occurred while communicating with the server."
 msgstr "Thachair mearachd sa chonaltradh ris an fhrithealaiche."
 
@@ -3310,16 +3293,12 @@ msgid "Downloads"
 msgstr "Luchdaidhean a-nuas"
 
 #: src/addon/manager.cpp:1260
-#, fuzzy
-#| msgid "Publish add-on: "
 msgid "Publish add-on: "
 msgstr "Foillsich tuilleadan: "
 
 #: src/addon/manager.cpp:1266
-#, fuzzy
-#| msgid "Get add-ons"
 msgid "Delete add-on: "
-msgstr "Faigh tuilleadain"
+msgstr "Sguab às dha thuilleadan: "
 
 #: src/addon/manager.cpp:1272
 msgid "There are no add-ons available for download from this server."
@@ -3378,6 +3357,12 @@ msgstr[0] ""
 "A bheil thu cinnteach gu bheil thu airson an tuilleadan air stàladh seo a "
 "thoirt air falbh?"
 msgstr[1] ""
+"A bheil thu cinnteach gu bheil thu airson an dà thuilleadan air stàladh seo "
+"a thoirt air falbh?"
+msgstr[2] ""
+"A bheil thu cinnteach gu bheil thu airson na tuilleadain air stàladh seo a "
+"thoirt air falbh?"
+msgstr[3] ""
 "A bheil thu cinnteach gu bheil thu airson na tuilleadain air stàladh seo a "
 "thoirt air falbh?"
 
@@ -3392,26 +3377,38 @@ msgstr[0] ""
 "A rèir coltais, tha fiosrachadh foillsichidh no smachd nan tionndaidhean mun "
 "tuilleadan seo air stòradh gu h-ionadail is chà tèid a thoirt air falbh:"
 msgstr[1] ""
+"A rèir coltais, tha fiosrachadh foillsichidh no smachd nan tionndaidhean mun "
+"dà thuilleadan seo air stòradh gu h-ionadail is chà tèid an toirt air falbh:"
+msgstr[2] ""
 "A rèir coltais, tha fiosrachadh foillsichidh no smachd nan tionndaidhean mu "
-"na tuilleadain seo air stòradh gu h-ionadail is chà tèid an toirt air falbh:"
+"na tuilleadain seo air stòradh gu h-ionadail is chà tèid a thoirt air falbh:"
+msgstr[3] ""
+"A rèir coltais, tha fiosrachadh foillsichidh no smachd nan tionndaidhean mu "
+"na tuilleadain seo air stòradh gu h-ionadail is chà tèid a thoirt air falbh:"
 
 #: src/addon/manager.cpp:1453
 msgid "The following add-on could not be deleted properly:"
 msgid_plural "The following add-ons could not be deleted properly:"
 msgstr[0] "Cha do ghabh sguabadh às dhan tuilleadan seo mar bu chòir:"
-msgstr[1] "Cha do ghabh sguabadh às dha na tuilleadain seo mar bu chòir:"
+msgstr[1] "Cha do ghabh sguabadh às dhan dà thuilleadan seo mar bu chòir:"
+msgstr[2] "Cha do ghabh sguabadh às dha na tuilleadain seo mar bu chòir:"
+msgstr[3] "Cha do ghabh sguabadh às dha na tuilleadain seo mar bu chòir:"
 
 #: src/addon/manager.cpp:1460
 msgid "Add-on Deleted"
 msgid_plural "Add-ons Deleted"
 msgstr[0] "Chaidh sguabadh às dha tuilleadan"
-msgstr[1] "Chaidh sguabadh às dha tuilleadain"
+msgstr[1] "Chaidh sguabadh às dha dà thuilleadan"
+msgstr[2] "Chaidh sguabadh às dha tuilleadain"
+msgstr[3] "Chaidh sguabadh às dha tuilleadain"
 
 #: src/addon/manager.cpp:1462
 msgid "The following add-on was successfully deleted:"
 msgid_plural "The following add-ons were successfully deleted:"
 msgstr[0] "Chaidh sguabadh às dhan tuilleadan seo gu soirbheachail:"
-msgstr[1] "Chaidh sguabadh às dha na tuilleadain seo gu soirbheachail:"
+msgstr[1] "Chaidh sguabadh às dhan dà thuilleadan seo gu soirbheachail:"
+msgstr[2] "Chaidh sguabadh às dha na tuilleadain seo gu soirbheachail:"
+msgstr[3] "Chaidh sguabadh às dha na tuilleadain seo gu soirbheachail:"
 
 #: src/attack_prediction_display.cpp:105 src/attack_prediction_display.cpp:237
 msgid "Attacker"
@@ -3626,9 +3623,8 @@ msgid "File I/O Error while reading the game: '"
 msgstr "Mearachd faidhle I/O ann an leughadh a' gheama: '"
 
 #: src/game_controller.cpp:732
-#, fuzzy
 msgid "No campaigns are available.\n"
-msgstr "Chan eil iomairt ann."
+msgstr "Chan eil iomairt ann.\n"
 
 #: src/game_controller.cpp:964
 msgid "Do you really want to start the server?"
@@ -3673,7 +3669,9 @@ msgstr ""
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Tha mearachdan san tuilleadan seo is cha do ghabh a luchdadh:"
-msgstr[1] "Tha mearachdan sna tuilleadain seo is cha do ghabh an luchdadh:"
+msgstr[1] "Tha mearachdan san dà thuilleadan seo is cha do ghabh an luchdadh:"
+msgstr[2] "Tha mearachdan sna tuilleadain seo is cha do ghabh an luchdadh:"
+msgstr[3] "Tha mearachdan sna tuilleadain seo is cha do ghabh an luchdadh:"
 
 #: src/game_controller.cpp:1205
 msgid "ERROR DETAILS:"
@@ -3740,6 +3738,8 @@ msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Slot falamh:"
 msgstr[1] "Slotaichean falamh:"
+msgstr[2] "Slotaichean falamh:"
+msgstr[3] "Slotaichean falamh:"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:307 src/multiplayer_lobby.cpp:561
 msgid "Fog"
@@ -3904,28 +3904,23 @@ msgid "Do you really want to dismiss him?"
 msgstr "A bheil thu cinnteach gu bheil thu airson a chur à dreuchd?"
 
 #: src/menu_events.cpp:100
-#, fuzzy
-#| msgid "My lord, this unit is loyal and requires no upkeep! "
 msgid "My lord, this unit is loyal and requires no upkeep! "
 msgstr ""
-"Mo thighearna, tha an t-aonad seo dìleas is chan eil beathachadh a dhìth air!"
+"Mo thighearna, tha an t-aonad seo dìleas is chan eil beathachadh a dhìth "
+"air! "
 
 #: src/menu_events.cpp:101 src/menu_events.cpp:104 src/menu_events.cpp:108
 msgid "Do you really want to dismiss her?"
 msgstr "A bheil thu cinnteach gu bheil thu airson a cur à dreuchd?"
 
 #: src/menu_events.cpp:103
-#, fuzzy
-#| msgid "My lord, this unit is an experienced one, having advanced levels! "
 msgid "My lord, this unit is an experienced one, having advanced levels! "
-msgstr "Mo thighearna, 's e aonad eòlach a th' ann le leibheil àrd!"
+msgstr "Mo thighearna, 's e aonad eòlach a th' ann le leibheil àrd! "
 
 #: src/menu_events.cpp:107
-#, fuzzy
-#| msgid "My lord, this unit is close to advancing a level! "
 msgid "My lord, this unit is close to advancing a level! "
 msgstr ""
-"Mo thighearna, tha an t-aonad seo cha mhòr air an ath leibheil a ruigsinn!"
+"Mo thighearna, tha an t-aonad seo cha mhòr air an ath leibheil a ruigsinn! "
 
 #: src/menu_events.cpp:203
 msgid "Statistics"
@@ -4079,8 +4074,10 @@ msgstr "Chuir dha luchd-amhairc a-mhain"
 #: src/menu_events.cpp:721
 msgid "unit^Gold"
 msgid_plural "Gold"
-msgstr[0] "Òr"
-msgstr[1] "Òr"
+msgstr[0] "bhonn òir"
+msgstr[1] "bhonn òir"
+msgstr[2] "buinn òir"
+msgstr[3] "bonn òir"
 
 #: src/menu_events.cpp:728
 msgid "You have no units available to recruit."
@@ -4132,9 +4129,13 @@ msgstr "Cuir an t-aonad à dreuchd"
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] ""
-"Feumaidh co-dhiù 1 phìos òir a bhith agad gus an t-aonad seo ais-ghairm"
+"Feumaidh co-dhiù 1 bhonn òir a bhith agad gus an t-aonad seo ais-ghairm"
 msgstr[1] ""
-"Feumaidh co-dhiù $s pìosan òir a bhith agad gus an t-aonad seo ais-ghairm"
+"Feumaidh co-dhiù $cost bhonn òir a bhith agad gus an t-aonad seo ais-ghairm"
+msgstr[2] ""
+"Feumaidh co-dhiù $cost buinn òir a bhith agad gus an t-aonad seo ais-ghairm"
+msgstr[3] ""
+"Feumaidh co-dhiù $cost bonn òir a bhith agad gus an t-aonad seo ais-ghairm"
 
 #: src/menu_events.cpp:1378
 msgid "You cannot end your turn yet!"
@@ -5368,8 +5369,10 @@ msgstr "Àite tòiseachaidh: "
 #: src/multiplayer_wait.cpp:519
 msgid "multiplayer_starting_gold^Gold"
 msgid_plural "multiplayer_starting_gold^Gold"
-msgstr[0] "Òr"
-msgstr[1] "Òr"
+msgstr[0] "bhonn òir"
+msgstr[1] "bhonn òir"
+msgstr[2] "buinn òir"
+msgstr[3] "bonn òir"
 
 #: src/network.cpp:109
 msgid "invalid network handle"
@@ -5415,8 +5418,6 @@ msgid "Auto-Save"
 msgstr "Fèin-sàbhaladh"
 
 #: src/play_controller.cpp:1116
-#, fuzzy
-#| msgid "Back to turn "
 msgid "Back to turn "
 msgstr "Till dhan chuairt "
 
@@ -5541,10 +5542,16 @@ msgid_plural ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
 msgstr[0] ""
-"Tòisichidh tu an t-ath chnàmh-sgeul le %gold òr a bharrachd air an òr "
+"Tòisichidh tu an t-ath chnàmh-sgeul le %gold bhonn òir a bharrachair an òr "
 "tòiseachaidh as lugha."
 msgstr[1] ""
-"Tòisichidh tu an t-ath chnàmh-sgeul le %gold òr a bharrachd air an òr "
+"Tòisichidh tu an t-ath chnàmh-sgeul le %gold bhonn òir a bharrachair an òr "
+"tòiseachaidh as lugha."
+msgstr[2] ""
+"Tòisichidh tu an t-ath chnàmh-sgeul le %gold buinn òir a bharrachair an òr "
+"tòiseachaidh as lugha."
+msgstr[3] ""
+"Tòisichidh tu an t-ath chnàmh-sgeul le %gold bonn òir a bharrachair an òr "
 "tòiseachaidh as lugha."
 
 #: src/playsingle_controller.cpp:300
@@ -5556,6 +5563,10 @@ msgstr[0] ""
 "Tòisichidh tu an t-ath chnàmh-sgeul leis an òr tòiseachaidh as lugha."
 msgstr[1] ""
 "Tòisichidh tu an t-ath chnàmh-sgeul leis an òr tòiseachaidh as lugha."
+msgstr[2] ""
+"Tòisichidh tu an t-ath chnàmh-sgeul leis an òr tòiseachaidh as lugha."
+msgstr[3] ""
+"Tòisichidh tu an t-ath chnàmh-sgeul leis an òr tòiseachaidh as lugha."
 
 #: src/playsingle_controller.cpp:308
 msgid ""
@@ -5565,11 +5576,17 @@ msgid_plural ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
 msgstr[0] ""
-"Tòisichidh tu an t-ath chnàmh-sgeul le $gold òr no an òr tòiseachaidh as "
-"lugha, ge b'e dè a tha nas àirde."
+"Tòisichidh tu an t-ath chnàmh-sgeul le $gold no an òr tòiseachaidh as lugha, "
+"ge b'e dè a tha nas àirde."
 msgstr[1] ""
-"Tòisichidh tu an t-ath chnàmh-sgeul le $gold òr no an òr tòiseachaidh as "
-"lugha, ge b'e dè a tha nas àirde."
+"Tòisichidh tu an t-ath chnàmh-sgeul le $gold no an òr tòiseachaidh as lugha, "
+"ge b'e dè a tha nas àirde."
+msgstr[2] ""
+"Tòisichidh tu an t-ath chnàmh-sgeul le $gold no an òr tòiseachaidh as lugha, "
+"ge b'e dè a tha nas àirde."
+msgstr[3] ""
+"Tòisichidh tu an t-ath chnàmh-sgeul le $gold no an òr tòiseachaidh as lugha, "
+"ge b'e dè a tha nas àirde."
 
 #: src/playsingle_controller.cpp:453
 msgid "The game is over."
@@ -5833,22 +5850,16 @@ msgstr ""
 "dhiù\n"
 
 #: src/savegame.cpp:518
-#, fuzzy
-#| msgid "This save is from a version too old to be loaded."
 msgid "This save is from a version too old to be loaded."
 msgstr ""
-"Tha an t-sàbhaladh seo bho tionndadh ro shean ach an gabhadh e luchdadh."
+"Tha an t-sàbhaladh seo bho thionndadh ro shean ach an gabhadh e luchdadh."
 
 #: src/savegame.cpp:524
-#, fuzzy
-#| msgid ""
-#| "This save is from a different version of the game. Do you want to try to "
-#| "load it?"
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
-"Tha an t-sàbhaladh seo bho tionndadh eile a gheama. A bheil thu airson "
+"Tha an t-sàbhaladh seo bho thionndadh eile a' gheama. A bheil thu airson "
 "feuchainn ri a luchdadh?"
 
 #: src/savegame.cpp:572
@@ -5907,8 +5918,6 @@ msgid "Unexpected characters at line start"
 msgstr "Caractaran air nach robhar an dùil aig toiseach an loidhne"
 
 #: src/serialization/parser.cpp:145
-#, fuzzy
-#| msgid "Missing closing tag for tag $tag at $pos"
 msgid "Missing closing tag for tag $tag at $pos"
 msgstr "Taga dùinidh a dhìth air an taga $tag aig $pos"
 
@@ -5937,8 +5946,6 @@ msgid "Unexpected closing tag"
 msgstr "Taga dùinidh air nach robhar an dùil"
 
 #: src/serialization/parser.cpp:208
-#, fuzzy
-#| msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
 msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
 msgstr ""
 "Chaidh taga dùinidh $tag2 mì-dhligheach a lorg airson taga $tag1 (air "
@@ -5983,12 +5990,10 @@ msgid "prefix_pico^p"
 msgstr "p"
 
 #: src/serialization/string_utils.cpp:303
-#, fuzzy
 msgid "prefix_femto^f"
 msgstr "f"
 
 #: src/serialization/string_utils.cpp:304
-#, fuzzy
 msgid "prefix_atto^a"
 msgstr "a"
 
@@ -6140,13 +6145,17 @@ msgstr "$effect_description san leibheil"
 msgid "damage"
 msgid_plural "damage"
 msgstr[0] "dochann"
-msgstr[1] "dochainn"
+msgstr[1] "dhochann"
+msgstr[2] "dochainn"
+msgstr[3] "dochann"
 
 #: src/unit_types.cpp:203 src/unit_types.cpp:270
 msgid "strike"
 msgid_plural "strikes"
-msgstr[0] "bualadh"
-msgstr[1] "bualaidhean"
+msgstr[0] "bhualadh"
+msgstr[1] "bhualadh"
+msgstr[2] "bualaidhean"
+msgstr[3] "bualadh"
 
 #: src/unit_types.cpp:215
 #, no-c-format
@@ -6213,146 +6222,3 @@ msgstr "Falaich planaichean airson $player"
 #: src/whiteboard/manager.cpp:1158
 msgid "Whiteboard Options"
 msgstr "Roghainnean bùird-ghil"
-
-#, fuzzy
-#~| msgid "invisible: "
-#~ msgid "invisible"
-#~ msgstr "neo-fhaicsinneach: "
-
-#, fuzzy
-#~| msgid "female^slowed"
-#~ msgid "female^invisible"
-#~ msgstr "maille oirre"
-
-#, fuzzy
-#~| msgid "Password: "
-#~ msgid "sword"
-#~ msgstr "Facal-faire: "
-
-#, fuzzy
-#~| msgid "Version: "
-#~ msgid "Vision Test"
-#~ msgstr "Tionndadh: "
-
-#, fuzzy
-#~| msgid "invisible: "
-#~ msgid "It is invisible!"
-#~ msgstr "neo-fhaicsinneach: "
-
-#, fuzzy
-#~| msgid "female^slowed"
-#~ msgid "female^cured"
-#~ msgstr "maille oirre"
-
-#, fuzzy
-#~| msgid "Downloading add-on: $addon_title|..."
-#~ msgid "Sending add-on <i>$addon_title</i>..."
-#~ msgstr "A' lughadh a-nuas tuilleadan: $addon_title|..."
-
-#, fuzzy
-#~| msgid "Downloading add-on: $addon_title|..."
-#~ msgid "Removing add-on <i>$addon_title</i> from the server..."
-#~ msgstr "A' lughadh a-nuas tuilleadan: $addon_title|..."
-
-#, fuzzy
-#~| msgid "Add-on Installed"
-#~ msgid "Add-ons Manager"
-#~ msgstr "Tuilleadan air stàladh"
-
-#, fuzzy
-#~| msgid "Add-on Installed"
-#~ msgid "addon_state^Not installed"
-#~ msgstr "Tuilleadan air stàladh"
-
-#, fuzzy
-#~| msgid "Add-on Installed"
-#~ msgid "addon_state^Installed"
-#~ msgstr "Tuilleadan air stàladh"
-
-#, fuzzy
-#~| msgid "addon_type^(unknown)"
-#~ msgid "addon_state^Unknown"
-#~ msgstr "(neo-aithnichte)"
-
-#, fuzzy
-#~| msgid "Installation failed"
-#~ msgid "Dependencies Installation Failed"
-#~ msgstr "Dh'fhàillig an stàladh"
-
-#, fuzzy
-#~| msgid "Do you really want to dismiss her?"
-#~ msgid "Do you really wish to continue?"
-#~ msgstr "A bheil thu cinnteach gu bheil thu airson a cur à dreuchd?"
-
-#, fuzzy
-#~| msgid "Delete add-on: "
-#~ msgid "Delete: $addon_title"
-#~ msgstr "Sguab às dha thuilleadan: "
-
-#, fuzzy
-#~| msgid "There are no add-ons available for download from this server."
-#~ msgid "There are no add-ons matching the specified criteria on this server."
-#~ msgstr "Chan eil tuilleadan ri luchdadh a-nuas air an fhrithealaiche seo."
-
-#, fuzzy
-#~| msgid "Whiteboard Options"
-#~ msgid "filter^Options"
-#~ msgstr "Roghainnean bùird-ghil"
-
-#, fuzzy
-#~| msgid "Add-on Deleted"
-#~| msgid_plural "Add-ons Deleted"
-#~ msgid "Add-on Updated"
-#~ msgstr "Chaidh sguabadh às dha tuilleadan"
-
-#, fuzzy
-#~| msgid "The add-on '$addon_title|' has been successfully installed."
-#~ msgid "The add-on '$addon_title|' has been successfully updated."
-#~ msgstr "Chaidh an tuilleadan '$addon_title|' a stàladh gu soirbheachail."
-
-#, fuzzy
-#~| msgid "Add-on Installed"
-#~ msgid "Add-ons Installed"
-#~ msgstr "Tuilleadan air stàladh"
-
-#, fuzzy
-#~| msgid "Add-on Deleted"
-#~| msgid_plural "Add-ons Deleted"
-#~ msgid "Add-ons Updated"
-#~ msgstr "Chaidh sguabadh às dha tuilleadan"
-
-#, fuzzy
-#~| msgid "All add-ons updated successfully."
-#~ msgid "All add-ons installed successfully."
-#~ msgstr "Chaidh a h-uile tuilleadan ùrachadh gu soirbheachail"
-
-#, fuzzy
-#~| msgid "Difficulty: "
-#~ msgid "Change difficulty"
-#~ msgstr "Duilgheas: "
-
-#, fuzzy
-#~| msgid ""
-#~| "scenario settings^Gold Per\n"
-#~| "Village"
-#~ msgid ""
-#~ "scenario settings^Support Per\n"
-#~ "Village"
-#~ msgstr ""
-#~ "Òr sa\n"
-#~ "bhaile"
-
-#, fuzzy
-#~| msgid "The maximum number of turns the game can last"
-#~ msgid "The number of unit levels each village can support"
-#~ msgstr "An àireamh as motha dhe chuairtean a dh'fhaid aig a' gheama"
-
-#, fuzzy
-#~| msgid "Village gold: "
-#~ msgid "Village Support: "
-#~ msgstr "Òr bhailtean: "
-
-#, fuzzy
-#~| msgid "Back to turn "
-#~ msgid "Back to Start"
-#~ msgstr "Till dhan chuairt "
