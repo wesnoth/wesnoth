@@ -95,71 +95,23 @@ namespace {
 
 namespace
 {
-/** A matrix of A's hitpoints vs B's hitpoints. */
-struct prob_matrix
+
+/**
+ * A matrix of A's hitpoints vs B's hitpoints vs. their slowed states.
+ * This class is concerned only with the matrix implementation and
+ * implements functionality for shifting and retrieving probabilities
+ * (i.e. low-level stuff).
+ */
+class prob_matrix
 {
-	// Simple matrix, both known HP.
-	prob_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
-				bool a_slows, bool b_slows,
-				unsigned int a_hp, unsigned int b_hp,
-				const std::vector<double> a_summary[2],
-				const std::vector<double> b_summary[2]);
+public:
+	prob_matrix(unsigned int a_max, unsigned int b_max,
+	            bool need_a_slowed, bool need_b_slowed,
+	            unsigned int a_cur, unsigned int b_cur,
+	            const std::vector<double> a_initial[2],
+	            const std::vector<double> b_initial[2]);
 
 	~prob_matrix();
-
-	// A hits B.
-	void receive_blow_b(unsigned damage, unsigned slow_damage, double hit_chance,
-						bool a_slows, int a_drain_constant, int a_drain_percent);
-
-	// B hits A.  Why can't they just get along?
-	void receive_blow_a(unsigned damage, unsigned slow_damage, double hit_chance,
-						bool b_slows, int b_drain_constant, int b_drain_percent);
-
-	void forced_levelup_a();
-	void conditional_levelup_a();
-
-	void forced_levelup_b();
-	void conditional_levelup_b();
-
-	// We lied: actually did less damage, adjust matrix.
-	void remove_petrify_distortion_a(unsigned damage, unsigned slow_damage, unsigned b_hp);
-	void remove_petrify_distortion_b(unsigned damage, unsigned slow_damage, unsigned a_hp);
-
-	// Its over, and here's the bill.
-	void extract_results(std::vector<double> summary_a[2],
-						 std::vector<double> summary_b[2]);
-
-	// Some wrappers for dead_prob(bool, bool) that make for more readable code:
-	/// What is the chance that one of the combatants is dead?
-	double dead_prob() const    { return dead_prob(true, true); }
-	/// What is the chance that combatant 'a' is dead?
-	double dead_prob_a() const  { return dead_prob(true, false); }
-	/// What is the chance that combatant 'b' is dead?
-	double dead_prob_b() const  { return dead_prob(false, true); }
-
-	void dump() const;
-
-	// We need four matrices, or "planes", reflecting the possible
-	// "slowed" states (neither slowed, A slowed, B slowed, both slowed).
-	enum {
-		NEITHER_SLOWED,
-		A_SLOWED,
-		B_SLOWED,
-		BOTH_SLOWED
-	};
-
-private:
-	// This gives me 10% speed improvement over std::vector<> (g++4.0.3 x86)
-	double *new_arr(unsigned int size);
-
-	double &val(unsigned plane, unsigned row, unsigned col);
-	const double &val(unsigned plane, unsigned row, unsigned col) const;
-
-	// Move this much from src to dst.  Returns true if anything transferred.
-	void xfer(unsigned dst_plane, unsigned src_plane,
-			  unsigned row_dst, unsigned col_dst,
-			  unsigned row_src, unsigned col_src,
-			  double prob);
 
 	// Shift columns on this plane (b taking damage).  Returns min col.
 	void shift_cols(unsigned dst, unsigned src,
@@ -171,9 +123,46 @@ private:
 
 	/// What is the chance that an indicated combatant (one of them) is dead?
 	double dead_prob(bool check_a, bool check_b) const;
-	// (This function is private to encourage use of the more readable wrappers.)
 
+	/// Returns true if the specified plane might have data in it.
+	bool plane_used(unsigned p) const { return p < 4  &&  plane_[p] != NULL; }
 
+	unsigned int num_rows() const { return rows_; }
+	unsigned int num_cols() const { return cols_; }
+
+	// To allow a more optimized loop through data:
+	unsigned int min_row(unsigned plane) const { return min_row_[plane]; }
+	unsigned int min_col(unsigned plane) const { return min_col_[plane]; }
+	// No error checking in these yet.
+	void set_min_row(unsigned plane, unsigned row) { min_row_[plane] = row; }
+	void set_min_col(unsigned plane, unsigned col) { min_col_[plane] = col; }
+
+	// Debugging tool.
+	void dump() const;
+
+	// We need four matrices, or "planes", reflecting the possible
+	// "slowed" states (neither slowed, A slowed, B slowed, both slowed).
+	enum {
+		NEITHER_SLOWED,
+		A_SLOWED,
+		B_SLOWED,
+		BOTH_SLOWED
+	};
+
+	double &val(unsigned plane, unsigned row, unsigned col);
+	const double &val(unsigned plane, unsigned row, unsigned col) const;
+
+	// Move this much from src to dst.  Returns true if anything transferred.
+	void xfer(unsigned dst_plane, unsigned src_plane,
+			  unsigned row_dst, unsigned col_dst,
+			  unsigned row_src, unsigned col_src,
+			  double prob);
+
+private:
+	// This gives me 10% speed improvement over std::vector<> (g++4.0.3 x86)
+	double *new_arr(unsigned int size);
+
+private: // data
 	unsigned int rows_, cols_;
 	double *plane_[4];
 
@@ -181,77 +170,91 @@ private:
 	unsigned int min_row_[4], min_col_[4];
 };
 
-prob_matrix::prob_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
-						 bool a_slows, bool b_slows,
-						 unsigned int a_hp, unsigned int b_hp,
-						 const std::vector<double> a_summary[2],
-						 const std::vector<double> b_summary[2])
-	: rows_(a_max_hp+1), cols_(b_max_hp+1)
+
+/**
+ * Constructor.
+ * @param  a_max          The maximum value we will track for A.
+ * @param  b_max          The maximum value we will track for B.
+ * @param  need_a_slowed  Set to true if there might be transfers to a "slow" plane for A.
+ * @param  need_b_slowed  Set to true if there might be transfers to a "slow" plane for B.
+ * @param  a_cur          The current value for A. (Ignored if a_initial[0] is not empty.)
+ * @param  b_cur          The current value for B. (Ignored if b_initial[0] is not empty.)
+ * @param  a_initial      The initial distribution of values for A. Element [0] is for normal A. while [1] is for slowed A.
+ * @param  b_initial      The initial distribution of values for B. Element [0] is for normal B. while [1] is for slowed B.
+ */
+prob_matrix::prob_matrix(unsigned int a_max, unsigned int b_max,
+	                     bool need_a_slowed, bool need_b_slowed,
+                         unsigned int a_cur, unsigned int b_cur,
+                         const std::vector<double> a_initial[2],
+                         const std::vector<double> b_initial[2])
+	: rows_(a_max+1), cols_(b_max+1)
 {
-	if (!a_summary[0].empty()) {
+	// We will need slowed planes if the initial vectors have them.
+	if (!a_initial[0].empty()) {
 		// A has fought before.  Do we need a slow plane for it?
-		if (!a_summary[1].empty())
-			b_slows = true;
+		if (!a_initial[1].empty())
+			need_a_slowed = true;
 		// Don't handle both being reused.
-		assert(b_summary[0].empty());
+		assert(b_initial[0].empty());
 	}
-	if (!b_summary[0].empty()) {
+	if (!b_initial[0].empty()) {
 		// B has fought before.  Do we need a slow plane for it?
-		if (!b_summary[1].empty())
-			a_slows = true;
+		if (!b_initial[1].empty())
+			need_b_slowed = true;
 	}
 
+	// Allocate the needed planes.
 	plane_[NEITHER_SLOWED] = new_arr(rows_*cols_);
-	if (b_slows)
+	if ( need_a_slowed )
 		plane_[A_SLOWED] = new_arr(rows_*cols_);
 	else
 		plane_[A_SLOWED] = NULL;
-	if (a_slows)
+	if ( need_b_slowed )
 		plane_[B_SLOWED] = new_arr(rows_*cols_);
 	else
 		plane_[B_SLOWED] = NULL;
-	if (a_slows && b_slows)
+	if ( need_a_slowed && need_b_slowed )
 		plane_[BOTH_SLOWED] = new_arr(rows_*cols_);
 	else
 		plane_[BOTH_SLOWED] = NULL;
 
-	min_row_[NEITHER_SLOWED] = a_hp - 1;
-	min_col_[NEITHER_SLOWED] = b_hp - 1;
+	min_row_[NEITHER_SLOWED] = a_cur - 1;
+	min_col_[NEITHER_SLOWED] = b_cur - 1;
 	min_row_[A_SLOWED] = min_row_[B_SLOWED] = min_row_[BOTH_SLOWED] = rows_;
 	min_col_[A_SLOWED] = min_col_[B_SLOWED] = min_col_[BOTH_SLOWED] = cols_;
 
 	// Transfer HP distribution from A?
-	if (!a_summary[0].empty()) {
+	if (!a_initial[0].empty()) {
 		// @todo FIXME: Can optimize here.
 		min_row_[NEITHER_SLOWED] = 0;
 		min_row_[A_SLOWED] = 0;
-		min_col_[A_SLOWED] = b_hp - 1;
-		for (unsigned int row = 0; row < a_summary[0].size(); ++row)
-			val(NEITHER_SLOWED, row, b_hp) = a_summary[0][row];
-		if (!a_summary[1].empty()) {
-			for (unsigned int row = 0; row < a_summary[1].size(); ++row)
-				val(A_SLOWED, row, b_hp) = a_summary[1][row];
+		min_col_[A_SLOWED] = b_cur - 1;
+		for (unsigned int row = 0; row < a_initial[0].size(); ++row)
+			val(NEITHER_SLOWED, row, b_cur) = a_initial[0][row];
+		if (!a_initial[1].empty()) {
+			for (unsigned int row = 0; row < a_initial[1].size(); ++row)
+				val(A_SLOWED, row, b_cur) = a_initial[1][row];
 		}
 		debug(("A has fought before\n"));
 		dump();
-	} else if (!b_summary[0].empty()) {
+	} else if (!b_initial[0].empty()) {
 		min_col_[NEITHER_SLOWED] = 0;
 		min_col_[B_SLOWED] = 0;
-		min_row_[B_SLOWED] = a_hp - 1;
-		for (unsigned int col = 0; col < b_summary[0].size(); ++col)
-			val(NEITHER_SLOWED, a_hp, col) = b_summary[0][col];
-		if (!b_summary[1].empty()) {
-			for (unsigned int col = 0; col < b_summary[1].size(); ++col)
-				val(B_SLOWED, a_hp, col) = b_summary[1][col];
+		min_row_[B_SLOWED] = a_cur - 1;
+		for (unsigned int col = 0; col < b_initial[0].size(); ++col)
+			val(NEITHER_SLOWED, a_cur, col) = b_initial[0][col];
+		if (!b_initial[1].empty()) {
+			for (unsigned int col = 0; col < b_initial[1].size(); ++col)
+				val(B_SLOWED, a_cur, col) = b_initial[1][col];
 		}
 		debug(("B has fought before\n"));
 		dump();
 	} else {
 		// If a unit has drain it might end with more HP than before.
 		// Make sure we don't access the matrix in invalid positions.
-		a_hp = std::min<unsigned int>(a_hp, rows_ - 1);
-		b_hp = std::min<unsigned int>(b_hp, cols_ - 1);
-		val(NEITHER_SLOWED, a_hp, b_hp) = 1.0;
+		a_cur = std::min<unsigned int>(a_cur, rows_ - 1);
+		b_cur = std::min<unsigned int>(b_cur, cols_ - 1);
+		val(NEITHER_SLOWED, a_cur, b_cur) = 1.0;
 	}
 }
 
@@ -284,31 +287,6 @@ const double &prob_matrix::val(unsigned p, unsigned row, unsigned col) const
 	assert(col < cols_);
 	return plane_[p][row * cols_ + col];
 }
-
-#if defined(CHECK) && defined(ATTACK_PREDICTION_DEBUG)
-void prob_matrix::dump() const
-{
-	unsigned int row, col, m;
-	const char *names[]
-		= { "NEITHER_SLOWED", "A_SLOWED", "B_SLOWED", "BOTH_SLOWED" };
-
-	for (m = 0; m < 4; ++m) {
-		if (!plane_[m])
-			continue;
-		debug(("%s:\n", names[m]));
-		for (row = 0; row < rows_; ++row) {
-			debug(("  "));
-			for (col = 0; col < cols_; ++col)
-				debug(("%4.3g ", val(m, row, col)*100));
-			debug(("\n"));
-		}
-	}
-}
-#else
-void prob_matrix::dump() const
-{
-}
-#endif
 
 // xfer, shift_cols and shift_rows use up most of our time.  Careful!
 void prob_matrix::xfer(unsigned dst_plane, unsigned src_plane,
@@ -421,123 +399,6 @@ void prob_matrix::shift_rows(unsigned dst, unsigned src,
 	}
 }
 
-// Shift prob_matrix to reflect probability 'hit_chance'
-// that damage (up to) 'damage' is done to 'b'.
-void prob_matrix::receive_blow_b(unsigned damage, unsigned slow_damage, double hit_chance,
-								 bool a_slows, int a_drain_constant, int a_drain_percent)
-{
-	int src, dst;
-
-	// Walk backwards so we don't copy already-copied matrix planes.
-	for (src = 3; src >=0; src--) {
-		unsigned int actual_damage;
-
-		if (!plane_[src])
-			continue;
-
-		// If A slows us, we go from 0=>2, 1=>3, 2=>2 3=>3.
-		if (a_slows)
-			dst = (src|2);
-		else
-			dst = src;
-
-		// A is slow in planes 1 and 3.
-		if (src & 1)
-			actual_damage = slow_damage;
-		else
-			actual_damage = damage;
-
-		shift_cols(dst, src, actual_damage, hit_chance, a_drain_constant, a_drain_percent);
-		if (min_col_[src] < damage)
-			min_col_[dst] = 0;
-		else if (min_col_[src] - damage < min_col_[dst])
-			min_col_[dst] = min_col_[src] - damage;
-		if (min_row_[src] < min_row_[dst])
-			min_row_[dst] = min_row_[src];
-
-		int drain_worst = std::min<int>(a_drain_percent*(static_cast<signed>(actual_damage))/100+a_drain_constant, a_drain_constant);
-		if(drain_worst < 0) {
-			unsigned int max_drain_damage = static_cast<unsigned>(-drain_worst);
-			if(max_drain_damage >= min_row_[dst])
-				min_row_[dst] = 0;
-			else
-				min_row_[dst] -= max_drain_damage;
-		}
-	}
-}
-
-// We lied: actually did less damage, adjust matrix.
-void prob_matrix::remove_petrify_distortion_a(unsigned damage, unsigned slow_damage,
-											unsigned b_hp)
-{
-	for (int p = 0; p < 4; ++p) {
-		if (!plane_[p])
-			continue;
-
-		// A is slow in planes 1 and 3.
-		if (p & 1) {
-			if (b_hp > slow_damage)
-				for (unsigned int row = 0; row < rows_; ++row)
-					xfer(p, p, row, b_hp - slow_damage, row, 0, 1.0);
-		} else {
-			if (b_hp > damage)
-				for (unsigned int row = 0; row < rows_; ++row)
-					xfer(p, p, row, b_hp - damage, row, 0, 1.0);
-		}
-	}
-}
-
-void prob_matrix::remove_petrify_distortion_b(unsigned damage, unsigned slow_damage,
-											unsigned a_hp)
-{
-	for (int p = 0; p < 4; ++p) {
-		if (!plane_[p])
-			continue;
-
-		// B is slow in planes 2 and 3.
-		if (p & 2) {
-			if (a_hp > slow_damage)
-				for (unsigned int col = 0; col < cols_; ++col)
-					xfer(p, p, a_hp - slow_damage, col, 0, col, 1.0);
-		} else {
-			if (a_hp > damage)
-				for (unsigned int col = 0; col < cols_; ++col)
-					xfer(p, p, a_hp - damage, col, 0, col, 1.0);
-		}
-	}
-}
-
-void prob_matrix::extract_results(std::vector<double> summary_a[2],
-								  std::vector<double> summary_b[2])
-{
-	unsigned int p, row, col;
-
-	summary_a[0] = std::vector<double>(rows_);
-	summary_b[0] = std::vector<double>(cols_);
-
-	if (plane_[A_SLOWED])
-		summary_a[1] = std::vector<double>(rows_);
-	if (plane_[B_SLOWED])
-		summary_b[1] = std::vector<double>(cols_);
-
-	for (p = 0; p < 4; ++p) {
-		int dst_a, dst_b;
-		if (!plane_[p])
-			continue;
-
-		// A is slow in planes 1 and 3.
-		dst_a = (p & 1);
-		// B is slow in planes 2 and 3.
-		dst_b = !!(p & 2);
-		for (row = 0; row < rows_; ++row) {
-			for (col = 0; col < cols_; ++col) {
-				summary_a[dst_a][row] += val(p, row, col);
-				summary_b[dst_b][col] += val(p, row, col);
-			}
-		}
-	}
-}
-
 /**
  * What is the chance that an indicated combatant (one of them) is dead?
  */
@@ -546,7 +407,7 @@ double prob_matrix::dead_prob(bool check_a, bool check_b) const
 	double prob = 0.0;
 
 	for (unsigned p = 0; p < 4; ++p) {
-		if (!plane_[p])
+		if ( !plane_used(p) )
 			continue;
 		// Column 0 is where b is dead.
 		if ( check_b )
@@ -562,9 +423,152 @@ double prob_matrix::dead_prob(bool check_a, bool check_b) const
 	return prob;
 }
 
+#if defined(CHECK) && defined(ATTACK_PREDICTION_DEBUG)
+void prob_matrix::dump() const
+{
+	unsigned int row, col, m;
+	const char *names[]
+		= { "NEITHER_SLOWED", "A_SLOWED", "B_SLOWED", "BOTH_SLOWED" };
+
+	for (m = 0; m < 4; ++m) {
+		if ( !plane_used(m) )
+			continue;
+		debug(("%s:\n", names[m]));
+		for (row = 0; row < rows_; ++row) {
+			debug(("  "));
+			for (col = 0; col < cols_; ++col)
+				debug(("%4.3g ", val(m, row, col)*100));
+			debug(("\n"));
+		}
+	}
+}
+#else
+void prob_matrix::dump() const
+{
+}
+#endif
+
+
+/**
+ * A matrix for calculating the outcome of combat.
+ * This class is concerned with translating things that happen in combat
+ * to matrix operations that then get passed on to the (private) matrix
+ * implementation.
+ */
+class combat_matrix : private prob_matrix
+{
+public:
+	// Simple matrix, both known HP.
+	combat_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
+				bool a_slows, bool b_slows,
+				unsigned int a_hp, unsigned int b_hp,
+				const std::vector<double> a_summary[2],
+				const std::vector<double> b_summary[2]);
+
+	~combat_matrix() {}
+
+	// A hits B.
+	void receive_blow_b(unsigned damage, unsigned slow_damage, double hit_chance,
+						bool a_slows, int a_drain_constant, int a_drain_percent);
+
+	// B hits A.  Why can't they just get along?
+	void receive_blow_a(unsigned damage, unsigned slow_damage, double hit_chance,
+						bool b_slows, int b_drain_constant, int b_drain_percent);
+
+	// We lied: actually did less damage, adjust matrix.
+	void remove_petrify_distortion_a(unsigned damage, unsigned slow_damage, unsigned b_hp);
+	void remove_petrify_distortion_b(unsigned damage, unsigned slow_damage, unsigned a_hp);
+
+	void forced_levelup_a();
+	void conditional_levelup_a();
+
+	void forced_levelup_b();
+	void conditional_levelup_b();
+
+	// Its over, and here's the bill.
+	void extract_results(std::vector<double> summary_a[2],
+						 std::vector<double> summary_b[2]);
+
+	/// What is the chance that one of the combatants is dead?
+	double dead_prob() const    { return prob_matrix::dead_prob(true, true); }
+	/// What is the chance that combatant 'a' is dead?
+	double dead_prob_a() const  { return prob_matrix::dead_prob(true, false); }
+	/// What is the chance that combatant 'b' is dead?
+	double dead_prob_b() const  { return prob_matrix::dead_prob(false, true); }
+
+	void dump() const { prob_matrix::dump(); }
+};
+
+
+/**
+ * Constructor.
+ * @param  a_max_hp       The maximum hit points for A.
+ * @param  b_max_hp       The maximum hit points for B.
+ * @param  a_slows        Set to true if A slows B when A hits B.
+ * @param  b_slows        Set to true if B slows A when B hits A.
+ * @param  a_hp           The current hit points for A. (Ignored if a_summary[0] is not empty.)
+ * @param  b_hp           The current hit points for B. (Ignored if b_summary[0] is not empty.)
+ * @param  a_summary      The hit point distribution for A (from previous combats). Element [0] is for normal A. while [1] is for slowed A.
+ * @param  b_summary      The hit point distribution for B (from previous combats). Element [0] is for normal B. while [1] is for slowed B.
+ */
+combat_matrix::combat_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
+                             bool a_slows, bool b_slows,
+                             unsigned int a_hp, unsigned int b_hp,
+                             const std::vector<double> a_summary[2],
+                             const std::vector<double> b_summary[2])
+	// The inversion of the order of the *_slows parameters here is intentional.
+	: prob_matrix(a_max_hp, b_max_hp, b_slows, a_slows, a_hp, b_hp, a_summary, b_summary)
+{
+}
+
+// Shift combat_matrix to reflect probability 'hit_chance'
+// that damage (up to) 'damage' is done to 'b'.
+void combat_matrix::receive_blow_b(unsigned damage, unsigned slow_damage, double hit_chance,
+								 bool a_slows, int a_drain_constant, int a_drain_percent)
+{
+	int src, dst;
+
+	// Walk backwards so we don't copy already-copied matrix planes.
+	for (src = 3; src >=0; src--) {
+		unsigned int actual_damage;
+
+		if ( !plane_used(src) )
+			continue;
+
+		// If A slows us, we go from 0=>2, 1=>3, 2=>2 3=>3.
+		if (a_slows)
+			dst = (src|2);
+		else
+			dst = src;
+
+		// A is slow in planes 1 and 3.
+		if (src & 1)
+			actual_damage = slow_damage;
+		else
+			actual_damage = damage;
+
+		shift_cols(dst, src, actual_damage, hit_chance, a_drain_constant, a_drain_percent);
+		if ( min_col(src) < damage )
+			set_min_col(dst, 0);
+		else if ( min_col(src) - damage < min_col(dst) )
+			set_min_col(dst, min_col(src) - damage);
+		if ( min_row(src) < min_row(dst) )
+			set_min_row(dst, min_row(src));
+
+		int drain_worst = std::min<int>(a_drain_percent*(static_cast<signed>(actual_damage))/100+a_drain_constant, a_drain_constant);
+		if(drain_worst < 0) {
+			unsigned int max_drain_damage = static_cast<unsigned>(-drain_worst);
+			if ( max_drain_damage >= min_row(dst) )
+				set_min_row(dst, 0);
+			else
+				set_min_row(dst, min_row(dst) - max_drain_damage);
+		}
+	}
+}
+
 // Shift matrix to reflect probability 'hit_chance'
 // that damage (up to) 'damage' is done to 'a'.
-void prob_matrix::receive_blow_a(unsigned damage, unsigned slow_damage, double hit_chance,
+void combat_matrix::receive_blow_a(unsigned damage, unsigned slow_damage, double hit_chance,
 								 bool b_slows, int b_drain_constant, int b_drain_percent)
 {
 	int src, dst;
@@ -573,7 +577,7 @@ void prob_matrix::receive_blow_a(unsigned damage, unsigned slow_damage, double h
 	for (src = 3; src >=0; src--) {
 		unsigned actual_damage;
 
-		if (!plane_[src])
+		if ( !plane_used(src) )
 			continue;
 
 		// If B slows us, we go from 0=>1, 1=>1, 2=>3 3=>3.
@@ -589,80 +593,156 @@ void prob_matrix::receive_blow_a(unsigned damage, unsigned slow_damage, double h
 			actual_damage = damage;
 
 		shift_rows(dst, src, actual_damage, hit_chance, b_drain_constant, b_drain_percent);
-		if (min_row_[src] < damage)
-			min_row_[dst] = 0;
-		else if (min_row_[src] - damage < min_row_[dst])
-			min_row_[dst] = min_row_[src] - damage;
-		if (min_col_[src] < min_col_[dst])
-			min_col_[dst] = min_col_[src];
+		if ( min_row(src) < damage )
+			set_min_row(dst, 0);
+		else if ( min_row(src) - damage < min_row(dst) )
+			set_min_row(dst, min_row(src) - damage);
+		if ( min_col(src) < min_col(dst) )
+			set_min_col(dst, min_col(src));
 
 		int drain_worst = std::min<int>(b_drain_percent*(static_cast<signed>(actual_damage))/100+b_drain_constant, b_drain_constant);
 		if(drain_worst < 0) {
 			unsigned int max_drain_damage = static_cast<unsigned>(-drain_worst);
-			if(max_drain_damage >= min_col_[dst])
-				min_col_[dst] = 0;
+			if ( max_drain_damage >= min_col(dst) )
+				set_min_col(dst, 0);
 			else
-				min_col_[dst] -= max_drain_damage;
+				set_min_col(dst, min_col(dst) - max_drain_damage);
 		}
 	}
 }
 
-void prob_matrix::forced_levelup_a()
+// We lied: actually did less damage, adjust matrix.
+void combat_matrix::remove_petrify_distortion_a(unsigned damage, unsigned slow_damage,
+                                                unsigned b_hp)
+{
+	for (int p = 0; p < 4; ++p) {
+		if ( !plane_used(p) )
+			continue;
+
+		// A is slow in planes 1 and 3.
+		if (p & 1) {
+			if (b_hp > slow_damage)
+				for (unsigned int row = 0; row < num_rows(); ++row)
+					xfer(p, p, row, b_hp - slow_damage, row, 0, 1.0);
+		} else {
+			if (b_hp > damage)
+				for (unsigned int row = 0; row < num_rows(); ++row)
+					xfer(p, p, row, b_hp - damage, row, 0, 1.0);
+		}
+	}
+}
+
+void combat_matrix::remove_petrify_distortion_b(unsigned damage, unsigned slow_damage,
+                                                unsigned a_hp)
+{
+	for (int p = 0; p < 4; ++p) {
+		if ( !plane_used(p) )
+			continue;
+
+		// B is slow in planes 2 and 3.
+		if (p & 2) {
+			if (a_hp > slow_damage)
+				for (unsigned int col = 0; col < num_cols(); ++col)
+					xfer(p, p, a_hp - slow_damage, col, 0, col, 1.0);
+		} else {
+			if (a_hp > damage)
+				for (unsigned int col = 0; col < num_cols(); ++col)
+					xfer(p, p, a_hp - damage, col, 0, col, 1.0);
+		}
+	}
+}
+
+void combat_matrix::forced_levelup_a()
 {
 	/* Move all the values (except 0hp) of all the planes to the last
 	   row of the planes unslowed for A. */
 	for (int p = 0; p < 4; ++p) {
-		if (!plane_[p]) continue;
-		for (unsigned row = std::max(min_row_[p], 1u); row < rows_; ++row) {
-			for (unsigned col = min_col_[p]; col < cols_; ++col) {
+		if ( !plane_used(p) )
+			continue;
+		for (unsigned row = std::max(min_row(p), 1u); row < num_rows(); ++row) {
+			for (unsigned col = min_col(p); col < num_cols(); ++col) {
 				double v = val(p, row, col);
 				val(p, row, col) = 0;
-				val(p & -2, rows_ - 1, col) += v;
+				val(p & -2, num_rows() - 1, col) += v;
 			}
 		}
 	}
 }
 
-void prob_matrix::forced_levelup_b()
+void combat_matrix::forced_levelup_b()
 {
 	/* Move all the values (except 0hp) of all the planes to the last
 	   column of planes unslowed for B. */
 	for (int p = 0; p < 4; ++p) {
-		if (!plane_[p]) continue;
-		for (unsigned row = min_row_[p]; row < rows_; ++row) {
-			for (unsigned col = std::max(min_col_[p], 1u); col < cols_; ++col) {
+		if ( !plane_used(p) )
+			continue;
+		for (unsigned row = min_row(p); row < num_rows(); ++row) {
+			for (unsigned col = std::max(min_col(p), 1u); col < num_cols(); ++col) {
 				double v = val(p, row, col);
 				val(p, row, col) = 0;
-				val(p & -3, row, cols_ - 1) += v;
+				val(p & -3, row, num_cols() - 1) += v;
 			}
 		}
 	}
 }
 
-void prob_matrix::conditional_levelup_a()
+void combat_matrix::conditional_levelup_a()
 {
 	/* Move the values of the first column (except 0hp) of all the
 	   planes to the last row of the planes unslowed for A. */
 	for (int p = 0; p < 4; ++p) {
-		if (!plane_[p]) continue;
-		for (unsigned row = std::max(min_row_[p], 1u); row < rows_; ++row) {
+		if ( !plane_used(p) )
+			continue;
+		for (unsigned row = std::max(min_row(p), 1u); row < num_rows(); ++row) {
 			double v = val(p, row, 0);
 			val(p, row, 0) = 0;
-			val(p & -2, rows_ - 1, 0) += v;
+			val(p & -2, num_rows() - 1, 0) += v;
 		}
 	}
 }
 
-void prob_matrix::conditional_levelup_b()
+void combat_matrix::conditional_levelup_b()
 {
 	/* Move the values of the first row (except 0hp) of all the
 	   planes to the last column of the planes unslowed for B. */
 	for (int p = 0; p < 4; ++p) {
-		if (!plane_[p]) continue;
-		for (unsigned col = std::max(min_col_[p], 1u); col < cols_; ++col) {
+		if ( !plane_used(p) )
+			continue;
+		for (unsigned col = std::max(min_col(p), 1u); col < num_cols(); ++col) {
 			double v = val(p, 0, col);
 			val(p, 0, col) = 0;
-			val(p & -3, 0, cols_ - 1) += v;
+			val(p & -3, 0, num_cols() - 1) += v;
+		}
+	}
+}
+
+void combat_matrix::extract_results(std::vector<double> summary_a[2],
+								  std::vector<double> summary_b[2])
+{
+	unsigned int p, row, col;
+
+	summary_a[0] = std::vector<double>(num_rows());
+	summary_b[0] = std::vector<double>(num_cols());
+
+	if ( plane_used(A_SLOWED) )
+		summary_a[1] = std::vector<double>(num_rows());
+	if ( plane_used(B_SLOWED) )
+		summary_b[1] = std::vector<double>(num_cols());
+
+	for (p = 0; p < 4; ++p) {
+		int dst_a, dst_b;
+		if ( !plane_used(p) )
+			continue;
+
+		// A is slow in planes 1 and 3.
+		dst_a = (p & 1);
+		// B is slow in planes 2 and 3.
+		dst_b = !!(p & 2);
+		for (row = 0; row < num_rows(); ++row) {
+			for (col = 0; col < num_cols(); ++col) {
+				summary_a[dst_a][row] += val(p, row, col);
+				summary_b[dst_b][col] += val(p, row, col);
+			}
 		}
 	}
 }
@@ -937,9 +1017,9 @@ void combatant::one_strike_fight(combatant &opp, bool levelup_considered,
 void combatant::complex_fight(combatant &opp, unsigned rounds, bool levelup_considered,
                               double & self_not_hit, double & opp_not_hit)
 {
-	prob_matrix m(hp_dist.size()-1, opp.hp_dist.size()-1,
-				  u_.slows && !opp.u_.is_slowed, opp.u_.slows && !u_.is_slowed,
-				  u_.hp, opp.u_.hp, summary, opp.summary);
+	combat_matrix m(hp_dist.size()-1, opp.hp_dist.size()-1,
+	                u_.slows && !opp.u_.is_slowed, opp.u_.slows && !u_.is_slowed,
+	                u_.hp, opp.u_.hp, summary, opp.summary);
 
 	unsigned max_attacks = std::max(hit_chances_.size(), opp.hit_chances_.size());
 
