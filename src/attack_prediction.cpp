@@ -133,9 +133,6 @@ public:
 	// To allow a more optimized loop through data:
 	unsigned int min_row(unsigned plane) const { return min_row_[plane]; }
 	unsigned int min_col(unsigned plane) const { return min_col_[plane]; }
-	// No error checking in these yet.
-	void set_min_row(unsigned plane, unsigned row) { min_row_[plane] = row; }
-	void set_min_col(unsigned plane, unsigned col) { min_col_[plane] = col; }
 
 	// Debugging tool.
 	void dump() const;
@@ -424,6 +421,18 @@ void prob_matrix::shift_cols(unsigned dst, unsigned src, unsigned damage,
 			shift_cols_in_row(dst, src, row, damage, prob, drainmax,
 			                  drain_constant, drain_percent);
 	}
+
+	// Update the minimum column for the destination plane.
+	if ( min_col_[src] < damage )
+		min_col_[dst] = 0;
+	else if ( min_col_[src] - damage < min_col_[dst] )
+		min_col_[dst] = min_col_[src] - damage;
+
+	// Update the minimum row for the destination plane.
+	int drain_worst = std::min<int>(drainmax, drain_constant);
+	unsigned min_row = std::max<int>(0, static_cast<int>(min_row_[src]) + drain_worst);
+	if ( min_row < min_row_[dst] )
+		min_row_[dst] = min_row;
 }
 
 /**
@@ -482,6 +491,18 @@ void prob_matrix::shift_rows(unsigned dst, unsigned src, unsigned damage,
 			shift_rows_in_col(dst, src, col, damage, prob, drainmax,
 			                  drain_constant, drain_percent);
 	}
+
+	// Update the minimum row for the destination plane.
+	if ( min_row_[src] < damage )
+		min_row_[dst] = 0;
+	else if ( min_row_[src] - damage < min_row_[dst] )
+		min_row_[dst] = min_row_[src] - damage;
+
+	// Update the minimum column for the destination plane.
+	int drain_worst = std::min<int>(drainmax, drain_constant);
+	unsigned min_col = std::max<int>(0, static_cast<int>(min_col_[src]) + drain_worst);
+	if ( min_col < min_col_[dst] )
+		min_col_[dst] = min_col;
 }
 
 /**
@@ -543,7 +564,6 @@ void prob_matrix::dump() const
 class combat_matrix : private prob_matrix
 {
 public:
-	// Simple matrix, both known HP.
 	combat_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
 				bool a_slows, bool b_slows,
 				unsigned int a_hp, unsigned int b_hp,
@@ -611,43 +631,18 @@ combat_matrix::combat_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
 void combat_matrix::receive_blow_b(unsigned damage, unsigned slow_damage, double hit_chance,
 								 bool a_slows, int a_drain_constant, int a_drain_percent)
 {
-	int src, dst;
-
 	// Walk backwards so we don't copy already-copied matrix planes.
-	for (src = 3; src >=0; src--) {
-		unsigned int actual_damage;
-
+	for (int src = 3; src >=0; src--) {
 		if ( !plane_used(src) )
 			continue;
 
 		// If A slows us, we go from 0=>2, 1=>3, 2=>2 3=>3.
-		if (a_slows)
-			dst = (src|2);
-		else
-			dst = src;
+		int dst = a_slows ? src|2 : src;
 
 		// A is slow in planes 1 and 3.
-		if (src & 1)
-			actual_damage = slow_damage;
-		else
-			actual_damage = damage;
+		unsigned int actual_damage = src & 1 ? slow_damage : damage;
 
 		shift_cols(dst, src, actual_damage, hit_chance, a_drain_constant, a_drain_percent);
-		if ( min_col(src) < damage )
-			set_min_col(dst, 0);
-		else if ( min_col(src) - damage < min_col(dst) )
-			set_min_col(dst, min_col(src) - damage);
-		if ( min_row(src) < min_row(dst) )
-			set_min_row(dst, min_row(src));
-
-		int drain_worst = std::min<int>(a_drain_percent*(static_cast<signed>(actual_damage))/100+a_drain_constant, a_drain_constant);
-		if(drain_worst < 0) {
-			unsigned int max_drain_damage = static_cast<unsigned>(-drain_worst);
-			if ( max_drain_damage >= min_row(dst) )
-				set_min_row(dst, 0);
-			else
-				set_min_row(dst, min_row(dst) - max_drain_damage);
-		}
 	}
 }
 
@@ -656,43 +651,18 @@ void combat_matrix::receive_blow_b(unsigned damage, unsigned slow_damage, double
 void combat_matrix::receive_blow_a(unsigned damage, unsigned slow_damage, double hit_chance,
 								 bool b_slows, int b_drain_constant, int b_drain_percent)
 {
-	int src, dst;
-
 	// Walk backwards so we don't copy already-copied matrix planes.
-	for (src = 3; src >=0; src--) {
-		unsigned actual_damage;
-
+	for (int src = 3; src >=0; src--) {
 		if ( !plane_used(src) )
 			continue;
 
 		// If B slows us, we go from 0=>1, 1=>1, 2=>3 3=>3.
-		if (b_slows)
-			dst = (src|1);
-		else
-			dst = src;
+		int dst = b_slows ? src|1 : src;
 
 		// B is slow in planes 2 and 3.
-		if (src & 2)
-			actual_damage = slow_damage;
-		else
-			actual_damage = damage;
+		unsigned actual_damage = src & 2 ? slow_damage : damage;
 
 		shift_rows(dst, src, actual_damage, hit_chance, b_drain_constant, b_drain_percent);
-		if ( min_row(src) < damage )
-			set_min_row(dst, 0);
-		else if ( min_row(src) - damage < min_row(dst) )
-			set_min_row(dst, min_row(src) - damage);
-		if ( min_col(src) < min_col(dst) )
-			set_min_col(dst, min_col(src));
-
-		int drain_worst = std::min<int>(b_drain_percent*(static_cast<signed>(actual_damage))/100+b_drain_constant, b_drain_constant);
-		if(drain_worst < 0) {
-			unsigned int max_drain_damage = static_cast<unsigned>(-drain_worst);
-			if ( max_drain_damage >= min_col(dst) )
-				set_min_col(dst, 0);
-			else
-				set_min_col(dst, min_col(dst) - max_drain_damage);
-		}
 	}
 }
 
