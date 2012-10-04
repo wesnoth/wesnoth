@@ -34,6 +34,7 @@
 #include "wesconfig.h"
 
 #include <boost/iostreams/filter/gzip.hpp>
+#include <boost/exception/info.hpp>
 
 #include <cerrno>
 #include <deque>
@@ -918,9 +919,10 @@ TCPsocket get_received_data(TCPsocket sock, config& cfg, network::bandwidth_in_p
 		// throw the error in parent thread
 		std::string error = (*itor)->config_error;
 		buffer* buf = *itor;
+		TCPsocket err_sock = (*itor)->sock;
 		received_data_queue.erase(itor);
 		delete buf;
-		throw config::error(error);
+		throw config::error(error) << network::tcpsocket_info(err_sock);
 	} else {
 		cfg.swap((*itor)->config_buf);
 		const TCPsocket res = (*itor)->sock;

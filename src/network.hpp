@@ -30,6 +30,7 @@ class config;
 #include <vector>
 
 #include <boost/shared_ptr.hpp>
+#include <boost/exception/error_info.hpp>
 
 namespace threading
 {
@@ -266,6 +267,9 @@ struct error : public game::error
 
 	void disconnect();
 };
+
+typedef boost::error_info<struct tag_tcpsocket,TCPsocket> tcpsocket_info;
+typedef boost::error_info<struct tag_connum,connection> connection_info;
 
 struct statistics
 {

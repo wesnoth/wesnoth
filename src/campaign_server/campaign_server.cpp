@@ -36,6 +36,7 @@
 
 #include <boost/foreach.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
+#include <boost/exception/get_error_info.hpp>
 
 // the fork execute is unix specific only tested on Linux quite sure it won't
 // work on Windows not sure which other platforms have a problem with it.
@@ -571,9 +572,20 @@ namespace {
 					LOG_CS << "client disconnect: " << e.message << " " << network::ip_address(e.socket) << "\n";
 					e.disconnect();
 				}
-			} catch(config::error& /*e*/) {
-				LOG_CS << "error in receiving data...\n";
-				network::disconnect(sock);
+			} catch(const config::error& e) {
+				network::connection err_sock = 0;
+				network::connection const * err_connection = boost::get_error_info<network::connection_info>(e);
+				if(err_connection != NULL) {
+					err_sock = *err_connection;
+				}
+				if(err_sock == 0 && sock > 0)
+					err_sock = sock;
+				if(err_sock) {
+					LOG_CS << "client disconnect due to exception: " << e.what() << " " << network::ip_address(*err_connection) << "\n";
+					network::disconnect(*err_connection);
+				} else {
+					throw;
+				}
 			}
 
 			SDL_Delay(20);
