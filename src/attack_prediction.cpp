@@ -121,8 +121,8 @@ public:
 	void shift_rows(unsigned dst, unsigned src, unsigned damage,
 	                double prob, int drain_constant, int drain_percent);
 
-	/// What is the chance that an indicated combatant (one of them) is dead?
-	double dead_prob(bool check_a, bool check_b) const;
+	/// What is the chance that an indicated combatant (one of them) is at zero?
+	double prob_of_zero(bool check_a, bool check_b) const;
 
 	/// Returns true if the specified plane might have data in it.
 	bool plane_used(unsigned p) const { return p < 4  &&  plane_[p] != NULL; }
@@ -485,9 +485,9 @@ void prob_matrix::shift_rows(unsigned dst, unsigned src, unsigned damage,
 }
 
 /**
- * What is the chance that an indicated combatant (one of them) is dead?
+ * What is the chance that an indicated combatant (one of them) is at zero?
  */
-double prob_matrix::dead_prob(bool check_a, bool check_b) const
+double prob_matrix::prob_of_zero(bool check_a, bool check_b) const
 {
 	double prob = 0.0;
 
@@ -575,11 +575,11 @@ public:
 						 std::vector<double> summary_b[2]);
 
 	/// What is the chance that one of the combatants is dead?
-	double dead_prob() const    { return prob_matrix::dead_prob(true, true); }
+	double dead_prob() const    { return prob_of_zero(true, true); }
 	/// What is the chance that combatant 'a' is dead?
-	double dead_prob_a() const  { return prob_matrix::dead_prob(true, false); }
+	double dead_prob_a() const  { return prob_of_zero(true, false); }
 	/// What is the chance that combatant 'b' is dead?
-	double dead_prob_b() const  { return prob_matrix::dead_prob(false, true); }
+	double dead_prob_b() const  { return prob_of_zero(false, true); }
 
 	void dump() const { prob_matrix::dump(); }
 };
