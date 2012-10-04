@@ -284,14 +284,15 @@ class Parser:
                 self.temp_string += line
             return
 
-        arrows = line.find('<<')
         quote = line.find('"')
 
-        if arrows >= 0 and (quote < 0 or quote > arrows):
-            self.parse_line_without_commands(line[:arrows])
-            self.in_arrows = True
-            self.parse_line_without_commands(line[arrows + 2:])
-            return
+        if not self.in_string:
+            arrows = line.find('<<')
+            if arrows >= 0 and (quote < 0 or quote > arrows):
+                self.parse_line_without_commands(line[:arrows])
+                self.in_arrows = True
+                self.parse_line_without_commands(line[arrows + 2:])
+                return
 
         if quote >= 0:
             if self.in_string:
