@@ -174,7 +174,6 @@ private:
 	// (This function is private to encourage use of the more readable wrappers.)
 
 
-	/** @todo FIXME: rename using _ at end. */
 	unsigned int rows_, cols_;
 	double *plane_[4];
 
