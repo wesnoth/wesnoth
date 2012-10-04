@@ -38,6 +38,9 @@
 #include <cstring>
 #include <stdexcept>
 
+#include <boost/exception/get_error_info.hpp>
+#include <boost/exception/info.hpp>
+
 #include <signal.h>
 #if defined(_WIN32) || defined(__WIN32__) || defined (WIN32)
 #undef INADDR_ANY
@@ -795,7 +798,23 @@ connection receive_data(config& cfg, connection connection_num, bandwidth_in_ptr
 	{
 		bandwidth_in = &temp;
 	}
-	sock = network_worker_pool::get_received_data(sock,cfg, *bandwidth_in);
+	try {
+		sock = network_worker_pool::get_received_data(sock,cfg, *bandwidth_in);
+	} catch(const config::error& e) {
+		TCPsocket const * err_sock = boost::get_error_info<tcpsocket_info>(e);
+		if(err_sock == NULL)
+			throw;
+		connection err_connection = 0;
+		for(connection_map::const_iterator i = connections.begin(); i != connections.end(); ++i) {
+			if(i->second.sock == *err_sock) {
+				err_connection = i->first;
+			}
+		}
+		if(err_connection) {
+			throw e << connection_info(err_connection);
+		}
+		throw;
+	}
 	if (sock == NULL) {
 		if (!is_server() && last_ping != 0 && ping_timeout != 0)
 		{

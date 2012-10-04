@@ -35,6 +35,7 @@
 #include <iosfwd>
 #include <vector>
 #include <boost/variant/variant.hpp>
+#include <boost/exception/exception.hpp>
 
 #include "game_errors.hpp"
 #include "tstring.hpp"
@@ -349,7 +350,7 @@ public:
 	std::string debug() const;
 	std::string hash() const;
 
-	struct error : public game::error {
+	struct error : public game::error, public boost::exception {
 		error(const std::string& message) : game::error(message) {}
 	};
 
