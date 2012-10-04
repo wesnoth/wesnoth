@@ -12,7 +12,7 @@
 
    See the COPYING file for more details.
 
-   Full algorithm by Yogin.  Typing and optimization by Rusty.
+   Full algorithm by Yogin.  Original typing and optimization by Rusty.
 
    This code has lots of debugging.  It is there for a reason:
    this code is kinda tricky.  Do not remove it.
@@ -160,10 +160,16 @@ public:
 
 private:
 	// This gives me 10% speed improvement over std::vector<> (g++4.0.3 x86)
-	double *new_arr(unsigned int size);
+	double *new_plane();
+
+	void initialize_plane(unsigned plane, unsigned a_cur, unsigned b_cur,
+	                      const std::vector<double> & a_initial,
+	                      const std::vector<double> & b_initial);
+	void initialize_row(unsigned plane, unsigned row, double row_prob,
+	                    unsigned b_cur, const std::vector<double> & b_initial);
 
 private: // data
-	unsigned int rows_, cols_;
+	const unsigned int rows_, cols_;
 	double *plane_[4];
 
 	// For optimization, we keep track of the lower row/col we need to consider
@@ -183,78 +189,49 @@ private: // data
  * @param  b_initial      The initial distribution of values for B. Element [0] is for normal B. while [1] is for slowed B.
  */
 prob_matrix::prob_matrix(unsigned int a_max, unsigned int b_max,
-	                     bool need_a_slowed, bool need_b_slowed,
+                         bool need_a_slowed, bool need_b_slowed,
                          unsigned int a_cur, unsigned int b_cur,
                          const std::vector<double> a_initial[2],
                          const std::vector<double> b_initial[2])
 	: rows_(a_max+1), cols_(b_max+1)
 {
+	// Make sure we do not access the matrix in invalid positions.
+	a_cur = std::min<unsigned int>(a_cur, rows_ - 1);
+	b_cur = std::min<unsigned int>(b_cur, cols_ - 1);
+
 	// We will need slowed planes if the initial vectors have them.
-	if (!a_initial[0].empty()) {
-		// A has fought before.  Do we need a slow plane for it?
-		if (!a_initial[1].empty())
-			need_a_slowed = true;
-		// Don't handle both being reused.
-		assert(b_initial[0].empty());
-	}
-	if (!b_initial[0].empty()) {
-		// B has fought before.  Do we need a slow plane for it?
-		if (!b_initial[1].empty())
-			need_b_slowed = true;
-	}
+	need_a_slowed =  need_a_slowed || !a_initial[1].empty();
+	need_b_slowed =  need_b_slowed || !b_initial[1].empty();
 
 	// Allocate the needed planes.
-	plane_[NEITHER_SLOWED] = new_arr(rows_*cols_);
-	if ( need_a_slowed )
-		plane_[A_SLOWED] = new_arr(rows_*cols_);
-	else
-		plane_[A_SLOWED] = NULL;
-	if ( need_b_slowed )
-		plane_[B_SLOWED] = new_arr(rows_*cols_);
-	else
-		plane_[B_SLOWED] = NULL;
-	if ( need_a_slowed && need_b_slowed )
-		plane_[BOTH_SLOWED] = new_arr(rows_*cols_);
-	else
-		plane_[BOTH_SLOWED] = NULL;
+	plane_[NEITHER_SLOWED] = new_plane();
+	plane_[A_SLOWED] = !need_a_slowed ? NULL : new_plane();
+	plane_[B_SLOWED] = !need_b_slowed ? NULL : new_plane();
+	plane_[BOTH_SLOWED] = !(need_a_slowed && need_b_slowed) ? NULL : new_plane();
 
-	min_row_[NEITHER_SLOWED] = a_cur - 1;
-	min_col_[NEITHER_SLOWED] = b_cur - 1;
+	// Default min_row_ and min_col_ for the planes that might not need
+	// initialization.
 	min_row_[A_SLOWED] = min_row_[B_SLOWED] = min_row_[BOTH_SLOWED] = rows_;
 	min_col_[A_SLOWED] = min_col_[B_SLOWED] = min_col_[BOTH_SLOWED] = cols_;
 
-	// Transfer HP distribution from A?
-	if (!a_initial[0].empty()) {
-		// @todo FIXME: Can optimize here.
-		min_row_[NEITHER_SLOWED] = 0;
-		min_row_[A_SLOWED] = 0;
-		min_col_[A_SLOWED] = b_cur - 1;
-		for (unsigned int row = 0; row < a_initial[0].size(); ++row)
-			val(NEITHER_SLOWED, row, b_cur) = a_initial[0][row];
-		if (!a_initial[1].empty()) {
-			for (unsigned int row = 0; row < a_initial[1].size(); ++row)
-				val(A_SLOWED, row, b_cur) = a_initial[1][row];
-		}
-		debug(("A has fought before\n"));
+	// Initialize the probability distribution.
+	initialize_plane(NEITHER_SLOWED, a_cur, b_cur, a_initial[0], b_initial[0]);
+	if ( !a_initial[1].empty() )
+		initialize_plane(A_SLOWED, a_cur, b_cur, a_initial[1], b_initial[0]);
+	if ( !b_initial[1].empty() )
+		initialize_plane(B_SLOWED, a_cur, b_cur, a_initial[0], b_initial[1]);
+	if ( !a_initial[1].empty() && !b_initial[1].empty() )
+		// Currently will not happen, but to be complete...
+		initialize_plane(BOTH_SLOWED, a_cur, b_cur, a_initial[1], b_initial[1]);
+
+	// Some debugging messages.
+	if ( !a_initial[0].empty() ) {
+		debug(("A has fought before.\n"));
 		dump();
-	} else if (!b_initial[0].empty()) {
-		min_col_[NEITHER_SLOWED] = 0;
-		min_col_[B_SLOWED] = 0;
-		min_row_[B_SLOWED] = a_cur - 1;
-		for (unsigned int col = 0; col < b_initial[0].size(); ++col)
-			val(NEITHER_SLOWED, a_cur, col) = b_initial[0][col];
-		if (!b_initial[1].empty()) {
-			for (unsigned int col = 0; col < b_initial[1].size(); ++col)
-				val(B_SLOWED, a_cur, col) = b_initial[1][col];
-		}
-		debug(("B has fought before\n"));
+	}
+	else if ( !b_initial[0].empty() ) {
+		debug(("B has fought before.\n"));
 		dump();
-	} else {
-		// If a unit has drain it might end with more HP than before.
-		// Make sure we don't access the matrix in invalid positions.
-		a_cur = std::min<unsigned int>(a_cur, rows_ - 1);
-		b_cur = std::min<unsigned int>(b_cur, cols_ - 1);
-		val(NEITHER_SLOWED, a_cur, b_cur) = 1.0;
 	}
 }
 
@@ -266,12 +243,72 @@ prob_matrix::~prob_matrix()
 	delete[] plane_[BOTH_SLOWED];
 }
 
-// Allocate a new probability array, initialized to 0.
-double *prob_matrix::new_arr(unsigned int size)
+/** Allocate a new probability array, initialized to 0. */
+double *prob_matrix::new_plane()
 {
+	unsigned int size = rows_ * cols_;
 	double *arr = new double[size];
 	memset(arr, 0, sizeof(double) * size);
 	return arr;
+}
+
+/**
+ * Fills the indicated plane with its initial (non-zero) values.
+ * (Part of construction)
+ * @param  plane          The plane to initialize.
+ * @param  a_cur          The current value for A. (Ignored if a_initial is not empty.)
+ * @param  b_cur          The current value for B. (Ignored if b_initial is not empty.)
+ * @param  a_initial      The initial distribution of values for A for this plane.
+ * @param  b_initial      The initial distribution of values for B for this plane.
+ */
+void prob_matrix::initialize_plane(unsigned plane, unsigned a_cur, unsigned b_cur,
+                                   const std::vector<double> & a_initial,
+                                   const std::vector<double> & b_initial)
+{
+	if ( !a_initial.empty() ) {
+		unsigned row_count = std::min<unsigned>(a_initial.size(), rows_);
+		// @todo FIXME: Can optimize here.
+		min_row_[plane] = 0;
+		// The probabilities for each row are contained in a_initial.
+		for ( unsigned row = 0; row < row_count; ++row ) {
+			if ( a_initial[row] != 0.0 )
+				initialize_row(plane, row, a_initial[row], b_cur, b_initial);
+		}
+	}
+	else {
+		min_row_[plane] = a_cur - 1;
+		// Only the row indicated by a_cur is a possibility.
+		initialize_row(plane, a_cur, 1.0, b_cur, b_initial);
+	}
+}
+
+/**
+ * Fills the indicated row with its initial (non-zero) values.
+ * (Part of construction)
+ * @param  plane          The plane containing the row to initialize.
+ * @param  row            The row to initialize.
+ * @param  row_prob       The probability of A having the value for this row.
+ * @param  b_cur          The current value for B. (Ignored if b_initial is not empty.)
+ * @param  b_initial      The initial distribution of values for B for this plane.
+ */
+void prob_matrix::initialize_row(unsigned plane, unsigned row, double row_prob,
+                                 unsigned b_cur, const std::vector<double> & b_initial)
+{
+	if ( !b_initial.empty() ) {
+		unsigned col_count = std::min<unsigned>(b_initial.size(), cols_);
+		// @todo FIXME: Can optimize here.
+		min_col_[plane] = 0;
+		// The probabilities for each column are contained in b_initial.
+		for ( unsigned col = 0; col < col_count; ++col ) {
+			if ( b_initial[col] != 0.0 )
+				val(plane, row, col) = row_prob * b_initial[col];
+		}
+	}
+	else {
+		min_col_[plane] = b_cur - 1;
+		// Only the column indicated by b_cur is a possibility.
+		val(plane, row, b_cur) = row_prob;
+	}
 }
 
 double &prob_matrix::val(unsigned p, unsigned row, unsigned col)
