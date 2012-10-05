@@ -97,6 +97,19 @@ namespace
 {
 
 /**
+ * A shorthand utility for forcing a value between minimum and maximum values.
+ */
+template<typename T>
+const T& limit(const T& val, const T& min, const T& max)
+{
+	if ( val < min )
+		return min;
+	if ( val > max )
+		return max;
+	return val;
+}
+
+/**
  * A matrix of A's hitpoints vs B's hitpoints vs. their slowed states.
  * This class is concerned only with the matrix implementation and
  * implements functionality for shifting and retrieving probabilities
@@ -346,13 +359,6 @@ void prob_matrix::xfer(unsigned dst_plane, unsigned src_plane,
 	if (src != 0.0) {
 		double diff = src * prob;
 		src -= diff;
-
-		// This is here for drain.
-		if (col_dst >= cols_)
-			col_dst = cols_ - 1;
-		if (row_dst >= rows_)
-			row_dst = rows_ - 1;
-
 		val(dst_plane, row_dst, col_dst) += diff;
 
 		debug(("Shifted %4.3g from %s(%u,%u) to %s(%u,%u).\n",
@@ -415,12 +421,12 @@ void prob_matrix::shift_cols_in_row(unsigned dst, unsigned src, unsigned row,
 		// These variables are not strictly necessary, but they make the
 		// calculation easier to parse.
 		int drain_amount = static_cast<int>(col)*drain_percent/100 + drain_constant;
-		unsigned newrow = std::max(1, static_cast<int>(row) + drain_amount);
+		unsigned newrow = limit<int>(static_cast<int>(row) + drain_amount, 1, rows_-1);
 		xfer(dst, src, newrow, 0, row, col, prob);
 	}
 
 	// The remaining columns use the specified drainmax.
-	unsigned newrow = std::max(1, static_cast<int>(row) + drainmax);
+	unsigned newrow = limit<int>(static_cast<int>(row) + drainmax, 1, rows_-1);
 	for ( ; col < cols_; ++col )
 		xfer(dst, src, newrow, col - damage, row, col, prob);
 }
@@ -485,12 +491,12 @@ void prob_matrix::shift_rows_in_col(unsigned dst, unsigned src, unsigned col,
 		// These variables are not strictly necessary, but they make the
 		// calculation easier to parse.
 		int drain_amount = static_cast<int>(row)*drain_percent/100 + drain_constant;
-		unsigned newcol = std::max(1, static_cast<int>(col) + drain_amount);
+		unsigned newcol = limit<int>(static_cast<int>(col) + drain_amount, 1, cols_-1);
 		xfer(dst, src, 0, newcol, row, col, prob);
 	}
 
 	// The remaining columns use the specified drainmax.
-	unsigned newcol = std::max(1, static_cast<int>(col) + drainmax);
+	unsigned newcol = limit<int>(static_cast<int>(col) + drainmax, 1, cols_-1);
 	for ( ; row < rows_; ++row )
 		xfer(dst, src, row - damage, newcol, row, col, prob);
 }
