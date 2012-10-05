@@ -761,6 +761,9 @@ public:
 	double dead_prob_b() const  { return prob_of_zero(false, true); }
 
 	void dump() const { prob_matrix::dump(); }
+
+private:
+	unsigned a_max_hp_, b_max_hp_;
 };
 
 
@@ -782,6 +785,7 @@ combat_matrix::combat_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
                              const std::vector<double> b_summary[2])
 	// The inversion of the order of the *_slows parameters here is intentional.
 	: prob_matrix(a_max_hp, b_max_hp, b_slows, a_slows, a_hp, b_hp, a_summary, b_summary)
+	, a_max_hp_(a_max_hp), b_max_hp_(b_max_hp)
 {
 }
 
@@ -858,31 +862,31 @@ void combat_matrix::remove_petrify_distortion_b(unsigned damage, unsigned slow_d
 
 void combat_matrix::forced_levelup_a()
 {
-	/* Move all the values (except 0hp) of all the planes to the last
+	/* Move all the values (except 0hp) of all the planes to the "fully healed"
 	   row of the planes unslowed for A. */
 	for (int p = 0; p < 4; ++p) {
 		if ( plane_used(p) )
-			merge_cols(p & -2, p, num_rows() - 1);
+			merge_cols(p & -2, p, a_max_hp_);
 	}
 }
 
 void combat_matrix::forced_levelup_b()
 {
-	/* Move all the values (except 0hp) of all the planes to the last
+	/* Move all the values (except 0hp) of all the planes to the "fully healed"
 	   column of planes unslowed for B. */
 	for (int p = 0; p < 4; ++p) {
 		if ( plane_used(p) )
-			merge_rows(p & -3, p, num_cols() - 1);
+			merge_rows(p & -3, p, b_max_hp_);
 	}
 }
 
 void combat_matrix::conditional_levelup_a()
 {
 	/* Move the values of the first column (except 0hp) of all the
-	   planes to the last row of the planes unslowed for A. */
+	   planes to the "fully healed" row of the planes unslowed for A. */
 	for (int p = 0; p < 4; ++p) {
 		if ( plane_used(p) )
-			merge_col(p & -2, p, 0, num_rows() - 1);
+			merge_col(p & -2, p, 0, a_max_hp_);
 	}
 }
 
@@ -892,7 +896,7 @@ void combat_matrix::conditional_levelup_b()
 	   planes to the last column of the planes unslowed for B. */
 	for (int p = 0; p < 4; ++p) {
 		if ( plane_used(p) )
-			merge_row(p & -3, p, 0, num_cols() - 1);
+			merge_row(p & -3, p, 0, b_max_hp_);
 	}
 }
 
