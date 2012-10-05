@@ -149,11 +149,15 @@ public:
 	double &val(unsigned plane, unsigned row, unsigned col);
 	const double &val(unsigned plane, unsigned row, unsigned col) const;
 
-	// Move this much from src to dst.  Returns true if anything transferred.
+	/// Transfers a portion (value * prob) of one value in the matrix to another.
 	void xfer(unsigned dst_plane, unsigned src_plane,
 			  unsigned row_dst, unsigned col_dst,
 			  unsigned row_src, unsigned col_src,
 			  double prob);
+	/// Transfers one value in the matrix to another.
+	void xfer(unsigned dst_plane, unsigned src_plane,
+	          unsigned row_dst, unsigned col_dst,
+	          unsigned row_src, unsigned col_src);
 
 private:
 	// This gives me 10% speed improvement over std::vector<> (g++4.0.3 x86)
@@ -351,7 +355,7 @@ void prob_matrix::xfer(unsigned dst_plane, unsigned src_plane,
 
 		val(dst_plane, row_dst, col_dst) += diff;
 
-		debug(("Shifted %4.3g from %s(%u,%u) to %s(%u,%u)\n",
+		debug(("Shifted %4.3g from %s(%u,%u) to %s(%u,%u).\n",
 			   diff, src_plane == NEITHER_SLOWED ? ""
 			   : src_plane == A_SLOWED ? "[A_SLOWED]"
 			   : src_plane == B_SLOWED ? "[B_SLOWED]"
@@ -362,6 +366,36 @@ void prob_matrix::xfer(unsigned dst_plane, unsigned src_plane,
 			   : dst_plane == B_SLOWED ? "[B_SLOWED]"
 			   : dst_plane == BOTH_SLOWED ? "[BOTH_SLOWED]" : "INVALID",
 			   row_dst, col_dst));
+	}
+}
+
+/**
+ * Transfers one value in the matrix to another.
+ */
+void prob_matrix::xfer(unsigned dst_plane, unsigned src_plane,
+                       unsigned row_dst, unsigned col_dst,
+                       unsigned row_src, unsigned col_src)
+{
+	if ( dst_plane == src_plane  &&  row_dst == row_src  &&  col_dst == col_src )
+		// Transferring to itself. Nothing to do.
+		return;
+
+	double &src = val(src_plane, row_src, col_src);
+	if ( src != 0.0 ) {
+		debug(("Shifting %4.3g from %s(%u,%u) to %s(%u,%u).\n",
+			   src, src_plane == NEITHER_SLOWED ? ""
+			   : src_plane == A_SLOWED ? "[A_SLOWED]"
+			   : src_plane == B_SLOWED ? "[B_SLOWED]"
+			   : src_plane == BOTH_SLOWED ? "[BOTH_SLOWED]" : "INVALID",
+			   row_src, col_src,
+			   dst_plane == NEITHER_SLOWED ? ""
+			   : dst_plane == A_SLOWED ? "[A_SLOWED]"
+			   : dst_plane == B_SLOWED ? "[B_SLOWED]"
+			   : dst_plane == BOTH_SLOWED ? "[BOTH_SLOWED]" : "INVALID",
+			   row_dst, col_dst));
+
+		val(dst_plane, row_dst, col_dst) += src;
+		src = 0.0;
 	}
 }
 
@@ -678,11 +712,11 @@ void combat_matrix::remove_petrify_distortion_a(unsigned damage, unsigned slow_d
 		if (p & 1) {
 			if (b_hp > slow_damage)
 				for (unsigned int row = 0; row < num_rows(); ++row)
-					xfer(p, p, row, b_hp - slow_damage, row, 0, 1.0);
+					xfer(p, p, row, b_hp - slow_damage, row, 0);
 		} else {
 			if (b_hp > damage)
 				for (unsigned int row = 0; row < num_rows(); ++row)
-					xfer(p, p, row, b_hp - damage, row, 0, 1.0);
+					xfer(p, p, row, b_hp - damage, row, 0);
 		}
 	}
 }
@@ -698,11 +732,11 @@ void combat_matrix::remove_petrify_distortion_b(unsigned damage, unsigned slow_d
 		if (p & 2) {
 			if (a_hp > slow_damage)
 				for (unsigned int col = 0; col < num_cols(); ++col)
-					xfer(p, p, a_hp - slow_damage, col, 0, col, 1.0);
+					xfer(p, p, a_hp - slow_damage, col, 0, col);
 		} else {
 			if (a_hp > damage)
 				for (unsigned int col = 0; col < num_cols(); ++col)
-					xfer(p, p, a_hp - damage, col, 0, col, 1.0);
+					xfer(p, p, a_hp - damage, col, 0, col);
 		}
 	}
 }
@@ -716,9 +750,7 @@ void combat_matrix::forced_levelup_a()
 			continue;
 		for (unsigned row = std::max(min_row(p), 1u); row < num_rows(); ++row) {
 			for (unsigned col = min_col(p); col < num_cols(); ++col) {
-				double v = val(p, row, col);
-				val(p, row, col) = 0;
-				val(p & -2, num_rows() - 1, col) += v;
+				xfer(p & -2, p, num_rows() - 1, col, row, col);
 			}
 		}
 	}
@@ -733,9 +765,7 @@ void combat_matrix::forced_levelup_b()
 			continue;
 		for (unsigned row = min_row(p); row < num_rows(); ++row) {
 			for (unsigned col = std::max(min_col(p), 1u); col < num_cols(); ++col) {
-				double v = val(p, row, col);
-				val(p, row, col) = 0;
-				val(p & -3, row, num_cols() - 1) += v;
+				xfer(p & -3, p, row, num_cols() - 1, row, col);
 			}
 		}
 	}
@@ -749,9 +779,7 @@ void combat_matrix::conditional_levelup_a()
 		if ( !plane_used(p) )
 			continue;
 		for (unsigned row = std::max(min_row(p), 1u); row < num_rows(); ++row) {
-			double v = val(p, row, 0);
-			val(p, row, 0) = 0;
-			val(p & -2, num_rows() - 1, 0) += v;
+			xfer(p & -2, p, num_rows() - 1, 0, row, 0);
 		}
 	}
 }
@@ -764,9 +792,7 @@ void combat_matrix::conditional_levelup_b()
 		if ( !plane_used(p) )
 			continue;
 		for (unsigned col = std::max(min_col(p), 1u); col < num_cols(); ++col) {
-			double v = val(p, 0, col);
-			val(p, 0, col) = 0;
-			val(p & -3, 0, num_cols() - 1) += v;
+			xfer(p & -3, p, 0, num_cols() - 1, 0, col);
 		}
 	}
 }
