@@ -724,20 +724,21 @@ class combat_matrix : private prob_matrix
 {
 public:
 	combat_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
-				bool a_slows, bool b_slows,
-				unsigned int a_hp, unsigned int b_hp,
-				const std::vector<double> a_summary[2],
-				const std::vector<double> b_summary[2]);
+	              unsigned int a_hp, unsigned int b_hp,
+	              const std::vector<double> a_summary[2],
+	              const std::vector<double> b_summary[2],
+	              bool a_slows, bool b_slows,
+	              unsigned int a_damage, unsigned int b_damage,
+	              unsigned int a_slow_damage, unsigned int b_slow_damage,
+	              int a_drain_percent, int b_drain_percent,
+	              int a_drain_constant, int b_drain_constant);
 
 	~combat_matrix() {}
 
 	// A hits B.
-	void receive_blow_b(unsigned damage, unsigned slow_damage, double hit_chance,
-						bool a_slows, int a_drain_constant, int a_drain_percent);
-
+	void receive_blow_b(double hit_chance);
 	// B hits A.  Why can't they just get along?
-	void receive_blow_a(unsigned damage, unsigned slow_damage, double hit_chance,
-						bool b_slows, int b_drain_constant, int b_drain_percent);
+	void receive_blow_a(double hit_chance);
 
 	// We lied: actually did less damage, adjust matrix.
 	void remove_petrify_distortion_a(unsigned damage, unsigned slow_damage, unsigned b_hp);
@@ -763,7 +764,19 @@ public:
 	void dump() const { prob_matrix::dump(); }
 
 private:
-	unsigned a_max_hp_, b_max_hp_;
+	unsigned a_max_hp_;
+	bool     a_slows_;
+	unsigned a_damage_;
+	unsigned a_slow_damage_;
+	int      a_drain_percent_;
+	int      a_drain_constant_;
+
+	unsigned b_max_hp_;
+	bool     b_slows_;
+	unsigned b_damage_;
+	unsigned b_slow_damage_;
+	int      b_drain_percent_;
+	int      b_drain_constant_;
 };
 
 
@@ -779,20 +792,28 @@ private:
  * @param  b_summary      The hit point distribution for B (from previous combats). Element [0] is for normal B. while [1] is for slowed B.
  */
 combat_matrix::combat_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
-                             bool a_slows, bool b_slows,
                              unsigned int a_hp, unsigned int b_hp,
                              const std::vector<double> a_summary[2],
-                             const std::vector<double> b_summary[2])
+                             const std::vector<double> b_summary[2],
+                             bool a_slows, bool b_slows,
+                             unsigned int a_damage, unsigned int b_damage,
+                             unsigned int a_slow_damage, unsigned int b_slow_damage,
+                             int a_drain_percent, int b_drain_percent,
+                             int a_drain_constant, int b_drain_constant)
 	// The inversion of the order of the *_slows parameters here is intentional.
-	: prob_matrix(a_max_hp, b_max_hp, b_slows, a_slows, a_hp, b_hp, a_summary, b_summary)
-	, a_max_hp_(a_max_hp), b_max_hp_(b_max_hp)
+	: prob_matrix(a_max_hp, b_max_hp, b_slows, a_slows, a_hp, b_hp, a_summary, b_summary),
+
+	  a_max_hp_(a_max_hp), a_slows_(a_slows), a_damage_(a_damage), a_slow_damage_(a_slow_damage),
+	  a_drain_percent_(a_drain_percent), a_drain_constant_(a_drain_constant),
+
+	  b_max_hp_(b_max_hp), b_slows_(b_slows), b_damage_(b_damage), b_slow_damage_(b_slow_damage),
+	  b_drain_percent_(b_drain_percent), b_drain_constant_(b_drain_constant)
 {
 }
 
-// Shift combat_matrix to reflect probability 'hit_chance'
-// that damage (up to) 'damage' is done to 'b'.
-void combat_matrix::receive_blow_b(unsigned damage, unsigned slow_damage, double hit_chance,
-								 bool a_slows, int a_drain_constant, int a_drain_percent)
+// Shift combat_matrix to reflect the probability 'hit_chance' that damage
+// is done to 'b'.
+void combat_matrix::receive_blow_b(double hit_chance)
 {
 	// Walk backwards so we don't copy already-copied matrix planes.
 	for (int src = 3; src >=0; src--) {
@@ -800,19 +821,18 @@ void combat_matrix::receive_blow_b(unsigned damage, unsigned slow_damage, double
 			continue;
 
 		// If A slows us, we go from 0=>2, 1=>3, 2=>2 3=>3.
-		int dst = a_slows ? src|2 : src;
+		int dst = a_slows_ ? src|2 : src;
 
 		// A is slow in planes 1 and 3.
-		unsigned int actual_damage = src & 1 ? slow_damage : damage;
+		unsigned damage = src & 1 ? a_slow_damage_ : a_damage_;
 
-		shift_cols(dst, src, actual_damage, hit_chance, a_drain_constant, a_drain_percent);
+		shift_cols(dst, src, damage, hit_chance, a_drain_constant_, a_drain_percent_);
 	}
 }
 
 // Shift matrix to reflect probability 'hit_chance'
 // that damage (up to) 'damage' is done to 'a'.
-void combat_matrix::receive_blow_a(unsigned damage, unsigned slow_damage, double hit_chance,
-								 bool b_slows, int b_drain_constant, int b_drain_percent)
+void combat_matrix::receive_blow_a(double hit_chance)
 {
 	// Walk backwards so we don't copy already-copied matrix planes.
 	for (int src = 3; src >=0; src--) {
@@ -820,12 +840,12 @@ void combat_matrix::receive_blow_a(unsigned damage, unsigned slow_damage, double
 			continue;
 
 		// If B slows us, we go from 0=>1, 1=>1, 2=>3 3=>3.
-		int dst = b_slows ? src|1 : src;
+		int dst = b_slows_ ? src|1 : src;
 
 		// B is slow in planes 2 and 3.
-		unsigned actual_damage = src & 2 ? slow_damage : damage;
+		unsigned damage = src & 2 ? b_slow_damage_ : b_damage_;
 
-		shift_rows(dst, src, actual_damage, hit_chance, b_drain_constant, b_drain_percent);
+		shift_rows(dst, src, damage, hit_chance, b_drain_constant_, b_drain_percent_);
 	}
 }
 
@@ -1194,10 +1214,6 @@ void combatant::one_strike_fight(combatant &opp, bool levelup_considered,
 void combatant::complex_fight(combatant &opp, unsigned rounds, bool levelup_considered,
                               double & self_not_hit, double & opp_not_hit)
 {
-	combat_matrix m(hp_dist.size()-1, opp.hp_dist.size()-1,
-	                u_.slows && !opp.u_.is_slowed, opp.u_.slows && !u_.is_slowed,
-	                u_.hp, opp.u_.hp, summary, opp.summary);
-
 	unsigned max_attacks = std::max(hit_chances_.size(), opp.hit_chances_.size());
 
 	debug(("A gets %zu attacks, B %zu\n", hit_chances_.size(), opp.hit_chances_.size()));
@@ -1206,25 +1222,32 @@ void combatant::complex_fight(combatant &opp, unsigned rounds, bool levelup_cons
 	unsigned int b_damage = opp.u_.damage, b_slow_damage = opp.u_.slow_damage;
 
 	// To simulate stoning, we set to amount which kills, and re-adjust after.
-	/** @todo FIXME: This doesn't work for rolling calculations, just first battle. */
+	/** @todo FIXME: This doesn't work for rolling calculations, just first battle.
+	                 It also does not work if combined with (percentage) drain. */
 	if (u_.petrifies)
 		a_damage = a_slow_damage = opp.u_.max_hp;
 	if (opp.u_.petrifies)
 		b_damage = b_slow_damage = u_.max_hp;
 
+	// Prepare the matrix that will do our calculations.
+	combat_matrix m(hp_dist.size()-1, opp.hp_dist.size()-1,
+	                u_.hp, opp.u_.hp, summary, opp.summary,
+	                u_.slows && !opp.u_.is_slowed, opp.u_.slows && !u_.is_slowed,
+	                a_damage, b_damage, a_slow_damage, b_slow_damage,
+	                u_.drain_percent, opp.u_.drain_percent,
+	                u_.drain_constant, opp.u_.drain_constant);
+
 	do {
 		for (unsigned int i = 0; i < max_attacks; ++i) {
 			if (i < hit_chances_.size()) {
 				debug(("A strikes\n"));
-				m.receive_blow_b(a_damage, a_slow_damage, hit_chances_[i],
-								 u_.slows && !opp.u_.is_slowed, u_.drain_constant, u_.drain_percent);
+				m.receive_blow_b(hit_chances_[i]);
 				m.dump();
 				opp_not_hit *= 1.0 - hit_chances_[i]*(1.0-m.dead_prob_a());
 			}
 			if (i < opp.hit_chances_.size()) {
 				debug(("B strikes\n"));
-				m.receive_blow_a(b_damage, b_slow_damage, opp.hit_chances_[i],
-								 opp.u_.slows && !u_.is_slowed, opp.u_.drain_constant, opp.u_.drain_percent);
+				m.receive_blow_a(opp.hit_chances_[i]);
 				m.dump();
 				self_not_hit *= 1.0 - opp.hit_chances_[i]*(1.0-m.dead_prob_b());
 			}
