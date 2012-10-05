@@ -148,16 +148,15 @@ public:
 
 	/// What is the chance that an indicated combatant (one of them) is at zero?
 	double prob_of_zero(bool check_a, bool check_b) const;
+	/// Sums the values in the specified plane.
+	void sum(unsigned plane, std::vector<double> & row_sums,
+	         std::vector<double> & col_sums) const;
 
 	/// Returns true if the specified plane might have data in it.
 	bool plane_used(unsigned p) const { return p < 4  &&  plane_[p] != NULL; }
 
 	unsigned int num_rows() const { return rows_; }
 	unsigned int num_cols() const { return cols_; }
-
-	// To allow a more optimized loop through data:
-	unsigned int min_row(unsigned plane) const { return min_row_[plane]; }
-	unsigned int min_col(unsigned plane) const { return min_col_[plane]; }
 
 	// Debugging tool.
 	void dump() const;
@@ -171,6 +170,16 @@ public:
 		BOTH_SLOWED
 	};
 
+private:
+	// This gives me 10% speed improvement over std::vector<> (g++4.0.3 x86)
+	double *new_plane();
+
+	void initialize_plane(unsigned plane, unsigned a_cur, unsigned b_cur,
+	                      const std::vector<double> & a_initial,
+	                      const std::vector<double> & b_initial);
+	void initialize_row(unsigned plane, unsigned row, double row_prob,
+	                    unsigned b_cur, const std::vector<double> & b_initial);
+
 	double &val(unsigned plane, unsigned row, unsigned col);
 	const double &val(unsigned plane, unsigned row, unsigned col) const;
 
@@ -183,16 +192,6 @@ public:
 	void xfer(unsigned dst_plane, unsigned src_plane,
 	          unsigned row_dst, unsigned col_dst,
 	          unsigned row_src, unsigned col_src);
-
-private:
-	// This gives me 10% speed improvement over std::vector<> (g++4.0.3 x86)
-	double *new_plane();
-
-	void initialize_plane(unsigned plane, unsigned a_cur, unsigned b_cur,
-	                      const std::vector<double> & a_initial,
-	                      const std::vector<double> & b_initial);
-	void initialize_row(unsigned plane, unsigned row, double row_prob,
-	                    unsigned b_cur, const std::vector<double> & b_initial);
 
 	void shift_cols_in_row(unsigned dst, unsigned src, unsigned row,
 	                       unsigned damage, double prob, int drainmax,
@@ -673,6 +672,22 @@ double prob_matrix::prob_of_zero(bool check_a, bool check_b) const
 	return prob;
 }
 
+/**
+ * Sums the values in the specified plane.
+ * The sum of each row is added to the corresponding entry in row_sums.
+ * The sum of each column is added to the corresponding entry in col_sums.
+ */
+void prob_matrix::sum(unsigned plane, std::vector<double> & row_sums,
+                      std::vector<double> & col_sums) const
+{
+	for ( unsigned row = min_row_[plane]; row < rows_; ++row )
+		for ( unsigned col = min_col_[plane]; col < cols_; ++col ) {
+			const double & prob = val(plane, row, col);
+			row_sums[row] += prob;
+			col_sums[col] += prob;
+		}
+}
+
 #if defined(CHECK) && defined(ATTACK_PREDICTION_DEBUG)
 void prob_matrix::dump() const
 {
@@ -882,10 +897,9 @@ void combat_matrix::conditional_levelup_b()
 }
 
 void combat_matrix::extract_results(std::vector<double> summary_a[2],
-								  std::vector<double> summary_b[2])
+                                    std::vector<double> summary_b[2])
 {
-	unsigned int p, row, col;
-
+	// Reset the summaries.
 	summary_a[0] = std::vector<double>(num_rows());
 	summary_b[0] = std::vector<double>(num_cols());
 
@@ -894,21 +908,15 @@ void combat_matrix::extract_results(std::vector<double> summary_a[2],
 	if ( plane_used(B_SLOWED) )
 		summary_b[1] = std::vector<double>(num_cols());
 
-	for (p = 0; p < 4; ++p) {
-		int dst_a, dst_b;
+	for (unsigned p = 0; p < 4; ++p) {
 		if ( !plane_used(p) )
 			continue;
 
 		// A is slow in planes 1 and 3.
-		dst_a = (p & 1);
+		unsigned dst_a = (p & 1) ? 1u : 0u;
 		// B is slow in planes 2 and 3.
-		dst_b = !!(p & 2);
-		for (row = 0; row < num_rows(); ++row) {
-			for (col = 0; col < num_cols(); ++col) {
-				summary_a[dst_a][row] += val(p, row, col);
-				summary_b[dst_b][col] += val(p, row, col);
-			}
-		}
+		unsigned dst_b = (p & 2) ? 1u : 0u;
+		sum(p, summary_a[dst_a], summary_b[dst_b]);
 	}
 }
 
