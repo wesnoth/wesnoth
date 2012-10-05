@@ -140,6 +140,12 @@ public:
 	void move_row(unsigned d_plane, unsigned s_plane,
 	              unsigned d_row, unsigned s_row);
 
+	// Move values within a row (or column) to a specified column (or row).
+	void merge_col(unsigned d_plane, unsigned s_plane, unsigned col, unsigned d_row);
+	void merge_cols(unsigned d_plane, unsigned s_plane, unsigned d_row);
+	void merge_row(unsigned d_plane, unsigned s_plane, unsigned row, unsigned d_col);
+	void merge_rows(unsigned d_plane, unsigned s_plane, unsigned d_col);
+
 	/// What is the chance that an indicated combatant (one of them) is at zero?
 	double prob_of_zero(bool check_a, bool check_b) const;
 
@@ -578,6 +584,72 @@ void prob_matrix::move_row(unsigned d_plane, unsigned s_plane,
 }
 
 /**
+ * Move values in the specified column -- excluding row zero -- to the
+ * specified row in that column (possibly shifting planes in the process).
+ */
+void prob_matrix::merge_col(unsigned d_plane, unsigned s_plane, unsigned col,
+                            unsigned d_row)
+{
+	// Update the minimum row and column.
+	min_col_[d_plane] = std::min(min_col_[d_plane], col);
+	min_row_[d_plane] = std::min(min_row_[d_plane], d_row);
+
+	// Transfer the data, excluding row zero.
+	for (unsigned row = std::max(1u, min_row_[s_plane]); row < rows_; ++row)
+		xfer(d_plane, s_plane, d_row, col, row, col);
+}
+
+/**
+ * Move values within columns in the specified plane -- excluding row zero --
+ * to the specified row (possibly shifting planes in the process).
+ */
+void prob_matrix::merge_cols(unsigned d_plane, unsigned s_plane, unsigned d_row)
+{
+	// Update the minimum row and column.
+	min_row_[d_plane] = std::min(min_row_[d_plane], d_row);
+	min_col_[d_plane] = std::min(min_col_[d_plane], min_col_[s_plane]);
+
+	// Transfer the data, excluding row zero.
+	for (unsigned row = std::max(1u, min_row_[s_plane]); row < rows_; ++row)
+		for (unsigned col = min_col_[s_plane]; col < cols_; ++col)
+			xfer(d_plane, s_plane, d_row, col, row, col);
+}
+
+/**
+ * Move values in the specified row -- excluding column zero -- to the
+ * specified column in that row (possibly shifting planes in the process).
+ */
+void prob_matrix::merge_row(unsigned d_plane, unsigned s_plane, unsigned row,
+                            unsigned d_col)
+{
+	// Update the minimum row and column.
+	min_col_[d_plane] = std::min(min_col_[d_plane], d_col);
+	min_row_[d_plane] = std::min(min_row_[d_plane], row);
+
+	// Transfer the data, excluding column zero.
+	for (unsigned col = std::max(1u, min_col_[s_plane]); col < cols_; ++col) 
+		xfer(d_plane, s_plane, row, d_col, row, col);
+}
+
+
+/**
+ * Move values within rows in the specified plane -- excluding column zero --
+ * to the specified column (possibly shifting planes in the process).
+ */
+void prob_matrix::merge_rows(unsigned d_plane, unsigned s_plane, unsigned d_col)
+{
+	// Update the minimum row and column.
+	min_col_[d_plane] = std::min(min_col_[d_plane], d_col);
+	min_row_[d_plane] = std::min(min_row_[d_plane], min_row_[s_plane]);
+
+	// Transfer the data, excluding column zero.
+	for (unsigned row = min_row_[s_plane]; row < rows_; ++row)
+		// (excluding column zero)
+		for (unsigned col = std::max(1u, min_col_[s_plane]); col < cols_; ++col)
+			xfer(d_plane, s_plane, row, d_col, row, col);
+}
+
+/**
  * What is the chance that an indicated combatant (one of them) is at zero?
  */
 double prob_matrix::prob_of_zero(bool check_a, bool check_b) const
@@ -774,13 +846,8 @@ void combat_matrix::forced_levelup_a()
 	/* Move all the values (except 0hp) of all the planes to the last
 	   row of the planes unslowed for A. */
 	for (int p = 0; p < 4; ++p) {
-		if ( !plane_used(p) )
-			continue;
-		for (unsigned row = std::max(min_row(p), 1u); row < num_rows(); ++row) {
-			for (unsigned col = min_col(p); col < num_cols(); ++col) {
-				xfer(p & -2, p, num_rows() - 1, col, row, col);
-			}
-		}
+		if ( plane_used(p) )
+			merge_cols(p & -2, p, num_rows() - 1);
 	}
 }
 
@@ -789,13 +856,8 @@ void combat_matrix::forced_levelup_b()
 	/* Move all the values (except 0hp) of all the planes to the last
 	   column of planes unslowed for B. */
 	for (int p = 0; p < 4; ++p) {
-		if ( !plane_used(p) )
-			continue;
-		for (unsigned row = min_row(p); row < num_rows(); ++row) {
-			for (unsigned col = std::max(min_col(p), 1u); col < num_cols(); ++col) {
-				xfer(p & -3, p, row, num_cols() - 1, row, col);
-			}
-		}
+		if ( plane_used(p) )
+			merge_rows(p & -3, p, num_cols() - 1);
 	}
 }
 
@@ -804,11 +866,8 @@ void combat_matrix::conditional_levelup_a()
 	/* Move the values of the first column (except 0hp) of all the
 	   planes to the last row of the planes unslowed for A. */
 	for (int p = 0; p < 4; ++p) {
-		if ( !plane_used(p) )
-			continue;
-		for (unsigned row = std::max(min_row(p), 1u); row < num_rows(); ++row) {
-			xfer(p & -2, p, num_rows() - 1, 0, row, 0);
-		}
+		if ( plane_used(p) )
+			merge_col(p & -2, p, 0, num_rows() - 1);
 	}
 }
 
@@ -817,11 +876,8 @@ void combat_matrix::conditional_levelup_b()
 	/* Move the values of the first row (except 0hp) of all the
 	   planes to the last column of the planes unslowed for B. */
 	for (int p = 0; p < 4; ++p) {
-		if ( !plane_used(p) )
-			continue;
-		for (unsigned col = std::max(min_col(p), 1u); col < num_cols(); ++col) {
-			xfer(p & -3, p, 0, num_cols() - 1, 0, col);
-		}
+		if ( plane_used(p) )
+			merge_row(p & -3, p, 0, num_cols() - 1);
 	}
 }
 
