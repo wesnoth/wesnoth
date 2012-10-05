@@ -38,6 +38,7 @@
 #include "attack_prediction.hpp"
 
 #include "actions/attack.hpp"
+#include "array.hpp"
 #include "game_config.hpp"
 
 #if defined(BENCHMARK) || defined(CHECK)
@@ -117,6 +118,8 @@ const T& limit(const T& val, const T& min, const T& max)
  */
 class prob_matrix
 {
+	// Since this gets used very often (especially by the AI), it has
+	// been optimized for speed as a sparse matrix.
 public:
 	prob_matrix(unsigned int a_max, unsigned int b_max,
 	            bool need_a_slowed, bool need_b_slowed,
@@ -195,18 +198,21 @@ private:
 	          unsigned row_src, unsigned col_src);
 
 	void shift_cols_in_row(unsigned dst, unsigned src, unsigned row,
+	                       const std::vector<unsigned> & cols,
 	                       unsigned damage, double prob, int drainmax,
 	                       int drain_constant, int drain_percent);
 	void shift_rows_in_col(unsigned dst, unsigned src, unsigned col,
+	                       const std::vector<unsigned> & rows,
 	                       unsigned damage, double prob, int drainmax,
 	                       int drain_constant, int drain_percent);
 
 private: // data
 	const unsigned int rows_, cols_;
-	double *plane_[NUM_PLANES];
+	util::array<double *, NUM_PLANES> plane_;
 
-	// For optimization, we keep track of the lower row/col we need to consider
-	unsigned int min_row_[NUM_PLANES], min_col_[NUM_PLANES];
+	// For optimization, we keep track of the rows and columns with data.
+	// (The matrices are likely going to be rather sparse, with data on a grid.)
+	util::array<std::set<unsigned>, NUM_PLANES> used_rows_, used_cols_;
 };
 
 
@@ -232,6 +238,12 @@ prob_matrix::prob_matrix(unsigned int a_max, unsigned int b_max,
 	a_cur = std::min<unsigned int>(a_cur, rows_ - 1);
 	b_cur = std::min<unsigned int>(b_cur, cols_ - 1);
 
+	// It will be convenient to always consider row/col 0 to be used.
+	for ( unsigned plane = 0; plane != NUM_PLANES; ++plane ) {
+		used_rows_[plane].insert(0u);
+		used_cols_[plane].insert(0u);
+	}
+
 	// We will need slowed planes if the initial vectors have them.
 	need_a_slowed =  need_a_slowed || !a_initial[1].empty();
 	need_b_slowed =  need_b_slowed || !b_initial[1].empty();
@@ -241,11 +253,6 @@ prob_matrix::prob_matrix(unsigned int a_max, unsigned int b_max,
 	plane_[A_SLOWED] = !need_a_slowed ? NULL : new_plane();
 	plane_[B_SLOWED] = !need_b_slowed ? NULL : new_plane();
 	plane_[BOTH_SLOWED] = !(need_a_slowed && need_b_slowed) ? NULL : new_plane();
-
-	// Default min_row_ and min_col_ for the planes that might not need
-	// initialization.
-	min_row_[A_SLOWED] = min_row_[B_SLOWED] = min_row_[BOTH_SLOWED] = rows_;
-	min_col_[A_SLOWED] = min_col_[B_SLOWED] = min_col_[BOTH_SLOWED] = cols_;
 
 	// Initialize the probability distribution.
 	initialize_plane(NEITHER_SLOWED, a_cur, b_cur, a_initial[0], b_initial[0]);
@@ -300,16 +307,16 @@ void prob_matrix::initialize_plane(unsigned plane, unsigned a_cur, unsigned b_cu
 {
 	if ( !a_initial.empty() ) {
 		unsigned row_count = std::min<unsigned>(a_initial.size(), rows_);
-		// @todo FIXME: Can optimize here.
-		min_row_[plane] = 0;
 		// The probabilities for each row are contained in a_initial.
 		for ( unsigned row = 0; row < row_count; ++row ) {
-			if ( a_initial[row] != 0.0 )
+			if ( a_initial[row] != 0.0 ) {
+				used_rows_[plane].insert(row);
 				initialize_row(plane, row, a_initial[row], b_cur, b_initial);
+			}
 		}
 	}
 	else {
-		min_row_[plane] = a_cur - 1;
+		used_rows_[plane].insert(a_cur);
 		// Only the row indicated by a_cur is a possibility.
 		initialize_row(plane, a_cur, 1.0, b_cur, b_initial);
 	}
@@ -329,17 +336,17 @@ void prob_matrix::initialize_row(unsigned plane, unsigned row, double row_prob,
 {
 	if ( !b_initial.empty() ) {
 		unsigned col_count = std::min<unsigned>(b_initial.size(), cols_);
-		// @todo FIXME: Can optimize here.
-		min_col_[plane] = 0;
 		// The probabilities for each column are contained in b_initial.
 		for ( unsigned col = 0; col < col_count; ++col ) {
-			if ( b_initial[col] != 0.0 )
+			if ( b_initial[col] != 0.0 ) {
+				used_cols_[plane].insert(col);
 				val(plane, row, col) = row_prob * b_initial[col];
+			}
 		}
 	}
 	else {
-		min_col_[plane] = b_cur - 1;
 		// Only the column indicated by b_cur is a possibility.
+		used_cols_[plane].insert(b_cur);
 		val(plane, row, b_cur) = row_prob;
 	}
 }
@@ -371,7 +378,14 @@ void prob_matrix::xfer(unsigned dst_plane, unsigned src_plane,
 	if (src != 0.0) {
 		double diff = src * prob;
 		src -= diff;
-		val(dst_plane, row_dst, col_dst) += diff;
+
+		double &dst = val(dst_plane, row_dst, col_dst);
+		if ( dst == 0.0 ) {
+			// Track that this entry is now used.
+			used_rows_[dst_plane].insert(row_dst);
+			used_cols_[dst_plane].insert(col_dst);
+		}
+		dst += diff;
 
 		debug(("Shifted %4.3g from %s(%u,%u) to %s(%u,%u).\n",
 			   diff, src_plane == NEITHER_SLOWED ? ""
@@ -412,35 +426,47 @@ void prob_matrix::xfer(unsigned dst_plane, unsigned src_plane,
 			   : dst_plane == BOTH_SLOWED ? "[BOTH_SLOWED]" : "INVALID",
 			   row_dst, col_dst));
 
-		val(dst_plane, row_dst, col_dst) += src;
+		double &dst = val(dst_plane, row_dst, col_dst);
+		if ( dst == 0.0 ) {
+			// Track that this entry is now used.
+			used_rows_[dst_plane].insert(row_dst);
+			used_cols_[dst_plane].insert(col_dst);
+		}
+		dst += src;
 		src = 0.0;
 	}
 }
 
 /**
  * Transfers a portion (value * prob) of the values in a row to another.
- * Part of shift_cols(). @a damage is assumed to be less than cols_.
+ * Part of shift_cols().
  */
 void prob_matrix::shift_cols_in_row(unsigned dst, unsigned src, unsigned row,
+                                    const std::vector<unsigned> & cols,
                                     unsigned damage, double prob, int drainmax,
                                     int drain_constant, int drain_percent)
 {
-	// Column 0 is already dead, so skip it.
-	unsigned col = std::max(1u, min_col_[src]);
+	// Some conversions to (signed) int.
+	int row_i = static_cast<int>(row);
+	int max_row = static_cast<int>(rows_) - 1;
+
+	// cols[0] is excluded since that should be 0, representing already dead.
+	unsigned col_x = 1;
 
 	// Killing blows can have different drain amounts, so handle them first
-	for ( ; col < damage; ++col ) {
+	for ( ; col_x < cols.size()  &&  cols[col_x] < damage; ++col_x ) {
 		// These variables are not strictly necessary, but they make the
 		// calculation easier to parse.
-		int drain_amount = static_cast<int>(col)*drain_percent/100 + drain_constant;
-		unsigned newrow = limit<int>(static_cast<int>(row) + drain_amount, 1, rows_-1);
-		xfer(dst, src, newrow, 0, row, col, prob);
+		int col_i = static_cast<int>(cols[col_x]);
+		int drain_amount = col_i*drain_percent/100 + drain_constant;
+		unsigned newrow = limit<int>(row_i + drain_amount, 1, max_row);
+		xfer(dst, src, newrow, 0, row, cols[col_x], prob);
 	}
 
 	// The remaining columns use the specified drainmax.
-	unsigned newrow = limit<int>(static_cast<int>(row) + drainmax, 1, rows_-1);
-	for ( ; col < cols_; ++col )
-		xfer(dst, src, newrow, col - damage, row, col, prob);
+	unsigned newrow = limit<int>(row_i + drainmax, 1, max_row);
+	for ( ; col_x < cols.size(); ++col_x )
+		xfer(dst, src, newrow, cols[col_x] - damage, row, cols[col_x], prob);
 }
 
 /**
@@ -458,59 +484,56 @@ void prob_matrix::shift_cols(unsigned dst, unsigned src, unsigned damage,
 		debug(("Drains %i (%i%% of %u plus %i)\n", drainmax, drain_percent, damage, drain_constant));
 	}
 
-	// Damage cannot effectively exceed the maximum value.
-	if (damage >= cols_)
-		damage = cols_ - 1;
+	// Get lists of indices currently used in the source plane.
+	// (This needs to be cached since we might add indices while shifting.)
+	const std::vector<unsigned> rows(used_rows_[src].begin(), used_rows_[src].end());
+	const std::vector<unsigned> cols(used_cols_[src].begin(), used_cols_[src].end());
 
 	// Loop downwards if we drain positive, but upwards if we drain negative,
 	// so we write behind us (for when src == dst).
 	if(drainmax > 0) {
-		for (unsigned row = rows_ - 1; row > min_row_[src]; --row)
-			shift_cols_in_row(dst, src, row, damage, prob, drainmax,
+		// rows[0] is excluded since that should be 0, representing already dead.
+		for ( unsigned row_x = rows.size()-1; row_x != 0; --row_x )
+			shift_cols_in_row(dst, src, rows[row_x], cols, damage, prob, drainmax,
 			                  drain_constant, drain_percent);
 	} else {
-		for (unsigned row = min_row_[src] + 1; row < rows_; ++row)
-			shift_cols_in_row(dst, src, row, damage, prob, drainmax,
+		// rows[0] is excluded since that should be 0, representing already dead.
+		for ( unsigned row_x = 1; row_x != rows.size(); ++row_x )
+			shift_cols_in_row(dst, src, rows[row_x], cols, damage, prob, drainmax,
 			                  drain_constant, drain_percent);
 	}
-
-	// Update the minimum column for the destination plane.
-	if ( min_col_[src] < damage )
-		min_col_[dst] = 0;
-	else if ( min_col_[src] - damage < min_col_[dst] )
-		min_col_[dst] = min_col_[src] - damage;
-
-	// Update the minimum row for the destination plane.
-	int drain_worst = std::min<int>(drainmax, drain_constant);
-	unsigned min_row = std::max<int>(0, static_cast<int>(min_row_[src]) + drain_worst);
-	if ( min_row < min_row_[dst] )
-		min_row_[dst] = min_row;
 }
 
 /**
  * Transfers a portion (value * prob) of the values in a column to another.
- * Part of shift_rows(). @a damage is assumed to be less than rows_.
+ * Part of shift_rows().
  */
 void prob_matrix::shift_rows_in_col(unsigned dst, unsigned src, unsigned col,
+                                    const std::vector<unsigned> & rows,
                                     unsigned damage, double prob, int drainmax,
                                     int drain_constant, int drain_percent)
 {
-	// Column 0 is already dead, so skip it.
-	unsigned row = std::max(1u, min_row_[src]);
+	// Some conversions to (signed) int.
+	int col_i = static_cast<int>(col);
+	int max_col = static_cast<int>(cols_) - 1;
+
+	// rows[0] is excluded since that should be 0, representing already dead.
+	unsigned row_x = 1;
 
 	// Killing blows can have different drain amounts, so handle them first
-	for ( ; row < damage; ++row ) {
+	for ( ; row_x < rows.size()  &&  rows[row_x] < damage; ++row_x ) {
 		// These variables are not strictly necessary, but they make the
 		// calculation easier to parse.
-		int drain_amount = static_cast<int>(row)*drain_percent/100 + drain_constant;
-		unsigned newcol = limit<int>(static_cast<int>(col) + drain_amount, 1, cols_-1);
-		xfer(dst, src, 0, newcol, row, col, prob);
+		int row_i = static_cast<int>(rows[row_x]);
+		int drain_amount = row_i*drain_percent/100 + drain_constant;
+		unsigned newcol = limit<int>(col_i + drain_amount, 1, max_col);
+		xfer(dst, src, 0, newcol, rows[row_x], col, prob);
 	}
 
-	// The remaining columns use the specified drainmax.
-	unsigned newcol = limit<int>(static_cast<int>(col) + drainmax, 1, cols_-1);
-	for ( ; row < rows_; ++row )
-		xfer(dst, src, row - damage, newcol, row, col, prob);
+	// The remaining rows use the specified drainmax.
+	unsigned newcol = limit<int>(col_i + drainmax, 1, max_col);
+	for ( ; row_x < rows.size(); ++row_x )
+		xfer(dst, src, rows[row_x] - damage, newcol, rows[row_x], col, prob);
 }
 
 /**
@@ -528,33 +551,24 @@ void prob_matrix::shift_rows(unsigned dst, unsigned src, unsigned damage,
 		debug(("Drains %i (%i%% of %u plus %i)\n", drainmax, drain_percent, damage, drain_constant));
 	}
 
-	// Damage cannot effectively exceed the maximum value.
-	if (damage >= rows_)
-		damage = rows_ - 1;
+	// Get lists of indices currently used in the source plane.
+	// (This needs to be cached since we might add indices while shifting.)
+	const std::vector<unsigned> rows(used_rows_[src].begin(), used_rows_[src].end());
+	const std::vector<unsigned> cols(used_cols_[src].begin(), used_cols_[src].end());
 
 	// Loop downwards if we drain positive, but upwards if we drain negative,
 	// so we write behind us (for when src == dst).
 	if(drainmax > 0) {
-		for (unsigned col = cols_ - 1; col > min_col_[src]; --col)
-			shift_rows_in_col(dst, src, col, damage, prob, drainmax,
+		// cols[0] is excluded since that should be 0, representing already dead.
+		for ( unsigned col_x = cols.size()-1; col_x != 0; --col_x )
+			shift_rows_in_col(dst, src, cols[col_x], rows, damage, prob, drainmax,
 			                  drain_constant, drain_percent);
 	} else {
-		for (unsigned col = min_col_[src] + 1; col < cols_; ++col)
-			shift_rows_in_col(dst, src, col, damage, prob, drainmax,
+		// cols[0] is excluded since that should be 0, representing already dead.
+		for ( unsigned col_x = 1; col_x != cols.size(); ++col_x )
+			shift_rows_in_col(dst, src, cols[col_x], rows, damage, prob, drainmax,
 			                  drain_constant, drain_percent);
 	}
-
-	// Update the minimum row for the destination plane.
-	if ( min_row_[src] < damage )
-		min_row_[dst] = 0;
-	else if ( min_row_[src] - damage < min_row_[dst] )
-		min_row_[dst] = min_row_[src] - damage;
-
-	// Update the minimum column for the destination plane.
-	int drain_worst = std::min<int>(drainmax, drain_constant);
-	unsigned min_col = std::max<int>(0, static_cast<int>(min_col_[src]) + drain_worst);
-	if ( min_col < min_col_[dst] )
-		min_col_[dst] = min_col;
 }
 
 /**
@@ -563,11 +577,12 @@ void prob_matrix::shift_rows(unsigned dst, unsigned src, unsigned damage,
 void prob_matrix::move_column(unsigned d_plane, unsigned s_plane,
                               unsigned d_col, unsigned s_col)
 {
-	// Update the minimum row.
-	min_row_[d_plane] = std::min(min_row_[d_plane], min_row_[s_plane]);
-	// Transfer the data, excluding row zero.
-	for ( unsigned row = min_row_[s_plane]; row < rows_; ++row )
-		xfer(d_plane, s_plane, row, d_col, row, s_col);
+	std::set<unsigned>::const_iterator rows_end = used_rows_[s_plane].end();
+	std::set<unsigned>::const_iterator row_it = used_rows_[s_plane].begin();
+
+	// Transfer the data.
+	for ( ; row_it != rows_end; ++row_it )
+		xfer(d_plane, s_plane, *row_it, d_col, *row_it, s_col);
 }
 
 /**
@@ -576,11 +591,12 @@ void prob_matrix::move_column(unsigned d_plane, unsigned s_plane,
 void prob_matrix::move_row(unsigned d_plane, unsigned s_plane,
                            unsigned d_row, unsigned s_row)
 {
-	// Update the minimum column.
-	min_col_[d_plane] = std::min(min_col_[d_plane], min_col_[s_plane]);
-	// Transfer the data, excluding column zero.
-	for ( unsigned col = min_col_[s_plane]; col < cols_; ++col )
-		xfer(d_plane, s_plane, d_row, col, s_row, col);
+	std::set<unsigned>::const_iterator cols_end = used_cols_[s_plane].end();
+	std::set<unsigned>::const_iterator col_it = used_cols_[s_plane].begin();
+
+	// Transfer the data.
+	for ( ; col_it != cols_end; ++col_it )
+		xfer(d_plane, s_plane, d_row, *col_it, s_row, *col_it);
 }
 
 /**
@@ -590,13 +606,12 @@ void prob_matrix::move_row(unsigned d_plane, unsigned s_plane,
 void prob_matrix::merge_col(unsigned d_plane, unsigned s_plane, unsigned col,
                             unsigned d_row)
 {
-	// Update the minimum row and column.
-	min_col_[d_plane] = std::min(min_col_[d_plane], col);
-	min_row_[d_plane] = std::min(min_row_[d_plane], d_row);
+	std::set<unsigned>::const_iterator rows_end = used_rows_[s_plane].end();
+	std::set<unsigned>::const_iterator row_it = used_rows_[s_plane].begin();
 
 	// Transfer the data, excluding row zero.
-	for (unsigned row = std::max(1u, min_row_[s_plane]); row < rows_; ++row)
-		xfer(d_plane, s_plane, d_row, col, row, col);
+	for ( ++row_it; row_it != rows_end; ++row_it )
+		xfer(d_plane, s_plane, d_row, col, *row_it, col);
 }
 
 /**
@@ -605,14 +620,16 @@ void prob_matrix::merge_col(unsigned d_plane, unsigned s_plane, unsigned col,
  */
 void prob_matrix::merge_cols(unsigned d_plane, unsigned s_plane, unsigned d_row)
 {
-	// Update the minimum row and column.
-	min_row_[d_plane] = std::min(min_row_[d_plane], d_row);
-	min_col_[d_plane] = std::min(min_col_[d_plane], min_col_[s_plane]);
+	std::set<unsigned>::const_iterator rows_end = used_rows_[s_plane].end();
+	std::set<unsigned>::const_iterator row_it = used_rows_[s_plane].begin();
+	std::set<unsigned>::const_iterator cols_end = used_cols_[s_plane].end();
+	std::set<unsigned>::const_iterator cols_begin = used_cols_[s_plane].begin();
+	std::set<unsigned>::const_iterator col_it;
 
 	// Transfer the data, excluding row zero.
-	for (unsigned row = std::max(1u, min_row_[s_plane]); row < rows_; ++row)
-		for (unsigned col = min_col_[s_plane]; col < cols_; ++col)
-			xfer(d_plane, s_plane, d_row, col, row, col);
+	for ( ++row_it; row_it != rows_end; ++row_it )
+		for ( col_it = cols_begin; col_it != cols_end; ++col_it )
+			xfer(d_plane, s_plane, d_row, *col_it, *row_it, *col_it);
 }
 
 /**
@@ -622,13 +639,12 @@ void prob_matrix::merge_cols(unsigned d_plane, unsigned s_plane, unsigned d_row)
 void prob_matrix::merge_row(unsigned d_plane, unsigned s_plane, unsigned row,
                             unsigned d_col)
 {
-	// Update the minimum row and column.
-	min_col_[d_plane] = std::min(min_col_[d_plane], d_col);
-	min_row_[d_plane] = std::min(min_row_[d_plane], row);
+	std::set<unsigned>::const_iterator cols_end = used_cols_[s_plane].end();
+	std::set<unsigned>::const_iterator col_it = used_cols_[s_plane].begin();
 
 	// Transfer the data, excluding column zero.
-	for (unsigned col = std::max(1u, min_col_[s_plane]); col < cols_; ++col) 
-		xfer(d_plane, s_plane, row, d_col, row, col);
+	for ( ++col_it; col_it != cols_end; ++col_it )
+		xfer(d_plane, s_plane, row, d_col, row, *col_it);
 }
 
 
@@ -638,15 +654,18 @@ void prob_matrix::merge_row(unsigned d_plane, unsigned s_plane, unsigned row,
  */
 void prob_matrix::merge_rows(unsigned d_plane, unsigned s_plane, unsigned d_col)
 {
-	// Update the minimum row and column.
-	min_col_[d_plane] = std::min(min_col_[d_plane], d_col);
-	min_row_[d_plane] = std::min(min_row_[d_plane], min_row_[s_plane]);
+	std::set<unsigned>::const_iterator rows_end = used_rows_[s_plane].end();
+	std::set<unsigned>::const_iterator row_it = used_rows_[s_plane].begin();
+	std::set<unsigned>::const_iterator cols_end = used_cols_[s_plane].end();
+	std::set<unsigned>::const_iterator cols_begin = used_cols_[s_plane].begin();
+	// (excluding column zero)
+	++cols_begin;
+	std::set<unsigned>::const_iterator col_it;
 
 	// Transfer the data, excluding column zero.
-	for (unsigned row = min_row_[s_plane]; row < rows_; ++row)
-		// (excluding column zero)
-		for (unsigned col = std::max(1u, min_col_[s_plane]); col < cols_; ++col)
-			xfer(d_plane, s_plane, row, d_col, row, col);
+	for ( ; row_it != rows_end; ++row_it )
+		for ( col_it = cols_begin; col_it != cols_end; ++col_it )
+			xfer(d_plane, s_plane, *row_it, d_col, *row_it, *col_it);
 }
 
 /**
@@ -659,14 +678,21 @@ double prob_matrix::prob_of_zero(bool check_a, bool check_b) const
 	for (unsigned p = 0; p < NUM_PLANES; ++p) {
 		if ( !plane_used(p) )
 			continue;
-		// Column 0 is where b is dead.
-		if ( check_b )
-			for (unsigned row = min_row_[p]; row < rows_; ++row)
-				prob += val(p, row, 0);
-		// Row 0 is where a is dead.
-		if ( check_a )
-			for (unsigned col = min_col_[p]; col < cols_; ++col)
-				prob += val(p, 0, col);
+
+		// Column 0 is where b is at zero.
+		if ( check_b ) {
+			std::set<unsigned>::const_iterator rows_end = used_rows_[p].end();
+			std::set<unsigned>::const_iterator row_it = used_rows_[p].begin();
+			for ( ; row_it != rows_end; ++row_it )
+				prob += val(p, *row_it, 0);
+		}
+		// Row 0 is where a is at zero.
+		if ( check_a ) {
+			std::set<unsigned>::const_iterator cols_end = used_cols_[p].end();
+			std::set<unsigned>::const_iterator col_it = used_cols_[p].begin();
+			for ( ; col_it != cols_end; ++col_it )
+				prob += val(p, 0, *col_it);
+		}
 		// Theoretically, if checking both, we should subtract the chance that
 		// both are dead, but that chance is zero, so don't worry about it.
 	}
@@ -681,11 +707,17 @@ double prob_matrix::prob_of_zero(bool check_a, bool check_b) const
 void prob_matrix::sum(unsigned plane, std::vector<double> & row_sums,
                       std::vector<double> & col_sums) const
 {
-	for ( unsigned row = min_row_[plane]; row < rows_; ++row )
-		for ( unsigned col = min_col_[plane]; col < cols_; ++col ) {
-			const double & prob = val(plane, row, col);
-			row_sums[row] += prob;
-			col_sums[col] += prob;
+	std::set<unsigned>::const_iterator rows_end = used_rows_[plane].end();
+	std::set<unsigned>::const_iterator row_it = used_rows_[plane].begin();
+	std::set<unsigned>::const_iterator cols_end = used_cols_[plane].end();
+	std::set<unsigned>::const_iterator cols_begin = used_cols_[plane].begin();
+	std::set<unsigned>::const_iterator col_it;
+
+	for ( ; row_it != rows_end; ++row_it )
+		for ( col_it = cols_begin; col_it != cols_end; ++col_it ) {
+			const double & prob = val(plane, *row_it, *col_it);
+			row_sums[*row_it] += prob;
+			col_sums[*col_it] += prob;
 		}
 }
 
