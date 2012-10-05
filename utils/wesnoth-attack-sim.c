@@ -341,17 +341,27 @@ static void check(const char *filename)
 
 	printf("Creating %i units...\n", NUM_UNITS);
 	for (i = 0; i < NUM_UNITS; i++) {
-		u[i].hp = 1 + ((i*3)%23);
-		u[i].max_hp = u[i].hp + (i+7)%17;
-		u[i].damage = (i % 7) + 2;
-		u[i].num_attacks = (i % 4) + 1;
-		u[i].slows = (i % 8) == 0;
-		u[i].drains = (i % 9) == 0;
-		u[i].berserk = (i % 5) == 0;
-		u[i].hit_chance = 30 + (i % 6)*10;
-		u[i].swarm = ((i+4) % 4) == 0;
-//		u[i].swarm = false;
-		u[i].firststrike = ((i+3) % 5) == 0;
+		// Setting the specials.
+		// Try to have these on different cycles so we do not, for example,
+		// only have slows when there is also swarm.
+		u[i].slows       = (i % 17) % 3 == 0;
+		u[i].drains      = (i % 19) % 4 == 0;
+//		u[i].swarm       =  i % 5       == 0;
+		u[i].swarm       =  false;
+		u[i].berserk     =  i % 7       == 0;
+		u[i].firststrike = (i % 13) / 2 == 0;
+		// The number of attacks and hit points lost at the start of combat
+		// should also be on their own cycles, as these strongly interact with
+		// some specials.
+		u[i].num_attacks = (i % 11 + 1) / 2;         // range: 0-5, with 0 less common
+		u[i].max_hp      = (i*2)%23 + (i*3)%14 + 25; // range: 25-60, with a bit of a bell curve.
+
+		// Miscellaneous unit stats.
+		// Having these on their own cycles would be desirable, but
+		// is not critical.
+		u[i].hit_chance  = (i % 6)*10 + 30;       // range: 30%-80%
+		u[i].damage      = (i % 8 + 2);           // range: 2-9
+		u[i].hp          = (i*6)%u[i].max_hp + 1; // range: 1-max_hp
 	}
 
 	printf("Beginning battle...\n");

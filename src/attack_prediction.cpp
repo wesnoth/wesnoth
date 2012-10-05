@@ -1527,17 +1527,21 @@ static void run(unsigned specific_battle)
 	struct timeval start, end, total;
 
 	for (i = 0; i < NUM_UNITS; ++i) {
-		unsigned hp = 1 + ((i*3)%23);
-		stats[i] = new battle_context_unit_stats(i%7 + 2,        // damage
-		                                         i%4 + 1,        // number of strikes
-		                                         hp, hp + (i+7)%17,
+		// To get somewhat realistic performance data, try to approximate
+		// hit point ranges for mainline units (say 25-60 max hitpoints?)
+		unsigned max_hp = (i*2)%23 + (i*3)%14 + 25;
+		unsigned hp = (i*6)%max_hp + 1;
+		stats[i] = new battle_context_unit_stats(i%8 + 2,        // damage
+		                                         (i%11 + 1) / 2, // number of strikes
+		                                         hp, max_hp,
 		                                         30 + (i%6)*10,  // hit chance
-		                                         i % 9 == 0,     // drains
-		                                         i % 8 == 0,     // slows
+		                                         (i%19)%4 == 0,  // drains
+		                                         (i%17)%3 == 0,  // slows
 		                                         false,          // slowed
-		                                         i % 5 == 0,     // berserk
-		                                         (i+3) % 5 == 0, // firststrike
-		                                         (i+4) % 4 == 0);// swarm
+		                                          i%7 == 0,      // berserk
+		                                         (i%13)/2 == 0,  // firststrike
+//		                                          i%5 == 0);     // swarm
+		                                          false);        // swarm predictions are bugged
 		u[i] = new combatant(*stats[i]);
 	}
 
