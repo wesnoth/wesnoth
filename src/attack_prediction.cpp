@@ -153,7 +153,7 @@ public:
 	         std::vector<double> & col_sums) const;
 
 	/// Returns true if the specified plane might have data in it.
-	bool plane_used(unsigned p) const { return p < 4  &&  plane_[p] != NULL; }
+	bool plane_used(unsigned p) const { return p < NUM_PLANES  &&  plane_[p] != NULL; }
 
 	unsigned int num_rows() const { return rows_; }
 	unsigned int num_cols() const { return cols_; }
@@ -167,7 +167,8 @@ public:
 		NEITHER_SLOWED,
 		A_SLOWED,
 		B_SLOWED,
-		BOTH_SLOWED
+		BOTH_SLOWED,
+		NUM_PLANES	// Symbolic constant for the number of planes.
 	};
 
 private:
@@ -202,10 +203,10 @@ private:
 
 private: // data
 	const unsigned int rows_, cols_;
-	double *plane_[4];
+	double *plane_[NUM_PLANES];
 
 	// For optimization, we keep track of the lower row/col we need to consider
-	unsigned int min_row_[4], min_col_[4];
+	unsigned int min_row_[NUM_PLANES], min_col_[NUM_PLANES];
 };
 
 
@@ -655,7 +656,7 @@ double prob_matrix::prob_of_zero(bool check_a, bool check_b) const
 {
 	double prob = 0.0;
 
-	for (unsigned p = 0; p < 4; ++p) {
+	for (unsigned p = 0; p < NUM_PLANES; ++p) {
 		if ( !plane_used(p) )
 			continue;
 		// Column 0 is where b is dead.
@@ -695,7 +696,7 @@ void prob_matrix::dump() const
 	const char *names[]
 		= { "NEITHER_SLOWED", "A_SLOWED", "B_SLOWED", "BOTH_SLOWED" };
 
-	for (m = 0; m < 4; ++m) {
+	for (m = 0; m < NUM_PLANES; ++m) {
 		if ( !plane_used(m) )
 			continue;
 		debug(("%s:\n", names[m]));
@@ -816,7 +817,8 @@ combat_matrix::combat_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
 void combat_matrix::receive_blow_b(double hit_chance)
 {
 	// Walk backwards so we don't copy already-copied matrix planes.
-	for (int src = 3; src >=0; src--) {
+	unsigned src = NUM_PLANES;
+	while ( src-- != 0 ) {
 		if ( !plane_used(src) )
 			continue;
 
@@ -835,7 +837,8 @@ void combat_matrix::receive_blow_b(double hit_chance)
 void combat_matrix::receive_blow_a(double hit_chance)
 {
 	// Walk backwards so we don't copy already-copied matrix planes.
-	for (int src = 3; src >=0; src--) {
+	unsigned src = NUM_PLANES;
+	while ( src-- != 0 ) {
 		if ( !plane_used(src) )
 			continue;
 
@@ -853,7 +856,7 @@ void combat_matrix::receive_blow_a(double hit_chance)
 void combat_matrix::remove_petrify_distortion_a(unsigned damage, unsigned slow_damage,
                                                 unsigned b_hp)
 {
-	for (int p = 0; p < 4; ++p) {
+	for (int p = 0; p < NUM_PLANES; ++p) {
 		if ( !plane_used(p) )
 			continue;
 
@@ -868,7 +871,7 @@ void combat_matrix::remove_petrify_distortion_a(unsigned damage, unsigned slow_d
 void combat_matrix::remove_petrify_distortion_b(unsigned damage, unsigned slow_damage,
                                                 unsigned a_hp)
 {
-	for (int p = 0; p < 4; ++p) {
+	for (int p = 0; p < NUM_PLANES; ++p) {
 		if ( !plane_used(p) )
 			continue;
 
@@ -884,7 +887,7 @@ void combat_matrix::forced_levelup_a()
 {
 	/* Move all the values (except 0hp) of all the planes to the "fully healed"
 	   row of the planes unslowed for A. */
-	for (int p = 0; p < 4; ++p) {
+	for (int p = 0; p < NUM_PLANES; ++p) {
 		if ( plane_used(p) )
 			merge_cols(p & -2, p, a_max_hp_);
 	}
@@ -894,7 +897,7 @@ void combat_matrix::forced_levelup_b()
 {
 	/* Move all the values (except 0hp) of all the planes to the "fully healed"
 	   column of planes unslowed for B. */
-	for (int p = 0; p < 4; ++p) {
+	for (int p = 0; p < NUM_PLANES; ++p) {
 		if ( plane_used(p) )
 			merge_rows(p & -3, p, b_max_hp_);
 	}
@@ -904,7 +907,7 @@ void combat_matrix::conditional_levelup_a()
 {
 	/* Move the values of the first column (except 0hp) of all the
 	   planes to the "fully healed" row of the planes unslowed for A. */
-	for (int p = 0; p < 4; ++p) {
+	for (int p = 0; p < NUM_PLANES; ++p) {
 		if ( plane_used(p) )
 			merge_col(p & -2, p, 0, a_max_hp_);
 	}
@@ -914,7 +917,7 @@ void combat_matrix::conditional_levelup_b()
 {
 	/* Move the values of the first row (except 0hp) of all the
 	   planes to the last column of the planes unslowed for B. */
-	for (int p = 0; p < 4; ++p) {
+	for (int p = 0; p < NUM_PLANES; ++p) {
 		if ( plane_used(p) )
 			merge_row(p & -3, p, 0, b_max_hp_);
 	}
@@ -932,7 +935,7 @@ void combat_matrix::extract_results(std::vector<double> summary_a[2],
 	if ( plane_used(B_SLOWED) )
 		summary_b[1] = std::vector<double>(num_cols());
 
-	for (unsigned p = 0; p < 4; ++p) {
+	for (unsigned p = 0; p < NUM_PLANES; ++p) {
 		if ( !plane_used(p) )
 			continue;
 
