@@ -129,10 +129,16 @@ public:
 	// Shift columns on this plane (b taking damage).
 	void shift_cols(unsigned dst, unsigned src, unsigned damage,
 	                double prob, int drain_constant, int drain_percent);
-
 	// Shift rows on this plane (a taking damage).
 	void shift_rows(unsigned dst, unsigned src, unsigned damage,
 	                double prob, int drain_constant, int drain_percent);
+
+	/// Move a column (adding it to the destination).
+	void move_column(unsigned d_plane, unsigned s_plane,
+	                 unsigned d_col, unsigned s_col);
+	/// Move a row (adding it to the destination).
+	void move_row(unsigned d_plane, unsigned s_plane,
+	              unsigned d_row, unsigned s_row);
 
 	/// What is the chance that an indicated combatant (one of them) is at zero?
 	double prob_of_zero(bool check_a, bool check_b) const;
@@ -546,6 +552,32 @@ void prob_matrix::shift_rows(unsigned dst, unsigned src, unsigned damage,
 }
 
 /**
+ * Move a column (adding it to the destination).
+ */
+void prob_matrix::move_column(unsigned d_plane, unsigned s_plane,
+                              unsigned d_col, unsigned s_col)
+{
+	// Update the minimum row.
+	min_row_[d_plane] = std::min(min_row_[d_plane], min_row_[s_plane]);
+	// Transfer the data, excluding row zero.
+	for ( unsigned row = min_row_[s_plane]; row < rows_; ++row )
+		xfer(d_plane, s_plane, row, d_col, row, s_col);
+}
+
+/**
+ * Move a row (adding it to the destination).
+ */
+void prob_matrix::move_row(unsigned d_plane, unsigned s_plane,
+                           unsigned d_row, unsigned s_row)
+{
+	// Update the minimum column.
+	min_col_[d_plane] = std::min(min_col_[d_plane], min_col_[s_plane]);
+	// Transfer the data, excluding column zero.
+	for ( unsigned col = min_col_[s_plane]; col < cols_; ++col )
+		xfer(d_plane, s_plane, d_row, col, s_row, col);
+}
+
+/**
  * What is the chance that an indicated combatant (one of them) is at zero?
  */
 double prob_matrix::prob_of_zero(bool check_a, bool check_b) const
@@ -715,15 +747,10 @@ void combat_matrix::remove_petrify_distortion_a(unsigned damage, unsigned slow_d
 			continue;
 
 		// A is slow in planes 1 and 3.
-		if (p & 1) {
-			if (b_hp > slow_damage)
-				for (unsigned int row = 0; row < num_rows(); ++row)
-					xfer(p, p, row, b_hp - slow_damage, row, 0);
-		} else {
-			if (b_hp > damage)
-				for (unsigned int row = 0; row < num_rows(); ++row)
-					xfer(p, p, row, b_hp - damage, row, 0);
-		}
+		unsigned actual_damage = (p & 1) ? slow_damage : damage;
+		if ( b_hp > actual_damage )
+			// B was actually petrified, not killed.
+			move_column(p, p, b_hp - actual_damage, 0);
 	}
 }
 
@@ -735,15 +762,10 @@ void combat_matrix::remove_petrify_distortion_b(unsigned damage, unsigned slow_d
 			continue;
 
 		// B is slow in planes 2 and 3.
-		if (p & 2) {
-			if (a_hp > slow_damage)
-				for (unsigned int col = 0; col < num_cols(); ++col)
-					xfer(p, p, a_hp - slow_damage, col, 0, col);
-		} else {
-			if (a_hp > damage)
-				for (unsigned int col = 0; col < num_cols(); ++col)
-					xfer(p, p, a_hp - damage, col, 0, col);
-		}
+		unsigned actual_damage = (p & 2) ? slow_damage : damage;
+		if ( a_hp > actual_damage )
+			// A was actually petrified, not killed.
+			move_row(p, p, a_hp - actual_damage, 0);
 	}
 }
 
