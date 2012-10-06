@@ -459,37 +459,39 @@ namespace
 {
 	//Helper struct that finds all units teams whose planned actions are currently visible
 	//Only used by manager::pre_draw() and post_draw()
-	struct move_owners_finder
-		: private enable_visit_all<move_owners_finder>, public visitor
+	struct move_owners_finder: public visitor
 	{
-		friend class enable_visit_all<move_owners_finder>;
 
 	public:
-		move_owners_finder()
-			: move_owners_()
-		{
-			//Thanks to the default pre_visit_team, will only visit visible side_actions
-			visit_all_actions();
+		move_owners_finder(): move_owners_() { }
+
+		void operator()(action_ptr action) {
+			action->accept(*this);
 		}
 
 		std::set<size_t> const& get_units_owning_moves() {
 			return move_owners_;
 		}
 
-	private:
 		virtual void visit(move_ptr move) {
-			move_owners_.insert(move->get_unit()->underlying_id());
+			if(size_t id = move->get_unit_id()) {
+				move_owners_.insert(id);
 		}
+		}
+
 		virtual void visit(attack_ptr attack) {
 			//also add attacks if they have an associated move
-			if (boost::static_pointer_cast<move>(attack)->get_route().steps.size() >= 2) {
-				move_owners_.insert(attack->get_unit()->underlying_id());
+			if(attack->get_route().steps.size() >= 2) {
+				if(size_t id = attack->get_unit_id()) {
+					move_owners_.insert(id);
+				}
 			}
 		}
 		virtual void visit(recruit_ptr){}
 		virtual void visit(recall_ptr){}
 		virtual void visit(suppose_dead_ptr){}
 
+	private:
 		std::set<size_t> move_owners_;
 	};
 }
