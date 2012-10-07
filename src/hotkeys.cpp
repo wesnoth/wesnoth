@@ -824,8 +824,8 @@ hotkey_item& get_hotkey(const SDL_JoyButtonEvent& event)
 	Uint8 *keystate = SDL_GetKeyState(NULL);
 	bool alt   = keystate[SDLK_RALT]   || keystate[SDLK_LALT];
 	bool ctrl  = keystate[SDLK_RCTRL]  || keystate[SDLK_LCTRL];
-	bool shift = keystate[SDLK_RSHIFT] || keystate[SDLK_RSHIFT];
-	bool cmd   = keystate[SDLK_RMETA] || keystate[SDLK_RMETA];
+	bool shift = keystate[SDLK_RSHIFT] || keystate[SDLK_LSHIFT];
+	bool cmd   = keystate[SDLK_RMETA] || keystate[SDLK_LMETA];
 
 	return get_hotkey(hotkey_item::JBUTTON, event.which, event.button, 0, shift, ctrl, alt, cmd);
 }
@@ -835,8 +835,8 @@ hotkey_item& get_hotkey(const SDL_JoyHatEvent& event)
 	Uint8 *keystate = SDL_GetKeyState(NULL);
 	bool alt   = keystate[SDLK_RALT]   || keystate[SDLK_LALT];
 	bool ctrl  = keystate[SDLK_RCTRL]  || keystate[SDLK_LCTRL];
-	bool shift = keystate[SDLK_RSHIFT] || keystate[SDLK_RSHIFT];
-	bool cmd   = keystate[SDLK_RMETA] || keystate[SDLK_RMETA];
+	bool shift = keystate[SDLK_RSHIFT] || keystate[SDLK_LSHIFT];
+	bool cmd   = keystate[SDLK_RMETA] || keystate[SDLK_LMETA];
 
 	return get_hotkey(hotkey_item::JHAT, event.which, event.hat, event.value, shift, ctrl, alt, cmd);
 }
@@ -846,8 +846,8 @@ static hotkey_item& get_hotkey(const SDL_MouseButtonEvent& event)
 	Uint8 *keystate = SDL_GetKeyState(NULL);
 	bool alt   = keystate[SDLK_RALT]   || keystate[SDLK_LALT];
 	bool ctrl  = keystate[SDLK_RCTRL]  || keystate[SDLK_LCTRL];
-	bool shift = keystate[SDLK_RSHIFT] || keystate[SDLK_RSHIFT];
-	bool cmd   = keystate[SDLK_RMETA] || keystate[SDLK_RMETA];
+	bool shift = keystate[SDLK_RSHIFT] || keystate[SDLK_LSHIFT];
+	bool cmd   = keystate[SDLK_RMETA] || keystate[SDLK_LMETA];
 
 	return get_hotkey(hotkey_item::MBUTTON, event.which, event.button, 0, shift, ctrl, alt, cmd);
 }
