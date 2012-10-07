@@ -2082,6 +2082,8 @@ bool unit::invalidate(const map_location &loc)
 		params.y -= height_adjust;
 		params.halo_y -= height_adjust;
 		params.image_mod = image_mods();
+		params.halo_mod = TC_image_mods();
+		params.image= absolute_image();
 
 		result |= get_animation()->invalidate(params);
 	}
