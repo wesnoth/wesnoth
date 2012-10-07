@@ -983,19 +983,18 @@ void combat_matrix::extract_results(std::vector<double> summary_a[2],
 	}
 }
 
-} // end anon namespace
-
-unsigned combatant::hp_dist_size(const battle_context_unit_stats &u, const combatant *prev)
+unsigned hp_dist_size(const battle_context_unit_stats &u, const combatant *prev)
 {
 	// Our summary must be as big as previous one.
 	if (prev) {
 		return prev->hp_dist.size();
 	}
 
-	// If this unit drains, HP can increase, so alloc full array.
-	// Do this anyway in case we level up.
+	// If this unit drains or levels, HP can increase, so alloc full array.
 	return u.max_hp + 1;
 }
+
+} // end anon namespace
 
 combatant::combatant(const battle_context_unit_stats &u, const combatant *prev)
 	: hp_dist(hp_dist_size(u, prev)),

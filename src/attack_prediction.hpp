@@ -67,9 +67,6 @@ private:
 	/** Minimum hp we could possibly have. */
 	unsigned min_hp() const;
 
-	/** HP distribution we could end up with. */
-	static unsigned hp_dist_size(const battle_context_unit_stats &u, const combatant *prev);
-
 	/** Combat without chance of death, berserk, slow or drain is simple. */
 	void no_death_fight(combatant &opponent, bool levelup_considered,
 	                    double & self_not_hit, double & opp_not_hit);
