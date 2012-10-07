@@ -37,6 +37,8 @@ Version 1.11.0+svn:
      be presented as options.
    * Fog/shroud clearing has been reworked to be more timely and consistent.
    * The statistics window can now show per-scenario statistics.
+ * Whiteboard
+   * Don't end turn if executing all actions in another way than using the "end turn" button/hotkey. (bug #19901)
  * WML engine:
    * The recall, recruit, prerecall, and prerecruit events will now block
      undoing unless they contain [allow_undo].

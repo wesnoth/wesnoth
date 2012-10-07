@@ -43,6 +43,9 @@ Version 1.11.0+svn:
      be presented as options.
    * The statistics window can now show per-scenario statistics.
 
+ * Whiteboard
+   * Don't end turn if executing all actions in another way than using the "end turn" button/hotkey. (bug #19901)
+   
  * Miscellaneous and bug fixes:
    * Fix invalid memory access crash resulting from deleting all saved games
      in the Load Game dialog.
