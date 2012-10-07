@@ -11,7 +11,11 @@ Version 1.10.4+svn:
    * New translation: Scottish Gaelic.
    * Updated translations: Chinese (Traditional), Croatian, French, Italian,
      Slovak.
-
+	 
+ * Whiteboard
+   * Don't end turn if executing all actions in another way than using the "end turn" button/hotkey. (bug #19901)
+   * Fixed crash when an ally executes a planned move of an unit with 2 planned moves. (bug #19826)
+   
  * Miscellaneous and bug fixes:
    * Fix OOS when dismissing a recall in a multiplayer campaign (bug #19924).
 
