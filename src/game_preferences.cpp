@@ -607,7 +607,7 @@ const config& options()
 	} else {
 		option_values = preferences::get_child("options");
 	}
-	
+
 	options_initialized = true;
 
 	return option_values;

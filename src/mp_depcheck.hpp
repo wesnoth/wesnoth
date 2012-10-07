@@ -39,11 +39,11 @@ enum component_type
  * Note to all triers:
  * It's not guaranteed that the specified component will be selected
  * (if the user denies to perform dependency resolution, all changes
- * will be reverted). Consequently, it's essential to check the 
+ * will be reverted). Consequently, it's essential to check the
  * selected values after calling any trier.
- * 
+ *
  * Note to ctor & insert_element:
- * Please note that the ctor collects data for scenario elements from 
+ * Please note that the ctor collects data for scenario elements from
  * "multiplayer" nodes, while insert_element from "scenario" nodes.
  */
 class manager
@@ -53,7 +53,7 @@ public:
 
 	/**
 	 * Tries to set the selected era
-	 * 
+	 *
 	 * @param id 		the id of the era
 	 * @param force 	whether to skip dependency check
 	 */
@@ -61,7 +61,7 @@ public:
 
 	/**
 	 * Tries to set the selected scenario
-	 * 
+	 *
 	 * @param id 		the id of the scenario
 	 * @param force 	whether to skip dependency check
 	 */
@@ -69,7 +69,7 @@ public:
 
 	/**
 	 * Tries to set the enabled modifications
-	 * 
+	 *
 	 * @param ids 		the ids of the modifications
 	 * @param force 	whether to skip dependency check
 	 */
@@ -78,7 +78,7 @@ public:
 
 	/**
 	 * Tries to set the selected era
-	 * 
+	 *
 	 * @param index 	the index of the era
 	 * @param force 	whether to skip dependency check
 	 */
@@ -86,7 +86,7 @@ public:
 
 	/**
 	 * Tries to set the selected scenario
-	 * 
+	 *
 	 * @param index 	the index of the scenario
 	 * @param force 	whether to skip dependency check
 	 */
@@ -94,42 +94,42 @@ public:
 
 	/**
 	 * Returns the selected era
-	 * 
+	 *
 	 * @return the id of the era
 	 */
 	const std::string& get_era() const { return era_; }
 
 	/**
 	 * Returns the selected scenario
-	 * 
+	 *
 	 * @return the id of the scenario
 	 */
 	const std::string& get_scenario() const { return scenario_; }
 
 	/**
 	 * Returns the enabled modifications
-	 * 
+	 *
 	 * @return the ids of the modifications
 	 */
 	const std::vector<std::string>& get_modifications() const { return mods_; }
 
 	/**
 	 * Returns the selected era
-	 * 
+	 *
 	 * @return the index of the era
 	 */
 	int get_era_index() const;
 
 	/**
 	 * Returns the selected scenario
-	 * 
+	 *
 	 * @return the index of the scenario
 	 */
 	int get_scenario_index() const;
 
 	/**
 	 * Adds a new element to the manager's database
-	 * 
+	 *
 	 * @param type 		the type of the element
 	 * @param data 		a config object containing the dependency info for the
 	 * 					element
@@ -187,7 +187,7 @@ private:
 
 	/**
 	 * Attempts to change the selected scenario.
-	 * 
+	 *
 	 * @param id 	the scenario's id
 	 * @return 		true if the selection was changed; false if not
 	 */
@@ -195,7 +195,7 @@ private:
 
 	/**
 	 * Attempts to change the selected era.
-	 * 
+	 *
 	 * @param id 	the era's id
 	 * @return 		true if the selection was changed; false if not
 	 */
@@ -203,7 +203,7 @@ private:
 
 	/**
 	 * Attempts to change the selected modifications.
-	 * 
+	 *
 	 * @param modifications 	the list of the modifications' ids
 	 * @return 					true if the selection was changed; false if not
 	 */
@@ -211,33 +211,33 @@ private:
 
 	/**
 	 * Decides if two components are conflicting or not
-	 * 
+	 *
 	 * @param elem1 			the first component
 	 * @param elem2 			the second component
 	 * @param directonly 		whether the function should ignore any possible
 	 * 							conflicts between the components' dependencies.
-	 * 
+	 *
 	 * @return 					true if e1 and e2 conflict, false if not
 	 */
 	bool conflicts(const elem& elem1, const elem& elem2, bool directonly=false) const;
 
 	/**
 	 * Decides whether e1 requires e2
-	 * 
+	 *
 	 * @param elem1 	a component; by definition, passing a modification here
 	 * 					makes no sense
 	 * @param elem2 	another component; by definition, passing anything else
 	 * 					than a modification here makes no sense
-	 * 
+	 *
 	 * @return 			true if e2 is required by e1, false if not
 	 */
 	bool requires(const elem& elem1, const elem& elem2) const;
 
 	/**
 	 * Get the list of modifications required by a certain component
-	 * 
+	 *
 	 * @param e 	the component
-	 * 
+	 *
 	 * @return 		the list of the modifications' ids
 	 */
 	std::vector<std::string> get_required(const elem& e) const;
@@ -245,9 +245,9 @@ private:
 	/**
 	 * Get the list of modifications which are required by a certain
 	 * component, but aren't currently enabled
-	 * 
+	 *
 	 * @param e 	the component
-	 * 
+	 *
 	 * @return 		the list of the modifications' ids
 	 */
 	std::vector<std::string> get_required_not_enabled(const elem& e) const;
@@ -255,9 +255,9 @@ private:
 	/**
 	 * Get the list of modifications which are conflicting a certain
 	 * component and are currently enabled
-	 * 
+	 *
 	 * @param e 	the component
-	 * 
+	 *
 	 * @return 		the list of the modifications' ids
 	 */
 	std::vector<std::string> get_conflicting_enabled(const elem& e) const;
@@ -265,9 +265,9 @@ private:
 	/**
 	 * Get the list of modifications which are required by a certain
 	 * component, but currently unavailable on the computer
-	 * 
+	 *
 	 * @param e 	the component
-	 * 
+	 *
 	 * @return 		the list of the modifications' ids
 	 */
 	std::vector<std::string> get_required_not_installed(const elem& e) const;
@@ -275,9 +275,9 @@ private:
 	/**
 	 * Display a dialog requesting confirmation for enabling some
 	 * modifications
-	 * 
+	 *
 	 * @param mods 		the list of modifications to be enabled
-	 * 
+	 *
 	 * @return 			true, if the user accepted the change, false if not
 	 */
 	bool enable_mods_dialog(const std::vector<std::string>& mods);
@@ -285,18 +285,18 @@ private:
 	/**
 	 * Display a dialog requesting confirmation for disabling some
 	 * modifications
-	 * 
+	 *
 	 * @param mods 		the list of modifications to be disabled
-	 * 
+	 *
 	 * @return 			true, if the user accepted the change, false if not
 	 */
 	bool disable_mods_dialog(const std::vector<std::string>& mods);
 
 	/**
 	 * Display a dialog requesting the user to select a new era
-	 * 
+	 *
 	 * @param eras 		the possible options (ids)
-	 * 
+	 *
 	 * @return 			the selected era's id or empty string if the user
 	 * 					refused to select any
 	 */
@@ -304,9 +304,9 @@ private:
 
 	/**
 	 * Display a dialog requesting the user to select a new scenario
-	 * 
+	 *
 	 * @param scenarios the possible options (ids)
-	 * 
+	 *
 	 * @return 			the selected scenario's id or empty string if the user
 	 * 					refused to select any
 	 */
@@ -315,16 +315,16 @@ private:
 
 	/**
 	 * Shows an error message
-	 * 
+	 *
 	 * @param msg the message to be displayed
 	 */
 	void failure_dialog(const std::string& msg);
 
 	/**
 	 * Decides whether a certain component is installed or not
-	 * 
+	 *
 	 * @param e 	the component
-	 * 
+	 *
 	 * @return 		true if the component exists false if not
 	 */
 	bool exists(const elem& e) const;

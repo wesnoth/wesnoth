@@ -28,26 +28,26 @@ namespace gui2
 /*WIKI
  * @page = GUIWindowDefinitionWML
  * @order = 2_mp_depcheck_confirm_change
- * 
+ *
  * == MP Dependency Check: Confirm Change ==
- * 
+ *
  * Asks the user to confirm a change required to proceed. Currently used
  * for enabling/disabling modifications
- * 
+ *
  * @begin{table}{dialog_widgets}
- * 
+ *
  * message & & label & m &
  * 		displays the details of the required changes $
- * 
+ *
  * itemlist & & scroll_label & m &
  * 		displays the list of affected items $
- * 
+ *
  * cancel & & button & m &
  * 		refuse to apply changes $
- * 
+ *
  * ok & & button & m &
  * 		agree to apply changes $
- * 
+ *
  * @end{table}
  */
 

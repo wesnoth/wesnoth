@@ -29,14 +29,14 @@ class tmp_depcheck_confirm_change
 public:
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param action 		true if the listed modifications are to be enabled,
 	 * 						false if they're to be disabled
 	 * @param mods 			the names of the affected modifications
 	 * @param requester 	the name of the component which requests the change
-	 * 
+	 *
 	 */
-	tmp_depcheck_confirm_change(bool action, 
+	tmp_depcheck_confirm_change(bool action,
 							    const std::vector<std::string>& mods,
 							    const std::string& requester );
 

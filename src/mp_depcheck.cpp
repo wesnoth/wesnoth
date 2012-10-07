@@ -349,7 +349,7 @@ void manager::try_scenario(const std::string& id, bool force)
 void manager::try_modifications(const std::vector<std::string>& ids, bool force)
 {
 	save_state();
-	
+
 	if (force) {
 		mods_ = ids;
 	} else if (!change_modifications(ids)) {

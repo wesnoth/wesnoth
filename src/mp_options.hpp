@@ -109,11 +109,11 @@ public:
 	 * database.
 	 *
 	 * @param type					The type of the element,
-	 * 
+	 *
 	 * @param data					The config object which holds the
 	 * 								information about the element's options in
 	 * 								an [options] child.
-	 * 
+	 *
 	 * @param pos					The position to insert  the element into.
 	 */
 	void insert_element(elem_type type, const config& data, int pos);
@@ -184,7 +184,7 @@ private:
 
 	/**
 	 * @todo Implement this function (along with a combo box widget, preferably)
-	 * 
+	 *
 	 * Creates a combo box widget.
 	 *
 	 * @param data					A [combobox] config.
@@ -356,7 +356,7 @@ private:
 	/**
 	 * @todo 		Implement a way to initialize the checkbox via WML and then
 	 * 				remove this function altogether.
-	 * 
+	 *
 	 * Sets the default states for all checkbox widgets inside a window. All
 	 * required data is fetched from values_ and options_info_.
 	 *

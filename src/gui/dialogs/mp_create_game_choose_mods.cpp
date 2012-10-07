@@ -34,9 +34,9 @@ namespace gui2 {
  * == Create Game: Choose Modifications ==
  *
  * The dialog for selecting modifications.
- * 
+ *
  * @begin{table}{dialog_widgets}
- * 
+ *
  * mod_list & & listbox & m &
  * 		displays the list of the available modifications $
  *
@@ -48,13 +48,13 @@ namespace gui2 {
  *
  * -description & & label & o &
  * 		displays the modification's description $
- * 
+ *
  * ok & & button & m &
  * 		closes the dialog, applies changes $
  *
  * cancel & & button & m &
  * 		closes the dialog, discards changes $
- * 
+ *
  * @end{table}
  */
 

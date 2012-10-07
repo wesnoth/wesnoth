@@ -33,7 +33,7 @@ public:
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param game_cfg 		the config which contains the information for the
 	 * 						modifications
 	 * @param result [in]	the list of the currently activated modifications
@@ -65,4 +65,4 @@ private:
 
 } // namespace gui2
 
-#endif 
+#endif

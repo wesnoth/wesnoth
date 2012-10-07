@@ -30,7 +30,7 @@ class tmp_depcheck_select_new
 public:
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param name 		the type of which we want to select a new item
 	 * @param options 	the names of the components which can be choosed
 	 */
@@ -39,7 +39,7 @@ public:
 
 	/**
 	 * Returns the selected item.
-	 * 
+	 *
 	 * @return 		the index of the selected item, or -1 if none was selected
 	 * 				(the dialog was closed with the cancel button)
 	 */

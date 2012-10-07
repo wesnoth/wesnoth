@@ -59,7 +59,7 @@ void manager::init_info(const config& cfg, const std::string& key)
 		config entry;
 		entry["id"] = comp["id"];
 		entry["name"] = comp["name"];
-		
+
 		if (comp.has_child("options")) {
 			const config& options = comp.child("options");
 
@@ -180,7 +180,7 @@ void manager::show_dialog()
 		gui2::show_transient_message(video_, "", _(
 				"None of the selected modifications, era or scenario provide " \
 				"configuration options."));
-		
+
 		return;
 	}
 
@@ -249,7 +249,7 @@ void manager::show_dialog()
 	if (window->show() == gui2::twindow::CANCEL) {
 		DBG_MP << "User cancelled changes" << std::endl;
 		delete window;
-		
+
 		return;
 	}
 
@@ -294,7 +294,7 @@ void manager::add_widgets(const config& data, config& grid) const
 		{
 			continue;
 		}
-		
+
 		config& row = grid.add_child("row");
 		row["grow_factor"] = 0;
 		config& column = row.add_child("column");
@@ -420,7 +420,7 @@ config& manager::get_value_cfg(const std::string& id)
 const config& manager::get_value_cfg_or_empty(const std::string& id) const
 {
 	static const config empty;
-	
+
 	BOOST_FOREACH (const config::any_child& i, values_.all_children_range()) {
 		BOOST_FOREACH (const config& j, i.cfg.child_range("option")) {
 			if (j["id"] == id) {
@@ -437,7 +437,7 @@ config::any_child manager::get_option_parent(const std::string& id) const
 	static const config empty;
 	static const std::string empty_key = "";
 	static config::any_child not_found(&empty_key, &empty);
-	
+
 	BOOST_FOREACH (const config::any_child& i,
 				   options_info_.all_children_range()) {
 		BOOST_FOREACH (const config::any_child& j, i.cfg.all_children_range()) {
@@ -549,7 +549,7 @@ void manager::extract_values(const std::string& key, const std::string& id,
 		if (!is_valid_option(c.key, c.cfg)) {
 			continue;
 		}
-		
+
 		config& out = get_value_cfg(c.cfg["id"].str());
 
 		if (c.key == "entry") {
@@ -614,7 +614,7 @@ void manager::__tmp_set_checkbox_defaults(gui2::twindow* window) const
 			if (!is_valid_option("checkbox", j)) {
 				continue;
 			}
-			
+
 			gui2::ttoggle_button* button;
 			button = gui2::find_widget<gui2::ttoggle_button>
 										(window, j["id"].str(), false, false);

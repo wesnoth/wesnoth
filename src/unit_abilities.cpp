@@ -574,7 +574,7 @@ std::vector<t_string> attack_type::special_tooltips(bool force_active) const
  *
  * Setting @a force_active to true causes all specials to be assumed active
  * (the context is ignored in this case).
- * 
+ *
  */
 std::string attack_type::weapon_specials(bool force_active) const
 {

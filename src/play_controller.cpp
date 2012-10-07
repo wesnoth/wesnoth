@@ -289,7 +289,7 @@ void play_controller::init(CVideo& video){
 
 	if (level_.child_or_empty("modification")) {
 		BOOST_FOREACH (const config& mod_cfg, level_.child_range("modification")) {
-			game_events::add_events(mod_cfg.child_range("event"), 
+			game_events::add_events(mod_cfg.child_range("event"),
 									"mod_" + mod_cfg["id"].str() + "_events");
 		}
 	}

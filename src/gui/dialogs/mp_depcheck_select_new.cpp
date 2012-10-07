@@ -28,28 +28,28 @@ namespace gui2
 /*WIKI
  * @page = GUIWindowDefinitionWML
  * @order = 2_mp_depcheck_select_new
- * 
+ *
  * == MP Dependency Check: Select New ==
- * 
+ *
  * Offers a list of compatible items if a currently selected one is
  * incompatible. Currently used for switching era or map.
- * 
+ *
  * @begin{table}{dialog_widgets}
- * 
+ *
  * message & & label & m &
  * 		displays the details of the required changes $
- * 
+ *
  * itemlist & & listbox & m &
  * 		displays the available items to choose from $
- * 
+ *
  * cancel & & button & m &
  * 		refuse to apply any changes $
- * 
+ *
  * ok & & button & m &
  * 		select the chosen item $
- * 
+ *
  * @end{table}
- * 
+ *
  */
 
 REGISTER_DIALOG(mp_depcheck_select_new)

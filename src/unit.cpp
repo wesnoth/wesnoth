@@ -2728,7 +2728,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 				} else if (apply_to == "overlay") {
 					const std::string &add = effect["add"];
 					const std::string &replace = effect["replace"];
-					
+
 					if (!add.empty()) {
 						std::vector<std::string> temp_overlays = utils::parenthetical_split(add, ',');
 						std::vector<std::string>::iterator it;
