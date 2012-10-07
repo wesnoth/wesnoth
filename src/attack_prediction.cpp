@@ -232,7 +232,11 @@ prob_matrix::prob_matrix(unsigned int a_max, unsigned int b_max,
                          unsigned int a_cur, unsigned int b_cur,
                          const std::vector<double> a_initial[2],
                          const std::vector<double> b_initial[2])
-	: rows_(a_max+1), cols_(b_max+1)
+	: rows_(a_max+1)
+	, cols_(b_max+1)
+	, plane_()
+	, used_rows_()
+	, used_cols_()
 {
 	// Make sure we do not access the matrix in invalid positions.
 	a_cur = std::min<unsigned int>(a_cur, rows_ - 1);
