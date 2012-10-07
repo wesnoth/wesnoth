@@ -2535,9 +2535,9 @@ class console_handler : public map_command_handler<console_handler>, private cha
 		std::string get_command_flags_description(const chmap::command& c) const
 		{
 			std::string space(" ");
-			return std::string(c.has_flag('D') ? space + _("(debug command)") : "")
-				 + std::string(c.has_flag('N') ? space + _("(network only)") : "")
-				 + std::string(c.has_flag('A') ? space + _("(admin only)") : "");
+			return (c.has_flag('D') ? space + _("(debug command)") : "")
+				 + (c.has_flag('N') ? space + _("(network only)") : "")
+				 + (c.has_flag('A') ? space + _("(admin only)") : "");
 		}
 		using map::is_enabled;
 		bool is_enabled(const chmap::command& c) const
