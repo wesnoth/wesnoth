@@ -70,20 +70,31 @@ struct temporary_unit_hider {
 	unit* const unit_;
 };
 
-/// finalizer struct to help with exception safety
-/// sets variable to value on destruction
+/**
+  * Finalizer class to help with exception safety
+  * sets variable to value on destruction
+  */
 template <typename T>
-struct variable_finalizer
+class variable_finalizer
 {
+public:
 	variable_finalizer(T & variable, T value):
-		variable_(variable),
+		variable_(&variable),
 		value_(value)
 	{}
 	~variable_finalizer()
 	{
-		variable_ = value_;
+		if(variable_ != NULL) {
+			*variable_ = value_;
+		}
 	}
-	T & variable_;
+	/** Stop tracking the variable, i.e. this object won't do anything on destruction. */
+	void clear()
+	{
+		variable_ = NULL;
+	}
+private:
+	T * variable_;
 	T value_;
 };
 
