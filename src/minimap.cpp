@@ -39,7 +39,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw)
 {
 	const int scale = 8;
 
-	DBG_DP << "creating minimap " << int(map.w()*scale*0.75) << "," << int(map.h()*scale) << "\n";
+	DBG_DP << "creating minimap " << int(map.w()*scale*0.75) << "," << map.h()*scale << "\n";
 
 	const size_t map_width = map.w()*scale*3/4;
 	const size_t map_height = map.h()*scale;
