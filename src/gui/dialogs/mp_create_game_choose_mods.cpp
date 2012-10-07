@@ -65,6 +65,7 @@ tmp_create_game_choose_mods::tmp_create_game_choose_mods
 					 std::vector<std::string>& result)
 	: result_(result)
 	, game_cfg_(game_cfg)
+	, mod_list_(NULL)
 {
 }
 
