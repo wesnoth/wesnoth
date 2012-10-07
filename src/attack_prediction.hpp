@@ -79,7 +79,7 @@ private:
 	                      double & self_not_hit, double & opp_not_hit);
 
 	/** All other cases. */
-	void complex_fight(combatant &opponent, unsigned rounds, bool levelup_considered,
+	void complex_fight(combatant &opponent, bool levelup_considered,
 	                   double & self_not_hit, double & opp_not_hit);
 
 	/** We must adjust for swarm after every combat. */

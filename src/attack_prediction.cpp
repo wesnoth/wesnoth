@@ -1250,9 +1250,10 @@ void combatant::one_strike_fight(combatant &opp, bool levelup_considered,
 	}
 }
 
-void combatant::complex_fight(combatant &opp, unsigned rounds, bool levelup_considered,
+void combatant::complex_fight(combatant &opp, bool levelup_considered,
                               double & self_not_hit, double & opp_not_hit)
 {
+	unsigned int rounds = std::max<unsigned int>(u_.rounds, opp.u_.rounds);
 	unsigned max_attacks = std::max(hit_chances_.size(), opp.hit_chances_.size());
 
 	debug(("A gets %zu attacks, B %zu\n", hit_chances_.size(), opp.hit_chances_.size()));
@@ -1326,8 +1327,6 @@ void combatant::complex_fight(combatant &opp, unsigned rounds, bool levelup_cons
 // Um, ok, it was a stupid thing to say.
 void combatant::fight(combatant &opp, bool levelup_considered)
 {
-	unsigned int rounds = std::max<unsigned int>(u_.rounds, opp.u_.rounds);
-
 	// If defender has firststrike and we don't, reverse.
 	if (opp.u_.firststrike && !u_.firststrike) {
 		opp.fight(*this, levelup_considered);
@@ -1358,7 +1357,7 @@ void combatant::fight(combatant &opp, bool levelup_considered)
 	double opp_not_hit = 1.0;
 
 	// Optimize the simple cases.
-	if (rounds == 1 && !u_.slows && !opp.u_.slows &&
+	if (u_.rounds == 1 && opp.u_.rounds == 1 && !u_.slows && !opp.u_.slows &&
 		!u_.drains && !opp.u_.drains && !u_.petrifies && !opp.u_.petrifies &&
 		summary[1].empty() && opp.summary[1].empty()) {
 		if (hit_chances_.size() <= 1 && opp.hit_chances_.size() <= 1) {
@@ -1367,10 +1366,10 @@ void combatant::fight(combatant &opp, bool levelup_considered)
 			opp.hit_chances_.size() * opp.u_.damage < min_hp()) {
 			no_death_fight(opp, levelup_considered, self_not_hit, opp_not_hit);
 		} else {
-			complex_fight(opp, rounds, levelup_considered, self_not_hit, opp_not_hit);
+			complex_fight(opp, levelup_considered, self_not_hit, opp_not_hit);
 		}
 	} else {
-			complex_fight(opp, rounds, levelup_considered, self_not_hit, opp_not_hit);
+			complex_fight(opp, levelup_considered, self_not_hit, opp_not_hit);
 	}
 
 #if 0
