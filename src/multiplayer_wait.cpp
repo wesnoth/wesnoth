@@ -484,7 +484,7 @@ void wait::generate_menu()
 
 			if (RCcolor.empty())
 				RCcolor = sd["side"].str();
-			leader_image = utg.image() + std::string("~RC(") + std::string(utg.flag_rgb() + ">" + RCcolor + ")");
+			leader_image = utg.image() + std::string("~RC(") + utg.flag_rgb() + ">" + RCcolor + ")";
 #endif
 		} else {
 			leader_image = leader_list_manager::random_enemy_picture;
