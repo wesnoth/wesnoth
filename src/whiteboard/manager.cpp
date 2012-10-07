@@ -1005,7 +1005,7 @@ void manager::continue_execute_all()
 {
 	if (executing_all_actions_ && !rand_rng::has_new_seed_callback()) {
 		events::commands_disabled--;
-		if (execute_all_actions()) {
+		if (execute_all_actions() && preparing_to_end_turn_) {
 			resources::controller->force_end_turn();
 		}
 	}
