@@ -34,7 +34,11 @@ class modification_queue {
 	// At the beginning and end of each member function call, there
 	// are no empty vectors in priorities_.
 public:
-	modification_queue() {}
+	modification_queue()
+		: priorities_()
+	{
+	}
+
 	~modification_queue() {}
 
 	bool empty() const  { return priorities_.empty(); }
