@@ -309,14 +309,20 @@ add_library(wesnoth-lua ${LIBRARY_TYPE} EXCLUDE_FROM_ALL ${libwesnoth-lua_STAT_S
 # uses it. Force the flag off for these files. (We don't enable it in our
 # generic compiler flags, but allows people to do it.)
 if(CMAKE_COMPILER_IS_GNUCXX)
-	set_target_properties(wesnoth-lua PROPERTIES COMPILE_FLAGS "-Wno-old-style-cast")
+	set_target_properties(wesnoth-lua
+		PROPERTIES COMPILE_FLAGS
+		"-Wno-old-style-cast -Wno-useless-cast"
+	)
 	set_source_files_properties(
 		clipboard.cpp
 		network.cpp
 		network_worker.cpp
-		text.cpp
 		PROPERTIES
 			COMPILE_FLAGS "-Wno-old-style-cast")
+	set_source_files_properties(
+		text.cpp
+		PROPERTIES
+			COMPILE_FLAGS "-Wno-old-style-cast -Wno-useless-cast")
 endif(CMAKE_COMPILER_IS_GNUCXX)
 
 ########### Helper libraries ###############

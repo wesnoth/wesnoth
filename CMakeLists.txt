@@ -314,6 +314,12 @@ check_compiler_has_flag(
 	HAS_COMPILER_FLAG_WMISMATCHED_TAGS
 )
 
+check_compiler_has_flag(
+	CXX_FLAGS_PEDANTIC_COMPILATION
+	"-Wuseless-cast"
+	HAS_COMPILER_FLAG_WUSELESS_CAST
+)
+
 
 ### Set the final compiler flags.
 
