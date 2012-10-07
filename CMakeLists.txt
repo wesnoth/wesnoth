@@ -320,6 +320,12 @@ check_compiler_has_flag(
 	HAS_COMPILER_FLAG_WUSELESS_CAST
 )
 
+check_compiler_has_flag(
+	CXX_FLAGS_PEDANTIC_COMPILATION
+	"-Wc++11-compat"
+	HAS_COMPILER_FLAG_WCXX_11_COMPAT
+)
+
 
 ### Set the final compiler flags.
 
