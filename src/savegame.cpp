@@ -409,12 +409,22 @@ void read_save_file(const std::string& name, config& cfg, std::string* error_log
 	if (file_stream->fail()) {
 		file_stream = istream_file(get_saves_dir() + "/" + name);
 	}
-	if(file_stream->fail() && !is_gzip_file(modified_name)) {
+	if(file_stream->fail() && !is_compressed_file(modified_name)) {
 		file_stream = istream_file(get_saves_dir() + "/" + modified_name + ".gz");
 		if (file_stream->fail()) {
 			file_stream = istream_file(get_saves_dir() + "/" + name + ".gz");
 		}
-		modified_name += ".gz";
+		if (!file_stream->fail()) {
+			modified_name += ".gz";
+		} else {
+			file_stream = istream_file(get_saves_dir() + "/" + modified_name + ".bz2");
+			if (file_stream->fail()) {
+				file_stream = istream_file(get_saves_dir() + "/" + name + ".bz2");
+			}
+			if (!file_stream->fail()) {
+				modified_name += ".bz2";
+			}
+		}
 	}
 
 	cfg.clear();
@@ -425,6 +435,8 @@ void read_save_file(const std::string& name, config& cfg, std::string* error_log
 		 */
 		if(is_gzip_file(modified_name)) {
 			read_gz(cfg, *file_stream);
+		} else if(is_bzip2_file(modified_name)) {
+			read_bz2(cfg, *file_stream);
 		} else {
 			read(cfg, *file_stream);
 		}

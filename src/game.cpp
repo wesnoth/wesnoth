@@ -75,7 +75,8 @@ static void safe_exit(int res) {
 }
 
 // maybe this should go in a util file somewhere?
-static void gzip_codec(const std::string & input_file, const std::string & output_file, bool encode)
+template <typename filter>
+static void codec(const std::string & input_file, const std::string & output_file)
 {
 	try {
 		std::ofstream ofile(output_file.c_str(), std::ios_base::out
@@ -83,10 +84,7 @@ static void gzip_codec(const std::string & input_file, const std::string & outpu
 		std::ifstream ifile(input_file.c_str(),
 				std::ios_base::in | std::ios_base::binary);
 		boost::iostreams::filtering_streambuf<boost::iostreams::input> in;
-		if(encode)
-			in.push(boost::iostreams::gzip_compressor());
-		else
-			in.push(boost::iostreams::gzip_decompressor());
+		in.push(filter());
 		in.push(ifile);
 		boost::iostreams::copy(in, ofile);
 		ifile.close();
@@ -98,12 +96,12 @@ static void gzip_codec(const std::string & input_file, const std::string & outpu
 
 static void gzip_encode(const std::string & input_file, const std::string & output_file)
 {
-	gzip_codec(input_file, output_file, true);
+	codec<boost::iostreams::gzip_compressor>(input_file, output_file);
 }
 
 static void gzip_decode(const std::string & input_file, const std::string & output_file)
 {
-	gzip_codec(input_file, output_file, false);
+	codec<boost::iostreams::gzip_decompressor>(input_file, output_file);
 }
 
 static void handle_preprocess_command(const commandline_options& cmdline_opts)

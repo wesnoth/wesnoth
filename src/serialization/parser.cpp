@@ -36,6 +36,7 @@
 #include <stack>
 
 #include <boost/iostreams/filtering_stream.hpp>
+#include <boost/iostreams/filter/bzip2.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/variant.hpp>
@@ -380,7 +381,8 @@ void read(config &cfg, const std::string &in, abstract_validator * validator)
 	parser(cfg, ss, validator)();
 }
 
-void read_gz(config &cfg, std::istream &file, abstract_validator * validator)
+template <typename decompressor>
+void read_compressed(config &cfg, std::istream &file, abstract_validator * validator)
 {
 	//an empty gzip file seems to confuse boost on msvc
 	//so return early if this is the case
@@ -388,7 +390,7 @@ void read_gz(config &cfg, std::istream &file, abstract_validator * validator)
 		return;
 	}
 	boost::iostreams::filtering_stream<boost::iostreams::input> filter;
-	filter.push(boost::iostreams::gzip_decompressor());
+	filter.push(decompressor());
 	filter.push(file);
 
 	/*
@@ -401,6 +403,16 @@ void read_gz(config &cfg, std::istream &file, abstract_validator * validator)
 	}
 
 	parser(cfg, filter,validator)();
+}
+
+void read_gz(config &cfg, std::istream &file, abstract_validator * validator)
+{
+	read_compressed<boost::iostreams::gzip_decompressor>(cfg, file, validator);
+}
+
+void read_bz2(config &cfg, std::istream &file, abstract_validator * validator)
+{
+	read_compressed<boost::iostreams::bzip2_decompressor>(cfg, file, validator);
 }
 
 static std::string escaped_string(const std::string &value)
@@ -527,11 +539,22 @@ void write(std::ostream &out, config const &cfg, unsigned int level)
 	write_internal(cfg, out, textdomain, level);
 }
 
-void write_gz(std::ostream &out, config const &cfg)
+template <typename compressor>
+void write_compressed(std::ostream &out, config const &cfg)
 {
 	boost::iostreams::filtering_stream<boost::iostreams::output> filter;
-	filter.push(boost::iostreams::gzip_compressor());
+	filter.push(compressor());
 	filter.push(out);
 
 	write(filter, cfg);
+}
+
+void write_gz(std::ostream &out, config const &cfg)
+{
+	write_compressed<boost::iostreams::gzip_compressor>(out, cfg);
+}
+
+void write_bz2(std::ostream &out, config const &cfg)
+{
+	write_compressed<boost::iostreams::bzip2_compressor>(out, cfg);
 }

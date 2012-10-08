@@ -139,4 +139,34 @@ def CheckBoostIostreamsGZip(context):
     context.Result("no")
     return False
 
-config_checks = { "CheckBoost" : CheckBoost, "CheckBoostIostreamsGZip" : CheckBoostIostreamsGZip }
+def CheckBoostIostreamsBZip2(context):
+    env = context.env
+    backup = env.Clone().Dictionary()
+
+    context.Message("Checking for bzip2 support in Boost Iostreams... ")
+    test_program = """
+        #include <boost/iostreams/filtering_stream.hpp>
+        #include <boost/iostreams/filter/bzip2.hpp>
+
+        int main()
+        {
+            boost::iostreams::filtering_stream<boost::iostreams::output> filter;
+            filter.push(boost::iostreams::bzip2_compressor(boost::iostreams::bzip2_params()));
+        }
+        \n"""
+
+    for libbz2 in ["", "bz2"]:
+        env.Append(LIBS = [libbz2])
+        comment = ""
+        if libbz2:
+                comment = "        //Trying to link against '%s'.\n" % libbz2
+        if context.TryLink(comment + test_program, ".cpp"):
+            context.Result("yes")
+            return True
+        else:
+            env.Replace(**backup)
+
+    context.Result("no")
+    return False
+
+config_checks = { "CheckBoost" : CheckBoost, "CheckBoostIostreamsGZip" : CheckBoostIostreamsGZip, "CheckBoostIostreamsBZip2" : CheckBoostIostreamsBZip2 }

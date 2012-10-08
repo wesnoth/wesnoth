@@ -318,6 +318,7 @@ if env["prereqs"]:
         conf.CheckGettextLibintl() and \
         conf.CheckBoost("iostreams", require_version = "1.34.1") and \
         conf.CheckBoostIostreamsGZip() and \
+        conf.CheckBoostIostreamsBZip2() and \
         conf.CheckBoost("smart_ptr", header_only = True) and \
         conf.CheckSDL(require_version = '1.2.7') and \
         conf.CheckSDL('SDL_net') and \

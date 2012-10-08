@@ -878,6 +878,17 @@ bool is_gzip_file(const std::string& filename)
 		&& filename.substr(filename.length() - 3) == ".gz");
 }
 
+/**
+ * Returns true if the file ends with '.bz2'.
+ *
+ * @param filename                The name to test.
+ */
+bool is_bzip2_file(const std::string& filename)
+{
+	return (filename.length() > 4
+		&& filename.substr(filename.length() - 4) == ".bz2");
+}
+
 file_tree_checksum::file_tree_checksum()
 	: nfiles(0), sum_size(0), modified(0)
 {}

@@ -31,9 +31,12 @@ void read(config &cfg, const std::string &in,
 		  abstract_validator * validator = NULL); 	// Throws config::error
 void read_gz(config &cfg, std::istream &in,
 			 abstract_validator * validator = NULL);
+void read_bz2(config &cfg, std::istream &in,
+			 abstract_validator * validator = NULL);
 
 void write(std::ostream &out, config const &cfg, unsigned int level=0);
 void write_gz(std::ostream &out, config const &cfg);
+void write_bz2(std::ostream &out, config const &cfg);
 void write_key_val(std::ostream &out, const std::string &key, const config::attribute_value &value, unsigned level, std::string &textdomain);
 void write_open_child(std::ostream &out, const std::string &child, unsigned int level);
 void write_close_child(std::ostream &out, const std::string &child, unsigned int level);

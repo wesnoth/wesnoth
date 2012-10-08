@@ -132,6 +132,13 @@ time_t file_create_time(const std::string& fname);
 /** Returns true if the file ends with '.gz'. */
 bool is_gzip_file(const std::string& filename);
 
+/** Returns true if the file ends with '.bz2'. */
+bool is_bzip2_file(const std::string& filename);
+
+inline bool is_compressed_file(const std::string& filename) {
+	return is_gzip_file(filename) || is_bzip2_file(filename);
+}
+
 struct file_tree_checksum
 {
 	file_tree_checksum();
