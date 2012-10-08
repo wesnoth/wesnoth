@@ -1445,6 +1445,20 @@ static int intf_set_variable(lua_State *L)
 }
 
 /**
+ * Checks if a file exists (not necessarily a Lua script).
+ * - Arg 1: string containing the file name.
+ * - Ret 1: boolean
+ */
+static int intf_have_file(lua_State *L)
+{
+	char const *m = luaL_checkstring(L, 1);
+	std::string p = get_wml_location(m);
+	if (p.empty()) { lua_pushboolean(L, false); }
+	else { lua_pushboolean(L, true); }
+	return 1;
+}
+
+/**
  * Loads and executes a Lua file.
  * - Arg 1: string containing the file name.
  * - Ret *: values returned by executing the file body.
@@ -3699,6 +3713,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "get_variable",             &intf_get_variable             },
 		{ "get_village_owner",        &intf_get_village_owner        },
 		{ "get_villages",             &intf_get_villages             },
+		{ "have_file",                &intf_have_file                },
 		{ "highlight_hex",            &intf_highlight_hex            },
 		{ "is_enemy",                 &intf_is_enemy                 },
 		{ "lock_view",                &intf_lock_view                },
