@@ -14,6 +14,7 @@
    See the COPYING file for more details.
 */
 
+#include <boost/assign/list_of.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 
 #include "savegame.hpp"
@@ -399,33 +400,29 @@ bool save_info_less_time::operator() (const save_info& a, const save_info& b) co
 	}
 }
 
+static std::istream* find_save_file(const std::string &name, const std::string &alt_name, const std::vector<std::string> &suffixes) {
+	BOOST_FOREACH(const std::string &suf, suffixes) {
+		std::istream *file_stream = istream_file(get_saves_dir() + "/" + name + suf);
+		if (file_stream->fail()) {
+			delete file_stream;
+			file_stream = istream_file(get_saves_dir() + "/" + alt_name + suf);
+		}
+		if (!file_stream->fail())
+			return file_stream;
+		else
+			delete file_stream;
+	}
+	LOG_SAVE << "Could not open supplied filename '" << name << "'\n";
+	throw game::load_game_failed();
+}
+
 void read_save_file(const std::string& name, config& cfg, std::string* error_log)
 {
 	std::string modified_name = name;
 	replace_space2underbar(modified_name);
 
-	// Try reading the file both with and without underscores, if needed append .gz as well
-	scoped_istream file_stream = istream_file(get_saves_dir() + "/" + modified_name);
-	if (file_stream->fail()) {
-		file_stream = istream_file(get_saves_dir() + "/" + name);
-	}
-	if(file_stream->fail() && !is_compressed_file(modified_name)) {
-		file_stream = istream_file(get_saves_dir() + "/" + modified_name + ".gz");
-		if (file_stream->fail()) {
-			file_stream = istream_file(get_saves_dir() + "/" + name + ".gz");
-		}
-		if (!file_stream->fail()) {
-			modified_name += ".gz";
-		} else {
-			file_stream = istream_file(get_saves_dir() + "/" + modified_name + ".bz2");
-			if (file_stream->fail()) {
-				file_stream = istream_file(get_saves_dir() + "/" + name + ".bz2");
-			}
-			if (!file_stream->fail()) {
-				modified_name += ".bz2";
-			}
-		}
-	}
+	static const std::vector<std::string> suffixes = boost::assign::list_of("")(".gz")(".bz2");
+	scoped_istream file_stream = find_save_file(modified_name, name, suffixes);
 
 	cfg.clear();
 	try{
