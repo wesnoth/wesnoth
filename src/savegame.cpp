@@ -897,9 +897,9 @@ bool savegame::check_overwrite(CVideo& video)
 
 void savegame::check_filename(const std::string& filename, CVideo& video)
 {
-	if (is_gzip_file(filename)) {
-		gui2::show_error_message(video, _("Save names should not end on '.gz'. "
-			"Please choose a different name."));
+	if (is_compressed_file(filename)) {
+		gui2::show_error_message(video, _("Save names should not end on '.gz' or '.bz2'. "
+			"Please remove the extension."));
 		throw illegal_filename_exception();
 	}
 }
