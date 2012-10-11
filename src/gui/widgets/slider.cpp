@@ -115,8 +115,8 @@ void tslider::set_minimum_value(const int minimum_value)
 	const int maximum_value = get_maximum_value();
 	minimum_value_ = minimum_value;
 
-	// The number of items needs to include the begin and end so distance + 1.
-	set_item_count(distance(minimum_value_, maximum_value) + 1);
+	// The number of items needs to include the begin and end so distance step size.
+	set_item_count(distance(minimum_value_, maximum_value) + get_step_size());
 
 	if(value < minimum_value_) {
 		set_item_position(0);
@@ -136,8 +136,8 @@ void tslider::set_maximum_value(const int maximum_value)
 
 	const int value = get_value();
 
-	// The number of items needs to include the begin and end so distance + 1.
-	set_item_count(distance(minimum_value_, maximum_value) + 1);
+	// The number of items needs to include the begin and end so distance + step size.
+	set_item_count(distance(minimum_value_, maximum_value) + get_step_size());
 
 	if(value > maximum_value) {
 		set_item_position(get_maximum_value());

@@ -189,7 +189,7 @@ void tscrollbar_::recalculate()
 	assert(step_size_);
 	assert(visible_items_);
 
-	const unsigned steps = (item_count_ - visible_items_ + step_size_ - 1) / step_size_;
+	const unsigned steps = (item_count_ - visible_items_ - step_size_) / step_size_;
 
 	positioner_length_ = available_length * visible_items_ / item_count_;
 	recalculate_positioner();
@@ -199,7 +199,7 @@ void tscrollbar_::recalculate()
 		(available_length - positioner_length_)
 		/ static_cast<float>(steps + 1);
 
-	set_item_position(item_position_);
+	set_item_position(item_position_ * step_size_);
 #if 0
 	std::cerr << "Scrollbar recalculate overview:\n"
 		<< "item_count_ " << item_count_
