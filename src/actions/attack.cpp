@@ -198,7 +198,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u,
 			swarm = true;
 			swarm_min = swarm_specials.highest("swarm_attacks_min").first;
 			swarm_max = swarm_specials.highest("swarm_attacks_max", num_blows).first;
-			num_blows = swarm_min + (swarm_max - swarm_min) * hp / max_hp;
+			num_blows = calc_blows(hp);
 		} else {
 			swarm = false;
 			swarm_min = num_blows;

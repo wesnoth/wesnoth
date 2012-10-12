@@ -78,6 +78,11 @@ struct battle_context_unit_stats
 	~battle_context_unit_stats()
 	{}
 
+	/// Calculates the number of blows we would have if we had @a new_hp
+	// instead of the recorded hp.
+	unsigned int calc_blows(unsigned new_hp) const
+	{ return swarm_min + (swarm_max - swarm_min) * new_hp / max_hp; }
+
 #if defined(BENCHMARK) || defined(CHECK)
 	/// Special constructor for the stand-alone version of attack_prediction.cpp.
 	/// (This hardcodes some standard abilities for testing purposes.)
