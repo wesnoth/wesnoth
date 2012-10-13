@@ -1618,8 +1618,6 @@ static void run(unsigned specific_battle)
 	exit(0);
 }
 
-// Note: The exits in this function are not really necessary, unless they
-//       are intended as (extreme) warnings.
 static battle_context_unit_stats *parse_unit(char ***argv)
 {
 	// There are four required parameters.
@@ -1646,8 +1644,7 @@ static battle_context_unit_stats *parse_unit(char ***argv)
 		}
 		if (strstr((*argv)[5], "drain")) {
 			if (!max) {
-				fprintf(stderr, "drain needs maxhp set");
-				exit(1);
+				fprintf(stderr, "WARNING: drain specified without maxhp; assuming uninjured.\n");
 			}
 			drains = true;
 		}
@@ -1661,8 +1658,7 @@ static battle_context_unit_stats *parse_unit(char ***argv)
 			firststrike = true;
 		if (strstr((*argv)[5], "swarm")) {
 			if (!max) {
-				fprintf(stderr, "swarm needs maxhp set");
-				exit(1);
+				fprintf(stderr, "WARNING: swarm specified without maxhp; assuming uninjured.\n");
 			}
 			swarm = true;
 		}

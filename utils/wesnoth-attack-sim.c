@@ -194,11 +194,11 @@ static struct unit *parse_unit(char ***argv)
 		if (max) {
 			u->max_hp = atoi(max + strlen("maxhp="));
 			if (u->max_hp < u->hp)
-				barf("maxhp must be > hitpoints");
+				barf("maxhp must be at least hitpoints");
 		}
 		if (strstr((*argv)[5], "drain")) {
 			if (!max)
-				barf("drain needs maxhp set");
+				fprintf(stderr, "WARNING: drain specified without maxhp; assuming uninjured.\n");
 			u->drains = true;
 		}
 		if (strstr((*argv)[5], "slow"))
@@ -209,7 +209,7 @@ static struct unit *parse_unit(char ***argv)
 			u->firststrike = true;
 		if (strstr((*argv)[5], "swarm")) {
 			if (!max)
-				barf("swarm needs maxhp set");
+				fprintf(stderr, "WARNING: swarm specified without maxhp; assuming uninjured.\n");
 			u->swarm = true;
 		}
 		*argv += 5;
