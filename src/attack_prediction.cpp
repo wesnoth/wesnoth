@@ -1447,6 +1447,29 @@ double combatant::average_hp(unsigned int healing) const
   } while (0)
 
 
+#ifdef ATTACK_PREDICTION_DEBUG
+void list_combatant(const battle_context_unit_stats & stats, unsigned fighter)
+{
+	printf("#%02u: %u-%d; %2uhp; %02u%% to hit; ",
+	       fighter, stats.swarm_max, stats.damage, stats.hp, stats.chance_to_hit);
+	if ( stats.drains )
+		printf("drains,");
+	if ( stats.slows )
+		printf("slows,");
+	if ( stats.rounds > 1 )
+		printf("berserk,");
+	if ( stats.swarm )
+		printf("swarm(%u),", stats.num_blows);
+	if ( stats.firststrike )
+		printf("firststrike,");
+	printf("maxhp=%u\n", stats.max_hp);
+}
+#else
+void list_combatant(const battle_context_unit_stats &, unsigned)
+{ }
+#endif
+
+
 #ifdef HUMAN_READABLE
 void combatant::print(const char label[], unsigned int battle, unsigned int fighter) const
 {
@@ -1459,7 +1482,7 @@ void combatant::print(const char label[], unsigned int battle, unsigned int figh
 		printf("slows,");
 	if ( u_.rounds > 1 )
 		printf("berserk,");
-	if ( u_.swarm_max != u_.swarm_min )
+	if ( u_.swarm )
 		printf("swarm,");
 	if ( u_.firststrike )
 		printf("firststrike,");
@@ -1489,7 +1512,7 @@ void combatant::print(const char label[], unsigned int battle, unsigned int /*fi
 		printf("slows,");
 	if ( u_.rounds > 1 )
 		printf("berserk,");
-	if ( u_.swarm_max != u_.swarm_min )
+	if ( u_.swarm )
 		printf("swarm,");
 	if ( u_.firststrike )
 		printf("firststrike,");
@@ -1527,22 +1550,24 @@ static void run(unsigned specific_battle)
 	struct timeval start, end, total;
 
 	for (i = 0; i < NUM_UNITS; ++i) {
+		unsigned alt = i + 74; // To offset some cycles.
 		// To get somewhat realistic performance data, try to approximate
 		// hit point ranges for mainline units (say 25-60 max hitpoints?)
 		unsigned max_hp = (i*2)%23 + (i*3)%14 + 25;
-		unsigned hp = (i*6)%max_hp + 1;
-		stats[i] = new battle_context_unit_stats(i%8 + 2,        // damage
-		                                         (i%11 + 1) / 2, // number of strikes
+		unsigned hp = (alt*5)%max_hp + 1;
+		stats[i] = new battle_context_unit_stats(alt%8 + 2,      // damage
+		                                         (alt%19 + 3)/4, // number of strikes
 		                                         hp, max_hp,
-		                                         30 + (i%6)*10,  // hit chance
-		                                         (i%19)%4 == 0,  // drains
-		                                         (i%17)%3 == 0,  // slows
+		                                         (i%6)*10 + 30,  // hit chance
+		                                         (i%13)%4 == 0,  // drains
+		                                         (i%11)%3 == 0,  // slows
 		                                         false,          // slowed
 		                                          i%7 == 0,      // berserk
-		                                         (i%13)/2 == 0,  // firststrike
+		                                         (i%17)/2 == 0,  // firststrike
 //		                                          i%5 == 0);     // swarm
 		                                          false);        // swarm predictions are bugged
 		u[i] = new combatant(*stats[i]);
+		list_combatant(*stats[i], i+1);
 	}
 
 	gettimeofday(&start, NULL);
