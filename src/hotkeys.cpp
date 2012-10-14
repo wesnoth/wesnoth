@@ -34,6 +34,7 @@
 
 #include <map>
 #include <boost/foreach.hpp>
+#include <boost/algorithm/string/join.hpp>
 
 static lg::log_domain log_config("config");
 #define ERR_G LOG_STREAM(err, lg::general)
@@ -56,6 +57,11 @@ config default_hotkey_cfg_;
 
 
 namespace hotkey {
+
+const input_controll input_list_[] = {
+		{ hotkey::INPUT_SCROLL_HORIZONTAL, "scroll-horizontal", N_("Scroll Viewport Horizontally"), false, hotkey::SCOPE_GENERAL },
+		{ hotkey::INPUT_SCROLL_VERTICAL,   "scroll-vertical",   N_("Scroll Viewport Vertically"), false, hotkey::SCOPE_GENERAL }
+};
 
 const hotkey_command hotkey_list_[] = {
 
@@ -251,22 +257,6 @@ static void mbutton_event_execute(display& disp, const SDL_MouseButtonEvent& eve
 
 const std::string CLEARED_TEXT = "__none__";
 
-hotkey_item::hotkey_item(const config& cfg) :
-	command_(),
-	type_(UNBOUND),
-	character_(0),
-	ctrl_(false),
-	alt_(false),
-	cmd_(false),
-	shift_(false),
-	keycode_(0),
-	device_(0),
-	button_(0),
-	value_(0)
-{
-	load_from_config(cfg);
-}
-
 scope hotkey_item::get_scope() const {
 	return hotkey_list_[command_map_[get_command()]].scope;
 }
@@ -293,22 +283,22 @@ void hotkey_item::load_from_config(const config& cfg)
 
 	const std::string& mouse = cfg["mouse"];
 	if (!mouse.empty()) {
-			device_ = cfg["mouse"].to_int();
+			mouse_ = cfg["mouse"].to_int();
 			button_ = cfg["button"].to_int();
-			type_ = hotkey_item::MBUTTON;
 	}
 	const std::string& joystick = cfg["joystick"];
 	if (!joystick.empty()) {
-		device_ = cfg["joystick"].to_int();
-		button_ = cfg["button"].to_int();
-		type_ = hotkey_item::JBUTTON;
+		joystick_ = cfg["joystick"].to_int();
 	}
 	const std::string& hat = cfg["hat"];
 	if (!hat.empty()) {
-		device_ = cfg["joystick"].to_int();
-		button_ = cfg["hat"].to_int();
+		hat_ = cfg["hat"].to_int();
 		value_ = cfg["value"].to_int();
-		type_ = hotkey_item::JHAT;
+	}
+
+	const std::string& button = cfg["button"];
+	if (!button.empty()) {
+		button_ = cfg["button"].to_int();
 	}
 
 	alt_ = cfg["alt"].to_bool();
@@ -317,11 +307,7 @@ void hotkey_item::load_from_config(const config& cfg)
 	shift_ = cfg["shift"].to_bool();
 
 	const std::string& key = cfg["key"];
-	if (key.empty()) return;
-
-	if (key == CLEARED_TEXT)
-	{
-		type_ = hotkey_item::CLEARED;
+	if (key.empty()) {
 		return;
 	}
 
@@ -330,7 +316,6 @@ void hotkey_item::load_from_config(const config& cfg)
 	// They may really want a specific key on the keyboard: we assume
 	// that any single character keyname is a character.
 	if (wkey.size() > 1) {
-		type_ = BY_KEYCODE;
 
 		keycode_ = sdl_keysym_from_name(key);
 		if (keycode_ == SDLK_UNKNOWN) {
@@ -352,10 +337,8 @@ void hotkey_item::load_from_config(const config& cfg)
 		// on single characters (eg. key=m, shift=yes would be
 		// key=M), but we don't want to break old preferences
 		// files.
-		type_ = BY_KEYCODE;
 		keycode_ = wkey[0];
 	} else {
-		type_ = BY_CHARACTER;
 		character_ = wkey[0];
 	}
 }
@@ -364,71 +347,26 @@ void hotkey_item::set_command(const std::string& command) {
 	command_ = command;
 }
 
+
 std::string hotkey_item::get_name() const
 {
 	std::stringstream str;
 
-	switch (type_) {
+	if (alt_)
+		str << "alt+";
+	if (ctrl_)
+		str << "ctrl+";
+	if (shift_)
+		str << "shift+";
+	if (cmd_)
+		str << "cmd+";
 
-	case UNBOUND:
-	case CLEARED:
-		break;
+	if (mouse_ >= 0) str << _("Mouse") << mouse_ << _("Button") << button_;
+	if (character_ != -1) str << static_cast<char>(character_);
+	if (keycode_ != -1) str << SDL_GetKeyName(SDLKey(keycode_));
+	if (joystick_ >= 0) str << _("Joystick") << joystick_ << _("Button") << button_;
 
-	case MBUTTON:
-		if (alt_)
-			str << "alt+";
-		if (ctrl_)
-			str << "ctrl+";
-		if (shift_)
-			str << "shift+";
-		if (cmd_)
-			str << "cmd+";
-		str << "Mouse" << device_ << "Btn" << button_;
-		break;
-
-	case BY_CHARACTER:
-		if (alt_)
-			str << "alt+";
-		if (cmd_)
-			str << "cmd+";
-		if (ctrl_)
-			str << "ctrl+";
-		str << static_cast<char>(character_);
-		break;
-
-	case BY_KEYCODE:
-		if (alt_)
-			str << "alt+";
-		if (ctrl_)
-			str << "ctrl+";
-		if (shift_)
-			str << "shift+";
-		if (cmd_)
-			str << "cmd+";
-		str << SDL_GetKeyName(SDLKey(keycode_));
-		break;
-
-	case JBUTTON:
-		if (alt_)
-			str << "alt+";
-		if (ctrl_)
-			str << "ctrl+";
-		if (shift_)
-			str << "shift+";
-		if (cmd_)
-			str << "cmd+";
-		str << "Joy" << device_ << "Btn" << button_;
-		break;
-
-	case JHAT:
-		if (alt_)
-			str << "alt+";
-		if (ctrl_)
-			str << "ctrl+";
-		if (shift_)
-			str << "shift+";
-		if (cmd_)
-			str << "cmd+";
+	if (value_ >= 0) {
 		std::string direction;
 		switch (value_) {
 			case SDL_HAT_CENTERED:
@@ -462,22 +400,40 @@ std::string hotkey_item::get_name() const
 				direction = "Unknown";
 				break;
 		}
-		str << "Joy" << device_ << "Hat" << button_ << direction;
-		break;
+		str << _("Joystick") << joystick_ << _("Hat") << button_ << direction;
 	}
+
 	return str.str();
 }
 
-void hotkey_item::clear_hotkey()
+void hotkey_item::clear()
 {
-	type_ = CLEARED;
+	command_ = "null";
+}
+
+
+void hotkey_item::save(config& item)
+{
+	if (get_button() >= 0)    item["button"]   = get_button();
+	if (get_joystick() >= 0)  item["joystick"] = get_joystick();
+	if (get_hat() >= 0)       item["hat"]      = get_hat();
+	if (get_value() >=0 )     item["value"]    = get_value();
+	if (get_keycode() >= 0)   item["key"]      = SDL_GetKeyName(SDLKey(get_keycode()));
+	if (get_character() >= 0) item["key"]      = utils::wchar_to_string(get_character());
+	if (get_mouse() >= 0)     item["mouse"]    = get_mouse();
+	if (get_button() >= 0)    item["button"]   = get_button();
+
+	item["command"] = get_command();
+	if (get_shift()) item["shift"] = get_shift();
+	if (get_alt())   item["alt"]   = get_alt();
+	if (get_ctrl())  item["ctrl"]  = get_ctrl();
+	if (get_cmd())   item["cmd"]   = get_cmd();
 }
 
 void hotkey_item::set_jbutton(int joystick, int button, bool shift, bool ctrl, bool alt, bool cmd)
 {
-	device_ = joystick;
+	joystick_ = joystick;
 	button_ = button;
-	type_ = JBUTTON;
 	shift_ = shift;
 	ctrl_ = ctrl;
 	alt_ = alt;
@@ -486,10 +442,9 @@ void hotkey_item::set_jbutton(int joystick, int button, bool shift, bool ctrl, b
 
 void hotkey_item::set_jhat(int joystick, int hat, int value, bool shift, bool ctrl, bool alt, bool cmd)
 {
-	device_ = joystick;
-	button_ = hat;
+	joystick_ = joystick;
+	hat_ = hat;
 	value_ = value;
-	type_ = JHAT;
 	shift_ = shift;
 	ctrl_ = ctrl;
 	alt_ = alt;
@@ -498,9 +453,8 @@ void hotkey_item::set_jhat(int joystick, int hat, int value, bool shift, bool ct
 
 void hotkey_item::set_mbutton(int mouse, int button, bool shift, bool ctrl, bool alt, bool cmd)
 {
-	device_ = mouse;
+	mouse_ = mouse;
 	button_ = button;
-	type_ = MBUTTON;
 	shift_ = shift;
 	ctrl_ = ctrl;
 	alt_ = alt;
@@ -532,14 +486,12 @@ void hotkey_item::set_key(int character, int keycode, bool shift, bool ctrl, boo
 
 	// We handle simple cases by character, others by the actual key.
 	if (isprint(character) && !isspace(character)) {
-		type_ = BY_CHARACTER;
 		character_ = character;
 		ctrl_ = ctrl;
 		alt_ = alt;
 		cmd_ = cmd;
 		LOG_G << "type = BY_CHARACTER\n";
 	} else {
-		type_ = BY_KEYCODE;
 		keycode_ = keycode;
 		shift_ = shift;
 		ctrl_ = ctrl;
@@ -584,25 +536,21 @@ scope_changer::~scope_changer()
 void clear_hotkeys(const std::string& command)
 {
 	BOOST_FOREACH(hotkey::hotkey_item& item, hotkeys_) {
-
 		if (item.get_command() == command)
-			item.clear_hotkey();
+			item.clear();
 	}
 }
 
 void load_hotkeys(const config& cfg, bool set_as_default)
 {
 	hotkeys_.clear();
-	BOOST_FOREACH(const config &hk, cfg.child_range("hotkey"))
-	{
-		hotkey_item h(hk);
-		if (h.get_type() != hotkey_item::CLEARED && h.get_type() != hotkey_item::UNBOUND)
-			hotkeys_.push_back(h);
+	BOOST_FOREACH(const config &hk, cfg.child_range("hotkey")) {
+		hotkeys_.push_back(hotkey_item(hk));
 	}
 
-	if (hotkeys_.empty())
+	if (hotkeys_.empty()) {
 		reset_default_hotkeys();
-	else if (set_as_default) {
+	} else if (set_as_default) {
 		default_hotkey_cfg_ = cfg;
 	}
 }
@@ -622,127 +570,76 @@ void save_hotkeys(config& cfg)
 {
 	cfg.clear_children("hotkey");
 
-	for(std::vector<hotkey_item>::iterator i = hotkeys_.begin(); i != hotkeys_.end(); ++i) {
-
-		if (i->get_type() == hotkey_item::UNBOUND || i->get_type() == hotkey_item::CLEARED)
-			continue;
-
-		config& item = cfg.add_child("hotkey");
-
-		switch (i->get_type()) {
-
-		case hotkey_item::JBUTTON:
-			item["joystick"] = i->get_device();
-			item["button"] = i->get_button();
-			item["shift"] = i->get_shift();
-			break;
-		case hotkey_item::JHAT:
-			item["joystick"] = i->get_device();
-			item["hat"] = i->get_button();
-			item["value"] = i->get_value();
-			break;
-		case hotkey_item::BY_KEYCODE:
-			item["key"] = SDL_GetKeyName(SDLKey(i->get_keycode()));
-			item["shift"] = i->get_shift();
-			break;
-		case hotkey_item::BY_CHARACTER:
-			item["key"] = utils::wchar_to_string(i->get_character());
-			break;
-		case hotkey_item::MBUTTON:
-			item["mouse"] = i->get_device();
-			item["button"] = i->get_button();
-			break;
-		case hotkey_item::UNBOUND:
-		case hotkey_item::CLEARED:
+	for(std::vector<hotkey_item>::iterator i = hotkeys_.begin();
+			i != hotkeys_.end(); ++i)
+	{
+		if (i->get_command() != "null") {
 			continue;
 		}
 
-		item["command"] = i->get_command();
-		item["alt"] = i->get_alt();
-		item["ctrl"] = i->get_ctrl();
-		item["cmd"] = i->get_cmd();
+		config& item = cfg.add_child("hotkey");
+		i->save(item);
 	}
 }
 
 const std::string get_description(const std::string& command) {
-	return t_string(hotkey_list_[command_map_[command]].description, PACKAGE "-lib");
+	return t_string(hotkey_list_[command_map_[command]].description,
+			PACKAGE "-lib");
 }
 
 HOTKEY_COMMAND get_id(const std::string& command) {
-	if (command_map_.find(command) == command_map_.end())
+	if (command_map_.find(command) == command_map_.end()) {
 		return HOTKEY_NULL;
+	}
+
 	return hotkey_list_[command_map_[command]].id;
 }
 
 std::string get_names(HOTKEY_COMMAND id) {
 
-	std::map<hotkey::HOTKEY_COMMAND, std::vector<hotkey::hotkey_item> > hotkey_map;
+	std::vector<std::string> names;
 	BOOST_FOREACH(const hotkey::hotkey_item& item, hotkeys_) {
-		if (item.get_type() != hotkey_item::UNBOUND && item.get_type() != hotkey_item::CLEARED)
-			hotkey_map[item.get_id()].push_back(item);
+		if (item.get_id() == id) {
+			names.push_back(item.get_name());
+		}
 	}
 
-	std::stringstream names;
-	BOOST_FOREACH(const hotkey::hotkey_item& item, hotkey_map[id]) {
-		names << item.get_name() << ", ";
-	}
-	std::string name_str = names.str();
-	std::string::iterator it = name_str.end() -2;
-	if (it >= name_str.begin())
-		name_str.erase(it);
-	return name_str;
+	return boost::algorithm::join(names, ", ");
 }
 
 HOTKEY_COMMAND get_hotkey_command(const std::string& command)
 {
-	if (command_map_.find(command) != command_map_.end())
+	if (command_map_.find(command) != command_map_.end()) {
 		return HOTKEY_NULL;
+	}
 
 	return hotkey_list_[command_map_[command]].id;
 }
 
-hotkey_item& get_hotkey(hotkey_item::type ty, int device, int button, int value,
+hotkey_item& get_hotkey(int mouse, int joystick, int button, int hat, int value,
 		bool shift, bool ctrl, bool alt, bool cmd)
 {
 	std::vector<hotkey_item>::iterator itor;
-	bool found = false;
+
 	for (itor = hotkeys_.begin(); itor != hotkeys_.end(); ++itor) {
 
-		if (!(itor->is_in_active_scope()))
+		if (!(itor->is_in_active_scope())) {
 			continue;
-
-		if ( itor->get_shift() != shift || itor->get_ctrl() != ctrl
-				|| itor->get_alt() != alt || itor->get_cmd() != cmd )
-			continue;
-
-		if ( itor->get_device() != device || itor->get_button() != button)
-			continue;
-
-		switch (ty) {
-
-		case hotkey_item::JBUTTON:
-			if (itor->get_type() == hotkey_item::JBUTTON)
-				found = true;
-			break;
-		case hotkey_item::JHAT:
-			if ( (itor->get_type() == hotkey_item::JHAT)
-					&& value == itor->get_value() )
-				found = true;
-			break;
-		case hotkey_item::MBUTTON:
-			if (itor->get_type() == hotkey_item::MBUTTON)
-				found = true;
-			break;
-		default:
-			break;
 		}
 
-		if (found) break;
-	}
-	if (!found)
-		return null_hotkey_;
+		if ( itor->get_shift() != shift || itor->get_ctrl() != ctrl
+				|| itor->get_alt() != alt || itor->get_cmd() != cmd ) {
+			continue;
+		}
 
-	return *itor;
+		if ( itor->get_joystick() == joystick && itor->get_button() == button
+				&& itor->get_hat() == hat && itor->get_value() == value
+				&& itor->get_mouse() == mouse ) {
+			return *itor;
+		}
+	}
+
+	return null_hotkey_;
 }
 
 hotkey_item& get_hotkey(int character, int keycode,
@@ -751,19 +648,21 @@ hotkey_item& get_hotkey(int character, int keycode,
 	std::vector<hotkey_item>::iterator itor;
 
 	DBG_G << "getting hotkey: char=" << lexical_cast<std::string>(character)
-		   << " keycode="  << lexical_cast<std::string>(keycode) << " "
-		   << (shift ? "shift," : "")
-		   << (ctrl ? "ctrl," : "")
-		   << (alt ? "alt," : "")
-		   << (cmd ? "cmd," : "")
-		   << "\n";
+		<< " keycode="  << lexical_cast<std::string>(keycode) << " "
+		<< (shift ? "shift," : "")
+		<< (ctrl ? "ctrl," : "")
+		<< (cmd ? "cmd," : "")
+		<< (alt ? "alt," : "")
+		<< "\n";
 
 	// Sometimes control modifies by -64, ie ^A == 1.
 	if (0 < character && character < 64 && ctrl) {
-		if (shift)
+		if (shift) {
 			character += 64;
-		else
+		} else {
 			character += 96;
+		}
+		/// @todo
 		DBG_G << "Mapped to character " << lexical_cast<std::string>(character) << "\n";
 	}
 
@@ -774,7 +673,7 @@ hotkey_item& get_hotkey(int character, int keycode,
 	bool found = false;
 
 	for (itor = hotkeys_.begin(); itor != hotkeys_.end(); ++itor) {
-		if (itor->get_type() == hotkey_item::BY_CHARACTER) {
+		if (character != -1) {
 			if (character == itor->get_character()) {
 				if (ctrl == itor->get_ctrl()
 						&& alt == itor->get_alt()
@@ -789,7 +688,7 @@ hotkey_item& get_hotkey(int character, int keycode,
 				}
 				DBG_G << "Could match by character..." << "but modifiers different\n";
 			}
-		} else if (itor->get_type() == hotkey_item::BY_KEYCODE) {
+		} else if (keycode != -1) {
 			if (keycode == itor->get_keycode()) {
 				if (shift == itor->get_shift()
 						&& ctrl == itor->get_ctrl()
@@ -822,43 +721,43 @@ void add_hotkey(const hotkey_item& item) {
 hotkey_item& get_hotkey(const SDL_JoyButtonEvent& event)
 {
 	Uint8 *keystate = SDL_GetKeyState(NULL);
-	bool alt   = keystate[SDLK_RALT]   || keystate[SDLK_LALT];
-	bool ctrl  = keystate[SDLK_RCTRL]  || keystate[SDLK_LCTRL];
 	bool shift = keystate[SDLK_RSHIFT] || keystate[SDLK_LSHIFT];
-	bool cmd   = keystate[SDLK_RMETA] || keystate[SDLK_LMETA];
+	bool ctrl  = keystate[SDLK_RCTRL]  || keystate[SDLK_LCTRL];
+	bool cmd   = keystate[SDLK_RMETA]  || keystate[SDLK_LMETA];
+	bool alt   = keystate[SDLK_RALT]   || keystate[SDLK_LALT];
 
-	return get_hotkey(hotkey_item::JBUTTON, event.which, event.button, 0, shift, ctrl, alt, cmd);
+	return get_hotkey(-1, event.which, event.button, -1, -1, shift, ctrl, alt, cmd);
 }
 
 hotkey_item& get_hotkey(const SDL_JoyHatEvent& event)
 {
 	Uint8 *keystate = SDL_GetKeyState(NULL);
-	bool alt   = keystate[SDLK_RALT]   || keystate[SDLK_LALT];
-	bool ctrl  = keystate[SDLK_RCTRL]  || keystate[SDLK_LCTRL];
 	bool shift = keystate[SDLK_RSHIFT] || keystate[SDLK_LSHIFT];
-	bool cmd   = keystate[SDLK_RMETA] || keystate[SDLK_LMETA];
+	bool ctrl  = keystate[SDLK_RCTRL]  || keystate[SDLK_LCTRL];
+	bool cmd   = keystate[SDLK_RMETA]  || keystate[SDLK_LMETA];
+	bool alt   = keystate[SDLK_RALT]   || keystate[SDLK_LALT];
 
-	return get_hotkey(hotkey_item::JHAT, event.which, event.hat, event.value, shift, ctrl, alt, cmd);
+	return get_hotkey(-1, event.which, -1, event.hat, event.value, shift, ctrl, alt, cmd);
 }
 
 static hotkey_item& get_hotkey(const SDL_MouseButtonEvent& event)
 {
 	Uint8 *keystate = SDL_GetKeyState(NULL);
-	bool alt   = keystate[SDLK_RALT]   || keystate[SDLK_LALT];
-	bool ctrl  = keystate[SDLK_RCTRL]  || keystate[SDLK_LCTRL];
 	bool shift = keystate[SDLK_RSHIFT] || keystate[SDLK_LSHIFT];
-	bool cmd   = keystate[SDLK_RMETA] || keystate[SDLK_LMETA];
+	bool ctrl  = keystate[SDLK_RCTRL]  || keystate[SDLK_LCTRL];
+	bool cmd   = keystate[SDLK_RMETA]  || keystate[SDLK_LMETA];
+	bool alt   = keystate[SDLK_RALT]   || keystate[SDLK_LALT];
 
-	return get_hotkey(hotkey_item::MBUTTON, event.which, event.button, 0, shift, ctrl, alt, cmd);
+	return get_hotkey(event.which, -1, event.button, -1, -1, shift, ctrl, alt, cmd);
 }
 
 hotkey_item& get_hotkey(const SDL_KeyboardEvent& event)
 {
 	return get_hotkey(event.keysym.unicode, event.keysym.sym,
 			(event.keysym.mod & KMOD_SHIFT) != 0,
-			(event.keysym.mod & KMOD_CTRL) != 0,
-			(event.keysym.mod & KMOD_ALT) != 0,
-			(event.keysym.mod & KMOD_LMETA) != 0
+			(event.keysym.mod & KMOD_CTRL)  != 0,
+			(event.keysym.mod & KMOD_META)  != 0,
+			(event.keysym.mod & KMOD_ALT)   != 0
 #ifdef __APPLE__
 			|| (event.keysym.mod & KMOD_RMETA) != 0
 #endif
@@ -874,30 +773,31 @@ basic_handler::basic_handler(display* disp, command_executor* exec) : disp_(disp
 
 void basic_handler::handle_event(const SDL_Event& event)
 {
-	if (disp_ == NULL) return;
+	if (disp_ == NULL) {
+		return;
+	}
 
 	switch (event.type) {
-
 	case SDL_KEYDOWN:
 		//if we're in a dialog we only want to handle things that are explicitly handled
 		//by the executor. If we're not in a dialog we can call the regular key event handler
-		if(!gui::in_dialog()) {
+		if (!gui::in_dialog()) {
 			key_event(*disp_,event.key,exec_);
-		} else if(exec_ != NULL) {
+		} else if (exec_ != NULL) {
 			key_event_execute(*disp_,event.key,exec_);
 		}
 		break;
 	case SDL_JOYBUTTONDOWN:
-		if(!gui::in_dialog()) {
+		if (!gui::in_dialog()) {
 			jbutton_event(*disp_,event.jbutton,exec_);
-		} else if(exec_ != NULL) {
+		} else if (exec_ != NULL) {
 			jbutton_event_execute(*disp_,event.jbutton,exec_);
 		}
 		break;
 	case SDL_MOUSEBUTTONDOWN:
-		if(!gui::in_dialog()) {
+		if (!gui::in_dialog()) {
 			mbutton_event(*disp_,event.button,exec_);
-		} else if(exec_ != NULL) {
+		} else if (exec_ != NULL) {
 			mbutton_event_execute(*disp_,event.button,exec_);
 		}
 		break;
@@ -924,7 +824,8 @@ void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* 
 {
 	if(event.keysym.sym == SDLK_ESCAPE && disp.in_game()) {
 		LOG_G << "escape pressed..showing quit\n";
-		const int res = gui2::show_message(disp.video(), _("Quit"), _("Do you really want to quit?"), gui2::tmessage::yes_no_buttons);
+		const int res = gui2::show_message(disp.video(), _("Quit"),
+				_("Do you really want to quit?"), gui2::tmessage::yes_no_buttons);
 		if(res != gui2::twindow::CANCEL) {
 			throw end_level_exception(QUIT);
 		} else {
@@ -938,9 +839,9 @@ void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* 
 void mbutton_event_execute(display& disp, const SDL_MouseButtonEvent& event, command_executor* executor)
 {
 	const hotkey_item* hk = &get_hotkey(event);
-
-	if(hk->null())
+	if (hk->null()) {
 		return;
+	}
 
 	execute_command(disp,hk->get_id(),executor);
 }
@@ -948,9 +849,9 @@ void mbutton_event_execute(display& disp, const SDL_MouseButtonEvent& event, com
 void jbutton_event_execute(display& disp, const SDL_JoyButtonEvent& event, command_executor* executor)
 {
 	const hotkey_item* hk = &get_hotkey(event);
-
-	if(hk->null())
+	if (hk->null()) {
 		return;
+	}
 
 	execute_command(disp,hk->get_id(),executor);
 }
@@ -958,9 +859,9 @@ void jbutton_event_execute(display& disp, const SDL_JoyButtonEvent& event, comma
 void jhat_event_execute(display& disp, const SDL_JoyHatEvent& event, command_executor* executor)
 {
 	const hotkey_item* hk = &get_hotkey(event);
-
-	if(hk->null())
+	if (hk->null()) {
 		return;
+	}
 
 	execute_command(disp,hk->get_id(),executor);
 }
@@ -978,8 +879,9 @@ void key_event_execute(display& disp, const SDL_KeyboardEvent& event, command_ex
 	}
 #endif
 
-	if(hk->null())
+	if (hk->null()) {
 		return;
+	}
 
 	execute_command(disp,hk->get_id(),executor);
 }
@@ -1193,11 +1095,13 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 	const int zoom_amount = 4;
 	bool map_screenshot = false;
 
-	if(executor != NULL) {
-		if(!executor->can_execute_command(command, index) || executor->execute_command(command, index))
-		return;
+	if (executor != NULL) {
+		if (!executor->can_execute_command(command, index)
+				|| executor->execute_command(command, index)) {
+			return;
+		}
 	}
-	switch(command) {
+	switch (command) {
 		case HOTKEY_ZOOM_IN:
 			disp.set_zoom(zoom_amount);
 			break;
@@ -1211,9 +1115,11 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 			preferences::set_fullscreen(!preferences::fullscreen());
 			break;
 		case HOTKEY_MAP_SCREENSHOT:
-			if (!disp.in_game() && !disp.in_editor())
+			if (!disp.in_game() && !disp.in_editor()) {
 				break;
+			}
 			map_screenshot = true;
+			// intentional fall through?
 		case HOTKEY_SCREENSHOT: {
 			std::string name = map_screenshot ? _("Map-Screenshot") : _("Screenshot");
 			std::string filename = get_screenshot_dir() + "/" + name + "_";
@@ -1223,8 +1129,9 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 				std::stringstream res;
 				res << filename << " ( " << utils::si_string(size, true, _("unit_byte^B")) << " )";
 				gui2::show_message(disp.video(), _("Screenshot done"), res.str());
-			} else
+			} else {
 				gui2::show_message(disp.video(), _("Screenshot done"), "");
+			}
 			break;
 		}
 		case HOTKEY_ANIMATE_MAP:
@@ -1261,14 +1168,14 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 			}
 			break;
 		case HOTKEY_QUIT_GAME: {
-			if(disp.in_game()) {
+			if (disp.in_game()) {
 				DBG_G << "is in game -- showing quit message\n";
-				const int res = gui2::show_message(disp.video(), _("Quit"), _("Do you really want to quit?"), gui2::tmessage::yes_no_buttons);
-				if(res != gui2::twindow::CANCEL) {
+				const int res = gui2::show_message(disp.video(), _("Quit"),
+						_("Do you really want to quit?"), gui2::tmessage::yes_no_buttons);
+				if (res != gui2::twindow::CANCEL) {
 					throw end_level_exception(QUIT);
 				}
 			}
-
 			break;
 		}
 		default:
@@ -1280,11 +1187,12 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 void command_executor::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& gui)
 {
 	std::vector<std::string> items = items_arg;
-	if (items.empty())
+	if (items.empty()) {
 		return;
-	if (can_execute_command(hotkey::get_id(items.front()), 0)){
+	}
+	if (can_execute_command(hotkey::get_id(items.front()), 0)) {
 		//if just one item is passed in, that means we should execute that item
-		if(!context_menu && items.size() == 1 && items_arg.size() == 1) {
+		if (!context_menu && items.size() == 1 && items_arg.size() == 1) {
 			hotkey::execute_command(gui,hotkey::get_id(items.front()), this);
 			return;
 		}
@@ -1298,8 +1206,9 @@ void command_executor::show_menu(const std::vector<std::string>& items_arg, int 
 			mmenu.set_menu(menu);
 			res = mmenu.show(xloc, yloc);
 		} // this will kill the dialog
-		if (res < 0 || size_t(res) >= items.size())
+		if (res < 0 || size_t(res) >= items.size()) {
 			return;
+		}
 
 		const hotkey::HOTKEY_COMMAND cmd = hotkey::get_id(items[res]);
 		hotkey::execute_command(gui,cmd,this,res);
@@ -1307,7 +1216,7 @@ void command_executor::show_menu(const std::vector<std::string>& items_arg, int 
 }
 
 std::string command_executor::get_menu_image(hotkey::HOTKEY_COMMAND command, int index) const {
-	switch(get_action_state(command, index)) {
+	switch (get_action_state(command, index)) {
 		case ACTION_ON: return game_config::images::checked_menu;
 		case ACTION_OFF: return game_config::images::unchecked_menu;
 		default: return get_action_image(command, index);
@@ -1318,7 +1227,7 @@ std::vector<std::string> command_executor::get_menu_images(display& disp, const 
 	std::vector<std::string> result;
 	bool has_image = false;
 
-	for(size_t i = 0; i < items.size(); ++i) {
+	for (size_t i = 0; i < items.size(); ++i) {
 		std::string const& item = items[i];
 		const hotkey::HOTKEY_COMMAND hk = hotkey::get_id(item);
 
@@ -1346,10 +1255,12 @@ std::vector<std::string> command_executor::get_menu_images(display& disp, const 
 		result.push_back(str.str());
 	}
 	//If any of the menu items have an image, create an image column
-	if(has_image)
-		for(std::vector<std::string>::iterator i = result.begin(); i != result.end(); ++i)
-			if(*(i->begin()) != IMAGE_PREFIX)
+	if (has_image)
+		for (std::vector<std::string>::iterator i = result.begin(); i != result.end(); ++i) {
+			if (*(i->begin()) != IMAGE_PREFIX) {
 				i->insert(i->begin(), COLUMN_SEPARATOR);
+			}
+		}
 	return result;
 }
 

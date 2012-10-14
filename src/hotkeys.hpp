@@ -26,7 +26,8 @@ class display;
 //refers to a hotkey command being executed.
 namespace hotkey {
 
-/** Available hotkey scopes. The scope is used to allow command from
+/**
+ * Available hotkey scopes. The scope is used to allow command from
  * non-overlapping areas of the game share the same key
  */
 enum scope {
@@ -38,6 +39,12 @@ enum scope {
 void deactivate_all_scopes();
 void set_scope_active(scope s, bool set = true);
 bool is_scope_active(scope s);
+
+enum INPUT_CONTROLL {
+	INPUT_SCROLL_HORIZONTAL,
+	INPUT_SCROLL_VERTICAL,
+	INPUT_NULL
+};
 
 enum HOTKEY_COMMAND {
 	HOTKEY_CYCLE_UNITS,HOTKEY_CYCLE_BACK_UNITS,
@@ -127,8 +134,23 @@ enum HOTKEY_COMMAND {
 	HOTKEY_NULL
 };
 
+
+struct input_controll {
+
+	hotkey::INPUT_CONTROLL controll;
+
+	const char* controll_str;
+
+	const char* descriptipn;
+
+	bool hidden;
+
+	hotkey::scope scope;
+};
+
+
 struct hotkey_command {
-	// This binds the command to a function. Does not need to be unique
+	// This binds the command to a function. Does not need to be unique.
 	hotkey::HOTKEY_COMMAND id;
 	// The command is unique
 	const char* command;
@@ -145,106 +167,112 @@ const hotkey_command* get_hotkey_commands();
 class hotkey_item {
 public:
 
-	enum type {
-		UNBOUND,
-		BY_KEYCODE,
-		BY_CHARACTER,
-		CLEARED,
-		JBUTTON,
-		JHAT,
-		MBUTTON
-	};
-
-	hotkey_item(const std::string& command) :
+	explicit hotkey_item(const std::string& command) :
 		command_(command),
-		type_(UNBOUND),
-		character_(0),
-		ctrl_(false),
-		alt_(false),
-		cmd_(false),
-		shift_(false),
-		keycode_(0),
-		device_(0),
-		button_(0),
-		value_(0)
-		{}
+		shift_(false), 	ctrl_(false), cmd_(false), alt_(false),
+		character_(-1), keycode_(-1),
+		joystick_(-1), mouse_(-1),
+		button_(-1), hat_(-1), value_(-1),
+		axis_joystick(-1), joystick_axis(-1),
+		axis_mouse(-1)
+	{}
 
-	hotkey_item(const config& cfg);
+	explicit hotkey_item(const config& cfg):
+		command_("null"),
+		shift_(false), 	ctrl_(false), cmd_(false), alt_(false),
+		character_(-1), keycode_(-1),
+		joystick_(-1), mouse_(-1),
+		button_(-1), hat_(-1), value_(-1),
+		axis_joystick(-1), joystick_axis(-1),
+    	axis_mouse(-1)
+	{
+		load_from_config(cfg);
+	}
+
 	void load_from_config(const config& cfg);
-
-	HOTKEY_COMMAND get_id() const;
 
 	void set_command(const std::string& command);
 
-	/* get the string name of the HOTKEY_COMMAND */
+	/** get the string name of the HOTKEY_COMMAND */
 	const std::string get_command() const { return command_; };
 	/** The translated description */
 	const std::string get_description() const;
-    /** @ return if the item should appear in the hotkey preferences */
+    /** @return if the item should appear in the hotkey preferences */
 	bool hidden() const;
 	/** @return the visibility scope of this hotkey */
 	scope get_scope() const;
 
-	void clear_hotkey();
+	/// Return "name" of hotkey. Example :"ctrl+alt+g"
+	std::string get_name() const;
 
-	void set_jbutton(int button, int joystick, bool shift, bool ctrl, bool alt, bool cmd);
-	void set_jhat(int joystick, int hat, int value, bool shift, bool ctrl, bool alt, bool cmd);
-	void set_key(int character, int keycode, bool shift, bool ctrl, bool alt, bool cmd);
-	void set_mbutton(int device, int button, bool shift, bool ctrl, bool alt, bool cmd);
+	void clear();
 
+	bool null() const { return command_  == "null"; };
 
-	enum type get_type() const { return type_; }
-
+	void save(config& cfg);
 
 	bool is_in_active_scope() const { return is_scope_active(get_scope()); }
 
-	// Return the actual key code.
+	/// Return the actual key code.
 	int get_keycode() const { return keycode_; }
-	// Returns unicode value of keypress.
+	/// Returns unicode value of the pressed key.
 	int get_character() const { return character_; }
 
-	/* for buttons on devices */
+	/** for buttons on devices */
 	int get_button() const { return button_; }
-	int get_device() const { return device_; }
+	int get_joystick() const { return joystick_; }
+	int get_hat() const { return hat_; }
+	int get_mouse() const { return mouse_; }
 	int get_value() const { return value_; }
 
-	/* modifiers */
+	/** modifiers */
 	bool get_alt() const { return alt_; }
 	bool get_cmd() const { return cmd_; }
 	bool get_ctrl() const { return ctrl_; }
 	bool get_shift() const { return shift_; }
 
-	// Return "name" of hotkey for example :"ctrl+alt+g"
-	std::string get_name() const;
-
-	bool null() const { return type_ == UNBOUND; };
-
-private:
+protected:
 
 	// The unique command associated with this item.
 	// used to bind to a hotkey_command struct
 	std::string command_;
 
-	// UNBOUND means unset, CHARACTER means see character_, KEY means keycode_.
-	// BUTTON means gamepad/joystick button_.
-	enum type type_;
+	// modifier keys
+	bool shift_, ctrl_, cmd_, alt_;
 
 	// Actual unicode character
 	int character_;
-	bool ctrl_;
-	bool alt_;
-	bool cmd_;
 
 	// These used for function keys (which don't have a unicode value) or
 	// space (which doesn't have a distinct unicode value when shifted).
-	bool shift_;
 	int keycode_;
 
-	// In case type==*BUTTON or JHAT
-	int device_;
+	int joystick_, mouse_;
 	int button_;
-	int value_;
+	int hat_, value_;
 
+	int axis_joystick, joystick_axis;
+	int axis_mouse;
+
+
+//class hotkey_item: public input_item
+//{
+public:
+//	hotkey_item(const std::string& command) :
+//		input_item(command)
+//		{}
+
+//	hotkey_item(const config& cfg) :
+//		input_item(cfg) {};
+
+	HOTKEY_COMMAND get_id() const;
+
+//	const std::string get_description() const;
+
+	void set_jbutton(int button, int joystick, bool shift, bool ctrl, bool alt, bool cmd);
+	void set_jhat(int joystick, int hat, int value, bool shift, bool ctrl, bool alt, bool cmd);
+	void set_key(int character, int keycode, bool shift, bool ctrl, bool alt, bool cmd);
+	void set_mbutton(int device, int button, bool shift, bool ctrl, bool alt, bool cmd);
 };
 
 class manager {
@@ -274,8 +302,8 @@ std::string get_names(hotkey::HOTKEY_COMMAND id);
 void add_hotkey(const hotkey_item& item);
 void clear_hotkeys(const std::string& command);
 
-hotkey_item& get_hotkey(hotkey_item::type ty,
-		int device, int button, int value,
+hotkey_item& get_hotkey(int mouse, int joystick,
+		int button, int hat, int value,
 		bool shift, bool ctrl, bool alt, bool cmd);
 hotkey_item& get_hotkey(int character, int keycode,
 		bool shift,	bool ctrl, bool alt, bool cmd);
@@ -376,7 +404,7 @@ public:
 	virtual bool execute_command(HOTKEY_COMMAND command, int index=-1);
 };
 
-//functions to be called every time a event is intercepted.
+//Functions to be called every time a event is intercepted.
 //Will call the relevant function in executor if the event is not NULL.
 //Also handles some events in the function itself,
 //and so is still meaningful to call with executor=NULL
@@ -385,6 +413,7 @@ void jhat_event(display& disp, const SDL_JoyHatEvent& event, command_executor* e
 void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* executor);
 void mbutton_event(display& disp, const SDL_MouseButtonEvent& event, command_executor* executor);
 
+//TODO
 void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* executor, int index=-1);
 
 //object which will ensure that basic keyboard events like escape
