@@ -84,6 +84,8 @@ private:
 	 * @param command add the new binding to this item
 	 */
 	void show_binding_dialog(const std::string& command);
+	void show_input_binding_dialog(const std::string& command);
+
 
 	/**
 	 * Buttons to trigger the tools involved in hotkey assignment.
@@ -485,7 +487,7 @@ void hotkey_preferences_dialog::update_location(SDL_Rect const &rect) {
 #endif
 void hotkey_preferences_dialog::show_binding_dialog(const std::string& id) {
 
-	// Lets bind a hotkey......
+	// Lets bind a hotkey...
 
 	SDL_Rect clip_rect = create_rect(0, 0, disp_.w(), disp_.h());
 	SDL_Rect text_size = font::draw_text(NULL, clip_rect, font::SIZE_LARGE,
@@ -512,9 +514,9 @@ void hotkey_preferences_dialog::show_binding_dialog(const std::string& id) {
 	disp_.update_display();
 	SDL_Event event;
 	event.type = 0;
-	int character = 0, keycode = 0, mod = 0; // Just to avoid warning
-	int device = 0, button = 0, hat = 0, value = 0;
-	const int any_mod = KMOD_CTRL | KMOD_ALT | KMOD_LMETA;
+	int character = -1, keycode = -1, mod = -1;
+	int mouse = -1, joystick = -1, button = -1, hat = -1, value = -1;
+	const int any_mod = KMOD_CTRL | KMOD_ALT | KMOD_META;
 
 	while (event.type != SDL_KEYDOWN && event.type != SDL_JOYBUTTONDOWN
 			&& event.type != SDL_JOYHATMOTION
@@ -530,16 +532,16 @@ void hotkey_preferences_dialog::show_binding_dialog(const std::string& id) {
 			mod = event.key.keysym.mod;
 			break;
 		case SDL_JOYBUTTONDOWN:
-			device = event.jbutton.which;
+			joystick = event.jbutton.which;
 			button = event.jbutton.button;
 			break;
 		case SDL_JOYHATMOTION:
-			device = event.jhat.which;
+			joystick = event.jhat.which;
 			hat = event.jhat.hat;
 			value = event.jhat.value;
 			break;
 		case SDL_MOUSEBUTTONDOWN:
-			device = event.button.which;
+			mouse = event.button.which;
 			button = event.button.button;
 			break;
 		}
@@ -548,8 +550,7 @@ void hotkey_preferences_dialog::show_binding_dialog(const std::string& id) {
 		disp_.flip();
 		disp_.delay(10);
 	} while (event.type != SDL_KEYUP && event.type != SDL_JOYBUTTONUP
-			&& event.type != SDL_JOYHATMOTION
-			&& event.type != SDL_MOUSEBUTTONUP);
+			&& event.type != SDL_JOYHATMOTION && event.type != SDL_MOUSEBUTTONUP);
 
 	restorer.restore();
 	disp_.update_display();
@@ -561,54 +562,54 @@ void hotkey_preferences_dialog::show_binding_dialog(const std::string& id) {
 		hotkey::hotkey_item* oldhk = NULL;
 
 		Uint8 *keystate = SDL_GetKeyState(NULL);
-		bool alt = keystate[SDLK_RALT] || keystate[SDLK_LALT];
-		bool ctrl = keystate[SDLK_RCTRL] || keystate[SDLK_LCTRL];
+		bool alt   = keystate[SDLK_RALT]   || keystate[SDLK_LALT];
+		bool ctrl  = keystate[SDLK_RCTRL]  || keystate[SDLK_LCTRL];
 		bool shift = keystate[SDLK_RSHIFT] || keystate[SDLK_LSHIFT];
-		bool cmd = keystate[SDLK_RMETA] || keystate[SDLK_LMETA];
+		bool cmd   = keystate[SDLK_RMETA]  || keystate[SDLK_LMETA];
 
 		switch (event.type) {
 
 		case SDL_JOYHATMOTION:
-			oldhk = &hotkey::get_hotkey(hotkey::hotkey_item::JHAT, device,
+			oldhk = &hotkey::get_hotkey(mouse, joystick, button,
 					hat, value, shift, ctrl, alt, cmd);
-			newhk.set_jhat(device, hat, value, shift, ctrl, alt, cmd);
+			newhk.set_jhat(joystick, hat, value, shift, ctrl, alt, cmd);
 			break;
 		case SDL_JOYBUTTONUP:
-			oldhk = &hotkey::get_hotkey(hotkey::hotkey_item::JBUTTON,
-					device, button, 0, shift, ctrl, alt, cmd);
-			newhk.set_jbutton(device, button, shift, ctrl, alt, cmd);
+			oldhk = &hotkey::get_hotkey(mouse, joystick, button, -1, -1, shift, ctrl, alt, cmd);
+			newhk.set_jbutton(joystick, button, shift, ctrl, alt, cmd);
 			break;
 		case SDL_MOUSEBUTTONUP:
-			oldhk = &hotkey::get_hotkey(hotkey::hotkey_item::MBUTTON,
-					device, button, 0, shift, ctrl, alt, cmd);
-			newhk.set_mbutton(device, button, shift, ctrl, alt, cmd);
+			oldhk = &hotkey::get_hotkey(mouse, joystick, button, -1, -1, shift, ctrl, alt, cmd);
+			newhk.set_mbutton(mouse, button, shift, ctrl, alt, cmd);
 			break;
 		case SDL_KEYUP:
 			oldhk =
-					&hotkey::get_hotkey(character, keycode,
-							(mod & KMOD_SHIFT)!= 0,
-							(mod & KMOD_CTRL) != 0, (mod & KMOD_ALT) != 0, (mod & KMOD_LMETA) != 0);newhk.set_key(character, keycode, (mod & KMOD_SHIFT) != 0,
-									(mod & KMOD_CTRL) != 0, (mod & KMOD_ALT) != 0, (mod & KMOD_LMETA) != 0);
+					&hotkey::get_hotkey( character, keycode,
+							(mod & KMOD_SHIFT) != 0, (mod & KMOD_CTRL) != 0,
+							(mod & KMOD_LMETA) != 0, (mod & KMOD_ALT)  != 0 );
+			newhk.set_key(character, keycode, (mod & KMOD_SHIFT) != 0,
+					(mod & KMOD_CTRL) != 0, (mod & KMOD_ALT) != 0, (mod & KMOD_LMETA) != 0);
 
-							if ( (newhk.get_id() == hotkey::HOTKEY_SCREENSHOT
-									|| newhk.get_id() == hotkey::HOTKEY_MAP_SCREENSHOT)
-									&& (mod & any_mod) == 0 ) {
-								gui2::show_transient_message(disp_.video(), _("Warning"),
-										_("Screenshot hotkeys should be combined with the Control, Alt or Meta modifiers to avoid problems."));
-							}
-							break;
+			if ( (newhk.get_id() == hotkey::HOTKEY_SCREENSHOT
+					|| newhk.get_id() == hotkey::HOTKEY_MAP_SCREENSHOT)
+					&& (mod & any_mod) == 0 ) {
+				gui2::show_transient_message(disp_.video(), _("Warning"),
+						_("Screenshot hotkeys should be combined with the Control, Alt or Meta modifiers to avoid problems."));
+			}
+			break;
 		}
 
-		if ((oldhk && (!(oldhk->null())))) {
+		if (oldhk && !oldhk->null()) {
 			if (oldhk->get_command() != id) {
 
 				utils::string_map symbols;
-				symbols["hotkey_sequence"] = oldhk->get_name();
+				symbols["hotkey_sequence"]   = oldhk->get_name();
 				symbols["old_hotkey_action"] = oldhk->get_description();
 				symbols["new_hotkey_action"] = newhk.get_description();
 
 				std::string text =
-						vgettext("\"$hotkey_sequence|\" is in use by \"$old_hotkey_action|\". Do you wish to reassign it to \"$new_hotkey_action|\"?",
+						vgettext("\"$hotkey_sequence|\" is in use by \"$old_hotkey_action|\".\
+ Do you wish to reassign it to \"$new_hotkey_action|\"?",
 								symbols);
 
 				const int res = gui2::show_message(disp_.video(),
