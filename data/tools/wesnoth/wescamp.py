@@ -50,7 +50,7 @@ class tempdir:
 
 if __name__ == "__main__":
     git_version = None
-    git_userpass = None
+    git_auth = None
     quiet_libwml = True
 
     def update_addon(addon_obj, addon_name, addon_server, temp_dir):
@@ -299,7 +299,7 @@ if __name__ == "__main__":
                 + "upload aborted.", addon)
             return
 
-        github = libgithub.GitHub(wescamp_dir, git_version, userpass=git_userpass)
+        github = libgithub.GitHub(wescamp_dir, git_version, authorization=git_auth)
 
         has_updated = False
 
@@ -324,17 +324,17 @@ if __name__ == "__main__":
             pot_update(addon_obj, addon)
 
 
-    def checkout(wescamp, userpass=None, readonly=False):
+    def checkout(wescamp, auth=None, readonly=False):
         """Checkout all add-ons of one wesnoth version from wescamp.
 
         wescamp             The directory where all checkouts should be stored.
-        userpass            Authentication data. Shouldn't be needed.
+        auth                Authentication data. Shouldn't be needed.
         readonly            Makes a read-only checkout that doesn't require authentication.
         """
 
         logging.debug("checking out add-ons from wesnoth version = '%s' to directory '%s'", git_version, wescamp)
 
-        github = libgithub.GitHub(wescamp, git_version, userpass=git_userpass)
+        github = libgithub.GitHub(wescamp, git_version, authorization=git_auth)
 
         for addon in github.list_addons():
             addon_obj = github.addon(addon, readonly=readonly)
@@ -385,8 +385,8 @@ if __name__ == "__main__":
         help = "Use git instead of svn to interface with wescamp. "
         + "This is a temporary option for the conversion from berlios to github.")
 
-    optionparser.add_option("-G", "--github-login",
-        help = "Username and password for github in the user:pass format")
+    optionparser.add_option("-G", "--github-auth",
+        help = "Username and password for github in the user:pass format, or an OAuth2 token.")
 
     optionparser.add_option("-c", "--checkout", action = "store_true",
         help = "Create a new branch checkout directory. "
@@ -443,7 +443,7 @@ if __name__ == "__main__":
     if(options.git):
         logging.warn("--git is no longer required, as svn is no longer supported")
         #TODO: remove entirely
-    git_userpass = options.github_login
+    git_auth = options.github_auth
     if not wescamp:
         logging.error("No wescamp checkout specified. Needed for git usage.")
         sys.exit(2)
@@ -542,7 +542,7 @@ if __name__ == "__main__":
             sys.exit(2)
 
         try:
-            checkout(wescamp, userpass=git_userpass, readonly=(options.checkout_readonly != None))
+            checkout(wescamp, auth=git_auth, readonly=(options.checkout_readonly != None))
         except libgithub.AddonError, e:
             print "[ERROR github in {0}] {1}".format(e.addon, str(e.message))
             sys.exit(1)

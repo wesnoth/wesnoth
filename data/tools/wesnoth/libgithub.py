@@ -295,16 +295,16 @@ class GitHub(object):
 
     Every GitHub object is specific to a directory and wesnoth version.
     """
-    def __init__(self, directory, version, userpass=None):
+    def __init__(self, directory, version, authorization=None):
         """Initializes a GitHub object.
 
         directory: Directory in which the git repos for this wesnoth branch live.
         version: The version of this wesnoth branch.
         """
-        logging.debug("GitHub created with directory {0} and version {1}, {2} authentication data".format(directory, version, "with" if userpass else "without"))
+        logging.debug("GitHub created with directory {0} and version {1}, {2} authentication data".format(directory, version, "with" if authorization else "without"))
         self.directory = directory
         self.version = version
-        self.userpass = userpass
+        self.authorization = authorization
 
     def update(self):
         """Update all add-ons.
@@ -482,8 +482,14 @@ class GitHub(object):
         # probably because github's API doesn't send a www-authenticate header
         if authenticate:
             from base64 import encodestring
-            base64string = encodestring(self._github_userpass()).replace('\n','')
-            request.add_header("Authorization", "Basic {0}".format(base64string))
+            auth = self._github_authorization()
+            if ":" in auth:
+                # username:password
+                base64string = encodestring(auth).replace('\n','')
+                request.add_header("Authorization", "Basic {0}".format(base64string))
+            else:
+                # token
+                request.add_header("Authorization", "Bearer {0}".format(auth))
 
         try:
             response = urllib2.urlopen(request)
@@ -510,9 +516,9 @@ class GitHub(object):
 
         return json_parsed
 
-    def _github_userpass(self):
-        if self.userpass:
-            return self.userpass
+    def _github_authorization(self):
+        if self.authorization:
+            return self.authorization
         else:
             raise Error("Authentication required")
 
