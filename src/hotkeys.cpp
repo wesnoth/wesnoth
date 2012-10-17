@@ -352,19 +352,15 @@ std::string hotkey_item::get_name() const
 {
 	std::stringstream str;
 
-	if (alt_)
-		str << "alt+";
-	if (ctrl_)
-		str << "ctrl+";
-	if (shift_)
-		str << "shift+";
-	if (cmd_)
-		str << "cmd+";
+	if (alt_)   { str << "alt+"; }
+	if (ctrl_)  { str << "ctrl+"; }
+	if (shift_) { str << "shift+"; }
+	if (cmd_)   { str << "cmd+"; }
 
-	if (mouse_ >= 0) str << _("Mouse") << mouse_ << _("Button") << button_;
-	if (character_ != -1) str << static_cast<char>(character_);
-	if (keycode_ != -1) str << SDL_GetKeyName(SDLKey(keycode_));
-	if (joystick_ >= 0) str << _("Joystick") << joystick_ << _("Button") << button_;
+	if (mouse_     >=  0) { str << _("Mouse") << mouse_ << _("Button") << button_; }
+	if (character_ != -1) { str << static_cast<char>(character_); }
+	if (keycode_   != -1) { str << SDL_GetKeyName(SDLKey(keycode_)); }
+	if (joystick_  >=  0) { str << _("Joystick") << joystick_ << _("Button") << button_; }
 
 	if (value_ >= 0) {
 		std::string direction;
@@ -433,32 +429,32 @@ void hotkey_item::save(config& item)
 void hotkey_item::set_jbutton(int joystick, int button, bool shift, bool ctrl, bool cmd, bool alt)
 {
 	joystick_ = joystick;
-	button_ = button;
-	shift_ = shift;
-	ctrl_ = ctrl;
-	alt_ = alt;
-	cmd_ = cmd;
+	button_   = button;
+	shift_    = shift;
+	ctrl_     = ctrl;
+	cmd_      = cmd;
+	alt_      = alt;
 }
 
 void hotkey_item::set_jhat(int joystick, int hat, int value, bool shift, bool ctrl, bool cmd, bool alt)
 {
 	joystick_ = joystick;
-	hat_ = hat;
-	value_ = value;
-	shift_ = shift;
-	ctrl_ = ctrl;
-	alt_ = alt;
-	cmd_ = cmd;
+	hat_      = hat;
+	value_    = value;
+	shift_    = shift;
+	ctrl_     = ctrl;
+	cmd_      = cmd;
+	alt_      = alt;
 }
 
 void hotkey_item::set_mbutton(int mouse, int button, bool shift, bool ctrl, bool cmd, bool alt)
 {
-	mouse_ = mouse;
+	mouse_  = mouse;
 	button_ = button;
-	shift_ = shift;
-	ctrl_ = ctrl;
-	alt_ = alt;
-	cmd_ = cmd;
+	shift_  = shift;
+	ctrl_   = ctrl;
+	cmd_    = cmd;
+	alt_    = alt;
 }
 
 void hotkey_item::set_key(int character, int keycode, bool shift, bool ctrl, bool cmd, bool alt)
@@ -473,30 +469,30 @@ void hotkey_item::set_key(int character, int keycode, bool shift, bool ctrl, boo
 
 	// Sometimes control modifies by -64, ie ^A == 1.
 	if (character < 64 && ctrl) {
-		if (shift)
-			character += 64;
-		else
-			character += 96;
+		if (shift) {
+			character += 64; }
+		else {
+			character += 96; }
 		LOG_G << "Mapped to character " << lexical_cast<std::string>(character) << "\n";
 	}
 
 	// For some reason on Mac OS, if cmd and shift are down, the character doesn't get upper-cased
-	if (cmd && character > 96 && character < 123 && shift)
-		character -= 32;
+	if (cmd && character > 96 && character < 123 && shift) {
+		character -= 32; }
 
 	// We handle simple cases by character, others by the actual key.
 	if (isprint(character) && !isspace(character)) {
 		character_ = character;
-		ctrl_ = ctrl;
-		alt_ = alt;
-		cmd_ = cmd;
+		ctrl_      = ctrl;
+		alt_       = alt;
+		cmd_       = cmd;
 		LOG_G << "type = BY_CHARACTER\n";
 	} else {
 		keycode_ = keycode;
-		shift_ = shift;
-		ctrl_ = ctrl;
-		alt_ = alt;
-		cmd_ = cmd;
+		shift_   = shift;
+		ctrl_    = ctrl;
+		alt_     = alt;
+		cmd_     = cmd;
 		LOG_G << "type = BY_KEYCODE\n";
 	}
 }
@@ -536,8 +532,8 @@ scope_changer::~scope_changer()
 void clear_hotkeys(const std::string& command)
 {
 	BOOST_FOREACH(hotkey::hotkey_item& item, hotkeys_) {
-		if (item.get_command() == command)
-			item.clear();
+		if (item.get_command() == command) {
+			item.clear(); }
 	}
 }
 
@@ -667,8 +663,8 @@ hotkey_item& get_hotkey(int character, int keycode,
 	}
 
 	// For some reason on Mac OS, if cmd and shift are down, the character doesn't get upper-cased
-	if (cmd && character > 96 && character < 123 && shift)
-		character -= 32;
+	if (cmd && character > 96 && character < 123 && shift) {
+		character -= 32; }
 
 	bool found = false;
 
@@ -705,11 +701,11 @@ hotkey_item& get_hotkey(int character, int keycode,
 				DBG_G << "Could match by keycode..." << "but modifiers different\n";
 			}
 		}
-		if (found) break;
+		if (found) { break; }
 	}
 
-	if (!found)
-		return null_hotkey_;
+	if (!found) {
+		return null_hotkey_; }
 
 	return *itor;
 }
@@ -726,7 +722,7 @@ hotkey_item& get_hotkey(const SDL_JoyButtonEvent& event)
 	bool cmd   = keystate[SDLK_RMETA]  || keystate[SDLK_LMETA];
 	bool alt   = keystate[SDLK_RALT]   || keystate[SDLK_LALT];
 
-	return get_hotkey(-1, event.which, event.button, -1, -1, shift, ctrl, alt, cmd);
+	return get_hotkey(-1, event.which, event.button, -1, -1, shift, ctrl, cmd, alt);
 }
 
 hotkey_item& get_hotkey(const SDL_JoyHatEvent& event)
@@ -737,7 +733,7 @@ hotkey_item& get_hotkey(const SDL_JoyHatEvent& event)
 	bool cmd   = keystate[SDLK_RMETA]  || keystate[SDLK_LMETA];
 	bool alt   = keystate[SDLK_RALT]   || keystate[SDLK_LALT];
 
-	return get_hotkey(-1, event.which, -1, event.hat, event.value, shift, ctrl, alt, cmd);
+	return get_hotkey(-1, event.which, -1, event.hat, event.value, shift, ctrl, cmd, alt);
 }
 
 static hotkey_item& get_hotkey(const SDL_MouseButtonEvent& event)
@@ -748,7 +744,7 @@ static hotkey_item& get_hotkey(const SDL_MouseButtonEvent& event)
 	bool cmd   = keystate[SDLK_RMETA]  || keystate[SDLK_LMETA];
 	bool alt   = keystate[SDLK_RALT]   || keystate[SDLK_LALT];
 
-	return get_hotkey(event.which, -1, event.button, -1, -1, shift, ctrl, alt, cmd);
+	return get_hotkey(event.which, -1, event.button, -1, -1, shift, ctrl, cmd, alt);
 }
 
 hotkey_item& get_hotkey(const SDL_KeyboardEvent& event)
@@ -1223,7 +1219,7 @@ std::string command_executor::get_menu_image(hotkey::HOTKEY_COMMAND command, int
 	}
 }
 
-std::vector<std::string> command_executor::get_menu_images(display& disp, const std::vector<std::string>& items){
+std::vector<std::string> command_executor::get_menu_images(display& disp, const std::vector<std::string>& items) {
 	std::vector<std::string> result;
 	bool has_image = false;
 
@@ -1255,12 +1251,13 @@ std::vector<std::string> command_executor::get_menu_images(display& disp, const 
 		result.push_back(str.str());
 	}
 	//If any of the menu items have an image, create an image column
-	if (has_image)
+	if (has_image) {
 		for (std::vector<std::string>::iterator i = result.begin(); i != result.end(); ++i) {
 			if (*(i->begin()) != IMAGE_PREFIX) {
 				i->insert(i->begin(), COLUMN_SEPARATOR);
 			}
 		}
+	}
 	return result;
 }
 

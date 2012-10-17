@@ -21,9 +21,10 @@
 class config;
 class display;
 
-//the hotkey system allows hotkey definitions to be loaded from
-//configuration objects, and then detect if a keyboard event
-//refers to a hotkey command being executed.
+/* The hotkey system allows hotkey definitions to be loaded from
+ * configuration objects, and then detect if a keyboard event
+ * refers to a hotkey command being executed.
+ */
 namespace hotkey {
 
 /**
@@ -113,7 +114,7 @@ enum HOTKEY_COMMAND {
 	HOTKEY_EDITOR_DRAW_COORDINATES, HOTKEY_EDITOR_DRAW_TERRAIN_CODES,
 	HOTKEY_EDITOR_SIDE_NEW, HOTKEY_EDITOR_SIDE_SWITCH,
 
-	//misc.
+	// misc.
 	HOTKEY_USER_CMD,
 	HOTKEY_CUSTOM_CMD,
 	HOTKEY_AI_FORMULA,
@@ -148,17 +149,17 @@ struct input_controll {
 	hotkey::scope scope;
 };
 
-
+/// Stores all static information related to hotkey functions.
 struct hotkey_command {
-	// This binds the command to a function. Does not need to be unique.
+	/// This binds the command to a function. Does not need to be unique.
 	hotkey::HOTKEY_COMMAND id;
-	// The command is unique
+	/// The command is unique
 	const char* command;
-	// note: The description is untranslated.
+	/// note: The description is untranslated.
 	const char* description;
-	// don't show the command in the hotkey preferences.
+	/// If hidden then don't show the command in the hotkey preferences.
 	bool hidden;
-	// The visibility scope of the command
+	/// The visibility scope of the command
 	hotkey::scope scope;
 };
 
@@ -241,7 +242,7 @@ public:
 protected:
 
 	// The unique command associated with this item.
-	// used to bind to a hotkey_command struct
+	// Used to bind to a hotkey_command struct.
 	std::string command_;
 
 	// modifier keys
@@ -306,8 +307,8 @@ std::vector<hotkey_item>& get_hotkeys();
 
 enum ACTION_STATE { ACTION_STATELESS, ACTION_ON, ACTION_OFF };
 
-//abstract base class for objects that implement the ability
-//to execute hotkey commands.
+// Abstract base class for objects that implement the ability
+// to execute hotkey commands.
 class command_executor
 {
 protected:
@@ -377,13 +378,13 @@ public:
 	virtual void left_mouse_click() {}
 	virtual void right_mouse_click() {}
 
-	//Gets the action's image (if any). Displayed left of the action text in menus.
+	// Gets the action's image (if any). Displayed left of the action text in menus.
 	virtual std::string get_action_image(hotkey::HOTKEY_COMMAND /*command*/, int /*index*/) const { return ""; }
-	//Does the action control a toggle switch? If so, return the state of the action (on or off)
+	// Does the action control a toggle switch? If so, return the state of the action (on or off).
 	virtual ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND /*command*/, int /*index*/) const { return ACTION_STATELESS; }
-	//Returns the appropriate menu image. Checkable items will get a checked/unchecked image.
+	// Returns the appropriate menu image. Checkable items will get a checked/unchecked image.
 	std::string get_menu_image(hotkey::HOTKEY_COMMAND command, int index=-1) const;
-	//Returns a vector of images for a given menu
+	// Returns a vector of images for a given menu.
 	std::vector<std::string> get_menu_images(display &, const std::vector<std::string>& items_arg);
 
 	void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& gui);
@@ -392,10 +393,11 @@ public:
 	virtual bool execute_command(HOTKEY_COMMAND command, int index=-1);
 };
 
-//Functions to be called every time a event is intercepted.
-//Will call the relevant function in executor if the event is not NULL.
-//Also handles some events in the function itself,
-//and so is still meaningful to call with executor=NULL
+/* Functions to be called every time a event is intercepted.
+ * Will call the relevant function in executor if the event is not NULL.
+ * Also handles some events in the function itself,
+ * and so is still meaningful to call with executor=NULL
+ */
 void jbutton_event(display& disp, const SDL_JoyButtonEvent& event, command_executor* executor);
 void jhat_event(display& disp, const SDL_JoyHatEvent& event, command_executor* executor);
 void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* executor);
@@ -404,8 +406,8 @@ void mbutton_event(display& disp, const SDL_MouseButtonEvent& event, command_exe
 //TODO
 void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* executor, int index=-1);
 
-//object which will ensure that basic keyboard events like escape
-//are handled properly for the duration of its lifetime
+// Object which will ensure that basic keyboard events like escape
+// are handled properly for the duration of its lifetime.
 struct basic_handler : public events::handler {
 	basic_handler(display* disp, command_executor* exec=NULL);
 
