@@ -430,7 +430,7 @@ void hotkey_item::save(config& item)
 	if (get_cmd())   item["cmd"]   = get_cmd();
 }
 
-void hotkey_item::set_jbutton(int joystick, int button, bool shift, bool ctrl, bool alt, bool cmd)
+void hotkey_item::set_jbutton(int joystick, int button, bool shift, bool ctrl, bool cmd, bool alt)
 {
 	joystick_ = joystick;
 	button_ = button;
@@ -440,7 +440,7 @@ void hotkey_item::set_jbutton(int joystick, int button, bool shift, bool ctrl, b
 	cmd_ = cmd;
 }
 
-void hotkey_item::set_jhat(int joystick, int hat, int value, bool shift, bool ctrl, bool alt, bool cmd)
+void hotkey_item::set_jhat(int joystick, int hat, int value, bool shift, bool ctrl, bool cmd, bool alt)
 {
 	joystick_ = joystick;
 	hat_ = hat;
@@ -451,7 +451,7 @@ void hotkey_item::set_jhat(int joystick, int hat, int value, bool shift, bool ct
 	cmd_ = cmd;
 }
 
-void hotkey_item::set_mbutton(int mouse, int button, bool shift, bool ctrl, bool alt, bool cmd)
+void hotkey_item::set_mbutton(int mouse, int button, bool shift, bool ctrl, bool cmd, bool alt)
 {
 	mouse_ = mouse;
 	button_ = button;
@@ -461,7 +461,7 @@ void hotkey_item::set_mbutton(int mouse, int button, bool shift, bool ctrl, bool
 	cmd_ = cmd;
 }
 
-void hotkey_item::set_key(int character, int keycode, bool shift, bool ctrl, bool alt, bool cmd)
+void hotkey_item::set_key(int character, int keycode, bool shift, bool ctrl, bool cmd, bool alt)
 {
 	LOG_G << "setting hotkey: char=" << lexical_cast<std::string>(character)
 		   << " keycode="  << lexical_cast<std::string>(keycode) << " "

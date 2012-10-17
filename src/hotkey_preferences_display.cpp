@@ -5,19 +5,19 @@
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 2 of the License, or
- (at your option) any later version.
+ the Free Software Foundation; either version 2 of the License,
+ or (at your option) any later version.
  This program is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY.
 
  See the COPYING file for more details.
- */
+*/
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 /**
- *  @file
- *  Manages the hotkey bindings.
+ * @file
+ * Manages the hotkey bindings.
  */
 
 #include "preferences_display.hpp"
@@ -54,9 +54,8 @@ public:
 	hotkey_preferences_dialog(display& disp);
 
 	/**
-	 * Populates, sorts and redraws the hotkey menu
-	 * specified by tab_.
-	 * @param keep_viewport feeds the keep_viewport param of menu::set_menu_items()
+	 * Populates, sorts and redraws the hotkey menu specified by tab_.
+	 * @param keep_viewport feeds keep_viewport param of menu::set_menu_items()
 	 */
 	void set_hotkey_menu(bool keep_viewport);
 
@@ -86,19 +85,19 @@ private:
 	void show_binding_dialog(const std::string& command);
 	void show_input_binding_dialog(const std::string& command);
 
-
 	/**
 	 * Buttons to trigger the tools involved in hotkey assignment.
 	 * The buttons are shared by all scope tabs.
 	 */
 	gui::button add_button_, clear_button_;
 
-	/** The dialog features a tab for each hotkey scope (except the SCOPE_COUNTER)*/
+	/** The dialog features a tab for each hotkey scope (except SCOPE_COUNTER) */
 	hotkey::scope tab_;
 
 	/**
 	 * These are to map the menu selection to the corresponding command
-	 * example: std::string selected_general_command = general_commands_[general_hotkey_.get_selected()];
+	 * example: std::string selected_general_command
+	 *  = general_commands_[general_hotkey_.get_selected()];
 	 */
 	std::vector<std::string> general_commands_;
 	std::vector<std::string> game_commands_;
@@ -153,15 +152,17 @@ class hotkey_preferences_parent_dialog: public gui::dialog {
 
 public:
 
-	hotkey_preferences_parent_dialog(display &disp, hotkey_preferences_dialog& hotkey_preferences_dialog) :
-			dialog(disp, _("Hotkey Settings"), "", gui::OK_CANCEL),
-			clear_buttons_(false),
-			hotkey_cfg_(),
-			resetter_(disp, hotkey_preferences_dialog)
-	{
-		gui::dialog_button* reset_button = new gui::dialog_button(disp.video(), _("Reset Defaults"),
-				gui::button::TYPE_PRESS, gui::CONTINUE_DIALOG, &resetter_);
-		reset_button->set_help_string(_("Reset all bindings to the default values"));
+	hotkey_preferences_parent_dialog(display &disp,
+			hotkey_preferences_dialog& hotkey_preferences_dialog) :
+				dialog(disp, _("Hotkey Settings"), "", gui::OK_CANCEL),
+				clear_buttons_(false),
+				hotkey_cfg_(),
+				resetter_(disp, hotkey_preferences_dialog) {
+		gui::dialog_button* reset_button = new gui::dialog_button(disp.video(),
+				_("Reset Defaults"), gui::button::TYPE_PRESS,
+				gui::CONTINUE_DIALOG, &resetter_);
+		reset_button->set_help_string(
+				_("Reset all bindings to the default values") );
 		add_button(reset_button, dialog::BUTTON_HELP);
 
 		// keep the old config in case the user cancels the dialog
@@ -170,9 +171,11 @@ public:
 
 	~hotkey_preferences_parent_dialog() {
 		// save or restore depending on the exit result
-		if (result() >= 0)
+		if (result() >= 0) {
 			save_hotkeys();
-		else hotkey::load_hotkeys(hotkey_cfg_, false);
+		} else {
+			hotkey::load_hotkeys(hotkey_cfg_, false);
+		}
 	}
 
 	void action(gui::dialog_process_info &info) {
@@ -200,15 +203,20 @@ void show_hotkeys_preferences_dialog(display& disp) {
 	char const sep = COLUMN_SEPARATOR;
 
 	// tab names and icons
-	items.push_back(pre + "general.png" + sep + sgettext("Prefs section^General"));
-	items.push_back(pre + "game.png"    + sep + sgettext("Prefs section^Game"));
-	items.push_back(pre + "editor.png"  + sep + sgettext("Prefs section^Editor"));
+	items.push_back(pre + "general.png" + sep
+			+ sgettext("Prefs section^General"));
+	items.push_back(pre + "game.png"    + sep
+			+ sgettext("Prefs section^Game"));
+	items.push_back(pre + "editor.png"  + sep
+			+ sgettext("Prefs section^Editor"));
 
-	// determine the current scope, but not general
+	// determine the current scope, but skip general == 0
 	int scope;
-	for (scope = 1; scope != hotkey::SCOPE_COUNT; scope++)
-		if (hotkey::is_scope_active(static_cast<hotkey::scope>(scope)))
+	for (scope = 1; scope != hotkey::SCOPE_COUNT; scope++) {
+		if (hotkey::is_scope_active(static_cast<hotkey::scope>(scope))) {
 			break;
+		}
+	}
 
 	// The restorer will change the scope back to where we came from
 	// when it runs out of the function's scope
@@ -235,19 +243,19 @@ hotkey_preferences_dialog::hotkey_preferences_dialog(display& disp) :
 		game_commands_(),
 		editor_commands_(),
 		heading_( (formatter() << HEADING_PREFIX << _("Action")
-						<< COLUMN_SEPARATOR << _("Binding")).str()),
+						<< COLUMN_SEPARATOR << _("Binding")).str() ),
 		selected_command_(0),
 		general_sorter_(),
 		game_sorter_(),
 		editor_sorter_(),
 		// Note: If you don't instantiate the menus with heading_,
 		// the header can't be enabled later, seems to be a bug in gui::menu
-		general_hotkeys_(disp.video(), boost::assign::list_of(heading_), false, -1, -1,
-				&general_sorter_, &gui::menu::bluebg_style),
-		game_hotkeys_(disp.video(), boost::assign::list_of(heading_), false, -1, -1,
-				&game_sorter_, &gui::menu::bluebg_style),
-		editor_hotkeys_(disp.video(), boost::assign::list_of(heading_), false, -1, -1,
-						&editor_sorter_, &gui::menu::bluebg_style),
+		general_hotkeys_(disp.video(), boost::assign::list_of(heading_),
+				false, -1, -1, &general_sorter_, &gui::menu::bluebg_style),
+		game_hotkeys_(disp.video(), boost::assign::list_of(heading_),
+				false, -1, -1, &game_sorter_, &gui::menu::bluebg_style),
+		editor_hotkeys_(disp.video(), boost::assign::list_of(heading_),
+				false, -1, -1, &editor_sorter_, &gui::menu::bluebg_style),
 		disp_(disp),
 		parent(NULL)
 {
@@ -258,8 +266,9 @@ hotkey_preferences_dialog::hotkey_preferences_dialog(display& disp) :
 	const hotkey::hotkey_command* list = hotkey::get_hotkey_commands();
 	for (size_t i = 0; list[i].id != hotkey::HOTKEY_NULL; ++i) {
 
-		if (list[i].hidden)
+		if (list[i].hidden) {
 			continue;
+		}
 
 		switch (list[i].scope) {
 
@@ -277,13 +286,14 @@ hotkey_preferences_dialog::hotkey_preferences_dialog(display& disp) :
 		}
 	}
 
-	///@todo move to the caller?
+	/// @todo move to the caller?
 	disp_.video().clear_all_help_strings();
 
-	//Add help tooltips to the buttons
-	///@todo adjust them corresponding to the selected item
+	// Add help tooltips to the buttons
+	/// @todo adjust them corresponding to the selected item
 	clear_button_.set_help_string(_("Clears the selected actions's bindings"));
-	add_button_.set_help_string(_("Add additional binding to the selected action"));
+	add_button_.set_help_string(
+			_("Add additional binding to the selected action"));
 
 	// Initialize sorters.
 	general_sorter_.set_alpha_sort(0).set_alpha_sort(1);
@@ -339,19 +349,21 @@ void hotkey_preferences_dialog::set_hotkey_menu(bool keep_viewport) {
 
 		const std::string& description = hotkey::get_description(command);
 		std::string truncated_description = description;
-		if (truncated_description.size() >= (truncate_at + 2) )
+		if (truncated_description.size() >= (truncate_at + 2) ) {
 			utils::ellipsis_truncate(truncated_description, truncate_at);
+		}
 		const std::string& name = hotkey::get_names(hotkey::get_id(command));
 
 		menu_items.push_back(
-				(formatter() << truncated_description << HELP_STRING_SEPARATOR << description << COLUMN_SEPARATOR
-						<< font::NULL_MARKUP << name << HELP_STRING_SEPARATOR << name).str() );
+				(formatter() << truncated_description << HELP_STRING_SEPARATOR
+						<< description << COLUMN_SEPARATOR << font::NULL_MARKUP
+						<< name << HELP_STRING_SEPARATOR << name).str() );
 	}
-	// No effect if the vector is used in set_items instead of the menu's constructor.
+	// No effect if vector is used in set_items instead of menu's constructor.
     // menu_items.push_back(heading_);
 
 	// Re-populate the items.
-	// workaround for set_items not keeping the selected item.
+	// Workaround for set_items not keeping the selected item.
 	selected_command_ = active_hotkeys->selection();
 	active_hotkeys->set_items(menu_items, true, keep_viewport);
 	// This shall happen only once at the start of the dialog.
@@ -400,6 +412,7 @@ void hotkey_preferences_dialog::set_selection(int index) {
 		hotkey::set_scope_active(hotkey::SCOPE_EDITOR);
 		break;
 	case hotkey::SCOPE_COUNT:
+		assert(false); // should not be reached
 		break;
 	}
 	set_hotkey_menu(true);
@@ -447,7 +460,7 @@ void hotkey_preferences_dialog::update_location(SDL_Rect const &rect) {
 	bg_register(rect);
 
 	/** some magic numbers :-P
-	@TODO they match the ones in game_preferences_dialog. */
+	@todo they match the ones in game_preferences_dialog. */
 	const int top_border = 10;
 	const int right_border = font::relative_size(10);
 	const int h = height() - 75; // well, this one not.
@@ -485,14 +498,16 @@ void hotkey_preferences_dialog::update_location(SDL_Rect const &rect) {
 #pragma warning (push)
 #pragma warning (disable:4701)
 #endif
-void hotkey_preferences_dialog::show_binding_dialog(const std::string& id) {
+void hotkey_preferences_dialog::show_binding_dialog(
+		const std::string& id) {
 
 	// Lets bind a hotkey...
 
+	const std::string text = _("Press desired hotkey (Esc cancels)");
+
 	SDL_Rect clip_rect = create_rect(0, 0, disp_.w(), disp_.h());
 	SDL_Rect text_size = font::draw_text(NULL, clip_rect, font::SIZE_LARGE,
-			font::NORMAL_COLOR, _("Press desired hotkey (Esc cancels)"), 0,
-			0);
+			font::NORMAL_COLOR, text, 0, 0);
 
 	const int centerx = disp_.w() / 2;
 	const int centery = disp_.h() / 2;
@@ -509,17 +524,17 @@ void hotkey_preferences_dialog::show_binding_dialog(const std::string& id) {
 	mini_frame.draw_background();
 	mini_frame.draw_border();
 	font::draw_text(&disp_.video(), clip_rect, font::SIZE_LARGE,
-			font::NORMAL_COLOR, _("Press desired hotkey (Esc cancels)"),
+			font::NORMAL_COLOR, text,
 			centerx - text_size.w / 2, centery - text_size.h / 2);
 	disp_.update_display();
 	SDL_Event event;
 	event.type = 0;
 	int character = -1, keycode = -1, mod = -1;
 	int mouse = -1, joystick = -1, button = -1, hat = -1, value = -1;
-	const int any_mod = KMOD_CTRL | KMOD_ALT | KMOD_META;
+	const int any_mod = KMOD_CTRL | KMOD_META | KMOD_ALT;
 
 	while (event.type != SDL_KEYDOWN && event.type != SDL_JOYBUTTONDOWN
-			&& event.type != SDL_JOYHATMOTION
+			&& event.type  != SDL_JOYHATMOTION
 			&& (event.type != SDL_MOUSEBUTTONDOWN || event.button.button < 4))
 		SDL_PollEvent(&event);
 
@@ -549,8 +564,9 @@ void hotkey_preferences_dialog::show_binding_dialog(const std::string& id) {
 		SDL_PollEvent(&event);
 		disp_.flip();
 		disp_.delay(10);
-	} while (event.type != SDL_KEYUP && event.type != SDL_JOYBUTTONUP
-			&& event.type != SDL_JOYHATMOTION && event.type != SDL_MOUSEBUTTONUP);
+	} while (event.type  != SDL_KEYUP && event.type != SDL_JOYBUTTONUP
+			&& event.type != SDL_JOYHATMOTION
+			&& event.type != SDL_MOUSEBUTTONUP);
 
 	restorer.restore();
 	disp_.update_display();
@@ -562,25 +578,27 @@ void hotkey_preferences_dialog::show_binding_dialog(const std::string& id) {
 		hotkey::hotkey_item* oldhk = NULL;
 
 		Uint8 *keystate = SDL_GetKeyState(NULL);
-		bool alt   = keystate[SDLK_RALT]   || keystate[SDLK_LALT];
-		bool ctrl  = keystate[SDLK_RCTRL]  || keystate[SDLK_LCTRL];
 		bool shift = keystate[SDLK_RSHIFT] || keystate[SDLK_LSHIFT];
+		bool ctrl  = keystate[SDLK_RCTRL]  || keystate[SDLK_LCTRL];
 		bool cmd   = keystate[SDLK_RMETA]  || keystate[SDLK_LMETA];
+		bool alt   = keystate[SDLK_RALT]   || keystate[SDLK_LALT];
 
 		switch (event.type) {
 
 		case SDL_JOYHATMOTION:
-			oldhk = &hotkey::get_hotkey(mouse, joystick, button,
-					hat, value, shift, ctrl, alt, cmd);
-			newhk.set_jhat(joystick, hat, value, shift, ctrl, alt, cmd);
+			oldhk = &hotkey::get_hotkey(mouse, joystick, button, hat, value,
+					shift, ctrl, cmd, alt);
+			newhk.set_jhat(joystick, hat, value, shift, ctrl, cmd, alt);
 			break;
 		case SDL_JOYBUTTONUP:
-			oldhk = &hotkey::get_hotkey(mouse, joystick, button, -1, -1, shift, ctrl, alt, cmd);
-			newhk.set_jbutton(joystick, button, shift, ctrl, alt, cmd);
+			oldhk = &hotkey::get_hotkey(mouse, joystick, button, -1, -1,
+					shift, ctrl, cmd, alt);
+			newhk.set_jbutton(joystick, button, shift, ctrl, cmd, alt);
 			break;
 		case SDL_MOUSEBUTTONUP:
-			oldhk = &hotkey::get_hotkey(mouse, joystick, button, -1, -1, shift, ctrl, alt, cmd);
-			newhk.set_mbutton(mouse, button, shift, ctrl, alt, cmd);
+			oldhk = &hotkey::get_hotkey(mouse, joystick, button, -1, -1,
+					shift, ctrl, cmd, alt);
+			newhk.set_mbutton(mouse, button, shift, ctrl, cmd, alt);
 			break;
 		case SDL_KEYUP:
 			oldhk =
@@ -588,13 +606,15 @@ void hotkey_preferences_dialog::show_binding_dialog(const std::string& id) {
 							(mod & KMOD_SHIFT) != 0, (mod & KMOD_CTRL) != 0,
 							(mod & KMOD_LMETA) != 0, (mod & KMOD_ALT)  != 0 );
 			newhk.set_key(character, keycode, (mod & KMOD_SHIFT) != 0,
-					(mod & KMOD_CTRL) != 0, (mod & KMOD_ALT) != 0, (mod & KMOD_LMETA) != 0);
+					(mod & KMOD_CTRL) != 0, (mod & KMOD_ALT) != 0,
+					(mod & KMOD_LMETA) != 0);
 
 			if ( (newhk.get_id() == hotkey::HOTKEY_SCREENSHOT
 					|| newhk.get_id() == hotkey::HOTKEY_MAP_SCREENSHOT)
 					&& (mod & any_mod) == 0 ) {
 				gui2::show_transient_message(disp_.video(), _("Warning"),
-						_("Screenshot hotkeys should be combined with the Control, Alt or Meta modifiers to avoid problems."));
+						_("Screenshot hotkeys should be combined with the \
+Control, Alt or Meta modifiers to avoid problems."));
 			}
 			break;
 		}
@@ -608,9 +628,9 @@ void hotkey_preferences_dialog::show_binding_dialog(const std::string& id) {
 				symbols["new_hotkey_action"] = newhk.get_description();
 
 				std::string text =
-						vgettext("\"$hotkey_sequence|\" is in use by \"$old_hotkey_action|\".\
- Do you wish to reassign it to \"$new_hotkey_action|\"?",
-								symbols);
+						vgettext("\"$hotkey_sequence|\" is in use by \
+\"$old_hotkey_action|\". Do you wish to reassign it to \"$new_hotkey_action|\"?"
+								, symbols);
 
 				const int res = gui2::show_message(disp_.video(),
 						_("Reassign Hotkey"), text,

@@ -226,10 +226,17 @@ public:
 	int get_value() const { return value_; }
 
 	/** modifiers */
-	bool get_alt() const { return alt_; }
-	bool get_cmd() const { return cmd_; }
-	bool get_ctrl() const { return ctrl_; }
 	bool get_shift() const { return shift_; }
+	bool get_ctrl() const { return ctrl_; }
+	bool get_cmd() const { return cmd_; }
+	bool get_alt() const { return alt_; }
+
+	HOTKEY_COMMAND get_id() const;
+
+	void set_jbutton(int button, int joystick, bool shift, bool ctrl, bool cmd, bool alt);
+	void set_jhat(int joystick, int hat, int value, bool shift, bool ctrl, bool cmd, bool alt);
+	void set_key(int character, int keycode, bool shift, bool ctrl, bool cmd, bool alt);
+	void set_mbutton(int device, int button, bool shift, bool ctrl, bool cmd, bool alt);
 
 protected:
 
@@ -254,25 +261,6 @@ protected:
 	int axis_joystick, joystick_axis;
 	int axis_mouse;
 
-
-//class hotkey_item: public input_item
-//{
-public:
-//	hotkey_item(const std::string& command) :
-//		input_item(command)
-//		{}
-
-//	hotkey_item(const config& cfg) :
-//		input_item(cfg) {};
-
-	HOTKEY_COMMAND get_id() const;
-
-//	const std::string get_description() const;
-
-	void set_jbutton(int button, int joystick, bool shift, bool ctrl, bool alt, bool cmd);
-	void set_jhat(int joystick, int hat, int value, bool shift, bool ctrl, bool alt, bool cmd);
-	void set_key(int character, int keycode, bool shift, bool ctrl, bool alt, bool cmd);
-	void set_mbutton(int device, int button, bool shift, bool ctrl, bool alt, bool cmd);
 };
 
 class manager {
@@ -304,9 +292,9 @@ void clear_hotkeys(const std::string& command);
 
 hotkey_item& get_hotkey(int mouse, int joystick,
 		int button, int hat, int value,
-		bool shift, bool ctrl, bool alt, bool cmd);
+		bool shift, bool ctrl, bool cmd, bool alt);
 hotkey_item& get_hotkey(int character, int keycode,
-		bool shift,	bool ctrl, bool alt, bool cmd);
+		bool shift, bool ctrl, bool cmd, bool alt);
 
 hotkey_item& get_hotkey(const SDL_JoyButtonEvent& event);
 hotkey_item& get_hotkey(const SDL_JoyHatEvent& event);
