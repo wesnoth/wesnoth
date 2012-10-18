@@ -115,7 +115,7 @@ void level_to_gamestate(config& level, game_state& state)
 	const std::string seed = level["random_seed"];
 	if(!seed.empty()) {
 		const unsigned calls = lexical_cast_default<unsigned>(level["random_calls"]);
-		sides.rng().seed_random(lexical_cast<int>(seed), calls);
+		sides.rng().seed_random(level["random_seed"].to_int(42), calls);
 	} else {
 		ERR_NG << "No random seed found, random "
 			"events will probably be out of sync.\n";
