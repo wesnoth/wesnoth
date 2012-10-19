@@ -90,14 +90,18 @@ private:
 	 * The buttons are shared by all scope tabs.
 	 */
 	gui::button add_button_, clear_button_;
+	static const char* add_button_text;
+	static const char* clear_button_text;
 
 	/** The dialog features a tab for each hotkey scope (except SCOPE_COUNTER) */
 	hotkey::scope tab_;
 
 	/**
 	 * These are to map the menu selection to the corresponding command
-	 * example: std::string selected_general_command
-	 *  = general_commands_[general_hotkey_.get_selected()];
+	 * example:
+	 *
+	 *	std::string selected_general_command =
+	 *			general_commands_[general_hotkey_.get_selected()];
 	 */
 	std::vector<std::string> general_commands_;
 	std::vector<std::string> game_commands_;
@@ -124,6 +128,11 @@ public:
 	 */
 	util::scoped_ptr<hotkey_preferences_parent_dialog> parent;
 };
+
+const char* hotkey_preferences_dialog::add_button_text =
+		"Add additional binding to \"$hotkey_description|\"";
+const char* hotkey_preferences_dialog::clear_button_text =
+		"Clears \"$hotkey_description|'s\" bindings";
 
 class hotkey_resetter : public gui::dialog_button_action
 {
@@ -214,8 +223,7 @@ void show_hotkeys_preferences_dialog(display& disp) {
 	int scope;
 	for (scope = 1; scope != hotkey::SCOPE_COUNT; scope++) {
 		if (hotkey::is_scope_active(static_cast<hotkey::scope>(scope))) {
-			break;
-		}
+			break; }
 	}
 
 	// The restorer will change the scope back to where we came from
@@ -267,8 +275,7 @@ hotkey_preferences_dialog::hotkey_preferences_dialog(display& disp) :
 	for (size_t i = 0; list[i].id != hotkey::HOTKEY_NULL; ++i) {
 
 		if (list[i].hidden) {
-			continue;
-		}
+			continue; }
 
 		switch (list[i].scope) {
 
@@ -291,9 +298,9 @@ hotkey_preferences_dialog::hotkey_preferences_dialog(display& disp) :
 
 	// Add help tooltips to the buttons
 	/// @todo adjust them corresponding to the selected item
-	clear_button_.set_help_string(_("Clears the selected actions's bindings"));
-	add_button_.set_help_string(
-			_("Add additional binding to the selected action"));
+	//clear_button_.set_help_string(_("Clears the selected actions's bindings"));
+	//add_button_.set_help_string(
+	//		_("Add additional binding to the selected action"));
 
 	// Initialize sorters.
 	general_sorter_.set_alpha_sort(0).set_alpha_sort(1);
@@ -359,7 +366,8 @@ void hotkey_preferences_dialog::set_hotkey_menu(bool keep_viewport) {
 						<< description << COLUMN_SEPARATOR << font::NULL_MARKUP
 						<< name << HELP_STRING_SEPARATOR << name).str() );
 	}
-	// No effect if vector is used in set_items instead of menu's constructor.
+
+	/* No effect if vector is used in set_items instead of menu's constructor. */
     // menu_items.push_back(heading_);
 
 	// Re-populate the items.
@@ -370,6 +378,7 @@ void hotkey_preferences_dialog::set_hotkey_menu(bool keep_viewport) {
 	if (!keep_viewport) {
 		active_hotkeys->sort_by(0);
 		active_hotkeys->reset_selection();
+		selected_command_ = active_hotkeys->selection();
 	} else {
 		active_hotkeys->move_selection_keeping_viewport(selected_command_);
 	    // !hide and thus redraw only the current tab_'s items
@@ -377,6 +386,17 @@ void hotkey_preferences_dialog::set_hotkey_menu(bool keep_viewport) {
 		add_button_.hide(false);
 		clear_button_.hide(false);
 	}
+	utils::string_map symbols;
+	symbols["hotkey_description"] =
+			hotkey::get_description((*commands)[selected_command_]);
+
+	const std::string clear_text =
+			vgettext(hotkey_preferences_dialog::clear_button_text, symbols);
+	clear_button_.set_help_string(clear_text);
+	const std::string   add_text =
+			vgettext(hotkey_preferences_dialog::add_button_text, symbols);
+	add_button_.set_help_string(add_text);
+
 }
 
 handler_vector hotkey_preferences_dialog::handler_members() {
@@ -441,6 +461,15 @@ void hotkey_preferences_dialog::process_event() {
 
 	if ( selected_command_ != active_menu_->selection()) {
 		selected_command_ = active_menu_->selection();
+
+		utils::string_map symbols;
+		symbols["hotkey_description"] = hotkey::get_description(id);
+
+		const std::string clear_text = vgettext(clear_button_text, symbols);
+		clear_button_.set_help_string(clear_text);
+
+		const std::string   add_text = vgettext(add_button_text, symbols);
+		add_button_.set_help_string(add_text);
 	}
 
 	if (add_button_.pressed() || active_menu_->double_clicked()) {
@@ -529,13 +558,14 @@ void hotkey_preferences_dialog::show_binding_dialog(
 	disp_.update_display();
 	SDL_Event event;
 	event.type = 0;
-	int character = -1, keycode = -1, mod = -1;
-	int mouse = -1, joystick = -1, button = -1, hat = -1, value = -1;
+	int character = -1, keycode  = -1, mod    = -1;
+	int mouse     = -1, joystick = -1, button = -1, hat = -1, value = -1;
 	const int any_mod = KMOD_CTRL | KMOD_META | KMOD_ALT;
 
-	while (event.type != SDL_KEYDOWN && event.type != SDL_JOYBUTTONDOWN
+	while ( event.type != SDL_KEYDOWN && event.type != SDL_JOYBUTTONDOWN
 			&& event.type  != SDL_JOYHATMOTION
-			&& (event.type != SDL_MOUSEBUTTONDOWN || event.button.button < 4))
+			&& (event.type != SDL_MOUSEBUTTONDOWN || event.button.button < 4)
+	)
 		SDL_PollEvent(&event);
 
 	do {
