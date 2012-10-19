@@ -1052,23 +1052,8 @@ combatant::combat_slice::combat_slice(const std::vector<double> src_summary[2],
 }
 
 
-namespace {
-
-unsigned hp_dist_size(const battle_context_unit_stats &u, const combatant *prev)
-{
-	// Our summary must be as big as previous one.
-	if (prev) {
-		return prev->hp_dist.size();
-	}
-
-	// If this unit drains or levels, HP can increase, so alloc full array.
-	return u.max_hp + 1;
-}
-
-} // end anon namespace
-
 combatant::combatant(const battle_context_unit_stats &u, const combatant *prev)
-	: hp_dist(hp_dist_size(u, prev)),
+	: hp_dist(u.max_hp + 1, 0.0),
 	  untouched(0.0),
 	  poisoned(0.0),
 	  slowed(0.0),
@@ -1078,10 +1063,12 @@ combatant::combatant(const battle_context_unit_stats &u, const combatant *prev)
 	if (prev) {
 		summary[0] = prev->summary[0];
 		summary[1] = prev->summary[1];
-		poisoned = prev->poisoned;
+		hp_dist = prev->hp_dist;
 		untouched = prev->untouched;
+		poisoned = prev->poisoned;
 		slowed = prev->slowed;
 	} else {
+		hp_dist[std::min(u.hp, u.max_hp)] = 1.0;
 		untouched = 1.0;
 		poisoned = u.is_poisoned ? 1.0 : 0.0;
 		slowed = u.is_slowed ? 1.0 : 0.0;
@@ -1154,7 +1141,9 @@ std::vector<combatant::combat_slice> combatant::split_summary() const
 }
 
 
-static void forced_levelup(std::vector<double> &hp_dist)
+namespace {
+
+void forced_levelup(std::vector<double> &hp_dist)
 {
 	/* If we survive the combat, we will level up. So the probability
 	   of death is unchanged, but all other cases get merged into the
@@ -1166,7 +1155,7 @@ static void forced_levelup(std::vector<double> &hp_dist)
 	hp_dist.back() = 1 - hp_dist.front();
 }
 
-static void conditional_levelup(std::vector<double> &hp_dist, double kill_prob)
+void conditional_levelup(std::vector<double> &hp_dist, double kill_prob)
 {
 	/* If we kill, we will level up. So then the damage we had becomes
 	   less probable since it's now conditional on us not levelling up.
@@ -1180,8 +1169,6 @@ static void conditional_levelup(std::vector<double> &hp_dist, double kill_prob)
 	// Full heal if leveled up.
 	hp_dist.back() += kill_prob;
 }
-
-namespace {
 
 /**
  * Returns the smallest HP we could possibly have based on the provided
@@ -1630,13 +1617,17 @@ void combatant::fight(combatant &opp, bool levelup_considered)
 	if (summary[1].empty())
 		hp_dist = summary[0];
 	else {
-		for (unsigned int i = 0; i < hp_dist.size(); ++i)
+		const unsigned size = summary[0].size();
+		hp_dist.resize(size);
+		for (unsigned int i = 0; i < size; ++i)
 			hp_dist[i] = summary[0][i] + summary[1][i];
 	}
 	if (opp.summary[1].empty())
 		opp.hp_dist = opp.summary[0];
 	else {
-		for (unsigned int i = 0; i < opp.hp_dist.size(); ++i)
+		const unsigned size = opp.summary[0].size();
+		opp.hp_dist.resize(size);
+		for (unsigned int i = 0; i < size; ++i)
 			opp.hp_dist[i] = opp.summary[0][i] + opp.summary[1][i];
 	}
 

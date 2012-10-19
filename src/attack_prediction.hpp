@@ -39,7 +39,7 @@ struct combatant
 	/** Simulate a fight!  Can be called multiple times for cumulative calculations. */
 	void fight(combatant &opponent, bool levelup_considered=true);
 
-	/** Resulting probability distribution (may NOT be as large as max_hp) */
+	/** Resulting probability distribution (might be not as large as max_hp) */
 	std::vector<double> hp_dist;
 
 	/** Resulting chance we were not hit by this opponent (important if it poisons) */
