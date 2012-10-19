@@ -983,6 +983,77 @@ void combat_matrix::extract_results(std::vector<double> summary_a[2],
 	}
 }
 
+} // end anon namespace
+
+
+/**
+ * A struct to describe one possible combat scenario.
+ * (Needed when the number of attacks can vary due to swarm.)
+ */
+struct combatant::combat_slice
+{
+	// The hit point range this slice covers.
+	unsigned begin_hp; // included in the range.
+	unsigned end_hp;   // excluded from the range.
+
+	// The probability of this slice.
+	double prob;
+
+	// The number of strikes applicable with this slice.
+	unsigned strikes;
+
+
+	combat_slice(const std::vector<double> src_summary[2],
+	             unsigned begin, unsigned end, unsigned num_strikes);
+	combat_slice(const std::vector<double> src_summary[2], unsigned num_strikes);
+};
+
+/**
+ * Creates a slice from a summary, and associates a number of strikes.
+ */
+combatant::combat_slice::combat_slice(const std::vector<double> src_summary[2],
+                                      unsigned begin, unsigned end,
+                                      unsigned num_strikes) :
+	begin_hp(begin),
+	end_hp(end),
+	prob(0.0),
+	strikes(num_strikes)
+{
+	if ( src_summary[0].empty() ) {
+		// No summary; this should be the only slice.
+		prob = 1.0;
+		return;
+	}
+
+	// Avoid accessing beyond the end of the vectors.
+	if ( end > src_summary[0].size() )
+		end = src_summary[0].size();
+
+	// Sum the probabilities in the slice.
+	for ( unsigned i = begin; i < end; ++i )
+		prob += src_summary[0][i];
+	if ( !src_summary[1].empty() )
+		for ( unsigned i = begin; i < end; ++i )
+			prob += src_summary[1][i];
+}
+
+
+/**
+ * Creates a slice from the sumaries, and associates a number of strikes.
+ * This version of the constructor creates a slice consisting of everything.
+ */
+combatant::combat_slice::combat_slice(const std::vector<double> src_summary[2],
+                                      unsigned num_strikes) :
+	begin_hp(0),
+	end_hp(src_summary[0].size()),
+	prob(1.0),
+	strikes(num_strikes)
+{
+}
+
+
+namespace {
+
 unsigned hp_dist_size(const battle_context_unit_stats &u, const combatant *prev)
 {
 	// Our summary must be as big as previous one.
@@ -1001,8 +1072,7 @@ combatant::combatant(const battle_context_unit_stats &u, const combatant *prev)
 	  untouched(0.0),
 	  poisoned(0.0),
 	  slowed(0.0),
-	  u_(u),
-	  hit_chances_(u.num_blows, u.chance_to_hit / 100.0)
+	  u_(u)
 {
 	// We inherit current state from previous combatant.
 	if (prev) {
@@ -1020,61 +1090,69 @@ combatant::combatant(const battle_context_unit_stats &u, const combatant *prev)
 
 // Copy constructor (except use this copy of battle_context_unit_stats)
 combatant::combatant(const combatant &that, const battle_context_unit_stats &u)
-	: hp_dist(that.hp_dist), untouched(that.untouched), poisoned(that.poisoned), slowed(that.slowed), u_(u), hit_chances_(that.hit_chances_)
+	: hp_dist(that.hp_dist), untouched(that.untouched), poisoned(that.poisoned), slowed(that.slowed), u_(u)
 {
 		summary[0] = that.summary[0];
 		summary[1] = that.summary[1];
 }
 
 
+namespace {
+	/**
+	 * Returns the number of hit points greater than cur_hp, and at most max_hp+1,
+	 * at which the unit would get another attack because of swarm (assuming that
+	 * @a swarm_amt is swarm_max - swarm_min).
+	 * Helper function for split_summary().
+	 */
+	unsigned hp_for_next_attack(unsigned cur_hp, unsigned max_hp, unsigned swarm_amt)
+	{
+		unsigned old_strikes = swarm_amt * cur_hp / max_hp;
 
-// For swarm, whether we get an attack depends on HP distribution
-// from previous combat.  So we roll this into our P(hitting),
-// since no attack is equivalent to missing.
-void combatant::adjust_hitchance()
+		// A formula would have to deal with rounding issues; instead
+		// loop until we find more strikes.
+		while ( ++cur_hp <= max_hp )
+			if ( swarm_amt * cur_hp / max_hp != old_strikes )
+				break;
+
+		return cur_hp;
+	}
+} // end anon namespace
+
+/**
+ * Split the combat by number of attacks per combatant (for swarm).
+ * This also clears the current summaries.
+ */
+std::vector<combatant::combat_slice> combatant::split_summary() const
 {
-	if (summary[0].empty() || u_.swarm_min == u_.swarm_max)
-		return;
+	std::vector<combat_slice> result;
 
-	hit_chances_ = std::vector<double>(u_.swarm_max);
-	double alive_prob;
-
-	if (summary[1].empty())
-		alive_prob = 1 - summary[0][0];
-	else
-		alive_prob = 1 - summary[0][0] - summary[1][0];
-
-	unsigned int i;
-	for (i = 1; i <= u_.max_hp; ++i) {
-		double prob = 0.0;
-		if(i < summary[0].size()) {
-			prob = summary[0][i];
-		}
-		if (!summary[1].empty())
-			prob += summary[1][i];
-		for (unsigned int j = 0; j < u_.calc_blows(i); ++j)
-			hit_chances_[j] += prob * u_.chance_to_hit / 100.0 / alive_prob;
+	if ( u_.swarm_min == u_.swarm_max  ||  summary[0].empty() )
+	{
+		// We use the same number of blows for all possibilities.
+		result.push_back(combat_slice(summary, u_.num_blows));
+		return result;
 	}
 
-	debug(("\nhit_chances_ (base %u%%):", u_.chance_to_hit));
-	for (i = 0; i < u_.swarm_max; ++i)
-		debug((" %.2f", hit_chances_[i] * 100.0 + 0.5));
-	debug(("\n"));
+	debug(("Slicing:\n"));
+	// Loop through our slices.
+	unsigned cur_end = 0;
+	do {
+		// Advance to the next slice.
+		const unsigned cur_begin = cur_end;
+		cur_end = hp_for_next_attack(cur_begin, u_.max_hp, u_.swarm_max-u_.swarm_min);
+
+		// Add this slice.
+		combat_slice slice(summary, cur_begin, cur_end, u_.calc_blows(cur_begin));
+		if ( slice.prob != 0.0 ) {
+			result.push_back(slice);
+			debug(("\t%2u-%2u hp; strikes: %u; probability: %6.2f\n",
+			       cur_begin, cur_end, slice.strikes, slice.prob*100.0));
+		}
+	} while ( cur_end <= u_.max_hp );
+
+	return result;
 }
 
-// Minimum HP we could possibly have.
-unsigned combatant::min_hp() const
-{
-	if (summary[0].empty())
-		return u_.hp;
-
-	// We don't handle this (yet).
-	assert(summary[1].empty());
-
-	unsigned int i;
-	for (i = 0; summary[0][i] == 0; ++i) {};
-	return i;
-}
 
 static void forced_levelup(std::vector<double> &hp_dist)
 {
@@ -1103,190 +1181,228 @@ static void conditional_levelup(std::vector<double> &hp_dist, double kill_prob)
 	hp_dist.back() += kill_prob;
 }
 
-// Combat without chance of death, berserk, slow or drain is simple.
-void combatant::no_death_fight(combatant &opp, bool levelup_considered,
-                               double & self_not_hit, double & opp_not_hit)
+namespace {
+
+/**
+ * Returns the smallest HP we could possibly have based on the provided
+ * hit point distribution.
+ */
+unsigned min_hp(const std::vector<double> & hp_dist, unsigned def)
 {
+	const unsigned size = hp_dist.size();
+
+	// Look for a nonzero entry.
+	for ( unsigned i = 0; i != size; ++i )
+		if ( hp_dist[i] != 0.0 )
+			return i;
+
+	// Either the distribution is empty or is full of zeros, so
+	// return the default.
+	return def;
+}
+
+// Combat without chance of death, berserk, slow or drain is simple.
+void no_death_fight(const battle_context_unit_stats &stats,
+                    const battle_context_unit_stats &opp_stats,
+                    unsigned strikes, unsigned opp_strikes,
+                    std::vector<double> & hp_dist,
+                    std::vector<double> & opp_hp_dist,
+                    double & self_not_hit, double & opp_not_hit,
+                    bool levelup_considered)
+{
+	// Our strikes.
 	// If we were killed in an earlier fight, we don't get to attack.
 	// (Most likely case: we are a first striking defender subject to a series
 	// of attacks.)
-	double alive_prob = summary[0].empty() ? 1.0 : 1.0 - summary[0][0];
-	if (opp.summary[0].empty()) {
+	const double alive_prob = hp_dist.empty() ? 1.0 : 1.0 - hp_dist[0];
+	const double hit_chance = (stats.chance_to_hit/100.0) * alive_prob;
+	if ( opp_hp_dist.empty() ) {
 		// Starts with a known HP, so Pascal's triangle.
-		opp.summary[0] = std::vector<double>(opp.u_.max_hp+1);
-		opp.summary[0][opp.u_.hp] = 1.0;
-		for (unsigned int i = 0; i < hit_chances_.size(); ++i) {
-			const double hit_chance = hit_chances_[i] * alive_prob;
+		opp_hp_dist = std::vector<double>(opp_stats.max_hp+1);
+		opp_hp_dist[opp_stats.hp] = 1.0;
+		for (unsigned int i = 0; i < strikes; ++i) {
 			for (int j = i; j >= 0; j--) {
-				double move = opp.summary[0][opp.u_.hp - j * u_.damage] * hit_chance;
-				opp.summary[0][opp.u_.hp - j * u_.damage] -= move;
-				opp.summary[0][opp.u_.hp - (j+1) * u_.damage] += move;
+				unsigned src_index = opp_stats.hp - j*stats.damage;
+				double move = opp_hp_dist[src_index] * hit_chance;
+				opp_hp_dist[src_index] -= move;
+				opp_hp_dist[src_index - stats.damage] += move;
 			}
 			opp_not_hit *= 1.0 - hit_chance;
 		}
 	} else {
 		// HP could be spread anywhere, iterate through whole thing.
-		for (unsigned int i = 0; i < hit_chances_.size(); ++i) {
-			const double hit_chance = hit_chances_[i] * alive_prob;
-			for (unsigned int j = u_.damage; j <= opp.u_.hp; ++j) {
-				double move = opp.summary[0][j] * hit_chance;
-				opp.summary[0][j] -= move;
-				opp.summary[0][j - u_.damage] += move;
+		for (unsigned int i = 0; i < strikes; ++i) {
+			for (unsigned int j = stats.damage; j < opp_hp_dist.size(); ++j) {
+				double move = opp_hp_dist[j] * hit_chance;
+				opp_hp_dist[j] -= move;
+				opp_hp_dist[j - stats.damage] += move;
 			}
 			opp_not_hit *= 1.0 - hit_chance;
 		}
 	}
 
+	// Opponent's strikes
 	// If opponent was killed in an earlier fight, they don't get to attack.
-	double opp_alive_prob = opp.summary[0].empty() ? 1.0 : 1.0 - opp.summary[0][0];
-	if (summary[0].empty()) {
+	const double opp_alive_prob = opp_hp_dist.empty() ? 1.0 : 1.0 - opp_hp_dist[0];
+	const double opp_hit_chance = (opp_stats.chance_to_hit/100.0) * opp_alive_prob;
+	if ( hp_dist.empty() ) {
 		// Starts with a known HP, so Pascal's triangle.
-		summary[0] = std::vector<double>(u_.max_hp+1);
-		summary[0][u_.hp] = 1.0;
-		for (unsigned int i = 0; i < opp.hit_chances_.size(); ++i) {
-			const double hit_chance = opp.hit_chances_[i] * opp_alive_prob;
+		hp_dist = std::vector<double>(stats.max_hp+1);
+		hp_dist[stats.hp] = 1.0;
+		for (unsigned int i = 0; i < opp_strikes; ++i) {
 			for (int j = i; j >= 0; j--) {
-				double move = summary[0][u_.hp - j * opp.u_.damage] * hit_chance;
-				summary[0][u_.hp - j * opp.u_.damage] -= move;
-				summary[0][u_.hp - (j+1) * opp.u_.damage] += move;
+				unsigned src_index = stats.hp - j*opp_stats.damage;
+				double move = hp_dist[src_index] * opp_hit_chance;
+				hp_dist[src_index] -= move;
+				hp_dist[src_index - opp_stats.damage] += move;
 			}
-			self_not_hit *= 1.0 - hit_chance;
+			self_not_hit *= 1.0 - opp_hit_chance;
 		}
 	} else {
 		// HP could be spread anywhere, iterate through whole thing.
-		for (unsigned int i = 0; i < opp.hit_chances_.size(); ++i) {
-			const double hit_chance = opp.hit_chances_[i] * opp_alive_prob;
-			for (unsigned int j = opp.u_.damage; j <= u_.hp; ++j) {
-				double move = summary[0][j] * hit_chance;
-				summary[0][j] -= move;
-				summary[0][j - opp.u_.damage] += move;
+		for (unsigned int i = 0; i < opp_strikes; ++i) {
+			for (unsigned int j = opp_stats.damage; j < hp_dist.size(); ++j) {
+				double move = hp_dist[j] * opp_hit_chance;
+				hp_dist[j] -= move;
+				hp_dist[j - opp_stats.damage] += move;
 			}
-			self_not_hit *= 1.0 - hit_chance;
+			self_not_hit *= 1.0 - opp_hit_chance;
 		}
 	}
 
 	if (!levelup_considered) return;
 
-	if (u_.experience + opp.u_.level >= u_.max_experience) {
-		forced_levelup(summary[0]);
+	if ( stats.experience + opp_stats.level >= stats.max_experience ) {
+		forced_levelup(hp_dist);
 	}
 
-	if (opp.u_.experience + u_.level >= opp.u_.max_experience) {
-		forced_levelup(opp.summary[0]);
+	if ( opp_stats.experience + stats.level >= opp_stats.max_experience ) {
+		forced_levelup(opp_hp_dist);
 	}
 }
 
 // Combat with <= 1 strike each is simple, too.
-void combatant::one_strike_fight(combatant &opp, bool levelup_considered,
-                                 double & self_not_hit, double & opp_not_hit)
+void one_strike_fight(const battle_context_unit_stats &stats,
+                      const battle_context_unit_stats &opp_stats,
+                      unsigned strikes, unsigned opp_strikes,
+                      std::vector<double> & hp_dist,
+                      std::vector<double> & opp_hp_dist,
+                      double & self_not_hit, double & opp_not_hit,
+                      bool levelup_considered)
 {
 	// If we were killed in an earlier fight, we don't get to attack.
 	// (Most likely case: we are a first striking defender subject to a series
 	// of attacks.)
-	double alive_prob = summary[0].empty() ? 1.0 : 1.0 - summary[0][0];
-	if (opp.summary[0].empty()) {
-		opp.summary[0] = std::vector<double>(opp.u_.max_hp+1);
-		if (hit_chances_.size() == 1) {
-			const double hit_chance = hit_chances_[0] * alive_prob;
-			opp.summary[0][opp.u_.hp] = 1.0 - hit_chance;
-			opp.summary[0][std::max<int>(opp.u_.hp - u_.damage, 0)] = hit_chance;
+	const double alive_prob = hp_dist.empty() ? 1.0 : 1.0 - hp_dist[0];
+	const double hit_chance = (stats.chance_to_hit/100.0) * alive_prob;
+	if ( opp_hp_dist.empty() ) {
+		opp_hp_dist = std::vector<double>(opp_stats.max_hp+1);
+		if ( strikes == 1 ) {
+			opp_hp_dist[opp_stats.hp] = 1.0 - hit_chance;
+			opp_hp_dist[std::max<int>(opp_stats.hp - stats.damage, 0)] = hit_chance;
 			opp_not_hit *= 1.0 - hit_chance;
 		} else {
-			assert(hit_chances_.empty());
-			opp.summary[0][opp.u_.hp] = 1.0;
+			assert(strikes == 0);
+			opp_hp_dist[opp_stats.hp] = 1.0;
 		}
 	} else {
-		if (hit_chances_.size() == 1) {
-			const double hit_chance = hit_chances_[0] * alive_prob;
-			for (unsigned int i = 1; i < opp.summary[0].size(); ++i) {
-				double move = opp.summary[0][i] * hit_chance;
-				opp.summary[0][i] -= move;
-				opp.summary[0][std::max<int>(i - u_.damage, 0)] += move;
+		if ( strikes == 1 ) {
+			for (unsigned int i = 1; i < opp_hp_dist.size(); ++i) {
+				double move = opp_hp_dist[i] * hit_chance;
+				opp_hp_dist[i] -= move;
+				opp_hp_dist[std::max<int>(i - stats.damage, 0)] += move;
 			}
 			opp_not_hit *= 1.0 - hit_chance;
 		}
 	}
 
 	// If we killed opponent, it won't attack us.
-	double opp_alive_prob = 1.0 - opp.summary[0][0] / alive_prob;
-	if (summary[0].empty()) {
-		summary[0] = std::vector<double>(u_.max_hp+1);
-		if (opp.hit_chances_.size() == 1) {
-			const double hit_chance = opp.hit_chances_[0] * opp_alive_prob;
-			summary[0][u_.hp] = 1.0 - hit_chance;
-			summary[0][std::max<int>(u_.hp - opp.u_.damage, 0)] = hit_chance;
-			self_not_hit *= 1.0 - hit_chance;
+	const double opp_alive_prob = 1.0 - opp_hp_dist[0] / alive_prob;
+	const double opp_hit_chance = (opp_stats.chance_to_hit/100.0) * opp_alive_prob;
+	if ( hp_dist.empty() ) {
+		hp_dist = std::vector<double>(stats.max_hp+1);
+		if ( opp_strikes == 1 ) {
+			hp_dist[stats.hp] = 1.0 - opp_hit_chance;
+			hp_dist[std::max<int>(stats.hp - opp_stats.damage, 0)] = opp_hit_chance;
+			self_not_hit *= 1.0 - opp_hit_chance;
 		} else {
-			assert(opp.hit_chances_.empty());
-			summary[0][u_.hp] = 1.0;
+			assert(opp_strikes == 0);
+			hp_dist[stats.hp] = 1.0;
 		}
 	} else {
-		if (opp.hit_chances_.size() == 1) {
-			const double hit_chance = opp.hit_chances_[0] * opp_alive_prob;
-			for (unsigned int i = 1; i < summary[0].size(); ++i) {
-				double move = summary[0][i] * hit_chance;
-				summary[0][i] -= move;
-				summary[0][std::max<int>(i - opp.u_.damage, 0)] += move;
+		if ( opp_strikes == 1) {
+			for (unsigned int i = 1; i < hp_dist.size(); ++i) {
+				double move = hp_dist[i] * opp_hit_chance;
+				hp_dist[i] -= move;
+				hp_dist[std::max<int>(i - opp_stats.damage, 0)] += move;
 			}
-			self_not_hit *= 1.0 - hit_chance;
+			self_not_hit *= 1.0 - opp_hit_chance;
 		}
 	}
 
 	if (!levelup_considered) return;
 
-	if (u_.experience + opp.u_.level >= u_.max_experience) {
-		forced_levelup(summary[0]);
-	} else if (u_.experience + game_config::kill_xp(opp.u_.level) >= u_.max_experience) {
-		conditional_levelup(summary[0], opp.summary[0][0]);
+	if ( stats.experience + opp_stats.level >= stats.max_experience ) {
+		forced_levelup(hp_dist);
+	} else if ( stats.experience + game_config::kill_xp(opp_stats.level) >= stats.max_experience ) {
+		conditional_levelup(hp_dist, opp_hp_dist[0]);
 	}
 
-	if (opp.u_.experience + u_.level >= opp.u_.max_experience) {
-		forced_levelup(opp.summary[0]);
-	} else if (opp.u_.experience + game_config::kill_xp(u_.level) >= opp.u_.max_experience) {
-		conditional_levelup(opp.summary[0], summary[0][0]);
+	if ( opp_stats.experience + stats.level >= opp_stats.max_experience ) {
+		forced_levelup(opp_hp_dist);
+	} else if ( opp_stats.experience + game_config::kill_xp(stats.level) >= opp_stats.max_experience ) {
+		conditional_levelup(opp_hp_dist, hp_dist[0]);
 	}
 }
 
-void combatant::complex_fight(combatant &opp, bool levelup_considered,
-                              double & self_not_hit, double & opp_not_hit)
+void complex_fight(const battle_context_unit_stats &stats,
+                   const battle_context_unit_stats &opp_stats,
+                   unsigned strikes, unsigned opp_strikes,
+                   std::vector<double> summary[2],
+                   std::vector<double> opp_summary[2],
+                   double & self_not_hit, double & opp_not_hit,
+                   bool levelup_considered)
 {
-	unsigned int rounds = std::max<unsigned int>(u_.rounds, opp.u_.rounds);
-	unsigned max_attacks = std::max(hit_chances_.size(), opp.hit_chances_.size());
+	unsigned int rounds = std::max<unsigned int>(stats.rounds, opp_stats.rounds);
+	unsigned max_attacks = std::max(strikes, opp_strikes);
 
-	debug(("A gets %zu attacks, B %zu\n", hit_chances_.size(), opp.hit_chances_.size()));
+	debug(("A gets %u attacks, B %u.\n", strikes, opp_strikes));
 
-	unsigned int a_damage = u_.damage, a_slow_damage = u_.slow_damage;
-	unsigned int b_damage = opp.u_.damage, b_slow_damage = opp.u_.slow_damage;
+	unsigned int a_damage = stats.damage, a_slow_damage = stats.slow_damage;
+	unsigned int b_damage = opp_stats.damage, b_slow_damage = opp_stats.slow_damage;
 
 	// To simulate stoning, we set to amount which kills, and re-adjust after.
 	/** @todo FIXME: This doesn't work for rolling calculations, just first battle.
 	                 It also does not work if combined with (percentage) drain. */
-	if (u_.petrifies)
-		a_damage = a_slow_damage = opp.u_.max_hp;
-	if (opp.u_.petrifies)
-		b_damage = b_slow_damage = u_.max_hp;
+	if (stats.petrifies)
+		a_damage = a_slow_damage = opp_stats.max_hp;
+	if (opp_stats.petrifies)
+		b_damage = b_slow_damage = stats.max_hp;
 
 	// Prepare the matrix that will do our calculations.
-	combat_matrix m(hp_dist.size()-1, opp.hp_dist.size()-1,
-	                u_.hp, opp.u_.hp, summary, opp.summary,
-	                u_.slows && !opp.u_.is_slowed, opp.u_.slows && !u_.is_slowed,
+	combat_matrix m(stats.max_hp, opp_stats.max_hp,
+	                stats.hp, opp_stats.hp, summary, opp_summary,
+	                stats.slows && !opp_stats.is_slowed,
+	                opp_stats.slows && !stats.is_slowed,
 	                a_damage, b_damage, a_slow_damage, b_slow_damage,
-	                u_.drain_percent, opp.u_.drain_percent,
-	                u_.drain_constant, opp.u_.drain_constant);
+	                stats.drain_percent, opp_stats.drain_percent,
+	                stats.drain_constant, opp_stats.drain_constant);
+	const double hit_chance = stats.chance_to_hit / 100.0;
+	const double opp_hit_chance = opp_stats.chance_to_hit / 100.0;
 
 	do {
 		for (unsigned int i = 0; i < max_attacks; ++i) {
-			if (i < hit_chances_.size()) {
+			if ( i < strikes ) {
 				debug(("A strikes\n"));
-				m.receive_blow_b(hit_chances_[i]);
+				opp_not_hit *= 1.0 - hit_chance*(1.0-m.dead_prob_a());
+				m.receive_blow_b(hit_chance);
 				m.dump();
-				opp_not_hit *= 1.0 - hit_chances_[i]*(1.0-m.dead_prob_a());
 			}
-			if (i < opp.hit_chances_.size()) {
+			if ( i < opp_strikes ) {
 				debug(("B strikes\n"));
-				m.receive_blow_a(opp.hit_chances_[i]);
+				self_not_hit *= 1.0 - opp_hit_chance*(1.0-m.dead_prob_b());
+				m.receive_blow_a(opp_hit_chance);
 				m.dump();
-				self_not_hit *= 1.0 - opp.hit_chances_[i]*(1.0-m.dead_prob_b());
 			}
 		}
 
@@ -1294,33 +1410,116 @@ void combatant::complex_fight(combatant &opp, bool levelup_considered,
 		m.dump();
 	} while (--rounds && m.dead_prob() < 0.99);
 
-	if (u_.petrifies)
-		m.remove_petrify_distortion_a(u_.damage, u_.slow_damage, opp.u_.hp);
-	if (opp.u_.petrifies)
-		m.remove_petrify_distortion_b(opp.u_.damage, opp.u_.slow_damage, u_.hp);
+	if (stats.petrifies)
+		m.remove_petrify_distortion_a(stats.damage, stats.slow_damage, opp_stats.hp);
+	if (opp_stats.petrifies)
+		m.remove_petrify_distortion_b(opp_stats.damage, opp_stats.slow_damage, stats.hp);
 
 	if (levelup_considered) {
-		if (u_.experience + opp.u_.level >= u_.max_experience) {
+		if ( stats.experience + opp_stats.level >= stats.max_experience ) {
 			m.forced_levelup_a();
-		} else if (u_.experience + game_config::kill_xp(opp.u_.level) >= u_.max_experience) {
+		} else if ( stats.experience + game_config::kill_xp(opp_stats.level) >= stats.max_experience ) {
 			m.conditional_levelup_a();
 		}
 
-		if (opp.u_.experience + u_.level >= opp.u_.max_experience) {
+		if ( opp_stats.experience + stats.level >= opp_stats.max_experience ) {
 			m.forced_levelup_b();
-		} else if (opp.u_.experience + game_config::kill_xp(u_.level) >= opp.u_.max_experience) {
+		} else if ( opp_stats.experience + game_config::kill_xp(stats.level) >= opp_stats.max_experience ) {
 			m.conditional_levelup_b();
 		}
 	}
 
 	// We extract results separately, then combine.
-	m.extract_results(summary, opp.summary);
+	m.extract_results(summary, opp_summary);
 }
+
+
+/**
+ * Chooses the best of the various known combat calculations for the current
+ * situation.
+ */
+void do_fight(const battle_context_unit_stats &stats,
+              const battle_context_unit_stats &opp_stats,
+              unsigned strikes, unsigned opp_strikes,
+              std::vector<double> summary[2], std::vector<double> opp_summary[2],
+              double & self_not_hit, double & opp_not_hit,
+              bool levelup_considered)
+{
+	// Optimization only works in the simple cases (no slow, no drain,
+	// no petrify, no berserk, and no slowed results from an earlier combat).
+	if ( !stats.slows  &&  !opp_stats.slows  &&
+	     !stats.drains  &&  !opp_stats.drains  &&
+	     !stats.petrifies  &&  !opp_stats.petrifies  &&
+	     stats.rounds == 1  &&  opp_stats.rounds == 1  &&
+	     summary[1].empty()  &&  opp_summary[1].empty() )
+	{
+		if ( strikes <= 1  &&  opp_strikes <= 1 )
+			one_strike_fight(stats, opp_stats, strikes, opp_strikes,
+			                 summary[0], opp_summary[0], self_not_hit, opp_not_hit,
+			                 levelup_considered);
+		else if ( strikes*stats.damage < min_hp(opp_summary[0], opp_stats.hp)  &&
+		          opp_strikes*opp_stats.damage < min_hp(summary[0], stats.hp) )
+			no_death_fight(stats, opp_stats, strikes, opp_strikes,
+			               summary[0], opp_summary[0], self_not_hit, opp_not_hit,
+			               levelup_considered);
+		else
+			complex_fight(stats, opp_stats, strikes, opp_strikes,
+			              summary, opp_summary, self_not_hit, opp_not_hit,
+			              levelup_considered);
+	}
+	else
+		complex_fight(stats, opp_stats, strikes, opp_strikes,
+		              summary, opp_summary, self_not_hit, opp_not_hit,
+		              levelup_considered);
+}
+
+/**
+ * Initializes a hit point summary (assumed empty) based on the source.
+ * Only the part of the source from begin_hp up to (not including) end_hp
+ * is kept, and all values get scaled by prob.
+ */
+void init_slice_summary(std::vector<double> & dst, const std::vector<double> & src,
+                        unsigned begin_hp, unsigned end_hp, double prob)
+{
+	if ( src.empty() )
+		// Nothing to do.
+		return;
+
+	const unsigned size = src.size();
+	// Avoid going over the end of the vector.
+	if ( end_hp > size )
+		end_hp = size;
+
+	// Initialize the destination.
+	dst.resize(size, 0.0);
+	for ( unsigned i = begin_hp; i < end_hp; ++i )
+		dst[i] = src[i] / prob;
+}
+
+/**
+ * Merges the summary results of simulation into an overall summary.
+ * This uses prob to reverse the scaling that was done in init_slice_summary().
+ */
+void merge_slice_summary(std::vector<double> & dst, const std::vector<double> & src,
+                         double prob)
+{
+	const unsigned size = src.size();
+
+	// Make sure we have enough space.
+	if ( dst.size() < size )
+		dst.resize(size, 0.0);
+
+	// Merge the data.
+	for ( unsigned i = 0; i != size; ++i )
+		dst[i] += src[i] * prob;
+}
+
+} // end anon namespace
 
 // Two man enter.  One man leave!
 // ... Or maybe two.  But definitely not three.
 // Of course, one could be a woman.  Or both.
-// And neither could be human, too.
+// And either could be non-human, too.
 // Um, ok, it was a stupid thing to say.
 void combatant::fight(combatant &opp, bool levelup_considered)
 {
@@ -1337,10 +1536,6 @@ void combatant::fight(combatant &opp, bool levelup_considered)
 	dump(opp.u_);
 #endif
 
-	// If we've fought before and we have swarm, we must adjust cth array.
-	adjust_hitchance();
-	opp.adjust_hitchance();
-
 #if 0
 	std::vector<double> prev = summary[0], opp_prev = opp.summary[0];
 	complex_fight(opp, 1);
@@ -1353,20 +1548,65 @@ void combatant::fight(combatant &opp, bool levelup_considered)
 	double self_not_hit = 1.0;
 	double opp_not_hit = 1.0;
 
-	// Optimize the simple cases.
-	if (u_.rounds == 1 && opp.u_.rounds == 1 && !u_.slows && !opp.u_.slows &&
-		!u_.drains && !opp.u_.drains && !u_.petrifies && !opp.u_.petrifies &&
-		summary[1].empty() && opp.summary[1].empty()) {
-		if (hit_chances_.size() <= 1 && opp.hit_chances_.size() <= 1) {
-			one_strike_fight(opp, levelup_considered, self_not_hit, opp_not_hit);
-		} else if (hit_chances_.size() * u_.damage < opp.min_hp() &&
-			opp.hit_chances_.size() * opp.u_.damage < min_hp()) {
-			no_death_fight(opp, levelup_considered, self_not_hit, opp_not_hit);
-		} else {
-			complex_fight(opp, levelup_considered, self_not_hit, opp_not_hit);
-		}
-	} else {
-			complex_fight(opp, levelup_considered, self_not_hit, opp_not_hit);
+	// If we've fought before and we have swarm, we might have to split the
+	// calculation by number of attacks.
+	const std::vector<combat_slice> split = split_summary();
+	const std::vector<combat_slice> opp_split = opp.split_summary();
+
+	if ( split.size() == 1  &&  opp_split.size() == 1 )
+		// No special treatment due to swarm is needed. Ignore the split.
+		do_fight(u_, opp.u_, u_.num_blows, opp.u_.num_blows,
+		         summary, opp.summary, self_not_hit, opp_not_hit,
+		         levelup_considered);
+	else
+	{
+		// Storage for the accumulated hit point distributions.
+		std::vector<double> summary_result[2], opp_summary_result[2];
+		// The chance of not being hit becomes an accumulated chance:
+		self_not_hit = 0.0;
+		opp_not_hit = 0.0;
+
+		// Loop through all the potential combat situations.
+		for ( unsigned s = 0; s != split.size(); ++s )
+			for ( unsigned t = 0; t != opp_split.size(); ++t ) {
+				const double sit_prob = split[s].prob * opp_split[t].prob;
+
+				// Create summaries for this potential combat situation.
+				std::vector<double> sit_summary[2], sit_opp_summary[2];
+				init_slice_summary(sit_summary[0], summary[0], split[s].begin_hp,
+				                   split[s].end_hp, split[s].prob);
+				init_slice_summary(sit_summary[1], summary[1], split[s].begin_hp,
+				                   split[s].end_hp, split[s].prob);
+				init_slice_summary(sit_opp_summary[0], opp.summary[0],
+				                   opp_split[t].begin_hp, opp_split[t].end_hp,
+				                   opp_split[t].prob);
+				init_slice_summary(sit_opp_summary[1], opp.summary[1],
+				                   opp_split[t].begin_hp, opp_split[t].end_hp,
+				                   opp_split[t].prob);
+
+				// Scale the "not hit" chance for this situation by the chance that
+				// this situation applies.
+				double sit_self_not_hit = sit_prob;
+				double sit_opp_not_hit = sit_prob;
+
+				do_fight(u_, opp.u_, split[s].strikes, opp_split[t].strikes,
+				         sit_summary, sit_opp_summary, sit_self_not_hit,
+				         sit_opp_not_hit, levelup_considered);
+
+				// Collect the results.
+				self_not_hit += sit_self_not_hit;
+				opp_not_hit += sit_opp_not_hit;
+				merge_slice_summary(summary_result[0], sit_summary[0], sit_prob);
+				merge_slice_summary(summary_result[1], sit_summary[1], sit_prob);
+				merge_slice_summary(opp_summary_result[0], sit_opp_summary[0], sit_prob);
+				merge_slice_summary(opp_summary_result[1], sit_opp_summary[1], sit_prob);
+			}
+
+		// Swap in the results.
+		summary[0].swap(summary_result[0]);
+		summary[1].swap(summary_result[1]);
+		opp.summary[0].swap(opp_summary_result[0]);
+		opp.summary[1].swap(opp_summary_result[1]);
 	}
 
 #if 0
@@ -1535,7 +1775,6 @@ void combatant::reset()
 	untouched = 1.0;
 	poisoned = u_.is_poisoned ? 1.0 : 0.0;
 	slowed = u_.is_slowed ? 1.0 : 0.0;
-	hit_chances_ = std::vector<double>(u_.num_blows, u_.chance_to_hit / 100.0);
 	summary[0] = std::vector<double>();
 	summary[1] = std::vector<double>();
 }
@@ -1564,8 +1803,7 @@ static void run(unsigned specific_battle)
 		                                         false,          // slowed
 		                                          i%7 == 0,      // berserk
 		                                         (i%17)/2 == 0,  // firststrike
-//		                                          i%5 == 0);     // swarm
-		                                          false);        // swarm predictions are bugged
+		                                          i%5 == 0);     // swarm
 		u[i] = new combatant(*stats[i]);
 		list_combatant(*stats[i], i+1);
 	}

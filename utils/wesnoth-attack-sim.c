@@ -347,8 +347,7 @@ static void check(const char *filename)
 		// only have slows when there is also swarm.
 		u[i].slows       = (i % 11) % 3 == 0;
 		u[i].drains      = (i % 13) % 4 == 0;
-//		u[i].swarm       =  i % 5       == 0;
-		u[i].swarm       =  false;
+		u[i].swarm       =  i % 5       == 0;
 		u[i].berserk     =  i % 7       == 0;
 		u[i].firststrike = (i % 17) / 2 == 0;
 		// The number of attacks and hit points lost at the start of combat

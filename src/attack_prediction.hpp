@@ -64,30 +64,14 @@ private:
 	combatant(const combatant &that);
 	combatant& operator=(const combatant &);
 
-	/** Minimum hp we could possibly have. */
-	unsigned min_hp() const;
-
-	/** Combat without chance of death, berserk, slow or drain is simple. */
-	void no_death_fight(combatant &opponent, bool levelup_considered,
-	                    double & self_not_hit, double & opp_not_hit);
-
-	/** Combat with <= 1 strike each is simple, too. */
-	void one_strike_fight(combatant &opponent, bool levelup_considered,
-	                      double & self_not_hit, double & opp_not_hit);
-
-	/** All other cases. */
-	void complex_fight(combatant &opponent, bool levelup_considered,
-	                   double & self_not_hit, double & opp_not_hit);
-
-	/** We must adjust for swarm after every combat. */
-	void adjust_hitchance();
+	struct combat_slice;
+	/** Split the combat by number of attacks per combatant (for swarm). */
+	std::vector<combat_slice> split_summary() const;
 
 	const battle_context_unit_stats &u_;
 
-	/** Usually uniform, but if we have swarm, then can be different. */
-	std::vector<double> hit_chances_;
-
-	/** Summary of matrix used to calculate last battle (unslowed & slowed). */
+	/** Summary of matrix used to calculate last battle (unslowed & slowed).
+	 *  Invariant: summary[1].size() == summary[0].size() or summary[1].empty() */
 	std::vector<double> summary[2];
 };
 
