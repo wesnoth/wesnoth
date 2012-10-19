@@ -83,7 +83,6 @@ private:
 	 * @param command add the new binding to this item
 	 */
 	void show_binding_dialog(const std::string& command);
-	void show_input_binding_dialog(const std::string& command);
 
 	/**
 	 * Buttons to trigger the tools involved in hotkey assignment.
@@ -295,12 +294,6 @@ hotkey_preferences_dialog::hotkey_preferences_dialog(display& disp) :
 
 	/// @todo move to the caller?
 	disp_.video().clear_all_help_strings();
-
-	// Add help tooltips to the buttons
-	/// @todo adjust them corresponding to the selected item
-	//clear_button_.set_help_string(_("Clears the selected actions's bindings"));
-	//add_button_.set_help_string(
-	//		_("Add additional binding to the selected action"));
 
 	// Initialize sorters.
 	general_sorter_.set_alpha_sort(0).set_alpha_sort(1);
