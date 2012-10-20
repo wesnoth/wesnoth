@@ -55,7 +55,7 @@ const SDL_Rect null_rect = {0, 0, 0, 0};
 namespace mp {
 
 create::create(game_display& disp, const config &cfg, chat& c, config& gamelist, bool local_players_only) :
-	ui(disp, _("Create Game"), cfg, c, gamelist),
+	ui(disp, _("Create Game"), cfg, c, gamelist, preferences::resolution().second <= 600),
 
 	local_players_only_(local_players_only),
 	tooltip_manager_(disp.video()),
@@ -795,33 +795,38 @@ void create::layout_children(const SDL_Rect& rect)
 	DBG_MP << "laying out the children" << std::endl;
 
 	ui::layout_children(rect);
-	SDL_Rect ca = client_area();
 
-	const int border_size = 6;
+	std::pair<int,int> resolution = preferences::resolution();
+	bool low_hres = resolution.first <= 840;
+	bool low_vres = resolution.second <= 600;
+	
+	const int border_size = low_vres ? 4 : 6;
 	const int column_border_size = 10;
 
+	SDL_Rect ca = client_area();
 	int xpos = ca.x;
 	int ypos = ca.y;
-
+	
+	const int minimap_width = !low_vres ? 200 : 100;
+	const int maps_menu_width = !low_hres ? 200 : 175;
+	
 	// Dialog title
-	ypos += title().height() + border_size;
+	ypos += low_vres ? 0 : title().height() + border_size;
 
 	// Name Entry
 	name_entry_label_.set_location(xpos, ypos);
 	name_entry_.set_location(xpos + name_entry_label_.width() + border_size, ypos);
-	name_entry_.set_width(ca.w - name_entry_label_.width() - border_size);
+	if (low_vres) {
+		name_entry_.set_width(minimap_width + maps_menu_width + border_size - name_entry_label_.width());
+	} else {
+		name_entry_.set_width(ca.w - name_entry_label_.width() - border_size);
+	}
 	ypos += std::max<int>(name_entry_.height(), name_entry_label_.height()) + border_size;
 
 	// Save ypos here (column top)
 	int ypos_columntop = ypos;
 
 	// First column: minimap & random map options
-	std::pair<int,int> resolution = preferences::resolution();
-
-	const int resolution_for_small_minimap = 880;
-
-	const int minimap_width = resolution.first > resolution_for_small_minimap ? 200 : 130;
-
 	minimap_rect_ = create_rect(xpos, ypos, minimap_width, minimap_width);
 	ypos += minimap_width + border_size;
 
@@ -860,7 +865,7 @@ void create::layout_children(const SDL_Rect& rect)
 	map_label_.set_location(xpos, ypos);
 	ypos += map_label_.height() + border_size;
 
-	maps_menu_.set_max_width(200);
+	maps_menu_.set_max_width(maps_menu_width);
 	maps_menu_.set_max_height(ca.h + ca.y - ypos);
 	maps_menu_.set_location(xpos, ypos);
 	// Menu dimensions are only updated when items are set. So do this now.
@@ -869,32 +874,55 @@ void create::layout_children(const SDL_Rect& rect)
 	maps_menu_.move_selection(mapsel_save);
 
 	// Third column: big bunch of options
-	ypos = ypos_columntop;
+	bool two_sliders_per_row = low_vres;
+	
+	ypos = ypos_columntop - (low_vres ? name_entry_.height() + border_size : 0);
 	xpos += 200 + column_border_size;
 
+	int slider_width = two_sliders_per_row ? (ca.w - xpos)/2 : ca.w -xpos;
 	turns_label_.set_location(xpos, ypos);
 	ypos += turns_label_.height() + border_size;
-	turns_slider_.set_width(ca.w - xpos);
+	turns_slider_.set_width(slider_width);
 	turns_slider_.set_location(xpos, ypos);
-	ypos += turns_slider_.height() + border_size;
-
-	village_gold_label_.set_location(xpos, ypos);
-	ypos += village_gold_label_.height() + border_size;
-	village_gold_slider_.set_width(ca.w - xpos);
-	village_gold_slider_.set_location(xpos, ypos);
-	ypos += village_gold_slider_.height() + border_size;
-
-	village_support_label_.set_location(xpos, ypos);
-	ypos += village_support_label_.height() + border_size;
-	village_support_slider_.set_width(ca.w - xpos);
-	village_support_slider_.set_location(xpos, ypos);
-	ypos += village_support_slider_.height() + border_size;
+	
+	if (two_sliders_per_row) {
+	  ypos -= turns_label_.height() + border_size;
+	  xpos += turns_slider_.width() + border_size;
+	} else {
+	  ypos += turns_slider_.height() + border_size;
+	}
 
 	xp_modifier_label_.set_location(xpos, ypos);
 	ypos += xp_modifier_label_.height() + border_size;
-	xp_modifier_slider_.set_width(ca.w - xpos);
+	xp_modifier_slider_.set_width(slider_width);
 	xp_modifier_slider_.set_location(xpos, ypos);
 	ypos += xp_modifier_slider_.height() + border_size;
+
+	if (two_sliders_per_row) {
+	  xpos -= xp_modifier_slider_.width() + border_size;
+	}
+
+	village_support_label_.set_location(xpos, ypos);
+	ypos += village_support_label_.height() + border_size;
+	village_support_slider_.set_width(slider_width);
+	village_support_slider_.set_location(xpos, ypos);
+	
+	if (two_sliders_per_row) {
+	  ypos -= village_support_label_.height() + border_size;
+	  xpos += village_support_slider_.width() + border_size;
+	} else {
+	  ypos += village_support_slider_.height() + border_size;
+	}
+
+	village_gold_label_.set_location(xpos, ypos);
+	ypos += village_gold_label_.height() + border_size;
+	village_gold_slider_.set_width(slider_width);
+	village_gold_slider_.set_location(xpos, ypos);
+	ypos += village_gold_slider_.height() + border_size;
+
+	if (two_sliders_per_row) {
+	  xpos -= village_gold_slider_.width() + border_size;
+	}
 
 	use_map_settings_.set_location(xpos, ypos);
 	fog_game_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
@@ -967,4 +995,5 @@ void create::synchronize_selections()
 }
 
 } // namespace mp
+
 
