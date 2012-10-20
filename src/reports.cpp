@@ -560,6 +560,7 @@ static int attack_info(const attack_type &at, config &res, const unit *u, const 
 
 	at.set_specials_context(displayed_unit_hex);
 	int base_damage = at.damage();
+	int specials_damage = at.modified_damage(false);
 	int damage_multiplier = 100;
 	int tod_bonus = combat_modifier(displayed_unit_hex, u->alignment(), u->is_fearless());
 	damage_multiplier += tod_bonus;
@@ -570,7 +571,7 @@ static int attack_info(const attack_type &at, config &res, const unit *u, const 
 	bool slowed = u->get_state(unit::STATE_SLOWED);
 	int damage_divisor = slowed ? 20000 : 10000;
 	// Assume no specific resistance (i.e. multiply by 100).
-	int damage = round_damage(base_damage, damage_multiplier * 100, damage_divisor);
+	int damage = round_damage(specials_damage, damage_multiplier * 100, damage_divisor);
 
 	int base_nattacks = at.num_attacks();
 	int nattacks = base_nattacks;
@@ -584,9 +585,9 @@ static int attack_info(const attack_type &at, config &res, const unit *u, const 
 		nattacks = swarm_min_attacks + (swarm_max_attacks - swarm_min_attacks) * hitp / mhitp;
 	}
 	SDL_Color dmg_color = font::weapon_color;
-	if ( damage > base_damage )
+	if ( damage > specials_damage )
 		dmg_color = font::good_dmg_color;
-	else if ( damage < base_damage )
+	else if ( damage < specials_damage )
 		dmg_color = font::bad_dmg_color;
 
 	str << span_color(dmg_color) << damage << naps << span_color(font::weapon_color)
@@ -595,9 +596,12 @@ static int attack_info(const attack_type &at, config &res, const unit *u, const 
 	tooltip << _("Weapon: ") << "<b>" << at.name() << "</b>\n"
 		<< _("Damage: ") << "<b>" << damage << "</b>\n";
 
-	if (tod_bonus || leader_bonus || slowed)
+	if ( tod_bonus || leader_bonus || slowed || specials_damage != base_damage )
 	{
 		tooltip << '\t' << _("Base damage: ") << base_damage << '\n';
+		if ( specials_damage != base_damage ) {
+			tooltip << '\t' << _("With specials: ") << specials_damage << '\n';
+		}
 		if (tod_bonus) {
 			tooltip << '\t' << _("Time of day: ")
 				<< utils::signed_percent(tod_bonus) << '\n';
@@ -654,7 +658,7 @@ static int attack_info(const attack_type &at, config &res, const unit *u, const 
 
 	typedef std::pair<int, std::set<std::string> > resist_units;
 	BOOST_FOREACH(const resist_units &resist, resistances) {
-		int damage = round_damage(base_damage, damage_multiplier * resist.first, damage_divisor);
+		int damage = round_damage(specials_damage, damage_multiplier * resist.first, damage_divisor);
 		tooltip << "<b>" << damage << "</b>  "
 			<< "<i>(" << utils::signed_percent(resist.first-100) << ")</i> : "
 			<< utils::join(resist.second, ", ") << '\n';
