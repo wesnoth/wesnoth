@@ -584,10 +584,9 @@ static int attack_info(const attack_type &at, config &res, const unit *u, const 
 		nattacks = swarm_min_attacks + (swarm_max_attacks - swarm_min_attacks) * hitp / mhitp;
 	}
 	SDL_Color dmg_color = font::weapon_color;
-	double dmg_bonus = double(damage) / base_damage;
-	if (dmg_bonus > 1.0)
+	if ( damage > base_damage )
 		dmg_color = font::good_dmg_color;
-	else if (dmg_bonus < 1.0)
+	else if ( damage < base_damage )
 		dmg_color = font::bad_dmg_color;
 
 	str << span_color(dmg_color) << damage << naps << span_color(font::weapon_color)
@@ -771,10 +770,9 @@ static config unit_weapons(const unit *attacker, const map_location &attacker_po
 			chance_to_hit = context_unit_stats.chance_to_hit;
 			weapon_name = context_unit_stats.weapon->name();
 
-			double dmg_bonus = double(total_damage) / base_damage;
-			if (dmg_bonus > 1.0)
+			if ( total_damage > base_damage )
 				dmg_color = font::good_dmg_color;
-			else if (dmg_bonus < 1.0)
+			else if ( total_damage < base_damage )
 				dmg_color = font::bad_dmg_color;
 		} else {
 			str << span_color(font::weapon_color) << weapon_name << naps << "\n";
