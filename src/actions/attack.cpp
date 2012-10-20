@@ -142,22 +142,16 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u,
 		chance_to_hit = cth_effects.get_composite_value();
 
 		// Compute base damage done with the weapon.
-		int base_damage = weapon->damage();
-		unit_ability_list dmg_specials = weapon->get_specials("damage");
-		unit_abilities::effect dmg_effect(dmg_specials, base_damage, backstab_pos);
-		base_damage = dmg_effect.get_composite_value();
+		int base_damage = weapon->modified_damage(backstab_pos);
 
 		// Get the damage multiplier applied to the base damage of the weapon.
 		int damage_multiplier = 100;
-
 		// Time of day bonus.
 		damage_multiplier += combat_modifier(u_loc, u.alignment(), u.is_fearless());
-
 		// Leadership bonus.
 		int leader_bonus = 0;
 		if (under_leadership(units, u_loc, &leader_bonus).valid())
 			damage_multiplier += leader_bonus;
-
 		// Resistance modifier.
 		damage_multiplier *= opp.damage_from(*weapon, !attacking, opp_loc);
 
@@ -184,26 +178,9 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u,
 		drains = drain_constant || drain_percent;
 
 		// Compute the number of blows and handle swarm.
-		unit_ability_list swarm_specials = weapon->get_specials("swarm");
-
-		num_blows = weapon->num_attacks();
-		unit_ability_list attacks_specials = weapon->get_specials("attacks");
-		unit_abilities::effect attacks_effect(attacks_specials,num_blows,backstab_pos);
-		const int num_blows_with_specials = attacks_effect.get_composite_value();
-		if(num_blows_with_specials >= 0) {
-			num_blows = num_blows_with_specials;
-		}
-		else { ERR_NG << "negative number of strikes after applying weapon specials\n"; }
-		if (!swarm_specials.empty()) {
-			swarm = true;
-			swarm_min = swarm_specials.highest("swarm_attacks_min").first;
-			swarm_max = swarm_specials.highest("swarm_attacks_max", num_blows).first;
-			num_blows = calc_blows(hp);
-		} else {
-			swarm = false;
-			swarm_min = num_blows;
-			swarm_max = num_blows;
-		}
+		weapon->modified_attacks(backstab_pos, swarm_min, swarm_max);
+		swarm = swarm_min != swarm_max;
+		num_blows = calc_blows(hp);
 	}
 }
 

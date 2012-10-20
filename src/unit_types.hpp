@@ -58,6 +58,12 @@ public:
 	                          bool attacking, const attack_type *other_attack) const;
 	void set_specials_context(const map_location& loc, bool attacking = true) const;
 
+	/// Calculates the number of attacks this weapon has, considering specials.
+	void modified_attacks(bool is_backstab, unsigned & min_attacks,
+	                      unsigned & max_attacks) const;
+	/// Returns the damage per attack of this weapon, considering specials.
+	int modified_damage(bool is_backstab) const;
+
 	// In unit_types.cpp:
 
 	bool matches_filter(const config& filter) const;

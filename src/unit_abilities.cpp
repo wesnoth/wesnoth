@@ -633,6 +633,45 @@ void attack_type::set_specials_context(const map_location& loc, bool attacking) 
 }
 
 
+/**
+ * Calculates the number of attacks this weapon has, considering specials.
+ * This returns two numbers because of the swarm special. The actual number of
+ * attacks depends on the unit's health and should be:
+ *   min_attacks + (max_attacks - min_attacks) * (current hp) / (max hp)
+ */
+void attack_type::modified_attacks(bool is_backstab, unsigned & min_attacks,
+                                   unsigned & max_attacks) const
+{
+	// Apply [attacks].
+	unit_abilities::effect attacks_effect(get_specials("attacks"),
+	                                      num_attacks(), is_backstab);
+	int attacks_value = attacks_effect.get_composite_value();
+	if ( attacks_value < 0 ) {
+		attacks_value = num_attacks();
+		ERR_NG << "negative number of strikes after applying weapon specials\n";
+	}
+
+	// Apply [swarm].
+	unit_ability_list swarm_specials = get_specials("swarm");
+	if ( !swarm_specials.empty() ) {
+		min_attacks = std::max<int>(0, swarm_specials.highest("swarm_attacks_min").first);
+		max_attacks = std::max<int>(0, swarm_specials.highest("swarm_attacks_max", attacks_value).first);
+	} else {
+		min_attacks = max_attacks = attacks_value;
+	}
+}
+
+
+/**
+ * Returns the damage per attack of this weapon, considering specials.
+ */
+int attack_type::modified_damage(bool is_backstab) const
+{
+	unit_abilities::effect dmg_effect(get_specials("damage"), damage(), is_backstab);
+	return dmg_effect.get_composite_value();
+}
+
+
 namespace { // Helpers for attack_type::special_active()
 
 	/**
