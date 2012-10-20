@@ -573,17 +573,15 @@ static int attack_info(const attack_type &at, config &res, const unit *u, const 
 	// Assume no specific resistance (i.e. multiply by 100).
 	int damage = round_damage(specials_damage, damage_multiplier * 100, damage_divisor);
 
-	int base_nattacks = at.num_attacks();
-	int nattacks = base_nattacks;
-	unit_ability_list swarm = at.get_specials("swarm");
-	if (!swarm.empty())
-	{
-		int swarm_max_attacks = swarm.highest("swarm_attacks_max", nattacks).first;
-		int swarm_min_attacks = swarm.highest("swarm_attacks_min").first;
-		int hitp = u->hitpoints();
-		int mhitp = u->max_hitpoints();
-		nattacks = swarm_min_attacks + (swarm_max_attacks - swarm_min_attacks) * hitp / mhitp;
-	}
+	// Hit points are used to calculate swarm, so they need to be bounded.
+	unsigned max_hp = u->max_hitpoints();
+	unsigned cur_hp = std::min<unsigned>(std::max(0, u->hitpoints()), max_hp);
+
+	unsigned base_attacks = at.num_attacks();
+	unsigned min_attacks, max_attacks;
+	at.modified_attacks(false, min_attacks, max_attacks);
+	unsigned num_attacks = swarm_blows(min_attacks, max_attacks, cur_hp, max_hp);
+
 	SDL_Color dmg_color = font::weapon_color;
 	if ( damage > specials_damage )
 		dmg_color = font::good_dmg_color;
@@ -591,7 +589,7 @@ static int attack_info(const attack_type &at, config &res, const unit *u, const 
 		dmg_color = font::bad_dmg_color;
 
 	str << span_color(dmg_color) << damage << naps << span_color(font::weapon_color)
-		<< font::weapon_numbers_sep << nattacks << ' ' << at.name()
+		<< font::weapon_numbers_sep << num_attacks << ' ' << at.name()
 		<< "</span>\n";
 	tooltip << _("Weapon: ") << "<b>" << at.name() << "</b>\n"
 		<< _("Damage: ") << "<b>" << damage << "</b>\n";
@@ -615,11 +613,36 @@ static int attack_info(const attack_type &at, config &res, const unit *u, const 
 		}
 	}
 
-	tooltip << _("Attacks: ") << "<b>" << nattacks << "</b>\n";
-	if (nattacks != base_nattacks){
-		tooltip << '\t' << _("Base attacks: ") << base_nattacks << '\n';
-		int hp_ratio = u->hitpoints() * 100 / u->max_hitpoints();
-		tooltip << '\t' << _("Swarm: ") << "* "<< hp_ratio << "%\n";
+	tooltip << _("Attacks: ") << "<b>" << num_attacks << "</b>\n";
+	if ( max_attacks != min_attacks  &&  cur_hp != max_hp ) {
+		if ( max_attacks < min_attacks ) {
+			// "Reverse swarm"
+			tooltip << '\t' << _("Max swarm bonus: ") << (min_attacks-max_attacks) << '\n';
+			tooltip << '\t' << _("Swarm: ") << "* "<< (100 - cur_hp*100/max_hp) << "%\n";
+			tooltip << '\t' << _("Base attacks: ") << '+' << base_attacks << '\n';
+			// The specials line will not necessarily match up with how the
+			// specials are calculated, but for an unusual case, simple brevity
+			// trumps complexities.
+			if ( max_attacks != base_attacks ) {
+				int attack_diff = int(max_attacks) - int(base_attacks);
+				tooltip << '\t' << _("Specials: ") << utils::signed_value(attack_diff) << '\n';
+			}
+		}
+		else {
+			// Regular swarm
+			tooltip << '\t' << _("Base attacks: ") << base_attacks << '\n';
+			if ( max_attacks != base_attacks ) {
+				tooltip << '\t' << _("With specials: ") << max_attacks << '\n';
+			}
+			if ( min_attacks != 0 ) {
+				tooltip << '\t' << _("Subject to swarm: ") << (max_attacks-min_attacks) << '\n';
+			}
+			tooltip << '\t' << _("Swarm: ") << "* "<< (cur_hp*100/max_hp) << "%\n";
+		}
+	}
+	else if ( num_attacks != base_attacks ) {
+		tooltip << '\t' << _("Base attacks: ") << base_attacks << '\n';
+		tooltip << '\t' << _("With specials: ") << num_attacks << '\n';
 	}
 
 	add_text(res, flush(str), flush(tooltip));

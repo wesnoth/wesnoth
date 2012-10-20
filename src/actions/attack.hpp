@@ -34,6 +34,16 @@ class  unit_map;
 #include <vector>
 
 
+/// Calculates the number of blows resulting from swarm.
+inline unsigned swarm_blows(unsigned min_blows, unsigned max_blows, unsigned hp,
+                            unsigned max_hp)
+{
+	return hp >= max_hp          ? max_blows :
+	       max_blows < min_blows ? min_blows - (min_blows-max_blows) * hp / max_hp :
+	                               min_blows + (max_blows-min_blows) * hp / max_hp;
+}
+
+
 /** Structure describing the statistics of a unit involved in the battle. */
 struct battle_context_unit_stats
 {
@@ -81,10 +91,7 @@ struct battle_context_unit_stats
 	/// Calculates the number of blows we would have if we had @a new_hp
 	// instead of the recorded hp.
 	unsigned int calc_blows(unsigned new_hp) const
-	{ return new_hp >= max_hp      ? swarm_max :
-	         swarm_max < swarm_min ? swarm_min - (swarm_min-swarm_max) * new_hp / max_hp :
-	                                 swarm_min + (swarm_max-swarm_min) * new_hp / max_hp;
-	}
+	{ return swarm_blows(swarm_min, swarm_max, new_hp, max_hp); }
 
 #if defined(BENCHMARK) || defined(CHECK)
 	/// Special constructor for the stand-alone version of attack_prediction.cpp.
