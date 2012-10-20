@@ -1139,6 +1139,11 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u, const map_lo
 			swarm = true;
 			swarm_min = swarm_specials.highest("swarm_attacks_min").first;
 			swarm_max = swarm_specials.highest("swarm_attacks_max", weapon->num_attacks()).first;
+			if ( swarm_min > swarm_max ) {
+				// This causes problems in the attack prediction.
+				ERR_NG << "Minimum swarm attacks cannot exceed maximum swarm attacks in this version.\n";
+				swarm_min = swarm_max;
+			}
 			num_blows = swarm_min + (swarm_max - swarm_min) * hp / max_hp;
 		} else {
 			swarm = false;
