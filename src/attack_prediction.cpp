@@ -1086,19 +1086,20 @@ combatant::combatant(const combatant &that, const battle_context_unit_stats &u)
 
 namespace {
 	/**
-	 * Returns the number of hit points greater than cur_hp, and at most max_hp+1,
-	 * at which the unit would get another attack because of swarm (assuming that
-	 * @a swarm_amt is swarm_max - swarm_min).
+	 * Returns the number of hit points greater than cur_hp, and at most
+	 * stats.max_hp+1, at which the unit would get another attack because
+	 * of swarm.
 	 * Helper function for split_summary().
 	 */
-	unsigned hp_for_next_attack(unsigned cur_hp, unsigned max_hp, unsigned swarm_amt)
+	unsigned hp_for_next_attack(unsigned cur_hp,
+	                            const battle_context_unit_stats & stats)
 	{
-		unsigned old_strikes = swarm_amt * cur_hp / max_hp;
+		unsigned old_strikes = stats.calc_blows(cur_hp);
 
 		// A formula would have to deal with rounding issues; instead
 		// loop until we find more strikes.
-		while ( ++cur_hp <= max_hp )
-			if ( swarm_amt * cur_hp / max_hp != old_strikes )
+		while ( ++cur_hp <= stats.max_hp )
+			if ( stats.calc_blows(cur_hp) != old_strikes )
 				break;
 
 		return cur_hp;
@@ -1126,7 +1127,7 @@ std::vector<combatant::combat_slice> combatant::split_summary() const
 	do {
 		// Advance to the next slice.
 		const unsigned cur_begin = cur_end;
-		cur_end = hp_for_next_attack(cur_begin, u_.max_hp, u_.swarm_max-u_.swarm_min);
+		cur_end = hp_for_next_attack(cur_begin, u_);
 
 		// Add this slice.
 		combat_slice slice(summary, cur_begin, cur_end, u_.calc_blows(cur_begin));

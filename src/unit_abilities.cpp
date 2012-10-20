@@ -638,6 +638,7 @@ void attack_type::set_specials_context(const map_location& loc, bool attacking) 
  * This returns two numbers because of the swarm special. The actual number of
  * attacks depends on the unit's health and should be:
  *   min_attacks + (max_attacks - min_attacks) * (current hp) / (max hp)
+ * c.f. battle_context_unit_stats::calc_blows()
  */
 void attack_type::modified_attacks(bool is_backstab, unsigned & min_attacks,
                                    unsigned & max_attacks) const
