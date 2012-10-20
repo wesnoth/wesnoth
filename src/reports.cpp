@@ -554,7 +554,7 @@ REPORT_GENERATOR(selected_unit_moves)
 	return unit_moves(u);
 }
 
-static int attack_info(const attack_type &at, config &res, const unit *u, const map_location &displayed_unit_hex)
+static int attack_info(const attack_type &at, config &res, const unit &u, const map_location &displayed_unit_hex)
 {
 	std::ostringstream str, tooltip;
 
@@ -562,20 +562,20 @@ static int attack_info(const attack_type &at, config &res, const unit *u, const 
 	int base_damage = at.damage();
 	int specials_damage = at.modified_damage(false);
 	int damage_multiplier = 100;
-	int tod_bonus = combat_modifier(displayed_unit_hex, u->alignment(), u->is_fearless());
+	int tod_bonus = combat_modifier(displayed_unit_hex, u.alignment(), u.is_fearless());
 	damage_multiplier += tod_bonus;
 	int leader_bonus = 0;
 	if (under_leadership(*resources::units, displayed_unit_hex, &leader_bonus).valid())
 		damage_multiplier += leader_bonus;
 
-	bool slowed = u->get_state(unit::STATE_SLOWED);
+	bool slowed = u.get_state(unit::STATE_SLOWED);
 	int damage_divisor = slowed ? 20000 : 10000;
 	// Assume no specific resistance (i.e. multiply by 100).
 	int damage = round_damage(specials_damage, damage_multiplier * 100, damage_divisor);
 
 	// Hit points are used to calculate swarm, so they need to be bounded.
-	unsigned max_hp = u->max_hitpoints();
-	unsigned cur_hp = std::min<unsigned>(std::max(0, u->hitpoints()), max_hp);
+	unsigned max_hp = u.max_hitpoints();
+	unsigned cur_hp = std::min<unsigned>(std::max(0, u.hitpoints()), max_hp);
 
 	unsigned base_attacks = at.num_attacks();
 	unsigned min_attacks, max_attacks;
@@ -662,7 +662,7 @@ static int attack_info(const attack_type &at, config &res, const unit *u, const 
 	// We want weak resistances (= good damage) first.
 	std::map<int, std::set<std::string>, std::greater<int> > resistances;
 	std::set<std::string> seen_types;
-	const team &unit_team = (*resources::teams)[u->side() - 1];
+	const team &unit_team = (*resources::teams)[u.side() - 1];
 	const team &viewing_team = (*resources::teams)[resources::screen->viewing_team()];
 	BOOST_FOREACH(const unit &enemy, *resources::units)
 	{
@@ -791,7 +791,7 @@ static config unit_weapons(const unit *attacker, const map_location &attacker_po
 
 		SDL_Color dmg_color = font::weapon_color;
 		if (context_unit_stats.weapon) {
-			base_damage = attack_info(*context_unit_stats.weapon, res, u, unit_loc);
+			base_damage = attack_info(*context_unit_stats.weapon, res, *u, unit_loc);
 			total_damage = context_unit_stats.damage;
 			num_blows = context_unit_stats.num_blows;
 			chance_to_hit = context_unit_stats.chance_to_hit;
@@ -888,7 +888,7 @@ static config unit_weapons(const unit *u)
 
 	BOOST_FOREACH(const attack_type &at, u->attacks())
 	{
-		attack_info(at, res, u, displayed_unit_hex);
+		attack_info(at, res, *u, displayed_unit_hex);
 	}
 	return res;
 }
