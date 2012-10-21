@@ -801,7 +801,7 @@ void create::layout_children(const SDL_Rect& rect)
 	bool low_vres = resolution.second <= 600;
 	
 	const int border_size = low_vres ? 4 : 6;
-	const int column_border_size = 10;
+	const int column_border_size = low_hres ? 8 : 10;
 
 	SDL_Rect ca = client_area();
 	int xpos = ca.x;
@@ -877,9 +877,18 @@ void create::layout_children(const SDL_Rect& rect)
 	bool two_sliders_per_row = low_vres;
 	
 	ypos = ypos_columntop - (low_vres ? name_entry_.height() + border_size : 0);
-	xpos += 200 + column_border_size;
+	xpos += maps_menu_width + column_border_size;
 
 	int slider_width = two_sliders_per_row ? (ca.w - xpos)/2 : ca.w -xpos;
+
+	use_map_settings_.set_location(xpos, ypos);
+	fog_game_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
+	ypos += use_map_settings_.height() + border_size;
+
+	random_start_time_.set_location(xpos, ypos);
+	shroud_game_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
+	ypos += random_start_time_.height() + border_size;
+
 	turns_label_.set_location(xpos, ypos);
 	ypos += turns_label_.height() + border_size;
 	turns_slider_.set_width(slider_width);
@@ -918,23 +927,11 @@ void create::layout_children(const SDL_Rect& rect)
 	ypos += village_gold_label_.height() + border_size;
 	village_gold_slider_.set_width(slider_width);
 	village_gold_slider_.set_location(xpos, ypos);
-	ypos += village_gold_slider_.height() + border_size;
+	ypos += village_gold_slider_.height() + border_size*2;
 
 	if (two_sliders_per_row) {
 	  xpos -= village_gold_slider_.width() + border_size;
 	}
-
-	use_map_settings_.set_location(xpos, ypos);
-	fog_game_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
-	ypos += use_map_settings_.height() + border_size;
-
-	observers_game_.set_location(xpos, ypos);
-	shroud_game_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
-	ypos += observers_game_.height() + border_size;
-
-	shuffle_sides_.set_location(xpos, ypos);
-	random_start_time_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
-	ypos += shuffle_sides_.height() + border_size;
 
 	countdown_game_.set_location(xpos, ypos);
 	ypos += countdown_game_.height() + border_size;
@@ -955,7 +952,12 @@ void create::layout_children(const SDL_Rect& rect)
 	countdown_action_bonus_slider_.set_width(((ca.w - xpos)/2)-5);
 	countdown_reservoir_time_slider_.set_location(xpos, ypos);
 	countdown_action_bonus_slider_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
-	ypos += countdown_reservoir_time_slider_.height() + border_size;
+	ypos += countdown_reservoir_time_slider_.height() + border_size*2;
+
+	shuffle_sides_.set_location(xpos, ypos);
+	observers_game_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
+	ypos += shuffle_sides_.height() + border_size;
+
 
 	// OK / Cancel buttons
 	gui::button* left_button = &launch_game_;
