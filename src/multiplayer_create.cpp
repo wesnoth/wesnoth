@@ -798,7 +798,7 @@ void create::layout_children(const SDL_Rect& rect)
 
 	std::pair<int,int> resolution = preferences::resolution();
 	bool low_hres = resolution.first <= 840;
-	bool low_vres = resolution.second <= 600;
+	bool low_vres = resolution.second < 768;
 	
 	const int border_size = low_vres ? 4 : 6;
 	const int column_border_size = low_hres ? 8 : 10;
@@ -927,7 +927,7 @@ void create::layout_children(const SDL_Rect& rect)
 	ypos += village_gold_label_.height() + border_size;
 	village_gold_slider_.set_width(slider_width);
 	village_gold_slider_.set_location(xpos, ypos);
-	ypos += village_gold_slider_.height() + border_size*2;
+	ypos += village_gold_slider_.height() + 3 * border_size;
 
 	if (two_sliders_per_row) {
 	  xpos -= village_gold_slider_.width() + border_size;
@@ -952,7 +952,7 @@ void create::layout_children(const SDL_Rect& rect)
 	countdown_action_bonus_slider_.set_width(((ca.w - xpos)/2)-5);
 	countdown_reservoir_time_slider_.set_location(xpos, ypos);
 	countdown_action_bonus_slider_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
-	ypos += countdown_reservoir_time_slider_.height() + border_size*2;
+	ypos += countdown_reservoir_time_slider_.height() + 3 * border_size;
 
 	shuffle_sides_.set_location(xpos, ypos);
 	observers_game_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
