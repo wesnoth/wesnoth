@@ -59,6 +59,10 @@ Version 1.11.0+svn:
      wherever weapons can be filtered.
    * Image path functions again evaluated left-to-right. Fixes bug #20196.
    * Support for [swarm] causing attacks to increase as health decreases.
+   * Fixed glitches caused by larger-than-hex standing units with certain frame
+     image effects when image= is not explicitly specified (bug #20099)
+   * Fixed standing unit animation glitches caused by [move_unit_fake] on
+     adjacent locations (bug #20098)
  * Miscellaneous and bug fixes:
    * Fix invalid memory access crash resulting from deleting all saved games
      in the Load Game dialog
