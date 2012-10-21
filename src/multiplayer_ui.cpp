@@ -271,11 +271,12 @@ SDL_Color chat::color_message(const msg& message) {
 	return c;
 }
 
-ui::ui(game_display& disp, const std::string& title, const config& cfg, chat& c, config& gamelist) :
+ui::ui(game_display& disp, const std::string& title, const config& cfg, chat& c, config& gamelist, bool title_hidden) :
 	gui::widget(disp.video()),
 	disp_(disp),
 	initialized_(false),
 	gamelist_initialized_(false),
+	title_hidden_(title_hidden),
 
 	hotkey_handler_(&disp),
 	disp_manager_(&disp),
@@ -641,7 +642,9 @@ void ui::hide_children(bool hide)
 
 void ui::layout_children(const SDL_Rect& /*rect*/)
 {
-	title_.set_location(xscale(12) + 8, yscale(38) + 8);
+	if (!title_hidden_) {
+		title_.set_location(xscale(12) + 8, yscale(38) + 8);
+	}
 	umenu_style.set_width(xscale(159));
 	users_menu_.set_width(xscale(159));
 	users_menu_.set_max_width(xscale(159));
