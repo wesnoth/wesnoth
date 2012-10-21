@@ -62,7 +62,7 @@ static void verify(const unit_map& units, const config& cfg) {
 	std::stringstream errbuf;
 	LOG_REPLAY << "verifying unit structure...\n";
 
-	const size_t nunits = lexical_cast_default<size_t>(cfg["num_units"]);
+	const size_t nunits = static_cast<size_t>(cfg["num_units"].to_double());
 	if(nunits != units.size()) {
 		errbuf << "SYNC VERIFICATION FAILED: number of units from data source differ: "
 			   << nunits << " according to data source. " << units.size() << " locally\n";
@@ -142,7 +142,7 @@ chat_msg::chat_msg(const config &cfg)
 	} else {
 		nick_ = str_cast("*")+cfg["id"].str()+"*";
 	}
-	int side = lexical_cast_default<int>(cfg["side"],0);
+	int side = cfg["side"].to_int(0);
 	LOG_REPLAY << "side in message: " << side << std::endl;
 	if (side==0) {
 		color_ = "white";//observers

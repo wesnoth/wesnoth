@@ -1020,8 +1020,8 @@ void preferences_dialog::process_event()
 					ss << pref["name"] << ": " << value;
 					advanced_slider_label_.set_text(ss.str());
 					advanced_slider_label_.set_help_string(description);
-					advanced_slider_.set_min(lexical_cast<int>(pref["min"]));
-					advanced_slider_.set_max(lexical_cast<int>(pref["max"]));
+					advanced_slider_.set_min(pref["min"].to_int());
+					advanced_slider_.set_max(pref["max"].to_int());
 					advanced_slider_.set_increment(pref["step"].to_int(1));
 					advanced_slider_.set_value(lexical_cast<int>(value));
 					advanced_slider_.set_help_string(description);

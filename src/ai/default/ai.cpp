@@ -143,7 +143,7 @@ void ai_default_recruitment_stage::on_create() {
 	stage::on_create();
 	BOOST_FOREACH(const config &c, cfg_.child_range("limit")) {
 		if (c.has_attribute("type") && c.has_attribute("max") ) {
-			maximum_counts_.insert(std::make_pair(c["type"],lexical_cast_default<int>(c["max"],0)));
+			maximum_counts_.insert(std::make_pair(c["type"],c["max"].to_int(0)));
 		}
 	}
 }

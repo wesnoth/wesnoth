@@ -112,10 +112,10 @@ void level_to_gamestate(config& level, game_state& state)
 	carryover_info sides = carryover_info(state.carryover_sides_start);
 
 	//set random
-	const std::string seed = level["random_seed"];
+	const config::attribute_value &seed = level["random_seed"];
 	if(!seed.empty()) {
-		const unsigned calls = lexical_cast_default<unsigned>(level["random_calls"]);
-		sides.rng().seed_random(level["random_seed"].to_int(42), calls);
+		const unsigned calls = static_cast<unsigned>(level["random_calls"].to_double());
+		sides.rng().seed_random(seed.to_int(42), calls);
 	} else {
 		ERR_NG << "No random seed found, random "
 			"events will probably be out of sync.\n";

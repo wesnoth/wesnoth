@@ -193,7 +193,7 @@ const pathfind::teleport_map pathfind::get_teleport_locations(const unit &u,
 	return teleport_map(groups, u, viewing_team, see_all, ignore_units);
 }
 
-pathfind::manager::manager(const config &cfg) : tunnels_(), id_(lexical_cast_default<int>(cfg["next_teleport_group_id"], 0)) {
+pathfind::manager::manager(const config &cfg) : tunnels_(), id_(cfg["next_teleport_group_id"].to_int(0)) {
 	const int tunnel_count = cfg.child_count("tunnel");
 	for(int i = 0; i < tunnel_count; ++i) {
 		const config& t = cfg.child("tunnel", i);

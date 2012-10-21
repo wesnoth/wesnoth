@@ -272,7 +272,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 	}
 
 	//allow filtering on owner (for villages)
-	const std::string owner_side = cfg_["owner_side"].str();
+	const config::attribute_value &owner_side = cfg_["owner_side"];
 	const vconfig& filter_owner = cfg_.child("filter_owner");
 	if(!filter_owner.null()) {
 		if(!owner_side.empty()) {
@@ -295,7 +295,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 			return false;
 	}
 	else if(!owner_side.empty()) {
-		const int side_index = lexical_cast_default<int>(owner_side,0) - 1;
+		const int side_index = owner_side.to_int(0) - 1;
 		if(village_owner(loc) != side_index) {
 			return false;
 		}
@@ -313,7 +313,7 @@ bool terrain_filter::match(const map_location& loc) const
 	std::vector<map_location> loc_vec(1, loc);
 
 	//handle radius
-	size_t radius = lexical_cast_default<size_t>(cfg_["radius"], 0);
+	size_t radius = static_cast<size_t>(cfg_["radius"].to_double(0));
 	if(radius > max_loop_) {
 		ERR_NG << "terrain_filter: radius greater than " << max_loop_
 		<< ", restricting\n";
@@ -510,7 +510,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 	}
 
 	//handle radius
-	size_t radius = lexical_cast_default<size_t>(cfg_["radius"], 0);
+	size_t radius = static_cast<size_t>(cfg_["radius"].to_double(0));
 	if(radius > max_loop_) {
 		ERR_NG << "terrain_filter: radius greater than " << max_loop_
 		<< ", restricting\n";

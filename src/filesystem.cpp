@@ -894,9 +894,9 @@ file_tree_checksum::file_tree_checksum()
 {}
 
 file_tree_checksum::file_tree_checksum(const config& cfg) :
-	nfiles	(lexical_cast_default<size_t>(cfg["nfiles"])),
-	sum_size(lexical_cast_default<size_t>(cfg["size"])),
-	modified(lexical_cast_default<time_t>(cfg["modified"]))
+	nfiles	(static_cast<size_t>(cfg["nfiles"].to_double())),
+	sum_size(static_cast<size_t>(cfg["size"].to_double())),
+	modified(static_cast<time_t>(cfg["modified"].to_double()))
 {
 }
 
