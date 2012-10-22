@@ -44,36 +44,20 @@ static lg::log_domain log_engine("engine");
  *	cumulative=no
  *	affect_allies=yes
  *	name= _ "heals"
-// *	name_inactive=null
+ *	female_name= _ "female^heals"
+ *	name_inactive=null
+ *	female_name_inactive=null
  *	description=  _ "Heals:
 Allows the unit to heal adjacent friendly units at the beginning of each turn.
 
 A unit cared for by a healer may heal up to 4 HP per turn.
 A poisoned unit cannot be cured of its poison by a healer, and must seek the care of a village or a unit that can cure."
-// *	description_inactive=null
- *	icon="misc/..."
-// *	icon_inactive=null
- *	[adjacent_description]
- *		name= _ "heals"
-// *		name_inactive=null
- *		description=  _ "Heals:
-Allows the unit to heal adjacent friendly units at the beginning of each turn.
-
-A unit cared for by a healer may heal up to 4 HP per turn.
-A poisoned unit cannot be cured of its poison by a healer, and must seek the care of a village or a unit that can cure."
-// *		description_inactive=null
- *		icon="misc/..."
-// *		icon_inactive=null
- *	[/adjacent_description]
+ *	description_inactive=null
  *
  *	affect_self=yes
  *	[filter] // SUF
  *		...
  *	[/filter]
- *	[filter_location]
- *		terrain=f
- *		tod=lawful
- *	[/filter_location]
  *	[filter_self] // SUF
  *		...
  *	[/filter_self]
@@ -410,11 +394,11 @@ std::pair<int,map_location> unit_ability_list::lowest(const std::string& key, in
  *	description= _ ""
  *	description_inactive= _ ""
  *	cumulative=no
- *	apply_to=self  #self,opponent,defender,attacker
- *	#active_on=defend  .. offense
+ *	apply_to=self  #self,opponent,defender,attacker,both
+ *	#active_on=defense # or offense; omitting this means "both"
  *
- *	attacks_max=4
- *	attacks_min=2
+ *	swarm_attacks_max=4
+ *	swarm_attacks_min=2
  *
  *	[filter_self] // SUF
  *		...
