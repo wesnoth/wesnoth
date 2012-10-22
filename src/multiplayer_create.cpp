@@ -504,7 +504,7 @@ void create::process_event()
 	// Unit levels supported per village
 	const int village_support = village_support_slider_.value();
 	buf.str("");
-	buf << _("Village Support: ") << village_support;
+	buf << _("Village support: ") << village_support;
 	village_support_label_.set_text(buf.str());
 
 	// Experience modifier
