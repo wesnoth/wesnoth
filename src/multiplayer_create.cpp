@@ -797,8 +797,8 @@ void create::layout_children(const SDL_Rect& rect)
 	ui::layout_children(rect);
 
 	std::pair<int,int> resolution = preferences::resolution();
-	bool low_hres = resolution.first <= 840;
-	bool low_vres = resolution.second < 768;
+	const bool low_hres = resolution.first <= 840;
+	const bool low_vres = resolution.second < 768;
 	
 	const int border_size = low_vres ? 4 : 6;
 	const int column_border_size = low_hres ? 8 : 10;
@@ -874,7 +874,7 @@ void create::layout_children(const SDL_Rect& rect)
 	maps_menu_.move_selection(mapsel_save);
 
 	// Third column: big bunch of options
-	bool two_sliders_per_row = low_vres;
+	const bool two_sliders_per_row = low_vres;
 	
 	ypos = ypos_columntop - (low_vres ? name_entry_.height() + border_size : 0);
 	xpos += maps_menu_width + column_border_size;
