@@ -1117,18 +1117,17 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 		for (std::vector<attack_type>::const_iterator it = attacks.begin();
 					it != attacks.end(); ++it) {
 
-			std::vector<t_string> specials = (*it).special_tooltips(true);
-			for (std::vector<t_string>::iterator sp_it = specials.begin();
-					sp_it != specials.end() && sp_it+1 != specials.end(); sp_it+=2)
+			std::vector<std::pair<t_string, t_string> > specials = it->special_tooltips();
+			for ( size_t i = 0; i != specials.size(); ++i )
 			{
-				if (special_description.find(*sp_it) == special_description.end()) {
-					std::string description = *(sp_it+1);
+				if ( special_description.find(specials[i].first) == special_description.end() ) {
+					std::string description = specials[i].second;
 					const size_t colon_pos = description.find(':');
 					if (colon_pos != std::string::npos) {
 						// Remove the first colon and the following newline.
 						description.erase(0, colon_pos + 2);
 					}
-					special_description[*sp_it] = description;
+					special_description[specials[i].first] = description;
 				}
 
 				if (!type.hide_help()) {
@@ -1138,7 +1137,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 					//we put the translated name at the beginning of the hyperlink,
 					//so the automatic alphabetic sorting of std::set can use it
 					std::string link =  "<ref>text='" + escape(type_name) + "' dst='" + escape(ref_id) + "'</ref>";
-					special_units[*sp_it].insert(link);
+					special_units[specials[i].first].insert(link);
 				}
 			}
 		}
@@ -1536,26 +1535,22 @@ public:
 				// Show this attack's special, if it has any. Cross
 				// reference it to the section describing the
 				// special.
-				std::vector<t_string> specials = attack_it->special_tooltips(true);
+				std::vector<std::pair<t_string, t_string> > specials = attack_it->special_tooltips();
 				if(!specials.empty())
 				{
 					std::string lang_special = "";
-					std::vector<t_string>::iterator sp_it;
-					for (sp_it = specials.begin(); sp_it != specials.end(); ++sp_it) {
+					const size_t specials_size = specials.size();
+					for ( size_t i = 0; i != specials_size; ++i) {
 						const std::string ref_id = std::string("weaponspecial_")
-							+ sp_it->base_str();
-						lang_special = (*sp_it);
+							+ specials[i].first.base_str();
+						lang_special = (specials[i].first);
 						attack_ss << "<ref>dst='" << escape(ref_id)
 								  << "' text='" << escape(lang_special) << "'</ref>";
-						if((sp_it + 1) != specials.end() && (sp_it + 2) != specials.end())
-						{
+						if ( i+1 != specials_size )
 							attack_ss << ", "; //comma placed before next special
-						}
-						++sp_it; //skip description
 					}
 					row.push_back(std::make_pair(attack_ss.str(),
 						font::line_width(lang_special, normal_font_size)));
-
 				}
 				table.push_back(row);
 			}

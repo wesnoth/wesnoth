@@ -928,10 +928,10 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 
 		// if missing, add dummy special, to be sure to have
 		// big enough minimum width (weapon's name can be very short)
-		std::string att_weapon_special = attw.weapon_specials();
+		std::string att_weapon_special = attw.weapon_specials(true, att.backstab_pos);
 		if (att_weapon_special.empty())
 			att_weapon_special += "       ";
-		std::string def_weapon_special = defw.weapon_specials();
+		std::string def_weapon_special = defw.weapon_specials(true);
 		if (def_weapon_special.empty())
 			def_weapon_special += "       ";
 

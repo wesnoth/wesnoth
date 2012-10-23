@@ -78,7 +78,6 @@ void location_callable::serialize_to_string(std::string& str) const
 
 variant attack_type_callable::get_value(const std::string& key) const
 {
-
 	if(key == "id") {
 		return variant(att_.id());
 	} else if(key == "type") {
@@ -90,14 +89,12 @@ variant attack_type_callable::get_value(const std::string& key) const
 	} else if(key == "number_of_attacks") {
 		return variant(att_.num_attacks());
 	} else if(key == "special") {
-                std::vector<t_string> specials = att_.special_tooltips(true);
+		std::vector<std::pair<t_string, t_string> > specials = att_.special_tooltips();
+		std::vector<variant> res;
 
-                std::vector<variant> res;
-
-                for( std::vector<t_string>::iterator i = specials.begin(); i != specials.end() && i+1 != specials.end(); i=i+2) {
-                    res.push_back( variant( i->base_str() ) );
-                }
-
+		for( size_t i = 0; i != specials.size(); ++i ) {
+			res.push_back( variant(specials[i].first.base_str()) );
+		}
 		return variant(&res);
 	}
 

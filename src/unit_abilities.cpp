@@ -186,16 +186,27 @@ std::vector<std::string> unit::get_ability_list() const
 	return res;
 }
 
-std::vector<boost::tuple<t_string,t_string,t_string> > unit::ability_tooltips(bool force_active) const
+/**
+ * Returns names and descriptions of the unit's abilities.
+ * The returned triples consist of (in order) base name, male or female name as
+ * appropriate for the unit, and description.
+ * @param active_list  If NULL, then all abilities are forced active. If not
+ *                     null, this vector will be the same length as the returned
+ *                     one and will indicate whether or not the corresponding
+ *                     ability is active.
+ */
+std::vector<boost::tuple<t_string,t_string,t_string> > unit::ability_tooltips(std::vector<bool> *active_list) const
 {
 	std::vector<boost::tuple<t_string,t_string,t_string> > res;
+	if ( active_list )
+		active_list->clear();
 
 	const config &abilities = cfg_.child("abilities");
 	if (!abilities) return res;
 
 	BOOST_FOREACH(const config::any_child &ab, abilities.all_children_range())
 	{
-		if (force_active || ability_active(ab.key, ab.cfg, loc_))
+		if ( !active_list || ability_active(ab.key, ab.cfg, loc_) )
 		{
 			t_string const &name =
 				gender_ == unit_race::MALE || ab.cfg["female_name"].empty() ?
@@ -206,6 +217,8 @@ std::vector<boost::tuple<t_string,t_string,t_string> > unit::ability_tooltips(bo
 						ab.cfg["name"].t_str(),
 						name,
 						ab.cfg["description"].t_str()));
+				if ( active_list )
+					active_list->push_back(true);
 			}
 		}
 		else
@@ -219,6 +232,7 @@ std::vector<boost::tuple<t_string,t_string,t_string> > unit::ability_tooltips(bo
 						ab.cfg["name_inactive"].t_str(),
 						name,
 						ab.cfg["description_inactive"].t_str()));
+				active_list->push_back(false);
 			}
 		}
 	}
@@ -463,7 +477,7 @@ bool attack_type::get_special_bool(const std::string& special, bool simple_check
 		// we need to check each special in the list to see if any are active.
 		for (std::vector<const config*>::iterator i = list.begin(),
 		     i_end = list.end(); i != i_end; ++i) {
-			if (special_active(**i, true))
+			if ( special_active(**i, AFFECT_SELF) )
 				return true;
 		}
 	}
@@ -478,7 +492,7 @@ bool attack_type::get_special_bool(const std::string& special, bool simple_check
 		get_special_children(list, specials, special);
 		for (std::vector<const config*>::iterator i = list.begin(),
 		     i_end = list.end(); i != i_end; ++i) {
-			if (other_attack_->special_active(**i, false))
+			if ( other_attack_->special_active(**i, AFFECT_OTHER) )
 				return true;
 		}
 	}
@@ -496,7 +510,7 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
 	if (const config &specials = cfg_.child("specials"))
 	{
 		BOOST_FOREACH(const config &i, specials.child_range(special)) {
-			if (special_active(i, true))
+			if ( special_active(i, AFFECT_SELF) )
 				res.push_back(unit_ability(&i, self_loc_));
 		}
 	}
@@ -504,7 +518,7 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
 	if (const config &specials = other_attack_->cfg_.child("specials"))
 	{
 		BOOST_FOREACH(const config &i, specials.child_range(special)) {
-			if (other_attack_->special_active(i, false))
+			if ( other_attack_->special_active(i, AFFECT_OTHER) )
 				res.push_back(unit_ability(&i, other_loc_));
 		}
 	}
@@ -513,36 +527,38 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
 
 /**
  * Returns a vector of names and decriptions for the specials of *this.
- * The vector has the format: name, description, name, description, etc.
- * (So the length is always even.)
+ * Each std::pair in the vector has first = name and second = description.
  *
  * This uses either the active or inactive name/description for each special,
- * based on the current context (see set_specials_context). If the appropriate
- * name is empty, the special is skipped.
- *
- * Setting @a force_active to true causes all specials to be assumed active
- * (the context is ignored in this case).
+ * based on the current context (see set_specials_context), provided
+ * @a active_list is not NULL. Otherwise specials are assumed active.
+ * If the appropriate name is empty, the special is skipped.
  */
-std::vector<t_string> attack_type::special_tooltips(bool force_active) const
+std::vector<std::pair<t_string, t_string> > attack_type::special_tooltips(
+	std::vector<bool> *active_list) const
 {
 	//log_scope("special_tooltips");
-	std::vector<t_string> res;
+	std::vector<std::pair<t_string, t_string> > res;
+	if ( active_list )
+		active_list->clear();
+
 	const config &specials = cfg_.child("specials");
 	if (!specials) return res;
 
 	BOOST_FOREACH(const config::any_child &sp, specials.all_children_range())
 	{
-		if ( force_active || special_active(sp.cfg, true) ) {
+		if ( !active_list || special_active(sp.cfg, AFFECT_EITHER) ) {
 			const t_string &name = sp.cfg["name"];
 			if (!name.empty()) {
-				res.push_back(name);
-				res.push_back(sp.cfg["description"]);
+				res.push_back(std::make_pair(name, sp.cfg["description"].t_str()));
+				if ( active_list )
+					active_list->push_back(true);
 			}
 		} else {
 			t_string const &name = sp.cfg["name_inactive"];
 			if (!name.empty()) {
-				res.push_back(name);
-				res.push_back(sp.cfg["description_inactive"]);
+				res.push_back(std::make_pair(name, sp.cfg["description_inactive"].t_str()));
+				active_list->push_back(false);
 			}
 		}
 	}
@@ -550,17 +566,14 @@ std::vector<t_string> attack_type::special_tooltips(bool force_active) const
 }
 
 /**
- * Returns a comma-separated string of names for the specials of *this.
+ * Returns a comma-separated string of active names for the specials of *this.
+ * Empty names are skipped.
  *
- * This uses either the active or inactive name for each special, based on
- * the current context (see set_specials_context). If the appropriate name
- * is empty, the special is skipped.
- *
- * Setting @a force_active to true causes all specials to be assumed active
- * (the context is ignored in this case).
- *
+ * This excludes inactive specials if only_active is true. Whether or not a
+ * special is active depends on the current context (see set_specials_context)
+ * and the @a is_backstab parameter.
  */
-std::string attack_type::weapon_specials(bool force_active) const
+std::string attack_type::weapon_specials(bool only_active, bool is_backstab) const
 {
 	//log_scope("weapon_specials");
 	std::string res;
@@ -569,10 +582,10 @@ std::string attack_type::weapon_specials(bool force_active) const
 
 	BOOST_FOREACH(const config::any_child &sp, specials.all_children_range())
 	{
-		char const *s = force_active || special_active(sp.cfg, true) ?
-			"name" : "name_inactive";
-		std::string const &name = sp.cfg[s];
+		if ( only_active  &&  !special_active(sp.cfg, AFFECT_EITHER, is_backstab) )
+			continue;
 
+		std::string const &name = sp.cfg["name"].str();
 		if (!name.empty()) {
 			if (!res.empty()) res += ',';
 			res += name;
@@ -743,19 +756,28 @@ namespace { // Helpers for attack_type::special_active()
 /**
  * Returns whether or not the given special is active for the specified unit,
  * based on the current context (see set_specials_context).
- * @param[in]  special      a weapon special WML structure
- * @param[in]  affect_self  true if checking active for the current unit;
- *                          false if for the opponent.
+ * @param[in] special           a weapon special WML structure
+ * @param[in] whom              specifies which combatant we care about
+ * @param[in] include_backstab  false if backstab specials should not be active
+ *                              (usually true since backstab is usually accounted
+ *                              for elsewhere)
  */
-bool attack_type::special_active(const config& special, bool affect_self) const
+bool attack_type::special_active(const config& special, AFFECTS whom,
+                                 bool include_backstab) const
 {
 	//log_scope("special_active");
 
+	// Backstab check
+	if ( !include_backstab )
+		if ( special["backstab"].to_bool() )
+			return false;
+
 	// Does this affect the specified unit?
-	if ( affect_self ) {
+	if ( whom == AFFECT_SELF ) {
 		if ( !special_affects_self(special, is_attacker_) )
 			return false;
-	} else {
+	}
+	if ( whom == AFFECT_OTHER ) {
 		if ( !special_affects_opponent(special, is_attacker_) )
 			return false;
 	}

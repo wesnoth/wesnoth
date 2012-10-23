@@ -357,15 +357,18 @@ static config unit_abilities(const unit* u)
 {
 	if (!u) return report();
 	config res;
-	const std::vector<boost::tuple<t_string,t_string,t_string> > &abilities = u->ability_tooltips();
-	for (std::vector<boost::tuple<t_string,t_string,t_string> >::const_iterator i = abilities.begin(),
-	     i_end = abilities.end(); i != i_end; ++i)
+
+	std::vector<bool> active;
+	const std::vector<boost::tuple<t_string,t_string,t_string> > &abilities = u->ability_tooltips(&active);
+	const size_t abilities_size = abilities.size();
+	for ( size_t i = 0; i != abilities_size; ++i )
 	{
 		std::ostringstream str, tooltip;
-		const std::string &name = i->get<0>().base_str();
-		str << i->get<1>().str();
-		if (i + 1 != i_end) str << ", ";
-		tooltip << _("Ability: ") << i->get<2>().str();
+		const std::string &name = abilities[i].get<0>().base_str();
+		str << abilities[i].get<1>().str();
+		if ( i + 1 != abilities_size )
+			str << ", ";
+		tooltip << _("Ability: ") << abilities[i].get<2>().str();
 		add_text(res, str.str(), tooltip.str(), "ability_" + name);
 	}
 	return res;
@@ -706,20 +709,17 @@ static int attack_info(const attack_type &at, config &res, const unit &u, const 
 		add_text(res, flush(str), flush(tooltip));
 	}
 
-	const std::vector<t_string> &specials = at.special_tooltips();
-	if (!specials.empty())
+	std::vector<bool> active;
+	const std::vector<std::pair<t_string, t_string> > &specials = at.special_tooltips(&active);
+	const size_t specials_size = specials.size();
+	for ( size_t i = 0; i != specials_size; ++i )
 	{
-		for (std::vector<t_string>::const_iterator sp_it = specials.begin(),
-		     sp_end = specials.end(); sp_it != sp_end; ++sp_it)
-		{
-			str << span_color(font::weapon_details_color)
-				<< "  " << *sp_it << "</span>\n";
-			std::string help_page = "weaponspecial_" + sp_it->base_str();
-			++sp_it;
-			//FIXME pull out special's name from description
-			tooltip << _("Weapon special: ") << *sp_it << '\n';
-			add_text(res, flush(str), flush(tooltip), help_page);
-		}
+		str << span_color(font::weapon_details_color)
+			<< "  " << specials[i].first << "</span>\n";
+		std::string help_page = "weaponspecial_" + specials[i].first.base_str();
+		//FIXME pull out special's name from description
+		tooltip << _("Weapon special: ") << specials[i].second << '\n';
+		add_text(res, flush(str), flush(tooltip), help_page);
 	}
 	return damage;
 }

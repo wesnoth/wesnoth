@@ -843,7 +843,7 @@ void unit_preview_pane::draw_contents()
 				text << font::weapon_details << "  " << accuracy_parry << "\n";
 			}
 
-			std::string special = at_it->weapon_specials(true);
+			std::string special = at_it->weapon_specials();
 			if (!special.empty()) {
 				text << font::weapon_details << "  " << special << "\n";
 			}
@@ -919,7 +919,7 @@ const unit_preview_pane::details units_list_preview_pane::get_details() const
 	det.traits = utils::join(u.trait_names(), ", ");
 
 	//we filter to remove the tooltips (increment by 2)
-	const std::vector<boost::tuple<t_string,t_string,t_string> > &abilities = u.ability_tooltips(true);
+	const std::vector<boost::tuple<t_string,t_string,t_string> > &abilities = u.ability_tooltips();
 	for(std::vector<boost::tuple<t_string,t_string,t_string> >::const_iterator a = abilities.begin();
 		 a != abilities.end(); ++a) {
 		det.abilities.push_back(a->get<1>());

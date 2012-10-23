@@ -52,8 +52,8 @@ public:
 
 	bool get_special_bool(const std::string& special, bool simple_check=false) const;
 	unit_ability_list get_specials(const std::string& special) const;
-	std::vector<t_string> special_tooltips(bool force_active=false) const;
-	std::string weapon_specials(bool force_active=false) const;
+	std::vector<std::pair<t_string, t_string> > special_tooltips(std::vector<bool> *active_list=NULL) const;
+	std::string weapon_specials(bool only_active=false, bool is_backstab=false) const;
 	void set_specials_context(const map_location& unit_loc, const map_location& other_loc,
 	                          bool attacking, const attack_type *other_attack) const;
 	void set_specials_context(const map_location& loc, bool attacking = true) const;
@@ -77,7 +77,10 @@ public:
 private:
 	// In unit_abilities.cpp:
 
-	bool special_active(const config& special, bool affect_self) const;
+	// Configured as a bit field, in case that is useful.
+	enum AFFECTS { AFFECT_SELF=1, AFFECT_OTHER=2, AFFECT_EITHER=3 };
+	bool special_active(const config& special, AFFECTS whom,
+	                    bool include_backstab=true) const;
 
 	// Used via set_specials_context() to control which specials are
 	// considered active.

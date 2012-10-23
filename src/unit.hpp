@@ -338,7 +338,7 @@ public:
 	unit_ability_list get_abilities(const std::string &tag_name) const
 	{ return get_abilities(tag_name, loc_); }
 	/** Tuple of: neutral ability name, gendered ability name, description */
-	std::vector<boost::tuple<t_string,t_string,t_string> > ability_tooltips(bool force_active = false) const;
+	std::vector<boost::tuple<t_string,t_string,t_string> > ability_tooltips(std::vector<bool> *active_list=NULL) const;
 	std::vector<std::string> get_ability_list() const;
 	bool has_ability_type(const std::string& ability) const;
 
