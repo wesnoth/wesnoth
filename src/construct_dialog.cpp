@@ -48,6 +48,7 @@ const size_t dialog::bottom_padding = font::relative_size(10);
 
 const int dialog::max_menu_width = -1;
 
+menu * dialog::empty_menu = NULL;
 }
 
 namespace {
@@ -96,7 +97,7 @@ dialog::dialog(display &disp, const std::string& title, const std::string& messa
 	title_widget_(NULL),
 	message_(NULL),
 	type_(type),
-	menu_(NULL),
+	menu_(get_empty_menu(disp)),
 	preview_panes_(),
 	button_pool_(),
 	standard_buttons_(),
@@ -259,17 +260,17 @@ void dialog::set_menu_items(const std::vector<std::string> &menu_items, bool kee
 	}
 }
 
-menu& dialog::get_menu()
+/**
+ * Provides create-on-use semantics for empty_menu.
+ * This is called by dialog's constructor, so other code can use empty_menu directly.
+ */
+menu * dialog::get_empty_menu(display &disp)
 {
-	if(menu_ == NULL)
-	{
-		if(empty_menu == NULL) {
-			empty_menu = new gui::menu(disp_.video(),empty_string_vector,false,-1,-1,NULL,&menu::simple_style);
-			empty_menu->leave();
-		}
-		menu_ = empty_menu; //no menu, so fake it
+	if ( empty_menu == NULL ) {
+		empty_menu = new gui::menu(disp.video(), empty_string_vector, false, -1, -1, NULL, &menu::simple_style);
+		empty_menu->leave();
 	}
-	return *menu_;
+	return empty_menu;
 }
 
 int dialog::show(int xloc, int yloc)
@@ -723,7 +724,6 @@ int dialog::process(dialog_process_info &info)
 	info.new_key_down = info.key[SDLK_SPACE] || info.key[SDLK_RETURN] ||
 					info.key[SDLK_ESCAPE] || info.key[SDLK_KP_ENTER];
 	info.double_clicked = menu_->double_clicked();
-	get_menu();
 	const bool use_menu = (menu_ != empty_menu);
 	const bool use_text_input = (text_widget_!=NULL);
 	const bool has_input = (use_menu||use_text_input);//input of any sort has to be made
@@ -831,13 +831,12 @@ void dialog::action(dialog_process_info& info)
 {
 	//default way of handling a "delete item" request
 	if(result() == DELETE_ITEM) {
-		menu &menu_ref = get_menu();
-		const int selection = menu_ref.selection();
+		const int selection = menu_->selection();
 		if(selection >= 0) {
-			menu_ref.erase_item(selection);
+			menu_->erase_item(selection);
 		}
 		// was used before to auto close empty menu
-		//if(menu_ref.number_of_items() == 0) {
+		//if(menu_->number_of_items() == 0) {
 		//	set_result(CLOSE_DIALOG);
 		//} else {
 

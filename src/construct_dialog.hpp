@@ -237,7 +237,8 @@ public:
 	//widgets after destroying it
 	void set_image(dialog_image *const img) { delete image_; image_ = img; }
 	void set_image(surface surf, const std::string &caption="");
-	void set_menu(menu *const m) { if(menu_ != empty_menu) delete menu_; menu_ = m; }
+	void set_menu(menu *const m) { if ( menu_ != empty_menu ) delete menu_;
+	                               menu_ =  m == NULL ? empty_menu : m; }
 	void set_menu(const std::vector<std::string> & menu_items, menu::sorter* sorter=NULL);
 	void set_menu_items(const std::vector<std::string> &menu_items, bool keep_selection=false);
 
@@ -272,12 +273,18 @@ public:
 
 	//Results
 	int result() const { return result_; }
-	menu &get_menu();
+	menu &get_menu() { return *menu_; }
 	bool done() const { return (result_ != CONTINUE_DIALOG); }
 	std::string textbox_text() const { return text_widget_->text();}
 	dialog_textbox& get_textbox() const { return *text_widget_; }
 	bool option_checked(unsigned int option_index=0);
 	display& get_display() { return disp_; }
+
+	/// Explicit freeing of class static resources.
+	/// Must not be called if any instances of this class exist.
+	/// Should be called if the display goes out of scope.
+	/// (Currently called by ~game_controller.)
+	static void delete_empty_menu()  { delete empty_menu; empty_menu = NULL; }
 
 protected:
 	void set_result(const int result) { result_ = result; }
@@ -298,6 +305,11 @@ private:
 	//process - execute a single dialog processing loop and return the result
 	int process(dialog_process_info &info);
 
+	/// A pointer to this empty menu is used instead of NULL (for menu_).
+	static menu * empty_menu;
+	/// Provides create-on-use semantics for empty_menu.
+	static menu * get_empty_menu(display &disp);
+
 	//Members
 	display &disp_;
 	dialog_image *image_;
@@ -305,7 +317,7 @@ private:
 	const style& style_;
 	label *title_widget_, *message_;
 	DIALOG_TYPE type_;
-	gui::menu *menu_;
+	gui::menu *menu_; // Never NULL; it equals empty_menu if there is currently no menu.
 	std::vector<preview_pane*> preview_panes_;
 	std::vector< std::pair<dialog_button*,BUTTON_LOCATION> > button_pool_;
 	std::vector<dialog_button*> standard_buttons_;

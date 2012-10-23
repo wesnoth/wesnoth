@@ -26,9 +26,6 @@ namespace image{
 
 namespace gui {
 
-class menu;
-extern menu *empty_menu;
-
 class menu : public scrollarea
 {
 public:

@@ -33,7 +33,6 @@ menu::imgsel_style menu::bluebg_style("misc/selection2", true,
 menu::style menu::simple_style;
 
 menu::style &menu::default_style = menu::bluebg_style;
-menu *empty_menu = NULL;
 
 	//constructors
 menu::style::style() : font_size_(font::SIZE_NORMAL),
