@@ -186,6 +186,36 @@ std::vector<std::string> unit::get_ability_list() const
 	return res;
 }
 
+
+namespace {
+	// These functions might have wider usefulness than this file, but for now
+	// I'll make them local.
+
+	/**
+	 * Chooses a value from the given config. If the value specified by @a key is
+	 * blank, then @a default_key is chosen instead.
+	 */
+	inline const config::attribute_value & default_value(
+		const config & cfg, const std::string & key, const std::string & default_key)
+	{
+		const config::attribute_value & value = cfg[key];
+		return !value.blank() ? value : cfg[default_key];
+	}
+
+	/**
+	 * Chooses a value from the given config based on gender. If the value for
+	 * the specified gender is blank, then @a default_key is chosen instead.
+	 */
+	inline const config::attribute_value & gender_value(
+		const config & cfg, unit_race::GENDER gender, const std::string & male_key,
+		const std::string & female_key, const std::string & default_key)
+	{
+		return default_value(cfg,
+		                     gender == unit_race::MALE ? male_key : female_key,
+		                     default_key);
+	}
+}
+
 /**
  * Returns names and descriptions of the unit's abilities.
  * The returned triples consist of (in order) base name, male or female name as
@@ -209,8 +239,7 @@ std::vector<boost::tuple<t_string,t_string,t_string> > unit::ability_tooltips(st
 		if ( !active_list || ability_active(ab.key, ab.cfg, loc_) )
 		{
 			t_string const &name =
-				gender_ == unit_race::MALE || ab.cfg["female_name"].empty() ?
-				ab.cfg["name"].t_str() : ab.cfg["female_name"].t_str();
+				gender_value(ab.cfg, gender_, "name", "female_name", "name").t_str();
 
 			if (!name.empty()) {
 				res.push_back(boost::make_tuple(
@@ -223,15 +252,18 @@ std::vector<boost::tuple<t_string,t_string,t_string> > unit::ability_tooltips(st
 		}
 		else
 		{
-			t_string const &name =
-				gender_ == unit_race::MALE || ab.cfg["female_name_inactive"].empty() ?
-				ab.cfg["name_inactive"].t_str() : ab.cfg["female_name_inactive"].t_str();
+			// See if an inactive name was specified.
+			config::attribute_value const &inactive_value =
+				gender_value(ab.cfg, gender_, "name_inactive",
+				             "female_name_inactive", "name_inactive");
+			t_string const &name = !inactive_value.blank() ? inactive_value.t_str() :
+				gender_value(ab.cfg, gender_, "name", "female_name", "name").t_str();
 
 			if (!name.empty()) {
 				res.push_back(boost::make_tuple(
-						ab.cfg["name_inactive"].t_str(),
+						default_value(ab.cfg, "name_inactive", "name").t_str(),
 						name,
-						ab.cfg["description_inactive"].t_str()));
+						default_value(ab.cfg, "description_inactive", "description").t_str()));
 				active_list->push_back(false);
 			}
 		}
@@ -555,9 +587,10 @@ std::vector<std::pair<t_string, t_string> > attack_type::special_tooltips(
 					active_list->push_back(true);
 			}
 		} else {
-			t_string const &name = sp.cfg["name_inactive"];
+			t_string const &name = default_value(sp.cfg, "name_inactive", "name").t_str();
 			if (!name.empty()) {
-				res.push_back(std::make_pair(name, sp.cfg["description_inactive"].t_str()));
+				res.push_back(std::make_pair(
+					name, default_value(sp.cfg, "description_inactive", "description").t_str()));
 				active_list->push_back(false);
 			}
 		}
