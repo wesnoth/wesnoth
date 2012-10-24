@@ -33,6 +33,10 @@ public:
 
 	/// BitsPerPixel specified by --bpp option.
 	boost::optional<int> bpp;
+	/// Non-empty if --bunzip2 was given on the command line. Uncompresses a .bz2 file and exits.
+	boost::optional<std::string> bunzip2;
+	/// Non-empty if --bzip2 was given on the command line. Compresses a file to .bz2 and exits.
+	boost::optional<std::string> bzip2;
 	/// Non-empty if --campaign was given on the command line. ID of the campaign we want to start.
 	boost::optional<std::string> campaign;
 	/// Non-empty if --campaign-difficulty was given on the command line. Numerical difficulty of the campaign to be played. Dependant on --campaign.

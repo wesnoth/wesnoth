@@ -43,6 +43,7 @@
 
 #include <boost/foreach.hpp>
 #include <boost/iostreams/copy.hpp>
+#include <boost/iostreams/filter/bzip2.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 
 #ifdef HAVE_VISUAL_LEAK_DETECTOR
@@ -121,6 +122,16 @@ static void gzip_encode(const std::string & input_file, const std::string & outp
 static void gzip_decode(const std::string & input_file, const std::string & output_file)
 {
 	decode<boost::iostreams::gzip_decompressor>(input_file, output_file);
+}
+
+static void bzip2_encode(const std::string & input_file, const std::string & output_file)
+{
+	encode<boost::iostreams::bzip2_compressor>(input_file, output_file);
+}
+
+static void bzip2_decode(const std::string & input_file, const std::string & output_file)
+{
+	decode<boost::iostreams::bzip2_decompressor>(input_file, output_file);
 }
 
 static void handle_preprocess_command(const commandline_options& cmdline_opts)
@@ -297,10 +308,25 @@ static int process_command_args(const commandline_options& cmdline_opts) {
 			input_file, 0, input_file.length() - 3);
 		gzip_decode(input_file, output_file);
 	}
+	if(cmdline_opts.bunzip2) {
+		const std::string input_file(*cmdline_opts.bunzip2);
+		if(!is_bzip2_file(input_file)) {
+			std::cerr << "file '" << input_file << "'isn't a .bz2 file\n";
+			return 2;
+		}
+		const std::string output_file(
+			input_file, 0, input_file.length() - 4);
+		bzip2_decode(input_file, output_file);
+	}
 	if(cmdline_opts.gzip) {
 		const std::string input_file(*cmdline_opts.gzip);
 		const std::string output_file(*cmdline_opts.gzip + ".gz");
 		gzip_encode(input_file, output_file);
+	}
+	if(cmdline_opts.bzip2) {
+		const std::string input_file(*cmdline_opts.bzip2);
+		const std::string output_file(*cmdline_opts.bzip2 + ".bz2");
+		bzip2_encode(input_file, output_file);
 	}
 	if(cmdline_opts.help) {
 		std::cout << cmdline_opts;

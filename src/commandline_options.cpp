@@ -43,6 +43,8 @@ static void validate(boost::any& v, const std::vector<std::string>& values,
 
 commandline_options::commandline_options ( int argc, char** argv ) :
 	bpp(),
+	bunzip2(),
+	bzip2(),
 	campaign(),
 	campaign_difficulty(),
 	campaign_scenario(),
@@ -123,6 +125,8 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	// Options are sorted alphabetically by --long-option.
 	po::options_description general_opts("General options");
 	general_opts.add_options()
+		("bunzip2", po::value<std::string>(), "decompresses a file (<arg>.bz2) in bzip2 format and stores it without the .bz2 suffix. <arg>.bz2 will be removed.")
+		("bzip2", po::value<std::string>(), "compresses a file (<arg>) in bzip2 format, stores it as <arg>.bz2 and removes <arg>.")
 		("clock", "Adds the option to show a clock for testing the drawing timer.")
 		("config-dir", po::value<std::string>(), "sets the path of the user config directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory.")
 		("config-path", "prints the path of the user config directory and exits.")
@@ -239,6 +243,10 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		multiplayer_algorithm = parse_to_uint_string_tuples_(vm["algorithm"].as<std::vector<std::string> >());
 	if (vm.count("bpp"))
 		bpp = vm["bpp"].as<int>();
+	if (vm.count("bunzip2"))
+		bunzip2 = vm["bunzip2"].as<std::string>();
+	if (vm.count("bzip2"))
+		bzip2 = vm["bzip2"].as<std::string>();
 	if (vm.count("campaign"))
 		campaign = vm["campaign"].as<std::string>();
 	if (vm.count("campaign-difficulty"))
