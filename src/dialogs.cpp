@@ -918,7 +918,7 @@ const unit_preview_pane::details units_list_preview_pane::get_details() const
 	det.alignment = unit_type::alignment_description(u.alignment(), u.gender());
 	det.traits = utils::join(u.trait_names(), ", ");
 
-	//we filter to remove the tooltips (increment by 2)
+	// The triples are base name, male/female name, description.
 	const std::vector<boost::tuple<t_string,t_string,t_string> > &abilities = u.ability_tooltips();
 	for(std::vector<boost::tuple<t_string,t_string,t_string> >::const_iterator a = abilities.begin();
 		 a != abilities.end(); ++a) {
