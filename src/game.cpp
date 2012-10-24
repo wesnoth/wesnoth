@@ -80,10 +80,15 @@ template <typename filter>
 static void encode(const std::string & input_file, const std::string & output_file)
 {
 	try {
-		std::ofstream ofile(output_file.c_str(), std::ios_base::out
-				| std::ios_base::binary);
 		std::ifstream ifile(input_file.c_str(),
 				std::ios_base::in | std::ios_base::binary);
+		ifile.peek(); // We need to touch the stream to set the eof bit
+		if(!ifile.good()) {
+			std::cerr << "Input file " << input_file << " is not good for reading. Exiting to prevent bzip2 from segfaulting\n";
+			safe_exit(1);
+		}
+		std::ofstream ofile(output_file.c_str(), std::ios_base::out
+				| std::ios_base::binary);
 		boost::iostreams::filtering_stream<boost::iostreams::output> stream;
 		stream.push(filter());
 		stream.push(ofile);
