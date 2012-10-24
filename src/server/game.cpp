@@ -1285,7 +1285,7 @@ void game::save_replay() {
 		<< "[replay]\n" << replay_commands << "[/replay]\n"
 		<< "[replay_start]\n" << level_.output() << "[/replay_start]\n";
 
-		name << " (" << id_ << ").gz";
+		name << " (" << id_ << ").bz2";
 
 		std::string replay_data_str = replay_data.str();
 		simple_wml::document replay(replay_data_str.c_str(), simple_wml::INIT_STATIC);
@@ -1295,7 +1295,7 @@ void game::save_replay() {
 		filename.erase(std::remove_if(filename.begin(), filename.end(), is_invalid_filename_char), filename.end());
 		DBG_GAME << "saving replay: " << filename << std::endl;
 		scoped_ostream os(ostream_file(replay_save_path_ + filename));
-		(*os) << replay.output_compressed();
+		(*os) << replay.output_compressed(true);
 
 		if (!os->good()) {
 			ERR_GAME << "Could not save replay! (" << filename << ")\n";
