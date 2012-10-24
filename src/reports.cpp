@@ -365,10 +365,18 @@ static config unit_abilities(const unit* u)
 	{
 		std::ostringstream str, tooltip;
 		const std::string &name = abilities[i].get<0>().base_str();
-		str << abilities[i].get<1>().str();
+
+		if ( active[i] )
+			str << abilities[i].get<1>().str();
+		else
+			str << span_color(font::inactive_ability_color)
+			    << abilities[i].get<1>().str() << naps;
 		if ( i + 1 != abilities_size )
 			str << ", ";
-		tooltip << _("Ability: ") << abilities[i].get<2>().str();
+
+		tooltip << (active[i] ? _("Ability: ") : _("Ability (inactive): ") )
+		        << abilities[i].get<2>().str();
+
 		add_text(res, str.str(), tooltip.str(), "ability_" + name);
 	}
 	return res;
@@ -561,7 +569,7 @@ static int attack_info(const attack_type &at, config &res, const unit &u, const 
 {
 	std::ostringstream str, tooltip;
 
-	at.set_specials_context(displayed_unit_hex);
+	at.set_specials_context(displayed_unit_hex, u.side() == resources::screen->playing_side());
 	int base_damage = at.damage();
 	int specials_damage = at.modified_damage(false);
 	int damage_multiplier = 100;
@@ -714,11 +722,12 @@ static int attack_info(const attack_type &at, config &res, const unit &u, const 
 	const size_t specials_size = specials.size();
 	for ( size_t i = 0; i != specials_size; ++i )
 	{
-		str << span_color(font::weapon_details_color)
+		str << span_color(active[i] ? font::weapon_details_color : font::inactive_details_color)
 			<< "  " << specials[i].first << "</span>\n";
 		std::string help_page = "weaponspecial_" + specials[i].first.base_str();
 		//FIXME pull out special's name from description
-		tooltip << _("Weapon special: ") << specials[i].second << '\n';
+		tooltip << (active[i] ? _("Weapon special: ") : _("Weapon special (inactive): ") )
+		        << specials[i].second << '\n';
 		add_text(res, flush(str), flush(tooltip), help_page);
 	}
 	return damage;

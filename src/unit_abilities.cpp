@@ -732,6 +732,14 @@ namespace { // Helpers for attack_type::special_active()
 		                             const config & filter,
 		                             const std::string & child_tag)
 	{
+		if ( !loc.valid() )
+			// The special's context was set to ignore this unit, so assume we pass.
+			// (This is used by reports.cpp to show active specials when the
+			// opponent is not known. From a player's perspective, the special
+			// is active, in that it can be used, even though the player might
+			// need to select an appropriate opponent.)
+			return true;
+ 
 		const config & filter_child = filter.child(child_tag);
 		if ( !filter_child )
 			// The special does not filter on this unit, so we pass.

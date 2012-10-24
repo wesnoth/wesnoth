@@ -54,6 +54,8 @@ const SDL_Color
 	good_dmg_color = { 130, 240, 50, 255 },
 	bad_dmg_color = { 250, 140, 80, 255 },
 	weapon_details_color = { 166, 146, 117, 255 },
+	inactive_details_color = { 146, 146, 146, 255 },
+	inactive_ability_color = { 146, 146, 146, 255 },
 	unit_type_color = { 245, 230, 193, 255 },
 	race_color = { 166, 146, 117, 255 };
 

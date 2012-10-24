@@ -37,6 +37,8 @@ extern const SDL_Color weapon_color,
 		good_dmg_color,
 		bad_dmg_color,
 		weapon_details_color,
+		inactive_details_color,
+		inactive_ability_color,
 		unit_type_color,
 		race_color;
 
