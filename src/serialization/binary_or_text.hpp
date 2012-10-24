@@ -29,6 +29,8 @@ class config;
 class config_writer
 {
 public:
+	enum compressor { NONE, GZIP, BZIP2 };
+	config_writer(std::ostream &out, compressor compress);
 	config_writer(std::ostream &out, bool compress, int level = -1);
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
 	~config_writer();
@@ -45,7 +47,7 @@ private:
 	boost::iostreams::filtering_stream<boost::iostreams::output> filter_;
 	std::ostream *out_ptr_;
 	std::ostream &out_;
-	bool compress_;
+	compressor compress_;
 	unsigned int level_;
 	std::string textdomain_;
 };

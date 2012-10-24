@@ -28,17 +28,36 @@
 #include "serialization/parser.hpp"
 
 
+#include <boost/iostreams/filter/bzip2.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 
 config_writer::config_writer(
-	std::ostream &out, bool compress, int level) :
+	std::ostream &out, compressor compress) :
 		filter_(),
 		out_ptr_(compress ? &filter_ : &out), //ternary indirection creates a temporary
 		out_(*out_ptr_), //now MSVC will allow binding to the reference member
 		compress_(compress),
+		level_(0),
+		textdomain_(PACKAGE)
+{
+	if(compress_ == GZIP) {
+		filter_.push(boost::iostreams::gzip_compressor(boost::iostreams::gzip_params(9)));
+		filter_.push(out);
+
+	} else if(compress_ == BZIP2) {
+		filter_.push(boost::iostreams::bzip2_compressor(boost::iostreams::bzip2_params()));
+		filter_.push(out);
+	}
+}
+config_writer::config_writer(
+	std::ostream &out, bool compress, int level) :
+		filter_(),
+		out_ptr_(compress ? &filter_ : &out), //ternary indirection creates a temporary
+		out_(*out_ptr_), //now MSVC will allow binding to the reference member
+		compress_(compress ? GZIP : NONE),
 		level_(0),
 		textdomain_(PACKAGE)
 {
