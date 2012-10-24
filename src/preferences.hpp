@@ -190,6 +190,9 @@ namespace preferences {
 	bool use_twelve_hour_clock_format();
 	void set_use_twelve_hour_clock_format(bool value);
 
+	bool bzip2_savegame_compression();
+	void set_bzip2_savegame_compression(bool value);
+
 } // end namespace preferences
 
 #endif

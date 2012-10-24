@@ -985,12 +985,12 @@ void savegame::write_game_to_disk(const std::string& filename)
 	filename_ = filename;
 
 	if (compress_saves_) {
-		filename_ += ".gz";
+		filename_ += preferences::bzip2_savegame_compression() ? ".bz2" : ".gz";
 	}
 
 	std::stringstream ss;
 	{
-		config_writer out(ss, compress_saves_);
+		config_writer out(ss, compress_saves_ ? preferences::bzip2_savegame_compression() ? config_writer::BZIP2 : config_writer::GZIP : config_writer::NONE);
 		write_game(out);
 		finish_save_game(out);
 	}

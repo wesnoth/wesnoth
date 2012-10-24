@@ -766,5 +766,15 @@ bool use_twelve_hour_clock_format()
 	return get("use_twelve_hour_clock_format", false);
 }
 
+bool bzip2_savegame_compression()
+{
+	return get("bzip2_savegame_compression", false);
+}
+
+void set_bzip2_savegame_compression(bool ison)
+{
+	preferences::set("bzip2_savegame_compression", ison);
+}
+
 } // end namespace preferences
 
