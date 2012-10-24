@@ -76,17 +76,36 @@ static void safe_exit(int res) {
 
 // maybe this should go in a util file somewhere?
 template <typename filter>
-static void codec(const std::string & input_file, const std::string & output_file)
+static void encode(const std::string & input_file, const std::string & output_file)
 {
 	try {
 		std::ofstream ofile(output_file.c_str(), std::ios_base::out
 				| std::ios_base::binary);
 		std::ifstream ifile(input_file.c_str(),
 				std::ios_base::in | std::ios_base::binary);
-		boost::iostreams::filtering_streambuf<boost::iostreams::input> in;
-		in.push(filter());
-		in.push(ifile);
-		boost::iostreams::copy(in, ofile);
+		boost::iostreams::filtering_stream<boost::iostreams::output> stream;
+		stream.push(filter());
+		stream.push(ofile);
+		boost::iostreams::copy(ifile, stream);
+		ifile.close();
+		safe_exit(remove(input_file.c_str()));
+	}  catch(io_exception& e) {
+		std::cerr << "IO error: " << e.what() << "\n";
+	}
+}
+
+template <typename filter>
+static void decode(const std::string & input_file, const std::string & output_file)
+{
+	try {
+		std::ofstream ofile(output_file.c_str(), std::ios_base::out
+				| std::ios_base::binary);
+		std::ifstream ifile(input_file.c_str(),
+				std::ios_base::in | std::ios_base::binary);
+		boost::iostreams::filtering_stream<boost::iostreams::input> stream;
+		stream.push(filter());
+		stream.push(ifile);
+		boost::iostreams::copy(stream, ofile);
 		ifile.close();
 		safe_exit(remove(input_file.c_str()));
 	}  catch(io_exception& e) {
@@ -96,12 +115,12 @@ static void codec(const std::string & input_file, const std::string & output_fil
 
 static void gzip_encode(const std::string & input_file, const std::string & output_file)
 {
-	codec<boost::iostreams::gzip_compressor>(input_file, output_file);
+	encode<boost::iostreams::gzip_compressor>(input_file, output_file);
 }
 
 static void gzip_decode(const std::string & input_file, const std::string & output_file)
 {
-	codec<boost::iostreams::gzip_decompressor>(input_file, output_file);
+	decode<boost::iostreams::gzip_decompressor>(input_file, output_file);
 }
 
 static void handle_preprocess_command(const commandline_options& cmdline_opts)
