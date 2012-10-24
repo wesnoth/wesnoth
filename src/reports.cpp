@@ -363,21 +363,24 @@ static config unit_abilities(const unit* u)
 	const size_t abilities_size = abilities.size();
 	for ( size_t i = 0; i != abilities_size; ++i )
 	{
+		// Aliases for readability:
+		const std::string &base_name = abilities[i].get<0>().base_str();
+		const t_string &display_name = abilities[i].get<1>();
+		const t_string &description = abilities[i].get<2>();
+
 		std::ostringstream str, tooltip;
-		const std::string &name = abilities[i].get<0>().base_str();
 
 		if ( active[i] )
-			str << abilities[i].get<1>().str();
+			str << display_name;
 		else
-			str << span_color(font::inactive_ability_color)
-			    << abilities[i].get<1>().str() << naps;
+			str << span_color(font::inactive_ability_color) << display_name << naps;
 		if ( i + 1 != abilities_size )
 			str << ", ";
 
 		tooltip << (active[i] ? _("Ability: ") : _("Ability (inactive): ") )
-		        << abilities[i].get<2>().str();
+		        << description;
 
-		add_text(res, str.str(), tooltip.str(), "ability_" + name);
+		add_text(res, str.str(), tooltip.str(), "ability_" + base_name);
 	}
 	return res;
 }
@@ -722,12 +725,18 @@ static int attack_info(const attack_type &at, config &res, const unit &u, const 
 	const size_t specials_size = specials.size();
 	for ( size_t i = 0; i != specials_size; ++i )
 	{
-		str << span_color(active[i] ? font::weapon_details_color : font::inactive_details_color)
-			<< "  " << specials[i].first << "</span>\n";
-		std::string help_page = "weaponspecial_" + specials[i].first.base_str();
+		// Aliases for readability:
+		const t_string &name = specials[i].first;
+		const t_string &description = specials[i].second;
+		const SDL_Color &details_color = active[i] ? font::weapon_details_color :
+		                                             font::inactive_details_color;
+
+		str << span_color(details_color) << "  " << name << naps << '\n';
+		std::string help_page = "weaponspecial_" + name.base_str();
 		//FIXME pull out special's name from description
 		tooltip << (active[i] ? _("Weapon special: ") : _("Weapon special (inactive): ") )
-		        << specials[i].second << '\n';
+		        << description << '\n';
+
 		add_text(res, flush(str), flush(tooltip), help_page);
 	}
 	return damage;
