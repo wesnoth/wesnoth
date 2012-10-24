@@ -3,7 +3,9 @@
 
 #include "global.hpp"
 
+#include <boost/iostreams/copy.hpp>
 #include <boost/iostreams/filtering_stream.hpp>
+#include <boost/iostreams/filter/bzip2.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 
 #include "simple_wml.hpp"
@@ -30,7 +32,11 @@ char* uncompress_buffer(const string_span& input, string_span* span)
 		state = 1;
 		boost::iostreams::filtering_stream<boost::iostreams::input> filter;
 		state = 2;
-		filter.push(boost::iostreams::gzip_decompressor());
+		if (!span->empty() && *span->begin() == 'B') {
+			filter.push(boost::iostreams::bzip2_decompressor());
+		} else {
+			filter.push(boost::iostreams::gzip_decompressor());
+		}
 		filter.push(stream);
 		state = 3;
 
@@ -78,25 +84,40 @@ char* uncompress_buffer(const string_span& input, string_span* span)
 	}
 }
 
-char* compress_buffer(const char* input, string_span* span)
+class charbuf : public std::stringbuf {
+public:
+	charbuf(char *buffer, int len) {
+		this->setbuf(buffer, len);
+	}
+};
+
+char* compress_buffer(const char* input, string_span* span, bool bzip2)
 {
 	int nalloc = strlen(input);
 	int state = 0;
 	try {
 		std::string in(input);
 		state = 1;
-		std::istringstream stream(in);
+		std::istringstream istream(in);
 		state = 2;
-		boost::iostreams::filtering_stream<boost::iostreams::input> filter;
+		boost::iostreams::filtering_stream<boost::iostreams::output> filter;
 		state = 3;
-		filter.push(boost::iostreams::gzip_compressor());
-		filter.push(stream);
+		if (bzip2) {
+			filter.push(boost::iostreams::bzip2_compressor());
+		} else {
+			filter.push(boost::iostreams::gzip_compressor());
+		}
 		state = 4;
 		nalloc = in.size()*2 + 80;
+		std::vector<char> buf(nalloc);
+		charbuf wrapped_buffer(&buf[0], buf.size());
+		std::ostream out(&wrapped_buffer);
+		filter.push(out);
 
-		std::vector<char> buf(in.size()*2 + 80);
 		state = 5;
-		const int len = filter.read(&buf[0], buf.size()).gcount();
+
+		boost::iostreams::copy(istream, filter, buf.size());
+		const int len = out.tellp();
 		assert(len < 128*1024*1024);
 		if((!filter.eof() && !filter.good()) || len == static_cast<int>(buf.size())) {
 			throw error("failed to compress");
@@ -112,7 +133,7 @@ char* compress_buffer(const char* input, string_span* span)
 		state = 8;
 
 		*span = string_span(small_out, len);
-		assert(*small_out == 31);
+		assert(*small_out == (bzip2 ? 'B' : 31));
 		state = 9;
 		return small_out;
 	} catch (std::bad_alloc& e) {
@@ -1040,16 +1061,16 @@ const char* document::output()
 	return output_;
 }
 
-string_span document::output_compressed()
+string_span document::output_compressed(bool bzip2)
 {
 	if(compressed_buf_.empty() == false &&
 	   (root_ == NULL || root_->is_dirty() == false)) {
-		assert(*compressed_buf_.begin() == 31);
+		assert(*compressed_buf_.begin() == (bzip2 ? 'B' : 31));
 		return compressed_buf_;
 	}
 
-	buffers_.push_back(compress_buffer(output(), &compressed_buf_));
-	assert(*compressed_buf_.begin() == 31);
+	buffers_.push_back(compress_buffer(output(), &compressed_buf_, bzip2));
+	assert(*compressed_buf_.begin() == (bzip2 ? 'B' : 31));
 
 	return compressed_buf_;
 }

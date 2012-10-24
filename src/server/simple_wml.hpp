@@ -220,7 +220,7 @@ public:
 	const node& root() const { if(!root_) { const_cast<document*>(this)->generate_root(); } return *root_; }
 
 	const char* output();
-	string_span output_compressed();
+	string_span output_compressed(bool bzip2 = false);
 
 	void compress();
 
