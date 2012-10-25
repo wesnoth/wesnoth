@@ -363,23 +363,13 @@ bool game_display::has_time_area() const
 	return tod_manager_.has_time_area();
 }
 
-void game_display::draw_report(const std::string &report_name)
-{
-	if(!team_valid()) {
-		return;
-	}
-
-	refresh_report(report_name, reports::generate_report(report_name));
-}
-
 void game_display::draw_sidebar()
 {
-	draw_report("report_clock");
-	draw_report("report_countdown");
-
-	if(teams_->empty()) {
+	if ( !team_valid() )
 		return;
-	}
+
+	refresh_report("report_clock");
+	refresh_report("report_countdown");
 
 	if (invalidateGameStatus_)
 	{
@@ -388,7 +378,7 @@ void game_display::draw_sidebar()
 		// We display the unit the mouse is over if it is over a unit,
 		// otherwise we display the unit that is selected.
 		BOOST_FOREACH(const std::string &name, reports::report_list()) {
-			draw_report(name);
+			refresh_report(name);
 		}
 		invalidateGameStatus_ = false;
 	}

@@ -125,8 +125,6 @@ public:
 	/** Draws the movement info (turns available) for a given location. */
 	void draw_movement_info(const map_location& loc);
 
-	void draw_report(const std::string &report_name);
-
 	/** Function to invalidate that unit status displayed on the sidebar. */
 	void invalidate_unit() { invalidateGameStatus_ = true; }
 

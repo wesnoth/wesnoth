@@ -31,6 +31,7 @@
 #include "map.hpp"
 #include "map_label.hpp"
 #include "minimap.hpp"
+#include "reports.hpp"
 #include "text.hpp"
 #include "time_of_day.hpp"
 #include "tooltips.hpp"
@@ -2475,13 +2476,23 @@ void display::draw_image_for_report(surface& img, SDL_Rect& rect)
 	}
 }
 
-void display::refresh_report(std::string const &report_name, const config &_report)
+/**
+ * Redraws the specified report (if anything has changed).
+ * If a config is not supplied, it will be generated via
+ * reports::generate_report().
+ */
+void display::refresh_report(std::string const &report_name, const config * new_cfg)
 {
 	const theme::status_item *item = theme_.get_status_item(report_name);
 	if (!item) {
 		reportSurfaces_[report_name].assign(NULL);
 		return;
 	}
+
+	// Now we will need the config. Generate one if needed.
+	const config generated_cfg = new_cfg ? config() : reports::generate_report(report_name);
+	if ( new_cfg == NULL )
+		new_cfg = &generated_cfg;
 
 	SDL_Rect &rect = reportRects_[report_name];
 	const SDL_Rect &new_rect = item->location(screen_area());
@@ -2490,11 +2501,11 @@ void display::refresh_report(std::string const &report_name, const config &_repo
 	config &report = reports_[report_name];
 
 	// Report and its location is unchanged since last time. Do nothing.
-	if (surf && rect == new_rect && report == _report) {
+	if (surf && rect == new_rect && report == *new_cfg) {
 		return;
 	}
 
-	report = _report;
+	report = *new_cfg;
 
 	if (surf) {
 		sdl_blit(surf, NULL, screen_.getSurface(), &rect);

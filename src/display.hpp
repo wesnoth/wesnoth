@@ -354,7 +354,7 @@ public:
 	void create_buttons();
 	void invalidate_theme() { panelsDrawn_ = false; }
 
-	void refresh_report(std::string const &report_name, const config &);
+	void refresh_report(std::string const &report_name, const config * new_cfg=NULL);
 
 	void draw_minimap_units();
 
