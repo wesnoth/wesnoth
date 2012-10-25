@@ -377,8 +377,10 @@ static config unit_abilities(const unit* u)
 		if ( i + 1 != abilities_size )
 			str << ", ";
 
-		tooltip << (active[i] ? _("Ability: ") : _("Ability (inactive): ") )
-		        << description;
+		tooltip << _("Ability: ") << "<b>" << display_name << "</b>";
+		if ( !active[i] )
+			tooltip << "<i>" << _(" (inactive)") << "</i>";
+		tooltip << '\n' << description;
 
 		add_text(res, str.str(), tooltip.str(), "ability_" + base_name);
 	}
@@ -733,9 +735,10 @@ static int attack_info(const attack_type &at, config &res, const unit &u, const 
 
 		str << span_color(details_color) << "  " << name << naps << '\n';
 		std::string help_page = "weaponspecial_" + name.base_str();
-		//FIXME pull out special's name from description
-		tooltip << (active[i] ? _("Weapon special: ") : _("Weapon special (inactive): ") )
-		        << description << '\n';
+		tooltip << _("Weapon special: ") << "<b>" << name << "</b>";
+		if ( !active[i] )
+			tooltip << "<i>" << _(" (inactive)") << "</i>";
+		tooltip << '\n' << description;
 
 		add_text(res, flush(str), flush(tooltip), help_page);
 	}
