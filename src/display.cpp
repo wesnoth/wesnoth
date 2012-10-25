@@ -2497,7 +2497,6 @@ void display::refresh_report(std::string const &report_name, const config * new_
 	SDL_Rect &rect = reportRects_[report_name];
 	const SDL_Rect &new_rect = item->location(screen_area());
 	surface &surf = reportSurfaces_[report_name];
-	/// @todo check to see if reports_ is ever updated
 	config &report = reports_[report_name];
 
 	// Report and its location is unchanged since last time. Do nothing.
@@ -2505,6 +2504,7 @@ void display::refresh_report(std::string const &report_name, const config * new_
 		return;
 	}
 
+	// Update the config in reports_.
 	report = *new_cfg;
 
 	if (surf) {
