@@ -1151,7 +1151,7 @@ void game_controller::load_game_cfg(const bool force)
 		std::vector<std::string> addons_to_load;
 
 		get_files_in_dir(user_campaign_dir,&user_files,&user_dirs,ENTIRE_FILE_PATH);
-		std::string user_error_log;
+		std::stringstream user_error_log;
 
 		// Append the $user_campaign_dir/*.cfg files to addons_to_load.
 		for(std::vector<std::string>::const_iterator uc = user_files.begin(); uc != user_files.end(); ++uc) {
@@ -1184,11 +1184,11 @@ void game_controller::load_game_cfg(const bool force)
 			} catch(config::error& err) {
 				ERR_CONFIG << "error reading usermade add-on '" << *uc << "'\n";
 				error_addons.push_back(*uc);
-				user_error_log += err.message + "\n";
+				user_error_log << err.message << "\n";
 			} catch(preproc_config::error& err) {
 				ERR_CONFIG << "error reading usermade add-on '" << *uc << "'\n";
 				error_addons.push_back(*uc);
-				user_error_log += err.message + "\n";
+				user_error_log << err.message << "\n";
 			} catch(io_exception&) {
 				ERR_CONFIG << "error reading usermade add-on '" << *uc << "'\n";
 				error_addons.push_back(*uc);
@@ -1202,7 +1202,7 @@ void game_controller::load_game_cfg(const bool force)
 					msg << "\n" << *i;
 				}
 
-				msg << '\n' << _("ERROR DETAILS:") << '\n' << user_error_log;
+				msg << '\n' << _("ERROR DETAILS:") << '\n' << user_error_log.str();
 
 				gui2::show_error_message(disp().video(),msg.str());
 			}
