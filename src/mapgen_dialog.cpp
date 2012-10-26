@@ -374,16 +374,18 @@ std::string default_map_generator::generate_map(const std::vector<std::string>& 
 	std::string map;
 	// Keep a copy of labels as it can be written to by the map generator func
 	std::map<map_location,std::string> labels_copy;
+	std::map<map_location,std::string> * labels_ptr =  labels ? &labels_copy : NULL;
 	std::string error_message;
 	int tries = 10;
 	do {
 		if (labels) {
-				labels_copy = *labels;
+			// Reset the labels.
+			labels_copy = *labels;
 		}
 		try{
 			map = default_generate_map(width_, height_, island_size, island_off_center,
 				iterations, hill_size_, max_lakes, (nvillages_ * width_ * height_) / 1000,
-				castle_size_, nplayers_, link_castles_, &labels_copy, cfg_);
+				castle_size_, nplayers_, link_castles_, labels_ptr, cfg_);
 			error_message = "";
 		}
 		catch (mapgen_exception& exc){

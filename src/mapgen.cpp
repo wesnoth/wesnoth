@@ -1211,50 +1211,51 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	 *we name these now that everything else is placed (as e.g., placing
 	 * roads could split a forest)
 	 */
-	for (x = width / 3; x < (width / 3)*2; x++) {
-		for (y = height / 3; y < (height / 3) * 2;y++) {
-		//check the terrain of the tile
-		const location loc(x - width / 3, y - height / 3);
-		const t_translation::t_terrain terr = terrain[x][y];
-		std::string name, base_name;
-		std::set<std::string> used_names;
-		if (t_translation::terrain_matches(terr, t_translation::ALL_MOUNTAINS)) {
-			//name every 15th mountain
-			if ((rand()%15) == 0) {
-				for(size_t ntry = 0; ntry != 30 && (ntry == 0 || used_names.count(name) > 0); ++ntry) {
-					name = generate_name(name_generator, "mountain_name", &base_name);
+	if ( labels != NULL ) {
+		for (x = width / 3; x < (width / 3)*2; x++) {
+			for (y = height / 3; y < (height / 3) * 2;y++) {
+				//check the terrain of the tile
+				const location loc(x - width / 3, y - height / 3);
+				const t_translation::t_terrain terr = terrain[x][y];
+				std::string name, base_name;
+				std::set<std::string> used_names;
+				if (t_translation::terrain_matches(terr, t_translation::ALL_MOUNTAINS)) {
+					//name every 15th mountain
+					if ((rand()%15) == 0) {
+						for(size_t ntry = 0; ntry != 30 && (ntry == 0 || used_names.count(name) > 0); ++ntry) {
+							name = generate_name(name_generator, "mountain_name", &base_name);
+						}
+						labels->insert(std::pair<map_location, std::string>(loc, name));
+						mountain_names.insert(std::pair<location, std::string>(loc, base_name));
+					}
 				}
-				labels->insert(std::pair<map_location, std::string>(loc, name));
-				mountain_names.insert(std::pair<location, std::string>(loc, base_name));
-			}
-		}
-		else if (t_translation::terrain_matches(terr, t_translation::ALL_FORESTS)) {
-			//if the forest tile is not named yet, name it
-			const std::map<location, std::string>::const_iterator forest_name = forest_names.find(loc);
-			if(forest_name == forest_names.end()) {
-				for(size_t ntry = 0; ntry != 30 && (ntry == 0 || used_names.count(name) > 0); ++ntry) {
-					name = generate_name(name_generator, "forest_name", &base_name);
+				else if (t_translation::terrain_matches(terr, t_translation::ALL_FORESTS)) {
+					//if the forest tile is not named yet, name it
+					const std::map<location, std::string>::const_iterator forest_name = forest_names.find(loc);
+					if(forest_name == forest_names.end()) {
+						for(size_t ntry = 0; ntry != 30 && (ntry == 0 || used_names.count(name) > 0); ++ntry) {
+							name = generate_name(name_generator, "forest_name", &base_name);
+						}
+						forest_names.insert(std::pair<location, std::string>(loc, base_name));
+						// name all connected forest tiles accordingly
+						flood_name(loc, base_name, forest_names, t_translation::ALL_FORESTS, terrain, width, height, 0, labels, name);
+					}
 				}
-				forest_names.insert(std::pair<location, std::string>(loc, base_name));
-				// name all connected forest tiles accordingly
-				flood_name(loc, base_name, forest_names, t_translation::ALL_FORESTS, terrain, width, height, 0, labels, name);
-			}
-		}
-		else if (t_translation::terrain_matches(terr, t_translation::ALL_SWAMPS)) {
-			//if the swamp tile is not named yet, name it
-			const std::map<location, std::string>::const_iterator swamp_name = swamp_names.find(loc);
-			if(swamp_name == swamp_names.end()) {
-				for(size_t ntry = 0; ntry != 30 && (ntry == 0 || used_names.count(name) > 0); ++ntry) {
-					name = generate_name(name_generator, "swamp_name", &base_name);
+				else if (t_translation::terrain_matches(terr, t_translation::ALL_SWAMPS)) {
+					//if the swamp tile is not named yet, name it
+					const std::map<location, std::string>::const_iterator swamp_name = swamp_names.find(loc);
+					if(swamp_name == swamp_names.end()) {
+						for(size_t ntry = 0; ntry != 30 && (ntry == 0 || used_names.count(name) > 0); ++ntry) {
+							name = generate_name(name_generator, "swamp_name", &base_name);
+						}
+						swamp_names.insert(std::pair<location, std::string>(loc, base_name));
+						// name all connected swamp tiles accordingly
+						flood_name(loc, base_name, swamp_names, t_translation::ALL_SWAMPS, terrain, width, height, 0, labels, name);
+					}
 				}
-				swamp_names.insert(std::pair<location, std::string>(loc, base_name));
-				// name all connected swamp tiles accordingly
-				flood_name(loc, base_name, swamp_names, t_translation::ALL_SWAMPS, terrain, width, height, 0, labels, name);
-			}
-		}
-
-		}
-	}
+			}//for (y)
+		}//for (x)
+	}//if (labels)
 
 	if (nvillages > 0)
 	{
