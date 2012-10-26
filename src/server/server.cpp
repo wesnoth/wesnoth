@@ -816,7 +816,6 @@ void server::run() {
 			}
 			if (!e.socket) {
 				ERR_SERVER << "network error: " << e.message << "\n";
-				e.disconnect();
 				continue;
 			}
 			DBG_SERVER << "socket closed: " << e.message << "\n";
