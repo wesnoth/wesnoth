@@ -1426,13 +1426,6 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	return output_map(terrain, starting_positions);
 }
 
-namespace {
-
-typedef std::map<std::string,map_generator*> generator_map;
-generator_map generators;
-
-}
-
 #ifdef TEST_MAPGEN
 
 /** Standalone testprogram for the mapgenerator. */
