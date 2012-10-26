@@ -766,6 +766,8 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	LOG_NG << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
 
 	config naming = cfg.child_or_empty("naming");
+	// If the [naming] child is empty, we cannot provide good names.
+	std::map<map_location,std::string>* misc_labels = naming.empty() ? NULL : labels;
 	// HACK: dummy names to satisfy unit_race requirements
 	naming["id"] = "village_naming";
 	naming["plural_name"] = "villages";
@@ -824,7 +826,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 				std::vector<location> river = generate_river(heights,
 					terrain, x, y, cfg["river_frequency"]);
 
-				if(river.empty() == false && labels != NULL) {
+				if(river.empty() == false && misc_labels != NULL) {
 					std::string base_name;
 					LOG_NG << "generating name for river...\n";
 					const std::string& name = generate_name(name_generator,"river_name",&base_name);
@@ -835,7 +837,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 						const map_location loc(r->x-width/3,r->y-height/3);
 
 						if(((r - river.begin())%name_frequency) == name_frequency/2) {
-							labels->insert(std::pair<map_location,std::string>(loc,name));
+							misc_labels->insert(std::pair<map_location,std::string>(loc,name));
 						}
 
 						river_names.insert(std::pair<location,std::string>(loc,base_name));
@@ -847,7 +849,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 				LOG_NG << "generating lake...\n";
 				std::set<location> locs;
 				bool res = generate_lake(terrain, x, y, cfg["lake_size"], locs);
-				if(res && labels != NULL) {
+				if(res && misc_labels != NULL) {
 					bool touches_other_lake = false;
 
 					std::string base_name;
@@ -874,8 +876,8 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 					if(!touches_other_lake) {
 						const map_location loc(x-width/3,y-height/3);
-						labels->erase(loc);
-						labels->insert(std::pair<map_location,std::string>(loc,name));
+						misc_labels->erase(loc);
+						misc_labels->insert(std::pair<map_location,std::string>(loc,name));
 					}
 
 					for(i = locs.begin(); i != locs.end(); ++i) {
@@ -1127,12 +1129,12 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 						direction = 2;
 					}
 
-					if(labels != NULL && on_bridge == false) {
+					if(misc_labels != NULL && on_bridge == false) {
 						on_bridge = true;
 						std::string bridge_base_name;
 						const std::string& name = generate_name(name_generator, "bridge_name", &bridge_base_name);
 						const location loc(x - width / 3, y-height/3);
-						labels->insert(std::pair<map_location,std::string>(loc,name));
+						misc_labels->insert(std::pair<map_location,std::string>(loc,name));
 						bridge_names.insert(std::pair<location,std::string>(loc, bridge_base_name)); //add to use for village naming
 						bridges.insert(loc);
 					}
@@ -1154,8 +1156,8 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 				if(convert_to.empty() == false) {
 					const t_translation::t_terrain letter =
 						t_translation::read_terrain_code(convert_to);
-					if(labels != NULL && terrain[x][y] != letter && name_count++ == name_frequency && on_bridge == false) {
-						labels->insert(std::pair<map_location,std::string>(map_location(x-width/3,y-height/3),name));
+					if(misc_labels != NULL && terrain[x][y] != letter && name_count++ == name_frequency && on_bridge == false) {
+						misc_labels->insert(std::pair<map_location,std::string>(map_location(x-width/3,y-height/3),name));
 						name_count = 0;
 					}
 
@@ -1211,7 +1213,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	 *we name these now that everything else is placed (as e.g., placing
 	 * roads could split a forest)
 	 */
-	if ( labels != NULL ) {
+	if ( misc_labels != NULL ) {
 		for (x = width / 3; x < (width / 3)*2; x++) {
 			for (y = height / 3; y < (height / 3) * 2;y++) {
 				//check the terrain of the tile
@@ -1225,7 +1227,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 						for(size_t ntry = 0; ntry != 30 && (ntry == 0 || used_names.count(name) > 0); ++ntry) {
 							name = generate_name(name_generator, "mountain_name", &base_name);
 						}
-						labels->insert(std::pair<map_location, std::string>(loc, name));
+						misc_labels->insert(std::pair<map_location, std::string>(loc, name));
 						mountain_names.insert(std::pair<location, std::string>(loc, base_name));
 					}
 				}
@@ -1238,7 +1240,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 						}
 						forest_names.insert(std::pair<location, std::string>(loc, base_name));
 						// name all connected forest tiles accordingly
-						flood_name(loc, base_name, forest_names, t_translation::ALL_FORESTS, terrain, width, height, 0, labels, name);
+						flood_name(loc, base_name, forest_names, t_translation::ALL_FORESTS, terrain, width, height, 0, misc_labels, name);
 					}
 				}
 				else if (t_translation::terrain_matches(terr, t_translation::ALL_SWAMPS)) {
@@ -1250,16 +1252,18 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 						}
 						swamp_names.insert(std::pair<location, std::string>(loc, base_name));
 						// name all connected swamp tiles accordingly
-						flood_name(loc, base_name, swamp_names, t_translation::ALL_SWAMPS, terrain, width, height, 0, labels, name);
+						flood_name(loc, base_name, swamp_names, t_translation::ALL_SWAMPS, terrain, width, height, 0, misc_labels, name);
 					}
 				}
 			}//for (y)
 		}//for (x)
-	}//if (labels)
+	}//if (misc_labels)
 
 	if (nvillages > 0)
 	{
 		config naming_cfg = cfg.child_or_empty("village_naming");
+		// If the [village_naming] child is empty, we cannot provide good names.
+		std::map<map_location,std::string>* village_labels = naming_cfg.empty() ? NULL : labels;
 		// HACK: dummy names to satisfy unit_race requirements
 		naming_cfg["id"] = "village_naming";
 		naming_cfg["plural_name"] = "villages";
@@ -1311,7 +1315,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 							villages.insert(res);
 
-							if(labels != NULL && naming_cfg.empty() == false) {
+							if ( village_labels != NULL ) {
 								const map_location loc(res.x-width/3,res.y-height/3);
 
 								map_location adj[6];
@@ -1412,7 +1416,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 								}
 
 								used_names.insert(name);
-								labels->insert(std::pair<map_location,std::string>(loc,name));
+								village_labels->insert(std::pair<map_location,std::string>(loc,name));
 							}
 						}
 					}
