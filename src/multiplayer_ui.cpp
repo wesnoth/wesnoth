@@ -29,6 +29,7 @@
 #include "multiplayer_ui.hpp"
 #include "sound.hpp"
 #include "replay.hpp"
+#include "unit_id.hpp"
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
 
@@ -111,6 +112,7 @@ void level_to_gamestate(config& level, game_state& state)
 
 	carryover_info sides = carryover_info(state.carryover_sides_start);
 
+	n_unit::id_manager::instance().set_save_id(level["next_underlying_unit_id"]);
 	//set random
 	const config::attribute_value &seed = level["random_seed"];
 	if(!seed.empty()) {
