@@ -56,7 +56,7 @@ indica un identificador, aparecerá un menú de escolla. \fBNota:\fP ao empregar
 esta opción asegúrese tamén de indicar o directorio dos datos como argumento
 final, ou asumirase que o identificador é dito directorio.
 .TP 
-\fB\-\-campaign\-difficulty [<difficulty>]\fP
+\fB\-\-campaign\-difficulty [<dificultade>]\fP
 A dificultade da campaña indicada (do 1 ao máximo). Se non se especificase,
 aparecería un diálogo de escolla da dificultade da campaña.
 .TP 
@@ -144,21 +144,21 @@ Executa o xogo sen sons e sen música.
 \fB\-\-path\fP
 Devolve o directorio de datos do xogo.
 .TP 
-\fB\-p, \-\-preprocess <source file/folder> <target directory>\fP
-preprocesses a specified file/folder. For each file(s) a plain .cfg file and
-a processed .cfg file will be written in specified target directory. If a
-folder is specified, it will be preprocessed recursively based on the known
-preprocessor rules. The common macroses from the "data/core/macros"
-directory will be preprocessed before the specified resources.  Example:
-\fB\-p ~/wesnoth/data/campaigns/tutorial ~/result.\fP For details regarding the
-preprocessor visit:
-http://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor
+\fB\-p, \-\-preprocess <ficheiro ou cartafol de orixe> <directorio de destino>\fP
+Preprocesa o ficheiro ou cartafol indicado. O ficheiro ou ficheiros
+escribiranse no directorio de destino indicado: un ficheiro “.cfg” simple e
+outro procesado. Se se indica un cartafol, preprocesaranse todos os seus
+contidos baseándose nas regras coñecidas para o preprocesador. Os macros
+comúns do directorio «data/core/macros» preprocesaranse antes que os
+recursos indicados. Por exemplo: \fB\-p ~/wesnoth/data/campaigns/tutorial
+~/result\fP. Para máis información sobre o preprocesador, acceda á seguinte
+páxina: http://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor
 
 .TP 
 \fB\-\-preprocess\-defines=DEFINE1,DEFINE2,etc\fP
-comma separated list of defines to be used by the '\-\-preprocess' command. If
-\fBSKIP_CORE\fP is in the define list the "data/core" directory won't be
-preprocessed.
+Lista de ordes «define» —separada por comas— para que empregue a orde
+«\-\-preprocess». Se a lista inclúe \fBSKIP_CORE\fP, non se preprocesará o
+directorio «data/core».
 .TP 
 \fB\-\-preprocess\-input\-macros <ficheiro_fonte>\fP
 Só o emprega a orde «\-\-preprocess». Especifica un ficheiro con definicións
@@ -177,13 +177,13 @@ Establece a resolución do xogo. Por exemplo: \fB\-r 800x600\fP.
 Conéctase á máquina especificada se existe, senón conéctase ao primeiro
 servidor da configuración. Por exemplo: \fB\-\-server server.wesnoth.org\fP.
 .TP 
-\fB\-\-username\fP\fI<username>\fP
-uses <username> when connecting to a server, ignoring other
-preferences.
+\fB\-\-username\fP\fI<usuario>\fP
+Emprega o <usuario> indicado ao conectarse ao servidor, ignorando a
+configuración.
 .TP 
-\fB\-\-password\fP\fI<password>\fP
-uses <password> when connecting to a server, ignoring other
-preferences. Unsafe.
+\fB\-\-password\fP\fI<contrasinal>\fP
+Emprega o <contrasinal> indicado ao conectarse ao servidor,
+ignorando a configuración. É pouco seguro.
 .TP 
 \fB\-\-strict\-validation\fP
 Os erros de corrección trátanse coma erros graves.

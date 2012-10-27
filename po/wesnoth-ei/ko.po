@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-25 12:35+0200\n"
+"POT-Creation-Date: 2012-10-27 15:56+0200\n"
 "PO-Revision-Date: 2012-03-10 16:06+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -673,7 +673,7 @@ msgstr "좋소. 당신의 싸움에 행운이 깃들기를."
 #. [scenario]: id=09_Xenophobia
 #. [scenario]: id=11_Captured
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:215
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:609
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:623
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:326
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:535
 msgid ""
@@ -687,7 +687,7 @@ msgstr ""
 #. [scenario]: id=09_Xenophobia
 #. [scenario]: id=11_Captured
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:216
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:610
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:624
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:327
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:536
 msgid "holy amulet^Take it"
@@ -698,7 +698,7 @@ msgstr "가져간다"
 #. [scenario]: id=09_Xenophobia
 #. [scenario]: id=11_Captured
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:217
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:611
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:625
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:328
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:537
 msgid "holy amulet^Leave it"
@@ -709,7 +709,7 @@ msgstr "놔둔다"
 #. [scenario]: id=09_Xenophobia
 #. [scenario]: id=11_Captured
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:218
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:612
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:626
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:329
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:538
 msgid "I am not suited to using this item! Let another take it."
@@ -717,7 +717,7 @@ msgstr "나는 이런 아이템을 쓰기에 적합하지 않아! 다른 사람�
 
 #. [object]
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:220
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:614
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:628
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:331
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:540
 msgid "Holy Amulet"
@@ -1178,7 +1178,7 @@ msgstr "가세, Wesnoth로 돌아가서 북쪽 전초기지를 도와야지."
 #| "dark sorcerer?"
 msgid ""
 "We have defeated this patrol, but we can still turn back! Do you insist on "
-"traveling east now, or shall we defeat this dark sorcerer?"
+"traveling east, or shall we defeat this dark sorcerer?"
 msgstr ""
 "우리가 이 정찰대를 쳐부수긴 했지만, 아직은 돌아갈 수 있네! 여기서 더 동쪽으"
 "로 갈텐가, 아니면 돌아가서 이 흑마법사를 처단할겐가?"
@@ -1208,9 +1208,11 @@ msgstr "안돼!! 놈들이 달아나면 승진할 수가 없어!"
 
 #. [option]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:192
-msgid ""
-"You are right. It is foolish to go onward — we must defeat Mal-Skraat and "
-"turn back, going to the Northern Outpost."
+#, fuzzy
+#| msgid ""
+#| "You are right. It is foolish to go onward — we must defeat Mal-Skraat and "
+#| "turn back, going to the Northern Outpost."
+msgid "You are right. It is foolish to go onward — we will turn back."
 msgstr ""
 "당신의 말이 맞습니다. 더 가는건 어리석은 짓이죠. 우린 Mal-Skraat를 쳐부수고 "
 "돌아가서 북쪽 전초기지로 가야합니다."
@@ -1447,7 +1449,7 @@ msgstr "북부 전초기지"
 #. [side]: type=Mounted Fighter, id=Owaec
 #. [unit]: id=Owaec, type=$stored_Owaec.type
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:43
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:591
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:605
 msgid "Owaec"
 msgstr "Owaec"
 
@@ -1587,8 +1589,8 @@ msgstr ""
 #| "I won’t be able to help you in battle."
 msgid ""
 "I think I may be able to help. Gweddry, I believe I can cast a spell that "
-"will reveal them when we enter the villages. However, it will require my "
-"full attention; I won’t be able to help you in battle."
+"will reveal the bandits when our troops enter a village. However, this magic "
+"will require my full attention; I won’t be able to help you in battle."
 msgstr ""
 "내가 자네들을 도와줄 수 있을 것 같군. 나는 마법사일세. 내가 주문을 외워서 자"
 "네들이 마을에 들어가면 놈들을 찾아낼 수 있게 해줄 수 있을걸세. 하지만 그렇게 "
@@ -1640,24 +1642,23 @@ msgstr ""
 #| "defeat the outlaws and undead!"
 msgid ""
 "It seems the undead have caught up with us! We will have to kill them too if "
-"we want the villagers to be safe. Well, I will see you when you defeat the "
-"outlaws and undead!"
+"we want the villagers to be safe. Well, I will begin casting the spell."
 msgstr ""
 "언데드들이 우릴 따라잡은 모양이군! 이 마을들을 안전하게 지키려면 놈들도 죽여"
 "야 하네. 음, 무법자들과 언데드들을 무찌르고 나면 보세!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:286
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:300
 msgid "They’re here!"
 msgstr "놈들이 여기 있다!"
 
 #. [unit]: type=Assassin, id=Shodrano
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:434
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:448
 msgid "Shodrano"
 msgstr "Shodrano"
 
 #. [message]: speaker=Shodrano
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:439
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:453
 msgid ""
 "So, you have found my hiding place. Very well, I guess I will have to kill "
 "you!"
@@ -1666,7 +1667,7 @@ msgstr ""
 "나!"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:443
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:457
 #, fuzzy
 #| msgid ""
 #| "That’s the bandit leader! Kill him, and we will have fulfilled our duty!"
@@ -1674,43 +1675,43 @@ msgid "That’s the bandit leader! Kill him!"
 msgstr "놈이 도적단 대장이오! 놈을 죽이면 우리의 임무는 완수되오!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:483
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:497
 msgid "No outlaws in this village."
 msgstr "이 마을에는 무법자가 없다."
 
 #. [message]: speaker=Shodrano
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:494
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:508
 msgid "You have defeated me! I can terrorize the villagers no more..."
 msgstr ""
 "너희가 날 이겼구나! 이제 마을 녀석들을 공포에 떨게 하는 일은 할 수 없군..."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:520
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:536
 msgid "We still need to defeat these undead for the villagers to be safe."
 msgstr "마을 사람들의 안전을 확보하려면 아직 이 언데드들을 무찔러야 하오."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:551
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:567
 msgid ""
 "There are still these outlaws to take care of — we must continue fighting "
 "here."
 msgstr "아직 이 무법자들을 해결해야 하오. 우린 여기서 계속 싸워야 하오."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:569
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:585
 msgid ""
 "Well, both the outlaws and undead are defeated. We have some time to spare "
 "now before more undead arrive."
 msgstr ""
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:576
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:590
 #, fuzzy
 #| msgid ""
 #| "Good work! Now, we should move onward, north. Tell the villagers to pack "
 #| "their belongings and follow us."
 msgid ""
-"Good work! Now, we must move onward, north. Tell the villagers to pack their "
+"Good! Now, we must move onward, north. Tell the villagers to pack their "
 "belongings and head west."
 msgstr ""
 "잘 했네! 이제, 앞으로, 북쪽으로 나아가세. 마을 사람들에게 일러서 소지품을 챙"
@@ -3884,9 +3885,13 @@ msgstr "충격"
 
 #. [attacks]: id=shock
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:10
-#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:12
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:11
+#, fuzzy
+#| msgid ""
+#| "Shock:\n"
+#| "When this attack is used on offense, the opponent will retaliate with one "
+#| "less strike than normally, to a minimum of one strike."
 msgid ""
-"Shock:\n"
 "When this attack is used on offense, the opponent will retaliate with one "
 "less strike than normally, to a minimum of one strike."
 msgstr ""

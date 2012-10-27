@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-ei\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-25 12:35+0200\n"
+"POT-Creation-Date: 2012-10-27 15:56+0200\n"
 "PO-Revision-Date: 2011-12-10 10:16+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -697,7 +697,7 @@ msgstr "Добро онда. Најбоље вам желим у вашој бо
 #. [scenario]: id=09_Xenophobia
 #. [scenario]: id=11_Captured
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:215
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:609
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:623
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:326
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:535
 msgid ""
@@ -710,7 +710,7 @@ msgstr "Ко понесе ову амајлију, сваки ће му удар
 #. [scenario]: id=09_Xenophobia
 #. [scenario]: id=11_Captured
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:216
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:610
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:624
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:327
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:536
 msgid "holy amulet^Take it"
@@ -721,7 +721,7 @@ msgstr "Узми је"
 #. [scenario]: id=09_Xenophobia
 #. [scenario]: id=11_Captured
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:217
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:611
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:625
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:328
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:537
 msgid "holy amulet^Leave it"
@@ -732,7 +732,7 @@ msgstr "Остави је"
 #. [scenario]: id=09_Xenophobia
 #. [scenario]: id=11_Captured
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:218
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:612
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:626
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:329
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:538
 msgid "I am not suited to using this item! Let another take it."
@@ -740,7 +740,7 @@ msgstr "Мени не пристаје ношење овога! Нека је к
 
 #. [object]
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:220
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:614
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:628
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:331
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:540
 msgid "Holy Amulet"
@@ -1211,7 +1211,7 @@ msgstr "Хајмо, натраг у Веснот, да помогнемо сев
 #| "dark sorcerer?"
 msgid ""
 "We have defeated this patrol, but we can still turn back! Do you insist on "
-"traveling east now, or shall we defeat this dark sorcerer?"
+"traveling east, or shall we defeat this dark sorcerer?"
 msgstr ""
 "Поразисмо смо ову стражу, али и даље можемо поћи натраг! Хоћемо ли сада "
 "дубље на исток, или да се окренемо и покушамо да се решимо тог тамног "
@@ -1242,9 +1242,11 @@ msgstr "Не! Не могу добити унапређење ако ми поб
 
 #. [option]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:192
-msgid ""
-"You are right. It is foolish to go onward — we must defeat Mal-Skraat and "
-"turn back, going to the Northern Outpost."
+#, fuzzy
+#| msgid ""
+#| "You are right. It is foolish to go onward — we must defeat Mal-Skraat and "
+#| "turn back, going to the Northern Outpost."
+msgid "You are right. It is foolish to go onward — we will turn back."
 msgstr ""
 "У праву сте. Несмотрено је наставити напред — морамо поразити мал Скрата и "
 "окренути се, према северној испостави."
@@ -1490,7 +1492,7 @@ msgstr "Северна испостава"
 #. [side]: type=Mounted Fighter, id=Owaec
 #. [unit]: id=Owaec, type=$stored_Owaec.type
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:43
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:591
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:605
 msgid "Owaec"
 msgstr "Оваек"
 
@@ -1631,8 +1633,8 @@ msgstr ""
 #| "I won’t be able to help you in battle."
 msgid ""
 "I think I may be able to help. Gweddry, I believe I can cast a spell that "
-"will reveal them when we enter the villages. However, it will require my "
-"full attention; I won’t be able to help you in battle."
+"will reveal the bandits when our troops enter a village. However, this magic "
+"will require my full attention; I won’t be able to help you in battle."
 msgstr ""
 "Можда могу помоћи. Ја сам маг — верујем да могу бацити чаролију која ће "
 "разоткрити разбојнике када уђете у село. Међутим, не могу вам помоћи у боју."
@@ -1685,26 +1687,25 @@ msgstr ""
 #| "defeat the outlaws and undead!"
 msgid ""
 "It seems the undead have caught up with us! We will have to kill them too if "
-"we want the villagers to be safe. Well, I will see you when you defeat the "
-"outlaws and undead!"
+"we want the villagers to be safe. Well, I will begin casting the spell."
 msgstr ""
 "Изгледа да нас немртви сустигоше! Мораћемо и са њима да се разрачунамо, ако "
 "желимо да привремено спасимо ова села. Па, видимо се поново када поразите "
 "одметнике и немртве!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:286
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:300
 msgid "They’re here!"
 msgstr "Ево их стижу!"
 
 # |, no-check-spell
 #. [unit]: type=Assassin, id=Shodrano
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:434
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:448
 msgid "Shodrano"
 msgstr "Шодрано"
 
 #. [message]: speaker=Shodrano
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:439
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:453
 msgid ""
 "So, you have found my hiding place. Very well, I guess I will have to kill "
 "you!"
@@ -1713,7 +1714,7 @@ msgstr ""
 "побијем!"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:443
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:457
 #, fuzzy
 #| msgid ""
 #| "That’s the bandit leader! Kill him, and we will have fulfilled our duty!"
@@ -1721,29 +1722,29 @@ msgid "That’s the bandit leader! Kill him!"
 msgstr "То је разбојнички вођа! Убијте га, и испунили смо своју дужност!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:483
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:497
 msgid "No outlaws in this village."
 msgstr "Нема одметника у овом селу."
 
 #. [message]: speaker=Shodrano
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:494
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:508
 msgid "You have defeated me! I can terrorize the villagers no more..."
 msgstr "Поражен сам! Нема ми више страховладе у овим селима..."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:520
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:536
 msgid "We still need to defeat these undead for the villagers to be safe."
 msgstr "И даље нам је поразити немртве да би сељани били безбедни."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:551
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:567
 msgid ""
 "There are still these outlaws to take care of — we must continue fighting "
 "here."
 msgstr "Још се морамо побринути за одметнике — морамо наставити борбу."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:569
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:585
 msgid ""
 "Well, both the outlaws and undead are defeated. We have some time to spare "
 "now before more undead arrive."
@@ -1752,13 +1753,13 @@ msgstr ""
 "пре него што стигне још немртвих."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:576
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:590
 #, fuzzy
 #| msgid ""
 #| "Good work! Now, we should move onward, north. Tell the villagers to pack "
 #| "their belongings and follow us."
 msgid ""
-"Good work! Now, we must move onward, north. Tell the villagers to pack their "
+"Good! Now, we must move onward, north. Tell the villagers to pack their "
 "belongings and head west."
 msgstr ""
 "Одлично урађено! Кренимо сада даље, на север. Саопштите сељанима да се "
@@ -4013,9 +4014,13 @@ msgstr "шок"
 
 #. [attacks]: id=shock
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:10
-#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:12
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:11
+#, fuzzy
+#| msgid ""
+#| "Shock:\n"
+#| "When this attack is used on offense, the opponent will retaliate with one "
+#| "less strike than normally, to a minimum of one strike."
 msgid ""
-"Shock:\n"
 "When this attack is used on offense, the opponent will retaliate with one "
 "less strike than normally, to a minimum of one strike."
 msgstr ""

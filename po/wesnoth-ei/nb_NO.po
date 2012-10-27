@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-25 12:35+0200\n"
+"POT-Creation-Date: 2012-10-27 15:56+0200\n"
 "PO-Revision-Date: 2006-07-02 01:10+0100\n"
 "Last-Translator: Gaute Storli <gauteamus@gmail.com>\n"
 "Language-Team: none\n"
@@ -674,7 +674,7 @@ msgstr "I så fall: måtte krigslykken følge hammerene deres!"
 #. [scenario]: id=09_Xenophobia
 #. [scenario]: id=11_Captured
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:215
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:609
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:623
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:326
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:535
 #, fuzzy
@@ -688,7 +688,7 @@ msgstr "Bæreren av denne amuletten vil slå hellige slag."
 #. [scenario]: id=09_Xenophobia
 #. [scenario]: id=11_Captured
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:216
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:610
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:624
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:327
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:536
 #, fuzzy
@@ -700,7 +700,7 @@ msgstr "Hellig amulett"
 #. [scenario]: id=09_Xenophobia
 #. [scenario]: id=11_Captured
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:217
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:611
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:625
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:328
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:537
 msgid "holy amulet^Leave it"
@@ -711,7 +711,7 @@ msgstr ""
 #. [scenario]: id=09_Xenophobia
 #. [scenario]: id=11_Captured
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:218
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:612
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:626
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:329
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:538
 msgid "I am not suited to using this item! Let another take it."
@@ -719,7 +719,7 @@ msgstr "La en annen ta denne, jeg er ikke den rette."
 
 #. [object]
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:220
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:614
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:628
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:331
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:540
 msgid "Holy Amulet"
@@ -1169,7 +1169,7 @@ msgstr "Kom, la oss dra tilbake til Wesnoth og den nordlige utposten."
 #, fuzzy
 msgid ""
 "We have defeated this patrol, but we can still turn back! Do you insist on "
-"traveling east now, or shall we defeat this dark sorcerer?"
+"traveling east, or shall we defeat this dark sorcerer?"
 msgstr ""
 "Vi har nedkjempet grensevokterne, men kan fremdeles snu i tide! Drar vi "
 "videre inn i disse ødelandene, eller forsøker vi å slå seidmannen og kjempe "
@@ -1201,9 +1201,7 @@ msgstr "Neiii!! Jeg blir ikke forfremmet om de flykter!"
 #. [option]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:192
 #, fuzzy
-msgid ""
-"You are right. It is foolish to go onward — we must defeat Mal-Skraat and "
-"turn back, going to the Northern Outpost."
+msgid "You are right. It is foolish to go onward — we will turn back."
 msgstr ""
 "Du har rett. Det er tåpelig å fortsette - vi må bekjempe Mal-Skraat og komme "
 "den nordlige utposten til unnsetning."
@@ -1438,7 +1436,7 @@ msgstr "Nordlig Utpost"
 #. [side]: type=Mounted Fighter, id=Owaec
 #. [unit]: id=Owaec, type=$stored_Owaec.type
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:43
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:591
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:605
 msgid "Owaec"
 msgstr "Owaec"
 
@@ -1570,8 +1568,8 @@ msgstr ""
 #| "I won’t be able to help you in battle."
 msgid ""
 "I think I may be able to help. Gweddry, I believe I can cast a spell that "
-"will reveal them when we enter the villages. However, it will require my "
-"full attention; I won’t be able to help you in battle."
+"will reveal the bandits when our troops enter a village. However, this magic "
+"will require my full attention; I won’t be able to help you in battle."
 msgstr ""
 "Jeg tror jeg kan hjelpe deg her. Jeg er magiker: jeg tror jeg kan en formel "
 "som vil avsløre bandittene hvis dere er i samme landsby som dem. Jeg vil på "
@@ -1621,24 +1619,23 @@ msgstr "Så flykt, da! Men mine frender og jeg skal finne dere og drepe dere!"
 #| "defeat the outlaws and undead!"
 msgid ""
 "It seems the undead have caught up with us! We will have to kill them too if "
-"we want the villagers to be safe. Well, I will see you when you defeat the "
-"outlaws and undead!"
+"we want the villagers to be safe. Well, I will begin casting the spell."
 msgstr ""
 "De vandøde har tatt oss igjen! Vi må drepe dem og, hvis landsbyene skal være "
 "trygge. Vel, vi møtes igjen når du har bekjempet badnittene og de vandøde."
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:286
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:300
 msgid "They’re here!"
 msgstr "De er her!"
 
 #. [unit]: type=Assassin, id=Shodrano
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:434
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:448
 msgid "Shodrano"
 msgstr "Shodrano"
 
 #. [message]: speaker=Shodrano
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:439
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:453
 msgid ""
 "So, you have found my hiding place. Very well, I guess I will have to kill "
 "you!"
@@ -1647,29 +1644,29 @@ msgstr ""
 "tyster!"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:443
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:457
 #, fuzzy
 msgid "That’s the bandit leader! Kill him!"
 msgstr "Det er bandittenes anfører! Drep ham, og vi har oppfylt vår plikt."
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:483
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:497
 msgid "No outlaws in this village."
 msgstr "Ingen fredløse i denne landsbyen"
 
 #. [message]: speaker=Shodrano
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:494
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:508
 msgid "You have defeated me! I can terrorize the villagers no more..."
 msgstr ""
 "Du har bekjempet meg, og jeg kan ikke lenger terrorisere befolkningen.."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:520
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:536
 msgid "We still need to defeat these undead for the villagers to be safe."
 msgstr "Vi har fortsatt de vandøde å ta oss av før området igjen er trygt."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:551
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:567
 #, fuzzy
 msgid ""
 "There are still these outlaws to take care of — we must continue fighting "
@@ -1677,7 +1674,7 @@ msgid ""
 msgstr "Vi har fortsatt de fredløse å ta oss av - vi må fortsette kampen her."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:569
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:585
 msgid ""
 "Well, both the outlaws and undead are defeated. We have some time to spare "
 "now before more undead arrive."
@@ -1686,10 +1683,10 @@ msgstr ""
 "vandøde finner tilbake til sporet."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:576
+#: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:590
 #, fuzzy
 msgid ""
-"Good work! Now, we must move onward, north. Tell the villagers to pack their "
+"Good! Now, we must move onward, north. Tell the villagers to pack their "
 "belongings and head west."
 msgstr ""
 "Bra gjort! Nå bør vi dra nordover. Be landsbyboerne om å samle eiendelene "
@@ -3583,9 +3580,8 @@ msgstr ""
 
 #. [attacks]: id=shock
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:10
-#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:12
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:11
 msgid ""
-"Shock:\n"
 "When this attack is used on offense, the opponent will retaliate with one "
 "less strike than normally, to a minimum of one strike."
 msgstr ""

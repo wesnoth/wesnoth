@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-09-01 18:47+0200\n"
+"POT-Creation-Date: 2012-10-27 15:56+0200\n"
 "PO-Revision-Date: 2012-05-15 03:21+0300\n"
 "Last-Translator: Jarkko Patteri <jarkkopatteri@gmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
@@ -160,97 +160,104 @@ msgstr ""
 "vaikuta löydettyjen yksiköiden listaan"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:165
+#: data/advanced_preferences.cfg:164
+#, fuzzy
+#| msgid "Compressed saves"
+msgid "Compress savegames using bzip2"
+msgstr "Tiivistetyt tallennukset"
+
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:172
 msgid "Joystick support"
 msgstr "Joystick -tuki"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:172
+#: data/advanced_preferences.cfg:179
 msgid "Joystick: number of the scroll X-axis joystick"
 msgstr "Joystick: sauvan X-akselin arvo, joystick"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:182
+#: data/advanced_preferences.cfg:189
 msgid "Joystick: number of the scroll X-axis"
 msgstr "Joystick: sauvan X-akselin arvo"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:192
+#: data/advanced_preferences.cfg:199
 msgid "Joystick: number of the scroll Y-axis joystick"
 msgstr "Joystick: sauvan Y-akselin arvo, joystick"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:202
+#: data/advanced_preferences.cfg:209
 msgid "Joystick: number of the scroll Y-axis"
 msgstr "Joystick: sauvan Y-akselin arvo"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:212
+#: data/advanced_preferences.cfg:219
 msgid "Joystick: deadzone of the scrolling stick"
 msgstr "Joystick: sauvan kuollut alue"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:222
+#: data/advanced_preferences.cfg:229
 msgid "Joystick: number of the cursor X-axis joystick"
 msgstr "Joystick: kursorin X-akselin arvo, joystick"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:232
+#: data/advanced_preferences.cfg:239
 msgid "Joystick: number of the cursor X-axis"
 msgstr "Joystick: kursorin X-akselin arvo"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:242
+#: data/advanced_preferences.cfg:249
 msgid "Joystick: number of the cursor Y-axis joystick"
 msgstr "Joystick: kursorin Y-akselin arvo, joystick"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:252
+#: data/advanced_preferences.cfg:259
 msgid "Joystick: number of the cursor Y-axis"
 msgstr "Joystick: kursorin Y-akselin arvo"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:262
+#: data/advanced_preferences.cfg:269
 msgid "Joystick: deadzone of the cursor stick"
 msgstr "Joystick: kursorisauvan kuollut alue"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:272
+#: data/advanced_preferences.cfg:279
 msgid "Joystick: number of the mouse X-axis joystick"
 msgstr "Joystick: hiiren X-akselin arvo, joystick"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:282
+#: data/advanced_preferences.cfg:289
 msgid "Joystick: number of the mouse X-axis"
 msgstr "Joystick: hiiren X-akselin arvo"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:292
+#: data/advanced_preferences.cfg:299
 msgid "Joystick: number of the mouse Y-axis joystick"
 msgstr "Joystick: hiiren Y-akselin arvo, joystick"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:302
+#: data/advanced_preferences.cfg:309
 msgid "Joystick: number of the mouse Y-axis"
 msgstr "Joystick: hiiren Y-akselin arvo"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:312
+#: data/advanced_preferences.cfg:319
 msgid "Joystick: deadzone of the mouse stick"
 msgstr "Joystick: hiirisauvan kuollut alue"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:322
+#: data/advanced_preferences.cfg:329
 msgid "Joystick: number of the thrust axis joystick"
 msgstr "Joystick: kaasuvivun akselin arvo, joystick"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:332
+#: data/advanced_preferences.cfg:339
 msgid "Joystick: number of the thrust axis"
 msgstr "Joystick: kaasuvivun akselin arvo"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:342
+#: data/advanced_preferences.cfg:349
 msgid "Joystick: deadzone of the thruster"
 msgstr "Joystick: kaasuvivun kuollut alue"
 
@@ -263,7 +270,7 @@ msgstr "RCA -tekoäly"
 #. [lua]: set_status
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:309
-#: data/lua/wml-tags.lua:1265 src/actions/attack.cpp:877
+#: data/lua/wml-tags.lua:1265 src/actions/attack.cpp:802
 msgid "poisoned"
 msgstr "myrkytetty"
 
@@ -363,227 +370,234 @@ msgid "Croatian Translation"
 msgstr "Kroatiankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1459
+#: data/core/about.cfg:1462
 msgid "Czech Translation"
 msgstr "Tšekinkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1519
+#: data/core/about.cfg:1522
 msgid "Danish Translation"
 msgstr "Tanskankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1550
+#: data/core/about.cfg:1553
 msgid "Dutch Translation"
 msgstr "Hollanninkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1614
+#: data/core/about.cfg:1617
 msgid "English (GB) Translation"
 msgstr "Brittienglanninkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1637
+#: data/core/about.cfg:1640
 msgid "English (Shaw) Translation"
 msgstr "Eglanninkielinen(Shaw) käännös"
 
 #. [about]
-#: data/core/about.cfg:1655
+#: data/core/about.cfg:1658
 msgid "Esperanto Translation"
 msgstr "Esperantonkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1674
+#: data/core/about.cfg:1677
 msgid "Estonian Translation"
 msgstr "Eestinkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1684
+#: data/core/about.cfg:1687
 msgid "Filipino Translation"
 msgstr "Filipinonkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1694
+#: data/core/about.cfg:1697
 msgid "Finnish Translation"
 msgstr "Suomenkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1740
+#: data/core/about.cfg:1743
 msgid "French Translation"
 msgstr "Ranskankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1899
+#: data/core/about.cfg:1902
 msgid "Friulian Translation"
 msgstr "Friulinkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1906
+#: data/core/about.cfg:1909
 msgid "Galician Translation"
 msgstr "Galegonkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1942
+#: data/core/about.cfg:1945
 msgid "German Translation"
 msgstr "Saksankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:2016
+#: data/core/about.cfg:2019
 msgid "Greek Translation"
 msgstr "Kreikankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:2056
+#: data/core/about.cfg:2059
 msgid "Hebrew Translation"
 msgstr "Hepreankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:2069
+#: data/core/about.cfg:2072
 msgid "Hungarian Translation"
 msgstr "Unkarinkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:2130
+#: data/core/about.cfg:2133
 msgid "Icelandic Translation"
 msgstr "Islanninkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:2140
+#: data/core/about.cfg:2143
 msgid "Indonesian Translation"
 msgstr "Indonesiankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:2163
+#: data/core/about.cfg:2166
 msgid "Irish Translation"
 msgstr "Irlanninkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:2170
+#: data/core/about.cfg:2173
 msgid "Italian Translation"
 msgstr "Italiankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:2214
+#: data/core/about.cfg:2217
 msgid "Japanese Translation"
 msgstr "Japaninkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:2282
+#: data/core/about.cfg:2285
 msgid "Korean Translation"
 msgstr "Koreankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:2290
+#: data/core/about.cfg:2293
 msgid "Latin Translation"
 msgstr "Latinankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:2316
+#: data/core/about.cfg:2319
 msgid "Latvian Translation"
 msgstr "Latviankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:2327
+#: data/core/about.cfg:2330
 msgid "Lithuanian Translation"
 msgstr "Liettuankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:2349
+#: data/core/about.cfg:2352
 msgid "Macedonian Translation"
 msgstr "Makedoniankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:2356
+#: data/core/about.cfg:2359
 msgid "Marathi Translation"
 msgstr "Marathinkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:2365
+#: data/core/about.cfg:2368
 msgid "Norwegian Translation"
 msgstr "Norjankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:2390
+#: data/core/about.cfg:2393
 msgid "Old English Translation"
 msgstr "Vanhan englanninkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:2408
+#: data/core/about.cfg:2411
 msgid "Polish Translation"
 msgstr "Puolankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:2448
+#: data/core/about.cfg:2451
 msgid "Portuguese Translation"
 msgstr "Portugalinkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:2455
+#: data/core/about.cfg:2458
 msgid "Portuguese (Brazil) Translation"
 msgstr "Brasilianportugalinkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:2503
+#: data/core/about.cfg:2506
 msgid "Romanian Translation"
 msgstr "Romaniankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:2511
+#: data/core/about.cfg:2514
 msgid "Russian Translation"
 msgstr "Venäjänkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:2596
+#: data/core/about.cfg:2599
+#, fuzzy
+#| msgid "Galician Translation"
+msgid "Scottish Gaelic Translation"
+msgstr "Galegonkielinen käännös"
+
+#. [about]
+#: data/core/about.cfg:2608
 msgid "Serbian Translation"
 msgstr "Serbiankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:2615
+#: data/core/about.cfg:2627
 msgid "Slovak Translation"
 msgstr "Slovakiankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:2644
+#: data/core/about.cfg:2656
 msgid "Slovenian Translation"
 msgstr "Sloveniankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:2660
+#: data/core/about.cfg:2672
 msgid "Spanish Translation"
 msgstr "Espanjankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:2741
+#: data/core/about.cfg:2756
 msgid "Swedish Translation"
 msgstr "Ruotsinkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:2782
+#: data/core/about.cfg:2797
 msgid "Turkish Translation"
 msgstr "Turkinkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:2804
+#: data/core/about.cfg:2819
 msgid "Ukrainian Translation"
 msgstr "Ukrainankielen käännös"
 
 #. [about]
-#: data/core/about.cfg:2817
+#: data/core/about.cfg:2832
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Valenciankatalaaninkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:2830
+#: data/core/about.cfg:2845
 msgid "Vietnamese Translation"
 msgstr "Vietnaminkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:2849
+#: data/core/about.cfg:2864
 msgid "RACV’s Translation"
 msgstr "RACV:n käännös"
 
 #. [about]
-#: data/core/about.cfg:2856
+#: data/core/about.cfg:2871
 msgid "Bots"
 msgstr "Botit"
 
@@ -1583,369 +1597,217 @@ msgstr ""
 
 #: data/core/macros/names.cfg:43
 msgid ""
-"Aban,Abbas,Abbud,Abdul-ʿAdl,Abdul-Ahad,Abdul-Alim,Abdul-Aliyy,Abdul-Azim,"
-"Abdul-Aziz,Abdul-Badi,Abdul-Baʿith,Abdul-Baqi,Abdul-Bari,Abdul-Barr,Abdul-"
-"Basir,Abdul-Basit,Abdul-Fattah,Abdul-Ghaffar,Abdul-Ghafur,Abdul-Ghani,Abdul-"
-"Hadi,Abdul-Hafiz,Abdul-Hakam,Abdul-Hakim,Abdul-Halim,Abdul-Hamid,Abdul-Haqq,"
-"Abdul-Hasib,Abdul-Hayy,Abdul-Jabbar,Abdul-Jalil,Abdul-Karim,Abdul-Khabir,"
-"Abdul-Khaliq,Abdul-Latif,Abdul-Malik,Abdul-Majid,Abdul-Matin,Abdul-Mubdiʾ,"
-"Abdul-Mughni,Abdul-Muhaimin,Abdul-Muhsi,Abdul-Muhyi,Abdul-Muʿid,Abdul-Muʿizz,"
-"Abdul-Mujib,Abdul-Mumin,Abdul-Muqaddim,Abdul-Muqtadir,Abdul-Musawwir,Abdul-"
-"Mutaʿal,Abdul-Nafi,Abdul-Nasser,Abdul-Nasir,Abdul-Nur,Abdul-Qadir,Abdul-"
-"Qahhar,Abdul-Qawi,Abdul-Qayyum,Abdul-Quddus,Abdul-Rafi,Abdul-Rahim,Abdul-"
-"Rahman,Abdul-Rashid,Abdul-Raʿuf,Abdul-Razzaq,Abdul-Shakur,Abdul-Tawwab,Abdul-"
-"Wadud,Abdul-Wahhab,Abdul-Wahid,Abdul-Wajid,Abdul-Wakil,Abdul-Wali,Abdul-"
-"Waliy,Abdul-Warith,Abdul-Zahir,Abdullah,ʿAbid,ʿAbidin,Abu Bakr,Aby al-Khayr,"
-"Adil,Adham,Adib,ʿAdli,ʿAdnan,ʿAfif,Ahmad,ʿAjib,ʿAkif,Akil,Akram,Alaʾ,Alaʾ al-"
-"Din,Alʿ Abbas,Aladdin,al-Bara,al-Hakam,al-Harith,Alhasan,Alhusain,Ali,Alim,"
-"Almahdi,al-Safi,Altaf,Altair,al-Tayyib,al-Tijani,al-Tufail,Amid,ʿAmid,Amin,"
-"Amir,ʿAmir,Amjad,ʿAmmar,ʿAmro,Anas,Anis,ʿAntarah,Anwar,ʿAqil,Arfan,Arif,"
-"ʿArif,Asad,Asʿad,Asadel,Ashraf,Asif,ʿAsim,Aswad,Ataʿ,Ataʿ Allah,Ataʿ al-"
-"Rahman,Athil,Athir,ʿAtif,ʿAwad,ʿAwf,Aws,Awwab,Ayham,Ayman,Ayser,Ayyub,Aza,"
-"ʿAzab,Azhar,Azim,ʿAziz,ʿAzzam,Badi,Badi al-Zaman,Badr,Badr al-Din,Badri,"
-"Bahaʿ,Bahiyy al-Din,Bahij,Bahir,Bakr,Bakri,Baligh,Bandar,Barakah,Barir,"
-"Bashshar,Basil,Basim,Bassam,Bayezid,Bayhas,Bilal,Bishr,Boulos,Budail,Burhan,"
-"Bushr,Butrus,Dabir,Dani,Darwish,Daʿud,Dhakir,Dhakiy,Dhakwan,Dhul Fiqar,Dirar,"
-"Diya,Diya al-Din,Duqaq,Fadi,Fadil,Fadl,Fadl Allah,Fahd,Fahad,Fahmi,Faisal,"
-"Faʿiz,Fakhir,Fakhr al-Din,Fakhri,Fakih,Falah,Falih,Faraj,Farhan,Farid,Fariq,"
-"Fariq,Faris,Faruq,Fath,Fathi,Fatih,Fatin,Fawwaz,Fawzan,Fawzi,Fayyad,Ferran,"
-"Fida,Fikri,Firas,Fuʿad,Fudail,Gamal,Ghayth,Ghali,Ghalib,Ghanim,Ghassan,"
-"Ghawth,Ghazwan,Ghiyath,Habbab,Habib,Haddad,Hadi,Hafiz,Hakem,Hakim,Halim,"
-"Hamal,Hamas,Hamdan,Hamdi,Hamid,Hamim,Hamzah,Hana,Hanaʾi,Hanbal,Hani,Hanif,"
-"Hannad,Haris,Harith,Harun,Hashim,Hassan,Hatim,Haydar,Haytham,Hayyan,Hazim,"
-"Hilal,Hilmi,Hisham,Hud,Hudad,Hudhafah,Hudhayfah,Humam,Hussein,Husam,Husam al-"
-"Din,Ibrahim,ʿId,Idris,Ihsan,Ihtisham,ʿIkrimah,Ilias,ʿImad,Imad al-Din,Imran,"
-"Imtiyaz,Inʿam,Iqbal,ʿIrfan,ʿIsa,ʿIsam,Ishaq,Ismaʿil,Iyad,Iyas,Izz al-Din,"
-"Jabbar,Jabr,Jabir,Jad Allah,Jaʿfar,Jal,Jalal,Jalal al-Din,Jalil,Jamal,Jamal "
-"al-Din,Jamil,Jarir,Jasim,Jaul,Jaun,Jawad,Jawdah,Jawhar,Jibran,Jibril,Jubair,"
-"Jul,Jumah,Junayd,Juwain,Kadar,Kadin,Kadir,Kahil,Kaliq,Kamal,Kamil,Karam,"
-"Kardal,Karif,Karim,Kasib,Kasim,Katib,Kazim,Khalaf,Khaldun,Khalid,Khalil,"
-"Khalil al-Allah,Khalis,Khatib,Khair al-Din,Khairi,Khoury,Khulus,Khuzaymah,"
-"Kutaiba,Labib,Lablab,Latif,Layth,LuʿayLubayd,Luqman,Lut,Lutfi,Maʿd,Madani,"
-"Mahbub,Mahdi,Mahfuz,Mahir,Mahjub,Mahmud,Mahrus,Maimun,Majd,Majdy,Majd al-Din,"
-"Majid,Makin,Malik,Mamduh,Maʿmun,Maʿin,Mandhur,Mansur,Marghub,Marid,Maʿruf,"
-"Marwan,Marzuq,Mashʿal,Mashhur,Masrur,Masʿud,Masun,Maysarah,Mazhar,Mazin,"
-"Mehmed,Mihran,Mihyar,Mikaʾil,Miqdad,Misbah,Mishʿal,Miyaz,Muʾadh,Muʾawiyah,"
-"Muʾayyad,Mubarak,Mubin,Mudar,Muddaththir,Mufid,Muflih,Muhab,Muhayr,Muhammad,"
-"Muhanna,Muhannad,Muhib,Muhibb,Muhsin,Muhtadi,Muhyi al-Din,Muʿin,Muʿizz,Mujab,"
-"Mujahid,Mukarram,Mukhlis,Mukhtar,Mulham,Mulhim,Muʿmmar,Muʿmin,Mumtaz,Munahid,"
-"Mundhir,Munib,Munif,Munir,Muʿnis,Munjid,Munsif,Muntasir,Murad,Murid,Murshid,"
-"Murtada,Musa,Musʿab,Musaʿid,Mushtaq,Muslih,Muslim,Mutafa,Mutaʾ,Muʿtasim,"
-"Mutawalli,Muʿtazz,Muthanna,Muti,Muwaffaq,Muyassar,Muzaffar,Mussammil,Nabhan,"
-"Nabighah,Nabih,Nabil,Nadhir,Nadim,Nadir,Nafiʾ,Nahid,Naʾil,Naʾim,Naji,Najib,"
-"Najid,Najjar,Najm al-Din,Naʿaman,Namir,Nashʿah,Nashʿat,Nashwan,Nasib,Nasih,"
-"Nasim,Nasir,Nasir al-Din,Nasr,Nasri,Nasuh,Nawaf,Nawfal,Nayif,Nazih,Nazim,"
-"Nazmi,Nibras,Nidal,Nijad,Nimr,Nizar,Nuʿaym,Nuh,Nuhayd,Numair,Nuʿman,Nur al-"
-"Din,Nuri,Nusrah,Nusrat,Omar,Orhan,Osman,Qasim,Qays,Qudamah,Qusay,Qatadah,"
-"Qutaybah,Qutb,Qutuz,Rabah,Rabi,Radi,Rafi,Rafid,Rafiq,Raghib,Rahman,Raʿid,"
-"Raʿif,Rais,Rajaa,Rajab,Raji,Rajih,Rakin,Rami,Ramih,Ramiz,Ramzi,Rani,Rashad,"
-"Rashid,Rasil,Rasin,Rasmi,Rasul,Ratib,Raʿuf,Rayhan,Rayyan,Razin,Ridha,Ridwan,"
-"Rihab,Riyad,Rizq,Ruhi,Rushd,Rushdi,Ruwayd,Saad,Saʿadah,Sab,Sabih,Sabir,Sabri,"
-"Saʿd,Saʿd al-Din,Sadad,Sadid,Sadiq,Saʿdun,Saʿid,Safi,Safiy,Safiy al-Din,"
-"Safuh,Safwah,Safwat,Safwan,Sahib,Sahir,Sahl,Saʾib,Saif,Saif al-Din,Sajid,"
-"Sajjad,Sakhr,Salah,Salah al-Din,Salamah,Salih,Salim,Salman,Sami,Samih,Samir,"
-"Samman,Saqr,Sariyah,Sati,Saud,Sayyid,Shaʿban,Shadi,Shadin,Shafi,Shafiq,"
-"Shahid,Shahin,Shahir,Shakib,Shakir,Shams al-Din,Shamal,Shamil,Shamim,Sharaf,"
-"Sharif,Shawqi,Shihab,Shihab al-Din,Shihad,Shuʿayb,Shukri,Shumayl,Siddiq,"
-"Sinan,Siraj,Siraj al-Din,Sofian,Subhi,Sufyan,Suhayb,Suhayl,Suhaym,Sulaiman,"
-"Sumrah,Suraqah,Suʿud,Tahir,Tahsin,Taym Allah,Taj,Taj al-Din,Talal,Talib,"
-"Tamim,Tamir,Tamam,Tammam,Taqiy,Tarif,Tariq,Taslim,Tawfiq,Tawhid,Taymullah,"
-"Taysir,Tayyib,Thabit,Thamir,Thaqib,Thawab,Thawban,ʿUbaidah,Ubaid,Ubayy,"
-"ʿUdayl,ʿUday,ʿUmar,Umarah,Umair,ʾaUrwah,Usaym,Usama,ʿUtbah,Uthal,Uthman,"
-"Waddah,Wadi,Wadid,Wafiq,Wahab,Wahhab,Wahid,Waʾil,Wajdi,Wajid,Wajih,Wakil,"
-"Walid,Walif,Waliy Allah,Waliy al-Din,Waqar,Waqqas,Ward,Wasif,Wasil,Wasim,"
-"Wazir,Yahya,Yaman,Yaʿqub,Yasar,Yasin,Yasir,Yazan,Yazid,Yunus,Yushua,Yusri,"
-"Yusuf,Zafar,Zafir,Zahid,Zahir,Zayd,Zaim,Zayn,Zarif,Zakarriya,Zaki,Zakwan,"
-"Ziyad,Zubayr,Zuhayr"
+"Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz’Kza,Chamil,Cleezi,Clezz,Fazzis,"
+"Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
+"Hezzis,Hix,Inexis,Irix,Jezzix,Jizz,Kaliez,Kepzs,Kernix,Kersezz,Kertrasz,Kerx,"
+"Kerxenix,Kezz,Klexaz,Klezyx,Krarax,Krenarex,Krex,Krinex,Krisess,Laizix,Lazki,"
+"Lixeez,Merax,Mexiss,Moxanzz,Naxisz,Nix,Pekzs,Plaxis,Plesix,Presch,Sailik,"
+"Salanix,Salik,Sandix,Saprazz,Satras,Skalix,Skandix,Skazix,Skeely,Skeezix,"
+"Sklizle,Skrez,Slizilx,Sprizz,Ssexur,Ssizer,Ssorix,Sszasz,Sterizz,Talerez,"
+"Tarex,Tarnix,Tezzaz,Tirasch,Tirax,Tirix,Trezz,Venezz,Vriss,Waks,Xaffrasz,"
+"Xartrez,Xasz,Xaztex,Xerxix,Xirasz,Xirr,Xirtras,Xirtrez,Xirz,Zandler,Zedrix,"
+"Zilrix,Zizzasz,Zslap,Zzalkz,Zzupde"
 msgstr ""
-"Aban,Abbas,Abbud,Abdul-ʿAdl,Abdul-Ahad,Abdul-Alim,Abdul-Aliyy,Abdul-Azim,"
-"Abdul-Aziz,Abdul-Badi,Abdul-Baʿith,Abdul-Baqi,Abdul-Bari,Abdul-Barr,Abdul-"
-"Basir,Abdul-Basit,Abdul-Fattah,Abdul-Ghaffar,Abdul-Ghafur,Abdul-Ghani,Abdul-"
-"Hadi,Abdul-Hafiz,Abdul-Hakam,Abdul-Hakim,Abdul-Halim,Abdul-Hamid,Abdul-Haqq,"
-"Abdul-Hasib,Abdul-Hayy,Abdul-Jabbar,Abdul-Jalil,Abdul-Karim,Abdul-Khabir,"
-"Abdul-Khaliq,Abdul-Latif,Abdul-Malik,Abdul-Majid,Abdul-Matin,Abdul-Mubdiʾ,"
-"Abdul-Mughni,Abdul-Muhaimin,Abdul-Muhsi,Abdul-Muhyi,Abdul-Muʿid,Abdul-Muʿizz,"
-"Abdul-Mujib,Abdul-Mumin,Abdul-Muqaddim,Abdul-Muqtadir,Abdul-Musawwir,Abdul-"
-"Mutaʿal,Abdul-Nafi,Abdul-Nasser,Abdul-Nasir,Abdul-Nur,Abdul-Qadir,Abdul-"
-"Qahhar,Abdul-Qawi,Abdul-Qayyum,Abdul-Quddus,Abdul-Rafi,Abdul-Rahim,Abdul-"
-"Rahman,Abdul-Rashid,Abdul-Raʿuf,Abdul-Razzaq,Abdul-Shakur,Abdul-Tawwab,Abdul-"
-"Wadud,Abdul-Wahhab,Abdul-Wahid,Abdul-Wajid,Abdul-Wakil,Abdul-Wali,Abdul-"
-"Waliy,Abdul-Warith,Abdul-Zahir,Abdullah,ʿAbid,ʿAbidin,Abu Bakr,Aby al-Khayr,"
-"Adil,Adham,Adib,ʿAdli,ʿAdnan,ʿAfif,Ahmad,ʿAjib,ʿAkif,Akil,Akram,Alaʾ,Alaʾ al-"
-"Din,Alʿ Abbas,Aladdin,al-Bara,al-Hakam,al-Harith,Alhasan,Alhusain,Ali,Alim,"
-"Almahdi,al-Safi,Altaf,Altair,al-Tayyib,al-Tijani,al-Tufail,Amid,ʿAmid,Amin,"
-"Amir,ʿAmir,Amjad,ʿAmmar,ʿAmro,Anas,Anis,ʿAntarah,Anwar,ʿAqil,Arfan,Arif,"
-"ʿArif,Asad,Asʿad,Asadel,Ashraf,Asif,ʿAsim,Aswad,Ataʿ,Ataʿ Allah,Ataʿ al-"
-"Rahman,Athil,Athir,ʿAtif,ʿAwad,ʿAwf,Aws,Awwab,Ayham,Ayman,Ayser,Ayyub,Aza,"
-"ʿAzab,Azhar,Azim,ʿAziz,ʿAzzam,Badi,Badi al-Zaman,Badr,Badr al-Din,Badri,"
-"Bahaʿ,Bahiyy al-Din,Bahij,Bahir,Bakr,Bakri,Baligh,Bandar,Barakah,Barir,"
-"Bashshar,Basil,Basim,Bassam,Bayezid,Bayhas,Bilal,Bishr,Boulos,Budail,Burhan,"
-"Bushr,Butrus,Dabir,Dani,Darwish,Daʿud,Dhakir,Dhakiy,Dhakwan,Dhul Fiqar,Dirar,"
-"Diya,Diya al-Din,Duqaq,Fadi,Fadil,Fadl,Fadl Allah,Fahd,Fahad,Fahmi,Faisal,"
-"Faʿiz,Fakhir,Fakhr al-Din,Fakhri,Fakih,Falah,Falih,Faraj,Farhan,Farid,Fariq,"
-"Fariq,Faris,Faruq,Fath,Fathi,Fatih,Fatin,Fawwaz,Fawzan,Fawzi,Fayyad,Ferran,"
-"Fida,Fikri,Firas,Fuʿad,Fudail,Gamal,Ghayth,Ghali,Ghalib,Ghanim,Ghassan,"
-"Ghawth,Ghazwan,Ghiyath,Habbab,Habib,Haddad,Hadi,Hafiz,Hakem,Hakim,Halim,"
-"Hamal,Hamas,Hamdan,Hamdi,Hamid,Hamim,Hamzah,Hana,Hanaʾi,Hanbal,Hani,Hanif,"
-"Hannad,Haris,Harith,Harun,Hashim,Hassan,Hatim,Haydar,Haytham,Hayyan,Hazim,"
-"Hilal,Hilmi,Hisham,Hud,Hudad,Hudhafah,Hudhayfah,Humam,Hussein,Husam,Husam al-"
-"Din,Ibrahim,ʿId,Idris,Ihsan,Ihtisham,ʿIkrimah,Ilias,ʿImad,Imad al-Din,Imran,"
-"Imtiyaz,Inʿam,Iqbal,ʿIrfan,ʿIsa,ʿIsam,Ishaq,Ismaʿil,Iyad,Iyas,Izz al-Din,"
-"Jabbar,Jabr,Jabir,Jad Allah,Jaʿfar,Jal,Jalal,Jalal al-Din,Jalil,Jamal,Jamal "
-"al-Din,Jamil,Jarir,Jasim,Jaul,Jaun,Jawad,Jawdah,Jawhar,Jibran,Jibril,Jubair,"
-"Jul,Jumah,Junayd,Juwain,Kadar,Kadin,Kadir,Kahil,Kaliq,Kamal,Kamil,Karam,"
-"Kardal,Karif,Karim,Kasib,Kasim,Katib,Kazim,Khalaf,Khaldun,Khalid,Khalil,"
-"Khalil al-Allah,Khalis,Khatib,Khair al-Din,Khairi,Khoury,Khulus,Khuzaymah,"
-"Kutaiba,Labib,Lablab,Latif,Layth,LuʿayLubayd,Luqman,Lut,Lutfi,Maʿd,Madani,"
-"Mahbub,Mahdi,Mahfuz,Mahir,Mahjub,Mahmud,Mahrus,Maimun,Majd,Majdy,Majd al-Din,"
-"Majid,Makin,Malik,Mamduh,Maʿmun,Maʿin,Mandhur,Mansur,Marghub,Marid,Maʿruf,"
-"Marwan,Marzuq,Mashʿal,Mashhur,Masrur,Masʿud,Masun,Maysarah,Mazhar,Mazin,"
-"Mehmed,Mihran,Mihyar,Mikaʾil,Miqdad,Misbah,Mishʿal,Miyaz,Muʾadh,Muʾawiyah,"
-"Muʾayyad,Mubarak,Mubin,Mudar,Muddaththir,Mufid,Muflih,Muhab,Muhayr,Muhammad,"
-"Muhanna,Muhannad,Muhib,Muhibb,Muhsin,Muhtadi,Muhyi al-Din,Muʿin,Muʿizz,Mujab,"
-"Mujahid,Mukarram,Mukhlis,Mukhtar,Mulham,Mulhim,Muʿmmar,Muʿmin,Mumtaz,Munahid,"
-"Mundhir,Munib,Munif,Munir,Muʿnis,Munjid,Munsif,Muntasir,Murad,Murid,Murshid,"
-"Murtada,Musa,Musʿab,Musaʿid,Mushtaq,Muslih,Muslim,Mutafa,Mutaʾ,Muʿtasim,"
-"Mutawalli,Muʿtazz,Muthanna,Muti,Muwaffaq,Muyassar,Muzaffar,Mussammil,Nabhan,"
-"Nabighah,Nabih,Nabil,Nadhir,Nadim,Nadir,Nafiʾ,Nahid,Naʾil,Naʾim,Naji,Najib,"
-"Najid,Najjar,Najm al-Din,Naʿaman,Namir,Nashʿah,Nashʿat,Nashwan,Nasib,Nasih,"
-"Nasim,Nasir,Nasir al-Din,Nasr,Nasri,Nasuh,Nawaf,Nawfal,Nayif,Nazih,Nazim,"
-"Nazmi,Nibras,Nidal,Nijad,Nimr,Nizar,Nuʿaym,Nuh,Nuhayd,Numair,Nuʿman,Nur al-"
-"Din,Nuri,Nusrah,Nusrat,Omar,Orhan,Osman,Qasim,Qays,Qudamah,Qusay,Qatadah,"
-"Qutaybah,Qutb,Qutuz,Rabah,Rabi,Radi,Rafi,Rafid,Rafiq,Raghib,Rahman,Raʿid,"
-"Raʿif,Rais,Rajaa,Rajab,Raji,Rajih,Rakin,Rami,Ramih,Ramiz,Ramzi,Rani,Rashad,"
-"Rashid,Rasil,Rasin,Rasmi,Rasul,Ratib,Raʿuf,Rayhan,Rayyan,Razin,Ridha,Ridwan,"
-"Rihab,Riyad,Rizq,Ruhi,Rushd,Rushdi,Ruwayd,Saad,Saʿadah,Sab,Sabih,Sabir,Sabri,"
-"Saʿd,Saʿd al-Din,Sadad,Sadid,Sadiq,Saʿdun,Saʿid,Safi,Safiy,Safiy al-Din,"
-"Safuh,Safwah,Safwat,Safwan,Sahib,Sahir,Sahl,Saʾib,Saif,Saif al-Din,Sajid,"
-"Sajjad,Sakhr,Salah,Salah al-Din,Salamah,Salih,Salim,Salman,Sami,Samih,Samir,"
-"Samman,Saqr,Sariyah,Sati,Saud,Sayyid,Shaʿban,Shadi,Shadin,Shafi,Shafiq,"
-"Shahid,Shahin,Shahir,Shakib,Shakir,Shams al-Din,Shamal,Shamil,Shamim,Sharaf,"
-"Sharif,Shawqi,Shihab,Shihab al-Din,Shihad,Shuʿayb,Shukri,Shumayl,Siddiq,"
-"Sinan,Siraj,Siraj al-Din,Sofian,Subhi,Sufyan,Suhayb,Suhayl,Suhaym,Sulaiman,"
-"Sumrah,Suraqah,Suʿud,Tahir,Tahsin,Taym Allah,Taj,Taj al-Din,Talal,Talib,"
-"Tamim,Tamir,Tamam,Tammam,Taqiy,Tarif,Tariq,Taslim,Tawfiq,Tawhid,Taymullah,"
-"Taysir,Tayyib,Thabit,Thamir,Thaqib,Thawab,Thawban,ʿUbaidah,Ubaid,Ubayy,"
-"ʿUdayl,ʿUday,ʿUmar,Umarah,Umair,ʾaUrwah,Usaym,Usama,ʿUtbah,Uthal,Uthman,"
-"Waddah,Wadi,Wadid,Wafiq,Wahab,Wahhab,Wahid,Waʾil,Wajdi,Wajid,Wajih,Wakil,"
-"Walid,Walif,Waliy Allah,Waliy al-Din,Waqar,Waqqas,Ward,Wasif,Wasil,Wasim,"
-"Wazir,Yahya,Yaman,Yaʿqub,Yasar,Yasin,Yasir,Yazan,Yazid,Yunus,Yushua,Yusri,"
-"Yusuf,Zafar,Zafir,Zahid,Zahir,Zayd,Zaim,Zayn,Zarif,Zakarriya,Zaki,Zakwan,"
-"Ziyad,Zubayr,Zuhayr"
+"Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz’Kza,Chamil,Cleezi,Clezz,Fazzis,"
+"Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
+"Hezzis,Hix,Inexis,Irix,Jezzix,Jizz,Kaliez,Kepzs,Kernix,Kersezz,Kertrasz,Kerx,"
+"Kerxenix,Kezz,Klexaz,Klezyx,Krarax,Krenarex,Krex,Krinex,Krisess,Laizix,Lazki,"
+"Lixeez,Merax,Mexiss,Moxanzz,Naxisz,Nix,Pekzs,Plaxis,Plesix,Presch,Sailik,"
+"Salanix,Salik,Sandix,Saprazz,Satras,Skalix,Skandix,Skazix,Skeely,Skeezix,"
+"Sklizle,Skrez,Slizilx,Sprizz,Ssexur,Ssizer,Ssorix,Sszasz,Sterizz,Talerez,"
+"Tarex,Tarnix,Tezzaz,Tirasch,Tirax,Tirix,Trezz,Venezz,Vriss,Waks,Xaffrasz,"
+"Xartrez,Xasz,Xaztex,Xerxix,Xirasz,Xirr,Xirtras,Xirtrez,Xirz,Zandler,Zedrix,"
+"Zilrix,Zizzasz,Zslap,Zzalkz,Zzupde"
 
 #: data/core/macros/names.cfg:47
 msgid ""
-"Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz’Kza,Chamil,Cleezi,Clezz,Fazzis,"
-"Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
-"Hezzis,Hix,Inexis,Irix,Jezzix,Jizz,Kaliez,Kepzs,Kernix,Kersezz,Kertrasz,Kerx,"
-"Kerxenix,Kezz,Klexaz,Klezyx,Krarax,Krenarex,Krex,Krinex,Krisess,Laizix,Lazki,"
-"Lixeez,Merax,Mexiss,Moxanzz,Naxisz,Nix,Pekzs,Plaxis,Plesix,Presch,Sailik,"
-"Salanix,Salik,Sandix,Saprazz,Satras,Skalix,Skandix,Skazix,Skeely,Skeezix,"
-"Sklizle,Skrez,Slizilx,Sprizz,Ssexur,Ssizer,Ssorix,Sszasz,Sterizz,Talerez,"
-"Tarex,Tarnix,Tezzaz,Tirasch,Tirax,Tirix,Trezz,Venezz,Vriss,Waks,Xaffrasz,"
-"Xartrez,Xasz,Xaztex,Xerxix,Xirasz,Xirr,Xirtras,Xirtrez,Xirz,Zandler,Zedrix,"
-"Zilrix,Zizzasz,Zslap,Zzalkz,Zzupde"
+"Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
+"Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
+"Labuna,Laut,Lir,Llyr,Ludd,Makara,Maui,Melicertes,Mimir,Natat,Nechtan,Neptune,"
+"Nereus,Nethuns,Njord,Nuada,Nudd,Nudimmud,Nun,Oceanus,Okeanos,Phorcys,Pontus,"
+"Popoa,Poseidon,Proteus,Raja,Rau,Rorua,Ryujin,Scylla,Sinilau,Sisiutl,Tagaloa,"
+"Tanaoa,Tangaloa,Tangaroa,Thaumas,Tikitiki,Tini,Tinilau,Tinirau,Toniwha,"
+"Triton,Vizi,Vodnik,Vourukasa"
 msgstr ""
-"Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz’Kza,Chamil,Cleezi,Clezz,Fazzis,"
-"Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
-"Hezzis,Hix,Inexis,Irix,Jezzix,Jizz,Kaliez,Kepzs,Kernix,Kersezz,Kertrasz,Kerx,"
-"Kerxenix,Kezz,Klexaz,Klezyx,Krarax,Krenarex,Krex,Krinex,Krisess,Laizix,Lazki,"
-"Lixeez,Merax,Mexiss,Moxanzz,Naxisz,Nix,Pekzs,Plaxis,Plesix,Presch,Sailik,"
-"Salanix,Salik,Sandix,Saprazz,Satras,Skalix,Skandix,Skazix,Skeely,Skeezix,"
-"Sklizle,Skrez,Slizilx,Sprizz,Ssexur,Ssizer,Ssorix,Sszasz,Sterizz,Talerez,"
-"Tarex,Tarnix,Tezzaz,Tirasch,Tirax,Tirix,Trezz,Venezz,Vriss,Waks,Xaffrasz,"
-"Xartrez,Xasz,Xaztex,Xerxix,Xirasz,Xirr,Xirtras,Xirtrez,Xirz,Zandler,Zedrix,"
-"Zilrix,Zizzasz,Zslap,Zzalkz,Zzupde"
+"Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
+"Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
+"Labuna,Laut,Lir,Llyr,Ludd,Makara,Maui,Melicertes,Mimir,Natat,Nechtan,Neptune,"
+"Nereus,Nethuns,Njord,Nuada,Nudd,Nudimmud,Nun,Oceanus,Okeanos,Phorcys,Pontus,"
+"Popoa,Poseidon,Proteus,Raja,Rau,Rorua,Ryujin,Scylla,Sinilau,Sisiutl,Tagaloa,"
+"Tanaoa,Tangaloa,Tangaroa,Thaumas,Tikitiki,Tini,Tinilau,Tinirau,Toniwha,"
+"Triton,Vizi,Vodnik,Vourukasa"
 
-#: data/core/macros/names.cfg:51
+#: data/core/macros/names.cfg:48
 msgid ""
-"Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
-"Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
-"Labuna,Laut,Lir,Llyr,Ludd,Makara,Maui,Melicertes,Mimir,Natat,Nechtan,Neptune,"
-"Nereus,Nethuns,Njord,Nuada,Nudd,Nudimmud,Nun,Oceanus,Okeanos,Phorcys,Pontus,"
-"Popoa,Poseidon,Proteus,Raja,Rau,Rorua,Ryujin,Scylla,Sinilau,Sisiutl,Tagaloa,"
-"Tanaoa,Tangaloa,Tangaroa,Thaumas,Tikitiki,Tini,Tinilau,Tinirau,Toniwha,"
-"Triton,Vizi,Vodnik,Vourukasa"
+"Aglaopheme,Amphitrite,Aphrodite,Ariel,Atargatis,Calypso,Delphine,Derceto,"
+"Diktynna,Electra,Galatea,Himeropa,Jengu,Leucosia,Ligia,Lori Lamaris,Mama "
+"Wata,Marina,Miranda,Miriam,Molpe,Parthenope,Pelagia,Pisinoe,Rân,Sedna,Stella "
+"Maris,Thelxiepia,Tirgata,Vatea,Ved-Ava,Veen emo,Vete-ema"
 msgstr ""
-"Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
-"Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
-"Labuna,Laut,Lir,Llyr,Ludd,Makara,Maui,Melicertes,Mimir,Natat,Nechtan,Neptune,"
-"Nereus,Nethuns,Njord,Nuada,Nudd,Nudimmud,Nun,Oceanus,Okeanos,Phorcys,Pontus,"
-"Popoa,Poseidon,Proteus,Raja,Rau,Rorua,Ryujin,Scylla,Sinilau,Sisiutl,Tagaloa,"
-"Tanaoa,Tangaloa,Tangaroa,Thaumas,Tikitiki,Tini,Tinilau,Tinirau,Toniwha,"
-"Triton,Vizi,Vodnik,Vourukasa"
+"Aglaopheme,Amphitrite,Aphrodite,Ariel,Atargatis,Calypso,Delphine,Derceto,"
+"Diktynna,Electra,Galatea,Himeropa,Jengu,Leucosia,Ligia,Lori Lamaris,Mama "
+"Wata,Marina,Miranda,Miriam,Molpe,Parthenope,Pelagia,Pisinoe,Rân,Sedna,Stella "
+"Maris,Thelxiepia,Tirgata,Vatea,Ved-Ava,Veen emo,Vete-ema"
 
 #: data/core/macros/names.cfg:52
 msgid ""
-"Aglaopheme,Amphitrite,Aphrodite,Ariel,Atargatis,Calypso,Delphine,Derceto,"
-"Diktynna,Electra,Galatea,Himeropa,Jengu,Leucosia,Ligia,Lori Lamaris,Mama "
-"Wata,Marina,Miranda,Miriam,Molpe,Parthenope,Pelagia,Pisinoe,Rân,Sedna,Stella "
-"Maris,Thelxiepia,Tirgata,Vatea,Ved-Ava,Veen emo,Vete-ema"
+"Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
+"Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
+"Krezkps,Kzap,Lamaiss,Lameii,Lexpek,Liness,Lobor,Maissol,Malinos,Milbor,"
+"Mileii,Nildloss,Oxpeii,Poniaz,Psell,Pson,Pzakp,Reii,Sassal,Saxil,Saxrireii,"
+"Sekol,Silas,Skell,Skepz,Slell,Snol,Soill,Sorkol,Srell,Trixoz,Vilail,Vissal,"
+"Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
 msgstr ""
-"Aglaopheme,Amphitrite,Aphrodite,Ariel,Atargatis,Calypso,Delphine,Derceto,"
-"Diktynna,Electra,Galatea,Himeropa,Jengu,Leucosia,Ligia,Lori Lamaris,Mama "
-"Wata,Marina,Miranda,Miriam,Molpe,Parthenope,Pelagia,Pisinoe,Rân,Sedna,Stella "
-"Maris,Thelxiepia,Tirgata,Vatea,Ved-Ava,Veen emo,Vete-ema"
+"Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
+"Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
+"Krezkps,Kzap,Lamaiss,Lameii,Lexpek,Liness,Lobor,Maissol,Malinos,Milbor,"
+"Mileii,Nildloss,Oxpeii,Poniaz,Psell,Pson,Pzakp,Reii,Sassal,Saxil,Saxrireii,"
+"Sekol,Silas,Skell,Skepz,Slell,Snol,Soill,Sorkol,Srell,Trixoz,Vilail,Vissal,"
+"Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
 
-#: data/core/macros/names.cfg:56
+#: data/core/macros/names.cfg:53
 msgid ""
-"Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
-"Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
-"Krezkps,Kzap,Lamaiss,Lameii,Lexpek,Liness,Lobor,Maissol,Malinos,Milbor,"
-"Mileii,Nildloss,Oxpeii,Poniaz,Psell,Pson,Pzakp,Reii,Sassal,Saxil,Saxrireii,"
-"Sekol,Silas,Skell,Skepz,Slell,Snol,Soill,Sorkol,Srell,Trixoz,Vilail,Vissal,"
-"Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
+"Aliasse,Amailis,Axmailia,Blai,Blanalai,Bli,Bliana,Brassas,Brissal,Gaxmail,"
+"Griama,Grissa,Grissilai,Haila,Haina,Harxias,Huzi,Inai,Inalai,Issalai,Klez,"
+"Kras,Krezkps,Kzap,Lamai,Lamaissa,Lexpek,Liabra,Lilin,Linassa,Maissa,Malina,"
+"Mila,Milbra,Nildlasi,Oxpel,Poniazal,Psal,Psen,Pzakp,Riaa,Sall,Sassalia,"
+"Saxiala,Saxririaa,Sek,Skal,Skepz,Sla,Snelia,Srak,Sral,Szak,Trixzed,Vilaila,"
+"Vissalai,Vlanissa,Xabrak,Xamalia,Xina,Xinasia,Xnamas,Xopkne,Zalsp,Zlek,Zpsek,"
+"Zsekp"
 msgstr ""
-"Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
-"Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
-"Krezkps,Kzap,Lamaiss,Lameii,Lexpek,Liness,Lobor,Maissol,Malinos,Milbor,"
-"Mileii,Nildloss,Oxpeii,Poniaz,Psell,Pson,Pzakp,Reii,Sassal,Saxil,Saxrireii,"
-"Sekol,Silas,Skell,Skepz,Slell,Snol,Soill,Sorkol,Srell,Trixoz,Vilail,Vissal,"
-"Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
+"Aliasse,Amailis,Axmailia,Blai,Blanalai,Bli,Bliana,Brassas,Brissal,Gaxmail,"
+"Griama,Grissa,Grissilai,Haila,Haina,Harxias,Huzi,Inai,Inalai,Issalai,Klez,"
+"Kras,Krezkps,Kzap,Lamai,Lamaissa,Lexpek,Liabra,Lilin,Linassa,Maissa,Malina,"
+"Mila,Milbra,Nildlasi,Oxpel,Poniazal,Psal,Psen,Pzakp,Riaa,Sall,Sassalia,"
+"Saxiala,Saxririaa,Sek,Skal,Skepz,Sla,Snelia,Srak,Sral,Szak,Trixzed,Vilaila,"
+"Vissalai,Vlanissa,Xabrak,Xamalia,Xina,Xinasia,Xnamas,Xopkne,Zalsp,Zlek,Zpsek,"
+"Zsekp"
 
 #: data/core/macros/names.cfg:57
 msgid ""
-"Aliasse,Amailis,Axmailia,Blai,Blanalai,Bli,Bliana,Brassas,Brissal,Gaxmail,"
-"Griama,Grissa,Grissilai,Haila,Haina,Harxias,Huzi,Inai,Inalai,Issalai,Klez,"
-"Kras,Krezkps,Kzap,Lamai,Lamaissa,Lexpek,Liabra,Lilin,Linassa,Maissa,Malina,"
-"Mila,Milbra,Nildlasi,Oxpel,Poniazal,Psal,Psen,Pzakp,Riaa,Sall,Sassalia,"
-"Saxiala,Saxririaa,Sek,Skal,Skepz,Sla,Snelia,Srak,Sral,Szak,Trixzed,Vilaila,"
-"Vissalai,Vlanissa,Xabrak,Xamalia,Xina,Xinasia,Xnamas,Xopkne,Zalsp,Zlek,Zpsek,"
-"Zsekp"
+"Akoark,Akort,Akzalk,Arkarm,Barkuk,Blokkar,Borkuk,Bukkak,Bulruk,Corkkar,"
+"Delkkak,Garkuk,Gnukk,Goruk,Grak,Gurk,Gurm,Kalknix,Karak,Karbuk,Kargnak,"
+"Karterak,Kayrak,Kelkrar,Kerta,Kilkrar,Kingrok,Kirk,Klud,Kokkan,Kolk,Komak,"
+"Korgnak,Kork,Koruck,Kramak,Krog,Krukrak,Krumuk,Kuknuk,Kurkur,Kurmak,Makron,"
+"Markaak,Markuk,Merknik,Nargak,Olk,Orkut,Reknak,Takolak,Trabuk,Trakkon,Urkar,"
+"Urkark"
 msgstr ""
-"Aliasse,Amailis,Axmailia,Blai,Blanalai,Bli,Bliana,Brassas,Brissal,Gaxmail,"
-"Griama,Grissa,Grissilai,Haila,Haina,Harxias,Huzi,Inai,Inalai,Issalai,Klez,"
-"Kras,Krezkps,Kzap,Lamai,Lamaissa,Lexpek,Liabra,Lilin,Linassa,Maissa,Malina,"
-"Mila,Milbra,Nildlasi,Oxpel,Poniazal,Psal,Psen,Pzakp,Riaa,Sall,Sassalia,"
-"Saxiala,Saxririaa,Sek,Skal,Skepz,Sla,Snelia,Srak,Sral,Szak,Trixzed,Vilaila,"
-"Vissalai,Vlanissa,Xabrak,Xamalia,Xina,Xinasia,Xnamas,Xopkne,Zalsp,Zlek,Zpsek,"
-"Zsekp"
+"Akoark,Akort,Akzalk,Arkarm,Barkuk,Blokkar,Borkuk,Bukkak,Bulruk,Corkkar,"
+"Delkkak,Garkuk,Gnukk,Goruk,Grak,Gurk,Gurm,Kalknix,Karak,Karbuk,Kargnak,"
+"Karterak,Kayrak,Kelkrar,Kerta,Kilkrar,Kingrok,Kirk,Klud,Kokkan,Kolk,Komak,"
+"Korgnak,Kork,Koruck,Kramak,Krog,Krukrak,Krumuk,Kuknuk,Kurkur,Kurmak,Makron,"
+"Markaak,Markuk,Merknik,Nargak,Olk,Orkut,Reknak,Takolak,Trabuk,Trakkon,Urkar,"
+"Urkark"
 
 #: data/core/macros/names.cfg:61
 msgid ""
-"Akoark,Akort,Akzalk,Arkarm,Barkuk,Blokkar,Borkuk,Bukkak,Bulruk,Corkkar,"
-"Delkkak,Garkuk,Gnukk,Goruk,Grak,Gurk,Gurm,Kalknix,Karak,Karbuk,Kargnak,"
-"Karterak,Kayrak,Kelkrar,Kerta,Kilkrar,Kingrok,Kirk,Klud,Kokkan,Kolk,Komak,"
-"Korgnak,Kork,Koruck,Kramak,Krog,Krukrak,Krumuk,Kuknuk,Kurkur,Kurmak,Makron,"
-"Markaak,Markuk,Merknik,Nargak,Olk,Orkut,Reknak,Takolak,Trabuk,Trakkon,Urkar,"
-"Urkark"
+"Badush,Bagar,Bagdish,Barag,Barbag,Bart,Bashnak,Bidish,Bidush,Bik,Bilg,Bilo,"
+"Binak,Bink,Biol,Birt,Bogar,Bogdish,Bogdush,Bogor,Bok,Bolg,Bong,Borg,Bork,"
+"Bort,Boshnak,Budush,Bugdish,Buk,Bunak,Bung,Bunk,Burag,Burg,Burk,Buurk,"
+"Eradash,Eradish,Eragdish,Eragdush,Eragor,Eranak,Erang,Erarag,Erarg,Erart,"
+"Erigdush,Erik,Erinak,Eriol,Erirag,Erirbag,Erirg,Erirt,Erishnak,Eriurk,"
+"Erogdish,Erogdush,Erok,Erong,Eronk,Erorbag,Erudish,Erudush,Erugar,Erugdush,"
+"Erulo,Erunk,Eruol,Erurag,Eruurk,Gadash,Gagar,Gagdush,Gagor,Galo,Ganak,Gank,"
+"Gaol,Garag,Gashnak,Gigor,Ginak,Ging,Gink,Girt,Gogdish,Gogdush,Gong,Gork,Gort,"
+"Goshnak,Gradash,Gragar,Gragor,Grak,Gralg,Gralo,Granak,Graol,Grarbag,Gridash,"
+"Gridish,Gridush,Grigar,Grigor,Grilg,Grilo,Grink,Grirag,Grirg,Grirk,Grishnak,"
+"Grodish,Grogar,Grogdish,Grok,Grolg,Grong,Gronk,Grorag,Grorg,Grork,Grort,"
+"Groshnak,Grudash,Grugar,Grugdish,Grugdush,Gruk,Grulo,Grunk,Gruol,Grurg,Grurk,"
+"Grurt,Gruurk,Gugdish,Gugdush,Gulg,Gulo,Gunak,Gurbag,Gurt,Gushnak,Hadash,"
+"Hadish,Hadush,Hagar,Hagdush,Hagor,Hak,Halg,Hank,Hashnak,Hidash,Hidish,Hidush,"
+"Higdush,Hilg,Hinak,Hing,Hink,Hiol,Hirag,Hirg,Hodush,Hogar,Hogor,Hong,Hool,"
+"Horbag,Hork,Hort,Hoshnak,Hudash,Hudish,Hugor,Huk,Hulg,Hulo,Hunk,Huol,Hurag,"
+"Hurbag,Hurk,Hushnak,Huurk,Pagdish,Pagor,Palg,Palo,Paol,Parag,Pashnak,Pidush,"
+"Pigdish,Pigdush,Pilg,Pinak,Pink,Pirbag,Podash,Podish,Podush,Pogdish,Polg,"
+"Porbag,Porg,Pork,Port,Poshnak,Pradish,Pragdush,Pragor,Pralg,Pralo,Prang,"
+"Praol,Prarag,Prarbag,Prarg,Prark,Prart,Prashnak,Praurk,Pridish,Prigar,"
+"Prigdish,Prigor,Prilg,Prilo,Prinak,Priol,Prirbag,Prirg,Prirt,Priurk,Prodash,"
+"Prodish,Prodush,Prolg,Prolo,Pronak,Prong,Pronk,Prool,Prourk,Prudish,Prugar,"
+"Prugdish,Pruk,Prunak,Prunk,Prurg,Prurk,Pruurk,Puk,Pulg,Pulo,Punak,Pung,Punk,"
+"Purag,Purbag,Purg,Puurk,Radash,Ragar,Ragdish,Rak,Rang,Rank,Raol,Rarag,Rarbag,"
+"Rark,Rashnak,Raurk,Rigor,Rik,Rilg,Rinak,Rink,Rirg,Rirk,Rodish,Rodush,Rogdish,"
+"Rok,Rolo,Ronak,Rudash,Rugar,Rugdish,Ruk,Rung,Ruol,Rurag,Rushnak,Vadash,"
+"Vadish,Vadush,Vak,Valo,Vank,Varag,Varbag,Vigar,Vigdish,Vigor,Vilg,Vilo,Vink,"
+"Virag,Virt,Vishnak,Vogdish,Vogor,Vonak,Vong,Vorg,Vork,Voshnak,Vourk,Vradash,"
+"Vragar,Vragdush,Vragor,Vralo,Vrang,Vrarbag,Vrarg,Vrart,Vraurk,Vridash,"
+"Vridish,Vrigor,Vrik,Vrinak,Vring,Vrirt,Vrishnak,Vriurk,Vrodash,Vrodish,"
+"Vrogar,Vrogor,Vrolo,Vrong,Vrorg,Vrork,Vrudish,Vrugdush,Vrulg,Vrung,Vruol,"
+"Vrurg,Vrurt,Vruurk,Vudish,Vuk,Vulg,Vulo,Vunak,Vurag,Vurbag,Vurg,Vushnak"
 msgstr ""
-"Akoark,Akort,Akzalk,Arkarm,Barkuk,Blokkar,Borkuk,Bukkak,Bulruk,Corkkar,"
-"Delkkak,Garkuk,Gnukk,Goruk,Grak,Gurk,Gurm,Kalknix,Karak,Karbuk,Kargnak,"
-"Karterak,Kayrak,Kelkrar,Kerta,Kilkrar,Kingrok,Kirk,Klud,Kokkan,Kolk,Komak,"
-"Korgnak,Kork,Koruck,Kramak,Krog,Krukrak,Krumuk,Kuknuk,Kurkur,Kurmak,Makron,"
-"Markaak,Markuk,Merknik,Nargak,Olk,Orkut,Reknak,Takolak,Trabuk,Trakkon,Urkar,"
-"Urkark"
+"Badush,Bagar,Bagdish,Barag,Barbag,Bart,Bashnak,Bidish,Bidush,Bik,Bilg,Bilo,"
+"Binak,Bink,Biol,Birt,Bogar,Bogdish,Bogdush,Bogor,Bok,Bolg,Bong,Borg,Bork,"
+"Bort,Boshnak,Budush,Bugdish,Buk,Bunak,Bung,Bunk,Burag,Burg,Burk,Buurk,"
+"Eradash,Eradish,Eragdish,Eragdush,Eragor,Eranak,Erang,Erarag,Erarg,Erart,"
+"Erigdush,Erik,Erinak,Eriol,Erirag,Erirbag,Erirg,Erirt,Erishnak,Eriurk,"
+"Erogdish,Erogdush,Erok,Erong,Eronk,Erorbag,Erudish,Erudush,Erugar,Erugdush,"
+"Erulo,Erunk,Eruol,Erurag,Eruurk,Gadash,Gagar,Gagdush,Gagor,Galo,Ganak,Gank,"
+"Gaol,Garag,Gashnak,Gigor,Ginak,Ging,Gink,Girt,Gogdish,Gogdush,Gong,Gork,Gort,"
+"Goshnak,Gradash,Gragar,Gragor,Grak,Gralg,Gralo,Granak,Graol,Grarbag,Gridash,"
+"Gridish,Gridush,Grigar,Grigor,Grilg,Grilo,Grink,Grirag,Grirg,Grirk,Grishnak,"
+"Grodish,Grogar,Grogdish,Grok,Grolg,Grong,Gronk,Grorag,Grorg,Grork,Grort,"
+"Groshnak,Grudash,Grugar,Grugdish,Grugdush,Gruk,Grulo,Grunk,Gruol,Grurg,Grurk,"
+"Grurt,Gruurk,Gugdish,Gugdush,Gulg,Gulo,Gunak,Gurbag,Gurt,Gushnak,Hadash,"
+"Hadish,Hadush,Hagar,Hagdush,Hagor,Hak,Halg,Hank,Hashnak,Hidash,Hidish,Hidush,"
+"Higdush,Hilg,Hinak,Hing,Hink,Hiol,Hirag,Hirg,Hodush,Hogar,Hogor,Hong,Hool,"
+"Horbag,Hork,Hort,Hoshnak,Hudash,Hudish,Hugor,Huk,Hulg,Hulo,Hunk,Huol,Hurag,"
+"Hurbag,Hurk,Hushnak,Huurk,Pagdish,Pagor,Palg,Palo,Paol,Parag,Pashnak,Pidush,"
+"Pigdish,Pigdush,Pilg,Pinak,Pink,Pirbag,Podash,Podish,Podush,Pogdish,Polg,"
+"Porbag,Porg,Pork,Port,Poshnak,Pradish,Pragdush,Pragor,Pralg,Pralo,Prang,"
+"Praol,Prarag,Prarbag,Prarg,Prark,Prart,Prashnak,Praurk,Pridish,Prigar,"
+"Prigdish,Prigor,Prilg,Prilo,Prinak,Priol,Prirbag,Prirg,Prirt,Priurk,Prodash,"
+"Prodish,Prodush,Prolg,Prolo,Pronak,Prong,Pronk,Prool,Prourk,Prudish,Prugar,"
+"Prugdish,Pruk,Prunak,Prunk,Prurg,Prurk,Pruurk,Puk,Pulg,Pulo,Punak,Pung,Punk,"
+"Purag,Purbag,Purg,Puurk,Radash,Ragar,Ragdish,Rak,Rang,Rank,Raol,Rarag,Rarbag,"
+"Rark,Rashnak,Raurk,Rigor,Rik,Rilg,Rinak,Rink,Rirg,Rirk,Rodish,Rodush,Rogdish,"
+"Rok,Rolo,Ronak,Rudash,Rugar,Rugdish,Ruk,Rung,Ruol,Rurag,Rushnak,Vadash,"
+"Vadish,Vadush,Vak,Valo,Vank,Varag,Varbag,Vigar,Vigdish,Vigor,Vilg,Vilo,Vink,"
+"Virag,Virt,Vishnak,Vogdish,Vogor,Vonak,Vong,Vorg,Vork,Voshnak,Vourk,Vradash,"
+"Vragar,Vragdush,Vragor,Vralo,Vrang,Vrarbag,Vrarg,Vrart,Vraurk,Vridash,"
+"Vridish,Vrigor,Vrik,Vrinak,Vring,Vrirt,Vrishnak,Vriurk,Vrodash,Vrodish,"
+"Vrogar,Vrogor,Vrolo,Vrong,Vrorg,Vrork,Vrudish,Vrugdush,Vrulg,Vrung,Vruol,"
+"Vrurg,Vrurt,Vruurk,Vudish,Vuk,Vulg,Vulo,Vunak,Vurag,Vurbag,Vurg,Vushnak"
 
 #: data/core/macros/names.cfg:65
 msgid ""
-"Badush,Bagar,Bagdish,Barag,Barbag,Bart,Bashnak,Bidish,Bidush,Bik,Bilg,Bilo,"
-"Binak,Bink,Biol,Birt,Bogar,Bogdish,Bogdush,Bogor,Bok,Bolg,Bong,Borg,Bork,"
-"Bort,Boshnak,Budush,Bugdish,Buk,Bunak,Bung,Bunk,Burag,Burg,Burk,Buurk,"
-"Eradash,Eradish,Eragdish,Eragdush,Eragor,Eranak,Erang,Erarag,Erarg,Erart,"
-"Erigdush,Erik,Erinak,Eriol,Erirag,Erirbag,Erirg,Erirt,Erishnak,Eriurk,"
-"Erogdish,Erogdush,Erok,Erong,Eronk,Erorbag,Erudish,Erudush,Erugar,Erugdush,"
-"Erulo,Erunk,Eruol,Erurag,Eruurk,Gadash,Gagar,Gagdush,Gagor,Galo,Ganak,Gank,"
-"Gaol,Garag,Gashnak,Gigor,Ginak,Ging,Gink,Girt,Gogdish,Gogdush,Gong,Gork,Gort,"
-"Goshnak,Gradash,Gragar,Gragor,Grak,Gralg,Gralo,Granak,Graol,Grarbag,Gridash,"
-"Gridish,Gridush,Grigar,Grigor,Grilg,Grilo,Grink,Grirag,Grirg,Grirk,Grishnak,"
-"Grodish,Grogar,Grogdish,Grok,Grolg,Grong,Gronk,Grorag,Grorg,Grork,Grort,"
-"Groshnak,Grudash,Grugar,Grugdish,Grugdush,Gruk,Grulo,Grunk,Gruol,Grurg,Grurk,"
-"Grurt,Gruurk,Gugdish,Gugdush,Gulg,Gulo,Gunak,Gurbag,Gurt,Gushnak,Hadash,"
-"Hadish,Hadush,Hagar,Hagdush,Hagor,Hak,Halg,Hank,Hashnak,Hidash,Hidish,Hidush,"
-"Higdush,Hilg,Hinak,Hing,Hink,Hiol,Hirag,Hirg,Hodush,Hogar,Hogor,Hong,Hool,"
-"Horbag,Hork,Hort,Hoshnak,Hudash,Hudish,Hugor,Huk,Hulg,Hulo,Hunk,Huol,Hurag,"
-"Hurbag,Hurk,Hushnak,Huurk,Pagdish,Pagor,Palg,Palo,Paol,Parag,Pashnak,Pidush,"
-"Pigdish,Pigdush,Pilg,Pinak,Pink,Pirbag,Podash,Podish,Podush,Pogdish,Polg,"
-"Porbag,Porg,Pork,Port,Poshnak,Pradish,Pragdush,Pragor,Pralg,Pralo,Prang,"
-"Praol,Prarag,Prarbag,Prarg,Prark,Prart,Prashnak,Praurk,Pridish,Prigar,"
-"Prigdish,Prigor,Prilg,Prilo,Prinak,Priol,Prirbag,Prirg,Prirt,Priurk,Prodash,"
-"Prodish,Prodush,Prolg,Prolo,Pronak,Prong,Pronk,Prool,Prourk,Prudish,Prugar,"
-"Prugdish,Pruk,Prunak,Prunk,Prurg,Prurk,Pruurk,Puk,Pulg,Pulo,Punak,Pung,Punk,"
-"Purag,Purbag,Purg,Puurk,Radash,Ragar,Ragdish,Rak,Rang,Rank,Raol,Rarag,Rarbag,"
-"Rark,Rashnak,Raurk,Rigor,Rik,Rilg,Rinak,Rink,Rirg,Rirk,Rodish,Rodush,Rogdish,"
-"Rok,Rolo,Ronak,Rudash,Rugar,Rugdish,Ruk,Rung,Ruol,Rurag,Rushnak,Vadash,"
-"Vadish,Vadush,Vak,Valo,Vank,Varag,Varbag,Vigar,Vigdish,Vigor,Vilg,Vilo,Vink,"
-"Virag,Virt,Vishnak,Vogdish,Vogor,Vonak,Vong,Vorg,Vork,Voshnak,Vourk,Vradash,"
-"Vragar,Vragdush,Vragor,Vralo,Vrang,Vrarbag,Vrarg,Vrart,Vraurk,Vridash,"
-"Vridish,Vrigor,Vrik,Vrinak,Vring,Vrirt,Vrishnak,Vriurk,Vrodash,Vrodish,"
-"Vrogar,Vrogor,Vrolo,Vrong,Vrorg,Vrork,Vrudish,Vrugdush,Vrulg,Vrung,Vruol,"
-"Vrurg,Vrurt,Vruurk,Vudish,Vuk,Vulg,Vulo,Vunak,Vurag,Vurbag,Vurg,Vushnak"
+"Äg,Agh,Bog Äh,Borb,Brag,Brag Goh,Brok,Dak,Drog,Frok,Ga,Gah,Gark,Gnarf,Grar,"
+"Grokk,Grumph,Gulk,Hak,Hask,Hoth,Hug Bah,Hu Kah,Kak,Krak,Krug,Kub,Kuh,Lok,Luk,"
+"Nak,Nuk Kar,Pag,Reck,Rok,Ruk,Sark,Shak,Shuf,Stuh,Targ,Thog,Thruf,Thur,Tohg,"
+"Torg,Trok,Tsok,Tuh,Tuk Ruh,Ugg,Üh,Urg,Urgh,Urk,Vak,Zog,Zuug"
 msgstr ""
-"Badush,Bagar,Bagdish,Barag,Barbag,Bart,Bashnak,Bidish,Bidush,Bik,Bilg,Bilo,"
-"Binak,Bink,Biol,Birt,Bogar,Bogdish,Bogdush,Bogor,Bok,Bolg,Bong,Borg,Bork,"
-"Bort,Boshnak,Budush,Bugdish,Buk,Bunak,Bung,Bunk,Burag,Burg,Burk,Buurk,"
-"Eradash,Eradish,Eragdish,Eragdush,Eragor,Eranak,Erang,Erarag,Erarg,Erart,"
-"Erigdush,Erik,Erinak,Eriol,Erirag,Erirbag,Erirg,Erirt,Erishnak,Eriurk,"
-"Erogdish,Erogdush,Erok,Erong,Eronk,Erorbag,Erudish,Erudush,Erugar,Erugdush,"
-"Erulo,Erunk,Eruol,Erurag,Eruurk,Gadash,Gagar,Gagdush,Gagor,Galo,Ganak,Gank,"
-"Gaol,Garag,Gashnak,Gigor,Ginak,Ging,Gink,Girt,Gogdish,Gogdush,Gong,Gork,Gort,"
-"Goshnak,Gradash,Gragar,Gragor,Grak,Gralg,Gralo,Granak,Graol,Grarbag,Gridash,"
-"Gridish,Gridush,Grigar,Grigor,Grilg,Grilo,Grink,Grirag,Grirg,Grirk,Grishnak,"
-"Grodish,Grogar,Grogdish,Grok,Grolg,Grong,Gronk,Grorag,Grorg,Grork,Grort,"
-"Groshnak,Grudash,Grugar,Grugdish,Grugdush,Gruk,Grulo,Grunk,Gruol,Grurg,Grurk,"
-"Grurt,Gruurk,Gugdish,Gugdush,Gulg,Gulo,Gunak,Gurbag,Gurt,Gushnak,Hadash,"
-"Hadish,Hadush,Hagar,Hagdush,Hagor,Hak,Halg,Hank,Hashnak,Hidash,Hidish,Hidush,"
-"Higdush,Hilg,Hinak,Hing,Hink,Hiol,Hirag,Hirg,Hodush,Hogar,Hogor,Hong,Hool,"
-"Horbag,Hork,Hort,Hoshnak,Hudash,Hudish,Hugor,Huk,Hulg,Hulo,Hunk,Huol,Hurag,"
-"Hurbag,Hurk,Hushnak,Huurk,Pagdish,Pagor,Palg,Palo,Paol,Parag,Pashnak,Pidush,"
-"Pigdish,Pigdush,Pilg,Pinak,Pink,Pirbag,Podash,Podish,Podush,Pogdish,Polg,"
-"Porbag,Porg,Pork,Port,Poshnak,Pradish,Pragdush,Pragor,Pralg,Pralo,Prang,"
-"Praol,Prarag,Prarbag,Prarg,Prark,Prart,Prashnak,Praurk,Pridish,Prigar,"
-"Prigdish,Prigor,Prilg,Prilo,Prinak,Priol,Prirbag,Prirg,Prirt,Priurk,Prodash,"
-"Prodish,Prodush,Prolg,Prolo,Pronak,Prong,Pronk,Prool,Prourk,Prudish,Prugar,"
-"Prugdish,Pruk,Prunak,Prunk,Prurg,Prurk,Pruurk,Puk,Pulg,Pulo,Punak,Pung,Punk,"
-"Purag,Purbag,Purg,Puurk,Radash,Ragar,Ragdish,Rak,Rang,Rank,Raol,Rarag,Rarbag,"
-"Rark,Rashnak,Raurk,Rigor,Rik,Rilg,Rinak,Rink,Rirg,Rirk,Rodish,Rodush,Rogdish,"
-"Rok,Rolo,Ronak,Rudash,Rugar,Rugdish,Ruk,Rung,Ruol,Rurag,Rushnak,Vadash,"
-"Vadish,Vadush,Vak,Valo,Vank,Varag,Varbag,Vigar,Vigdish,Vigor,Vilg,Vilo,Vink,"
-"Virag,Virt,Vishnak,Vogdish,Vogor,Vonak,Vong,Vorg,Vork,Voshnak,Vourk,Vradash,"
-"Vragar,Vragdush,Vragor,Vralo,Vrang,Vrarbag,Vrarg,Vrart,Vraurk,Vridash,"
-"Vridish,Vrigor,Vrik,Vrinak,Vring,Vrirt,Vrishnak,Vriurk,Vrodash,Vrodish,"
-"Vrogar,Vrogor,Vrolo,Vrong,Vrorg,Vrork,Vrudish,Vrugdush,Vrulg,Vrung,Vruol,"
-"Vrurg,Vrurt,Vruurk,Vudish,Vuk,Vulg,Vulo,Vunak,Vurag,Vurbag,Vurg,Vushnak"
+"Äg,Agh,Bog Äh,Borb,Brag,Brag Goh,Brok,Dak,Drog,Frok,Ga,Gah,Gark,Gnarf,Grar,"
+"Grokk,Grumph,Gulk,Hak,Hask,Hoth,Hug Bah,Hu Kah,Kak,Krak,Krug,Kub,Kuh,Lok,Luk,"
+"Nak,Nuk Kar,Pag,Reck,Rok,Ruk,Sark,Shak,Shuf,Stuh,Targ,Thog,Thruf,Thur,Tohg,"
+"Torg,Trok,Tsok,Tuh,Tuk Ruh,Ugg,Üh,Urg,Urgh,Urk,Vak,Zog,Zuug"
 
 #: data/core/macros/names.cfg:69
 msgid ""
-"Äg,Agh,Bog Äh,Borb,Brag,Brag Goh,Brok,Dak,Drog,Frok,Ga,Gah,Gark,Gnarf,Grar,"
-"Grokk,Grumph,Gulk,Hak,Hask,Hoth,Hug Bah,Hu Kah,Kak,Krak,Krug,Kub,Kuh,Lok,Luk,"
-"Nak,Nuk Kar,Pag,Reck,Rok,Ruk,Sark,Shak,Shuf,Stuh,Targ,Thog,Thruf,Thur,Tohg,"
-"Torg,Trok,Tsok,Tuh,Tuk Ruh,Ugg,Üh,Urg,Urgh,Urk,Vak,Zog,Zuug"
+"Bludebalmen,Boladrumbadrum,Bolwuldelman,Bombempomgontor,Bomtanbomkenton,"
+"Bomtanbomtonum,Bregalad,Bremdebubde,Brenbasnudnem,Brendumadoak,"
+"Brommantendronnor,Brumbendublun,Brumennarunom,Brummdlebroak,Bumbadadabum,"
+"Buomdumdenlol,Carnimirië,Dabumdabumtam,Dammantongonnur,Danmonlulbam,"
+"Debundbemun,Delmduelmdelom,Diblembumnde,Dolmannumbil,Drongnoblemdu,"
+"Dulmandarook,Dulwulmendom,Dumdumdumatum,Elmaroomadrum,Grelmadrumbumadum,"
+"Gulladroamadoak,Gumabeladrelm,Laffalialomdium,Landunwonbam,Lassemista,"
+"Lefnublemdde,Libleddnumm,Lolmandindel,Monlamwimdan,Muldondindal,"
+"Mundionalafla,Mundumblemdum,Munnamdulbon,Nanmildaldum,Nunmaldildun,Orofarnië,"
+"Pambedrumne,Pomtamkomtrobum,Rithramcamhan,Tantondernintan,Temtundembenn,"
+"Temtunnongetem,Tondenkontenkon,Troombadoom,Tumtentantarun,Tumtonnongatum,"
+"Tumtumgamtomtom,Wonrunmaldin,Wudadoonopl"
 msgstr ""
-"Äg,Agh,Bog Äh,Borb,Brag,Brag Goh,Brok,Dak,Drog,Frok,Ga,Gah,Gark,Gnarf,Grar,"
-"Grokk,Grumph,Gulk,Hak,Hask,Hoth,Hug Bah,Hu Kah,Kak,Krak,Krug,Kub,Kuh,Lok,Luk,"
-"Nak,Nuk Kar,Pag,Reck,Rok,Ruk,Sark,Shak,Shuf,Stuh,Targ,Thog,Thruf,Thur,Tohg,"
-"Torg,Trok,Tsok,Tuh,Tuk Ruh,Ugg,Üh,Urg,Urgh,Urk,Vak,Zog,Zuug"
+"Bludebalmen,Boladrumbadrum,Bolwuldelman,Bombempomgontor,Bomtanbomkenton,"
+"Bomtanbomtonum,Bregalad,Bremdebubde,Brenbasnudnem,Brendumadoak,"
+"Brommantendronnor,Brumbendublun,Brumennarunom,Brummdlebroak,Bumbadadabum,"
+"Buomdumdenlol,Carnimirië,Dabumdabumtam,Dammantongonnur,Danmonlulbam,"
+"Debundbemun,Delmduelmdelom,Diblembumnde,Dolmannumbil,Drongnoblemdu,"
+"Dulmandarook,Dulwulmendom,Dumdumdumatum,Elmaroomadrum,Grelmadrumbumadum,"
+"Gulladroamadoak,Gumabeladrelm,Laffalialomdium,Landunwonbam,Lassemista,"
+"Lefnublemdde,Libleddnumm,Lolmandindel,Monlamwimdan,Muldondindal,"
+"Mundionalafla,Mundumblemdum,Munnamdulbon,Nanmildaldum,Nunmaldildun,Orofarnië,"
+"Pambedrumne,Pomtamkomtrobum,Rithramcamhan,Tantondernintan,Temtundembenn,"
+"Temtunnongetem,Tondenkontenkon,Troombadoom,Tumtentantarun,Tumtonnongatum,"
+"Tumtumgamtomtom,Wonrunmaldin,Wudadoonopl"
 
 #: data/core/macros/names.cfg:73
-msgid ""
-"Bludebalmen,Boladrumbadrum,Bolwuldelman,Bombempomgontor,Bomtanbomkenton,"
-"Bomtanbomtonum,Bregalad,Bremdebubde,Brenbasnudnem,Brendumadoak,"
-"Brommantendronnor,Brumbendublun,Brumennarunom,Brummdlebroak,Bumbadadabum,"
-"Buomdumdenlol,Carnimirië,Dabumdabumtam,Dammantongonnur,Danmonlulbam,"
-"Debundbemun,Delmduelmdelom,Diblembumnde,Dolmannumbil,Drongnoblemdu,"
-"Dulmandarook,Dulwulmendom,Dumdumdumatum,Elmaroomadrum,Grelmadrumbumadum,"
-"Gulladroamadoak,Gumabeladrelm,Laffalialomdium,Landunwonbam,Lassemista,"
-"Lefnublemdde,Libleddnumm,Lolmandindel,Monlamwimdan,Muldondindal,"
-"Mundionalafla,Mundumblemdum,Munnamdulbon,Nanmildaldum,Nunmaldildun,Orofarnië,"
-"Pambedrumne,Pomtamkomtrobum,Rithramcamhan,Tantondernintan,Temtundembenn,"
-"Temtunnongetem,Tondenkontenkon,Troombadoom,Tumtentantarun,Tumtonnongatum,"
-"Tumtumgamtomtom,Wonrunmaldin,Wudadoonopl"
-msgstr ""
-"Bludebalmen,Boladrumbadrum,Bolwuldelman,Bombempomgontor,Bomtanbomkenton,"
-"Bomtanbomtonum,Bregalad,Bremdebubde,Brenbasnudnem,Brendumadoak,"
-"Brommantendronnor,Brumbendublun,Brumennarunom,Brummdlebroak,Bumbadadabum,"
-"Buomdumdenlol,Carnimirië,Dabumdabumtam,Dammantongonnur,Danmonlulbam,"
-"Debundbemun,Delmduelmdelom,Diblembumnde,Dolmannumbil,Drongnoblemdu,"
-"Dulmandarook,Dulwulmendom,Dumdumdumatum,Elmaroomadrum,Grelmadrumbumadum,"
-"Gulladroamadoak,Gumabeladrelm,Laffalialomdium,Landunwonbam,Lassemista,"
-"Lefnublemdde,Libleddnumm,Lolmandindel,Monlamwimdan,Muldondindal,"
-"Mundionalafla,Mundumblemdum,Munnamdulbon,Nanmildaldum,Nunmaldildun,Orofarnië,"
-"Pambedrumne,Pomtamkomtrobum,Rithramcamhan,Tantondernintan,Temtundembenn,"
-"Temtunnongetem,Tondenkontenkon,Troombadoom,Tumtentantarun,Tumtonnongatum,"
-"Tumtumgamtomtom,Wonrunmaldin,Wudadoonopl"
-
-#: data/core/macros/names.cfg:77
 msgid ""
 "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
 "Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
@@ -3108,31 +2970,31 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1265 src/actions/attack.cpp:877
+#: data/lua/wml-tags.lua:1265 src/actions/attack.cpp:802
 msgid "female^poisoned"
 msgstr "myrkytetty"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1267 src/actions/attack.cpp:882
+#: data/lua/wml-tags.lua:1267 src/actions/attack.cpp:807
 msgid "female^slowed"
 msgstr "hidastettu"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1267 src/actions/attack.cpp:882
+#: data/lua/wml-tags.lua:1267 src/actions/attack.cpp:807
 msgid "slowed"
 msgstr "hidastettu"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1268 src/actions/attack.cpp:887
+#: data/lua/wml-tags.lua:1268 src/actions/attack.cpp:812
 msgid "female^petrified"
 msgstr "kivetetty"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1268 src/actions/attack.cpp:887
+#: data/lua/wml-tags.lua:1268 src/actions/attack.cpp:812
 msgid "petrified"
 msgstr "kivetetty"
 
@@ -3148,7 +3010,7 @@ msgstr "ei voi parantaa"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1734 src/multiplayer_connect.cpp:1706
+#: data/lua/wml/objectives.lua:1734 src/multiplayer_connect.cpp:1726
 msgid "Victory:"
 msgstr "Voitto:"
 
@@ -3182,294 +3044,27 @@ msgstr "(viimeinen vuoro)"
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "%d%% kullasta siirtyi seuraavaan tehtävään."
 
-#. [hides]: id=invisible
-#: data/scenario-movethrough.cfg:65 data/scenario-movethrough.cfg:67
-#, fuzzy
-#| msgid "invisible: "
-msgid "invisible"
-msgstr "näkymätön: "
-
-#. [hides]: id=invisible
-#: data/scenario-movethrough.cfg:66 data/scenario-movethrough.cfg:68
-#, fuzzy
-#| msgid "female^slowed"
-msgid "female^invisible"
-msgstr "hidastettu"
-
-#. [message]: speaker=unit
-#: data/scenario-movethrough.cfg:92
-msgid "I triggered an enter hex event."
-msgstr ""
-
-#. [message]: speaker=unit
-#: data/scenario-movethrough.cfg:110
-msgid "I triggered an exit hex event."
-msgstr ""
-
-#. [message]: speaker=unit
-#: data/scenario-movethrough.cfg:131
-msgid "Get out of the way, $second_unit.name|!"
-msgstr ""
-
-#. [message]
-#: data/scenario-movethrough.cfg:180
-msgid "The ground has collapsed beneath me!"
-msgstr ""
-
-#. [message]: speaker=unit
-#: data/scenario-movethrough.cfg:241
-#, fuzzy
-#| msgid "Fire a game event."
-msgid "I triggered a moveto event."
-msgstr "Laukaise pelitapahtuma."
-
-#. [message]: speaker=second_unit
-#: data/scenario-movethrough.cfg:256
-msgid ""
-"I spy, with my little eye, something that starts with 'f'.\n"
-"\n"
-msgstr ""
-
-#. [message]: speaker=second_unit
-#: data/scenario-movethrough.cfg:258
-msgid "This is the first part of a sighted event."
-msgstr ""
-
-#. [message]: speaker=unit
-#: data/scenario-movethrough.cfg:262
-msgid "Um, \"friend\"? (Hopefully not \"foe"
-msgstr ""
-
-#. [message]: speaker=unit
-#: data/scenario-movethrough.cfg:264
-msgid "This is the second part of a sighted event."
-msgstr ""
-
-#. [effect]: type=blade
-#: data/scenario-test.cfg:247
-#, fuzzy
-#| msgid "Password: "
-msgid "sword"
-msgstr "Salasana: "
-
-#. [drains]: id=life_vortex
-#: data/scenario-test.cfg:253
-msgid "Life Vortex"
-msgstr ""
-
-#. [drains]: id=life_vortex
-#: data/scenario-test.cfg:254
-msgid ""
-"Life Vortex:\n"
-"Each successful strike in a battle involving this attack causes the attacker "
-"to gain the health that his attack removed from the target.  This has no "
-"effect against nonliving targets."
-msgstr ""
-
-#. [heal_on_hit]: id=entropy
-#: data/scenario-test.cfg:262
-msgid "Entropy"
-msgstr ""
-
-#. [heal_on_hit]: id=entropy
-#: data/scenario-test.cfg:263
-msgid ""
-"Entropy:\n"
-"Each successful strike in a battle involving this attack causes the attacker "
-"to lose 4 HP.  This has no effect against nonliving targets."
-msgstr ""
-
-#. [effect]: type=pierce
-#: data/scenario-test.cfg:285
-msgid "bow"
-msgstr ""
-
-#. [drains]: id=empathic_weapon
-#: data/scenario-test.cfg:291
-msgid "Empathic Weapon"
-msgstr ""
-
-#. [drains]: id=empathic_weapon
-#: data/scenario-test.cfg:292
-msgid ""
-"Empathic Weapon:\n"
-"All damage dealt by this attack to a living target is dealt to the user as "
-"well"
-msgstr ""
-
-#. [heal_on_hit]: id=rejuvenating_weapon
-#: data/scenario-test.cfg:298
-msgid "Rejuvenating Weapon (10)"
-msgstr ""
-
-#. [heal_on_hit]: id=rejuvenating_weapon
-#: data/scenario-test.cfg:299
-msgid ""
-"Rejuvenating Weapon (10):\n"
-"Each successful strike with this weapon heals the user for 10 HP"
-msgstr ""
-
-#. [effect]: type=pierce
-#: data/scenario-test.cfg:311
-msgid "longbow"
-msgstr ""
-
-#. [drains]: id=drains
-#: data/scenario-test.cfg:318
-#, fuzzy
-#| msgid "drains"
-msgid "drains 20%"
-msgstr "imee elämää"
-
-#. [drains]: id=drains
-#: data/scenario-test.cfg:319
-#, fuzzy
-#| msgid ""
-#| "Drain:\n"
-#| "This unit drains health from living units, healing itself for half the "
-#| "amount of damage it deals (rounded down)."
-msgid ""
-"Drain 20%:\n"
-"This unit drains health from living units, healing itself for 20% of the "
-"amount of damage it deals (rounded down)."
-msgstr ""
-"Elämänimu:\n"
-"Tämä yksikkö imee elämää vihollisistaan, parantaen itseään puolella siitä "
-"vahingosta, jonka tekee (pyöristetään alas)."
-
-#. [heal_on_hit]: id=drains
-#: data/scenario-test.cfg:325
-msgid "sacrifice 5"
-msgstr ""
-
-#. [heal_on_hit]: id=drains
-#: data/scenario-test.cfg:326
-msgid ""
-"Sacrifice 5:\n"
-"Each successful attack costs this unit 5 HP."
-msgstr ""
-
-#. [effect]: type=impact
-#: data/scenario-test.cfg:338
-msgid "life bomb"
-msgstr ""
-
-#. [heal_on_hit]: id=drains
-#: data/scenario-test.cfg:343
-msgid "life copy 20"
-msgstr ""
-
-#. [heal_on_hit]: id=drains
-#: data/scenario-test.cfg:344
-msgid ""
-"Life copy 20:\n"
-"When this attack hits a living unit, the user is healed for 20 HP."
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:369
-#, fuzzy
-#| msgid "Version: "
-msgid "Vision Test"
-msgstr "Versio: "
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:380
-msgid "Checking visibility of (8,15)..."
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:404 data/scenario-test.cfg:433
-msgid "HORRORS FILTERS ARE ALL TRUE!"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:411
-msgid "You can see it, can't you?"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:440
-msgid "Clear sailing!"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:458
-msgid "But the fog, it blinds you!"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:465 data/scenario-test.cfg:494
-msgid "HORRORS FILTERS ARE ALL FALSE!"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:487
-#, fuzzy
-#| msgid "invisible: "
-msgid "It is invisible!"
-msgstr "näkymätön: "
-
-#. [heal_on_hit]: id=fiery
-#: data/scenario-test.cfg:691 data/scenario-test.cfg:692
-msgid "fiery 4"
-msgstr ""
-
-#. [heal_on_hit]: id=fiery
-#: data/scenario-test.cfg:693 data/scenario-test.cfg:695
-msgid ""
-"Fiery 4:\n"
-"A successful hit against this unit costs the opponent 4 HP."
-msgstr ""
-
-#. [effect]: type=pierce
-#: data/scenario-test.cfg:705
-msgid "lifebow"
-msgstr ""
-
-#. [drains]: id=drains
-#: data/scenario-test.cfg:712
-#, fuzzy
-#| msgid "drains"
-msgid "drains 100%"
-msgstr "imee elämää"
-
-#. [drains]: id=drains
-#: data/scenario-test.cfg:713
-#, fuzzy
-#| msgid ""
-#| "Drain:\n"
-#| "This unit drains health from living units, healing itself for half the "
-#| "amount of damage it deals (rounded down)."
-msgid ""
-"Drain 100%:\n"
-"This unit drains health from living units, healing itself for 100% of the "
-"amount of damage it deals (rounded down)."
-msgstr ""
-"Elämänimu:\n"
-"Tämä yksikkö imee elämää vihollisistaan, parantaen itseään puolella siitä "
-"vahingosta, jonka tekee (pyöristetään alas)."
-
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
-#: data/scenario-test.cfg:826 src/dialogs.cpp:629
-#: src/multiplayer_create.cpp:99
+#: data/scenario-test.cfg:833 src/dialogs.cpp:629 src/mp_depcheck.cpp:458
+#: src/mp_options.cpp:227 src/multiplayer_create.cpp:102
 msgid "OK"
 msgstr "OK"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
-#: data/scenario-test.cfg:827 src/dialogs.cpp:630 src/dialogs.cpp:1069
-#: src/dialogs.cpp:1175 src/multiplayer_connect.cpp:1038
-#: src/multiplayer_create.cpp:98 src/multiplayer_wait.cpp:180
+#: data/scenario-test.cfg:834 src/dialogs.cpp:630 src/dialogs.cpp:1081
+#: src/dialogs.cpp:1187 src/mp_options.cpp:232
+#: src/multiplayer_connect.cpp:1039 src/multiplayer_create.cpp:101
+#: src/multiplayer_wait.cpp:180
 msgid "Cancel"
 msgstr "Peruuta"
 
-#: data/scenario-test.cfg:3546
+#: data/scenario-test.cfg:3553
 msgid "very long"
 msgstr "hyvin pitkä"
 
-#: data/scenario-test.cfg:3547
+#: data/scenario-test.cfg:3554
 msgid "electrical"
 msgstr "sähköinen"
 
@@ -3502,8 +3097,8 @@ msgstr "Päätä skenaario"
 #. [label]: id=selected-label-hp
 #: data/themes/default.cfg:205 data/themes/dfool.cfg:229
 #: data/themes/experimental.cfg:179 data/themes/widescreen.cfg:237
-#: data/themes/widescreen.cfg:257 src/menu_events.cpp:218 src/unit.cpp:2542
-#: src/unit.cpp:2729
+#: data/themes/widescreen.cfg:257 src/menu_events.cpp:220 src/unit.cpp:2553
+#: src/unit.cpp:2770
 msgid "HP"
 msgstr "EP"
 
@@ -3512,7 +3107,7 @@ msgstr "EP"
 #. [label]: id=selected-label-xp
 #: data/themes/default.cfg:214 data/themes/dfool.cfg:239
 #: data/themes/experimental.cfg:188 data/themes/widescreen.cfg:246
-#: data/themes/widescreen.cfg:266 src/menu_events.cpp:220
+#: data/themes/widescreen.cfg:266 src/menu_events.cpp:222
 #: src/menu_events.cpp:933
 msgid "XP"
 msgstr "KP"
@@ -3640,46 +3235,46 @@ msgstr "Näkökulma"
 msgid "Skip animation"
 msgstr "Älä animoi"
 
-#: src/about.cpp:209 src/menu_events.cpp:327 src/menu_events.cpp:354
-#: src/statistics_dialog.cpp:114
+#: src/about.cpp:209 src/menu_events.cpp:329 src/menu_events.cpp:356
+#: src/statistics_dialog.cpp:183
 msgid "Close"
 msgstr "Sulje"
 
-#: src/actions/attack.cpp:99 src/actions/attack.cpp:160
-#: src/actions/attack.cpp:1126
+#: src/actions/attack.cpp:219 src/actions/attack.cpp:421
+#: src/actions/attack.cpp:1051
 msgid "An invalid attacker weapon got selected."
 msgstr "Epäkelpo hyökkäysväline valittu."
 
-#: src/actions/attack.cpp:104
+#: src/actions/attack.cpp:224
 msgid "An invalid defender weapon got selected."
 msgstr "Epäkelpo puolustusväline valittu."
 
-#: src/actions/create.cpp:541
+#: src/actions/create.cpp:545
 msgid "You don’t have a leader to recall with."
 msgstr "Sinulla ei ole johtajaa, joka voisi kutsua."
 
-#: src/actions/create.cpp:546
+#: src/actions/create.cpp:550
 msgid "None of your leaders is able to recall that unit."
 msgstr "Kukaan johtajistasi ei voi kutsua tätä yksikköä."
 
-#: src/actions/create.cpp:551
+#: src/actions/create.cpp:555
 msgid "You must have a leader on a keep who is able to recall that unit."
 msgstr ""
 "Johtajasi täytyy olla linnakkeessa, jos haluat värvätä tai kutsua yksiköitä."
 
-#: src/actions/create.cpp:556
+#: src/actions/create.cpp:560
 msgid "There are no vacant castle tiles in which to recall the unit."
 msgstr "Linnassa ei ole tyhjää tilaa, johon kutsua yksiköitä."
 
-#: src/actions/create.cpp:625
+#: src/actions/create.cpp:629
 msgid "You don’t have a leader to recruit with."
 msgstr "Sinulla ei ole johtajaa, joka voisi värvätä."
 
-#: src/actions/create.cpp:630
+#: src/actions/create.cpp:634
 msgid "You must have a leader on a keep who is able to recruit the unit."
 msgstr "Johtajasi täytyy olla linnakkeessa, jos haluat värvätä yksiköitä."
 
-#: src/actions/create.cpp:635
+#: src/actions/create.cpp:639
 msgid "There are no vacant castle tiles in which to recruit the unit."
 msgstr "Linnassa ei ole tyhjää tilaa, johon värvätä."
 
@@ -3817,18 +3412,24 @@ msgid "addon_type^MP campaign"
 msgstr "MP-kampanja"
 
 #: src/addon/info.cpp:163
+#, fuzzy
+#| msgid "addon_type^MP faction"
+msgid "addon_type^MP modification"
+msgstr "MP-liittouma"
+
+#: src/addon/info.cpp:165
 msgid "addon_type^Resources"
 msgstr "apuvälineet"
 
-#: src/addon/info.cpp:165
+#: src/addon/info.cpp:167
 msgid "addon_type^Other"
 msgstr "Muu"
 
-#: src/addon/info.cpp:167
+#: src/addon/info.cpp:169
 msgid "addon_type^(unknown)"
 msgstr "(tuntematon)"
 
-#: src/addon/info.cpp:204
+#: src/addon/info.cpp:206
 msgid "unit_byte^B"
 msgstr "t"
 
@@ -3911,7 +3512,7 @@ msgid "Author"
 msgstr "tekijä"
 
 #: src/addon/manager_ui.cpp:173 src/addon/manager_ui.cpp:513
-#: src/dialogs.cpp:576 src/menu_events.cpp:215 src/menu_events.cpp:931
+#: src/dialogs.cpp:576 src/menu_events.cpp:217 src/menu_events.cpp:931
 msgid "Name"
 msgstr "Nimi"
 
@@ -3924,7 +3525,7 @@ msgid "Size"
 msgstr "koko"
 
 #: src/addon/manager_ui.cpp:174 src/addon/manager_ui.cpp:528
-#: src/menu_events.cpp:214 src/menu_events.cpp:930 src/menu_events.cpp:1578
+#: src/menu_events.cpp:216 src/menu_events.cpp:930 src/menu_events.cpp:1565
 msgid "Type"
 msgstr "tyyppi"
 
@@ -3997,7 +3598,7 @@ msgid "Do you really wish to continue?"
 msgstr "Haluatko jatkaa?"
 
 #: src/addon/manager_ui.cpp:293 src/addon/manager_ui.cpp:304
-#: src/addon/manager_ui.cpp:970 src/multiplayer.cpp:265
+#: src/addon/manager_ui.cpp:970 src/multiplayer.cpp:271
 msgid "Confirm"
 msgstr "Varmista"
 
@@ -4057,7 +3658,7 @@ msgid "There are no add-ons matching the specified criteria on this server."
 msgstr "Tällä palvelimella ei ole yhtään lisäosaa."
 
 #: src/addon/manager_ui.cpp:701 src/dialogs.cpp:601 src/menu_events.cpp:998
-#: src/menu_events.cpp:1614
+#: src/menu_events.cpp:1601
 msgid "Filter: "
 msgstr "Suodatin: "
 
@@ -4245,11 +3846,11 @@ msgstr " haavoittuvainen: "
 msgid "Slowed"
 msgstr "hidastettu"
 
-#: src/attack_prediction_display.cpp:255 src/reports.cpp:794
+#: src/attack_prediction_display.cpp:255 src/reports.cpp:840
 msgid "Total damage"
 msgstr "kokonaisvahinko"
 
-#: src/attack_prediction_display.cpp:262 src/mouse_events.cpp:844
+#: src/attack_prediction_display.cpp:262 src/mouse_events.cpp:910
 msgid "No usable weapon"
 msgstr "Ei käyttökelpoista asetta"
 
@@ -4257,7 +3858,7 @@ msgstr "Ei käyttökelpoista asetta"
 msgid "Chance of being unscathed"
 msgstr "Mahdollisuus selvitä naarmutta:"
 
-#: src/attack_prediction_display.cpp:546 src/mouse_events.cpp:913
+#: src/attack_prediction_display.cpp:546 src/mouse_events.cpp:979
 msgid "Damage Calculations"
 msgstr "Vahinkolaskelmat"
 
@@ -4273,11 +3874,11 @@ msgstr "Mikä voittoisasta yksiköstämme tulee?"
 msgid "No objectives available"
 msgstr "Ei tavoitteita saatavana"
 
-#: src/dialogs.cpp:431 src/savegame.cpp:315
+#: src/dialogs.cpp:431 src/savegame.cpp:316
 msgid "%a %b %d %H:%M %Y"
 msgstr "%d.%m.%Y %H:%M"
 
-#: src/dialogs.cpp:431 src/savegame.cpp:315
+#: src/dialogs.cpp:431 src/savegame.cpp:316
 msgid "%a %b %d %I:%M %p %Y"
 msgstr "%d.%m.%Y %H:%M"
 
@@ -4301,7 +3902,7 @@ msgstr "Tutoriaali"
 msgid "Test scenario"
 msgstr "Testaa skenaariota"
 
-#: src/dialogs.cpp:486 src/savegame.cpp:1136
+#: src/dialogs.cpp:486 src/savegame.cpp:1144
 msgid "Turn"
 msgstr "vuoro"
 
@@ -4317,28 +3918,28 @@ msgstr "Vaikeustaso: "
 msgid "Version: "
 msgstr "Versio: "
 
-#: src/dialogs.cpp:517 src/dialogs.cpp:543 src/savegame.cpp:345
-#: src/savegame.cpp:371
+#: src/dialogs.cpp:517 src/dialogs.cpp:543 src/savegame.cpp:346
+#: src/savegame.cpp:372
 msgid "%b %d %y"
 msgstr "%b %d %y"
 
-#: src/dialogs.cpp:524 src/reports.cpp:1213 src/savegame.cpp:352
+#: src/dialogs.cpp:524 src/reports.cpp:1259 src/savegame.cpp:353
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/dialogs.cpp:527 src/reports.cpp:1213 src/savegame.cpp:355
+#: src/dialogs.cpp:527 src/reports.cpp:1259 src/savegame.cpp:356
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
-#: src/dialogs.cpp:532 src/savegame.cpp:360
+#: src/dialogs.cpp:532 src/savegame.cpp:361
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/dialogs.cpp:535 src/savegame.cpp:363
+#: src/dialogs.cpp:535 src/savegame.cpp:364
 msgid "%A, %I:%M %p"
 msgstr "%A, %H:%M"
 
-#: src/dialogs.cpp:539 src/savegame.cpp:367
+#: src/dialogs.cpp:539 src/savegame.cpp:368
 msgid "%b %d"
 msgstr "%b %d"
 
@@ -4360,7 +3961,7 @@ msgstr ""
 msgid "Date"
 msgstr "Päivämäärä"
 
-#: src/dialogs.cpp:593 src/multiplayer_create.cpp:120 src/savegame.cpp:675
+#: src/dialogs.cpp:593 src/multiplayer_create.cpp:126 src/savegame.cpp:687
 msgid "Load Game"
 msgstr "Tallennukset"
 
@@ -4414,11 +4015,11 @@ msgstr "KP: "
 msgid "Moves: "
 msgstr "Liikepisteitä: "
 
-#: src/dialogs.cpp:1102
+#: src/dialogs.cpp:1114
 msgid "KB"
 msgstr "Kt"
 
-#: src/game_config.cpp:335
+#: src/game_config.cpp:339
 msgid "Invalid color range: "
 msgstr "Virheellinen värialue: "
 
@@ -4427,7 +4028,7 @@ msgid "The file you have tried to load is corrupt"
 msgstr "Tiedosto, jonka yritit avata, on korruptoitunut"
 
 #: src/game_controller.cpp:636 src/game_controller.cpp:654
-#: src/savegame.cpp:724
+#: src/savegame.cpp:735
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Tiedosto, jonka yritit ladata, on vahingoittunut: '"
 
@@ -4447,18 +4048,18 @@ msgstr "Yhtään kampanjaa ei ole saatavilla.\n"
 msgid "Error while starting server: "
 msgstr "Virhe käynnistäessä palvelinta:"
 
-#: src/game_controller.cpp:1042 src/playcampaign.cpp:200
-#: src/playcampaign.cpp:502
+#: src/game_controller.cpp:1042 src/playcampaign.cpp:198
+#: src/playcampaign.cpp:499
 msgid "The game could not be loaded: "
 msgstr "Peliä ei voitu ladata: "
 
-#: src/game_controller.cpp:1044 src/playcampaign.cpp:202
-#: src/playcampaign.cpp:505
+#: src/game_controller.cpp:1044 src/playcampaign.cpp:200
+#: src/playcampaign.cpp:502
 msgid "Error while playing the game: "
 msgstr "Virhe pelatessa: "
 
-#: src/game_controller.cpp:1062 src/playcampaign.cpp:204
-#: src/playcampaign.cpp:508
+#: src/game_controller.cpp:1062 src/playcampaign.cpp:202
+#: src/playcampaign.cpp:505
 msgid "The game map could not be loaded: "
 msgstr "Karttaa ei voitu ladata: "
 
@@ -4466,21 +4067,21 @@ msgstr "Karttaa ei voitu ladata: "
 msgid "The Battle for Wesnoth"
 msgstr "Taistelu Wesnothista"
 
-#: src/game_controller.cpp:1198
+#: src/game_controller.cpp:1202
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Seuraavassa lisäosassa oli virhe, eikä sitä voitu ladata:"
 msgstr[1] "Seuraavissa lisäosissa oli virheitä, eikä niitä voitu ladata:"
 
-#: src/game_controller.cpp:1205
+#: src/game_controller.cpp:1209
 msgid "ERROR DETAILS:"
 msgstr "VIRHEEN TARKEMPI KUVAUS:"
 
-#: src/game_controller.cpp:1239
+#: src/game_controller.cpp:1242
 msgid "Error loading game configuration files: '"
 msgstr "Virhe ladattaessa asetustiedostoja: '"
 
-#: src/game_controller.cpp:1240
+#: src/game_controller.cpp:1243
 msgid "' (The game will now exit)"
 msgstr "' (peli sulkeutuu nyt)"
 
@@ -4500,59 +4101,59 @@ msgstr "Virheenetsintä:"
 msgid "Info: "
 msgstr "Info:"
 
-#: src/game_events.cpp:2510
+#: src/game_events.cpp:2513
 msgid "Invalid value in the result key for [end_level]"
 msgstr "Kelvoton arvo [end_level] -tuloksessa"
 
-#: src/gamestatus.cpp:625 src/multiplayer_connect.cpp:971
+#: src/gamestatus.cpp:635 src/multiplayer_connect.cpp:972
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Ei löydetty johtajaa liittoumalle $faction"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:207 src/multiplayer_lobby.cpp:448
+#: src/gui/dialogs/lobby/lobby_data.cpp:207 src/multiplayer_lobby.cpp:463
 msgid "Unknown era: $era_id"
 msgstr "Tuntematon aikakausi: $era_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:212 src/multiplayer_lobby.cpp:452
+#: src/gui/dialogs/lobby/lobby_data.cpp:212 src/multiplayer_lobby.cpp:467
 msgid "Unknown era"
 msgstr "Tuntematon aikakausi"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:268 src/multiplayer_lobby.cpp:514
+#: src/gui/dialogs/lobby/lobby_data.cpp:268 src/multiplayer_lobby.cpp:529
 msgid "Remote scenario"
 msgstr "Toisella koneella oleva skenaario"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:276 src/multiplayer_lobby.cpp:521
+#: src/gui/dialogs/lobby/lobby_data.cpp:276 src/multiplayer_lobby.cpp:536
 msgid "Unknown scenario: $scenario_id"
 msgstr "Tuntematon skenaario: $scenario_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:281 src/multiplayer_lobby.cpp:525
+#: src/gui/dialogs/lobby/lobby_data.cpp:281 src/multiplayer_lobby.cpp:540
 msgid "Unknown scenario"
 msgstr "Tuntematon skenaario"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:287 src/multiplayer_lobby.cpp:530
+#: src/gui/dialogs/lobby/lobby_data.cpp:287 src/multiplayer_lobby.cpp:571
 msgid "Reloaded game"
 msgstr "Uudelleenladattu peli"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:298 src/multiplayer_lobby.cpp:546
+#: src/gui/dialogs/lobby/lobby_data.cpp:298 src/multiplayer_lobby.cpp:587
 msgid "Turn "
 msgstr "Vuoro"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:302 src/multiplayer_lobby.cpp:550
+#: src/gui/dialogs/lobby/lobby_data.cpp:302 src/multiplayer_lobby.cpp:591
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Vapaa paikka:"
 msgstr[1] "Vapaita paikkoja:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:308 src/multiplayer_lobby.cpp:561
+#: src/gui/dialogs/lobby/lobby_data.cpp:308 src/multiplayer_lobby.cpp:602
 msgid "Fog"
 msgstr "Sumu"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:311
-#: src/gui/dialogs/lobby/lobby_data.cpp:314 src/multiplayer_create.cpp:95
-#: src/multiplayer_lobby.cpp:565 src/multiplayer_lobby.cpp:571
+#: src/gui/dialogs/lobby/lobby_data.cpp:314 src/multiplayer_create.cpp:97
+#: src/multiplayer_lobby.cpp:606 src/multiplayer_lobby.cpp:612
 msgid "Shroud"
 msgstr "Huntu"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:316 src/multiplayer_lobby.cpp:575
+#: src/gui/dialogs/lobby/lobby_data.cpp:316 src/multiplayer_lobby.cpp:616
 msgid "none"
 msgstr "Ei mitään"
 
@@ -4588,7 +4189,7 @@ msgstr "Ei ystävä eikä suodatettuna"
 msgid "You"
 msgstr "Sinä"
 
-#: src/gui/dialogs/lobby_player_info.cpp:147 src/multiplayer_create.cpp:592
+#: src/gui/dialogs/lobby_player_info.cpp:147 src/multiplayer_create.cpp:659
 msgid "Error"
 msgstr "Virhe"
 
@@ -4600,18 +4201,18 @@ msgstr "Loppu"
 msgid "System default language"
 msgstr "järjestelmän oletuskieli"
 
-#: src/leader_list.cpp:142 src/menu_events.cpp:1604
-#: src/multiplayer_connect.cpp:227 src/multiplayer_connect.cpp:271
+#: src/leader_list.cpp:142 src/menu_events.cpp:1591
+#: src/multiplayer_connect.cpp:228 src/multiplayer_connect.cpp:272
 msgid "gender^Random"
 msgstr "Satunnainen"
 
-#: src/leader_list.cpp:152 src/multiplayer_connect.cpp:223
-#: src/multiplayer_connect.cpp:267
+#: src/leader_list.cpp:152 src/multiplayer_connect.cpp:224
+#: src/multiplayer_connect.cpp:268
 msgid "Female ♀"
 msgstr "Naispuolinen ♀"
 
-#: src/leader_list.cpp:156 src/multiplayer_connect.cpp:225
-#: src/multiplayer_connect.cpp:269
+#: src/leader_list.cpp:156 src/multiplayer_connect.cpp:226
+#: src/multiplayer_connect.cpp:270
 msgid "Male ♂"
 msgstr "Miespuolinen ♂"
 
@@ -4683,11 +4284,11 @@ msgstr "Rakennetaan maastosääntöjä"
 msgid "Starting game"
 msgstr "Käynnistetään peliä"
 
-#: src/mapgen.cpp:744
+#: src/mapgen.cpp:741
 msgid "Random maps with an odd width aren't supported."
 msgstr "Satunnaiskartat oudoilla leveyksillä eivät ole tuettuja."
 
-#: src/mapgen.cpp:1008
+#: src/mapgen.cpp:1007
 msgid ""
 "No valid castle location found. Too many or too few mountain hexes? (please "
 "check the 'max hill size' parameter)"
@@ -4725,98 +4326,98 @@ msgstr "Herrani, tämä yksikkö on lähellä ylenemistä! "
 msgid "Dismiss Unit"
 msgstr "Vapauta yksikkö palveluksesta"
 
-#: src/menu_events.cpp:205
+#: src/menu_events.cpp:207
 msgid "Statistics"
 msgstr "Tilastot"
 
-#: src/menu_events.cpp:216
+#: src/menu_events.cpp:218
 msgid "Moves"
 msgstr "Liike"
 
-#: src/menu_events.cpp:217
+#: src/menu_events.cpp:219
 msgid "Status"
 msgstr "Tilanne"
 
-#: src/menu_events.cpp:219 src/menu_events.cpp:932
+#: src/menu_events.cpp:221 src/menu_events.cpp:932
 msgid "Level^Lvl."
 msgstr "Taso"
 
-#: src/menu_events.cpp:221
+#: src/menu_events.cpp:223
 msgid "unit list^Traits"
 msgstr "Ominaisuudet"
 
-#: src/menu_events.cpp:319
+#: src/menu_events.cpp:321
 msgid "Unit List"
 msgstr "Yksiköiden lista"
 
-#: src/menu_events.cpp:325 src/menu_events.cpp:347
+#: src/menu_events.cpp:327 src/menu_events.cpp:349
 msgid "Scroll To"
 msgstr "Vieritä"
 
-#: src/menu_events.cpp:379
+#: src/menu_events.cpp:381
 msgid "Leader"
 msgstr "Johtaja"
 
-#: src/menu_events.cpp:380 src/multiplayer_connect.cpp:1023
+#: src/menu_events.cpp:382 src/multiplayer_connect.cpp:1024
 msgid "Team"
 msgstr "Joukkue"
 
-#: src/menu_events.cpp:381 src/multiplayer_connect.cpp:1034
+#: src/menu_events.cpp:383 src/multiplayer_connect.cpp:1035
 msgid "Gold"
 msgstr "kultapalaa"
 
-#: src/menu_events.cpp:382
+#: src/menu_events.cpp:384
 msgid "Villages"
 msgstr "Kyliä"
 
-#: src/menu_events.cpp:383
+#: src/menu_events.cpp:385
 msgid "status^Units"
 msgstr "Yksiköt"
 
-#: src/menu_events.cpp:384
+#: src/menu_events.cpp:386
 msgid "Upkeep"
 msgstr "Ylläpito"
 
-#: src/menu_events.cpp:385 src/multiplayer_connect.cpp:1035
+#: src/menu_events.cpp:387 src/multiplayer_connect.cpp:1036
 #: src/multiplayer_wait.cpp:521
 msgid "Income"
 msgstr "Tulot"
 
-#: src/menu_events.cpp:490
+#: src/menu_events.cpp:492
 msgid "Current Status"
 msgstr "Tämänhetkinen tilanne"
 
-#: src/menu_events.cpp:491
+#: src/menu_events.cpp:493
 msgid "More >"
 msgstr "Lisää >"
 
-#: src/menu_events.cpp:509
+#: src/menu_events.cpp:511
 msgid "scenario settings^Leader"
 msgstr "Johtaja"
 
-#: src/menu_events.cpp:511
+#: src/menu_events.cpp:513
 msgid "scenario settings^Side"
 msgstr "Puoli"
 
-#: src/menu_events.cpp:512
+#: src/menu_events.cpp:514
 msgid ""
 "scenario settings^Start\n"
 "Gold"
 msgstr "Aloituskulta"
 
-#: src/menu_events.cpp:513
+#: src/menu_events.cpp:515
 msgid ""
 "scenario settings^Base\n"
 "Income"
 msgstr "Perustulot"
 
-#: src/menu_events.cpp:514
+#: src/menu_events.cpp:516
 msgid ""
 "scenario settings^Gold Per\n"
 "Village"
 msgstr "Kultaa kylästä"
 
-#: src/menu_events.cpp:515
+#: src/menu_events.cpp:517
 #, fuzzy
 #| msgid ""
 #| "scenario settings^Gold Per\n"
@@ -4826,77 +4427,77 @@ msgid ""
 "Village"
 msgstr "Kultaa kylästä"
 
-#: src/menu_events.cpp:516
+#: src/menu_events.cpp:518
 msgid "scenario settings^Fog"
 msgstr "Sumu"
 
-#: src/menu_events.cpp:517
+#: src/menu_events.cpp:519
 msgid "scenario settings^Shroud"
 msgstr "Huntu"
 
-#: src/menu_events.cpp:567 src/menu_events.cpp:568
+#: src/menu_events.cpp:569 src/menu_events.cpp:570
 msgid "no"
 msgstr "ei"
 
-#: src/menu_events.cpp:567 src/menu_events.cpp:568
+#: src/menu_events.cpp:569 src/menu_events.cpp:570
 msgid "yes"
 msgstr "kyllä"
 
-#: src/menu_events.cpp:584
+#: src/menu_events.cpp:586
 msgid "Scenario Settings"
 msgstr "Skenaarion asetukset"
 
-#: src/menu_events.cpp:587
+#: src/menu_events.cpp:589
 msgid " < Back"
 msgstr " < Takaisin"
 
-#: src/menu_events.cpp:606
+#: src/menu_events.cpp:608
 msgid "Save the Map As"
 msgstr "Tallenna kartta nimellä"
 
-#: src/menu_events.cpp:610
+#: src/menu_events.cpp:612
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Kartta on jo olemassa. Haluatko ylikirjoittaa sen?"
 
-#: src/menu_events.cpp:622
+#: src/menu_events.cpp:624
 msgid "Map saved."
 msgstr "Kartta tallennettu."
 
-#: src/menu_events.cpp:626
+#: src/menu_events.cpp:628
 msgid "Could not save the map: $msg"
 msgstr "Ei voitu tallentaa karttaa: $msg"
 
-#: src/menu_events.cpp:698
+#: src/menu_events.cpp:700
 msgid "Message:"
 msgstr "Viesti:"
 
-#: src/menu_events.cpp:699
+#: src/menu_events.cpp:701
 msgid "Send to allies only"
 msgstr "Lähetä vain liittolaisille"
 
-#: src/menu_events.cpp:699
+#: src/menu_events.cpp:701
 msgid "Send to observers only"
 msgstr "Lähetä vain katsojille"
 
-#: src/menu_events.cpp:766
+#: src/menu_events.cpp:768
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "Kultapala"
 msgstr[1] "Kultapalaa"
 
-#: src/menu_events.cpp:773
+#: src/menu_events.cpp:775
 msgid "You have no units available to recruit."
 msgstr "Sinulla ei ole yksiköitä, joita värvätä."
 
-#: src/menu_events.cpp:788
+#: src/menu_events.cpp:790
 msgid "Recruit"
 msgstr "Värvää"
 
-#: src/menu_events.cpp:789 src/menu_events.cpp:993
+#: src/menu_events.cpp:791 src/menu_events.cpp:993
 msgid "Select unit:"
 msgstr "Valitse yksikkö:"
 
-#: src/menu_events.cpp:837
+#: src/menu_events.cpp:839
 msgid "You don’t have enough gold to recruit that unit"
 msgstr "Sinulla ei ole tarpeeksi kultaa yksikön värväämiseen."
 
@@ -4934,46 +4535,46 @@ msgstr[1] ""
 "Sinulla täytyy olla vähintään $cost kultapalaa voidaksesi kutsua yksikön "
 "takaisin palvelukseen."
 
-#: src/menu_events.cpp:1416
+#: src/menu_events.cpp:1404
 msgid "You cannot end your turn yet!"
 msgstr "Et voi lopettaa vuoroasi vielä!"
 
-#: src/menu_events.cpp:1443
+#: src/menu_events.cpp:1431
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 "Et ole vielä aloittanut vuoroasi.  Haluatko todellakin lopettaa vuorosi?"
 
-#: src/menu_events.cpp:1451 src/menu_events.cpp:1456
+#: src/menu_events.cpp:1439 src/menu_events.cpp:1444
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Jokin yksiköistäsi voi vielä liikkua. Haluatko todellakin lopettaa vuorosi?"
 
-#: src/menu_events.cpp:1497
+#: src/menu_events.cpp:1484
 msgid "Rename Unit"
 msgstr "Vaihda yksikön nimeä"
 
-#: src/menu_events.cpp:1577
+#: src/menu_events.cpp:1564
 msgid "Race"
 msgstr "Laji"
 
-#: src/menu_events.cpp:1601
+#: src/menu_events.cpp:1588
 msgid "Create Unit (Debug!)"
 msgstr "Luo yksikkö (Debug!)"
 
-#: src/menu_events.cpp:1604 src/multiplayer_wait.cpp:132
+#: src/menu_events.cpp:1591 src/multiplayer_wait.cpp:132
 msgid "Gender: "
 msgstr "Sukupuoli: "
 
-#: src/menu_events.cpp:1895
+#: src/menu_events.cpp:1882
 msgid "Search"
 msgstr "Etsi"
 
-#: src/menu_events.cpp:2072
+#: src/menu_events.cpp:2059
 msgid "This command is currently unavailable."
 msgstr "Et voi käyttää tätä komentoa nyt."
 
-#: src/menu_events.cpp:2078
+#: src/menu_events.cpp:2065
 msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
@@ -4981,7 +4582,7 @@ msgstr ""
 "Komentoa '$command' ei tunnistettu, käytä komentoa $help_command jos haluat "
 "listan mahdollisista komennoista."
 
-#: src/menu_events.cpp:2096
+#: src/menu_events.cpp:2083
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
@@ -4990,19 +4591,19 @@ msgstr ""
 "komennolle, riippuen parametristä. Käytä ”help all” -komentoa nähdäksesi nyt "
 "saavuttamattomissakin olevat komennot."
 
-#: src/menu_events.cpp:2098
+#: src/menu_events.cpp:2085
 msgid "do not translate the 'all'^[all|<command>]"
 msgstr "[all|<komento>]"
 
-#: src/menu_events.cpp:2142
+#: src/menu_events.cpp:2129
 msgid "Error:"
 msgstr "Virhe:"
 
-#: src/menu_events.cpp:2148
+#: src/menu_events.cpp:2135
 msgid "Missing argument $arg_id"
 msgstr "Komennon parametri $arg_id puuttuu"
 
-#: src/menu_events.cpp:2196
+#: src/menu_events.cpp:2183
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
@@ -5010,35 +4611,35 @@ msgstr ""
 "Tuetut komennot $flags_description:\n"
 "$list_of_commands"
 
-#: src/menu_events.cpp:2196 src/menu_events.cpp:2197 src/menu_events.cpp:2220
+#: src/menu_events.cpp:2183 src/menu_events.cpp:2184 src/menu_events.cpp:2207
 msgid "help"
 msgstr "apua"
 
-#: src/menu_events.cpp:2197
+#: src/menu_events.cpp:2184
 msgid "Type $help_command <command> for more info."
 msgstr "Kirjoita $help_command <komento> saadaksesi lisätietoja"
 
-#: src/menu_events.cpp:2208
+#: src/menu_events.cpp:2195
 msgid " No help available."
 msgstr " Ohjetta ei ole saatavilla."
 
-#: src/menu_events.cpp:2213
+#: src/menu_events.cpp:2200
 msgid "Usage:"
 msgstr "Käyttö:"
 
-#: src/menu_events.cpp:2218
+#: src/menu_events.cpp:2205
 msgid "aliases:"
 msgstr "lyhytkomennot:"
 
-#: src/menu_events.cpp:2339
+#: src/menu_events.cpp:2326
 msgid "(A) — admin command"
 msgstr "(A) - ylläpitokomento"
 
-#: src/menu_events.cpp:2346 src/menu_events.cpp:2553
+#: src/menu_events.cpp:2333 src/menu_events.cpp:2540
 msgid "(admin only)"
 msgstr "(vain ylläpitäjä)"
 
-#: src/menu_events.cpp:2366
+#: src/menu_events.cpp:2353
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
@@ -5046,7 +4647,7 @@ msgstr ""
 "Lähetä pyyntö palvelimelle. Ilman parametrejä palvelimen pitäisi lähettää "
 "sinulle listan saatavilla olevista komennoista."
 
-#: src/menu_events.cpp:2370
+#: src/menu_events.cpp:2357
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
@@ -5054,36 +4655,36 @@ msgstr ""
 "Anna porttikielto pelaajalle tai katselijalle. Jos hän ei ole pelissä, mutta "
 "serverillä, hän saa vain porttikiellon."
 
-#: src/menu_events.cpp:2371 src/menu_events.cpp:2374 src/menu_events.cpp:2376
-#: src/menu_events.cpp:2378 src/menu_events.cpp:2380 src/menu_events.cpp:2407
-#: src/menu_events.cpp:2409 src/menu_events.cpp:2411 src/menu_events.cpp:2425
+#: src/menu_events.cpp:2358 src/menu_events.cpp:2361 src/menu_events.cpp:2363
+#: src/menu_events.cpp:2365 src/menu_events.cpp:2367 src/menu_events.cpp:2394
+#: src/menu_events.cpp:2396 src/menu_events.cpp:2398 src/menu_events.cpp:2412
 msgid "<nickname>"
 msgstr "<nimimerkki>"
 
-#: src/menu_events.cpp:2373
+#: src/menu_events.cpp:2360
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
 "Poista käyttäjän esto. Hänen ei tarvitse olla pelissä, mutta palvelimella. "
 
-#: src/menu_events.cpp:2376
+#: src/menu_events.cpp:2363
 msgid "Kick a player or observer."
 msgstr "Potki käyttäjä tai katselija."
 
-#: src/menu_events.cpp:2378
+#: src/menu_events.cpp:2365
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr "Hiljennä katsoja. Ilman parametreja näyttää hiljennyksen tilan."
 
-#: src/menu_events.cpp:2380
+#: src/menu_events.cpp:2367
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
 "Vastaanota katsojan viestit. Ilman parametrejä poistaa suodatuksen kaikilta "
 "katsojilta."
 
-#: src/menu_events.cpp:2382
+#: src/menu_events.cpp:2369
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr "Hiljennä/salli kaikki katsojat."
 
-#: src/menu_events.cpp:2392
+#: src/menu_events.cpp:2379
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
@@ -5091,15 +4692,15 @@ msgstr ""
 "Kaikenlaiset kiusanteot, sääntörikkomukset, jne., pitää ilmoittaa palvelimen "
 "moderaattoreille. Varmista, että asianosaisten käyttäjänimet mainitaan. "
 
-#: src/menu_events.cpp:2396
+#: src/menu_events.cpp:2383
 msgid "<message>"
 msgstr "<viesti>"
 
-#: src/menu_events.cpp:2396
+#: src/menu_events.cpp:2383
 msgid "Send an emotion or personal action in chat."
 msgstr "Lähetä tunneilmaisu tai henkilökohtainen toimi keskustelussa."
 
-#: src/menu_events.cpp:2399
+#: src/menu_events.cpp:2386
 msgid ""
 "Sends a private message. You cannot send private messages to players in a "
 "running game you observe or play in."
@@ -5107,190 +4708,190 @@ msgstr ""
 "Lähettää yksityisviestin. Et voi lähettää viestejä pelaajille, jotka eivät "
 "hallitse mitään puolta pelissä."
 
-#: src/menu_events.cpp:2401
+#: src/menu_events.cpp:2388
 msgid "<nickname> <message>"
 msgstr "<nimimerkki> <viesti>"
 
-#: src/menu_events.cpp:2405
+#: src/menu_events.cpp:2392
 msgid "<level> <domain>"
 msgstr "<taso> <alue>"
 
-#: src/menu_events.cpp:2405
+#: src/menu_events.cpp:2392
 msgid "Change the log level of a log domain."
 msgstr "Vaihda lokipiirin lokitustasoa."
 
-#: src/menu_events.cpp:2407
+#: src/menu_events.cpp:2394
 msgid "Add a nickname to your ignores list."
 msgstr "Lisää pelaaja torjuttujen listallesi."
 
-#: src/menu_events.cpp:2409
+#: src/menu_events.cpp:2396
 msgid "Add a nickname to your friends list."
 msgstr "Lisää nimimerkki ystävälistallesi."
 
-#: src/menu_events.cpp:2411
+#: src/menu_events.cpp:2398
 msgid "Remove a nickname from your ignores or friends list."
 msgstr "Poista pelaaja ystävien tai torjuttujen listaltasi."
 
-#: src/menu_events.cpp:2413
+#: src/menu_events.cpp:2400
 msgid "Show your ignores and friends list."
 msgstr "Näytä torjuttujen ja ystävien listasi."
 
-#: src/menu_events.cpp:2416
+#: src/menu_events.cpp:2403
 msgid "Display version information."
 msgstr "Näytä versioon liittyvä tieto."
 
-#: src/menu_events.cpp:2418
+#: src/menu_events.cpp:2405
 msgid "<password> <email (optional)>"
 msgstr "<salasana> <sähköposti (vapaaehtoinen)>"
 
-#: src/menu_events.cpp:2418
+#: src/menu_events.cpp:2405
 msgid "Register your nickname"
 msgstr "Rekisteröi nimimerkkisi"
 
-#: src/menu_events.cpp:2420
+#: src/menu_events.cpp:2407
 msgid "Drop your nickname."
 msgstr "Poista nimimerkkisi."
 
-#: src/menu_events.cpp:2422
+#: src/menu_events.cpp:2409
 msgid "Update details for your nickname. For possible details see '/details'."
 msgstr ""
 "Päivitä nimimerkkisi tietoja. Mahdolliset tiedot näet komennolla ”/details”."
 
-#: src/menu_events.cpp:2423
+#: src/menu_events.cpp:2410
 msgid "<detail> <value>"
 msgstr "<yksityiskohta> <arvo>"
 
-#: src/menu_events.cpp:2425
+#: src/menu_events.cpp:2412
 msgid "Request information about a nickname."
 msgstr "Pyydä tietoa nimimerkkiin liittyen."
 
-#: src/menu_events.cpp:2427
+#: src/menu_events.cpp:2414
 msgid "Request a list of details you can set for your registered nickname."
 msgstr "Pyydä listaa tiedoista, jotka olet asettanut nimimerkillesi."
 
-#: src/menu_events.cpp:2429 src/menu_events.cpp:2432 src/menu_events.cpp:2434
+#: src/menu_events.cpp:2416 src/menu_events.cpp:2419 src/menu_events.cpp:2421
 msgid "<room>"
 msgstr "<huone>"
 
-#: src/menu_events.cpp:2429
+#: src/menu_events.cpp:2416
 msgid "Join a room."
 msgstr "Liity huoneeseen."
 
-#: src/menu_events.cpp:2432
+#: src/menu_events.cpp:2419
 msgid "Part a room."
 msgstr "Poistu huoneesta."
 
-#: src/menu_events.cpp:2434
+#: src/menu_events.cpp:2421
 msgid "List room members."
 msgstr "Näytä huoneen jäsenet."
 
-#: src/menu_events.cpp:2436
+#: src/menu_events.cpp:2423
 msgid "List available rooms."
 msgstr "Näytä saatavilla olevat huoneet."
 
-#: src/menu_events.cpp:2438
+#: src/menu_events.cpp:2425
 msgid "<room> <msg>"
 msgstr "<huone> <viesti>"
 
-#: src/menu_events.cpp:2438
+#: src/menu_events.cpp:2425
 msgid "Room message."
 msgstr "Huoneviesti"
 
-#: src/menu_events.cpp:2440
+#: src/menu_events.cpp:2427
 msgid "<room> <type> [value]"
 msgstr "<huone> <tyyppi> [arvo]"
 
-#: src/menu_events.cpp:2440
+#: src/menu_events.cpp:2427
 msgid "Room query."
 msgstr "Huoneen jono."
 
-#: src/menu_events.cpp:2545
+#: src/menu_events.cpp:2532
 msgid "(D) — debug only, (N) — network only, (A) — admin only"
 msgstr "(D) - vain testaus, (N) - vain verkko, (A) - vain ylläpito"
 
-#: src/menu_events.cpp:2551
+#: src/menu_events.cpp:2538
 msgid "(debug command)"
 msgstr "(testauskomennot)"
 
-#: src/menu_events.cpp:2552
+#: src/menu_events.cpp:2539
 msgid "(network only)"
 msgstr "(vain verkko)"
 
-#: src/menu_events.cpp:2577
+#: src/menu_events.cpp:2564
 msgid "Refresh gui."
 msgstr "Päivitä käyttöliittymä."
 
-#: src/menu_events.cpp:2579
+#: src/menu_events.cpp:2566
 msgid "Switch a side to/from AI control."
 msgstr "Vaihda puolen kontrolli tietokonelle/tietokoneelta."
 
-#: src/menu_events.cpp:2579
+#: src/menu_events.cpp:2566
 msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr "[<puoli> [on/off]]"
 
-#: src/menu_events.cpp:2582
+#: src/menu_events.cpp:2569
 msgid "<side> <nickname>"
 msgstr "<puoli> <nimimerkki>"
 
-#: src/menu_events.cpp:2582
+#: src/menu_events.cpp:2569
 msgid "Assign control of a side to a different player or observer."
 msgstr "Siirrä puolen kontrolli toiselle pelaajalle tai katsojalle."
 
-#: src/menu_events.cpp:2584
+#: src/menu_events.cpp:2571
 msgid "Clear chat history."
 msgstr "Tyhjennä keskusteluhistoria."
 
-#: src/menu_events.cpp:2586
+#: src/menu_events.cpp:2573
 msgid "Visualize the screen refresh procedure."
 msgstr "Visualisoi ruudunpäivitysprosessi."
 
-#: src/menu_events.cpp:2588
+#: src/menu_events.cpp:2575
 msgid "Debug foreground terrain."
 msgstr "Testaa edessä oleva maasto"
 
-#: src/menu_events.cpp:2590
+#: src/menu_events.cpp:2577
 msgid "Debug layers from terrain under the mouse."
 msgstr "Testaa maastokerrokset hiiren alapuolella."
 
-#: src/menu_events.cpp:2591
+#: src/menu_events.cpp:2578
 msgid "Show fps."
 msgstr "Näytä virkistystaajuus"
 
-#: src/menu_events.cpp:2593
+#: src/menu_events.cpp:2580
 msgid "Save game."
 msgstr "Tallenna peli."
 
-#: src/menu_events.cpp:2595
+#: src/menu_events.cpp:2582
 msgid "Quit game."
 msgstr "Poistu pelistä."
 
-#: src/menu_events.cpp:2599
+#: src/menu_events.cpp:2586
 msgid "Save and quit."
 msgstr "Tallenna ja poistu."
 
-#: src/menu_events.cpp:2602
+#: src/menu_events.cpp:2589
 msgid "Ignore replay errors."
 msgstr "Sivuuta uusintojen virheet."
 
-#: src/menu_events.cpp:2604
+#: src/menu_events.cpp:2591
 msgid "Disable autosaves."
 msgstr "Poista automaattitallennukset käytöstä."
 
-#: src/menu_events.cpp:2606
+#: src/menu_events.cpp:2593
 msgid "<id>"
 msgstr "<tunniste>"
 
-#: src/menu_events.cpp:2606
+#: src/menu_events.cpp:2593
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr ""
 "Jatka seuraavasta skenaariosta tai skenaariosta, joka on identifioitu id:llä "
 "'id'"
 
-#: src/menu_events.cpp:2609
+#: src/menu_events.cpp:2596
 msgid "Choose next scenario"
 msgstr "Valitse seuraava skenaario"
 
-#: src/menu_events.cpp:2612
+#: src/menu_events.cpp:2599
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
@@ -5298,11 +4899,11 @@ msgstr ""
 "Vaihda annettuun vuoroon (myös vuorokaudenaika muuttuu) tai vaihda "
 "seuraavaan vuoroon jos numeroa ei ole annettu."
 
-#: src/menu_events.cpp:2612
+#: src/menu_events.cpp:2599
 msgid "[turn]"
 msgstr "[vuoro]"
 
-#: src/menu_events.cpp:2614
+#: src/menu_events.cpp:2601
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
@@ -5310,253 +4911,253 @@ msgstr ""
 "Aseta pelin enimmäispituus vuoroina tai poista enimmäispituus jos lukuarvoa "
 "ei ole annettu tai jos se on -1."
 
-#: src/menu_events.cpp:2614
+#: src/menu_events.cpp:2601
 msgid "[limit]"
 msgstr "[enimmäispituus]"
 
-#: src/menu_events.cpp:2616
+#: src/menu_events.cpp:2603
 msgid "Turn debug mode on."
 msgstr "Käynnistä testaustila."
 
-#: src/menu_events.cpp:2618
+#: src/menu_events.cpp:2605
 msgid "Turn debug mode off."
 msgstr "Poista virheenetsintätila pois käytöstä."
 
-#: src/menu_events.cpp:2620 src/menu_events.cpp:2624
+#: src/menu_events.cpp:2607 src/menu_events.cpp:2611
 msgid "<command>[;<command>...]"
 msgstr "<komento>[;<komento>...]"
 
-#: src/menu_events.cpp:2620
+#: src/menu_events.cpp:2607
 msgid "Execute a Lua statement."
 msgstr "Suorita Lua-skripti."
 
-#: src/menu_events.cpp:2622
+#: src/menu_events.cpp:2609
 msgid "Grant higher privileges to Lua scripts."
 msgstr "Anna Lua-skripteille enemmän oikeuksia"
 
-#: src/menu_events.cpp:2624
+#: src/menu_events.cpp:2611
 msgid "Set the command used by the custom command hotkey"
 msgstr "Aseta komento käyttäjän omalle komentopikanäppäimelle"
 
-#: src/menu_events.cpp:2627
+#: src/menu_events.cpp:2614
 msgid "Invoke a dialog allowing changing control of MP sides."
 msgstr "Avaa ikkuna, jolla hallinnoidaan moninpelin puolien vaihtamista."
 
-#: src/menu_events.cpp:2631
+#: src/menu_events.cpp:2618
 msgid "Launch the gamestate inspector"
 msgstr "Käynnistä pelitilan tarkkailija."
 
-#: src/menu_events.cpp:2633
+#: src/menu_events.cpp:2620
 msgid "Manage persistence data"
 msgstr "Hallinnoi pysyvää dataa"
 
-#: src/menu_events.cpp:2635
+#: src/menu_events.cpp:2622
 msgid "<name>[=<command>]"
 msgstr "<nimi>[=<komento>]"
 
-#: src/menu_events.cpp:2635
+#: src/menu_events.cpp:2622
 msgid "Set or show alias to a command"
 msgstr "Aseta tai näytä komennon vaihtoehtoinen pikanäppäin"
 
-#: src/menu_events.cpp:2637
+#: src/menu_events.cpp:2624
 msgid "<var>=<value>"
 msgstr "<muuttuja>=<arvo>"
 
-#: src/menu_events.cpp:2637
+#: src/menu_events.cpp:2624
 msgid "Set a scenario variable."
 msgstr "Aseta skenaariomuuttuja."
 
-#: src/menu_events.cpp:2639
+#: src/menu_events.cpp:2626
 msgid "<var>"
 msgstr "<muuttuja>"
 
-#: src/menu_events.cpp:2639
+#: src/menu_events.cpp:2626
 msgid "Show a scenario variable."
 msgstr "Näytä skenaariomuuttuja."
 
-#: src/menu_events.cpp:2641
+#: src/menu_events.cpp:2628
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr "Muuta yksikkömuuttujaa (vain ylimmän tason avaimet ovat tuettuja)."
 
-#: src/menu_events.cpp:2648
+#: src/menu_events.cpp:2635
 msgid "Discover all units in help."
 msgstr "Paljasta kaikki yksiköt ohjeessa. "
 
-#: src/menu_events.cpp:2650
+#: src/menu_events.cpp:2637
 msgid "'Undiscover' all units in help."
 msgstr "'Piilota' kaikki yksiköt ohjeessa."
 
-#: src/menu_events.cpp:2652
+#: src/menu_events.cpp:2639
 msgid "Create a unit."
 msgstr "Luo yksikkö."
 
-#: src/menu_events.cpp:2654
+#: src/menu_events.cpp:2641
 msgid "Toggle fog for the current player."
 msgstr "Kytke sumu nykyiselle pelaajalle."
 
-#: src/menu_events.cpp:2656
+#: src/menu_events.cpp:2643
 msgid "Toggle shroud for the current player."
 msgstr "Kytke huntu nykyiselle pelaajalle."
 
-#: src/menu_events.cpp:2658
+#: src/menu_events.cpp:2645
 msgid "Give gold to the current player."
 msgstr "Anna kultaa nykyiselle pelaajalle."
 
-#: src/menu_events.cpp:2660
+#: src/menu_events.cpp:2647
 msgid "Fire a game event."
 msgstr "Laukaise pelitapahtuma."
 
-#: src/menu_events.cpp:2663
+#: src/menu_events.cpp:2650
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "Kytke x,y-koordinaattien näyttö heksoissa."
 
-#: src/menu_events.cpp:2666
+#: src/menu_events.cpp:2653
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "Kytke maastokoodien näyttö heksoissa"
 
-#: src/menu_events.cpp:2669
+#: src/menu_events.cpp:2656
 msgid "Toggle planning mode."
 msgstr "Ota suunnittelutila käyttöön tai poista se käytöstä"
 
-#: src/menu_events.cpp:2672
+#: src/menu_events.cpp:2659
 msgid "Access whiteboard options dialog."
 msgstr "Valkotaulun asetukset."
 
-#: src/menu_events.cpp:2715
+#: src/menu_events.cpp:2702
 msgid "Unknown debug level: '$level'."
 msgstr "Tuntematon korjaustaso: '$level'."
 
-#: src/menu_events.cpp:2717 src/menu_events.cpp:2726
+#: src/menu_events.cpp:2704 src/menu_events.cpp:2713
 msgid "error"
 msgstr "virhe"
 
-#: src/menu_events.cpp:2724
+#: src/menu_events.cpp:2711
 msgid "Unknown debug domain: '$domain'."
 msgstr "Tuntematon korjausalue: '$domain'."
 
-#: src/menu_events.cpp:2733
+#: src/menu_events.cpp:2720
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr "Tason '$level' alueeseen '$domain' vaihdettu."
 
-#: src/menu_events.cpp:2804
+#: src/menu_events.cpp:2791
 msgid "whisper to $receiver"
 msgstr "yksityisviesti vastaanottajalle $receiver"
 
-#: src/menu_events.cpp:2811 src/multiplayer_ui.cpp:550
+#: src/menu_events.cpp:2798 src/multiplayer_ui.cpp:553
 msgid "whisper: $sender"
 msgstr "yksityisviesti: $sender"
 
-#: src/menu_events.cpp:2907 src/menu_events.cpp:2926
-#: src/multiplayer_connect.cpp:668
+#: src/menu_events.cpp:2894 src/menu_events.cpp:2913
+#: src/multiplayer_connect.cpp:669
 msgid "(empty)"
 msgstr "(tyhjä)"
 
-#: src/menu_events.cpp:2907 src/menu_events.cpp:2913 src/menu_events.cpp:2963
+#: src/menu_events.cpp:2894 src/menu_events.cpp:2900 src/menu_events.cpp:2950
 msgid "ignores list"
 msgstr "estettyjen lista"
 
-#: src/menu_events.cpp:2913
+#: src/menu_events.cpp:2900
 msgid "Added to ignore list: $nick"
 msgstr "Et enää saa viestejä, jotka lähettää $nick"
 
-#: src/menu_events.cpp:2916 src/menu_events.cpp:2935
+#: src/menu_events.cpp:2903 src/menu_events.cpp:2922
 msgid "Invalid username: $nick"
 msgstr "Virheellinen käyttäjänimi: $nick"
 
-#: src/menu_events.cpp:2926 src/menu_events.cpp:2933 src/menu_events.cpp:2959
+#: src/menu_events.cpp:2913 src/menu_events.cpp:2920 src/menu_events.cpp:2946
 msgid "friends list"
 msgstr "ystävälista"
 
-#: src/menu_events.cpp:2933
+#: src/menu_events.cpp:2920
 msgid "Added to friends list: $nick"
 msgstr "Lisätty ystävälistalle: $nick"
 
-#: src/menu_events.cpp:2949
+#: src/menu_events.cpp:2936
 msgid "Removed from list: $nick"
 msgstr "Poistettu listalta: $nick"
 
-#: src/menu_events.cpp:2949 src/menu_events.cpp:2967
+#: src/menu_events.cpp:2936 src/menu_events.cpp:2954
 msgid "friends and ignores list"
 msgstr "ystävien ja ignoroitujen lista"
 
-#: src/menu_events.cpp:2967
+#: src/menu_events.cpp:2954
 msgid "There are no players on your friends or ignore list."
 msgstr "Sinulla ei ole pelaajia ystävien tai tai torjuttujen listalla."
 
-#: src/menu_events.cpp:2972
+#: src/menu_events.cpp:2959
 msgid "version"
 msgstr "versio"
 
-#: src/menu_events.cpp:2988
+#: src/menu_events.cpp:2975
 msgid "registering with password *** and no email address"
 msgstr "rekisteröidään salasanalla *** ilman sähköpostiosoitetta"
 
-#: src/menu_events.cpp:2992
+#: src/menu_events.cpp:2979
 msgid "registering with password *** and email address $email"
 msgstr "rekisteröidään salasanalla *** ja sähköpostiosoitteella $email"
 
-#: src/menu_events.cpp:2995 src/menu_events.cpp:3006 src/menu_events.cpp:3024
-#: src/menu_events.cpp:3038
+#: src/menu_events.cpp:2982 src/menu_events.cpp:2993 src/menu_events.cpp:3011
+#: src/menu_events.cpp:3025
 msgid "nick registration"
 msgstr "käyttäjänimen rekisteröinti"
 
-#: src/menu_events.cpp:3006
+#: src/menu_events.cpp:2993
 msgid "dropping your username"
 msgstr "pudotetaan käyttäjänimesi"
 
-#: src/menu_events.cpp:3024
+#: src/menu_events.cpp:3011
 msgid "setting $var to $value"
 msgstr "muuttuja $var asetettu arvoon $value"
 
-#: src/menu_events.cpp:3038
+#: src/menu_events.cpp:3025
 msgid "requesting information for user $nick"
 msgstr "pyydetään tietoa nimimerkkiin $nick liittyen"
 
-#: src/menu_events.cpp:3151
+#: src/menu_events.cpp:3138
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Tekstiä '$search' sisältävää yksikköä tai karttamerkintää ei löytynyt."
 
-#: src/menu_events.cpp:3185
+#: src/menu_events.cpp:3172
 msgid "Can't droid invalid side: '$side'."
 msgstr "Ei voida automatisoida epäkelpoa puolta: '$side'"
 
-#: src/menu_events.cpp:3190
+#: src/menu_events.cpp:3177
 msgid "Can't droid networked side: '$side'."
 msgstr "Ei voida automatisoida verkkopelaajan puolta: '$side'"
 
-#: src/menu_events.cpp:3228
+#: src/menu_events.cpp:3215
 msgid "Can't change control of invalid side: '$side'."
 msgstr "Ei voida vaihtaa epäkelvon puolen kontrollia: '$side'."
 
-#: src/menu_events.cpp:3234
+#: src/menu_events.cpp:3221
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "Ei voida vaihtaa salaisten joukkueiden puolta: '$side'."
 
-#: src/menu_events.cpp:3348
+#: src/menu_events.cpp:3335
 msgid "Layers"
 msgstr "Kerroksia"
 
-#: src/menu_events.cpp:3421
+#: src/menu_events.cpp:3408
 msgid "Choose Scenario (Debug!)"
 msgstr "Valitse skenaario (testaustila!)"
 
-#: src/menu_events.cpp:3467
+#: src/menu_events.cpp:3454
 msgid "Debug mode activated!"
 msgstr "Testaustila otettu käyttöön!"
 
-#: src/menu_events.cpp:3470
+#: src/menu_events.cpp:3457
 msgid "Debug mode not available in network games"
 msgstr "Korjaustila ei ole saatavilla verkkopeleissä"
 
-#: src/menu_events.cpp:3475
+#: src/menu_events.cpp:3462
 msgid "Debug mode deactivated!"
 msgstr "Testaustila poistettu käytöstä!"
 
-#: src/menu_events.cpp:3486
+#: src/menu_events.cpp:3473
 msgid "Unsafe Lua scripts."
 msgstr "Ei-turvalliset Lua-komentojonot."
 
-#: src/menu_events.cpp:3487
+#: src/menu_events.cpp:3474
 msgid ""
 "You are about to open a security breach in Wesnoth. Are you sure you want to "
 "continue? If you have downloaded add-ons, do not click 'ok'! They would "
@@ -5566,15 +5167,15 @@ msgstr ""
 "ladannut lisäosia, älä valitse 'ok'! Lisäosat voivat ottaa välittömästi "
 "koneesi haltuun. Sinua on varoitettu."
 
-#: src/menu_events.cpp:3490
+#: src/menu_events.cpp:3477
 msgid "Unsafe mode enabled!"
 msgstr "Ei-turvallinen tila käytössä!"
 
-#: src/menu_events.cpp:3533
+#: src/menu_events.cpp:3520
 msgid "Variable not found"
 msgstr "Muuttujaa ei löytynyt"
 
-#: src/menu_events.cpp:3584
+#: src/menu_events.cpp:3571
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
@@ -5582,35 +5183,35 @@ msgstr ""
 "Suuntautumista '$alignment' ei ymmärretty. Täytyy olla lainkuuliainen, "
 "neutraali, kaoottinen tai liminaali."
 
-#: src/menu_events.cpp:3640
+#: src/menu_events.cpp:3627
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr "Haluatko poistaa kaikki havaitsemasi yksiköt ohjetiedostosta?"
 
-#: src/menu_events.cpp:3651
+#: src/menu_events.cpp:3638
 msgid "Invalid unit type"
 msgstr "Virheellinen yksikkötyyppi"
 
-#: src/menu_events.cpp:3664
+#: src/menu_events.cpp:3651
 msgid "Invalid location"
 msgstr "Virheellinen sijainti"
 
-#: src/menu_events.cpp:3699
+#: src/menu_events.cpp:3686
 msgid "Planning mode activated!"
 msgstr "Suunnittelutila otettu käyttöön!"
 
-#: src/menu_events.cpp:3702
+#: src/menu_events.cpp:3689
 msgid "Planning mode deactivated!"
 msgstr "Suunnittelutila poistettu käytöstä!"
 
-#: src/menu_events.cpp:3715
+#: src/menu_events.cpp:3702
 msgid "ai"
 msgstr "ai"
 
-#: src/menu_events.cpp:3725 src/menu_events.cpp:3755
+#: src/menu_events.cpp:3712 src/menu_events.cpp:3742
 msgid "prompt^Command:"
 msgstr "Komento:"
 
-#: src/mouse_events.cpp:726
+#: src/mouse_events.cpp:792
 #, fuzzy
 #| msgid ""
 #| "You cannot move your leader away from the keep with some planned recruits "
@@ -5622,15 +5223,61 @@ msgstr ""
 "Niin kauan kun suunniteltuja värväyksiä tai kutsumisia on jäljellä, johtajaa "
 "ei voi siirtää pois linnakkeesta."
 
-#: src/mouse_events.cpp:843 src/mouse_events.cpp:923
+#: src/mouse_events.cpp:909 src/mouse_events.cpp:989
 msgid "Attack Enemy"
 msgstr "Hyökkää vihollista vastaan"
 
-#: src/mouse_events.cpp:924
+#: src/mouse_events.cpp:990
 msgid "Choose weapon:"
 msgstr "Valitse ase:"
 
-#: src/multiplayer.cpp:150 src/multiplayer.cpp:187
+#: src/mp_depcheck.cpp:408 src/mp_depcheck.cpp:419
+msgid "A component"
+msgstr ""
+
+#: src/mp_depcheck.cpp:458
+#, fuzzy
+#| msgid "Install dependencies"
+msgid "Failed to resolve dependencies"
+msgstr "Asenna riippuvuudet"
+
+#: src/mp_depcheck.cpp:484
+msgid "Scenario can't be activated. Some dependencies are missing: "
+msgstr ""
+
+#: src/mp_depcheck.cpp:539 src/mp_depcheck.cpp:661
+#, fuzzy
+#| msgid "No eras found."
+msgid "No compatible eras found."
+msgstr "Ei löydettyjä aikakausia."
+
+#: src/mp_depcheck.cpp:555
+msgid "Era can't be activated. Some dependencies are missing: "
+msgstr ""
+
+#: src/mp_depcheck.cpp:607 src/mp_depcheck.cpp:698
+#, fuzzy
+#| msgid "No multiplayer sides found"
+msgid "No compatible scenarios found."
+msgstr "Moninpelin puolia ei löytynyt."
+
+#: src/mp_depcheck.cpp:636
+msgid ""
+"Not all of the chosen modifications are compatible. Some of them will be "
+"disabled."
+msgstr ""
+
+#: src/mp_options.cpp:181
+msgid ""
+"None of the selected modifications, era or scenario provide configuration "
+"options."
+msgstr ""
+
+#: src/mp_options.cpp:222
+msgid "Restore defaults"
+msgstr ""
+
+#: src/multiplayer.cpp:150 src/multiplayer.cpp:193
 msgid "Connecting to Server..."
 msgstr "Yhdistetään palvelimeen..."
 
@@ -5638,22 +5285,26 @@ msgstr "Yhdistetään palvelimeen..."
 msgid "Reading from Server..."
 msgstr "Haetaan tietoja palvelimelta..."
 
-#: src/multiplayer.cpp:170
+#: src/multiplayer.cpp:176
+#, fuzzy
+#| msgid ""
+#| "The server requires version '$version1' while you are using version "
+#| "'$version2'"
 msgid ""
-"The server requires version '$version1' while you are using version "
+"The server accepts versions '$version1' while you are using version "
 "'$version2'"
 msgstr ""
 "Palvelin edellyttää versiota '$version1', kun sinulla on versio '$version2.'"
 
-#: src/multiplayer.cpp:181
+#: src/multiplayer.cpp:187
 msgid "Server-side redirect loop"
 msgstr "Palvelinpuolen uudelleenohjaussilmukka"
 
-#: src/multiplayer.cpp:228 src/multiplayer.cpp:313 src/multiplayer_ui.cpp:87
+#: src/multiplayer.cpp:234 src/multiplayer.cpp:319 src/multiplayer_ui.cpp:88
 msgid "Connection timed out"
 msgstr "Yhteys katkaistiin odotuksen jälkeen."
 
-#: src/multiplayer.cpp:240
+#: src/multiplayer.cpp:246
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -5663,27 +5314,27 @@ msgstr ""
 "ennen kuin aktivoit tunnuksesi sähköpostilla, tai pyydät ylläpitäjää "
 "tekemään sen puolestasi. "
 
-#: src/multiplayer.cpp:249
+#: src/multiplayer.cpp:255
 msgid "Do you want to continue?"
 msgstr "Haluatko jatkaa?"
 
-#: src/multiplayer.cpp:251
+#: src/multiplayer.cpp:257
 msgid "Warning"
 msgstr "Varoitus:"
 
-#: src/multiplayer.cpp:295
+#: src/multiplayer.cpp:301
 msgid "Bad data received from server"
 msgstr "Virhe palvelimelta saadussa datassa"
 
-#: src/multiplayer.cpp:336
+#: src/multiplayer.cpp:342
 msgid "You must login first."
 msgstr "Sinun täytyy ensin sisäänkirjautua."
 
-#: src/multiplayer.cpp:338
+#: src/multiplayer.cpp:344
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "Nimimerkki ”$nick” on jo käytössä."
 
-#: src/multiplayer.cpp:340
+#: src/multiplayer.cpp:346
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters, underscores and hyphens are allowed."
@@ -5691,28 +5342,28 @@ msgstr ""
 "Nimimerkissä ”$nick” on epäkelpoja merkkejä. Nimimerkissä voi olla vain "
 "kirjaimia, numeroita, alaviivoja ja tavuviivoja."
 
-#: src/multiplayer.cpp:344
+#: src/multiplayer.cpp:350
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr ""
 "Nimimerkki '$nick' on liian pitkä. Nimimerkissä voi olla enintään 20 merkkiä."
 
-#: src/multiplayer.cpp:347
+#: src/multiplayer.cpp:353
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr "Nimimerkki ”$nick” on varattu, eikä pelaajat voi käyttää sitä."
 
-#: src/multiplayer.cpp:349
+#: src/multiplayer.cpp:355
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "Nimimerkki ”$nick” ei ole rekisteröity tällä palvelimella."
 
-#: src/multiplayer.cpp:350
+#: src/multiplayer.cpp:356
 msgid " This server disallows unregistered nicknames."
 msgstr "Tämä palvelin ei hyväksy rekisteröimättömiä nimimerkkejä."
 
-#: src/multiplayer.cpp:352 src/multiplayer.cpp:354
+#: src/multiplayer.cpp:358 src/multiplayer.cpp:360
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "Nimimerkki ”$nick” on rekisteröity tällä palvelimella."
 
-#: src/multiplayer.cpp:355
+#: src/multiplayer.cpp:361
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -5720,348 +5371,365 @@ msgstr ""
 "VAROITUS: Paikalla on jo yksi asiakasohjelma, joka käyttää tätä nimimerkkiä, "
 "sisäänkirjautuminen aiheuttaa tämän asiakasohjelman ulospotkimisen."
 
-#: src/multiplayer.cpp:358
+#: src/multiplayer.cpp:364
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
 "Virhe sisäänkirjautumisprosessissa (palvelimella ei ole esiastetta "
 "yhteydellesi)."
 
-#: src/multiplayer.cpp:361
+#: src/multiplayer.cpp:367
 msgid "The password you provided was incorrect."
 msgstr "Antamasi salasana on väärä."
 
-#: src/multiplayer.cpp:363
+#: src/multiplayer.cpp:369
 msgid "You have made too many login attempts."
 msgstr "Liian monta kirjautumisyritystä."
 
-#: src/multiplayer_connect.cpp:103 src/multiplayer_connect.cpp:452
-#: src/multiplayer_connect.cpp:600
+#: src/multiplayer_connect.cpp:104 src/multiplayer_connect.cpp:453
+#: src/multiplayer_connect.cpp:601
 msgid "Normal"
 msgstr "Normaali"
 
-#: src/multiplayer_connect.cpp:448 src/multiplayer_connect.cpp:596
+#: src/multiplayer_connect.cpp:449 src/multiplayer_connect.cpp:597
 #: src/multiplayer_wait.cpp:513 src/multiplayer_wait.cpp:521
 msgid "("
 msgstr "("
 
-#: src/multiplayer_connect.cpp:448 src/multiplayer_connect.cpp:596
+#: src/multiplayer_connect.cpp:449 src/multiplayer_connect.cpp:597
 #: src/multiplayer_wait.cpp:513 src/multiplayer_wait.cpp:524
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_connect.cpp:450 src/multiplayer_connect.cpp:598
+#: src/multiplayer_connect.cpp:451 src/multiplayer_connect.cpp:599
 #: src/multiplayer_wait.cpp:523
 msgid "+"
 msgstr "+"
 
-#: src/multiplayer_connect.cpp:628
+#: src/multiplayer_connect.cpp:629
 msgid "(Vacant slot)"
 msgstr "(vapaa paikka)"
 
-#: src/multiplayer_connect.cpp:636
+#: src/multiplayer_connect.cpp:637
 msgid "Anonymous local player"
 msgstr "paikallinen pelaaja"
 
-#: src/multiplayer_connect.cpp:649 src/multiplayer_connect.cpp:1528
+#: src/multiplayer_connect.cpp:650 src/multiplayer_connect.cpp:1529
 msgid "Computer Player"
 msgstr "tietokonepelaaja"
 
-#: src/multiplayer_connect.cpp:652
+#: src/multiplayer_connect.cpp:653
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/multiplayer_connect.cpp:656
+#: src/multiplayer_connect.cpp:657
 msgid "(Empty slot)"
 msgstr "(tyhjä paikka)"
 
-#: src/multiplayer_connect.cpp:663
+#: src/multiplayer_connect.cpp:664
 msgid "(Reserved for $playername)"
 msgstr "(varattu pelaajalle $playername)"
 
-#: src/multiplayer_connect.cpp:765
+#: src/multiplayer_connect.cpp:766
 msgid "Reserved"
 msgstr "Varattu"
 
-#: src/multiplayer_connect.cpp:766
+#: src/multiplayer_connect.cpp:767
 msgid "--give--"
 msgstr "--anna--"
 
-#: src/multiplayer_connect.cpp:947
+#: src/multiplayer_connect.cpp:948
 msgid "Only random sides in the current era."
 msgstr "Vain satunnaisia liittoumia nykyisellä aikakaudella."
 
-#: src/multiplayer_connect.cpp:1008
+#: src/multiplayer_connect.cpp:1009
 msgid "Game Lobby: "
 msgstr "Pelin aula: "
 
-#: src/multiplayer_connect.cpp:1030
+#: src/multiplayer_connect.cpp:1031
 msgid "Player/Type"
 msgstr "Pelaaja"
 
-#: src/multiplayer_connect.cpp:1031
+#: src/multiplayer_connect.cpp:1032
 msgid "Faction"
 msgstr "Liittouma"
 
-#: src/multiplayer_connect.cpp:1032
+#: src/multiplayer_connect.cpp:1033
 msgid "Team/Gender"
 msgstr "Joukkue/sukupuoli"
 
-#: src/multiplayer_connect.cpp:1033
+#: src/multiplayer_connect.cpp:1034
 msgid "Color"
 msgstr "Väri"
 
-#: src/multiplayer_connect.cpp:1037
+#: src/multiplayer_connect.cpp:1038
 msgid "I’m Ready"
 msgstr "Aloita peli"
 
-#: src/multiplayer_connect.cpp:1039
+#: src/multiplayer_connect.cpp:1040
 msgid "Add named local player"
 msgstr "Lisää tietty paikallinen pelaaja"
 
-#: src/multiplayer_connect.cpp:1049
+#: src/multiplayer_connect.cpp:1050
 msgid "The scenario is invalid because it has no id."
 msgstr "Skenaario on virheellinen, koska sillä ei ole id:tä."
 
-#: src/multiplayer_connect.cpp:1053
+#: src/multiplayer_connect.cpp:1054
 msgid "The scenario is invalid because it has no sides."
 msgstr "Skenaario on virheellinen, koska siinä ei ole puolia."
 
-#: src/multiplayer_connect.cpp:1120
+#: src/multiplayer_connect.cpp:1121
 msgid "Enter a name for the new player"
 msgstr "Syötä uuden pelaajan nimi"
 
-#: src/multiplayer_connect.cpp:1121 src/reports.cpp:155 src/savegame.cpp:882
+#: src/multiplayer_connect.cpp:1122 src/reports.cpp:155 src/savegame.cpp:890
 msgid "Name: "
 msgstr "Nimi: "
 
-#: src/multiplayer_connect.cpp:1525
+#: src/multiplayer_connect.cpp:1526
 msgid "Network Player"
 msgstr "verkkopelaaja"
 
-#: src/multiplayer_connect.cpp:1527
+#: src/multiplayer_connect.cpp:1528
 msgid "Local Player"
 msgstr "paikallinen pelaaja"
 
-#: src/multiplayer_connect.cpp:1529
+#: src/multiplayer_connect.cpp:1530
 msgid "Empty"
 msgstr "tyhjä"
 
-#: src/multiplayer_connect.cpp:1682
+#: src/multiplayer_connect.cpp:1687
 msgid "Cannot find era $era"
 msgstr "Aikakautta $era ei löydy"
 
-#: src/multiplayer_connect.cpp:1708
+#: src/multiplayer_connect.cpp:1728
 msgid "Defeat enemy leader(s)"
 msgstr "Kukista vihollisjohtaja(t)"
 
-#: src/multiplayer_connect.cpp:1813
+#: src/multiplayer_connect.cpp:1833
 msgid "Waiting for players to join..."
 msgstr "Odotetaan pelaajien liittymistä..."
 
-#: src/multiplayer_connect.cpp:1814
+#: src/multiplayer_connect.cpp:1834
 msgid "Waiting for players to choose factions..."
 msgstr "Odotetaan pelaajien valitessa puolensa..."
 
-#: src/multiplayer_create.cpp:58 src/multiplayer_lobby.cpp:743
+#: src/multiplayer_create.cpp:58 src/multiplayer_lobby.cpp:784
 msgid "Create Game"
 msgstr "Luo peli"
 
-#: src/multiplayer_create.cpp:72
+#: src/multiplayer_create.cpp:74
 msgid "Time limit"
 msgstr "Aikaraja"
 
-#: src/multiplayer_create.cpp:87
+#: src/multiplayer_create.cpp:89
 msgid "Name of game:"
 msgstr "Pelin nimi:"
 
-#: src/multiplayer_create.cpp:90
+#: src/multiplayer_create.cpp:92
 msgid "Era:"
 msgstr "Aikakausi:"
 
-#: src/multiplayer_create.cpp:91
+#: src/multiplayer_create.cpp:93
 msgid "Map to play:"
 msgstr "Pelattava kartta:"
 
-#: src/multiplayer_create.cpp:92 src/multiplayer_lobby.cpp:289
+#: src/multiplayer_create.cpp:94 src/multiplayer_lobby.cpp:304
 msgid "Use map settings"
 msgstr "Kartan asetukset:"
 
-#: src/multiplayer_create.cpp:93
+#: src/multiplayer_create.cpp:95
 msgid "Random start time"
 msgstr "Satunnainen aloitusaika"
 
-#: src/multiplayer_create.cpp:94
+#: src/multiplayer_create.cpp:96
 msgid "Fog of war"
 msgstr "Sumu"
 
-#: src/multiplayer_create.cpp:96
+#: src/multiplayer_create.cpp:98
 msgid "Observers"
 msgstr "Tarkkailijoita"
 
-#: src/multiplayer_create.cpp:97
+#: src/multiplayer_create.cpp:99
 msgid "Shuffle sides"
 msgstr "Sekoita puolet"
 
 #: src/multiplayer_create.cpp:100
+#, fuzzy
+#| msgid "Settings..."
+msgid "Options..."
+msgstr "Asetukset..."
+
+#: src/multiplayer_create.cpp:103
 msgid "Regenerate"
 msgstr "Luo uusi"
 
-#: src/multiplayer_create.cpp:101
+#: src/multiplayer_create.cpp:104
 msgid "Settings..."
 msgstr "Asetukset..."
 
-#: src/multiplayer_create.cpp:102
+#: src/multiplayer_create.cpp:105
 msgid "Set Password..."
 msgstr "Aseta salasana..."
 
-#: src/multiplayer_create.cpp:121
+#: src/multiplayer_create.cpp:106
+msgid "Modifications..."
+msgstr ""
+
+#: src/multiplayer_create.cpp:127
 msgid "Load Game..."
 msgstr "Lataa peli..."
 
-#: src/multiplayer_create.cpp:157
+#: src/multiplayer_create.cpp:182
 msgid "The maximum number of turns the game can last"
 msgstr "Pelin enimmäispituus"
 
-#: src/multiplayer_create.cpp:160
+#: src/multiplayer_create.cpp:185
 msgid "Enables user time limit"
 msgstr "Ottaa käyttöön aikarajan"
 
-#: src/multiplayer_create.cpp:166
+#: src/multiplayer_create.cpp:191
 msgid "Longest time allowed for first turn (seconds)"
 msgstr "Pisin sallittu kesto ensimmäiselle vuorolle (sekunteja)"
 
-#: src/multiplayer_create.cpp:172
+#: src/multiplayer_create.cpp:197
 msgid "Longest time possible for any turn (seconds)"
 msgstr "Pisin mahdollinen aika mille tahansa vuorolle (sekunneissa)"
 
-#: src/multiplayer_create.cpp:178
+#: src/multiplayer_create.cpp:203
 msgid "Time for general tasks each turn (seconds)"
 msgstr "Aika perustoiminnoille per vuoro (sekunneissa)"
 
-#: src/multiplayer_create.cpp:184
+#: src/multiplayer_create.cpp:209
 msgid "Time for each attack, recruit, and capture"
 msgstr "Aika per hyökkäys, värväys ja kylän valloitus"
 
-#: src/multiplayer_create.cpp:189
+#: src/multiplayer_create.cpp:214
 msgid "The amount of income each village yields per turn"
 msgstr "Kuinka monta kultapalaa kukin kylä tuottaa."
 
-#: src/multiplayer_create.cpp:194
+#: src/multiplayer_create.cpp:219
 #, fuzzy
 #| msgid "The maximum number of turns the game can last"
 msgid "The number of unit levels each village can support"
 msgstr "Pelin enimmäispituus"
 
-#: src/multiplayer_create.cpp:200
+#: src/multiplayer_create.cpp:225
 msgid "The amount of experience a unit needs to advance"
 msgstr "Kokemus, jonka yksikkö tarvitsee yletäkseen."
 
-#: src/multiplayer_create.cpp:203
+#: src/multiplayer_create.cpp:228
 msgid "Use scenario specific settings"
 msgstr "Käytä skenaarion omia asetuksia."
 
-#: src/multiplayer_create.cpp:206
+#: src/multiplayer_create.cpp:231
 msgid "Randomize time of day in begin"
 msgstr "Satunnainen vuorokauden aika aloittaessa"
 
-#: src/multiplayer_create.cpp:209
+#: src/multiplayer_create.cpp:234
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
 "Vihollisyksiköt ovat näkymättömissä, kunnes jokin yksiköistäsi on tarpeeksi "
 "lähellä."
 
-#: src/multiplayer_create.cpp:212
+#: src/multiplayer_create.cpp:237
 msgid "The map is unknown until your units explore it"
 msgstr "Kartta on näkymättömissä, kunnes yksikkösi tutkivat alueen."
 
-#: src/multiplayer_create.cpp:215
+#: src/multiplayer_create.cpp:240
 msgid "Allow users who are not playing to watch the game"
 msgstr "Salli muiden käyttäjien tarkkailla pelin kulkua."
 
-#: src/multiplayer_create.cpp:218
+#: src/multiplayer_create.cpp:243
 msgid "Assign sides to players at random"
 msgstr "Aseta pelaajat sattumanvaraisesti puolilleen"
 
-#: src/multiplayer_create.cpp:222
+#: src/multiplayer_create.cpp:247
 msgid "Share View"
 msgstr "Jaa näkökenttä"
 
-#: src/multiplayer_create.cpp:223
+#: src/multiplayer_create.cpp:248
 msgid "Share Maps"
 msgstr "Jaa kartat"
 
-#: src/multiplayer_create.cpp:224
+#: src/multiplayer_create.cpp:249
 msgid "Share None"
 msgstr "Älä jaa"
 
-#: src/multiplayer_create.cpp:234
+#: src/multiplayer_create.cpp:259
 msgid "No eras found."
 msgstr "Ei löydettyjä aikakausia."
 
-#: src/multiplayer_create.cpp:235
+#: src/multiplayer_create.cpp:260
 msgid "No eras found"
 msgstr "Ei löydetä aikakausia."
 
-#: src/multiplayer_create.cpp:248
+#: src/multiplayer_create.cpp:289
 msgid "$login|’s game"
 msgstr "$login’n peli"
 
-#: src/multiplayer_create.cpp:315
+#: src/multiplayer_create.cpp:358
 msgid "Invalid era selected"
 msgstr "Virheellinen aikakausi valittu."
 
-#: src/multiplayer_create.cpp:363
+#: src/multiplayer_create.cpp:407
 msgid "The map is invalid."
 msgstr "Kartta on virheellinen."
 
-#: src/multiplayer_create.cpp:365
+#: src/multiplayer_create.cpp:409
 msgid "You must enter a name."
 msgstr "Sinun pitää syöttää nimi."
 
-#: src/multiplayer_create.cpp:383
+#: src/multiplayer_create.cpp:429
+msgid ""
+"There are no modifications currently installed. To download modifications, "
+"connect to the add-ons server by choosing the 'Add-ons' option on the main "
+"screen."
+msgstr ""
+
+#: src/multiplayer_create.cpp:450
 msgid "Turns: "
 msgstr "Vuoroja: "
 
-#: src/multiplayer_create.cpp:385
+#: src/multiplayer_create.cpp:452
 msgid "Unlimited turns"
 msgstr "Ei rajoitusta."
 
-#: src/multiplayer_create.cpp:413
+#: src/multiplayer_create.cpp:480
 msgid "Init. limit: "
 msgstr "Alkuraja: "
 
-#: src/multiplayer_create.cpp:418
+#: src/multiplayer_create.cpp:485
 msgid "Turn bonus: "
 msgstr "Vuorobonus: "
 
-#: src/multiplayer_create.cpp:422
+#: src/multiplayer_create.cpp:489
 msgid "Reservoir: "
 msgstr "Yläraja: "
 
-#: src/multiplayer_create.cpp:427
+#: src/multiplayer_create.cpp:494
 msgid "Action bonus: "
 msgstr "Toimintabonus: "
 
-#: src/multiplayer_create.cpp:434
+#: src/multiplayer_create.cpp:501
 msgid "Village gold: "
 msgstr "Kulta kylistä: "
 
-#: src/multiplayer_create.cpp:440
+#: src/multiplayer_create.cpp:507
 #, fuzzy
 #| msgid "Village gold: "
-msgid "Village Support: "
+msgid "Village support: "
 msgstr "Kulta kylistä: "
 
-#: src/multiplayer_create.cpp:446
+#: src/multiplayer_create.cpp:513
 msgid "Experience modifier: "
 msgstr "Vaadittu kokemus: "
 
-#: src/multiplayer_create.cpp:589
+#: src/multiplayer_create.cpp:656
 msgid "Players: "
 msgstr "Pelaajia: "
 
-#: src/multiplayer_create.cpp:590
+#: src/multiplayer_create.cpp:657
 msgid "Size: "
 msgstr "Koko: "
 
@@ -6073,59 +5741,63 @@ msgstr "– ei avoimia pelejä –"
 msgid " (Unknown Era)"
 msgstr " (Tuntematon aikakausi)"
 
-#: src/multiplayer_lobby.cpp:553 src/multiplayer_lobby.cpp:892
+#: src/multiplayer_lobby.cpp:557
+msgid " (missing)"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:594 src/multiplayer_lobby.cpp:933
 msgid "Password Required"
 msgstr "Salasana vaaditaan"
 
-#: src/multiplayer_lobby.cpp:736 src/multiplayer_wait.cpp:179
+#: src/multiplayer_lobby.cpp:777 src/multiplayer_wait.cpp:179
 msgid "Game Lobby"
 msgstr "Pelin aula"
 
-#: src/multiplayer_lobby.cpp:741
+#: src/multiplayer_lobby.cpp:782
 msgid "Observe Game"
 msgstr "Tarkkaile"
 
-#: src/multiplayer_lobby.cpp:742
+#: src/multiplayer_lobby.cpp:783
 msgid "Join Game"
 msgstr "Liity peliin"
 
-#: src/multiplayer_lobby.cpp:744
+#: src/multiplayer_lobby.cpp:785
 msgid "Quick replays"
 msgstr "Pikauusinnat"
 
-#: src/multiplayer_lobby.cpp:745
+#: src/multiplayer_lobby.cpp:786
 msgid "Preferences"
 msgstr "Asetukset"
 
-#: src/multiplayer_lobby.cpp:746
+#: src/multiplayer_lobby.cpp:787
 msgid "Quit"
 msgstr "Lopeta"
 
-#: src/multiplayer_lobby.cpp:747
+#: src/multiplayer_lobby.cpp:788
 msgid "Apply filter"
 msgstr "Hyväksy suodatin"
 
-#: src/multiplayer_lobby.cpp:748
+#: src/multiplayer_lobby.cpp:789
 msgid "Invert"
 msgstr "Käännä"
 
-#: src/multiplayer_lobby.cpp:749
+#: src/multiplayer_lobby.cpp:790
 msgid "Vacant slots"
 msgstr "Vapaita paikkoja"
 
-#: src/multiplayer_lobby.cpp:750
+#: src/multiplayer_lobby.cpp:791
 msgid "Friends in game"
 msgstr "Ystävät pelissä"
 
-#: src/multiplayer_lobby.cpp:751
+#: src/multiplayer_lobby.cpp:792
 msgid "Search:"
 msgstr "Etsi:"
 
-#: src/multiplayer_lobby.cpp:759
+#: src/multiplayer_lobby.cpp:800
 msgid "Skip quickly to the active turn when observing"
 msgstr "Hyppää tarkkaillessasi heti nykyiseen vuoroon "
 
-#: src/multiplayer_lobby.cpp:762
+#: src/multiplayer_lobby.cpp:803
 msgid ""
 "Enable the games filter. If unchecked all games are shown, regardless of any "
 "filter."
@@ -6133,7 +5805,7 @@ msgstr ""
 "Ota käyttöön pelisuodatin. Jos tämä ei ole käytössä, suodatinta ei käytetä "
 "ja kaikki pelit näytetään."
 
-#: src/multiplayer_lobby.cpp:765
+#: src/multiplayer_lobby.cpp:806
 msgid ""
 "Show all games that do *not* match your filter. Useful for hiding games you "
 "are not interested in."
@@ -6141,32 +5813,32 @@ msgstr ""
 "Näytä kaikki pelit jotka *eivät* täsmää suodattimesi kanssa. Tällä voidaan "
 "piilottaa pelit joista et ole kiinnostunut."
 
-#: src/multiplayer_lobby.cpp:769
+#: src/multiplayer_lobby.cpp:810
 msgid "Only show games that have at least one vacant slot"
 msgstr "Näytä vain pelit joissa on vähintään yksi paikka vapaana"
 
-#: src/multiplayer_lobby.cpp:773
+#: src/multiplayer_lobby.cpp:814
 msgid ""
 "Only show games that are played or observed by at least one of your friends"
 msgstr "Näytä vain pelit joita pelaa tai tarkkailee ainakin yksi kaverisi"
 
-#: src/multiplayer_lobby.cpp:779
+#: src/multiplayer_lobby.cpp:820
 msgid "Only show games whose title or description contain the entered text"
 msgstr "Näytä vain pelit joiden nimessä tai kuvauksessa on antamasi teksti"
 
-#: src/multiplayer_lobby.cpp:893
+#: src/multiplayer_lobby.cpp:934
 msgid "Joining this game requires a password."
 msgstr "Tähän peliin liittyminen vaatii salasanan."
 
-#: src/multiplayer_lobby.cpp:894
+#: src/multiplayer_lobby.cpp:935
 msgid "Password: "
 msgstr "Salasana: "
 
-#: src/multiplayer_ui.cpp:206
+#: src/multiplayer_ui.cpp:208
 msgid "Invalid Color"
 msgstr "Virheellinen väri"
 
-#: src/multiplayer_ui.cpp:433
+#: src/multiplayer_ui.cpp:436
 msgid "Selected user: "
 msgstr "Valittu käyttäjä:"
 
@@ -6208,24 +5880,24 @@ msgid_plural "multiplayer_starting_gold^Gold"
 msgstr[0] "Kultapala"
 msgstr[1] "Kultapalaa"
 
-#: src/network.cpp:109
+#: src/network.cpp:112
 msgid "invalid network handle"
 msgstr "Virheellinen verkkokahva."
 
-#: src/network.cpp:142 src/network_manager_ana.cpp:780
+#: src/network.cpp:145 src/network_manager_ana.cpp:780
 #: src/network_manager_ana.cpp:787
 msgid "Client disconnected"
 msgstr "Vastapuoli katkaisi yhteyden."
 
-#: src/network.cpp:398 src/network.cpp:406
+#: src/network.cpp:401 src/network.cpp:409
 msgid "Could not connect to host."
 msgstr "Yhteyttä koneeseen ei saatu."
 
-#: src/network.cpp:571
+#: src/network.cpp:574
 msgid "Could not add socket to socket set"
 msgstr "Ei voitu lisätä yhteyspalikkaa."
 
-#: src/network.cpp:583
+#: src/network.cpp:586
 msgid "Could not send initial handshake"
 msgstr "Ei voitu lähettää alkukättelyä."
 
@@ -6246,24 +5918,24 @@ msgstr "Aikaa jäljellä nykyisellä vuorolla"
 msgid "current local time"
 msgstr "tämänhetkinen paikallinen aika"
 
-#: src/play_controller.cpp:1124 src/savegame.cpp:459 src/savegame.cpp:471
-#: src/savegame.cpp:1092 src/savegame.cpp:1094
+#: src/play_controller.cpp:1137 src/savegame.cpp:468 src/savegame.cpp:480
+#: src/savegame.cpp:1100 src/savegame.cpp:1102
 msgid "Auto-Save"
 msgstr "Automaattinen tallennus"
 
-#: src/play_controller.cpp:1131
+#: src/play_controller.cpp:1144
 #, fuzzy
 #| msgid "Back to turn "
 msgid "Back to Turn "
 msgstr "Takaisin vuoron alkuun"
 
-#: src/play_controller.cpp:1142
+#: src/play_controller.cpp:1155
 #, fuzzy
 #| msgid "Back to start"
 msgid "Back to Start"
 msgstr "Takaisin alkuun"
 
-#: src/play_controller.cpp:1404
+#: src/play_controller.cpp:1417
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -6271,7 +5943,7 @@ msgstr ""
 "Palvelimella on erilainen käsitys pelitilanteesta. Luultavasti kannattaa "
 "lopettaa.. Haluatko tallentaa pelisi?"
 
-#: src/play_controller.cpp:1405 src/replay_controller.cpp:328
+#: src/play_controller.cpp:1418 src/replay_controller.cpp:328
 msgid "Error details:"
 msgstr "Virheen kuvaus:"
 
@@ -6287,31 +5959,31 @@ msgstr "Voitto!"
 msgid "You have emerged victorious!"
 msgstr "Olet voittaja!"
 
-#: src/playcampaign.cpp:234 src/playcampaign.cpp:284
+#: src/playcampaign.cpp:232 src/playcampaign.cpp:282
 msgid "Defeat"
 msgstr "Tappio"
 
-#: src/playcampaign.cpp:235 src/playcampaign.cpp:285
+#: src/playcampaign.cpp:233 src/playcampaign.cpp:283
 msgid "You have been defeated!"
 msgstr "Sinut on kukistettu!"
 
-#: src/playcampaign.cpp:512
+#: src/playcampaign.cpp:509
 msgid "Error while reading the WML: "
 msgstr "Virhe luettaessa WML:ää: "
 
-#: src/playcampaign.cpp:548 src/playsingle_controller.cpp:456
+#: src/playcampaign.cpp:545 src/playsingle_controller.cpp:456
 msgid "Game Over"
 msgstr "Loppu"
 
-#: src/playcampaign.cpp:549
+#: src/playcampaign.cpp:546
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Skenaario on loppunut. Haluatko jatkaa kampanjaa?"
 
-#: src/playcampaign.cpp:580
+#: src/playcampaign.cpp:577
 msgid "Downloading next scenario..."
 msgstr "Haetaan seuraavaa tasoa..."
 
-#: src/playcampaign.cpp:737
+#: src/playcampaign.cpp:734
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Tuntematon skenaario: '$scenario|'"
 
@@ -6331,7 +6003,7 @@ msgstr "Siirtojen peruutuksia ei ole vielä toimitettu palvelimelle."
 msgid "Waiting for next scenario..."
 msgstr "Odotetaan seuraavaa skenaariota..."
 
-#: src/playmp_controller.cpp:533
+#: src/playmp_controller.cpp:532
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -6435,23 +6107,23 @@ msgstr ""
 msgid "It is now $name|’s turn"
 msgstr "Nyt on vuorossa $name"
 
-#: src/playturn.cpp:239
+#: src/playturn.cpp:245
 msgid "Replace with AI"
 msgstr "Korvaa tietokoneella"
 
-#: src/playturn.cpp:240
+#: src/playturn.cpp:246
 msgid "Replace with local player"
 msgstr "Korvaa paikallisella pelaajalla"
 
-#: src/playturn.cpp:241
+#: src/playturn.cpp:247
 msgid "Abort game"
 msgstr "Keskeytä peli"
 
-#: src/playturn.cpp:247 src/playturn.cpp:261
+#: src/playturn.cpp:253 src/playturn.cpp:267
 msgid "Replace with $player"
 msgstr "Korvaa pelaajalla $player"
 
-#: src/playturn.cpp:267
+#: src/playturn.cpp:273
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player on poistunut pelistä. Mitä haluat tehdä?"
 
@@ -6539,133 +6211,159 @@ msgstr "Tämä yksikkö on kivetetty. Se ei voi liikkua eikä hyökätä."
 msgid "Alignment: "
 msgstr "Suuntautuminen: "
 
-#: src/reports.cpp:368
+#: src/reports.cpp:380
 msgid "Ability: "
 msgstr "Erikoistaito:"
 
-#: src/reports.cpp:413
+#: src/reports.cpp:382 src/reports.cpp:740
+msgid " (inactive)"
+msgstr ""
+
+#: src/reports.cpp:429
 msgid "Resistances: "
 msgstr "Vastustukset: "
 
-#: src/reports.cpp:415
+#: src/reports.cpp:431
 msgid "(Att / Def)"
 msgstr "(hyök. / puol. )"
 
-#: src/reports.cpp:441
+#: src/reports.cpp:457
 msgid "Experience Modifier: "
 msgstr "Vaadittu kokemus: "
 
-#: src/reports.cpp:492
+#: src/reports.cpp:508
 msgid "Terrain: "
 msgstr "Maasto:"
 
-#: src/reports.cpp:509
+#: src/reports.cpp:525
 msgid "maximum^max."
 msgstr "enintään"
 
-#: src/reports.cpp:509
+#: src/reports.cpp:525
 msgid "minimum^min."
 msgstr "vähintään"
 
-#: src/reports.cpp:514
+#: src/reports.cpp:530
 msgid "Defense: "
 msgstr "Puolustus:"
 
-#: src/reports.cpp:596 src/reports.cpp:781 src/reports.cpp:793
+#: src/reports.cpp:610 src/reports.cpp:827 src/reports.cpp:839
 msgid "Weapon: "
 msgstr "Ase:"
 
-#: src/reports.cpp:597 src/reports.cpp:782
+#: src/reports.cpp:611 src/reports.cpp:828
 msgid "Damage: "
 msgstr "Vahinko:"
 
-#: src/reports.cpp:601
+#: src/reports.cpp:615
 msgid "Base damage: "
 msgstr "Perusvahinko:"
 
-#: src/reports.cpp:603
+#: src/reports.cpp:617 src/reports.cpp:651 src/reports.cpp:661
+#, fuzzy
+#| msgid "Weapon special: "
+msgid "With specials: "
+msgstr "Aseen erikoisuus:"
+
+#: src/reports.cpp:620
 msgid "Time of day: "
 msgstr "Vuorokaudenaika:"
 
-#: src/reports.cpp:607
+#: src/reports.cpp:624
 msgid "Leadership: "
 msgstr "Johtamiskyky:"
 
-#: src/reports.cpp:611
+#: src/reports.cpp:628
 msgid "Slowed: "
 msgstr "Hidastettu:"
 
-#: src/reports.cpp:615
+#: src/reports.cpp:632
 msgid "Attacks: "
 msgstr "Hyökkäyksiä:"
 
-#: src/reports.cpp:617
-msgid "Base attacks: "
-msgstr "Perushyökkäyksiä:"
+#: src/reports.cpp:636
+#, fuzzy
+#| msgid "Max HP bonus +"
+msgid "Max swarm bonus: "
+msgstr "Enimmäis-EP-bonus +"
 
-#: src/reports.cpp:619
+#: src/reports.cpp:637 src/reports.cpp:656
 msgid "Swarm: "
 msgstr "Parvi:"
 
-#: src/reports.cpp:631
+#: src/reports.cpp:638 src/reports.cpp:649 src/reports.cpp:660
+msgid "Base attacks: "
+msgstr "Perushyökkäyksiä:"
+
+#: src/reports.cpp:644
+#, fuzzy
+#| msgid "Special"
+msgid "Specials: "
+msgstr "erikoisuus"
+
+#: src/reports.cpp:654
+msgid "Subject to swarm: "
+msgstr ""
+
+#: src/reports.cpp:673
 msgid "Weapon range: "
 msgstr "Aseen kantama:"
 
-#: src/reports.cpp:632
+#: src/reports.cpp:674
 msgid "Damage type: "
 msgstr "Vahinkotyyppi:"
 
-#: src/reports.cpp:633
+#: src/reports.cpp:675
 msgid "Damage versus: "
 msgstr "Vahinko:"
 
-#: src/reports.cpp:672
+#: src/reports.cpp:714
 msgid "Accuracy:"
 msgstr "Tarkkuus:"
 
-#: src/reports.cpp:677
+#: src/reports.cpp:719
 msgid "Parry:"
 msgstr "Torjunnat:"
 
-#: src/reports.cpp:694
+#: src/reports.cpp:738
 msgid "Weapon special: "
 msgstr "Aseen erikoisuus:"
 
-#: src/reports.cpp:764
+#: src/reports.cpp:811
 msgid "None"
 msgstr "Ei mitään"
 
-#: src/reports.cpp:956
+#: src/reports.cpp:1002
 msgid "Lawful units: "
 msgstr "Lainkuuliaiset yksiköt: "
 
-#: src/reports.cpp:957
+#: src/reports.cpp:1003
 msgid "Neutral units: "
 msgstr "Neutraalit yksiköt: "
 
-#: src/reports.cpp:958
+#: src/reports.cpp:1004
 msgid "Chaotic units: "
 msgstr "Kaoottiset yksiköt: "
 
-#: src/reports.cpp:959
+#: src/reports.cpp:1005
 msgid "Liminal units: "
 msgstr "Hämärässä viihtyvät yksiköt:"
 
-#: src/reports.cpp:1172
+#: src/reports.cpp:1218
 msgid "Observers:"
 msgstr "Tarkkailijat:"
 
-#: src/savegame.cpp:393 src/savegame.cpp:395
+#: src/savegame.cpp:394 src/savegame.cpp:396
 msgid " replay"
 msgstr " – uusinta"
 
-#: src/savegame.cpp:618 src/savegame.cpp:622
+#: src/savegame.cpp:629 src/savegame.cpp:633
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Varoitus: Tiedosto, jonka yritit ladata, on vahingoittunut. Ladataan siitä "
 "huolimatta.\n"
 
-#: src/savegame.cpp:663
+#: src/savegame.cpp:675
 #, fuzzy
 #| msgid "This save is from a version too old to be loaded."
 msgid ""
@@ -6673,7 +6371,7 @@ msgid ""
 "be loaded."
 msgstr "Tämä tallenne on aivan liian antiikkinen."
 
-#: src/savegame.cpp:672
+#: src/savegame.cpp:684
 #, fuzzy
 #| msgid ""
 #| "This save is from a different version of the game. Do you want to try to "
@@ -6683,113 +6381,116 @@ msgid ""
 "wish to try to load it?"
 msgstr "Tämä tallenne on pelin eri versiosta. Haluatko yrittää ladata sen?"
 
-#: src/savegame.cpp:730
+#: src/savegame.cpp:741
 msgid "This is not a multiplayer save"
 msgstr "Tämä ei ole moninpelin tallenne"
 
-#: src/savegame.cpp:797
+#: src/savegame.cpp:808
 msgid "The game could not be saved: "
 msgstr "Peliä ei voitu tallentaa: "
 
-#: src/savegame.cpp:882
+#: src/savegame.cpp:890
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Tallenne on jo olemassa. Haluatko ylikirjoittaa sen?"
 
-#: src/savegame.cpp:883
+#: src/savegame.cpp:891
 msgid "Overwrite?"
 msgstr "Kirjoita päälle?"
 
-#: src/savegame.cpp:893
-msgid "Save names should not end on '.gz'. Please choose a different name."
+#: src/savegame.cpp:901
+#, fuzzy
+#| msgid "Save names should not end on '.gz'. Please choose a different name."
+msgid ""
+"Save names should not end on '.gz' or '.bz2'. Please remove the extension."
 msgstr "Tallenteen nimi ei saa loppua ”.gz”:aan. Valitse toinen nimi."
 
-#: src/savegame.cpp:959
+#: src/savegame.cpp:967
 msgid "Saved"
 msgstr "Tallennettu"
 
-#: src/savegame.cpp:959
+#: src/savegame.cpp:967
 msgid "The game has been saved"
 msgstr "Peli on tallennettu."
 
-#: src/savegame.cpp:993 src/savegame.cpp:1014
+#: src/savegame.cpp:1001 src/savegame.cpp:1022
 msgid "Could not write to file"
 msgstr "Ei voitu kirjoittaa tiedostoon"
 
-#: src/savegame.cpp:1048
+#: src/savegame.cpp:1056
 msgid "Save Replay"
 msgstr "Tallenna uusinta"
 
-#: src/savegame.cpp:1057
+#: src/savegame.cpp:1065
 msgid "replay"
 msgstr " – uusinta"
 
-#: src/savegame.cpp:1075
+#: src/savegame.cpp:1083
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "Automaattinen tallennus epäonnistui. Yritä tallentaa peli manuaalisesti."
 
-#: src/savegame.cpp:1124
+#: src/savegame.cpp:1132
 msgid "Save Game"
 msgstr "Tallenna peli"
 
-#: src/serialization/parser.cpp:127
+#: src/serialization/parser.cpp:128
 msgid "Unexpected characters at line start"
 msgstr "Odottamattomia kirjaimia rivin alussa"
 
-#: src/serialization/parser.cpp:145
+#: src/serialization/parser.cpp:146
 #, fuzzy
 #| msgid "Missing closing tag for tag $tag at $pos"
 msgid "Missing closing tag for tag [$tag] at $pos"
 msgstr "Sulkemistagi puuttuu tagille $tag paikassa $pos"
 
-#: src/serialization/parser.cpp:158
+#: src/serialization/parser.cpp:159
 msgid "Unterminated [element] tag"
 msgstr "Sulkematon [element] -tagi"
 
-#: src/serialization/parser.cpp:170 src/serialization/parser.cpp:218
+#: src/serialization/parser.cpp:171 src/serialization/parser.cpp:219
 msgid "Invalid tag name"
 msgstr "Virheellinen tagin nimi"
 
-#: src/serialization/parser.cpp:173
+#: src/serialization/parser.cpp:174
 msgid "Unterminated [+element] tag"
 msgstr "Sulkematon [+element] -tagi"
 
-#: src/serialization/parser.cpp:195
+#: src/serialization/parser.cpp:196
 msgid "Invalid closing tag name"
 msgstr "Virheellinen sulkevan tagin nimi"
 
-#: src/serialization/parser.cpp:198
+#: src/serialization/parser.cpp:199
 msgid "Unterminated closing tag"
 msgstr "Päättämätön sulkeva tagi"
 
-#: src/serialization/parser.cpp:200
+#: src/serialization/parser.cpp:201
 msgid "Unexpected closing tag"
 msgstr "Odottamaton sulkeva tagi"
 
-#: src/serialization/parser.cpp:208
+#: src/serialization/parser.cpp:209
 #, fuzzy
 #| msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
 msgid "Found invalid closing tag [/$tag2] for tag [$tag1] (opened at $pos)"
 msgstr ""
 "Löytynyt virheellinen sulkeva tagi $tag2 tagille $tag1 (avattu paikassa $pos)"
 
-#: src/serialization/parser.cpp:237 src/serialization/parser.cpp:249
+#: src/serialization/parser.cpp:238 src/serialization/parser.cpp:250
 msgid "Empty variable name"
 msgstr "Tyhjä muuttujan nimi"
 
-#: src/serialization/parser.cpp:243
+#: src/serialization/parser.cpp:244
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr "Odottamaton kirjain muuttujan nimen jälkeen (odotettu , tai =)"
 
-#: src/serialization/parser.cpp:282 src/serialization/parser.cpp:310
+#: src/serialization/parser.cpp:283 src/serialization/parser.cpp:311
 msgid "Unterminated quoted string"
 msgstr "Päättämätön lainaus"
 
-#: src/serialization/parser.cpp:362
+#: src/serialization/parser.cpp:363
 msgid "$error, value '$value', previous '$previous_value' at $pos"
 msgstr "$error, arvo ”$value”, edellinen ”$previous_value” sijainnissa $pos"
 
-#: src/serialization/parser.cpp:366
+#: src/serialization/parser.cpp:367
 msgid "$error, value '$value' at $pos"
 msgstr "$error (arvo ”$value”) paikassa $pos"
 
@@ -6865,47 +6566,63 @@ msgstr "Y"
 msgid "infix_binary^i"
 msgstr "i"
 
-#: src/statistics_dialog.cpp:70 src/statistics_dialog.cpp:126
+#: src/statistics_dialog.cpp:118 src/statistics_dialog.cpp:235
 msgid "Recruits"
 msgstr "Värväyksiä"
 
-#: src/statistics_dialog.cpp:74 src/statistics_dialog.cpp:137
+#: src/statistics_dialog.cpp:122 src/statistics_dialog.cpp:246
 msgid "Recalls"
 msgstr "Kutsuntoja"
 
-#: src/statistics_dialog.cpp:78 src/statistics_dialog.cpp:147
+#: src/statistics_dialog.cpp:126 src/statistics_dialog.cpp:256
 msgid "Advancements"
 msgstr "Ylennyksiä"
 
-#: src/statistics_dialog.cpp:82 src/statistics_dialog.cpp:155
+#: src/statistics_dialog.cpp:130 src/statistics_dialog.cpp:264
 msgid "Losses"
 msgstr "Menetyksiä"
 
-#: src/statistics_dialog.cpp:87 src/statistics_dialog.cpp:166
+#: src/statistics_dialog.cpp:135 src/statistics_dialog.cpp:275
 msgid "Kills"
 msgstr "Tappoja"
 
-#: src/statistics_dialog.cpp:107
+#: src/statistics_dialog.cpp:168
 msgid "Details"
 msgstr "Tiedot"
 
-#: src/statistics_dialog.cpp:175
+#: src/statistics_dialog.cpp:170
+#, fuzzy
+#| msgid "Test scenario"
+msgid "Select Scenario"
+msgstr "Testaa skenaariota"
+
+#: src/statistics_dialog.cpp:226 src/statistics_dialog.cpp:304
+msgid "Campaign"
+msgstr "Kampanja"
+
+#: src/statistics_dialog.cpp:226 src/statistics_dialog.cpp:304
+#, fuzzy
+#| msgid "End Scenario"
+msgid "Scenario"
+msgstr "Päätä skenaario"
+
+#: src/statistics_dialog.cpp:284
 msgid "Damage"
 msgstr "Vahinko"
 
-#: src/statistics_dialog.cpp:176
+#: src/statistics_dialog.cpp:285
 msgid "Overall"
 msgstr "Yhteensä"
 
-#: src/statistics_dialog.cpp:178
+#: src/statistics_dialog.cpp:289
 msgid "This Turn"
 msgstr "Tämä vuoro"
 
-#: src/statistics_dialog.cpp:182
+#: src/statistics_dialog.cpp:294
 msgid "Inflicted"
 msgstr "Aiheutettu"
 
-#: src/statistics_dialog.cpp:187
+#: src/statistics_dialog.cpp:298
 msgid "Taken"
 msgstr "Vastaanotettu"
 
@@ -6913,19 +6630,19 @@ msgstr "Vastaanotettu"
 msgid "Skip"
 msgstr "Ohita"
 
-#: src/terrain.cpp:155
+#: src/terrain.cpp:159
 msgid "Village"
 msgstr "kylä"
 
-#: src/terrain.cpp:160
+#: src/terrain.cpp:164
 msgid "Allied village"
 msgstr "liittolaisen kylä"
 
-#: src/terrain.cpp:165
+#: src/terrain.cpp:169
 msgid "Enemy village"
 msgstr "vihollisen kylä"
 
-#: src/terrain.cpp:170
+#: src/terrain.cpp:174
 msgid "Owned village"
 msgstr "sinun kyläsi"
 
@@ -6937,107 +6654,330 @@ msgstr "border_size tulisi olla 0.0:n ja 0.5:n välillä."
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Tuntematon yksikkötyyppi ”$type|” generoidessa piirteitä"
 
-#: src/unit.cpp:2501 src/unit.cpp:2718 src/unit.cpp:2794
+#: src/unit.cpp:2512 src/unit.cpp:2759 src/unit.cpp:2835
 msgid " and "
 msgstr " ja "
 
-#: src/unit.cpp:2512
+#: src/unit.cpp:2523
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2573
+#: src/unit.cpp:2584
 msgid "moves"
 msgstr "siirrot"
 
-#: src/unit.cpp:2588 src/unit.cpp:2742
+#: src/unit.cpp:2614 src/unit.cpp:2783
 msgid "XP to advance"
 msgstr "KP:tä ylenemiseen"
 
-#: src/unit.cpp:2735
+#: src/unit.cpp:2776
 msgid " move"
 msgstr "siirto"
 
-#: src/unit.cpp:2750
+#: src/unit.cpp:2791
 msgid "$effect_description per level"
 msgstr "$effect_description tasoa kohden"
 
-#: src/unit_types.cpp:192 src/unit_types.cpp:262
+#: src/unit_types.cpp:234 src/unit_types.cpp:314
 msgid "damage"
 msgid_plural "damage"
 msgstr[0] "vahinko"
 msgstr[1] "vahinkoa"
 
-#: src/unit_types.cpp:203 src/unit_types.cpp:270
+#: src/unit_types.cpp:245 src/unit_types.cpp:322
 msgid "strike"
 msgid_plural "strikes"
 msgstr[0] "isku"
 msgstr[1] "iskua"
 
-#: src/unit_types.cpp:215
+#: src/unit_types.cpp:257
 #, no-c-format
 msgid "% accuracy"
 msgstr "% tarkkuus"
 
-#: src/unit_types.cpp:226
+#: src/unit_types.cpp:268
 #, no-c-format
 msgid "% parry"
 msgstr "% torjunnat"
 
-#: src/unit_types.cpp:933
+#: src/unit_types.cpp:985
 msgid "No description available."
 msgstr "Kuvausta ei ole saatavilla."
 
-#: src/unit_types.cpp:989
+#: src/unit_types.cpp:1041
 msgid "chaotic"
 msgstr "kaoottinen"
 
-#: src/unit_types.cpp:989
+#: src/unit_types.cpp:1041
 msgid "lawful"
 msgstr "lainkuuliainen"
 
-#: src/unit_types.cpp:989
+#: src/unit_types.cpp:1041
 msgid "liminal"
 msgstr "liminaali"
 
-#: src/unit_types.cpp:989
+#: src/unit_types.cpp:1041
 msgid "neutral"
 msgstr "neutraali"
 
-#: src/unit_types.cpp:990
+#: src/unit_types.cpp:1042
 msgid "female^chaotic"
 msgstr "kaoottinen"
 
-#: src/unit_types.cpp:990
+#: src/unit_types.cpp:1042
 msgid "female^lawful"
 msgstr "lainkuuliainen"
 
-#: src/unit_types.cpp:990
+#: src/unit_types.cpp:1042
 msgid "female^liminal"
 msgstr "liminaali"
 
-#: src/unit_types.cpp:990
+#: src/unit_types.cpp:1042
 msgid "female^neutral"
 msgstr "neutraali"
 
-#: src/whiteboard/manager.cpp:1100
+#: src/whiteboard/manager.cpp:1102
 msgid "SHOW ALL allies’ plans"
 msgstr "NÄYTÄ liittolaisten suunnitelmat"
 
-#: src/whiteboard/manager.cpp:1101
+#: src/whiteboard/manager.cpp:1103
 msgid "HIDE ALL allies’ plans"
 msgstr "PIILOTA liittolaisten suunnitelmat"
 
-#: src/whiteboard/manager.cpp:1115
+#: src/whiteboard/manager.cpp:1117
 msgid "Show plans for $player"
 msgstr "Näytä pelaajan $player suunnitelmat"
 
-#: src/whiteboard/manager.cpp:1117
+#: src/whiteboard/manager.cpp:1119
 msgid "Hide plans for $player"
 msgstr "Piilota pelaajan $player suunnitelmat"
 
-#: src/whiteboard/manager.cpp:1120
+#: src/whiteboard/manager.cpp:1122
 msgid "Whiteboard Options"
 msgstr "Valkotaulun asetukset"
+
+#~ msgid ""
+#~ "Aban,Abbas,Abbud,Abdul-ʿAdl,Abdul-Ahad,Abdul-Alim,Abdul-Aliyy,Abdul-Azim,"
+#~ "Abdul-Aziz,Abdul-Badi,Abdul-Baʿith,Abdul-Baqi,Abdul-Bari,Abdul-Barr,Abdul-"
+#~ "Basir,Abdul-Basit,Abdul-Fattah,Abdul-Ghaffar,Abdul-Ghafur,Abdul-Ghani,"
+#~ "Abdul-Hadi,Abdul-Hafiz,Abdul-Hakam,Abdul-Hakim,Abdul-Halim,Abdul-Hamid,"
+#~ "Abdul-Haqq,Abdul-Hasib,Abdul-Hayy,Abdul-Jabbar,Abdul-Jalil,Abdul-Karim,"
+#~ "Abdul-Khabir,Abdul-Khaliq,Abdul-Latif,Abdul-Malik,Abdul-Majid,Abdul-Matin,"
+#~ "Abdul-Mubdiʾ,Abdul-Mughni,Abdul-Muhaimin,Abdul-Muhsi,Abdul-Muhyi,Abdul-"
+#~ "Muʿid,Abdul-Muʿizz,Abdul-Mujib,Abdul-Mumin,Abdul-Muqaddim,Abdul-Muqtadir,"
+#~ "Abdul-Musawwir,Abdul-Mutaʿal,Abdul-Nafi,Abdul-Nasser,Abdul-Nasir,Abdul-"
+#~ "Nur,Abdul-Qadir,Abdul-Qahhar,Abdul-Qawi,Abdul-Qayyum,Abdul-Quddus,Abdul-"
+#~ "Rafi,Abdul-Rahim,Abdul-Rahman,Abdul-Rashid,Abdul-Raʿuf,Abdul-Razzaq,Abdul-"
+#~ "Shakur,Abdul-Tawwab,Abdul-Wadud,Abdul-Wahhab,Abdul-Wahid,Abdul-Wajid,"
+#~ "Abdul-Wakil,Abdul-Wali,Abdul-Waliy,Abdul-Warith,Abdul-Zahir,Abdullah,"
+#~ "ʿAbid,ʿAbidin,Abu Bakr,Aby al-Khayr,Adil,Adham,Adib,ʿAdli,ʿAdnan,ʿAfif,"
+#~ "Ahmad,ʿAjib,ʿAkif,Akil,Akram,Alaʾ,Alaʾ al-Din,Alʿ Abbas,Aladdin,al-Bara,"
+#~ "al-Hakam,al-Harith,Alhasan,Alhusain,Ali,Alim,Almahdi,al-Safi,Altaf,Altair,"
+#~ "al-Tayyib,al-Tijani,al-Tufail,Amid,ʿAmid,Amin,Amir,ʿAmir,Amjad,ʿAmmar,"
+#~ "ʿAmro,Anas,Anis,ʿAntarah,Anwar,ʿAqil,Arfan,Arif,ʿArif,Asad,Asʿad,Asadel,"
+#~ "Ashraf,Asif,ʿAsim,Aswad,Ataʿ,Ataʿ Allah,Ataʿ al-Rahman,Athil,Athir,ʿAtif,"
+#~ "ʿAwad,ʿAwf,Aws,Awwab,Ayham,Ayman,Ayser,Ayyub,Aza,ʿAzab,Azhar,Azim,ʿAziz,"
+#~ "ʿAzzam,Badi,Badi al-Zaman,Badr,Badr al-Din,Badri,Bahaʿ,Bahiyy al-Din,"
+#~ "Bahij,Bahir,Bakr,Bakri,Baligh,Bandar,Barakah,Barir,Bashshar,Basil,Basim,"
+#~ "Bassam,Bayezid,Bayhas,Bilal,Bishr,Boulos,Budail,Burhan,Bushr,Butrus,Dabir,"
+#~ "Dani,Darwish,Daʿud,Dhakir,Dhakiy,Dhakwan,Dhul Fiqar,Dirar,Diya,Diya al-"
+#~ "Din,Duqaq,Fadi,Fadil,Fadl,Fadl Allah,Fahd,Fahad,Fahmi,Faisal,Faʿiz,Fakhir,"
+#~ "Fakhr al-Din,Fakhri,Fakih,Falah,Falih,Faraj,Farhan,Farid,Fariq,Fariq,"
+#~ "Faris,Faruq,Fath,Fathi,Fatih,Fatin,Fawwaz,Fawzan,Fawzi,Fayyad,Ferran,Fida,"
+#~ "Fikri,Firas,Fuʿad,Fudail,Gamal,Ghayth,Ghali,Ghalib,Ghanim,Ghassan,Ghawth,"
+#~ "Ghazwan,Ghiyath,Habbab,Habib,Haddad,Hadi,Hafiz,Hakem,Hakim,Halim,Hamal,"
+#~ "Hamas,Hamdan,Hamdi,Hamid,Hamim,Hamzah,Hana,Hanaʾi,Hanbal,Hani,Hanif,"
+#~ "Hannad,Haris,Harith,Harun,Hashim,Hassan,Hatim,Haydar,Haytham,Hayyan,Hazim,"
+#~ "Hilal,Hilmi,Hisham,Hud,Hudad,Hudhafah,Hudhayfah,Humam,Hussein,Husam,Husam "
+#~ "al-Din,Ibrahim,ʿId,Idris,Ihsan,Ihtisham,ʿIkrimah,Ilias,ʿImad,Imad al-Din,"
+#~ "Imran,Imtiyaz,Inʿam,Iqbal,ʿIrfan,ʿIsa,ʿIsam,Ishaq,Ismaʿil,Iyad,Iyas,Izz "
+#~ "al-Din,Jabbar,Jabr,Jabir,Jad Allah,Jaʿfar,Jal,Jalal,Jalal al-Din,Jalil,"
+#~ "Jamal,Jamal al-Din,Jamil,Jarir,Jasim,Jaul,Jaun,Jawad,Jawdah,Jawhar,Jibran,"
+#~ "Jibril,Jubair,Jul,Jumah,Junayd,Juwain,Kadar,Kadin,Kadir,Kahil,Kaliq,Kamal,"
+#~ "Kamil,Karam,Kardal,Karif,Karim,Kasib,Kasim,Katib,Kazim,Khalaf,Khaldun,"
+#~ "Khalid,Khalil,Khalil al-Allah,Khalis,Khatib,Khair al-Din,Khairi,Khoury,"
+#~ "Khulus,Khuzaymah,Kutaiba,Labib,Lablab,Latif,Layth,LuʿayLubayd,Luqman,Lut,"
+#~ "Lutfi,Maʿd,Madani,Mahbub,Mahdi,Mahfuz,Mahir,Mahjub,Mahmud,Mahrus,Maimun,"
+#~ "Majd,Majdy,Majd al-Din,Majid,Makin,Malik,Mamduh,Maʿmun,Maʿin,Mandhur,"
+#~ "Mansur,Marghub,Marid,Maʿruf,Marwan,Marzuq,Mashʿal,Mashhur,Masrur,Masʿud,"
+#~ "Masun,Maysarah,Mazhar,Mazin,Mehmed,Mihran,Mihyar,Mikaʾil,Miqdad,Misbah,"
+#~ "Mishʿal,Miyaz,Muʾadh,Muʾawiyah,Muʾayyad,Mubarak,Mubin,Mudar,Muddaththir,"
+#~ "Mufid,Muflih,Muhab,Muhayr,Muhammad,Muhanna,Muhannad,Muhib,Muhibb,Muhsin,"
+#~ "Muhtadi,Muhyi al-Din,Muʿin,Muʿizz,Mujab,Mujahid,Mukarram,Mukhlis,Mukhtar,"
+#~ "Mulham,Mulhim,Muʿmmar,Muʿmin,Mumtaz,Munahid,Mundhir,Munib,Munif,Munir,"
+#~ "Muʿnis,Munjid,Munsif,Muntasir,Murad,Murid,Murshid,Murtada,Musa,Musʿab,"
+#~ "Musaʿid,Mushtaq,Muslih,Muslim,Mutafa,Mutaʾ,Muʿtasim,Mutawalli,Muʿtazz,"
+#~ "Muthanna,Muti,Muwaffaq,Muyassar,Muzaffar,Mussammil,Nabhan,Nabighah,Nabih,"
+#~ "Nabil,Nadhir,Nadim,Nadir,Nafiʾ,Nahid,Naʾil,Naʾim,Naji,Najib,Najid,Najjar,"
+#~ "Najm al-Din,Naʿaman,Namir,Nashʿah,Nashʿat,Nashwan,Nasib,Nasih,Nasim,Nasir,"
+#~ "Nasir al-Din,Nasr,Nasri,Nasuh,Nawaf,Nawfal,Nayif,Nazih,Nazim,Nazmi,Nibras,"
+#~ "Nidal,Nijad,Nimr,Nizar,Nuʿaym,Nuh,Nuhayd,Numair,Nuʿman,Nur al-Din,Nuri,"
+#~ "Nusrah,Nusrat,Omar,Orhan,Osman,Qasim,Qays,Qudamah,Qusay,Qatadah,Qutaybah,"
+#~ "Qutb,Qutuz,Rabah,Rabi,Radi,Rafi,Rafid,Rafiq,Raghib,Rahman,Raʿid,Raʿif,"
+#~ "Rais,Rajaa,Rajab,Raji,Rajih,Rakin,Rami,Ramih,Ramiz,Ramzi,Rani,Rashad,"
+#~ "Rashid,Rasil,Rasin,Rasmi,Rasul,Ratib,Raʿuf,Rayhan,Rayyan,Razin,Ridha,"
+#~ "Ridwan,Rihab,Riyad,Rizq,Ruhi,Rushd,Rushdi,Ruwayd,Saad,Saʿadah,Sab,Sabih,"
+#~ "Sabir,Sabri,Saʿd,Saʿd al-Din,Sadad,Sadid,Sadiq,Saʿdun,Saʿid,Safi,Safiy,"
+#~ "Safiy al-Din,Safuh,Safwah,Safwat,Safwan,Sahib,Sahir,Sahl,Saʾib,Saif,Saif "
+#~ "al-Din,Sajid,Sajjad,Sakhr,Salah,Salah al-Din,Salamah,Salih,Salim,Salman,"
+#~ "Sami,Samih,Samir,Samman,Saqr,Sariyah,Sati,Saud,Sayyid,Shaʿban,Shadi,"
+#~ "Shadin,Shafi,Shafiq,Shahid,Shahin,Shahir,Shakib,Shakir,Shams al-Din,"
+#~ "Shamal,Shamil,Shamim,Sharaf,Sharif,Shawqi,Shihab,Shihab al-Din,Shihad,"
+#~ "Shuʿayb,Shukri,Shumayl,Siddiq,Sinan,Siraj,Siraj al-Din,Sofian,Subhi,"
+#~ "Sufyan,Suhayb,Suhayl,Suhaym,Sulaiman,Sumrah,Suraqah,Suʿud,Tahir,Tahsin,"
+#~ "Taym Allah,Taj,Taj al-Din,Talal,Talib,Tamim,Tamir,Tamam,Tammam,Taqiy,"
+#~ "Tarif,Tariq,Taslim,Tawfiq,Tawhid,Taymullah,Taysir,Tayyib,Thabit,Thamir,"
+#~ "Thaqib,Thawab,Thawban,ʿUbaidah,Ubaid,Ubayy,ʿUdayl,ʿUday,ʿUmar,Umarah,"
+#~ "Umair,ʾaUrwah,Usaym,Usama,ʿUtbah,Uthal,Uthman,Waddah,Wadi,Wadid,Wafiq,"
+#~ "Wahab,Wahhab,Wahid,Waʾil,Wajdi,Wajid,Wajih,Wakil,Walid,Walif,Waliy Allah,"
+#~ "Waliy al-Din,Waqar,Waqqas,Ward,Wasif,Wasil,Wasim,Wazir,Yahya,Yaman,Yaʿqub,"
+#~ "Yasar,Yasin,Yasir,Yazan,Yazid,Yunus,Yushua,Yusri,Yusuf,Zafar,Zafir,Zahid,"
+#~ "Zahir,Zayd,Zaim,Zayn,Zarif,Zakarriya,Zaki,Zakwan,Ziyad,Zubayr,Zuhayr"
+#~ msgstr ""
+#~ "Aban,Abbas,Abbud,Abdul-ʿAdl,Abdul-Ahad,Abdul-Alim,Abdul-Aliyy,Abdul-Azim,"
+#~ "Abdul-Aziz,Abdul-Badi,Abdul-Baʿith,Abdul-Baqi,Abdul-Bari,Abdul-Barr,Abdul-"
+#~ "Basir,Abdul-Basit,Abdul-Fattah,Abdul-Ghaffar,Abdul-Ghafur,Abdul-Ghani,"
+#~ "Abdul-Hadi,Abdul-Hafiz,Abdul-Hakam,Abdul-Hakim,Abdul-Halim,Abdul-Hamid,"
+#~ "Abdul-Haqq,Abdul-Hasib,Abdul-Hayy,Abdul-Jabbar,Abdul-Jalil,Abdul-Karim,"
+#~ "Abdul-Khabir,Abdul-Khaliq,Abdul-Latif,Abdul-Malik,Abdul-Majid,Abdul-Matin,"
+#~ "Abdul-Mubdiʾ,Abdul-Mughni,Abdul-Muhaimin,Abdul-Muhsi,Abdul-Muhyi,Abdul-"
+#~ "Muʿid,Abdul-Muʿizz,Abdul-Mujib,Abdul-Mumin,Abdul-Muqaddim,Abdul-Muqtadir,"
+#~ "Abdul-Musawwir,Abdul-Mutaʿal,Abdul-Nafi,Abdul-Nasser,Abdul-Nasir,Abdul-"
+#~ "Nur,Abdul-Qadir,Abdul-Qahhar,Abdul-Qawi,Abdul-Qayyum,Abdul-Quddus,Abdul-"
+#~ "Rafi,Abdul-Rahim,Abdul-Rahman,Abdul-Rashid,Abdul-Raʿuf,Abdul-Razzaq,Abdul-"
+#~ "Shakur,Abdul-Tawwab,Abdul-Wadud,Abdul-Wahhab,Abdul-Wahid,Abdul-Wajid,"
+#~ "Abdul-Wakil,Abdul-Wali,Abdul-Waliy,Abdul-Warith,Abdul-Zahir,Abdullah,"
+#~ "ʿAbid,ʿAbidin,Abu Bakr,Aby al-Khayr,Adil,Adham,Adib,ʿAdli,ʿAdnan,ʿAfif,"
+#~ "Ahmad,ʿAjib,ʿAkif,Akil,Akram,Alaʾ,Alaʾ al-Din,Alʿ Abbas,Aladdin,al-Bara,"
+#~ "al-Hakam,al-Harith,Alhasan,Alhusain,Ali,Alim,Almahdi,al-Safi,Altaf,Altair,"
+#~ "al-Tayyib,al-Tijani,al-Tufail,Amid,ʿAmid,Amin,Amir,ʿAmir,Amjad,ʿAmmar,"
+#~ "ʿAmro,Anas,Anis,ʿAntarah,Anwar,ʿAqil,Arfan,Arif,ʿArif,Asad,Asʿad,Asadel,"
+#~ "Ashraf,Asif,ʿAsim,Aswad,Ataʿ,Ataʿ Allah,Ataʿ al-Rahman,Athil,Athir,ʿAtif,"
+#~ "ʿAwad,ʿAwf,Aws,Awwab,Ayham,Ayman,Ayser,Ayyub,Aza,ʿAzab,Azhar,Azim,ʿAziz,"
+#~ "ʿAzzam,Badi,Badi al-Zaman,Badr,Badr al-Din,Badri,Bahaʿ,Bahiyy al-Din,"
+#~ "Bahij,Bahir,Bakr,Bakri,Baligh,Bandar,Barakah,Barir,Bashshar,Basil,Basim,"
+#~ "Bassam,Bayezid,Bayhas,Bilal,Bishr,Boulos,Budail,Burhan,Bushr,Butrus,Dabir,"
+#~ "Dani,Darwish,Daʿud,Dhakir,Dhakiy,Dhakwan,Dhul Fiqar,Dirar,Diya,Diya al-"
+#~ "Din,Duqaq,Fadi,Fadil,Fadl,Fadl Allah,Fahd,Fahad,Fahmi,Faisal,Faʿiz,Fakhir,"
+#~ "Fakhr al-Din,Fakhri,Fakih,Falah,Falih,Faraj,Farhan,Farid,Fariq,Fariq,"
+#~ "Faris,Faruq,Fath,Fathi,Fatih,Fatin,Fawwaz,Fawzan,Fawzi,Fayyad,Ferran,Fida,"
+#~ "Fikri,Firas,Fuʿad,Fudail,Gamal,Ghayth,Ghali,Ghalib,Ghanim,Ghassan,Ghawth,"
+#~ "Ghazwan,Ghiyath,Habbab,Habib,Haddad,Hadi,Hafiz,Hakem,Hakim,Halim,Hamal,"
+#~ "Hamas,Hamdan,Hamdi,Hamid,Hamim,Hamzah,Hana,Hanaʾi,Hanbal,Hani,Hanif,"
+#~ "Hannad,Haris,Harith,Harun,Hashim,Hassan,Hatim,Haydar,Haytham,Hayyan,Hazim,"
+#~ "Hilal,Hilmi,Hisham,Hud,Hudad,Hudhafah,Hudhayfah,Humam,Hussein,Husam,Husam "
+#~ "al-Din,Ibrahim,ʿId,Idris,Ihsan,Ihtisham,ʿIkrimah,Ilias,ʿImad,Imad al-Din,"
+#~ "Imran,Imtiyaz,Inʿam,Iqbal,ʿIrfan,ʿIsa,ʿIsam,Ishaq,Ismaʿil,Iyad,Iyas,Izz "
+#~ "al-Din,Jabbar,Jabr,Jabir,Jad Allah,Jaʿfar,Jal,Jalal,Jalal al-Din,Jalil,"
+#~ "Jamal,Jamal al-Din,Jamil,Jarir,Jasim,Jaul,Jaun,Jawad,Jawdah,Jawhar,Jibran,"
+#~ "Jibril,Jubair,Jul,Jumah,Junayd,Juwain,Kadar,Kadin,Kadir,Kahil,Kaliq,Kamal,"
+#~ "Kamil,Karam,Kardal,Karif,Karim,Kasib,Kasim,Katib,Kazim,Khalaf,Khaldun,"
+#~ "Khalid,Khalil,Khalil al-Allah,Khalis,Khatib,Khair al-Din,Khairi,Khoury,"
+#~ "Khulus,Khuzaymah,Kutaiba,Labib,Lablab,Latif,Layth,LuʿayLubayd,Luqman,Lut,"
+#~ "Lutfi,Maʿd,Madani,Mahbub,Mahdi,Mahfuz,Mahir,Mahjub,Mahmud,Mahrus,Maimun,"
+#~ "Majd,Majdy,Majd al-Din,Majid,Makin,Malik,Mamduh,Maʿmun,Maʿin,Mandhur,"
+#~ "Mansur,Marghub,Marid,Maʿruf,Marwan,Marzuq,Mashʿal,Mashhur,Masrur,Masʿud,"
+#~ "Masun,Maysarah,Mazhar,Mazin,Mehmed,Mihran,Mihyar,Mikaʾil,Miqdad,Misbah,"
+#~ "Mishʿal,Miyaz,Muʾadh,Muʾawiyah,Muʾayyad,Mubarak,Mubin,Mudar,Muddaththir,"
+#~ "Mufid,Muflih,Muhab,Muhayr,Muhammad,Muhanna,Muhannad,Muhib,Muhibb,Muhsin,"
+#~ "Muhtadi,Muhyi al-Din,Muʿin,Muʿizz,Mujab,Mujahid,Mukarram,Mukhlis,Mukhtar,"
+#~ "Mulham,Mulhim,Muʿmmar,Muʿmin,Mumtaz,Munahid,Mundhir,Munib,Munif,Munir,"
+#~ "Muʿnis,Munjid,Munsif,Muntasir,Murad,Murid,Murshid,Murtada,Musa,Musʿab,"
+#~ "Musaʿid,Mushtaq,Muslih,Muslim,Mutafa,Mutaʾ,Muʿtasim,Mutawalli,Muʿtazz,"
+#~ "Muthanna,Muti,Muwaffaq,Muyassar,Muzaffar,Mussammil,Nabhan,Nabighah,Nabih,"
+#~ "Nabil,Nadhir,Nadim,Nadir,Nafiʾ,Nahid,Naʾil,Naʾim,Naji,Najib,Najid,Najjar,"
+#~ "Najm al-Din,Naʿaman,Namir,Nashʿah,Nashʿat,Nashwan,Nasib,Nasih,Nasim,Nasir,"
+#~ "Nasir al-Din,Nasr,Nasri,Nasuh,Nawaf,Nawfal,Nayif,Nazih,Nazim,Nazmi,Nibras,"
+#~ "Nidal,Nijad,Nimr,Nizar,Nuʿaym,Nuh,Nuhayd,Numair,Nuʿman,Nur al-Din,Nuri,"
+#~ "Nusrah,Nusrat,Omar,Orhan,Osman,Qasim,Qays,Qudamah,Qusay,Qatadah,Qutaybah,"
+#~ "Qutb,Qutuz,Rabah,Rabi,Radi,Rafi,Rafid,Rafiq,Raghib,Rahman,Raʿid,Raʿif,"
+#~ "Rais,Rajaa,Rajab,Raji,Rajih,Rakin,Rami,Ramih,Ramiz,Ramzi,Rani,Rashad,"
+#~ "Rashid,Rasil,Rasin,Rasmi,Rasul,Ratib,Raʿuf,Rayhan,Rayyan,Razin,Ridha,"
+#~ "Ridwan,Rihab,Riyad,Rizq,Ruhi,Rushd,Rushdi,Ruwayd,Saad,Saʿadah,Sab,Sabih,"
+#~ "Sabir,Sabri,Saʿd,Saʿd al-Din,Sadad,Sadid,Sadiq,Saʿdun,Saʿid,Safi,Safiy,"
+#~ "Safiy al-Din,Safuh,Safwah,Safwat,Safwan,Sahib,Sahir,Sahl,Saʾib,Saif,Saif "
+#~ "al-Din,Sajid,Sajjad,Sakhr,Salah,Salah al-Din,Salamah,Salih,Salim,Salman,"
+#~ "Sami,Samih,Samir,Samman,Saqr,Sariyah,Sati,Saud,Sayyid,Shaʿban,Shadi,"
+#~ "Shadin,Shafi,Shafiq,Shahid,Shahin,Shahir,Shakib,Shakir,Shams al-Din,"
+#~ "Shamal,Shamil,Shamim,Sharaf,Sharif,Shawqi,Shihab,Shihab al-Din,Shihad,"
+#~ "Shuʿayb,Shukri,Shumayl,Siddiq,Sinan,Siraj,Siraj al-Din,Sofian,Subhi,"
+#~ "Sufyan,Suhayb,Suhayl,Suhaym,Sulaiman,Sumrah,Suraqah,Suʿud,Tahir,Tahsin,"
+#~ "Taym Allah,Taj,Taj al-Din,Talal,Talib,Tamim,Tamir,Tamam,Tammam,Taqiy,"
+#~ "Tarif,Tariq,Taslim,Tawfiq,Tawhid,Taymullah,Taysir,Tayyib,Thabit,Thamir,"
+#~ "Thaqib,Thawab,Thawban,ʿUbaidah,Ubaid,Ubayy,ʿUdayl,ʿUday,ʿUmar,Umarah,"
+#~ "Umair,ʾaUrwah,Usaym,Usama,ʿUtbah,Uthal,Uthman,Waddah,Wadi,Wadid,Wafiq,"
+#~ "Wahab,Wahhab,Wahid,Waʾil,Wajdi,Wajid,Wajih,Wakil,Walid,Walif,Waliy Allah,"
+#~ "Waliy al-Din,Waqar,Waqqas,Ward,Wasif,Wasil,Wasim,Wazir,Yahya,Yaman,Yaʿqub,"
+#~ "Yasar,Yasin,Yasir,Yazan,Yazid,Yunus,Yushua,Yusri,Yusuf,Zafar,Zafir,Zahid,"
+#~ "Zahir,Zayd,Zaim,Zayn,Zarif,Zakarriya,Zaki,Zakwan,Ziyad,Zubayr,Zuhayr"
+
+#, fuzzy
+#~| msgid "invisible: "
+#~ msgid "invisible"
+#~ msgstr "näkymätön: "
+
+#, fuzzy
+#~| msgid "female^slowed"
+#~ msgid "female^invisible"
+#~ msgstr "hidastettu"
+
+#, fuzzy
+#~| msgid "Fire a game event."
+#~ msgid "I triggered a moveto event."
+#~ msgstr "Laukaise pelitapahtuma."
+
+#, fuzzy
+#~| msgid "Password: "
+#~ msgid "sword"
+#~ msgstr "Salasana: "
+
+#, fuzzy
+#~| msgid "drains"
+#~ msgid "drains 20%"
+#~ msgstr "imee elämää"
+
+#, fuzzy
+#~| msgid ""
+#~| "Drain:\n"
+#~| "This unit drains health from living units, healing itself for half the "
+#~| "amount of damage it deals (rounded down)."
+#~ msgid ""
+#~ "Drain 20%:\n"
+#~ "This unit drains health from living units, healing itself for 20% of the "
+#~ "amount of damage it deals (rounded down)."
+#~ msgstr ""
+#~ "Elämänimu:\n"
+#~ "Tämä yksikkö imee elämää vihollisistaan, parantaen itseään puolella siitä "
+#~ "vahingosta, jonka tekee (pyöristetään alas)."
+
+#, fuzzy
+#~| msgid "Version: "
+#~ msgid "Vision Test"
+#~ msgstr "Versio: "
+
+#, fuzzy
+#~| msgid "invisible: "
+#~ msgid "It is invisible!"
+#~ msgstr "näkymätön: "
+
+#, fuzzy
+#~| msgid "drains"
+#~ msgid "drains 100%"
+#~ msgstr "imee elämää"
+
+#, fuzzy
+#~| msgid ""
+#~| "Drain:\n"
+#~| "This unit drains health from living units, healing itself for half the "
+#~| "amount of damage it deals (rounded down)."
+#~ msgid ""
+#~ "Drain 100%:\n"
+#~ "This unit drains health from living units, healing itself for 100% of the "
+#~ "amount of damage it deals (rounded down)."
+#~ msgstr ""
+#~ "Elämänimu:\n"
+#~ "Tämä yksikkö imee elämää vihollisistaan, parantaen itseään puolella siitä "
+#~ "vahingosta, jonka tekee (pyöristetään alas)."
 
 #, fuzzy
 #~| msgid "Choose weapon:"
@@ -7299,9 +7239,6 @@ msgstr "Valkotaulun asetukset"
 
 #~ msgid ", MAX XP +25%"
 #~ msgstr ", enimmäis-KP +25%"
-
-#~ msgid "Max HP bonus +"
-#~ msgstr "Enimmäis-EP-bonus +"
 
 #~ msgid ""
 #~ "Liminal units fight better during twilight while fighting normally during "
@@ -11291,9 +11228,6 @@ msgstr "Valkotaulun asetukset"
 #~ msgid "Range"
 #~ msgstr "etäisyys"
 
-#~ msgid "Special"
-#~ msgstr "erikoisuus"
-
 #~ msgid "Resistances"
 #~ msgstr "Vastustukset"
 
@@ -13107,9 +13041,6 @@ msgstr "Valkotaulun asetukset"
 
 #~ msgid "Receiving data..."
 #~ msgstr "Haetaan pelin tietoja..."
-
-#~ msgid "Campaign"
-#~ msgstr "Kampanja"
 
 #~ msgid "Host a game without using a server"
 #~ msgstr "Isännöi peli ilman palvelinta."

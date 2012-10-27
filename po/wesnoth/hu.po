@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-09-01 18:47+0200\n"
+"POT-Creation-Date: 2012-10-27 15:56+0200\n"
 "PO-Revision-Date: 2012-04-01 12:02+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
@@ -164,97 +164,104 @@ msgstr ""
 "befolyásolja azt a listát, amelyen a korábban megismert egységek szerepelnek."
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:165
+#: data/advanced_preferences.cfg:164
+#, fuzzy
+#| msgid "Compressed saves"
+msgid "Compress savegames using bzip2"
+msgstr "Tömörített mentések"
+
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:172
 msgid "Joystick support"
 msgstr "Joystick támogatás"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:172
+#: data/advanced_preferences.cfg:179
 msgid "Joystick: number of the scroll X-axis joystick"
 msgstr "Joystick: az X-tengelyt görgető joystick száma"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:182
+#: data/advanced_preferences.cfg:189
 msgid "Joystick: number of the scroll X-axis"
 msgstr "Joystick: az X-tengelygörgető száma"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:192
+#: data/advanced_preferences.cfg:199
 msgid "Joystick: number of the scroll Y-axis joystick"
 msgstr "Joystick: az Y-tengelyt görgető joystick száma"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:202
+#: data/advanced_preferences.cfg:209
 msgid "Joystick: number of the scroll Y-axis"
 msgstr "Joystick: az Y-tengelygörgető száma"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:212
+#: data/advanced_preferences.cfg:219
 msgid "Joystick: deadzone of the scrolling stick"
 msgstr "Joystick: a görgetőeszköz holtjátéka"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:222
+#: data/advanced_preferences.cfg:229
 msgid "Joystick: number of the cursor X-axis joystick"
 msgstr "Joystick: a mutató X-tengelyét mozgató joystick száma"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:232
+#: data/advanced_preferences.cfg:239
 msgid "Joystick: number of the cursor X-axis"
 msgstr "Joystick: a mutató X-tengelyének azonosítója"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:242
+#: data/advanced_preferences.cfg:249
 msgid "Joystick: number of the cursor Y-axis joystick"
 msgstr "Joystick: a mutató Y-tengelyét mozgató joystick száma"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:252
+#: data/advanced_preferences.cfg:259
 msgid "Joystick: number of the cursor Y-axis"
 msgstr "Joystick: a mutató Y-tengelyének azonosítója"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:262
+#: data/advanced_preferences.cfg:269
 msgid "Joystick: deadzone of the cursor stick"
 msgstr "Joystick: a mutató mozgató eszköz holtjátéka"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:272
+#: data/advanced_preferences.cfg:279
 msgid "Joystick: number of the mouse X-axis joystick"
 msgstr "Joystick: az egér X-tengelyét mozgató joystick száma"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:282
+#: data/advanced_preferences.cfg:289
 msgid "Joystick: number of the mouse X-axis"
 msgstr "Joystick: az egér X-tengelyének azonosítója"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:292
+#: data/advanced_preferences.cfg:299
 msgid "Joystick: number of the mouse Y-axis joystick"
 msgstr "Joystick: az egér Y-tengelyét mozgató joystick száma"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:302
+#: data/advanced_preferences.cfg:309
 msgid "Joystick: number of the mouse Y-axis"
 msgstr "Joystick: az egér Y-tengelyének azonosítója"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:312
+#: data/advanced_preferences.cfg:319
 msgid "Joystick: deadzone of the mouse stick"
 msgstr "Joystick: az egeret mozgató eszköz holtjátéka"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:322
+#: data/advanced_preferences.cfg:329
 msgid "Joystick: number of the thrust axis joystick"
 msgstr "Joystick: a tolótengelyt mozgató joystick száma"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:332
+#: data/advanced_preferences.cfg:339
 msgid "Joystick: number of the thrust axis"
 msgstr "Joystick: a tolótengely azonosítója"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:342
+#: data/advanced_preferences.cfg:349
 msgid "Joystick: deadzone of the thruster"
 msgstr "Joystick: a tolótengelyt mozgató eszköz holtjátéka"
 
@@ -267,7 +274,7 @@ msgstr "RCA MI"
 #. [lua]: set_status
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:309
-#: data/lua/wml-tags.lua:1265 src/actions/attack.cpp:877
+#: data/lua/wml-tags.lua:1265 src/actions/attack.cpp:802
 msgid "poisoned"
 msgstr "megmérgezve"
 
@@ -367,227 +374,234 @@ msgid "Croatian Translation"
 msgstr "Horvát fordítás"
 
 #. [about]
-#: data/core/about.cfg:1459
+#: data/core/about.cfg:1462
 msgid "Czech Translation"
 msgstr "Cseh fordítás"
 
 #. [about]
-#: data/core/about.cfg:1519
+#: data/core/about.cfg:1522
 msgid "Danish Translation"
 msgstr "Dán fordítás"
 
 #. [about]
-#: data/core/about.cfg:1550
+#: data/core/about.cfg:1553
 msgid "Dutch Translation"
 msgstr "Holland fordítás"
 
 #. [about]
-#: data/core/about.cfg:1614
+#: data/core/about.cfg:1617
 msgid "English (GB) Translation"
 msgstr "Angol (brit) fordítás"
 
 #. [about]
-#: data/core/about.cfg:1637
+#: data/core/about.cfg:1640
 msgid "English (Shaw) Translation"
 msgstr "Angol fonetikus (shaw) fordítás"
 
 #. [about]
-#: data/core/about.cfg:1655
+#: data/core/about.cfg:1658
 msgid "Esperanto Translation"
 msgstr "Eszperantó fordítás"
 
 #. [about]
-#: data/core/about.cfg:1674
+#: data/core/about.cfg:1677
 msgid "Estonian Translation"
 msgstr "Észt fordítás"
 
 #. [about]
-#: data/core/about.cfg:1684
+#: data/core/about.cfg:1687
 msgid "Filipino Translation"
 msgstr "Filippínó fordítás"
 
 #. [about]
-#: data/core/about.cfg:1694
+#: data/core/about.cfg:1697
 msgid "Finnish Translation"
 msgstr "Finn fordítás"
 
 #. [about]
-#: data/core/about.cfg:1740
+#: data/core/about.cfg:1743
 msgid "French Translation"
 msgstr "Francia fordítás"
 
 #. [about]
-#: data/core/about.cfg:1899
+#: data/core/about.cfg:1902
 msgid "Friulian Translation"
 msgstr "Friuli fordítás"
 
 #. [about]
-#: data/core/about.cfg:1906
+#: data/core/about.cfg:1909
 msgid "Galician Translation"
 msgstr "Galíciai fordítás"
 
 #. [about]
-#: data/core/about.cfg:1942
+#: data/core/about.cfg:1945
 msgid "German Translation"
 msgstr "Német fordítás"
 
 #. [about]
-#: data/core/about.cfg:2016
+#: data/core/about.cfg:2019
 msgid "Greek Translation"
 msgstr "Görög fordítás"
 
 #. [about]
-#: data/core/about.cfg:2056
+#: data/core/about.cfg:2059
 msgid "Hebrew Translation"
 msgstr "Héber fordítás"
 
 #. [about]
-#: data/core/about.cfg:2069
+#: data/core/about.cfg:2072
 msgid "Hungarian Translation"
 msgstr "Magyar fordítás"
 
 #. [about]
-#: data/core/about.cfg:2130
+#: data/core/about.cfg:2133
 msgid "Icelandic Translation"
 msgstr "Izlandi fordítás"
 
 #. [about]
-#: data/core/about.cfg:2140
+#: data/core/about.cfg:2143
 msgid "Indonesian Translation"
 msgstr "Indonéz fordítás"
 
 #. [about]
-#: data/core/about.cfg:2163
+#: data/core/about.cfg:2166
 msgid "Irish Translation"
 msgstr "Ír fordítás"
 
 #. [about]
-#: data/core/about.cfg:2170
+#: data/core/about.cfg:2173
 msgid "Italian Translation"
 msgstr "Olasz fordítás"
 
 #. [about]
-#: data/core/about.cfg:2214
+#: data/core/about.cfg:2217
 msgid "Japanese Translation"
 msgstr "Japán fordítás"
 
 #. [about]
-#: data/core/about.cfg:2282
+#: data/core/about.cfg:2285
 msgid "Korean Translation"
 msgstr "Koreai fordítás"
 
 #. [about]
-#: data/core/about.cfg:2290
+#: data/core/about.cfg:2293
 msgid "Latin Translation"
 msgstr "Latin fordítás"
 
 #. [about]
-#: data/core/about.cfg:2316
+#: data/core/about.cfg:2319
 msgid "Latvian Translation"
 msgstr "Lett fordítás"
 
 #. [about]
-#: data/core/about.cfg:2327
+#: data/core/about.cfg:2330
 msgid "Lithuanian Translation"
 msgstr "Litván fordítás"
 
 #. [about]
-#: data/core/about.cfg:2349
+#: data/core/about.cfg:2352
 msgid "Macedonian Translation"
 msgstr "Macedón fordítás"
 
 #. [about]
-#: data/core/about.cfg:2356
+#: data/core/about.cfg:2359
 msgid "Marathi Translation"
 msgstr "Marathi fordítás"
 
 #. [about]
-#: data/core/about.cfg:2365
+#: data/core/about.cfg:2368
 msgid "Norwegian Translation"
 msgstr "Norvég fordítás"
 
 #. [about]
-#: data/core/about.cfg:2390
+#: data/core/about.cfg:2393
 msgid "Old English Translation"
 msgstr "Óangol fordítás"
 
 #. [about]
-#: data/core/about.cfg:2408
+#: data/core/about.cfg:2411
 msgid "Polish Translation"
 msgstr "Lengyel fordítás"
 
 #. [about]
-#: data/core/about.cfg:2448
+#: data/core/about.cfg:2451
 msgid "Portuguese Translation"
 msgstr "Portugál fordítás"
 
 #. [about]
-#: data/core/about.cfg:2455
+#: data/core/about.cfg:2458
 msgid "Portuguese (Brazil) Translation"
 msgstr "Portugál (brazil) fordítás"
 
 #. [about]
-#: data/core/about.cfg:2503
+#: data/core/about.cfg:2506
 msgid "Romanian Translation"
 msgstr "Román fordítás"
 
 #. [about]
-#: data/core/about.cfg:2511
+#: data/core/about.cfg:2514
 msgid "Russian Translation"
 msgstr "Orosz fordítás"
 
 #. [about]
-#: data/core/about.cfg:2596
+#: data/core/about.cfg:2599
+#, fuzzy
+#| msgid "Galician Translation"
+msgid "Scottish Gaelic Translation"
+msgstr "Galíciai fordítás"
+
+#. [about]
+#: data/core/about.cfg:2608
 msgid "Serbian Translation"
 msgstr "Szerb fordítás"
 
 #. [about]
-#: data/core/about.cfg:2615
+#: data/core/about.cfg:2627
 msgid "Slovak Translation"
 msgstr "Szlovák fordítás"
 
 #. [about]
-#: data/core/about.cfg:2644
+#: data/core/about.cfg:2656
 msgid "Slovenian Translation"
 msgstr "Szlovén fordítás"
 
 #. [about]
-#: data/core/about.cfg:2660
+#: data/core/about.cfg:2672
 msgid "Spanish Translation"
 msgstr "Spanyol fordítás"
 
 #. [about]
-#: data/core/about.cfg:2741
+#: data/core/about.cfg:2756
 msgid "Swedish Translation"
 msgstr "Svéd fordítás"
 
 #. [about]
-#: data/core/about.cfg:2782
+#: data/core/about.cfg:2797
 msgid "Turkish Translation"
 msgstr "Török fordítás"
 
 #. [about]
-#: data/core/about.cfg:2804
+#: data/core/about.cfg:2819
 msgid "Ukrainian Translation"
 msgstr "Ukrán fordítás"
 
 #. [about]
-#: data/core/about.cfg:2817
+#: data/core/about.cfg:2832
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Valenciai (dél-katalán) fordítás"
 
 #. [about]
-#: data/core/about.cfg:2830
+#: data/core/about.cfg:2845
 msgid "Vietnamese Translation"
 msgstr "Vietnami fordítás"
 
 #. [about]
-#: data/core/about.cfg:2849
+#: data/core/about.cfg:2864
 msgid "RACV’s Translation"
 msgstr "Az RACV fordítása"
 
 #. [about]
-#: data/core/about.cfg:2856
+#: data/core/about.cfg:2871
 msgid "Bots"
 msgstr "MI játékosok"
 
@@ -1586,369 +1600,217 @@ msgstr ""
 
 #: data/core/macros/names.cfg:43
 msgid ""
-"Aban,Abbas,Abbud,Abdul-ʿAdl,Abdul-Ahad,Abdul-Alim,Abdul-Aliyy,Abdul-Azim,"
-"Abdul-Aziz,Abdul-Badi,Abdul-Baʿith,Abdul-Baqi,Abdul-Bari,Abdul-Barr,Abdul-"
-"Basir,Abdul-Basit,Abdul-Fattah,Abdul-Ghaffar,Abdul-Ghafur,Abdul-Ghani,Abdul-"
-"Hadi,Abdul-Hafiz,Abdul-Hakam,Abdul-Hakim,Abdul-Halim,Abdul-Hamid,Abdul-Haqq,"
-"Abdul-Hasib,Abdul-Hayy,Abdul-Jabbar,Abdul-Jalil,Abdul-Karim,Abdul-Khabir,"
-"Abdul-Khaliq,Abdul-Latif,Abdul-Malik,Abdul-Majid,Abdul-Matin,Abdul-Mubdiʾ,"
-"Abdul-Mughni,Abdul-Muhaimin,Abdul-Muhsi,Abdul-Muhyi,Abdul-Muʿid,Abdul-Muʿizz,"
-"Abdul-Mujib,Abdul-Mumin,Abdul-Muqaddim,Abdul-Muqtadir,Abdul-Musawwir,Abdul-"
-"Mutaʿal,Abdul-Nafi,Abdul-Nasser,Abdul-Nasir,Abdul-Nur,Abdul-Qadir,Abdul-"
-"Qahhar,Abdul-Qawi,Abdul-Qayyum,Abdul-Quddus,Abdul-Rafi,Abdul-Rahim,Abdul-"
-"Rahman,Abdul-Rashid,Abdul-Raʿuf,Abdul-Razzaq,Abdul-Shakur,Abdul-Tawwab,Abdul-"
-"Wadud,Abdul-Wahhab,Abdul-Wahid,Abdul-Wajid,Abdul-Wakil,Abdul-Wali,Abdul-"
-"Waliy,Abdul-Warith,Abdul-Zahir,Abdullah,ʿAbid,ʿAbidin,Abu Bakr,Aby al-Khayr,"
-"Adil,Adham,Adib,ʿAdli,ʿAdnan,ʿAfif,Ahmad,ʿAjib,ʿAkif,Akil,Akram,Alaʾ,Alaʾ al-"
-"Din,Alʿ Abbas,Aladdin,al-Bara,al-Hakam,al-Harith,Alhasan,Alhusain,Ali,Alim,"
-"Almahdi,al-Safi,Altaf,Altair,al-Tayyib,al-Tijani,al-Tufail,Amid,ʿAmid,Amin,"
-"Amir,ʿAmir,Amjad,ʿAmmar,ʿAmro,Anas,Anis,ʿAntarah,Anwar,ʿAqil,Arfan,Arif,"
-"ʿArif,Asad,Asʿad,Asadel,Ashraf,Asif,ʿAsim,Aswad,Ataʿ,Ataʿ Allah,Ataʿ al-"
-"Rahman,Athil,Athir,ʿAtif,ʿAwad,ʿAwf,Aws,Awwab,Ayham,Ayman,Ayser,Ayyub,Aza,"
-"ʿAzab,Azhar,Azim,ʿAziz,ʿAzzam,Badi,Badi al-Zaman,Badr,Badr al-Din,Badri,"
-"Bahaʿ,Bahiyy al-Din,Bahij,Bahir,Bakr,Bakri,Baligh,Bandar,Barakah,Barir,"
-"Bashshar,Basil,Basim,Bassam,Bayezid,Bayhas,Bilal,Bishr,Boulos,Budail,Burhan,"
-"Bushr,Butrus,Dabir,Dani,Darwish,Daʿud,Dhakir,Dhakiy,Dhakwan,Dhul Fiqar,Dirar,"
-"Diya,Diya al-Din,Duqaq,Fadi,Fadil,Fadl,Fadl Allah,Fahd,Fahad,Fahmi,Faisal,"
-"Faʿiz,Fakhir,Fakhr al-Din,Fakhri,Fakih,Falah,Falih,Faraj,Farhan,Farid,Fariq,"
-"Fariq,Faris,Faruq,Fath,Fathi,Fatih,Fatin,Fawwaz,Fawzan,Fawzi,Fayyad,Ferran,"
-"Fida,Fikri,Firas,Fuʿad,Fudail,Gamal,Ghayth,Ghali,Ghalib,Ghanim,Ghassan,"
-"Ghawth,Ghazwan,Ghiyath,Habbab,Habib,Haddad,Hadi,Hafiz,Hakem,Hakim,Halim,"
-"Hamal,Hamas,Hamdan,Hamdi,Hamid,Hamim,Hamzah,Hana,Hanaʾi,Hanbal,Hani,Hanif,"
-"Hannad,Haris,Harith,Harun,Hashim,Hassan,Hatim,Haydar,Haytham,Hayyan,Hazim,"
-"Hilal,Hilmi,Hisham,Hud,Hudad,Hudhafah,Hudhayfah,Humam,Hussein,Husam,Husam al-"
-"Din,Ibrahim,ʿId,Idris,Ihsan,Ihtisham,ʿIkrimah,Ilias,ʿImad,Imad al-Din,Imran,"
-"Imtiyaz,Inʿam,Iqbal,ʿIrfan,ʿIsa,ʿIsam,Ishaq,Ismaʿil,Iyad,Iyas,Izz al-Din,"
-"Jabbar,Jabr,Jabir,Jad Allah,Jaʿfar,Jal,Jalal,Jalal al-Din,Jalil,Jamal,Jamal "
-"al-Din,Jamil,Jarir,Jasim,Jaul,Jaun,Jawad,Jawdah,Jawhar,Jibran,Jibril,Jubair,"
-"Jul,Jumah,Junayd,Juwain,Kadar,Kadin,Kadir,Kahil,Kaliq,Kamal,Kamil,Karam,"
-"Kardal,Karif,Karim,Kasib,Kasim,Katib,Kazim,Khalaf,Khaldun,Khalid,Khalil,"
-"Khalil al-Allah,Khalis,Khatib,Khair al-Din,Khairi,Khoury,Khulus,Khuzaymah,"
-"Kutaiba,Labib,Lablab,Latif,Layth,LuʿayLubayd,Luqman,Lut,Lutfi,Maʿd,Madani,"
-"Mahbub,Mahdi,Mahfuz,Mahir,Mahjub,Mahmud,Mahrus,Maimun,Majd,Majdy,Majd al-Din,"
-"Majid,Makin,Malik,Mamduh,Maʿmun,Maʿin,Mandhur,Mansur,Marghub,Marid,Maʿruf,"
-"Marwan,Marzuq,Mashʿal,Mashhur,Masrur,Masʿud,Masun,Maysarah,Mazhar,Mazin,"
-"Mehmed,Mihran,Mihyar,Mikaʾil,Miqdad,Misbah,Mishʿal,Miyaz,Muʾadh,Muʾawiyah,"
-"Muʾayyad,Mubarak,Mubin,Mudar,Muddaththir,Mufid,Muflih,Muhab,Muhayr,Muhammad,"
-"Muhanna,Muhannad,Muhib,Muhibb,Muhsin,Muhtadi,Muhyi al-Din,Muʿin,Muʿizz,Mujab,"
-"Mujahid,Mukarram,Mukhlis,Mukhtar,Mulham,Mulhim,Muʿmmar,Muʿmin,Mumtaz,Munahid,"
-"Mundhir,Munib,Munif,Munir,Muʿnis,Munjid,Munsif,Muntasir,Murad,Murid,Murshid,"
-"Murtada,Musa,Musʿab,Musaʿid,Mushtaq,Muslih,Muslim,Mutafa,Mutaʾ,Muʿtasim,"
-"Mutawalli,Muʿtazz,Muthanna,Muti,Muwaffaq,Muyassar,Muzaffar,Mussammil,Nabhan,"
-"Nabighah,Nabih,Nabil,Nadhir,Nadim,Nadir,Nafiʾ,Nahid,Naʾil,Naʾim,Naji,Najib,"
-"Najid,Najjar,Najm al-Din,Naʿaman,Namir,Nashʿah,Nashʿat,Nashwan,Nasib,Nasih,"
-"Nasim,Nasir,Nasir al-Din,Nasr,Nasri,Nasuh,Nawaf,Nawfal,Nayif,Nazih,Nazim,"
-"Nazmi,Nibras,Nidal,Nijad,Nimr,Nizar,Nuʿaym,Nuh,Nuhayd,Numair,Nuʿman,Nur al-"
-"Din,Nuri,Nusrah,Nusrat,Omar,Orhan,Osman,Qasim,Qays,Qudamah,Qusay,Qatadah,"
-"Qutaybah,Qutb,Qutuz,Rabah,Rabi,Radi,Rafi,Rafid,Rafiq,Raghib,Rahman,Raʿid,"
-"Raʿif,Rais,Rajaa,Rajab,Raji,Rajih,Rakin,Rami,Ramih,Ramiz,Ramzi,Rani,Rashad,"
-"Rashid,Rasil,Rasin,Rasmi,Rasul,Ratib,Raʿuf,Rayhan,Rayyan,Razin,Ridha,Ridwan,"
-"Rihab,Riyad,Rizq,Ruhi,Rushd,Rushdi,Ruwayd,Saad,Saʿadah,Sab,Sabih,Sabir,Sabri,"
-"Saʿd,Saʿd al-Din,Sadad,Sadid,Sadiq,Saʿdun,Saʿid,Safi,Safiy,Safiy al-Din,"
-"Safuh,Safwah,Safwat,Safwan,Sahib,Sahir,Sahl,Saʾib,Saif,Saif al-Din,Sajid,"
-"Sajjad,Sakhr,Salah,Salah al-Din,Salamah,Salih,Salim,Salman,Sami,Samih,Samir,"
-"Samman,Saqr,Sariyah,Sati,Saud,Sayyid,Shaʿban,Shadi,Shadin,Shafi,Shafiq,"
-"Shahid,Shahin,Shahir,Shakib,Shakir,Shams al-Din,Shamal,Shamil,Shamim,Sharaf,"
-"Sharif,Shawqi,Shihab,Shihab al-Din,Shihad,Shuʿayb,Shukri,Shumayl,Siddiq,"
-"Sinan,Siraj,Siraj al-Din,Sofian,Subhi,Sufyan,Suhayb,Suhayl,Suhaym,Sulaiman,"
-"Sumrah,Suraqah,Suʿud,Tahir,Tahsin,Taym Allah,Taj,Taj al-Din,Talal,Talib,"
-"Tamim,Tamir,Tamam,Tammam,Taqiy,Tarif,Tariq,Taslim,Tawfiq,Tawhid,Taymullah,"
-"Taysir,Tayyib,Thabit,Thamir,Thaqib,Thawab,Thawban,ʿUbaidah,Ubaid,Ubayy,"
-"ʿUdayl,ʿUday,ʿUmar,Umarah,Umair,ʾaUrwah,Usaym,Usama,ʿUtbah,Uthal,Uthman,"
-"Waddah,Wadi,Wadid,Wafiq,Wahab,Wahhab,Wahid,Waʾil,Wajdi,Wajid,Wajih,Wakil,"
-"Walid,Walif,Waliy Allah,Waliy al-Din,Waqar,Waqqas,Ward,Wasif,Wasil,Wasim,"
-"Wazir,Yahya,Yaman,Yaʿqub,Yasar,Yasin,Yasir,Yazan,Yazid,Yunus,Yushua,Yusri,"
-"Yusuf,Zafar,Zafir,Zahid,Zahir,Zayd,Zaim,Zayn,Zarif,Zakarriya,Zaki,Zakwan,"
-"Ziyad,Zubayr,Zuhayr"
+"Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz’Kza,Chamil,Cleezi,Clezz,Fazzis,"
+"Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
+"Hezzis,Hix,Inexis,Irix,Jezzix,Jizz,Kaliez,Kepzs,Kernix,Kersezz,Kertrasz,Kerx,"
+"Kerxenix,Kezz,Klexaz,Klezyx,Krarax,Krenarex,Krex,Krinex,Krisess,Laizix,Lazki,"
+"Lixeez,Merax,Mexiss,Moxanzz,Naxisz,Nix,Pekzs,Plaxis,Plesix,Presch,Sailik,"
+"Salanix,Salik,Sandix,Saprazz,Satras,Skalix,Skandix,Skazix,Skeely,Skeezix,"
+"Sklizle,Skrez,Slizilx,Sprizz,Ssexur,Ssizer,Ssorix,Sszasz,Sterizz,Talerez,"
+"Tarex,Tarnix,Tezzaz,Tirasch,Tirax,Tirix,Trezz,Venezz,Vriss,Waks,Xaffrasz,"
+"Xartrez,Xasz,Xaztex,Xerxix,Xirasz,Xirr,Xirtras,Xirtrez,Xirz,Zandler,Zedrix,"
+"Zilrix,Zizzasz,Zslap,Zzalkz,Zzupde"
 msgstr ""
-"Aban,Abbas,Abbud,Abdul-ʿAdl,Abdul-Ahad,Abdul-Alim,Abdul-Aliyy,Abdul-Azim,"
-"Abdul-Aziz,Abdul-Badi,Abdul-Baʿith,Abdul-Baqi,Abdul-Bari,Abdul-Barr,Abdul-"
-"Basir,Abdul-Basit,Abdul-Fattah,Abdul-Ghaffar,Abdul-Ghafur,Abdul-Ghani,Abdul-"
-"Hadi,Abdul-Hafiz,Abdul-Hakam,Abdul-Hakim,Abdul-Halim,Abdul-Hamid,Abdul-Haqq,"
-"Abdul-Hasib,Abdul-Hayy,Abdul-Jabbar,Abdul-Jalil,Abdul-Karim,Abdul-Khabir,"
-"Abdul-Khaliq,Abdul-Latif,Abdul-Malik,Abdul-Majid,Abdul-Matin,Abdul-Mubdiʾ,"
-"Abdul-Mughni,Abdul-Muhaimin,Abdul-Muhsi,Abdul-Muhyi,Abdul-Muʿid,Abdul-Muʿizz,"
-"Abdul-Mujib,Abdul-Mumin,Abdul-Muqaddim,Abdul-Muqtadir,Abdul-Musawwir,Abdul-"
-"Mutaʿal,Abdul-Nafi,Abdul-Nasser,Abdul-Nasir,Abdul-Nur,Abdul-Qadir,Abdul-"
-"Qahhar,Abdul-Qawi,Abdul-Qayyum,Abdul-Quddus,Abdul-Rafi,Abdul-Rahim,Abdul-"
-"Rahman,Abdul-Rashid,Abdul-Raʿuf,Abdul-Razzaq,Abdul-Shakur,Abdul-Tawwab,Abdul-"
-"Wadud,Abdul-Wahhab,Abdul-Wahid,Abdul-Wajid,Abdul-Wakil,Abdul-Wali,Abdul-"
-"Waliy,Abdul-Warith,Abdul-Zahir,Abdullah,ʿAbid,ʿAbidin,Abu Bakr,Aby al-Khayr,"
-"Adil,Adham,Adib,ʿAdli,ʿAdnan,ʿAfif,Ahmad,ʿAjib,ʿAkif,Akil,Akram,Alaʾ,Alaʾ al-"
-"Din,Alʿ Abbas,Aladdin,al-Bara,al-Hakam,al-Harith,Alhasan,Alhusain,Ali,Alim,"
-"Almahdi,al-Safi,Altaf,Altair,al-Tayyib,al-Tijani,al-Tufail,Amid,ʿAmid,Amin,"
-"Amir,ʿAmir,Amjad,ʿAmmar,ʿAmro,Anas,Anis,ʿAntarah,Anwar,ʿAqil,Arfan,Arif,"
-"ʿArif,Asad,Asʿad,Asadel,Ashraf,Asif,ʿAsim,Aswad,Ataʿ,Ataʿ Allah,Ataʿ al-"
-"Rahman,Athil,Athir,ʿAtif,ʿAwad,ʿAwf,Aws,Awwab,Ayham,Ayman,Ayser,Ayyub,Aza,"
-"ʿAzab,Azhar,Azim,ʿAziz,ʿAzzam,Badi,Badi al-Zaman,Badr,Badr al-Din,Badri,"
-"Bahaʿ,Bahiyy al-Din,Bahij,Bahir,Bakr,Bakri,Baligh,Bandar,Barakah,Barir,"
-"Bashshar,Basil,Basim,Bassam,Bayezid,Bayhas,Bilal,Bishr,Boulos,Budail,Burhan,"
-"Bushr,Butrus,Dabir,Dani,Darwish,Daʿud,Dhakir,Dhakiy,Dhakwan,Dhul Fiqar,Dirar,"
-"Diya,Diya al-Din,Duqaq,Fadi,Fadil,Fadl,Fadl Allah,Fahd,Fahad,Fahmi,Faisal,"
-"Faʿiz,Fakhir,Fakhr al-Din,Fakhri,Fakih,Falah,Falih,Faraj,Farhan,Farid,Fariq,"
-"Fariq,Faris,Faruq,Fath,Fathi,Fatih,Fatin,Fawwaz,Fawzan,Fawzi,Fayyad,Ferran,"
-"Fida,Fikri,Firas,Fuʿad,Fudail,Gamal,Ghayth,Ghali,Ghalib,Ghanim,Ghassan,"
-"Ghawth,Ghazwan,Ghiyath,Habbab,Habib,Haddad,Hadi,Hafiz,Hakem,Hakim,Halim,"
-"Hamal,Hamas,Hamdan,Hamdi,Hamid,Hamim,Hamzah,Hana,Hanaʾi,Hanbal,Hani,Hanif,"
-"Hannad,Haris,Harith,Harun,Hashim,Hassan,Hatim,Haydar,Haytham,Hayyan,Hazim,"
-"Hilal,Hilmi,Hisham,Hud,Hudad,Hudhafah,Hudhayfah,Humam,Hussein,Husam,Husam al-"
-"Din,Ibrahim,ʿId,Idris,Ihsan,Ihtisham,ʿIkrimah,Ilias,ʿImad,Imad al-Din,Imran,"
-"Imtiyaz,Inʿam,Iqbal,ʿIrfan,ʿIsa,ʿIsam,Ishaq,Ismaʿil,Iyad,Iyas,Izz al-Din,"
-"Jabbar,Jabr,Jabir,Jad Allah,Jaʿfar,Jal,Jalal,Jalal al-Din,Jalil,Jamal,Jamal "
-"al-Din,Jamil,Jarir,Jasim,Jaul,Jaun,Jawad,Jawdah,Jawhar,Jibran,Jibril,Jubair,"
-"Jul,Jumah,Junayd,Juwain,Kadar,Kadin,Kadir,Kahil,Kaliq,Kamal,Kamil,Karam,"
-"Kardal,Karif,Karim,Kasib,Kasim,Katib,Kazim,Khalaf,Khaldun,Khalid,Khalil,"
-"Khalil al-Allah,Khalis,Khatib,Khair al-Din,Khairi,Khoury,Khulus,Khuzaymah,"
-"Kutaiba,Labib,Lablab,Latif,Layth,LuʿayLubayd,Luqman,Lut,Lutfi,Maʿd,Madani,"
-"Mahbub,Mahdi,Mahfuz,Mahir,Mahjub,Mahmud,Mahrus,Maimun,Majd,Majdy,Majd al-Din,"
-"Majid,Makin,Malik,Mamduh,Maʿmun,Maʿin,Mandhur,Mansur,Marghub,Marid,Maʿruf,"
-"Marwan,Marzuq,Mashʿal,Mashhur,Masrur,Masʿud,Masun,Maysarah,Mazhar,Mazin,"
-"Mehmed,Mihran,Mihyar,Mikaʾil,Miqdad,Misbah,Mishʿal,Miyaz,Muʾadh,Muʾawiyah,"
-"Muʾayyad,Mubarak,Mubin,Mudar,Muddaththir,Mufid,Muflih,Muhab,Muhayr,Muhammad,"
-"Muhanna,Muhannad,Muhib,Muhibb,Muhsin,Muhtadi,Muhyi al-Din,Muʿin,Muʿizz,Mujab,"
-"Mujahid,Mukarram,Mukhlis,Mukhtar,Mulham,Mulhim,Muʿmmar,Muʿmin,Mumtaz,Munahid,"
-"Mundhir,Munib,Munif,Munir,Muʿnis,Munjid,Munsif,Muntasir,Murad,Murid,Murshid,"
-"Murtada,Musa,Musʿab,Musaʿid,Mushtaq,Muslih,Muslim,Mutafa,Mutaʾ,Muʿtasim,"
-"Mutawalli,Muʿtazz,Muthanna,Muti,Muwaffaq,Muyassar,Muzaffar,Mussammil,Nabhan,"
-"Nabighah,Nabih,Nabil,Nadhir,Nadim,Nadir,Nafiʾ,Nahid,Naʾil,Naʾim,Naji,Najib,"
-"Najid,Najjar,Najm al-Din,Naʿaman,Namir,Nashʿah,Nashʿat,Nashwan,Nasib,Nasih,"
-"Nasim,Nasir,Nasir al-Din,Nasr,Nasri,Nasuh,Nawaf,Nawfal,Nayif,Nazih,Nazim,"
-"Nazmi,Nibras,Nidal,Nijad,Nimr,Nizar,Nuʿaym,Nuh,Nuhayd,Numair,Nuʿman,Nur al-"
-"Din,Nuri,Nusrah,Nusrat,Omar,Orhan,Osman,Qasim,Qays,Qudamah,Qusay,Qatadah,"
-"Qutaybah,Qutb,Qutuz,Rabah,Rabi,Radi,Rafi,Rafid,Rafiq,Raghib,Rahman,Raʿid,"
-"Raʿif,Rais,Rajaa,Rajab,Raji,Rajih,Rakin,Rami,Ramih,Ramiz,Ramzi,Rani,Rashad,"
-"Rashid,Rasil,Rasin,Rasmi,Rasul,Ratib,Raʿuf,Rayhan,Rayyan,Razin,Ridha,Ridwan,"
-"Rihab,Riyad,Rizq,Ruhi,Rushd,Rushdi,Ruwayd,Saad,Saʿadah,Sab,Sabih,Sabir,Sabri,"
-"Saʿd,Saʿd al-Din,Sadad,Sadid,Sadiq,Saʿdun,Saʿid,Safi,Safiy,Safiy al-Din,"
-"Safuh,Safwah,Safwat,Safwan,Sahib,Sahir,Sahl,Saʾib,Saif,Saif al-Din,Sajid,"
-"Sajjad,Sakhr,Salah,Salah al-Din,Salamah,Salih,Salim,Salman,Sami,Samih,Samir,"
-"Samman,Saqr,Sariyah,Sati,Saud,Sayyid,Shaʿban,Shadi,Shadin,Shafi,Shafiq,"
-"Shahid,Shahin,Shahir,Shakib,Shakir,Shams al-Din,Shamal,Shamil,Shamim,Sharaf,"
-"Sharif,Shawqi,Shihab,Shihab al-Din,Shihad,Shuʿayb,Shukri,Shumayl,Siddiq,"
-"Sinan,Siraj,Siraj al-Din,Sofian,Subhi,Sufyan,Suhayb,Suhayl,Suhaym,Sulaiman,"
-"Sumrah,Suraqah,Suʿud,Tahir,Tahsin,Taym Allah,Taj,Taj al-Din,Talal,Talib,"
-"Tamim,Tamir,Tamam,Tammam,Taqiy,Tarif,Tariq,Taslim,Tawfiq,Tawhid,Taymullah,"
-"Taysir,Tayyib,Thabit,Thamir,Thaqib,Thawab,Thawban,ʿUbaidah,Ubaid,Ubayy,"
-"ʿUdayl,ʿUday,ʿUmar,Umarah,Umair,ʾaUrwah,Usaym,Usama,ʿUtbah,Uthal,Uthman,"
-"Waddah,Wadi,Wadid,Wafiq,Wahab,Wahhab,Wahid,Waʾil,Wajdi,Wajid,Wajih,Wakil,"
-"Walid,Walif,Waliy Allah,Waliy al-Din,Waqar,Waqqas,Ward,Wasif,Wasil,Wasim,"
-"Wazir,Yahya,Yaman,Yaʿqub,Yasar,Yasin,Yasir,Yazan,Yazid,Yunus,Yushua,Yusri,"
-"Yusuf,Zafar,Zafir,Zahid,Zahir,Zayd,Zaim,Zayn,Zarif,Zakarriya,Zaki,Zakwan,"
-"Ziyad,Zubayr,Zuhayr"
+"Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz’Kza,Chamil,Cleezi,Clezz,Fazzis,"
+"Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
+"Hezzis,Hix,Inexis,Irix,Jezzix,Jizz,Kaliez,Kepzs,Kernix,Kersezz,Kertrasz,Kerx,"
+"Kerxenix,Kezz,Klexaz,Klezyx,Krarax,Krenarex,Krex,Krinex,Krisess,Laizix,Lazki,"
+"Lixeez,Merax,Mexiss,Moxanzz,Naxisz,Nix,Pekzs,Plaxis,Plesix,Presch,Sailik,"
+"Salanix,Salik,Sandix,Saprazz,Satras,Skalix,Skandix,Skazix,Skeely,Skeezix,"
+"Sklizle,Skrez,Slizilx,Sprizz,Ssexur,Ssizer,Ssorix,Sszasz,Sterizz,Talerez,"
+"Tarex,Tarnix,Tezzaz,Tirasch,Tirax,Tirix,Trezz,Venezz,Vriss,Waks,Xaffrasz,"
+"Xartrez,Xasz,Xaztex,Xerxix,Xirasz,Xirr,Xirtras,Xirtrez,Xirz,Zandler,Zedrix,"
+"Zilrix,Zizzasz,Zslap,Zzalkz,Zzupde"
 
 #: data/core/macros/names.cfg:47
 msgid ""
-"Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz’Kza,Chamil,Cleezi,Clezz,Fazzis,"
-"Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
-"Hezzis,Hix,Inexis,Irix,Jezzix,Jizz,Kaliez,Kepzs,Kernix,Kersezz,Kertrasz,Kerx,"
-"Kerxenix,Kezz,Klexaz,Klezyx,Krarax,Krenarex,Krex,Krinex,Krisess,Laizix,Lazki,"
-"Lixeez,Merax,Mexiss,Moxanzz,Naxisz,Nix,Pekzs,Plaxis,Plesix,Presch,Sailik,"
-"Salanix,Salik,Sandix,Saprazz,Satras,Skalix,Skandix,Skazix,Skeely,Skeezix,"
-"Sklizle,Skrez,Slizilx,Sprizz,Ssexur,Ssizer,Ssorix,Sszasz,Sterizz,Talerez,"
-"Tarex,Tarnix,Tezzaz,Tirasch,Tirax,Tirix,Trezz,Venezz,Vriss,Waks,Xaffrasz,"
-"Xartrez,Xasz,Xaztex,Xerxix,Xirasz,Xirr,Xirtras,Xirtrez,Xirz,Zandler,Zedrix,"
-"Zilrix,Zizzasz,Zslap,Zzalkz,Zzupde"
+"Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
+"Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
+"Labuna,Laut,Lir,Llyr,Ludd,Makara,Maui,Melicertes,Mimir,Natat,Nechtan,Neptune,"
+"Nereus,Nethuns,Njord,Nuada,Nudd,Nudimmud,Nun,Oceanus,Okeanos,Phorcys,Pontus,"
+"Popoa,Poseidon,Proteus,Raja,Rau,Rorua,Ryujin,Scylla,Sinilau,Sisiutl,Tagaloa,"
+"Tanaoa,Tangaloa,Tangaroa,Thaumas,Tikitiki,Tini,Tinilau,Tinirau,Toniwha,"
+"Triton,Vizi,Vodnik,Vourukasa"
 msgstr ""
-"Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz’Kza,Chamil,Cleezi,Clezz,Fazzis,"
-"Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
-"Hezzis,Hix,Inexis,Irix,Jezzix,Jizz,Kaliez,Kepzs,Kernix,Kersezz,Kertrasz,Kerx,"
-"Kerxenix,Kezz,Klexaz,Klezyx,Krarax,Krenarex,Krex,Krinex,Krisess,Laizix,Lazki,"
-"Lixeez,Merax,Mexiss,Moxanzz,Naxisz,Nix,Pekzs,Plaxis,Plesix,Presch,Sailik,"
-"Salanix,Salik,Sandix,Saprazz,Satras,Skalix,Skandix,Skazix,Skeely,Skeezix,"
-"Sklizle,Skrez,Slizilx,Sprizz,Ssexur,Ssizer,Ssorix,Sszasz,Sterizz,Talerez,"
-"Tarex,Tarnix,Tezzaz,Tirasch,Tirax,Tirix,Trezz,Venezz,Vriss,Waks,Xaffrasz,"
-"Xartrez,Xasz,Xaztex,Xerxix,Xirasz,Xirr,Xirtras,Xirtrez,Xirz,Zandler,Zedrix,"
-"Zilrix,Zizzasz,Zslap,Zzalkz,Zzupde"
+"Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
+"Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
+"Labuna,Laut,Lir,Llyr,Ludd,Makara,Maui,Melicertes,Mimir,Natat,Nechtan,Neptune,"
+"Nereus,Nethuns,Njord,Nuada,Nudd,Nudimmud,Nun,Oceanus,Okeanos,Phorcys,Pontus,"
+"Popoa,Poseidon,Proteus,Raja,Rau,Rorua,Ryujin,Scylla,Sinilau,Sisiutl,Tagaloa,"
+"Tanaoa,Tangaloa,Tangaroa,Thaumas,Tikitiki,Tini,Tinilau,Tinirau,Toniwha,"
+"Triton,Vizi,Vodnik,Vourukasa"
 
-#: data/core/macros/names.cfg:51
+#: data/core/macros/names.cfg:48
 msgid ""
-"Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
-"Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
-"Labuna,Laut,Lir,Llyr,Ludd,Makara,Maui,Melicertes,Mimir,Natat,Nechtan,Neptune,"
-"Nereus,Nethuns,Njord,Nuada,Nudd,Nudimmud,Nun,Oceanus,Okeanos,Phorcys,Pontus,"
-"Popoa,Poseidon,Proteus,Raja,Rau,Rorua,Ryujin,Scylla,Sinilau,Sisiutl,Tagaloa,"
-"Tanaoa,Tangaloa,Tangaroa,Thaumas,Tikitiki,Tini,Tinilau,Tinirau,Toniwha,"
-"Triton,Vizi,Vodnik,Vourukasa"
+"Aglaopheme,Amphitrite,Aphrodite,Ariel,Atargatis,Calypso,Delphine,Derceto,"
+"Diktynna,Electra,Galatea,Himeropa,Jengu,Leucosia,Ligia,Lori Lamaris,Mama "
+"Wata,Marina,Miranda,Miriam,Molpe,Parthenope,Pelagia,Pisinoe,Rân,Sedna,Stella "
+"Maris,Thelxiepia,Tirgata,Vatea,Ved-Ava,Veen emo,Vete-ema"
 msgstr ""
-"Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
-"Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
-"Labuna,Laut,Lir,Llyr,Ludd,Makara,Maui,Melicertes,Mimir,Natat,Nechtan,Neptune,"
-"Nereus,Nethuns,Njord,Nuada,Nudd,Nudimmud,Nun,Oceanus,Okeanos,Phorcys,Pontus,"
-"Popoa,Poseidon,Proteus,Raja,Rau,Rorua,Ryujin,Scylla,Sinilau,Sisiutl,Tagaloa,"
-"Tanaoa,Tangaloa,Tangaroa,Thaumas,Tikitiki,Tini,Tinilau,Tinirau,Toniwha,"
-"Triton,Vizi,Vodnik,Vourukasa"
+"Aglaopheme,Amphitrite,Aphrodite,Ariel,Atargatis,Calypso,Delphine,Derceto,"
+"Diktynna,Electra,Galatea,Himeropa,Jengu,Leucosia,Ligia,Lori Lamaris,Mama "
+"Wata,Marina,Miranda,Miriam,Molpe,Parthenope,Pelagia,Pisinoe,Rân,Sedna,Stella "
+"Maris,Thelxiepia,Tirgata,Vatea,Ved-Ava,Veen emo,Vete-ema"
 
 #: data/core/macros/names.cfg:52
 msgid ""
-"Aglaopheme,Amphitrite,Aphrodite,Ariel,Atargatis,Calypso,Delphine,Derceto,"
-"Diktynna,Electra,Galatea,Himeropa,Jengu,Leucosia,Ligia,Lori Lamaris,Mama "
-"Wata,Marina,Miranda,Miriam,Molpe,Parthenope,Pelagia,Pisinoe,Rân,Sedna,Stella "
-"Maris,Thelxiepia,Tirgata,Vatea,Ved-Ava,Veen emo,Vete-ema"
+"Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
+"Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
+"Krezkps,Kzap,Lamaiss,Lameii,Lexpek,Liness,Lobor,Maissol,Malinos,Milbor,"
+"Mileii,Nildloss,Oxpeii,Poniaz,Psell,Pson,Pzakp,Reii,Sassal,Saxil,Saxrireii,"
+"Sekol,Silas,Skell,Skepz,Slell,Snol,Soill,Sorkol,Srell,Trixoz,Vilail,Vissal,"
+"Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
 msgstr ""
-"Aglaopheme,Amphitrite,Aphrodite,Ariel,Atargatis,Calypso,Delphine,Derceto,"
-"Diktynna,Electra,Galatea,Himeropa,Jengu,Leucosia,Ligia,Lori Lamaris,Mama "
-"Wata,Marina,Miranda,Miriam,Molpe,Parthenope,Pelagia,Pisinoe,Rân,Sedna,Stella "
-"Maris,Thelxiepia,Tirgata,Vatea,Ved-Ava,Veen emo,Vete-ema"
+"Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
+"Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
+"Krezkps,Kzap,Lamaiss,Lameii,Lexpek,Liness,Lobor,Maissol,Malinos,Milbor,"
+"Mileii,Nildloss,Oxpeii,Poniaz,Psell,Pson,Pzakp,Reii,Sassal,Saxil,Saxrireii,"
+"Sekol,Silas,Skell,Skepz,Slell,Snol,Soill,Sorkol,Srell,Trixoz,Vilail,Vissal,"
+"Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
 
-#: data/core/macros/names.cfg:56
+#: data/core/macros/names.cfg:53
 msgid ""
-"Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
-"Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
-"Krezkps,Kzap,Lamaiss,Lameii,Lexpek,Liness,Lobor,Maissol,Malinos,Milbor,"
-"Mileii,Nildloss,Oxpeii,Poniaz,Psell,Pson,Pzakp,Reii,Sassal,Saxil,Saxrireii,"
-"Sekol,Silas,Skell,Skepz,Slell,Snol,Soill,Sorkol,Srell,Trixoz,Vilail,Vissal,"
-"Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
+"Aliasse,Amailis,Axmailia,Blai,Blanalai,Bli,Bliana,Brassas,Brissal,Gaxmail,"
+"Griama,Grissa,Grissilai,Haila,Haina,Harxias,Huzi,Inai,Inalai,Issalai,Klez,"
+"Kras,Krezkps,Kzap,Lamai,Lamaissa,Lexpek,Liabra,Lilin,Linassa,Maissa,Malina,"
+"Mila,Milbra,Nildlasi,Oxpel,Poniazal,Psal,Psen,Pzakp,Riaa,Sall,Sassalia,"
+"Saxiala,Saxririaa,Sek,Skal,Skepz,Sla,Snelia,Srak,Sral,Szak,Trixzed,Vilaila,"
+"Vissalai,Vlanissa,Xabrak,Xamalia,Xina,Xinasia,Xnamas,Xopkne,Zalsp,Zlek,Zpsek,"
+"Zsekp"
 msgstr ""
-"Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
-"Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
-"Krezkps,Kzap,Lamaiss,Lameii,Lexpek,Liness,Lobor,Maissol,Malinos,Milbor,"
-"Mileii,Nildloss,Oxpeii,Poniaz,Psell,Pson,Pzakp,Reii,Sassal,Saxil,Saxrireii,"
-"Sekol,Silas,Skell,Skepz,Slell,Snol,Soill,Sorkol,Srell,Trixoz,Vilail,Vissal,"
-"Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
+"Aliasse,Amailis,Axmailia,Blai,Blanalai,Bli,Bliana,Brassas,Brissal,Gaxmail,"
+"Griama,Grissa,Grissilai,Haila,Haina,Harxias,Huzi,Inai,Inalai,Issalai,Klez,"
+"Kras,Krezkps,Kzap,Lamai,Lamaissa,Lexpek,Liabra,Lilin,Linassa,Maissa,Malina,"
+"Mila,Milbra,Nildlasi,Oxpel,Poniazal,Psal,Psen,Pzakp,Riaa,Sall,Sassalia,"
+"Saxiala,Saxririaa,Sek,Skal,Skepz,Sla,Snelia,Srak,Sral,Szak,Trixzed,Vilaila,"
+"Vissalai,Vlanissa,Xabrak,Xamalia,Xina,Xinasia,Xnamas,Xopkne,Zalsp,Zlek,Zpsek,"
+"Zsekp"
 
 #: data/core/macros/names.cfg:57
 msgid ""
-"Aliasse,Amailis,Axmailia,Blai,Blanalai,Bli,Bliana,Brassas,Brissal,Gaxmail,"
-"Griama,Grissa,Grissilai,Haila,Haina,Harxias,Huzi,Inai,Inalai,Issalai,Klez,"
-"Kras,Krezkps,Kzap,Lamai,Lamaissa,Lexpek,Liabra,Lilin,Linassa,Maissa,Malina,"
-"Mila,Milbra,Nildlasi,Oxpel,Poniazal,Psal,Psen,Pzakp,Riaa,Sall,Sassalia,"
-"Saxiala,Saxririaa,Sek,Skal,Skepz,Sla,Snelia,Srak,Sral,Szak,Trixzed,Vilaila,"
-"Vissalai,Vlanissa,Xabrak,Xamalia,Xina,Xinasia,Xnamas,Xopkne,Zalsp,Zlek,Zpsek,"
-"Zsekp"
+"Akoark,Akort,Akzalk,Arkarm,Barkuk,Blokkar,Borkuk,Bukkak,Bulruk,Corkkar,"
+"Delkkak,Garkuk,Gnukk,Goruk,Grak,Gurk,Gurm,Kalknix,Karak,Karbuk,Kargnak,"
+"Karterak,Kayrak,Kelkrar,Kerta,Kilkrar,Kingrok,Kirk,Klud,Kokkan,Kolk,Komak,"
+"Korgnak,Kork,Koruck,Kramak,Krog,Krukrak,Krumuk,Kuknuk,Kurkur,Kurmak,Makron,"
+"Markaak,Markuk,Merknik,Nargak,Olk,Orkut,Reknak,Takolak,Trabuk,Trakkon,Urkar,"
+"Urkark"
 msgstr ""
-"Aliasse,Amailis,Axmailia,Blai,Blanalai,Bli,Bliana,Brassas,Brissal,Gaxmail,"
-"Griama,Grissa,Grissilai,Haila,Haina,Harxias,Huzi,Inai,Inalai,Issalai,Klez,"
-"Kras,Krezkps,Kzap,Lamai,Lamaissa,Lexpek,Liabra,Lilin,Linassa,Maissa,Malina,"
-"Mila,Milbra,Nildlasi,Oxpel,Poniazal,Psal,Psen,Pzakp,Riaa,Sall,Sassalia,"
-"Saxiala,Saxririaa,Sek,Skal,Skepz,Sla,Snelia,Srak,Sral,Szak,Trixzed,Vilaila,"
-"Vissalai,Vlanissa,Xabrak,Xamalia,Xina,Xinasia,Xnamas,Xopkne,Zalsp,Zlek,Zpsek,"
-"Zsekp"
+"Akoark,Akort,Akzalk,Arkarm,Barkuk,Blokkar,Borkuk,Bukkak,Bulruk,Corkkar,"
+"Delkkak,Garkuk,Gnukk,Goruk,Grak,Gurk,Gurm,Kalknix,Karak,Karbuk,Kargnak,"
+"Karterak,Kayrak,Kelkrar,Kerta,Kilkrar,Kingrok,Kirk,Klud,Kokkan,Kolk,Komak,"
+"Korgnak,Kork,Koruck,Kramak,Krog,Krukrak,Krumuk,Kuknuk,Kurkur,Kurmak,Makron,"
+"Markaak,Markuk,Merknik,Nargak,Olk,Orkut,Reknak,Takolak,Trabuk,Trakkon,Urkar,"
+"Urkark"
 
 #: data/core/macros/names.cfg:61
 msgid ""
-"Akoark,Akort,Akzalk,Arkarm,Barkuk,Blokkar,Borkuk,Bukkak,Bulruk,Corkkar,"
-"Delkkak,Garkuk,Gnukk,Goruk,Grak,Gurk,Gurm,Kalknix,Karak,Karbuk,Kargnak,"
-"Karterak,Kayrak,Kelkrar,Kerta,Kilkrar,Kingrok,Kirk,Klud,Kokkan,Kolk,Komak,"
-"Korgnak,Kork,Koruck,Kramak,Krog,Krukrak,Krumuk,Kuknuk,Kurkur,Kurmak,Makron,"
-"Markaak,Markuk,Merknik,Nargak,Olk,Orkut,Reknak,Takolak,Trabuk,Trakkon,Urkar,"
-"Urkark"
+"Badush,Bagar,Bagdish,Barag,Barbag,Bart,Bashnak,Bidish,Bidush,Bik,Bilg,Bilo,"
+"Binak,Bink,Biol,Birt,Bogar,Bogdish,Bogdush,Bogor,Bok,Bolg,Bong,Borg,Bork,"
+"Bort,Boshnak,Budush,Bugdish,Buk,Bunak,Bung,Bunk,Burag,Burg,Burk,Buurk,"
+"Eradash,Eradish,Eragdish,Eragdush,Eragor,Eranak,Erang,Erarag,Erarg,Erart,"
+"Erigdush,Erik,Erinak,Eriol,Erirag,Erirbag,Erirg,Erirt,Erishnak,Eriurk,"
+"Erogdish,Erogdush,Erok,Erong,Eronk,Erorbag,Erudish,Erudush,Erugar,Erugdush,"
+"Erulo,Erunk,Eruol,Erurag,Eruurk,Gadash,Gagar,Gagdush,Gagor,Galo,Ganak,Gank,"
+"Gaol,Garag,Gashnak,Gigor,Ginak,Ging,Gink,Girt,Gogdish,Gogdush,Gong,Gork,Gort,"
+"Goshnak,Gradash,Gragar,Gragor,Grak,Gralg,Gralo,Granak,Graol,Grarbag,Gridash,"
+"Gridish,Gridush,Grigar,Grigor,Grilg,Grilo,Grink,Grirag,Grirg,Grirk,Grishnak,"
+"Grodish,Grogar,Grogdish,Grok,Grolg,Grong,Gronk,Grorag,Grorg,Grork,Grort,"
+"Groshnak,Grudash,Grugar,Grugdish,Grugdush,Gruk,Grulo,Grunk,Gruol,Grurg,Grurk,"
+"Grurt,Gruurk,Gugdish,Gugdush,Gulg,Gulo,Gunak,Gurbag,Gurt,Gushnak,Hadash,"
+"Hadish,Hadush,Hagar,Hagdush,Hagor,Hak,Halg,Hank,Hashnak,Hidash,Hidish,Hidush,"
+"Higdush,Hilg,Hinak,Hing,Hink,Hiol,Hirag,Hirg,Hodush,Hogar,Hogor,Hong,Hool,"
+"Horbag,Hork,Hort,Hoshnak,Hudash,Hudish,Hugor,Huk,Hulg,Hulo,Hunk,Huol,Hurag,"
+"Hurbag,Hurk,Hushnak,Huurk,Pagdish,Pagor,Palg,Palo,Paol,Parag,Pashnak,Pidush,"
+"Pigdish,Pigdush,Pilg,Pinak,Pink,Pirbag,Podash,Podish,Podush,Pogdish,Polg,"
+"Porbag,Porg,Pork,Port,Poshnak,Pradish,Pragdush,Pragor,Pralg,Pralo,Prang,"
+"Praol,Prarag,Prarbag,Prarg,Prark,Prart,Prashnak,Praurk,Pridish,Prigar,"
+"Prigdish,Prigor,Prilg,Prilo,Prinak,Priol,Prirbag,Prirg,Prirt,Priurk,Prodash,"
+"Prodish,Prodush,Prolg,Prolo,Pronak,Prong,Pronk,Prool,Prourk,Prudish,Prugar,"
+"Prugdish,Pruk,Prunak,Prunk,Prurg,Prurk,Pruurk,Puk,Pulg,Pulo,Punak,Pung,Punk,"
+"Purag,Purbag,Purg,Puurk,Radash,Ragar,Ragdish,Rak,Rang,Rank,Raol,Rarag,Rarbag,"
+"Rark,Rashnak,Raurk,Rigor,Rik,Rilg,Rinak,Rink,Rirg,Rirk,Rodish,Rodush,Rogdish,"
+"Rok,Rolo,Ronak,Rudash,Rugar,Rugdish,Ruk,Rung,Ruol,Rurag,Rushnak,Vadash,"
+"Vadish,Vadush,Vak,Valo,Vank,Varag,Varbag,Vigar,Vigdish,Vigor,Vilg,Vilo,Vink,"
+"Virag,Virt,Vishnak,Vogdish,Vogor,Vonak,Vong,Vorg,Vork,Voshnak,Vourk,Vradash,"
+"Vragar,Vragdush,Vragor,Vralo,Vrang,Vrarbag,Vrarg,Vrart,Vraurk,Vridash,"
+"Vridish,Vrigor,Vrik,Vrinak,Vring,Vrirt,Vrishnak,Vriurk,Vrodash,Vrodish,"
+"Vrogar,Vrogor,Vrolo,Vrong,Vrorg,Vrork,Vrudish,Vrugdush,Vrulg,Vrung,Vruol,"
+"Vrurg,Vrurt,Vruurk,Vudish,Vuk,Vulg,Vulo,Vunak,Vurag,Vurbag,Vurg,Vushnak"
 msgstr ""
-"Akoark,Akort,Akzalk,Arkarm,Barkuk,Blokkar,Borkuk,Bukkak,Bulruk,Corkkar,"
-"Delkkak,Garkuk,Gnukk,Goruk,Grak,Gurk,Gurm,Kalknix,Karak,Karbuk,Kargnak,"
-"Karterak,Kayrak,Kelkrar,Kerta,Kilkrar,Kingrok,Kirk,Klud,Kokkan,Kolk,Komak,"
-"Korgnak,Kork,Koruck,Kramak,Krog,Krukrak,Krumuk,Kuknuk,Kurkur,Kurmak,Makron,"
-"Markaak,Markuk,Merknik,Nargak,Olk,Orkut,Reknak,Takolak,Trabuk,Trakkon,Urkar,"
-"Urkark"
+"Badush,Bagar,Bagdish,Barag,Barbag,Bart,Bashnak,Bidish,Bidush,Bik,Bilg,Bilo,"
+"Binak,Bink,Biol,Birt,Bogar,Bogdish,Bogdush,Bogor,Bok,Bolg,Bong,Borg,Bork,"
+"Bort,Boshnak,Budush,Bugdish,Buk,Bunak,Bung,Bunk,Burag,Burg,Burk,Buurk,"
+"Eradash,Eradish,Eragdish,Eragdush,Eragor,Eranak,Erang,Erarag,Erarg,Erart,"
+"Erigdush,Erik,Erinak,Eriol,Erirag,Erirbag,Erirg,Erirt,Erishnak,Eriurk,"
+"Erogdish,Erogdush,Erok,Erong,Eronk,Erorbag,Erudish,Erudush,Erugar,Erugdush,"
+"Erulo,Erunk,Eruol,Erurag,Eruurk,Gadash,Gagar,Gagdush,Gagor,Galo,Ganak,Gank,"
+"Gaol,Garag,Gashnak,Gigor,Ginak,Ging,Gink,Girt,Gogdish,Gogdush,Gong,Gork,Gort,"
+"Goshnak,Gradash,Gragar,Gragor,Grak,Gralg,Gralo,Granak,Graol,Grarbag,Gridash,"
+"Gridish,Gridush,Grigar,Grigor,Grilg,Grilo,Grink,Grirag,Grirg,Grirk,Grishnak,"
+"Grodish,Grogar,Grogdish,Grok,Grolg,Grong,Gronk,Grorag,Grorg,Grork,Grort,"
+"Groshnak,Grudash,Grugar,Grugdish,Grugdush,Gruk,Grulo,Grunk,Gruol,Grurg,Grurk,"
+"Grurt,Gruurk,Gugdish,Gugdush,Gulg,Gulo,Gunak,Gurbag,Gurt,Gushnak,Hadash,"
+"Hadish,Hadush,Hagar,Hagdush,Hagor,Hak,Halg,Hank,Hashnak,Hidash,Hidish,Hidush,"
+"Higdush,Hilg,Hinak,Hing,Hink,Hiol,Hirag,Hirg,Hodush,Hogar,Hogor,Hong,Hool,"
+"Horbag,Hork,Hort,Hoshnak,Hudash,Hudish,Hugor,Huk,Hulg,Hulo,Hunk,Huol,Hurag,"
+"Hurbag,Hurk,Hushnak,Huurk,Pagdish,Pagor,Palg,Palo,Paol,Parag,Pashnak,Pidush,"
+"Pigdish,Pigdush,Pilg,Pinak,Pink,Pirbag,Podash,Podish,Podush,Pogdish,Polg,"
+"Porbag,Porg,Pork,Port,Poshnak,Pradish,Pragdush,Pragor,Pralg,Pralo,Prang,"
+"Praol,Prarag,Prarbag,Prarg,Prark,Prart,Prashnak,Praurk,Pridish,Prigar,"
+"Prigdish,Prigor,Prilg,Prilo,Prinak,Priol,Prirbag,Prirg,Prirt,Priurk,Prodash,"
+"Prodish,Prodush,Prolg,Prolo,Pronak,Prong,Pronk,Prool,Prourk,Prudish,Prugar,"
+"Prugdish,Pruk,Prunak,Prunk,Prurg,Prurk,Pruurk,Puk,Pulg,Pulo,Punak,Pung,Punk,"
+"Purag,Purbag,Purg,Puurk,Radash,Ragar,Ragdish,Rak,Rang,Rank,Raol,Rarag,Rarbag,"
+"Rark,Rashnak,Raurk,Rigor,Rik,Rilg,Rinak,Rink,Rirg,Rirk,Rodish,Rodush,Rogdish,"
+"Rok,Rolo,Ronak,Rudash,Rugar,Rugdish,Ruk,Rung,Ruol,Rurag,Rushnak,Vadash,"
+"Vadish,Vadush,Vak,Valo,Vank,Varag,Varbag,Vigar,Vigdish,Vigor,Vilg,Vilo,Vink,"
+"Virag,Virt,Vishnak,Vogdish,Vogor,Vonak,Vong,Vorg,Vork,Voshnak,Vourk,Vradash,"
+"Vragar,Vragdush,Vragor,Vralo,Vrang,Vrarbag,Vrarg,Vrart,Vraurk,Vridash,"
+"Vridish,Vrigor,Vrik,Vrinak,Vring,Vrirt,Vrishnak,Vriurk,Vrodash,Vrodish,"
+"Vrogar,Vrogor,Vrolo,Vrong,Vrorg,Vrork,Vrudish,Vrugdush,Vrulg,Vrung,Vruol,"
+"Vrurg,Vrurt,Vruurk,Vudish,Vuk,Vulg,Vulo,Vunak,Vurag,Vurbag,Vurg,Vushnak"
 
 #: data/core/macros/names.cfg:65
 msgid ""
-"Badush,Bagar,Bagdish,Barag,Barbag,Bart,Bashnak,Bidish,Bidush,Bik,Bilg,Bilo,"
-"Binak,Bink,Biol,Birt,Bogar,Bogdish,Bogdush,Bogor,Bok,Bolg,Bong,Borg,Bork,"
-"Bort,Boshnak,Budush,Bugdish,Buk,Bunak,Bung,Bunk,Burag,Burg,Burk,Buurk,"
-"Eradash,Eradish,Eragdish,Eragdush,Eragor,Eranak,Erang,Erarag,Erarg,Erart,"
-"Erigdush,Erik,Erinak,Eriol,Erirag,Erirbag,Erirg,Erirt,Erishnak,Eriurk,"
-"Erogdish,Erogdush,Erok,Erong,Eronk,Erorbag,Erudish,Erudush,Erugar,Erugdush,"
-"Erulo,Erunk,Eruol,Erurag,Eruurk,Gadash,Gagar,Gagdush,Gagor,Galo,Ganak,Gank,"
-"Gaol,Garag,Gashnak,Gigor,Ginak,Ging,Gink,Girt,Gogdish,Gogdush,Gong,Gork,Gort,"
-"Goshnak,Gradash,Gragar,Gragor,Grak,Gralg,Gralo,Granak,Graol,Grarbag,Gridash,"
-"Gridish,Gridush,Grigar,Grigor,Grilg,Grilo,Grink,Grirag,Grirg,Grirk,Grishnak,"
-"Grodish,Grogar,Grogdish,Grok,Grolg,Grong,Gronk,Grorag,Grorg,Grork,Grort,"
-"Groshnak,Grudash,Grugar,Grugdish,Grugdush,Gruk,Grulo,Grunk,Gruol,Grurg,Grurk,"
-"Grurt,Gruurk,Gugdish,Gugdush,Gulg,Gulo,Gunak,Gurbag,Gurt,Gushnak,Hadash,"
-"Hadish,Hadush,Hagar,Hagdush,Hagor,Hak,Halg,Hank,Hashnak,Hidash,Hidish,Hidush,"
-"Higdush,Hilg,Hinak,Hing,Hink,Hiol,Hirag,Hirg,Hodush,Hogar,Hogor,Hong,Hool,"
-"Horbag,Hork,Hort,Hoshnak,Hudash,Hudish,Hugor,Huk,Hulg,Hulo,Hunk,Huol,Hurag,"
-"Hurbag,Hurk,Hushnak,Huurk,Pagdish,Pagor,Palg,Palo,Paol,Parag,Pashnak,Pidush,"
-"Pigdish,Pigdush,Pilg,Pinak,Pink,Pirbag,Podash,Podish,Podush,Pogdish,Polg,"
-"Porbag,Porg,Pork,Port,Poshnak,Pradish,Pragdush,Pragor,Pralg,Pralo,Prang,"
-"Praol,Prarag,Prarbag,Prarg,Prark,Prart,Prashnak,Praurk,Pridish,Prigar,"
-"Prigdish,Prigor,Prilg,Prilo,Prinak,Priol,Prirbag,Prirg,Prirt,Priurk,Prodash,"
-"Prodish,Prodush,Prolg,Prolo,Pronak,Prong,Pronk,Prool,Prourk,Prudish,Prugar,"
-"Prugdish,Pruk,Prunak,Prunk,Prurg,Prurk,Pruurk,Puk,Pulg,Pulo,Punak,Pung,Punk,"
-"Purag,Purbag,Purg,Puurk,Radash,Ragar,Ragdish,Rak,Rang,Rank,Raol,Rarag,Rarbag,"
-"Rark,Rashnak,Raurk,Rigor,Rik,Rilg,Rinak,Rink,Rirg,Rirk,Rodish,Rodush,Rogdish,"
-"Rok,Rolo,Ronak,Rudash,Rugar,Rugdish,Ruk,Rung,Ruol,Rurag,Rushnak,Vadash,"
-"Vadish,Vadush,Vak,Valo,Vank,Varag,Varbag,Vigar,Vigdish,Vigor,Vilg,Vilo,Vink,"
-"Virag,Virt,Vishnak,Vogdish,Vogor,Vonak,Vong,Vorg,Vork,Voshnak,Vourk,Vradash,"
-"Vragar,Vragdush,Vragor,Vralo,Vrang,Vrarbag,Vrarg,Vrart,Vraurk,Vridash,"
-"Vridish,Vrigor,Vrik,Vrinak,Vring,Vrirt,Vrishnak,Vriurk,Vrodash,Vrodish,"
-"Vrogar,Vrogor,Vrolo,Vrong,Vrorg,Vrork,Vrudish,Vrugdush,Vrulg,Vrung,Vruol,"
-"Vrurg,Vrurt,Vruurk,Vudish,Vuk,Vulg,Vulo,Vunak,Vurag,Vurbag,Vurg,Vushnak"
+"Äg,Agh,Bog Äh,Borb,Brag,Brag Goh,Brok,Dak,Drog,Frok,Ga,Gah,Gark,Gnarf,Grar,"
+"Grokk,Grumph,Gulk,Hak,Hask,Hoth,Hug Bah,Hu Kah,Kak,Krak,Krug,Kub,Kuh,Lok,Luk,"
+"Nak,Nuk Kar,Pag,Reck,Rok,Ruk,Sark,Shak,Shuf,Stuh,Targ,Thog,Thruf,Thur,Tohg,"
+"Torg,Trok,Tsok,Tuh,Tuk Ruh,Ugg,Üh,Urg,Urgh,Urk,Vak,Zog,Zuug"
 msgstr ""
-"Badush,Bagar,Bagdish,Barag,Barbag,Bart,Bashnak,Bidish,Bidush,Bik,Bilg,Bilo,"
-"Binak,Bink,Biol,Birt,Bogar,Bogdish,Bogdush,Bogor,Bok,Bolg,Bong,Borg,Bork,"
-"Bort,Boshnak,Budush,Bugdish,Buk,Bunak,Bung,Bunk,Burag,Burg,Burk,Buurk,"
-"Eradash,Eradish,Eragdish,Eragdush,Eragor,Eranak,Erang,Erarag,Erarg,Erart,"
-"Erigdush,Erik,Erinak,Eriol,Erirag,Erirbag,Erirg,Erirt,Erishnak,Eriurk,"
-"Erogdish,Erogdush,Erok,Erong,Eronk,Erorbag,Erudish,Erudush,Erugar,Erugdush,"
-"Erulo,Erunk,Eruol,Erurag,Eruurk,Gadash,Gagar,Gagdush,Gagor,Galo,Ganak,Gank,"
-"Gaol,Garag,Gashnak,Gigor,Ginak,Ging,Gink,Girt,Gogdish,Gogdush,Gong,Gork,Gort,"
-"Goshnak,Gradash,Gragar,Gragor,Grak,Gralg,Gralo,Granak,Graol,Grarbag,Gridash,"
-"Gridish,Gridush,Grigar,Grigor,Grilg,Grilo,Grink,Grirag,Grirg,Grirk,Grishnak,"
-"Grodish,Grogar,Grogdish,Grok,Grolg,Grong,Gronk,Grorag,Grorg,Grork,Grort,"
-"Groshnak,Grudash,Grugar,Grugdish,Grugdush,Gruk,Grulo,Grunk,Gruol,Grurg,Grurk,"
-"Grurt,Gruurk,Gugdish,Gugdush,Gulg,Gulo,Gunak,Gurbag,Gurt,Gushnak,Hadash,"
-"Hadish,Hadush,Hagar,Hagdush,Hagor,Hak,Halg,Hank,Hashnak,Hidash,Hidish,Hidush,"
-"Higdush,Hilg,Hinak,Hing,Hink,Hiol,Hirag,Hirg,Hodush,Hogar,Hogor,Hong,Hool,"
-"Horbag,Hork,Hort,Hoshnak,Hudash,Hudish,Hugor,Huk,Hulg,Hulo,Hunk,Huol,Hurag,"
-"Hurbag,Hurk,Hushnak,Huurk,Pagdish,Pagor,Palg,Palo,Paol,Parag,Pashnak,Pidush,"
-"Pigdish,Pigdush,Pilg,Pinak,Pink,Pirbag,Podash,Podish,Podush,Pogdish,Polg,"
-"Porbag,Porg,Pork,Port,Poshnak,Pradish,Pragdush,Pragor,Pralg,Pralo,Prang,"
-"Praol,Prarag,Prarbag,Prarg,Prark,Prart,Prashnak,Praurk,Pridish,Prigar,"
-"Prigdish,Prigor,Prilg,Prilo,Prinak,Priol,Prirbag,Prirg,Prirt,Priurk,Prodash,"
-"Prodish,Prodush,Prolg,Prolo,Pronak,Prong,Pronk,Prool,Prourk,Prudish,Prugar,"
-"Prugdish,Pruk,Prunak,Prunk,Prurg,Prurk,Pruurk,Puk,Pulg,Pulo,Punak,Pung,Punk,"
-"Purag,Purbag,Purg,Puurk,Radash,Ragar,Ragdish,Rak,Rang,Rank,Raol,Rarag,Rarbag,"
-"Rark,Rashnak,Raurk,Rigor,Rik,Rilg,Rinak,Rink,Rirg,Rirk,Rodish,Rodush,Rogdish,"
-"Rok,Rolo,Ronak,Rudash,Rugar,Rugdish,Ruk,Rung,Ruol,Rurag,Rushnak,Vadash,"
-"Vadish,Vadush,Vak,Valo,Vank,Varag,Varbag,Vigar,Vigdish,Vigor,Vilg,Vilo,Vink,"
-"Virag,Virt,Vishnak,Vogdish,Vogor,Vonak,Vong,Vorg,Vork,Voshnak,Vourk,Vradash,"
-"Vragar,Vragdush,Vragor,Vralo,Vrang,Vrarbag,Vrarg,Vrart,Vraurk,Vridash,"
-"Vridish,Vrigor,Vrik,Vrinak,Vring,Vrirt,Vrishnak,Vriurk,Vrodash,Vrodish,"
-"Vrogar,Vrogor,Vrolo,Vrong,Vrorg,Vrork,Vrudish,Vrugdush,Vrulg,Vrung,Vruol,"
-"Vrurg,Vrurt,Vruurk,Vudish,Vuk,Vulg,Vulo,Vunak,Vurag,Vurbag,Vurg,Vushnak"
+"Äg,Agh,Bog Äh,Borb,Brag,Brag Goh,Brok,Dak,Drog,Frok,Ga,Gah,Gark,Gnarf,Grar,"
+"Grokk,Grumph,Gulk,Hak,Hask,Hoth,Hug Bah,Hu Kah,Kak,Krak,Krug,Kub,Kuh,Lok,Luk,"
+"Nak,Nuk Kar,Pag,Reck,Rok,Ruk,Sark,Shak,Shuf,Stuh,Targ,Thog,Thruf,Thur,Tohg,"
+"Torg,Trok,Tsok,Tuh,Tuk Ruh,Ugg,Üh,Urg,Urgh,Urk,Vak,Zog,Zuug"
 
 #: data/core/macros/names.cfg:69
 msgid ""
-"Äg,Agh,Bog Äh,Borb,Brag,Brag Goh,Brok,Dak,Drog,Frok,Ga,Gah,Gark,Gnarf,Grar,"
-"Grokk,Grumph,Gulk,Hak,Hask,Hoth,Hug Bah,Hu Kah,Kak,Krak,Krug,Kub,Kuh,Lok,Luk,"
-"Nak,Nuk Kar,Pag,Reck,Rok,Ruk,Sark,Shak,Shuf,Stuh,Targ,Thog,Thruf,Thur,Tohg,"
-"Torg,Trok,Tsok,Tuh,Tuk Ruh,Ugg,Üh,Urg,Urgh,Urk,Vak,Zog,Zuug"
+"Bludebalmen,Boladrumbadrum,Bolwuldelman,Bombempomgontor,Bomtanbomkenton,"
+"Bomtanbomtonum,Bregalad,Bremdebubde,Brenbasnudnem,Brendumadoak,"
+"Brommantendronnor,Brumbendublun,Brumennarunom,Brummdlebroak,Bumbadadabum,"
+"Buomdumdenlol,Carnimirië,Dabumdabumtam,Dammantongonnur,Danmonlulbam,"
+"Debundbemun,Delmduelmdelom,Diblembumnde,Dolmannumbil,Drongnoblemdu,"
+"Dulmandarook,Dulwulmendom,Dumdumdumatum,Elmaroomadrum,Grelmadrumbumadum,"
+"Gulladroamadoak,Gumabeladrelm,Laffalialomdium,Landunwonbam,Lassemista,"
+"Lefnublemdde,Libleddnumm,Lolmandindel,Monlamwimdan,Muldondindal,"
+"Mundionalafla,Mundumblemdum,Munnamdulbon,Nanmildaldum,Nunmaldildun,Orofarnië,"
+"Pambedrumne,Pomtamkomtrobum,Rithramcamhan,Tantondernintan,Temtundembenn,"
+"Temtunnongetem,Tondenkontenkon,Troombadoom,Tumtentantarun,Tumtonnongatum,"
+"Tumtumgamtomtom,Wonrunmaldin,Wudadoonopl"
 msgstr ""
-"Äg,Agh,Bog Äh,Borb,Brag,Brag Goh,Brok,Dak,Drog,Frok,Ga,Gah,Gark,Gnarf,Grar,"
-"Grokk,Grumph,Gulk,Hak,Hask,Hoth,Hug Bah,Hu Kah,Kak,Krak,Krug,Kub,Kuh,Lok,Luk,"
-"Nak,Nuk Kar,Pag,Reck,Rok,Ruk,Sark,Shak,Shuf,Stuh,Targ,Thog,Thruf,Thur,Tohg,"
-"Torg,Trok,Tsok,Tuh,Tuk Ruh,Ugg,Üh,Urg,Urgh,Urk,Vak,Zog,Zuug"
+"Bludebalmen,Boladrumbadrum,Bolwuldelman,Bombempomgontor,Bomtanbomkenton,"
+"Bomtanbomtonum,Bregalad,Bremdebubde,Brenbasnudnem,Brendumadoak,"
+"Brommantendronnor,Brumbendublun,Brumennarunom,Brummdlebroak,Bumbadadabum,"
+"Buomdumdenlol,Carnimirië,Dabumdabumtam,Dammantongonnur,Danmonlulbam,"
+"Debundbemun,Delmduelmdelom,Diblembumnde,Dolmannumbil,Drongnoblemdu,"
+"Dulmandarook,Dulwulmendom,Dumdumdumatum,Elmaroomadrum,Grelmadrumbumadum,"
+"Gulladroamadoak,Gumabeladrelm,Laffalialomdium,Landunwonbam,Lassemista,"
+"Lefnublemdde,Libleddnumm,Lolmandindel,Monlamwimdan,Muldondindal,"
+"Mundionalafla,Mundumblemdum,Munnamdulbon,Nanmildaldum,Nunmaldildun,Orofarnië,"
+"Pambedrumne,Pomtamkomtrobum,Rithramcamhan,Tantondernintan,Temtundembenn,"
+"Temtunnongetem,Tondenkontenkon,Troombadoom,Tumtentantarun,Tumtonnongatum,"
+"Tumtumgamtomtom,Wonrunmaldin,Wudadoonopl"
 
 #: data/core/macros/names.cfg:73
-msgid ""
-"Bludebalmen,Boladrumbadrum,Bolwuldelman,Bombempomgontor,Bomtanbomkenton,"
-"Bomtanbomtonum,Bregalad,Bremdebubde,Brenbasnudnem,Brendumadoak,"
-"Brommantendronnor,Brumbendublun,Brumennarunom,Brummdlebroak,Bumbadadabum,"
-"Buomdumdenlol,Carnimirië,Dabumdabumtam,Dammantongonnur,Danmonlulbam,"
-"Debundbemun,Delmduelmdelom,Diblembumnde,Dolmannumbil,Drongnoblemdu,"
-"Dulmandarook,Dulwulmendom,Dumdumdumatum,Elmaroomadrum,Grelmadrumbumadum,"
-"Gulladroamadoak,Gumabeladrelm,Laffalialomdium,Landunwonbam,Lassemista,"
-"Lefnublemdde,Libleddnumm,Lolmandindel,Monlamwimdan,Muldondindal,"
-"Mundionalafla,Mundumblemdum,Munnamdulbon,Nanmildaldum,Nunmaldildun,Orofarnië,"
-"Pambedrumne,Pomtamkomtrobum,Rithramcamhan,Tantondernintan,Temtundembenn,"
-"Temtunnongetem,Tondenkontenkon,Troombadoom,Tumtentantarun,Tumtonnongatum,"
-"Tumtumgamtomtom,Wonrunmaldin,Wudadoonopl"
-msgstr ""
-"Bludebalmen,Boladrumbadrum,Bolwuldelman,Bombempomgontor,Bomtanbomkenton,"
-"Bomtanbomtonum,Bregalad,Bremdebubde,Brenbasnudnem,Brendumadoak,"
-"Brommantendronnor,Brumbendublun,Brumennarunom,Brummdlebroak,Bumbadadabum,"
-"Buomdumdenlol,Carnimirië,Dabumdabumtam,Dammantongonnur,Danmonlulbam,"
-"Debundbemun,Delmduelmdelom,Diblembumnde,Dolmannumbil,Drongnoblemdu,"
-"Dulmandarook,Dulwulmendom,Dumdumdumatum,Elmaroomadrum,Grelmadrumbumadum,"
-"Gulladroamadoak,Gumabeladrelm,Laffalialomdium,Landunwonbam,Lassemista,"
-"Lefnublemdde,Libleddnumm,Lolmandindel,Monlamwimdan,Muldondindal,"
-"Mundionalafla,Mundumblemdum,Munnamdulbon,Nanmildaldum,Nunmaldildun,Orofarnië,"
-"Pambedrumne,Pomtamkomtrobum,Rithramcamhan,Tantondernintan,Temtundembenn,"
-"Temtunnongetem,Tondenkontenkon,Troombadoom,Tumtentantarun,Tumtonnongatum,"
-"Tumtumgamtomtom,Wonrunmaldin,Wudadoonopl"
-
-#: data/core/macros/names.cfg:77
 msgid ""
 "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
 "Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
@@ -3120,31 +2982,31 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1265 src/actions/attack.cpp:877
+#: data/lua/wml-tags.lua:1265 src/actions/attack.cpp:802
 msgid "female^poisoned"
 msgstr "megmérgezve"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1267 src/actions/attack.cpp:882
+#: data/lua/wml-tags.lua:1267 src/actions/attack.cpp:807
 msgid "female^slowed"
 msgstr "lelassítva"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1267 src/actions/attack.cpp:882
+#: data/lua/wml-tags.lua:1267 src/actions/attack.cpp:807
 msgid "slowed"
 msgstr "lelassítva"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1268 src/actions/attack.cpp:887
+#: data/lua/wml-tags.lua:1268 src/actions/attack.cpp:812
 msgid "female^petrified"
 msgstr "kővé vált"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1268 src/actions/attack.cpp:887
+#: data/lua/wml-tags.lua:1268 src/actions/attack.cpp:812
 msgid "petrified"
 msgstr "kővé vált"
 
@@ -3160,7 +3022,7 @@ msgstr "gyógyíthatatlan"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1734 src/multiplayer_connect.cpp:1706
+#: data/lua/wml/objectives.lua:1734 src/multiplayer_connect.cpp:1726
 msgid "Victory:"
 msgstr "Győzöl, ha:"
 
@@ -3194,274 +3056,27 @@ msgstr "(ez az utolsó kör)"
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "%d%% aranyat viszel át a következő pályára."
 
-#. [hides]: id=invisible
-#: data/scenario-movethrough.cfg:65 data/scenario-movethrough.cfg:67
-#, fuzzy
-#| msgid "invisible: "
-msgid "invisible"
-msgstr "láthatatlan: "
-
-#. [hides]: id=invisible
-#: data/scenario-movethrough.cfg:66 data/scenario-movethrough.cfg:68
-#, fuzzy
-#| msgid "female^slowed"
-msgid "female^invisible"
-msgstr "lelassítva"
-
-#. [message]: speaker=unit
-#: data/scenario-movethrough.cfg:92
-msgid "I triggered an enter hex event."
-msgstr ""
-
-#. [message]: speaker=unit
-#: data/scenario-movethrough.cfg:110
-msgid "I triggered an exit hex event."
-msgstr ""
-
-#. [message]: speaker=unit
-#: data/scenario-movethrough.cfg:131
-msgid "Get out of the way, $second_unit.name|!"
-msgstr ""
-
-#. [message]
-#: data/scenario-movethrough.cfg:180
-msgid "The ground has collapsed beneath me!"
-msgstr ""
-
-#. [message]: speaker=unit
-#: data/scenario-movethrough.cfg:241
-#, fuzzy
-#| msgid "Fire a game event."
-msgid "I triggered a moveto event."
-msgstr "Egy játékesemény végrehajtása."
-
-#. [message]: speaker=second_unit
-#: data/scenario-movethrough.cfg:256
-msgid ""
-"I spy, with my little eye, something that starts with 'f'.\n"
-"\n"
-msgstr ""
-
-#. [message]: speaker=second_unit
-#: data/scenario-movethrough.cfg:258
-msgid "This is the first part of a sighted event."
-msgstr ""
-
-#. [message]: speaker=unit
-#: data/scenario-movethrough.cfg:262
-msgid "Um, \"friend\"? (Hopefully not \"foe"
-msgstr ""
-
-#. [message]: speaker=unit
-#: data/scenario-movethrough.cfg:264
-msgid "This is the second part of a sighted event."
-msgstr ""
-
-#. [effect]: type=blade
-#: data/scenario-test.cfg:247
-#, fuzzy
-#| msgid "Password: "
-msgid "sword"
-msgstr "Jelszó: "
-
-#. [drains]: id=life_vortex
-#: data/scenario-test.cfg:253
-msgid "Life Vortex"
-msgstr ""
-
-#. [drains]: id=life_vortex
-#: data/scenario-test.cfg:254
-msgid ""
-"Life Vortex:\n"
-"Each successful strike in a battle involving this attack causes the attacker "
-"to gain the health that his attack removed from the target.  This has no "
-"effect against nonliving targets."
-msgstr ""
-
-#. [heal_on_hit]: id=entropy
-#: data/scenario-test.cfg:262
-msgid "Entropy"
-msgstr ""
-
-#. [heal_on_hit]: id=entropy
-#: data/scenario-test.cfg:263
-msgid ""
-"Entropy:\n"
-"Each successful strike in a battle involving this attack causes the attacker "
-"to lose 4 HP.  This has no effect against nonliving targets."
-msgstr ""
-
-#. [effect]: type=pierce
-#: data/scenario-test.cfg:285
-msgid "bow"
-msgstr ""
-
-#. [drains]: id=empathic_weapon
-#: data/scenario-test.cfg:291
-msgid "Empathic Weapon"
-msgstr ""
-
-#. [drains]: id=empathic_weapon
-#: data/scenario-test.cfg:292
-msgid ""
-"Empathic Weapon:\n"
-"All damage dealt by this attack to a living target is dealt to the user as "
-"well"
-msgstr ""
-
-#. [heal_on_hit]: id=rejuvenating_weapon
-#: data/scenario-test.cfg:298
-msgid "Rejuvenating Weapon (10)"
-msgstr ""
-
-#. [heal_on_hit]: id=rejuvenating_weapon
-#: data/scenario-test.cfg:299
-msgid ""
-"Rejuvenating Weapon (10):\n"
-"Each successful strike with this weapon heals the user for 10 HP"
-msgstr ""
-
-#. [effect]: type=pierce
-#: data/scenario-test.cfg:311
-msgid "longbow"
-msgstr ""
-
-#. [drains]: id=drains
-#: data/scenario-test.cfg:318
-msgid "drains 20%"
-msgstr ""
-
-#. [drains]: id=drains
-#: data/scenario-test.cfg:319
-msgid ""
-"Drain 20%:\n"
-"This unit drains health from living units, healing itself for 20% of the "
-"amount of damage it deals (rounded down)."
-msgstr ""
-
-#. [heal_on_hit]: id=drains
-#: data/scenario-test.cfg:325
-msgid "sacrifice 5"
-msgstr ""
-
-#. [heal_on_hit]: id=drains
-#: data/scenario-test.cfg:326
-msgid ""
-"Sacrifice 5:\n"
-"Each successful attack costs this unit 5 HP."
-msgstr ""
-
-#. [effect]: type=impact
-#: data/scenario-test.cfg:338
-msgid "life bomb"
-msgstr ""
-
-#. [heal_on_hit]: id=drains
-#: data/scenario-test.cfg:343
-msgid "life copy 20"
-msgstr ""
-
-#. [heal_on_hit]: id=drains
-#: data/scenario-test.cfg:344
-msgid ""
-"Life copy 20:\n"
-"When this attack hits a living unit, the user is healed for 20 HP."
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:369
-#, fuzzy
-#| msgid "Version: "
-msgid "Vision Test"
-msgstr "Verzió: "
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:380
-msgid "Checking visibility of (8,15)..."
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:404 data/scenario-test.cfg:433
-msgid "HORRORS FILTERS ARE ALL TRUE!"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:411
-msgid "You can see it, can't you?"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:440
-msgid "Clear sailing!"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:458
-msgid "But the fog, it blinds you!"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:465 data/scenario-test.cfg:494
-msgid "HORRORS FILTERS ARE ALL FALSE!"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:487
-#, fuzzy
-#| msgid "invisible: "
-msgid "It is invisible!"
-msgstr "láthatatlan: "
-
-#. [heal_on_hit]: id=fiery
-#: data/scenario-test.cfg:691 data/scenario-test.cfg:692
-msgid "fiery 4"
-msgstr ""
-
-#. [heal_on_hit]: id=fiery
-#: data/scenario-test.cfg:693 data/scenario-test.cfg:695
-msgid ""
-"Fiery 4:\n"
-"A successful hit against this unit costs the opponent 4 HP."
-msgstr ""
-
-#. [effect]: type=pierce
-#: data/scenario-test.cfg:705
-msgid "lifebow"
-msgstr ""
-
-#. [drains]: id=drains
-#: data/scenario-test.cfg:712
-msgid "drains 100%"
-msgstr ""
-
-#. [drains]: id=drains
-#: data/scenario-test.cfg:713
-msgid ""
-"Drain 100%:\n"
-"This unit drains health from living units, healing itself for 100% of the "
-"amount of damage it deals (rounded down)."
-msgstr ""
-
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
-#: data/scenario-test.cfg:826 src/dialogs.cpp:629
-#: src/multiplayer_create.cpp:99
+#: data/scenario-test.cfg:833 src/dialogs.cpp:629 src/mp_depcheck.cpp:458
+#: src/mp_options.cpp:227 src/multiplayer_create.cpp:102
 msgid "OK"
 msgstr "Rendben"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
-#: data/scenario-test.cfg:827 src/dialogs.cpp:630 src/dialogs.cpp:1069
-#: src/dialogs.cpp:1175 src/multiplayer_connect.cpp:1038
-#: src/multiplayer_create.cpp:98 src/multiplayer_wait.cpp:180
+#: data/scenario-test.cfg:834 src/dialogs.cpp:630 src/dialogs.cpp:1081
+#: src/dialogs.cpp:1187 src/mp_options.cpp:232
+#: src/multiplayer_connect.cpp:1039 src/multiplayer_create.cpp:101
+#: src/multiplayer_wait.cpp:180
 msgid "Cancel"
 msgstr "Mégsem"
 
-#: data/scenario-test.cfg:3546
+#: data/scenario-test.cfg:3553
 msgid "very long"
 msgstr "nagyon hosszú"
 
-#: data/scenario-test.cfg:3547
+#: data/scenario-test.cfg:3554
 msgid "electrical"
 msgstr "elektromos"
 
@@ -3494,8 +3109,8 @@ msgstr "Küldetés vége"
 #. [label]: id=selected-label-hp
 #: data/themes/default.cfg:205 data/themes/dfool.cfg:229
 #: data/themes/experimental.cfg:179 data/themes/widescreen.cfg:237
-#: data/themes/widescreen.cfg:257 src/menu_events.cpp:218 src/unit.cpp:2542
-#: src/unit.cpp:2729
+#: data/themes/widescreen.cfg:257 src/menu_events.cpp:220 src/unit.cpp:2553
+#: src/unit.cpp:2770
 msgid "HP"
 msgstr "ÉP"
 
@@ -3504,7 +3119,7 @@ msgstr "ÉP"
 #. [label]: id=selected-label-xp
 #: data/themes/default.cfg:214 data/themes/dfool.cfg:239
 #: data/themes/experimental.cfg:188 data/themes/widescreen.cfg:246
-#: data/themes/widescreen.cfg:266 src/menu_events.cpp:220
+#: data/themes/widescreen.cfg:266 src/menu_events.cpp:222
 #: src/menu_events.cpp:933
 msgid "XP"
 msgstr "TP"
@@ -3632,50 +3247,50 @@ msgstr "Nézőpont"
 msgid "Skip animation"
 msgstr "Megjelenítés átugrása"
 
-#: src/about.cpp:209 src/menu_events.cpp:327 src/menu_events.cpp:354
-#: src/statistics_dialog.cpp:114
+#: src/about.cpp:209 src/menu_events.cpp:329 src/menu_events.cpp:356
+#: src/statistics_dialog.cpp:183
 msgid "Close"
 msgstr "Bezárás"
 
-#: src/actions/attack.cpp:99 src/actions/attack.cpp:160
-#: src/actions/attack.cpp:1126
+#: src/actions/attack.cpp:219 src/actions/attack.cpp:421
+#: src/actions/attack.cpp:1051
 msgid "An invalid attacker weapon got selected."
 msgstr "A kiválasztott támadó fegyver érvénytelen."
 
-#: src/actions/attack.cpp:104
+#: src/actions/attack.cpp:224
 msgid "An invalid defender weapon got selected."
 msgstr "A kiválasztott védekező fegyver érvénytelen."
 
-#: src/actions/create.cpp:541
+#: src/actions/create.cpp:545
 msgid "You don’t have a leader to recall with."
 msgstr "Nincs vezéred, akivel egységeket hívhatnál vissza."
 
-#: src/actions/create.cpp:546
+#: src/actions/create.cpp:550
 msgid "None of your leaders is able to recall that unit."
 msgstr "Egyik vezéred sem tudja visszahívni a kiválasztott egységet."
 
-#: src/actions/create.cpp:551
+#: src/actions/create.cpp:555
 msgid "You must have a leader on a keep who is able to recall that unit."
 msgstr ""
 "A vártoronyban olyan vezérnek kell állnia, aki vissza tudja hívni a "
 "kiválasztott egységet."
 
-#: src/actions/create.cpp:556
+#: src/actions/create.cpp:560
 msgid "There are no vacant castle tiles in which to recall the unit."
 msgstr ""
 "Nincs több üres hely a várban, ahová visszahívhatnád a régi egységedet."
 
-#: src/actions/create.cpp:625
+#: src/actions/create.cpp:629
 msgid "You don’t have a leader to recruit with."
 msgstr "Nincs vezéred, akivel toborozhatnál."
 
-#: src/actions/create.cpp:630
+#: src/actions/create.cpp:634
 msgid "You must have a leader on a keep who is able to recruit the unit."
 msgstr ""
 "A vártoronyban olyan vezérnek kell állnia, aki képes a kiválasztott egységet "
 "toborozni."
 
-#: src/actions/create.cpp:635
+#: src/actions/create.cpp:639
 msgid "There are no vacant castle tiles in which to recruit the unit."
 msgstr "Nincs több üres hely a várban, ahová az új egységet toborozhatnánk."
 
@@ -3811,18 +3426,24 @@ msgid "addon_type^MP campaign"
 msgstr "Többjátékos hadjárat"
 
 #: src/addon/info.cpp:163
+#, fuzzy
+#| msgid "addon_type^MP faction"
+msgid "addon_type^MP modification"
+msgstr "Többjátékos szövetség"
+
+#: src/addon/info.cpp:165
 msgid "addon_type^Resources"
 msgstr "Források"
 
-#: src/addon/info.cpp:165
+#: src/addon/info.cpp:167
 msgid "addon_type^Other"
 msgstr "Egyéb"
 
-#: src/addon/info.cpp:167
+#: src/addon/info.cpp:169
 msgid "addon_type^(unknown)"
 msgstr "(ismeretlen)"
 
-#: src/addon/info.cpp:204
+#: src/addon/info.cpp:206
 msgid "unit_byte^B"
 msgstr "B"
 
@@ -3907,7 +3528,7 @@ msgid "Author"
 msgstr "Szerző"
 
 #: src/addon/manager_ui.cpp:173 src/addon/manager_ui.cpp:513
-#: src/dialogs.cpp:576 src/menu_events.cpp:215 src/menu_events.cpp:931
+#: src/dialogs.cpp:576 src/menu_events.cpp:217 src/menu_events.cpp:931
 msgid "Name"
 msgstr "Név"
 
@@ -3920,7 +3541,7 @@ msgid "Size"
 msgstr "Méret"
 
 #: src/addon/manager_ui.cpp:174 src/addon/manager_ui.cpp:528
-#: src/menu_events.cpp:214 src/menu_events.cpp:930 src/menu_events.cpp:1578
+#: src/menu_events.cpp:216 src/menu_events.cpp:930 src/menu_events.cpp:1565
 msgid "Type"
 msgstr "Típus"
 
@@ -3995,7 +3616,7 @@ msgid "Do you really wish to continue?"
 msgstr "Folytatni akarod?"
 
 #: src/addon/manager_ui.cpp:293 src/addon/manager_ui.cpp:304
-#: src/addon/manager_ui.cpp:970 src/multiplayer.cpp:265
+#: src/addon/manager_ui.cpp:970 src/multiplayer.cpp:271
 msgid "Confirm"
 msgstr "Megerősítés"
 
@@ -4056,7 +3677,7 @@ msgid "There are no add-ons matching the specified criteria on this server."
 msgstr "Nincsenek elérhető kiegészítések ezen a kiszolgálón."
 
 #: src/addon/manager_ui.cpp:701 src/dialogs.cpp:601 src/menu_events.cpp:998
-#: src/menu_events.cpp:1614
+#: src/menu_events.cpp:1601
 msgid "Filter: "
 msgstr "Szűrés: "
 
@@ -4244,11 +3865,11 @@ msgstr " sebezhetőség kontra "
 msgid "Slowed"
 msgstr "Lelassítva"
 
-#: src/attack_prediction_display.cpp:255 src/reports.cpp:794
+#: src/attack_prediction_display.cpp:255 src/reports.cpp:840
 msgid "Total damage"
 msgstr "Összsebzés"
 
-#: src/attack_prediction_display.cpp:262 src/mouse_events.cpp:844
+#: src/attack_prediction_display.cpp:262 src/mouse_events.cpp:910
 msgid "No usable weapon"
 msgstr "Nincsen használható fegyver"
 
@@ -4256,7 +3877,7 @@ msgstr "Nincsen használható fegyver"
 msgid "Chance of being unscathed"
 msgstr "Sértetlenül maradás esélye"
 
-#: src/attack_prediction_display.cpp:546 src/mouse_events.cpp:913
+#: src/attack_prediction_display.cpp:546 src/mouse_events.cpp:979
 msgid "Damage Calculations"
 msgstr "Sebzés előszámítások"
 
@@ -4272,11 +3893,11 @@ msgstr "Mivé váljon ez a győzedelmes egység?"
 msgid "No objectives available"
 msgstr "Nincs elérhető cél"
 
-#: src/dialogs.cpp:431 src/savegame.cpp:315
+#: src/dialogs.cpp:431 src/savegame.cpp:316
 msgid "%a %b %d %H:%M %Y"
 msgstr "%Y. %b. %d. %a, %H:%M"
 
-#: src/dialogs.cpp:431 src/savegame.cpp:315
+#: src/dialogs.cpp:431 src/savegame.cpp:316
 msgid "%a %b %d %I:%M %p %Y"
 msgstr "%Y. %b. %d. %a, %I:%M %p"
 
@@ -4300,7 +3921,7 @@ msgstr "Gyakorlás"
 msgid "Test scenario"
 msgstr "Próbapálya"
 
-#: src/dialogs.cpp:486 src/savegame.cpp:1136
+#: src/dialogs.cpp:486 src/savegame.cpp:1144
 msgid "Turn"
 msgstr "Kör"
 
@@ -4316,28 +3937,28 @@ msgstr "Nehézség: "
 msgid "Version: "
 msgstr "Verzió: "
 
-#: src/dialogs.cpp:517 src/dialogs.cpp:543 src/savegame.cpp:345
-#: src/savegame.cpp:371
+#: src/dialogs.cpp:517 src/dialogs.cpp:543 src/savegame.cpp:346
+#: src/savegame.cpp:372
 msgid "%b %d %y"
 msgstr "’%y. %b. %d."
 
-#: src/dialogs.cpp:524 src/reports.cpp:1213 src/savegame.cpp:352
+#: src/dialogs.cpp:524 src/reports.cpp:1259 src/savegame.cpp:353
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/dialogs.cpp:527 src/reports.cpp:1213 src/savegame.cpp:355
+#: src/dialogs.cpp:527 src/reports.cpp:1259 src/savegame.cpp:356
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
-#: src/dialogs.cpp:532 src/savegame.cpp:360
+#: src/dialogs.cpp:532 src/savegame.cpp:361
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/dialogs.cpp:535 src/savegame.cpp:363
+#: src/dialogs.cpp:535 src/savegame.cpp:364
 msgid "%A, %I:%M %p"
 msgstr "%A, %I:%M %p"
 
-#: src/dialogs.cpp:539 src/savegame.cpp:367
+#: src/dialogs.cpp:539 src/savegame.cpp:368
 msgid "%b %d"
 msgstr "%b. %d."
 
@@ -4359,7 +3980,7 @@ msgstr ""
 msgid "Date"
 msgstr "Dátum"
 
-#: src/dialogs.cpp:593 src/multiplayer_create.cpp:120 src/savegame.cpp:675
+#: src/dialogs.cpp:593 src/multiplayer_create.cpp:126 src/savegame.cpp:687
 msgid "Load Game"
 msgstr "Játék betöltése"
 
@@ -4413,11 +4034,11 @@ msgstr "TP: "
 msgid "Moves: "
 msgstr "Lépés: "
 
-#: src/dialogs.cpp:1102
+#: src/dialogs.cpp:1114
 msgid "KB"
 msgstr "KB"
 
-#: src/game_config.cpp:335
+#: src/game_config.cpp:339
 msgid "Invalid color range: "
 msgstr "Érvénytelen színtartomány: "
 
@@ -4426,7 +4047,7 @@ msgid "The file you have tried to load is corrupt"
 msgstr "A fájl, amelyet megpróbáltál betölteni, sérült"
 
 #: src/game_controller.cpp:636 src/game_controller.cpp:654
-#: src/savegame.cpp:724
+#: src/savegame.cpp:735
 msgid "The file you have tried to load is corrupt: '"
 msgstr "A fájl, amelyet megpróbáltál betölteni, megsérült: '"
 
@@ -4446,18 +4067,18 @@ msgstr "Nincsenek elérhető hadjáratok.\n"
 msgid "Error while starting server: "
 msgstr "Hiba a kiszolgáló indítása közben:"
 
-#: src/game_controller.cpp:1042 src/playcampaign.cpp:200
-#: src/playcampaign.cpp:502
+#: src/game_controller.cpp:1042 src/playcampaign.cpp:198
+#: src/playcampaign.cpp:499
 msgid "The game could not be loaded: "
 msgstr "A játékot nem sikerült betölteni: "
 
-#: src/game_controller.cpp:1044 src/playcampaign.cpp:202
-#: src/playcampaign.cpp:505
+#: src/game_controller.cpp:1044 src/playcampaign.cpp:200
+#: src/playcampaign.cpp:502
 msgid "Error while playing the game: "
 msgstr "Hiba a játék közben: "
 
-#: src/game_controller.cpp:1062 src/playcampaign.cpp:204
-#: src/playcampaign.cpp:508
+#: src/game_controller.cpp:1062 src/playcampaign.cpp:202
+#: src/playcampaign.cpp:505
 msgid "The game map could not be loaded: "
 msgstr "A pályát nem sikerült betölteni: "
 
@@ -4465,21 +4086,21 @@ msgstr "A pályát nem sikerült betölteni: "
 msgid "The Battle for Wesnoth"
 msgstr "Harc Wesnothért"
 
-#: src/game_controller.cpp:1198
+#: src/game_controller.cpp:1202
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Hiba a következő kiegészítésben, a betöltés sikertelen: "
 msgstr[1] "Hiba a következő kiegészítésekben, a betöltés sikertelen: "
 
-#: src/game_controller.cpp:1205
+#: src/game_controller.cpp:1209
 msgid "ERROR DETAILS:"
 msgstr "A HIBA RÉSZLETEZÉSE:"
 
-#: src/game_controller.cpp:1239
+#: src/game_controller.cpp:1242
 msgid "Error loading game configuration files: '"
 msgstr "Hiba a konfigurációs fájlok betöltésekor: '"
 
-#: src/game_controller.cpp:1240
+#: src/game_controller.cpp:1243
 msgid "' (The game will now exit)"
 msgstr "' (A játék most befejezi a futást)"
 
@@ -4499,59 +4120,59 @@ msgstr "Hibakeresés: "
 msgid "Info: "
 msgstr "Információ: "
 
-#: src/game_events.cpp:2510
+#: src/game_events.cpp:2513
 msgid "Invalid value in the result key for [end_level]"
 msgstr "Az [utolsó_szint] eredménykulcsban érvénytelen érték található"
 
-#: src/gamestatus.cpp:625 src/multiplayer_connect.cpp:971
+#: src/gamestatus.cpp:635 src/multiplayer_connect.cpp:972
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Nem találtam vezér típusú egységet a $faction szövetséghez"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:207 src/multiplayer_lobby.cpp:448
+#: src/gui/dialogs/lobby/lobby_data.cpp:207 src/multiplayer_lobby.cpp:463
 msgid "Unknown era: $era_id"
 msgstr "Ismeretlen korszak: $era_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:212 src/multiplayer_lobby.cpp:452
+#: src/gui/dialogs/lobby/lobby_data.cpp:212 src/multiplayer_lobby.cpp:467
 msgid "Unknown era"
 msgstr "Ismeretlen korszak"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:268 src/multiplayer_lobby.cpp:514
+#: src/gui/dialogs/lobby/lobby_data.cpp:268 src/multiplayer_lobby.cpp:529
 msgid "Remote scenario"
 msgstr "Távoli pálya"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:276 src/multiplayer_lobby.cpp:521
+#: src/gui/dialogs/lobby/lobby_data.cpp:276 src/multiplayer_lobby.cpp:536
 msgid "Unknown scenario: $scenario_id"
 msgstr "Ismeretlen küldetés: $scenario_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:281 src/multiplayer_lobby.cpp:525
+#: src/gui/dialogs/lobby/lobby_data.cpp:281 src/multiplayer_lobby.cpp:540
 msgid "Unknown scenario"
 msgstr "Ismeretlen küldetés"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:287 src/multiplayer_lobby.cpp:530
+#: src/gui/dialogs/lobby/lobby_data.cpp:287 src/multiplayer_lobby.cpp:571
 msgid "Reloaded game"
 msgstr "Korábbi játszma folytatása"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:298 src/multiplayer_lobby.cpp:546
+#: src/gui/dialogs/lobby/lobby_data.cpp:298 src/multiplayer_lobby.cpp:587
 msgid "Turn "
 msgstr "Kör "
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:302 src/multiplayer_lobby.cpp:550
+#: src/gui/dialogs/lobby/lobby_data.cpp:302 src/multiplayer_lobby.cpp:591
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Betölthető hely:"
 msgstr[1] "Betölthető helyek:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:308 src/multiplayer_lobby.cpp:561
+#: src/gui/dialogs/lobby/lobby_data.cpp:308 src/multiplayer_lobby.cpp:602
 msgid "Fog"
 msgstr "Köd"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:311
-#: src/gui/dialogs/lobby/lobby_data.cpp:314 src/multiplayer_create.cpp:95
-#: src/multiplayer_lobby.cpp:565 src/multiplayer_lobby.cpp:571
+#: src/gui/dialogs/lobby/lobby_data.cpp:314 src/multiplayer_create.cpp:97
+#: src/multiplayer_lobby.cpp:606 src/multiplayer_lobby.cpp:612
 msgid "Shroud"
 msgstr "Eltakarás"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:316 src/multiplayer_lobby.cpp:575
+#: src/gui/dialogs/lobby/lobby_data.cpp:316 src/multiplayer_lobby.cpp:616
 msgid "none"
 msgstr "semelyik"
 
@@ -4587,7 +4208,7 @@ msgstr "Se nem barát, se nem mellőzött"
 msgid "You"
 msgstr "Te"
 
-#: src/gui/dialogs/lobby_player_info.cpp:147 src/multiplayer_create.cpp:592
+#: src/gui/dialogs/lobby_player_info.cpp:147 src/multiplayer_create.cpp:659
 msgid "Error"
 msgstr "Hiba"
 
@@ -4599,18 +4220,18 @@ msgstr "Vége"
 msgid "System default language"
 msgstr "Alapértelmezett rendszernyelv"
 
-#: src/leader_list.cpp:142 src/menu_events.cpp:1604
-#: src/multiplayer_connect.cpp:227 src/multiplayer_connect.cpp:271
+#: src/leader_list.cpp:142 src/menu_events.cpp:1591
+#: src/multiplayer_connect.cpp:228 src/multiplayer_connect.cpp:272
 msgid "gender^Random"
 msgstr "Véletlenszerű"
 
-#: src/leader_list.cpp:152 src/multiplayer_connect.cpp:223
-#: src/multiplayer_connect.cpp:267
+#: src/leader_list.cpp:152 src/multiplayer_connect.cpp:224
+#: src/multiplayer_connect.cpp:268
 msgid "Female ♀"
 msgstr "Nő ♀"
 
-#: src/leader_list.cpp:156 src/multiplayer_connect.cpp:225
-#: src/multiplayer_connect.cpp:269
+#: src/leader_list.cpp:156 src/multiplayer_connect.cpp:226
+#: src/multiplayer_connect.cpp:270
 msgid "Male ♂"
 msgstr "Férfi ♂"
 
@@ -4682,13 +4303,13 @@ msgstr "Terepszabályok felépítése"
 msgid "Starting game"
 msgstr "Játék indítása"
 
-#: src/mapgen.cpp:744
+#: src/mapgen.cpp:741
 msgid "Random maps with an odd width aren't supported."
 msgstr ""
 "Azok a véletlen térképek, amelyek szélessége páratlan szám, nincsenek "
 "támogatva."
 
-#: src/mapgen.cpp:1008
+#: src/mapgen.cpp:1007
 msgid ""
 "No valid castle location found. Too many or too few mountain hexes? (please "
 "check the 'max hill size' parameter)"
@@ -4726,98 +4347,98 @@ msgstr "Uram, ez az egység közel jár a szintlépéshez!"
 msgid "Dismiss Unit"
 msgstr "Egység elbocsátása"
 
-#: src/menu_events.cpp:205
+#: src/menu_events.cpp:207
 msgid "Statistics"
 msgstr "Statisztika"
 
-#: src/menu_events.cpp:216
+#: src/menu_events.cpp:218
 msgid "Moves"
 msgstr "Lépések"
 
-#: src/menu_events.cpp:217
+#: src/menu_events.cpp:219
 msgid "Status"
 msgstr "Állapot"
 
-#: src/menu_events.cpp:219 src/menu_events.cpp:932
+#: src/menu_events.cpp:221 src/menu_events.cpp:932
 msgid "Level^Lvl."
 msgstr "Szint"
 
-#: src/menu_events.cpp:221
+#: src/menu_events.cpp:223
 msgid "unit list^Traits"
 msgstr "Jellemvonások"
 
-#: src/menu_events.cpp:319
+#: src/menu_events.cpp:321
 msgid "Unit List"
 msgstr "Egységlista"
 
-#: src/menu_events.cpp:325 src/menu_events.cpp:347
+#: src/menu_events.cpp:327 src/menu_events.cpp:349
 msgid "Scroll To"
 msgstr "Odagörgetés"
 
-#: src/menu_events.cpp:379
+#: src/menu_events.cpp:381
 msgid "Leader"
 msgstr "Vezér"
 
-#: src/menu_events.cpp:380 src/multiplayer_connect.cpp:1023
+#: src/menu_events.cpp:382 src/multiplayer_connect.cpp:1024
 msgid "Team"
 msgstr "Csapat"
 
-#: src/menu_events.cpp:381 src/multiplayer_connect.cpp:1034
+#: src/menu_events.cpp:383 src/multiplayer_connect.cpp:1035
 msgid "Gold"
 msgstr "Arany"
 
-#: src/menu_events.cpp:382
+#: src/menu_events.cpp:384
 msgid "Villages"
 msgstr "Falvak"
 
-#: src/menu_events.cpp:383
+#: src/menu_events.cpp:385
 msgid "status^Units"
 msgstr "Egységek"
 
-#: src/menu_events.cpp:384
+#: src/menu_events.cpp:386
 msgid "Upkeep"
 msgstr "Fenntartás"
 
-#: src/menu_events.cpp:385 src/multiplayer_connect.cpp:1035
+#: src/menu_events.cpp:387 src/multiplayer_connect.cpp:1036
 #: src/multiplayer_wait.cpp:521
 msgid "Income"
 msgstr "Bevétel"
 
-#: src/menu_events.cpp:490
+#: src/menu_events.cpp:492
 msgid "Current Status"
 msgstr "Csapatok adatai"
 
-#: src/menu_events.cpp:491
+#: src/menu_events.cpp:493
 msgid "More >"
 msgstr "Tovább >"
 
-#: src/menu_events.cpp:509
+#: src/menu_events.cpp:511
 msgid "scenario settings^Leader"
 msgstr "Vezér"
 
-#: src/menu_events.cpp:511
+#: src/menu_events.cpp:513
 msgid "scenario settings^Side"
 msgstr "Oldal"
 
-#: src/menu_events.cpp:512
+#: src/menu_events.cpp:514
 msgid ""
 "scenario settings^Start\n"
 "Gold"
 msgstr "Kiindulási arany"
 
-#: src/menu_events.cpp:513
+#: src/menu_events.cpp:515
 msgid ""
 "scenario settings^Base\n"
 "Income"
 msgstr "Alapbevétel"
 
-#: src/menu_events.cpp:514
+#: src/menu_events.cpp:516
 msgid ""
 "scenario settings^Gold Per\n"
 "Village"
 msgstr "Falvankénti arany"
 
-#: src/menu_events.cpp:515
+#: src/menu_events.cpp:517
 #, fuzzy
 #| msgid ""
 #| "scenario settings^Gold Per\n"
@@ -4827,77 +4448,77 @@ msgid ""
 "Village"
 msgstr "Falvankénti arany"
 
-#: src/menu_events.cpp:516
+#: src/menu_events.cpp:518
 msgid "scenario settings^Fog"
 msgstr "Köd"
 
-#: src/menu_events.cpp:517
+#: src/menu_events.cpp:519
 msgid "scenario settings^Shroud"
 msgstr "Eltakarás"
 
-#: src/menu_events.cpp:567 src/menu_events.cpp:568
+#: src/menu_events.cpp:569 src/menu_events.cpp:570
 msgid "no"
 msgstr "nem"
 
-#: src/menu_events.cpp:567 src/menu_events.cpp:568
+#: src/menu_events.cpp:569 src/menu_events.cpp:570
 msgid "yes"
 msgstr "igen"
 
-#: src/menu_events.cpp:584
+#: src/menu_events.cpp:586
 msgid "Scenario Settings"
 msgstr "A küldetés beállítása"
 
-#: src/menu_events.cpp:587
+#: src/menu_events.cpp:589
 msgid " < Back"
 msgstr " < Vissza"
 
-#: src/menu_events.cpp:606
+#: src/menu_events.cpp:608
 msgid "Save the Map As"
 msgstr "A térkép mentése más néven"
 
-#: src/menu_events.cpp:610
+#: src/menu_events.cpp:612
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Már van ilyen mentés. Felülírjam?"
 
-#: src/menu_events.cpp:622
+#: src/menu_events.cpp:624
 msgid "Map saved."
 msgstr "A térkép elmentve."
 
-#: src/menu_events.cpp:626
+#: src/menu_events.cpp:628
 msgid "Could not save the map: $msg"
 msgstr "A térképet nem sikerült elmenteni: $msg"
 
-#: src/menu_events.cpp:698
+#: src/menu_events.cpp:700
 msgid "Message:"
 msgstr "Üzenet:"
 
-#: src/menu_events.cpp:699
+#: src/menu_events.cpp:701
 msgid "Send to allies only"
 msgstr "Küldés csak a szövetségeseknek"
 
-#: src/menu_events.cpp:699
+#: src/menu_events.cpp:701
 msgid "Send to observers only"
 msgstr "Küldés csak a megfigyelőknek"
 
-#: src/menu_events.cpp:766
+#: src/menu_events.cpp:768
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "Arany"
 msgstr[1] "Arany"
 
-#: src/menu_events.cpp:773
+#: src/menu_events.cpp:775
 msgid "You have no units available to recruit."
 msgstr "Nincs toborozható egységed."
 
-#: src/menu_events.cpp:788
+#: src/menu_events.cpp:790
 msgid "Recruit"
 msgstr "Toborzás"
 
-#: src/menu_events.cpp:789 src/menu_events.cpp:993
+#: src/menu_events.cpp:791 src/menu_events.cpp:993
 msgid "Select unit:"
 msgstr "Válassz egységet:"
 
-#: src/menu_events.cpp:837
+#: src/menu_events.cpp:839
 msgid "You don’t have enough gold to recruit that unit"
 msgstr "Nincs elég aranyad ennek az egységnek a toborzásához"
 
@@ -4934,44 +4555,44 @@ msgstr[1] ""
 "Legalább $cost arannyal kell rendelkezned ahhoz, hogy visszahívhass egy "
 "egységet."
 
-#: src/menu_events.cpp:1416
+#: src/menu_events.cpp:1404
 msgid "You cannot end your turn yet!"
 msgstr "Még nem fejezheted be a köröd!"
 
-#: src/menu_events.cpp:1443
+#: src/menu_events.cpp:1431
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Még nem tettél semmit ebben a körben. Mégis befejezed a köröd?"
 
-#: src/menu_events.cpp:1451 src/menu_events.cpp:1456
+#: src/menu_events.cpp:1439 src/menu_events.cpp:1444
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "Néhány egység még léphetne. Mégis befejezed a köröd?"
 
-#: src/menu_events.cpp:1497
+#: src/menu_events.cpp:1484
 msgid "Rename Unit"
 msgstr "Egység átnevezése"
 
-#: src/menu_events.cpp:1577
+#: src/menu_events.cpp:1564
 msgid "Race"
 msgstr "Faj"
 
-#: src/menu_events.cpp:1601
+#: src/menu_events.cpp:1588
 msgid "Create Unit (Debug!)"
 msgstr "Egység létesítése (Hibakereső mód!)"
 
-#: src/menu_events.cpp:1604 src/multiplayer_wait.cpp:132
+#: src/menu_events.cpp:1591 src/multiplayer_wait.cpp:132
 msgid "Gender: "
 msgstr "Nem:"
 
-#: src/menu_events.cpp:1895
+#: src/menu_events.cpp:1882
 msgid "Search"
 msgstr "Keresés"
 
-#: src/menu_events.cpp:2072
+#: src/menu_events.cpp:2059
 msgid "This command is currently unavailable."
 msgstr "Ez a parancs jelenleg nem elérhető."
 
-#: src/menu_events.cpp:2078
+#: src/menu_events.cpp:2065
 msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
@@ -4979,7 +4600,7 @@ msgstr ""
 "A megadott „$command” parancs ismeretlen, a használható parancsok "
 "kilistázásához írd be ezt: $help_command."
 
-#: src/menu_events.cpp:2096
+#: src/menu_events.cpp:2083
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
@@ -4987,19 +4608,19 @@ msgstr ""
 "Az elérhető parancsok listája és a hozzájuk tartozó súgó. Használd a „help "
 "all”-t a jelenleg nem elérhető parancsok mutatásához."
 
-#: src/menu_events.cpp:2098
+#: src/menu_events.cpp:2085
 msgid "do not translate the 'all'^[all|<command>]"
 msgstr "[all|<parancs>]"
 
-#: src/menu_events.cpp:2142
+#: src/menu_events.cpp:2129
 msgid "Error:"
 msgstr "Hiba:"
 
-#: src/menu_events.cpp:2148
+#: src/menu_events.cpp:2135
 msgid "Missing argument $arg_id"
 msgstr "A következő argumentum hiányzik: $arg_id"
 
-#: src/menu_events.cpp:2196
+#: src/menu_events.cpp:2183
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
@@ -5007,35 +4628,35 @@ msgstr ""
 "Elérhető parancsok $flags_description:\n"
 "$list_of_commands"
 
-#: src/menu_events.cpp:2196 src/menu_events.cpp:2197 src/menu_events.cpp:2220
+#: src/menu_events.cpp:2183 src/menu_events.cpp:2184 src/menu_events.cpp:2207
 msgid "help"
 msgstr "súgó"
 
-#: src/menu_events.cpp:2197
+#: src/menu_events.cpp:2184
 msgid "Type $help_command <command> for more info."
 msgstr "További információért írd be ezt: $help_command <parancs>"
 
-#: src/menu_events.cpp:2208
+#: src/menu_events.cpp:2195
 msgid " No help available."
 msgstr "Nincs elérhető súgó."
 
-#: src/menu_events.cpp:2213
+#: src/menu_events.cpp:2200
 msgid "Usage:"
 msgstr "Használat:"
 
-#: src/menu_events.cpp:2218
+#: src/menu_events.cpp:2205
 msgid "aliases:"
 msgstr "másként:"
 
-#: src/menu_events.cpp:2339
+#: src/menu_events.cpp:2326
 msgid "(A) — admin command"
 msgstr "(A) - rendszergazdai parancs"
 
-#: src/menu_events.cpp:2346 src/menu_events.cpp:2553
+#: src/menu_events.cpp:2333 src/menu_events.cpp:2540
 msgid "(admin only)"
 msgstr "(csak rendszergazda)"
 
-#: src/menu_events.cpp:2366
+#: src/menu_events.cpp:2353
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
@@ -5043,7 +4664,7 @@ msgstr ""
 "Lekérdezés a kiszolgálótól. Argumentumok nélküli kérés esetén a kiszolgáló "
 "felsorolja az elérhető parancsokat."
 
-#: src/menu_events.cpp:2370
+#: src/menu_events.cpp:2357
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
@@ -5051,39 +4672,39 @@ msgstr ""
 "Egy játékos vagy megfigyelő letiltása vagy kirúgása. Ha az illető nincs a "
 "játékban, akkor csak letiltva lesz."
 
-#: src/menu_events.cpp:2371 src/menu_events.cpp:2374 src/menu_events.cpp:2376
-#: src/menu_events.cpp:2378 src/menu_events.cpp:2380 src/menu_events.cpp:2407
-#: src/menu_events.cpp:2409 src/menu_events.cpp:2411 src/menu_events.cpp:2425
+#: src/menu_events.cpp:2358 src/menu_events.cpp:2361 src/menu_events.cpp:2363
+#: src/menu_events.cpp:2365 src/menu_events.cpp:2367 src/menu_events.cpp:2394
+#: src/menu_events.cpp:2396 src/menu_events.cpp:2398 src/menu_events.cpp:2412
 msgid "<nickname>"
 msgstr "<becenév>"
 
-#: src/menu_events.cpp:2373
+#: src/menu_events.cpp:2360
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
 "Letiltás visszavonása. A felhasználónak a játékban nem kell jelen lennie, de "
 "a kiszolgálón igen."
 
-#: src/menu_events.cpp:2376
+#: src/menu_events.cpp:2363
 msgid "Kick a player or observer."
 msgstr "Egy játékos vagy megfigyelő kirúgása."
 
-#: src/menu_events.cpp:2378
+#: src/menu_events.cpp:2365
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr ""
 "Egy megfigyelő elnémítása. Argumentum nélkül megjeleníti az aktuális "
 "állapotot."
 
-#: src/menu_events.cpp:2380
+#: src/menu_events.cpp:2367
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
 "Egy megfigyelő elnémításának visszavonása. Argumentum nélkül minden "
 "elnémítást visszavon."
 
-#: src/menu_events.cpp:2382
+#: src/menu_events.cpp:2369
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr "Minden megfigyelő elnémítása be/ki."
 
-#: src/menu_events.cpp:2392
+#: src/menu_events.cpp:2379
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
@@ -5091,15 +4712,15 @@ msgstr ""
 "A szabályszegéseket, kihágásokat a kiszolgáló moderátorainak jelentheted. "
 "Mindenképpen említsd meg az érintett beceneveket."
 
-#: src/menu_events.cpp:2396
+#: src/menu_events.cpp:2383
 msgid "<message>"
 msgstr "<üzenet>"
 
-#: src/menu_events.cpp:2396
+#: src/menu_events.cpp:2383
 msgid "Send an emotion or personal action in chat."
 msgstr "Hangulatjel vagy személyes megnyilvánulás küldése csevegésben."
 
-#: src/menu_events.cpp:2399
+#: src/menu_events.cpp:2386
 msgid ""
 "Sends a private message. You cannot send private messages to players in a "
 "running game you observe or play in."
@@ -5108,191 +4729,191 @@ msgstr ""
 "nem vesz részt abban a játékban, amelyikben játszol, vagy amelyiket "
 "megfigyelsz."
 
-#: src/menu_events.cpp:2401
+#: src/menu_events.cpp:2388
 msgid "<nickname> <message>"
 msgstr "<becenév> <üzenet>"
 
-#: src/menu_events.cpp:2405
+#: src/menu_events.cpp:2392
 msgid "<level> <domain>"
 msgstr "<szint> <tartomány>"
 
-#: src/menu_events.cpp:2405
+#: src/menu_events.cpp:2392
 msgid "Change the log level of a log domain."
 msgstr "Naplótartomány átkapcsolása más naplózási szintre."
 
-#: src/menu_events.cpp:2407
+#: src/menu_events.cpp:2394
 msgid "Add a nickname to your ignores list."
 msgstr "Játékos hozzáadása a mellőzési listához."
 
-#: src/menu_events.cpp:2409
+#: src/menu_events.cpp:2396
 msgid "Add a nickname to your friends list."
 msgstr "Játékos hozzáadása a „barátok” listához."
 
-#: src/menu_events.cpp:2411
+#: src/menu_events.cpp:2398
 msgid "Remove a nickname from your ignores or friends list."
 msgstr "Játékos eltávolítása a mellőzési vagy a „barátok” listáról."
 
-#: src/menu_events.cpp:2413
+#: src/menu_events.cpp:2400
 msgid "Show your ignores and friends list."
 msgstr "A mellőzési és a „barátok” lista mutatása."
 
-#: src/menu_events.cpp:2416
+#: src/menu_events.cpp:2403
 msgid "Display version information."
 msgstr "Verzióinformáció megjelenítése."
 
-#: src/menu_events.cpp:2418
+#: src/menu_events.cpp:2405
 msgid "<password> <email (optional)>"
 msgstr "<jelszó> <villevél (nem kötelező)>"
 
-#: src/menu_events.cpp:2418
+#: src/menu_events.cpp:2405
 msgid "Register your nickname"
 msgstr "Becenév regisztrálása"
 
-#: src/menu_events.cpp:2420
+#: src/menu_events.cpp:2407
 msgid "Drop your nickname."
 msgstr "Regisztráció törlése"
 
-#: src/menu_events.cpp:2422
+#: src/menu_events.cpp:2409
 msgid "Update details for your nickname. For possible details see '/details'."
 msgstr ""
 "A felhasználónevedhez tartozó adatlap frissítése. Az elérhető adatokhoz "
 "lásd: „/details”."
 
-#: src/menu_events.cpp:2423
+#: src/menu_events.cpp:2410
 msgid "<detail> <value>"
 msgstr "<részlet> <érték>"
 
-#: src/menu_events.cpp:2425
+#: src/menu_events.cpp:2412
 msgid "Request information about a nickname."
 msgstr "Felhasználó adatainak megtekintése"
 
-#: src/menu_events.cpp:2427
+#: src/menu_events.cpp:2414
 msgid "Request a list of details you can set for your registered nickname."
 msgstr "A regisztrált felhasználónevedhez tartozó adatok listázása"
 
-#: src/menu_events.cpp:2429 src/menu_events.cpp:2432 src/menu_events.cpp:2434
+#: src/menu_events.cpp:2416 src/menu_events.cpp:2419 src/menu_events.cpp:2421
 msgid "<room>"
 msgstr "<szoba>"
 
-#: src/menu_events.cpp:2429
+#: src/menu_events.cpp:2416
 msgid "Join a room."
 msgstr "Belépés egy szobába."
 
-#: src/menu_events.cpp:2432
+#: src/menu_events.cpp:2419
 msgid "Part a room."
 msgstr "Kilépés egy szobából."
 
-#: src/menu_events.cpp:2434
+#: src/menu_events.cpp:2421
 msgid "List room members."
 msgstr "A szobában lévők listázása."
 
-#: src/menu_events.cpp:2436
+#: src/menu_events.cpp:2423
 msgid "List available rooms."
 msgstr "Az elérhető szobák listázása."
 
-#: src/menu_events.cpp:2438
+#: src/menu_events.cpp:2425
 msgid "<room> <msg>"
 msgstr "<szoba> <üzenet>"
 
-#: src/menu_events.cpp:2438
+#: src/menu_events.cpp:2425
 msgid "Room message."
 msgstr "A szoba témája."
 
-#: src/menu_events.cpp:2440
+#: src/menu_events.cpp:2427
 msgid "<room> <type> [value]"
 msgstr "<szoba> <típus> [érték]"
 
-#: src/menu_events.cpp:2440
+#: src/menu_events.cpp:2427
 msgid "Room query."
 msgstr "Keresés a szobák között."
 
-#: src/menu_events.cpp:2545
+#: src/menu_events.cpp:2532
 msgid "(D) — debug only, (N) — network only, (A) — admin only"
 msgstr "(D) - csak hibakeresés, (N) - csak hálózat, (A) - csak adminisztráció"
 
-#: src/menu_events.cpp:2551
+#: src/menu_events.cpp:2538
 msgid "(debug command)"
 msgstr "(hibakereső parancs)"
 
-#: src/menu_events.cpp:2552
+#: src/menu_events.cpp:2539
 msgid "(network only)"
 msgstr "(csak hálózat)"
 
-#: src/menu_events.cpp:2577
+#: src/menu_events.cpp:2564
 msgid "Refresh gui."
 msgstr "A grafikus felület frissítése."
 
-#: src/menu_events.cpp:2579
+#: src/menu_events.cpp:2566
 msgid "Switch a side to/from AI control."
 msgstr "Adott oldalon az MI ki- vagy bekapcsolása."
 
-#: src/menu_events.cpp:2579
+#: src/menu_events.cpp:2566
 msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr "[<csapat> [on/off]]"
 
-#: src/menu_events.cpp:2582
+#: src/menu_events.cpp:2569
 msgid "<side> <nickname>"
 msgstr "<csapat> <becenév>"
 
-#: src/menu_events.cpp:2582
+#: src/menu_events.cpp:2569
 msgid "Assign control of a side to a different player or observer."
 msgstr ""
 "Az adott csapat irányítását egy másik játékoshoz vagy megfigyelőhöz rendeli."
 
-#: src/menu_events.cpp:2584
+#: src/menu_events.cpp:2571
 msgid "Clear chat history."
 msgstr "A csevegési előzmények törlése."
 
-#: src/menu_events.cpp:2586
+#: src/menu_events.cpp:2573
 msgid "Visualize the screen refresh procedure."
 msgstr "A képernyő-frissítési folyamat vizualizálása."
 
-#: src/menu_events.cpp:2588
+#: src/menu_events.cpp:2575
 msgid "Debug foreground terrain."
 msgstr "Hibakeresés az előtérben lévő terepekben"
 
-#: src/menu_events.cpp:2590
+#: src/menu_events.cpp:2577
 msgid "Debug layers from terrain under the mouse."
 msgstr "Hibakeresés az egérmutató alatt lévő tereprétegekben"
 
-#: src/menu_events.cpp:2591
+#: src/menu_events.cpp:2578
 msgid "Show fps."
 msgstr "A képernyőfrissítési gyakoriság (fps) értékének mutatása."
 
-#: src/menu_events.cpp:2593
+#: src/menu_events.cpp:2580
 msgid "Save game."
 msgstr "Állás mentése."
 
-#: src/menu_events.cpp:2595
+#: src/menu_events.cpp:2582
 msgid "Quit game."
 msgstr "Kilépés a játékból."
 
-#: src/menu_events.cpp:2599
+#: src/menu_events.cpp:2586
 msgid "Save and quit."
 msgstr "Mentés és kilépés."
 
-#: src/menu_events.cpp:2602
+#: src/menu_events.cpp:2589
 msgid "Ignore replay errors."
 msgstr "A visszajátszás során jelentkező hibák figyelmen kívül hagyása."
 
-#: src/menu_events.cpp:2604
+#: src/menu_events.cpp:2591
 msgid "Disable autosaves."
 msgstr "Az automatikus mentés kikapcsolása."
 
-#: src/menu_events.cpp:2606
+#: src/menu_events.cpp:2593
 msgid "<id>"
 msgstr "<azonosító>"
 
-#: src/menu_events.cpp:2606
+#: src/menu_events.cpp:2593
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr ""
 "Továbblépés a következő vagy az azonosítója alapján kiválasztott pályára."
 
-#: src/menu_events.cpp:2609
+#: src/menu_events.cpp:2596
 msgid "Choose next scenario"
 msgstr "Válaszd ki a következő pályát"
 
-#: src/menu_events.cpp:2612
+#: src/menu_events.cpp:2599
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
@@ -5300,11 +4921,11 @@ msgstr ""
 "A kör számának megváltoztatása (a napszak is módosul), illetve eggyel való "
 "növelése, ha nincs szám megadva."
 
-#: src/menu_events.cpp:2612
+#: src/menu_events.cpp:2599
 msgid "[turn]"
 msgstr "[kör]"
 
-#: src/menu_events.cpp:2614
+#: src/menu_events.cpp:2601
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
@@ -5312,257 +4933,257 @@ msgstr ""
 "A körök maximális számának megváltoztatása, illetve korlátlanra állítása, ha "
 "nincs (értelmezhető) szám megadva."
 
-#: src/menu_events.cpp:2614
+#: src/menu_events.cpp:2601
 msgid "[limit]"
 msgstr "[körök maximális száma]"
 
-#: src/menu_events.cpp:2616
+#: src/menu_events.cpp:2603
 msgid "Turn debug mode on."
 msgstr "A hibakereső üzemmód bekapcsolása."
 
-#: src/menu_events.cpp:2618
+#: src/menu_events.cpp:2605
 msgid "Turn debug mode off."
 msgstr "A hibakereső üzemmód kikapcsolása."
 
-#: src/menu_events.cpp:2620 src/menu_events.cpp:2624
+#: src/menu_events.cpp:2607 src/menu_events.cpp:2611
 msgid "<command>[;<command>...]"
 msgstr "<parancs>[;<parancs>...]"
 
-#: src/menu_events.cpp:2620
+#: src/menu_events.cpp:2607
 msgid "Execute a Lua statement."
 msgstr "Egy Lua utasítás végrehajtása."
 
-#: src/menu_events.cpp:2622
+#: src/menu_events.cpp:2609
 msgid "Grant higher privileges to Lua scripts."
 msgstr "Magasabb prioritás biztosítása a Lua szkripteknek."
 
-#: src/menu_events.cpp:2624
+#: src/menu_events.cpp:2611
 msgid "Set the command used by the custom command hotkey"
 msgstr "Egy parancsnak a felhasználói gyorsbillentyűhöz rendelése"
 
-#: src/menu_events.cpp:2627
+#: src/menu_events.cpp:2614
 msgid "Invoke a dialog allowing changing control of MP sides."
 msgstr ""
 "Párbeszéd kezdeményezése a többjátékos oldalak irányításának megváltoztatása "
 "végett."
 
-#: src/menu_events.cpp:2631
+#: src/menu_events.cpp:2618
 msgid "Launch the gamestate inspector"
 msgstr "A játékállapot-figyelő indítása"
 
-#: src/menu_events.cpp:2633
+#: src/menu_events.cpp:2620
 msgid "Manage persistence data"
 msgstr "Állandó adatok kezelése"
 
-#: src/menu_events.cpp:2635
+#: src/menu_events.cpp:2622
 msgid "<name>[=<command>]"
 msgstr "<név>[=<parancs>]"
 
-#: src/menu_events.cpp:2635
+#: src/menu_events.cpp:2622
 msgid "Set or show alias to a command"
 msgstr "Alias megmutatása vagy egy parancshoz rendelése"
 
-#: src/menu_events.cpp:2637
+#: src/menu_events.cpp:2624
 msgid "<var>=<value>"
 msgstr "<változó>=<érték>"
 
-#: src/menu_events.cpp:2637
+#: src/menu_events.cpp:2624
 msgid "Set a scenario variable."
 msgstr "Egy játékváltozó értékének megadása."
 
-#: src/menu_events.cpp:2639
+#: src/menu_events.cpp:2626
 msgid "<var>"
 msgstr "<változó>"
 
-#: src/menu_events.cpp:2639
+#: src/menu_events.cpp:2626
 msgid "Show a scenario variable."
 msgstr "Egy játékváltozó értékének megmutatása."
 
-#: src/menu_events.cpp:2641
+#: src/menu_events.cpp:2628
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr "Egy egységváltozó módosítása. (Csak legfelső szinten támogatott.)"
 
-#: src/menu_events.cpp:2648
+#: src/menu_events.cpp:2635
 msgid "Discover all units in help."
 msgstr "Az összes egység súgójának megtekinthetővé tétele."
 
-#: src/menu_events.cpp:2650
+#: src/menu_events.cpp:2637
 msgid "'Undiscover' all units in help."
 msgstr "Az összes egység súgójának elrejtése."
 
-#: src/menu_events.cpp:2652
+#: src/menu_events.cpp:2639
 msgid "Create a unit."
 msgstr "Egység létrehozása."
 
-#: src/menu_events.cpp:2654
+#: src/menu_events.cpp:2641
 msgid "Toggle fog for the current player."
 msgstr "A köd ki- és bekapcsolása az aktuális játékosnál."
 
-#: src/menu_events.cpp:2656
+#: src/menu_events.cpp:2643
 msgid "Toggle shroud for the current player."
 msgstr "Az eltakarás ki- és bekapcsolása az aktuális játékosnál."
 
-#: src/menu_events.cpp:2658
+#: src/menu_events.cpp:2645
 msgid "Give gold to the current player."
 msgstr "Az aktuális játékos aranykészletének növelése."
 
-#: src/menu_events.cpp:2660
+#: src/menu_events.cpp:2647
 msgid "Fire a game event."
 msgstr "Egy játékesemény végrehajtása."
 
-#: src/menu_events.cpp:2663
+#: src/menu_events.cpp:2650
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "Az x,y koordináták átfedésének ki- és bekapcsolása a mezőkön."
 
-#: src/menu_events.cpp:2666
+#: src/menu_events.cpp:2653
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "A terepkódok átfedésének ki- és bekapcsolása a mezőkön."
 
-#: src/menu_events.cpp:2669
+#: src/menu_events.cpp:2656
 msgid "Toggle planning mode."
 msgstr "A lépéstervező ki- és bekapcsolása."
 
-#: src/menu_events.cpp:2672
+#: src/menu_events.cpp:2659
 msgid "Access whiteboard options dialog."
 msgstr "Lépéstervező beállítóablak megnyitása."
 
-#: src/menu_events.cpp:2715
+#: src/menu_events.cpp:2702
 msgid "Unknown debug level: '$level'."
 msgstr "Ismeretlen hibakeresési szint: „$level”."
 
-#: src/menu_events.cpp:2717 src/menu_events.cpp:2726
+#: src/menu_events.cpp:2704 src/menu_events.cpp:2713
 msgid "error"
 msgstr "hiba"
 
-#: src/menu_events.cpp:2724
+#: src/menu_events.cpp:2711
 msgid "Unknown debug domain: '$domain'."
 msgstr "Ismeretlen hibakereső tartomány: „$domain”."
 
-#: src/menu_events.cpp:2733
+#: src/menu_events.cpp:2720
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr "A(z) „$domain” tartomány átkapcsolva a következő szintre: „$level”."
 
-#: src/menu_events.cpp:2804
+#: src/menu_events.cpp:2791
 msgid "whisper to $receiver"
 msgstr "súgás neki: $receiver"
 
-#: src/menu_events.cpp:2811 src/multiplayer_ui.cpp:550
+#: src/menu_events.cpp:2798 src/multiplayer_ui.cpp:553
 msgid "whisper: $sender"
 msgstr "súgás tőle: $sender"
 
-#: src/menu_events.cpp:2907 src/menu_events.cpp:2926
-#: src/multiplayer_connect.cpp:668
+#: src/menu_events.cpp:2894 src/menu_events.cpp:2913
+#: src/multiplayer_connect.cpp:669
 msgid "(empty)"
 msgstr "(üres)"
 
-#: src/menu_events.cpp:2907 src/menu_events.cpp:2913 src/menu_events.cpp:2963
+#: src/menu_events.cpp:2894 src/menu_events.cpp:2900 src/menu_events.cpp:2950
 msgid "ignores list"
 msgstr "mellőzöttek listája"
 
-#: src/menu_events.cpp:2913
+#: src/menu_events.cpp:2900
 msgid "Added to ignore list: $nick"
 msgstr "Hozzáadva a mellőzési listádhoz: $nick "
 
-#: src/menu_events.cpp:2916 src/menu_events.cpp:2935
+#: src/menu_events.cpp:2903 src/menu_events.cpp:2922
 msgid "Invalid username: $nick"
 msgstr "Érvénytelen felhasználónév: $nick"
 
-#: src/menu_events.cpp:2926 src/menu_events.cpp:2933 src/menu_events.cpp:2959
+#: src/menu_events.cpp:2913 src/menu_events.cpp:2920 src/menu_events.cpp:2946
 msgid "friends list"
 msgstr "barátok listája"
 
-#: src/menu_events.cpp:2933
+#: src/menu_events.cpp:2920
 msgid "Added to friends list: $nick"
 msgstr "Hozzáadva a barátok listájához: $nick"
 
-#: src/menu_events.cpp:2949
+#: src/menu_events.cpp:2936
 msgid "Removed from list: $nick"
 msgstr "Kitörölve a listádról: $nick "
 
-#: src/menu_events.cpp:2949 src/menu_events.cpp:2967
+#: src/menu_events.cpp:2936 src/menu_events.cpp:2954
 msgid "friends and ignores list"
 msgstr "barátok és mellőzöttek listája"
 
-#: src/menu_events.cpp:2967
+#: src/menu_events.cpp:2954
 msgid "There are no players on your friends or ignore list."
 msgstr "Nincs játékos sem a barátaid között, sem a mellőzöttek listáján."
 
-#: src/menu_events.cpp:2972
+#: src/menu_events.cpp:2959
 msgid "version"
 msgstr "verzió"
 
-#: src/menu_events.cpp:2988
+#: src/menu_events.cpp:2975
 msgid "registering with password *** and no email address"
 msgstr "regisztráció a *** jelszóval villevélcím nélkül"
 
-#: src/menu_events.cpp:2992
+#: src/menu_events.cpp:2979
 msgid "registering with password *** and email address $email"
 msgstr "regisztráció a *** jelszóval és a megadott $email villanylevélcímmel"
 
-#: src/menu_events.cpp:2995 src/menu_events.cpp:3006 src/menu_events.cpp:3024
-#: src/menu_events.cpp:3038
+#: src/menu_events.cpp:2982 src/menu_events.cpp:2993 src/menu_events.cpp:3011
+#: src/menu_events.cpp:3025
 msgid "nick registration"
 msgstr "becenév regisztrálása"
 
-#: src/menu_events.cpp:3006
+#: src/menu_events.cpp:2993
 msgid "dropping your username"
 msgstr "felhasználónév törlése"
 
-#: src/menu_events.cpp:3024
+#: src/menu_events.cpp:3011
 msgid "setting $var to $value"
 msgstr "a megadott változó ($var) beállítása erre az értékre: $value"
 
-#: src/menu_events.cpp:3038
+#: src/menu_events.cpp:3025
 msgid "requesting information for user $nick"
 msgstr "információ kérése a következő felhasználóról: $nick"
 
-#: src/menu_events.cpp:3151
+#: src/menu_events.cpp:3138
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
 "Nem találtam olyan címkét vagy egységet, amely megfelelt volna a "
 "következőnek: „$search”."
 
-#: src/menu_events.cpp:3185
+#: src/menu_events.cpp:3172
 msgid "Can't droid invalid side: '$side'."
 msgstr "Az érvénytelen oldal („$side”) irányítása nem adható át a gépnek."
 
-#: src/menu_events.cpp:3190
+#: src/menu_events.cpp:3177
 msgid "Can't droid networked side: '$side'."
 msgstr "A hálózati oldal („$side”) irányítása nem adható át a gépnek."
 
-#: src/menu_events.cpp:3228
+#: src/menu_events.cpp:3215
 msgid "Can't change control of invalid side: '$side'."
 msgstr "Az érvénytelen oldal („$side”) irányítása nem adható át."
 
-#: src/menu_events.cpp:3234
+#: src/menu_events.cpp:3221
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "A nem megengedett tartományú oldal („$side”) irányítása nem adható át."
 
-#: src/menu_events.cpp:3348
+#: src/menu_events.cpp:3335
 msgid "Layers"
 msgstr "Rétegek"
 
-#: src/menu_events.cpp:3421
+#: src/menu_events.cpp:3408
 msgid "Choose Scenario (Debug!)"
 msgstr "Pálya kiválasztása (Hibakereső mód!)"
 
-#: src/menu_events.cpp:3467
+#: src/menu_events.cpp:3454
 msgid "Debug mode activated!"
 msgstr "Hibakereső üzemmód bekapcsolva!"
 
-#: src/menu_events.cpp:3470
+#: src/menu_events.cpp:3457
 msgid "Debug mode not available in network games"
 msgstr "A hibakereső üzemmód hálózati játék során nem elérhető"
 
-#: src/menu_events.cpp:3475
+#: src/menu_events.cpp:3462
 msgid "Debug mode deactivated!"
 msgstr "Hibakereső üzemmód kikapcsolva!"
 
-#: src/menu_events.cpp:3486
+#: src/menu_events.cpp:3473
 msgid "Unsafe Lua scripts."
 msgstr "Nem biztonságos Lua szkriptek."
 
-#: src/menu_events.cpp:3487
+#: src/menu_events.cpp:3474
 msgid ""
 "You are about to open a security breach in Wesnoth. Are you sure you want to "
 "continue? If you have downloaded add-ons, do not click 'ok'! They would "
@@ -5573,15 +5194,15 @@ msgstr ""
 "a \"Rendben\"-re! Akár azonnal átvehetik a számítógéped feletti uralmat! Mi "
 "figyelmeztettünk!"
 
-#: src/menu_events.cpp:3490
+#: src/menu_events.cpp:3477
 msgid "Unsafe mode enabled!"
 msgstr "Nem biztonságos üzemmód bekapcsolva!"
 
-#: src/menu_events.cpp:3533
+#: src/menu_events.cpp:3520
 msgid "Variable not found"
 msgstr "A változó nem található"
 
-#: src/menu_events.cpp:3584
+#: src/menu_events.cpp:3571
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
@@ -5589,35 +5210,35 @@ msgstr ""
 "Érvénytelen beállítottság: „$alignment”. A semleges, hűséges, törvénytelen "
 "és ingatag beállítottság használható."
 
-#: src/menu_events.cpp:3640
+#: src/menu_events.cpp:3627
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr "Törölni szeretnéd az összes megismert egységet a súgóból?"
 
-#: src/menu_events.cpp:3651
+#: src/menu_events.cpp:3638
 msgid "Invalid unit type"
 msgstr "Érvénytelen egységtípus"
 
-#: src/menu_events.cpp:3664
+#: src/menu_events.cpp:3651
 msgid "Invalid location"
 msgstr "Érvénytelen hely"
 
-#: src/menu_events.cpp:3699
+#: src/menu_events.cpp:3686
 msgid "Planning mode activated!"
 msgstr "Lépéstervező üzemmód bekapcsolva!"
 
-#: src/menu_events.cpp:3702
+#: src/menu_events.cpp:3689
 msgid "Planning mode deactivated!"
 msgstr "Lépéstervező üzemmód kikapcsolva!"
 
-#: src/menu_events.cpp:3715
+#: src/menu_events.cpp:3702
 msgid "ai"
 msgstr "MI"
 
-#: src/menu_events.cpp:3725 src/menu_events.cpp:3755
+#: src/menu_events.cpp:3712 src/menu_events.cpp:3742
 msgid "prompt^Command:"
 msgstr "Parancs:"
 
-#: src/mouse_events.cpp:726
+#: src/mouse_events.cpp:792
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
@@ -5625,15 +5246,61 @@ msgstr ""
 "Nem hagyhatod ott a vezéreddel a várkastélyt, amíg tervezett toborzások vagy "
 "visszahívások vannak hátra."
 
-#: src/mouse_events.cpp:843 src/mouse_events.cpp:923
+#: src/mouse_events.cpp:909 src/mouse_events.cpp:989
 msgid "Attack Enemy"
 msgstr "Ellenség megtámadása"
 
-#: src/mouse_events.cpp:924
+#: src/mouse_events.cpp:990
 msgid "Choose weapon:"
 msgstr "Válassz fegyvert:"
 
-#: src/multiplayer.cpp:150 src/multiplayer.cpp:187
+#: src/mp_depcheck.cpp:408 src/mp_depcheck.cpp:419
+msgid "A component"
+msgstr ""
+
+#: src/mp_depcheck.cpp:458
+#, fuzzy
+#| msgid "Install dependencies"
+msgid "Failed to resolve dependencies"
+msgstr "Függőségek telepítése"
+
+#: src/mp_depcheck.cpp:484
+msgid "Scenario can't be activated. Some dependencies are missing: "
+msgstr ""
+
+#: src/mp_depcheck.cpp:539 src/mp_depcheck.cpp:661
+#, fuzzy
+#| msgid "No eras found."
+msgid "No compatible eras found."
+msgstr "Nem találtam korszakot."
+
+#: src/mp_depcheck.cpp:555
+msgid "Era can't be activated. Some dependencies are missing: "
+msgstr ""
+
+#: src/mp_depcheck.cpp:607 src/mp_depcheck.cpp:698
+#, fuzzy
+#| msgid "No multiplayer sides found"
+msgid "No compatible scenarios found."
+msgstr "Nem találtam többjátékos oldalt"
+
+#: src/mp_depcheck.cpp:636
+msgid ""
+"Not all of the chosen modifications are compatible. Some of them will be "
+"disabled."
+msgstr ""
+
+#: src/mp_options.cpp:181
+msgid ""
+"None of the selected modifications, era or scenario provide configuration "
+"options."
+msgstr ""
+
+#: src/mp_options.cpp:222
+msgid "Restore defaults"
+msgstr ""
+
+#: src/multiplayer.cpp:150 src/multiplayer.cpp:193
 msgid "Connecting to Server..."
 msgstr "Csatlakozás a kiszolgálóhoz..."
 
@@ -5641,23 +5308,27 @@ msgstr "Csatlakozás a kiszolgálóhoz..."
 msgid "Reading from Server..."
 msgstr "Adatok fogadása a kiszolgálótól..."
 
-#: src/multiplayer.cpp:170
+#: src/multiplayer.cpp:176
+#, fuzzy
+#| msgid ""
+#| "The server requires version '$version1' while you are using version "
+#| "'$version2'"
 msgid ""
-"The server requires version '$version1' while you are using version "
+"The server accepts versions '$version1' while you are using version "
 "'$version2'"
 msgstr ""
 "A kiszolgáló a(z) $version1 verzió használatát igényli, de te a(z) $version2 "
 "verziót használod."
 
-#: src/multiplayer.cpp:181
+#: src/multiplayer.cpp:187
 msgid "Server-side redirect loop"
 msgstr "Kiszolgálóoldali átirányító hurok"
 
-#: src/multiplayer.cpp:228 src/multiplayer.cpp:313 src/multiplayer_ui.cpp:87
+#: src/multiplayer.cpp:234 src/multiplayer.cpp:319 src/multiplayer_ui.cpp:88
 msgid "Connection timed out"
 msgstr "A kapcsolat túllépte az időt"
 
-#: src/multiplayer.cpp:240
+#: src/multiplayer.cpp:246
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -5667,27 +5338,27 @@ msgstr ""
 "fiókodat villanylevélben, vagy nem kérsz meg egy adminisztrátort, hogy "
 "aktiválja neked."
 
-#: src/multiplayer.cpp:249
+#: src/multiplayer.cpp:255
 msgid "Do you want to continue?"
 msgstr "Folytatni akarod?"
 
-#: src/multiplayer.cpp:251
+#: src/multiplayer.cpp:257
 msgid "Warning"
 msgstr "Figyelmeztetés "
 
-#: src/multiplayer.cpp:295
+#: src/multiplayer.cpp:301
 msgid "Bad data received from server"
 msgstr "Helytelen adatok érkeztek a kiszolgálótól"
 
-#: src/multiplayer.cpp:336
+#: src/multiplayer.cpp:342
 msgid "You must login first."
 msgstr "Először be kell jelentkezned."
 
-#: src/multiplayer.cpp:338
+#: src/multiplayer.cpp:344
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "Ez a becenév („$nick”) már foglalt."
 
-#: src/multiplayer.cpp:340
+#: src/multiplayer.cpp:346
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters, underscores and hyphens are allowed."
@@ -5695,32 +5366,32 @@ msgstr ""
 "A megadott becenév („$nick”) érvénytelen karaktereket tartalmaz. Csak ékezet "
 "nélküli betűk, számok, aláhúzás és kötőjel használható."
 
-#: src/multiplayer.cpp:344
+#: src/multiplayer.cpp:350
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr ""
 "A megadott becenév („$nick”) túl hosszú. Huszonegy karakternél rövidebbnek "
 "kell lennie."
 
-#: src/multiplayer.cpp:347
+#: src/multiplayer.cpp:353
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr ""
 "Ez a becenév („$nick”) különleges célokra van fenntartva, játékosok nem "
 "használhatják."
 
-#: src/multiplayer.cpp:349
+#: src/multiplayer.cpp:355
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "A megadott becenév („$nick”) nincs regisztrálva a kiszolgálón."
 
-#: src/multiplayer.cpp:350
+#: src/multiplayer.cpp:356
 msgid " This server disallows unregistered nicknames."
 msgstr ""
 " Ehhez a kiszolgálóhoz csak regisztrált felhasználónévvel lehet csatlakozni."
 
-#: src/multiplayer.cpp:352 src/multiplayer.cpp:354
+#: src/multiplayer.cpp:358 src/multiplayer.cpp:360
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "A megadott becenév („$nick”) regisztrálva van a kiszolgálón."
 
-#: src/multiplayer.cpp:355
+#: src/multiplayer.cpp:361
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -5728,349 +5399,366 @@ msgstr ""
 "FIGYELMEZTETÉS: Egy másik kliens már bejelentkezett ezzel a becenévvel! Az "
 "ismételt bejelentkezés az első kliens leválasztását vonja maga után!"
 
-#: src/multiplayer.cpp:358
+#: src/multiplayer.cpp:364
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
 "Hiba a bejelentkezés folyamatában (a kiszolgálónak nem volt elég kapacitása "
 "egy új kapcsolat fogadásához)."
 
-#: src/multiplayer.cpp:361
+#: src/multiplayer.cpp:367
 msgid "The password you provided was incorrect."
 msgstr "A megadott jelszó érvénytelen."
 
-#: src/multiplayer.cpp:363
+#: src/multiplayer.cpp:369
 msgid "You have made too many login attempts."
 msgstr "Túl sok sikertelen belépési kísérleted volt."
 
-#: src/multiplayer_connect.cpp:103 src/multiplayer_connect.cpp:452
-#: src/multiplayer_connect.cpp:600
+#: src/multiplayer_connect.cpp:104 src/multiplayer_connect.cpp:453
+#: src/multiplayer_connect.cpp:601
 msgid "Normal"
 msgstr "Sima"
 
-#: src/multiplayer_connect.cpp:448 src/multiplayer_connect.cpp:596
+#: src/multiplayer_connect.cpp:449 src/multiplayer_connect.cpp:597
 #: src/multiplayer_wait.cpp:513 src/multiplayer_wait.cpp:521
 msgid "("
 msgstr "("
 
-#: src/multiplayer_connect.cpp:448 src/multiplayer_connect.cpp:596
+#: src/multiplayer_connect.cpp:449 src/multiplayer_connect.cpp:597
 #: src/multiplayer_wait.cpp:513 src/multiplayer_wait.cpp:524
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_connect.cpp:450 src/multiplayer_connect.cpp:598
+#: src/multiplayer_connect.cpp:451 src/multiplayer_connect.cpp:599
 #: src/multiplayer_wait.cpp:523
 msgid "+"
 msgstr "+"
 
-#: src/multiplayer_connect.cpp:628
+#: src/multiplayer_connect.cpp:629
 msgid "(Vacant slot)"
 msgstr "(Betölthető hely)"
 
-#: src/multiplayer_connect.cpp:636
+#: src/multiplayer_connect.cpp:637
 msgid "Anonymous local player"
 msgstr "Névtelen helyi játékos"
 
-#: src/multiplayer_connect.cpp:649 src/multiplayer_connect.cpp:1528
+#: src/multiplayer_connect.cpp:650 src/multiplayer_connect.cpp:1529
 msgid "Computer Player"
 msgstr "Számítógép"
 
-#: src/multiplayer_connect.cpp:652
+#: src/multiplayer_connect.cpp:653
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/multiplayer_connect.cpp:656
+#: src/multiplayer_connect.cpp:657
 msgid "(Empty slot)"
 msgstr "(Üres hely)"
 
-#: src/multiplayer_connect.cpp:663
+#: src/multiplayer_connect.cpp:664
 msgid "(Reserved for $playername)"
 msgstr "($playername számára fenntartva)"
 
-#: src/multiplayer_connect.cpp:765
+#: src/multiplayer_connect.cpp:766
 msgid "Reserved"
 msgstr "Foglalt"
 
-#: src/multiplayer_connect.cpp:766
+#: src/multiplayer_connect.cpp:767
 msgid "--give--"
 msgstr "--kijelöl--"
 
-#: src/multiplayer_connect.cpp:947
+#: src/multiplayer_connect.cpp:948
 msgid "Only random sides in the current era."
 msgstr "Ebben a korszakban csak véletlenszerűen meghatározott csapatok vannak."
 
-#: src/multiplayer_connect.cpp:1008
+#: src/multiplayer_connect.cpp:1009
 msgid "Game Lobby: "
 msgstr "Játékcsarnok: "
 
-#: src/multiplayer_connect.cpp:1030
+#: src/multiplayer_connect.cpp:1031
 msgid "Player/Type"
 msgstr "Játékos/Típus"
 
-#: src/multiplayer_connect.cpp:1031
+#: src/multiplayer_connect.cpp:1032
 msgid "Faction"
 msgstr "Szövetség"
 
-#: src/multiplayer_connect.cpp:1032
+#: src/multiplayer_connect.cpp:1033
 msgid "Team/Gender"
 msgstr "Csapat/Nem"
 
-#: src/multiplayer_connect.cpp:1033
+#: src/multiplayer_connect.cpp:1034
 msgid "Color"
 msgstr "Szín"
 
-#: src/multiplayer_connect.cpp:1037
+#: src/multiplayer_connect.cpp:1038
 msgid "I’m Ready"
 msgstr "Indulhat!"
 
-#: src/multiplayer_connect.cpp:1039
+#: src/multiplayer_connect.cpp:1040
 msgid "Add named local player"
 msgstr "Helyi játékos hozzáadása"
 
-#: src/multiplayer_connect.cpp:1049
+#: src/multiplayer_connect.cpp:1050
 msgid "The scenario is invalid because it has no id."
 msgstr "Ez a pálya érvénytelen, mert nincs azonosítószáma."
 
-#: src/multiplayer_connect.cpp:1053
+#: src/multiplayer_connect.cpp:1054
 msgid "The scenario is invalid because it has no sides."
 msgstr "Ez a pálya érvénytelen, mert nincsen benne hely a csapatoknak."
 
-#: src/multiplayer_connect.cpp:1120
+#: src/multiplayer_connect.cpp:1121
 msgid "Enter a name for the new player"
 msgstr "Adj meg egy nevet az új játékosnak"
 
-#: src/multiplayer_connect.cpp:1121 src/reports.cpp:155 src/savegame.cpp:882
+#: src/multiplayer_connect.cpp:1122 src/reports.cpp:155 src/savegame.cpp:890
 msgid "Name: "
 msgstr "Név: "
 
-#: src/multiplayer_connect.cpp:1525
+#: src/multiplayer_connect.cpp:1526
 msgid "Network Player"
 msgstr "Hálózati játékos"
 
-#: src/multiplayer_connect.cpp:1527
+#: src/multiplayer_connect.cpp:1528
 msgid "Local Player"
 msgstr "Helyi játékos"
 
-#: src/multiplayer_connect.cpp:1529
+#: src/multiplayer_connect.cpp:1530
 msgid "Empty"
 msgstr "Üres"
 
-#: src/multiplayer_connect.cpp:1682
+#: src/multiplayer_connect.cpp:1687
 msgid "Cannot find era $era"
 msgstr "Nem találom a(z) $era korszakot"
 
-#: src/multiplayer_connect.cpp:1708
+#: src/multiplayer_connect.cpp:1728
 msgid "Defeat enemy leader(s)"
 msgstr "Legyőzöd az (összes) ellenfél vezérét"
 
-#: src/multiplayer_connect.cpp:1813
+#: src/multiplayer_connect.cpp:1833
 msgid "Waiting for players to join..."
 msgstr "Várakozás a hálózati játékosok kapcsolódására..."
 
-#: src/multiplayer_connect.cpp:1814
+#: src/multiplayer_connect.cpp:1834
 msgid "Waiting for players to choose factions..."
 msgstr "Várakozás, amíg a játékosok szövetséget választanak..."
 
-#: src/multiplayer_create.cpp:58 src/multiplayer_lobby.cpp:743
+#: src/multiplayer_create.cpp:58 src/multiplayer_lobby.cpp:784
 msgid "Create Game"
 msgstr "Játék létrehozása"
 
-#: src/multiplayer_create.cpp:72
+#: src/multiplayer_create.cpp:74
 msgid "Time limit"
 msgstr "Időkorlát"
 
-#: src/multiplayer_create.cpp:87
+#: src/multiplayer_create.cpp:89
 msgid "Name of game:"
 msgstr "A játék neve:"
 
-#: src/multiplayer_create.cpp:90
+#: src/multiplayer_create.cpp:92
 msgid "Era:"
 msgstr "Korszak:"
 
-#: src/multiplayer_create.cpp:91
+#: src/multiplayer_create.cpp:93
 msgid "Map to play:"
 msgstr "Pálya kiválasztása:"
 
-#: src/multiplayer_create.cpp:92 src/multiplayer_lobby.cpp:289
+#: src/multiplayer_create.cpp:94 src/multiplayer_lobby.cpp:304
 msgid "Use map settings"
 msgstr "Alapbeállítások"
 
-#: src/multiplayer_create.cpp:93
+#: src/multiplayer_create.cpp:95
 msgid "Random start time"
 msgstr "Véletlen kezdőnapszak"
 
-#: src/multiplayer_create.cpp:94
+#: src/multiplayer_create.cpp:96
 msgid "Fog of war"
 msgstr "Köd"
 
-#: src/multiplayer_create.cpp:96
+#: src/multiplayer_create.cpp:98
 msgid "Observers"
 msgstr "Megfigyelők"
 
-#: src/multiplayer_create.cpp:97
+#: src/multiplayer_create.cpp:99
 msgid "Shuffle sides"
 msgstr "Véletlenszerű kezdőjátékos"
 
 #: src/multiplayer_create.cpp:100
+#, fuzzy
+#| msgid "Settings..."
+msgid "Options..."
+msgstr "Beállítások..."
+
+#: src/multiplayer_create.cpp:103
 msgid "Regenerate"
 msgstr "Újrarajzolás"
 
-#: src/multiplayer_create.cpp:101
+#: src/multiplayer_create.cpp:104
 msgid "Settings..."
 msgstr "Beállítások..."
 
-#: src/multiplayer_create.cpp:102
+#: src/multiplayer_create.cpp:105
 msgid "Set Password..."
 msgstr "Jelszó beállítása..."
 
-#: src/multiplayer_create.cpp:121
+#: src/multiplayer_create.cpp:106
+msgid "Modifications..."
+msgstr ""
+
+#: src/multiplayer_create.cpp:127
 msgid "Load Game..."
 msgstr "A játék betöltése..."
 
-#: src/multiplayer_create.cpp:157
+#: src/multiplayer_create.cpp:182
 msgid "The maximum number of turns the game can last"
 msgstr "Legfeljebb ennyi körig tarthat a játék"
 
-#: src/multiplayer_create.cpp:160
+#: src/multiplayer_create.cpp:185
 msgid "Enables user time limit"
 msgstr "A játékos egy körre fordítható idejének korlátozása"
 
-#: src/multiplayer_create.cpp:166
+#: src/multiplayer_create.cpp:191
 msgid "Longest time allowed for first turn (seconds)"
 msgstr "Az első körre engedett leghosszabb felhasználható idő (másodpercben)"
 
-#: src/multiplayer_create.cpp:172
+#: src/multiplayer_create.cpp:197
 msgid "Longest time possible for any turn (seconds)"
 msgstr "Bármely körre engedett leghosszabb felhasználható idő (másodpercben)"
 
-#: src/multiplayer_create.cpp:178
+#: src/multiplayer_create.cpp:203
 msgid "Time for general tasks each turn (seconds)"
 msgstr "Általános feladatokra fordítható idő egy-egy körben (másodpercben)"
 
-#: src/multiplayer_create.cpp:184
+#: src/multiplayer_create.cpp:209
 msgid "Time for each attack, recruit, and capture"
 msgstr ""
 "Egy-egy támadásra, toborzásra, illetve falufoglalásra felhasználható idő."
 
-#: src/multiplayer_create.cpp:189
+#: src/multiplayer_create.cpp:214
 msgid "The amount of income each village yields per turn"
 msgstr "Az egy-egy falu által biztosított bevétel mértéke"
 
-#: src/multiplayer_create.cpp:194
+#: src/multiplayer_create.cpp:219
 #, fuzzy
 #| msgid "The maximum number of turns the game can last"
 msgid "The number of unit levels each village can support"
 msgstr "Legfeljebb ennyi körig tarthat a játék"
 
-#: src/multiplayer_create.cpp:200
+#: src/multiplayer_create.cpp:225
 msgid "The amount of experience a unit needs to advance"
 msgstr "A szintlépéshez szükséges tapasztalati követelmény mértéke"
 
-#: src/multiplayer_create.cpp:203
+#: src/multiplayer_create.cpp:228
 msgid "Use scenario specific settings"
 msgstr "A pályára jellemző alapértelmezett beállítások használata"
 
-#: src/multiplayer_create.cpp:206
+#: src/multiplayer_create.cpp:231
 msgid "Randomize time of day in begin"
 msgstr "Véletlenszerűen dől el, hogy milyen napszak legyen kezdéskor"
 
-#: src/multiplayer_create.cpp:209
+#: src/multiplayer_create.cpp:234
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr "Az ellenség nem látható, amíg az egységeid látókörébe nem kerül"
 
-#: src/multiplayer_create.cpp:212
+#: src/multiplayer_create.cpp:237
 msgid "The map is unknown until your units explore it"
 msgstr "A pálya ismeretlen, amíg az egységeid fel nem fedezik"
 
-#: src/multiplayer_create.cpp:215
+#: src/multiplayer_create.cpp:240
 msgid "Allow users who are not playing to watch the game"
 msgstr ""
 "A játék megfigyelésének engedélyezése azok számára, akik a játékban nem "
 "vesznek részt"
 
-#: src/multiplayer_create.cpp:218
+#: src/multiplayer_create.cpp:243
 msgid "Assign sides to players at random"
 msgstr "Véletlenszerűen alakul, hogy melyik játékos kezd"
 
-#: src/multiplayer_create.cpp:222
+#: src/multiplayer_create.cpp:247
 msgid "Share View"
 msgstr "Nézőpont megosztása"
 
-#: src/multiplayer_create.cpp:223
+#: src/multiplayer_create.cpp:248
 msgid "Share Maps"
 msgstr "Pálya megosztása"
 
-#: src/multiplayer_create.cpp:224
+#: src/multiplayer_create.cpp:249
 msgid "Share None"
 msgstr "Nincs megosztás"
 
-#: src/multiplayer_create.cpp:234
+#: src/multiplayer_create.cpp:259
 msgid "No eras found."
 msgstr "Nem találtam korszakot."
 
-#: src/multiplayer_create.cpp:235
+#: src/multiplayer_create.cpp:260
 msgid "No eras found"
 msgstr "Nem találtam korszakot"
 
-#: src/multiplayer_create.cpp:248
+#: src/multiplayer_create.cpp:289
 msgid "$login|’s game"
 msgstr "$login játéka"
 
-#: src/multiplayer_create.cpp:315
+#: src/multiplayer_create.cpp:358
 msgid "Invalid era selected"
 msgstr "A kiválasztott korszak érvénytelen"
 
-#: src/multiplayer_create.cpp:363
+#: src/multiplayer_create.cpp:407
 msgid "The map is invalid."
 msgstr "A térkép érvénytelen."
 
-#: src/multiplayer_create.cpp:365
+#: src/multiplayer_create.cpp:409
 msgid "You must enter a name."
 msgstr "Meg kell adnod egy nevet."
 
-#: src/multiplayer_create.cpp:383
+#: src/multiplayer_create.cpp:429
+msgid ""
+"There are no modifications currently installed. To download modifications, "
+"connect to the add-ons server by choosing the 'Add-ons' option on the main "
+"screen."
+msgstr ""
+
+#: src/multiplayer_create.cpp:450
 msgid "Turns: "
 msgstr "A körök maximális száma: "
 
-#: src/multiplayer_create.cpp:385
+#: src/multiplayer_create.cpp:452
 msgid "Unlimited turns"
 msgstr "Korlátlan számú kör"
 
-#: src/multiplayer_create.cpp:413
+#: src/multiplayer_create.cpp:480
 msgid "Init. limit: "
 msgstr "Kezdeti időkorlát: "
 
-#: src/multiplayer_create.cpp:418
+#: src/multiplayer_create.cpp:485
 msgid "Turn bonus: "
 msgstr "Kör bónusz: "
 
-#: src/multiplayer_create.cpp:422
+#: src/multiplayer_create.cpp:489
 msgid "Reservoir: "
 msgstr "Általános időkorlát: "
 
-#: src/multiplayer_create.cpp:427
+#: src/multiplayer_create.cpp:494
 msgid "Action bonus: "
 msgstr "Cselekvési bónusz: "
 
-#: src/multiplayer_create.cpp:434
+#: src/multiplayer_create.cpp:501
 msgid "Village gold: "
 msgstr "Falvankénti arany: "
 
-#: src/multiplayer_create.cpp:440
+#: src/multiplayer_create.cpp:507
 #, fuzzy
 #| msgid "Village gold: "
-msgid "Village Support: "
+msgid "Village support: "
 msgstr "Falvankénti arany: "
 
-#: src/multiplayer_create.cpp:446
+#: src/multiplayer_create.cpp:513
 msgid "Experience modifier: "
 msgstr "Szintlépési küszöb: "
 
-#: src/multiplayer_create.cpp:589
+#: src/multiplayer_create.cpp:656
 msgid "Players: "
 msgstr "Játékosok: "
 
-#: src/multiplayer_create.cpp:590
+#: src/multiplayer_create.cpp:657
 msgid "Size: "
 msgstr "Méret: "
 
@@ -6082,60 +5770,64 @@ msgstr "--nincs nyitott játék--"
 msgid " (Unknown Era)"
 msgstr "(Ismeretlen korszak)"
 
-#: src/multiplayer_lobby.cpp:553 src/multiplayer_lobby.cpp:892
+#: src/multiplayer_lobby.cpp:557
+msgid " (missing)"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:594 src/multiplayer_lobby.cpp:933
 msgid "Password Required"
 msgstr "Jelszó szükséges"
 
-#: src/multiplayer_lobby.cpp:736 src/multiplayer_wait.cpp:179
+#: src/multiplayer_lobby.cpp:777 src/multiplayer_wait.cpp:179
 msgid "Game Lobby"
 msgstr "Játékcsarnok"
 
-#: src/multiplayer_lobby.cpp:741
+#: src/multiplayer_lobby.cpp:782
 msgid "Observe Game"
 msgstr "Játék megfigyelése"
 
-#: src/multiplayer_lobby.cpp:742
+#: src/multiplayer_lobby.cpp:783
 msgid "Join Game"
 msgstr "Csatlakozás játékhoz"
 
-#: src/multiplayer_lobby.cpp:744
+#: src/multiplayer_lobby.cpp:785
 msgid "Quick replays"
 msgstr "Gyorsított visszajátszások"
 
-#: src/multiplayer_lobby.cpp:745
+#: src/multiplayer_lobby.cpp:786
 msgid "Preferences"
 msgstr "Beállítások"
 
-#: src/multiplayer_lobby.cpp:746
+#: src/multiplayer_lobby.cpp:787
 msgid "Quit"
 msgstr "Kilépés"
 
-#: src/multiplayer_lobby.cpp:747
+#: src/multiplayer_lobby.cpp:788
 msgid "Apply filter"
 msgstr "Szűrő alkalmazása"
 
-#: src/multiplayer_lobby.cpp:748
+#: src/multiplayer_lobby.cpp:789
 msgid "Invert"
 msgstr "Ellentétes szűrés"
 
-#: src/multiplayer_lobby.cpp:749
+#: src/multiplayer_lobby.cpp:790
 msgid "Vacant slots"
 msgstr "Van üres hely"
 
-#: src/multiplayer_lobby.cpp:750
+#: src/multiplayer_lobby.cpp:791
 msgid "Friends in game"
 msgstr "Barátok a játékban"
 
-#: src/multiplayer_lobby.cpp:751
+#: src/multiplayer_lobby.cpp:792
 msgid "Search:"
 msgstr "Keresés:"
 
-#: src/multiplayer_lobby.cpp:759
+#: src/multiplayer_lobby.cpp:800
 msgid "Skip quickly to the active turn when observing"
 msgstr ""
 "Megfigyeléskor a visszajátszás gyors átugrása egészen a jelenlegi körig"
 
-#: src/multiplayer_lobby.cpp:762
+#: src/multiplayer_lobby.cpp:803
 msgid ""
 "Enable the games filter. If unchecked all games are shown, regardless of any "
 "filter."
@@ -6143,7 +5835,7 @@ msgstr ""
 "Alkalmazza a szűrési feltételeket. Ha nincs bejelölve, minden játék látszik "
 "a többi szűrőtől függetlenül."
 
-#: src/multiplayer_lobby.cpp:765
+#: src/multiplayer_lobby.cpp:806
 msgid ""
 "Show all games that do *not* match your filter. Useful for hiding games you "
 "are not interested in."
@@ -6151,37 +5843,37 @@ msgstr ""
 "Mutasson minden játékot, amely NEM felel meg a szűrési feltételnek.\n"
 "Akkor hasznos, ha nem akarod látni a számodra érdektelen játékokat."
 
-#: src/multiplayer_lobby.cpp:769
+#: src/multiplayer_lobby.cpp:810
 msgid "Only show games that have at least one vacant slot"
 msgstr ""
 "Csak azokat a játékokat mutassa, amelyekben van legalább egy betöltetlen hely"
 
-#: src/multiplayer_lobby.cpp:773
+#: src/multiplayer_lobby.cpp:814
 msgid ""
 "Only show games that are played or observed by at least one of your friends"
 msgstr ""
 "Csak azokat a játékokat mutassa, amelyekben részt vesz egy barátod (akár "
 "játékosként, akár megfigyelőként)"
 
-#: src/multiplayer_lobby.cpp:779
+#: src/multiplayer_lobby.cpp:820
 msgid "Only show games whose title or description contain the entered text"
 msgstr ""
 "Csak azokat a játékokat mutassa, amelyek címe vagy leírása tartalmazza a "
 "beírt szöveget"
 
-#: src/multiplayer_lobby.cpp:893
+#: src/multiplayer_lobby.cpp:934
 msgid "Joining this game requires a password."
 msgstr "A játékhoz való csatlakozáshoz jelszó szükséges."
 
-#: src/multiplayer_lobby.cpp:894
+#: src/multiplayer_lobby.cpp:935
 msgid "Password: "
 msgstr "Jelszó: "
 
-#: src/multiplayer_ui.cpp:206
+#: src/multiplayer_ui.cpp:208
 msgid "Invalid Color"
 msgstr "Érvénytelen szín"
 
-#: src/multiplayer_ui.cpp:433
+#: src/multiplayer_ui.cpp:436
 msgid "Selected user: "
 msgstr "A kiválasztott felhasználó: "
 
@@ -6223,24 +5915,24 @@ msgid_plural "multiplayer_starting_gold^Gold"
 msgstr[0] "Arany"
 msgstr[1] "Arany"
 
-#: src/network.cpp:109
+#: src/network.cpp:112
 msgid "invalid network handle"
 msgstr "érvénytelen hálózati fogantyú"
 
-#: src/network.cpp:142 src/network_manager_ana.cpp:780
+#: src/network.cpp:145 src/network_manager_ana.cpp:780
 #: src/network_manager_ana.cpp:787
 msgid "Client disconnected"
 msgstr "A kliens lekapcsolódott"
 
-#: src/network.cpp:398 src/network.cpp:406
+#: src/network.cpp:401 src/network.cpp:409
 msgid "Could not connect to host."
 msgstr "Nem sikerült kapcsolódni a kiszolgálóhoz."
 
-#: src/network.cpp:571
+#: src/network.cpp:574
 msgid "Could not add socket to socket set"
 msgstr "Nem sikerült a foglalatot a foglalatcsoporthoz adni"
 
-#: src/network.cpp:583
+#: src/network.cpp:586
 msgid "Could not send initial handshake"
 msgstr "A bemutatkozó kézfogás küldése sikertelen"
 
@@ -6262,24 +5954,24 @@ msgstr "A jelenlegi körből hátralévő idő"
 msgid "current local time"
 msgstr "Az aktuális helyi idő"
 
-#: src/play_controller.cpp:1124 src/savegame.cpp:459 src/savegame.cpp:471
-#: src/savegame.cpp:1092 src/savegame.cpp:1094
+#: src/play_controller.cpp:1137 src/savegame.cpp:468 src/savegame.cpp:480
+#: src/savegame.cpp:1100 src/savegame.cpp:1102
 msgid "Auto-Save"
 msgstr "Automatikus mentés"
 
-#: src/play_controller.cpp:1131
+#: src/play_controller.cpp:1144
 #, fuzzy
 #| msgid "Back to turn "
 msgid "Back to Turn "
 msgstr "Vissza ehhez a körhöz: "
 
-#: src/play_controller.cpp:1142
+#: src/play_controller.cpp:1155
 #, fuzzy
 #| msgid "Back to turn "
 msgid "Back to Start"
 msgstr "Vissza ehhez a körhöz: "
 
-#: src/play_controller.cpp:1404
+#: src/play_controller.cpp:1417
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -6287,7 +5979,7 @@ msgstr ""
 "Szinkronvesztés következett be a játékosok között. Elképzelhető, hogy nincs "
 "értelme a folytatásnak. El akarod menteni a játékot?"
 
-#: src/play_controller.cpp:1405 src/replay_controller.cpp:328
+#: src/play_controller.cpp:1418 src/replay_controller.cpp:328
 msgid "Error details:"
 msgstr "A hiba részletezése:"
 
@@ -6303,31 +5995,31 @@ msgstr "Győzelem"
 msgid "You have emerged victorious!"
 msgstr "Győztél!"
 
-#: src/playcampaign.cpp:234 src/playcampaign.cpp:284
+#: src/playcampaign.cpp:232 src/playcampaign.cpp:282
 msgid "Defeat"
 msgstr "Vereség"
 
-#: src/playcampaign.cpp:235 src/playcampaign.cpp:285
+#: src/playcampaign.cpp:233 src/playcampaign.cpp:283
 msgid "You have been defeated!"
 msgstr "Kikaptál!"
 
-#: src/playcampaign.cpp:512
+#: src/playcampaign.cpp:509
 msgid "Error while reading the WML: "
 msgstr "Hiba a játék kódjában (WML): "
 
-#: src/playcampaign.cpp:548 src/playsingle_controller.cpp:456
+#: src/playcampaign.cpp:545 src/playsingle_controller.cpp:456
 msgid "Game Over"
 msgstr "Játék vége"
 
-#: src/playcampaign.cpp:549
+#: src/playcampaign.cpp:546
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Ennek a küldetésnek vége. Folytatod a hadjáratot?"
 
-#: src/playcampaign.cpp:580
+#: src/playcampaign.cpp:577
 msgid "Downloading next scenario..."
 msgstr "Következő küldetés letöltése..."
 
-#: src/playcampaign.cpp:737
+#: src/playcampaign.cpp:734
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Ismeretlen küldetés: „$scenario|”"
 
@@ -6348,7 +6040,7 @@ msgstr ""
 msgid "Waiting for next scenario..."
 msgstr "Várakozás a következő küldetésre..."
 
-#: src/playmp_controller.cpp:533
+#: src/playmp_controller.cpp:532
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -6455,23 +6147,23 @@ msgstr "A hálózat megszakadt, így a játék nem folytatható. Elmented az ál
 msgid "It is now $name|’s turn"
 msgstr "$name következik"
 
-#: src/playturn.cpp:239
+#: src/playturn.cpp:245
 msgid "Replace with AI"
 msgstr "Helyettesítés MI-vel"
 
-#: src/playturn.cpp:240
+#: src/playturn.cpp:246
 msgid "Replace with local player"
 msgstr "Helyettesítés helyi játékossal"
 
-#: src/playturn.cpp:241
+#: src/playturn.cpp:247
 msgid "Abort game"
 msgstr "A játék megszakítása"
 
-#: src/playturn.cpp:247 src/playturn.cpp:261
+#: src/playturn.cpp:253 src/playturn.cpp:267
 msgid "Replace with $player"
 msgstr "Helyettesítés $player játékossal"
 
-#: src/playturn.cpp:267
+#: src/playturn.cpp:273
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player kilépett a játékból. Mit tegyünk most?"
 
@@ -6561,133 +6253,159 @@ msgstr "Ezt az egységet kővé változtatták. Nem léphet, és nem is harcolha
 msgid "Alignment: "
 msgstr "Beállítottság: "
 
-#: src/reports.cpp:368
+#: src/reports.cpp:380
 msgid "Ability: "
 msgstr "Képességek:"
 
-#: src/reports.cpp:413
+#: src/reports.cpp:382 src/reports.cpp:740
+msgid " (inactive)"
+msgstr ""
+
+#: src/reports.cpp:429
 msgid "Resistances: "
 msgstr "Ellenállások: "
 
-#: src/reports.cpp:415
+#: src/reports.cpp:431
 msgid "(Att / Def)"
 msgstr "(Tám / Véd)"
 
-#: src/reports.cpp:441
+#: src/reports.cpp:457
 msgid "Experience Modifier: "
 msgstr "Szintlépési küszöb:"
 
-#: src/reports.cpp:492
+#: src/reports.cpp:508
 msgid "Terrain: "
 msgstr "Terep: "
 
-#: src/reports.cpp:509
+#: src/reports.cpp:525
 msgid "maximum^max."
 msgstr "max."
 
-#: src/reports.cpp:509
+#: src/reports.cpp:525
 msgid "minimum^min."
 msgstr "min."
 
-#: src/reports.cpp:514
+#: src/reports.cpp:530
 msgid "Defense: "
 msgstr "Védekezés: "
 
-#: src/reports.cpp:596 src/reports.cpp:781 src/reports.cpp:793
+#: src/reports.cpp:610 src/reports.cpp:827 src/reports.cpp:839
 msgid "Weapon: "
 msgstr "Fegyver: "
 
-#: src/reports.cpp:597 src/reports.cpp:782
+#: src/reports.cpp:611 src/reports.cpp:828
 msgid "Damage: "
 msgstr "Sebzés: "
 
-#: src/reports.cpp:601
+#: src/reports.cpp:615
 msgid "Base damage: "
 msgstr "Alapsebzés: "
 
-#: src/reports.cpp:603
+#: src/reports.cpp:617 src/reports.cpp:651 src/reports.cpp:661
+#, fuzzy
+#| msgid "Weapon special: "
+msgid "With specials: "
+msgstr "Különleges támadások: "
+
+#: src/reports.cpp:620
 msgid "Time of day: "
 msgstr "Napszak: "
 
-#: src/reports.cpp:607
+#: src/reports.cpp:624
 msgid "Leadership: "
 msgstr "Hadvezetés: "
 
-#: src/reports.cpp:611
+#: src/reports.cpp:628
 msgid "Slowed: "
 msgstr "Lelassítva: "
 
-#: src/reports.cpp:615
+#: src/reports.cpp:632
 msgid "Attacks: "
 msgstr "Támadás: "
 
-#: src/reports.cpp:617
-msgid "Base attacks: "
-msgstr "Alap támadás: "
+#: src/reports.cpp:636
+#, fuzzy
+#| msgid "Turn bonus: "
+msgid "Max swarm bonus: "
+msgstr "Kör bónusz: "
 
-#: src/reports.cpp:619
+#: src/reports.cpp:637 src/reports.cpp:656
 msgid "Swarm: "
 msgstr "Rajzás: "
 
-#: src/reports.cpp:631
+#: src/reports.cpp:638 src/reports.cpp:649 src/reports.cpp:660
+msgid "Base attacks: "
+msgstr "Alap támadás: "
+
+#: src/reports.cpp:644
+#, fuzzy
+#| msgid "Weapon special: "
+msgid "Specials: "
+msgstr "Különleges támadások: "
+
+#: src/reports.cpp:654
+msgid "Subject to swarm: "
+msgstr ""
+
+#: src/reports.cpp:673
 msgid "Weapon range: "
 msgstr "Hatótávolság: "
 
-#: src/reports.cpp:632
+#: src/reports.cpp:674
 msgid "Damage type: "
 msgstr "Sebzéstípus: "
 
-#: src/reports.cpp:633
+#: src/reports.cpp:675
 msgid "Damage versus: "
 msgstr "Sebzés ellene: "
 
-#: src/reports.cpp:672
+#: src/reports.cpp:714
 msgid "Accuracy:"
 msgstr "%-os pontosság:"
 
-#: src/reports.cpp:677
+#: src/reports.cpp:719
 msgid "Parry:"
 msgstr "%-os hárítás:"
 
-#: src/reports.cpp:694
+#: src/reports.cpp:738
 msgid "Weapon special: "
 msgstr "Különleges támadások: "
 
-#: src/reports.cpp:764
+#: src/reports.cpp:811
 msgid "None"
 msgstr "Egyik sem"
 
-#: src/reports.cpp:956
+#: src/reports.cpp:1002
 msgid "Lawful units: "
 msgstr "Igazságos egységek: "
 
-#: src/reports.cpp:957
+#: src/reports.cpp:1003
 msgid "Neutral units: "
 msgstr "Semleges egységek: "
 
-#: src/reports.cpp:958
+#: src/reports.cpp:1004
 msgid "Chaotic units: "
 msgstr "Törvénytelen egységek: "
 
-#: src/reports.cpp:959
+#: src/reports.cpp:1005
 msgid "Liminal units: "
 msgstr "Ingatag egységek: "
 
-#: src/reports.cpp:1172
+#: src/reports.cpp:1218
 msgid "Observers:"
 msgstr "Megfigyelők:"
 
-#: src/savegame.cpp:393 src/savegame.cpp:395
+#: src/savegame.cpp:394 src/savegame.cpp:396
 msgid " replay"
 msgstr " visszajátszás"
 
-#: src/savegame.cpp:618 src/savegame.cpp:622
+#: src/savegame.cpp:629 src/savegame.cpp:633
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Figyelem: A fájl, amelyet megpróbáltál betölteni, megsérült. Ennek ellenére "
 "betöltöm.\n"
 
-#: src/savegame.cpp:663
+#: src/savegame.cpp:675
 #, fuzzy
 #| msgid "This save is from a version too old to be loaded."
 msgid ""
@@ -6696,7 +6414,7 @@ msgid ""
 msgstr ""
 "Ez a mentés a játéknak egy túl régi verziójával készült. Nem lehet betölteni."
 
-#: src/savegame.cpp:672
+#: src/savegame.cpp:684
 #, fuzzy
 #| msgid ""
 #| "This save is from a different version of the game. Do you want to try to "
@@ -6708,115 +6426,118 @@ msgstr ""
 "Ez a mentés a játék egy másik verziójával készült. Megpróbálod mégis "
 "betölteni? "
 
-#: src/savegame.cpp:730
+#: src/savegame.cpp:741
 msgid "This is not a multiplayer save"
 msgstr "Ez nem egy többjátékos mentés"
 
-#: src/savegame.cpp:797
+#: src/savegame.cpp:808
 msgid "The game could not be saved: "
 msgstr "A játékot nem sikerült elmenteni: "
 
-#: src/savegame.cpp:882
+#: src/savegame.cpp:890
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Már van ilyen mentés. Felülírjam?"
 
-#: src/savegame.cpp:883
+#: src/savegame.cpp:891
 msgid "Overwrite?"
 msgstr "Felülírjam?"
 
-#: src/savegame.cpp:893
-msgid "Save names should not end on '.gz'. Please choose a different name."
+#: src/savegame.cpp:901
+#, fuzzy
+#| msgid "Save names should not end on '.gz'. Please choose a different name."
+msgid ""
+"Save names should not end on '.gz' or '.bz2'. Please remove the extension."
 msgstr "A mentések neve nem végződhet „.gz”-re. Válassz más nevet."
 
-#: src/savegame.cpp:959
+#: src/savegame.cpp:967
 msgid "Saved"
 msgstr "Elmentve"
 
-#: src/savegame.cpp:959
+#: src/savegame.cpp:967
 msgid "The game has been saved"
 msgstr "Az állás mentve"
 
-#: src/savegame.cpp:993 src/savegame.cpp:1014
+#: src/savegame.cpp:1001 src/savegame.cpp:1022
 msgid "Could not write to file"
 msgstr "Nem sikerült a fájlba írni"
 
-#: src/savegame.cpp:1048
+#: src/savegame.cpp:1056
 msgid "Save Replay"
 msgstr "Visszajátszás mentése"
 
-#: src/savegame.cpp:1057
+#: src/savegame.cpp:1065
 msgid "replay"
 msgstr "visszajátszás"
 
-#: src/savegame.cpp:1075
+#: src/savegame.cpp:1083
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "Nem sikerült automatikusan elmenteni az állást. Kérlek, mentsd saját kezűleg."
 
-#: src/savegame.cpp:1124
+#: src/savegame.cpp:1132
 msgid "Save Game"
 msgstr "Állás mentése"
 
-#: src/serialization/parser.cpp:127
+#: src/serialization/parser.cpp:128
 msgid "Unexpected characters at line start"
 msgstr "Nem várt karakterek a sor elején"
 
-#: src/serialization/parser.cpp:145
+#: src/serialization/parser.cpp:146
 #, fuzzy
 #| msgid "Missing closing tag for tag $tag at $pos"
 msgid "Missing closing tag for tag [$tag] at $pos"
 msgstr "Hiányzik a befejező tag a $tag tag-hez. A hiba helye: $pos"
 
-#: src/serialization/parser.cpp:158
+#: src/serialization/parser.cpp:159
 msgid "Unterminated [element] tag"
 msgstr "Befejezetlen [element] tag"
 
-#: src/serialization/parser.cpp:170 src/serialization/parser.cpp:218
+#: src/serialization/parser.cpp:171 src/serialization/parser.cpp:219
 msgid "Invalid tag name"
 msgstr "Érvénytelen nevű tag"
 
-#: src/serialization/parser.cpp:173
+#: src/serialization/parser.cpp:174
 msgid "Unterminated [+element] tag"
 msgstr "Befejezetlen [+element] tag"
 
-#: src/serialization/parser.cpp:195
+#: src/serialization/parser.cpp:196
 msgid "Invalid closing tag name"
 msgstr "Érvénytelen nevű lezáró tag"
 
-#: src/serialization/parser.cpp:198
+#: src/serialization/parser.cpp:199
 msgid "Unterminated closing tag"
 msgstr "Befejezetlen lezáró tag"
 
-#: src/serialization/parser.cpp:200
+#: src/serialization/parser.cpp:201
 msgid "Unexpected closing tag"
 msgstr "Váratlan lezáró tag"
 
-#: src/serialization/parser.cpp:208
+#: src/serialization/parser.cpp:209
 #, fuzzy
 #| msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
 msgid "Found invalid closing tag [/$tag2] for tag [$tag1] (opened at $pos)"
 msgstr ""
 "Érvénytelen lezáró tag ($tag2) a(z) $tag1 tag-hez ($pos helyen megnyitva)"
 
-#: src/serialization/parser.cpp:237 src/serialization/parser.cpp:249
+#: src/serialization/parser.cpp:238 src/serialization/parser.cpp:250
 msgid "Empty variable name"
 msgstr "Üres nevű változó"
 
-#: src/serialization/parser.cpp:243
+#: src/serialization/parser.cpp:244
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr "Nem várt karakterek a változó neve után (csak , vagy = fogadható el)"
 
-#: src/serialization/parser.cpp:282 src/serialization/parser.cpp:310
+#: src/serialization/parser.cpp:283 src/serialization/parser.cpp:311
 msgid "Unterminated quoted string"
 msgstr "Befejezetlen idézett karakterlánc"
 
-#: src/serialization/parser.cpp:362
+#: src/serialization/parser.cpp:363
 msgid "$error, value '$value', previous '$previous_value' at $pos"
 msgstr ""
 "$error hiba a(z) $pos helyen; jelenlegi érték: „$value”, előző érték: „|"
 "$previous_value”"
 
-#: src/serialization/parser.cpp:366
+#: src/serialization/parser.cpp:367
 msgid "$error, value '$value' at $pos"
 msgstr "$error hiba a(z) $pos helyen; érték: „$value”"
 
@@ -6892,47 +6613,65 @@ msgstr "Y"
 msgid "infix_binary^i"
 msgstr "i"
 
-#: src/statistics_dialog.cpp:70 src/statistics_dialog.cpp:126
+#: src/statistics_dialog.cpp:118 src/statistics_dialog.cpp:235
 msgid "Recruits"
 msgstr "Toborzások"
 
-#: src/statistics_dialog.cpp:74 src/statistics_dialog.cpp:137
+#: src/statistics_dialog.cpp:122 src/statistics_dialog.cpp:246
 msgid "Recalls"
 msgstr "Visszahívások"
 
-#: src/statistics_dialog.cpp:78 src/statistics_dialog.cpp:147
+#: src/statistics_dialog.cpp:126 src/statistics_dialog.cpp:256
 msgid "Advancements"
 msgstr "Szintfejlődések"
 
-#: src/statistics_dialog.cpp:82 src/statistics_dialog.cpp:155
+#: src/statistics_dialog.cpp:130 src/statistics_dialog.cpp:264
 msgid "Losses"
 msgstr "Veszteségek"
 
-#: src/statistics_dialog.cpp:87 src/statistics_dialog.cpp:166
+#: src/statistics_dialog.cpp:135 src/statistics_dialog.cpp:275
 msgid "Kills"
 msgstr "Megölt ellenségek"
 
-#: src/statistics_dialog.cpp:107
+#: src/statistics_dialog.cpp:168
 msgid "Details"
 msgstr "Részletek"
 
-#: src/statistics_dialog.cpp:175
+#: src/statistics_dialog.cpp:170
+#, fuzzy
+#| msgid "Test scenario"
+msgid "Select Scenario"
+msgstr "Próbapálya"
+
+#: src/statistics_dialog.cpp:226 src/statistics_dialog.cpp:304
+#, fuzzy
+#| msgid "Campaign Design"
+msgid "Campaign"
+msgstr "Hadjárattervezés"
+
+#: src/statistics_dialog.cpp:226 src/statistics_dialog.cpp:304
+#, fuzzy
+#| msgid "End Scenario"
+msgid "Scenario"
+msgstr "Küldetés vége"
+
+#: src/statistics_dialog.cpp:284
 msgid "Damage"
 msgstr "sebzés"
 
-#: src/statistics_dialog.cpp:176
+#: src/statistics_dialog.cpp:285
 msgid "Overall"
 msgstr "Összességében"
 
-#: src/statistics_dialog.cpp:178
+#: src/statistics_dialog.cpp:289
 msgid "This Turn"
 msgstr "Jelen kör"
 
-#: src/statistics_dialog.cpp:182
+#: src/statistics_dialog.cpp:294
 msgid "Inflicted"
 msgstr "Okozott sebzés"
 
-#: src/statistics_dialog.cpp:187
+#: src/statistics_dialog.cpp:298
 msgid "Taken"
 msgstr "Elszenvedett sebzés"
 
@@ -6940,19 +6679,19 @@ msgstr "Elszenvedett sebzés"
 msgid "Skip"
 msgstr "Kihagyás"
 
-#: src/terrain.cpp:155
+#: src/terrain.cpp:159
 msgid "Village"
 msgstr "Falu"
 
-#: src/terrain.cpp:160
+#: src/terrain.cpp:164
 msgid "Allied village"
 msgstr "Szövetséges falu"
 
-#: src/terrain.cpp:165
+#: src/terrain.cpp:169
 msgid "Enemy village"
 msgstr "Ellenséges falu"
 
-#: src/terrain.cpp:170
+#: src/terrain.cpp:174
 msgid "Owned village"
 msgstr "Elfoglalt falu"
 
@@ -6966,107 +6705,292 @@ msgstr ""
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Hiba a jellemvonások generálásakor – ismeretlen egységtípus: „|$type|”"
 
-#: src/unit.cpp:2501 src/unit.cpp:2718 src/unit.cpp:2794
+#: src/unit.cpp:2512 src/unit.cpp:2759 src/unit.cpp:2835
 msgid " and "
 msgstr " és "
 
-#: src/unit.cpp:2512
+#: src/unit.cpp:2523
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2573
+#: src/unit.cpp:2584
 msgid "moves"
 msgstr "lépések"
 
-#: src/unit.cpp:2588 src/unit.cpp:2742
+#: src/unit.cpp:2614 src/unit.cpp:2783
 msgid "XP to advance"
 msgstr "TP a szintlépéshez"
 
-#: src/unit.cpp:2735
+#: src/unit.cpp:2776
 msgid " move"
 msgstr " lép"
 
-#: src/unit.cpp:2750
+#: src/unit.cpp:2791
 msgid "$effect_description per level"
 msgstr "$effect_description szintenként"
 
-#: src/unit_types.cpp:192 src/unit_types.cpp:262
+#: src/unit_types.cpp:234 src/unit_types.cpp:314
 msgid "damage"
 msgid_plural "damage"
 msgstr[0] "sebzés"
 msgstr[1] "sebzés"
 
-#: src/unit_types.cpp:203 src/unit_types.cpp:270
+#: src/unit_types.cpp:245 src/unit_types.cpp:322
 msgid "strike"
 msgid_plural "strikes"
 msgstr[0] "támadás"
 msgstr[1] "támadás"
 
-#: src/unit_types.cpp:215
+#: src/unit_types.cpp:257
 #, no-c-format
 msgid "% accuracy"
 msgstr "%-os pontosság"
 
-#: src/unit_types.cpp:226
+#: src/unit_types.cpp:268
 #, no-c-format
 msgid "% parry"
 msgstr "%-os hárítás"
 
-#: src/unit_types.cpp:933
+#: src/unit_types.cpp:985
 msgid "No description available."
 msgstr "Nincs elérhető leírás."
 
-#: src/unit_types.cpp:989
+#: src/unit_types.cpp:1041
 msgid "chaotic"
 msgstr "törvénytelen"
 
-#: src/unit_types.cpp:989
+#: src/unit_types.cpp:1041
 msgid "lawful"
 msgstr "igazságos"
 
-#: src/unit_types.cpp:989
+#: src/unit_types.cpp:1041
 msgid "liminal"
 msgstr "ingatag"
 
-#: src/unit_types.cpp:989
+#: src/unit_types.cpp:1041
 msgid "neutral"
 msgstr "semleges"
 
-#: src/unit_types.cpp:990
+#: src/unit_types.cpp:1042
 msgid "female^chaotic"
 msgstr "törvénytelen"
 
-#: src/unit_types.cpp:990
+#: src/unit_types.cpp:1042
 msgid "female^lawful"
 msgstr "igazságos"
 
-#: src/unit_types.cpp:990
+#: src/unit_types.cpp:1042
 msgid "female^liminal"
 msgstr "ingatag"
 
-#: src/unit_types.cpp:990
+#: src/unit_types.cpp:1042
 msgid "female^neutral"
 msgstr "semleges"
 
-#: src/whiteboard/manager.cpp:1100
+#: src/whiteboard/manager.cpp:1102
 msgid "SHOW ALL allies’ plans"
 msgstr "A szövetségesek összes tervének MUTATÁSA"
 
-#: src/whiteboard/manager.cpp:1101
+#: src/whiteboard/manager.cpp:1103
 msgid "HIDE ALL allies’ plans"
 msgstr "A szövetségesek összes tervének ELREJTÉSE"
 
-#: src/whiteboard/manager.cpp:1115
+#: src/whiteboard/manager.cpp:1117
 msgid "Show plans for $player"
 msgstr "$player terveinek mutatása"
 
-#: src/whiteboard/manager.cpp:1117
+#: src/whiteboard/manager.cpp:1119
 msgid "Hide plans for $player"
 msgstr "$player terveinek elrejtése"
 
-#: src/whiteboard/manager.cpp:1120
+#: src/whiteboard/manager.cpp:1122
 msgid "Whiteboard Options"
 msgstr "Lépéstervező beállítása"
+
+#~ msgid ""
+#~ "Aban,Abbas,Abbud,Abdul-ʿAdl,Abdul-Ahad,Abdul-Alim,Abdul-Aliyy,Abdul-Azim,"
+#~ "Abdul-Aziz,Abdul-Badi,Abdul-Baʿith,Abdul-Baqi,Abdul-Bari,Abdul-Barr,Abdul-"
+#~ "Basir,Abdul-Basit,Abdul-Fattah,Abdul-Ghaffar,Abdul-Ghafur,Abdul-Ghani,"
+#~ "Abdul-Hadi,Abdul-Hafiz,Abdul-Hakam,Abdul-Hakim,Abdul-Halim,Abdul-Hamid,"
+#~ "Abdul-Haqq,Abdul-Hasib,Abdul-Hayy,Abdul-Jabbar,Abdul-Jalil,Abdul-Karim,"
+#~ "Abdul-Khabir,Abdul-Khaliq,Abdul-Latif,Abdul-Malik,Abdul-Majid,Abdul-Matin,"
+#~ "Abdul-Mubdiʾ,Abdul-Mughni,Abdul-Muhaimin,Abdul-Muhsi,Abdul-Muhyi,Abdul-"
+#~ "Muʿid,Abdul-Muʿizz,Abdul-Mujib,Abdul-Mumin,Abdul-Muqaddim,Abdul-Muqtadir,"
+#~ "Abdul-Musawwir,Abdul-Mutaʿal,Abdul-Nafi,Abdul-Nasser,Abdul-Nasir,Abdul-"
+#~ "Nur,Abdul-Qadir,Abdul-Qahhar,Abdul-Qawi,Abdul-Qayyum,Abdul-Quddus,Abdul-"
+#~ "Rafi,Abdul-Rahim,Abdul-Rahman,Abdul-Rashid,Abdul-Raʿuf,Abdul-Razzaq,Abdul-"
+#~ "Shakur,Abdul-Tawwab,Abdul-Wadud,Abdul-Wahhab,Abdul-Wahid,Abdul-Wajid,"
+#~ "Abdul-Wakil,Abdul-Wali,Abdul-Waliy,Abdul-Warith,Abdul-Zahir,Abdullah,"
+#~ "ʿAbid,ʿAbidin,Abu Bakr,Aby al-Khayr,Adil,Adham,Adib,ʿAdli,ʿAdnan,ʿAfif,"
+#~ "Ahmad,ʿAjib,ʿAkif,Akil,Akram,Alaʾ,Alaʾ al-Din,Alʿ Abbas,Aladdin,al-Bara,"
+#~ "al-Hakam,al-Harith,Alhasan,Alhusain,Ali,Alim,Almahdi,al-Safi,Altaf,Altair,"
+#~ "al-Tayyib,al-Tijani,al-Tufail,Amid,ʿAmid,Amin,Amir,ʿAmir,Amjad,ʿAmmar,"
+#~ "ʿAmro,Anas,Anis,ʿAntarah,Anwar,ʿAqil,Arfan,Arif,ʿArif,Asad,Asʿad,Asadel,"
+#~ "Ashraf,Asif,ʿAsim,Aswad,Ataʿ,Ataʿ Allah,Ataʿ al-Rahman,Athil,Athir,ʿAtif,"
+#~ "ʿAwad,ʿAwf,Aws,Awwab,Ayham,Ayman,Ayser,Ayyub,Aza,ʿAzab,Azhar,Azim,ʿAziz,"
+#~ "ʿAzzam,Badi,Badi al-Zaman,Badr,Badr al-Din,Badri,Bahaʿ,Bahiyy al-Din,"
+#~ "Bahij,Bahir,Bakr,Bakri,Baligh,Bandar,Barakah,Barir,Bashshar,Basil,Basim,"
+#~ "Bassam,Bayezid,Bayhas,Bilal,Bishr,Boulos,Budail,Burhan,Bushr,Butrus,Dabir,"
+#~ "Dani,Darwish,Daʿud,Dhakir,Dhakiy,Dhakwan,Dhul Fiqar,Dirar,Diya,Diya al-"
+#~ "Din,Duqaq,Fadi,Fadil,Fadl,Fadl Allah,Fahd,Fahad,Fahmi,Faisal,Faʿiz,Fakhir,"
+#~ "Fakhr al-Din,Fakhri,Fakih,Falah,Falih,Faraj,Farhan,Farid,Fariq,Fariq,"
+#~ "Faris,Faruq,Fath,Fathi,Fatih,Fatin,Fawwaz,Fawzan,Fawzi,Fayyad,Ferran,Fida,"
+#~ "Fikri,Firas,Fuʿad,Fudail,Gamal,Ghayth,Ghali,Ghalib,Ghanim,Ghassan,Ghawth,"
+#~ "Ghazwan,Ghiyath,Habbab,Habib,Haddad,Hadi,Hafiz,Hakem,Hakim,Halim,Hamal,"
+#~ "Hamas,Hamdan,Hamdi,Hamid,Hamim,Hamzah,Hana,Hanaʾi,Hanbal,Hani,Hanif,"
+#~ "Hannad,Haris,Harith,Harun,Hashim,Hassan,Hatim,Haydar,Haytham,Hayyan,Hazim,"
+#~ "Hilal,Hilmi,Hisham,Hud,Hudad,Hudhafah,Hudhayfah,Humam,Hussein,Husam,Husam "
+#~ "al-Din,Ibrahim,ʿId,Idris,Ihsan,Ihtisham,ʿIkrimah,Ilias,ʿImad,Imad al-Din,"
+#~ "Imran,Imtiyaz,Inʿam,Iqbal,ʿIrfan,ʿIsa,ʿIsam,Ishaq,Ismaʿil,Iyad,Iyas,Izz "
+#~ "al-Din,Jabbar,Jabr,Jabir,Jad Allah,Jaʿfar,Jal,Jalal,Jalal al-Din,Jalil,"
+#~ "Jamal,Jamal al-Din,Jamil,Jarir,Jasim,Jaul,Jaun,Jawad,Jawdah,Jawhar,Jibran,"
+#~ "Jibril,Jubair,Jul,Jumah,Junayd,Juwain,Kadar,Kadin,Kadir,Kahil,Kaliq,Kamal,"
+#~ "Kamil,Karam,Kardal,Karif,Karim,Kasib,Kasim,Katib,Kazim,Khalaf,Khaldun,"
+#~ "Khalid,Khalil,Khalil al-Allah,Khalis,Khatib,Khair al-Din,Khairi,Khoury,"
+#~ "Khulus,Khuzaymah,Kutaiba,Labib,Lablab,Latif,Layth,LuʿayLubayd,Luqman,Lut,"
+#~ "Lutfi,Maʿd,Madani,Mahbub,Mahdi,Mahfuz,Mahir,Mahjub,Mahmud,Mahrus,Maimun,"
+#~ "Majd,Majdy,Majd al-Din,Majid,Makin,Malik,Mamduh,Maʿmun,Maʿin,Mandhur,"
+#~ "Mansur,Marghub,Marid,Maʿruf,Marwan,Marzuq,Mashʿal,Mashhur,Masrur,Masʿud,"
+#~ "Masun,Maysarah,Mazhar,Mazin,Mehmed,Mihran,Mihyar,Mikaʾil,Miqdad,Misbah,"
+#~ "Mishʿal,Miyaz,Muʾadh,Muʾawiyah,Muʾayyad,Mubarak,Mubin,Mudar,Muddaththir,"
+#~ "Mufid,Muflih,Muhab,Muhayr,Muhammad,Muhanna,Muhannad,Muhib,Muhibb,Muhsin,"
+#~ "Muhtadi,Muhyi al-Din,Muʿin,Muʿizz,Mujab,Mujahid,Mukarram,Mukhlis,Mukhtar,"
+#~ "Mulham,Mulhim,Muʿmmar,Muʿmin,Mumtaz,Munahid,Mundhir,Munib,Munif,Munir,"
+#~ "Muʿnis,Munjid,Munsif,Muntasir,Murad,Murid,Murshid,Murtada,Musa,Musʿab,"
+#~ "Musaʿid,Mushtaq,Muslih,Muslim,Mutafa,Mutaʾ,Muʿtasim,Mutawalli,Muʿtazz,"
+#~ "Muthanna,Muti,Muwaffaq,Muyassar,Muzaffar,Mussammil,Nabhan,Nabighah,Nabih,"
+#~ "Nabil,Nadhir,Nadim,Nadir,Nafiʾ,Nahid,Naʾil,Naʾim,Naji,Najib,Najid,Najjar,"
+#~ "Najm al-Din,Naʿaman,Namir,Nashʿah,Nashʿat,Nashwan,Nasib,Nasih,Nasim,Nasir,"
+#~ "Nasir al-Din,Nasr,Nasri,Nasuh,Nawaf,Nawfal,Nayif,Nazih,Nazim,Nazmi,Nibras,"
+#~ "Nidal,Nijad,Nimr,Nizar,Nuʿaym,Nuh,Nuhayd,Numair,Nuʿman,Nur al-Din,Nuri,"
+#~ "Nusrah,Nusrat,Omar,Orhan,Osman,Qasim,Qays,Qudamah,Qusay,Qatadah,Qutaybah,"
+#~ "Qutb,Qutuz,Rabah,Rabi,Radi,Rafi,Rafid,Rafiq,Raghib,Rahman,Raʿid,Raʿif,"
+#~ "Rais,Rajaa,Rajab,Raji,Rajih,Rakin,Rami,Ramih,Ramiz,Ramzi,Rani,Rashad,"
+#~ "Rashid,Rasil,Rasin,Rasmi,Rasul,Ratib,Raʿuf,Rayhan,Rayyan,Razin,Ridha,"
+#~ "Ridwan,Rihab,Riyad,Rizq,Ruhi,Rushd,Rushdi,Ruwayd,Saad,Saʿadah,Sab,Sabih,"
+#~ "Sabir,Sabri,Saʿd,Saʿd al-Din,Sadad,Sadid,Sadiq,Saʿdun,Saʿid,Safi,Safiy,"
+#~ "Safiy al-Din,Safuh,Safwah,Safwat,Safwan,Sahib,Sahir,Sahl,Saʾib,Saif,Saif "
+#~ "al-Din,Sajid,Sajjad,Sakhr,Salah,Salah al-Din,Salamah,Salih,Salim,Salman,"
+#~ "Sami,Samih,Samir,Samman,Saqr,Sariyah,Sati,Saud,Sayyid,Shaʿban,Shadi,"
+#~ "Shadin,Shafi,Shafiq,Shahid,Shahin,Shahir,Shakib,Shakir,Shams al-Din,"
+#~ "Shamal,Shamil,Shamim,Sharaf,Sharif,Shawqi,Shihab,Shihab al-Din,Shihad,"
+#~ "Shuʿayb,Shukri,Shumayl,Siddiq,Sinan,Siraj,Siraj al-Din,Sofian,Subhi,"
+#~ "Sufyan,Suhayb,Suhayl,Suhaym,Sulaiman,Sumrah,Suraqah,Suʿud,Tahir,Tahsin,"
+#~ "Taym Allah,Taj,Taj al-Din,Talal,Talib,Tamim,Tamir,Tamam,Tammam,Taqiy,"
+#~ "Tarif,Tariq,Taslim,Tawfiq,Tawhid,Taymullah,Taysir,Tayyib,Thabit,Thamir,"
+#~ "Thaqib,Thawab,Thawban,ʿUbaidah,Ubaid,Ubayy,ʿUdayl,ʿUday,ʿUmar,Umarah,"
+#~ "Umair,ʾaUrwah,Usaym,Usama,ʿUtbah,Uthal,Uthman,Waddah,Wadi,Wadid,Wafiq,"
+#~ "Wahab,Wahhab,Wahid,Waʾil,Wajdi,Wajid,Wajih,Wakil,Walid,Walif,Waliy Allah,"
+#~ "Waliy al-Din,Waqar,Waqqas,Ward,Wasif,Wasil,Wasim,Wazir,Yahya,Yaman,Yaʿqub,"
+#~ "Yasar,Yasin,Yasir,Yazan,Yazid,Yunus,Yushua,Yusri,Yusuf,Zafar,Zafir,Zahid,"
+#~ "Zahir,Zayd,Zaim,Zayn,Zarif,Zakarriya,Zaki,Zakwan,Ziyad,Zubayr,Zuhayr"
+#~ msgstr ""
+#~ "Aban,Abbas,Abbud,Abdul-ʿAdl,Abdul-Ahad,Abdul-Alim,Abdul-Aliyy,Abdul-Azim,"
+#~ "Abdul-Aziz,Abdul-Badi,Abdul-Baʿith,Abdul-Baqi,Abdul-Bari,Abdul-Barr,Abdul-"
+#~ "Basir,Abdul-Basit,Abdul-Fattah,Abdul-Ghaffar,Abdul-Ghafur,Abdul-Ghani,"
+#~ "Abdul-Hadi,Abdul-Hafiz,Abdul-Hakam,Abdul-Hakim,Abdul-Halim,Abdul-Hamid,"
+#~ "Abdul-Haqq,Abdul-Hasib,Abdul-Hayy,Abdul-Jabbar,Abdul-Jalil,Abdul-Karim,"
+#~ "Abdul-Khabir,Abdul-Khaliq,Abdul-Latif,Abdul-Malik,Abdul-Majid,Abdul-Matin,"
+#~ "Abdul-Mubdiʾ,Abdul-Mughni,Abdul-Muhaimin,Abdul-Muhsi,Abdul-Muhyi,Abdul-"
+#~ "Muʿid,Abdul-Muʿizz,Abdul-Mujib,Abdul-Mumin,Abdul-Muqaddim,Abdul-Muqtadir,"
+#~ "Abdul-Musawwir,Abdul-Mutaʿal,Abdul-Nafi,Abdul-Nasser,Abdul-Nasir,Abdul-"
+#~ "Nur,Abdul-Qadir,Abdul-Qahhar,Abdul-Qawi,Abdul-Qayyum,Abdul-Quddus,Abdul-"
+#~ "Rafi,Abdul-Rahim,Abdul-Rahman,Abdul-Rashid,Abdul-Raʿuf,Abdul-Razzaq,Abdul-"
+#~ "Shakur,Abdul-Tawwab,Abdul-Wadud,Abdul-Wahhab,Abdul-Wahid,Abdul-Wajid,"
+#~ "Abdul-Wakil,Abdul-Wali,Abdul-Waliy,Abdul-Warith,Abdul-Zahir,Abdullah,"
+#~ "ʿAbid,ʿAbidin,Abu Bakr,Aby al-Khayr,Adil,Adham,Adib,ʿAdli,ʿAdnan,ʿAfif,"
+#~ "Ahmad,ʿAjib,ʿAkif,Akil,Akram,Alaʾ,Alaʾ al-Din,Alʿ Abbas,Aladdin,al-Bara,"
+#~ "al-Hakam,al-Harith,Alhasan,Alhusain,Ali,Alim,Almahdi,al-Safi,Altaf,Altair,"
+#~ "al-Tayyib,al-Tijani,al-Tufail,Amid,ʿAmid,Amin,Amir,ʿAmir,Amjad,ʿAmmar,"
+#~ "ʿAmro,Anas,Anis,ʿAntarah,Anwar,ʿAqil,Arfan,Arif,ʿArif,Asad,Asʿad,Asadel,"
+#~ "Ashraf,Asif,ʿAsim,Aswad,Ataʿ,Ataʿ Allah,Ataʿ al-Rahman,Athil,Athir,ʿAtif,"
+#~ "ʿAwad,ʿAwf,Aws,Awwab,Ayham,Ayman,Ayser,Ayyub,Aza,ʿAzab,Azhar,Azim,ʿAziz,"
+#~ "ʿAzzam,Badi,Badi al-Zaman,Badr,Badr al-Din,Badri,Bahaʿ,Bahiyy al-Din,"
+#~ "Bahij,Bahir,Bakr,Bakri,Baligh,Bandar,Barakah,Barir,Bashshar,Basil,Basim,"
+#~ "Bassam,Bayezid,Bayhas,Bilal,Bishr,Boulos,Budail,Burhan,Bushr,Butrus,Dabir,"
+#~ "Dani,Darwish,Daʿud,Dhakir,Dhakiy,Dhakwan,Dhul Fiqar,Dirar,Diya,Diya al-"
+#~ "Din,Duqaq,Fadi,Fadil,Fadl,Fadl Allah,Fahd,Fahad,Fahmi,Faisal,Faʿiz,Fakhir,"
+#~ "Fakhr al-Din,Fakhri,Fakih,Falah,Falih,Faraj,Farhan,Farid,Fariq,Fariq,"
+#~ "Faris,Faruq,Fath,Fathi,Fatih,Fatin,Fawwaz,Fawzan,Fawzi,Fayyad,Ferran,Fida,"
+#~ "Fikri,Firas,Fuʿad,Fudail,Gamal,Ghayth,Ghali,Ghalib,Ghanim,Ghassan,Ghawth,"
+#~ "Ghazwan,Ghiyath,Habbab,Habib,Haddad,Hadi,Hafiz,Hakem,Hakim,Halim,Hamal,"
+#~ "Hamas,Hamdan,Hamdi,Hamid,Hamim,Hamzah,Hana,Hanaʾi,Hanbal,Hani,Hanif,"
+#~ "Hannad,Haris,Harith,Harun,Hashim,Hassan,Hatim,Haydar,Haytham,Hayyan,Hazim,"
+#~ "Hilal,Hilmi,Hisham,Hud,Hudad,Hudhafah,Hudhayfah,Humam,Hussein,Husam,Husam "
+#~ "al-Din,Ibrahim,ʿId,Idris,Ihsan,Ihtisham,ʿIkrimah,Ilias,ʿImad,Imad al-Din,"
+#~ "Imran,Imtiyaz,Inʿam,Iqbal,ʿIrfan,ʿIsa,ʿIsam,Ishaq,Ismaʿil,Iyad,Iyas,Izz "
+#~ "al-Din,Jabbar,Jabr,Jabir,Jad Allah,Jaʿfar,Jal,Jalal,Jalal al-Din,Jalil,"
+#~ "Jamal,Jamal al-Din,Jamil,Jarir,Jasim,Jaul,Jaun,Jawad,Jawdah,Jawhar,Jibran,"
+#~ "Jibril,Jubair,Jul,Jumah,Junayd,Juwain,Kadar,Kadin,Kadir,Kahil,Kaliq,Kamal,"
+#~ "Kamil,Karam,Kardal,Karif,Karim,Kasib,Kasim,Katib,Kazim,Khalaf,Khaldun,"
+#~ "Khalid,Khalil,Khalil al-Allah,Khalis,Khatib,Khair al-Din,Khairi,Khoury,"
+#~ "Khulus,Khuzaymah,Kutaiba,Labib,Lablab,Latif,Layth,LuʿayLubayd,Luqman,Lut,"
+#~ "Lutfi,Maʿd,Madani,Mahbub,Mahdi,Mahfuz,Mahir,Mahjub,Mahmud,Mahrus,Maimun,"
+#~ "Majd,Majdy,Majd al-Din,Majid,Makin,Malik,Mamduh,Maʿmun,Maʿin,Mandhur,"
+#~ "Mansur,Marghub,Marid,Maʿruf,Marwan,Marzuq,Mashʿal,Mashhur,Masrur,Masʿud,"
+#~ "Masun,Maysarah,Mazhar,Mazin,Mehmed,Mihran,Mihyar,Mikaʾil,Miqdad,Misbah,"
+#~ "Mishʿal,Miyaz,Muʾadh,Muʾawiyah,Muʾayyad,Mubarak,Mubin,Mudar,Muddaththir,"
+#~ "Mufid,Muflih,Muhab,Muhayr,Muhammad,Muhanna,Muhannad,Muhib,Muhibb,Muhsin,"
+#~ "Muhtadi,Muhyi al-Din,Muʿin,Muʿizz,Mujab,Mujahid,Mukarram,Mukhlis,Mukhtar,"
+#~ "Mulham,Mulhim,Muʿmmar,Muʿmin,Mumtaz,Munahid,Mundhir,Munib,Munif,Munir,"
+#~ "Muʿnis,Munjid,Munsif,Muntasir,Murad,Murid,Murshid,Murtada,Musa,Musʿab,"
+#~ "Musaʿid,Mushtaq,Muslih,Muslim,Mutafa,Mutaʾ,Muʿtasim,Mutawalli,Muʿtazz,"
+#~ "Muthanna,Muti,Muwaffaq,Muyassar,Muzaffar,Mussammil,Nabhan,Nabighah,Nabih,"
+#~ "Nabil,Nadhir,Nadim,Nadir,Nafiʾ,Nahid,Naʾil,Naʾim,Naji,Najib,Najid,Najjar,"
+#~ "Najm al-Din,Naʿaman,Namir,Nashʿah,Nashʿat,Nashwan,Nasib,Nasih,Nasim,Nasir,"
+#~ "Nasir al-Din,Nasr,Nasri,Nasuh,Nawaf,Nawfal,Nayif,Nazih,Nazim,Nazmi,Nibras,"
+#~ "Nidal,Nijad,Nimr,Nizar,Nuʿaym,Nuh,Nuhayd,Numair,Nuʿman,Nur al-Din,Nuri,"
+#~ "Nusrah,Nusrat,Omar,Orhan,Osman,Qasim,Qays,Qudamah,Qusay,Qatadah,Qutaybah,"
+#~ "Qutb,Qutuz,Rabah,Rabi,Radi,Rafi,Rafid,Rafiq,Raghib,Rahman,Raʿid,Raʿif,"
+#~ "Rais,Rajaa,Rajab,Raji,Rajih,Rakin,Rami,Ramih,Ramiz,Ramzi,Rani,Rashad,"
+#~ "Rashid,Rasil,Rasin,Rasmi,Rasul,Ratib,Raʿuf,Rayhan,Rayyan,Razin,Ridha,"
+#~ "Ridwan,Rihab,Riyad,Rizq,Ruhi,Rushd,Rushdi,Ruwayd,Saad,Saʿadah,Sab,Sabih,"
+#~ "Sabir,Sabri,Saʿd,Saʿd al-Din,Sadad,Sadid,Sadiq,Saʿdun,Saʿid,Safi,Safiy,"
+#~ "Safiy al-Din,Safuh,Safwah,Safwat,Safwan,Sahib,Sahir,Sahl,Saʾib,Saif,Saif "
+#~ "al-Din,Sajid,Sajjad,Sakhr,Salah,Salah al-Din,Salamah,Salih,Salim,Salman,"
+#~ "Sami,Samih,Samir,Samman,Saqr,Sariyah,Sati,Saud,Sayyid,Shaʿban,Shadi,"
+#~ "Shadin,Shafi,Shafiq,Shahid,Shahin,Shahir,Shakib,Shakir,Shams al-Din,"
+#~ "Shamal,Shamil,Shamim,Sharaf,Sharif,Shawqi,Shihab,Shihab al-Din,Shihad,"
+#~ "Shuʿayb,Shukri,Shumayl,Siddiq,Sinan,Siraj,Siraj al-Din,Sofian,Subhi,"
+#~ "Sufyan,Suhayb,Suhayl,Suhaym,Sulaiman,Sumrah,Suraqah,Suʿud,Tahir,Tahsin,"
+#~ "Taym Allah,Taj,Taj al-Din,Talal,Talib,Tamim,Tamir,Tamam,Tammam,Taqiy,"
+#~ "Tarif,Tariq,Taslim,Tawfiq,Tawhid,Taymullah,Taysir,Tayyib,Thabit,Thamir,"
+#~ "Thaqib,Thawab,Thawban,ʿUbaidah,Ubaid,Ubayy,ʿUdayl,ʿUday,ʿUmar,Umarah,"
+#~ "Umair,ʾaUrwah,Usaym,Usama,ʿUtbah,Uthal,Uthman,Waddah,Wadi,Wadid,Wafiq,"
+#~ "Wahab,Wahhab,Wahid,Waʾil,Wajdi,Wajid,Wajih,Wakil,Walid,Walif,Waliy Allah,"
+#~ "Waliy al-Din,Waqar,Waqqas,Ward,Wasif,Wasil,Wasim,Wazir,Yahya,Yaman,Yaʿqub,"
+#~ "Yasar,Yasin,Yasir,Yazan,Yazid,Yunus,Yushua,Yusri,Yusuf,Zafar,Zafir,Zahid,"
+#~ "Zahir,Zayd,Zaim,Zayn,Zarif,Zakarriya,Zaki,Zakwan,Ziyad,Zubayr,Zuhayr"
+
+#, fuzzy
+#~| msgid "invisible: "
+#~ msgid "invisible"
+#~ msgstr "láthatatlan: "
+
+#, fuzzy
+#~| msgid "female^slowed"
+#~ msgid "female^invisible"
+#~ msgstr "lelassítva"
+
+#, fuzzy
+#~| msgid "Fire a game event."
+#~ msgid "I triggered a moveto event."
+#~ msgstr "Egy játékesemény végrehajtása."
+
+#, fuzzy
+#~| msgid "Password: "
+#~ msgid "sword"
+#~ msgstr "Jelszó: "
+
+#, fuzzy
+#~| msgid "Version: "
+#~ msgid "Vision Test"
+#~ msgstr "Verzió: "
+
+#, fuzzy
+#~| msgid "invisible: "
+#~ msgid "It is invisible!"
+#~ msgstr "láthatatlan: "
 
 #, fuzzy
 #~| msgid "Choose weapon:"

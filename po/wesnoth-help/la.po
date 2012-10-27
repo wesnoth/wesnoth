@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-25 12:35+0200\n"
+"POT-Creation-Date: 2012-10-27 15:56+0200\n"
 "PO-Revision-Date: 2011-12-18 21:18+0100\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
@@ -31,13 +31,12 @@ msgstr "Subterraneus"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:755
-#: data/core/macros/abilities.cfg:584
+#: data/core/macros/abilities.cfg:562
 msgid "berserk"
 msgstr "saevus"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:757
-#: data/core/macros/abilities.cfg:585
 #, fuzzy
 msgid ""
 "Berserk:\n"
@@ -50,13 +49,12 @@ msgstr ""
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:770
-#: data/core/macros/abilities.cfg:670
+#: data/core/macros/abilities.cfg:641
 msgid "magical"
 msgstr "magicus"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:772
-#: data/core/macros/abilities.cfg:671
 #, fuzzy
 msgid ""
 "Magical:\n"
@@ -68,13 +66,11 @@ msgstr ""
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:785
-#: data/core/macros/abilities.cfg:719
 msgid "firststrike"
 msgstr "primus ictus"
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:787
-#: data/core/macros/abilities.cfg:720
 #, fuzzy
 msgid ""
 "First Strike:\n"
@@ -100,7 +96,6 @@ msgstr "sanat +IV"
 #: data/core/macros/abilities.cfg:12
 #, fuzzy
 msgid ""
-"Heals +4:\n"
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
 "A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
@@ -117,23 +112,22 @@ msgstr ""
 "unitatis quae sanat petere debet."
 
 #. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:44
+#: data/core/macros/abilities.cfg:29
+msgid "heals +8"
+msgstr "sanat +VIII"
+
+#. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
 #: data/core/macros/abilities.cfg:30
-msgid "heals +8"
+msgid "female^heals +8"
 msgstr "sanat +VIII"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
 #: data/core/macros/abilities.cfg:31
-msgid "female^heals +8"
-msgstr "sanat +VIII"
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:47
-#: data/core/macros/abilities.cfg:32
 #, fuzzy
 msgid ""
-"Heals +8:\n"
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
 "\n"
@@ -898,7 +892,7 @@ msgstr "Res Unica Telorum"
 
 #. #-#-#-#-#  wesnoth-help.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=factions_section
-#: data/core/help.cfg:56 src/help.cpp:1299 src/help.cpp:1301
+#: data/core/help.cfg:56 src/help.cpp:1309 src/help.cpp:1311
 msgid "Factions"
 msgstr "Factiones"
 
@@ -3624,20 +3618,19 @@ msgid ""
 msgstr ""
 
 #. [heals]: id=curing
-#: data/core/macros/abilities.cfg:51
+#: data/core/macros/abilities.cfg:49
 msgid "cures"
 msgstr "antidotum"
 
 #. [heals]: id=curing
-#: data/core/macros/abilities.cfg:52
+#: data/core/macros/abilities.cfg:50
 msgid "female^cures"
 msgstr "antidotum"
 
 #. [heals]: id=curing
-#: data/core/macros/abilities.cfg:53
+#: data/core/macros/abilities.cfg:51
 #, fuzzy
 msgid ""
-"Cures:\n"
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
@@ -3646,20 +3639,19 @@ msgstr ""
 "sanationem adiunctam accipiet in tractu in quo a veneno sanata erit."
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:76
+#: data/core/macros/abilities.cfg:73
 msgid "regenerates"
 msgstr "convalescit"
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:77
+#: data/core/macros/abilities.cfg:74
 msgid "female^regenerates"
 msgstr "convalescit"
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:78
+#: data/core/macros/abilities.cfg:75
 #, fuzzy
 msgid ""
-"Regenerates:\n"
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
@@ -3668,20 +3660,19 @@ msgstr ""
 "tollet loco sanationis."
 
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:98
+#: data/core/macros/abilities.cfg:94
 msgid "steadfast"
 msgstr "constans"
 
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:99
+#: data/core/macros/abilities.cfg:95
 msgid "female^steadfast"
 msgstr "constans"
 
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:100
+#: data/core/macros/abilities.cfg:96
 #, fuzzy
 msgid ""
-"Steadfast:\n"
 "This unit’s resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
 msgstr ""
@@ -3690,26 +3681,25 @@ msgstr ""
 "commoventur nuditates."
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:114 data/core/macros/abilities.cfg:137
-#: data/core/macros/abilities.cfg:172 data/core/macros/abilities.cfg:219
-#: data/core/macros/abilities.cfg:278
+#: data/core/macros/abilities.cfg:109 data/core/macros/abilities.cfg:131
+#: data/core/macros/abilities.cfg:165 data/core/macros/abilities.cfg:211
+#: data/core/macros/abilities.cfg:269
 msgid "leadership"
 msgstr "ducatus"
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:115 data/core/macros/abilities.cfg:138
-#: data/core/macros/abilities.cfg:173 data/core/macros/abilities.cfg:220
-#: data/core/macros/abilities.cfg:279
+#: data/core/macros/abilities.cfg:110 data/core/macros/abilities.cfg:132
+#: data/core/macros/abilities.cfg:166 data/core/macros/abilities.cfg:212
+#: data/core/macros/abilities.cfg:270
 msgid "female^leadership"
 msgstr "ducatus"
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:116 data/core/macros/abilities.cfg:139
-#: data/core/macros/abilities.cfg:174 data/core/macros/abilities.cfg:221
-#: data/core/macros/abilities.cfg:280
+#: data/core/macros/abilities.cfg:111 data/core/macros/abilities.cfg:133
+#: data/core/macros/abilities.cfg:167 data/core/macros/abilities.cfg:213
+#: data/core/macros/abilities.cfg:271
 #, fuzzy
 msgid ""
-"Leadership:\n"
 "This unit can lead our own units that are next to it, making them fight "
 "better.\n"
 "\n"
@@ -3728,20 +3718,19 @@ msgstr ""
 "additionalem faciunt, multiplicatam a differentia graduum eorum."
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:347
+#: data/core/macros/abilities.cfg:337
 msgid "skirmisher"
 msgstr "concursatorius"
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:348
+#: data/core/macros/abilities.cfg:338
 msgid "female^skirmisher"
 msgstr "concursatoria"
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:349
+#: data/core/macros/abilities.cfg:339
 #, fuzzy
 msgid ""
-"Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
@@ -3750,20 +3739,19 @@ msgstr ""
 "Imperii hostium ignorat."
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:363
+#: data/core/macros/abilities.cfg:352
 msgid "illuminates"
 msgstr "illustrat"
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:364
+#: data/core/macros/abilities.cfg:353
 msgid "female^illuminates"
 msgstr "illustrat"
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:365
+#: data/core/macros/abilities.cfg:354
 #, fuzzy
 msgid ""
-"Illuminates:\n"
 "This unit illuminates the surrounding area, making lawful units fight "
 "better, and chaotic units fight worse.\n"
 "\n"
@@ -3778,20 +3766,19 @@ msgstr ""
 "sicut die."
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:378
+#: data/core/macros/abilities.cfg:366
 msgid "teleport"
 msgstr "praeterit"
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:379
+#: data/core/macros/abilities.cfg:367
 msgid "female^teleport"
 msgstr "praeterit"
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:380
+#: data/core/macros/abilities.cfg:368
 #, fuzzy
 msgid ""
-"Teleport:\n"
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
@@ -3800,20 +3787,19 @@ msgstr ""
 "puncto motus."
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:417 data/core/macros/abilities.cfg:419
+#: data/core/macros/abilities.cfg:404 data/core/macros/abilities.cfg:406
 msgid "ambush"
 msgstr "insidiae"
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:418 data/core/macros/abilities.cfg:420
+#: data/core/macros/abilities.cfg:405 data/core/macros/abilities.cfg:407
 msgid "female^ambush"
 msgstr "insidiae"
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:421 data/core/macros/abilities.cfg:425
+#: data/core/macros/abilities.cfg:408 data/core/macros/abilities.cfg:411
 #, fuzzy
 msgid ""
-"Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
 "\n"
 "Enemy units cannot see this unit while it is in forest, except if they have "
@@ -3828,16 +3814,15 @@ msgstr ""
 "unitates hostium apud unitatum hanc adsunt."
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:443 data/core/macros/abilities.cfg:444
-#: data/core/macros/abilities.cfg:449
+#: data/core/macros/abilities.cfg:428 data/core/macros/abilities.cfg:429
+#: data/core/macros/abilities.cfg:433
 msgid "nightstalk"
 msgstr "noctivagus"
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:445 data/core/macros/abilities.cfg:451
+#: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:435
 #, fuzzy
 msgid ""
-"Nightstalk:\n"
 "The unit becomes invisible during night.\n"
 "\n"
 "Enemy units cannot see this unit at night, except if they have units next to "
@@ -3852,25 +3837,24 @@ msgstr ""
 "unitatum hanc adsunt."
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:450
+#: data/core/macros/abilities.cfg:434
 msgid "female^nightstalk"
 msgstr "noctivaga"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:469 data/core/macros/abilities.cfg:475
+#: data/core/macros/abilities.cfg:452 data/core/macros/abilities.cfg:457
 msgid "concealment"
 msgstr "occultatio"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:470 data/core/macros/abilities.cfg:476
+#: data/core/macros/abilities.cfg:453 data/core/macros/abilities.cfg:458
 msgid "female^concealment"
 msgstr "occultatio"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:471 data/core/macros/abilities.cfg:477
+#: data/core/macros/abilities.cfg:454 data/core/macros/abilities.cfg:459
 #, fuzzy
 msgid ""
-"Concealment:\n"
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it.\n"
 "\n"
@@ -3887,20 +3871,19 @@ msgstr ""
 "hostium apud unitatum hanc adsunt."
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:495 data/core/macros/abilities.cfg:501
+#: data/core/macros/abilities.cfg:476 data/core/macros/abilities.cfg:481
 msgid "submerge"
 msgstr "demergit"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:496 data/core/macros/abilities.cfg:502
+#: data/core/macros/abilities.cfg:477 data/core/macros/abilities.cfg:482
 msgid "female^submerge"
 msgstr "demergit"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:497 data/core/macros/abilities.cfg:503
+#: data/core/macros/abilities.cfg:478 data/core/macros/abilities.cfg:483
 #, fuzzy
 msgid ""
-"Submerge:\n"
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
 "\n"
 "Enemy units cannot see this unit while it is in deep water, except if they "
@@ -3916,38 +3899,47 @@ msgstr ""
 "hostium apud unitatum hanc adsunt."
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:524
+#: data/core/macros/abilities.cfg:503
 msgid "feeding"
 msgstr "ingurgitat"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:525
+#: data/core/macros/abilities.cfg:504
 msgid "female^feeding"
 msgstr "ingurgitat"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:526
+#: data/core/macros/abilities.cfg:505
 msgid ""
-"Feeding:\n"
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
 
 #. [unstore_unit]
-#: data/core/macros/abilities.cfg:553
+#: data/core/macros/abilities.cfg:531
 msgid "+1 max HP"
 msgstr "+I fin PS"
 
+#. [berserk]: id=berserk
+#: data/core/macros/abilities.cfg:563
+#, fuzzy
+msgid ""
+"Whether used offensively or defensively, this attack presses the engagement "
+"until one of the combatants is slain, or 30 rounds of attacks have occurred."
+msgstr ""
+"Saevitia:\n"
+"In offensione vel defensione, haec oppugnatio certamen presset donec unus ex "
+"pugnatoribus interfectus erit aut XXX tractus oppugnationis evenerint."
+
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:596
+#: data/core/macros/abilities.cfg:573
 msgid "backstab"
 msgstr "traicit"
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:597
+#: data/core/macros/abilities.cfg:574
 #, fuzzy
 msgid ""
-"Backstab:\n"
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
 "incapacitated (turned to stone or otherwise paralyzed)."
@@ -3958,15 +3950,14 @@ msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:610 data/core/macros/abilities.cfg:622
+#: data/core/macros/abilities.cfg:586 data/core/macros/abilities.cfg:597
 msgid "plague"
 msgstr "pestilens"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:611
+#: data/core/macros/abilities.cfg:587
 #, fuzzy
 msgid ""
-"Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
 "identical to and on the same side as the unit with the Plague attack. This "
 "doesn’t work on Undead or units in villages."
@@ -3977,10 +3968,9 @@ msgstr ""
 "substituitur."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:623
+#: data/core/macros/abilities.cfg:598
 #, fuzzy
 msgid ""
-"Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
 "doesn’t work on Undead or units in villages."
@@ -3991,15 +3981,14 @@ msgstr ""
 "substituitur."
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:634
+#: data/core/macros/abilities.cfg:608
 msgid "slows"
 msgstr "tardat"
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:635
+#: data/core/macros/abilities.cfg:609
 #, fuzzy
 msgid ""
-"Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
 "that is slowed will feature a snail icon in its sidebar information when it "
@@ -4011,15 +4000,14 @@ msgstr ""
 "celeritate dimidia (si adest fractio numero superiori utitur)."
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:645
+#: data/core/macros/abilities.cfg:618
 msgid "petrifies"
 msgstr "defigit"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:646
+#: data/core/macros/abilities.cfg:619
 #, fuzzy
 msgid ""
-"Petrify:\n"
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
 msgstr ""
@@ -4028,31 +4016,39 @@ msgstr ""
 "movere neque oppugnare possunt."
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:656
+#: data/core/macros/abilities.cfg:628
 msgid "marksman"
 msgstr "perspicax"
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:657
+#: data/core/macros/abilities.cfg:629
 #, fuzzy
 msgid ""
-"Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
 "Peritus arcus:\n"
 "Si uteris huic oppugnationi in offensione, habet semper probabilitatem "
 "saltem LX pro centum feriendi."
 
+#. [chance_to_hit]: id=magical
+#: data/core/macros/abilities.cfg:642
+#, fuzzy
+msgid ""
+"This attack always has a 70% chance to hit regardless of the defensive "
+"ability of the unit being attacked."
+msgstr ""
+"Magicalis:\n"
+"Haec oppugnatio semper probabilitatem LXX pro cento habet feriendi."
+
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:683
+#: data/core/macros/abilities.cfg:653
 msgid "swarm"
 msgstr "fervet"
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:684
+#: data/core/macros/abilities.cfg:654
 #, fuzzy
 msgid ""
-"Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
 "unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
@@ -4065,15 +4061,14 @@ msgstr ""
 "accipiet."
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:694
+#: data/core/macros/abilities.cfg:663
 msgid "charge"
 msgstr "incurrit"
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:695
+#: data/core/macros/abilities.cfg:664
 #, fuzzy
 msgid ""
-"Charge:\n"
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
 msgstr ""
@@ -4082,15 +4077,14 @@ msgstr ""
 "damnum duplice ex oppugnatione scopi in vicem accipiat."
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:708
+#: data/core/macros/abilities.cfg:676
 msgid "drains"
 msgstr "exhaurit"
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:709
+#: data/core/macros/abilities.cfg:677
 #, fuzzy
 msgid ""
-"Drain:\n"
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
 msgstr ""
@@ -4098,16 +4092,31 @@ msgstr ""
 "Haec unitas salutem ex unitatibus vivis exhaurit, se sanans dimidiam partem "
 "damni inflecti (ignorans fractiones)."
 
+#. [firststrike]: id=firststrike
+#: data/core/macros/abilities.cfg:686
+#, fuzzy
+#| msgid "firststrike"
+msgid "first strike"
+msgstr "primus ictus"
+
+#. [firststrike]: id=firststrike
+#: data/core/macros/abilities.cfg:687
+#, fuzzy
+msgid ""
+"This unit always strikes first with this attack, even if they are defending."
+msgstr ""
+"Ictus Primus:\n"
+"Haec unitas semper prima percutit, etsi defendit."
+
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:730
+#: data/core/macros/abilities.cfg:696
 msgid "poison"
 msgstr "venenum"
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:731
+#: data/core/macros/abilities.cfg:697
 #, fuzzy
 msgid ""
-"Poison:\n"
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison can not, of itself, kill "
 "a unit."
@@ -5367,7 +5376,7 @@ msgstr "Voses"
 msgid "Help"
 msgstr "Auxilium"
 
-#: src/help.cpp:1152
+#: src/help.cpp:1144
 #, fuzzy
 msgid "<header>text='Units having this special attack'</header>"
 msgstr ""
@@ -5375,7 +5384,7 @@ msgstr ""
 "\n"
 "<header>text='Probabilitas icti'</header>"
 
-#: src/help.cpp:1228
+#: src/help.cpp:1238
 #, fuzzy
 msgid "<header>text='Units having this ability'</header>"
 msgstr ""
@@ -5383,174 +5392,184 @@ msgstr ""
 "\n"
 "<header>text='Probabilitas icti'</header>"
 
-#: src/help.cpp:1261
+#: src/help.cpp:1271
 msgid "Leaders:"
 msgstr "Duces: "
 
-#: src/help.cpp:1270
+#: src/help.cpp:1280
 msgid "Recruits:"
 msgstr "Tirones: "
 
-#: src/help.cpp:1284
+#: src/help.cpp:1294
 msgid "Era:"
 msgstr "Aetas: "
 
-#: src/help.cpp:1292
+#: src/help.cpp:1302
 msgid "Factions:"
 msgstr "Factiones: "
 
-#: src/help.cpp:1302
+#: src/help.cpp:1312
 msgid "Factions are only used in multiplayer"
 msgstr "Factiones modo cum pluribus lusoribus usui sunt"
 
-#: src/help.cpp:1345
+#: src/help.cpp:1356
 msgid "level"
 msgstr "ordo"
 
-#: src/help.cpp:1377
+#: src/help.cpp:1389
 msgid "Advances from: "
 msgstr "Producitur a: "
 
-#: src/help.cpp:1379
+#: src/help.cpp:1391
 msgid "Advances to: "
 msgstr "Producitur ad: "
 
-#: src/help.cpp:1406 src/help.cpp:1785 src/help.cpp:1846
+#: src/help.cpp:1414
+msgid "Base unit: "
+msgstr ""
+
+#: src/help.cpp:1424
+#, fuzzy
+#| msgid "Factions:"
+msgid "Variations: "
+msgstr "Factiones: "
+
+#: src/help.cpp:1450 src/help.cpp:1825 src/help.cpp:1898
 msgid "race^Miscellaneous"
 msgstr "Alia"
 
-#: src/help.cpp:1408
+#: src/help.cpp:1452
 msgid "Race: "
 msgstr "Stirps: "
 
-#: src/help.cpp:1415
+#: src/help.cpp:1459
 msgid "Abilities: "
 msgstr "Facultates: "
 
-#: src/help.cpp:1432
+#: src/help.cpp:1476
 msgid "Ability Upgrades: "
 msgstr "Praemia Producendi: "
 
-#: src/help.cpp:1448
+#: src/help.cpp:1492
 msgid "HP: "
 msgstr "PS: "
 
-#: src/help.cpp:1449
+#: src/help.cpp:1493
 msgid "Moves: "
 msgstr "Motus: "
 
-#: src/help.cpp:1451
+#: src/help.cpp:1495
 msgid "Vision: "
 msgstr ""
 
-#: src/help.cpp:1453
+#: src/help.cpp:1497
 msgid "Jamming: "
 msgstr ""
 
-#: src/help.cpp:1454
+#: src/help.cpp:1498
 msgid "Cost: "
 msgstr "Pretium: "
 
-#: src/help.cpp:1455
+#: src/help.cpp:1499
 msgid "Alignment: "
 msgstr "Pars: "
 
-#: src/help.cpp:1461
+#: src/help.cpp:1505
 msgid "Required XP: "
 msgstr "PU Necessaria: "
 
-#: src/help.cpp:1470
+#: src/help.cpp:1514
 msgid "unit help^Attacks"
 msgstr "Ictus"
 
-#: src/help.cpp:1477
+#: src/help.cpp:1521
 msgid "unit help^Name"
 msgstr "Nomen"
 
-#: src/help.cpp:1478
+#: src/help.cpp:1522
 msgid "Type"
 msgstr "Species"
 
-#: src/help.cpp:1479
+#: src/help.cpp:1523
 msgid "Strikes"
 msgstr "Ictus"
 
-#: src/help.cpp:1480
+#: src/help.cpp:1524
 msgid "Range"
 msgstr "Iactus"
 
-#: src/help.cpp:1481
+#: src/help.cpp:1525
 msgid "Special"
 msgstr "Unica"
 
-#: src/help.cpp:1531
+#: src/help.cpp:1571
 #, fuzzy
 msgid "Resistances"
 msgstr "Repugnantiae"
 
-#: src/help.cpp:1535
+#: src/help.cpp:1575
 msgid "Attack Type"
 msgstr "Modus Pugnandi"
 
-#: src/help.cpp:1536
+#: src/help.cpp:1576
 #, fuzzy
 msgid "Resistance"
 msgstr "Repugnantia"
 
-#: src/help.cpp:1575
+#: src/help.cpp:1615
 msgid "Terrain Modifiers"
 msgstr "Mutatores Terrae"
 
-#: src/help.cpp:1579
+#: src/help.cpp:1619
 msgid "Terrain"
 msgstr "Terra"
 
-#: src/help.cpp:1580
+#: src/help.cpp:1620
 msgid "Defense"
 msgstr "Defensio"
 
-#: src/help.cpp:1581
+#: src/help.cpp:1621
 msgid "Movement Cost"
 msgstr "Pretium Motus"
 
-#: src/help.cpp:1584
+#: src/help.cpp:1624
 msgid "Vision Cost"
 msgstr ""
 
-#: src/help.cpp:1586
+#: src/help.cpp:1626
 msgid "Jamming Cost"
 msgstr ""
 
-#: src/help.cpp:1852
+#: src/help.cpp:1904
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Actores stirpis'</header>"
 
-#: src/help.cpp:2765
+#: src/help.cpp:2817
 msgid " < Back"
 msgstr " < Rursus"
 
-#: src/help.cpp:2766
+#: src/help.cpp:2818
 msgid "Forward >"
 msgstr "Secundus >"
 
-#: src/help.cpp:2874
+#: src/help.cpp:2926
 #, fuzzy
 msgid "Reference to unknown topic: "
 msgstr "Referentia ad locum ignotum: "
 
-#: src/help.cpp:3130
+#: src/help.cpp:3182
 msgid "corrupted original file"
 msgstr ""
 
-#: src/help.cpp:3221
+#: src/help.cpp:3281
 msgid "Close"
 msgstr "Claudere"
 
-#: src/help.cpp:3224
+#: src/help.cpp:3284
 msgid "The Battle for Wesnoth Help"
 msgstr "Auxilium Proelio pro Vesnote"
 
-#: src/help.cpp:3280
+#: src/help.cpp:3340
 #, fuzzy
 msgid "Parse error when parsing help text: "
 msgstr "Mendum traductionis in tradendo textum adiutorii: "

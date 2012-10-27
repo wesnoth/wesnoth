@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-09-01 18:47+0200\n"
+"POT-Creation-Date: 2012-10-27 15:56+0200\n"
 "PO-Revision-Date: 2012-04-04 18:49+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
@@ -159,97 +159,104 @@ msgstr ""
 "在帮助中显示所有单位类型（需要重新启动）。这并不会改变已遭遇单位的列表。"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:165
+#: data/advanced_preferences.cfg:164
+#, fuzzy
+#| msgid "Compressed saves"
+msgid "Compress savegames using bzip2"
+msgstr "压缩存档"
+
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:172
 msgid "Joystick support"
 msgstr "游戏杆支持"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:172
+#: data/advanced_preferences.cfg:179
 msgid "Joystick: number of the scroll X-axis joystick"
 msgstr "手柄：用于横向卷屏的手柄编号"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:182
+#: data/advanced_preferences.cfg:189
 msgid "Joystick: number of the scroll X-axis"
 msgstr "手柄：用于横向卷屏的摇杆编号"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:192
+#: data/advanced_preferences.cfg:199
 msgid "Joystick: number of the scroll Y-axis joystick"
 msgstr "手柄：用于纵向卷屏的手柄编号"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:202
+#: data/advanced_preferences.cfg:209
 msgid "Joystick: number of the scroll Y-axis"
 msgstr "手柄：用于纵向卷屏的摇杆编号"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:212
+#: data/advanced_preferences.cfg:219
 msgid "Joystick: deadzone of the scrolling stick"
 msgstr "手柄：用于卷屏的摇杆的死区大小"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:222
+#: data/advanced_preferences.cfg:229
 msgid "Joystick: number of the cursor X-axis joystick"
 msgstr "手柄：用于横向移动光标的手柄编号"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:232
+#: data/advanced_preferences.cfg:239
 msgid "Joystick: number of the cursor X-axis"
 msgstr "手柄：用于横向移动光标的摇杆编号"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:242
+#: data/advanced_preferences.cfg:249
 msgid "Joystick: number of the cursor Y-axis joystick"
 msgstr "手柄：用于纵向移动光标的手柄编号"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:252
+#: data/advanced_preferences.cfg:259
 msgid "Joystick: number of the cursor Y-axis"
 msgstr "手柄：用于纵向移动光标的摇杆编号"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:262
+#: data/advanced_preferences.cfg:269
 msgid "Joystick: deadzone of the cursor stick"
 msgstr "手柄：用于移动光标的摇杆的死区大小"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:272
+#: data/advanced_preferences.cfg:279
 msgid "Joystick: number of the mouse X-axis joystick"
 msgstr "手柄：用于横向移动鼠标箭头的手柄编号"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:282
+#: data/advanced_preferences.cfg:289
 msgid "Joystick: number of the mouse X-axis"
 msgstr "手柄：用于横向移动鼠标箭头的摇杆编号"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:292
+#: data/advanced_preferences.cfg:299
 msgid "Joystick: number of the mouse Y-axis joystick"
 msgstr "手柄：用于纵向移动鼠标箭头的手柄编号"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:302
+#: data/advanced_preferences.cfg:309
 msgid "Joystick: number of the mouse Y-axis"
 msgstr "手柄：用于纵向移动鼠标箭头的摇杆编号"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:312
+#: data/advanced_preferences.cfg:319
 msgid "Joystick: deadzone of the mouse stick"
 msgstr "手柄：用于移动鼠标箭头的摇杆的死区大小"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:322
+#: data/advanced_preferences.cfg:329
 msgid "Joystick: number of the thrust axis joystick"
 msgstr "手柄：用于加速的手柄编号"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:332
+#: data/advanced_preferences.cfg:339
 msgid "Joystick: number of the thrust axis"
 msgstr "手柄：用于加速的摇杆编号"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:342
+#: data/advanced_preferences.cfg:349
 msgid "Joystick: deadzone of the thruster"
 msgstr "手柄：用于加速的摇杆的死区大小"
 
@@ -262,7 +269,7 @@ msgstr "RCA AI"
 #. [lua]: set_status
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:309
-#: data/lua/wml-tags.lua:1265 src/actions/attack.cpp:877
+#: data/lua/wml-tags.lua:1265 src/actions/attack.cpp:802
 msgid "poisoned"
 msgstr "中毒"
 
@@ -362,227 +369,234 @@ msgid "Croatian Translation"
 msgstr "克罗地亚文翻译"
 
 #. [about]
-#: data/core/about.cfg:1459
+#: data/core/about.cfg:1462
 msgid "Czech Translation"
 msgstr "捷克文翻译"
 
 #. [about]
-#: data/core/about.cfg:1519
+#: data/core/about.cfg:1522
 msgid "Danish Translation"
 msgstr "丹麦文翻译"
 
 #. [about]
-#: data/core/about.cfg:1550
+#: data/core/about.cfg:1553
 msgid "Dutch Translation"
 msgstr "荷兰文翻译"
 
 #. [about]
-#: data/core/about.cfg:1614
+#: data/core/about.cfg:1617
 msgid "English (GB) Translation"
 msgstr "英式英文翻译"
 
 #. [about]
-#: data/core/about.cfg:1637
+#: data/core/about.cfg:1640
 msgid "English (Shaw) Translation"
 msgstr "英文（萧氏字母表）翻译"
 
 #. [about]
-#: data/core/about.cfg:1655
+#: data/core/about.cfg:1658
 msgid "Esperanto Translation"
 msgstr "世界语翻译"
 
 #. [about]
-#: data/core/about.cfg:1674
+#: data/core/about.cfg:1677
 msgid "Estonian Translation"
 msgstr "爱沙尼亚文翻译"
 
 #. [about]
-#: data/core/about.cfg:1684
+#: data/core/about.cfg:1687
 msgid "Filipino Translation"
 msgstr "菲律宾文翻译"
 
 #. [about]
-#: data/core/about.cfg:1694
+#: data/core/about.cfg:1697
 msgid "Finnish Translation"
 msgstr "芬兰文翻译"
 
 #. [about]
-#: data/core/about.cfg:1740
+#: data/core/about.cfg:1743
 msgid "French Translation"
 msgstr "法文翻译"
 
 #. [about]
-#: data/core/about.cfg:1899
+#: data/core/about.cfg:1902
 msgid "Friulian Translation"
 msgstr "弗留利文翻译"
 
 #. [about]
-#: data/core/about.cfg:1906
+#: data/core/about.cfg:1909
 msgid "Galician Translation"
 msgstr "巴伦西亚文翻译"
 
 #. [about]
-#: data/core/about.cfg:1942
+#: data/core/about.cfg:1945
 msgid "German Translation"
 msgstr "德文翻译"
 
 #. [about]
-#: data/core/about.cfg:2016
+#: data/core/about.cfg:2019
 msgid "Greek Translation"
 msgstr "希腊文翻译"
 
 #. [about]
-#: data/core/about.cfg:2056
+#: data/core/about.cfg:2059
 msgid "Hebrew Translation"
 msgstr "希伯来文翻译"
 
 #. [about]
-#: data/core/about.cfg:2069
+#: data/core/about.cfg:2072
 msgid "Hungarian Translation"
 msgstr "匈牙利文翻译"
 
 #. [about]
-#: data/core/about.cfg:2130
+#: data/core/about.cfg:2133
 msgid "Icelandic Translation"
 msgstr "冰岛文翻译"
 
 #. [about]
-#: data/core/about.cfg:2140
+#: data/core/about.cfg:2143
 msgid "Indonesian Translation"
 msgstr "印度尼西亚文翻译"
 
 #. [about]
-#: data/core/about.cfg:2163
+#: data/core/about.cfg:2166
 msgid "Irish Translation"
 msgstr "爱尔兰文翻译"
 
 #. [about]
-#: data/core/about.cfg:2170
+#: data/core/about.cfg:2173
 msgid "Italian Translation"
 msgstr "意大利文翻译"
 
 #. [about]
-#: data/core/about.cfg:2214
+#: data/core/about.cfg:2217
 msgid "Japanese Translation"
 msgstr "日文翻译"
 
 #. [about]
-#: data/core/about.cfg:2282
+#: data/core/about.cfg:2285
 msgid "Korean Translation"
 msgstr "韩文翻译"
 
 #. [about]
-#: data/core/about.cfg:2290
+#: data/core/about.cfg:2293
 msgid "Latin Translation"
 msgstr "拉丁文翻译"
 
 #. [about]
-#: data/core/about.cfg:2316
+#: data/core/about.cfg:2319
 msgid "Latvian Translation"
 msgstr "拉脱维亚文翻译"
 
 #. [about]
-#: data/core/about.cfg:2327
+#: data/core/about.cfg:2330
 msgid "Lithuanian Translation"
 msgstr "立陶宛文翻译"
 
 #. [about]
-#: data/core/about.cfg:2349
+#: data/core/about.cfg:2352
 msgid "Macedonian Translation"
 msgstr "马其顿文翻译"
 
 #. [about]
-#: data/core/about.cfg:2356
+#: data/core/about.cfg:2359
 msgid "Marathi Translation"
 msgstr "马拉地文翻译"
 
 #. [about]
-#: data/core/about.cfg:2365
+#: data/core/about.cfg:2368
 msgid "Norwegian Translation"
 msgstr "挪威文翻译"
 
 #. [about]
-#: data/core/about.cfg:2390
+#: data/core/about.cfg:2393
 msgid "Old English Translation"
 msgstr "古英文翻译"
 
 #. [about]
-#: data/core/about.cfg:2408
+#: data/core/about.cfg:2411
 msgid "Polish Translation"
 msgstr "波兰文翻译"
 
 #. [about]
-#: data/core/about.cfg:2448
+#: data/core/about.cfg:2451
 msgid "Portuguese Translation"
 msgstr "葡萄牙文翻译"
 
 #. [about]
-#: data/core/about.cfg:2455
+#: data/core/about.cfg:2458
 msgid "Portuguese (Brazil) Translation"
 msgstr "葡萄牙文（巴西）翻译"
 
 #. [about]
-#: data/core/about.cfg:2503
+#: data/core/about.cfg:2506
 msgid "Romanian Translation"
 msgstr "罗马尼亚文翻译"
 
 #. [about]
-#: data/core/about.cfg:2511
+#: data/core/about.cfg:2514
 msgid "Russian Translation"
 msgstr "俄文翻译"
 
 #. [about]
-#: data/core/about.cfg:2596
+#: data/core/about.cfg:2599
+#, fuzzy
+#| msgid "Galician Translation"
+msgid "Scottish Gaelic Translation"
+msgstr "巴伦西亚文翻译"
+
+#. [about]
+#: data/core/about.cfg:2608
 msgid "Serbian Translation"
 msgstr "塞尔维亚文翻译"
 
 #. [about]
-#: data/core/about.cfg:2615
+#: data/core/about.cfg:2627
 msgid "Slovak Translation"
 msgstr "斯洛伐克文翻译"
 
 #. [about]
-#: data/core/about.cfg:2644
+#: data/core/about.cfg:2656
 msgid "Slovenian Translation"
 msgstr "斯洛文尼亚文翻译"
 
 #. [about]
-#: data/core/about.cfg:2660
+#: data/core/about.cfg:2672
 msgid "Spanish Translation"
 msgstr "西班牙文翻译"
 
 #. [about]
-#: data/core/about.cfg:2741
+#: data/core/about.cfg:2756
 msgid "Swedish Translation"
 msgstr "瑞典文翻译"
 
 #. [about]
-#: data/core/about.cfg:2782
+#: data/core/about.cfg:2797
 msgid "Turkish Translation"
 msgstr "土耳其文翻译"
 
 #. [about]
-#: data/core/about.cfg:2804
+#: data/core/about.cfg:2819
 msgid "Ukrainian Translation"
 msgstr "乌克兰文翻译"
 
 #. [about]
-#: data/core/about.cfg:2817
+#: data/core/about.cfg:2832
 msgid "Valencian (southern Catalan) Translation"
 msgstr "瓦伦西亚文（南加泰罗尼亚）翻译"
 
 #. [about]
-#: data/core/about.cfg:2830
+#: data/core/about.cfg:2845
 msgid "Vietnamese Translation"
 msgstr "越南文翻译"
 
 #. [about]
-#: data/core/about.cfg:2849
+#: data/core/about.cfg:2864
 msgid "RACV’s Translation"
 msgstr "RACV的翻译"
 
 #. [about]
-#: data/core/about.cfg:2856
+#: data/core/about.cfg:2871
 msgid "Bots"
 msgstr "机器人"
 
@@ -1572,163 +1586,6 @@ msgstr ""
 
 #: data/core/macros/names.cfg:43
 msgid ""
-"Aban,Abbas,Abbud,Abdul-ʿAdl,Abdul-Ahad,Abdul-Alim,Abdul-Aliyy,Abdul-Azim,"
-"Abdul-Aziz,Abdul-Badi,Abdul-Baʿith,Abdul-Baqi,Abdul-Bari,Abdul-Barr,Abdul-"
-"Basir,Abdul-Basit,Abdul-Fattah,Abdul-Ghaffar,Abdul-Ghafur,Abdul-Ghani,Abdul-"
-"Hadi,Abdul-Hafiz,Abdul-Hakam,Abdul-Hakim,Abdul-Halim,Abdul-Hamid,Abdul-Haqq,"
-"Abdul-Hasib,Abdul-Hayy,Abdul-Jabbar,Abdul-Jalil,Abdul-Karim,Abdul-Khabir,"
-"Abdul-Khaliq,Abdul-Latif,Abdul-Malik,Abdul-Majid,Abdul-Matin,Abdul-Mubdiʾ,"
-"Abdul-Mughni,Abdul-Muhaimin,Abdul-Muhsi,Abdul-Muhyi,Abdul-Muʿid,Abdul-Muʿizz,"
-"Abdul-Mujib,Abdul-Mumin,Abdul-Muqaddim,Abdul-Muqtadir,Abdul-Musawwir,Abdul-"
-"Mutaʿal,Abdul-Nafi,Abdul-Nasser,Abdul-Nasir,Abdul-Nur,Abdul-Qadir,Abdul-"
-"Qahhar,Abdul-Qawi,Abdul-Qayyum,Abdul-Quddus,Abdul-Rafi,Abdul-Rahim,Abdul-"
-"Rahman,Abdul-Rashid,Abdul-Raʿuf,Abdul-Razzaq,Abdul-Shakur,Abdul-Tawwab,Abdul-"
-"Wadud,Abdul-Wahhab,Abdul-Wahid,Abdul-Wajid,Abdul-Wakil,Abdul-Wali,Abdul-"
-"Waliy,Abdul-Warith,Abdul-Zahir,Abdullah,ʿAbid,ʿAbidin,Abu Bakr,Aby al-Khayr,"
-"Adil,Adham,Adib,ʿAdli,ʿAdnan,ʿAfif,Ahmad,ʿAjib,ʿAkif,Akil,Akram,Alaʾ,Alaʾ al-"
-"Din,Alʿ Abbas,Aladdin,al-Bara,al-Hakam,al-Harith,Alhasan,Alhusain,Ali,Alim,"
-"Almahdi,al-Safi,Altaf,Altair,al-Tayyib,al-Tijani,al-Tufail,Amid,ʿAmid,Amin,"
-"Amir,ʿAmir,Amjad,ʿAmmar,ʿAmro,Anas,Anis,ʿAntarah,Anwar,ʿAqil,Arfan,Arif,"
-"ʿArif,Asad,Asʿad,Asadel,Ashraf,Asif,ʿAsim,Aswad,Ataʿ,Ataʿ Allah,Ataʿ al-"
-"Rahman,Athil,Athir,ʿAtif,ʿAwad,ʿAwf,Aws,Awwab,Ayham,Ayman,Ayser,Ayyub,Aza,"
-"ʿAzab,Azhar,Azim,ʿAziz,ʿAzzam,Badi,Badi al-Zaman,Badr,Badr al-Din,Badri,"
-"Bahaʿ,Bahiyy al-Din,Bahij,Bahir,Bakr,Bakri,Baligh,Bandar,Barakah,Barir,"
-"Bashshar,Basil,Basim,Bassam,Bayezid,Bayhas,Bilal,Bishr,Boulos,Budail,Burhan,"
-"Bushr,Butrus,Dabir,Dani,Darwish,Daʿud,Dhakir,Dhakiy,Dhakwan,Dhul Fiqar,Dirar,"
-"Diya,Diya al-Din,Duqaq,Fadi,Fadil,Fadl,Fadl Allah,Fahd,Fahad,Fahmi,Faisal,"
-"Faʿiz,Fakhir,Fakhr al-Din,Fakhri,Fakih,Falah,Falih,Faraj,Farhan,Farid,Fariq,"
-"Fariq,Faris,Faruq,Fath,Fathi,Fatih,Fatin,Fawwaz,Fawzan,Fawzi,Fayyad,Ferran,"
-"Fida,Fikri,Firas,Fuʿad,Fudail,Gamal,Ghayth,Ghali,Ghalib,Ghanim,Ghassan,"
-"Ghawth,Ghazwan,Ghiyath,Habbab,Habib,Haddad,Hadi,Hafiz,Hakem,Hakim,Halim,"
-"Hamal,Hamas,Hamdan,Hamdi,Hamid,Hamim,Hamzah,Hana,Hanaʾi,Hanbal,Hani,Hanif,"
-"Hannad,Haris,Harith,Harun,Hashim,Hassan,Hatim,Haydar,Haytham,Hayyan,Hazim,"
-"Hilal,Hilmi,Hisham,Hud,Hudad,Hudhafah,Hudhayfah,Humam,Hussein,Husam,Husam al-"
-"Din,Ibrahim,ʿId,Idris,Ihsan,Ihtisham,ʿIkrimah,Ilias,ʿImad,Imad al-Din,Imran,"
-"Imtiyaz,Inʿam,Iqbal,ʿIrfan,ʿIsa,ʿIsam,Ishaq,Ismaʿil,Iyad,Iyas,Izz al-Din,"
-"Jabbar,Jabr,Jabir,Jad Allah,Jaʿfar,Jal,Jalal,Jalal al-Din,Jalil,Jamal,Jamal "
-"al-Din,Jamil,Jarir,Jasim,Jaul,Jaun,Jawad,Jawdah,Jawhar,Jibran,Jibril,Jubair,"
-"Jul,Jumah,Junayd,Juwain,Kadar,Kadin,Kadir,Kahil,Kaliq,Kamal,Kamil,Karam,"
-"Kardal,Karif,Karim,Kasib,Kasim,Katib,Kazim,Khalaf,Khaldun,Khalid,Khalil,"
-"Khalil al-Allah,Khalis,Khatib,Khair al-Din,Khairi,Khoury,Khulus,Khuzaymah,"
-"Kutaiba,Labib,Lablab,Latif,Layth,LuʿayLubayd,Luqman,Lut,Lutfi,Maʿd,Madani,"
-"Mahbub,Mahdi,Mahfuz,Mahir,Mahjub,Mahmud,Mahrus,Maimun,Majd,Majdy,Majd al-Din,"
-"Majid,Makin,Malik,Mamduh,Maʿmun,Maʿin,Mandhur,Mansur,Marghub,Marid,Maʿruf,"
-"Marwan,Marzuq,Mashʿal,Mashhur,Masrur,Masʿud,Masun,Maysarah,Mazhar,Mazin,"
-"Mehmed,Mihran,Mihyar,Mikaʾil,Miqdad,Misbah,Mishʿal,Miyaz,Muʾadh,Muʾawiyah,"
-"Muʾayyad,Mubarak,Mubin,Mudar,Muddaththir,Mufid,Muflih,Muhab,Muhayr,Muhammad,"
-"Muhanna,Muhannad,Muhib,Muhibb,Muhsin,Muhtadi,Muhyi al-Din,Muʿin,Muʿizz,Mujab,"
-"Mujahid,Mukarram,Mukhlis,Mukhtar,Mulham,Mulhim,Muʿmmar,Muʿmin,Mumtaz,Munahid,"
-"Mundhir,Munib,Munif,Munir,Muʿnis,Munjid,Munsif,Muntasir,Murad,Murid,Murshid,"
-"Murtada,Musa,Musʿab,Musaʿid,Mushtaq,Muslih,Muslim,Mutafa,Mutaʾ,Muʿtasim,"
-"Mutawalli,Muʿtazz,Muthanna,Muti,Muwaffaq,Muyassar,Muzaffar,Mussammil,Nabhan,"
-"Nabighah,Nabih,Nabil,Nadhir,Nadim,Nadir,Nafiʾ,Nahid,Naʾil,Naʾim,Naji,Najib,"
-"Najid,Najjar,Najm al-Din,Naʿaman,Namir,Nashʿah,Nashʿat,Nashwan,Nasib,Nasih,"
-"Nasim,Nasir,Nasir al-Din,Nasr,Nasri,Nasuh,Nawaf,Nawfal,Nayif,Nazih,Nazim,"
-"Nazmi,Nibras,Nidal,Nijad,Nimr,Nizar,Nuʿaym,Nuh,Nuhayd,Numair,Nuʿman,Nur al-"
-"Din,Nuri,Nusrah,Nusrat,Omar,Orhan,Osman,Qasim,Qays,Qudamah,Qusay,Qatadah,"
-"Qutaybah,Qutb,Qutuz,Rabah,Rabi,Radi,Rafi,Rafid,Rafiq,Raghib,Rahman,Raʿid,"
-"Raʿif,Rais,Rajaa,Rajab,Raji,Rajih,Rakin,Rami,Ramih,Ramiz,Ramzi,Rani,Rashad,"
-"Rashid,Rasil,Rasin,Rasmi,Rasul,Ratib,Raʿuf,Rayhan,Rayyan,Razin,Ridha,Ridwan,"
-"Rihab,Riyad,Rizq,Ruhi,Rushd,Rushdi,Ruwayd,Saad,Saʿadah,Sab,Sabih,Sabir,Sabri,"
-"Saʿd,Saʿd al-Din,Sadad,Sadid,Sadiq,Saʿdun,Saʿid,Safi,Safiy,Safiy al-Din,"
-"Safuh,Safwah,Safwat,Safwan,Sahib,Sahir,Sahl,Saʾib,Saif,Saif al-Din,Sajid,"
-"Sajjad,Sakhr,Salah,Salah al-Din,Salamah,Salih,Salim,Salman,Sami,Samih,Samir,"
-"Samman,Saqr,Sariyah,Sati,Saud,Sayyid,Shaʿban,Shadi,Shadin,Shafi,Shafiq,"
-"Shahid,Shahin,Shahir,Shakib,Shakir,Shams al-Din,Shamal,Shamil,Shamim,Sharaf,"
-"Sharif,Shawqi,Shihab,Shihab al-Din,Shihad,Shuʿayb,Shukri,Shumayl,Siddiq,"
-"Sinan,Siraj,Siraj al-Din,Sofian,Subhi,Sufyan,Suhayb,Suhayl,Suhaym,Sulaiman,"
-"Sumrah,Suraqah,Suʿud,Tahir,Tahsin,Taym Allah,Taj,Taj al-Din,Talal,Talib,"
-"Tamim,Tamir,Tamam,Tammam,Taqiy,Tarif,Tariq,Taslim,Tawfiq,Tawhid,Taymullah,"
-"Taysir,Tayyib,Thabit,Thamir,Thaqib,Thawab,Thawban,ʿUbaidah,Ubaid,Ubayy,"
-"ʿUdayl,ʿUday,ʿUmar,Umarah,Umair,ʾaUrwah,Usaym,Usama,ʿUtbah,Uthal,Uthman,"
-"Waddah,Wadi,Wadid,Wafiq,Wahab,Wahhab,Wahid,Waʾil,Wajdi,Wajid,Wajih,Wakil,"
-"Walid,Walif,Waliy Allah,Waliy al-Din,Waqar,Waqqas,Ward,Wasif,Wasil,Wasim,"
-"Wazir,Yahya,Yaman,Yaʿqub,Yasar,Yasin,Yasir,Yazan,Yazid,Yunus,Yushua,Yusri,"
-"Yusuf,Zafar,Zafir,Zahid,Zahir,Zayd,Zaim,Zayn,Zarif,Zakarriya,Zaki,Zakwan,"
-"Ziyad,Zubayr,Zuhayr"
-msgstr ""
-"阿班,阿巴斯,阿布德,阿卜杜勒-阿德,阿卜杜勒-阿哈德,阿卜杜勒-阿利姆,阿卜杜勒-阿"
-"利耶,阿卜杜勒-阿齐姆,阿卜杜勒-阿齐兹,阿卜杜勒-巴迪,阿卜杜勒-巴伊,阿卜杜勒-巴"
-"基,阿卜杜勒-巴里,阿卜杜勒-巴尔,阿卜杜勒-巴希尔,阿卜杜勒-巴西特,阿卜杜勒-法塔"
-"赫,阿卜杜勒-加法尔,阿卜杜勒-加富尔,阿卜杜勒-加尼,阿卜杜勒-哈迪,阿卜杜勒-哈菲"
-"兹,阿卜杜勒-哈卡姆,阿卜杜勒-哈基姆,阿卜杜勒-哈利姆,阿卜杜勒-阿米德,阿卜杜勒-"
-"哈基,阿卜杜勒-哈西卜,阿卜杜勒-哈伊,阿卜杜勒-贾巴尔,阿卜杜勒-贾利勒,阿卜杜勒-"
-"卡里姆,阿卜杜勒-哈比尔,阿卜杜勒-哈利克,阿卜杜勒-拉蒂夫,阿卜杜勒-马利克,阿卜杜"
-"勒-马吉德,阿卜杜勒-马丁,阿卜杜勒-穆卜迪尔,阿卜杜勒-穆格尼,阿卜杜勒-穆海明,阿"
-"卜杜勒-穆赫辛,阿卜杜勒-穆海依,阿卜杜勒-穆埃德,阿卜杜勒-穆伊兹,阿卜杜勒-穆吉"
-"布,阿卜杜勒-穆明,阿卜杜勒-穆卡迪姆,阿卜杜勒-穆克塔达,阿卜杜勒-穆萨维,阿卜杜"
-"勒-穆塔阿勒,阿卜杜勒-纳菲,阿卜杜勒-纳赛尔,阿卜杜勒-纳西尔,阿卜杜勒-努尔,阿卜"
-"杜勒-卡迪尔,阿卜杜勒-卡哈尔,阿卜杜勒-卡维,阿卜杜勒-加尧姆,阿卜杜勒-库杜斯,阿"
-"卜杜勒-拉菲,阿卜杜勒-拉希姆,阿卜杜勒-拉赫曼,阿卜杜勒-拉希德,阿卜杜勒-拉沃夫,"
-"阿卜杜勒-拉扎克,阿卜杜勒-沙库尔,阿卜杜勒-塔瓦卜,阿卜杜勒-瓦杜德,阿卜杜勒-瓦哈"
-"卜,阿卜杜勒-瓦希德,阿卜杜勒-瓦基德,阿卜杜勒-瓦基勒,阿卜杜勒-瓦利,阿卜杜勒-瓦"
-"利,阿卜杜勒-沃里思,阿卜杜勒-查希尔,阿卜杜拉,阿比德,阿比丁,阿布·贝克尔,阿比·阿"
-"勒凯,阿迪勒,阿扎姆,阿迪卜,阿德利,阿德南,阿菲夫,艾哈迈德,阿吉布,阿基夫,阿基勒,"
-"阿克拉姆,阿拉,阿拉·阿勒丁,阿勒·阿巴斯,阿拉丁,阿勒巴拉,阿勒哈卡姆,阿勒哈里斯,"
-"阿勒哈桑,阿勒侯赛因,阿里,阿利姆,阿勒迈赫迪,阿勒萨菲,阿尔塔夫,阿尔泰,阿勒塔伊"
-"布,阿勒提贾尼,阿勒图费勒,阿米德,阿米德,阿明,阿米尔,阿米尔,阿姆贾德,阿马尔,阿"
-"姆鲁,阿纳斯,阿尼斯,安塔罗,安瓦尔,阿其尔,阿尔法,阿里夫,阿里夫,阿萨德,阿斯阿德,"
-"阿萨德尔,阿什拉夫,阿西夫,阿西姆,阿斯瓦德,阿塔,阿塔·阿拉,阿塔·阿勒拉赫曼,阿西"
-"尔,阿西尔,阿蒂夫,阿瓦德,奥夫,奥斯,奥瓦博,艾哈姆,艾曼,艾塞尔,阿尤博,阿萨,阿萨"
-"博,艾兹哈尔,阿齐姆,阿齐兹,阿扎姆,巴迪,巴迪·阿勒扎曼,巴德尔,巴德尔·阿勒丁,巴德"
-"里,巴哈,巴希义·阿勒丁,巴希杰,巴希尔,贝克尔,巴克里,巴莱,班达尔,巴拉卡,巴里,巴"
-"希哈,巴西勒,巴锡明,巴萨姆,巴耶齐德,拜哈斯,比拉勒,比什尔,布洛斯,布达尔,布尔汉,"
-"布沙,布特鲁斯,达比尔,达尼,达尔维什,达乌德,达卡,达其,达卡万,度尔·菲恰,迪拉,迪"
-"亚,迪亚·阿勒丁,杜凯,法迪,法迪勒,法德勒,法德勒·阿拉,法赫德,法赫德,法赫米,费萨"
-"尔,法伊兹,法赫尔,法赫尔·阿勒丁,法赫里,法基,法拉赫,法利赫,法拉杰,法尔汉,法里"
-"德,法里其,法里斯,法鲁克,法特赫,法特希,法提赫,法廷,法瓦兹,福赞,法齐,法耶兹,费"
-"兰,菲达,菲克里,菲拉斯,福阿德,福达尔,贾迈勒,加斯,加利,加利卜,加尼姆,加桑,加瓦"
-"斯,加兹万,吉亚斯,哈巴卜,哈比卜,哈达德,哈迪,哈菲兹,哈卡姆,哈基姆,哈利姆,哈马"
-"尔,哈马斯,哈姆丹,哈姆迪,哈米德,哈米姆,哈姆扎,哈纳,哈奈,汉巴尔,哈尼,哈尼夫,汉"
-"纳德,哈里斯,哈里斯,哈伦,哈希姆,哈桑,哈特姆,海达尔,海赛姆,哈扬,哈兹姆,希拉勒,"
-"希勒米,希沙姆,胡德,胡达,胡德哈法赫,胡德哈法赫,胡马姆,侯赛因,胡萨姆,胡萨姆·阿"
-"勒丁,易卜拉欣,埃德,伊德里斯,伊赫桑,伊赫提沙姆,伊克里姆赫,伊利亚斯,伊马德,伊马"
-"德·阿勒丁,伊姆兰,伊姆提亚兹,伊纳姆,伊克巴尔,伊尔凡,伊萨,伊萨姆,伊沙克,伊斯梅"
-"尔,伊亚德,伊亚斯,伊兹·阿勒丁,贾巴尔,贾布尔,贾比尔,贾德·阿拉,贾法尔,贾尔,贾拉"
-"勒,贾拉勒·阿勒丁,贾利勒,贾迈勒,贾迈勒·阿勒丁,贾米勒,贾里尔,贾西姆,贾勒,贾温,"
-"贾瓦德,贾乌德,乔哈尔,朱卜兰,贾布里勒,朱巴尔,朱勒,朱马赫,朱奈德,朱万,卡达尔,卡"
-"丁,卡迪尔,卡希勒,卡里其,卡迈勒,卡米勒,卡拉姆,卡尔达勒,卡里夫,卡里姆,卡西卜,卡"
-"西姆,卡提卜,卡齐姆,哈拉夫,哈勒敦,哈立德,哈立德,哈利勒,哈利勒·阿勒阿拉,哈利斯,"
-"哈提卜,海尔·阿勒丁,哈伊里,胡利,胡卢西,胡扎亚姆赫,库塔伊巴,拉比卜,拉卜拉卜,拉"
-"蒂夫,拉斯，卢埃卢巴亚德,卢克曼,卢特,卢特菲,马德,迈达尼,马赫布卜,迈赫迪,马赫福"
-"兹,马希尔,马哈古卜,马哈茂德,马赫鲁斯,迈蒙,马吉德,马吉迪,马吉德·阿勒丁,马希德,"
-"马金,马利克,马姆杜,马蒙,马因,曼德赫,曼苏尔,马尔古布,马里德,马鲁夫,马尔万,马尔"
-"祖克,玛莎勒,马什胡尔,马斯罗尔,马苏德,马松,迈萨拉,马兹哈尔,马辛,穆罕默德,米伦,"
-"米哈,米凯尔,米克德,米斯巴赫,米沙勒,米亚兹,穆阿德,穆阿维耶,穆阿耶德,穆巴拉克,"
-"穆宾,穆达尔,穆达斯斯尔,穆菲德,穆夫利赫,穆哈卜,穆哈亚,穆罕默德,穆汉纳,穆汉纳"
-"德,穆希卜,穆希布,穆赫辛,穆赫塔迪,穆赫依·阿勒丁,穆因,穆伊兹,穆亚卜,穆贾希德,穆"
-"卡拉姆,穆赫利斯,穆赫塔尔,穆勒汉姆,穆勒希姆,穆马,穆明,蒙塔兹,蒙纳希德,蒙齐尔,"
-"穆尼卜,穆尼夫,穆尼尔,穆尼斯,蒙基德,蒙斯夫,蒙塔塞尔,穆拉德,穆尔德,穆尔希德,穆"
-"尔塔达,穆萨,穆沙卜,穆赛义德,穆什塔克,穆斯利赫,穆斯利姆,穆塔法,穆塔,穆塔西姆,"
-"穆塔瓦利,穆塔兹,穆萨纳,穆蒂,穆瓦法克,穆亚西尔,穆扎法尔,穆萨米勒,纳卜汉,纳比哈"
-"赫,纳比,纳比勒,纳德赫尔,纳迪姆,纳迪尔,纳菲,纳希德,纳伊尔,纳伊姆,纳吉,纳吉布,"
-"纳吉德,纳贾尔,纳杰姆·阿勒丁,纳曼,纳米尔,纳沙赫,纳沙特,纳什万,纳西卜,纳西赫,纳"
-"西姆,纳西尔,纳西尔·阿勒丁,纳斯尔,纳斯里,纳苏赫,纳瓦夫,纳乌法勒,纳伊夫,纳齐赫,"
-"纳齐姆,尼巴斯,尼达尔,尼亚德,尼米尔,尼扎尔,纳伊姆,努赫,努哈亚德,努马尔,努曼,努"
-"尔·阿勒丁,努里,努斯拉赫,努斯拉特,奥马尔,奥尔汗,奥斯曼,卡西姆,卡伊斯,库达马赫,"
-"库赛,卡塔达赫,库塔耶巴赫,库特卜,库土兹,拉巴赫,拉比,拉迪,拉菲,拉菲德,拉菲克,拉"
-"吉卜,拉赫曼,拉伊德,拉伊夫,赖斯,拉贾,拉杰卜,拉吉,拉吉赫,拉金,拉米,拉米赫,拉米"
-"兹,拉尼,拉沙德,拉希德,拉西勒,拉辛,拉斯米,拉苏尔,拉提卜,拉乌夫,拉伊汉,拉亚,拉"
-"赞,里达,里德万,里哈卜,里亚德,里兹克,鲁希,鲁什德,鲁什迪,鲁韦德,萨阿德,萨阿达"
-"赫,萨卜,萨比赫,萨比尔,萨布里,萨德,萨德·阿勒丁,萨达德,萨迪德,萨迪克,萨阿敦,赛"
-"义德,萨菲,萨菲耶,萨菲耶·阿勒丁,萨夫赫,萨夫瓦赫,萨夫瓦特,萨夫万,萨希卜,萨希尔,"
-"萨尔,赛义卜,赛义夫,赛义夫·阿勒丁,赛义德,萨贾德,萨赫尔,萨拉赫,萨拉赫·阿勒丁,萨"
-"拉马,萨利赫,萨利姆,萨勒曼,萨米,萨米赫,萨米尔,萨曼,萨克尔,萨里亚赫,萨提,沙特,"
-"赛义德,沙班,沙迪,沙丁,沙菲,沙菲克,沙希德,沙欣,沙赫尔,沙基卜,沙基尔,沙姆斯·阿"
-"勒丁,沙马勒,沙米勒,沙米姆,谢拉夫,谢里夫,舒基,谢哈布,谢哈布·阿勒丁,谢哈德,舒艾"
-"布,舒凯里,舒马勒,西迪克,锡南,西拉杰,西拉杰·阿勒丁,索菲安,苏卜希,苏夫杨,苏哈伊"
-"卜,苏海拉,苏海姆,苏莱曼,苏姆拉赫,苏拉卡赫,苏乌德,塔希尔,塔赫辛,塔伊姆·阿拉,塔"
-"杰,塔杰·阿勒丁,塔拉勒,塔利布,塔米米,塔米尔,塔玛姆,塔马姆,塔基,塔里夫,塔里克,"
-"塔斯林,陶菲克,陶希德,泰穆尔赫,泰西尔,塔伊布,萨比特,萨米尔,萨奇卜,萨瓦卜,萨瓦"
-"班,奥贝达赫,奥贝德,奥贝伊,乌代勒,乌代,奥马尔,奥马尔赫,乌马尔,厄瓦赫,乌萨姆,乌"
-"萨马,乌巴赫,乌泰尔,奥斯曼,瓦达,瓦迪,瓦迪德,瓦菲克,瓦哈布,瓦哈卜,瓦希德,瓦伊"
-"勒,瓦伊迪,瓦吉德,瓦吉赫,瓦基勒,瓦利德,瓦利夫,瓦利耶·阿拉,瓦利耶·阿勒丁,瓦卡"
-"尔,瓦卡斯,瓦尔德,瓦西夫,瓦西尔,瓦西姆,瓦齐尔,叶海亚,亚曼,雅各布,亚萨尔,亚辛,"
-"亚西尔,亚赞,耶齐德,尤努斯,尤沙,尤斯里,优素福,扎法尔,扎菲尔,扎希德,查希尔,扎伊"
-"德,扎伊姆,扎伊纳,扎里夫,扎卡里亚,扎基,扎卡万,齐亚德,祖巴伊尔,祖海尔"
-
-#: data/core/macros/names.cfg:47
-msgid ""
 "Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz’Kza,Chamil,Cleezi,Clezz,Fazzis,"
 "Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
 "Hezzis,Hix,Inexis,Irix,Jezzix,Jizz,Kaliez,Kepzs,Kernix,Kersezz,Kertrasz,Kerx,"
@@ -1753,7 +1610,7 @@ msgstr ""
 "斯,希拉兹,希,希拉特拉斯,希拉特雷兹,希兹,赞多尔,泽德里克斯,希尔雷克斯,希兹阿"
 "兹,希斯拉普,匝尔克兹,匝普德"
 
-#: data/core/macros/names.cfg:51
+#: data/core/macros/names.cfg:47
 msgid ""
 "Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
 "Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
@@ -1771,7 +1628,7 @@ msgstr ""
 "劳,希修提尔,塔伽洛阿,塔纳阿,坦甲洛阿,坦加,陶玛斯,提奇提奇,提尼,提尼劳,提尼洛,"
 "托尼瓦,托尼温,维兹,伏德尼克,伏鲁卡萨"
 
-#: data/core/macros/names.cfg:52
+#: data/core/macros/names.cfg:48
 msgid ""
 "Aglaopheme,Amphitrite,Aphrodite,Ariel,Atargatis,Calypso,Delphine,Derceto,"
 "Diktynna,Electra,Galatea,Himeropa,Jengu,Leucosia,Ligia,Lori Lamaris,Mama "
@@ -1783,7 +1640,7 @@ msgstr ""
 "玛玛·瓦塔,玛丽娜,米兰达,米丽娅,莫尔菲,帕丝诺帕,佩娜吉拉,佩希诺伊,兰,希德娜,斯"
 "蒂拉·玛丽丝,希莉珂丝皮娅,提佳塔,瓦提,薇-艾娃,薇恩·艾墨儿,薇特-艾玛"
 
-#: data/core/macros/names.cfg:56
+#: data/core/macros/names.cfg:52
 msgid ""
 "Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
 "Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
@@ -1800,7 +1657,7 @@ msgstr ""
 "斯,斯勒尔,斯诺尔,索伊尔,索克尔,斯瑞尔,崔克斯欧兹,维拉尔,维萨尔,维拉尼斯,希布"
 "拉克,希玛雷尔,希纳斯,希纳莫斯,希欧普空,扎尔斯普,兹雷克,兹普斯克,兹斯克"
 
-#: data/core/macros/names.cfg:57
+#: data/core/macros/names.cfg:53
 msgid ""
 "Aliasse,Amailis,Axmailia,Blai,Blanalai,Bli,Bliana,Brassas,Brissal,Gaxmail,"
 "Griama,Grissa,Grissilai,Haila,Haina,Harxias,Huzi,Inai,Inalai,Issalai,Klez,"
@@ -1818,7 +1675,7 @@ msgstr ""
 "拉,斯内莉娅,斯拉可,斯拉尔,斯扎可,崔克丝哲德,薇莱拉,薇萨莱,薇拉妮莎,夏布拉可,"
 "夏玛莉娅,希娜,希娜希娅,希纳玛丝,希欧普科内,扎尔丝帕,扎尔可,兹普丝可,兹丝可"
 
-#: data/core/macros/names.cfg:61
+#: data/core/macros/names.cfg:57
 msgid ""
 "Akoark,Akort,Akzalk,Arkarm,Barkuk,Blokkar,Borkuk,Bukkak,Bulruk,Corkkar,"
 "Delkkak,Garkuk,Gnukk,Goruk,Grak,Gurk,Gurm,Kalknix,Karak,Karbuk,Kargnak,"
@@ -1834,7 +1691,7 @@ msgstr ""
 "卡马克,马克隆,马卡克,马库克,莫克内克,纳伽克,欧尔克,欧尔克特,雷克纳克,塔寇拉"
 "克,特拉布克,特拉空,乌卡,乌克阿克"
 
-#: data/core/macros/names.cfg:65
+#: data/core/macros/names.cfg:61
 msgid ""
 "Badush,Bagar,Bagdish,Barag,Barbag,Bart,Bashnak,Bidish,Bidush,Bik,Bilg,Bilo,"
 "Binak,Bink,Biol,Birt,Bogar,Bogdish,Bogdush,Bogor,Bok,Bolg,Bong,Borg,Bork,"
@@ -1906,7 +1763,7 @@ msgstr ""
 "鲁特,孚鲁卡姆,乏迪什,乏姆克,孚尔戈,孚罗姆,乏纳克姆,乏纳戈姆,乏巴戈姆,乏格姆,"
 "孚什纳克"
 
-#: data/core/macros/names.cfg:69
+#: data/core/macros/names.cfg:65
 msgid ""
 "Äg,Agh,Bog Äh,Borb,Brag,Brag Goh,Brok,Dak,Drog,Frok,Ga,Gah,Gark,Gnarf,Grar,"
 "Grokk,Grumph,Gulk,Hak,Hask,Hoth,Hug Bah,Hu Kah,Kak,Krak,Krug,Kub,Kuh,Lok,Luk,"
@@ -1919,7 +1776,7 @@ msgstr ""
 "图,塔格,图鲁格,图鲁夫,苏尔,托格,托尔格,托克,苏克,塔,塔克·拉,尤格,阿,乌格,乌"
 "拉,乌克,乏克,佐格,组格"
 
-#: data/core/macros/names.cfg:73
+#: data/core/macros/names.cfg:69
 msgid ""
 "Bludebalmen,Boladrumbadrum,Bolwuldelman,Bombempomgontor,Bomtanbomkenton,"
 "Bomtanbomtonum,Bregalad,Bremdebubde,Brenbasnudnem,Brendumadoak,"
@@ -1947,7 +1804,7 @@ msgstr ""
 "恩德姆本,特姆坦农格特姆,通德恩孔腾孔,特鲁姆巴杜姆,塔姆腾塔塔格朗姆,塔姆腾朗格"
 "塔姆,塔姆塔姆格姆托姆托姆,沃壤玛尔丁,沃达多尔普"
 
-#: data/core/macros/names.cfg:77
+#: data/core/macros/names.cfg:73
 msgid ""
 "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
 "Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
@@ -3026,31 +2883,31 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1265 src/actions/attack.cpp:877
+#: data/lua/wml-tags.lua:1265 src/actions/attack.cpp:802
 msgid "female^poisoned"
 msgstr "中毒"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1267 src/actions/attack.cpp:882
+#: data/lua/wml-tags.lua:1267 src/actions/attack.cpp:807
 msgid "female^slowed"
 msgstr "减速"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1267 src/actions/attack.cpp:882
+#: data/lua/wml-tags.lua:1267 src/actions/attack.cpp:807
 msgid "slowed"
 msgstr "减速"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1268 src/actions/attack.cpp:887
+#: data/lua/wml-tags.lua:1268 src/actions/attack.cpp:812
 msgid "female^petrified"
 msgstr "石化"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1268 src/actions/attack.cpp:887
+#: data/lua/wml-tags.lua:1268 src/actions/attack.cpp:812
 msgid "petrified"
 msgstr "石化"
 
@@ -3066,7 +2923,7 @@ msgstr "不可治疗"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1734 src/multiplayer_connect.cpp:1706
+#: data/lua/wml/objectives.lua:1734 src/multiplayer_connect.cpp:1726
 msgid "Victory:"
 msgstr "胜利："
 
@@ -3100,274 +2957,27 @@ msgstr "（剩余本回合）"
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "%d%%的金币将会带到下一场景。"
 
-#. [hides]: id=invisible
-#: data/scenario-movethrough.cfg:65 data/scenario-movethrough.cfg:67
-#, fuzzy
-#| msgid "invisible: "
-msgid "invisible"
-msgstr "隐形： "
-
-#. [hides]: id=invisible
-#: data/scenario-movethrough.cfg:66 data/scenario-movethrough.cfg:68
-#, fuzzy
-#| msgid "female^slowed"
-msgid "female^invisible"
-msgstr "减速"
-
-#. [message]: speaker=unit
-#: data/scenario-movethrough.cfg:92
-msgid "I triggered an enter hex event."
-msgstr ""
-
-#. [message]: speaker=unit
-#: data/scenario-movethrough.cfg:110
-msgid "I triggered an exit hex event."
-msgstr ""
-
-#. [message]: speaker=unit
-#: data/scenario-movethrough.cfg:131
-msgid "Get out of the way, $second_unit.name|!"
-msgstr ""
-
-#. [message]
-#: data/scenario-movethrough.cfg:180
-msgid "The ground has collapsed beneath me!"
-msgstr ""
-
-#. [message]: speaker=unit
-#: data/scenario-movethrough.cfg:241
-#, fuzzy
-#| msgid "Fire a game event."
-msgid "I triggered a moveto event."
-msgstr "触发游戏事件。"
-
-#. [message]: speaker=second_unit
-#: data/scenario-movethrough.cfg:256
-msgid ""
-"I spy, with my little eye, something that starts with 'f'.\n"
-"\n"
-msgstr ""
-
-#. [message]: speaker=second_unit
-#: data/scenario-movethrough.cfg:258
-msgid "This is the first part of a sighted event."
-msgstr ""
-
-#. [message]: speaker=unit
-#: data/scenario-movethrough.cfg:262
-msgid "Um, \"friend\"? (Hopefully not \"foe"
-msgstr ""
-
-#. [message]: speaker=unit
-#: data/scenario-movethrough.cfg:264
-msgid "This is the second part of a sighted event."
-msgstr ""
-
-#. [effect]: type=blade
-#: data/scenario-test.cfg:247
-#, fuzzy
-#| msgid "Password: "
-msgid "sword"
-msgstr "密码："
-
-#. [drains]: id=life_vortex
-#: data/scenario-test.cfg:253
-msgid "Life Vortex"
-msgstr ""
-
-#. [drains]: id=life_vortex
-#: data/scenario-test.cfg:254
-msgid ""
-"Life Vortex:\n"
-"Each successful strike in a battle involving this attack causes the attacker "
-"to gain the health that his attack removed from the target.  This has no "
-"effect against nonliving targets."
-msgstr ""
-
-#. [heal_on_hit]: id=entropy
-#: data/scenario-test.cfg:262
-msgid "Entropy"
-msgstr ""
-
-#. [heal_on_hit]: id=entropy
-#: data/scenario-test.cfg:263
-msgid ""
-"Entropy:\n"
-"Each successful strike in a battle involving this attack causes the attacker "
-"to lose 4 HP.  This has no effect against nonliving targets."
-msgstr ""
-
-#. [effect]: type=pierce
-#: data/scenario-test.cfg:285
-msgid "bow"
-msgstr ""
-
-#. [drains]: id=empathic_weapon
-#: data/scenario-test.cfg:291
-msgid "Empathic Weapon"
-msgstr ""
-
-#. [drains]: id=empathic_weapon
-#: data/scenario-test.cfg:292
-msgid ""
-"Empathic Weapon:\n"
-"All damage dealt by this attack to a living target is dealt to the user as "
-"well"
-msgstr ""
-
-#. [heal_on_hit]: id=rejuvenating_weapon
-#: data/scenario-test.cfg:298
-msgid "Rejuvenating Weapon (10)"
-msgstr ""
-
-#. [heal_on_hit]: id=rejuvenating_weapon
-#: data/scenario-test.cfg:299
-msgid ""
-"Rejuvenating Weapon (10):\n"
-"Each successful strike with this weapon heals the user for 10 HP"
-msgstr ""
-
-#. [effect]: type=pierce
-#: data/scenario-test.cfg:311
-msgid "longbow"
-msgstr ""
-
-#. [drains]: id=drains
-#: data/scenario-test.cfg:318
-msgid "drains 20%"
-msgstr ""
-
-#. [drains]: id=drains
-#: data/scenario-test.cfg:319
-msgid ""
-"Drain 20%:\n"
-"This unit drains health from living units, healing itself for 20% of the "
-"amount of damage it deals (rounded down)."
-msgstr ""
-
-#. [heal_on_hit]: id=drains
-#: data/scenario-test.cfg:325
-msgid "sacrifice 5"
-msgstr ""
-
-#. [heal_on_hit]: id=drains
-#: data/scenario-test.cfg:326
-msgid ""
-"Sacrifice 5:\n"
-"Each successful attack costs this unit 5 HP."
-msgstr ""
-
-#. [effect]: type=impact
-#: data/scenario-test.cfg:338
-msgid "life bomb"
-msgstr ""
-
-#. [heal_on_hit]: id=drains
-#: data/scenario-test.cfg:343
-msgid "life copy 20"
-msgstr ""
-
-#. [heal_on_hit]: id=drains
-#: data/scenario-test.cfg:344
-msgid ""
-"Life copy 20:\n"
-"When this attack hits a living unit, the user is healed for 20 HP."
-msgstr ""
-
-#. [label]
-#: data/scenario-test.cfg:369
-#, fuzzy
-#| msgid "Version: "
-msgid "Vision Test"
-msgstr "版本："
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:380
-msgid "Checking visibility of (8,15)..."
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:404 data/scenario-test.cfg:433
-msgid "HORRORS FILTERS ARE ALL TRUE!"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:411
-msgid "You can see it, can't you?"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:440
-msgid "Clear sailing!"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:458
-msgid "But the fog, it blinds you!"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:465 data/scenario-test.cfg:494
-msgid "HORRORS FILTERS ARE ALL FALSE!"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/scenario-test.cfg:487
-#, fuzzy
-#| msgid "invisible: "
-msgid "It is invisible!"
-msgstr "隐形： "
-
-#. [heal_on_hit]: id=fiery
-#: data/scenario-test.cfg:691 data/scenario-test.cfg:692
-msgid "fiery 4"
-msgstr ""
-
-#. [heal_on_hit]: id=fiery
-#: data/scenario-test.cfg:693 data/scenario-test.cfg:695
-msgid ""
-"Fiery 4:\n"
-"A successful hit against this unit costs the opponent 4 HP."
-msgstr ""
-
-#. [effect]: type=pierce
-#: data/scenario-test.cfg:705
-msgid "lifebow"
-msgstr ""
-
-#. [drains]: id=drains
-#: data/scenario-test.cfg:712
-msgid "drains 100%"
-msgstr ""
-
-#. [drains]: id=drains
-#: data/scenario-test.cfg:713
-msgid ""
-"Drain 100%:\n"
-"This unit drains health from living units, healing itself for 100% of the "
-"amount of damage it deals (rounded down)."
-msgstr ""
-
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
-#: data/scenario-test.cfg:826 src/dialogs.cpp:629
-#: src/multiplayer_create.cpp:99
+#: data/scenario-test.cfg:833 src/dialogs.cpp:629 src/mp_depcheck.cpp:458
+#: src/mp_options.cpp:227 src/multiplayer_create.cpp:102
 msgid "OK"
 msgstr "确定"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
-#: data/scenario-test.cfg:827 src/dialogs.cpp:630 src/dialogs.cpp:1069
-#: src/dialogs.cpp:1175 src/multiplayer_connect.cpp:1038
-#: src/multiplayer_create.cpp:98 src/multiplayer_wait.cpp:180
+#: data/scenario-test.cfg:834 src/dialogs.cpp:630 src/dialogs.cpp:1081
+#: src/dialogs.cpp:1187 src/mp_options.cpp:232
+#: src/multiplayer_connect.cpp:1039 src/multiplayer_create.cpp:101
+#: src/multiplayer_wait.cpp:180
 msgid "Cancel"
 msgstr "取消"
 
-#: data/scenario-test.cfg:3546
+#: data/scenario-test.cfg:3553
 msgid "very long"
 msgstr "非常长"
 
-#: data/scenario-test.cfg:3547
+#: data/scenario-test.cfg:3554
 msgid "electrical"
 msgstr "电能"
 
@@ -3400,8 +3010,8 @@ msgstr "结束场景"
 #. [label]: id=selected-label-hp
 #: data/themes/default.cfg:205 data/themes/dfool.cfg:229
 #: data/themes/experimental.cfg:179 data/themes/widescreen.cfg:237
-#: data/themes/widescreen.cfg:257 src/menu_events.cpp:218 src/unit.cpp:2542
-#: src/unit.cpp:2729
+#: data/themes/widescreen.cfg:257 src/menu_events.cpp:220 src/unit.cpp:2553
+#: src/unit.cpp:2770
 msgid "HP"
 msgstr "生命值"
 
@@ -3410,7 +3020,7 @@ msgstr "生命值"
 #. [label]: id=selected-label-xp
 #: data/themes/default.cfg:214 data/themes/dfool.cfg:239
 #: data/themes/experimental.cfg:188 data/themes/widescreen.cfg:246
-#: data/themes/widescreen.cfg:266 src/menu_events.cpp:220
+#: data/themes/widescreen.cfg:266 src/menu_events.cpp:222
 #: src/menu_events.cpp:933
 msgid "XP"
 msgstr "经验值"
@@ -3538,45 +3148,45 @@ msgstr "视角"
 msgid "Skip animation"
 msgstr "跳过动画"
 
-#: src/about.cpp:209 src/menu_events.cpp:327 src/menu_events.cpp:354
-#: src/statistics_dialog.cpp:114
+#: src/about.cpp:209 src/menu_events.cpp:329 src/menu_events.cpp:356
+#: src/statistics_dialog.cpp:183
 msgid "Close"
 msgstr "关闭"
 
-#: src/actions/attack.cpp:99 src/actions/attack.cpp:160
-#: src/actions/attack.cpp:1126
+#: src/actions/attack.cpp:219 src/actions/attack.cpp:421
+#: src/actions/attack.cpp:1051
 msgid "An invalid attacker weapon got selected."
 msgstr "选中了无效的攻击武器。"
 
-#: src/actions/attack.cpp:104
+#: src/actions/attack.cpp:224
 msgid "An invalid defender weapon got selected."
 msgstr "所选防御武器无效。"
 
-#: src/actions/create.cpp:541
+#: src/actions/create.cpp:545
 msgid "You don’t have a leader to recall with."
 msgstr "您没有领袖，无法进行召回。"
 
-#: src/actions/create.cpp:546
+#: src/actions/create.cpp:550
 msgid "None of your leaders is able to recall that unit."
 msgstr "您的领袖都不能召回该单位。"
 
-#: src/actions/create.cpp:551
+#: src/actions/create.cpp:555
 msgid "You must have a leader on a keep who is able to recall that unit."
 msgstr "您必须让一位领袖站在城堡主楼上才能召回该单位。"
 
-#: src/actions/create.cpp:556
+#: src/actions/create.cpp:560
 msgid "There are no vacant castle tiles in which to recall the unit."
 msgstr "城堡内没有空格，无法招募单位。"
 
-#: src/actions/create.cpp:625
+#: src/actions/create.cpp:629
 msgid "You don’t have a leader to recruit with."
 msgstr "您没有领袖，无法进行征募。"
 
-#: src/actions/create.cpp:630
+#: src/actions/create.cpp:634
 msgid "You must have a leader on a keep who is able to recruit the unit."
 msgstr "您必须让一位领袖站在城堡主楼上才能征募该单位。"
 
-#: src/actions/create.cpp:635
+#: src/actions/create.cpp:639
 msgid "There are no vacant castle tiles in which to recruit the unit."
 msgstr "城堡内没有空格，无法征募单位。"
 
@@ -3710,18 +3320,24 @@ msgid "addon_type^MP campaign"
 msgstr "多人游戏战役"
 
 #: src/addon/info.cpp:163
+#, fuzzy
+#| msgid "addon_type^MP faction"
+msgid "addon_type^MP modification"
+msgstr "多人游戏派系"
+
+#: src/addon/info.cpp:165
 msgid "addon_type^Resources"
 msgstr "资源"
 
-#: src/addon/info.cpp:165
+#: src/addon/info.cpp:167
 msgid "addon_type^Other"
 msgstr "其它"
 
-#: src/addon/info.cpp:167
+#: src/addon/info.cpp:169
 msgid "addon_type^(unknown)"
 msgstr "（未知）"
 
-#: src/addon/info.cpp:204
+#: src/addon/info.cpp:206
 msgid "unit_byte^B"
 msgstr "B"
 
@@ -3803,7 +3419,7 @@ msgid "Author"
 msgstr "作者"
 
 #: src/addon/manager_ui.cpp:173 src/addon/manager_ui.cpp:513
-#: src/dialogs.cpp:576 src/menu_events.cpp:215 src/menu_events.cpp:931
+#: src/dialogs.cpp:576 src/menu_events.cpp:217 src/menu_events.cpp:931
 msgid "Name"
 msgstr "名称"
 
@@ -3816,7 +3432,7 @@ msgid "Size"
 msgstr "大小"
 
 #: src/addon/manager_ui.cpp:174 src/addon/manager_ui.cpp:528
-#: src/menu_events.cpp:214 src/menu_events.cpp:930 src/menu_events.cpp:1578
+#: src/menu_events.cpp:216 src/menu_events.cpp:930 src/menu_events.cpp:1565
 msgid "Type"
 msgstr "类型"
 
@@ -3888,7 +3504,7 @@ msgid "Do you really wish to continue?"
 msgstr "您希望继续吗？"
 
 #: src/addon/manager_ui.cpp:293 src/addon/manager_ui.cpp:304
-#: src/addon/manager_ui.cpp:970 src/multiplayer.cpp:265
+#: src/addon/manager_ui.cpp:970 src/multiplayer.cpp:271
 msgid "Confirm"
 msgstr "确认"
 
@@ -3948,7 +3564,7 @@ msgid "There are no add-ons matching the specified criteria on this server."
 msgstr "这个服务器上无可供下载的附加组件。"
 
 #: src/addon/manager_ui.cpp:701 src/dialogs.cpp:601 src/menu_events.cpp:998
-#: src/menu_events.cpp:1614
+#: src/menu_events.cpp:1601
 msgid "Filter: "
 msgstr "过滤条件："
 
@@ -4126,11 +3742,11 @@ msgstr "弱点"
 msgid "Slowed"
 msgstr "减速"
 
-#: src/attack_prediction_display.cpp:255 src/reports.cpp:794
+#: src/attack_prediction_display.cpp:255 src/reports.cpp:840
 msgid "Total damage"
 msgstr "总伤害输出"
 
-#: src/attack_prediction_display.cpp:262 src/mouse_events.cpp:844
+#: src/attack_prediction_display.cpp:262 src/mouse_events.cpp:910
 msgid "No usable weapon"
 msgstr "无可用武器"
 
@@ -4138,7 +3754,7 @@ msgstr "无可用武器"
 msgid "Chance of being unscathed"
 msgstr "不受伤的几率"
 
-#: src/attack_prediction_display.cpp:546 src/mouse_events.cpp:913
+#: src/attack_prediction_display.cpp:546 src/mouse_events.cpp:979
 msgid "Damage Calculations"
 msgstr "伤害计算"
 
@@ -4154,11 +3770,11 @@ msgstr "我们获胜的单位应该成为什么身份呢？"
 msgid "No objectives available"
 msgstr "无有效的任务目标"
 
-#: src/dialogs.cpp:431 src/savegame.cpp:315
+#: src/dialogs.cpp:431 src/savegame.cpp:316
 msgid "%a %b %d %H:%M %Y"
 msgstr "%Y年%m月%d日，%H时%M分"
 
-#: src/dialogs.cpp:431 src/savegame.cpp:315
+#: src/dialogs.cpp:431 src/savegame.cpp:316
 msgid "%a %b %d %I:%M %p %Y"
 msgstr "%a %b %d %I:%M %p %Y"
 
@@ -4182,7 +3798,7 @@ msgstr "教程"
 msgid "Test scenario"
 msgstr "测试场景"
 
-#: src/dialogs.cpp:486 src/savegame.cpp:1136
+#: src/dialogs.cpp:486 src/savegame.cpp:1144
 msgid "Turn"
 msgstr "回合"
 
@@ -4198,28 +3814,28 @@ msgstr "难度："
 msgid "Version: "
 msgstr "版本："
 
-#: src/dialogs.cpp:517 src/dialogs.cpp:543 src/savegame.cpp:345
-#: src/savegame.cpp:371
+#: src/dialogs.cpp:517 src/dialogs.cpp:543 src/savegame.cpp:346
+#: src/savegame.cpp:372
 msgid "%b %d %y"
 msgstr "%Y年%m月%d日"
 
-#: src/dialogs.cpp:524 src/reports.cpp:1213 src/savegame.cpp:352
+#: src/dialogs.cpp:524 src/reports.cpp:1259 src/savegame.cpp:353
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/dialogs.cpp:527 src/reports.cpp:1213 src/savegame.cpp:355
+#: src/dialogs.cpp:527 src/reports.cpp:1259 src/savegame.cpp:356
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
-#: src/dialogs.cpp:532 src/savegame.cpp:360
+#: src/dialogs.cpp:532 src/savegame.cpp:361
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/dialogs.cpp:535 src/savegame.cpp:363
+#: src/dialogs.cpp:535 src/savegame.cpp:364
 msgid "%A, %I:%M %p"
 msgstr "%A, %H:%M %p"
 
-#: src/dialogs.cpp:539 src/savegame.cpp:367
+#: src/dialogs.cpp:539 src/savegame.cpp:368
 msgid "%b %d"
 msgstr "%m月%d日"
 
@@ -4241,7 +3857,7 @@ msgstr ""
 msgid "Date"
 msgstr "日期"
 
-#: src/dialogs.cpp:593 src/multiplayer_create.cpp:120 src/savegame.cpp:675
+#: src/dialogs.cpp:593 src/multiplayer_create.cpp:126 src/savegame.cpp:687
 msgid "Load Game"
 msgstr "读取游戏"
 
@@ -4295,11 +3911,11 @@ msgstr "经验值："
 msgid "Moves: "
 msgstr "移动："
 
-#: src/dialogs.cpp:1102
+#: src/dialogs.cpp:1114
 msgid "KB"
 msgstr "KB"
 
-#: src/game_config.cpp:335
+#: src/game_config.cpp:339
 msgid "Invalid color range: "
 msgstr "无效颜色范围："
 
@@ -4308,7 +3924,7 @@ msgid "The file you have tried to load is corrupt"
 msgstr "您试图读取的文件已损坏"
 
 #: src/game_controller.cpp:636 src/game_controller.cpp:654
-#: src/savegame.cpp:724
+#: src/savegame.cpp:735
 msgid "The file you have tried to load is corrupt: '"
 msgstr "您试图读取的文件已损坏：'"
 
@@ -4328,18 +3944,18 @@ msgstr "无可用战役。\n"
 msgid "Error while starting server: "
 msgstr "启动服务器时发生错误： "
 
-#: src/game_controller.cpp:1042 src/playcampaign.cpp:200
-#: src/playcampaign.cpp:502
+#: src/game_controller.cpp:1042 src/playcampaign.cpp:198
+#: src/playcampaign.cpp:499
 msgid "The game could not be loaded: "
 msgstr "无法读取游戏： "
 
-#: src/game_controller.cpp:1044 src/playcampaign.cpp:202
-#: src/playcampaign.cpp:505
+#: src/game_controller.cpp:1044 src/playcampaign.cpp:200
+#: src/playcampaign.cpp:502
 msgid "Error while playing the game: "
 msgstr "进行游戏时发生错误："
 
-#: src/game_controller.cpp:1062 src/playcampaign.cpp:204
-#: src/playcampaign.cpp:508
+#: src/game_controller.cpp:1062 src/playcampaign.cpp:202
+#: src/playcampaign.cpp:505
 msgid "The game map could not be loaded: "
 msgstr "无法读取游戏地图： "
 
@@ -4347,21 +3963,21 @@ msgstr "无法读取游戏地图： "
 msgid "The Battle for Wesnoth"
 msgstr "韦诺之战"
 
-#: src/game_controller.cpp:1198
+#: src/game_controller.cpp:1202
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "以下附加组件有错误，无法读取："
 msgstr[1] "以下附加组件有错误，无法读取："
 
-#: src/game_controller.cpp:1205
+#: src/game_controller.cpp:1209
 msgid "ERROR DETAILS:"
 msgstr "错误细节："
 
-#: src/game_controller.cpp:1239
+#: src/game_controller.cpp:1242
 msgid "Error loading game configuration files: '"
 msgstr "读取游戏配置文件时出错： '"
 
-#: src/game_controller.cpp:1240
+#: src/game_controller.cpp:1243
 msgid "' (The game will now exit)"
 msgstr "' （现在将退出游戏）"
 
@@ -4381,59 +3997,59 @@ msgstr "调试："
 msgid "Info: "
 msgstr "信息："
 
-#: src/game_events.cpp:2510
+#: src/game_events.cpp:2513
 msgid "Invalid value in the result key for [end_level]"
 msgstr "[end_level]的结果键值无效"
 
-#: src/gamestatus.cpp:625 src/multiplayer_connect.cpp:971
+#: src/gamestatus.cpp:635 src/multiplayer_connect.cpp:972
 msgid "Unable to find a leader type for faction $faction"
 msgstr "无法找到$faction派系的可用领袖类型"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:207 src/multiplayer_lobby.cpp:448
+#: src/gui/dialogs/lobby/lobby_data.cpp:207 src/multiplayer_lobby.cpp:463
 msgid "Unknown era: $era_id"
 msgstr "未知时代：$era_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:212 src/multiplayer_lobby.cpp:452
+#: src/gui/dialogs/lobby/lobby_data.cpp:212 src/multiplayer_lobby.cpp:467
 msgid "Unknown era"
 msgstr "未知时代"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:268 src/multiplayer_lobby.cpp:514
+#: src/gui/dialogs/lobby/lobby_data.cpp:268 src/multiplayer_lobby.cpp:529
 msgid "Remote scenario"
 msgstr "远程场景"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:276 src/multiplayer_lobby.cpp:521
+#: src/gui/dialogs/lobby/lobby_data.cpp:276 src/multiplayer_lobby.cpp:536
 msgid "Unknown scenario: $scenario_id"
 msgstr "未知场景：$scenario_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:281 src/multiplayer_lobby.cpp:525
+#: src/gui/dialogs/lobby/lobby_data.cpp:281 src/multiplayer_lobby.cpp:540
 msgid "Unknown scenario"
 msgstr "未知场景"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:287 src/multiplayer_lobby.cpp:530
+#: src/gui/dialogs/lobby/lobby_data.cpp:287 src/multiplayer_lobby.cpp:571
 msgid "Reloaded game"
 msgstr "重新读取了游戏"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:298 src/multiplayer_lobby.cpp:546
+#: src/gui/dialogs/lobby/lobby_data.cpp:298 src/multiplayer_lobby.cpp:587
 msgid "Turn "
 msgstr "回合"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:302 src/multiplayer_lobby.cpp:550
+#: src/gui/dialogs/lobby/lobby_data.cpp:302 src/multiplayer_lobby.cpp:591
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "空槽："
 msgstr[1] "空槽："
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:308 src/multiplayer_lobby.cpp:561
+#: src/gui/dialogs/lobby/lobby_data.cpp:308 src/multiplayer_lobby.cpp:602
 msgid "Fog"
 msgstr "迷雾"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:311
-#: src/gui/dialogs/lobby/lobby_data.cpp:314 src/multiplayer_create.cpp:95
-#: src/multiplayer_lobby.cpp:565 src/multiplayer_lobby.cpp:571
+#: src/gui/dialogs/lobby/lobby_data.cpp:314 src/multiplayer_create.cpp:97
+#: src/multiplayer_lobby.cpp:606 src/multiplayer_lobby.cpp:612
 msgid "Shroud"
 msgstr "战场黑幕"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:316 src/multiplayer_lobby.cpp:575
+#: src/gui/dialogs/lobby/lobby_data.cpp:316 src/multiplayer_lobby.cpp:616
 msgid "none"
 msgstr "无"
 
@@ -4469,7 +4085,7 @@ msgstr "不在好友或忽略列表中"
 msgid "You"
 msgstr "您自己"
 
-#: src/gui/dialogs/lobby_player_info.cpp:147 src/multiplayer_create.cpp:592
+#: src/gui/dialogs/lobby_player_info.cpp:147 src/multiplayer_create.cpp:659
 msgid "Error"
 msgstr "错误"
 
@@ -4481,18 +4097,18 @@ msgstr "结束"
 msgid "System default language"
 msgstr "系统默认语言"
 
-#: src/leader_list.cpp:142 src/menu_events.cpp:1604
-#: src/multiplayer_connect.cpp:227 src/multiplayer_connect.cpp:271
+#: src/leader_list.cpp:142 src/menu_events.cpp:1591
+#: src/multiplayer_connect.cpp:228 src/multiplayer_connect.cpp:272
 msgid "gender^Random"
 msgstr "随机"
 
-#: src/leader_list.cpp:152 src/multiplayer_connect.cpp:223
-#: src/multiplayer_connect.cpp:267
+#: src/leader_list.cpp:152 src/multiplayer_connect.cpp:224
+#: src/multiplayer_connect.cpp:268
 msgid "Female ♀"
 msgstr "女性 ♀"
 
-#: src/leader_list.cpp:156 src/multiplayer_connect.cpp:225
-#: src/multiplayer_connect.cpp:269
+#: src/leader_list.cpp:156 src/multiplayer_connect.cpp:226
+#: src/multiplayer_connect.cpp:270
 msgid "Male ♂"
 msgstr "男性 ♂"
 
@@ -4564,11 +4180,11 @@ msgstr "正在构造地形规则"
 msgid "Starting game"
 msgstr "正在开始游戏"
 
-#: src/mapgen.cpp:744
+#: src/mapgen.cpp:741
 msgid "Random maps with an odd width aren't supported."
 msgstr "不支持宽度为奇怪数据的随机地图"
 
-#: src/mapgen.cpp:1008
+#: src/mapgen.cpp:1007
 msgid ""
 "No valid castle location found. Too many or too few mountain hexes? (please "
 "check the 'max hill size' parameter)"
@@ -4606,80 +4222,80 @@ msgstr "阁下，这个单位就快要升级了！"
 msgid "Dismiss Unit"
 msgstr "解散单位"
 
-#: src/menu_events.cpp:205
+#: src/menu_events.cpp:207
 msgid "Statistics"
 msgstr "统计"
 
-#: src/menu_events.cpp:216
+#: src/menu_events.cpp:218
 msgid "Moves"
 msgstr "移动"
 
-#: src/menu_events.cpp:217
+#: src/menu_events.cpp:219
 msgid "Status"
 msgstr "状态"
 
-#: src/menu_events.cpp:219 src/menu_events.cpp:932
+#: src/menu_events.cpp:221 src/menu_events.cpp:932
 msgid "Level^Lvl."
 msgstr "等级"
 
-#: src/menu_events.cpp:221
+#: src/menu_events.cpp:223
 msgid "unit list^Traits"
 msgstr "特质"
 
-#: src/menu_events.cpp:319
+#: src/menu_events.cpp:321
 msgid "Unit List"
 msgstr "单位列表"
 
-#: src/menu_events.cpp:325 src/menu_events.cpp:347
+#: src/menu_events.cpp:327 src/menu_events.cpp:349
 msgid "Scroll To"
 msgstr "将画面滚动到该单位"
 
-#: src/menu_events.cpp:379
+#: src/menu_events.cpp:381
 msgid "Leader"
 msgstr "领袖"
 
-#: src/menu_events.cpp:380 src/multiplayer_connect.cpp:1023
+#: src/menu_events.cpp:382 src/multiplayer_connect.cpp:1024
 msgid "Team"
 msgstr "团队"
 
-#: src/menu_events.cpp:381 src/multiplayer_connect.cpp:1034
+#: src/menu_events.cpp:383 src/multiplayer_connect.cpp:1035
 msgid "Gold"
 msgstr "金币"
 
-#: src/menu_events.cpp:382
+#: src/menu_events.cpp:384
 msgid "Villages"
 msgstr "村庄"
 
-#: src/menu_events.cpp:383
+#: src/menu_events.cpp:385
 msgid "status^Units"
 msgstr "单位"
 
-#: src/menu_events.cpp:384
+#: src/menu_events.cpp:386
 msgid "Upkeep"
 msgstr "维护费用"
 
-#: src/menu_events.cpp:385 src/multiplayer_connect.cpp:1035
+#: src/menu_events.cpp:387 src/multiplayer_connect.cpp:1036
 #: src/multiplayer_wait.cpp:521
 msgid "Income"
 msgstr "收入"
 
-#: src/menu_events.cpp:490
+#: src/menu_events.cpp:492
 msgid "Current Status"
 msgstr "当前状态"
 
-#: src/menu_events.cpp:491
+#: src/menu_events.cpp:493
 msgid "More >"
 msgstr "更多 >"
 
-#: src/menu_events.cpp:509
+#: src/menu_events.cpp:511
 msgid "scenario settings^Leader"
 msgstr "领袖"
 
-#: src/menu_events.cpp:511
+#: src/menu_events.cpp:513
 msgid "scenario settings^Side"
 msgstr "阵营"
 
-#: src/menu_events.cpp:512
+#: src/menu_events.cpp:514
 msgid ""
 "scenario settings^Start\n"
 "Gold"
@@ -4687,7 +4303,7 @@ msgstr ""
 "起始\n"
 "金币"
 
-#: src/menu_events.cpp:513
+#: src/menu_events.cpp:515
 msgid ""
 "scenario settings^Base\n"
 "Income"
@@ -4695,7 +4311,7 @@ msgstr ""
 "基本\n"
 "收入"
 
-#: src/menu_events.cpp:514
+#: src/menu_events.cpp:516
 msgid ""
 "scenario settings^Gold Per\n"
 "Village"
@@ -4703,7 +4319,7 @@ msgstr ""
 "每村庄\n"
 "收入"
 
-#: src/menu_events.cpp:515
+#: src/menu_events.cpp:517
 #, fuzzy
 #| msgid ""
 #| "scenario settings^Gold Per\n"
@@ -4715,77 +4331,77 @@ msgstr ""
 "每村庄\n"
 "收入"
 
-#: src/menu_events.cpp:516
+#: src/menu_events.cpp:518
 msgid "scenario settings^Fog"
 msgstr "战争迷雾"
 
-#: src/menu_events.cpp:517
+#: src/menu_events.cpp:519
 msgid "scenario settings^Shroud"
 msgstr "战场黑幕"
 
-#: src/menu_events.cpp:567 src/menu_events.cpp:568
+#: src/menu_events.cpp:569 src/menu_events.cpp:570
 msgid "no"
 msgstr "否"
 
-#: src/menu_events.cpp:567 src/menu_events.cpp:568
+#: src/menu_events.cpp:569 src/menu_events.cpp:570
 msgid "yes"
 msgstr "是"
 
-#: src/menu_events.cpp:584
+#: src/menu_events.cpp:586
 msgid "Scenario Settings"
 msgstr "场景设定"
 
-#: src/menu_events.cpp:587
+#: src/menu_events.cpp:589
 msgid " < Back"
 msgstr " < 后退"
 
-#: src/menu_events.cpp:606
+#: src/menu_events.cpp:608
 msgid "Save the Map As"
 msgstr "地图另存为"
 
-#: src/menu_events.cpp:610
+#: src/menu_events.cpp:612
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "地图已存在，要覆盖吗？"
 
-#: src/menu_events.cpp:622
+#: src/menu_events.cpp:624
 msgid "Map saved."
 msgstr "地图已保存。"
 
-#: src/menu_events.cpp:626
+#: src/menu_events.cpp:628
 msgid "Could not save the map: $msg"
 msgstr "无法保存地图：$msg"
 
-#: src/menu_events.cpp:698
+#: src/menu_events.cpp:700
 msgid "Message:"
 msgstr "信息："
 
-#: src/menu_events.cpp:699
+#: src/menu_events.cpp:701
 msgid "Send to allies only"
 msgstr "仅发送给盟友"
 
-#: src/menu_events.cpp:699
+#: src/menu_events.cpp:701
 msgid "Send to observers only"
 msgstr "仅发送给观察者"
 
-#: src/menu_events.cpp:766
+#: src/menu_events.cpp:768
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "金币"
 msgstr[1] "金币"
 
-#: src/menu_events.cpp:773
+#: src/menu_events.cpp:775
 msgid "You have no units available to recruit."
 msgstr "没有可供征募的单位。"
 
-#: src/menu_events.cpp:788
+#: src/menu_events.cpp:790
 msgid "Recruit"
 msgstr "征募"
 
-#: src/menu_events.cpp:789 src/menu_events.cpp:993
+#: src/menu_events.cpp:791 src/menu_events.cpp:993
 msgid "Select unit:"
 msgstr "选择单位："
 
-#: src/menu_events.cpp:837
+#: src/menu_events.cpp:839
 msgid "You don’t have enough gold to recruit that unit"
 msgstr "您没有足够的金币以征募该单位"
 
@@ -4819,50 +4435,50 @@ msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] "要召回一个单位，您至少需要有1个金币"
 msgstr[1] "要召回一个单位，您至少需要有$cost个金币"
 
-#: src/menu_events.cpp:1416
+#: src/menu_events.cpp:1404
 msgid "You cannot end your turn yet!"
 msgstr "您还不可以结束自己的回合！"
 
-#: src/menu_events.cpp:1443
+#: src/menu_events.cpp:1431
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "您在这回合还没有进行操作，您真的想结束本回合吗？"
 
-#: src/menu_events.cpp:1451 src/menu_events.cpp:1456
+#: src/menu_events.cpp:1439 src/menu_events.cpp:1444
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "有些单位还可以移动。您真的想结束本回合吗？"
 
-#: src/menu_events.cpp:1497
+#: src/menu_events.cpp:1484
 msgid "Rename Unit"
 msgstr "单位重命名"
 
-#: src/menu_events.cpp:1577
+#: src/menu_events.cpp:1564
 msgid "Race"
 msgstr "种族"
 
-#: src/menu_events.cpp:1601
+#: src/menu_events.cpp:1588
 msgid "Create Unit (Debug!)"
 msgstr "创建单位（调试！）"
 
-#: src/menu_events.cpp:1604 src/multiplayer_wait.cpp:132
+#: src/menu_events.cpp:1591 src/multiplayer_wait.cpp:132
 msgid "Gender: "
 msgstr "性别："
 
-#: src/menu_events.cpp:1895
+#: src/menu_events.cpp:1882
 msgid "Search"
 msgstr "搜索"
 
-#: src/menu_events.cpp:2072
+#: src/menu_events.cpp:2059
 msgid "This command is currently unavailable."
 msgstr "当前无法使用这个命令。"
 
-#: src/menu_events.cpp:2078
+#: src/menu_events.cpp:2065
 msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
 msgstr "未知命令“$command”，请尝试使用$help_command来获取可用命令的列表。"
 
-#: src/menu_events.cpp:2096
+#: src/menu_events.cpp:2083
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
@@ -4870,19 +4486,19 @@ msgstr ""
 "当前可用命令列表和针对特定命令的帮助。如果想包括当前不可用的命令，请使"
 "用“help all”。"
 
-#: src/menu_events.cpp:2098
+#: src/menu_events.cpp:2085
 msgid "do not translate the 'all'^[all|<command>]"
 msgstr "[all|<命令>]"
 
-#: src/menu_events.cpp:2142
+#: src/menu_events.cpp:2129
 msgid "Error:"
 msgstr "错误："
 
-#: src/menu_events.cpp:2148
+#: src/menu_events.cpp:2135
 msgid "Missing argument $arg_id"
 msgstr "缺少参数$arg_id"
 
-#: src/menu_events.cpp:2196
+#: src/menu_events.cpp:2183
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
@@ -4890,537 +4506,537 @@ msgstr ""
 "可用命令$flags_description：\n"
 "$list_of_commands"
 
-#: src/menu_events.cpp:2196 src/menu_events.cpp:2197 src/menu_events.cpp:2220
+#: src/menu_events.cpp:2183 src/menu_events.cpp:2184 src/menu_events.cpp:2207
 msgid "help"
 msgstr "帮助"
 
-#: src/menu_events.cpp:2197
+#: src/menu_events.cpp:2184
 msgid "Type $help_command <command> for more info."
 msgstr "键入 $help_command <命令> 以获得更多信息。"
 
-#: src/menu_events.cpp:2208
+#: src/menu_events.cpp:2195
 msgid " No help available."
 msgstr " 没有可用的帮助信息。"
 
-#: src/menu_events.cpp:2213
+#: src/menu_events.cpp:2200
 msgid "Usage:"
 msgstr "使用方法："
 
-#: src/menu_events.cpp:2218
+#: src/menu_events.cpp:2205
 msgid "aliases:"
 msgstr "别名："
 
-#: src/menu_events.cpp:2339
+#: src/menu_events.cpp:2326
 msgid "(A) — admin command"
 msgstr "(A) — 管理员命令"
 
-#: src/menu_events.cpp:2346 src/menu_events.cpp:2553
+#: src/menu_events.cpp:2333 src/menu_events.cpp:2540
 msgid "(admin only)"
 msgstr "（管理员专用）"
 
-#: src/menu_events.cpp:2366
+#: src/menu_events.cpp:2353
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
 msgstr "向服务器发送查询。如果不带参数，服务器应该会告诉您可以使用的命令。"
 
-#: src/menu_events.cpp:2370
+#: src/menu_events.cpp:2357
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
 msgstr "封禁并剔除一个玩家或观察者。如果他不在游戏中，则只会被封禁。"
 
-#: src/menu_events.cpp:2371 src/menu_events.cpp:2374 src/menu_events.cpp:2376
-#: src/menu_events.cpp:2378 src/menu_events.cpp:2380 src/menu_events.cpp:2407
-#: src/menu_events.cpp:2409 src/menu_events.cpp:2411 src/menu_events.cpp:2425
+#: src/menu_events.cpp:2358 src/menu_events.cpp:2361 src/menu_events.cpp:2363
+#: src/menu_events.cpp:2365 src/menu_events.cpp:2367 src/menu_events.cpp:2394
+#: src/menu_events.cpp:2396 src/menu_events.cpp:2398 src/menu_events.cpp:2412
 msgid "<nickname>"
 msgstr "<昵称>"
 
-#: src/menu_events.cpp:2373
+#: src/menu_events.cpp:2360
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr "取消封禁一个用户。该用户不必在游戏中，但是必须在服务器上。"
 
-#: src/menu_events.cpp:2376
+#: src/menu_events.cpp:2363
 msgid "Kick a player or observer."
 msgstr "踢出一名玩家或者观察者。"
 
-#: src/menu_events.cpp:2378
+#: src/menu_events.cpp:2365
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr "禁止一个观察者发言。 如果不附加参数则显示禁言状态。"
 
-#: src/menu_events.cpp:2380
+#: src/menu_events.cpp:2367
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr "对一个观察者取消禁言。如果不使用参数则取消所有观察者的禁言状态。"
 
-#: src/menu_events.cpp:2382
+#: src/menu_events.cpp:2369
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr "禁言/取消禁言所有观察者。(切换)"
 
-#: src/menu_events.cpp:2392
+#: src/menu_events.cpp:2379
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
 msgstr ""
 "请将滥用与违反规则的情况报告给服务器管理员。请确保提及相关的用户昵称等信息。"
 
-#: src/menu_events.cpp:2396
+#: src/menu_events.cpp:2383
 msgid "<message>"
 msgstr "<消息>"
 
-#: src/menu_events.cpp:2396
+#: src/menu_events.cpp:2383
 msgid "Send an emotion or personal action in chat."
 msgstr "在聊天中发送表情符号或者个人动作。"
 
-#: src/menu_events.cpp:2399
+#: src/menu_events.cpp:2386
 msgid ""
 "Sends a private message. You cannot send private messages to players in a "
 "running game you observe or play in."
 msgstr ""
 "发送一条私人消息。对您正在观察或者参与的游戏中的其他玩家，不能发送私人消息。"
 
-#: src/menu_events.cpp:2401
+#: src/menu_events.cpp:2388
 msgid "<nickname> <message>"
 msgstr "<昵称> <信息>"
 
-#: src/menu_events.cpp:2405
+#: src/menu_events.cpp:2392
 msgid "<level> <domain>"
 msgstr "<级别> <域>"
 
-#: src/menu_events.cpp:2405
+#: src/menu_events.cpp:2392
 msgid "Change the log level of a log domain."
 msgstr "更改日志域的记录级别。"
 
-#: src/menu_events.cpp:2407
+#: src/menu_events.cpp:2394
 msgid "Add a nickname to your ignores list."
 msgstr "将一个昵称列入您的忽略列表。"
 
-#: src/menu_events.cpp:2409
+#: src/menu_events.cpp:2396
 msgid "Add a nickname to your friends list."
 msgstr "将一个昵称列入您的好友列表。"
 
-#: src/menu_events.cpp:2411
+#: src/menu_events.cpp:2398
 msgid "Remove a nickname from your ignores or friends list."
 msgstr "将一个昵称从您的忽略列表或好友列表中移除。"
 
-#: src/menu_events.cpp:2413
+#: src/menu_events.cpp:2400
 msgid "Show your ignores and friends list."
 msgstr "显示您的忽略列表和好友列表。"
 
-#: src/menu_events.cpp:2416
+#: src/menu_events.cpp:2403
 msgid "Display version information."
 msgstr "显示版本信息。"
 
-#: src/menu_events.cpp:2418
+#: src/menu_events.cpp:2405
 msgid "<password> <email (optional)>"
 msgstr "<密码> <电子邮件（可选）>"
 
-#: src/menu_events.cpp:2418
+#: src/menu_events.cpp:2405
 msgid "Register your nickname"
 msgstr "注册昵称"
 
-#: src/menu_events.cpp:2420
+#: src/menu_events.cpp:2407
 msgid "Drop your nickname."
 msgstr "放弃昵称。"
 
-#: src/menu_events.cpp:2422
+#: src/menu_events.cpp:2409
 msgid "Update details for your nickname. For possible details see '/details'."
 msgstr "为昵称设置详细信息。输入“/details”查看可设置的内容。"
 
-#: src/menu_events.cpp:2423
+#: src/menu_events.cpp:2410
 msgid "<detail> <value>"
 msgstr "<详细信息> <值>"
 
-#: src/menu_events.cpp:2425
+#: src/menu_events.cpp:2412
 msgid "Request information about a nickname."
 msgstr "请求有关于某昵称的信息。"
 
-#: src/menu_events.cpp:2427
+#: src/menu_events.cpp:2414
 msgid "Request a list of details you can set for your registered nickname."
 msgstr "对于注册好的昵称，获取一份可供配置的详细资料的清单。"
 
-#: src/menu_events.cpp:2429 src/menu_events.cpp:2432 src/menu_events.cpp:2434
+#: src/menu_events.cpp:2416 src/menu_events.cpp:2419 src/menu_events.cpp:2421
 msgid "<room>"
 msgstr "<房间>"
 
-#: src/menu_events.cpp:2429
+#: src/menu_events.cpp:2416
 msgid "Join a room."
 msgstr "加入房间。"
 
-#: src/menu_events.cpp:2432
+#: src/menu_events.cpp:2419
 msgid "Part a room."
 msgstr "离开房间。"
 
-#: src/menu_events.cpp:2434
+#: src/menu_events.cpp:2421
 msgid "List room members."
 msgstr "显示房间内的成员。"
 
-#: src/menu_events.cpp:2436
+#: src/menu_events.cpp:2423
 msgid "List available rooms."
 msgstr "显示可用的房间。"
 
-#: src/menu_events.cpp:2438
+#: src/menu_events.cpp:2425
 msgid "<room> <msg>"
 msgstr "<房间> <消息>"
 
-#: src/menu_events.cpp:2438
+#: src/menu_events.cpp:2425
 msgid "Room message."
 msgstr "房间消息。"
 
-#: src/menu_events.cpp:2440
+#: src/menu_events.cpp:2427
 msgid "<room> <type> [value]"
 msgstr "<房间> <类型> [值]"
 
-#: src/menu_events.cpp:2440
+#: src/menu_events.cpp:2427
 msgid "Room query."
 msgstr "房间查询。"
 
-#: src/menu_events.cpp:2545
+#: src/menu_events.cpp:2532
 msgid "(D) — debug only, (N) — network only, (A) — admin only"
 msgstr "(D) — 调试专用，(N) — 网战专用，(A) — 管理员专用"
 
-#: src/menu_events.cpp:2551
+#: src/menu_events.cpp:2538
 msgid "(debug command)"
 msgstr "（调试指令）"
 
-#: src/menu_events.cpp:2552
+#: src/menu_events.cpp:2539
 msgid "(network only)"
 msgstr "（仅针对网战）"
 
-#: src/menu_events.cpp:2577
+#: src/menu_events.cpp:2564
 msgid "Refresh gui."
 msgstr "刷新界面。"
 
-#: src/menu_events.cpp:2579
+#: src/menu_events.cpp:2566
 msgid "Switch a side to/from AI control."
 msgstr "对某一阵营开启/关闭AI控制。"
 
-#: src/menu_events.cpp:2579
+#: src/menu_events.cpp:2566
 msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr "[<阵营> [on/off]]"
 
-#: src/menu_events.cpp:2582
+#: src/menu_events.cpp:2569
 msgid "<side> <nickname>"
 msgstr "<阵营> <昵称>"
 
-#: src/menu_events.cpp:2582
+#: src/menu_events.cpp:2569
 msgid "Assign control of a side to a different player or observer."
 msgstr "将某阵营的控制权授予另一玩家或观察者。"
 
-#: src/menu_events.cpp:2584
+#: src/menu_events.cpp:2571
 msgid "Clear chat history."
 msgstr "清除聊天历史。"
 
-#: src/menu_events.cpp:2586
+#: src/menu_events.cpp:2573
 msgid "Visualize the screen refresh procedure."
 msgstr "让屏幕刷新过程可视。"
 
-#: src/menu_events.cpp:2588
+#: src/menu_events.cpp:2575
 msgid "Debug foreground terrain."
 msgstr "调试前景地形。"
 
-#: src/menu_events.cpp:2590
+#: src/menu_events.cpp:2577
 msgid "Debug layers from terrain under the mouse."
 msgstr "调试鼠标所指向的地形中的各层。"
 
-#: src/menu_events.cpp:2591
+#: src/menu_events.cpp:2578
 msgid "Show fps."
 msgstr "显示FPS。"
 
-#: src/menu_events.cpp:2593
+#: src/menu_events.cpp:2580
 msgid "Save game."
 msgstr "保存游戏。"
 
-#: src/menu_events.cpp:2595
+#: src/menu_events.cpp:2582
 msgid "Quit game."
 msgstr "退出游戏。"
 
-#: src/menu_events.cpp:2599
+#: src/menu_events.cpp:2586
 msgid "Save and quit."
 msgstr "保存并退出。"
 
-#: src/menu_events.cpp:2602
+#: src/menu_events.cpp:2589
 msgid "Ignore replay errors."
 msgstr "忽视录像中的错误。"
 
-#: src/menu_events.cpp:2604
+#: src/menu_events.cpp:2591
 msgid "Disable autosaves."
 msgstr "禁止自动存档。"
 
-#: src/menu_events.cpp:2606
+#: src/menu_events.cpp:2593
 msgid "<id>"
 msgstr "<ID>"
 
-#: src/menu_events.cpp:2606
+#: src/menu_events.cpp:2593
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr "进入下一个场景，或ID为“ID”的场景"
 
-#: src/menu_events.cpp:2609
+#: src/menu_events.cpp:2596
 msgid "Choose next scenario"
 msgstr "选择下一个场景"
 
-#: src/menu_events.cpp:2612
+#: src/menu_events.cpp:2599
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
 msgstr "改变回合序号（以及时段），如果不设置，则回合序号增加一。"
 
-#: src/menu_events.cpp:2612
+#: src/menu_events.cpp:2599
 msgid "[turn]"
 msgstr "[回合]"
 
-#: src/menu_events.cpp:2614
+#: src/menu_events.cpp:2601
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
 msgstr "改变回合数上限，如果为-1，则回合数无上限。"
 
-#: src/menu_events.cpp:2614
+#: src/menu_events.cpp:2601
 msgid "[limit]"
 msgstr "[时限]"
 
-#: src/menu_events.cpp:2616
+#: src/menu_events.cpp:2603
 msgid "Turn debug mode on."
 msgstr "打开调试模式。"
 
-#: src/menu_events.cpp:2618
+#: src/menu_events.cpp:2605
 msgid "Turn debug mode off."
 msgstr "关闭调试模式。"
 
-#: src/menu_events.cpp:2620 src/menu_events.cpp:2624
+#: src/menu_events.cpp:2607 src/menu_events.cpp:2611
 msgid "<command>[;<command>...]"
 msgstr "<命令>[;<命令>...]"
 
-#: src/menu_events.cpp:2620
+#: src/menu_events.cpp:2607
 msgid "Execute a Lua statement."
 msgstr "执行Lua语句。"
 
-#: src/menu_events.cpp:2622
+#: src/menu_events.cpp:2609
 msgid "Grant higher privileges to Lua scripts."
 msgstr "赋予Lua脚本更高的权限。"
 
-#: src/menu_events.cpp:2624
+#: src/menu_events.cpp:2611
 msgid "Set the command used by the custom command hotkey"
 msgstr "为自定义热键设置命令"
 
-#: src/menu_events.cpp:2627
+#: src/menu_events.cpp:2614
 msgid "Invoke a dialog allowing changing control of MP sides."
 msgstr "弹出对话框，用于改变多人游戏阵营的控制方。"
 
-#: src/menu_events.cpp:2631
+#: src/menu_events.cpp:2618
 msgid "Launch the gamestate inspector"
 msgstr "启动游戏状态检查器"
 
-#: src/menu_events.cpp:2633
+#: src/menu_events.cpp:2620
 msgid "Manage persistence data"
 msgstr "管理持久化数据"
 
-#: src/menu_events.cpp:2635
+#: src/menu_events.cpp:2622
 msgid "<name>[=<command>]"
 msgstr "<名字>[=<命令>]"
 
-#: src/menu_events.cpp:2635
+#: src/menu_events.cpp:2622
 msgid "Set or show alias to a command"
 msgstr "设置或者显示一条命令的别名"
 
-#: src/menu_events.cpp:2637
+#: src/menu_events.cpp:2624
 msgid "<var>=<value>"
 msgstr "<变量>=<值>"
 
-#: src/menu_events.cpp:2637
+#: src/menu_events.cpp:2624
 msgid "Set a scenario variable."
 msgstr "设置一个场景变量。"
 
-#: src/menu_events.cpp:2639
+#: src/menu_events.cpp:2626
 msgid "<var>"
 msgstr "<变量>"
 
-#: src/menu_events.cpp:2639
+#: src/menu_events.cpp:2626
 msgid "Show a scenario variable."
 msgstr "显示一个场景变量。"
 
-#: src/menu_events.cpp:2641
+#: src/menu_events.cpp:2628
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr "修改一个单位变量。（只支持顶层的键值。）"
 
-#: src/menu_events.cpp:2648
+#: src/menu_events.cpp:2635
 msgid "Discover all units in help."
 msgstr "在帮助中显示所有单位。"
 
-#: src/menu_events.cpp:2650
+#: src/menu_events.cpp:2637
 msgid "'Undiscover' all units in help."
 msgstr "在帮助中清除所有单位。"
 
-#: src/menu_events.cpp:2652
+#: src/menu_events.cpp:2639
 msgid "Create a unit."
 msgstr "创建一个单位"
 
-#: src/menu_events.cpp:2654
+#: src/menu_events.cpp:2641
 msgid "Toggle fog for the current player."
 msgstr "为当前玩家开/关战争迷雾。"
 
-#: src/menu_events.cpp:2656
+#: src/menu_events.cpp:2643
 msgid "Toggle shroud for the current player."
 msgstr "为当前玩家开/关战场黑幕。"
 
-#: src/menu_events.cpp:2658
+#: src/menu_events.cpp:2645
 msgid "Give gold to the current player."
 msgstr "给当前玩家金币。"
 
-#: src/menu_events.cpp:2660
+#: src/menu_events.cpp:2647
 msgid "Fire a game event."
 msgstr "触发游戏事件。"
 
-#: src/menu_events.cpp:2663
+#: src/menu_events.cpp:2650
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "开/关单元格x,y坐标显示。"
 
-#: src/menu_events.cpp:2666
+#: src/menu_events.cpp:2653
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "开/关单元格地形编码。"
 
-#: src/menu_events.cpp:2669
+#: src/menu_events.cpp:2656
 msgid "Toggle planning mode."
 msgstr "开关计划模式。"
 
-#: src/menu_events.cpp:2672
+#: src/menu_events.cpp:2659
 msgid "Access whiteboard options dialog."
 msgstr "访问白板选项对话框。"
 
-#: src/menu_events.cpp:2715
+#: src/menu_events.cpp:2702
 msgid "Unknown debug level: '$level'."
 msgstr "未知调试级别：“$level”。"
 
-#: src/menu_events.cpp:2717 src/menu_events.cpp:2726
+#: src/menu_events.cpp:2704 src/menu_events.cpp:2713
 msgid "error"
 msgstr "错误"
 
-#: src/menu_events.cpp:2724
+#: src/menu_events.cpp:2711
 msgid "Unknown debug domain: '$domain'."
 msgstr "未知调试域：“$domain”。"
 
-#: src/menu_events.cpp:2733
+#: src/menu_events.cpp:2720
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr "将“$domain”域切换到“$level”级别。"
 
-#: src/menu_events.cpp:2804
+#: src/menu_events.cpp:2791
 msgid "whisper to $receiver"
 msgstr "对$receiver说悄悄话："
 
-#: src/menu_events.cpp:2811 src/multiplayer_ui.cpp:550
+#: src/menu_events.cpp:2798 src/multiplayer_ui.cpp:553
 msgid "whisper: $sender"
 msgstr "悄悄话：$sender"
 
-#: src/menu_events.cpp:2907 src/menu_events.cpp:2926
-#: src/multiplayer_connect.cpp:668
+#: src/menu_events.cpp:2894 src/menu_events.cpp:2913
+#: src/multiplayer_connect.cpp:669
 msgid "(empty)"
 msgstr "（空置）"
 
-#: src/menu_events.cpp:2907 src/menu_events.cpp:2913 src/menu_events.cpp:2963
+#: src/menu_events.cpp:2894 src/menu_events.cpp:2900 src/menu_events.cpp:2950
 msgid "ignores list"
 msgstr "忽略列表"
 
-#: src/menu_events.cpp:2913
+#: src/menu_events.cpp:2900
 msgid "Added to ignore list: $nick"
 msgstr "已加入忽略列表：$nick"
 
-#: src/menu_events.cpp:2916 src/menu_events.cpp:2935
+#: src/menu_events.cpp:2903 src/menu_events.cpp:2922
 msgid "Invalid username: $nick"
 msgstr "无效的用户名：$nick"
 
-#: src/menu_events.cpp:2926 src/menu_events.cpp:2933 src/menu_events.cpp:2959
+#: src/menu_events.cpp:2913 src/menu_events.cpp:2920 src/menu_events.cpp:2946
 msgid "friends list"
 msgstr "好友列表"
 
-#: src/menu_events.cpp:2933
+#: src/menu_events.cpp:2920
 msgid "Added to friends list: $nick"
 msgstr "已加入好友列表：$nick"
 
-#: src/menu_events.cpp:2949
+#: src/menu_events.cpp:2936
 msgid "Removed from list: $nick"
 msgstr "已从列表中移除：$nick"
 
-#: src/menu_events.cpp:2949 src/menu_events.cpp:2967
+#: src/menu_events.cpp:2936 src/menu_events.cpp:2954
 msgid "friends and ignores list"
 msgstr "好友与忽略列表"
 
-#: src/menu_events.cpp:2967
+#: src/menu_events.cpp:2954
 msgid "There are no players on your friends or ignore list."
 msgstr "您的好友列表与忽略列表是空的。"
 
-#: src/menu_events.cpp:2972
+#: src/menu_events.cpp:2959
 msgid "version"
 msgstr "版本"
 
-#: src/menu_events.cpp:2988
+#: src/menu_events.cpp:2975
 msgid "registering with password *** and no email address"
 msgstr "以密码 *** 注册，未使用电子邮件地址"
 
-#: src/menu_events.cpp:2992
+#: src/menu_events.cpp:2979
 msgid "registering with password *** and email address $email"
 msgstr "以密码***和电子邮件地址$email注册"
 
-#: src/menu_events.cpp:2995 src/menu_events.cpp:3006 src/menu_events.cpp:3024
-#: src/menu_events.cpp:3038
+#: src/menu_events.cpp:2982 src/menu_events.cpp:2993 src/menu_events.cpp:3011
+#: src/menu_events.cpp:3025
 msgid "nick registration"
 msgstr "昵称注册"
 
-#: src/menu_events.cpp:3006
+#: src/menu_events.cpp:2993
 msgid "dropping your username"
 msgstr "正在废弃您的用户名"
 
-#: src/menu_events.cpp:3024
+#: src/menu_events.cpp:3011
 msgid "setting $var to $value"
 msgstr "正在设置$var为$value"
 
-#: src/menu_events.cpp:3038
+#: src/menu_events.cpp:3025
 msgid "requesting information for user $nick"
 msgstr "正在请求用户$nick的信息"
 
-#: src/menu_events.cpp:3151
+#: src/menu_events.cpp:3138
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "无法找到含有字符串“$search”的标签或单位。"
 
-#: src/menu_events.cpp:3185
+#: src/menu_events.cpp:3172
 msgid "Can't droid invalid side: '$side'."
 msgstr "无法托管无效阵营：“$side”。"
 
-#: src/menu_events.cpp:3190
+#: src/menu_events.cpp:3177
 msgid "Can't droid networked side: '$side'."
 msgstr "无法托管网络阵营：“$side”。"
 
-#: src/menu_events.cpp:3228
+#: src/menu_events.cpp:3215
 msgid "Can't change control of invalid side: '$side'."
 msgstr "无法改变无效阵营的控制权：“$side”。"
 
-#: src/menu_events.cpp:3234
+#: src/menu_events.cpp:3221
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "无法改变超出范围的阵营的控制权：“$side”。"
 
-#: src/menu_events.cpp:3348
+#: src/menu_events.cpp:3335
 msgid "Layers"
 msgstr "层 "
 
-#: src/menu_events.cpp:3421
+#: src/menu_events.cpp:3408
 msgid "Choose Scenario (Debug!)"
 msgstr "选择场景（调试！）"
 
-#: src/menu_events.cpp:3467
+#: src/menu_events.cpp:3454
 msgid "Debug mode activated!"
 msgstr "调试模式激活！"
 
-#: src/menu_events.cpp:3470
+#: src/menu_events.cpp:3457
 msgid "Debug mode not available in network games"
 msgstr "调试模式在网络游戏中不可用"
 
-#: src/menu_events.cpp:3475
+#: src/menu_events.cpp:3462
 msgid "Debug mode deactivated!"
 msgstr "调试模式关闭！"
 
-#: src/menu_events.cpp:3486
+#: src/menu_events.cpp:3473
 msgid "Unsafe Lua scripts."
 msgstr "不安全的Lua脚本。"
 
-#: src/menu_events.cpp:3487
+#: src/menu_events.cpp:3474
 msgid ""
 "You are about to open a security breach in Wesnoth. Are you sure you want to "
 "continue? If you have downloaded add-ons, do not click 'ok'! They would "
@@ -5429,15 +5045,15 @@ msgstr ""
 "您的操作有可能将破坏韦诺的安全性。您真的确定要继续吗？如果您下载过附加组件，"
 "请不要点击“确定”！这些脚本将可能完全控制您的计算机！我们已经警告过您了！"
 
-#: src/menu_events.cpp:3490
+#: src/menu_events.cpp:3477
 msgid "Unsafe mode enabled!"
 msgstr "不安全模式已启用！"
 
-#: src/menu_events.cpp:3533
+#: src/menu_events.cpp:3520
 msgid "Variable not found"
 msgstr "变量未找到"
 
-#: src/menu_events.cpp:3584
+#: src/menu_events.cpp:3571
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
@@ -5445,49 +5061,95 @@ msgstr ""
 "无效立场：“$alignment”，应该是lawful（守序），neutral（中立），chaotic（混"
 "沌）或liminal（边缘）之一。"
 
-#: src/menu_events.cpp:3640
+#: src/menu_events.cpp:3627
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr "您想删除“帮助”里的所有单位吗？"
 
-#: src/menu_events.cpp:3651
+#: src/menu_events.cpp:3638
 msgid "Invalid unit type"
 msgstr "无效单位类型"
 
-#: src/menu_events.cpp:3664
+#: src/menu_events.cpp:3651
 msgid "Invalid location"
 msgstr "无效位置"
 
-#: src/menu_events.cpp:3699
+#: src/menu_events.cpp:3686
 msgid "Planning mode activated!"
 msgstr "计划模式激活！"
 
-#: src/menu_events.cpp:3702
+#: src/menu_events.cpp:3689
 msgid "Planning mode deactivated!"
 msgstr "计划模式关闭！"
 
-#: src/menu_events.cpp:3715
+#: src/menu_events.cpp:3702
 msgid "ai"
 msgstr "ai"
 
-#: src/menu_events.cpp:3725 src/menu_events.cpp:3755
+#: src/menu_events.cpp:3712 src/menu_events.cpp:3742
 msgid "prompt^Command:"
 msgstr "命令："
 
-#: src/mouse_events.cpp:726
+#: src/mouse_events.cpp:792
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
 msgstr "在有剩余的征募或者召回计划时，您不能将领袖移动到主楼之外。"
 
-#: src/mouse_events.cpp:843 src/mouse_events.cpp:923
+#: src/mouse_events.cpp:909 src/mouse_events.cpp:989
 msgid "Attack Enemy"
 msgstr "攻击敌人"
 
-#: src/mouse_events.cpp:924
+#: src/mouse_events.cpp:990
 msgid "Choose weapon:"
 msgstr "选择武器："
 
-#: src/multiplayer.cpp:150 src/multiplayer.cpp:187
+#: src/mp_depcheck.cpp:408 src/mp_depcheck.cpp:419
+msgid "A component"
+msgstr ""
+
+#: src/mp_depcheck.cpp:458
+#, fuzzy
+#| msgid "Install dependencies"
+msgid "Failed to resolve dependencies"
+msgstr "安装依赖的插件"
+
+#: src/mp_depcheck.cpp:484
+msgid "Scenario can't be activated. Some dependencies are missing: "
+msgstr ""
+
+#: src/mp_depcheck.cpp:539 src/mp_depcheck.cpp:661
+#, fuzzy
+#| msgid "No eras found."
+msgid "No compatible eras found."
+msgstr "没有找到任何时代。"
+
+#: src/mp_depcheck.cpp:555
+msgid "Era can't be activated. Some dependencies are missing: "
+msgstr ""
+
+#: src/mp_depcheck.cpp:607 src/mp_depcheck.cpp:698
+#, fuzzy
+#| msgid "No multiplayer sides found"
+msgid "No compatible scenarios found."
+msgstr "没有发现多人游戏阵营"
+
+#: src/mp_depcheck.cpp:636
+msgid ""
+"Not all of the chosen modifications are compatible. Some of them will be "
+"disabled."
+msgstr ""
+
+#: src/mp_options.cpp:181
+msgid ""
+"None of the selected modifications, era or scenario provide configuration "
+"options."
+msgstr ""
+
+#: src/mp_options.cpp:222
+msgid "Restore defaults"
+msgstr ""
+
+#: src/multiplayer.cpp:150 src/multiplayer.cpp:193
 msgid "Connecting to Server..."
 msgstr "正在连接到服务器……"
 
@@ -5495,21 +5157,25 @@ msgstr "正在连接到服务器……"
 msgid "Reading from Server..."
 msgstr "正在从服务器读取数据……"
 
-#: src/multiplayer.cpp:170
+#: src/multiplayer.cpp:176
+#, fuzzy
+#| msgid ""
+#| "The server requires version '$version1' while you are using version "
+#| "'$version2'"
 msgid ""
-"The server requires version '$version1' while you are using version "
+"The server accepts versions '$version1' while you are using version "
 "'$version2'"
 msgstr "本服务器需要版本“$version1”，而您的版本是“$version2”"
 
-#: src/multiplayer.cpp:181
+#: src/multiplayer.cpp:187
 msgid "Server-side redirect loop"
 msgstr "服务器端重定向循环"
 
-#: src/multiplayer.cpp:228 src/multiplayer.cpp:313 src/multiplayer_ui.cpp:87
+#: src/multiplayer.cpp:234 src/multiplayer.cpp:319 src/multiplayer_ui.cpp:88
 msgid "Connection timed out"
 msgstr "连接超时"
 
-#: src/multiplayer.cpp:240
+#: src/multiplayer.cpp:246
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -5518,396 +5184,413 @@ msgstr ""
 "昵称‘$nick’处于未激活状态。除非您使用电子邮件或请管理员进行激活，否则您不能取"
 "得此昵称的所有权。"
 
-#: src/multiplayer.cpp:249
+#: src/multiplayer.cpp:255
 msgid "Do you want to continue?"
 msgstr "您希望继续吗？"
 
-#: src/multiplayer.cpp:251
+#: src/multiplayer.cpp:257
 msgid "Warning"
 msgstr "警告"
 
-#: src/multiplayer.cpp:295
+#: src/multiplayer.cpp:301
 msgid "Bad data received from server"
 msgstr "从服务器处收到损坏的数据"
 
-#: src/multiplayer.cpp:336
+#: src/multiplayer.cpp:342
 msgid "You must login first."
 msgstr "您必须先登录。"
 
-#: src/multiplayer.cpp:338
+#: src/multiplayer.cpp:344
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "昵称‘$nick’已经被使用了。"
 
-#: src/multiplayer.cpp:340
+#: src/multiplayer.cpp:346
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters, underscores and hyphens are allowed."
 msgstr "昵称‘$nick’包含无效字符。只能使用字母，下划线和连字符。"
 
-#: src/multiplayer.cpp:344
+#: src/multiplayer.cpp:350
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr "昵称‘$nick’太长了。昵称长度不得超过20个字符。"
 
-#: src/multiplayer.cpp:347
+#: src/multiplayer.cpp:353
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr "昵称‘$nick’是被保留的，无法由玩家使用。"
 
-#: src/multiplayer.cpp:349
+#: src/multiplayer.cpp:355
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "昵称‘$nick’未在本服务器上注册。"
 
-#: src/multiplayer.cpp:350
+#: src/multiplayer.cpp:356
 msgid " This server disallows unregistered nicknames."
 msgstr " 本服务器不允许使用没有注册的昵称。"
 
-#: src/multiplayer.cpp:352 src/multiplayer.cpp:354
+#: src/multiplayer.cpp:358 src/multiplayer.cpp:360
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "昵称‘$nick’已经在本服务器上注册。"
 
-#: src/multiplayer.cpp:355
+#: src/multiplayer.cpp:361
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
 msgstr "警告：已经有一个客户端使用这个昵称登录。如果继续登录将踢走那个客户端！"
 
-#: src/multiplayer.cpp:358
+#: src/multiplayer.cpp:364
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr "登录错误（服务器没有安排您连接的位置）。"
 
-#: src/multiplayer.cpp:361
+#: src/multiplayer.cpp:367
 msgid "The password you provided was incorrect."
 msgstr "您提供的密码是不正确的。"
 
-#: src/multiplayer.cpp:363
+#: src/multiplayer.cpp:369
 msgid "You have made too many login attempts."
 msgstr "您尝试登录的次数太多了。"
 
-#: src/multiplayer_connect.cpp:103 src/multiplayer_connect.cpp:452
-#: src/multiplayer_connect.cpp:600
+#: src/multiplayer_connect.cpp:104 src/multiplayer_connect.cpp:453
+#: src/multiplayer_connect.cpp:601
 msgid "Normal"
 msgstr "普通"
 
-#: src/multiplayer_connect.cpp:448 src/multiplayer_connect.cpp:596
+#: src/multiplayer_connect.cpp:449 src/multiplayer_connect.cpp:597
 #: src/multiplayer_wait.cpp:513 src/multiplayer_wait.cpp:521
 msgid "("
 msgstr "（"
 
-#: src/multiplayer_connect.cpp:448 src/multiplayer_connect.cpp:596
+#: src/multiplayer_connect.cpp:449 src/multiplayer_connect.cpp:597
 #: src/multiplayer_wait.cpp:513 src/multiplayer_wait.cpp:524
 msgid ")"
 msgstr "）"
 
-#: src/multiplayer_connect.cpp:450 src/multiplayer_connect.cpp:598
+#: src/multiplayer_connect.cpp:451 src/multiplayer_connect.cpp:599
 #: src/multiplayer_wait.cpp:523
 msgid "+"
 msgstr "+"
 
-#: src/multiplayer_connect.cpp:628
+#: src/multiplayer_connect.cpp:629
 msgid "(Vacant slot)"
 msgstr "（空闲槽位）"
 
-#: src/multiplayer_connect.cpp:636
+#: src/multiplayer_connect.cpp:637
 msgid "Anonymous local player"
 msgstr "本地匿名玩家"
 
-#: src/multiplayer_connect.cpp:649 src/multiplayer_connect.cpp:1528
+#: src/multiplayer_connect.cpp:650 src/multiplayer_connect.cpp:1529
 msgid "Computer Player"
 msgstr "电脑玩家"
 
-#: src/multiplayer_connect.cpp:652
+#: src/multiplayer_connect.cpp:653
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/multiplayer_connect.cpp:656
+#: src/multiplayer_connect.cpp:657
 msgid "(Empty slot)"
 msgstr "（空置槽位）"
 
-#: src/multiplayer_connect.cpp:663
+#: src/multiplayer_connect.cpp:664
 msgid "(Reserved for $playername)"
 msgstr "（预留给$playername）"
 
-#: src/multiplayer_connect.cpp:765
+#: src/multiplayer_connect.cpp:766
 msgid "Reserved"
 msgstr "保留"
 
-#: src/multiplayer_connect.cpp:766
+#: src/multiplayer_connect.cpp:767
 msgid "--give--"
 msgstr "--给予--"
 
-#: src/multiplayer_connect.cpp:947
+#: src/multiplayer_connect.cpp:948
 msgid "Only random sides in the current era."
 msgstr "仅允许当前时代中的随机阵营"
 
-#: src/multiplayer_connect.cpp:1008
+#: src/multiplayer_connect.cpp:1009
 msgid "Game Lobby: "
 msgstr "游戏大厅："
 
-#: src/multiplayer_connect.cpp:1030
+#: src/multiplayer_connect.cpp:1031
 msgid "Player/Type"
 msgstr "玩家/类型"
 
-#: src/multiplayer_connect.cpp:1031
+#: src/multiplayer_connect.cpp:1032
 msgid "Faction"
 msgstr "派系"
 
-#: src/multiplayer_connect.cpp:1032
+#: src/multiplayer_connect.cpp:1033
 msgid "Team/Gender"
 msgstr "队伍/性别"
 
-#: src/multiplayer_connect.cpp:1033
+#: src/multiplayer_connect.cpp:1034
 msgid "Color"
 msgstr "颜色"
 
-#: src/multiplayer_connect.cpp:1037
+#: src/multiplayer_connect.cpp:1038
 msgid "I’m Ready"
 msgstr "准备就绪"
 
-#: src/multiplayer_connect.cpp:1039
+#: src/multiplayer_connect.cpp:1040
 msgid "Add named local player"
 msgstr "添加带名字的本地玩家"
 
-#: src/multiplayer_connect.cpp:1049
+#: src/multiplayer_connect.cpp:1050
 msgid "The scenario is invalid because it has no id."
 msgstr "由于没有ID，本场景无法使用。"
 
-#: src/multiplayer_connect.cpp:1053
+#: src/multiplayer_connect.cpp:1054
 msgid "The scenario is invalid because it has no sides."
 msgstr "由于没有阵营，本场景无法使用。"
 
-#: src/multiplayer_connect.cpp:1120
+#: src/multiplayer_connect.cpp:1121
 msgid "Enter a name for the new player"
 msgstr "为新玩家输入名字"
 
-#: src/multiplayer_connect.cpp:1121 src/reports.cpp:155 src/savegame.cpp:882
+#: src/multiplayer_connect.cpp:1122 src/reports.cpp:155 src/savegame.cpp:890
 msgid "Name: "
 msgstr "名称："
 
-#: src/multiplayer_connect.cpp:1525
+#: src/multiplayer_connect.cpp:1526
 msgid "Network Player"
 msgstr "网络玩家"
 
-#: src/multiplayer_connect.cpp:1527
+#: src/multiplayer_connect.cpp:1528
 msgid "Local Player"
 msgstr "本地玩家"
 
-#: src/multiplayer_connect.cpp:1529
+#: src/multiplayer_connect.cpp:1530
 msgid "Empty"
 msgstr "空位"
 
-#: src/multiplayer_connect.cpp:1682
+#: src/multiplayer_connect.cpp:1687
 msgid "Cannot find era $era"
 msgstr "无法找到$era时代"
 
-#: src/multiplayer_connect.cpp:1708
+#: src/multiplayer_connect.cpp:1728
 msgid "Defeat enemy leader(s)"
 msgstr "击败敌军领袖(们)"
 
-#: src/multiplayer_connect.cpp:1813
+#: src/multiplayer_connect.cpp:1833
 msgid "Waiting for players to join..."
 msgstr "正在等待玩家加入……"
 
-#: src/multiplayer_connect.cpp:1814
+#: src/multiplayer_connect.cpp:1834
 msgid "Waiting for players to choose factions..."
 msgstr "正在等待玩家选择阵营"
 
-#: src/multiplayer_create.cpp:58 src/multiplayer_lobby.cpp:743
+#: src/multiplayer_create.cpp:58 src/multiplayer_lobby.cpp:784
 msgid "Create Game"
 msgstr "创建游戏"
 
-#: src/multiplayer_create.cpp:72
+#: src/multiplayer_create.cpp:74
 msgid "Time limit"
 msgstr "时限"
 
-#: src/multiplayer_create.cpp:87
+#: src/multiplayer_create.cpp:89
 msgid "Name of game:"
 msgstr "游戏名："
 
-#: src/multiplayer_create.cpp:90
+#: src/multiplayer_create.cpp:92
 msgid "Era:"
 msgstr "时代："
 
-#: src/multiplayer_create.cpp:91
+#: src/multiplayer_create.cpp:93
 msgid "Map to play:"
 msgstr "选择游戏地图："
 
-#: src/multiplayer_create.cpp:92 src/multiplayer_lobby.cpp:289
+#: src/multiplayer_create.cpp:94 src/multiplayer_lobby.cpp:304
 msgid "Use map settings"
 msgstr "使用地图设置"
 
-#: src/multiplayer_create.cpp:93
+#: src/multiplayer_create.cpp:95
 msgid "Random start time"
 msgstr "随机开始时间"
 
-#: src/multiplayer_create.cpp:94
+#: src/multiplayer_create.cpp:96
 msgid "Fog of war"
 msgstr "战争迷雾"
 
-#: src/multiplayer_create.cpp:96
+#: src/multiplayer_create.cpp:98
 msgid "Observers"
 msgstr "观察者"
 
-#: src/multiplayer_create.cpp:97
+#: src/multiplayer_create.cpp:99
 msgid "Shuffle sides"
 msgstr "随机分配阵营"
 
 #: src/multiplayer_create.cpp:100
+#, fuzzy
+#| msgid "Settings..."
+msgid "Options..."
+msgstr "设置..."
+
+#: src/multiplayer_create.cpp:103
 msgid "Regenerate"
 msgstr "重新生成"
 
-#: src/multiplayer_create.cpp:101
+#: src/multiplayer_create.cpp:104
 msgid "Settings..."
 msgstr "设置..."
 
-#: src/multiplayer_create.cpp:102
+#: src/multiplayer_create.cpp:105
 msgid "Set Password..."
 msgstr "设定密码..."
 
-#: src/multiplayer_create.cpp:121
+#: src/multiplayer_create.cpp:106
+msgid "Modifications..."
+msgstr ""
+
+#: src/multiplayer_create.cpp:127
 msgid "Load Game..."
 msgstr "读取游戏..."
 
-#: src/multiplayer_create.cpp:157
+#: src/multiplayer_create.cpp:182
 msgid "The maximum number of turns the game can last"
 msgstr "游戏允许的最大回合数"
 
-#: src/multiplayer_create.cpp:160
+#: src/multiplayer_create.cpp:185
 msgid "Enables user time limit"
 msgstr "启用玩家时限"
 
-#: src/multiplayer_create.cpp:166
+#: src/multiplayer_create.cpp:191
 msgid "Longest time allowed for first turn (seconds)"
 msgstr "首回合的最长时限（秒）"
 
-#: src/multiplayer_create.cpp:172
+#: src/multiplayer_create.cpp:197
 msgid "Longest time possible for any turn (seconds)"
 msgstr "任意回合的最长时限（秒）"
 
-#: src/multiplayer_create.cpp:178
+#: src/multiplayer_create.cpp:203
 msgid "Time for general tasks each turn (seconds)"
 msgstr "每回合普通行动的时限（秒）"
 
-#: src/multiplayer_create.cpp:184
+#: src/multiplayer_create.cpp:209
 msgid "Time for each attack, recruit, and capture"
 msgstr "每次攻击、征募和占领的时限"
 
-#: src/multiplayer_create.cpp:189
+#: src/multiplayer_create.cpp:214
 msgid "The amount of income each village yields per turn"
 msgstr "每村庄每回合产生的收入"
 
-#: src/multiplayer_create.cpp:194
+#: src/multiplayer_create.cpp:219
 #, fuzzy
 #| msgid "The maximum number of turns the game can last"
 msgid "The number of unit levels each village can support"
 msgstr "游戏允许的最大回合数"
 
-#: src/multiplayer_create.cpp:200
+#: src/multiplayer_create.cpp:225
 msgid "The amount of experience a unit needs to advance"
 msgstr "一个单位升级所需的经验值"
 
-#: src/multiplayer_create.cpp:203
+#: src/multiplayer_create.cpp:228
 msgid "Use scenario specific settings"
 msgstr "使用场景的特殊设置"
 
-#: src/multiplayer_create.cpp:206
+#: src/multiplayer_create.cpp:231
 msgid "Randomize time of day in begin"
 msgstr "随机选择开始时的时段"
 
-#: src/multiplayer_create.cpp:209
+#: src/multiplayer_create.cpp:234
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr "敌人单位在进入您的单位的移动范围之前不可见"
 
-#: src/multiplayer_create.cpp:212
+#: src/multiplayer_create.cpp:237
 msgid "The map is unknown until your units explore it"
 msgstr "在您的单位进行探索之前，地图不可见"
 
-#: src/multiplayer_create.cpp:215
+#: src/multiplayer_create.cpp:240
 msgid "Allow users who are not playing to watch the game"
 msgstr "允许不在对战的用户观看游戏"
 
-#: src/multiplayer_create.cpp:218
+#: src/multiplayer_create.cpp:243
 msgid "Assign sides to players at random"
 msgstr "随机将各个阵营分配给玩家"
 
-#: src/multiplayer_create.cpp:222
+#: src/multiplayer_create.cpp:247
 msgid "Share View"
 msgstr "共享视野"
 
-#: src/multiplayer_create.cpp:223
+#: src/multiplayer_create.cpp:248
 msgid "Share Maps"
 msgstr "共享地图"
 
-#: src/multiplayer_create.cpp:224
+#: src/multiplayer_create.cpp:249
 msgid "Share None"
 msgstr "无共享"
 
-#: src/multiplayer_create.cpp:234
+#: src/multiplayer_create.cpp:259
 msgid "No eras found."
 msgstr "没有找到任何时代。"
 
-#: src/multiplayer_create.cpp:235
+#: src/multiplayer_create.cpp:260
 msgid "No eras found"
 msgstr "没有找到任何时代"
 
-#: src/multiplayer_create.cpp:248
+#: src/multiplayer_create.cpp:289
 msgid "$login|’s game"
 msgstr "$login|的游戏"
 
-#: src/multiplayer_create.cpp:315
+#: src/multiplayer_create.cpp:358
 msgid "Invalid era selected"
 msgstr "所选时代无效"
 
-#: src/multiplayer_create.cpp:363
+#: src/multiplayer_create.cpp:407
 msgid "The map is invalid."
 msgstr "本地图无效。"
 
-#: src/multiplayer_create.cpp:365
+#: src/multiplayer_create.cpp:409
 msgid "You must enter a name."
 msgstr "您必须输入名字。"
 
-#: src/multiplayer_create.cpp:383
+#: src/multiplayer_create.cpp:429
+msgid ""
+"There are no modifications currently installed. To download modifications, "
+"connect to the add-ons server by choosing the 'Add-ons' option on the main "
+"screen."
+msgstr ""
+
+#: src/multiplayer_create.cpp:450
 msgid "Turns: "
 msgstr "回合数："
 
-#: src/multiplayer_create.cpp:385
+#: src/multiplayer_create.cpp:452
 msgid "Unlimited turns"
 msgstr "回合数不限"
 
-#: src/multiplayer_create.cpp:413
+#: src/multiplayer_create.cpp:480
 msgid "Init. limit: "
 msgstr "起始限制："
 
-#: src/multiplayer_create.cpp:418
+#: src/multiplayer_create.cpp:485
 msgid "Turn bonus: "
 msgstr "回合奖励："
 
-#: src/multiplayer_create.cpp:422
+#: src/multiplayer_create.cpp:489
 msgid "Reservoir: "
 msgstr "蓄水池："
 
-#: src/multiplayer_create.cpp:427
+#: src/multiplayer_create.cpp:494
 msgid "Action bonus: "
 msgstr "行动奖励："
 
-#: src/multiplayer_create.cpp:434
+#: src/multiplayer_create.cpp:501
 msgid "Village gold: "
 msgstr "村庄金币："
 
-#: src/multiplayer_create.cpp:440
+#: src/multiplayer_create.cpp:507
 #, fuzzy
 #| msgid "Village gold: "
-msgid "Village Support: "
+msgid "Village support: "
 msgstr "村庄金币："
 
-#: src/multiplayer_create.cpp:446
+#: src/multiplayer_create.cpp:513
 msgid "Experience modifier: "
 msgstr "经验值修正："
 
-#: src/multiplayer_create.cpp:589
+#: src/multiplayer_create.cpp:656
 msgid "Players: "
 msgstr "玩家： "
 
-#: src/multiplayer_create.cpp:590
+#: src/multiplayer_create.cpp:657
 msgid "Size: "
 msgstr "大小"
 
@@ -5919,59 +5602,63 @@ msgstr "--没有游戏处于开放状态--"
 msgid " (Unknown Era)"
 msgstr "（未知时代）"
 
-#: src/multiplayer_lobby.cpp:553 src/multiplayer_lobby.cpp:892
+#: src/multiplayer_lobby.cpp:557
+msgid " (missing)"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:594 src/multiplayer_lobby.cpp:933
 msgid "Password Required"
 msgstr "需要输入密码"
 
-#: src/multiplayer_lobby.cpp:736 src/multiplayer_wait.cpp:179
+#: src/multiplayer_lobby.cpp:777 src/multiplayer_wait.cpp:179
 msgid "Game Lobby"
 msgstr "游戏大厅"
 
-#: src/multiplayer_lobby.cpp:741
+#: src/multiplayer_lobby.cpp:782
 msgid "Observe Game"
 msgstr "旁观本游戏"
 
-#: src/multiplayer_lobby.cpp:742
+#: src/multiplayer_lobby.cpp:783
 msgid "Join Game"
 msgstr "加入游戏"
 
-#: src/multiplayer_lobby.cpp:744
+#: src/multiplayer_lobby.cpp:785
 msgid "Quick replays"
 msgstr "快速读取游戏录像"
 
-#: src/multiplayer_lobby.cpp:745
+#: src/multiplayer_lobby.cpp:786
 msgid "Preferences"
 msgstr "首选项"
 
-#: src/multiplayer_lobby.cpp:746
+#: src/multiplayer_lobby.cpp:787
 msgid "Quit"
 msgstr "退出"
 
-#: src/multiplayer_lobby.cpp:747
+#: src/multiplayer_lobby.cpp:788
 msgid "Apply filter"
 msgstr "应用过滤条件"
 
-#: src/multiplayer_lobby.cpp:748
+#: src/multiplayer_lobby.cpp:789
 msgid "Invert"
 msgstr "反转"
 
-#: src/multiplayer_lobby.cpp:749
+#: src/multiplayer_lobby.cpp:790
 msgid "Vacant slots"
 msgstr "空闲槽位"
 
-#: src/multiplayer_lobby.cpp:750
+#: src/multiplayer_lobby.cpp:791
 msgid "Friends in game"
 msgstr "游戏中的好友"
 
-#: src/multiplayer_lobby.cpp:751
+#: src/multiplayer_lobby.cpp:792
 msgid "Search:"
 msgstr "搜索："
 
-#: src/multiplayer_lobby.cpp:759
+#: src/multiplayer_lobby.cpp:800
 msgid "Skip quickly to the active turn when observing"
 msgstr "在旁观时快速跳到活动回合"
 
-#: src/multiplayer_lobby.cpp:762
+#: src/multiplayer_lobby.cpp:803
 msgid ""
 "Enable the games filter. If unchecked all games are shown, regardless of any "
 "filter."
@@ -5979,38 +5666,38 @@ msgstr ""
 "启用游戏过滤条件。如果不勾选，那么所有的游戏都将被显示出来，而无视任何过滤条"
 "件。"
 
-#: src/multiplayer_lobby.cpp:765
+#: src/multiplayer_lobby.cpp:806
 msgid ""
 "Show all games that do *not* match your filter. Useful for hiding games you "
 "are not interested in."
 msgstr "显示所有*不*满足过滤条件的游戏。当需要隐藏您不感兴趣的游戏时很有用。"
 
-#: src/multiplayer_lobby.cpp:769
+#: src/multiplayer_lobby.cpp:810
 msgid "Only show games that have at least one vacant slot"
 msgstr "只显示至少有一个空闲槽位的游戏"
 
-#: src/multiplayer_lobby.cpp:773
+#: src/multiplayer_lobby.cpp:814
 msgid ""
 "Only show games that are played or observed by at least one of your friends"
 msgstr "只显示至少有一位好友正在玩或者旁观的游戏"
 
-#: src/multiplayer_lobby.cpp:779
+#: src/multiplayer_lobby.cpp:820
 msgid "Only show games whose title or description contain the entered text"
 msgstr "只显示标题或描述中包含所输入文字的游戏"
 
-#: src/multiplayer_lobby.cpp:893
+#: src/multiplayer_lobby.cpp:934
 msgid "Joining this game requires a password."
 msgstr "需要输入密码才能加入本游戏"
 
-#: src/multiplayer_lobby.cpp:894
+#: src/multiplayer_lobby.cpp:935
 msgid "Password: "
 msgstr "密码："
 
-#: src/multiplayer_ui.cpp:206
+#: src/multiplayer_ui.cpp:208
 msgid "Invalid Color"
 msgstr "无效颜色"
 
-#: src/multiplayer_ui.cpp:433
+#: src/multiplayer_ui.cpp:436
 msgid "Selected user: "
 msgstr "选定用户："
 
@@ -6052,24 +5739,24 @@ msgid_plural "multiplayer_starting_gold^Gold"
 msgstr[0] "金币"
 msgstr[1] "金币"
 
-#: src/network.cpp:109
+#: src/network.cpp:112
 msgid "invalid network handle"
 msgstr "无效网络句柄"
 
-#: src/network.cpp:142 src/network_manager_ana.cpp:780
+#: src/network.cpp:145 src/network_manager_ana.cpp:780
 #: src/network_manager_ana.cpp:787
 msgid "Client disconnected"
 msgstr "客户端断开连接"
 
-#: src/network.cpp:398 src/network.cpp:406
+#: src/network.cpp:401 src/network.cpp:409
 msgid "Could not connect to host."
 msgstr "无法连接到主机。"
 
-#: src/network.cpp:571
+#: src/network.cpp:574
 msgid "Could not add socket to socket set"
 msgstr "无法向套接字集合中添加游戏要用的套接字"
 
-#: src/network.cpp:583
+#: src/network.cpp:586
 msgid "Could not send initial handshake"
 msgstr "不能发送最初的握手信息"
 
@@ -6090,30 +5777,30 @@ msgstr "本回合剩余时间"
 msgid "current local time"
 msgstr "当前本地时间"
 
-#: src/play_controller.cpp:1124 src/savegame.cpp:459 src/savegame.cpp:471
-#: src/savegame.cpp:1092 src/savegame.cpp:1094
+#: src/play_controller.cpp:1137 src/savegame.cpp:468 src/savegame.cpp:480
+#: src/savegame.cpp:1100 src/savegame.cpp:1102
 msgid "Auto-Save"
 msgstr "自动存档"
 
-#: src/play_controller.cpp:1131
+#: src/play_controller.cpp:1144
 #, fuzzy
 #| msgid "Back to turn "
 msgid "Back to Turn "
 msgstr "回到回合"
 
-#: src/play_controller.cpp:1142
+#: src/play_controller.cpp:1155
 #, fuzzy
 #| msgid "Back to turn "
 msgid "Back to Start"
 msgstr "回到回合"
 
-#: src/play_controller.cpp:1404
+#: src/play_controller.cpp:1417
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
 msgstr "游戏失去了同步。继续游戏似乎没有多少意义了。您想保存游戏吗？"
 
-#: src/play_controller.cpp:1405 src/replay_controller.cpp:328
+#: src/play_controller.cpp:1418 src/replay_controller.cpp:328
 msgid "Error details:"
 msgstr "错误细节："
 
@@ -6129,31 +5816,31 @@ msgstr "胜利"
 msgid "You have emerged victorious!"
 msgstr "您取得了胜利！"
 
-#: src/playcampaign.cpp:234 src/playcampaign.cpp:284
+#: src/playcampaign.cpp:232 src/playcampaign.cpp:282
 msgid "Defeat"
 msgstr "失败"
 
-#: src/playcampaign.cpp:235 src/playcampaign.cpp:285
+#: src/playcampaign.cpp:233 src/playcampaign.cpp:283
 msgid "You have been defeated!"
 msgstr "您被击败了！"
 
-#: src/playcampaign.cpp:512
+#: src/playcampaign.cpp:509
 msgid "Error while reading the WML: "
 msgstr "读取WML文件时出错： "
 
-#: src/playcampaign.cpp:548 src/playsingle_controller.cpp:456
+#: src/playcampaign.cpp:545 src/playsingle_controller.cpp:456
 msgid "Game Over"
 msgstr "游戏结束"
 
-#: src/playcampaign.cpp:549
+#: src/playcampaign.cpp:546
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "这一场景结束了。您想继续这个战役吗？"
 
-#: src/playcampaign.cpp:580
+#: src/playcampaign.cpp:577
 msgid "Downloading next scenario..."
 msgstr "正在下载下一场景……"
 
-#: src/playcampaign.cpp:737
+#: src/playcampaign.cpp:734
 msgid "Unknown scenario: '$scenario|'"
 msgstr "未知场景：“$scenario|”"
 
@@ -6173,7 +5860,7 @@ msgstr "正在取消还没传输到服务器的移动。"
 msgid "Waiting for next scenario..."
 msgstr "正在等待下一场景开始……"
 
-#: src/playmp_controller.cpp:533
+#: src/playmp_controller.cpp:532
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -6266,23 +5953,23 @@ msgstr "网络连接已断开，游戏无法继续进行。您想保存游戏吗
 msgid "It is now $name|’s turn"
 msgstr "现在是$name|的回合"
 
-#: src/playturn.cpp:239
+#: src/playturn.cpp:245
 msgid "Replace with AI"
 msgstr "让AI替换上阵"
 
-#: src/playturn.cpp:240
+#: src/playturn.cpp:246
 msgid "Replace with local player"
 msgstr "让本地玩家替换上阵"
 
-#: src/playturn.cpp:241
+#: src/playturn.cpp:247
 msgid "Abort game"
 msgstr "终止游戏"
 
-#: src/playturn.cpp:247 src/playturn.cpp:261
+#: src/playturn.cpp:253 src/playturn.cpp:267
 msgid "Replace with $player"
 msgstr "让$player替换上阵"
 
-#: src/playturn.cpp:267
+#: src/playturn.cpp:273
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player已经离开游戏，您想做什么？"
 
@@ -6365,131 +6052,157 @@ msgstr "本单位被石化了，它不能移动或者攻击。"
 msgid "Alignment: "
 msgstr "立场："
 
-#: src/reports.cpp:368
+#: src/reports.cpp:380
 msgid "Ability: "
 msgstr "技能："
 
-#: src/reports.cpp:413
+#: src/reports.cpp:382 src/reports.cpp:740
+msgid " (inactive)"
+msgstr ""
+
+#: src/reports.cpp:429
 msgid "Resistances: "
 msgstr "抗性："
 
-#: src/reports.cpp:415
+#: src/reports.cpp:431
 msgid "(Att / Def)"
 msgstr "（攻击/防御）"
 
-#: src/reports.cpp:441
+#: src/reports.cpp:457
 msgid "Experience Modifier: "
 msgstr "经验值修正： "
 
-#: src/reports.cpp:492
+#: src/reports.cpp:508
 msgid "Terrain: "
 msgstr "地形："
 
-#: src/reports.cpp:509
+#: src/reports.cpp:525
 msgid "maximum^max."
 msgstr "最大："
 
-#: src/reports.cpp:509
+#: src/reports.cpp:525
 msgid "minimum^min."
 msgstr "最小："
 
-#: src/reports.cpp:514
+#: src/reports.cpp:530
 msgid "Defense: "
 msgstr "闪避率："
 
-#: src/reports.cpp:596 src/reports.cpp:781 src/reports.cpp:793
+#: src/reports.cpp:610 src/reports.cpp:827 src/reports.cpp:839
 msgid "Weapon: "
 msgstr "武器："
 
-#: src/reports.cpp:597 src/reports.cpp:782
+#: src/reports.cpp:611 src/reports.cpp:828
 msgid "Damage: "
 msgstr "伤害："
 
-#: src/reports.cpp:601
+#: src/reports.cpp:615
 msgid "Base damage: "
 msgstr "基本伤害："
 
-#: src/reports.cpp:603
+#: src/reports.cpp:617 src/reports.cpp:651 src/reports.cpp:661
+#, fuzzy
+#| msgid "Weapon special: "
+msgid "With specials: "
+msgstr "武器特性"
+
+#: src/reports.cpp:620
 msgid "Time of day: "
 msgstr "时段："
 
-#: src/reports.cpp:607
+#: src/reports.cpp:624
 msgid "Leadership: "
 msgstr "领导技能："
 
-#: src/reports.cpp:611
+#: src/reports.cpp:628
 msgid "Slowed: "
 msgstr "减速： "
 
-#: src/reports.cpp:615
+#: src/reports.cpp:632
 msgid "Attacks: "
 msgstr "进攻方："
 
-#: src/reports.cpp:617
-msgid "Base attacks: "
-msgstr "基本攻击："
+#: src/reports.cpp:636
+#, fuzzy
+#| msgid "Turn bonus: "
+msgid "Max swarm bonus: "
+msgstr "回合奖励："
 
-#: src/reports.cpp:619
+#: src/reports.cpp:637 src/reports.cpp:656
 msgid "Swarm: "
 msgstr "群击："
 
-#: src/reports.cpp:631
+#: src/reports.cpp:638 src/reports.cpp:649 src/reports.cpp:660
+msgid "Base attacks: "
+msgstr "基本攻击："
+
+#: src/reports.cpp:644
+#, fuzzy
+#| msgid "Weapon special: "
+msgid "Specials: "
+msgstr "武器特性"
+
+#: src/reports.cpp:654
+msgid "Subject to swarm: "
+msgstr ""
+
+#: src/reports.cpp:673
 msgid "Weapon range: "
 msgstr "武器攻击范围："
 
-#: src/reports.cpp:632
+#: src/reports.cpp:674
 msgid "Damage type: "
 msgstr "伤害类型："
 
-#: src/reports.cpp:633
+#: src/reports.cpp:675
 msgid "Damage versus: "
 msgstr "伤害目标："
 
-#: src/reports.cpp:672
+#: src/reports.cpp:714
 msgid "Accuracy:"
 msgstr "精确度："
 
-#: src/reports.cpp:677
+#: src/reports.cpp:719
 msgid "Parry:"
 msgstr "闪避："
 
-#: src/reports.cpp:694
+#: src/reports.cpp:738
 msgid "Weapon special: "
 msgstr "武器特性"
 
-#: src/reports.cpp:764
+#: src/reports.cpp:811
 msgid "None"
 msgstr "无"
 
-#: src/reports.cpp:956
+#: src/reports.cpp:1002
 msgid "Lawful units: "
 msgstr "守序单位："
 
-#: src/reports.cpp:957
+#: src/reports.cpp:1003
 msgid "Neutral units: "
 msgstr "中立单位："
 
-#: src/reports.cpp:958
+#: src/reports.cpp:1004
 msgid "Chaotic units: "
 msgstr "混沌单位："
 
-#: src/reports.cpp:959
+#: src/reports.cpp:1005
 msgid "Liminal units: "
 msgstr "边缘单位："
 
-#: src/reports.cpp:1172
+#: src/reports.cpp:1218
 msgid "Observers:"
 msgstr "观察者："
 
-#: src/savegame.cpp:393 src/savegame.cpp:395
+#: src/savegame.cpp:394 src/savegame.cpp:396
 msgid " replay"
 msgstr " 游戏录像"
 
-#: src/savegame.cpp:618 src/savegame.cpp:622
+#: src/savegame.cpp:629 src/savegame.cpp:633
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "警告：您试图读取的文件已损坏。继续尝试读取。\n"
 
-#: src/savegame.cpp:663
+#: src/savegame.cpp:675
 #, fuzzy
 #| msgid "This save is from a version too old to be loaded."
 msgid ""
@@ -6497,7 +6210,7 @@ msgid ""
 "be loaded."
 msgstr "这个存档是由一个太早期的游戏版本保存的，现在的版本无法读取。"
 
-#: src/savegame.cpp:672
+#: src/savegame.cpp:684
 #, fuzzy
 #| msgid ""
 #| "This save is from a different version of the game. Do you want to try to "
@@ -6507,111 +6220,114 @@ msgid ""
 "wish to try to load it?"
 msgstr "这个存档来自于不同版本的游戏。您仍然想读取吗？"
 
-#: src/savegame.cpp:730
+#: src/savegame.cpp:741
 msgid "This is not a multiplayer save"
 msgstr "这不是多人游戏存档"
 
-#: src/savegame.cpp:797
+#: src/savegame.cpp:808
 msgid "The game could not be saved: "
 msgstr "无法保存游戏："
 
-#: src/savegame.cpp:882
+#: src/savegame.cpp:890
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "存档已存在，要覆盖吗？"
 
-#: src/savegame.cpp:883
+#: src/savegame.cpp:891
 msgid "Overwrite?"
 msgstr "覆盖？"
 
-#: src/savegame.cpp:893
-msgid "Save names should not end on '.gz'. Please choose a different name."
+#: src/savegame.cpp:901
+#, fuzzy
+#| msgid "Save names should not end on '.gz'. Please choose a different name."
+msgid ""
+"Save names should not end on '.gz' or '.bz2'. Please remove the extension."
 msgstr "存档名不能以'.gz'结尾，请选择一个不同的名字。"
 
-#: src/savegame.cpp:959
+#: src/savegame.cpp:967
 msgid "Saved"
 msgstr "已保存"
 
-#: src/savegame.cpp:959
+#: src/savegame.cpp:967
 msgid "The game has been saved"
 msgstr "游戏已保存"
 
-#: src/savegame.cpp:993 src/savegame.cpp:1014
+#: src/savegame.cpp:1001 src/savegame.cpp:1022
 msgid "Could not write to file"
 msgstr "无法写入文件"
 
-#: src/savegame.cpp:1048
+#: src/savegame.cpp:1056
 msgid "Save Replay"
 msgstr "保存游戏录像"
 
-#: src/savegame.cpp:1057
+#: src/savegame.cpp:1065
 msgid "replay"
 msgstr "游戏录像"
 
-#: src/savegame.cpp:1075
+#: src/savegame.cpp:1083
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "不能自动保存当前游戏，请手动存档。"
 
-#: src/savegame.cpp:1124
+#: src/savegame.cpp:1132
 msgid "Save Game"
 msgstr "保存游戏"
 
-#: src/serialization/parser.cpp:127
+#: src/serialization/parser.cpp:128
 msgid "Unexpected characters at line start"
 msgstr "行首部出现非预期的字符"
 
-#: src/serialization/parser.cpp:145
+#: src/serialization/parser.cpp:146
 #, fuzzy
 #| msgid "Missing closing tag for tag $tag at $pos"
 msgid "Missing closing tag for tag [$tag] at $pos"
 msgstr "在$pos处缺少$tag标签的结束标签"
 
-#: src/serialization/parser.cpp:158
+#: src/serialization/parser.cpp:159
 msgid "Unterminated [element] tag"
 msgstr "未终止的 [element] 标签"
 
-#: src/serialization/parser.cpp:170 src/serialization/parser.cpp:218
+#: src/serialization/parser.cpp:171 src/serialization/parser.cpp:219
 msgid "Invalid tag name"
 msgstr "无效标签名"
 
-#: src/serialization/parser.cpp:173
+#: src/serialization/parser.cpp:174
 msgid "Unterminated [+element] tag"
 msgstr "未终止的 [+element] 标签"
 
-#: src/serialization/parser.cpp:195
+#: src/serialization/parser.cpp:196
 msgid "Invalid closing tag name"
 msgstr "无效的结束标签名"
 
-#: src/serialization/parser.cpp:198
+#: src/serialization/parser.cpp:199
 msgid "Unterminated closing tag"
 msgstr "未终止的结束标签"
 
-#: src/serialization/parser.cpp:200
+#: src/serialization/parser.cpp:201
 msgid "Unexpected closing tag"
 msgstr "非预期的结束标签"
 
-#: src/serialization/parser.cpp:208
+#: src/serialization/parser.cpp:209
 #, fuzzy
 #| msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
 msgid "Found invalid closing tag [/$tag2] for tag [$tag1] (opened at $pos)"
 msgstr "结束标签$tag2无法匹配开启标签$tag1（开启位置为 $pos）"
 
-#: src/serialization/parser.cpp:237 src/serialization/parser.cpp:249
+#: src/serialization/parser.cpp:238 src/serialization/parser.cpp:250
 msgid "Empty variable name"
 msgstr "空变量名"
 
-#: src/serialization/parser.cpp:243
+#: src/serialization/parser.cpp:244
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr "变量名后出现非预期的字符（预期字符为,或=）"
 
-#: src/serialization/parser.cpp:282 src/serialization/parser.cpp:310
+#: src/serialization/parser.cpp:283 src/serialization/parser.cpp:311
 msgid "Unterminated quoted string"
 msgstr "未终止的引用字符串"
 
-#: src/serialization/parser.cpp:362
+#: src/serialization/parser.cpp:363
 msgid "$error, value '$value', previous '$previous_value' at $pos"
 msgstr "$error，值为“$value”，原值为“$previous_value”，位于$pos"
 
-#: src/serialization/parser.cpp:366
+#: src/serialization/parser.cpp:367
 msgid "$error, value '$value' at $pos"
 msgstr "$error，值为“$value”，位于$pos"
 
@@ -6687,47 +6403,65 @@ msgstr "Y"
 msgid "infix_binary^i"
 msgstr "i"
 
-#: src/statistics_dialog.cpp:70 src/statistics_dialog.cpp:126
+#: src/statistics_dialog.cpp:118 src/statistics_dialog.cpp:235
 msgid "Recruits"
 msgstr "征募"
 
-#: src/statistics_dialog.cpp:74 src/statistics_dialog.cpp:137
+#: src/statistics_dialog.cpp:122 src/statistics_dialog.cpp:246
 msgid "Recalls"
 msgstr "召回"
 
-#: src/statistics_dialog.cpp:78 src/statistics_dialog.cpp:147
+#: src/statistics_dialog.cpp:126 src/statistics_dialog.cpp:256
 msgid "Advancements"
 msgstr "升级"
 
-#: src/statistics_dialog.cpp:82 src/statistics_dialog.cpp:155
+#: src/statistics_dialog.cpp:130 src/statistics_dialog.cpp:264
 msgid "Losses"
 msgstr "损失"
 
-#: src/statistics_dialog.cpp:87 src/statistics_dialog.cpp:166
+#: src/statistics_dialog.cpp:135 src/statistics_dialog.cpp:275
 msgid "Kills"
 msgstr "杀死"
 
-#: src/statistics_dialog.cpp:107
+#: src/statistics_dialog.cpp:168
 msgid "Details"
 msgstr "详细信息"
 
-#: src/statistics_dialog.cpp:175
+#: src/statistics_dialog.cpp:170
+#, fuzzy
+#| msgid "Test scenario"
+msgid "Select Scenario"
+msgstr "测试场景"
+
+#: src/statistics_dialog.cpp:226 src/statistics_dialog.cpp:304
+#, fuzzy
+#| msgid "Campaign Design"
+msgid "Campaign"
+msgstr "战役设计"
+
+#: src/statistics_dialog.cpp:226 src/statistics_dialog.cpp:304
+#, fuzzy
+#| msgid "End Scenario"
+msgid "Scenario"
+msgstr "结束场景"
+
+#: src/statistics_dialog.cpp:284
 msgid "Damage"
 msgstr "伤害"
 
-#: src/statistics_dialog.cpp:176
+#: src/statistics_dialog.cpp:285
 msgid "Overall"
 msgstr "总计"
 
-#: src/statistics_dialog.cpp:178
+#: src/statistics_dialog.cpp:289
 msgid "This Turn"
 msgstr "本回合"
 
-#: src/statistics_dialog.cpp:182
+#: src/statistics_dialog.cpp:294
 msgid "Inflicted"
 msgstr "伤害输出"
 
-#: src/statistics_dialog.cpp:187
+#: src/statistics_dialog.cpp:298
 msgid "Taken"
 msgstr "承受伤害"
 
@@ -6735,19 +6469,19 @@ msgstr "承受伤害"
 msgid "Skip"
 msgstr "跳过"
 
-#: src/terrain.cpp:155
+#: src/terrain.cpp:159
 msgid "Village"
 msgstr "村庄"
 
-#: src/terrain.cpp:160
+#: src/terrain.cpp:164
 msgid "Allied village"
 msgstr "友军的村庄"
 
-#: src/terrain.cpp:165
+#: src/terrain.cpp:169
 msgid "Enemy village"
 msgstr "敌军的村庄"
 
-#: src/terrain.cpp:170
+#: src/terrain.cpp:174
 msgid "Owned village"
 msgstr "我军的村庄"
 
@@ -6759,107 +6493,299 @@ msgstr "border_size应设为0.0到0.5之间的数值。"
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "生成特质时，遇到未知的单位类型“$type|”"
 
-#: src/unit.cpp:2501 src/unit.cpp:2718 src/unit.cpp:2794
+#: src/unit.cpp:2512 src/unit.cpp:2759 src/unit.cpp:2835
 msgid " and "
 msgstr " 以及"
 
-#: src/unit.cpp:2512
+#: src/unit.cpp:2523
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|：$effect_description"
 
-#: src/unit.cpp:2573
+#: src/unit.cpp:2584
 msgid "moves"
 msgstr "移动点数"
 
-#: src/unit.cpp:2588 src/unit.cpp:2742
+#: src/unit.cpp:2614 src/unit.cpp:2783
 msgid "XP to advance"
 msgstr "升级所需经验值"
 
-#: src/unit.cpp:2735
+#: src/unit.cpp:2776
 msgid " move"
 msgstr " 移动"
 
-#: src/unit.cpp:2750
+#: src/unit.cpp:2791
 msgid "$effect_description per level"
 msgstr "每一等级$effect_description"
 
-#: src/unit_types.cpp:192 src/unit_types.cpp:262
+#: src/unit_types.cpp:234 src/unit_types.cpp:314
 msgid "damage"
 msgid_plural "damage"
 msgstr[0] "伤害"
 msgstr[1] "伤害"
 
-#: src/unit_types.cpp:203 src/unit_types.cpp:270
+#: src/unit_types.cpp:245 src/unit_types.cpp:322
 msgid "strike"
 msgid_plural "strikes"
 msgstr[0] "次打击"
 msgstr[1] "次打击"
 
-#: src/unit_types.cpp:215
+#: src/unit_types.cpp:257
 #, no-c-format
 msgid "% accuracy"
 msgstr "% 精确度"
 
-#: src/unit_types.cpp:226
+#: src/unit_types.cpp:268
 #, no-c-format
 msgid "% parry"
 msgstr "% 闪避"
 
-#: src/unit_types.cpp:933
+#: src/unit_types.cpp:985
 msgid "No description available."
 msgstr "没有描述信息。"
 
-#: src/unit_types.cpp:989
+#: src/unit_types.cpp:1041
 msgid "chaotic"
 msgstr "混沌"
 
-#: src/unit_types.cpp:989
+#: src/unit_types.cpp:1041
 msgid "lawful"
 msgstr "守序"
 
-#: src/unit_types.cpp:989
+#: src/unit_types.cpp:1041
 msgid "liminal"
 msgstr "边缘"
 
-#: src/unit_types.cpp:989
+#: src/unit_types.cpp:1041
 msgid "neutral"
 msgstr "中立"
 
-#: src/unit_types.cpp:990
+#: src/unit_types.cpp:1042
 msgid "female^chaotic"
 msgstr "混沌"
 
-#: src/unit_types.cpp:990
+#: src/unit_types.cpp:1042
 msgid "female^lawful"
 msgstr "守序"
 
-#: src/unit_types.cpp:990
+#: src/unit_types.cpp:1042
 msgid "female^liminal"
 msgstr "边缘"
 
-#: src/unit_types.cpp:990
+#: src/unit_types.cpp:1042
 msgid "female^neutral"
 msgstr "中立"
 
-#: src/whiteboard/manager.cpp:1100
+#: src/whiteboard/manager.cpp:1102
 msgid "SHOW ALL allies’ plans"
 msgstr "显示所有盟友的计划"
 
-#: src/whiteboard/manager.cpp:1101
+#: src/whiteboard/manager.cpp:1103
 msgid "HIDE ALL allies’ plans"
 msgstr "隐藏所有盟友的计划"
 
-#: src/whiteboard/manager.cpp:1115
+#: src/whiteboard/manager.cpp:1117
 msgid "Show plans for $player"
 msgstr "显示 $player 的计划"
 
-#: src/whiteboard/manager.cpp:1117
+#: src/whiteboard/manager.cpp:1119
 msgid "Hide plans for $player"
 msgstr "隐藏 $player 的计划"
 
-#: src/whiteboard/manager.cpp:1120
+#: src/whiteboard/manager.cpp:1122
 msgid "Whiteboard Options"
 msgstr "白板选项"
+
+#~ msgid ""
+#~ "Aban,Abbas,Abbud,Abdul-ʿAdl,Abdul-Ahad,Abdul-Alim,Abdul-Aliyy,Abdul-Azim,"
+#~ "Abdul-Aziz,Abdul-Badi,Abdul-Baʿith,Abdul-Baqi,Abdul-Bari,Abdul-Barr,Abdul-"
+#~ "Basir,Abdul-Basit,Abdul-Fattah,Abdul-Ghaffar,Abdul-Ghafur,Abdul-Ghani,"
+#~ "Abdul-Hadi,Abdul-Hafiz,Abdul-Hakam,Abdul-Hakim,Abdul-Halim,Abdul-Hamid,"
+#~ "Abdul-Haqq,Abdul-Hasib,Abdul-Hayy,Abdul-Jabbar,Abdul-Jalil,Abdul-Karim,"
+#~ "Abdul-Khabir,Abdul-Khaliq,Abdul-Latif,Abdul-Malik,Abdul-Majid,Abdul-Matin,"
+#~ "Abdul-Mubdiʾ,Abdul-Mughni,Abdul-Muhaimin,Abdul-Muhsi,Abdul-Muhyi,Abdul-"
+#~ "Muʿid,Abdul-Muʿizz,Abdul-Mujib,Abdul-Mumin,Abdul-Muqaddim,Abdul-Muqtadir,"
+#~ "Abdul-Musawwir,Abdul-Mutaʿal,Abdul-Nafi,Abdul-Nasser,Abdul-Nasir,Abdul-"
+#~ "Nur,Abdul-Qadir,Abdul-Qahhar,Abdul-Qawi,Abdul-Qayyum,Abdul-Quddus,Abdul-"
+#~ "Rafi,Abdul-Rahim,Abdul-Rahman,Abdul-Rashid,Abdul-Raʿuf,Abdul-Razzaq,Abdul-"
+#~ "Shakur,Abdul-Tawwab,Abdul-Wadud,Abdul-Wahhab,Abdul-Wahid,Abdul-Wajid,"
+#~ "Abdul-Wakil,Abdul-Wali,Abdul-Waliy,Abdul-Warith,Abdul-Zahir,Abdullah,"
+#~ "ʿAbid,ʿAbidin,Abu Bakr,Aby al-Khayr,Adil,Adham,Adib,ʿAdli,ʿAdnan,ʿAfif,"
+#~ "Ahmad,ʿAjib,ʿAkif,Akil,Akram,Alaʾ,Alaʾ al-Din,Alʿ Abbas,Aladdin,al-Bara,"
+#~ "al-Hakam,al-Harith,Alhasan,Alhusain,Ali,Alim,Almahdi,al-Safi,Altaf,Altair,"
+#~ "al-Tayyib,al-Tijani,al-Tufail,Amid,ʿAmid,Amin,Amir,ʿAmir,Amjad,ʿAmmar,"
+#~ "ʿAmro,Anas,Anis,ʿAntarah,Anwar,ʿAqil,Arfan,Arif,ʿArif,Asad,Asʿad,Asadel,"
+#~ "Ashraf,Asif,ʿAsim,Aswad,Ataʿ,Ataʿ Allah,Ataʿ al-Rahman,Athil,Athir,ʿAtif,"
+#~ "ʿAwad,ʿAwf,Aws,Awwab,Ayham,Ayman,Ayser,Ayyub,Aza,ʿAzab,Azhar,Azim,ʿAziz,"
+#~ "ʿAzzam,Badi,Badi al-Zaman,Badr,Badr al-Din,Badri,Bahaʿ,Bahiyy al-Din,"
+#~ "Bahij,Bahir,Bakr,Bakri,Baligh,Bandar,Barakah,Barir,Bashshar,Basil,Basim,"
+#~ "Bassam,Bayezid,Bayhas,Bilal,Bishr,Boulos,Budail,Burhan,Bushr,Butrus,Dabir,"
+#~ "Dani,Darwish,Daʿud,Dhakir,Dhakiy,Dhakwan,Dhul Fiqar,Dirar,Diya,Diya al-"
+#~ "Din,Duqaq,Fadi,Fadil,Fadl,Fadl Allah,Fahd,Fahad,Fahmi,Faisal,Faʿiz,Fakhir,"
+#~ "Fakhr al-Din,Fakhri,Fakih,Falah,Falih,Faraj,Farhan,Farid,Fariq,Fariq,"
+#~ "Faris,Faruq,Fath,Fathi,Fatih,Fatin,Fawwaz,Fawzan,Fawzi,Fayyad,Ferran,Fida,"
+#~ "Fikri,Firas,Fuʿad,Fudail,Gamal,Ghayth,Ghali,Ghalib,Ghanim,Ghassan,Ghawth,"
+#~ "Ghazwan,Ghiyath,Habbab,Habib,Haddad,Hadi,Hafiz,Hakem,Hakim,Halim,Hamal,"
+#~ "Hamas,Hamdan,Hamdi,Hamid,Hamim,Hamzah,Hana,Hanaʾi,Hanbal,Hani,Hanif,"
+#~ "Hannad,Haris,Harith,Harun,Hashim,Hassan,Hatim,Haydar,Haytham,Hayyan,Hazim,"
+#~ "Hilal,Hilmi,Hisham,Hud,Hudad,Hudhafah,Hudhayfah,Humam,Hussein,Husam,Husam "
+#~ "al-Din,Ibrahim,ʿId,Idris,Ihsan,Ihtisham,ʿIkrimah,Ilias,ʿImad,Imad al-Din,"
+#~ "Imran,Imtiyaz,Inʿam,Iqbal,ʿIrfan,ʿIsa,ʿIsam,Ishaq,Ismaʿil,Iyad,Iyas,Izz "
+#~ "al-Din,Jabbar,Jabr,Jabir,Jad Allah,Jaʿfar,Jal,Jalal,Jalal al-Din,Jalil,"
+#~ "Jamal,Jamal al-Din,Jamil,Jarir,Jasim,Jaul,Jaun,Jawad,Jawdah,Jawhar,Jibran,"
+#~ "Jibril,Jubair,Jul,Jumah,Junayd,Juwain,Kadar,Kadin,Kadir,Kahil,Kaliq,Kamal,"
+#~ "Kamil,Karam,Kardal,Karif,Karim,Kasib,Kasim,Katib,Kazim,Khalaf,Khaldun,"
+#~ "Khalid,Khalil,Khalil al-Allah,Khalis,Khatib,Khair al-Din,Khairi,Khoury,"
+#~ "Khulus,Khuzaymah,Kutaiba,Labib,Lablab,Latif,Layth,LuʿayLubayd,Luqman,Lut,"
+#~ "Lutfi,Maʿd,Madani,Mahbub,Mahdi,Mahfuz,Mahir,Mahjub,Mahmud,Mahrus,Maimun,"
+#~ "Majd,Majdy,Majd al-Din,Majid,Makin,Malik,Mamduh,Maʿmun,Maʿin,Mandhur,"
+#~ "Mansur,Marghub,Marid,Maʿruf,Marwan,Marzuq,Mashʿal,Mashhur,Masrur,Masʿud,"
+#~ "Masun,Maysarah,Mazhar,Mazin,Mehmed,Mihran,Mihyar,Mikaʾil,Miqdad,Misbah,"
+#~ "Mishʿal,Miyaz,Muʾadh,Muʾawiyah,Muʾayyad,Mubarak,Mubin,Mudar,Muddaththir,"
+#~ "Mufid,Muflih,Muhab,Muhayr,Muhammad,Muhanna,Muhannad,Muhib,Muhibb,Muhsin,"
+#~ "Muhtadi,Muhyi al-Din,Muʿin,Muʿizz,Mujab,Mujahid,Mukarram,Mukhlis,Mukhtar,"
+#~ "Mulham,Mulhim,Muʿmmar,Muʿmin,Mumtaz,Munahid,Mundhir,Munib,Munif,Munir,"
+#~ "Muʿnis,Munjid,Munsif,Muntasir,Murad,Murid,Murshid,Murtada,Musa,Musʿab,"
+#~ "Musaʿid,Mushtaq,Muslih,Muslim,Mutafa,Mutaʾ,Muʿtasim,Mutawalli,Muʿtazz,"
+#~ "Muthanna,Muti,Muwaffaq,Muyassar,Muzaffar,Mussammil,Nabhan,Nabighah,Nabih,"
+#~ "Nabil,Nadhir,Nadim,Nadir,Nafiʾ,Nahid,Naʾil,Naʾim,Naji,Najib,Najid,Najjar,"
+#~ "Najm al-Din,Naʿaman,Namir,Nashʿah,Nashʿat,Nashwan,Nasib,Nasih,Nasim,Nasir,"
+#~ "Nasir al-Din,Nasr,Nasri,Nasuh,Nawaf,Nawfal,Nayif,Nazih,Nazim,Nazmi,Nibras,"
+#~ "Nidal,Nijad,Nimr,Nizar,Nuʿaym,Nuh,Nuhayd,Numair,Nuʿman,Nur al-Din,Nuri,"
+#~ "Nusrah,Nusrat,Omar,Orhan,Osman,Qasim,Qays,Qudamah,Qusay,Qatadah,Qutaybah,"
+#~ "Qutb,Qutuz,Rabah,Rabi,Radi,Rafi,Rafid,Rafiq,Raghib,Rahman,Raʿid,Raʿif,"
+#~ "Rais,Rajaa,Rajab,Raji,Rajih,Rakin,Rami,Ramih,Ramiz,Ramzi,Rani,Rashad,"
+#~ "Rashid,Rasil,Rasin,Rasmi,Rasul,Ratib,Raʿuf,Rayhan,Rayyan,Razin,Ridha,"
+#~ "Ridwan,Rihab,Riyad,Rizq,Ruhi,Rushd,Rushdi,Ruwayd,Saad,Saʿadah,Sab,Sabih,"
+#~ "Sabir,Sabri,Saʿd,Saʿd al-Din,Sadad,Sadid,Sadiq,Saʿdun,Saʿid,Safi,Safiy,"
+#~ "Safiy al-Din,Safuh,Safwah,Safwat,Safwan,Sahib,Sahir,Sahl,Saʾib,Saif,Saif "
+#~ "al-Din,Sajid,Sajjad,Sakhr,Salah,Salah al-Din,Salamah,Salih,Salim,Salman,"
+#~ "Sami,Samih,Samir,Samman,Saqr,Sariyah,Sati,Saud,Sayyid,Shaʿban,Shadi,"
+#~ "Shadin,Shafi,Shafiq,Shahid,Shahin,Shahir,Shakib,Shakir,Shams al-Din,"
+#~ "Shamal,Shamil,Shamim,Sharaf,Sharif,Shawqi,Shihab,Shihab al-Din,Shihad,"
+#~ "Shuʿayb,Shukri,Shumayl,Siddiq,Sinan,Siraj,Siraj al-Din,Sofian,Subhi,"
+#~ "Sufyan,Suhayb,Suhayl,Suhaym,Sulaiman,Sumrah,Suraqah,Suʿud,Tahir,Tahsin,"
+#~ "Taym Allah,Taj,Taj al-Din,Talal,Talib,Tamim,Tamir,Tamam,Tammam,Taqiy,"
+#~ "Tarif,Tariq,Taslim,Tawfiq,Tawhid,Taymullah,Taysir,Tayyib,Thabit,Thamir,"
+#~ "Thaqib,Thawab,Thawban,ʿUbaidah,Ubaid,Ubayy,ʿUdayl,ʿUday,ʿUmar,Umarah,"
+#~ "Umair,ʾaUrwah,Usaym,Usama,ʿUtbah,Uthal,Uthman,Waddah,Wadi,Wadid,Wafiq,"
+#~ "Wahab,Wahhab,Wahid,Waʾil,Wajdi,Wajid,Wajih,Wakil,Walid,Walif,Waliy Allah,"
+#~ "Waliy al-Din,Waqar,Waqqas,Ward,Wasif,Wasil,Wasim,Wazir,Yahya,Yaman,Yaʿqub,"
+#~ "Yasar,Yasin,Yasir,Yazan,Yazid,Yunus,Yushua,Yusri,Yusuf,Zafar,Zafir,Zahid,"
+#~ "Zahir,Zayd,Zaim,Zayn,Zarif,Zakarriya,Zaki,Zakwan,Ziyad,Zubayr,Zuhayr"
+#~ msgstr ""
+#~ "阿班,阿巴斯,阿布德,阿卜杜勒-阿德,阿卜杜勒-阿哈德,阿卜杜勒-阿利姆,阿卜杜勒-"
+#~ "阿利耶,阿卜杜勒-阿齐姆,阿卜杜勒-阿齐兹,阿卜杜勒-巴迪,阿卜杜勒-巴伊,阿卜杜"
+#~ "勒-巴基,阿卜杜勒-巴里,阿卜杜勒-巴尔,阿卜杜勒-巴希尔,阿卜杜勒-巴西特,阿卜杜"
+#~ "勒-法塔赫,阿卜杜勒-加法尔,阿卜杜勒-加富尔,阿卜杜勒-加尼,阿卜杜勒-哈迪,阿卜"
+#~ "杜勒-哈菲兹,阿卜杜勒-哈卡姆,阿卜杜勒-哈基姆,阿卜杜勒-哈利姆,阿卜杜勒-阿米"
+#~ "德,阿卜杜勒-哈基,阿卜杜勒-哈西卜,阿卜杜勒-哈伊,阿卜杜勒-贾巴尔,阿卜杜勒-贾"
+#~ "利勒,阿卜杜勒-卡里姆,阿卜杜勒-哈比尔,阿卜杜勒-哈利克,阿卜杜勒-拉蒂夫,阿卜"
+#~ "杜勒-马利克,阿卜杜勒-马吉德,阿卜杜勒-马丁,阿卜杜勒-穆卜迪尔,阿卜杜勒-穆格"
+#~ "尼,阿卜杜勒-穆海明,阿卜杜勒-穆赫辛,阿卜杜勒-穆海依,阿卜杜勒-穆埃德,阿卜杜"
+#~ "勒-穆伊兹,阿卜杜勒-穆吉布,阿卜杜勒-穆明,阿卜杜勒-穆卡迪姆,阿卜杜勒-穆克塔"
+#~ "达,阿卜杜勒-穆萨维,阿卜杜勒-穆塔阿勒,阿卜杜勒-纳菲,阿卜杜勒-纳赛尔,阿卜杜"
+#~ "勒-纳西尔,阿卜杜勒-努尔,阿卜杜勒-卡迪尔,阿卜杜勒-卡哈尔,阿卜杜勒-卡维,阿卜"
+#~ "杜勒-加尧姆,阿卜杜勒-库杜斯,阿卜杜勒-拉菲,阿卜杜勒-拉希姆,阿卜杜勒-拉赫曼,"
+#~ "阿卜杜勒-拉希德,阿卜杜勒-拉沃夫,阿卜杜勒-拉扎克,阿卜杜勒-沙库尔,阿卜杜勒-"
+#~ "塔瓦卜,阿卜杜勒-瓦杜德,阿卜杜勒-瓦哈卜,阿卜杜勒-瓦希德,阿卜杜勒-瓦基德,阿"
+#~ "卜杜勒-瓦基勒,阿卜杜勒-瓦利,阿卜杜勒-瓦利,阿卜杜勒-沃里思,阿卜杜勒-查希尔,"
+#~ "阿卜杜拉,阿比德,阿比丁,阿布·贝克尔,阿比·阿勒凯,阿迪勒,阿扎姆,阿迪卜,阿德"
+#~ "利,阿德南,阿菲夫,艾哈迈德,阿吉布,阿基夫,阿基勒,阿克拉姆,阿拉,阿拉·阿勒丁,"
+#~ "阿勒·阿巴斯,阿拉丁,阿勒巴拉,阿勒哈卡姆,阿勒哈里斯,阿勒哈桑,阿勒侯赛因,阿"
+#~ "里,阿利姆,阿勒迈赫迪,阿勒萨菲,阿尔塔夫,阿尔泰,阿勒塔伊布,阿勒提贾尼,阿勒图"
+#~ "费勒,阿米德,阿米德,阿明,阿米尔,阿米尔,阿姆贾德,阿马尔,阿姆鲁,阿纳斯,阿尼"
+#~ "斯,安塔罗,安瓦尔,阿其尔,阿尔法,阿里夫,阿里夫,阿萨德,阿斯阿德,阿萨德尔,阿什"
+#~ "拉夫,阿西夫,阿西姆,阿斯瓦德,阿塔,阿塔·阿拉,阿塔·阿勒拉赫曼,阿西尔,阿西尔,"
+#~ "阿蒂夫,阿瓦德,奥夫,奥斯,奥瓦博,艾哈姆,艾曼,艾塞尔,阿尤博,阿萨,阿萨博,艾兹"
+#~ "哈尔,阿齐姆,阿齐兹,阿扎姆,巴迪,巴迪·阿勒扎曼,巴德尔,巴德尔·阿勒丁,巴德里,"
+#~ "巴哈,巴希义·阿勒丁,巴希杰,巴希尔,贝克尔,巴克里,巴莱,班达尔,巴拉卡,巴里,巴"
+#~ "希哈,巴西勒,巴锡明,巴萨姆,巴耶齐德,拜哈斯,比拉勒,比什尔,布洛斯,布达尔,布尔"
+#~ "汉,布沙,布特鲁斯,达比尔,达尼,达尔维什,达乌德,达卡,达其,达卡万,度尔·菲恰,迪"
+#~ "拉,迪亚,迪亚·阿勒丁,杜凯,法迪,法迪勒,法德勒,法德勒·阿拉,法赫德,法赫德,法赫"
+#~ "米,费萨尔,法伊兹,法赫尔,法赫尔·阿勒丁,法赫里,法基,法拉赫,法利赫,法拉杰,法"
+#~ "尔汉,法里德,法里其,法里斯,法鲁克,法特赫,法特希,法提赫,法廷,法瓦兹,福赞,法"
+#~ "齐,法耶兹,费兰,菲达,菲克里,菲拉斯,福阿德,福达尔,贾迈勒,加斯,加利,加利卜,加"
+#~ "尼姆,加桑,加瓦斯,加兹万,吉亚斯,哈巴卜,哈比卜,哈达德,哈迪,哈菲兹,哈卡姆,哈"
+#~ "基姆,哈利姆,哈马尔,哈马斯,哈姆丹,哈姆迪,哈米德,哈米姆,哈姆扎,哈纳,哈奈,汉"
+#~ "巴尔,哈尼,哈尼夫,汉纳德,哈里斯,哈里斯,哈伦,哈希姆,哈桑,哈特姆,海达尔,海赛"
+#~ "姆,哈扬,哈兹姆,希拉勒,希勒米,希沙姆,胡德,胡达,胡德哈法赫,胡德哈法赫,胡马"
+#~ "姆,侯赛因,胡萨姆,胡萨姆·阿勒丁,易卜拉欣,埃德,伊德里斯,伊赫桑,伊赫提沙姆,伊"
+#~ "克里姆赫,伊利亚斯,伊马德,伊马德·阿勒丁,伊姆兰,伊姆提亚兹,伊纳姆,伊克巴尔,"
+#~ "伊尔凡,伊萨,伊萨姆,伊沙克,伊斯梅尔,伊亚德,伊亚斯,伊兹·阿勒丁,贾巴尔,贾布"
+#~ "尔,贾比尔,贾德·阿拉,贾法尔,贾尔,贾拉勒,贾拉勒·阿勒丁,贾利勒,贾迈勒,贾迈勒·"
+#~ "阿勒丁,贾米勒,贾里尔,贾西姆,贾勒,贾温,贾瓦德,贾乌德,乔哈尔,朱卜兰,贾布里"
+#~ "勒,朱巴尔,朱勒,朱马赫,朱奈德,朱万,卡达尔,卡丁,卡迪尔,卡希勒,卡里其,卡迈勒,"
+#~ "卡米勒,卡拉姆,卡尔达勒,卡里夫,卡里姆,卡西卜,卡西姆,卡提卜,卡齐姆,哈拉夫,哈"
+#~ "勒敦,哈立德,哈立德,哈利勒,哈利勒·阿勒阿拉,哈利斯,哈提卜,海尔·阿勒丁,哈伊"
+#~ "里,胡利,胡卢西,胡扎亚姆赫,库塔伊巴,拉比卜,拉卜拉卜,拉蒂夫,拉斯，卢埃卢巴亚"
+#~ "德,卢克曼,卢特,卢特菲,马德,迈达尼,马赫布卜,迈赫迪,马赫福兹,马希尔,马哈古"
+#~ "卜,马哈茂德,马赫鲁斯,迈蒙,马吉德,马吉迪,马吉德·阿勒丁,马希德,马金,马利克,"
+#~ "马姆杜,马蒙,马因,曼德赫,曼苏尔,马尔古布,马里德,马鲁夫,马尔万,马尔祖克,玛莎"
+#~ "勒,马什胡尔,马斯罗尔,马苏德,马松,迈萨拉,马兹哈尔,马辛,穆罕默德,米伦,米哈,"
+#~ "米凯尔,米克德,米斯巴赫,米沙勒,米亚兹,穆阿德,穆阿维耶,穆阿耶德,穆巴拉克,穆"
+#~ "宾,穆达尔,穆达斯斯尔,穆菲德,穆夫利赫,穆哈卜,穆哈亚,穆罕默德,穆汉纳,穆汉纳"
+#~ "德,穆希卜,穆希布,穆赫辛,穆赫塔迪,穆赫依·阿勒丁,穆因,穆伊兹,穆亚卜,穆贾希"
+#~ "德,穆卡拉姆,穆赫利斯,穆赫塔尔,穆勒汉姆,穆勒希姆,穆马,穆明,蒙塔兹,蒙纳希德,"
+#~ "蒙齐尔,穆尼卜,穆尼夫,穆尼尔,穆尼斯,蒙基德,蒙斯夫,蒙塔塞尔,穆拉德,穆尔德,穆"
+#~ "尔希德,穆尔塔达,穆萨,穆沙卜,穆赛义德,穆什塔克,穆斯利赫,穆斯利姆,穆塔法,穆"
+#~ "塔,穆塔西姆,穆塔瓦利,穆塔兹,穆萨纳,穆蒂,穆瓦法克,穆亚西尔,穆扎法尔,穆萨米"
+#~ "勒,纳卜汉,纳比哈赫,纳比,纳比勒,纳德赫尔,纳迪姆,纳迪尔,纳菲,纳希德,纳伊尔,"
+#~ "纳伊姆,纳吉,纳吉布,纳吉德,纳贾尔,纳杰姆·阿勒丁,纳曼,纳米尔,纳沙赫,纳沙特,"
+#~ "纳什万,纳西卜,纳西赫,纳西姆,纳西尔,纳西尔·阿勒丁,纳斯尔,纳斯里,纳苏赫,纳瓦"
+#~ "夫,纳乌法勒,纳伊夫,纳齐赫,纳齐姆,尼巴斯,尼达尔,尼亚德,尼米尔,尼扎尔,纳伊"
+#~ "姆,努赫,努哈亚德,努马尔,努曼,努尔·阿勒丁,努里,努斯拉赫,努斯拉特,奥马尔,奥"
+#~ "尔汗,奥斯曼,卡西姆,卡伊斯,库达马赫,库赛,卡塔达赫,库塔耶巴赫,库特卜,库土兹,"
+#~ "拉巴赫,拉比,拉迪,拉菲,拉菲德,拉菲克,拉吉卜,拉赫曼,拉伊德,拉伊夫,赖斯,拉贾,"
+#~ "拉杰卜,拉吉,拉吉赫,拉金,拉米,拉米赫,拉米兹,拉尼,拉沙德,拉希德,拉西勒,拉辛,"
+#~ "拉斯米,拉苏尔,拉提卜,拉乌夫,拉伊汉,拉亚,拉赞,里达,里德万,里哈卜,里亚德,里"
+#~ "兹克,鲁希,鲁什德,鲁什迪,鲁韦德,萨阿德,萨阿达赫,萨卜,萨比赫,萨比尔,萨布里,"
+#~ "萨德,萨德·阿勒丁,萨达德,萨迪德,萨迪克,萨阿敦,赛义德,萨菲,萨菲耶,萨菲耶·阿"
+#~ "勒丁,萨夫赫,萨夫瓦赫,萨夫瓦特,萨夫万,萨希卜,萨希尔,萨尔,赛义卜,赛义夫,赛义"
+#~ "夫·阿勒丁,赛义德,萨贾德,萨赫尔,萨拉赫,萨拉赫·阿勒丁,萨拉马,萨利赫,萨利姆,"
+#~ "萨勒曼,萨米,萨米赫,萨米尔,萨曼,萨克尔,萨里亚赫,萨提,沙特,赛义德,沙班,沙迪,"
+#~ "沙丁,沙菲,沙菲克,沙希德,沙欣,沙赫尔,沙基卜,沙基尔,沙姆斯·阿勒丁,沙马勒,沙"
+#~ "米勒,沙米姆,谢拉夫,谢里夫,舒基,谢哈布,谢哈布·阿勒丁,谢哈德,舒艾布,舒凯里,"
+#~ "舒马勒,西迪克,锡南,西拉杰,西拉杰·阿勒丁,索菲安,苏卜希,苏夫杨,苏哈伊卜,苏海"
+#~ "拉,苏海姆,苏莱曼,苏姆拉赫,苏拉卡赫,苏乌德,塔希尔,塔赫辛,塔伊姆·阿拉,塔杰,"
+#~ "塔杰·阿勒丁,塔拉勒,塔利布,塔米米,塔米尔,塔玛姆,塔马姆,塔基,塔里夫,塔里克,"
+#~ "塔斯林,陶菲克,陶希德,泰穆尔赫,泰西尔,塔伊布,萨比特,萨米尔,萨奇卜,萨瓦卜,萨"
+#~ "瓦班,奥贝达赫,奥贝德,奥贝伊,乌代勒,乌代,奥马尔,奥马尔赫,乌马尔,厄瓦赫,乌萨"
+#~ "姆,乌萨马,乌巴赫,乌泰尔,奥斯曼,瓦达,瓦迪,瓦迪德,瓦菲克,瓦哈布,瓦哈卜,瓦希"
+#~ "德,瓦伊勒,瓦伊迪,瓦吉德,瓦吉赫,瓦基勒,瓦利德,瓦利夫,瓦利耶·阿拉,瓦利耶·阿"
+#~ "勒丁,瓦卡尔,瓦卡斯,瓦尔德,瓦西夫,瓦西尔,瓦西姆,瓦齐尔,叶海亚,亚曼,雅各布,"
+#~ "亚萨尔,亚辛,亚西尔,亚赞,耶齐德,尤努斯,尤沙,尤斯里,优素福,扎法尔,扎菲尔,扎"
+#~ "希德,查希尔,扎伊德,扎伊姆,扎伊纳,扎里夫,扎卡里亚,扎基,扎卡万,齐亚德,祖巴伊"
+#~ "尔,祖海尔"
+
+#, fuzzy
+#~| msgid "invisible: "
+#~ msgid "invisible"
+#~ msgstr "隐形： "
+
+#, fuzzy
+#~| msgid "female^slowed"
+#~ msgid "female^invisible"
+#~ msgstr "减速"
+
+#, fuzzy
+#~| msgid "Fire a game event."
+#~ msgid "I triggered a moveto event."
+#~ msgstr "触发游戏事件。"
+
+#, fuzzy
+#~| msgid "Password: "
+#~ msgid "sword"
+#~ msgstr "密码："
+
+#, fuzzy
+#~| msgid "Version: "
+#~ msgid "Vision Test"
+#~ msgstr "版本："
+
+#, fuzzy
+#~| msgid "invisible: "
+#~ msgid "It is invisible!"
+#~ msgstr "隐形： "
 
 #, fuzzy
 #~| msgid "Choose weapon:"

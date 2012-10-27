@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-09-01 18:47+0200\n"
+"POT-Creation-Date: 2012-10-27 15:56+0200\n"
 "PO-Revision-Date: 2011-11-22 20:09+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -134,7 +134,7 @@ msgstr "zvláštnosti"
 #. [menu]: id=draw_button_editor
 #. [menu]: id=flood_button_editor
 #: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
-#: data/themes/editor.cfg:220 data/themes/editor.cfg:279
+#: data/themes/editor.cfg:220 data/themes/editor.cfg:278
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
@@ -145,7 +145,7 @@ msgstr ""
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
-#: data/core/editor/tool-hints.cfg:19 data/themes/editor.cfg:291
+#: data/core/editor/tool-hints.cfg:19 data/themes/editor.cfg:290
 msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
@@ -155,7 +155,7 @@ msgstr ""
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #. [menu]: id=start_position_button_editor
-#: data/core/editor/tool-hints.cfg:25 data/themes/editor.cfg:243
+#: data/core/editor/tool-hints.cfg:25 data/themes/editor.cfg:232
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
 "scroll to the starting position, alt+number sets respective starting "
@@ -194,86 +194,32 @@ msgstr "Mapa"
 msgid "Window"
 msgstr "Okno"
 
-#. [menu]: id=menu-editor-side
-#: data/themes/editor.cfg:179
-msgid "Side"
-msgstr ""
-
-#. [menu]: id=pipette_button_editor
-#: data/themes/editor.cfg:231
-msgid ""
-"Pipette Tool, Use left/right mouse button to select a terrain from the map. "
-"Not implemented yet."
-msgstr ""
-
-#. [menu]: id=item_button_editor
-#: data/themes/editor.cfg:255
-msgid ""
-"Item Placement Tool, Left mouse button sets a new item or moves it via drag "
-"and drop, right clears. Not implemented yet."
-msgstr ""
-
-#. [menu]: id=village_button_editor
-#: data/themes/editor.cfg:266
-msgid ""
-"Left mouse button sets the village ownership to the current side, right "
-"clears."
-msgstr ""
-
-#. [menu]: id=label_button_editor
-#: data/themes/editor.cfg:301
-msgid "Left mouse button sets or drags a label, right clears."
-msgstr ""
-
-#. [menu]: id=soundsource_button_editor
-#: data/themes/editor.cfg:311
-msgid ""
-"Left mouse button sets or drags a sound source, right clears. Not "
-"implemented yet."
-msgstr ""
-
-#. [menu]: id=unit_button_editor
-#: data/themes/editor.cfg:321
-msgid ""
-"Left mouse button sets a new unit or moves a unit via drag and drop, right "
-"clears."
-msgstr ""
-
-#. [menu]: id=flip_map_button_editor
-#: data/themes/editor.cfg:400
-msgid "Flip Map - Not implemented yet."
-msgstr ""
-
 #. [menu]: id=menu-editor-terrain
-#: data/themes/editor.cfg:437
+#: data/themes/editor.cfg:439
 msgid "Group"
 msgstr ""
 
 #. [label]: id=villages-icon
-#: data/themes/editor.cfg:460
+#: data/themes/editor.cfg:463
 msgid "villages"
 msgstr "vesnic"
 
-#: src/editor/editor_controller.cpp:78
-msgid "Quit Editor"
-msgstr "Ukončení editoru"
-
-#: src/editor/editor_controller.cpp:164
+#: src/editor/editor_controller.cpp:154
 msgid "Fatal error"
 msgstr "Kritická chyba"
 
-#: src/editor/editor_controller.cpp:188
+#: src/editor/editor_controller.cpp:178
 msgid "Do you really want to quit?"
 msgstr "Opravdu si přejete skončit?"
 
-#: src/editor/editor_controller.cpp:190
+#: src/editor/editor_controller.cpp:180
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr ""
 "Opravdu si přeješ skončit? Změny v mapě od posledního uložení budou ztraceny."
 
-#: src/editor/editor_controller.cpp:192
+#: src/editor/editor_controller.cpp:182
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -281,41 +227,13 @@ msgstr ""
 "Opravdu si přeješ skončit? Následující mapy byly změněny; všechny změny od "
 "posledního uložení budou ztraceny:"
 
-#: src/editor/editor_controller.cpp:195
+#: src/editor/editor_controller.cpp:185
 msgid "Quit"
 msgstr "Konec"
 
-#: src/editor/editor_controller.cpp:206
+#: src/editor/editor_controller.cpp:196
 msgid "No editor time-of-day found."
 msgstr "Nenalezena žádná denní doba pro editor."
-
-#: src/editor/editor_controller.cpp:570
-msgid "Undo"
-msgstr "Zpátky"
-
-#: src/editor/editor_controller.cpp:572
-msgid "Can’t Undo"
-msgstr "Nelze vrátit"
-
-#: src/editor/editor_controller.cpp:576
-msgid "Redo"
-msgstr "Vrať"
-
-#: src/editor/editor_controller.cpp:578
-msgid "Can’t Redo"
-msgstr "Nelze opakovat"
-
-#: src/editor/map/context_manager.cpp:82
-msgid "Auto-update Terrain Transitions: Yes"
-msgstr "Automaticky aktualizovat přechody terénu: Ano"
-
-#: src/editor/map/context_manager.cpp:85
-msgid "Auto-update Terrain Transitions: Partial"
-msgstr "Automaticky aktualizovat přechody terénu: Částečně"
-
-#: src/editor/map/context_manager.cpp:89
-msgid "Auto-update Terrain Transitions: No"
-msgstr "Automaticky aktualizovat přechody terénu: Ne"
 
 #: src/editor/map/context_manager.cpp:101
 #: src/editor/map/context_manager.cpp:193
@@ -340,7 +258,7 @@ msgid "Choose Target Map"
 msgstr "vyber cílovou mapu"
 
 #: src/editor/map/context_manager.cpp:271
-#: src/editor/map/context_manager.cpp:631
+#: src/editor/map/context_manager.cpp:635
 msgid "Error loading map"
 msgstr "Chyba načítání mapy"
 
@@ -370,25 +288,25 @@ msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr "Opravdu si přeješ zahodit všechny změny v mapě od posledního uložení?"
 
-#: src/editor/map/context_manager.cpp:546
-#: src/editor/map/context_manager.cpp:587
+#: src/editor/map/context_manager.cpp:550
+#: src/editor/map/context_manager.cpp:591
 msgid "This map is already open."
 msgstr "Tato mapa již je otevřena."
 
-#: src/editor/map/context_manager.cpp:567
+#: src/editor/map/context_manager.cpp:571
 msgid "Map saved."
 msgstr "Mapa byla uložena."
 
-#: src/editor/map/context_manager.cpp:610
+#: src/editor/map/context_manager.cpp:614
 msgid "Loaded embedded map data"
 msgstr "Načtena vložená data mapy"
 
-#: src/editor/map/context_manager.cpp:611
-#: src/editor/map/context_manager.cpp:625
+#: src/editor/map/context_manager.cpp:615
+#: src/editor/map/context_manager.cpp:629
 msgid "Map loaded from scenario"
 msgstr "Mapa načtena ze scénáře"
 
-#: src/editor/map/context_manager.cpp:621
+#: src/editor/map/context_manager.cpp:625
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -460,6 +378,30 @@ msgstr "Hráč $player_number"
 #: src/gui/dialogs/editor_settings.cpp:166
 msgid "Custom setting"
 msgstr "Vlastní nastavení"
+
+#~ msgid "Quit Editor"
+#~ msgstr "Ukončení editoru"
+
+#~ msgid "Undo"
+#~ msgstr "Zpátky"
+
+#~ msgid "Can’t Undo"
+#~ msgstr "Nelze vrátit"
+
+#~ msgid "Redo"
+#~ msgstr "Vrať"
+
+#~ msgid "Can’t Redo"
+#~ msgstr "Nelze opakovat"
+
+#~ msgid "Auto-update Terrain Transitions: Yes"
+#~ msgstr "Automaticky aktualizovat přechody terénu: Ano"
+
+#~ msgid "Auto-update Terrain Transitions: Partial"
+#~ msgstr "Automaticky aktualizovat přechody terénu: Částečně"
+
+#~ msgid "Auto-update Terrain Transitions: No"
+#~ msgstr "Automaticky aktualizovat přechody terénu: Ne"
 
 #, fuzzy
 #~| msgid "Empty map file"

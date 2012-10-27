@@ -140,18 +140,18 @@ runs the game without sounds and music.
 prints the name of the game data directory and exits.
 .TP 
 \fB\-p, \-\-preprocess <source file/folder> <target directory>\fP
-preprocesses a specified file/folder. For each file(s) a plain .cfg file and
-a processed .cfg file will be written in specified target directory. If a
+preprocesses a specified file/folder. For each file, a plain .cfg file and a
+processed .cfg file will be written in the specified target directory. If a
 folder is specified, it will be preprocessed recursively based on the known
-preprocessor rules. The common macroses from the "data/core/macros"
-directory will be preprocessed before the specified resources.  Example:
-\fB\-p ~/wesnoth/data/campaigns/tutorial ~/result.\fP For details regarding the
-preprocessor visit:
+preprocessor rules. The common macros from the "data/core/macros" directory
+will be preprocessed before the specified resources.  Example: \fB\-p
+~/wesnoth/data/campaigns/tutorial ~/result.\fP For details regarding the
+preprocessor, visit:
 http://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor
 
 .TP 
 \fB\-\-preprocess\-defines=DEFINE1,DEFINE2,etc\fP
-comma separated list of defines to be used by the '\-\-preprocess' command. If
+comma\-separated list of defines to be used by the '\-\-preprocess' command. If
 \fBSKIP_CORE\fP is in the define list the "data/core" directory won't be
 preprocessed.
 .TP 

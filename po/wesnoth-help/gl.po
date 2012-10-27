@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-09-01 18:47+0200\n"
+"POT-Creation-Date: 2012-10-27 15:56+0200\n"
 "PO-Revision-Date: 2012-09-22 09:02+0200\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -49,13 +49,12 @@ msgstr "Baixo a terra"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:755
-#: data/core/macros/abilities.cfg:584
+#: data/core/macros/abilities.cfg:562
 msgid "berserk"
 msgstr "furioso"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:757
-#: data/core/macros/abilities.cfg:585
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -67,13 +66,12 @@ msgstr ""
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:770
-#: data/core/macros/abilities.cfg:670
+#: data/core/macros/abilities.cfg:641
 msgid "magical"
 msgstr "máxico"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:772
-#: data/core/macros/abilities.cfg:671
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit regardless of the defensive "
@@ -85,13 +83,11 @@ msgstr ""
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:785
-#: data/core/macros/abilities.cfg:719
 msgid "firststrike"
 msgstr "primeiro golpe"
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:787
-#: data/core/macros/abilities.cfg:720
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
@@ -116,8 +112,17 @@ msgstr "sanda 4"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:18
 #: data/core/macros/abilities.cfg:12
+#, fuzzy
+#| msgid ""
+#| "Heals +4:\n"
+#| "Allows the unit to heal adjacent allied units at the beginning of our "
+#| "turn.\n"
+#| "\n"
+#| "A unit cared for by this healer may heal up to 4 HP per turn, or stop "
+#| "poison from taking effect for that turn.\n"
+#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
+#| "the care of a village or a unit that can cure."
 msgid ""
-"Heals +4:\n"
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
 "A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
@@ -135,22 +140,31 @@ msgstr ""
 "coidados necesarios nunha vila, ou por parte dunha unidade que poida curar."
 
 #. [heals]: id=healing
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:44
+#: data/core/macros/abilities.cfg:29
+msgid "heals +8"
+msgstr "sanda 8"
+
+#. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
 #: data/core/macros/abilities.cfg:30
-msgid "heals +8"
+msgid "female^heals +8"
 msgstr "sanda 8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
 #: data/core/macros/abilities.cfg:31
-msgid "female^heals +8"
-msgstr "sanda 8"
-
-#. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:47
-#: data/core/macros/abilities.cfg:32
+#, fuzzy
+#| msgid ""
+#| "Heals +8:\n"
+#| "This unit combines herbal remedies with magic to heal units more quickly "
+#| "than is normally possible on the battlefield.\n"
+#| "\n"
+#| "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
+#| "poison from taking effect for that turn.\n"
+#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
+#| "the care of a village or a unit that can cure."
 msgid ""
-"Heals +8:\n"
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
 "\n"
@@ -1180,7 +1194,7 @@ msgstr "Propiedades dos ataques"
 
 #. #-#-#-#-#  wesnoth-help.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=factions_section
-#: data/core/help.cfg:56 src/help.cpp:1299 src/help.cpp:1301
+#: data/core/help.cfg:56 src/help.cpp:1309 src/help.cpp:1311
 msgid "Factions"
 msgstr "Faccións"
 
@@ -4135,19 +4149,23 @@ msgstr ""
 "advances=2»."
 
 #. [heals]: id=curing
-#: data/core/macros/abilities.cfg:51
+#: data/core/macros/abilities.cfg:49
 msgid "cures"
 msgstr "cura"
 
 #. [heals]: id=curing
-#: data/core/macros/abilities.cfg:52
+#: data/core/macros/abilities.cfg:50
 msgid "female^cures"
 msgstr "cura"
 
 #. [heals]: id=curing
-#: data/core/macros/abilities.cfg:53
+#: data/core/macros/abilities.cfg:51
+#, fuzzy
+#| msgid ""
+#| "Cures:\n"
+#| "A curer can cure a unit of poison, although that unit will receive no "
+#| "additional healing on the turn it is cured of the poison."
 msgid ""
-"Cures:\n"
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
@@ -4156,19 +4174,23 @@ msgstr ""
 "non sandarán vida algunha durante a rolda en que as curan."
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:76
+#: data/core/macros/abilities.cfg:73
 msgid "regenerates"
 msgstr "rexenérase"
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:77
+#: data/core/macros/abilities.cfg:74
 msgid "female^regenerates"
 msgstr "rexenérase"
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:78
+#: data/core/macros/abilities.cfg:75
+#, fuzzy
+#| msgid ""
+#| "Regenerates:\n"
+#| "The unit will heal itself 8 HP per turn. If it is poisoned, it will "
+#| "remove the poison instead of healing."
 msgid ""
-"Regenerates:\n"
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
@@ -4177,19 +4199,23 @@ msgstr ""
 "o veleno en vez de sandar."
 
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:98
+#: data/core/macros/abilities.cfg:94
 msgid "steadfast"
 msgstr "firme"
 
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:99
+#: data/core/macros/abilities.cfg:95
 msgid "female^steadfast"
 msgstr "firme"
 
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:100
+#: data/core/macros/abilities.cfg:96
+#, fuzzy
+#| msgid ""
+#| "Steadfast:\n"
+#| "This unit’s resistances are doubled, up to a maximum of 50%, when "
+#| "defending. Vulnerabilities are not affected."
 msgid ""
-"Steadfast:\n"
 "This unit’s resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
 msgstr ""
@@ -4198,25 +4224,34 @@ msgstr ""
 "50%. Non afecta ás súas vulnerabilidades."
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:114 data/core/macros/abilities.cfg:137
-#: data/core/macros/abilities.cfg:172 data/core/macros/abilities.cfg:219
-#: data/core/macros/abilities.cfg:278
+#: data/core/macros/abilities.cfg:109 data/core/macros/abilities.cfg:131
+#: data/core/macros/abilities.cfg:165 data/core/macros/abilities.cfg:211
+#: data/core/macros/abilities.cfg:269
 msgid "leadership"
 msgstr "líder"
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:115 data/core/macros/abilities.cfg:138
-#: data/core/macros/abilities.cfg:173 data/core/macros/abilities.cfg:220
-#: data/core/macros/abilities.cfg:279
+#: data/core/macros/abilities.cfg:110 data/core/macros/abilities.cfg:132
+#: data/core/macros/abilities.cfg:166 data/core/macros/abilities.cfg:212
+#: data/core/macros/abilities.cfg:270
 msgid "female^leadership"
 msgstr "líder"
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:116 data/core/macros/abilities.cfg:139
-#: data/core/macros/abilities.cfg:174 data/core/macros/abilities.cfg:221
-#: data/core/macros/abilities.cfg:280
+#: data/core/macros/abilities.cfg:111 data/core/macros/abilities.cfg:133
+#: data/core/macros/abilities.cfg:167 data/core/macros/abilities.cfg:213
+#: data/core/macros/abilities.cfg:271
+#, fuzzy
+#| msgid ""
+#| "Leadership:\n"
+#| "This unit can lead our own units that are next to it, making them fight "
+#| "better.\n"
+#| "\n"
+#| "Adjacent own units of lower level will do more damage in battle. When a "
+#| "unit adjacent to, of a lower level than, and on the same side as a unit "
+#| "with Leadership engages in combat, its attacks do 25% more damage times "
+#| "the difference in their levels."
 msgid ""
-"Leadership:\n"
 "This unit can lead our own units that are next to it, making them fight "
 "better.\n"
 "\n"
@@ -4235,19 +4270,23 @@ msgstr ""
 "máis de dano por cada nivel máis que teña o líder."
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:347
+#: data/core/macros/abilities.cfg:337
 msgid "skirmisher"
 msgstr "guerrilleiro"
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:348
+#: data/core/macros/abilities.cfg:338
 msgid "female^skirmisher"
 msgstr "guerrilleira"
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:349
+#: data/core/macros/abilities.cfg:339
+#, fuzzy
+#| msgid ""
+#| "Skirmisher:\n"
+#| "This unit is skilled in moving past enemies quickly, and ignores all "
+#| "enemy Zones of Control."
 msgid ""
-"Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
@@ -4256,19 +4295,26 @@ msgstr ""
 "ignorar todas as súas zonas de control."
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:363
+#: data/core/macros/abilities.cfg:352
 msgid "illuminates"
 msgstr "ilumina"
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:364
+#: data/core/macros/abilities.cfg:353
 msgid "female^illuminates"
 msgstr "ilumina"
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:365
+#: data/core/macros/abilities.cfg:354
+#, fuzzy
+#| msgid ""
+#| "Illuminates:\n"
+#| "This unit illuminates the surrounding area, making lawful units fight "
+#| "better, and chaotic units fight worse.\n"
+#| "\n"
+#| "Any units adjacent to this unit will fight as if it were dusk when it is "
+#| "night, and as if it were day when it is dusk."
 msgid ""
-"Illuminates:\n"
 "This unit illuminates the surrounding area, making lawful units fight "
 "better, and chaotic units fight worse.\n"
 "\n"
@@ -4284,19 +4330,23 @@ msgstr ""
 "verdade."
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:378
+#: data/core/macros/abilities.cfg:366
 msgid "teleport"
 msgstr "telepórtase"
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:379
+#: data/core/macros/abilities.cfg:367
 msgid "female^teleport"
 msgstr "telepórtase"
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:380
+#: data/core/macros/abilities.cfg:368
+#, fuzzy
+#| msgid ""
+#| "Teleport:\n"
+#| "This unit may teleport between any two empty villages owned by its side "
+#| "using one of its moves."
 msgid ""
-"Teleport:\n"
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
@@ -4305,19 +4355,26 @@ msgstr ""
 "bando usando un dos seus movementos."
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:417 data/core/macros/abilities.cfg:419
+#: data/core/macros/abilities.cfg:404 data/core/macros/abilities.cfg:406
 msgid "ambush"
 msgstr "embosca"
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:418 data/core/macros/abilities.cfg:420
+#: data/core/macros/abilities.cfg:405 data/core/macros/abilities.cfg:407
 msgid "female^ambush"
 msgstr "embosca"
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:421 data/core/macros/abilities.cfg:425
+#: data/core/macros/abilities.cfg:408 data/core/macros/abilities.cfg:411
+#, fuzzy
+#| msgid ""
+#| "Ambush:\n"
+#| "This unit can hide in forest, and remain undetected by its enemies.\n"
+#| "\n"
+#| "Enemy units cannot see this unit while it is in forest, except if they "
+#| "have units next to it. Any enemy unit that first discovers this unit "
+#| "immediately loses all its remaining movement."
 msgid ""
-"Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
 "\n"
 "Enemy units cannot see this unit while it is in forest, except if they have "
@@ -4332,15 +4389,22 @@ msgstr ""
 "poderá moverse máis nesa quenda."
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:443 data/core/macros/abilities.cfg:444
-#: data/core/macros/abilities.cfg:449
+#: data/core/macros/abilities.cfg:428 data/core/macros/abilities.cfg:429
+#: data/core/macros/abilities.cfg:433
 msgid "nightstalk"
 msgstr "asexante nocturno"
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:445 data/core/macros/abilities.cfg:451
+#: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:435
+#, fuzzy
+#| msgid ""
+#| "Nightstalk:\n"
+#| "The unit becomes invisible during night.\n"
+#| "\n"
+#| "Enemy units cannot see this unit at night, except if they have units next "
+#| "to it. Any enemy unit that first discovers this unit immediately loses "
+#| "all its remaining movement."
 msgid ""
-"Nightstalk:\n"
 "The unit becomes invisible during night.\n"
 "\n"
 "Enemy units cannot see this unit at night, except if they have units next to "
@@ -4355,24 +4419,33 @@ msgstr ""
 "poderá moverse máis nesa quenda."
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:450
+#: data/core/macros/abilities.cfg:434
 msgid "female^nightstalk"
 msgstr "asexante nocturna"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:469 data/core/macros/abilities.cfg:475
+#: data/core/macros/abilities.cfg:452 data/core/macros/abilities.cfg:457
 msgid "concealment"
 msgstr "ocúltase"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:470 data/core/macros/abilities.cfg:476
+#: data/core/macros/abilities.cfg:453 data/core/macros/abilities.cfg:458
 msgid "female^concealment"
 msgstr "ocúltase"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:471 data/core/macros/abilities.cfg:477
+#: data/core/macros/abilities.cfg:454 data/core/macros/abilities.cfg:459
+#, fuzzy
+#| msgid ""
+#| "Concealment:\n"
+#| "This unit can hide in villages (with the exception of water villages), "
+#| "and remain undetected by its enemies, except by those standing next to "
+#| "it.\n"
+#| "\n"
+#| "Enemy units can not see this unit while it is in a village, except if "
+#| "they have units next to it. Any enemy unit that first discovers this unit "
+#| "immediately loses all its remaining movement."
 msgid ""
-"Concealment:\n"
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it.\n"
 "\n"
@@ -4389,19 +4462,26 @@ msgstr ""
 "esta non poderá moverse máis nesa quenda."
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:495 data/core/macros/abilities.cfg:501
+#: data/core/macros/abilities.cfg:476 data/core/macros/abilities.cfg:481
 msgid "submerge"
 msgstr "mergúllase"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:496 data/core/macros/abilities.cfg:502
+#: data/core/macros/abilities.cfg:477 data/core/macros/abilities.cfg:482
 msgid "female^submerge"
 msgstr "mergúllase"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:497 data/core/macros/abilities.cfg:503
+#: data/core/macros/abilities.cfg:478 data/core/macros/abilities.cfg:483
+#, fuzzy
+#| msgid ""
+#| "Submerge:\n"
+#| "This unit can hide in deep water, and remain undetected by its enemies.\n"
+#| "\n"
+#| "Enemy units cannot see this unit while it is in deep water, except if "
+#| "they have units next to it. Any enemy unit that first discovers this unit "
+#| "immediately loses all its remaining movement."
 msgid ""
-"Submerge:\n"
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
 "\n"
 "Enemy units cannot see this unit while it is in deep water, except if they "
@@ -4417,40 +4497,63 @@ msgstr ""
 "a descubra non poderá moverse máis nesa quenda."
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:524
+#: data/core/macros/abilities.cfg:503
 msgid "feeding"
 msgstr "aliméntase"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:525
+#: data/core/macros/abilities.cfg:504
 msgid "female^feeding"
 msgstr "aliméntase"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:526
+#: data/core/macros/abilities.cfg:505
+#, fuzzy
+#| msgid ""
+#| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
+#| "living unit."
 msgid ""
-"Feeding:\n"
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
-"Alimentación:\n"
-"Esta unidade aumenta nun punto a súa vida máxima cada vez que mata a unha "
-"unidade viva."
+" esta unidade aumenta a súa vida máxima nun punto cando mata a unha unidade "
+"viva."
 
 #. [unstore_unit]
-#: data/core/macros/abilities.cfg:553
+#: data/core/macros/abilities.cfg:531
 msgid "+1 max HP"
 msgstr "+1 vida máx."
 
+#. [berserk]: id=berserk
+#: data/core/macros/abilities.cfg:563
+#, fuzzy
+#| msgid ""
+#| "Berserk:\n"
+#| "Whether used offensively or defensively, this attack presses the "
+#| "engagement until one of the combatants is slain, or 30 rounds of attacks "
+#| "have occurred."
+msgid ""
+"Whether used offensively or defensively, this attack presses the engagement "
+"until one of the combatants is slain, or 30 rounds of attacks have occurred."
+msgstr ""
+"Furia:\n"
+"Usado de forma ofensiva ou defensiva, este ataque prolonga o combate ata que "
+"morre un dos combatentes, ou ata que se realicen trinta rondas de ataques."
+
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:596
+#: data/core/macros/abilities.cfg:573
 msgid "backstab"
 msgstr "puñalada polas costas"
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:597
+#: data/core/macros/abilities.cfg:574
+#, fuzzy
+#| msgid ""
+#| "Backstab:\n"
+#| "When used offensively, this attack deals double damage if there is an "
+#| "enemy of the target on the opposite side of the target, and that unit is "
+#| "not incapacitated (turned to stone or otherwise paralyzed)."
 msgid ""
-"Backstab:\n"
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
 "incapacitated (turned to stone or otherwise paralyzed)."
@@ -4462,14 +4565,19 @@ msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:610 data/core/macros/abilities.cfg:622
+#: data/core/macros/abilities.cfg:586 data/core/macros/abilities.cfg:597
 msgid "plague"
 msgstr "peste"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:611
+#: data/core/macros/abilities.cfg:587
+#, fuzzy
+#| msgid ""
+#| "Plague:\n"
+#| "When a unit is killed by a Plague attack, that unit is replaced with a "
+#| "unit identical to and on the same side as the unit with the Plague "
+#| "attack. This doesn’t work on Undead or units in villages."
 msgid ""
-"Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
 "identical to and on the same side as the unit with the Plague attack. This "
 "doesn’t work on Undead or units in villages."
@@ -4480,9 +4588,14 @@ msgstr ""
 "contra os non mortos ou as unidades en vilas."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:623
+#: data/core/macros/abilities.cfg:598
+#, fuzzy
+#| msgid ""
+#| "Plague:\n"
+#| "When a unit is killed by a Plague attack, that unit is replaced with a "
+#| "Walking Corpse on the same side as the unit with the Plague attack. This "
+#| "doesn’t work on Undead or units in villages."
 msgid ""
-"Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
 "doesn’t work on Undead or units in villages."
@@ -4493,14 +4606,20 @@ msgstr ""
 "contra os non mortos ou as unidades en vilas."
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:634
+#: data/core/macros/abilities.cfg:608
 msgid "slows"
 msgstr "ralentiza"
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:635
+#: data/core/macros/abilities.cfg:609
+#, fuzzy
+#| msgid ""
+#| "Slow:\n"
+#| "This attack slows the target until it ends a turn. Slow halves the damage "
+#| "caused by attacks and the movement cost for a slowed unit is doubled. A "
+#| "unit that is slowed will feature a snail icon in its sidebar information "
+#| "when it is selected."
 msgid ""
-"Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
 "that is slowed will feature a snail icon in its sidebar information when it "
@@ -4513,14 +4632,18 @@ msgstr ""
 "na súa barra de información lateral cando se seleccione."
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:645
+#: data/core/macros/abilities.cfg:618
 msgid "petrifies"
 msgstr "petrifica"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:646
+#: data/core/macros/abilities.cfg:619
+#, fuzzy
+#| msgid ""
+#| "Petrify:\n"
+#| "This attack petrifies the target, turning it to stone. Units that have "
+#| "been petrified may not move or attack."
 msgid ""
-"Petrify:\n"
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
 msgstr ""
@@ -4529,29 +4652,54 @@ msgstr ""
 "non poden moverse nin atacar."
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:656
+#: data/core/macros/abilities.cfg:628
 msgid "marksman"
 msgstr "puntería"
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:657
+#: data/core/macros/abilities.cfg:629
+#, fuzzy
+#| msgid ""
+#| "Marksman:\n"
+#| "When used offensively, this attack always has at least a 60% chance to "
+#| "hit."
 msgid ""
-"Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
 "Puntería:\n"
 "Cando se usa de forma ofensiva, este ataque sempre ten como mínimo un 60% de "
 "probabilidades de atinar."
 
+#. [chance_to_hit]: id=magical
+#: data/core/macros/abilities.cfg:642
+#, fuzzy
+#| msgid ""
+#| "Magical:\n"
+#| "This attack always has a 70% chance to hit regardless of the defensive "
+#| "ability of the unit being attacked."
+msgid ""
+"This attack always has a 70% chance to hit regardless of the defensive "
+"ability of the unit being attacked."
+msgstr ""
+"Maxia:\n"
+"Este ataque sempre atina sete de cada dez veces, sen importar as capacidades "
+"defensivas da unidade atacada."
+
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:683
+#: data/core/macros/abilities.cfg:653
 msgid "swarm"
 msgstr "enxame"
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:684
+#: data/core/macros/abilities.cfg:654
+#, fuzzy
+#| msgid ""
+#| "Swarm:\n"
+#| "The number of strikes of this attack decreases when the unit is wounded. "
+#| "The number of strikes is proportional to the percentage of its of maximum "
+#| "HP the unit has. For example a unit with 3/4 of its maximum HP will get "
+#| "3/4 of the number of strikes."
 msgid ""
-"Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
 "unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
@@ -4564,14 +4712,19 @@ msgstr ""
 "cuartos do número de golpes."
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:694
+#: data/core/macros/abilities.cfg:663
 msgid "charge"
 msgstr "carga"
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:695
+#: data/core/macros/abilities.cfg:664
+#, fuzzy
+#| msgid ""
+#| "Charge:\n"
+#| "When used offensively, this attack deals double damage to the target. It "
+#| "also causes this unit to take double damage from the target’s "
+#| "counterattack."
 msgid ""
-"Charge:\n"
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
 msgstr ""
@@ -4581,14 +4734,18 @@ msgstr ""
 "contraataque do obxectivo."
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:708
+#: data/core/macros/abilities.cfg:676
 msgid "drains"
 msgstr "absorbe"
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:709
+#: data/core/macros/abilities.cfg:677
+#, fuzzy
+#| msgid ""
+#| "Drain:\n"
+#| "This unit drains health from living units, healing itself for half the "
+#| "amount of damage it deals (rounded down)."
 msgid ""
-"Drain:\n"
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
 msgstr ""
@@ -4596,15 +4753,41 @@ msgstr ""
 "Esta unidade absorbe a vida de unidades vivas, sandando a metade do dano que "
 "inflixe (redondeado cara abaixo)."
 
+#. [firststrike]: id=firststrike
+#: data/core/macros/abilities.cfg:686
+#, fuzzy
+#| msgid "firststrike"
+msgid "first strike"
+msgstr "primeiro golpe"
+
+#. [firststrike]: id=firststrike
+#: data/core/macros/abilities.cfg:687
+#, fuzzy
+#| msgid ""
+#| "First Strike:\n"
+#| "This unit always strikes first with this attack, even if they are "
+#| "defending."
+msgid ""
+"This unit always strikes first with this attack, even if they are defending."
+msgstr ""
+"Primeiro golpe:\n"
+"Esta unidade sempre golpea primeiro con este ataque, incluso cando está "
+"sendo atacada."
+
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:730
+#: data/core/macros/abilities.cfg:696
 msgid "poison"
 msgstr "velenoso"
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:731
+#: data/core/macros/abilities.cfg:697
+#, fuzzy
+#| msgid ""
+#| "Poison:\n"
+#| "This attack poisons living targets. Poisoned units lose 8 HP every turn "
+#| "until they are cured or are reduced to 1 HP. Poison can not, of itself, "
+#| "kill a unit."
 msgid ""
-"Poison:\n"
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison can not, of itself, kill "
 "a unit."
@@ -6257,182 +6440,201 @@ msgstr "Woses"
 msgid "Help"
 msgstr "Axuda"
 
-#: src/help.cpp:1152
+#: src/help.cpp:1144
 msgid "<header>text='Units having this special attack'</header>"
 msgstr "<header>text='Unidades que teñen ataques con esta propiedade'</header>"
 
-#: src/help.cpp:1228
+#: src/help.cpp:1238
 msgid "<header>text='Units having this ability'</header>"
 msgstr "<header>text='Unidades con esta habilidade'</header>"
 
-#: src/help.cpp:1261
+#: src/help.cpp:1271
 msgid "Leaders:"
 msgstr "Líderes:"
 
-#: src/help.cpp:1270
+#: src/help.cpp:1280
 msgid "Recruits:"
 msgstr "Recrutados:"
 
-#: src/help.cpp:1284
+#: src/help.cpp:1294
 msgid "Era:"
 msgstr "Era:"
 
-#: src/help.cpp:1292
+#: src/help.cpp:1302
 msgid "Factions:"
 msgstr "Faccións:"
 
-#: src/help.cpp:1302
+#: src/help.cpp:1312
 msgid "Factions are only used in multiplayer"
 msgstr "As faccións só se utilizan en partidas de varios xogadores."
 
-#: src/help.cpp:1345
+#: src/help.cpp:1356
 msgid "level"
 msgstr "nivel"
 
-#: src/help.cpp:1377
+#: src/help.cpp:1389
 msgid "Advances from: "
 msgstr "Avance de: "
 
-#: src/help.cpp:1379
+#: src/help.cpp:1391
 msgid "Advances to: "
 msgstr "Avanza a: "
 
-#: src/help.cpp:1406 src/help.cpp:1785 src/help.cpp:1846
+#: src/help.cpp:1414
+msgid "Base unit: "
+msgstr ""
+
+#: src/help.cpp:1424
+#, fuzzy
+#| msgid "Factions:"
+msgid "Variations: "
+msgstr "Faccións:"
+
+#: src/help.cpp:1450 src/help.cpp:1825 src/help.cpp:1898
 msgid "race^Miscellaneous"
 msgstr "Varios"
 
-#: src/help.cpp:1408
+#: src/help.cpp:1452
 msgid "Race: "
 msgstr "Especie: "
 
-#: src/help.cpp:1415
+#: src/help.cpp:1459
 msgid "Abilities: "
 msgstr "Habilidades: "
 
-#: src/help.cpp:1432
+#: src/help.cpp:1476
 msgid "Ability Upgrades: "
 msgstr "Melloras das habilidades: "
 
-#: src/help.cpp:1448
+#: src/help.cpp:1492
 msgid "HP: "
 msgstr "Vida: "
 
-#: src/help.cpp:1449
+#: src/help.cpp:1493
 msgid "Moves: "
 msgstr "Movementos: "
 
-#: src/help.cpp:1451
+#: src/help.cpp:1495
 msgid "Vision: "
 msgstr "Visión: "
 
 # Para detalles sobre a funcionalidade: http://forum.wesnoth.org/viewtopic.php?t=36716&p=528674
-#: src/help.cpp:1453
+#: src/help.cpp:1497
 msgid "Jamming: "
 msgstr "Ofuscación: "
 
-#: src/help.cpp:1454
+#: src/help.cpp:1498
 msgid "Cost: "
 msgstr "Custo: "
 
-#: src/help.cpp:1455
+#: src/help.cpp:1499
 msgid "Alignment: "
 msgstr "Aliñación: "
 
-#: src/help.cpp:1461
+#: src/help.cpp:1505
 msgid "Required XP: "
 msgstr "Experiencia necesaria: "
 
-#: src/help.cpp:1470
+#: src/help.cpp:1514
 msgid "unit help^Attacks"
 msgstr "Ataques"
 
-#: src/help.cpp:1477
+#: src/help.cpp:1521
 msgid "unit help^Name"
 msgstr "Nome"
 
-#: src/help.cpp:1478
+#: src/help.cpp:1522
 msgid "Type"
 msgstr "Tipo"
 
-#: src/help.cpp:1479
+#: src/help.cpp:1523
 msgid "Strikes"
 msgstr "Golpes"
 
-#: src/help.cpp:1480
+#: src/help.cpp:1524
 msgid "Range"
 msgstr "Alcance"
 
-#: src/help.cpp:1481
+#: src/help.cpp:1525
 msgid "Special"
 msgstr "Especial"
 
-#: src/help.cpp:1531
+#: src/help.cpp:1571
 msgid "Resistances"
 msgstr "Resistencias"
 
-#: src/help.cpp:1535
+#: src/help.cpp:1575
 msgid "Attack Type"
 msgstr "Tipo de ataque"
 
-#: src/help.cpp:1536
+#: src/help.cpp:1576
 msgid "Resistance"
 msgstr "Resistencia"
 
-#: src/help.cpp:1575
+#: src/help.cpp:1615
 msgid "Terrain Modifiers"
 msgstr "Modificadores do terreo"
 
-#: src/help.cpp:1579
+#: src/help.cpp:1619
 msgid "Terrain"
 msgstr "Terreo"
 
-#: src/help.cpp:1580
+#: src/help.cpp:1620
 msgid "Defense"
 msgstr "Defensa"
 
-#: src/help.cpp:1581
+#: src/help.cpp:1621
 msgid "Movement Cost"
 msgstr "Custo de movemento"
 
-#: src/help.cpp:1584
+#: src/help.cpp:1624
 msgid "Vision Cost"
 msgstr "Custo de visión"
 
-#: src/help.cpp:1586
+#: src/help.cpp:1626
 msgid "Jamming Cost"
 msgstr "Custo de ofuscamento"
 
-#: src/help.cpp:1852
+#: src/help.cpp:1904
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Unidades desta especie'</header>"
 
-#: src/help.cpp:2765
+#: src/help.cpp:2817
 msgid " < Back"
 msgstr "< Anterior"
 
-#: src/help.cpp:2766
+#: src/help.cpp:2818
 msgid "Forward >"
 msgstr "Seguinte >"
 
-#: src/help.cpp:2874
+#: src/help.cpp:2926
 msgid "Reference to unknown topic: "
 msgstr "Referencia a un tema descoñecido: "
 
-#: src/help.cpp:3130
+#: src/help.cpp:3182
 msgid "corrupted original file"
 msgstr "o ficheiro orixinal non está ben."
 
-#: src/help.cpp:3221
+#: src/help.cpp:3281
 msgid "Close"
 msgstr "Pechar"
 
-#: src/help.cpp:3224
+#: src/help.cpp:3284
 msgid "The Battle for Wesnoth Help"
 msgstr "Axuda do xogo"
 
-#: src/help.cpp:3280
+#: src/help.cpp:3340
 msgid "Parse error when parsing help text: "
 msgstr "Houbo un erro ao analizar o texto da axuda: "
+
+#~ msgid ""
+#~ "Feeding:\n"
+#~ "This unit gains 1 hitpoint added to its maximum whenever it kills a "
+#~ "living unit."
+#~ msgstr ""
+#~ "Alimentación:\n"
+#~ "Esta unidade aumenta nun punto a súa vida máxima cada vez que mata a unha "
+#~ "unidade viva."
 
 #~ msgid ""
 #~ "Some weapons have special features that increase the effectiveness of "
