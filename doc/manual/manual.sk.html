@@ -1,0 +1,1393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Manuál hráča hry Bitka o Wesnoth</title><link rel="stylesheet" type="text/css" href="./styles/manual.css" /><meta name="generator" content="DocBook XSL Stylesheets V1.77.1" /></head><body><div xml:lang="sk" class="book" lang="sk"><div class="titlepage"><div><div><h1 class="title"><a id="idp225616"></a>Manuál hráča hry Bitka o Wesnoth</h1></div></div><hr /></div><div class="toc"><p><strong>Obsah</strong></p><dl><dt><span class="preface"><a href="#_preface">Úvod</a></span></dt><dt><span class="chapter"><a href="#_getting_started">1. Začiatok</a></span></dt><dd><dl><dt><span class="section"><a href="#_the_world">1.1. Svet</a></span></dt><dd><dl><dt><span class="section"><a href="#_the_creatures">1.1.1. Tvory</a></span></dt></dl></dd><dt><span class="section"><a href="#_finding_your_way">1.2. Ako na to</a></span></dt><dt><span class="section"><a href="#_game_modes">1.3. Režimy hry</a></span></dt><dd><dl><dt><span class="section"><a href="#_campaigns">1.3.1. Príbehy</a></span></dt><dt><span class="section"><a href="#scenarios">1.3.2. Scenáre</a></span></dt><dt><span class="section"><a href="#game_screen">1.3.3. Obrazovky hry</a></span></dt><dt><span class="section"><a href="#_recruit_and_recall">1.3.4. Verbovanie a privolávanie</a></span></dt><dt><span class="section"><a href="#_your_army">1.3.5. Tvoja armáda</a></span></dt><dt><span class="section"><a href="#_life_and_death_experience">1.3.6. Život a smrť - skúsenosti</a></span></dt><dt><span class="section"><a href="#_victory_and_defeat">1.3.7. Víťazstvo a porážka</a></span></dt><dt><span class="section"><a href="#_gold">1.3.8. Zlato</a></span></dt><dt><span class="section"><a href="#_save_and_load">1.3.9. Uloženie a načítanie</a></span></dt></dl></dd></dl></dd><dt><span class="chapter"><a href="#_playing">2. Hranie</a></span></dt><dd><dl><dt><span class="section"><a href="#_controls">2.1. Ovládanie</a></span></dt><dt><span class="section"><a href="#_gold_2">2.2. Zlato</a></span></dt><dd><dl><dt><span class="section"><a href="#_recruiting_and_recalling">2.2.1. Verbovanie a privolávanie</a></span></dt><dt><span class="section"><a href="#_upkeep">2.2.2. Žold</a></span></dt><dt><span class="section"><a href="#_income">2.2.3. Príjem</a></span></dt></dl></dd><dt><span class="section"><a href="#_units">2.3. Jednotky</a></span></dt><dd><dl><dt><span class="section"><a href="#_alignment">2.3.1. Príslušnosť</a></span></dt><dt><span class="section"><a href="#traits">2.3.2. Vlastnosti</a></span></dt><dt><span class="section"><a href="#_unit_specialties">2.3.3. Zvláštne schopnosti jednotiek</a></span></dt><dt><span class="section"><a href="#_abilities">2.3.4. Schopnosti</a></span></dt><dt><span class="section"><a href="#_experience">2.3.5. Skúsenosť</a></span></dt><dt><span class="section"><a href="#unit_recall">2.3.6. Privolanie jednotiek</a></span></dt></dl></dd><dt><span class="section"><a href="#_moving">2.4. Pohyb</a></span></dt><dd><dl><dt><span class="section"><a href="#_zone_of_control">2.4.1. Oblasť kontroly</a></span></dt><dt><span class="section"><a href="#orbs">2.4.2. Kruhy</a></span></dt><dt><span class="section"><a href="#_ellipses_team_colors_and_hero_icons">2.4.3. Placky, tímové farby, a znaky hrdinov</a></span></dt></dl></dd><dt><span class="section"><a href="#_fighting">2.5. Boj</a></span></dt><dd><dl><dt><span class="section"><a href="#_attack_types">2.5.1. Druhy útokov</a></span></dt><dt><span class="section"><a href="#_resistance">2.5.2. Odolnosť</a></span></dt></dl></dd><dt><span class="section"><a href="#_healing">2.6. Liečenie</a></span></dt><dd><dl><dt><span class="section"><a href="#_regeneration">2.6.1. Regenerácia</a></span></dt><dt><span class="section"><a href="#_poison">2.6.2. Jed</a></span></dt></dl></dd></dl></dd><dt><span class="chapter"><a href="#_strategy_and_tips">3. Stratégia a tipy</a></span></dt><dd><dl><dt><span class="section"><a href="#basic_strategy">3.1. Základná stratégia</a></span></dt><dd><dl><dt><span class="section"><a href="#_don_8217_t_waste_units">3.1.1. Neplýtvaj jednotkami</a></span></dt><dt><span class="section"><a href="#_out_of_the_enemy_8217_s_reach">3.1.2. Mimo dosahu nepriateľov</a></span></dt><dt><span class="section"><a href="#zoc">3.1.3. Využívaj oblasť pod kontrolou jednotky</a></span></dt><dt><span class="section"><a href="#_maintain_a_defensive_line">3.1.4. Udržuj obrannú líniu</a></span></dt><dt><span class="section"><a href="#_rotate_your_troops">3.1.5. Striedaj svoje jednotky</a></span></dt><dt><span class="section"><a href="#_use_the_terrain">3.1.6. Využívaj terén</a></span></dt><dt><span class="section"><a href="#_attacking_and_choosing_your_targets">3.1.7. Útočenie a výber cieľa</a></span></dt><dt><span class="section"><a href="#_time_of_day">3.1.8. Denná doba</a></span></dt><dt><span class="section"><a href="#_experience_2">3.1.9. Skúsenosť</a></span></dt></dl></dd><dt><span class="section"><a href="#_getting_the_most_fun_out_of_the_game">3.2. Ako z hry vyťažiť najviac zábavy</a></span></dt><dd><dl><dt><span class="section"><a href="#_at_the_start_of_a_scenario">3.2.1. Na začiatku scenára</a></span></dt><dt><span class="section"><a href="#_during_the_scenario">3.2.2. Počas scenára</a></span></dt><dt><span class="section"><a href="#_healing_2">3.2.3. Liečenie</a></span></dt><dt><span class="section"><a href="#_winning_a_scenario">3.2.4. Ako vyhrať mapu</a></span></dt><dt><span class="section"><a href="#_more_general_tips">3.2.5. Všeobecné rady</a></span></dt></dl></dd></dl></dd></dl></div><div class="list-of-tables"><p><strong>Zoznam tabuliek</strong></p><dl><dt>2.1. <a href="#idp5611408">Ovládanie a klávesové skratky</a></dt><dt>2.2. <a href="#idp5653392">Špecifické klávesové skratky jednotiek a počas kola</a></dt><dt>2.3. <a href="#idp5682688">Špecifické klávesové skratky plánovacieho režimu</a></dt><dt>2.4. <a href="#idp5695584">Špecifické klávesové skratky hry pre viac hráčov</a></dt><dt>2.5. <a href="#idp5706080">Ostatné klávesové skratky</a></dt><dt>2.6. <a href="#idp5722480">Ostatné klávesové skratky</a></dt><dt>2.7. <a href="#idp5732368">Pandora používa špecifické ovládacie klávesy a skratky</a></dt><dt>2.8. <a href="#idp5768880">Denná doba a sila útokov</a></dt><dt>2.9. <a href="#idp5896800">Bonusy skúseností za zabitie a boj s jednotkami rôznych úrovní</a></dt><dt>2.10. <a href="#idp5929616">Kruhy</a></dt></dl></div><div class="preface"><div class="titlepage"><div><div><h1 class="title"><a id="_preface"></a>Úvod</h1></div></div></div><p>Bitka o Wesnoth je ťahová strategická hra s témou fantasy.</p><p>Postav veľkú armádu, postupne vycvič zelenáčov na ostrieľaných veteránov. V
+neskorších hrách si privolaj svojich najlepších bojovníkov a zostav nich
+smrtiacu silu, ktorej nikto nedokáže vzdorovať! Vyber si jednotky zo širokej
+palety špecialistov, a skombinuj si zostavu s tými správnymi schopnosťami,
+ktorá bude dobre bojovať na rozmanitom teréne proti rôznym druhom
+nepriateľov.</p><p>Wesnoth má mnoho rozličných príbehov, ktoré čakajú na to, až si ich
+zahráš. Môžeš bojovať proti orkom, nemŕtvym a banditom pochodujúcim proti
+kráľovstvu Wesnoth; bojovať po boku drakov na horských vrcholoch, elfov v
+zeleni lesa Aethenwood, trpaslíkov v rozľahlých halách Knalgy, alebo
+morského ľudu v Perlovej zátoke. Môžeš bojovať o znovuzískanie trónu
+Wesnothu, alebo použiť svoju temnú silu nad nemŕtvymi, aby si ovládol územia
+smrteľníkov, alebo viesť svoj slávny orkský kmeň k víťazstvu nad ľuďmí,
+ktorí sa opovážili poškvrniť tvoju krajinu.</p><p>Budeš si môcť vybrať z vyše dvesto druhov jednotiek (pechota, jazda,
+lukostrelci a mágovia sú iba začiatkom) a bojovať rôzne druhy konfliktov od
+drobných prepadov po zrážky obrovských armád. Môžeš si dokonca vytvoriť aj
+vlastné jednotky a napísať vlastné scenáre - dokonca celé príbehy. Môžeš
+vyzvať svojich priateľov - alebo neznámych - bojovať vo fantastických
+bitkách pre viacerých hráčov.</p><p>Bitka o Wesnoth je open-source softvér a veľká komunita dobrovoľníkov, ktorí
+vylepšujú túto hru. Môžeš si vytvoriť svoje vlastné jednotky, napísať
+vlastné scenáre či bohaté kampane. Používateľský obsah je sústredený na
+add-on serveri, pričom tie najlepšie kúsky sa dodávajú spolu s oficiálnymi
+vydaniami hry Bitka o Wesnoth (ang. originál - Battle for Wesnoth).</p></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_getting_started"></a>Kapitola 1. Začiatok</h1></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_the_world"></a>1.1. Svet</h2></div></div></div><p>Známa časť Veľkého kontinentu, na ktorom leží Wesnoth, sa všeobecne delí na
+tri oblasti: viacmenej neovládané severné územia; kráľovstvo Wesnoth a jeho
+občasná dŕžava Elensefar; a územie juhozápadných elfov v lese Aethenwood a
+za ním.</p><p>Kráľovstvo Wesnoth leží v strede tejto zeme. Jeho hranice sú Veľká rieka na
+severe, Dulatuská pahorkatina na východe a juhu, Zelený močiar na
+juhozápade, a oceán na západe. Elensefar, bývalá provincia Wesnothu, je
+ohraničený Veľkou riekou na severe, na východe má neurčitú hranicu s
+Wesnothom, na juhu siaha po Perlový záliv  a na západe po oceán.</p><p>Severné pláne sú divokou krajinou na sever od veľkej rieky. Rôzne kmene
+orkov, trpaslíkov, barbarov či elfov obsadili toto územie. Na severe a
+východe leží les Lintanir, kde veľké kráľovstvo severných elfov udržuje
+svoje tradície.</p><p>Po celej krajine sú roztrúsené dediny, kde môžeš vyliečiť svoje jednotky a
+zhromaždiť peniaze potrebné na udržiavanie armády. Budeš musieť prekročiť
+mnohé hory a rieky, predierať sa cez lesy, kopce a tundru, a križovať
+otvorené pláne. V každej z týchto oblastí žijú rôzne tvory prispôsobené
+miestnym podmienkam, ktoré sa dokážu rýchlejšie pohybovať a lepšie bojovať v
+známom teréne.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_the_creatures"></a>1.1.1. Tvory</h3></div></div></div><p>Vo svete Wesnothu žijú ľudia, elfovia, trpaslíci, orkovia, jašteri, sauri,
+morskí ľudia, hadi, a mnohé ďalšie tajomné a čudesné rasy. V prekliatych
+krajinách blúdia nemŕtvi, duchovia a prízraky. Každý sa prispôsobil nejakému
+prostrediu. Ľudia zvyčajne obývajú roviny mierneho pásma. V kopcoch, horách
+a podzemných jaskyniach sa usadili orkovia a trpaslíci. V lesoch vládni
+elfovia. Oceány a rieky patria morským ľuďom a hadom.</p><p>Pre účely hry sa rasy delia na frakcie; napríklad orkovia často spolupracujú
+s trollmi, a elfovia a trpaslíci s ľuďmi. Niektoré ďalšie frakcie
+odzrkadľujú konflikty v ľudskej spoločnosti — lojalisti proti
+zločincom, napríklad. Vo väčšine príbehov budeš ovládať jednotky z jednej
+frakcie. Ale niekedy jednotlivé frakcie uzatvárajú spojenectvá, takže v
+príbehu môžeš čeliť viac ako jednej frakcii.</p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_finding_your_way"></a>1.2. Ako na to</h2></div></div></div><p>Po spustení Wesnoth najprv zobrazí úvodné pozadie a stĺpec tlačidiel
+nazvaných Hlavné menu. Tieto tlačidlá možno stlačiť iba pomocou myši. Pre
+netrpezlivých: odporúčame tlačidlo "Jazyk" ("Language") na nastavenie
+jazyka; potom stlač tlačidlo "Výcvik" na výuku pravidiel hry; a potom stlač
+tlačidlo "Výprava" a vyber si z ponúknutého zoznamu príbeh "O dvoch
+bratoch".</p><p><span class="inlinemediaobject"><img src="images/main-menu-1.9.4.jpg" alt="Hlavné menu" /></span></p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Výcvik
+</span></dt><dd>
+ Výcvik je skutočná, pomerne jednoduchá hra, ktorá ťa naučí nejaké základné
+ovládanie potrebné na hru. Nie je tu dôležité vyhrať alebo prehrať, ale
+naučiť sa, čo sa ako robí. Stlač tlačidlo Výcvik a môžeš hrať. Vo výcviku si
+v roli mladého princa Konráda alebo princeznú Li’sar, ktorí sa učia od
+starého mága Delfadora - sleduj, čo hovorí, inak ťa môže premeniť na žabu.
+</dd><dt><span class="term">
+Výprava
+</span></dt><dd>
+ Wesnoth bol v prvom rade vytvorený na hranie príbehov. Príbehy sú série
+spojených scenárov. Ak chceš začať hrať nový príbeh, stlač tlačidlo
+Výprava. Zobrazí sa zoznam príbehov v tvojom počítači (ďalšie si môžeš
+stiahnuť z internetu). Vyber si príbeh a stlač OK, čím ho spustíš, prípadne
+Storno, čím menu vypneš. Každý príbeh má úroveň náročnosti: ľahká, stredná
+(normálna) a ťažká. Odporúčame strednú úroveň, ktorá je síce náročná, ale
+nie celkom ťažká. Uprostred príbehu sa už náročnosť nedá zmeniť. Ak narazíš
+na vážne problémy aj počas hrania na najľahšej náročnosti, mala by ti pomôcť
+kapitola <a class="link" href="#basic_strategy" title="3.1. Základná stratégia">Základy stratégie</a>. Keď si si
+vybral náročnosť, spustí sa prvý scenár príbehu.
+</dd><dt><span class="term">
+Zápas
+</span></dt><dd>
+ Stlač toto tlačidlo, ak chceš hrať jeden scenár proti jednému alebo viacerým
+súperom. Môžeš hrať cez internet alebo len na svojom počítači, proti ľudským
+alebo počítačovým súperom. Keď stlačíš toto tlačidlo, objaví sa dialóg,
+ktorý ti dovolí nastaviť, ako chceš hrať tento scenár. Ak sa chceš naučiť
+viac, pozri si <a class="xref" href="#scenarios" title="1.3.2. Scenáre">Oddiel 1.3.2, “Scenáre”</a>.
+</dd><dt><span class="term">
+Načítaj
+</span></dt><dd>
+ Stlač toto tlačidlo, ak chceš načítať predtým uloženú hru. Zobrazí sa ti
+dialóg so zoznamom uložených hier. Vyber si hru a klikni OK, čím sa hra
+načíta a môžeš pokračovať; alebo Storno, čím sa vrátiš do hlavného menu. Ak
+si chceš pozrieť záznam hry, zaškrtni políčko Záznam. Môžeš si potom pozrieť
+všetky ťahy od začiatku po uloženie hry.
+</dd><dt><span class="term">
+Doplnky
+</span></dt><dd>
+ Stlačením tohoto tlačidla sa dostaneš na server, na ktorom je uložené
+množstvo obsahu vytvoreného bežnými používateľmi. K dispozícii sú mnohé
+príbehy, éry (frakcie na súboj pre viacerých hráčov), a mapy na
+súboj. Tlačidlom "Odstrániť doplnky" ich môžeš opäť vymazať, keď ich viac
+nebudeš chcieť.
+</dd><dt><span class="term">
+Editor máp
+</span></dt><dd>
+ Stlačením tohoto tlačidla sa spustí editor máp, kde si môžete vytvoriť mapy
+pre hru viac hráčov alebo vašu vlastnú kampaň.
+</dd><dt><span class="term">
+Jazyk
+</span></dt><dd>
+ Po stlačení tohoto tlačidla si môžeš vybrať jazyk, a tlačidlom OK potom
+výber potvrdíš, alebo sa tlačidlom Storno vrátiš k pôvodnému jazyku. Keď sa
+Wesnoth spustí prvýkrát, nastaví sa buď angličtina alebo jazyk tvojho
+operačného systému, ak ho program vie zistiť, ale keď už raz zmeníš jazyk,
+bude sa spúšťať v tomto jazyku.
+</dd><dt><span class="term">
+Nastavenia
+</span></dt><dd>
+ Po stlačení tohoto tlašidla možeš zmeniť nastavenia.
+</dd><dt><span class="term">
+Poďakovanie
+</span></dt><dd>
+ Po stlačení tohoto tlačidla sa zobrazí zoznam významných prispievateľov do
+Wesnothu. Viacerých z nich môžeš stretnúť na irc.freenode.org:6667 na kanáli
+#wesnoth.
+</dd><dt><span class="term">
+Koniec
+</span></dt><dd>
+ Stlačením tohoto tlačidla ukončíš Wesnoth.
+</dd><dt><span class="term">
+Pomoc
+</span></dt><dd>
+ Stlačením tohoto tlačidla otvoríš integrovanú hernú encyklopédiu. Tá ti
+poskytne informácie o jednotkách a iných dôležitých veciach v hre. Väčšina z
+týchto vecí sa spomína aj v tejto príručke.
+</dd><dt><span class="term">
+Ďalej
+</span></dt><dd>
+ Stlačením tohoto tlačidla zobrazíš ďalšiu radu z "Knihy o Wesnothe".
+</dd><dt><span class="term">
+Dozadu
+</span></dt><dd>
+ Stlačením tohoto tlačidla zobrazíš ďalšiu radu z "Knihy o Wesnothe".
+</dd></dl></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_game_modes"></a>1.3. Režimy hry</h2></div></div></div><p>Existujú dva základné spôsoby ako hrať hru Bitka o Wesnoth.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+Hraj postupnosť spojených scenárov, označovanú ako príbeh alebo výprava,
+proti počítaču.
+</li><li class="listitem">
+Hraj jeden scenár proti počítaču alebo ľudskému súperovi.
+</li></ul></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_campaigns"></a>1.3.1. Príbehy</h3></div></div></div><p>Príbehy sú série bitiek spojených spoločným príbehom. Bežný príbeh má okolo
+10-20 scenárov. Hlavnou výhodou príbehov je, že ti dovolia budovať svoju
+armádu. Keď dokončíš jeden scenár, zostávajúce jednotky sa na konci uložia,
+a môžeš ich použiť v nasledujúcom scenári. Ak sa rozhodneš danú jednotku v
+nasledujúcom scenári nepoužiť, aj tak sa prenáša do ďalšieho, takže
+nepoužívané jednotky nestrácaš.</p><p>Príbeh je základná forma, na ktorú je Wesnoth zameraný, a je to asi
+najzábavnejší a odporúčaný spôsob oboznámenia sa s hrou pre nových hráčov.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="scenarios"></a>1.3.2. Scenáre</h3></div></div></div><p>Odohranie jedného scenára trvá zhruba 30 minút až 2 hodiny. Toto je
+najrýchlejší spôsob hrania, ale tvoje jednotky sa neukladajú, a nemôžeš
+používať jednotky z príbehov. Scenáre môžeš hrať proti počítaču alebo proti
+iným hráčom cez internet alebo na tvojom počítači. Scenáre sú dostupné
+pomocou tlačidla "Zápas" v hlavnom menu.</p><p>Vo všeobecnosti sa zápasové mapy hrajú proti iným hráčom cez internet (alebo
+ich môžete spustiť na lokálnej sieti, ak máte). Tieto hry sa sú koordinované
+cez zápasový server Wesnothu. Zápasy zvyknú trvať od 1 hodiny do 10 hodín,
+podľa toho, koľko hráčov hrá (a aká veľká je mapa). Priemerný čas je 3 až 7
+hodín. Hru si možno hocikoľkokrát uložiť a načitať. Takže niektoré hry môžu
+trvať aj týždeň alebo dva, hoci samotné hranie trvá iba pár hodín. Pri
+zápase si nemôžeš presúvať jednotky z jedného scenára do ďalšieho, takže
+silu armády si môžeš budovať len v rámci scenára.</p><p>Keď stlačíš tlačidlo "Zápas", zobrazí sa niekoľko možností:</p><p><span class="inlinemediaobject"><img src="images/multiplayer-1.9.4.jpg" alt="Dialógové okno zápasu" /></span></p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_login"></a>Prihlásenie</h4></div></div></div><p>Toto bude tvoje meno na serveri hry pre viac hráčov. Ak máš vlastné konto na
+<a class="ulink" href="http://www.wesnoth.org/forum" target="_top">fóre bitky o Wesnoth </a>,
+môžeš pri pripájaní na oficiálny server použiť rovnaké uživateľské meno a
+heslo. Ak je ku konkrétnemu uživateľskému menu potrebné zadať heslo, na
+obrazovku vybehne patričné okno. Nie je možné použiť už zaregistrované meno
+bez zadania hesla.</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_join_official_server"></a>Pripoj sa na oficiálny server</h4></div></div></div><p>Táto možnosť ťa priamo pripojí na oficiálny server. Dostaneš sa do čakárne,
+kde môžeš ľubovoľne zakladať nové hry, kde je už veľa hier založených, a kde
+už pár hráčov možno čaká, aby sa zapojili do nového zápasu.</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_connect_to_server"></a>Pripoj sa na hostiteľa/server</h4></div></div></div><p>Táto možnosť otvorí dialóg, do ktorého môžeš zadať adresu stroja, na ktorý
+sa chceš pripojiť. Môže to byť iný klient, ktorý práve založiť sieťovú hru
+mimo servera, alebo odlišný server. V tomto dialógu je aj tlačidlo "Zobraz
+zoznam", ktoré zobrazí zoznam oficiálnych serverov, použiteľných ako
+náhrada, ak je hlavný server momentálne nedostupný.</p><p>Pomerne úplný zoznam oficiálnych a užívateľských serverov je na tejto
+webovej stránke: <a class="ulink" href="http://wesnoth.org/wiki/MultiplayerServers" target="_top">Multiplayer servers</a>
+(po anglicky).</p><p>Pomocu tejto voľby sa môžeš dostať aj k serverom, vytvoreným inými
+hráčmi. Ak si teda vytvoril server na svojej lokálnej sieti, stačí vložiť IP
+adresu a číslo portu (štandardne: 15000). Ak sa chceš napríklad napojiť na
+server, ktorý beží na počítači s adresou 192.168.0.10 a cez štandardný port,
+do okna by si vložil toto: 192.168.0.10:15000</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_host_networked_game"></a>Založ sieťovú hru</h4></div></div></div><p>Môžeš byť hostiteľom hier pre viacerých hráčov pomocou svojho klienta,
+nepotrebuješ na to vyhradený server. Ak robíš hostiteľa hry pomocou svojho
+klienta, ostatní hráči sa musia vedieť pripojiť na tvoj port 15000 pomocou
+TCP. Meno servera je najčastejšie <span class="emphasis"><em>wesnothd</em></span>. Ak si za
+firewallom, asi si budeš musieť zmeniť nastavenia firewallu, aby dovolili
+prichádzajúce pripojenia na port 15000, a aby sa táto komunikácia
+presmerovala na počítač, ktorý je hostiteľom hry. Na pripojenie k hrám, kde
+je hostiteľom nejaký verejným server alebo niekto iný, by si nemal
+potrebovať zmenu firewallu.</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_local_game"></a>Lokálna hra</h4></div></div></div><p>Toto vytvorí hru, ktorá beží iba na tvojom počítači. Môžeš to využiť na hru
+na <span class="emphasis"><em>horúcom kresle</em></span>, kde každý hrá na tom istom počítači
+a striedajú sa po ťahoch. Hra na horúcom kresle trvá približne rovnako dlho
+ako rovnaká hra po internete. Alebo si môžeš zahrať scenár proti počítačovým
+súperom. To môže byť dobrý spôsob, ako sa zoznámiť s rozličnými mapami na
+hry pre viacerých hráčov, skôr ako začneš hrať proti skutočným súperom. Môže
+to byť aj jednoduchý spôsob, ako preskúmať schopnosti jednotiek rozličných
+frakcií, tým že si vyberieš tvoju a súperovu frakciu. Alebo môžeš v jednej
+hre urobiť oboje; zahraj sa spolu s priateľom proti počitaču.</p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="game_screen"></a>1.3.3. Obrazovky hry</h3></div></div></div><p><span class="inlinemediaobject"><img src="images/game-screen-1.9.4.jpg" alt="Obrazovka hry" /></span></p><p>Či hráš zápas alebo príbeh, základné rozloženie vecí na obrazovke hry je
+rovnaké. Väčšinu obrazovky zapĺňa výrez mapy ukazujúci všetky akcie, ktoré
+sa odohrávajú v hre. Okolo mapy sú rôzne prvky, ktoré poskytujú užitočné
+informácie o hre a sú podrobne popísané nižšie.</p><p><span class="inlinemediaobject"><img src="images/top_pane-1.9.4.jpg" alt="Horný panel" /></span></p><p>Na hornej časti obrazovky sú zľava doprava tieto položky:</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+Tlačidlo Menu
+</li><li class="listitem">
+Tlačidlo Akcie
+</li><li class="listitem">
+Počítadlo ťahov (terajší ťah / maximálny počet ťahov)
+</li><li class="listitem">
+Tvoje zlato
+</li><li class="listitem">
+Dediny (tvoje / všetky na mape)
+</li><li class="listitem">
+Tvoje jednotky
+</li><li class="listitem">
+Tvoje výdavky
+</li><li class="listitem">
+Tvoje príjmy
+</li><li class="listitem">
+Čas, alebo zostávajúci čas (pri zápase s obmedzeným časom)
+</li><li class="listitem">
+Súradnice označeného políčka (x, y)
+</li><li class="listitem">
+Obrana a pohyb vybranej jednotky na zvolenom poli
+</li><li class="listitem">
+Typ označeného políčka
+</li></ol></div><p><span class="inlinemediaobject"><img src="images/right_pane-1.9.4.jpg" alt="Pravý panel" /></span></p><p>V pravej časti obrazovky zhora nadol sú:</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+Celá mapa, zmenšená
+</li><li class="listitem">
+Ukazovateľ dennej doby
+</li><li class="listitem">
+Profil naposledy označenej jednotky
+</li><li class="listitem">
+Tlačidlo Koniec kola
+</li></ol></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_recruit_and_recall"></a>1.3.4. Verbovanie a privolávanie</h3></div></div></div><p>Keď začneš hrať scénár alebo kampaň, na mape budeš mať len zopár
+jednotiek. Jednou z nich bude tvoj veliteľ (ktorého rozoznáš podľa ikony
+zlatej koruny). Ten je obyčajne umiestnený v hrade, na špeciálnom políčku
+zvanom pevnosť. Kedykoľvek sa veliteľ nachádza v pevnosti (nielen tvojej,
+ale aj ktorejkoľvek súperovej) a máš dostatok zlata, môžeš verbovať jednotky
+do svojej armády. V neskorších scenároch budeš môcť privolávať skúsené
+jednotky, ktoré prežili predchádzajúce scenáre. Takto môžeš začať budovať
+armádu, s ktorou privedieš súperov do kolien.</p><p>Prvé, čo budeš chcieť urobiť, je naverbovať si svoju prvú jednotku. Stlač
+<code class="literal">Ctrl+r</code> (alebo klikni pravým tlačítkom na prázdne políčko
+v hrade a zvoľ možnosť "Verbuj") a budeš môcť naverbovať jednotku zo zoznamu
+jednotiek, ktoré sú ti k dispozícii. Každý regrút je umiestnený do prázdneho
+políčka hradu. Keď je raz hrad zaplnený, nemôžeš verbovať, kým sa jednotky
+nepresunú. Veliteľ tvojho súpera taktiež stojí v pevnosti a začne ihneď
+verbovať, a tak sa dlho nekochaj pohľadom na peknú krajinu, lebo bitka
+nepočká.</p><p>Na konci každého úspešného scénára sú všetky zostávajúce jednotky
+automaticky uložené. Na začiatku ďalšieho ich potom môžeš privolať podobným
+spôsobom, ako keď verbuješ. Privolané jednotky majú často viac skúseností
+ako regrúti a väčšinou sú lepšou voľbou.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_your_army"></a>1.3.5. Tvoja armáda</h3></div></div></div><p>Všetky druhy hier používajú tých istých vojakov, nazývaných jednotky. Každá
+jednotka je určená svojou rasou, úrovňou a kategóriou. Každá má svoje silné
+a slabé stránky, ktoré vyplývajú z jej obrany, terénu, na ktorom stoja a
+úrovne. Všetky podrobnosti nájdete v nápovede.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_life_and_death_experience"></a>1.3.6. Život a smrť - skúsenosti</h3></div></div></div><p>Ako tvoje jednotky bojujú a získávajú skúsenosti, získávajú aj nové
+zručnosti a stávajú sa silnejšími. Stále však môžu zomrieť, a potom budeš
+musieť verbovať a privolávať ďaľších bojovníkov. Vyberaj ale opatrne, lebo
+každá má svoje silné a slabé stránky, ktoré prefíkaný súper rýchlo využije
+vo svoj prospech.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_victory_and_defeat"></a>1.3.7. Víťazstvo a porážka</h3></div></div></div><p>Dávaj dobrý pozor na obsah okna Cieľ scény na začiatku každej
+scény. Obyčajne dosiahneš víťazstvo zabitím všetkých nepriateľských
+veliteľov a prehráš iba pri zabití tvojho veliteľa. Ale scény môžu mať aj
+iné ciele - premiestnenie veliteľa na určené miesto, zachránenie niekoho,
+rozlúštenie hádanky alebo vydržať obliehanie určený počet kôl.</p><p>Keď vyhráš scénu, mapa zošedne a tlačítko <span class="emphasis"><em>Ukončiť ťah</em></span>
+sa zmení na <span class="emphasis"><em>Ukončiť scénu</em></span>. Vtedy môžeš napríklad zmeniť
+nastavenia ukladania hier alebo (ak hráš hru pre viac hráčov) debatovať s
+inými hráčmi, ešte predtým ako postúpiš ďalej.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_gold"></a>1.3.8. Zlato</h3></div></div></div><p>Tvoja armáda nebojuje zadarmo. Verbovanie stojí zlato, a vydržiavanie armády
+takisto. Každú scénu začneš so zlatom, ktoré sa prenieslo z predchádzajúcej
+scény. (aj keď v každej scéne je zaistené, že začneš s aspoň minimálnym
+množstvom zlata, pokiaľ si si v minulej hre dosť nenašetril). Viac zlata
+získaš, ak rýchlo splníš ciele scény a počas hry zajmeš čo najviac dedín. Z
+každej dediny, ktorú si zajal, získaš každé kolo dve zlatky. Keď začínaš
+hru, je obyčajne výhodné rýchlo ovládnuť čo najväčší počet dedín, aby si si
+zaistil dostatočný príjem na vedenie vojny. Stav svojej pokladne a aktuálny
+príjem môžeš sledovať v hornej časti obrazovky, čo je popísané v sekcii
+<a class="link" href="#game_screen" title="1.3.3. Obrazovky hry">o hernej obrazovke</a>.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_save_and_load"></a>1.3.9. Uloženie a načítanie</h3></div></div></div><p>Na začiatku každej scény je tvoja hra zvyčajne uložená. Ak budeš porazený,
+môžeš ju opäť načítať a skúsiť znovu. Keď uspeješ, budeš požiadaný, aby si
+si uložil nasledujúcu scénu, ktorú potom môžeš hrať. Ak musíš prestať hrať
+počas scény, môžeš si uložiť svoje kolo a opäť ju načítať neskôr. Maj len na
+pamäti, že dobrý hráč Bitky o Wesnoth si nikdy nepotrebuje uložiť
+scénu. Väčšina začiatočníkov to ale zvyčajne robí dosť často.</p></div></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_playing"></a>Kapitola 2. Hranie</h1></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_controls"></a>2.1. Ovládanie</h2></div></div></div><p>Toto sú štandardné kontrolné klávesy. Ich nastavenie sa môže rôzniť v
+závislosti na platforme, ktorú používaš. Napríklad namiesto klávesy ctrl
+musíš používať príkazovú klávesu, pokiaľ používaš MacOSX. Väčšinu
+klávesových skratiek si môžeš nastaviť podľa chuti v Nastaveniach.</p><div class="table"><a id="idp5611408"></a><p class="title"><strong>Tabuľka 2.1. Ovládanie a klávesové skratky</strong></p><div class="table-contents"><table summary="Ovládanie a klávesové skratky" cellpadding="4px" style="border-collapse: collapse;border-top: 3px solid #527bbd; border-bottom: 3px solid #527bbd; "><colgroup><col align="left" /><col align="left" /></colgroup><tbody><tr><td style="" align="left">
+    F1
+    </td><td style="" align="left">
+    Návod k Bitke o Wesnoth
+    </td></tr><tr><td style="" align="left">
+    Šípky
+    </td><td style="" align="left">
+    Posúvanie
+    </td></tr><tr><td style="" align="left">
+    Ľavé (hlavné) tlačidlo myši
+    </td><td style="" align="left">
+    Vyberie jednotku, presunie jednotku
+    </td></tr><tr><td style="" align="left">
+    Pravé tlačidlo myši
+    </td><td style="" align="left">
+    Hlavné menu, zruš akciu
+    </td></tr><tr><td style="" align="left">
+    Stredné tlačidlo myši
+    </td><td style="" align="left">
+    Presunie stred obrazovky na vybranú pozíciu
+    </td></tr><tr><td style="" align="left">
+    Esc
+    </td><td style="" align="left">
+    Vypne hru, vypne menu, zruší správu
+    </td></tr><tr><td style="" align="left">
+    </td><td style="" align="left">
+    </td></tr><tr><td style="" align="left">
+    Ctrl+s
+    </td><td style="" align="left">
+    Uloží hru
+    </td></tr><tr><td style="" align="left">
+    Ctrl+o
+    </td><td style="" align="left">
+    Načíta hru
+    </td></tr><tr><td style="" align="left">
+    Ctrl+p
+    </td><td style="" align="left">
+    Otvorí dialóg Nastavenia
+    </td></tr><tr><td style="" align="left">
+    Ctrl+q
+    </td><td style="" align="left">
+    Ukončí hru
+    </td></tr><tr><td style="" align="left">
+    Ctrl+f
+    </td><td style="" align="left">
+    Prepína medzi režimom okna a celej obrazovky
+    </td></tr><tr><td style="" align="left">
+    Ctrl+alt+m
+    </td><td style="" align="left">
+    Prepne vypnutie herných zvukov
+    </td></tr><tr><td style="" align="left">
+    </td><td style="" align="left">
+    </td></tr><tr><td style="" align="left">
+    +
+    </td><td style="" align="left">
+    Priblíži pohľad
+    </td></tr><tr><td style="" align="left">
+    -
+    </td><td style="" align="left">
+    Vzdiali pohľad
+    </td></tr><tr><td style="" align="left">
+    0
+    </td><td style="" align="left">
+    Nastaví štandardný pohľad
+    </td></tr><tr><td style="" align="left">
+    Ctrl+e
+    </td><td style="" align="left">
+    Prepína elipsy
+    </td></tr><tr><td style="" align="left">
+    Ctrl+g
+    </td><td style="" align="left">
+    Prepína mriežku
+    </td></tr><tr><td style="" align="left">
+    </td><td style="" align="left">
+    </td></tr><tr><td style="" align="left">
+    Ctrl+a
+    </td><td style="" align="left">
+    Prepína zrýchlený režim
+    </td></tr><tr><td style="" align="left">
+    Držanie klávesy Shift
+    </td><td style="" align="left">
+    Počas jej držania prepínaš mezdi zrýchleným a normálnym režimom hry (teda
+dočasne!)
+    </td></tr><tr><td style="" align="left">
+    </td><td style="" align="left">
+    </td></tr><tr><td style="" align="left">
+    Ctrl+j
+    </td><td style="" align="left">
+    Ukáže ciele scenára
+    </td></tr><tr><td style="" align="left">
+    s
+    </td><td style="" align="left">
+    Zobrazí štatistiky
+    </td></tr><tr><td style="" align="left">
+    Alt+s
+    </td><td style="" align="left">
+    Zobrazí tabuľku so stavom
+    </td></tr><tr><td style="" align="left">
+    Alt+u
+    </td><td style="" align="left">
+    Zobrazí zoznam jednotiek
+    </td></tr><tr><td style="" align="left">
+    </td><td style="" align="left">
+    </td></tr><tr><td style="" align="left">
+    l
+    </td><td style="" align="left">
+    Vyberie veliteľa
+    </td></tr><tr><td style="" align="left">
+    </td><td style="" align="left">
+    </td></tr><tr><td style="" align="left">
+    Shift+s
+    </td><td style="" align="left">
+    Aktualizuje odkrývanie mapy
+    </td></tr></tbody></table></div></div><br class="table-break" /><div class="table"><a id="idp5653392"></a><p class="title"><strong>Tabuľka 2.2. Špecifické klávesové skratky jednotiek a počas kola</strong></p><div class="table-contents"><table summary="Špecifické klávesové skratky jednotiek a počas kola" cellpadding="4px" style="border-collapse: collapse;border-top: 3px solid #527bbd; border-bottom: 3px solid #527bbd; "><colgroup><col align="left" /><col align="left" /></colgroup><tbody><tr><td style="" align="left">
+    Ctrl+r
+    </td><td style="" align="left">
+    Naverbuje jednotku
+    </td></tr><tr><td style="" align="left">
+    Ctrl+Alt+r
+    </td><td style="" align="left">
+    Naverbuje rovnakú jednotku ako minule
+    </td></tr><tr><td style="" align="left">
+    Alt+r
+    </td><td style="" align="left">
+    Privolá jednotku
+    </td></tr><tr><td style="" align="left">
+    </td><td style="" align="left">
+    </td></tr><tr><td style="" align="left">
+    Ctrl+n
+    </td><td style="" align="left">
+    Premenuje jednotku
+    </td></tr><tr><td style="" align="left">
+    d
+    </td><td style="" align="left">
+    Ukáž popis momentálne zvolenej jednotky
+    </td></tr><tr><td style="" align="left">
+    </td><td style="" align="left">
+    </td></tr><tr><td style="" align="left">
+    t
+    </td><td style="" align="left">
+    Pokračuje v prerušenom pohybe jednotky
+    </td></tr><tr><td style="" align="left">
+    u
+    </td><td style="" align="left">
+    Vráti posledný pohyb  (dajú sa vracať iba tie pohyby, kde nedošlo k žiadnej
+náhode ani prekvapeniu)
+    </td></tr><tr><td style="" align="left">
+    r
+    </td><td style="" align="left">
+    Zopakuje pohyb
+    </td></tr><tr><td style="" align="left">
+    n
+    </td><td style="" align="left">
+    Vyberá jednotky, ktoré sa ešte môžu pohybovať
+    </td></tr><tr><td style="" align="left">
+    Shift+n
+    </td><td style="" align="left">
+    Vyberá jednotky, ktoré sa ešte môžu pohybovať, v opačnom poradí
+    </td></tr><tr><td style="" align="left">
+    </td><td style="" align="left">
+    </td></tr><tr><td style="" align="left">
+    Ctrl+v
+    </td><td style="" align="left">
+    Ukáže nepriateľské pohyby (kam sa súper môže pohnúť v nasledujúcom ťahu)
+    </td></tr><tr><td style="" align="left">
+    Ctrl+b
+    </td><td style="" align="left">
+    Ukáže možné nepriateľské pohyby, keby na mape neboli tvoje jednotky
+    </td></tr><tr><td style="" align="left">
+    1-7
+    </td><td style="" align="left">
+    Ukáže, ako ďaleko sa vybraná jednotka môže dostať za daný počet ťahov
+    </td></tr><tr><td style="" align="left">
+    </td><td style="" align="left">
+    </td></tr><tr><td style="" align="left">
+    Medzera
+    </td><td style="" align="left">
+    Ukončí ťah jednotky a vyberie ďalšiu jednotku, ktorá sa ešte môže pohybovať
+    </td></tr><tr><td style="" align="left">
+    Shift+Mezdera
+    </td><td style="" align="left">
+    Ukončí ťah vybranej jednotky (vynuluje zostávajúce pohyby)
+    </td></tr><tr><td style="" align="left">
+    Ctrl+Medzera
+    </td><td style="" align="left">
+    Ukončí ťah tohoto hráča
+    </td></tr></tbody></table></div></div><br class="table-break" /><div class="table"><a id="idp5682688"></a><p class="title"><strong>Tabuľka 2.3. Špecifické klávesové skratky plánovacieho režimu</strong></p><div class="table-contents"><table summary="Špecifické klávesové skratky plánovacieho režimu" cellpadding="4px" style="border-collapse: collapse;border-top: 3px solid #527bbd; border-bottom: 3px solid #527bbd; "><colgroup><col align="left" /><col align="left" /></colgroup><tbody><tr><td style="" align="left">
+    p
+    </td><td style="" align="left">
+    Prepína plánovací/bežný režim
+    </td></tr><tr><td style="" align="left">
+    y
+    </td><td style="" align="left">
+    Vykonaj plánovanú akciu
+    </td></tr><tr><td style="" align="left">
+    h
+    </td><td style="" align="left">
+    Zruš plánovaciu akciu
+    </td></tr><tr><td style="" align="left">
+    Page Down
+    </td><td style="" align="left">
+    Presuň akciu nižšie v poradí
+    </td></tr><tr><td style="" align="left">
+    Page Up
+    </td><td style="" align="left">
+    Presuň akciu vyššie v poradí
+    </td></tr><tr><td style="" align="left">
+    Ctrl+y
+    </td><td style="" align="left">
+    Vykonaj všetky akcie
+    </td></tr><tr><td style="" align="left">
+    i
+    </td><td style="" align="left">
+    Predpokladaj smrť
+    </td></tr></tbody></table></div></div><br class="table-break" /><div class="table"><a id="idp5695584"></a><p class="title"><strong>Tabuľka 2.4. Špecifické klávesové skratky hry pre viac hráčov</strong></p><div class="table-contents"><table summary="Špecifické klávesové skratky hry pre viac hráčov" cellpadding="4px" style="border-collapse: collapse;border-top: 3px solid #527bbd; border-bottom: 3px solid #527bbd; "><colgroup><col align="left" /><col align="left" /></colgroup><tbody><tr><td style="" align="left">
+    m
+    </td><td style="" align="left">
+    Správa pre iného hráča (pri hre viacerých hráčov)
+    </td></tr><tr><td style="" align="left">
+    Ctrl+m
+    </td><td style="" align="left">
+    Správa pre spojencov (v hre pre viacerých hráčov)
+    </td></tr><tr><td style="" align="left">
+    Alt+m
+    </td><td style="" align="left">
+    Správa pre každého (v hre pre viacerých hráčov)
+    </td></tr><tr><td style="" align="left">
+    Alt+c
+    </td><td style="" align="left">
+    Zobrazí záznam rozhovoru
+    </td></tr><tr><td style="" align="left">
+    Ctrl+x
+    </td><td style="" align="left">
+    Odstráň správy
+    </td></tr></tbody></table></div></div><br class="table-break" /><div class="table"><a id="idp5706080"></a><p class="title"><strong>Tabuľka 2.5. Ostatné klávesové skratky</strong></p><div class="table-contents"><table summary="Ostatné klávesové skratky" cellpadding="4px" style="border-collapse: collapse;border-top: 3px solid #527bbd; border-bottom: 3px solid #527bbd; "><colgroup><col align="left" /><col align="left" /></colgroup><tbody><tr><td style="" align="left">
+    Ctrl+c
+    </td><td style="" align="left">
+    Vymaže popisy polí na obrazovke
+    </td></tr><tr><td style="" align="left">
+    /
+    </td><td style="" align="left">
+    Nájde (jednotku alebo značku podľa mena)
+    </td></tr><tr><td style="" align="left">
+    Alt+l
+    </td><td style="" align="left">
+    Pridá značku k danému políčku na mape
+    </td></tr><tr><td style="" align="left">
+    Ctrl+l
+    </td><td style="" align="left">
+    Nastaví názov tímu
+    </td></tr><tr><td style="" align="left">
+    </td><td style="" align="left">
+    </td></tr><tr><td style="" align="left">
+    :
+    </td><td style="" align="left">
+    <a class="ulink" href="http://www.wesnoth.org/wiki/CommandMode" target="_top">Príkazový režim</a>
+    </td></tr><tr><td style="" align="left">
+    F5
+    </td><td style="" align="left">
+    Obnov Cache
+    </td></tr><tr><td style="" align="left">
+    Shift+c
+    </td><td style="" align="left">
+    Vytvor jednotku (režim ladenia)
+    </td></tr><tr><td style="" align="left">
+    f
+    </td><td style="" align="left">
+    Spusti AI vzorec
+    </td></tr></tbody></table></div></div><br class="table-break" /><p>Niektoré klávesy na MasOSX vyžadujú viac než nahradenie Ctrl klávesou
+Cmd. Tu je ich zoznam:</p><div class="table"><a id="idp5722480"></a><p class="title"><strong>Tabuľka 2.6. Ostatné klávesové skratky</strong></p><div class="table-contents"><table summary="Ostatné klávesové skratky" cellpadding="4px" style="border-collapse: collapse;border-top: 3px solid #527bbd; border-bottom: 3px solid #527bbd; "><colgroup><col align="left" /><col align="left" /></colgroup><tbody><tr><td style="" align="left">
+    Cmd+w
+    </td><td style="" align="left">
+    Ukončí hru
+    </td></tr><tr><td style="" align="left">
+    Cmd+,
+    </td><td style="" align="left">
+    Otvorí dialóg Nastavenia
+    </td></tr><tr><td style="" align="left">
+    Ctrl+F5
+    </td><td style="" align="left">
+    Obnov Cache
+    </td></tr><tr><td style="" align="left">
+    Option+Mezdera
+    </td><td style="" align="left">
+    Ukončí ťah tohoto hráča
+    </td></tr></tbody></table></div></div><br class="table-break" /><p>Niektoré klávesové skratky boli trochu pozmenené, aby sa lepšie využilo
+ovládanie, ktoré poskytuje Pandora. Ak používaš Pandoru, tieto klávesy sa
+líšia od predchádzajúceho zoznamu:</p><div class="table"><a id="idp5732368"></a><p class="title"><strong>Tabuľka 2.7. Pandora používa špecifické ovládacie klávesy a skratky</strong></p><div class="table-contents"><table summary="Pandora používa špecifické ovládacie klávesy a skratky" cellpadding="4px" style="border-collapse: collapse;border-top: 3px solid #527bbd; border-bottom: 3px solid #527bbd; "><colgroup><col align="left" /><col align="left" /></colgroup><tbody><tr><td style="" align="left">
+    D-Pad
+    </td><td style="" align="left">
+    Posúvanie
+    </td></tr><tr><td style="" align="left">
+    Herné tlačidlo A
+    </td><td style="" align="left">
+    Naverbuje jednotku
+    </td></tr><tr><td style="" align="left">
+    Herné tlačidlo B
+    </td><td style="" align="left">
+    Vráti posledný pohyb  (dajú sa vracať iba tie pohyby, kde nedošlo k žiadnej
+náhode ani prekvapeniu)
+    </td></tr><tr><td style="" align="left">
+    Herné tlačidlo X
+    </td><td style="" align="left">
+    Vyberá jednotky, ktoré sa ešte môžu pohybovať
+    </td></tr><tr><td style="" align="left">
+    Herné tlačidlo Y
+    </td><td style="" align="left">
+    Privolá jednotku
+    </td></tr><tr><td style="" align="left">
+    Alt+Herné tlačidlo Y
+    </td><td style="" align="left">
+    Posuň akciu nižšie v poradí
+    </td></tr><tr><td style="" align="left">
+    Alt+Herné tlačidlo X
+    </td><td style="" align="left">
+    Posuň akciu vyššie v poradí
+    </td></tr></tbody></table></div></div><br class="table-break" /></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_gold_2"></a>2.2. Zlato</h2></div></div></div><p>Každá strana začína s určitým množstvom zlata. Každé kolo zvyčajne dostáva 2
+zlatky, a ďalšie 2 zlatky za každú dedinu, ktorá je pod jej kontrolou. Počas
+ťaženia je minimálne množstvo zlata, s ktorým začínaš, stanovené aktuálnou
+scénou. Zvyčajne tiež platí, že čím vyššia obtiažnosť, tým je to
+menej. Navyše častokrát získaš určitú časť zo zlata, ktoré si si našporil v
+predchádzajúcej scéne. Presné percento závisí na scéne a obyčajne je
+zobrazené ako súčasť cieľov scény.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_recruiting_and_recalling"></a>2.2.1. Verbovanie a privolávanie</h3></div></div></div><p><span class="inlinemediaobject"><img src="images/recruit-1.9.4.jpg" alt="Okno verbovania" /></span></p><p>Zlato je potrebné na vybudovanie armády, či už naverbovaním alebo privolaním
+jednotiek z predchádzajúcich scén kampane. Jednotky môžeš verbovať či
+privolávať, ak tvoj veliteľ stojí v hlavnej hradnej veži a daný hrad má
+aspoň jedno ďalšie voľné políčko.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+Ak chceš naverbovať jednotku, klikni pravým tlačítkom na prázdne hradné
+políčko a zvoľ možnosť Verbuj. Cena záleží na konkrétnej jednotke, no
+väčšinou sa pohybuje medzi 10 a 20 zlatkami.
+</li><li class="listitem">
+Ak chceš privolať jednotku z predchádzajúcej scény, klikni pravým tlačítkom
+na prázdne hradné políčko a zvoľ možnosť Privolaj. Privolanie stojí vždy 20
+zlatých za jednotku. Pre viac informácii sa pozri na <a class="link" href="#unit_recall" title="2.3.6. Privolanie jednotiek">privolávanie jednotiek</a>.
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_upkeep"></a>2.2.2. Žold</h3></div></div></div><p>Vydržiavanie jednotky stojí peniaze. Obyčajne je výška žoldu rovná úrovni
+jednotky, výnimku ale tvoria verné jednotky (<a class="link" href="#traits" title="2.3.2. Vlastnosti">viac
+tu</a>). Jednotky, ktoré neboli naverbované - teda napríklad tvoj veliteľ
+či tí, čo sa k nemu dobrovoľne pridali - zvyčajne majú vlastnosť verný. Žold
+musíš platiť, pokiaľ jeho celková výška presahuje počet dedín pod tvojou
+kontrolou  Skutočná suma, ktorý musíš armáde platiť je tak rozdielom medzi
+počtom dedín a celkovou výškou žoldu.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_income"></a>2.2.3. Príjem</h3></div></div></div><p>Potom vzorec na výpočet príjmu za kolo je</p><pre class="literallayout">2 + dediny - maximum(0, žold - dediny)</pre><p>kde žold je sumou úrovní všetkých tvojich jednotiek, ktoré nemajú príznak
+"lojálne".</p><p>Ak je žold vyšší než počet dedín+2 potom tím začne strácať zlato. Ak je
+rovný, zlato sa nemení.</p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_units"></a>2.3. Jednotky</h2></div></div></div><p>V bitke o Wesnoth nájdeš stovky rôznych druhov jednotiek, charakterizovaných
+bohatým súborom štatistík. Každá jednotka môže navyše mať niekoľko
+špecifických <a class="link" href="#traits" title="2.3.2. Vlastnosti">vlastností </a>, ktoré ich mierne
+odlišujú od iných jednotiek toho istého druhu. Aj tvorcovia výprav môžu
+pridať unikátne druhy jednotiek do svojich ťažení, čím rozšíria možnosti,
+ktoré hra hráčom poskytuje.</p><p>Základnými štatistikami jednotiek sú počet životov (HP), počet pohybov,
+zbrane, ktoré používa a poškodenie, ktoré nimi pôsobí. Jednotky majú navyše
+aj ďaľšie charakteristiky, ako príslušnosť či špeciálne vlastnosti, ktoré sú
+podrobnejšie vysvetlené nižšie.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_alignment"></a>2.3.1. Príslušnosť</h3></div></div></div><p>Každá jednotka má určitú príslušnosť: môže to byť poriadok, neutrál, chaos,
+alebo môže byť na rozhraní. Príslušnosť vplýva na to, ako sa jednotky
+správajú počas rôznych častí dňa. Neutrálne jednotky nie sú ovplyvnené
+svetlom či tmou. Jednotky poriadku menej poškodenia pôsobia počas noci a
+viac cez deň. Jednotky chaosu zase pôsobia viac poškodení v noci a menej
+počas dňa. Jednotky na rozhraní pôsobia menej poškodenia ako cez deň, tak v
+noci.</p><p>Dve "denné" a "nočné" fázy sú odlíšené ako Ráno, Popoludnie a Prvá hliadka,
+Druhá hliadka , ako aj umiestnením slnka a mesiaca na obrázku časti dňa.</p><p>Nasledovná tabuľka zobrazuje vplyv rôznych denných dôb na zranenia spôsobené
+jednotkami poriadku, chaosu a na rozhraní:</p><div class="table"><a id="idp5768880"></a><p class="title"><strong>Tabuľka 2.8. Denná doba a sila útokov</strong></p><div class="table-contents"><table summary="Denná doba a sila útokov" cellpadding="4px" style="border-collapse: collapse;border-top: 3px solid #527bbd; border-bottom: 3px solid #527bbd; "><colgroup><col align="left" /><col align="left" /><col align="left" /><col align="left" /><col align="left" /><col align="left" /></colgroup><thead><tr><th style="" align="left">
+    Kolo
+    </th><th style="" align="left">
+    Obrázok
+    </th><th style="" align="left">
+    Denná doba
+    </th><th style="" align="left">
+    Poriadok
+    </th><th style="" align="left">
+    Chaos
+    </th><th style="" align="left">
+    Na rozhraní
+    </th></tr></thead><tbody><tr><td style="" align="left">
+    1
+    </td><td style="" align="left">
+    <span class="inlinemediaobject"><img src="images/schedule-dawn.png" alt="images/schedule-dawn.png" /></span>
+    </td><td style="" align="left">
+    Svitanie
+    </td><td style="" align="left">
+    -
+    </td><td style="" align="left">
+    -
+    </td><td style="" align="left">
+    -
+    </td></tr><tr><td style="" align="left">
+    2
+    </td><td style="" align="left">
+    <span class="inlinemediaobject"><img src="images/schedule-morning.png" alt="images/schedule-morning.png" /></span>
+    </td><td style="" align="left">
+    Deň (dopoludnie)
+    </td><td style="" align="left">
+    +25%
+    </td><td style="" align="left">
+    −25%
+    </td><td style="" align="left">
+    −25%
+    </td></tr><tr><td style="" align="left">
+    3
+    </td><td style="" align="left">
+    <span class="inlinemediaobject"><img src="images/schedule-afternoon.png" alt="images/schedule-afternoon.png" /></span>
+    </td><td style="" align="left">
+    Deň (popoludnie)
+    </td><td style="" align="left">
+    +25%
+    </td><td style="" align="left">
+    −25%
+    </td><td style="" align="left">
+    −25%
+    </td></tr><tr><td style="" align="left">
+    4
+    </td><td style="" align="left">
+    <span class="inlinemediaobject"><img src="images/schedule-dusk.png" alt="images/schedule-dusk.png" /></span>
+    </td><td style="" align="left">
+    Súmrak
+    </td><td style="" align="left">
+    -
+    </td><td style="" align="left">
+    -
+    </td><td style="" align="left">
+    -
+    </td></tr><tr><td style="" align="left">
+    5
+    </td><td style="" align="left">
+    <span class="inlinemediaobject"><img src="images/schedule-firstwatch.png" alt="images/schedule-firstwatch.png" /></span>
+    </td><td style="" align="left">
+    Noc (prvá hliadka)
+    </td><td style="" align="left">
+    −25%
+    </td><td style="" align="left">
+    +25%
+    </td><td style="" align="left">
+    −25%
+    </td></tr><tr><td style="" align="left">
+    6
+    </td><td style="" align="left">
+    <span class="inlinemediaobject"><img src="images/schedule-secondwatch.png" alt="images/schedule-secondwatch.png" /></span>
+    </td><td style="" align="left">
+    Noc (druhá hliadka)
+    </td><td style="" align="left">
+    −25%
+    </td><td style="" align="left">
+    +25%
+    </td><td style="" align="left">
+    −25%
+    </td></tr><tr><td style="" align="left">
+    Špeciálne
+    </td><td style="" align="left">
+    <span class="inlinemediaobject"><img src="images/schedule-underground.png" alt="images/schedule-underground.png" /></span>
+    </td><td style="" align="left">
+    Podzemie
+    </td><td style="" align="left">
+    −25%
+    </td><td style="" align="left">
+    +25%
+    </td><td style="" align="left">
+    −25%
+    </td></tr></tbody></table></div></div><br class="table-break" /><p>Pamätajte, že niektoré scény sa odohrávajú v podzemí, kde je večná noc!</p><p>Napríklad si predstav boj medzi jednotku poriadku a chaosu, pričom obe majú
+základné poškodenie 12. Počas svitania a súmraku pôsobia obe pri úspešnom
+zásahu 12 bodov poškodenia. Počas Rána či Popoludnia pôsobí jednotka
+poriadku (<code class="literal">12 \* 1.25</code>), teda 15 bodov poškodenia, zatiaľčo
+chaotická jednotka (<code class="literal">12 \* 0.75</code>), teda 9 bodov. Počas
+Prvej či Druhej hliadky je to naopak, teda jednotka poriadku pôsobí 9 a
+jednotka chaosu 15 bodov poškodenia.</p><p>Ak by bojovali rovnocenné neutrálne jednotky, vždy by pôsobili 12 bodov
+poškodenia, nech by bola doba dňa akákoľvek.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="traits"></a>2.3.2. Vlastnosti</h3></div></div></div><p>Jednotky majú vlastnosti, ktoré odrážajú ich charakter. Vlastnosti sú
+jednotke pridelené náhodne v momente, keď je vytvorená. Väčšina ich má dve.</p><p>Možné vlastnosti pre väčšinu jednotiek sú nasledovné:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Inteligentný
+</span></dt><dd>
+  Inteligentné jednotky vyžadujú o 20 % menej skúseností na postup (trolovia
+túto vlastnosť nemajú). Inteligentné jednotky sú veľmi užitočné na začiatku
+kampane, keďže rýchlejšie postupujú na vyššie úrovne. V neskorších fázach
+výpravy už také užitočné nie sú, pretože vylepšovanie po dosiahnutí
+najvyššej úrovne (AMLA) nie je tak veľkou zmenou ako keď je jednotka
+povýšená na novú úroveň. Ak máš mnoho jednotiek na <span class="emphasis"><em>najvyššej
+úrovni</em></span>, možno je preto rozumnejšie privolať jednotky s
+užitočnejšími vlastnosťami.
+</dd><dt><span class="term">
+Rýchly
+</span></dt><dd>
+  Rýchle jednotky majú o 1 pohyb navyše, ale tiež o 5 % menej životov ako
+obyčajne. Rýchly je najvýraznejšie sa prejavujúca vlastnosť, hlavne pri
+pomalých jednotkách ako sú trolovia či ťažká pechota). Jednotky s touto
+vlastnosťou majú výrazne zlepšenú pohyblivosť v nepriaznivom teréne, čo môže
+hrať veľkú rolu pri rozmiestňovaní tvojich síl. Rýchle jednotky ale nie sú
+také odolné ako iné bez tejto vlastnosti, a preto nie sú tak vhodné pri
+bránení tvojich pozícii.
+</dd><dt><span class="term">
+Odolný
+</span></dt><dd>
+  Odolné jednotky majú o 4 životy plus 1 život za každú úroveň viac ako
+obyčajne. Môžu byť užitočné počas celej kampane, a je to vlastnosť vhodná
+pre všetky jednotky. Odolný je najvhodnejšia vlastnosť pri jednotkách, ktoré
+majú určitú kombináciu malého počtu životov, dobrej obrany či vysokej
+odolnosti. Odolné jednotky sú zvlášť užitočné pri bránení kľúčových pozícii
+pred nepriateľom.
+</dd><dt><span class="term">
+Silný
+</span></dt><dd>
+  Silné jednotky pôsobia v boji na blízko o 1 poškodenie viac pri každom
+úspešnom údere ako obyčajne, a majú o 1 život navyše. Aj keď je táto
+vlastnosť vhodná pre všetky jednotky bojujúce na blízko, najviac ňou získajú
+bojovníci s veľkým počtom útokov, ako napríklad elfský vojak. Silné jednotky
+môžu byť veľmi užitočné vtedy, keď malý rozdiel v sile útokov môže zmeniť
+zraňujúci zásah na smrteľný úder.
+</dd></dl></div><p>Existujú tiež vlastnosti, ktoré sú prideľované len určitým jednotkám určitej
+rasy. Sú to:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Obratný
+</span></dt><dd>
+  Zručné jednotky pôsobia o 1 poškodenie viac na každý útok pri súboji na
+diaľku. Túto vlastnosť môžu získať len elfovia. Tí sú známi svojou
+nezvyčajnou ladnosťou a veľkou zručnosťou pri používaní luku. Niektorí z
+nich sú ale obdarovaní prirodzeným talentom, ktorým dokážu prekonať svojich
+súkmeňovcov. Títo elfovia tak pôsobia s každým šípom viac škody.
+</dd><dt><span class="term">
+Životaschopný
+</span></dt><dd>
+  Trpaslíci sú známi svojou vitalitou, no niektorí z nich sú ešte tuhší ako
+ostatní a tak dokážu pomaly ošetrovať aj počas pochodu či
+boja. Životaschopné jednotky majú o 1 život plus 1 život za každú úroveň
+viac ako obyčajne a každé kolo sa ošetria o 2 životy, či už stoja alebo nie.
+</dd><dt><span class="term">
+Nebojácny
+</span></dt><dd>
+  Nie je postihnutá negatívnym útočným bonusom počas nevhodnej fázy dňa (ťažká
+pechota, mrchožrút, trolovia, chodiace mŕtvoly).
+</dd></dl></div><p>Sú tiež vlastnosti, ktoré nie sú prideľované náhodne. Tieto môže prideliť
+tvorca scény, prípadne sú určitým jednotkám prideľované automaticky:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Verný
+</span></dt><dd>
+  Verné jednotky nevyžadujú žold. Väčšine jednotiek je potrebné na konci kola
+zaplatiť žold, ktorý je rovný ich úrovni. To sa ale netýka verných
+jednotiek. Počas výprav sa k hráčovi môžu pridať určité jednotky z vlastnej
+vôle. Práve tie majú túto vlastnosť. A teda aj keď pri privolávaní stoja
+rovnako ako iné jednotky, počas scény im netreba nič platiť. Sú preto
+neoceniteľné pri dlhých výpravách, keď je zlata málo. Túto vlastnosť nidky
+nemôže získať žiadna naverbovaná jednotka, je preto nerozumné zbaviť sa
+takýchto bojovníkov tým, že ich pošleš na zbytočnú smrť.
+</dd><dt><span class="term">
+Nemŕtvi
+</span></dt><dd>
+  Nemŕtve jednotky sú odolné voči otrave, ako aj vysatiu a chorobe. Zvyčajne
+je ale vlastnosť <span class="emphasis"><em>nemŕtvy</em></span> tiež ich jedinou. Keďže
+nemŕtvi sú telá mŕtvych, ktoré povstali z hrobu, jed na nich nemá vplyv. To
+ich robí neoceniteľnými, keď bojuješ proti nepriateľom, ktorí používajú
+otrávené zbrane.
+</dd><dt><span class="term">
+Mechanický
+</span></dt><dd>
+  Mechanické jednotky nie sú živé a preto sú odolné proti otrave, ako aj
+vysatiu a chorobe. Vlastnosť <span class="emphasis"><em>mechanický</em></span> je ale tiež
+obyčajne ich jedinou.
+</dd></dl></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_unit_specialties"></a>2.3.3. Zvláštne schopnosti jednotiek</h3></div></div></div><p>Niektoré jednotky majú špeciálne útoky. Tu sú vymenované:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Zákerný
+</span></dt><dd>
+  Tento útok spôsobuje dvojnásobné zranenie, ak je na opačnej strane
+napadnutého súpera iný jeho nepriateľ, a ak tento nie je vyradený z boja
+(napríklad premenený na kameň).
+</dd><dt><span class="term">
+Zúrivý
+</span></dt><dd>
+  Či sa používa pri útoku alebo pri obrane, tento útok si vynucuje
+pokračovanie v boji, až dokým jeden z bojujúcich nepadne, alebo neprejde 30
+kôl útokov.
+</dd><dt><span class="term">
+Výpad
+</span></dt><dd>
+  Tento útok spôsobuje napadnutému dvojnásobné zranenie. Spôsobuje však
+dvojnásobné zranenie aj tento jednotke pri súperovom protiútoku.
+</dd><dt><span class="term">
+Vysatie
+</span></dt><dd>
+  Táto jednotka vysáva život zo žijúcich jednotiek, lieči sa o polovicu
+spôsobeného zranenia (zaokrúhlené nadol).
+</dd><dt><span class="term">
+Prvý úder
+</span></dt><dd>
+  Táto jednotka pri tomto útoku vždy udiera prvá, dokonca aj pri obrane.
+</dd><dt><span class="term">
+Magický
+</span></dt><dd>
+  Tento útok má vždy pravdepodobnosť zásahu 70% bez ohľadu na obranné
+schopnosti napadnutej jednotky.
+</dd><dt><span class="term">
+Presný
+</span></dt><dd>
+  Pri útoku má tento útok pravdepodobnosť zásahu vždy aspoň 60%.
+</dd><dt><span class="term">
+Choroba
+</span></dt><dd>
+  Keď jednotku zabije morový útok, táto jednotka je nahradená jednotkou
+"chodiaca mŕtvola" patriacou rovnakej strane ako jednotka s morovým
+útokom. Toto nefunguje na nemŕtvych alebo na jednotky v dedine.
+</dd><dt><span class="term">
+Jed
+</span></dt><dd>
+  Tento útok otrávi obeť. Otrávená jednotka stráca 8 životov každý ťah, dokiaľ
+nie je vyliečená alebo dokiaľ životy neklesnú na 1. Samotný jed nemôže
+jednotku zabiť.
+</dd><dt><span class="term">
+Spomalenie
+</span></dt><dd>
+  Tento útok spomalí obeť do konca kola. Spomalená jednotka spôsobuje
+polovičné zranenia a pohyb ju stojí dvojnásobok pohybových bodov. Ak je
+označená spomalená jednotka, na bočnom informačnom paneli má zobrazenú malú
+ikonu slimáka.
+</dd><dt><span class="term">
+Zkamenieť
+</span></dt><dd>
+  Tento útok premení obeť na kameň. Skamenené jednotky sa nemôžu pohybovať
+alebo útočiť.
+</dd><dt><span class="term">
+Húf
+</span></dt><dd>
+  Počet útokov tejto jednotky klesá, keď je jednotka zranená. Počet útokov je
+priamo úmerný zostávajúcemu percentu životov jednotky. Napríklad jednotka,
+ktorá má 3/4 z maximálneho počtu životov, bude mať 3/4 počtu útokov.
+</dd></dl></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_abilities"></a>2.3.4. Schopnosti</h3></div></div></div><p>Niektoré jednoty majú schopnosti, ktoré buď priamo ovplyvňujú iné jednotky,
+alebo ovplyvňujú ako jednotka interaguje s inými jednotkami. Tu sú tieto
+schopnosti:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+Prepad
+</span></dt><dd>
+  Táto jednotka sa vie ukryť v lese a zostane pre nepriateľov
+neviditeľná. Nepriateľské jednotky túto jednotku v lese nevidia, iba ak
+stoja na vedľajšom políčku. Nepriateľská jednotka, ktorá prvá objaví túto
+jednotku, stratí všetok zostávajúci pohyb.
+</dd><dt><span class="term">
+Utajenie
+</span></dt><dd>
+  Táto jednotka sa vie ukryť v dedine (okrem vodných dedín) a zostane pre
+nepriateľov neviditeľná. Nepriateľské jednotky túto jednotku v dedine
+nevidia, iba ak stoja na vedľajšom políčku. Nepriateľská jednotka, ktorá
+prvá objaví túto jednotku, stratí všetok zostávajúci pohyb.
+</dd><dt><span class="term">
+Lieči
+</span></dt><dd>
+  Jednotka dokáže vyliečiť spojeneckú jednotku z otravy, ale spojenec
+vyliečený z otravy sa v rovnakom ťahu ešte nebude uzdravovať.
+</dd><dt><span class="term">
+Uzdravuje +4
+</span></dt><dd>
+  Táto jednotka môže na začiatku ťahu liečiť spojenecké jednotky na
+susediacich políčkach. Uzdravovaná jednotka sa môže vyliečiť o nanajvýš 4
+životy za kolo, alebo jej v danom kole nebude otrava uberať životy. Otrávenú
+jednotku nemožno zbaviť otravy uzdravovaním, treba nájsť dedinu alebo
+jednotku, ktorá vie liečiť.
+</dd><dt><span class="term">
+Uzdravuje +8
+</span></dt><dd>
+  Táto jednotka spája rastlinnú kúru s mágiou a lieči jednotky na bojisku
+rýchlejšie ako je normálne možné. Uzdravovaná jednotka sa môže vyliečiť o
+nanajvýš 8 životov za kolo, alebo jej v danom kole nebude otrava uberať
+životy. Otrávenú jednotku nemožno zbaviť otravy uzdravovaním, treba nájsť
+dedinu alebo jednotku, ktorá vie liečiť.
+</dd><dt><span class="term">
+Osvetlenie
+</span></dt><dd>
+  Táto jednotka osvetľuje susediace políčka, takže sa na nich jednotkám
+poriadku bojuje lepšie a jednotkám chaosu horšie. Jednotka na políčku
+susediacom s touto jednotkou bude v noci bojovať, ako keby bolo šero, a v
+šere ako keby bol deň.
+</dd><dt><span class="term">
+Velenie
+</span></dt><dd>
+  Táto jednotka dokáže viesť spojenecké jednotky na vedľajších políčkach,
+ktoré potom lepšie bojujú. Spojenecké jednotky nižšej úrovne na susedných
+políčkach spôsobia pri boji zranenie väčšie o 25% za každú úroveň rozdielu
+oproti veliacej jednotke.
+</dd><dt><span class="term">
+Nočné zakrádanie
+</span></dt><dd>
+  Táto jednotka sa v noci stáva neviditeľnou. Nepriateľské jednotky túto
+jednotku v noci nevidia, iba ak stoja na vedľajšom políčku. Nepriateľská
+jednotka, ktorá prvá objaví túto jednotku, stratí všetok zostávajúci pohyb.
+</dd><dt><span class="term">
+Regeneruje
+</span></dt><dd>
+  Táto jednotka uzdraví sama seba o 8 životov za kolo. Ak bola otrávená,
+namiesto uzdravovania sa vylieči z otravy.
+</dd><dt><span class="term">
+Priebojný
+</span></dt><dd>
+  Táto jednotka sa dokáže vrtko pohybovať okolo nepriateľov, ignorujúc ich
+zónu kontroly.
+</dd><dt><span class="term">
+Neoblomný
+</span></dt><dd>
+  Pri obrane sa odolnosť tejto jednotky zdvojnásobuje, až po maximum
+50%. Zraniteľnosť sa nemení.
+</dd><dt><span class="term">
+Ponorenie
+</span></dt><dd>
+  Táto jednotka sa vie ukryť v hlbokej vode a zostane pre nepriateľov
+neviditeľná. Nepriateľské jednotky túto jednotku v hlbokej vode nevidia, iba
+ak stoja na vedľajšom políčku. Nepriateľská jednotka, ktorá prvá objaví túto
+jednotku, stratí všetok zostávajúci pohyb.
+</dd><dt><span class="term">
+Teleportácia
+</span></dt><dd>
+  Táto jednotka sa na jeden krok dokáže teleportovať medzi ľubovoľnými dvoma
+spojeneckými dedinami.
+</dd></dl></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_experience"></a>2.3.5. Skúsenosť</h3></div></div></div><p>Jednotky získávajú skúsenosti za boj. Keď ich získajú dostatok, postúpia o
+úroveň vyššie a stanú sa silnejšími. Množstvo skúseností, ktoré v boji
+získajú záleží na úrovni nepriateľa a výsledku súboja: Ak jednotka skolí
+súpera, získa 8 skúseností za každú súperovu úroveň (4 ak bol súper úrovne
+0), zatiaľčo pokiaľ súper súboj prežije, získa 1 skúsenosť za každú jeho
+úroveň. Inými slovami:</p><div class="table"><a id="idp5896800"></a><p class="title"><strong>Tabuľka 2.9. Bonusy skúseností za zabitie a boj s jednotkami rôznych úrovní</strong></p><div class="table-contents"><table summary="Bonusy skúseností za zabitie a boj s jednotkami rôznych úrovní" cellpadding="4px" style="border-collapse: collapse;border-top: 3px solid #527bbd; border-bottom: 3px solid #527bbd; "><colgroup><col align="left" /><col align="left" /><col align="left" /></colgroup><thead><tr><th style="" align="left">
+    nepriateľova úroveň
+    </th><th style="" align="left">
+    bonus za zabitie
+    </th><th style="" align="left">
+    bonus za boj
+    </th></tr></thead><tbody><tr><td style="" align="left">
+    0
+    </td><td style="" align="left">
+    4
+    </td><td style="" align="left">
+    0
+    </td></tr><tr><td style="" align="left">
+    1
+    </td><td style="" align="left">
+    8
+    </td><td style="" align="left">
+    1
+    </td></tr><tr><td style="" align="left">
+    2
+    </td><td style="" align="left">
+    16
+    </td><td style="" align="left">
+    2
+    </td></tr><tr><td style="" align="left">
+    3
+    </td><td style="" align="left">
+    24
+    </td><td style="" align="left">
+    3
+    </td></tr><tr><td style="" align="left">
+    4
+    </td><td style="" align="left">
+    32
+    </td><td style="" align="left">
+    4
+    </td></tr><tr><td style="" align="left">
+    5
+    </td><td style="" align="left">
+    40
+    </td><td style="" align="left">
+    5
+    </td></tr><tr><td style="" align="left">
+    6
+    </td><td style="" align="left">
+    48
+    </td><td style="" align="left">
+    6
+    </td></tr></tbody></table></div></div><br class="table-break" /></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="unit_recall"></a>2.3.6. Privolanie jednotiek</h3></div></div></div><p>Keď dokončíš scénu, všetky jednotky, ktoré prežili si môžeš privolať v scéne
+nasledujúcej. S jednotkou, ktorú si naverboval alebo privolal v danom kole
+už nemôžeš hýbať či s ňou útočiť. Privolaná jednotka si zachová svoju
+úroveň, množstvo skúseností, niekedy si ponechá kúzelný predmet, ktorý
+získala a príde s plným počtom životov.</p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_moving"></a>2.4. Pohyb</h2></div></div></div><p>Kliknutím na jednotku môžeš získať prehľad o tom, ktoré políčka môže v danom
+kole dosiahnuť - nedosiahnutelné políčka vtedy zošednú (podobne pokiaľ
+stlačíš klávesy 2-7, môžeš získať prehľad o tom, ktoré políčka môže jednotka
+dosiahnuť za daný počet kôl).Kým si v tomto režime, pri pohybe kurzoru po
+políčkach sa zobrazuje cesta, ktorá je pre jednotku najrýchlejšia, podobne
+ako informácie o hodnote obrany na políčku či počte ťahov, za ktoré tam
+jednotka príde. Ak nechceš s jednotkou pohnúť, tento režim opustíš
+jednoducho kliknutím na inú jednotku (kliknutím na ňu alebo použitím klávesy
+<code class="literal">n</code> či <code class="literal">N</code>) alebo kliknutím pravým
+tlačidlom (tlačidlom command na Mac-u) kdekoľvek na mape. <a class="link" href="#orbs" title="2.4.2. Kruhy">Kruhy</a> nad ukazovateľom životnosti jednotky poskytujú
+rýchly prehľad o tom, ktoré jednotky sa už pohli, či sa ešte môžu v danom
+kole hýbať.</p><p>Ak sa rozhodneš pohnúť zvolenou jednotkou, klikni na políčko, na ktoré chceš
+ísť a tvoja jednotka sa pohne tým smerom. Ak zvolíš cieľ, ktorý je v danom
+kole mimo tvoj dosah, jednotka sa pohne tak ďaleko, ak môže a prejde do
+<span class="emphasis"><em>cestovného režimu</em></span>. V <span class="emphasis"><em>cestovnom
+režime</em></span> bude jednotka postupne napredovať k svojmu cieľu. Tento
+plánovaný pohyb môžeš zrušiť na začiatku tvojho nasledujúceho kola. Môžeš
+tiež zmeniť cieľ jednotky, a to kliknutím na ňu a zvolením nového cieľa,
+alebo <span class="emphasis"><em>cestovný režim</em></span> úplne zrušiť ďalším kliknutím na
+jednotku.</p><p>Keď jednotka vstúpi do neutrálnej či súperovej dediny, zmocní sa jej a tým
+príde v danom kole o všetky zvyšné pohybové body.</p><p>Väčšina jednotiek má Zónu pod kontrolou, ktorá vplýva na to, ktoré políčka
+môže tvoja jednotka dosiahnuť a akou cestou tam príde. Tieto obmedzenia sú
+automaticky premietnuté do cesty, ktorá je pre jednotku zobrazená a do
+políčok, ktoré môže v danom kole dosiahnuť.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_zone_of_control"></a>2.4.1. Oblasť kontroly</h3></div></div></div><p>Zóna pod kontrolou jednotky zahŕňa 6 políčok priľahlých k jednotke, a iné
+jednotky, ktoré do tejto zóny vstúpia sú nútené zastaviť. Jednotky so
+schopnosťou priebojný ignorujú zóny pod kontrolou iných jednotiek a sú
+schopné nimi bez zábran prechádzať. Jednotky úrovne 0 sú považované za
+príliš slabé na to, aby boli schopné túto zónu udržať a tak sa jednotky
+okolo nich môžu voľne pohybovať.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="orbs"></a>2.4.2. Kruhy</h3></div></div></div><p>Na vrchu ukazovateľa energie vedľa každej jednotky je kruh. Tento kruh je:</p><div class="table"><a id="idp5929616"></a><p class="title"><strong>Tabuľka 2.10. Kruhy</strong></p><div class="table-contents"><table summary="Kruhy" cellpadding="4px" style="border-collapse: collapse;border-top: 3px solid #527bbd; border-bottom: 3px solid #527bbd; "><colgroup><col align="left" /><col align="left" /><col align="left" /></colgroup><thead><tr><th style="" align="left">
+    Kruh
+    </th><th style="" align="left">
+    Obrázok
+    </th><th style="" align="left">
+    Popis
+    </th></tr></thead><tbody><tr><td style="" align="left">
+    Zelený
+    </td><td style="" align="left">
+    <span class="inlinemediaobject"><img src="images/orb-green.jpg" alt="Zelený kruh" /></span>
+    </td><td style="" align="left">
+    Ak ovládaš túto jednotku, a ešte si ňou v tomto kole neťahal,
+    </td></tr><tr><td style="" align="left">
+    Žltý
+    </td><td style="" align="left">
+    <span class="inlinemediaobject"><img src="images/orb-yellow.jpg" alt="Žltý kruh" /></span>
+    </td><td style="" align="left">
+    Ak ovládaš túto jednotku, a už si ňou v tomto kole ťahal, ale ešte môžeš
+ďalej ťahať alebo útočiť
+    </td></tr><tr><td style="" align="left">
+    Červený
+    </td><td style="" align="left">
+    <span class="inlinemediaobject"><img src="images/orb-red.jpg" alt="Červený kruh" /></span>
+    </td><td style="" align="left">
+    Ak ovládaš jednotku, ale už spotrebovala svoje pohybové body či zaútočila,
+alebo iný uživateľ ukončil svoj (jej) ťah.
+    </td></tr><tr><td style="" align="left">
+    Modrý
+    </td><td style="" align="left">
+    <span class="inlinemediaobject"><img src="images/orb-blue.jpg" alt="Modrý kruh" /></span>
+    </td><td style="" align="left">
+    Ak jednotka patrí spojencovi, nemôžeš ju ovládať
+    </td></tr><tr><td style="" align="left">
+    -
+    </td><td style="" align="left">
+    <span class="inlinemediaobject"><img src="images/orb-none.jpg" alt="Žiadny kruh" /></span>
+    </td><td style="" align="left">
+    Nepriateľským jednotkám sa kruh nad ich ukazovateľom energie nezobrazuje.
+    </td></tr></tbody></table></div></div><br class="table-break" /></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_ellipses_team_colors_and_hero_icons"></a>2.4.3. Placky, tímové farby, a znaky hrdinov</h3></div></div></div><p>Pod každou jednotkou je zvyčajne farebná placka, čiže podklad. Jej farba
+označuje tím; pri hraní príbehu je farba ľudského hráča (väčšinou)
+červená. Farba tímu sa ukazuje aj na častiach oblečenia jednotky, prípadne
+na jej štíte.</p><p>Placka je zvyčajne celý kruh, teda elipsa kvôli pohľadu zboku. Niekedy
+(zvyčajne pod jednotkou na úrovni 0) uvidíš placku, ktorá vyzerá ako vrtuľa
+vrtuľníka; to znamená, že táto jednotka nemá zónu kontroly.</p><p>Niektoré príbehy používajú placky v tvare hviezdy na označenie veliteľov;
+iné používajú pre hrdinov znak v tvare štítu v pravom hornom rohu
+jednotky. Niektoré iné zase nemajú pre hrdinov žiadne špeciálne
+označenie. Ktoré označenie (a či vôbec nejaké) sa použije, je ponechané na
+vkus tvorcov príbehu.</p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_fighting"></a>2.5. Boj</h2></div></div></div><p>Ak sa presunieš na políčko vedľa nepriateľa, môžeš ho napadnúť. Najskôr
+klikni na svoju jednotku, s ktorou chceš útočiť a potom na nepriateľa,
+ktorého chceš napadnúť - následne sa zjaví okno, ktoré poskytuje rôzne
+možnosti boja. Každá jednotka má jednu či viac zbraní, s ktorými môže
+útočiť. Niektoé z nich, napríklad meče, sú určené na boj zblízka zatiaľčo
+iné, ako napríklad luky, sú na diaľku.</p><p>Ak zaútočíš zbraňou na boj zblízka, tvoj súper sa bude brániť vlastnou
+zbraňou na blízko. Ak zaútočís zbraňou na diaľku, podobne odpovie svojou
+zbraňou na diaľku. Ak nepriateľ nemá zbraň rovnakého druhu ako je tá, s
+ktorou útočíš, nemôže sa brániť a nespôsobí ti v tomto súboji žiadne
+poškodenie.</p><p>Rôzne druhy útokov pôsobia rôzne množstvo škôd, a každá zbraň má určitý
+počet útokov. Napríklad elfský bojovník pôsobí s každým úderom meča 5 bodov
+poškodenia, pričom môže v súboji udrieť až 4-krát  Toto je zapísané ako 5-4,
+čo teda znamená 5 bodov poškodenia za zásah a 4 údery.</p><p>Každá jednotka má určitú pravdepodobnosť, že bude zasiahnutá, ktorá vyplýva
+z terénu na ktorom stojí. Napríklad jednotky umiestnené v hradoch majú
+nižšiu šancu, že budú zasiahnuté, podobne ako elfovia v lesoch. Ak chceš
+vidieť hodnotu obrany jednotky (teda pravdepodobnosť, že nebude zasiahnutá)
+na danom teréne, klikni na danú jednotku a potom prejdi s kurzorom na miesto
+na mape, ktoré ťa zaujíma - hodnota obrany sa vtedy zobrazí ako percentuálna
+hodnota v tabuľke stavu jednotky, ako aj na mape.</p><p>Ďaľšie informácie, napríklad pravdepodobnosť, že bude útočník či obránca v
+súboji zabitý môžeš získať, keď klikneš na tlačítko "Výpočet poškodenia" v
+súbojovom okne.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_attack_types"></a>2.5.1. Druhy útokov</h3></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<span class="strong"><strong>Sečné</strong></span>: Zbrane so sečnou hranou, používané
+na odseknutie častí súperovho tela. Príklady: dýka, šabľa, kord, dračie
+pazúry.
+</li><li class="listitem">
+<span class="strong"><strong>Bodný</strong></span>: Zbrane s ostrým hrotom, ktoré môžu
+byť používané s dlhou rukoväťou v boji na blízko alebo ako šípy, sú určené
+na prebodnutie súperovho tela a poškodenie jeho orgánov. Príklady: Rytierova
+či pechotná píka, šíp.
+</li><li class="listitem">
+<span class="strong"><strong>Tupý</strong></span>: Zbrane ktoré nemajú ani ostrý hrot
+ani sečnú hranu, ale sú dosť ťažké na lámanie súperových kostí. Príklady:
+palcát, palica, trolia päsť.
+</li><li class="listitem">
+<span class="strong"><strong>Chlad</strong></span>: Zbrane založené na mrazivých či
+ľadových strelách. Príklad: vlna chladu temného učňa.
+</li><li class="listitem">
+<span class="strong"><strong>Blade</strong></span>: Zbrane, ktoré súpera upečú ako
+kurča. Príklad: ohnivý dych drakonidov.
+</li><li class="listitem">
+<span class="strong"><strong>Mystický</strong></span>: Útok, ktorý ruší kúzla,
+pohybujúce zombiami, prízrakmi a inými nemŕtvymi príšerami a
+duchmi. Príklad: Kúzelný útok bieleho mága.
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_resistance"></a>2.5.2. Odolnosť</h3></div></div></div><p>Každá jednotka je viac či menej zraniteľná rôznymi typmi útokov. 6 údajov v
+popise jednotky ukazujú jej silné a slabé stránky voči všetkým 6 typom
+útokov. Kladná odolnosť naznačuje, že jednotka utrpí menej poškodenia,
+pokiaľ sa proti nej použije daný typ útoku. Záporná odolnosť naopak hovorí,
+že voči určitému typu útoku je zvlášť zraniteľná.</p><p>Príklad: šupiny drakonidov ich pomerne dobre chránia pred väčšinou útokov,
+až na bodné a mrazivé zbrane. Jednotky ľudskej jazdy sú vo všeobecnosti
+dobre chránené, opäť však nie voči bodným útokom, ktoré sú ich
+slabinou. Nemŕtvi sú veľmi odolní voči sečným a bodným zbraniam, naopak ale
+veľmi zraniteľní tupými a mystickými útokmi.</p><p>Použitie najlepšieho útoku proti nepriateľskej jednotke výrazne zvýši tvoju
+šancu na jej zabitie.</p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_healing"></a>2.6. Liečenie</h2></div></div></div><p>Jednotka môže za kolo získať ošetrením najviac 8 životov. Pokiaľ sa jednotka
+počas svojho kola nehýbe ani nebojuje, <span class="emphasis"><em>odpočíva</em></span> a tým
+sa ošetrí o 2 životy. Životy získané <span class="emphasis"><em>odpočinkom</em></span> sa môžu
+pripočítať k životom získaným ošetrením, jednotka tak môže celkovo za kolo
+získať až 10 životov.</p><p>Sú dva spôsoby ako sa môže jednotka uzdraviť:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+Vyčkávanie v dedine. Jednotka získa 8 životov v každom kole.
+</li><li class="listitem">
+Postavenie sa vedľa jednotky, ktorá má schopnosť
+<span class="emphasis"><em>liečiť</em></span>. Počet životov, ktoré jednotka liečením získa,
+je uvedený v liečiteľovom popise. Môže to byt buď <span class="emphasis"><em>lieči
++4</em></span> alebo <span class="emphasis"><em>lieči +8</em></span>.
+</li></ul></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_regeneration"></a>2.6.1. Regenerácia</h3></div></div></div><p>Trolovia a lesní muži sa dokážu liečiť sami regeneráciou. Pokiaľ sú zranení,
+tak sa každé kolo ošetria o 8 životov. Keďže sa ale všetky jednotky môžu
+ošetriť o najviac 8 životov za kolo, trolovia ani lesní muži nezískajú
+žiadne životy navyše, pokiaľ sa nachádzajú v dedinách alebo stoja vedľa
+liečiteľov.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_poison"></a>2.6.2. Jed</h3></div></div></div><p>Niektoré útoky môžu spôsobiť tvojim jednotkám poškodenie otravou. Keď k tomu
+dojde, otrávená jednotka je každé kolo poškodená o 8 životov až do chvíle,
+kým nie je vyliečená. Jed je možné vyliečiť v dedine, prípadne vedľa
+jednotky so schopnosťou <span class="emphasis"><em>uzdravovania</em></span>. Jednotky so
+schopnosťou <span class="emphasis"><em>liečenia</em></span> môžu len zastaviť v danom kole
+pôsobenie jedu, no nedokážu ho vyliečiť. Keď je otrava odstránená, vyliečená
+jednotka v danom kole už nezíska žiadne životy liečením. Kým nie je otrava
+odstránená, jednotka nemôže lliečením získávať žiadne životy. Odpočívanie je
+možné, aj keď prílš nezníži pôsobenie otravy.</p><p>Niekoľko ďalších informácií o uzdravovaní:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+Môže trvať niekoľko kôl, než sa jednotka celkom uzdraví.
+</li><li class="listitem">
+Uzdravovatelia (elfka šamanka, elfka druidka, elfka víla, biely mág, mág
+svetla, palatín) uzdravujú všetky zranené jednotky okolo nich, takže môžete
+udržiavať jednotky blízko bojovej línie a neprídete o ne.
+</li><li class="listitem">
+Súperove jednotky sa neuzdravujú (pôsobením našich uzdravovateľov).
+</li><li class="listitem">
+Uzdravovateľ nemôže uzdraviť sám seba, ale...
+</li><li class="listitem">
+...môžeš používať dvojicu uzdravovateľov, nech sa uzdravujú navzájom, ak
+treba.
+</li><li class="listitem">
+Viacerí uzdravovatelia môžu uzdravovať jednu jednotku, a pôjde to
+rýchlejšie.
+</li><li class="listitem">
+Trollovia a lesní muži nemôžu regenerovať iné jednotky.
+</li><li class="listitem">
+Trollovia a lesní muži sa dokážu sami vyliečiť z otravy, podobne ako to robí
+dedina.
+</li></ul></div></div></div></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_strategy_and_tips"></a>Kapitola 3. Stratégia a tipy</h1></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="basic_strategy"></a>3.1. Základná stratégia</h2></div></div></div><p>Nasledovné základné bojové princípy ti majú pomôcť začať svoju kariéru
+wesnothského vojnového veterána. Občas uvedené príklady väčšinou súvisia s
+kampaňou "Dedič trónu".</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_don_8217_t_waste_units"></a>3.1.1. Neplýtvaj jednotkami</h3></div></div></div><p>Neposielaj zranené jednotky na istú smrť. Akonáhle jednotka príde o viac ako
+polovicu svojich bodov zdravia (HP), mal by si sa vážne zamyslieť nad tým,
+ako ju stiahnuť do bezpečia a uzdraviť v dedine, alebo u uzdravovateľa (ako
+elfka šamanka alebo biely mág). Uzdravovatelia sú veľmi užitoční!</p><p>Má to praktické dôvody: ťažko zranená jednotka zvyčajne nedokáže zadržať
+alebo zabiť nepriateľa. Počas útoku a protiútoku pravdepodobne padne. Tým,
+že si ju poslal na istú smrť, stratil si jej nazbierané body skúsenosti
+(XP). Možno sa nebude dať naverbovať náhradníka, pretože veliteľ už nie je
+vo svojej pevnosti, alebo dochádzajú zdroje. A aj keď naverbuješ náhradníka,
+zvyčajne je veľmi ďaleko od bojovej línie. Takže neplytvaj svojimi
+jednotkami.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_out_of_the_enemy_8217_s_reach"></a>3.1.2. Mimo dosahu nepriateľov</h3></div></div></div><p>Ako strážiť zranené jednotky? Najlepším spôsobom je dostať ich mimo dosah
+súpera. Ak sa k nim nemá ako dostať, nemá ich ako napadnúť. Nasledujúca
+pasáž o oblasti pod kontrolou jednotky ukazuje, ako je možné obmedziť
+súperove pohyby.</p><p>V menu akcii môžeš zvoliť možnosť "Ukáž súperove ťahy", čím zvýrazníš všetky
+políčka, na ktoré sa môže tvoj súper presunúť. Toto berie v úvahu aj zóny
+pod kontrolou tvojich jednotiek. Tak si napríklad môžeš overiť, či tvoja
+jednotka na pokraji smrti, ktorá ustúpila za bojovú líniu, nebude predsa len
+napadnutá nepriateľom.</p><p>Keď dojde k stretu armád, môžno budeš chcieť zaútočiť ako prvý. Pokús sa
+teda ukončiť svoje kolo mimo dosah súperových jednotiek. Nebude ťa tak môcť
+napadnúť, ale pravdepodobne sa priblíži do dosahu tvojich jednotiek.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="zoc"></a>3.1.3. Využívaj oblasť pod kontrolou jednotky</h3></div></div></div><p>Každá jednotka úrovne 1 alebo vyššej má svoju Zónu pod kontrolou, ktorá
+pokrýva 6 susedných políčok. Toto znamená, že akonáhle sa nepriateľ presunie
+do jedného zo šiestich susedných políčok, je nútený zastaviť a stratí všetky
+zvyšné pohyby (netýka sa to len jednotiek so vzácnou vlastnosťou priebojný).</p><p>Kvôli zóne pod kontrolou jednotky nemôže nepriateľ prekĺznuť medzi dvomi
+jednotkami, ktoré sú umiestnené v severo-južnom alebo šikmom smere a majú
+medzi sebou 1 alebo 2 políčka. Keď z týchto dvojíc vytvoríš dlhý múr alebo
+ich umiestniš v rôznych smeroch, môžeš nepriateľovi zabrániť prístup k
+tvojim zraneným v zadných líniach. Najprv sa tak musí prebiť cez strážiace
+jednotky. Niekedy aj jedna jednotka dokáže pred súperom chrániť malú oblasť,
+zvlášť pokiaľ sa nachádza na hrane súperových pohybov.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_maintain_a_defensive_line"></a>3.1.4. Udržuj obrannú líniu</h3></div></div></div><p>Keď zoradíš svoje jednotky tesne vedľa seba alebo s rozostupom 1 políčka,
+získaš mocnú obrannú líniu. Uvedom si ale, že Wesnoth používa políčka s
+tvarom šesťuholníkov, a preto nie je západo-východná línia priama ale
+cik-cakovitá. Severo-južná línia a diagonály sú "skutočnými" líniami.</p><p>Pokiaľ prichádza nepriateľ z jednej strany, môže v jednom ťahu napadnúť
+ktorúkoľvek tvoju jednotku najviac 2 svojimi. Zvyčajne platí, že nezranená
+jednotka bez výrazných slabín dokáže prežiť útok dvoch bežných
+nepriateľských jednotiek rovnakej alebo nižšej úrovne.</p><p>Tvoja línia sa ale v praxi bohužiaľ často rôznym spôsobom vlní, napríklad
+kvôli terénu. Vo vrcholových bodoch tak vzniká pozícia, na ktorú môžu
+zaútočiť až 3 nepriateľské jednotky. Dochádza k tomu aj vtedy, pokiaľ je
+tvoja línia príliš krátka. Na tieto slabé miesta preto umiestňuj jednotky s
+veľkým počtom životov a s dobrou obranou na danom type terénu, prípadne
+veľkou odolnosťou. Aj tak je ale veľmi pravdepodobné, že padnú a preto sem
+umiestňuj vojakov s málo skúsenosťami.</p><p>Zoradenie tvojich jednotiek zabráni nepriateľovi obkľúčiť niektorú z
+nich. Kvôli oblasti kontroly je jednotka uväznená, ak má pred sebou aj za
+sebou nepriateľskú jednotku.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_rotate_your_troops"></a>3.1.5. Striedaj svoje jednotky</h3></div></div></div><p>Keď je jednotka v prednej línii ťažko zranená, môžeš ju presunúť do bezpečia
+za svoju obrannú líniu. Aby si líniu udržal, budeš ju asi musieť nahradiť
+nejakou rezervou, takže maj za prednou líniou pripravených pár
+náhradníkov. Ak máš uzdravovateľov, zranené jednotky v zadnej línii sa
+pozviechajú rýchlejšie.</p><p>Všimni si, že tvoje jednotky dokážu prechádzať cez políčka obsadené inými
+tvojimi jednotkami.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_use_the_terrain"></a>3.1.6. Využívaj terén</h3></div></div></div><p>Pokús sa umiestniť svoje jednotky tak, aby útočili z políčka, kde majú
+vysokú obranu, proti nepriateľovi na políčku s nízkou obranou. Takto má
+súperov protiútok menšiu šancu spôsobiť zranenie.</p><p>Napríklad môžeš umiestniť svojich elfov tesne na koniec lesa, aby útočiaci
+orkovia museli stáť na rovine, zatiaľ čo elfovia si užívajú vysokú obranu v
+lese.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_attacking_and_choosing_your_targets"></a>3.1.7. Útočenie a výber cieľa</h3></div></div></div><p>Postup a útok sú samozrejme najzaujímavejšími časťami tvojej cesty k
+víťazstvu. Znič alebo oslab nepriateľov, ktorí ti stoja v ceste a posuň
+svoju obrannú líniu vpred. Toto môže byť dosť náročné, keďže nepriateľ útok
+vo svojom kole opätuje.</p><p>Často sa stane, že na jedného nepriateľa zaútočíš viacerými jednotkami aby
+si ho dorazil, no zároveň tým narušíš svoju obrannú líniu. Na tom nezáleží v
+prípade, pokiaľ už nie si v dosahu iných nepriateľských jednotiek. No možno
+si len oslabil veľmi silného nepriateľa, ktorý vo svojom kole opätuje
+úder. V takýchto situáciach môže napríklad jazdec zasadiť smrteľný úder.</p><p>Prvý úder je výhodný, pretože si tak môžeš vybrať jednotky, ktorým chceš
+čeliť. Snaž sa využiť súperove slabiny: napríklad použi svoje jednotky na
+diaľku proti nepriateľom bez týchto zbraní. Využi slabiny jednotiek,
+napríklad zraniteľnosť Jazdcov bodnými zbraňami. Zapamätaj si ale, že vo
+svojom kole údrú oni na teba, daj si preto na svoje slabiny, ktoré môže
+nepriateľ použiť proti tebe.</p><p>Napríklad Jazdci sa dokážu dobre držať voči orským vojakom a trolím
+mláďatám, pretože majú dobré odolnosti proti tupým a sečným zbraniam. Naopak
+ale môžu byť rýchlo zdolaní orskými lukostrelcami či goblinmi kopijníkmi.</p><p>Zvyčajne sa oplatí zlikvidovať (alebo takmer zlikvidovať) jednotku na ktorú
+útočíš. Ak si nie si istý, že sa ti ju podarí z danom kole odstrániť, tak sa
+buď uisti, že dokážeš odolať jej protiútoku alebo rozhodni, že si ochotný o
+tvoju jednotku prísť. Aby si prežil súperov útok, je často rozumné zaútočiť
+na diaľku (pokiaľ je v tejto oblasti súper slabý), aby ti spôsobil čo
+najmenej škody namiesto toho, aby si ho ty svojím útokom zranil čo najviac
+(a zranil tak aj svoju jednotku).</p><p>Zvlášť je dobré používať svoje jednotky na diaľku vtedy, keď súper nemá taký
+útok. Štandardná voľba zbrane počítača sa sústredí na spôsobenie maximálneho
+zranenia, často sa tak stane, že tvoje jednotky sú po boji poškodené viac,
+ako bolo nevyhnutné.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_time_of_day"></a>3.1.8. Denná doba</h3></div></div></div><p>Zapamätaj si, že jednotky poriadku ako ľudia bojujú lepšie počas
+dňa. Jednotky chaosu ako orkovia či nemŕtvi bojujú lepšie cez noc, a
+jednotky na rozhraní počas šera. Optimálne by si sa mal so súperom stretnúť
+vtedy, keď si ty silný a on slabý. Keď je doba dňa v prospech nepriateľa,
+často sa oplatí posilniť svoje línie a zaujať výhodnú obrannú pozíciu. Keď
+sa situácia otočí, vyrazíš vpred.</p><p>Napríklad elfovia sa môžu v noci v lesoch brániť prívalu orkov a vyraziť
+vpred na úsvite. Môžeš si dokonca všimnúť, že počítač aktívne počas dňa
+sťahuje svojich orských bojovníkov.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_experience_2"></a>3.1.9. Skúsenosť</h3></div></div></div><p>Počas ťaženia je nutné, aby si si vybudoval ostrieľanú silu veteránov. V
+neskorších scénach sa totiž predpokladá, že si budeš môcť privolávať
+jednotky 2 a 3 úrovne.</p><p>Tvoje jednotky získávajú väčšinu skúseností (XP) zabitím nepriateľových
+jednotiek (8 XP za úroveň zabitej jednotky). Často sa preto oplatí
+jednotkami vyššej úrovne nepriateľa oslabiť, ale doraziť ho niekým, komu sa
+budú získané skúsenosti hodiť viac. To sa týka hlavne liečiteľov, ktorí sú
+často v boji slabí a často tak potrebujú <span class="emphasis"><em>kradnúť</em></span>
+dorážky, aby mohli postúpiť na vyššiu úroveň.</p><p>Na začiatku (kedy pravdepodobne nemáš žiadne jednotky vyššej úrovne) sa
+pokús dorážať nepriateľské jednotky len malým počtom tvojich vojakov. Tí sa
+tak rýchlo vypracujú na úroveň 2, a potom môžu k postupu pomôcť ostatným.</p><p>Nezabudni, že aj tvoj veliteľ potrebuje skúsenosti. Treba ho držať v
+bezpečí, ale ak ho budeš príliš rozmaznávať, zostane na nízkej úrovni, čo ho
+v ďalších scenároch bude ohrozovať ešte viac.</p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_getting_the_most_fun_out_of_the_game"></a>3.2. Ako z hry vyťažiť najviac zábavy</h2></div></div></div><p>Pamätaj, že cieľom hry je zabaviť sa! Tu je pár odporúčaní od autorského
+tímu, ako si v hre užiť najviac zábavy:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+Pouvažuj nad hraním príbehu na "strednej" náročnosti, najmä ak už máš
+skúsenosti s inými strategickými hrami. Možno ťa to tak bude viac baviť a
+donúti ťa to viac uvažovať.
+</li><li class="listitem">
+Príliš sa netráp, keď stratíš pár jednotiek. Príbehy sú stavané tak, že sa
+ráta so stratami. Umožni získavanie skúseností ďalším jednotkám.
+</li><li class="listitem">
+Nezneužívaj ukladanie hier. Kedysi dávno Wesnoth umožňoval uložiť hru iba na
+konci scenára. Ukladanie uprostred scenára bolo pridané kvôli tomu, aby sa
+hra dala dohrať nasledujúci deň, a ako ochrana pred spadnutím
+programu. Neodporúčame dokola načítavať pozície uprostred scenára preto,
+lebo nepriateľ zabil tvojho bieleho mága. Nauč sa namiesto toho chrániť si
+svojho bieleho mága a vyvažovať riziko! To je súčasť stratégie.
+</li><li class="listitem">
+Ak musíš nahrať uloženú hru, odporúčame ísť znova od začiatku scenára a
+vybrať si inú stratégiu, namiesto toho, aby si postupne naháňal náhodné
+čísla vo svoj prospech.
+</li><li class="listitem">
+No pamätaj, že cieľom je baviť sa! Možno máš iný vkus ako autori hry, takže
+rob to, čo ťa najviac baví! Ak ťa baví načítavať uložené hry zakaždým ako
+urobíš chybu, ak chceš hru zahrať <span class="emphasis"><em>perfektne</em></span> bez straty
+jedinej jednotky, nech sa páči!
+</li></ul></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_at_the_start_of_a_scenario"></a>3.2.1. Na začiatku scenára</h3></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+Vždy si najskôr prečítaj ciele scenára. Niekedy nemusíš zabiť súperových
+veliteľov; namiesto toho niekedy stačí iba prežiť daný počet kôl či zdvihnúť
+určitý predmet.
+</li><li class="listitem">
+Pozri si mapu: terén, postavenie svojho veliteľa a ostatných veliteľov.
+</li><li class="listitem">
+Potom začni verbovať jednotky. Lacné jednotky sú užitočné na stlmenie prvej
+vlny nepriateľského útoku; pokročilé jednotky môžu potom prísť ako
+podpora. Rýchle jednotky môžeš využiť ako prieskumníkov, aby skúmali mapu a
+rýchlo obsadzovali dediny.
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_during_the_scenario"></a>3.2.2. Počas scenára</h3></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+Pokús sa obsadiť a udržať si pod kontrolou čo najviac dedín, aby ti chodilo
+zlato.
+</li><li class="listitem">
+Drž jednotky v skupinkách, aby ich nepriateľ nemohol napadnúť z mnohých
+strán, a aby si naopak ty mohol prečísliť súperove jednotky. Rozmiestni
+svoje jednotky do priamky, aby nepriateľ nemohol na žiadnu z nich zaútočiť z
+viac ako dvoch strán.
+</li><li class="listitem">
+Rozličné jednotky majú rozličné silné a slabé stránky podľa terénu a
+oponenta. Viac sa o tom dozvieš, keď klikneš na jednotky pravým tlačidlom a
+vyberieš "Popis jednotky".
+</li><li class="listitem">
+Jednotky na nižších úrovniach môžeš používať ako "krmivo pre kanóny"; môžeš
+pomocou nich napríklad zablokovať postup nepriateľa k tvojim dôležitým
+jednotkám.
+</li><li class="listitem">
+Nepriateľské jednotky môžeš zraniť pomocou pokročilých jednotiek a potom ich
+doraziť pomocou jednotiek na nižšej úrovni - tie potom dostanú skúsenosti (a
+postupne sa prepracujú na vyššiu úroveň).
+</li><li class="listitem">
+Ak máš bieleho mága (povýšený mág) alebo druida (povýšený šaman), postav ho
+do stredu kruhu jednotiek, aby ich liečil, ako sa pohybujú krížom cez
+mapu. (Dokáže to aj šaman, ale nie veľmi dobre.)
+</li><li class="listitem">
+Predpokladá sa, že budeš občas prichádzať o jednotky, dokonca aj o
+pokročilé.
+</li><li class="listitem"><p class="simpara">
+Denná doba je naozaj dôležitá:
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem">
+jednotky poriadku spôsobujú väčšie zranenie vo dne a menšie v noci;
+</li><li class="listitem">
+jednotky chaosu spôsobujú väčšie zranenie v noci a menšie vo dne;
+</li><li class="listitem">
+vždy si skontroluj dennú dobu na pravej strane obrazovky. Plánuj dopredu -
+rozmýšľaj nielen nad tým, čo sa stane v tomto kole, ale aj čo sa stane v
+nasledujúcom.
+</li></ul></div></li><li class="listitem">
+Niektoré jednotky sú odolné alebo citlivé na rôzne druhy útokov. Jazdci sú
+slabý proti bodným útokom. Ohnivé a nezemské útoky liklidujú nemŕtvych
+strašným spôsobom. Ak chcete vidieť, ako je jednotka odolná proti určitým
+útokom, kliknite pravým tlačidlom myši na jednotku, potom zvoľte "Popis
+Jednotky", a potom zalistujte dole na nadpis "odolnosti". To vám ukáže, ako
+je jednotka odolná na rôzne typy útokov.
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_healing_2"></a>3.2.3. Liečenie</h3></div></div></div><p>Dôležitou súčasťou úspechu v bitke o Wesnoth je udržať vaše jednotky
+zdravé. Keď sa vaše jednotky zrania, môžeš ich uzdraviť presunutím do dedín
+alebo vedľa špeciálnych liečebných jednotiek (napr. Elfský Šaman a Biely
+Mág). Niektoré ďalšie jednotky s ktorými sa stretnete, ako napr. trolovia,
+majú schopnosť liečiť sa už od malička.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_winning_a_scenario"></a>3.2.4. Ako vyhrať mapu</h3></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+Potrebuješ povýšené jednotky, aky rýchlo zabili súperových veliteľov, a aby
+si nestratil veľa jednotiek.
+</li><li class="listitem">
+Čím rýchlejšie vyhráš mapu, tým viac zlata dostaneš. Za skorú výhru dostaneš
+toľko zlata, ako by si dostal zo všetkých dedín na mape počas všetkých
+zostávajúcich ťahov.
+</li><li class="listitem">
+Zabiť všetkých nepriateľských veliteľov zvyčajne znamená okamžité víťazstvo.
+</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_more_general_tips"></a>3.2.5. Všeobecné rady</h3></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+Po vyvražďovacích mapách (kde utrpíš veľké straty) nasledujú zvyčajne mapy
+"na chytenie druhého dychu", kde môžeš pomerne ľahko získať  zlato a
+skúsenosti (povýšené jednotky).
+</li><li class="listitem">
+Povýšené jednotky vyžadujú väčší žold ako jednotky na nižších úrovniach (1
+zlatka za úroveň), výnimkou sú verné jednotky.
+</li></ul></div></div></div></div></div></body></html>
