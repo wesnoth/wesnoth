@@ -37,10 +37,10 @@
 #include <boost/algorithm/string/join.hpp>
 
 static lg::log_domain log_config("config");
-#define ERR_G LOG_STREAM(err, lg::general)
-#define LOG_G LOG_STREAM(info, lg::general)
-#define DBG_G LOG_STREAM(debug, lg::general)
-#define ERR_CF LOG_STREAM(err, log_config)
+#define ERR_G  LOG_STREAM(err,   lg::general)
+#define LOG_G  LOG_STREAM(info,  lg::general)
+#define DBG_G  LOG_STREAM(debug, lg::general)
+#define ERR_CF LOG_STREAM(err,   log_config)
 
 namespace {
 
@@ -270,13 +270,15 @@ const std::string hotkey_item::get_description() const {
 	return hotkey::get_description(get_command());
 }
 
-// There are two kinds of "key" values.  One refers to actual keys, like
-// F1 or SPACE.  The other refers to characters produced, eg 'M' or ':'.
-// For the latter, specifying shift+; doesn't make sense, because ; is
-// already shifted on French keyboards, for example.  You really want to
-// say ':', however that is typed.  However, when you say shift+SPACE,
-// you're really referring to the space bar, as shift+SPACE usually just
-// produces a SPACE character.
+// There are two kinds of "key" values.
+// One refers to actual keys, like F1 or SPACE.
+// The other refers to characters produced, eg 'M' or ':'.
+// For the latter, specifying shift+; doesn't make sense,
+// because ; is already shifted on French keyboards, for example.
+// You really want to say ':', however that is typed.
+// However, when you say shift+SPACE,
+// you're really referring to the space bar,
+// as shift+SPACE usually just produces a SPACE character.
 void hotkey_item::load_from_config(const config& cfg)
 {
 	command_ = cfg["command"].str();
@@ -301,10 +303,10 @@ void hotkey_item::load_from_config(const config& cfg)
 		button_ = cfg["button"].to_int();
 	}
 
-	alt_ = cfg["alt"].to_bool();
-	cmd_ = cfg["cmd"].to_bool();
-	ctrl_ = cfg["ctrl"].to_bool();
 	shift_ = cfg["shift"].to_bool();
+	ctrl_  = cfg["ctrl"].to_bool();
+	cmd_   = cfg["cmd"].to_bool();
+	alt_   = cfg["alt"].to_bool();
 
 	const std::string& key = cfg["key"];
 	if (key.empty()) {
@@ -313,8 +315,8 @@ void hotkey_item::load_from_config(const config& cfg)
 
 	wide_string wkey = utils::string_to_wstring(key);
 
-	// They may really want a specific key on the keyboard: we assume
-	// that any single character keyname is a character.
+	// They may really want a specific key on the keyboard:
+	// we assume that any single character keyname is a character.
 	if (wkey.size() > 1) {
 
 		keycode_ = sdl_keysym_from_name(key);
@@ -332,11 +334,11 @@ void hotkey_item::load_from_config(const config& cfg)
 #endif
 		) {
 		// Space must be treated as a key because shift-space
-		// isn't a different character from space, and control key
-		// makes it go weird.  shift=yes should never be specified
-		// on single characters (eg. key=m, shift=yes would be
-		// key=M), but we don't want to break old preferences
-		// files.
+		// isn't a different character from space,
+		// and control key makes it go weird.
+		// shift=yes should never be specified on single characters
+		// (eg. key=m, shift=yes would be key=M),
+		// but we don't want to break old preferences files.
 		keycode_ = wkey[0];
 	} else {
 		character_ = wkey[0];
@@ -352,10 +354,10 @@ std::string hotkey_item::get_name() const
 {
 	std::stringstream str;
 
-	if (alt_)   { str << "alt+"; }
-	if (ctrl_)  { str << "ctrl+"; }
 	if (shift_) { str << "shift+"; }
-	if (cmd_)   { str << "cmd+"; }
+	if (ctrl_)  { str << "ctrl+";  }
+	if (cmd_)   { str << "cmd+";   }
+	if (alt_)   { str << "alt+";   }
 
 	if (mouse_     >=  0) { str << _("Mouse") << mouse_ << _("Button") << button_; }
 	if (character_ != -1) { str << static_cast<char>(character_); }
@@ -366,34 +368,34 @@ std::string hotkey_item::get_name() const
 		std::string direction;
 		switch (value_) {
 			case SDL_HAT_CENTERED:
-				direction = "Centered";
+				direction = _("Centered");
 				break;
 			case SDL_HAT_UP:
-				direction = "Up";
+				direction = _("Up");
 				break;
 			case SDL_HAT_RIGHT:
-				direction = "Right";
+				direction = _("Right");
 				break;
 			case SDL_HAT_DOWN:
-				direction = "Down";
+				direction = _("Down");
 				break;
 			case SDL_HAT_LEFT:
-				direction = "Left";
+				direction = _("Left");
 				break;
 			case SDL_HAT_RIGHTUP:
-				direction = "RightUp";
+				direction = _("RightUp");
 				break;
 			case SDL_HAT_RIGHTDOWN:
-				direction = "RightDown";
+				direction = _("RightDown");
 				break;
 			case SDL_HAT_LEFTUP:
-				direction = "LeftUp";
+				direction = _("LeftUp");
 				break;
 			case SDL_HAT_LEFTDOWN:
-				direction = "LeftDown";
+				direction = _("LeftDown");
 				break;
 			default:
-				direction = "Unknown";
+				direction = _("Unknown");
 				break;
 		}
 		str << _("Joystick") << joystick_ << _("Hat") << button_ << direction;
@@ -410,23 +412,24 @@ void hotkey_item::clear()
 
 void hotkey_item::save(config& item)
 {
-	if (get_button() >= 0)    item["button"]   = get_button();
-	if (get_joystick() >= 0)  item["joystick"] = get_joystick();
-	if (get_hat() >= 0)       item["hat"]      = get_hat();
-	if (get_value() >=0 )     item["value"]    = get_value();
-	if (get_keycode() >= 0)   item["key"]      = SDL_GetKeyName(SDLKey(get_keycode()));
+	if (get_button()    >= 0) item["button"]   = get_button();
+	if (get_joystick()  >= 0) item["joystick"] = get_joystick();
+	if (get_hat()       >= 0) item["hat"]      = get_hat();
+	if (get_value()     >= 0) item["value"]    = get_value();
+	if (get_keycode()   >= 0) item["key"]      = SDL_GetKeyName(SDLKey(get_keycode()));
 	if (get_character() >= 0) item["key"]      = utils::wchar_to_string(get_character());
-	if (get_mouse() >= 0)     item["mouse"]    = get_mouse();
-	if (get_button() >= 0)    item["button"]   = get_button();
+	if (get_mouse()     >= 0) item["mouse"]    = get_mouse();
+	if (get_button()    >= 0) item["button"]   = get_button();
 
 	item["command"] = get_command();
 	if (get_shift()) item["shift"] = get_shift();
-	if (get_alt())   item["alt"]   = get_alt();
-	if (get_ctrl())  item["ctrl"]  = get_ctrl();
-	if (get_cmd())   item["cmd"]   = get_cmd();
+	if (get_ctrl() ) item["ctrl"]  = get_ctrl();
+	if (get_cmd()  ) item["cmd"]   = get_cmd();
+	if (get_alt()  ) item["alt"]   = get_alt();
 }
 
-void hotkey_item::set_jbutton(int joystick, int button, bool shift, bool ctrl, bool cmd, bool alt)
+void hotkey_item::set_jbutton(int joystick, int button,
+		bool shift, bool ctrl, bool cmd, bool alt)
 {
 	joystick_ = joystick;
 	button_   = button;
@@ -436,7 +439,8 @@ void hotkey_item::set_jbutton(int joystick, int button, bool shift, bool ctrl, b
 	alt_      = alt;
 }
 
-void hotkey_item::set_jhat(int joystick, int hat, int value, bool shift, bool ctrl, bool cmd, bool alt)
+void hotkey_item::set_jhat(int joystick, int hat, int value,
+		bool shift, bool ctrl, bool cmd, bool alt)
 {
 	joystick_ = joystick;
 	hat_      = hat;
@@ -447,7 +451,8 @@ void hotkey_item::set_jhat(int joystick, int hat, int value, bool shift, bool ct
 	alt_      = alt;
 }
 
-void hotkey_item::set_mbutton(int mouse, int button, bool shift, bool ctrl, bool cmd, bool alt)
+void hotkey_item::set_mbutton(int mouse, int button,
+		bool shift, bool ctrl, bool cmd, bool alt)
 {
 	mouse_  = mouse;
 	button_ = button;
@@ -457,14 +462,15 @@ void hotkey_item::set_mbutton(int mouse, int button, bool shift, bool ctrl, bool
 	alt_    = alt;
 }
 
-void hotkey_item::set_key(int character, int keycode, bool shift, bool ctrl, bool cmd, bool alt)
+void hotkey_item::set_key(int character, int keycode,
+		bool shift, bool ctrl, bool cmd, bool alt)
 {
 	LOG_G << "setting hotkey: char=" << lexical_cast<std::string>(character)
 		   << " keycode="  << lexical_cast<std::string>(keycode) << " "
 		   << (shift ? "shift," : "")
-		   << (ctrl ? "ctrl," : "")
-		   << (alt ? "alt," : "")
-		   << (cmd ? "cmd," : "")
+		   << (ctrl  ? "ctrl,"  : "")
+		   << (cmd   ? "cmd,"   : "")
+		   << (alt   ? "alt,"   : "")
 		   << "\n";
 
 	// Sometimes control modifies by -64, ie ^A == 1.
@@ -484,15 +490,15 @@ void hotkey_item::set_key(int character, int keycode, bool shift, bool ctrl, boo
 	if (isprint(character) && !isspace(character)) {
 		character_ = character;
 		ctrl_      = ctrl;
-		alt_       = alt;
 		cmd_       = cmd;
+		alt_       = alt;
 		LOG_G << "type = BY_CHARACTER\n";
 	} else {
 		keycode_ = keycode;
 		shift_   = shift;
 		ctrl_    = ctrl;
-		alt_     = alt;
 		cmd_     = cmd;
+		alt_     = alt;
 		LOG_G << "type = BY_KEYCODE\n";
 	}
 }
@@ -569,7 +575,7 @@ void save_hotkeys(config& cfg)
 	for(std::vector<hotkey_item>::iterator i = hotkeys_.begin();
 			i != hotkeys_.end(); ++i)
 	{
-		if (i->get_command() != "null") {
+		if (i->null()) {
 			continue;
 		}
 
@@ -613,7 +619,7 @@ HOTKEY_COMMAND get_hotkey_command(const std::string& command)
 }
 
 hotkey_item& get_hotkey(int mouse, int joystick, int button, int hat, int value,
-		bool shift, bool ctrl, bool alt, bool cmd)
+		bool shift, bool ctrl, bool cmd, bool alt)
 {
 	std::vector<hotkey_item>::iterator itor;
 
@@ -624,7 +630,7 @@ hotkey_item& get_hotkey(int mouse, int joystick, int button, int hat, int value,
 		}
 
 		if ( itor->get_shift() != shift || itor->get_ctrl() != ctrl
-				|| itor->get_alt() != alt || itor->get_cmd() != cmd ) {
+				|| itor->get_cmd() != cmd || itor->get_alt() != alt ) {
 			continue;
 		}
 
@@ -639,16 +645,16 @@ hotkey_item& get_hotkey(int mouse, int joystick, int button, int hat, int value,
 }
 
 hotkey_item& get_hotkey(int character, int keycode,
-		bool shift, bool ctrl,	bool alt, bool cmd)
+		bool shift, bool ctrl,	bool cmd, bool alt)
 {
 	std::vector<hotkey_item>::iterator itor;
 
 	DBG_G << "getting hotkey: char=" << lexical_cast<std::string>(character)
 		<< " keycode="  << lexical_cast<std::string>(keycode) << " "
 		<< (shift ? "shift," : "")
-		<< (ctrl ? "ctrl," : "")
-		<< (cmd ? "cmd," : "")
-		<< (alt ? "alt," : "")
+		<< (ctrl  ? "ctrl,"  : "")
+		<< (cmd   ? "cmd,"   : "")
+		<< (alt   ? "alt,"   : "")
 		<< "\n";
 
 	// Sometimes control modifies by -64, ie ^A == 1.
@@ -672,8 +678,8 @@ hotkey_item& get_hotkey(int character, int keycode,
 		if (character != -1) {
 			if (character == itor->get_character()) {
 				if (ctrl == itor->get_ctrl()
-						&& alt == itor->get_alt()
-						&& cmd == itor->get_cmd()) {
+						&& cmd == itor->get_cmd()
+						&& alt == itor->get_alt()) {
 					if (itor->is_in_active_scope()) {
 						DBG_G << "Could match by character..." << "yes\n";
 						found = true;
@@ -688,8 +694,8 @@ hotkey_item& get_hotkey(int character, int keycode,
 			if (keycode == itor->get_keycode()) {
 				if (shift == itor->get_shift()
 						&& ctrl == itor->get_ctrl()
-						&& alt == itor->get_alt()
-						&& cmd == itor->get_cmd()) {
+						&& cmd  == itor->get_cmd()
+						&& alt  == itor->get_alt()) {
 					if (itor->is_in_active_scope()) {
 						DBG_G << "Could match by keycode..." << "yes\n";
 						found = true;
@@ -775,26 +781,27 @@ void basic_handler::handle_event(const SDL_Event& event)
 
 	switch (event.type) {
 	case SDL_KEYDOWN:
-		//if we're in a dialog we only want to handle things that are explicitly handled
-		//by the executor. If we're not in a dialog we can call the regular key event handler
+		// If we're in a dialog we only want to handle items that are explicitly
+		// handled by the executor.
+		// If we're not in a dialog we can call the regular key event handler.
 		if (!gui::in_dialog()) {
-			key_event(*disp_,event.key,exec_);
+			key_event(*disp_, event.key,exec_);
 		} else if (exec_ != NULL) {
-			key_event_execute(*disp_,event.key,exec_);
+			key_event_execute(*disp_, event.key,exec_);
 		}
 		break;
 	case SDL_JOYBUTTONDOWN:
 		if (!gui::in_dialog()) {
-			jbutton_event(*disp_,event.jbutton,exec_);
+			jbutton_event(*disp_, event.jbutton,exec_);
 		} else if (exec_ != NULL) {
-			jbutton_event_execute(*disp_,event.jbutton,exec_);
+			jbutton_event_execute(*disp_, event.jbutton,exec_);
 		}
 		break;
 	case SDL_MOUSEBUTTONDOWN:
 		if (!gui::in_dialog()) {
-			mbutton_event(*disp_,event.button,exec_);
+			mbutton_event(*disp_, event.button,exec_);
 		} else if (exec_ != NULL) {
-			mbutton_event_execute(*disp_,event.button,exec_);
+			mbutton_event_execute(*disp_, event.button,exec_);
 		}
 		break;
 	}
@@ -802,18 +809,18 @@ void basic_handler::handle_event(const SDL_Event& event)
 
 void mbutton_event(display& disp, const SDL_MouseButtonEvent& event, command_executor* executor)
 {
-	mbutton_event_execute(disp,event,executor);
+	mbutton_event_execute(disp, event, executor);
 }
 
 
 void jbutton_event(display& disp, const SDL_JoyButtonEvent& event, command_executor* executor)
 {
-	jbutton_event_execute(disp,event,executor);
+	jbutton_event_execute(disp, event, executor);
 }
 
 void jhat_event(display& disp, const SDL_JoyHatEvent& event, command_executor* executor)
 {
-	jhat_event_execute(disp,event,executor);
+	jhat_event_execute(disp, event, executor);
 }
 
 void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* executor)
@@ -829,7 +836,7 @@ void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* 
 		}
 	}
 
-	key_event_execute(disp,event,executor);
+	key_event_execute(disp, event,executor);
 }
 
 void mbutton_event_execute(display& disp, const SDL_MouseButtonEvent& event, command_executor* executor)
@@ -839,7 +846,7 @@ void mbutton_event_execute(display& disp, const SDL_MouseButtonEvent& event, com
 		return;
 	}
 
-	execute_command(disp,hk->get_id(),executor);
+	execute_command(disp, hk->get_id(), executor);
 }
 
 void jbutton_event_execute(display& disp, const SDL_JoyButtonEvent& event, command_executor* executor)
@@ -849,7 +856,7 @@ void jbutton_event_execute(display& disp, const SDL_JoyButtonEvent& event, comma
 		return;
 	}
 
-	execute_command(disp,hk->get_id(),executor);
+	execute_command(disp, hk->get_id(), executor);
 }
 
 void jhat_event_execute(display& disp, const SDL_JoyHatEvent& event, command_executor* executor)
@@ -859,7 +866,7 @@ void jhat_event_execute(display& disp, const SDL_JoyHatEvent& event, command_exe
 		return;
 	}
 
-	execute_command(disp,hk->get_id(),executor);
+	execute_command(disp, hk->get_id(), executor);
 }
 
 
@@ -869,7 +876,7 @@ void key_event_execute(display& disp, const SDL_KeyboardEvent& event, command_ex
 
 #if 0
 	// This is not generally possible without knowing keyboard layout.
-	if(hk->null()) {
+	if (hk->null()) {
 		//no matching hotkey was found, but try an in-exact match.
 		hk = &get_hotkey(event, true);
 	}
@@ -879,7 +886,7 @@ void key_event_execute(display& disp, const SDL_KeyboardEvent& event, command_ex
 		return;
 	}
 
-	execute_command(disp,hk->get_id(),executor);
+	execute_command(disp, hk->get_id(), executor);
 }
 
 bool command_executor::execute_command(HOTKEY_COMMAND command, int /*index*/)
@@ -1115,7 +1122,7 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 				break;
 			}
 			map_screenshot = true;
-			// intentional fall through?
+			/// @todo intentional fall through?
 		case HOTKEY_SCREENSHOT: {
 			std::string name = map_screenshot ? _("Map-Screenshot") : _("Screenshot");
 			std::string filename = get_screenshot_dir() + "/" + name + "_";
@@ -1149,7 +1156,7 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 				} before_muted;
 				if (preferences::music_on() || preferences::sound_on())
 				{
-					//then remember settings and mute both
+					// then remember settings and mute both
 					before_muted.playing_sound = preferences::sound_on();
 					before_muted.playing_music = preferences::music_on();
 					preferences::set_sound(false);
@@ -1157,7 +1164,7 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 				}
 				else
 				{
-					//then set settings before mute
+					// then set settings before mute
 					preferences::set_sound(before_muted.playing_sound);
 					preferences::set_music(before_muted.playing_music);
 				}
@@ -1187,7 +1194,7 @@ void command_executor::show_menu(const std::vector<std::string>& items_arg, int 
 		return;
 	}
 	if (can_execute_command(hotkey::get_id(items.front()), 0)) {
-		//if just one item is passed in, that means we should execute that item
+		// If just one item is passed in, that means we should execute that item.
 		if (!context_menu && items.size() == 1 && items_arg.size() == 1) {
 			hotkey::execute_command(gui,hotkey::get_id(items.front()), this);
 			return;
@@ -1201,7 +1208,7 @@ void command_executor::show_menu(const std::vector<std::string>& items_arg, int 
 			gui::MESSAGE, gui::dialog::hotkeys_style);
 			mmenu.set_menu(menu);
 			res = mmenu.show(xloc, yloc);
-		} // this will kill the dialog
+		} // This will kill the dialog.
 		if (res < 0 || size_t(res) >= items.size()) {
 			return;
 		}
@@ -1213,7 +1220,7 @@ void command_executor::show_menu(const std::vector<std::string>& items_arg, int 
 
 std::string command_executor::get_menu_image(hotkey::HOTKEY_COMMAND command, int index) const {
 	switch (get_action_state(command, index)) {
-		case ACTION_ON: return game_config::images::checked_menu;
+		case ACTION_ON:  return game_config::images::checked_menu;
 		case ACTION_OFF: return game_config::images::unchecked_menu;
 		default: return get_action_image(command, index);
 	}
@@ -1230,7 +1237,7 @@ std::vector<std::string> command_executor::get_menu_images(display& disp, const 
 		std::stringstream str;
 		//see if this menu item has an associated image
 		std::string img(get_menu_image(hk, i));
-		if(img.empty() == false) {
+		if (img.empty() == false) {
 			has_image = true;
 			str << IMAGE_PREFIX << img << COLUMN_SEPARATOR;
 		}
@@ -1241,7 +1248,7 @@ std::vector<std::string> command_executor::get_menu_images(display& disp, const 
 			std::string desc = hotkey::get_description(item);
 			if (hk == HOTKEY_ENDTURN) {
 				const theme::menu *b = disp.get_theme().get_menu_item("button-endturn");
-				if(b) {
+				if (b) {
 					desc = b->title();
 				}
 			}

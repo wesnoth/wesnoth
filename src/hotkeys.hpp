@@ -153,13 +153,13 @@ struct input_controll {
 struct hotkey_command {
 	/// This binds the command to a function. Does not need to be unique.
 	hotkey::HOTKEY_COMMAND id;
-	/// The command is unique
+	/// The command is unique.
 	const char* command;
 	/// note: The description is untranslated.
 	const char* description;
 	/// If hidden then don't show the command in the hotkey preferences.
 	bool hidden;
-	/// The visibility scope of the command
+	/// The visibility scope of the command.
 	hotkey::scope scope;
 };
 

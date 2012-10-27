@@ -629,8 +629,8 @@ void hotkey_preferences_dialog::show_binding_dialog(
 							(mod & KMOD_SHIFT) != 0, (mod & KMOD_CTRL) != 0,
 							(mod & KMOD_LMETA) != 0, (mod & KMOD_ALT)  != 0 );
 			newhk.set_key(character, keycode, (mod & KMOD_SHIFT) != 0,
-					(mod & KMOD_CTRL) != 0, (mod & KMOD_ALT) != 0,
-					(mod & KMOD_LMETA) != 0);
+					(mod & KMOD_CTRL) != 0, (mod & KMOD_LMETA) != 0,
+					(mod & KMOD_ALT) != 0);
 
 			if ( (newhk.get_id() == hotkey::HOTKEY_SCREENSHOT
 					|| newhk.get_id() == hotkey::HOTKEY_MAP_SCREENSHOT)
