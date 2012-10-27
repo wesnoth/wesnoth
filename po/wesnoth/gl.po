@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-10-27 15:56+0200\n"
-"PO-Revision-Date: 2012-10-06 16:10+0200\n"
+"PO-Revision-Date: 2012-10-27 19:04+0200\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: gl\n"
@@ -168,10 +168,8 @@ msgstr ""
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:164
-#, fuzzy
-#| msgid "Compressed saves"
 msgid "Compress savegames using bzip2"
-msgstr "Comprimir as partidas gardadas."
+msgstr "Comprimir as partidas gardadas con BZip2."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:172
@@ -550,10 +548,8 @@ msgstr "Tradución ao ruso"
 
 #. [about]
 #: data/core/about.cfg:2599
-#, fuzzy
-#| msgid "Galician Translation"
 msgid "Scottish Gaelic Translation"
-msgstr "Tradución ao galego"
+msgstr "Tradución ao gaélico escocés"
 
 #. [about]
 #: data/core/about.cfg:2608
@@ -3514,10 +3510,8 @@ msgstr "Campaña mult."
 
 # Optimizado para baixas resolucións.
 #: src/addon/info.cpp:163
-#, fuzzy
-#| msgid "addon_type^MP faction"
 msgid "addon_type^MP modification"
-msgstr "Facción mult."
+msgstr "Modificación mult."
 
 #: src/addon/info.cpp:165
 msgid "addon_type^Resources"
@@ -5308,49 +5302,48 @@ msgstr "Escoller un ataque:"
 
 #: src/mp_depcheck.cpp:408 src/mp_depcheck.cpp:419
 msgid "A component"
-msgstr ""
+msgstr "Un compoñente"
 
 #: src/mp_depcheck.cpp:458
-#, fuzzy
-#| msgid "Broken Dependencies"
 msgid "Failed to resolve dependencies"
-msgstr "Dependencias rotas"
+msgstr "Non se puideron determinar as dependencias."
 
 #: src/mp_depcheck.cpp:484
 msgid "Scenario can't be activated. Some dependencies are missing: "
 msgstr ""
+"Non se pode activar o escenario, faltan algunhas das súas dependencias: "
 
 #: src/mp_depcheck.cpp:539 src/mp_depcheck.cpp:661
-#, fuzzy
-#| msgid "No eras found."
 msgid "No compatible eras found."
-msgstr "Non se atoparon eras."
+msgstr "Non se atoparon eras compatíbeis."
 
 #: src/mp_depcheck.cpp:555
 msgid "Era can't be activated. Some dependencies are missing: "
-msgstr ""
+msgstr "Non se pode activar a era, faltan algunhas das súas dependencias: "
 
 #: src/mp_depcheck.cpp:607 src/mp_depcheck.cpp:698
-#, fuzzy
-#| msgid "No multiplayer sides found"
 msgid "No compatible scenarios found."
-msgstr "No se atoparon bandos para varios xogadores."
+msgstr "Non se atoparon escenarios compatíbeis."
 
 #: src/mp_depcheck.cpp:636
 msgid ""
 "Not all of the chosen modifications are compatible. Some of them will be "
 "disabled."
 msgstr ""
+"Non todas as modificacións seleccionadas son compatíbeis. Algunhas serán "
+"desactivadas."
 
 #: src/mp_options.cpp:181
 msgid ""
 "None of the selected modifications, era or scenario provide configuration "
 "options."
 msgstr ""
+"Ningunha das modificacións, eras e escenarios seleccionados fornecen opcións "
+"de configuración."
 
 #: src/mp_options.cpp:222
 msgid "Restore defaults"
-msgstr ""
+msgstr "Restablecer"
 
 # Mensaxe que aparece ao intentar conectarse a un servidor. Véxase «Varios xogadores → Conectarse ao servidor oficial».
 #: src/multiplayer.cpp:150 src/multiplayer.cpp:193
@@ -5363,16 +5356,12 @@ msgid "Reading from Server..."
 msgstr "Descargando a información do servidor"
 
 #: src/multiplayer.cpp:176
-#, fuzzy
-#| msgid ""
-#| "The server requires version '$version1' while you are using version "
-#| "'$version2'"
 msgid ""
 "The server accepts versions '$version1' while you are using version "
 "'$version2'"
 msgstr ""
-"O servidor require a versión «$version1|», pero ti estás usando a versión "
-"«$version2|»."
+"O servidor acepta as seguintes versións: $version1|. A versión que estás "
+"usando, «$version2|», non é compatíbel co servidor."
 
 #: src/multiplayer.cpp:187
 msgid "Server-side redirect loop"
@@ -5636,8 +5625,6 @@ msgid "Shuffle sides"
 msgstr "Bandos ao chou."
 
 #: src/multiplayer_create.cpp:100
-#, fuzzy
-#| msgid "Settings..."
 msgid "Options..."
 msgstr "Configuración…"
 
@@ -5655,7 +5642,7 @@ msgstr "Establecer un contrasinal…"
 
 #: src/multiplayer_create.cpp:106
 msgid "Modifications..."
-msgstr ""
+msgstr "Modificacións…"
 
 #: src/multiplayer_create.cpp:127
 msgid "Load Game..."
@@ -5765,6 +5752,8 @@ msgid ""
 "connect to the add-ons server by choosing the 'Add-ons' option on the main "
 "screen."
 msgstr ""
+"Non hai modificacións instaladas. Para descargar modificacións, conéctate ao "
+"servidor de complementos: preme o botón de «Complementos» no menú principal."
 
 #: src/multiplayer_create.cpp:450
 msgid "Turns: "
@@ -5795,8 +5784,6 @@ msgid "Village gold: "
 msgstr "Ouro por vila: "
 
 #: src/multiplayer_create.cpp:507
-#, fuzzy
-#| msgid "Village Support: "
 msgid "Village support: "
 msgstr "Abastecemento por vila: "
 
@@ -5824,7 +5811,7 @@ msgstr " (era descoñecida)"
 
 #: src/multiplayer_lobby.cpp:557
 msgid " (missing)"
-msgstr ""
+msgstr " (non dispoñíbel)"
 
 #: src/multiplayer_lobby.cpp:594 src/multiplayer_lobby.cpp:933
 msgid "Password Required"
@@ -6305,7 +6292,7 @@ msgstr "Habilidades: "
 
 #: src/reports.cpp:382 src/reports.cpp:740
 msgid " (inactive)"
-msgstr ""
+msgstr " (inactiva)"
 
 #: src/reports.cpp:429
 msgid "Resistances: "
@@ -6348,10 +6335,8 @@ msgid "Base damage: "
 msgstr "Dano base: "
 
 #: src/reports.cpp:617 src/reports.cpp:651 src/reports.cpp:661
-#, fuzzy
-#| msgid "Weapon special: "
 msgid "With specials: "
-msgstr "Propiedades do ataque: "
+msgstr "Cos especiais: "
 
 #: src/reports.cpp:620
 msgid "Time of day: "
@@ -6371,10 +6356,8 @@ msgid "Attacks: "
 msgstr "Ataques: "
 
 #: src/reports.cpp:636
-#, fuzzy
-#| msgid "Max HP bonus +"
 msgid "Max swarm bonus: "
-msgstr "Vida máxima aumentada en "
+msgstr "Bonificación máxima por enxame: "
 
 #: src/reports.cpp:637 src/reports.cpp:656
 msgid "Swarm: "
@@ -6385,14 +6368,12 @@ msgid "Base attacks: "
 msgstr "Ataques base: "
 
 #: src/reports.cpp:644
-#, fuzzy
-#| msgid "Special"
 msgid "Specials: "
-msgstr "Especial"
+msgstr "Especiais: "
 
 #: src/reports.cpp:654
 msgid "Subject to swarm: "
-msgstr ""
+msgstr "Afectado polo enxame: "
 
 #: src/reports.cpp:673
 msgid "Weapon range: "
@@ -6485,12 +6466,11 @@ msgid "Overwrite?"
 msgstr "Substituíla?"
 
 #: src/savegame.cpp:901
-#, fuzzy
-#| msgid "Save names should not end on '.gz'. Please choose a different name."
 msgid ""
 "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
 msgstr ""
-"Os nomes das partidas gardadas non poden rematar en «.gz». Elixe outro nome."
+"Os nomes das partidas gardadas non poden rematar en «.gz» ou «.bz2». Elixe "
+"outro nome."
 
 #: src/savegame.cpp:967
 msgid "Saved"
@@ -6680,23 +6660,17 @@ msgid "Details"
 msgstr "Detalles"
 
 #: src/statistics_dialog.cpp:170
-#, fuzzy
-#| msgid "Test scenario"
 msgid "Select Scenario"
-msgstr "Escenario de probas"
+msgstr "Escoller un escenario"
 
 #: src/statistics_dialog.cpp:226 src/statistics_dialog.cpp:304
-#, fuzzy
-#| msgid "Campaign Design"
 msgid "Campaign"
-msgstr "Deseño das campañas"
+msgstr "Campaña"
 
 # Optimizado para a interface.
 #: src/statistics_dialog.cpp:226 src/statistics_dialog.cpp:304
-#, fuzzy
-#| msgid "End Scenario"
 msgid "Scenario"
-msgstr "Finalizar"
+msgstr "Escenario"
 
 #: src/statistics_dialog.cpp:284
 msgid "Damage"

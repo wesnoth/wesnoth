@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-10-27 15:56+0200\n"
-"PO-Revision-Date: 2012-09-22 08:25+0200\n"
+"PO-Revision-Date: 2012-10-27 18:46+0200\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: gl\n"
@@ -695,10 +695,8 @@ msgstr "Revestimento infranqueábel"
 
 #. [terrain_type]: id=unwalkable_overlay
 #: data/core/terrain.cfg:1161
-#, fuzzy
-#| msgid "Impassable Overlay"
 msgid "Unwalkable Overlay"
-msgstr "Revestimento infranqueábel"
+msgstr "Revestimento intransitábel"
 
 #. [terrain_type]: id=off_map
 #. [terrain_type]: id=off_map2
@@ -1413,10 +1411,8 @@ msgstr "Descoñecido"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:55
-#, fuzzy
-#| msgid "addons_of_type^MP factions"
 msgid "addons_of_type^MP modifications"
-msgstr "Faccións mult."
+msgstr "Modificacións mult."
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:156
@@ -2392,15 +2388,13 @@ msgstr "Momento do día inicial ao chou"
 
 #. [label]
 #: data/gui/default/window/mp_create_game_choose_mods.cfg:54
-#, fuzzy
-#| msgid "Choose Resolution"
 msgid "Choose Modifications"
-msgstr "Escoller a resolución"
+msgstr "Escoller as modificacións"
 
 #. [label]: id=message
 #: data/gui/default/window/mp_create_game_choose_mods.cfg:73
 msgid "Enable the modifications you want to be active during the game."
-msgstr ""
+msgstr "Activa as modificacións que queiras empregar durante a partida."
 
 #. [scroll_label]: id=message
 #: data/gui/default/window/mp_create_game_set_password.cfg:61
@@ -2417,21 +2411,19 @@ msgstr "Contrasinal:"
 #. [label]
 #: data/gui/default/window/mp_depcheck_confirm_change.cfg:40
 msgid "Confirmation requested"
-msgstr ""
+msgstr "Confirmación"
 
 #. [label]
 #: data/gui/default/window/mp_depcheck_confirm_change.cfg:98
 msgid "Would you like to apply the changes?"
-msgstr ""
+msgstr "Estás seguro de que queres aplicar os cambios?"
 
 #. [label]
 #. [label]: id=message
 #: data/gui/default/window/mp_depcheck_select_new.cfg:40
 #: data/gui/default/window/mp_depcheck_select_new.cfg:59
-#, fuzzy
-#| msgid "User interface sounds"
 msgid "User interaction required"
-msgstr "Sons da interface."
+msgstr "Requírese da interacción do usuario"
 
 #. [column]
 #. [label]
@@ -3512,29 +3504,35 @@ msgstr "Cargar unha partida…"
 
 #: src/gui/dialogs/mp_depcheck_confirm_change.cpp:65
 msgid "$requester requires the following modifications to be enabled:"
-msgstr ""
+msgstr "$requester require que se activen as seguintes modificacións:"
 
 #: src/gui/dialogs/mp_depcheck_confirm_change.cpp:67
 msgid "$requester requires the following modifications to be disabled:"
-msgstr ""
+msgstr "$requester require que se desactiven as seguintes modificacións:"
 
 #: src/gui/dialogs/mp_depcheck_select_new.cpp:69
 msgid ""
 "The currently chosen scenario is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
+"O escenario seleccionado non é compatíbel coa túa configuración.\n"
+"Escolle un escenario compatíbel."
 
 #: src/gui/dialogs/mp_depcheck_select_new.cpp:74
 msgid ""
 "The currently chosen era is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
+"A era seleccionada non é compatíbel coa túa configuración.\n"
+"Escolle unha era compatíbel."
 
 #: src/gui/dialogs/mp_depcheck_select_new.cpp:80
 msgid ""
 "The currently chosen modification is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
+"A modificación seleccionada non é compatíbel coa túa configuración.\n"
+"Escolle unha modificación compatíbel."
 
 #: src/gui/dialogs/title_screen.cpp:297
 msgid "Version "
@@ -3589,34 +3587,24 @@ msgid "Hotkey Settings"
 msgstr "Configuración dos atallos"
 
 #: src/hotkey_preferences_display.cpp:170
-#, fuzzy
-#| msgid "Default"
 msgid "Reset Defaults"
-msgstr "Predeterminado"
+msgstr "Restablecer"
 
 #: src/hotkey_preferences_display.cpp:173
-#, fuzzy
-#| msgid "All hotkeys have been reset to their default values."
 msgid "Reset all bindings to the default values"
-msgstr "Restablecéronse todos os atallos aos seus valores predeterminados."
+msgstr "Restablecer todos os atallos aos seus valores predeterminados."
 
 #: src/hotkey_preferences_display.cpp:217
-#, fuzzy
-#| msgid "Prefs section^General"
 msgid "Prefs section^Game"
-msgstr "Xeral"
+msgstr "Xogo"
 
 #: src/hotkey_preferences_display.cpp:219
-#, fuzzy
-#| msgid "Prefs section^Sound"
 msgid "Prefs section^Editor"
-msgstr "Sons"
+msgstr "Editor"
 
 #: src/hotkey_preferences_display.cpp:246
-#, fuzzy
-#| msgid "Hotkeys"
 msgid "Add Hotkey"
-msgstr "Atallos"
+msgstr "Engadir un atallo"
 
 #: src/hotkey_preferences_display.cpp:247
 msgid "Clear Hotkey"
@@ -3651,24 +3639,20 @@ msgid ""
 "\"$hotkey_sequence|\" is in use by \"$old_hotkey_action|\". Do you wish to "
 "reassign it to \"$new_hotkey_action|\"?"
 msgstr ""
+"«$hotkey_sequence|» emprégase para «$old_hotkey_action|». Queres "
+"reasignarllo a «$new_hotkey_action|»?"
 
 #: src/hotkey_preferences_display.cpp:659
-#, fuzzy
-#| msgid "Reset Hotkeys"
 msgid "Reassign Hotkey"
-msgstr "Restablecer os atallos"
+msgstr "Reasignar o atallo"
 
 #: src/hotkeys.cpp:62
-#, fuzzy
-#| msgid "Flip Clipboard Horizontally"
 msgid "Scroll Viewport Horizontally"
-msgstr "Voltear horizontalmente o que hai no portarretallos"
+msgstr "Desprazar a vista horizontalmente"
 
 #: src/hotkeys.cpp:63
-#, fuzzy
-#| msgid "Flip Clipboard Vertically"
 msgid "Scroll Viewport Vertically"
-msgstr "Voltear verticalmente o que hai no portarretallos"
+msgstr "Desprazar a vista verticalmente"
 
 #: src/hotkeys.cpp:69
 msgid "Left Mouse Click"
@@ -3822,10 +3806,8 @@ msgid "Continue Network Game"
 msgstr "Continuar a partida en rede"
 
 #: src/hotkeys.cpp:111
-#, fuzzy
-#| msgid "Start Editor"
 msgid "Quit Editor"
-msgstr "Iniciar o editor de mapas"
+msgstr "Saír do editor"
 
 #: src/hotkeys.cpp:112
 msgid "Set Team Label"
@@ -4116,22 +4098,16 @@ msgid "Auto-update Terrain Transitions"
 msgstr "Actualizar automaticamente as transicións dos terreos"
 
 #: src/hotkeys.cpp:196
-#, fuzzy
-#| msgid "Auto-update Terrain Transitions"
 msgid "Auto-update Terrain Transitions: Yes"
-msgstr "Actualizar automaticamente as transicións dos terreos"
+msgstr "Actualizar automaticamente as transicións dos terreos: si."
 
 #: src/hotkeys.cpp:197
-#, fuzzy
-#| msgid "Auto-update Terrain Transitions"
 msgid "Auto-update Terrain Transitions: No"
-msgstr "Actualizar automaticamente as transicións dos terreos"
+msgstr "Actualizar automaticamente as transicións dos terreos: non."
 
 #: src/hotkeys.cpp:198
-#, fuzzy
-#| msgid "Auto-update Terrain Transitions"
 msgid "Auto-update Terrain Transitions: Partial"
-msgstr "Actualizar automaticamente as transicións dos terreos"
+msgstr "Actualizar automaticamente as transicións dos terreos: parcialmente."
 
 #: src/hotkeys.cpp:200
 msgid "Refresh Image Cache"
@@ -4235,65 +4211,60 @@ msgstr "Amosar a axuda"
 
 #: src/hotkeys.cpp:362 src/hotkeys.cpp:365
 msgid "Button"
-msgstr ""
+msgstr "Botón"
 
 #: src/hotkeys.cpp:362
 msgid "Mouse"
-msgstr ""
+msgstr "Rato"
 
 #: src/hotkeys.cpp:365 src/hotkeys.cpp:401
 msgid "Joystick"
-msgstr ""
+msgstr "Mando"
 
 #: src/hotkeys.cpp:371
 msgid "Centered"
-msgstr ""
+msgstr "Centrado"
 
 #: src/hotkeys.cpp:374
 msgid "Up"
-msgstr ""
+msgstr "Arriba"
 
 #: src/hotkeys.cpp:377
-#, fuzzy
-#| msgid "Height:"
 msgid "Right"
-msgstr "Alto:"
+msgstr "Dereita"
 
 #: src/hotkeys.cpp:380
 msgid "Down"
-msgstr ""
+msgstr "Abaixo"
 
 #: src/hotkeys.cpp:383
 msgid "Left"
-msgstr ""
+msgstr "Esquerda"
 
 #: src/hotkeys.cpp:386
 msgid "RightUp"
-msgstr ""
+msgstr "Arriba á dereita"
 
 #: src/hotkeys.cpp:389
 msgid "RightDown"
-msgstr ""
+msgstr "Abaixo á dereita"
 
 #: src/hotkeys.cpp:392
 msgid "LeftUp"
-msgstr ""
+msgstr "Arriba á esquerda"
 
 #: src/hotkeys.cpp:395
 msgid "LeftDown"
-msgstr ""
+msgstr "Abaixo á esquerda"
 
 #: src/hotkeys.cpp:398
-#, fuzzy
-#| msgid "Unknown era"
 msgid "Unknown"
-msgstr "Era descoñecida"
+msgstr "Descoñecido"
 
+# http://en.wikipedia.org/wiki/Joystick#Hat_switch
 #: src/hotkeys.cpp:401
-#, fuzzy
-#| msgid "Hut"
 msgid "Hat"
-msgstr "Cabana"
+msgstr "Control da vista"
 
 #: src/hotkeys.cpp:831 src/hotkeys.cpp:1177
 msgid "Do you really want to quit?"
