@@ -46,9 +46,6 @@ static lg::log_domain log_network("network");
 #define LOG_NW LOG_STREAM(info, log_network)
 #define ERR_NW LOG_STREAM(err, log_network)
 
-static lg::log_domain log_enginerefac("enginerefac");
-#define LOG_RG LOG_STREAM(info, log_enginerefac)
-
 namespace {
 
 	/** The maximum number of messages in the chat history. */

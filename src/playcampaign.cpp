@@ -286,6 +286,9 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 	else if(res == VICTORY){
 		store_carryover(state_of_game, playcontroller, disp, end_level);
 	}
+	else if(res == OBSERVER_END){
+		state_of_game.carryover_sides_start["next_scenario"] = resources::gamedata->next_scenario();
+	}
 
 	if (!disp.video().faked() && res != QUIT) {
 		if (!end_level.transient.linger_mode) {
@@ -336,6 +339,11 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		if(gamestate.replay_start()["id"].empty() == false) {
 			starting_pos = gamestate.replay_start();
 			scenario = &starting_pos;
+
+			if(gamestate.replay_start()["random_seed"] != gamestate.carryover_sides_start["random_seed"]){
+				sides = carryover_info(gamestate.replay_start());
+			}
+
 		} else {
 			//reload of the scenario, as starting_pos contains carryover information only
 			LOG_G << "loading scenario: '" << sides.next_scenario() << "'\n";
@@ -346,18 +354,6 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			}
 			LOG_G << "scenario found: " << (scenario != NULL ? "yes" : "no") << "\n";
 
-			//TODO: remove when replay_start is confirmed
-//			if (*scenario) {
-//				starting_pos = *scenario;
-//				config temp(starting_pos);
-//				write_players(gamestate, temp, false, true);
-//				gamestate.replay_start() = temp;
-//				starting_pos = temp;
-//				scenario = &starting_pos;
-//			} else {
-//				scenario = NULL;
-//			}
-//			LOG_G << "scenario found: " << (scenario != NULL ? "yes" : "no") << "\n";
 		}
 	} else {
 		// This game was started from a savegame
@@ -445,10 +441,6 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				//level_ = scenario;
 				//merge carryover information into the newly generated scenario
 
-				//TODO: remove when replay_start is confirmed
-//				config temp(scenario2);
-//				write_players(gamestate, temp, false, true);
-//				gamestate.starting_pos = temp;
 				scenario = &scenario2;
 			}
 			std::string map_data = (*scenario)["map_data"];
@@ -469,11 +461,6 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				new_level["map_data"] = map_data;
 				scenario = &new_level;
 
-				//merge carryover information into the scenario
-				//TODO: remove when replay_start is confirmed
-//				config temp(new_level);
-//				write_players(gamestate, temp, false, true);
-//				gamestate.starting_pos = temp;
 				LOG_G << "generated map\n";
 			}
 
@@ -589,6 +576,8 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				starting_pos = c;
 				scenario = &starting_pos;
 				gamestate = game_state(starting_pos);
+				//retain carryover_sides_start, as the config from the server doesn't contain it
+				gamestate.carryover_sides_start = sides.to_config();
 			} else {
 				gamestate.snapshot = config();
 				return QUIT;
@@ -637,8 +626,6 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 					scenario2 = random_generate_scenario((*scenario)["scenario_generation"], scenario->child("generator"));
 					//TODO comment or remove
 					//level_ = scenario;
-					//TODO: remove once replay_start is confirmed
-					//gamestate.starting_pos = scenario2;
 					scenario = &scenario2;
 				}
 				std::string map_data = (*scenario)["map_data"];
@@ -658,8 +645,6 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 					new_level = *scenario;
 					new_level["map_data"] = map_data;
 					scenario = &new_level;
-					//TODO: remove once replay_start is confirmed
-					//gamestate.starting_pos = new_level;
 					LOG_G << "generated map\n";
 				}
 
@@ -670,13 +655,25 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				// Adds player information, and other state
 				// information, to the configuration object
 				gamestate.write_snapshot(next_cfg);
+
 				next_cfg["next_scenario"] = (*scenario)["next_scenario"];
 				next_cfg.add_child("snapshot");
 				//move the player information into the hosts gamestate
 				write_players(gamestate, starting_pos, true, true);
 
+
+
+				next_cfg["random_seed"] = gamestate.carryover_sides_start["random_seed"];
+				next_cfg["random_calls"] = gamestate.carryover_sides_start["random_calls"];
+				next_cfg.add_child("variables", gamestate.carryover_sides_start.child("variables"));
 				next_cfg.add_child("multiplayer", gamestate.mp_settings().to_config());
-				next_cfg.add_child("replay_start", gamestate.replay_start());
+
+				//Merge in-game information from carryover_sides_start with scenario to create replay_start
+				next_cfg.add_child("replay_start", *scenario);
+				config gamedata;
+				game_data(gamestate.carryover_sides_start).write_snapshot(gamedata);
+				next_cfg.child("replay_start").merge_with(gamedata);
+
 				//move side information from gamestate into the config that is sent to the other clients
 				next_cfg.clear_children("side");
 				BOOST_FOREACH(config& side, starting_pos.child_range("side")){

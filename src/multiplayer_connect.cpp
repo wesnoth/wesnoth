@@ -52,9 +52,6 @@ static lg::log_domain log_config("config");
 static lg::log_domain log_mp_connect("mp/connect");
 #define DBG_MP LOG_STREAM(debug, log_mp_connect)
 
-static lg::log_domain log_enginerefac("enginerefac");
-#define LOG_RG LOG_STREAM(info, log_enginerefac)
-
 namespace {
 	const char* controller_names[] = {
 		"network",
