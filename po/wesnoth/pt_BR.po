@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-10-27 15:56+0200\n"
-"PO-Revision-Date: 2012-04-08 19:10-0300\n"
-"Last-Translator: bruno <bruno_macabeus_aquino@yahoo.com.br>\n"
+"PO-Revision-Date: 2012-10-29 18:41-0300\n"
+"Last-Translator: gilberto dos santos alves <gsavix@gmail.com>\n"
 "Language-Team: Portuguese - Brasil\n"
 "Language: Portuguese (Brazil)\n"
 "MIME-Version: 1.0\n"
@@ -45,11 +45,11 @@ msgstr "Rolagem com Clique do Botão do Meio"
 msgid "Keep scrolling when mouse leaves window"
 msgstr "Continuar rolagem quando o mouse sair da janela"
 
+# out.2012
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:39
-#, fuzzy
 msgid "Local time of day area lighting"
-msgstr "Iluminação pelo período do dia local"
+msgstr "Iluminação Horário Local"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:46
@@ -159,17 +159,22 @@ msgstr "Usar formato horário de 12 horas"
 msgid "Confirm loading of saves from a different version"
 msgstr "Confirmar ao carregar jogos salvos de outra versão"
 
+# out.2012
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:156
 msgid "Show all unit types in help"
-msgstr ""
+msgstr "Exibir todos tipos de unidades na ajuda"
 
+# out.2012
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:157
+#, fuzzy
 msgid ""
 "Show all unit types in the help (requires restart). This does not alter the "
 "list of encountered units"
 msgstr ""
+"Exibir todos tipos de unidades na ajuda (requer reiniciar). Isto não altera "
+"a lista de unidades econtradas"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:164
@@ -1887,11 +1892,11 @@ msgstr "Objetivo Alternativo:"
 msgid "Bonus objective:"
 msgstr "Objetivo Bônus:"
 
+# out.2012
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:74
-#, fuzzy
 msgid "This is the last scenario."
-msgstr "Cenário remoto"
+msgstr "Último Cenário"
 
 #. [message]: speaker=narrator
 #: data/core/macros/scenario-utils.cfg:62
@@ -2409,6 +2414,7 @@ msgid "<i>― Haldric II, 42YW, Handbook of Tactical Analysis: Volume I</i>"
 msgstr ""
 "<i>― Haldric II, 42dW, do Manual de Bolso de Análise Tática: Volume I</i>"
 
+# out.2012
 #. [tip]
 #: data/hardwired/tips.cfg:52
 #, fuzzy
@@ -2420,9 +2426,9 @@ msgid ""
 msgstr ""
 "Se você estiver jogando com <b>Escuridão</b> ou <b>Neblina de Guerra</b>, "
 "você não sabe o que está enfrentando. Neste caso, unidades de reconhecimento "
-"de longo alcance são dignos de seu custo. Tente escolher batedores que podem "
-"facilmente passar por todo o terreno vizinho, porque as unidades veem tanto "
-"quanto eles podem se mover em um turno."
+"de longo alcance serão usadas com seu custo. Tente escolher batedores que "
+"podem facilmente passar por todo o terreno vizinho, porque as unidades veem "
+"tanto quanto eles podem se mover em um turno."
 
 #. [tip]
 #: data/hardwired/tips.cfg:56
@@ -3623,11 +3629,15 @@ msgstr "Você quer continuar?"
 msgid "Confirm"
 msgstr "Confirmar"
 
+# out.2012
 #: src/addon/manager_ui.cpp:301
+#, fuzzy
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
 msgstr ""
+"Removendo '$addon|' irá limpar seus contadores de download e upload no "
+"servidor add-ons. Continuar?"
 
 #: src/addon/manager_ui.cpp:317 src/addon/manager_ui.cpp:336
 #: src/multiplayer_wait.cpp:408
@@ -3797,7 +3807,9 @@ msgid_plural "Are you sure you want to remove the following installed add-ons?"
 msgstr[0] "Você tem certeza de que deseja remover o extra '$addon|'?"
 msgstr[1] "Você tem certeza de que deseja remover o extra '$addon|'?"
 
+# out.2012
 #: src/addon/manager_ui.cpp:991
+#, fuzzy
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -3805,7 +3817,11 @@ msgid_plural ""
 "The following add-ons appear to have publishing or version control "
 "information stored locally, and will not be removed:"
 msgstr[0] ""
+"O seguinte add-on parece estar publicado ou possuir controle de versão local "
+"e portanto não será removido:"
 msgstr[1] ""
+"Os seguintes add-on parecem estar publicados ou possuirem controle de versão "
+"local e portanto não serão removidos:"
 
 #: src/addon/manager_ui.cpp:1001
 #, fuzzy
@@ -4536,9 +4552,11 @@ msgstr ""
 "Você não tem tropas para convocar\n"
 "(É necessário que tropas tenham sobrevivido a um cenário anterior)"
 
+# out.2012
 #: src/menu_events.cpp:923
+#, fuzzy
 msgid "You currently can't recall at the highlighted location"
-msgstr ""
+msgstr "Você não pode reconectar ao local escolhido"
 
 #: src/menu_events.cpp:934
 msgid "Traits"
@@ -4679,7 +4697,7 @@ msgstr ""
 #: src/menu_events.cpp:2396 src/menu_events.cpp:2398 src/menu_events.cpp:2412
 #, fuzzy
 msgid "<nickname>"
-msgstr "<nick>"
+msgstr "<apelido>"
 
 #: src/menu_events.cpp:2360
 msgid "Unban a user. He does not have to be in the game but on the server."
@@ -4771,14 +4789,12 @@ msgid "<password> <email (optional)>"
 msgstr "<password> <email (opcional)>"
 
 #: src/menu_events.cpp:2405
-#, fuzzy
 msgid "Register your nickname"
-msgstr "Registre seu nick"
+msgstr "Registre seu apelido"
 
 #: src/menu_events.cpp:2407
-#, fuzzy
 msgid "Drop your nickname."
-msgstr "Descartar o seu nick."
+msgstr "Descartar o seu apelido."
 
 #: src/menu_events.cpp:2409
 #, fuzzy
@@ -4790,9 +4806,8 @@ msgid "<detail> <value>"
 msgstr "<detalhe> <valor>"
 
 #: src/menu_events.cpp:2412
-#, fuzzy
 msgid "Request information about a nickname."
-msgstr "Requisitar informação sobre o nick."
+msgstr "Requisitar informação sobre o apelido."
 
 #: src/menu_events.cpp:2414
 #, fuzzy
@@ -4861,9 +4876,8 @@ msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr "do not translate the on/off^[<time> [on/off]]"
 
 #: src/menu_events.cpp:2569
-#, fuzzy
 msgid "<side> <nickname>"
-msgstr "<time> <nick>"
+msgstr "<time> <apelido>"
 
 #: src/menu_events.cpp:2569
 msgid "Assign control of a side to a different player or observer."
@@ -5337,13 +5351,12 @@ msgid "Connection timed out"
 msgstr "Time out na conexão"
 
 #: src/multiplayer.cpp:246
-#, fuzzy
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
 "to do it for you."
 msgstr ""
-"O nick '$nick' está inativo. Você não pode pedir a posse deste nick até "
+"O apelido '$nick' está inativo. Você não pode pedir a posse deste nick até "
 "ativar sua conta via email ou solicitar a um administrador para fazer isto."
 
 #: src/multiplayer.cpp:255
@@ -5363,52 +5376,45 @@ msgid "You must login first."
 msgstr "Você deve fazer o login primeiro."
 
 #: src/multiplayer.cpp:344
-#, fuzzy
 msgid "The nickname ‘$nick’ is already taken."
-msgstr "O nick '$nick' já está sendo usado."
+msgstr "O apelido '$nick' já está sendo usado."
 
 #: src/multiplayer.cpp:346
-#, fuzzy
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters, underscores and hyphens are allowed."
 msgstr ""
-"O nick '$nick' contém caracteres inválidos. São permitidos apenas caracteres "
-"alfanuméricos, underlines (\"_\") e hífens (\"-\")."
+"O apelido '$nick' contém caracteres inválidos. São permitidos apenas "
+"caracteres alfanuméricos, underlines (\"_\") e hífens (\"-\")."
 
 #: src/multiplayer.cpp:350
-#, fuzzy
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr ""
-"O nick '$nick' é muito grande. Nicks devem conter 20 caracteres ou menos."
+"O apelido '$nick' é muito grande. Nicks devem conter 20 caracteres ou menos."
 
 #: src/multiplayer.cpp:353
-#, fuzzy
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
-msgstr "O nick '$nick' é reservado e não pode ser usado por jogadores."
+msgstr "O apelido '$nick' é reservado e não pode ser usado por jogadores."
 
 #: src/multiplayer.cpp:355
-#, fuzzy
 msgid "The nickname ‘$nick’ is not registered on this server."
-msgstr "O nick '$nick' não está registrado neste servidor."
+msgstr "O apelido '$nick' não está registrado neste servidor."
 
 #: src/multiplayer.cpp:356
-#, fuzzy
 msgid " This server disallows unregistered nicknames."
-msgstr "Este servidor não permite nicks não registrados."
+msgstr "Este servidor não permite apelidos não registrados."
 
 #: src/multiplayer.cpp:358 src/multiplayer.cpp:360
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "O nick '$nick' está registrado neste servidor."
 
 #: src/multiplayer.cpp:361
-#, fuzzy
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
 msgstr ""
-"ATENÇÃO: Já existe um cliente usando este nick, entrar causará que este "
-"cliente seja chutado!"
+"ATENÇÃO: Já existe um cliente usando este apelido, entrar causará conflitos "
+"com o outro cliente!"
 
 #: src/multiplayer.cpp:364
 msgid ""
@@ -5421,9 +5427,11 @@ msgstr ""
 msgid "The password you provided was incorrect."
 msgstr "Você forneceu um password incorreto."
 
+# out.2012
 #: src/multiplayer.cpp:369
+#, fuzzy
 msgid "You have made too many login attempts."
-msgstr ""
+msgstr "Você fez muitas tentativas de login."
 
 #: src/multiplayer_connect.cpp:104 src/multiplayer_connect.cpp:453
 #: src/multiplayer_connect.cpp:601
@@ -6968,76 +6976,6 @@ msgstr "Opções do Quadro-Branco"
 #~ "Yasar,Yasin,Yasir,Yazan,Yazid,Yunus,Yushua,Yusri,Yusuf,Zafar,Zafir,Zahid,"
 #~ "Zahir,Zayd,Zaim,Zayn,Zarif,Zakarriya,Zaki,Zakwan,Ziyad,Zubayr,Zuhayr"
 
-#, fuzzy
-#~| msgid "invisible: "
-#~ msgid "invisible"
-#~ msgstr "invisível: "
-
-#, fuzzy
-#~| msgid "female^slowed"
-#~ msgid "female^invisible"
-#~ msgstr "lenta"
-
-#, fuzzy
-#~| msgid "Fire a game event."
-#~ msgid "I triggered a moveto event."
-#~ msgstr "Disparar um evento do jogo."
-
-#, fuzzy
-#~| msgid "Password: "
-#~ msgid "sword"
-#~ msgstr "Senha:"
-
-#, fuzzy
-#~| msgid "Version: "
-#~ msgid "Vision Test"
-#~ msgstr "Versão: "
-
-#, fuzzy
-#~| msgid "invisible: "
-#~ msgid "It is invisible!"
-#~ msgstr "invisível: "
-
-#, fuzzy
-#~| msgid "Choose weapon:"
-#~ msgid "Choose a Map to Open"
-#~ msgstr "Escolha a arma:"
-
-#, fuzzy
-#~| msgid "Choose the game to load"
-#~ msgid "Choose a Mask to Apply"
-#~ msgstr "Escolha o jogo a ser continuado"
-
-#, fuzzy
-#~| msgid "Choose weapon:"
-#~ msgid "Choose Target Map"
-#~ msgstr "Escolha a arma:"
-
-#, fuzzy
-#~| msgid "The map already exists. Do you want to overwrite it?"
-#~ msgid "The file already exists. Do you want to overwrite it?"
-#~ msgstr "Mapa já existente. Você quer sobreescrevê-lo?"
-
-#, fuzzy
-#~| msgid "No era information found."
-#~ msgid "No random map generators found."
-#~ msgstr "Nenhuma informação encontrada da Era."
-
-#, fuzzy
-#~| msgid "Installation failed"
-#~ msgid "Map creation failed."
-#~ msgstr "A instalação falhou"
-
-#, fuzzy
-#~| msgid "The map is invalid."
-#~ msgid "This map is already open."
-#~ msgstr "O mapa é inválido."
-
-#, fuzzy
-#~| msgid "Next Side"
-#~ msgid "(New Side)"
-#~ msgstr "Próximo Time"
-
 #~ msgid "The server responded with an error: \"$error|\""
 #~ msgstr "O servidor respondeu com um erro: \"$error|\""
 
@@ -7121,6 +7059,9 @@ msgstr "Opções do Quadro-Branco"
 
 #~ msgid "Choose the add-on to download."
 #~ msgstr "Escolha a extra para pegar."
+
+#~ msgid "Choose the game to load"
+#~ msgstr "Escolha o jogo a ser continuado"
 
 #~ msgid "Do you really want to start the server?"
 #~ msgstr "Você realmente deseja iniciar o servidor?"
