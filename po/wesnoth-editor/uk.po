@@ -7,10 +7,10 @@
 # Igor Paliychuk <mansonigor@gmail.com>, 2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-10-27 15:56+0200\n"
-"PO-Revision-Date: 2012-04-27 13:15+0300\n"
+"PO-Revision-Date: 2012-10-31 12:38+0200\n"
 "Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: uk\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Virtaal 0.7.1\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:5
@@ -39,14 +39,12 @@ msgstr "Радіус 2 поля"
 #. [brush]
 #: data/core/editor/brushes.cfg:46
 msgid "Hex Line NW-SE"
-msgstr "Діагональ Пн.Зх.-Пд.Сх."
+msgstr "Лінія Пн.Зх.-Пд.Сх."
 
 #. [brush]
 #: data/core/editor/brushes.cfg:62
-#, fuzzy
-#| msgid "Hex Line NW-SE"
 msgid "Hex Line SE-NW"
-msgstr "Діагональ Пн.Зх.-Пд.Сх."
+msgstr "Лінія Пд.Сх.-Пн.Зх."
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:11
@@ -81,7 +79,7 @@ msgstr "ліс"
 #. [editor_group]: id=fall
 #: data/core/editor/terrain-groups.cfg:52
 msgid "fall"
-msgstr ""
+msgstr "схил"
 
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:59
@@ -193,7 +191,7 @@ msgstr "Вікно"
 #. [menu]: id=menu-editor-terrain
 #: data/themes/editor.cfg:439
 msgid "Group"
-msgstr ""
+msgstr "Група"
 
 #. [label]: id=villages-icon
 #: data/themes/editor.cfg:463
@@ -346,7 +344,7 @@ msgstr "Неможливо зберегти карту: $msg"
 
 #: src/editor/palette/editor_palettes.cpp:48
 msgid "(Unknown Group)"
-msgstr ""
+msgstr "(Невідома група)"
 
 #: src/editor/palette/editor_palettes.cpp:305
 msgid "(non-core)"
@@ -376,6 +374,25 @@ msgstr "Гравець $player_number"
 msgid "Custom setting"
 msgstr "Власні налаштування"
 
+#~ msgid "Side"
+#~ msgstr "Сторона"
+
+#~ msgid ""
+#~ "Pipette Tool, Use left/right mouse button to select a terrain from the "
+#~ "map. Not implemented yet."
+#~ msgstr ""
+#~ "Піпетка, використовуйте ліву/праву кнопку миші, щоб вибрати місцевість на "
+#~ "карті. Ще не реалізовано."
+
+#~ msgid ""
+#~ "Left mouse button sets the village ownership to the current side, right "
+#~ "clears."
+#~ msgstr ""
+#~ "Ліва кнопка миші робить власником села поточну сторону, права скидає."
+
+#~ msgid "Flip Map - Not implemented yet."
+#~ msgstr "Перевернути карту - Ще не реалізовано."
+
 #~ msgid "Quit Editor"
 #~ msgstr "Вийти з редактора"
 
@@ -399,8 +416,3 @@ msgstr "Власні налаштування"
 
 #~ msgid "Auto-update Terrain Transitions: No"
 #~ msgstr "Автооновлення переходів ландшафтів: Ні"
-
-#, fuzzy
-#~| msgid "Empty map file"
-#~ msgid "Empty file"
-#~ msgstr "Файл карти порожній"

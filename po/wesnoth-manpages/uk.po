@@ -5,9 +5,9 @@
 # Igor Paliychuk <mansonigor@gmail.com>, 2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.10\n"
+"Project-Id-Version: 1.11\n"
 "POT-Creation-Date: 2012-08-18 09:40+0300\n"
-"PO-Revision-Date: 2012-08-18 19:32+0200\n"
+"PO-Revision-Date: 2012-10-31 12:38+0200\n"
 "Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: none\n"
 "Language: uk\n"
@@ -16,6 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #. type: TH
 #: ../../doc/man/wesnoth.6:16
@@ -135,10 +136,9 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:54
-#, fuzzy, no-wrap
-#| msgid "B<--campaign-difficulty E<lt>difficultyE<gt>>"
+#, no-wrap
 msgid "B<--campaign-difficulty [E<lt>difficultyE<gt>]>"
-msgstr "B<--campaign-difficulty E<lt>складністьE<gt>>"
+msgstr "B<--campaign-difficulty [E<lt>складністьE<gt>]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:57
@@ -445,25 +445,12 @@ msgstr "вивести назву каталогу даних гри і вийт
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:159
-#, fuzzy, no-wrap
-#| msgid "B<--preprocess, -p[=E<lt>define1E<gt>,E<lt>define2E<gt>,...] E<lt>file/folderE<gt> E<lt>target directoryE<gt>>"
+#, no-wrap
 msgid "B<-p, --preprocess E<lt>source file/folderE<gt> E<lt>target directoryE<gt>>"
-msgstr "B<--preprocess, -p[=E<lt>визначення1E<gt>,E<lt>визначення2E<gt>,...] E<lt>файл/текаE<gt> E<lt>цільова текаE<gt>>"
+msgstr "B<-p, --preprocess E<lt>початковий файл/текаE<gt> E<lt>цільова текаE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:169
-#, fuzzy
-#| msgid ""
-#| "preprocesses a specified file/folder. The file(s) will be written in "
-#| "specified target directory: a plain cfg file and a processed cfg file. If "
-#| "a folder is specified, it will be preprocessed recursively based on the "
-#| "known preprocessor rules. The common macroses from the data/core/macros "
-#| "will be preprocessed before the specified resources.  B<define1,"
-#| "define2,...> - the extra defines will be added before processing the "
-#| "files. If you want to add them you must add the '=' character before.  If "
-#| "'SKIP_CORE' is in the define list the data/core won't be preprocessed.  "
-#| "Example: B<-p ~/wesnoth/data/campaigns/tutorial ~/result> or B<-"
-#| "p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result>"
 msgid ""
 "preprocesses a specified file/folder. For each file(s) a plain .cfg file and "
 "a processed .cfg file will be written in specified target directory. If a "
@@ -474,21 +461,19 @@ msgid ""
 "preprocessor visit: http://wiki.wesnoth.org/PreprocessorRef#Command-"
 "line_preprocessor"
 msgstr ""
-"попередньо обробляє зазначений файл/теку. Файл(и) буде записаний у вказану "
-"цільову теку: звичайний файл cfg та оброблений файл cfg. Якщо вказана тека, "
-"вона буде обробляється рекурсивно на основі відомих правил препроцесора. "
-"Загальні макроси з даних/ядра/макроси будуть оброблятись перед вказаними "
-"ресурсами. B<define1,define2,...> - додаткові визначення будуть додані перед "
-"обробкою файлів. Якщо ви хочете їх додати, необхідно додати символ '=' "
-"раніше. Якщо в списку визначень міститься 'SKIP_CORE', дані/ядро оброблятись "
-"не будуть. Приклад: B<-p ~/wesnoth/data/campaigns/tutorial ~/result> або B<-"
-"p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result>"
+"попередньо обробляє зазначений файл/теку. Для кожного файлу у вказану "
+"цільову теку будуть записані звичайний файл cfg та оброблений файл cfg. Якщо "
+"вказана тека, вона буде обробляється рекурсивно на основі відомих правил "
+"препроцесора. Загальні макроси з теки \"data/core/macros\" будуть "
+"оброблятись перед вказаними ресурсами. Приклад: B<-p ~/wesnoth/data/"
+"campaigns/tutorial ~/result.> За детальною інформацією щодо препроцесора "
+"дивіться: http://wiki.wesnoth.org/PreprocessorRef#Command-line_preprocessor"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:170
 #, no-wrap
 msgid "B<--preprocess-defines=DEFINE1,DEFINE2,etc>"
-msgstr ""
+msgstr "B<--preprocess-defines=ВИЗНАЧЕННЯ1,ВИЗНАЧЕННЯ2,ітд>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:175
@@ -497,6 +482,9 @@ msgid ""
 "B<SKIP_CORE> is in the define list the \"data/core\" directory won't be "
 "preprocessed."
 msgstr ""
+"розділений комами список визначень, які будуть використовуватися командою '--"
+"preprocess'. Якщо B<SKIP_CORE> є в списку визначень, тека \"data/core\" не "
+"буде оброблятись."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:175
@@ -562,7 +550,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:193
 #, no-wrap
 msgid "B<--username>I<E<lt>usernameE<gt>>"
-msgstr ""
+msgstr "B<--username>I<E<lt>користувачE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:196
@@ -570,12 +558,14 @@ msgid ""
 "uses E<lt>usernameE<gt> when connecting to a server, ignoring other "
 "preferences."
 msgstr ""
+"використовує E<lt>і'мя_користувачаE<gt> при під'єднанні до сервера, "
+"ігноруючи інші параметри."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:196
 #, no-wrap
 msgid "B<--password>I<E<lt>passwordE<gt>>"
-msgstr ""
+msgstr "B<--password>I<E<lt>парольE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:199
@@ -583,6 +573,8 @@ msgid ""
 "uses E<lt>passwordE<gt> when connecting to a server, ignoring other "
 "preferences. Unsafe."
 msgstr ""
+"використовує E<lt>парольE<gt> при під'єднанні до сервера, ігноруючи інші "
+"параметри. Небезпечно."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:199

@@ -7,10 +7,10 @@
 # Igor Paliychuk <mansonigor@gmail.com>, 2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.10\n"
+"Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-10-27 15:56+0200\n"
-"PO-Revision-Date: 2012-08-18 22:09+0200\n"
+"PO-Revision-Date: 2012-10-31 12:38+0200\n"
 "Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: uk\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Virtaal 0.7.1\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #. [time]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:529
@@ -90,16 +90,6 @@ msgstr "зцілює +4"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:18
 #: data/core/macros/abilities.cfg:12
-#, fuzzy
-#| msgid ""
-#| "Heals +4:\n"
-#| "Allows the unit to heal adjacent allied units at the beginning of our "
-#| "turn.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 4 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -108,8 +98,7 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Зцілює +4:\n"
-"Зцілює сусідніх дружніх бійців на початку свого ходу.\n"
+"Дозволяє бійцю зцілювати сусідніх дружніх бійців на початку свого ходу.\n"
 "\n"
 "Боєць отримує від цілителя до 4 ЗД за хід, або не втрачає здоров'я від "
 "отрути в поточному ходу.\n"
@@ -130,16 +119,6 @@ msgstr "зцілює +8"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
 #: data/core/macros/abilities.cfg:31
-#, fuzzy
-#| msgid ""
-#| "Heals +8:\n"
-#| "This unit combines herbal remedies with magic to heal units more quickly "
-#| "than is normally possible on the battlefield.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -149,7 +128,6 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Зцілює +8:\n"
 "Поєднання цілющих трав з відновлюючою магією зцілює бійців швидше, ніж це "
 "звичайно можливо на полі бою.\n"
 "\n"
@@ -1156,7 +1134,7 @@ msgstr "Місцевості"
 #. [topic]: id=..addons
 #: data/core/help.cfg:70 data/core/help.cfg:793
 msgid "Add-ons"
-msgstr ""
+msgstr "Аддони"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
@@ -1174,15 +1152,15 @@ msgid ""
 "its statistics, attacks, resistances, and movement and defense values.\n"
 "\n"
 msgstr ""
+"Ця секція складе список усіх бійців, які ви виявляєте, коли досліджуєте світ "
+"Весноту. Коли ви зустрінете нового бійця впродовж кампанії або мережного "
+"сценарію, він буде доданий до підрозділу його раси; після цього ви зможете "
+"переглянути його сторінку у будь-який час. Сторінка бійця надасть загальний "
+"опис, його статистику, напади, опори, і значення руху та захисту.\n"
+"\n"
 
 #. [topic]: id=..abilities_section
 #: data/core/help.cfg:100
-#, fuzzy
-#| msgid ""
-#| "Certain units have abilities that either directly affect other units, or "
-#| "have an impact on how the unit interacts with other units. These "
-#| "abilities will be listed under this topic as you encounter them.\n"
-#| "\n"
 msgid ""
 "Certain units have abilities that either directly affect other units or have "
 "an impact on how the unit interacts with other units. These abilities will "
@@ -1193,7 +1171,9 @@ msgid ""
 msgstr ""
 "Певні бійці мають здібності, які безпосередньо впливають на інших бійців, "
 "або міняють взаємодію між іншими бійцями. Ці здібності будуть перелічені в "
-"цьому розділі в міру того, як ви їх зустрічатимете.\n"
+"цьому розділі в міру того, як ви їх зустрічатимете. Кожна сторінка "
+"надаватиме опис дії здібності та зазначить бійців (відкритих), які ними "
+"володіють.\n"
 "\n"
 
 #. [topic]: id=..weapon_specials
@@ -1206,6 +1186,13 @@ msgid ""
 "weapon special does and which (currently discovered) units have it.\n"
 "\n"
 msgstr ""
+"Деяка зброя має спеціальні особливості, які збільшують ефективність їх "
+"атаки. Коли ви побачите нову спеціальну властивість зброї впродовж кампанії "
+"або мультиплеєрного сценарію, вона буде додана до цього переліку; після "
+"цього ви зможете переглянути її сторінку в будь-який час. Кожна сторінка "
+"міститиме опис того, що спеціальна властивість зброї робить і які (зараз "
+"виявлені) бійці її мають.\n"
+"\n"
 
 #. [topic]: id=.unknown_unit
 #: data/core/help.cfg:118
@@ -3415,19 +3402,19 @@ msgid ""
 "offer.\n"
 "\n"
 msgstr ""
+"Розширюваність Wesnoth дозволяє процвітаючій спільноті користувачів "
+"розвивати вміст, використовуючи повний потенціал двигуна гри, щоб створювати "
+"нові сценарії, кампанії, і багато іншого, що не може запропонувати офіційний "
+"набір.\n"
+"\n"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:804
 msgid "Using Add-ons"
-msgstr ""
+msgstr "Використання Аддонів"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:805
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -3435,7 +3422,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Шкода</header>"
+"<header>text='Кампанії та Сценарії'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:805
@@ -3443,6 +3430,8 @@ msgid ""
 "The game supports various types of add-ons that are used differently "
 "according to their purpose."
 msgstr ""
+"Гра підтримує різні види аддонів, які по-різному використовуються згідно з "
+"їх завданням."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:807
@@ -3454,16 +3443,22 @@ msgid ""
 "and regular campaigns are available from the <italic>text='Campaigns'</"
 "italic> menu in the title screen."
 msgstr ""
+"\n"
+"\n"
+"Кампанії для одного гравця — це колекції сценаріїв, що разом розказують одну "
+"історію. Незалежні сценарії—якщо є намір їх грати таким чином—як і звичайні "
+"кампанії, доступні в меню <italic>text='Кампанії'</italic> в головному вікні."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:809
-#, fuzzy
-#| msgid "<header>text='Units having this special attack'</header>"
 msgid ""
 "\n"
 "\n"
 "<header>text='Multiplayer Campaigns, Scenarios, and Map Packs'</header>"
-msgstr "<header>text='Бійці з такою особливістю нападу'</header>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='Кампанії, Сценарії та Пакети Карт Мультиплеєру'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:811
@@ -3475,14 +3470,15 @@ msgid ""
 "packs providing sets of individual multiplayer scenarios not connected in "
 "the form of a campaign."
 msgstr ""
+"\n"
+"\n"
+"<italic>text=Мережні'</italic> ігри можуть бути зіграні на повністю "
+"налаштованих, скриптованих сценаріях або навіть особливо спроектованих "
+"кампаніях. Є також пакети, що забезпечують набори індивідуальних "
+"мультиплеєрних сценаріїв, не з'єднаних у формі кампанії."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:813
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Order and Number of Strikes'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3490,7 +3486,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Порядок і Кількість Атак'</header>"
+"<header>text='Ери та Фракції Мультиплеєру'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:815
@@ -3506,14 +3502,18 @@ msgid ""
 "creating a new game, and players can pick from the available factions for "
 "that era when setting up their sides and teams."
 msgstr ""
+"\n"
+"\n"
+"У цілях гри, різні раси істот у світі співпрацюють один з одним у фракціях. "
+"Фракції групуються у збалансовані набори із загальною темою; наприклад, "
+"головні фракції Весноту можуть бути знайдені в типовій Стандартній Ері.\n"
+"\n"
+"У режимі <italic>text='Мультиплеєру'</italic> ви можете вибрати еру "
+"створюючи нову гру, і гравці можуть вибрати доступні для цієї ери фракцій, "
+"встановлюючи їх сторони і команди."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:819
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Chance to Hit'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3521,7 +3521,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Шанс попадания'</header>"
+"<header>text='Ресурси творця'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:821
@@ -3534,11 +3534,19 @@ msgid ""
 "directly used in-game on their own; however, other playable add-ons may "
 "depend on them and suggest or require their installation during download."
 msgstr ""
+"\n"
+"\n"
+"Автори вмісту можуть користуватися ресурсними пакетами, доступними на "
+"сервері аддонів, щоб збагатити їх власний вміст існуючими активами як "
+"наприклад зображення, музика, і код. Вони загалом не призначені для їх "
+"безпосереднього використання гравцями в грі самостійно; проте, інші ігрові "
+"аддони можуть від них залежати і пропонувати або вимагати їх встановлення "
+"впродовж завантаження."
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:830
 msgid "Installing Add-ons"
-msgstr ""
+msgstr "Встановлення Аддонів"
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:831
@@ -3565,11 +3573,31 @@ msgid ""
 "about the add-on, such as its full description, installation status, and "
 "available languages."
 msgstr ""
+"Створені користувачем аддони можуть бути отримані і оновлені через пункт "
+"<italic>text='Аддони'</italic> в головному меню. Після з'єднання з сервером "
+"аддонів (за умовчанням <italic>text='add-ons.wesnoth.org'</italic>), вам "
+"буде представлений перелік аддонів, доступних на сервері для завантаження.\n"
+"\n"
+"Статус встановлення для кожного аддону показується нижче кожного пункту. Для "
+"аддонів, які є <italic>text='оновлюваними'</italic> чи "
+"<italic>text='застарілими'</italic> на сервері, їх встановлені і віддалені "
+"версії будуть показані в колонці <italic>text='Версія'</italic>.\n"
+"\n"
+"Щоб шукати аддони за ключовими словами, введіть їх у будь-якому порядку в "
+"поле <bold>text='Фільтр'</bold>, відокремлені пробілами. Ви можете також "
+"відсортувати перелік аддонів клацанням на заголовки колонок. Також можна "
+"відобразити тільки аддони специфічних категорій, клацнувши кнопку "
+"<bold>text='Опції'</bold> у верхньому правому кутку.\n"
+"\n"
+"Щоб встановити аддон, виберіть його зі списку і клацніть <bold>text='OK'</"
+"bold>, чи просто клацніть двічі на заголовок аддону. Кнопка "
+"<bold>text='Опис'</bold> надає детальну іпформацію про аддон, таку як повний "
+"опис, статус встановлення, та наявні мови."
 
 #. [topic]: id=removing_addons
 #: data/core/help.cfg:844
 msgid "Removing Add-ons"
-msgstr ""
+msgstr "Видалення Аддонів"
 
 #. [topic]: id=removing_addons
 #: data/core/help.cfg:845
@@ -3583,6 +3611,15 @@ msgid ""
 "accidental loss. Instead, you have to manually delete the information files "
 "or the add-ons themselves using your platform’s facilities."
 msgstr ""
+"Щоб видалити аддон, клацніть <bold>text='Видалити Аддон'</bold> у діалозі "
+"з'єднання з сервером аддонів. Вам буде даний вибір, щоб видалити будь-яку "
+"кількість аддонів, які зараз встановлені.\n"
+"\n"
+"Таким чином неможливо видалити аддони, для яких наявна інформація про "
+"публікацію (<italic>text='.pbl'</italic> файли) для того, щоб запобігти "
+"випадковій втраті. Замість цього, вам доведеться вручну видалити "
+"інформаційні файли або аддони безпосередньо, користуючись засобами вашої "
+"платформи."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:860
@@ -3970,16 +4007,10 @@ msgstr "лікує"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51
-#, fuzzy
-#| msgid ""
-#| "Cures:\n"
-#| "A curer can cure a unit of poison, although that unit will receive no "
-#| "additional healing on the turn it is cured of the poison."
 msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
-"Лікує:\n"
 "Лікар здатний лікувати отруту, при цьому пацієнт не отримає додаткового "
 "зцілення в цьому ходу."
 
@@ -3995,16 +4026,10 @@ msgstr "регенерує"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:75
-#, fuzzy
-#| msgid ""
-#| "Regenerates:\n"
-#| "The unit will heal itself 8 HP per turn. If it is poisoned, it will "
-#| "remove the poison instead of healing."
 msgid ""
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
-"Регенерує:\n"
 "Цей боєць зцілює себе на 8 ЗД за хід. Якщо він отруєний, він замість "
 "зцілення лікує себе від отрути."
 
@@ -4020,16 +4045,10 @@ msgstr "стійка"
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:96
-#, fuzzy
-#| msgid ""
-#| "Steadfast:\n"
-#| "This unit’s resistances are doubled, up to a maximum of 50%, when "
-#| "defending. Vulnerabilities are not affected."
 msgid ""
 "This unit’s resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
 msgstr ""
-"Стійкий:\n"
 "Опірності такого бійця при захисті подвоюються, але не більше, ніж на 50%. "
 "Це не торкається вразливості."
 
@@ -4051,16 +4070,6 @@ msgstr "лідерство"
 #: data/core/macros/abilities.cfg:111 data/core/macros/abilities.cfg:133
 #: data/core/macros/abilities.cfg:167 data/core/macros/abilities.cfg:213
 #: data/core/macros/abilities.cfg:271
-#, fuzzy
-#| msgid ""
-#| "Leadership:\n"
-#| "This unit can lead our own units that are next to it, making them fight "
-#| "better.\n"
-#| "\n"
-#| "Adjacent own units of lower level will do more damage in battle. When a "
-#| "unit adjacent to, of a lower level than, and on the same side as a unit "
-#| "with Leadership engages in combat, its attacks do 25% more damage times "
-#| "the difference in their levels."
 msgid ""
 "This unit can lead our own units that are next to it, making them fight "
 "better.\n"
@@ -4070,7 +4079,6 @@ msgid ""
 "Leadership engages in combat, its attacks do 25% more damage times the "
 "difference in their levels."
 msgstr ""
-"Лідерство:\n"
 "Цей боєць веде ваших солдатів в бій, що допомагає їм краще битися.\n"
 "\n"
 "Сусідні до лідера бійці нижчого рівня наноситимуть в бою більше шкоди. Якщо "
@@ -4089,16 +4097,10 @@ msgstr "авангардистка"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:339
-#, fuzzy
-#| msgid ""
-#| "Skirmisher:\n"
-#| "This unit is skilled in moving past enemies quickly, and ignores all "
-#| "enemy Zones of Control."
 msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
-"Авангардист:\n"
 "Цей боєць уміє швидко проходити між противниками, ігноруючи їх Зони Контролю."
 
 #. [illuminates]: id=illumination
@@ -4113,14 +4115,6 @@ msgstr "освітлює"
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:354
-#, fuzzy
-#| msgid ""
-#| "Illuminates:\n"
-#| "This unit illuminates the surrounding area, making lawful units fight "
-#| "better, and chaotic units fight worse.\n"
-#| "\n"
-#| "Any units adjacent to this unit will fight as if it were dusk when it is "
-#| "night, and as if it were day when it is dusk."
 msgid ""
 "This unit illuminates the surrounding area, making lawful units fight "
 "better, and chaotic units fight worse.\n"
@@ -4128,7 +4122,6 @@ msgid ""
 "Any units adjacent to this unit will fight as if it were dusk when it is "
 "night, and as if it were day when it is dusk."
 msgstr ""
-"Освітлює:\n"
 "Цей боєць освітлює територію навкруги, що змушує порядних бійців битись "
 "краще, а хаотичних - гірше.\n"
 "\n"
@@ -4147,16 +4140,10 @@ msgstr "телепорт"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:368
-#, fuzzy
-#| msgid ""
-#| "Teleport:\n"
-#| "This unit may teleport between any two empty villages owned by its side "
-#| "using one of its moves."
 msgid ""
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
-"Телепорт:\n"
 "Цей боєць може телепортуватися між будь-якими двома дружніми порожніми "
 "селами, замість одного з його ходів."
 
@@ -4172,14 +4159,6 @@ msgstr "засідка"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:408 data/core/macros/abilities.cfg:411
-#, fuzzy
-#| msgid ""
-#| "Ambush:\n"
-#| "This unit can hide in forest, and remain undetected by its enemies.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in forest, except if they "
-#| "have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in forest, and remain undetected by its enemies.\n"
 "\n"
@@ -4187,7 +4166,6 @@ msgid ""
 "units next to it. Any enemy unit that first discovers this unit immediately "
 "loses all its remaining movement."
 msgstr ""
-"Засідка:\n"
 "Такий боєць може сховатися в лісі і бути невидимим для ворога.\n"
 "\n"
 "Ворожі бійці можуть побачити його в лісі лише стоячи поруч. Ворожий боєць, "
@@ -4201,14 +4179,6 @@ msgstr "нишпорка"
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:435
-#, fuzzy
-#| msgid ""
-#| "Nightstalk:\n"
-#| "The unit becomes invisible during night.\n"
-#| "\n"
-#| "Enemy units cannot see this unit at night, except if they have units next "
-#| "to it. Any enemy unit that first discovers this unit immediately loses "
-#| "all its remaining movement."
 msgid ""
 "The unit becomes invisible during night.\n"
 "\n"
@@ -4216,7 +4186,6 @@ msgid ""
 "it. Any enemy unit that first discovers this unit immediately loses all its "
 "remaining movement."
 msgstr ""
-"Нишпорка:\n"
 "Такий боєць стає невидимим вночі.\n"
 "\n"
 "Ворожі бійці можуть побачити його вночі, лише стоячи поруч. Ворожий боєць, "
@@ -4239,16 +4208,6 @@ msgstr "переховування"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:454 data/core/macros/abilities.cfg:459
-#, fuzzy
-#| msgid ""
-#| "Concealment:\n"
-#| "This unit can hide in villages (with the exception of water villages), "
-#| "and remain undetected by its enemies, except by those standing next to "
-#| "it.\n"
-#| "\n"
-#| "Enemy units can not see this unit while it is in a village, except if "
-#| "they have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it.\n"
@@ -4257,7 +4216,6 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"Переховування:\n"
 "Цей боєць може ховатися в селах (за винятком водних) і залишатися "
 "непоміченим для ворогів, за винятком тих, що стоять поряд.\n"
 "\n"
@@ -4276,14 +4234,6 @@ msgstr "занурюється"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:478 data/core/macros/abilities.cfg:483
-#, fuzzy
-#| msgid ""
-#| "Submerge:\n"
-#| "This unit can hide in deep water, and remain undetected by its enemies.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in deep water, except if "
-#| "they have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
 "\n"
@@ -4291,7 +4241,6 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"Занурення:\n"
 "Цей боєць може ховатися в глибокій воді і залишатися непоміченим ворогами.\n"
 "\n"
 "Поки цей боєць на глибині, супротивники не зможуть його побачити, за "
@@ -4310,15 +4259,11 @@ msgstr "пожирачка"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:505
-#, fuzzy
-#| msgid ""
-#| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
-#| "living unit."
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
-" Цей боєць збільшує своє максимальне здоров'я на 1 кожного разу, коли вбиває "
+"Цей боєць збільшує своє максимальне здоров'я на 1 кожного разу, коли вбиває "
 "живого ворога."
 
 #. [unstore_unit]
@@ -4328,17 +4273,10 @@ msgstr "+1 максимум ЗД"
 
 #. [berserk]: id=berserk
 #: data/core/macros/abilities.cfg:563
-#, fuzzy
-#| msgid ""
-#| "Berserk:\n"
-#| "Whether used offensively or defensively, this attack presses the "
-#| "engagement until one of the combatants is slain, or 30 rounds of attacks "
-#| "have occurred."
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
-"Берсерк:\n"
 "І у наступі і в обороні продовжує бій, поки один з бійців не загине, або "
 "доки не пройдуть 30 раундів бою."
 
@@ -4349,18 +4287,11 @@ msgstr "б'є в спину"
 
 #. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:574
-#, fuzzy
-#| msgid ""
-#| "Backstab:\n"
-#| "When used offensively, this attack deals double damage if there is an "
-#| "enemy of the target on the opposite side of the target, and that unit is "
-#| "not incapacitated (turned to stone or otherwise paralyzed)."
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
 "incapacitated (turned to stone or otherwise paralyzed)."
 msgstr ""
-"Удар в спину:\n"
 "У нападі ця атака наносить подвійну шкоду, якщо з протилежного боку "
 "атакованого бійця його відволікає противник, і цей противник не виведений з "
 "ладу (наприклад, перетворений на камінь чи паралізований)."
@@ -4373,35 +4304,21 @@ msgstr "чума"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #: data/core/macros/abilities.cfg:587
-#, fuzzy
-#| msgid ""
-#| "Plague:\n"
-#| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#| "unit identical to and on the same side as the unit with the Plague "
-#| "attack. This doesn’t work on Undead or units in villages."
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
 "identical to and on the same side as the unit with the Plague attack. This "
 "doesn’t work on Undead or units in villages."
 msgstr ""
-"Чума:\n"
 "Коли боєць убитий чумою, він замінюється ідентичним бійцем і переходить на "
 "бік ворога. Це не діє на нежить і на бійців, що знаходяться в селах."
 
 #. [plague]: id=plague, type=Walking Corpse
 #: data/core/macros/abilities.cfg:598
-#, fuzzy
-#| msgid ""
-#| "Plague:\n"
-#| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#| "Walking Corpse on the same side as the unit with the Plague attack. This "
-#| "doesn’t work on Undead or units in villages."
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
 "doesn’t work on Undead or units in villages."
 msgstr ""
-"Чума:\n"
 "Коли боєць убитий чумою, він замінюється Ходячим трупом і переходить на бік "
 "ворога. Це не діє на нежить і на бійців, що знаходяться в селах."
 
@@ -4412,20 +4329,12 @@ msgstr "уповільнює"
 
 #. [slow]: id=slow
 #: data/core/macros/abilities.cfg:609
-#, fuzzy
-#| msgid ""
-#| "Slow:\n"
-#| "This attack slows the target until it ends a turn. Slow halves the damage "
-#| "caused by attacks and the movement cost for a slowed unit is doubled. A "
-#| "unit that is slowed will feature a snail icon in its sidebar information "
-#| "when it is selected."
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
 "that is slowed will feature a snail icon in its sidebar information when it "
 "is selected."
 msgstr ""
-"Уповільнення:\n"
 "Ця атака уповільнює жертву до кінця ходу. Уповільнений боєць завдаватиме в "
 "два рази меншої шкоди і буде рухатись в два рази повільніше. Коли боєць "
 "уповільнений, до його опису в правій частині екрану додається значок равлика."
@@ -4437,16 +4346,10 @@ msgstr "паралізує"
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:619
-#, fuzzy
-#| msgid ""
-#| "Petrify:\n"
-#| "This attack petrifies the target, turning it to stone. Units that have "
-#| "been petrified may not move or attack."
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
 msgstr ""
-"Параліч:\n"
 "Цей вид атаки паралізує ціль, перетворюючи її і камінь. Паралізовані бійці "
 "не можуть рухатись і атакувати."
 
@@ -4457,29 +4360,16 @@ msgstr "снайпер"
 
 #. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:629
-#, fuzzy
-#| msgid ""
-#| "Marksman:\n"
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
-msgstr ""
-"Снайпер:\n"
-"При нападі ця атака завжди має шанс не менше 60% попасти в ціль."
+msgstr "При нападі ця атака завжди має шанс не менше 60% попасти в ціль."
 
 #. [chance_to_hit]: id=magical
 #: data/core/macros/abilities.cfg:642
-#, fuzzy
-#| msgid ""
-#| "Magical:\n"
-#| "This attack always has a 70% chance to hit regardless of the defensive "
-#| "ability of the unit being attacked."
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
 msgstr ""
-"Магія:\n"
 "Магія завжди потрапляє з вірогідністю 70%, незалежно від захисту того, хто "
 "обороняється."
 
@@ -4490,20 +4380,12 @@ msgstr "рій"
 
 #. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:654
-#, fuzzy
-#| msgid ""
-#| "Swarm:\n"
-#| "The number of strikes of this attack decreases when the unit is wounded. "
-#| "The number of strikes is proportional to the percentage of its of maximum "
-#| "HP the unit has. For example a unit with 3/4 of its maximum HP will get "
-#| "3/4 of the number of strikes."
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
 "unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
 "number of strikes."
 msgstr ""
-"Рій:\n"
 "Кількість ударів бійця при цій атаці скорочується, якщо він буде поранений. "
 "Кількість ударів пропорційна процентному відношенню поточного і "
 "максимального здоров'я бійця. Наприклад, боєць, що має 3/4 від максимального "
@@ -4516,17 +4398,10 @@ msgstr "наскок"
 
 #. [damage]: id=charge
 #: data/core/macros/abilities.cfg:664
-#, fuzzy
-#| msgid ""
-#| "Charge:\n"
-#| "When used offensively, this attack deals double damage to the target. It "
-#| "also causes this unit to take double damage from the target’s "
-#| "counterattack."
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
 msgstr ""
-"Наскок:\n"
 "При використанні в нападі ця атака наносить ворогу подвійну шкоду. Боєць "
 "також отримає подвійну шкоду від удару у відповідь."
 
@@ -4537,37 +4412,23 @@ msgstr "висмоктує"
 
 #. [drains]: id=drains
 #: data/core/macros/abilities.cfg:677
-#, fuzzy
-#| msgid ""
-#| "Drain:\n"
-#| "This unit drains health from living units, healing itself for half the "
-#| "amount of damage it deals (rounded down)."
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
 msgstr ""
-"Висмоктує:\n"
 "Цей боєць висмоктує хиття з живих ворогів, зцілюючи себе на половину "
 "завданої шкоди (округляється вниз)."
 
 #. [firststrike]: id=firststrike
 #: data/core/macros/abilities.cfg:686
-#, fuzzy
-#| msgid "firststrike"
 msgid "first strike"
-msgstr "перший напад"
+msgstr "перший удар"
 
 #. [firststrike]: id=firststrike
 #: data/core/macros/abilities.cfg:687
-#, fuzzy
-#| msgid ""
-#| "First Strike:\n"
-#| "This unit always strikes first with this attack, even if they are "
-#| "defending."
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
-"Перший напад:\n"
 "Боєць з цією атакою завжди завдає першого удару, навіть якщо захищається."
 
 #. [poison]: id=poison
@@ -4577,18 +4438,11 @@ msgstr "отрута"
 
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:697
-#, fuzzy
-#| msgid ""
-#| "Poison:\n"
-#| "This attack poisons living targets. Poisoned units lose 8 HP every turn "
-#| "until they are cured or are reduced to 1 HP. Poison can not, of itself, "
-#| "kill a unit."
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison can not, of itself, kill "
 "a unit."
 msgstr ""
-"Отрута:\n"
 "Цей вид атаки отруює живих істот. Отруєний боєць втрачає 8 ЗД кожен хід до "
 "тих пір, поки не вилікується, або доки його здоров'я не зменшиться до 1 ЗД. "
 "Отрута сама по собі не може вбити бійця."
@@ -6195,13 +6049,11 @@ msgstr "Просувається до: "
 
 #: src/help.cpp:1414
 msgid "Base unit: "
-msgstr ""
+msgstr "Базовий боєць:"
 
 #: src/help.cpp:1424
-#, fuzzy
-#| msgid "Factions:"
 msgid "Variations: "
-msgstr "Фракції:"
+msgstr "Варіації: "
 
 #: src/help.cpp:1450 src/help.cpp:1825 src/help.cpp:1898
 msgid "race^Miscellaneous"
@@ -6229,11 +6081,11 @@ msgstr "Ходів: "
 
 #: src/help.cpp:1495
 msgid "Vision: "
-msgstr ""
+msgstr "Бачення: "
 
 #: src/help.cpp:1497
 msgid "Jamming: "
-msgstr ""
+msgstr "Заклинювання: "
 
 #: src/help.cpp:1498
 msgid "Cost: "
@@ -6301,11 +6153,11 @@ msgstr "Ціна ходу"
 
 #: src/help.cpp:1624
 msgid "Vision Cost"
-msgstr ""
+msgstr "Ціна бачення"
 
 #: src/help.cpp:1626
 msgid "Jamming Cost"
-msgstr ""
+msgstr "Ціна заклинювання"
 
 #: src/help.cpp:1904
 msgid "<header>text='Units of this race'</header>"

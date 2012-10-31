@@ -7,10 +7,10 @@
 # Igor Paliychuk <mansonigor@gmail.com>, 2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-10-27 15:56+0200\n"
-"PO-Revision-Date: 2012-04-28 22:46+0300\n"
+"PO-Revision-Date: 2012-10-31 12:38+0200\n"
 "Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: uk\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Virtaal 0.7.1\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #. [terrain_type]: id=deep_water
 #. [terrain_type]: id=deep_water_gray
@@ -264,10 +264,8 @@ msgstr "Вітряк"
 
 #. [terrain_type]: id=campfire
 #: data/core/terrain.cfg:409
-#, fuzzy
-#| msgid "Campaign"
 msgid "Campfire"
-msgstr "Кампанія"
+msgstr "Багаття"
 
 #. [terrain_type]: id=fence
 #: data/core/terrain.cfg:418
@@ -331,10 +329,8 @@ msgstr "Тропічний ліс"
 
 #. [terrain_type]: id=palm_forest
 #: data/core/terrain.cfg:497
-#, fuzzy
-#| msgid "Pine Forest"
 msgid "Palm Forest"
-msgstr "Сосновий ліс"
+msgstr "Пальмовий ліс"
 
 #. [terrain_type]: id=pine_forest
 #: data/core/terrain.cfg:509
@@ -506,17 +502,13 @@ msgstr "Сніжні пагорби з мішаним лісом"
 
 #. [terrain_type]: id=forest_tropical_hills
 #: data/core/terrain.cfg:820
-#, fuzzy
-#| msgid "Tropical Forest"
 msgid "Tropical Forested Hills"
-msgstr "Тропічний ліс"
+msgstr "Пагорби з тропічним лісом"
 
 #. [terrain_type]: id=forest_palm_hills
 #: data/core/terrain.cfg:831
-#, fuzzy
-#| msgid "Forested Hills"
 msgid "Palm Forested Hills"
-msgstr "Лісисті пагорби"
+msgstr "Пагорби з пальмовим лісом"
 
 #. [terrain_type]
 #: data/core/terrain.cfg:843
@@ -689,8 +681,6 @@ msgstr "Непрохідне перекриття"
 
 #. [terrain_type]: id=unwalkable_overlay
 #: data/core/terrain.cfg:1161
-#, fuzzy
-#| msgid "Impassable Overlay"
 msgid "Unwalkable Overlay"
 msgstr "Непрохідне перекриття"
 
@@ -1151,30 +1141,24 @@ msgstr "Міст через прівру в печері"
 #. [terrain_type]: id=hangingbridgediag2
 #: data/core/terrain.cfg:2101 data/core/terrain.cfg:2112
 #: data/core/terrain.cfg:2123
-#, fuzzy
-#| msgid "Rotting Bridge"
 msgid "Hanging Bridge"
-msgstr "Гнилий міст"
+msgstr "Підвісний міст"
 
 #. [terrain_type]: id=stonechasmbridge
 #. [terrain_type]: id=stonechasmbridgediag1
 #. [terrain_type]: id=stonechasmbridgediag2
 #: data/core/terrain.cfg:2137 data/core/terrain.cfg:2147
 #: data/core/terrain.cfg:2157
-#, fuzzy
-#| msgid "Cave Chasm Bridge"
 msgid "Stone Chasm Bridge"
-msgstr "Міст через прівру в печері"
+msgstr "Кам'яний міст через прірву"
 
 #. [terrain_type]: id=plankbridge
 #. [terrain_type]: id=plankbridgediag1
 #. [terrain_type]: id=plankbridgediag2
 #: data/core/terrain.cfg:2169 data/core/terrain.cfg:2179
 #: data/core/terrain.cfg:2189
-#, fuzzy
-#| msgid "Bridge"
 msgid "Plank Bridge"
-msgstr "Міст"
+msgstr "Дерев'яний міст"
 
 #. [terrain_type]: id=off_map
 #: data/core/terrain.cfg:2205
@@ -1220,7 +1204,7 @@ msgstr "Провалля"
 #. [terrain_type]: id=rails
 #: data/core/terrain.cfg:2288
 msgid "Rails"
-msgstr ""
+msgstr "Огорожа"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
@@ -1311,10 +1295,8 @@ msgstr "Скасувати"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:88
-#, fuzzy
-#| msgid "Type"
 msgid "Type:"
-msgstr "Тип"
+msgstr "Тип:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:120
@@ -1328,10 +1310,8 @@ msgstr "Версія:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:180
-#, fuzzy
-#| msgid "Status"
 msgid "Status:"
-msgstr "Статус"
+msgstr "Статус:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:212
@@ -1341,7 +1321,7 @@ msgstr "Розмір:"
 #. [label]
 #: data/gui/default/window/addon_description.cfg:243
 msgid "Downloads:"
-msgstr ""
+msgstr "Завантаження:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:274
@@ -1366,83 +1346,77 @@ msgstr "Немає"
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:34
 msgid "addons_of_type^Campaigns"
-msgstr ""
+msgstr "Кампанії"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:35
 msgid "addons_of_type^MP eras"
-msgstr ""
+msgstr "Ери МП"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:38
 msgid "addons_of_type^Scenarios"
-msgstr ""
+msgstr "Сценарії"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:39
 msgid "addons_of_type^MP factions"
-msgstr ""
+msgstr "Фракції МП"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:42
 msgid "addons_of_type^MP campaigns"
-msgstr ""
+msgstr "Кампанії МП"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:43
 msgid "addons_of_type^Resources"
-msgstr ""
+msgstr "Ресурси"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:46
 msgid "addons_of_type^MP scenarios"
-msgstr ""
+msgstr "Сценарії МП"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:48
 msgid "addons_of_type^Other"
-msgstr ""
+msgstr "Інше"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:51
 msgid "addons_of_type^MP map-packs"
-msgstr ""
+msgstr "Пакети карт МП"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:52
 msgid "addons_of_type^Unknown"
-msgstr ""
+msgstr "Невідомо"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:55
 msgid "addons_of_type^MP modifications"
-msgstr ""
+msgstr "Модифікації МП"
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:156
-#, fuzzy
-#| msgid "Multiplayer Options"
 msgid "Filter Options"
-msgstr "Параметри мультиплеєра"
+msgstr "Параметри фільтру"
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:170
 msgid "Add-ons matching the following criteria will be displayed."
-msgstr ""
+msgstr "Будуть показані аддони, що відповідають наступним критеріям."
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:197
-#, fuzzy
-#| msgid "Add-ons"
 msgid "Add-on types:"
-msgstr "Аддони"
+msgstr "Типи аддонів:"
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:209
-#, fuzzy
-#| msgid "Translations:"
 msgid "Installation status:"
-msgstr "Переклади:"
+msgstr "Стан встановлення:"
 
 #. [label]
 #: data/gui/default/window/addon_uninstall_list.cfg:51
@@ -1465,8 +1439,6 @@ msgstr "Видалити"
 
 #. [label]
 #: data/gui/default/window/campaign_dialog.cfg:55
-#, fuzzy
-#| msgid "Play a campaign"
 msgid "Play a Campaign"
 msgstr "Грати кампанію"
 
@@ -1613,20 +1585,18 @@ msgstr "Лише команда"
 
 #. [toggle_button]: id=immutable_toggle
 #: data/gui/default/window/editor_edit_label.cfg:112
-#, fuzzy
-#| msgid "Impassable"
 msgid "Immutable"
-msgstr "Непрохідна місцевість"
+msgstr "Непорушний"
 
 #. [toggle_button]: id=visible_fog_toggle
 #: data/gui/default/window/editor_edit_label.cfg:130
 msgid "Visible in fog"
-msgstr ""
+msgstr "Видимий в тумані"
 
 #. [toggle_button]: id=visible_shroud_toggle
 #: data/gui/default/window/editor_edit_label.cfg:148
 msgid "Visible in shroud"
-msgstr ""
+msgstr "Видимий в пелені"
 
 #. [label]
 #: data/gui/default/window/editor_generate_map.cfg:35
@@ -1670,10 +1640,8 @@ msgstr "Висота:"
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_new_map.cfg:115
-#, fuzzy
-#| msgid "Create Game"
 msgid "Create"
-msgstr "Створити гру"
+msgstr "Створити"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -1703,10 +1671,8 @@ msgstr "Стара висота:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:154
-#, fuzzy
-#| msgid "Expand / shrink direction"
 msgid "Expand/shrink direction:"
-msgstr "Напрям розтягування / стискування"
+msgstr "Розтягнути/стиснути напрям:"
 
 #. [toggle_button]: id=copy_edge_terrain
 #: data/gui/default/window/editor_resize_map.cfg:253
@@ -1715,10 +1681,8 @@ msgstr "Копіювати ландшафт по краю"
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_resize_map.cfg:274
-#, fuzzy
-#| msgid "Resize Map"
 msgid "Resize"
-msgstr "Змінити розмір карти"
+msgstr "Змінити розмір"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_set_starting_position.cfg:50
@@ -1868,10 +1832,8 @@ msgstr "Ви дійсно хочете видалити цю гру?"
 #. [toggle_button]: id=dont_ask_again
 #: data/gui/default/window/game_delete.cfg:80
 #: data/gui/default/window/mp_host_game_prompt.cfg:79
-#, fuzzy
-#| msgid "Do not show lobby joins"
 msgid "Do not show again"
-msgstr "Не показувати підключення в фойє"
+msgstr "Не показувати знову"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -1916,15 +1878,13 @@ msgstr "Видалити"
 
 #. [toggle_button]: id=change_difficulty
 #: data/gui/default/window/game_load.cfg:383
-#, fuzzy
-#| msgid "Difficulty"
 msgid "Change difficulty"
-msgstr "Складність"
+msgstr "Змінити складність"
 
 #. [toggle_button]: id=change_difficulty
 #: data/gui/default/window/game_load.cfg:384
 msgid "Change campaign difficulty before loading"
-msgstr ""
+msgstr "Змініть складність кампанії перед завантаженням"
 
 #. [toggle_button]: id=show_replay
 #: data/gui/default/window/game_load.cfg:403
@@ -1934,7 +1894,7 @@ msgstr "Показати повтор"
 #. [toggle_button]: id=show_replay
 #: data/gui/default/window/game_load.cfg:404
 msgid "Play the embedded replay from the saved game if applicable"
-msgstr ""
+msgstr "Грати вкладений повтор із збереженої гри, якщо придатний"
 
 #. [toggle_button]: id=cancel_orders
 #: data/gui/default/window/game_load.cfg:422
@@ -1944,7 +1904,7 @@ msgstr "Скасувати накази"
 #. [toggle_button]: id=cancel_orders
 #: data/gui/default/window/game_load.cfg:423
 msgid "Cancel any pending unit movements in the saved game"
-msgstr ""
+msgstr "Скасувати всі заплановані рухи бійців у збереженій грі"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
@@ -2393,15 +2353,13 @@ msgstr "Випадковий час початку"
 
 #. [label]
 #: data/gui/default/window/mp_create_game_choose_mods.cfg:54
-#, fuzzy
-#| msgid "Choose Resolution"
 msgid "Choose Modifications"
-msgstr "Виберіть розширення"
+msgstr "Виберіть модифікації"
 
 #. [label]: id=message
 #: data/gui/default/window/mp_create_game_choose_mods.cfg:73
 msgid "Enable the modifications you want to be active during the game."
-msgstr ""
+msgstr "Ввімкнути модифікації, які ви хочете активувати для гри."
 
 #. [scroll_label]: id=message
 #: data/gui/default/window/mp_create_game_set_password.cfg:61
@@ -2418,21 +2376,19 @@ msgstr "Пароль:"
 #. [label]
 #: data/gui/default/window/mp_depcheck_confirm_change.cfg:40
 msgid "Confirmation requested"
-msgstr ""
+msgstr "Запит підтвердження"
 
 #. [label]
 #: data/gui/default/window/mp_depcheck_confirm_change.cfg:98
 msgid "Would you like to apply the changes?"
-msgstr ""
+msgstr "Ви точно хочете застосувати зміни?"
 
 #. [label]
 #. [label]: id=message
 #: data/gui/default/window/mp_depcheck_select_new.cfg:40
 #: data/gui/default/window/mp_depcheck_select_new.cfg:59
-#, fuzzy
-#| msgid "User interface sounds"
 msgid "User interaction required"
-msgstr "Звуки інтерфейсу користувача"
+msgstr "Вимагається дія користувача"
 
 #. [column]
 #. [label]
@@ -2448,6 +2404,9 @@ msgid ""
 "The server will run as a background process until all users have "
 "disconnected. Do you wish to continue?"
 msgstr ""
+"Щоб почати мережну гру треба запустити екземпляр локального сервера. Сервер "
+"буде працювати як фоновий процес поки до сервера при'єднані користувачі. Ви "
+"бажаєте продовжити?"
 
 #. [window]: id=mp_login
 #: data/gui/default/window/mp_login.cfg:8
@@ -2738,11 +2697,11 @@ msgstr "Показати сітку"
 
 #: src/game_preferences_display.cpp:178
 msgid "Save replays at the end of scenarios"
-msgstr ""
+msgstr "Зберігати повтори в кінці сценарію"
 
 #: src/game_preferences_display.cpp:179
 msgid "Delete auto-saves at the end of scenarios"
-msgstr ""
+msgstr "Видаляти автозбереження в кінці сценарію"
 
 #: src/game_preferences_display.cpp:180
 msgid "Do not show lobby joins"
@@ -2993,13 +2952,13 @@ msgstr "Перервати рух вашого бійця при зустріч�
 msgid ""
 "Saves replays of games on victory in all modes and defeat in multiplayer"
 msgstr ""
+"Зберігає повтори ігор при перемозі в усіх режимах і при поразці в "
+"мультирлеєрі"
 
 #: src/game_preferences_display.cpp:371
-#, fuzzy
-#| msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgid ""
 "Deletes previous auto-saves on victory in all modes and defeat in multiplayer"
-msgstr "Автом. видаляти автозбер. перемог (ОГ/МП) і поразок (лише МП)"
+msgstr "Видаляти попередні автозбер. при перемозі (ОГ/МП) і поразці (лише МП)"
 
 #: src/game_preferences_display.cpp:373
 msgid "Overlay a grid onto the map"
@@ -3010,16 +2969,12 @@ msgid "Sort the player list in the lobby by player groups"
 msgstr "Сортувати список гравців в фойє по групах"
 
 #: src/game_preferences_display.cpp:379
-#, fuzzy
-#| msgid "Show icons in front of the player names in the lobby."
 msgid "Show icons in front of the player names in the lobby"
-msgstr "Показувати значки напроти гравців в фойє."
+msgstr "Показувати значки напроти гравців в фойє"
 
 #: src/game_preferences_display.cpp:382
-#, fuzzy
-#| msgid "Uncheck to delete the saved password (on exit)."
 msgid "Uncheck to delete the saved password (on exit)"
-msgstr "Вимкніть - тоді пароль буде видалений (при виході)."
+msgstr "Вимкніть, щоб видалити збережений пароль (при виході)"
 
 #: src/game_preferences_display.cpp:386
 msgid "Do not show messages about players joining the multiplayer lobby"
@@ -3038,12 +2993,10 @@ msgid "Use New Lobby Interface"
 msgstr "Використовувати новий інтерфейс фойє"
 
 #: src/game_preferences_display.cpp:395
-#, fuzzy
-#| msgid "Find and set path to MP server to host LAN games."
 msgid "Find and set path to MP server to host LAN games"
 msgstr ""
 "Знайти і вказати шлях до МП-сервера, який буде хостити ігри в локальній "
-"мережі."
+"мережі"
 
 #: src/game_preferences_display.cpp:396
 msgid "View and edit your friends and ignores list"
@@ -3283,7 +3236,7 @@ msgstr "Сторінка не визначена."
 
 #: src/gui/auxiliary/window_builder/pane.cpp:34
 msgid "Need at least 1 parallel item."
-msgstr ""
+msgstr "Потрібен принаймні 1 паралельний елемент."
 
 #: src/gui/auxiliary/window_builder/slider.cpp:67
 msgid "The number of value_labels and values don't match."
@@ -3307,73 +3260,71 @@ msgstr "Вузли не визначені."
 
 #: src/gui/dialogs/addon/description.cpp:49
 msgid "addon_state^Not installed"
-msgstr ""
+msgstr "Не встановлений"
 
 #: src/gui/dialogs/addon/description.cpp:51
 msgid "addon_state^Published, not installed"
-msgstr ""
+msgstr "Опублікований, не встановлений"
 
 #: src/gui/dialogs/addon/description.cpp:57
 msgid "addon_state^Installed"
-msgstr ""
+msgstr "Встановлений"
 
 #: src/gui/dialogs/addon/description.cpp:59
 msgid "addon_state^Published"
-msgstr ""
+msgstr "Опублкований"
 
 #: src/gui/dialogs/addon/description.cpp:66
 msgid "addon_state^Installed, not tracking local version"
-msgstr ""
+msgstr "Встановлений, не відслідкована локальна версія"
 
 #: src/gui/dialogs/addon/description.cpp:70
 msgid "addon_state^Published, not tracking local version"
-msgstr ""
+msgstr "Опублікований, не відслідкована локальна версія"
 
 #: src/gui/dialogs/addon/description.cpp:78
 msgid "addon_state^Installed ($local_version|), upgradable"
-msgstr ""
+msgstr "Встановлений ($local_version|), оновлюваний"
 
 #: src/gui/dialogs/addon/description.cpp:79
 msgid "addon_state^Published ($local_version| installed), upgradable"
-msgstr ""
+msgstr "Опублікований ($local_version| встановлений), оновлюваний"
 
 #: src/gui/dialogs/addon/description.cpp:88
 msgid "addon_state^Installed ($local_version|), outdated on server"
-msgstr ""
+msgstr "Встановлений ($local_version|), застарілий на сервері"
 
 #: src/gui/dialogs/addon/description.cpp:89
 msgid "addon_state^Published ($local_version| installed), outdated on server"
-msgstr ""
+msgstr "Опублікований ($local_version| встановлений), застарілий на сервері"
 
 #: src/gui/dialogs/addon/description.cpp:97
 msgid "addon_state^Installed, broken"
-msgstr ""
+msgstr "Встановлений, зламаний"
 
 #: src/gui/dialogs/addon/description.cpp:99
 msgid "addon_state^Published, broken"
-msgstr ""
+msgstr "Опублікований, зламаний"
 
 #: src/gui/dialogs/addon/description.cpp:105
 msgid "addon_state^Unknown"
-msgstr ""
+msgstr "Невідомо"
 
 #: src/gui/dialogs/addon/filter_options.cpp:109
 msgid "addons_view^Not Installed"
-msgstr ""
+msgstr "Не встановлений"
 
 #: src/gui/dialogs/addon/filter_options.cpp:111
 msgid "addons_view^Upgradable"
-msgstr ""
+msgstr "Оновлюваний"
 
 #: src/gui/dialogs/addon/filter_options.cpp:113
 msgid "addons_view^Installed"
-msgstr ""
+msgstr "Встановлений"
 
 #: src/gui/dialogs/addon/filter_options.cpp:115
-#, fuzzy
-#| msgid "Uninstall Add-ons"
 msgid "addons_view^All Add-ons"
-msgstr "Деінсталювати аддони"
+msgstr "Всі аддони"
 
 #: src/gui/dialogs/addon_list.cpp:256
 #: src/gui/dialogs/network_transmission.cpp:54
@@ -3475,29 +3426,35 @@ msgstr "Завантажити гру..."
 
 #: src/gui/dialogs/mp_depcheck_confirm_change.cpp:65
 msgid "$requester requires the following modifications to be enabled:"
-msgstr ""
+msgstr "$requester вимагає щоб наступні модифікації були увімкнені:"
 
 #: src/gui/dialogs/mp_depcheck_confirm_change.cpp:67
 msgid "$requester requires the following modifications to be disabled:"
-msgstr ""
+msgstr "$requester вимагає щоб наступні модифікації були вимкнені:"
 
 #: src/gui/dialogs/mp_depcheck_select_new.cpp:69
 msgid ""
 "The currently chosen scenario is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
+"Наразі обраний сценарій несумісний з вашим встановленням.\n"
+"Виберіть сумісну."
 
 #: src/gui/dialogs/mp_depcheck_select_new.cpp:74
 msgid ""
 "The currently chosen era is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
+"Наразі обрана ера несумісна з вашим встановленням.\n"
+"Виберіть сумісну."
 
 #: src/gui/dialogs/mp_depcheck_select_new.cpp:80
 msgid ""
 "The currently chosen modification is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
+"Наразі обрана модифікація несумісна з вашим встановленням.\n"
+"Виберіть сумісну."
 
 #: src/gui/dialogs/title_screen.cpp:297
 msgid "Version "
@@ -3538,46 +3495,36 @@ msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Не можу показати діалог, він не поміщається на екрані."
 
 #: src/hotkey_preferences_display.cpp:148
-#, fuzzy
-#| msgid "Hotkeys"
 msgid "Hotkeys Reset"
-msgstr "Гарячі клавіші"
+msgstr "Скидання клавіш"
 
 #: src/hotkey_preferences_display.cpp:149
 msgid "All hotkeys have been reset to their default values."
-msgstr ""
+msgstr "Всі гарячі клавіші були скинуті на типові."
 
 #: src/hotkey_preferences_display.cpp:165
 msgid "Hotkey Settings"
 msgstr "Параметри гарячих клавіш"
 
 #: src/hotkey_preferences_display.cpp:170
-#, fuzzy
-#| msgid "Default"
 msgid "Reset Defaults"
-msgstr "Типово"
+msgstr "Скинути типові"
 
 #: src/hotkey_preferences_display.cpp:173
 msgid "Reset all bindings to the default values"
-msgstr ""
+msgstr "Скинути прив'язки до типових значень"
 
 #: src/hotkey_preferences_display.cpp:217
-#, fuzzy
-#| msgid "Prefs section^General"
 msgid "Prefs section^Game"
-msgstr "Загальні"
+msgstr "Гра"
 
 #: src/hotkey_preferences_display.cpp:219
-#, fuzzy
-#| msgid "Prefs section^Sound"
 msgid "Prefs section^Editor"
-msgstr "Звук"
+msgstr "Редактор"
 
 #: src/hotkey_preferences_display.cpp:246
-#, fuzzy
-#| msgid "Hotkeys"
 msgid "Add Hotkey"
-msgstr "Гарячі клавіші"
+msgstr "Додати клавішу"
 
 #: src/hotkey_preferences_display.cpp:247
 msgid "Clear Hotkey"
@@ -3612,24 +3559,20 @@ msgid ""
 "\"$hotkey_sequence|\" is in use by \"$old_hotkey_action|\". Do you wish to "
 "reassign it to \"$new_hotkey_action|\"?"
 msgstr ""
+"\"$hotkey_sequence|\" використовується \"$old_hotkey_action|\". Хочете "
+"перевизначити її на \"$new_hotkey_action|\"?"
 
 #: src/hotkey_preferences_display.cpp:659
-#, fuzzy
-#| msgid "Hotkeys"
 msgid "Reassign Hotkey"
-msgstr "Гарячі клавіші"
+msgstr "Перевизначити клавішу"
 
 #: src/hotkeys.cpp:62
-#, fuzzy
-#| msgid "Flip Clipboard Horizontally"
 msgid "Scroll Viewport Horizontally"
-msgstr "Перевернути буфер обміну по горизонталі"
+msgstr "Прокрутити поле зору по горизонталі"
 
 #: src/hotkeys.cpp:63
-#, fuzzy
-#| msgid "Flip Clipboard Vertically"
 msgid "Scroll Viewport Vertically"
-msgstr "Перевернути буфер обміну по вертикалі"
+msgstr "Прокрутити поле зору по вертикалі"
 
 #: src/hotkeys.cpp:69
 msgid "Left Mouse Click"
@@ -3780,10 +3723,8 @@ msgid "Continue Network Game"
 msgstr "Продовжити мережну гру"
 
 #: src/hotkeys.cpp:111
-#, fuzzy
-#| msgid "Start Editor"
 msgid "Quit Editor"
-msgstr "Запустити редактор"
+msgstr "Вийти з редактора"
 
 #: src/hotkeys.cpp:112
 msgid "Set Team Label"
@@ -3843,50 +3784,38 @@ msgstr "Пропустити анімацію"
 
 #. TRANSLATORS: whiteboard menu entry: toggle planning mode
 #: src/hotkeys.cpp:128
-#, fuzzy
-#| msgid "Toggle Planning Mode"
 msgid "whiteboard^Planning Mode"
-msgstr "Перемкнути режим планування"
+msgstr "Режим планування"
 
 #. TRANSLATORS: whiteboard menu entry: execute planned action
 #: src/hotkeys.cpp:130
-#, fuzzy
-#| msgid "Execute All Actions"
 msgid "whiteboard^Execute Action"
-msgstr "Виконати всі дії"
+msgstr "Виконати дію"
 
 #. TRANSLATORS: whiteboard menu entry: execute all planned actions
 #: src/hotkeys.cpp:132
-#, fuzzy
-#| msgid "Execute All Actions"
 msgid "whiteboard^Execute All Actions"
 msgstr "Виконати всі дії"
 
 #. TRANSLATORS: whiteboard menu entry: delete planned action
 #: src/hotkeys.cpp:134
 msgid "whiteboard^Delete Action"
-msgstr ""
+msgstr "Видалити дію"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action up queue
 #: src/hotkeys.cpp:136
-#, fuzzy
-#| msgid "Move Action Up Queue"
 msgid "whiteboard^Move Action Up"
-msgstr "Змістити дію вверх черги"
+msgstr "Змістити дію вверх"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action down queue
 #: src/hotkeys.cpp:138
-#, fuzzy
-#| msgid "Move Action Down Queue"
 msgid "whiteboard^Move Action Down"
-msgstr "Змістити дію вниз черги"
+msgstr "Змістити дію вниз"
 
 #. TRANSLATORS: whiteboard menu entry: plan as though the chosen unit were dead
 #: src/hotkeys.cpp:140
-#, fuzzy
-#| msgid "Suppose Dead"
 msgid "whiteboard^Suppose Dead"
-msgstr "Припустити смерть"
+msgstr "Вважати мертвим"
 
 #: src/hotkeys.cpp:142
 msgid "Quit to Desktop"
@@ -3925,16 +3854,12 @@ msgid "Map Information"
 msgstr "Інформація про карту"
 
 #: src/hotkeys.cpp:154
-#, fuzzy
-#| msgid "Next Side"
 msgid "Add New Side"
-msgstr "Наступна сторона"
+msgstr "Додати нову сторону"
 
 #: src/hotkeys.cpp:155
-#, fuzzy
-#| msgid "Switch Map"
 msgid "Switch Side"
-msgstr "Перемкнути карту"
+msgstr "Змінити сторону"
 
 #: src/hotkeys.cpp:156
 msgid "Swap Foreground/Background Terrains"
@@ -3942,15 +3867,15 @@ msgstr "Поміняти місцями основний і фоновий ла�
 
 #: src/hotkeys.cpp:157
 msgid "Change Palette Group"
-msgstr ""
+msgstr "Змінити групу палітри"
 
 #: src/hotkeys.cpp:158
 msgid "Scroll Palette Left"
-msgstr ""
+msgstr "Крутити палітру вліво"
 
 #: src/hotkeys.cpp:159
 msgid "Scroll Palette Right"
-msgstr ""
+msgstr "Крутити палітру вправо"
 
 #: src/hotkeys.cpp:160
 msgid "Next Tool"
@@ -3969,28 +3894,20 @@ msgid "Selection Tool"
 msgstr "Інструмент вибору"
 
 #: src/hotkeys.cpp:164
-#, fuzzy
-#| msgid "Set Starting Positions Tool"
 msgid "Starting Positions Tool"
-msgstr "Інструмент 'Початкова позиція'"
+msgstr "Інструмент Початкова позиція"
 
 #: src/hotkeys.cpp:165
-#, fuzzy
-#| msgid "Fill Tool"
 msgid "Label Tool"
-msgstr "Інструмент заповнення"
+msgstr "Інструмент Мітка"
 
 #: src/hotkeys.cpp:166
-#, fuzzy
-#| msgid "Paint Tool"
 msgid "Unit Tool"
-msgstr "Інструмент малювання"
+msgstr "Інструмент Боєць"
 
 #: src/hotkeys.cpp:167
-#, fuzzy
-#| msgid "Village gold"
 msgid "Village Tool"
-msgstr "Золото з села"
+msgstr "Інструмент Село"
 
 #: src/hotkeys.cpp:168
 msgid "Next Brush"
@@ -4093,22 +4010,16 @@ msgid "Auto-update Terrain Transitions"
 msgstr "Автоматично оновлювати переходи плиток"
 
 #: src/hotkeys.cpp:196
-#, fuzzy
-#| msgid "Auto-update Terrain Transitions"
 msgid "Auto-update Terrain Transitions: Yes"
-msgstr "Автоматично оновлювати переходи плиток"
+msgstr "Автоматично оновлювати переходи плиток: Так"
 
 #: src/hotkeys.cpp:197
-#, fuzzy
-#| msgid "Auto-update Terrain Transitions"
 msgid "Auto-update Terrain Transitions: No"
-msgstr "Автоматично оновлювати переходи плиток"
+msgstr "Автоматично оновлювати переходи плиток: Ні"
 
 #: src/hotkeys.cpp:198
-#, fuzzy
-#| msgid "Auto-update Terrain Transitions"
 msgid "Auto-update Terrain Transitions: Partial"
-msgstr "Автоматично оновлювати переходи плиток"
+msgstr "Автоматично оновлювати переходи плиток: Частково"
 
 #: src/hotkeys.cpp:200
 msgid "Refresh Image Cache"
@@ -4212,65 +4123,59 @@ msgstr "Показати Підказку"
 
 #: src/hotkeys.cpp:362 src/hotkeys.cpp:365
 msgid "Button"
-msgstr ""
+msgstr "Кнопка"
 
 #: src/hotkeys.cpp:362
 msgid "Mouse"
-msgstr ""
+msgstr "Мишка"
 
 #: src/hotkeys.cpp:365 src/hotkeys.cpp:401
 msgid "Joystick"
-msgstr ""
+msgstr "Джойстік"
 
 #: src/hotkeys.cpp:371
 msgid "Centered"
-msgstr ""
+msgstr "Центровано"
 
 #: src/hotkeys.cpp:374
 msgid "Up"
-msgstr ""
+msgstr "Вверх"
 
 #: src/hotkeys.cpp:377
-#, fuzzy
-#| msgid "Height:"
 msgid "Right"
-msgstr "Висота:"
+msgstr "Вправо"
 
 #: src/hotkeys.cpp:380
 msgid "Down"
-msgstr ""
+msgstr "Вниз"
 
 #: src/hotkeys.cpp:383
 msgid "Left"
-msgstr ""
+msgstr "Вліво"
 
 #: src/hotkeys.cpp:386
 msgid "RightUp"
-msgstr ""
+msgstr "Справа зверху"
 
 #: src/hotkeys.cpp:389
 msgid "RightDown"
-msgstr ""
+msgstr "Справа знизу"
 
 #: src/hotkeys.cpp:392
 msgid "LeftUp"
-msgstr ""
+msgstr "Зліва зверху"
 
 #: src/hotkeys.cpp:395
 msgid "LeftDown"
-msgstr ""
+msgstr "Зліва знизу"
 
 #: src/hotkeys.cpp:398
-#, fuzzy
-#| msgid "Unknown era"
 msgid "Unknown"
-msgstr "Невідома ера"
+msgstr "Невідомо"
 
 #: src/hotkeys.cpp:401
-#, fuzzy
-#| msgid "Hut"
 msgid "Hat"
-msgstr "Барак"
+msgstr "Капелюх"
 
 #: src/hotkeys.cpp:831 src/hotkeys.cpp:1177
 msgid "Do you really want to quit?"
@@ -4424,10 +4329,8 @@ msgstr ""
 #~ msgid "Change Hotkey"
 #~ msgstr "Змінити"
 
-#, fuzzy
-#~| msgid "Select All"
 #~ msgid "Reset All"
-#~ msgstr "Вибрати всі"
+#~ msgstr "Скинути всі"
 
 #~ msgid "This hotkey is already in use."
 #~ msgstr "Ця гаряча клавіша вже використовується."

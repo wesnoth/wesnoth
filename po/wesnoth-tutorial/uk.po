@@ -7,10 +7,10 @@
 # Igor Paliychuk <mansonigor@gmail.com>, 2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-10-27 15:56+0200\n"
-"PO-Revision-Date: 2012-04-28 17:38+0300\n"
+"PO-Revision-Date: 2012-10-31 12:39+0200\n"
 "Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: uk\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Virtaal 0.7.1\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:39
 msgid ""
@@ -819,7 +819,7 @@ msgstr ""
 #. [set_menu_item]: id=skip_item
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1131
 msgid "End Scenario"
-msgstr ""
+msgstr "Кінець сценарію"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1144
@@ -827,6 +827,8 @@ msgid ""
 "Do you want to keep practicing? You can end this scenario at any time by "
 "using the <b>End Scenario</b> item in the context menu."
 msgstr ""
+"Ви хочете продовжити навчання? Ви можете в будь-який момент закінчити цей "
+"сценарій натиснувши <b>Кінець сценарію</b> в контекстному меню."
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1146
@@ -1418,25 +1420,17 @@ msgstr "Нападіть на орка лучником."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:983
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "To review the capabilities of any unit—including an enemy—hover the mouse "
-#| "over it, and you will see a unit summary on the right of the screen"
 msgid ""
 "To review the capabilities of any unit—including an enemy—hover the mouse "
 "over it, and you will see a unit summary on the right of the screen"
 msgstr ""
-"\n"
 "Щоб подивитися, на що здатний будь-який боєць - включаючи ворогів - наведіть "
 "на нього мишу, і побачите його властивості в правій частині екрану"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:983
-#, fuzzy
-#| msgid "<big>Unit Summaries</big>"
 msgid "Unit Summaries"
-msgstr "<big>Властивості бійця</big>"
+msgstr "Властивості бійця"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:991
@@ -1479,25 +1473,16 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1020
-#, fuzzy
-#| msgid "<big>Long-distance Movement</big>"
 msgid "Long-distance Movement"
-msgstr "<big>Довгі ходи</big>"
+msgstr "Довгі ходи"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1020
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "You can order a unit to move for multiple turns by selecting the unit and "
-#| "clicking on the destination. A number will indicate how many turns it "
-#| "will take to get there."
 msgid ""
 "You can order a unit to move for multiple turns by selecting the unit and "
 "clicking on the destination. A number will indicate how many turns it will "
 "take to get there."
 msgstr ""
-"\n"
 "Ви можете віддати бійцеві наказ рухатися протягом декількох ходів. Для цього "
 "виберіть бійця і клацніть на місці призначення. Число покаже, скільки ходів "
 "йому буде потрібно, щоб туди дістатися."
@@ -1610,11 +1595,6 @@ msgstr ""
 #. [else]
 #. The unit with unit type $unit.language_name is female.
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1151
-#, fuzzy
-#| msgid ""
-#| "No other units can reach that orc. I hope my $unit.language_name survives "
-#| "its counter-attack! I’d better grab more villages and move everyone "
-#| "closer for next turn."
 msgid ""
 "female^No other units can reach that orc. I hope my $unit.language_name "
 "survives its counter-attack! I’d better grab more villages and move everyone "
@@ -1692,28 +1672,19 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1242
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "After this dialog, hold the mouse over the landscape image below the "
-#| "minimap on the right. This brings up a description of the time of day, "
-#| "showing who has the advantage."
 msgid ""
 "After this dialog, hold the mouse over the landscape image below the minimap "
 "on the right. This brings up a description of the time of day, showing who "
 "has the advantage."
 msgstr ""
-"\n"
 "Після цього діалогу наведіть курсор миші на зображення ландшафту під "
 "мінікартою справа. Ви побачите опис часу доби і дізнаєтеся, у кого зараз "
 "перевага."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1242
-#, fuzzy
-#| msgid "<big>Time of Day</big>"
 msgid "Time of Day"
-msgstr "<big>Час доби</big>"
+msgstr "Час доби"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1249
@@ -1741,21 +1712,11 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1263
-#, fuzzy
-#| msgid "<big>Tracking Unused Units</big>"
 msgid "Tracking Unused Units"
-msgstr "<big>Виявлення невикористуваних бійців</big>"
+msgstr "Виявлення невикористуваних бійців"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1263
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "You can ensure you use all your troops by pressing <b>n</b> to step from "
-#| "one unit to the next. If you press <b>space</b>, you can mark the "
-#| "currently selected unit as having finished its turn, which stops you "
-#| "moving it by accident later on. When <b>n</b> no longer selects a new "
-#| "unit, it’s safe to end your turn."
 msgid ""
 "You can ensure you use all your troops by pressing <b>n</b> to step from one "
 "unit to the next. If you press <b>space</b>, you can mark the currently "
@@ -1763,7 +1724,6 @@ msgid ""
 "accident later on. When <b>n</b> no longer selects a new unit, it’s safe to "
 "end your turn."
 msgstr ""
-"\n"
 "Щоб переконатися, що ви використовуєте усіх своїх бійців, натисніть на "
 "клавішу <b>n</b>. Вона автоматично вибирає наступного бійця. Натисніть "
 "<b>пробіл</b>, щоб позначити бійця, який на цьому ходу не повинен більше "
@@ -1772,48 +1732,31 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1268
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "In this scenario, you only need to defeat the orc leader to win. (Victory "
-#| "conditions for a scenario are given under <b>Scenario Objectives</b> in "
-#| "the <b>Main Menu</b>)."
 msgid ""
 "In this scenario, you only need to defeat the orc leader to win. (Victory "
 "conditions for a scenario are given under <b>Scenario Objectives</b> in the "
 "<b>Main Menu</b>)."
 msgstr ""
-"\n"
 "У цьому сценарії для перемоги досить убити ватажка орків. (Умови перемоги в "
 "сценарії можна побачити, вибравши пункт <b>Цілі сценарію</b> у <b>Головному "
 "меню</b>)."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1268
-#, fuzzy
-#| msgid "<big>Victory Conditions</big>"
 msgid "Victory Conditions"
-msgstr "<big>Умови перемоги</big>"
+msgstr "Умови перемоги"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1273
-#, fuzzy
-#| msgid "<big>Recruit the Right Unit Types</big>"
 msgid "Recruit the Right Unit Types"
-msgstr "<big>Вербуйте бійців з розумом</big>"
+msgstr "Вербуйте бійців з розумом"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1273
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Remember to recruit troops useful for the situation. Archers are "
-#| "particularly effective against Grunts, Wolf Riders and the orcish leader."
 msgid ""
 "Remember to recruit troops useful for the situation. Archers are "
 "particularly effective against Grunts, Wolf Riders and the orcish leader."
 msgstr ""
-"\n"
 "Не забувай при необхідності вербувати корисних бійців. Лучники зазвичай "
 "хороші проти піхоти орків, вовчих вершників, і їх лідера."
 
@@ -1911,25 +1854,16 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1468
-#, fuzzy
-#| msgid "<big>Tracking Enemy Movement</big>"
 msgid "Tracking Enemy Movement"
-msgstr "<big>Відстежуємо ходи противника</big>"
+msgstr "Відстежуємо ходи противника"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1468
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "You can see where an enemy can reach by moving the mouse over them. You "
-#| "can see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
-#| "command from the <b>Actions</b> menu."
 msgid ""
 "You can see where an enemy can reach by moving the mouse over them. You can "
 "see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
 "command from the <b>Actions</b> menu."
 msgstr ""
-"\n"
 "Якщо навести курсор миші на противника, то можна побачити, наскільки далеко "
 "він може рухатися. Також можна побачити усі можливі ходи противника за "
 "допомогою команди <b>Показувати ходи противника</b> з меню <b>Дії</b>."

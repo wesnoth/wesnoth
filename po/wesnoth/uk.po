@@ -7,10 +7,10 @@
 # Igor Paliychuk <mansonigor@gmail.com>, 2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.10\n"
+"Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-10-27 15:56+0200\n"
-"PO-Revision-Date: 2012-08-18 19:33+0200\n"
+"PO-Revision-Date: 2012-10-31 12:37+0200\n"
 "Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: uk\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Virtaal 0.7.1\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:4
@@ -160,10 +160,8 @@ msgstr ""
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:164
-#, fuzzy
-#| msgid "Compressed saves"
 msgid "Compress savegames using bzip2"
-msgstr "Стискати збереження"
+msgstr "Стискати збереження з використанням bzip2"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:172
@@ -540,10 +538,8 @@ msgstr "Російський переклад"
 
 #. [about]
 #: data/core/about.cfg:2599
-#, fuzzy
-#| msgid "Galician Translation"
 msgid "Scottish Gaelic Translation"
-msgstr "Галісійський переклад"
+msgstr "Шотландський гельський переклад"
 
 #. [about]
 #: data/core/about.cfg:2608
@@ -1904,7 +1900,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/core/macros/utils.cfg:784
 msgid "You retrieve $amount_gold pieces of gold."
-msgstr ""
+msgstr "Ви витягуєте $amount_gold золотих."
 
 #. [color_range]: id=1
 #. [color_range]: id=red
@@ -3269,13 +3265,11 @@ msgstr "У замку немає вільних полів для вербува
 
 #: src/actions/heal.cpp:257
 msgid "cured"
-msgstr ""
+msgstr "вилікуваний"
 
 #: src/actions/heal.cpp:257
-#, fuzzy
-#| msgid "female^slowed"
 msgid "female^cured"
-msgstr "уповільнена"
+msgstr "вилікувана"
 
 #: src/actions/move.cpp:956
 msgid "Ambushed!"
@@ -3322,55 +3316,40 @@ msgid "(press $hotkey to keep moving)"
 msgstr "(натисніть $hotkey, щоб продовжити рух)"
 
 #: src/addon/client.cpp:66
-#, fuzzy
-#| msgid "Connecting to Server..."
 msgid "Connecting to $server_address|..."
-msgstr "З'єднуюсь з сервером..."
+msgstr "З'єднуюсь з $server_address|..."
 
 #: src/addon/client.cpp:78
-#, fuzzy
-#| msgid "Requesting list of add-ons"
 msgid "Downloading list of add-ons..."
-msgstr "Запитую перелік аддонів"
+msgstr "Завантажую перелік аддонів..."
 
 #: src/addon/client.cpp:92
-#, fuzzy
-#| msgid "Requesting terms"
 msgid "Requesting distribution terms..."
-msgstr "Даю запит термінів"
+msgstr "Запит умов розповсюдження..."
 
 #: src/addon/client.cpp:141
-#, fuzzy
-#| msgid "Downloading add-on: $addon_title|..."
 msgid "Sending add-on <i>$addon_title</i>..."
-msgstr "Завантажую аддон: $addon_title|..."
+msgstr "Відсилаю аддон <i>$addon_title</i>..."
 
 #: src/addon/client.cpp:175
-#, fuzzy
-#| msgid "Downloading add-on: $addon_title|..."
 msgid "Removing add-on <i>$addon_title</i> from the server..."
-msgstr "Завантажую аддон: $addon_title|..."
+msgstr "Видаляю аддон <i>$addon_title</i> з сервера..."
 
 #: src/addon/client.cpp:199
-#, fuzzy
-#| msgid "Downloading add-on: $addon_title|..."
 msgid "Downloading add-on <i>$addon_title</i>..."
-msgstr "Завантажую аддон: $addon_title|..."
+msgstr "Завантажую аддон <i>$addon_title</i>..."
 
 #: src/addon/client.cpp:213
-#, fuzzy
-#| msgid ""
-#| "The add-on has an invalid file or directory name and cannot be installed."
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
-msgstr "Аддон має неправильне ім'я файлу, не можу його встановити."
+msgstr ""
+"Аддон <i>$addon_title</i> має неправильне ім'я файлу чи теки і не може бути "
+"встановлений."
 
 #: src/addon/client.cpp:301 src/addon/manager_ui.cpp:682
-#, fuzzy
-#| msgid "Add-on Installed"
 msgid "Add-ons Manager"
-msgstr "Аддон встановлено"
+msgstr "Менеджер Аддонів"
 
 #: src/addon/info.cpp:149
 msgid "addon_type^Campaign"
@@ -3401,10 +3380,8 @@ msgid "addon_type^MP campaign"
 msgstr "Кампанія для МП"
 
 #: src/addon/info.cpp:163
-#, fuzzy
-#| msgid "addon_type^MP faction"
 msgid "addon_type^MP modification"
-msgstr "Фракція для МП"
+msgstr "Модифікація МП"
 
 #: src/addon/info.cpp:165
 msgid "addon_type^Resources"
@@ -3423,78 +3400,69 @@ msgid "unit_byte^B"
 msgstr "Б"
 
 #: src/addon/manager_ui.cpp:97
-#, fuzzy
-#| msgid "Add-on Installed"
 msgid "addon_state^Not installed"
-msgstr "Аддон встановлено"
+msgstr "Не встановлено"
 
 #: src/addon/manager_ui.cpp:97
 msgid "addon_state^Published, not installed"
-msgstr ""
+msgstr "Опублікований, не встановлений"
 
 #: src/addon/manager_ui.cpp:104
-#, fuzzy
-#| msgid "Add-on Installed"
 msgid "addon_state^Installed"
-msgstr "Аддон встановлено"
+msgstr "Встановлено"
 
 #: src/addon/manager_ui.cpp:104
 msgid "addon_state^Published"
-msgstr ""
+msgstr "Опублікований"
 
 #: src/addon/manager_ui.cpp:107
 msgid "addon_state^Installed, upgradable"
-msgstr ""
+msgstr "Встановлений, оновлюваний"
 
 #: src/addon/manager_ui.cpp:107
 msgid "addon_state^Published, upgradable"
-msgstr ""
+msgstr "Опублікований, оновлюваний"
 
 #: src/addon/manager_ui.cpp:110
 msgid "addon_state^Installed, outdated on server"
-msgstr ""
+msgstr "Встановлений, застарілий на сервері"
 
 #: src/addon/manager_ui.cpp:110
 msgid "addon_state^Published, outdated on server"
-msgstr ""
+msgstr "Опублікований, застарілий на сервері"
 
 #: src/addon/manager_ui.cpp:113
 msgid "addon_state^Installed, broken"
-msgstr ""
+msgstr "Встановлений, зламаний"
 
 #: src/addon/manager_ui.cpp:113
 msgid "addon_state^Published, broken"
-msgstr ""
+msgstr "Опублікований, зламаний"
 
 #: src/addon/manager_ui.cpp:115
-#, fuzzy
-#| msgid "addon_type^(unknown)"
 msgid "addon_state^Unknown"
-msgstr "(невідомо)"
+msgstr "Невідомо"
 
 #: src/addon/manager_ui.cpp:148
-#, fuzzy
-#| msgid ""
-#| "The selected add-on has the following dependency. Do you want to install "
-#| "it?"
-#| msgid_plural ""
-#| "The selected add-on has the following dependencies. Do you want to "
-#| "install them?"
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
 msgid_plural ""
 "The selected add-on has the following dependencies, which are not currently "
 "installed or available from the server. Do you wish to continue?"
-msgstr[0] "Вибраний аддон має наступну залежність. Ви хочете її встановити?"
-msgstr[1] "Вибраний аддон має наступну залежність. Ви хочете їх встановити?"
-msgstr[2] "Вибраний аддон має наступну залежність. Ви хочете їх встановити?"
+msgstr[0] ""
+"Вибраний аддон має наступну залежність, яка не встановлена або відсутня на "
+"сервері. Ви хочете продовжити?"
+msgstr[1] ""
+"Вибраний аддон має наступні залежності, які не встановлені або відсутні на "
+"сервері. Ви хочете продовжити?"
+msgstr[2] ""
+"Вибраний аддон має наступні залежності, які не встановлені або відсутні на "
+"сервері. Ви хочете продовжити?"
 
 #: src/addon/manager_ui.cpp:157
-#, fuzzy
-#| msgid "Install dependencies"
 msgid "Broken Dependencies"
-msgstr "Встановити залежності"
+msgstr "Зламані залежності"
 
 #: src/addon/manager_ui.cpp:173 src/addon/manager_ui.cpp:519
 msgid "Author"
@@ -3519,36 +3487,31 @@ msgid "Type"
 msgstr "Тип"
 
 #: src/addon/manager_ui.cpp:204
-#, fuzzy
-#| msgid "Install dependencies"
 msgid "Install Dependencies"
 msgstr "Встановити залежності"
 
 #: src/addon/manager_ui.cpp:205
-#, fuzzy
-#| msgid ""
-#| "The selected add-on has the following dependency. Do you want to install "
-#| "it?"
-#| msgid_plural ""
-#| "The selected add-on has the following dependencies. Do you want to "
-#| "install them?"
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed. Do you wish to install it before continuing?"
 msgid_plural ""
 "The selected add-on has the following dependencies, which are not currently "
 "installed. Do you wish to install them before continuing?"
-msgstr[0] "Вибраний аддон має наступну залежність. Ви хочете її встановити?"
-msgstr[1] "Вибраний аддон має наступну залежність. Ви хочете їх встановити?"
-msgstr[2] "Вибраний аддон має наступну залежність. Ви хочете їх встановити?"
+msgstr[0] ""
+"Вибраний аддон має наступну залежність, яка зараз не встановлена. Ви хочете "
+"спершу її встановити?"
+msgstr[1] ""
+"Вибраний аддон має наступні залежності, які зараз не встановлені. Ви хочете "
+"спершу їх встановити?"
+msgstr[2] ""
+"Вибраний аддон має наступні залежності, які зараз не встановлені. Ви хочете "
+"спершу їх встановити?"
 
 #: src/addon/manager_ui.cpp:241 src/addon/manager_ui.cpp:313
 #: src/addon/manager_ui.cpp:328 src/addon/manager_ui.cpp:333
 #: src/addon/manager_ui.cpp:815
-#, fuzzy
-#| msgid "The server responded with an error: \""
 msgid "The server responded with an error:"
-msgstr "Сервер відповів помилкою: \""
+msgstr "Сервер відповів помилкою:"
 
 #: src/addon/manager_ui.cpp:252
 msgid ""
@@ -3558,34 +3521,35 @@ msgid_plural ""
 "The following dependencies could not be installed. Do you still wish to "
 "continue?"
 msgstr[0] ""
+"Наступна залежність не може бути встановлена. Ви все ще хочете продовжити?"
 msgstr[1] ""
+"Наступні залежності не можуть бути встановлені. Ви все ще хочете продовжити?"
 msgstr[2] ""
+"Наступні залежності не можуть бути встановлені. Ви все ще хочете продовжити?"
 
 #: src/addon/manager_ui.cpp:256
-#, fuzzy
-#| msgid "Installation failed"
 msgid "Dependencies Installation Failed"
-msgstr "Встановлення не вдалось"
+msgstr "Не вдалось встановити залежності"
 
 #: src/addon/manager_ui.cpp:279
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
 msgstr ""
+"Аддон '$addon|' вже встановлений і містить додаткову інформацію, яка буде "
+"повністю втрачена, якщо ви продовжите:"
 
 #: src/addon/manager_ui.cpp:283
 msgid "Publishing information file (.pbl)"
-msgstr ""
+msgstr "Файл інформації про публікацію (.pbl)"
 
 #: src/addon/manager_ui.cpp:287
 msgid "Version control system (VCS) information"
-msgstr ""
+msgstr "Інформація системи керування версіями (VCS)"
 
 #: src/addon/manager_ui.cpp:291
-#, fuzzy
-#| msgid "Do you want to continue?"
 msgid "Do you really wish to continue?"
-msgstr "Ви хочете продовжити?"
+msgstr "Ви дійсно хочете продовжити?"
 
 #: src/addon/manager_ui.cpp:293 src/addon/manager_ui.cpp:304
 #: src/addon/manager_ui.cpp:970 src/multiplayer.cpp:271
@@ -3610,14 +3574,10 @@ msgid "Terms"
 msgstr "Умови"
 
 #: src/addon/manager_ui.cpp:515
-#, fuzzy
-#| msgid "New version"
 msgid "New Version"
 msgstr "Нова версія"
 
 #: src/addon/manager_ui.cpp:515
-#, fuzzy
-#| msgid "Old version"
 msgid "Old Version"
 msgstr "Стара версія"
 
@@ -3626,26 +3586,20 @@ msgid "Downloads"
 msgstr "Завантаження"
 
 #: src/addon/manager_ui.cpp:642
-#, fuzzy
-#| msgid "Publish add-on: "
 msgid "Publish: $addon_title"
-msgstr "Опублікувати аддон: "
+msgstr "Опублікувати: $addon_title"
 
 #: src/addon/manager_ui.cpp:651
-#, fuzzy
-#| msgid "Delete add-on: "
 msgid "Delete: $addon_title"
-msgstr "Видалити аддон: "
+msgstr "Видалити: $addon_title"
 
 #: src/addon/manager_ui.cpp:678
 msgid "There are no add-ons available for download from this server."
 msgstr "На цьому сервері немає доступних для завантаження аддонов."
 
 #: src/addon/manager_ui.cpp:679
-#, fuzzy
-#| msgid "There are no add-ons available for download from this server."
 msgid "There are no add-ons matching the specified criteria on this server."
-msgstr "На цьому сервері немає доступних для завантаження аддонов."
+msgstr "На цьому сервері немає аддонів, що відповідають заданим критеріям."
 
 #: src/addon/manager_ui.cpp:701 src/dialogs.cpp:601 src/menu_events.cpp:998
 #: src/menu_events.cpp:1601
@@ -3657,79 +3611,54 @@ msgid "Description"
 msgstr "Опис"
 
 #: src/addon/manager_ui.cpp:716
-#, fuzzy
-#| msgid "Update all"
 msgid "Update All"
 msgstr "Оновити всі"
 
 #: src/addon/manager_ui.cpp:723
-#, fuzzy
-#| msgid "Whiteboard Options"
 msgid "filter^Options"
-msgstr "Параметри планувальника"
+msgstr "Опції"
 
 #: src/addon/manager_ui.cpp:829
 msgid "Add-on Installed"
 msgstr "Аддон встановлено"
 
 #: src/addon/manager_ui.cpp:829
-#, fuzzy
-#| msgid "Add-on Deleted"
-#| msgid_plural "Add-ons Deleted"
 msgid "Add-on Updated"
-msgstr "Аддон видалено"
+msgstr "Аддон оновлено"
 
 #: src/addon/manager_ui.cpp:830
 msgid "The add-on '$addon_title|' has been successfully installed."
 msgstr "Аддон '$addon_title|' було успішно встановлено."
 
 #: src/addon/manager_ui.cpp:830
-#, fuzzy
-#| msgid "The add-on '$addon_title|' has been successfully installed."
 msgid "The add-on '$addon_title|' has been successfully updated."
-msgstr "Аддон '$addon_title|' було успішно встановлено."
+msgstr "Аддон '$addon_title|' був успішно оновлений."
 
 #: src/addon/manager_ui.cpp:835
-#, fuzzy
-#| msgid "Add-on Installed"
 msgid "Add-ons Installed"
-msgstr "Аддон встановлено"
+msgstr "Аддони встановлено"
 
 #: src/addon/manager_ui.cpp:835
-#, fuzzy
-#| msgid "Add-on Deleted"
-#| msgid_plural "Add-ons Deleted"
 msgid "Add-ons Updated"
-msgstr "Аддон видалено"
+msgstr "Аддони оновлено"
 
 #: src/addon/manager_ui.cpp:836
-#, fuzzy
-#| msgid "All add-ons updated successfully."
 msgid "All add-ons installed successfully."
-msgstr "Всі аддони були успішно оновлені."
+msgstr "Всі аддони були успішно встановлені."
 
 #: src/addon/manager_ui.cpp:836
 msgid "All add-ons updated successfully."
 msgstr "Всі аддони були успішно оновлені."
 
 #: src/addon/manager_ui.cpp:840
-#, fuzzy
-#| msgid "Installation failed"
 msgid "Installation Failed"
-msgstr "Встановлення не вдалось"
+msgstr "Встановлення провалилось"
 
 #: src/addon/manager_ui.cpp:840
-#, fuzzy
-#| msgid "Update failed"
 msgid "Update Failed"
-msgstr "Оновлення не вдалось"
+msgstr "Оновлення провалилось"
 
 #: src/addon/manager_ui.cpp:842
-#, fuzzy
-#| msgid ""
-#| "The following add-on could not be downloaded or updated successfully:"
-#| msgid_plural ""
-#| "The following add-ons could not be downloaded or updated successfully:"
 msgid "The following add-on could not be downloaded or installed successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or installed successfully:"
@@ -3738,10 +3667,8 @@ msgstr[1] "Ці аддони не вдалося завантажити або �
 msgstr[2] "Ці аддони не вдалося завантажити або оновити:"
 
 #: src/addon/manager_ui.cpp:884 src/addon/manager_ui.cpp:894
-#, fuzzy
-#| msgid "An error occurred while communicating with the server."
 msgid "An error occurred while downloading the add-ons list from the server."
-msgstr "Сталася помилка при під'єднанні до сервера."
+msgstr "Сталася помилка при завантаженні списку аддонів з сервера."
 
 #: src/addon/manager_ui.cpp:912
 msgid "Network communication error."
@@ -3761,7 +3688,7 @@ msgstr ""
 
 #: src/addon/manager_ui.cpp:927
 msgid "The add-ons server address specified is not valid."
-msgstr ""
+msgstr "Вказана адреса сервера аддонів недійсна."
 
 #: src/addon/manager_ui.cpp:941
 msgid "You have no add-ons installed."
@@ -3969,7 +3896,7 @@ msgstr "Показати повтор"
 
 #: src/dialogs.cpp:612
 msgid "Play the embedded replay from the saved game if applicable"
-msgstr ""
+msgstr "Грати вкладений повтор із збереженої гри, якщо придатний"
 
 #: src/dialogs.cpp:616
 msgid "Cancel orders"
@@ -3977,17 +3904,15 @@ msgstr "Скасувати накази"
 
 #: src/dialogs.cpp:620
 msgid "Cancel any pending unit movements in the saved game"
-msgstr ""
+msgstr "Скасувати будь-які заплановані рухи бійців у збереженій грі"
 
 #: src/dialogs.cpp:624
-#, fuzzy
-#| msgid "Difficulty: "
 msgid "Change difficulty"
-msgstr "Складність: "
+msgstr "Змінити складність"
 
 #: src/dialogs.cpp:626
 msgid "Change campaign difficulty before loading"
-msgstr ""
+msgstr "Змінити складність кампанії перед завантаженням"
 
 #: src/dialogs.cpp:633
 msgid "Delete Save"
@@ -4301,26 +4226,20 @@ msgid "Do you really want to dismiss him?"
 msgstr "Ви дійсно хочете його звільнити?"
 
 #: src/menu_events.cpp:102
-#, fuzzy
-#| msgid "My lord, this unit is loyal and requires no upkeep! "
 msgid "This unit is loyal and requires no upkeep."
-msgstr "Мілорде, цей боєць вірний і не вимагає оплати праці! "
+msgstr "Цей боєць вірний і не вимагає оплати праці! "
 
 #: src/menu_events.cpp:103 src/menu_events.cpp:106 src/menu_events.cpp:110
 msgid "Do you really want to dismiss her?"
 msgstr "Ви дійсно хочете її звільнити?"
 
 #: src/menu_events.cpp:105
-#, fuzzy
-#| msgid "My lord, this unit is an experienced one, having advanced levels! "
 msgid "This unit is an experienced one, having advanced levels."
-msgstr "Мілорде, це ж досвідчений боєць високого рівня! "
+msgstr "Це ж досвідчений боєць високого рівня! "
 
 #: src/menu_events.cpp:109
-#, fuzzy
-#| msgid "My lord, this unit is close to advancing a level! "
 msgid "This unit is close to advancing a level."
-msgstr "Мілорде, цей боєць скоро може отримати новий рівень! "
+msgstr "Цей боєць скоро може отримати новий рівень! "
 
 #: src/menu_events.cpp:114 src/menu_events.cpp:1002
 msgid "Dismiss Unit"
@@ -4424,16 +4343,12 @@ msgstr ""
 "на село"
 
 #: src/menu_events.cpp:517
-#, fuzzy
-#| msgid ""
-#| "scenario settings^Gold Per\n"
-#| "Village"
 msgid ""
 "scenario settings^Support Per\n"
 "Village"
 msgstr ""
-"Золота\n"
-"на село"
+"Підтримка\n"
+"з села"
 
 #: src/menu_events.cpp:518
 msgid "scenario settings^Fog"
@@ -5230,49 +5145,45 @@ msgstr "Виберіть зброю:"
 
 #: src/mp_depcheck.cpp:408 src/mp_depcheck.cpp:419
 msgid "A component"
-msgstr ""
+msgstr "Компонент"
 
 #: src/mp_depcheck.cpp:458
-#, fuzzy
-#| msgid "Install dependencies"
 msgid "Failed to resolve dependencies"
-msgstr "Встановити залежності"
+msgstr "Не вдалось визначити залежності"
 
 #: src/mp_depcheck.cpp:484
 msgid "Scenario can't be activated. Some dependencies are missing: "
-msgstr ""
+msgstr "Сценарій не може бути активований. Відсутні деякі залежності: "
 
 #: src/mp_depcheck.cpp:539 src/mp_depcheck.cpp:661
-#, fuzzy
-#| msgid "No eras found."
 msgid "No compatible eras found."
-msgstr "Ери не знайдені."
+msgstr "Не знайдено сумісних ер."
 
 #: src/mp_depcheck.cpp:555
 msgid "Era can't be activated. Some dependencies are missing: "
-msgstr ""
+msgstr "Ера не може бути активована. Відсутні певні залежності: "
 
 #: src/mp_depcheck.cpp:607 src/mp_depcheck.cpp:698
-#, fuzzy
-#| msgid "No multiplayer sides found"
 msgid "No compatible scenarios found."
-msgstr "Немає мережевих сторін"
+msgstr "Не знайдено сумісних сценаріїв."
 
 #: src/mp_depcheck.cpp:636
 msgid ""
 "Not all of the chosen modifications are compatible. Some of them will be "
 "disabled."
-msgstr ""
+msgstr "Не усі обрані модифікації сумісні. Деякі з них будуть вимкнені."
 
 #: src/mp_options.cpp:181
 msgid ""
 "None of the selected modifications, era or scenario provide configuration "
 "options."
 msgstr ""
+"Жодна з відібраних модифікацій, ер або сценаріїв не містять додаткових "
+"налаштувань."
 
 #: src/mp_options.cpp:222
 msgid "Restore defaults"
-msgstr ""
+msgstr "Відновити типові"
 
 #: src/multiplayer.cpp:150 src/multiplayer.cpp:193
 msgid "Connecting to Server..."
@@ -5283,10 +5194,6 @@ msgid "Reading from Server..."
 msgstr "Читаю з сервера..."
 
 #: src/multiplayer.cpp:176
-#, fuzzy
-#| msgid ""
-#| "The server requires version '$version1' while you are using version "
-#| "'$version2'"
 msgid ""
 "The server accepts versions '$version1' while you are using version "
 "'$version2'"
@@ -5550,10 +5457,8 @@ msgid "Shuffle sides"
 msgstr "Перемішати сторони"
 
 #: src/multiplayer_create.cpp:100
-#, fuzzy
-#| msgid "Settings..."
 msgid "Options..."
-msgstr "Параметри..."
+msgstr "Опції..."
 
 #: src/multiplayer_create.cpp:103
 msgid "Regenerate"
@@ -5569,7 +5474,7 @@ msgstr "Задати пароль..."
 
 #: src/multiplayer_create.cpp:106
 msgid "Modifications..."
-msgstr ""
+msgstr "Модифікації..."
 
 #: src/multiplayer_create.cpp:127
 msgid "Load Game..."
@@ -5604,10 +5509,8 @@ msgid "The amount of income each village yields per turn"
 msgstr "Прибуток, що надходить від кожного села за один хід"
 
 #: src/multiplayer_create.cpp:219
-#, fuzzy
-#| msgid "The maximum number of turns the game can last"
 msgid "The number of unit levels each village can support"
-msgstr "Максимальна кількість ходів в грі"
+msgstr "Максимальна кількість рівнів бійців, шо підтримує кожне село"
 
 #: src/multiplayer_create.cpp:225
 msgid "The amount of experience a unit needs to advance"
@@ -5681,6 +5584,8 @@ msgid ""
 "connect to the add-ons server by choosing the 'Add-ons' option on the main "
 "screen."
 msgstr ""
+"Зараз не встановлено ніяких модифікацій. Щоб завантажити модифікації, "
+"з'єднайтесь із сервером аддонів, вибравши 'Аддони' в головному вікні."
 
 #: src/multiplayer_create.cpp:450
 msgid "Turns: "
@@ -5711,10 +5616,8 @@ msgid "Village gold: "
 msgstr "Золото з сіл: "
 
 #: src/multiplayer_create.cpp:507
-#, fuzzy
-#| msgid "Village gold: "
 msgid "Village support: "
-msgstr "Золото з сіл: "
+msgstr "Підтримка села: "
 
 #: src/multiplayer_create.cpp:513
 msgid "Experience modifier: "
@@ -5738,7 +5641,7 @@ msgstr " (Невідома ера)"
 
 #: src/multiplayer_lobby.cpp:557
 msgid " (missing)"
-msgstr ""
+msgstr " (втрачено)"
 
 #: src/multiplayer_lobby.cpp:594 src/multiplayer_lobby.cpp:933
 msgid "Password Required"
@@ -5921,16 +5824,12 @@ msgid "Auto-Save"
 msgstr "Автозбереження"
 
 #: src/play_controller.cpp:1144
-#, fuzzy
-#| msgid "Back to turn "
 msgid "Back to Turn "
-msgstr "Повернутися до ходу "
+msgstr "Назад до ходу "
 
 #: src/play_controller.cpp:1155
-#, fuzzy
-#| msgid "Back to turn "
 msgid "Back to Start"
-msgstr "Повернутися до ходу "
+msgstr "Назад до початку"
 
 #: src/play_controller.cpp:1417
 msgid ""
@@ -6219,7 +6118,7 @@ msgstr "Здібність: "
 
 #: src/reports.cpp:382 src/reports.cpp:740
 msgid " (inactive)"
-msgstr ""
+msgstr " (неактивно)"
 
 #: src/reports.cpp:429
 msgid "Resistances: "
@@ -6262,10 +6161,8 @@ msgid "Base damage: "
 msgstr "Базова шкода: "
 
 #: src/reports.cpp:617 src/reports.cpp:651 src/reports.cpp:661
-#, fuzzy
-#| msgid "Weapon special: "
 msgid "With specials: "
-msgstr "Особливість зброї: "
+msgstr "З особливостями: "
 
 #: src/reports.cpp:620
 msgid "Time of day: "
@@ -6284,10 +6181,8 @@ msgid "Attacks: "
 msgstr "Атаки: "
 
 #: src/reports.cpp:636
-#, fuzzy
-#| msgid "Turn bonus: "
 msgid "Max swarm bonus: "
-msgstr "Бонус ходів: "
+msgstr "Макс бонус рою: "
 
 #: src/reports.cpp:637 src/reports.cpp:656
 msgid "Swarm: "
@@ -6298,14 +6193,12 @@ msgid "Base attacks: "
 msgstr "Базові атаки: "
 
 #: src/reports.cpp:644
-#, fuzzy
-#| msgid "Weapon special: "
 msgid "Specials: "
-msgstr "Особливість зброї: "
+msgstr "Особливості: "
 
 #: src/reports.cpp:654
 msgid "Subject to swarm: "
-msgstr ""
+msgstr "Жертва рою: "
 
 #: src/reports.cpp:673
 msgid "Weapon range: "
@@ -6365,22 +6258,20 @@ msgstr ""
 "Увага: Завантажуваний файл пошкоджений. Але я спробую його завантажити.\n"
 
 #: src/savegame.cpp:675
-#, fuzzy
-#| msgid "This save is from a version too old to be loaded."
 msgid ""
 "This save is from an old, unsupported version ($version_number|) and cannot "
 "be loaded."
-msgstr "Це збереження від занадто старої версії."
+msgstr ""
+"Це збереження від занадто старої версії ($version_number|) і не може бути "
+"завантажене."
 
 #: src/savegame.cpp:684
-#, fuzzy
-#| msgid ""
-#| "This save is from a different version of the game. Do you want to try to "
-#| "load it?"
 msgid ""
 "This save is from a different version of the game ($version_number|). Do you "
 "wish to try to load it?"
-msgstr "Це збереження з іншої версії гри. Спробувати його завантажити?"
+msgstr ""
+"Це збереження з іншої версії гри ($version_number|). Спробувати його "
+"завантажити?"
 
 #: src/savegame.cpp:741
 msgid "This is not a multiplayer save"
@@ -6399,11 +6290,11 @@ msgid "Overwrite?"
 msgstr "Перезаписати?"
 
 #: src/savegame.cpp:901
-#, fuzzy
-#| msgid "Save names should not end on '.gz'. Please choose a different name."
 msgid ""
 "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
-msgstr "Імена збережень не повинні закінчуватися на '.gz'. Виберіть інше ім'я."
+msgstr ""
+"Імена збережень не повинні закінчуватися на '.gz' чи '.bz2'. Видаліть "
+"розширення."
 
 #: src/savegame.cpp:967
 msgid "Saved"
@@ -6438,10 +6329,8 @@ msgid "Unexpected characters at line start"
 msgstr "Несподівані символи на початку рядка"
 
 #: src/serialization/parser.cpp:146
-#, fuzzy
-#| msgid "Missing closing tag for tag $tag at $pos"
 msgid "Missing closing tag for tag [$tag] at $pos"
-msgstr "Відсутній закриваючий тег для тегу $tag в $pos"
+msgstr "Відсутній закриваючий тег для тегу [$tag] в $pos"
 
 #: src/serialization/parser.cpp:159
 msgid "Unterminated [element] tag"
@@ -6468,11 +6357,10 @@ msgid "Unexpected closing tag"
 msgstr "Несподіваний закриваючий тег"
 
 #: src/serialization/parser.cpp:209
-#, fuzzy
-#| msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
 msgid "Found invalid closing tag [/$tag2] for tag [$tag1] (opened at $pos)"
 msgstr ""
-"Знайдений невірний закриваючий тег $tag2 для тега $tag1 (відкритого в $pos)"
+"Знайдений невірний закриваючий тег [/$tag2] для тега [$tag1] (відкритого в "
+"$pos)"
 
 #: src/serialization/parser.cpp:238 src/serialization/parser.cpp:250
 msgid "Empty variable name"
@@ -6591,22 +6479,16 @@ msgid "Details"
 msgstr "Детально"
 
 #: src/statistics_dialog.cpp:170
-#, fuzzy
-#| msgid "Test scenario"
 msgid "Select Scenario"
-msgstr "Тестовий сценарій"
+msgstr "Виберіть сценарій"
 
 #: src/statistics_dialog.cpp:226 src/statistics_dialog.cpp:304
-#, fuzzy
-#| msgid "Campaign Design"
 msgid "Campaign"
-msgstr "Разробка кампаній"
+msgstr "Кампанія"
 
 #: src/statistics_dialog.cpp:226 src/statistics_dialog.cpp:304
-#, fuzzy
-#| msgid "End Scenario"
 msgid "Scenario"
-msgstr "Скінчити місію"
+msgstr "Сценарій"
 
 #: src/statistics_dialog.cpp:284
 msgid "Damage"
@@ -6915,75 +6797,56 @@ msgstr "Параметри планувальника"
 #~ "Зафар,Зафір,Захід,Захір,Зайд,Заім,Зайн,Заріф,Закаррія,Закі,Закван,Зіяд,"
 #~ "Зубайр,Зухайр"
 
-#, fuzzy
-#~| msgid "invisible: "
 #~ msgid "invisible"
-#~ msgstr "невидимий: "
+#~ msgstr "невидимий"
 
-#, fuzzy
-#~| msgid "female^slowed"
 #~ msgid "female^invisible"
-#~ msgstr "уповільнена"
+#~ msgstr "невидима"
 
 #, fuzzy
-#~| msgid "Fire a game event."
 #~ msgid "I triggered a moveto event."
 #~ msgstr "Запустити ігрову подію."
 
-#, fuzzy
-#~| msgid "Password: "
 #~ msgid "sword"
-#~ msgstr "Пароль: "
+#~ msgstr "меч"
+
+#~ msgid "bow"
+#~ msgstr "лук"
+
+#~ msgid "longbow"
+#~ msgstr "великий лук"
 
 #, fuzzy
-#~| msgid "Version: "
 #~ msgid "Vision Test"
 #~ msgstr "Версія: "
 
 #, fuzzy
-#~| msgid "invisible: "
 #~ msgid "It is invisible!"
 #~ msgstr "невидимий: "
 
 #, fuzzy
-#~| msgid "Choose weapon:"
 #~ msgid "Choose a Map to Open"
 #~ msgstr "Виберіть зброю:"
 
 #, fuzzy
-#~| msgid "Choose the game to load"
 #~ msgid "Choose a Mask to Apply"
 #~ msgstr "Виберіть гру для завантаження"
 
-#, fuzzy
-#~| msgid "Choose weapon:"
 #~ msgid "Choose Target Map"
-#~ msgstr "Виберіть зброю:"
+#~ msgstr "Виберіть цільову карту"
 
-#, fuzzy
-#~| msgid "The map already exists. Do you want to overwrite it?"
 #~ msgid "The file already exists. Do you want to overwrite it?"
-#~ msgstr "Карта вже існує. Перезаписати її?"
+#~ msgstr "Файл вже існує. Хочете його перезаписати?"
 
 #, fuzzy
-#~| msgid "No era information found."
 #~ msgid "No random map generators found."
 #~ msgstr "Інформація про ери не знайдена."
 
-#, fuzzy
-#~| msgid "Installation failed"
 #~ msgid "Map creation failed."
-#~ msgstr "Встановлення не вдалось"
+#~ msgstr "Не вдалось створити карту."
 
-#, fuzzy
-#~| msgid "The map is invalid."
 #~ msgid "This map is already open."
-#~ msgstr "Карта недійсна."
-
-#, fuzzy
-#~| msgid "Next Side"
-#~ msgid "(New Side)"
-#~ msgstr "Наступна сторона"
+#~ msgstr "Цю карту вже відкрито."
 
 #~ msgid "The server responded with an error: \"$error|\""
 #~ msgstr "Сервер відповів помилкою: \"$error|\""
