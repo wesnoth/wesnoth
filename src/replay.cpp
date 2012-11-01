@@ -1144,6 +1144,11 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				continue;
 			}
 
+			const std::string &att_type_id = child["attacker_type"];
+			if (u->type_id() != att_type_id) {
+				WRN_REPLAY << "unexpected attacker type: " << att_type_id << "(game_state gives: " << u->type_id() << ")\n";
+			}
+
 			if (size_t(weapon_num) >= u->attacks().size()) {
 				replay::process_error("illegal weapon type in attack\n");
 				continue;
@@ -1156,6 +1161,11 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				errbuf << "unfound defender for attack: " << src << " -> " << dst << '\n';
 				replay::process_error(errbuf.str());
 				continue;
+			}
+
+			const std::string &def_type_id = child["defender_type"];
+			if (tgt->type_id() != def_type_id) {
+				WRN_REPLAY << "unexpected defender type: " << def_type_id << "(game_state gives: " << tgt->type_id() << ")\n";
 			}
 
 			if (def_weapon_num >= static_cast<int>(tgt->attacks().size())) {
