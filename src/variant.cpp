@@ -364,7 +364,7 @@ variant::~variant()
 	release();
 }
 
-const variant& variant::operator=(const variant& v)
+variant& variant::operator=(const variant& v)
 {
 	if(&v != this) {
 		release();

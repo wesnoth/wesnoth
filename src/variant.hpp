@@ -67,7 +67,7 @@ public:
 	~variant();
 
 	variant(const variant& v);
-	const variant& operator=(const variant& v);
+	variant& operator=(const variant& v);
 
 	const variant& operator[](size_t n) const;
 	const variant& operator[](const variant& v) const;
