@@ -349,7 +349,11 @@ size_t hash_value(const locator::value& val) {
 	using boost::hash_value;
 	using boost::hash_combine;
 
-	size_t hash = hash_value(val.type_);
+	/*
+	 * Boost 1.51.0 seems not longer accept an enumerate value in its hash
+	 * function so cast it to a type it does like.
+	 */
+	size_t hash = hash_value(static_cast<unsigned>(val.type_));
 	if (val.type_ == locator::FILE || val.type_ == locator::SUB_FILE) {
 		hash_combine(hash, val.filename_);
 	}
