@@ -441,8 +441,8 @@ class HTMLOutput:
             col += 1
             write("<td>")
             labb = lang
-            underscore = labb.find("_")
-            if underscore > 0: labb = labb[:underscore]
+            #underscore = labb.find("_")
+            #if underscore > 0: labb = labb[:underscore]
             if self.addon == "mainline":
                 write(" <a title=\"%s\" href=\"../%s/%s\">%s</a><br/>\n" % (
                     languages[lang], lang, self.target,
