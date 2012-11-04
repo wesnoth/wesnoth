@@ -32,6 +32,8 @@ Version 1.11.0+svn:
      Portuguese (Brazil), Slovak, Ukrainian
  * Lua API:
    * new wesnoth.have_file() function
+   * wesnoth.get_time_of_day() now works when specifying a turn when the number
+     of turns is unlimited
  * Networking:
    * Handle an exception in the SDL_net-based network code (bug #20205)
  * Terrains:

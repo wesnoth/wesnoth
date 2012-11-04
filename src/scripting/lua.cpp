@@ -1765,7 +1765,8 @@ static int intf_get_time_of_day(lua_State *L)
 	if(lua_isnumber(L, arg)) {
 		++arg;
 		for_turn = luaL_checkint(L, 1);
-		if(for_turn < 1 || for_turn > resources::tod_manager->number_of_turns()) {
+		int number_of_turns = resources::tod_manager->number_of_turns();
+		if(for_turn < 1 || (number_of_turns != -1 && for_turn > number_of_turns)) {
 			return luaL_argerror(L, 1, "turn number out of range");
 		}
 	}
