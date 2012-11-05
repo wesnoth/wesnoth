@@ -409,6 +409,7 @@ class GitHub(object):
         """
         return os.listdir(self.directory)
 
+    _github_repos_memo = None
     def _github_repos_list(self, readonly=False):
         """Get a list of repositories.
 
@@ -416,12 +417,14 @@ class GitHub(object):
 
         Returns a list of tuples that contain the add-on name and the url.
         """
-        url = _GITHUB_API_BASE + _GITHUB_API_REPOS
-        repos = self._github_api_request(url)
+        if not self._github_repos_memo:
+            url = _GITHUB_API_BASE + _GITHUB_API_REPOS
+            repos = self._github_api_request(url)
 
-        version_suffix = "-{0}".format(self.version)
-        return [(repo["name"][:-len(version_suffix)], repo["git_url"] if readonly else repo["ssh_url"])
-                for repo in repos if repo["name"].endswith(version_suffix)]
+            version_suffix = "-{0}".format(self.version)
+            self._github_repos_memo = [(repo["name"][:-len(version_suffix)], repo["git_url"] if readonly else repo["ssh_url"])
+                    for repo in repos if repo["name"].endswith(version_suffix)]
+        return self._github_repos_memo
 
     def _github_repos_create(self, name):
         """Create a new repository.
