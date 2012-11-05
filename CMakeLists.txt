@@ -326,6 +326,12 @@ check_compiler_has_flag(
 	HAS_COMPILER_FLAG_WCXX_11_COMPAT
 )
 
+check_compiler_has_flag(
+	CXX_FLAGS_PEDANTIC_COMPILATION
+	"-Wnoexcept"
+	HAS_COMPILER_FLAG_WNOEXCEPT
+)
+
 
 ### Set the final compiler flags.
 
