@@ -99,14 +99,17 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 		//we warn the player about it
 		std::stringstream message;
 		if (u.loyal()) {
-			message << _("This unit is loyal and requires no upkeep.") << ' ' << (u.gender() == unit_race::MALE ? _("Do you really want to dismiss him?")
+			// TRANSLATORS: this string ends with a space
+			message << _("This unit is loyal and requires no upkeep. ") << (u.gender() == unit_race::MALE ? _("Do you really want to dismiss him?")
 					: _("Do you really want to dismiss her?"));
 		} else if(u.level() > 1) {
-			message << _("This unit is an experienced one, having advanced levels.") << ' ' << (u.gender() == unit_race::MALE ? _("Do you really want to dismiss him?")
+			// TRANSLATORS: this string ends with a space
+			message << _("This unit is an experienced one, having advanced levels. ") << (u.gender() == unit_race::MALE ? _("Do you really want to dismiss him?")
 					: _("Do you really want to dismiss her?"));
 
 		} else if(u.experience() > u.max_experience()/2) {
-			message << _("This unit is close to advancing a level.") << ' ' << (u.gender() == unit_race::MALE ? _("Do you really want to dismiss him?")
+			// TRANSLATORS: this string ends with a space
+			message << _("This unit is close to advancing a level. ") << (u.gender() == unit_race::MALE ? _("Do you really want to dismiss him?")
 					: _("Do you really want to dismiss her?"));
 		}
 
