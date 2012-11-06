@@ -947,7 +947,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	{
 		std::stringstream option, option_to_filter;
 		std::string name = u->name();
-		if (name.empty()) name = "-";
+		if (name.empty()) name = utils::unicode_em_dash;
 
 		option << IMAGE_PREFIX << u->absolute_image();
 	#ifndef LOW_MEM
