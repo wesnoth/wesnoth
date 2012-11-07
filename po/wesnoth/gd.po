@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-10-27 15:56+0200\n"
-"PO-Revision-Date: 2012-10-15 12:43-0000\n"
-"Last-Translator: GunChleoc <fiosAIGforamnagaidhligDOTnet>\n"
+"PO-Revision-Date: 2012-11-04 16:39+0100\n"
+"Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
 "Language-Team: Fòram na Gàidhlig http://www.foramnagaidhlig.net\n"
 "Language: gd\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : "
 "(n > 2 && n < 20) ? 2 : 3;\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Virtaal 0.7.1\n"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:4
@@ -196,7 +196,7 @@ msgstr "Joystick: àireamh aiseal-Y an sgrolaidh"
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:219
 msgid "Joystick: deadzone of the scrolling stick"
-msgstr "Joysiick: raon-marbh aig a’ bhata sgrolaidh"
+msgstr "Joystick: raon-marbh aig a’ bhata sgrolaidh"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:229
@@ -221,7 +221,7 @@ msgstr "Joystick: àireamh aiseal-Y a’ chùrsair"
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:269
 msgid "Joystick: deadzone of the cursor stick"
-msgstr "Joysiick: raon-marbh aig a’ bhata cùrsair"
+msgstr "Joystick: raon-marbh aig a’ bhata cùrsair"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:279
@@ -251,7 +251,7 @@ msgstr "Joystick: raon-marbh aig a’ bhata luchaige"
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:329
 msgid "Joystick: number of the thrust axis joystick"
-msgstr "Joystick: àireamh an joystick aiseal-sàthaidh"
+msgstr "Joystick: àireamh an joystick aiseil-shàthaidh"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:339
@@ -309,7 +309,7 @@ msgstr "Dealbhadh iomairte"
 #. [about]
 #: data/core/about.cfg:762
 msgid "Multiplayer Maps and Balancing"
-msgstr "Mapaichean ioma-chluicheadair is mèidh"
+msgstr "Mapaichean ioma-chluicheadair is meidh"
 
 #. [about]
 #: data/core/about.cfg:803
@@ -543,10 +543,8 @@ msgstr "Eadar-theangachadh dhan Ruisis"
 
 #. [about]
 #: data/core/about.cfg:2599
-#, fuzzy
-#| msgid "Galician Translation"
 msgid "Scottish Gaelic Translation"
-msgstr "Eadar-theangachadh dhan Ghailìsis"
+msgstr "Eadar-theangachadh dha Ghàidhlig na h-Alba"
 
 #. [about]
 #: data/core/about.cfg:2608
@@ -596,7 +594,7 @@ msgstr "Eadar-theangachadh dhan Bhiet-Namais"
 #. [about]
 #: data/core/about.cfg:2864
 msgid "RACV’s Translation"
-msgstr "Eadar-theangachadh air RACV"
+msgstr "Eadar-theangachadh aig RACV"
 
 #. [about]
 #: data/core/about.cfg:2871
@@ -749,17 +747,17 @@ msgstr "Chaidh sgur dhe thaghadh an àite"
 #. [revoke_objective_orders]
 #: data/core/macros/ai_controller.cfg:449
 msgid "Clear objective orders"
-msgstr "Thoir iarrtasan amais air falbh"
+msgstr "Thoir iarrtasan amais air  falbh"
 
 #. [revoke_behavior_orders]
 #: data/core/macros/ai_controller.cfg:461
 msgid "Clear behavior orders"
-msgstr "Thoir iarrtasan giùlain air falbh"
+msgstr "Thoir iarrtasan giùlain air  falbh"
 
 #. [revoke_all_orders]
 #: data/core/macros/ai_controller.cfg:474
 msgid "Clear all orders"
-msgstr "Thoir a h-uile iarrtas air falbh"
+msgstr "Thoir a h-uile iarrtas air  falbh"
 
 #. [then]
 #: data/core/macros/ai_controller.cfg:591
@@ -817,7 +815,7 @@ msgstr "a’ gluasad ceannard gu $x1|,$y1|."
 
 #: data/core/macros/ai_controller.cfg:980
 msgid "Clear special orders"
-msgstr "Thoir òrduighean sònraichte air falbh"
+msgstr "Thoir òrduighean sònraichte air  falbh"
 
 #: data/core/macros/ai_controller.cfg:981
 msgid ""
@@ -859,12 +857,13 @@ msgstr "Guidheam gun tilleadh am bonn òir seo thugam deich uiread."
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:52
 msgid "Peace throughout Wesnoth."
-msgstr "Sìth air feadh Beasnad."
+msgstr "Sìth air  feadh Beasnad."
 
 #. [message]: speaker=unit
 #: data/core/macros/items.cfg:60
 msgid "The only thing worth wishing for is peace throughout the land."
-msgstr "An aon rud a bhios airidh air togradh, ’s e sìth air feadh na dùthcha."
+msgstr ""
+"An aon rud a bhios airidh air togradh, ’s e sìth air  feadh na dùthcha."
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:66
@@ -2009,7 +2008,7 @@ msgid ""
 "Neutral units are unaffected by day and night, fighting equally well under "
 "both conditions."
 msgstr ""
-"Tha aonadan neòdrach coma mu dheidhinn oidhche no latha is comas sabaide co-"
+"Tha aonadan neodrach coma mu dheidhinn oidhche no latha is comas sabaide co-"
 "ionnan aca."
 
 #. [language]
@@ -2445,7 +2444,7 @@ msgid ""
 "will restrict it to one hex of movement in any direction. Unfortunately, you "
 "must completely surround skirmishers to immobilize them."
 msgstr ""
-"Tha an innleachd chuairteachaidh glè chumachdach, gu h-àraidh an aghaidh "
+"Tha an innleachd chuairteachaidh glè chumhachdach, gu h-àraidh an aghaidh "
 "nàimhdean luatha. Ma chuireas sibh dà aonad gach taobh an nàmhad is mu "
 "choinneamh a chèile, chan urrainn dha ach sia-cheàrnach a ghluasad air "
 "sàilleibh nan raointean-smachd. Gu mì-fhortanach, feumaidh sibh streupairean "
@@ -2542,7 +2541,7 @@ msgid ""
 "rare <i>liminal</i> units fight best during twilight."
 msgstr ""
 "Sabaididh aonadan <i>dligheach</i> nas fhearr air an latha is aonadan "
-"<i>coimeasgach</i> nas fhearr air an oidhche. tha aonadan <i>neòdrach</i> "
+"<i>coimeasgach</i> nas fhearr air an oidhche. Tha aonadan <i>neodrach</i> "
 "coma mu dheidhinn oidhche no latha. Sabaididh na h-aonadan ainneamh "
 "<i>stairsnich</i> nas fhearr air a’ chiaradh is chamhanaich."
 
@@ -2622,10 +2621,10 @@ msgid ""
 "poison will not be removed unless the unit regenerates, or begins a turn in "
 "a village or next to a unit with the <i>Cures</i> ability."
 msgstr ""
-"Caillidh aonadan puinnseanaichte ochd puingean-beatha sa chuairt gus nach bi "
+"Caillidh aonadan puinseanaichte ochd puingean-beatha sa chuairt gus nach bi "
 "ach aon phuing-bheatha aca. Mairidh iad cha mhòr marbh gus an tèid am "
-"puinsean a thoirt air falbh. ’S urrainn do shlànaighearan stad a cur air "
-"adhartas a’ phuinsein, ach cha tèid am puinsean a thoirt air falbh mus ath-"
+"puinsean a thoirt air  falbh. ’S urrainn do shlànaighearan stad a cur air "
+"adhartas a’ phuinsein, ach cha tèid am puinsean a thoirt air  falbh mus ath-"
 "ghineas an t-aonad no mus tòisich e cuairt ann am baile no ri taobh aonaid "
 "aig a bheil comas <i>leigheis</i>."
 
@@ -2750,6 +2749,10 @@ msgid ""
 "every level of the unit they kill, or four experience points for a zero-"
 "level opponent."
 msgstr ""
+"’S e buille mharbhtach air aonad nàmhad a th’ anns an dòigh as fhearr gus "
+"eòlas fhaighinn. Gheibh aonad a mharbhas nàmhaid ochd puingean eòlais airson "
+"gach rang aig an aonad nàmhad seo no ceithir puingean ma rang dhe neoni aig "
+"an nàmhaid."
 
 #. [tip]
 #: data/hardwired/tips.cfg:104
@@ -2757,6 +2760,9 @@ msgid ""
 "Elvish units move and fight well in forest. Dwarvish units move and fight "
 "well in hills, mountains and caves."
 msgstr ""
+"Gluaisidh is sabaididh aonadan nan sìthichean gu math sa choille. Gluaisidh "
+"is sabaididh aonadan nan troichean gu math air cnuic is beanntan is ann an "
+"uamhan."
 
 #. [tip]
 #: data/hardwired/tips.cfg:108
@@ -2764,6 +2770,9 @@ msgid ""
 "Patience is often key. Rather than attacking in bad conditions or with few "
 "troops, wait for better conditions and then attack."
 msgstr ""
+"Tha foighidinn cudromach gu tric. Seach ionnsaigh a thoirt ann an droch "
+"shuidheachadh le saighdearan gann, ’s fhiach feitheamh airson suidheachaidh "
+"nas fhearr gus ionnsaigh a thoirt an uair sin."
 
 #. [tip]
 #: data/hardwired/tips.cfg:112
@@ -2771,12 +2780,17 @@ msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
 msgstr ""
+"Ma thèid ionnsaigh a thoirt ort bho iomadach taobh, ’s dòcha gur e deagh "
+"bheachd a th’ ann aonadan air nach eil cruaidh feum a chur dha dh’iomadh "
+"comhair gus maille a thoirt air aonadan nàmhad."
 
 #. [tip]
 #: data/hardwired/tips.cfg:116
 msgid ""
 "Do not be afraid to retreat and regroup; it is often the key to victory."
 msgstr ""
+"Cha dèan cùlachadh is ath-bhuidhneachadh cron; gu tric ’s e seo na bheir "
+"buannachd dhut."
 
 #. [tip]
 #: data/hardwired/tips.cfg:117
@@ -2791,6 +2805,11 @@ msgid ""
 "remaining. You will usually earn more gold this way than through capturing "
 "villages and waiting for the turns to run out."
 msgstr ""
+"Sa mhòr chuid dhe na h-iomairtean, gheibh thu duais òir ma chrìochnaicheas "
+"tu tràth, a’ crochadh air àireamh nam bailtean air a’ mhapa is an àireamh "
+"dhe chuairtean a tha air  fhàgail dhut. Mar as trice, gheibh thu barrachd "
+"òir san dòigh sin na nam biodh tu a’ gabhail bailtean is a’ feitheamh gus am "
+"falbhadh na cuairtean ort."
 
 #. [tip]
 #: data/hardwired/tips.cfg:124
@@ -2800,6 +2819,10 @@ msgid ""
 "make room for you on their keep so you can recruit from there, and you can "
 "even capture an enemy’s keep and use that."
 msgstr ""
+"’S urrainn do <i>cheannardan</i> aonadan a thrusadh no ais-ghairm bho "
+"dhaingean caisteil sam bith air a’ mhapa. Aig amannan, nì do chaidreabhaich "
+"rùm dhut air an daingean acasan ach an urrainn dhut trusadh bho an-siud agus "
+"’s urrainn dhut fiù ’s daingean nàmhad a ghlacadh is seo a chleachdadh."
 
 #. [tip]
 #: data/hardwired/tips.cfg:128
@@ -2807,6 +2830,8 @@ msgid ""
 "Skeletons are resistant to piercing, bladed and cold-based attacks but are "
 "vulnerable to impact, fire, and arcane attacks."
 msgstr ""
+"Seasaidh cnàimhnich an aghaidh ionnsaighean bioraidh, lanna is fuar ach tha "
+"iad so-leònta an aghaidh ionnsaighean bualaidh, teine is dìomhair."
 
 #. [tip]
 #: data/hardwired/tips.cfg:132
@@ -2815,6 +2840,11 @@ msgid ""
 "the same side fight better. You can move these units slowly along your "
 "battle lines and give bonuses to large numbers of lower-level troops."
 msgstr ""
+"Cuiridh aonadan aig a bheil an comas <i>ceannardas</i> taic dha dh’aonadan "
+"càirdeil le rang as ìsle rin taobh gus an sabaid iad nas fhearr. ’S urrainn "
+"dhut na h-aonadan seo a ghluasad gu slaodadh bho àite gu àite gus "
+"neartachadh a thoirt dha àireamh mhòr dhe shaighdearan aig a bheil rang "
+"ìosal."
 
 #. [tip]
 #: data/hardwired/tips.cfg:136
@@ -2823,11 +2853,16 @@ msgid ""
 "the village and attack you, while enjoying the defense and healing of the "
 "village."
 msgstr ""
+"Feuch nach gluais thu ri taobh baile fhalaimh. Faodaidh aonad an nàmhad "
+"gluasad a-steach dhan bhaile is ionnsaigh a thoirt ort fhad ’s a bhios dìon "
+"is slànachadh a’ bhaile aige."
 
 #. [tip]
 #: data/hardwired/tips.cfg:140
 msgid "Use lines of troops to screen your injured units while they recover."
 msgstr ""
+"Clachd loidhne dhe shaighdearan gus an nàmhaid a chumail air  falbh bhon a h-"
+"aonadan leòinte agad fhad ’s a tha iad a’ slànachadh."
 
 #. [tip]
 #: data/hardwired/tips.cfg:141
@@ -2838,6 +2873,7 @@ msgstr "<i>― A’ Bhana-phrionnsa Li’sar, 515BB</i>"
 #: data/hardwired/tips.cfg:144
 msgid "Read the <b>Hotkeys</b> list in the <b>Preferences</b> menu."
 msgstr ""
+"Thoir sùil air liosta nan <b>Hotkeys</b> sa chlàr-taice <b>Roghainnean</b>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:148
@@ -2845,6 +2881,9 @@ msgid ""
 "If you move a unit, but don’t attack or discover any additional information, "
 "you can undo your move by pressing <b>u</b>."
 msgstr ""
+"Ma ghluaiseas tu aonad gun a bhith a’ toirt ionnsaigh is gun eòlas ùr "
+"fhaighinn, faodaidh tu an gluasad seo a neo-dhèanamh is tu a’ brùthadh air "
+"<b>u</b>."
 
 #. [tip]
 #: data/hardwired/tips.cfg:152
@@ -2852,6 +2891,8 @@ msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
 "them."
 msgstr ""
+"Chì thu dè cho fada as urrainn dha aonad nàmhad gluasad ma chumas tu an "
+"luchag os a chionn."
 
 #. [tip]
 #: data/hardwired/tips.cfg:156
@@ -2859,6 +2900,8 @@ msgid ""
 "Use healers to support your attacks — they will win you battles without "
 "needing to attack anything themselves."
 msgstr ""
+"Cleachd slànaighearan gus taic a chur dha na saighdearan agad — buannaichidh "
+"tu cathan leotha is cha leig iad leas ionnsaighean a thoirt."
 
 #. [tip]
 #: data/hardwired/tips.cfg:157 data/hardwired/tips.cfg:205
@@ -2871,11 +2914,15 @@ msgid ""
 "The <i>Slow</i> attack makes enemy units move slower and halves the damage "
 "they do on all attacks until they end a turn."
 msgstr ""
+"Cuiridh an ionnsaigh <i>maille</i> maille air gluasad aig aonad nàmhad is "
+"cha dèan e ach leth dhochann leis a h-uile ionnsaigh gu deireadh na cuairte "
+"aige."
 
 #. [tip]
 #: data/hardwired/tips.cfg:164
 msgid "<i>Arcane</i> attacks are very powerful against undead."
 msgstr ""
+"Tha ionnsaighean <i>dìomhair</i> glè èifeachdach an aghaidh nan closach."
 
 #. [tip]
 #: data/hardwired/tips.cfg:165
@@ -2888,6 +2935,8 @@ msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
 "fight."
 msgstr ""
+"Gheibh aonadan slànachadh nuair a ruigeas iad rang ùr. Faodaidh seo cath a "
+"chur air leas ma chleachdas tu gu glic e."
 
 #. [tip]
 #: data/hardwired/tips.cfg:172
@@ -2895,6 +2944,8 @@ msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
 msgstr ""
+"Tha aonadan le cruinn-leum nas fearr an aghaidh nàimhdean a mharbhas iad le "
+"aon bhuille."
 
 #. [tip]
 #: data/hardwired/tips.cfg:176
@@ -2905,6 +2956,11 @@ msgid ""
 "benefits of advancing a level, so it is generally wiser to advance your "
 "lower-level units instead."
 msgstr ""
+"An àite rang ùr a bhuain, gheibh aonadan àrda duais <i>An dèidh an "
+"àrdachaidh as àirde</i> (ADÀÀ) a mheudaicheas na puingean-beatha as motha "
+"aig an aonad le trì is a shlànaicheas e gu lèir. Tha seo mòran nas lugha na "
+"na duaisean a gheibh aonad le àrdachadh gu rang ùr. Mar sin, tha e nas glice "
+"na h-aonadan ìosal agad àrdachadh na àite."
 
 #. [tip]
 #: data/hardwired/tips.cfg:180
@@ -2913,6 +2969,9 @@ msgid ""
 "mouse pointer over any button or icon to get a description or explanation of "
 "what it does."
 msgstr ""
+"Tha gliocas-sgrìn aig cha mhòr a h-uile putan is ìomhaigheag ann am Beasnad. "
+"Cùm an luchag os cionn putain no ìomhaigheige sam bith gus tuairisgeul no "
+"mìneachadh fhaighinn air na nì e."
 
 #. [tip]
 #: data/hardwired/tips.cfg:184
@@ -2921,6 +2980,9 @@ msgid ""
 "veteran to damage a joint target heavily enough for the junior partner to "
 "get in the killing blow."
 msgstr ""
+"Gus aonad le rang ìosal àrdachadh gu luath, cuir ann an sgioba le aonad "
+"eòlach e. Cleachd an t-eòlaiche gus dochann gu leòr a dhèanamh air an "
+"targaid ach an tèid leis an aonad as ùire a marbhadh."
 
 #. [tip]
 #: data/hardwired/tips.cfg:185
@@ -2934,6 +2996,10 @@ msgid ""
 "the <b>Delay Shroud Updates</b> option when you need to move units while "
 "retaining the ability to undo, or use the new Whiteboard planning tool."
 msgstr ""
+"Chan urrainn dhut gluasad a neo-dhèanamh a nochdas sia-cheàrnaich dhut a bha "
+"falaichte le ceò no sgàil. Cuir an roghainn <b>Cuir dàil air ùrachaidhean "
+"sgàile</b> air ma tha comas neo-dhèanaimh a dhìth ort le gluasadan nan "
+"aonadan no cleachd an t-inneal planadh bùird-ghil ùr."
 
 #. [tip]
 #: data/hardwired/tips.cfg:192
@@ -2941,6 +3007,9 @@ msgid ""
 "If an enemy benefits more from a rare terrain type than you do, occupying "
 "that terrain will deprive them of its benefits."
 msgstr ""
+"Ma gheibh nàmhaid barrachd buannachd à seòrsa crutha-tìre ainneamh na gheibh "
+"thu fhèin, ma sheasas tu air a’ chruth-tìre seo cumaidh tu am buannachd seo "
+"bhuaithe."
 
 #. [tip]
 #: data/hardwired/tips.cfg:196
@@ -2949,6 +3018,10 @@ msgid ""
 "a river can inflict heavy casualties. Elves can use the edge of a forest in "
 "a similar manner, and dwarves can do the same with mountains."
 msgstr ""
+"Chan eil dìon math aig a’ mhòr chuid dhe dh’aonadan ann an uisge; faodaidh "
+"loidhne dhe luchd-ionnsaigh ri oir aibhne milleadh mhòr a dhèanamh. ’S "
+"urrainn dho shìthichean oir choille agus troichean oir mhonaidh a "
+"chleachdadh san aon dòigh."
 
 #. [tip]
 #: data/hardwired/tips.cfg:200
@@ -2956,6 +3029,9 @@ msgid ""
 "In many campaign scenarios, you may issue simple instructions for your "
 "computer-controlled allies using the right-click context menu."
 msgstr ""
+"Ann an mòran chnàmh-sgeulan, ’s urrainn dhut iarrtasan simplidh a thoirt dha "
+"chaidreabhaich choimpiutair leis a’ chlàr-taice co-theacsa a gheibh thu le "
+"briogadh deas na luchaige."
 
 #. [tip]
 #: data/hardwired/tips.cfg:204
@@ -2967,6 +3043,13 @@ msgid ""
 "to escape; slow enemies are almost immobilized, and your own units suffer "
 "less retaliation damage, so it’s quicker to heal them."
 msgstr ""
+"Tha an comas <i>maille</i> fìor chumhachdach oir tha buaidhean fad is "
+"farsaing aige. Chan fhaigh an nàmhaid ach an dàrna leth à comas <i>sùigh</"
+"i>, chan fhaigh e buannachd à <i>cruinn-leum</i> no <i>cùl-shàthadh</i> idir "
+"is tha <i>caothach a’ chatha</i> nas laige. Tha e doirbh dha nàimhdean "
+"luatha teicheadh, tha nàimhdean malla cha mhòr gun ghluasad is chan fhaigh "
+"na h-aonadan agad fhèin cus dochann dìoghaltais is mar sin gheibh iad "
+"slànachadh nas luaithe."
 
 #. [tip]
 #: data/hardwired/tips.cfg:208
@@ -2976,6 +3059,11 @@ msgid ""
 "This gives you another try whenever your first devastating attack misses — "
 "as inevitably happens from time to time."
 msgstr ""
+"Ma tha aonadan agad le àireamh bheag dhe dh’ionnsaighean cumhachdach – a "
+"leithid Eòlaich Dhubha, Marcaichean, Madagain Dheamhain no Tàirneanaichean "
+"Troiche – cuir ann am buidhnean beaga dhe dhithis no triùir iad. Mar sin, "
+"gheibh thu cothrom eile ma dh’fhàilligeas a’ chiad ionnsaigh mharbhtach agad "
+"– rud a thachras le cinnt bho àm gu àm."
 
 #. [tip]
 #: data/hardwired/tips.cfg:212
@@ -2985,6 +3073,11 @@ msgid ""
 "leadership—or a strong or dextrous unit—whenever the extra point or two of "
 "damage makes a one-hit kill possible."
 msgstr ""
+"Tha aonadan le trì no barrachd ionnsaighean – gu h-àraidh ionnsaighean "
+"draoidheach – nas fhearr gus a chùis a dhèanamh air nàimhdean nuair nach eil "
+"ach glè bheag dhe phuigean-beatha air  fhàgail dhaibhsan. Dèan cinnteach gun "
+"cleachd thu ceannardas – no aonad làidir no teòma – nuair a nì puing no dhà "
+"a bharrachd dhe dhochann a’ chùis air an nàmhaid le aon bhuille."
 
 #. [tip]
 #: data/hardwired/tips.cfg:216
@@ -2993,6 +3086,9 @@ msgid ""
 "little experience it has. Sometimes it’s worth paying a premium to know "
 "exactly what traits a new arrival will have."
 msgstr ""
+"Cnuasaich air mus cuir thu aonad air an liosta ais-ghairme agad à dreuchd ge "
+"b’ e dè cho beag ’s a tha eòlas. Aig amannan, ’s fhiach prìs àrd a "
+"phàigheadh ach an tagh thu dè na feartan a tha aig an aonad ùr."
 
 #. [tip]
 #: data/hardwired/tips.cfg:220
@@ -3001,6 +3097,10 @@ msgid ""
 "turns’ movement away from the fighting. Then it can recover in peace (at 10 "
 "hitpoints per turn) without tying up front-line villages."
 msgstr ""
+"Ma tha aonad buan leòinte gu dona, gluais thar iomadh cuairt gu baile fad "
+"air  falbh on chath e ach am  faigh e slànachadh. Mar sin, ’s urrainn dha "
+"slànachadh le sìth (10 puingean-beatha sa chuairt) gun a bhith san rathad "
+"ann am baile faisg air a’ bhlàr."
 
 #. [tip]
 #: data/hardwired/tips.cfg:221 data/hardwired/tips.cfg:233
@@ -3014,6 +3114,10 @@ msgid ""
 "work to combine, for example, <i>Leadership</i>, <i>Illuminates</i> and "
 "<i>Charge</i> against a slowed opponent, the results can be impressive."
 msgstr ""
+"Faodaidh iomadh chomas sònraichte còmhla a bhith marbhtach. Ged a bheireadh "
+"e obair gus <i>ceannardas</i>, <i>soillseachadh</i> is <i>cruinn-leum</i> a "
+"chur còmhla an aghaigh nàmhad air a bheil maille, mar eisimpleir, faodaidh "
+"an toradh a bhith drùidhteach."
 
 #. [tip]
 #: data/hardwired/tips.cfg:228
@@ -3023,6 +3127,11 @@ msgid ""
 "your units extra experience. When deciding whether or not to finish a "
 "scenario early, weigh these factors against one another."
 msgstr ""
+"Ged a bheir crìochnachadh tràth duais òir dhut is a lùghdaicheas e an seans "
+"gum marbh an nàmhaid na saighdearan luachmhor agad, caillidh tu cothroman "
+"gus eòlas a bharrachd a thoirt dha na h-aonadan agad. Dèan meidh eadar na "
+"cùisean seo nuair a bheir thu co-dhùnadh cò dhiubh an crìochnaich thu tràth "
+"no nach crìochnaich."
 
 #. [tip]
 #: data/hardwired/tips.cfg:232
@@ -3033,6 +3142,12 @@ msgid ""
 "average. Plan for heavy losses, and take firm control of any hex where the "
 "land does favor you."
 msgstr ""
+"Ma tha dìon lag aig na saighdearan agad sa h-uile àite air a’ mhapa, cuir "
+"ann an àiteachan iad far a bheil an t-aon ana-chothrom aig na nàimhdean ma "
+"bheir iad ionnsaigh ort. Seachnaich na h-àiteachan far a bheil droch dhìon "
+"agad is dìon co-dhiù meadhanach math aig an nàmhaid. Cuir romhad gun caill "
+"thu grunn shaighdearan is faigh smachd seasmhach air gach sia-cheàrnach far "
+"an toir an cruth-tìre buannachd dhut."
 
 #. [tip]
 #: data/hardwired/tips.cfg:237
@@ -3041,6 +3156,9 @@ msgid ""
 "if they occupy a village hex, they do not gain any defensive benefits from "
 "the village, although they will still be healed."
 msgstr ""
+"Seachnaidh aonadan <i>allaidh</i> a leithid ialtagan is beathaichean "
+"fiadhaich na bailtean. Fiù ’s ma bhios iad air sia-cheàrnach baile, chan "
+"fhaigh iad buannachd dìona às ged a thèid an slànachadh fhathast."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
@@ -3106,12 +3224,12 @@ msgstr "Aire:"
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:1755
 msgid "(%d turns left)"
-msgstr "(%d cuairtean air fhàgail)"
+msgstr "(%d cuairtean air  fhàgail)"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:1757
 msgid "(this turn left)"
-msgstr "(a’ chuairt seo air fhàgail)"
+msgstr "(a’ chuairt seo air  fhàgail)"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:1810
@@ -3164,7 +3282,7 @@ msgstr "Cuairt deiseil"
 #: data/themes/default.cfg:147 data/themes/dfool.cfg:158
 #: data/themes/widescreen.cfg:179
 msgid "End Scenario"
-msgstr "Cnàmh-sgeul deiseil"
+msgstr "Cnàmh-sgeul deis"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
@@ -3392,23 +3510,23 @@ msgstr[3] "$enemies nàmhaid"
 
 #: src/actions/move.cpp:1083
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
-msgstr "Aonadan air faire! ($friendphrase, $enemyphrase)"
+msgstr "Aonadan air  faire! ($friendphrase, $enemyphrase)"
 
 #: src/actions/move.cpp:1087
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
-msgstr[0] "Aonad nàmhad air faire!"
-msgstr[1] "$enemies aonad nàmhad air faire!"
-msgstr[2] "$enemies aonadan nàmhad air faire!"
-msgstr[3] "$enemies aonad nàmhad air faire!"
+msgstr[0] "Aonad nàmhad air  faire!"
+msgstr[1] "$enemies aonad nàmhad air  faire!"
+msgstr[2] "$enemies aonadan nàmhad air  faire!"
+msgstr[3] "$enemies aonad nàmhad air  faire!"
 
 #: src/actions/move.cpp:1091
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
-msgstr[0] "Aonad càirdeil air fàire"
-msgstr[1] "$friends aonad càirdeil air fàire"
-msgstr[2] "$friends aonadan càirdeil air fàire"
-msgstr[3] "$friends aonad càirdeil air fàire"
+msgstr[0] "Aonad càirdeil air  fàire"
+msgstr[1] "$friends aonad càirdeil air  fàire"
+msgstr[2] "$friends aonadan càirdeil air  fàire"
+msgstr[3] "$friends aonad càirdeil air  fàire"
 
 #: src/actions/move.cpp:1107
 msgid "(press $hotkey to keep moving)"
@@ -3711,8 +3829,8 @@ msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
 msgstr ""
-"Ma sguabas tu às dha ‘$addon|’, bheir seo air falbh an cunntas air "
-"luchdaidhean suas is a-nuas air frithealaiche nan tuilleadan. A bheil thu "
+"Ma sguabas tu às dha ‘$addon|’, bheir seo air  falbh an cunntas air "
+"luchdaidhean suas is a-nuas air  frithealaiche nan tuilleadan. A bheil thu "
 "cinnteach gu bheil thu airson leantainn ort?"
 
 #: src/addon/manager_ui.cpp:317 src/addon/manager_ui.cpp:336
@@ -3893,16 +4011,16 @@ msgid "Are you sure you want to remove the following installed add-on?"
 msgid_plural "Are you sure you want to remove the following installed add-ons?"
 msgstr[0] ""
 "A bheil thu cinnteach gu bheil thu airson an tuilleadan air stàladh seo a "
-"thoirt air falbh?"
+"thoirt air  falbh?"
 msgstr[1] ""
 "A bheil thu cinnteach gu bheil thu airson an dà thuilleadan air stàladh seo "
-"a thoirt air falbh?"
+"a thoirt air  falbh?"
 msgstr[2] ""
 "A bheil thu cinnteach gu bheil thu airson na tuilleadain air stàladh seo a "
-"thoirt air falbh?"
+"thoirt air  falbh?"
 msgstr[3] ""
 "A bheil thu cinnteach gu bheil thu airson na tuilleadain air stàladh seo a "
-"thoirt air falbh?"
+"thoirt air  falbh?"
 
 #: src/addon/manager_ui.cpp:991
 msgid ""
@@ -3913,16 +4031,16 @@ msgid_plural ""
 "information stored locally, and will not be removed:"
 msgstr[0] ""
 "A rèir coltais, tha fiosrachadh foillsichidh no smachd nan tionndaidhean mun "
-"tuilleadan seo air stòradh gu h-ionadail is cha tèid a thoirt air falbh:"
+"tuilleadan seo air stòradh gu h-ionadail is cha tèid a thoirt air  falbh:"
 msgstr[1] ""
 "A rèir coltais, tha fiosrachadh foillsichidh no smachd nan tionndaidhean mun "
-"dà thuilleadan seo air stòradh gu h-ionadail is cha tèid an toirt air falbh:"
+"dà thuilleadan seo air stòradh gu h-ionadail is cha tèid an toirt air  falbh:"
 msgstr[2] ""
 "A rèir coltais, tha fiosrachadh foillsichidh no smachd nan tionndaidhean mu "
-"na tuilleadain seo air stòradh gu h-ionadail is cha tèid a thoirt air falbh:"
+"na tuilleadain seo air stòradh gu h-ionadail is cha tèid a thoirt air  falbh:"
 msgstr[3] ""
 "A rèir coltais, tha fiosrachadh foillsichidh no smachd nan tionndaidhean mu "
-"na tuilleadain seo air stòradh gu h-ionadail is cha tèid a thoirt air falbh:"
+"na tuilleadain seo air stòradh gu h-ionadail is cha tèid a thoirt air  falbh:"
 
 #: src/addon/manager_ui.cpp:1001
 msgid "The following add-on could not be deleted properly:"
@@ -4199,7 +4317,7 @@ msgstr "Cha do ghabh mapa a’ gheama luchdadh: "
 
 #: src/game_controller.cpp:1079 src/game_controller_abstract.cpp:100
 msgid "The Battle for Wesnoth"
-msgstr ""
+msgstr "Blàr mu Bheasnad"
 
 #: src/game_controller.cpp:1202
 msgid "The following add-on had errors and could not be loaded:"
@@ -4705,7 +4823,7 @@ msgstr ""
 #: src/menu_events.cpp:1439 src/menu_events.cpp:1444
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
-"Tha gluasadan air fhàgail aig cuid dhe dh’aonadan. A bheil thu cinnteach gu "
+"Tha gluasadan air  fhàgail aig cuid dhe dh’aonadan. A bheil thu cinnteach gu "
 "bheil thu airson crìoch a chur air a’ chuairt agad?"
 
 #: src/menu_events.cpp:1484
@@ -4849,7 +4967,7 @@ msgid ""
 "mention relevant nicknames, etc."
 msgstr ""
 "Aithris air ana-cainnt, briseadh nan riaghailtean, amsaa. dha mhaoir an "
-"fhrithealaiche. Dèan cinnteach gun toir thu aithris air far-ainmean "
+"fhrithealaiche. Dèan cinnteach gun toir thu aithris air  far-ainmean "
 "buntainneach, amsaa."
 
 #: src/menu_events.cpp:2383
@@ -4858,7 +4976,7 @@ msgstr "<teachdaireachd>"
 
 #: src/menu_events.cpp:2383
 msgid "Send an emotion or personal action in chat."
-msgstr "Cuir faireachdainn no gnìomh pearsanta sa chabadaich."
+msgstr "Cuir  faireachdainn no gnìomh pearsanta sa chabadaich."
 
 #: src/menu_events.cpp:2386
 msgid ""
@@ -4883,15 +5001,16 @@ msgstr "Atharraich ìre an logaidh aig àrainn logaidh."
 
 #: src/menu_events.cpp:2394
 msgid "Add a nickname to your ignores list."
-msgstr "Cuir far-ainm ris an liosta neo-shuime agad."
+msgstr "Cuir  far-ainm ris an liosta neo-shuime agad."
 
 #: src/menu_events.cpp:2396
 msgid "Add a nickname to your friends list."
-msgstr "Cuir far-ainm air liosta nan caraidean agad"
+msgstr "Cuir  far-ainm air liosta nan caraidean agad"
 
 #: src/menu_events.cpp:2398
 msgid "Remove a nickname from your ignores or friends list."
-msgstr "Thoir far-ainm air falbh bho liosta nan caraidean no neo-shuime agad."
+msgstr ""
+"Thoir  far-ainm air  falbh bho liosta nan caraidean no neo-shuime agad."
 
 #: src/menu_events.cpp:2400
 msgid "Show your ignores and friends list."
@@ -4911,7 +5030,7 @@ msgstr "Clàraich d’ fhar-ainm"
 
 #: src/menu_events.cpp:2407
 msgid "Drop your nickname."
-msgstr "Tilg d’ fhar-ainm air falbh."
+msgstr "Tilg d’ fhar-ainm air  falbh."
 
 #: src/menu_events.cpp:2409
 msgid "Update details for your nickname. For possible details see '/details'."
@@ -4925,7 +5044,7 @@ msgstr "<fiosrachadh> <luach>"
 
 #: src/menu_events.cpp:2412
 msgid "Request information about a nickname."
-msgstr "Iarr fiosrachadh air far-ainm."
+msgstr "Iarr  fiosrachadh air  far-ainm."
 
 #: src/menu_events.cpp:2414
 msgid "Request a list of details you can set for your registered nickname."
@@ -5039,7 +5158,7 @@ msgstr "Leig seachad mearachdan ath-chluiche."
 
 #: src/menu_events.cpp:2591
 msgid "Disable autosaves."
-msgstr "Cuir fèin-shàbhaladh à comas."
+msgstr "Cuir  fèin-shàbhaladh à comas."
 
 #: src/menu_events.cpp:2593
 msgid "<id>"
@@ -5243,7 +5362,7 @@ msgstr "Air a chur ri liosta nan caraidean: $nick"
 
 #: src/menu_events.cpp:2936
 msgid "Removed from list: $nick"
-msgstr "Air a thoirt air falbh bhon liosta: $nick"
+msgstr "Air a thoirt air  falbh bhon liosta: $nick"
 
 #: src/menu_events.cpp:2936 src/menu_events.cpp:2954
 msgid "friends and ignores list"
@@ -5272,7 +5391,7 @@ msgstr "a’ clàradh far-ainm"
 
 #: src/menu_events.cpp:2993
 msgid "dropping your username"
-msgstr "a’ tilgeadh air falbh far-ainm"
+msgstr "a’ tilgeadh air  falbh far-ainm"
 
 #: src/menu_events.cpp:3011
 msgid "setting $var to $value"
@@ -5353,12 +5472,12 @@ msgid ""
 "chaotic, or liminal."
 msgstr ""
 "Co-thaobhadh mì-dhligheach: ‘$alignment’. Feumaidh e bhith dligheach, "
-"neòdrach, coimeasgach no stairsnich."
+"neodrach, coimeasgach no stairsnich."
 
 #: src/menu_events.cpp:3627
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr ""
-"A bheil thu airson a h-uile aonad a lorg thu a thoirt air falbh bhon "
+"A bheil thu airson a h-uile aonad a lorg thu a thoirt air  falbh bhon "
 "chobhair?"
 
 #: src/menu_events.cpp:3638
@@ -5390,8 +5509,8 @@ msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
 msgstr ""
-"Chan urrainn dhut an ceannard agad a ghluasad air falbh bhon dhaingean le "
-"trusadh is ais-ghairm air fhàgail fhathast."
+"Chan urrainn dhut an ceannard agad a ghluasad air  falbh bhon dhaingean le "
+"trusadh is ais-ghairm air  fhàgail fhathast."
 
 #: src/mouse_events.cpp:909 src/mouse_events.cpp:989
 msgid "Attack Enemy"
@@ -6092,7 +6211,7 @@ msgstr "Thachradh air cruth-tìre le cosgais ghluasaid nas lugha na 1."
 
 #: src/play_controller.cpp:252
 msgid "time left for current turn"
-msgstr "àm air fhàgail airson na cuairte làithrich"
+msgstr "àm air  fhàgail airson na cuairte làithrich"
 
 #: src/play_controller.cpp:254 src/replay_controller.cpp:139
 msgid "current local time"
@@ -6206,7 +6325,7 @@ msgstr ""
 
 #: src/playsingle_controller.cpp:257
 msgid "Remaining gold: "
-msgstr "Òr air fhàgail: "
+msgstr "Òr air  fhàgail: "
 
 #: src/playsingle_controller.cpp:261
 msgid "Early finish bonus: "
@@ -6238,7 +6357,7 @@ msgstr "Òr duaise: "
 
 #: src/playsingle_controller.cpp:278
 msgid "Retained Gold: "
-msgstr "Òr air fhàgail: "
+msgstr "Òr air  fhàgail: "
 
 #: src/playsingle_controller.cpp:291
 msgid ""
@@ -6248,16 +6367,16 @@ msgid_plural ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
 msgstr[0] ""
-"Tòisichidh tu an t-ath chnàmh-sgeul le %gold bhonn òir a bharrachd air an òr "
+"Tòisichidh tu an t-ath chnàmh-sgeul le $gold bhonn òir a bharrachd air an òr "
 "tòiseachaidh as lugha."
 msgstr[1] ""
-"Tòisichidh tu an t-ath chnàmh-sgeul le %gold bhonn òir a bharrachd air an òr "
+"Tòisichidh tu an t-ath chnàmh-sgeul le $gold bhonn òir a bharrachd air an òr "
 "tòiseachaidh as lugha."
 msgstr[2] ""
-"Tòisichidh tu an t-ath chnàmh-sgeul le %gold buinn òir a bharrachd air an òr "
+"Tòisichidh tu an t-ath chnàmh-sgeul le $gold buinn òir a bharrachd air an òr "
 "tòiseachaidh as lugha."
 msgstr[3] ""
-"Tòisichidh tu an t-ath chnàmh-sgeul le %gold bonn òir a bharrachd air an òr "
+"Tòisichidh tu an t-ath chnàmh-sgeul le $gold bonn òir a bharrachd air an òr "
 "tòiseachaidh as lugha."
 
 #: src/playsingle_controller.cpp:299
@@ -6411,7 +6530,7 @@ msgstr "reòite: "
 #: src/reports.cpp:317
 msgid "This unit has been petrified. It may not move or attack."
 msgstr ""
-"Tha an t.aonad seo reòite. Chan urrainn dha gluasad no ionnsaigh a thoirt."
+"Tha an t-aonad seo reòite. Chan urrainn dha gluasad no ionnsaigh a thoirt."
 
 #: src/reports.cpp:340
 msgid "Alignment: "
@@ -6545,7 +6664,7 @@ msgstr "Aonadan dligheach: "
 
 #: src/reports.cpp:1003
 msgid "Neutral units: "
-msgstr "Aonadan neòdrach: "
+msgstr "Aonadan neodrach: "
 
 #: src/reports.cpp:1004
 msgid "Chaotic units: "
@@ -6689,7 +6808,7 @@ msgstr ""
 
 #: src/serialization/parser.cpp:238 src/serialization/parser.cpp:250
 msgid "Empty variable name"
-msgstr "Ainm caochladair falamh"
+msgstr "Ainm caochladair  falamh"
 
 #: src/serialization/parser.cpp:244
 msgid "Unexpected characters after variable name (expected , or =)"
@@ -6821,7 +6940,7 @@ msgstr "Dealbhadh iomairte"
 #, fuzzy
 #| msgid "End Scenario"
 msgid "Scenario"
-msgstr "Cnàmh-sgeul deiseil"
+msgstr "Cnàmh-sgeul deis"
 
 #: src/statistics_dialog.cpp:284
 msgid "Damage"
@@ -6939,7 +7058,7 @@ msgstr "stairsnich"
 
 #: src/unit_types.cpp:1041
 msgid "neutral"
-msgstr "neòdrach"
+msgstr "neodrach"
 
 #: src/unit_types.cpp:1042
 msgid "female^chaotic"
@@ -6955,15 +7074,15 @@ msgstr "stairsnich"
 
 #: src/unit_types.cpp:1042
 msgid "female^neutral"
-msgstr "neòdrach"
+msgstr "neodrach"
 
 #: src/whiteboard/manager.cpp:1102
 msgid "SHOW ALL allies’ plans"
-msgstr "SEALL A H_UILE plana nan caidreabhaich"
+msgstr "SEALL A H-UILE plana nan caidreabhaich"
 
 #: src/whiteboard/manager.cpp:1103
 msgid "HIDE ALL allies’ plans"
-msgstr "FALAICH A H_UILE plana nan caidreabhaich"
+msgstr "FALAICH A H-UILE plana nan caidreabhaich"
 
 #: src/whiteboard/manager.cpp:1117
 msgid "Show plans for $player"
@@ -7131,36 +7250,6 @@ msgstr "Roghainnean a’ bhùird-ghil"
 #~ "Waliy al-Din,Waqar,Waqqas,Ward,Wasif,Wasil,Wasim,Wazir,Yahya,Yaman,Yaʿqub,"
 #~ "Yasar,Yasin,Yasir,Yazan,Yazid,Yunus,Yushua,Yusri,Yusuf,Zafar,Zafir,Zahid,"
 #~ "Zahir,Zayd,Zaim,Zayn,Zarif,Zakarriya,Zaki,Zakwan,Ziyad,Zubayr,Zuhayr"
-
-#, fuzzy
-#~| msgid "invisible: "
-#~ msgid "invisible"
-#~ msgstr "neo-fhaicsinneach: "
-
-#, fuzzy
-#~| msgid "female^slowed"
-#~ msgid "female^invisible"
-#~ msgstr "maille oirre"
-
-#, fuzzy
-#~| msgid "Fire a game event."
-#~ msgid "I triggered a moveto event."
-#~ msgstr "Adhbharaich tachartas sa gheama."
-
-#, fuzzy
-#~| msgid "Password: "
-#~ msgid "sword"
-#~ msgstr "Facal-faire: "
-
-#, fuzzy
-#~| msgid "Version: "
-#~ msgid "Vision Test"
-#~ msgstr "Tionndadh: "
-
-#, fuzzy
-#~| msgid "invisible: "
-#~ msgid "It is invisible!"
-#~ msgstr "neo-fhaicsinneach: "
 
 #~ msgid "The server responded with an error: \"$error|\""
 #~ msgstr "Dh’fhreagair am  frithealaiche le mearachd: \"$error|\""
