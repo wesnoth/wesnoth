@@ -704,25 +704,11 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				// starting position needs to be empty,
 				// to force a reload of the scenario config.
 
-				//TODO: remove once replay_start is confirmed
-				//if (gamestate.classification().campaign_type != "multiplayer"){
-				//	gamestate.starting_pos = config();
-				//}
-				//add the variables to the starting position
-				//gamestate.starting_pos.add_child("variables", sides.get_variables());
-
 				savegame::scenariostart_savegame save(gamestate, preferences::compress_saves());
 
 				save.save_game_automatic(disp.video());
 			}
 
-			//TODO: remove once replay_start is confirmed
-//			if (gamestate.classification().campaign_type != "multiplayer"){
-//				gamestate.starting_pos = *scenario;
-//				//add the variables to the starting position
-//				gamestate.starting_pos.add_child("variables", sides.get_variables());
-//				write_players(gamestate, gamestate.starting_pos, true, true);
-//			}
 		}
 		gamestate.snapshot = config();
 	}
