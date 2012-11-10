@@ -358,11 +358,10 @@ void carryover_info::transfer_to(config& level){
 	}
 
 	config::attribute_value & seed_value = level["random_seed"];
-	if ( seed_value.empty() )
+	if ( seed_value.empty() ) {
 		seed_value = rng_.get_random_seed();
-	config::attribute_value & calls_value = level["random_calls"];
-	if ( calls_value.empty() )
-		calls_value = rng_.get_random_calls();
+		level["random_calls"] = rng_.get_random_calls();
+	}
 
 	if(!level.has_child("menu_item")){
 		wml_menu_items_.to_config(level);
