@@ -357,10 +357,12 @@ void carryover_info::transfer_to(config& level){
 		level.add_child("variables", variables_);
 	}
 
-	if ( level["random_seed"].empty() )
-		level["random_seed"] = str_cast<int>(rng_.get_random_seed());
-	if ( level["random_calls"].empty() )
-		level["random_calls"] = str_cast<int>(rng_.get_random_calls());
+	config::attribute_value & seed_value = level["random_seed"];
+	if ( seed_value.empty() )
+		seed_value = rng_.get_random_seed();
+	config::attribute_value & calls_value = level["random_calls"];
+	if ( calls_value.empty() )
+		calls_value = rng_.get_random_calls();
 
 	if(!level.has_child("menu_item")){
 		wml_menu_items_.to_config(level);
