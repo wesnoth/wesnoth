@@ -34,16 +34,6 @@ public:
 	/**
 	 *  Seeds the random pool.
 	 *
-	 *  @param call_count   Upon loading we need to restore the state at saving
-	 *                      so set the number of times a random number is
-	 *                      generated for replays the orginal value is
-	 *                      required.
-	 */
-	void seed_random(const unsigned call_count = 0);
-
-	/**
-	 *  Seeds the random pool.
-	 *
 	 *  @param seed         The initial value for the random engine.
 	 *  @param call_count   Upon loading we need to restore the state at saving
 	 *                      so set the number of times a random number is

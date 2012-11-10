@@ -251,8 +251,10 @@ simple_rng::simple_rng() :
 simple_rng::simple_rng(const config& cfg) :
 	random_seed_(cfg["random_seed"]),
 	random_pool_(random_seed_),
-	random_calls_(0)
+	random_calls_(cfg["random_calls"].to_int(0))
 {
+	for ( unsigned calls = 0; calls < random_calls_; ++calls )
+		random_next();
 }
 
 int simple_rng::get_next_random()
@@ -264,11 +266,6 @@ int simple_rng::get_next_random()
 		<< " with seed " << random_seed_ << '\n';
 
 	return (random_pool_ / 65536) % 32768;
-}
-
-void simple_rng::seed_random(const unsigned call_count)
-{
-    seed_random(random_seed_, call_count);
 }
 
 void simple_rng::rotate_random()

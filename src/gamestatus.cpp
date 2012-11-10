@@ -837,16 +837,6 @@ void game_data::set_variables(const config& vars) {
 	variables_ = vars;
 }
 
-void game_data::set_vars(const config& cfg){
-	if(cfg.has_child("random_calls")){
-		rng_.seed_random(cfg["random_calls"]);
-	}
-
-	if(const config &vars = cfg.child("variables")){
-		set_variables(vars);
-	}
-}
-
 void game_data::write_snapshot(config& cfg){
 	cfg["difficulty"] = difficulty_;
 	cfg["scenario"] = scenario_;

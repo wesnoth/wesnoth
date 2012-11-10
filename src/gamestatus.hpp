@@ -188,8 +188,6 @@ public:
 	const rand_rng::simple_rng& rng() const { return rng_; }
 	rand_rng::simple_rng& rng() { return rng_; }
 
-	void set_vars(const config& cfg);
-
 	enum PHASE {
 		INITIAL,
 		PRELOAD,
