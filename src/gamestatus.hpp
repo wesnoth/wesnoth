@@ -170,7 +170,6 @@ public:
 	std::vector<scoped_wml_variable*> scoped_variables;
 
 	const config& get_variables() const { return variables_; }
-	void set_variables(const config& vars);
 
 	// Variable access
 	config::attribute_value &get_variable(const std::string &varname);

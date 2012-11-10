@@ -737,21 +737,16 @@ game_data::game_data(const config& level)
 		, last_selected(map_location::null_location)
 		, wml_menu_items_()
 		, rng_(level)
-		, variables_()
+		, variables_(level.child_or_empty("variables"))
 		, temporaries_()
 		, generator_setter_(&recorder)
 		, phase_(INITIAL)
-		, can_end_turn_(true)
+		, can_end_turn_(level["can_end_turn"].to_bool(true))
 		, difficulty_(level["difficulty"].empty() ? "NORMAL" : level["difficulty"].str())
 		, scenario_(level["id"])
 		, next_scenario_(level["next_scenario"])
 {
 	wml_menu_items_.set_menu_items(level);
-	can_end_turn_ = level["can_end_turn"].to_bool(true);
-
-	if(const config &vars = level.child("variables")){
-		set_variables(vars);
-	}
 }
 
 game_data::game_data(const game_data& data)
@@ -831,10 +826,6 @@ void game_data::clear_variable(const std::string& varname)
 		to_clear.vars->clear_children(to_clear.key);
 		to_clear.vars->remove_attribute(to_clear.key);
 	}
-}
-
-void game_data::set_variables(const config& vars) {
-	variables_ = vars;
 }
 
 void game_data::write_snapshot(config& cfg){
