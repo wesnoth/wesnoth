@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-10-27 15:56+0200\n"
-"PO-Revision-Date: 2012-11-04 16:39+0100\n"
-"Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
+"PO-Revision-Date: 2012-11-10 16:27-0000\n"
+"Last-Translator: GunChleoc <fiosAIGforamnagaidhligDOTnet>\n"
 "Language-Team: Fòram na Gàidhlig http://www.foramnagaidhlig.net\n"
 "Language: gd\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : "
 "(n > 2 && n < 20) ? 2 : 3;\n"
-"X-Generator: Virtaal 0.7.1\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:4
@@ -1966,7 +1966,7 @@ msgstr "Geal"
 #. [color_range]: id=teal
 #: data/core/team-colors.cfg:74 data/core/team-colors.cfg:131
 msgid "Teal"
-msgstr "Dath a’ chrann-lacha"
+msgstr "Saidhean"
 
 #. [language]
 #: data/english.cfg:3
@@ -2567,7 +2567,7 @@ msgstr ""
 #: data/hardwired/tips.cfg:217
 msgid "<i>― Haldric II, 42YW, Handbook of Tactical Analysis: Volume I</i>"
 msgstr ""
-"<i>― Haldraig II, 42BB, Leabhar-làimhe Sgrùdadh Innleachd: Iom-leabhar I</i>"
+"<i>― Taldraig II, 42BB, Leabhar-làimhe Sgrùdadh Innleachd: Iom-leabhar I</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:52
@@ -2674,7 +2674,7 @@ msgstr ""
 #: data/hardwired/tips.cfg:77
 msgid "<i>― Haldric II, 43YW, Handbook of Tactical Analysis: Volume II</i>"
 msgstr ""
-"<i>― Haldraig II, 42BB, Leabhar-làimhe Sgrùdadh Innleachd: Iom-leabhar II</i>"
+"<i>― Taldraig II, 42BB, Leabhar-làimhe Sgrùdadh Innleachd: Iom-leabhar II</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:80
@@ -5710,7 +5710,7 @@ msgstr "Cluicheadair ionadail gun ainm"
 
 #: src/multiplayer_connect.cpp:650 src/multiplayer_connect.cpp:1529
 msgid "Computer Player"
-msgstr "cluicheadair coimpiutair"
+msgstr "Coimpiutair"
 
 #: src/multiplayer_connect.cpp:653
 msgid "$playername $side"
@@ -5730,7 +5730,7 @@ msgstr "Glèidhte"
 
 #: src/multiplayer_connect.cpp:767
 msgid "--give--"
-msgstr "--thoir--"
+msgstr "— thoir dha —"
 
 #: src/multiplayer_connect.cpp:948
 msgid "Only random sides in the current era."
@@ -5742,7 +5742,7 @@ msgstr "Lobaidh nan geama: "
 
 #: src/multiplayer_connect.cpp:1031
 msgid "Player/Type"
-msgstr "Cluicheadair/Seòrsa"
+msgstr "Cluicheadairean"
 
 #: src/multiplayer_connect.cpp:1032
 msgid "Faction"
@@ -5782,11 +5782,11 @@ msgstr "Ainm: "
 
 #: src/multiplayer_connect.cpp:1526
 msgid "Network Player"
-msgstr "Cluicheadair lìonraidh"
+msgstr "Lìonraidh"
 
 #: src/multiplayer_connect.cpp:1528
 msgid "Local Player"
-msgstr "Cluicheadair ionadail"
+msgstr "Ionadail"
 
 #: src/multiplayer_connect.cpp:1530
 msgid "Empty"
@@ -5826,7 +5826,7 @@ msgstr "Linn:"
 
 #: src/multiplayer_create.cpp:93
 msgid "Map to play:"
-msgstr "Mapa ri cluich:"
+msgstr "Mapa ri cluiche:"
 
 #: src/multiplayer_create.cpp:94 src/multiplayer_lobby.cpp:304
 msgid "Use map settings"
@@ -6030,7 +6030,7 @@ msgstr "Meud: "
 
 #: src/multiplayer_lobby.cpp:126
 msgid "--no games open--"
-msgstr "--gun gheama fosgailte--"
+msgstr "— gun gheama fosgailte —"
 
 #: src/multiplayer_lobby.cpp:160
 msgid " (Unknown Era)"
@@ -6115,7 +6115,7 @@ msgstr "Na seall geamannan ach ma tha co-dhiù aon slot falamh aca."
 #: src/multiplayer_lobby.cpp:814
 msgid ""
 "Only show games that are played or observed by at least one of your friends"
-msgstr "Na seall ach geamannan a tha gan cluich no gan amharc le caraid"
+msgstr "Na seall ach geamannan a tha gan cluiche no gan amharc le caraid"
 
 #: src/multiplayer_lobby.cpp:820
 msgid "Only show games whose title or description contain the entered text"
@@ -6318,7 +6318,7 @@ msgstr ""
 "Tha iomadh adhbhar ann carson a b’ urrainn seo tachairt: Faodaidh seo "
 "tachairt ma tha thusa no cluicheadair eile air na roghainnean geama aca "
 "atharrachadh. ’S dòcha gu bheil aon dhe na cluicheadairean eile a’ feuchainn "
-"ri cealgaireachd. Dh’fhaoite cuideachd gur e buga sa gheama a th’ ann, ach "
+"ri cealgaireachd. Dh’fhaoidte cuideachd gur e buga sa gheama a th’ ann, ach "
 "chan eil sin cho buailteach.\n"
 "\n"
 "A bheil thu airson loga nam mearachd aig a’ gheama a shàbhaladh?"

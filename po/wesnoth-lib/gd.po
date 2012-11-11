@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-10-27 15:56+0200\n"
-"PO-Revision-Date: 2012-10-16 13:59+0100\n"
-"Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
+"PO-Revision-Date: 2012-10-31 13:11-0000\n"
+"Last-Translator: GunChleoc <fiosAIGforamnagaidhligDOTnet>\n"
 "Language-Team: Fòram na Gàidhlig http://www.foramnagaidhlig.net\n"
 "Language: gd\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : "
 "(n > 2 && n < 20) ? 2 : 3;\n"
-"X-Generator: Virtaal 0.7.1\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #. [terrain_type]: id=deep_water
 #. [terrain_type]: id=deep_water_gray
@@ -266,7 +266,7 @@ msgstr "Muileann-gaoithe"
 #, fuzzy
 #| msgid "Campaign"
 msgid "Campfire"
-msgstr "Teine campachaidh"
+msgstr "Iomairt"
 
 #. [terrain_type]: id=fence
 #: data/core/terrain.cfg:418
@@ -333,7 +333,7 @@ msgstr "Coille thropaigeach"
 #, fuzzy
 #| msgid "Pine Forest"
 msgid "Palm Forest"
-msgstr "Coille phailme"
+msgstr "Coille ghiuthais"
 
 #. [terrain_type]: id=pine_forest
 #: data/core/terrain.cfg:509
@@ -508,14 +508,14 @@ msgstr "Cnuic coille measgaichte shneachdach"
 #, fuzzy
 #| msgid "Tropical Forest"
 msgid "Tropical Forested Hills"
-msgstr "Cnuic coille tropaigiche"
+msgstr "Coille thropaigeach"
 
 #. [terrain_type]: id=forest_palm_hills
 #: data/core/terrain.cfg:831
 #, fuzzy
 #| msgid "Forested Hills"
 msgid "Palm Forested Hills"
-msgstr "Cnuic coille pailme"
+msgstr "Cnuic coille"
 
 #. [terrain_type]
 #: data/core/terrain.cfg:843
@@ -827,7 +827,7 @@ msgstr "Baile cloiche air cnuic"
 #. [terrain_type]: id=snow-hill_village
 #: data/core/terrain.cfg:1389
 msgid "Snowy Hill Stone Village"
-msgstr "Baile cloiche air cnuic shneachdach"
+msgstr "Baile cloiche air cnuic sneachdach"
 
 #. [terrain_type]: id=hill_village_ruin
 #: data/core/terrain.cfg:1402
@@ -1153,7 +1153,7 @@ msgstr "Drochaid mòr-bheàrn uamha"
 #, fuzzy
 #| msgid "Rotting Bridge"
 msgid "Hanging Bridge"
-msgstr "Drochaid crochte"
+msgstr "Drochaid a’ lobhadh"
 
 #. [terrain_type]: id=stonechasmbridge
 #. [terrain_type]: id=stonechasmbridgediag1
@@ -1163,7 +1163,7 @@ msgstr "Drochaid crochte"
 #, fuzzy
 #| msgid "Cave Chasm Bridge"
 msgid "Stone Chasm Bridge"
-msgstr "Drochaid mòr-bheàrn cloiche"
+msgstr "Drochaid mòr-bheàrn uamha"
 
 #. [terrain_type]: id=plankbridge
 #. [terrain_type]: id=plankbridgediag1
@@ -1173,7 +1173,7 @@ msgstr "Drochaid mòr-bheàrn cloiche"
 #, fuzzy
 #| msgid "Bridge"
 msgid "Plank Bridge"
-msgstr "Drochaid bhùird"
+msgstr "Drochaid"
 
 #. [terrain_type]: id=off_map
 #: data/core/terrain.cfg:2205
@@ -1219,7 +1219,7 @@ msgstr "Do-choiseach"
 #. [terrain_type]: id=rails
 #: data/core/terrain.cfg:2288
 msgid "Rails"
-msgstr "Rèilichean"
+msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
@@ -1314,7 +1314,7 @@ msgstr "Sgur dheth"
 #, fuzzy
 #| msgid "Type"
 msgid "Type:"
-msgstr "Seòrsa:"
+msgstr "Seòrsa"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:120
@@ -1331,7 +1331,7 @@ msgstr "Tionndadh:"
 #, fuzzy
 #| msgid "Status"
 msgid "Status:"
-msgstr "Cor:"
+msgstr "Cor"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:212
@@ -1341,7 +1341,7 @@ msgstr "Meud:"
 #. [label]
 #: data/gui/default/window/addon_description.cfg:243
 msgid "Downloads:"
-msgstr "Luchdaidhean a-nuas:"
+msgstr ""
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:274
@@ -1366,86 +1366,83 @@ msgstr "Gin"
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:34
 msgid "addons_of_type^Campaigns"
-msgstr "Iomairtean"
+msgstr ""
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:35
 msgid "addons_of_type^MP eras"
-msgstr "Linntean IomChl"
+msgstr ""
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:38
 msgid "addons_of_type^Scenarios"
-msgstr "Cnàmh-sgeulan"
+msgstr ""
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:39
 msgid "addons_of_type^MP factions"
-msgstr "Buidhnean IomChl"
+msgstr ""
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:42
 msgid "addons_of_type^MP campaigns"
-msgstr "Iomairtean IomChl"
+msgstr ""
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:43
 msgid "addons_of_type^Resources"
-msgstr "Goireasan"
+msgstr ""
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:46
 msgid "addons_of_type^MP scenarios"
-msgstr "Cnàmh-sgeulan IomChl"
+msgstr ""
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:48
 msgid "addons_of_type^Other"
-msgstr "Eile"
+msgstr ""
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:51
 msgid "addons_of_type^MP map-packs"
-msgstr "Pacaidean-mapa IomChl"
+msgstr ""
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:52
 msgid "addons_of_type^Unknown"
-msgstr "Neo-aithnichte"
+msgstr ""
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:55
-#, fuzzy
-#| msgid "addons_of_type^MP factions"
 msgid "addons_of_type^MP modifications"
-msgstr "Buidhnean IomChl"
+msgstr ""
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:156
 #, fuzzy
 #| msgid "Multiplayer Options"
 msgid "Filter Options"
-msgstr "Roghainnean criathraige"
+msgstr "Roghainnean ioma-chluicheadair"
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:170
 msgid "Add-ons matching the following criteria will be displayed."
 msgstr ""
-"Thèid tuilleadain a shealltainn a cho-fhreagras ris na cuspairean a leanas."
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:197
 #, fuzzy
 #| msgid "Add-ons"
 msgid "Add-on types:"
-msgstr "Seòrsaichean dhe thuilleadan:"
+msgstr "Tuilleadain"
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:209
 #, fuzzy
 #| msgid "Translations:"
 msgid "Installation status:"
-msgstr "Staid an stàlaidh:"
+msgstr "Eadar-theangachaidhean:"
 
 #. [label]
 #: data/gui/default/window/addon_uninstall_list.cfg:51
@@ -1619,17 +1616,17 @@ msgstr "Sgioba a-mhàin"
 #, fuzzy
 #| msgid "Impassable"
 msgid "Immutable"
-msgstr "Do-atharrachadh"
+msgstr "Do-shiubhal"
 
 #. [toggle_button]: id=visible_fog_toggle
 #: data/gui/default/window/editor_edit_label.cfg:130
 msgid "Visible in fog"
-msgstr "Ri fhaicinn ann an ceò"
+msgstr ""
 
 #. [toggle_button]: id=visible_shroud_toggle
 #: data/gui/default/window/editor_edit_label.cfg:148
 msgid "Visible in shroud"
-msgstr "Ri fhaicinn ann an sgàil"
+msgstr ""
 
 #. [label]
 #: data/gui/default/window/editor_generate_map.cfg:35
@@ -1676,7 +1673,7 @@ msgstr "Àirde:"
 #, fuzzy
 #| msgid "Create Game"
 msgid "Create"
-msgstr "Cruthaich"
+msgstr "Cruthaich geama"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -1709,7 +1706,7 @@ msgstr "Seann àirde:"
 #, fuzzy
 #| msgid "Expand / shrink direction"
 msgid "Expand/shrink direction:"
-msgstr "Leudaich/lùghdaich comhair:"
+msgstr "Leudaich / lùghdaich comhair"
 
 #. [toggle_button]: id=copy_edge_terrain
 #: data/gui/default/window/editor_resize_map.cfg:253
@@ -1721,7 +1718,7 @@ msgstr "Dèan lethbhreac air oirthir"
 #, fuzzy
 #| msgid "Resize Map"
 msgid "Resize"
-msgstr "Ath-mheudaich"
+msgstr "Ath-mheudaich mapa"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_set_starting_position.cfg:50
@@ -1874,7 +1871,7 @@ msgstr "A bheil thu cinnteach gu bheil thu airson sguabadh às dhan gheama seo?"
 #, fuzzy
 #| msgid "Do not show lobby joins"
 msgid "Do not show again"
-msgstr "Na seall a-rithist"
+msgstr "Na seall gabhalaichean ann an lobaidh"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -1922,12 +1919,12 @@ msgstr "Sguab às"
 #, fuzzy
 #| msgid "Difficulty"
 msgid "Change difficulty"
-msgstr "Atharraich duilgheas"
+msgstr "Duilgheas"
 
 #. [toggle_button]: id=change_difficulty
 #: data/gui/default/window/game_load.cfg:384
 msgid "Change campaign difficulty before loading"
-msgstr "Atharraich duilgheas na h-iomairte ron luchdadh"
+msgstr ""
 
 #. [toggle_button]: id=show_replay
 #: data/gui/default/window/game_load.cfg:403
@@ -1938,8 +1935,6 @@ msgstr "Seall ath-chluiche"
 #: data/gui/default/window/game_load.cfg:404
 msgid "Play the embedded replay from the saved game if applicable"
 msgstr ""
-"Cluich an ath-chluiche am broinn a’ gheama air shàbhaladh ma tha seo "
-"iomchaidh"
 
 #. [toggle_button]: id=cancel_orders
 #: data/gui/default/window/game_load.cfg:422
@@ -1950,7 +1945,6 @@ msgstr "Sgur dhe na h-òrduighean"
 #: data/gui/default/window/game_load.cfg:423
 msgid "Cancel any pending unit movements in the saved game"
 msgstr ""
-"Sguir dhe ghluasad aonaid ri dhèanamh sam bith sa gheama air a shàbhaladh"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
@@ -2457,9 +2451,6 @@ msgid ""
 "The server will run as a background process until all users have "
 "disconnected. Do you wish to continue?"
 msgstr ""
-"Thèid frithealaiche ionadail a thòiseachadh gus geama lìonraidh òstadh. "
-"Ruithidh am frithealaiche air a’ chùlaibh gus am bi a h-uile cluicheadairean "
-"air dì-cheangal. A bheil thu airson leantainn ort?"
 
 #. [window]: id=mp_login
 #: data/gui/default/window/mp_login.cfg:8
@@ -2755,11 +2746,11 @@ msgstr "Seall griod"
 
 #: src/game_preferences_display.cpp:178
 msgid "Save replays at the end of scenarios"
-msgstr "Sàbhail ath-chluiche air deireadh chnàmh-sgeulan"
+msgstr ""
 
 #: src/game_preferences_display.cpp:179
 msgid "Delete auto-saves at the end of scenarios"
-msgstr "Sguab às dha fhèin-shàbhalaidhean air deireadh chnàmh-sgeulan"
+msgstr ""
 
 #: src/game_preferences_display.cpp:180
 msgid "Do not show lobby joins"
@@ -3012,15 +3003,13 @@ msgstr ""
 msgid ""
 "Saves replays of games on victory in all modes and defeat in multiplayer"
 msgstr ""
-"Sàbhailidh seo ath-chluiche aig geamannan a bhuannaich thu an-còmhnaidh is a "
-"chaill thu ann am modh ioma-chluicheadair"
 
 #: src/game_preferences_display.cpp:371
 #, fuzzy
 #| msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgid ""
 "Deletes previous auto-saves on victory in all modes and defeat in multiplayer"
-msgstr "Sguab às dha dh’ath-chluichean le buaidh AonChl/IChl no ruaig IChl"
+msgstr "Sguab às fèin-shàbhaladh le buaidh AonChl/IChl no ruaig IChl"
 
 #: src/game_preferences_display.cpp:373
 msgid "Overlay a grid onto the map"
@@ -3037,7 +3026,7 @@ msgstr ""
 #| msgid "Show icons in front of the player names in the lobby."
 msgid "Show icons in front of the player names in the lobby"
 msgstr ""
-"Seall ìomhaigheagan air beulaibh ainmean nan cluicheadairean san lobaidh"
+"Seall ìomhaigheagan air beulaibh ainmean nan cluicheadairean san lobaidh."
 
 #: src/game_preferences_display.cpp:382
 #, fuzzy
@@ -3045,7 +3034,7 @@ msgstr ""
 msgid "Uncheck to delete the saved password (on exit)"
 msgstr ""
 "Thoir a’ chromag air falbh gus sguabadh às dhan fhacal-fhaire air a "
-"shàbhaladh (an dèidh fàgail)"
+"shàbhaladh (an dèidh fàgail)."
 
 #: src/game_preferences_display.cpp:386
 msgid "Do not show messages about players joining the multiplayer lobby"
@@ -3074,7 +3063,7 @@ msgstr "Cleachd eadar-aghaidh ùr an lobaidh"
 #| msgid "Find and set path to MP server to host LAN games."
 msgid "Find and set path to MP server to host LAN games"
 msgstr ""
-"Lorg is suidhich slighe dhan fhrithealaiche IomChl gus geamannan LAN òstadh"
+"Lorg is suidhich slighe dhan fhrithealaiche IomChl gus geamannan LAN òstadh."
 
 #: src/game_preferences_display.cpp:396
 msgid "View and edit your friends and ignores list"
@@ -3327,7 +3316,7 @@ msgstr "Cha deach duilleag a mhìneachadh."
 
 #: src/gui/auxiliary/window_builder/pane.cpp:34
 msgid "Need at least 1 parallel item."
-msgstr "Tha co-dhiù 1 nì co-shìnte a dhìth."
+msgstr ""
 
 #: src/gui/auxiliary/window_builder/slider.cpp:67
 msgid "The number of value_labels and values don't match."
@@ -3351,73 +3340,73 @@ msgstr "Cha deach nòd a mhìneachadh."
 
 #: src/gui/dialogs/addon/description.cpp:49
 msgid "addon_state^Not installed"
-msgstr "Gun stàladh"
+msgstr ""
 
 #: src/gui/dialogs/addon/description.cpp:51
 msgid "addon_state^Published, not installed"
-msgstr "Foillsichte, gun stàladh"
+msgstr ""
 
 #: src/gui/dialogs/addon/description.cpp:57
 msgid "addon_state^Installed"
-msgstr "Air a stàladh"
+msgstr ""
 
 #: src/gui/dialogs/addon/description.cpp:59
 msgid "addon_state^Published"
-msgstr "Foillsichte"
+msgstr ""
 
 #: src/gui/dialogs/addon/description.cpp:66
 msgid "addon_state^Installed, not tracking local version"
-msgstr "Air a stàladh, gun lorgadh an tionndaidh ionadail"
+msgstr ""
 
 #: src/gui/dialogs/addon/description.cpp:70
 msgid "addon_state^Published, not tracking local version"
-msgstr "Foillsichte, gun lorgadh an tionndaidh ionadail"
+msgstr ""
 
 #: src/gui/dialogs/addon/description.cpp:78
 msgid "addon_state^Installed ($local_version|), upgradable"
-msgstr "($local_version|) air a stàladh, gabhaidh e ùrachadh"
+msgstr ""
 
 #: src/gui/dialogs/addon/description.cpp:79
 msgid "addon_state^Published ($local_version| installed), upgradable"
-msgstr "($local_version| air a stàladh), gabhaidh e ùrachadh"
+msgstr ""
 
 #: src/gui/dialogs/addon/description.cpp:88
 msgid "addon_state^Installed ($local_version|), outdated on server"
-msgstr "($local_version|) air a stàladh, ro shean air an fhrithealaiche"
+msgstr ""
 
 #: src/gui/dialogs/addon/description.cpp:89
 msgid "addon_state^Published ($local_version| installed), outdated on server"
-msgstr "($local_version| air a stàladh), ro shean air an fhrithealaiche"
+msgstr ""
 
 #: src/gui/dialogs/addon/description.cpp:97
 msgid "addon_state^Installed, broken"
-msgstr "Air a stàladh, briste"
+msgstr ""
 
 #: src/gui/dialogs/addon/description.cpp:99
 msgid "addon_state^Published, broken"
-msgstr "Foillsichte, briste"
+msgstr ""
 
 #: src/gui/dialogs/addon/description.cpp:105
 msgid "addon_state^Unknown"
-msgstr "Neo-aithnichte"
+msgstr ""
 
 #: src/gui/dialogs/addon/filter_options.cpp:109
 msgid "addons_view^Not Installed"
-msgstr "Gun stàladh"
+msgstr ""
 
 #: src/gui/dialogs/addon/filter_options.cpp:111
 msgid "addons_view^Upgradable"
-msgstr "Gabhaidh e ùrachadh"
+msgstr ""
 
 #: src/gui/dialogs/addon/filter_options.cpp:113
 msgid "addons_view^Installed"
-msgstr "Air a stàladh"
+msgstr ""
 
 #: src/gui/dialogs/addon/filter_options.cpp:115
 #, fuzzy
 #| msgid "Uninstall Add-ons"
 msgid "addons_view^All Add-ons"
-msgstr "A h-uile tuilleadan"
+msgstr "Dì-stàlaich tuilleadain"
 
 #: src/gui/dialogs/addon_list.cpp:256
 #: src/gui/dialogs/network_transmission.cpp:54
@@ -3587,11 +3576,11 @@ msgstr "Cha deach còmhradh a shealltainn a tha ro mhòr airson an sgrìn."
 #, fuzzy
 #| msgid "Hotkeys"
 msgid "Hotkeys Reset"
-msgstr "Aiseag nan hotkeys"
+msgstr "Hotkeys"
 
 #: src/hotkey_preferences_display.cpp:149
 msgid "All hotkeys have been reset to their default values."
-msgstr "Chaidh a h-uile hotkey aiseag dhan rèiteachadh bhunaiteach."
+msgstr ""
 
 #: src/hotkey_preferences_display.cpp:165
 msgid "Hotkey Settings"
@@ -3604,10 +3593,8 @@ msgid "Reset Defaults"
 msgstr "Bunaiteach"
 
 #: src/hotkey_preferences_display.cpp:173
-#, fuzzy
-#| msgid "All hotkeys have been reset to their default values."
 msgid "Reset all bindings to the default values"
-msgstr "Chaidh a h-uile hotkey aiseag dhan rèiteachadh bhunaiteach."
+msgstr ""
 
 #: src/hotkey_preferences_display.cpp:217
 #, fuzzy
@@ -3663,9 +3650,9 @@ msgstr ""
 
 #: src/hotkey_preferences_display.cpp:659
 #, fuzzy
-#| msgid "Hotkeys"
+#| msgid "Clear Hotkey"
 msgid "Reassign Hotkey"
-msgstr "Ath-shuidhich hotkeys"
+msgstr "Falamhaich hotkey"
 
 #: src/hotkeys.cpp:62
 #, fuzzy
@@ -3964,13 +3951,13 @@ msgstr "Fiosrachadh mapa"
 #, fuzzy
 #| msgid "Next Side"
 msgid "Add New Side"
-msgstr "Cuir taobh ùr ris"
+msgstr "Ath thaobh"
 
 #: src/hotkeys.cpp:155
 #, fuzzy
 #| msgid "Switch Map"
 msgid "Switch Side"
-msgstr "Suids taobh"
+msgstr "Suids mapa"
 
 #: src/hotkeys.cpp:156
 msgid "Swap Foreground/Background Terrains"
@@ -3978,15 +3965,15 @@ msgstr "Dèan suaip air cruth-tìre beulaibh/cùlaibh"
 
 #: src/hotkeys.cpp:157
 msgid "Change Palette Group"
-msgstr "Atharraich buidheann paileid"
+msgstr ""
 
 #: src/hotkeys.cpp:158
 msgid "Scroll Palette Left"
-msgstr "Sgrolaich pailead gu clì"
+msgstr ""
 
 #: src/hotkeys.cpp:159
 msgid "Scroll Palette Right"
-msgstr "Sgrolaich pailead gu deas"
+msgstr ""
 
 #: src/hotkeys.cpp:160
 msgid "Next Tool"
@@ -4008,25 +3995,25 @@ msgstr "Inneal taghaidh"
 #, fuzzy
 #| msgid "Set Starting Positions Tool"
 msgid "Starting Positions Tool"
-msgstr "Inneal nan àiteachan tòiseachaidh"
+msgstr "Suidhich inneal nan àiteachan tòiseachaidh"
 
 #: src/hotkeys.cpp:165
 #, fuzzy
 #| msgid "Fill Tool"
 msgid "Label Tool"
-msgstr "Inneal leubail"
+msgstr "Inneal lìonaidh"
 
 #: src/hotkeys.cpp:166
 #, fuzzy
 #| msgid "Paint Tool"
 msgid "Unit Tool"
-msgstr "Inneal aonaid"
+msgstr "Inneal peant"
 
 #: src/hotkeys.cpp:167
 #, fuzzy
 #| msgid "Village gold"
 msgid "Village Tool"
-msgstr "Inneal bhailtean"
+msgstr "Òr bhailtean"
 
 #: src/hotkeys.cpp:168
 msgid "Next Brush"
@@ -4466,24 +4453,6 @@ msgstr ""
 "taic airson ‘$deprecated_key’ a thoirt air falbh leis an tionndadh "
 "$removal_version."
 
-#~ msgid "Change Hotkey"
-#~ msgstr "Atharraich hotkey"
-
-#, fuzzy
-#~| msgid "Select All"
-#~ msgid "Reset All"
-#~ msgstr "Ath-shuidhich a h-uile"
-
-#~ msgid "This hotkey is already in use."
-#~ msgstr "Tha an hotkey seo ga chleachdadh mu thràth."
-
-#~ msgid ""
-#~ "This will reset all hotkeys to their default values. Do you want to "
-#~ "continue?"
-#~ msgstr ""
-#~ "Thèid a h-uile hotkey aiseag dhan rèiteachadh bhunaiteach. A bheil thu "
-#~ "airson leantainn ort?"
-
 #~ msgid "Update Add-ons"
 #~ msgstr "Ùraich tuilleadain"
 
@@ -4503,12 +4472,17 @@ msgstr ""
 #~ msgstr "Cruthaich geama"
 
 #~ msgid "Save replay on SP/MP victory or MP defeat"
-#~ msgstr "Sàbhail ath-chluiche le buannachd AonChl/IomChl no ruaig IomChl"
+#~ msgstr "Sàbhail ath-chluiche le buaidh AonChl/IomChl no ruaig IomChl"
 
 #~ msgid "Save Replay on SP/MP Victory or MP Defeat"
-#~ msgstr "Sàbhail ath-chluiche le buannachd AonChl/IomChl no ruaig IomChl"
+#~ msgstr "Sàbhail ath-chluiche le buaidh AonChl/IomChl no ruaig IomChl"
 
 #~ msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 #~ msgstr ""
-#~ "Sguab às dha fhèin-shàbhalaidhean le buannachd AonChl/IomChl no ruaig "
-#~ "IomChl"
+#~ "Sguab às dha fhèin-shàbhalaidhean le buaidh AonChl/IomChl no ruaig IomChl"
+
+#~ msgid "Change Hotkey"
+#~ msgstr "Atharraich hotkey"
+
+#~ msgid "This hotkey is already in use."
+#~ msgstr "Tha an hotkey seo ga chleachdadh mu thràth."
