@@ -103,7 +103,7 @@ namespace {
 			~campaign_server()
 			{
 				delete input_;
-				scoped_ostream cfgfile = ostream_file(file_);
+				filesystem::scoped_ostream cfgfile = filesystem::ostream_file(file_);
 				write(*cfgfile, cfg_);
 			}
 		private:
@@ -167,7 +167,7 @@ namespace {
 
 	int campaign_server::load_config()
 	{
-		scoped_istream stream = istream_file(file_);
+		filesystem::scoped_istream stream = filesystem::istream_file(file_);
 		read(cfg_, *stream);
 		bool network_use_system_sendfile = cfg_["network_use_system_sendfile"].to_bool();
 		network_worker_pool::set_use_system_sendfile(network_use_system_sendfile);
@@ -230,7 +230,7 @@ namespace {
 		if (dir.find_child("file", "name", "COPYING.TXT")) return;
 
 		// Copy over COPYING.txt
-		std::string contents = read_file("COPYING.txt");
+		std::string contents = filesystem::read_file("COPYING.txt");
 		if (contents.empty()) {
 			LOG_CS << "Could not find COPYING.txt, path is \""
 				<< game_config::path << "\"\n";
@@ -257,12 +257,12 @@ namespace {
 				std::string filename = cm["filename"], newfilename = filename + ".new";
 
 				{
-					scoped_istream in_file = istream_file(filename);
+					filesystem::scoped_istream in_file = filesystem::istream_file(filename);
 					boost::iostreams::filtering_stream<boost::iostreams::input> in_filter;
 					in_filter.push(boost::iostreams::gzip_decompressor());
 					in_filter.push(*in_file);
 
-					scoped_ostream out_file = ostream_file(newfilename);
+					filesystem::scoped_ostream out_file = filesystem::ostream_file(newfilename);
 					boost::iostreams::filtering_stream<boost::iostreams::output> out_filter;
 					out_filter.push(boost::iostreams::gzip_compressor(boost::iostreams::gzip_params(compress_level_)));
 					out_filter.push(*out_file);
@@ -316,7 +316,7 @@ namespace {
  				}
 			//write config to disk every ten minutes
 				if((increment%(60*10*50)) == 0) {
-					scoped_ostream cfgfile = ostream_file(file_);
+					filesystem::scoped_ostream cfgfile = filesystem::ostream_file(file_);
 					write(*cfgfile, cfg_);
 				}
 
@@ -390,7 +390,7 @@ namespace {
 						if (!campaign) {
 							network::send_data(construct_error("Add-on '" + req["name"].str() + "'not found."), sock);
 						} else {
-							std::cerr << " size: " << (file_size(campaign["filename"])/1024) << "KiB\n";
+							std::cerr << " size: " << (filesystem::file_size(campaign["filename"])/1024) << "KiB\n";
 							network::send_file(campaign["filename"], sock);
 							// Clients doing upgrades or some other specific thing shouldn't bump
 							// the downloads count. Default to true for compatibility with old
@@ -533,15 +533,15 @@ namespace {
 							add_license(data);
 
 							{
-								scoped_ostream campaign_file = ostream_file(filename);
+								filesystem::scoped_ostream campaign_file = filesystem::ostream_file(filename);
 								config_writer writer(*campaign_file, true, compress_level_);
 								writer.write(data);
 							}
 //							write_compressed(*campaign_file, *data);
 
 							(*campaign)["size"] = lexical_cast<std::string>(
-									file_size(filename));
-							scoped_ostream cfgfile = ostream_file(file_);
+									filesystem::file_size(filename));
+							filesystem::scoped_ostream cfgfile = filesystem::ostream_file(file_);
 							write(*cfgfile, cfg_);
 							network::send_data(construct_message(message), sock);
 
@@ -572,7 +572,7 @@ namespace {
 						}
 
 						//erase the campaign
-						write_file(campaign["filename"], std::string());
+						filesystem::write_file(campaign["filename"], std::string());
 						remove(campaign["filename"].str().c_str());
 
 						config::child_itors itors = campaigns().child_range("campaign");
@@ -584,7 +584,7 @@ namespace {
 								break;
 							}
 						}
-						scoped_ostream cfgfile = ostream_file(file_);
+						filesystem::scoped_ostream cfgfile = filesystem::ostream_file(file_);
 						write(*cfgfile, cfg_);
 						network::send_data(construct_message("Add-on deleted."), sock);
 
@@ -607,7 +607,7 @@ namespace {
 							network::send_data(construct_error("No new passphrase was supplied."), sock);
 						} else {
 							campaign["passphrase"] = cpass["new_passphrase"];
-							scoped_ostream cfgfile = ostream_file(file_);
+							filesystem::scoped_ostream cfgfile = filesystem::ostream_file(file_);
 							write(*cfgfile, cfg_);
 							network::send_data(construct_message("Passphrase changed."), sock);
 						}
@@ -645,11 +645,11 @@ namespace {
 
 int main(int argc, char**argv)
 {
-	game_config::path = get_cwd();
+	game_config::path = filesystem::get_cwd();
 	lg::timestamps(true);
 	try {
 		printf("argc %d argv[0] %s 1 %s\n",argc,argv[0],argv[1]);
-		std::string cfg_path = normalize_path("server.cfg");
+		std::string cfg_path = filesystem::normalize_path("server.cfg");
 		if(argc >= 2 && atoi(argv[1])){
 			campaign_server(cfg_path, atoi(argv[1])).run();
 		}else {
@@ -658,7 +658,7 @@ int main(int argc, char**argv)
 	} catch(config::error& /*e*/) {
 		std::cerr << "Could not parse config file\n";
 		return 1;
-	} catch(io_exception& /*e*/) {
+	} catch(filesystem::io_exception& /*e*/) {
 		std::cerr << "File I/O error\n";
 		return 2;
 	} catch(network::error& e) {

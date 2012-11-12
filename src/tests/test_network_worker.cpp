@@ -188,7 +188,7 @@ static std::string create_random_sendfile(size_t size)
 	int *begin = reinterpret_cast<int*>(&buffer[0]);
 	int *end = begin + sizeof(buffer)/sizeof(int);
 	std::string filename = "sendfile.tmp";
-	scoped_ostream file = ostream_file(filename);
+	filesystem::scoped_ostream file = filesystem::ostream_file(filename);
 	std::generate(begin,end,std::rand);
 	while( size > 0
 		&& !file->bad())
@@ -201,7 +201,7 @@ static std::string create_random_sendfile(size_t size)
 
 static void delete_random_sendfile(const std::string& file)
 {
-	delete_directory(file);
+	filesystem::delete_directory(file);
 }
 
 template<class T>
@@ -244,12 +244,12 @@ WESNOTH_PARAMETERIZED_TEST_CASE( test_multi_sendfile, sendfile_param, sendfile_s
 	std::vector<char> data;
 
 	BOOST_CHECK_PREDICATE(test_utils::one_of<network::connection> , (receive(data,500))(3)(se_client1)(se_client2)(se_client3));
-	BOOST_CHECK_EQUAL(data.size(), static_cast<size_t>(file_size(file)));
+	BOOST_CHECK_EQUAL(data.size(), static_cast<size_t>(filesystem::file_size(file)));
 	BOOST_CHECK_PREDICATE(test_utils::one_of<network::connection> , (receive(data,500))(3)(se_client1)(se_client2)(se_client3));
-	BOOST_CHECK_EQUAL(data.size(), static_cast<size_t>(file_size(file)));
+	BOOST_CHECK_EQUAL(data.size(), static_cast<size_t>(filesystem::file_size(file)));
 	BOOST_CHECK_PREDICATE(test_utils::one_of<network::connection> , (receive(data,500))(3)(se_client1)(se_client2)(se_client3));
 
-	BOOST_CHECK_EQUAL(data.size(), static_cast<size_t>(file_size(file)));
+	BOOST_CHECK_EQUAL(data.size(), static_cast<size_t>(filesystem::file_size(file)));
 
 	network::disconnect(cl_client1);
 	network::disconnect(cl_client2);

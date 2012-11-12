@@ -117,7 +117,7 @@ private:
 
 	std::stringstream ignored_stream_;
 	lg::tredirect_output_setter output_redirect_;
-	binary_paths_manager paths_manager_;
+	filesystem::binary_paths_manager paths_manager_;
 };
 } // anonymous namespace
 

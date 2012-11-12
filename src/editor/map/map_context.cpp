@@ -103,10 +103,10 @@ map_context::map_context(const config& game_config, const std::string& filename,
 
 	log_scope2(log_editor, "Loading map " + filename);
 	// Case 0.1
-	if (!file_exists(filename) || is_directory(filename)) {
+	if (!filesystem::file_exists(filename) || filesystem::is_directory(filename)) {
 		throw editor_map_load_exception(filename, _("File not found"));
 	}
-	std::string map_string = read_file(filename);
+	std::string map_string = filesystem::read_file(filename);
 	boost::regex re("map_data\\s*=\\s*\"(.+?)\"");
 	boost::smatch m;
 	if (boost::regex_search(map_string, m, re, boost::regex_constants::match_not_dot_null)) {
@@ -116,7 +116,7 @@ map_context::map_context(const config& game_config, const std::string& filename,
 		if (boost::regex_search(m1, m2, re2)) {
 			map_data_key_ = m1;
 			LOG_ED << "Map looks like a scenario, trying {" << m2[1] << "}\n";
-			std::string new_filename = get_wml_location(m2[1], directory_name(m2[1]));
+			std::string new_filename = filesystem::get_wml_location(m2[1], filesystem::directory_name(m2[1]));
 			if (new_filename.empty()) {
 				std::string message = _("The map file looks like a scenario, "
 					"but the map_data value does not point to an existing file")
@@ -125,7 +125,7 @@ map_context::map_context(const config& game_config, const std::string& filename,
 			}
 			LOG_ED << "New filename is: " << new_filename << "\n";
 			filename_ = new_filename;
-			map_string = read_file(filename_);
+			map_string = filesystem::read_file(filename_);
 		} else {
 			LOG_ED << "Loading embedded map file\n";
 			embedded_ = true;
@@ -326,7 +326,7 @@ bool map_context::save()
 
 	try {
 		if (!is_embedded()) {
-			write_file(get_filename(), data);
+			filesystem::write_file(get_filename(), data);
 
 			std::stringstream wml_stream;
 			{
@@ -334,10 +334,10 @@ bool map_context::save()
 				out.write(wml_data);
 			}
 			if (!wml_stream.str().empty()) {
-				write_file(get_filename() + ".cfg", wml_stream.str());
+				filesystem::write_file(get_filename() + ".cfg", wml_stream.str());
 			}
 		} else {
-			std::string map_string = read_file(get_filename());
+			std::string map_string = filesystem::read_file(get_filename());
 			boost::regex re("(.*map_data\\s*=\\s*\")(.+?)(\".*)");
 			boost::smatch m;
 			if (boost::regex_search(map_string, m, re, boost::regex_constants::match_not_dot_null)) {
@@ -345,13 +345,13 @@ bool map_context::save()
 				ss << m[1];
 				ss << data;
 				ss << m[3];
-				write_file(get_filename(), ss.str());
+				filesystem::write_file(get_filename(), ss.str());
 			} else {
 				throw editor_map_save_exception(_("Could not save into scenario"));
 			}
 		}
 		clear_modified();
-	} catch (io_exception& e) {
+	} catch (filesystem::io_exception& e) {
 		utils::string_map symbols;
 		symbols["msg"] = e.what();
 		const std::string msg = vgettext("Could not save the map: $msg", symbols);

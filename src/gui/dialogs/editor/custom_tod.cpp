@@ -114,8 +114,8 @@ tcustom_tod::tcustom_tod(editor::editor_display* display
 void tcustom_tod::select_file(const std::string& filename, const std::string& dir, const std::string& vector_attrib, twindow& window)
 {
 	std::string va = vector_attrib;
-	std::string fn = file_name(filename);
-    std::string dn = directory_name(fn);
+	std::string fn = filesystem::file_name(filename);
+    std::string dn = filesystem::directory_name(fn);
     if(dn.empty()) {
         dn = dir;
     }

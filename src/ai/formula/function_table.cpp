@@ -498,13 +498,13 @@ private:
 		const std::string filename = var0.string_cast();
 
 		//NOTE: get_wml_location also filters file path to ensure it doesn't contain things like "../../top/secret"
-		std::string path = get_wml_location(filename);
+		std::string path = filesystem::get_wml_location(filename);
 		if(path.empty()) {
 			ERR_AI << "run_file : not found [" << filename <<"]"<< std::endl;
 			return variant(); //no suitable file
 		}
 
-		std::string formula_string = read_file(path);
+		std::string formula_string = filesystem::read_file(path);
 		//need to get function_table from somewhere or delegate to someone who has access to it
 		formula_ptr parsed_formula = ai_.create_optional_formula(formula_string);
 		if(parsed_formula == game_logic::formula_ptr()) {

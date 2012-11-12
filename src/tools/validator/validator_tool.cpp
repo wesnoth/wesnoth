@@ -64,7 +64,7 @@ int main(int argc, char *argv[]){
 	try {
 		preproc_map preproc(
 				game_config::config_cache::instance().get_preproc_map());
-		scoped_istream stream = preprocess_file(input,
+		filesystem::scoped_istream stream = preprocess_file(input,
 												&preproc);
 		read(cfg, *stream, &validator);
 	} catch(config::error & t) {

@@ -1365,8 +1365,8 @@ void execute_command(display& disp, hotkey_command& command, command_executor* e
 			// intentional fall-through
 		case HOTKEY_SCREENSHOT: {
 			std::string name = map_screenshot ? _("Map-Screenshot") : _("Screenshot");
-			std::string filename = get_screenshot_dir() + "/" + name + "_";
-			filename = get_next_filename(filename, ".bmp");
+			std::string filename = filesystem::get_screenshot_dir() + "/" + name + "_";
+			filename = filesystem::get_next_filename(filename, ".bmp");
 			int size = disp.screenshot(filename, map_screenshot);
 			if (size > 0) {
 				std::stringstream res;
@@ -1435,7 +1435,7 @@ void command_executor::set_button_state(display& disp) {
 
 			hotkey::hotkey_command& command_obj = hotkey::get_hotkey_command(command);
 			std::string tooltip = action.tooltip(i);
-			if (file_exists(game_config::path + "/images/icons/action/" + command + "_30.png" ))
+			if (filesystem::file_exists(game_config::path + "/images/icons/action/" + command + "_30.png" ))
 				button->set_overlay("icons/action/" + command);
 			if (!tooltip.empty())
 				button->set_tooltip_string(tooltip);
@@ -1525,7 +1525,7 @@ std::string command_executor::get_menu_image(display& disp, const std::string& c
 		return "buttons/fold-arrow.png";
 	//if (hk == hotkey::HOTKEY_NULL)
 
-	if (file_exists(game_config::path + "/images/" + base_image_name)) {
+	if (filesystem::file_exists(game_config::path + "/images/" + base_image_name)) {
 		switch (state) {
 			case ACTION_ON:
 			case ACTION_SELECTED:

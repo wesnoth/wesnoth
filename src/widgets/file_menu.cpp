@@ -39,8 +39,8 @@ file_menu::file_menu(CVideo &disp, std::string start_file)
 	  type_a_head_(-1)
 {
 	// If the start file is not a file or directory, use the root.
-	if((!file_exists(chosen_file_) && !::is_directory(chosen_file_))
-		|| !::is_directory(current_dir_)) {
+	if((!filesystem::file_exists(chosen_file_) && !filesystem::is_directory(chosen_file_))
+		|| !filesystem::is_directory(current_dir_)) {
 		current_dir_ = path_delim;
 		chosen_file_ = current_dir_;
 	}
@@ -96,7 +96,7 @@ int file_menu::delete_chosen_file() {
 }
 
 bool file_menu::make_directory(const std::string& subdir_name) {
-	bool ret = ::make_directory(add_path(current_dir_, subdir_name));
+	bool ret = filesystem::make_directory(add_path(current_dir_, subdir_name));
 	if (ret == false) {
 	//	gui2::show_transient_message(disp_.video(), "", _("Creation of the directory failed."));
 	}
@@ -144,7 +144,7 @@ void file_menu::entry_selected(const unsigned entry) {
 bool file_menu::is_directory(const std::string& fname) const {
 	if(fname == path_up)
 		return true;
-	return ::is_directory(fname);
+	return filesystem::is_directory(fname);
 }
 
 void file_menu::change_directory(const std::string& path) {
@@ -176,7 +176,7 @@ std::string file_menu::get_choice() const {
 
 std::string file_menu::get_path(const std::string& file_or_dir) const {
 	std::string res_path = file_or_dir;
-	if (!::is_directory(file_or_dir)) {
+	if (!filesystem::is_directory(file_or_dir)) {
 		size_t index = file_or_dir.find_last_of(path_delim);
 		if (index != std::string::npos) {
 			res_path = file_or_dir.substr(0, index);
@@ -314,8 +314,8 @@ void file_menu::select_file(const std::string& begin_of_filename)
 void file_menu::update_file_lists() {
 	files_in_current_dir_.clear();
 	dirs_in_current_dir_.clear();
-	get_files_in_dir(current_dir_, &files_in_current_dir_,
-	                 &dirs_in_current_dir_, FILE_NAME_ONLY);
+	filesystem::get_files_in_dir(current_dir_, &files_in_current_dir_,
+	                 &dirs_in_current_dir_, filesystem::FILE_NAME_ONLY);
 	display_current_files();
 }
 

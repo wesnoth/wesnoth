@@ -440,7 +440,7 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 			}
 			std::string map_data = (*scenario)["map_data"];
 			if(map_data.empty() && (*scenario)["map"] != "") {
-				map_data = read_map((*scenario)["map"]);
+				map_data = filesystem::read_map((*scenario)["map"]);
 			}
 
 			// If the map should be randomly generated
@@ -612,7 +612,7 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 
 				std::string map_data = (*scenario)["map_data"];
 				if(map_data.empty() && (*scenario)["map"] != "") {
-					map_data = read_map((*scenario)["map"]);
+					map_data = filesystem::read_map((*scenario)["map"]);
 				}
 
 				// If the map should be randomly generated

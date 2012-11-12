@@ -67,7 +67,7 @@ struct wesnoth_global_fixture {
 
 		boost::unit_test::results_reporter::set_stream(reporter);
 //		lg::set_log_domain_severity("all",3);
-		game_config::path = get_cwd();
+		game_config::path = filesystem::get_cwd();
 
 
 		// Initialize unit tests
