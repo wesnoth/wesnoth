@@ -109,7 +109,7 @@ game_controller::game_controller(const commandline_options& cmdline_opts, const 
 		font_manager_.update_font_path();
 	}
 
-	const std::string app_basename = filesystem::file_name(appname);
+	const std::string app_basename = filesystem::base_name(appname);
 	jump_to_editor_ = app_basename.find("editor") != std::string::npos;
 
 	if (cmdline_opts_.campaign)	{

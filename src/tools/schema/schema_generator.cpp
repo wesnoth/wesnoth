@@ -132,13 +132,13 @@ int main(int argc, char *argv[]){
 
 	for (;i != files.end(); ++i){
 		bool ok = false;
-		if (filesystem::file_name((*i)).find(".cpp")!=std::string::npos){
+		if (filesystem::base_name((*i)).find(".cpp")!=std::string::npos){
 			ok = true;
 		} else
-				if (filesystem::file_name((*i)).find(".hpp")!=std::string::npos){
+				if (filesystem::base_name((*i)).find(".hpp")!=std::string::npos){
 			ok = true;
 		} else
-			if (filesystem::file_name((*i)).find(".schema")!=std::string::npos){
+			if (filesystem::base_name((*i)).find(".schema")!=std::string::npos){
 			ok = true;
 		}
 		if (ok){

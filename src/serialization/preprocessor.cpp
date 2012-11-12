@@ -1210,7 +1210,7 @@ void preprocess_resource(const std::string& res_name, preproc_map *defines_map,
 		std::string streamContent = ss.str();
 
 		read(cfg, streamContent);
-		const std::string preproc_res_name = target_directory + "/" + filesystem::file_name(res_name);
+		const std::string preproc_res_name = target_directory + "/" + filesystem::base_name(res_name);
 
 		// write the processed cfg file
 		if (write_cfg == true)
