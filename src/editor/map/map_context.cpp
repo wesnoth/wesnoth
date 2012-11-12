@@ -504,7 +504,7 @@ bool map_context::save_scenario()
 	assert(!is_embedded());
 
 	if (scenario_id_.empty())
-		scenario_id_ = filesystem::file_name(filename_);
+		scenario_id_ = filesystem::base_name(filename_);
 	if (scenario_name_.empty())
 		scenario_name_ = scenario_id_;
 

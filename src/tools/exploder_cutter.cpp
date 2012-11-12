@@ -106,7 +106,7 @@ cutter::surface_map cutter::cut_surface(surface surf, const config& conf)
 std::string cutter::find_configuration(const std::string &file)
 {
 	//finds the file prefix.
-	const std::string fname = filesystem::file_name(file);
+	const std::string fname = filesystem::base_name(file);
 	const std::string::size_type dotpos = fname.rfind('.');
 
 	std::string basename;

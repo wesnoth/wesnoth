@@ -386,7 +386,7 @@ namespace game_config {
 		BOOST_FOREACH(const std::string& path, paths)
 		{
 			if(!delete_everything) {
-				const std::string& fn = filesystem::file_name(path);
+				const std::string& fn = filesystem::base_name(path);
 
 				if(utils::wildcard_string_match(fn, exclude_pattern)) {
 					LOG_CACHE << "delete_cache_files(): skipping " << path

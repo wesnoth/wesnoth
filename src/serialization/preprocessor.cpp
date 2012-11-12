@@ -523,7 +523,7 @@ preprocessor_file::preprocessor_file(preprocessor_streambuf &t, std::string cons
 			size_t cpos = fname.rfind(" ");
 			if (cpos != std::string::npos && cpos >= symbol_index) {
 				std::stringstream ss;
-				ss << "Found filename containing whitespace: '" << filesystem::file_name(fname) << "' in included directory '" << name << "'.\nThe included symbol probably looks similar to '"
+				ss << "Found filename containing whitespace: '" << filesystem::base_name(fname) << "' in included directory '" << name << "'.\nThe included symbol probably looks similar to '"
 				 << filesystem::directory_name(fname.substr(symbol_index)) << "'";
 				// TODO: find a real linenumber
 				target_.error(ss.str(), -1);
@@ -1233,7 +1233,7 @@ void preprocess_resource(const std::string& res_name, preproc_map *defines_map,
 		std::string streamContent = ss.str();
 
 		read(cfg, streamContent);
-		const std::string preproc_res_name = target_directory + "/" + filesystem::file_name(res_name);
+		const std::string preproc_res_name = target_directory + "/" + filesystem::base_name(res_name);
 
 		// write the processed cfg file
 		if (write_cfg == true)
