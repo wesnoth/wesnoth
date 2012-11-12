@@ -559,12 +559,12 @@ def validate_on_pop(tagstack, closer, filename, lineno):
         if ancestor:
             print '"%s", line %d: %s should have an inline SSF instead of using [filter_side]' % \
                 (filename, lineno, ancestor)
-    if closer == "object":
+    if closer == "effect":
         if attributes.get("unit_type") is not None:
-            print '"%s", line %d: use [object][filter]type= instead of [object]unit_type=' % \
+            print '"%s", line %d: use [effect][filter]type= instead of [effect]unit_type=' % \
                 (filename, lineno)
         if attributes.get("unit_gender") is not None:
-            print '"%s", line %d: use [object][filter]gender= instead of [object]unit_gender=' % \
+            print '"%s", line %d: use [effect][filter]gender= instead of [effect]unit_gender=' % \
                 (filename, lineno)
 
 def within(tag):
