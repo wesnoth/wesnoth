@@ -1163,7 +1163,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	// We need a binary path-independent path to the leader image here
 	// so it can be displayed for campaign-specific units in the dialog
 	// even when the campaign isn't loaded yet.
-	cfg_summary["leader_image"] = get_independent_image_path(leader_image);
+	cfg_summary["leader_image"] = filesystem::get_independent_image_path(leader_image);
 
 	if(!shrouded) {
 		if(has_snapshot) {

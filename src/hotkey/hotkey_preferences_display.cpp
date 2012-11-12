@@ -381,7 +381,7 @@ void hotkey_preferences_dialog::set_hotkey_menu(bool keep_viewport) {
 		const std::string& name = hotkey::get_names(command);
 
 		std::string image_path = "misc/empty.png~CROP(0,0,15,15)";
-		if (file_exists(game_config::path + "/images/icons/action/" + command + "_25.png"))
+		if (filesystem::file_exists(game_config::path + "/images/icons/action/" + command + "_25.png"))
 			image_path = "icons/action/" + command + "_25.png~CROP(3,3,18,18)";
 
 		menu_items.push_back(

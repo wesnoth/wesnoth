@@ -87,6 +87,8 @@ namespace {
 #include <CoreFoundation/CFBase.h>
 #endif
 
+namespace filesystem {
+
 bool ends_with(const std::string& str, const std::string& suffix)
 {
 	return str.size() >= suffix.size() && std::equal(suffix.begin(),suffix.end(),str.end()-suffix.size());
@@ -309,7 +311,7 @@ std::string get_saves_dir()
 }
 #endif
 
-std::string get_addon_campaigns_dir()
+std::string get_addons_dir()
 {
 	const std::string dir_path = get_user_data_dir() + "/data/add-ons";
 	return get_dir(dir_path);
@@ -1365,4 +1367,6 @@ scoped_ostream& scoped_ostream::operator=(std::ostream *s)
 scoped_ostream::~scoped_ostream()
 {
 	delete stream;
+}
+
 }

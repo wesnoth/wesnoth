@@ -119,8 +119,8 @@ void tcustom_tod::select_file(const std::string& filename,
 							  twindow& window)
 {
 	std::string va = vector_attrib;
-	std::string fn = file_name(filename);
-	std::string dn = directory_name(fn);
+	std::string fn = filesystem::file_name(filename);
+	std::string dn = filesystem::directory_name(fn);
 	if(dn.empty()) {
 		dn = dir;
 	}
