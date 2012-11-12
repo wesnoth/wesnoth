@@ -97,31 +97,33 @@ void extract_preload_scripts(config const &game_config)
 	preload_config = game_config.child("game_config");
 }
 
-/**
- * Stack storing the queued_event objects needed for calling WML actions.
- */
-struct queued_event_context
-{
-	typedef game_events::queued_event qe;
-	static qe default_qe;
-	static qe const *current_qe;
-	static qe const &get()
-	{ return *(current_qe ? current_qe : &default_qe); }
-	qe const *previous_qe;
-
-	queued_event_context(qe const *new_qe)
-		: previous_qe(current_qe)
+namespace {
+	/**
+	 * Stack storing the queued_event objects needed for calling WML actions.
+	 */
+	struct queued_event_context
 	{
-		current_qe = new_qe;
-	}
+		typedef game_events::queued_event qe;
+		static qe default_qe;
+		static qe const *current_qe;
+		static qe const &get()
+		{ return *(current_qe ? current_qe : &default_qe); }
+		qe const *previous_qe;
 
-	~queued_event_context()
-	{ current_qe = previous_qe; }
-};
+		queued_event_context(qe const *new_qe)
+			: previous_qe(current_qe)
+		{
+			current_qe = new_qe;
+		}
 
-game_events::queued_event const *queued_event_context::current_qe = NULL;
-game_events::queued_event queued_event_context::default_qe
-	("_from_lua", map_location(), map_location(), config());
+		~queued_event_context()
+		{ current_qe = previous_qe; }
+	};
+
+	game_events::queued_event const *queued_event_context::current_qe = NULL;
+	game_events::queued_event queued_event_context::default_qe
+		("_from_lua", map_location(), map_location(), config());
+}//unnamed namespace for queued_event_context
 
 /* Dummy pointer for getting unique keys for Lua's registry. */
 static char const dlgclbkKey = 0;
@@ -171,27 +173,29 @@ static void luaW_pushtstring(lua_State *L, t_string const &v)
 	lua_setmetatable(L, -2);
 }
 
-struct luaW_pushscalar_visitor : boost::static_visitor<>
-{
-	lua_State *L;
-	luaW_pushscalar_visitor(lua_State *l): L(l) {}
-	void operator()(boost::blank const &) const
-	{ lua_pushnil(L); }
-	void operator()(bool b) const
-	{ lua_pushboolean(L, b); }
-	void operator()(double d) const
-	{ lua_pushnumber(L, d); }
-	void operator()(size_t s) const
-	{ lua_pushnumber(L,s); }
-	void operator()(long t) const
-	{ lua_pushnumber(L,t); }
-	void operator()(int i) const
-	{ lua_pushnumber(L,i); }
-	void operator()(std::string const &s) const
-	{ lua_pushstring(L, s.c_str()); }
-	void operator()(t_string const &s) const
-	{ luaW_pushtstring(L, s); }
-};
+namespace {
+	struct luaW_pushscalar_visitor : boost::static_visitor<>
+	{
+		lua_State *L;
+		luaW_pushscalar_visitor(lua_State *l): L(l) {}
+		void operator()(boost::blank const &) const
+		{ lua_pushnil(L); }
+		void operator()(bool b) const
+		{ lua_pushboolean(L, b); }
+		void operator()(double d) const
+		{ lua_pushnumber(L, d); }
+		void operator()(size_t s) const
+		{ lua_pushnumber(L,s); }
+		void operator()(long t) const
+		{ lua_pushnumber(L,t); }
+		void operator()(int i) const
+		{ lua_pushnumber(L,i); }
+		void operator()(std::string const &s) const
+		{ lua_pushstring(L, s.c_str()); }
+		void operator()(t_string const &s) const
+		{ luaW_pushtstring(L, s); }
+	};
+}//unnamed namespace for luaW_pushscalar_visitor
 
 /**
  * Converts a string into a Lua object pushed at the top of the stack.
@@ -2065,36 +2069,38 @@ static int intf_eval_conditional(lua_State *L)
 	return 1;
 }
 
-/**
- * Cost function object relying on a Lua function.
- * @note The stack index of the Lua function must be valid each time the cost is computed.
- */
-struct lua_calculator : pathfind::cost_calculator
-{
-	lua_State *L;
-	int index;
+namespace {
+	/**
+	 * Cost function object relying on a Lua function.
+	 * @note The stack index of the Lua function must be valid each time the cost is computed.
+	 */
+	struct lua_calculator : pathfind::cost_calculator
+	{
+		lua_State *L;
+		int index;
 
-	lua_calculator(lua_State *L_, int i): L(L_), index(i) {}
-	double cost(const map_location &loc, const double so_far) const;
-};
+		lua_calculator(lua_State *L_, int i): L(L_), index(i) {}
+		double cost(const map_location &loc, const double so_far) const;
+	};
 
-double lua_calculator::cost(const map_location &loc, const double so_far) const
-{
-	// Copy the user function and push the location and current cost.
-	lua_pushvalue(L, index);
-	lua_pushinteger(L, loc.x + 1);
-	lua_pushinteger(L, loc.y + 1);
-	lua_pushnumber(L, so_far);
+	double lua_calculator::cost(const map_location &loc, const double so_far) const
+	{
+		// Copy the user function and push the location and current cost.
+		lua_pushvalue(L, index);
+		lua_pushinteger(L, loc.x + 1);
+		lua_pushinteger(L, loc.y + 1);
+		lua_pushnumber(L, so_far);
 
-	// Execute the user function.
-	if (!luaW_pcall(L, 3, 1)) return 1.;
+		// Execute the user function.
+		if (!luaW_pcall(L, 3, 1)) return 1.;
 
-	// Return a cost of at least 1 mp to avoid issues in pathfinder.
-	// (Condition is inverted to detect NaNs.)
-	double cost = lua_tonumber(L, -1);
-	lua_pop(L, 1);
-	return !(cost >= 1.) ? 1. : cost;
-}
+		// Return a cost of at least 1 mp to avoid issues in pathfinder.
+		// (Condition is inverted to detect NaNs.)
+		double cost = lua_tonumber(L, -1);
+		lua_pop(L, 1);
+		return !(cost >= 1.) ? 1. : cost;
+	}
+}//unnamed namespace for lua_calculator
 
 /**
  * Finds a path between two locations.
@@ -2777,31 +2783,33 @@ static int intf_select_hex(lua_State *L)
 	return 0;
 }
 
-struct lua_synchronize : mp_sync::user_choice
-{
-	lua_State *L;
-	lua_synchronize(lua_State *l): L(l) {}
-
-	virtual config query_user() const
+namespace {
+	struct lua_synchronize : mp_sync::user_choice
 	{
-		config cfg;
-		int index = 1;
-		if (!lua_isnoneornil(L, 2)) {
-			int side = resources::controller->current_side();
-			if ((*resources::teams)[side - 1].is_ai())
-				index = 2;
+		lua_State *L;
+		lua_synchronize(lua_State *l): L(l) {}
+
+		virtual config query_user() const
+		{
+			config cfg;
+			int index = 1;
+			if (!lua_isnoneornil(L, 2)) {
+				int side = resources::controller->current_side();
+				if ((*resources::teams)[side - 1].is_ai())
+					index = 2;
+			}
+			lua_settop(L, index);
+			if (luaW_pcall(L, 0, 1, false))
+				luaW_toconfig(L, -1, cfg);
+			return cfg;
 		}
-		lua_settop(L, index);
-		if (luaW_pcall(L, 0, 1, false))
-			luaW_toconfig(L, -1, cfg);
-		return cfg;
-	}
 
-	virtual config random_choice(rand_rng::simple_rng &) const
-	{
-		return config();
-	}
-};
+		virtual config random_choice(rand_rng::simple_rng &) const
+		{
+			return config();
+		}
+	};
+}//unnamed namespace for lua_synchronize
 
 /**
  * Ensures a value is synchronized among all the clients.
@@ -2816,48 +2824,50 @@ static int intf_synchronize_choice(lua_State *L)
 	return 1;
 }
 
-struct scoped_dialog
-{
-	lua_State *L;
-	scoped_dialog *prev;
-	static scoped_dialog *current;
-	gui2::twindow *window;
-	typedef std::map<gui2::twidget *, int> callback_map;
-	callback_map callbacks;
+namespace {
+	struct scoped_dialog
+	{
+		lua_State *L;
+		scoped_dialog *prev;
+		static scoped_dialog *current;
+		gui2::twindow *window;
+		typedef std::map<gui2::twidget *, int> callback_map;
+		callback_map callbacks;
 
-	scoped_dialog(lua_State *l, gui2::twindow *w);
-	~scoped_dialog();
-private:
-	scoped_dialog(const scoped_dialog &);
-};
+		scoped_dialog(lua_State *l, gui2::twindow *w);
+		~scoped_dialog();
+	private:
+		scoped_dialog(const scoped_dialog &); // not implemented; not allowed.
+	};
 
-scoped_dialog *scoped_dialog::current = NULL;
+	scoped_dialog *scoped_dialog::current = NULL;
 
-scoped_dialog::scoped_dialog(lua_State *l, gui2::twindow *w)
-	: L(l), prev(current), window(w), callbacks()
-{
-	lua_pushlightuserdata(L
-			, static_cast<void *>(const_cast<char *>(&dlgclbkKey)));
-	lua_createtable(L, 1, 0);
-	lua_pushvalue(L, -2);
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_rawseti(L, -2, 1);
-	lua_rawset(L, LUA_REGISTRYINDEX);
-	current = this;
-}
+	scoped_dialog::scoped_dialog(lua_State *l, gui2::twindow *w)
+		: L(l), prev(current), window(w), callbacks()
+	{
+		lua_pushlightuserdata(L
+				, static_cast<void *>(const_cast<char *>(&dlgclbkKey)));
+		lua_createtable(L, 1, 0);
+		lua_pushvalue(L, -2);
+		lua_rawget(L, LUA_REGISTRYINDEX);
+		lua_rawseti(L, -2, 1);
+		lua_rawset(L, LUA_REGISTRYINDEX);
+		current = this;
+	}
 
-scoped_dialog::~scoped_dialog()
-{
-	delete window;
-	current = prev;
-	lua_pushlightuserdata(L
-			, static_cast<void *>(const_cast<char *>(&dlgclbkKey)));
-	lua_pushvalue(L, -1);
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_rawgeti(L, -1, 1);
-	lua_remove(L, -2);
-	lua_rawset(L, LUA_REGISTRYINDEX);
-}
+	scoped_dialog::~scoped_dialog()
+	{
+		delete window;
+		current = prev;
+		lua_pushlightuserdata(L
+				, static_cast<void *>(const_cast<char *>(&dlgclbkKey)));
+		lua_pushvalue(L, -1);
+		lua_rawget(L, LUA_REGISTRYINDEX);
+		lua_rawgeti(L, -1, 1);
+		lua_remove(L, -2);
+		lua_rawset(L, LUA_REGISTRYINDEX);
+	}
+}//unnamed namespace for scoped_dialog
 
 static gui2::twidget *find_widget(lua_State *L, int i, bool readonly)
 {
@@ -3052,32 +3062,35 @@ static int intf_get_dialog_value(lua_State *L)
 	return 1;
 }
 
-static void dialog_callback(gui2::twidget *w)
-{
-	int cb;
+namespace { // helpers of intf_set_dialog_callback()
+	void dialog_callback(gui2::twidget *w)
 	{
-		scoped_dialog::callback_map &m = scoped_dialog::current->callbacks;
-		scoped_dialog::callback_map::const_iterator i = m.find(w);
-		if (i == m.end()) return;
-		cb = i->second;
+		int cb;
+		{
+			scoped_dialog::callback_map &m = scoped_dialog::current->callbacks;
+			scoped_dialog::callback_map::const_iterator i = m.find(w);
+			if (i == m.end()) return;
+			cb = i->second;
+		}
+		lua_State *L = scoped_dialog::current->L;
+		lua_pushlightuserdata(L
+				, static_cast<void *>(const_cast<char *>(&dlgclbkKey)));
+		lua_rawget(L, LUA_REGISTRYINDEX);
+		lua_rawgeti(L, -1, cb);
+		lua_remove(L, -2);
+		lua_call(L, 0, 0);
 	}
-	lua_State *L = scoped_dialog::current->L;
-	lua_pushlightuserdata(L
-			, static_cast<void *>(const_cast<char *>(&dlgclbkKey)));
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_rawgeti(L, -1, cb);
-	lua_remove(L, -2);
-	lua_call(L, 0, 0);
-}
 
-/** Helper struct for intf_set_dialog_callback. */
-struct tdialog_callback_wrapper
-{
-	void forward(gui2::twidget* widget)
+	/** Helper struct for intf_set_dialog_callback. */
+	struct tdialog_callback_wrapper
 	{
-		dialog_callback(widget);
-	}
-};
+		void forward(gui2::twidget* widget)
+		{
+			dialog_callback(widget);
+		}
+	};
+}//unnamed namespace for helpers of intf_set_dialog_callback()
+
 /**
  * Sets a callback on a widget of the current dialog.
  * - Arg 1: function.
@@ -3593,26 +3606,28 @@ static int intf_debug_ai(lua_State *L)
 	return 1;
 }
 
-struct lua_report_generator : reports::generator
-{
-	lua_State *mState;
-	std::string name;
-	lua_report_generator(lua_State *L, const std::string &n)
-		: mState(L), name(n) {}
-	virtual config generate();
-};
+namespace {
+	struct lua_report_generator : reports::generator
+	{
+		lua_State *mState;
+		std::string name;
+		lua_report_generator(lua_State *L, const std::string &n)
+			: mState(L), name(n) {}
+		virtual config generate();
+	};
 
-config lua_report_generator::generate()
-{
-	lua_State *L = mState;
-	config cfg;
-	if (!luaW_getglobal(L, "wesnoth", "theme_items", name.c_str(), NULL))
+	config lua_report_generator::generate()
+	{
+		lua_State *L = mState;
+		config cfg;
+		if (!luaW_getglobal(L, "wesnoth", "theme_items", name.c_str(), NULL))
+			return cfg;
+		if (!luaW_pcall(L, 0, 1)) return cfg;
+		luaW_toconfig(L, -1, cfg);
+		lua_pop(L, 1);
 		return cfg;
-	if (!luaW_pcall(L, 0, 1)) return cfg;
-	luaW_toconfig(L, -1, cfg);
-	lua_pop(L, 1);
-	return cfg;
-}
+	}
+}//unnamed namespace for lua_report_generator
 
 /**
  * Executes its upvalue as a theme item generator.
