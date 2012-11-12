@@ -35,12 +35,12 @@
 
 #include <stack>
 
+#include <boost/algorithm/string/replace.hpp>
+#include <boost/foreach.hpp>
 #include <boost/iostreams/filtering_stream.hpp>
 #include <boost/iostreams/filter/bzip2.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
-#include <boost/algorithm/string/replace.hpp>
 #include <boost/variant.hpp>
-#include <boost/foreach.hpp>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)

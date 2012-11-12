@@ -25,12 +25,13 @@
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
-#include <boost/foreach.hpp>
 #include "utils/const_clone.tpp"
 
 #include <cstdlib>
 #include <cstring>
 #include <deque>
+
+#include <boost/foreach.hpp>
 #include <boost/variant.hpp>
 
 static lg::log_domain log_config("config");
