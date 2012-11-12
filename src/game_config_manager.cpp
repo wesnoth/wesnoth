@@ -116,7 +116,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		// then handle terrains so that they are last loaded from data/.
 		// 2nd everything in userdata.
 		loadscreen::start_stage("verify cache");
-		data_tree_checksum();
+		filesystem::data_tree_checksum();
 		loadscreen::start_stage("create cache");
 
 		// Start transaction so macros are shared.
@@ -190,15 +190,15 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 
 void game_config_manager::load_addons_cfg()
 {
-	const std::string user_campaign_dir = get_addon_campaigns_dir();
+	const std::string user_campaign_dir = filesystem::get_addons_dir();
 
 	std::vector<std::string> error_addons;
 	std::vector<std::string> user_dirs;
 	std::vector<std::string> user_files;
 	std::vector<std::string> addons_to_load;
 
-	get_files_in_dir(user_campaign_dir, &user_files, &user_dirs,
-		ENTIRE_FILE_PATH);
+	filesystem::get_files_in_dir(user_campaign_dir, &user_files, &user_dirs,
+		filesystem::ENTIRE_FILE_PATH);
 
 	std::vector<std::string> error_log;
 
@@ -210,11 +210,11 @@ void game_config_manager::load_addons_cfg()
 			bool ok = true;
 			// Allowing it if the dir doesn't exist,
 			// for the single-file add-on.
-			if(file_exists(file.substr(0, size_minus_extension))) {
+			if(filesystem::file_exists(file.substr(0, size_minus_extension))) {
 				// Unfortunately, we create the dir plus
 				// _info.cfg ourselves on download.
 				std::vector<std::string> dirs, files;
-				get_files_in_dir(file.substr(0, size_minus_extension),
+				filesystem::get_files_in_dir(file.substr(0, size_minus_extension),
 					&files, &dirs);
 				if(dirs.size() > 0) {
 					ok = false;
@@ -246,7 +246,7 @@ void game_config_manager::load_addons_cfg()
 	// Append the $user_campaign_dir/*/_main.cfg files to addons_to_load.
 	BOOST_FOREACH(const std::string& uc, user_dirs) {
 		const std::string main_cfg = uc + "/_main.cfg";
-		if(file_exists(main_cfg)) {
+		if(filesystem::file_exists(main_cfg)) {
 			addons_to_load.push_back(main_cfg);
 		}
 	}
@@ -268,7 +268,7 @@ void game_config_manager::load_addons_cfg()
 			ERR_CONFIG << err.message << '\n';
 			error_addons.push_back(uc);
 			error_log.push_back(err.message);
-		} catch(io_exception&) {
+		} catch(filesystem::io_exception&) {
 			ERR_CONFIG << "error reading usermade add-on '" << uc << "'\n";
 			error_addons.push_back(uc);
 		}
@@ -324,7 +324,7 @@ void game_config_manager::reload_changed_game_config()
 	// Force a reload of configuration information.
 	cache_.recheck_filetree_checksum();
 	old_defines_map_.clear();
-	clear_binary_paths_cache();
+	filesystem::clear_binary_paths_cache();
 	init_game_config(FORCE_RELOAD);
 }
 

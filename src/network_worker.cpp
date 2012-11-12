@@ -487,7 +487,7 @@ typedef util::scoped_resource<int, close_fd> scoped_fd;
 static SOCKET_STATE send_file(buffer* buf)
 {
 	size_t upto = 0;
-	size_t filesize = file_size(buf->config_error);
+	size_t filesize = filesystem::file_size(buf->config_error);
 #ifdef HAVE_SENDFILE
 	// implements linux sendfile support
 	LOG_NW << "send_file use system sendfile: " << (network_use_system_sendfile?"yes":"no") << "\n";
@@ -559,7 +559,7 @@ static SOCKET_STATE send_file(buffer* buf)
 	// reserve 1024*8 bytes buffer
 	buf->raw_buffer.resize(std::min<size_t>(1024*8, filesize));
 	SDLNet_Write32(filesize,&buf->raw_buffer[0]);
-	scoped_istream file_stream = istream_file(buf->config_error);
+	filesystem::scoped_istream file_stream = filesystem::istream_file(buf->config_error);
 	SOCKET_STATE result = send_buffer(buf->sock, buf->raw_buffer, 4);
 
 	if (!file_stream->good()) {

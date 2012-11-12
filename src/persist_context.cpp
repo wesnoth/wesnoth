@@ -30,14 +30,14 @@ config pack_scalar(const std::string &name, const t_string &val)
 }
 
 static std::string get_persist_cfg_name(const std::string &name_space) {
-	return (get_dir(get_user_data_dir() + "/persist/") + name_space + ".cfg");
+	return (filesystem::get_dir(filesystem::get_user_data_dir() + "/persist/") + name_space + ".cfg");
 }
 
 void persist_file_context::load()
 {
 	std::string cfg_name = get_persist_cfg_name(namespace_.root_);
-	if (file_exists(cfg_name) && !is_directory(cfg_name)) {
-		scoped_istream file_stream = istream_file(cfg_name);
+	if (filesystem::file_exists(cfg_name) && !filesystem::is_directory(cfg_name)) {
+		filesystem::scoped_istream file_stream = filesystem::istream_file(cfg_name);
 		if (!(file_stream->fail())) {
 			try {
 				read(cfg_,*file_stream);
@@ -178,9 +178,9 @@ bool persist_file_context::save_context() {
 	std::string cfg_name = get_persist_cfg_name(namespace_.root_);
 	if (!cfg_name.empty()) {
 		if (cfg_.empty()) {
-			success = delete_directory(cfg_name);
+			success = filesystem::delete_directory(cfg_name);
 		} else {
-			scoped_ostream out = ostream_file(cfg_name);
+			filesystem::scoped_ostream out = filesystem::ostream_file(cfg_name);
 			if (!out->fail())
 			{
 				config_writer writer(*out,false);
