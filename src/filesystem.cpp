@@ -956,7 +956,7 @@ int file_size(const std::string& fname)
 	return buf.st_size;
 }
 
-std::string file_name(const std::string& file)
+std::string base_name(const std::string& file)
 // Analogous to POSIX basename(3), but for C++ string-object pathnames
 {
 #ifdef _WIN32

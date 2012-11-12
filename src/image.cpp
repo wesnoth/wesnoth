@@ -402,7 +402,7 @@ static bool localized_file_uptodate (const std::string& loc_file)
 static std::string get_localized_path (const std::string& file, const std::string& suff = "")
 {
 	std::string dir = filesystem::directory_name(file);
-	std::string base = filesystem::file_name(file);
+	std::string base = filesystem::base_name(file);
 	const size_t pos_ext = base.rfind(".");
 	std::string loc_base;
 	if (pos_ext != std::string::npos) {

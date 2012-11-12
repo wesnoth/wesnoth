@@ -52,7 +52,7 @@ std::string format_file_list(const std::vector<std::string>& files_original)
 	BOOST_FOREACH(std::string& file, files)
 	{
 		std::string base;
-		std::string filename = filesystem::file_name(file);
+		std::string filename = filesystem::base_name(file);
 		std::string parent_path;
 
 		const bool is_main_cfg = filename == "_main.cfg";
@@ -75,7 +75,7 @@ std::string format_file_list(const std::vector<std::string>& files_original)
 			//       alone by making base seem not like a directory path,
 			//       otherwise it returns an empty string.
 			strip_trailing_dir_separators(base);
-			base = filesystem::file_name(base);
+			base = filesystem::base_name(base);
 		} else {
 			base = filename;
 		}
