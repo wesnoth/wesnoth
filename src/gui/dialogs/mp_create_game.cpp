@@ -101,8 +101,8 @@ void tmp_create_game::pre_show(CVideo& /*video*/, twindow& window)
 	// User maps
 	/*	FIXME implement user maps
 		std::vector<std::string> maps;
-		get_files_in_dir(get_user_data_dir() + "/editor/maps", &maps, NULL,
-	   FILE_NAME_ONLY);
+		filesystem::get_files_in_dir(filesystem::get_user_data_dir() + "/editor/maps", &maps, NULL,
+	   filesystem::FILE_NAME_ONLY);
 
 		FOREACH(const AUTO& map, maps) {
 			std::map<std::string, t_string> item;

@@ -146,7 +146,7 @@ context_manager::context_manager(editor_display& gui, const config& game_config)
     , clipboard_()
 {
 	if (default_dir_.empty()) {
-		default_dir_ = get_dir(get_user_data_dir() + "/editor");
+		default_dir_ = filesystem::get_dir(filesystem::get_user_data_dir() + "/editor");
 	}
 	create_default_context();
 	init_map_generators(game_config);
@@ -178,7 +178,7 @@ void context_manager::set_default_dir(const std::string& str)
 
 void context_manager::load_map_dialog(bool force_same_context /* = false */)
 {
-	std::string fn = directory_name(get_map_context().get_filename());
+	std::string fn = filesystem::directory_name(get_map_context().get_filename());
 	if (fn.empty()) {
 		fn = default_dir_;
 	}
@@ -230,7 +230,7 @@ void context_manager::edit_side_dialog(int side)
 void context_manager::edit_scenario_dialog()
 {
 	// TODO
-	//std::string fn = directory_name(get_map_context().get_filename());
+	//std::string fn = filesystem::directory_name(get_map_context().get_filename());
 
 	std::string id = get_map_context().get_id();
 	std::string name = get_map_context().get_name();
@@ -570,7 +570,7 @@ void context_manager::save_map_as_dialog()
 {
 	std::string input_name = get_map_context().get_filename();
 	if (input_name.empty()) {
-		input_name = get_dir(default_dir_ + "/maps");
+		input_name = filesystem::get_dir(default_dir_ + "/maps");
 	}
 	const std::string old_input_name = input_name;
 
@@ -579,7 +579,7 @@ void context_manager::save_map_as_dialog()
 		input_name = old_input_name;
 		int res = dialogs::show_file_chooser_dialog_save(gui_, input_name, _("Save the Map As"), ".map");
 		if (res == 0) {
-			if (file_exists(input_name)) {
+			if (filesystem::file_exists(input_name)) {
 				res = gui2::show_message(gui_.video(), "",
 						_("The file already exists. Do you want to overwrite it?"), gui2::tmessage::yes_no_buttons);
 				overwrite_res = gui2::twindow::CANCEL == res ? 1 : 0;
@@ -598,7 +598,7 @@ void context_manager::save_scenario_as_dialog()
 {
 	std::string input_name = get_map_context().get_filename();
 	if (input_name.empty()) {
-		input_name = get_dir(default_dir_ + "/scenarios");
+		input_name = filesystem::get_dir(default_dir_ + "/scenarios");
 	}
 	const std::string old_input_name = input_name;
 
@@ -607,7 +607,7 @@ void context_manager::save_scenario_as_dialog()
 		input_name = old_input_name;
 		int res = dialogs::show_file_chooser_dialog_save(gui_, input_name, _("Save the Scenario As"), ".cfg");
 		if (res == 0) {
-			if (file_exists(input_name)) {
+			if (filesystem::file_exists(input_name)) {
 				res = gui2::show_message(gui_.video(), "",
 						_("The file already exists. Do you want to overwrite it?"), gui2::tmessage::yes_no_buttons);
 				overwrite_res = gui2::twindow::CANCEL == res ? 1 : 0;
@@ -735,7 +735,7 @@ void context_manager::save_all_maps(bool auto_save_windows)
 		switch_context(i);
 		std::string name = get_map_context().get_filename();
 		if(auto_save_windows) {
-			if(name.empty() || is_directory(name)) {
+			if(name.empty() || filesystem::is_directory(name)) {
 				std::ostringstream s;
 				s << default_dir_ << "/" << "window_" << i;
 				name = s.str();
@@ -751,7 +751,7 @@ void context_manager::save_all_maps(bool auto_save_windows)
 void context_manager::save_map()
 {
 	const std::string& name = get_map_context().get_filename();
-	if (name.empty() || is_directory(name)) {
+	if (name.empty() || filesystem::is_directory(name)) {
 		if (get_map_context().is_pure_map())
 			save_map_as_dialog();
 		else

@@ -568,7 +568,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 		}
 		games_.back().map_data = game["map_data"].str();
 		if(games_.back().map_data.empty()) {
-			games_.back().map_data = read_map(game["map"]);
+			games_.back().map_data = filesystem::read_map(game["map"]);
 		}
 		if(! games_.back().map_data.empty()) {
 			try {

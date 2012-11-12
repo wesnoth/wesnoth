@@ -1776,15 +1776,15 @@ std::string show_wesnothd_server_search(display& disp)
 #endif
 	const std::string filename = "wesnothd";
 	std::string path = WESNOTH_PREFIX + std::string("/bin");
-	if (!is_directory(path))
-		path = get_cwd();
+	if (!filesystem::is_directory(path))
+		path = filesystem::get_cwd();
 
 #else
 	const std::string filename = "wesnothd.exe";
-	std::string path = get_cwd();
+	std::string path = filesystem::get_cwd();
 #endif
 	if (!old_path.empty()
-			&& is_directory(old_path))
+			&& filesystem::is_directory(old_path))
 	{
 		path = old_path;
 	}

@@ -65,7 +65,7 @@ REGISTER_DIALOG(screenshot_notification)
 
 tscreenshot_notification::tscreenshot_notification(const std::string& path,
 												   int filesize)
-	: path_(path), screenshots_dir_path_(get_screenshot_dir())
+	: path_(path), screenshots_dir_path_(filesystem::get_screenshot_dir())
 {
 	register_label("filesize",
 				   false,
@@ -76,7 +76,7 @@ tscreenshot_notification::tscreenshot_notification(const std::string& path,
 void tscreenshot_notification::pre_show(CVideo& /*video*/, twindow& window)
 {
 	ttext_box& path_box = find_widget<ttext_box>(&window, "path", false);
-	path_box.set_value(file_name(path_));
+	path_box.set_value(filesystem::file_name(path_));
 	path_box.set_active(false);
 
 	tbutton& copy_b = find_widget<tbutton>(&window, "copy", false);

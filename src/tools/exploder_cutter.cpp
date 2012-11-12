@@ -37,7 +37,7 @@ const config cutter::load_config(const std::string &filename)
 	config res;
 
 	try {
-		scoped_istream stream = preprocess_file(conf_string);
+		filesystem::scoped_istream stream = preprocess_file(conf_string);
 		read(res, *stream);
 	} catch(config::error& err) {
 		throw exploder_failure("Unable to load the configuration for the file " + filename + ": "+ err.message);
@@ -106,7 +106,7 @@ cutter::surface_map cutter::cut_surface(surface surf, const config& conf)
 std::string cutter::find_configuration(const std::string &file)
 {
 	//finds the file prefix.
-	const std::string fname = file_name(file);
+	const std::string fname = filesystem::file_name(file);
 	const std::string::size_type dotpos = fname.rfind('.');
 
 	std::string basename;

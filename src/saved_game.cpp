@@ -352,7 +352,7 @@ void saved_game::expand_random_scenario()
 		}
 		//it looks like we support a map= where map=filename equals more or less map_data={filename}
 		if(starting_pos_["map_data"].empty() && !starting_pos_["map"].empty()) {
-			starting_pos_["map_data"] = read_map(starting_pos_["map"]);
+			starting_pos_["map_data"] = filesystem::read_map(starting_pos_["map"]);
 		}
 		// If the map should be randomly generated
 		// We dont want that we accidently to this twice so we check for starting_pos_["map_data"].empty()

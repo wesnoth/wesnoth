@@ -28,6 +28,8 @@
 
 #include "exceptions.hpp"
 
+namespace filesystem {
+
 /** An exception object used when an IO error occurs */
 struct io_exception : public game::error {
 	io_exception() : game::error("") {}
@@ -67,7 +69,7 @@ std::string get_save_index_file();
 std::string get_saves_dir();
 std::string get_intl_dir();
 std::string get_screenshot_dir();
-std::string get_addon_campaigns_dir();
+std::string get_addons_dir();
 
 /**
  * Get the next free filename using "name + number (3 digits) + extension"
@@ -287,5 +289,7 @@ public:
 	std::ostream *operator->() { return stream; }
 	~scoped_ostream();
 };
+
+}
 
 #endif

@@ -87,10 +87,10 @@ void room_manager::load_config(const config& cfg)
 
 void room_manager::read_rooms()
 {
-	if (!filename_.empty() && file_exists(filename_)) {
+	if (!filename_.empty() && filesystem::file_exists(filename_)) {
 		LOG_LOBBY << "Reading rooms from " <<  filename_ << "\n";
 		config cfg;
-		scoped_istream file = istream_file(filename_);
+		filesystem::scoped_istream file = filesystem::istream_file(filename_);
 		if (compress_stored_rooms_) {
 			read_gz(cfg, *file);
 		} else {
@@ -130,7 +130,7 @@ void room_manager::write_rooms()
 		}
 	}
 
-	scoped_ostream file = ostream_file(filename_);
+	filesystem::scoped_ostream file = filesystem::ostream_file(filename_);
 	config_writer writer(*file, compress_stored_rooms_);
 	writer.write(cfg);
 	dirty_ = false;

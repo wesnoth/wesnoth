@@ -143,7 +143,7 @@ bool schema_validator::read_config_file(const std::string &filename){
 	try {
 		preproc_map preproc(
 				game_config::config_cache::instance().get_preproc_map());
-		scoped_istream stream = preprocess_file(filename, &preproc);
+		filesystem::scoped_istream stream = preprocess_file(filename, &preproc);
 		read(cfg, *stream);
 	} catch(config::error&) {
 		return false;
