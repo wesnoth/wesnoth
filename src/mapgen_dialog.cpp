@@ -49,6 +49,7 @@ default_map_generator::default_map_generator(const config &cfg) :
 	castle_size_(9),
 	nplayers_(2),
 	link_castles_(true),
+	show_labels_(true),
 	cfg_(cfg ? cfg : config())
 {
 	if (!cfg) return;
@@ -250,6 +251,13 @@ void default_map_generator::user_config(display& disp)
 	link_castles.set_check(link_castles_);
 	link_castles.set_location(link_rect);
 
+	SDL_Rect labels_rect = link_rect;
+	labels_rect.y = labels_rect.y + labels_rect.h + vertical_margin;
+
+	gui::button show_labels(screen,_("Show labels"),gui::button::TYPE_CHECK);
+	show_labels.set_check(show_labels_);
+	show_labels.set_location(labels_rect);
+
 	while(true) {
 		nplayers_ = players_slider.value();
 		width_ = width_slider.value();
@@ -274,6 +282,7 @@ void default_map_generator::user_config(display& disp)
 		castlesize_slider.set_dirty();
 		landform_slider.set_dirty();
 		link_castles.set_dirty();
+		show_labels.set_dirty();
 
 		width_slider.set_min(min_width+(players_slider.value()-2)*extra_size_per_player);
 		height_slider.set_min(min_width+(players_slider.value()-2)*extra_size_per_player);
@@ -324,6 +333,7 @@ void default_map_generator::user_config(display& disp)
 	}
 
 	link_castles_ = link_castles.checked();
+	show_labels_ = show_labels.checked();
 }
 
 std::string default_map_generator::name() const { return "default"; }
@@ -385,7 +395,7 @@ std::string default_map_generator::generate_map(const std::vector<std::string>& 
 		try{
 			map = default_generate_map(width_, height_, island_size, island_off_center,
 				iterations, hill_size_, max_lakes, (nvillages_ * width_ * height_) / 1000,
-				castle_size_, nplayers_, link_castles_, labels_ptr, cfg_);
+				castle_size_, nplayers_, link_castles_, show_labels_ ? labels_ptr : NULL, cfg_);
 			error_message = "";
 		}
 		catch (mapgen_exception& exc){
