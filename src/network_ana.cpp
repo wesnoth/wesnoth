@@ -31,8 +31,6 @@
 #include "thread.hpp"
 #include "util.hpp"
 
-#include "filesystem.hpp"
-
 #include <cerrno>
 #include <queue>
 #include <iomanip>
