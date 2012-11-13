@@ -353,6 +353,10 @@ std::string default_map_generator::create_map(const std::vector<std::string>& ar
 
 std::string default_map_generator::generate_map(const std::vector<std::string>& /*args*/, std::map<map_location,std::string>* labels)
 {
+	// Suppress labels?
+	if ( !show_labels_ )
+		labels = NULL;
+
 	// the random generator thinks odd widths are nasty, so make them even
 	if (is_odd(width_))
 		++width_;
@@ -395,7 +399,7 @@ std::string default_map_generator::generate_map(const std::vector<std::string>& 
 		try{
 			map = default_generate_map(width_, height_, island_size, island_off_center,
 				iterations, hill_size_, max_lakes, (nvillages_ * width_ * height_) / 1000,
-				castle_size_, nplayers_, link_castles_, show_labels_ ? labels_ptr : NULL, cfg_);
+				castle_size_, nplayers_, link_castles_, labels_ptr, cfg_);
 			error_message = "";
 		}
 		catch (mapgen_exception& exc){
