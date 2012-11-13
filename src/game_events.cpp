@@ -406,16 +406,9 @@ namespace game_events {
 			const std::string name = values["name"];
 			config::attribute_value value = resources::gamedata->get_variable_const(name);
 
-#define TEST_ATTR(name, test) do { \
-			if (values.has_attribute(name)) { \
-				config::attribute_value attr = values[name]; \
-				if (!(test)) return false; \
-			} \
-			} while (0)
-
 #define TEST_STR_ATTR(name, test) do { \
 			if (values.has_attribute(name)) { \
-				std::string attr_str = values[name]; \
+				std::string attr_str = values[name].str(); \
 				std::string str_value = value.str(); \
 				if (!(test)) return false; \
 			} \
@@ -429,6 +422,14 @@ namespace game_events {
 			} \
 			} while (0)
 
+#define TEST_BOL_ATTR(name, test) do { \
+			if (values.has_attribute(name)) { \
+				bool attr_bool = values[name].to_bool(); \
+				bool bool_value = value.to_bool(); \
+				if (!(test)) return false; \
+			} \
+			} while (0)
+
 			TEST_STR_ATTR("equals",                str_value == attr_str);
 			TEST_STR_ATTR("not_equals",            str_value != attr_str);
 			TEST_NUM_ATTR("numerical_equals",      num_value == attr_num);
@@ -437,13 +438,13 @@ namespace game_events {
 			TEST_NUM_ATTR("less_than",             num_value <  attr_num);
 			TEST_NUM_ATTR("greater_than_equal_to", num_value >= attr_num);
 			TEST_NUM_ATTR("less_than_equal_to",    num_value <= attr_num);
-			TEST_ATTR("boolean_equals",     value.to_bool() == attr.to_bool());
-			TEST_ATTR("boolean_not_equals", value.to_bool() != attr.to_bool());
+			TEST_BOL_ATTR("boolean_equals",       bool_value == attr_bool);
+			TEST_BOL_ATTR("boolean_not_equals",   bool_value != attr_bool);
 			TEST_STR_ATTR("contains", str_value.find(attr_str) != std::string::npos);
 
-#undef TEST_ATTR
 #undef TEST_STR_ATTR
 #undef TEST_NUM_ATTR
+#undef TEST_BOL_ATTR
 		}
 		return true;
 	}
