@@ -415,88 +415,90 @@ void read_bz2(config &cfg, std::istream &file, abstract_validator * validator)
 	read_compressed<boost::iostreams::bzip2_decompressor>(cfg, file, validator);
 }
 
-static std::string escaped_string(const std::string &value)
-{
-	std::string res;
-	std::string::const_iterator iter = value.begin();
-	while (iter != value.end()) {
-		const char c = *iter;
-		res.append(c == '"' ? 2 : 1, c);
-		++iter;
-	}
-	return res;
-}
-
-struct write_key_val_visitor : boost::static_visitor<void>
-{
-	std::ostream &out_;
-	unsigned level_;
-	std::string &textdomain_;
-	const std::string &key_;
-
-	write_key_val_visitor(std::ostream &out, unsigned level,
-		std::string &textdomain, const std::string &key)
-		: out_(out), level_(level), textdomain_(textdomain), key_(key)
-	{}
-
-	void operator()(boost::blank const &) const
-	{ out_ << "\"\""; }
-	void operator()(bool b) const
-	{ out_ << (b ? "yes" : "no"); }
-	void operator()(double d) const
-	{ int i = d; if (d == i) out_ << i; else out_ << d; }
-	void operator()(size_t s) const
-	{ out_ << s; }
-	void operator()(long t) const
-	{ out_ << t; }
-	void operator()(int i) const
-	{ out_ << i; }
-	void operator()(std::string const &s) const
-	{ out_ << '"' << escaped_string(s) << '"'; }
-	void operator()(t_string const &s) const;
-};
-
-/**
- * Writes all the parts of a translatable string.
- * @note If the first part is translatable and in the wrong textdomain,
- *       the textdomain change has to happen before the attribute name.
- *       That is the reason for not outputting the key beforehand and
- *       letting this function do it.
- */
-void write_key_val_visitor::operator()(t_string const &value) const
-{
-	bool first = true;
-
-	for (t_string::walker w(value); !w.eos(); w.next())
+namespace { // helpers for write_key_val().
+	std::string escaped_string(const std::string &value)
 	{
-		std::string part(w.begin(), w.end());
-
-		if (!first)
-			out_ << " +\n";
-
-		if (w.translatable() && w.textdomain() != textdomain_) {
-			textdomain_ = w.textdomain();
-			out_ << "#textdomain " << textdomain_ << '\n';
+		std::string res;
+		std::string::const_iterator iter = value.begin();
+		while (iter != value.end()) {
+			const char c = *iter;
+			res.append(c == '"' ? 2 : 1, c);
+			++iter;
 		}
-
-		for (unsigned i = 0; i < level_; ++i) out_ << '\t';
-
-		if (first)
-			out_ << key_ << '=';
-		else
-			out_ << '\t';
-
-		if (w.translatable())
-			out_ << '_';
-
-		out_ << '"' << escaped_string(part) << '"';
-		first = false;
+		return res;
 	}
-}
+
+	struct write_key_val_visitor : boost::static_visitor<void>
+	{
+		std::ostream &out_;
+		unsigned level_;
+		std::string &textdomain_;
+		const std::string &key_;
+
+		write_key_val_visitor(std::ostream &out, unsigned level,
+			std::string &textdomain, const std::string &key)
+			: out_(out), level_(level), textdomain_(textdomain), key_(key)
+		{}
+
+		void operator()(boost::blank const &) const
+		{ out_ << "\"\""; }
+		void operator()(bool b) const
+		{ out_ << (b ? "yes" : "no"); }
+		void operator()(double d) const
+		{ int i = d; if (d == i) out_ << i; else out_ << d; }
+		void operator()(size_t s) const
+		{ out_ << s; }
+		void operator()(long t) const
+		{ out_ << t; }
+		void operator()(int i) const
+		{ out_ << i; }
+		void operator()(std::string const &s) const
+		{ out_ << '"' << escaped_string(s) << '"'; }
+		void operator()(t_string const &s) const;
+	};
+
+	/**
+	 * Writes all the parts of a translatable string.
+	 * @note If the first part is translatable and in the wrong textdomain,
+	 *       the textdomain change has to happen before the attribute name.
+	 *       That is the reason for not outputting the key beforehand and
+	 *       letting this function do it.
+	 */
+	void write_key_val_visitor::operator()(t_string const &value) const
+	{
+		bool first = true;
+
+		for (t_string::walker w(value); !w.eos(); w.next())
+		{
+			std::string part(w.begin(), w.end());
+
+			if (!first)
+				out_ << " +\n";
+
+			if (w.translatable() && w.textdomain() != textdomain_) {
+				textdomain_ = w.textdomain();
+				out_ << "#textdomain " << textdomain_ << '\n';
+			}
+
+			for (unsigned i = 0; i < level_; ++i) out_ << '\t';
+
+			if (first)
+				out_ << key_ << '=';
+			else
+				out_ << '\t';
+
+			if (w.translatable())
+				out_ << '_';
+
+			out_ << '"' << escaped_string(part) << '"';
+			first = false;
+		}
+	}
+}//unnamed namespace for write_key_val() helpers.
 
 void write_key_val(std::ostream &out, const std::string &key,
-	const config::attribute_value &value, unsigned level,
-	std::string& textdomain)
+                   const config::attribute_value &value, unsigned level,
+                   std::string& textdomain)
 {
 	if (!boost::get<t_string const>(&value.value)) {
 		for (unsigned i = 0; i < level; ++i) out << '\t';

@@ -349,20 +349,22 @@ bool vconfig::has_child(const std::string& key) const
 	return false;
 }
 
-struct vconfig_expand_visitor : boost::static_visitor<void>
-{
-	config::attribute_value &result;
-	vconfig_expand_visitor(config::attribute_value &r): result(r) {}
-	template<typename T> void operator()(T const &) const {}
-	void operator()(const std::string &s) const
+namespace {
+	struct vconfig_expand_visitor : boost::static_visitor<void>
 	{
-		result = utils::interpolate_variables_into_string(s, *(resources::gamedata));
-	}
-	void operator()(const t_string &s) const
-	{
-		result = utils::interpolate_variables_into_tstring(s, *(resources::gamedata));
-	}
-};
+		config::attribute_value &result;
+		vconfig_expand_visitor(config::attribute_value &r): result(r) {}
+		template<typename T> void operator()(T const &) const {}
+		void operator()(const std::string &s) const
+		{
+			result = utils::interpolate_variables_into_string(s, *(resources::gamedata));
+		}
+		void operator()(const t_string &s) const
+		{
+			result = utils::interpolate_variables_into_tstring(s, *(resources::gamedata));
+		}
+	};
+}//unnamed namespace
 
 config::attribute_value vconfig::expand(const std::string &key) const
 {
