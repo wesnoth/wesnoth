@@ -405,8 +405,6 @@ namespace game_events {
 		{
 			const std::string name = values["name"];
 			config::attribute_value value = resources::gamedata->get_variable_const(name);
-			std::string str_value = value.str();
-			double num_value = value.to_double();
 
 #define TEST_ATTR(name, test) do { \
 			if (values.has_attribute(name)) { \
@@ -418,6 +416,7 @@ namespace game_events {
 #define TEST_STR_ATTR(name, test) do { \
 			if (values.has_attribute(name)) { \
 				std::string attr_str = values[name]; \
+				std::string str_value = value.str(); \
 				if (!(test)) return false; \
 			} \
 			} while (0)
@@ -425,6 +424,7 @@ namespace game_events {
 #define TEST_NUM_ATTR(name, test) do { \
 			if (values.has_attribute(name)) { \
 				double attr_num = values[name].to_double(); \
+				double num_value = value.to_double(); \
 				if (!(test)) return false; \
 			} \
 			} while (0)
@@ -439,7 +439,7 @@ namespace game_events {
 			TEST_NUM_ATTR("less_than_equal_to",    num_value <= attr_num);
 			TEST_ATTR("boolean_equals",     value.to_bool() == attr.to_bool());
 			TEST_ATTR("boolean_not_equals", value.to_bool() != attr.to_bool());
-			TEST_STR_ATTR("contains", value.str().find(attr_str) != std::string::npos);
+			TEST_STR_ATTR("contains", str_value.find(attr_str) != std::string::npos);
 
 #undef TEST_ATTR
 #undef TEST_STR_ATTR
