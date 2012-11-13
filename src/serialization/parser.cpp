@@ -416,16 +416,29 @@ void read_bz2(config &cfg, std::istream &file, abstract_validator * validator)
 }
 
 namespace { // helpers for write_key_val().
-	std::string escaped_string(const std::string &value)
+	/**
+	 * Copies a string fragment and converts it to a suitable format for WML.
+	 * (I.e., quotes are doubled.)
+	 */
+	std::string escaped_string(const std::string::const_iterator &begin,
+	                           const std::string::const_iterator &end)
 	{
 		std::string res;
-		std::string::const_iterator iter = value.begin();
-		while (iter != value.end()) {
+		std::string::const_iterator iter = begin;
+		while ( iter != end ) {
 			const char c = *iter;
 			res.append(c == '"' ? 2 : 1, c);
 			++iter;
 		}
 		return res;
+	}
+	/**
+	 * Copies a string and converts it to a suitable format for WML.
+	 * (I.e., quotes are doubled.)
+	 */
+	inline std::string escaped_string(const std::string &value)
+	{
+		return escaped_string(value.begin(), value.end());
 	}
 
 	struct write_key_val_visitor : boost::static_visitor<void>
@@ -470,8 +483,6 @@ namespace { // helpers for write_key_val().
 
 		for (t_string::walker w(value); !w.eos(); w.next())
 		{
-			std::string part(w.begin(), w.end());
-
 			if (!first)
 				out_ << " +\n";
 
@@ -490,7 +501,7 @@ namespace { // helpers for write_key_val().
 			if (w.translatable())
 				out_ << '_';
 
-			out_ << '"' << escaped_string(part) << '"';
+			out_ << '"' << escaped_string(w.begin(), w.end()) << '"';
 			first = false;
 		}
 	}
