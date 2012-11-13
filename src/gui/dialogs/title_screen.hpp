@@ -83,7 +83,7 @@ private:
 	void pre_show(CVideo& video, twindow& window);
 
 	/** The progress bar time for the logo. */
-	unsigned long logo_timer_id_;
+	size_t logo_timer_id_;
 
 	/** Holds the debug clock dialog. */
 	tpopup* debug_clock_;

@@ -90,7 +90,7 @@ private:
 	tstate state_;
 
 	/** The timer for the repeating events. */
-	unsigned long repeat_timer_;
+	size_t repeat_timer_;
 
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const;

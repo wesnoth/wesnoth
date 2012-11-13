@@ -135,7 +135,7 @@ ttitle_screen::~ttitle_screen()
 }
 
 static void animate_logo(
-		  unsigned long& timer_id
+		  size_t& timer_id
 		, unsigned& percentage
 		, tprogress_bar& progress_bar
 		, twindow& window)

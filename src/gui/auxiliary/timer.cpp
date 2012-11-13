@@ -37,17 +37,17 @@ struct ttimer
 
 	SDL_TimerID sdl_id;
 	Uint32 interval;
-	boost::function<void(unsigned long id)> callback;
+	boost::function<void(size_t id)> callback;
 };
 
 	/** Ids for the timers. */
-	static unsigned long id = 0;
+	static size_t id = 0;
 
 	/** The active timers. */
-	static std::map<unsigned long, ttimer> timers;
+	static std::map<size_t, ttimer> timers;
 
 	/** The id of the event being executed, 0 if none. */
-	static unsigned long executing_id = 0;
+	static size_t executing_id = 0;
 
 	/** Did somebody try to remove the timer during its execution? */
 	static bool executing_id_removed = false;
@@ -68,7 +68,7 @@ struct ttimer
 class texecutor
 {
 public:
-	texecutor(unsigned long id)
+	texecutor(size_t id)
 	{
 		executing_id = id;
 		executing_id_removed = false;
@@ -77,7 +77,7 @@ public:
 
 	~texecutor()
 	{
-		const unsigned long id = executing_id;
+		const size_t id = executing_id;
 		executing_id = 0;
 		if(executing_id_removed) {
 			remove_timer(id);
@@ -91,8 +91,8 @@ static Uint32 timer_callback(Uint32, void* id)
 {
 	DBG_GUI_E << "Pushing timer event in queue.\n";
 
-	std::map<unsigned long, ttimer>::iterator itor =
-			timers.find(reinterpret_cast<unsigned long>(id));
+	std::map<size_t, ttimer>::iterator itor =
+			timers.find(reinterpret_cast<size_t>(id));
 	if(itor == timers.end()) {
 		return 0;
 	}
@@ -115,12 +115,12 @@ static Uint32 timer_callback(Uint32, void* id)
 
 } // extern "C"
 
-unsigned long
+size_t
 add_timer(const Uint32 interval
-		, const boost::function<void(unsigned long id)>& callback
+		, const boost::function<void(size_t id)>& callback
 		, const bool repeat)
 {
-	BOOST_STATIC_ASSERT(sizeof(unsigned long) == sizeof(void*));
+	BOOST_STATIC_ASSERT(sizeof(size_t) == sizeof(void*));
 
 	DBG_GUI_E << "Adding timer.\n";
 
@@ -149,11 +149,11 @@ add_timer(const Uint32 interval
 }
 
 bool
-remove_timer(const unsigned long id)
+remove_timer(const size_t id)
 {
 	DBG_GUI_E << "Removing timer " << id << ".\n";
 
-	std::map<unsigned long, ttimer>::iterator itor = timers.find(id);
+	std::map<size_t, ttimer>::iterator itor = timers.find(id);
 	if(itor == timers.end()) {
 		LOG_GUI_E << "Can't remove timer since it no longer exists.\n";
 		return false;
@@ -181,11 +181,11 @@ remove_timer(const unsigned long id)
 }
 
 bool
-execute_timer(const unsigned long id)
+execute_timer(const size_t id)
 {
 	DBG_GUI_E << "Executing timer " << id << ".\n";
 
-	std::map<unsigned long, ttimer>::iterator itor = timers.find(id);
+	std::map<size_t, ttimer>::iterator itor = timers.find(id);
 	if(itor == timers.end()) {
 		LOG_GUI_E << "Can't execute timer since it no longer exists.\n";
 		return false;

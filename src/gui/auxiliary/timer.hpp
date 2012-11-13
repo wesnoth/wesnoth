@@ -50,9 +50,9 @@ namespace gui2 {
  * @returns                       The id of the timer.
  * @retval [0]                    Failed to create a timer.
  */
-unsigned long
+size_t
 add_timer(const Uint32 interval
-		, const boost::function<void(unsigned long id)>& callback
+		, const boost::function<void(size_t id)>& callback
 		, const bool repeat = false);
 
 /**
@@ -69,7 +69,7 @@ add_timer(const Uint32 interval
  *                                removed.
  */
 bool
-remove_timer(const unsigned long id);
+remove_timer(const size_t id);
 
 /**
  * Executes a timer.
@@ -84,7 +84,7 @@ remove_timer(const unsigned long id);
  *                                executed.
  */
 bool
-execute_timer(const unsigned long id);
+execute_timer(const size_t id);
 
 } //namespace gui2
 

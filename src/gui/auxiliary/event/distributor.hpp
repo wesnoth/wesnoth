@@ -80,7 +80,7 @@ protected:
 	twidget& owner_;
 
 	/** The timer for the hover event. */
-	unsigned long hover_timer_;
+	size_t hover_timer_;
 
 	/** The widget which should get the hover event. */
 	twidget* hover_widget_;

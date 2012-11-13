@@ -388,7 +388,7 @@ private:
 	display& disp_;
 
 	/** Timer for updating the lobby. */
-	unsigned long lobby_update_timer_;
+	size_t lobby_update_timer_;
 
 	/** Wrapper for the preferences hotkey. */
 	boost::function<void()> preferences_wrapper_;
