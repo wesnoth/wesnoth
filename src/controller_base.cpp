@@ -28,7 +28,7 @@ static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 
 controller_base::controller_base(
-		int ticks, const config& game_config, CVideo& /*video*/) :
+		const int ticks, const config& game_config, CVideo& /*video*/) :
 	game_config_(game_config),
 	ticks_(ticks),
 	key_(),

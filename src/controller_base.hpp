@@ -35,7 +35,7 @@ class mouse_handler_base;
 class controller_base : public hotkey::command_executor, public events::handler
 {
 public:
-	controller_base(int ticks, const config& game_config, CVideo& video);
+	controller_base(const int ticks, const config& game_config, CVideo& video);
 	virtual ~controller_base();
 
 	void play_slice(bool is_delay_enabled = true);

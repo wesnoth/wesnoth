@@ -68,7 +68,8 @@ class play_controller : public controller_base, public events::observer, public 
 {
 public:
 	play_controller(const config& level, game_state& state_of_game,
-		int ticks, int num_turns, const config& game_config, CVideo& video, bool skip_replay);
+		const int ticks, const int num_turns, const config& game_config,
+		CVideo& video, bool skip_replay);
 	virtual ~play_controller();
 
 	//event handler, overridden from observer
