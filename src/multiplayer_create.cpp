@@ -799,17 +799,17 @@ void create::layout_children(const SDL_Rect& rect)
 	std::pair<int,int> resolution = preferences::resolution();
 	const bool low_hres = resolution.first <= 840;
 	const bool low_vres = resolution.second < 768;
-	
+
 	const int border_size = low_vres ? 4 : 6;
 	const int column_border_size = low_hres ? 8 : 10;
 
 	SDL_Rect ca = client_area();
 	int xpos = ca.x;
 	int ypos = ca.y;
-	
+
 	const int minimap_width = !low_vres ? 200 : 100;
 	const int maps_menu_width = !low_hres ? 200 : 175;
-	
+
 	// Dialog title
 	ypos += low_vres ? 0 : title().height() + border_size;
 
@@ -875,7 +875,7 @@ void create::layout_children(const SDL_Rect& rect)
 
 	// Third column: big bunch of options
 	const bool two_sliders_per_row = low_vres;
-	
+
 	ypos = ypos_columntop - (low_vres ? name_entry_.height() + border_size : 0);
 	xpos += maps_menu_width + column_border_size;
 
@@ -893,7 +893,7 @@ void create::layout_children(const SDL_Rect& rect)
 	ypos += turns_label_.height() + border_size;
 	turns_slider_.set_width(slider_width);
 	turns_slider_.set_location(xpos, ypos);
-	
+
 	if (two_sliders_per_row) {
 	  ypos -= turns_label_.height() + border_size;
 	  xpos += turns_slider_.width() + border_size;
@@ -915,7 +915,7 @@ void create::layout_children(const SDL_Rect& rect)
 	ypos += village_support_label_.height() + border_size;
 	village_support_slider_.set_width(slider_width);
 	village_support_slider_.set_location(xpos, ypos);
-	
+
 	if (two_sliders_per_row) {
 	  ypos -= village_support_label_.height() + border_size;
 	  xpos += village_support_slider_.width() + border_size;
