@@ -827,8 +827,7 @@ public:
 
 	/**
 	 * Draw text on a hex. (0.5, 0.5) is the center.
-	 * The font size is adjusted to the zoom factor
-	 * and divided by 2 for tiny-gui.
+	 * The font size is adjusted to the zoom factor.
 	 */
 	void draw_text_in_hex(const map_location& loc,
 		const tdrawing_layer layer, const std::string& text, size_t font_size,
