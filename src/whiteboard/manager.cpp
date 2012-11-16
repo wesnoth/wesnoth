@@ -1096,13 +1096,13 @@ void manager::contextual_bump_down_action()
 
 bool manager::has_actions() const
 {
-	assert(!wait_for_side_init_);
+	assert(resources::teams);
 	return wb::has_actions();
 }
 
 bool manager::unit_has_actions(unit const* unit) const
 {
-	assert(!wait_for_side_init_);
+	assert(resources::teams);
 	return viewer_actions()->unit_has_actions(unit);
 }
 
