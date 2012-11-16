@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-10-27 16:01+0200\n"
-"PO-Revision-Date: 2012-11-06 21:17-0000\n"
+"PO-Revision-Date: 2012-11-16 19:26-0000\n"
 "Last-Translator: GunChleoc <fiosAIGforamnagaidhligDOTnet>\n"
 "Language-Team: Fòram na Gàidhlig http://www.foramnagaidhlig.net\n"
 "Language: gd\n"
@@ -60,14 +60,14 @@ msgid ""
 "ability of the unit being attacked."
 msgstr ""
 "Draoidheach:\n"
-"Tha seans bualaidh dhe 70% an-còmhnaidh ge b’ e dè an comas dìona a tha aig "
-"an aonad air an toir thu ionnsaigh."
+"Tha seans bualaidh dhe 70% aig an ionnsaigh seo an-còmhnaidh ge b’ e dè an "
+"comas dìona a tha aig an aonad air an toir thu ionnsaigh."
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:851
 #: data/core/macros/abilities.cfg:717
 msgid "firststrike"
-msgstr "chiad bhuille"
+msgstr "ciad bhuille"
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:854
@@ -76,7 +76,7 @@ msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
-"Chiad bhuille:\n"
+"Ciad bhuille:\n"
 "Bualaidh an t-aonad seo an toiseach leis an ionnsaigh seo, fiù ’s nuair a "
 "bhios e a’ dìon."
 
@@ -105,13 +105,13 @@ msgid ""
 "care of a village or a unit that can cure."
 msgstr ""
 "Slànachadh +4:\n"
-"Leigidh seo leis an aonad aonadan ri a thaobh a shlànachadh aig toiseach "
-"gach cuairte.\n"
+"Leigidh seo leis an aonad aonadan ri thaobh a shlànachadh aig toiseach gach "
+"cuairte.\n"
 "\n"
-"Gheibh aonad fo chùram an lighiche seo suas gu 4 PB sa chuairt air no thèid "
-"stad a chur air puinsean fad cuairt.\n"
-"Cha ghabh aonad air puinnseanachadh leigheas slànaighear is feumaidh e cùram "
-"a shireadh ann am baile no le aonad lighiche."
+"Gheibh aonad fo chùram an t-slànaigheir seo suas gu 4 PB sa chuairt air neo "
+"thèid stad a chur air puinsean fad cuairte.\n"
+"Cha ghabh aonad air puinnseanachadh leigheas le slànaighear is feumaidh e "
+"cùram a shireadh ann am baile no le aonad lighiche."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
@@ -142,10 +142,10 @@ msgstr ""
 "Cuiridh an t-aonad seo eòlas luibheanach is draoidheach còmhla gus aonadan a "
 "shlànachadh nas luaithe na b’ urrainneadh air a’ bhlàr gu h-àbhaisteach.\n"
 "\n"
-"Gheibh aonad fo chùram an lighiche seo suas gu 8 PB sa chuairt air no thèid "
-"stad a chur air puinsean fad cuairt.\n"
-"Cha ghabh aonad air puinnseanachadh leigheas slànaighear is feumaidh e cùram "
-"a shireadh ann am baile no le aonad lighiche."
+"Gheibh aonad fo chùram an t-slànaigheir seo suas gu 8 PB sa chuairt air neo "
+"thèid stad a chur air puinsean fad cuairte.\n"
+"Cha ghabh aonad air puinseanachadh leigheas le slànaighear is feumaidh e "
+"cùram a shireadh ann am baile no le aonad lighiche."
 
 #. [section]: id=encyclopedia
 #. [topic]: id=..encyclopedia
@@ -524,7 +524,7 @@ msgstr ""
 #. [topic]: id=drakish_script
 #: data/core/encyclopedia/drakes.cfg:181
 msgid "Drakish, script"
-msgstr ""
+msgstr "Dràicis, sgriobt"
 
 #. [topic]: id=drakish_script
 #: data/core/encyclopedia/drakes.cfg:182
@@ -554,7 +554,7 @@ msgstr "Cruinn-eòlas"
 #. [topic]: id=arkan_thoria
 #: data/core/encyclopedia/geography.cfg:25
 msgid "Arkan-thoria"
-msgstr ""
+msgstr "Argantara"
 
 #. [topic]: id=arkan_thoria
 #: data/core/encyclopedia/geography.cfg:26
@@ -644,7 +644,7 @@ msgstr ""
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:69
 msgid "Kingdom of Wesnoth"
-msgstr "Rìoghachd Bheasnoid"
+msgstr "Rìoghachd Bheasnaid"
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:95
@@ -781,7 +781,7 @@ msgstr ""
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:135
 msgid "Southwest Elven Lands"
-msgstr "Tìr Iar-dheasach nan Sìthichean"
+msgstr "Tìr Iar-dheas nan Sìthichean"
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:141
@@ -915,6 +915,10 @@ msgid ""
 "will be listed under this topic as you encounter them.\n"
 "\n"
 msgstr ""
+"Tha comasan aig cuid dhe dh’aonadan a bheir buaidh air aonadan eile gu "
+"dìreach no air mar a nì iad eadar-ghnìomh le aonadan eile. Nochdaidh na "
+"comasan seo fon chuspair seo nuair a thachras tu orra.\n"
+"\n"
 
 #. [topic]: id=..weapon_specials
 #: data/core/help.cfg:102
@@ -923,6 +927,9 @@ msgid ""
 "attacking with them.\n"
 "\n"
 msgstr ""
+"Tha feartan sònraichte aig cuid dhe dh’airm a chuireas ris an èifeachdachd "
+"le ionnsaighean.\n"
+"\n"
 
 #. [topic]: id=.unknown_unit
 #: data/core/help.cfg:109
@@ -959,6 +966,16 @@ msgid ""
 "however — from these simple rules arise a wealth of strategy, making the "
 "game easy to learn but a challenge to master."
 msgstr ""
+"\n"
+"\n"
+"’S e geama ro-innleachd fantastachd suidhichte air cuairtean a th’ ann am "
+"<italic>text='Blar mu Bheasnad'</italic> a tha caran annasach am measg "
+"geamannan ro-innleachd an latha an-diugh. Fhad ’s a tha geamannan eile a’ "
+"strì airson iom-fhillteachd, tha <italic>text='Blàr mu Bheasnad'</italic> a' "
+"strì airson riaghailtean is cluiche a’ gheama simplidh. Cha dèan seo an "
+"geama fhèin simplidh co-dhiù — cruthaichidh na riaghailtean simplidh seo "
+"beairteas dhe ro-innleachd na nì e furasta an geama ionnsachadh ach "
+"dùbhlanach a bhith nad mhaighstir air."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:132
@@ -974,6 +991,13 @@ msgid ""
 "come across new aspects of the game. For more detailed information on "
 "special situations and exceptions, please follow the links included."
 msgstr ""
+"Innsidh na duilleagan seo dhut na bhios a dhìth ort gus <italic>text='Blàr "
+"mu Bheasnad'</italic> a chluiche. Innsidh iad dhut mar a chluicheas tu is "
+"mar a dh'obraicheas an geama gu bunasach. Fhad ’s a bhios tu a’ cluiche a’ "
+"gheama, thèid barrachd fiosrachaidh a chur air na duilleagan seo nuair a "
+"thachras tu air  feartan ùra a’ gheama. Airson barrachd fiosrachaidh air "
+"suidheachaidhean sònraichte is mura-bhithean, feuch an lean thu na "
+"ceanglaichean am broinn nan duilleagan."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:135
@@ -987,6 +1011,16 @@ msgid ""
 "then <italic>text='Heir to the Throne'</italic>. As <italic>text='Battle for "
 "Wesnoth'</italic> can be quite challenging, you may wish to start on easy."
 msgstr ""
+"\n"
+"\n"
+"Mar thoiseach tòiseachaidh, mholamaid gun dèan thu briogadh air a’ phutan "
+"<bold>text='Oideachadh'</bold> sa phrìomh clàr-taice. Bheir seo dhan "
+"oideachadh eadar-ghnìomhach thu a dh’ionnsaicheas bun-fhiosrachadh mu "
+"Bheasnad dhut. An dèidh seo, mholamaid gun cluich thu an iomairt Heir to the "
+"Throne an toiseach — dèan briogadh air <bold>text='Iomairt'</bold> is an "
+"uair sin air <italic>text='Heir to the Throne'</italic>. Bhon a dh’fhaodas "
+"<italic>text='Blàr mu Bheasnad'</italic> a bhith caran dùbhlanach, mholamaid "
+"gun tòisich thu air an ìre furasta."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:138
@@ -997,6 +1031,11 @@ msgid ""
 "encounter new <ref>dst='..abilities_section' text='abilities'</ref> for the "
 "first time."
 msgstr ""
+"Fhad ’s a bhios tu a’ cluiche, cùm nad chuimhne gum  faigh thu tuairisgeul "
+"goirid air iomadh nì sa gheama a leithid an fhiosrachaidh air an leòsan "
+"staide nuair a chumas tu an luchag air. Tha seo sònraichte feumail nuair a "
+"thachras tu air <ref>dst='..abilities_section' text='comasan'</ref> ùra "
+"airson a’ chiad turais."
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:143
@@ -1014,6 +1053,14 @@ msgid ""
 "other people connected to that network. If your computer has a connection to "
 "the Internet, you can play against other people across the Internet."
 msgstr ""
+"Tachraidh an geama thar sreatha dhe chathan air a bheil <italic>text='cnàmh-"
+"sgeulan'</italic>. Cuiridh gach cnàmh-sgeul na gaisgich agad an aghaidh nam  "
+"feachdan aig nàmhaid no dhà. Faodaidh tu cluiche an aghaidh a’ choimpiutair "
+"no charaidean a ghabhas na cuairtean aca air an aon choimpiutair (geama "
+"ionadail no hotseat). Ma tha ceangal dha lìonraidh agad, faodaidh tu "
+"cuideachd cluiche an aghaidh daoine a bhios ceangailte dhan lìonraidh seo. "
+"Ma tha ceangal dhan eadar-lìon agad, faodaidh tu cluiche an aghaidh daoine "
+"eile air loidhne."
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:146
@@ -1025,6 +1072,12 @@ msgid ""
 "more carefully, preserving your best troops so that they can be used again "
 "in later scenarios in the campaign."
 msgstr ""
+"\n"
+"\n"
+"Tha iomadh chnàmh-sgeul ann an <italic>text='iomairt'</italic> a leanas an "
+"dèidh càch a chèile, ag innse sgeulachd. Ann an iomairt, feumaidh tu cluiche "
+"nas cùramaiche gu tric, a’ glèidheadh na gaisgich as fhearr agad ach an "
+"cleachd thu a-rithist iad ann an cnàmh-sgeul eile nas anmoiche san iomairt."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:152
@@ -1041,6 +1094,13 @@ msgid ""
 "designated point, say, or rescuing someone, or solving a puzzle, or holding "
 "out against a siege until a certain number of turns have elapsed."
 msgstr ""
+"Thoir an dlùth-aire air a’ phriob-bhogsa <bold>text='amasan'</bold> aig "
+"toiseach gach cnàmh-sgeòil. Mar as trice, gheibh thu buaidh ma chuireas tu "
+"às dhan a h-uile ceannard nàmhad is cha chaill thu ach ma gheibh an ceannard "
+"agad fhèin bàs. Co-dhiù no co-dheth, faodaidh amasan eile a bhith aig cnàmh-"
+"sgeul — do cheannard a thoirt gu àite shònraichte air a’ mhapa, mar "
+"eisimpleir, no cuideigin a thrusadh no tòimhseachan fhuasgladh no seasamh an "
+"aghaidh sèiste fad àireimh sònraichte dhe chuairtean."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:155
@@ -1052,6 +1112,14 @@ msgid ""
 "things like changing your save options or (if you are in a multiplayer game) "
 "chatting with other players before pressing that button to advance."
 msgstr ""
+"\n"
+"\n"
+"Nuair a bhuannaicheas tu cnàmh-sgeul, fàsaidh am mapa glas is tionndaidhidh "
+"am putan <bold>text='Cuairt deiseil'</bold> gu <bold>text='Cnàmh-sgeul "
+"deis'</bold>. ’S urrainn dhut rudan a dhèanamh a-nis a leithid na "
+"roghainnean sàbhalaidh agad atharrachadh no (ma tha thu ann an geama ioma-"
+"chluicheadair) cabadaich le cluicheadairean eile mus dèan thu brùthadh air "
+"a’ phutan gus leantainn ort."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:162
@@ -1072,6 +1140,18 @@ msgid ""
 "recruitment, along with their gold cost. Click on a unit to see its "
 "statistics, then press the recruit button to recruit it."
 msgstr ""
+"Tòisichidh gach taobh le aon cheannard san daingean aca. Aig toiseach gach "
+"catha agus aig amannan rè a’ chatha fhèin, feumaidh tu <ref>dst='..units' "
+"text='aonadan'</ref> a thrusadh dhan fheachd agad. Gus trusadh, feumaidh an "
+"ceannard agad (mar eisimpleir, Conall san iomairt <italic>text='Heir to the "
+"Throne'</italic>) a bhith air sia-cheàrnach an daingein aig "
+"<ref>dst='terrain_castle' text='caisteal'</ref>. Faodaidh tu aonadan a "
+"thrusadh an-siud ma thaghas tu <bold>text='trus'</bold> air a’ chlàr-taice "
+"no ma nì thu briogadh deas air sia-cheàrnach, a taghadh <bold>text='trus'</"
+"bold> an uair sin. Gheibh thu an clàr-taice trusaidh le seo, a sheallas a h-"
+"uile aonad a tha ri fhaighinn dhut le cosgaisean òir na lùib. Dèan briogadh "
+"air aonad gus a stadastaireachd fhaicinn is an uair sin dèan briogadh air a’ "
+"phutain <bold>text='trus'</bold> gus a thrusadh."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:165
@@ -1083,6 +1163,13 @@ msgid ""
 "You may only recruit as many units as you have free hexes in your castle, "
 "and you cannot spend more gold than you actually have on recruiting."
 msgstr ""
+"\n"
+"\n"
+"Ma rinn thu briogadh deas air sia-cheàrnach caisteil gus trus a thaghadh, no "
+"chaidh an t-aonad san t-sia-cheàrnach sin. Mura rinn, nochdaidh e ann an sia-"
+"cheàrnach saor  faisg air an daingean. Chan fhaod thu barrachd aonadan na na "
+"tha ann dhe shia-cheàrnaich shaora sa chaisteal agad a thrusadh is chan "
+"urrainn dhut barrachd òir na th’ agad a chosg air trusadh."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:167
@@ -1092,6 +1179,10 @@ msgid ""
 "Recruited units come with two random <ref>dst='..traits_section' "
 "text='traits'</ref> which modify their statistics."
 msgstr ""
+"\n"
+"\n"
+"Tha dà <ref>dst='..traits_section' text='fheart'</ref> air thuaiream aig "
+"gach aonad air trusadh a nì atharrachadh air an stadastaireachd."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:169
@@ -1102,6 +1193,11 @@ msgid ""
 "Recalling costs a standard 20 gold and presents you with a list of all "
 "surviving units from previous scenarios."
 msgstr ""
+"\n"
+"\n"
+"Ann an cnàmh-sgeulan nas anmoiche, faodaidh tu cuideachd aonadan a mhair beò "
+"sna cathan roimhe ais-ghairm. Cosgaidh ais-ghairm 20 bonn òir dhut is chì "
+"thu liosta dhe na h-aonadan uile a mhair beò ann an cnàmh-sgeulan roimhe."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:171
@@ -1112,6 +1208,11 @@ msgid ""
 "support. See <ref>dst='income_and_upkeep' text='income and upkeep'</ref> for "
 "more information."
 msgstr ""
+"\n"
+"\n"
+"Cha chosg aonadan òr dhut a-mhàin le trusadh no ais-ghairm ach bidh òr taice "
+"a dhìth orra cuideachd. Faic <ref>dst='income_and_upkeep' text='teachd a-"
+"steach is beathachadh'</ref> airson barrachd fiosrachaidh."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:178
@@ -1136,7 +1237,7 @@ msgstr " uaine mura h-eil an t-aonad air gluasad sa chuairt seo,"
 #: data/core/help.cfg:181
 msgid " yellow if it has moved, but could still move further or attack, or"
 msgstr ""
-" buidhe ma tha e air gluasad, ach ma tha gluasad no ionnsaigh air fhàgail "
+" buidhe ma tha e air gluasad, ach ma tha gluasad no ionnsaigh air  fhàgail "
 "dha, no"
 
 #. [topic]: id=orbs
@@ -1144,7 +1245,7 @@ msgstr ""
 msgid ""
 " red if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
-" dearg mura h-eil gluasad no ionnsaigh air fhàgail, no ma chuireadh crìoch "
+" dearg mura h-eil gluasad no ionnsaigh air  fhàgail, no ma chuireadh crìoch "
 "air a chuairt."
 
 #. [topic]: id=orbs
@@ -1171,6 +1272,11 @@ msgid ""
 "recruited unit starts with no experience points, and gains experience by "
 "fighting enemies."
 msgstr ""
+"Tha àireamh shònraichte dhe <italic>text='phuingean-beatha'</italic> (PB) "
+"aig gach aonad. Ma tha nas lugha na 1 phuing-bheatha aig aonad, gheibh e "
+"bàs. Tha àireamh shònraichte dhe <italic>text='phuingean-eòlais'</italic> "
+"(PE) aig gach aonad cuideachd. Tòisichidh aonad air ùr-thrusadh gun phuing-"
+"eòlais sam bith is buannaichidh e eòlas le sabaid an aghaidh nàimhdean."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:196
@@ -1179,6 +1285,9 @@ msgid ""
 "using two numbers (the current value and the maximum value the unit can "
 "have)."
 msgstr ""
+"Chì thu na puingean-beatha is puingean-eòlais ann an leòsan staide le dà "
+"àireamh gach fear (an luach an-dràsta is na puingean as motha as urrainn a "
+"bhith aig an aonad)."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:197
@@ -1188,6 +1297,10 @@ msgid ""
 "experience bar, which turns white as the unit is about to "
 "<ref>dst='experience_and_advancement' text='advance'</ref>."
 msgstr ""
+"Thèid na puingean-beatha a shealltainn cuideachd le bàr-lùiths uaine, buidhe "
+"no dearg ri taobh gach aonaid. Tha bàr-eòlais gorm aig aonad aig a bheil co-"
+"dhiù 1 phuing-eòlais a thionndaidheas tu geal nuair a tha e an impis "
+"<ref>dst='experience_and_advancement' text='àrdachadh'</ref> fhaighinn."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:204
@@ -1210,6 +1323,22 @@ msgid ""
 "up its movement. Ending a move in a village you don’t already own will also "
 "use up a unit’s movement, but will still allow it to attack."
 msgstr ""
+"Tha gluasad ann am <italic>text='Blàr mu Bheasnad'</italic> simplidh. Dèan "
+"briogadh air an aonad a tha thu airson gluasad gus a thaghadh is an uair sin "
+"air an t-sia-cheàrnach dhan a bheil thu airson an aonad a ghluasad. Nuair a "
+"thèid aonad a thaghadh, thèid gach àite dham b’ urrainn dha gluasad sa "
+"chuairt seo a shoillseachadh is a h-uile sia-cheàrnach eile air a’ mhapa a "
+"dhuibhreachadh. Ma ghluaiseas tu an luchag dha shia-cheàrnach soillsichte, "
+"chì thu dè an dìon a bhiodh aig an aonad air an t-sia-cheàrnach sin. Ma "
+"ghluaiseas tu an luchag air sia-cheàrnach duibhrichte, chì thu cuideachd cò "
+"mheud cuairtean a bhiodh a dhìth gus an t-aonad a ghluasad an-sin agus ma nì "
+"thu briogadh air, gabhaidh an t-aonad an rathad as giorra an comhair an t-"
+"sia-cheàrnaich seo an cuairt seo is rè nan cuairtean ri teachd. Mura h-eil "
+"thu air a h-uile puing-ghluasaid aig an aonad a chleachdadh, faodaidh tu a "
+"ghluasad a-rithist; tha seo feumail gus suaip a dhèanamh eadar dà aonad. Ma "
+"bheir aonad ionnsaigh, caithidh seo a h-uile gluasad aige. Ma ghluaiseas tu "
+"aonad gu baile nach robh fon smachd agad roimhe, caithidh seo na gluasadan "
+"cuideachd, ach faodaidh tu fhathast ionnsaigh a thoirt air aonad ri thaobh."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:207
@@ -1226,6 +1355,19 @@ msgid ""
 "it, selecting <bold>text='Unit Description'</bold>, and then looking at "
 "<bold>text='Terrain Modifiers'</bold>."
 msgstr ""
+"\n"
+"\n"
+"Tha àireamh shònraichte dhe phuigean-ghluasaid aig gach aonad a thèid a "
+"chaitheamh nuair a ghluaiseas tu gu sia-cheàrnach ùr e, a’ crochadh air "
+"cruth-tìre an t-sia-cheàrnaich sin. Mar eisimpleir, tha e a’ cosg 1 phuing-"
+"gluasaid mar as trice gus dol a-steach dha raon-feòir. Tha cò mheud puing-"
+"ghluasaid a tha a dìth ort gu mionaideach a’ crochadh air seòrsa an aonaid — "
+"ann an coilltean, cha chaith sìthichean ach 1 phuing-ghluasaid, caithidh a’ "
+"mhòr chuid dhe dhaoine is deamhain 2 fhad ’s a chaith marcaichean 3. "
+"Ionnsaichidh tu cò mheud puing-ghluasaid a tha a dhìth air aonad gus dol a-"
+"steach dha sheòrsa cruth-tìre ma nì thu briogadh deas air is ma thaghas tu "
+"<bold>text='Tuairisgeul an aonaid'</bold> is ma sheallas tu an uair sin air "
+"<bold>text='Atharraichearan crutha-thìre'</bold>."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:209
@@ -1240,6 +1382,16 @@ msgid ""
 "<ref>dst='ability_skirmisher' text='skirmishers'</ref> can ignore zones of "
 "control."
 msgstr ""
+"\n"
+"\n"
+"Nuair a nì thu gluasad, bu chòir dhut an aire a thoirt air "
+"<italic>text='raointean-smachd'</italic> cuideachd. Tha raon-smachd aig gach "
+"aonad air na sia-cheàrnaich mu chuairt is thèid crìoch a chur air gluasad "
+"aonadan nàmhad sa bhad nuair a thig iad a-steach dha na sia-cheàrnaich seo. "
+"’S e pàirt chudromach dhe Bheasnad a th’ ann gun ionnsaich thu mar a "
+"chleachdas tu raointean-smachd oir chan fhaod ach "
+"<ref>dst='ability_skirmisher' text='streupairean'</ref> na raointean-smachd "
+"fhàgail dhan dàrna taobh."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:211
@@ -1250,6 +1402,12 @@ msgid ""
 "Cmd-v. Ctrl-b or Cmd-b shows where the enemy could move, if your units were "
 "not on the map to block their progress."
 msgstr ""
+"\n"
+"\n"
+"Gus faicinn càite am b’ urrainn dhan nàmhaid a ghluasad san ath chuairt "
+"aigesan, dèan brùthadh air Ctrl-v no Cmd-v. Seallaidh Ctrl-b no Cmd-b dhut "
+"càite am b’ urrainn dhan nàmhaid a ghluasad mura robh na h-aonadan agad air "
+"a’ mhapa gus a bhacadh."
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:218
@@ -1280,6 +1438,28 @@ msgid ""
 "bold> (or the end of your turn) and thereby preserve your ability to undo "
 "movement."
 msgstr ""
+"Ann an cuid dhe chnàmh-sgeulan, thèid pàirtean dhen mhapa fhalach bhuat. Tha "
+"dà dhòigh ann a ghabhas cleachdadh fa leth no còmhla. Falaichidh "
+"<italic>text='sgàil'</italic> an dà chuid cruth-tìre is aonadan air àite. Co-"
+"dhiù, nuair bhios e air a shoilleireachadh, chì thu an t-àite seo gu bràth. "
+"Chan fhalaich <italic>text='ceò cogaidh'</italic> ach aonadan is cò aige a "
+"tha bailtean (ach na bailtean agad fhèin is aig do chaidreabhaich). Thèid "
+"ceò cogaidh a shoilleireachadh gu sealach nuair a bhios aonadan agad faisg "
+"air an àite, ach tillidh e nuair a dh’fhalbhas iad. Thèid an dà chuid sgàil "
+"is ceò cogaidh a shoilleireachadh le aonadan. Soilleirichidh gach aonad na h-"
+"àiteachan ri taobh na feadhna a ruigeadh an t-aonad seo le gluasad aon "
+"chuairte (a’ fàgail raointean-smachd is aonadan nàmhad dhan dàrna taobh).\n"
+"\n"
+"Gu h-àbhaisteach, ’s urrainn dhut gluasad aig aonad a neo-dhèanamh fhad ’s "
+"nach do thachair toradh air thuaiream a leithid catha no trusaidh (bhon a "
+"gheibh aonadan feartan air thuaiream nuair a thèid an trusadh). Thèid neo-"
+"dhèanamh dhan staid roimhe a bhacadh cuideachd nuair a rannsaicheas tu tìr  "
+"fhalaichte le soilleireachadh sgàile no ceò cogaidh. ’S dòcha gum bi thu "
+"airson <bold>text='Cuir dàil air ùrachaidhean sgàile'</bold> a chur an comas "
+"ann an clàr-taice nan gnìomhan. Bacaidh seo na h-aonadan bho "
+"shoilleireachadh sgàile no ceò cogaidh gus an t-ath thachartas air thuaiream "
+"no ùrachadh a làimh le <bold>text='Ùraich sgàil an-dràsta'</bold> (no crìoch "
+"na cuairte agad) is glèidhidh seo an comas agad gus neo-dhèanamh."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:228
@@ -1300,6 +1480,19 @@ msgid ""
 "as swords, axes or fangs; and <italic>text='ranged'</italic>, which usually "
 "involves weapons such as bows, spears and fireballs."
 msgstr ""
+"Tachraidh sabaid ann am <italic>text='Blàr mu Bheasnad'</italic> an-"
+"còmhnaidh eadar aonadan air dà shia-cheàrnach ri taobh càch a chèile. Dèan "
+"briogadh air an aonad agad is air aonad nàmhad dhan a bheil thu airson "
+"ionnsaigh a thoirt: gluaisidh an t-aonad agad an comhair an aonaid nàmhad is "
+"nuair a bhios iad ri taobh càch a chèile, tòisichidh an t-sabaid. Bidh "
+"ionnsaigh fear seach fear aig an ionnsaighear is dìonadair gus am bi an dà "
+"aonad air na buillean a th’ aca a chaitheamh. Taghaidh an t-ionnsaighear aon "
+"dhe na h-airm aige gus ionnsaigh a thoirt is nì an dìonadair  frith-"
+"ionnsaigh le aon dhe na h-ionnsaighean aige fhèin aig a bheil an t-aon "
+"sheòrsa. Tha dà sheòrsa dhe dh’ionnsaigh ann: <italic>text='dlùth'</italic> "
+"a chleachdas airm a leithid chlaidheamhan, thuaghan no thosgan mas as trice; "
+"is <italic>text='astair'</italic> a chleachdas airm a leithid bhoghachan, "
+"shleaghan no bhàlaichean-teine."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:231
@@ -1325,6 +1518,18 @@ msgid ""
 "5 damage, while an orcish grunt with a 9–2 attack can only strike twice (but "
 "at 9 damage for each hit)."
 msgstr ""
+"\n"
+"\n"
+"Gheibh an t-ionnsaighear a’ chiad bhuille is bheir an dìonadair  frith-"
+"ionnsaigh an uair sin. Buailidh buille gu soirbheachail air an dàrna làimh, "
+"a’ dèanamh àireamh shònraichte dhe dhochann, no air an làimh eile bidh "
+"mearachd air buille is cha dèan e dochann sam bith. Bidh buillean aig gach "
+"aonad fear mu seach gus am bidh an dà chuid dhiubh air na buillean aca uile "
+"a chleachdadh. Tha an t-àireamh dhe bhuillean a bhios aig aonad "
+"caochlaideach; mar eisimpleir, faodaidh cathaiche sìthiche le ionnsaigh 5-4 "
+"bualadh 4 tursan le 5 dochann le gach buille shoirbheachail fhad ’s nach "
+"urrainn dha mhadagan deamhain le ionnsaigh 9-2 ach 2 bhuille a thoirt (ach "
+"le 9 dochainn le gach buille shoirbheachail)."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:235
@@ -1350,6 +1555,17 @@ msgid ""
 "only a 30% chance of hitting. Conversely, the elf’s chance of hitting the "
 "attacker in return depends on what terrain the attacker is in."
 msgstr ""
+"\n"
+"\n"
+"Tha seans aig gach aonad gun tèid a bhualadh, stèidhichte air a’ "
+"<italic>text='chruth-tìre'</italic> air a bheil e. Chì thu seo air an leòsan "
+"staide is cuideachd ma nì thu briogadh deas air aonad, a’ taghadh "
+"<bold>text='Tuairisgeul an aonaid'</bold> is a’ sealltainn an uair sin air "
+"<bold>text='Atharraichearan crutha-thìre'</bold>. Mar eisimpleir, tha dìon "
+"dhe 70% aig mòran shìthichean sa choille is mar sin cha bhi ach 30% dhe "
+"sheans ann gum buail aonad nàmhad orra a bhios a’ toirt ionnsaigh. Air an "
+"làimh eile, tha an seans gum buail an sìthiche air an ionnsaighear a’ "
+"crochadh air a’ chruth-tìre air a bheil esan na sheasamh."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:239
@@ -1362,6 +1578,14 @@ msgid ""
 "regardless of terrain, and, when used offensively, marksmen always have at "
 "least a 60% chance to hit, regardless of terrain."
 msgstr ""
+"\n"
+"\n"
+"Tha dà mhura-bhith ann leis an riaghailt seo: "
+"<ref>dst='weaponspecial_magical' text='ionnsaighean draoidheach'</ref> is "
+"<ref>dst='weaponspecial_marksman' text='gìomanaich'</ref>. Tha seans "
+"bualaidh dhe 70% aig ionnsaighean draoidheach an-còmhnaidh ge b’ e dè an "
+"cruth-tìre agus nuair a bhios iad nan ionnsaighearan, bidh seans bualaidh "
+"dhe 60% air a char as lugha aig gìomanaich ge b’ e dè an cruth-tìre."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:241
@@ -1387,6 +1611,15 @@ msgid ""
 "modified by the circumstances, select <bold>text='Damage Calculations'</"
 "bold> in the attack selection menu."
 msgstr ""
+"\n"
+"\n"
+"Nì gach buille a bhuaileas gu soirbheachail dochann bunasach, a’ crochadh "
+"air seòrsa na h-ionnsaighe. Mar eisimpleir, ’s e 5 dhe dhochann bunasach a "
+"nì cathaiche sìthiche aig a bheil ionnsaigh 5-4. Thèid seo atharrachadh le "
+"dà rud: <ref>dst='damage_types_and_resistance' text='comas-seasaimh'</ref> "
+"is <ref>dst='time_of_day' text='àm an latha'</ref>. Gus faicinn mar a thèid "
+"dochann atharrachadh leis na cùisean seo, tagh <bold>text='Cunntas "
+"dochainn'</bold> ann an clàr-taice roghnachadh na h-ionnsaighe."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:245
@@ -1398,6 +1631,14 @@ msgid ""
 "<ref>dst='weaponspecial_charge' text='charge'</ref>, which doubles the "
 "damage dealt by both attacker and defender when the unit with charge attacks."
 msgstr ""
+"\n"
+"\n"
+"Tha <ref>dst='..abilities_section' text='comasan'</ref> sònraichte aig cuid "
+"dhe dh’aonadan a bheir buaidh air an dochann a thèid a thoirt seachad ann an "
+"cath. Tha <ref>dst='weaponspecial_charge' text='cruinn-leum'</ref> as "
+"cumanta nam measg is nì e dà uiread dhe dhochann air an dà chuid "
+"ionnsaighear is dìonadair nuair a bhios an t-aonad aig a bheil cruinn-leum "
+"na ionnsaighear."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:251
@@ -1414,6 +1655,14 @@ msgid ""
 "italic>. Different units may have resistances which alter the damage which "
 "they take from certain damage types."
 msgstr ""
+"Ann am Beasnad, tha trì seòrsaichean cumanta dhe dhochann aig ionnsaighean "
+"corporra ann: dochann <italic>text='lanna'</italic>, "
+"<italic>text='bioraidh'</italic> is <italic>text='bualaidh'</italic>. A "
+"bharrachd air sin, tha trì seòrsaichean cumanta eile dhe dhochann aig "
+"ionnsaighean draoidheach ann: dochann <italic>text='teine'</italic>, "
+"<italic>text='fuachd'</italic> is <italic>text='dìomhair'</italic>. Faodaidh "
+"comasan-seasaimh eadar-dhealaichte a bhith aig aonadan a nì atharrachadh air "
+"an dochann a gheibh iad bho sheòrsaichean ionnsaighe sònraichte."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:254
@@ -1426,6 +1675,15 @@ msgid ""
 "unit has −100% resistance against a damage type, it will suffer 100% more "
 "damage when hit by that type."
 msgstr ""
+"\n"
+"\n"
+"Obraichidh comasan-seasaimh ann an dòigh shimplidh: ma tha comas-seasaimh "
+"dhe 40% aig aonad an aghaidh seòrsa dochainn, fulaingidh e 40% nas lugha dhe "
+"dhochann nuair a thèid a bhualadh leis an t-seòrsa dochainn sin. Faodaidh e "
+"tachairt cuideachd gu bheil aonad so-leònta an aghaidh seòrsaichean dochainn "
+"sònraichte. Ma tha comas-seasaimh dhe -100% aig aonad an aghaidh seòrsa "
+"dochainn, fulaingidh e 100% a bharrachd dhe dhochann nuair a thèid a "
+"bhualadh leis an t-seòrsa dochainn sin."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:256
@@ -1436,6 +1694,11 @@ msgid ""
 "are vulnerable to impact and fire damage, and extremely vulnerable to arcane "
 "damage."
 msgstr ""
+"\n"
+"\n"
+"Mar eisimpleir, tha comas-seasaimh uabhasach math aig cnàimhnich an aghaidh "
+"dochainn lanna is bhioraidh ach tha iad so-leònta an aghaidh dochainn "
+"bhualaidh is teine is uabhasach so-leònta an aghaidh dochainn dìomhair."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:258
@@ -1446,6 +1709,11 @@ msgid ""
 "damage. This applies even if the defender has 100% resistance to the damage "
 "type."
 msgstr ""
+"\n"
+"\n"
+"Ma bhuaileas buille gu soirbheachail, nì i an-còmhnaidh 1 phuing dhe "
+"dhochann air a char as lugha. Bidh seo fìor  fiu ’s ma bhios comas-seasaimh "
+"dhe 100% aig an dìonadair an aghaidh an t-seòrsa dochainn."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:264
@@ -1547,6 +1815,11 @@ msgid ""
 "combat, however, it gains much more experience — 4 for a level 0 unit, 8 for "
 "level 1, 16 for level 2, 24 for level 3, and so forth."
 msgstr ""
+"Ma mhaireas an dà aonad beò air deireadh sabaide, gheibh iad puingean-eòlais "
+"a bhios co-ionnann ri rang an aonaid ris an do shabaid iad. Co-dhiù, ma "
+"mharbhas aonad fear eile ann an sabaid, gheibh e mòran a bharrachd dhe "
+"dh'eòlas — 4 airson aonad le rang 0, 8 airson rang 1, 16 airson rang 2, 24 "
+"airson rang 3 is mar sin air adhart."
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:289
@@ -1558,6 +1831,14 @@ msgid ""
 "they immediately advance to the next level, healing fully in the process. In "
 "some cases, you will be given a choice of advancement options."
 msgstr ""
+"\n"
+"\n"
+"Tha àireamh shònraichte dhe dh’eòlas a dhìth aig gach aonad mus tèid "
+"àrdachadh (20% nas lugha dheth airson aonadan leis an fheart "
+"<italic>text='glic'</italic>). Nuair a bhios an t-aonad air an àireamh seo a "
+"ruigsinn, gheibh e àrdachadh dhan ath rang sa bhad is làn-shlànachadh aig an "
+"aon àm. Ann an cuid dhe shuidheachaidhean, bidh taghadh agad eadar "
+"roghainnean àrdachaidh."
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:291
@@ -1575,6 +1856,20 @@ msgid ""
 "progressively harder for each AMLA the unit receives, and so it is usually "
 "more useful to try to advance your lower level units."
 msgstr ""
+"\n"
+"\n"
+"Fhad ’s a tha trì rangan aig a mhòr chuid dhe dh’aonadan, chan eil seo fìor "
+"airson a h-uile aonaid. Faodaidh ceithir a bhith aig cuid dhe dh’aonadan (a "
+"leithid <ref>dst='unit_Mage' text='draoidhean'</ref>, mar eisimpleir). Nuair "
+"a bhios aonad air an rang as àirde a ruigsinn, ’s dòcha gum  faigh e  "
+"<italic>text='Àrdachadh an dèidh an rang as àirde'</italic> (ÀDRÀ) fhathast. "
+"Nì ÀDRÀ atharrachadh air an aonad fhathast gach turas a ruigeas e an amas "
+"eòlais, ach mairidh an t-aonad air an aon rang. ’S e am buaidh as cumanta "
+"aig ÀDRÀ gum  faigh an t-aonad 3 PB a bharrachd is làn-shlànachadh. Mar as "
+"trice, thèid a’ chiad ÀDRÀ a ruigsinn le 150 PE (120 PE le aonadan glice). "
+"Co-dhiù, fàsaidh e nas dorra ÀDRÀ eile a bhuannachd le gach ÀDRÀ a gheibh an "
+"t-aonad. Mar sin, tha e nas fheumaile dhut mar as trice na h-aonadan as ìsle "
+"agad àrdachadh."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:298
@@ -1590,6 +1885,13 @@ msgid ""
 "turn or not. Wesnoth offers several other ways for your units to heal, all "
 "of which take place at the beginning of your turn, before you take action."
 msgstr ""
+"Ann an cath, fulaingidh na h-aonadan agad dochann le cinnt. Nuair a thèid "
+"aonad <ref>dst='experience_and_advancement' text='àrdachadh'</ref>, gheibh e "
+"làn-shlànachadh. Faodaidh seo tachairt nuair a bhios tu deiseil le sabaid an "
+"aghaidh nàmhad, ge b’ e an tachair e sa chuairt agad fhèin no nach tachair. "
+"Tha caochladh dòigh eile ann am Beasnad ach an toir thu slànachadh dha na h-"
+"aonadan agad is tachraidh iad uile aig toiseach na cuairte agad fhèin mus "
+"dèan thu gnìomh sam bith eile."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:301
@@ -1599,6 +1901,10 @@ msgid ""
 "<italic>text='Resting'</italic>: A unit which neither moves, attacks, nor is "
 "attacked will heal 2 HP in its next turn."
 msgstr ""
+"\n"
+"\n"
+"<italic>text='Fois'</italic>: ma tha aonad gun a bhith a’ gluasad, ionnsaigh "
+"a thoirt no dìon, slànaichidh e 2 PhB san ath chuairt aige."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:302
@@ -1607,6 +1913,9 @@ msgid ""
 "<italic>text='Villages'</italic>: A unit which starts a turn in a village "
 "will heal 8HP."
 msgstr ""
+"\n"
+"<italic>text='Bailtean'</italic>: slànaichidh aonad a bhios ann am baile aig "
+"toiseach cuairte 8 PB."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:303
@@ -1615,6 +1924,10 @@ msgid ""
 "<ref>dst='ability_regenerates' text='Regeneration'</ref>: Certain units "
 "(such as trolls) will automatically heal 8HP every turn."
 msgstr ""
+"\n"
+"<ref>dst='ability_regenerates' text='Ath-ghintinn'</ref>: slànaichidh cuid "
+"dhe dh’aonadan (a leithid athaich) 8 PB aig toiseach gach cuairte gu fèin-"
+"obrachail."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:304
@@ -1626,6 +1939,12 @@ msgid ""
 "<ref>dst='ability_heals +8' text='8HP'</ref> per turn, or prevent Poison "
 "from causing that unit damage."
 msgstr ""
+"\n"
+"<italic>text='Aonadan slànaigheir'</italic>: Slànaichidh aonadan aig a bheil "
+"comas <ref>dst='ability_heals +4' text='slànachaidh'</ref> gach aonad "
+"caidreabhach ri an taobh le <ref>dst='ability_heals +4' text='4 PB'</ref> no "
+"<ref>dst='ability_heals +8' text='8 PB'</ref> sa chuairt no cuiridh iad "
+"bacadh air dochann bho phuinsean air an aonad seo."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:305
@@ -1636,6 +1955,11 @@ msgid ""
 "allied adjacent units (in preference to healing, if it has that ability as "
 "well)."
 msgstr ""
+"\n"
+"<italic>text='Aonadan lighiche'</italic>: Nì aonad aig a bheil comas "
+"<ref>dst='ability_cures' text='leigheis'</ref> leigheas air puinsean airson "
+"a h-uile aonad caidreabhach ri thaobh (seach slànachadh ma tha an comas seo "
+"aige cuideachd)."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:307
@@ -1646,6 +1970,12 @@ msgid ""
 "regeneration, healing and curing cannot combine with each other: the best "
 "option will be used. Finally, units heal fully between scenarios."
 msgstr ""
+"\n"
+"\n"
+"Gabhaidh fois a chur ri dòighean slànachaidh eile, ach cha ghabh bailtean, "
+"ath-ghintinn, slànachadh is leigheas a chur ri chèile: thèid an roghainn as "
+"fhearr a chleachdadh. Mu dheireadh thall, gheibh aonadan làn-shlànachadh "
+"eadar cnàmh-sgeulan."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:314
@@ -1660,6 +1990,11 @@ msgid ""
 "gold over from one scenario to the next. There are two aspects to this; "
 "<italic>text='income'</italic> and <italic>text='upkeep'</italic>."
 msgstr ""
+"Ann am Beasnad, chan fhoghainn aonadan a thrusadh is sabaid. Feumaidh tu "
+"aire a thoirt air an òr agad cuideachd, gu h-àraidh ann an iomairtean far an "
+"toir thu òr a bharrachd leat bho chnàmh-sgeul gu cnàmh-sgeul. Tha dà thaobh "
+"air seo: <italic>text='teachd a-steach'</italic> is "
+"<italic>text='beathachadh'</italic>."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:317
@@ -1673,6 +2008,15 @@ msgid ""
 "each turn. Your upkeep costs are subtracted from this income, as detailed "
 "below."
 msgstr ""
+"\n"
+"\n"
+"Tha teachd a-steach simplidh. Tha teachd a-steach bunasach dhe 2 bhonn òir "
+"agad gach cuairt. Airson gach baile fo do smachd, gheibh thu bonn òir a "
+"bharrachd gach cuairt (gabhaidh seo rèiteachadh san fharsaingeachd, ach ann "
+"an iomairtean ’s e 1 bhonn òir a gheibh thu airson gach baile). Mar sin, nam "
+"biodh deich bailtean agad, buannaicheadh tu 12 bhonn òir sa chuairt. Thèid "
+"na cosgaisean beathachaidh agad a thoirt air  falbh bho seo mar a chì thu gu "
+"h-ìosal."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:319
@@ -1686,6 +2030,16 @@ msgid ""
 "example, if you have twelve level one units and ten villages, you would have "
 "to pay two gold each turn in upkeep."
 msgstr ""
+"\n"
+"\n"
+"Tha beathachadh reusanta simplidh cuideachd. Tha beathachadh a dhìth air "
+"gach aonad a bhios co-ionnan ri rang. ’S urrainn dhut taic a thoirt dha "
+"dh’àireamh dhe rangan dhe dh’aonadan suas gu àireamh nam bailtean a th’ agad "
+"gun a bhith a’ pàigheadh beathachadh. Co-dhiù, ma bhios barrachd rangan dhe "
+"dh’aonadan na bailtean agad, feumaidh tu bonn òr a phàigheadh sa chuairt "
+"airson gach rang seachad air àireamh nam bailtean agad. Mar eisimpleir, nam "
+"biodh dusan aonad air rang a h-aon agad is deich bailtean, dh’fheumadh tu dà "
+"bhonn òir dhe bheathachadh a phàigheadh sa chuairt."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:321
@@ -1696,6 +2050,11 @@ msgid ""
 "levels of units and ten villages, your resultant Income would be 10 gold per "
 "turn."
 msgstr ""
+"\n"
+"\n"
+"Thèid cosgaisean beathachaidh a thoirt air  falbh bhon teachd a-steach agad, "
+"mar sin nam biodh dusan rang dhe dh’aonadan agad is deich bailtean, bhiodh "
+"teachd a-steach dhe 10 buinn òir air  fhàgail dhut sa chuairt."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:323
@@ -1709,6 +2068,15 @@ msgid ""
 "usually have the <italic>text='loyal'</italic> trait. The unit you are "
 "playing (such as Konrad) will almost always be a leader."
 msgstr ""
+"\n"
+"\n"
+"Tha dà mhura-bhith cudromach ann le beathachadh: cha bhith beathachadh a "
+"dhìth air aonadan leis an fheart dìleas no air ceannardan. Mar as trice, "
+"bidh am  feart <italic>text='dìleas'</italic> aig aonadan a bhios agad aig "
+"toiseach cnàmh-sgeòil (a leithid Dheilfeadair) no aig aonadan a ghabhas san "
+"fheachd agad rè cnàmh-sgeòil (a leithid nam marcaichean san dàrna cnàmh-"
+"sgeul aig <italic>text='Heir to the Throne'</italic>). Bidh an t-aonad a "
+"chluicheas tu fhèin (a leithid Conall) na cheannard mar as trice."
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:329
@@ -1724,6 +2092,12 @@ msgid ""
 "ref>, but you now know everything you need to know to play the "
 "<italic>text='Heir to the Throne'</italic> campaign. Have fun, and good luck!"
 msgstr ""
+"Seo deireadh a’ bhun-fhiosrachaidh air Beasnad. ’S dòcha gu bheil thu airson "
+"leughadh mu ro-innleachd bhunasach no barrachd ionnsachadh mu <ref>dst='.."
+"traits_section' text='fheartan'</ref> is <ref>dst='..abilities_section' "
+"text='comasan'</ref>, ach tha a h-uile rud agad a-nis a bhios a dhìth ort "
+"gus an iomairt <italic>text='Heir to the Throne'</italic> a chluiche. Gabh "
+"tlachd is guma math a thèid leat!"
 
 #. [topic]: id=about
 #: data/core/help.cfg:335
@@ -1743,6 +2117,11 @@ msgid ""
 "Traits are modifications that change a unit’s attributes slightly. They are "
 "usually randomly assigned to a unit when it is recruited."
 msgstr ""
+"Tha dà fheart aig a mhòr chuid dhe dh’aonadan. Co-dhiù, chan fhaigh na "
+"closaich ach aon fheart is ’s e seo <italic>text='closach'</italic> is chan "
+"fhaigh gillean-dubha feart sam bith. ’S e atharraichean a th’ anns na "
+"feartan a nì beagan atharrachaidh air buadhan aig aonad. Mar as trice, thèid "
+"an toirt dha dh’aonad air thuaiream nuair a thèid a thrusadh."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:352
@@ -1754,6 +2133,12 @@ msgid ""
 "<ref>dst='traits_quick' text='quick'</ref>, <ref>dst='traits_resilient' "
 "text='resilient'</ref>, and <ref>dst='traits_strong' text='strong'</ref>."
 msgstr ""
+"\n"
+"\n"
+"Seo na feartan a tha ri fhaighinn dha aonadan seach closaich: "
+"<ref>dst='traits_intelligent' text='glic'</ref>, <ref>dst='traits_quick' "
+"text='luath'</ref>, <ref>dst='traits_resilient' text='spionnadail'</ref> no "
+"<ref>dst='traits_strong' text='làidir'</ref>."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:356
@@ -1765,6 +2150,12 @@ msgid ""
 "<ref>dst='traits_undead' text='undead'</ref>.\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Seo feartan eile a dh’fhaodadh a bhith aig aonad: <ref>dst='traits_dextrous' "
+"text='teòma'</ref>, <ref>dst='traits_loyal' text='dìleas'</ref> no "
+"<ref>dst='traits_undead' text='closach'</ref>.\n"
+"\n"
 
 #. [topic]: id=traits_intelligent
 #: data/core/help.cfg:362
@@ -1794,10 +2185,10 @@ msgstr ""
 "\n"
 "Tha aonadan <italic>text='glice'</italic> glè fheumail aig toiseach iomairte "
 "oir ruigidh iad rangan nas àirde nas luaithe. Nas fhaide air adhart san "
-"iomairt, chan eil Glic a cheart cho feumail air sgàth ’s nach eil "
-"atharraichean mòra ann <italic>text='An dèidh àrdachadh rang as motha'</"
-"italic>. Ma tha aonadan ‘as àirde ìre’ agad, ’s dòcha gum b’ fhearr leat "
-"aonadan le feartan na b’ ion-mhiannaichte ais-ghairm."
+"iomairt, chan eil glic a cheart cho feumail air sgàth ’s nach eil "
+"atharraichean mòra ann le <italic>text='Àrdachadh an dèidh an rang as "
+"àirde'</italic> (ÀDRÀ). Ma tha aonadan ‘as àirde ìre’ agad, ’s dòcha gum b’ "
+"fhearr leat aonadan le feartan na b’ ion-mhiannaichte ais-ghairm."
 
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:370
@@ -1825,6 +2216,15 @@ msgid ""
 "without this trait and are subsequently less good at holding contested "
 "positions."
 msgstr ""
+"\n"
+"\n"
+"Is <italic>text='luath'</italic> am  feart a mhothaicheas tu nas fhasa, gu h-"
+"àraidh le aonadan nach gluais astar mòr a leithid athaich no coisridh throm. "
+"Cuiridh am  feart luath gu mòr ri gluasadachd an aonaid air cruth-tìre garbh "
+"agus tha e cudromach seo a chur nad chuimhne nuair a chuireas tu ro-"
+"innleachd airson an fheachd agad an gnìomh. A bharrachd air sin, chan eil "
+"aonadan luatha cho buan ’s a tha aonadan eile is chan eil iad cho math air "
+"seasamh ann an suidheachaidhean strìtheil."
 
 #. [topic]: id=traits_resilient
 #: data/core/help.cfg:378
@@ -1837,7 +2237,7 @@ msgid ""
 "<italic>text='Resilient'</italic> units have 4 HP plus 1 HP per level more "
 "than usual."
 msgstr ""
-"Tha 4 BP is 1 PhB gach rang a bharrachd na tha àbhaisteach aig aonadan "
+"Tha 4 PB agus 1 PhB gach rang a bharrachd na tha àbhaisteach aig aonadan "
 "<italic>text='spionnadail'</italic>."
 
 #. [topic]: id=traits_resilient
@@ -1851,6 +2251,14 @@ msgid ""
 "defense, or high resistances. Resilient units are especially useful for "
 "holding strategic positions against opponents."
 msgstr ""
+"\n"
+"\n"
+"Faodaidh aonadan <italic>text='spionnadail'</italic> a bhith feumail anns "
+"gach suidheachadh iomairte is tha e na fheart feumail dha dh’aonad sam bith. "
+"Tha e feumail gu h-àraidh nuair a bhios e aig aonad aig a bheil measgachadh "
+"dhe dhìon math, comasan-seasaimh àrda no beagan phuingean-beatha. Tha "
+"aonadan spionnadail cianail fhèin feumail gus seasamh air àiteachan "
+"cudromach an aghaidh nan nàimhdean."
 
 #. [topic]: id=traits_strong
 #: data/core/help.cfg:386
@@ -1864,7 +2272,7 @@ msgid ""
 "strike in melee combat, and have 1 more HP."
 msgstr ""
 "Nì aonadan <italic>text='làidir'</italic> 1 dhochann a bharrachd airson gach "
-"buille soirbheachail ann an cath dlùth is tha 1 PhB a bharrachd aca."
+"buille shoirbheachail ann an cath dlùth is tha 1 PhB a bharrachd aca."
 
 #. [topic]: id=traits_strong
 #: data/core/help.cfg:389
@@ -1876,6 +2284,13 @@ msgid ""
 "can be very useful when a tiny bit of extra damage is all that is needed to "
 "turn a damaging stroke into a killing blow."
 msgstr ""
+"\n"
+"\n"
+"Ged a tha e feumail dha gach aonad aig a bheil ionnsaigh dlùth, tha am  "
+"feart <italic>text='làidir'</italic> nas èifeachdaiche le aonadan aig a "
+"bheil iomadh ionnsaigh a leithid a’ chathaiche shìthiche. Faodaidh aonadan "
+"làidir a bhith glè fheumail nuair nach eil ach glè bheag a bharrachd dhe "
+"dhochann a dhìth gus nàmhaid a sgrios."
 
 #. [topic]: id=traits_fearless
 #: data/core/help.cfg:394
@@ -1902,8 +2317,8 @@ msgid ""
 "of base terrain."
 msgstr ""
 "Chan urrainn dha chreutairean allaidh le tuigse bheag na h-àiteachan-"
-"còmhnaidh aig bithean mothachail a chleachdadh mar chòmhdach gu furasta. A "
-"thoradh air sin, gheibh aonadan <italic>text='allaidh'</italic> 50% dhe "
+"còmhnaidh aig bithean mothachail a chleachdadh mar chòmhdachadh gu furasta. "
+"A thoradh air sin, gheibh aonadan <italic>text='allaidh'</italic> 50% dhe "
 "dhìon air a char as motha ann am baile air talamh, ge b’ e dè an cruth-tìre."
 
 #. [topic]: id=traits_loyal
@@ -1935,6 +2350,15 @@ msgid ""
 "This trait is never given to recruited units, so it may be unwise to dismiss "
 "such units or to send them to a foolish death."
 msgstr ""
+"\n"
+"\n"
+"Ann an iomairt, ’s mathaid gun roghnaich cuid dhe dh’aonadan gun lean iad "
+"am  feachd agad le an toil fhèin. Tha am  feart <italic>text='dìleas'</"
+"italic> aig na h-aonadan seo. Ged a bhiodh òr a dhìth ort fhathast gus an "
+"ath-ghairm, cha bhi cosgaisean beathachaidh nan lùib. Faodaidh seo an "
+"dèanamh fìor-luachmhor  feadh iomairte faide nuair a dh’fhàsas an t-òr gann "
+"ort. Cha tèid am  feart seo a thoirt dha dh’aonadan air an trusadh idir, mar "
+"sin ’s mòr a ghabhainn mun cuirinn à dreuchd no dha bhàs gòrach iad."
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:414
@@ -1946,8 +2370,8 @@ msgstr "Closach"
 msgid ""
 "<italic>text='Undead'</italic> units are immune to poison, drain, and plague."
 msgstr ""
-"Tha dìonachd aig aonadan <italic>text='closach'</italic> an aghaidh "
-"puinnsein, sùigh is plàighe."
+"Tha dìonachd aig aonadan <italic>text='closaich'</italic> an aghaidh "
+"puinsein, sùigh is plàighe."
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:417
@@ -1959,6 +2383,13 @@ msgid ""
 "them. This can make them invaluable in dealing with foes who use poison in "
 "conjunction with their attacks."
 msgstr ""
+"\n"
+"\n"
+"’S e <italic>text='closach'</italic> an t-aon fheart a tha aig aonadan "
+"closaich. Bhon a tha aonadan closaich nam bodhaigean nam mairbh air an "
+"èirigh ach an dèan iad sabaid a-rithist, chan eil buaidh aig puinsean orra. "
+"Faodaidh iad a bhith fìor-luachmhor an aghaidh nàimhdean a chleachdas "
+"puinsean leis an ionnsaighean."
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:422
@@ -1972,7 +2403,7 @@ msgid ""
 "plague."
 msgstr ""
 "Tha dìonachd aig aonadan <italic>text='innealach'</italic> an aghaidh "
-"puinnsein, sùigh is plàighe."
+"puinsein, sùigh is plàighe."
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:425
@@ -1983,6 +2414,11 @@ msgid ""
 "mechanical units don’t really have life, drain, poison, and plague have no "
 "effect upon them."
 msgstr ""
+"\n"
+"\n"
+"’S e <italic>text='innealach'</italic> an t-aon fheart a tha aig aonadan "
+"innealach. Bhon nach eil beatha aig innealan, chan eil buaidh aig sùgh, "
+"puinsean no plàigh orra."
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:430
@@ -1996,7 +2432,7 @@ msgid ""
 "plague."
 msgstr ""
 "Tha dìonachd aig aonadan <italic>text='dùileach'</italic> an aghaidh "
-"puinnsein, sùigh is plàighe."
+"puinsein, sùigh is plàighe."
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:433
@@ -2007,6 +2443,11 @@ msgid ""
 "elemental units are energy-based beings, drain, poison, and plague have no "
 "effect upon them."
 msgstr ""
+"\n"
+"\n"
+"’S e <italic>text='dùileach'</italic> an t-aon fheart a tha aig aonadan "
+"dùileach. Bhon a tha iad beò air bonn cumhachd, chan eil buaidh aig sùgh, "
+"puinsean no plàigh orra."
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:438
@@ -2020,7 +2461,7 @@ msgid ""
 "strike in ranged combat."
 msgstr ""
 "Nì aonadan <italic>text='teòma'</italic> 1 dhochann a bharrachd airson gach "
-"buille soirbheachail ann an cath astair."
+"buille shoirbheachail ann an sabaid astair."
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:441
@@ -2032,6 +2473,12 @@ msgid ""
 "are gifted with natural talent that exceeds their brethren. These elves "
 "inflict an additional point of damage with each arrow."
 msgstr ""
+"\n"
+"\n"
+"Chan fhaod ach aonadan nan sìthichean a bhith <italic>text='teòma'</italic>. "
+"Tha na sìthichean ainmeil airson an loinne drùidhtiche is an t-sàr-chomais "
+"aca leis a’ bhogha. Co-dhiù, tha tàlant nàdarra aig cuid a bheir barr air an "
+"corr. Nì na sìthichean seo puing dochainn a bharrachd le gach saighead."
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:446
@@ -2044,6 +2491,9 @@ msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when travelling."
 msgstr ""
+"Cliùiteach airson am beòthalachd, tha cuid dhe na troichean nas buana na "
+"càch agus ’s urrainn dhaibh fois a ghabhail fiù ’s nuair a bhios iad a’ "
+"siubhal."
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:449
@@ -2058,8 +2508,8 @@ msgstr ""
 "\n"
 "Tha 1 PhB agus 1 PhB airson gach rang a bharrachd na tha àbhaisteach aig "
 "aonadan <italic>text='fallain'</italic> is slànaichidh iad 2 PhB an dèidh "
-"gach cuairte nach robh iad a’ sabaid. cuideachd, chan fhaigh iad ach "
-"cairteal dhen dhochann bho phuinsean."
+"gach cuairte nach robh iad a’ sabaid. Cuideachd, chan fhaigh iad ach "
+"cairteal dhen dochann bho phuinsean."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:454
@@ -2083,6 +2533,11 @@ msgid ""
 "Dim is a trait all too common in goblins and other lesser species. There are "
 "reasons these species are lesser, and this is one of them."
 msgstr ""
+"\n"
+"\n"
+"Tha am  feart <italic>text='dùr'</italic> fiadhaich cumanta am measg bòcain "
+"is nan cinealan nas lugha eile. Tha adhbharan ann carson a tha iad beag agus "
+"’s e seo aonan dhiubh."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:462
@@ -2106,6 +2561,11 @@ msgid ""
 "a movement penalty but are compensated for it with a slight increase in "
 "endurance."
 msgstr ""
+"\n"
+"\n"
+"Le bodhaigean tiugha is cearbach, gheibh an fheadhainn "
+"<italic>text='slaodach'</italic> aig na bòcain is cinealan eile peanas "
+"gluasaid ach air an làimh eile tha beagan fulangais a bharrachd aca."
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:470
@@ -2118,6 +2578,8 @@ msgid ""
 "Units with trait <italic>text='weak'</italic> get a −1 increment in "
 "hitpoints and melee damage."
 msgstr ""
+"Gheibh aonadan leis an fheart <italic>text='lag'</italic> 1 phuing-bheatha "
+"nas lugha agus nì iad 1 phuing nas lugha dhe dhochann ann an sabaid dhlùth."
 
 #. [topic]: id=traits_aged
 #: data/core/help.cfg:476
@@ -2130,6 +2592,9 @@ msgid ""
 "Units with trait <italic>text='aged'</italic> get a −8 increment in "
 "hitpoints and a −1 increment in movement and melee damage."
 msgstr ""
+"Gheibh aonadan leis an fheart <italic>text='aosta'</italic> 8 puingean-"
+"beatha is 1 phuing gluasaid as lugha agus nì iad 1 phuing as lugha dhe "
+"dhochann ann an sabaid dhlùth."
 
 #. [topic]: id=..terrains
 #: data/core/help.cfg:485
@@ -2138,6 +2603,9 @@ msgid ""
 "unit’s defensive capability in combat.\n"
 "\n"
 msgstr ""
+"Tha caochladh crutha-thìre air mapaichean geama a bheir buaidh an dà chuid "
+"air gluasad nan aonadan is an comas dìona aca ann an cath.\n"
+"\n"
 
 #. [topic]: id=terrain_flat
 #: data/core/help.cfg:492
@@ -2155,6 +2623,14 @@ msgid ""
 "\n"
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
+"Riochdaichidh <italic>text='raon-feòir'</italic> talamh fheurach fhosgailte "
+"a dh’fhaodadh a bhith threabhta, na ionaltradh no fhiadhain. Bhon a tha i "
+"fosgailte, tha e glè fhurasta gluasad thairis oirre, ach air an làimh eile "
+"tha e doirbh gad dhìon fhèin oirre. ’S e na h-aonadan marcaiche a nì nas "
+"fhearr air raon-feòir no aonadan clise eile a gheibh buannachd às an rùm "
+"shaor.\n"
+"\n"
+"Tha dìon dhe 30% gu 40% aig a’ mhòr-chuid dhe dh’aonadan air raon-feòir."
 
 #. [topic]: id=terrain_road
 #: data/core/help.cfg:506
@@ -2169,6 +2645,11 @@ msgid ""
 "as <ref>dst='terrain_flat' text='flat'</ref> terrain.\n"
 "\n"
 msgstr ""
+"’S e staranan a th’ anns na <italic>text='rathaidean'</italic> a chaidh a "
+"cruthachadh le iomadh dhuine a’ siubhal thairis orra. A thaobh cluiche a’ "
+"gheama, tha rathaidean nan cruth-tìre <ref>dst='terrain_flat' text='rèidh'</"
+"ref>.\n"
+"\n"
 
 #. [topic]: id=terrain_forest
 #: data/core/help.cfg:518
@@ -2194,6 +2675,23 @@ msgid ""
 "Dwarves generally receive only 30% defense in forests.\n"
 "\n"
 msgstr ""
+"Riochdaichidh <italic>text='coilltean'</italic> badan dhe chraobhan sam bith "
+"aig a bheil preaslach gu leòr gus siubhal a bhacadh. Ged a chuireas iad "
+"maille air cha mhòr a h-uile duine, bheir iad cuideachd barrachd dìona "
+"dhaibh na gheibheadh iad air tìr  fhosgailte. A dh’aindeoin sin, tha na "
+"duilgheadasan aig marcaichean gus faighinn tromhpa cho mòr ’s nach fhaigh "
+"iad buannachd sam bith às an dìomhaireachd. Tha cùisean eadar-dhealaichte "
+"dha na sìthichean co-dhiù: gheibh iad gluasad slàn ann an coilltean cho math "
+"ri buannachd dìona mhòr. Tha coilltean gu h-àraidh cunnartach dha "
+"throichean; ged a shoirbhicheas leotha siubhal tro na coilltean gun a bhith "
+"a’ call cus gluasaid, tha iad cho aineolach air an tìr seo ’s nach fhaigh "
+"iad dìon às.\n"
+"\n"
+"Tha dìon dhe 50% aig a’ mhòr chuid dhe dh’aonadan ach tha marcaichean "
+"cuingichte gu 30%. Tha dìon dhe 60% gu 70% aig na sìthichean co-dhiù is fiù "
+"’s aig na marcaichean acasan. Chan fhaigh troichean ach 30% dhe dhìon ann an "
+"coilltean.\n"
+"\n"
 
 #. [topic]: id=terrain_hills
 #: data/core/help.cfg:533
@@ -2214,6 +2712,16 @@ msgid ""
 "40%. Dwarves enjoy 60% defense in hills.\n"
 "\n"
 msgstr ""
+"Riochdaichidh <italic>text='cnuic'</italic> gach cruth-tìre reusanta garbh "
+"le cromadh gu leòr gus beagan còmhdachaidh fhaighinn. Tha cnuic doirbh dhan "
+"mhòr chuid dhe dh’aonadan gus siubhal tromhpa. Tha troichean, athaich is "
+"deamhain eòlach gu leòr air an tìr ach an urrainn dhaibh siubhal thairis air "
+"gun mhaille. Tha na duilgheadasan aig marcaichean gus faighinn troimhe cho "
+"mòr ’s nach fhaigh iad buannachd sam bith às a’ chòmhdachadh.\n"
+"\n"
+"Tha dìon dhe 50% aig a’ mhòr chuid dhe dh’aonadan air cnuic ged a tha "
+"marcaichean cuingichte gu 40%. Gheibh troichean 60% dhe dhìon air cnuic.\n"
+"\n"
 
 #. [topic]: id=terrain_mountains
 #: data/core/help.cfg:547
@@ -2233,6 +2741,16 @@ msgid ""
 "\n"
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
+"Tha <italic>text='beanntan'</italic> cas gu leòr ach am bidh aig aonadan ri "
+"sreap thairis air cnapan-starra gu tric. Seo as adhbhar gun toir iad "
+"buannachd dìona mhòr dhan mhòr chuid dhe dh’aonadan ach cuiridh iad fìor "
+"ghrabadh orra cuideachd. Chan urrainn dha mharcaichean fiù ’s faighinn air "
+"an tìr seo ach marcaichean sìthiche is marcaichean madaidh nam bòcan. "
+"Buinidh an dà chuid troichean is athaich dha na beanntan is tha e furasta "
+"dhaibh siubhal annta.\n"
+"\n"
+"Tha dìon dhe 60% aig a’ mhòr chuid dhe dh’aonadan air beanntan ach gheibh "
+"troichean 70%."
 
 #. [topic]: id=terrain_swamp_water
 #: data/core/help.cfg:559
@@ -2251,6 +2769,15 @@ msgid ""
 "Most units make do with 30% defense in swamps. Mermen, naga, and saurians "
 "all generally enjoy 60%."
 msgstr ""
+"Riochdaichidh <italic>text='boglach'</italic> tìr  fhliuch sam bith. Cuiridh "
+"boglaichean maille air cha mhòr duine sam bith is bacaidh iad an comas "
+"dìona. Tha na cinnidhean aig a bheil bodhaigean gus siubhal ann an uisge nam "
+"mura-bhith air seo; gheibh iadsan gluasad slàn is buannachd dìona. Tha an "
+"fheadhainn a gheibh am beòshlaint à tìr  fhliuch math air an tìr seo a "
+"chleachdadh mar chòmhdachadh cuideachd.\n"
+"\n"
+"Chan eil ach 30% dhe dhìon aig a’ mhòr chuid dhe dh’aonadan air boglach. "
+"Gheibh sluagh-mara, nagaidhean is laghairtean uile 60%."
 
 #. [topic]: id=terrain_shallow_water
 #: data/core/help.cfg:571
@@ -2271,6 +2798,15 @@ msgid ""
 "Most units make do with 20 to 30% defense in shallow water, whereas both "
 "naga and mermen enjoy 60%."
 msgstr ""
+"Riochdaichidh <italic>text='tanalach'</italic> gach uisge a bhios cho "
+"domhainn ’s gun ruigeadh e meadhan daoine. Foghnaidh seo gus maille a chur "
+"air cha mhòr a h-uile duine is am  fosgladh dha dh’ionnsaighean. Tha seo gu "
+"sònraichte doirbh dha na troichean is an t-uisge cha mhòr a ruigsinn an "
+"cinn. Tha a h-uile cinneadh a nì snàmh gu nàdarra na mura-bhith is gheibh "
+"iad buannachd dìona mhòr is gluasad gun bhacadh às.\n"
+"\n"
+"Chan eil ach 20% gu 30% dhe dhìon aig a’ mhòr chuid dhe dh’aonadan ann an "
+"tanalach. Gheibh nagaidhean is sluagh-mara 60%."
 
 #. [topic]: id=terrain_deep_water
 #: data/core/help.cfg:583
@@ -2286,6 +2822,13 @@ msgid ""
 "\n"
 "Mermen and naga both receive 50% defense in deep water, with full movement."
 msgstr ""
+"Riochdaichidh <italic>text='uisge domhainn'</italic> uisge sam bith a bhios "
+"domhainn gu leòr gus ceann daoine a chòmhdachadh. Chan urrainn dhan mhòr "
+"chuid dhe dh’aonadan dol a-steach dha dh’uisge domhainn idir: ’s e an àrainn "
+"aig aonadan a nì sgiathach no a bhios sònraichte math air snàmh a th’ ann.\n"
+"\n"
+"Gheibh sluagh-mara is nagaidhean dìon dhe 50% ann an uisge domhainn agus "
+"gluasad slàn."
 
 #. [topic]: id=terrain_frozen
 #: data/core/help.cfg:595
@@ -2302,6 +2845,13 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in frozen terrain."
 msgstr ""
+"Riochdaichidh cruth-tìre <italic>text='reòite'</italic> raon rèidh sam bith "
+"air a chòmhdachadh le sneachd no deigh. Bidh a’ mhòr chuid dhe dh’aonadan "
+"nas maille air is tha e nas dorra dhaibh gan dìon fhèin. Thoir an aire nach "
+"urrainn dha dh’aonadan aig a bheil snàmh a’ siubhal fo dheigh, fiù ’s mas "
+"urrainn dhaibh anail a ghabhail fon uisge.\n"
+"\n"
+"Tha 20% gu 40% dhe dhìon aig a’ mhòr chuid dhe dh’aonadan air tìr reòite."
 
 #. [topic]: id=terrain_castle
 #: data/core/help.cfg:607
@@ -2321,6 +2871,16 @@ msgid ""
 "Most units have about 60% defense in a castle.\n"
 "\n"
 msgstr ""
+"’S e gach seòrsa dhe dhaingneachadh maireannach a th’ anns na "
+"<italic>text='caistealan'</italic>. Gheibh cha mhòr a h-uile aonad buannachd "
+"dìona mhòr nuair a bhios iad stèidhichte ann an caisteal agus gluasad slàn. "
+"Tha comas dìona aig caisteal cho math ’s a tha na h-aonadan a tha "
+"stèidhichte ann. Gun aonad air a h-uile sia-cheàrnach balla, faodaidh "
+"nàmhaid a ghoid a-steach dhan chaisteal gun dùbhlan is gheibh e an aon "
+"buannachd dìona ’s a tha aig a h-uile duine eile taobh a-staigh.\n"
+"\n"
+"Tha 60% dhe dhìon aig a’ mhòr chuid dhe dh’aonadan ann an caisteal.\n"
+"\n"
 
 #. [topic]: id=terrain_sand
 #: data/core/help.cfg:623
@@ -2337,6 +2897,13 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in sand."
 msgstr ""
+"Tha e doirbh dhan mhòr chuid dhe dh’aonadan siubhal thairis air "
+"<italic>text='gaineamh'</italic> air sàilleibh a neo-sheasmhachd is bidh iad "
+"fosgailte dha dh’ionnsaighean. Air an làimh eile, bidh e mòran nas fhasa dha "
+"na cinnidhean laghairt siubhal oir tha casan leathann no bodhaigean coltach "
+"ri nathraichean aca.\n"
+"\n"
+"Tha 20% gu 40% dhe dhìon aig a’ mhòr chuid dhe dh’aonadan air gaineamh."
 
 #. [topic]: id=terrain_desert
 #: data/core/help.cfg:635
@@ -2350,11 +2917,14 @@ msgid ""
 "small sand pits or beaches, however for gameplay purposes they are "
 "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
 msgstr ""
+"Tha <italic>text='fàsaichean'</italic> eadar-dhealaichte bho àrainnean beaga "
+"dhe ghaineamh no tràighean, ach a thaobh cluiche a’ gheama tha iad co-"
+"ionnan. Thoir sùil air <ref>dst='terrain_sand' text='gaineamh'</ref>."
 
 #. [topic]: id=terrain_cave
 #: data/core/help.cfg:645
 msgid "Cave"
-msgstr ""
+msgstr "Uamh"
 
 #. [topic]: id=terrain_cave
 #: data/core/help.cfg:650
@@ -2369,6 +2939,17 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgstr ""
+"Riochdaichidh <italic>text='uamh'</italic> uamh fo thalamh sam bith a bhios "
+"mòr gu leòr ach an tèid aonad troimhe. Tha a’ mhòr chuid dhe dh’aonadan "
+"aineolach air uamhan is thèid an dà chuid gluasad is dìon a bhacadh dhaibh. "
+"Bhon a bhuineas iad ri uamhan, tha e reusanta furasta dha throichean is "
+"athaich siubhal tromhpa, gu sònraichte dha na troichean a bhios beag gu leòr "
+"gus faighinn seachad air cnapan-starra a bhacadh na cinnidhean eile. Aig "
+"amannan, bidh uamhan <ref>dst='terrain_illuminated_cave' text='soillseach'</"
+"ref>.\n"
+"\n"
+"Tha 20% gu 40% dhe dhìon aig a’ mhòr chuid dhe dh’aonadan ann an uamhan fhad "
+"’s a gheibh troichean 50%."
 
 #. [topic]: id=terrain_rockbound_cave
 #: data/core/help.cfg:657
@@ -2390,6 +2971,18 @@ msgid ""
 "Most units have about 50% defense in rocky caves, whereas cavalry are "
 "limited to 40%. Dwarves enjoy 60% defense in rockbound caves."
 msgstr ""
+"Chaidh <italic>text='uamhan creagach'</italic> a chruthachadh le uisge is "
+"gaoth a bheireas mìrean bleithe a ghearras a’ chlach. Tha iad coltach ri "
+"uamh fo thalamh chreagach a chuireas bacadh air èifeachdachd aig a’ mhòr "
+"chuid dhe dh’aonadan ged a chuireas iad ris an dìon. Tha e furasta gu leòr "
+"dha throichean is athaich a thuineachas sna h-uamhan seo siubhal tromhpa, gu "
+"sònraichte dha na troichean a bhios beag gu leòr gus faighinn seachad air "
+"cnapan-starra a bhacadh na cinnidhean eile. Aig amannan, bidh uamhan "
+"<ref>dst='terrain_illuminated_cave' text='soillseach'</ref>.\n"
+"\n"
+"Tha 50% dhe dhìon aig a’ mhòr chuid dhe dh’aonadan ann an uamhan creagach "
+"ach tha marcaichean cuingichte gu 40%. Gheibh troichean 60% dhe dhìon ann an "
+"uamhan creagach."
 
 #. [topic]: id=terrain_illuminated_cave
 #: data/core/help.cfg:669
@@ -2405,6 +2998,11 @@ msgid ""
 "other regards this terrain is functionally identical to normal "
 "<ref>dst='terrain_cave' text='cave terrains'</ref>."
 msgstr ""
+"Tha badain ainneamh an t-saoghail fon talamh soillsichte le solas on uachdar "
+"a dhealraicheas sìos dhan dorchadas chiar. Bheir seo buannachd ionnsaighe "
+"dha dh’aonadan dligheach is caillidh na h-aonadan coimeasgach am buannachd "
+"ionnsaighe. Sa h-uile dòigh eile, tha an cruth-tìre seo co-ionnan ri "
+"<ref>dst='terrain_cave' text='uamhan'</ref>."
 
 #. [topic]: id=terrain_fungus
 #: data/core/help.cfg:679
@@ -2424,6 +3022,17 @@ msgid ""
 "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
 "receive only 20%."
 msgstr ""
+"’S e coilltean mòra dhe bhalgan-bhuachair  fon talamh a th’ anns na "
+"<italic>text='badain bhalgan-bhuachair'</italic> leis a shoirbhicheas san "
+"dorchadas tais. Tha duilgheadasan aig a’ mhòr chuid dhe dh’aonadan le "
+"siubhal air talamh chòsach dhe na balgain-bhuachair nas lugha ach gheibh iad "
+"còmhdachadh math air cùlaibh na feadhna mòra. Thèid aonadan marcaiche a "
+"bhacadh gu tur co-dhiù is tha saorsa gluasaid cheart a dhìth orra ann an "
+"cath. Tha aonadan closaich càirdeil ri crìonadh gu nàdarra is thèid gu math "
+"leotha ann an coilltean bhalgan-bhuachair.\n"
+"\n"
+"Tha 50% gu 60% dhe dhìon aig a’ mhòr chuid dhe dh’aonadan air badain "
+"bhalgain-bhuachair ach chan fhaigh marcaichean ach 20%."
 
 #. [topic]: id=terrain_village
 #: data/core/help.cfg:691
@@ -2444,6 +3053,17 @@ msgid ""
 "40%.\n"
 "\n"
 msgstr ""
+"Riochdaichidh <italic>text='bailtean'</italic> buidheann dhe thogalaichean "
+"sam bith aig a’ chinne-daonna no cinneadh sam bith eile. Tha e furasta dhan "
+"mhòr chuid dhe dh’aonadan siubhal ann am bailtean, fiù ’s dha mharcaichean "
+"is gheibh a’ mhòr chuid dhe dh’aonadan buannachd dìona nuair a bhios iad "
+"stèidhichte ann am baile. Bheir aonadan goireasan bhon bhaile gus na lotan "
+"aca a ghlanadh is cùram a thoirt dhaibh is mar sin slànaichidh iad 8 "
+"puingean-beatha sa chuairt air neo gheibh iad leigheas bho phuinsean.\n"
+"\n"
+"Tha 50% gu 60% dhe dhìon aig a’ mhòr chuid dhe dh’aonadan ann am bailtean "
+"ged nach fhaigh marcaichean ach 40%.\n"
+"\n"
 
 #. [topic]: id=terrain_water_village
 #: data/core/help.cfg:707
@@ -2463,6 +3083,17 @@ msgid ""
 "Merfolk and nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defense."
 msgstr ""
+"’S e na dachaighean aig an t-sluagh-mhara is na nagaidhean a th’ anns na "
+"<italic>text='bailtean bàthte'</italic>. Fhad ’s a tha iad nan dachaighean "
+"dha chreutairean a dh’fhuiricheas ann an uisge, tha e doirbh dha "
+"chreutairean a dh’fhuiricheas air an talamh siubhal tromhpa no an dìon. Co-"
+"dhiù, mar a tha anns gach baile, tha goireasan ann dhan a h-uile creutair "
+"gus cùram a thoirt dha na lotan aca. Slànaichidh aonad sam bith a tha "
+"stèidhichte ann am baile 8 puingean-beatha sa chuairt air neo gheibh iad "
+"leigheas bho phuinsean.\n"
+"\n"
+"Tha 60% dhe dhìon aig sluagh-mara is nagaidhean ann am bailtean bàthte ged "
+"nach fhaigh creutairean talmhainn ach glè bheag dhe dhìon."
 
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:719
@@ -2477,6 +3108,11 @@ msgid ""
 "for sheer walls which would take days to traverse. As far as gameplay is "
 "concerned, only units capable of flying can cross this terrain."
 msgstr ""
+"Gabhaidh cruth-tìre <italic>text='do-choiseach'</italic> a-steach mòr-"
+"bheàrnan is slocan nach gabhadh siubhal às aonais drochaide. Tha ballachan "
+"casa aig mòr-bheàrnan is bheireadh e làithean mòra a’ dol thairis orra. A "
+"thaobh cluiche a’ gheama, chan fhaigh thairis air a’ chruth-tìre seo ach "
+"aonadan aig a bheil sgiathach."
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:729
@@ -2494,6 +3130,13 @@ msgid ""
 "immediately above it. This provides an attack bonus for lawful units and "
 "removes the attack bonus from chaotic units."
 msgstr ""
+"Tha e follaiseach dè cho cunnartach a bhiodh e siubhal thairis air "
+"<italic>text='làbha'</italic>. A thaobh gluasaid, tha làbha co-ionnan ri "
+"cruth-tìre <ref>dst='terrain_unwalkable' text='do-choiseach'</ref> is chan "
+"fhaigh thairis air ach aonadan a dh’itealaicheas gu àrd. Tha dearrsadh mòr "
+"aig a’ mhagma leaghte a shoillsicheas an raon os a chionn. Bheir seo "
+"buannachd ionnsaighe dha dh’aonadan dligheach is bheir e buannachd "
+"ionnsaighe air  falbh bho na h-aonadan coimeasgach."
 
 #. [topic]: id=terrain_ford
 #: data/core/help.cfg:739
@@ -2510,6 +3153,12 @@ msgid ""
 "choosing whichever one offers the best defensive and movement bonuses for "
 "the unit on it."
 msgstr ""
+"Nuair a bhios abhainn uabhasach eu-domhainn, bidh e glè fhurasta dha "
+"dh’aonadan talmhainn siubhal thairis air. A bharrachd air sin, gheibh gach "
+"aonad a nì snàmh làn-ghluasad fiù ’s air na raointean seo aig abhainn. A "
+"thaobh cluiche a’ gheama, tha <italic>text='àth aibhne'</italic> na raon-"
+"feòir no thanalach, a’ taghadh ge b’ e dè a tha nas fhearr a thaobh gluasaid "
+"is dìona dhan aonad a tha na sheasamh air."
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:749
@@ -2526,6 +3175,13 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
+"’S e uisge eu-domhain air a chruthachadh le clach, coireal is gaineamh a th’ "
+"anns an <italic>text='riof cladaich'</italic>. Bheir seo bonn nas "
+"seasmhaiche is suidheachaidhean dìona nas fhearr dhan mhòr chuid dhe "
+"dh’aonadan talmhainn na bhiodh tanalach àbhaisteach is bheir e dìon "
+"uabhasach math air a’ mhòr chuid dhe dh’aonadan uisge.\n"
+"\n"
+"Tha 70% dhe dhìon aig sluagh-mara is nagaidhean air riofachan cladaich."
 
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:761
@@ -2547,6 +3203,17 @@ msgid ""
 "occupying the bridge hex. Note that a swimming unit and a land unit are not "
 "capable of occupying a bridge hex at the same time."
 msgstr ""
+"Bidh an fheadhainn a bhios comasach air <italic>text='drochaid'</italic> a "
+"thogail neo-eisimeileach bho nàdar mùiteach nan uisgeachan agus nan àthannan "
+"a thig is dh’fhalbhas leis an làn. Na canamaid guth mu chofhurtachd chasan "
+"tiorma gu h-àraidh ann am mìosan fuara garbha.\n"
+"\n"
+"Bheir drochaid buannachd an dà shaoghail dhan fheadhainn a shiubhlas air tìr "
+"no muir — a thaobh cluiche a’ gheama, thèid dèiligeadh ri drochaid mar raon-"
+"feòir no mar an uisge a tha foidhpe a rèir dè an cruth-tìre a bhios nas "
+"fhearr gus gluasad is fhèin-dìon dhan aonad a bhios na sheasamh air sia-"
+"cheàrnach drochaide. Thoir an aire nach urrainn dha dh’aonad uisge is aonad "
+"talmhainn a bhith air aon shia-cheàrnach drochaide aig an aon àm."
 
 #. [topic]: id=terrain_impassable
 #: data/core/help.cfg:774
@@ -2562,6 +3229,11 @@ msgid ""
 "jagged peaks at such rarified heights, and not even the fiercest troll can "
 "smash through thick walls of stone."
 msgstr ""
+"Tha cnapan-starra ann nach fhaigh taistealaiche sam bith troimhe is gabhaidh "
+"seo a-steach ballachan cloiche cruaidh is beanntan a bhios cho àrd is cas gu "
+"bheil na mullaichean daonnan sna neòil. Chan urrainn fiù ’s dha na h-aonadan "
+"a dh’itealaicheas siubhal am measg nan sgurran garbha air àirde mar sin is "
+"cha bhris fiù ’s an t-athach as treuna tro bhallachan cloiche cho tiugha."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:790
@@ -2851,17 +3523,17 @@ msgid ""
 msgstr ""
 "Leigheas:\n"
 "’S urrainn dha lighiche aonad a shlànachadh bho phuinsean, ged nach fhaigh "
-"an t-aonad slànachadh a bharrachd sa chuairt a thèid a leigheis on phuinsean."
+"an t-aonad slànachadh a bharrachd sa chuairt a thèid a leigheas on phuinsean."
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:76
 msgid "regenerates"
-msgstr "ath-ùrachadh"
+msgstr "ath-ghintinn"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:77
 msgid "female^regenerates"
-msgstr "ath-ùrachadh"
+msgstr "ath-ghintinn"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:79
@@ -2870,9 +3542,9 @@ msgid ""
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
-"Ath-ùrachadh:\n"
-"Nì an t-aonad fèin-shlànachadh dhe 8 PB sa chuairt. Ma tha e "
-"puinnseanaichte, bheir e am puinsean air falbh an àite an t-slànachaidh."
+"Ath-ghintinn:\n"
+"Nì an t-aonad fèin-shlànachadh dhe 8 PB sa chuairt. Ma tha e puinseanaichte, "
+"bheir e am puinsean air  falbh an àite an t-slànachaidh."
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:98
@@ -2892,8 +3564,8 @@ msgid ""
 "Vulnerabilities are not affected."
 msgstr ""
 "Seasmhach:\n"
-"Tha dà uiread dhe chomas-seasaimh aig an aonad, suas gu 50% nuair a tha e a’ "
-"dìon. Cha toir seo buaidh air so-leònaidhean."
+"Tha dà uiread dhe chomas-seasaimh aig an aonad, suas gu 50% nuair a bhios e "
+"ga dhìon. Cha toir seo buaidh air so-leònaidhean."
 
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:114 data/core/macros/abilities.cfg:137
@@ -2923,6 +3595,14 @@ msgid ""
 "Leadership engages in combat, its attacks do 25% more damage times the "
 "difference in their levels."
 msgstr ""
+"Ceannardas:\n"
+"Tha ùghdarras aig an aonad seo air na h-aonadan a bhuineas dhan aon taobh is "
+"a tha faisg air ach an sabaid iad nas fhearr.\n"
+"\n"
+"Nì na h-aonadan ri thaobh aig a bheil rang nas lugha barrachd dochainn sa "
+"chath. Nuair a bhios aonad dìreach ri taobh aonaid aig a bheil ceannardas is "
+"rang nas àirde, nì e 25% a bharrachd dhe dhochann airson gach rang dhe "
+"dhiofar eadar e fhèin is an t-aonad aig a bheil ceannardas."
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:347
@@ -2942,7 +3622,7 @@ msgid ""
 "Zones of Control."
 msgstr ""
 "Streupaire:\n"
-"Tha an t-aonad seo math air faighinn seachad air nàimhdean gu luath is "
+"Tha an t-aonad seo math air  faighinn seachad air nàimhdean gu luath is "
 "leigidh e seachad gach raon-smachd an nàmhad."
 
 #. [illuminates]: id=illumination
@@ -2965,6 +3645,13 @@ msgid ""
 "Any units adjacent to this unit will fight as if it were dusk when it is "
 "night, and as if it were day when it is dusk."
 msgstr ""
+"Soillseachadh:\n"
+"Soillsichidh an t-aonad seo an raon mu chuairt ach an sabaid aonadan "
+"dligheach nas fhearr is aonadan coimeasgach nas miosa.\n"
+"\n"
+"Sabaididh gach aonad dìreach ri taobh an aonaid seo mar an robh an ciaradh "
+"ann nuair a bhios an oidhche ann agus mar an robh an latha ann nuair a bhios "
+"an ciaradh ann."
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:378
@@ -3007,6 +3694,12 @@ msgid ""
 "units next to it. Any enemy unit that first discovers this unit immediately "
 "loses all its remaining movement."
 msgstr ""
+"Fàth:\n"
+"’S urrainn dhan aonad seo fhalach sa choille ach nach faic na nàimhdean e.\n"
+"\n"
+"Chan fhaic aonadan nàmhad an t-aonad seo fhad ’s a bhios e sa choille ach "
+"nuair a bhios aonad aig an nàmhaid dìreach ri thaobh. Caillidh a’ chiad "
+"aonad nàmhad a chì e a h-uile gluasad a bhiodh air  fhàgail dha."
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:443 data/core/macros/abilities.cfg:444
@@ -3024,6 +3717,12 @@ msgid ""
 "it. Any enemy unit that first discovers this unit immediately loses all its "
 "remaining movement."
 msgstr ""
+"Stalc-oidhche:\n"
+"Chan fhaicear an t-aonad seo air an oidhche.\n"
+"\n"
+"Chan fhaic aonadan nàmhad an t-aonad seo air an oidhche ach nuair a bhios "
+"aonad aig an nàmhaid dìreach ri thaobh. Caillidh a' chiad aonad nàmhad a chì "
+"e a h-uile gluasad a bhiodh air  fhàgail dha."
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:450
@@ -3051,6 +3750,13 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
+"Falach:\n"
+"’S urrainn dhan aonad seo fhalach ann am bailtean (ach bailtean uisge) gus "
+"nach fhaic a nàimhdean e ach nuair a bhios iad ri thaobh.\n"
+"\n"
+"Chan fhaic aonadan nàmhad an t-aonad seo fhad ’s a bhios e ann am baile ach "
+"nuair a bhios aonad aig an nàmhaid dìreach ri thaobh. Caillidh a’ chiad "
+"aonad nàmhad a chì e a h-uile gluasad a bhiodh air  fhàgail dha."
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:495 data/core/macros/abilities.cfg:501
@@ -3072,6 +3778,13 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
+"Bàthadh:\n"
+"’S urrainn dhan aonad seo fhalach ann an uisge domhainn ach nach fhaic a "
+"nàimhdean e.\n"
+"\n"
+"Chan fhaic aonadan nàmhad an t-aonad seo fhad ’s a bhios e ann an uisge "
+"domhainn ach nuair a bhios aonad aig an nàmhaid dìreach ri thaobh. Caillidh "
+"a’ chiad aonad nàmhad a chì e a h-uile gluasad a bhiodh air  fhàgail dha."
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:524
@@ -3081,7 +3794,7 @@ msgstr "ithe"
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:525
 msgid "female^feeding"
-msgstr "iche"
+msgstr "ithe"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:527
@@ -3091,7 +3804,7 @@ msgid ""
 "unit."
 msgstr ""
 "Ithe:\n"
-"Gheibh an t-aonad seo 1 phuing-beatha as motha a bharrachd gach turas a "
+"Gheibh an t-aonad seo 1 phuing-bheatha as motha a bharrachd gach turas a "
 "mharbhas e aonad beò."
 
 #. [unstore_unit]
@@ -3112,6 +3825,11 @@ msgid ""
 "of the target on the opposite side of the target, and that unit is not "
 "incapacitated (turned to stone or otherwise paralyzed)."
 msgstr ""
+"Cùl-shàthadh:\n"
+"Nuair a chleachdas tu e gus ionnsaigh a thoirt, nì an ionnsaigh seo dà "
+"uiread dhe dhochann ma bhios nàmhaid an targaid an taobh mu choinneamh a "
+"bhios comasach (gun reòthadh air no gun chomas gluasaid a dhìth air "
+"adhbharan eile)."
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
@@ -3127,6 +3845,10 @@ msgid ""
 "identical to and on the same side as the unit with the Plague attack. This "
 "doesn’t work on Undead or units in villages."
 msgstr ""
+"Plàigh:\n"
+"Nuair a thèid aonad a mharbhadh le ionnsaigh plàighe, thèid aonad co-ionnan "
+"eile a chur na àite a shabaideas às leth an nàmhad aig an robh an ionnsaigh "
+"plàighe. Chan obraich seo an aghaidh aonadan closaich no ann am baile."
 
 #. [plague]: id=plague, type=Walking Corpse
 #: data/core/macros/abilities.cfg:622
@@ -3136,6 +3858,10 @@ msgid ""
 "Walking Corpse on the same side as the unit with the Plague attack. This "
 "doesn’t work on Undead or units in villages."
 msgstr ""
+"Plàigh:\n"
+"Nuair a thèid aonad a mharbhadh le ionnsaigh plàighe, thèid corp coisiche a "
+"chur na àite a shabaideas às leth an nàmhad aig an robh an ionnsaigh "
+"plàighe. Chan obraich seo an aghaidh aonadan closach no ann am baile."
 
 #. [slow]: id=slow
 #: data/core/macros/abilities.cfg:632
@@ -3152,15 +3878,15 @@ msgid ""
 "is selected."
 msgstr ""
 "Maille:\n"
-"Cuiridh an ionnsaigh seo maille air an amas gus crìochnaich e cuairt. Cha "
-"dèan aonad le maille air ach an dàrna leth the dhochann is tha cosgais "
+"Cuiridh an ionnsaigh seo maille air an amas gus an crìochnaich e cuairt. Cha "
+"dèan aonad le maille air ach an dàrna leth dhe dhochann is tha cosgais "
 "ghluasaid dhùbailte aige. Chì thu ìomhaigheag seilcheige san fhiosrachadh "
-"bàr-taoibh nuair a thaghas tu e."
+"bàr-taoibh aige nuair a thaghas tu e."
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:643
 msgid "petrifies"
-msgstr "reòthadh"
+msgstr "clach-thionndadh"
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:645
@@ -3169,6 +3895,9 @@ msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
 msgstr ""
+"Clach-thionndadh:\n"
+"Tionndaidhidh an ionnsaigh seo an targaid gu cloich. Chan urrainn dha "
+"dh’aonadan air an an tionndadh gu cloich gluasad no ionnsaighean a thoirt."
 
 #. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:654
@@ -3182,8 +3911,8 @@ msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
 "Gìomanach:\n"
-"Nuair a bheir an t-aonad ionnsaigh, bidh seans dhe 60% ann gum buail e air a "
-"char as lugha."
+"Nuair a bheir an t-aonad ionnsaigh, bidh seans dhe 60% air a char as lugha "
+"ann gum buail e gu soirbheachail."
 
 #. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:681
@@ -3199,6 +3928,11 @@ msgid ""
 "unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
 "number of strikes."
 msgstr ""
+"Sgaoth:\n"
+"Thèid àireamh buillean na h-ionnsaighe seo a lùghdachadh nuair a bhios an t-"
+"aonad air a leònadh. Tha àireamh nam buillean co-rèireach ri ceudad nam BP "
+"as motha a tha aig an aonad. Mar eisimpleir, nuair a bhios 3/4 dhe na PB as "
+"motha aig an aonad, chan fhaigh e ach 1/4 dhe na buillean aige."
 
 #. [damage]: id=charge
 #: data/core/macros/abilities.cfg:692
@@ -3212,6 +3946,10 @@ msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
 msgstr ""
+"Cruinn-leum:\n"
+"Nuair a chleachdas tu e gus ionnsaigh a thoirt, nì an ionnsaigh seo dà "
+"uiread dhe dhochann air an targaid. Cuideachd, gheibh an t-aonad seo dà "
+"uiread dhe dhochann bho fhrith-ionnsaigh leis an targaid."
 
 #. [drains]: id=drains
 #: data/core/macros/abilities.cfg:706
@@ -3225,6 +3963,9 @@ msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
 msgstr ""
+"Sùgh:\n"
+"Sùghaidh an t-aonad seo slàinte bho aonadan beòtha, ga shlànachadh fhèin "
+"leis an dàrna leth dhe dhochann a nì e (air a chuairteachadh sìos)."
 
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:728
@@ -3239,6 +3980,10 @@ msgid ""
 "until they are cured or are reduced to 1 HP. Poison can not, of itself, kill "
 "a unit."
 msgstr ""
+"Puinsean:\n"
+"Puinseanaichidh an ionnsaigh seo targaidean beòtha. Caillidh aonadan "
+"puinseanaichte 8 PB gach cuairt gus an tèid an leigheas no gus nach bi ach 1 "
+"PB aca. Chan urrainn dha phuinsean aonad a mharbhadh leis fhèin."
 
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
@@ -3403,7 +4148,7 @@ msgstr " Tha comas-slànachaidh luath air an aonad seo."
 msgid ""
 " This unit is capable of healing those around it, and curing them of poison."
 msgstr ""
-" Tha an t-aonad seo comasach air an fheadhainn mu a chuairt a shlànachadh is "
+" Tha an t-aonad seo comasach air an fheadhainn mu chuairt a shlànachadh is "
 "an leigheas bho phuinsean."
 
 #: data/core/macros/special-notes.cfg:23
@@ -3411,8 +4156,8 @@ msgid ""
 " This unit is capable of neutralizing the effects of poison in units around "
 "it."
 msgstr ""
-" Tha an t-aonad seo comasach air na buaidhean aig puinsean a thoirt air "
-"falbh bho aonadan mu a chuairt."
+" Tha an t-aonad seo comasach air na buaidhean aig puinsean a thoirt air  "
+"falbh bho aonadan mu chuairt."
 
 #: data/core/macros/special-notes.cfg:26
 msgid ""
@@ -3435,7 +4180,7 @@ msgid ""
 " The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
 msgstr ""
-" Leigidh an ceannardas aig an aonad seo leis na h-aonadan mu a chuairt a "
+" Leigidh an ceannardas aig an aonad seo leis na h-aonadan mu chuairt a "
 "leanas an aon taobh barrachd dochainn a thoirt seachad ann an sabaid, ged "
 "nach obraich seo ach dha aonadan air ìre ìosal."
 
@@ -3445,7 +4190,7 @@ msgid ""
 "control and thus move unhindered around them."
 msgstr ""
 " Tha an t-aonad seo eòlach air streupaireachd is faodaidh e raon-smachd a "
-"nàimhdean a chur dhan dàrna taobh is gluasad mu thimcheall orra gun bhacadh."
+"nàimhdean fhàgail dhan dàrna taobh is gluasad mu thimcheall orra gun bhacadh."
 
 #: data/core/macros/special-notes.cfg:38
 msgid " Illumination increases the lighting level in adjacent areas."
@@ -3465,7 +4210,7 @@ msgid ""
 "unless it is immediately adjacent or has revealed itself by attacking."
 msgstr ""
 " Ann an coilltean, air sàilleibh a sgil fàtha chan fhaic nàimhdean an t-"
-"aonad seo mus eil e dìreach ri an taobh no mus tàinig e am follais le "
+"aonad seo mus eil e dìreach ri an taobh no mus tàinig e am  follais le "
 "ionnsaigh."
 
 #: data/core/macros/special-notes.cfg:47
@@ -3478,7 +4223,7 @@ msgid ""
 "remain undetected by its enemies, except by those standing next to it."
 msgstr ""
 " ’S urrainn dhan aonad seo falach ann am bailtean (ach bailtean uisge) is a "
-"chumail neo-mhothaichte le a nàimhdean ach an fheadhainn dìreach ri a thaobh."
+"chumail neo-mhothaichte le a nàimhdean ach an fheadhainn dìreach ri thaobh."
 
 #: data/core/macros/special-notes.cfg:53
 msgid ""
@@ -3492,7 +4237,7 @@ msgid ""
 " This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
-" Gheibh an t-aonad seo 1 phuing-beatha as motha a bharrachd gach turas a "
+" Gheibh an t-aonad seo 1 phuing-bheatha as motha a bharrachd gach turas a "
 "mharbhas e aonad beò."
 
 #: data/core/macros/special-notes.cfg:59
@@ -3557,19 +4302,23 @@ msgid ""
 " The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
 msgstr ""
+" Caillidh ionnsaighean sgaotha an aonaid seo pàirt dhen cumhachd aca nuair a "
+"thèid a bhuill a leònadh."
 
 #: data/core/macros/special-notes.cfg:83
 msgid ""
 " Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr ""
+" Le ionnsaigh cruinn-leum, nì is gheibh thu dà uimhir dhe dhochann. Cha toir "
+"seo buaidh air dìoladh dìona."
 
 #: data/core/macros/special-notes.cfg:86
 msgid ""
 " During battle, this unit can drain life from victims to renew its own "
 "health."
 msgstr ""
-" Ann an sabaid, ’s urrainn dhan aonad seo beatha a shùgh air falbh bho "
+" Ann an sabaid, ’s urrainn dhan aonad seo beatha a shùgh air  falbh bho "
 "ìobairtean gus e fhèin a shlànachadh."
 
 #: data/core/macros/special-notes.cfg:89
@@ -3585,7 +4334,7 @@ msgid ""
 " The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
 msgstr ""
-" Gabhaidh na h-ìobairtean aig puinnsean an aonaid seo dochann gu cunbhalach "
+" Gabhaidh na h-ìobairtean aig puinsean an aonaid seo dochann gu cunbhalach "
 "gus tèid an leigheas ann am baile no le aonad aig a bheil leigheas."
 
 #. [trait]: id=loyal
@@ -3619,7 +4368,7 @@ msgstr "closach"
 #: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:39
 #: data/core/macros/traits.cfg:54
 msgid "Immune to drain, poison, and plague"
-msgstr "Dìonachd an aghaidh puinnsein, sùigh is plàighe."
+msgstr "Dìonachd an aghaidh puinsein, sùigh is plàighe."
 
 #. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:37
@@ -3801,6 +4550,13 @@ msgid ""
 "especially when encountered in groups. Typically nocturnal, they are often "
 "kept (and occasionally tamed) by those who share their love of the night."
 msgstr ""
+"Tha iomadh cruth is meud aig ialtagan is chan eil a’ mhòr chuid dhiubh "
+"cunnartach a dh’itheas biastagan is beathaichean beaga eile. Faodaidh an "
+"fheadhainn nas motha is nas fhiadhaiche a bhith cunnartach dhan chinne-"
+"daonna is dha na cinnidhean eile cho math ris an sprèidh aca, gu h-àraidh "
+"nuair a bhios buidheann dhiubh ann. Oidhcheach gu cumanta, thèid an cumail "
+"(is callachadh aig amannan) leis an fheadhainn a bhios a cheart cho measail "
+"air an oidhche."
 
 #. [race]: id=drake
 #: data/core/units.cfg:54
@@ -4005,6 +4761,48 @@ msgid ""
 "trolls. Many of their settlements cannot be reliably dated, undoubtedly "
 "having existed for over a millennium."
 msgstr ""
+"An coimeas ris a’ chinne-daonna, tha sìthichean beagan nas àirde is nas "
+"sùbailte ach chan eil iad cho bunanta. Tha na cluasan aca rud beag biorach "
+"is tha craiceann is falt bàn orra mar as trice. ’S e am beatha fada aig na "
+"sìthichean an diofar as fhollaisiche eatorra is a’ chinne-daonna — bidh a’ "
+"mhòr chuid dhiubh beò fad dà linn gu leth mura faigh iad bàs le tinneas, "
+"tubaist no cogadh. Fhad ’s a tha comas draoidheach iongantach aig cuid "
+"dhiubh a mhaireas beò fiù ’s linn nas fhaide, fàsaidh a’ mhòr chuid dhe na "
+"sìthichean breòite nuair a bhios iad eadar 250 is 300 bliadhna a dh’aois is "
+"caochlaidh iad gu luath (an dèidh bliadhna no dhà) an uair sin.\n"
+"\n"
+"Tha co-dhiù beagan draoidheachd am broinn gach sìthiche gu nàdarra. Ged nach "
+"bi a’ mhòr chuid dhiubh comasach air a cleachdadh a rèir an toil fhèin, "
+"bheir a làthaireachd mothachadh geur is beatha fada dhaibh. Tha tàlantan co-"
+"cheangailte ri draoidheachd aig mòran shìthichean a leithid gìomanachd no "
+"teòmachd a leigeas leotha gnìomhan a choileanadh a bhiodh iongantach dhan "
+"chinne-daonna. Faodaidh na sìthichean a dh’ionnsaicheas mar a chleachdar a’ "
+"chumhachd seo ann an dòighean nas fharsainge fàs eagalach math oirre. "
+"Roghnaichidh mòran dhiubh an tàlant aca a chleachdadh gus càch a "
+"shlànachadh.\n"
+"\n"
+"Fàsaidh cuid dhe na sìthichean a ghabhas slighe na draoidheachd so-leònta an "
+"aghaidh làthaireachd iarrainn fhuair is faodaidh gun tèid fiù ’s an losg "
+"leis. Tha beul-aithris nan sìthichean ag innse dhuinn gum biodh seo nas "
+"cumanta bho chionn aimsir.\n"
+"\n"
+"Cuiridh na sìthichean mòran dhen ùine aca seachad a’ toirt gleus air na "
+"sgilean is tàlantan aca. Obraichidh an fheadhainn aig nach eil comas "
+"draoidheachd air na sgilean corporra aca. Mar thoradh air seo, tha na "
+"sìthichean uabhasach math air boghadaireachd is ’s e seo am modh cogaidh as "
+"cudromaiche a th’ aca, ’s dòcha. Bidh bogha aig a’ mhòr chuid dhe "
+"shaighdearan is chan eil cinneadh sam bith eile cho luath is amaiseach leis "
+"an cuid boghadaireachd. Tha gràdh mòr aig a h-uile sìthiche air an nàdar neo-"
+"mhillte. Gu tric, bidh iad mì-chofhurtail ann an àiteachan fosgailte gun "
+"lusan. Tha a’ mhòr chuid dhiubh a’ fuireach ann an coilltean na Mòr-thire "
+"Farsainge; ann an Coille Aidhean san iar-dheas, ann an Coille Loch Bheasa "
+"san iar-thuath is sna coilltean mòra an taoibh thuaith, Coille Liontainir "
+"nam measg.\n"
+"\n"
+"’S e an cinneadh as sine air an tìr-mhòr a th’ anns na sìthichean seach na h-"
+"athaich ’s dòcha. Cha ghabh aois chinnteach a chur air a’ mhòr chuid dhe na "
+"tuineachaidhean aca ach tha mòran dhiubh nas sine na mìle bliadhna gun "
+"teagamh."
 
 #. [race]: id=goblin
 #: data/core/units.cfg:132
@@ -4042,6 +4840,25 @@ msgid ""
 "exception of jobs that require the brute strength of true orcs. Those the "
 "orcs revel in as proof of their prowess."
 msgstr ""
+"A dh’aindeoin an coltais a th’ orra, ’s e clann nan deamhan a th’ anns na "
+"bòcain is tha iad nam phàirt dhen aon chinneadh. Fhad ’s nach beir na "
+"cinnidhean eile ach pàiste no dhà aig an aon àm, bidh cuain mhòr dhe chlann "
+"aig deamhain aig an aon àm a chuireas gu mòr ris an àireamh gu luath. Am "
+"measg gach cuaine, cha bhi ach fìor-dheamhain no dhà a dh’fhàsas gu àirde is "
+"neart shlàn an cinneadh. ’S e leth-dheamhain a bhios cuid eile diubh a bhios "
+"mòran nas laige na am bràithrean mòra is nach fhaigh ach dreuchd taicidh am "
+"measg am  feachdan a leithid boghadaireachd. Bidh an corr dhiubh, mar as "
+"trice barrachd na an dàrna leth, nam bòcain. Tha bòcain beag is caran lag is "
+"chan fhàs iad nas motha na pàiste a’ chinne-daonna mar as trice. Bidh "
+"bòcainn cha mòr nan tràillean dha am bràithrean as motha fad am beatha is "
+"thèid an cleachdadh mar  fhodar-claidheimhe air a’ bhlàr. Tha iad "
+"soirbheachail a dh’aindeoin an dàin chruaidh; air an dàrna làimh tha mòran "
+"diubh ann is air an làimh eile tha làn-fhios aig na deamhain air dè cho "
+"eisimeileach a tha iad air na bòcain.\n"
+"\n"
+"Nì na bòcain a’ mhòr chuid dhen obair-làimhe a bhios a dhìth air na deamhain "
+"ach na h-obraichean nach gabh dèanamh ach le neart fìor-dheamhain. Gabhaidh "
+"na deamhain tlachd às na h-obraichean sin mar  fhianais air an treuntachd."
 
 #. [race]: id=gryphon, description=
 #: data/core/units.cfg:150
