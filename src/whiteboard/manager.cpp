@@ -640,11 +640,7 @@ void manager::create_temp_move()
 	 * (This section has multiple return paths.)
 	 */
 
-	if(!active_
-			|| wait_for_side_init_
-			|| executing_actions_
-			|| is_observer()
-			|| resources::controller->is_linger_mode())
+	if ( !active_ || !can_modify_game_state() )
 		return;
 
 	pathfind::marked_route const& route =
