@@ -12,17 +12,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-18 09:41+0200\n"
-"PO-Revision-Date: 2012-04-05 20:07+0400\n"
+"POT-Creation-Date: 2012-10-27 15:56+0200\n"
+"PO-Revision-Date: 2012-11-16 16:04+0400\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
-"Language-Team: <ru@li.org>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Emacs 24.2.1, po-mode 2.2+0.4\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Language: Russian\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
@@ -48,16 +48,18 @@ msgid ""
 "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
 "score = %d  Gold = %d"
 msgstr ""
+"<span foreground='#%02x%02x%02x'>Сторона %d</span>:  Доход = %d  Бойцы = %d  "
+"Золото = %d"
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
 #: data/multiplayer/eras.cfg:132
 msgid "Grand total: <b>%d</b>"
-msgstr ""
+msgstr "Сумма: <b>%d</b>"
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
 #: data/multiplayer/eras.cfg:142
 msgid "<span foreground='%s'>Side %d</span> has the advantage."
-msgstr ""
+msgstr "Преимущество у <span foreground='%s'>Стороны %d</span>."
 
 #. [era]: id=era_default
 #: data/multiplayer/eras.cfg:166
@@ -126,6 +128,16 @@ msgid ""
 "herself by arranging battles between the mortal beings unlucky enough to be "
 "drawn into its depths. Designed by Doc Paterson."
 msgstr ""
+"Давным-давно, великая волшебница Сулла была заключена в Пасти Этена, сгустке "
+"мистической энергии, хаотическая природа которого не даёт ей бежать. Однако, "
+"с течением столетий Сулла постепенно приспособила свою мощь к этому вихрю "
+"хаоса, и начала распространять своё влияние на этот мир, захватывая целые "
+"области из сотен разных миров, реальностей и эпох. Она ставит опыты над "
+"этими кусками Вселенной, играет с ними, соединяет их и перемещает взад-"
+"вперёд между Пастью Этена и их родными местами. Возможно, овладев Пастью, "
+"Сулла однажды вырвется из её оков. Пока же этого не случилось, она будет и "
+"дальше развлекать себя, устраивая битвы между смертными, которым не повезло "
+"оказаться в глубина Пасти. Автор — Док Патерсон."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:22
@@ -210,12 +222,25 @@ msgid ""
 "unite the two halves of the battlefield. The process will be complete by the "
 "end of turn 6.</span>\n"
 msgstr ""
+"Великая волшебница Сулла перенесла ваши армии в этот сгусток безумия, и "
+"хочет, чтобы вы развлекли её битвой.\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"<span color='red'>Учтите:</span>\n"
+"\n"
+"<span color='green'>Бойцы не могут заходить на клетки с каменными грудами. "
+"Однако, их можно там призывать, и они смогут сойти с такой клетки.</span>\n"
+"\n"
+"<span color='green'>С четвёртого хода Великая волшебница Сулла начнёт "
+"соединять две половины поля боя. К шестом ходу она закончит.</span>\n"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:315
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:332
 msgid "The Aethermaw growls."
-msgstr ""
+msgstr "Пасть Этена издала рык"
 
 #. [multiplayer]: id=multiplayer_Arcanclave_Citadel
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:6
@@ -244,6 +269,22 @@ msgid ""
 "Great Mage Dauntless, may yet remain hidden, lost somewhere within the "
 "granite and obsidian walls of Arcanclave Citadel. Designed by Doc Paterson."
 msgstr ""
+"Давным-давно, за много столетий до времён Хальдрика, далеко-далеко от "
+"восточных рубежей Линтанирского Леса, шли большие и ужасные войны. Летописи "
+"повествуют о могучем маге-воине, гениальном тактике и мастере мистических "
+"искусств, которого сподвижники прозвали Неустрашимым. В битве при "
+"Арханклаве, Неустрашимый и его армии сошлись с варварской расой демонов-"
+"колдунов, известной как Ка-Руук. Окружённый десятками тысяч Ка-Рууков, "
+"Неустрашимый призвал могучего духа земли (который был в долгу перед ним, "
+"никто не знает почему). Дух земли поднял из подземных глубин огромные камни, "
+"и в несколько мгновений превратил их в стены и бойницы огромной крепости. "
+"Тысячи Ка-Рууков пали, пытаясь взять крепость Арханклав, но Неустрашимый и "
+"его воины в тот день одержали победу. Прошло более тысячи лет, и королева-"
+"воин Цинзауна Первая изгнала с руин крепости Арханклав клан некромантов и за "
+"последующие годы превратила эту область в военный оплот. Ходят слухи, что "
+"несколько могучих артефактов, следов правления Великого мага Неустрашимого, "
+"до сих пор спрятаны и забыты где-то за гранитными и обсидиановыми стенами "
+"Арханклава. Автор — Док Патерсон."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:22
@@ -1090,22 +1131,22 @@ msgstr "Механический лук"
 #. [unit]: type=Orcish Leader, id=Neki the Brutal
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:322
 msgid "Neki the Brutal"
-msgstr ""
+msgstr "Неки Зверский"
 
 #. [unit]: type=Elvish Fighter, id=Drowsk Calbeht
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:365
 msgid "Drowsk Calbeht"
-msgstr ""
+msgstr "Дроуск Калбехт"
 
 #. [unit]: id=Rzrrt the Dauntless, type=Soulless
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:428
 msgid "Rzrrt the Dauntless"
-msgstr ""
+msgstr "Рзррт Неустрашимый"
 
 #. [unit]: id=Sorrek, Chosen of Death, type=Skeleton
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:469
 msgid "Sorrek, Chosen of Death"
-msgstr "Соррек, Избранный Смертью"
+msgstr "Соррек, Избранник Смерти"
 
 #. [unit]: type=Young Ogre, id=Baby Baby Dro
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:561
@@ -1135,7 +1176,7 @@ msgstr "Улисс Мантайджуури"
 #. [unit]: type=Orcish Leader, id=Neki the Brute
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:782
 msgid "Neki the Brute"
-msgstr ""
+msgstr "Неки Зверь"
 
 #. [unit]: type=Elvish Fighter, id=Claiomh Dubh
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:825
@@ -1145,12 +1186,12 @@ msgstr "Клайомх Дубх"
 #. [unit]: id=Tyxrrn the Dauntless, type=Soulless
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:888
 msgid "Tyxrrn the Dauntless"
-msgstr ""
+msgstr "Тиксррн Неустрашимый"
 
 #. [unit]: id=Rukhos, Chosen of Death, type=Skeleton
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:929
 msgid "Rukhos, Chosen of Death"
-msgstr "Рухос, Избранный Смертью"
+msgstr "Рухос, Избранник Смерти"
 
 #. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:5
@@ -1196,7 +1237,7 @@ msgstr ""
 #. [effect]: type=arcane
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:76
 msgid "evil eye"
-msgstr ""
+msgstr "око зла"
 
 #. [trait]: id=remove_hp
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:23
@@ -2137,196 +2178,3 @@ msgstr ""
 #~ msgid "Four factions contend for dominance over this watery settlement."
 #~ msgstr ""
 #~ "Четыре команды борятся за доминирование над этим болотистым поселением."
-
-#~ msgid "Default + Khalifate"
-#~ msgstr "По умолчанию + Халифат"
-
-#~ msgid "Khalifate"
-#~ msgstr "Халифат"
-
-#~ msgid "Single player mode — uses the reduced strength spawns."
-#~ msgstr "Режим одного игрока — волны уменьшенной силы"
-
-#~ msgid "Two player mode — uses the full strength spawns."
-#~ msgstr "Режим одного игрока — волны полной силы"
-
-#~ msgid "Survive and defeat the waves of opposition."
-#~ msgstr "Выживите и отбейте волны врагов."
-
-#~ msgid "Defeat all waves"
-#~ msgstr "Отбейте все волны"
-
-#~ msgid "Lose all your team’s leaders"
-#~ msgstr "Гибель лидеров команд."
-
-#~ msgid ""
-#~ "Arcanclave Citadel is the central stronghold of the Arcanclave region. It "
-#~ "was finished in the year 968 YW, and served as the military headquarters "
-#~ "of Cynsaun the First. Designed by Doc Paterson."
-#~ msgstr ""
-#~ "Цитадель Арханклава — центральная крепость земель Арханклава. Она была "
-#~ "окончена в 968 г. ЭВ, и была военным штабом Цинзауна Первого. Дизайн Doc "
-#~ "Paterson."
-
-#~ msgid ""
-#~ "Players must navigate the dispersive terrain of this small but "
-#~ "topographically dense island."
-#~ msgstr ""
-#~ "Игроки должны передвигаться по пересеченной местности этого маленького, "
-#~ "но топографически насыщенного острова."
-
-#~ msgid "teamname^South-West"
-#~ msgstr "Юго-запад"
-
-#~ msgid "teamname^North-East"
-#~ msgstr "Северо-восток"
-
-#~ msgid "teamname^South-East"
-#~ msgstr "Юго-Восток"
-
-#~ msgid "teamname^North-West"
-#~ msgstr "Северо-Запад"
-
-#~ msgid "Survive for 32 turns."
-#~ msgstr "Продержитесь 32 хода."
-
-#, fuzzy
-#~ msgid "2p - Fast To Madness"
-#~ msgstr "2и - Озеро павшей звезды"
-
-#, fuzzy
-#~ msgid " Recommended setting of 3 gold per village."
-#~ msgstr " Рекомендуемые настройки — 2 золота на деревню."
-
-#, fuzzy
-#~ msgid "4p - Mines of Mallorod"
-#~ msgstr "4и - Царь горы"
-
-#~ msgid ""
-#~ "Players must maneuver their units through the divisive terrain of this "
-#~ "long-feared region, once the home of a legendary Elder Basilisk. The "
-#~ "caves and the stark wilderness surrounding them are filled with the "
-#~ "petrified forms of some of Wesnoth's greatest heroes."
-#~ msgstr ""
-#~ "Игроки должны передвигать свои отряды сквозь разрозненные земли этого "
-#~ "пустынного региона, некогда дома Древнего Василиска. Путь к победе "
-#~ "отмечен окаменевшими телами великих героев Веснота."
-
-#~ msgid " Recommended settings of 150 gold and 2 gold per village."
-#~ msgstr ""
-#~ "Рекомендуемые настройки — 150 золота при старте и 2 золота с деревни."
-
-#~ msgid ""
-#~ "There is much to explore in this vast battlefront, designed for players "
-#~ "who favor epic, large-scale duel matches."
-#~ msgstr ""
-#~ "На этом обширном поле боя достаточно места для двоих игроков, желающих "
-#~ "разыграть между собой эпическую битву."
-
-#~ msgid ""
-#~ "Danger lurks around every corner in this underground battlefield, a duel "
-#~ "map where players must find the balance between force and subterfuge."
-#~ msgstr ""
-#~ "Опасность скрывается в каждом закоулке этого подземного поля битвы, "
-#~ "дуэльной карты, где встречаются сила и хитрость."
-
-#~ msgid "A duel map for super fast play."
-#~ msgstr "Дуэльная карта для сверхбыстрой игры."
-
-#~ msgid "teamname^east"
-#~ msgstr "восток"
-
-#~ msgid "teamname^west"
-#~ msgstr "запад"
-
-#~ msgid "Great War"
-#~ msgstr "Великая война"
-
-#~ msgid "Alliance of Darkness"
-#~ msgstr "Альянс Тьмы"
-
-#~ msgid "Alliance of Light"
-#~ msgstr "Альянс Света"
-
-#~ msgid "6p - Amohsad Caldera"
-#~ msgstr "6и - Впадина Амосад"
-
-#~ msgid ""
-#~ "Only a true tactician will survive in this deadly and confining "
-#~ "battlefield, where six boxed-in armies come to a head."
-#~ msgstr ""
-#~ "Только настоящий стратег сможет выжить на этом смертельном и ограниченном "
-#~ "поле боя, где сошлись лицом к лицу шесть армий."
-
-#~ msgid "2p - Wesbowl"
-#~ msgstr "2и - Кубок Веснота"
-
-#~ msgid ""
-#~ "In Wesbowl, a player has to get any of the balls to the other player's "
-#~ "end zone as often as possible. However, the other player can attack your "
-#~ "units. Wesbowl is played with blunt weapons, and healers are on hand, so "
-#~ "when units are killed, they return to that player's end zone with an "
-#~ "injury."
-#~ msgstr ""
-#~ "В Кубке Веснота игрок должен как можно быстрее пронести мяч до конечной "
-#~ "зоны другого игрока. Другой игрок может атаковать ваши отряды. Кубок "
-#~ "Веснота играется с тупым оружием, и наготове есть бригада лекарей, так "
-#~ "что \"убитые\" игроки возвращаются в свою начальную зону, получив лишь "
-#~ "ранения."
-
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Move either ball to your opponent's end zone more times than they move a "
-#~ "ball to yours.\n"
-#~ "Defeat:\n"
-#~ "#Opponent moves the balls to your end zone more times than you move them "
-#~ "to the opponent's end zone"
-#~ msgstr ""
-#~ "\n"
-#~ "Победа:\n"
-#~ "@Пронесите мяч в конечную зону оппонента больше раз, чем он пронесет в "
-#~ "вашу\n"
-#~ "Поражение:\n"
-#~ "#Оппонент пронес в вашу конечную зону больше мячей, чем вы в его"
-
-#~ msgid "Red scores! Current score is $redscore-$bluescore"
-#~ msgstr "Красные забили! Счет $redscore — $bluescore"
-
-#~ msgid "Blue scores! Current score is $redscore-$bluescore"
-#~ msgstr "Синие забили! Счет $redscore — $bluescore"
-
-#~ msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
-#~ msgstr "Отдать пас $passto.type ($xloc,$yloc)?"
-
-#~ msgid "Yes!"
-#~ msgstr "Да!"
-
-#~ msgid "No"
-#~ msgstr "Нет"
-
-#~ msgid "Blue team wins! Final score: $redscore-$bluescore"
-#~ msgstr "Синяя команда выиграла! Финальный счет: $redscore — $bluescore"
-
-#~ msgid "Red team wins! Final score: $redscore-$bluescore"
-#~ msgstr "Красная команда выиграла! Финальный счет: $redscore — $bluescore"
-
-#~ msgid "Draw! Final score: $redscore-$bluescore"
-#~ msgstr "Ничья! Финальный счет: $redscore — $bluescore"
-
-#~ msgid "Monsters"
-#~ msgstr "Монстры"
-
-#~ msgid "2p - Blitz"
-#~ msgstr "2и — Блиц"
-
-#~ msgid "3p - Triple Blitz"
-#~ msgstr "3и — Тройной Блиц"
-
-#, fuzzy
-#~ msgid "Defeat enemy leader"
-#~ msgstr "Гибель лидеров команды."
-
-#, fuzzy
-#~ msgid "Defeat enemy leader(s)"
-#~ msgstr "Гибель лидеров команды."
