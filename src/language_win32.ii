@@ -35,7 +35,8 @@
     if(win_locale=="fur")
 		win_locale = "C";
     if(win_locale=="ga")
-		win_locale = "C";
+		// Yes, "Irish" alone does not work
+		win_locale = "Irish_Ireland";
     if(win_locale=="gl")
 		win_locale = "Galician";
     if(win_locale=="he")
