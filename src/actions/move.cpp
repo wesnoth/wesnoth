@@ -20,6 +20,7 @@
 
 #include "move.hpp"
 
+#include "undo.hpp"
 #include "vision.hpp"
 
 #include "../game_display.hpp"

@@ -1083,7 +1083,7 @@ void manager::clear_undo()
 {
 	apply_shroud_changes(*resources::undo_stack, viewer_side());
 	resources::undo_stack->clear();
-	resources::redo_stack->clear();
+	resources::undo_stack->clear_redo();
 }
 
 void manager::options_dlg()

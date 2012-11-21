@@ -30,7 +30,6 @@ namespace resources
 	::tod_manager *tod_manager = NULL;
 	pathfind::manager *tunnels = NULL;
 	wb::manager *whiteboard = NULL;
-	std::vector<undo_action> *undo_stack = NULL;
-	std::vector<undo_action> *redo_stack = NULL;
+	undo_list *undo_stack = NULL;
 	persist_manager *persist = NULL;
 }

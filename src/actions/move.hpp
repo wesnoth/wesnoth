@@ -23,9 +23,8 @@
 
 struct map_location;
 class  replay;
+class  undo_list;
 class  unit;
-
-#include "undo.hpp"
 
 #include "../unit_map.hpp"
 

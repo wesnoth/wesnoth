@@ -136,7 +136,7 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 		recall_list.erase(dismissed_unit);
 
 		//clear the redo stack to avoid duplication of dismissals
-		resources::redo_stack->clear();
+		resources::undo_stack->clear_redo();
 		return gui::DELETE_ITEM;
 	} else {
 		return gui::CONTINUE_DIALOG;
@@ -867,7 +867,7 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 		//MP_COUNTDOWN grant time bonus for recruiting
 		current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
 
-		resources::redo_stack->clear();
+		resources::undo_stack->clear_redo();
 		assert(new_unit.type());
 
 		resources::undo_stack->push_back(undo_action(new_unit, loc, recruited_from, undo_action::RECRUIT));
@@ -1088,7 +1088,7 @@ bool menu_handler::do_recall(const unit& un, int side_num, const map_location& r
 		clear_undo_stack(side_num);
 	}
 
-	resources::redo_stack->clear();
+	resources::undo_stack->clear_redo();
 	gui_->redraw_minimap();
 	gui_->invalidate_game_status();
 	gui_->invalidate(recall_location);
@@ -1203,7 +1203,7 @@ void menu_handler::undo(int side_num)
 		resources::whiteboard->on_gamestate_change();
 	}
 	recorder.undo();
-	resources::redo_stack->push_back(action);
+	resources::undo_stack->push_back_redo(action);
 
 	gui_->invalidate_unit();
 	gui_->invalidate_game_status();
@@ -1213,7 +1213,7 @@ void menu_handler::undo(int side_num)
 
 void menu_handler::redo(int side_num)
 {
-	if(resources::redo_stack->empty())
+	if ( resources::undo_stack->empty_redo() )
 		return;
 
 	const events::command_disabler disable_commands;
@@ -1221,8 +1221,8 @@ void menu_handler::redo(int side_num)
 
 	// Get the action to undo. (This will be placed on the undo stack, but
 	// only if the redo is successful.)
-	undo_action action = resources::redo_stack->back();
-	resources::redo_stack->pop_back();
+	undo_action action = resources::undo_stack->back_redo();
+	resources::undo_stack->pop_back_redo();
 
 	if (action.is_dismiss()) {
 		if(!current_team.persistent()) {

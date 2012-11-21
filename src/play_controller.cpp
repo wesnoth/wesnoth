@@ -105,7 +105,6 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	map_(game_config, level),
 	units_(),
 	undo_stack_(),
-	redo_stack_(),
 	whiteboard_manager_(),
 	xp_mod_(level["experience_modifier"].to_int(100)),
 	loading_game_(level["playing_team"].empty() == false),
@@ -133,7 +132,6 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	resources::controller = this;
 	resources::tod_manager = &tod_manager_;
 	resources::undo_stack = &undo_stack_;
-	resources::redo_stack = &redo_stack_;
 	resources::persist = &persist_;
 	persist_.start_transaction();
 
@@ -881,7 +879,7 @@ bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int in
 		return network::nconnections() > 0;
 
 	case hotkey::HOTKEY_REDO:
-		return !linger_ && !redo_stack_.empty() && !events::commands_disabled && !browse_;
+		return !linger_ && !undo_stack_.empty_redo() && !events::commands_disabled && !browse_;
 	case hotkey::HOTKEY_UNDO:
 		return !linger_ && !undo_stack_.empty() && !events::commands_disabled && !browse_;
 

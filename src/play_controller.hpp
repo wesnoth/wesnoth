@@ -220,7 +220,6 @@ protected:
 	gamemap map_;
 	unit_map units_;
 	undo_list undo_stack_;
-	undo_list redo_stack_;
 
 	//whiteboard manager
 	boost::scoped_ptr<wb::manager> whiteboard_manager_;

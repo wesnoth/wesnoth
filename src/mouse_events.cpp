@@ -809,7 +809,7 @@ size_t mouse_handler::move_unit_along_route(const std::vector<map_location> & st
 	if(moves == 0)
 		return 0;
 
-	resources::redo_stack->clear();
+	resources::undo_stack->clear_redo();
 
 	if ( interrupted  &&  moves + 1 < steps.size() ) {
 		// reselect the unit (for "press t to continue")
@@ -1018,7 +1018,7 @@ void mouse_handler::attack_enemy_(const map_location& att_loc
 	//may fire event and modify things
 	apply_shroud_changes(*resources::undo_stack, side_num_);
 	resources::undo_stack->clear();
-	resources::redo_stack->clear();
+	resources::undo_stack->clear_redo();
 
 	unit_map::iterator attacker = find_unit(attacker_loc);
 	if(attacker == units_.end()
