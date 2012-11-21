@@ -224,7 +224,7 @@ protected:
 	 * Notification if the content of a child needs a resize.
 	 *
 	 * When a resize is required the container first can try to handle it
-	 * itself. If it can't honour the request the function will call @ref
+	 * itself. If it can't honor the request the function will call @ref
 	 * twindow::invalidate_layout().
 	 *
 	 * @note Calling this function on a widget with size == (0, 0) results

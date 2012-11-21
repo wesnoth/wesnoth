@@ -1428,7 +1428,7 @@ void twindow::signal_handler_request_placement(
  *   sized directly, but this is controlled by a window. A widget has an
  *   internal size cache and if the value in the cache is not equal to 0,0
  *   that value is its best size. This value gets set when the widget can
- *   honour a resize request.  It will be set with the value which honors
+ *   honor a resize request.  It will be set with the value which honors
  *   the request.
  *
  * - @ref gui2::tgrid "Grid"; A grid is an invisible container which holds

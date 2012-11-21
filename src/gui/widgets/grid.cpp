@@ -214,7 +214,7 @@ void tgrid::reduce_width(const unsigned maximum_width)
 
 	size = get_best_size();
 	if(size.x <= static_cast<int>(maximum_width)) {
-		DBG_GUI_L << LOG_HEADER << " Resize request honoured.\n";
+		DBG_GUI_L << LOG_HEADER << " Resize request honored.\n";
 		return;
 	}
 
@@ -292,7 +292,7 @@ void tgrid::reduce_height(const unsigned maximum_height)
 
 	size = get_best_size();
 	if(size.y <= static_cast<int>(maximum_height)) {
-		DBG_GUI_L << LOG_HEADER << " Resize request honoured.\n";
+		DBG_GUI_L << LOG_HEADER << " Resize request honored.\n";
 		return;
 	}
 

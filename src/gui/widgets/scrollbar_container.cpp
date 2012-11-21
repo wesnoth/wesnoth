@@ -176,7 +176,7 @@ void tscrollbar_container::request_reduce_height(
 	tpoint size = get_best_size();
 	if(static_cast<unsigned>(size.y) <= maximum_height) {
 		DBG_GUI_L << LOG_HEADER
-				<< " child honoured request, height " << size.y
+				<< " child honored request, height " << size.y
 				<< ".\n";
 		return;
 	}
@@ -246,7 +246,7 @@ void tscrollbar_container::request_reduce_width(
 	tpoint size = get_best_size();
 	if(static_cast<unsigned>(size.x) <= maximum_width) {
 		DBG_GUI_L << LOG_HEADER
-				<< " child honoured request, width " << size.x
+				<< " child honored request, width " << size.x
 				<< ".\n";
 		return;
 	}

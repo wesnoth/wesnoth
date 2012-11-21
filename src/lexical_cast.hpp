@@ -17,7 +17,7 @@
  * @file
  * New lexcical_cast header.
  *
- * For debugging you can include this header _in_ a namespace (to honour ODR)
+ * For debugging you can include this header _in_ a namespace (to honor ODR)
  * and have a set of functions that throws exceptions instead of doing the
  * real job. This is done for the unit tests but should normally not be done.
  */

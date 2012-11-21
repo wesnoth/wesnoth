@@ -110,7 +110,7 @@ public:
 
 	/**
 	 * Note the position isn't guaranteed to be the wanted position
-	 * the step size is honoured. The value will be rouded down.
+	 * the step size is honored. The value will be rouded down.
 	 */
 	void set_item_position(const unsigned item_position);
 	unsigned get_item_position() const { return item_position_; }
