@@ -72,6 +72,7 @@ static void clear_resources()
 	resources::state_of_game = NULL;
 	resources::teams = NULL;
 	resources::tod_manager = NULL;
+	resources::tunnels = NULL;
 	resources::undo_stack = NULL;
 	resources::units = NULL;
 	resources::whiteboard = NULL;
@@ -157,7 +158,6 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 play_controller::~play_controller()
 {
 	clear_resources();
-	resources::tunnels = NULL;
 }
 
 void play_controller::init(CVideo& video){
