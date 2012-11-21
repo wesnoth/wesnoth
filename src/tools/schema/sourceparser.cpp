@@ -219,8 +219,8 @@ bool class_source_parser::save_schema(){
 	}
 	out.open(output_.c_str(),std::ios::out|std::ios::trunc);
 	if (out.fail()){
-		errors_.add_simple_error("Can not open file "+output_+
-								 "\n Output woulfd not be stored\n");
+		errors_.add_simple_error("Cannot open file "+output_+
+								 "\n Output would not be stored\n");
 		return false;
 	}
 	// remove all forbidden keys
