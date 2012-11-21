@@ -319,7 +319,7 @@ bool class_source_parser::parse_source(){
 
 	f_.open(input_.c_str(),std::ios::in);
 	if (f_.fail()){
-		errors_.add_simple_error("File "+input_ + " can not be opened\n");
+		errors_.add_simple_error("File "+input_ + " cannot be opened\n");
 		return false;
 	}
 	line_ = 0;

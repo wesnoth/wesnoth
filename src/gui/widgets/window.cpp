@@ -1424,7 +1424,7 @@ void twindow::signal_handler_request_placement(
  * a global overview of some terms used in this document.
  *
  * - @ref gui2::twidget "Widget"; Any item which can be used in the widget
- *   toolkit. Not all widgets are visible. In general widgets can not be
+ *   toolkit. Not all widgets are visible. In general widgets cannot be
  *   sized directly, but this is controlled by a window. A widget has an
  *   internal size cache and if the value in the cache is not equal to 0,0
  *   that value is its best size. This value gets set when the widget can

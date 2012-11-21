@@ -2240,7 +2240,7 @@ void display::draw(bool update,bool force) {
 	// not this one, nobody will tell us to redraw (cleanup)
 	previous_invalidated_.swap(invalidated_);
 	invalidated_.insert(previous_invalidated_.begin(),previous_invalidated_.end());
-	// these new invalidations can not cause any propagation because
+	// these new invalidations cannot cause any propagation because
 	// if a hex was invalidated last turn but not this turn, then
 	// * case of no unit in neighbor hex=> no propagation
 	// * case of unit in hex but was there last turn=>its hexes are invalidated too

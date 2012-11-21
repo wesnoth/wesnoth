@@ -444,7 +444,7 @@ config &config::child(const std::string& key, int n)
 	} else {
 		DBG_CF << "The config object has only »" << i->second.size()
 			<< "« children named »" << key
-			<< "«; request for the index »" << n << "« can not be honoured.\n";
+			<< "«; request for the index »" << n << "« cannot be honoured.\n";
 
 		return invalid;
 	}
