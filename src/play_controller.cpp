@@ -63,18 +63,18 @@ static lg::log_domain log_enginerefac("enginerefac");
 
 static void clear_resources()
 {
-	resources::game_map = NULL;
-	resources::units = NULL;
-	resources::teams = NULL;
-	resources::state_of_game = NULL;
-	resources::gamedata = NULL;
 	resources::controller = NULL;
+	resources::gamedata = NULL;
+	resources::game_map = NULL;
+	resources::persist = NULL;
 	resources::screen = NULL;
 	resources::soundsources = NULL;
+	resources::state_of_game = NULL;
+	resources::teams = NULL;
 	resources::tod_manager = NULL;
 	resources::undo_stack = NULL;
+	resources::units = NULL;
 	resources::whiteboard = NULL;
-	resources::persist = NULL;
 }
 
 
@@ -126,15 +126,16 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	victory_music_(),
 	defeat_music_()
 {
-	resources::game_map = &map_;
-	resources::units = &units_;
-	resources::teams = &teams_;
-	resources::state_of_game = &gamestate_;
-	resources::gamedata = &gamedata_;
 	resources::controller = this;
+	resources::gamedata = &gamedata_;
+	resources::game_map = &map_;
+	resources::persist = &persist_;
+	resources::state_of_game = &gamestate_;
+	resources::teams = &teams_;
 	resources::tod_manager = &tod_manager_;
 	resources::undo_stack = undo_stack_.get();
-	resources::persist = &persist_;
+	resources::units = &units_;
+
 	persist_.start_transaction();
 
 	// Setup victory and defeat music

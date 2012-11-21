@@ -38,20 +38,20 @@ namespace wb { class manager; } //whiteboard manager
 
 namespace resources
 {
-	extern game_display *screen;
+	extern play_controller      *controller;
+	extern game_data            *gamedata;
+	extern gamemap              *game_map;
+	extern LuaKernel            *lua_kernel;
+	extern persist_manager      *persist;
+	extern game_display         *screen;
 	extern soundsource::manager *soundsources;
-	extern gamemap *game_map;
-	extern unit_map *units;
-	extern std::vector<team> *teams;
-	extern game_state *state_of_game;
-	extern game_data *gamedata;
-	extern LuaKernel *lua_kernel;
-	extern play_controller *controller;
-	extern tod_manager *tod_manager;
-	extern pathfind::manager *tunnels;
-	extern wb::manager *whiteboard;
-	extern undo_list *undo_stack;
-	extern persist_manager *persist;
+	extern game_state           *state_of_game;
+	extern std::vector<team>    *teams;
+	extern ::tod_manager        *tod_manager;
+	extern pathfind::manager    *tunnels;
+	extern undo_list            *undo_stack;
+	extern unit_map             *units;
+	extern wb::manager          *whiteboard;
 }
 
 #endif

@@ -18,18 +18,18 @@
 
 namespace resources
 {
-	game_display *screen = NULL;
+	play_controller      *controller = NULL;
+	game_data            *gamedata = NULL;
+	gamemap              *game_map = NULL;
+	LuaKernel            *lua_kernel = NULL;
+	persist_manager      *persist = NULL;
+	game_display         *screen = NULL;
 	soundsource::manager *soundsources = NULL;
-	gamemap *game_map = NULL;
-	unit_map *units = NULL;
-	std::vector<team> *teams = NULL;
-	game_state *state_of_game = NULL;
-	game_data *gamedata = NULL;
-	LuaKernel *lua_kernel = NULL;
-	play_controller *controller = NULL;
-	::tod_manager *tod_manager = NULL;
-	pathfind::manager *tunnels = NULL;
-	wb::manager *whiteboard = NULL;
-	undo_list *undo_stack = NULL;
-	persist_manager *persist = NULL;
+	game_state           *state_of_game = NULL;
+	std::vector<team>    *teams = NULL;
+	::tod_manager        *tod_manager = NULL;
+	pathfind::manager    *tunnels = NULL;
+	undo_list            *undo_stack = NULL;
+	unit_map             *units = NULL;
+	wb::manager          *whiteboard = NULL;
 }
