@@ -19,6 +19,7 @@
 #include "mouse_events.hpp"
 
 #include "actions/move.hpp"
+#include "actions/undo.hpp"
 #include "attack_prediction_display.hpp"
 #include "dialogs.hpp"
 #include "game_end_exceptions.hpp"

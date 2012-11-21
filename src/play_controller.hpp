@@ -17,7 +17,6 @@
 #ifndef PLAY_CONTROLLER_H_INCLUDED
 #define PLAY_CONTROLLER_H_INCLUDED
 
-#include "actions/undo.hpp"
 #include "controller_base.hpp"
 #include "game_end_exceptions.hpp"
 #include "help.hpp"
@@ -34,6 +33,7 @@ class game_display;
 class game_state;
 class game_data;
 class team;
+class undo_list;
 struct wml_menu_item;
 
 namespace game_events {
@@ -219,7 +219,10 @@ protected:
 	game_data gamedata_;
 	gamemap map_;
 	unit_map units_;
-	undo_list undo_stack_;
+	/// undo_stack_ is never NULL. It is implemented as a pointer so that
+	/// undo_list can be an incomplete type at this point (which reduces the
+	/// number of files that depend on actions/undo.hpp).
+	boost::scoped_ptr<undo_list> undo_stack_;
 
 	//whiteboard manager
 	boost::scoped_ptr<wb::manager> whiteboard_manager_;

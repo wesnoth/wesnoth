@@ -30,6 +30,7 @@
 #include "utility.hpp"
 
 #include "actions/create.hpp"
+#include "actions/undo.hpp"
 #include "arrow.hpp"
 #include "chat_events.hpp"
 #include "formula_string_utils.hpp"

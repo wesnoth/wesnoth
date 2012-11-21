@@ -15,6 +15,7 @@
 
 #include "playturn.hpp"
 
+#include "actions/undo.hpp"
 #include "construct_dialog.hpp"
 #include "game_display.hpp"
 #include "game_end_exceptions.hpp"

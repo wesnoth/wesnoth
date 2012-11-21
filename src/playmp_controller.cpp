@@ -18,6 +18,7 @@
 
 #include "dialogs.hpp"
 
+#include "actions/undo.hpp"
 #include "game_end_exceptions.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
@@ -219,7 +220,7 @@ void playmp_controller::play_human_turn(){
 				if (turn_data_->process_network_data(cfg, res, backlog, skip_replay_) == turn_info::PROCESS_RESTART_TURN)
 				{
 					// Clean undo stack if turn has to be restarted (losing control)
-					if (!undo_stack_.empty())
+					if (!undo_stack_->empty())
 					{
 						font::floating_label flabel(_("Undoing moves not yet transmitted to the server."));
 
@@ -233,7 +234,7 @@ void playmp_controller::play_human_turn(){
 						font::add_floating_label(flabel);
 					}
 
-					while(!undo_stack_.empty())
+					while(!undo_stack_->empty())
 						menu_handler_.undo(gui_->playing_side());
 					throw end_turn_exception(gui_->playing_side());
 				}

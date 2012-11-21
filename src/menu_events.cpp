@@ -24,6 +24,7 @@
 
 #include "actions/create.hpp"
 #include "actions/move.hpp"
+#include "actions/undo.hpp"
 #include "actions/vision.hpp"
 #include "builder.hpp"
 #include "ai/manager.hpp"
