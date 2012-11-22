@@ -292,6 +292,9 @@ void play_controller::init(CVideo& video){
 		BOOST_FOREACH (const config& mod_cfg, level_.child_range("modification")) {
 			game_events::add_events(mod_cfg.child_range("event"),
 									"mod_" + mod_cfg["id"].str() + "_events");
+			BOOST_FOREACH (const config::any_child& var_cfg, mod_cfg.child("variables").all_children_range()) {
+				gamedata_.add_variable_cfg(var_cfg.key, var_cfg.cfg);
+			}
 		}
 	}
 	loadscreen::global_loadscreen->start_stage("start game");
