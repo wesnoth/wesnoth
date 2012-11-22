@@ -1,78 +1,81 @@
-# #-#-#-#-#  wesnoth-editor.cpp.pot (PACKAGE VERSION)  #-#-#-#-#
-# Scottish Gaelic translations for PACKAGE package.
+# #-#-#-#-#  wesnoth-editor.cpp.pot (wesnoth_up VERSION)  #-#-#-#-#
+# Scottish Gaelic translations for wesnoth_up package.
 # Copyright (C) 2012 Wesnoth development team
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the wesnoth_up package.
 # Automatically generated, 2012.
-#
+# GunChleoc <fios@foramnagaidhlig.net>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-10-27 15:56+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2012-11-21 23:31-0000\n"
+"Last-Translator: GunChleoc <fiosAIGforamnagaidhligDOTnet>\n"
+"Language-Team: Fòram na Gàidhlig http://www.foramnagaidhlig.net\n"
 "Language: gd\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"#-#-#-#-#  wesnoth-editor.cpp.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth-editor.wml.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"Plural-Forms: nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : "
+"(n > 2 && n < 20) ? 2 : 3;\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:5
 msgid "Single Hex"
-msgstr ""
+msgstr "Sia-cheàrnach singilte"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:15
 msgid "Radius 1 Hex"
-msgstr ""
+msgstr "Sia-cheàrnach rèideas 1"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:25
 msgid "Radius 2 Hex"
-msgstr ""
+msgstr "Sia-cheàrnach rèideas 2"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:46
 msgid "Hex Line NW-SE"
-msgstr ""
+msgstr "Loidhne sia-cheàrnach IT-ED"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:62
+#, fuzzy
+#| msgid "Hex Line NW-SE"
 msgid "Hex Line SE-NW"
-msgstr ""
+msgstr "Loidhne sia-cheàrnach IT-ED"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:11
 msgid "all"
-msgstr ""
+msgstr "a h-uile"
 
 #. [editor_group]: id=water
 #: data/core/editor/terrain-groups.cfg:17
 msgid "water"
-msgstr ""
+msgstr "uisge"
 
 #. [editor_group]: id=flat
 #: data/core/editor/terrain-groups.cfg:24
 msgid "flat"
-msgstr ""
+msgstr "rèidh"
 
 #. [editor_group]: id=desert
 #: data/core/editor/terrain-groups.cfg:31
 msgid "desert"
-msgstr ""
+msgstr "fàsach"
 
 #. [editor_group]: id=embellishments
 #: data/core/editor/terrain-groups.cfg:38
 msgid "embellishments"
-msgstr ""
+msgstr "sgeadachadh"
 
 #. [editor_group]: id=forest
 #: data/core/editor/terrain-groups.cfg:45
 msgid "forest"
-msgstr ""
+msgstr "coille"
 
 #. [editor_group]: id=fall
 #: data/core/editor/terrain-groups.cfg:52
@@ -82,42 +85,42 @@ msgstr ""
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:59
 msgid "frozen"
-msgstr ""
+msgstr "reòite"
 
 #. [editor_group]: id=rough
 #: data/core/editor/terrain-groups.cfg:66
 msgid "rough"
-msgstr ""
+msgstr "garbh"
 
 #. [editor_group]: id=cave
 #: data/core/editor/terrain-groups.cfg:73
 msgid "cave"
-msgstr ""
+msgstr "uamh"
 
 #. [editor_group]: id=obstacle
 #: data/core/editor/terrain-groups.cfg:80
 msgid "obstacle"
-msgstr ""
+msgstr "cnap-starra"
 
 #. [editor_group]: id=village
 #: data/core/editor/terrain-groups.cfg:87
 msgid "village"
-msgstr ""
+msgstr "baile"
 
 #. [editor_group]: id=castle
 #: data/core/editor/terrain-groups.cfg:94
 msgid "castle"
-msgstr ""
+msgstr "caisteal"
 
 #. [editor_group]: id=bridge
 #: data/core/editor/terrain-groups.cfg:101
 msgid "bridge"
-msgstr ""
+msgstr "drochaid"
 
 #. [editor_group]: id=special
 #: data/core/editor/terrain-groups.cfg:108
 msgid "special"
-msgstr ""
+msgstr "sònraichte"
 
 #. [editor_tool_hint]: id=editor-tool-fill
 #. [editor_tool_hint]: id=editor-tool-paint
@@ -129,6 +132,9 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
+"Cleachd putanan clì/deas gus cruth-tìre beulaibh/cùlaibh a tharraing. Cùm "
+"air Shift gus bun-bhreath a-mhàin a pheantadh. Crtl+briog gus sampall dhen "
+"chruth-tìre fon chùrsair  fhaighinn."
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
@@ -137,6 +143,9 @@ msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
 msgstr ""
+"Taghaidh putan clì na luchaige, neo-thaghaidh am putan deas. Cùm air Shift "
+"airson taghadh dhe leacan aig a bheil an aon chruth-tìre le slat-"
+"draoidheachd."
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #. [menu]: id=start_position_button_editor
@@ -146,6 +155,10 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
+"Seallaidh putan clì na luchaige taghadh cluicheadair, neo-thaghaidh am putan "
+"deas. Nì iuchraichean àireimh sgroladh dhan ionad tòiseachaidh, suidhichidh "
+"alt-àireamh an t-ionad tòiseachaidh àraidh fon chùrsair, nì delete neo-"
+"thaghadh."
 
 #. [editor_tool_hint]: id=editor-paste
 #: data/core/editor/tool-hints.cfg:30
@@ -153,26 +166,29 @@ msgid ""
 "Click to paste, zoom out for more accuracy when pasting large areas. Use the "
 "edit menu to transform the clipboard (rotate, mirror)."
 msgstr ""
+"Dèan briogadh airson cur ann, sùm a-mach airson barrachd pongalachd nuair a "
+"chuireas tu roinnean farsaing ann. Cleachd an clàr-taice deasachaidh gus am "
+"bòrd-chliopaichean cruth-atharrachadh (cuairtich, sgàthan)."
 
 #. [menu]: id=menu-editor-file
 #: data/themes/editor.cfg:116
 msgid "File"
-msgstr ""
+msgstr "Faidhle"
 
 #. [menu]: id=menu-editor-edit
 #: data/themes/editor.cfg:130
 msgid "Edit"
-msgstr ""
+msgstr "Deasaich"
 
 #. [menu]: id=menu-editor-map
 #: data/themes/editor.cfg:143
 msgid "Map"
-msgstr ""
+msgstr "Mapa"
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor.cfg:156
 msgid "Window"
-msgstr ""
+msgstr "Uinneag"
 
 #. [menu]: id=menu-editor-terrain
 #: data/themes/editor.cfg:439
@@ -182,141 +198,153 @@ msgstr ""
 #. [label]: id=villages-icon
 #: data/themes/editor.cfg:463
 msgid "villages"
-msgstr ""
+msgstr "bailtean"
 
 #: src/editor/editor_controller.cpp:154
 msgid "Fatal error"
-msgstr ""
+msgstr "Mearachd mharbhtach"
 
 #: src/editor/editor_controller.cpp:178
 msgid "Do you really want to quit?"
-msgstr ""
+msgstr "A bheil thu cinnteach gu bheil thu airson fàgail?"
 
 #: src/editor/editor_controller.cpp:180
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr ""
+"A bheil thu cinnteach gu bheil thu airson fàgail? Thèid na h-atharraichean a "
+"rinn thu air a’ mhapa an dèidh an t-sàbhalaidh mu dheireadh air chall."
 
 #: src/editor/editor_controller.cpp:182
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
+"A bheil thu cinnteach gu bheil thu airson fàgail? Chaidh na mapaichean seo "
+"atharrachadh is thèid na h-atharraichean a rinn thu orra an dèidh an t-"
+"sàbhalaidh mu dheireadh air chall."
 
 #: src/editor/editor_controller.cpp:185
 msgid "Quit"
-msgstr ""
+msgstr "Fàg an-seo"
 
 #: src/editor/editor_controller.cpp:196
 msgid "No editor time-of-day found."
-msgstr ""
+msgstr "Cha deach àm-an-latha deasaiche a lorg."
 
 #: src/editor/map/context_manager.cpp:101
 #: src/editor/map/context_manager.cpp:193
 msgid "(New Map)"
-msgstr ""
+msgstr "(Mapa ùr)"
 
 #: src/editor/map/context_manager.cpp:162
 msgid "Choose a Map to Open"
-msgstr ""
+msgstr "Tagh mapa airson fhosgladh"
 
 #: src/editor/map/context_manager.cpp:236
 msgid "Choose a Mask to Apply"
-msgstr ""
+msgstr "Tagh masg airson cur an sàs"
 
 #: src/editor/map/context_manager.cpp:243
 msgid "Error loading mask"
-msgstr ""
+msgstr "Mearachd le luchdadh a’ mhasga"
 
 #: src/editor/map/context_manager.cpp:264
 msgid "Choose Target Map"
-msgstr ""
+msgstr "Tagh mapa amais"
 
 #: src/editor/map/context_manager.cpp:271
 #: src/editor/map/context_manager.cpp:635
 msgid "Error loading map"
-msgstr ""
+msgstr "Mearachd le luchdadh a’ mhapa"
 
 #: src/editor/map/context_manager.cpp:389
 msgid "Save the Map As"
-msgstr ""
+msgstr "Sàbhail am mapa mar"
 
 #: src/editor/map/context_manager.cpp:392
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr ""
+"Tha am  faidhle ann mu thràth. A bheil thu airson sgrìobhadh thairis air?"
 
 #: src/editor/map/context_manager.cpp:426
 msgid "No random map generators found."
-msgstr ""
+msgstr "Cha deach gineadair mhapaichean tuaireamach a lorg."
 
 #: src/editor/map/context_manager.cpp:439
 #: src/editor/map/context_manager.cpp:443
 msgid "Map creation failed."
-msgstr ""
+msgstr "Dh’fhàillig le cruthachadh a’ mhapa."
 
 #: src/editor/map/context_manager.cpp:455
 msgid "Unsaved Changes"
-msgstr ""
+msgstr "Atharraichean gun shàbhaladh"
 
 #: src/editor/map/context_manager.cpp:456
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
+"A bheil thu airson a h-uile atharrachadh a rinn thu air a’ mhapa on t-"
+"sàbhaladh mu dheireadh a thilgeil air  falbh?"
 
 #: src/editor/map/context_manager.cpp:550
 #: src/editor/map/context_manager.cpp:591
 msgid "This map is already open."
-msgstr ""
+msgstr "Tha am mapa seo fosgailte mu thràth."
 
 #: src/editor/map/context_manager.cpp:571
 msgid "Map saved."
-msgstr ""
+msgstr "Mapa air a shàbhaladh."
 
 #: src/editor/map/context_manager.cpp:614
 msgid "Loaded embedded map data"
-msgstr ""
+msgstr "Dàta leabaichte a’ mhapa air luchdadh"
 
 #: src/editor/map/context_manager.cpp:615
 #: src/editor/map/context_manager.cpp:629
 msgid "Map loaded from scenario"
-msgstr ""
+msgstr "Mapa air luchdadh o chnàmh-sgeul"
 
 #: src/editor/map/context_manager.cpp:625
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
+"Faidhle mapa le iomradh air air a luchdadh:\n"
+"$new"
 
 #: src/editor/map/editor_map.cpp:150
 msgid "Player"
-msgstr ""
+msgstr "Cluicheadair"
 
 #: src/editor/map/editor_map.cpp:257
 msgid "The size of the target map is different from the current map"
-msgstr ""
+msgstr "Tha meud a’ mhapa amais eadar-dhealaichte on mhapa seo"
 
 #: src/editor/map/map_context.cpp:103
 msgid "File not found"
-msgstr ""
+msgstr "Cha deach am  faidhle a lorg"
 
 #: src/editor/map/map_context.cpp:117
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
+"Tha coltas cnàmh-sgeòil air an fhaidhle mapa seo, ach chan eil an luach "
+"map_data a’ tomhadh ri faidhle a tha ann"
 
 #: src/editor/map/map_context.cpp:133
 msgid "Empty map file"
-msgstr ""
+msgstr "Faidhle mapa falamh"
 
 #: src/editor/map/map_context.cpp:306
 msgid "Could not save into scenario"
-msgstr ""
+msgstr "Cha do ghabh sàbhaladh dhan chnàmh-sgeul"
 
 #: src/editor/map/map_context.cpp:313
 msgid "Could not save the map: $msg"
-msgstr ""
+msgstr "Cha do ghabh am mapa sàbhaladh: $msg"
 
 #: src/editor/palette/editor_palettes.cpp:48
 msgid "(Unknown Group)"
@@ -324,28 +352,52 @@ msgstr ""
 
 #: src/editor/palette/editor_palettes.cpp:305
 msgid "(non-core)"
-msgstr ""
+msgstr "(neo-eitean)"
 
 #: src/editor/palette/editor_palettes.cpp:306
 msgid "Will not work in game without extra care."
-msgstr ""
+msgstr "Chan obraich seo sa gheama gun chùram a bharrachd."
 
 #: src/editor/palette/terrain_palettes.cpp:55
 msgid "FG: "
-msgstr ""
+msgstr "Beulaibh:"
 
 #: src/editor/palette/terrain_palettes.cpp:56
 msgid "BG: "
-msgstr ""
+msgstr "Cùlaibh:"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:84
 msgid "player^None"
-msgstr ""
+msgstr "Gin"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:96
 msgid "Player $player_number"
-msgstr ""
+msgstr "Cluicheadair $player_number"
 
 #: src/gui/dialogs/editor_settings.cpp:166
 msgid "Custom setting"
-msgstr ""
+msgstr "Roghainn gnàthaichte"
+
+#~ msgid "Quit Editor"
+#~ msgstr "Fàg an deasaiche"
+
+#~ msgid "Undo"
+#~ msgstr "Neo-dhèan"
+
+#~ msgid "Can’t Undo"
+#~ msgstr "Cha ghabh neo-dhèanamh"
+
+#~ msgid "Redo"
+#~ msgstr "Ath-dhèan"
+
+#~ msgid "Can’t Redo"
+#~ msgstr "Cha ghabh ath-dhèanamh"
+
+#~ msgid "Auto-update Terrain Transitions: Yes"
+#~ msgstr "Fèin-ùraich tar-mhùthaidhean crutha-thìre: air"
+
+#~ msgid "Auto-update Terrain Transitions: Partial"
+#~ msgstr "Fèin-ùraich tar-mhùthaidhean crutha-thìre: pàirt"
+
+#~ msgid "Auto-update Terrain Transitions: No"
+#~ msgstr "Fèin-ùraich tar-mhùthaidhean crutha-thìre: dheth"
