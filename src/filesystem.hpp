@@ -28,6 +28,8 @@
 
 #include "exceptions.hpp"
 
+class config;
+
 namespace filesystem {
 
 /** An exception object used when an IO error occurs */
@@ -144,8 +146,8 @@ inline bool is_compressed_file(const std::string& filename) {
 struct file_tree_checksum
 {
 	file_tree_checksum();
-	explicit file_tree_checksum(const class config& cfg);
-	void write(class config& cfg) const;
+	explicit file_tree_checksum(const config& cfg);
+	void write(config& cfg) const;
 	void reset() {nfiles = 0;modified = 0;sum_size=0;}
 	// @todo make variables private!
 	size_t nfiles, sum_size;
@@ -206,10 +208,10 @@ bool is_path_sep(char c);
 struct binary_paths_manager
 {
 	binary_paths_manager();
-	binary_paths_manager(const class config& cfg);
+	binary_paths_manager(const config& cfg);
 	~binary_paths_manager();
 
-	void set_paths(const class config& cfg);
+	void set_paths(const config& cfg);
 
 private:
 	binary_paths_manager(const binary_paths_manager& o);
