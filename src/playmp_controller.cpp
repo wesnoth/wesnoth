@@ -389,7 +389,7 @@ void playmp_controller::wait_for_upload()
 	// upload the next scenario.
 	assert(!is_host_);
 
-	const bool set_turn_data = (turn_data_ == 0);
+	const bool set_turn_data = (turn_data_ == NULL);
 	if(set_turn_data) {
 		init_turn_data();
 	}
@@ -416,7 +416,7 @@ void playmp_controller::wait_for_upload()
 
 	if(set_turn_data) {
 		delete turn_data_;
-		turn_data_ = 0;
+		turn_data_ = NULL;
 	}
 }
 
