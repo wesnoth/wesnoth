@@ -35,7 +35,7 @@ struct ttracer
 	 *
 	 * When the constructor gets a valid @ref ttracer pointer it prints the
 	 * tracing statistics in its destructor. This allows the structure to be
-	 * initialised at the beginning of a scope and print the statistics once
+	 * initialized at the beginning of a scope and print the statistics once
 	 * the scope is left. (This makes it easier to write the tracing macros.)
 	 */
 	struct tprint

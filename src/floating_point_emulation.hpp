@@ -352,9 +352,9 @@ struct tidiv<T, 8>
 };
 
 /**
- * An optimised version of the division operator.
+ * An optimized version of the division operator.
  *
- * This version is optimised to maintain the highest numeric stability when
+ * This version is optimized to maintain the highest numeric stability when
  * dividing.
  *
  * As documented at operator/():
@@ -402,7 +402,7 @@ struct tidiv<T, 8>
  * * divide.
  * * shift the result up by the required number of bits.
  *
- * The code has some other optimisations as well. On a 2-complement system
+ * The code has some other optimizations as well. On a 2-complement system
  * there are additional tests required for negative and positive values, to
  * remove these branches, the code uses a temporary value which contains the
  * positive value.

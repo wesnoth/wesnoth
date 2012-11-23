@@ -350,7 +350,7 @@ void tpane::place_or_set_origin_children()
 void tpane::prepare_placement() const
 {
 	assert(placer_.get());
-	placer_->initialise();
+	placer_->initialize();
 
 	BOOST_FOREACH(const titem& item, items_) {
 		if(item.grid->get_visible() == twidget::INVISIBLE) {

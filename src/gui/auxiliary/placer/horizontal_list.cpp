@@ -36,7 +36,7 @@ tplacer_horizontal_list::tplacer_horizontal_list(const unsigned maximum_rows)
 	assert(maximum_rows_ > 0);
 }
 
-void tplacer_horizontal_list::initialise()
+void tplacer_horizontal_list::initialize()
 {
 	std::fill(rows_.begin(), rows_.end(), 0);
 	columns_.clear();
