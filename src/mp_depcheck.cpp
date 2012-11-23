@@ -16,7 +16,6 @@
 #include "mp_depcheck.hpp"
 
 #include <algorithm>
-#include <map>
 
 #include "formula_string_utils.hpp"
 #include "gettext.hpp"
@@ -366,7 +365,7 @@ void manager::try_era_by_index(int index, bool force)
 
 void manager::try_scenario_by_index(int index, bool force)
 {
-	try_scenario(depinfo_.child("scenario", index - 1)["id"], force);
+	try_scenario(depinfo_.child("scenario", index)["id"], force);
 }
 
 int manager::get_era_index() const
@@ -386,7 +385,7 @@ int manager::get_era_index() const
 
 int manager::get_scenario_index() const
 {
-	int result = 1;
+	int result = 0;
 
 	BOOST_FOREACH (const config& i, depinfo_.child_range("scenario"))
 	{

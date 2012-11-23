@@ -126,6 +126,14 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	std::string menu_help_str = help_sep + _("Load Game");
 	map_options_.push_back(markup_txt + _("Load Game...") + menu_help_str);
 
+	// Treat the Load game option as a scenario
+	config load_game_info;
+	load_game_info["id"] = "multiplayer_load_game";
+	load_game_info["name"] = "Load Game";
+	dependency_manager_.insert_element(depcheck::SCENARIO, load_game_info, 0);
+	options_manager_.insert_element(options::SCENARIO, load_game_info, 0);
+
+
 	// User maps
 	get_files_in_dir(get_user_data_dir() + "/editor/maps",&user_maps_,NULL,FILE_NAME_ONLY);
 
@@ -142,14 +150,14 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 		depinfo["id"] = user_maps_[i];
 		depinfo["name"] = user_maps_[i];
 
-		dependency_manager_.insert_element(depcheck::SCENARIO, depinfo, i);
+		dependency_manager_.insert_element(depcheck::SCENARIO, depinfo, i+1);
 
 		// Same with options
 		// FIXME: options::elem_type duplicates depcheck::component_type
 		//        Perhaps they should me merged?
-		config optinfo = depinfo;
+		const config& optinfo = depinfo;
 
-		options_manager_.insert_element(options::SCENARIO, optinfo, i);
+		options_manager_.insert_element(options::SCENARIO, optinfo, i+1);
 	}
 
 	// Standard maps
