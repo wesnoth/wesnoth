@@ -104,14 +104,16 @@ manager::manager(const config& gamecfg, CVideo& video)
 	}
 
 	BOOST_FOREACH (const config& cfg, gamecfg.child_range("multiplayer")) {
-		config info;
-		info["id"] = cfg["id"];
-		info["name"] = cfg["name"];
+		if (cfg["allow_new_game"].to_bool() || cfg["allow_new_game"].empty()) {
+			config info;
+			info["id"] = cfg["id"];
+			info["name"] = cfg["name"];
 
-		copy_keys(info, cfg, "era");
-		copy_keys(info, cfg, "modification", true);
+			copy_keys(info, cfg, "era");
+			copy_keys(info, cfg, "modification", true);
 
-		depinfo_.add_child("scenario", info);
+			depinfo_.add_child("scenario", info);
+		}
 	}
 }
 
