@@ -112,7 +112,7 @@ print_help(const int exit_status)
 {
 	std::cout <<
 "Usage wesmage [OPTION...] [FILE]\n"
-"Helper programme to test image manipulation algorithms.\n"
+"Helper program to test image manipulation algorithms.\n"
 "\n"
 "The FILE is the name of the input file to be converted.\n"
 "OPTIONS:\n"
@@ -124,10 +124,10 @@ print_help(const int exit_status)
 "                        This feature is mainly for timing an algorithm and\n"
 "                        is applied on a new image every iteration.\n"
 "-f, --filter FILTER     Filters to be applied to the image. See FILTERS.\n"
-"-h, --help              Show this help and terminate the programme.\n"
+"-h, --help              Show this help and terminate the program.\n"
 "\n"
 "FILTERS:\n"
-"A filter applies a modification to an image. The programme can handle\n"
+"A filter applies a modification to an image. The program can handle\n"
 "multiple filters. They are applied from the command line. The are applied\n"
 "in the left to right order they appear on the command line.\n"
 "A filter has the following syntax ID:PARAMETERS where:\n"
@@ -164,7 +164,7 @@ toptions::parse(int argc, char* argv[])
 	bool help = false;
 	bool dry_run = false;
 
-	/* argv[0] is the name of the programme, not a command-line argument. */
+	/* argv[0] is the name of the program, not a command-line argument. */
 	for(int i = 1; i < argc; ++i) {
 		const std::string option(argv[i]);
 
@@ -248,7 +248,7 @@ toptions::parse(int argc, char* argv[])
 
 	/*
 	 * No filter implies a copy, or conversion to png, which is a valid
-	 * way to use the programme, so do not complain.
+	 * way to use the program, so do not complain.
 	 */
 
 	return result;

@@ -39,7 +39,7 @@ public:
 	/**
 	 * Parses the command line.
 	 *
-	 * This function shall be called once at the beginning of the programme.
+	 * This function shall be called once at the beginning of the program.
 	 *
 	 * @param argc                The @p argc to @ref main.
 	 * @param argv                The @p argv to @ref main.

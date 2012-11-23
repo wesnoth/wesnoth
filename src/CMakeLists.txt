@@ -1187,7 +1187,7 @@ if(ENABLE_TESTS)
 
 	if(ENABLE_TOOLS)
 		# This tool is used to create the images for the sdl_utils unit test.
-		# Due to its unique nature the programme is never installed.
+		# Due to its unique nature the program is never installed.
 		set(create_images_SRC
 			tests/create_images.cpp
 			tools/dummy_video.cpp

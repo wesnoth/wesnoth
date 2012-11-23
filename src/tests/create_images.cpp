@@ -36,11 +36,11 @@ show_usage()
 "Usage:\n"
 "test_images -h\n"
 "test_images DIR\n"
-"Helper programme to create images for the unit tests.\n"
+"Helper program to create images for the unit tests.\n"
 "\n"
 "The DIR is the output directory, will be created if doesn't exist.\n"
 "OPTIONS:\n"
-"-h, --help              Show this help and terminate the programme.\n"
+"-h, --help              Show this help and terminate the program.\n"
 ;
 }
 
