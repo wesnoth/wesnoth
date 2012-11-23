@@ -824,7 +824,7 @@ bool file_exists(const std::string& name)
 #endif
 }
 
-time_t file_create_time(const std::string& fname)
+time_t file_modified_time(const std::string& fname)
 {
 	struct stat buf;
 	if(::stat(fname.c_str(),&buf) == -1)

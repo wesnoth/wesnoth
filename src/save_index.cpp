@@ -128,7 +128,7 @@ void extract_summary_from_config(config &, config &);
 void save_index_class::rebuild(const std::string& name) {
 	std::string filename = name;
 	replace_space2underbar(filename);
-	time_t modified = filesystem::file_create_time(filesystem::get_saves_dir() + "/" + filename);
+	time_t modified = filesystem::file_modified_time(filesystem::get_saves_dir() + "/" + filename);
 	rebuild(name, modified);
 }
 
@@ -398,7 +398,7 @@ save_info create_save_info::operator()(const std::string& filename) const
 {
 	std::string name = filename;
 	replace_underbar2space(name);
-	time_t modified = filesystem::file_create_time(dir + "/" + filename);
+	time_t modified = filesystem::file_modified_time(dir + "/" + filename);
 	save_index_manager.set_modified(name, modified);
 	return save_info(name, modified);
 }
