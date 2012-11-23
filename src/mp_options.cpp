@@ -60,7 +60,7 @@ void manager::init_info(const config& cfg, const std::string& key)
 		entry["id"] = comp["id"];
 		entry["name"] = comp["name"];
 
-		if (comp.has_child("options") && (comp["allow_new_game"].to_bool(true)) {
+		if (comp.has_child("options") && comp["allow_new_game"].to_bool(true)) {
 			const config& options = comp.child("options");
 
 			BOOST_FOREACH (const config::any_child& c,
