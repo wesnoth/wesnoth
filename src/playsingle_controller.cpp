@@ -630,22 +630,19 @@ void playsingle_controller::play_side(const unsigned int side_number, bool save)
 	//flag used when we fallback from ai and give temporarily control to human
 	bool temporary_human = false;
 	do {
-		// Although this flag is used only in this method,
-		// it has to be a class member since derived classes
-		// rely on it
+		// This flag can be set by derived classes (in overridden functions).
 		player_type_changed_ = false;
 		if (!skip_next_turn_)
 			end_turn_ = false;
-
 
 		statistics::reset_turn_stats(teams_[side_number - 1].save_id());
 
 		if(current_team().is_human() || temporary_human) {
 			LOG_NG << "is human...\n";
+			temporary_human = false;
 			try{
 				before_human_turn(save);
 				play_human_turn();
-				after_human_turn();
 			} catch(end_turn_exception& end_turn) {
 				if (end_turn.redo == side_number) {
 					player_type_changed_ = true;
@@ -653,24 +650,32 @@ void playsingle_controller::play_side(const unsigned int side_number, bool save)
 					// reset gui to prev human one
 					if (!teams_[side_number-1].is_human()) {
 						browse_ = true;
-						int t = find_human_team_before(side_number);
-						if (t > 0) {
-							update_gui_to_player(t-1);
-						}
+						int s = find_human_team_before(side_number);
+						if (s <= 0)
+							s = gui_->playing_side();
+						update_gui_to_player(s-1);
 					}
 				}
 			}
-
+			if ( !player_type_changed_ )
+				after_human_turn();
 			LOG_NG << "human finished turn...\n";
+
 		} else if(current_team().is_ai()) {
 			try {
 				play_ai_turn();
 			} catch(fallback_ai_to_human_exception&) {
-				//give control to human for the rest of this turn
+				// Give control to a human for this turn.
 				player_type_changed_ = true;
 				temporary_human = true;
 			}
+
+		} else if(current_team().is_network()) {
+			play_network_turn();
 		}
+
+		// Else current_team().is_empty(), so do nothing.
+
 	} while (player_type_changed_);
 	// Keep looping if the type of a team (human/ai/networked)
 	// has changed mid-turn
@@ -819,7 +824,6 @@ hotkey::ACTION_STATE playsingle_controller::get_action_state(hotkey::HOTKEY_COMM
 }
 
 
-
 void playsingle_controller::after_human_turn(){
 	browse_ = true;
 	end_turn_record();
@@ -854,6 +858,17 @@ void playsingle_controller::play_ai_turn(){
 	gui_->draw();
 	gui_->delay(100);
 }
+
+
+/**
+ * Will handle networked turns in descendent classes.
+ */
+void playsingle_controller::play_network_turn()
+{
+	// There should be no networked sides in single-player.
+	ERR_NG << "Networked team encountered by playsingle_controller.\n";
+}
+
 
 void playsingle_controller::handle_generic_event(const std::string& name){
 	if (name == "ai_user_interact"){

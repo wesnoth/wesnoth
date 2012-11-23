@@ -96,51 +96,8 @@ void playmp_controller::play_side(const unsigned int side_number, bool save)
 	turn_notification_msg = utils::interpolate_variables_into_string(turn_notification_msg, &player);
 	gui_->send_notification(_("Turn changed"), turn_notification_msg);
 
-	do {
-		player_type_changed_ = false;
-		if (!skip_next_turn_)
-			end_turn_ = false;
-
-		statistics::reset_turn_stats(teams_[side_number-1].save_id());
-
-		// we can't call playsingle_controller::play_side because
-		// we need to catch exception here
-		if(current_team().is_human()) {
-			LOG_NG << "is human...\n";
-
-
-			try{
-				before_human_turn(save);
-				play_human_turn();
-				after_human_turn();
-			} catch(end_turn_exception& end_turn) {
-				if (end_turn.redo == side_number) {
-					player_type_changed_ = true;
-					// if new controller is not human,
-					// reset gui to prev human one
-					if (!teams_[side_number-1].is_human()) {
-						browse_ = true;
-						int t = find_human_team_before(side_number);
-
-						if (t <= 0)
-							t = gui_->playing_side();
-
-						update_gui_to_player(t-1);
-					}
-				} else {
-					after_human_turn();
-				}
-			}
-			LOG_NG << "human finished turn...\n";
-		} else if(current_team().is_ai()) {
-			play_ai_turn();
-		} else if(current_team().is_network()) {
-			play_network_turn();
-		}
-	} while (player_type_changed_);
-	//keep looping if the type of a team (human/ai/networked) has changed mid-turn
-
-	skip_next_turn_ = false;
+	// Proceed with the parent function.
+	playsingle_controller::play_side(side_number, save);
 }
 
 void playmp_controller::before_human_turn(bool save){
