@@ -130,8 +130,8 @@ bool is_directory(const std::string& fname);
 /** Returns true if a file or directory with such name already exists. */
 bool file_exists(const std::string& name);
 
-/** Get the creation time of a file. */
-time_t file_create_time(const std::string& fname);
+/** Get the modification time of a file. */
+time_t file_modified_time(const std::string& fname);
 
 /** Returns true if the file ends with '.gz'. */
 bool is_gzip_file(const std::string& filename);
