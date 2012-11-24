@@ -111,7 +111,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 
 	if(new_hex != last_hex_) {
 		update = true;
-		if (last_hex_.valid()) {
+		if ( resources::game_map->on_board(last_hex_) ) {
 			// we store the previous hexes used to propose attack direction
 			previous_hex_ = last_hex_;
 			// the hex of the selected unit is also "free"
@@ -147,7 +147,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 
 		// reset current_route_ and current_paths if not valid anymore
 		// we do it before cursor selection, because it uses current_paths_
-		if(new_hex.valid() == false) {
+		if( !resources::game_map->on_board(new_hex) ) {
 			current_route_.steps.clear();
 			gui().set_route(NULL);
 			resources::whiteboard->erase_temp_move();
@@ -479,6 +479,13 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 	//we use the last registered highlighted hex
 	//since it's what update our global state
 	map_location hex = last_hex_;
+
+	// Clicks on border hexes mean to deselect.
+	// (Check this before doing processing that might not be needed.)
+	if ( !resources::game_map->on_board(hex) ) {
+		deselect_hex();
+		return false;
+	}
 
 	unit_map::iterator u;
 	unit_map::iterator clicked_u;
