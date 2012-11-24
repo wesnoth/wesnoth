@@ -679,11 +679,11 @@ void init(){
 	{
 		static char const *side_attrs[] = {
 			"ai_config", "color", "controller", "current_player", "flag",
-			"flag_icon", "fog", "gold", "hidden", "income", "music",
+			"flag_icon", "fog", "fog_data", "gold", "hidden", "income", "music",
 			"no_leader", "objectives", "objectives_changed", "persistent",
 			"recall_cost", "recruit", "save_id", "scroll_to_leader",
 			"share_maps", "share_view", "shroud", "shroud_data", "start_gold",
-			"team_name", "team_rgb", "user_team_name", "village_gold",
+			"team_name", "team_rgb", "user_team_name", "village_gold", "village_support",
 			// Multiplayer attributes.
 			"action_bonus_count", "allow_changes", "allow_player", "color_lock",
 			"countdown_time", "disallow_observers", "faction",
