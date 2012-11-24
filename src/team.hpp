@@ -112,7 +112,6 @@ public:
 		bool persistent;
 	};
 
-	static std::map<int, color_range> team_color_range_;
 	static const int default_team_gold;
 
 	team();

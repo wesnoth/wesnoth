@@ -153,19 +153,6 @@ void team::team_info::read(const config &cfg)
 		current_player = save_id;
 	}
 
-	const std::string temp_rgb_str = cfg["team_rgb"];
-	std::map<std::string, color_range>::iterator global_rgb = game_config::team_rgb_range.find(cfg["side"]);
-
-	if(!temp_rgb_str.empty()){
-		std::vector<Uint32> temp_rgb;
-		if(string2rgb(temp_rgb_str, temp_rgb))
-			team_color_range_[side] = color_range(temp_rgb);
-		else
-			WRN_NG << "can't parse color string, ignoring: " << temp_rgb_str << "\n";
-	}else if(global_rgb != game_config::team_rgb_range.end()){
-		team_color_range_[side] = global_rgb->second;
-	}
-
 	income_per_village = cfg["village_gold"].to_int(game_config::village_income);
 	recall_cost = cfg["recall_cost"].to_int(game_config::recall_cost);
 
@@ -809,8 +796,6 @@ bool team::shroud_map::copy_from(const std::vector<const shroud_map*>& maps)
 	}
 	return cleared;
 }
-
-std::map<int, color_range> team::team_color_range_;
 
 const color_range team::get_side_color_range(int side){
   std::string index = get_side_color_index(side);
