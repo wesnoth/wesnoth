@@ -298,12 +298,33 @@ private:
 	std::string get_entry_value(const std::string& id,
 								gui2::twindow* win) const;
 
+	/**
+	 * Sets the value of a checkbox widget.
+	 *
+	 * @param val					The new value.
+	 * @param id					The id of the widget.
+	 * @param win					The window which the widget is a child of.
+	 */
 	void set_slider_value(int val, const std::string& id,
 						  gui2::twindow* win) const;
 
+	/**
+	 * Sets the value of a slider widget.
+	 *
+	 * @param val					The new value.
+	 * @param id					The id of the widget.
+	 * @param win					The window which the widget is a child of.
+	 */
 	void set_checkbox_value(bool val, const std::string& id,
 							gui2::twindow* win) const;
 
+	/**
+	 * Sets the value of a text_box widget.
+	 *
+	 * @param val					The new value.
+	 * @param id					The id of the widget.
+	 * @param win					The window which the widget is a child of.
+	 */
 	void set_entry_value(const std::string& val, const std::string& id,
 						 gui2::twindow* win) const;
 
