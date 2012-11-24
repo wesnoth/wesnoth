@@ -144,6 +144,13 @@ bool manager::exists(const elem& e) const
 	return false;
 }
 
+std::string manager::find_name_for(const elem& e) const
+{
+	const config& cfg = depinfo_.find_child(e.type, "id", e.id);
+
+	return cfg["name"];
+}
+
 std::vector<std::string>
 		manager::get_required_not_installed(const elem& e) const
 {
@@ -399,25 +406,27 @@ int manager::get_scenario_index() const
 }
 
 
-bool manager::enable_mods_dialog(const std::vector<std::string>& mods)
+bool manager::enable_mods_dialog(const std::vector<std::string>& mods,
+								 const std::string& requester)
 {
 	std::vector<std::string> items;
 	BOOST_FOREACH (const std::string& mod, mods) {
 		items.push_back(depinfo_.find_child("modification", "id", mod)["name"]);
 	}
 
-	gui2::tmp_depcheck_confirm_change dialog(true, items, _("A component"));
+	gui2::tmp_depcheck_confirm_change dialog(true, items, requester);
 	return dialog.show(video_);
 }
 
-bool manager::disable_mods_dialog(const std::vector<std::string>& mods)
+bool manager::disable_mods_dialog(const std::vector<std::string>& mods,
+								  const std::string& requester)
 {
 	std::vector<std::string> items;
 	BOOST_FOREACH (const std::string& mod, mods) {
 		items.push_back(depinfo_.find_child("modification", "id", mod)["name"]);
 	}
 
-	gui2::tmp_depcheck_confirm_change dialog(false, items, _("A component"));
+	gui2::tmp_depcheck_confirm_change dialog(false, items, requester);
 	return dialog.show(video_);
 }
 
@@ -494,19 +503,20 @@ bool manager::change_scenario(const std::string& id)
 	scenario_ = id;
 
 	elem scen = elem(id, "scenario");
+	std::string scen_name = find_name_for(scen);
 
 	// Firstly, we check if we have to enable/disable any mods
 	std::vector<std::string> req = get_required_not_enabled(scen);
 	std::vector<std::string> con = get_conflicting_enabled(scen);
 
 	if (!req.empty()) {
-		if (!enable_mods_dialog(req)) {
+		if (!enable_mods_dialog(req, scen_name)) {
 			return false;
 		}
 	}
 
 	if (!con.empty()) {
-		if (!disable_mods_dialog(con)) {
+		if (!disable_mods_dialog(con, scen_name)) {
 			return false;
 		}
 	}
@@ -563,19 +573,20 @@ bool manager::change_era(const std::string& id)
 	era_ = id;
 
 	elem era = elem(id, "era");
+	std::string era_name = find_name_for(era);
 
 	std::vector<std::string> req = get_required_not_enabled(era);
 	std::vector<std::string> con = get_conflicting_enabled(era);
 
 	// Firstly, we check if we have to enable/disable any mods
 	if (!req.empty()) {
-		if (!enable_mods_dialog(req)) {
+		if (!enable_mods_dialog(req, era_name)) {
 			return false;
 		}
 	}
 
 	if (!con.empty()) {
-		if (!disable_mods_dialog(con)) {
+		if (!disable_mods_dialog(con, era_name)) {
 			return false;
 		}
 	}

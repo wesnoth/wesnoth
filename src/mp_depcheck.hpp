@@ -21,6 +21,7 @@
 #include <map>
 #include "config.hpp"
 #include "game_display.hpp"
+#include "gettext.hpp"
 
 namespace mp
 {
@@ -277,20 +278,24 @@ private:
 	 * modifications
 	 *
 	 * @param mods 		the list of modifications to be enabled
+	 * @param requester	the add-on's name which requests the action to be done
 	 *
 	 * @return 			true, if the user accepted the change, false if not
 	 */
-	bool enable_mods_dialog(const std::vector<std::string>& mods);
+	bool enable_mods_dialog(const std::vector<std::string>& mods,
+							const std::string& requester = _("A component"));
 
 	/**
 	 * Display a dialog requesting confirmation for disabling some
 	 * modifications
 	 *
 	 * @param mods 		the list of modifications to be disabled
+	 * @param requester	the add-on's name which requests the action to be done
 	 *
 	 * @return 			true, if the user accepted the change, false if not
 	 */
-	bool disable_mods_dialog(const std::vector<std::string>& mods);
+	bool disable_mods_dialog(const std::vector<std::string>& mods,
+							 const std::string& requester = _("A component"));
 
 	/**
 	 * Display a dialog requesting the user to select a new era
@@ -328,6 +333,15 @@ private:
 	 * @return 		true if the component exists false if not
 	 */
 	bool exists(const elem& e) const;
+
+	/**
+	 * Look up the name of a given component.
+	 *
+	 * @param e		the component
+	 *
+	 * @return		the name of the component
+	 */
+	std::string find_name_for(const elem& e) const;
 
 };
 
