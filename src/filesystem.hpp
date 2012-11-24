@@ -95,10 +95,7 @@ bool looks_like_pbl(const std::string& file);
 
 // Basic disk I/O:
 
-/** Basic disk I/O - read file.
- * The bool relative_from_game_path determines whether relative paths should be treated as relative
- * to the game path (true) or to the current directory from which Wesnoth was run (false).
- */
+/** Basic disk I/O - read file. */
 std::string read_file(const std::string &fname);
 std::istream *istream_file(const std::string &fname, bool treat_failure_as_error = true);
 std::ostream *ostream_file(std::string const &fname);
