@@ -81,7 +81,6 @@ team::team_info::team_info() :
 	allow_player(false),
 	no_leader(true),
 	hidden(true),
-	music(),
 	color(),
 	side(0),
 	persistent(false)
@@ -109,7 +108,6 @@ void team::team_info::read(const config &cfg)
 	allow_player = cfg["allow_player"].to_bool(true);
 	no_leader = cfg["no_leader"].to_bool();
 	hidden = cfg["hidden"].to_bool();
-	music = cfg["music"].str();
 	side = cfg["side"].to_int(1);
 
 	if(cfg.has_attribute("color")) {
@@ -253,9 +251,6 @@ void team::team_info::write(config& cfg) const
 
 	cfg["share_maps"] = share_maps;
 	cfg["share_view"] = share_view;
-
-	if(music.empty() == false)
-		cfg["music"] = music;
 
 	cfg["color"] = color;
 

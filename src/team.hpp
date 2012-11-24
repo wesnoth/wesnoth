@@ -104,8 +104,6 @@ public:
 		bool no_leader;
 		bool hidden;
 
-		std::string music;
-
 		std::string color;
 
 		int side;

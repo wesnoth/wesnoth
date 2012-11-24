@@ -679,7 +679,7 @@ void init(){
 	{
 		static char const *side_attrs[] = {
 			"ai_config", "color", "controller", "current_player", "flag",
-			"flag_icon", "fog", "fog_data", "gold", "hidden", "income", "music",
+			"flag_icon", "fog", "fog_data", "gold", "hidden", "income",
 			"no_leader", "objectives", "objectives_changed", "persistent",
 			"recall_cost", "recruit", "save_id", "scroll_to_leader",
 			"share_maps", "share_view", "shroud", "shroud_data", "start_gold",
