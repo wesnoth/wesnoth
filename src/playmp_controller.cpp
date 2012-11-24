@@ -249,7 +249,6 @@ void playmp_controller::play_human_turn(){
 
 		turn_data_->send_data();
 	}
-	menu_handler_.clear_undo_stack(player_number_);
 }
 
 void playmp_controller::set_end_scenario_button()
@@ -389,20 +388,19 @@ void playmp_controller::after_human_turn(){
 		recorder.add_countdown_update(current_team().countdown_time(),player_number_);
 	}
 	LOG_NG << "playmp::after_human_turn...\n";
-	end_turn_record();
 
 	//ensure that turn_data_ is constructed before it is used.
 	if (turn_data_ == NULL) init_turn_data();
 
+	// Normal post-processing for human turns (clear undos, end the turn, etc.)
+	playsingle_controller::after_human_turn();
 	//send one more time to make sure network is up-to-date.
 	turn_data_->send_data();
-	playsingle_controller::after_human_turn();
-	if (turn_data_ != NULL){
-		turn_data_->host_transfer().detach_handler(this);
-		delete turn_data_;
-		turn_data_ = NULL;
-	}
 
+	// Release turn_data_.
+	turn_data_->host_transfer().detach_handler(this);
+	delete turn_data_;
+	turn_data_ = NULL;
 }
 
 void playmp_controller::finish_side_turn(){

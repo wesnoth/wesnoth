@@ -52,7 +52,6 @@ turn_info::turn_info(unsigned team_num, replay_network_sender &replay_sender) :
 }
 
 turn_info::~turn_info(){
-	resources::undo_stack->clear();
 }
 
 void turn_info::sync_network()

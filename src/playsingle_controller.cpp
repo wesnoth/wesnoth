@@ -22,6 +22,7 @@
 
 #include "playsingle_controller.hpp"
 
+#include "actions/undo.hpp"
 #include "ai/manager.hpp"
 #include "ai/game_info.hpp"
 #include "ai/testing.hpp"
@@ -699,6 +700,13 @@ void playsingle_controller::before_human_turn(bool save)
 	if(preferences::turn_bell() && level_result_ == NONE) {
 		sound::play_bell(game_config::sounds::turn_bell);
 	}
+
+	// Error check.
+	if ( !resources::undo_stack->empty() ) {
+		ERR_NG << "Undo stack not empty before_human_turn().\n";
+		// At worst, someone missed some sighted events, so try to recover.
+		resources::undo_stack->clear();
+	}
 }
 
 void playsingle_controller::show_turn_dialog(){
@@ -800,19 +808,6 @@ void playsingle_controller::linger()
 #pragma warning (pop)
 #endif
 
-void playsingle_controller::end_turn_record()
-{
-	if (!turn_over_)
-	{
-		turn_over_ = true;
-		recorder.end_turn();
-	}
-}
-void playsingle_controller::end_turn_record_unlock()
-{
-	turn_over_ = false;
-}
-
 hotkey::ACTION_STATE playsingle_controller::get_action_state(hotkey::HOTKEY_COMMAND command, int index) const
 {
 	switch(command) {
@@ -824,12 +819,16 @@ hotkey::ACTION_STATE playsingle_controller::get_action_state(hotkey::HOTKEY_COMM
 }
 
 
-void playsingle_controller::after_human_turn(){
-	browse_ = true;
-	end_turn_record();
-	end_turn_record_unlock();
+void playsingle_controller::after_human_turn()
+{
+	// Ending the turn commits all moves.
 	menu_handler_.clear_undo_stack(player_number_);
 
+	// Mark the turn as done.
+	browse_ = true;
+	recorder.end_turn();
+
+	// Clear moves from the GUI.
 	gui_->set_route(NULL);
 	gui_->unhighlight_reach();
 }
