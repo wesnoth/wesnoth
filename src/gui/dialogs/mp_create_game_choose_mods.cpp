@@ -18,11 +18,9 @@
 #include "gui/dialogs/mp_create_game_choose_mods.hpp"
 
 #include "game_preferences.hpp"
-#include "gui/dialogs/field.hpp"
-#include "gui/dialogs/helper.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/toggle_button.hpp"
-#include "../../settings.hpp"
+#include "gui/widgets/window.hpp"
 #include "gettext.hpp"
 
 namespace gui2 {

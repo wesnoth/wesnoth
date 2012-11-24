@@ -17,7 +17,6 @@
 #define MP_OPTIONS_HPP_INCLUDED
 
 #include <string>
-#include <map>
 #include "config.hpp"
 #include "video.hpp"
 #include "gui/widgets/widget.hpp"

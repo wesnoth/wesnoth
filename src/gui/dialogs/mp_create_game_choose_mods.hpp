@@ -18,8 +18,6 @@
 
 #include "gui/dialogs/dialog.hpp"
 #include "gui/widgets/listbox.hpp"
-#include "gui/widgets/button.hpp"
-#include <utility>
 #include <vector>
 #include <string>
 

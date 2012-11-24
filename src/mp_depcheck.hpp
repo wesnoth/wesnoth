@@ -18,7 +18,6 @@
 
 #include <string>
 #include <vector>
-#include <map>
 #include "config.hpp"
 #include "game_display.hpp"
 #include "gettext.hpp"
