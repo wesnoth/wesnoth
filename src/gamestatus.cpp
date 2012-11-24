@@ -678,19 +678,18 @@ void init(){
 	void place_units()
 	{
 		static char const *side_attrs[] = {
-			"income", "team_name", "user_team_name", "save_id",
-			"current_player", "countdown_time", "action_bonus_count",
-			"flag", "flag_icon", "objectives", "objectives_changed",
-			"disallow_observers", "allow_player", "no_leader",
-			"hidden", "music", "color", "ai_config", "gold",
-			"start_gold", "team_rgb", "village_gold", "recall_cost",
-			"controller", "persistent", "share_view",
-			"share_maps", "recruit", "fog", "shroud", "shroud_data",
-			"scroll_to_leader",
+			"action_bonus_count", "ai_config", "allow_player", "color", "controller",
+			"countdown_time", "current_player", "disallow_observers", "flag", "flag_icon", "fog",
+			"gold", "hidden", "income", "music", "no_leader",
+			"objectives", "objectives_changed", "persistent", "recall_cost",
+			"recruit", "save_id", "scroll_to_leader", "share_maps",
+			"share_view", "shroud", "shroud_data", "start_gold", "team_name",
+			"team_rgb", "user_team_name", "village_gold",
 			// Multiplayer attributes.
-			"income_lock", "gold_lock", "color_lock", "team_lock", "leader",
-			"random_leader", "terrain_liked",
-			"allow_changes", "faction_name", "user_description", "faction" };
+			"allow_changes", "color_lock",
+			"faction", "faction_name", "gold_lock",
+			"income_lock", "leader", "random_leader", "team_lock",
+			"terrain_liked", "user_description" };
 
 		log_step("place units");
 		BOOST_FOREACH(const config *u, unit_configs_) {
