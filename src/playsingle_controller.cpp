@@ -808,6 +808,20 @@ void playsingle_controller::linger()
 #pragma warning (pop)
 #endif
 
+void playsingle_controller::end_turn_record()
+{
+	if (!turn_over_)
+	{
+		turn_over_ = true;
+		recorder.end_turn();
+	}
+}
+
+void playsingle_controller::end_turn_record_unlock()
+{
+	turn_over_ = false;
+}
+
 hotkey::ACTION_STATE playsingle_controller::get_action_state(hotkey::HOTKEY_COMMAND command, int index) const
 {
 	switch(command) {
@@ -826,7 +840,8 @@ void playsingle_controller::after_human_turn()
 
 	// Mark the turn as done.
 	browse_ = true;
-	recorder.end_turn();
+	end_turn_record();
+	end_turn_record_unlock();
 
 	// Clear moves from the GUI.
 	gui_->set_route(NULL);
