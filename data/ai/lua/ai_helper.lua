@@ -19,7 +19,7 @@ function ai_helper.print_exec()
     -- Returns true or false (hard-coded).  To be used to
     -- show which CA is being executed if in debug mode
     -- Just edit the following line (easier than trying to set WML variable)
-    local print_exec_flag = true
+    local print_exec_flag = false
     if wesnoth.game_config.debug then return print_exec_flag end
     return false
 end
