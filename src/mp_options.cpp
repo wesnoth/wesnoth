@@ -27,6 +27,24 @@
 static lg::log_domain log_mp_create_options("mp/create/options");
 #define DBG_MP LOG_STREAM(debug, log_mp_create_options)
 
+namespace
+{
+
+// helper function
+config& add_column(config& parent, const std::string& halign = "left",
+					  float grow_factor = 0)
+{
+	config& result = parent.add_child("column");
+	result["horizontal_alignment"] = halign;
+	result["grow_factor"] = grow_factor;
+	result["border"] = "all";
+	result["border_size"] = 5;
+
+	return result;
+}
+
+}
+
 namespace mp
 {
 
@@ -188,34 +206,14 @@ void manager::show_dialog()
 	config& row = grid.add_child("row");
 	row["grow_factor"] = 0;
 
-	config& column = row.add_child("column");
-	column["grow_factor"] = 1;
-	column["border"] = "all";
-	column["border_size"] = 5;
-	column["horizontal_alignment"] = "right";
-
+	config& column = add_column(row, "right", 1);
 	config& widget_grid = column.add_child("grid");
-
 	config& widget_row = widget_grid.add_child("row");
 	widget_row["grow_factor"] = 0;
 
-	config& defaults_column = widget_row.add_child("column");
-	defaults_column["grow_factor"] = 0;
-	defaults_column["border"] = "all";
-	defaults_column["border_size"] = 5;
-	defaults_column["horizontal_alignment"] = "left";
-
-	config& ok_column = widget_row.add_child("column");
-	ok_column["grow_factor"] = 0;
-	ok_column["border"] = "all";
-	ok_column["border_size"] = 5;
-	ok_column["horizontal_alignment"] = "right";
-
-	config& cancel_column = widget_row.add_child("column");
-	cancel_column["grow_factor"] = 0;
-	cancel_column["border"] = "all";
-	cancel_column["border_size"] = 5;
-	cancel_column["horizontal_alignment"] = "left";
+	config& defaults_column = add_column(widget_row);
+	config& ok_column = add_column(widget_row, "right");
+	config& cancel_column = add_column(widget_row);
 
 	config& defaults_button = defaults_column.add_child("button");
 	defaults_button["definition"] = "default";
@@ -278,11 +276,7 @@ void manager::add_widgets(const config& data, config& grid) const
 		// The title for this section
 		config& row = grid.add_child("row");
 		row["grow_factor"] = 0;
-		config& column = row.add_child("column");
-		column["grow_factor"] = 1;
-		column["border"] = "all";
-		column["border_size"] = 5;
-		column["horizontal_alignment"] = "left";
+		config& column = add_column(row, "left", 1);
 		config& caption = column.add_child("label");
 		caption["definition"] = "title";
 		caption["label"] = data["name"];
@@ -297,11 +291,7 @@ void manager::add_widgets(const config& data, config& grid) const
 
 		config& row = grid.add_child("row");
 		row["grow_factor"] = 0;
-		config& column = row.add_child("column");
-		column["grow_factor"] = 1;
-		column["border"] = "all";
-		column["border_size"] = 5;
-		column["horizontal_alignment"] = "left";
+		config& column = add_column(row, "left", 1);
 
 		if (c.key == "entry") {
 			add_entry(c.cfg, column);
@@ -319,17 +309,8 @@ void manager::add_entry(const config& data, config& column) const
 	config& row = grid.add_child("row");
 	row["grow_factor"] = 0;
 
-	config& label_column = row.add_child("column");
-	label_column["grow_factor"] = 0;
-	label_column["border"] = "all";
-	label_column["border_size"] = 5;
-	label_column["horizontal_alignment"] = "left";
-
-	config& entry_column = row.add_child("column");
-	entry_column["grow_factor"] = 0;
-	entry_column["border"] = "all";
-	entry_column["border_size"] = 5;
-	entry_column["horizontal_alignment"] = "left";
+	config& label_column = add_column(row);
+	config& entry_column = add_column(row);
 
 	config& label = label_column.add_child("label");
 	label["definition"] = "default";
@@ -347,17 +328,8 @@ void manager::add_slider(const config& data, config& column) const
 	config& row = grid.add_child("row");
 	row["grow_factor"] = 0;
 
-	config& label_column = row.add_child("column");
-	label_column["grow_factor"] = 0;
-	label_column["border"] = "all";
-	label_column["border_size"] = 5;
-	label_column["horizontal_alignment"] = "left";
-
-	config& slider_column = row.add_child("column");
-	slider_column["grow_factor"] = 0;
-	slider_column["border"] = "all";
-	slider_column["border_size"] = 5;
-	slider_column["horizontal_alignment"] = "left";
+	config& label_column = add_column(row);
+	config& slider_column = add_column(row);
 
 	config& label = label_column.add_child("label");
 	label["definition"] = "default";
@@ -369,9 +341,6 @@ void manager::add_slider(const config& data, config& column) const
 	slider["minimum_value"] = data["min_value"];
 	slider["maximum_value"] = data["max_value"];
 	slider["step_size"] = data["step"].to_int() ? data["step"].to_int() : 1;
-
-	// This seems to misbehave when step_size isn't 1, apparently a bug
-	// with the slider widget itself.
 	slider["value"] = get_stored_value(data["id"]);
 }
 
@@ -381,11 +350,7 @@ void manager::add_checkbox(const config& data, config& column) const
 	config& row = grid.add_child("row");
 	row["grow_factor"] = 0;
 
-	config& box_column = row.add_child("column");
-	box_column["grow_factor"] = 0;
-	box_column["border"] = "all";
-	box_column["border_size"] = 5;
-	box_column["horizontal_alignment"] = "left";
+	config& box_column = add_column(row);
 
 	config& checkbox = box_column.add_child("toggle_button");
 	checkbox["id"] = data["id"];
