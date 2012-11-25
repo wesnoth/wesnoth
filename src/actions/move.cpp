@@ -1018,7 +1018,6 @@ namespace { // Private helpers for move_unit()
 			if ( !mover_valid  ||  undo_blocked()  ||
 			    (resources::whiteboard->is_active() && resources::whiteboard->should_clear_undo()) )
 			{
-				apply_shroud_changes(*undo_stack, orig_side_);
 				undo_stack->clear();
 			}
 		}

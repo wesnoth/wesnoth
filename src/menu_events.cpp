@@ -876,7 +876,7 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 		// description= key doesn't use random anymore.
 		if ( mutated  ||  new_unit.type()->genders().size() > 1  ||
 		     new_unit.type()->has_random_traits() ) {
-			clear_undo_stack(side_num);
+			resources::undo_stack->clear();
 		}
 
 		gui_->redraw_minimap();
@@ -1086,7 +1086,7 @@ bool menu_handler::do_recall(const unit& un, int side_num, const map_location& r
 
 	resources::undo_stack->push_back(undo_action(un, recall_location, recall_from, undo_action::RECALL));
 	if ( mutated ) {
-		clear_undo_stack(side_num);
+		resources::undo_stack->clear();
 	}
 
 	resources::undo_stack->clear_redo();
@@ -1357,13 +1357,6 @@ void menu_handler::redo(int side_num)
 	gui_->draw();
 }
 
-void menu_handler::clear_undo_stack(int side_num)
-{
-	if (!teams_[side_num - 1].auto_shroud_updates())
-		apply_shroud_changes(*resources::undo_stack, side_num);
-	resources::undo_stack->clear();
-}
-
 // Highlights squares that an enemy could move to on their turn, showing how many can reach each square.
 void menu_handler::show_enemy_moves(bool ignore_units, int side_num)
 {
@@ -1397,9 +1390,9 @@ void menu_handler::toggle_shroud_updates(int side_num)
 	current_team.set_auto_shroud_updates(!auto_shroud);
 }
 
-void menu_handler::update_shroud_now(int side_num)
+void menu_handler::update_shroud_now(int /* side_num */)
 {
-	clear_undo_stack(side_num);
+	resources::undo_stack->clear();
 }
 
 bool menu_handler::end_turn(int side_num)

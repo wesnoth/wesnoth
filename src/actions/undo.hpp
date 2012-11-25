@@ -85,17 +85,13 @@ public:
 	{}
 	~undo_list() {}
 
-	void clear()                               { undos_.clear(); }
+	/// Clears the stack of undoable actions.
+	void clear();
+
 	bool empty() const                         { return undos_.empty(); }
 	const undo_action & back() const           { return undos_.back(); }
 	void push_back(const undo_action & action) { undos_.push_back(action); }
 	void pop_back()                            { undos_.pop_back(); }
-
-	// apply_shroud_changes() needs to step through undos_.
-	// (Will be removed once apply_shroud_changes() is made a member function.)
-	typedef std::vector<undo_action>::const_iterator  iterator;
-	iterator begin() const { return undos_.begin(); }
-	iterator end() const   { return undos_.end(); }
 
 	void clear_redo()                               { redos_.clear(); }
 	bool empty_redo() const                         { return redos_.empty(); }
@@ -109,15 +105,14 @@ private: // functions
 	/// Assigning the undo list is probably an error, so it is not implemented.
 	undo_list & operator=(const undo_list &);
 
+	/// Applies the pending fog/shroud changes from the undo stack.
+	void apply_shroud_changes() const;
+
 private: // data
-	std::vector<undo_action> undos_;
-	std::vector<undo_action> redos_;
+	typedef std::vector<undo_action> action_list;
+
+	action_list undos_;
+	action_list redos_;
 };
-
-
-/**
- * Function to apply pending shroud changes in the undo stack.
- */
-void apply_shroud_changes(undo_list &undos, int side);
 
 #endif

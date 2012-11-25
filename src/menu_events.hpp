@@ -100,7 +100,6 @@ public:
 	void do_search(const std::string& new_search);
 	void do_command(const std::string &str);
 	void do_ai_formula(const std::string &str, int side_num, mouse_handler &mousehandler);
-	void clear_undo_stack(int side_num);
 protected:
 	void add_chat_message(const time_t& time, const std::string& speaker,
 			int side, const std::string& message,

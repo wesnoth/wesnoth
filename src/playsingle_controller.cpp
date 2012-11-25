@@ -836,7 +836,7 @@ hotkey::ACTION_STATE playsingle_controller::get_action_state(hotkey::HOTKEY_COMM
 void playsingle_controller::after_human_turn()
 {
 	// Ending the turn commits all moves.
-	menu_handler_.clear_undo_stack(player_number_);
+	resources::undo_stack->clear();
 
 	// Mark the turn as done.
 	browse_ = true;

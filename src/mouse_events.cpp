@@ -1024,7 +1024,6 @@ void mouse_handler::attack_enemy_(const map_location& att_loc
 	const map_location defender_loc = def_loc;
 
 	//may fire event and modify things
-	apply_shroud_changes(*resources::undo_stack, side_num_);
 	resources::undo_stack->clear();
 	resources::undo_stack->clear_redo();
 

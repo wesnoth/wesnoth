@@ -25,6 +25,7 @@
 #include "../game_display.hpp"
 #include "../game_events.hpp"
 #include "../log.hpp"
+#include "../play_controller.hpp"
 #include "../resources.hpp"
 #include "../team.hpp"
 #include "../unit_map.hpp"
@@ -33,11 +34,36 @@ static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 
 
-void apply_shroud_changes(undo_list &undos, int side)
+/**
+ * Clears the stack of undoable actions.
+ * Call this if an action alters the game state, but add that action to the
+ * stack before calling this.
+ * This may fire events and change the game state.
+ */
+void undo_list::clear()
 {
+	// No need to do anything if the stack is already clear.
+	if ( undos_.empty() )
+		return;
+
+	// Update fog/shroud.
+	apply_shroud_changes();
+
+	// Clear the stack.
+	undos_.clear();
+}
+
+
+/**
+ * Applies the pending fog/shroud changes from the undo stack.
+ * Does nothing if the the current side does not use fog or shroud.
+ */
+void undo_list::apply_shroud_changes() const
+{
+	int side = resources::controller->current_side();
 	team &tm = (*resources::teams)[side - 1];
-	// No need to do this if the team isn't using fog or shroud.
-	if (!tm.uses_shroud() && !tm.uses_fog())
+	// No need to do clearing if fog/shroud has been kept up-to-date.
+	if ( tm.auto_shroud_updates()  ||  !tm.fog_or_shroud() )
 		return;
 
 	game_display &disp = *resources::screen;
@@ -58,7 +84,7 @@ void apply_shroud_changes(undo_list &undos, int side)
 	actions::shroud_clearer clearer;
 	bool cleared_shroud = false;  // for further optimization
 
-	for(undo_list::iterator un = undos.begin(); un != undos.end(); ++un) {
+	for( action_list::const_iterator un = undos_.begin(); un != undos_.end(); ++un ) {
 		LOG_NG << "Turning an undo...\n";
 		//NOTE: for the moment shroud cleared during recall seems never delayed
 		//Shroud update during recall can be delayed, during recruit as well
