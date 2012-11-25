@@ -129,8 +129,6 @@ private:
 	gui::floating_textbox textbox_info_;
 	std::string last_search_;
 	map_location last_search_hit_;
-
-	std::string last_recruit_;
 };
 
 }

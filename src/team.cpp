@@ -271,6 +271,7 @@ team::team() :
 	countdown_time_(0),
 	action_bonus_count_(0),
 	recall_list_(),
+	last_recruit_(),
 	enemies_(),
 	ally_shroud_(),
 	ally_fog_(),

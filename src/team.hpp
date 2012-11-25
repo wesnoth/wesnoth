@@ -166,6 +166,8 @@ public:
 	void add_recruit(const std::string &);
 	void set_recruits(const std::set<std::string>& recruits);
 	int minimum_recruit_price() const;
+	const std::string& last_recruit() const { return last_recruit_; }
+	void last_recruit(const std::string & u_type) { last_recruit_ = u_type; }
 	const std::string& name() const
 		{ return info_.name; }
 	const std::string& save_id() const { return info_.save_id; }
@@ -303,6 +305,7 @@ private:
 	int action_bonus_count_;
 
 	std::vector<unit> recall_list_;
+	std::string last_recruit_;
 
 	bool calculate_enemies(size_t index) const;
 	bool calculate_is_enemy(size_t index) const;

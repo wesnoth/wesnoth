@@ -157,8 +157,7 @@ menu_handler::menu_handler(game_display* gui, unit_map& units, std::vector<team>
 	gamestate_(gamestate),
 	textbox_info_(),
 	last_search_(),
-	last_search_hit_(),
-	last_recruit_()
+	last_search_hit_()
 {
 }
 
@@ -811,8 +810,9 @@ void menu_handler::recruit(int side_num, const map_location &last_hex)
 
 void menu_handler::repeat_recruit(int side_num, const map_location &last_hex)
 {
-	if(last_recruit_.empty() == false)
-		do_recruit(last_recruit_, side_num, last_hex);
+	const std::string & last_recruit = teams_[side_num - 1].last_recruit();
+	if ( last_recruit.empty() == false )
+		do_recruit(last_recruit, side_num, last_hex);
 }
 
 bool menu_handler::do_recruit(const std::string &name, int side_num,
@@ -844,7 +844,7 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 		return false;
 	}
 
-	last_recruit_ = name;
+	current_team.last_recruit(name);
 	const events::command_disabler disable_commands;
 
 	map_location loc = last_hex;
@@ -1289,7 +1289,7 @@ void menu_handler::redo(int side_num)
 			}
 			++recruit_num;
 		}
-		last_recruit_ = name;
+		current_team.last_recruit(name);
 		recorder.add_recruit(recruit_num,loc,from);
 		const events::command_disabler disable_commands;
 		const std::string &msg = find_recruit_location(side_num, loc, from, action.affected_unit.type_id());
