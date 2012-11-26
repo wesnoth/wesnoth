@@ -71,7 +71,6 @@ mouse_handler::mouse_handler(game_display* gui, std::vector<team>& teams,
 	enemy_paths_(false),
 	path_turns_(0),
 	side_num_(1),
-	undo_(false),
 	over_route_(false),
 	reachmap_invalid_(false),
 	show_partial_move_(false)
@@ -469,7 +468,6 @@ bool mouse_handler::right_click_show_menu(int x, int y, const bool browse)
 
 bool mouse_handler::left_click(int x, int y, const bool browse)
 {
-	undo_ = false;
 	if (mouse_handler_base::left_click(x, y, browse)) return false;
 
 	// Lock whiteboard activation state to avoid problems due to

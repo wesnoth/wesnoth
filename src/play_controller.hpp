@@ -160,7 +160,6 @@ protected:
 	void process_focus_keydown_event(const SDL_Event& event);
 	void process_keydown_event(const SDL_Event& event);
 	void process_keyup_event(const SDL_Event& event);
-	void post_mouse_press(const SDL_Event& event);
 
 	virtual std::string get_action_image(hotkey::HOTKEY_COMMAND, int index) const;
 	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const;

@@ -47,14 +47,12 @@ public:
 
 	const map_location& get_last_hex() const { return last_hex_; }
 	map_location get_selected_hex() const { return selected_hex_; }
-	bool get_undo() const { return undo_; }
 	void set_path_turns(const int path_turns) { path_turns_ = path_turns; }
 	void set_current_paths(pathfind::paths new_paths);
 	void deselect_hex();
 	void invalidate_reachmap() { reachmap_invalid_ = true; }
 
 	void set_gui(game_display* gui) { gui_ = gui; }
-	void set_undo(const bool undo) { undo_ = undo; }
 
 	unit_map::iterator selected_unit();
 
@@ -137,7 +135,6 @@ private:
 	int path_turns_;
 	int side_num_;
 
-	bool undo_;
 	bool over_route_;
 	bool reachmap_invalid_;
 	bool show_partial_move_;
