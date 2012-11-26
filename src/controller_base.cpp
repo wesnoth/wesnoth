@@ -93,7 +93,6 @@ void controller_base::handle_event(const SDL_Event& event)
 		// intentionally fall-through
 	case SDL_MOUSEBUTTONUP:
 		get_mouse_handler_base().mouse_press(event.button, browse_);
-		post_mouse_press(event);
 		if (get_mouse_handler_base().get_show_menu()){
 			show_menu(get_display().get_theme().context_menu()->items(),event.button.x,event.button.y,true);
 		}
@@ -108,7 +107,6 @@ void controller_base::handle_event(const SDL_Event& event)
 				Uint8 mouse_flags = SDL_GetMouseState(&x, &y);
 				if ((mouse_flags & SDL_BUTTON_LEFT) == 0) {
 					get_mouse_handler_base().mouse_press(event.button, browse_);
-					post_mouse_press(event);
 				}
 			}
 		}
@@ -132,10 +130,6 @@ void controller_base::process_keydown_event(const SDL_Event& /*event*/) {
 }
 
 void controller_base::process_keyup_event(const SDL_Event& /*event*/) {
-	//no action by default
-}
-
-void controller_base::post_mouse_press(const SDL_Event& /*event*/) {
 	//no action by default
 }
 
