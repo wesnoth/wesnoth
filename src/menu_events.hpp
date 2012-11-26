@@ -59,8 +59,6 @@ public:
 	void recruit(int side_num, const map_location &last_hex);
 	void repeat_recruit(int side_num, const map_location &last_hex);
 	void recall(int side_num, const map_location& last_hex);
-	void undo(int side_num);
-	void redo(int side_num);
 	void show_enemy_moves(bool ignore_units, int side_num);
 	void toggle_shroud_updates(int side_num);
 	void update_shroud_now(int side_num);

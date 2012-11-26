@@ -88,16 +88,16 @@ public:
 	/// Clears the stack of undoable actions.
 	void clear();
 
+	/// Undoes the top action on the undo stack.
+	void undo(int side_num);
+	/// Redoes the top action on the redo stack.
+	void redo(int side_num);
+
 	bool empty() const                         { return undos_.empty(); }
-	const undo_action & back() const           { return undos_.back(); }
 	void push_back(const undo_action & action) { undos_.push_back(action); }
-	void pop_back()                            { undos_.pop_back(); }
 
 	void clear_redo()                               { redos_.clear(); }
 	bool empty_redo() const                         { return redos_.empty(); }
-	const undo_action & back_redo() const           { return redos_.back(); }
-	void push_back_redo(const undo_action & action) { redos_.push_back(action); }
-	void pop_back_redo()                            { redos_.pop_back(); }
 
 private: // functions
 	/// Copying the undo list is probably an error, so it is not implemented.

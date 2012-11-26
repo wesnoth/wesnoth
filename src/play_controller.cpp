@@ -491,13 +491,13 @@ void play_controller::show_help(){
 void play_controller::undo(){
 	// deselect unit (only here, not to be done when undoing attack-move)
 	mouse_handler_.deselect_hex();
-	menu_handler_.undo(player_number_);
+	undo_stack_->undo(player_number_);
 }
 
 void play_controller::redo(){
 	// deselect unit (only here, not to be done when undoing attack-move)
 	mouse_handler_.deselect_hex();
-	menu_handler_.redo(player_number_);
+	undo_stack_->redo(player_number_);
 }
 
 void play_controller::show_enemy_moves(bool ignore_units){
@@ -1112,7 +1112,7 @@ void play_controller::post_mouse_press(const SDL_Event& /*event*/)
 {
 	if (mouse_handler_.get_undo()){
 		mouse_handler_.set_undo(false);
-		menu_handler_.undo(player_number_);
+		undo_stack_->undo(player_number_);
 	}
 }
 

@@ -192,7 +192,7 @@ void playmp_controller::play_human_turn(){
 					}
 
 					while(!undo_stack_->empty())
-						menu_handler_.undo(gui_->playing_side());
+						undo_stack_->undo(gui_->playing_side());
 					throw end_turn_exception(gui_->playing_side());
 				}
 			}
