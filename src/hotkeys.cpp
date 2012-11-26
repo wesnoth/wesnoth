@@ -675,7 +675,7 @@ hotkey_item& get_hotkey(int character, int keycode,
 	bool found = false;
 
 	for (itor = hotkeys_.begin(); itor != hotkeys_.end(); ++itor) {
-		if (character != -1) {
+		if (itor->get_character() != -1) {
 			if (character == itor->get_character()) {
 				if (ctrl == itor->get_ctrl()
 						&& cmd == itor->get_cmd()
@@ -690,7 +690,7 @@ hotkey_item& get_hotkey(int character, int keycode,
 				}
 				DBG_G << "Could match by character..." << "but modifiers different\n";
 			}
-		} else if (keycode != -1) {
+		} else if (itor->get_keycode() != -1) {
 			if (keycode == itor->get_keycode()) {
 				if (shift == itor->get_shift()
 						&& ctrl == itor->get_ctrl()
