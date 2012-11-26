@@ -351,7 +351,7 @@ bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(side_number side
 	}
 
 	if (!is_idle_ai) {
-		parsed_cfg = get_ai_config_for("testing_ai_default");
+		parsed_cfg = get_ai_config_for("ai_default_rca");
 	}
 
 	//get values of all aspects

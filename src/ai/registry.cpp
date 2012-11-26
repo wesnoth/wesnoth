@@ -63,8 +63,9 @@ static register_engine_factory<engine_lua>
 // =======================================================================
 // Stages
 // =======================================================================
+
 static register_stage_factory<testing_ai_default::candidate_action_evaluation_loop>
-	candidate_action_evaluation_loop_factory("testing_ai_default::candidate_action_evaluation_loop");
+	candidate_action_evaluation_loop_factory("ai_default_rca::candidate_action_evaluation_loop");
 
 static register_stage_factory<testing_ai_default::fallback_to_other_ai>
 	fallback_to_other_ai_factory("testing_ai_default::fallback");
@@ -75,61 +76,110 @@ static register_stage_factory<ai_default_recruitment_stage>
 static register_stage_factory<idle_stage>
 	ai_idle_stage_factory("empty");
 
+// === Also keep the old syntax ===
+static register_stage_factory<testing_ai_default::candidate_action_evaluation_loop>
+	old_candidate_action_evaluation_loop_factory("testing_ai_default::candidate_action_evaluation_loop");
 
 // =======================================================================
 // Candidate actions
 // =======================================================================
 
 static register_candidate_action_factory<testing_ai_default::goto_phase>
-	goto_phase_factory("testing_ai_default::goto_phase");
+	goto_phase_factory("ai_default_rca::goto_phase");
 
 static register_candidate_action_factory<testing_ai_default::aspect_recruitment_phase>
-	aspect_recruitment_phase_factory("testing_ai_default::aspect_recruitment_phase");
+	aspect_recruitment_phase_factory("ai_default_rca::aspect_recruitment_phase");
 
 static register_candidate_action_factory<testing_ai_default::recruitment_phase>
-	recruitment_phase_factory("testing_ai_default::recruitment_phase");
+	recruitment_phase_factory("ai_default_rca::recruitment_phase");
 
 static register_candidate_action_factory<testing_ai_default::combat_phase>
-	combat_phase_factory("testing_ai_default::combat_phase");
+	combat_phase_factory("ai_default_rca::combat_phase");
 
 static register_candidate_action_factory<testing_ai_default::move_leader_to_goals_phase>
-	move_leader_to_goals_phase_factory("testing_ai_default::move_leader_to_goals_phase");
+	move_leader_to_goals_phase_factory("ai_default_rca::move_leader_to_goals_phase");
 
 static register_candidate_action_factory<testing_ai_default::move_leader_to_keep_phase>
-	move_leader_to_keep_phase_factory("testing_ai_default::move_leader_to_keep_phase");
+	move_leader_to_keep_phase_factory("ai_default_rca::move_leader_to_keep_phase");
 
 static register_candidate_action_factory<testing_ai_default::get_villages_phase>
-	get_villages_phase_factory("testing_ai_default::get_villages_phase");
+	get_villages_phase_factory("ai_default_rca::get_villages_phase");
 
 static register_candidate_action_factory<testing_ai_default::get_healing_phase>
-	get_healing_phase_factory("testing_ai_default::get_healing_phase");
+	get_healing_phase_factory("ai_default_rca::get_healing_phase");
 
 static register_candidate_action_factory<testing_ai_default::retreat_phase>
-	retreat_phase_factory("testing_ai_default::retreat_phase");
+	retreat_phase_factory("ai_default_rca::retreat_phase");
 
 static register_candidate_action_factory<testing_ai_default::simple_move_and_targeting_phase>
-	simple_move_and_targeting_phase_factory("testing_ai_default::simple_move_and_targeting_phase");
+	simple_move_and_targeting_phase_factory("ai_default_rca::simple_move_and_targeting_phase");
 
 static register_candidate_action_factory<testing_ai_default::testing_move_to_targets_phase>
-	default_move_to_targets_phase_factory("testing_ai_default::default_move_to_targets_phase");
-
-static register_candidate_action_factory<testing_ai_default::testing_move_to_targets_phase>
-	testing_move_to_targets_phase_factory("testing_ai_default::testing_move_to_targets_phase");
+	default_move_to_targets_phase_factory("ai_default_rca::move_to_targets_phase");
 
 static register_candidate_action_factory<testing_ai_default::leader_control_phase>
-	leader_control_phase_factory("testing_ai_default::leader_control_phase");
+	leader_control_phase_factory("ai_default_rca::leader_control_phase");
 
 static register_candidate_action_factory<testing_ai_default::testing_recruitment_phase>
-	testing_recruitment_phase_factory("testing_ai_default::testing_recruitment_phase");
+	testing_recruitment_phase_factory("ai_default_rca::testing_recruitment_phase");
 
 static register_candidate_action_factory<testing_ai_default::passive_leader_shares_keep_phase>
-	passive_leader_shares_keep_phase_factory("testing_ai_default::passive_leader_shares_keep_phase");
+	passive_leader_shares_keep_phase_factory("ai_default_rca::passive_leader_shares_keep_phase");
 
 static register_candidate_action_factory<testing_ai_default::global_fallback_phase>
-	global_fallback_phase_factory("testing_ai_default::global_fallback_phase");
+	global_fallback_phase_factory("ai_default_rca::global_fallback_phase");
 
 static register_candidate_action_factory<akihara_recruitment::recruitment>
 	recruitment_factory("akihara_recruitment::recruitment");
+
+// === Also keep the old syntax ===
+static register_candidate_action_factory<testing_ai_default::goto_phase>
+	old_goto_phase_factory("testing_ai_default::goto_phase");
+
+static register_candidate_action_factory<testing_ai_default::aspect_recruitment_phase>
+	old_aspect_recruitment_phase_factory("testing_ai_default::aspect_recruitment_phase");
+
+static register_candidate_action_factory<testing_ai_default::recruitment_phase>
+	old_recruitment_phase_factory("testing_ai_default::recruitment_phase");
+
+static register_candidate_action_factory<testing_ai_default::combat_phase>
+	old_combat_phase_factory("testing_ai_default::combat_phase");
+
+static register_candidate_action_factory<testing_ai_default::move_leader_to_goals_phase>
+	old_move_leader_to_goals_phase_factory("testing_ai_default::move_leader_to_goals_phase");
+
+static register_candidate_action_factory<testing_ai_default::move_leader_to_keep_phase>
+	old_move_leader_to_keep_phase_factory("testing_ai_default::move_leader_to_keep_phase");
+
+static register_candidate_action_factory<testing_ai_default::get_villages_phase>
+	old_get_villages_phase_factory("testing_ai_default::get_villages_phase");
+
+static register_candidate_action_factory<testing_ai_default::get_healing_phase>
+	old_get_healing_phase_factory("testing_ai_default::get_healing_phase");
+
+static register_candidate_action_factory<testing_ai_default::retreat_phase>
+	old_retreat_phase_factory("testing_ai_default::retreat_phase");
+
+static register_candidate_action_factory<testing_ai_default::simple_move_and_targeting_phase>
+	old_simple_move_and_targeting_phase_factory("testing_ai_default::simple_move_and_targeting_phase");
+
+static register_candidate_action_factory<testing_ai_default::testing_move_to_targets_phase>
+	old_default_move_to_targets_phase_factory("testing_ai_default::default_move_to_targets_phase");
+
+static register_candidate_action_factory<testing_ai_default::testing_move_to_targets_phase>
+	old_testing_move_to_targets_phase_factory("testing_ai_default::testing_move_to_targets_phase");
+
+static register_candidate_action_factory<testing_ai_default::leader_control_phase>
+	old_leader_control_phase_factory("testing_ai_default::leader_control_phase");
+
+static register_candidate_action_factory<testing_ai_default::testing_recruitment_phase>
+	old_testing_recruitment_phase_factory("testing_ai_default::testing_recruitment_phase");
+
+static register_candidate_action_factory<testing_ai_default::passive_leader_shares_keep_phase>
+	old_passive_leader_shares_keep_phase_factory("testing_ai_default::passive_leader_shares_keep_phase");
+
+static register_candidate_action_factory<testing_ai_default::global_fallback_phase>
+	old_global_fallback_phase_factory("testing_ai_default::global_fallback_phase");
 
 // =======================================================================
 // Goals
@@ -243,7 +293,7 @@ static register_aspect_factory< standard_aspect<int> >
 	attack_depth__standard_aspect_factory("attack_depth*standard_aspect");
 
 static register_aspect_factory< testing_ai_default::aspect_attacks >
-	attacks__testing_ai_default_aspect_attacks_factory("attacks*testing_ai_default::aspect_attacks");
+	attacks__testing_ai_default_aspect_attacks_factory("attacks*ai_default_rca::aspect_attacks");
 
 static register_aspect_factory< standard_aspect< terrain_filter > >
 	avoid__standard_aspect_factory("avoid*standard_aspect");
@@ -299,6 +349,9 @@ static register_aspect_factory< standard_aspect<double> >
 static register_aspect_factory< standard_aspect<int> >
 	villages_per_scout__standard_aspect_factory("villages_per_scout*standard_aspect");
 
+// Also keep the old syntax
+static register_aspect_factory< testing_ai_default::aspect_attacks >
+	old_attacks__testing_ai_default_aspect_attacks_factory("attacks*testing_ai_default::aspect_attacks");
 
 //name = default
 static register_aspect_factory< standard_aspect<double> >
@@ -363,7 +416,6 @@ static register_aspect_factory< standard_aspect<double> >
 
 static register_aspect_factory< standard_aspect<int> >
 	villages_per_scout__standard_aspect_factory2("villages_per_scout*");
-
 
 //name = lua
 static register_lua_aspect_factory< lua_aspect<double> >
