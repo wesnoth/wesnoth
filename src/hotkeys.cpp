@@ -760,9 +760,6 @@ hotkey_item& get_hotkey(const SDL_KeyboardEvent& event)
 			(event.keysym.mod & KMOD_CTRL)  != 0,
 			(event.keysym.mod & KMOD_META)  != 0,
 			(event.keysym.mod & KMOD_ALT)   != 0
-#ifdef __APPLE__
-			|| (event.keysym.mod & KMOD_RMETA) != 0
-#endif
 			);
 }
 
