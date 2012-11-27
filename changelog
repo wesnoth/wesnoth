@@ -102,6 +102,8 @@ Version 1.11.0+svn:
    * Synchronize underlying_unit_id in MP campaigns (bug #20227)
    * Fixed: Compilation with Boost 1.51.0 (Gentoo bug #440742).
    * Added -Wnoexcept to the CMake pedantic flags.
+   * Fixed a rare case where a player could exercise (very) limited control of
+     another (human) player's units in a hotseat game.
 
 Version 1.11.0:
  * Add-ons client:

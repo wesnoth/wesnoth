@@ -837,6 +837,7 @@ void playsingle_controller::after_human_turn()
 {
 	// Ending the turn commits all moves.
 	resources::undo_stack->clear();
+	resources::undo_stack->clear_redo();
 
 	// Mark the turn as done.
 	browse_ = true;
