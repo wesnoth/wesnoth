@@ -81,17 +81,19 @@ struct undo_action {
 class undo_list {
 public:
 	undo_list() :
-		undos_(), redos_()
+		undos_(), redos_(), side_(1)
 	{}
 	~undo_list() {}
 
 	/// Clears the stack of undoable actions.
 	void clear();
+	// Performs some initializations and error checks when starting a new side-turn.
+	void new_side_turn(int side);
 
 	/// Undoes the top action on the undo stack.
-	void undo(int side_num);
+	void undo();
 	/// Redoes the top action on the redo stack.
-	void redo(int side_num);
+	void redo();
 
 	bool empty() const                         { return undos_.empty(); }
 	void push_back(const undo_action & action) { undos_.push_back(action); }
@@ -113,6 +115,9 @@ private: // data
 
 	action_list undos_;
 	action_list redos_;
+
+	/// Tracks the current side.
+	int side_;
 };
 
 #endif

@@ -62,9 +62,33 @@ void undo_list::clear()
 
 
 /**
+ * Performs some initializations and error checks when starting a new side-turn.
+ * @param[in]  side  The side whose turn is about to start.
+ */
+void undo_list::new_side_turn(int side)
+{
+	// Error checks.
+	if ( !undos_.empty() ) {
+		ERR_NG << "Undo stack not empty in new_side_turn().\n";
+		// At worst, someone missed some sighted events, so try to recover.
+		undos_.clear();
+		redos_.clear();
+	}
+	else if ( !redos_.empty() ) {
+		ERR_NG << "Redo stack not empty in new_side_turn().\n";
+		// Sloppy tracking somewhere, but not critically so.
+		redos_.clear();
+	}
+
+	// Remember the side.
+	side_ = side;
+}
+
+
+/**
  * Undoes the top action on the undo stack.
  */
-void undo_list::undo(int side_num)
+void undo_list::undo()
 {
 	if ( undos_.empty() )
 		return;
@@ -72,7 +96,7 @@ void undo_list::undo(int side_num)
 	const events::command_disabler disable_commands;
 	game_display & gui = *resources::screen;
 	unit_map &   units = *resources::units;
-	team &current_team = (*resources::teams)[side_num - 1];
+	team &current_team = (*resources::teams)[side_ - 1];
 
 	// Get the action to undo. (This will be placed on the redo stack, but
 	// only if the undo is successful.)
@@ -83,7 +107,7 @@ void undo_list::undo(int side_num)
 		//undo a dismissal
 
 		if(!current_team.persistent()) {
-			ERR_NG << "trying to undo a dismissal for side " << side_num
+			ERR_NG << "trying to undo a dismissal for side " << side_
 				<< ", which has no recall list!\n";
 			return;
 		}
@@ -92,7 +116,7 @@ void undo_list::undo(int side_num)
 	} else if(action.is_recall()) {
 
 		if(!current_team.persistent()) {
-			ERR_NG << "trying to undo a recall for side " << side_num
+			ERR_NG << "trying to undo a recall for side " << side_
 				<< ", which has no recall list!\n";
 			return;
 		}
@@ -185,7 +209,7 @@ void undo_list::undo(int side_num)
 /**
  * Redoes the top action on the redo stack.
  */
-void undo_list::redo(int side_num)
+void undo_list::redo()
 {
 	if ( redos_.empty() )
 		return;
@@ -193,7 +217,7 @@ void undo_list::redo(int side_num)
 	const events::command_disabler disable_commands;
 	game_display & gui = *resources::screen;
 	unit_map &   units = *resources::units;
-	team &current_team = (*resources::teams)[side_num - 1];
+	team &current_team = (*resources::teams)[side_ - 1];
 
 	// Get the action to redo. (This will be placed on the undo stack, but
 	// only if the redo is successful.)
@@ -202,7 +226,7 @@ void undo_list::redo(int side_num)
 
 	if (action.is_dismiss()) {
 		if(!current_team.persistent()) {
-			ERR_NG << "trying to redo a dismiss for side " << side_num
+			ERR_NG << "trying to redo a dismiss for side " << side_
 				<< ", which has no recall list!\n";
 			return;
 		}
@@ -214,7 +238,7 @@ void undo_list::redo(int side_num)
 		resources::whiteboard->on_gamestate_change();
 	} else if(action.is_recall()) {
 		if(!current_team.persistent()) {
-			ERR_NG << "trying to redo a recall for side " << side_num
+			ERR_NG << "trying to redo a recall for side " << side_
 				<< ", which has no recall list!\n";
 			return;
 		}
@@ -224,7 +248,7 @@ void undo_list::redo(int side_num)
 		map_location loc = action.recall_loc;
 		map_location from = map_location::null_location;
 		const events::command_disabler disable_commands;
-		const std::string &msg = find_recall_location(side_num, loc, from, action.affected_unit);
+		const std::string &msg = find_recall_location(side_, loc, from, action.affected_unit);
 		if(msg.empty()) {
 			unit un = action.affected_unit;
 			//remove the unit from the recall list
@@ -254,7 +278,7 @@ void undo_list::redo(int side_num)
 		const std::set<std::string>& recruits = current_team.recruits();
 		for(std::set<std::string>::const_iterator r = recruits.begin(); ; ++r) {
 			if (r == recruits.end()) {
-				ERR_NG << "trying to redo a recruit for side " << side_num
+				ERR_NG << "trying to redo a recruit for side " << side_
 					<< ", which does not recruit type \"" << name << "\"\n";
 				assert(false);
 				return;
@@ -267,7 +291,7 @@ void undo_list::redo(int side_num)
 		current_team.last_recruit(name);
 		recorder.add_recruit(recruit_num,loc,from);
 		const events::command_disabler disable_commands;
-		const std::string &msg = find_recruit_location(side_num, loc, from, action.affected_unit.type_id());
+		const std::string &msg = find_recruit_location(side_, loc, from, action.affected_unit.type_id());
 		if(msg.empty()) {
 			const unit new_unit = action.affected_unit;
 			//unit new_unit(action.affected_unit.type(),team_num_,true);
@@ -339,8 +363,7 @@ void undo_list::redo(int side_num)
  */
 void undo_list::apply_shroud_changes() const
 {
-	int side = resources::controller->current_side();
-	team &tm = (*resources::teams)[side - 1];
+	team &tm = (*resources::teams)[side_ - 1];
 	// No need to do clearing if fog/shroud has been kept up-to-date.
 	if ( tm.auto_shroud_updates()  ||  !tm.fog_or_shroud() )
 		return;
@@ -397,7 +420,7 @@ void undo_list::apply_shroud_changes() const
 	// Fire sighted events
 	if ( clearer.fire_events() ) {
 		// Updates in case WML changed stuff.
-		clear_shroud(side);
+		clear_shroud(side_);
 		disp.invalidate_unit();
 		disp.draw();
 	}

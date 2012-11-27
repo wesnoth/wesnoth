@@ -701,12 +701,8 @@ void playsingle_controller::before_human_turn(bool save)
 		sound::play_bell(game_config::sounds::turn_bell);
 	}
 
-	// Error check.
-	if ( !resources::undo_stack->empty() ) {
-		ERR_NG << "Undo stack not empty before_human_turn().\n";
-		// At worst, someone missed some sighted events, so try to recover.
-		resources::undo_stack->clear();
-	}
+	// Prepare the undo stack.
+	resources::undo_stack->new_side_turn(player_number_);
 }
 
 void playsingle_controller::show_turn_dialog(){

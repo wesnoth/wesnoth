@@ -490,12 +490,12 @@ void play_controller::show_help(){
 
 void play_controller::undo(){
 	mouse_handler_.deselect_hex();
-	undo_stack_->undo(player_number_);
+	undo_stack_->undo();
 }
 
 void play_controller::redo(){
 	mouse_handler_.deselect_hex();
-	undo_stack_->redo(player_number_);
+	undo_stack_->redo();
 }
 
 void play_controller::show_enemy_moves(bool ignore_units){
