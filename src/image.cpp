@@ -1028,6 +1028,9 @@ static void precache_file_existence_internal(const std::string& dir, const std::
 		return;
 	precached_dirs.insert(checked_dir);
 
+	if (!filesystem::is_directory(checked_dir))
+		return;
+
 	std::vector<std::string> files_found;
 	std::vector<std::string> dirs_found;
 	filesystem::get_files_in_dir(checked_dir, &files_found, &dirs_found,
