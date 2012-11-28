@@ -91,18 +91,20 @@ public:
 	/// side-turn.
 	void new_side_turn(int side);
 	/// Returns true if the player has performed any actions this turn.
-	bool player_acted()  { return committed_actions_ || !undos_.empty(); }
+	bool player_acted() const { return committed_actions_ || !undos_.empty(); }
 
+	/// True if there are actions that can be undone.
+	bool can_undo() const  { return !undos_.empty(); }
+	/// True if there are actions that can be redone.
+	bool can_redo() const  { return !redos_.empty(); }
 	/// Undoes the top action on the undo stack.
 	void undo();
 	/// Redoes the top action on the redo stack.
 	void redo();
 
-	bool empty() const                         { return undos_.empty(); }
 	void push_back(const undo_action & action) { undos_.push_back(action); }
 
 	void clear_redo()                               { redos_.clear(); }
-	bool empty_redo() const                         { return redos_.empty(); }
 
 private: // functions
 	/// Copying the undo list is probably an error, so it is not implemented.

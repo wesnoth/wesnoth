@@ -882,9 +882,9 @@ bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int in
 		return network::nconnections() > 0;
 
 	case hotkey::HOTKEY_REDO:
-		return !linger_ && !undo_stack_->empty_redo() && !events::commands_disabled && !browse_;
+		return !linger_ && undo_stack_->can_redo() && !events::commands_disabled && !browse_;
 	case hotkey::HOTKEY_UNDO:
-		return !linger_ && !undo_stack_->empty() && !events::commands_disabled && !browse_;
+		return !linger_ && undo_stack_->can_undo() && !events::commands_disabled && !browse_;
 
 	case hotkey::HOTKEY_UNIT_DESCRIPTION:
 		return menu_handler_.current_unit() != units_.end();

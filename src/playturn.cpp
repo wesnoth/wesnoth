@@ -74,10 +74,10 @@ void turn_info::sync_network()
 
 void turn_info::send_data()
 {
-	if(resources::undo_stack->empty()) {
-		replay_sender_.commit_and_sync();
-	} else {
+	if ( resources::undo_stack->can_undo() ) {
 		replay_sender_.sync_non_undoable();
+	} else {
+		replay_sender_.commit_and_sync();
 	}
 }
 
