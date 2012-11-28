@@ -641,6 +641,8 @@ void playsingle_controller::play_side(const unsigned int side_number, bool save)
 		if(current_team().is_human() || temporary_human) {
 			LOG_NG << "is human...\n";
 			temporary_human = false;
+			// Prepare the undo stack.
+			undo_stack_->new_side_turn(player_number_);
 			try{
 				before_human_turn(save);
 				play_human_turn();
@@ -658,6 +660,9 @@ void playsingle_controller::play_side(const unsigned int side_number, bool save)
 					}
 				}
 			}
+			// Ending the turn commits all moves.
+			undo_stack_->clear();
+			undo_stack_->clear_redo();
 			if ( !player_type_changed_ )
 				after_human_turn();
 			LOG_NG << "human finished turn...\n";
@@ -700,9 +705,6 @@ void playsingle_controller::before_human_turn(bool save)
 	if(preferences::turn_bell() && level_result_ == NONE) {
 		sound::play_bell(game_config::sounds::turn_bell);
 	}
-
-	// Prepare the undo stack.
-	resources::undo_stack->new_side_turn(player_number_);
 }
 
 void playsingle_controller::show_turn_dialog(){
@@ -831,10 +833,6 @@ hotkey::ACTION_STATE playsingle_controller::get_action_state(hotkey::HOTKEY_COMM
 
 void playsingle_controller::after_human_turn()
 {
-	// Ending the turn commits all moves.
-	resources::undo_stack->clear();
-	resources::undo_stack->clear_redo();
-
 	// Mark the turn as done.
 	browse_ = true;
 	end_turn_record();
