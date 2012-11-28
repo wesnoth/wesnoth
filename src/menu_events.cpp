@@ -1143,29 +1143,27 @@ bool menu_handler::end_turn(int side_num)
 		return false;
 	}
 
-	bool unmoved_units = false, partmoved_units = false, some_units_have_moved = false;
-	int units_alive = 0;
+	bool unmoved_units = false, partmoved_units = false;
+	bool units_alive = false;
 	for(unit_map::const_iterator un = units_.begin(); un != units_.end(); ++un) {
 		if (un->side() == side_num) {
-			units_alive++;
+			units_alive = true;
 			// @todo whiteboard should take into consideration units that have a planned move but
 			// can still plan more movement in the same turn
 			if (unit_can_move(*un) && !resources::whiteboard->unit_has_actions(&*un)) {
 				if (!un->has_moved()) {
 					unmoved_units = true;
 				}
-
 				partmoved_units = true;
-			}
-			if (un->has_moved()) {
-				some_units_have_moved = true;
 			}
 		}
 	}
 
 	//Ask for confirmation if the player hasn't made any moves (other than gotos).
-	if (preferences::confirm_no_moves() && units_alive && !some_units_have_moved
-			&& !resources::whiteboard->current_side_has_actions()) {
+	if ( preferences::confirm_no_moves()  &&  units_alive  &&
+	     !resources::undo_stack->player_acted()  &&
+	     !resources::whiteboard->current_side_has_actions() )
+	{
 		const int res = gui2::show_message((*gui_).video(), "", _("You have not started your turn yet. Do you really want to end your turn?"), gui2::tmessage::yes_no_buttons);
 		if(res == gui2::twindow::CANCEL) {
 			return false;

@@ -81,14 +81,17 @@ struct undo_action {
 class undo_list {
 public:
 	undo_list() :
-		undos_(), redos_(), side_(1)
+		undos_(), redos_(), side_(1), committed_actions_(false)
 	{}
 	~undo_list() {}
 
 	/// Clears the stack of undoable actions.
 	void clear();
-	// Performs some initializations and error checks when starting a new side-turn.
+	/// Performs some initializations and error checks when starting a new
+	/// side-turn.
 	void new_side_turn(int side);
+	/// Returns true if the player has performed any actions this turn.
+	bool player_acted()  { return committed_actions_ || !undos_.empty(); }
 
 	/// Undoes the top action on the undo stack.
 	void undo();
@@ -118,6 +121,8 @@ private: // data
 
 	/// Tracks the current side.
 	int side_;
+	/// Tracks if actions have been cleared from the stack since the turn began.
+	bool committed_actions_;
 };
 
 #endif

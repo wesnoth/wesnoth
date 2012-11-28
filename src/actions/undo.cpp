@@ -49,6 +49,10 @@ static lg::log_domain log_engine("engine");
  */
 void undo_list::clear()
 {
+	// The fact that this function was called indicates that something was done.
+	// (Some actions, such as attacks, are never put on the stack.)
+	committed_actions_ = true;
+
 	// No need to do anything if the stack is already clear.
 	if ( undos_.empty() )
 		return;
@@ -80,8 +84,9 @@ void undo_list::new_side_turn(int side)
 		redos_.clear();
 	}
 
-	// Remember the side.
+	// Reset the side.
 	side_ = side;
+	committed_actions_ = false;
 }
 
 
