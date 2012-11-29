@@ -178,7 +178,7 @@ bool persist_file_context::save_context() {
 	std::string cfg_name = get_persist_cfg_name(namespace_.root_);
 	if (!cfg_name.empty()) {
 		if (cfg_.empty()) {
-			success = filesystem::delete_directory(cfg_name);
+			success = filesystem::delete_file(cfg_name);
 		} else {
 			filesystem::scoped_ostream out = filesystem::ostream_file(cfg_name);
 			if (!out->fail())
