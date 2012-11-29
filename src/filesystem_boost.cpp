@@ -69,7 +69,7 @@ static bool is_directory_internal(const path &fpath)
 	error_code ec;
 	bool is_dir = bfs::is_directory(fpath, ec);
 	if (ec && ec.value() != boost::system::errc::no_such_file_or_directory) {
-		ERR_FS << "Failed to check if " << fpath.string() << " is a directory\n";
+		ERR_FS << "Failed to check if " << fpath.string() << " is a directory: " << ec.message() << '\n';
 	}
 	return is_dir;
 }
@@ -79,7 +79,7 @@ static bool file_exists(const path &fpath)
 	error_code ec;
 	bool exists = bfs::exists(fpath, ec);
 	if (ec && ec.value() != boost::system::errc::no_such_file_or_directory) {
-		ERR_FS << "Failed to check existence of file " << fpath.string() << '\n';
+		ERR_FS << "Failed to check existence of file " << fpath.string() << ": " << ec.message() << '\n';
 	}
 	return exists;
 }
@@ -90,7 +90,7 @@ static path get_dir(const path &dirpath)
 		error_code ec;
 		bfs::create_directory(dirpath, ec);
 		if (ec) {
-			ERR_FS << "Failed to create directory " << dirpath.string() << '\n';
+			ERR_FS << "Failed to create directory " << dirpath.string() << ": " << ec.message() << '\n';
 		}
 		// This is probably redundant
 		is_dir = is_directory_internal(dirpath);
@@ -107,7 +107,7 @@ static bool create_directory_if_missing(const path &dirpath)
 	error_code ec;
 	bfs::file_status fs = bfs::status(dirpath, ec);
 	if (ec) {
-		ERR_FS << "Failed to retrieve file status for path " << dirpath.string() << '\n';
+		ERR_FS << "Failed to retrieve file status for " << dirpath.string() << ": " << ec.message() << '\n';
 		return false;
 	} else if (bfs::is_directory(fs)) {
 		DBG_FS << "directory " << dirpath.string() << " exists, not creating\n";
@@ -119,7 +119,7 @@ static bool create_directory_if_missing(const path &dirpath)
 
 	bool created = bfs::create_directory(dirpath, ec);
 	if (ec) {
-		ERR_FS << "Failed to create directory " << dirpath.string() << '\n';
+		ERR_FS << "Failed to create directory " << dirpath.string() << ": " << ec.message() << '\n';
 	}
 	return created;
 }
@@ -132,7 +132,7 @@ static bool create_directory_if_missing_recursive(const path& dirpath)
 	error_code ec;
 	bfs::file_status fs = bfs::status(dirpath);
 	if (ec) {
-		ERR_FS << "Failed to retrieve file status for path " << dirpath.string() << '\n';
+		ERR_FS << "Failed to retrieve file status for " << dirpath.string() << ": " << ec.message() << '\n';
 		return false;
 	} else if (bfs::is_directory(fs)) {
 		return true;
@@ -181,13 +181,13 @@ void get_files_in_dir(const std::string &dir,
 	bfs::directory_iterator di(dirpath, ec);
 	bfs::directory_iterator end;
 	if (ec) {
-		ERR_FS << "Failed to open directory " << dirpath.string() << '\n';
+		ERR_FS << "Failed to open directory " << dirpath.string() << ": " << ec.message() << '\n';
 		return;
 	}
 	for(; di != end; ++di) {
 		bfs::file_status st = di->status(ec);
 		if (ec) {
-			ERR_FS << "Failed to get file status of " << di->path().string() << '\n';
+			ERR_FS << "Failed to get file status of " << di->path().string() << ": " << ec.message() << '\n';
 			continue;
 		}
 		if (st.type() == bfs::regular_file) {
@@ -199,14 +199,14 @@ void get_files_in_dir(const std::string &dir,
 			if (checksum != NULL) {
 				std::time_t mtime = bfs::last_write_time(di->path(), ec);
 				if (ec) {
-					ERR_FS << "Failed to read modification time of " << di->path().string() << '\n';
+					ERR_FS << "Failed to read modification time of " << di->path().string() << ": " << ec.message() << '\n';
 				} else if (mtime > checksum->modified) {
 					checksum->modified = mtime;
 				}
 
 				uintmax_t size = bfs::file_size(di->path(), ec);
 				if (ec) {
-					ERR_FS << "Failed to read filesize of " << di->path().string() << '\n';
+					ERR_FS << "Failed to read filesize of " << di->path().string() << ": " << ec.message() << '\n';
 				} else {
 					checksum->sum_size += size;
 				}
@@ -221,7 +221,7 @@ void get_files_in_dir(const std::string &dir,
 			const path inner_main(di->path() / maincfg_filename);
 			bfs::file_status main_st = bfs::status(inner_main, ec);
 			if (ec && ec.value() != boost::system::errc::no_such_file_or_directory) {
-				ERR_FS << "Failed to get file status of " << inner_main.string() << '\n';
+				ERR_FS << "Failed to get file status of " << inner_main.string() << ": " << ec.message() << '\n';
 			} else if (reorder == DO_REORDER && main_st.type() == bfs::regular_file) {
 				LOG_FS << "_main.cfg found : " << (mode == ENTIRE_FILE_PATH ? inner_main.string() : inner_main.filename().string()) << '\n';
 				push_if_exists(files, inner_main, mode == ENTIRE_FILE_PATH);
@@ -488,7 +488,7 @@ std::string get_cwd()
 	error_code ec;
 	path cwd = bfs::current_path(ec);
 	if (ec) {
-		ERR_FS << "Failed to get current directory\n";
+		ERR_FS << "Failed to get current directory: " << ec.message() << '\n';
 		return "";
 	}
 	return cwd.generic_string();
@@ -500,7 +500,7 @@ std::string get_exe_dir()
 	error_code ec;
 	path exe = bfs::read_symlink(self_exe, ec);
 	if (ec) {
-		ERR_FS << "Failed to dereference " << self_exe.string() << '\n';
+		ERR_FS << "Failed to dereference " << self_exe.string() << ": " << ec.message() << '\n';
 		return std::string();
 	}
 
@@ -515,7 +515,7 @@ bool make_directory(const std::string& dirname)
 	error_code ec;
 	bool created = bfs::create_directory(path(dirname), ec);
 	if (ec) {
-		ERR_FS << "Failed to create directory " << dirname << '\n';
+		ERR_FS << "Failed to create directory " << dirname << ": " << ec.message() << '\n';
 	}
 	return created;
 }
@@ -640,7 +640,7 @@ time_t file_modified_time(const std::string& fname)
 	error_code ec;
 	std::time_t mtime = bfs::last_write_time(path(fname), ec);
 	if (ec) {
-		ERR_FS << "Failed to read modification time of " << fname << '\n';
+		ERR_FS << "Failed to read modification time of " << fname << ": " << ec.message() << '\n';
 	}
 	return mtime;
 }
@@ -660,7 +660,7 @@ int file_size(const std::string& fname)
 	error_code ec;
 	uintmax_t size = bfs::file_size(path(fname), ec);
 	if (ec) {
-		ERR_FS << "Failed to read filesize of " << fname << '\n';
+		ERR_FS << "Failed to read filesize of " << fname << ": " << ec.message() << '\n';
 		return -1;
 	} else if (size > INT_MAX)
 		return INT_MAX;
