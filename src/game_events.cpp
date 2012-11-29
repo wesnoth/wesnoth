@@ -22,6 +22,7 @@
 
 #include "actions/create.hpp"
 #include "actions/move.hpp"
+#include "actions/undo.hpp"
 #include "actions/vision.hpp"
 #include "ai/manager.hpp"
 #include "dialogs.hpp"
@@ -2654,12 +2655,21 @@ WML_HANDLER_FUNCTION(allow_undo,/*event_info*/,/*cfg*/)
 	current_context->mutated = false;
 }
 
+// Block undo lets WML simulate the player performing a non-undoable action.
+// This can cause sighted events to immediately fire.
+WML_HANDLER_FUNCTION(block_undo, /*event_info*/, /*cfg*/)
+{
+	resources::undo_stack->clear();
+	resources::undo_stack->clear_redo();
+}
+
 WML_HANDLER_FUNCTION(open_help,  /*event_info*/, cfg)
 {
 	game_display &screen = *resources::screen;
 	t_string topic_id = cfg["topic"];
 	help::show_help(screen, topic_id.to_serialized());
 }
+
 // Helper namespace to do some subparts for message function
 namespace {
 
