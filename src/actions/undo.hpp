@@ -61,6 +61,19 @@ struct undo_action {
 			starting_dir(u.facing())
 		{}
 
+	// Simpler constructor for dismissals.
+	explicit undo_action(const unit& u) :
+			route(),
+			starting_moves(),
+			original_village_owner(),
+			recall_loc(),
+			recall_from(),
+			type(DISMISS),
+			affected_unit(u),
+			countdown_time_bonus(),
+			starting_dir(map_location::NDIRECTIONS)
+		{}
+
 	std::vector<map_location> route;
 	int starting_moves;
 	int original_village_owner;
@@ -85,6 +98,26 @@ public:
 	{}
 	~undo_list() {}
 
+	// Functions related to managing the undo stack:
+
+	/// Adds a dismissal to the undo stack.
+	void add_dissmissal(const unit & u)
+	{ add(undo_action(u)); }
+	/// Adds a move to the undo stack.
+	void add_move(const unit& u,
+	              const std::vector<map_location>::const_iterator & begin,
+	              const std::vector<map_location>::const_iterator & end,
+	              int start_moves, int timebonus=0, int village_owner=-1,
+	              const map_location::DIRECTION dir=map_location::NDIRECTIONS)
+	{ add(undo_action(u, begin, end, start_moves, timebonus, village_owner, dir)); }
+	/// Adds a recall to the undo stack.
+	void add_recall(const unit& u, const map_location& loc,
+	                const map_location& from)
+	{ add(undo_action(u, loc, from, undo_action::RECALL)); }
+	/// Adds a recruit to the undo stack.
+	void add_recruit(const unit& u, const map_location& loc,
+	                 const map_location& from)
+	{ add(undo_action(u, loc, from, undo_action::RECRUIT)); }
 	/// Clears the stack of undoable actions.
 	void clear();
 	/// Performs some initializations and error checks when starting a new
@@ -92,6 +125,8 @@ public:
 	void new_side_turn(int side);
 	/// Returns true if the player has performed any actions this turn.
 	bool player_acted() const { return committed_actions_ || !undos_.empty(); }
+
+	// Functions related to using the undo stack:
 
 	/// True if there are actions that can be undone.
 	bool can_undo() const  { return !undos_.empty(); }
@@ -102,7 +137,7 @@ public:
 	/// Redoes the top action on the redo stack.
 	void redo();
 
-	void push_back(const undo_action & action) { undos_.push_back(action); }
+	// Functions to be eliminated or renamed:
 
 	void clear_redo()                               { redos_.clear(); }
 
@@ -112,6 +147,9 @@ private: // functions
 	/// Assigning the undo list is probably an error, so it is not implemented.
 	undo_list & operator=(const undo_list &);
 
+	/// Adds an action to the undo stack.
+	void add(const undo_action & action)
+	{ undos_.push_back(action);  redos_.clear(); }
 	/// Applies the pending fog/shroud changes from the undo stack.
 	void apply_shroud_changes() const;
 

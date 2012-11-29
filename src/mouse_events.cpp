@@ -815,8 +815,6 @@ size_t mouse_handler::move_unit_along_route(const std::vector<map_location> & st
 	if(moves == 0)
 		return 0;
 
-	resources::undo_stack->clear_redo();
-
 	if ( interrupted  &&  moves + 1 < steps.size() ) {
 		// reselect the unit (for "press t to continue")
 		select_hex(steps[moves], false, false, false);

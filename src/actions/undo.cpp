@@ -353,7 +353,7 @@ void undo_list::redo()
 
 		recorder.add_movement(action_copy.route);
 	}
-	resources::undo_stack->push_back(action);
+	undos_.push_back(action);
 
 	gui.invalidate_unit();
 	gui.invalidate_game_status();

@@ -123,7 +123,7 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 		// Remove the item from filter_textbox memory
 		filter_.delete_item(index);
 		//add dismissal to the undo stack
-		resources::undo_stack->push_back(undo_action(u, map_location(), map_location(), undo_action::DISMISS));
+		resources::undo_stack->add_dissmissal(u);
 
 		// Find the unit in the recall list.
 		std::vector<unit>& recall_list = (*resources::teams)[u.side() -1].recall_list();
@@ -136,8 +136,6 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 		recorder.add_disband(dismissed_unit->id());
 		recall_list.erase(dismissed_unit);
 
-		//clear the redo stack to avoid duplication of dismissals
-		resources::undo_stack->clear_redo();
 		return gui::DELETE_ITEM;
 	} else {
 		return gui::CONTINUE_DIALOG;
@@ -868,10 +866,9 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 		//MP_COUNTDOWN grant time bonus for recruiting
 		current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
 
-		resources::undo_stack->clear_redo();
 		assert(new_unit.type());
 
-		resources::undo_stack->push_back(undo_action(new_unit, loc, recruited_from, undo_action::RECRUIT));
+		resources::undo_stack->add_recruit(new_unit, loc, recruited_from);
 		// Disallow undoing of recruits. Can be enabled again once the unit's
 		// description= key doesn't use random anymore.
 		if ( mutated  ||  new_unit.type()->genders().size() > 1  ||
@@ -1084,12 +1081,11 @@ bool menu_handler::do_recall(const unit& un, int side_num, const map_location& r
 	bool mutated = place_recruit(un, recall_location, recall_from, current_team.recall_cost(), true, true);
 	statistics::recall_unit(un);
 
-	resources::undo_stack->push_back(undo_action(un, recall_location, recall_from, undo_action::RECALL));
+	resources::undo_stack->add_recall(un, recall_location, recall_from);
 	if ( mutated ) {
 		resources::undo_stack->clear();
 	}
 
-	resources::undo_stack->clear_redo();
 	gui_->redraw_minimap();
 	gui_->invalidate_game_status();
 	gui_->invalidate(recall_location);
