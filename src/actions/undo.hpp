@@ -31,7 +31,7 @@
 class undo_list {
 	/// Records information to be able to undo an action.
 	struct undo_action {
-		enum ACTION_TYPE { NONE, RECRUIT, RECALL, DISMISS };
+		enum ACTION_TYPE { MOVE, RECRUIT, RECALL, DISMISS };
 
 		/// Constructor for move actions.
 		undo_action(const unit& u,
@@ -44,7 +44,7 @@ class undo_list {
 				original_village_owner(orig),
 				recall_loc(),
 				recall_from(),
-				type(NONE),
+				type(MOVE),
 				affected_unit(u),
 				countdown_time_bonus(timebonus),
 				starting_dir(dir == map_location::NDIRECTIONS ? u.facing() : dir)
