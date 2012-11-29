@@ -27,71 +27,73 @@
 #include <vector>
 
 
-/** Records information to be able to undo a movement. */
-struct undo_action {
-	enum ACTION_TYPE { NONE, RECRUIT, RECALL, DISMISS };
-
-	undo_action(const unit& u,
-	            const std::vector<map_location>::const_iterator & begin,
-	            const std::vector<map_location>::const_iterator & end,
-	            int sm, int timebonus=0, int orig=-1,
-	            const map_location::DIRECTION dir=map_location::NDIRECTIONS) :
-			route(begin, end),
-			starting_moves(sm),
-			original_village_owner(orig),
-			recall_loc(),
-			recall_from(),
-			type(NONE),
-			affected_unit(u),
-			countdown_time_bonus(timebonus),
-			starting_dir(dir == map_location::NDIRECTIONS ? u.facing() : dir)
-		{
-		}
-
-	undo_action(const unit& u, const map_location& loc, const map_location& from,
-	            const ACTION_TYPE action_type=NONE) :
-			route(),
-			starting_moves(),
-			original_village_owner(),
-			recall_loc(loc),
-			recall_from(from),
-			type(action_type),
-			affected_unit(u),
-			countdown_time_bonus(1),
-			starting_dir(u.facing())
-		{}
-
-	// Simpler constructor for dismissals.
-	explicit undo_action(const unit& u) :
-			route(),
-			starting_moves(),
-			original_village_owner(),
-			recall_loc(),
-			recall_from(),
-			type(DISMISS),
-			affected_unit(u),
-			countdown_time_bonus(),
-			starting_dir(map_location::NDIRECTIONS)
-		{}
-
-	std::vector<map_location> route;
-	int starting_moves;
-	int original_village_owner;
-	map_location recall_loc;
-	map_location recall_from;
-	ACTION_TYPE type;
-	unit affected_unit;
-	int countdown_time_bonus;
-	map_location::DIRECTION starting_dir;
-
-	bool is_dismiss() const { return type == DISMISS; }
-	bool is_recall() const { return type == RECALL; }
-	bool is_recruit() const { return type == RECRUIT; }
-};
-
-
 /// Class to store the actions that a player can undo and redo.
 class undo_list {
+	/// Records information to be able to undo an action.
+	struct undo_action {
+		enum ACTION_TYPE { NONE, RECRUIT, RECALL, DISMISS };
+
+		/// Constructor for move actions.
+		undo_action(const unit& u,
+			        const std::vector<map_location>::const_iterator & begin,
+			        const std::vector<map_location>::const_iterator & end,
+			        int sm, int timebonus=0, int orig=-1,
+			        const map_location::DIRECTION dir=map_location::NDIRECTIONS) :
+				route(begin, end),
+				starting_moves(sm),
+				original_village_owner(orig),
+				recall_loc(),
+				recall_from(),
+				type(NONE),
+				affected_unit(u),
+				countdown_time_bonus(timebonus),
+				starting_dir(dir == map_location::NDIRECTIONS ? u.facing() : dir)
+			{
+			}
+
+		/// Constructor for recruit and recall actions.
+		undo_action(const unit& u, const map_location& loc, const map_location& from,
+			        const ACTION_TYPE action_type) :
+				route(),
+				starting_moves(),
+				original_village_owner(),
+				recall_loc(loc),
+				recall_from(from),
+				type(action_type),
+				affected_unit(u),
+				countdown_time_bonus(1),
+				starting_dir(u.facing())
+			{}
+
+		// Constructor for dismissals.
+		explicit undo_action(const unit& u) :
+				route(),
+				starting_moves(),
+				original_village_owner(),
+				recall_loc(),
+				recall_from(),
+				type(DISMISS),
+				affected_unit(u),
+				countdown_time_bonus(),
+				starting_dir(map_location::NDIRECTIONS)
+			{}
+
+		std::vector<map_location> route;
+		int starting_moves;
+		int original_village_owner;
+		map_location recall_loc;
+		map_location recall_from;
+		ACTION_TYPE type;
+		unit affected_unit;
+		int countdown_time_bonus;
+		map_location::DIRECTION starting_dir;
+
+		bool is_dismiss() const { return type == DISMISS; }
+		bool is_recall() const { return type == RECALL; }
+		bool is_recruit() const { return type == RECRUIT; }
+	};
+	typedef std::vector<undo_action> action_list;
+
 public:
 	undo_list() :
 		undos_(), redos_(), side_(1), committed_actions_(false)
@@ -154,8 +156,6 @@ private: // functions
 	void apply_shroud_changes() const;
 
 private: // data
-	typedef std::vector<undo_action> action_list;
-
 	action_list undos_;
 	action_list redos_;
 
