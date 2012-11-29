@@ -595,7 +595,7 @@ static void setup_user_data_dir()
 #endif
 }
 
-const std::string& get_user_data_dir()
+std::string get_user_data_dir()
 {
 	// ensure setup gets called only once per session
 	// FIXME: this is okay and optimized, but how should we react
@@ -612,7 +612,7 @@ const std::string& get_user_data_dir()
 	return user_data_dir;
 }
 
-const std::string &get_user_config_dir()
+std::string get_user_config_dir()
 {
 	if (user_config_dir.empty())
 	{
@@ -636,7 +636,7 @@ const std::string &get_user_config_dir()
 	return user_config_dir;
 }
 
-const std::string &get_cache_dir()
+std::string get_cache_dir()
 {
 	if (cache_dir.empty())
 	{

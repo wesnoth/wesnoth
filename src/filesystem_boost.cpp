@@ -432,7 +432,7 @@ static const path &get_user_data_path()
 	}
 	return user_data_dir;
 }
-const std::string &get_user_config_dir()
+std::string get_user_config_dir()
 {
 	if (user_config_dir.empty())
 	{
@@ -455,11 +455,11 @@ const std::string &get_user_config_dir()
 	}
 	return user_config_dir.string();
 }
-const std::string &get_user_data_dir()
+std::string get_user_data_dir()
 {
 	return get_user_data_path().string();
 }
-const std::string &get_cache_dir()
+std::string get_cache_dir()
 {
 	if (cache_dir.empty())
 	{
