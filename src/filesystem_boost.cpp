@@ -26,6 +26,10 @@
 #include <boost/filesystem/fstream.hpp>
 #include <boost/foreach.hpp>
 
+#ifdef _WIN32
+#include "filesystem_win32.ii"
+#endif /* !_WIN32 */
+
 #include "config.hpp"
 #include "game_config.hpp"
 #include "log.hpp"
@@ -35,6 +39,7 @@
 static lg::log_domain log_filesystem("filesystem");
 #define DBG_FS LOG_STREAM(debug, log_filesystem)
 #define LOG_FS LOG_STREAM(info, log_filesystem)
+#define WRN_FS LOG_STREAM(warn, log_filesystem)
 #define ERR_FS LOG_STREAM(err, log_filesystem)
 
 namespace bfs = boost::filesystem;
@@ -323,7 +328,7 @@ void set_preferences_dir(std::string newprefdir)
 {
 #ifdef _WIN32
 	if(newprefdir.empty()) {
-		game_config::preferences_dir = get_cwd() + "/userdata";
+		game_config::preferences_dir = (path(get_cwd()) / "userdata").generic_string();
 	} else if (newprefdir.size() > 2 && newprefdir[1] == ':') {
 		//allow absolute path override
 		game_config::preferences_dir = newprefdir;
@@ -335,17 +340,16 @@ void set_preferences_dir(std::string newprefdir)
 			LOG_FS << "Using SHGetSpecialFolderPath to find My Documents\n";
 			char my_documents_path[MAX_PATH];
 			if(SHGetSpecialFolderPath(NULL, my_documents_path, 5, 1)) {
-				std::string mygames_path = std::string(my_documents_path) + "/" + "My Games";
-				boost::algorithm::replace_all(mygames_path, std::string("\\"), std::string("/"));
+				path mygames_path = path(my_documents_path) / "My Games";
 				create_directory_if_missing(mygames_path);
-				game_config::preferences_dir = mygames_path + "/" + newprefdir;
+				game_config::preferences_dir = (mygames_path / newprefdir).generic_string();
 			} else {
 				WRN_FS << "SHGetSpecialFolderPath failed\n";
-				game_config::preferences_dir = get_cwd() + "/" + newprefdir;
+				game_config::preferences_dir = (path(get_cwd()) / newprefdir).generic_string();
 			}
 		} else {
 			LOG_FS << "Failed to load SHGetSpecialFolderPath function\n";
-			game_config::preferences_dir = get_cwd() + "/" + newprefdir;
+			game_config::preferences_dir = (path(get_cwd()) / newprefdir).generic_string();
 		}
 	}
 
