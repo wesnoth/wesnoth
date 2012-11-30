@@ -29,7 +29,7 @@
 #include <set>
 
 #ifdef _WIN32
-#include "filesystem_win32.ii"
+#include <windows.h>
 #endif /* !_WIN32 */
 
 #include "config.hpp"
