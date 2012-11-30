@@ -25,6 +25,8 @@
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
 #include <boost/foreach.hpp>
+#include <boost/system/windows_error.hpp>
+#include <set>
 
 #ifdef _WIN32
 #include "filesystem_win32.ii"
@@ -68,7 +70,12 @@ static bool is_directory_internal(const path &fpath)
 {
 	error_code ec;
 	bool is_dir = bfs::is_directory(fpath, ec);
-	if (ec && ec.value() != boost::system::errc::no_such_file_or_directory) {
+	if (ec
+		&& ec.value() != boost::system::errc::no_such_file_or_directory
+#ifdef _WIN32
+		&& ec.value() != boost::system::windows_error::path_not_found
+#endif /*_WIN32*/
+	) {
 		ERR_FS << "Failed to check if " << fpath.string() << " is a directory: " << ec.message() << '\n';
 	}
 	return is_dir;
@@ -78,7 +85,12 @@ static bool file_exists(const path &fpath)
 {
 	error_code ec;
 	bool exists = bfs::exists(fpath, ec);
-	if (ec && ec.value() != boost::system::errc::no_such_file_or_directory) {
+	if (ec
+		&& ec.value() != boost::system::errc::no_such_file_or_directory
+#ifdef _WIN32
+		&& ec.value() != boost::system::windows_error::path_not_found
+#endif /*_WIN32*/
+	) {
 		ERR_FS << "Failed to check existence of file " << fpath.string() << ": " << ec.message() << '\n';
 	}
 	return exists;
