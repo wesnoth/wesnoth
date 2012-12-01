@@ -66,6 +66,25 @@ void undo_list::clear()
 
 
 /**
+ * Updates fog/shroud based on the undo stack, then updates stack as needed.
+ * Call this when "updating shroud now".
+ * This may fire events and change the game state.
+ */
+void undo_list::commit_vision()
+{
+	// Update fog/shroud.
+	size_t erase_to = apply_shroud_changes();
+
+	if ( erase_to != 0 ) {
+		// The actions that led to information being revealed can no longer
+		// be undone.
+		undos_.erase(undos_.begin(), undos_.begin() + erase_to);
+		committed_actions_ = true;
+	}
+}
+
+
+/**
  * Performs some initializations and error checks when starting a new side-turn.
  * @param[in]  side  The side whose turn is about to start.
  */
@@ -365,53 +384,60 @@ void undo_list::redo()
 /**
  * Applies the pending fog/shroud changes from the undo stack.
  * Does nothing if the the current side does not use fog or shroud.
+ * @returns  an index (into undos_) pointing to the first undoable action
+ *           that can be kept (or undos_.size() if none can be kept).
  */
-void undo_list::apply_shroud_changes() const
+size_t undo_list::apply_shroud_changes() const
 {
 	team &tm = (*resources::teams)[side_ - 1];
 	// No need to do clearing if fog/shroud has been kept up-to-date.
 	if ( tm.auto_shroud_updates()  ||  !tm.fog_or_shroud() )
-		return;
+		return 0;
 
 	game_display &disp = *resources::screen;
 	unit_map &units = *resources::units;
 
 	/*
 	   This function works thusly:
-	   1. run through the list of undo_actions
-	   2. for each one, play back the unit's move
-	   3. for each location along the route, clear any "shrouded" hexes that the unit can see
-	      and record sighted events
-	   4. render shroud/fog cleared.
-	   5. pump all events
-	   6. call clear_shroud to update the fog of war for each unit
-	   7. fix up associated display stuff (done in a similar way to turn_info::undo())
+	   1. Run through the list of undo_actions.
+	   2. For each one, play back the unit's move.
+	   3. For each location along the route, clear any "shrouded" hexes that the
+	      unit can see and record sighted events.
+	   4. Render shroud/fog cleared.
+	   5. Pump all events.
+	   6. Fix up associated display stuff.
 	*/
 
 	actions::shroud_clearer clearer;
 	bool cleared_shroud = false;  // for further optimization
+	size_t erase_to = 0;
+	size_t list_size = undos_.size();
 
-	for( action_list::const_iterator un = undos_.begin(); un != undos_.end(); ++un ) {
+	for( size_t i = 0; i != list_size; ++i ) {
+		const undo_action & action = undos_[i];
 		LOG_NG << "Turning an undo...\n";
 		//NOTE: for the moment shroud cleared during recall seems never delayed
 		//Shroud update during recall can be delayed, during recruit as well
 		//if we have a non-random recruit (e.g. undead)
-		//if(un->is_recall() || un->is_recruit()) continue;
+		//if(action.is_recall() || action.is_recruit()) continue;
 
 		// Make a temporary unit move in map and hide the original
-		const unit_map::const_unit_iterator unit_itor = units.find(un->affected_unit.underlying_id());
+		const unit_map::const_unit_iterator unit_itor = units.find(action.affected_unit.underlying_id());
 		// check if the unit is still existing (maybe killed by an event)
 		// FIXME: A wml-killed unit will not update the shroud explored before its death
 		if(unit_itor == units.end())
 			continue;
 
-		std::vector<map_location> route(un->route.begin(), un->route.end());
-		if ( un->recall_loc.valid() )
-			route.push_back(un->recall_loc);
+		std::vector<map_location> route(action.route.begin(), action.route.end());
+		if ( action.recall_loc.valid() )
+			route.push_back(action.recall_loc);
 		std::vector<map_location>::const_iterator step;
 		for(step = route.begin(); step != route.end(); ++step) {
 			// Clear the shroud, collecting new sighted events.
-			cleared_shroud |= clearer.clear_unit(*step, *unit_itor, tm);
+			if ( clearer.clear_unit(*step, *unit_itor, tm) ) {
+				cleared_shroud = true;
+				erase_to = i + 1;
+			}
 		}
 	}
 
@@ -428,6 +454,11 @@ void undo_list::apply_shroud_changes() const
 		clear_shroud(side_);
 		disp.invalidate_unit();
 		disp.draw();
+		// The entire stack needs to be cleared in order to preserve replays.
+		// (The events that fired might depend on current unit positions.)
+		erase_to = list_size;
 	}
+
+	return erase_to;
 }
 

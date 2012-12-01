@@ -65,6 +65,8 @@ Version 1.11.0+svn:
    * Fix broken MP game creation dialog on low resolutions
    * The "repeat recruit" command now refers to the last recruit by the current
      side, rather than the last recruit by the current game client.
+   * Refinements to undo stack management, sometimes allowing moves to be undone
+     after "update shroud now" (if those moves did not affect fog/shroud).
  * Whiteboard
    * Don't end turn if executing all actions in another way than using the
      "end turn" button/hotkey. (bug #19901)

@@ -122,6 +122,8 @@ public:
 	{ add(undo_action(u, loc, from, undo_action::RECRUIT)); }
 	/// Clears the stack of undoable actions.
 	void clear();
+	/// Updates fog/shroud based on the undo stack, then updates stack as needed.
+	void commit_vision();
 	/// Performs some initializations and error checks when starting a new
 	/// side-turn.
 	void new_side_turn(int side);
@@ -153,7 +155,7 @@ private: // functions
 	void add(const undo_action & action)
 	{ undos_.push_back(action);  redos_.clear(); }
 	/// Applies the pending fog/shroud changes from the undo stack.
-	void apply_shroud_changes() const;
+	size_t apply_shroud_changes() const;
 
 private: // data
 	action_list undos_;

@@ -1129,7 +1129,7 @@ void menu_handler::toggle_shroud_updates(int side_num)
 
 void menu_handler::update_shroud_now(int /* side_num */)
 {
-	resources::undo_stack->clear();
+	resources::undo_stack->commit_vision();
 }
 
 bool menu_handler::end_turn(int side_num)
