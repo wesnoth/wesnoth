@@ -176,7 +176,7 @@ void manager::set_active(bool active)
 		if (active_)
 		{
 			if(should_clear_undo())
-				clear_undo();
+				resources::undo_stack->clear();
 			validate_viewer_actions();
 			LOG_WB << "Whiteboard activated! " << *viewer_actions() << "\n";
 			create_temp_move();
@@ -1078,12 +1078,6 @@ int manager::get_spent_gold_for(int side)
 		return 0;
 
 	return resources::teams->at(side - 1).get_side_actions()->get_gold_spent();
-}
-
-void manager::clear_undo()
-{
-	resources::undo_stack->clear();
-	resources::undo_stack->clear_redo();
 }
 
 void manager::options_dlg()

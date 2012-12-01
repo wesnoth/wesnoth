@@ -41,10 +41,10 @@ static lg::log_domain log_engine("engine");
 
 
 /**
- * Clears the stack of undoable actions.
+ * Clears the stack of undoable (and redoable) actions.
  * (Also handles updating fog/shroud if needed.)
  * Call this if an action alters the game state, but add that action to the
- * stack before calling this.
+ * stack before calling this (if the action is a kind that can be undone).
  * This may fire events and change the game state.
  */
 void undo_list::clear()
@@ -53,15 +53,14 @@ void undo_list::clear()
 	// (Some actions, such as attacks, are never put on the stack.)
 	committed_actions_ = true;
 
-	// No need to do anything if the stack is already clear.
-	if ( undos_.empty() )
-		return;
-
-	// Update fog/shroud.
-	apply_shroud_changes();
-
-	// Clear the stack.
-	undos_.clear();
+	// We can save some overhead by not calling apply_shroud_changes() for an
+	// empty stack.
+	if ( !undos_.empty() ) {
+		apply_shroud_changes();
+		undos_.clear();
+	}
+	// No special handling for redos, so just clear that stack.
+	redos_.clear();
 }
 
 

@@ -141,10 +141,6 @@ public:
 	/// Redoes the top action on the redo stack.
 	void redo();
 
-	// Functions to be eliminated or renamed:
-
-	void clear_redo()                               { redos_.clear(); }
-
 private: // functions
 	/// Copying the undo list is probably an error, so it is not implemented.
 	undo_list(const undo_list &);

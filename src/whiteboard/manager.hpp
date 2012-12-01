@@ -183,8 +183,6 @@ public:
 	/** Determines whether or not the undo_stack should be cleared.
 	 *  @todo Only when there are networked allies and we have set a preferences option */
 	bool should_clear_undo() const {return true;}
-	/** Updates shroud and clears the undo_stack. */
-	void clear_undo();
 
 	/** Displays the whiteboard options dialog. */
 	void options_dlg();

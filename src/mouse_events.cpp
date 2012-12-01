@@ -1021,7 +1021,6 @@ void mouse_handler::attack_enemy_(const map_location& att_loc
 
 	//may fire event and modify things
 	resources::undo_stack->clear();
-	resources::undo_stack->clear_redo();
 
 	unit_map::iterator attacker = find_unit(attacker_loc);
 	if(attacker == units_.end()

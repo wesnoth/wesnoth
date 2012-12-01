@@ -35,6 +35,7 @@
 #include "utility.hpp"
 
 #include "actions/create.hpp"
+#include "actions/undo.hpp"
 #include "game_display.hpp"
 #include "game_end_exceptions.hpp"
 #include "map.hpp"
@@ -343,7 +344,7 @@ bool side_actions::execute(side_actions::iterator position)
 	}
 
 	if(resources::whiteboard->should_clear_undo()) {
-		resources::whiteboard->clear_undo();
+		resources::undo_stack->clear();
 	}
 
 	std::stringstream ss;
