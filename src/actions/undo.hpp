@@ -120,7 +120,7 @@ public:
 	void add_recruit(const unit& u, const map_location& loc,
 	                 const map_location& from)
 	{ add(undo_action(u, loc, from, undo_action::RECRUIT)); }
-	/// Clears the stack of undoable actions.
+	/// Clears the stack of undoable (and redoable) actions.
 	void clear();
 	/// Updates fog/shroud based on the undo stack, then updates stack as needed.
 	void commit_vision();
