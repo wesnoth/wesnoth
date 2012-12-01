@@ -117,6 +117,7 @@ void undo_list::undo()
 		return;
 
 	const events::command_disabler disable_commands;
+
 	game_display & gui = *resources::screen;
 	unit_map &   units = *resources::units;
 	team &current_team = (*resources::teams)[side_ - 1];
@@ -135,7 +136,6 @@ void undo_list::undo()
 			return;
 		}
 		current_team.recall_list().push_back(action.affected_unit);
-		resources::whiteboard->on_gamestate_change();
 	} else if(action.is_recall()) {
 
 		if(!current_team.persistent()) {
@@ -157,7 +157,6 @@ void undo_list::undo()
 		// to also do the overlapped hexes
 		gui.invalidate(action.recall_loc);
 		units.erase(action.recall_loc);
-		resources::whiteboard->on_gamestate_change();
 	} else if(action.is_recruit()) {
 		// Undo a recruit action
 		if( units.count(action.recall_loc) == 0 ) {
@@ -179,7 +178,6 @@ void undo_list::undo()
 		// to also do the ovelerlapped hexes
 		gui.invalidate(action.recall_loc);
 		units.erase(action.recall_loc);
-		resources::whiteboard->on_gamestate_change();
 	} else {
 		// Undo a move action
 		const int starting_moves = action.starting_moves;
@@ -217,10 +215,10 @@ void undo_list::undo()
 		u->set_standing();
 
 		gui.invalidate_unit_after_move(route.front(), route.back());
-		resources::whiteboard->on_gamestate_change();
 	}
 	recorder.undo();
 	redos_.push_back(action);
+	resources::whiteboard->on_gamestate_change();
 
 	gui.invalidate_unit();
 	gui.invalidate_game_status();
@@ -238,6 +236,7 @@ void undo_list::redo()
 		return;
 
 	const events::command_disabler disable_commands;
+
 	game_display & gui = *resources::screen;
 	unit_map &   units = *resources::units;
 	team &current_team = (*resources::teams)[side_ - 1];
@@ -258,7 +257,6 @@ void undo_list::redo()
 		std::vector<unit>::iterator unit_it =
 			find_if_matches_id(current_team.recall_list(), action.affected_unit.id());
 		current_team.recall_list().erase(unit_it);
-		resources::whiteboard->on_gamestate_change();
 	} else if(action.is_recall()) {
 		if(!current_team.persistent()) {
 			ERR_NG << "trying to redo a recall for side " << side_
@@ -270,7 +268,6 @@ void undo_list::redo()
 		recorder.add_recall(action.affected_unit.id(), action.recall_loc, action.recall_from);
 		map_location loc = action.recall_loc;
 		map_location from = map_location::null_location;
-		const events::command_disabler disable_commands;
 		const std::string &msg = find_recall_location(side_, loc, from, action.affected_unit);
 		if(msg.empty()) {
 			unit un = action.affected_unit;
@@ -289,7 +286,6 @@ void undo_list::redo()
 			gui::dialog(gui, "", msg,gui::OK_ONLY).show();
 			return;
 		}
-		resources::whiteboard->on_gamestate_change();
 	} else if(action.is_recruit()) {
 		// Redo recruit action
 		map_location loc = action.recall_loc;
@@ -313,7 +309,6 @@ void undo_list::redo()
 		}
 		current_team.last_recruit(name);
 		recorder.add_recruit(recruit_num,loc,from);
-		const events::command_disabler disable_commands;
 		const std::string &msg = find_recruit_location(side_, loc, from, action.affected_unit.type_id());
 		if(msg.empty()) {
 			const unit new_unit = action.affected_unit;
@@ -331,7 +326,6 @@ void undo_list::redo()
 			gui::dialog(gui, "", msg,gui::OK_ONLY).show();
 			return;
 		}
-		resources::whiteboard->on_gamestate_change();
 	} else {
 		// Redo movement action
 		const int starting_moves = action.starting_moves;
@@ -367,11 +361,11 @@ void undo_list::redo()
 		}
 
 		gui.invalidate_unit_after_move(route.front(), route.back());
-		resources::whiteboard->on_gamestate_change();
 
 		recorder.add_movement(action_copy.route);
 	}
 	undos_.push_back(action);
+	resources::whiteboard->on_gamestate_change();
 
 	gui.invalidate_unit();
 	gui.invalidate_game_status();
