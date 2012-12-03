@@ -81,6 +81,11 @@ replay_controller::replay_controller(const config& level,
 {
 	tod_manager_start_ = tod_manager_;
 
+	// Our parent class correctly detects that we are loading a game. However,
+	// we are not loading mid-game, so from here on, treat this as not loading
+	// a game. (Allows turn_1 et al. events to fire at the correct time.)
+	loading_game_ = false;
+
 	init();
 	reset_replay();
 }
