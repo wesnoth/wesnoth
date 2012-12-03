@@ -3419,7 +3419,7 @@ namespace game_events {
 	{
 		assert(manager_running);
 		BOOST_FOREACH(const game_events::event_handler &eh, event_handlers) {
-			if (eh.get_config()["name"] == "prestart" || eh.disabled() || eh.is_menu_item()){
+			if ( eh.disabled() || eh.is_menu_item() ) {
 				continue;
 			}
 			cfg.add_child("event", eh.get_config());

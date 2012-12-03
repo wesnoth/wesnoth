@@ -1218,18 +1218,6 @@ void convert_old_saves(config& cfg){
 
 void game_state::write_snapshot(config& cfg, game_display* gui) const
 {
-
-	//removing prestart events from level, as they should not be fired again when loading from snapshot/replay_start
-	unsigned i = 0;
-	while(i < cfg.child_count("event")){
-		config event = cfg.child("event", i);
-		if(event["name"] == "prestart"){
-			cfg.remove_child("event", i);
-		} else {
-			i++;
-		}
-	}
-
 	log_scope("write_game");
 	if(gui != NULL){
 		cfg["snapshot"] = true;

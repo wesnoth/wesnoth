@@ -281,9 +281,12 @@ void replay_controller::reset_replay(){
 		game_events::add_events(era_cfg.child_range("event"), "era_events");
 	}
 
-	fire_prestart(true);
+	// Scenario initialization. (c.f. playsingle_controller::play_scenario())
+	fire_prestart(false);
 	init_gui();
-	fire_start(true);
+	fire_start(false);
+	// Since we did not fire the start event, it_is_a_new_turn_ has the wrong value.
+	it_is_a_new_turn_ = true;
 	update_gui();
 
 	reset_replay_ui();
