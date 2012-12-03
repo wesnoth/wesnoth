@@ -386,8 +386,8 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 
 		//before first turn, save a snapshot as replay_start
 		if(gamestate_.snapshot.empty()){
+			gamestate_.replay_start() = to_config();
 			gamestate_.write_snapshot(gamestate_.replay_start(), gui_.get());
-			gamestate_.replay_start().merge_with(to_config());
 		}
 
 		// Avoid autosaving after loading, but still
