@@ -497,6 +497,12 @@ return {
             local recruitable_units = {}
 
             for i, recruit_id in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
+                if not efficiency[recruit_id] then
+                    -- Recruit list changed since last recruit, recalculate efficiency
+                    efficiency = get_hp_efficiency()
+                    self.data.recruit.hp_efficiency = efficiency
+                end
+
                 -- Count number of units with the same attack type. Used to avoid recruiting too many of the same unit
                 local attack_types = 0
                 local recruit_count = 0
