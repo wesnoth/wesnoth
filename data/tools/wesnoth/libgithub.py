@@ -419,12 +419,11 @@ class GitHub(object):
         """
         if not self._github_repos_memo:
             url = _GITHUB_API_BASE + _GITHUB_API_REPOS
-            repos = self._github_api_request(url)
+            self._github_repos_memo = self._github_api_request(url)
 
-            version_suffix = "-{0}".format(self.version)
-            self._github_repos_memo = [(repo["name"][:-len(version_suffix)], repo["git_url"] if readonly else repo["ssh_url"])
-                    for repo in repos if repo["name"].endswith(version_suffix)]
-        return self._github_repos_memo
+        version_suffix = "-{0}".format(self.version)
+        return [(repo["name"][:-len(version_suffix)], repo["git_url"] if readonly else repo["ssh_url"])
+                    for repo in self._github_repos_memo if repo["name"].endswith(version_suffix)]
 
     def _github_repos_create(self, name):
         """Create a new repository.
