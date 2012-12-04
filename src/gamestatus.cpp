@@ -495,7 +495,8 @@ protected:
 	}
 
 
-void init(){
+	void init()
+	{
 		side_ = side_cfg_["side"].to_int(1);
 		if (side_ == 0) // Otherwise falls into the next error, with a very confusing message
 			throw config::error("Side number 0 encountered. Side numbers start at 1");
@@ -677,20 +678,6 @@ void init(){
 
 	void place_units()
 	{
-		static char const *side_attrs[] = {
-			"ai_config", "color", "controller", "current_player", "flag",
-			"flag_icon", "fog", "fog_data", "gold", "hidden", "income",
-			"no_leader", "objectives", "objectives_changed", "persistent",
-			"recall_cost", "recruit", "save_id", "scroll_to_leader",
-			"share_maps", "share_view", "shroud", "shroud_data", "start_gold",
-			"team_name", "user_team_name", "village_gold", "village_support",
-			// Multiplayer attributes.
-			"action_bonus_count", "allow_changes", "allow_player", "color_lock",
-			"countdown_time", "disallow_observers", "faction",
-			"faction_from_recruit", "faction_name", "gold_lock", "income_lock",
-			"leader", "random_leader", "team_lock", "terrain_liked",
-			"user_description" };
-
 		log_step("place units");
 		BOOST_FOREACH(const config *u, unit_configs_) {
 			unit_creator uc(*t_,map_.starting_position(side_));
@@ -702,9 +689,10 @@ void init(){
 				.allow_rename_side(true)
 				.allow_show(false);
 
+			// Make a copy of *u without the attributes used to define a side.
 			config cfg = *u;
-			BOOST_FOREACH(const char *attr, side_attrs) {
-				cfg.remove_attribute(attr);
+			for ( size_t i = 0; team::attributes[i] != NULL; ++i ) {
+				cfg.remove_attribute(team::attributes[i]);
 			}
 			uc.add_unit(cfg);
 
