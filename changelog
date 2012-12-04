@@ -90,6 +90,8 @@ Version 1.11.0+svn:
    * Support for [swarm] causing attacks to increase as health decreases.
    * Inactive names and descriptions for abilities and weapon specials will
      default to the active name/description if omitted.
+   * Fix a bug with [store_time_of_day] so that it treats the provided variable
+     as a container instead of an array (overwrite instead of append).
  * Miscellaneous and bug fixes:
    * Fix invalid memory access crash resulting from deleting all saved games
      in the Load Game dialog

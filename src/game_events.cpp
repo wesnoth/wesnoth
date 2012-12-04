@@ -972,10 +972,7 @@ WML_HANDLER_FUNCTION(store_time_of_day, /*event_info*/, cfg)
 
 	variable_info store(variable, true, variable_info::TYPE_CONTAINER);
 
-	config tod_cfg;
-	tod.write(tod_cfg);
-
-	(*store.vars).add_child(store.key, tod_cfg);
+	tod.write(store.as_container());
 }
 
 WML_HANDLER_FUNCTION(inspect, /*event_info*/, cfg)
