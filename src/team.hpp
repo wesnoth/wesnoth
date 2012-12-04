@@ -55,7 +55,6 @@ class team : public savegame::savegame_config
 		bool enabled_;
 		std::vector<std::vector<bool> > data_;
 	};
-public:
 
 	struct team_info
 	{
@@ -110,12 +109,13 @@ public:
 		bool persistent;
 	};
 
-	static const int default_team_gold;
+	static const int default_team_gold_;
 
+public:
 	team();
 	virtual ~team();
 
-	void build(const config &cfg, const gamemap &map, int gold = default_team_gold);
+	void build(const config &cfg, const gamemap &map, int gold = default_team_gold_);
 
 	void write(config& cfg) const;
 
@@ -208,9 +208,6 @@ public:
 	void make_network() { info_.controller = team_info::NETWORK; }
 	void make_network_ai() { info_.controller = team_info::NETWORK_AI; }
 	void make_ai() { info_.controller = team_info::AI; }
-	// Should make the above make_*() functions obsolete, as it accepts controller
-	// by lexical or numerical id
-	void change_controller(team_info::CONTROLLER controller) { info_.controller = controller; }
 	void change_controller(const std::string& controller);
 
 	const std::string& team_name() const { return info_.team_name; }

@@ -43,7 +43,7 @@ static lg::log_domain log_engine_enemies("engine/enemies");
 static std::vector<team> *&teams = resources::teams;
 
 //static member initialization
-const int team::default_team_gold = 100;
+const int team::default_team_gold_ = 100;
 
 const std::vector<team>& teams_manager::get_teams()
 {
@@ -138,7 +138,7 @@ void team::team_info::read(const config &cfg)
 	else if (!cfg["gold"].empty())
 		start_gold = gold;
 	else
-		start_gold = default_team_gold;
+		start_gold = default_team_gold_;
 
 	if(team_name.empty()) {
 		team_name = cfg["side"].str();
