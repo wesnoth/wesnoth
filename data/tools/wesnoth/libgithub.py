@@ -102,19 +102,19 @@ class Addon(object):
                 except:
                     logging.error("Failed to remove {0}".format(item))
 
-        if out.find("Already up-to-date.") != -1:
+        if "Already up-to-date." in out:
             return False
-        elif out.find("Fast-forward") != -1:
+        elif "Fast-forward" in out:
             return True
-        elif out.find("Merge made by recursive.") != -1:
+        elif "Merge made by recursive." in out:
             logging.warn("Merge done in add-on {0}.".format(self.name))
             return True
-        elif out.find("CONFLICT") != -1:
+        elif "CONFLICT" in out:
             #This means that a conflicting local commit was done
             #Its author will have to fix it
             logging.error("CONFLICT in add-on {0}. Please merge".format(self.name))
             return False
-        elif err.find("local changes") != -1:
+        elif "local changes" in err:
             logging.error("Found local changes in add-on {0}.".format(self.name))
             # If this is a read-write repo, leave the files be
             # If it's read-only, they're not supposed to be here
@@ -124,21 +124,21 @@ class Addon(object):
                 self._execute(["git", "reset", "--hard"], check_error=False)
 
                 status = self._status()
-                untracked = [line for line in status if line.find("??") != -1]
+                untracked = [line for line in status if "??" in line]
                 # I don't want to recursively delete directories
                 if len(untracked) > 0:
                     logging.warn("Untracked files found. Attempting to remove...")
                     remove_untracked()
 
             return False
-        elif err.find("Untracked working tree") != -1:
+        elif "Untracked working tree" in err:
             if self.readonly:
                 logging.error("Untracked files blocking pull of {0}. Attempting to remove...".format(self.name))
                 remove_untracked()
             else:
                 logging.error("Untracked files blocking pull of {0}. Please remove.".format(self.name))
             return False
-        elif err.find("Your configuration specifies to merge with the ref 'master'") != -1:
+        elif "Your configuration specifies to merge with the ref 'master'" in err:
             logging.info("Pulled from still-empty (not initialized) repository {0}.".format(self.name))
             return False
         else:
@@ -182,7 +182,7 @@ class Addon(object):
         self._execute(["git", "commit", "-F", tmpname], check_error=True)
         os.remove(tmpname)
         out, err, ret = self._execute(["git", "push", "-u", "--porcelain", "origin", "master"], check_error=False)
-        statusline = filter(lambda x: x.find("refs/heads/master") != -1, out.splitlines())
+        statusline = filter(lambda x: "refs/heads/master" in x, out.splitlines())
         if not statusline:
             raise AddonError(self.name, "No statusline produced by git push")
         else:
