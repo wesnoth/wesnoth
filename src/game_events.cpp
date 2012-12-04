@@ -552,7 +552,13 @@ namespace {
 
 } // end anonymous namespace (3)
 
-static map_location cfg_to_loc(const vconfig& cfg,int defaultx = 0, int defaulty = 0)
+
+/**
+ * Converts a vconfig to a location (based on x,y=).
+ * The default parameter values cause the default return value (if neither x nor
+ * y is specified) to equal map_location::null_location.
+ */
+static map_location cfg_to_loc(const vconfig& cfg, int defaultx = -999, int defaulty = -999)
 {
 	int x = cfg["x"].to_int(defaultx) - 1;
 	int y = cfg["y"].to_int(defaulty) - 1;
@@ -954,7 +960,7 @@ WML_HANDLER_FUNCTION(scroll, /*event_info*/, cfg)
 // or if the turn / time-of-day sequence mutates in a scenario.
 WML_HANDLER_FUNCTION(store_time_of_day, /*event_info*/, cfg)
 {
-	const map_location loc = cfg_to_loc(cfg, -999, -999);
+	const map_location loc = cfg_to_loc(cfg);
 	int turn = cfg["turn"];
 	// using 0 will use the current turn
 	const time_of_day& tod = resources::tod_manager->get_time_of_day(loc,turn);
