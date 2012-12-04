@@ -1132,6 +1132,51 @@ void menu_handler::update_shroud_now(int /* side_num */)
 	resources::undo_stack->commit_vision();
 }
 
+
+namespace { // Helpers for menu_handler::end_turn()
+	/**
+	 * Returns true if @a side_num has at least one living unit.
+	 */
+	bool units_alive(int side_num, const unit_map & units)
+	{
+		for ( unit_map::const_iterator un = units.begin(); un != units.end(); ++un ) {
+			if ( un->side() == side_num )
+				return true;
+		}
+		return false;
+	}
+	/**
+	 * Returns true if @a side_num has at least one unit that can still move.
+	 */
+	bool partmoved_units(int side_num, const unit_map & units)
+	{
+		for ( unit_map::const_iterator un = units.begin(); un != units.end(); ++un ) {
+			if ( un->side() == side_num ) {
+				// @todo whiteboard should take into consideration units that have
+				// a planned move but can still plan more movement in the same turn
+				if ( unit_can_move(*un) && !resources::whiteboard->unit_has_actions(&*un) )
+					return true;
+			}
+		}
+		return false;
+	}
+	/**
+	 * Returns true if @a side_num has at least one unit that (can but) has not
+	 * moved.
+	 */
+	bool unmoved_units(int side_num, const unit_map & units)
+	{
+		for ( unit_map::const_iterator un = units.begin(); un != units.end(); ++un ) {
+			if ( un->side() == side_num ) {
+				if ( unit_can_move(*un)  &&  !un->has_moved()  &&
+				     !resources::whiteboard->unit_has_actions(&*un) )
+					return true;
+			}
+		}
+		return false;
+	}
+}
+
 bool menu_handler::end_turn(int side_num)
 {
 	if(!resources::gamedata->allow_end_turn()) {
@@ -1139,40 +1184,26 @@ bool menu_handler::end_turn(int side_num)
 		return false;
 	}
 
-	bool unmoved_units = false, partmoved_units = false;
-	bool units_alive = false;
-	for(unit_map::const_iterator un = units_.begin(); un != units_.end(); ++un) {
-		if (un->side() == side_num) {
-			units_alive = true;
-			// @todo whiteboard should take into consideration units that have a planned move but
-			// can still plan more movement in the same turn
-			if (unit_can_move(*un) && !resources::whiteboard->unit_has_actions(&*un)) {
-				if (!un->has_moved()) {
-					unmoved_units = true;
-				}
-				partmoved_units = true;
-			}
-		}
-	}
-
-	//Ask for confirmation if the player hasn't made any moves (other than gotos).
-	if ( preferences::confirm_no_moves()  &&  units_alive  &&
+	// Ask for confirmation if the player hasn't made any moves.
+	if ( preferences::confirm_no_moves()  &&
 	     !resources::undo_stack->player_acted()  &&
-	     !resources::whiteboard->current_side_has_actions() )
+	     !resources::whiteboard->current_side_has_actions()  &&
+	     units_alive(side_num, units_) )
 	{
 		const int res = gui2::show_message((*gui_).video(), "", _("You have not started your turn yet. Do you really want to end your turn?"), gui2::tmessage::yes_no_buttons);
 		if(res == gui2::twindow::CANCEL) {
 			return false;
 		}
 	}
-
-	// Ask for confirmation if units still have movement left
-	if(preferences::yellow_confirm() && partmoved_units) {
+	// Ask for confirmation if units still have some movement left.
+	else if ( preferences::yellow_confirm() && partmoved_units(side_num, units_) ) {
 		const int res = gui2::show_message((*gui_).video(), "", _("Some units have movement left. Do you really want to end your turn?"), gui2::tmessage::yes_no_buttons);
 		if(res == gui2::twindow::CANCEL) {
 			return false;
 		}
-	} else if (preferences::green_confirm() && unmoved_units) {
+	}
+	// Ask for confirmation if units still have all movement left.
+	else if ( preferences::green_confirm() && unmoved_units(side_num, units_) ) {
 		const int res = gui2::show_message((*gui_).video(), "", _("Some units have movement left. Do you really want to end your turn?"), gui2::tmessage::yes_no_buttons);
 		if(res == gui2::twindow::CANCEL) {
 			return false;
