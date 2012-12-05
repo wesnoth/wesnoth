@@ -613,14 +613,23 @@ protected:
 
 	void handle_leader(const config &leader)
 	{
+		// Make a persistent copy of the config.
 		leader_configs_.push_back(leader);
+		config & stored = leader_configs_.back();
 
-		config::attribute_value &a1 = leader_configs_.back()["canrecruit"];
+		// Remove the attributes used to define a side.
+		for ( size_t i = 0; team::attributes[i] != NULL; ++i ) {
+			stored.remove_attribute(team::attributes[i]);
+		}
+
+		// Provide some default values, if not specified.
+		config::attribute_value &a1 = stored["canrecruit"];
 		if (a1.blank()) a1 = true;
-		config::attribute_value &a2 = leader_configs_.back()["placement"];
+		config::attribute_value &a2 = stored["placement"];
 		if (a2.blank()) a2 = "map,leader";
 
-		handle_unit(leader_configs_.back(), "leader_cfg");
+		// Add the leader to the list of units to create.
+		handle_unit(stored, "leader_cfg");
 	}
 
 	void leader()
@@ -662,7 +671,9 @@ protected:
 			//units in [replay_start][side] merged with [side]
 			//only relevant in start-of-scenario saves, that's why !shapshot
 			//units that are in '[scenario][side]' are 'first'
-			//for create-or-recall semantics to work: for each unit with non-empty id, unconditionally put OTHER, later, units with same id directly to recall list, not including them in unit_configs_
+			//for create-or-recall semantics to work: for each unit with non-empty
+			//id, unconditionally put OTHER, later, units with same id directly to
+			//recall list, not including them in unit_configs_
 			BOOST_FOREACH(const config &u, (*player_cfg_).child_range("unit")) {
 				handle_unit(u,"player_cfg");
 			}
@@ -689,12 +700,7 @@ protected:
 			.allow_show(false);
 
 		BOOST_FOREACH(const config *u, unit_configs_) {
-			// Make a copy of *u without the attributes used to define a side.
-			config cfg = *u;
-			for ( size_t i = 0; team::attributes[i] != NULL; ++i ) {
-				cfg.remove_attribute(team::attributes[i]);
-			}
-			uc.add_unit(cfg);
+			uc.add_unit(*u);
 		}
 
 		// Find the first leader and use its name as the player name.
