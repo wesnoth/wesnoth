@@ -679,23 +679,22 @@ protected:
 	void place_units()
 	{
 		log_step("place units");
-		BOOST_FOREACH(const config *u, unit_configs_) {
-			unit_creator uc(*t_,map_.starting_position(side_));
-			uc
-				.allow_add_to_recall(true)
-				.allow_discover(true)
-				.allow_get_village(true)
-				.allow_invalidate(false)
-				.allow_rename_side(true)
-				.allow_show(false);
+		unit_creator uc(*t_,map_.starting_position(side_));
+		uc
+			.allow_add_to_recall(true)
+			.allow_discover(true)
+			.allow_get_village(true)
+			.allow_invalidate(false)
+			.allow_rename_side(true)
+			.allow_show(false);
 
+		BOOST_FOREACH(const config *u, unit_configs_) {
 			// Make a copy of *u without the attributes used to define a side.
 			config cfg = *u;
 			for ( size_t i = 0; team::attributes[i] != NULL; ++i ) {
 				cfg.remove_attribute(team::attributes[i]);
 			}
 			uc.add_unit(cfg);
-
 		}
 
 		// Find the first leader and use its name as the player name.
