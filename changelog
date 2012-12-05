@@ -4,6 +4,8 @@ Version 1.10.5+svn:
      * Fix bug #16772: AI won't attack
  * Language and i18n:
    * Updated translations: German, Scottish Gaelic
+ * WML engine:
+   * Fixed [disallow_end_turn] losing effect on save/reload (bug #20350)
  * Miscellaneous and bug fixes:
    * Fixed a rare case where a player could exercise (very) limited control of
      another (human) player's units in a hotseat game.
