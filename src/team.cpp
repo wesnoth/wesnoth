@@ -53,6 +53,7 @@ const char * const team::attributes[] = {
 	"no_leader", "objectives", "objectives_changed", "persistent",
 	"recall_cost", "recruit", "save_id", "scroll_to_leader",
 	"share_maps", "share_view", "shroud", "shroud_data", "start_gold",
+	"suppress_end_turn_confirmation",
 	"team_name", "user_team_name", "village_gold", "village_support",
 	// Multiplayer attributes.
 	"action_bonus_count", "allow_changes", "allow_player", "color_lock",
@@ -100,6 +101,7 @@ team::team_info::team_info() :
 	allow_player(false),
 	no_leader(true),
 	hidden(true),
+	no_turn_confirmation(false),
 	color(),
 	side(0),
 	persistent(false)
@@ -127,6 +129,7 @@ void team::team_info::read(const config &cfg)
 	allow_player = cfg["allow_player"].to_bool(true);
 	no_leader = cfg["no_leader"].to_bool();
 	hidden = cfg["hidden"].to_bool();
+	no_turn_confirmation = cfg["suppress_end_turn_confirmation"].to_bool();
 	side = cfg["side"].to_int(1);
 
 	if(cfg.has_attribute("color")) {
@@ -255,6 +258,7 @@ void team::team_info::write(config& cfg) const
 	cfg["allow_player"] = allow_player;
 	cfg["no_leader"] = no_leader;
 	cfg["hidden"] = hidden;
+	cfg["suppress_end_turn_confirmation"] = no_turn_confirmation;
 	cfg["scroll_to_leader"] = scroll_to_leader;
 	cfg["controller"] = controller_string();
 

@@ -1128,6 +1128,11 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 			invalidate_screen = true;
 		}
 
+		// Suppress end turn confirmations?
+		config::attribute_value setc = cfg["suppress_end_turn_confirmation"];
+		if ( !setc.empty() ) {
+			teams[team_index].set_no_turn_confirmation(setc.to_bool());
+		}
 	}
 
 	// Flag an update of the screen, if needed.

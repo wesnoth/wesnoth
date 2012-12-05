@@ -102,6 +102,7 @@ class team : public savegame::savegame_config
 		bool allow_player;
 		bool no_leader;
 		bool hidden;
+		bool no_turn_confirmation;  // Can suppress confirmations when ending a turn.
 
 		std::string color;
 
@@ -255,6 +256,8 @@ public:
 	bool hidden() const { return info_.hidden; }
 	void set_hidden(bool value) { info_.hidden=value; }
 	bool persistent() const {return info_.persistent;}
+	bool no_turn_confirmation() const { return info_.no_turn_confirmation; }
+	void set_no_turn_confirmation(bool value) { info_.no_turn_confirmation = value; }
 
 	static int nteams();
 

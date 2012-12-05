@@ -1184,11 +1184,15 @@ bool menu_handler::end_turn(int side_num)
 		return false;
 	}
 
+	size_t team_num = static_cast<size_t>(side_num - 1);
+	if ( team_num < teams_.size()  &&  teams_[team_num].no_turn_confirmation() ) {
+		// Skip the confirmations that follow.
+	}
 	// Ask for confirmation if the player hasn't made any moves.
-	if ( preferences::confirm_no_moves()  &&
-	     !resources::undo_stack->player_acted()  &&
-	     !resources::whiteboard->current_side_has_actions()  &&
-	     units_alive(side_num, units_) )
+	else if ( preferences::confirm_no_moves()  &&
+	          !resources::undo_stack->player_acted()  &&
+	          !resources::whiteboard->current_side_has_actions()  &&
+	          units_alive(side_num, units_) )
 	{
 		const int res = gui2::show_message((*gui_).video(), "", _("You have not started your turn yet. Do you really want to end your turn?"), gui2::tmessage::yes_no_buttons);
 		if(res == gui2::twindow::CANCEL) {
