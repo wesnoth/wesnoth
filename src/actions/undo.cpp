@@ -286,6 +286,14 @@ void undo_list::redo()
 			statistics::recall_unit(un);
 			gui.invalidate(loc);
 			recorder.add_checksum_check(loc);
+			// Quick error check. (Abuse of [allow_undo]?)
+			if ( loc != action.route.front() ) {
+				ERR_NG << "When redoing a recall at " << action.route.front()
+				       << ", the location was moved to " << loc << ".\n";
+				// Not really fatal, I suppose. Just update the action so
+				// undoing this works.
+				action.route.front() = loc;
+			}
 		} else {
 			recorder.undo();
 			gui::dialog(gui, "", msg,gui::OK_ONLY).show();
@@ -326,6 +334,14 @@ void undo_list::redo()
 			current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
 
 			recorder.add_checksum_check(loc);
+			// Quick error check. (Abuse of [allow_undo]?)
+			if ( loc != action.route.front() ) {
+				ERR_NG << "When redoing a recruit at " << action.route.front()
+				       << ", the location was moved to " << loc << ".\n";
+				// Not really fatal, I suppose. Just update the action so
+				// undoing this works.
+				action.route.front() = loc;
+			}
 		} else {
 			recorder.undo();
 			gui::dialog(gui, "", msg,gui::OK_ONLY).show();
