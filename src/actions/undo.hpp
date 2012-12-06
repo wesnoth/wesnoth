@@ -42,7 +42,6 @@ class undo_list {
 				route(begin, end),
 				starting_moves(sm),
 				original_village_owner(orig),
-				recall_loc(),
 				recall_from(),
 				type(MOVE),
 				affected_unit(u),
@@ -54,10 +53,9 @@ class undo_list {
 		/// Constructor for recruit and recall actions.
 		undo_action(const unit& u, const map_location& loc, const map_location& from,
 			        const ACTION_TYPE action_type) :
-				route(),
+				route(1, loc),
 				starting_moves(),
 				original_village_owner(),
-				recall_loc(loc),
 				recall_from(from),
 				type(action_type),
 				affected_unit(u),
@@ -70,7 +68,6 @@ class undo_list {
 				route(),
 				starting_moves(),
 				original_village_owner(),
-				recall_loc(),
 				recall_from(),
 				type(DISMISS),
 				affected_unit(u),
@@ -78,10 +75,10 @@ class undo_list {
 				starting_dir(map_location::NDIRECTIONS)
 			{}
 
+		/// The hexes occupied by affected_unit during this action.
 		std::vector<map_location> route;
 		int starting_moves;
 		int original_village_owner;
-		map_location recall_loc;
 		map_location recall_from;
 		ACTION_TYPE type;
 		unit affected_unit;

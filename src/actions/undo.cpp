@@ -144,26 +144,30 @@ void undo_list::undo()
 			return;
 		}
 		// Undo a recall action
-		if ( units.count(action.recall_loc) == 0 ) {
+		const map_location & recall_loc = action.route.front();
+		unit_map::iterator un_it = units.find(recall_loc);
+		if ( un_it == units.end() ) {
 			return;
 		}
 
-		const unit &un = *units.find(action.recall_loc);
+		const unit &un = *un_it;
 		statistics::un_recall_unit(un);
 		current_team.spend_gold(-current_team.recall_cost());
 
 		current_team.recall_list().push_back(un);
 		// invalidate before erasing allow us
 		// to also do the overlapped hexes
-		gui.invalidate(action.recall_loc);
-		units.erase(action.recall_loc);
+		gui.invalidate(recall_loc);
+		units.erase(recall_loc);
 	} else if(action.is_recruit()) {
 		// Undo a recruit action
-		if( units.count(action.recall_loc) == 0 ) {
+		const map_location & recruit_loc = action.route.front();
+		unit_map::iterator un_it = units.find(recruit_loc);
+		if ( un_it == units.end() ) {
 			return;
 		}
 
-		const unit &un = *units.find(action.recall_loc);
+		const unit &un = *un_it;
 		statistics::un_recruit_unit(un);
 		assert(un.type());
 		current_team.spend_gold(-un.type()->cost());
@@ -176,8 +180,8 @@ void undo_list::undo()
 
 		// invalidate before erasing allow us
 		// to also do the ovelerlapped hexes
-		gui.invalidate(action.recall_loc);
-		units.erase(action.recall_loc);
+		gui.invalidate(recruit_loc);
+		units.erase(recruit_loc);
 	} else {
 		// Undo a move action
 		const int starting_moves = action.starting_moves;
@@ -265,9 +269,10 @@ void undo_list::redo()
 		}
 		// Redo recall
 
-		recorder.add_recall(action.affected_unit.id(), action.recall_loc, action.recall_from);
-		map_location loc = action.recall_loc;
+		map_location loc = action.route.front();
 		map_location from = map_location::null_location;
+
+		recorder.add_recall(action.affected_unit.id(), loc, action.recall_from);
 		const std::string &msg = find_recall_location(side_, loc, from, action.affected_unit);
 		if(msg.empty()) {
 			unit un = action.affected_unit;
@@ -288,7 +293,7 @@ void undo_list::redo()
 		}
 	} else if(action.is_recruit()) {
 		// Redo recruit action
-		map_location loc = action.recall_loc;
+		map_location loc = action.route.front();
 		map_location from = action.recall_from;
 		const std::string name = action.affected_unit.type_id();
 
@@ -421,11 +426,8 @@ size_t undo_list::apply_shroud_changes() const
 		if(unit_itor == units.end())
 			continue;
 
-		std::vector<map_location> route(action.route.begin(), action.route.end());
-		if ( action.recall_loc.valid() )
-			route.push_back(action.recall_loc);
 		std::vector<map_location>::const_iterator step;
-		for(step = route.begin(); step != route.end(); ++step) {
+		for (step = action.route.begin(); step != action.route.end(); ++step) {
 			// Clear the shroud, collecting new sighted events.
 			if ( clearer.clear_unit(*step, *unit_itor, tm) ) {
 				cleared_shroud = true;
