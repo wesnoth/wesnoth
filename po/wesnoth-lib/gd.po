@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-10-27 15:56+0200\n"
+"POT-Creation-Date: 2012-12-07 20:59+0100\n"
 "PO-Revision-Date: 2012-11-21 23:33+0100\n"
 "Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
 "Language-Team: Fòram na Gàidhlig http://www.foramnagaidhlig.net\n"
@@ -156,8 +156,8 @@ msgstr "Ùir thioram"
 #. [terrain_type]: id=road_clean
 #. [terrain_type]: id=stone_path
 #: data/core/terrain.cfg:226 data/core/terrain.cfg:236
-#: data/core/terrain.cfg:246 data/core/terrain.cfg:888
-#: data/core/terrain.cfg:898
+#: data/core/terrain.cfg:246 data/core/terrain.cfg:946
+#: data/core/terrain.cfg:956
 msgid "Road"
 msgstr "Rathad"
 
@@ -309,8 +309,11 @@ msgstr "Mòr-chraobh mharbh"
 #. [terrain_type]: id=mixed_forest_summer
 #. [terrain_type]: id=mixed_forest_winter
 #. [terrain_type]: id=mixed_forest_winter_snow
+#. [terrain_type]: id=palm_desert_forest
 #. [terrain_type]: id=palm_forest
 #. [terrain_type]: id=pine_forest
+#. [terrain_type]: id=rainforest
+#. [terrain_type]: id=savanna_forest
 #. [terrain_type]: id=snow_forest
 #. [terrain_type]: id=tropical_forest
 #: data/core/terrain.cfg:484 data/core/terrain.cfg:496
@@ -319,7 +322,8 @@ msgstr "Mòr-chraobh mharbh"
 #: data/core/terrain.cfg:556 data/core/terrain.cfg:568
 #: data/core/terrain.cfg:580 data/core/terrain.cfg:592
 #: data/core/terrain.cfg:604 data/core/terrain.cfg:616
-#: data/core/terrain.cfg:2253
+#: data/core/terrain.cfg:628 data/core/terrain.cfg:640
+#: data/core/terrain.cfg:652 data/core/terrain.cfg:2311
 msgid "Forest"
 msgstr "Coille"
 
@@ -328,60 +332,79 @@ msgstr "Coille"
 msgid "Tropical Forest"
 msgstr "Coille thropaigeach"
 
-#. [terrain_type]: id=palm_forest
+#. [terrain_type]: id=rainforest
 #: data/core/terrain.cfg:497
+#, fuzzy
+#| msgid "Pine Forest"
+msgid "Rainforest"
+msgstr "Coille ghiuthais"
+
+#. [terrain_type]: id=palm_desert_forest
+#: data/core/terrain.cfg:509
 #, fuzzy
 #| msgid "Pine Forest"
 msgid "Palm Forest"
 msgstr "Coille ghiuthais"
 
+#. [terrain_type]: id=palm_forest
+#: data/core/terrain.cfg:521
+#, fuzzy
+#| msgid "Pine Forest"
+msgid "Dense Palm Forest"
+msgstr "Coille ghiuthais"
+
+#. [terrain_type]: id=savanna_forest
+#: data/core/terrain.cfg:533
+msgid "Savanna"
+msgstr ""
+
 #. [terrain_type]: id=pine_forest
-#: data/core/terrain.cfg:509
+#: data/core/terrain.cfg:545
 msgid "Pine Forest"
 msgstr "Coille ghiuthais"
 
 #. [terrain_type]: id=snow_forest
-#: data/core/terrain.cfg:521
+#: data/core/terrain.cfg:557
 msgid "Snowy Pine Forest"
 msgstr "Coille ghiuthais shneachdach"
 
 #. [terrain_type]: id=deciduous_forest_summer
-#: data/core/terrain.cfg:533
+#: data/core/terrain.cfg:569
 msgid "Summer Deciduous Forest"
 msgstr "Coille sheargach shamhraidh"
 
 #. [terrain_type]: id=deciduous_forest_fall
-#: data/core/terrain.cfg:545
+#: data/core/terrain.cfg:581
 msgid "Fall Deciduous Forest"
 msgstr "Coille sheargach fhoghair"
 
 #. [terrain_type]: id=deciduous_forest_winter
-#: data/core/terrain.cfg:557
+#: data/core/terrain.cfg:593
 msgid "Winter Deciduous Forest"
 msgstr "Coille sheargach gheamhraidh"
 
 #. [terrain_type]: id=deciduous_forest_winter_snow
-#: data/core/terrain.cfg:569
+#: data/core/terrain.cfg:605
 msgid "Snowy Deciduous Forest"
 msgstr "Coille sheargach shneachdach"
 
 #. [terrain_type]: id=mixed_forest_summer
-#: data/core/terrain.cfg:581
+#: data/core/terrain.cfg:617
 msgid "Summer Mixed Forest"
 msgstr "Coille mheasgaichte shamhraidh"
 
 #. [terrain_type]: id=mixed_forest_fall
-#: data/core/terrain.cfg:593
+#: data/core/terrain.cfg:629
 msgid "Fall Mixed Forest"
 msgstr "Coille mheasgaichte fhoghair"
 
 #. [terrain_type]: id=mixed_forest_winter
-#: data/core/terrain.cfg:605
+#: data/core/terrain.cfg:641
 msgid "Winter Mixed Forest"
 msgstr "Coille mheasgaichte gheamhraidh"
 
 #. [terrain_type]: id=mixed_forest_winter_snow
-#: data/core/terrain.cfg:617
+#: data/core/terrain.cfg:653
 msgid "Snowy Mixed Forest"
 msgstr "Coille mheasgaichte shneachdach"
 
@@ -389,6 +412,7 @@ msgstr "Coille mheasgaichte shneachdach"
 #. [terrain_type]: id=deciduous_forest_summer_hills
 #. [terrain_type]: id=deciduous_forest_winter_hills
 #. [terrain_type]: id=deciduous_forest_winter_snow_hills
+#. [terrain_type]: id=forest_palm_desert_hills
 #. [terrain_type]: id=forest_palm_hills
 #. [terrain_type]: id=forest_tropical_hills
 #. [terrain_type]: id=forested_hills
@@ -399,35 +423,37 @@ msgstr "Coille mheasgaichte shneachdach"
 #. [terrain_type]: id=mixed_forest_summer_hills
 #. [terrain_type]: id=mixed_forest_winter_hills
 #. [terrain_type]: id=mixed_forest_winter_snow_hills
+#. [terrain_type]: id=savanna_hills
 #. [terrain_type]: id=snow_hills
-#: data/core/terrain.cfg:632 data/core/terrain.cfg:641
-#: data/core/terrain.cfg:661 data/core/terrain.cfg:709
-#: data/core/terrain.cfg:720 data/core/terrain.cfg:731
-#: data/core/terrain.cfg:742 data/core/terrain.cfg:753
-#: data/core/terrain.cfg:764 data/core/terrain.cfg:775
-#: data/core/terrain.cfg:786 data/core/terrain.cfg:797
-#: data/core/terrain.cfg:808 data/core/terrain.cfg:819
-#: data/core/terrain.cfg:830
+#: data/core/terrain.cfg:668 data/core/terrain.cfg:677
+#: data/core/terrain.cfg:697 data/core/terrain.cfg:745
+#: data/core/terrain.cfg:756 data/core/terrain.cfg:767
+#: data/core/terrain.cfg:778 data/core/terrain.cfg:789
+#: data/core/terrain.cfg:800 data/core/terrain.cfg:811
+#: data/core/terrain.cfg:822 data/core/terrain.cfg:833
+#: data/core/terrain.cfg:844 data/core/terrain.cfg:855
+#: data/core/terrain.cfg:866 data/core/terrain.cfg:877
+#: data/core/terrain.cfg:888
 msgid "Hills"
 msgstr "Cnuic"
 
 #. [terrain_type]: id=hills
-#: data/core/terrain.cfg:633
+#: data/core/terrain.cfg:669
 msgid "Regular Hills"
 msgstr "Cnuic chunbhalach"
 
 #. [terrain_type]: id=hills_dry
-#: data/core/terrain.cfg:642
+#: data/core/terrain.cfg:678
 msgid "Dry Hills"
 msgstr "Cnuic thioram"
 
 #. [terrain_type]: id=desert_hills
-#: data/core/terrain.cfg:651
+#: data/core/terrain.cfg:687
 msgid "Dunes"
 msgstr "Coilleagan gainmhich"
 
 #. [terrain_type]: id=snow_hills
-#: data/core/terrain.cfg:662
+#: data/core/terrain.cfg:698
 msgid "Snow Hills"
 msgstr "Cnuic shneachdach"
 
@@ -437,153 +463,167 @@ msgstr "Cnuic shneachdach"
 #. [terrain_type]: id=desert_mountains
 #. [terrain_type]: id=mountains
 #. [terrain_type]: id=snow_mountains
-#: data/core/terrain.cfg:676 data/core/terrain.cfg:684
-#: data/core/terrain.cfg:694 data/core/terrain.cfg:1054
-#: data/core/terrain.cfg:1064 data/core/terrain.cfg:1074
+#: data/core/terrain.cfg:712 data/core/terrain.cfg:720
+#: data/core/terrain.cfg:730 data/core/terrain.cfg:1112
+#: data/core/terrain.cfg:1122 data/core/terrain.cfg:1132
 msgid "Mountains"
 msgstr "Beanntan"
 
 #. [terrain_type]: id=desert_mountains
-#: data/core/terrain.cfg:685
+#: data/core/terrain.cfg:721
 msgid "Dry Mountains"
 msgstr "Beanntan tioram"
 
 #. [terrain_type]: id=snow_mountains
-#: data/core/terrain.cfg:695
+#: data/core/terrain.cfg:731
 msgid "Snowy Mountains"
 msgstr "Beanntan sneachdach"
 
 #. [terrain_type]: id=forested_hills
-#: data/core/terrain.cfg:710
+#: data/core/terrain.cfg:746
 msgid "Forested Hills"
 msgstr "Cnuic coille"
 
 #. [terrain_type]: id=forested_snow_hills
-#: data/core/terrain.cfg:721
+#: data/core/terrain.cfg:757
 msgid "Forested Snow Hills"
 msgstr "Cnuic coille shneachdach"
 
 #. [terrain_type]: id=deciduous_forest_summer_hills
-#: data/core/terrain.cfg:732
+#: data/core/terrain.cfg:768
 msgid "Summer Deciduous Forested Hills"
 msgstr "Cnuic coille seargaiche shamhraidh"
 
 #. [terrain_type]: id=deciduous_forest_fall_hills
-#: data/core/terrain.cfg:743
+#: data/core/terrain.cfg:779
 msgid "Fall Deciduous Forested Hills"
 msgstr "Cnuic coille seargaiche fhoghair"
 
 #. [terrain_type]: id=deciduous_forest_winter_hills
-#: data/core/terrain.cfg:754
+#: data/core/terrain.cfg:790
 msgid "Winter Deciduous Forested Hills"
 msgstr "Cnuic coille seargaiche gheamhraidh"
 
 #. [terrain_type]: id=deciduous_forest_winter_snow_hills
-#: data/core/terrain.cfg:765
+#: data/core/terrain.cfg:801
 msgid "Snowy Deciduous Forested Hills"
 msgstr "Cnuic coille seargaiche shneachdach"
 
 #. [terrain_type]: id=mixed_forest_summer_hills
-#: data/core/terrain.cfg:776
+#: data/core/terrain.cfg:812
 msgid "Summer Mixed Forested Hills"
 msgstr "Cnuic coille measgaichte shamhraidh"
 
 #. [terrain_type]: id=mixed_forest_fall_hills
-#: data/core/terrain.cfg:787
+#: data/core/terrain.cfg:823
 msgid "Fall Mixed Forested Hills"
 msgstr "Cnuic coille measgaichte fhoghair"
 
 #. [terrain_type]: id=mixed_forest_winter_hills
-#: data/core/terrain.cfg:798
+#: data/core/terrain.cfg:834
 msgid "Winter Mixed Forested Hills"
 msgstr "Cnuic coille measgaichte gheamhraidh"
 
 #. [terrain_type]: id=mixed_forest_winter_snow_hills
-#: data/core/terrain.cfg:809
+#: data/core/terrain.cfg:845
 msgid "Snowy Mixed Forested Hills"
 msgstr "Cnuic coille measgaichte shneachdach"
 
 #. [terrain_type]: id=forest_tropical_hills
-#: data/core/terrain.cfg:820
+#: data/core/terrain.cfg:856
 #, fuzzy
 #| msgid "Tropical Forest"
 msgid "Tropical Forested Hills"
 msgstr "Coille thropaigeach"
 
-#. [terrain_type]: id=forest_palm_hills
-#: data/core/terrain.cfg:831
+#. [terrain_type]: id=forest_palm_desert_hills
+#: data/core/terrain.cfg:867
 #, fuzzy
 #| msgid "Forested Hills"
 msgid "Palm Forested Hills"
 msgstr "Cnuic coille"
 
+#. [terrain_type]: id=forest_palm_hills
+#: data/core/terrain.cfg:878
+#, fuzzy
+#| msgid "Forested Hills"
+msgid "Dense Palm Forested Hills"
+msgstr "Cnuic coille"
+
+#. [terrain_type]: id=savanna_hills
+#: data/core/terrain.cfg:889
+#, fuzzy
+#| msgid "Forested Hills"
+msgid "Savanna Forested Hills"
+msgstr "Cnuic coille"
+
 #. [terrain_type]
-#: data/core/terrain.cfg:843
+#: data/core/terrain.cfg:901
 msgid "Wooden Floor"
 msgstr "Làr maidse"
 
 #. [terrain_type]
-#: data/core/terrain.cfg:845
+#: data/core/terrain.cfg:903
 msgid "Basic Wooden Floor"
 msgstr "Làr maide bunasach"
 
 #. [terrain_type]: id=lit
-#: data/core/terrain.cfg:858
+#: data/core/terrain.cfg:916
 msgid "Lit"
 msgstr "Soillseach"
 
 #. [terrain_type]: id=lit
-#: data/core/terrain.cfg:859
+#: data/core/terrain.cfg:917
 msgid "Beam of Light"
 msgstr "Loinnear"
 
 #. [terrain_type]: id=cave
 #. [terrain_type]: id=cave_earthy
-#: data/core/terrain.cfg:869 data/core/terrain.cfg:878
+#: data/core/terrain.cfg:927 data/core/terrain.cfg:936
 msgid "Cave"
 msgstr "Uamh"
 
 #. [terrain_type]: id=cave
-#: data/core/terrain.cfg:870
+#: data/core/terrain.cfg:928
 msgid "Cave Floor"
 msgstr "Làr uamha"
 
 #. [terrain_type]: id=cave_earthy
-#: data/core/terrain.cfg:879
+#: data/core/terrain.cfg:937
 msgid "Earthy Cave Floor"
 msgstr "Làr uamha ùire"
 
 #. [terrain_type]: id=flagstones_dark
-#: data/core/terrain.cfg:889
+#: data/core/terrain.cfg:947
 msgid "Dark Flagstones"
 msgstr "Leacan dorcha"
 
 #. [terrain_type]: id=cave_path
-#: data/core/terrain.cfg:899
+#: data/core/terrain.cfg:957
 msgid "Cave Path"
 msgstr "Slighe uamha"
 
 #. [terrain_type]: id=fungus
 #. [terrain_type]: id=fungus_beam
-#: data/core/terrain.cfg:908 data/core/terrain.cfg:917
+#: data/core/terrain.cfg:966 data/core/terrain.cfg:975
 msgid "Mushroom Grove"
 msgstr "Badan balgain-bhuachair"
 
 #. [terrain_type]: id=fungus_beam
-#: data/core/terrain.cfg:918
+#: data/core/terrain.cfg:976
 msgid "Lit Mushroom Grove"
 msgstr "Badan balgain-bhuachair soillseach"
 
 #. [terrain_type]: id=rocky_cave
-#: data/core/terrain.cfg:929
+#: data/core/terrain.cfg:987
 msgid "Rockbound Cave"
 msgstr "Uamh chreagach"
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
 #. [terrain_type]: id=mine_railsdiag2
-#: data/core/terrain.cfg:941 data/core/terrain.cfg:953
-#: data/core/terrain.cfg:965
+#: data/core/terrain.cfg:999 data/core/terrain.cfg:1011
+#: data/core/terrain.cfg:1023
 msgid "Mine Rail"
 msgstr "Rèile mhèinne"
 
@@ -591,53 +631,53 @@ msgstr "Rèile mhèinne"
 #. [terrain_type]: id=canyon
 #. [terrain_type]: id=chasm_earthy
 #. [terrain_type]: id=lava_chasm
-#: data/core/terrain.cfg:982 data/core/terrain.cfg:993
-#: data/core/terrain.cfg:1004 data/core/terrain.cfg:1015
+#: data/core/terrain.cfg:1040 data/core/terrain.cfg:1051
+#: data/core/terrain.cfg:1062 data/core/terrain.cfg:1073
 msgid "Chasm"
 msgstr "Mòr-bheàrn"
 
 #. [terrain_type]: id=canyon
-#: data/core/terrain.cfg:983
+#: data/core/terrain.cfg:1041
 msgid "Regular Chasm"
 msgstr "Mòr-bheàrn chunbhalach"
 
 #. [terrain_type]: id=chasm_earthy
-#: data/core/terrain.cfg:994
+#: data/core/terrain.cfg:1052
 msgid "Earthy Chasm"
 msgstr "Mòr-bheàrn ùire"
 
 #. [terrain_type]: id=abyss
-#: data/core/terrain.cfg:1005
+#: data/core/terrain.cfg:1063
 msgid "Ethereal Abyss"
 msgstr "Aibheis adharail"
 
 #. [terrain_type]: id=lava_chasm
-#: data/core/terrain.cfg:1016
+#: data/core/terrain.cfg:1074
 msgid "Lava Chasm"
 msgstr "Sloc làbha"
 
 #. [terrain_type]: id=lava
-#: data/core/terrain.cfg:1027
+#: data/core/terrain.cfg:1085
 msgid "Lava"
 msgstr "Làbha"
 
 #. [terrain_type]: id=volcano
-#: data/core/terrain.cfg:1039
+#: data/core/terrain.cfg:1097
 msgid "Volcano"
 msgstr "Beinn-theine"
 
 #. [terrain_type]: id=cloud
-#: data/core/terrain.cfg:1055
+#: data/core/terrain.cfg:1113
 msgid "Regular Impassable Mountains"
 msgstr "Beanntan cunbhalach do-shiubhal"
 
 #. [terrain_type]: id=clouddesert
-#: data/core/terrain.cfg:1065
+#: data/core/terrain.cfg:1123
 msgid "Desert Impassable Mountains"
 msgstr "Beanntan fàsaich do-shiubhal"
 
 #. [terrain_type]: id=cloud_snow
-#: data/core/terrain.cfg:1075
+#: data/core/terrain.cfg:1133
 msgid "Snowy Impassable Mountains"
 msgstr "Beanntan sneachdach do-shiubhal"
 
@@ -645,49 +685,49 @@ msgstr "Beanntan sneachdach do-shiubhal"
 #. [terrain_type]: id=cavewall_earthy
 #. [terrain_type]: id=cavewall_earthy_hewn
 #. [terrain_type]: id=cavewall_hewn
-#: data/core/terrain.cfg:1085 data/core/terrain.cfg:1096
-#: data/core/terrain.cfg:1107 data/core/terrain.cfg:1118
+#: data/core/terrain.cfg:1143 data/core/terrain.cfg:1154
+#: data/core/terrain.cfg:1165 data/core/terrain.cfg:1176
 msgid "Cave Wall"
 msgstr "Balla uamha"
 
 #. [terrain_type]: id=cavewall
-#: data/core/terrain.cfg:1086
+#: data/core/terrain.cfg:1144
 msgid "Natural Cave Wall"
 msgstr "Balla uamha nàdarra"
 
 #. [terrain_type]: id=cavewall_hewn
-#: data/core/terrain.cfg:1097
+#: data/core/terrain.cfg:1155
 msgid "Hewn Cave Wall"
 msgstr "Balla uamha snaidhte"
 
 #. [terrain_type]: id=cavewall_earthy
-#: data/core/terrain.cfg:1108
+#: data/core/terrain.cfg:1166
 msgid "Natural Earthy Cave Wall"
 msgstr "Balla uamha ùire nàdarra"
 
 #. [terrain_type]: id=cavewall_earthy_hewn
-#: data/core/terrain.cfg:1119
+#: data/core/terrain.cfg:1177
 msgid "Reinforced Earthy Cave Wall"
 msgstr "Balla uamha ùire neartaichte"
 
 #. [terrain_type]: id=wall_stone
 #. [terrain_type]: id=wall_stone_lit
-#: data/core/terrain.cfg:1129 data/core/terrain.cfg:1139
+#: data/core/terrain.cfg:1187 data/core/terrain.cfg:1197
 msgid "Stone Wall"
 msgstr "Balla cloiche"
 
 #. [terrain_type]: id=wall_stone_lit
-#: data/core/terrain.cfg:1140
+#: data/core/terrain.cfg:1198
 msgid "Lit Stone Wall"
 msgstr "Balla cloiche soillseach"
 
 #. [terrain_type]: id=impassable_overlay
-#: data/core/terrain.cfg:1150
+#: data/core/terrain.cfg:1208
 msgid "Impassable Overlay"
 msgstr "Tar-chòmhdachadh do-shiubhal"
 
 #. [terrain_type]: id=unwalkable_overlay
-#: data/core/terrain.cfg:1161
+#: data/core/terrain.cfg:1219
 #, fuzzy
 #| msgid "Impassable Overlay"
 msgid "Unwalkable Overlay"
@@ -696,8 +736,8 @@ msgstr "Tar-chòmhdachadh do-shiubhal"
 #. [terrain_type]: id=off_map
 #. [terrain_type]: id=off_map2
 #. [terrain_type]: id=void
-#: data/core/terrain.cfg:1172 data/core/terrain.cfg:2204
-#: data/core/terrain.cfg:2214
+#: data/core/terrain.cfg:1230 data/core/terrain.cfg:2262
+#: data/core/terrain.cfg:2272
 msgid "Void"
 msgstr "Fànas"
 
@@ -731,178 +771,178 @@ msgstr "Fànas"
 #. [terrain_type]: id=village
 #. [terrain_type]: id=village_overlay
 #. [terrain_type]: id=windmill_village
-#: data/core/terrain.cfg:1187 data/core/terrain.cfg:1200
-#: data/core/terrain.cfg:1213 data/core/terrain.cfg:1228
-#: data/core/terrain.cfg:1241 data/core/terrain.cfg:1256
-#: data/core/terrain.cfg:1269 data/core/terrain.cfg:1284
-#: data/core/terrain.cfg:1297 data/core/terrain.cfg:1310
-#: data/core/terrain.cfg:1323 data/core/terrain.cfg:1336
-#: data/core/terrain.cfg:1349 data/core/terrain.cfg:1362
-#: data/core/terrain.cfg:1375 data/core/terrain.cfg:1388
-#: data/core/terrain.cfg:1401 data/core/terrain.cfg:1414
-#: data/core/terrain.cfg:1427 data/core/terrain.cfg:1442
-#: data/core/terrain.cfg:1455 data/core/terrain.cfg:1468
-#: data/core/terrain.cfg:1481 data/core/terrain.cfg:1494
-#: data/core/terrain.cfg:1507 data/core/terrain.cfg:1520
-#: data/core/terrain.cfg:1535 data/core/terrain.cfg:1548
-#: data/core/terrain.cfg:1563 data/core/terrain.cfg:2267
+#: data/core/terrain.cfg:1245 data/core/terrain.cfg:1258
+#: data/core/terrain.cfg:1271 data/core/terrain.cfg:1286
+#: data/core/terrain.cfg:1299 data/core/terrain.cfg:1314
+#: data/core/terrain.cfg:1327 data/core/terrain.cfg:1342
+#: data/core/terrain.cfg:1355 data/core/terrain.cfg:1368
+#: data/core/terrain.cfg:1381 data/core/terrain.cfg:1394
+#: data/core/terrain.cfg:1407 data/core/terrain.cfg:1420
+#: data/core/terrain.cfg:1433 data/core/terrain.cfg:1446
+#: data/core/terrain.cfg:1459 data/core/terrain.cfg:1472
+#: data/core/terrain.cfg:1485 data/core/terrain.cfg:1500
+#: data/core/terrain.cfg:1513 data/core/terrain.cfg:1526
+#: data/core/terrain.cfg:1539 data/core/terrain.cfg:1552
+#: data/core/terrain.cfg:1565 data/core/terrain.cfg:1578
+#: data/core/terrain.cfg:1593 data/core/terrain.cfg:1606
+#: data/core/terrain.cfg:1621 data/core/terrain.cfg:2325
 msgid "Village"
 msgstr "Baile"
 
 #. [terrain_type]: id=desert_village
-#: data/core/terrain.cfg:1188
+#: data/core/terrain.cfg:1246
 msgid "Adobe Village"
 msgstr "Baile an fhàsaich"
 
 #. [terrain_type]: id=desert_village_tent
-#: data/core/terrain.cfg:1201
+#: data/core/terrain.cfg:1259
 msgid "Desert Tent Village"
 msgstr "Baile teanta an fhàsaich"
 
 #. [terrain_type]: id=camp_village
-#: data/core/terrain.cfg:1214
+#: data/core/terrain.cfg:1272
 msgid "Tent Village"
 msgstr "Baile teanta"
 
 #. [terrain_type]: id=orcish_village
-#: data/core/terrain.cfg:1229
+#: data/core/terrain.cfg:1287
 msgid "Orcish Village"
 msgstr "Baile Deamhain"
 
 #. [terrain_type]: id=orcish_snow_village
-#: data/core/terrain.cfg:1242
+#: data/core/terrain.cfg:1300
 msgid "Snowy Orcish Village"
 msgstr "Baile Deamhain sneachdach"
 
 #. [terrain_type]: id=elven_snow_village
-#: data/core/terrain.cfg:1257
+#: data/core/terrain.cfg:1315
 msgid "Snowy Elven Village"
 msgstr "Baile Sìthiche sneachdach"
 
 #. [terrain_type]: id=elven_village
-#: data/core/terrain.cfg:1270
+#: data/core/terrain.cfg:1328
 msgid "Elven Village"
 msgstr "Baile Sìthiche"
 
 #. [terrain_type]: id=human_village
-#: data/core/terrain.cfg:1285
+#: data/core/terrain.cfg:1343
 msgid "Cottage"
 msgstr "Bothan"
 
 #. [terrain_type]: id=snow_village
-#: data/core/terrain.cfg:1298
+#: data/core/terrain.cfg:1356
 msgid "Snowy Cottage"
 msgstr "Bothan sneachdach"
 
 #. [terrain_type]: id=human_village_ruin
-#: data/core/terrain.cfg:1311
+#: data/core/terrain.cfg:1369
 msgid "Ruined Cottage"
 msgstr "Tobhta bhothain"
 
 #. [terrain_type]: id=city_village
-#: data/core/terrain.cfg:1324
+#: data/core/terrain.cfg:1382
 msgid "Human City"
 msgstr "Baile a’ Chinne-daonna"
 
 #. [terrain_type]: id=windmill_village
-#: data/core/terrain.cfg:1337
+#: data/core/terrain.cfg:1395
 msgid "Windmill Village"
 msgstr "Baile muilinn-ghaoithe"
 
 #. [terrain_type]: id=city_village_wno
-#: data/core/terrain.cfg:1350
+#: data/core/terrain.cfg:1408
 msgid "Snowy Human City"
 msgstr "Baile a’ Chinne-daonna sneachdach"
 
 #. [terrain_type]: id=city_village_ruin
-#: data/core/terrain.cfg:1363
+#: data/core/terrain.cfg:1421
 msgid "Ruined Human City"
 msgstr "Tobhta baile a’ Chinne-daonna"
 
 #. [terrain_type]: id=hill_village
-#: data/core/terrain.cfg:1376
+#: data/core/terrain.cfg:1434
 msgid "Hill Stone Village"
 msgstr "Baile cloiche air cnuic"
 
 #. [terrain_type]: id=snow-hill_village
-#: data/core/terrain.cfg:1389
+#: data/core/terrain.cfg:1447
 msgid "Snowy Hill Stone Village"
 msgstr "Baile cloiche air cnuic sneachdach"
 
 #. [terrain_type]: id=hill_village_ruin
-#: data/core/terrain.cfg:1402
+#: data/core/terrain.cfg:1460
 msgid "Ruined Hill Stone Village"
 msgstr "Tobhta baile cloiche air cnuic"
 
 #. [terrain_type]: id=tropical_forest_village
-#: data/core/terrain.cfg:1415
+#: data/core/terrain.cfg:1473
 msgid "Tropical Village"
 msgstr "Baile tropaigeach"
 
 #. [terrain_type]: id=drake_village
-#: data/core/terrain.cfg:1428
+#: data/core/terrain.cfg:1486
 msgid "Drake Village"
 msgstr "Baile Dràic"
 
 #. [terrain_type]: id=underground_village
-#: data/core/terrain.cfg:1443
+#: data/core/terrain.cfg:1501
 msgid "Cave Village"
 msgstr "Baile uamha"
 
 #. [terrain_type]: id=dwarven_village
-#: data/core/terrain.cfg:1456
+#: data/core/terrain.cfg:1514
 msgid "Dwarven Village"
 msgstr "Baile Troiche"
 
 #. [terrain_type]: id=hut_village
-#: data/core/terrain.cfg:1469
+#: data/core/terrain.cfg:1527
 msgid "Hut"
 msgstr "Bothag"
 
 #. [terrain_type]: id=hut_snow_village
-#: data/core/terrain.cfg:1482
+#: data/core/terrain.cfg:1540
 msgid "Snowy Hut"
 msgstr "Bothag shneachdach"
 
 #. [terrain_type]: id=logcabin_village
-#: data/core/terrain.cfg:1495
+#: data/core/terrain.cfg:1553
 msgid "Log Cabin"
 msgstr "Ceabain maidse"
 
 #. [terrain_type]: id=logcabin_snow_village
-#: data/core/terrain.cfg:1508
+#: data/core/terrain.cfg:1566
 msgid "Snowy Log Cabin"
 msgstr "Ceabain maidse shneachdach"
 
 #. [terrain_type]: id=igloo
-#: data/core/terrain.cfg:1521
+#: data/core/terrain.cfg:1579
 msgid "Igloo"
 msgstr "Taigh-sneachda"
 
 #. [terrain_type]: id=swamp_village
-#: data/core/terrain.cfg:1536
+#: data/core/terrain.cfg:1594
 msgid "Swamp Village"
 msgstr "Baile boglaich"
 
 #. [terrain_type]: id=mermen-village
-#: data/core/terrain.cfg:1549
+#: data/core/terrain.cfg:1607
 msgid "Merfolk Village"
 msgstr "Baile Sluaigh-mhara"
 
 #. [terrain_type]: id=village_overlay
-#: data/core/terrain.cfg:1564
+#: data/core/terrain.cfg:1622
 msgid "Village Overlay"
 msgstr "Tar-chòmhdachadh baile"
 
 #. [terrain_type]: id=encampment
 #. [terrain_type]: id=encampment_snow
-#: data/core/terrain.cfg:1579 data/core/terrain.cfg:1580
-#: data/core/terrain.cfg:1591
+#: data/core/terrain.cfg:1637 data/core/terrain.cfg:1638
+#: data/core/terrain.cfg:1649
 msgid "Encampment"
 msgstr "Campachadh"
 
 #. [terrain_type]: id=encampment_snow
-#: data/core/terrain.cfg:1592
+#: data/core/terrain.cfg:1650
 msgid "Snowy Encampment"
 msgstr "Campachadh sneachdach"
 
@@ -914,40 +954,40 @@ msgstr "Campachadh sneachdach"
 #. [terrain_type]: id=sand_castle
 #. [terrain_type]: id=snow_castle
 #. [terrain_type]: id=snow_orcish_fort
-#: data/core/terrain.cfg:1603 data/core/terrain.cfg:1615
-#: data/core/terrain.cfg:1627 data/core/terrain.cfg:1638
-#: data/core/terrain.cfg:1649 data/core/terrain.cfg:1661
-#: data/core/terrain.cfg:1711 data/core/terrain.cfg:1921
+#: data/core/terrain.cfg:1661 data/core/terrain.cfg:1673
+#: data/core/terrain.cfg:1685 data/core/terrain.cfg:1696
+#: data/core/terrain.cfg:1707 data/core/terrain.cfg:1719
+#: data/core/terrain.cfg:1769 data/core/terrain.cfg:1979
 msgid "Castle"
 msgstr "Caisteal"
 
 #. [terrain_type]: id=orcish_fort
-#: data/core/terrain.cfg:1604
+#: data/core/terrain.cfg:1662
 msgid "Orcish Castle"
 msgstr "Caisteil Deamhain"
 
 #. [terrain_type]: id=snow_orcish_fort
-#: data/core/terrain.cfg:1616
+#: data/core/terrain.cfg:1674
 msgid "Snowy Orcish Castle"
 msgstr "Caisteal Deamhain sneachdach"
 
 #. [terrain_type]: id=castle
-#: data/core/terrain.cfg:1628
+#: data/core/terrain.cfg:1686
 msgid "Human Castle"
 msgstr "Caisteal a’ Chinne-daonna"
 
 #. [terrain_type]: id=snow_castle
-#: data/core/terrain.cfg:1639
+#: data/core/terrain.cfg:1697
 msgid "Snowy Human Castle"
 msgstr "Caisteal a’ Chinne-daonna sneachdach"
 
 #. [terrain_type]: id=elven_castle
-#: data/core/terrain.cfg:1650
+#: data/core/terrain.cfg:1708
 msgid "Elvish Castle"
 msgstr "Caisteal Sìthiche"
 
 #. [terrain_type]: id=dwarven_castle
-#: data/core/terrain.cfg:1662
+#: data/core/terrain.cfg:1720
 msgid "Dwarven Castle"
 msgstr "Caisteal Troiche"
 
@@ -955,51 +995,51 @@ msgstr "Caisteal Troiche"
 #. [terrain_type]: id=sand_castle_ruin
 #. [terrain_type]: id=sunkenruin
 #. [terrain_type]: id=swampruin
-#: data/core/terrain.cfg:1673 data/core/terrain.cfg:1685
-#: data/core/terrain.cfg:1698 data/core/terrain.cfg:1723
+#: data/core/terrain.cfg:1731 data/core/terrain.cfg:1743
+#: data/core/terrain.cfg:1756 data/core/terrain.cfg:1781
 msgid "Ruined Castle"
 msgstr "Tobhta chaisteil"
 
 #. [terrain_type]: id=ruin
-#: data/core/terrain.cfg:1674
+#: data/core/terrain.cfg:1732
 msgid "Ruined Human Castle"
 msgstr "Tobhta chaisteal a’ Chinne-daonna"
 
 #. [terrain_type]: id=sunkenruin
-#: data/core/terrain.cfg:1686
+#: data/core/terrain.cfg:1744
 msgid "Sunken Human Ruin"
 msgstr "Tobhta bàthte a’ Chinne-daonna"
 
 #. [terrain_type]: id=swampruin
-#: data/core/terrain.cfg:1699
+#: data/core/terrain.cfg:1757
 msgid "Swamp Human Ruin"
 msgstr "Tobhta boglaich a’ Chinne-daonna"
 
 #. [terrain_type]: id=sand_castle
-#: data/core/terrain.cfg:1712
+#: data/core/terrain.cfg:1770
 msgid "Desert Castle"
 msgstr "Caisteal an fhàsaich"
 
 #. [terrain_type]: id=sand_castle_ruin
-#: data/core/terrain.cfg:1724
+#: data/core/terrain.cfg:1782
 msgid "Ruined Desert Castle"
 msgstr "Tobhta caisteal an fhàsaich"
 
 #. [terrain_type]: id=encampment_keep
 #. [terrain_type]: id=encampment_keep_tall
 #. [terrain_type]: id=encampment_snow_keep
-#: data/core/terrain.cfg:1739 data/core/terrain.cfg:1751
-#: data/core/terrain.cfg:1764
+#: data/core/terrain.cfg:1797 data/core/terrain.cfg:1809
+#: data/core/terrain.cfg:1822
 msgid "Encampment Keep"
 msgstr "Daingean champachaidh"
 
 #. [terrain_type]: id=encampment_keep_tall
-#: data/core/terrain.cfg:1752
+#: data/core/terrain.cfg:1810
 msgid "Tall Encampment Keep"
 msgstr "Daingean champachaidh àrd"
 
 #. [terrain_type]: id=encampment_snow_keep
-#: data/core/terrain.cfg:1765
+#: data/core/terrain.cfg:1823
 msgid "Snowy Encampment Keep"
 msgstr "Daingean champachaidh shneachdach"
 
@@ -1011,40 +1051,40 @@ msgstr "Daingean champachaidh shneachdach"
 #. [terrain_type]: id=orcish_keep
 #. [terrain_type]: id=snow_keep
 #. [terrain_type]: id=snow_orcish_keep
-#: data/core/terrain.cfg:1777 data/core/terrain.cfg:1790
-#: data/core/terrain.cfg:1803 data/core/terrain.cfg:1816
-#: data/core/terrain.cfg:1829 data/core/terrain.cfg:1842
-#: data/core/terrain.cfg:1894 data/core/terrain.cfg:1933
+#: data/core/terrain.cfg:1835 data/core/terrain.cfg:1848
+#: data/core/terrain.cfg:1861 data/core/terrain.cfg:1874
+#: data/core/terrain.cfg:1887 data/core/terrain.cfg:1900
+#: data/core/terrain.cfg:1952 data/core/terrain.cfg:1991
 msgid "Keep"
 msgstr "Daingean"
 
 #. [terrain_type]: id=orcish_keep
-#: data/core/terrain.cfg:1778
+#: data/core/terrain.cfg:1836
 msgid "Orcish Keep"
 msgstr "Daingean Deamhain"
 
 #. [terrain_type]: id=snow_orcish_keep
-#: data/core/terrain.cfg:1791
+#: data/core/terrain.cfg:1849
 msgid "Snowy Orcish Keep"
 msgstr "Daingean deamhain sneachdach"
 
 #. [terrain_type]: id=human_keep
-#: data/core/terrain.cfg:1804
+#: data/core/terrain.cfg:1862
 msgid "Human Castle Keep"
 msgstr "Daingean a’ Chinne-daonna"
 
 #. [terrain_type]: id=snow_keep
-#: data/core/terrain.cfg:1817
+#: data/core/terrain.cfg:1875
 msgid "Snowy Human Castle Keep"
 msgstr "Daingean a’ Chinne-daonna sneachdach"
 
 #. [terrain_type]: id=elven_keep
-#: data/core/terrain.cfg:1830
+#: data/core/terrain.cfg:1888
 msgid "Elven Castle Keep"
 msgstr "Daingean Sìthiche"
 
 #. [terrain_type]: id=dwarven_keep
-#: data/core/terrain.cfg:1843
+#: data/core/terrain.cfg:1901
 msgid "Dwarven Castle Keep"
 msgstr "Daingean Troiche"
 
@@ -1052,43 +1092,43 @@ msgstr "Daingean Troiche"
 #. [terrain_type]: id=ruined_keep
 #. [terrain_type]: id=sunken_keep
 #. [terrain_type]: id=swamp_keep
-#: data/core/terrain.cfg:1855 data/core/terrain.cfg:1868
-#: data/core/terrain.cfg:1881 data/core/terrain.cfg:1907
+#: data/core/terrain.cfg:1913 data/core/terrain.cfg:1926
+#: data/core/terrain.cfg:1939 data/core/terrain.cfg:1965
 msgid "Ruined Keep"
 msgstr "Tobhta dhaingein"
 
 #. [terrain_type]: id=ruined_keep
-#: data/core/terrain.cfg:1856
+#: data/core/terrain.cfg:1914
 msgid "Ruined Human Castle Keep"
 msgstr "Tobhta daingein a’ Chinne-daonna"
 
 #. [terrain_type]: id=sunken_keep
-#: data/core/terrain.cfg:1869
+#: data/core/terrain.cfg:1927
 msgid "Sunken Human Castle Keep"
 msgstr "Daingean a’ Chinne-daonna bàthte"
 
 #. [terrain_type]: id=swamp_keep
-#: data/core/terrain.cfg:1882
+#: data/core/terrain.cfg:1940
 msgid "Swamp Human Castle Keep"
 msgstr "Daingean boglaich a’ Chinne-daonna"
 
 #. [terrain_type]: id=desert_keep
-#: data/core/terrain.cfg:1895
+#: data/core/terrain.cfg:1953
 msgid "Desert Keep"
 msgstr "Daingean an fhàsaich"
 
 #. [terrain_type]: id=desert_keep_ruined
-#: data/core/terrain.cfg:1908
+#: data/core/terrain.cfg:1966
 msgid "Ruined Desert Keep"
 msgstr "Tobhta daingean an fhàsaich"
 
 #. [terrain_type]: id=castle_overlay
-#: data/core/terrain.cfg:1922
+#: data/core/terrain.cfg:1980
 msgid "Castle Overlay"
 msgstr "Tar-chòmhdachadh caisteil"
 
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:1934
+#: data/core/terrain.cfg:1992
 msgid "Keep Overlay"
 msgstr "Tar-chòmhdachadh daingein"
 
@@ -1104,52 +1144,52 @@ msgstr "Tar-chòmhdachadh daingein"
 #. [terrain_type]: id=stone_bridge
 #. [terrain_type]: id=stone_bridgediag1
 #. [terrain_type]: id=stone_bridgediag2
-#: data/core/terrain.cfg:1951 data/core/terrain.cfg:1963
-#: data/core/terrain.cfg:1975 data/core/terrain.cfg:1987
-#: data/core/terrain.cfg:1999 data/core/terrain.cfg:2011
-#: data/core/terrain.cfg:2025 data/core/terrain.cfg:2037
-#: data/core/terrain.cfg:2049 data/core/terrain.cfg:2063
-#: data/core/terrain.cfg:2074 data/core/terrain.cfg:2086
+#: data/core/terrain.cfg:2009 data/core/terrain.cfg:2021
+#: data/core/terrain.cfg:2033 data/core/terrain.cfg:2045
+#: data/core/terrain.cfg:2057 data/core/terrain.cfg:2069
+#: data/core/terrain.cfg:2083 data/core/terrain.cfg:2095
+#: data/core/terrain.cfg:2107 data/core/terrain.cfg:2121
+#: data/core/terrain.cfg:2132 data/core/terrain.cfg:2144
 msgid "Bridge"
 msgstr "Drochaid"
 
 #. [terrain_type]: id=bridge
 #. [terrain_type]: id=bridgediag1
 #. [terrain_type]: id=bridgediag2
-#: data/core/terrain.cfg:1952 data/core/terrain.cfg:1964
-#: data/core/terrain.cfg:1976
+#: data/core/terrain.cfg:2010 data/core/terrain.cfg:2022
+#: data/core/terrain.cfg:2034
 msgid "Wooden Bridge"
 msgstr "Drochaid mhaidse"
 
 #. [terrain_type]: id=rotbridge
 #. [terrain_type]: id=rotbridgediag1
 #. [terrain_type]: id=rotbridgediag2
-#: data/core/terrain.cfg:1988 data/core/terrain.cfg:2000
-#: data/core/terrain.cfg:2012
+#: data/core/terrain.cfg:2046 data/core/terrain.cfg:2058
+#: data/core/terrain.cfg:2070
 msgid "Rotting Bridge"
 msgstr "Drochaid a’ lobhadh"
 
 #. [terrain_type]: id=stone_bridge
 #. [terrain_type]: id=stone_bridgediag1
 #. [terrain_type]: id=stone_bridgediag2
-#: data/core/terrain.cfg:2026 data/core/terrain.cfg:2038
-#: data/core/terrain.cfg:2050
+#: data/core/terrain.cfg:2084 data/core/terrain.cfg:2096
+#: data/core/terrain.cfg:2108
 msgid "Basic Stone Bridge"
 msgstr "Drochaid chloiche bhunasach"
 
 #. [terrain_type]: id=bridgechasm
 #. [terrain_type]: id=bridgechasmdiag1
 #. [terrain_type]: id=bridgechasmdiag2
-#: data/core/terrain.cfg:2064 data/core/terrain.cfg:2075
-#: data/core/terrain.cfg:2087
+#: data/core/terrain.cfg:2122 data/core/terrain.cfg:2133
+#: data/core/terrain.cfg:2145
 msgid "Cave Chasm Bridge"
 msgstr "Drochaid mòr-bheàrn uamha"
 
 #. [terrain_type]: id=hangingbridge
 #. [terrain_type]: id=hangingbridgediag1
 #. [terrain_type]: id=hangingbridgediag2
-#: data/core/terrain.cfg:2101 data/core/terrain.cfg:2112
-#: data/core/terrain.cfg:2123
+#: data/core/terrain.cfg:2159 data/core/terrain.cfg:2170
+#: data/core/terrain.cfg:2181
 #, fuzzy
 #| msgid "Rotting Bridge"
 msgid "Hanging Bridge"
@@ -1158,8 +1198,8 @@ msgstr "Drochaid a’ lobhadh"
 #. [terrain_type]: id=stonechasmbridge
 #. [terrain_type]: id=stonechasmbridgediag1
 #. [terrain_type]: id=stonechasmbridgediag2
-#: data/core/terrain.cfg:2137 data/core/terrain.cfg:2147
-#: data/core/terrain.cfg:2157
+#: data/core/terrain.cfg:2195 data/core/terrain.cfg:2205
+#: data/core/terrain.cfg:2215
 #, fuzzy
 #| msgid "Cave Chasm Bridge"
 msgid "Stone Chasm Bridge"
@@ -1168,56 +1208,56 @@ msgstr "Drochaid mòr-bheàrn uamha"
 #. [terrain_type]: id=plankbridge
 #. [terrain_type]: id=plankbridgediag1
 #. [terrain_type]: id=plankbridgediag2
-#: data/core/terrain.cfg:2169 data/core/terrain.cfg:2179
-#: data/core/terrain.cfg:2189
+#: data/core/terrain.cfg:2227 data/core/terrain.cfg:2237
+#: data/core/terrain.cfg:2247
 #, fuzzy
 #| msgid "Bridge"
 msgid "Plank Bridge"
 msgstr "Drochaid"
 
 #. [terrain_type]: id=off_map
-#: data/core/terrain.cfg:2205
+#: data/core/terrain.cfg:2263
 msgid "Off Map"
 msgstr "Far a’ mhapa"
 
 #. [terrain_type]: id=off_map2
-#: data/core/terrain.cfg:2215
+#: data/core/terrain.cfg:2273
 msgid "Experimental Fake Map Edge"
 msgstr "Oir mhapa fhuadain dheuchainneach"
 
 #. [terrain_type]: id=shroud
 #. [toggle_button]: id=shroud
-#: data/core/terrain.cfg:2224 data/gui/default/window/mp_create_game.cfg:479
+#: data/core/terrain.cfg:2282 data/gui/default/window/mp_create_game.cfg:479
 msgid "Shroud"
 msgstr "Sgàil"
 
 #. [terrain_type]: id=fog
-#: data/core/terrain.cfg:2233
+#: data/core/terrain.cfg:2291
 msgid "Fog"
 msgstr "Ceò"
 
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:2246
+#: data/core/terrain.cfg:2304
 msgid "Flat"
 msgstr "Rèidh"
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:2260
+#: data/core/terrain.cfg:2318
 msgid "Frozen"
 msgstr "Reòite"
 
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:2274
+#: data/core/terrain.cfg:2332
 msgid "Impassable"
 msgstr "Do-shiubhal"
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:2281
+#: data/core/terrain.cfg:2339
 msgid "Unwalkable"
 msgstr "Do-choiseach"
 
 #. [terrain_type]: id=rails
-#: data/core/terrain.cfg:2288
+#: data/core/terrain.cfg:2346
 msgid "Rails"
 msgstr ""
 
@@ -1233,7 +1273,7 @@ msgstr ""
 #: data/gui/default/window/lobby_main.cfg:619
 #: data/gui/default/window/lobby_player_info.cfg:200
 #: data/gui/default/window/message.cfg:135 src/construct_dialog.cpp:136
-#: src/mapgen_dialog.cpp:110
+#: src/mapgen_dialog.cpp:111
 msgid "Close"
 msgstr "Dùin"
 
@@ -1658,13 +1698,13 @@ msgstr "Mapa ùr"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:54 src/mapgen_dialog.cpp:121
+#: data/gui/default/window/editor_new_map.cfg:54 src/mapgen_dialog.cpp:122
 msgid "Width:"
 msgstr "Leud:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:81 src/mapgen_dialog.cpp:122
+#: data/gui/default/window/editor_new_map.cfg:81 src/mapgen_dialog.cpp:123
 msgid "Height:"
 msgstr "Àirde:"
 
@@ -1849,8 +1889,8 @@ msgstr "Lorgadh a’ ghnìomhaidh"
 #. [grid]
 #: data/gui/default/window/formula_debugger.cfg:234
 #: data/gui/default/window/lobby_main.cfg:660
-#: data/gui/default/window/title_screen.cfg:232 src/hotkeys.cpp:830
-#: src/hotkeys.cpp:1176
+#: data/gui/default/window/title_screen.cfg:232 src/hotkeys.cpp:827
+#: src/hotkeys.cpp:1173
 msgid "Quit"
 msgstr "Fàg an-seo"
 
@@ -3410,7 +3450,7 @@ msgstr "Dì-stàlaich tuilleadain"
 
 #: src/gui/dialogs/addon_list.cpp:256
 #: src/gui/dialogs/network_transmission.cpp:54
-#: src/gui/dialogs/network_transmission.cpp:56 src/hotkeys.cpp:1133
+#: src/gui/dialogs/network_transmission.cpp:56 src/hotkeys.cpp:1130
 msgid "unit_byte^B"
 msgstr "B"
 
@@ -3722,7 +3762,7 @@ msgstr "Sùm bunaiteach"
 msgid "Toggle Full Screen"
 msgstr "Toglaich làn-sgrìn"
 
-#: src/hotkeys.cpp:83 src/hotkeys.cpp:1127
+#: src/hotkeys.cpp:83 src/hotkeys.cpp:1124
 msgid "Screenshot"
 msgstr "Glacadh-sgrìn"
 
@@ -4295,15 +4335,15 @@ msgstr "Linn neo-aithnichte"
 msgid "Hat"
 msgstr "Bothag"
 
-#: src/hotkeys.cpp:831 src/hotkeys.cpp:1177
+#: src/hotkeys.cpp:828 src/hotkeys.cpp:1174
 msgid "Do you really want to quit?"
 msgstr "A bheil thu cinnteach gu bheil thu airson fàgail?"
 
-#: src/hotkeys.cpp:1127
+#: src/hotkeys.cpp:1124
 msgid "Map-Screenshot"
 msgstr "Glacadh-sgrìn mapa"
 
-#: src/hotkeys.cpp:1134 src/hotkeys.cpp:1136
+#: src/hotkeys.cpp:1131 src/hotkeys.cpp:1133
 msgid "Screenshot done"
 msgstr "Glacadh-sgrìn dèanta"
 
@@ -4317,55 +4357,61 @@ msgstr "Glacadh-sgrìn dèanta"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/image.cpp:421
+#: src/image.cpp:425
 msgid "language code for localized resources^en_US"
 msgstr "gd"
 
-#: src/mapgen_dialog.cpp:113
+#: src/mapgen_dialog.cpp:114
 msgid "Map Generator"
 msgstr "Gineadair mapa"
 
-#: src/mapgen_dialog.cpp:120
+#: src/mapgen_dialog.cpp:121
 msgid "Players:"
 msgstr "Cluicheadairean:"
 
-#: src/mapgen_dialog.cpp:123
+#: src/mapgen_dialog.cpp:124
 msgid "Number of hills:"
 msgstr "Àireamh dhe chnuic:"
 
-#: src/mapgen_dialog.cpp:124
+#: src/mapgen_dialog.cpp:125
 msgid "Max hill size:"
 msgstr "Meud as motha nan cnoc:"
 
-#: src/mapgen_dialog.cpp:125
+#: src/mapgen_dialog.cpp:126
 msgid "Villages:"
 msgstr "Bailtean:"
 
-#: src/mapgen_dialog.cpp:126
+#: src/mapgen_dialog.cpp:127
 msgid "Castle size:"
 msgstr "Meud a’ chaisteil:"
 
-#: src/mapgen_dialog.cpp:127
+#: src/mapgen_dialog.cpp:128
 msgid "Landform:"
 msgstr "Cruth-tìre:"
 
-#: src/mapgen_dialog.cpp:249
+#: src/mapgen_dialog.cpp:250
 msgid "Roads between castles"
 msgstr "Rathaidean eadar caistealan"
 
-#: src/mapgen_dialog.cpp:306
+#: src/mapgen_dialog.cpp:257
+#, fuzzy
+#| msgid "Show floating labels"
+msgid "Show labels"
+msgstr "Seall leubailean fleòdragain"
+
+#: src/mapgen_dialog.cpp:315
 msgid "/1000 tiles"
 msgstr "/1000 leacan"
 
-#: src/mapgen_dialog.cpp:315
+#: src/mapgen_dialog.cpp:324
 msgid "Coastal"
 msgstr "Oirthir"
 
-#: src/mapgen_dialog.cpp:315
+#: src/mapgen_dialog.cpp:324
 msgid "Inland"
 msgstr "Meadhan tìre"
 
-#: src/mapgen_dialog.cpp:315
+#: src/mapgen_dialog.cpp:324
 msgid "Island"
 msgstr "Eilean"
 

@@ -53,7 +53,7 @@ wesnoth \- Битва за Веснот, покрокова стратегічн
 шлях каталогу даних в якості останнього аргументу, інакше гра сприйме id
 кампанії/сценарію за теку даних.
 .TP 
-\fB\-\-campaign\-difficulty [<difficulty>]\fP
+\fB\-\-campaign\-difficulty [<складність>]\fP
 Складність зазначеної кампанії (від 1 до макс). Якщо вона не зазначена, то
 з'явиться діалог вибору складності кампанії.
 .TP 
@@ -137,21 +137,20 @@ http://www.wesnoth.org/wiki/CommandMode для отримання інформа
 \fB\-\-path\fP
 вивести назву каталогу даних гри і вийти.
 .TP 
-\fB\-p, \-\-preprocess <source file/folder> <target directory>\fP
-preprocesses a specified file/folder. For each file(s) a plain .cfg file and
-a processed .cfg file will be written in specified target directory. If a
-folder is specified, it will be preprocessed recursively based on the known
-preprocessor rules. The common macroses from the "data/core/macros"
-directory will be preprocessed before the specified resources.  Example:
-\fB\-p ~/wesnoth/data/campaigns/tutorial ~/result.\fP For details regarding the
-preprocessor visit:
+\fB\-p, \-\-preprocess <початковий файл/тека> <цільова тека>\fP
+попередньо обробляє зазначений файл/теку. Для кожного файлу у вказану
+цільову теку будуть записані звичайний файл cfg та оброблений файл cfg. Якщо
+вказана тека, вона буде обробляється рекурсивно на основі відомих правил
+препроцесора. Загальні макроси з теки "data/core/macros" будуть оброблятись
+перед вказаними ресурсами. Приклад: \fB\-p ~/wesnoth/data/campaigns/tutorial
+~/result.\fP За детальною інформацією щодо препроцесора дивіться:
 http://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor
 
 .TP 
-\fB\-\-preprocess\-defines=DEFINE1,DEFINE2,etc\fP
-comma separated list of defines to be used by the '\-\-preprocess' command. If
-\fBSKIP_CORE\fP is in the define list the "data/core" directory won't be
-preprocessed.
+\fB\-\-preprocess\-defines=ВИЗНАЧЕННЯ1,ВИЗНАЧЕННЯ2,ітд\fP
+розділений комами список визначень, які будуть використовуватися командою
+\&'\-\-preprocess'. Якщо \fBSKIP_CORE\fP є в списку визначень, тека "data/core" не
+буде оброблятись.
 .TP 
 \fB\-\-preprocess\-input\-macros <вхідний файл>\fP
 використовується лише командою '\-\-preprocess'. Вказує файл, який містить
@@ -170,13 +169,13 @@ preprocessed.
 під'єднатись до вказаного хосту якщо такий є, інакше під'єднатись до
 першого, вказаною в налаштуваннях. Наприклад: \fB\-\-server server.wesnoth.org\fP
 .TP 
-\fB\-\-username\fP\fI<username>\fP
-uses <username> when connecting to a server, ignoring other
-preferences.
+\fB\-\-username\fP\fI<користувач>\fP
+використовує <і'мя_користувача> при під'єднанні до сервера,
+ігноруючи інші параметри.
 .TP 
-\fB\-\-password\fP\fI<password>\fP
-uses <password> when connecting to a server, ignoring other
-preferences. Unsafe.
+\fB\-\-password\fP\fI<пароль>\fP
+використовує <пароль> при під'єднанні до сервера, ігноруючи інші
+параметри. Небезпечно.
 .TP 
 \fB\-\-strict\-validation\fP
 помилки перевірки розглядаються як фатальні.

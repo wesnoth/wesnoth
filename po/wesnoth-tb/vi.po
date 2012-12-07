@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.7+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-18 09:41+0200\n"
+"POT-Creation-Date: 2012-12-07 20:59+0100\n"
 "PO-Revision-Date: 2011-06-14 09:54+0700\n"
 "Last-Translator: Huynh Yen Loc <nightgaunt13@gmail.com>\n"
 "Language-Team: Vietnamese <nightgaunt13@gmail.com>\n"
@@ -259,9 +259,9 @@ msgstr "Giết Mordak, tên pháp sư bóng tối"
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:90
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:362
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:566
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:212
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:592
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:721
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:202
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:573
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:699
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:55
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:253
 #, fuzzy
@@ -272,7 +272,7 @@ msgstr "Arne chết"
 #. [side]: type=Knight, id=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:113
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:120
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:70
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:60
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:84
 #: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:52
 msgid "Arvith"
@@ -280,7 +280,7 @@ msgstr ""
 
 #. [unit]: id=Baran, type=Red Mage
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:123
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:652
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:639
 msgid "Baran"
 msgstr ""
 
@@ -333,7 +333,7 @@ msgstr ""
 #. [side]: type=Longbowman, id=Reeve Hoban
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:157
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:128
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:79
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:69
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:92
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:135
 msgid "Humans"
@@ -349,8 +349,8 @@ msgstr "Mordak"
 #. [side]: type=Dark Sorcerer, id=Rotharik
 #. [side]: type=Orcish Warlord, id=Tairach
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:184
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:112
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:154
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:102
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:144
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:122
 msgid "Enemies"
 msgstr "Kẻ địch"
@@ -969,18 +969,13 @@ msgstr "Theo dấu vết của chúng!"
 msgid "Catch the kidnappers"
 msgstr "Bắt kịp những kẻ bắt cóc"
 
-#. [terrain_type]: id=magic_irongate
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:6
-msgid "Irongate"
-msgstr "Cổng sắt"
-
 #. [scenario]: id=03_Guarded_Castle
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:16
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:6
 msgid "Guarded Castle"
 msgstr "Lâu đài được canh gác"
 
 #. [part]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:44
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:34
 msgid ""
 "19 IV, 363 YW\n"
 "Excerpt from the journal of Rotharik the Clanless\n"
@@ -1022,7 +1017,7 @@ msgstr ""
 "như ta nếu giả sử chúng đang bắt giữ Mordak."
 
 #. [part]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:52
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:42
 msgid ""
 "19 IV, 363 YW\n"
 "Excerpt from the journal of Rotharik the Clanless\n"
@@ -1051,7 +1046,7 @@ msgstr ""
 "em, trong mối quan hệ anh em của họ, họ có sức mạnh."
 
 #. [side]: type=Dark Sorcerer, id=Rotharik
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:94
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:84
 msgid "Rotharik"
 msgstr "Rotharik"
 
@@ -1059,40 +1054,40 @@ msgstr "Rotharik"
 #. [unit]: id=Guard_leader, type=Assassin
 #. [unit]: role=Guard, type=Bandit
 #. [unit]: role=Guard2, type=Bandit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:116
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:124
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:133
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:141
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:453
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:461
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:469
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:478
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:106
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:114
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:123
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:131
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:434
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:442
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:450
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:459
 msgid "Guard"
 msgstr "Lính gác"
 
 #. [unit]: id=Knago-Brek, type=Orcish Warrior
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:160
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:150
 msgid "Knago-Brek"
 msgstr "Knago-Brek"
 
 #. [unit]: type=Orcish Grunt
 #. [unit]: type=Orcish Warrior
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:169
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:177
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:186
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:194
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:159
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:167
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:176
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:184
 msgid "Castle Guard"
 msgstr "Lính gác lâu đài"
 
 #. [objective]: condition=win
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:208
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:198
 #, fuzzy
 #| msgid "Rescue Bjarn"
 msgid "Rescue Baran"
 msgstr "Giải cứu Bjarn"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:307
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:288
 #, fuzzy
 #| msgid ""
 #| "Arne and his men halt outside of the castle, gazing for a moment at the "
@@ -1106,42 +1101,42 @@ msgstr ""
 "sau màn sương."
 
 #. [message]: speaker=Guard_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:311
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:292
 msgid "Halt! Friend or foe? Give the password."
 msgstr "Đứng lại! Bạn hay thù? Nói mật khẩu đi."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:316
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:297
 msgid "The password is"
 msgstr "Mật khẩu là"
 
 #. [option]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:318
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:299
 msgid "$first_password_1|!"
 msgstr "$first_password_1|!"
 
 #. [option]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:324
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:305
 msgid "$first_password_2|!"
 msgstr "$first_password_2|!"
 
 #. [option]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:330
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:311
 msgid "$first_password_3|!"
 msgstr "$first_password_3|!"
 
 #. [option]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:336
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:317
 msgid "$first_password_4|!"
 msgstr "$first_password_4|!"
 
 #. [message]: speaker=Guard_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:352
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:333
 msgid "Pass, friend."
 msgstr "Các bạn được đi qua."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:367
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:348
 msgid ""
 "The adept didn’t lead us astray after all. I’ll keep my word, distasteful as "
 "it may be; cut him loose, and let’s be rid of him."
@@ -1150,12 +1145,12 @@ msgstr ""
 "chịu; cắt dây cho hắn, hãy để hắn đi cho khuất mắt."
 
 #. [message]: speaker=Guard_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:378
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:359
 msgid "Wrong! Die!"
 msgstr "Sai rồi! Chết đi!"
 
 #. [message]: speaker=Knago-Brek
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:392
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:373
 msgid ""
 "Haha! We not kill people for long time. Weapon wants blood. We now kill "
 "humans!!"
@@ -1164,7 +1159,7 @@ msgstr ""
 "máu. Giờ thì chúng ta đã được giết con người!!"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:396
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:377
 msgid ""
 "My sword-arm has a say in who will do the dying. Come on, men, let’s kill "
 "some orcs."
@@ -1173,75 +1168,75 @@ msgstr ""
 "vài tên người thú nào."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:407
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:388
 msgid "One less braggart orc in the world."
 msgstr "Bớt đi một tên người thú khoác lác cho thế giới này."
 
 #. [message]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:415
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:396
 msgid "Captain, what are <i>orcs</i> doing this far south?"
 msgstr "Đội trưởng, Bọn <i>người thú</i> làm gì ở tận phía Nam xa xôi này?"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:419
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:400
 msgid "Good question. Perhaps my brother will have found out."
 msgstr "Câu hỏi hay đấy. Có lẽ em trai ta sẽ biết tại sao."
 
 #. [message]: speaker=Guard2_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:486
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:467
 msgid "Are you our relief arriving? Does this mean we get to leave here now?"
 msgstr ""
 "Các anh là lính đến thay phiên gác đúng không? Nghĩ là chúng tôi rời đi được "
 "chứ?"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:490
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:471
 msgid "Um, yes. Fine. You can go."
 msgstr "Ừm, đúng vậy. Tốt, các anh có thể đi."
 
 #. [message]: speaker=Guard2_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:494
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:475
 msgid "Um, you’re supposed to give the password."
 msgstr "Ừm, anh phải nói mật khẩu."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:498
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:479
 msgid "Oh, of course. I had nearly forgotten."
 msgstr "Ồ, đúng rồi. Tôi suýt quên."
 
 #. [option]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:500
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:481
 msgid "$second_password_1|!"
 msgstr "$second_password_1|!"
 
 #. [option]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:506
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:487
 msgid "$second_password_2|!"
 msgstr "$second_password_2|!"
 
 #. [option]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:512
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:493
 msgid "$second_password_3|!"
 msgstr "$second_password_3|!"
 
 #. [option]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:518
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:499
 msgid "$second_password_4|!"
 msgstr "$second_password_4|!"
 
 #. [message]: speaker=Guard2_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:533
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:514
 msgid "Thanks! Irritating little formality, isn’t it?"
 msgstr "Cảm ơn! Mật khẩu thật rắc rối, đúng chứ?"
 
 #. [message]: speaker=Guard2_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:546
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:527
 msgid "That’s the wrong password! These aren’t our relief! Get them!"
 msgstr ""
 "Mật khẩu không đúng! Các ngươi không phải là lính thay phiên gác! Giết chúng!"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:552
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:533
 msgid ""
 "I think I should better support my men at the front to make sure we can free "
 "my brother."
@@ -1250,22 +1245,22 @@ msgstr ""
 "có thể giải cứu em trai tôi."
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:563
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:544
 msgid "Your hand or Tairach’s, death is still death... (argh)"
 msgstr "Bởi ngươi hay Tairach, chết vẫn là chết... (hựự)"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:571
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:552
 msgid "‘Tairach’? Who or what is Tairach?"
 msgstr "‘Tairach’? Tên Tairach này là ai vậy?"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:575
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:556
 msgid "There’s a key in his robes."
 msgstr "Có một cái chìa khóa trong áo của hắn."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:579
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:560
 #, fuzzy
 #| msgid ""
 #| "That may well be the key to the cell they’re holding Bjarn in! I will "
@@ -1276,43 +1271,43 @@ msgid ""
 msgstr "Có lẽ đó là chìa khóa để mở cửa phòng giam của Bjarn! Tôi sẽ cầm nó."
 
 #. [objective]: condition=win
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:588
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:569
 #, fuzzy
 #| msgid "Move Arne to the cell with his brother to free him"
 msgid "Move Arvith to the cell with his brother to free him"
 msgstr "Đưa Arne đến phòng giam có em trai anh ta để giải cứu"
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:618
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:599
 msgid "Look what I have found in here! I can count a hundred pieces of gold."
 msgstr "Nhìn xem tôi tìm được gì nè! Tôi có thể đếm được hàng trăm lượng vàng."
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:631
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:612
 msgid "Look what I have found in here! I can count fifty pieces of gold."
 msgstr "Nhìn xem tôi tìm được gì nè! Tôi có thể đếm được năm mươi lượng vàng."
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:680
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:658
 #, fuzzy
 #| msgid "I found Bjarn. He is in this cell."
 msgid "I found Baran. He is in this cell."
 msgstr "Tôi tìm thấy Bjarn. Anh ta ở trong phòng giam này."
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:690
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:668
 #, fuzzy
 #| msgid "It’s good to see you, Arne."
 msgid "It’s good to see you, Arvith."
 msgstr "Rất vui được gặp lại anh, Arne."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:694
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:672
 msgid "And you too, brother."
 msgstr "Anh cũng vậy."
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:700
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:678
 #, fuzzy
 #| msgid ""
 #| "You must be one of Arne’s men. Please help me get out of this dungeon."
@@ -1323,7 +1318,7 @@ msgstr ""
 "cái ngục này."
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:706
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:684
 msgid ""
 "The accursed dark sorcerer Rotharik has imprisoned me behind this magically "
 "enhanced iron gate. It can only be opened with the correct key. You must get "
@@ -1334,24 +1329,24 @@ msgstr ""
 "lấy chìa khóa từ hắn để giải cứu em."
 
 #. [objective]: condition=win
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:717
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:695
 msgid "Kill the dark sorcerer to get the cell key"
 msgstr "Giết tên pháp sư bóng tối để lấy chìa khóa mở ngục"
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:758
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:741
 msgid "Thank you for saving me. I... was not certain you would come."
 msgstr "Cảm ơn anh đã cứu em. Em... đã không chắc rằng anh sẽ tới."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:762
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:745
 #, fuzzy
 #| msgid "Have you no faith in your brother, Bjarn?"
 msgid "Have you no faith in your brother, Baran?"
 msgstr "Em không có niềm tin vào anh trai em ư, Bjarn?"
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:766
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:749
 msgid ""
 "It’s not that. Perhaps I deserved to rot here. I failed you. I failed you "
 "again."
@@ -1360,7 +1355,7 @@ msgstr ""
 "thất vọng. Và giờ lại tiếp tục làm anh thất vọng."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:770
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:753
 msgid ""
 "That is as may be. But you are my brother still. And... I never doubted you "
 "would have come for me."
@@ -1369,7 +1364,7 @@ msgstr ""
 "anh sẽ để mất em trai mình."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:774
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:757
 msgid ""
 "It was no great trial, after all. A few elves, one or two dark sorcerers, a "
 "gang of orcs and some undead. Really just a day’s work for the company."
@@ -1379,23 +1374,23 @@ msgstr ""
 "thường cho lính đánh thuê bọn anh thôi."
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:778
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:761
 msgid "Thank you for coming to my aid. Let us return to the village."
 msgstr "Cảm ơn anh vì đã đến giúp em. Chúng ta hãy trở về làng."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:804
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:782
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:307
 msgid "Everything is lost now that I am dead..."
 msgstr "Ta thất bại rồi, tất cả đã tiêu tan..."
 
 #. [message]: speaker=Rotharik
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:816
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:794
 msgid "You are too late! Your brother is already dead! Muahahaha...!"
 msgstr "Ngươi đến quá trễ rồi! Em ngươi đã chết rồi! Muhahahaha...!"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:820
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:798
 msgid "Argh!!"
 msgstr "Aaaa!!"
 
@@ -1785,6 +1780,9 @@ msgstr ""
 "\n"
 "Tuy nhiên, trong thời gian đó, thật tốt khi được thư giãn và tận hưởng trong "
 "yên bình."
+
+#~ msgid "Irongate"
+#~ msgstr "Cổng sắt"
 
 #~ msgid "Arne"
 #~ msgstr "Arne"

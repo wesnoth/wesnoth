@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-tb\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-18 09:41+0200\n"
+"POT-Creation-Date: 2012-12-07 20:59+0100\n"
 "PO-Revision-Date: 2011-12-04 13:25+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -215,9 +215,9 @@ msgstr "Посијечеш ли Мордака, злог мага"
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:90
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:362
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:566
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:212
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:592
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:721
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:202
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:573
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:699
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:55
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:253
 msgid "Death of Arvith"
@@ -226,7 +226,7 @@ msgstr "Настрада ли Арвит"
 #. [side]: type=Knight, id=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:113
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:120
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:70
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:60
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:84
 #: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:52
 msgid "Arvith"
@@ -234,7 +234,7 @@ msgstr "Арвит"
 
 #. [unit]: id=Baran, type=Red Mage
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:123
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:652
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:639
 msgid "Baran"
 msgstr "Баран"
 
@@ -296,7 +296,7 @@ msgstr "Магрид"
 #. [side]: type=Longbowman, id=Reeve Hoban
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:157
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:128
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:79
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:69
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:92
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:135
 msgid "Humans"
@@ -312,8 +312,8 @@ msgstr "Мордак"
 #. [side]: type=Dark Sorcerer, id=Rotharik
 #. [side]: type=Orcish Warlord, id=Tairach
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:184
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:112
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:154
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:102
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:144
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:122
 msgid "Enemies"
 msgstr "Непријатељи"
@@ -864,18 +864,13 @@ msgstr "Пратите њихов погани траг!"
 msgid "Catch the kidnappers"
 msgstr "Ухватиш ли отимаче"
 
-#. [terrain_type]: id=magic_irongate
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:6
-msgid "Irongate"
-msgstr "гвоздодвери"
-
 #. [scenario]: id=03_Guarded_Castle
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:16
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:6
 msgid "Guarded Castle"
 msgstr "Чувани замак"
 
 #. [part]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:44
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:34
 msgid ""
 "19 IV, 363 YW\n"
 "Excerpt from the journal of Rotharik the Clanless\n"
@@ -915,7 +910,7 @@ msgstr ""
 "Мордака."
 
 #. [part]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:52
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:42
 msgid ""
 "19 IV, 363 YW\n"
 "Excerpt from the journal of Rotharik the Clanless\n"
@@ -944,7 +939,7 @@ msgstr ""
 "другом, у свезама које их вежу, наћи ће снагу."
 
 #. [side]: type=Dark Sorcerer, id=Rotharik
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:94
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:84
 msgid "Rotharik"
 msgstr "Ротарик"
 
@@ -952,39 +947,39 @@ msgstr "Ротарик"
 #. [unit]: id=Guard_leader, type=Assassin
 #. [unit]: role=Guard, type=Bandit
 #. [unit]: role=Guard2, type=Bandit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:116
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:124
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:133
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:141
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:453
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:461
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:469
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:478
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:106
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:114
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:123
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:131
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:434
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:442
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:450
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:459
 msgid "Guard"
 msgstr "Стража"
 
 # |, no-check-spell
 #. [unit]: id=Knago-Brek, type=Orcish Warrior
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:160
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:150
 msgid "Knago-Brek"
 msgstr "Кнаго-Брек"
 
 #. [unit]: type=Orcish Grunt
 #. [unit]: type=Orcish Warrior
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:169
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:177
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:186
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:194
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:159
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:167
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:176
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:184
 msgid "Castle Guard"
 msgstr "Стража замка"
 
 #. [objective]: condition=win
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:208
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:198
 msgid "Rescue Baran"
 msgstr "Спасиш ли Барана"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:307
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:288
 msgid ""
 "Arvith and his men halt outside of the castle, gazing for a moment at the "
 "hulking mass of stone looming in the fog. There is movement in the mist."
@@ -993,42 +988,42 @@ msgstr ""
 "масу камења што се надвијала из магле. Нешто мрдну у измаглици."
 
 #. [message]: speaker=Guard_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:311
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:292
 msgid "Halt! Friend or foe? Give the password."
 msgstr "Стој тамо! Пријатељ или не? Лозинку подајте."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:316
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:297
 msgid "The password is"
 msgstr "Лозинка је"
 
 #. [option]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:318
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:299
 msgid "$first_password_1|!"
 msgstr "$first_password_1|!"
 
 #. [option]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:324
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:305
 msgid "$first_password_2|!"
 msgstr "$first_password_2|!"
 
 #. [option]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:330
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:311
 msgid "$first_password_3|!"
 msgstr "$first_password_3|!"
 
 #. [option]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:336
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:317
 msgid "$first_password_4|!"
 msgstr "$first_password_4|!"
 
 #. [message]: speaker=Guard_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:352
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:333
 msgid "Pass, friend."
 msgstr "Прођи, пријатељу."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:367
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:348
 msgid ""
 "The adept didn’t lead us astray after all. I’ll keep my word, distasteful as "
 "it may be; cut him loose, and let’s be rid of him."
@@ -1037,20 +1032,20 @@ msgstr ""
 "неукусно било: ослободите га, и нека се гони."
 
 #. [message]: speaker=Guard_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:378
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:359
 msgid "Wrong! Die!"
 msgstr "Погрешно! Умрите!"
 
 # well-spelled: хоћи, крвац
 #. [message]: speaker=Knago-Brek
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:392
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:373
 msgid ""
 "Haha! We not kill people for long time. Weapon wants blood. We now kill "
 "humans!!"
 msgstr "Ха-ха! Ми не убиј људи време дуго. Нож хоћи крвац. Ми сада људи убиј!!"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:396
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:377
 msgid ""
 "My sword-arm has a say in who will do the dying. Come on, men, let’s kill "
 "some orcs."
@@ -1059,72 +1054,72 @@ msgstr ""
 "сравнимо орке неке."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:407
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:388
 msgid "One less braggart orc in the world."
 msgstr "Један орк хвалисавац мање на свету."
 
 #. [message]
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:415
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:396
 msgid "Captain, what are <i>orcs</i> doing this far south?"
 msgstr "Капетане, откуд <i>оркови</i> овако далеко на југу?"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:419
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:400
 msgid "Good question. Perhaps my brother will have found out."
 msgstr "Ваљано питање. Можда је мој брат сазнао шта о томе."
 
 #. [message]: speaker=Guard2_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:486
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:467
 msgid "Are you our relief arriving? Does this mean we get to leave here now?"
 msgstr "Ви ли сте наша смјена? Значи ли то да можемо отићи сада?"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:490
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:471
 msgid "Um, yes. Fine. You can go."
 msgstr "Хм, да, тако. Можете ићи."
 
 #. [message]: speaker=Guard2_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:494
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:475
 msgid "Um, you’re supposed to give the password."
 msgstr "Сјетих се, морао бих лозинку од вас чути."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:498
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:479
 msgid "Oh, of course. I had nearly forgotten."
 msgstr "Наравно, пријатељу. Скоро заборавих."
 
 #. [option]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:500
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:481
 msgid "$second_password_1|!"
 msgstr "$second_password_1|!"
 
 #. [option]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:506
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:487
 msgid "$second_password_2|!"
 msgstr "$second_password_2|!"
 
 #. [option]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:512
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:493
 msgid "$second_password_3|!"
 msgstr "$second_password_3|!"
 
 #. [option]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:518
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:499
 msgid "$second_password_4|!"
 msgstr "$second_password_4|!"
 
 #. [message]: speaker=Guard2_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:533
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:514
 msgid "Thanks! Irritating little formality, isn’t it?"
 msgstr "Захваљујем! Незгодација је та формализација, не?"
 
 #. [message]: speaker=Guard2_leader
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:546
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:527
 msgid "That’s the wrong password! These aren’t our relief! Get them!"
 msgstr "Погрешно је то што чух! Ово није наша смјена, на њих!"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:552
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:533
 msgid ""
 "I think I should better support my men at the front to make sure we can free "
 "my brother."
@@ -1134,66 +1129,66 @@ msgstr ""
 
 # well-spelled: ауух
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:563
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:544
 msgid "Your hand or Tairach’s, death is still death... (argh)"
 msgstr "Од твоје руке или Тајрахове, смрт је смрт... ауух."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:571
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:552
 msgid "‘Tairach’? Who or what is Tairach?"
 msgstr "Тајрах? Ко или шта је Тајрах?"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:575
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:556
 msgid "There’s a key in his robes."
 msgstr "Ето кључа у његовој одежди."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:579
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:560
 msgid ""
 "That may well be the key to the cell they’re holding Baran in! I will take "
 "it."
 msgstr "То лако може бити кључ ћелије гдје држе Барана! Дајте га мени."
 
 #. [objective]: condition=win
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:588
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:569
 msgid "Move Arvith to the cell with his brother to free him"
 msgstr "Доведеш ли Арвита до ћелије са његовим братом да га ослободи"
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:618
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:599
 msgid "Look what I have found in here! I can count a hundred pieces of gold."
 msgstr "Види шта нађох овдје! Могу набројати стотину златника."
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:631
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:612
 msgid "Look what I have found in here! I can count fifty pieces of gold."
 msgstr "Види шта нађох овдје! Могу набројати педесет златника."
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:680
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:658
 msgid "I found Baran. He is in this cell."
 msgstr "Нађох Барана. Ето га у оној ћелији."
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:690
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:668
 msgid "It’s good to see you, Arvith."
 msgstr "Добро је видјети те, Арвите."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:694
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:672
 msgid "And you too, brother."
 msgstr "И тебе, брате."
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:700
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:678
 msgid ""
 "You must be one of Arvith’s men. Please help me get out of this dungeon."
 msgstr ""
 "Ти мора да си од Арвитових људи. Молим те, помогни ми изаћи из ове тамнице."
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:706
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:684
 msgid ""
 "The accursed dark sorcerer Rotharik has imprisoned me behind this magically "
 "enhanced iron gate. It can only be opened with the correct key. You must get "
@@ -1204,22 +1199,22 @@ msgstr ""
 "да бисте ме ослободили."
 
 #. [objective]: condition=win
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:717
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:695
 msgid "Kill the dark sorcerer to get the cell key"
 msgstr "Убијеш ли мрачног чаробњака и узмеш му кључ ћелије"
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:758
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:741
 msgid "Thank you for saving me. I... was not certain you would come."
 msgstr "Захваљујем на спасењу. Нисам био... сигуран да ћеш доћи."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:762
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:745
 msgid "Have you no faith in your brother, Baran?"
 msgstr "Немаш ли вере у свога брата, Баране?"
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:766
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:749
 msgid ""
 "It’s not that. Perhaps I deserved to rot here. I failed you. I failed you "
 "again."
@@ -1227,7 +1222,7 @@ msgstr ""
 "Није то. Можда ми и треба да иструнем овде. Изневерих те. Изневерих те опет."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:770
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:753
 msgid ""
 "That is as may be. But you are my brother still. And... I never doubted you "
 "would have come for me."
@@ -1236,7 +1231,7 @@ msgstr ""
 "не сумњам."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:774
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:757
 msgid ""
 "It was no great trial, after all. A few elves, one or two dark sorcerers, a "
 "gang of orcs and some undead. Really just a day’s work for the company."
@@ -1245,24 +1240,24 @@ msgstr ""
 "мрачних, шака оркова и здјела немртвих. Уистину један просечан дан за чету."
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:778
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:761
 msgid "Thank you for coming to my aid. Let us return to the village."
 msgstr "Хвала што ми у помоћ притрча. Вратимо се сада у село."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:804
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:782
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:307
 msgid "Everything is lost now that I am dead..."
 msgstr "Сада кад умирем, све је изгубљено..."
 
 #. [message]: speaker=Rotharik
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:816
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:794
 msgid "You are too late! Your brother is already dead! Muahahaha...!"
 msgstr "Стиже прекасно! Твој брат мртав је већ! Ха-ха-ха-ха...!"
 
 # well-spelled: Аооо
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:820
+#: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:798
 msgid "Argh!!"
 msgstr "Аооо!!"
 
@@ -1565,3 +1560,6 @@ msgstr ""
 "сусретну. Мислим да ћемо ускоро морати да се помучимо за своју надницу.\n"
 "\n"
 "У међувремену, лепо је мало опустити се и уживати у миру."
+
+#~ msgid "Irongate"
+#~ msgstr "гвоздодвери"
