@@ -81,7 +81,7 @@ return {
             return best_defense
         end
 
-        function analyze_enemy_unit(unit_type_id)
+        function analyze_enemy_unit(enemy_type, ally_type)
             local function get_best_attack(attacker, defender, unit_defense, can_poison)
                 -- Try to find the average damage for each possible attack and return the one that deals the most damage.
                 -- Would be preferable to call simulate combat, but that requires the defender to be on the map according
@@ -184,52 +184,51 @@ return {
             end
 
             -- Use cached information when possible: this is expensive
-            -- TODO: Invalidate cache when recruit list changes
+            local analysis = {}
             if not recruit_data.analyses then
                 recruit_data.analyses = {}
             else
-                if recruit_data.analyses[unit_type_id] then
-                    return recruit_data.analyses[unit_type_id]
+                if recruit_data.analyses[enemy_type] then
+                    analysis = recruit_data.analyses[enemy_type] or {}
                 end
             end
-
-            local analysis = {}
+            if analysis[ally_type] then
+                return analysis[ally_type]
+            end
 
             local unit = wesnoth.create_unit {
-                type = unit_type_id,
+                type = enemy_type,
                 random_traits = false,
                 name = "X",
-                id = unit_type_id .. get_next_id(),
+                id = enemy_type .. get_next_id(),
                 random_gender = false
             }
             local can_poison = living(unit) or wesnoth.unit_ability(unit, 'regenerate')
             local flat_defense = wesnoth.unit_defense(unit, "Gt")
             local best_defense = get_best_defense(unit)
 
-            for i, recruit_id in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
-                local recruit = wesnoth.create_unit {
-                    type = recruit_id,
-                    random_traits = false,
-                    name = "X",
-                    id = recruit_id .. get_next_id(),
-                    random_gender = false
-                }
-                local can_poison_retaliation = living(recruit) or wesnoth.unit_ability(recruit, 'regenerate')
-                best_flat_attack, best_flat_damage, flat_poison = get_best_attack(recruit, unit, flat_defense, can_poison)
-                best_high_defense_attack, best_high_defense_damage, high_defense_poison = get_best_attack(recruit, unit, best_defense, can_poison)
-                best_retaliation, best_retaliation_damage, retaliation_poison = get_best_attack(unit, recruit, wesnoth.unit_defense(recruit, "Gt"), can_poison_retaliation)
+            local recruit = wesnoth.create_unit {
+                type = ally_type,
+                random_traits = false,
+                name = "X",
+                id = ally_type .. get_next_id(),
+                random_gender = false
+            }
+            local can_poison_retaliation = living(recruit) or wesnoth.unit_ability(recruit, 'regenerate')
+            best_flat_attack, best_flat_damage, flat_poison = get_best_attack(recruit, unit, flat_defense, can_poison)
+            best_high_defense_attack, best_high_defense_damage, high_defense_poison = get_best_attack(recruit, unit, best_defense, can_poison)
+            best_retaliation, best_retaliation_damage, retaliation_poison = get_best_attack(unit, recruit, wesnoth.unit_defense(recruit, "Gt"), can_poison_retaliation)
 
-                local result = {
-                    offense = { attack = best_flat_attack, damage = best_flat_damage, poison_damage = flat_poison },
-                    defense = { attack = best_high_defense_attack, damage = best_high_defense_damage, poison_damage = high_defense_poison },
-                    retaliation = { attack = best_retaliation, damage = best_retaliation_damage, poison_damage = retaliation_poison }
-                }
-                analysis[recruit_id] = result
-            end
+            local result = {
+                offense = { attack = best_flat_attack, damage = best_flat_damage, poison_damage = flat_poison },
+                defense = { attack = best_high_defense_attack, damage = best_high_defense_damage, poison_damage = high_defense_poison },
+                retaliation = { attack = best_retaliation, damage = best_retaliation_damage, poison_damage = retaliation_poison }
+            }
+            analysis[ally_type] = result
 
             -- Cache result before returning
-            recruit_data.analyses[unit_type_id] = analysis
-            return analysis
+            recruit_data.analyses[enemy_type] = analysis
+            return analysis[ally_type]
         end
 
         function can_slow(unit)
@@ -374,9 +373,10 @@ return {
             local unit_attack_range_count = {} -- The ranges a unit will use
             local enemy_type_count = 0
             for i, unit_type in ipairs(enemy_types) do
-                local analysis = analyze_enemy_unit(unit_type)
                 enemy_type_count = enemy_type_count + 1
                 for i, recruit_id in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
+                    local analysis = analyze_enemy_unit(unit_type, recruit_id)
+
                     -- This line should be moved out of the loop!
                     local recruit_count = #(AH.get_live_units { side = wesnoth.current.side, type = recruit_id, canrecruit = 'no' })
 
@@ -384,16 +384,17 @@ return {
                         recruit_effectiveness[recruit_id] = 0
                         recruit_vulnerability[recruit_id] = 0
                     end
-                    recruit_effectiveness[recruit_id] = recruit_effectiveness[recruit_id] + analysis[recruit_id].defense.damage * enemy_counts[unit_type]^2
-                    recruit_vulnerability[recruit_id] = recruit_vulnerability[recruit_id] + (analysis[recruit_id].retaliation.damage * enemy_counts[unit_type])^3
 
-                    local attack_type = analysis[recruit_id].defense.attack.type
+                    recruit_effectiveness[recruit_id] = recruit_effectiveness[recruit_id] + analysis.defense.damage * enemy_counts[unit_type]^2
+                    recruit_vulnerability[recruit_id] = recruit_vulnerability[recruit_id] + (analysis.retaliation.damage * enemy_counts[unit_type])^3
+
+                    local attack_type = analysis.defense.attack.type
                     if attack_type_count[attack_type] == nil then
                         attack_type_count[attack_type] = 0
                     end
                     attack_type_count[attack_type] = attack_type_count[attack_type] + recruit_count
 
-                    local attack_range = analysis[recruit_id].defense.attack.range
+                    local attack_range = analysis.defense.attack.range
                     if attack_range_count[attack_range] == nil then
                         attack_range_count[attack_range] = 0
                     end
