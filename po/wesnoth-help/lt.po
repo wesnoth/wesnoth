@@ -3,10 +3,10 @@
 #  Andrius Štikonas <stikonas@gmail.com>, 2007-2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.10\n"
+"Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-10-27 15:56+0200\n"
-"PO-Revision-Date: 2012-01-03 18:05+0300\n"
+"PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
 "Language: Lithuanian\n"
@@ -86,15 +86,6 @@ msgstr "gydo +4"
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:18
 #: data/core/macros/abilities.cfg:12
 #, fuzzy
-#| msgid ""
-#| "Heals +4:\n"
-#| "Allows the unit to heal adjacent allied units at the beginning of our "
-#| "turn.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 4 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -127,15 +118,6 @@ msgstr "gydo +8"
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
 #: data/core/macros/abilities.cfg:31
 #, fuzzy
-#| msgid ""
-#| "Heals +8:\n"
-#| "This unit combines herbal remedies with magic to heal units more quickly "
-#| "than is normally possible on the battlefield.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -489,7 +471,7 @@ msgstr ""
 #. [topic]: id=mount_morogor
 #: data/core/encyclopedia/drakes.cfg:157
 msgid "Mount Morogor"
-msgstr ""
+msgstr "Morogoro kalnas"
 
 #. [topic]: id=mount_morogor
 #: data/core/encyclopedia/drakes.cfg:158
@@ -921,7 +903,7 @@ msgstr "Vietovės"
 #. [topic]: id=..addons
 #: data/core/help.cfg:70 data/core/help.cfg:793
 msgid "Add-ons"
-msgstr ""
+msgstr "Priedai"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
@@ -943,11 +925,6 @@ msgstr ""
 #. [topic]: id=..abilities_section
 #: data/core/help.cfg:100
 #, fuzzy
-#| msgid ""
-#| "Certain units have abilities that either directly affect other units, or "
-#| "have an impact on how the unit interacts with other units. These "
-#| "abilities will be listed under this topic as you encounter them.\n"
-#| "\n"
 msgid ""
 "Certain units have abilities that either directly affect other units or have "
 "an impact on how the unit interacts with other units. These abilities will "
@@ -3187,15 +3164,11 @@ msgstr ""
 #. [topic]: id=using_addons
 #: data/core/help.cfg:804
 msgid "Using Add-ons"
-msgstr ""
+msgstr "Priedų naudojimas"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:805
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -3226,7 +3199,6 @@ msgstr ""
 #. [topic]: id=using_addons
 #: data/core/help.cfg:809
 #, fuzzy
-#| msgid "<header>text='Units having this special attack'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3247,10 +3219,6 @@ msgstr ""
 #. [topic]: id=using_addons
 #: data/core/help.cfg:813
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Order and Number of Strikes'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3278,10 +3246,6 @@ msgstr ""
 #. [topic]: id=using_addons
 #: data/core/help.cfg:819
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Chance to Hit'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3306,7 +3270,7 @@ msgstr ""
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:830
 msgid "Installing Add-ons"
-msgstr ""
+msgstr "Priedų diegimas"
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:831
@@ -3337,7 +3301,7 @@ msgstr ""
 #. [topic]: id=removing_addons
 #: data/core/help.cfg:844
 msgid "Removing Add-ons"
-msgstr ""
+msgstr "Priedų šalinimas"
 
 #. [topic]: id=removing_addons
 #: data/core/help.cfg:845
@@ -3703,10 +3667,6 @@ msgstr "atnuodija"
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51
 #, fuzzy
-#| msgid ""
-#| "Cures:\n"
-#| "A curer can cure a unit of poison, although that unit will receive no "
-#| "additional healing on the turn it is cured of the poison."
 msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
@@ -3728,10 +3688,6 @@ msgstr "regeneruoja"
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:75
 #, fuzzy
-#| msgid ""
-#| "Regenerates:\n"
-#| "The unit will heal itself 8 HP per turn. If it is poisoned, it will "
-#| "remove the poison instead of healing."
 msgid ""
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
@@ -3753,10 +3709,6 @@ msgstr "atspari"
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:96
 #, fuzzy
-#| msgid ""
-#| "Steadfast:\n"
-#| "This unit’s resistances are doubled, up to a maximum of 50%, when "
-#| "defending. Vulnerabilities are not affected."
 msgid ""
 "This unit’s resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
@@ -3806,10 +3758,6 @@ msgstr "peštukė"
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:339
 #, fuzzy
-#| msgid ""
-#| "Skirmisher:\n"
-#| "This unit is skilled in moving past enemies quickly, and ignores all "
-#| "enemy Zones of Control."
 msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
@@ -3850,10 +3798,6 @@ msgstr "teleportavimas"
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:368
 #, fuzzy
-#| msgid ""
-#| "Teleport:\n"
-#| "This unit may teleport between any two empty villages owned by its side "
-#| "using one of its moves."
 msgid ""
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
@@ -3899,13 +3843,6 @@ msgstr "naktinis seklys"
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:435
 #, fuzzy
-#| msgid ""
-#| "Nightstalk:\n"
-#| "The unit becomes invisible during night.\n"
-#| "\n"
-#| "Enemy units cannot see this unit at night, except if they have units next "
-#| "to it. Any enemy unit that first discovers this unit immediately loses "
-#| "all its remaining movement."
 msgid ""
 "The unit becomes invisible during night.\n"
 "\n"
@@ -3938,15 +3875,6 @@ msgstr "slėpimasis"
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:454 data/core/macros/abilities.cfg:459
 #, fuzzy
-#| msgid ""
-#| "Concealment:\n"
-#| "This unit can hide in villages (with the exception of water villages), "
-#| "and remain undetected by its enemies, except by those standing next to "
-#| "it.\n"
-#| "\n"
-#| "Enemy units can not see this unit while it is in a village, except if "
-#| "they have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it.\n"
@@ -4004,9 +3932,6 @@ msgstr "maitinasi"
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:505
 #, fuzzy
-#| msgid ""
-#| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
-#| "living unit."
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
@@ -4022,11 +3947,6 @@ msgstr "+1 maks. GT"
 #. [berserk]: id=berserk
 #: data/core/macros/abilities.cfg:563
 #, fuzzy
-#| msgid ""
-#| "Berserk:\n"
-#| "Whether used offensively or defensively, this attack presses the "
-#| "engagement until one of the combatants is slain, or 30 rounds of attacks "
-#| "have occurred."
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
@@ -4070,11 +3990,6 @@ msgstr ""
 #. [plague]: id=plague, type=Walking Corpse
 #: data/core/macros/abilities.cfg:598
 #, fuzzy
-#| msgid ""
-#| "Plague:\n"
-#| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#| "Walking Corpse on the same side as the unit with the Plague attack. This "
-#| "doesn’t work on Undead or units in villages."
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
@@ -4093,12 +4008,6 @@ msgstr "sulėtina"
 #. [slow]: id=slow
 #: data/core/macros/abilities.cfg:609
 #, fuzzy
-#| msgid ""
-#| "Slow:\n"
-#| "This attack slows the target until it ends a turn. Slow halves the damage "
-#| "caused by attacks and the movement cost for a slowed unit is doubled. A "
-#| "unit that is slowed will feature a snail icon in its sidebar information "
-#| "when it is selected."
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
@@ -4119,10 +4028,6 @@ msgstr "paverčia akmeniu"
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:619
 #, fuzzy
-#| msgid ""
-#| "Petrify:\n"
-#| "This attack petrifies the target, turning it to stone. Units that have "
-#| "been petrified may not move or attack."
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
@@ -4139,10 +4044,6 @@ msgstr "snaiperis"
 #. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:629
 #, fuzzy
-#| msgid ""
-#| "Marksman:\n"
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
@@ -4152,10 +4053,6 @@ msgstr ""
 #. [chance_to_hit]: id=magical
 #: data/core/macros/abilities.cfg:642
 #, fuzzy
-#| msgid ""
-#| "Magical:\n"
-#| "This attack always has a 70% chance to hit regardless of the defensive "
-#| "ability of the unit being attacked."
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
@@ -4200,10 +4097,6 @@ msgstr "išsiurbia"
 #. [drains]: id=drains
 #: data/core/macros/abilities.cfg:677
 #, fuzzy
-#| msgid ""
-#| "Drain:\n"
-#| "This unit drains health from living units, healing itself for half the "
-#| "amount of damage it deals (rounded down)."
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
@@ -4215,17 +4108,12 @@ msgstr ""
 #. [firststrike]: id=firststrike
 #: data/core/macros/abilities.cfg:686
 #, fuzzy
-#| msgid "firststrike"
 msgid "first strike"
 msgstr "pirmenybė"
 
 #. [firststrike]: id=firststrike
 #: data/core/macros/abilities.cfg:687
 #, fuzzy
-#| msgid ""
-#| "First Strike:\n"
-#| "This unit always strikes first with this attack, even if they are "
-#| "defending."
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
@@ -4240,11 +4128,6 @@ msgstr "nuodai"
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:697
 #, fuzzy
-#| msgid ""
-#| "Poison:\n"
-#| "This attack poisons living targets. Poisoned units lose 8 HP every turn "
-#| "until they are cured or are reduced to 1 HP. Poison can not, of itself, "
-#| "kill a unit."
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison can not, of itself, kill "
@@ -5762,7 +5645,6 @@ msgstr ""
 
 #: src/help.cpp:1424
 #, fuzzy
-#| msgid "Factions:"
 msgid "Variations: "
 msgstr "Frakcijos:"
 
@@ -5901,21 +5783,3 @@ msgstr "Mūšio dėl Vesnoto pagalba"
 #: src/help.cpp:3340
 msgid "Parse error when parsing help text: "
 msgstr "Nagrinėjimo klaida nagrinėjant pagalbos tekstą: "
-
-#~ msgid ""
-#~ "Feeding:\n"
-#~ "This unit gains 1 hitpoint added to its maximum whenever it kills a "
-#~ "living unit."
-#~ msgstr ""
-#~ "Maitinasi:\n"
-#~ "Šis dalinys gauna 1 gyvybės tašką, pridedamą prie jo maksimalaus, kai jis "
-#~ "užmuša gyvą dalinį."
-
-#~ msgid ""
-#~ "Some weapons have special features that increase the effectiveness of "
-#~ "attacking with them.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Kai kurie ginklai turi ypatingų savybių, kurios padidina puolimo jais "
-#~ "efektyvumą.\n"
-#~ "\n"

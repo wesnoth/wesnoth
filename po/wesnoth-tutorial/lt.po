@@ -3,10 +3,10 @@
 #  Andrius Štikonas <stikonas@gmail.com>, 2007-2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.10\n"
+"Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-10-27 15:56+0200\n"
-"PO-Revision-Date: 2012-03-26 15:27+0300\n"
+"PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
 "Language: Lithuanian\n"
@@ -804,7 +804,7 @@ msgstr ""
 #. [set_menu_item]: id=skip_item
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1131
 msgid "End Scenario"
-msgstr ""
+msgstr "Baigti scenarijų"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1144
@@ -812,6 +812,8 @@ msgid ""
 "Do you want to keep practicing? You can end this scenario at any time by "
 "using the <b>End Scenario</b> item in the context menu."
 msgstr ""
+"Ar norite toliau praktikuotis? Bet kuriuo metu galite užbaigti šį scenarijų "
+"paspausdami <b>Baigti scenarijų</b> kontekstiniame meniu."
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1146
@@ -1403,25 +1405,17 @@ msgstr "Pulkite orką su lankininku"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:983
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "To review the capabilities of any unit—including an enemy—hover the mouse "
-#| "over it, and you will see a unit summary on the right of the screen"
 msgid ""
 "To review the capabilities of any unit—including an enemy—hover the mouse "
 "over it, and you will see a unit summary on the right of the screen"
 msgstr ""
-"\n"
 "Užvedę pelę virš bet kurio dalinio, įskaitant ir priešiškus, dešiniame "
 "ekrano krašte pamatysite dalinio suvestinę su jo sugebėjimais."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:983
-#, fuzzy
-#| msgid "<big>Unit Summaries</big>"
 msgid "Unit Summaries"
-msgstr "<big>Dalinių suvestinės</big>"
+msgstr "Dalinių suvestinės"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:991
@@ -1463,25 +1457,16 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1020
-#, fuzzy
-#| msgid "<big>Long-distance Movement</big>"
 msgid "Long-distance Movement"
-msgstr "<big>Judėjimas dideliais atstumais</big>"
+msgstr "Judėjimas dideliais atstumais"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1020
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "You can order a unit to move for multiple turns by selecting the unit and "
-#| "clicking on the destination. A number will indicate how many turns it "
-#| "will take to get there."
 msgid ""
 "You can order a unit to move for multiple turns by selecting the unit and "
 "clicking on the destination. A number will indicate how many turns it will "
 "take to get there."
 msgstr ""
-"\n"
 "Galima nurodyti daliniui judėti daugelį ėjimų, pasirenkant tą dalinį ir "
 "nurodant jo tikslą. Skaičiukas rodo kiek ėjimų jis užtruks, kol pasieks "
 "nurodytą tikslą."
@@ -1672,28 +1657,19 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1242
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "After this dialog, hold the mouse over the landscape image below the "
-#| "minimap on the right. This brings up a description of the time of day, "
-#| "showing who has the advantage."
 msgid ""
 "After this dialog, hold the mouse over the landscape image below the minimap "
 "on the right. This brings up a description of the time of day, showing who "
 "has the advantage."
 msgstr ""
-"\n"
 "Po šio pranešimo palaikykite pelę virš panoramos po mažuoju žemėlapiu "
 "dešinėje. Pasirodys paros meto aprašymas su paaiškinimu kieno pusėje "
 "pranašumas."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1242
-#, fuzzy
-#| msgid "<big>Time of Day</big>"
 msgid "Time of Day"
-msgstr "<big>Dienos laikas</big>"
+msgstr "Dienos laikas"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1249
@@ -1722,21 +1698,11 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1263
-#, fuzzy
-#| msgid "<big>Tracking Unused Units</big>"
 msgid "Tracking Unused Units"
-msgstr "<big>Nepanaudotų dalinių peržiūra</big>"
+msgstr "Nepanaudotų dalinių peržiūra"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1263
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "You can ensure you use all your troops by pressing <b>n</b> to step from "
-#| "one unit to the next. If you press <b>space</b>, you can mark the "
-#| "currently selected unit as having finished its turn, which stops you "
-#| "moving it by accident later on. When <b>n</b> no longer selects a new "
-#| "unit, it’s safe to end your turn."
 msgid ""
 "You can ensure you use all your troops by pressing <b>n</b> to step from one "
 "unit to the next. If you press <b>space</b>, you can mark the currently "
@@ -1744,7 +1710,6 @@ msgid ""
 "accident later on. When <b>n</b> no longer selects a new unit, it’s safe to "
 "end your turn."
 msgstr ""
-"\n"
 "Galite įsitikinti, kad panaudojote visus savo dalinius, spausdami klavišą "
 "<b>n</b>. Jis automatiškai parinks vis kitą dalinį. <b>Tarpo klavišas</b> "
 "reikš, kad šį ėjimą jau nebenorite su šiuo daliniu nieko daryti; taip "
@@ -1753,48 +1718,31 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1268
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "In this scenario, you only need to defeat the orc leader to win. (Victory "
-#| "conditions for a scenario are given under <b>Scenario Objectives</b> in "
-#| "the <b>Main Menu</b>)."
 msgid ""
 "In this scenario, you only need to defeat the orc leader to win. (Victory "
 "conditions for a scenario are given under <b>Scenario Objectives</b> in the "
 "<b>Main Menu</b>)."
 msgstr ""
-"\n"
 "Šiame scenarijuje jums tereikia nugalėti orkų vadą. (Laimėjimo sąlygas "
 "galima peržiūrėti paspaudus <b>Scenarijaus tikslą</b> pagrindiniame "
 "<b>Meniu</b>)."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1268
-#, fuzzy
-#| msgid "<big>Victory Conditions</big>"
 msgid "Victory Conditions"
-msgstr "<big>Pergalės sąlygos</big>"
+msgstr "Pergalės sąlygos"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1273
-#, fuzzy
-#| msgid "<big>Recruit the Right Unit Types</big>"
 msgid "Recruit the Right Unit Types"
-msgstr "<big>Tinkamų dalinių samdymas</big>"
+msgstr "Tinkamų dalinių samdymas"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1273
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Remember to recruit troops useful for the situation. Archers are "
-#| "particularly effective against Grunts, Wolf Riders and the orcish leader."
 msgid ""
 "Remember to recruit troops useful for the situation. Archers are "
 "particularly effective against Grunts, Wolf Riders and the orcish leader."
 msgstr ""
-"\n"
 "Atminkite, samdykite tik dalinius, naudingus esamoje situacijoje. "
 "Lankininkai ypač parankūs kovojant prieš pėstininkus, vilko jojikus ir orkų "
 "vadą."
@@ -1864,7 +1812,6 @@ msgstr ""
 "Pasiilgsime $deadguy.name|, nes ji turėjo $deadguy.experience patirties "
 "taškų. Jau greitai būtų pasiekusi antrą lygį."
 
-# ignore-interpolations: $deadguy.name
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1449
 msgid ""
@@ -1874,7 +1821,6 @@ msgstr ""
 "Pasiilgsime tavęs, bet tai bent jau ne kurio nors iš mūsų patyrusių karių "
 "mirtis!"
 
-# ignore-interpolations: $deadguy.name
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1452
 msgid ""
@@ -1893,25 +1839,16 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1468
-#, fuzzy
-#| msgid "<big>Tracking Enemy Movement</big>"
 msgid "Tracking Enemy Movement"
-msgstr "<big>Priešo stebėjimas</big>"
+msgstr "Priešo stebėjimas"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1468
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "You can see where an enemy can reach by moving the mouse over them. You "
-#| "can see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
-#| "command from the <b>Actions</b> menu."
 msgid ""
 "You can see where an enemy can reach by moving the mouse over them. You can "
 "see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
 "command from the <b>Actions</b> menu."
 msgstr ""
-"\n"
 "Palaikę pelę virš priešininko, galite pamatyti, kur jis pasiekia nueiti. "
 "Galima pamatyti iškart visų priešininkų pasiekiamą zoną, pasirinkus "
 "<b>Rodyti priešų ėjimus</b> iš <b>Veiksmų</b> meniu."
@@ -2058,6 +1995,3 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:24
 msgid "flail"
 msgstr "kovos spragilas"
-
-#~ msgid "Do you want to keep practicing?"
-#~ msgstr "Ar norėtumėte tęsti praktiką?"

@@ -3,10 +3,10 @@
 #  Andrius Štikonas <stikonas@gmail.com>, 2007-2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.10\n"
+"Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-10-27 15:56+0200\n"
-"PO-Revision-Date: 2012-01-09 20:07+0300\n"
+"PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
 "Language: Lithuanian\n"
@@ -38,10 +38,8 @@ msgstr "Laukelių atkarpa ŠV-PR"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:62
-#, fuzzy
-#| msgid "Hex Line NW-SE"
 msgid "Hex Line SE-NW"
-msgstr "Laukelių atkarpa ŠV-PR"
+msgstr "Laukelių atkarpa PR-ŠV"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:11
@@ -187,7 +185,7 @@ msgstr "Langas"
 #. [menu]: id=menu-editor-terrain
 #: data/themes/editor.cfg:439
 msgid "Group"
-msgstr ""
+msgstr "Grupė"
 
 #. [label]: id=villages-icon
 #: data/themes/editor.cfg:463
@@ -229,82 +227,80 @@ msgstr "Nerastas dienos-laiko redaktorius."
 #: src/editor/map/context_manager.cpp:101
 #: src/editor/map/context_manager.cpp:193
 msgid "(New Map)"
-msgstr "(Naujas žemėlapis)"
+msgstr ""
 
 #: src/editor/map/context_manager.cpp:162
 msgid "Choose a Map to Open"
-msgstr "Pasirinkite atveriamą žemėlapį"
+msgstr ""
 
 #: src/editor/map/context_manager.cpp:236
 msgid "Choose a Mask to Apply"
-msgstr "Pasirinkite kaukę, kurią pritaikysite"
+msgstr ""
 
 #: src/editor/map/context_manager.cpp:243
 msgid "Error loading mask"
-msgstr "Klaida, įkeliant kaukę"
+msgstr ""
 
 #: src/editor/map/context_manager.cpp:264
 msgid "Choose Target Map"
-msgstr "Pasirinkite žemėlapį"
+msgstr ""
 
 #: src/editor/map/context_manager.cpp:271
 #: src/editor/map/context_manager.cpp:635
 msgid "Error loading map"
-msgstr "Klaida, įkeliant žemėlapį"
+msgstr ""
 
 #: src/editor/map/context_manager.cpp:389
 msgid "Save the Map As"
-msgstr "Išsaugoti žemėlapį kaip"
+msgstr ""
 
 #: src/editor/map/context_manager.cpp:392
 msgid "The file already exists. Do you want to overwrite it?"
-msgstr "Failas jau egzistuoja. Ar norite jį perrašyti?"
+msgstr ""
 
 #: src/editor/map/context_manager.cpp:426
 msgid "No random map generators found."
-msgstr "Nerasta atsitiktinių žemėlapių generatorių."
+msgstr ""
 
 #: src/editor/map/context_manager.cpp:439
 #: src/editor/map/context_manager.cpp:443
 msgid "Map creation failed."
-msgstr "Žemėlapio sukūrimas nepavyko."
+msgstr ""
 
 #: src/editor/map/context_manager.cpp:455
 msgid "Unsaved Changes"
-msgstr "Neišsaugoti pakeitimai"
+msgstr ""
 
 #: src/editor/map/context_manager.cpp:456
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
-"Ar norite atsisakyti visų pakeitimų, kuriuos padarėte žemėlapyje po "
-"paskutinio išsaugojimo?"
+"Ar norite išmesti visus pakeitimus, darytus žemėlapiui nuo paskutinio "
+"išsaugojimo?"
 
 #: src/editor/map/context_manager.cpp:550
 #: src/editor/map/context_manager.cpp:591
 msgid "This map is already open."
-msgstr "Šis žemėlapis jau yra atvertas."
+msgstr ""
 
 #: src/editor/map/context_manager.cpp:571
 msgid "Map saved."
-msgstr "Žemėlapis išsaugotas."
+msgstr ""
 
 #: src/editor/map/context_manager.cpp:614
 msgid "Loaded embedded map data"
-msgstr "Įkelti integruoti žemėlapio duomenys"
+msgstr ""
 
 #: src/editor/map/context_manager.cpp:615
 #: src/editor/map/context_manager.cpp:629
 msgid "Map loaded from scenario"
-msgstr "Žemėlapis įkeltas iš scenarijaus"
+msgstr ""
 
 #: src/editor/map/context_manager.cpp:625
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
-"Užkrautas priklausomas žemėlapis:\n"
-"$new"
 
 #: src/editor/map/editor_map.cpp:150
 msgid "Player"
@@ -340,7 +336,7 @@ msgstr "Nepavyksta išsaugoti žemėlapio: $msg"
 
 #: src/editor/palette/editor_palettes.cpp:48
 msgid "(Unknown Group)"
-msgstr ""
+msgstr "(Nežinoma grupė)"
 
 #: src/editor/palette/editor_palettes.cpp:305
 msgid "(non-core)"
@@ -369,32 +365,3 @@ msgstr "Žaidėjas $player_number"
 #: src/gui/dialogs/editor_settings.cpp:166
 msgid "Custom setting"
 msgstr "Savas nustatymas"
-
-#~ msgid "Quit Editor"
-#~ msgstr "Išjungti redaktorių"
-
-#~ msgid "Undo"
-#~ msgstr "Atšaukti"
-
-#~ msgid "Can’t Undo"
-#~ msgstr "Negalima atšaukti"
-
-#~ msgid "Redo"
-#~ msgstr "Atstatyti"
-
-#~ msgid "Can’t Redo"
-#~ msgstr "Negalima pakartoti"
-
-#~ msgid "Auto-update Terrain Transitions: Yes"
-#~ msgstr "Automatiškai atnaujinti perėjimus tarp langelių: Taip"
-
-#~ msgid "Auto-update Terrain Transitions: Partial"
-#~ msgstr "Automatiškai atnaujinti perėjimus tarp langelių: Dalinai"
-
-#~ msgid "Auto-update Terrain Transitions: No"
-#~ msgstr "Automatiškai atnaujinti perėjimus tarp langelių: Ne"
-
-#, fuzzy
-#~| msgid "Empty map file"
-#~ msgid "Empty file"
-#~ msgstr "Tuščias žemėlapio failas"

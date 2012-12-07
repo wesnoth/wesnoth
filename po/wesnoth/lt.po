@@ -3,10 +3,10 @@
 #  Andrius Štikonas <stikonas@gmail.com>, 2007-2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.10\n"
+"Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-12-07 20:59+0100\n"
-"PO-Revision-Date: 2012-08-13 15:34+0300\n"
+"PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
 "Language: Lithuanian\n"
@@ -100,17 +100,17 @@ msgstr "Uždrausti pranešimus"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:106
 msgid "Reverse time graphics"
-msgstr "Apsukti laiko grafiką"
+msgstr ""
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:107
 msgid "Choose whether the sun moves left-to-right or right-to-left"
-msgstr "Pasirinkite, ar saulė juda iš kairės į dešinę, ar iš dešinės į kairę"
+msgstr ""
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:114
 msgid "Follow unit actions"
-msgstr "Sekti karių veiksmus"
+msgstr ""
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:115
@@ -159,7 +159,6 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:164
 #, fuzzy
-#| msgid "Compressed saves"
 msgid "Compress savegames using bzip2"
 msgstr "Suspausti išsaugojimai"
 
@@ -548,7 +547,6 @@ msgstr "Rusų vertimas"
 #. [about]
 #: data/core/about.cfg:2609
 #, fuzzy
-#| msgid "Galician Translation"
 msgid "Scottish Gaelic Translation"
 msgstr "Galisų vertimas"
 
@@ -584,8 +582,9 @@ msgstr "Turkų vertimas"
 
 #. [about]
 #: data/core/about.cfg:2829
+#, fuzzy
 msgid "Ukrainian Translation"
-msgstr "Ukrainiečių vertimas"
+msgstr "Rumunų vertimas"
 
 #. [about]
 #: data/core/about.cfg:2842
@@ -2590,6 +2589,8 @@ msgid ""
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
 "and spears."
 msgstr ""
+"Raitieji daliniai dažnai atsparesni ašmenims ir bukiems ginklams, bet "
+"pažeidžiami durtiniams, įskaitant lankus ir ietis."
 
 #. [tip]
 #: data/hardwired/tips.cfg:97
@@ -2604,6 +2605,9 @@ msgid ""
 "every level of the unit they kill, or four experience points for a zero-"
 "level opponent."
 msgstr ""
+"Geriausias būdas įgauti patirties – suduoti lemiamą smūgį. Priešą užmušęs "
+"dalinys gauna aštuonis patirties taškus už kiekvieną užmuštojo dalinio lygį, "
+"arba keturis taškus už nulinio lygio priešą."
 
 #. [tip]
 #: data/hardwired/tips.cfg:104
@@ -2711,6 +2715,7 @@ msgstr "<i>― Princesė Li’sar, 515VM</i>"
 #: data/hardwired/tips.cfg:144
 msgid "Read the <b>Hotkeys</b> list in the <b>Preferences</b> menu."
 msgstr ""
+"<b>Nustatymų</b> meniu galite susipažinti su <b>sparčiaisiais klavišais</b>."
 
 #. [tip]
 #: data/hardwired/tips.cfg:148
@@ -2807,6 +2812,9 @@ msgid ""
 "veteran to damage a joint target heavily enough for the junior partner to "
 "get in the killing blow."
 msgstr ""
+"Sparčiai patobulinsite savo pradedančiuosius dalinius, jeigu suporuosite "
+"juos su veteranais. Leiskite patyrusiam kariui aplamdyti bendrą priešą tiek, "
+"kad jaunajam partneriui pakaktų jėgų suduoti lemiamą smūgį."
 
 #. [tip]
 #: data/hardwired/tips.cfg:185
@@ -2900,6 +2908,9 @@ msgid ""
 "turns’ movement away from the fighting. Then it can recover in peace (at 10 "
 "hitpoints per turn) without tying up front-line villages."
 msgstr ""
+"Kai stiprus dalinys smarkiai sužeidžiamas, pasiųskite jį gydytis į kaimą už "
+"kelių ėjimų nuo mūšio. Taip jis galės atsigauti ramumoje (po 10 taškų per "
+"ėjimą) ir neužimti kaimų prie fronto."
 
 #. [tip]
 #: data/hardwired/tips.cfg:221 data/hardwired/tips.cfg:233
@@ -2922,6 +2933,10 @@ msgid ""
 "your units extra experience. When deciding whether or not to finish a "
 "scenario early, weigh these factors against one another."
 msgstr ""
+"Nors ankstyvas scenarijaus užbaigimas duoda aukso premiją ir sumažina priešų "
+"šansus užmušti jūsų vertingus dalinius, jis taip pat atima jums galimybę "
+"pelnyti patirties taškų. Kai sprendžiate, ar užbaigti scenarijų anksčiau "
+"laiko, pasverkite kas jums naudingiau."
 
 #. [tip]
 #: data/hardwired/tips.cfg:232
@@ -2940,6 +2955,9 @@ msgid ""
 "if they occupy a village hex, they do not gain any defensive benefits from "
 "the village, although they will still be healed."
 msgstr ""
+"<i>Laukiniai</i> daliniai, tokie kaip šikšnosparniai ar laukiniai gyvūnai, "
+"vengia kaimų. Net jeigu jie ir užima kaimo laukelį, jie negauna gynybinio "
+"privalumo, nors ir pagyja."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
@@ -3253,13 +3271,11 @@ msgstr "Nėra laisvų pilies laukelių, kuriuose galima samdyti dalinį."
 
 #: src/actions/heal.cpp:257
 msgid "cured"
-msgstr ""
+msgstr "pagydytas"
 
 #: src/actions/heal.cpp:257
-#, fuzzy
-#| msgid "female^slowed"
 msgid "female^cured"
-msgstr "sulėtinta"
+msgstr "pagydyta"
 
 #: src/actions/move.cpp:957
 msgid "Ambushed!"
@@ -3311,13 +3327,11 @@ msgstr "(paspauskite $hotkey ėjimo tęsimui)"
 
 #: src/addon/client.cpp:66
 #, fuzzy
-#| msgid "Connecting to Server..."
 msgid "Connecting to $server_address|..."
 msgstr "Jungiamasi prie serverio..."
 
 #: src/addon/client.cpp:78
 #, fuzzy
-#| msgid "Requesting list of add-ons"
 msgid "Downloading list of add-ons..."
 msgstr "Užklausiamas priedų sąrašas"
 
@@ -3328,26 +3342,21 @@ msgstr "Užklausiamas priedų sąrašas"
 
 #: src/addon/client.cpp:141
 #, fuzzy
-#| msgid "Downloading add-on: $addon_title|..."
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "Atsiunčiamas priedas: $addon_title|..."
 
 #: src/addon/client.cpp:175
 #, fuzzy
-#| msgid "Downloading add-on: $addon_title|..."
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "Atsiunčiamas priedas: $addon_title|..."
 
 #: src/addon/client.cpp:199
 #, fuzzy
-#| msgid "Downloading add-on: $addon_title|..."
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "Atsiunčiamas priedas: $addon_title|..."
 
 #: src/addon/client.cpp:213
 #, fuzzy
-#| msgid ""
-#| "The add-on has an invalid file or directory name and cannot be installed."
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
@@ -3355,7 +3364,6 @@ msgstr "Priedo failo arba aplanko vardas neteisingas ir negali būti įdiegtas."
 
 #: src/addon/client.cpp:301 src/addon/manager_ui.cpp:682
 #, fuzzy
-#| msgid "Add-on Installed"
 msgid "Add-ons Manager"
 msgstr "Priedas įdiegtas"
 
@@ -3389,7 +3397,6 @@ msgstr "DŽ kampanija"
 
 #: src/addon/info.cpp:163
 #, fuzzy
-#| msgid "addon_type^MP faction"
 msgid "addon_type^MP modification"
 msgstr "DŽ frakcija"
 
@@ -3410,18 +3417,14 @@ msgid "unit_byte^B"
 msgstr "B"
 
 #: src/addon/manager_ui.cpp:97
-#, fuzzy
-#| msgid "Add-on Installed"
 msgid "addon_state^Not installed"
-msgstr "Priedas įdiegtas"
+msgstr "Priedas neįdiegtas"
 
 #: src/addon/manager_ui.cpp:97
 msgid "addon_state^Published, not installed"
 msgstr ""
 
 #: src/addon/manager_ui.cpp:104
-#, fuzzy
-#| msgid "Add-on Installed"
 msgid "addon_state^Installed"
 msgstr "Priedas įdiegtas"
 
@@ -3454,19 +3457,11 @@ msgid "addon_state^Published, broken"
 msgstr ""
 
 #: src/addon/manager_ui.cpp:115
-#, fuzzy
-#| msgid "addon_type^(unknown)"
 msgid "addon_state^Unknown"
 msgstr "(nežinomas)"
 
 #: src/addon/manager_ui.cpp:148
 #, fuzzy
-#| msgid ""
-#| "The selected add-on has the following dependency. Do you want to install "
-#| "it?"
-#| msgid_plural ""
-#| "The selected add-on has the following dependencies. Do you want to "
-#| "install them?"
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -3480,7 +3475,6 @@ msgstr[3] "Pažymėtas priedas turi šias priklausomybes. Ar norite jas įdiegti
 
 #: src/addon/manager_ui.cpp:157
 #, fuzzy
-#| msgid "Install dependencies"
 msgid "Broken Dependencies"
 msgstr "Įdiegti priklausomybes"
 
@@ -3508,18 +3502,11 @@ msgstr "Tipas"
 
 #: src/addon/manager_ui.cpp:204
 #, fuzzy
-#| msgid "Install dependencies"
 msgid "Install Dependencies"
 msgstr "Įdiegti priklausomybes"
 
 #: src/addon/manager_ui.cpp:205
 #, fuzzy
-#| msgid ""
-#| "The selected add-on has the following dependency. Do you want to install "
-#| "it?"
-#| msgid_plural ""
-#| "The selected add-on has the following dependencies. Do you want to "
-#| "install them?"
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed. Do you wish to install it before continuing?"
@@ -3534,10 +3521,8 @@ msgstr[3] "Pažymėtas priedas turi šias priklausomybes. Ar norite jas įdiegti
 #: src/addon/manager_ui.cpp:241 src/addon/manager_ui.cpp:313
 #: src/addon/manager_ui.cpp:328 src/addon/manager_ui.cpp:333
 #: src/addon/manager_ui.cpp:815
-#, fuzzy
-#| msgid "The server responded with an error: \""
 msgid "The server responded with an error:"
-msgstr "Serveris atsakė su klaida: „"
+msgstr "Serveris atsakė su klaida:"
 
 #: src/addon/manager_ui.cpp:252
 msgid ""
@@ -3552,30 +3537,28 @@ msgstr[2] ""
 msgstr[3] ""
 
 #: src/addon/manager_ui.cpp:256
-#, fuzzy
-#| msgid "Installation failed"
 msgid "Dependencies Installation Failed"
-msgstr "Diegimas nepavyko"
+msgstr "Priklausomybių diegimas nepavyko"
 
 #: src/addon/manager_ui.cpp:279
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
 msgstr ""
+"Priedas „$addon|“ jau įdiegtas ir turi papildomos informacijos, kuri bus "
+"negrįžtamai prarasta, jeigu tęsite:"
 
 #: src/addon/manager_ui.cpp:283
 msgid "Publishing information file (.pbl)"
-msgstr ""
+msgstr "Viešinamos informacijos failas (.pbl)"
 
 #: src/addon/manager_ui.cpp:287
 msgid "Version control system (VCS) information"
-msgstr ""
+msgstr "Versijų kontrolės sistemos (VCS) informacija"
 
 #: src/addon/manager_ui.cpp:291
-#, fuzzy
-#| msgid "Do you want to continue?"
 msgid "Do you really wish to continue?"
-msgstr "Ar norite tęsti?"
+msgstr "Tikrai norite tęsti?"
 
 #: src/addon/manager_ui.cpp:293 src/addon/manager_ui.cpp:304
 #: src/addon/manager_ui.cpp:970 src/multiplayer.cpp:271
@@ -3598,14 +3581,10 @@ msgid "Terms"
 msgstr "Sąlygos"
 
 #: src/addon/manager_ui.cpp:515
-#, fuzzy
-#| msgid "New version"
 msgid "New Version"
 msgstr "Nauja versija"
 
 #: src/addon/manager_ui.cpp:515
-#, fuzzy
-#| msgid "Old version"
 msgid "Old Version"
 msgstr "Sena versija"
 
@@ -3614,16 +3593,12 @@ msgid "Downloads"
 msgstr "Atsisiuntimai"
 
 #: src/addon/manager_ui.cpp:642
-#, fuzzy
-#| msgid "Publish add-on: "
 msgid "Publish: $addon_title"
-msgstr "Publikuoti priedą: "
+msgstr "Publikuoti: $addon_title"
 
 #: src/addon/manager_ui.cpp:651
-#, fuzzy
-#| msgid "Delete add-on: "
 msgid "Delete: $addon_title"
-msgstr "Trinti priedą: "
+msgstr "Trinti: $addon_title"
 
 #: src/addon/manager_ui.cpp:678
 msgid "There are no add-ons available for download from this server."
@@ -3631,7 +3606,6 @@ msgstr "Nėra priedų, kuriuos galima parsisiųsti iš šio serverio."
 
 #: src/addon/manager_ui.cpp:679
 #, fuzzy
-#| msgid "There are no add-ons available for download from this server."
 msgid "There are no add-ons matching the specified criteria on this server."
 msgstr "Nėra priedų, kuriuos galima parsisiųsti iš šio serverio."
 
@@ -3645,8 +3619,6 @@ msgid "Description"
 msgstr "Aprašymas"
 
 #: src/addon/manager_ui.cpp:716
-#, fuzzy
-#| msgid "Update all"
 msgid "Update All"
 msgstr "Atnaujinti viską"
 
@@ -3659,63 +3631,45 @@ msgid "Add-on Installed"
 msgstr "Priedas įdiegtas"
 
 #: src/addon/manager_ui.cpp:829
-#, fuzzy
-#| msgid "Add-on Deleted"
-#| msgid_plural "Add-ons Deleted"
 msgid "Add-on Updated"
-msgstr "Priedas pašalintas"
+msgstr "Priedas atnaujintas"
 
 #: src/addon/manager_ui.cpp:830
 msgid "The add-on '$addon_title|' has been successfully installed."
 msgstr "Priedas „$addon_title|“ buvo sėkmingai įdiegtas."
 
 #: src/addon/manager_ui.cpp:830
-#, fuzzy
-#| msgid "The add-on '$addon_title|' has been successfully installed."
 msgid "The add-on '$addon_title|' has been successfully updated."
-msgstr "Priedas „$addon_title|“ buvo sėkmingai įdiegtas."
+msgstr "Priedas „$addon_title|“ sėkmingai įdiegtas."
 
 #: src/addon/manager_ui.cpp:835
 #, fuzzy
-#| msgid "Add-on Installed"
 msgid "Add-ons Installed"
 msgstr "Priedas įdiegtas"
 
 #: src/addon/manager_ui.cpp:835
 #, fuzzy
-#| msgid "Add-on Deleted"
-#| msgid_plural "Add-ons Deleted"
 msgid "Add-ons Updated"
 msgstr "Priedas pašalintas"
 
 #: src/addon/manager_ui.cpp:836
-#, fuzzy
-#| msgid "All add-ons updated successfully."
 msgid "All add-ons installed successfully."
-msgstr "Visi priedai sėkmingai atnaujinti."
+msgstr "Visi priedai sėkmingai įdiegti."
 
 #: src/addon/manager_ui.cpp:836
 msgid "All add-ons updated successfully."
 msgstr "Visi priedai sėkmingai atnaujinti."
 
 #: src/addon/manager_ui.cpp:840
-#, fuzzy
-#| msgid "Installation failed"
 msgid "Installation Failed"
 msgstr "Diegimas nepavyko"
 
 #: src/addon/manager_ui.cpp:840
-#, fuzzy
-#| msgid "Update failed"
 msgid "Update Failed"
 msgstr "Atnaujinimas nepavyko"
 
 #: src/addon/manager_ui.cpp:842
 #, fuzzy
-#| msgid ""
-#| "The following add-on could not be downloaded or updated successfully:"
-#| msgid_plural ""
-#| "The following add-ons could not be downloaded or updated successfully:"
 msgid "The following add-on could not be downloaded or installed successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or installed successfully:"
@@ -3729,10 +3683,8 @@ msgstr[3] ""
 "Šie priedai negalėjo būti automatiškai atsiųsti ar sėkmingai atnaujinti:"
 
 #: src/addon/manager_ui.cpp:884 src/addon/manager_ui.cpp:894
-#, fuzzy
-#| msgid "An error occurred while communicating with the server."
 msgid "An error occurred while downloading the add-ons list from the server."
-msgstr "Įvyko klaida, bendraujant su serveriu."
+msgstr "Įvyko klaida, siunčiant priedų sąrašą iš serverio."
 
 #: src/addon/manager_ui.cpp:912
 msgid "Network communication error."
@@ -3750,7 +3702,7 @@ msgstr "Įvyko klaida bandant sukurti failus, reikalingus įdiegti šį priedą.
 
 #: src/addon/manager_ui.cpp:927
 msgid "The add-ons server address specified is not valid."
-msgstr ""
+msgstr "Nurodytas neteisingas priedų serverio adresas."
 
 #: src/addon/manager_ui.cpp:941
 msgid "You have no add-ons installed."
@@ -3965,17 +3917,15 @@ msgstr "Atšaukti nurodymus"
 
 #: src/dialogs.cpp:620
 msgid "Cancel any pending unit movements in the saved game"
-msgstr ""
+msgstr "Atšaukti nebaigtus dalinių keliavimus išsaugotame žaidime"
 
 #: src/dialogs.cpp:624
-#, fuzzy
-#| msgid "Difficulty: "
 msgid "Change difficulty"
-msgstr "Sunkumas: "
+msgstr "Pakeisti sudėtingumą"
 
 #: src/dialogs.cpp:626
 msgid "Change campaign difficulty before loading"
-msgstr ""
+msgstr "Prieš kraunant pakeisti kampanijos sudėtingumą"
 
 #: src/dialogs.cpp:633
 msgid "Delete Save"
@@ -4293,9 +4243,9 @@ msgstr "Ar tikrai norite atleisti jį?"
 #. TRANSLATORS: this string ends with a space
 #: src/menu_events.cpp:104
 #, fuzzy
-#| msgid "My lord, this unit is loyal and requires no upkeep! "
+#| msgid "This unit is loyal and requires no upkeep."
 msgid "This unit is loyal and requires no upkeep. "
-msgstr "Mano valdove, šis dalinys yra ištikimas ir nereikalauja išlaikymo!"
+msgstr "Šis dalinys yra ištikimas ir nereikalauja išlaikymo."
 
 #: src/menu_events.cpp:105 src/menu_events.cpp:109 src/menu_events.cpp:114
 msgid "Do you really want to dismiss her?"
@@ -4304,16 +4254,16 @@ msgstr "Ar tikrai norite atleisti ją?"
 #. TRANSLATORS: this string ends with a space
 #: src/menu_events.cpp:108
 #, fuzzy
-#| msgid "My lord, this unit is an experienced one, having advanced levels! "
+#| msgid "This unit is an experienced one, having advanced levels."
 msgid "This unit is an experienced one, having advanced levels. "
-msgstr "Pone, tai yra patyręs dalinys, turintis paaukštinimų!"
+msgstr "Tai patyręs dalinys, turintis paaukštinimų."
 
 #. TRANSLATORS: this string ends with a space
 #: src/menu_events.cpp:113
 #, fuzzy
-#| msgid "My lord, this unit is close to advancing a level! "
+#| msgid "This unit is close to advancing a level."
 msgid "This unit is close to advancing a level. "
-msgstr "Pone, šis dalinys tuoj gali pasikelti lygį!"
+msgstr "Šis dalinys tuoj gali pasikelti lygį."
 
 #: src/menu_events.cpp:118 src/menu_events.cpp:1003
 msgid "Dismiss Unit"
@@ -4418,9 +4368,6 @@ msgstr ""
 
 #: src/menu_events.cpp:518
 #, fuzzy
-#| msgid ""
-#| "scenario settings^Gold Per\n"
-#| "Village"
 msgid ""
 "scenario settings^Support Per\n"
 "Village"
@@ -4578,6 +4525,8 @@ msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
 msgstr ""
+"Nežinoma komanda „$command“, pabandykite pažiūrėti komandų sąrašą "
+"$help_command."
 
 #: src/menu_events.cpp:1850
 msgid ""
@@ -4609,7 +4558,7 @@ msgstr "pagalba"
 
 #: src/menu_events.cpp:1951
 msgid "Type $help_command <command> for more info."
-msgstr "Norėdami daugiau informacijos, surinkite $help_command <paliepimas>"
+msgstr "Norėdami daugiau informacijos, surinkite $help_command <komanda>"
 
 #: src/menu_events.cpp:1962
 msgid " No help available."
@@ -5222,36 +5171,32 @@ msgid "Choose weapon:"
 msgstr "Pasirinkite ginklą:"
 
 #: src/mp_depcheck.cpp:468
-#, fuzzy
-#| msgid "Install dependencies"
 msgid "Failed to resolve dependencies"
-msgstr "Įdiegti priklausomybes"
+msgstr "Nepavyko išspręsti priklausomybių"
 
 #: src/mp_depcheck.cpp:494
 msgid "Scenario can't be activated. Some dependencies are missing: "
-msgstr ""
+msgstr "Neišeina aktyvuoti scenarijaus. Trūksta kai kurių priklausomybių: "
 
 #: src/mp_depcheck.cpp:550 src/mp_depcheck.cpp:673
-#, fuzzy
-#| msgid "No eras found."
 msgid "No compatible eras found."
-msgstr "Nerasta erų."
+msgstr "Nerasta suderinamų erų."
 
 #: src/mp_depcheck.cpp:566
 msgid "Era can't be activated. Some dependencies are missing: "
-msgstr ""
+msgstr "Neišeina aktyvuoti eros. Trūksta kai kurių priklausomybių: "
 
 #: src/mp_depcheck.cpp:619 src/mp_depcheck.cpp:710
-#, fuzzy
-#| msgid "No multiplayer sides found"
 msgid "No compatible scenarios found."
-msgstr "Nerasta daugelio žaidėjų pusių"
+msgstr "Nerasta suderinamų scenarijų."
 
 #: src/mp_depcheck.cpp:648
 msgid ""
 "Not all of the chosen modifications are compatible. Some of them will be "
 "disabled."
 msgstr ""
+"Ne visos pasirinktos modifikacijos suderinamos tarpusavyje. Kai kurios bus "
+"išjungtos."
 
 #: src/mp_options.cpp:199
 msgid ""
@@ -5261,7 +5206,7 @@ msgstr ""
 
 #: src/mp_options.cpp:220
 msgid "Restore defaults"
-msgstr ""
+msgstr "Atkurti numatytas reikšmes"
 
 #: src/multiplayer.cpp:150 src/multiplayer.cpp:193
 msgid "Connecting to Server..."
@@ -5273,9 +5218,6 @@ msgstr "Skaitoma iš serverio..."
 
 #: src/multiplayer.cpp:176
 #, fuzzy
-#| msgid ""
-#| "The server requires version '$version1' while you are using version "
-#| "'$version2'"
 msgid ""
 "The server accepts versions '$version1' while you are using version "
 "'$version2'"
@@ -5367,7 +5309,7 @@ msgstr "Jūsų pateiktas slaptažodis buvo neteisingas."
 
 #: src/multiplayer.cpp:369
 msgid "You have made too many login attempts."
-msgstr ""
+msgstr "Per daug kartų bandėte jungtis."
 
 #: src/multiplayer_connect.cpp:101 src/multiplayer_connect.cpp:450
 #: src/multiplayer_connect.cpp:598
@@ -5538,8 +5480,6 @@ msgid "Shuffle sides"
 msgstr ""
 
 #: src/multiplayer_create.cpp:100
-#, fuzzy
-#| msgid "Settings..."
 msgid "Options..."
 msgstr "Nustatymai..."
 
@@ -5593,7 +5533,6 @@ msgstr "Pajamų kiekis, kurį duoda kiekvienas kaimas per ėjimą"
 
 #: src/multiplayer_create.cpp:227
 #, fuzzy
-#| msgid "The maximum number of turns the game can last"
 msgid "The number of unit levels each village can support"
 msgstr "Maksimalus ėjimų skaičius, kurį gali tęstis žaidimas"
 
@@ -5624,7 +5563,7 @@ msgstr "Leisti naudotojams, kurie nežaidžia, stebėti žaidimą"
 
 #: src/multiplayer_create.cpp:251
 msgid "Assign sides to players at random"
-msgstr ""
+msgstr "Atsitiktinai paskirti žaidėjams puses"
 
 #: src/multiplayer_create.cpp:255
 msgid "Share View"
@@ -5699,7 +5638,6 @@ msgstr "Kaimų auksas: "
 
 #: src/multiplayer_create.cpp:515
 #, fuzzy
-#| msgid "Village gold: "
 msgid "Village support: "
 msgstr "Kaimų auksas: "
 
@@ -5912,16 +5850,12 @@ msgid "Auto-Save"
 msgstr "Autoišsaugojimas"
 
 #: src/play_controller.cpp:1137
-#, fuzzy
-#| msgid "Back to turn "
 msgid "Back to Turn "
 msgstr "Atgal į ėjimą "
 
 #: src/play_controller.cpp:1148
-#, fuzzy
-#| msgid "Back to turn "
 msgid "Back to Start"
-msgstr "Atgal į ėjimą "
+msgstr "Atgal į pradžią"
 
 #: src/play_controller.cpp:1410
 msgid ""
@@ -6260,7 +6194,6 @@ msgstr "Bazinė žala: "
 
 #: src/reports.cpp:617 src/reports.cpp:651 src/reports.cpp:661
 #, fuzzy
-#| msgid "Weapon special: "
 msgid "With specials: "
 msgstr "Ginklų ypatybės: "
 
@@ -6282,7 +6215,6 @@ msgstr "Atakos: "
 
 #: src/reports.cpp:636
 #, fuzzy
-#| msgid "Turn bonus: "
 msgid "Max swarm bonus: "
 msgstr "Ėjimo premija: "
 
@@ -6297,7 +6229,6 @@ msgstr "Bazinės atakos:"
 
 #: src/reports.cpp:644
 #, fuzzy
-#| msgid "Weapon special: "
 msgid "Specials: "
 msgstr "Ginklų ypatybės: "
 
@@ -6334,9 +6265,8 @@ msgid "None"
 msgstr "Nėra"
 
 #: src/reports.cpp:1002
-#, fuzzy
 msgid "Lawful units: "
-msgstr "Šviesos daliniai:"
+msgstr "Šviesos daliniai: "
 
 #: src/reports.cpp:1003
 msgid "Neutral units: "
@@ -6366,7 +6296,6 @@ msgstr ""
 
 #: src/savegame.cpp:675
 #, fuzzy
-#| msgid "This save is from a version too old to be loaded."
 msgid ""
 "This save is from an old, unsupported version ($version_number|) and cannot "
 "be loaded."
@@ -6374,9 +6303,6 @@ msgstr "Išsaugojimas yra iš per senos versijos, kad būtų įkeltas."
 
 #: src/savegame.cpp:684
 #, fuzzy
-#| msgid ""
-#| "This save is from a different version of the game. Do you want to try to "
-#| "load it?"
 msgid ""
 "This save is from a different version of the game ($version_number|). Do you "
 "wish to try to load it?"
@@ -6401,7 +6327,6 @@ msgstr "Perrašyti?"
 
 #: src/savegame.cpp:901
 #, fuzzy
-#| msgid "Save names should not end on '.gz'. Please choose a different name."
 msgid ""
 "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
 msgstr ""
@@ -6444,7 +6369,6 @@ msgstr "Netikėti simboliai eilutės pradžioje"
 
 #: src/serialization/parser.cpp:146
 #, fuzzy
-#| msgid "Missing closing tag for tag $tag at $pos"
 msgid "Missing closing tag for tag [$tag] at $pos"
 msgstr "Trūksta uždarančiojo elemento elementui $tag esančiam $pos"
 
@@ -6474,7 +6398,6 @@ msgstr "Netikėtas uždarantysis elementas"
 
 #: src/serialization/parser.cpp:209
 #, fuzzy
-#| msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
 msgid "Found invalid closing tag [/$tag2] for tag [$tag1] (opened at $pos)"
 msgstr ""
 "Rastas negaliojantis uždarymo elementas $tag2 elementui $tag1 (atidaryta "
@@ -6599,19 +6522,16 @@ msgstr "Detalės"
 
 #: src/statistics_dialog.cpp:170
 #, fuzzy
-#| msgid "Test scenario"
 msgid "Select Scenario"
 msgstr "Testinis scenarijus"
 
 #: src/statistics_dialog.cpp:226 src/statistics_dialog.cpp:304
 #, fuzzy
-#| msgid "Campaign Design"
 msgid "Campaign"
 msgstr "Kampanijų kūrimas"
 
 #: src/statistics_dialog.cpp:226 src/statistics_dialog.cpp:304
 #, fuzzy
-#| msgid "End Scenario"
 msgid "Scenario"
 msgstr "Baigti scenarijų"
 
@@ -6672,9 +6592,8 @@ msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
 #: src/unit.cpp:2584
-#, fuzzy
 msgid "moves"
-msgstr "Žingsniai"
+msgstr "ėjimai"
 
 #: src/unit.cpp:2614 src/unit.cpp:2783
 msgid "XP to advance"
@@ -6723,7 +6642,6 @@ msgid "chaotic"
 msgstr "chaotiškas"
 
 #: src/unit_types.cpp:1041
-#, fuzzy
 msgid "lawful"
 msgstr "šviesos"
 
@@ -6740,9 +6658,8 @@ msgid "female^chaotic"
 msgstr "chaotiška"
 
 #: src/unit_types.cpp:1042
-#, fuzzy
 msgid "female^lawful"
-msgstr "šviesos"
+msgstr "šviesi"
 
 #: src/unit_types.cpp:1042
 #, fuzzy
@@ -6773,142 +6690,5 @@ msgstr "Slėpti žaidėjo $player planus"
 msgid "Whiteboard Options"
 msgstr ""
 
-#, fuzzy
-#~| msgid "invisible: "
-#~ msgid "invisible"
-#~ msgstr "nematomas: "
-
-#, fuzzy
-#~| msgid "female^slowed"
-#~ msgid "female^invisible"
-#~ msgstr "sulėtinta"
-
-#, fuzzy
-#~| msgid "Fire a game event."
-#~ msgid "I triggered a moveto event."
-#~ msgstr "Iškviesti žaidimo įvykį."
-
-#, fuzzy
-#~| msgid "Password: "
-#~ msgid "sword"
-#~ msgstr "Slaptažodis: "
-
-#, fuzzy
-#~| msgid "Version: "
-#~ msgid "Vision Test"
-#~ msgstr "Versija: "
-
-#, fuzzy
-#~| msgid "invisible: "
-#~ msgid "It is invisible!"
-#~ msgstr "nematomas: "
-
-#, fuzzy
-#~| msgid "Choose weapon:"
-#~ msgid "Choose a Map to Open"
-#~ msgstr "Pasirinkite ginklą:"
-
-#, fuzzy
-#~| msgid "Choose the game to load"
-#~ msgid "Choose a Mask to Apply"
-#~ msgstr "Pasirinkite žaidimą, kurį įkelsite"
-
-#, fuzzy
-#~| msgid "Choose weapon:"
-#~ msgid "Choose Target Map"
-#~ msgstr "Pasirinkite ginklą:"
-
-#, fuzzy
-#~| msgid "The map already exists. Do you want to overwrite it?"
-#~ msgid "The file already exists. Do you want to overwrite it?"
-#~ msgstr "Žemėlapis jau egzistuoja. Ar norite jį perrašyti?"
-
-#, fuzzy
-#~| msgid "No era information found."
-#~ msgid "No random map generators found."
-#~ msgstr "Nerasta eros informacijos."
-
-#, fuzzy
-#~| msgid "Installation failed"
-#~ msgid "Map creation failed."
-#~ msgstr "Diegimas nepavyko"
-
-#, fuzzy
-#~| msgid "The map is invalid."
-#~ msgid "This map is already open."
-#~ msgstr "Žemėlapis yra sugadintas."
-
-#, fuzzy
-#~| msgid "Next Side"
-#~ msgid "(New Side)"
-#~ msgstr "Kita pusė"
-
-#~ msgid "The server responded with an error: \"$error|\""
-#~ msgstr "Serveris atsakė su klaida: „$error|“"
-
-#~ msgid "Sending add-on"
-#~ msgstr "Siunčiamas priedas"
-
-#, fuzzy
-#~ msgid "Requesting the addon to be deleted"
-#~ msgstr "Užklausiamas priedų sąrašas"
-
-#~ msgid "Downloading..."
-#~ msgstr "Atsisiunčiama..."
-
-#~ msgid "Installation of a dependency failed"
-#~ msgstr "Priklausomybės diegimas nepavyko"
-
-#~ msgid ""
-#~ "While the add-on has been installed, a dependency is missing. Try to "
-#~ "update the installed add-ons."
-#~ msgstr ""
-#~ "Nors priedas buvo įdiegtas, jam trūksta priklausomybės. Pabandykite "
-#~ "atnaujinti įdiegtus priedus."
-
-#~ msgid "Outdated add-ons"
-#~ msgstr "Pasenę priedai"
-
-#~ msgid "No add-ons to update"
-#~ msgstr "Nėra atnaujintinų priedų"
-
-#~ msgid "Could not find any updated add-ons on this server."
-#~ msgstr "Serveryje nepavyko rasti nė vieno atnaujinto priedo."
-
-#~ msgid "Update add-ons"
-#~ msgstr "Atnaujinti priedus"
-
-#~ msgid "Select an add-on to update:"
-#~ msgstr "Pasirinkite priedą atnaujinimui:"
-
-#~ msgid "Installation of some dependency failed"
-#~ msgstr "Kai kurių priklausomybių įdiegimas nepavyko"
-
-#~ msgid "Update succeeded"
-#~ msgstr "Sėkmingai atnaujinta"
-
-#~ msgid "Add-on updated successfully."
-#~ msgstr "Priedas sėkmingai atnaujintas."
-
-#~ msgid "Connecting..."
-#~ msgstr "Jungiamasi..."
-
-#~ msgid "Get add-ons"
-#~ msgstr "Gauti priedų"
-
-#~ msgid "Choose the add-on to download."
-#~ msgstr "Pasirinkite priedą atsiuntimui."
-
-#~ msgid "Do you really want to start the server?"
-#~ msgstr "Ar tikrai norite paleisti serverį?"
-
-#~ msgid ""
-#~ "The server will run in a background process until all users have "
-#~ "disconnected."
-#~ msgstr "Serveris veiks fono procese, kol visi naudotojai neatsijungs."
-
-#~ msgid "Don’t show again"
-#~ msgstr "Daugiau neberodyti"
-
-#~ msgid "A map without a header is not supported"
-#~ msgstr "Žemėlapis be antraštės nepalaikomas"
+#~ msgid "A component"
+#~ msgstr "Komponentas"

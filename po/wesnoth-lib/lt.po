@@ -3,10 +3,10 @@
 #  Andrius Štikonas <stikonas@gmail.com>, 2007-2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.10\n"
+"Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-12-07 20:59+0100\n"
-"PO-Revision-Date: 2012-08-13 15:35+0300\n"
+"PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
 "Language: Lithuanian\n"
@@ -259,10 +259,8 @@ msgstr "Vėjo malūnas"
 
 #. [terrain_type]: id=campfire
 #: data/core/terrain.cfg:409
-#, fuzzy
-#| msgid "Campaign"
 msgid "Campfire"
-msgstr "Kampanija"
+msgstr "Laužas"
 
 #. [terrain_type]: id=fence
 #: data/core/terrain.cfg:418
@@ -337,17 +335,15 @@ msgstr "Pušų miškas"
 
 #. [terrain_type]: id=palm_desert_forest
 #: data/core/terrain.cfg:509
-#, fuzzy
-#| msgid "Pine Forest"
 msgid "Palm Forest"
-msgstr "Pušų miškas"
+msgstr "Palmių giraitė"
 
 #. [terrain_type]: id=palm_forest
 #: data/core/terrain.cfg:521
 #, fuzzy
-#| msgid "Pine Forest"
+#| msgid "Palm Forest"
 msgid "Dense Palm Forest"
-msgstr "Pušų miškas"
+msgstr "Palmių giraitė"
 
 #. [terrain_type]: id=savanna_forest
 #: data/core/terrain.cfg:533
@@ -527,31 +523,27 @@ msgstr "Apsnigtos mišrių miškų kalvos"
 
 #. [terrain_type]: id=forest_tropical_hills
 #: data/core/terrain.cfg:856
-#, fuzzy
-#| msgid "Tropical Forest"
 msgid "Tropical Forested Hills"
-msgstr "Tropinis miškas"
+msgstr "Tropinių miškų kalvos"
 
 #. [terrain_type]: id=forest_palm_desert_hills
 #: data/core/terrain.cfg:867
-#, fuzzy
-#| msgid "Forested Hills"
 msgid "Palm Forested Hills"
-msgstr "Miškingos kalvos"
+msgstr "Palmėmis apaugusios kalvos"
 
 #. [terrain_type]: id=forest_palm_hills
 #: data/core/terrain.cfg:878
 #, fuzzy
-#| msgid "Forested Hills"
+#| msgid "Palm Forested Hills"
 msgid "Dense Palm Forested Hills"
-msgstr "Miškingos kalvos"
+msgstr "Palmėmis apaugusios kalvos"
 
 #. [terrain_type]: id=savanna_hills
 #: data/core/terrain.cfg:889
 #, fuzzy
-#| msgid "Forested Hills"
+#| msgid "Palm Forested Hills"
 msgid "Savanna Forested Hills"
-msgstr "Miškingos kalvos"
+msgstr "Palmėmis apaugusios kalvos"
 
 #. [terrain_type]
 #: data/core/terrain.cfg:901
@@ -787,9 +779,8 @@ msgstr "Kaimas"
 
 #. [terrain_type]: id=desert_village
 #: data/core/terrain.cfg:1246
-#, fuzzy
 msgid "Adobe Village"
-msgstr "Kaimas"
+msgstr "Plūkto molio kaimas"
 
 #. [terrain_type]: id=desert_village_tent
 #: data/core/terrain.cfg:1259
@@ -844,7 +835,6 @@ msgstr "Žmonių miestas"
 
 #. [terrain_type]: id=windmill_village
 #: data/core/terrain.cfg:1395
-#, fuzzy
 msgid "Windmill Village"
 msgstr "Vėjo malūnas"
 
@@ -1192,10 +1182,8 @@ msgstr "Tiltas"
 #. [terrain_type]: id=hangingbridgediag2
 #: data/core/terrain.cfg:2159 data/core/terrain.cfg:2170
 #: data/core/terrain.cfg:2181
-#, fuzzy
-#| msgid "Rotting Bridge"
 msgid "Hanging Bridge"
-msgstr "Pūvantis tiltas"
+msgstr "Kabantis tiltas"
 
 #. [terrain_type]: id=stonechasmbridge
 #. [terrain_type]: id=stonechasmbridgediag1
@@ -1212,7 +1200,6 @@ msgstr "Tiltas"
 #: data/core/terrain.cfg:2227 data/core/terrain.cfg:2237
 #: data/core/terrain.cfg:2247
 #, fuzzy
-#| msgid "Bridge"
 msgid "Plank Bridge"
 msgstr "Tiltas"
 
@@ -1351,10 +1338,8 @@ msgstr "Atšaukti"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:88
-#, fuzzy
-#| msgid "Type"
 msgid "Type:"
-msgstr "Tipas"
+msgstr "Tipas:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:120
@@ -1368,10 +1353,8 @@ msgstr "Versija:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:180
-#, fuzzy
-#| msgid "Status"
 msgid "Status:"
-msgstr "Būsena"
+msgstr "Būsena:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:212
@@ -1461,7 +1444,6 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:156
 #, fuzzy
-#| msgid "Multiplayer Options"
 msgid "Filter Options"
 msgstr "Daugelio žaidėjų nustatymai"
 
@@ -1472,17 +1454,13 @@ msgstr ""
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:197
-#, fuzzy
-#| msgid "Add-ons"
 msgid "Add-on types:"
-msgstr "Priedai"
+msgstr "Priedų tipai:"
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:209
-#, fuzzy
-#| msgid "Translations:"
 msgid "Installation status:"
-msgstr "Vertimai:"
+msgstr "Diegimo būklė:"
 
 #. [label]
 #: data/gui/default/window/addon_uninstall_list.cfg:51
@@ -1505,8 +1483,6 @@ msgstr "Pašalinti"
 
 #. [label]
 #: data/gui/default/window/campaign_dialog.cfg:55
-#, fuzzy
-#| msgid "Play a campaign"
 msgid "Play a Campaign"
 msgstr "Žaisti kampaniją"
 
@@ -1637,7 +1613,6 @@ msgstr ""
 #. [label]: id=title
 #: data/gui/default/window/edit_label.cfg:42
 #: data/gui/default/window/editor_edit_label.cfg:42
-#, fuzzy
 msgid "Place Label"
 msgstr "Nustatyti žymę"
 
@@ -1655,7 +1630,6 @@ msgstr "Tik komandai"
 #. [toggle_button]: id=immutable_toggle
 #: data/gui/default/window/editor_edit_label.cfg:112
 #, fuzzy
-#| msgid "Impassable"
 msgid "Immutable"
 msgstr "Nepereinama"
 
@@ -1711,10 +1685,8 @@ msgstr "Aukštis:"
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_new_map.cfg:115
-#, fuzzy
-#| msgid "Create Game"
 msgid "Create"
-msgstr "Sukurti žaidimą"
+msgstr "Sukurti"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -1744,10 +1716,8 @@ msgstr "Senas aukštis:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:154
-#, fuzzy
-#| msgid "Expand / shrink direction"
 msgid "Expand/shrink direction:"
-msgstr "Išplėtimo / suspaudimo kryptis"
+msgstr "Išplėtimo/suspaudimo kryptis:"
 
 #. [toggle_button]: id=copy_edge_terrain
 #: data/gui/default/window/editor_resize_map.cfg:253
@@ -1756,8 +1726,6 @@ msgstr ""
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_resize_map.cfg:274
-#, fuzzy
-#| msgid "Resize Map"
 msgid "Resize"
 msgstr "Keisti žemėlapio dydį"
 
@@ -1909,10 +1877,8 @@ msgstr "Ar tikrai norite ištrinti šį žaidimą?"
 #. [toggle_button]: id=dont_ask_again
 #: data/gui/default/window/game_delete.cfg:80
 #: data/gui/default/window/mp_host_game_prompt.cfg:79
-#, fuzzy
-#| msgid "Do not show lobby joins"
 msgid "Do not show again"
-msgstr "Nerodyti prisijungimų prie vestibiulio"
+msgstr "Daugiau neberodyti"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -1957,10 +1923,8 @@ msgstr "Trinti"
 
 #. [toggle_button]: id=change_difficulty
 #: data/gui/default/window/game_load.cfg:383
-#, fuzzy
-#| msgid "Difficulty"
 msgid "Change difficulty"
-msgstr "Sudėtingumas"
+msgstr "Keisti Sudėtingumą"
 
 #. [toggle_button]: id=change_difficulty
 #: data/gui/default/window/game_load.cfg:384
@@ -2435,7 +2399,6 @@ msgstr "Atsitiktinis pradžios laikas"
 #. [label]
 #: data/gui/default/window/mp_create_game_choose_mods.cfg:54
 #, fuzzy
-#| msgid "Choose Resolution"
 msgid "Choose Modifications"
 msgstr "Pasirinkite raišką"
 
@@ -2473,7 +2436,6 @@ msgstr ""
 #: data/gui/default/window/mp_depcheck_select_new.cfg:40
 #: data/gui/default/window/mp_depcheck_select_new.cfg:59
 #, fuzzy
-#| msgid "User interface sounds"
 msgid "User interaction required"
 msgstr "Naudotojo sąsajos garsai"
 
@@ -2872,7 +2834,7 @@ msgstr "Tema"
 
 #: src/game_preferences_display.cpp:203
 msgid "Hotkeys"
-msgstr ""
+msgstr "Spartieji klavišai"
 
 #: src/game_preferences_display.cpp:205
 msgid "Sound effects"
@@ -3034,7 +2996,6 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:371
 #, fuzzy
-#| msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgid ""
 "Deletes previous auto-saves on victory in all modes and defeat in multiplayer"
 msgstr "Ištrinti autoišsaugojimus laimėjus VŽ/DŽ arba pralaimėjus DŽ"
@@ -3048,16 +3009,12 @@ msgid "Sort the player list in the lobby by player groups"
 msgstr ""
 
 #: src/game_preferences_display.cpp:379
-#, fuzzy
-#| msgid "Show icons in front of the player names in the lobby."
 msgid "Show icons in front of the player names in the lobby"
-msgstr "Rodyti ženkliukus prieš žaidėjų vardus vestibiulyje."
+msgstr "Rodyti ženkliukus prieš žaidėjų vardus vestibiulyje"
 
 #: src/game_preferences_display.cpp:382
-#, fuzzy
-#| msgid "Uncheck to delete the saved password (on exit)."
 msgid "Uncheck to delete the saved password (on exit)"
-msgstr "Nužymėkite, kad ištrintumėte išsaugotą slaptažodį (išsijungiant)."
+msgstr "Nužymėkite, kad ištrintumėte išsaugotą slaptažodį (išsijungiant)"
 
 #: src/game_preferences_display.cpp:386
 msgid "Do not show messages about players joining the multiplayer lobby"
@@ -3353,7 +3310,7 @@ msgstr ""
 
 #: src/gui/dialogs/addon/description.cpp:57
 msgid "addon_state^Installed"
-msgstr ""
+msgstr "Įdiegtas"
 
 #: src/gui/dialogs/addon/description.cpp:59
 msgid "addon_state^Published"
@@ -3408,10 +3365,8 @@ msgid "addons_view^Installed"
 msgstr ""
 
 #: src/gui/dialogs/addon/filter_options.cpp:115
-#, fuzzy
-#| msgid "Uninstall Add-ons"
 msgid "addons_view^All Add-ons"
-msgstr "Trinti priedus"
+msgstr "Visi priedai"
 
 #: src/gui/dialogs/addon_list.cpp:256
 #: src/gui/dialogs/network_transmission.cpp:54
@@ -3457,7 +3412,7 @@ msgstr ""
 
 #: src/gui/dialogs/lobby_main.cpp:662
 msgid "Games: showing $num_shown out of $num_total"
-msgstr "Žaidimai: rodoma $num_shown iš $num_total"
+msgstr ""
 
 #: src/gui/dialogs/lobby_main.cpp:705
 msgid "Observers allowed"
@@ -3587,7 +3542,6 @@ msgstr ""
 
 #: src/hotkey_preferences_display.cpp:170
 #, fuzzy
-#| msgid "Default"
 msgid "Reset Defaults"
 msgstr "Numatyta"
 
@@ -3596,22 +3550,16 @@ msgid "Reset all bindings to the default values"
 msgstr ""
 
 #: src/hotkey_preferences_display.cpp:217
-#, fuzzy
-#| msgid "Prefs section^General"
 msgid "Prefs section^Game"
-msgstr "Bendri"
+msgstr "Žaidimas"
 
 #: src/hotkey_preferences_display.cpp:219
-#, fuzzy
-#| msgid "Prefs section^Sound"
 msgid "Prefs section^Editor"
-msgstr "Garsas"
+msgstr "Redaktorius"
 
 #: src/hotkey_preferences_display.cpp:246
-#, fuzzy
-#| msgid "Reset Replay"
 msgid "Add Hotkey"
-msgstr "Perleisti peržaidimą"
+msgstr "Pridėti spartųjį klavišą"
 
 #: src/hotkey_preferences_display.cpp:247
 msgid "Clear Hotkey"
@@ -3646,20 +3594,16 @@ msgid ""
 msgstr ""
 
 #: src/hotkey_preferences_display.cpp:659
-#, fuzzy
-#| msgid "Reset Replay"
 msgid "Reassign Hotkey"
-msgstr "Perleisti peržaidimą"
+msgstr "Pakeisti spartųjį klavišą"
 
 #: src/hotkeys.cpp:62
 #, fuzzy
-#| msgid "Flip Clipboard Horizontally"
 msgid "Scroll Viewport Horizontally"
 msgstr "Apsukti iškarpinę horizontaliai"
 
 #: src/hotkeys.cpp:63
 #, fuzzy
-#| msgid "Flip Clipboard Vertically"
 msgid "Scroll Viewport Vertically"
 msgstr "Apsukti iškarpinę vertikaliai"
 
@@ -3812,10 +3756,8 @@ msgid "Continue Network Game"
 msgstr "Tęsti tinklo žaidimą"
 
 #: src/hotkeys.cpp:111
-#, fuzzy
-#| msgid "Start Editor"
 msgid "Quit Editor"
-msgstr "Paleisti redaktorių"
+msgstr "Išeiti iš redaktoriaus"
 
 #: src/hotkeys.cpp:112
 msgid "Set Team Label"
@@ -3881,7 +3823,7 @@ msgstr "Planavimo režimas"
 #. TRANSLATORS: whiteboard menu entry: execute planned action
 #: src/hotkeys.cpp:130
 msgid "whiteboard^Execute Action"
-msgstr "Vykdyti veiksmą"
+msgstr "Vykdyti veiksmus"
 
 #. TRANSLATORS: whiteboard menu entry: execute all planned actions
 #: src/hotkeys.cpp:132
@@ -3891,17 +3833,17 @@ msgstr "Vykdyti visus veiksmus"
 #. TRANSLATORS: whiteboard menu entry: delete planned action
 #: src/hotkeys.cpp:134
 msgid "whiteboard^Delete Action"
-msgstr "Trinti veiksmą"
+msgstr "Pašalinti veiksmus"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action up queue
 #: src/hotkeys.cpp:136
 msgid "whiteboard^Move Action Up"
-msgstr ""
+msgstr "Paslinkti veiksmą į viršų"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action down queue
 #: src/hotkeys.cpp:138
 msgid "whiteboard^Move Action Down"
-msgstr ""
+msgstr "Paslinkti veiksmą į apačią"
 
 #. TRANSLATORS: whiteboard menu entry: plan as though the chosen unit were dead
 #: src/hotkeys.cpp:140
@@ -3945,16 +3887,12 @@ msgid "Map Information"
 msgstr "Žemėlapio informacija"
 
 #: src/hotkeys.cpp:154
-#, fuzzy
-#| msgid "Next Side"
 msgid "Add New Side"
-msgstr "Kita pusė"
+msgstr "Pridėti pusę"
 
 #: src/hotkeys.cpp:155
-#, fuzzy
-#| msgid "Switch Map"
 msgid "Switch Side"
-msgstr "Keisti žemėlapį"
+msgstr "Keisti pusę"
 
 #: src/hotkeys.cpp:156
 msgid "Swap Foreground/Background Terrains"
@@ -3989,26 +3927,21 @@ msgid "Selection Tool"
 msgstr "Žymėjimo įrankis"
 
 #: src/hotkeys.cpp:164
-#, fuzzy
-#| msgid "Set Starting Positions Tool"
 msgid "Starting Positions Tool"
 msgstr "Pradžios pozicijos nustatymo įrankis"
 
 #: src/hotkeys.cpp:165
 #, fuzzy
-#| msgid "Fill Tool"
 msgid "Label Tool"
 msgstr "Užpildymo įrankis"
 
 #: src/hotkeys.cpp:166
 #, fuzzy
-#| msgid "Paint Tool"
 msgid "Unit Tool"
 msgstr "Piešimo įrankis"
 
 #: src/hotkeys.cpp:167
 #, fuzzy
-#| msgid "Village gold"
 msgid "Village Tool"
 msgstr "Kaimo auksas"
 
@@ -4034,7 +3967,7 @@ msgstr "Padėti"
 
 #: src/hotkeys.cpp:173
 msgid "Export Selected Coordinates to System Clipboard"
-msgstr "Eksportuoti pažymėtas koordinates į sistemos iškarpinę"
+msgstr ""
 
 #: src/hotkeys.cpp:174
 msgid "Select All"
@@ -4113,22 +4046,16 @@ msgid "Auto-update Terrain Transitions"
 msgstr "Automatiškai atnaujinti vietovių perėjimus"
 
 #: src/hotkeys.cpp:196
-#, fuzzy
-#| msgid "Auto-update Terrain Transitions"
 msgid "Auto-update Terrain Transitions: Yes"
-msgstr "Automatiškai atnaujinti vietovių perėjimus"
+msgstr "Automatiškai atnaujinti vietovių perėjimus: taip"
 
 #: src/hotkeys.cpp:197
-#, fuzzy
-#| msgid "Auto-update Terrain Transitions"
 msgid "Auto-update Terrain Transitions: No"
-msgstr "Automatiškai atnaujinti vietovių perėjimus"
+msgstr "Automatiškai atnaujinti vietovių perėjimus: ne "
 
 #: src/hotkeys.cpp:198
-#, fuzzy
-#| msgid "Auto-update Terrain Transitions"
 msgid "Auto-update Terrain Transitions: Partial"
-msgstr "Automatiškai atnaujinti vietovių perėjimus"
+msgstr "Automatiškai atnaujinti vietovių perėjimus: dalinai"
 
 #: src/hotkeys.cpp:200
 msgid "Refresh Image Cache"
@@ -4253,7 +4180,6 @@ msgstr ""
 
 #: src/hotkeys.cpp:377
 #, fuzzy
-#| msgid "Height:"
 msgid "Right"
 msgstr "Aukštis:"
 
@@ -4283,7 +4209,6 @@ msgstr ""
 
 #: src/hotkeys.cpp:398
 #, fuzzy
-#| msgid "Unknown era"
 msgid "Unknown"
 msgstr "Nežinoma era"
 
@@ -4440,35 +4365,3 @@ msgid ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
-
-#, fuzzy
-#~| msgid "Select All"
-#~ msgid "Reset All"
-#~ msgstr "Pažymėti viską"
-
-#~ msgid "Update Add-ons"
-#~ msgstr "Atnaujinti priedus"
-
-#~ msgid "Create New Map"
-#~ msgstr "Sukurti naują žemėlapį"
-
-#~ msgid "Don’t ask me again!"
-#~ msgstr "Daugiau nebeklausti!"
-
-#~ msgid "x"
-#~ msgstr "x"
-
-#~ msgid "OOS error"
-#~ msgstr "Išsisinchronizavimo klaida"
-
-#~ msgid "Create game"
-#~ msgstr "Sukurti žaidimą"
-
-#~ msgid "Save replay on SP/MP victory or MP defeat"
-#~ msgstr "Išsaugoti peržaidimą laimėjus VŽ/DŽ arba pralaimėjus DŽ"
-
-#~ msgid "Save Replay on SP/MP Victory or MP Defeat"
-#~ msgstr "Išsaugoti peržaidimą laimėjus VŽ/DŽ arba pralaimėjus DŽ"
-
-#~ msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
-#~ msgstr "Ištrinti autoišsaugojimus laimėjus VŽ/DŽ arba pralaimėjus DŽ"
