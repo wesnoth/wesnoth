@@ -3,6 +3,8 @@ return {
     -- ai: a reference to the ai engine so recruit has access to ai functions
     -- ai_cas: an object reference to store the CAs and associated data
     --   the CA will use the function names ai_cas:recruit_rushers_eval/exec, so should be referenced by the object name used by the calling AI
+    --   ai_cas also has the functions find_best_recruit, find_best_recruit_hex and analyze_enemy_unit added to it
+    --     find_best_recruit, find_best_recruit_hex may be useful for writing recruitment code separately from the engine
     -- score_function: a function that returns the CA score when recruit_rushers_eval wants to recruit
     init = function(ai, ai_cas, score_function)
         -- default score function if one not provided
@@ -12,7 +14,8 @@ return {
 
         local H = wesnoth.require "lua/helper.lua"
         local W = H.set_wml_action_metatable {}
-        local AH = wesnoth.require "ai/lua/ai_helper.lua"
+        local AH = wesnoth.require "~/add-ons/AI-demos/lua/ai_helper.lua"
+        local DBG = wesnoth.require "~/add-ons/AI-demos/lua/debug.lua"
 
         local get_next_id = (function()
             local next_id = 0
@@ -21,6 +24,44 @@ return {
                 return next_id
             end
         end)()
+
+        local recruit_data = {}
+
+        local get_hp_efficiency = function (table, recruit_id)
+            -- raw durability is a function of hp and the regenerates ability
+            -- efficiency decreases faster than cost increases to avoid recruiting many expensive units
+            -- there is a requirement for bodies in order to block movement
+
+            -- There is currently an assumption that opponents will average about 15 damage per strike
+            -- and that two units will attack per turn until the unit dies to estimate the number of hp
+            -- gained from regeneration
+            local effective_hp = wesnoth.unit_types[recruit_id].max_hitpoints
+
+            local unit = wesnoth.create_unit {
+                type = recruit_id,
+                random_traits = false,
+                name = "X",
+                id = recruit_id .. get_next_id(),
+                random_gender = false
+            }
+            -- Find the best regeneration ability and use it to estimate hp regained by regeneration
+            local abilities = H.get_child(unit.__cfg, "abilities")
+            local regen_amount = 0
+            if abilities then
+                for regen in H.child_range(abilities, "regenerate") do
+                    if regen.value > regen_amount then
+                        regen_amount = regen.value
+                    end
+                end
+                effective_hp = effective_hp + (regen_amount * effective_hp/30)
+            end
+            local efficiency = math.max(math.log(effective_hp/20),0.01)/(wesnoth.unit_types[recruit_id].cost^2)
+
+            table[recruit_id] = efficiency
+            return efficiency
+        end
+        local efficiency = {}
+        setmetatable(efficiency, { __index = get_hp_efficiency })
 
         function living(unit)
             return not unit.status.not_living
@@ -40,7 +81,7 @@ return {
             return best_defense
         end
 
-        function ai_cas:analyze_enemy_unit(unit_type_id)
+        function analyze_enemy_unit(unit_type_id)
             local function get_best_attack(attacker, defender, unit_defense, can_poison)
                 -- Try to find the average damage for each possible attack and return the one that deals the most damage.
                 -- Would be preferable to call simulate combat, but that requires the defender to be on the map according
@@ -144,11 +185,11 @@ return {
 
             -- Use cached information when possible: this is expensive
             -- TODO: Invalidate cache when recruit list changes
-            if not self.data.analyses then
-                self.data.analyses = {}
+            if not recruit_data.analyses then
+                recruit_data.analyses = {}
             else
-                if self.data.analyses[unit_type_id] then
-                    return self.data.analyses[unit_type_id]
+                if recruit_data.analyses[unit_type_id] then
+                    return recruit_data.analyses[unit_type_id]
                 end
             end
 
@@ -187,19 +228,8 @@ return {
             end
 
             -- Cache result before returning
-            self.data.analyses[unit_type_id] = analysis
+            recruit_data.analyses[unit_type_id] = analysis
             return analysis
-        end
-
-        function get_hp_efficiency()
-            local efficiency = {}
-            for i, recruit_id in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
-                -- raw durability is a function of defense and hp
-                -- efficiency decreases faster than cost increases to avoid recruiting many expensive units
-                -- there is a requirement for bodies in order to block movement
-                efficiency[recruit_id] = math.max(math.log(wesnoth.unit_types[recruit_id].max_hitpoints/20),0.01)/(wesnoth.unit_types[recruit_id].cost^2)
-            end
-            return efficiency
         end
 
         function can_slow(unit)
@@ -275,7 +305,6 @@ return {
 
         function init_data(leader)
             local data = {}
-            data.hp_efficiency = get_hp_efficiency()
 
             -- Count enemies of each type
             local enemies = AH.get_live_units {
@@ -317,10 +346,10 @@ return {
             local start_time, ca_name = os.clock(), 'recruit_rushers'
             if AH.print_eval() then print('     - Evaluating recruit_rushers CA:', os.clock()) end
 
-            local score = do_recruit_eval(self.data)
+            local score = do_recruit_eval(recruit_data)
             if score == 0 then
                 -- We're done for the turn, discard data
-                self.data.recruit = nil
+                recruit_data.recruit = nil
             end
 
             AH.done_eval_messages(start_time, ca_name)
@@ -331,9 +360,9 @@ return {
             if AH.print_exec() then print('   ' .. os.clock() .. ' Executing recruit_rushers CA') end
             if AH.show_messages() then W.message { speaker = 'narrator', message = 'Recruiting' } end
 
-            local enemy_counts = self.data.recruit.enemy_counts
-            local enemy_types = self.data.recruit.enemy_types
-            local num_enemies =  self.data.recruit.num_enemies
+            local enemy_counts = recruit_data.recruit.enemy_counts
+            local enemy_types = recruit_data.recruit.enemy_types
+            local num_enemies =  recruit_data.recruit.num_enemies
             local hp_ratio = get_hp_ratio_with_gold()
 
             -- Determine effectiveness of recruitable units against each enemy unit type
@@ -345,7 +374,7 @@ return {
             local unit_attack_range_count = {} -- The ranges a unit will use
             local enemy_type_count = 0
             for i, unit_type in ipairs(enemy_types) do
-                local analysis = ai_cas:analyze_enemy_unit(unit_type)
+                local analysis = analyze_enemy_unit(unit_type)
                 enemy_type_count = enemy_type_count + 1
                 for i, recruit_id in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
                     -- This line should be moved out of the loop!
@@ -382,8 +411,18 @@ return {
                 end
             end
             for i, recruit_id in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
-                recruit_effectiveness[recruit_id] = (recruit_effectiveness[recruit_id] / (num_enemies)^2)^0.5
-                recruit_vulnerability[recruit_id] = (recruit_vulnerability[recruit_id] / ((num_enemies)^2))^0.5
+                -- Ensure effectiveness and vulnerability are positive.
+                -- Negative values imply that drain is involved and the amount drained is very high
+                if recruit_effectiveness[recruit_id] <= 0 then
+                    recruit_effectiveness[recruit_id] = 0.01
+                else
+                    recruit_effectiveness[recruit_id] = (recruit_effectiveness[recruit_id] / (num_enemies)^2)^0.5
+                end
+                if recruit_vulnerability[recruit_id] <= 0 then
+                    recruit_vulnerability[recruit_id] = 0.01
+                else
+                    recruit_vulnerability[recruit_id] = (recruit_vulnerability[recruit_id] / ((num_enemies)^2))^0.5
+                end
             end
             -- Correct count of units for each range
             local most_common_range = nil
@@ -403,12 +442,12 @@ return {
             local recruit_type = nil
             local leader = wesnoth.get_units { side = wesnoth.current.side, canrecruit = 'yes' }[1]
             repeat
-                self.data.recruit.best_hex, self.data.recruit.target_hex = ai_cas:find_best_recruit_hex(leader, self.data)
+                recruit_data.recruit.best_hex, recruit_data.recruit.target_hex = ai_cas:find_best_recruit_hex(leader, recruit_data)
                 recruit_type = ai_cas:find_best_recruit(attack_type_count, unit_attack_type_count, recruit_effectiveness, recruit_vulnerability, attack_range_count, unit_attack_range_count, most_common_range_count)
             until recruit_type ~= nil
 
             if wesnoth.unit_types[recruit_type].cost <= wesnoth.sides[wesnoth.current.side].gold then
-                ai.recruit(recruit_type, self.data.recruit.best_hex[1], self.data.recruit.best_hex[2])
+                ai.recruit(recruit_type, recruit_data.recruit.best_hex[1], recruit_data.recruit.best_hex[2])
                 return true
             else
                 return false
@@ -478,9 +517,8 @@ return {
             -- Find best recruit based on damage done to enemies present, speed, and hp/gold ratio
             local recruit_scores = {}
             local best_scores = {offense = 0, defense = 0, move = 0}
-            local best_hex = self.data.recruit.best_hex
-            local target_hex = self.data.recruit.target_hex
-            local efficiency = self.data.recruit.hp_efficiency
+            local best_hex = recruit_data.recruit.best_hex
+            local target_hex = recruit_data.recruit.target_hex
             local distance_to_enemy, enemy_location
             if target_hex[1] then
                 distance_to_enemy, enemy_location = AH.get_closest_enemy(target_hex)
@@ -489,20 +527,14 @@ return {
             end
 
             local gold_limit = 9e99
-            if self.data.castle.loose_gold_limit >= self.data.recruit.cheapest_unit_cost then
-                gold_limit = self.data.castle.loose_gold_limit
+            if recruit_data.castle.loose_gold_limit >= recruit_data.recruit.cheapest_unit_cost then
+                gold_limit = recruit_data.castle.loose_gold_limit
             end
-            --print (self.data.castle.loose_gold_limit .. " " .. self.data.recruit.cheapest_unit_cost .. " " .. gold_limit)
+            --print (recruit_data.castle.loose_gold_limit .. " " .. recruit_data.recruit.cheapest_unit_cost .. " " .. gold_limit)
 
             local recruitable_units = {}
 
             for i, recruit_id in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
-                if not efficiency[recruit_id] then
-                    -- Recruit list changed since last recruit, recalculate efficiency
-                    efficiency = get_hp_efficiency()
-                    self.data.recruit.hp_efficiency = efficiency
-                end
-
                 -- Count number of units with the same attack type. Used to avoid recruiting too many of the same unit
                 local attack_types = 0
                 local recruit_count = 0
@@ -575,8 +607,6 @@ return {
                 local defense_score = (scores["defense"]/best_scores["defense"])^0.5
                 local move_score = (scores["move"]/best_scores["move"])^0.5
 
-                local score = offense_score*offense_weight + defense_score*defense_weight + move_score*move_weight
-
                 local bonus = 0
                 if scores["slows"] then
                     bonus = bonus + 0.4
@@ -600,7 +630,7 @@ return {
                         bonus = bonus - 1
                     end
                 end
-                score = score + bonus
+                local score = offense_score*offense_weight + defense_score*defense_weight + move_score*move_weight + bonus
 
                 if AH.print_exec() then
                     print(recruit_id .. " score: " .. offense_score*offense_weight .. " + " .. defense_score*defense_weight .. " + " .. move_score*move_weight  .. " + " .. bonus  .. " = " .. score)
@@ -617,7 +647,8 @@ return {
         function get_unit_counts_for_healing()
             local healers = #AH.get_live_units {
                 side = wesnoth.current.side,
-                ability = "healing"
+                ability = "healing",
+                { "not", { canrecruit = "yes" }}
             }
             local healable = #AH.get_live_units {
                 side = wesnoth.current.side,
