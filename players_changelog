@@ -2,7 +2,7 @@ This is meant to be a concise list of player-visible changes (very minor
 changes may be omitted). For a complete list of changes, see the main
 changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/trunk/changelog
 
-Version 1.11.0+svn:
+Version 1.11.1:
  * AI:
    * New AI: Experimental AI
      * Improved recruitment, castle and village management over current default AI.
@@ -49,13 +49,13 @@ Version 1.11.0+svn:
      * Left click on a controlled one triggers the move.
    * Preferences
      * "Hotkey Settings" dialog redisigned.
-	* Features a tab for each hotkey scope.
-	* Truncates hotkey descriptions to keep the dialog functional,
-	  but shows their full description as help tooltips.
-	* Allows reasigning hotkeys
-	* Cancel button to discard any changes
-	* Assigning of more than one hotkey per action possible
-	* Support for assigning mouse buttons to actions
+    * Features a tab for each hotkey scope.
+    * Truncates hotkey descriptions to keep the dialog functional,
+      but shows their full description as help tooltips.
+    * Allows reasigning hotkeys
+    * Cancel button to discard any changes
+    * Assigning of more than one hotkey per action possible
+    * Support for assigning mouse buttons to actions
    * The recruit and recall commands are restored when right-clicking on a
      leader, but with new semantics -- only that leader's recruits/recalls will
      be presented as options.
