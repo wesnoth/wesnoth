@@ -42,6 +42,10 @@ Version 1.11.0+svn:
      of turns is unlimited
  * Multiplayer:
    * Silver Mage no longer allowed as a leader in Age of Heroes
+   * Added support for modification tags
+   * Added support for dependencies between eras, scenarios and modifications
+   * New [options] tag to allow MP add-ons to add their own settings on the game
+     creation screen
  * Networking:
    * Handle an exception in the SDL_net-based network code (bug #20205)
  * Terrains:
@@ -299,8 +303,6 @@ Version 1.11.0:
    * Changes to the time of day schedules of Fallenstar Lake and Silverhead
      Crossing
    * Random leader is default selection when picking faction
-   * Added support for modification tags
-   * Added support for dependencies between eras, scenarios and modifications
  * Music and sound effects:
    * Replaced some of the wolf hit sounds with lower-pitched ones
  * Terrain:
