@@ -374,7 +374,7 @@ function wml_actions.select_unit(cfg)
 end
 
 function wml_actions.unit_overlay(cfg)
-	local img = cfg.image
+	local img = cfg.image or helper.wml_error( "[unit_overlay] missing required image= attribute" )
 	for i,u in ipairs(wesnoth.get_units(cfg)) do
 		local ucfg = u.__cfg
 		for w in string.gmatch(ucfg.overlays, "[^%s,][^,]*") do
@@ -388,7 +388,7 @@ function wml_actions.unit_overlay(cfg)
 end
 
 function wml_actions.remove_unit_overlay(cfg)
-	local img = cfg.image
+	local img = cfg.image or helper.wml_error( "[remove_unit_overlay] missing required image= attribute" )
 	for i,u in ipairs(wesnoth.get_units(cfg)) do
 		local ucfg = u.__cfg
 		local t = {}
