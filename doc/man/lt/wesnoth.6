@@ -55,7 +55,7 @@ please ensure that you specify the data directory path as the final argument
 aswell, otherwise the game will take the campaign/scenario id as the data
 dir.
 .TP 
-\fB\-\-campaign\-difficulty [<difficulty>]\fP
+\fB\-\-campaign\-difficulty [<sunkumas>]\fP
 The difficulty of the specified campaign (1 to max). If none specified, the
 campaign difficulty selection widget will appear.
 .TP 
@@ -64,9 +64,10 @@ The id of the scenario from the specified campaign. The default is the first
 scenario.
 .TP 
 \fB\-\-config\-dir\fP\fI\ pavadinimas\fP
-sets the user configuration directory to \fIname\fP under $HOME or "My
-Documents\eMy Games" for windows.  You can also specify an absolute path for
-the configuration directory outside the $HOME or "My Documents\eMy Games"
+nustato naudotojo konfigūracijos aplanką į \fIname\fP esantį $HOME arba „My
+Documents\eMy Games“ Windows sistemoje. Taip pat galite nurodyti pilną kelią
+iki konfigūracijos aplanko, jeigu jis nėra $HOME ar „My Documents\eMy Games“
+aplankuose
 .TP 
 \fB\-\-config\-path\fP
 išveda naudotojo konfigūracijos aplanko kelią ir išeina.
@@ -80,8 +81,8 @@ informacijos apie komandinį režimą rasite viki puslapyje šiuo adresu:
 http://www.wesnoth.org/wiki/CommandMode)
 .TP 
 \fB\-e,\ \-\-editor\fP\fI\ failas\fP
-start the in\-game map editor directly. If \fIfile\fP is specified, equivalent
-to \fB\-l \-\-load\fP
+tiesiogiai paleidžia integruotą žemėlapių redaktorių. Jei nurodytas
+\fIfailas\fP, tai yra ekvivalentu \fB\-l \-\-load\fP
 .TP 
 \fB\-\-fps\fP
 ekrano kampe parodo tuo metu veikiančio žaidimo kadrų skaičių per sekundę.
@@ -175,11 +176,11 @@ jungiasi prie nurodyto kompiuterio, jei kas nurodyta; jeigu ne, jungiasi
 prie pirmo serverio, rasto nuostatose. Pavyzdys: \fB\-\-server
 server.wenoth.org\fP
 .TP 
-\fB\-\-username\fP\fI<username>\fP
+\fB\-\-username\fP\fI<naudotojo vardas>\fP
 uses <username> when connecting to a server, ignoring other
 preferences.
 .TP 
-\fB\-\-password\fP\fI<password>\fP
+\fB\-\-password\fP\fI<slaptažodis>\fP
 uses <password> when connecting to a server, ignoring other
 preferences. Unsafe.
 .TP 
