@@ -769,10 +769,13 @@ void create::hide_children(bool hide)
 	shuffle_sides_.hide(hide);
 	cancel_game_.hide(hide);
 	launch_game_.hide(hide);
+	options_.hide(hide);
 	regenerate_map_.hide(hide || generator_ == NULL);
 	generator_settings_.hide(hide || generator_ == NULL);
 
 	era_combo_.hide(hide);
+	choose_mods_.hide(hide);
+	password_button_.hide(hide);
 	vision_combo_.hide(hide);
 	name_entry_.hide(hide);
 
