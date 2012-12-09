@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-12-07 20:59+0100\n"
-"PO-Revision-Date: 2012-10-21 12:16+0100\n"
+"POT-Creation-Date: 2012-12-08 12:33+0100\n"
+"PO-Revision-Date: 2012-12-08 13:58+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <wesnoth-l10n-it@cirulla.net>\n"
 "Language: it\n"
@@ -116,6 +116,8 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:181
 msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
 msgstr ""
+"stordita: questa unità è stordita e pertanto non può far valere la sua zona "
+"di controllo"
 
 #. [scenario]: id=01_The_Morning_After
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:5
@@ -4940,18 +4942,13 @@ msgstr "Fuoco nella fossa!"
 
 #. [message]: speaker=Grimnir
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:586
-#, fuzzy
-#| msgid ""
-#| "My work here is done. I must report back to my King. I have many more "
-#| "things to do before the day is done, but I will once you finish your "
-#| "mission. Fight well!"
 msgid ""
 "My work here is done. I must report back to my King. I have many more things "
 "to do before the day is done, but I will return once you finish your "
 "mission. Fight well!"
 msgstr ""
-"Il mio lavoro qui è finito. Devo fare rapporto al re.Ho ancora molte cose da "
-"fare prima della fine del giorno, ma lo farò dopo che avrete finito la "
+"Il mio lavoro qui è finito. Devo fare rapporto al re. Ho ancora molte cose "
+"da fare prima della fine del giorno, ma ritornerò dopo che avrete finito la "
 "vostra missione. Buon combattimento!"
 
 #. [message]: speaker=Troll Guard
@@ -9964,13 +9961,6 @@ msgstr ""
 
 #. [message]: speaker=Esanoo
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:465
-#, fuzzy
-#| msgid ""
-#| "My master wanted to make sure that if one of us was captured, we couldn’t "
-#| "betray his location. So she didn’t tell us where she was, but she taught "
-#| "us a simple spell to divine her hiding place. But it requires three "
-#| "merfolk to cast. So in order to find her, we must rescue at least two of "
-#| "my people. Though I hope we can save all of them."
 msgid ""
 "My master wanted to make sure that if one of us was captured, we couldn’t "
 "betray her location. So she didn’t tell us where she was, but she taught us "
@@ -9980,9 +9970,9 @@ msgid ""
 msgstr ""
 "La mia padrona voleva essere sicura che se uno di noi fosse stato catturato, "
 "non avrebbe comunque potuto tradire il suo nascondiglio. Così non ci disse "
-"dove era, ma ci mostro un semplice incantesimo per divinare il suo "
-"nascondiglio. Ma per lanciarlo servono tre nereidi. Così per trovarla, "
-"dobbiamo salvare almeno due della mia gente. Anche se io spero di salvarli "
+"dove era, ma ci mostrò un semplice incantesimo per divinare il suo "
+"nascondiglio. Per lanciare il sortilegio servono però tre nereidi. Quindi, "
+"per trovarla, dobbiamo salvarne almeno due, anche se io spero di salvarli "
 "tutti."
 
 #. [message]: speaker=Zhul
@@ -10389,22 +10379,16 @@ msgstr "Grazie per avermi liberato. Come siete riusciti a scappare?"
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1079
-#, fuzzy
-#| msgid ""
-#| "Esanoo found the elves that we were searching for. He brought them back "
-#| "and they helped free us. I can’t believe the humans imprisoned you in "
-#| "such a horrible place. To be stuck in the darkness with those undead. We "
-#| "will make them pay for what they have done!"
 msgid ""
 "One of the elves we were searching for helped me get away before I was "
 "caught. I can’t believe the humans imprisoned you in such a horrible place. "
 "To be stuck in the darkness with those undead. We will make them pay for "
 "what they have done!"
 msgstr ""
-"Esanoo ha trovato gli elfi che stavamo cercando. Li ha portati qui e ci "
-"hanno aiutato a liberarci. Non riesco a credere che gli uomini ti abbiano "
-"imprigionato in questo posto orribile, legato nell’oscurità con i non-morti. "
-"Li faremo pagare per quello che hanno fatto!"
+"Uno degli elfi che stavamo cercando mi ha aiutato a fuggire prima che mi "
+"catturassero. Non riesco a credere che gli uomini ti abbiano imprigionato in "
+"questo posto orribile, legato nell’oscurità con i non-morti. Li faremo "
+"pagare per quello che hanno fatto!"
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1085
@@ -15655,16 +15639,10 @@ msgstr "sussistenza"
 
 #. [resistance]: id=sustenance
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:257
-#, fuzzy
-#| msgid ""
-#| "Sustenance:\n"
-#| "This unit’s resistances are increased by 20% in daylight, on defense and "
-#| "attack. Vulnerabilities are not affected."
 msgid ""
 "This unit’s resistances are increased by 20% in daylight, on defense and "
 "attack. Vulnerabilities are not affected."
 msgstr ""
-"Sussistenza:\n"
 "Le resistenze di questa unità sono incrementate del 20% di giorno, in difesa "
 "ed in attacco. Le vulnerabilità non sono influenzate."
 
@@ -15685,17 +15663,11 @@ msgstr "stordimento"
 #. [dummy]: id=stun
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:296
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:298
-#, fuzzy
-#| msgid ""
-#| "Stun:\n"
-#| "This attack puts enormous pressure on the enemy, disrupting his ZOC if a "
-#| "hit is landed. Not active on defense."
 msgid ""
 "This attack puts enormous pressure on the enemy, disrupting his ZOC if a hit "
 "is landed. Not active on defense."
 msgstr ""
-"Stordimento:\n"
-"Questo attacco mette un’enorme pressione sul nemico, e dissolve la sua zona "
+"Questo attacco mette un’enorme pressione sul nemico e dissolve la sua zona "
 "di controllo se un colpo va a segno. Non è attivo in difesa."
 
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:309
@@ -15711,16 +15683,6 @@ msgstr "mimetismo"
 #. [hides]: id=camouflage
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:319
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:322
-#, fuzzy
-#| msgid ""
-#| "Camouflage:\n"
-#| "This unit can hide in desert dunes, desert mountains and craters, and "
-#| "remain undetected by its enemies.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in desert dunes, desert "
-#| "mountains, oasis and craters, except if they have units next to it. Any "
-#| "enemy unit that first discovers this unit immediately loses all its "
-#| "remaining movement."
 msgid ""
 "This unit can hide in desert dunes, desert mountains and craters, and remain "
 "undetected by its enemies.\n"
@@ -15730,9 +15692,8 @@ msgid ""
 "enemy unit that first discovers this unit immediately loses all its "
 "remaining movement."
 msgstr ""
-"Mimetismo:\n"
 "Quest’unità può nascondersi fra le dune del deserto, sulle montagne e nei "
-"crateri senza essere notato dai nemici.\n"
+"crateri senza essere notata dai nemici.\n"
 "\n"
 "Le unità nemiche non possono vederla quando si trova sulle dune, o sulle "
 "montagne del deserto, o in oasi o crateri, a meno che non abbiano un’unità "

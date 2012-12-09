@@ -14,19 +14,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-10-27 15:56+0200\n"
-"PO-Revision-Date: 2012-10-14 09:51+0100\n"
+"POT-Creation-Date: 2012-12-08 12:33+0100\n"
+"PO-Revision-Date: 2012-11-15 11:36+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
 "X-Poedit-Language: Italian\n"
 "X-Poedit-Country: ITALY\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. [time]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:529
@@ -99,16 +99,6 @@ msgstr "guarisce +4"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:18
 #: data/core/macros/abilities.cfg:12
-#, fuzzy
-#| msgid ""
-#| "Heals +4:\n"
-#| "Allows the unit to heal adjacent allied units at the beginning of our "
-#| "turn.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 4 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -117,7 +107,6 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Guarisce +4:\n"
 "Permette all’unità di guarire, all’inizio del turno, le truppe amiche "
 "vicine.\n"
 "\n"
@@ -142,16 +131,6 @@ msgstr "guarisce +8"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
 #: data/core/macros/abilities.cfg:31
-#, fuzzy
-#| msgid ""
-#| "Heals +8:\n"
-#| "This unit combines herbal remedies with magic to heal units more quickly "
-#| "than is normally possible on the battlefield.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -161,7 +140,6 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Guarisce +8:\n"
 "Questa unità unisce i rimedi delle erbe con la magia per guarire le unità "
 "più velocemente di quanto sia normalmente possibile sul campo di battaglia.\n"
 "\n"
@@ -4167,16 +4145,10 @@ msgstr "cura"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51
-#, fuzzy
-#| msgid ""
-#| "Cures:\n"
-#| "A curer can cure a unit of poison, although that unit will receive no "
-#| "additional healing on the turn it is cured of the poison."
 msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
-"Cura:\n"
 "L’abilità cura permette di curare un’unità avvelenata, ma quest’unità non "
 "riceve cure addizionali nel turno in cui viene curata dal veleno."
 
@@ -4192,17 +4164,11 @@ msgstr "rigenerazione"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:75
-#, fuzzy
-#| msgid ""
-#| "Regenerates:\n"
-#| "The unit will heal itself 8 HP per turn. If it is poisoned, it will "
-#| "remove the poison instead of healing."
 msgid ""
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
-"Rigenerazione:\n"
-"L’unità recupera 8PF per turno. Se viene avvelenata provvederà a rimuovere "
+"L’unità recupera 8 PF per turno. Se viene avvelenata provvederà a rimuovere "
 "il veleno al posto di curarsi."
 
 #. [resistance]: id=steadfast
@@ -4217,16 +4183,10 @@ msgstr "fermezza"
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:96
-#, fuzzy
-#| msgid ""
-#| "Steadfast:\n"
-#| "This unit’s resistances are doubled, up to a maximum of 50%, when "
-#| "defending. Vulnerabilities are not affected."
 msgid ""
 "This unit’s resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
 msgstr ""
-"Risoluta:\n"
 "Le resistenze di questa unità sono raddoppiate sino a un massimo del 50%, "
 "quando l’unità è in difesa. Le vulnerabilità non vengono modificate."
 
@@ -4248,16 +4208,6 @@ msgstr "comando"
 #: data/core/macros/abilities.cfg:111 data/core/macros/abilities.cfg:133
 #: data/core/macros/abilities.cfg:167 data/core/macros/abilities.cfg:213
 #: data/core/macros/abilities.cfg:271
-#, fuzzy
-#| msgid ""
-#| "Leadership:\n"
-#| "This unit can lead our own units that are next to it, making them fight "
-#| "better.\n"
-#| "\n"
-#| "Adjacent own units of lower level will do more damage in battle. When a "
-#| "unit adjacent to, of a lower level than, and on the same side as a unit "
-#| "with Leadership engages in combat, its attacks do 25% more damage times "
-#| "the difference in their levels."
 msgid ""
 "This unit can lead our own units that are next to it, making them fight "
 "better.\n"
@@ -4267,7 +4217,6 @@ msgid ""
 "Leadership engages in combat, its attacks do 25% more damage times the "
 "difference in their levels."
 msgstr ""
-"Comando:\n"
 "Questa unità può guidare le unità del suo esercito che lo circondano "
 "facendole combattere meglio.\n"
 "\n"
@@ -4288,16 +4237,10 @@ msgstr "incursore"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:339
-#, fuzzy
-#| msgid ""
-#| "Skirmisher:\n"
-#| "This unit is skilled in moving past enemies quickly, and ignores all "
-#| "enemy Zones of Control."
 msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
-"Incursore:\n"
 "Questa unità è addestrata a muoversi rapidamente oltre i nemici e ignora "
 "tutte le zone di controllo nemiche."
 
@@ -4313,14 +4256,6 @@ msgstr "illumina"
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:354
-#, fuzzy
-#| msgid ""
-#| "Illuminates:\n"
-#| "This unit illuminates the surrounding area, making lawful units fight "
-#| "better, and chaotic units fight worse.\n"
-#| "\n"
-#| "Any units adjacent to this unit will fight as if it were dusk when it is "
-#| "night, and as if it were day when it is dusk."
 msgid ""
 "This unit illuminates the surrounding area, making lawful units fight "
 "better, and chaotic units fight worse.\n"
@@ -4328,7 +4263,6 @@ msgid ""
 "Any units adjacent to this unit will fight as if it were dusk when it is "
 "night, and as if it were day when it is dusk."
 msgstr ""
-"Illumina:\n"
 "Questa unità illumina l’area adiacente permettendo alle unità legali di "
 "combattere meglio e penalizzando quelle caotiche.\n"
 "\n"
@@ -4347,16 +4281,10 @@ msgstr "teletrasporto"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:368
-#, fuzzy
-#| msgid ""
-#| "Teleport:\n"
-#| "This unit may teleport between any two empty villages owned by its side "
-#| "using one of its moves."
 msgid ""
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
-"Teletrasporto:\n"
 "Questa unità può trasportarsi istantaneamente fra due villaggi vuoti "
 "posseduti dalla propria fazione usando una delle sue mosse."
 
@@ -4372,14 +4300,6 @@ msgstr "imboscata"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:408 data/core/macros/abilities.cfg:411
-#, fuzzy
-#| msgid ""
-#| "Ambush:\n"
-#| "This unit can hide in forest, and remain undetected by its enemies.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in forest, except if they "
-#| "have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in forest, and remain undetected by its enemies.\n"
 "\n"
@@ -4387,7 +4307,6 @@ msgid ""
 "units next to it. Any enemy unit that first discovers this unit immediately "
 "loses all its remaining movement."
 msgstr ""
-"Imboscata:\n"
 "Questa unità può nascondersi nella foresta e non può essere individuata dai "
 "suoi nemici.\n"
 "\n"
@@ -4403,14 +4322,6 @@ msgstr "agguato notturno"
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:435
-#, fuzzy
-#| msgid ""
-#| "Nightstalk:\n"
-#| "The unit becomes invisible during night.\n"
-#| "\n"
-#| "Enemy units cannot see this unit at night, except if they have units next "
-#| "to it. Any enemy unit that first discovers this unit immediately loses "
-#| "all its remaining movement."
 msgid ""
 "The unit becomes invisible during night.\n"
 "\n"
@@ -4418,7 +4329,6 @@ msgid ""
 "it. Any enemy unit that first discovers this unit immediately loses all its "
 "remaining movement."
 msgstr ""
-"Agguato notturno:\n"
 "L’unità diviene invisibile durante la notte.\n"
 "\n"
 "Le unità nemiche non possono vedere questa unità durante la notte, a meno "
@@ -4442,16 +4352,6 @@ msgstr "occultamento"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:454 data/core/macros/abilities.cfg:459
-#, fuzzy
-#| msgid ""
-#| "Concealment:\n"
-#| "This unit can hide in villages (with the exception of water villages), "
-#| "and remain undetected by its enemies, except by those standing next to "
-#| "it.\n"
-#| "\n"
-#| "Enemy units can not see this unit while it is in a village, except if "
-#| "they have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it.\n"
@@ -4460,8 +4360,7 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"Occultamento:\n"
-"Questa unità può nascondersi nei villaggi (tranne che n quelli acquatici) e "
+"Questa unità può nascondersi nei villaggi (tranne che in quelli acquatici) e "
 "non può essere individuata dai nemici, tranne da quelli nelle immediate "
 "vicinanze.\n"
 "\n"
@@ -4482,14 +4381,6 @@ msgstr "immersione"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:478 data/core/macros/abilities.cfg:483
-#, fuzzy
-#| msgid ""
-#| "Submerge:\n"
-#| "This unit can hide in deep water, and remain undetected by its enemies.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in deep water, except if "
-#| "they have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
 "\n"
@@ -4497,14 +4388,13 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"Immersione:\n"
 "Questa unità può nascondersi nelle acque profonde e non può essere "
 "individuata dai nemici.\n"
 "\n"
-"Le unità nemiche non possono né vedere né attaccare questa unità quando si "
-"trova in alto mare, a meno che non abbiano già unità di fianco ad essa."
-"L’unità nemica che scopre per prima questa unità perde immediatamente tutti "
-"i punti movimento rimanenti."
+"Le unità nemiche non possono localizzare questa unità quando si trova in "
+"alto mare, a meno che non abbiano già unità di fianco ad essa.L’unità nemica "
+"che scopre per prima questa unità perde immediatamente tutti i punti "
+"movimento rimanenti."
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:503
@@ -4518,15 +4408,11 @@ msgstr "nutrimento"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:505
-#, fuzzy
-#| msgid ""
-#| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
-#| "living unit."
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
-"Quest’unità riceve 1 punto ferita al suo massimo quando uccide un’unità "
+"Quest’unità aggiunge un punto ferita al suo massimo quando uccide un’unità "
 "vivente."
 
 #. [unstore_unit]
@@ -4536,20 +4422,13 @@ msgstr "+1 PF max."
 
 #. [berserk]: id=berserk
 #: data/core/macros/abilities.cfg:563
-#, fuzzy
-#| msgid ""
-#| "Berserk:\n"
-#| "Whether used offensively or defensively, this attack presses the "
-#| "engagement until one of the combatants is slain, or 30 rounds of attacks "
-#| "have occurred."
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
-"Furia:\n"
-"Usato sia in attacco che in difesa consente di ingaggiare un combattimento "
-"sino alla morte di uno dei due combattenti o, qualora le due unità "
-"sopravvivano, sino al termine del trentesimo attacco."
+"Usato sia in attacco che in difesa, questo attacco consente di ingaggiare un "
+"combattimento sino alla morte di uno dei due combattenti o, qualora le due "
+"unità sopravvivano, sino al termine del trentesimo attacco."
 
 #. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:573
@@ -4558,18 +4437,11 @@ msgstr "attacco alle spalle"
 
 #. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:574
-#, fuzzy
-#| msgid ""
-#| "Backstab:\n"
-#| "When used offensively, this attack deals double damage if there is an "
-#| "enemy of the target on the opposite side of the target, and that unit is "
-#| "not incapacitated (turned to stone or otherwise paralyzed)."
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
 "incapacitated (turned to stone or otherwise paralyzed)."
 msgstr ""
-"Attacco alle spalle:\n"
 "Durante la fase offensiva, questo attacco causa il doppio dei danni se è "
 "presente, sul lato opposto dell’attaccante, un’unità nemica di quella sotto "
 "attacco, e se questa non è stata resa incapace di combattere (trasformata in "
@@ -4583,39 +4455,25 @@ msgstr "contagio"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #: data/core/macros/abilities.cfg:587
-#, fuzzy
-#| msgid ""
-#| "Plague:\n"
-#| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#| "unit identical to and on the same side as the unit with the Plague "
-#| "attack. This doesn’t work on Undead or units in villages."
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
 "identical to and on the same side as the unit with the Plague attack. This "
 "doesn’t work on Undead or units in villages."
 msgstr ""
-"Contagio:\n"
 "Quando un’unità viene uccisa da un attacco Contagio, viene sostituita da "
 "un’unità identica e della stessa squadra dell’unità con l’attacco Contagio. "
 "Non funziona sui non morti e sulle unità nei villaggi."
 
 #. [plague]: id=plague, type=Walking Corpse
 #: data/core/macros/abilities.cfg:598
-#, fuzzy
-#| msgid ""
-#| "Plague:\n"
-#| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#| "Walking Corpse on the same side as the unit with the Plague attack. This "
-#| "doesn’t work on Undead or units in villages."
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
 "doesn’t work on Undead or units in villages."
 msgstr ""
-"Contagio:\n"
 "Quando un’unità viene uccisa da un attacco Contagio, viene sostituita da un "
-"morto che cammina della squadra dell’unità che l’ha uccisa. Questo non vale "
-"per i non morti e per le unità nei villaggi."
+"morto vivente della squadra dell’unità che l’ha uccisa. Questo non vale per "
+"i non morti e per le unità nei villaggi."
 
 #. [slow]: id=slow
 #: data/core/macros/abilities.cfg:608
@@ -4624,20 +4482,12 @@ msgstr "rallenta"
 
 #. [slow]: id=slow
 #: data/core/macros/abilities.cfg:609
-#, fuzzy
-#| msgid ""
-#| "Slow:\n"
-#| "This attack slows the target until it ends a turn. Slow halves the damage "
-#| "caused by attacks and the movement cost for a slowed unit is doubled. A "
-#| "unit that is slowed will feature a snail icon in its sidebar information "
-#| "when it is selected."
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
 "that is slowed will feature a snail icon in its sidebar information when it "
 "is selected."
 msgstr ""
-"Rallenta:\n"
 "Questo attacco rallenta l’unità bersaglio fino alla fine del suo turno. Il "
 "rallentamento dimezza il danno causato dagli attacchi ed il costo per il "
 "movimento delle unità rallentate è raddoppiato. Un’unità rallentata avrà "
@@ -4650,16 +4500,10 @@ msgstr "pietrifica"
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:619
-#, fuzzy
-#| msgid ""
-#| "Petrify:\n"
-#| "This attack petrifies the target, turning it to stone. Units that have "
-#| "been petrified may not move or attack."
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
 msgstr ""
-"Pietrifica:\n"
 "Questo attacco trasforma il bersaglio in pietra. Le unità pietrificate non "
 "possono muoversi o attaccare."
 
@@ -4670,30 +4514,18 @@ msgstr "tiro di precisione"
 
 #. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:629
-#, fuzzy
-#| msgid ""
-#| "Marksman:\n"
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
-"Tiro di precisione:\n"
 "Usato in attacco questo attacco ha almeno il 60% di probabilità di andare a "
 "segno."
 
 #. [chance_to_hit]: id=magical
 #: data/core/macros/abilities.cfg:642
-#, fuzzy
-#| msgid ""
-#| "Magical:\n"
-#| "This attack always has a 70% chance to hit regardless of the defensive "
-#| "ability of the unit being attacked."
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
 msgstr ""
-"Magico:\n"
 "Questo attacco ha sempre una probabilità del 70% di andare a segno, "
 "indipendentemente dalle capacità difensive dell’unità attaccata."
 
@@ -4704,20 +4536,12 @@ msgstr "sciame"
 
 #. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:654
-#, fuzzy
-#| msgid ""
-#| "Swarm:\n"
-#| "The number of strikes of this attack decreases when the unit is wounded. "
-#| "The number of strikes is proportional to the percentage of its of maximum "
-#| "HP the unit has. For example a unit with 3/4 of its maximum HP will get "
-#| "3/4 of the number of strikes."
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
 "unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
 "number of strikes."
 msgstr ""
-"Sciame:\n"
 "Il numero di colpi di questo attacco diminuisce quando l’unità è ferita. Il "
 "numero di colpi è proporzionale alla percentuale del massimo di PF che "
 "l’unità possiede. Per esempio un’unità con 3/4 dei suoi massimi punti ferita "
@@ -4730,19 +4554,12 @@ msgstr "carica"
 
 #. [damage]: id=charge
 #: data/core/macros/abilities.cfg:664
-#, fuzzy
-#| msgid ""
-#| "Charge:\n"
-#| "When used offensively, this attack deals double damage to the target. It "
-#| "also causes this unit to take double damage from the target’s "
-#| "counterattack."
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
 msgstr ""
-"Carica:\n"
 "Durante la fase offensiva, questo attacco procura il doppio del danno al "
-"bersaglio. L’unità subirà anche il doppio dei danni al contrattacco del "
+"bersaglio. L’unità subirà anche il doppio dei danni dal contrattacco del "
 "nemico."
 
 #. [drains]: id=drains
@@ -4752,37 +4569,23 @@ msgstr "assorbi"
 
 #. [drains]: id=drains
 #: data/core/macros/abilities.cfg:677
-#, fuzzy
-#| msgid ""
-#| "Drain:\n"
-#| "This unit drains health from living units, healing itself for half the "
-#| "amount of damage it deals (rounded down)."
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
 msgstr ""
-"Assorbi:\n"
 "Questa unità assorbe energia vitale dalla unità vicine curando se stessa per "
 "la metà del danno procurato in attacco (arrotondato per difetto)."
 
 #. [firststrike]: id=firststrike
 #: data/core/macros/abilities.cfg:686
-#, fuzzy
-#| msgid "firststrike"
 msgid "first strike"
 msgstr "attacco improvviso"
 
 #. [firststrike]: id=firststrike
 #: data/core/macros/abilities.cfg:687
-#, fuzzy
-#| msgid ""
-#| "First Strike:\n"
-#| "This unit always strikes first with this attack, even if they are "
-#| "defending."
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
-"Attacco improvviso:\n"
 "Questa unità colpisce sempre per prima con questo attacco, anche se si sta "
 "difendendo."
 
@@ -4793,18 +4596,11 @@ msgstr "veleno"
 
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:697
-#, fuzzy
-#| msgid ""
-#| "Poison:\n"
-#| "This attack poisons living targets. Poisoned units lose 8 HP every turn "
-#| "until they are cured or are reduced to 1 HP. Poison can not, of itself, "
-#| "kill a unit."
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison can not, of itself, kill "
 "a unit."
 msgstr ""
-"Veleno:\n"
 "Questo attacco avvelena i bersagli viventi. Le unità avvelenate perdono 8 PF "
 "per turno finché non sono curate o finché non arrivano a un solo PF. Il "
 "veleno da solo non può uccidere un’unità."
@@ -6475,13 +6271,11 @@ msgstr "Avanza come: "
 
 #: src/help.cpp:1414
 msgid "Base unit: "
-msgstr ""
+msgstr "Unità base:"
 
 #: src/help.cpp:1424
-#, fuzzy
-#| msgid "Factions:"
 msgid "Variations: "
-msgstr "Fazioni:"
+msgstr "Varianti:"
 
 #: src/help.cpp:1450 src/help.cpp:1825 src/help.cpp:1898
 msgid "race^Miscellaneous"

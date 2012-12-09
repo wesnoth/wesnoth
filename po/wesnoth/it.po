@@ -14,19 +14,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-12-07 20:59+0100\n"
-"PO-Revision-Date: 2012-09-22 08:44+0100\n"
+"POT-Creation-Date: 2012-12-08 12:33+0100\n"
+"PO-Revision-Date: 2012-12-09 16:05+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.2\n"
 "X-Poedit-Language: Italian\n"
 "X-Poedit-Country: ITALY\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:4
@@ -171,10 +171,8 @@ msgstr ""
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:164
-#, fuzzy
-#| msgid "Compressed saves"
 msgid "Compress savegames using bzip2"
-msgstr "Salvataggi compressi"
+msgstr "Salvataggi compressi con bzip2"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:172
@@ -273,17 +271,13 @@ msgstr "Joystick: zona morta della leva della spinta"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:5
-#, fuzzy
-#| msgid "Multiplayer_AI^RCA AI"
 msgid "Multiplayer_AI^Default AI (RCA)"
-msgstr "IA RCA"
+msgstr "IA di base (RCA)"
 
 #. [ai]: id=experimental_ai
 #: data/ai/ais/ai_generic-rush.cfg:7
-#, fuzzy
-#| msgid "Multiplayer_AI^RCA AI"
 msgid "Multiplayer_AI^Experimental AI"
-msgstr "IA RCA"
+msgstr "IA sperimentale"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
@@ -560,10 +554,8 @@ msgstr "Traduzione in russo"
 
 #. [about]
 #: data/core/about.cfg:2609
-#, fuzzy
-#| msgid "Galician Translation"
 msgid "Scottish Gaelic Translation"
-msgstr "Traduzione in galiziano"
+msgstr "Traduzione in gaelico scozzese"
 
 #. [about]
 #: data/core/about.cfg:2618
@@ -1907,13 +1899,13 @@ msgid ""
 "this scenario. Side $side_number is intended to be played by a human player."
 msgstr ""
 "Il giocatore computerizzato potrebbe non riuscire a giocare correttamente "
-"per la fazione &side_number in questo scenario. La fazione $side_number è "
+"per la fazione $side_number in questo scenario. La fazione $side_number è "
 "fatta per un giocatore umano."
 
 #. [message]: speaker=narrator
 #: data/core/macros/utils.cfg:784
 msgid "You retrieve $amount_gold pieces of gold."
-msgstr ""
+msgstr "Recuperi $amount_gold pezzi d’oro."
 
 #. [color_range]: id=1
 #. [color_range]: id=red
@@ -2314,7 +2306,7 @@ msgstr ""
 "Puoi accedere ai comandi <b>recluta</b> e <b>richiama</b> facendo clic col "
 "tasto destro su una casella di tipo castello. Ciò ti permette di decidere su "
 "quale esagono mettere la nuova unità. Se posizioni le unità in modo oculato "
-"a volte puoi guadagnare un villaggio icon un turno di anticipo."
+"a volte puoi guadagnare un villaggio con un turno di anticipo."
 
 #. [tip]
 #: data/hardwired/tips.cfg:24
@@ -2364,7 +2356,7 @@ msgid ""
 "higher level."
 msgstr ""
 "Di solito è meglio partire nello scenario successivo di una campagna con "
-"unità di livello più basso che stanno per essere promose che con le stesse "
+"unità di livello più basso che stanno per essere promosse che con le stesse "
 "unità al livello superiore."
 
 #. [tip]
@@ -2604,7 +2596,8 @@ msgid ""
 "well in hills, mountains and caves."
 msgstr ""
 "Le unità degli elfi si muovono e combattono bene nelle foreste. Le unità dei "
-"nani si muovo e combattono bene sulle colline, sulle montagne e nelle grotte."
+"nani si muovono e combattono bene sulle colline, sulle montagne e nelle "
+"grotte."
 
 #. [tip]
 #: data/hardwired/tips.cfg:108
@@ -2959,9 +2952,9 @@ msgid ""
 msgstr ""
 "Anche se finendo prima uno scenario guadagnerai più oro come premio, e "
 "ridurrai le opportunità del nemico di uccidere le tue truppe valorose, "
-"perderai le chance di far guadagnare dei punti d’esperienza alle tue unità. "
-"Quando devi decidere se finire prima o dopo uno scenario, ricordati che "
-"questi fattori influiranno sulla prossima partita."
+"perderai le opportunità di far guadagnare dei punti d’esperienza alle tue "
+"unità. Quando devi decidere se finire prima o dopo uno scenario, ricordati "
+"che questi fattori influiranno sulla prossima partita."
 
 #. [tip]
 #: data/hardwired/tips.cfg:232
@@ -3301,7 +3294,7 @@ msgstr "Non ci sono spazi vuoti nel castello per reclutare l’unità."
 
 #: src/actions/heal.cpp:257
 msgid "cured"
-msgstr ""
+msgstr "curato"
 
 #: src/actions/heal.cpp:257
 msgid "female^cured"
@@ -3364,10 +3357,8 @@ msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "Sto inviando l’estensione <i>$addon_title</i>..."
 
 #: src/addon/client.cpp:175
-#, fuzzy
-#| msgid "Downloading add-on: $addon_title|..."
 msgid "Removing add-on <i>$addon_title</i> from the server..."
-msgstr "Scaricamento estensione: $addon_title|..."
+msgstr "Rimozione dell’estensione: <i>$addon_title|</i> del server..."
 
 #: src/addon/client.cpp:199
 msgid "Downloading add-on <i>$addon_title</i>..."
@@ -3414,10 +3405,8 @@ msgid "addon_type^MP campaign"
 msgstr "Campagna MG"
 
 #: src/addon/info.cpp:163
-#, fuzzy
-#| msgid "addon_type^MP faction"
 msgid "addon_type^MP modification"
-msgstr "Fazione MG"
+msgstr "Modifiche MG"
 
 #: src/addon/info.cpp:165
 msgid "addon_type^Resources"
@@ -3480,13 +3469,6 @@ msgid "addon_state^Unknown"
 msgstr "Sconosciuta"
 
 #: src/addon/manager_ui.cpp:148
-#, fuzzy
-#| msgid ""
-#| "The selected add-on has the following dependency. Do you want to install "
-#| "it?"
-#| msgid_plural ""
-#| "The selected add-on has the following dependencies. Do you want to "
-#| "install them?"
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -3494,9 +3476,11 @@ msgid_plural ""
 "The selected add-on has the following dependencies, which are not currently "
 "installed or available from the server. Do you wish to continue?"
 msgstr[0] ""
-"L’estensione selezionata ha le seguenti dipendenze. Vuoi installarla?"
+"L’estensione selezionata ha la seguente dipendenza che attualmente non è né "
+"installata né disponibile sul server. Vuoi comunque procedere?"
 msgstr[1] ""
-"Le estensioni selezionate hanno le seguenti dipendenze. Vuoi installarle?"
+"L’estensione selezionata ha le seguenti dipendenze che attualmente non sono "
+"né installate né disponibili sul server. Vuoi comunque procedere?"
 
 #: src/addon/manager_ui.cpp:157
 msgid "Broken Dependencies"
@@ -3556,27 +3540,29 @@ msgid_plural ""
 "The following dependencies could not be installed. Do you still wish to "
 "continue?"
 msgstr[0] ""
+"La seguente dipendenza non può essere installata. Vuoi ancora continuare?"
 msgstr[1] ""
+"Le seguenti dipendenze non possono essere installate. Vuoi ancora continuare?"
 
 #: src/addon/manager_ui.cpp:256
-#, fuzzy
-#| msgid "Installation failed"
 msgid "Dependencies Installation Failed"
-msgstr "Installazione non riuscita"
+msgstr "Installazione dipendenze non riuscita"
 
 #: src/addon/manager_ui.cpp:279
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
 msgstr ""
+"L’estensione ’$addon|’\" è già stata installata e contiene informazioni "
+"addizionali che andranno irrimediabilmente perse in caso si proceda: "
 
 #: src/addon/manager_ui.cpp:283
 msgid "Publishing information file (.pbl)"
-msgstr ""
+msgstr "Publishing information file (.pbl)"
 
 #: src/addon/manager_ui.cpp:287
 msgid "Version control system (VCS) information"
-msgstr ""
+msgstr "Informazione per Version control system (VCS)"
 
 #: src/addon/manager_ui.cpp:291
 msgid "Do you really wish to continue?"
@@ -3926,7 +3912,7 @@ msgstr "Mostra replay"
 
 #: src/dialogs.cpp:612
 msgid "Play the embedded replay from the saved game if applicable"
-msgstr ""
+msgstr "Esegui il replay incorporato nel salvataggio del gioco, se possibile"
 
 #: src/dialogs.cpp:616
 msgid "Cancel orders"
@@ -3935,6 +3921,7 @@ msgstr "Annulla gli ordini"
 #: src/dialogs.cpp:620
 msgid "Cancel any pending unit movements in the saved game"
 msgstr ""
+"Elimina dal salvataggio del gioco tutti i movimenti in sospeso delle unità "
 
 #: src/dialogs.cpp:624
 msgid "Change difficulty"
@@ -4257,11 +4244,8 @@ msgstr "Vuoi davvero congedarlo?"
 
 #. TRANSLATORS: this string ends with a space
 #: src/menu_events.cpp:104
-#, fuzzy
-#| msgid "My lord, this unit is loyal and requires no upkeep! "
 msgid "This unit is loyal and requires no upkeep. "
-msgstr ""
-"Mio signore, questa unità è leale e non richiede spese di mantenimento! "
+msgstr "Questa unità è leale e non richiede spese di mantenimento. "
 
 #: src/menu_events.cpp:105 src/menu_events.cpp:109 src/menu_events.cpp:114
 msgid "Do you really want to dismiss her?"
@@ -4269,17 +4253,13 @@ msgstr "Vuoi davvero congedarla?"
 
 #. TRANSLATORS: this string ends with a space
 #: src/menu_events.cpp:108
-#, fuzzy
-#| msgid "This unit is an experienced one, having advanced levels."
 msgid "This unit is an experienced one, having advanced levels. "
-msgstr "Questa è un’unità esperta che è già avanzata di livello!"
+msgstr "Questa è un’unità esperta che è già avanzata di livello. "
 
 #. TRANSLATORS: this string ends with a space
 #: src/menu_events.cpp:113
-#, fuzzy
-#| msgid "This unit is close to advancing a level."
 msgid "This unit is close to advancing a level. "
-msgstr "Questa unità sta per avanzare di livello."
+msgstr "Questa unità sta per avanzare di livello. "
 
 #: src/menu_events.cpp:118 src/menu_events.cpp:1003
 msgid "Dismiss Unit"
@@ -5199,46 +5179,44 @@ msgid "Choose weapon:"
 msgstr "Scegli l’arma:"
 
 #: src/mp_depcheck.cpp:468
-#, fuzzy
-#| msgid "Broken Dependencies"
 msgid "Failed to resolve dependencies"
 msgstr "Dipendenze non soddisfatte"
 
 #: src/mp_depcheck.cpp:494
 msgid "Scenario can't be activated. Some dependencies are missing: "
-msgstr ""
+msgstr "Lo scenario non può essere attiavo. Mancano alcune dipendenze: "
 
 #: src/mp_depcheck.cpp:550 src/mp_depcheck.cpp:673
-#, fuzzy
-#| msgid "No eras found."
 msgid "No compatible eras found."
-msgstr "Nessuna era trovata."
+msgstr "Non è stata trovata nessuna era compatibile."
 
 #: src/mp_depcheck.cpp:566
 msgid "Era can't be activated. Some dependencies are missing: "
-msgstr ""
+msgstr "L’era non può essere attivata. Mancano alcune dipendenze: "
 
 #: src/mp_depcheck.cpp:619 src/mp_depcheck.cpp:710
-#, fuzzy
-#| msgid "No multiplayer sides found"
 msgid "No compatible scenarios found."
-msgstr "Nessuna fazione per il gioco in rete trovata"
+msgstr "Non è stato trovato nessuno scenario compatibile."
 
 #: src/mp_depcheck.cpp:648
 msgid ""
 "Not all of the chosen modifications are compatible. Some of them will be "
 "disabled."
 msgstr ""
+"Non tutte le modificazioni scelte sono compatibili. Alcune saranno "
+"disabilitate."
 
 #: src/mp_options.cpp:199
 msgid ""
 "None of the selected modifications, era or scenario provide configuration "
 "options."
 msgstr ""
+"Nessuna delle modificazioni, ere o scenari selezionati soddisfa le opzioni "
+"di configurazione scelte."
 
 #: src/mp_options.cpp:220
 msgid "Restore defaults"
-msgstr ""
+msgstr "Ripristina i valori di default"
 
 #: src/multiplayer.cpp:150 src/multiplayer.cpp:193
 msgid "Connecting to Server..."
@@ -5249,10 +5227,6 @@ msgid "Reading from Server..."
 msgstr "Ricezione dati dal server..."
 
 #: src/multiplayer.cpp:176
-#, fuzzy
-#| msgid ""
-#| "The server requires version '$version1' while you are using version "
-#| "'$version2'"
 msgid ""
 "The server accepts versions '$version1' while you are using version "
 "'$version2'"
@@ -5502,7 +5476,7 @@ msgstr "Mappa da giocare:"
 
 #: src/multiplayer_create.cpp:94 src/multiplayer_lobby.cpp:304
 msgid "Use map settings"
-msgstr "Usa le impostazioni della mappa"
+msgstr "Usa impostazioni mappa"
 
 #: src/multiplayer_create.cpp:95
 msgid "Random start time"
@@ -5521,10 +5495,8 @@ msgid "Shuffle sides"
 msgstr "Mescola fazioni"
 
 #: src/multiplayer_create.cpp:100
-#, fuzzy
-#| msgid "Settings..."
 msgid "Options..."
-msgstr "Impostazioni..."
+msgstr "Opzioni..."
 
 #: src/multiplayer_create.cpp:103
 msgid "Regenerate"
@@ -5540,7 +5512,7 @@ msgstr "Imposta parola d’ordine..."
 
 #: src/multiplayer_create.cpp:106
 msgid "Modifications..."
-msgstr ""
+msgstr "Modificazioni..."
 
 #: src/multiplayer_create.cpp:127
 msgid "Load Game..."
@@ -5575,10 +5547,8 @@ msgid "The amount of income each village yields per turn"
 msgstr "Ammontare di entrate fornite ogni turno da ogni singolo villaggio"
 
 #: src/multiplayer_create.cpp:227
-#, fuzzy
-#| msgid "The maximum number of turns the game can last"
 msgid "The number of unit levels each village can support"
-msgstr "Numero massimo dei turni per la partita"
+msgstr "Numero di livelli di unità che ogni villaggio può supportare"
 
 #: src/multiplayer_create.cpp:233
 msgid "The amount of experience a unit needs to advance"
@@ -5653,6 +5623,9 @@ msgid ""
 "connect to the add-ons server by choosing the 'Add-ons' option on the main "
 "screen."
 msgstr ""
+"Attualmente non ci sono modifiche installate. Per scaricare delle modifiche, "
+"connettiti al server delle estensioni selezionando l’opzione “Estensioni” "
+"nella schermata principale. "
 
 #: src/multiplayer_create.cpp:458
 msgid "Turns: "
@@ -5683,8 +5656,6 @@ msgid "Village gold: "
 msgstr "Monete d’oro per villaggio: "
 
 #: src/multiplayer_create.cpp:515
-#, fuzzy
-#| msgid "Village gold: "
 msgid "Village support: "
 msgstr "Monete d’oro per villaggio: "
 
@@ -5710,7 +5681,7 @@ msgstr " (Era sconosciuta)"
 
 #: src/multiplayer_lobby.cpp:557
 msgid " (missing)"
-msgstr ""
+msgstr " (mancante)"
 
 #: src/multiplayer_lobby.cpp:594 src/multiplayer_lobby.cpp:933
 msgid "Password Required"
@@ -5895,16 +5866,12 @@ msgid "Auto-Save"
 msgstr "Salvataggio automatico"
 
 #: src/play_controller.cpp:1137
-#, fuzzy
-#| msgid "Back to turn "
 msgid "Back to Turn "
 msgstr "Torno al turno"
 
 #: src/play_controller.cpp:1148
-#, fuzzy
-#| msgid "Back to turn "
 msgid "Back to Start"
-msgstr "Torno al turno"
+msgstr "Torno all’ inizio"
 
 #: src/play_controller.cpp:1410
 msgid ""
@@ -6189,7 +6156,7 @@ msgstr "Abilità: "
 
 #: src/reports.cpp:382 src/reports.cpp:740
 msgid " (inactive)"
-msgstr ""
+msgstr " (inattivo)"
 
 #: src/reports.cpp:429
 msgid "Resistances: "
@@ -6232,8 +6199,6 @@ msgid "Base damage: "
 msgstr "Danno base: "
 
 #: src/reports.cpp:617 src/reports.cpp:651 src/reports.cpp:661
-#, fuzzy
-#| msgid "Weapon special: "
 msgid "With specials: "
 msgstr "Specialità dell’arma: "
 
@@ -6254,28 +6219,24 @@ msgid "Attacks: "
 msgstr "Attacchi: "
 
 #: src/reports.cpp:636
-#, fuzzy
-#| msgid "Turn bonus: "
 msgid "Max swarm bonus: "
-msgstr "Bonus turni: "
+msgstr "Massimo bonus sciame: "
 
 #: src/reports.cpp:637 src/reports.cpp:656
 msgid "Swarm: "
-msgstr "sciame: "
+msgstr "Sciame: "
 
 #: src/reports.cpp:638 src/reports.cpp:649 src/reports.cpp:660
 msgid "Base attacks: "
 msgstr "Attacchi base: "
 
 #: src/reports.cpp:644
-#, fuzzy
-#| msgid "Weapon special: "
 msgid "Specials: "
-msgstr "Specialità dell’arma: "
+msgstr "Specialità: "
 
 #: src/reports.cpp:654
 msgid "Subject to swarm: "
-msgstr ""
+msgstr "Sottoposto allo sciame: "
 
 #: src/reports.cpp:673
 msgid "Weapon range: "
@@ -6368,13 +6329,11 @@ msgid "Overwrite?"
 msgstr "Sovrascrivo?"
 
 #: src/savegame.cpp:901
-#, fuzzy
-#| msgid "Save names should not end on '.gz'. Please choose a different name."
 msgid ""
 "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
 msgstr ""
-"I nomi dei salvataggi non devono terminare per «.gz». Per favore, scegli un "
-"nome differente."
+"I nomi dei salvataggi non devono terminare per «.gz» o per «.bz2». Per "
+"favore, scegli un nome differente."
 
 #: src/savegame.cpp:967
 msgid "Saved"
@@ -6562,22 +6521,16 @@ msgid "Details"
 msgstr "Dettagli"
 
 #: src/statistics_dialog.cpp:170
-#, fuzzy
-#| msgid "Test scenario"
 msgid "Select Scenario"
-msgstr "Scenario di prova"
+msgstr "Selezione scenario"
 
 #: src/statistics_dialog.cpp:226 src/statistics_dialog.cpp:304
-#, fuzzy
-#| msgid "Campaign Design"
 msgid "Campaign"
-msgstr "Progetto delle campagne"
+msgstr "Campagna"
 
 #: src/statistics_dialog.cpp:226 src/statistics_dialog.cpp:304
-#, fuzzy
-#| msgid "End Scenario"
 msgid "Scenario"
-msgstr "Fine scenario"
+msgstr "Scenario"
 
 #: src/statistics_dialog.cpp:284
 msgid "Damage"
@@ -6891,111 +6844,3 @@ msgstr "Opzioni della lavagna"
 
 #~ msgid "female^invisible"
 #~ msgstr "invisibile"
-
-#, fuzzy
-#~| msgid "Fire a game event."
-#~ msgid "I triggered a moveto event."
-#~ msgstr "Scatena un evento di gioco."
-
-#~ msgid "sword"
-#~ msgstr "spada"
-
-#~ msgid "Life Vortex"
-#~ msgstr "Vortice vitale"
-
-#~ msgid ""
-#~ "Life Vortex:\n"
-#~ "Each successful strike in a battle involving this attack causes the "
-#~ "attacker to gain the health that his attack removed from the target.  "
-#~ "This has no effect against nonliving targets."
-#~ msgstr ""
-#~ "Vortice vitale:\n"
-#~ "Ogni colpo portato con successo in una battaglia che coinvolga questo "
-#~ "tipo di attacco fa si che l'attaccante venga curato per l’ammontare dei "
-#~ "punti ferita inflitti al bersaglio. Non ho effetti contro bersagli non "
-#~ "viventi."
-
-#~ msgid "Entropy"
-#~ msgstr "Entropia"
-
-#~ msgid ""
-#~ "Entropy:\n"
-#~ "Each successful strike in a battle involving this attack causes the "
-#~ "attacker to lose 4 HP.  This has no effect against nonliving targets."
-#~ msgstr ""
-#~ "Entropia:\n"
-#~ "Ogni colpo portato con successo in una battaglia con questo tipo di "
-#~ "attacco fa perdere 4 PF all’attaccante. Non ha alcun effetto contro "
-#~ "bersagli non-viventi."
-
-#~ msgid "bow"
-#~ msgstr "arco"
-
-#~ msgid "Empathic Weapon"
-#~ msgstr "Arma empatica"
-
-#~ msgid ""
-#~ "Empathic Weapon:\n"
-#~ "All damage dealt by this attack to a living target is dealt to the user "
-#~ "as well"
-#~ msgstr ""
-#~ "Arma empatica:\n"
-#~ "Tutto il danno inflitto con questo attacco ad un bersaglio vivente viene "
-#~ "accusato anche da chi brandisce l’arma"
-
-#~ msgid "Rejuvenating Weapon (10)"
-#~ msgstr "Arma rinvigorente (10)"
-
-#~ msgid ""
-#~ "Rejuvenating Weapon (10):\n"
-#~ "Each successful strike with this weapon heals the user for 10 HP"
-#~ msgstr ""
-#~ "Arma rinvigorente (10):\n"
-#~ "Ogni colpo portato con successo con questa arma cura 10 PF del portatore "
-
-#~ msgid "longbow"
-#~ msgstr "arco lungo"
-
-#~ msgid "drains 20%"
-#~ msgstr "assorbimento 20%"
-
-#~ msgid ""
-#~ "Drain 20%:\n"
-#~ "This unit drains health from living units, healing itself for 20% of the "
-#~ "amount of damage it deals (rounded down)."
-#~ msgstr ""
-#~ "Assorbimento 20%:\n"
-#~ "Questa unità è in grado di assorbire energia dalle unità viventi, "
-#~ "utilizzando il 20% del danno inflitto (arrotondato per difetto) per "
-#~ "curarsi. "
-
-#~ msgid "sacrifice 5"
-#~ msgstr "sacrificio 5"
-
-#~ msgid ""
-#~ "Sacrifice 5:\n"
-#~ "Each successful attack costs this unit 5 HP."
-#~ msgstr ""
-#~ "Sacrificio 5:\n"
-#~ "Ogni attacco portato con successo costa a questa unità 5 PF."
-
-#, fuzzy
-#~| msgid "Version: "
-#~ msgid "Vision Test"
-#~ msgstr "Versione: "
-
-#~ msgid "It is invisible!"
-#~ msgstr "É invisibile! "
-
-#~ msgid "drains 100%"
-#~ msgstr "assorbimento 100%"
-
-#~ msgid ""
-#~ "Drain 100%:\n"
-#~ "This unit drains health from living units, healing itself for 100% of the "
-#~ "amount of damage it deals (rounded down)."
-#~ msgstr ""
-#~ "Assorbimento 100%:\n"
-#~ "Questa unità è in grado di assorbire energia dalle unità viventi, "
-#~ "utilizzando il 100% del danno inflitto (arrotondato per difetto) per "
-#~ "curarsi. "
