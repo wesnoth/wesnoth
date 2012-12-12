@@ -42,6 +42,11 @@ return {
             local start_time, ca_name = os.clock(), 'castle_switch'
             if AH.print_eval() then print('     - Evaluating castle_switch CA:', os.clock()) end
 
+            if ai.get_passive_leader() then
+                -- Turn off this CA if the leader is passive
+                return 0
+            end
+
             local leader = wesnoth.get_units {
                     side = wesnoth.current.side,
                     canrecruit = 'yes',
