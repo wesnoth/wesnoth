@@ -95,7 +95,7 @@ public:
 
 	/**
 	 * Create an editor_map by upgrading an existing gamemap. The map data is
-	 * copied. Marked "explicit" to avoid potentially harmful autmatic conversions.
+	 * copied. Marked "explicit" to avoid potentially harmful automatic conversions.
 	 */
 	explicit editor_map(const gamemap& map);
 
