@@ -19,6 +19,7 @@
 #include "../construct_dialog.hpp"
 #include "../gettext.hpp"
 #include "../filesystem.hpp"
+#include "editor/action/action_base.hpp"
 
 #include <boost/algorithm/string/replace.hpp>
 
@@ -55,12 +56,10 @@ EXIT_STATUS start(const config& game_conf, CVideo& video, const std::string& fil
 		ERR_ED << "Editor exception in editor::start: " << e.what() << "\n";
 		throw;
 	}
-	//TODO
-	/*
 	if (editor_action::get_instance_count() != 0) {
 		ERR_ED << "Possibly leaked " << editor_action::get_instance_count() << " action objects\n";
 	}
-	*/
+
 	return e;
 }
 
