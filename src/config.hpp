@@ -176,7 +176,7 @@ public:
 	class attribute_value
 	{
 		typedef boost::variant<boost::blank, bool, double, std::string, t_string> value_type;
-		value_type value;
+		value_type value_;
 
 	public:
 		/// Default implementation, but defined out-of-line for efficiency reasons.

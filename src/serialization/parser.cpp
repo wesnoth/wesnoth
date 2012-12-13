@@ -511,11 +511,11 @@ void write_key_val(std::ostream &out, const std::string &key,
                    const config::attribute_value &value, unsigned level,
                    std::string& textdomain)
 {
-	if (!boost::get<t_string const>(&value.value)) {
+	if (!boost::get<t_string const>(&value.value_)) {
 		for (unsigned i = 0; i < level; ++i) out << '\t';
 		out << key << '=';
 	}
-	boost::apply_visitor(write_key_val_visitor(out, level, textdomain, key), value.value);
+	boost::apply_visitor(write_key_val_visitor(out, level, textdomain, key), value.value_);
 	out << '\n';
 }
 

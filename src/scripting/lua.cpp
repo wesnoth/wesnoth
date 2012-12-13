@@ -202,7 +202,7 @@ namespace {
  */
 void luaW_pushscalar(lua_State *L, config::attribute_value const &v)
 {
-	boost::apply_visitor(luaW_pushscalar_visitor(L), v.value);
+	boost::apply_visitor(luaW_pushscalar_visitor(L), v.value_);
 }
 
 /**

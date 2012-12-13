@@ -85,7 +85,7 @@ struct tconfig_implementation
 
 /** Default implementation, but defined out-of-line for efficiency reasons. */
 config::attribute_value::attribute_value()
-	: value()
+	: value_()
 {
 }
 
@@ -96,49 +96,49 @@ config::attribute_value::~attribute_value()
 
 /** Default implementation, but defined out-of-line for efficiency reasons. */
 config::attribute_value::attribute_value(const config::attribute_value &that)
-	: value(that.value)
+	: value_(that.value_)
 {
 }
 
 /** Default implementation, but defined out-of-line for efficiency reasons. */
 config::attribute_value &config::attribute_value::operator=(const config::attribute_value &that)
 {
-	value = that.value;
+	value_ = that.value_;
 	return *this;
 }
 
 config::attribute_value &config::attribute_value::operator=(bool v)
 {
-	value = v;
+	value_ = v;
 	return *this;
 }
 
 config::attribute_value &config::attribute_value::operator=(int v)
 {
-	value = double(v);
+	value_ = double(v);
 	return *this;
 }
 
 config::attribute_value &config::attribute_value::operator=(size_t v)
 {
-	value = double(v);
+	value_ = double(v);
 	return *this;
 }
 
 config::attribute_value &config::attribute_value::operator=(long v)
 {
-	value = double(v);
+	value_ = double(v);
 	return *this;
 }
 config::attribute_value &config::attribute_value::operator=(double v)
 {
-	value = v;
+	value_ = v;
 	return *this;
 }
 
 config::attribute_value &config::attribute_value::operator=(const std::string &v)
 {
-	if (v.empty()) { value = v; return *this; }
+	if (v.empty()) { value_ = v; return *this; }
 	if (v == "yes" || v == "true") return *this = true;
 	if (v == "no" || v == "false") return *this = false;
 	char *eptr;
@@ -146,27 +146,27 @@ config::attribute_value &config::attribute_value::operator=(const std::string &v
 	if (*eptr == '\0') return *this = i;
 	double d = strtod(v.c_str(), &eptr);
 	if (*eptr == '\0') return *this = d;
-	value = v;
+	value_ = v;
 	return *this;
 }
 
 config::attribute_value &config::attribute_value::operator=(const t_string &v)
 {
 	if (!v.translatable()) return *this = v.str();
-	value = v;
+	value_ = v;
 	return *this;
 }
 
 
 bool config::attribute_value::to_bool(bool def) const
 {
-	if (const bool *p = boost::get<const bool>(&value)) return *p;
+	if (const bool *p = boost::get<const bool>(&value_)) return *p;
 	return def;
 }
 
 int config::attribute_value::to_int(int def) const
 {
-	const double* i = boost::get<const double>(&value);
+	const double* i = boost::get<const double>(&value_);
 	if(i != NULL)
 	{
 		return int(*i);
@@ -176,7 +176,7 @@ int config::attribute_value::to_int(int def) const
 
 long config::attribute_value::to_long(long def) const
 {
-	const double* i = boost::get<const double>(&value);
+	const double* i = boost::get<const double>(&value_);
 	if (i != NULL)
 	{
 		return long(*i);
@@ -185,7 +185,7 @@ long config::attribute_value::to_long(long def) const
 }
 double config::attribute_value::to_double(double def) const
 {
-	const double* d = boost::get<const double>(&value);;
+	const double* d = boost::get<const double>(&value_);;
 	if(d != NULL)
 	{
 		return *d;;
@@ -219,31 +219,31 @@ struct config_attribute_str_visitor : boost::static_visitor<std::string>
 
 std::string config::attribute_value::str() const
 {
-	return boost::apply_visitor(config_attribute_str_visitor(), value);
+	return boost::apply_visitor(config_attribute_str_visitor(), value_);
 }
 
 t_string config::attribute_value::t_str() const
 {
-	if (const t_string *p = boost::get<const t_string>(&value)) return *p;
+	if (const t_string *p = boost::get<const t_string>(&value_)) return *p;
 	return str();
 }
 
 bool config::attribute_value::blank() const
 {
-	return boost::get<const boost::blank>(&value);
+	return boost::get<const boost::blank>(&value_);
 }
 
 bool config::attribute_value::empty() const
 {
-	if (boost::get<const boost::blank>(&value)) return true;
-	if (const std::string *p = boost::get<const std::string>(&value)) return p->empty();
+	if (boost::get<const boost::blank>(&value_)) return true;
+	if (const std::string *p = boost::get<const std::string>(&value_)) return p->empty();
 	return false;
 }
 
 
 bool config::attribute_value::operator==(const config::attribute_value &other) const
 {
-	return value == other.value;
+	return value_ == other.value_;
 }
 
 std::ostream &operator<<(std::ostream &os, const config::attribute_value &v)

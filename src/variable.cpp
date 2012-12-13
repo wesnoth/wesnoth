@@ -370,7 +370,7 @@ config::attribute_value vconfig::expand(const std::string &key) const
 {
 	config::attribute_value val = (*cfg_)[key];
 	if (repos)
-		boost::apply_visitor(vconfig_expand_visitor(val), val.value);
+		boost::apply_visitor(vconfig_expand_visitor(val), val.value_);
 	return val;
 }
 
