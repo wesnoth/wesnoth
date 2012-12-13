@@ -34,8 +34,10 @@
 #include <map>
 #include <iosfwd>
 #include <vector>
-#include <boost/variant/variant.hpp>
+
 #include <boost/exception/exception.hpp>
+#include <boost/variant/apply_visitor.hpp>
+#include <boost/variant/variant.hpp>
 
 #include "game_errors.hpp"
 #include "tstring.hpp"
@@ -225,10 +227,17 @@ public:
 		bool operator!=(const attribute_value &other) const
 		{ return !operator==(other); }
 
+		// Streaming:
 		friend std::ostream& operator<<(std::ostream &os, const attribute_value &v);
-		friend void luaW_pushscalar(lua_State *, const attribute_value &);
+
+		// Visitor support:
+		/// Applies a visitor to the underlying variant.
+		/// (See the documentation for Boost.Variant.)
+		template <typename V>
+		typename V::result_type apply_visitor(const V & visitor) const
+		{ return boost::apply_visitor(visitor, value_); }
+
 		friend void write_key_val(std::ostream &, const std::string &, const attribute_value &, unsigned, std::string &);
-		friend class vconfig;
 	};
 
 	typedef std::map<std::string, attribute_value> attribute_map;

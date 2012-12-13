@@ -515,7 +515,7 @@ void write_key_val(std::ostream &out, const std::string &key,
 		for (unsigned i = 0; i < level; ++i) out << '\t';
 		out << key << '=';
 	}
-	boost::apply_visitor(write_key_val_visitor(out, level, textdomain, key), value.value_);
+	value.apply_visitor(write_key_val_visitor(out, level, textdomain, key));
 	out << '\n';
 }
 

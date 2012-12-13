@@ -32,8 +32,8 @@
 #include "unit_map.hpp"
 #include "team.hpp"
 
-#include <boost/variant.hpp>
 #include <boost/foreach.hpp>
+#include <boost/variant/static_visitor.hpp>
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -370,7 +370,7 @@ config::attribute_value vconfig::expand(const std::string &key) const
 {
 	config::attribute_value val = (*cfg_)[key];
 	if (repos)
-		boost::apply_visitor(vconfig_expand_visitor(val), val.value_);
+		val.apply_visitor(vconfig_expand_visitor(val));
 	return val;
 }
 

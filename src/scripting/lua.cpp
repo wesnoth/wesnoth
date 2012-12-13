@@ -79,7 +79,7 @@
 
 #include <boost/bind.hpp>
 #include <boost/foreach.hpp>
-#include <boost/variant.hpp>
+#include <boost/variant/static_visitor.hpp>
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
@@ -200,9 +200,9 @@ namespace {
 /**
  * Converts a string into a Lua object pushed at the top of the stack.
  */
-void luaW_pushscalar(lua_State *L, config::attribute_value const &v)
+static void luaW_pushscalar(lua_State *L, config::attribute_value const &v)
 {
-	boost::apply_visitor(luaW_pushscalar_visitor(L), v.value_);
+	v.apply_visitor(luaW_pushscalar_visitor(L));
 }
 
 /**
