@@ -52,28 +52,31 @@ class map_context_refresher
 {
 public:
 	map_context_refresher(context_manager& ec, const map_context& other_mc)
-	: ec_(ec), size_changed_(!ec.get_map().same_size_as(other_mc.get_map())), refreshed_(false)
+	: context_manager_(ec), size_changed_(!ec.get_map().same_size_as(other_mc.get_map())), refreshed_(false)
 	{
 	}
 	~map_context_refresher() {
 		if (!refreshed_) refresh();
 	}
 	void refresh() {
-		ec_.gui().change_map(&ec_.get_map());
-		resources::game_map = &ec_.get_map();
-		//ec_.gui().change_units(&ec_.get_map().get_units());
-		//resources::units = &ec_.get_map().get_units();
+		context_manager_.gui().change_map(&context_manager_.get_map());
+		resources::game_map = &context_manager_.get_map();
+
+		context_manager_.gui().change_units(&context_manager_.get_map_context().get_units());
+		resources::units = &context_manager_.get_map_context().get_units();
+
 		// TODO register the tod_manager with the gui?
 		//resources::tod_manager = &ec_.get_map().get_time_manager();
 		//ec_.gui().change_teams(&ec_.get_map().get_teams());
+
 		//resources::teams = &ec_.get_map().get_teams();
-		ec_.reload_map();
+		context_manager_.reload_map();
 
 		//resources::state_of_game = &ec_.get_map().get_game_state();
-		ec_.gui().init_flags();
+		context_manager_.gui().init_flags();
 	}
 private:
-	context_manager& ec_;
+	context_manager& context_manager_;
 	bool size_changed_;
 	bool refreshed_;
 };
