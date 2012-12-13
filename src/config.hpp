@@ -179,40 +179,48 @@ public:
 		value_type value;
 
 	public:
-		/** Default implementation, but defined out-of-line for efficiency reasons. */
+		/// Default implementation, but defined out-of-line for efficiency reasons.
 		attribute_value();
-		/** Default implementation, but defined out-of-line for efficiency reasons. */
+		/// Default implementation, but defined out-of-line for efficiency reasons.
 		~attribute_value();
-		/** Default implementation, but defined out-of-line for efficiency reasons. */
+		/// Default implementation, but defined out-of-line for efficiency reasons.
 		attribute_value(const attribute_value &);
-		/** Default implementation, but defined out-of-line for efficiency reasons. */
+		/// Default implementation, but defined out-of-line for efficiency reasons.
 		attribute_value &operator=(const attribute_value &);
 
+		// Numeric assignments:
 		attribute_value &operator=(bool v);
 		attribute_value &operator=(int v);
-		attribute_value &operator=(double v);
 		attribute_value &operator=(size_t v);
 		attribute_value &operator=(long v);
+		attribute_value &operator=(double v);
 
+		// String assignments:
 		attribute_value &operator=(const char *v)
 		{ return operator=(std::string(v)); }
 		attribute_value &operator=(const std::string &v);
 		attribute_value &operator=(const t_string &v);
 
+		// Extracting as a specific type:
 		bool to_bool(bool def = false) const;
 		int to_int(int def = 0) const;
 		long to_long(long def = 0) const;
 		double to_double(double def = 0.) const;
-
-		bool blank() const;
-		bool empty() const;
 		std::string str() const;
 		t_string t_str() const;
 
+		// Implicit conversions:
 		operator int() const { return to_int(); }
 		operator std::string() const { return str(); }
 		operator t_string() const { return t_str(); }
 
+		/// Tests for an attribute that was never set.
+		bool blank() const;
+		/// Tests for an attribute that either was never set or was set to "".
+		bool empty() const;
+
+
+		// Comparisons:
 		bool operator==(const attribute_value &other) const;
 		bool operator!=(const attribute_value &other) const
 		{ return !operator==(other); }

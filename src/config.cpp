@@ -80,24 +80,31 @@ struct tconfig_implementation
 };
 
 
+/* ** Attribute value implementation ** */
+
+
+/** Default implementation, but defined out-of-line for efficiency reasons. */
 config::attribute_value::attribute_value()
 	: value()
 {
 }
 
+/** Default implementation, but defined out-of-line for efficiency reasons. */
 config::attribute_value::~attribute_value()
 {
 }
 
+/** Default implementation, but defined out-of-line for efficiency reasons. */
+config::attribute_value::attribute_value(const config::attribute_value &that)
+	: value(that.value)
+{
+}
+
+/** Default implementation, but defined out-of-line for efficiency reasons. */
 config::attribute_value &config::attribute_value::operator=(const config::attribute_value &that)
 {
 	value = that.value;
 	return *this;
-}
-
-config::attribute_value::attribute_value(const config::attribute_value &that)
-	: value(that.value)
-{
 }
 
 config::attribute_value &config::attribute_value::operator=(bool v)
@@ -129,27 +136,27 @@ config::attribute_value &config::attribute_value::operator=(double v)
 	return *this;
 }
 
-bool config::attribute_value::operator==(const config::attribute_value &other) const
+config::attribute_value &config::attribute_value::operator=(const std::string &v)
 {
-	return value == other.value;
+	if (v.empty()) { value = v; return *this; }
+	if (v == "yes" || v == "true") return *this = true;
+	if (v == "no" || v == "false") return *this = false;
+	char *eptr;
+	int i = strtol(v.c_str(), &eptr, 0);
+	if (*eptr == '\0') return *this = i;
+	double d = strtod(v.c_str(), &eptr);
+	if (*eptr == '\0') return *this = d;
+	value = v;
+	return *this;
 }
 
-std::ostream &operator<<(std::ostream &os, const config::attribute_value &v)
+config::attribute_value &config::attribute_value::operator=(const t_string &v)
 {
-	return os << v.str();
+	if (!v.translatable()) return *this = v.str();
+	value = v;
+	return *this;
 }
 
-bool config::attribute_value::blank() const
-{
-	return boost::get<const boost::blank>(&value);
-}
-
-bool config::attribute_value::empty() const
-{
-	if (boost::get<const boost::blank>(&value)) return true;
-	if (const std::string *p = boost::get<const std::string>(&value)) return p->empty();
-	return false;
-}
 
 bool config::attribute_value::to_bool(bool def) const
 {
@@ -166,6 +173,7 @@ int config::attribute_value::to_int(int def) const
 	}
 	return def;
 }
+
 long config::attribute_value::to_long(long def) const
 {
 	const double* i = boost::get<const double>(&value);
@@ -220,26 +228,32 @@ t_string config::attribute_value::t_str() const
 	return str();
 }
 
-config::attribute_value &config::attribute_value::operator=(const std::string &v)
+bool config::attribute_value::blank() const
 {
-	if (v.empty()) { value = v; return *this; }
-	if (v == "yes" || v == "true") return *this = true;
-	if (v == "no" || v == "false") return *this = false;
-	char *eptr;
-	int i = strtol(v.c_str(), &eptr, 0);
-	if (*eptr == '\0') return *this = i;
-	double d = strtod(v.c_str(), &eptr);
-	if (*eptr == '\0') return *this = d;
-	value = v;
-	return *this;
+	return boost::get<const boost::blank>(&value);
 }
 
-config::attribute_value &config::attribute_value::operator=(const t_string &v)
+bool config::attribute_value::empty() const
 {
-	if (!v.translatable()) return *this = v.str();
-	value = v;
-	return *this;
+	if (boost::get<const boost::blank>(&value)) return true;
+	if (const std::string *p = boost::get<const std::string>(&value)) return p->empty();
+	return false;
 }
+
+
+bool config::attribute_value::operator==(const config::attribute_value &other) const
+{
+	return value == other.value;
+}
+
+std::ostream &operator<<(std::ostream &os, const config::attribute_value &v)
+{
+	return os << v.str();
+}
+
+
+/* ** config implementation ** */
+
 
 config config::invalid;
 
