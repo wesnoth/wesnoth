@@ -44,7 +44,7 @@ public:
 
 	shared_object() : val_(NULL) { set(T()); }
 
-	shared_object(const T &o) : val_(NULL) { set(o); }
+	explicit shared_object(const T &o) : val_(NULL) { set(o); }
 
 	shared_object(const shared_object& o) : val_(o.val_) {
 		assert(valid());
@@ -58,6 +58,13 @@ public:
 
 	shared_object& operator=(const shared_object& o) {
 		if (val_ == o.val_) return *this;
+		shared_object tmp(o);
+		swap(tmp);
+		return *this;
+	}
+
+	/// Assignment from the template type is supported.
+	shared_object& operator=(const T& o) {
 		shared_object tmp(o);
 		swap(tmp);
 		return *this;
