@@ -40,7 +40,7 @@
 #include <boost/iostreams/filtering_stream.hpp>
 #include <boost/iostreams/filter/bzip2.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
-#include <boost/variant.hpp>
+#include <boost/variant/static_visitor.hpp>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -444,7 +444,7 @@ namespace { // helpers for write_key_val().
 	struct write_key_val_visitor : boost::static_visitor<void>
 	{
 		std::ostream &out_;
-		unsigned level_;
+		const unsigned level_;
 		std::string &textdomain_;
 		const std::string &key_;
 
@@ -454,20 +454,19 @@ namespace { // helpers for write_key_val().
 		{}
 
 		void operator()(boost::blank const &) const
-		{ out_ << "\"\""; }
+		{ indent(); out_ << key_ << '=' << "\"\""; }
 		void operator()(bool b) const
-		{ out_ << (b ? "yes" : "no"); }
+		{ indent(); out_ << key_ << '=' << (b ? "yes" : "no"); }
 		void operator()(double d) const
-		{ int i = d; if (d == i) out_ << i; else out_ << d; }
-		void operator()(size_t s) const
-		{ out_ << s; }
-		void operator()(long t) const
-		{ out_ << t; }
-		void operator()(int i) const
-		{ out_ << i; }
+		{ indent(); out_ << key_ << '=';
+		  int i = d; if (d == i) out_ << i; else out_ << d; }
 		void operator()(std::string const &s) const
-		{ out_ << '"' << escaped_string(s) << '"'; }
+		{ indent(); out_ << key_ << '=' << '"' << escaped_string(s) << '"'; }
 		void operator()(t_string const &s) const;
+
+	private:
+		void indent() const
+		{ for ( unsigned i = 0; i < level_; ++i )  out_ << '\t'; }
 	};
 
 	/**
@@ -491,7 +490,7 @@ namespace { // helpers for write_key_val().
 				out_ << "#textdomain " << textdomain_ << '\n';
 			}
 
-			for (unsigned i = 0; i < level_; ++i) out_ << '\t';
+			indent();
 
 			if (first)
 				out_ << key_ << '=';
@@ -511,10 +510,6 @@ void write_key_val(std::ostream &out, const std::string &key,
                    const config::attribute_value &value, unsigned level,
                    std::string& textdomain)
 {
-	if (!boost::get<t_string const>(&value.value_)) {
-		for (unsigned i = 0; i < level; ++i) out << '\t';
-		out << key << '=';
-	}
 	value.apply_visitor(write_key_val_visitor(out, level, textdomain, key));
 	out << '\n';
 }

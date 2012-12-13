@@ -238,8 +238,6 @@ public:
 		template <typename V>
 		typename V::result_type apply_visitor(const V & visitor) const
 		{ return boost::apply_visitor(visitor, value_); }
-
-		friend void write_key_val(std::ostream &, const std::string &, const attribute_value &, unsigned, std::string &);
 	};
 
 	typedef std::map<std::string, attribute_value> attribute_map;
