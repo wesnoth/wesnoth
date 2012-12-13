@@ -51,7 +51,7 @@ public:
 		val_->count++;
 	}
 
-	operator T() const {
+	operator const T &() const {
 		assert(valid());
 		return val_->val;
 	}

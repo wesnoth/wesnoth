@@ -145,7 +145,7 @@ public:
 	static t_string from_serialized(const std::string& string) { return t_string(base::from_serialized(string)); }
 	std::string to_serialized() const { return get().to_serialized(); }
 
-	operator t_string_base() const { return get(); }
+	operator const t_string_base &() const { return get(); }
 
 	t_string operator+(const t_string& o) const { return get() + o.get(); }
 	t_string operator+(const std::string& o) const { return get() + o; }
