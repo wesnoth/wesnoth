@@ -168,7 +168,7 @@ static void check_timeout()
 	if (last_ping_check + 10 <= now) last_ping = now;
 	// This static cast is required on some build systems.
 	// (Reported in #wesnoth-dev 2012/11/24 21:10:21, log time.)
-	if ( static_cast<time_t>(last_ping + network::ping_interval + network::ping_timeout)
+	if ( last_ping + static_cast<time_t>(network::ping_interval + network::ping_timeout)
 	     <= now )
 	{
 		time_t timeout = now - last_ping;
