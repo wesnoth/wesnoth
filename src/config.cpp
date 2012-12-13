@@ -119,17 +119,18 @@ config::attribute_value &config::attribute_value::operator=(int v)
 	return *this;
 }
 
-config::attribute_value &config::attribute_value::operator=(size_t v)
-{
-	value_ = double(v);
-	return *this;
-}
-
 config::attribute_value &config::attribute_value::operator=(long v)
 {
 	value_ = double(v);
 	return *this;
 }
+
+config::attribute_value &config::attribute_value::operator=(unsigned long long v)
+{
+	value_ = double(v);
+	return *this;
+}
+
 config::attribute_value &config::attribute_value::operator=(double v)
 {
 	value_ = v;

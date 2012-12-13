@@ -193,13 +193,15 @@ public:
 		// Numeric assignments:
 		attribute_value &operator=(bool v);
 		attribute_value &operator=(int v);
-		attribute_value &operator=(size_t v);
 		attribute_value &operator=(long v);
+		attribute_value &operator=(long long v)     { return operator=(double(v)); }
+		attribute_value &operator=(unsigned v)      { return operator=(double(v)); }
+		attribute_value &operator=(unsigned long v) { return operator=(double(v)); }
+		attribute_value &operator=(unsigned long long v);
 		attribute_value &operator=(double v);
 
 		// String assignments:
-		attribute_value &operator=(const char *v)
-		{ return operator=(std::string(v)); }
+		attribute_value &operator=(const char *v)   { return operator=(std::string(v)); }
 		attribute_value &operator=(const std::string &v);
 		attribute_value &operator=(const t_string &v);
 
