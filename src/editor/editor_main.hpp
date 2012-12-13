@@ -33,7 +33,7 @@ enum EXIT_STATUS {
 /**
  * Main interface for launching the editor from the title screen.
  * @returns How the editor was exited (whether the intent was to
- *          go back to the titlescreen or quit to desktop altogeter)
+ *          go back to the titlescreen or quit to desktop altogether)
  */
 
 EXIT_STATUS start(const config& game_config, CVideo& video, const std::string& filename = "", bool take_screenshot = false, const std::string& screenshot_filename = "map_screenshot.bmp");
