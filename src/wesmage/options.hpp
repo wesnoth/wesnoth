@@ -26,7 +26,7 @@
 #include <string>
 #include <vector>
 
-/** A signleton class containing the parsed command line parameters. */
+/** A singleton class containing the parsed command line parameters. */
 struct toptions
 	: private boost::noncopyable
 {
