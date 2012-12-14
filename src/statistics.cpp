@@ -103,9 +103,7 @@ static config write_str_int_map(const stats::str_int_map& m)
 {
 	config res;
 	for(stats::str_int_map::const_iterator i = m.begin(); i != m.end(); ++i) {
-		char buf[50];
-		snprintf(buf,sizeof(buf),"%d",i->second);
-		res[i->first] = buf;
+		res[i->first] = i->second;
 	}
 
 	return res;
@@ -114,9 +112,7 @@ static config write_str_int_map(const stats::str_int_map& m)
 static void write_str_int_map(config_writer &out, const stats::str_int_map& m)
 {
 	for(stats::str_int_map::const_iterator i = m.begin(); i != m.end(); ++i) {
-		char buf[50];
-		snprintf(buf,sizeof(buf),"%d",i->second);
-		out.write_key_val(i->first, buf);
+		out.write_key_val(i->first, i->second);
 	}
 }
 
@@ -136,10 +132,7 @@ static config write_battle_result_map(const stats::battle_result_map& m)
 	for(stats::battle_result_map::const_iterator i = m.begin(); i != m.end(); ++i) {
 		config& new_cfg = res.add_child("sequence");
 		new_cfg = write_str_int_map(i->second);
-
-		char buf[50];
-		snprintf(buf,sizeof(buf),"%d",i->first);
-		new_cfg["_num"] = buf;
+		new_cfg["_num"] = i->first;
 	}
 
 	return res;
@@ -150,10 +143,7 @@ static void write_battle_result_map(config_writer &out, const stats::battle_resu
 	for(stats::battle_result_map::const_iterator i = m.begin(); i != m.end(); ++i) {
 		out.open_child("sequence");
 		write_str_int_map(out, i->second);
-
-		char buf[50];
-		snprintf(buf,sizeof(buf),"%d",i->first);
-		out.write_key_val("_num", buf);
+		out.write_key_val("_num", i->first);
 		out.close_child("sequence");
 	}
 }
@@ -254,7 +244,7 @@ stats::stats(const config& cfg) :
 	expected_damage_taken(0),
 	turn_expected_damage_inflicted(0),
 	turn_expected_damage_taken(0),
-	save_id(std::string())
+	save_id()
 {
 	read(cfg);
 }
@@ -270,38 +260,18 @@ config stats::write() const
 	res.add_child("attacks",write_battle_result_map(attacks));
 	res.add_child("defends",write_battle_result_map(defends));
 
-	std::ostringstream ss;
-	ss << recruit_cost;
-	res["recruit_cost"] = ss.str();
-	ss.str(std::string());
-	ss << recall_cost;
-	res["recall_cost"] = ss.str();
+	res["recruit_cost"] = recruit_cost;
+	res["recall_cost"] = recall_cost;
 
-	ss.str(std::string());
-	ss << damage_inflicted;
-	res["damage_inflicted"] = ss.str();
-	ss.str(std::string());
-	ss << damage_taken;
-	res["damage_taken"] = ss.str();
-	ss.str(std::string());
-	ss << expected_damage_inflicted;
-	res["expected_damage_inflicted"] = ss.str();
-	ss.str(std::string());
-	ss << expected_damage_taken;
-	res["expected_damage_taken"] = ss.str();
-	ss.str(std::string());
-	ss << turn_damage_inflicted;
+	res["damage_inflicted"] = damage_inflicted;
+	res["damage_taken"] = damage_taken;
+	res["expected_damage_inflicted"] = expected_damage_inflicted;
+	res["expected_damage_taken"] = expected_damage_taken;
 
-	res["turn_damage_inflicted"] = ss.str();
-	ss.str(std::string());
-	ss << turn_damage_taken;
-	res["turn_damage_taken"] = ss.str();
-	ss.str(std::string());
-	ss << turn_expected_damage_inflicted;
-	res["turn_expected_damage_inflicted"] = ss.str();
-	ss.str(std::string());
-	ss << turn_expected_damage_taken;
-	res["turn_expected_damage_taken"] = ss.str();
+	res["turn_damage_inflicted"] = turn_damage_inflicted;
+	res["turn_damage_taken"] = turn_damage_taken;
+	res["turn_expected_damage_inflicted"] = turn_expected_damage_inflicted;
+	res["turn_expected_damage_taken"] = turn_expected_damage_taken;
 
 	return res;
 }
@@ -330,41 +300,20 @@ void stats::write(config_writer &out) const
 	write_battle_result_map(out, defends);
 	out.close_child("defends");
 
-	std::ostringstream ss;
-	ss << recruit_cost;
-	out.write_key_val("recruit_cost", ss.str());
-	ss.str(std::string());
-	ss << recall_cost;
-	out.write_key_val("recall_cost", ss.str());
+	out.write_key_val("recruit_cost", recruit_cost);
+	out.write_key_val("recall_cost", recall_cost);
 
-	ss.str(std::string());
-	ss << damage_inflicted;
-	out.write_key_val("damage_inflicted", ss.str());
-	ss.str(std::string());
-	ss << damage_taken;
-	out.write_key_val("damage_taken", ss.str());
-	ss.str(std::string());
-	ss << expected_damage_inflicted;
-	out.write_key_val("expected_damage_inflicted", ss.str());
-	ss.str(std::string());
-	ss << expected_damage_taken;
-	out.write_key_val("expected_damage_taken", ss.str());
-	ss.str(std::string());
-	ss << turn_damage_inflicted;
+	out.write_key_val("damage_inflicted", damage_inflicted);
+	out.write_key_val("damage_taken", damage_taken);
+	out.write_key_val("expected_damage_inflicted", expected_damage_inflicted);
+	out.write_key_val("expected_damage_taken", expected_damage_taken);
 
-	out.write_key_val("turn_damage_inflicted", ss.str());
-	ss.str(std::string());
-	ss << turn_damage_taken;
-	out.write_key_val("turn_damage_taken", ss.str());
-	ss.str(std::string());
-	ss << turn_expected_damage_inflicted;
-	out.write_key_val("turn_expected_damage_inflicted", ss.str());
-	ss.str(std::string());
-	ss << turn_expected_damage_taken;
-	out.write_key_val("turn_expected_damage_taken", ss.str());
+	out.write_key_val("turn_damage_inflicted", turn_damage_inflicted);
+	out.write_key_val("turn_damage_taken", turn_damage_taken);
+	out.write_key_val("turn_expected_damage_inflicted", turn_expected_damage_inflicted);
+	out.write_key_val("turn_expected_damage_taken", turn_expected_damage_taken);
 
 	out.write_key_val("save_id", save_id);
-
 }
 
 void stats::read(const config& cfg)

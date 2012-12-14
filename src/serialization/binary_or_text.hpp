@@ -19,11 +19,11 @@
 #ifndef SERIALIZATION_BINARY_OR_TEXT_HPP_INCLUDED
 #define SERIALIZATION_BINARY_OR_TEXT_HPP_INCLUDED
 
+#include "config.hpp"
 #include "preprocessor.hpp"
+#include "serialization/parser.hpp"
 
 #include <boost/iostreams/filtering_stream.hpp>
-
-class config;
 
 /** Class for writing a config out to a file in pieces. */
 class config_writer
@@ -38,10 +38,19 @@ public:
 	void write(const config &cfg);
 
 	void write_child(const std::string &key, const config &cfg);
-	void write_key_val(const std::string &key, const std::string &value);
 	void open_child(const std::string &key);
 	void close_child(const std::string &key);
 	bool good() const;
+
+	/// This template function will work with any type that can be assigned to
+	/// an attribute_value.
+	template <typename T>
+	void write_key_val(const std::string &key, const T &value)
+	{
+		config::attribute_value v;
+		v = value;
+		::write_key_val(out_, key, v, level_, textdomain_);
+	}
 
 private:
 	boost::iostreams::filtering_stream<boost::iostreams::output> filter_;
