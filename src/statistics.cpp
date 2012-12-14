@@ -394,18 +394,18 @@ void stats::read(const config& cfg)
 		defends = read_battle_result_map(c);
 	}
 
-	recruit_cost = cfg["recruit_cost"].to_double();
-	recall_cost = cfg["recall_cost"].to_double();
+	recruit_cost = cfg["recruit_cost"].to_int();
+	recall_cost = cfg["recall_cost"].to_int();
 
-	damage_inflicted = cfg["damage_inflicted"].to_double();
-	damage_taken = cfg["damage_taken"].to_double();
-	expected_damage_inflicted = cfg["expected_damage_inflicted"].to_double();
-	expected_damage_taken = cfg["expected_damage_taken"].to_double();
+	damage_inflicted = cfg["damage_inflicted"].to_long_long();
+	damage_taken = cfg["damage_taken"].to_long_long();
+	expected_damage_inflicted = cfg["expected_damage_inflicted"].to_long_long();
+	expected_damage_taken = cfg["expected_damage_taken"].to_long_long();
 
-	turn_damage_inflicted = cfg["turn_damage_inflicted"].to_double();
-	turn_damage_taken = cfg["turn_damage_taken"].to_double();
-	turn_expected_damage_inflicted = cfg["turn_expected_damage_inflicted"].to_double();
-	turn_expected_damage_taken = cfg["turn_expected_damage_taken"].to_double();
+	turn_damage_inflicted = cfg["turn_damage_inflicted"].to_long_long();
+	turn_damage_taken = cfg["turn_damage_taken"].to_long_long();
+	turn_expected_damage_inflicted = cfg["turn_expected_damage_inflicted"].to_long_long();
+	turn_expected_damage_taken = cfg["turn_expected_damage_taken"].to_long_long();
 
 	save_id = cfg["save_id"].str();
 }

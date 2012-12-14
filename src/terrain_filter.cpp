@@ -313,7 +313,7 @@ bool terrain_filter::match(const map_location& loc) const
 	std::vector<map_location> loc_vec(1, loc);
 
 	//handle radius
-	size_t radius = static_cast<size_t>(cfg_["radius"].to_double(0));
+	size_t radius = cfg_["radius"].to_size_t(0);
 	if(radius > max_loop_) {
 		ERR_NG << "terrain_filter: radius greater than " << max_loop_
 		<< ", restricting\n";
@@ -510,7 +510,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 	}
 
 	//handle radius
-	size_t radius = static_cast<size_t>(cfg_["radius"].to_double(0));
+	size_t radius = cfg_["radius"].to_size_t(0);
 	if(radius > max_loop_) {
 		ERR_NG << "terrain_filter: radius greater than " << max_loop_
 		<< ", restricting\n";

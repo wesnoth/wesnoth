@@ -40,7 +40,7 @@ static tportrait::tside get_side(const std::string& side)
 tportrait::tportrait(const config& cfg) :
 	image(cfg["image"]),
 	side(get_side(cfg["side"])),
-	size(static_cast<unsigned>(cfg["size"].to_double())),
+	size(cfg["size"].to_unsigned()),
 	mirror(cfg["mirror"].to_bool())
 {
 	VALIDATE(!image.empty(), missing_mandatory_wml_key("portrait", "image"));

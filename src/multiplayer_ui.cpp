@@ -113,7 +113,7 @@ void level_to_gamestate(config& level, game_state& state)
 	//set random
 	const config::attribute_value &seed = level["random_seed"];
 	if(!seed.empty()) {
-		const unsigned calls = static_cast<unsigned>(level["random_calls"].to_double());
+		const unsigned calls = level["random_calls"].to_unsigned();
 		sides.rng().seed_random(seed.to_int(42), calls);
 	} else {
 		ERR_NG << "No random seed found, random "
