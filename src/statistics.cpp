@@ -273,6 +273,8 @@ config stats::write() const
 	res["turn_expected_damage_inflicted"] = turn_expected_damage_inflicted;
 	res["turn_expected_damage_taken"] = turn_expected_damage_taken;
 
+	res["save_id"] = save_id;
+
 	return res;
 }
 
