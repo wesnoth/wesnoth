@@ -175,21 +175,52 @@ int config::attribute_value::to_int(int def) const
 	return def;
 }
 
-long config::attribute_value::to_long(long def) const
+unsigned config::attribute_value::to_unsigned(unsigned def) const
+{
+	const double* i = boost::get<const double>(&value_);
+	if(i != NULL)
+	{
+		return unsigned(*i);
+	}
+	return def;
+}
+
+long long config::attribute_value::to_long_long(long long def) const
 {
 	const double* i = boost::get<const double>(&value_);
 	if (i != NULL)
 	{
-		return long(*i);
+		return static_cast<long long>(*i);
 	}
 	return def;
 }
+
+size_t config::attribute_value::to_size_t(size_t def) const
+{
+	const double* i = boost::get<const double>(&value_);
+	if (i != NULL)
+	{
+		return static_cast<size_t>(*i);
+	}
+	return def;
+}
+
+time_t config::attribute_value::to_time_t(time_t def) const
+{
+	const double* i = boost::get<const double>(&value_);
+	if (i != NULL)
+	{
+		return static_cast<time_t>(*i);
+	}
+	return def;
+}
+
 double config::attribute_value::to_double(double def) const
 {
-	const double* d = boost::get<const double>(&value_);;
+	const double* d = boost::get<const double>(&value_);
 	if(d != NULL)
 	{
-		return *d;;
+		return *d;
 	}
 	return def;
 }

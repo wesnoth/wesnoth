@@ -208,7 +208,10 @@ public:
 		// Extracting as a specific type:
 		bool to_bool(bool def = false) const;
 		int to_int(int def = 0) const;
-		long to_long(long def = 0) const;
+		unsigned to_unsigned(unsigned def = 0) const;
+		long long to_long_long(long long def = 0) const;
+		size_t to_size_t(size_t def = 0) const;
+		time_t to_time_t(time_t def = 0) const;
 		double to_double(double def = 0.) const;
 		std::string str() const;
 		t_string t_str() const;
