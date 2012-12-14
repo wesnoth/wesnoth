@@ -83,6 +83,13 @@ struct tconfig_implementation
 /* ** Attribute value implementation ** */
 
 
+// Special string values.
+const std::string config::attribute_value::s_yes("yes");
+const std::string config::attribute_value::s_no("no");
+const std::string config::attribute_value::s_true("true");
+const std::string config::attribute_value::s_false("false");
+
+
 /** Default implementation, but defined out-of-line for efficiency reasons. */
 config::attribute_value::attribute_value()
 	: value_()
@@ -109,44 +116,129 @@ config::attribute_value &config::attribute_value::operator=(const config::attrib
 
 config::attribute_value &config::attribute_value::operator=(bool v)
 {
-	value_ = v;
+	value_ = yes_no(v);
 	return *this;
 }
 
 config::attribute_value &config::attribute_value::operator=(int v)
 {
-	value_ = double(v);
+	value_ = v;
 	return *this;
 }
 
-config::attribute_value &config::attribute_value::operator=(long v)
+config::attribute_value &config::attribute_value::operator=(long long v)
 {
-	value_ = double(v);
+	if ( v > 0 )
+		// We can store this unsigned.
+		return *this = static_cast<unsigned long long>(v);
+
+	if ( v >= INT_MIN )
+		// We can store this as an int.
+		return *this = static_cast<int>(v);
+
+	// Getting to this point should be rare. (Currently, geting here means
+	// something like there was so much draining in a campaign that the
+	// total damage taken is not only negative, but so negative that an
+	// int cannot hold the value.) So rare that it is not worth precise
+	// treatment; just use a double.
+	value_ = static_cast<double>(v);
 	return *this;
 }
 
 config::attribute_value &config::attribute_value::operator=(unsigned long long v)
 {
-	value_ = double(v);
+	// Use int for smaller numbers.
+	if ( v <= INT_MAX )
+		return *this = static_cast<int>(v);
+
+	value_ = v;
 	return *this;
 }
 
 config::attribute_value &config::attribute_value::operator=(double v)
 {
+	// Try to store integers in other types.
+	if ( v > 0.0 ) {
+		// Convert to unsigned and pass this off to that assignment operator.
+		unsigned long long ull = static_cast<unsigned long long>(v);
+		if ( static_cast<double>(ull) == v )
+			return *this = ull;
+	}
+	else {
+		// Convert to integer and pass this off to that assignment operator.
+		int i = static_cast<int>(v);
+		if ( static_cast<double>(i) == v )
+			return *this = i;
+	}
+
+	// If we get here, this does in fact get stored as a double.
 	value_ = v;
 	return *this;
 }
 
+namespace {
+	/**
+	 * Attempts to convert @a source to the template type.
+	 * This is to avoid "overzealous reinterpretation of certain WML strings as
+	 * numeric tpyes" (c.f. bug #19201).
+	 * @returns true if the conversion was successful and the source string
+	 *          can be reobtained by streaming the result.
+	 */
+	template<typename To>
+	bool from_string_verify(const std::string & source, To & res)
+	{
+		// Check 1: convertable to the target type.
+		std::istringstream in_str(source);
+		if ( !(in_str >> res) )
+			return false;
+
+		// Check 2: convertable back to the same string.
+		std::ostringstream out_str;
+		out_str << res;
+		return out_str.str() == source;
+	}
+}
 config::attribute_value &config::attribute_value::operator=(const std::string &v)
 {
+	// Handle some special strings.
 	if (v.empty()) { value_ = v; return *this; }
-	if (v == "yes" || v == "true") return *this = true;
-	if (v == "no" || v == "false") return *this = false;
+	if ( v == s_yes )   { value_ = yes_no(true);  return *this; }
+	if ( v == s_no )    { value_ = yes_no(false); return *this; }
+	if ( v == s_true )  { value_ = true_false(true);  return *this; }
+	if ( v == s_false ) { value_ = true_false(false); return *this; }
+
+	// Attempt to convert to a number.
 	char *eptr;
-	int i = strtol(v.c_str(), &eptr, 0);
-	if (*eptr == '\0') return *this = i;
 	double d = strtod(v.c_str(), &eptr);
-	if (*eptr == '\0') return *this = d;
+	if ( *eptr == '\0' ) {
+		// Possibly a number. See what type it should be stored in.
+		// (All conversions will be from the string since the largest integer
+		// type could have more precision than a double.)
+		if ( d > 0.0 ) {
+			// The largest type for positive integers is unsigned long long.
+			unsigned long long ull = 0;
+			if ( from_string_verify<unsigned long long>(v, ull) )
+				return *this = ull;
+		}
+		else {
+			// The largest (variant) type for negative integers is int.
+			int i = 0;
+			if ( from_string_verify<int>(v, i) )
+				return *this = i;
+		}
+
+		// This does not look like an integer, so it should be a double.
+		// However, make sure it can convert back to the same string (in
+		// case this is a string that just looks like a numeric value).
+		std::ostringstream tester;
+		tester << d;
+		if ( tester.str() == v ) {
+			value_ = d;
+			return *this;
+		}
+	}
+
+	// No conversion possible. Store the string.
 	value_ = v;
 	return *this;
 }
@@ -161,97 +253,85 @@ config::attribute_value &config::attribute_value::operator=(const t_string &v)
 
 bool config::attribute_value::to_bool(bool def) const
 {
-	if (const bool *p = boost::get<const bool>(&value_)) return *p;
+	if ( const yes_no *p = boost::get<const yes_no>(&value_) )
+		return *p;
+	if ( const true_false *p = boost::get<const true_false>(&value_) )
+		return *p;
+
+	// No other types are ever recognized as boolean.
 	return def;
+}
+
+namespace {
+	/// Visitor for converting a variant to a numeric type (T).
+	template <typename T>
+	class attribute_numeric_visitor : public boost::static_visitor<T>
+	{
+	public:
+		// Constructor stores the default value.
+		attribute_numeric_visitor(T def) : def_(def) {}
+
+		T operator()(boost::blank const &) const { return def_; }
+		T operator()(bool)                 const { return def_; }
+		T operator()(int i)                const { return static_cast<T>(i); }
+		T operator()(unsigned long long u) const { return static_cast<T>(u); }
+		T operator()(double d)             const { return static_cast<T>(d); }
+		T operator()(std::string const &s) const { return lexical_cast_default<T>(s, def_); }
+		T operator()(t_string const &)     const { return def_; }
+
+	private:
+		const T def_;
+	};
 }
 
 int config::attribute_value::to_int(int def) const
 {
-	const double* i = boost::get<const double>(&value_);
-	if(i != NULL)
-	{
-		return int(*i);
-	}
-	return def;
-}
-
-unsigned config::attribute_value::to_unsigned(unsigned def) const
-{
-	const double* i = boost::get<const double>(&value_);
-	if(i != NULL)
-	{
-		return unsigned(*i);
-	}
-	return def;
+	return apply_visitor(attribute_numeric_visitor<int>(def));
 }
 
 long long config::attribute_value::to_long_long(long long def) const
 {
-	const double* i = boost::get<const double>(&value_);
-	if (i != NULL)
-	{
-		return static_cast<long long>(*i);
-	}
-	return def;
+	return apply_visitor(attribute_numeric_visitor<long long>(def));
+}
+
+unsigned config::attribute_value::to_unsigned(unsigned def) const
+{
+	return apply_visitor(attribute_numeric_visitor<unsigned>(def));
 }
 
 size_t config::attribute_value::to_size_t(size_t def) const
 {
-	const double* i = boost::get<const double>(&value_);
-	if (i != NULL)
-	{
-		return static_cast<size_t>(*i);
-	}
-	return def;
+	return apply_visitor(attribute_numeric_visitor<size_t>(def));
 }
 
 time_t config::attribute_value::to_time_t(time_t def) const
 {
-	const double* i = boost::get<const double>(&value_);
-	if (i != NULL)
-	{
-		return static_cast<time_t>(*i);
-	}
-	return def;
+	return apply_visitor(attribute_numeric_visitor<time_t>(def));
 }
 
 double config::attribute_value::to_double(double def) const
 {
-	const double* d = boost::get<const double>(&value_);
-	if(d != NULL)
-	{
-		return *d;
-	}
-	return def;
+	return apply_visitor(attribute_numeric_visitor<double>(def));
 }
 
-struct config_attribute_str_visitor : boost::static_visitor<std::string>
+/// Visitor for converting a variant to a string.
+class config::attribute_value::string_visitor
+	: public boost::static_visitor<std::string>
 {
-	std::string operator()(boost::blank const &) const
-	{ return std::string(); }
-	std::string operator()(bool b) const
-	{
-		static std::string s_yes("yes"), s_no("no");
-		return b ? s_yes : s_no;
-	}
-	std::string operator()(double d) const
-	{
-		long i = static_cast<long>(d);
-
-		if (static_cast<double>(i) == d)
-			return str_cast(i);
-		else
-			return str_cast(d);
-	}
-	std::string operator()(std::string const &s) const
-	{ return s; }
-	std::string operator()(t_string const &s) const
-	{ return s.str(); }
+public:
+	std::string operator()(const boost::blank &) const { return std::string(); }
+	std::string operator()(const yes_no & b)     const { return b.str(); }
+	std::string operator()(const true_false & b) const { return b.str(); }
+	std::string operator()(int i)                const { return str_cast(i); }
+	std::string operator()(unsigned long long u) const { return str_cast(u); }
+	std::string operator()(double d)             const { return str_cast(d); }
+	std::string operator()(std::string const &s) const { return s; }
+	std::string operator()(t_string const &s)    const { return s.str(); }
 };
 
 std::string config::attribute_value::str() const
 {
-	return boost::apply_visitor(config_attribute_str_visitor(), value_);
+	return apply_visitor(string_visitor());
 }
 
 t_string config::attribute_value::t_str() const
@@ -260,11 +340,17 @@ t_string config::attribute_value::t_str() const
 	return str();
 }
 
+/**
+ * Tests for an attribute that was never set.
+ */
 bool config::attribute_value::blank() const
 {
 	return boost::get<const boost::blank>(&value_);
 }
 
+/**
+ * Tests for an attribute that either was never set or was set to "".
+ */
 bool config::attribute_value::empty() const
 {
 	if (boost::get<const boost::blank>(&value_)) return true;
@@ -273,6 +359,11 @@ bool config::attribute_value::empty() const
 }
 
 
+/**
+ * Checks for equality of the attribute values when viewed as strings.
+ * One exception: blanks only equal other blanks, even though their string
+ * representation is "".
+ */
 bool config::attribute_value::operator==(const config::attribute_value &other) const
 {
 	return value_ == other.value_;
@@ -280,7 +371,9 @@ bool config::attribute_value::operator==(const config::attribute_value &other) c
 
 std::ostream &operator<<(std::ostream &os, const config::attribute_value &v)
 {
-	return os << v.str();
+	// Simple implementation, but defined out-of-line because of the templating
+	// involved.
+	return os << v.value_;
 }
 
 

@@ -177,7 +177,55 @@ public:
 	 */
 	class attribute_value
 	{
-		typedef boost::variant<boost::blank, bool, double, std::string, t_string> value_type;
+		/// A wrapper for bool to get the correct streaming ("true"/"false").
+		/// Most visitors can simply treat this as bool.
+		class true_false
+		{
+			bool value_;
+		public:
+			explicit true_false(bool value = false) : value_(value) {}
+			operator bool() const { return value_; }
+
+			const std::string & str() const
+			{ return value_ ? config::attribute_value::s_true :
+			                  config::attribute_value::s_false; }
+		};
+		friend std::ostream& operator<<(std::ostream &os, const true_false &v);
+
+		/// A wrapper for bool to get the correct streaming ("yes"/"no").
+		/// Most visitors can simply treat this as bool.
+		class yes_no
+		{
+			bool value_;
+		public:
+			explicit yes_no(bool value = false) : value_(value) {}
+			operator bool() const { return value_; }
+
+			const std::string & str() const
+			{ return value_ ? config::attribute_value::s_yes :
+			                  config::attribute_value::s_no; }
+		};
+		friend std::ostream& operator<<(std::ostream &os, const yes_no &v);
+
+		/// Visitor for converting a variant to a string.
+		class string_visitor;
+
+		// Data will be stored in a variant, allowing for the possibility of
+		// boolean, numeric, and translatable data in addition to basic string
+		// data. For most purposes, int is the preferred type for numeric data
+		// as it is fast (often natural word size). While it is desirable to
+		// use few types (to keep the overhead low), we do have use cases for
+		// fractions (double) and huge numbers (up to the larger of LLONG_MAX
+		// and SIZE_MAX).
+		typedef boost::variant<boost::blank,
+		                       true_false, yes_no,
+		                       int, unsigned long long, double,
+		                       std::string, t_string
+		                      > value_type;
+		/// The stored value will always use the first type from the variant
+		/// definition that can represent it and that can be streamed to the
+		/// correct string representation (if applicable).
+		/// This is enforced upon assignment.
 		value_type value_;
 
 	public:
@@ -193,10 +241,10 @@ public:
 		// Numeric assignments:
 		attribute_value &operator=(bool v);
 		attribute_value &operator=(int v);
-		attribute_value &operator=(long v);
-		attribute_value &operator=(long long v)     { return operator=(double(v)); }
-		attribute_value &operator=(unsigned v)      { return operator=(double(v)); }
-		attribute_value &operator=(unsigned long v) { return operator=(double(v)); }
+		attribute_value &operator=(long v)          { return operator=(static_cast<long long>(v)); }
+		attribute_value &operator=(long long v);
+		attribute_value &operator=(unsigned v)      { return operator=(static_cast<unsigned long long>(v)); }
+		attribute_value &operator=(unsigned long v) { return operator=(static_cast<unsigned long long>(v)); }
 		attribute_value &operator=(unsigned long long v);
 		attribute_value &operator=(double v);
 
@@ -208,8 +256,8 @@ public:
 		// Extracting as a specific type:
 		bool to_bool(bool def = false) const;
 		int to_int(int def = 0) const;
-		unsigned to_unsigned(unsigned def = 0) const;
 		long long to_long_long(long long def = 0) const;
+		unsigned to_unsigned(unsigned def = 0) const;
 		size_t to_size_t(size_t def = 0) const;
 		time_t to_time_t(time_t def = 0) const;
 		double to_double(double def = 0.) const;
@@ -241,6 +289,10 @@ public:
 		template <typename V>
 		typename V::result_type apply_visitor(const V & visitor) const
 		{ return boost::apply_visitor(visitor, value_); }
+
+		// Special strings.
+		static const std::string s_yes, s_no;
+		static const std::string s_true, s_false;
 	};
 
 	typedef std::map<std::string, attribute_value> attribute_map;
@@ -571,5 +623,8 @@ public:
 	virtual ~variable_set() {}
 	virtual config::attribute_value get_variable_const(const std::string &id) const = 0;
 };
+
+inline std::ostream &operator<<(std::ostream &os, const config::attribute_value::true_false &v) { return os << v.str(); }
+inline std::ostream &operator<<(std::ostream &os, const config::attribute_value::yes_no &v)     { return os << v.str(); }
 
 #endif

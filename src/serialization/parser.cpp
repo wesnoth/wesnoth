@@ -441,25 +441,26 @@ namespace { // helpers for write_key_val().
 		return escaped_string(value.begin(), value.end());
 	}
 
-	struct write_key_val_visitor : boost::static_visitor<void>
+	class write_key_val_visitor : public boost::static_visitor<void>
 	{
 		std::ostream &out_;
 		const unsigned level_;
 		std::string &textdomain_;
 		const std::string &key_;
 
+	public:
 		write_key_val_visitor(std::ostream &out, unsigned level,
 			std::string &textdomain, const std::string &key)
 			: out_(out), level_(level), textdomain_(textdomain), key_(key)
 		{}
 
+		// Generic visitor just streams "key=value".
+		template <typename T> void operator()(T const & v) const
+		{ indent(); out_ << key_ << '=' << v; }
+
+		// Specialized visitors for things that go in quotes:
 		void operator()(boost::blank const &) const
 		{ indent(); out_ << key_ << '=' << "\"\""; }
-		void operator()(bool b) const
-		{ indent(); out_ << key_ << '=' << (b ? "yes" : "no"); }
-		void operator()(double d) const
-		{ indent(); out_ << key_ << '=';
-		  int i = d; if (d == i) out_ << i; else out_ << d; }
 		void operator()(std::string const &s) const
 		{ indent(); out_ << key_ << '=' << '"' << escaped_string(s) << '"'; }
 		void operator()(t_string const &s) const;

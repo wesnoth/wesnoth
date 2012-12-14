@@ -178,18 +178,17 @@ namespace {
 	{
 		lua_State *L;
 		luaW_pushscalar_visitor(lua_State *l): L(l) {}
+
 		void operator()(boost::blank const &) const
 		{ lua_pushnil(L); }
 		void operator()(bool b) const
 		{ lua_pushboolean(L, b); }
+		void operator()(int i) const
+		{ lua_pushinteger(L, i); }
+		void operator()(unsigned long long ull) const
+		{ lua_pushnumber(L, ull); }
 		void operator()(double d) const
 		{ lua_pushnumber(L, d); }
-		void operator()(size_t s) const
-		{ lua_pushnumber(L,s); }
-		void operator()(long t) const
-		{ lua_pushnumber(L,t); }
-		void operator()(int i) const
-		{ lua_pushnumber(L,i); }
 		void operator()(std::string const &s) const
 		{ lua_pushstring(L, s.c_str()); }
 		void operator()(t_string const &s) const
