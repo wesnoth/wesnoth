@@ -403,49 +403,30 @@ void undo_list::redo()
  */
 size_t undo_list::apply_shroud_changes() const
 {
+	game_display &disp = *resources::screen;
 	team &tm = (*resources::teams)[side_ - 1];
 	// No need to do clearing if fog/shroud has been kept up-to-date.
 	if ( tm.auto_shroud_updates()  ||  !tm.fog_or_shroud() )
 		return 0;
 
-	game_display &disp = *resources::screen;
-	unit_map &units = *resources::units;
-
-	/*
-	   This function works thusly:
-	   1. Run through the list of undo_actions.
-	   2. For each one, play back the unit's move.
-	   3. For each location along the route, clear any "shrouded" hexes that the
-	      unit can see and record sighted events.
-	   4. Render shroud/fog cleared.
-	   5. Pump all events.
-	   6. Fix up associated display stuff.
-	*/
 
 	actions::shroud_clearer clearer;
-	bool cleared_shroud = false;  // for further optimization
+	bool cleared_shroud = false;  // for optimization
 	size_t erase_to = 0;
 	size_t list_size = undos_.size();
 
+
+	// Loop through the list of undo_actions.
 	for( size_t i = 0; i != list_size; ++i ) {
 		const undo_action & action = undos_[i];
 		LOG_NG << "Turning an undo...\n";
-		//NOTE: for the moment shroud cleared during recall seems never delayed
-		//Shroud update during recall can be delayed, during recruit as well
-		//if we have a non-random recruit (e.g. undead)
-		//if(action.is_recall() || action.is_recruit()) continue;
 
-		// Make a temporary unit move in map and hide the original
-		const unit_map::const_unit_iterator unit_itor = units.find(action.affected_unit.underlying_id());
-		// check if the unit is still existing (maybe killed by an event)
-		// FIXME: A wml-killed unit will not update the shroud explored before its death
-		if(unit_itor == units.end())
-			continue;
-
+		// Clear the hexes this unit can see from each hex occupied during
+		// the action.
 		std::vector<map_location>::const_iterator step;
 		for (step = action.route.begin(); step != action.route.end(); ++step) {
 			// Clear the shroud, collecting new sighted events.
-			if ( clearer.clear_unit(*step, *unit_itor, tm) ) {
+			if ( clearer.clear_unit(*step, action.affected_unit, tm) ) {
 				cleared_shroud = true;
 				erase_to = i + 1;
 			}
@@ -461,7 +442,7 @@ size_t undo_list::apply_shroud_changes() const
 
 	// Fire sighted events
 	if ( clearer.fire_events() ) {
-		// Updates in case WML changed stuff.
+		// Fix up the display in case WML changed stuff.
 		clear_shroud(side_);
 		disp.invalidate_unit();
 		disp.draw();
