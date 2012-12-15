@@ -208,9 +208,7 @@ void undo_list::undo()
 		action.starting_moves = u->movement_left();
 		action.affected_unit.set_goto(u->get_goto());
 
-		undo_action action_copy(action);
-
-		unit_display::move_unit(route, *u, true, action_copy.starting_dir);
+		unit_display::move_unit(route, *u, true, action.starting_dir);
 
 		units.move(u->get_location(), route.back());
 		unit::clear_status_caches();
@@ -352,7 +350,7 @@ void undo_list::redo()
 	} else {
 		// Redo movement action
 		const int starting_moves = action.starting_moves;
-		std::vector<map_location> route = action.route;
+		const std::vector<map_location> & route = action.route;
 		unit_map::iterator u = units.find(route.front());
 		if ( u == units.end() ) {
 			ERR_NG << "Illegal movement 'redo'.\n";
@@ -362,22 +360,20 @@ void undo_list::redo()
 
 		action.starting_moves = u->movement_left();
 
-		undo_action action_copy(action);
-
 		unit_display::move_unit(route, *u);
 
 		units.move(u->get_location(), route.back());
 		u = units.find(route.back());
 
 		unit::clear_status_caches();
-		u->set_goto(action_copy.affected_unit.get_goto());
+		u->set_goto(action.affected_unit.get_goto());
 		u->set_movement(starting_moves, true);
 		u->set_standing();
 
 		if ( resources::game_map->is_village(route.back()) ) {
 			get_village(route.back(), u->side());
 			//MP_COUNTDOWN restore capture bonus
-			if(action_copy.countdown_time_bonus)
+			if(action.countdown_time_bonus)
 			{
 				current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
 			}
@@ -385,7 +381,7 @@ void undo_list::redo()
 
 		gui.invalidate_unit_after_move(route.front(), route.back());
 
-		recorder.add_movement(action_copy.route);
+		recorder.add_movement(route);
 	}
 	undos_.push_back(action);
 	resources::whiteboard->on_gamestate_change();
