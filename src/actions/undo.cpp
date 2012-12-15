@@ -204,7 +204,9 @@ void undo_list::undo()
 			}
 		}
 
+		// Record the unit's current state so it can be redone.
 		action.starting_moves = u->movement_left();
+		action.affected_unit.set_goto(u->get_goto());
 
 		undo_action action_copy(action);
 
