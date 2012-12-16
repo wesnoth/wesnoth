@@ -302,6 +302,8 @@ config stats::write() const
 	ss << turn_expected_damage_taken;
 	res["turn_expected_damage_taken"] = ss.str();
 
+	res["save_id"] = save_id;
+
 	return res;
 }
 
@@ -363,7 +365,6 @@ void stats::write(config_writer &out) const
 	out.write_key_val("turn_expected_damage_taken", ss.str());
 
 	out.write_key_val("save_id", save_id);
-
 }
 
 void stats::read(const config& cfg)
