@@ -9,114 +9,117 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-10-27 15:56+0200\n"
-"PO-Revision-Date: 2005-11-03 17:20GMT Standard Time\n"
-"Last-Translator: Luis Passos Carvalho (lpassos AT gmail DOT com)\n"
+"PO-Revision-Date: 2012-12-04 16:46+0100\n"
+"Last-Translator: trewe <sjr456@yahoo.fr>\n"
 "Language-Team: European Portuguese\n"
-"Language: \n"
+"Language: Portuguese\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Country: PORTUGAL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Language: Portuguese\n"
+"X-Poedit-Country: PORTUGAL\n"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:5
 msgid "Single Hex"
-msgstr ""
+msgstr "Hexágono único"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:15
 msgid "Radius 1 Hex"
-msgstr ""
+msgstr "Hex alcance 1"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:25
 msgid "Radius 2 Hex"
-msgstr ""
+msgstr "Hex alcance 2"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:46
 msgid "Hex Line NW-SE"
-msgstr ""
+msgstr "Linha Noroeste-Sudeste"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:62
 msgid "Hex Line SE-NW"
-msgstr ""
+msgstr "Linha Noroeste-Sudeste"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:11
 msgid "all"
-msgstr ""
+msgstr "todos"
 
 #. [editor_group]: id=water
 #: data/core/editor/terrain-groups.cfg:17
 msgid "water"
-msgstr ""
+msgstr "água"
 
 #. [editor_group]: id=flat
 #: data/core/editor/terrain-groups.cfg:24
 msgid "flat"
-msgstr ""
+msgstr "plano"
 
 #. [editor_group]: id=desert
 #: data/core/editor/terrain-groups.cfg:31
 msgid "desert"
-msgstr ""
+msgstr "deserto"
 
 #. [editor_group]: id=embellishments
 #: data/core/editor/terrain-groups.cfg:38
 msgid "embellishments"
-msgstr ""
+msgstr "estabelecimentos"
 
 #. [editor_group]: id=forest
 #: data/core/editor/terrain-groups.cfg:45
 msgid "forest"
-msgstr ""
+msgstr "floresta"
 
 #. [editor_group]: id=fall
 #: data/core/editor/terrain-groups.cfg:52
 msgid "fall"
-msgstr ""
+msgstr "Outono"
 
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:59
 msgid "frozen"
-msgstr ""
+msgstr "gelado"
 
 #. [editor_group]: id=rough
 #: data/core/editor/terrain-groups.cfg:66
 msgid "rough"
-msgstr ""
+msgstr "rochoso"
 
 #. [editor_group]: id=cave
 #: data/core/editor/terrain-groups.cfg:73
 msgid "cave"
-msgstr ""
+msgstr "caverna"
 
 #. [editor_group]: id=obstacle
 #: data/core/editor/terrain-groups.cfg:80
 msgid "obstacle"
-msgstr ""
+msgstr "obstáculo"
 
 #. [editor_group]: id=village
 #: data/core/editor/terrain-groups.cfg:87
 msgid "village"
-msgstr ""
+msgstr "aldeia"
 
 #. [editor_group]: id=castle
 #: data/core/editor/terrain-groups.cfg:94
 msgid "castle"
-msgstr ""
+msgstr "castelo"
 
 #. [editor_group]: id=bridge
 #: data/core/editor/terrain-groups.cfg:101
 msgid "bridge"
-msgstr ""
+msgstr "ponte"
 
 #. [editor_group]: id=special
 #: data/core/editor/terrain-groups.cfg:108
 msgid "special"
-msgstr ""
+msgstr "especial"
 
 #. [editor_tool_hint]: id=editor-tool-fill
 #. [editor_tool_hint]: id=editor-tool-paint
@@ -128,6 +131,9 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
+"Usa o botão esquerdo/direito do rato para desenhar o terreno da frente/"
+"fundo. Segura Shift para pintar apenas a camada base.·Ctrl+clique·para pegar "
+"uma amostra do terreno sob o cursor."
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
@@ -136,6 +142,8 @@ msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
 msgstr ""
+"O botão esquerdo do rato selecciona, o direito desselecciona. Segura Shift "
+"para magicamente seleccionar hexágonos com o mesmo terreno."
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #. [menu]: id=start_position_button_editor
@@ -145,6 +153,9 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
+"O botão esquerdo do rato mostra a selecção do jogador, o direito limpa. "
+"Teclas numéricas rolam para a posição inicial, alt+número ajusta a posição "
+"inicial para o ponto debaixo do cursor, a tecla del remove-a."
 
 #. [editor_tool_hint]: id=editor-paste
 #: data/core/editor/tool-hints.cfg:30
@@ -152,6 +163,8 @@ msgid ""
 "Click to paste, zoom out for more accuracy when pasting large areas. Use the "
 "edit menu to transform the clipboard (rotate, mirror)."
 msgstr ""
+"Clique para colar; afaste para ter maior exactidão quando colar grandes "
+"áreas. Use o menu editar para transformar a prancheta (rodar, espelhar)."
 
 #. [menu]: id=menu-editor-file
 #: data/themes/editor.cfg:116
@@ -166,112 +179,113 @@ msgstr "Editar"
 #. [menu]: id=menu-editor-map
 #: data/themes/editor.cfg:143
 msgid "Map"
-msgstr ""
+msgstr "Mapa"
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor.cfg:156
-#, fuzzy
 msgid "Window"
-msgstr "Desfazer"
+msgstr "Janela"
 
 #. [menu]: id=menu-editor-terrain
 #: data/themes/editor.cfg:439
 msgid "Group"
-msgstr ""
+msgstr "Grupo"
 
 #. [label]: id=villages-icon
 #: data/themes/editor.cfg:463
 msgid "villages"
-msgstr ""
+msgstr "aldeias"
 
 #: src/editor/editor_controller.cpp:154
 msgid "Fatal error"
-msgstr ""
+msgstr "Erro fatal"
 
 #: src/editor/editor_controller.cpp:178
 msgid "Do you really want to quit?"
-msgstr ""
+msgstr "Queres realmente sair?"
 
 #: src/editor/editor_controller.cpp:180
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr ""
+"Desejas realmente sair? Mudanças feitas no mapa desde o último guardeamento "
+"serão perdidas."
 
 #: src/editor/editor_controller.cpp:182
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
+"Desejas realmente sair? Os mapas seguintes foram modificados e todas as "
+"mudanças desde o último guardeamento serão perdidas:"
 
 #: src/editor/editor_controller.cpp:185
 msgid "Quit"
-msgstr ""
+msgstr "Sair"
 
 #: src/editor/editor_controller.cpp:196
 msgid "No editor time-of-day found."
-msgstr ""
+msgstr "Nenhum tempo-do-dia do editor encontrado."
 
 #: src/editor/map/context_manager.cpp:101
 #: src/editor/map/context_manager.cpp:193
 msgid "(New Map)"
-msgstr ""
+msgstr "(Novo Mapa)"
 
 #: src/editor/map/context_manager.cpp:162
-#, fuzzy
 msgid "Choose a Map to Open"
-msgstr "Escolha um Mapa para Carregar"
+msgstr "Escolha um mapa para abrir"
 
 #: src/editor/map/context_manager.cpp:236
-#, fuzzy
 msgid "Choose a Mask to Apply"
-msgstr "Escolha um Mapa para Carregar"
+msgstr "Escolha uma máscara para aplicar"
 
 #: src/editor/map/context_manager.cpp:243
 msgid "Error loading mask"
-msgstr ""
+msgstr "Erro carregando a máscara"
 
 #: src/editor/map/context_manager.cpp:264
-#, fuzzy
 msgid "Choose Target Map"
-msgstr "Escolha um Mapa para Carregar"
+msgstr "Escolha o mapa alvo"
 
 #: src/editor/map/context_manager.cpp:271
 #: src/editor/map/context_manager.cpp:635
 msgid "Error loading map"
-msgstr ""
+msgstr "Erro ao carregar o mapa"
 
 #: src/editor/map/context_manager.cpp:389
 msgid "Save the Map As"
 msgstr "Gravar o Mapa Como"
 
 #: src/editor/map/context_manager.cpp:392
-#, fuzzy
 msgid "The file already exists. Do you want to overwrite it?"
-msgstr "Esse mapa já existe. Deseja sobrepô-lo?"
+msgstr "O ficheiro já existe. Queres sobrescrevê-lo?"
 
 #: src/editor/map/context_manager.cpp:426
 msgid "No random map generators found."
-msgstr ""
+msgstr "Nenhum gerador de mapas aleatórios encontrado."
 
 #: src/editor/map/context_manager.cpp:439
 #: src/editor/map/context_manager.cpp:443
 msgid "Map creation failed."
-msgstr ""
+msgstr "Criação de mapa mal-sucedido."
 
 #: src/editor/map/context_manager.cpp:455
 msgid "Unsaved Changes"
-msgstr ""
+msgstr "Mudanças não salvas"
 
 #: src/editor/map/context_manager.cpp:456
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
+"Queres descartar todas as mudanças feitas no mapa desde o último "
+"guardeamento?"
 
 #: src/editor/map/context_manager.cpp:550
 #: src/editor/map/context_manager.cpp:591
 msgid "This map is already open."
-msgstr ""
+msgstr "Este mapa já está aberto."
 
 #: src/editor/map/context_manager.cpp:571
 msgid "Map saved."
@@ -279,18 +293,20 @@ msgstr "Mapa gravado."
 
 #: src/editor/map/context_manager.cpp:614
 msgid "Loaded embedded map data"
-msgstr ""
+msgstr "Dados do mapa embutido carregados"
 
 #: src/editor/map/context_manager.cpp:615
 #: src/editor/map/context_manager.cpp:629
 msgid "Map loaded from scenario"
-msgstr ""
+msgstr "Mapa carregado do cenário"
 
 #: src/editor/map/context_manager.cpp:625
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
+"Arquivo de mapa referenciado carregado:\n"
+"$new"
 
 #: src/editor/map/editor_map.cpp:150
 msgid "Player"
@@ -298,63 +314,63 @@ msgstr "Jogador"
 
 #: src/editor/map/editor_map.cpp:257
 msgid "The size of the target map is different from the current map"
-msgstr ""
+msgstr "O tamanho do mapa alvo é diferente do mapa actual"
 
 #: src/editor/map/map_context.cpp:103
 msgid "File not found"
-msgstr ""
+msgstr "Ficheiro não encontrado"
 
 #: src/editor/map/map_context.cpp:117
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
+"O arquivo de mapa parece ser um cenário, mas o valor map_data não aponta "
+"para um ficheiro existente"
 
 #: src/editor/map/map_context.cpp:133
 msgid "Empty map file"
-msgstr ""
+msgstr "Arquivo de mapa vazio"
 
 #: src/editor/map/map_context.cpp:306
-#, fuzzy
 msgid "Could not save into scenario"
-msgstr "Não consegui gravar o mapa: $msg"
+msgstr "Não é possível gravar num cenário"
 
 #: src/editor/map/map_context.cpp:313
 msgid "Could not save the map: $msg"
-msgstr "Não consegui gravar o mapa: $msg"
+msgstr "Não é possível gravar o mapa: $msg"
 
 #: src/editor/palette/editor_palettes.cpp:48
 msgid "(Unknown Group)"
-msgstr ""
+msgstr "(Grupo Desconhecido)"
 
 #: src/editor/palette/editor_palettes.cpp:305
 msgid "(non-core)"
-msgstr ""
+msgstr "(não-defeito)"
 
 #: src/editor/palette/editor_palettes.cpp:306
 msgid "Will not work in game without extra care."
-msgstr ""
+msgstr "Não vai trabalhar no jogo sem cuidado extra."
 
 #: src/editor/palette/terrain_palettes.cpp:55
 msgid "FG: "
-msgstr ""
+msgstr "Frente"
 
 #: src/editor/palette/terrain_palettes.cpp:56
 msgid "BG: "
-msgstr ""
+msgstr "Fundo"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:84
-#, fuzzy
 msgid "player^None"
-msgstr "Jogador"
+msgstr "Nenhum"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:96
 msgid "Player $player_number"
-msgstr ""
+msgstr "Jogador $player_number"
 
 #: src/gui/dialogs/editor_settings.cpp:166
 msgid "Custom setting"
-msgstr ""
+msgstr "Configuração por defeito"
 
 #~ msgid "Quit Editor"
 #~ msgstr "Sair do Editor"
@@ -362,8 +378,37 @@ msgstr ""
 #~ msgid "Undo"
 #~ msgstr "Desfazer"
 
+#~ msgid "Can’t Undo"
+#~ msgstr "Não é possível desfazer"
+
 #~ msgid "Redo"
 #~ msgstr "Refazer"
+
+#~ msgid "Can’t Redo"
+#~ msgstr "Não é possível refazer"
+
+#~ msgid "Auto-update Terrain Transitions: Yes"
+#~ msgstr "Auto-actualizar transições de terreno: Sim"
+
+#~ msgid "Auto-update Terrain Transitions: Partial"
+#~ msgstr "Auto-actualizar transições de terreno: Parcial"
+
+#~ msgid "Auto-update Terrain Transitions: No"
+#~ msgstr "Auto-actualizar transições de terreno: Não"
+
+#~ msgid "Choose player"
+#~ msgstr "Escolha o jogador"
+
+#~ msgid ""
+#~ "Which player should start here? You can use alt and a number key to set "
+#~ "the starting position for a player, and del to clear the starting "
+#~ "position under the cursor. Pressing a number key by itself will scroll to "
+#~ "that player’s starting position."
+#~ msgstr ""
+#~ "Que jogador deve iniciar aqui? Pode usar Alt e uma tecla numérica para "
+#~ "ajustar a posição inicial de um jogador e del para limpar a posição "
+#~ "abaixo do cursor. Pressionando uma tecla numérica por si só irá rolar "
+#~ "para a posição inicial daquele jogador."
 
 #~ msgid "FG"
 #~ msgstr "Frente"
