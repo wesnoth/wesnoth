@@ -67,6 +67,11 @@ static lg::log_domain log_engine_tc("engine/team_construction");
 static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
 
+
+/// The default difficulty setting for campaigns.
+const std::string DEFAULT_DIFFICULTY("NORMAL");
+
+
 wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 		name(),
 		event_id(id),
@@ -286,7 +291,7 @@ carryover_info::carryover_info(const config& cfg)
 	, variables_(cfg.child_or_empty("variables"))
 	, rng_(cfg)
 	, wml_menu_items_()
-	, difficulty_(cfg["difficulty"].empty() ? "NORMAL" : cfg["difficulty"].str())
+	, difficulty_(cfg["difficulty"].empty() ? DEFAULT_DIFFICULTY : cfg["difficulty"].str())
 	, next_scenario_(cfg["next_scenario"])
 {
 	end_level_.read(cfg.child_or_empty("end_level_data"));
@@ -722,7 +727,7 @@ game_data::game_data()
 		, generator_setter_(&recorder)
 		, phase_(INITIAL)
 		, can_end_turn_(true)
-		, difficulty_("NORMAL")
+		, difficulty_(DEFAULT_DIFFICULTY)
 		, scenario_()
 		, next_scenario_()
 		{}
@@ -737,7 +742,7 @@ game_data::game_data(const config& level)
 		, generator_setter_(&recorder)
 		, phase_(INITIAL)
 		, can_end_turn_(level["can_end_turn"].to_bool(true))
-		, difficulty_(level["difficulty"].empty() ? "NORMAL" : level["difficulty"].str())
+		, difficulty_(level["difficulty"].empty() ? DEFAULT_DIFFICULTY : level["difficulty"].str())
 		, scenario_(level["id"])
 		, next_scenario_(level["next_scenario"])
 {

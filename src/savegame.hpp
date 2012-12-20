@@ -108,7 +108,7 @@ public:
 	{ if ( const config & carryover = load_config_.child("carryover_sides_start") )
 		return carryover["difficulty"];
 	  else
-		return "NORMAL"; }
+		return DEFAULT_DIFFICULTY; }
 
 private:
 	/** Display the load-game dialog. */

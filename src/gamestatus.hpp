@@ -41,6 +41,11 @@ namespace t_translation {
 class team_builder;
 typedef boost::shared_ptr<team_builder> team_builder_ptr;
 
+
+/// The default difficulty setting for campaigns.
+extern const std::string DEFAULT_DIFFICULTY;
+
+
 struct wml_menu_item
 {
 	wml_menu_item(const std::string& id, const config* cfg=NULL);
@@ -117,7 +122,7 @@ public:
 		, variables_()
 		, rng_()
 		, wml_menu_items_()
-		, difficulty_("NORMAL")
+		, difficulty_(DEFAULT_DIFFICULTY)
 		, next_scenario_()
 	{}
 	// Turns config from a loaded savegame into carryover_info
