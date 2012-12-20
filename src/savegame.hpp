@@ -124,14 +124,19 @@ private:
 	bool select_difficulty_; /** State of the "change_difficulty" checkbox in the load-game dialog. */
 };
 
-/** The base class for all savegame stuff */
+/**
+ * The base class for all savegame stuff.
+ * This should not be used directly, as it does not directly produce usable saves.
+ * Instead, use one of the derived classes.
+ */
 class savegame
 {
-public:
+protected:
 	/** The only constructor of savegame. The title parameter is only necessary if you
 		intend to do interactive saves. */
 	savegame(game_state& gamestate, const bool compress_saves, const std::string& title = "Save");
 
+public:
 	virtual ~savegame() {}
 
 	/** Saves a game without user interaction, unless the file exists and it should be asked
