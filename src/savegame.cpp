@@ -293,22 +293,13 @@ std::vector<save_info> get_saves_list(const std::string* dir, const std::string*
 	return result;
 }
 
-save_info::save_info(const std::string& n, const time_t& m) : name_(n), modified_(m) {
-}
-
-const std::string& save_info::name() const {
-	return name_;
-}
-
-const time_t& save_info::modified() const {
-	return modified_;
-}
 
 const config& save_info::summary() const {
 	return save_index_manager.get(name());
 }
 
-const std::string save_info::format_time_local() const{
+std::string save_info::format_time_local() const
+{
 	char time_buf[256] = {0};
 	tm* tm_l = localtime(&modified());
 	if (tm_l) {
@@ -325,7 +316,7 @@ const std::string save_info::format_time_local() const{
 	return time_buf;
 }
 
-const std::string save_info::format_time_summary() const
+std::string save_info::format_time_summary() const
 {
 	time_t t = modified();
 	time_t curtime = time(NULL);

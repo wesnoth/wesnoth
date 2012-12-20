@@ -35,13 +35,16 @@ class save_info {
 private:
 	friend class create_save_info;
 private:
-	save_info(const std::string& name, const time_t& modified);
+	save_info(const std::string& name, const time_t& modified) :
+		name_(name), modified_(modified)
+	{}
+
 public:
-	const std::string& name()     const;
-	const time_t&      modified() const;
+	const std::string& name()     const  { return name_; }
+	const time_t&      modified() const  { return modified_; }
 public:
-	const std::string format_time_summary() const;
-	const std::string format_time_local() const;
+	std::string format_time_summary() const;
+	std::string format_time_local() const;
 	const config& summary() const;
 private:
 	std::string name_;
@@ -99,8 +102,8 @@ public:
 	// Getter-methods
 	bool show_replay() const { return show_replay_; }
 	bool cancel_orders() const { return cancel_orders_; }
-	const std::string filename() const { return filename_; }
-	const config load_config() const { return load_config_; }
+	const std::string & filename() const { return filename_; }
+	const config & load_config() const { return load_config_; }
 
 private:
 	/** Display the load-game dialog. */
