@@ -627,7 +627,8 @@ void loadgame::load_game(
 	}
 
 	if (!difficulty_.empty()){
-		load_config_.child("carryover_sides_start")["difficulty"] = difficulty_;
+		if ( config & carryover = load_config_.child("carryover_sides_start") )
+			carryover["difficulty"] = difficulty_;
 	}
 
 	gamestate_.classification().campaign_define = load_config_["campaign_define"].str();

@@ -103,7 +103,12 @@ public:
 	bool show_replay() const { return show_replay_; }
 	bool cancel_orders() const { return cancel_orders_; }
 	const std::string & filename() const { return filename_; }
-	const config & load_config() const { return load_config_; }
+
+	std::string get_difficulty() const
+	{ if ( const config & carryover = load_config_.child("carryover_sides_start") )
+		return carryover["difficulty"];
+	  else
+		return "NORMAL"; }
 
 private:
 	/** Display the load-game dialog. */

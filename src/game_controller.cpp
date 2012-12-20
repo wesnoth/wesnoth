@@ -601,7 +601,7 @@ bool game_controller::load_game()
 		load.load_game(game::load_game_exception::game, game::load_game_exception::show_replay, game::load_game_exception::cancel_orders, game::load_game_exception::select_difficulty, game::load_game_exception::difficulty);
 
 		cache_.clear_defines();
-		game_config::scoped_preproc_define dificulty_def(load.load_config().child("carryover_sides_start")["difficulty"]);
+		game_config::scoped_preproc_define difficulty_def(load.get_difficulty());
 
 		game_config::scoped_preproc_define campaign_define_def(state_.classification().campaign_define, !state_.classification().campaign_define.empty());
 
