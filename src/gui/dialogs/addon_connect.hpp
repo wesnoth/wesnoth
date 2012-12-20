@@ -32,17 +32,12 @@ public:
 	 * @param host_name [out]     The final value of the host_name if the
 	 *                            dialog returns @ref twindow::OK or 3
 	 *                            undefined otherwise.
-	 * @param allow_updates       Sets @ref allow_updates_.
 	 * @param allow_remove        Sets @ref allow_remove_.
 	 */
 	taddon_connect(std::string& host_name
-			, const bool allow_updates
 			, const bool allow_remove);
 
 private:
-
-	/** Enable the update addon button? */
-	bool allow_updates_;
 
 	/** Enable the addon remove button? */
 	bool allow_remove_;

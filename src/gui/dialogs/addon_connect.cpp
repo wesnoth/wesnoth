@@ -45,10 +45,8 @@ namespace gui2 {
 REGISTER_DIALOG(addon_connect)
 
 taddon_connect::taddon_connect(std::string& host_name
-		, const bool allow_updates
 		, const bool allow_remove)
-	: allow_updates_(allow_updates)
-	, allow_remove_(allow_remove)
+	: allow_remove_(allow_remove)
 {
 	register_text("host_name", false, host_name, true);
 }

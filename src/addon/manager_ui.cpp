@@ -1032,7 +1032,7 @@ bool manage_addons(display& disp)
 	std::string host_name = preferences::campaign_server();
 	const bool have_addons = !installed_addons().empty();
 
-	gui2::taddon_connect addon_dlg(host_name, have_addons, have_addons);
+	gui2::taddon_connect addon_dlg(host_name, have_addons);
 	addon_dlg.show(disp.video());
 	int res = addon_dlg.get_retval();
 
