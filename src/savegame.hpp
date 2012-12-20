@@ -134,13 +134,10 @@ public:
 
 	virtual ~savegame() {}
 
-	/** Save a game without any further user interaction. Atm, this is only used by the
-		console_handler save actions. The return value denotes, if the save was successful or not. */
-	//bool save_game(const std::string& filename);
-
 	/** Saves a game without user interaction, unless the file exists and it should be asked
 		to overwrite it. The return value denotes, if the save was successful or not.
-		This is used by automatically generated replays, start-of-scenario saves and autosaves.
+		This is used by automatically generated replays, start-of-scenario saves, autosaves,
+		and saves from the console (e.g. ":w").
 	*/
 	bool save_game_automatic(CVideo& video, bool ask_for_overwrite = false, const std::string& filename = "");
 

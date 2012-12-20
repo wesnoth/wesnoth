@@ -3111,13 +3111,14 @@ void console_handler::do_benchmark() {
 	menu_handler_.gui_->toggle_benchmark();
 }
 void console_handler::do_save() {
-	savegame::savegame save(menu_handler_.gamestate_, preferences::compress_saves());
+	savegame::ingame_savegame save(menu_handler_.gamestate_, *menu_handler_.gui_,
+	                               resources::controller->to_config(),
+	                               preferences::compress_saves());
 	save.save_game_automatic(menu_handler_.gui_->video(), true, get_data());
 }
 void console_handler::do_save_quit() {
-	savegame::savegame save(menu_handler_.gamestate_, preferences::compress_saves());
-	save.save_game_automatic(menu_handler_.gui_->video(), true, get_data());
-	throw end_level_exception(QUIT);
+	do_save();
+	do_quit();
 }
 void console_handler::do_quit() {
 	throw end_level_exception(QUIT);
