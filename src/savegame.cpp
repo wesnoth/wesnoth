@@ -122,9 +122,9 @@ static lg::log_domain log_enginerefac("enginerefac");
 		LOG_SAVE << "conv(U2A)-from:[" << name << "]" << std::endl;
 		conv_ansi_utf8(name, false);
 		LOG_SAVE << "conv(U2A)-to:[" << name << "]" << std::endl;
-		LOG_SAVE << "replace_underbar2space-from:[" << name << "]" << std::endl;
+		LOG_SAVE << "replace_space2underbar-from:[" << name << "]" << std::endl;
 		std::replace(name.begin(), name.end(), ' ', '_');
-		LOG_SAVE << "replace_underbar2space-to:[" << name << "]" << std::endl;
+		LOG_SAVE << "replace_space2underbar-to:[" << name << "]" << std::endl;
 	}
 #else /* ! _WIN32 */
 	void replace_underbar2space(std::string &name) {
