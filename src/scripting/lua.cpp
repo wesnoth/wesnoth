@@ -4054,13 +4054,17 @@ void LuaKernel::initialize()
 	load_game();
 }
 
+/// These are the child tags of [scenario] (and the like) that are handled
+/// elsewhere (in the C++ code).
+/// Any child tags not in this list will be passed to Lua's on_load event.
 static char const *handled_file_tags[] = {
-	"color_palette", "color_range", "era", "event", "generator",
-	"label", "lua", "map", "menu_item", "modification", "music", "options",
-	"side", "sound_source", "story","terrain_graphics", "time", "time_area",
-	"tunnel", "variables", "endlevel", "display",
-	//TODO: These are only needed for MP campaigns and only for subsequent scenarios, see bug #18883
-	"snapshot", "multiplayer", "replay_start"
+	"color_palette", "color_range", "display", "endlevel", "era",
+	"event", "generator", "label", "lua", "map", "menu_item",
+	"modification", "music", "options", "side", "sound_source",
+	"story", "terrain_graphics", "time", "time_area", "tunnel",
+	"variables",
+	/// @todo: These are only needed for MP campaigns and only for subsequent scenarios, see bug #18883
+	"multiplayer", "replay_start", "snapshot"
 };
 
 static bool is_handled_file_tag(const std::string &s)
