@@ -31,7 +31,7 @@
 class undo_list {
 	/// Records information to be able to undo an action.
 	struct undo_action {
-		enum ACTION_TYPE { MOVE, RECRUIT, RECALL, DISMISS };
+		enum ACTION_TYPE { NONE, MOVE, RECRUIT, RECALL, DISMISS };
 
 		/// Constructor for move actions.
 		undo_action(const unit& u,
@@ -75,6 +75,15 @@ class undo_list {
 				starting_dir(map_location::NDIRECTIONS)
 			{}
 
+		// Shortcuts for identifying the type of action:
+		bool is_dismiss() const { return type == DISMISS; }
+		bool is_recall()  const { return type == RECALL; }
+		bool is_recruit() const { return type == RECRUIT; }
+		bool is_move()    const { return type == MOVE; }
+		bool valid()      const { return type != NONE; }
+
+
+		// Data:
 		/// The hexes occupied by affected_unit during this action.
 		std::vector<map_location> route;
 		int starting_moves;
@@ -84,10 +93,6 @@ class undo_list {
 		unit affected_unit;
 		int countdown_time_bonus;
 		map_location::DIRECTION starting_dir;
-
-		bool is_dismiss() const { return type == DISMISS; }
-		bool is_recall() const { return type == RECALL; }
-		bool is_recruit() const { return type == RECRUIT; }
 	};
 	typedef std::vector<undo_action> action_list;
 

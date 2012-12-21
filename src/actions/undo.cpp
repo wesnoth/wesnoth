@@ -182,7 +182,7 @@ void undo_list::undo()
 		// to also do the ovelerlapped hexes
 		gui.invalidate(recruit_loc);
 		units.erase(recruit_loc);
-	} else {
+	} else if ( action.is_move() ) {
 		// Undo a move action
 		const int starting_moves = action.starting_moves;
 		std::vector<map_location> route = action.route;
@@ -219,6 +219,9 @@ void undo_list::undo()
 		u->set_standing();
 
 		gui.invalidate_unit_after_move(route.front(), route.back());
+	} else {
+		// Invalid/unknown action type.
+		return;
 	}
 	recorder.undo();
 	redos_.push_back(action);
@@ -347,7 +350,7 @@ void undo_list::redo()
 			gui::dialog(gui, "", msg,gui::OK_ONLY).show();
 			return;
 		}
-	} else {
+	} else if ( action.is_move() ) {
 		// Redo movement action
 		const int starting_moves = action.starting_moves;
 		const std::vector<map_location> & route = action.route;
@@ -382,6 +385,9 @@ void undo_list::redo()
 		gui.invalidate_unit_after_move(route.front(), route.back());
 
 		recorder.add_movement(route);
+	} else {
+		// Invalid/unknown action type.
+		return;
 	}
 	undos_.push_back(action);
 	resources::whiteboard->on_gamestate_change();
