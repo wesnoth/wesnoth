@@ -6,7 +6,7 @@ return {
         -- clearing his way with other units, if necessary
 
         local H = wesnoth.require "lua/helper.lua"
-        local AH = wesnoth.require "campaigns/Under_the_Burning_Suns/ai/ai_helper.lua"
+        local AH = wesnoth.require "ai/lua/ai_helper.lua"
         local LS = wesnoth.require "lua/location_set.lua"
 
         function messenger_escort:find_enemies_in_way(unit, goal_x, goal_y)
