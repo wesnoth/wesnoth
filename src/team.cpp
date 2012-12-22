@@ -315,6 +315,7 @@ void team::build(const config &cfg, const gamemap& map, int gold)
 	fog_.read(cfg["fog_data"]);
 	shroud_.set_enabled(cfg["shroud"].to_bool());
 	shroud_.read(cfg["shroud_data"]);
+	auto_shroud_updates_ = cfg["auto_shroud"].to_bool(auto_shroud_updates_);
 
 	LOG_NG << "team::team(...): team_name: " << info_.team_name
 	       << ", shroud: " << uses_shroud() << ", fog: " << uses_fog() << ".\n";
@@ -357,6 +358,7 @@ void team::build(const config &cfg, const gamemap& map, int gold)
 void team::write(config& cfg) const
 {
 	info_.write(cfg);
+	cfg["auto_shroud"] = auto_shroud_updates_;
 	cfg["shroud"] = uses_shroud();
 	cfg["fog"] = uses_fog();
 	cfg["gold"] = gold_;
