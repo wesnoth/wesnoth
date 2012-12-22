@@ -287,7 +287,7 @@ public:
 	void keyboard_remove_from_chain(twidget* widget);
 
 private:
-
+#if 0
 	bool hover_pending_;			   /**< Is there a hover event pending? */
 	unsigned hover_id_;                /**< Id of the pending hover event. */
 	SDL_Rect hover_box_;               /**< The area the mouse can move in,
@@ -304,7 +304,7 @@ private:
 
 	/** The widget of the currently active help popup. */
 	twidget* help_popup_;
-
+#endif
 	/** The widget that holds the keyboard focus_. */
 	twidget* keyboard_focus_;
 

@@ -627,12 +627,14 @@ tdistributor::tdistributor(twidget& owner
 	, tmouse_button_right("right"
 			, owner
 			, queue_position)
+#if 0
 	, hover_pending_(false)
 	, hover_id_(0)
 	, hover_box_()
 	, had_hover_(false)
 	, tooltip_(0)
 	, help_popup_(0)
+#endif
 	, keyboard_focus_(0)
 	, keyboard_focus_chain_()
 {
