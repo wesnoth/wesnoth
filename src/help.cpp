@@ -325,7 +325,6 @@ private:
 	const section &toplevel_;
 	std::set<const section*> expanded_;
 	surface_restorer restorer_;
-	SDL_Rect rect_;
 	topic const *chosen_topic_;
 	visible_item selected_item_;
 };
@@ -2065,7 +2064,6 @@ help_menu::help_menu(CVideo &video, section const &toplevel, int max_height) :
 	toplevel_(toplevel),
 	expanded_(),
 	restorer_(),
-	rect_(),
 	chosen_topic_(NULL),
 	selected_item_(&toplevel, "")
 {
