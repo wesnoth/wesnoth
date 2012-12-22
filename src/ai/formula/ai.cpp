@@ -787,7 +787,7 @@ variant formula_ai::get_value(const std::string& key) const
 
 	} else if(key == "my_attacks")
 	{
-		return variant(new attack_map_callable(*this, get_srcdst(), units));
+		return variant(new attack_map_callable(*this, units));
 	} else if(key == "enemy_moves")
 	{
 		return variant(new move_map_callable(get_enemy_srcdst(), get_enemy_dstsrc(), units));

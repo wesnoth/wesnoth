@@ -30,11 +30,10 @@ namespace game_logic {
 class attack_map_callable : public formula_callable {
 public:
 	typedef std::multimap<map_location, map_location> move_map;
-	attack_map_callable(const ai::formula_ai& ai, const move_map& srcdst, const unit_map& units)
-		: srcdst_(srcdst), units_(units), ai_(ai)
+	attack_map_callable(const ai::formula_ai& ai, const unit_map& units)
+		: units_(units), ai_(ai)
 	{}
 private:
-	const move_map& srcdst_;
 	const unit_map& units_;
 	const ai::formula_ai& ai_;
 
