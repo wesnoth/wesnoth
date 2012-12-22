@@ -27,7 +27,7 @@ namespace gui2 {
 class tdata_manage : public tdialog
 {
 public:
-	explicit tdata_manage(const config& cache_config);
+	tdata_manage();
 
 	const std::string& filename() const { return filename_; }
 
@@ -51,7 +51,6 @@ private:
 	std::string filename_;
 
 	std::vector<savegame::save_info> games_;
-	const config& cache_config_;
 
 	std::vector<std::string> last_words_;
 };

@@ -3307,7 +3307,7 @@ void console_handler::do_control_dialog()
 
 void console_handler::do_manage() {
 	config cfg;
-	gui2::tdata_manage manager(cfg);
+	gui2::tdata_manage manager;
 	manager.show(resources::screen->video());
 }
 

@@ -514,8 +514,7 @@ struct twrapper<gui2::tdata_manage>
 {
 	static gui2::tdata_manage* create()
 	{
-		/** @todo Would be nice to add real data to the config. */
-		return new gui2::tdata_manage(config());
+		return new gui2::tdata_manage();
 	}
 };
 
