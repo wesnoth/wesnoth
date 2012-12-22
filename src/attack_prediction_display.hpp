@@ -43,7 +43,6 @@ public:
 	void set_selection(int) {}
 
 private:
-	const battle_context& bc_;
 	const map_location& attacker_loc_;
 	const map_location& defender_loc_;
 	const unit& attacker_;

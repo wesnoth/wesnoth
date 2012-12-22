@@ -49,7 +49,6 @@ const int battle_prediction_pane::max_hp_distrib_rows_ = 10;
 battle_prediction_pane::battle_prediction_pane(const battle_context &bc,
 		const map_location &attacker_loc, const map_location &defender_loc) :
 	gui::preview_pane(resources::screen->video()),
-	bc_(bc),
 	attacker_loc_(attacker_loc),
 	defender_loc_(defender_loc),
 	attacker_(*resources::units->find(attacker_loc)),
