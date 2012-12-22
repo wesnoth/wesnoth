@@ -31,7 +31,7 @@ class mouse_action_map_label : public mouse_action
 {
 public:
 	mouse_action_map_label(const CKey& key, empty_palette& palette)
-	: mouse_action(palette, key), click_(false), clicked_on_(), last_draged_(), tmp_label_(NULL)
+	: mouse_action(palette, key), click_(false), clicked_on_(), last_draged_()
 	  {
 	  }
 
@@ -60,7 +60,6 @@ private:
 	bool click_;
 	map_location clicked_on_;
 	map_location last_draged_;
-	terrain_label* tmp_label_;
 };
 
 } //end namespace editor
