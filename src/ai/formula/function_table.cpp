@@ -391,8 +391,9 @@ private:
 
 class nearest_loc_function : public function_expression {
 public:
-	nearest_loc_function(const args_list& args, const formula_ai& ai)
-	  : function_expression("nearest_loc", args, 2, 2), ai_(ai) {
+	nearest_loc_function(const args_list& args, const formula_ai& /*ai*/)
+	  : function_expression("nearest_loc", args, 2, 2)
+	{
 	}
 
 private:
@@ -418,15 +419,14 @@ private:
 		else
 			return variant();
 	}
-
-	const formula_ai& ai_;
 };
 
 
 class adjacent_locs_function : public function_expression {
 public:
-	adjacent_locs_function(const args_list& args, const formula_ai& ai)
-	  : function_expression("adjacent_locs", args, 1, 1), ai_(ai) {
+	adjacent_locs_function(const args_list& args, const formula_ai& /*ai*/)
+	  : function_expression("adjacent_locs", args, 1, 1)
+	{
 	}
 
 private:
@@ -443,15 +443,14 @@ private:
 
 		return variant(&v);
 	}
-
-	const formula_ai& ai_;
 };
 
 
 class locations_in_radius_function : public function_expression {
 public:
-	locations_in_radius_function(const args_list& args, const formula_ai& ai)
-	  : function_expression("locations_in_radius", args, 2, 2), ai_(ai) {
+	locations_in_radius_function(const args_list& args, const formula_ai& /*ai*/)
+	  : function_expression("locations_in_radius", args, 2, 2)
+	{
 	}
 
 private:
@@ -481,8 +480,6 @@ private:
 
 		return variant(&v);
 	}
-
-	const formula_ai& ai_;
 };
 
 
@@ -523,8 +520,9 @@ private:
 
 class castle_locs_function : public function_expression {
 public:
-	castle_locs_function(const args_list& args, const formula_ai& ai)
-	  : function_expression("castle_locs", args, 1, 1), ai_(ai) {
+	castle_locs_function(const args_list& args, const formula_ai& /*ai*/)
+	  : function_expression("castle_locs", args, 1, 1)
+	{
 	}
 
 private:
@@ -570,8 +568,6 @@ private:
 
 		return variant(&res);
 	}
-
-	const formula_ai& ai_;
 };
 
 
@@ -584,8 +580,9 @@ private:
  */
 class timeofday_modifier_function : public function_expression {
 public:
-	timeofday_modifier_function(const args_list& args, const formula_ai& ai)
-	  : function_expression("timeofday_modifier", args, 1, 2), ai_(ai) {
+	timeofday_modifier_function(const args_list& args, const formula_ai& /*ai*/)
+	  : function_expression("timeofday_modifier", args, 1, 2)
+	{
 	}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
@@ -615,8 +612,6 @@ private:
 
 		return variant(combat_modifier(*loc, un.alignment(), un.is_fearless()));
 	}
-
-	const formula_ai& ai_;
 };
 
 
@@ -747,8 +742,8 @@ private:
 
 class akihara_battle_evaluation : public function_expression {
 public:
-	akihara_battle_evaluation(const args_list& args, const formula_ai& ai)
-		: function_expression("aki_eval", args, 4, 4), ai_(ai)
+	akihara_battle_evaluation(const args_list& args, const formula_ai& /*ai*/)
+		: function_expression("aki_eval", args, 4, 4)
 	{
 	}
 
@@ -853,15 +848,14 @@ private:
 			result.second = vars;
 			return result;
 	}
-
-	const formula_ai& ai_;
 };
 
 
 class calculate_outcome_function : public function_expression {
 public:
-	calculate_outcome_function(const args_list& args, const formula_ai& ai)
-	  : function_expression( "calculate_outcome", args, 3, 4), ai_(ai) {
+	calculate_outcome_function(const args_list& args, const formula_ai& /*ai*/)
+	  : function_expression( "calculate_outcome", args, 3, 4)
+	{
 	}
 
 private:
@@ -938,15 +932,14 @@ private:
 		vars.push_back(variant(new outcome_callable(hitLeft, prob, status)));
 		return variant(&vars);
 	}
-
-	const formula_ai& ai_;
 };
 
 
 class outcomes_function : public function_expression {
 public:
-	outcomes_function(const args_list& args, const formula_ai& ai)
-	  : function_expression("outcomes", args, 1, 1), ai_(ai) {
+	outcomes_function(const args_list& args, const formula_ai& /*ai*/)
+	  : function_expression("outcomes", args, 1, 1)
+	{
 	}
 
 private:
@@ -974,8 +967,6 @@ private:
 
 		return variant(&vars);
 	}
-
-	const formula_ai& ai_;
 };
 
 //class evaluate_for_position_function : public function_expression {
@@ -1308,9 +1299,8 @@ private:
 
 class attack_function : public function_expression {
 public:
-	explicit attack_function(const args_list& args, const formula_ai& ai)
-	  : function_expression("attack", args, 3, 4),
-		ai_(ai)
+	explicit attack_function(const args_list& args, const formula_ai& /*ai*/)
+	  : function_expression("attack", args, 3, 4)
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
@@ -1324,8 +1314,6 @@ private:
 		}
 		return variant(new attack_callable(move_from, src, dst, weapon));
 	}
-
-	const formula_ai& ai_;
 };
 
 
@@ -1439,8 +1427,8 @@ private:
 
 class unit_at_function : public function_expression {
 public:
-	unit_at_function(const args_list& args, const formula_ai& ai_object)
-	  : function_expression("unit_at", args, 1, 1), ai_(ai_object)
+	unit_at_function(const args_list& args, const formula_ai& /*ai*/)
+	  : function_expression("unit_at", args, 1, 1)
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
@@ -1456,8 +1444,6 @@ private:
 			return variant();
 		}
 	}
-
-	const formula_ai& ai_;
 };
 
 
@@ -1492,8 +1478,8 @@ private:
 
 class units_can_reach_function : public function_expression {
 public:
-	units_can_reach_function(const args_list& args, const formula_ai& ai_object)
-	  : function_expression("units_can_reach", args, 2, 2), ai_(ai_object)
+	units_can_reach_function(const args_list& args, const formula_ai& /*ai*/)
+	  : function_expression("units_can_reach", args, 2, 2)
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
@@ -1511,15 +1497,13 @@ private:
 
 		return variant(&vars);
 	}
-
-	const formula_ai& ai_;
 };
 
 
 class defense_on_function : public function_expression {
 public:
-	defense_on_function(const args_list& args, const formula_ai& ai_object)
-	  : function_expression("defense_on", args, 2, 2), ai_(ai_object)
+	defense_on_function(const args_list& args, const formula_ai& /*ai*/)
+	  : function_expression("defense_on", args, 2, 2)
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
@@ -1563,15 +1547,13 @@ private:
 
 		return variant();
 	}
-
-	const formula_ai& ai_;
 };
 
 
 class chance_to_hit_function : public function_expression {
 public:
-	chance_to_hit_function(const args_list& args, const formula_ai& ai_object)
-	  : function_expression("chance_to_hit", args, 2, 2), ai_(ai_object)
+	chance_to_hit_function(const args_list& args, const formula_ai& /*ai*/)
+	  : function_expression("chance_to_hit", args, 2, 2)
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
@@ -1609,15 +1591,13 @@ private:
 
 		return variant();
 	}
-
-	const formula_ai& ai_;
 };
 
 
 class movement_cost_function : public function_expression {
 public:
-	movement_cost_function(const args_list& args, const formula_ai& ai_object)
-	  : function_expression("movement_cost", args, 2, 2), ai_(ai_object)
+	movement_cost_function(const args_list& args, const formula_ai& /*ai*/)
+	  : function_expression("movement_cost", args, 2, 2)
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
@@ -1655,8 +1635,6 @@ private:
 
 		return variant();
 	}
-
-	const formula_ai& ai_;
 };
 
 class is_avoided_location_function : public function_expression {
@@ -1679,8 +1657,10 @@ private:
 
 class max_possible_damage_function : public function_expression {
 public:
-	max_possible_damage_function(const args_list& args, const formula_ai& ai_object)
-	  : function_expression("max_possible_damage", args, 2, 2), ai_(ai_object)
+	max_possible_damage_function(
+			  const args_list& args
+			, const formula_ai& /*ai*/)
+	  : function_expression("max_possible_damage", args, 2, 2)
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
@@ -1726,15 +1706,15 @@ private:
 			return variant(best);
 		}
 	}
-
-	const formula_ai& ai_;
 };
 
 
 class max_possible_damage_with_retaliation_function : public function_expression {
 public:
-	max_possible_damage_with_retaliation_function(const args_list& args, const formula_ai& ai_object)
-	  : function_expression("max_possible_damage_with_retaliation", args, 2, 2), ai_(ai_object)
+	max_possible_damage_with_retaliation_function(
+			  const args_list& args
+			, const formula_ai& /*ai*/)
+		: function_expression("max_possible_damage_with_retaliation", args, 2, 2)
 	{}
 private:
 
@@ -1779,8 +1759,6 @@ private:
 
 		return variant(&vars);
 	}
-
-	const formula_ai& ai_;
 };
 
 }
