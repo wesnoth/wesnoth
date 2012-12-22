@@ -128,12 +128,12 @@ public:
 };
 
 class indexer {
-	size_t h_, w_;
+	size_t w_;
 
 public:
-	indexer(size_t a, size_t b) : h_(a), w_(b) { }
+	indexer(size_t w) : w_(w) { }
 	size_t operator()(const map_location& loc) {
-		return loc.y * h_ + loc.x;
+		return loc.y * w_ + loc.x;
 	}
 };
 }
@@ -167,7 +167,7 @@ pathfind::plain_route pathfind::a_star_search(const map_location& src, const map
 	static std::vector<node> nodes;
 	nodes.resize(width * height);  // this create uninitalized nodes
 
-	indexer index(width, height);
+	indexer index(width);
 	comp node_comp(nodes);
 
 	nodes[index(dst)].g = stop_at + 1;
