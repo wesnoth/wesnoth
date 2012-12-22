@@ -45,13 +45,12 @@ static lg::log_domain log_engine("engine");
 namespace storyscreen {
 
 controller::controller(display& disp, const vconfig& data, const std::string& scenario_name,
-		       int segment_index, int total_segments)
+		       int segment_index)
 	: disp_(disp)
 	, disp_resize_lock_()
 	, evt_context_()
 	, scenario_name_(scenario_name)
 	, segment_index_(segment_index)
-	, total_segments_(total_segments)
 	, parts_()
 {
 	ASSERT_LOG(resources::state_of_game != NULL, "Ouch: gamestate is NULL when initializing storyscreen controller");

@@ -47,7 +47,7 @@ class controller
 {
 public:
 	controller(display& disp, const vconfig& data, const std::string& scenario_name,
-		   int segment_index, int total_segments);
+		   int segment_index);
 
 	/**
 	 * Display all story screen parts in a first..last sequence.
@@ -67,7 +67,6 @@ private:
 
 	std::string scenario_name_;
 	int segment_index_;
-	int total_segments_;
 
 	// The part cache.
 	std::vector< part_pointer_type > parts_;

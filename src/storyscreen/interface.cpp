@@ -56,14 +56,13 @@ namespace {
 void show_story(display &disp, const std::string &scenario_name,
 	const config::const_child_itors &story)
 {
-	const int total_segments = count_segments(story);
 	int segment_count = 0;
 	config::const_child_iterator itor = story.first;
 	storyscreen::START_POSITION startpos = storyscreen::START_BEGINNING;
 	while (itor != story.second)
 	{
 		storyscreen::controller ctl(disp, vconfig(*itor, true),
-			scenario_name, segment_count, total_segments);
+			scenario_name, segment_count);
 		storyscreen::STORY_RESULT result = ctl.show(startpos);
 
 		switch(result) {
