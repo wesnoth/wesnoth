@@ -20,15 +20,13 @@
 #include "game_display.hpp"
 #include "mouse_handler_base.hpp"
 
-class tod_manager;
 class battle_context;
 
 namespace events{
 
 class mouse_handler : public mouse_handler_base {
 public:
-	mouse_handler(game_display* gui, std::vector<team>& teams, unit_map& units, gamemap& map,
-		tod_manager& tod_mng);
+	mouse_handler(game_display* gui, std::vector<team>& teams, unit_map& units, gamemap& map);
 	~mouse_handler();
 	static mouse_handler* get_singleton() { return singleton_ ;}
 	void set_side(int side_number);
@@ -121,7 +119,6 @@ private:
 	game_display* gui_;
 	std::vector<team>& teams_;
 	unit_map& units_;
-	tod_manager& tod_manager_;
 
 	// previous highlighted hexes
 	// the hex of the selected unit and empty hex are "free"

@@ -40,7 +40,6 @@
 #include "replay.hpp"
 #include "resources.hpp"
 #include "rng.hpp"
-#include "tod_manager.hpp"
 #include "wml_separators.hpp"
 #include "whiteboard/manager.hpp"
 
@@ -55,13 +54,12 @@ namespace events{
 
 
 mouse_handler::mouse_handler(game_display* gui, std::vector<team>& teams,
-		unit_map& units, gamemap& map, tod_manager& tod_mng) :
+		unit_map& units, gamemap& map) :
 	mouse_handler_base(),
 	map_(map),
 	gui_(gui),
 	teams_(teams),
 	units_(units),
-	tod_manager_(tod_mng),
 	previous_hex_(),
 	previous_free_hex_(),
 	selected_hex_(),
