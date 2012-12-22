@@ -89,7 +89,6 @@ private:
 	tod_manager tod_manager_start_;
 
 	unsigned int current_turn_;
-	int delay_;
 	bool is_playing_;
 
 	bool show_everything_;

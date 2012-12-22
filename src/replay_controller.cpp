@@ -74,7 +74,6 @@ replay_controller::replay_controller(const config& level,
 	units_start_(units_),
 	tod_manager_start_(level, num_turns),
 	current_turn_(1),
-	delay_(0),
 	is_playing_(false),
 	show_everything_(false),
 	show_team_(state_of_game.classification().campaign_type == "multiplayer" ? 0 : 1)
