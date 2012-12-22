@@ -144,14 +144,13 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 
 menu_handler::menu_handler(game_display* gui, unit_map& units, std::vector<team>& teams,
 		const config& level, const gamemap& map,
-		const config& game_config, const tod_manager& tod_mng, game_state& gamestate) :
+		const config& game_config, game_state& gamestate) :
 	gui_(gui),
 	units_(units),
 	teams_(teams),
 	level_(level),
 	map_(map),
 	game_config_(game_config),
-	tod_manager_(tod_mng),
 	gamestate_(gamestate),
 	textbox_info_(),
 	last_search_(),

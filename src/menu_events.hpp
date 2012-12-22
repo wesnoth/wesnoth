@@ -24,7 +24,6 @@
 
 class game_state;
 class gamemap;
-class tod_manager;
 
 namespace events {
 	class mouse_handler;
@@ -38,7 +37,7 @@ class menu_handler : private chat_handler {
 public:
 	menu_handler(game_display* gui, unit_map& units, std::vector<team>& teams,
 		const config& level, const gamemap& map,
-		const config& game_config, const tod_manager& tod_mng, game_state& gamestate);
+		const config& game_config, game_state& gamestate);
 	virtual ~menu_handler();
 
 	gui::floating_textbox& get_textbox();
@@ -121,7 +120,6 @@ private:
 	const config& level_;
 	const gamemap& map_;
 	const config& game_config_;
-	const tod_manager& tod_manager_;
 	game_state& gamestate_;
 
 	gui::floating_textbox textbox_info_;
