@@ -555,6 +555,7 @@ void loadgame::show_difficulty_dialog()
 	if (difficulty_descriptions.empty())
 		return;
 
+#if 0
 	int default_difficulty = -1;
 	for (size_t i = 0; i < difficulties.size(); i++) {
 		if (difficulties[i] == cfg_summary["difficulty"]) {
@@ -562,10 +563,9 @@ void loadgame::show_difficulty_dialog()
 			break;
 		}
 	}
+#endif
 
-	//default_difficulty = 2;
-
-	gui2::tcampaign_difficulty difficulty_dlg(difficulty_descriptions, default_difficulty);
+	gui2::tcampaign_difficulty difficulty_dlg(difficulty_descriptions);
 	difficulty_dlg.show(gui_.video());
 
 	if (difficulty_dlg.get_retval() != gui2::twindow::OK) {

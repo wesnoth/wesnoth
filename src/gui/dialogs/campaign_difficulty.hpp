@@ -27,8 +27,7 @@ class tcampaign_difficulty : public tdialog
 {
 public:
 	explicit tcampaign_difficulty(
-			  const std::vector<std::string>& items
-			, const int default_difficulty = -1);
+			  const std::vector<std::string>& items);
 
 	/**
 	 * Returns the selected item index after displaying.
@@ -39,8 +38,6 @@ public:
 private:
 	int index_;
 	std::vector<tlegacy_menu_item> items_;
-
-	const int default_difficulty_;
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
