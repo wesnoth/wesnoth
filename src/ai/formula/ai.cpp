@@ -179,7 +179,7 @@ pathfind::plain_route formula_ai::shortest_path_calculator(const map_location &s
     map_location destination = dst;
 
     unit_map &units_ = *resources::units;
-    pathfind::shortest_path_calculator calc(*unit_it, current_team(), units_, *resources::teams, *resources::game_map);
+    pathfind::shortest_path_calculator calc(*unit_it, current_team(), *resources::teams, *resources::game_map);
 
     unit_map::const_iterator dst_un = units_.find(destination);
 

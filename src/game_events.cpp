@@ -1222,7 +1222,6 @@ std::vector<map_location> fake_unit_path(const unit& fake_unit, const std::vecto
 		}
 		pathfind::shortest_path_calculator calc(fake_unit,
 				(*resources::teams)[fake_unit.side()-1],
-				*resources::units,
 				*resources::teams,
 				*game_map);
 

@@ -604,9 +604,9 @@ pathfind::marked_route pathfind::mark_route(const plain_route &rt)
 }
 
 pathfind::shortest_path_calculator::shortest_path_calculator(unit const &u, team const &t,
-		unit_map const &units, std::vector<team> const &teams, gamemap const &map,
+		std::vector<team> const &teams, gamemap const &map,
 		bool ignore_unit, bool ignore_defense, bool see_all)
-	: unit_(u), viewing_team_(t), units_(units), teams_(teams), map_(map),
+	: unit_(u), viewing_team_(t), teams_(teams), map_(map),
 	  movement_left_(unit_.movement_left()),
 	  total_movement_(unit_.total_movement()),
 	  ignore_unit_(ignore_unit), ignore_defense_(ignore_defense),

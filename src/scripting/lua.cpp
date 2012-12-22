@@ -2193,7 +2193,7 @@ static int intf_find_path(lua_State *L)
 				*u, viewing_team, see_all, ignore_units);
 		}
 		calc = new pathfind::shortest_path_calculator(*u, viewing_team,
-			units, teams, map, ignore_units, false, see_all);
+			teams, map, ignore_units, false, see_all);
 	}
 
 	pathfind::plain_route res = pathfind::a_star_search(src, dst, stop_at, calc, map.w(), map.h(),

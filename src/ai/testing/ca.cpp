@@ -671,7 +671,7 @@ double move_leader_to_goals_phase::evaluate()
 		}
 	}
 
-	pathfind::shortest_path_calculator calc(*leader, current_team(), *resources::units, *resources::teams, *resources::game_map);
+	pathfind::shortest_path_calculator calc(*leader, current_team(), *resources::teams, *resources::game_map);
 	pathfind::plain_route route = a_star_search(leader->get_location(), dst_, 1000.0, &calc,
 			resources::game_map->w(), resources::game_map->h());
 	if(route.steps.empty()) {

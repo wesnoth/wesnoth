@@ -207,7 +207,7 @@ marked_route mark_route(const plain_route &rt);
 
 struct shortest_path_calculator : cost_calculator
 {
-	shortest_path_calculator(const unit& u, const team& t, const unit_map& units,
+	shortest_path_calculator(const unit& u, const team& t,
 		const std::vector<team> &teams, const gamemap &map,
 		bool ignore_unit = false, bool ignore_defense_ = false,
 		bool see_all = false);
@@ -216,7 +216,6 @@ struct shortest_path_calculator : cost_calculator
 private:
 	unit const &unit_;
 	team const &viewing_team_;
-	unit_map const &units_;
 	std::vector<team> const &teams_;
 	gamemap const &map_;
 	int const movement_left_;
