@@ -39,20 +39,6 @@ static lg::log_domain log_engine("engine");
 // TODO: remove when completed
 #include "stub.hpp"
 
-namespace {
-
-	int count_segments(const config::const_child_itors &story)
-	{
-		config::const_child_iterator itor = story.first;
-		int count = 0;
-		while(itor != story.second) {
-			++itor;
-			++count;
-		}
-		return count;
-	}
-} // end anonymous namespace
-
 void show_story(display &disp, const std::string &scenario_name,
 	const config::const_child_itors &story)
 {
