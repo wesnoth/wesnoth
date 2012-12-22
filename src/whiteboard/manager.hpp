@@ -203,7 +203,9 @@ private:
 	bool active_;
 	bool inverted_behavior_;
 	bool self_activate_once_;
+#if 0
 	bool print_help_once_;
+#endif
 	bool wait_for_side_init_;
 	bool planned_unit_map_active_;
 	/** Track whenever we're modifying actions, to avoid dual execution etc. */

@@ -58,7 +58,9 @@ manager::manager():
 		active_(false),
 		inverted_behavior_(false),
 		self_activate_once_(true),
+#if 0
 		print_help_once_(true),
+#endif
 		wait_for_side_init_(true),
 		planned_unit_map_active_(false),
 		executing_actions_(false),
