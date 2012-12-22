@@ -766,8 +766,6 @@ static void format_hp(char str_buf[10], int hp)
 		snprintf(str_buf, 10, "   %i", hp);
 	} else if(hp < 99) {
 		snprintf(str_buf, 10, "  %i", hp);
-	} else if(hp < 999) {
-		snprintf(str_buf, 10, " %i", hp);
 	} else {
 		snprintf(str_buf, 10, " %i", hp);
 	}
