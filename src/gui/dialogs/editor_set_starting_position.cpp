@@ -63,9 +63,11 @@ namespace gui2 {
 
 REGISTER_DIALOG(editor_set_starting_position)
 
-teditor_set_starting_position::teditor_set_starting_position(unsigned current_player, unsigned maximum_players, const std::vector<map_location>& starting_positions)
-	: players_(maximum_players)
-	, selection_(std::min(current_player, maximum_players))
+teditor_set_starting_position::teditor_set_starting_position(
+		  unsigned current_player
+		, unsigned maximum_players
+		, const std::vector<map_location>& starting_positions)
+	: selection_(std::min(current_player, maximum_players))
 	, starting_positions_(starting_positions)
 {
 	if(starting_positions_.size() != maximum_players) {

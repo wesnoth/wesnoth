@@ -32,7 +32,7 @@ public:
 	unsigned result() const { return selection_; }
 
 private:
-	unsigned players_, selection_;
+	unsigned selection_;
 	std::vector<map_location> starting_positions_;
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
