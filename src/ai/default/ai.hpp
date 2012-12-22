@@ -42,7 +42,7 @@ class formula_ai;
 /** A trivial ai that sits around doing absolutely nothing. */
 class idle_ai : public readwrite_context_proxy, public interface {
 public:
-	idle_ai(readwrite_context &context, const config &cfg);
+	idle_ai(readwrite_context &context, const config& /*cfg*/);
 	void play_turn();
 	void new_turn();
 	std::string describe_self() const;
@@ -50,7 +50,6 @@ public:
 	int get_recursion_count() const;
 	virtual config to_config() const;
 private:
-	const config &cfg_;
 	recursion_counter recursion_counter_;
 };
 

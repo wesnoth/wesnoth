@@ -58,8 +58,8 @@ namespace ai {
 
 typedef util::array<map_location,6> adjacent_tiles_array;
 
-idle_ai::idle_ai(readwrite_context &context, const config &cfg)
-	: cfg_(cfg), recursion_counter_(context.get_recursion_count())
+idle_ai::idle_ai(readwrite_context &context, const config& /*cfg*/)
+	: recursion_counter_(context.get_recursion_count())
 {
 	init_readwrite_context_proxy(context);
 }
