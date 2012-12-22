@@ -68,8 +68,6 @@ private:
 	surface image_, pressedImage_, activeImage_, pressedActiveImage_;
 	SDL_Rect textRect_;
 
-	bool button_;
-
 	enum STATE { UNINIT, NORMAL, ACTIVE, PRESSED, PRESSED_ACTIVE };
 	STATE state_;
 
