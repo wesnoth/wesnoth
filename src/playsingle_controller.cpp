@@ -633,8 +633,6 @@ void playsingle_controller::play_side(const unsigned int side_number, bool save)
 		if(current_team().is_human() || temporary_human) {
 			LOG_NG << "is human...\n";
 			temporary_human = false;
-			// Prepare the undo stack.
-			undo_stack_->new_side_turn(player_number_);
 			try{
 				before_human_turn(save);
 				play_human_turn();

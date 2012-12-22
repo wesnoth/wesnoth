@@ -107,7 +107,7 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	gamedata_(level),
 	map_(game_config, level),
 	units_(),
-	undo_stack_(new undo_list),
+	undo_stack_(new undo_list(level.child("undo_stack"))),
 	whiteboard_manager_(),
 	xp_mod_(level["experience_modifier"].to_int(100)),
 	loading_game_(level["playing_team"].empty() == false),
@@ -559,8 +559,9 @@ void play_controller::init_gui(){
 	gui_->begin_game();
 	gui_->update_tod();
 
-	for(std::vector<team>::iterator t = teams_.begin(); t != teams_.end(); ++t) {
-		clear_shroud(t - teams_.begin() + 1, false, false);
+	if ( !loading_game_ ) {
+		for ( int side = teams_.size(); side != 0; --side )
+			clear_shroud(side, false, false);
 	}
 }
 
@@ -654,19 +655,22 @@ void play_controller::do_init_side(const unsigned int team_index, bool is_replay
 	}
 
 	if (!loading_game_) {
+		// Prepare the undo stack.
+		undo_stack_->new_side_turn(player_number_);
+
 		game_events::fire("turn refresh");
 		game_events::fire("side " + side_num + " turn refresh");
 		game_events::fire("turn " + turn_num + " refresh");
 		game_events::fire("side " + side_num + " turn " + turn_num + " refresh");
+
+		// Make sure vision is accurate.
+		clear_shroud(player_number_, true);
 	}
 
 	const time_of_day &tod = tod_manager_.get_time_of_day();
 
 	if (int(team_index) + 1 == first_player_)
 		sound::play_sound(tod.sounds, sound::SOUND_SOURCES);
-
-	// Make sure vision is accurate.
-	clear_shroud(team_index + 1, !loading_game_);
 
 	if (!recorder.is_skipping()){
 		gui_->invalidate_all();
@@ -730,7 +734,6 @@ config play_controller::to_config() const
 	}
 
 	//write out the current state of the map
-	//write out the current state of the map
 	cfg["map_data"] = map_.write();
 	cfg.merge_with(pathfind_manager_->to_config());
 
@@ -738,8 +741,10 @@ config play_controller::to_config() const
 	gui_->write(display);
 	cfg.add_child("display", display);
 
-	return cfg;
+	// Preserve the undo stack so that fog/shroud clearing is kept accurate.
+	undo_stack_->write(cfg.add_child("undo_stack"));
 
+	return cfg;
 }
 
 void play_controller::finish_side_turn(){

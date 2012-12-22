@@ -35,9 +35,99 @@
 #include "../unit_map.hpp"
 #include "../whiteboard/manager.hpp"
 
+#include <boost/foreach.hpp>
+
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
+
+
+/**
+ * Converts a string (as read from a config) to an ACTION_TYPE.
+ */
+undo_list::undo_action::ACTION_TYPE undo_list::undo_action::parse_type(const std::string & str)
+{
+	if ( str == "move" )
+		return MOVE;
+
+	if ( str == "recruit" )
+		return RECRUIT;
+
+	if ( str == "recall" )
+		return RECALL;
+
+	if ( str == "dismiss" )
+		return DISMISS;
+
+	// Unrecognized type.
+	ERR_NG << "Unrecognized undo action type: " << str << ".\n";
+	return NONE;
+}
+
+
+/**
+ * Constructs an undo_action from the provided config.
+ * @param  tag  is the tag of this config, which is used for error reporting.
+ *              It should be enclosed in square brackets.
+ */
+undo_list::undo_action::undo_action(const config & cfg, const std::string & tag) :
+	route(),
+	starting_moves( cfg["starting_moves"] ),
+	original_village_owner( cfg["village_owner"] ),
+	recall_from( cfg.child_or_empty("leader"), NULL ),
+	type( parse_type(cfg["type"]) ),
+	affected_unit( cfg.child("unit", tag) ),
+	countdown_time_bonus( cfg["time_bonus"] ),
+	starting_dir( map_location::parse_direction(cfg["starting_direction"]) )
+{
+	// Now read the route.
+	if ( type == MOVE )
+		read_locations(cfg, route);
+	else if ( type == RECALL  ||  type == RECRUIT )
+		// This guarantees an element in the route, even if the config is malformed.
+		route.push_back(map_location(cfg, NULL));
+}
+
+
+/**
+ * Write an undo_action into the provided config.
+ */
+void undo_list::undo_action::write(config & cfg) const
+{
+	if ( is_dismiss() )
+	{
+		cfg["type"] = "dismiss";
+		affected_unit.write(cfg.add_child("unit"));
+	}
+
+	else if ( is_recall() )
+	{
+		cfg["type"] = "recall";
+		route.front().write(cfg);
+		recall_from.write(cfg.add_child("leader"));
+		affected_unit.write(cfg.add_child("unit"));
+	}
+
+	else if ( is_recruit() )
+	{
+		cfg["type"] = "recruit";
+		route.front().write(cfg);
+		recall_from.write(cfg.add_child("leader"));
+		affected_unit.write(cfg.add_child("unit"));
+	}
+
+	else if ( is_move() )
+	{
+		cfg["type"] = "move";
+		cfg["starting_direction"] = map_location::write_direction(starting_dir);
+		cfg["starting_moves"] = starting_moves;
+		cfg["time_bonus"] = countdown_time_bonus;
+		cfg["village_owner"] = original_village_owner;
+		write_locations(route, cfg);
+		affected_unit.write(cfg.add_child("unit"));
+	}
+}
+
 
 
 /**
@@ -105,6 +195,49 @@ void undo_list::new_side_turn(int side)
 	// Reset the side.
 	side_ = side;
 	committed_actions_ = false;
+}
+
+
+/**
+ * Read the undo_list from the provided config.
+ * Currently, this is only used when the undo_list is empty, but in theory
+ * it could be used to append the config to the current data.
+ */
+void undo_list::read(const config & cfg)
+{
+	// Merge header data.
+	side_ = cfg["side"].to_int(side_);
+	committed_actions_ = committed_actions_ || cfg["committed"].to_bool();
+
+	// Build the undo stack.
+	BOOST_FOREACH( const config & child, cfg.child_range("undo") ) {
+		undo_action action(child, "[undo]");
+		if ( action.valid() )
+			undos_.push_back(action);
+	}
+
+	// Build the redo stack.
+	BOOST_FOREACH( const config & child, cfg.child_range("redo") ) {
+		undo_action action(child, "[redo]");
+		if ( action.valid() )
+			redos_.push_back(action);
+	}
+}
+
+
+/**
+ * Write the undo_list into the provided config.
+ */
+void undo_list::write(config & cfg) const
+{
+	cfg["side"] = side_;
+	cfg["committed"] = committed_actions_;
+
+	for ( action_list::const_iterator it = undos_.begin(); it != undos_.end(); ++it )
+		it->write(cfg.add_child("undo"));
+
+	for ( action_list::const_iterator it = redos_.begin(); it != redos_.end(); ++it )
+		it->write(cfg.add_child("redo"));
 }
 
 

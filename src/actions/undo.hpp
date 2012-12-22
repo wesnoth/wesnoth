@@ -32,6 +32,7 @@ class undo_list {
 	/// Records information to be able to undo an action.
 	struct undo_action {
 		enum ACTION_TYPE { NONE, MOVE, RECRUIT, RECALL, DISMISS };
+		static ACTION_TYPE parse_type(const std::string & str);
 
 		/// Constructor for move actions.
 		undo_action(const unit& u,
@@ -51,6 +52,7 @@ class undo_list {
 			}
 
 		/// Constructor for recruit and recall actions.
+		/// These types of actions are guaranteed to have a non-empty route.
 		undo_action(const unit& u, const map_location& loc, const map_location& from,
 			        const ACTION_TYPE action_type) :
 				route(1, loc),
@@ -75,6 +77,12 @@ class undo_list {
 				starting_dir(map_location::NDIRECTIONS)
 			{}
 
+		/// Constructor from a config.
+		undo_action(const config & cfg, const std::string & tag);
+
+		/// For converting to a config.
+		void write(config & cfg) const;
+
 		// Shortcuts for identifying the type of action:
 		bool is_dismiss() const { return type == DISMISS; }
 		bool is_recall()  const { return type == RECALL; }
@@ -97,9 +105,10 @@ class undo_list {
 	typedef std::vector<undo_action> action_list;
 
 public:
-	undo_list() :
+	/// The config can be invalid.
+	explicit undo_list(const config & cfg) :
 		undos_(), redos_(), side_(1), committed_actions_(false)
-	{}
+	{ if ( cfg ) read(cfg); }
 	~undo_list() {}
 
 	// Functions related to managing the undo stack:
@@ -131,6 +140,10 @@ public:
 	void new_side_turn(int side);
 	/// Returns true if the player has performed any actions this turn.
 	bool player_acted() const { return committed_actions_ || !undos_.empty(); }
+	/// Read the undo_list from the provided config.
+	void read(const config & cfg);
+	/// Write the undo_list into the provided config.
+	void write(config & cfg) const;
 
 	// Functions related to using the undo stack:
 
