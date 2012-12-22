@@ -312,7 +312,6 @@ private:
 	connected_user_list users_;
 
 	gui::label waiting_label_;
-	bool message_full_;
 
 	controller default_controller_;
 
