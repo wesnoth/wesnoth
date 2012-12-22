@@ -1268,4 +1268,18 @@ function ai_helper.get_attack_combos(units, enemy, cfg)
     return attack_array
 end
 
+function ai_helper.get_unit_time_of_day_bonus(alignment, lawful_bonus)
+    local multiplier = 1
+    if (lawful_bonus ~= 0) then
+        if (alignment == 'lawful') then
+            multiplier = (1 + lawful_bonus / 100.)
+        elseif (alignment == 'chaotic') then
+            multiplier = (1 - lawful_bonus / 100.)
+        elseif (alignment == 'liminal') then
+            multipler = (1 - math.abs(lawful_bonus) / 100.)
+        end
+    end
+    return multiplier
+end
+
 return ai_helper

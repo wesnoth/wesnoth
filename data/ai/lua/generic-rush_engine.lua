@@ -34,7 +34,22 @@ return {
 
         ------- Recruit CA --------------
 
-        wesnoth.require("ai/lua/generic-recruit_engine.lua").init(ai, generic_rush)
+        local params = {
+            score_function = (function() return 300000 end),
+            min_turn_1_recruit = (function() return generic_rush:castle_switch_eval() > 0 end),
+            leader_takes_village = (function()
+                    if generic_rush:castle_switch_eval() > 0 then
+                        local take_village = #(wesnoth.get_villages {
+                            x = generic_rush.data.leader_target[1],
+                            y = generic_rush.data.leader_target[2]
+                        }) > 0
+                        return take_village
+                    end
+                    return true
+                end
+            )
+        }
+        wesnoth.require("ai/lua/generic-recruit_engine.lua").init(ai, generic_rush, params)
 
         -------- Castle Switch CA --------------
 
@@ -58,6 +73,10 @@ return {
                 return 0
             end
 
+            if self.data.leader_target then
+                return 290000
+            end
+
             local width,height,border = wesnoth.get_map_size()
             local keeps = wesnoth.get_locations {
                 terrain = "K*^*,*^Kov", -- Keeps
@@ -71,7 +90,10 @@ return {
                     x = leader.x, y = leader.y, terrain = "K*^*,*^Kov",
                     radius = 2,
                     { "filter_radius", { terrain = 'C*^*,K*^*,*^Kov,*^Cov' } }
-                }} -- That are not close and connected to a keep the leader is on
+                }}, -- That are not close and connected to a keep the leader is on
+                { "filter_adjacent_location", {
+                    terrain = 'C*^*,K*^*,*^Kov,*^Cov'
+                }} -- That are not one-hex keeps
             }
             if #keeps < 1 then
                 -- Skip if there aren't extra keeps to evaluate
@@ -85,14 +107,14 @@ return {
             }
 
             -- Look for the best keep
-            local best_score, best_loc = 0, {}
+            local best_score, best_loc, best_turns = 0, {}, 3
             for i,loc in ipairs(keeps) do
-                -- Only consider keeps within 3 turns movement
+                -- Only consider keeps within 2 turns movement
                 local path, cost = wesnoth.find_path(leader, loc[1], loc[2])
                 local score = 0
                 -- Prefer closer keeps to enemy
-                local turns = cost/leader.max_moves
-                if turns <= 2 and turns > 0 then
+                local turns = math.ceil(cost/leader.max_moves)
+                if turns <= 2 then
                     score = 1/(math.ceil(turns))
                     for j,e in ipairs(enemy_leaders) do
                         score = score + 1 / H.distance_between(loc[1], loc[2], e.x, e.y)
@@ -101,12 +123,40 @@ return {
                     if score > best_score then
                         best_score = score
                         best_loc = loc
+                        best_turns = turns
                     end
                 end
             end
 
             if best_score > 0 then
-                self.data.target_keep = best_loc
+                local next_hop = AH.next_hop(leader, best_loc[1], best_loc[2])
+
+                if next_hop and ((next_hop[1] ~= leader.x) or (next_hop[2] ~= leader.y)) then
+                    -- See if there is a nearby village that can be captured without delaying progress
+                    local close_villages = wesnoth.get_villages( {
+                        { "and", { x = next_hop[1], y = next_hop[2], radius = 3 }},
+                        owner_side = 0 })
+                    local cheapest_unit_cost = AH.get_cheapest_recruit_cost()
+                    for i,loc in ipairs(close_villages) do
+                        local path_village, cost_village = wesnoth.find_path(leader, loc[1], loc[2])
+                        if cost_village <= leader.moves then
+                            local dummy_leader = wesnoth.copy_unit(leader)
+                            dummy_leader.x = loc[1]
+                            dummy_leader.y = loc[2]
+                            local path_keep, cost_keep = wesnoth.find_path(dummy_leader, best_loc[1], best_loc[2])
+                            local turns_from_keep = math.ceil(cost_keep/leader.max_moves)
+                            if turns_from_keep < best_turns
+                            or (turns_from_keep == 1 and wesnoth.sides[wesnoth.current.side].gold < cheapest_unit_cost)
+                            then
+                                -- There is, go there instead
+                                next_hop = loc
+                                break
+                            end
+                        end
+                    end
+                end
+
+                self.data.leader_target = next_hop
                 AH.done_eval_messages(start_time, ca_name)
                 return 290000
             end
@@ -121,38 +171,8 @@ return {
             if AH.print_exec() then print('   ' .. os.clock() .. ' Executing castle_switch CA') end
             if AH.show_messages() then W.message { speaker = leader.id, message = 'Switching castles' } end
 
-            local x, y = self.data.target_keep[1], self.data.target_keep[2]
-            local next_hop = AH.next_hop(leader, x, y)
-            if next_hop and ((next_hop[1] ~= leader.x) or (next_hop[2] ~= leader.y)) then
-                local path, cost = wesnoth.find_path(leader, x, y)
-                local turn_cost = math.ceil(cost/leader.max_moves)
-
-                -- See if there is a nearby village that can be captured without delaying progress
-                local close_villages = wesnoth.get_locations {
-                    { "and", { x = next_hop[1], y = next_hop[2], radius = 3 }},
-                    terrain = "*^V*",
-                    owner_side = 0 }
-                local cheapest_unit_cost = AH.get_cheapest_recruit_cost()
-                for i,loc in ipairs(close_villages) do
-                    local path_village, cost_village = wesnoth.find_path(leader, loc[1], loc[2])
-                    if cost_village <= leader.moves then
-                        local dummy_leader = wesnoth.copy_unit(leader)
-                        dummy_leader.x = loc[1]
-                        dummy_leader.y = loc[2]
-                        local path_keep, cost_keep = wesnoth.find_path(dummy_leader, x, y)
-                        local turns_from_keep = math.ceil(cost_keep/leader.max_moves)
-                        if turns_from_keep < turn_cost
-                        or (turns_from_keep == 1 and wesnoth.sides[wesnoth.current.side].gold < cheapest_unit_cost)
-                        then
-                            -- There is, go there instead
-                            next_hop = loc
-                            break
-                        end
-                    end
-                end
-
-                ai.move(leader, next_hop[1], next_hop[2])
-            end
+            ai.move(leader, self.data.leader_target[1], self.data.leader_target[2])
+            self.data.leader_target = nil
         end
 
         ------- Grab Villages CA --------------
@@ -174,7 +194,7 @@ return {
                 { "filter_side", {{"enemy_of", {side = wesnoth.current.side} }} }
             }
 
-            local villages = wesnoth.get_locations { terrain = '*^V*' }
+            local villages = wesnoth.get_villages()
             -- Just in case:
             if (not villages[1]) then
                 AH.done_eval_messages(start_time, ca_name)
@@ -329,8 +349,8 @@ return {
                 -- For now, we also simply don't poison units on villages (unless standard combat CA does it)
                 local on_village = wesnoth.get_terrain_info(wesnoth.get_terrain(defender.x, defender.y)).village
 
-                -- Also, poisoning units that would level up through the attack is very bad
-                local about_to_level = defender.max_experience - defender.experience <= wesnoth.unit_types[attacker.type].level
+                -- Also, poisoning units that would level up through the attack or could level on their turn as a result is very bad
+                local about_to_level = defender.max_experience - defender.experience <= (wesnoth.unit_types[attacker.type].level * 2)
 
                 if (not cant_poison) and (not on_village) and (not about_to_level) then
                     -- Strongest enemy gets poisoned first
@@ -344,12 +364,16 @@ return {
 
                     -- More priority to enemies on strong terrain
                     local defender_defense = 100 - wesnoth.unit_defense(defender, wesnoth.get_terrain(defender.x, defender.y))
-                    rating = rating + defender_defense / 2.
+                    rating = rating + defender_defense / 4.
 
                     -- For the same attacker/defender pair, go to strongest terrain
                     local attack_defense = 100 - wesnoth.unit_defense(attacker, wesnoth.get_terrain(a.dst.x, a.dst.y))
-                    rating = rating + attack_defense / 100.
+                    rating = rating + attack_defense / 2.
                     --print('rating', rating)
+
+                    -- And from village everything else being equal
+                    local is_village = wesnoth.get_terrain_info(wesnoth.get_terrain(a.dst.x, a.dst.y)).village
+                    if is_village then rating = rating + 0.5 end
 
                     if rating > max_rating then
                         max_rating, best_attack = rating, a
