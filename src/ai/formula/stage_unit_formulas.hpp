@@ -48,7 +48,6 @@ public:
         config to_config() const;
 
 private:
-        const config &cfg_;
 	formula_ai &fai_;
 
 };

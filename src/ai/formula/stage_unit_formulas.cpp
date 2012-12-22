@@ -35,8 +35,11 @@ static lg::log_domain log_formula_ai("ai/stage/unit_formulas");
 
 namespace ai {
 
-stage_unit_formulas::stage_unit_formulas(ai_context &context, const config &cfg, formula_ai &fai)
-       	: stage(context,cfg), cfg_(cfg), fai_(fai)
+stage_unit_formulas::stage_unit_formulas(
+		  ai_context &context
+		, const config &cfg
+		, formula_ai &fai)
+	: stage(context,cfg), fai_(fai)
 {
 
 }
