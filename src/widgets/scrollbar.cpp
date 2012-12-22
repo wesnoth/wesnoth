@@ -54,7 +54,6 @@ scrollbar::scrollbar(CVideo &video)
 	, mousey_on_grip_(0)
 	, grip_position_(0)
 	, grip_height_(0)
-	, old_position_(0)
 	, full_height_(0)
 	, scroll_rate_(1)
 {

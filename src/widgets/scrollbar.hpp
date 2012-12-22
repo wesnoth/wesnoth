@@ -97,7 +97,7 @@ private:
 
 	int minimum_grip_height_, mousey_on_grip_;
 	// Relative data
-	unsigned int grip_position_, grip_height_, old_position_, full_height_;
+	unsigned int grip_position_, grip_height_, full_height_;
 	int scroll_rate_;
 
 };
