@@ -408,6 +408,7 @@ void ui::set_location(const SDL_Rect& rect)
 	if(!initialized_) {
 		chat_textbox_.set_wrap(true);
 		chat_.init_textbox(chat_textbox_);
+		chat_textbox_.set_edit_target(&entry_textbox_);
 		initialized_ = true;
 	}
 	hide_children(false);
