@@ -515,7 +515,7 @@ void textbox::handle_event(const SDL_Event& event)
 	//movement characters may have a "Unicode" field on some platforms, so ignore it.
 	if(!(c == SDLK_UP || c == SDLK_DOWN || c == SDLK_LEFT || c == SDLK_RIGHT ||
 	   c == SDLK_DELETE || c == SDLK_BACKSPACE || c == SDLK_END || c == SDLK_HOME ||
-	   c == SDLK_PAGEUP || c == SDLK_PAGEDOWN)) {
+	   c == SDLK_PAGEUP || c == SDLK_PAGEDOWN || c == SDLK_LSHIFT || c == SDLK_RSHIFT)) {
 		if(character != 0) {
 			DBG_G << "Char: " << character << ", c = " << c << "\n";
 		}
