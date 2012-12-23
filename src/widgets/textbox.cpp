@@ -36,7 +36,8 @@ textbox::textbox(CVideo &video, int width, const std::string& text, bool editabl
 	     grabmouse_(false), text_pos_(0), editable_(editable),
 	     show_cursor_(true), show_cursor_at_(0), text_image_(NULL),
 	     wrap_(false), line_height_(0), yscroll_(0), alpha_(alpha),
-		  alpha_focus_(alpha_focus)
+	     alpha_focus_(alpha_focus),
+	     edit_target_(NULL)
 {
 	// static const SDL_Rect area = d.screen_area();
 	// const int height = font::draw_text(NULL,area,font_size,font::NORMAL_COLOR,"ABCD",0,0).h;
@@ -528,6 +529,7 @@ void textbox::handle_event(const SDL_Event& event)
 			case SDLK_v: // paste
 				{
 				if(!editable()) {
+					pass_event_to_target(event);
 					break;
 				}
 
@@ -579,6 +581,8 @@ void textbox::handle_event(const SDL_Event& event)
 					++cursor_;
 				}
 			}
+		} else {
+			pass_event_to_target(event);
 		}
 	}
 
@@ -596,6 +600,20 @@ void textbox::handle_event(const SDL_Event& event)
 	}
 
 	set_dirty(true);
+}
+
+void textbox::pass_event_to_target(const SDL_Event& event)
+{
+	if(edit_target_ && edit_target_->editable()) {
+		set_focus(false);
+		edit_target_->set_focus(true);
+		edit_target_->handle_event(event);
+	}
+}
+
+void textbox::set_edit_target(textbox* target)
+{
+	edit_target_ = target;
 }
 
 } //end namespace gui

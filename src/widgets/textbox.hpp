@@ -41,6 +41,8 @@ public:
 
 	void set_wrap(bool val);
 
+	void set_edit_target(textbox* target);
+
 protected:
 	virtual void draw_contents();
 	virtual void set_inner_location(SDL_Rect const &);
@@ -80,7 +82,11 @@ private:
 	double alpha_;
 	double alpha_focus_;
 
+	textbox* edit_target_;
+
 	void handle_event(const SDL_Event& event);
+
+	void pass_event_to_target(const SDL_Event& event);
 
 	void draw_cursor(int pos, CVideo &video) const;
 	void update_text_cache(bool reset = false, const SDL_Color& color =font::NORMAL_COLOR);
