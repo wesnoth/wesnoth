@@ -350,7 +350,7 @@ namespace {
 
 bool textbox::requires_event_focus(const SDL_Event* event) const
 {
-	if(!focus_ || !editable_ || hidden()) {
+	if(!focus_ || hidden()) {
 		return false;
 	}
 	if(event == NULL) {
@@ -443,10 +443,6 @@ void textbox::handle_event(const SDL_Event& event)
 		set_dirty();
 	}
 
-	if(editable_ == false) {
-		return;
-	}
-
 	//if we don't have the focus, then see if we gain the focus,
 	//otherwise return
 	if(focus(&event) == false) {
@@ -486,7 +482,7 @@ void textbox::handle_event(const SDL_Event& event)
 		selend_ = cursor_;
 	}
 
-	if(c == SDLK_BACKSPACE) {
+	if(editable_ && c == SDLK_BACKSPACE) {
 		changed = true;
 		if(is_selection()) {
 			erase_selection();
@@ -496,13 +492,13 @@ void textbox::handle_event(const SDL_Event& event)
 		}
 	}
 
-	if(c == SDLK_u && (modifiers & KMOD_CTRL)) { // clear line
+	if(editable_ && c == SDLK_u && (modifiers & KMOD_CTRL)) { // clear line
 		changed = true;
 		cursor_ = 0;
 		text_.resize(0);
 	}
 
-	if(c == SDLK_DELETE && !text_.empty()) {
+	if(editable_ && c == SDLK_DELETE && !text_.empty()) {
 		changed = true;
 		if(is_selection()) {
 			erase_selection();
@@ -531,6 +527,10 @@ void textbox::handle_event(const SDL_Event& event)
 			switch(c) {
 			case SDLK_v: // paste
 				{
+				if(!editable()) {
+					break;
+				}
+
 				changed = true;
 				if(is_selection())
 					erase_selection();
@@ -568,7 +568,7 @@ void textbox::handle_event(const SDL_Event& event)
 				}
 				break;
 			}
-		} else {
+		} else if(editable_) {
 			if(character >= 32 && character != 127) {
 				changed = true;
 				if(is_selection())
