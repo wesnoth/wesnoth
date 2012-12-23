@@ -2916,6 +2916,11 @@ void menu_handler::do_command(const std::string& str)
 std::vector<std::string> menu_handler::get_commands_list()
 {
 	console_handler ch(*this);
+	// HACK: we need to call dispatch() at least once to get the
+	// command list populated *at all*. Terrible design.
+	// An empty command is silently ignored and has negligible
+	// overhead, so we use that for this purpose here.
+	ch.dispatch("");
 	return ch.get_commands_list();
 }
 
