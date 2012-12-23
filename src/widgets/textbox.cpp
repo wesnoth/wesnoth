@@ -607,8 +607,11 @@ void textbox::pass_event_to_target(const SDL_Event& event)
 	if(edit_target_ && edit_target_->editable()) {
 		set_focus(false);
 		edit_target_->set_focus(true);
+
 		edit_target_->handle_event(event);
+
 		edit_target_->set_focus(false);
+		set_focus(true);
 	}
 }
 
