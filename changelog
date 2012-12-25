@@ -7,6 +7,8 @@ Version 1.10.5+svn:
      Scottish Gaelic, Slovak
  * WML engine:
    * Fixed [disallow_end_turn] losing effect on save/reload (bug #20350)
+   * Fixed [disallow_end_turn] persisting when advancing to the next scenario
+     (bug #20351)
  * Miscellaneous and bug fixes:
    * Fixed a rare case where a player could exercise (very) limited control of
      another (human) player's units in a hotseat game.

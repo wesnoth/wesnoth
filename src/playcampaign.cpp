@@ -435,6 +435,9 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		gamestate.classification().scenario = gamestate.classification().next_scenario;
 		gamestate.rng().rotate_random();
 
+		// Reset the can_end_turn option.
+		gamestate.set_allow_end_turn(true);
+
 		if(io_type == IO_CLIENT) {
 			if (gamestate.classification().next_scenario.empty()) {
 				gamestate.snapshot = config();
