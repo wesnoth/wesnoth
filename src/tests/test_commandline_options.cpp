@@ -86,7 +86,6 @@ BOOST_AUTO_TEST_CASE (test_empty_options)
 	BOOST_CHECK(!co.screenshot);
 	BOOST_CHECK(!co.screenshot_map_file);
 	BOOST_CHECK(!co.screenshot_output_file);
-	BOOST_CHECK(!co.smallgui);
 	BOOST_CHECK(!co.test);
 	BOOST_CHECK(!co.validcache);
 	BOOST_CHECK(!co.version);
@@ -169,7 +168,6 @@ BOOST_AUTO_TEST_CASE (test_default_options)
 	BOOST_CHECK(!co.screenshot);
 	BOOST_CHECK(!co.screenshot_map_file);
 	BOOST_CHECK(!co.screenshot_output_file);
-	BOOST_CHECK(!co.smallgui);
 	BOOST_CHECK(co.test && co.test->empty());
 	BOOST_CHECK(!co.validcache);
 	BOOST_CHECK(!co.version);
@@ -245,7 +243,6 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		"--side=9:sidefoo",
 		"--side=10:sidebar",
 		"--server=servfoo",
-		"--smallgui",
 		"--test=testfoo",
 		"--turns=42",
 		"--validcache",
@@ -337,7 +334,6 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 	BOOST_CHECK(co.server && *co.server == "servfoo");
 	BOOST_CHECK(co.screenshot && co.screenshot_map_file && co.screenshot_output_file);
 	BOOST_CHECK(*co.screenshot_map_file == "mapfoo" && *co.screenshot_output_file == "outssfoo");
-	BOOST_CHECK(co.smallgui);
 	BOOST_CHECK(co.test && *co.test == "testfoo");
 	BOOST_CHECK(co.validcache);
 	BOOST_CHECK(co.version);
@@ -415,7 +411,6 @@ BOOST_AUTO_TEST_CASE (test_positional_options)
 	BOOST_CHECK(!co.screenshot);
 	BOOST_CHECK(!co.screenshot_map_file);
 	BOOST_CHECK(!co.screenshot_output_file);
-	BOOST_CHECK(!co.smallgui);
 	BOOST_CHECK(!co.test);
 	BOOST_CHECK(!co.validcache);
 	BOOST_CHECK(!co.version);

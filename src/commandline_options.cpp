@@ -108,7 +108,6 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	screenshot(false),
 	screenshot_map_file(),
 	screenshot_output_file(),
-	smallgui(false),
 	strict_validation(false),
 	test(),
 	validcache(false),
@@ -224,7 +223,6 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 
 	hidden_.add_options()
 		("new-storyscreens", "")
-		("smallgui", "")
 		;
 	visible_.add(general_opts).add(campaign_opts).add(display_opts).add(logging_opts).add(multiplayer_opts).add(preprocessor_opts).add(proxy_opts);
 
@@ -377,8 +375,6 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		test = vm["test"].as<std::string>();
 	if (vm.count("turns"))
 		multiplayer_turns = vm["turns"].as<std::string>();
-	if (vm.count("smallgui"))
-		smallgui = true;
 	if (vm.count("strict-validation"))
 		strict_validation = true;
 	if (vm.count("validcache"))

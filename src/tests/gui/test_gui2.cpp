@@ -169,7 +169,6 @@ CVideo & video() {
 			BOOST_CHECK_MESSAGE(exception.empty(),
 					"Test for '" << id
 					<< "' Failed\nnew widgets = " << gui2::new_widgets
-					<< " small gui = " << game_config::small_gui
 					<< " resolution = " << resolution.first
 					<< 'x' << resolution.second
 					<< "\nException caught: " << exception << '.');
@@ -211,7 +210,6 @@ CVideo & video() {
 				BOOST_CHECK_MESSAGE(exception.empty(),
 						"Test for '" << id
 						<< "' Failed\nnew widgets = " << gui2::new_widgets
-						<< " small gui = " << game_config::small_gui
 						<< " resolution = " << resolution.first
 						<< 'x' << resolution.second
 						<< "\nException caught: " << exception << '.');
@@ -266,7 +264,6 @@ CVideo & video() {
 			BOOST_CHECK_MESSAGE(exception.empty(),
 					"Test for tip '" << id
 					<< "' Failed\nnew widgets = " << gui2::new_widgets
-					<< " small gui = " << game_config::small_gui
 					<< " resolution = " << resolution.first
 					<< 'x' << resolution.second
 					<< "\nException caught: " << exception << '.');
@@ -304,10 +301,7 @@ void test()
 
 	for(size_t i = 0; i < 2; ++i) {
 
-		game_config::small_gui = true;
 		test_resolutions<T>(get_small_gui_resolutions());
-
-		game_config::small_gui = false;
 		test_resolutions<T>(get_gui_resolutions());
 
 		gui2::new_widgets = true;
@@ -321,10 +315,7 @@ void test_popup()
 
 	for(size_t i = 0; i < 2; ++i) {
 
-		game_config::small_gui = true;
 		test_popup_resolutions<T>(get_small_gui_resolutions());
-
-		game_config::small_gui = false;
 		test_popup_resolutions<T>(get_gui_resolutions());
 
 		gui2::new_widgets = true;
@@ -337,10 +328,7 @@ void test_tip(const std::string& id)
 
 	for(size_t i = 0; i < 2; ++i) {
 
-		game_config::small_gui = true;
 		test_tip_resolutions(get_small_gui_resolutions(), id);
-
-		game_config::small_gui = false;
 		test_tip_resolutions(get_gui_resolutions(), id);
 
 		gui2::new_widgets = true;

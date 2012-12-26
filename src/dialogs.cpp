@@ -606,16 +606,12 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sel
 	// create an option for whether the replay should be shown or not
 	if(show_replay != NULL) {
 		lmenu.add_option(_("Show replay"), false,
-			// use smallgui layout as default, otherwise the load screen glitches at low res!
-			//game_config::small_gui ? gui::dialog::BUTTON_CHECKBOX : gui::dialog::BUTTON_STANDARD);
 			gui::dialog::BUTTON_CHECKBOX_LEFT,
 			_("Play the embedded replay from the saved game if applicable")
 			);
 	}
 	if(cancel_orders != NULL) {
 		lmenu.add_option(_("Cancel orders"), false,
-			// use smallgui layout as default, otherwise the load screen glitches at low res!
-			//game_config::small_gui ? gui::dialog::BUTTON_STANDARD : gui::dialog::BUTTON_EXTRA);
 			gui::dialog::BUTTON_CHECKBOX_LEFT,
 			_("Cancel any pending unit movements in the saved game")
 			);
@@ -633,8 +629,7 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sel
 	gui::dialog_button_info delete_button(&save_deleter,_("Delete Save"));
 
 	lmenu.add_button(delete_button,
-		// use smallgui layout as default, otherwise the load screen glitches at low res!
-		//game_config::small_gui ? gui::dialog::BUTTON_HELP : gui::dialog::BUTTON_EXTRA);
+		// Beware load screen glitches at low res!
 		gui::dialog::BUTTON_HELP);
 
 	int res = lmenu.show();

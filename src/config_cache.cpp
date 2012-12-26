@@ -75,9 +75,6 @@ namespace game_config {
 		defines_map_["LOW_MEM"] = preproc_define();
 #endif
 
-		if (game_config::small_gui)
-			defines_map_["SMALL_GUI"] = preproc_define();
-
 #if defined(__APPLE__)
 		defines_map_["APPLE"] = preproc_define();
 #endif
