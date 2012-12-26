@@ -2430,12 +2430,12 @@ size_t unit::modification_count(const std::string& type, const std::string& id) 
 }
 
 /** Helper function for add_modifications */
-static void mod_mdr_merge(config& dst, const config& mod, bool delta)
+static void mod_mdr_merge(config& dst, const config& mod, bool delta, int minimum)
 {
 	BOOST_FOREACH(const config::attribute &i, mod.attribute_range()) {
-		int v = 0;
-		if (delta) v = dst[i.first];
-		dst[i.first] = v + i.second.to_int();
+		int base = delta ? dst[i.first].to_int() : 0;
+
+		dst[i.first] = std::max(minimum, base + i.second.to_int());
 	}
 }
 
@@ -2632,19 +2632,19 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 				} else if (apply_to == "movement_costs") {
 					config &mv = cfg_.child_or_add("movement_costs");
 					if (const config &ap = effect.child("movement_costs")) {
-						mod_mdr_merge(mv, ap, !effect["replace"].to_bool());
+						mod_mdr_merge(mv, ap, !effect["replace"].to_bool(), 1);
 					}
 					movement_costs_.clear();
 				} else if (apply_to == "vision_costs") {
 					config &vi = cfg_.child_or_add("vision_costs");
 					if (const config &ap = effect.child("vision_costs")) {
-						mod_mdr_merge(vi, ap, !effect["replace"].to_bool());
+						mod_mdr_merge(vi, ap, !effect["replace"].to_bool(), 1);
 					}
 					vision_costs_.clear();
 				} else if (apply_to == "jamming_costs") {
 					config &jm = cfg_.child_or_add("jamming_costs");
 					if (const config &ap = effect.child("jamming_costs")) {
-						mod_mdr_merge(jm, ap, !effect["replace"].to_bool());
+						mod_mdr_merge(jm, ap, !effect["replace"].to_bool(), 1);
 					}
 					jamming_costs_.clear();
 				} else if (apply_to == "defense") {
@@ -2668,7 +2668,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 				} else if (apply_to == "resistance") {
 					config &mv = cfg_.child_or_add("resistance");
 					if (const config &ap = effect.child("resistance")) {
-						mod_mdr_merge(mv, ap, !effect["replace"].to_bool());
+						mod_mdr_merge(mv, ap, !effect["replace"].to_bool(), 0);
 					}
 				} else if (apply_to == "zoc") {
 					if (const config::attribute_value *v = effect.get("value")) {
