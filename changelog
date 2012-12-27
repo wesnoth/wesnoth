@@ -15,6 +15,9 @@ Version 1.11.1+svn:
  * WML engine:
    * [unit_overlay] and [remove_unit_overlay] now return a more meaningful
      error message if the image= key is missing
+   * When not replacing values, [effect] apply_to=defense will now modify
+     absolute values instead of signed values (bug #20242). This allows for
+     cleaner WML when the unit type is not necessarily known in advance.
  * Miscellaneous and bug fixes:
    * The undo stack is preserved across a save-reload.
    * Removed several unused private member variables.

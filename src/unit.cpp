@@ -2652,16 +2652,29 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					if (const config &ap = effect.child("defense")) {
 						bool replace = effect["replace"].to_bool();
 						BOOST_FOREACH(const config::attribute &i, ap.attribute_range()) {
-							int v = i.second.to_int();
+							// The new value:
+							int value = i.second.to_int(replace ? 100 : 0);
+							// Where the value gets stored:
 							config::attribute_value &dst = def[i.first];
-							if (!replace) {
-								int w = dst.to_int(100);
-								v += w;
-								if ((w >= 0 && v < 0) || (w < 0 && v > 0)) v = 0;
-								else if (v < -100) v = -100;
-								else if (v > 100) v = 100;
+
+							if ( replace ) {
+								// The new value gets capped between -100 and +100.
+								value = std::max(-100, std::min(value, 100));
 							}
-							dst = v;
+							else {
+								int old = dst.to_int(100);
+
+								// Add the absolute value of the old value.
+								value += abs(old);
+								// This gets capped between 0 and 100.
+								value = std::max(0, std::min(value, 100));
+								// Restore the sign of the old value.
+								if ( old < 0 )
+									value = -value;
+							}
+
+							// Save this value.
+							dst = value;
 						}
 					}
 					defense_mods_.clear();
