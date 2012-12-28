@@ -267,9 +267,9 @@ void play_controller::init(CVideo& video){
 	}
 	else if (is_observer())
 	{
-		// Find first team that is allowed to be observered.
-		// If not set here observer would be without fog untill
-		// the first turn of observerable side
+		// Find first team that is allowed to be observed.
+		// If not set here observer would be without fog until
+		// the first turn of observable side
 		size_t i;
 		for (i=0;i < teams_.size();++i)
 		{
