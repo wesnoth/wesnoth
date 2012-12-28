@@ -2,8 +2,12 @@ Version 1.11.1+svn:
  * AI:
    * Experimental Multiplayer AI
      * Improve recruitment, notably first turn choices and units with poison
+       and charge
      * Improved selection of units for village stealing
      * Remove dependency on AI-demos add-on
+     * Fix bug when playing on maps with a turn limit
+     * Fix bug handling regeneration
+     * Minor improvements in switching between castles
  * Campaigns:
    * Son of the Black Eye:
      * Prevent infinite loop if fewer than two transport ships (bug #20389)

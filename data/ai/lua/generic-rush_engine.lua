@@ -74,7 +74,7 @@ return {
             end
 
             if self.data.leader_target then
-                return 290000
+                return self.data.leader_score
             end
 
             local width,height,border = wesnoth.get_map_size()
@@ -88,7 +88,7 @@ return {
                 }} }}, -- That are not too close to an enemy leader
                 { "not", {
                     x = leader.x, y = leader.y, terrain = "K*^*,*^Kov",
-                    radius = 2,
+                    radius = 3,
                     { "filter_radius", { terrain = 'C*^*,K*^*,*^Kov,*^Cov' } }
                 }}, -- That are not close and connected to a keep the leader is on
                 { "filter_adjacent_location", {
@@ -115,7 +115,7 @@ return {
                 -- Prefer closer keeps to enemy
                 local turns = math.ceil(cost/leader.max_moves)
                 if turns <= 2 then
-                    score = 1/(math.ceil(turns))
+                    score = 1/turns
                     for j,e in ipairs(enemy_leaders) do
                         score = score + 1 / H.distance_between(loc[1], loc[2], e.x, e.y)
                     end
@@ -124,6 +124,30 @@ return {
                         best_score = score
                         best_loc = loc
                         best_turns = turns
+                    end
+                end
+            end
+
+            -- If we're on a keep,
+            -- don't move to another keep unless it's much better when uncaptured villages are present
+            if best_score > 0 and wesnoth.get_terrain_info(wesnoth.get_terrain(leader.x, leader.y)).keep then
+                local close_unowned_village = (wesnoth.get_villages {
+                    { "and", {
+                    x = leader.x,
+                    y = leader.y,
+                    radius = leader.max_moves
+                    }},
+                    owner_side = 0
+                })[1]
+                if close_unowned_village then
+                    local score = 1/best_turns
+                    for j,e in ipairs(enemy_leaders) do
+                        -- count all distances as three less than they actually are
+                        score = score + 1 / (H.distance_between(leader.x, leader.y, e.x, e.y) - 3)
+                    end
+
+                    if score > best_score then
+                        best_score = 0
                     end
                 end
             end
@@ -157,8 +181,34 @@ return {
                 end
 
                 self.data.leader_target = next_hop
+
+                -- if we're on a keep, wait until there are no movable units on the castle before moving off
+                self.data.leader_score = 290000
+                if wesnoth.get_terrain_info(wesnoth.get_terrain(leader.x, leader.y)).keep then
+                    local castle = wesnoth.get_locations {
+                        x = "1-"..width, y = "1-"..height,
+                        { "and", {
+                            x = leader.x, y = leader.y, radius = 200,
+                            { "filter_radius", { terrain = 'C*^*,K*^*,*^Kov,*^Cov' } }
+                        }}
+                    }
+                    local should_wait = false
+                    for i,loc in ipairs(castle) do
+                        local unit = wesnoth.get_unit(loc[1], loc[2])
+                        if not unit then
+                            should_wait = false
+                            break
+                        elseif unit.moves > 0 then
+                            should_wait = true
+                        end
+                    end
+                    if should_wait then
+                        self.data.leader_score = 15000
+                    end
+                end
+
                 AH.done_eval_messages(start_time, ca_name)
-                return 290000
+                return self.data.leader_score
             end
 
             AH.done_eval_messages(start_time, ca_name)

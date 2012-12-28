@@ -110,7 +110,7 @@ return {
                     local defense = defender_defense
                     local poison = false
                     local damage_multiplier = 1
-                    -- TODO: handle more abilities (charge)
+
                     for special in H.child_range(attack, 'specials') do
                         local mod
                         if H.get_child(special, 'poison') and can_poison then
@@ -130,13 +130,15 @@ return {
                             end
                         end
 
-                        -- Handle backstab
+                        -- Handle backstab, charge
                         mod = H.get_child(special, 'damage')
-                        if mod then
+                        if mod and mod.active_on ~= "defense" then
                             if mod.backstab then
                                 -- Assume backstab happens on only 1/2 of attacks
                                 -- TODO: find out what actual probability of getting to backstab is
                                 damage_multiplier = damage_multiplier*(mod.multiply*0.5 + 0.5)
+                            else
+                                damage_multiplier = damage_multiplier*mod.multiply
                             end
                         end
                     end
@@ -210,7 +212,7 @@ return {
                 name = "X",
                 random_gender = false
             }
-            local can_poison = living(unit) or wesnoth.unit_ability(unit, 'regenerate')
+            local can_poison = living(unit) and (not wesnoth.unit_ability(unit, 'regenerate'))
             local flat_defense = wesnoth.unit_defense(unit, "Gt")
             local best_defense = get_best_defense(unit)
 
@@ -644,7 +646,12 @@ return {
                     eta = eta + 1
                 end
                 -- divide the lawful bonus by eta before running it through the function because the function converts from 0 centered to 1 centered
-                local lawful_bonus = wesnoth.get_time_of_day(wesnoth.current.turn + eta).lawful_bonus / eta^2
+
+                local lawful_bonus = 1
+                local eta_turn = wesnoth.current.turn + eta
+                if eta_turn <= wesnoth.game_config.last_turn then
+                    lawful_bonus = wesnoth.get_time_of_day(wesnoth.current.turn + eta).lawful_bonus / eta^2
+                end
                 local damage_bonus = AH.get_unit_time_of_day_bonus(recruit_unit.__cfg.alignment, lawful_bonus)
                 -- Estimate effectiveness on offense and defense
                 local offense_score =
