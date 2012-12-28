@@ -24,6 +24,8 @@
 #include "../map_location.hpp"
 #include "../unit.hpp"
 
+#include <boost/make_shared.hpp>
+#include <boost/shared_ptr.hpp>
 #include <vector>
 
 
@@ -31,7 +33,8 @@
 class undo_list {
 	/// Records information to be able to undo an action.
 	struct undo_action {
-		enum ACTION_TYPE { NONE, MOVE, RECRUIT, RECALL, DISMISS };
+		enum ACTION_TYPE { NONE, MOVE, RECRUIT, RECALL, DISMISS, AUTO_SHROUD,
+		                   UPDATE_SHROUD };
 		static ACTION_TYPE parse_type(const std::string & str);
 
 		/// Constructor for move actions.
@@ -45,9 +48,10 @@ class undo_list {
 				original_village_owner(orig),
 				recall_from(),
 				type(MOVE),
-				affected_unit(u),
+				affected_unit(boost::make_shared<unit>(u)),
 				countdown_time_bonus(timebonus),
-				starting_dir(dir == map_location::NDIRECTIONS ? u.facing() : dir)
+				starting_dir(dir == map_location::NDIRECTIONS ? u.facing() : dir),
+				active()
 			{
 			}
 
@@ -60,9 +64,10 @@ class undo_list {
 				original_village_owner(),
 				recall_from(from),
 				type(action_type),
-				affected_unit(u),
+				affected_unit(boost::make_shared<unit>(u)),
 				countdown_time_bonus(1),
-				starting_dir(u.facing())
+				starting_dir(u.facing()),
+				active()
 			{}
 
 		// Constructor for dismissals.
@@ -72,9 +77,23 @@ class undo_list {
 				original_village_owner(),
 				recall_from(),
 				type(DISMISS),
-				affected_unit(u),
+				affected_unit(boost::make_shared<unit>(u)),
 				countdown_time_bonus(),
-				starting_dir(map_location::NDIRECTIONS)
+				starting_dir(map_location::NDIRECTIONS),
+				active()
+			{}
+
+		// Constructor for shroud actions.
+		explicit undo_action(const ACTION_TYPE action_type, bool turned_on=true) :
+				route(),
+				starting_moves(),
+				original_village_owner(),
+				recall_from(),
+				type(action_type),
+				affected_unit(),
+				countdown_time_bonus(),
+				starting_dir(map_location::NDIRECTIONS),
+				active(turned_on)
 			{}
 
 		/// Constructor from a config.
@@ -88,7 +107,14 @@ class undo_list {
 		bool is_recall()  const { return type == RECALL; }
 		bool is_recruit() const { return type == RECRUIT; }
 		bool is_move()    const { return type == MOVE; }
+		bool is_auto_shroud()   const { return type == AUTO_SHROUD; }
+		bool is_update_shroud() const { return type == UPDATE_SHROUD; }
 		bool valid()      const { return type != NONE; }
+
+		/// This identifies which types of actions must (and always will) have
+		/// a unit.
+		bool needs_unit() const { return type == DISMISS  ||  type == RECALL  ||
+		                                 type == RECRUIT  ||  type == MOVE; }
 
 
 		// Data:
@@ -98,14 +124,16 @@ class undo_list {
 		int original_village_owner;
 		map_location recall_from;
 		ACTION_TYPE type;
-		unit affected_unit;
+		// Use a shared (not scoped) pointer because this will get copied.
+		boost::shared_ptr<unit> affected_unit;
 		int countdown_time_bonus;
 		map_location::DIRECTION starting_dir;
+		bool active;
 	};
 	typedef std::vector<undo_action> action_list;
 
 public:
-	/// The config can be invalid.
+	/// The config may be invalid.
 	explicit undo_list(const config & cfg) :
 		undos_(), redos_(), side_(1), committed_actions_(false)
 	{ if ( cfg ) read(cfg); }
@@ -113,6 +141,8 @@ public:
 
 	// Functions related to managing the undo stack:
 
+	/// Adds an auto-shroud toggle to the undo stack.
+	void add_auto_shroud(bool turned_on);
 	/// Adds a dismissal to the undo stack.
 	void add_dissmissal(const unit & u)
 	{ add(undo_action(u)); }
@@ -131,6 +161,10 @@ public:
 	void add_recruit(const unit& u, const map_location& loc,
 	                 const map_location& from)
 	{ add(undo_action(u, loc, from, undo_action::RECRUIT)); }
+private:
+	/// Adds a shroud update to the undo stack.
+	void add_update_shroud();
+public:
 	/// Clears the stack of undoable (and redoable) actions.
 	void clear();
 	/// Updates fog/shroud based on the undo stack, then updates stack as needed.
