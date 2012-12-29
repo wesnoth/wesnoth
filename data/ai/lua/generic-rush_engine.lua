@@ -75,7 +75,12 @@ return {
             end
 
             if self.data.leader_target then
-                return self.data.leader_score
+                -- make sure move is still valid
+                local next_hop = AH.next_hop(leader, self.data.leader_target[1], self.data.leader_target[2])
+                if next_hop and next_hop[1] == self.data.leader_target[1]
+                and next_hop[2] == self.data.leader_target[2] then
+                    return self.data.leader_score
+                end
             end
 
             local width,height,border = wesnoth.get_map_size()
