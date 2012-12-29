@@ -166,7 +166,7 @@ void textbox::draw_contents()
 		dest.y = loc.y;
 
 		// Fills the selected area
-		if(is_selection()) {
+		if(enabled() && is_selection()) {
 			const int start = std::min<int>(selstart_,selend_);
 			const int end = std::max<int>(selstart_,selend_);
 			int startx = char_x_[start];
@@ -195,7 +195,15 @@ void textbox::draw_contents()
 			}
 		}
 
-		sdl_blit(text_image_, &src, surf, &dest);
+		if(enabled()) {
+			sdl_blit(text_image_, &src, surf, &dest);
+		} else {
+			// HACK: using 30% opacity allows white text to look as though it is grayed out,
+			// while not changing any applicable non-grayscale AA. Actual colored text will
+			// not look as good, but this is not currently a concern since GUI1 textboxes
+			// are not used much nowadays, and they will eventually all go away.
+			sdl_blit(adjust_surface_alpha(text_image_, ftofxp(0.3)), &src, surf, &dest);
+		}
 	}
 
 	draw_cursor((cursor_pos_ == 0 ? 0 : cursor_pos_ - 1), video());
