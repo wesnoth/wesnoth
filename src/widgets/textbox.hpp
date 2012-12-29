@@ -84,6 +84,8 @@ private:
 
 	textbox* edit_target_;
 
+	void handle_event(const SDL_Event& event, bool was_forwarded);
+
 	void handle_event(const SDL_Event& event);
 
 	void pass_event_to_target(const SDL_Event& event);

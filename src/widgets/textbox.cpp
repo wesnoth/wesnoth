@@ -387,6 +387,11 @@ bool textbox::requires_event_focus(const SDL_Event* event) const
 
 void textbox::handle_event(const SDL_Event& event)
 {
+	handle_event(event, false);
+}
+
+void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
+{
 	if(!enabled())
 		return;
 
@@ -457,14 +462,14 @@ void textbox::handle_event(const SDL_Event& event)
 
 	//if we don't have the focus, then see if we gain the focus,
 	//otherwise return
-	if(focus(&event) == false) {
+	if(!was_forwarded && focus(&event) == false) {
 		if (!mouse_locked() && event.type == SDL_MOUSEMOTION && point_in_rect(mousex, mousey, loc))
 			events::focus_handler(this);
 
 		return;
 	}
 
-	if(event.type != SDL_KEYDOWN || focus(&event) != true) {
+	if(event.type != SDL_KEYDOWN || (!was_forwarded && focus(&event) != true)) {
 		draw();
 		return;
 	}
@@ -616,13 +621,7 @@ void textbox::handle_event(const SDL_Event& event)
 void textbox::pass_event_to_target(const SDL_Event& event)
 {
 	if(edit_target_ && edit_target_->editable()) {
-		set_focus(false);
-		edit_target_->set_focus(true);
-
-		edit_target_->handle_event(event);
-
-		edit_target_->set_focus(false);
-		set_focus(true);
+		edit_target_->handle_event(event, true);
 	}
 }
 
