@@ -305,7 +305,6 @@ function ai_helper.get_closest_location(hex, location_filter, unit)
             }
         end
         for k,v in pairs(location_filter) do loc_filter[k] = v end
-        --DBG.dbms(loc_filter)
 
         local locs = wesnoth.get_locations(loc_filter)
 
