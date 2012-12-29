@@ -2385,9 +2385,12 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 			}
 
 			const int side = controller->current_side();
-			if (advance &&
-			    unit_helper::will_certainly_advance(resources::units->find(loc)))
+			uint loop_limit = 5;
+			while ( advance
+					&& unit_helper::will_certainly_advance(resources::units->find(loc))
+			        && (loop_limit > 0) )
 			{
+				loop_limit--;
 				int total_opt = unit_helper::number_of_possible_advances(u);
 				bool use_dialog = side == u.side() &&
 					(*resources::teams)[side - 1].is_human();
