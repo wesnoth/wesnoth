@@ -7,6 +7,7 @@ return {
         local H = wesnoth.require "lua/helper.lua"
         local W = H.set_wml_action_metatable {}
         local AH = wesnoth.require "ai/lua/ai_helper.lua"
+        local BC = wesnoth.require "ai/lua/battle_calcs.lua"
         local LS = wesnoth.require "lua/location_set.lua"
 
         ------ Stats at beginning of turn -----------
@@ -265,7 +266,7 @@ return {
             end
 
             -- Also find which locations can be attacked by enemies
-            local enemy_attack_map = AH.get_attack_map(enemies).units
+            local enemy_attack_map = BC.get_attack_map(enemies).units
 
             -- Now we go through the villages and units
             local max_rating, best_village, best_unit = -9e99, {}, {}

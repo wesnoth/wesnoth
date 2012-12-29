@@ -141,6 +141,38 @@ function ai_helper.array_merge(a1, a2)
     return merger
 end
 
+function ai_helper.serialize(input)
+    -- Convert 'input' to a string in a format corresponding to the type of the input
+    -- The string is all put into one line
+    local str = ''
+
+    if (type(input) == "number") or (type(input) == "boolean") then
+        str = tostring(input)
+    elseif type(input) == "string" then
+        str = string.format("%q", input)
+    elseif type(input) == "table" then
+        str = str .. "{ "
+        for k,v in pairs(input) do
+            str = str .. "[" .. ai_helper.serialize(k)  .. "] = "
+            str = str .. ai_helper.serialize(v)
+            str = str .. ", "
+        end
+        str = str .. "}"
+    else
+        error("cannot serialize a " .. type(input))
+    end
+
+    return str
+end
+
+function ai_helper.split(str, sep)
+    -- Split a string into a table using the delimiter
+    local sep, fields = sep or ",", {}
+    local pattern = string.format("([^%s]+)", sep)
+    string.gsub(str, pattern, function(c) fields[#fields+1] = c end)
+    return fields
+end
+
 --------- Location set related helper functions ----------
 
 function ai_helper.get_LS_xy(index)
@@ -239,26 +271,86 @@ function ai_helper.is_opposite_adjacent(hex1, hex2, center_hex)
     return false
 end
 
-function ai_helper.get_closest_location(hex, location_filter)
+function ai_helper.get_closest_location(hex, location_filter, unit)
     -- Get the location closest to 'hex' (in format { x, y })
     -- that matches 'location_filter' (in WML table format)
+    -- A unit can be passed as an optional third parameter, in which case the
+    -- terrain needs to be passable for that unit
     -- Returns nil if no terrain matching the filter was found
 
-    local locs = wesnoth.get_locations(location_filter)
+    -- Find the maximum distance from 'hex' that's possible on the map
+    local max_distance = 0
+    local width, height = wesnoth.get_map_size()
+    local to_top_left = H.distance_between(hex[1], hex[2], 0, 0)
+    if (to_top_left > max_distance) then max_distance = to_top_left end
+    local to_top_right = H.distance_between(hex[1], hex[2], width+1, 0)
+    if (to_top_right > max_distance) then max_distance = to_top_right end
+    local to_bottom_left = H.distance_between(hex[1], hex[2], 0, height+1)
+    if (to_bottom_left > max_distance) then max_distance = to_bottom_left end
+    local to_bottom_right = H.distance_between(hex[1], hex[2], width+1, height+1)
+    if (to_bottom_right > max_distance) then max_distance = to_bottom_right end
+    --print(max_distance)
 
-    local max_rating, best_hex = -9e99, {}
-    for i,l in ipairs(locs) do
-        local rating = -H.distance_between(hex[1], hex[2], l[1], l[2])
-        if (rating > max_rating) then
-            max_rating, best_hex = rating, l
+    local radius = 0
+    while (radius <= max_distance) do
+        local loc_filter = {}
+        if (radius == 0) then
+            loc_filter = {
+                { "and", { x = hex[1], y = hex[2], radius = radius } },
+            }
+        else
+            loc_filter = {
+                { "and", { x = hex[1], y = hex[2], radius = radius } },
+                { "not", { x = hex[1], y = hex[2], radius = radius - 1 } },
+            }
         end
+        for k,v in pairs(location_filter) do loc_filter[k] = v end
+        --DBG.dbms(loc_filter)
+
+        local locs = wesnoth.get_locations(loc_filter)
+
+        if unit then
+            for i,l in ipairs(locs) do
+                local movecost = wesnoth.unit_movement_cost(unit, wesnoth.get_terrain(l[1], l[2]))
+                if (movecost < 99) then return l end
+            end
+        else
+            if locs[1] then return locs[1] end
+        end
+
+        radius = radius + 1
     end
 
-    if (max_rating > -9e99) then
-        return best_hex, -max_rating
-    else
-        return nil, 9e99
+    return nil
+end
+
+function ai_helper.get_passable_locations(location_filter, unit)
+    -- Finds all locations matching 'location_filter' that are passable for
+    -- 'unit'.  This also excludes hexes on the map border.
+    -- 'unit' is optional: if omitted, all hexes matching the filter, but
+    -- excluding border hexes are returned
+
+    -- All hexes that are not on the map border
+    local width, height = wesnoth.get_map_size()
+    local all_locs = wesnoth.get_locations{
+        x = '1-' .. width,
+        y = '1-' .. height,
+        { "and", location_filter }
+    }
+
+    -- If 'unit' is provided, exclude terrain that's impassable for the unit
+    -- table.delete() can be slow for large arrays -> build a new table
+
+    if unit then
+        local locs = {}
+        for i,l in ipairs(all_locs) do
+            local movecost = wesnoth.unit_movement_cost(unit, wesnoth.get_terrain(l[1], l[2]))
+            if (movecost < 99) then table.insert(locs, l) end
+        end
+        return locs
     end
+
+    return all_locs
 end
 
 function ai_helper.distance_map(units, map)
@@ -1027,73 +1119,6 @@ function ai_helper.get_attacks(units, cfg)
     end
 
     return attacks
-end
-
-function ai_helper.get_attack_map_unit(unit, cfg)
-    -- Get all hexes that a unit can attack
-    -- Return value is a location set, where the values are tables, containing
-    --   - units: the number of units (always 1 for this function)
-    --   - hitpoints: the combined hitpoints of the units
-    --   - srcs: an array containing the positions of the units
-    -- cfg: table with config parameters
-    --  max_moves: if set use max_moves for units (this setting is always used for units on other sides)
-
-    cfg = cfg or {}
-
-    -- 'moves' can be either "current" or "max"
-    -- For unit on current side: use "current" by default, or override by cfg.moves
-    local max_moves = cfg.max_moves
-    -- For unit on any other side, only max_moves=true makes sense
-    if (unit.side ~= wesnoth.current.side) then max_moves = true end
-
-    local old_moves = unit.moves
-    if max_moves then unit.moves = unit.max_moves end
-
-    local reach = {}
-    reach.units = LS.create()
-    reach.hitpoints = LS.create()
-
-    local initial_reach = wesnoth.find_reach(unit, cfg)
-
-    for i,loc in ipairs(initial_reach) do
-        reach.units:insert(loc[1], loc[2], 1)
-        reach.hitpoints:insert(loc[1], loc[2], unit.hitpoints)
-        for x, y in H.adjacent_tiles(loc[1], loc[2]) do
-            reach.units:insert(x, y, 1)
-            reach.hitpoints:insert(x, y, unit.hitpoints)
-        end
-    end
-
-    -- Reset unit moves
-    if max_moves then unit.moves = old_moves end
-
-    return reach
-end
-
-function ai_helper.get_attack_map(units, cfg)
-    -- Get all hexes that units can attack (this is really just a wrapper function for ai_helper.get_attack_map_unit()
-    -- Return value is a location set, where the values are tables, containing
-    --   - units: the number of units (always 1 for this function)
-    --   - hitpoints: the combined hitpoints of the units
-    --   - srcs: an array containing the positions of the units
-    -- cfg: table with config parameters
-    --  max_moves: if set use max_moves for units (this setting is always used for units on other sides)
-
-    local attack_map1 = {}
-    attack_map1.units = LS.create()
-    attack_map1.hitpoints = LS.create()
-
-    for i,u in ipairs(units) do
-        local attack_map2 = ai_helper.get_attack_map_unit(u, cfg)
-        attack_map1.units:union_merge(attack_map2.units, function(x, y, v1, v2)
-            return (v1 or 0) + v2
-        end)
-        attack_map1.hitpoints:union_merge(attack_map2.hitpoints, function(x, y, v1, v2)
-            return (v1 or 0) + v2
-        end)
-    end
-
-    return attack_map1
 end
 
 function ai_helper.add_next_attack_combo_level(combos, attacks)
