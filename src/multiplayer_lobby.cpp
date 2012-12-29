@@ -818,7 +818,7 @@ lobby::lobby(game_display& disp, const config& cfg, chat& c, config& gamelist) :
 
 	filter_text_.set_text(search_string_);
 	filter_text_.set_help_string(_("Only show games whose title or description contain the entered text"));
-	filter_text_.set_editable(apply_filter_.checked());
+	filter_text_.enable(apply_filter_.checked());
 
 	gamelist_updated();
 	sound::play_music_repeatedly(game_config::lobby_music);
@@ -988,7 +988,7 @@ void lobby::process_event()
                   class currently does not really have an easy way to do
                   that. I'll have to look into this.
 		*/
-		filter_text_.set_editable(apply_filter_.checked());
+		filter_text_.enable(apply_filter_.checked());
 		gamelist_updated();
 		return;
 	}
