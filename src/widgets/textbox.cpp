@@ -131,7 +131,7 @@ void textbox::clear()
 
 void textbox::draw_cursor(int pos, CVideo &video) const
 {
-	if(show_cursor_ && editable_) {
+	if(show_cursor_ && editable_ && enabled()) {
 		SDL_Rect rect = create_rect(location().x + pos
 				, location().y
 				, 1
@@ -351,7 +351,7 @@ namespace {
 
 bool textbox::requires_event_focus(const SDL_Event* event) const
 {
-	if(!focus_ || hidden()) {
+	if(!focus_ || hidden() || !enabled()) {
 		return false;
 	}
 	if(event == NULL) {
@@ -379,6 +379,9 @@ bool textbox::requires_event_focus(const SDL_Event* event) const
 
 void textbox::handle_event(const SDL_Event& event)
 {
+	if(!enabled())
+		return;
+
 	scrollarea::handle_event(event);
 	if(hidden())
 		return;
