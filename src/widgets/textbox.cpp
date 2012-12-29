@@ -480,50 +480,58 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 	const int c = key.sym;
 	const int old_cursor = cursor_;
 
-	if(c == SDLK_LEFT && cursor_ > 0)
-		--cursor_;
-
-	if(c == SDLK_RIGHT && cursor_ < static_cast<int>(text_.size()))
-		++cursor_;
-
-	// ctrl-a, ctrl-e and ctrl-u are readline style shortcuts, even on Macs
-	if(c == SDLK_END || (c == SDLK_e && (modifiers & KMOD_CTRL)))
-		cursor_ = text_.size();
-
-	if(c == SDLK_HOME || (c == SDLK_a && (modifiers & KMOD_CTRL)))
-		cursor_ = 0;
-
-	if((old_cursor != cursor_) && (modifiers & KMOD_SHIFT)) {
-		if(selstart_ == -1)
-			selstart_ = old_cursor;
-		selend_ = cursor_;
-	}
-
-	if(editable_ && c == SDLK_BACKSPACE) {
-		changed = true;
-		if(is_selection()) {
-			erase_selection();
-		} else if(cursor_ > 0) {
+	if(editable_) {
+		if(c == SDLK_LEFT && cursor_ > 0)
 			--cursor_;
-			text_.erase(text_.begin()+cursor_);
+
+		if(c == SDLK_RIGHT && cursor_ < static_cast<int>(text_.size()))
+			++cursor_;
+
+		// ctrl-a, ctrl-e and ctrl-u are readline style shortcuts, even on Macs
+		if(c == SDLK_END || (c == SDLK_e && (modifiers & KMOD_CTRL)))
+			cursor_ = text_.size();
+
+		if(c == SDLK_HOME || (c == SDLK_a && (modifiers & KMOD_CTRL)))
+			cursor_ = 0;
+
+		if((old_cursor != cursor_) && (modifiers & KMOD_SHIFT)) {
+			if(selstart_ == -1)
+				selstart_ = old_cursor;
+			selend_ = cursor_;
 		}
+	} else if(c == SDLK_LEFT || c == SDLK_RIGHT || c == SDLK_END || c == SDLK_HOME) {
+		pass_event_to_target(event);
 	}
 
-	if(editable_ && c == SDLK_u && (modifiers & KMOD_CTRL)) { // clear line
-		changed = true;
-		cursor_ = 0;
-		text_.resize(0);
-	}
-
-	if(editable_ && c == SDLK_DELETE && !text_.empty()) {
-		changed = true;
-		if(is_selection()) {
-			erase_selection();
-		} else {
-			if(cursor_ < static_cast<int>(text_.size())) {
+	if(editable_) {
+		if(c == SDLK_BACKSPACE) {
+			changed = true;
+			if(is_selection()) {
+				erase_selection();
+			} else if(cursor_ > 0) {
+				--cursor_;
 				text_.erase(text_.begin()+cursor_);
 			}
 		}
+
+		if(c == SDLK_u && (modifiers & KMOD_CTRL)) { // clear line
+			changed = true;
+			cursor_ = 0;
+			text_.resize(0);
+		}
+
+		if(c == SDLK_DELETE && !text_.empty()) {
+			changed = true;
+			if(is_selection()) {
+				erase_selection();
+			} else {
+				if(cursor_ < static_cast<int>(text_.size())) {
+					text_.erase(text_.begin()+cursor_);
+				}
+			}
+		}
+	} else if(c == SDLK_BACKSPACE || c == SDLK_DELETE || (c == SDLK_u && (modifiers & KMOD_CTRL))) {
+		pass_event_to_target(event);
 	}
 
 	wchar_t character = key.unicode;
