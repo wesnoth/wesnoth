@@ -660,7 +660,7 @@ size_t undo_list::apply_shroud_changes() const
 	// Fire sighted events
 	if ( clearer.fire_events() ) {
 		// Fix up the display in case WML changed stuff.
-		clear_shroud(side_);
+		action::clear_shroud(side_);
 		disp.invalidate_unit();
 		disp.draw();
 		// The entire stack needs to be cleared in order to preserve replays.

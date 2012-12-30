@@ -674,7 +674,7 @@ namespace {
 		// defender, so we have to make sure they still exist
 		refresh_bc();
 		if(!a_.valid() || !d_.valid() || !(*resources::teams)[a_.get_unit().side() - 1].is_enemy(d_.get_unit().side())) {
-			recalculate_fog(defender_side);
+			action::recalculate_fog(defender_side);
 			if (update_display_){
 				resources::screen->redraw_minimap();
 				resources::screen->draw(true, true);
@@ -1146,7 +1146,7 @@ namespace {
 
 		if ( update_def_fog_ )
 		{
-			recalculate_fog(defender_side);
+			action::recalculate_fog(defender_side);
 		}
 
 		// TODO: if we knew the viewing team, we could skip this display update

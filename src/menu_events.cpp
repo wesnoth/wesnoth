@@ -3426,13 +3426,13 @@ void console_handler::do_create() {
 }
 void console_handler::do_fog() {
 	menu_handler_.teams_[team_num_ - 1].set_fog( !menu_handler_.teams_[team_num_ - 1].uses_fog() );
-	recalculate_fog(team_num_);
+	action::recalculate_fog(team_num_);
 	menu_handler_.gui_->recalculate_minimap();
 	menu_handler_.gui_->redraw_everything();
 }
 void console_handler::do_shroud() {
 	menu_handler_.teams_[team_num_ - 1].set_shroud( !menu_handler_.teams_[team_num_ - 1].uses_shroud() );
-	clear_shroud(team_num_);
+	action::clear_shroud(team_num_);
 	menu_handler_.gui_->recalculate_minimap();
 	menu_handler_.gui_->redraw_everything();
 }

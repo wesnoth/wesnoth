@@ -2557,7 +2557,7 @@ WML_HANDLER_FUNCTION(redraw, /*event_info*/, cfg)
 	if (clear_shroud_bool) {
 		side_filter filter(cfg);
 		BOOST_FOREACH(const int side, filter.get_teams()){
-			clear_shroud(side);
+			action::clear_shroud(side);
 		}
 		screen.recalculate_minimap();
 	}

@@ -524,9 +524,6 @@ bool actor_sighted(const unit & target, const std::vector<int> * cache)
 }
 
 
-}//namespace action
-
-
 /**
  * Function that recalculates the fog of war.
  *
@@ -560,7 +557,7 @@ void recalculate_fog(int side)
 	// This speeds up the invalidations within clear_shroud_unit().
 	resources::screen->invalidate_all();
 
-	action::shroud_clearer clearer;
+	shroud_clearer clearer;
 	BOOST_FOREACH(const unit &u, *resources::units)
 	{
 		if ( u.side() == side )
@@ -596,7 +593,7 @@ bool clear_shroud(int side, bool reset_fog, bool fire_events)
 
 	bool result = false;
 
-	action::shroud_clearer clearer;
+	shroud_clearer clearer;
 	BOOST_FOREACH(const unit &u, *resources::units)
 	{
 		if ( u.side() == side )
@@ -620,4 +617,7 @@ bool clear_shroud(int side, bool reset_fog, bool fire_events)
 
 	return result;
 }
+
+
+}//namespace action
 

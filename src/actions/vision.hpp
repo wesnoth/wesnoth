@@ -107,12 +107,13 @@ std::vector<int> get_sides_not_seeing(const unit & target);
 bool actor_sighted(const unit & target, const std::vector<int> * cache =  NULL);
 
 
-}//namespace action
-
 /// Function that recalculates the fog of war.
 void recalculate_fog(int side);
 
 /// Function that will clear shroud (and fog) based on current unit positions.
 bool clear_shroud(int side, bool reset_fog = false, bool fire_events = true);
+
+
+}//namespace action
 
 #endif

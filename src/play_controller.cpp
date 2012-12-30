@@ -561,7 +561,7 @@ void play_controller::init_gui(){
 
 	if ( !loading_game_ ) {
 		for ( int side = teams_.size(); side != 0; --side )
-			clear_shroud(side, false, false);
+			action::clear_shroud(side, false, false);
 	}
 }
 
@@ -664,7 +664,7 @@ void play_controller::do_init_side(const unsigned int team_index, bool is_replay
 		game_events::fire("side " + side_num + " turn " + turn_num + " refresh");
 
 		// Make sure vision is accurate.
-		clear_shroud(player_number_, true);
+		action::clear_shroud(player_number_, true);
 	}
 
 	const time_of_day &tod = tod_manager_.get_time_of_day();
@@ -756,7 +756,7 @@ void play_controller::finish_side_turn(){
 			uit->end_turn();
 	}
 	// Clear shroud, in case units had been slowed for the turn.
-	clear_shroud(player_number_);
+	action::clear_shroud(player_number_);
 
 	const std::string turn_num = str_cast(turn());
 	const std::string side_num = str_cast(player_number_);
@@ -766,7 +766,7 @@ void play_controller::finish_side_turn(){
 	game_events::fire("side " + side_num + " turn " + turn_num + " end");
 
 	// This is where we refog, after all of a side's events are done.
-	recalculate_fog(player_number_);
+	action::recalculate_fog(player_number_);
 
 	// This implements "delayed map sharing."
 	// It is meant as an alternative to shared vision.
