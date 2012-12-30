@@ -2385,7 +2385,7 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 			}
 
 			const int side = controller->current_side();
-			uint loop_limit = 5;
+			unsigned loop_limit = 5;
 			while ( advance
 					&& unit_helper::will_certainly_advance(resources::units->find(loc))
 			        && (loop_limit > 0) )
