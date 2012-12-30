@@ -33,7 +33,7 @@ class  unit;
 #include <vector>
 
 
-namespace actions {
+namespace action {
 
 /// Class to encapsulate fog/shroud clearing and the resultant sighted events.
 /// Note: This class uses teams as parameters (instead of sides) since a
@@ -107,7 +107,7 @@ std::vector<int> get_sides_not_seeing(const unit & target);
 bool actor_sighted(const unit & target, const std::vector<int> * cache =  NULL);
 
 
-}//namespace actions
+}//namespace action
 
 /// Function that recalculates the fog of war.
 void recalculate_fog(int side);

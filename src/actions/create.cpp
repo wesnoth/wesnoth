@@ -785,7 +785,7 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 	}
 
 	// Fog clearing.
-	actions::shroud_clearer clearer;
+	action::shroud_clearer clearer;
 	if ( !wml_triggered ) // To preserve current WML behavior.
 		mutated |= clearer.clear_unit(current_loc, *new_unit_itor, true);
 
@@ -800,7 +800,7 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 	// "sighted" event(s).
 	mutated |= clearer.fire_events();
 	if ( new_unit_itor.valid() )
-		mutated |= actions::actor_sighted(*new_unit_itor);
+		mutated |= action::actor_sighted(*new_unit_itor);
 
 	return mutated;
 }

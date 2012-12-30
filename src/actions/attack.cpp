@@ -1252,7 +1252,7 @@ void advance_unit(map_location loc, const std::string &advance_to,
 	// This is not normally necessary, but if a unit loses power when leveling
 	// (e.g. loses "jamming" or ambush), it could be discovered as a result of
 	// the advancement.
-	std::vector<int> not_seeing = actions::get_sides_not_seeing(*u);
+	std::vector<int> not_seeing = action::get_sides_not_seeing(*u);
 
 	// Create the advanced unit.
 	bool use_amla = mod_option != NULL;
@@ -1267,7 +1267,7 @@ void advance_unit(map_location loc, const std::string &advance_to,
 	u = resources::units->replace(loc, new_unit).first;
 
 	// Update fog/shroud.
-	actions::shroud_clearer clearer;
+	action::shroud_clearer clearer;
 	clearer.clear_unit(loc, new_unit);
 
 	// "post_advance" event.
@@ -1280,7 +1280,7 @@ void advance_unit(map_location loc, const std::string &advance_to,
 	// "sighted" event(s).
 	clearer.fire_events();
 	if ( u.valid() )
-		actions::actor_sighted(*u, &not_seeing);
+		action::actor_sighted(*u, &not_seeing);
 
 	resources::whiteboard->on_gamestate_change();
 }

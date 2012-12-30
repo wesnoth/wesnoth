@@ -316,7 +316,7 @@ namespace { // Private helpers for move_unit()
 		std::deque<int> moves_left_;	// The front value is what the moving unit's remaining moves should be set to after the next step through the route.
 		std::vector<map_location> to_reveal_;
 
-		actions::shroud_clearer clearer_;
+		action::shroud_clearer clearer_;
 	};
 
 
@@ -876,7 +876,7 @@ namespace { // Private helpers for move_unit()
 
 		if ( begin_ != ambush_limit_ ) {
 			// Cache the moving unit's visibility.
-			std::vector<int> not_seeing = actions::get_sides_not_seeing(*move_it_);
+			std::vector<int> not_seeing = action::get_sides_not_seeing(*move_it_);
 
 			// Prepare to animate.
 			unit_display::unit_mover animator(route_, show);
@@ -939,7 +939,7 @@ namespace { // Private helpers for move_unit()
 				// Finish animating.
 				animator.finish(*move_it_);
 				// Check for the moving unit being seen.
-				event_mutated_ = actions::actor_sighted(*move_it_, &not_seeing);
+				event_mutated_ = action::actor_sighted(*move_it_, &not_seeing);
 			}
 		}//if
 

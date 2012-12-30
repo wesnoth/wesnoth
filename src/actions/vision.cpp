@@ -92,7 +92,7 @@ static bool can_see(const unit & viewer, const map_location & loc,
 }
 
 
-namespace actions {
+namespace action {
 
 
 /**
@@ -524,7 +524,7 @@ bool actor_sighted(const unit & target, const std::vector<int> * cache)
 }
 
 
-}//namespace actions
+}//namespace action
 
 
 /**
@@ -560,7 +560,7 @@ void recalculate_fog(int side)
 	// This speeds up the invalidations within clear_shroud_unit().
 	resources::screen->invalidate_all();
 
-	actions::shroud_clearer clearer;
+	action::shroud_clearer clearer;
 	BOOST_FOREACH(const unit &u, *resources::units)
 	{
 		if ( u.side() == side )
@@ -596,7 +596,7 @@ bool clear_shroud(int side, bool reset_fog, bool fire_events)
 
 	bool result = false;
 
-	actions::shroud_clearer clearer;
+	action::shroud_clearer clearer;
 	BOOST_FOREACH(const unit &u, *resources::units)
 	{
 		if ( u.side() == side )

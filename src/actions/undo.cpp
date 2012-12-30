@@ -624,7 +624,7 @@ size_t undo_list::apply_shroud_changes() const
 		return 0;
 
 
-	actions::shroud_clearer clearer;
+	action::shroud_clearer clearer;
 	bool cleared_shroud = false;  // for optimization
 	size_t erase_to = 0;
 	size_t list_size = undos_.size();
