@@ -1014,15 +1014,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			map_location loc(child, resources::gamedata);
 			map_location from(child.child_or_empty("from"), resources::gamedata);
 
-			std::vector<unit>::iterator recall_unit =
-				find_if_matches_id(current_team.recall_list(), unit_id);
-
-			if (recall_unit != current_team.recall_list().end()) {
-				unit new_unit(*recall_unit);
-				current_team.recall_list().erase(recall_unit);
-				place_recruit(new_unit, loc, from, current_team.recall_cost(), true, !get_replay_source().is_skipping());
-				statistics::recall_unit(new_unit);
-			} else {
+			if ( !action::recall_unit(unit_id, current_team, loc, from, !get_replay_source().is_skipping(), true) ) {
 				replay::process_error("illegal recall: unit_id '" + unit_id + "' could not be found within the recall list.\n");
 			}
 			check_checksums(*cfg);

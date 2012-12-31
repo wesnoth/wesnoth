@@ -675,12 +675,8 @@ void recall_result::do_execute()
 		set_error(AI_ACTION_FAILURE);
 		return;
 	} else {
-
-		unit un(*rec);
-		my_team.recall_list().erase(rec);
-		recorder.add_recall(un.id(), recall_location_, recall_from_);
-		place_recruit(un, recall_location_, recall_from_, my_team.recall_cost(), true, true);
-		statistics::recall_unit(un);
+		recorder.add_recall(unit_id_, recall_location_, recall_from_);
+		action::recall_unit(unit_id_, my_team, recall_location_, recall_from_, true, true);
 
 		if (resources::screen!=NULL) {
 			resources::screen->invalidate_game_status();

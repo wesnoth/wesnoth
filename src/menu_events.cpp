@@ -1056,23 +1056,12 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 bool menu_handler::do_recall(const unit& un, int side_num, const map_location& recall_location, const map_location& recall_from)
 {
 	team &current_team = teams_[side_num - 1];
-	std::vector<unit>& recall_list_team = current_team.recall_list();
 
-	std::vector<unit>::iterator it = find_if_matches_id(recall_list_team, un.id());
-	if (it == recall_list_team.end())
+	recorder.add_recall(un.id(), recall_location, recall_from);
+	if ( !action::recall_unit(un.id(), current_team, recall_location, recall_from) )
 	{
 		ERR_NG << "menu_handler::do_recall(): Unit doesn't exist in recall list.\n";
 		return false;
-	}
-
-	recall_list_team.erase(it);
-	recorder.add_recall(un.id(), recall_location, recall_from);
-	bool mutated = place_recruit(un, recall_location, recall_from, current_team.recall_cost(), true, true);
-	statistics::recall_unit(un);
-
-	resources::undo_stack->add_recall(un, recall_location, recall_from);
-	if ( mutated ) {
-		resources::undo_stack->clear();
 	}
 
 	gui_->redraw_minimap();

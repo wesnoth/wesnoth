@@ -153,6 +153,19 @@ namespace action {
 void recruit_unit(const unit_type & u_type, int side_num, const map_location & loc,
                   const map_location & from, bool show = true, bool is_ai = false);
 
+/**
+ * Recalls the unit with the indicated ID for the provided team.
+ * The ID can be a reference to data in the recall list.
+ * This is the point at which the code merges for recalls originating from players,
+ * the AI, and replays. It starts just after the recall location is successfully
+ * found, and it handles moving the unit to the board, paying gold, firing events,
+ * tracking statistics, and (unless @a is_ai) updating the undo stack.
+ * @returns false if the recall could not be found in the team's recall list.
+ */
+bool recall_unit(const std::string & id, team & current_team,
+                 const map_location & loc, const map_location & from,
+                 bool show = true, bool is_ai = false);
+
 }//namespace action
 
 #endif

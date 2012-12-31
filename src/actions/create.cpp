@@ -837,4 +837,42 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
 }
 
 
+/**
+ * Recalls the unit with the indicated ID for the provided team.
+ */
+bool recall_unit(const std::string & id, team & current_team,
+                 const map_location & loc, const map_location & from,
+                 bool show, bool is_ai)
+{
+	std::vector<unit> & recall_list = current_team.recall_list();
+
+	// Find the unit to recall.
+	std::vector<unit>::iterator recall_it = find_if_matches_id(recall_list, id);
+	if ( recall_it == recall_list.end() )
+		return false;
+
+	// Make a copy of the unit before erasing it from the list.
+	unit recall(*recall_it);
+
+	recall_list.erase(recall_it);
+	// ** IMPORTANT: id might become invalid at this point!
+	// (Use recall.id() instead, if needed.)
+
+	// Place the recall.
+	bool mutated = place_recruit(recall, loc, from, current_team.recall_cost(),
+	                             true, show);
+	statistics::recall_unit(recall);
+
+	// To speed things a bit, don't bother with the undo stack during
+	// an AI turn. The AI will not undo nor delay shroud updates.
+	if ( !is_ai ) {
+		resources::undo_stack->add_recall(recall, loc, from);
+		if ( mutated ) {
+			resources::undo_stack->clear();
+		}
+	}
+	return true;
+}
+
+
 }//namespace action
