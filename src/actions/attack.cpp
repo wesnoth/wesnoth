@@ -673,7 +673,7 @@ namespace {
 		// defender, so we have to make sure they still exist
 		refresh_bc();
 		if(!a_.valid() || !d_.valid() || !(*resources::teams)[a_.get_unit().side() - 1].is_enemy(d_.get_unit().side())) {
-			action::recalculate_fog(defender_side);
+			actions::recalculate_fog(defender_side);
 			if (update_display_){
 				resources::screen->redraw_minimap();
 				resources::screen->draw(true, true);
@@ -1145,7 +1145,7 @@ namespace {
 
 		if ( update_def_fog_ )
 		{
-			action::recalculate_fog(defender_side);
+			actions::recalculate_fog(defender_side);
 		}
 
 		// TODO: if we knew the viewing team, we could skip this display update
@@ -1251,7 +1251,7 @@ void advance_unit(map_location loc, const std::string &advance_to,
 	// This is not normally necessary, but if a unit loses power when leveling
 	// (e.g. loses "jamming" or ambush), it could be discovered as a result of
 	// the advancement.
-	std::vector<int> not_seeing = action::get_sides_not_seeing(*u);
+	std::vector<int> not_seeing = actions::get_sides_not_seeing(*u);
 
 	// Create the advanced unit.
 	bool use_amla = mod_option != NULL;
@@ -1266,7 +1266,7 @@ void advance_unit(map_location loc, const std::string &advance_to,
 	u = resources::units->replace(loc, new_unit).first;
 
 	// Update fog/shroud.
-	action::shroud_clearer clearer;
+	actions::shroud_clearer clearer;
 	clearer.clear_unit(loc, new_unit);
 
 	// "post_advance" event.
@@ -1279,7 +1279,7 @@ void advance_unit(map_location loc, const std::string &advance_to,
 	// "sighted" event(s).
 	clearer.fire_events();
 	if ( u.valid() )
-		action::actor_sighted(*u, &not_seeing);
+		actions::actor_sighted(*u, &not_seeing);
 
 	resources::whiteboard->on_gamestate_change();
 }

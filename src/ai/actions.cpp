@@ -466,14 +466,14 @@ void move_result::do_execute()
 	move_spectator_.set_unit(resources::units->find(from_));
 
 	if (from_ != to_) {
-		size_t num_steps = action::move_unit(
+		size_t num_steps = ::actions::move_unit(
 			/*std::vector<map_location> steps*/ route_->steps,
 			/*replay* move_recorder*/ &recorder,
-			/*action::undo_list* undo_stack*/ NULL,
+			/*::actions::undo_list* undo_stack*/ NULL,
 			/*bool continue_move*/ true, ///@todo 1.9 set to false after implemeting interrupt awareness
 			/*bool show_move*/ preferences::show_ai_moves(),
 			/*bool* interrupted*/ NULL,
-			/*action::move_unit_spectator* move_spectator*/ &move_spectator_);
+			/*::actions::move_unit_spectator* move_spectator*/ &move_spectator_);
 
 		if ( num_steps > 0 ) {
 			set_gamestate_changed();
@@ -676,7 +676,7 @@ void recall_result::do_execute()
 		return;
 	} else {
 		recorder.add_recall(unit_id_, recall_location_, recall_from_);
-		action::recall_unit(unit_id_, my_team, recall_location_, recall_from_, true, true);
+		::actions::recall_unit(unit_id_, my_team, recall_location_, recall_from_, true, true);
 
 		if (resources::screen!=NULL) {
 			resources::screen->invalidate_game_status();
@@ -879,7 +879,7 @@ void recruit_result::do_execute()
 	const events::command_disabler disable_commands;
 	const std::string recruit_err = find_recruit_location(get_side(), recruit_location_, recruit_from_, u->id());
 	if(recruit_err.empty()) {
-		action::recruit_unit(*u, get_side(), recruit_location_, recruit_from_, preferences::show_ai_moves(), true);
+		::actions::recruit_unit(*u, get_side(), recruit_location_, recruit_from_, preferences::show_ai_moves(), true);
 		// Confirm the transaction - i.e. don't undo recruitment
 		replay_guard.confirm_transaction();
 		set_gamestate_changed();

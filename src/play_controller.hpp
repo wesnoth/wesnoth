@@ -35,7 +35,7 @@ class game_data;
 class team;
 struct wml_menu_item;
 
-namespace action {
+namespace actions {
 	class undo_list;
 }
 
@@ -224,7 +224,7 @@ protected:
 	/// undo_stack_ is never NULL. It is implemented as a pointer so that
 	/// undo_list can be an incomplete type at this point (which reduces the
 	/// number of files that depend on actions/undo.hpp).
-	boost::scoped_ptr<action::undo_list> undo_stack_;
+	boost::scoped_ptr<actions::undo_list> undo_stack_;
 
 	//whiteboard manager
 	boost::scoped_ptr<wb::manager> whiteboard_manager_;

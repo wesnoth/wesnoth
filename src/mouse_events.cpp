@@ -758,7 +758,7 @@ bool mouse_handler::move_unit_along_current_route()
  * Moves a unit across the board for a player.
  * This is specifically for movement at the time it is initiated by a player,
  * whether via a mouse click or executing whiteboard actions. Continued moves
- * (including goto execution) can bypass this and call action::move_unit() directly.
+ * (including goto execution) can bypass this and call actions::move_unit() directly.
  * This function call may include time for an animation, so make sure the
  * provided route will remain unchanged (the caller should probably make a local
  * copy).
@@ -800,8 +800,8 @@ size_t mouse_handler::move_unit_along_route(const std::vector<map_location> & st
 
 	size_t moves = 0;
 	try {
-		moves = action::move_unit(steps, &recorder, resources::undo_stack,
-		                          false, true, &interrupted);
+		moves = actions::move_unit(steps, &recorder, resources::undo_stack,
+		                           false, true, &interrupted);
 	} catch(end_turn_exception&) {
 		cursor::set(cursor::NORMAL);
 		gui().invalidate_game_status();
@@ -1165,7 +1165,7 @@ bool mouse_handler::unit_in_cycle(unit_map::const_iterator it)
 		return false;
 
 	if (it->side() != side_num_ || it->user_end_turn()
-	    || gui().fogged(it->get_location()) || !action::unit_can_move(*it))
+	    || gui().fogged(it->get_location()) || !actions::unit_can_move(*it))
 		return false;
 
 	if (current_team().is_enemy(int(gui().viewing_team()+1)) &&

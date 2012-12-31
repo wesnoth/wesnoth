@@ -29,7 +29,7 @@
 #include <vector>
 
 
-namespace action {
+namespace actions {
 
 
 /// Class to store the actions that a player can undo and redo.
@@ -216,6 +216,6 @@ private: // data
 };
 
 
-}//namespace action
+}//namespace actions
 
 #endif

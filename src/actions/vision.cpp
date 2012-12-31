@@ -92,7 +92,7 @@ static bool can_see(const unit & viewer, const map_location & loc,
 }
 
 
-namespace action {
+namespace actions {
 
 
 /**
@@ -619,5 +619,5 @@ bool clear_shroud(int side, bool reset_fog, bool fire_events)
 }
 
 
-}//namespace action
+}//namespace actions
 

@@ -32,7 +32,7 @@ class  unit;
 #include <vector>
 
 
-namespace action {
+namespace actions {
 	class  move_unit_spectator;
 
 /// Class to encapsulate fog/shroud clearing and the resultant sighted events.
@@ -114,6 +114,6 @@ void recalculate_fog(int side);
 bool clear_shroud(int side, bool reset_fog = false, bool fire_events = true);
 
 
-}//namespace action
+}//namespace actions
 
 #endif

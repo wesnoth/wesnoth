@@ -2097,7 +2097,7 @@ void unit::redraw_unit()
 			if(disp.playing_team() == disp.viewing_team() && !user_end_turn()) {
 				if (movement_left() == total_movement()) {
 					orb_img = &unmoved_orb;
-				} else if ( action::unit_can_move(*this) ) {
+				} else if ( actions::unit_can_move(*this) ) {
 					orb_img = &partmoved_orb;
 				}
 			}

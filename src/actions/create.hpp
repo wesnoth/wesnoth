@@ -141,7 +141,7 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 	bool wml_triggered = false);
 
 
-namespace action {
+namespace actions {
 
 /**
  * Recruits a unit of the given type for the given side.
@@ -166,6 +166,6 @@ bool recall_unit(const std::string & id, team & current_team,
                  const map_location & loc, const map_location & from,
                  bool show = true, bool is_ai = false);
 
-}//namespace action
+}//namespace actions
 
 #endif

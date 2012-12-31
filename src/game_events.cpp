@@ -877,7 +877,7 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 	const map_location vacant_dst = find_vacant_tile(dst, pathfind::VACANT_ANY, pass_check);
 	if (!resources::game_map->on_board(vacant_dst)) return;
 
-	action::shroud_clearer clearer;
+	actions::shroud_clearer clearer;
 	if (cfg["clear_shroud"].to_bool(true)) {
 		clearer.clear_unit(vacant_dst, *u);
 	}
@@ -897,7 +897,7 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 	u->set_standing();
 
 	if (resources::game_map->is_village(vacant_dst)) {
-		action::get_village(vacant_dst, u->side());
+		actions::get_village(vacant_dst, u->side());
 	}
 
 	resources::screen->invalidate_unit_after_move(src_loc, dst);
@@ -2557,7 +2557,7 @@ WML_HANDLER_FUNCTION(redraw, /*event_info*/, cfg)
 	if (clear_shroud_bool) {
 		side_filter filter(cfg);
 		BOOST_FOREACH(const int side, filter.get_teams()){
-			action::clear_shroud(side);
+			actions::clear_shroud(side);
 		}
 		screen.recalculate_minimap();
 	}

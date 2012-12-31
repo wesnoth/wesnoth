@@ -29,7 +29,7 @@ class tod_manager;
 class unit_map;
 class persist_manager;
 
-namespace action { class undo_list; }
+namespace actions { class undo_list; }
 
 namespace soundsource { class manager; }
 
@@ -50,7 +50,7 @@ namespace resources
 	extern std::vector<team>    *teams;
 	extern ::tod_manager        *tod_manager;
 	extern pathfind::manager    *tunnels;
-	extern action::undo_list    *undo_stack;
+	extern actions::undo_list   *undo_stack;
 	extern unit_map             *units;
 	extern wb::manager          *whiteboard;
 }

@@ -267,7 +267,8 @@ namespace {
 		}
 	}
 
-}
+}//anonymous namespace
+
 
 // Simple algorithm: no maximum number of patients per healer.
 void calculate_healing(int side, bool update_display)

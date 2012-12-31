@@ -985,7 +985,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			const int beginning_gold = current_team.gold();
 
 			if (res.empty()) {
-				action::recruit_unit(*u_type, side_num, loc, from, !get_replay_source().is_skipping(), true);
+				actions::recruit_unit(*u_type, side_num, loc, from, !get_replay_source().is_skipping(), true);
 			} else {
 				std::stringstream errbuf;
 				errbuf << "cannot recruit unit: " << res << "\n";
@@ -1014,7 +1014,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			map_location loc(child, resources::gamedata);
 			map_location from(child.child_or_empty("from"), resources::gamedata);
 
-			if ( !action::recall_unit(unit_id, current_team, loc, from, !get_replay_source().is_skipping(), true) ) {
+			if ( !actions::recall_unit(unit_id, current_team, loc, from, !get_replay_source().is_skipping(), true) ) {
 				replay::process_error("illegal recall: unit_id '" + unit_id + "' could not be found within the recall list.\n");
 			}
 			check_checksums(*cfg);
@@ -1092,7 +1092,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			if ( current_team.is_ai() || current_team.is_network_ai() )
 				show_move = show_move && preferences::show_ai_moves();
 			const int num_steps =
-				action::move_unit(steps, NULL, NULL, true, show_move, NULL, NULL, &early_stop);
+				actions::move_unit(steps, NULL, NULL, true, show_move, NULL, NULL, &early_stop);
 
 			// Verify our destination.
 			const map_location& actual_stop = steps[num_steps];

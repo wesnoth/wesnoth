@@ -42,7 +42,7 @@ static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 
 
-namespace action {
+namespace actions {
 
 
 /**
@@ -675,5 +675,5 @@ size_t undo_list::apply_shroud_changes() const
 }
 
 
-}//namespace action
+}//namespace actions
 

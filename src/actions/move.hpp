@@ -30,7 +30,7 @@ class  unit;
 #include <vector>
 
 
-namespace action {
+namespace actions {
 	class undo_list;
 
 
@@ -114,7 +114,7 @@ size_t move_unit(const std::vector<map_location> &steps,
 bool unit_can_move(const unit &u);
 
 
-}//namespace action
+}//namespace actions
 
 
 #endif

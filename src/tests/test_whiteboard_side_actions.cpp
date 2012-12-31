@@ -25,7 +25,7 @@
 
 using namespace wb;
 
-struct dummy_action: wb::action{
+struct dummy_action: action{
 	dummy_action(size_t team_index, bool hidden, int id): action(team_index, hidden), id_(id) {}
 	int id_;
 

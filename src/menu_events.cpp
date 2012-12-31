@@ -862,7 +862,7 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 		current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
 
 		// Do the recruiting.
-		action::recruit_unit(*u_type, side_num, loc, recruited_from);
+		actions::recruit_unit(*u_type, side_num, loc, recruited_from);
 
 		// Update the display,
 		gui_->redraw_minimap();
@@ -1058,7 +1058,7 @@ bool menu_handler::do_recall(const unit& un, int side_num, const map_location& r
 	team &current_team = teams_[side_num - 1];
 
 	recorder.add_recall(un.id(), recall_location, recall_from);
-	if ( !action::recall_unit(un.id(), current_team, recall_location, recall_from) )
+	if ( !actions::recall_unit(un.id(), current_team, recall_location, recall_from) )
 	{
 		ERR_NG << "menu_handler::do_recall(): Unit doesn't exist in recall list.\n";
 		return false;
@@ -1133,7 +1133,7 @@ namespace { // Helpers for menu_handler::end_turn()
 			if ( un->side() == side_num ) {
 				// @todo whiteboard should take into consideration units that have
 				// a planned move but can still plan more movement in the same turn
-				if ( action::unit_can_move(*un) && !resources::whiteboard->unit_has_actions(&*un) )
+				if ( actions::unit_can_move(*un) && !resources::whiteboard->unit_has_actions(&*un) )
 					return true;
 			}
 		}
@@ -1147,7 +1147,7 @@ namespace { // Helpers for menu_handler::end_turn()
 	{
 		for ( unit_map::const_iterator un = units.begin(); un != units.end(); ++un ) {
 			if ( un->side() == side_num ) {
-				if ( action::unit_can_move(*un)  &&  !un->has_moved()  &&
+				if ( actions::unit_can_move(*un)  &&  !un->has_moved()  &&
 				     !resources::whiteboard->unit_has_actions(&*un) )
 					return true;
 			}
@@ -1287,7 +1287,7 @@ void menu_handler::create_unit_2(mouse_handler& mousehandler)
 	units_.replace(loc, chosen);
 
 	if(map_.is_village(loc)) {
-		action::get_village(loc, chosen.side());
+		actions::get_village(loc, chosen.side());
 	}
 
 	gui_->invalidate(loc);
@@ -1380,7 +1380,7 @@ void menu_handler::create_unit(mouse_handler& mousehandler)
 		unit_display::unit_recruited(loc);
 
 		if(map_.is_village(loc)) {
-			action::get_village(loc, chosen.side());
+			actions::get_village(loc, chosen.side());
 		}
 
 		gui_->invalidate(loc);
@@ -1403,7 +1403,7 @@ void menu_handler::change_side(mouse_handler& mousehandler)
 		if(team > team::nteams()) {
 			team = 0;
 		}
-		action::get_village(loc, team + 1);
+		actions::get_village(loc, team + 1);
 	} else {
 		int side = i->side();
 		++side;
@@ -1413,7 +1413,7 @@ void menu_handler::change_side(mouse_handler& mousehandler)
 		i->set_side(side);
 
 		if(map_.is_village(loc)) {
-			action::get_village(loc, side);
+			actions::get_village(loc, side);
 		}
 	}
 }
@@ -1485,7 +1485,7 @@ void menu_handler::move_unit_to_loc(const unit_map::iterator &ui,
 
 	gui_->set_route(&route);
 	gui_->unhighlight_reach();
-	action::move_unit(route.steps, &recorder, resources::undo_stack, continue_move);
+	actions::move_unit(route.steps, &recorder, resources::undo_stack, continue_move);
 	gui_->set_route(NULL);
 	gui_->invalidate_game_status();
 }
@@ -1554,7 +1554,7 @@ void menu_handler::execute_gotos(mouse_handler &mousehandler, int side)
 			}
 
 			gui_->set_route(&route);
-			int moves = action::move_unit(route.steps, &recorder, resources::undo_stack);
+			int moves = actions::move_unit(route.steps, &recorder, resources::undo_stack);
 			change = moves > 0;
 
 			if (change) {
@@ -3405,13 +3405,13 @@ void console_handler::do_create() {
 }
 void console_handler::do_fog() {
 	menu_handler_.teams_[team_num_ - 1].set_fog( !menu_handler_.teams_[team_num_ - 1].uses_fog() );
-	action::recalculate_fog(team_num_);
+	actions::recalculate_fog(team_num_);
 	menu_handler_.gui_->recalculate_minimap();
 	menu_handler_.gui_->redraw_everything();
 }
 void console_handler::do_shroud() {
 	menu_handler_.teams_[team_num_ - 1].set_shroud( !menu_handler_.teams_[team_num_ - 1].uses_shroud() );
-	action::clear_shroud(team_num_);
+	actions::clear_shroud(team_num_);
 	menu_handler_.gui_->recalculate_minimap();
 	menu_handler_.gui_->redraw_everything();
 }

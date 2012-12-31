@@ -49,7 +49,7 @@ static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 
 
-namespace action {
+namespace actions {
 
 
 void move_unit_spectator::add_seen_friend(const unit_map::const_iterator &u)
@@ -1225,4 +1225,4 @@ bool unit_can_move(const unit &u)
 }
 
 
-}//namespace action
+}//namespace actions

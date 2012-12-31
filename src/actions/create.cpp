@@ -77,7 +77,7 @@ private:
 	const bool use_shroud_; // Allows faster checks when shroud is disabled.
 };
 
-}
+}//anonymous namespace
 
 unit_creator::unit_creator(team &tm, const map_location &start_pos)
   : add_to_recall_(false),discover_(false),get_village_(false),invalidate_(false), rename_side_(false), show_(false), start_pos_(start_pos), team_(tm)
@@ -237,7 +237,7 @@ void unit_creator::post_create(const map_location &loc, const unit &new_unit, bo
 
 	if (get_village_) {
 		if (resources::game_map->is_village(loc)) {
-			action::get_village(loc, new_unit.side());
+			actions::get_village(loc, new_unit.side());
 		}
 	}
 
@@ -781,13 +781,13 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 
 	// Village capturing.
 	if ( resources::game_map->is_village(current_loc) ) {
-		mutated |= action::get_village(current_loc, new_unit_itor->side());
+		mutated |= actions::get_village(current_loc, new_unit_itor->side());
 		if ( !validate_recruit_iterator(new_unit_itor, current_loc) )
 			return true;
 	}
 
 	// Fog clearing.
-	action::shroud_clearer clearer;
+	actions::shroud_clearer clearer;
 	if ( !wml_triggered ) // To preserve current WML behavior.
 		mutated |= clearer.clear_unit(current_loc, *new_unit_itor, true);
 
@@ -802,13 +802,13 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 	// "sighted" event(s).
 	mutated |= clearer.fire_events();
 	if ( new_unit_itor.valid() )
-		mutated |= action::actor_sighted(*new_unit_itor);
+		mutated |= actions::actor_sighted(*new_unit_itor);
 
 	return mutated;
 }
 
 
-namespace action {
+namespace actions {
 
 
 /**
@@ -875,4 +875,4 @@ bool recall_unit(const std::string & id, team & current_team,
 }
 
 
-}//namespace action
+}//namespace actions

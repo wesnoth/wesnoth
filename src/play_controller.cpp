@@ -107,7 +107,7 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	gamedata_(level),
 	map_(game_config, level),
 	units_(),
-	undo_stack_(new action::undo_list(level.child("undo_stack"))),
+	undo_stack_(new actions::undo_list(level.child("undo_stack"))),
 	whiteboard_manager_(),
 	xp_mod_(level["experience_modifier"].to_int(100)),
 	loading_game_(level["playing_team"].empty() == false),
@@ -561,7 +561,7 @@ void play_controller::init_gui(){
 
 	if ( !loading_game_ ) {
 		for ( int side = teams_.size(); side != 0; --side )
-			action::clear_shroud(side, false, false);
+			actions::clear_shroud(side, false, false);
 	}
 }
 
@@ -664,7 +664,7 @@ void play_controller::do_init_side(const unsigned int team_index, bool is_replay
 		game_events::fire("side " + side_num + " turn " + turn_num + " refresh");
 
 		// Make sure vision is accurate.
-		action::clear_shroud(player_number_, true);
+		actions::clear_shroud(player_number_, true);
 	}
 
 	const time_of_day &tod = tod_manager_.get_time_of_day();
@@ -756,7 +756,7 @@ void play_controller::finish_side_turn(){
 			uit->end_turn();
 	}
 	// Clear shroud, in case units had been slowed for the turn.
-	action::clear_shroud(player_number_);
+	actions::clear_shroud(player_number_);
 
 	const std::string turn_num = str_cast(turn());
 	const std::string side_num = str_cast(player_number_);
@@ -766,7 +766,7 @@ void play_controller::finish_side_turn(){
 	game_events::fire("side " + side_num + " turn " + turn_num + " end");
 
 	// This is where we refog, after all of a side's events are done.
-	action::recalculate_fog(player_number_);
+	actions::recalculate_fog(player_number_);
 
 	// This implements "delayed map sharing."
 	// It is meant as an alternative to shared vision.
