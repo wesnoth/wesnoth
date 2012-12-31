@@ -109,18 +109,17 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u,
 		weapon->set_specials_context(u_loc, opp_loc, attacking, opp_weapon);
 		if (opp_weapon)
 			opp_weapon->set_specials_context(opp_loc, u_loc, !attacking, weapon);
-		bool not_living = opp.get_state("not_living");
 		slows = weapon->get_special_bool("slow");
-		drains = !not_living && weapon->get_special_bool("drains");
+		drains = !opp.get_state("undrainable") && weapon->get_special_bool("drains");
 		petrifies = weapon->get_special_bool("petrifies");
-		poisons = !not_living && weapon->get_special_bool("poison") && !opp.get_state(unit::STATE_POISONED);
+		poisons = !opp.get_state("unpoisonable") && weapon->get_special_bool("poison") && !opp.get_state(unit::STATE_POISONED);
 		backstab_pos = is_attacker && backstab_check(u_loc, opp_loc, units, *resources::teams);
 		rounds = weapon->get_specials("berserk").highest("value", 1).first;
 		firststrike = weapon->get_special_bool("firststrike");
 
 		// Handle plague.
 		unit_ability_list plague_specials = weapon->get_specials("plague");
-		plagues = !not_living && !plague_specials.empty() &&
+		plagues = !opp.get_state("unplagueable") && !plague_specials.empty() &&
 			strcmp(opp.undead_variation().c_str(), "null") && !resources::game_map->is_village(opp_loc);
 
 		if (plagues) {

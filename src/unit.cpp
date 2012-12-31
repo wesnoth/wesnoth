@@ -1208,6 +1208,11 @@ const std::map<std::string,std::string> unit::get_states() const
 		}
 
 	}
+	// Backwards compatibility for not_living. Don't remove before 1.12
+	if (all_states.find("undrainable") != all_states.end() &&
+		all_states.find("unpoisonable") != all_states.end() &&
+		all_states.find("unplagueable") != all_states.end())
+		all_states["not_living"] = "yes";
 	return all_states;
 }
 
@@ -1216,6 +1221,12 @@ bool unit::get_state(const std::string &state) const
 	state_t known_boolean_state_id = get_known_boolean_state_id(state);
 	if (known_boolean_state_id!=STATE_UNKNOWN){
 		return get_state(known_boolean_state_id);
+	}
+	// Backwards compatibility for not_living. Don't remove before 1.12
+	if (state == "not_living") {
+		return get_state("undrainable") &&
+			get_state("unpoisonable") &&
+			get_state("unplagueable");
 	}
 	return states_.find(state) != states_.end();
 }
@@ -1259,6 +1270,12 @@ void unit::set_state(const std::string &state, bool value)
 	if (known_boolean_state_id != STATE_UNKNOWN) {
 		set_state(known_boolean_state_id, value);
 		return;
+	}
+	// Backwards compatibility for not_living. Don't remove before 1.12
+	if (state == "not_living") {
+		set_state("undrainable", value);
+		set_state("unpoisonable", value);
+		set_state("unplagueable", value);
 	}
 	if (value)
 		states_.insert(state);

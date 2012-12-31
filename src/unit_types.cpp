@@ -1419,15 +1419,15 @@ const unit_race *unit_type_data::find_race(const std::string &key) const
 	return i != races_.end() ? &i->second : NULL;
 }
 
-// This function is only meant to return the likely state of not_living
+// This function is only meant to return the likely state a given status
 // for a new recruit of this type. It should not be used to check if
-// a particular unit is living or not, use get_state("not_living") for that.
-bool unit_type::not_living() const
+// a particular unit has it, use get_state(status_name) for that.
+bool unit_type::musthave_status(const std::string& status_name) const
 {
-	// If a unit hasn't been modified it starts out as living.
-	bool not_living = false;
+	// Statuses default to absent.
+	bool current_status = false;
 
-	// Look at all of the "musthave" traits to see if the not_living
+	// Look at all of the "musthave" traits to see if the
 	// status gets changed. In the unlikely event it gets changed
 	// multiple times, we want to try to do it in the same order
 	// that unit::apply_modifications does things.
@@ -1454,16 +1454,16 @@ bool unit_type::not_living() const
 			if (effect["apply_to"] != "status") {
 				continue;
 			}
-			if (effect["add"] == "not_living") {
-				not_living = true;
+			if (effect["add"] == status_name) {
+				current_status = true;
 			}
-			if (effect["remove"] == "not_living") {
-				not_living = false;
+			if (effect["remove"] == status_name) {
+				current_status = false;
 			}
 		}
 	}
 
-	return not_living;
+	return current_status;
 }
 
 bool unit_type::has_random_traits() const

@@ -309,8 +309,12 @@ variant unit_type_callable::get_value(const std::string& key) const
 		return variant(u_.level());
 	} else if(key == "total_movement") {
 		return variant(u_.movement());
-	} else if(key == "undead") {
-		return variant(u_.not_living());
+	} else if(key == "unpoisonable") {
+		return variant(u_.musthave_status("unpoisonable"));
+	} else if(key == "undrainable") {
+		return variant(u_.musthave_status("undrainable"));
+	} else if(key == "unplagueable") {
+		return variant(u_.musthave_status("unplagueable"));
 	} else if(key == "cost") {
 		return variant(u_.cost());
 	} else if(key == "usage") {

@@ -289,7 +289,7 @@ static int average_resistance_against(const unit_type& a, const unit_type& b)
 
    // calculation of the average damage taken
    bool steadfast = a.has_ability_by_id("steadfast");
-   bool living = !a.not_living();
+	bool poisonable = !a.musthave_status("unpoisonable");
    const std::vector<attack_type>& attacks = b.attacks();
    for (std::vector<attack_type>::const_iterator i = attacks.begin(),
          i_end = attacks.end(); i != i_end; ++i)
@@ -302,7 +302,7 @@ static int average_resistance_against(const unit_type& a, const unit_type& b)
       int cth = i->get_special_bool("chance_to_hit", true) ? 70 : defense;
       int weight = i->damage() * i->num_attacks();
       // if cth == 0 the division will do 0/0 so don't execute this part
-      if (living && cth != 0 && i->get_special_bool("poison", true)) {
+      if (poisonable && cth != 0 && i->get_special_bool("poison", true)) {
          // Compute the probability of not poisoning the unit.
          int prob = 100;
          for (int j = 0; j < i->num_attacks(); ++j)

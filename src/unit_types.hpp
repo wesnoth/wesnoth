@@ -283,7 +283,7 @@ public:
 
 	bool can_advance() const { return !advances_to_.empty(); }
 
-    bool not_living() const;
+	bool musthave_status(const std::string& status) const;
 
 	bool has_zoc() const { return zoc_; }
 

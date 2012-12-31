@@ -30,6 +30,8 @@ Version 1.11.1+svn:
    * When not replacing values, [effect] apply_to=defense will now modify
      absolute values instead of signed values (bug #20242). This allows for
      cleaner WML when the unit type is not necessarily known in advance.
+   * Split the 'not_living' unit status into 'unpoisonable', 'undrainable' and
+     'unplagueable'. 'not_living' now acts on the whole group
  * Miscellaneous and bug fixes:
    * The undo stack is preserved across a save-reload.
    * Removed several unused private member variables.
