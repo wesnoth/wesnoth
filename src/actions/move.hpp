@@ -23,8 +23,11 @@
 
 struct map_location;
 class  replay;
-class  undo_list;
 class  unit;
+
+namespace action {
+	class undo_list;
+}
 
 #include "../unit_map.hpp"
 
@@ -98,7 +101,7 @@ bool get_village(const map_location& loc, int side, int *time_bonus = NULL);
 
 /// Moves a unit across the board.
 size_t move_unit(const std::vector<map_location> &steps,
-                 replay* move_recorder, undo_list* undo_stack,
+                 replay* move_recorder, action::undo_list* undo_stack,
                  bool continued_move = false, bool show_move = true,
                  bool* interrupted = NULL,
                  move_unit_spectator* move_spectator = NULL,

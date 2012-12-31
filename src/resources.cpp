@@ -29,7 +29,7 @@ namespace resources
 	std::vector<team>    *teams = NULL;
 	::tod_manager        *tod_manager = NULL;
 	pathfind::manager    *tunnels = NULL;
-	undo_list            *undo_stack = NULL;
+	action::undo_list    *undo_stack = NULL;
 	unit_map             *units = NULL;
 	wb::manager          *whiteboard = NULL;
 }

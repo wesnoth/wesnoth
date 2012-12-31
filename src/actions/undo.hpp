@@ -29,6 +29,9 @@
 #include <vector>
 
 
+namespace action {
+
+
 /// Class to store the actions that a player can undo and redo.
 class undo_list {
 	/// Records information to be able to undo an action.
@@ -211,5 +214,8 @@ private: // data
 	/// Tracks if actions have been cleared from the stack since the turn began.
 	bool committed_actions_;
 };
+
+
+}//namespace action
 
 #endif

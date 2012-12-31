@@ -191,7 +191,7 @@ namespace { // Private helpers for move_unit()
 		/// Attempts to move the unit along the expected path.
 		void try_actual_movement(bool show);
 		/// Does some bookkeeping and event firing, for use after movement.
-		void post_move(undo_list *undo_stack);
+		void post_move(action::undo_list *undo_stack);
 		/// Shows the various on-screen messages, for use after movement.
 		void feedback() const;
 
@@ -962,7 +962,7 @@ namespace { // Private helpers for move_unit()
 	 * Does some bookkeeping and event firing, for use after movement.
 	 * This includes village capturing and the undo stack.
 	 */
-	void unit_mover::post_move(undo_list *undo_stack)
+	void unit_mover::post_move(action::undo_list *undo_stack)
 	{
 		const map_location & final_loc = final_hex();
 
@@ -1142,7 +1142,7 @@ namespace { // Private helpers for move_unit()
  *          than steps.size() ).
  */
 size_t move_unit(const std::vector<map_location> &steps,
-                 replay* move_recorder, undo_list* undo_stack,
+                 replay* move_recorder, action::undo_list* undo_stack,
                  bool continued_move, bool show_move,
                  bool* interrupted,
                  move_unit_spectator* move_spectator,

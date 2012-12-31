@@ -469,7 +469,7 @@ void move_result::do_execute()
 		size_t num_steps = move_unit(
 			/*std::vector<map_location> steps*/ route_->steps,
 			/*replay* move_recorder*/ &recorder,
-			/*undo_list* undo_stack*/ NULL,
+			/*action::undo_list* undo_stack*/ NULL,
 			/*bool continue_move*/ true, ///@todo 1.9 set to false after implemeting interrupt awareness
 			/*bool show_move*/ preferences::show_ai_moves(),
 			/*bool* interrupted*/ NULL,

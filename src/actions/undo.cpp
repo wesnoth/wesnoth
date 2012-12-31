@@ -42,6 +42,9 @@ static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 
 
+namespace action {
+
+
 /**
  * Converts a string (as read from a config) to an ACTION_TYPE.
  */
@@ -624,7 +627,7 @@ size_t undo_list::apply_shroud_changes() const
 		return 0;
 
 
-	action::shroud_clearer clearer;
+	shroud_clearer clearer;
 	bool cleared_shroud = false;  // for optimization
 	size_t erase_to = 0;
 	size_t list_size = undos_.size();
@@ -660,7 +663,7 @@ size_t undo_list::apply_shroud_changes() const
 	// Fire sighted events
 	if ( clearer.fire_events() ) {
 		// Fix up the display in case WML changed stuff.
-		action::clear_shroud(side_);
+		clear_shroud(side_);
 		disp.invalidate_unit();
 		disp.draw();
 		// The entire stack needs to be cleared in order to preserve replays.
@@ -670,4 +673,7 @@ size_t undo_list::apply_shroud_changes() const
 
 	return erase_to;
 }
+
+
+}//namespace action
 
