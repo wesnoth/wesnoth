@@ -1101,7 +1101,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			if ( current_team.is_ai() || current_team.is_network_ai() )
 				show_move = show_move && preferences::show_ai_moves();
 			const int num_steps =
-				::move_unit(steps, NULL, NULL, true, show_move, NULL, NULL, &early_stop);
+				action::move_unit(steps, NULL, NULL, true, show_move, NULL, NULL, &early_stop);
 
 			// Verify our destination.
 			const map_location& actual_stop = steps[num_steps];

@@ -22,7 +22,6 @@
 #define ACTIONS_VISION_H_INCLUDED
 
 struct map_location;
-class  move_unit_spectator;
 class  team;
 class  unit;
 
@@ -34,6 +33,7 @@ class  unit;
 
 
 namespace action {
+	class  move_unit_spectator;
 
 /// Class to encapsulate fog/shroud clearing and the resultant sighted events.
 /// Note: This class uses teams as parameters (instead of sides) since a

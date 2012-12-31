@@ -189,7 +189,7 @@ private:
 	const unit *get_unit();
 	bool test_route(const unit &un);
 	const map_location from_;
-	move_unit_spectator move_spectator_;
+	action::move_unit_spectator move_spectator_;
 	const map_location to_;
 	bool remove_movement_;
 	boost::shared_ptr<pathfind::plain_route> route_;

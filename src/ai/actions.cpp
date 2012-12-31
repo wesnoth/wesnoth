@@ -466,14 +466,14 @@ void move_result::do_execute()
 	move_spectator_.set_unit(resources::units->find(from_));
 
 	if (from_ != to_) {
-		size_t num_steps = move_unit(
+		size_t num_steps = action::move_unit(
 			/*std::vector<map_location> steps*/ route_->steps,
 			/*replay* move_recorder*/ &recorder,
 			/*action::undo_list* undo_stack*/ NULL,
 			/*bool continue_move*/ true, ///@todo 1.9 set to false after implemeting interrupt awareness
 			/*bool show_move*/ preferences::show_ai_moves(),
 			/*bool* interrupted*/ NULL,
-			/*move_unit_spectator* move_spectator*/ &move_spectator_);
+			/*action::move_unit_spectator* move_spectator*/ &move_spectator_);
 
 		if ( num_steps > 0 ) {
 			set_gamestate_changed();

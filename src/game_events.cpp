@@ -897,7 +897,7 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 	u->set_standing();
 
 	if (resources::game_map->is_village(vacant_dst)) {
-		get_village(vacant_dst, u->side());
+		action::get_village(vacant_dst, u->side());
 	}
 
 	resources::screen->invalidate_unit_after_move(src_loc, dst);

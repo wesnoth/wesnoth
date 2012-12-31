@@ -235,7 +235,7 @@ void unit_creator::post_create(const map_location &loc, const unit &new_unit, bo
 
 	if (get_village_) {
 		if (resources::game_map->is_village(loc)) {
-			get_village(loc, new_unit.side());
+			action::get_village(loc, new_unit.side());
 		}
 	}
 
@@ -779,7 +779,7 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 
 	// Village capturing.
 	if ( resources::game_map->is_village(current_loc) ) {
-		mutated |= get_village(current_loc, new_unit_itor->side());
+		mutated |= action::get_village(current_loc, new_unit_itor->side());
 		if ( !validate_recruit_iterator(new_unit_itor, current_loc) )
 			return true;
 	}

@@ -49,6 +49,9 @@ static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 
 
+namespace action {
+
+
 void move_unit_spectator::add_seen_friend(const unit_map::const_iterator &u)
 {
 	seen_friends_.push_back(u);
@@ -191,7 +194,7 @@ namespace { // Private helpers for move_unit()
 		/// Attempts to move the unit along the expected path.
 		void try_actual_movement(bool show);
 		/// Does some bookkeeping and event firing, for use after movement.
-		void post_move(action::undo_list *undo_stack);
+		void post_move(undo_list *undo_stack);
 		/// Shows the various on-screen messages, for use after movement.
 		void feedback() const;
 
@@ -316,7 +319,7 @@ namespace { // Private helpers for move_unit()
 		std::deque<int> moves_left_;	// The front value is what the moving unit's remaining moves should be set to after the next step through the route.
 		std::vector<map_location> to_reveal_;
 
-		action::shroud_clearer clearer_;
+		shroud_clearer clearer_;
 	};
 
 
@@ -876,7 +879,7 @@ namespace { // Private helpers for move_unit()
 
 		if ( begin_ != ambush_limit_ ) {
 			// Cache the moving unit's visibility.
-			std::vector<int> not_seeing = action::get_sides_not_seeing(*move_it_);
+			std::vector<int> not_seeing = get_sides_not_seeing(*move_it_);
 
 			// Prepare to animate.
 			unit_display::unit_mover animator(route_, show);
@@ -939,7 +942,7 @@ namespace { // Private helpers for move_unit()
 				// Finish animating.
 				animator.finish(*move_it_);
 				// Check for the moving unit being seen.
-				event_mutated_ = action::actor_sighted(*move_it_, &not_seeing);
+				event_mutated_ = actor_sighted(*move_it_, &not_seeing);
 			}
 		}//if
 
@@ -962,7 +965,7 @@ namespace { // Private helpers for move_unit()
 	 * Does some bookkeeping and event firing, for use after movement.
 	 * This includes village capturing and the undo stack.
 	 */
-	void unit_mover::post_move(action::undo_list *undo_stack)
+	void unit_mover::post_move(undo_list *undo_stack)
 	{
 		const map_location & final_loc = final_hex();
 
@@ -1142,7 +1145,7 @@ namespace { // Private helpers for move_unit()
  *          than steps.size() ).
  */
 size_t move_unit(const std::vector<map_location> &steps,
-                 replay* move_recorder, action::undo_list* undo_stack,
+                 replay* move_recorder, undo_list* undo_stack,
                  bool continued_move, bool show_move,
                  bool* interrupted,
                  move_unit_spectator* move_spectator,
@@ -1221,3 +1224,5 @@ bool unit_can_move(const unit &u)
 	return false;
 }
 
+
+}//namespace action

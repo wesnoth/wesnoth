@@ -1154,7 +1154,7 @@ namespace { // Helpers for menu_handler::end_turn()
 			if ( un->side() == side_num ) {
 				// @todo whiteboard should take into consideration units that have
 				// a planned move but can still plan more movement in the same turn
-				if ( unit_can_move(*un) && !resources::whiteboard->unit_has_actions(&*un) )
+				if ( action::unit_can_move(*un) && !resources::whiteboard->unit_has_actions(&*un) )
 					return true;
 			}
 		}
@@ -1168,7 +1168,7 @@ namespace { // Helpers for menu_handler::end_turn()
 	{
 		for ( unit_map::const_iterator un = units.begin(); un != units.end(); ++un ) {
 			if ( un->side() == side_num ) {
-				if ( unit_can_move(*un)  &&  !un->has_moved()  &&
+				if ( action::unit_can_move(*un)  &&  !un->has_moved()  &&
 				     !resources::whiteboard->unit_has_actions(&*un) )
 					return true;
 			}
@@ -1308,7 +1308,7 @@ void menu_handler::create_unit_2(mouse_handler& mousehandler)
 	units_.replace(loc, chosen);
 
 	if(map_.is_village(loc)) {
-		get_village(loc, chosen.side());
+		action::get_village(loc, chosen.side());
 	}
 
 	gui_->invalidate(loc);
@@ -1401,7 +1401,7 @@ void menu_handler::create_unit(mouse_handler& mousehandler)
 		unit_display::unit_recruited(loc);
 
 		if(map_.is_village(loc)) {
-			get_village(loc, chosen.side());
+			action::get_village(loc, chosen.side());
 		}
 
 		gui_->invalidate(loc);
@@ -1424,7 +1424,7 @@ void menu_handler::change_side(mouse_handler& mousehandler)
 		if(team > team::nteams()) {
 			team = 0;
 		}
-		get_village(loc, team + 1);
+		action::get_village(loc, team + 1);
 	} else {
 		int side = i->side();
 		++side;
@@ -1434,7 +1434,7 @@ void menu_handler::change_side(mouse_handler& mousehandler)
 		i->set_side(side);
 
 		if(map_.is_village(loc)) {
-			get_village(loc, side);
+			action::get_village(loc, side);
 		}
 	}
 }
@@ -1506,7 +1506,7 @@ void menu_handler::move_unit_to_loc(const unit_map::iterator &ui,
 
 	gui_->set_route(&route);
 	gui_->unhighlight_reach();
-	move_unit(route.steps, &recorder, resources::undo_stack, continue_move);
+	action::move_unit(route.steps, &recorder, resources::undo_stack, continue_move);
 	gui_->set_route(NULL);
 	gui_->invalidate_game_status();
 }
@@ -1575,7 +1575,7 @@ void menu_handler::execute_gotos(mouse_handler &mousehandler, int side)
 			}
 
 			gui_->set_route(&route);
-			int moves = ::move_unit(route.steps, &recorder, resources::undo_stack);
+			int moves = action::move_unit(route.steps, &recorder, resources::undo_stack);
 			change = moves > 0;
 
 			if (change) {
