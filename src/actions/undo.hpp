@@ -171,7 +171,7 @@ public:
 	/// Clears the stack of undoable (and redoable) actions.
 	void clear();
 	/// Updates fog/shroud based on the undo stack, then updates stack as needed.
-	void commit_vision();
+	void commit_vision(bool is_replay=false);
 	/// Performs some initializations and error checks when starting a new
 	/// side-turn.
 	void new_side_turn(int side);

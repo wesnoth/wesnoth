@@ -1103,6 +1103,9 @@ void menu_handler::toggle_shroud_updates(int side_num)
 	bool auto_shroud = current_team.auto_shroud_updates();
 	// If we're turning automatic shroud updates on, then commit all moves
 	if (!auto_shroud) update_shroud_now(side_num);
+
+	// Toggle the setting and record this.
+	recorder.add_auto_shroud(!auto_shroud);
 	current_team.set_auto_shroud_updates(!auto_shroud);
 	resources::undo_stack->add_auto_shroud(!auto_shroud);
 }

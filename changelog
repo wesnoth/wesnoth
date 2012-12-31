@@ -36,6 +36,7 @@ Version 1.11.1+svn:
      cleaner WML when the unit type is not necessarily known in advance.
    * Split the 'not_living' unit status into 'unpoisonable', 'undrainable' and
      'unplagueable'. 'not_living' now acts on the whole group
+   * The bugs with sighted events have been resolved.
  * Miscellaneous and bug fixes:
    * The undo stack is preserved across a save-reload.
    * Removed several unused private member variables.

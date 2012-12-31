@@ -209,9 +209,14 @@ void undo_list::clear()
  * Updates fog/shroud based on the undo stack, then updates stack as needed.
  * Call this when "updating shroud now".
  * This may fire events and change the game state.
+ * @param[in]  is_replay  Set to true when this is called during a replay.
  */
-void undo_list::commit_vision()
+void undo_list::commit_vision(bool is_replay)
 {
+	if ( !is_replay )
+		// Record this.
+		recorder.update_shroud();
+
 	// Update fog/shroud.
 	size_t erase_to = apply_shroud_changes();
 
@@ -413,16 +418,20 @@ void undo_list::undo()
 	else if ( action.is_auto_shroud() ) {
 		// This does not count as an undoable action, so undo the next
 		// action instead.
+		recorder.undo();
 		undo();
 		// Now keep the auto-shroud toggle at the top of the undo stack.
+		recorder.add_auto_shroud(action.active);
 		add_auto_shroud(action.active);
 		return;
 	}
 	else if ( action.is_update_shroud() ) {
 		// This does not count as an undoable action, so undo the next
 		// action instead.
+		recorder.undo();
 		undo();
 		// Now keep the shroud update at the top of the undo stack.
+		recorder.update_shroud();
 		add_update_shroud();
 		return;
 	}

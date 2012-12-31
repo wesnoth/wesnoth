@@ -342,6 +342,25 @@ void replay::add_attack(const map_location& a, const map_location& b,
 	add_unit_checksum(b,current_);
 }
 
+/**
+ * Records that the player has toggled automatic shroud updates.
+ */
+void replay::add_auto_shroud(bool turned_on)
+{
+	config* cmd = add_command(false);
+	config& child = cmd->add_child("auto_shroud");
+	child["active"] = turned_on;
+}
+
+/**
+ * Records that the player has manually updated fog/shroud.
+ */
+void replay::update_shroud()
+{
+	config* cmd = add_command(false);
+	cmd->add_child("update_shroud");
+}
+
 void replay::add_seed(const char* child_name, int seed)
 {
 	LOG_REPLAY << "Setting seed for child type " << child_name << ": " << seed << "\n";
@@ -1219,7 +1238,22 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			get_replay_source().add_expected_advancement(loc);
 			DBG_REPLAY << "got an explicit advance\n";
 
-		} else if (cfg->child("global_variable")) {
+		}
+		else if (cfg->child("global_variable"))
+		{
+		}
+		else if (const config &child = cfg->child("auto_shroud"))
+		{
+			bool active = child["active"].to_bool();
+			// Turning on automatic shroud causes vision to be updated.
+			if ( active )
+				resources::undo_stack->commit_vision(true);
+ 
+			current_team.set_auto_shroud_updates(active);
+		}
+		else if ( cfg->child("update_shroud") )
+		{
+			resources::undo_stack->commit_vision(true);
 		}
 		else  if ( cfg->child("checksum") )
 		{
@@ -1227,6 +1261,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 		}
 		else
 		{
+			// End of the if-else chain: unrecognized action.
 			replay::process_error("unrecognized action:\n" + cfg->debug());
 		}
 
