@@ -25,6 +25,7 @@
 #include "actions/attack.hpp"
 #include "actions/create.hpp"
 #include "actions/move.hpp"
+#include "actions/undo.hpp"
 #include "dialogs.hpp"
 #include "game_display.hpp"
 #include "game_end_exceptions.hpp"
@@ -938,6 +939,10 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 		//if there is an end turn directive
 		else if (cfg->child("end_turn"))
 		{
+			// During the original game, the undo stack would have been
+			// committed at this point.
+			resources::undo_stack->clear();
+
 			if (const config &child = cfg->child("verify")) {
 				verify(*resources::units, child);
 			}
@@ -985,7 +990,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			const int beginning_gold = current_team.gold();
 
 			if (res.empty()) {
-				actions::recruit_unit(*u_type, side_num, loc, from, !get_replay_source().is_skipping(), true);
+				actions::recruit_unit(*u_type, side_num, loc, from, !get_replay_source().is_skipping());
 			} else {
 				std::stringstream errbuf;
 				errbuf << "cannot recruit unit: " << res << "\n";
@@ -1014,7 +1019,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			map_location loc(child, resources::gamedata);
 			map_location from(child.child_or_empty("from"), resources::gamedata);
 
-			if ( !actions::recall_unit(unit_id, current_team, loc, from, !get_replay_source().is_skipping(), true) ) {
+			if ( !actions::recall_unit(unit_id, current_team, loc, from, !get_replay_source().is_skipping()) ) {
 				replay::process_error("illegal recall: unit_id '" + unit_id + "' could not be found within the recall list.\n");
 			}
 			check_checksums(*cfg);
@@ -1092,7 +1097,8 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			if ( current_team.is_ai() || current_team.is_network_ai() )
 				show_move = show_move && preferences::show_ai_moves();
 			const int num_steps =
-				actions::move_unit(steps, NULL, NULL, true, show_move, NULL, NULL, &early_stop);
+				actions::move_unit(steps, NULL, resources::undo_stack, true,
+				                   show_move, NULL, NULL, &early_stop);
 
 			// Verify our destination.
 			const map_location& actual_stop = steps[num_steps];
