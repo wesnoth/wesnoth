@@ -1061,6 +1061,7 @@ bool menu_handler::do_recall(const unit& un, int side_num, const map_location& r
 	if ( !actions::recall_unit(un.id(), current_team, recall_location, recall_from) )
 	{
 		ERR_NG << "menu_handler::do_recall(): Unit doesn't exist in recall list.\n";
+		recorder.undo();
 		return false;
 	}
 
