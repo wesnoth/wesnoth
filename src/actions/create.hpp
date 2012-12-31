@@ -134,10 +134,25 @@ const std::vector<const unit*> get_recalls_for_location(int side, const map_loca
  * Place a unit into the game.
  * The unit will be placed on @a recruit_location, which should be retrieved
  * through a call to recruit_location().
- * @returns true if an event has mutated the game state.
+ * @returns true if an event (or fog clearing) has mutated the game state.
  */
 bool place_recruit(const unit &u, const map_location &recruit_location, const map_location& recruited_from,
 	int cost, bool is_recall, bool show = false, bool fire_event = true, bool full_movement = false,
 	bool wml_triggered = false);
+
+
+namespace action {
+
+/**
+ * Recruits a unit of the given type for the given side.
+ * This is the point at which the code merges for recruits originating from players,
+ * the AI, and replays. It starts just after the recruit location is successfully
+ * found, and it handles creating the unit, paying gold, firing events, tracking
+ * statistics, and (unless @a is_ai) updating the undo stack.
+ */
+void recruit_unit(const unit_type & u_type, int side_num, const map_location & loc,
+                  const map_location & from, bool show = true, bool is_ai = false);
+
+}//namespace action
 
 #endif

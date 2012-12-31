@@ -856,25 +856,15 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 	}
 
 	if (!resources::whiteboard->save_recruit(name, side_num, loc)) {
-		//create a unit with traits
 		recorder.add_recruit(recruit_num, loc, recruited_from);
-		const unit new_unit(u_type, side_num, true);
-		bool mutated = place_recruit(new_unit, loc, recruited_from, u_type->cost(), false, true);
-		statistics::recruit_unit(new_unit);
 
 		//MP_COUNTDOWN grant time bonus for recruiting
 		current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
 
-		assert(new_unit.type());
+		// Do the recruiting.
+		action::recruit_unit(*u_type, side_num, loc, recruited_from);
 
-		resources::undo_stack->add_recruit(new_unit, loc, recruited_from);
-		// Disallow undoing of recruits. Can be enabled again once the unit's
-		// description= key doesn't use random anymore.
-		if ( mutated  ||  new_unit.type()->genders().size() > 1  ||
-		     new_unit.type()->has_random_traits() ) {
-			resources::undo_stack->clear();
-		}
-
+		// Update the display,
 		gui_->redraw_minimap();
 		gui_->invalidate_game_status();
 		gui_->invalidate(loc);

@@ -21,6 +21,7 @@
 #include "create.hpp"
 
 #include "move.hpp"
+#include "undo.hpp"
 #include "vision.hpp"
 
 #include "../config.hpp"
@@ -34,6 +35,7 @@
 #include "../random.hpp"
 #include "../replay.hpp"
 #include "../resources.hpp"
+#include "../statistics.hpp"
 #include "../team.hpp"
 #include "../unit_display.hpp"
 #include "../variable.hpp"
@@ -805,3 +807,34 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 	return mutated;
 }
 
+
+namespace action {
+
+
+/**
+ * Recruits a unit of the given type for the given side.
+ */
+void recruit_unit(const unit_type & u_type, int side_num, const map_location & loc,
+                  const map_location & from, bool show, bool is_ai)
+{
+	const unit new_unit(&u_type, side_num, true);
+
+	// Place the recruit.
+	bool mutated = place_recruit(new_unit, loc, from, u_type.cost(), false, show);
+	statistics::recruit_unit(new_unit);
+
+	// To speed things a bit, don't bother with the undo stack during
+	// an AI turn. The AI will not undo nor delay shroud updates.
+	if ( !is_ai ) {
+		resources::undo_stack->add_recruit(new_unit, loc, from);
+		// Check for information uncovered or randomness used.
+		assert(new_unit.type());
+		if ( mutated  ||  new_unit.type()->genders().size() > 1  ||
+		     new_unit.type()->has_random_traits() ) {
+			resources::undo_stack->clear();
+		}
+	}
+}
+
+
+}//namespace action

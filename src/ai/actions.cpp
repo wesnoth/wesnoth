@@ -883,9 +883,7 @@ void recruit_result::do_execute()
 	const events::command_disabler disable_commands;
 	const std::string recruit_err = find_recruit_location(get_side(), recruit_location_, recruit_from_, u->id());
 	if(recruit_err.empty()) {
-		const unit new_unit(u, get_side(), true);
-		place_recruit(new_unit, recruit_location_, recruit_from_, u->cost(), false, preferences::show_ai_moves());
-		statistics::recruit_unit(new_unit);
+		action::recruit_unit(*u, get_side(), recruit_location_, recruit_from_, preferences::show_ai_moves(), true);
 		// Confirm the transaction - i.e. don't undo recruitment
 		replay_guard.confirm_transaction();
 		set_gamestate_changed();

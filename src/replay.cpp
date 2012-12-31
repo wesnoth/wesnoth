@@ -982,17 +982,17 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			}
 
 			const std::string res = find_recruit_location(side_num, loc, from, u_type->id());
-			const unit new_unit(u_type, side_num, true);
 			const int beginning_gold = current_team.gold();
 
 			if (res.empty()) {
-				place_recruit(new_unit, loc, from, u_type->cost(), false, !get_replay_source().is_skipping());
+				action::recruit_unit(*u_type, side_num, loc, from, !get_replay_source().is_skipping(), true);
 			} else {
 				std::stringstream errbuf;
 				errbuf << "cannot recruit unit: " << res << "\n";
 				replay::process_error(errbuf.str());
-				// Keep the gold total right.
+				// Keep the bookkeeping right.
 				current_team.spend_gold(u_type->cost());
+				statistics::recruit_unit(unit(u_type, side_num, true));
 			}
 
 			if ( u_type->cost() > beginning_gold ) {
@@ -1005,7 +1005,6 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			           << ") cost=" << u_type->cost() << " from gold=" << beginning_gold << ' '
 			           << "-> " << current_team.gold() << "\n";
 
-			statistics::recruit_unit(new_unit);
 			check_checksums(*cfg);
 		}
 
@@ -1223,12 +1222,14 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			DBG_REPLAY << "got an explicit advance\n";
 
 		} else if (cfg->child("global_variable")) {
-		} else {
-			if(! cfg->child("checksum")) {
-				replay::process_error("unrecognized action:\n" + cfg->debug());
-			} else {
-				check_checksums(*cfg);
-			}
+		}
+		else  if ( cfg->child("checksum") )
+		{
+			check_checksums(*cfg);
+		}
+		else
+		{
+			replay::process_error("unrecognized action:\n" + cfg->debug());
 		}
 
 		if (const config &child = cfg->child("verify")) {
