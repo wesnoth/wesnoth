@@ -51,8 +51,13 @@ private:
 
 	ADDON_STATUS_FILTER displayed_status_;
 	boost::array<bool, ADDON_TYPES_COUNT> displayed_types_;
+	std::vector<tfield_bool*> displayed_types_fields_;
+
+	void register_displayed_type_field(const std::string& field_id, ADDON_TYPE addon_type);
 
 	void read_types_vector(const std::vector<bool>& v);
+
+	void toggle_all_displayed_types_button_callback(twindow& window);
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
