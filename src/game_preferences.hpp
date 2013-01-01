@@ -43,7 +43,6 @@ namespace preferences {
 	enum { SHOW_NONE, SHOW_FRIENDS, SHOW_ALL };
 
 	bool new_lobby();
-	void set_new_lobby(bool value);
 
 	const std::set<std::string> & get_friends();
 	const std::set<std::string> & get_ignores();
