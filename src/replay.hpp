@@ -192,18 +192,6 @@ bool do_replay(int side_num, replay *obj = NULL);
 
 bool do_replay_handle(int side_num, const std::string &do_untill);
 
-//an object which can be made to undo a recorded move
-//unless the transaction is confirmed
-struct replay_undo
-{
-	replay_undo(replay& obj) : obj_(&obj) {}
-	~replay_undo() { if(obj_) obj_->undo(); }
-	void confirm_transaction() { obj_ = NULL; }
-
-private:
-	replay* obj_;
-};
-
 class replay_network_sender
 {
 public:

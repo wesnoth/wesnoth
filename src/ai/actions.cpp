@@ -860,21 +860,13 @@ void recruit_result::do_execute()
 	LOG_AI_ACTIONS << "start of execution of: " << *this << std::endl;
 	assert(is_success());
 
-	// We have to add the recruit command now, because when the unit
-	// is created it has to have the recruit command in the recorder
-	// to be able to put random numbers into to generate unit traits.
-	// However, we're not sure if the transaction will be successful,
-	// so use a replay_undo object to cancel it if we don't get
-	// a confirmation for the transaction.
-	recorder.add_recruit(num_,recruit_location_,recruit_from_);
-	replay_undo replay_guard(recorder);
 	const unit_type *u = unit_types.find(unit_name_);
 	const events::command_disabler disable_commands;
+
 	const std::string recruit_err = find_recruit_location(get_side(), recruit_location_, recruit_from_, u->id());
 	if(recruit_err.empty()) {
+		recorder.add_recruit(num_,recruit_location_,recruit_from_);
 		::actions::recruit_unit(*u, get_side(), recruit_location_, recruit_from_, preferences::show_ai_moves(), true);
-		// Confirm the transaction - i.e. don't undo recruitment
-		replay_guard.confirm_transaction();
 		set_gamestate_changed();
 		try {
 			manager::raise_gamestate_changed();
@@ -885,7 +877,6 @@ void recruit_result::do_execute()
 	} else {
 		set_error(AI_ACTION_FAILURE);
 	}
-
 }
 
 
