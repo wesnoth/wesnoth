@@ -1,6 +1,6 @@
-/* $Id: mp_options.cpp 55420 2012-09-26 14:23:00Z lipk $ */
+/* $Id: mp_options.cpp 55420 2012 - 2013-09-26 14:23:00Z lipk $ */
 /*
-   Copyright (C) 2012 by Boldizsár Lipka <lipka.boldizsar@gmail.com>
+   Copyright (C) 2012 - 2013 by Boldizsár Lipka <lipka.boldizsar@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify

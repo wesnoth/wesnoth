@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2007 - 2012 by Karol Nowak <grywacz@gmail.com>
+   Copyright (C) 2007 - 2013 by Karol Nowak <grywacz@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
