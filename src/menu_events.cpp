@@ -1045,11 +1045,9 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 		gui2::show_transient_message(gui_->video(), "", err);
 		return;
 	}
-	unit* recalled_unit;
-	recalled_unit = new unit(*(recall_list_team[res]));
 
-	if (!resources::whiteboard->save_recall(*recalled_unit, side_num, recall_location)) {
-		if ( !actions::recall_unit(recalled_unit->id(), teams_[side_num-1],
+	if (!resources::whiteboard->save_recall(*recall_list_team[res], side_num, recall_location)) {
+		if ( !actions::recall_unit(recall_list_team[res]->id(), teams_[side_num-1],
 		                           recall_location, recall_from) ) {
 			ERR_NG << "menu_handler::recall(): Unit does not exist in the recall list.\n";
 		}
