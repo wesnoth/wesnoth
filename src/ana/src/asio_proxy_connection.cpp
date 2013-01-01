@@ -5,7 +5,7 @@
  * @brief Implementation of the client side proxy connection for the ana project.
  *
  * ana: Asynchronous Network API.
- * Copyright (C) 2010 - 2012 Guillermo Biset.
+ * Copyright (C) 2010 - 2013 Guillermo Biset.
  *
  * This file is part of the ana project.
  *

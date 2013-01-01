@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2006 - 2012 by Jeremy Rosen <jeremy.rosen@enst-bretagne.fr>
+   Copyright (C) 2006 - 2013 by Jeremy Rosen <jeremy.rosen@enst-bretagne.fr>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
