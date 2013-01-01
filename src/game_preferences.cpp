@@ -316,11 +316,6 @@ bool new_lobby()
 	return get("new_lobby", false);
 }
 
-void set_new_lobby(bool value)
-{
-	preferences::set("new_lobby", value);
-}
-
 const std::vector<game_config::server_info>& server_list()
 {
 	static std::vector<game_config::server_info> pref_servers;

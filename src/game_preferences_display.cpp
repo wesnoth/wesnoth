@@ -116,7 +116,6 @@ private:
 			show_lobby_joins_button1_,
 			show_lobby_joins_button2_,
 			show_lobby_joins_button3_,
-			new_lobby_button_,
 			sort_list_by_group_button_, iconize_list_button_,
 			remember_pw_button_, mp_server_search_button_,
 			friends_list_button_, friends_back_button_,
@@ -180,7 +179,6 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  show_lobby_joins_button1_(disp.video(), _("Do not show lobby joins"), gui::button::TYPE_CHECK),
 	  show_lobby_joins_button2_(disp.video(), _("Show lobby joins of friends only"), gui::button::TYPE_CHECK),
 	  show_lobby_joins_button3_(disp.video(), _("Show all lobby joins"), gui::button::TYPE_CHECK),
-	  new_lobby_button_(disp.video(), _("Use new lobby interface"), gui::button::TYPE_CHECK),
 	  sort_list_by_group_button_(disp.video(), _("Sort lobby list"), gui::button::TYPE_CHECK),
 	  iconize_list_button_(disp.video(), _("Iconize lobby list"), gui::button::TYPE_CHECK),
 	  remember_pw_button_(disp.video(), _("Save password to preferences (plain text)"), gui::button::TYPE_CHECK),
@@ -389,9 +387,6 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	show_lobby_joins_button3_.set_check(lj == SHOW_ALL);
 	show_lobby_joins_button3_.set_help_string(_("Show messages about all players joining the multiplayer lobby"));
 
-	new_lobby_button_.set_check(new_lobby());
-	new_lobby_button_.set_help_string(_("Use New Lobby Interface"));
-
 	mp_server_search_button_.set_help_string(_("Find and set path to MP server to host LAN games"));
 	friends_list_button_.set_help_string(_("View and edit your friends and ignores list"));
 	friends_back_button_.set_help_string(_("Back to the multiplayer options"));
@@ -465,7 +460,6 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&show_lobby_joins_button1_);
 	h.push_back(&show_lobby_joins_button2_);
 	h.push_back(&show_lobby_joins_button3_);
-	h.push_back(&new_lobby_button_);
 	h.push_back(&mp_server_search_button_);
 	h.push_back(&friends_list_button_);
 	h.push_back(&friends_back_button_);
@@ -678,8 +672,6 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += item_interline; show_lobby_joins_button1_.set_location(rect.x, ypos);
 	ypos += short_interline; show_lobby_joins_button2_.set_location(rect.x, ypos);
 	ypos += short_interline; show_lobby_joins_button3_.set_location(rect.x, ypos);
-
-	ypos += item_interline; new_lobby_button_.set_location(rect.x, ypos);
 
 	friends_list_button_.set_location(rect.x, bottom_row_y - friends_list_button_.height());
 
@@ -919,8 +911,6 @@ void preferences_dialog::process_event()
 			show_lobby_joins_button2_.set_check(false);
 			show_lobby_joins_button3_.set_check(true);
 		}
-		if (new_lobby_button_.pressed())
-			set_new_lobby(new_lobby_button_.checked());
 		if (sort_list_by_group_button_.pressed())
 			set_sort_list(sort_list_by_group_button_.checked());
 		if (iconize_list_button_.pressed())
@@ -1220,7 +1210,6 @@ void preferences_dialog::set_selection(int index)
 	show_lobby_joins_button1_.hide(hide_multiplayer);
 	show_lobby_joins_button2_.hide(hide_multiplayer);
 	show_lobby_joins_button3_.hide(hide_multiplayer);
-	new_lobby_button_.hide(hide_multiplayer);
 	friends_list_button_.hide(hide_multiplayer);
 	mp_server_search_button_.hide(hide_multiplayer);
 
