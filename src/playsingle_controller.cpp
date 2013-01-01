@@ -833,6 +833,17 @@ void playsingle_controller::play_ai_turn(){
 
 	const cursor::setter cursor_setter(cursor::WAIT);
 
+	// Correct an oddball case where a human could have left delayed shroud
+	// updates on before giving control to the AI. (The AI does not bother
+	// with the undo stack, so it cannot delay shroud updates.)
+	team & cur_team = current_team();
+	if ( !cur_team.auto_shroud_updates() ) {
+		// We just took control, so the undo stack is empty. We still need
+		// to record this change for the replay though.
+		recorder.add_auto_shroud(true);
+		cur_team.set_auto_shroud_updates(true);
+	}
+
 	turn_info turn_data(player_number_, replay_sender_);
 
 	try {
