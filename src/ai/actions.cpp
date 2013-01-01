@@ -676,7 +676,7 @@ void recall_result::do_execute()
 		return;
 	} else {
 		recorder.add_recall(unit_id_, recall_location_, recall_from_);
-		::actions::recall_unit(unit_id_, my_team, recall_location_, recall_from_, true, true);
+		::actions::recall_unit(unit_id_, my_team, recall_location_, recall_from_, preferences::show_ai_moves(), true);
 
 		if (resources::screen!=NULL) {
 			resources::screen->invalidate_game_status();
