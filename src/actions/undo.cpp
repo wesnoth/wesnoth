@@ -490,22 +490,12 @@ void undo_list::redo()
 		// Redo recall
 
 		map_location loc = action.route.front();
-		map_location from = map_location::null_location;
+		map_location from = action.recall_from;
 
-		recorder.add_recall(action.affected_unit->id(), loc, action.recall_from);
 		const std::string &msg = find_recall_location(side_, loc, from, *action.affected_unit);
 		if(msg.empty()) {
-			unit un = *action.affected_unit;
-			//remove the unit from the recall list
-			std::vector<unit>::iterator unit_it =
-				find_if_matches_id(current_team.recall_list(), action.affected_unit->id());
-			assert(unit_it != current_team.recall_list().end());
-			current_team.recall_list().erase(unit_it);
+			recall_unit(action.affected_unit->id(), current_team, loc, from, true, false);
 
-			place_recruit(un, loc, from, current_team.recall_cost(), true, true);
-			statistics::recall_unit(un);
-			gui.invalidate(loc);
-			recorder.add_checksum_check(loc);
 			// Quick error check. (Abuse of [allow_undo]?)
 			if ( loc != action.route.front() ) {
 				ERR_NG << "When redoing a recall at " << action.route.front()
@@ -515,7 +505,6 @@ void undo_list::redo()
 				action.route.front() = loc;
 			}
 		} else {
-			recorder.undo();
 			gui::dialog(gui, "", msg,gui::OK_ONLY).show();
 			return;
 		}

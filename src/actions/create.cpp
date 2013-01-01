@@ -777,7 +777,10 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 	}
 	// Make sure the unit appears (if either !show or the animation is suppressed).
 	new_unit_itor->set_hidden(false);
-	resources::screen->invalidate(current_loc);
+	if ( resources::screen != NULL ) {
+		resources::screen->invalidate(current_loc);
+		resources::screen->redraw_minimap();
+	}
 
 	// Village capturing.
 	if ( resources::game_map->is_village(current_loc) ) {
@@ -842,7 +845,7 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
  */
 bool recall_unit(const std::string & id, team & current_team,
                  const map_location & loc, const map_location & from,
-                 bool show, bool is_ai)
+                 bool show, bool use_undo, bool use_recorder)
 {
 	std::vector<unit> & recall_list = current_team.recall_list();
 
@@ -851,9 +854,12 @@ bool recall_unit(const std::string & id, team & current_team,
 	if ( recall_it == recall_list.end() )
 		return false;
 
+	// Record this before actually recalling.
+	if ( use_recorder )
+		recorder.add_recall(id, loc, from);
+
 	// Make a copy of the unit before erasing it from the list.
 	unit recall(*recall_it);
-
 	recall_list.erase(recall_it);
 	// ** IMPORTANT: id might become invalid at this point!
 	// (Use recall.id() instead, if needed.)
@@ -865,12 +871,23 @@ bool recall_unit(const std::string & id, team & current_team,
 
 	// To speed things a bit, don't bother with the undo stack during
 	// an AI turn. The AI will not undo nor delay shroud updates.
-	if ( !is_ai ) {
+	// (Undo stack processing is also suppressed when redoing a recall.)
+	if ( use_undo ) {
 		resources::undo_stack->add_recall(recall, loc, from);
 		if ( mutated ) {
 			resources::undo_stack->clear();
 		}
 	}
+
+	// Update the screen.
+	if ( resources::screen != NULL )
+		resources::screen->invalidate_game_status();
+		// Other updates were done by place_recruit().
+
+	// Record a checksum so the replay can be verified.
+	if ( use_recorder )
+		recorder.add_checksum_check(loc);
+
 	return true;
 }
 

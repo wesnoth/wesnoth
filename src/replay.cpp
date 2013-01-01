@@ -1038,7 +1038,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			map_location loc(child, resources::gamedata);
 			map_location from(child.child_or_empty("from"), resources::gamedata);
 
-			if ( !actions::recall_unit(unit_id, current_team, loc, from, !get_replay_source().is_skipping()) ) {
+			if ( !actions::recall_unit(unit_id, current_team, loc, from, !get_replay_source().is_skipping(), true, false) ) {
 				replay::process_error("illegal recall: unit_id '" + unit_id + "' could not be found within the recall list.\n");
 			}
 			check_checksums(*cfg);

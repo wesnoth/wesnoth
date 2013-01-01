@@ -1049,27 +1049,11 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	recalled_unit = new unit(*(recall_list_team[res]));
 
 	if (!resources::whiteboard->save_recall(*recalled_unit, side_num, recall_location)) {
-		do_recall(*recalled_unit, side_num, recall_location, recall_from);
+		if ( !actions::recall_unit(recalled_unit->id(), teams_[side_num-1],
+		                           recall_location, recall_from) ) {
+			ERR_NG << "menu_handler::recall(): Unit does not exist in the recall list.\n";
+		}
 	}
-}
-
-bool menu_handler::do_recall(const unit& un, int side_num, const map_location& recall_location, const map_location& recall_from)
-{
-	team &current_team = teams_[side_num - 1];
-
-	recorder.add_recall(un.id(), recall_location, recall_from);
-	if ( !actions::recall_unit(un.id(), current_team, recall_location, recall_from) )
-	{
-		ERR_NG << "menu_handler::do_recall(): Unit doesn't exist in recall list.\n";
-		recorder.undo();
-		return false;
-	}
-
-	gui_->redraw_minimap();
-	gui_->invalidate_game_status();
-	gui_->invalidate(recall_location);
-	recorder.add_checksum_check(recall_location);
-	return true;
 }
 
 

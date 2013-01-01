@@ -667,7 +667,6 @@ void recall_result::do_execute()
 	const events::command_disabler disable_commands;
 
 	std::vector<unit>::iterator rec = find_if_matches_id(my_team.recall_list(), unit_id_);
-
 	assert(rec != my_team.recall_list().end());
 
 	const std::string &err = find_recall_location(get_side(), recall_location_, recall_from_, *rec);
@@ -675,14 +674,8 @@ void recall_result::do_execute()
 		set_error(AI_ACTION_FAILURE);
 		return;
 	} else {
-		recorder.add_recall(unit_id_, recall_location_, recall_from_);
-		::actions::recall_unit(unit_id_, my_team, recall_location_, recall_from_, preferences::show_ai_moves(), true);
+		::actions::recall_unit(unit_id_, my_team, recall_location_, recall_from_, preferences::show_ai_moves(), false);
 
-		if (resources::screen!=NULL) {
-			resources::screen->invalidate_game_status();
-			resources::screen->invalidate_all();
-		}
-		recorder.add_checksum_check(recall_location_);
 		set_gamestate_changed();
 		try {
 			manager::raise_gamestate_changed();

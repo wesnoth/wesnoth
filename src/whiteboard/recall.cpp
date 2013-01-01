@@ -24,8 +24,8 @@
 #include "utility.hpp"
 #include "visitor.hpp"
 
+#include "actions/create.hpp"
 #include "game_display.hpp"
-#include "menu_events.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "team.hpp"
@@ -110,15 +110,17 @@ void recall::accept(visitor& v)
 
 void recall::execute(bool& success, bool& complete)
 {
+	team & current_team = resources::teams->at(team_index());
+
 	assert(valid());
 	assert(temp_unit_.get());
 	temporary_unit_hider const raii(*fake_unit_);
 	//Give back the spent gold so we don't get "not enough gold" message
-	int cost = resources::teams->at(team_index()).recall_cost();
-	resources::teams->at(team_index()).get_side_actions()->change_gold_spent_by(-cost);
-	bool const result = resources::controller->get_menu_handler().do_recall(*temp_unit_, team_index() + 1, recall_hex_, map_location::null_location);
+	int cost = current_team.recall_cost();
+	current_team.get_side_actions()->change_gold_spent_by(-cost);
+	bool const result = actions::recall_unit(temp_unit_->id(), current_team, recall_hex_, map_location::null_location);
 	if (!result) {
-		resources::teams->at(team_index()).get_side_actions()->change_gold_spent_by(cost);
+		current_team.get_side_actions()->change_gold_spent_by(cost);
 	}
 	success = complete = result;
 }

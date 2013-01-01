@@ -159,12 +159,13 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
  * This is the point at which the code merges for recalls originating from players,
  * the AI, and replays. It starts just after the recall location is successfully
  * found, and it handles moving the unit to the board, paying gold, firing events,
- * tracking statistics, and (unless @a is_ai) updating the undo stack.
+ * tracking statistics, updating the undo stack (unless @a use_undo is false), and
+ * recording the recall (unless @a use_recorder is false).
  * @returns false if the recall could not be found in the team's recall list.
  */
 bool recall_unit(const std::string & id, team & current_team,
                  const map_location & loc, const map_location & from,
-                 bool show = true, bool is_ai = false);
+                 bool show=true, bool use_undo=true, bool use_recorder=true);
 
 }//namespace actions
 
