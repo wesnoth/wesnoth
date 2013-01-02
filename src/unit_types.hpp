@@ -298,6 +298,7 @@ public:
 	std::vector<std::string> variations() const;
 
 	const std::string race() const { return cfg_["race"]; } //race_->id(); }
+	/// Never returns NULL, but may point to the null race.
 	const unit_race* race_ptr() const { return race_; }
 	bool hide_help() const;
 
@@ -340,7 +341,7 @@ private:
 	typedef std::map<std::string,unit_type*> variations_map;
 	variations_map variations_;
 
-	const unit_race* race_;
+	const unit_race* race_;	/// Never returns NULL, but may point to the null race.
 
 	fixed_t alpha_;
 

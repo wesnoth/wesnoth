@@ -26,6 +26,11 @@
 #include "random.hpp"
 #include "simple_rng.hpp"
 
+
+/// Dummy race used when a race is not yet known.
+const unit_race unit_race::null_race;
+
+
 static const config &empty_traits() {
 		static config cfg;
 		return cfg;

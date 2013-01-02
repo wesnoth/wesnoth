@@ -906,9 +906,7 @@ const unit_preview_pane::details units_list_preview_pane::get_details() const
 
 	det.name = u.name();
 	det.type_name = u.type_name();
-	if(u.race() != NULL) {
-		det.race = u.race()->name(u.gender());
-	}
+	det.race = u.race()->name(u.gender());
 	det.level = u.level();
 	det.alignment = unit_type::alignment_description(u.alignment(), u.gender());
 	det.traits = utils::join(u.trait_names(), ", ");

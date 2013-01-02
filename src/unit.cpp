@@ -202,7 +202,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 	loc_(cfg["x"] - 1, cfg["y"] - 1),
 	advances_to_(),
 	type_(cfg["type"]),
-	race_(NULL),
+	race_(&unit_race::null_race),
 	id_(cfg["id"]),
 	name_(cfg["name"].t_str()),
 	underlying_id_(0),
@@ -327,8 +327,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 		if (const unit_race *r = unit_types.find_race(*v)) {
 			race_ = r;
 		} else {
-			static const unit_race dummy_race;
-			race_ = &dummy_race;
+			race_ = &unit_race::null_race;
 		}
 	}
 	level_ = cfg["level"].to_int(level_);
@@ -583,7 +582,7 @@ unit::unit(const unit_type *t, int side, bool real_unit,
 	loc_(),
 	advances_to_(),
 	type_(),
-	race_(NULL),
+	race_(&unit_race::null_race),
 	id_(),
 	name_(),
 	underlying_id_(real_unit? 0: n_unit::id_manager::instance().next_fake_id()),

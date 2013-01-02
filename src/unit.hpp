@@ -313,6 +313,7 @@ public:
 
 	std::string usage() const { return cfg_["usage"]; }
 	unit_type::ALIGNMENT alignment() const { return alignment_; }
+	/// Never returns NULL, but may point to the null race.
 	const unit_race* race() const { return race_; }
 
 	const unit_animation* choose_animation(const display& disp,
@@ -409,7 +410,7 @@ private:
 
 	std::vector<std::string> advances_to_;
 	std::string type_;
-	const unit_race* race_;
+	const unit_race* race_;	/// Never NULL, but may point to the null race.
 	std::string id_;
 	t_string name_;
 	size_t underlying_id_;

@@ -599,11 +599,6 @@ int defense_modifier_internal(defense_cache &defense_mods,
 	return (std::max)(def.max_, def.min_);
 }
 
-static const unit_race& dummy_race(){
-	static unit_race ur;
-	return ur;
-}
-
 
 #ifdef _MSC_VER
 #pragma warning(push)
@@ -686,7 +681,7 @@ unit_type::unit_type(config &cfg) :
 	num_traits_(0),
 	gender_types_(),
 	variations_(),
-	race_(&dummy_race()),
+	race_(&unit_race::null_race),
 	alpha_(),
 	abilities_(),
 	adv_abilities_(),
@@ -746,7 +741,7 @@ void unit_type::build_full(const movement_type_map &mv_types,
 		alignment_ = NEUTRAL;
 	}
 
-	if (race_ != &dummy_race())
+	if ( race_ != &unit_race::null_race )
 	{
 		if (!race_->uses_global_traits()) {
 			possibleTraits_.clear();
@@ -836,7 +831,7 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	if(race_it != races.end()) {
 		race_ = &race_it->second;
 	} else {
-		race_ = &dummy_race();
+		race_ = &unit_race::null_race;
 	}
 
 	// if num_traits is not defined, we use the num_traits from race

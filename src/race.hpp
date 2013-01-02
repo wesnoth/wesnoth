@@ -31,8 +31,7 @@ class unit_race
 public:
 	enum GENDER { MALE, FEMALE, NUM_GENDERS };
 
-	unit_race();
-	unit_race(const config& cfg);
+	explicit unit_race(const config& cfg);
 
 	const config& get_cfg() const { return cfg_; };
 	const std::string& id() const { return id_; };
@@ -49,7 +48,13 @@ public:
 	unsigned int num_traits() const;
 	const std::string& undead_variation() const { return undead_variation_; };
 
+	/// Dummy race used when a race is not yet known.
+	static const unit_race null_race;
+
 private:
+	/// Only used to construct null_race.
+	unit_race();
+
 	const config cfg_;
 
 	std::string id_;
