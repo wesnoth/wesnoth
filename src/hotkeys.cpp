@@ -601,7 +601,7 @@ std::string get_names(HOTKEY_COMMAND id) {
 
 	std::vector<std::string> names;
 	BOOST_FOREACH(const hotkey::hotkey_item& item, hotkeys_) {
-		if (item.get_id() == id) {
+		if (item.get_id() == id && (!item.null()) ) {
 			names.push_back(item.get_name());
 		}
 	}
