@@ -13,14 +13,14 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-11-17 13:12+0100\n"
-"PO-Revision-Date: 2011-12-29 19:35+0100\n"
+"PO-Revision-Date: 2013-01-01 18:06-0000\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
 "Language: la\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: Latin\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #. [generic_multiplayer]: id=user_map
 #: data/multiplayer/_main.cfg:8
@@ -30,7 +30,7 @@ msgstr "Charta Lusoris"
 #. [multiplayer_side]: id=Random
 #: data/multiplayer/eras.cfg:5
 msgid "Random"
-msgstr "A Fortuna"
+msgstr "Fortuita"
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
 #: data/multiplayer/eras.cfg:126
@@ -39,7 +39,7 @@ msgid ""
 "score = %d  Gold = %d"
 msgstr ""
 "<span foreground='#%02x%02x%02x'>Manus %d</span>:  Puncta pro fructu = %d  "
-"Puncta pro actoribus = %d  Aurum = %d"
+"Puncta pro actoribus = %d  Aurei = %d"
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
 #: data/multiplayer/eras.cfg:126
@@ -54,7 +54,7 @@ msgstr "<span foreground='%s'>Manui %d</span> utilitas est."
 #. [era]: id=era_default
 #: data/multiplayer/eras.cfg:160
 msgid "Default"
-msgstr "Naturalis"
+msgstr "Solita"
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:180
@@ -382,25 +382,22 @@ msgid ""
 "(inscribed by Flametrooper)"
 msgstr ""
 "Obscura hiems flat tam gelide acriter\n"
-"Aetate cessa, sunt veteres ruti.\n"
+"Linquete luna, nocte veterrima.\n"
 "Hic draculus ausus domum aurum\n"
 "Deserere est Basilisci ademptum.\n"
-"\n"
 "\n"
 "Serum volatus sub nebulis spuit\n"
 "Fastidienter, quae didicit ruens,\n"
 "Stultus sed acer ad cavernam.\n"
 "Fax penita est colubri aestuatus.\n"
 "\n"
-"\n"
 "Non flamma fervet, nam colubri acrius\n"
 "Cor palpitantem personuit: silex\n"
 "Sic draculus usque ad medullas\n"
 "Perpetuatus adest novatus.\n"
 "\n"
-"\n"
 "Obscura hiems flat tam gelide acriter\n"
-"Aetate cessa, sunt veteres ruti.\n"
+"Anni relinquunt, iam veteres dies.\n"
 "Fortis domum atrum draculus nunc\n"
 "Hic iacet auri avidus relictus.\n"
 "\n"
@@ -646,8 +643,8 @@ msgid ""
 "General Talael Ryndoc came to this place to fight a duel with the Grand "
 "Marshal Aethec Corryn, but the two men never found one another. "
 msgstr ""
-"Legatus Talael Rendocius huc cum Imperatore Aeteco Corrinio in monomachia "
-"pugnatum venit, sed duo numquam utrumque invenerunt."
+"Legatus Talael Rendocius huc cum Imperatore Aeteco Corrinio in pugna "
+"singulare pugnatum venit, sed duo numquam utrumque invenerunt."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:195
@@ -847,7 +844,7 @@ msgstr "Mors amborum ducum manus"
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1391
 msgid ""
 "Since your team has two leaders, the enemy waves will be at full strength."
-msgstr "Cum duo duces manui sint, impetus hostis pro virili parte pugnabunt."
+msgstr "Cum duo duces manui sint, copiae hostis pro virili parte pugnabunt."
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1412
@@ -962,6 +959,11 @@ msgid ""
 "the Den of Onis, hoping to unlock the strange and mysterious magics of its "
 "creators."
 msgstr ""
+"Haec caverna singularis, quae quondam Cella Diabolorum Ridentium vocata est, "
+"arx principalis Caruconorum fuit. Qui MD annos genus malum et callidum "
+"gentes eas vorando territare solebant, donec omnino ex Irdya evanuerunt. Ex "
+"quo tempore multae factiones dominationem in Latibulo Onis petebant, si "
+"magica nova arcanaque reperire possit."
 
 #. [multiplayer]: id=multiplayer_elensefar_courtyard
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:5
@@ -974,6 +976,8 @@ msgid ""
 "Fight through corridors and gardens, and dominate the eastern courtyard of "
 "what used to be the glorious city of Elensefar."
 msgstr ""
+"In andronibus et hortis pugnare et in area orientale urbis Ellensepharis "
+"semirutae dominari."
 
 #. [time]: id=underground_illum
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:114
@@ -1001,13 +1005,12 @@ msgstr "2l — Vici"
 
 #. [multiplayer]: id=multiplayer_Hamlets
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:7
-#, fuzzy
 msgid ""
 "Warfare transforms the simple farms and villages of a peaceful region into a "
 "subtly parceled battlefield. Designed by Doc Paterson."
 msgstr ""
-"Res bellica praedia et pagos simplices regionis traquillae transformat in "
-"campum proelium subtile divisum. Impostatio suasa: II auri pro pago."
+"Res bellica praedia et pagos simplices regionis traquillae in campum subtile "
+"divisum mutat."
 
 #. [multiplayer]: id=multiplayer_Hornshark_Island
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:24
@@ -1360,7 +1363,7 @@ msgstr "2l — Canalis Veldinis"
 msgid ""
 "This vital supply route has played a key role in many of Wesnoth’s greatest "
 "battles."
-msgstr ""
+msgstr "Haec vitalis via commeatuum multa proeliorum Vesnotei maximorum vidit."
 
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:5
@@ -1502,13 +1505,12 @@ msgstr "4l — Vici"
 
 #. [multiplayer]: id=multiplayer_4p_Hamlets
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:6
-#, fuzzy
 msgid ""
 "Warfare transforms the simple farms and villages of a peaceful region into a "
 "subtly parceled battlefield."
 msgstr ""
-"Res bellica praedia et pagos simplices regionis traquillae transformat in "
-"campum proelium subtile divisum. Impostatio suasa: II auri pro pago."
+"Res bellica praedia et pagos simplices regionis traquillae in campum subtile "
+"divisum mutat."
 
 #. [multiplayer]: id=multiplayer_Isars_Cross
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:7
@@ -1829,7 +1831,7 @@ msgstr "Mors ducum manuum"
 #. [note]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:439
 msgid "Hint: Learning the enemy spawn points and types helps a lot."
-msgstr ""
+msgstr "Nota bene: Sapientis est fontes impetuum varios discere."
 
 #. [label]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:445
@@ -1996,7 +1998,7 @@ msgstr ""
 #: data/multiplayer/scenarios/Random_Scenario.cfg:6
 #: data/multiplayer/scenarios/Random_Scenario.cfg:11
 msgid "Random map"
-msgstr "Charta fortunae"
+msgstr "Charta fortuita"
 
 #. [multiplayer]: id=multiplayer_Random_Map
 #: data/multiplayer/scenarios/Random_Scenario.cfg:7
@@ -2013,7 +2015,7 @@ msgstr ""
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:10
 msgid "Random map (Desert)"
-msgstr "Charta fortunae (Locus Desertus)"
+msgstr "Charta fortuita (Deserta)"
 
 #. [multiplayer]: id=multiplayer_Random_Map_Desert
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:6
@@ -2032,7 +2034,7 @@ msgstr ""
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:10
 msgid "Random map (Marsh)"
-msgstr "Charta fortunae (Palus)"
+msgstr "Charta fortuita (Palus)"
 
 #. [multiplayer]: id=multiplayer_Random_Map_Marsh
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:6
@@ -2051,7 +2053,7 @@ msgstr ""
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:10
 msgid "Random map (Winter)"
-msgstr "Charta fortunae (Hiems)"
+msgstr "Charta fortuita (Hiems)"
 
 #. [multiplayer]: id=multiplayer_Random_Map_Winter
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:6
@@ -2082,7 +2084,7 @@ msgstr ""
 #. [multiplayer]: id=wesbench_scroll
 #: data/multiplayer/scenarios/Wesbench_Scroll.cfg:9
 msgid "Wesnoth Benchmark: Scrolling"
-msgstr "Probatio Vesnotei: Gyrum"
+msgstr "Probatio Vesnotei: Vagatio"
 
 #. [multiplayer]: id=wesbench_scroll
 #: data/multiplayer/scenarios/Wesbench_Scroll.cfg:10
@@ -2106,191 +2108,3 @@ msgid ""
 msgstr ""
 "Probatio Vesnotei, utere --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
-
-#~ msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
-#~ msgstr ""
-#~ "<span strikethrough='true' foreground='#%02x%02x%02x'>Manus %d</span>"
-
-#~ msgid "Default + Khalifate"
-#~ msgstr "Usitata + Khalifate"
-
-#~ msgid "Khalifate"
-#~ msgstr "Khalifate"
-
-#~ msgid "Single player mode — uses the reduced strength spawns."
-#~ msgstr "Modus lusoris uni — fluctibus minoribus vis utitur."
-
-#~ msgid "Two player mode — uses the full strength spawns."
-#~ msgstr "Modus lusorum duorum — fluctibus fortissimis utitur."
-
-#~ msgid "Survive and defeat the waves of opposition."
-#~ msgstr "Vive et vince fluctus adversationis."
-
-#~ msgid "Defeat all waves"
-#~ msgstr "Omnes fluctuum vincere"
-
-#~ msgid "Lose all your team’s leaders"
-#~ msgstr "Duces omnis manus amittere"
-
-#, fuzzy
-#~ msgid ""
-#~ "Players must navigate the dispersive terrain of this small but "
-#~ "topographically dense island."
-#~ msgstr ""
-#~ "Lusores navigare debent agros diffugentes huius insulae parvae sed densae "
-#~ "topographice. Impostatio suasa: II auri pro pago."
-
-#~ msgid "teamname^South-West"
-#~ msgstr "Inter Occidentem + Austrum"
-
-#~ msgid "teamname^North-East"
-#~ msgstr "Inter Orientem + Septentrionem"
-
-#~ msgid "teamname^South-East"
-#~ msgstr "Inter Orientem + Austrum"
-
-#~ msgid "teamname^North-West"
-#~ msgstr "Inter Occidentem + Septentrionem"
-
-#~ msgid "Survive for 32 turns."
-#~ msgstr "Vive pro 32 vice."
-
-#, fuzzy
-#~ msgid "2p - Fast To Madness"
-#~ msgstr "II p - Lacus Meteorolithi"
-
-#, fuzzy
-#~ msgid " Recommended setting of 3 gold per village."
-#~ msgstr "Charta II contra II Impostatio suasa: II auri pro pago."
-
-#, fuzzy
-#~ msgid "4p - Mines of Mallorod"
-#~ msgstr "IV l - Rex Collis"
-
-#, fuzzy
-#~ msgid ""
-#~ "Players must maneuver their units through the divisive terrain of this "
-#~ "long-feared region, once the home of a legendary Elder Basilisk. The "
-#~ "caves and the stark wilderness surrounding them are filled with the "
-#~ "petrified forms of some of Wesnoth's greatest heroes."
-#~ msgstr ""
-#~ "Oportet unitates per agros divisivos regionis huius veritae movere, olim "
-#~ "domus fabulosi Basilisci Antiqui. Via victoriae punctuatur a formis "
-#~ "petrificatis heroum maximorum nonnullorum Occidiseptentrionis."
-
-#, fuzzy
-#~ msgid " Recommended settings of 150 gold and 2 gold per village."
-#~ msgstr "Charta II contra II Impostatio suasa: II auri pro pago."
-
-#, fuzzy
-#~ msgid ""
-#~ "There is much to explore in this vast battlefront, designed for players "
-#~ "who favor epic, large-scale duel matches."
-#~ msgstr ""
-#~ "Multum est quod explorandum est in hoc agro immani pro lusoribus qui "
-#~ "duelles epicas et permagnas favent. Impostationes suasae: CL auri et I "
-#~ "aurum pro pago."
-
-#, fuzzy
-#~ msgid ""
-#~ "Danger lurks around every corner in this underground battlefield, a duel "
-#~ "map where players must find the balance between force and subterfuge."
-#~ msgstr ""
-#~ "Periculum latet circum omnem angulum in hoc campo proelii subterraneo, "
-#~ "charta duellis ubi vis et latebra obviaverunt. Impostatio suasa: II auri "
-#~ "pro pago."
-
-#~ msgid "Great War"
-#~ msgstr "Bellum Magnum"
-
-#~ msgid "Alliance of Darkness"
-#~ msgstr "Societas Tenebrarum"
-
-#~ msgid "Alliance of Light"
-#~ msgstr "Societas Luminis"
-
-#~ msgid "6p - Amohsad Caldera"
-#~ msgstr "VI l - Cortina Amosadis"
-
-#, fuzzy
-#~ msgid ""
-#~ "Only a true tactician will survive in this deadly and confining "
-#~ "battlefield, where six boxed-in armies come to a head."
-#~ msgstr ""
-#~ "Solus rei militaris peritus supererit in hoc campo proelii pernici et "
-#~ "cohibenti, ubi sex exercitus inclusi pugnant. Impostatio suasa: II auri "
-#~ "pro pago."
-
-#~ msgid "2p - Wesbowl"
-#~ msgstr "II l - Occidicratera"
-
-#~ msgid ""
-#~ "In Wesbowl, a player has to get any of the balls to the other player's "
-#~ "end zone as often as possible. However, the other player can attack your "
-#~ "units. Wesbowl is played with blunt weapons, and healers are on hand, so "
-#~ "when units are killed, they return to that player's end zone with an "
-#~ "injury."
-#~ msgstr ""
-#~ "In Occidicratera lusor pilam ad zonam finis alterius lusoris movere "
-#~ "debet. Sed lusor alius unitates tuas oppugnare potest. Occidicratera "
-#~ "luditur telis hebibus et sanatores adunt, ergo unitates occissae redeunt "
-#~ "ad zonam finis huius lusoris cum damno."
-
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Move either ball to your opponent's end zone more times than they move a "
-#~ "ball to yours.\n"
-#~ "Defeat:\n"
-#~ "#Opponent moves the balls to your end zone more times than you move them "
-#~ "to the opponent's end zone"
-#~ msgstr ""
-#~ "\n"
-#~ "Victoria:\n"
-#~ "@Utramlibet pilam in zonam finis adversariorum tuorum saepius movere quam "
-#~ "ii eam in zonam tuam movent\n"
-#~ "Clades:\n"
-#~ "#Adversarii pilas saepius in zonam finis tuam quam tu in eorum zonam eas "
-#~ "moves."
-
-#~ msgid "Red scores! Current score is $redscore-$bluescore"
-#~ msgstr "Rubri punctum ferunt! Puncta stant $redscore-$bluescore"
-
-#~ msgid "Blue scores! Current score is $redscore-$bluescore"
-#~ msgstr "Caerulei punctum ferunt! Puncta stant $redscore-$bluescore"
-
-#~ msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
-#~ msgstr "Pilamne $passto.type ($xloc,$yloc) dare debeo?"
-
-#~ msgid "Yes!"
-#~ msgstr "Ita!"
-
-#~ msgid "No"
-#~ msgstr "Non"
-
-#~ msgid "Blue team wins! Final score: $redscore-$bluescore"
-#~ msgstr "Vincit pars caerulea! Puncta stant in fine: $redscore-$bluescore"
-
-#~ msgid "Red team wins! Final score: $redscore-$bluescore"
-#~ msgstr "Vincit pars rubra! Puncta stant in fine: $redscore-$bluescore"
-
-#~ msgid "Draw! Final score: $redscore-$bluescore"
-#~ msgstr "Exitus incertus! Puncta stant in fine: $redscore-$bluescore"
-
-#, fuzzy
-#~ msgid "Monsters"
-#~ msgstr "Puncta motus"
-
-#~ msgid "2p - Blitz"
-#~ msgstr "II l - Fulgur"
-
-#~ msgid "3p - Triple Blitz"
-#~ msgstr "III l - Fulgur Triplice"
-
-#, fuzzy
-#~ msgid "Defeat enemy leader"
-#~ msgstr "Mors Conradi"
-
-#, fuzzy
-#~ msgid "Defeat enemy leader(s)"
-#~ msgstr "Mors Conradi"
