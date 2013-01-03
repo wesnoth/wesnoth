@@ -294,6 +294,8 @@ public:
 	{ return possibleTraits_.child_range("trait"); }
 	bool has_random_traits() const;
 
+	/// The returned vector will not be empty, provided this has been built
+	/// to the HELP_INDEX status.
 	const std::vector<unit_race::GENDER>& genders() const { return genders_; }
 	std::vector<std::string> variations() const;
 

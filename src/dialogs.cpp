@@ -970,15 +970,15 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 	det.type_name = t->type_name();
 	det.level = t->level();
 	det.alignment = unit_type::alignment_description(t->alignment(), t->genders().front());
-
-		assert(!t->genders().empty());
 	det.race = t->race()->name(t->genders().front());
 
 	//FIXME: This probably must be move into a unit_type function
 	BOOST_FOREACH(const config &tr, t->possible_traits())
 	{
 		if (tr["availability"] != "musthave") continue;
-		std::string gender_string = (!t->genders().empty() && t->genders().front()== unit_race::FEMALE) ? "female_name" : "male_name";
+
+		const std::string gender_string = t->genders().front()== unit_race::FEMALE ?
+		                                  "female_name" : "male_name";
 		t_string name = tr[gender_string];
 		if (name.empty()) {
 			name = tr["name"];

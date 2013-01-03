@@ -1252,7 +1252,7 @@ void menu_handler::create_unit_2(mouse_handler& mousehandler)
 	const std::string& ut_id = create_dlg.choice();
 	const unit_type *utp = unit_types.find(ut_id);
 	if (!utp) {
-		ERR_NG << "create unit dialog returned inexistent or unusable unit_type id '" << ut_id << "'\n";
+		ERR_NG << "Create unit dialog returned nonexistent or unusable unit_type id '" << ut_id << "'.\n";
 		return;
 	}
 
@@ -1352,7 +1352,7 @@ void menu_handler::create_unit(mouse_handler& mousehandler)
 
 		const unit_type* type = unit_choices[choice];
 		const unit_race::GENDER gender = random_gender ? unit_race::NUM_GENDERS :
-			type->genders().empty() ? unit_race::MALE : type->genders().front();
+		                                                 type->genders().front();
 
 		unit chosen(type, 1, true, gender);
 		chosen.new_turn();

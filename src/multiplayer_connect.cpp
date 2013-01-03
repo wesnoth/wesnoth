@@ -977,22 +977,20 @@ void connect::side::resolve_random()
 
 		if (ut) {
 			const std::vector<unit_race::GENDER> glist = ut->genders();
-			if (!glist.empty()) {
-				const int gchoice = rand() % glist.size();
-				// Pick up a gender, using the random 'gchoice' index
-				unit_race::GENDER sgender = glist[gchoice];
-				switch (sgender)
-				{
-					case unit_race::FEMALE:
-						gender_ = unit_race::s_female;
-						break;
-					case unit_race::MALE:
-						gender_ = unit_race::s_male;
-						break;
-					default:
-						gender_ = "null";
-				}
-			} else gender_ = "null";
+			const int gchoice = rand() % glist.size();
+			// Pick up a gender, using the random 'gchoice' index
+			unit_race::GENDER sgender = glist[gchoice];
+			switch (sgender)
+			{
+				case unit_race::FEMALE:
+					gender_ = unit_race::s_female;
+					break;
+				case unit_race::MALE:
+					gender_ = unit_race::s_male;
+					break;
+				default:
+					gender_ = "null";
+			}
 		} else {
 			ERR_CF << "cannot obtain genders for invalid leader '" << (leader_.empty() ? llm_.get_leader() : leader_) << "'.\n";
 			gender_ = "null";

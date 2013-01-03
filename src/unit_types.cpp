@@ -841,6 +841,7 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	for(std::vector<std::string>::const_iterator g = genders.begin(); g != genders.end(); ++g) {
 		genders_.push_back(string_gender(*g));
 	}
+	// For simplicity in other parts of the code, we must have at least one gender.
 	if(genders_.empty()) {
 		genders_.push_back(unit_race::MALE);
 	}

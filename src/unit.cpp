@@ -82,13 +82,13 @@ static unit_race::GENDER generate_gender(const std::string &type_id, bool random
 	const unit_type &type = get_unit_type(type_id);
 	const std::vector<unit_race::GENDER>& genders = type.genders();
 
-	if(genders.empty()) {
-		return unit_race::MALE;
-	} else if(random_gender == false || genders.size() == 1) {
+	if ( random_gender == false  ||  genders.size() == 1 ) {
 		return genders.front();
 	} else {
 		int random = state ? resources::gamedata->rng().get_next_random() : get_random_nocheck();
 		return genders[random % genders.size()];
+		// Note: genders is guaranteed to be non-empty, so this is not a
+		// potential division by zero.
 	}
 }
 
