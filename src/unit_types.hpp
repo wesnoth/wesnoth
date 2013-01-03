@@ -301,7 +301,7 @@ public:
 	std::string race_id() const { return cfg_["race"]; } //race_->id(); }
 	/// Never returns NULL, but may point to the null race.
 	/// Requires building to the HELP_INDEX status to get the correct race.
-	const unit_race* race_ptr() const { return race_; }
+	const unit_race* race() const { return race_; }
 	bool hide_help() const;
 
     enum BUILD_STATUS {NOT_BUILT, CREATED, HELP_INDEX, WITHOUT_ANIMATIONS, FULL};

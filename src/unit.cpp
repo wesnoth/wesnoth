@@ -885,7 +885,7 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 
 	advances_to_ = t->advances_to();
 
-	race_ = t->race_ptr();
+	race_ = t->race();
 	type_name_ = t->type_name();
 	cfg_["description"] = t->unit_description();
 	undead_variation_ = t->undead_variation();
