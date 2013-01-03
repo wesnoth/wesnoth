@@ -217,9 +217,9 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 			if (leader_type.empty() || !unit_types.find(leader_type)) {
 				gender_name_pseudolist.push_back(utils::unicode_em_dash);
 			} else {
-				if (gender_ == "female")
+				if (gender_ == unit_race::s_female)
 					gender_name_pseudolist.push_back( _("Female ♀") );
-				else if (gender_ == "male")
+				else if (gender_ == unit_race::s_male)
 					gender_name_pseudolist.push_back( _("Male ♂") );
 				else if (gender_ == "random")
 					gender_name_pseudolist.push_back( _("gender^Random") );
@@ -261,9 +261,9 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 				if (!leader_name) {
 					gender_name_pseudolist.push_back("?");
 				} else {
-					if (gender_ == "female")
+					if (gender_ == unit_race::s_female)
 						gender_name_pseudolist.push_back( _("Female ♀") );
-					else if (gender_ == "male")
+					else if (gender_ == unit_race::s_male)
 						gender_name_pseudolist.push_back( _("Male ♂") );
 					else if (gender_ == "random")
 						gender_name_pseudolist.push_back( _("gender^Random") );
@@ -984,10 +984,10 @@ void connect::side::resolve_random()
 				switch (sgender)
 				{
 					case unit_race::FEMALE:
-						gender_ = "female";
+						gender_ = unit_race::s_female;
 						break;
 					case unit_race::MALE:
-						gender_ = "male";
+						gender_ = unit_race::s_male;
 						break;
 					default:
 						gender_ = "null";

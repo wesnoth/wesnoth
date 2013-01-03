@@ -147,11 +147,11 @@ void leader_list_manager::update_gender_list(const std::string& leader)
 
 			// Make the internationalized titles for each gender, along with the WML ids
 			if (*i == unit_race::FEMALE) {
-				gender_ids_.push_back("female");
+				gender_ids_.push_back(unit_race::s_female);
 				genders_.push_back(IMAGE_PREFIX + utg.image() + get_RC_suffix(utg.flag_rgb()) +
 						COLUMN_SEPARATOR + _("Female ♀"));
 			} else {
-				gender_ids_.push_back("male");
+				gender_ids_.push_back(unit_race::s_male);
 				genders_.push_back(IMAGE_PREFIX + utg.image() + get_RC_suffix(utg.flag_rgb()) +
 						COLUMN_SEPARATOR + _("Male ♂"));
 			}

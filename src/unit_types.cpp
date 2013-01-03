@@ -948,8 +948,8 @@ void unit_type::build_created(const movement_type_map &mv_types,
 
 const unit_type& unit_type::get_gender_unit_type(std::string gender) const
 {
-	if (gender == "female") return get_gender_unit_type(unit_race::FEMALE);
-	else if (gender == "male") return get_gender_unit_type(unit_race::MALE);
+	if (gender == unit_race::s_female) return get_gender_unit_type(unit_race::FEMALE);
+	else if (gender == unit_race::s_male) return get_gender_unit_type(unit_race::MALE);
 	else return *this;
 }
 
