@@ -305,9 +305,9 @@ public:
 	const unit_race* race() const { return race_; }
 	bool hide_help() const;
 
-    enum BUILD_STATUS {NOT_BUILT, CREATED, HELP_INDEX, WITHOUT_ANIMATIONS, FULL};
+	enum BUILD_STATUS {NOT_BUILT, CREATED, HELP_INDEX, WITHOUT_ANIMATIONS, FULL};
 
-    BUILD_STATUS build_status() const { return build_status_; }
+	BUILD_STATUS build_status() const { return build_status_; }
 
 	const std::vector<tportrait>& portraits() const { return portraits_; }
 
@@ -319,17 +319,17 @@ private:
 	config &cfg_;
 
 	std::string id_;
-    t_string type_name_;
-    t_string description_;
-    int hitpoints_;
-    int level_;
-    int movement_;
-    int vision_;
-    int jamming_;
-    int max_attacks_;
-    int cost_;
-    std::string usage_;
-    std::string undead_variation_;
+	t_string type_name_;
+	t_string description_;
+	int hitpoints_;
+	int level_;
+	int movement_;
+	int vision_;
+	int jamming_;
+	int max_attacks_;
+	int cost_;
+	std::string usage_;
+	std::string undead_variation_;
 
 	std::string image_;
 	std::string icon_;
@@ -337,7 +337,7 @@ private:
 	std::string big_profile_;
 	std::string flag_rgb_;
 
-    unsigned int num_traits_;
+	unsigned int num_traits_;
 
 	unit_type* gender_types_[2];
 
