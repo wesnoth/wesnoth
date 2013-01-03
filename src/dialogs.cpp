@@ -960,8 +960,8 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 	if (t==NULL)
 		return det;
 
-    //FIXME: There should be a better way to deal with this
-	unit_types.find(t->id(), unit_type::WITHOUT_ANIMATIONS);
+	// Make sure the unit type is built with enough data for our needs.
+	unit_types.build_unit_type(*t, unit_type::WITHOUT_ANIMATIONS);
 
 	std::string mod = "~RC(" + t->flag_rgb() + ">" + team::get_side_color_index(side_) + ")";
 	det.image = image::get_image(t->image()+mod);

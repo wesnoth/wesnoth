@@ -1301,7 +1301,8 @@ void menu_handler::create_unit(mouse_handler& mousehandler)
 	{
 		std::stringstream row;
 
-		unit_types.find(i.first, unit_type::HELP_INDEX);
+		// Make sure the unit type was built for the data we need.
+		unit_types.build_unit_type(i.second, unit_type::HELP_INDEX);
 
 		row << i.second.race()->plural_name() << COLUMN_SEPARATOR;
 		row << i.second.type_name() << COLUMN_SEPARATOR;

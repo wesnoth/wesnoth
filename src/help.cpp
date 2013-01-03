@@ -1328,8 +1328,8 @@ class unit_topic_generator: public topic_generator
 public:
 	unit_topic_generator(const unit_type &t, std::string variation="") : type_(t), variation_(variation) {}
 	virtual std::string operator()() const {
-		// this will force the lazy loading to build this unit
-		unit_types.find(type_.id(), unit_type::WITHOUT_ANIMATIONS);
+		// Force the lazy loading to build this unit.
+		unit_types.build_unit_type(type_, unit_type::WITHOUT_ANIMATIONS);
 
 		std::stringstream ss;
 		std::string clear_stringstream;

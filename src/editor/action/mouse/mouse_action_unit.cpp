@@ -64,6 +64,9 @@ editor_action* mouse_action_unit::up_left(editor_display& disp, int x, int y)
 
 	unit_type type = unit_palette_.selected_fg_item();
 
+	// Does this serve a purpose other than making sure the type is built?
+	// (Calling unit_types.build_unit_type(type) would now accomplish that
+	// with less overhead.)
 	const std::string& type_id = type.id();
 	const unit_type *new_unit_type = unit_types.find(type_id);
 	if (!new_unit_type) {

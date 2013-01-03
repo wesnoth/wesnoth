@@ -112,7 +112,8 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 
 	BOOST_FOREACH(const unit_type_data::unit_type_map::value_type &i, unit_types.types())
 	{
-		unit_types.find(i.first, unit_type::HELP_INDEX);
+		// Make sure this unit type is built with the data we need.
+		unit_types.build_unit_type(i.second, unit_type::HELP_INDEX);
 
 		// And so we map an unit_type id to a list subscript. Ugh.
 		type_ids_.push_back(i.first);

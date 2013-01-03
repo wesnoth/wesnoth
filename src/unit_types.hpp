@@ -401,7 +401,11 @@ public:
 	void check_types(const std::vector<std::string>& types) const;
 	const unit_race *find_race(const std::string &) const;
 
+	/// Makes sure the all unit_types are built to the specified level.
 	void build_all(unit_type::BUILD_STATUS status);
+	/// Makes sure the provided unit_type is built to the specified level.
+	void build_unit_type(const unit_type & ut, unit_type::BUILD_STATUS status) const
+	{ ut.build(status, movement_types_, races_, unit_cfg_->child_range("trait")); }
 
 	/** Checks if the [hide_help] tag contains these IDs. */
 	bool hide_help(const std::string &type_id, const std::string &race_id) const;
@@ -417,10 +421,6 @@ private:
 	const config &find_config(const std::string &key) const;
 	std::pair<unit_type_map::iterator, bool> insert(const std::pair<std::string, unit_type> &utype) { return types_.insert(utype); }
 	void clear();
-
-	/// Makes sure the provided unit_type is built to the specified level.
-	void build_unit_type(const unit_type & ut, unit_type::BUILD_STATUS status) const
-	{ ut.build(status, movement_types_, races_, unit_cfg_->child_range("trait")); }
 
 	void add_advancefrom(const config& unit_cfg) const;
 	void add_advancement(unit_type& to_unit) const;
