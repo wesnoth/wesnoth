@@ -189,7 +189,6 @@ public:
 	 * @note @a cfg is not copied, so it has to point to some permanent
 	 *       storage, that is, a child of unit_type_data::unit_cfg.
 	 */
-	unit_type();
 	unit_type(config &cfg);
 	unit_type(const unit_type& o);
 
