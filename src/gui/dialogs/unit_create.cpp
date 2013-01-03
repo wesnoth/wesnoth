@@ -117,18 +117,12 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 		// And so we map an unit_type id to a list subscript. Ugh.
 		type_ids_.push_back(i.first);
 
-		std::string race_label;
-
-		if (const unit_race *r = unit_types.find_race(i.second.race_id())) {
-			race_label = r->plural_name();
-		}
-
 		std::map< std::string, string_map > row_data;
 		string_map column;
 
 		column["label"] = i.second.type_name();
 		row_data.insert(std::make_pair("unit_type", column));
-		column["label"] = race_label;
+		column["label"] = i.second.race()->plural_name();
 		row_data.insert(std::make_pair("race", column));
 
 		list.add_row(row_data);

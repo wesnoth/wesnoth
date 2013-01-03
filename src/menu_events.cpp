@@ -1303,11 +1303,7 @@ void menu_handler::create_unit(mouse_handler& mousehandler)
 
 		unit_types.find(i.first, unit_type::HELP_INDEX);
 
-		std::string race;
-		if (const unit_race *r = unit_types.find_race(i.second.race_id())) {
-			race = r->plural_name();
-		}
-		row << race << COLUMN_SEPARATOR;
+		row << i.second.race()->plural_name() << COLUMN_SEPARATOR;
 		row << i.second.type_name() << COLUMN_SEPARATOR;
 
 		options.push_back(row.str());

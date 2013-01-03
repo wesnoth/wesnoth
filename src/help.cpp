@@ -1442,10 +1442,8 @@ public:
 		// Print the race of the unit, cross-reference it to the
 		// respective topic.
 		const std::string race_id = type_.race_id();
-		std::string race_name;
-		if (const unit_race *r = unit_types.find_race(race_id)) {
-			race_name = r->plural_name();
-		} else {
+		std::string race_name = type_.race()->plural_name();
+		if ( race_name.empty() ) {
 			race_name = _ ("race^Miscellaneous");
 		}
 		ss << _("Race: ");
