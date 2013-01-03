@@ -194,15 +194,28 @@ public:
 
 	~unit_type();
 
-	/** Load data into an empty unit_type */
+	/// Records the status of the lazy building of unit types.
+	enum BUILD_STATUS {NOT_BUILT, CREATED, HELP_INDEX, WITHOUT_ANIMATIONS, FULL};
+private: // These will be called by build().
+	/// Load data into an empty unit_type (build to FULL).
 	void build_full(const movement_type_map &movement_types,
 		const race_map &races, const config::const_child_itors &traits);
-	/** Partially load data into an empty unit_type */
+	/// Partially load data into an empty unit_type (build to HELP_INDEX).
 	void build_help_index(const movement_type_map &movement_types,
 		const race_map &races, const config::const_child_itors &traits);
-	/** Load the most needed data into an empty unit_type */
+	/// Load the most needed data into an empty unit_type (build to CREATE).
 	void build_created(const movement_type_map &movement_types,
 		const race_map &races, const config::const_child_itors &traits);
+public:
+	/// Performs a build of this to the indicated stage.
+	void build(BUILD_STATUS status, const movement_type_map &movement_types,
+	           const race_map &races, const config::const_child_itors &traits);
+	/// Performs a build of this to the indicated stage.
+	/// (This does not logically change the unit type, so allow const access.)
+	void build(BUILD_STATUS status, const movement_type_map &movement_types,
+	           const race_map &races, const config::const_child_itors &traits) const
+	{ const_cast<unit_type *>(this)->build(status, movement_types, races, traits); }
+
 
 	/**
 	 * Adds an additional advancement path to a unit type.
@@ -305,10 +318,6 @@ public:
 	const unit_race* race() const { return race_; }
 	bool hide_help() const;
 
-	enum BUILD_STATUS {NOT_BUILT, CREATED, HELP_INDEX, WITHOUT_ANIMATIONS, FULL};
-
-	BUILD_STATUS build_status() const { return build_status_; }
-
 	const std::vector<tportrait>& portraits() const { return portraits_; }
 
 	const config &get_cfg() const { return cfg_; }
@@ -387,6 +396,7 @@ public:
 	const config::const_child_itors traits() const { return unit_cfg_->child_range("trait"); }
 	void set_config(config &cfg);
 
+	/// Finds a unit_type by its id() and makes sure it is built to the specified level.
 	const unit_type *find(const std::string &key, unit_type::BUILD_STATUS status = unit_type::FULL) const;
 	void check_types(const std::vector<std::string>& types) const;
 	const unit_race *find_race(const std::string &) const;
@@ -408,7 +418,10 @@ private:
 	std::pair<unit_type_map::iterator, bool> insert(const std::pair<std::string, unit_type> &utype) { return types_.insert(utype); }
 	void clear();
 
-	unit_type& build_unit_type(const unit_type_map::iterator &ut, unit_type::BUILD_STATUS status) const;
+	/// Makes sure the provided unit_type is built to the specified level.
+	void build_unit_type(const unit_type & ut, unit_type::BUILD_STATUS status) const
+	{ ut.build(status, movement_types_, races_, unit_cfg_->child_range("trait")); }
+
 	void add_advancefrom(const config& unit_cfg) const;
 	void add_advancement(unit_type& to_unit) const;
 

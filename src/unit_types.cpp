@@ -714,6 +714,9 @@ unit_type::~unit_type()
 	}
 }
 
+/**
+ * Load data into an empty unit_type (build to FULL).
+ */
 void unit_type::build_full(const movement_type_map &mv_types,
 	const race_map &races, const config::const_child_itors &traits)
 {
@@ -797,6 +800,9 @@ void unit_type::build_full(const movement_type_map &mv_types,
 	build_status_ = FULL;
 }
 
+/**
+ * Partially load data into an empty unit_type (build to HELP_INDEX).
+ */
 void unit_type::build_help_index(const movement_type_map &mv_types,
 	const race_map &races, const config::const_child_itors &traits)
 {
@@ -900,6 +906,11 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	build_status_ = HELP_INDEX;
 }
 
+/**
+ * Load the most needed data into an empty unit_type (build to CREATE).
+ * This creates the gender-specific types (if needed) and also defines how much
+ * experience is needed to advance as well as what this advances to.
+ */
 void unit_type::build_created(const movement_type_map &mv_types,
 	const race_map &races, const config::const_child_itors &traits)
 {
@@ -946,6 +957,39 @@ void unit_type::build_created(const movement_type_map &mv_types,
 
 	build_status_ = CREATED;
 }
+
+/**
+ * Performs a build of this to the indicated stage.
+ */
+void unit_type::build(BUILD_STATUS status, const movement_type_map &movement_types,
+                      const race_map &races, const config::const_child_itors &traits)
+{
+	DBG_UT << "Building unit type " << id_ << ", level " << status << '\n';
+
+	// Nothing to do if we are already built.
+	if ( int(status) <= int(build_status_) )
+		return;
+
+	switch (status) {
+	case CREATED:
+		// Build the basic data.
+		build_created(movement_types, races, traits);
+		return;
+
+	case HELP_INDEX:
+		// Build the data needed to feed the help index.
+		build_help_index(movement_types, races, traits);
+		return;
+
+	case WITHOUT_ANIMATIONS:
+		// Animations are now built when they are accessed, so fall down to FULL.
+	case FULL:
+	default:
+		build_full(movement_types, races, traits);
+		return;
+	}
+}
+
 
 const unit_type& unit_type::get_gender_unit_type(std::string gender) const
 {
@@ -1249,6 +1293,9 @@ void unit_type_data::set_config(config &cfg)
 	}
 }
 
+/**
+ * Finds a unit_type by its id() and makes sure it is built to the specified level.
+ */
 const unit_type *unit_type_data::find(const std::string& key, unit_type::BUILD_STATUS status) const
 {
 	if (key.empty() || key == "random") return NULL;
@@ -1266,7 +1313,7 @@ const unit_type *unit_type_data::find(const std::string& key, unit_type::BUILD_S
     }
 
     //check if the unit_type is constructed and build it if necessary
-    build_unit_type(itor, status);
+    build_unit_type(itor->second, status);
 
 	return &itor->second;
 }
@@ -1309,7 +1356,7 @@ void unit_type_data::build_all(unit_type::BUILD_STATUS status)
 	assert(unit_cfg_ != NULL);
 
 	for (unit_type_map::iterator u = types_.begin(), u_end = types_.end(); u != u_end; ++u) {
-		build_unit_type(u, status);
+		build_unit_type(u->second, status);
 		loadscreen::increment_progress();
 	}
 	for (unit_type_map::iterator u = types_.begin(), u_end = types_.end(); u != u_end; ++u) {
@@ -1317,28 +1364,6 @@ void unit_type_data::build_all(unit_type::BUILD_STATUS status)
 	}
 
 	build_status_ = status;
-}
-
-unit_type &unit_type_data::build_unit_type(const unit_type_map::iterator &ut, unit_type::BUILD_STATUS status) const
-{
-	DBG_UT << "Building unit type " << ut->first << ", level " << status << '\n';
-
-	if (int(status) <= int(ut->second.build_status()))
-		return ut->second;
-
-	switch (status) {
-	case unit_type::CREATED:
-		ut->second.build_created(movement_types_, races_, unit_cfg_->child_range("trait"));
-		break;
-	case unit_type::HELP_INDEX:
-		// Build the data needed to feed the help index.
-		ut->second.build_help_index(movement_types_, races_, unit_cfg_->child_range("trait"));
-		break;
-	default:
-		ut->second.build_full(movement_types_, races_, unit_cfg_->child_range("trait"));
-	}
-
-	return ut->second;
 }
 
 void unit_type_data::read_hide_help(const config& cfg)
