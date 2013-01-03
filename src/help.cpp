@@ -1441,7 +1441,7 @@ public:
 
 		// Print the race of the unit, cross-reference it to the
 		// respective topic.
-		const std::string race_id = type_.race();
+		const std::string race_id = type_.race_id();
 		std::string race_name;
 		if (const unit_race *r = unit_types.find_race(race_id)) {
 			race_name = r->plural_name();
@@ -1803,9 +1803,9 @@ void generate_races_sections(const config *help_cfg, section &sec, int level)
 		const unit_type &type = i.second;
 		UNIT_DESCRIPTION_TYPE desc_type = description_type(type);
 		if (desc_type == FULL_DESCRIPTION) {
-			races.insert(type.race());
+			races.insert(type.race_id());
 			if (!type.hide_help())
-				visible_races.insert(type.race());
+				visible_races.insert(type.race_id());
 		}
 	}
 
@@ -1843,7 +1843,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 	{
 		const unit_type &type = i.second;
 
-		if (type.race() != race)
+		if (type.race_id() != race)
 			continue;
 
 		BOOST_FOREACH(const std::string &variation_name, type.variations()) {

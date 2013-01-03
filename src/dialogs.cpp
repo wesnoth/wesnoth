@@ -971,7 +971,7 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 	det.level = t->level();
 	det.alignment = unit_type::alignment_description(t->alignment(), t->genders().front());
 
-	if (const unit_race *r = unit_types.find_race(t->race())) {
+	if (const unit_race *r = unit_types.find_race(t->race_id())) {
 		assert(!t->genders().empty());
 		det.race = r->name(t->genders().front());
 	}

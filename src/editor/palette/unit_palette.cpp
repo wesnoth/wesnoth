@@ -45,8 +45,8 @@ void unit_palette::setup(const config& /*cfg*/)
 	BOOST_FOREACH(const unit_type_data::unit_type_map::value_type &i, unit_types.types())
 	{
 		item_map_.insert(std::pair<std::string, unit_type>(i.second.id(), i.second));
-		group_map_[i.second.race()].push_back(i.second.id());
-		nmax_items_ = std::max(nmax_items_, group_map_[i.second.race()].size());
+		group_map_[i.second.race_id()].push_back(i.second.id());
+		nmax_items_ = std::max(nmax_items_, group_map_[i.second.race_id()].size());
 		//TODO
 		bool core = true;
 		if (core) {

@@ -119,7 +119,7 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 
 		std::string race_label;
 
-		if (const unit_race *r = unit_types.find_race(i.second.race())) {
+		if (const unit_race *r = unit_types.find_race(i.second.race_id())) {
 			race_label = r->plural_name();
 		}
 

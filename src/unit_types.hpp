@@ -297,8 +297,10 @@ public:
 	const std::vector<unit_race::GENDER>& genders() const { return genders_; }
 	std::vector<std::string> variations() const;
 
-	const std::string race() const { return cfg_["race"]; } //race_->id(); }
+	/// Returns the ID of this type's race without the need to build the type.
+	std::string race_id() const { return cfg_["race"]; } //race_->id(); }
 	/// Never returns NULL, but may point to the null race.
+	/// Requires building to the HELP_INDEX status to get the correct race.
 	const unit_race* race_ptr() const { return race_; }
 	bool hide_help() const;
 
