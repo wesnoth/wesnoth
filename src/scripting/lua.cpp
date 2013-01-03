@@ -3452,6 +3452,16 @@ static int intf_get_image_size(lua_State *L)
 }
 
 /**
+ * Returns the time stamp, exactly as [set_variable] time=stamp does.
+ * - Ret 1: integer
+ */
+static int intf_get_time_stamp(lua_State *L)
+{
+	lua_pushinteger(L, SDL_GetTicks());
+	return 1;
+}
+
+/**
  * Lua frontend to the modify_ai functionality
  * - Arg 1: config.
  */
@@ -3722,6 +3732,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "get_terrain",              &intf_get_terrain              },
 		{ "get_terrain_info",         &intf_get_terrain_info         },
 		{ "get_time_of_day",          &intf_get_time_of_day          },
+		{ "get_time_stamp",           &intf_get_time_stamp           },
 		{ "get_traits",               &intf_get_traits               },
 		{ "get_unit",                 &intf_get_unit                 },
 		{ "get_units",                &intf_get_units                },
