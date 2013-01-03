@@ -14,18 +14,19 @@ msgstr ""
 "Project-Id-Version: Wesnoth-editor 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-10-27 15:56+0200\n"
-"PO-Revision-Date: 2011-12-22 21:52+0100\n"
+"PO-Revision-Date: 2012-12-19 21:22-0000\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
 "Language: la\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:5
 msgid "Single Hex"
-msgstr "Hexagonum Solum"
+msgstr "Unum Hexagonum"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:15
@@ -40,19 +41,17 @@ msgstr "Radius II Hexagonorum"
 #. [brush]
 #: data/core/editor/brushes.cfg:46
 msgid "Hex Line NW-SE"
-msgstr "Agmen hexagonorum OS-OA"
+msgstr "Agmen hexagonorum OcS-OrA"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:62
-#, fuzzy
-#| msgid "Hex Line NW-SE"
 msgid "Hex Line SE-NW"
-msgstr "Agmen hexagonorum OS-OA"
+msgstr "Linea hexagonorum OrA-OcS"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:11
 msgid "all"
-msgstr "omnes"
+msgstr "omnia"
 
 #. [editor_group]: id=water
 #: data/core/editor/terrain-groups.cfg:17
@@ -62,12 +61,12 @@ msgstr "aqua"
 #. [editor_group]: id=flat
 #: data/core/editor/terrain-groups.cfg:24
 msgid "flat"
-msgstr "planus"
+msgstr "plana"
 
 #. [editor_group]: id=desert
 #: data/core/editor/terrain-groups.cfg:31
 msgid "desert"
-msgstr "loca deserta"
+msgstr "deserta"
 
 #. [editor_group]: id=embellishments
 #: data/core/editor/terrain-groups.cfg:38
@@ -77,22 +76,22 @@ msgstr "ornamenta"
 #. [editor_group]: id=forest
 #: data/core/editor/terrain-groups.cfg:45
 msgid "forest"
-msgstr "silva"
+msgstr "silvestria"
 
 #. [editor_group]: id=fall
 #: data/core/editor/terrain-groups.cfg:52
 msgid "fall"
-msgstr ""
+msgstr "autumna"
 
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:59
 msgid "frozen"
-msgstr "frigidus"
+msgstr "frigida"
 
 #. [editor_group]: id=rough
 #: data/core/editor/terrain-groups.cfg:66
 msgid "rough"
-msgstr "asper"
+msgstr "aspera"
 
 #. [editor_group]: id=cave
 #: data/core/editor/terrain-groups.cfg:73
@@ -102,27 +101,27 @@ msgstr "caverna"
 #. [editor_group]: id=obstacle
 #: data/core/editor/terrain-groups.cfg:80
 msgid "obstacle"
-msgstr "impedimentum"
+msgstr "impedimenta"
 
 #. [editor_group]: id=village
 #: data/core/editor/terrain-groups.cfg:87
 msgid "village"
-msgstr "viculus"
+msgstr "viculi"
 
 #. [editor_group]: id=castle
 #: data/core/editor/terrain-groups.cfg:94
 msgid "castle"
-msgstr "castellum"
+msgstr "castella"
 
 #. [editor_group]: id=bridge
 #: data/core/editor/terrain-groups.cfg:101
 msgid "bridge"
-msgstr "pons"
+msgstr "pontes"
 
 #. [editor_group]: id=special
 #: data/core/editor/terrain-groups.cfg:108
 msgid "special"
-msgstr "specialis"
+msgstr "insolita"
 
 #. [editor_tool_hint]: id=editor-tool-fill
 #. [editor_tool_hint]: id=editor-tool-paint
@@ -134,6 +133,8 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
+"Laeva dextrave tange ut eminentiam abscedentiamve pingas. Shift tene ut modo "
+"partem imam pingas. Ctrl+click uti ut terrram sub cursore videas."
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
@@ -182,7 +183,7 @@ msgstr "Fenestra"
 #. [menu]: id=menu-editor-terrain
 #: data/themes/editor.cfg:439
 msgid "Group"
-msgstr ""
+msgstr "Classis"
 
 #. [label]: id=villages-icon
 #: data/themes/editor.cfg:463
@@ -198,31 +199,26 @@ msgid "Do you really want to quit?"
 msgstr "Itane vis exire?"
 
 #: src/editor/editor_controller.cpp:180
-#, fuzzy
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
-msgstr ""
-"Visne exire? Omnes commutationes in tabula geographica nonservatae "
-"amittentur."
+msgstr "Itane vis exire? Omnes mutationes in charta post servatum delebuntur."
 
 #: src/editor/editor_controller.cpp:182
-#, fuzzy
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
-"Visne exire? Istae tabulae geographicae commutabantur et omnes commutationes "
-"nonservatae amittentur: "
+"Itane vis exire? Hae chartae mutatae sunt et omnes mutationes post "
+"servatumdelebuntur:"
 
 #: src/editor/editor_controller.cpp:185
 msgid "Quit"
 msgstr "Exire"
 
 #: src/editor/editor_controller.cpp:196
-#, fuzzy
 msgid "No editor time-of-day found."
-msgstr "Tempus initium non repertum est."
+msgstr "Hora pro chartographia non inventa est."
 
 #: src/editor/map/context_manager.cpp:101
 #: src/editor/map/context_manager.cpp:193
@@ -235,15 +231,15 @@ msgstr "Chartam Eligere ut Aperiatur"
 
 #: src/editor/map/context_manager.cpp:236
 msgid "Choose a Mask to Apply"
-msgstr "Personam elige ad aptandum"
+msgstr "Personam Eligere ut Aptetur"
 
 #: src/editor/map/context_manager.cpp:243
 msgid "Error loading mask"
-msgstr "Error dum velamen arcessitur"
+msgstr "Error dum persona arcessitur"
 
 #: src/editor/map/context_manager.cpp:264
 msgid "Choose Target Map"
-msgstr "Chartam deligere."
+msgstr "Chartam Eligere"
 
 #: src/editor/map/context_manager.cpp:271
 #: src/editor/map/context_manager.cpp:635
@@ -252,11 +248,11 @@ msgstr "Error dum charta arcessitur"
 
 #: src/editor/map/context_manager.cpp:389
 msgid "Save the Map As"
-msgstr "Chartam servare ut..."
+msgstr "Chartam Servare ut..."
 
 #: src/editor/map/context_manager.cpp:392
 msgid "The file already exists. Do you want to overwrite it?"
-msgstr "Fasciculus iam adest. Visne eum superscribere?"
+msgstr "Fasciculus iam est. Visne eum superscribere?"
 
 #: src/editor/map/context_manager.cpp:426
 msgid "No random map generators found."
@@ -272,10 +268,9 @@ msgid "Unsaved Changes"
 msgstr "Mutationes Non Servatae"
 
 #: src/editor/map/context_manager.cpp:456
-#, fuzzy
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
-msgstr "Visne repudiare omnes commutationes nonservatas?"
+msgstr "Itane vis omnes mutationes in charta post servatum delere?"
 
 #: src/editor/map/context_manager.cpp:550
 #: src/editor/map/context_manager.cpp:591
@@ -293,13 +288,15 @@ msgstr ""
 #: src/editor/map/context_manager.cpp:615
 #: src/editor/map/context_manager.cpp:629
 msgid "Map loaded from scenario"
-msgstr "Charta ab scaenario adepta"
+msgstr "Charta ab scaenario arcessita"
 
 #: src/editor/map/context_manager.cpp:625
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
+"Fasciculus chartae arcessitus:\n"
+"$new"
 
 #: src/editor/map/editor_map.cpp:150
 msgid "Player"
@@ -307,7 +304,7 @@ msgstr "Lusor"
 
 #: src/editor/map/editor_map.cpp:257
 msgid "The size of the target map is different from the current map"
-msgstr ""
+msgstr "Magnitudo chartae electae dissimilis chartae praesenti est"
 
 #: src/editor/map/map_context.cpp:103
 msgid "File not found"
@@ -318,6 +315,8 @@ msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
+"Fasciculus chartae scaenarium esse videtur, sed numerus map_data fasciculum "
+"verum non indicat"
 
 #: src/editor/map/map_context.cpp:133
 msgid "Empty map file"
@@ -325,37 +324,37 @@ msgstr "Fasciculus inanis chartae"
 
 #: src/editor/map/map_context.cpp:306
 msgid "Could not save into scenario"
-msgstr "Non potis est ad scaenarium servare"
+msgstr "Non potest ut ad scaenarium servetur"
 
 #: src/editor/map/map_context.cpp:313
 msgid "Could not save the map: $msg"
-msgstr "Non potis est chartam servare: $msg"
+msgstr "Non potest ut charta servetur: $msg"
 
 #: src/editor/palette/editor_palettes.cpp:48
 msgid "(Unknown Group)"
-msgstr ""
+msgstr "(Classis Ignota)"
 
 #: src/editor/palette/editor_palettes.cpp:305
 msgid "(non-core)"
-msgstr "(innucleus)"
+msgstr "(innucleum)"
 
 #: src/editor/palette/editor_palettes.cpp:306
 msgid "Will not work in game without extra care."
-msgstr ""
+msgstr "Hae sine cura singulare deerint."
 
 # Eminentia
 #: src/editor/palette/terrain_palettes.cpp:55
 msgid "FG: "
 msgstr "EM: "
 
-# Umbra
+# Abscedentia
 #: src/editor/palette/terrain_palettes.cpp:56
 msgid "BG: "
-msgstr "UM: "
+msgstr "AB: "
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:84
 msgid "player^None"
-msgstr "Nullus"
+msgstr "Nemo"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:96
 msgid "Player $player_number"
@@ -363,7 +362,7 @@ msgstr "Lusor $player_number"
 
 #: src/gui/dialogs/editor_settings.cpp:166
 msgid "Custom setting"
-msgstr "Electio lusoris"
+msgstr "Electiones lusoris"
 
 #~ msgid "Quit Editor"
 #~ msgstr "Chartographiam Exire"
@@ -380,7 +379,6 @@ msgstr "Electio lusoris"
 #~ msgid "Can’t Redo"
 #~ msgstr "Nequit Reponere"
 
-#, fuzzy
 #~| msgid "Empty map file"
 #~ msgid "Empty file"
 #~ msgstr "Fasciculus inanis chartae"
