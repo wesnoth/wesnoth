@@ -29,6 +29,10 @@
 
 /// Dummy race used when a race is not yet known.
 const unit_race unit_race::null_race;
+/// Standard string id (not translatable) for FEMALE
+const std::string unit_race::s_female("female");
+/// Standard string id (not translatable) for MALE
+const std::string unit_race::s_male("male");
 
 
 static const config &empty_traits() {
@@ -220,22 +224,21 @@ const config::const_child_itors &unit_race::additional_topics() const
 
 unsigned int unit_race::num_traits() const { return ntraits_; }
 
+
 std::string const& gender_string(unit_race::GENDER gender) {
-	static const std::string female_string = "female";
-	static const std::string male_string = "male";
 	switch(gender) {
 	case unit_race::FEMALE:
-		return female_string;
+		return unit_race::s_female;
 	default:
 	case unit_race::MALE:
-		return male_string;
+		return unit_race::s_male;
 	}
 }
 
 unit_race::GENDER string_gender(const std::string& str, unit_race::GENDER def) {
-	if(str == gender_string(unit_race::MALE)) {
+	if ( str == unit_race::s_male ) {
 		return unit_race::MALE;
-	} else if(str == gender_string(unit_race::FEMALE)) {
+	} else if ( str == unit_race::s_female ) {
 		return unit_race::FEMALE;
 	}
 	return def;

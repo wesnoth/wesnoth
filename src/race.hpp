@@ -30,6 +30,9 @@ class unit_race
 {
 public:
 	enum GENDER { MALE, FEMALE, NUM_GENDERS };
+	static const std::string s_female;
+	static const std::string s_male;
+
 
 	explicit unit_race(const config& cfg);
 
