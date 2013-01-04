@@ -103,6 +103,7 @@ public:
 
 	/** The type id of the unit */
 	const std::string& type_id() const { return type_; }
+	/** The type of the unit, accounting for gender and variation. */
 	const unit_type* type() const;
 
 	/** id assigned by wml */

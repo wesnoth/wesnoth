@@ -70,6 +70,10 @@ namespace {
 	static std::vector<const unit *> units_with_cache;
 }
 
+/**
+ * Converts a string ID to a unit_type.
+ * Throws a game_error exception if the string does not correspond to a type.
+ */
 static const unit_type &get_unit_type(const std::string &type_id)
 {
 	const unit_type *i = unit_types.find(type_id);
@@ -948,6 +952,12 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 	anim_ = NULL;
 }
 
+/**
+ * The type of the unit, accounting for gender and variation.
+ * Could throw a game_error exception if the unit's stored type ID does not
+ * correspond to a type (but that really should have been triggered when
+ * the type ID was set).
+ */
 const unit_type* unit::type() const
 {
 	if (type_.empty()) return NULL;
