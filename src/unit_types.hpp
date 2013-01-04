@@ -32,7 +32,7 @@ class attack_type
 {
 public:
 
-	attack_type(const config& cfg);
+	explicit attack_type(const config& cfg);
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
 	~attack_type();
 	const t_string& name() const { return description_; }
@@ -141,7 +141,7 @@ public:
 
 	//this class assumes that the passed in reference will remain valid
 	//for at least as long as the class instance
-	unit_movement_type(const config& cfg, const unit_movement_type* parent=NULL);
+	explicit unit_movement_type(const config& cfg, const unit_movement_type* parent=NULL);
 	unit_movement_type();
 
 	std::string name() const;
@@ -189,7 +189,7 @@ public:
 	 * @note @a cfg is not copied, so it has to point to some permanent
 	 *       storage, that is, a child of unit_type_data::unit_cfg.
 	 */
-	unit_type(config &cfg);
+	explicit unit_type(config &cfg);
 	unit_type(const unit_type& o);
 
 	~unit_type();
@@ -411,7 +411,9 @@ public:
 	bool hide_help(const std::string &type_id, const std::string &race_id) const;
 
 private:
+	// Not to be copied.
 	unit_type_data(const unit_type_data &);
+	void operator=(const unit_type_data &);
 
 	/** Parses the [hide_help] tag. */
 	void read_hide_help(const config &cfg);
