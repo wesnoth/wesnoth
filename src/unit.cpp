@@ -1114,22 +1114,46 @@ void unit::set_movement(int moves, bool unit_action)
 	movement_ = std::max<int>(0, moves);
 }
 
-void unit::new_turn()
-{
-	end_turn_ = hold_position_;
-	movement_ = total_movement();
-	attacks_left_ = max_attacks_;
-	set_state(STATE_UNCOVERED, false);
 
+/**
+ * Determines if @a mod_dur "matches" @a goal_dur.
+ * If goal_dur is not empty, they match if they are equal.
+ * If goal_dur is empty, they match if mod_dur is neither empty nor "forever".
+ * Helper function for expire_modifications().
+ */
+inline bool mod_duration_match(const std::string & mod_dur,
+                               const std::string & goal_dur)
+{
+	if ( goal_dur.empty() )
+		// Default is all temporary modifications.
+		return !mod_dur.empty()  &&  mod_dur != "forever";
+	else
+		return mod_dur == goal_dur;
+}
+
+/**
+ * Clears those modifications whose duration has expired.
+ * If @a duration is empty, then all temporary modifications (those not
+ * lasting forever) have expired. Otherwise, modifications whose duration
+ * equals @a duration have expired.
+ */
+void unit::expire_modifications(const std::string & duration)
+{
+	// If any modifications expire, then we will need to rebuild the unit.
 	bool rebuild_from_type = false;
+
+	// Loop through all types of modifications.
 	for(unsigned int i = 0; i != NumModificationTypes; ++i) {
 		const std::string& mod_name = ModificationTypes[i];
-		for (int j = modifications_.child_count(mod_name) - 1; j >= 0; --j)
+		// Loop through all modifications of this type.
+		// Looping in reverse since we may delete the current modification.
+		for (int j = modifications_.child_count(mod_name)-1; j >= 0; --j)
 		{
 			const config &mod = modifications_.child(mod_name, j);
-			const std::string& duration = mod["duration"];
-			if (duration == "turn") {
-				if (const config::attribute_value *v = mod.get("prev_type")) {
+
+			if ( mod_duration_match(mod["duration"], duration) ) {
+				// If removing this mod means reverting the unit's type:
+				if ( const config::attribute_value *v = mod.get("prev_type") ) {
 					type_ = v->str();
 				}
 				modifications_.remove_child(mod_name, j);
@@ -1137,14 +1161,29 @@ void unit::new_turn()
 			}
 		}
 	}
-	if(rebuild_from_type) {
+
+	if ( rebuild_from_type ) {
+		// So we can preserve hit points:
 		int old_hp = hit_points_;
+
 		clear_haloes();
 		advance_to(type());
-		if(hit_points_ > old_hp)
+		if ( hit_points_ > old_hp )
 			hit_points_ = old_hp;
 	}
 }
+
+
+void unit::new_turn()
+{
+	end_turn_ = hold_position_;
+	movement_ = total_movement();
+	attacks_left_ = max_attacks_;
+	set_state(STATE_UNCOVERED, false);
+
+	expire_modifications("turn");
+}
+
 void unit::end_turn()
 {
 	set_state(STATE_SLOWED,false);
@@ -1155,32 +1194,14 @@ void unit::end_turn()
 	// Clear interrupted move
 	set_interrupted_move(map_location());
 }
+
 void unit::new_scenario()
 {
-
 	// Set the goto-command to be going to no-where
 	goto_ = map_location();
 
-	bool rebuild_from_type = false;
-
-	for(unsigned int i = 0; i != NumModificationTypes; ++i) {
-		const std::string& mod_name = ModificationTypes[i];
-		for (int j = modifications_.child_count(mod_name) - 1; j >= 0; --j)
-		{
-			const config &mod = modifications_.child(mod_name, j);
-			const std::string& duration = mod["duration"];
-			if (!duration.empty() && duration != "forever") {
-				if (const config::attribute_value *v = mod.get("prev_type")) {
-					type_ = v->str();
-				}
-				modifications_.remove_child(mod_name, j);
-				rebuild_from_type = true;
-			}
-		}
-	}
-	if(rebuild_from_type) {
-		advance_to(type());
-	}
+	// Expire all temporary modifications.
+	expire_modifications("");
 
 	heal_all();
 	set_state(STATE_SLOWED, false);
