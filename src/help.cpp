@@ -1380,7 +1380,7 @@ public:
 
 				BOOST_FOREACH(const std::string &adv, adv_units)
 				{
-					const unit_type *type = unit_types.find(adv);
+					const unit_type *type = unit_types.find(adv, unit_type::HELP_INDEX);
 					if (!type || type->hide_help()) continue;
 
 					if (first) {
@@ -1409,7 +1409,7 @@ public:
 		}
 
 		if (!variation_.empty()) {
-			const unit_type *parent = unit_types.find(type_.id());
+			const unit_type *parent = unit_types.find(type_.id(), unit_type::HELP_INDEX);
 			ss << _("Base unit: ") << "<ref>dst='" << unit_prefix + type_.id() << "' text='" << escape(parent->type_name()) << "'</ref>\n";
 		}
 
@@ -1755,7 +1755,7 @@ std::string make_unit_link(const std::string& type_id)
 {
 	std::string link;
 
-	const unit_type *type = unit_types.find(type_id);
+	const unit_type *type = unit_types.find(type_id, unit_type::HELP_INDEX);
 	if (!type) {
 		std::cerr << "Unknown unit type : " << type_id << "\n";
 		// don't return an hyperlink (no page)
