@@ -1176,12 +1176,12 @@ void unit::expire_modifications(const std::string & duration)
 
 void unit::new_turn()
 {
+	expire_modifications("turn");
+
 	end_turn_ = hold_position_;
 	movement_ = total_movement();
 	attacks_left_ = max_attacks_;
 	set_state(STATE_UNCOVERED, false);
-
-	expire_modifications("turn");
 }
 
 void unit::end_turn()
