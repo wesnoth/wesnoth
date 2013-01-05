@@ -1201,6 +1201,7 @@ unit get_advanced_unit(const unit &u, const std::string& advance_to)
 	unit new_unit(u);
 	new_unit.set_experience(new_unit.experience() - new_unit.max_experience());
 	new_unit.advance_to(new_type);
+	new_unit.heal_all();
 	new_unit.set_state(unit::STATE_POISONED, false);
 	new_unit.set_state(unit::STATE_SLOWED, false);
 	new_unit.set_state(unit::STATE_PETRIFIED, false);

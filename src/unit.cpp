@@ -823,6 +823,11 @@ std::vector<std::string> unit::get_traits_list() const
 	return res;
 }
 
+
+/**
+ * Advances this unit to the specified type.
+ * Current hit points and experience are left unchanged.
+ */
 void unit::advance_to(const config &old_cfg, const unit_type *t,
 	bool use_traits)
 {
@@ -890,6 +895,7 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 	advances_to_ = t->advances_to();
 
 	race_ = t->race();
+	type_ = t->id();
 	type_name_ = t->type_name();
 	cfg_["description"] = t->unit_description();
 	undead_variation_ = t->undead_variation();
@@ -897,7 +903,6 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 	level_ = t->level();
 	alignment_ = t->alignment();
 	alpha_ = t->alpha();
-	hit_points_ = t->hitpoints();
 	max_hit_points_ = t->hitpoints();
 	max_movement_ = t->movement();
 	vision_ = t->vision();
@@ -914,13 +919,6 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 	flag_rgb_ = t->flag_rgb();
 
 
-	bool do_heal = false; // Track whether unit should get fully healed.
-
-	if(type_id()!=t->id()) {
-		do_heal = true; // Can't heal until after mods applied.
-		type_ = t->id();
-	}
-
 	if (cfg_["random_traits"].to_bool(true)) {
 		generate_traits(!use_traits);
 	} else {
@@ -936,12 +934,6 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 	// since there can be filters on the modifications
 	// that may result in different effects after the advancement.
 	apply_modifications();
-
-	// Not that the unit has all of its modifications applied, it is
-	// OK to heal it.
-	if (do_heal) {
-		heal_all();
-	}
 
 	// In case the unit carries EventWML, apply it now
 	game_events::add_events(cfg_.child_range("event"), type_);
@@ -1163,13 +1155,8 @@ void unit::expire_modifications(const std::string & duration)
 	}
 
 	if ( rebuild_from_type ) {
-		// So we can preserve hit points:
-		int old_hp = hit_points_;
-
 		clear_haloes();
 		advance_to(type());
-		if ( hit_points_ > old_hp )
-			hit_points_ = old_hp;
 	}
 }
 
@@ -2866,11 +2853,10 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 			const unit_type* type = unit_types.find(type_id);
 			if(type) {
 				const bool heal_full = last_effect["heal_full"].to_bool(false);
-				int hit_points = hit_points_;
 				advance_to(type);
 				preferences::encountered_units().insert(type_id);
-				if(!heal_full) {
-					hit_points_ = hit_points;
+				if( heal_full ) {
+					heal_all();
 				}
 			} else {
 				WRN_UT << "unknown type= in [effect]apply_to=type, ignoring\n";

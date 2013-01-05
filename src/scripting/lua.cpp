@@ -2613,9 +2613,16 @@ static int intf_transform_unit(lua_State *L)
 {
 	unit *u = luaW_checkunit(L, 1);
 	char const *m = luaL_checkstring(L, 2);
+	const bool full_heal = u->type_id() != m;
 	const unit_type *utp = unit_types.find(m);
 	if (!utp) return luaL_argerror(L, 2, "unknown unit type");
 	u->advance_to(utp);
+
+	// This is to exactly preserve the old behavior, but perhaps it should
+	// be removed?
+	if ( full_heal )
+		u->heal_all();
+
 	return 0;
 }
 
