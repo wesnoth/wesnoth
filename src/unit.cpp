@@ -936,6 +936,11 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 	// that may result in different effects after the advancement.
 	apply_modifications();
 
+	// Now that modifications are done modifying traits, check if poison should
+	// be cleared.
+	if ( get_state("unpoisonable") )
+		set_state(STATE_POISONED, false);
+
 	// Now that modifications are done modifying the maximum hit points,
 	// enforce this maximum.
 	if ( hit_points_ > max_hit_points_ )
@@ -2492,6 +2497,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 	if(no_add == false) {
 		new_child = &modifications_.add_child(type,mod);
 	}
+	bool set_poisoned = false; // Tracks if the poisoned state was set after the type or variation was changed.
 	config last_effect;
 	std::vector<t_string> effects_description;
 	BOOST_FOREACH(const config &effect, mod.child_range("effect"))
@@ -2513,6 +2519,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 
 				// Apply unit type/variation changes last to avoid double applying effects on advance.
 				if ((apply_to == "variation" || apply_to == "type") && no_add == false) {
+					set_poisoned = false;
 					last_effect = effect;
 				} else if(apply_to == "profile") {
 					if (const config::attribute_value *v = effect.get("portrait")) {
@@ -2664,10 +2671,12 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 
 					if(add.empty() == false) {
 						set_state(add, true);
+						set_poisoned = set_poisoned  ||  add == "poisoned";
 					}
 
 					if(remove.empty() == false) {
 						set_state(remove, false);
+						set_poisoned = set_poisoned  &&  remove != "poisoned";
 					}
 				} else if (apply_to == "movement_costs") {
 					config &mv = cfg_.child_or_add("movement_costs");
@@ -2868,6 +2877,10 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 				WRN_UT << "unknown type= in [effect]apply_to=type, ignoring\n";
 			}
 		}
+		if ( set_poisoned )
+			// An effect explictly set the poisoned state, and this
+			// should override the unit being immune to poison.
+			set_state(STATE_POISONED, true);
 	}
 
 	t_string description;

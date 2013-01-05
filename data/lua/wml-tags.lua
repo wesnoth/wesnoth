@@ -932,9 +932,8 @@ function wml_actions.transform_unit(cfg)
 			unit.experience = experience
 
 			for key, value in pairs(status) do unit.status[key] = value end
+			if unit.status.not_living then unit.status.poisoned = nil end
 		end
-
-		if unit.status.not_living then unit.status.poisoned = nil end
 	end
 
 	wml_actions.redraw {}

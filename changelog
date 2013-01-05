@@ -30,6 +30,8 @@ Version 1.11.1+svn:
    * new helper.shuffle() function
    * The wesnoth.transform_unit() function no longer performs a full heal. It
      will (still) enforce the resulting unit's maximum hit points, though.
+   * The wesnoth.transform_unit() function will automatically remove poison from
+     a unit that is immune after transforming.
  * Multiplayer:
    * Moved new lobby option in Preferences -> Multiplayer to Advanced
      Preferences and clarified description
@@ -47,6 +49,8 @@ Version 1.11.1+svn:
    * The bugs with sighted events have been resolved.
    * A unit's maximum hit points are more regularly applied. This affects
      [transform_unit], [effect]apply_to=type, and [effect]apply_to=variation.
+   * Poison is automatically removed from immune units after using
+     [effect]apply_to=type or [effect]apply_to=variation.
  * Miscellaneous and bug fixes:
    * The undo stack is preserved across a save-reload.
    * Removed several unused private member variables.
