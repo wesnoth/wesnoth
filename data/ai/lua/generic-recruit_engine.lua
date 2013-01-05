@@ -229,7 +229,7 @@ return {
             local recruit_flat_defense = wesnoth.unit_defense(recruit, "Gt")
             local recruit_best_defense = get_best_defense(recruit)
 
-            local can_poison_retaliation = poisonable(recruit) or wesnoth.unit_ability(recruit, 'regenerate')
+            local can_poison_retaliation = poisonable(recruit) and (not wesnoth.unit_ability(recruit, 'regenerate'))
             best_flat_attack, best_flat_damage, flat_poison = get_best_attack(recruit, unit, flat_defense, recruit_best_defense, can_poison)
             best_high_defense_attack, best_high_defense_damage, high_defense_poison = get_best_attack(recruit, unit, best_defense, recruit_flat_defense, can_poison)
             best_retaliation, best_retaliation_damage, retaliation_poison = get_best_attack(unit, recruit, recruit_flat_defense, best_defense, can_poison_retaliation)
