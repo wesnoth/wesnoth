@@ -51,6 +51,8 @@ Version 1.11.1+svn:
      [transform_unit], [effect]apply_to=type, and [effect]apply_to=variation.
    * Poison is automatically removed from immune units after using
      [effect]apply_to=type or [effect]apply_to=variation.
+   * Fixed bug #20401: [remove_unit_overlay] did not work when the image used an
+     image path function that took multiple parameters.
  * Miscellaneous and bug fixes:
    * The undo stack is preserved across a save-reload.
    * Removed several unused private member variables.

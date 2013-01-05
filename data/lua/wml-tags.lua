@@ -392,7 +392,7 @@ function wml_actions.remove_unit_overlay(cfg)
 	for i,u in ipairs(wesnoth.get_units(cfg)) do
 		local ucfg = u.__cfg
 		local t = {}
-		for w in string.gmatch(ucfg.overlays, "[^%s,][^,]*") do
+		for w in helper.parenthetical_split(ucfg.overlays) do
 			if w ~= img then table.insert(t, w) end
 		end
 		ucfg.overlays = table.concat(t, ',')

@@ -391,4 +391,53 @@ function helper.shuffle( t )
 	end
 end
 
+--! Returns an iterator over the pieces of str that are deliminated by separator,
+--! with the provision that anything enclosed in parentheses is not split.
+--! If nil, separator defaults to ",", open_paren to "(" and close_paren to ")".
+--! This is generally less capable than parenthetical_split() in
+--! serialization/string_utils.cpp, although this function can handle separators
+--! and parentheses that consist of more than one character.
+function helper.parenthetical_split(str, separator, open_paren, close_paren)
+	local sep = separator or ","
+	local p1 = open_paren or "("
+	local p2 = close_paren or ")"
+	-- Cache the string length.
+	local str_len = str:len()
+	-- Cache the offsets (length - 1).
+	local sep_off = sep:len() - 1
+	local p1_off = p1:len() - 1
+	local p2_off = p2:len() - 1
+
+	-- Tracks our progress through the string.
+	local i = 1
+
+	return function()
+		-- Test for end of string.
+		if i > str_len then return nil end
+
+		local start = i
+		local p_count = 0
+
+		-- while not end-of-string and (in parens or not at a separator)
+		while i <= str_len and (p_count ~= 0 or str:sub(i, i+sep_off) ~= sep) do
+			-- Check for parentheses
+			if str:sub(i, i+p1_off) == p1 then
+				p_count = p_count + 1
+				i = i + p1_off + 1
+			elseif str:sub(i, i+p2_off) == p2 then
+				p_count = p_count - 1
+				i = i + p2_off + 1
+			else
+				i = i + 1
+			end
+		end
+
+		-- Skip the separator.
+		local stop = i - 1
+		i = i + sep_off + 1
+
+		return str:sub(start, stop)
+	end
+end
+
 return helper
