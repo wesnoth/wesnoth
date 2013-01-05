@@ -925,7 +925,7 @@ function wml_actions.transform_unit(cfg)
 
 			unit.experience = unit.max_experience
 			wml_actions.store_unit { { "filter", { id = unit.id } }, variable = "Lua_store_unit", kill = true }
-			wml_actions.unstore_unit { variable = "Lua_store_unit", find_vacant = false, advance = true, fire_event = false }
+			wml_actions.unstore_unit { variable = "Lua_store_unit", find_vacant = false, advance = true, fire_event = false, animate = false }
 			wesnoth.set_variable ( "Lua_store_unit")
 
 			unit.hitpoints = hitpoints
