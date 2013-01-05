@@ -834,7 +834,7 @@ function wml_actions.harm_unit(cfg)
 				end
 			end
 
-			if not unit_to_harm.status.not_living then
+			if not unit_to_harm.status.unpoisonable then
 				set_status("poisoned", _"poisoned", _"female^poisoned", "poison.ogg")
 			end
 			set_status("slowed", _"slowed", _"female^slowed", "slowed.wav")
@@ -932,7 +932,7 @@ function wml_actions.transform_unit(cfg)
 			unit.experience = experience
 
 			for key, value in pairs(status) do unit.status[key] = value end
-			if unit.status.not_living then unit.status.poisoned = nil end
+			if unit.status.unpoisonable then unit.status.poisoned = nil end
 		end
 	end
 

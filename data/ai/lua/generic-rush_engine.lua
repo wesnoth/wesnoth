@@ -400,7 +400,7 @@ return {
                 local defender = wesnoth.get_unit(a.target.x, a.target.y)
 
                 -- Don't try to poison a unit that cannot be poisoned
-                local cant_poison = defender.status.poisoned or defender.status.not_living
+                local cant_poison = defender.status.poisoned or defender.status.unpoisonable
 
                 -- For now, we also simply don't poison units on villages (unless standard combat CA does it)
                 local on_village = wesnoth.get_terrain_info(wesnoth.get_terrain(defender.x, defender.y)).village

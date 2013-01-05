@@ -69,8 +69,12 @@ return {
         local efficiency = {}
         setmetatable(efficiency, { __index = get_hp_efficiency })
 
-        function living(unit)
-            return not unit.status.not_living
+        function poisonable(unit)
+            return not unit.status.unpoisonable
+        end
+
+        function drainable(unit)
+            return not unit.status.undrainable
         end
 
         function get_best_defense(unit)
@@ -148,7 +152,7 @@ return {
                     for defender_attack in H.child_range(defender.__cfg, 'attack') do
                         if (defender_attack.range == attack.range) then
                             for special in H.child_range(defender_attack, 'specials') do
-                                if H.get_child(special, 'drains') and living(attacker) then
+                                if H.get_child(special, 'drains') and drainable(attacker) then
                                     -- TODO: calculate chance to hit
                                     -- currently assumes 50% chance to hit using supplied constant
                                     local attacker_resistance = wesnoth.unit_resistance(attacker, defender_attack.type)
@@ -212,7 +216,7 @@ return {
                 name = "X",
                 random_gender = false
             }
-            local can_poison = living(unit) and (not wesnoth.unit_ability(unit, 'regenerate'))
+            local can_poison = poisonable(unit) and (not wesnoth.unit_ability(unit, 'regenerate'))
             local flat_defense = wesnoth.unit_defense(unit, "Gt")
             local best_defense = get_best_defense(unit)
 
@@ -225,7 +229,7 @@ return {
             local recruit_flat_defense = wesnoth.unit_defense(recruit, "Gt")
             local recruit_best_defense = get_best_defense(recruit)
 
-            local can_poison_retaliation = living(recruit) or wesnoth.unit_ability(recruit, 'regenerate')
+            local can_poison_retaliation = poisonable(recruit) or wesnoth.unit_ability(recruit, 'regenerate')
             best_flat_attack, best_flat_damage, flat_poison = get_best_attack(recruit, unit, flat_defense, recruit_best_defense, can_poison)
             best_high_defense_attack, best_high_defense_damage, high_defense_poison = get_best_attack(recruit, unit, best_defense, recruit_flat_defense, can_poison)
             best_retaliation, best_retaliation_damage, retaliation_poison = get_best_attack(unit, recruit, recruit_flat_defense, best_defense, can_poison_retaliation)
@@ -469,7 +473,7 @@ return {
                 end
             end
             -- Subtract the number of possible recruits for the enemy from the list of poisonable units
-            -- This works perfectly unless some of the enemy recruits cannot be poisoned (e.g. not_living)
+            -- This works perfectly unless some of the enemy recruits cannot be poisoned.
             -- However, there is no problem with this since poison is generally less useful in such situations and subtracting them too discourages such recruiting
             local poison_modifier = math.max(0, math.min(((poisonable_count-recruit_data.recruit.possible_enemy_recruit_count) / (poisoner_count*5)), 1))^2
             for i, recruit_id in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
