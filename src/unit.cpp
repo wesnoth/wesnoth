@@ -826,7 +826,8 @@ std::vector<std::string> unit::get_traits_list() const
 
 /**
  * Advances this unit to the specified type.
- * Current hit points and experience are left unchanged.
+ * Experience is left unchanged.
+ * Current hit point total is left unchanged unless it would violate max HP.
  */
 void unit::advance_to(const config &old_cfg, const unit_type *t,
 	bool use_traits)
@@ -934,6 +935,11 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 	// since there can be filters on the modifications
 	// that may result in different effects after the advancement.
 	apply_modifications();
+
+	// Now that modifications are done modifying the maximum hit points,
+	// enforce this maximum.
+	if ( hit_points_ > max_hit_points_ )
+		hit_points_ = max_hit_points_;
 
 	// In case the unit carries EventWML, apply it now
 	game_events::add_events(cfg_.child_range("event"), type_);

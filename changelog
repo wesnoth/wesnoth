@@ -28,8 +28,8 @@ Version 1.11.1+svn:
  * Lua API:
    * new wesnoth.get_time_stamp() function
    * new helper.shuffle() function
-   * The wesnoth.transform_unit() function no longer performs a full heal when
-     the type has actually changed.
+   * The wesnoth.transform_unit() function no longer performs a full heal. It
+     will (still) enforce the resulting unit's maximum hit points, though.
  * Multiplayer:
    * Moved new lobby option in Preferences -> Multiplayer to Advanced
      Preferences and clarified description
@@ -45,6 +45,8 @@ Version 1.11.1+svn:
    * Split the 'not_living' unit status into 'unpoisonable', 'undrainable' and
      'unplagueable'. 'not_living' now acts on the whole group
    * The bugs with sighted events have been resolved.
+   * A unit's maximum hit points are more regularly applied. This affects
+     [transform_unit], [effect]apply_to=type, and [effect]apply_to=variation.
  * Miscellaneous and bug fixes:
    * The undo stack is preserved across a save-reload.
    * Removed several unused private member variables.
