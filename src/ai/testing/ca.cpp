@@ -2034,7 +2034,8 @@ void passive_leader_shares_keep_phase::execute()
 					; i != possible_moves[keep].destinations.end()
 					; ++i){
 
-				if(distance_between(i->curr, keep) <= 3){
+				//calculate_moves() above uses max. moves -> need to check movement_left of leader here
+				if(distance_between(i->curr, keep) <= 3 && distance_between(i->curr, keep) <= ai_leader->movement_left()){
 					int tmp_def_mod = ai_leader->defense_modifier(resources::game_map->get_terrain(i->curr));
 					if(tmp_def_mod < defense_modifier){
 						defense_modifier = tmp_def_mod;

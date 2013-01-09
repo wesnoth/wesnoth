@@ -17,6 +17,8 @@ Version 1.11.1+svn:
        messenger escort, patrol, protect and move a unit, and 2 alternative
        recruiting strategies.
      * Documentation at http://wiki.wesnoth.org/Micro_AIs
+   * Fix minor bug in passive_leader_shares_keep candidate action that occurred
+     under some circumstances when the AI leader does not have full MP
  * Campaigns:
    * Son of the Black Eye:
      * Prevent infinite loop if fewer than two transport ships (bug #20389)
