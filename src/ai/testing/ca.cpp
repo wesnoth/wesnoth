@@ -1957,17 +1957,16 @@ void leader_control_phase::execute()
 
 //==============================================================
 
-passive_leader_shares_keep_phase::passive_leader_shares_keep_phase( rca_context &context, const config &cfg )
+leader_shares_keep_phase::leader_shares_keep_phase( rca_context &context, const config &cfg )
 	:candidate_action(context, cfg)
 {
 }
 
-
-passive_leader_shares_keep_phase::~passive_leader_shares_keep_phase()
+leader_shares_keep_phase::~leader_shares_keep_phase()
 {
 }
 
-double passive_leader_shares_keep_phase::evaluate()
+double leader_shares_keep_phase::evaluate()
 {
 	if(get_passive_leader() && !get_passive_leader_shares_keep()){
 		return BAD_SCORE;
@@ -1989,7 +1988,7 @@ double passive_leader_shares_keep_phase::evaluate()
 	return BAD_SCORE;
 }
 
-void passive_leader_shares_keep_phase::execute()
+void leader_shares_keep_phase::execute()
 {
 	//get all AI leaders
 	std::vector<unit_map::unit_iterator> ai_leaders = resources::units->find_leaders(get_side());

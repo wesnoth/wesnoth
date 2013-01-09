@@ -123,7 +123,11 @@ static register_candidate_action_factory<testing_ai_default::leader_control_phas
 static register_candidate_action_factory<testing_ai_default::testing_recruitment_phase>
 	testing_recruitment_phase_factory("ai_default_rca::testing_recruitment_phase");
 
-static register_candidate_action_factory<testing_ai_default::passive_leader_shares_keep_phase>
+static register_candidate_action_factory<testing_ai_default::leader_shares_keep_phase>
+	leader_shares_keep_phase_factory("ai_default_rca::leader_shares_keep_phase");
+
+//Also keep passive_leader_shares_keep_phase for backward compatibility
+static register_candidate_action_factory<testing_ai_default::leader_shares_keep_phase>
 	passive_leader_shares_keep_phase_factory("ai_default_rca::passive_leader_shares_keep_phase");
 
 static register_candidate_action_factory<testing_ai_default::global_fallback_phase>
@@ -175,7 +179,7 @@ static register_candidate_action_factory<testing_ai_default::leader_control_phas
 static register_candidate_action_factory<testing_ai_default::testing_recruitment_phase>
 	old_testing_recruitment_phase_factory("testing_ai_default::testing_recruitment_phase");
 
-static register_candidate_action_factory<testing_ai_default::passive_leader_shares_keep_phase>
+static register_candidate_action_factory<testing_ai_default::leader_shares_keep_phase>
 	old_passive_leader_shares_keep_phase_factory("testing_ai_default::passive_leader_shares_keep_phase");
 
 static register_candidate_action_factory<testing_ai_default::global_fallback_phase>
