@@ -138,10 +138,11 @@ void editor_controller::init_music(const config& game_config)
 
 editor_controller::~editor_controller()
 {
-	//TODO is not working like expected
-//	delete &toolkit_;
-//	delete toolkit_.get();
-//	delete context_manager_.get();
+	resources::game_map = NULL;
+	resources::units = NULL;
+	resources::tod_manager = NULL;
+	resources::teams = NULL;
+	resources::state_of_game = NULL;
 }
 
 EXIT_STATUS editor_controller::main_loop()
