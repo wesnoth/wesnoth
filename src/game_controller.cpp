@@ -556,6 +556,47 @@ bool game_controller::play_multiplayer_mode()
 			s["ai_config"] = ai_config->second;
 		}
 
+		// Choose a random leader
+		std::vector<std::string> types = utils::split(s["random_leader"]);
+		if (!types.empty()) {
+			const int lchoice = rand() % types.size();
+			s["type"] = types[lchoice];
+		} else {
+			// If random_leader= doesn't exists, we use leader=
+			types = utils::split(s["leader"]);
+			if (!types.empty()) {
+				const int lchoice = rand() % types.size();
+				s["type"] = types[lchoice];
+			} else {
+				std::cerr << "Could not find any valid leader type for side " << side_num << "\n";
+				return false;
+			}
+		}
+		
+		// Set gender for the leader
+		const unit_type *ut = unit_types.find(s["type"]);
+		if (ut) {
+			const std::vector<unit_race::GENDER> glist = ut->genders();
+			const int gchoice = rand() % glist.size();
+			unit_race::GENDER sgender = glist[gchoice];
+
+			switch (sgender)
+			{
+				case unit_race::FEMALE:
+					s["gender"] = unit_race::s_female;
+					break;
+				case unit_race::MALE:
+					s["gender"] = unit_race::s_male;
+					break;
+				default:
+					s["gender"] = "null";
+			}
+		} else {
+			std::cerr << "Could not obtain genders for leader of side " << side_num << "\n";
+			return false;
+		}
+		std::cerr << "   " << s["type"] << " of " << s["gender"] << " gender selected as leader.\n";
+
 		config& ai_params = s.add_child("ai");
 
 		//now add in any arbitrary parameters given to the side
@@ -570,6 +611,10 @@ bool game_controller::play_multiplayer_mode()
 	try {
 		recorder.add_log_data("ai_log","ai_label",label);
 		state_.snapshot = level;
+
+		level.add_child("replay_start", level);
+		state_.replay_start() = level.child("replay_start");
+
 		play_game(disp(), state_, game_config());
 	} catch (game::load_game_exception &) {
 		//the user's trying to load a game, so go into the normal title screen loop and load one
