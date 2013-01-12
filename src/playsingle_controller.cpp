@@ -956,7 +956,7 @@ bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, 
 			return i->move_interrupted();
 		}
 		case hotkey::HOTKEY_WB_TOGGLE:
-			return true;
+			return !is_observer();
 		case hotkey::HOTKEY_WB_EXECUTE_ACTION:
 		case hotkey::HOTKEY_WB_EXECUTE_ALL_ACTIONS:
 			return resources::whiteboard->can_enable_execution_hotkeys();
