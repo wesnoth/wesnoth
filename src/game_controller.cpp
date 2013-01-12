@@ -1193,19 +1193,19 @@ void game_controller::load_game_cfg(const bool force)
 				ERR_CONFIG << "error reading usermade add-on '" << *uc << "'\n";
 				error_addons.push_back(*uc);
 			}
-			if(error_addons.empty() == false) {
-				std::stringstream msg;
-				msg << _n("The following add-on had errors and could not be loaded:",
-						"The following add-ons had errors and could not be loaded:",
-						error_addons.size());
-				for(std::vector<std::string>::const_iterator i = error_addons.begin(); i != error_addons.end(); ++i) {
-					msg << "\n" << *i;
-				}
-
-				msg << '\n' << _("ERROR DETAILS:") << '\n' << user_error_log.str();
-
-				gui2::show_error_message(disp().video(),msg.str());
+		}
+		if(error_addons.empty() == false) {
+			std::stringstream msg;
+			msg << _n("The following add-on had errors and could not be loaded:",
+					"The following add-ons had errors and could not be loaded:",
+					error_addons.size());
+			for(std::vector<std::string>::const_iterator i = error_addons.begin(); i != error_addons.end(); ++i) {
+				msg << "\n" << *i;
 			}
+
+			msg << '\n' << _("ERROR DETAILS:") << '\n' << user_error_log.str();
+
+			gui2::show_error_message(disp().video(),msg.str());
 		}
 
 		// Extract the Lua scripts at toplevel.
