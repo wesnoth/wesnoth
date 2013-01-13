@@ -372,6 +372,8 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 	max_movement_ = std::max(0, cfg["max_moves"].to_int(max_movement_));
 	max_experience_ = std::max(1, cfg["max_experience"].to_int(max_experience_));
 
+	vision_ = cfg["vision"].to_int(vision_);
+
 	std::vector<std::string> temp_advances = utils::split(cfg["advances_to"]);
 	if(temp_advances.size() == 1 && temp_advances.front() == "null") {
 		advances_to_.clear();
