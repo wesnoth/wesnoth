@@ -106,18 +106,20 @@ return {
             for i,u in ipairs(all_units) do
                 -- Potential healees are units with MP that don't already have a healer (also without MP) next to them
                 -- Also, they cannot be on a village or regenerate
-                if (u.moves == 0) and (not wesnoth.match_unit(u, {ability = "regenerates"})) then
-                    local is_village = wesnoth.get_terrain_info(wesnoth.get_terrain(u.x, u.y)).village
-                    if (not is_village) then
-                        local healee = true
-                        for j,h in ipairs(healers_noMP) do
-                            if (H.distance_between(u.x, u.y, h.x, h.y) == 1) then
-                                --print('Already next to healer:', u.x, u.y, h.x, h.y)
-                                healee = false
-                                break
+                if (u.moves == 0) then
+                    if (not wesnoth.match_unit(u, {ability = "regenerates"})) then
+                        local is_village = wesnoth.get_terrain_info(wesnoth.get_terrain(u.x, u.y)).village
+                        if (not is_village) then
+                            local healee = true
+                            for j,h in ipairs(healers_noMP) do
+                                if (H.distance_between(u.x, u.y, h.x, h.y) == 1) then
+                                    --print('Already next to healer:', u.x, u.y, h.x, h.y)
+                                    healee = false
+                                    break
+                                end
                             end
+                            if healee then table.insert(healees, u) end
                         end
-                        if healee then table.insert(healees, u) end
                     end
                 else
                     table.insert(units_MP,u)
