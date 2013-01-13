@@ -543,6 +543,25 @@ REPORT_GENERATOR(selected_unit_defense)
 	return unit_defense(u, selected_hex);
 }
 
+static config unit_vision(const unit* u)
+{
+	if (!u) return report();
+	std::ostringstream str;
+	if (u->vision() != u->total_movement()) {
+		str << _("vision: ") << u->vision(); }
+	return text_report(str.str());
+}
+REPORT_GENERATOR(unit_vision)
+{
+	const unit* u = get_visible_unit();
+	return unit_vision(u);
+}
+REPORT_GENERATOR(selected_unit_vision)
+{
+	const unit* u = get_selected_unit();
+	return unit_vision(u);
+}
+
 static config unit_moves(const unit* u)
 {
 	if (!u) return report();
