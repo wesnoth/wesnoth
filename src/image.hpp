@@ -21,6 +21,9 @@
 #include "terrain_translation.hpp"
 #include "game_config.hpp"
 
+#include <boost/unordered_map.hpp>
+
+
 ///this module manages the cache of images. With an image name, you can get
 ///the surface corresponding to that image.
 //
@@ -63,19 +66,13 @@ namespace image {
 
 	public:
 
-		/**
-		 * @todo replace this with std::unordered_map<value, int> or boost::unordered_map<value, int>
-		 *       boost::unordered_map can almost just be dropped in as boost::hash<T>(T val) will return hash_value(val), but it
-		 *       requires boost 1.35 (preferably 1.36 or later)
-		 *
-		 **/
-		typedef std::map<size_t, std::map<value, int> > locator_finder_t;
+		typedef boost::unordered_map<value, int> locator_finder_t;
 
 		// Constructing locators is somewhat slow, accessing image
 		// through locators is fast. The idea is that calling functions
 		// should store locators, and not strings to construct locators
 		// (the second will work, of course, but will be slower)
-	        locator();
+		locator();
 		locator(const locator &a, const std::string &mods ="");
 		locator(const char *filename);
 		locator(const std::string& filename);

@@ -192,12 +192,11 @@ void flush_cache()
 
 void locator::init_index()
 {
-	std::map<value, int>& finder = locator_finder[hash_value(val_)];
-	std::map<value, int>::iterator i = finder.find(val_);
+	locator_finder_t::iterator i = locator_finder.find(val_);
 
-	if(i == finder.end()) {
+	if ( i == locator_finder.end() ) {
 		index_ = last_index_++;
-		finder.insert(std::make_pair(val_, index_));
+		locator_finder.insert(std::make_pair(val_, index_));
 	} else {
 		index_ = i->second;
 	}
