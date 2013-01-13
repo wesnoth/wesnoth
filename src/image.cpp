@@ -367,7 +367,7 @@ size_t hash_value(const locator::value& val) {
 	return hash;
 }
 
-// Check if localized file is uptodate according to l10n track index.
+// Check if localized file is up-to-date according to l10n track index.
 // Make sure only that the image is not explicitly recorded as fuzzy,
 // in order to be able to use non-tracked images (e.g. from UMC).
 static std::set<std::string> fuzzy_localized_files;
