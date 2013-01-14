@@ -1009,7 +1009,7 @@ const unit_type& unit_type::get_variation(const std::string& name) const
 	}
 }
 
-const t_string unit_type::unit_description() const
+t_string unit_type::unit_description() const
 {
 	if(description_.empty()) {
 		return (_("No description available."));
