@@ -1394,7 +1394,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 
 		if (id == this_id) {
 		}
-		else if (std::find(id.begin(), id.end(), ',') == id.end()){
+		else if ( id.find(',') == std::string::npos ){
 			return false;
 		}
 		else {
@@ -1460,9 +1460,8 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 		// This is because doing the full CSV split is expensive.
 		if ( type_ids == this_type ) {
 			// pass
-		} else if ( std::find(type_ids.begin(), type_ids.end(),',') != type_ids.end() &&
-		   std::search(type_ids.begin(), type_ids.end(), this_type.begin(),
-					   this_type.end()) != type_ids.end()) {
+		} else if ( type_ids.find(',') != std::string::npos  &&
+		            type_ids.find(this_type) != std::string::npos ) {
 			const std::vector<std::string>& vals = utils::split(type_ids);
 
 			if(std::find(vals.begin(),vals.end(),this_type) == vals.end()) {
@@ -1479,7 +1478,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 		std::string ability = cfg_ability;
 		if(has_ability_by_id(ability)) {
 			// pass
-		} else if(std::find(ability.begin(),ability.end(),',') != ability.end()) {
+		} else if ( ability.find(',') != std::string::npos ) {
 			const std::vector<std::string>& vals = utils::split(ability);
 			bool has_ability = false;
 			for(std::vector<std::string>::const_iterator this_ability = vals.begin(); this_ability != vals.end(); ++this_ability) {
@@ -1516,7 +1515,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 	config::attribute_value cfg_side = cfg["side"];
 	if (!cfg_side.blank() && cfg_side.to_int() != side()) {
 		std::string side = cfg_side;
-		if (std::find(side.begin(), side.end(), ',') == side.end()) {
+		if ( side.find(',') == std::string::npos ) {
 			return false;
 		}
 		std::vector<std::string> vals = utils::split(side);
@@ -2315,9 +2314,8 @@ bool unit::resistance_filter_matches(const config& cfg, bool attacker, const std
 	const std::string& apply_to = cfg["apply_to"];
 	if(!apply_to.empty()) {
 		if(damage_name != apply_to) {
-			if(std::find(apply_to.begin(),apply_to.end(),',') != apply_to.end() &&
-				std::search(apply_to.begin(),apply_to.end(),
-				damage_name.begin(),damage_name.end()) != apply_to.end()) {
+			if ( apply_to.find(',') != std::string::npos  &&
+			     apply_to.find(damage_name) != std::string::npos ) {
 				const std::vector<std::string>& vals = utils::split(apply_to);
 				if(std::find(vals.begin(),vals.end(),damage_name) == vals.end()) {
 					return false;
