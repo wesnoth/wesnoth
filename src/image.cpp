@@ -155,8 +155,6 @@ int cached_zoom = 0;
 
 namespace image {
 
-std::list<int> dummy_list;
-
 mini_terrain_cache_map mini_terrain_cache;
 mini_terrain_cache_map mini_fogged_terrain_cache;
 
