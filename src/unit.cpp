@@ -100,12 +100,12 @@ static unit_race::GENDER generate_gender(const config &cfg, game_state *state)
 	const std::string& gender = cfg["gender"];
 	if(!gender.empty())
 		return string_gender(gender);
-	const std::string &type = cfg["type"];
-	if (type.empty())
+	const std::string &type_id = cfg["type"];
+	if (type_id.empty())
 		return unit_race::MALE;
 
 	bool random_gender = cfg["random_gender"].to_bool();
-	return generate_gender(get_unit_type(type), random_gender, state);
+	return generate_gender(get_unit_type(type_id), random_gender, state);
 }
 
 // Copy constructor
@@ -113,7 +113,7 @@ unit::unit(const unit& o):
            cfg_(o.cfg_),
            loc_(o.loc_),
            advances_to_(o.advances_to_),
-           type_(o.type_),
+           type_id_(o.type_id_),
            race_(o.race_),
            id_(o.id_),
            name_(o.name_),
@@ -204,7 +204,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 	cfg_(),
 	loc_(cfg["x"] - 1, cfg["y"] - 1),
 	advances_to_(),
-	type_(cfg["type"]),
+	type_id_(cfg["type"]),
 	race_(&unit_race::null_race),
 	id_(cfg["id"]),
 	name_(cfg["name"].t_str()),
@@ -275,7 +275,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 	modifications_(),
 	invisibility_cache_()
 {
-	if (type_.empty()) {
+	if (type_id_.empty()) {
 		throw game::game_error("creating unit with an empty type field");
 	}
 
@@ -586,7 +586,7 @@ unit::unit(const unit_type *t, int side, bool real_unit,
 	cfg_(),
 	loc_(),
 	advances_to_(),
-	type_(),
+	type_id_(),
 	race_(&unit_race::null_race),
 	id_(),
 	name_(),
@@ -897,7 +897,7 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 	advances_to_ = t->advances_to();
 
 	race_ = t->race();
-	type_ = t->id();
+	type_id_ = t->id();
 	type_name_ = t->type_name();
 	cfg_["description"] = t->unit_description();
 	undead_variation_ = t->undead_variation();
@@ -948,7 +948,7 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 		hit_points_ = max_hit_points_;
 
 	// In case the unit carries EventWML, apply it now
-	game_events::add_events(cfg_.child_range("event"), type_);
+	game_events::add_events(cfg_.child_range("event"), type_id_);
 	cfg_.clear_children("event");
 
 	refreshing_ = false;
@@ -964,8 +964,8 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
  */
 const unit_type* unit::type() const
 {
-	if (type_.empty()) return NULL;
-	const unit_type &i = get_unit_type(type_);
+	if (type_id_.empty()) return NULL;
+	const unit_type &i = get_unit_type(type_id_);
 	return &i.get_gender_unit_type(gender_).get_variation(variation_);
 }
 
@@ -1083,14 +1083,14 @@ void unit::set_recruits(const std::vector<std::string>& recruits)
 const std::vector<std::string> unit::advances_to_translated() const
 {
 	std::vector<std::string> result;
-	BOOST_FOREACH(std::string type_id, advances_to_)
+	BOOST_FOREACH(std::string adv_type_id, advances_to_)
 	{
-		const unit_type *type = unit_types.find(type_id);
+		const unit_type *type = unit_types.find(adv_type_id);
 		if (type)
 			result.push_back(type->type_name());
 		else
 			WRN_UT << "unknown unit in advances_to list of type "
-			<< type_ << ": " << type_id << "\n";
+			<< type_id_ << ": " << adv_type_id << "\n";
 	}
 	return result;
 }
@@ -1158,7 +1158,7 @@ void unit::expire_modifications(const std::string & duration)
 			if ( mod_duration_match(mod["duration"], duration) ) {
 				// If removing this mod means reverting the unit's type:
 				if ( const config::attribute_value *v = mod.get("prev_type") ) {
-					type_ = v->str();
+					type_id_ = v->str();
 				}
 				modifications_.remove_child(mod_name, j);
 				rebuild_from_type = true;
@@ -1452,18 +1452,18 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 	config::attribute_value cfg_type = cfg["type"];
 	if (!cfg_type.blank())
 	{
-		std::string type = cfg_type;
+		std::string type_ids = cfg_type.str();
 		const std::string& this_type = type_id();
 
 		// We only do the full CSV search if we find a comma in there,
 		// and if the subsequence is found within the main sequence.
 		// This is because doing the full CSV split is expensive.
-		if(type == this_type) {
+		if ( type_ids == this_type ) {
 			// pass
-		} else if(std::find(type.begin(),type.end(),',') != type.end() &&
-		   std::search(type.begin(),type.end(),this_type.begin(),
-					   this_type.end()) != type.end()) {
-			const std::vector<std::string>& vals = utils::split(type);
+		} else if ( std::find(type_ids.begin(), type_ids.end(),',') != type_ids.end() &&
+		   std::search(type_ids.begin(), type_ids.end(), this_type.begin(),
+					   this_type.end()) != type_ids.end()) {
+			const std::vector<std::string>& vals = utils::split(type_ids);
 
 			if(std::find(vals.begin(),vals.end(),this_type) == vals.end()) {
 				return false;
@@ -2463,10 +2463,10 @@ std::vector<config> unit::get_modification_advances() const
 	return res;
 }
 
-size_t unit::modification_count(const std::string& type, const std::string& id) const
+size_t unit::modification_count(const std::string& mod_type, const std::string& id) const
 {
 	size_t res = 0;
-	BOOST_FOREACH(const config &item, modifications_.child_range(type)) {
+	BOOST_FOREACH(const config &item, modifications_.child_range(mod_type)) {
 		if (item["id"] == id) {
 			++res;
 		}
@@ -2485,10 +2485,10 @@ static void mod_mdr_merge(config& dst, const config& mod, bool delta, int minimu
 	}
 }
 
-void unit::add_modification(const std::string& type, const config& mod, bool no_add)
+void unit::add_modification(const std::string& mod_type, const config& mod, bool no_add)
 {
 	//some trait activate specific flags
-	if(type == "trait") {
+	if ( mod_type == "trait" ) {
 		const std::string& id = mod["id"];
 		is_fearless_ = is_fearless_ || id == "fearless";
 		is_healthy_ = is_healthy_ || id == "healthy";
@@ -2496,7 +2496,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 
 	config *new_child = NULL;
 	if(no_add == false) {
-		new_child = &modifications_.add_child(type,mod);
+		new_child = &modifications_.add_child(mod_type, mod);
 	}
 	bool set_poisoned = false; // Tracks if the poisoned state was set after the type or variation was changed.
 	config last_effect;
@@ -2861,16 +2861,16 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 	if (!last_effect.empty() && no_add == false) {
 		if ((last_effect)["apply_to"] == "variation") {
 			variation_ = last_effect["name"].str();
-			advance_to(this->type());
+			advance_to(type());
 		} else if ((last_effect)["apply_to"] == "type") {
 			config::attribute_value &prev_type = (*new_child)["prev_type"];
 			if (prev_type.blank()) prev_type = type_id();
-			const std::string& type_id = last_effect["name"];
-			const unit_type* type = unit_types.find(type_id);
-			if(type) {
+			const std::string& new_type_id = last_effect["name"];
+			const unit_type* new_type = unit_types.find(new_type_id);
+			if ( new_type ) {
 				const bool heal_full = last_effect["heal_full"].to_bool(false);
-				advance_to(type);
-				preferences::encountered_units().insert(type_id);
+				advance_to(new_type);
+				preferences::encountered_units().insert(new_type_id);
 				if( heal_full ) {
 					heal_all();
 				}
@@ -2903,7 +2903,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 	}
 
 	// store trait info
-	if(type == "trait") {
+	if ( mod_type == "trait" ) {
 		add_trait_description(mod, description);
 	}
 
@@ -3044,7 +3044,7 @@ void unit::set_underlying_id() {
 	}
 	if (id_.empty()) {
 		std::stringstream ss;
-		ss << (type_.empty()?"Unit":type_) << "-" << underlying_id_;
+		ss << (type_id_.empty()?"Unit":type_id_) << "-" << underlying_id_;
 		id_ = ss.str();
 	}
 }
@@ -3388,11 +3388,11 @@ std::string get_checksum(const unit& u) {
 	}
 	const std::string attack_keys[] =
 		{ "name",
-	        "type",
-        	"range",
-	        "damage",
-        	"number",
-		""};
+		  "type",
+		  "range",
+		  "damage",
+		  "number",
+		  ""};
 
 	BOOST_FOREACH(const config &att, unit_config.child_range("attack"))
 	{

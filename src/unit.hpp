@@ -102,7 +102,7 @@ public:
 	void set_advances_to(const std::vector<std::string>& advances_to);
 
 	/** The type id of the unit */
-	const std::string& type_id() const { return type_; }
+	const std::string& type_id() const { return type_id_; }
 	/** The type of the unit, accounting for gender and variation. */
 	const unit_type* type() const;
 
@@ -411,7 +411,7 @@ private:
 	map_location loc_;
 
 	std::vector<std::string> advances_to_;
-	std::string type_;
+	std::string type_id_;
 	const unit_race* race_;	/// Never NULL, but may point to the null race.
 	std::string id_;
 	t_string name_;
