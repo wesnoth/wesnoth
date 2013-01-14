@@ -600,16 +600,6 @@ int defense_modifier_internal(defense_cache &defense_mods,
 }
 
 
-#ifdef _MSC_VER
-#pragma warning(push)
-//silence "elements of array will be default initialized" warnings
-#pragma warning(disable:4351)
-#endif
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
-
 unit_type::unit_type(const unit_type& o) :
 	cfg_(o.cfg_),
 	id_(o.id_),
