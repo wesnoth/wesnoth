@@ -81,9 +81,8 @@ static const unit_type &get_unit_type(const std::string &type_id)
 	return *i;
 }
 
-static unit_race::GENDER generate_gender(const std::string &type_id, bool random_gender, game_state *state)
+static unit_race::GENDER generate_gender(const unit_type & type, bool random_gender, game_state *state)
 {
-	const unit_type &type = get_unit_type(type_id);
 	const std::vector<unit_race::GENDER>& genders = type.genders();
 
 	if ( random_gender == false  ||  genders.size() == 1 ) {
@@ -106,7 +105,7 @@ static unit_race::GENDER generate_gender(const config &cfg, game_state *state)
 		return unit_race::MALE;
 
 	bool random_gender = cfg["random_gender"].to_bool();
-	return generate_gender(type, random_gender, state);
+	return generate_gender(get_unit_type(type), random_gender, state);
 }
 
 // Copy constructor
@@ -608,7 +607,7 @@ unit::unit(const unit_type *t, int side, bool real_unit,
 	unrenamable_(false),
 	side_(side),
 	gender_(gender != unit_race::NUM_GENDERS ?
-		gender : generate_gender(t->id(), real_unit, NULL)),
+		gender : generate_gender(*t, real_unit, NULL)),
 	alpha_(),
 	unit_formula_(),
 	unit_loop_formula_(),
