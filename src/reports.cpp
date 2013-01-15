@@ -33,6 +33,7 @@
 #include "text.hpp"
 #include "tod_manager.hpp"
 #include "unit.hpp"
+#include "unit_helper.hpp"
 #include "whiteboard/manager.hpp"
 
 #include <boost/foreach.hpp>
@@ -417,10 +418,16 @@ static config unit_hp(const unit* u)
 		// Some units have different resistances when attacking or defending.
 		int res_att = 100 - u->resistance_against(resist.first, true, displayed_unit_hex);
 		int res_def = 100 - u->resistance_against(resist.first, false, displayed_unit_hex);
+		const std::string def_color = unit_helper::resistance_color(res_def);
 		if (res_att == res_def) {
-			line << utils::signed_percent(res_def) << "\n";
+			line << "<span foreground=\"" << def_color << "\">" << utils::signed_percent(res_def)
+			<< "</span>\n";
 		} else {
-			line << utils::signed_percent(res_att) << " / " << utils::signed_percent(res_def) << '\n';
+			const std::string att_color = unit_helper::resistance_color(res_att);
+			line << "<span foreground=\"" << att_color << "\">" << utils::signed_percent(res_att)
+			<< "</span>/"
+			<< "<span foreground=\"" << def_color << "\">" << utils::signed_percent(res_def)
+			<< "</span>\n";
 			att_def_diff = true;
 		}
 		resistances_table.insert(line.str());
