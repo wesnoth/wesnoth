@@ -36,6 +36,7 @@
 #include "marked-up_text.hpp"
 #include "sound.hpp"
 #include "unit.hpp"
+#include "unit_helper.hpp"
 #include "wml_separators.hpp"
 #include "serialization/parser.hpp"
 
@@ -1584,16 +1585,7 @@ public:
 			const size_t pos = resist.find('-');
 			if (pos != std::string::npos)
 				resist.replace(pos, 1, utils::unicode_minus);
-			std::string color;
-			if (resistance < 0)
-				color = "red";
-			else if (resistance <= 20)
-				color = "yellow";
-			else if (resistance <= 40)
-				color = "white";
-			else
-				color = "green";
-
+			std::string color = unit_helper::resistance_color(resistance);
 			std::string lang_weapon = string_table["type_" + dam_it->first];
 			push_tab_pair(row, lang_weapon);
 			std::stringstream str;
