@@ -34,4 +34,18 @@ bool will_certainly_advance(const unit_map::iterator &u)
 	return u.valid() && u->advances() && number_of_possible_advances(*u) > 0;
 }
 
+std::string resistance_color(const int resistance)
+{
+	if (resistance < 0)
+		return std::string("red");
+
+	if (resistance <= 20)
+		return std::string("yellow");
+
+	if (resistance <= 40)
+		return std::string("white");
+
+	return std::string("green");
+}
+
 }

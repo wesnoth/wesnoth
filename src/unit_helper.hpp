@@ -36,6 +36,12 @@ bool will_certainly_advance(const unit_map::iterator &u);
  */
 int number_of_possible_advances(const unit &unit);
 
+/**
+ * @return the name of the color encoding the weight of the unit's
+ * resistance value for presenting it to the player.
+ */
+std::string resistance_color(const int resistance);
+
 }
 
 #endif
