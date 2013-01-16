@@ -768,6 +768,8 @@ private:
 
 		const unit_type* att_type = unit_types.find(att);
 		const unit_type* def_type = unit_types.find(def);
+		if ( att_type == NULL  ||  def_type == NULL )
+			return variant();
 
 		unit attacker(att_type, 3, false);
 		unit defender(def_type, 2, false);
@@ -775,7 +777,6 @@ private:
 
 		temporary_unit_placer att_place(*resources::units, att_loc, attacker);
 		temporary_unit_placer def_place(*resources::units, def_loc, defender);
-
 
 
 		std::pair<double, std::vector<variant> > score = get_battle_score(attacker, defender, att_loc, def_loc);
