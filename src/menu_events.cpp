@@ -1266,7 +1266,7 @@ void menu_handler::create_unit_2(mouse_handler& mousehandler)
 		gender = ut.genders().front();
 	}
 
-	unit chosen(&ut, 1, true, gender);
+	unit chosen(ut, 1, true, gender);
 	chosen.new_turn();
 
 	const map_location& loc = mousehandler.get_last_hex();
@@ -1351,9 +1351,9 @@ void menu_handler::create_unit(mouse_handler& mousehandler)
 		last_selection = choice;
 		random_gender  = random_gender_choice;
 
-		const unit_type* type = unit_choices[choice];
+		const unit_type& type = *unit_choices[choice];
 		const unit_race::GENDER gender = random_gender ? unit_race::NUM_GENDERS :
-		                                                 type->genders().front();
+		                                                 type.genders().front();
 
 		unit chosen(type, 1, true, gender);
 		chosen.new_turn();
@@ -3376,7 +3376,7 @@ void console_handler::do_create() {
 
 		menu_handler_.units_.erase(loc);
 
-		unit created(ut, 1, true);
+		unit created(*ut, 1, true);
 		created.new_turn();
 
 		menu_handler_.units_.add(loc, created);

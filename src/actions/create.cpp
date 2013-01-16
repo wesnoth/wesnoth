@@ -820,7 +820,7 @@ namespace actions {
 void recruit_unit(const unit_type & u_type, int side_num, const map_location & loc,
                   const map_location & from, bool show, bool is_ai)
 {
-	const unit new_unit(&u_type, side_num, true);
+	const unit new_unit(u_type, side_num, true);
 
 	// Place the recruit.
 	bool mutated = place_recruit(new_unit, loc, from, u_type.cost(), false, show);

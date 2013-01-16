@@ -1002,7 +1002,7 @@ namespace {
 			if (reanimator)
 			{
 				LOG_NG << "found unit type:" << reanimator->id() << '\n';
-				unit newunit(reanimator, attacker.get_unit().side(),
+				unit newunit(*reanimator, attacker.get_unit().side(),
 					true, unit_race::MALE);
 				newunit.set_attacks(0);
 				newunit.set_movement(0, true);

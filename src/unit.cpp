@@ -577,12 +577,12 @@ void unit::clear_status_caches()
 	units_with_cache.clear();
 }
 
-unit::unit(const unit_type *t, int side, bool real_unit,
+unit::unit(const unit_type &u_type, int side, bool real_unit,
 	unit_race::GENDER gender) :
 	cfg_(),
 	loc_(),
 	advances_to_(),
-	type_(t),
+	type_(&u_type),
 	type_name_(),
 	race_(&unit_race::null_race),
 	id_(),
@@ -603,7 +603,7 @@ unit::unit(const unit_type *t, int side, bool real_unit,
 	unrenamable_(false),
 	side_(side),
 	gender_(gender != unit_race::NUM_GENDERS ?
-		gender : generate_gender(*t, real_unit, NULL)),
+		gender : generate_gender(u_type, real_unit, NULL)),
 	alpha_(),
 	unit_formula_(),
 	unit_loop_formula_(),
@@ -657,7 +657,7 @@ unit::unit(const unit_type *t, int side, bool real_unit,
 	cfg_["upkeep"]="full";
 
 	// Apply the unit type's data to this unit.
-	advance_to(*t, real_unit);
+	advance_to(u_type, real_unit);
 
 	if(real_unit) {
 		generate_name();

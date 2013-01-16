@@ -771,8 +771,8 @@ private:
 		if ( att_type == NULL  ||  def_type == NULL )
 			return variant();
 
-		unit attacker(att_type, 3, false);
-		unit defender(def_type, 2, false);
+		unit attacker(*att_type, 3, false);
+		unit defender(*def_type, 2, false);
 
 
 		temporary_unit_placer att_place(*resources::units, att_loc, attacker);

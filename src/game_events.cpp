@@ -1182,7 +1182,7 @@ game_display::fake_unit *create_fake_unit(const vconfig& cfg)
 	unit_race::GENDER gender = string_gender(cfg["gender"]);
 	const unit_type *ut = unit_types.find(type);
 	if (!ut) return NULL;
-	game_display::fake_unit * fake_unit = new game_display::fake_unit(ut, side_num, gender);
+	game_display::fake_unit * fake_unit = new game_display::fake_unit(*ut, side_num, gender);
 
 	if(!variation.empty()) {
 		config mod;

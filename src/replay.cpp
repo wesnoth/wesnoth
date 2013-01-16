@@ -1016,7 +1016,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				replay::process_error(errbuf.str());
 				// Keep the bookkeeping right.
 				current_team.spend_gold(u_type->cost());
-				statistics::recruit_unit(unit(u_type, side_num, true));
+				statistics::recruit_unit(unit(*u_type, side_num, true));
 			}
 
 			if ( u_type->cost() > beginning_gold ) {

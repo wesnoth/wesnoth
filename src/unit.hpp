@@ -87,7 +87,7 @@ public:
 	  * only real_unit may have random traits, name and gender
 	  * (to prevent OOS caused by RNG calls)
 	  */
-	unit(const unit_type* t, int side, bool real_unit,
+	unit(const unit_type& t, int side, bool real_unit,
 		unit_race::GENDER gender = unit_race::NUM_GENDERS);
 	virtual ~unit();
 	virtual unit& operator=(const unit&);

@@ -171,7 +171,7 @@ public:
 	public:
 		explicit fake_unit(unit const & u) : unit(u), my_display_(NULL) {}
 		fake_unit(fake_unit const & u) : unit(u), my_display_(NULL) {}
-		fake_unit(const unit_type* t, int side, unit_race::GENDER gender = unit_race::NUM_GENDERS)
+		fake_unit(const unit_type& t, int side, unit_race::GENDER gender = unit_race::NUM_GENDERS)
 			: unit(t, side, false, gender)
 			, my_display_(NULL)
 		{}
