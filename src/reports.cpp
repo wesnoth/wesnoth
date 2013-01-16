@@ -572,7 +572,7 @@ REPORT_GENERATOR(selected_unit_vision)
 static config unit_moves(const unit* u)
 {
 	if (!u) return report();
-	std::ostringstream str;
+	std::ostringstream str, tooltip;
 	double movement_frac = 1.0;
 	if (u->side() == resources::screen->playing_side()) {
 		movement_frac = double(u->movement_left()) / std::max<int>(1, u->total_movement());
@@ -580,10 +580,51 @@ static config unit_moves(const unit* u)
 			movement_frac = 1.0;
 	}
 
+	std::set<t_translation::t_terrain>::const_iterator terrain_it =
+				preferences::encountered_terrains().begin();
+
+	tooltip << "Movement Costs:\n";
+	for (; terrain_it != preferences::encountered_terrains().end();
+			++terrain_it) {
+		const t_translation::t_terrain terrain = *terrain_it;
+		if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || terrain == t_translation::OFF_MAP_USER)
+			continue;
+
+		const terrain_type& info = resources::game_map->get_terrain_info(terrain);
+
+		if (info.union_type().size() == 1 && info.union_type()[0] == info.number() && info.is_nonnull()) {
+
+			const std::string& name = info.name();
+			const std::string id = info.id();
+			const int moves = u->movement_cost(terrain);
+
+			tooltip << name << ": ";
+
+			std::string color;
+			//movement  -  range: 1 .. 5, unit_movement_type::UNREACHABLE=impassable
+			const bool cannot_move = moves > u->total_movement();
+			if (cannot_move)		// cannot move in this terrain
+				color = "red";
+			else if (moves > 1)
+				color = "yellow";
+			else
+				color = "white";
+			tooltip << "<span foreground=\"" << color << "\">";
+			// A 5 MP margin; if the movement costs go above
+			// the unit's max moves + 5, we replace it with dashes.
+			if(cannot_move && (moves > u->total_movement() + 5)) {
+				tooltip << utils::unicode_figure_dash;
+			} else {
+				tooltip << moves;
+			}
+			tooltip << "</span>\n";
+		}
+	}
+
 	int grey = 128 + int((255 - 128) * movement_frac);
 	SDL_Color c = create_color(grey, grey, grey);
 	str << span_color(c) << u->movement_left() << '/' << u->total_movement() << naps;
-	return text_report(str.str());
+	return text_report(str.str(), tooltip.str());
 }
 REPORT_GENERATOR(unit_moves)
 {
