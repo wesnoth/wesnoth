@@ -1031,12 +1031,7 @@ void unit_types_preview_pane::process_event()
 
 void show_unit_description(const unit &u)
 {
-	const unit_type* t = u.type();
-	if (t != NULL)
-		show_unit_description(*t);
-	else
-		// can't find type, try open the id page to have feedback and unit error page
-	  help::show_unit_help(*resources::screen, u.type_id());
+	show_unit_description(u.type());
 }
 
 void show_unit_description(const unit_type &t)

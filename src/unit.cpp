@@ -745,13 +745,13 @@ void unit::generate_name(rand_rng::simple_rng* rng)
 void unit::generate_traits(bool musthaveonly)
 {
 	LOG_UT << "Generating a trait for unit type " << type_id() << " with musthaveonly " << musthaveonly << "\n";
-	const unit_type *u_type = type();
+	const unit_type &u_type = type();
 
 	// Calculate the unit's traits
 	config::const_child_itors current_traits = modifications_.child_range("trait");
 	std::vector<config> candidate_traits;
 
-	BOOST_FOREACH(const config &t, u_type->possible_traits())
+	BOOST_FOREACH(const config &t, u_type.possible_traits())
 	{
 		// Skip the trait if the unit already has it.
 		const std::string &tid = t["id"];
@@ -785,7 +785,7 @@ void unit::generate_traits(bool musthaveonly)
 	// Now randomly fill out to the number of traits required or until
 	// there aren't any more traits.
 	int nb_traits = std::distance(current_traits.first, current_traits.second);
-	int max_traits = u_type->num_traits();
+	int max_traits = u_type.num_traits();
 	for (; nb_traits < max_traits && !candidate_traits.empty(); ++nb_traits)
 	{
 		int num = (resources::gamedata ? resources::gamedata->rng().get_next_random() : get_random_nocheck())
@@ -866,15 +866,15 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 	}
 
 	// If unit has specific profile, remember it and keep it after advancing
-	const unit_type *u_type = type();
+	const unit_type &old_type = type();
 	std::string profile = old_cfg["profile"].str();
-	if (!profile.empty() && (!u_type || profile != u_type->big_profile())) {
+	if ( !profile.empty()  &&  profile != old_type.big_profile() ) {
 		new_cfg["profile"] = profile;
 	} else if (t) {
 		new_cfg["profile"] = t->big_profile();
 	}
 	profile = old_cfg["small_profile"].str();
-	if (!profile.empty() && (!u_type || profile != u_type->small_profile())) {
+	if ( !profile.empty()  &&  profile != old_type.small_profile() ) {
 		new_cfg["small_profile"] = profile;
 	} else if (t) {
 		new_cfg["small_profile"] = t->small_profile();
@@ -1139,7 +1139,7 @@ void unit::expire_modifications(const std::string & duration)
 				}
 				// Else, if we have not already specified a type to build from:
 				else if ( rebuild_from == NULL )
-					rebuild_from = type();
+					rebuild_from = &type();
 
 				modifications_.remove_child(mod_name, j);
 			}
@@ -1692,7 +1692,7 @@ void unit::write(config& cfg) const
 {
 	cfg.append(cfg_);
 
-	if ( cfg["description"] == type()->unit_description() ) {
+	if ( cfg["description"] == type().unit_description() ) {
 		cfg.remove_attribute("description");
 	}
 
@@ -2836,7 +2836,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 	if (!last_effect.empty() && no_add == false) {
 		if ((last_effect)["apply_to"] == "variation") {
 			variation_ = last_effect["name"].str();
-			advance_to(type());
+			advance_to(&type());
 		} else if ((last_effect)["apply_to"] == "type") {
 			config::attribute_value &prev_type = (*new_child)["prev_type"];
 			if (prev_type.blank()) prev_type = type_id();
@@ -3291,7 +3291,7 @@ const std::string& unit::effect_image_mods() const{
 const tportrait* unit::portrait(
 		const unsigned size, const tportrait::tside side) const
 {
-	BOOST_FOREACH(const tportrait& portrait, (type()->portraits())) {
+	BOOST_FOREACH(const tportrait& portrait, type().portraits() ) {
 		if(portrait.size == size
 				&& (side ==  portrait.side || portrait.side == tportrait::BOTH)) {
 

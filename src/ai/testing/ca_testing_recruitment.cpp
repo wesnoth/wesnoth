@@ -556,7 +556,7 @@ static void get_recruit_qualities(std::vector<potential_recruit> &recruit_list, 
    unit_map enemies;
    BOOST_FOREACH(unit &un, *resources::units){
 	   if(t.is_enemy(un.side()) && !un.can_recruit()){
-		   enemies[un.type()].push_back(
+		   enemies[&un.type()].push_back(
 			  static_cast<double>(un.hitpoints())
 			/ static_cast<double>(un.max_hitpoints()));
 	   }

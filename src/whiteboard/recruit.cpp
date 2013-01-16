@@ -90,7 +90,7 @@ void recruit::init()
 	fake_unit_->set_ghosted(false);
 	fake_unit_->place_on_game_display(resources::screen);
 
-	cost_ = fake_unit_->type()->cost();
+	cost_ = fake_unit_->type().cost();
 }
 
 recruit::~recruit()

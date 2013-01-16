@@ -480,11 +480,10 @@ void recruitment_phase::analyze_potential_recruit_combat()
 			}
 
 			unit const &un = *j;
-			const unit_type *enemy_info = un.type();
 
 			int weight = un.cost() * un.hitpoints() / un.max_hitpoints();
 			weighting += weight;
-			score += compare_unit_types(*info, *enemy_info) * weight;
+			score += compare_unit_types(*info, un.type()) * weight;
 		}
 
 		if(weighting != 0) {

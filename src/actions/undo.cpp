@@ -363,8 +363,7 @@ void undo_list::undo()
 
 		const unit &un = *un_it;
 		statistics::un_recruit_unit(un);
-		assert(un.type());
-		current_team.spend_gold(-un.type()->cost());
+		current_team.spend_gold(-un.type().cost());
 
 		//MP_COUNTDOWN take away recruit bonus
 		if(action.countdown_time_bonus)
@@ -536,7 +535,7 @@ void undo_list::redo()
 		if(msg.empty()) {
 			const unit new_unit = *action.affected_unit;
 			//unit new_unit(action.affected_unit->type(),team_num_,true);
-			place_recruit(new_unit, loc, from, new_unit.type()->cost(), false, true);
+			place_recruit(new_unit, loc, from, new_unit.type().cost(), false, true);
 			statistics::recruit_unit(new_unit);
 			gui.invalidate(loc);
 

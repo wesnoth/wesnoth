@@ -115,12 +115,8 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 		// This cache is only about 99% correct, but speeds up evaluation by about 1000 times.
 		// We recalculate when we actually attack.
 		std::map<std::pair<map_location, const unit_type *>,std::pair<battle_context_unit_stats,battle_context_unit_stats> >::iterator usc;
-		const unit_type *up_type = up->type();
-		if(up_type) {
-			usc = ai_obj.unit_stats_cache().find(std::pair<map_location, const unit_type *>(target, up_type));
-		} else {
-			usc = ai_obj.unit_stats_cache().end();
-		}
+		const unit_type &up_type = up->type();
+		usc = ai_obj.unit_stats_cache().find(std::pair<map_location, const unit_type *>(target, &up_type));
 		// Just check this attack is valid for this attacking unit (may be modified)
 		if (usc != ai_obj.unit_stats_cache().end() &&
 				usc->second.first.attack_num <
@@ -138,9 +134,9 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 		prev_bc = bc;
 		prev_def = &bc->get_defender_combatant(prev_def);
 
-		if (!from_cache && up_type) {
+		if ( !from_cache ) {
 			ai_obj.unit_stats_cache().insert(std::pair<std::pair<map_location, const unit_type *>,std::pair<battle_context_unit_stats,battle_context_unit_stats> >
-											(std::pair<map_location, const unit_type *>(target, up_type),
+											(std::pair<map_location, const unit_type *>(target, &up_type),
 											 std::pair<battle_context_unit_stats,battle_context_unit_stats>(bc->get_attacker_stats(),
 																											  bc->get_defender_stats())));
 		}

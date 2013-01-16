@@ -831,9 +831,8 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
 	if ( !is_ai ) {
 		resources::undo_stack->add_recruit(new_unit, loc, from);
 		// Check for information uncovered or randomness used.
-		assert(new_unit.type());
 		if ( mutated  ||  u_type.genders().size() > 1  ||
-		     new_unit.type()->has_random_traits() ) {
+		     new_unit.type().has_random_traits() ) {
 			resources::undo_stack->clear();
 		}
 	}

@@ -104,8 +104,8 @@ public:
 
 	/** The type id of the unit */
 	const std::string& type_id() const { return type_->id(); }
-	/** The type of the unit, accounting for gender and variation. Never NULL. */
-	const unit_type* type() const { return type_; }
+	/** The type of the unit (accounting for gender and variation). */
+	const unit_type& type() const { return *type_; }
 
 	/** id assigned by wml */
 	const std::string& id() const { if (id_.empty()) return type_name(); else return id_; }
