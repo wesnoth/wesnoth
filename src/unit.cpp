@@ -76,6 +76,9 @@ namespace {
  */
 static const unit_type &get_unit_type(const std::string &type_id)
 {
+	if ( type_id.empty() )
+		throw game::game_error("creating unit with an empty type field");
+
 	const unit_type *i = unit_types.find(type_id);
 	if (!i) throw game::game_error("unknown unit type: " + type_id);
 	return *i;
@@ -113,12 +116,12 @@ unit::unit(const unit& o):
            cfg_(o.cfg_),
            loc_(o.loc_),
            advances_to_(o.advances_to_),
-           type_id_(o.type_id_),
+           type_(o.type_),
+           type_name_(o.type_name_),
            race_(o.race_),
            id_(o.id_),
            name_(o.name_),
            underlying_id_(o.underlying_id_),
-           type_name_(o.type_name_),
            undead_variation_(o.undead_variation_),
            variation_(o.variation_),
 
@@ -204,12 +207,12 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 	cfg_(),
 	loc_(cfg["x"] - 1, cfg["y"] - 1),
 	advances_to_(),
-	type_id_(cfg["type"]),
+	type_(&get_unit_type(cfg["type"])),
+	type_name_(),
 	race_(&unit_race::null_race),
 	id_(cfg["id"]),
 	name_(cfg["name"].t_str()),
 	underlying_id_(0),
-	type_name_(),
 	undead_variation_(),
 	variation_(cfg["variation"]),
 	hit_points_(1),
@@ -275,10 +278,6 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 	modifications_(),
 	invisibility_cache_()
 {
-	if (type_id_.empty()) {
-		throw game::game_error("creating unit with an empty type field");
-	}
-
 	side_ = cfg["side"];
 	if(side_ <= 0) {
 		side_ = 1;
@@ -325,7 +324,9 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 		modifications_ = mods;
 	}
 
-	advance_to(cfg, type(), use_traits);
+	// Apply the unit type's data to this unit.
+	advance_to(cfg, type_, use_traits);
+
 	if (const config::attribute_value *v = cfg.get("race")) {
 		if (const unit_race *r = unit_types.find_race(*v)) {
 			race_ = r;
@@ -568,7 +569,6 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 		if (attr.first == "do_not_list") continue;
 		WRN_UT << "Unknown attribute '" << attr.first << "' discarded.\n";
 	}
-
 }
 
 void unit::clear_status_caches()
@@ -586,12 +586,12 @@ unit::unit(const unit_type *t, int side, bool real_unit,
 	cfg_(),
 	loc_(),
 	advances_to_(),
-	type_id_(),
+	type_(t),
+	type_name_(),
 	race_(&unit_race::null_race),
 	id_(),
 	name_(),
 	underlying_id_(real_unit? 0: n_unit::id_manager::instance().next_fake_id()),
-	type_name_(),
 	undead_variation_(),
 	variation_(),
 	hit_points_(0),
@@ -658,8 +658,9 @@ unit::unit(const unit_type *t, int side, bool real_unit,
 	modifications_(),
 	invisibility_cache_()
 {
-
 	cfg_["upkeep"]="full";
+
+	// Apply the unit type's data to this unit.
 	advance_to(t, real_unit);
 
 	if(real_unit) {
@@ -684,7 +685,6 @@ unit::unit(const unit_type *t, int side, bool real_unit,
 	next_idling_ = 0;
 	frame_begin_time_ = 0;
 	unit_halo_ = halo::NO_HALO;
-
 }
 
 unit::~unit()
@@ -749,9 +749,9 @@ void unit::generate_name(rand_rng::simple_rng* rng)
 void unit::generate_traits(bool musthaveonly)
 {
 	LOG_UT << "Generating a trait for unit type " << type_id() << " with musthaveonly " << musthaveonly << "\n";
-	const unit_type *type = unit_types.find(type_id());
+	const unit_type *u_type = type();
 	// Calculate the unit's traits
-	if (!type) {
+	if ( !u_type ) {
 		std::string error_message = _("Unknown unit type '$type|' while generating traits");
 		utils::string_map symbols;
 		symbols["type"] = type_id();
@@ -763,7 +763,7 @@ void unit::generate_traits(bool musthaveonly)
 	config::const_child_itors current_traits = modifications_.child_range("trait");
 	std::vector<config> candidate_traits;
 
-	BOOST_FOREACH(const config &t, type->possible_traits())
+	BOOST_FOREACH(const config &t, u_type->possible_traits())
 	{
 		// Skip the trait if the unit already has it.
 		const std::string &tid = t["id"];
@@ -797,7 +797,7 @@ void unit::generate_traits(bool musthaveonly)
 	// Now randomly fill out to the number of traits required or until
 	// there aren't any more traits.
 	int nb_traits = std::distance(current_traits.first, current_traits.second);
-	int max_traits = type->num_traits();
+	int max_traits = u_type->num_traits();
 	for (; nb_traits < max_traits && !candidate_traits.empty(); ++nb_traits)
 	{
 		int num = (resources::gamedata ? resources::gamedata->rng().get_next_random() : get_random_nocheck())
@@ -829,10 +829,12 @@ std::vector<std::string> unit::get_traits_list() const
  * Advances this unit to the specified type.
  * Experience is left unchanged.
  * Current hit point total is left unchanged unless it would violate max HP.
+ * Assumes gender_ and variation_ are set to their correct values.
  */
 void unit::advance_to(const config &old_cfg, const unit_type *t,
 	bool use_traits)
 {
+	// Adjust the new type for gender and variation.
 	t = &t->get_gender_unit_type(gender_).get_variation(variation_);
 
 	// Reset the scalar values first
@@ -897,7 +899,7 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 	advances_to_ = t->advances_to();
 
 	race_ = t->race();
-	type_id_ = t->id();
+	type_ = t;
 	type_name_ = t->type_name();
 	cfg_["description"] = t->unit_description();
 	undead_variation_ = t->undead_variation();
@@ -948,25 +950,12 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 		hit_points_ = max_hit_points_;
 
 	// In case the unit carries EventWML, apply it now
-	game_events::add_events(cfg_.child_range("event"), type_id_);
+	game_events::add_events(cfg_.child_range("event"), t->id());
 	cfg_.clear_children("event");
 
 	refreshing_ = false;
 	delete anim_;
 	anim_ = NULL;
-}
-
-/**
- * The type of the unit, accounting for gender and variation.
- * Could throw a game_error exception if the unit's stored type ID does not
- * correspond to a type (but that really should have been triggered when
- * the type ID was set).
- */
-const unit_type* unit::type() const
-{
-	if (type_id_.empty()) return NULL;
-	const unit_type &i = get_unit_type(type_id_);
-	return &i.get_gender_unit_type(gender_).get_variation(variation_);
 }
 
 std::string unit::big_profile() const
@@ -1090,7 +1079,7 @@ const std::vector<std::string> unit::advances_to_translated() const
 			result.push_back(type->type_name());
 		else
 			WRN_UT << "unknown unit in advances_to list of type "
-			<< type_id_ << ": " << adv_type_id << "\n";
+			<< type_id() << ": " << adv_type_id << "\n";
 	}
 	return result;
 }
@@ -1144,7 +1133,7 @@ inline bool mod_duration_match(const std::string & mod_dur,
 void unit::expire_modifications(const std::string & duration)
 {
 	// If any modifications expire, then we will need to rebuild the unit.
-	bool rebuild_from_type = false;
+	const unit_type * rebuild_from = NULL;
 
 	// Loop through all types of modifications.
 	for(unsigned int i = 0; i != NumModificationTypes; ++i) {
@@ -1158,17 +1147,20 @@ void unit::expire_modifications(const std::string & duration)
 			if ( mod_duration_match(mod["duration"], duration) ) {
 				// If removing this mod means reverting the unit's type:
 				if ( const config::attribute_value *v = mod.get("prev_type") ) {
-					type_id_ = v->str();
+					rebuild_from = &get_unit_type(v->str());
 				}
+				// Else, if we have not already specified a type to build from:
+				else if ( rebuild_from == NULL )
+					rebuild_from = type();
+
 				modifications_.remove_child(mod_name, j);
-				rebuild_from_type = true;
 			}
 		}
 	}
 
-	if ( rebuild_from_type ) {
+	if ( rebuild_from != NULL ) {
 		clear_haloes();
-		advance_to(type());
+		advance_to(rebuild_from);
 	}
 }
 
@@ -1711,10 +1703,8 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 void unit::write(config& cfg) const
 {
 	cfg.append(cfg_);
-	const unit_type *ut = unit_types.find(type_id());
-	if (ut) {
-		ut = &ut->get_gender_unit_type(gender_).get_variation(variation_);
-	}
+
+	const unit_type *ut = type();
 	if(ut && cfg["description"] == ut->unit_description()) {
 		cfg.remove_attribute("description");
 	}
@@ -3042,7 +3032,7 @@ void unit::set_underlying_id() {
 	}
 	if (id_.empty()) {
 		std::stringstream ss;
-		ss << (type_id_.empty()?"Unit":type_id_) << "-" << underlying_id_;
+		ss << (type_id().empty() ? "Unit" : type_id()) << "-" << underlying_id_;
 		id_ = ss.str();
 	}
 }
