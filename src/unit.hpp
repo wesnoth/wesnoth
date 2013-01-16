@@ -94,7 +94,7 @@ public:
 
 
 	/** Advances this unit to another type */
-	void advance_to(const unit_type *t, bool use_traits = false)
+	void advance_to(const unit_type &t, bool use_traits = false)
 	{
 		advance_to(cfg_, t, use_traits);
 	}
@@ -387,7 +387,7 @@ public:
 		const unsigned size, const tportrait::tside side) const;
 
 private:
-	void advance_to(const config &old_cfg, const unit_type *t,
+	void advance_to(const config &old_cfg, const unit_type &t,
 		bool use_traits);
 
 	bool internal_matches_filter(const vconfig& cfg,const map_location& loc,

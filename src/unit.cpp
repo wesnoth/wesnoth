@@ -321,7 +321,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 	}
 
 	// Apply the unit type's data to this unit.
-	advance_to(cfg, type_, use_traits);
+	advance_to(cfg, *type_, use_traits);
 
 	if (const config::attribute_value *v = cfg.get("race")) {
 		if (const unit_race *r = unit_types.find_race(*v)) {
@@ -657,7 +657,7 @@ unit::unit(const unit_type *t, int side, bool real_unit,
 	cfg_["upkeep"]="full";
 
 	// Apply the unit type's data to this unit.
-	advance_to(t, real_unit);
+	advance_to(*t, real_unit);
 
 	if(real_unit) {
 		generate_name();
@@ -819,11 +819,13 @@ std::vector<std::string> unit::get_traits_list() const
  * Current hit point total is left unchanged unless it would violate max HP.
  * Assumes gender_ and variation_ are set to their correct values.
  */
-void unit::advance_to(const config &old_cfg, const unit_type *t,
+void unit::advance_to(const config &old_cfg, const unit_type &u_type,
 	bool use_traits)
 {
+	// For reference, the type before this advancement.
+	const unit_type & old_type = type();
 	// Adjust the new type for gender and variation.
-	t = &t->get_gender_unit_type(gender_).get_variation(variation_);
+	const unit_type & new_type = u_type.get_gender_unit_type(gender_).get_variation(variation_);
 
 	// Reset the scalar values first
 	trait_names_.clear();
@@ -849,11 +851,11 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 		}
 	}
 
-	if(t->movement_type().get_parent()) {
-		new_cfg.merge_with(t->movement_type().get_parent()->get_cfg());
+	if ( new_type.movement_type().get_parent() ) {
+		new_cfg.merge_with(new_type.movement_type().get_parent()->get_cfg());
 	}
 
-	new_cfg.merge_with(t->get_cfg());
+	new_cfg.merge_with(new_type.get_cfg());
 
 	// Remove "pure" unit_type attributes (attributes that do not get directly
 	// copied to units; some do get copied, but under different keys).
@@ -866,49 +868,50 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 	}
 
 	// If unit has specific profile, remember it and keep it after advancing
-	const unit_type &old_type = type();
 	std::string profile = old_cfg["profile"].str();
 	if ( !profile.empty()  &&  profile != old_type.big_profile() ) {
 		new_cfg["profile"] = profile;
-	} else if (t) {
-		new_cfg["profile"] = t->big_profile();
+	} else {
+		new_cfg["profile"] = new_type.big_profile();
 	}
 	profile = old_cfg["small_profile"].str();
 	if ( !profile.empty()  &&  profile != old_type.small_profile() ) {
 		new_cfg["small_profile"] = profile;
-	} else if (t) {
-		new_cfg["small_profile"] = t->small_profile();
+	} else {
+		new_cfg["small_profile"] = new_type.small_profile();
 	}
 
 	cfg_.swap(new_cfg);
 	cfg_.clear_children("male");
 	cfg_.clear_children("female");
+	// NOTE: There should be no need to access old_cfg (or new_cfg) after this
+	//       line. Particularly since the swap might have affected old_cfg.
 
-	advances_to_ = t->advances_to();
+	advances_to_ = new_type.advances_to();
 
-	race_ = t->race();
-	type_ = t;
-	type_name_ = t->type_name();
-	cfg_["description"] = t->unit_description();
-	undead_variation_ = t->undead_variation();
-	max_experience_ = t->experience_needed(false);
-	level_ = t->level();
-	alignment_ = t->alignment();
-	alpha_ = t->alpha();
-	max_hit_points_ = t->hitpoints();
-	max_movement_ = t->movement();
-	vision_ = t->vision();
-	jamming_ = t->jamming();
-	emit_zoc_ = t->has_zoc();
-	attacks_ = t->attacks();
-	unit_value_ = t->cost();
-	flying_ = t->movement_type().is_flying();
+	race_ = new_type.race();
+	type_ = &new_type;
+	type_name_ = new_type.type_name();
+	cfg_["description"] = new_type.unit_description();
+	undead_variation_ = new_type.undead_variation();
+	max_experience_ = new_type.experience_needed(false);
+	level_ = new_type.level();
+	alignment_ = new_type.alignment();
+	alpha_ = new_type.alpha();
+	max_hit_points_ = new_type.hitpoints();
+	max_movement_ = new_type.movement();
+	vision_ = new_type.vision();
+	jamming_ = new_type.jamming();
+	emit_zoc_ = new_type.has_zoc();
+	attacks_ = new_type.attacks();
+	unit_value_ = new_type.cost();
+	flying_ = new_type.movement_type().is_flying();
 
-	max_attacks_ = t->max_attacks();
+	max_attacks_ = new_type.max_attacks();
 
-	animations_ = t->animations();
+	animations_ = new_type.animations();
 
-	flag_rgb_ = t->flag_rgb();
+	flag_rgb_ = new_type.flag_rgb();
 
 
 	if (cfg_["random_traits"].to_bool(true)) {
@@ -938,7 +941,7 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 		hit_points_ = max_hit_points_;
 
 	// In case the unit carries EventWML, apply it now
-	game_events::add_events(cfg_.child_range("event"), t->id());
+	game_events::add_events(cfg_.child_range("event"), new_type.id());
 	cfg_.clear_children("event");
 
 	refreshing_ = false;
@@ -1148,7 +1151,7 @@ void unit::expire_modifications(const std::string & duration)
 
 	if ( rebuild_from != NULL ) {
 		clear_haloes();
-		advance_to(rebuild_from);
+		advance_to(*rebuild_from);
 	}
 }
 
@@ -2836,7 +2839,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 	if (!last_effect.empty() && no_add == false) {
 		if ((last_effect)["apply_to"] == "variation") {
 			variation_ = last_effect["name"].str();
-			advance_to(&type());
+			advance_to(type());
 		} else if ((last_effect)["apply_to"] == "type") {
 			config::attribute_value &prev_type = (*new_child)["prev_type"];
 			if (prev_type.blank()) prev_type = type_id();
@@ -2844,7 +2847,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 			const unit_type* new_type = unit_types.find(new_type_id);
 			if ( new_type ) {
 				const bool heal_full = last_effect["heal_full"].to_bool(false);
-				advance_to(new_type);
+				advance_to(*new_type);
 				preferences::encountered_units().insert(new_type_id);
 				if( heal_full ) {
 					heal_all();

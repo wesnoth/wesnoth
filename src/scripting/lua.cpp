@@ -2615,7 +2615,7 @@ static int intf_transform_unit(lua_State *L)
 	char const *m = luaL_checkstring(L, 2);
 	const unit_type *utp = unit_types.find(m);
 	if (!utp) return luaL_argerror(L, 2, "unknown unit type");
-	u->advance_to(utp);
+	u->advance_to(*utp);
 
 	return 0;
 }
