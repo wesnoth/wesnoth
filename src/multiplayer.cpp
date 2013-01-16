@@ -731,6 +731,9 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 	// By default, we want to use the map setting in commandline mode.
 	parameters.use_map_settings = true;
 
+	// We also want the following in order to be consistent with MP lobby mode:
+	parameters.share_view = true;
+
 	// None of the other parameters need to be set, as their creation values above are good enough for CL mode.
 	// In particular, we do not want to use the preferences values.
 
