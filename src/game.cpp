@@ -528,9 +528,9 @@ static int do_gameloop(int argc, char** argv)
 			return 0;
 		}
 
-		if(game->play_multiplayer_mode() == false) {
-			return 0;
-		}
+		//if(game->play_multiplayer_mode() == false) {
+		//	return 0;
+		//}
 
 		if(game->play_screenshot_mode() == false) {
 			return 0;
@@ -550,6 +550,11 @@ static int do_gameloop(int argc, char** argv)
 		//Eventually with a specified server
 		if(game->goto_multiplayer() == false){
 			continue; //Go to main menu
+		}
+
+		//Start directly a commandline multiplayer game
+		if(game->play_multiplayer_commandline() == false) {
+			return 0;
 		}
 
 		if (game->goto_editor() == false) {

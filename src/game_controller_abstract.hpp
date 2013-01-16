@@ -53,6 +53,7 @@ public:
 	virtual bool goto_editor() = 0;
 
 	virtual bool play_multiplayer() = 0;
+	virtual bool play_multiplayer_commandline() = 0;
 	virtual bool change_language() = 0;
 
 	virtual void show_preferences() = 0;

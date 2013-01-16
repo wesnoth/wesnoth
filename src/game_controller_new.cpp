@@ -104,6 +104,11 @@ bool game_controller_new::play_multiplayer()
 	return true;
 }
 
+bool game_controller_new::play_multiplayer_commandline()
+{
+	return true;
+}
+
 bool game_controller_new::change_language()
 {
 	return true;

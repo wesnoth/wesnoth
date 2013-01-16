@@ -998,6 +998,20 @@ void connect::side::resolve_random()
 	}
 }
 
+void connect::side::set_faction_commandline(std::string faction_name)
+{
+	// Set faction_ (the faction number) according to the name given at the commandline
+	int num = -1;
+	BOOST_FOREACH(const config *i, parent_->era_sides_)
+	{
+		++num;
+		if ((*i)["name"] == faction_name) {
+			faction_ = num;
+			break;
+		}
+	}
+}
+
 connect::connect(game_display& disp, const config& game_config,
 		chat& c, config& gamelist, const mp_game_settings& params, const int num_turns,
 		mp::controller default_controller, bool local_players_only) :
@@ -1222,6 +1236,91 @@ void connect::start_game()
 
 	level_to_gamestate(level_, state_);
 
+	network::send_data(config("start_game"), 0);
+}
+
+void connect::start_game_commandline(const commandline_options& cmdline_opts)
+{
+	DBG_MP << "starting a new game in commandline mode" << std::endl;
+
+	// Set faction for each side, if given on the commandline.
+    // Then resolve "random faction", "random gender" and "random message"
+	int num = 0;
+	for (side_list::iterator itor = sides_.begin(); itor != sides_.end(); ++itor) {
+		++num;
+		if (cmdline_opts.multiplayer_side) {
+			for(std::vector<boost::tuple<unsigned int, std::string> >::const_iterator
+				it=cmdline_opts.multiplayer_side->begin(); it!=cmdline_opts.multiplayer_side->end(); ++it)
+			{
+				if (it->get<0>() == num) {
+					DBG_MP << "  setting side " << it->get<0>() << " faction: " << it->get<1>() << std::endl;
+					itor->set_faction_commandline(it->get<1>());
+				}
+			}
+		}
+
+		// Resolve remaining random values
+		itor->resolve_random();
+	}
+
+	update_and_send_diff(true);
+
+	// Update sides with commandline parameters
+	if (cmdline_opts.multiplayer_turns) {
+		DBG_MP << "  setting turns: " << cmdline_opts.multiplayer_turns << std::endl;
+		level_["turns"] = *cmdline_opts.multiplayer_turns;
+	}
+
+	BOOST_FOREACH(config &s, level_.child_range("side"))
+	{
+		if (cmdline_opts.multiplayer_controller) {
+			for(std::vector<boost::tuple<unsigned int, std::string> >::const_iterator
+				it=cmdline_opts.multiplayer_controller->begin(); it!=cmdline_opts.multiplayer_controller->end(); ++it)
+			{
+				if (it->get<0>() == s["side"]) {
+					DBG_MP << "  setting side " << s["side"] << " controller: " << it->get<1>() << std::endl;
+					s["controller"] = it->get<1>();
+					s["current_player"] = it->get<1>();
+				}
+			}
+		}
+
+		if (cmdline_opts.multiplayer_ai_config) {
+			for(std::vector<boost::tuple<unsigned int, std::string> >::const_iterator
+				it=cmdline_opts.multiplayer_ai_config->begin(); it!=cmdline_opts.multiplayer_ai_config->end(); ++it)
+			{
+				if (it->get<0>() == s["side"]) {
+					DBG_MP << "  setting side " << s["side"] << " ai_config: " << it->get<1>() << std::endl;
+					s["ai_config"] = it->get<1>();
+				}
+			}
+		}
+
+		if (cmdline_opts.multiplayer_algorithm) {
+			for(std::vector<boost::tuple<unsigned int, std::string> >::const_iterator
+				it=cmdline_opts.multiplayer_algorithm->begin(); it!=cmdline_opts.multiplayer_algorithm->end(); ++it)
+			{
+				if (it->get<0>() == s["side"]) {
+					DBG_MP << "  setting side " << s["side"] << " ai_algorithm: " << it->get<1>() << std::endl;
+					s["ai_algorithm"] = it->get<1>();
+				}
+			}
+		}
+
+		if (cmdline_opts.multiplayer_parm) {
+			for(std::vector<boost::tuple<unsigned int, std::string, std::string> >::const_iterator
+				parm=cmdline_opts.multiplayer_parm->begin(); parm!=cmdline_opts.multiplayer_parm->end(); ++parm)
+			{
+				if (parm->get<0>() == s["side"]) {
+					DBG_MP << "  setting side " << s["side"] << " " << parm->get<1>() << ": " << parm->get<2>() << std::endl;
+					s[parm->get<1>()] = parm->get<2>();
+				}
+			}
+		}
+    }
+
+	// Build the gamestate object after updating the level
+	level_to_gamestate(level_, state_);
 	network::send_data(config("start_game"), 0);
 }
 

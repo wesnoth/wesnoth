@@ -62,6 +62,9 @@ static lg::log_domain log_config("config");
 #define WRN_GENERAL LOG_STREAM(warn, lg::general)
 #define DBG_GENERAL LOG_STREAM(debug, lg::general)
 
+static lg::log_domain log_mp_create("mp/create");
+#define DBG_MP LOG_STREAM(debug, log_mp_create)
+
 static lg::log_domain log_network("network");
 #define ERR_NET LOG_STREAM(err, log_network)
 
@@ -1108,6 +1111,36 @@ bool game_controller::play_multiplayer()
 	} catch(twml_exception& e) {
 		e.show(disp());
 	}
+
+	return false;
+}
+
+bool game_controller::play_multiplayer_commandline()
+{
+	if(!cmdline_opts_.multiplayer) {
+		return true;
+	}
+
+	DBG_MP << "starting multiplayer game from the commandline" << std::endl;
+
+	// These are all the relevant lines taken literally from play_multiplayer() above
+	state_ = game_state();
+	state_.classification().campaign_type = "multiplayer";
+	state_.classification().campaign_define = "MULTIPLAYER";
+
+	cache_.clear_defines();
+	game_config::scoped_preproc_define multiplayer(state_.classification().campaign_define);
+	load_game_cfg();
+	events::discard(INPUT_MASK); // prevent the "keylogger" effect
+	cursor::set(cursor::NORMAL);
+	// update binary paths
+	paths_manager_.set_paths(game_config());
+	clear_binary_paths_cache();
+
+	config game_data;
+	const mp::controller cntr = mp::CNTR_LOCAL;
+
+	mp::start_local_game_commandline(disp(), game_config(), cntr, cmdline_opts_);
 
 	return false;
 }

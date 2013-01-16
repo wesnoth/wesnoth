@@ -38,6 +38,8 @@
 #include "formula_string_utils.hpp"
 #include "sound.hpp"
 #include "unit_id.hpp"
+#include "map_create.hpp"
+#include "settings.hpp"
 
 #include <boost/bind.hpp>
 #include <boost/foreach.hpp>
@@ -695,6 +697,123 @@ void start_local_game(game_display& disp, const config& game_config,
 	playmp_controller::set_replay_last_turn(0);
 	preferences::set_message_private(false);
 	enter_create_mode(disp, game_config, chat, gamelist, default_controller, true);
+}
+
+void start_local_game_commandline(game_display& disp, const config& game_config,
+		mp::controller default_controller, const commandline_options& cmdline_opts)
+{
+	DBG_MP << "starting local MP game from commandline" << std::endl;
+
+	// The setup is done equivalently to lobby MP games using as much of existing
+	// code as possible.  This means that some things are set up that are not
+	// needed in commandline mode, but they are required by the functions called.
+	const rand_rng::set_random_generator generator_setter(&recorder);
+	mp::chat chat;
+	config gamelist;
+	playmp_controller::set_replay_last_turn(0);
+	preferences::set_message_private(false);
+
+	DBG_MP << "entering create mode" << std::endl;
+
+	// Set the default parameters
+	mp_game_settings parameters;  // This creates these parameters with default values defined in mp_game_settings.cpp
+
+	// Hardcoded default values
+	parameters.mp_era = "era_default";
+	parameters.name = "multiplayer_The_Freelands";
+
+	// Default values for which at getter function exists
+	int num_turns = settings::get_turns("");
+	parameters.village_gold = settings::get_village_gold("");
+	parameters.village_support = settings::get_village_support("");
+	parameters.xp_modifier = settings::get_xp_modifier("");
+
+	// By default, we want to use the map setting in commandline mode.
+	parameters.use_map_settings = true;
+
+	// None of the other parameters need to be set, as their creation values above are good enough for CL mode.
+	// In particular, we do not want to use the preferences values.
+
+	// Override era, faction (side) and scenario if set on the commandline
+	if (cmdline_opts.multiplayer_era) parameters.mp_era = *cmdline_opts.multiplayer_era;
+	const config &era_cfg = game_config.find_child("era", "id", parameters.mp_era);
+	if (!era_cfg) {
+		std::cerr << "Could not find era '" << parameters.mp_era << "'\n";
+		return;
+	}
+
+	if (cmdline_opts.multiplayer_side) {
+		for(std::vector<boost::tuple<unsigned int, std::string> >::const_iterator
+			it=cmdline_opts.multiplayer_side->begin(); it!=cmdline_opts.multiplayer_side->end(); ++it)
+		{
+			const config *faction = &era_cfg.find_child("multiplayer_side", "id", it->get<1>());
+			if (!*faction) {
+				std::cerr << "Could not find faction '" << it->get<1>() << "'\n";
+				return;
+			}
+		}
+	}
+
+	if (cmdline_opts.multiplayer_scenario) parameters.name = *cmdline_opts.multiplayer_scenario;
+	const config &level = game_config.find_child("multiplayer", "id", parameters.name);
+	if (!level) {
+		std::cerr << "Could not find scenario '" << parameters.name << "'\n";
+		return;
+	}
+
+	// Should the map be randomly generated?
+	if (level["map_generation"].empty()) {
+		DBG_MP << "using scenario map" << std::endl;
+		parameters.scenario_data = level;
+	} else {
+		DBG_MP << "generating random map" << std::endl;
+		util::scoped_ptr<map_generator> generator(NULL);
+		generator.assign(create_map_generator(level["map_generation"], level.child("generator")));
+		parameters.scenario_data = generator->create_scenario(std::vector<std::string>());
+
+		// Set the scenario to have placing of sides
+		// based on the terrain they prefer
+		parameters.scenario_data["modify_placing"] = "true";
+
+		util::unique_ptr<gamemap> map;
+		const int map_positions = level.child("generator")["players"];
+		DBG_MP << "map positions: " << map_positions << std::endl;
+
+		for (int pos = parameters.scenario_data.child_count("side"); pos < map_positions; ++pos) {
+			config& side = parameters.scenario_data.add_child("side");
+			side["side"] = pos + 1;
+			side["team_name"] = pos + 1;
+			side["canrecruit"] = true;
+			side["controller"] = "human";
+		}
+	}
+
+	// Should number of turns be determined from scenario data?
+	if (parameters.use_map_settings && parameters.scenario_data["turns"]) {
+		DBG_MP << "setting turns from scenario data: " << parameters.scenario_data["turns"] << std::endl;
+		num_turns = parameters.scenario_data["turns"];
+	}
+
+	DBG_MP << "entering connect mode" << std::endl;
+
+	game_state state;
+	gamelist.clear();
+	statistics::fresh_stats();
+
+	{
+		mp::connect ui(disp, game_config, chat, gamelist, parameters, num_turns, default_controller, true);
+
+		// Update the parameters to reflect game start conditions
+		ui.start_game_commandline(cmdline_opts);
+		state = ui.get_state();
+	}
+
+	std::string label = "";
+	if (cmdline_opts.multiplayer_label) label = *cmdline_opts.multiplayer_label;
+	recorder.add_log_data("ai_log","ai_label",label);
+
+	play_game(disp, state, game_config, IO_SERVER);
+	recorder.clear();
 }
 
 void start_client(game_display& disp, const config& game_config,

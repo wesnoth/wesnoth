@@ -24,6 +24,7 @@
 #include "widgets/scrollpane.hpp"
 #include "widgets/slider.hpp"
 #include "widgets/combo_drag.hpp"
+#include "commandline_options.hpp"
 
 namespace ai {
 	struct description;
@@ -127,6 +128,7 @@ public:
 
 		/** Resolves the random leader / factions. */
 		void resolve_random();
+		void connect::side::set_faction_commandline(std::string faction_name);
 		void hide_ai_algorithm_combo(bool invis);
 	private:
 		void init_ai_algorithm_combo();
@@ -224,6 +226,7 @@ public:
 	 * "start game" message to the network.
 	 */
 	void start_game();
+	void start_game_commandline(const commandline_options& cmdline_opts);
 
 protected:
 	virtual void layout_children(const SDL_Rect& rect);

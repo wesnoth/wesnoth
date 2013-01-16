@@ -68,6 +68,7 @@ public:
 	bool goto_editor();
 
 	bool play_multiplayer();
+	bool play_multiplayer_commandline();
 	bool change_language();
 
 	void show_preferences();

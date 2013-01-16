@@ -16,6 +16,7 @@
 #define MULTIPLAYER_HPP_INCLUDED
 
 #include "multiplayer_ui.hpp"
+#include "commandline_options.hpp"
 
 class config;
 class game_display;
@@ -37,6 +38,14 @@ const size_t max_login_size = 20;
  */
 void start_local_game(game_display& disp, const config& game_config,
 		mp::controller default_controller);
+
+/** Starts a multiplayer game in single-user mode.
+ *
+ * Same parameters as start_local_game plus:
+ * cmdline_opts The commandline options
+ */
+void start_local_game_commandline(game_display& disp, const config& game_config,
+		mp::controller default_controller, const commandline_options& cmdline_opts);
 
 /** Starts a multiplayer game in client mode.
  *
