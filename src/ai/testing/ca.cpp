@@ -29,7 +29,6 @@
 #include "../../map.hpp"
 #include "../../resources.hpp"
 #include "../../team.hpp"
-#include "../../wml_exception.hpp"
 #include "../../pathfind/pathfind.hpp"
 
 #include <boost/foreach.hpp>
@@ -481,8 +480,7 @@ void recruitment_phase::analyze_potential_recruit_combat()
 			}
 
 			unit const &un = *j;
-			const unit_type *enemy_info = unit_types.find(un.type_id());
-			VALIDATE(enemy_info, "Unknown unit type : " + un.type_id() + " while scoring units.");
+			const unit_type *enemy_info = un.type();
 
 			int weight = un.cost() * un.hitpoints() / un.max_hitpoints();
 			weighting += weight;

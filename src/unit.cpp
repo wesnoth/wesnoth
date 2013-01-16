@@ -98,17 +98,13 @@ static unit_race::GENDER generate_gender(const unit_type & type, bool random_gen
 	}
 }
 
-static unit_race::GENDER generate_gender(const config &cfg, game_state *state)
+static unit_race::GENDER generate_gender(const unit_type & u_type, const config &cfg, game_state *state)
 {
 	const std::string& gender = cfg["gender"];
 	if(!gender.empty())
 		return string_gender(gender);
-	const std::string &type_id = cfg["type"];
-	if (type_id.empty())
-		return unit_race::MALE;
 
-	bool random_gender = cfg["random_gender"].to_bool();
-	return generate_gender(get_unit_type(type_id), random_gender, state);
+	return generate_gender(u_type, cfg["random_gender"].to_bool(), state);
 }
 
 // Copy constructor
@@ -227,7 +223,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 	image_mods_(),
 	unrenamable_(false),
 	side_(0),
-	gender_(generate_gender(cfg, state)),
+	gender_(generate_gender(*type_, cfg, state)),
 	alpha_(),
 	unit_formula_(),
 	unit_loop_formula_(),
@@ -750,16 +746,8 @@ void unit::generate_traits(bool musthaveonly)
 {
 	LOG_UT << "Generating a trait for unit type " << type_id() << " with musthaveonly " << musthaveonly << "\n";
 	const unit_type *u_type = type();
-	// Calculate the unit's traits
-	if ( !u_type ) {
-		std::string error_message = _("Unknown unit type '$type|' while generating traits");
-		utils::string_map symbols;
-		symbols["type"] = type_id();
-		error_message = utils::interpolate_variables_into_string(error_message, &symbols);
-		ERR_NG << "unit of type " << type_id() << " not found!\n";
-		throw game::game_error(error_message);
-	}
 
+	// Calculate the unit's traits
 	config::const_child_itors current_traits = modifications_.child_range("trait");
 	std::vector<config> candidate_traits;
 
@@ -1704,8 +1692,7 @@ void unit::write(config& cfg) const
 {
 	cfg.append(cfg_);
 
-	const unit_type *ut = type();
-	if(ut && cfg["description"] == ut->unit_description()) {
+	if ( cfg["description"] == type()->unit_description() ) {
 		cfg.remove_attribute("description");
 	}
 
