@@ -1063,11 +1063,23 @@ static config time_of_day_at(const map_location& mouseover_hex)
 
 	int b = tod.lawful_bonus;
 
+	std::string  lawful_color("white");
+	std::string chaotic_color("white");
+	std::string liminal_color("white");
+
+	if (b != 0) {
+		lawful_color  = (b > 0) ? "green" : "red";
+		chaotic_color = (b < 0) ? "green" : "red";
+		liminal_color = "red";
+	}
 	tooltip << tod.name << '\n'
-		<< _("Lawful units: ") << utils::signed_percent(b) << '\n'
-		<< _("Neutral units: ") << utils::signed_percent(0) << '\n'
-		<< _("Chaotic units: ") << utils::signed_percent(-b) << '\n'
-		<< _("Liminal units: ") << utils::signed_percent(-(abs(b)));
+		<< _("Lawful  units: ") << "<span foreground=\"" << lawful_color  << "\">"
+		<< utils::signed_percent(b)  << "</span>\n"
+		<< _("Neutral units: ") << utils::signed_percent(0)  << '\n'
+		<< _("Chaotic units: ") << "<span foreground=\"" << chaotic_color << "\">"
+		<< utils::signed_percent(-b) << "</span>\n"
+		<< _("Liminal units: ") << "<span foreground=\"" << liminal_color << "\">"
+		<< utils::signed_percent(-(abs(b))) << "</span>\n";
 
 	std::string tod_image = tod.image;
 	if (tod.bonus_modified > 0) tod_image += "~BRIGHTEN()";
