@@ -1012,6 +1012,29 @@ void connect::side::set_faction_commandline(std::string faction_name)
 	}
 }
 
+void connect::side::set_controller_commandline(std::string controller_name)
+{
+	// Set controller_ according to the parameter given at the commandline
+	// Default is local player
+	controller_ = CNTR_LOCAL;
+	if (controller_name == "ai") controller_ = CNTR_COMPUTER;
+	if (controller_name == "null") controller_ = CNTR_EMPTY;
+
+	player_id_ = "";
+	update_ui();
+}
+
+void connect::side::set_ai_algorithm_commandline(std::string algorithm_name)
+{
+	// Set ai_algorithm_ according to the parameter given at the commandline
+	// Default is local player
+	ai_algorithm_ = algorithm_name;
+
+	init_ai_algorithm_combo();
+	update_ui();
+}
+
+
 connect::connect(game_display& disp, const config& game_config,
 		chat& c, config& gamelist, const mp_game_settings& params, const int num_turns,
 		mp::controller default_controller, bool local_players_only) :
@@ -1243,11 +1266,12 @@ void connect::start_game_commandline(const commandline_options& cmdline_opts)
 {
 	DBG_MP << "starting a new game in commandline mode" << std::endl;
 
-	// Set faction for each side, if given on the commandline.
-	// Then resolve "random faction", "random gender" and "random message"
 	unsigned num = 0;
+	// Iterate over all sides
 	for (side_list::iterator itor = sides_.begin(); itor != sides_.end(); ++itor) {
 		++num;
+
+		// Set the faction, if commandline option is given
 		if (cmdline_opts.multiplayer_side) {
 			for(std::vector<boost::tuple<unsigned int, std::string> >::const_iterator
 				it=cmdline_opts.multiplayer_side->begin(); it!=cmdline_opts.multiplayer_side->end(); ++it)
@@ -1259,7 +1283,32 @@ void connect::start_game_commandline(const commandline_options& cmdline_opts)
 			}
 		}
 
-		// Resolve remaining random values
+		// Set the controller, if commandline option is given
+		if (cmdline_opts.multiplayer_controller) {
+			for(std::vector<boost::tuple<unsigned int, std::string> >::const_iterator
+				it=cmdline_opts.multiplayer_controller->begin(); it!=cmdline_opts.multiplayer_controller->end(); ++it)
+			{
+				if (it->get<0>() == num) {
+					DBG_MP << "  setting side " << num << " controller: " << it->get<1>() << std::endl;
+					itor->set_controller_commandline(it->get<1>());
+				}
+			}
+		}
+
+		// Set AI algorithm to RCA AI for all sides, then override if commandline option was given
+		itor->set_ai_algorithm_commandline("ai_default_rca");
+		if (cmdline_opts.multiplayer_algorithm) {
+			for(std::vector<boost::tuple<unsigned int, std::string> >::const_iterator
+				it=cmdline_opts.multiplayer_algorithm->begin(); it!=cmdline_opts.multiplayer_algorithm->end(); ++it)
+			{
+				if (it->get<0>() == num) {
+					DBG_MP << "  setting side " << num << " ai_algorithm: " << it->get<1>() << std::endl;
+					itor->set_ai_algorithm_commandline(it->get<1>());
+				}
+			}
+		}
+
+		// Finally, resolve "random faction", "random gender" and "random message", if any remain
 		itor->resolve_random();
 	}
 
@@ -1273,18 +1322,6 @@ void connect::start_game_commandline(const commandline_options& cmdline_opts)
 
 	BOOST_FOREACH(config &s, level_.child_range("side"))
 	{
-		if (cmdline_opts.multiplayer_controller) {
-			for(std::vector<boost::tuple<unsigned int, std::string> >::const_iterator
-				it=cmdline_opts.multiplayer_controller->begin(); it!=cmdline_opts.multiplayer_controller->end(); ++it)
-			{
-				if (it->get<0>() == s["side"].to_unsigned()) {
-					DBG_MP << "  setting side " << s["side"] << " controller: " << it->get<1>() << std::endl;
-					s["controller"] = it->get<1>();
-					s["current_player"] = it->get<1>();
-				}
-			}
-		}
-
 		if (cmdline_opts.multiplayer_ai_config) {
 			for(std::vector<boost::tuple<unsigned int, std::string> >::const_iterator
 				it=cmdline_opts.multiplayer_ai_config->begin(); it!=cmdline_opts.multiplayer_ai_config->end(); ++it)
@@ -1292,17 +1329,6 @@ void connect::start_game_commandline(const commandline_options& cmdline_opts)
 				if (it->get<0>() == s["side"].to_unsigned()) {
 					DBG_MP << "  setting side " << s["side"] << " ai_config: " << it->get<1>() << std::endl;
 					s["ai_config"] = it->get<1>();
-				}
-			}
-		}
-
-		if (cmdline_opts.multiplayer_algorithm) {
-			for(std::vector<boost::tuple<unsigned int, std::string> >::const_iterator
-				it=cmdline_opts.multiplayer_algorithm->begin(); it!=cmdline_opts.multiplayer_algorithm->end(); ++it)
-			{
-				if (it->get<0>() == s["side"].to_unsigned()) {
-					DBG_MP << "  setting side " << s["side"] << " ai_algorithm: " << it->get<1>() << std::endl;
-					s["ai_algorithm"] = it->get<1>();
 				}
 			}
 		}

@@ -129,6 +129,8 @@ public:
 		/** Resolves the random leader / factions. */
 		void resolve_random();
 		void set_faction_commandline(std::string faction_name);
+		void set_controller_commandline(std::string controller_name);
+		void set_ai_algorithm_commandline(std::string algorithm_name);
 		void hide_ai_algorithm_combo(bool invis);
 	private:
 		void init_ai_algorithm_combo();
