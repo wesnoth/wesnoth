@@ -528,11 +528,6 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 
 	set_recruits(utils::split(cfg["extra_recruit"]));
 
-	/** @todo Are these modified by read? if not they can be removed. */
-	getsHit_=0;
-	end_turn_ = false;
-	refreshing_  = false;
-	hidden_ = false;
 	game_config::add_color_info(cfg);
 
 	config input_cfg;
@@ -668,19 +663,6 @@ unit::unit(const unit_type &u_type, int side, bool real_unit,
 	movement_ = max_movement_;
 	hit_points_ = max_hit_points_;
 	attacks_left_ = max_attacks_;
-
-	/**
-	 * @todo Test whether the calls above modify these values if not they can
-	 * removed, since already set in the initialization list.
-	 */
-	unrenamable_ = false;
-	anim_ = NULL;
-	getsHit_ = 0;
-	end_turn_ = false;
-	hold_position_ = false;
-	next_idling_ = 0;
-	frame_begin_time_ = 0;
-	unit_halo_ = halo::NO_HALO;
 }
 
 unit::~unit()
