@@ -1244,8 +1244,8 @@ void connect::start_game_commandline(const commandline_options& cmdline_opts)
 	DBG_MP << "starting a new game in commandline mode" << std::endl;
 
 	// Set faction for each side, if given on the commandline.
-    // Then resolve "random faction", "random gender" and "random message"
-	int num = 0;
+	// Then resolve "random faction", "random gender" and "random message"
+	unsigned num = 0;
 	for (side_list::iterator itor = sides_.begin(); itor != sides_.end(); ++itor) {
 		++num;
 		if (cmdline_opts.multiplayer_side) {
@@ -1277,7 +1277,7 @@ void connect::start_game_commandline(const commandline_options& cmdline_opts)
 			for(std::vector<boost::tuple<unsigned int, std::string> >::const_iterator
 				it=cmdline_opts.multiplayer_controller->begin(); it!=cmdline_opts.multiplayer_controller->end(); ++it)
 			{
-				if (it->get<0>() == s["side"]) {
+				if (it->get<0>() == s["side"].to_unsigned()) {
 					DBG_MP << "  setting side " << s["side"] << " controller: " << it->get<1>() << std::endl;
 					s["controller"] = it->get<1>();
 					s["current_player"] = it->get<1>();
@@ -1289,7 +1289,7 @@ void connect::start_game_commandline(const commandline_options& cmdline_opts)
 			for(std::vector<boost::tuple<unsigned int, std::string> >::const_iterator
 				it=cmdline_opts.multiplayer_ai_config->begin(); it!=cmdline_opts.multiplayer_ai_config->end(); ++it)
 			{
-				if (it->get<0>() == s["side"]) {
+				if (it->get<0>() == s["side"].to_unsigned()) {
 					DBG_MP << "  setting side " << s["side"] << " ai_config: " << it->get<1>() << std::endl;
 					s["ai_config"] = it->get<1>();
 				}
@@ -1300,7 +1300,7 @@ void connect::start_game_commandline(const commandline_options& cmdline_opts)
 			for(std::vector<boost::tuple<unsigned int, std::string> >::const_iterator
 				it=cmdline_opts.multiplayer_algorithm->begin(); it!=cmdline_opts.multiplayer_algorithm->end(); ++it)
 			{
-				if (it->get<0>() == s["side"]) {
+				if (it->get<0>() == s["side"].to_unsigned()) {
 					DBG_MP << "  setting side " << s["side"] << " ai_algorithm: " << it->get<1>() << std::endl;
 					s["ai_algorithm"] = it->get<1>();
 				}
@@ -1311,7 +1311,7 @@ void connect::start_game_commandline(const commandline_options& cmdline_opts)
 			for(std::vector<boost::tuple<unsigned int, std::string, std::string> >::const_iterator
 				parm=cmdline_opts.multiplayer_parm->begin(); parm!=cmdline_opts.multiplayer_parm->end(); ++parm)
 			{
-				if (parm->get<0>() == s["side"]) {
+				if (parm->get<0>() == s["side"].to_unsigned()) {
 					DBG_MP << "  setting side " << s["side"] << " " << parm->get<1>() << ": " << parm->get<2>() << std::endl;
 					s[parm->get<1>()] = parm->get<2>();
 				}
