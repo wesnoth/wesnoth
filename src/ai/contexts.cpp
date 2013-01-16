@@ -1201,8 +1201,7 @@ const map_location& readonly_context_impl::suitable_keep(const map_location& lea
 
 
 	/** Weapon choice cache, to speed simulations. */
-std::map<std::pair<map_location,const unit_type *>,
-		std::pair<battle_context_unit_stats,battle_context_unit_stats> >& readonly_context_impl::unit_stats_cache() const
+readonly_context::unit_stats_cache_t & readonly_context_impl::unit_stats_cache() const
 {
 	return unit_stats_cache_;
 }

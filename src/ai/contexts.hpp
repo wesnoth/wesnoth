@@ -388,8 +388,10 @@ public:
 	virtual config to_readonly_context_config() const = 0;
 
 
-	virtual std::map<std::pair<map_location,const unit_type *>,
-		std::pair<battle_context_unit_stats,battle_context_unit_stats> >& unit_stats_cache() const = 0;
+	typedef std::map<std::pair<map_location,const unit_type *>,
+	                 std::pair<battle_context_unit_stats,battle_context_unit_stats> >
+	        unit_stats_cache_t;
+	virtual unit_stats_cache_t & unit_stats_cache() const = 0;
 
 };
 
@@ -945,8 +947,7 @@ public:
 	}
 
 
-	virtual std::map<std::pair<map_location,const unit_type *>,
-		std::pair<battle_context_unit_stats,battle_context_unit_stats> >& unit_stats_cache() const
+	virtual unit_stats_cache_t & unit_stats_cache() const
 	{
 		return target_->unit_stats_cache();
 	}
@@ -1419,8 +1420,7 @@ public:
 	virtual config to_readonly_context_config() const;
 
 
-	virtual std::map<std::pair<map_location,const unit_type *>,
-		std::pair<battle_context_unit_stats,battle_context_unit_stats> >& unit_stats_cache() const;
+	virtual unit_stats_cache_t & unit_stats_cache() const;
 
 private:
 	template<typename T>
@@ -1471,8 +1471,7 @@ private:
 	aspect_type< bool >::typesafe_ptr simple_targeting_;
 	mutable move_map srcdst_;
 	aspect_type< bool >::typesafe_ptr support_villages_;
-	mutable std::map<std::pair<map_location,const unit_type *>,
-			 std::pair<battle_context_unit_stats,battle_context_unit_stats> > unit_stats_cache_;
+	mutable unit_stats_cache_t unit_stats_cache_;
 	aspect_type< double >::typesafe_ptr village_value_;
 	aspect_type< int >::typesafe_ptr villages_per_scout_;
 
