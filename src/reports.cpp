@@ -583,7 +583,7 @@ static config unit_moves(const unit* u)
 	std::set<t_translation::t_terrain>::const_iterator terrain_it =
 				preferences::encountered_terrains().begin();
 
-	tooltip << "Movement Costs:\n";
+	tooltip << _("Movement Costs:") << "\n";
 	for (; terrain_it != preferences::encountered_terrains().end();
 			++terrain_it) {
 		const t_translation::t_terrain terrain = *terrain_it;
