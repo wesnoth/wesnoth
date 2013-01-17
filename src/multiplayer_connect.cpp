@@ -51,6 +51,7 @@ static lg::log_domain log_config("config");
 
 static lg::log_domain log_mp_connect("mp/connect");
 #define DBG_MP LOG_STREAM(debug, log_mp_connect)
+#define LOG_MP LOG_STREAM(info, log_mp_connect)
 
 namespace {
 	const char* controller_names[] = {
@@ -947,6 +948,9 @@ void connect::side::resolve_random()
 
 		faction_ = nonrandom_sides[rand() % nonrandom_sides.size()];
 	}
+
+	LOG_MP << "FACTION" << (index_ + 1) << ": " << (*parent_->era_sides_[faction_])["name"] << std::endl;
+
 	bool solved_random_leader = false;
 
 	if (llm_.get_leader() == "random") {
