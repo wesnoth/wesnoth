@@ -1337,6 +1337,13 @@ void connect::start_game_commandline(const commandline_options& cmdline_opts)
 			}
 		}
 
+		// Having hard-coded values here is undesirable, but that's how it is done in the MP lobby
+		// part of the code also.  Should be replaced by settings/constants in both places
+		if(cmdline_opts.multiplayer_ignore_map_settings) {
+			s["gold"] = 100;
+			s["income"] = 1;
+		}
+
 		if (cmdline_opts.multiplayer_parm) {
 			for(std::vector<boost::tuple<unsigned int, std::string, std::string> >::const_iterator
 				parm=cmdline_opts.multiplayer_parm->begin(); parm!=cmdline_opts.multiplayer_parm->end(); ++parm)

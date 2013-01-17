@@ -728,8 +728,13 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 	parameters.village_support = settings::get_village_support("");
 	parameters.xp_modifier = settings::get_xp_modifier("");
 
-	// By default, we want to use the map setting in commandline mode.
-	parameters.use_map_settings = true;
+	// Do not use map settings if --ignore-map-settings commandline option is set
+	if(cmdline_opts.multiplayer_ignore_map_settings) {
+		DBG_MP << "ignoring map settings" << std::endl;
+		parameters.use_map_settings = false;
+	} else {
+		parameters.use_map_settings = true;
+	}
 
 	// We also want the following in order to be consistent with MP lobby mode:
 	parameters.share_view = true;

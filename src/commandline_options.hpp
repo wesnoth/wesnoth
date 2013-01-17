@@ -94,6 +94,8 @@ public:
 	boost::optional<std::string> multiplayer_era;
 	/// True if --exit-at-and was given on the command line. Dependant on --multiplayer.
 	bool multiplayer_exit_at_end;
+	/// True if --ignore-map-settings was given at the command line.  Do not use map settings.
+	bool multiplayer_ignore_map_settings;
 	/// Non-empty if --label was given on the command line. Dependant on --multiplayer.
 	boost::optional<std::string> multiplayer_label;
 	/// Non-empty if --parm was given on the command line. Vector of pairs (side number, parm name, parm value). Dependant on --multiplayer.

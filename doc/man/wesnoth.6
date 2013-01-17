@@ -164,7 +164,7 @@ be preprocessed recursively based on the known preprocessor rules. The common ma
 from the "data/core/macros" directory will be preprocessed before the specified resources.
 Example:
 .B -p ~/wesnoth/data/campaigns/tutorial ~/result.
-For details regarding the preprocessor visit: 
+For details regarding the preprocessor visit:
 http://wiki.wesnoth.org/PreprocessorRef#Command-line_preprocessor
 
 .TP
@@ -251,6 +251,9 @@ file.
 .B --exit-at-end
 exits once the scenario is over, without displaying victory/defeat dialog which requires the user to click OK.
 This is also used for scriptable benchmarking.
+.TP
+.B --ignore-map-settings
+do not use map settings, use default values instead.
 .TP
 .B --nogui
 runs the game without the GUI. Must appear before

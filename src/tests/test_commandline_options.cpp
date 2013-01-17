@@ -54,6 +54,7 @@ BOOST_AUTO_TEST_CASE (test_empty_options)
 	BOOST_CHECK(!co.multiplayer_controller);
 	BOOST_CHECK(!co.multiplayer_era);
 	BOOST_CHECK(!co.multiplayer_exit_at_end);
+	BOOST_CHECK(!co.multiplayer_ignore_map_settings);
 	BOOST_CHECK(!co.multiplayer_label);
 	BOOST_CHECK(!co.multiplayer_parm);
 	BOOST_CHECK(!co.multiplayer_side);
@@ -136,6 +137,7 @@ BOOST_AUTO_TEST_CASE (test_default_options)
 	BOOST_CHECK(!co.multiplayer_controller);
 	BOOST_CHECK(!co.multiplayer_era);
 	BOOST_CHECK(!co.multiplayer_exit_at_end);
+	BOOST_CHECK(!co.multiplayer_ignore_map_settings);
 	BOOST_CHECK(!co.multiplayer_label);
 	BOOST_CHECK(!co.multiplayer_parm);
 	BOOST_CHECK(!co.multiplayer_scenario);
@@ -207,6 +209,7 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		"--gunzip=gunzipfoo.gz",
 		"--gzip=gzipfoo",
 		"--help",
+		"--ignore-map-settings",
 		"--label=labelfoo",
 		"--load=loadfoo",
 		"--log-error=errfoo,errbar/*",
@@ -297,6 +300,7 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 	BOOST_CHECK(co.multiplayer_controller->at(1).get<0>() == 6 && co.multiplayer_controller->at(1).get<1>() == "conbar");
 	BOOST_CHECK(co.multiplayer_era && *co.multiplayer_era == "erafoo");
 	BOOST_CHECK(co.multiplayer_exit_at_end);
+	BOOST_CHECK(co.multiplayer_ignore_map_settings);
 	BOOST_CHECK(co.multiplayer_label && *co.multiplayer_label == "labelfoo");
 	BOOST_CHECK(co.multiplayer_parm);
 	BOOST_CHECK(co.multiplayer_parm->at(0).get<0>() == 7 && co.multiplayer_parm->at(0).get<1>() == "parmfoo" && co.multiplayer_parm->at(0).get<2>() == "valfoo");
@@ -379,6 +383,7 @@ BOOST_AUTO_TEST_CASE (test_positional_options)
 	BOOST_CHECK(!co.multiplayer_controller);
 	BOOST_CHECK(!co.multiplayer_era);
 	BOOST_CHECK(!co.multiplayer_exit_at_end);
+	BOOST_CHECK(!co.multiplayer_ignore_map_settings);
 	BOOST_CHECK(!co.multiplayer_label);
 	BOOST_CHECK(!co.multiplayer_parm);
 	BOOST_CHECK(!co.multiplayer_scenario);

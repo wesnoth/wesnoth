@@ -74,6 +74,7 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	multiplayer_controller(),
 	multiplayer_era(),
 	multiplayer_exit_at_end(),
+	multiplayer_ignore_map_settings(),
 	multiplayer_label(),
 	multiplayer_parm(),
 	multiplayer_scenario(),
@@ -196,6 +197,7 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("controller", po::value<std::vector<std::string> >()->composing(), "selects the controller for this side. <arg> should have format side:value")
 		("era", po::value<std::string>(), "selects the era to be played in by its id.")
 		("exit-at-end", "exit Wesnoth at the end of the scenario.")
+		("ignore-map-settings", "do not use map settings.")
 		("label", po::value<std::string>(), "sets the label for AIs.") //TODO is the description precise? this option was undocumented before.
 		("nogui", "runs the game without the GUI.")
 		("parm", po::value<std::vector<std::string> >()->composing(), "sets additional parameters for this side. <arg> should have format side:name:value.")
@@ -289,6 +291,8 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		gzip = vm["gzip"].as<std::string>();
 	if (vm.count("help"))
 		help = true;
+	if (vm.count("ignore-map-settings"))
+		multiplayer_ignore_map_settings = true;
 	if (vm.count("label"))
 		multiplayer_label = vm["label"].as<std::string>();
 	if (vm.count("language"))
