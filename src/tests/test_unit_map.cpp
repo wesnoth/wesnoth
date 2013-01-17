@@ -41,8 +41,8 @@ BOOST_AUTO_TEST_CASE( test_1 ) {
 	orc_config["random_traits"]=false;
 	unit_type orc_type(orc_config);
 
-	unit orc1_side0_real(&orc_type, 0, true);
-	unit orc2_side0_fake(&orc_type, 0, false);
+	unit orc1_side0_real(orc_type, 0, true);
+	unit orc2_side0_fake(orc_type, 0, false);
 
 	unit_map unit_map;
 
@@ -112,7 +112,7 @@ BOOST_AUTO_TEST_CASE( track_real_unit_by_underlying_id ) {
 	orc_config["random_traits"] = false;
 	unit_type orc_type(orc_config);
 
-	unit orc1_side0_real(&orc_type, 0, true);
+	unit orc1_side0_real(orc_type, 0, true);
 
 	size_t underlying_id = orc1_side0_real.underlying_id();
 	map_location hex = map_location(1,1);
@@ -156,7 +156,7 @@ BOOST_AUTO_TEST_CASE( track_fake_unit_by_underlying_id ) {
 	orc_config["random_traits"] = false;
 	unit_type orc_type(orc_config);
 
-	unit orc1_side0_fake(&orc_type, 0, false);
+	unit orc1_side0_fake(orc_type, 0, false);
 
 	size_t underlying_id = orc1_side0_fake.underlying_id();
 	map_location hex = map_location(1,1);
@@ -200,7 +200,7 @@ BOOST_AUTO_TEST_CASE( track_real_unit_by_iterator ) {
 	orc_config["random_traits"] = false;
 	unit_type orc_type(orc_config);
 
-	unit orc1_side0_real(&orc_type, 0, true);
+	unit orc1_side0_real(orc_type, 0, true);
 
 	map_location hex = map_location(1,1);
 
@@ -233,7 +233,7 @@ BOOST_AUTO_TEST_CASE( track_fake_unit_by_iterator ) {
 	orc_config["random_traits"] = false;
 	unit_type orc_type(orc_config);
 
-	unit orc1_side0_fake(&orc_type, 0, false);
+	unit orc1_side0_fake(orc_type, 0, false);
 
 	map_location hex = map_location(1,1);
 
