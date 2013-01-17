@@ -42,6 +42,9 @@ Version 1.11.1+svn:
  * Multiplayer:
    * Moved new lobby option in Preferences -> Multiplayer to Advanced
      Preferences and clarified description
+   * MP command-line mode now works correctly, including replays, random maps
+     and default values (bugs #19853, #19877, #19883, #19895 and #20009)
+   * New --ignore-map-settings MP command-line option
  * User interface:
    * Allow copying the selection in the old (default) lobby using
      Ctrl+C/Command+C (bug #5877)
