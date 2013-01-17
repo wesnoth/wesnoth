@@ -785,6 +785,11 @@ void unit_type::build_full(const movement_type_map &mv_types,
 		portraits_.push_back(tportrait(portrait));
 	}
 
+	// Propagate the build to the variations.
+	BOOST_FOREACH(variations_map::value_type & variation, variations_) {
+		variation.second->build_full(mv_types, races, traits);
+	}
+
 	// Deprecation messages, only seen when unit is parsed for the first time.
 
 	build_status_ = FULL;
@@ -887,7 +892,7 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 			var_cfg.swap(nvar_cfg);
 		}
 		unit_type *ut = new unit_type(var_cfg);
-		ut->build_full(mv_types, races, traits);
+		ut->build_help_index(mv_types, races, traits);
 		variations_.insert(std::make_pair(var_cfg["variation_name"], ut));
 	}
 
