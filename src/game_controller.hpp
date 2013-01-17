@@ -51,7 +51,6 @@ public:
 
 	bool init_config() { return init_config(false); }
 	bool play_test();
-	bool play_multiplayer_mode();
 	bool play_screenshot_mode();
 
 	void reload_changed_game_config();

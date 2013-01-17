@@ -27,7 +27,6 @@ public:
 
 	bool init_config();
 	bool play_test();
-	bool play_multiplayer_mode();
 	bool play_screenshot_mode();
 
 	void reload_changed_game_config();

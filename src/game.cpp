@@ -528,10 +528,6 @@ static int do_gameloop(int argc, char** argv)
 			return 0;
 		}
 
-		//if(game->play_multiplayer_mode() == false) {
-		//	return 0;
-		//}
-
 		if(game->play_screenshot_mode() == false) {
 			return 0;
 		}

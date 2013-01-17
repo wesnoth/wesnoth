@@ -39,11 +39,6 @@ bool game_controller_new::play_test()
 	return true;
 }
 
-bool game_controller_new::play_multiplayer_mode()
-{
-	return true;
-}
-
 bool game_controller_new::play_screenshot_mode()
 {
 	return true;

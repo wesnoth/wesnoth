@@ -36,7 +36,6 @@ public:
 	bool init_language();
 	bool init_joystick();
 	virtual bool play_test() = 0;
-	virtual bool play_multiplayer_mode() = 0;
 	virtual bool play_screenshot_mode() = 0;
 
 	virtual void reload_changed_game_config() = 0;
