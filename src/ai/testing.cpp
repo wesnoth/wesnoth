@@ -91,7 +91,7 @@ void ai_testing::log_game_start()
 	for (std::vector<team>::const_iterator tm = resources::teams->begin(); tm != resources::teams->end(); ++tm) {
 		int side = tm-resources::teams->begin()+1;
 		LOG_AI_TESTING << "AI_IDENTIFIER"<<side<<": " << ai::manager::get_active_ai_identifier_for_side(side) <<std::endl;
-		LOG_AI_TESTING << "FACTION"<<side<<": " << tm->name() << std::endl;
+		LOG_AI_TESTING << "TEAM"<<side<<": " << tm->name() << std::endl;
 		recorder.add_log_data("ai_log","ai_id"+str_cast(side),ai::manager::get_active_ai_identifier_for_side(side));
 		recorder.add_log_data("ai_log","faction"+str_cast(side),tm->name());
 		///@todo 1.9: add information about ai_config
