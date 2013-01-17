@@ -17,6 +17,9 @@ Version 1.10.5+svn:
  * Miscellaneous and bug fixes:
    * Fixed a rare case where a player could exercise (very) limited control of
      another (human) player's units in a hotseat game.
+   * Made wmllint recognize victory_string, defeat_string, gold_carryover_string,
+     and notes_string (all from the [objectives] tag) as attributes that need
+     to be made translatable
 
 Version 1.10.5:
  * Campaigns:
