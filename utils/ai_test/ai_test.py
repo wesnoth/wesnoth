@@ -44,7 +44,7 @@ def construct_command_line(cfg,ai1,ai2,f1,f2,map):
 		optmap=''
 	else:
 		optmap='--scenario='+map
-		
+
 	return wesnoth+' '+options+' '+optmap+' '+ai_config1+' '+ai_config2
 
 def do_filter(str,substring):
@@ -106,13 +106,13 @@ def run_game(cfg,game_result):
 			game_result.ai_ident2 = s.strip()
 			continue
 
-		n,s = do_filter(str,'info ai/testing: FACTION1:')
+		n,s = do_filter(str,'info mp/connect: FACTION1:')
 		if (n>-1):
 			#print 'AND THE FACTION1 IS: '+s
 			game_result.faction1 = s
 			continue
 
-		n,s = do_filter(str,'info ai/testing: FACTION2:')
+		n,s = do_filter(str,'info mp/connect: FACTION2:')
 		if (n>-1):
 			#print 'AND THE FACTION2 IS: '+s
 			game_result.faction2 = s
