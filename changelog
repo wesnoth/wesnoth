@@ -72,6 +72,9 @@ Version 1.11.1+svn:
      actually works without using :debug
    * Removed recognition of the --smallgui command line option, which has been
      superfluous since 1.9.5.
+   * Made wmllint recognize victory_string, defeat_string, gold_carryover_string,
+     and notes_string (all from the [objectives] tag) as attributes that need
+     to be made translatable
 
 Version 1.11.1:
  * AI:
