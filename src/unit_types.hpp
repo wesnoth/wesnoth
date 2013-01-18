@@ -418,8 +418,6 @@ private:
 	/** Parses the [hide_help] tag. */
 	void read_hide_help(const config &cfg);
 
-	void set_unit_config(const config& unit_cfg) { unit_cfg_ = &unit_cfg; }
-
 	std::pair<unit_type_map::iterator, bool> insert(const std::pair<std::string, unit_type> &utype) { return types_.insert(utype); }
 	void clear();
 

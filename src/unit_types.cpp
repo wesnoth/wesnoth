@@ -1301,10 +1301,10 @@ namespace { // Helpers for set_config()
  */
 void unit_type_data::set_config(config &cfg)
 {
-    DBG_UT << "unit_type_data::set_config, name: " << cfg["name"] << "\n";
+	DBG_UT << "unit_type_data::set_config, name: " << cfg["name"] << "\n";
 
-    clear();
-    set_unit_config(cfg);
+	clear();
+	unit_cfg_ = &cfg;
 
 	BOOST_FOREACH(const config &mt, cfg.child_range("movetype"))
 	{
@@ -1324,19 +1324,23 @@ void unit_type_data::set_config(config &cfg)
 	BOOST_FOREACH(config &ut, cfg.child_range("unit_type"))
 	{
 		std::string id = ut["id"];
-		std::vector<std::string> base_tree(1, id);
-		apply_base_unit(ut, cfg, base_tree);
-
-		if(ut["id"].empty()) {
+		if ( id.empty() ) {
 			ERR_CF << "[unit_type] with empty id=, ignoring:\n" << ut.debug();
 		} else {
-			// We insert an empty unit_type and build it after the copy (for performance).
-			insert(std::make_pair(id, unit_type(ut)));
-			LOG_CONFIG << "added " << id << " to unit_type list (unit_type_data.unit_types)\n";
+			std::vector<std::string> base_tree(1, id);
+			apply_base_unit(ut, cfg, base_tree);
+
+			if ( insert(std::make_pair(id, unit_type(ut))).second ) {
+				LOG_CONFIG << "added " << id << " to unit_type list (unit_type_data.unit_types)\n";
+			} else {
+				ERR_CF << "Multiple [unit_type]s with id=" << id << " encountered.\n";
+			}
 		}
 		loadscreen::increment_progress();
 	}
 
+	// Now build all the types that were inserted above. (This was not done within
+	// the loop for performance.)
 	build_all(unit_type::CREATED);
 
 	if (const config &hide_help = cfg.child("hide_help")) {
