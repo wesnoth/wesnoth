@@ -420,7 +420,6 @@ private:
 
 	void set_unit_config(const config& unit_cfg) { unit_cfg_ = &unit_cfg; }
 
-	const config &find_config(const std::string &key) const;
 	std::pair<unit_type_map::iterator, bool> insert(const std::pair<std::string, unit_type> &utype) { return types_.insert(utype); }
 	void clear();
 

@@ -1220,6 +1220,85 @@ unit_type_data::unit_type_data() :
 {
 }
 
+
+namespace { // Helpers for set_config()
+	/**
+	 * Spits out an error message and throws a config::eror.
+	 * Called when apply_base_unit() detects a cycle.
+	 * (This exists merely to take the error message out of that function.)
+	 */
+	void throw_base_unit_recursion_error(
+		const std::vector<std::string> & base_tree, const std::string & base_id)
+	{
+		std::stringstream ss;
+		ss << "[base_unit] recursion loop in [unit_type] ";
+		BOOST_FOREACH(const std::string &step, base_tree)
+			ss << step << "->";
+		ss << base_id;
+		ERR_CF << ss.str() << '\n';
+		throw config::error(ss.str());
+	}
+
+	/**
+	 * Locates the config for the unit type with id= @a key within @a all_types.
+	 * Throws a config::error if the unit type cannot be found.
+	 */
+	config & find_unit_type_config(const std::string & key, config & all_types)
+	{
+		config & cfg = all_types.find_child("unit_type", "id", key);
+		if ( cfg )
+			return cfg;
+
+		// Bad WML!
+		ERR_CF << "unit type not found: " << key << "\n";
+		ERR_CF << all_types << "\n";
+		throw config::error("unit type not found: " + key);
+	}
+
+	/**
+	 * Modifies the provided config by merging all base units into it.
+	 * The @a base_tree parameter is used solely for detecting and reporting
+	 * cycles of base units; it is no longer needed to prevent infinite loops.
+	 */
+	void apply_base_unit(config & ut_cfg, config & all_types,
+	                     std::vector<std::string> &base_tree)
+	{
+		// Get a list of base units to apply.
+		std::vector<std::string> base_ids;
+		BOOST_FOREACH (config & base, ut_cfg.child_range("base_unit") )
+			base_ids.push_back(base["id"]);
+
+		// Clear the base units (otherwise they could interfere with the merge).
+		// This has the side-effect of breaking cycles, hence base_tree is
+		// merely for error detection, not error recovery.
+		ut_cfg.clear_children("base_unit");
+
+		// Merge the base units, in order.
+		BOOST_FOREACH(const std::string & base_id, base_ids) {
+			// Detect recursion so the WML author is made aware of an error.
+			if ( std::find(base_tree.begin(), base_tree.end(), base_id) != base_tree.end() )
+				throw_base_unit_recursion_error(base_tree, base_id);
+
+			// Find the base unit.
+			config & base_cfg = find_unit_type_config(base_id, all_types);
+			// Make sure the base unit has had its base units accounted for.
+			base_tree.push_back(base_id);
+			apply_base_unit(base_cfg, all_types, base_tree);
+			base_tree.pop_back();
+
+			// Merge the base unit "under" our config.
+			config scratch(base_cfg);
+			scratch.merge_with(ut_cfg);
+			ut_cfg.swap(scratch);
+		}
+	}
+}// unnamed namespace
+
+/**
+ * Resets all data based on the provided config.
+ * This includes some processing of the config, such as expanding base units.
+ * A pointer to the config is stored, so the config must be persistent.
+ */
 void unit_type_data::set_config(config &cfg)
 {
     DBG_UT << "unit_type_data::set_config, name: " << cfg["name"] << "\n";
@@ -1245,31 +1324,9 @@ void unit_type_data::set_config(config &cfg)
 	BOOST_FOREACH(config &ut, cfg.child_range("unit_type"))
 	{
 		std::string id = ut["id"];
-		std::vector<std::string> base_tree;
-		base_tree.push_back(id);
-		while (const config &bu = ut.child("base_unit"))
-		{
-			if (std::find(base_tree.begin(), base_tree.end(), bu["id"].str()) != base_tree.end()) {
-				// If you want to allow diamond-style inheritance, replace the config::error throw with a continue
+		std::vector<std::string> base_tree(1, id);
+		apply_base_unit(ut, cfg, base_tree);
 
-				std::stringstream ss;
-				ss << "[base_unit] recursion loop in [unit_type] ";
-				BOOST_FOREACH(std::string &step, base_tree) {
-					ss << step << "->";
-				}
-				ss << bu["id"];
-				ERR_CF << ss.str() << '\n';
-				throw config::error(ss.str());
-			} else {
-				base_tree.push_back(bu["id"]);
-			}
-
-			// Derive a new unit type from existing base unit and its ancestors.
-			config merge_cfg = find_config(bu["id"]);
-			ut.remove_child("base_unit", 0);
-			merge_cfg.merge_with(ut);
-			ut.swap(merge_cfg);
-		}
 		if(ut["id"].empty()) {
 			ERR_CF << "[unit_type] with empty id=, ignoring:\n" << ut.debug();
 		} else {
@@ -1318,19 +1375,6 @@ void unit_type_data::check_types(const std::vector<std::string>& types) const
 	BOOST_FOREACH(const std::string& type, types) {
 		if(!find(type)) throw game::game_error("unknown unit type: " + type);
 	}
-}
-
-const config& unit_type_data::find_config(const std::string& key) const
-{
-	const config &cfg = unit_cfg_->find_child("unit_type", "id", key);
-
-	if (cfg)
-		return cfg;
-
-    ERR_CF << "unit type not found: " << key << "\n";
-    ERR_CF << *unit_cfg_ << "\n";
-
-    throw config::error("unit type not found: "+key);
 }
 
 void unit_type_data::clear()
