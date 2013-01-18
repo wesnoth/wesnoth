@@ -1213,6 +1213,9 @@ void config::clear_diff_track(const config& diff)
 	}
 }
 
+/**
+ * Merge config 'c' into this config, overwriting this config's values.
+ */
 void config::merge_with(const config& c)
 {
 	check_valid(c);
@@ -1243,6 +1246,18 @@ void config::merge_with(const config& c)
 			add_child(tag, *j->second[visits++]);
 		}
 	}
+}
+
+/**
+ * Merge config 'c' into this config, preserving this config's values.
+ */
+void config::inherit_from(const config& c)
+{
+	// Using a scratch config and merge_with() seems to execute about as fast
+	// as direct coding of this merge.
+	config scratch(c);
+	scratch.merge_with(*this);
+	swap(scratch);
 }
 
 bool config::matches(const config &filter) const

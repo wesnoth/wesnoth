@@ -568,10 +568,14 @@ public:
 	void clear_diff_track(const config& diff);
 
 	/**
-	 * Merge config 'c' into this config.
-	 * Overwrites this config's values.
+	 * Merge config 'c' into this config, overwriting this config's values.
 	 */
 	void merge_with(const config& c);
+
+	/**
+	 * Merge config 'c' into this config, preserving this config's values.
+	 */
+	void inherit_from(const config& c);
 
 	bool matches(const config &filter) const;
 

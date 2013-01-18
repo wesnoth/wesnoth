@@ -886,10 +886,8 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	BOOST_FOREACH(config &var_cfg, cfg_.child_range("variation"))
 	{
 		if (var_cfg["inherit"].to_bool()) {
-			config nvar_cfg(cfg);
-			nvar_cfg.merge_with(var_cfg);
-			nvar_cfg.clear_children("variation");
-			var_cfg.swap(nvar_cfg);
+			var_cfg.inherit_from(cfg);
+			var_cfg.clear_children("variation");
 		}
 		unit_type *ut = new unit_type(var_cfg);
 		ut->build_help_index(mv_types, races, traits);
@@ -917,9 +915,7 @@ void unit_type::build_created(const movement_type_map &mv_types,
 	if (config &male_cfg = cfg_.child("male"))
 	{
 		if (male_cfg["inherit"].to_bool(true)) {
-			config m_cfg(cfg);
-			m_cfg.merge_with(male_cfg);
-			male_cfg.swap(m_cfg);
+			male_cfg.inherit_from(cfg);
 		}
 		male_cfg.clear_children("male");
 		male_cfg.clear_children("female");
@@ -929,9 +925,7 @@ void unit_type::build_created(const movement_type_map &mv_types,
 	if (config &female_cfg = cfg_.child("female"))
 	{
 		if (female_cfg["inherit"].to_bool(true)) {
-			config f_cfg(cfg);
-			f_cfg.merge_with(female_cfg);
-			female_cfg.swap(f_cfg);
+			female_cfg.inherit_from(cfg);
 		}
 		female_cfg.clear_children("male");
 		female_cfg.clear_children("female");
@@ -1287,9 +1281,7 @@ namespace { // Helpers for set_config()
 			base_tree.pop_back();
 
 			// Merge the base unit "under" our config.
-			config scratch(base_cfg);
-			scratch.merge_with(ut_cfg);
-			ut_cfg.swap(scratch);
+			ut_cfg.inherit_from(base_cfg);
 		}
 	}
 }// unnamed namespace
