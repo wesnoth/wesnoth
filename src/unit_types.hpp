@@ -244,7 +244,10 @@ public:
 	/** The name of the unit in the current language setting. */
 	const t_string& type_name() const { return type_name_; }
 
+	/// The id for this unit_type.
 	const std::string& id() const { return id_; }
+	/// A variant on id() that is more descriptive, for use with message logging.
+	const std::string log_id() const { return id_ + debug_id_; }
 	// NOTE: this used to be a const object reference, but it messed up with the
 	// translation engine upon changing the language in the same session.
 	t_string unit_description() const;
@@ -328,6 +331,7 @@ private:
 	const config &cfg_;
 
 	std::string id_;
+	std::string debug_id_;  /// A suffix for id_, used when logging messages.
 	t_string type_name_;
 	t_string description_;
 	int hitpoints_;

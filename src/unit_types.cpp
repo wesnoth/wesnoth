@@ -603,6 +603,7 @@ int defense_modifier_internal(defense_cache &defense_mods,
 unit_type::unit_type(const unit_type& o) :
 	cfg_(o.cfg_),
 	id_(o.id_),
+	debug_id_(o.debug_id_),
 	type_name_(o.type_name_),
 	description_(o.description_),
 	hitpoints_(o.hitpoints_),
@@ -652,6 +653,7 @@ unit_type::unit_type(const unit_type& o) :
 unit_type::unit_type(const config &cfg, const std::string & parent_id) :
 	cfg_(cfg),
 	id_(cfg_.has_attribute("id") ? cfg_["id"].str() : parent_id),
+	debug_id_(),
 	type_name_(cfg_["name"].t_str()),
 	description_(),
 	hitpoints_(0),
@@ -728,7 +730,7 @@ void unit_type::build_full(const movement_type_map &mv_types,
 	else if(align == "liminal")
 		alignment_ = LIMINAL;
 	else {
-		ERR_CF << "Invalid alignment found for " << id() << ": '" << align << "'\n";
+		ERR_CF << "Invalid alignment found for " << log_id() << ": '" << align << "'\n";
 		alignment_ = NEUTRAL;
 	}
 
@@ -881,9 +883,12 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	}
 	BOOST_FOREACH(const config &var_cfg, cfg_.child_range("variation"))
 	{
+		const std::string var_name = var_cfg["variation_name"];
+
 		unit_type *ut = new unit_type(var_cfg, id_);
+		ut->debug_id_ = debug_id_ + " [" + var_name + "]";
 		ut->build_help_index(mv_types, races, traits);
-		variations_.insert(std::make_pair(var_cfg["variation_name"], ut));
+		variations_.insert(std::make_pair(var_name, ut));
 	}
 
 	hide_help_= cfg_["hide_help"].to_bool();
@@ -902,11 +907,15 @@ void unit_type::build_created(const movement_type_map &mv_types,
 	gender_types_[0] = NULL;
 	gender_types_[1] = NULL;
 
-	if ( const config &male_cfg = cfg_.child("male") )
+	if ( const config &male_cfg = cfg_.child("male") ) {
 		gender_types_[0] = new unit_type(male_cfg, id_);
+		gender_types_[0]->debug_id_ = debug_id_ + " (male)";
+	}
 
-	if ( const config &female_cfg = cfg_.child("female") )
+	if ( const config &female_cfg = cfg_.child("female") ) {
 		gender_types_[1] = new unit_type(female_cfg, id_);
+		gender_types_[1]->debug_id_ = debug_id_ + " (female)";
+	}
 
 	for (int i = 0; i < 2; ++i) {
 		if (gender_types_[i])
@@ -916,7 +925,7 @@ void unit_type::build_created(const movement_type_map &mv_types,
     const std::string& advances_to_val = cfg_["advances_to"];
     if(advances_to_val != "null" && advances_to_val != "")
         advances_to_ = utils::split(advances_to_val);
-    DBG_UT << "unit_type '" << id_ << "' advances to : " << advances_to_val << "\n";
+    DBG_UT << "unit_type '" << log_id() << "' advances to : " << advances_to_val << "\n";
 
 	experience_needed_ = cfg_["experience"].to_int(500);
 
@@ -929,7 +938,7 @@ void unit_type::build_created(const movement_type_map &mv_types,
 void unit_type::build(BUILD_STATUS status, const movement_type_map &movement_types,
                       const race_map &races, const config::const_child_itors &traits)
 {
-	DBG_UT << "Building unit type " << id_ << ", level " << status << '\n';
+	DBG_UT << "Building unit type " << log_id() << ", level " << status << '\n';
 
 	// Nothing to do if we are already built.
 	if ( int(status) <= int(build_status_) )
@@ -1093,12 +1102,12 @@ void unit_type::add_advancement(const unit_type &to_unit,int xp)
 	const std::string &to_id = to_unit.id_;
 
 	// Add extra advancement path to this unit type
-	LOG_CONFIG << "adding advancement from " << id_ << " to " << to_id << "\n";
+	LOG_CONFIG << "adding advancement from " << log_id() << " to " << to_unit.log_id() << "\n";
 	if(std::find(advances_to_.begin(), advances_to_.end(), to_id) == advances_to_.end()) {
 		advances_to_.push_back(to_id);
 	} else {
-		LOG_CONFIG << "advancement from " << id_
-		           << " to " << to_id << " already known, ignoring.\n";
+		LOG_CONFIG << "advancement from " << log_id() << " to "
+		           << to_unit.log_id() << " already known, ignoring.\n";
 		return;
 	}
 
@@ -1108,21 +1117,27 @@ void unit_type::add_advancement(const unit_type &to_unit,int xp)
 			//This function is called for and only for an [advancefrom] tag in a unit_type referencing this unit_type.
 			in_advancefrom_ = true;
 			experience_needed_ = xp;
-			DBG_UT << "Changing experience_needed from " << experience_needed_ << " to " << xp << " due to (first) [advancefrom] of " << to_id << "\n";
+			DBG_UT << "Changing experience_needed from " << experience_needed_
+			       << " to " << xp << " due to (first) [advancefrom] of "
+			       << to_unit.log_id() << "\n";
 		}
 		else if(experience_needed_ > xp) {
 			experience_needed_ = xp;
-			DBG_UT << "Lowering experience_needed from " << experience_needed_ << " to " << xp << " due to (multiple, lower) [advancefrom] of " << to_id << "\n";
+			DBG_UT << "Lowering experience_needed from " << experience_needed_
+			       << " to " << xp << " due to (multiple, lower) [advancefrom] of "
+			       << to_unit.log_id() << "\n";
 		}
 		else
-			DBG_UT << "Ignoring experience_needed change from " << experience_needed_ << " to " << xp << " due to (multiple, higher) [advancefrom] of " << to_id << "\n";
+			DBG_UT << "Ignoring experience_needed change from " << experience_needed_
+			       << " to " << xp << " due to (multiple, higher) [advancefrom] of "
+			       << to_unit.log_id() << "\n";
 	}
 
 	// Add advancements to gendered subtypes, if supported by to_unit
 	for(int gender=0; gender<=1; ++gender) {
 		if(gender_types_[gender] == NULL) continue;
 		if(to_unit.gender_types_[gender] == NULL) {
-			WRN_CF << to_id << " does not support gender " << gender << "\n";
+			WRN_CF << to_unit.log_id() << " does not support gender " << gender << "\n";
 			continue;
 		}
 		LOG_CONFIG << "gendered advancement " << gender << ": ";
@@ -1378,7 +1393,7 @@ const unit_type *unit_type_data::find(const std::string& key, unit_type::BUILD_S
     if (itor == types_.end()){
         /*
         for (unit_type_map::const_iterator ut = types_.begin(); ut != types_.end(); ut++)
-            DBG_UT << "Known unit_types: key = '" << ut->first << "', id = '" << ut->second.id() << "'\n";
+            DBG_UT << "Known unit_types: key = '" << ut->first << "', id = '" << ut->second.log_id() << "'\n";
         */
 		return NULL;
     }
@@ -1481,14 +1496,14 @@ void unit_type_data::add_advancement(unit_type& to_unit) const
 		if (from_unit == types_.end()) {
 			std::ostringstream msg;
 			msg << "unit type '" << from << "' not found when resolving [advancefrom] tag for '"
-				<< to_unit.id() << "'";
+				<< to_unit.log_id() << "'";
 			throw config::error(msg.str());
 		}
 
         // Fix up advance_from references
         from_unit->second.add_advancement(to_unit, xp);
 
-        DBG_UT << "Added advancement ([advancefrom]) from " << from << " to " << to_unit.id() << "\n";
+        DBG_UT << "Added advancement ([advancefrom]) from " << from << " to " << to_unit.log_id() << "\n";
     }
 }
 
