@@ -885,10 +885,6 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	}
 	BOOST_FOREACH(config &var_cfg, cfg_.child_range("variation"))
 	{
-		if (var_cfg["inherit"].to_bool()) {
-			var_cfg.inherit_from(cfg);
-			var_cfg.clear_children("variation");
-		}
 		unit_type *ut = new unit_type(var_cfg);
 		ut->build_help_index(mv_types, races, traits);
 		variations_.insert(std::make_pair(var_cfg["variation_name"], ut));
@@ -913,24 +909,10 @@ void unit_type::build_created(const movement_type_map &mv_types,
 	const config &cfg = cfg_;
 
 	if (config &male_cfg = cfg_.child("male"))
-	{
-		if (male_cfg["inherit"].to_bool(true)) {
-			male_cfg.inherit_from(cfg);
-		}
-		male_cfg.clear_children("male");
-		male_cfg.clear_children("female");
 		gender_types_[0] = new unit_type(male_cfg);
-	}
 
 	if (config &female_cfg = cfg_.child("female"))
-	{
-		if (female_cfg["inherit"].to_bool(true)) {
-			female_cfg.inherit_from(cfg);
-		}
-		female_cfg.clear_children("male");
-		female_cfg.clear_children("female");
 		gender_types_[1] = new unit_type(female_cfg);
-	}
 
 	for (int i = 0; i < 2; ++i) {
 		if (gender_types_[i])
@@ -1284,6 +1266,43 @@ namespace { // Helpers for set_config()
 			ut_cfg.inherit_from(base_cfg);
 		}
 	}
+
+	/**
+	 * Handles inheritance for configs of [male], [female], and [variation].
+	 * Also removes gendered children, as those serve no purpose.
+	 * @a default_inherit is the default value for inherit=.
+	 */
+	void fill_unit_sub_type(config & var_cfg, const config & parent,
+	                        bool default_inherit)
+	{
+		if ( var_cfg["inherit"].to_bool(default_inherit) ) {
+			var_cfg.inherit_from(parent);
+		}
+		var_cfg.clear_children("male");
+		var_cfg.clear_children("female");
+	}
+
+	/**
+	 * Processes [variation] tags of @a ut_cfg, handling inheritence and
+	 * child clearing.
+	 */
+	void handle_variations(config & ut_cfg)
+	{
+		// Most unit types do not have variations.
+		if ( !ut_cfg.has_child("variation") )
+			return;
+
+		// Pull the variations out of the base unit type.
+		config variations;
+		variations.splice_children(ut_cfg, "variation");
+
+		// Handle each variation's inheritance.
+		BOOST_FOREACH (config &var_cfg, variations.child_range("variation"))
+			fill_unit_sub_type(var_cfg, ut_cfg, false);
+
+		// Restore the variations.
+		ut_cfg.splice_children(variations, "variation");
+	}
 }// unnamed namespace
 
 /**
@@ -1328,9 +1347,20 @@ void unit_type_data::set_config(config &cfg)
 				ERR_CF << "Multiple [unit_type]s with id=" << id << " encountered.\n";
 			}
 		}
+
+		// Handle genders and variations.
+		if ( config &male_cfg = ut.child("male") ) {
+			fill_unit_sub_type(male_cfg, ut, true);
+			handle_variations(male_cfg);
+		}
+		if ( config &female_cfg = ut.child("female") ) {
+			fill_unit_sub_type(female_cfg, ut, true);
+			handle_variations(female_cfg);
+		}
+		handle_variations(ut);
+
 		loadscreen::increment_progress();
 	}
-
 	// Now build all the types that were inserted above. (This was not done within
 	// the loop for performance.)
 	build_all(unit_type::CREATED);
