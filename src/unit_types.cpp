@@ -649,9 +649,9 @@ unit_type::unit_type(const unit_type& o) :
 }
 
 
-unit_type::unit_type(const config &cfg) :
+unit_type::unit_type(const config &cfg, const std::string & parent_id) :
 	cfg_(cfg),
-	id_(cfg_["id"]),
+	id_(cfg_.has_attribute("id") ? cfg_["id"].str() : parent_id),
 	type_name_(cfg_["name"].t_str()),
 	description_(),
 	hitpoints_(0),
@@ -881,7 +881,7 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	}
 	BOOST_FOREACH(const config &var_cfg, cfg_.child_range("variation"))
 	{
-		unit_type *ut = new unit_type(var_cfg);
+		unit_type *ut = new unit_type(var_cfg, id_);
 		ut->build_help_index(mv_types, races, traits);
 		variations_.insert(std::make_pair(var_cfg["variation_name"], ut));
 	}
@@ -903,10 +903,10 @@ void unit_type::build_created(const movement_type_map &mv_types,
 	gender_types_[1] = NULL;
 
 	if ( const config &male_cfg = cfg_.child("male") )
-		gender_types_[0] = new unit_type(male_cfg);
+		gender_types_[0] = new unit_type(male_cfg, id_);
 
 	if ( const config &female_cfg = cfg_.child("female") )
-		gender_types_[1] = new unit_type(female_cfg);
+		gender_types_[1] = new unit_type(female_cfg, id_);
 
 	for (int i = 0; i < 2; ++i) {
 		if (gender_types_[i])
@@ -1090,15 +1090,14 @@ bool unit_type::hide_help() const {
 
 void unit_type::add_advancement(const unit_type &to_unit,int xp)
 {
-	const std::string &to_id =  to_unit.cfg_["id"];
-	const std::string &from_id =  cfg_["id"];
+	const std::string &to_id = to_unit.id_;
 
 	// Add extra advancement path to this unit type
-	LOG_CONFIG << "adding advancement from " << from_id << " to " << to_id << "\n";
+	LOG_CONFIG << "adding advancement from " << id_ << " to " << to_id << "\n";
 	if(std::find(advances_to_.begin(), advances_to_.end(), to_id) == advances_to_.end()) {
 		advances_to_.push_back(to_id);
 	} else {
-		LOG_CONFIG << "advancement from " << from_id
+		LOG_CONFIG << "advancement from " << id_
 		           << " to " << to_id << " already known, ignoring.\n";
 		return;
 	}
