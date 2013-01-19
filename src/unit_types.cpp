@@ -649,10 +649,10 @@ unit_type::unit_type(const unit_type& o) :
 }
 
 
-unit_type::unit_type(config &cfg) :
+unit_type::unit_type(const config &cfg) :
 	cfg_(cfg),
-	id_(cfg["id"]),
-	type_name_(cfg["name"].t_str()),
+	id_(cfg_["id"]),
+	type_name_(cfg_["name"].t_str()),
 	description_(),
 	hitpoints_(0),
 	level_(0),
@@ -663,11 +663,11 @@ unit_type::unit_type(config &cfg) :
 	cost_(0),
 	usage_(),
 	undead_variation_(),
-	image_(cfg["image"].str()),
+	image_(cfg_["image"].str()),
 	icon_(),
 	small_profile_(),
 	big_profile_(),
-	flag_rgb_(cfg["flag_rgb"].str()),
+	flag_rgb_(cfg_["flag_rgb"].str()),
 	num_traits_(0),
 	gender_types_(),
 	variations_(),
@@ -713,14 +713,12 @@ void unit_type::build_full(const movement_type_map &mv_types,
 	if (build_status_ == NOT_BUILT || build_status_ == CREATED)
 		build_help_index(mv_types, races, traits);
 
-	const config &cfg = cfg_;
-
 	for (int i = 0; i < 2; ++i) {
 		if (gender_types_[i])
 			gender_types_[i]->build_full(mv_types, races, traits);
 	}
 
-	const std::string& align = cfg["alignment"];
+	const std::string& align = cfg_["alignment"];
 	if(align == "lawful")
 		alignment_ = LAWFUL;
 	else if(align == "chaotic")
@@ -739,7 +737,7 @@ void unit_type::build_full(const movement_type_map &mv_types,
 		if (!race_->uses_global_traits()) {
 			possibleTraits_.clear();
 		}
-		if (cfg["ignore_race_traits"].to_bool()) {
+		if ( cfg_["ignore_race_traits"].to_bool() ) {
 			possibleTraits_.clear();
 		} else {
 			BOOST_FOREACH(const config &t, race_->additional_traits())
@@ -754,19 +752,19 @@ void unit_type::build_full(const movement_type_map &mv_types,
 	}
 
 	// Insert any traits that are just for this unit type
-	BOOST_FOREACH(const config &trait, cfg.child_range("trait"))
+	BOOST_FOREACH(const config &trait, cfg_.child_range("trait"))
 	{
 		possibleTraits_.add_child("trait", trait);
 	}
 
-	zoc_ = cfg["zoc"].to_bool(level_ > 0);
+	zoc_ = cfg_["zoc"].to_bool(level_ > 0);
 
-	const std::string& alpha_blend = cfg["alpha"];
+	const std::string& alpha_blend = cfg_["alpha"];
 	if(alpha_blend.empty() == false) {
 		alpha_ = ftofxp(atof(alpha_blend.c_str()));
 	}
 
-	const std::string& move_type = cfg["movement_type"];
+	const std::string& move_type = cfg_["movement_type"];
 
 	const movement_type_map::const_iterator it = mv_types.find(move_type);
 
@@ -778,7 +776,7 @@ void unit_type::build_full(const movement_type_map &mv_types,
 	    DBG_UT << "no parent found for movement_type " << move_type << "\n";
 	}
 
-	game_config::add_color_info(cfg);
+	game_config::add_color_info(cfg_);
 
 
 	BOOST_FOREACH(const config &portrait, cfg_.child_range("portrait")) {
@@ -804,23 +802,21 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	if (build_status_ == NOT_BUILT)
 		build_created(mv_types, races, traits);
 
-	const config &cfg = cfg_;
-
-	type_name_ = cfg["name"];
-	description_ = cfg["description"];
-	hitpoints_ = cfg["hitpoints"].to_int(1);
-	level_ = cfg["level"];
-	movement_ = cfg["movement"].to_int(1);
-	vision_ = cfg["vision"].to_int(-1);
-	jamming_ = cfg["jamming"].to_int(0);
-	max_attacks_ = cfg["attacks"].to_int(1);
-	cost_ = cfg["cost"].to_int(1);
-	usage_ = cfg["usage"].str();
-	undead_variation_ = cfg["undead_variation"].str();
-	image_ = cfg["image"].str();
-	icon_ = cfg["image_icon"].str();
-	small_profile_ = cfg["small_profile"].str();
-	big_profile_ = cfg["profile"].str();
+	type_name_ = cfg_["name"];
+	description_ = cfg_["description"];
+	hitpoints_ = cfg_["hitpoints"].to_int(1);
+	level_ = cfg_["level"];
+	movement_ = cfg_["movement"].to_int(1);
+	vision_ = cfg_["vision"].to_int(-1);
+	jamming_ = cfg_["jamming"].to_int(0);
+	max_attacks_ = cfg_["attacks"].to_int(1);
+	cost_ = cfg_["cost"].to_int(1);
+	usage_ = cfg_["usage"].str();
+	undead_variation_ = cfg_["undead_variation"].str();
+	image_ = cfg_["image"].str();
+	icon_ = cfg_["image_icon"].str();
+	small_profile_ = cfg_["small_profile"].str();
+	big_profile_ = cfg_["profile"].str();
 	adjust_profile(small_profile_, big_profile_, image_);
 
 	for (int i = 0; i < 2; ++i) {
@@ -828,7 +824,7 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 			gender_types_[i]->build_help_index(mv_types, races, traits);
 	}
 
-	const race_map::const_iterator race_it = races.find(cfg["race"]);
+	const race_map::const_iterator race_it = races.find(cfg_["race"]);
 	if(race_it != races.end()) {
 		race_ = &race_it->second;
 	} else {
@@ -836,9 +832,9 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	}
 
 	// if num_traits is not defined, we use the num_traits from race
-	num_traits_ = cfg["num_traits"].to_int(race_->num_traits());
+	num_traits_ = cfg_["num_traits"].to_int(race_->num_traits());
 
-	const std::vector<std::string> genders = utils::split(cfg["gender"]);
+	const std::vector<std::string> genders = utils::split(cfg_["gender"]);
 	for(std::vector<std::string>::const_iterator g = genders.begin(); g != genders.end(); ++g) {
 		genders_.push_back(string_gender(*g));
 	}
@@ -847,7 +843,7 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 		genders_.push_back(unit_race::MALE);
 	}
 
-	if (const config &abil_cfg = cfg.child("abilities"))
+	if (const config &abil_cfg = cfg_.child("abilities"))
 	{
 		BOOST_FOREACH(const config::any_child &ab, abil_cfg.all_children_range()) {
 			const config::attribute_value &name = ab.cfg["name"];
@@ -858,7 +854,7 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 		}
 	}
 
-	BOOST_FOREACH(const config &adv, cfg.child_range("advancement"))
+	BOOST_FOREACH(const config &adv, cfg_.child_range("advancement"))
 	{
 		BOOST_FOREACH(const config &effect, adv.child_range("effect"))
 		{
@@ -876,21 +872,21 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 		}
 	}
 
-	movementType_ = unit_movement_type(cfg);
+	movementType_ = unit_movement_type(cfg_);
 	alpha_ = ftofxp(1.0);
 
 	BOOST_FOREACH(const config &t, traits)
 	{
 		possibleTraits_.add_child("trait", t);
 	}
-	BOOST_FOREACH(config &var_cfg, cfg_.child_range("variation"))
+	BOOST_FOREACH(const config &var_cfg, cfg_.child_range("variation"))
 	{
 		unit_type *ut = new unit_type(var_cfg);
 		ut->build_help_index(mv_types, races, traits);
 		variations_.insert(std::make_pair(var_cfg["variation_name"], ut));
 	}
 
-	hide_help_= cfg["hide_help"].to_bool();
+	hide_help_= cfg_["hide_help"].to_bool();
 
 	build_status_ = HELP_INDEX;
 }
@@ -906,12 +902,10 @@ void unit_type::build_created(const movement_type_map &mv_types,
 	gender_types_[0] = NULL;
 	gender_types_[1] = NULL;
 
-	const config &cfg = cfg_;
-
-	if (config &male_cfg = cfg_.child("male"))
+	if ( const config &male_cfg = cfg_.child("male") )
 		gender_types_[0] = new unit_type(male_cfg);
 
-	if (config &female_cfg = cfg_.child("female"))
+	if ( const config &female_cfg = cfg_.child("female") )
 		gender_types_[1] = new unit_type(female_cfg);
 
 	for (int i = 0; i < 2; ++i) {
@@ -919,12 +913,12 @@ void unit_type::build_created(const movement_type_map &mv_types,
 			gender_types_[i]->build_created(mv_types, races, traits);
 	}
 
-    const std::string& advances_to_val = cfg["advances_to"];
+    const std::string& advances_to_val = cfg_["advances_to"];
     if(advances_to_val != "null" && advances_to_val != "")
         advances_to_ = utils::split(advances_to_val);
     DBG_UT << "unit_type '" << id_ << "' advances to : " << advances_to_val << "\n";
 
-	experience_needed_ = cfg["experience"].to_int(500);
+	experience_needed_ = cfg_["experience"].to_int(500);
 
 	build_status_ = CREATED;
 }

@@ -189,7 +189,7 @@ public:
 	 * @note @a cfg is not copied, so it has to point to some permanent
 	 *       storage, that is, a child of unit_type_data::unit_cfg.
 	 */
-	explicit unit_type(config &cfg);
+	explicit unit_type(const config &cfg);
 	unit_type(const unit_type& o);
 
 	~unit_type();
@@ -325,7 +325,7 @@ public:
 private:
 	void operator=(const unit_type& o);
 
-	config &cfg_;
+	const config &cfg_;
 
 	std::string id_;
 	t_string type_name_;
