@@ -65,6 +65,7 @@ Version 1.11.1+svn:
      [effect]apply_to=type or [effect]apply_to=variation.
    * Fixed bug #20401: [remove_unit_overlay] did not work when the image used an
      image path function that took multiple parameters.
+   * Improved support for setting id= within a [variation].
  * Miscellaneous and bug fixes:
    * The undo stack is preserved across a save-reload.
    * Removed several unused private member variables.
