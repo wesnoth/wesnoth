@@ -1464,9 +1464,13 @@ void unit_type_data::build_all(unit_type::BUILD_STATUS status)
 		build_unit_type(u->second, status);
 		loadscreen::increment_progress();
 	}
-	for (unit_type_map::iterator u = types_.begin(), u_end = types_.end(); u != u_end; ++u) {
-		add_advancement(u->second);
-	}
+	// Handle [advancefrom] (once) after building to (at least) the CREATED level.
+	// (Currently, this could be simply a test for build_status_ == NOT_BUILT,
+	// but to guard against future changes, use a more thorough test.)
+	if ( build_status_ < unit_type::CREATED  &&  unit_type::CREATED <= status )
+		for (unit_type_map::iterator u = types_.begin(), u_end = types_.end(); u != u_end; ++u) {
+			add_advancement(u->second);
+		}
 
 	build_status_ = status;
 }
