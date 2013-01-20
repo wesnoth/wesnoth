@@ -280,7 +280,7 @@ std::pair<map_location,map_location> testing_move_to_targets_phase::choose_move(
 
 	//find the first eligible unit
 	for(u = units_.begin(); u != units_.end(); ++u) {
-		if (!(u->side() != get_side() || (u->can_recruit() and !get_leader_ignores_keep()) || u->movement_left() <= 0 || u->incapacitated())) {
+		if (!(u->side() != get_side() || (u->can_recruit() && !get_leader_ignores_keep()) || u->movement_left() <= 0 || u->incapacitated())) {
 			break;
 		}
 	}
@@ -384,7 +384,7 @@ std::pair<map_location,map_location> testing_move_to_targets_phase::choose_move(
 		LOG_AI << "complex targeting...\n";
 		//now see if any other unit can put a better bid forward
 		for(++u; u != units_.end(); ++u) {
-			if (u->side() != get_side() || (u->can_recruit() and !get_leader_ignores_keep()) ||
+			if (u->side() != get_side() || (u->can_recruit() && !get_leader_ignores_keep()) ||
 			    u->movement_left() <= 0 || u->get_state("guardian") ||
 			    u->incapacitated())
 			{
@@ -687,7 +687,7 @@ map_location testing_move_to_targets_phase::form_group(const std::vector<map_loc
 				++n;
 			} else {
 				const unit_map::const_iterator un = units_.find(j->second);
-				if(un == units_.end() || (un->can_recruit() and !get_leader_ignores_keep()) || un->movement_left() < un->total_movement()) {
+				if(un == units_.end() || (un->can_recruit() && !get_leader_ignores_keep()) || un->movement_left() < un->total_movement()) {
 					continue;
 				}
 
