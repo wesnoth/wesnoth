@@ -1149,14 +1149,19 @@ void unit_type::add_advancement(const unit_type &to_unit,int xp)
 		gender_types_[gender]->add_advancement(*(to_unit.gender_types_[gender]),xp);
 	}
 
-	// Add advancements to variation subtypes.
-	// Since these are still a rare and special-purpose feature,
-	// we assume that the unit designer knows what they're doing,
-	// and don't block advancements that would remove a variation.
-	for(variations_map::iterator v=variations_.begin();
-	    v!=variations_.end(); ++v) {
-		LOG_CONFIG << "variation advancement: ";
-		v->second->add_advancement(to_unit,xp);
+	if ( cfg_.has_child("variation") ) {
+		// Make sure the variations are created.
+		unit_types.build_unit_type(*this, HELP_INDEX);
+
+		// Add advancements to variation subtypes.
+		// Since these are still a rare and special-purpose feature,
+		// we assume that the unit designer knows what they're doing,
+		// and don't block advancements that would remove a variation.
+		for(variations_map::iterator v=variations_.begin();
+			v!=variations_.end(); ++v) {
+			LOG_CONFIG << "variation advancement: ";
+			v->second->add_advancement(to_unit,xp);
+		}
 	}
 }
 
