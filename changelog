@@ -19,7 +19,8 @@ Version 1.11.1+svn:
        recruiting strategies.
      * Documentation at http://wiki.wesnoth.org/Micro_AIs
    * Rename passive_leader_shares_keep candidate action to leader_shares_keep.
-     The old syntax still works for backward compatibility (for both CA and macros).
+     The old syntax still works for backward compatibility (for both CA and
+     macros).
    * Fix minor bug in leader_shares_keep candidate action that occurred
      under some circumstances when the AI leader does not have full MP
  * Campaigns:
@@ -30,8 +31,8 @@ Version 1.11.1+svn:
  * Graphics:
    * Fix layering error with bridges
  * Language and i18n:
-   * Updated translations: British English, Galician, Italian, Latin,
-      Portuguese, Portuguese (Brazil)
+   * Updated translations: British English, French, Galician, Italian, Latin,
+     Portuguese, Portuguese (Brazil)
  * Lua API:
    * new wesnoth.get_time_stamp() function
    * new helper.shuffle() function
@@ -73,9 +74,9 @@ Version 1.11.1+svn:
      actually works without using :debug
    * Removed recognition of the --smallgui command line option, which has been
      superfluous since 1.9.5.
-   * Made wmllint recognize victory_string, defeat_string, gold_carryover_string,
-     and notes_string (all from the [objectives] tag) as attributes that need
-     to be made translatable
+   * Made wmllint recognize victory_string, defeat_string,
+     gold_carryover_string, and notes_string (all from the [objectives] tag) as
+     attributes that need to be made translatable
 
 Version 1.11.1:
  * AI:
