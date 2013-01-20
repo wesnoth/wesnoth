@@ -5,7 +5,7 @@ Version 1.10.5+svn:
    * Son of the Black Eye:
      * Prevent infinite loop if fewer than two transport ships (bug #20389)
  * Language and i18n:
-   * Updated translations: British English, Galician, German, Latin,
+   * Updated translations: British English, French, Galician, German, Latin,
      Portuguese, Portuguese (Brazil), Scottish Gaelic, Slovak
  * Multiplayer:
    * Moved new lobby option in Preferences -> Multiplayer to Advanced
@@ -17,9 +17,9 @@ Version 1.10.5+svn:
  * Miscellaneous and bug fixes:
    * Fixed a rare case where a player could exercise (very) limited control of
      another (human) player's units in a hotseat game.
-   * Made wmllint recognize victory_string, defeat_string, gold_carryover_string,
-     and notes_string (all from the [objectives] tag) as attributes that need
-     to be made translatable
+   * Made wmllint recognize victory_string, defeat_string,
+     gold_carryover_string, and notes_string (all from the [objectives] tag) as
+     attributes that need to be made translatable
 
 Version 1.10.5:
  * Campaigns:

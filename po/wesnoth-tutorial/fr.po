@@ -1,18 +1,18 @@
 # Guillaume Pascal <guillaume.pascal43@laposte.net>, 2011, 2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
+"Project-Id-Version: Wesnoth_Tutorial-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-10-27 16:01+0200\n"
-"PO-Revision-Date: 2012-03-26 15:32+0200\n"
-"Last-Translator: Guillaume Pascal <guillaume.pascal43@laposte.net>\n"
-"Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
+"POT-Creation-Date: 2012-11-17 13:12+0100\n"
+"PO-Revision-Date: 2013-01-12 09:42+0100\n"
+"Last-Translator: Guigou Guillaume <guillaume.guigou@orange.fr>\n"
+"Language-Team: French <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Virtaal 0.7.0\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:40
 msgid ""
@@ -714,8 +714,8 @@ msgstr "Protégez vos Troupes"
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:995
 msgid ""
 "Remember to pull back wounded units into villages and recruit more if "
-"needed. Take special care of units with the highest <i>experience points (XP)"
-"</i> so they can gain levels and become more powerful."
+"needed. Take special care of units with the highest <i>experience points "
+"(XP)</i> so they can gain levels and become more powerful."
 msgstr ""
 "N'oubliez pas de faire battre en retraite les unités blessées dans les "
 "villages et d'en recruter davantage si nécessaire. Protégez en particulier "
@@ -1447,17 +1447,22 @@ msgstr "Attaquez l'orc avec un archer"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:983
+#, fuzzy
+#| msgid "Unit Summaries"
 msgid "<big>Unit Summaries</big>"
-msgstr "<big>Résumé d'une unité</big>"
+msgstr "Résumé d'une unité"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:985
+#, fuzzy
+#| msgid ""
+#| "To review the capabilities of any unit—including an enemy—hover the mouse "
+#| "over it, and you will see a unit summary on the right of the screen"
 msgid ""
 "\n"
 "To review the capabilities of any unit—including an enemy—hover the mouse "
 "over it, and you will see a unit summary on the right of the screen"
 msgstr ""
-"\n"
 "Pour revoir les capacités d'une quelconque unité (y compris des unités "
 "ennemies), il suffit de pointer la souris sur celle-ci pour avoir une brève "
 "description de l'unité sur la droite de l'écran."
@@ -1503,18 +1508,24 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1022
+#, fuzzy
+#| msgid "Long-distance Movement"
 msgid "<big>Long-distance Movement</big>"
-msgstr "<big>Mouvements sur de longues distances</big>"
+msgstr "Mouvements sur de longues distances"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1024
+#, fuzzy
+#| msgid ""
+#| "You can order a unit to move for multiple turns by selecting the unit and "
+#| "clicking on the destination. A number will indicate how many turns it "
+#| "will take to get there."
 msgid ""
 "\n"
 "You can order a unit to move for multiple turns by selecting the unit and "
 "clicking on the destination. A number will indicate how many turns it will "
 "take to get there."
 msgstr ""
-"\n"
 "Vous pouvez planifier le déplacement d'une unité sur plusieurs tours : "
 "sélectionnez l'unité, puis cliquez sur la destination. Un chiffre vous "
 "indiquera le nombre de tours nécessaires pour y parvenir."
@@ -1718,18 +1729,24 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1246
+#, fuzzy
+#| msgid "Time of Day"
 msgid "<big>Time of Day</big>"
-msgstr "<big>Moment de la Journée</big>"
+msgstr "Moment de la Journée"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1248
+#, fuzzy
+#| msgid ""
+#| "After this dialog, hold the mouse over the landscape image below the "
+#| "minimap on the right. This brings up a description of the time of day, "
+#| "showing who has the advantage."
 msgid ""
 "\n"
 "After this dialog, hold the mouse over the landscape image below the minimap "
 "on the right. This brings up a description of the time of day, showing who "
 "has the advantage."
 msgstr ""
-"\n"
 "À la fin de ce dialogue, placez votre souris sur l'image du paysage sous la "
 "mini-carte à droite. Une description du moment de la journée s'affichera, "
 "indiquant qui a l'avantage."
@@ -1761,12 +1778,21 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1269
+#, fuzzy
+#| msgid "Tracking Unused Units"
 msgid "<big>Tracking Unused Units</big>"
-msgstr "<big>Localiser les Unités Inutilisées</big>"
+msgstr "Localiser les Unités Inutilisées"
 
 # Damien : librement retraduit, pour plus de clarté, j'espère.
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1271
+#, fuzzy
+#| msgid ""
+#| "You can ensure you use all your troops by pressing <b>n</b> to step from "
+#| "one unit to the next. If you press <b>space</b>, you can mark the "
+#| "currently selected unit as having finished its turn, which stops you "
+#| "moving it by accident later on. When <b>n</b> no longer selects a new "
+#| "unit, it’s safe to end your turn."
 msgid ""
 "\n"
 "You can ensure you use all your troops by pressing <b>n</b> to step from one "
@@ -1775,7 +1801,6 @@ msgid ""
 "accident later on. When <b>n</b> no longer selects a new unit, it’s safe to "
 "end your turn."
 msgstr ""
-"\n"
 "Vous pouvez vérifier si vous avez utilisé toutes vos troupes en pressant "
 "<b>n</b> pour passer d'une unité à l'autre. La touche <b>Espace</b> permet "
 "de marquer l'unité sélectionnée comme ayant finit son tour, ce qui empêchera "
@@ -1784,35 +1809,46 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1276
+#, fuzzy
+#| msgid "Victory Conditions"
 msgid "<big>Victory Conditions</big>"
-msgstr "<big>Conditions de Victoire</big>"
+msgstr "Conditions de Victoire"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1278
+#, fuzzy
+#| msgid ""
+#| "In this scenario, you only need to defeat the orc leader to win. (Victory "
+#| "conditions for a scenario are given under <b>Scenario Objectives</b> in "
+#| "the <b>Main Menu</b>)."
 msgid ""
 "\n"
 "In this scenario, you only need to defeat the orc leader to win. (Victory "
 "conditions for a scenario are given under <b>Scenario Objectives</b> in the "
 "<b>Main Menu</b>)."
 msgstr ""
-"\n"
 "Dans ce scénario, vous avez seulement besoin de tuer le chef orc pour "
 "gagner. (Les conditions de victoire pour un scénario sont disponible dans "
 "<b>Menu</b>, <b>Objectifs du scénario</b>)."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1283
+#, fuzzy
+#| msgid "Recruit the Right Unit Types"
 msgid "<big>Recruit the Right Unit Types</big>"
-msgstr "<big>Recruter le Bon Type d'Unité</big>"
+msgstr "Recruter le Bon Type d'Unité"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1285
+#, fuzzy
+#| msgid ""
+#| "Remember to recruit troops useful for the situation. Archers are "
+#| "particularly effective against Grunts, Wolf Riders and the orcish leader."
 msgid ""
 "\n"
 "Remember to recruit troops useful for the situation. Archers are "
 "particularly effective against Grunts, Wolf Riders and the orcish leader."
 msgstr ""
-"\n"
 "Rappelez-vous de recruter des troupes adaptées à la situation. Les archers "
 "sont particulièrement efficaces contre les grognards, les monteurs de loup "
 "et le chef orc."
@@ -1912,18 +1948,24 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1480
+#, fuzzy
+#| msgid "Tracking Enemy Movement"
 msgid "<big>Tracking Enemy Movement</big>"
-msgstr "<big>Envisager les Mouvements Ennemis</big>"
+msgstr "Envisager les Mouvements Ennemis"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1482
+#, fuzzy
+#| msgid ""
+#| "You can see where an enemy can reach by moving the mouse over them. You "
+#| "can see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
+#| "command from the <b>Actions</b> menu."
 msgid ""
 "\n"
 "You can see where an enemy can reach by moving the mouse over them. You can "
 "see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
 "command from the <b>Actions</b> menu."
 msgstr ""
-"\n"
 "Vous pouvez visualiser le rayon d'action d'un ennemi en déplaçant la souris "
 "sur lui. Vous pouvez voir tous les déplacements potentiels des ennemis en "
 "utilisant l'option <b>Afficher les déplacements ennemis</b> du menu "
@@ -2076,6 +2118,17 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:24
 msgid "flail"
 msgstr "fléau"
+
+#~ msgid "End Scenario"
+#~ msgstr "Fin du Scénario"
+
+#~ msgid ""
+#~ "Do you want to keep practicing? You can end this scenario at any time by "
+#~ "using the <b>End Scenario</b> item in the context menu."
+#~ msgstr ""
+#~ "Voulez-vous continuer à vous entraîner ? Vous pouvez mettre fin à ce "
+#~ "scénario à tout moment en utilisant l'option <b>Fin de Scénario</b> dans "
+#~ "le menu contextuel."
 
 #~ msgid "Wesnoth Tutorial"
 #~ msgstr "Didacticiel de Wesnoth"
