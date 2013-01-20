@@ -38,6 +38,8 @@ static lg::log_domain log_config("config");
 
 static lg::log_domain log_unit("unit");
 #define DBG_UT LOG_STREAM(debug, log_unit)
+#define ERR_UT LOG_STREAM(err, log_unit)
+
 
 attack_type::attack_type(const config& cfg) :
 	self_loc_(),
@@ -714,8 +716,11 @@ unit_type::~unit_type()
 void unit_type::build_full(const movement_type_map &mv_types,
 	const race_map &races, const config::const_child_itors &traits)
 {
-	if (build_status_ == NOT_BUILT || build_status_ == CREATED)
-		build_help_index(mv_types, races, traits);
+	// Don't build twice.
+	if ( FULL <= build_status_ )
+		return;
+	// Make sure we are built to the preceding build level.
+	build_help_index(mv_types, races, traits);
 
 	for (int i = 0; i < 2; ++i) {
 		if (gender_types_[i])
@@ -805,8 +810,11 @@ void unit_type::build_full(const movement_type_map &mv_types,
 void unit_type::build_help_index(const movement_type_map &mv_types,
 	const race_map &races, const config::const_child_itors &traits)
 {
-	if (build_status_ == NOT_BUILT)
-		build_created(mv_types, races, traits);
+	// Don't build twice.
+	if ( HELP_INDEX <= build_status_ )
+		return;
+	// Make sure we are built to the preceding build level.
+	build_created(mv_types, races, traits);
 
 	type_name_ = cfg_["name"];
 	description_ = cfg_["description"];
@@ -909,8 +917,14 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 void unit_type::build_created(const movement_type_map &mv_types,
 	const race_map &races, const config::const_child_itors &traits)
 {
-	gender_types_[0] = NULL;
-	gender_types_[1] = NULL;
+	// Don't build twice.
+	if ( CREATED <= build_status_ )
+		return;
+	// There is no preceding build level (other than being constructed).
+
+	// These should still be NULL from the constructor.
+	assert(gender_types_[0] == NULL);
+	assert(gender_types_[1] == NULL);
 
 	if ( const config &male_cfg = cfg_.child("male") ) {
 		gender_types_[0] = new unit_type(male_cfg, id_);
@@ -945,16 +959,17 @@ void unit_type::build(BUILD_STATUS status, const movement_type_map &movement_typ
 {
 	DBG_UT << "Building unit type " << log_id() << ", level " << status << '\n';
 
-	// Nothing to do if we are already built.
-	if ( int(status) <= int(build_status_) )
+	switch (status) {
+	case NOT_BUILT:
+		// Already done in the constructor.
 		return;
 
-	switch (status) {
 	case CREATED:
 		// Build the basic data.
 		build_created(movement_types, races, traits);
 		return;
 
+	case VARIATIONS: // Implemented as part of HELP_INDEX
 	case HELP_INDEX:
 		// Build the data needed to feed the help index.
 		build_help_index(movement_types, races, traits);
@@ -963,7 +978,12 @@ void unit_type::build(BUILD_STATUS status, const movement_type_map &movement_typ
 	case WITHOUT_ANIMATIONS:
 		// Animations are now built when they are accessed, so fall down to FULL.
 	case FULL:
+		build_full(movement_types, races, traits);
+		return;
+
 	default:
+		ERR_UT << "Build of unit_type to unrecognized status (" << status << ") requested.\n";
+		// Build as much as possible.
 		build_full(movement_types, races, traits);
 		return;
 	}
@@ -1151,7 +1171,7 @@ void unit_type::add_advancement(const unit_type &to_unit,int xp)
 
 	if ( cfg_.has_child("variation") ) {
 		// Make sure the variations are created.
-		unit_types.build_unit_type(*this, HELP_INDEX);
+		unit_types.build_unit_type(*this, VARIATIONS);
 
 		// Add advancements to variation subtypes.
 		// Since these are still a rare and special-purpose feature,
@@ -1408,7 +1428,7 @@ const unit_type *unit_type_data::find(const std::string& key, unit_type::BUILD_S
 		return NULL;
     }
 
-    //check if the unit_type is constructed and build it if necessary
+    // Make sure the unit_type is built to the requested level.
     build_unit_type(itor->second, status);
 
 	return &itor->second;
@@ -1435,7 +1455,9 @@ void unit_type_data::clear()
 
 void unit_type_data::build_all(unit_type::BUILD_STATUS status)
 {
-	if (int(status) <= int(build_status_)) return;
+	// Nothing to do if already built to the requested level.
+	if ( status <= build_status_ )
+		return;
 	assert(unit_cfg_ != NULL);
 
 	for (unit_type_map::iterator u = types_.begin(), u_end = types_.end(); u != u_end; ++u) {

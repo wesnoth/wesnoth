@@ -195,7 +195,8 @@ public:
 	~unit_type();
 
 	/// Records the status of the lazy building of unit types.
-	enum BUILD_STATUS {NOT_BUILT, CREATED, HELP_INDEX, WITHOUT_ANIMATIONS, FULL};
+	/// These are in order of increasing levels of being built.
+	enum BUILD_STATUS {NOT_BUILT, CREATED, VARIATIONS, HELP_INDEX, WITHOUT_ANIMATIONS, FULL};
 private: // These will be called by build().
 	/// Load data into an empty unit_type (build to FULL).
 	void build_full(const movement_type_map &movement_types,
