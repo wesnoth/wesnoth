@@ -168,6 +168,7 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 		keeps_(),
 		leader_aggression_(),
 		leader_goal_(),
+		leader_ignores_keep_(),
 		leader_value_(),
 		move_maps_enemy_valid_(false),
 		move_maps_valid_(false),
@@ -203,6 +204,7 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 		add_known_aspect("grouping",grouping_);
 		add_known_aspect("leader_aggression",leader_aggression_);
 		add_known_aspect("leader_goal",leader_goal_);
+		add_known_aspect("leader_ignores_keep",leader_ignores_keep_);
 		add_known_aspect("leader_value",leader_value_);
 		add_known_aspect("number_of_possible_recruits_to_force_recruit",number_of_possible_recruits_to_force_recruit_);
 		add_known_aspect("passive_leader",passive_leader_);
@@ -670,6 +672,15 @@ config readonly_context_impl::get_leader_goal() const
 		return leader_goal_->get();
 	}
 	return config();
+}
+
+
+bool readonly_context_impl::get_leader_ignores_keep() const
+{
+	if (leader_ignores_keep_) {
+		return leader_ignores_keep_->get();
+	}
+	return false;
 }
 
 

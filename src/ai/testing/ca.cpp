@@ -742,6 +742,10 @@ double move_leader_to_keep_phase::evaluate()
 {
 	unit_map &units_ = *resources::units;
 	const unit_map::iterator leader = units_.find_leader(get_side());
+
+	if(get_leader_ignores_keep()){
+		return BAD_SCORE;
+	}
 	if(get_passive_leader() && !get_passive_leader_shares_keep()){
 		return BAD_SCORE;
 	}

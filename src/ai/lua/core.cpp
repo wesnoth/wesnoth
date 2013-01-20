@@ -460,6 +460,13 @@ static int cfun_ai_get_leader_goal(lua_State *L)
 	return 1;
 }
 
+static int cfun_ai_get_leader_ignores_keep(lua_State *L)
+{
+	bool leader_ignores_keep = get_readonly_context(L).get_leader_ignores_keep();
+	lua_pushboolean(L, leader_ignores_keep);
+	return 1;
+}
+
 static int cfun_ai_get_leader_value(lua_State *L)
 {
 	double leader_value = get_readonly_context(L).get_leader_value();
@@ -849,6 +856,7 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 		{ "get_grouping",		&cfun_ai_get_grouping			},
 		{ "get_leader_aggression", 	&cfun_ai_get_leader_aggression		},
 		{ "get_leader_goal", 		&cfun_ai_get_leader_goal		},
+		{ "get_leader_ignores_keep", &cfun_ai_get_leader_ignores_keep},
 		{ "get_leader_value", 		&cfun_ai_get_leader_value		},
 		{ "get_number_of_possible_recruits_to_force_recruit", &cfun_ai_get_number_of_possible_recruits_to_force_recruit},
 		{ "get_passive_leader", 	&cfun_ai_get_passive_leader		},

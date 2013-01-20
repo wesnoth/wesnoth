@@ -590,6 +590,10 @@ variant formula_ai::get_value(const std::string& key) const
 	{
 		return variant(get_leader_aggression()*1000,variant::DECIMAL_VARIANT);
 
+	} else if(key == "leader_ignores_keep")
+	{
+		return variant(get_leader_ignores_keep());
+
 	} else if(key == "leader_value")
 	{
 		return variant(get_leader_value()*1000,variant::DECIMAL_VARIANT);

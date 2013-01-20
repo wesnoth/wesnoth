@@ -276,6 +276,9 @@ public:
 	virtual config get_leader_goal() const = 0;
 
 
+	virtual bool get_leader_ignores_keep() const = 0;
+
+
 	virtual double get_leader_value() const = 0;
 
 
@@ -737,6 +740,12 @@ public:
 	virtual config get_leader_goal() const
 	{
 		return target_->get_leader_goal();
+	}
+
+
+	virtual bool get_leader_ignores_keep() const
+	{
+		return target_->get_leader_ignores_keep();
 	}
 
 
@@ -1316,6 +1325,9 @@ public:
 	virtual config get_leader_goal() const;
 
 
+	virtual bool get_leader_ignores_keep() const;
+
+
 	virtual double get_leader_value() const;
 
 
@@ -1451,6 +1463,7 @@ private:
 	mutable keeps_cache keeps_;
 	aspect_type<double>::typesafe_ptr leader_aggression_;
 	aspect_type< config >::typesafe_ptr leader_goal_;
+	aspect_type<bool>::typesafe_ptr leader_ignores_keep_;
 	aspect_type< double >::typesafe_ptr leader_value_;
 	mutable bool move_maps_enemy_valid_;
 	mutable bool move_maps_valid_;

@@ -68,6 +68,7 @@ void configuration::init(const config &game_config)
 	well_known_aspects.push_back(well_known_aspect("grouping"));
 	well_known_aspects.push_back(well_known_aspect("leader_aggression"));
 	well_known_aspects.push_back(well_known_aspect("leader_goal",false));
+	well_known_aspects.push_back(well_known_aspect("leader_ignores_keep"));
 	well_known_aspects.push_back(well_known_aspect("leader_value"));
 	well_known_aspects.push_back(well_known_aspect("number_of_possible_recruits_to_force_recruit"));
 	well_known_aspects.push_back(well_known_aspect("passive_leader"));

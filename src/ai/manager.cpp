@@ -240,6 +240,7 @@ const std::string holder::get_ai_overview()
 	s << "caution:  " << this->ai_->get_caution() << std::endl;
 	s << "grouping:  " << this->ai_->get_grouping() << std::endl;
 	s << "leader_aggression:  " << this->ai_->get_leader_aggression() << std::endl;
+	s << "leader_ignores_keep:  " << this->ai_->get_leader_ignores_keep() << std::endl;
 	s << "leader_value:  " << this->ai_->get_leader_value() << std::endl;
 	s << "number_of_possible_recruits_to_force_recruit:  " << this->ai_->get_number_of_possible_recruits_to_force_recruit() << std::endl;
 	s << "passive_leader:  " << this->ai_->get_passive_leader() << std::endl;
