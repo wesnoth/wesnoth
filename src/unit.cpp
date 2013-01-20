@@ -713,18 +713,20 @@ void unit::generate_name(rand_rng::simple_rng* rng)
 	cfg_["generate_name"] = false;
 }
 
-// Apply mandatory traits (e.g. undead, mechanical) to a unit and then
-// fill out with available (leaders have a restricted set of available traits)
-// traits until no more are available or the unit has its maximum number
-// of traits.
-// This routine does not apply the effects of added traits to a unit.
-// That must be done by the caller.
-// Note that random numbers used in config files don't work in multiplayer,
-// so that leaders should be barred from all random traits until that
-// is fixed. Later the restrictions will be based on play balance.
-// @musthaveonly is true when you don't want to generate random traits or
-// you don't want to give any optional traits to a unit.
 
+/**
+ * Apply mandatory traits (e.g. undead, mechanical) to a unit and then
+ * fill out with available (leaders have a restricted set of available traits)
+ * traits until no more are available or the unit has its maximum number
+ * of traits.
+ * This routine does not apply the effects of added traits to a unit.
+ * That must be done by the caller.
+ * Note that random numbers used in config files don't work in multiplayer,
+ * so that leaders should be barred from all random traits until that
+ * is fixed. Later the restrictions will be based on play balance.
+ * @musthaveonly is true when you don't want to generate random traits or
+ * you don't want to give any optional traits to a unit.
+ */
 void unit::generate_traits(bool musthaveonly)
 {
 	LOG_UT << "Generating a trait for unit type " << type().log_id() << " with musthaveonly " << musthaveonly << "\n";
