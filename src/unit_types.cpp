@@ -41,6 +41,9 @@ static lg::log_domain log_unit("unit");
 #define ERR_UT LOG_STREAM(err, log_unit)
 
 
+/* ** attack_type ** */
+
+
 attack_type::attack_type(const config& cfg) :
 	self_loc_(),
 	other_loc_(),
@@ -332,6 +335,10 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 	return true;
 }
 
+
+/* ** unit_movement_type ** */
+
+
 unit_movement_type::unit_movement_type(const config& cfg, const unit_movement_type* parent) :
 	moveCosts_(),
 	visionCosts_(),
@@ -600,6 +607,9 @@ int defense_modifier_internal(defense_cache &defense_mods,
 		cfg, parent, map, terrain, recurse_count);
 	return (std::max)(def.max_, def.min_);
 }
+
+
+/* ** unit_type ** */
 
 
 unit_type::unit_type(const unit_type& o) :
@@ -1222,6 +1232,81 @@ const std::vector<std::string> unit_type::advances_from() const
 	return adv_from;
 }
 
+
+// This function is only meant to return the likely state a given status
+// for a new recruit of this type. It should not be used to check if
+// a particular unit has it, use get_state(status_name) for that.
+bool unit_type::musthave_status(const std::string& status_name) const
+{
+	// Statuses default to absent.
+	bool current_status = false;
+
+	// Look at all of the "musthave" traits to see if the
+	// status gets changed. In the unlikely event it gets changed
+	// multiple times, we want to try to do it in the same order
+	// that unit::apply_modifications does things.
+	BOOST_FOREACH(const config &mod, possible_traits())
+	{
+		if (mod["availability"] != "musthave")
+			continue;
+
+		BOOST_FOREACH(const config &effect, mod.child_range("effect"))
+		{
+			// See if the effect only applies to
+			// certain unit types But don't worry
+			// about gender checks, since we don't
+			// know what the gender of the
+			// hypothetical recruit is.
+			const std::string &ut = effect["unit_type"];
+			if (!ut.empty()) {
+				const std::vector<std::string> &types = utils::split(ut);
+				if(std::find(types.begin(), types.end(), id()) == types.end())
+					continue;
+			}
+
+			// We're only interested in status changes.
+			if (effect["apply_to"] != "status") {
+				continue;
+			}
+			if (effect["add"] == status_name) {
+				current_status = true;
+			}
+			if (effect["remove"] == status_name) {
+				current_status = false;
+			}
+		}
+	}
+
+	return current_status;
+}
+
+bool unit_type::has_random_traits() const
+{
+	if (num_traits() == 0) return false;
+	config::const_child_itors t = possible_traits();
+	while(t.first != t.second) {
+		const config::attribute_value& availability = (*t.first)["availability"];
+		if(availability.blank()) return true;
+		if(strcmp(availability.str().c_str(), "musthave") != 0) return true;
+		++t.first;
+	}
+	return false;
+}
+
+std::vector<std::string> unit_type::variations() const
+{
+	std::vector<std::string> retval;
+	retval.reserve(variations_.size());
+	BOOST_FOREACH(const variations_map::value_type &val, variations_) {
+		retval.push_back(val.first);
+	}
+	return retval;
+}
+
+
+/* ** unit_type_data ** */
+
+
 unit_type_data::unit_type_data() :
 	types_(),
 	movement_types_(),
@@ -1549,77 +1634,11 @@ const unit_race *unit_type_data::find_race(const std::string &key) const
 	return i != races_.end() ? &i->second : NULL;
 }
 
-// This function is only meant to return the likely state a given status
-// for a new recruit of this type. It should not be used to check if
-// a particular unit has it, use get_state(status_name) for that.
-bool unit_type::musthave_status(const std::string& status_name) const
-{
-	// Statuses default to absent.
-	bool current_status = false;
-
-	// Look at all of the "musthave" traits to see if the
-	// status gets changed. In the unlikely event it gets changed
-	// multiple times, we want to try to do it in the same order
-	// that unit::apply_modifications does things.
-	BOOST_FOREACH(const config &mod, possible_traits())
-	{
-		if (mod["availability"] != "musthave")
-			continue;
-
-		BOOST_FOREACH(const config &effect, mod.child_range("effect"))
-		{
-			// See if the effect only applies to
-			// certain unit types But don't worry
-			// about gender checks, since we don't
-			// know what the gender of the
-			// hypothetical recruit is.
-			const std::string &ut = effect["unit_type"];
-			if (!ut.empty()) {
-				const std::vector<std::string> &types = utils::split(ut);
-				if(std::find(types.begin(), types.end(), id()) == types.end())
-					continue;
-			}
-
-			// We're only interested in status changes.
-			if (effect["apply_to"] != "status") {
-				continue;
-			}
-			if (effect["add"] == status_name) {
-				current_status = true;
-			}
-			if (effect["remove"] == status_name) {
-				current_status = false;
-			}
-		}
-	}
-
-	return current_status;
-}
-
-bool unit_type::has_random_traits() const
-{
-	if (num_traits() == 0) return false;
-	config::const_child_itors t = possible_traits();
-	while(t.first != t.second) {
-		const config::attribute_value& availability = (*t.first)["availability"];
-		if(availability.blank()) return true;
-		if(strcmp(availability.str().c_str(), "musthave") != 0) return true;
-		++t.first;
-	}
-	return false;
-}
-
-std::vector<std::string> unit_type::variations() const
-{
-	std::vector<std::string> retval;
-	retval.reserve(variations_.size());
-	BOOST_FOREACH(const variations_map::value_type &val, variations_) {
-		retval.push_back(val.first);
-	}
-	return retval;
-}
-
 unit_type_data unit_types;
+
+
+/* **  ** */
+
 
 void adjust_profile(std::string &small, std::string &big, std::string const &def)
 {
