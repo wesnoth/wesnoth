@@ -732,7 +732,9 @@ void unit_type::build_full(const movement_type_map &mv_types,
 	else if(align == "liminal")
 		alignment_ = LIMINAL;
 	else {
-		ERR_CF << "Invalid alignment found for " << log_id() << ": '" << align << "'\n";
+		if ( !align.empty() ) {
+			ERR_CF << "Invalid alignment found for " << log_id() << ": '" << align << "'\n";
+		}
 		alignment_ = NEUTRAL;
 	}
 
