@@ -512,7 +512,7 @@ void undo_list::redo()
 		// Redo recruit action
 		map_location loc = action.route.front();
 		map_location from = action.recall_from;
-		const std::string name = action.affected_unit->type_id();
+		const std::string name = action.affected_unit->type().base_id();
 
 		//search for the unit to be recruited in recruits
 		int recruit_num = 0;
@@ -531,7 +531,7 @@ void undo_list::redo()
 		}
 		current_team.last_recruit(name);
 		recorder.add_recruit(recruit_num,loc,from);
-		const std::string &msg = find_recruit_location(side_, loc, from, action.affected_unit->type_id());
+		const std::string &msg = find_recruit_location(side_, loc, from, action.affected_unit->type().base_id());
 		if(msg.empty()) {
 			const unit new_unit = *action.affected_unit;
 			//unit new_unit(action.affected_unit->type(),team_num_,true);

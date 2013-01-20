@@ -102,7 +102,11 @@ public:
 	const std::vector<std::string> advances_to_translated() const;
 	void set_advances_to(const std::vector<std::string>& advances_to);
 
-	/** The type id of the unit */
+	/**
+	 * The id of the type of the unit.
+	 * If you are dealing with creating units (e.g. recruitment), this is not what
+	 * you want, as a variation can change this; use type().base_id() instead.
+	 */
 	const std::string& type_id() const { return type_->id(); }
 	/** The type of the unit (accounting for gender and variation). */
 	const unit_type& type() const { return *type_; }

@@ -207,7 +207,7 @@ class fake_team
       {
          int counter = 0;
          BOOST_FOREACH(unit &un, *resources::units){
-            if(un.side() == side() && un.type_id() == name) // @todo: is type_id good?
+            if(un.side() == side() && un.type().base_id() == name) // @todo: is base_id good?
             {
                counter++;
             }
@@ -433,7 +433,7 @@ static std::vector<potential_recruit> ai_choose_best_recruits(fake_team &t, int 
    {
 	if (i.side()==t.side())
 	{
-		current_units[(i.type_id())]++;
+		current_units[i.type().base_id()]++;
 	}
    }
    int gold = t.gold();

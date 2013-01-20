@@ -125,7 +125,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u,
 		if (plagues) {
 			plague_type = (*plague_specials.front().first)["type"].str();
 			if (plague_type.empty())
-				plague_type = u.type_id();
+				plague_type = u.type().base_id();
 		}
 
 		// Compute chance to hit.

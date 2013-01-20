@@ -248,6 +248,8 @@ public:
 	const std::string& id() const { return id_; }
 	/// A variant on id() that is more descriptive, for use with message logging.
 	const std::string log_id() const { return id_ + debug_id_; }
+	/// The id of the original type from which this (variation) descended.
+	const std::string& base_id() const { return base_id_; }
 	// NOTE: this used to be a const object reference, but it messed up with the
 	// translation engine upon changing the language in the same session.
 	t_string unit_description() const;
@@ -332,6 +334,7 @@ private:
 
 	std::string id_;
 	std::string debug_id_;  /// A suffix for id_, used when logging messages.
+	std::string base_id_;   /// The id of the top ancestor of this unit_type.
 	t_string type_name_;
 	t_string description_;
 	int hitpoints_;

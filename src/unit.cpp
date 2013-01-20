@@ -203,7 +203,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 	cfg_(),
 	loc_(cfg["x"] - 1, cfg["y"] - 1),
 	advances_to_(),
-	type_(&get_unit_type(cfg["type"])),
+	type_(&get_unit_type(cfg["parent_type"].blank() ? cfg["type"] : cfg["parent_type"])),
 	type_name_(),
 	race_(&unit_race::null_race),
 	id_(cfg["id"]),
@@ -542,6 +542,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 		"advances_to", "hitpoints", "goto_x", "goto_y", "moves",
 		"experience", "resting", "unrenamable", "alignment",
 		"canrecruit", "extra_recruit", "x", "y", "placement",
+		"parent_type",
 		// Useless attributes created when saving units to WML:
 		"flag_rgb", "language_name" };
 	BOOST_FOREACH(const char *attr, internalized_attrs) {
@@ -726,7 +727,7 @@ void unit::generate_name(rand_rng::simple_rng* rng)
 
 void unit::generate_traits(bool musthaveonly)
 {
-	LOG_UT << "Generating a trait for unit type " << type_id() << " with musthaveonly " << musthaveonly << "\n";
+	LOG_UT << "Generating a trait for unit type " << type().log_id() << " with musthaveonly " << musthaveonly << "\n";
 	const unit_type &u_type = type();
 
 	// Calculate the unit's traits
@@ -1047,12 +1048,12 @@ const std::vector<std::string> unit::advances_to_translated() const
 	std::vector<std::string> result;
 	BOOST_FOREACH(std::string adv_type_id, advances_to_)
 	{
-		const unit_type *type = unit_types.find(adv_type_id);
-		if (type)
-			result.push_back(type->type_name());
+		const unit_type *adv_type = unit_types.find(adv_type_id);
+		if ( adv_type )
+			result.push_back(adv_type->type_name());
 		else
 			WRN_UT << "unknown unit in advances_to list of type "
-			<< type_id() << ": " << adv_type_id << "\n";
+			<< type().log_id() << ": " << adv_type_id << "\n";
 	}
 	return result;
 }
@@ -1690,6 +1691,8 @@ void unit::write(config& cfg) const
 	cfg["side"] = side_;
 
 	cfg["type"] = type_id();
+	if ( type_id() != type().base_id() )
+		cfg["parent_type"] = type().base_id();
 
 	//support for unit formulas in [ai] and unit-specific variables in [ai] [vars]
 
@@ -2824,7 +2827,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 			advance_to(type());
 		} else if ((last_effect)["apply_to"] == "type") {
 			config::attribute_value &prev_type = (*new_child)["prev_type"];
-			if (prev_type.blank()) prev_type = type_id();
+			if (prev_type.blank()) prev_type = type().base_id();
 			const std::string& new_type_id = last_effect["name"];
 			const unit_type* new_type = unit_types.find(new_type_id);
 			if ( new_type ) {

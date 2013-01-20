@@ -216,7 +216,7 @@ bool ai_default_recruitment_stage::recruit_usage(const std::string& usage)
 			if (imc != maximum_counts_.end()) {
 				int count_active = 0;
 				for (unit_map::const_iterator u = resources::units->begin(); u != resources::units->end(); ++u) {
-					if (u->side() == get_side() && !u->incapacitated() && u->type_id() == name) {
+					if (u->side() == get_side() && !u->incapacitated() && u->type().base_id() == name) {
 						++count_active;
 					}
 				}
@@ -438,7 +438,7 @@ int ai_default_recruitment_stage::get_combat_score(const unit_type& ut) const
 			continue;
 		}
 
-		get_combat_score_vs(ut, j->type_id(), score, weighting, j->hitpoints(), j->max_hitpoints());
+		get_combat_score_vs(ut, j->type().base_id(), score, weighting, j->hitpoints(), j->max_hitpoints());
 	}
 
 	if(weighting != 0) {
