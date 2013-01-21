@@ -627,6 +627,50 @@ surface scale_surface(const surface &surf, int w, int h, bool optimize)
 	return optimize ? create_optimized_surface(dst) : dst;
 }
 
+surface tile_surface(const surface& surf, int w, int h, bool optimize)
+{
+	if (surf->w == w && surf->h == h) {
+		return surf;
+	}
+
+	surface dest(create_neutral_surface(w, h));
+	surface src(make_neutral_surface(surf));
+
+	if (src == NULL || dest == NULL) {
+		std::cerr << "failed to make neutral surface\n";
+		return NULL;
+	}
+
+	{
+		const_surface_lock srclock(src);
+		surface_lock destlock(dest);
+
+		const Uint32* srcpixels = srclock.pixels();
+		Uint32* destpixels = destlock.pixels();
+
+		const int& sw = src->w;
+		const int& sh = src->h;
+
+		const int xoff = (w - sw) / 2;
+		const int yoff = (h - sh) / 2;
+
+		for (int i = 0; i<w*h; ++i) {
+			int x = ((i % w) - xoff);
+			int y = ((i / w) - yoff);
+
+			while ((x += sw) < 0);
+			while ((y += sh) < 0);
+
+			const int sx = x % sw;
+			const int sy = y % sh;
+
+			destpixels[i] = srcpixels[sy*sw + sx];
+		}
+	}
+
+	return optimize ? create_optimized_surface(dest) : dest;
+}
+
 surface adjust_surface_color(const surface &surf, int red, int green, int blue, bool optimize)
 {
 	if(surf == NULL)

@@ -198,6 +198,18 @@ surface stretch_surface_vertical(
  */
 surface scale_surface(const surface &surf, int w, int h, bool optimize=true);
 
+/** Tile a surface
+ * @param surf               The source surface.
+ * @param w                  The width of the resulting surface.
+ * @param h                  The height of the resulting surface.
+ * @param optimize           Should the return surface be RLE optimized
+ * @return                   A surface containing the tiled version of the source.
+ * @retval 0                 Returned upon error
+ * @retval surf              Returned if w == surf->w and h == surf->h
+ *                           note this ignores the optimize flag.
+ */
+surface tile_surface(const surface &surf, int w, int h, bool optimize=true);
+
 surface adjust_surface_color(const surface &surf, int r, int g, int b, bool optimize=true);
 surface greyscale_image(const surface &surf, bool optimize=true);
 /** create an heavy shadow of the image, by blurring, increasing alpha and darkening */

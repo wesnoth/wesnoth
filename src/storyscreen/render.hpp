@@ -78,10 +78,11 @@ private:
 	RESULT ret_;
 	bool skip_, last_key_;
 
-	double scale_factor_;
+	double x_scale_factor_;
+	double y_scale_factor_;
 
-	// The background is aspect-corrected when scaled, so the image doesn't
-	// look distorted. base_rect_ has the actual area occupied by the background.
+	// Keeps the area occupied on the screen by the base layer
+	// (the background layer we align the images to)
 	SDL_Rect base_rect_;
 
 	surface background_;

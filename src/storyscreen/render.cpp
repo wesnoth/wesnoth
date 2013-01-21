@@ -88,7 +88,8 @@ part_ui::part_ui(part &p, display &disp, gui::button &next_button,
 	, back_button_(back_button)
 	, play_button_(play_button)
 	, ret_(NEXT), skip_(false), last_key_(false)
-	, scale_factor_(1.0)
+	, x_scale_factor_(1.0)
+	, y_scale_factor_(1.0)
 	, base_rect_()
 	, background_(NULL)
 	, imgs_()
@@ -105,32 +106,66 @@ part_ui::part_ui(part &p, display &disp, gui::button &next_button,
 
 void part_ui::prepare_background()
 {
+	background_.assign( create_neutral_surface(video_.getx(), video_.gety()) );
+	has_background_ = false;
+	bool no_base_yet = true;
+	
 	// Build background surface
-	if(p_.background().empty() != true) {
-		background_.assign( image::get_image(p_.background()) );
+	BOOST_FOREACH(const background_layer& bl, p_.get_background_layers()) {
+		surface layer;
+		
+		if(bl.file().empty() != true) {
+			layer.assign( image::get_image(bl.file()) );
+		}
+		has_background_ = has_background_ || !layer.null();
+		if(layer.null() || layer->w * layer->h == 0) {
+			continue;
+		}
+
+		const double xscale = 1.0 * video_.getx() / layer->w;
+		const double yscale = 1.0 * video_.gety() / layer->h;
+		const bool scalev = bl.scale_vertically();
+		const bool scaleh = bl.scale_horizontally();
+		const bool keep_ratio = bl.keep_aspect_ratio();
+
+		double x_scale_factor = scaleh ? xscale : 1.0;
+		double y_scale_factor = scalev ? yscale : 1.0;
+
+		if (scalev && scaleh && keep_ratio) {
+			x_scale_factor = y_scale_factor = std::min<double>(xscale, yscale);
+		} else if (keep_ratio && scaleh) {
+			x_scale_factor = y_scale_factor = xscale;
+		} else if (keep_ratio && scalev) {
+			x_scale_factor = y_scale_factor = yscale;
+		}
+
+		layer = scale_surface(layer, static_cast<int>(layer->w*x_scale_factor), static_cast<int>(layer->h*y_scale_factor));
+
+		const int tilew = bl.tile_horizontally() ? video_.getx() : layer->w;
+		const int tileh = bl.tile_vertically() ? video_.gety() : layer->h;
+
+		layer = tile_surface(layer, tilew, tileh);
+
+		SDL_Rect drect;
+		drect.h = layer->h;
+		drect.w = layer->w;
+		drect.x = (background_->w - layer->w) / 2;
+		drect.y = (background_->h - layer->h) / 2;
+
+		blit_surface(layer, NULL, background_, &drect);
+		ASSERT_LOG(layer.null() == false, "Oops: a storyscreen part background layer got NULL");
+
+		if (bl.is_base_layer() || no_base_yet) {
+			x_scale_factor_ = x_scale_factor;
+			y_scale_factor_ = y_scale_factor;
+			base_rect_ = drect;
+			no_base_yet = false;
+		}
 	}
-	has_background_ = !background_.null();
-	if(background_.null() || background_->w * background_-> h == 0) {
-		background_.assign( create_neutral_surface(video_.getx(), video_.gety()) );
-	}
-
-	const double xscale = 1.0 * video_.getx() / background_->w;
-	const double yscale = 1.0 * video_.gety() / background_->h;
-	scale_factor_ = p_.scale_background() ? std::min<double>(xscale,yscale) : 1.0;
-
-	background_ =
-		scale_surface(background_, static_cast<int>(background_->w*scale_factor_), static_cast<int>(background_->h*scale_factor_));
-
-	ASSERT_LOG(background_.null() == false, "Oops: storyscreen part background got NULL");
 }
 
 void part_ui::prepare_geometry()
 {
-	base_rect_.x = (video_.getx() - background_->w) / 2;
-	base_rect_.y = (video_.gety() - background_->h) / 2;
-	base_rect_.w = background_->w;
-	base_rect_.h = background_->h;
-
 	if(video_.getx() <= 800) {
 		text_x_ = 10;
 		buttons_x_ = video_.getx() - 100 - 20;
@@ -169,7 +204,7 @@ void part_ui::prepare_floating_images()
 {
 	// Build floating image surfaces
 	BOOST_FOREACH(const floating_image& fi, p_.get_floating_images()) {
-		imgs_.push_back( fi.get_render_input(scale_factor_, base_rect_) );
+		imgs_.push_back( fi.get_render_input(x_scale_factor_, y_scale_factor_, base_rect_) );
 	}
 }
 
@@ -179,7 +214,7 @@ void part_ui::render_background()
 		0, 0, video_.getx(), video_.gety(), 0, 0, 0, 1.0,
 		video_.getSurface()
 	);
-	sdl_blit(background_, NULL, video_.getSurface(), &base_rect_);
+	sdl_blit(background_, NULL, video_.getSurface(), NULL);
 }
 
 bool part_ui::render_floating_images()

@@ -65,7 +65,7 @@ void floating_image::assign(const floating_image& fi)
 	autoscaled_ = fi.autoscaled_; centered_ = fi.centered_;
 }
 
-floating_image::render_input floating_image::get_render_input(double scale, SDL_Rect& dst_rect) const
+floating_image::render_input floating_image::get_render_input(double xscale, double yscale, SDL_Rect& dst_rect) const
 {
 	render_input ri = {
 		{0,0,0,0},
@@ -76,13 +76,13 @@ floating_image::render_input floating_image::get_render_input(double scale, SDL_
 		if(autoscaled_) {
 			ri.image = scale_surface(
 				ri.image,
-				static_cast<int>(ri.image->w * scale),
-				static_cast<int>(ri.image->h * scale)
+				static_cast<int>(ri.image->w * xscale),
+				static_cast<int>(ri.image->h * yscale)
 			);
 		}
 
-		ri.rect.x = static_cast<int>(x_*scale) + dst_rect.x;
-		ri.rect.y = static_cast<int>(y_*scale) + dst_rect.y;
+		ri.rect.x = static_cast<int>(x_*xscale) + dst_rect.x;
+		ri.rect.y = static_cast<int>(y_*yscale) + dst_rect.y;
 		ri.rect.w = ri.image->w;
 		ri.rect.h = ri.image->h;
 
@@ -94,16 +94,67 @@ floating_image::render_input floating_image::get_render_input(double scale, SDL_
 	return ri;
 }
 
+background_layer::background_layer()
+	: scale_horizontally_(true)
+	, scale_vertically_(true)
+	, tile_horizontally_(false)
+	, tile_vertically_(false)
+	, keep_aspect_ratio_(true)
+	, is_base_layer_(false)
+	, image_file_()
+{}
+
+background_layer::background_layer(const config& cfg)
+	: scale_horizontally_(true)
+	, scale_vertically_(true)
+	, tile_horizontally_(false)
+	, tile_vertically_(false)
+	, keep_aspect_ratio_(true)
+	, is_base_layer_(false)
+	, image_file_()
+{
+	if(cfg.has_attribute("image")) {
+		image_file_ = cfg["image"].str();
+	}
+	if(cfg.has_attribute("scale")) {
+		scale_vertically_ = cfg["scale"].to_bool(true);
+		scale_horizontally_ = cfg["scale"].to_bool(true);
+	} else {
+		if(cfg.has_attribute("scale_vertically")) {
+			scale_vertically_ = cfg["scale_vertically"].to_bool(true);
+		}
+		if(cfg.has_attribute("scale_horizontally")) {
+			scale_horizontally_ = cfg["scale_horizontally"].to_bool(true);
+		}
+	}
+	if(cfg.has_attribute("tile")) {
+		tile_vertically_ = cfg["tile"].to_bool(false);
+		tile_horizontally_ = cfg["tile"].to_bool(false);
+	} else {
+		if(cfg.has_attribute("tile_vertically")) {
+			tile_vertically_ = cfg["tile_vertically"].to_bool(false);
+		}
+		if(cfg.has_attribute("tile_horizontally")) {
+			tile_horizontally_ = cfg["tile_horizontally"].to_bool(false);
+		}
+	}
+	if(cfg.has_attribute("keep_aspect_ratio")) {
+		keep_aspect_ratio_ = cfg["keep_aspect_ratio"].to_bool(true);
+	}
+	if(cfg.has_attribute("base_layer")) {
+		is_base_layer_ = cfg["base_layer"].to_bool(false);
+	}
+}
+
 part::part(const vconfig &part_cfg)
-	: scale_background_(true)
-	, background_file_()
-	, show_title_()
+	: show_title_()
 	, text_()
 	, text_title_()
 	, text_block_loc_(part::BLOCK_BOTTOM)
 	, title_alignment_(part::TEXT_LEFT)
 	, music_()
 	, sound_()
+	, background_layers_()
 	, floating_images_()
 {
 	resolve_wml(part_cfg);
@@ -141,12 +192,41 @@ void part::resolve_wml(const vconfig &cfg)
 		return;
 	}
 
+	// This section is only for compatibility with old code.
+	// Should be removed as soon as the old syntax becomes invalid.
+	background_layer bl;
+
 	if(cfg.has_attribute("background")) {
-		background_file_ = cfg["background"].str();
+		bl.set_file(cfg["background"].str());
 	}
 	if(cfg.has_attribute("scale_background")) {
-		scale_background_ = cfg["scale_background"].to_bool(true);
+		bl.set_scale_horizontally(cfg["scale_background"].to_bool(true));
+		bl.set_scale_vertically(cfg["scale_background"].to_bool(true));
+	} else {
+		if(cfg.has_attribute("scale_background_vertically")) {
+			bl.set_scale_vertically(cfg["scale_background_vertically"].to_bool(true));
+		}
+		if(cfg.has_attribute("scale_background_horizontally")) {
+			bl.set_scale_horizontally(cfg["scale_background_horizontally"].to_bool(true));
+		}
 	}
+	if(cfg.has_attribute("tile_background")) {
+		bl.set_tile_horizontally(cfg["tile_background"].to_bool(false));
+		bl.set_tile_vertically(cfg["tile_background"].to_bool(false));
+	} else {
+		if(cfg.has_attribute("tile_background_vertically")) {
+			bl.set_tile_vertically(cfg["tile_background_vertically"].to_bool(false));
+		}
+		if(cfg.has_attribute("tile_background_horizontally")) {
+			bl.set_tile_vertically(cfg["tile_background_horizontally"].to_bool(false));
+		}
+	}
+	if(cfg.has_attribute("keep_aspect_ratio")) {
+		bl.set_keep_aspect_ratio(cfg["keep_aspect_ratio"].to_bool(true));
+	}
+	background_layers_.push_back(bl);
+
+	
 	if(cfg.has_attribute("show_title")) {
 		show_title_ = cfg["show_title"].to_bool();
 	}
@@ -178,8 +258,12 @@ void part::resolve_wml(const vconfig &cfg)
 		const std::string key = i->first;
 		const vconfig node = i->second;
 
+		// [background_layer]
+		if (key == "background_layer") {
+			background_layers_.push_back(node.get_parsed_config());
+		}
 		// [image]
-		if(key == "image") {
+		else if(key == "image") {
 			floating_images_.push_back(node.get_parsed_config());
 		}
 		// [if]
