@@ -10,6 +10,7 @@ return {
         local BC = wesnoth.require "ai/lua/battle_calcs.lua"
         local LS = wesnoth.require "lua/location_set.lua"
         local HS = wesnoth.require("ai/micro_ais/ais/mai_healer_support_engine.lua").init(ai)
+        local R = wesnoth.require "ai/lua/retreat.lua"
 
         ------ Stats at beginning of turn -----------
 
@@ -467,6 +468,8 @@ return {
             self.data.attack = nil
         end
 
+        ------- Place Healers CA --------------
+
         generic_rush.healer_support_eval = HS.healer_support_eval
 
         function generic_rush:place_healers_eval()
@@ -477,6 +480,98 @@ return {
         end
 
         generic_rush.place_healers_exec = HS.healer_support_exec
+
+        ------- Retreat CA --------------
+
+        function generic_rush:retreat_injured_units_eval()
+            local units = wesnoth.get_units {
+                side = wesnoth.current.side,
+                formula = '$this_unit.moves > 0'
+            }
+            local unit, loc = R.retreat_injured_units(units)
+            if unit then
+                self.data.retreat_unit = unit
+                self.data.retreat_loc = loc
+
+                -- First check if attacks are possible for any unit
+                -- If one with > 50% chance of kill is possible, set return_value to lower than combat CA
+                local attacks = ai.get_attacks()
+                for i,a in ipairs(attacks) do
+                    if (#a.movements == 1) and (a.chance_to_kill > 0.5) then
+                        return 95000
+                    end
+                end
+                return 205000
+            end
+            return 0
+        end
+
+        function generic_rush:retreat_injured_units_exec()
+            AH.movefull_outofway_stopunit(ai, self.data.retreat_unit, self.data.retreat_loc)
+            self.data.retreat_unit = nil
+            self.data.retreat_loc = nil
+        end
+
+        ------- Village Hunt CA --------------
+        -- Give extra priority to seeking villages if we have less than our share
+        -- our share is defined as being slightly more than the total/the number of sides
+
+        function generic_rush:village_hunt_eval()
+            local villages = wesnoth.get_villages()
+
+            if not villages[1] then
+                return 0
+            end
+
+            local my_villages = wesnoth.get_villages { owner_side = wesnoth.current.side }
+
+            if #my_villages > #villages / #wesnoth.sides then
+                return 0
+            end
+
+            local allied_villages = wesnoth.get_villages { {"filter_owner", { {"ally_of", { side = wesnoth.current.side }} }} }
+            if #allied_villages == #villages then
+                return 0
+            end
+
+            local units = wesnoth.get_units {
+                side = wesnoth.current.side,
+                canrecruit = false,
+                formula = '$this_unit.moves > 0'
+            }
+
+            if not units[1] then
+                return 0
+            end
+
+            return 30000
+        end
+
+        function generic_rush:village_hunt_exec()
+            local unit = wesnoth.get_units({
+                side = wesnoth.current.side,
+                canrecruit = false,
+                formula = '$this_unit.moves > 0'
+            })[1]
+
+            local villages = wesnoth.get_villages()
+            local target, best_cost = nil, AH.no_path
+            for i,v in ipairs(villages) do
+                if not wesnoth.match_location(v[1], v[2], { {"filter_owner", { {"ally_of", { side = wesnoth.current.side }} }} }) then
+                    local path, cost = wesnoth.find_path(unit, v[1], v[2], { ignore_units = true, max_cost = best_cost })
+                    if cost < best_cost then
+                        target = v
+                        best_cost = cost
+                    end
+                end
+            end
+
+            if target then
+                local x, y = wesnoth.find_vacant_tile(target[1], target[2], unit)
+                local dest = AH.next_hop(unit, x, y)
+                ai.move(unit, dest[1], dest[2])
+            end
+        end
 
         return generic_rush
     end
