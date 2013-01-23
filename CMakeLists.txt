@@ -332,6 +332,12 @@ check_compiler_has_flag(
 	HAS_COMPILER_FLAG_WNOEXCEPT
 )
 
+check_compiler_has_flag(
+	CXX_FLAGS_PEDANTIC_COMPILATION
+	"-Wdocumentation"
+	HAS_COMPILER_FLAG_WDOCUMENTATION
+)
+
 
 ### Set the final compiler flags.
 
