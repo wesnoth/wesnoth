@@ -30,6 +30,8 @@
 
 #include "gui/widgets/helper.hpp"
 
+#include <clocale>
+
 namespace test_utils {
 
 	static bool match_english(const language_def& def)
