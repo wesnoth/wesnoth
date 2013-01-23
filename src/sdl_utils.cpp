@@ -603,8 +603,8 @@ surface tile_surface(const surface& surf, int w, int h, bool optimize)
 			int x = ((i % w) - xoff);
 			int y = ((i / w) - yoff);
 
-			while ((x += sw) < 0);
-			while ((y += sh) < 0);
+			while ((x += sw) < 0) { /* DO NOTHING */ }
+			while ((y += sh) < 0) { /* DO NOTHING */ }
 
 			const int sx = x % sw;
 			const int sy = y % sh;
