@@ -22,9 +22,7 @@
 
 #include <map>
 #include <string>
-#ifdef _WIN32
 #include <time.h>
-#endif
 
 #include "simple_wml.hpp"
 
