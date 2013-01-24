@@ -572,6 +572,103 @@ surface scale_surface(const surface &surf, int w, int h, bool optimize)
 	return optimize ? create_optimized_surface(dst) : dst;
 }
 
+surface scale_surface_sharp(const surface& surf, int w, int h, bool optimize)
+{
+	// Since SDL version 1.1.5 0 is transparent, before 255 was transparent.
+	assert(SDL_ALPHA_TRANSPARENT==0);
+
+	if(surf == NULL)
+		return NULL;
+
+	if(w == surf->w && h == surf->h) {
+		return surf;
+	}
+	assert(w >= 0);
+	assert(h >= 0);
+
+	surface dst(create_neutral_surface(w,h));
+
+	if (w == 0 || h ==0) {
+		std::cerr << "Create an empty image\n";
+		return create_optimized_surface(dst);
+	}
+
+	surface src(make_neutral_surface(surf));
+	// Now both surfaces are always in the "neutral" pixel format
+
+	if(src == NULL || dst == NULL) {
+		std::cerr << "Could not create surface to scale onto\n";
+		return NULL;
+	}
+
+#ifdef PANDORA
+	scale_surface_down(dst);
+#else
+	{
+		const_surface_lock src_lock(src);
+		surface_lock dst_lock(dst);
+
+		const Uint32* const src_pixels = src_lock.pixels();
+		Uint32* const dst_pixels = dst_lock.pixels();
+
+		tfloat xratio = tfloat(surf->w) / w;
+		tfloat yratio = tfloat(surf->h) / h;
+
+		tfloat ysrc;
+		for(int ydst = 0; ydst != h; ++ydst, ysrc += yratio) {
+			tfloat xsrc;
+			for(int xdst = 0; xdst != w; ++xdst, xsrc += xratio) {
+				tfloat red, green, blue, alpha;
+
+				tfloat summation;
+
+				// We now have a rectangle, (xsrc,ysrc,xratio,yratio)
+				// which we want to derive the pixel from
+				for(tfloat xloc = xsrc; xloc < xsrc+xratio; xloc += 1) {
+					const tfloat xsize = std::min<tfloat>(floor(xloc + 1)-xloc,xsrc+xratio-xloc);
+
+					for(tfloat yloc = ysrc; yloc < ysrc+yratio; yloc += 1) {
+						const int xsrcint = std::max<int>(0,std::min<int>(src->w-1,xsrc.to_int()));
+						const int ysrcint = std::max<int>(0,std::min<int>(src->h-1,ysrc.to_int()));
+						const tfloat ysize = std::min<tfloat>(floor(yloc+1)-yloc,ysrc+yratio-yloc);
+
+						Uint8 r,g,b,a;
+
+						SDL_GetRGBA(src_pixels[ysrcint*src->w + xsrcint],src->format,&r,&g,&b,&a);
+						tfloat value = xsize * ysize;
+						summation += value;
+						if (!a) continue;
+						value *= a;
+						alpha += value;
+						red += r * value;
+						green += g * value;
+						blue += b * value;
+					}
+				}
+
+				if (alpha != 0) {
+					red = red / alpha + 0.5;
+					green = green / alpha + 0.5;
+					blue = blue / alpha + 0.5;
+					alpha = alpha / summation + 0.5;
+				}
+
+				dst_pixels[ydst*dst->w + xdst] = SDL_MapRGBA(
+				dst->format
+				, red.to_int()
+				, green.to_int()
+				, blue.to_int()
+				, alpha.to_int());
+			}
+
+		}
+	}
+#endif
+
+	return optimize ? create_optimized_surface(dst) : dst;
+}
+
+
 surface tile_surface(const surface& surf, int w, int h, bool optimize)
 {
 	if (surf->w == w && surf->h == h) {
