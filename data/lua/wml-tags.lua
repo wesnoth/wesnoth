@@ -389,12 +389,49 @@ end
 
 function wml_actions.remove_unit_overlay(cfg)
 	local img = cfg.image or helper.wml_error( "[remove_unit_overlay] missing required image= attribute" )
+
+	-- Splits the string argument on commas, excepting those commas that occur
+	-- within paired parentheses. The result is returned as a (non-empty) table.
+	-- (The table might have a single entry that is an empty string, though.)
+	-- Spaces around splitting commas are stripped (as in the C++ version).
+	-- Empty strings are not removed (unlike the C++ version).
+	local function parenthetical_split(str)
+		local t = {""}
+		-- To simplify some logic, end the string with paired parentheses.
+		local formatted = (str or "") .. ",()"
+
+		-- Isolate paired parentheses.
+		for prefix,paren in string.gmatch(formatted, "(.-)(%b())") do
+			-- Separate on commas
+			for comma,text in string.gmatch(prefix, "(,?)([^,]*)") do
+				if comma == "" then
+					-- We are continuing the last string found.
+					t[#t] = t[#t] .. text
+				else
+					-- We are starting the next string.
+					-- (Now that we know the last string is complete,
+					-- strip leading and trailing spaces from it.)
+					t[#t] = string.match(t[#t], "^%s*(.-)%s*$")
+					table.insert(t, text)
+				end
+			end
+			-- Add the parenthetical part to the last string found.
+			t[#t] = t[#t] .. paren
+		end
+		-- Remove the empty parentheses we had added to the end.
+		table.remove(t)
+		return t
+	end
+
+	-- Loop through all matching units.
 	for i,u in ipairs(wesnoth.get_units(cfg)) do
 		local ucfg = u.__cfg
-		local t = {}
-		for w in helper.parenthetical_split(ucfg.overlays) do
-			if w ~= img then table.insert(t, w) end
+		local t = parenthetical_split(ucfg.overlays)
+		-- Remove the specified image from the overlays.
+		for i = #t,1,-1 do
+			if t[i] == img then table.remove(t, i) end
 		end
+		-- Reassemble the list of remaining overlays.
 		ucfg.overlays = table.concat(t, ',')
 		wesnoth.put_unit(ucfg)
 	end
