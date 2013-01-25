@@ -14,6 +14,8 @@ Version 1.10.5+svn:
    * Fixed [disallow_end_turn] losing effect on save/reload (bug #20350)
    * Fixed [disallow_end_turn] persisting when advancing to the next scenario
      (bug #20351)
+   * Fixed bug #20401: [remove_unit_overlay] did not work when the image used an
+     image path function that took multiple parameters.
  * Miscellaneous and bug fixes:
    * Fixed a rare case where a player could exercise (very) limited control of
      another (human) player's units in a hotseat game.
