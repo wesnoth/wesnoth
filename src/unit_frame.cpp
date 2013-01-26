@@ -27,7 +27,7 @@ progressive_string::progressive_string(const std::string & data,int duration) :
 	data_(),
 	input_(data)
 {
-		const std::vector<std::string> first_pass = utils::split(data);
+		const std::vector<std::string> first_pass = utils::square_parenthetical_split(data);
 		const int time_chunk = std::max<int>(duration / (first_pass.size()?first_pass.size():1),1);
 
 		std::vector<std::string>::const_iterator tmp;
@@ -248,6 +248,9 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string) 
 
 	if (const config::attribute_value *v = cfg.get(frame_string + "duration")) {
 		duration(*v);
+	} else if (!cfg.get(frame_string + "end")) {
+		duration((progressive_string(halo_,1)).duration());
+		
 	} else {
 		duration(cfg[frame_string + "end"].to_int() - cfg[frame_string + "begin"].to_int());
 	}
@@ -461,7 +464,6 @@ void frame_parsed_parameters::override( int duration
 		, const std::string& layer
 		, const std::string& modifiers)
 {
-
 	if(!highlight.empty()) {
 		highlight_ratio_ = progressive_double(highlight,duration);
 	} else if(duration != duration_){
@@ -604,6 +606,7 @@ void unit_frame::redraw(const int frame_time,bool first_time,const map_location 
 				orientation = halo::NORMAL;
 				break;
 		}
+		
 		if(direction != map_location::SOUTH_WEST && direction != map_location::NORTH_WEST) {
 			*halo_id = halo::add(static_cast<int>(x+current_data.halo_x* game_display::get_singleton()->get_zoom_factor()),
 					static_cast<int>(y+current_data.halo_y* game_display::get_singleton()->get_zoom_factor()),

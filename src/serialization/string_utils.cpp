@@ -27,6 +27,7 @@
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
 #include <boost/array.hpp>
+#include <boost/lexical_cast.hpp>
 
 static lg::log_domain log_engine("engine");
 #define ERR_GENERAL LOG_STREAM(err, lg::general)
@@ -110,6 +111,152 @@ std::vector< std::string > split(std::string const &val, char c, int flags)
 		strip(new_val);
 	if (!(flags & REMOVE_EMPTY) || !new_val.empty())
 		res.push_back(new_val);
+
+	return res;
+}
+
+std::vector< std::string > square_parenthetical_split(std::string const &val,
+		const char separator, std::string const &left,
+		std::string const &right,int flags)
+{
+	std::vector< std::string > res;
+	std::vector<char> part;
+	bool in_parenthesis = false;
+	std::vector<std::string::const_iterator> square_left;
+	std::vector<std::string::const_iterator> square_right;
+	std::vector< std::string > square_expansion;
+
+	
+	std::string::const_iterator i1 = val.begin();
+	std::string::const_iterator i2 = val.begin();
+	std::string::const_iterator j1 = val.begin();
+
+	if (i1 == val.end()) return res;
+	
+	std::string lp=left;
+	std::string rp=right;
+
+	if (!separator) {
+		ERR_GENERAL << "Separator must be specified for square bracket split funtion.\n";
+		return res;
+	}
+
+	if(left.size()!=right.size()){
+		ERR_GENERAL << "Left and Right Parenthesis lists not same length\n";
+		return res;
+	}
+
+	while (true) {
+		if(i2 == val.end() || (!in_parenthesis && *i2 == separator)) {
+			size_t size_square_exp = 0;
+			for (size_t i=0; i < square_left.size(); i++) {
+				std::string tmp_val(square_left[i]+1,square_right[i]);
+				std::vector< std::string > tmp = split(tmp_val);
+				std::vector<std::string>::const_iterator itor = tmp.begin();
+				for(; itor != tmp.end(); ++itor) {
+					size_t found = (*itor).find_first_of('-');
+					if (found == std::string::npos) {
+						std::string tmp = (*itor);
+						square_expansion.push_back(strip(tmp));
+					}
+					else { //expand number range
+						std::string s_begin = (*itor).substr(0,found);
+						s_begin = strip(s_begin);
+						int begin = atoi(s_begin.c_str());
+						int padding = 0;
+						while (padding<s_begin.size() && s_begin[padding]=='0') {
+							padding++;
+						}
+						std::string s_end = (*itor).substr(found+1);
+						s_end = strip(s_end);
+						int end = atoi(s_end.c_str());
+						if (padding==0) {
+							while (padding<s_end.size() && s_end[padding]=='0') {
+								padding++;
+							}
+						}
+						int increment = (end >= begin ? 1 : -1);
+						end+=increment; //include end in expansion
+						for (int k=begin; k!=end; k+=increment) {
+							std::string pb = boost::lexical_cast<std::string>(k);
+							for (int p=pb.size(); p<=padding; p++)
+								pb = std::string("0") + pb;
+							square_expansion.push_back(pb);
+						}
+					}
+				}
+				if (i*square_expansion.size() != (i+1)*size_square_exp ) {
+					std::string tmp(i1, i2);
+					ERR_GENERAL << "Square bracket lengths do not match up: "+tmp+"\n";
+					return res;
+				}
+				size_square_exp = square_expansion.size();
+			}
+			size_t j = 0;
+			size_t j_max = 0;
+			if (square_left.size() != 0)
+				j_max = square_expansion.size() / square_left.size();
+			do {
+				j1 = i1;
+				std::string new_val;
+				for (size_t i=0; i < square_left.size(); i++) {
+					std::string tmp_val(j1, square_left[i]);
+					new_val.append(tmp_val);
+					size_t k = j+i*j_max;
+					if (k < square_expansion.size())
+						new_val.append(square_expansion[k]);
+					j1 = square_right[i]+1;
+				}
+				std::string tmp_val(j1, i2);
+				new_val.append(tmp_val);
+				if (flags & STRIP_SPACES)
+					strip(new_val);
+				if (!(flags & REMOVE_EMPTY) || !new_val.empty())
+					res.push_back(new_val);
+				j++;
+			} while (j<j_max);
+			
+			if (i2 == val.end()) //escape loop
+				break;
+			++i2;
+			if (flags & STRIP_SPACES) { //strip leading spaces
+				while (i2 != val.end() && *i2 == ' ')
+					++i2;
+			}
+			i1=i2;
+			square_left.clear();
+			square_right.clear();
+			square_expansion.clear();
+			continue;
+		}
+		if(!part.empty() && *i2 == part.back()) {
+			part.pop_back();
+			if (*i2 == ']') square_right.push_back(i2);
+			if (part.empty())
+				in_parenthesis = false;
+			++i2;
+			continue;
+		}
+		bool found=false;
+		for(size_t i=0; i < lp.size(); i++) {
+			if (*i2 == lp[i]){
+				if (*i2 == '[')
+					square_left.push_back(i2);
+				++i2;
+				part.push_back(rp[i]);
+				found=true;
+				break;
+			}
+		}
+		if(!found){
+			++i2;
+		} else
+			in_parenthesis = true;
+	}
+
+	if(!part.empty()){
+			ERR_GENERAL << "Mismatched parenthesis:\n"<<val<<"\n";;
+	}
 
 	return res;
 }

@@ -359,7 +359,7 @@ bool terrain_builder::load_images(building_rule &rule)
 				BOOST_FOREACH(const std::string& var, var_strings)
 				{
 					/** @todo improve this, 99% of terrains are not animated. */
-					std::vector<std::string> frames = utils::parenthetical_split(var,',');
+					std::vector<std::string> frames = utils::square_parenthetical_split(var,',');
 					animated<image::locator> res;
 
 					BOOST_FOREACH(const std::string& frame, frames)

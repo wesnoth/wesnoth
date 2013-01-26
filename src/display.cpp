@@ -206,7 +206,7 @@ void display::init_flags() {
 		// Must recolor flag image
 		animated<image::locator> temp_anim;
 
-		std::vector<std::string> items = utils::split(flag);
+		std::vector<std::string> items = utils::square_parenthetical_split(flag);
 		std::vector<std::string>::const_iterator itor = items.begin();
 		for(; itor != items.end(); ++itor) {
 			const std::vector<std::string>& items = utils::split(*itor, ':');

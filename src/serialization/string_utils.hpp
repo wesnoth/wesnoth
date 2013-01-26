@@ -80,6 +80,29 @@ std::vector< std::string > parenthetical_split(std::string const &val,
 	std::string const &right=")",int flags = REMOVE_EMPTY | STRIP_SPACES);
 
 /**
+ * Similar to parenthetical_split, but also expands embedded square brackets.
+ * Separator must be specified and number of entries in each square bracket
+ * must match in each section.
+ * Leading zeros are preserved if specified between square brackets.
+ * 
+ * This is useful to expand animation WML code.
+ * Examples:
+ * square_parenthetical_split("a[1-3](1,[5,6,7]),b[8,9]",",") should return
+ * "a1(1,5)","a2(1,6)","a3(1,7)","b8","b9"
+ * square_parenthetical_split("abc[07-10]") should return
+ * "abc07,abc08,abc09,abc10"
+ * square_parenthetical_split("a[1,2]b[3-4]:c[5,6]") should return
+ * "a1b3:c5,a2b4:c6"
+ * square_parenthetical_split("abc[3,1].png") should return
+ * "abc3.png,abc2.png,abc1.png"
+ * square_parenthetical_split("abc[de,xyz]") should return
+ * "abcde,abcxyz"
+ */
+std::vector< std::string > square_parenthetical_split(std::string const &val,
+	const char separator = ',' , std::string const &left="([",
+	std::string const &right=")]",int flags = REMOVE_EMPTY | STRIP_SPACES);
+
+/**
  * Generates a new string joining container items in a list.
  *
  * @param v A container with elements.
