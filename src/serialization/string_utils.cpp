@@ -163,7 +163,7 @@ std::vector< std::string > square_parenthetical_split(std::string const &val,
 						std::string s_begin = (*itor).substr(0,found);
 						s_begin = strip(s_begin);
 						int begin = atoi(s_begin.c_str());
-						int padding = 0;
+						size_t padding = 0;
 						while (padding<s_begin.size() && s_begin[padding]=='0') {
 							padding++;
 						}
@@ -179,7 +179,7 @@ std::vector< std::string > square_parenthetical_split(std::string const &val,
 						end+=increment; //include end in expansion
 						for (int k=begin; k!=end; k+=increment) {
 							std::string pb = boost::lexical_cast<std::string>(k);
-							for (int p=pb.size(); p<=padding; p++)
+							for (size_t p=pb.size(); p<=padding; p++)
 								pb = std::string("0") + pb;
 							square_expansion.push_back(pb);
 						}
