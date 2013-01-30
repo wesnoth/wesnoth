@@ -135,7 +135,7 @@ namespace game_config
 	namespace sounds {
 		const std::string turn_bell = "bell.wav",
 		timer_bell = "timer.wav",
-		receive_message = "chat-1.ogg,chat-2.ogg,chat-3.ogg",
+		receive_message = "chat-[1~3].ogg",
 		receive_message_highlight = "chat-highlight.ogg",
 		receive_message_friend = "chat-friend.ogg",
 		receive_message_server = "receive.wav",

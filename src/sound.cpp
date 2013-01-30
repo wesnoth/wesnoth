@@ -238,7 +238,7 @@ static const sound::music_track &choose_track()
 
 static std::string pick_one(const std::string &files)
 {
-	std::vector<std::string> ids = utils::split(files);
+	std::vector<std::string> ids = utils::square_parenthetical_split(files,',',"[","]");
 
 	if (ids.empty())
 		return "";
