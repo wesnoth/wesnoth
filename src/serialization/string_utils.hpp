@@ -53,7 +53,7 @@ enum { REMOVE_EMPTY = 0x01,	/**< REMOVE_EMPTY : remove empty elements. */
 	  STRIP_SPACES  = 0x02	/**< STRIP_SPACES : strips leading and trailing blank spaces. */
 };
 
-std::vector< std::string > split(std::string const &val, char c = ',', int flags = REMOVE_EMPTY | STRIP_SPACES);
+std::vector< std::string > split(std::string const &val, const char c = ',', const int flags = REMOVE_EMPTY | STRIP_SPACES);
 
 /**
  * Splits a string based either on a separator where text within parenthesis
@@ -77,7 +77,7 @@ std::vector< std::string > split(std::string const &val, char c = ',', int flags
  */
 std::vector< std::string > parenthetical_split(std::string const &val,
 	const char separator = 0 , std::string const &left="(",
-	std::string const &right=")",int flags = REMOVE_EMPTY | STRIP_SPACES);
+	std::string const &right=")",const int flags = REMOVE_EMPTY | STRIP_SPACES);
 
 /**
  * Similar to parenthetical_split, but also expands embedded square brackets.
@@ -100,7 +100,7 @@ std::vector< std::string > parenthetical_split(std::string const &val,
  */
 std::vector< std::string > square_parenthetical_split(std::string const &val,
 	const char separator = ',' , std::string const &left="([",
-	std::string const &right=")]",int flags = REMOVE_EMPTY | STRIP_SPACES);
+	std::string const &right=")]",const int flags = REMOVE_EMPTY | STRIP_SPACES);
 
 /**
  * Generates a new string joining container items in a list.
@@ -184,6 +184,9 @@ std::string unescape(const std::string &str);
 
 /** Remove whitespace from the front and back of the string 'str'. */
 std::string &strip(std::string &str);
+
+/** Remove whitespace from the back of the string 'str'. */
+std::string &strip_end(std::string &str);
 
 /** Convert no, false, off, 0, 0.0 to false, empty to def, and others to true */
 bool string_bool(const std::string& str,bool def=false);

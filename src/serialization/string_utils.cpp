@@ -80,23 +80,35 @@ std::string &strip(std::string &str)
 	return str;
 }
 
-std::vector< std::string > split(std::string const &val, char c, int flags)
+std::string &strip_end(std::string &str)
+{
+	str.erase(std::find_if(str.rbegin(), str.rend(), notspace).base(), str.end());
+
+	return str;
+}
+
+std::vector< std::string > split(std::string const &val, const char c, const int flags)
 {
 	std::vector< std::string > res;
 
 	std::string::const_iterator i1 = val.begin();
-	std::string::const_iterator i2 = val.begin();
-
+	std::string::const_iterator i2;
+	if (flags & STRIP_SPACES) {
+		while (i1 != val.end() && portable_isspace(*i1))
+			++i1;
+	}
+	i2=i1;
+			
 	while (i2 != val.end()) {
 		if (*i2 == c) {
 			std::string new_val(i1, i2);
 			if (flags & STRIP_SPACES)
-				strip(new_val);
+				strip_end(new_val);
 			if (!(flags & REMOVE_EMPTY) || !new_val.empty())
 				res.push_back(new_val);
 			++i2;
 			if (flags & STRIP_SPACES) {
-				while (i2 != val.end() && *i2 == ' ')
+				while (i2 != val.end() && portable_isspace(*i2))
 					++i2;
 			}
 
@@ -108,7 +120,7 @@ std::vector< std::string > split(std::string const &val, char c, int flags)
 
 	std::string new_val(i1, i2);
 	if (flags & STRIP_SPACES)
-		strip(new_val);
+		strip_end(new_val);
 	if (!(flags & REMOVE_EMPTY) || !new_val.empty())
 		res.push_back(new_val);
 
@@ -117,7 +129,7 @@ std::vector< std::string > split(std::string const &val, char c, int flags)
 
 std::vector< std::string > square_parenthetical_split(std::string const &val,
 		const char separator, std::string const &left,
-		std::string const &right,int flags)
+		std::string const &right,const int flags)
 {
 	std::vector< std::string > res;
 	std::vector<char> part;
@@ -126,16 +138,21 @@ std::vector< std::string > square_parenthetical_split(std::string const &val,
 	std::vector<std::string::const_iterator> square_right;
 	std::vector< std::string > square_expansion;
 
-	
-	std::string::const_iterator i1 = val.begin();
-	std::string::const_iterator i2 = val.begin();
-	std::string::const_iterator j1 = val.begin();
-
-	if (i1 == val.end()) return res;
-	
 	std::string lp=left;
 	std::string rp=right;
 
+	std::string::const_iterator i1 = val.begin();
+	std::string::const_iterator i2;
+	std::string::const_iterator j1;
+	if (flags & STRIP_SPACES) {
+		while (i1 != val.end() && portable_isspace(*i1))
+			++i1;
+	}
+	i2=i1;
+	j1=i1;
+
+	if (i1 == val.end()) return res;
+	
 	if (!separator) {
 		ERR_GENERAL << "Separator must be specified for square bracket split funtion.\n";
 		return res;
@@ -154,7 +171,7 @@ std::vector< std::string > square_parenthetical_split(std::string const &val,
 				std::vector< std::string > tmp = split(tmp_val);
 				std::vector<std::string>::const_iterator itor = tmp.begin();
 				for(; itor != tmp.end(); ++itor) {
-					size_t found = (*itor).find_first_of('-');
+					size_t found = (*itor).find_first_of('~');
 					if (found == std::string::npos) {
 						std::string tmp = (*itor);
 						square_expansion.push_back(strip(tmp));
@@ -210,7 +227,7 @@ std::vector< std::string > square_parenthetical_split(std::string const &val,
 				std::string tmp_val(j1, i2);
 				new_val.append(tmp_val);
 				if (flags & STRIP_SPACES)
-					strip(new_val);
+					strip_end(new_val);
 				if (!(flags & REMOVE_EMPTY) || !new_val.empty())
 					res.push_back(new_val);
 				j++;
@@ -220,7 +237,7 @@ std::vector< std::string > square_parenthetical_split(std::string const &val,
 				break;
 			++i2;
 			if (flags & STRIP_SPACES) { //strip leading spaces
-				while (i2 != val.end() && *i2 == ' ')
+				while (i2 != val.end() && portable_isspace(*i2))
 					++i2;
 			}
 			i1=i2;
@@ -263,18 +280,23 @@ std::vector< std::string > square_parenthetical_split(std::string const &val,
 
 std::vector< std::string > parenthetical_split(std::string const &val,
 		const char separator, std::string const &left,
-		std::string const &right,int flags)
+		std::string const &right,const int flags)
 {
 	std::vector< std::string > res;
 	std::vector<char> part;
 	bool in_parenthesis = false;
 
-	std::string::const_iterator i1 = val.begin();
-	std::string::const_iterator i2 = val.begin();
-
 	std::string lp=left;
 	std::string rp=right;
 
+	std::string::const_iterator i1 = val.begin();
+	std::string::const_iterator i2;
+	if (flags & STRIP_SPACES) {
+		while (i1 != val.end() && portable_isspace(*i1))
+			++i1;
+	}
+	i2=i1;
+	
 	if(left.size()!=right.size()){
 		ERR_GENERAL << "Left and Right Parenthesis lists not same length\n";
 		return res;
@@ -284,12 +306,12 @@ std::vector< std::string > parenthetical_split(std::string const &val,
 		if(!in_parenthesis && separator && *i2 == separator){
 			std::string new_val(i1, i2);
 			if (flags & STRIP_SPACES)
-				strip(new_val);
+				strip_end(new_val);
 			if (!(flags & REMOVE_EMPTY) || !new_val.empty())
 				res.push_back(new_val);
 			++i2;
 			if (flags & STRIP_SPACES) {
-				while (i2 != val.end() && *i2 == ' ')
+				while (i2 != val.end() && portable_isspace(*i2))
 					++i2;
 			}
 			i1=i2;
