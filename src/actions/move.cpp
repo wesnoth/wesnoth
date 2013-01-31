@@ -501,7 +501,7 @@ namespace { // Private helpers for move_unit()
 			// Show this move.
 			const size_t current_tracking = game_events::wml_tracking();
 			animator.proceed_to(*move_it_, step_to - begin_,
-			                    current_tracking != do_move_track_);
+			                    current_tracking != do_move_track_, false);
 			do_move_track_ = current_tracking;
 			disp.redraw_minimap();
 		}
@@ -921,10 +921,10 @@ namespace { // Private helpers for move_unit()
 
 				// We can leave *step_from. Make the move to *real_end_.
 				do_move(step_from, real_end_, animator);
-
 				// Update the fog.
 				if ( current_uses_fog_ )
 					handle_fog(*real_end_, ally_interrupts);
+				animator.wait_for_anims();
 
 				// Fire the events for this step.
 				// (These return values are not checked since real_end_ still

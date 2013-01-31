@@ -21,6 +21,7 @@
 #ifndef UNIT_DISPLAY_HPP_INCLUDED
 #define UNIT_DISPLAY_HPP_INCLUDED
 
+#include "unit_animation.hpp"
 #include "unit_map.hpp"
 #include "gamestatus.hpp"
 #include "game_display.hpp"
@@ -48,16 +49,21 @@ public:
 	~unit_mover();
 
 	void start(unit& u);
-	void proceed_to(unit& u, size_t path_index, bool update = false);
+	void proceed_to(unit& u, size_t path_index, bool update=false, bool wait=true);
+	void wait_for_anims();
 	void finish(unit &u, map_location::DIRECTION dir = map_location::NDIRECTIONS);
 
 private: // functions
 	void replace_temporary(unit & u);
+	void update_shown_unit();
 
 private: // data
 	game_display * const disp_;
 	const bool can_draw_;
 	const bool animate_;
+	unit_animator animator_;
+	int wait_until_;	/// The animation potential to wait until. INT_MIN for no wait; INT_MAX to wait for end.
+	unit * shown_unit_;	/// The unit to be (re-)shown after an animation finishes.
 	const std::vector<map_location>& path_;
 	size_t current_;
 	game_display::fake_unit * temp_unit_ptr_;

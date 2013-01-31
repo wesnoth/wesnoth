@@ -86,17 +86,33 @@ static void teleport_unit_between( const map_location& a, const map_location& b,
 	events::pump();
 }
 
-static void move_unit_between(const map_location& a, const map_location& b, unit& temp_unit,unsigned int step_num,unsigned int step_left)
+/**
+ * Animates a single step between hexes.
+ * This will return before the animation actually finishes, allowing other
+ * processing to occur during the animation.
+ *
+ * @param a          The starting hex.
+ * @param b          The ending hex.
+ * @param temp_unit  The unit to animate (historically, a temporary unit).
+ * @param step_num   The number of steps taken so far (used to pick an animation).
+ * @param step_left  The number of steps remaining (used to pick an animation).
+ * @param animator   The unit_animator to use. This is assumed clear when we start,
+ *                   but will likely not be clear when we return.
+ * @returns  The animation potential until this animation will finish.
+ *           INT_MIN indicates that no animation is pending.
+ */
+static int move_unit_between(const map_location& a, const map_location& b,
+                             unit& temp_unit, unsigned int step_num,
+                             unsigned int step_left, unit_animator & animator)
 {
 	display* disp = display::get_singleton();
 	if(!disp || disp->video().update_locked() || disp->video().faked() || (disp->fogged(a) && disp->fogged(b))) {
-		return;
+		return INT_MIN;
 	}
 
 	temp_unit.set_location(a);
 	disp->invalidate(temp_unit.get_location());
 	temp_unit.set_facing(a.get_relative_dir(b));
-	unit_animator animator;
 	animator.replace_anim_if_invalid(&temp_unit,"movement",a,b,step_num,
 			false,"",0,unit_animation::INVALID,NULL,NULL,step_left);
 	animator.start_animations();
@@ -108,7 +124,6 @@ static void move_unit_between(const map_location& a, const map_location& b, unit
 	// new_animation_frame();
 
 	int target_time = animator.get_animation_time_potential();
-
 		// target_time must be short to avoid jumpy move
 		// std::cout << "target time: " << target_time << "\n";
 	// we round it to the next multile of 200
@@ -119,19 +134,7 @@ static void move_unit_between(const map_location& a, const map_location& b, unit
 	// which will not match with the following -1.0
 	// if(  target_time - animator.get_animation_time_potential() < 100 ) target_time +=200;
 
-	animator.wait_until(target_time);
-		// debug code, see unit_frame::redraw()
-		// std::cout << "   end\n";
-	map_location arr[6];
-	get_adjacent_tiles(a, arr);
-	unsigned int i;
-	for (i = 0; i < 6; ++i) {
-		disp->invalidate(arr[i]);
-	}
-	get_adjacent_tiles(b, arr);
-	for (i = 0; i < 6; ++i) {
-		disp->invalidate(arr[i]);
-	}
+	return target_time;
 }
 
 namespace unit_display
@@ -145,6 +148,9 @@ unit_mover::unit_mover(const std::vector<map_location>& path, bool animate) :
 	can_draw_(disp_  &&  !disp_->video().update_locked()  &&
 	          !disp_->video().faked()  &&  path.size() > 1),
 	animate_(animate),
+	animator_(),
+	wait_until_(INT_MIN),
+	shown_unit_(NULL),
 	path_(path),
 	current_(0),
 	temp_unit_ptr_(NULL),
@@ -162,9 +168,12 @@ unit_mover::unit_mover(const std::vector<map_location>& path, bool animate) :
 
 unit_mover::~unit_mover()
 {
-	if ( temp_unit_ptr_ != NULL )
-		// Its destructor will remove the temp unit from the display.
-		delete temp_unit_ptr_;
+	// Make sure a unit hidden for movement is unhidden.
+	update_shown_unit();
+	// For safety, clear the animator before deleting the temp unit.
+	animator_.clear();
+	// The temp unit's destructor will remove it from the display.
+	delete temp_unit_ptr_;
 }
 
 
@@ -204,6 +213,22 @@ void unit_mover::replace_temporary(unit & u)
 
 
 /**
+ * Switches the display back to *shown_unit_ after animating.
+ * This uses temp_unit_ptr_, so (in the destructor) call this before deleting
+ * temp_unit_ptr_.
+ */
+void unit_mover::update_shown_unit()
+{
+	if ( shown_unit_ != NULL ) {
+		// Switch the display back to the real unit.
+		shown_unit_->set_hidden(was_hidden_);
+		temp_unit_ptr_->set_hidden(true);
+		shown_unit_ = NULL;
+	}
+}
+
+
+/**
  * Initiates the display of movement for the supplied unit.
  * This should be called before attempting to display moving to a new hex.
  */
@@ -212,6 +237,9 @@ void unit_mover::start(unit& u)
 	// Nothing to do here if there is nothing to animate.
 	if ( !can_draw_  || !animate_ )
 		return;
+
+	// This normally does nothing, but just in case...
+	wait_for_anims();
 
 	// Visually replace the original unit with the temporary.
 	// (Original unit is left on the map, so the unit count is correct.)
@@ -245,10 +273,10 @@ void unit_mover::start(unit& u)
 	disp_->draw(true);
 
 	// extra immobile movement animation for take-off
-	unit_animator animator;
-	animator.add_animation(temp_unit_ptr_, "pre_movement", path_[0], path_[1]);
-	animator.start_animations();
-	animator.wait_for_end();
+	animator_.add_animation(temp_unit_ptr_, "pre_movement", path_[0], path_[1]);
+	animator_.start_animations();
+	animator_.wait_for_end();
+	animator_.clear();
 
 	// Switch the display back to the real unit.
 	u.set_facing(temp_unit_ptr_->facing());
@@ -264,12 +292,19 @@ void unit_mover::start(unit& u)
  * The moving unit will only be updated if update is set to true; otherwise,
  * the provided unit is merely hidden during the movement and re-shown after.
  * (Not updating the unit can produce smoother animations in some cases.)
+ * If @a wait is set to false, this returns without waiting for the final
+ * animation to finish. Call wait_for_anims() to explicitly get this final
+ * wait (another call to proceed_to() or finish() will implicitly wait). The
+ * unit must remain valid until the wait is finished.
  */
-void unit_mover::proceed_to(unit& u, size_t path_index, bool update)
+void unit_mover::proceed_to(unit& u, size_t path_index, bool update, bool wait)
 {
 	// Nothing to do here if animations can/should not be shown.
 	if ( !can_draw_  || !animate_ )
 		return;
+
+	// Handle pending visibility issues before introducing new ones.
+	wait_for_anims();
 
 	if ( update  ||  temp_unit_ptr_ == NULL )
 		// Replace the temp unit (which also hides u and shows our temporary).
@@ -289,6 +324,9 @@ void unit_mover::proceed_to(unit& u, size_t path_index, bool update)
 		if ( !is_enemy_ || !temp_unit_ptr_->invisible(path_[current_]) ||
 		     !temp_unit_ptr_->invisible(path_[current_+1]) )
 		{
+			// Wait for the previous step to complete before drawing the next one.
+			wait_for_anims();
+
 			if ( !disp_->tile_fully_on_screen(path_[current_]) ||
 			     !disp_->tile_fully_on_screen(path_[current_+1]))
 			{
@@ -306,19 +344,61 @@ void unit_mover::proceed_to(unit& u, size_t path_index, bool update)
 			}
 
 			if ( tiles_adjacent(path_[current_], path_[current_+1]) )
-				move_unit_between(path_[current_], path_[current_+1],
-				                  *temp_unit_ptr_, current_,
-				                  path_.size() - (current_+2));
+				wait_until_ =
+					move_unit_between(path_[current_], path_[current_+1],
+					                  *temp_unit_ptr_, current_,
+					                  path_.size() - (current_+2), animator_);
 			else if ( path_[current_] != path_[current_+1] )
 				teleport_unit_between(path_[current_], path_[current_+1],
 				                      *temp_unit_ptr_);
 		}
 
-	// Switch the display back to the real unit.
+	// Update the unit's facing.
 	u.set_facing(temp_unit_ptr_->facing());
 	u.set_standing(false);	// Need to reset u's animation so the new facing takes effect.
-	u.set_hidden(was_hidden_);
-	temp_unit_ptr_->set_hidden(true);
+	// Remember the unit to unhide when the animation finishes.
+	shown_unit_ = &u;
+	if ( wait )
+		wait_for_anims();
+}
+
+
+/**
+ * Waits for the final animation of the most recent proceed_to() to finish.
+ * It is not necessary to call this unless you want to wait before the next
+ * call to proceed_to() or finish().
+ */
+void unit_mover::wait_for_anims()
+{
+	if ( wait_until_ == INT_MAX )
+		// Wait for end (not currently used, but still supported).
+		animator_.wait_for_end();
+	else if ( wait_until_ != INT_MIN ) {
+		// Wait until the specified time (used for normal movement).
+		animator_.wait_until(wait_until_);
+		// debug code, see unit_frame::redraw()
+		// std::cout << "   end\n";
+
+		/// @todo Are these invalidations really (or still) necessary?
+		/// A quick check suggested they are not needed, but that was
+		/// not comprehensive.
+		if ( disp_ ) { // Should always be true if we get here.
+			// Invalidate the hexes around the move that prompted this wait.
+			map_location arr[6];
+			get_adjacent_tiles(path_[current_-1], arr);
+			for ( unsigned i = 0; i < 6; ++i )
+				disp_->invalidate(arr[i]);
+			get_adjacent_tiles(path_[current_], arr);
+			for ( unsigned i = 0; i < 6; ++i )
+				disp_->invalidate(arr[i]);
+		}
+	}
+
+	// Reset data.
+	wait_until_ = INT_MIN;
+	animator_.clear();
+
+	update_shown_unit();
 }
 
 
@@ -342,16 +422,18 @@ void unit_mover::finish(unit &u, map_location::DIRECTION dir)
 
 	if ( animate_ )
 	{
+		wait_for_anims(); // In case proceed_to() did not wait for the last animation.
+
 		// Make sure the displayed unit is correct.
 		replace_temporary(u);
 		temp_unit_ptr_->set_location(end_loc);
 		temp_unit_ptr_->set_facing(final_dir);
 
 		// Animation
-		unit_animator animator;
-		animator.add_animation(temp_unit_ptr_, "post_movement", end_loc);
-		animator.start_animations();
-		animator.wait_for_end();
+		animator_.add_animation(temp_unit_ptr_, "post_movement", end_loc);
+		animator_.start_animations();
+		animator_.wait_for_end();
+		animator_.clear();
 
 		// Switch the display back to the real unit.
 		u.set_hidden(was_hidden_);
