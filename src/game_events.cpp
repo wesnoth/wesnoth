@@ -1524,13 +1524,13 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 					<< 0x3fffffff
 					<< ".\n";
 		}
-		int choice = gameinfo->rng().get_next_random();
+		long choice = gameinfo->rng().get_next_random();
 		if(num_choices >= 32768) {
 			choice <<= 15;
 			choice += gameinfo->rng().get_next_random();
 		}
 		choice %= num_choices;
-		int tmp = 0;
+		long tmp = 0;
 		for(size_t i = 0; i < ranges.size(); ++i) {
 			tmp += (ranges[i].second - ranges[i].first) + 1;
 			if (tmp > choice) {
