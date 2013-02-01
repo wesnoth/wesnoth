@@ -1461,7 +1461,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 		std::string word;
 		std::vector<std::string> words;
 		std::vector<std::pair<long,long> > ranges;
-		int num_choices = 0;
+		long num_choices = 0;
 		std::string::size_type pos = 0, pos2 = std::string::npos;
 		std::stringstream ss(std::stringstream::in|std::stringstream::out);
 		while (pos2 != rand.length()) {
@@ -1478,7 +1478,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 
 			if (tmp == std::string::npos) {
 				// Treat this element as a string
-				ranges.push_back(std::pair<int, int>(0,0));
+				ranges.push_back(std::pair<long, long>(0,0));
 				num_choices += 1;
 			}
 			else {
@@ -1489,21 +1489,26 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 
 				long low, high;
 				ss << first + " " + second;
-				ss >> low;
-				ss >> high;
+				if ( !(ss >> low)  ||  !(ss >> high) ) {
+					ERR_NG << "Malformed range: rand = \"" << rand << "\"\n";
+					// Treat this element as a string?
+					ranges.push_back(std::pair<long, long>(0,0));
+					num_choices += 1;
+				}
+				else {
+					if (low > high) {
+						std::swap(low, high);
+					}
+					ranges.push_back(std::pair<long, long>(low,high));
+					num_choices += (high - low) + 1;
+
+					// Make 0..0 ranges work
+					if (high == 0 && low == 0) {
+						words.pop_back();
+						words.push_back("0");
+					}
+				}
 				ss.clear();
-
-				if (low > high) {
-					std::swap(low, high);
-				}
-				ranges.push_back(std::pair<long, long>(low,high));
-				num_choices += (high - low) + 1;
-
-				// Make 0..0 ranges work
-				if (high == 0 && low == 0) {
-					words.pop_back();
-					words.push_back("0");
-				}
 			}
 		}
 
