@@ -3313,8 +3313,7 @@ namespace game_events {
 
 	bool event_handler::matches_name(const std::string &name) const
 	{
-		const t_string& t_my_names = cfg_["name"];
-		const std::string& my_names = t_my_names;
+		const std::string my_names = vconfig(cfg_)["name"];
 		std::string::const_iterator itor,
 			it_begin = my_names.begin(),
 			it_end = my_names.end(),
