@@ -25,6 +25,7 @@
 #include "actions/vision.hpp"
 #include "ai/manager.hpp"
 #include "dialogs.hpp"
+#include "formula_string_utils.hpp"
 #include "game_display.hpp"
 #include "game_events.hpp"
 #include "game_preferences.hpp"
@@ -3313,7 +3314,8 @@ namespace game_events {
 
 	bool event_handler::matches_name(const std::string &name) const
 	{
-		const std::string my_names = vconfig(cfg_)["name"];
+		const std::string my_names =
+			utils::interpolate_variables_into_string(cfg_["name"], *(resources::gamedata));
 		std::string::const_iterator itor,
 			it_begin = my_names.begin(),
 			it_end = my_names.end(),
