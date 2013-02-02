@@ -1456,7 +1456,8 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 	if(rand.empty() == false) {
 		assert(gameinfo);
 
-		std::string random_value;
+		// A default value in case something goes really wrong.
+		var = "";
 
 		std::string word;
 		std::vector<std::string> words;
@@ -1535,18 +1536,14 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 			tmp += (ranges[i].second - ranges[i].first) + 1;
 			if (tmp > choice) {
 				if (ranges[i].first == 0 && ranges[i].second == 0) {
-					random_value = words[i];
+					var = words[i];
 				}
 				else {
-					tmp = (ranges[i].second - (tmp - choice)) + 1;
-					ss << tmp;
-					ss >> random_value;
+					var = (ranges[i].second - (tmp - choice)) + 1;
 				}
 				break;
 			}
 		}
-
-		var = random_value;
 	}
 
 
