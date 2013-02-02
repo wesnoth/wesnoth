@@ -66,12 +66,12 @@ static void teleport_unit_between(const map_location& a, const map_location& b,
 	if ( disp.fogged(a) && disp.fogged(b) ) {
 		return;
 	}
-	disp.scroll_to_tiles(a, b, game_display::ONSCREEN, true, 0.0, false);
 
 	temp_unit.set_location(a);
 	if ( !disp.fogged(a) ) { // teleport
 		disp.invalidate(a);
 		temp_unit.set_facing(a.get_relative_dir(b));
+		disp.scroll_to_tiles(a, b, game_display::ONSCREEN, true, 0.0, false);
 		unit_animator animator;
 		animator.add_animation(&temp_unit,"pre_teleport",a);
 		animator.start_animations();
