@@ -52,17 +52,25 @@ static std::string number_and_text(int number, const std::string & text)
 }
 
 
-static void teleport_unit_between( const map_location& a, const map_location& b, unit& temp_unit)
+/**
+ * Animates a teleportation between hexes.
+ *
+ * @param a          The starting hex.
+ * @param b          The ending hex.
+ * @param temp_unit  The unit to animate (historically, a temporary unit).
+ * @param disp       The game display. Assumed neither locked nor faked.
+ */
+static void teleport_unit_between(const map_location& a, const map_location& b,
+                                  unit& temp_unit, display& disp)
 {
-	display* disp = display::get_singleton();
-	if(!disp || disp->video().update_locked() || disp->video().faked() || (disp->fogged(a) && disp->fogged(b))) {
+	if ( disp.fogged(a) && disp.fogged(b) ) {
 		return;
 	}
-	disp->scroll_to_tiles(a,b,game_display::ONSCREEN,true,0.0,false);
+	disp.scroll_to_tiles(a, b, game_display::ONSCREEN, true, 0.0, false);
 
 	temp_unit.set_location(a);
-	if (!disp->fogged(a)) { // teleport
-		disp->invalidate(temp_unit.get_location());
+	if ( !disp.fogged(a) ) { // teleport
+		disp.invalidate(a);
 		temp_unit.set_facing(a.get_relative_dir(b));
 		unit_animator animator;
 		animator.add_animation(&temp_unit,"pre_teleport",a);
@@ -71,10 +79,10 @@ static void teleport_unit_between( const map_location& a, const map_location& b,
 	}
 
 	temp_unit.set_location(b);
-	if (!disp->fogged(b)) { // teleport
-		disp->invalidate(temp_unit.get_location());
+	if ( !disp.fogged(b) ) { // teleport
+		disp.invalidate(b);
 		temp_unit.set_facing(a.get_relative_dir(b));
-		disp->scroll_to_tiles(b,a,game_display::ONSCREEN,true,0.0,false);
+		disp.scroll_to_tiles(b, a, game_display::ONSCREEN, true, 0.0, false);
 		unit_animator animator;
 		animator.add_animation(&temp_unit,"post_teleport",b);
 		animator.start_animations();
@@ -82,7 +90,7 @@ static void teleport_unit_between( const map_location& a, const map_location& b,
 	}
 
 	temp_unit.set_standing();
-	disp->update_display();
+	disp.update_display();
 	events::pump();
 }
 
@@ -98,26 +106,27 @@ static void teleport_unit_between( const map_location& a, const map_location& b,
  * @param step_left  The number of steps remaining (used to pick an animation).
  * @param animator   The unit_animator to use. This is assumed clear when we start,
  *                   but will likely not be clear when we return.
+ * @param disp       The game display. Assumed neither locked nor faked.
  * @returns  The animation potential until this animation will finish.
  *           INT_MIN indicates that no animation is pending.
  */
 static int move_unit_between(const map_location& a, const map_location& b,
                              unit& temp_unit, unsigned int step_num,
-                             unsigned int step_left, unit_animator & animator)
+                             unsigned int step_left, unit_animator & animator,
+                             display& disp)
 {
-	display* disp = display::get_singleton();
-	if(!disp || disp->video().update_locked() || disp->video().faked() || (disp->fogged(a) && disp->fogged(b))) {
+	if ( disp.fogged(a) && disp.fogged(b) ) {
 		return INT_MIN;
 	}
 
 	temp_unit.set_location(a);
-	disp->invalidate(temp_unit.get_location());
+	disp.invalidate(a);
 	temp_unit.set_facing(a.get_relative_dir(b));
 	animator.replace_anim_if_invalid(&temp_unit,"movement",a,b,step_num,
 			false,"",0,unit_animation::INVALID,NULL,NULL,step_left);
 	animator.start_animations();
 	animator.pause_animation();
-	disp->scroll_to_tiles(a,b,game_display::ONSCREEN,true,0.0,false);
+	disp.scroll_to_tiles(a, b, game_display::ONSCREEN, true, 0.0, false);
 	animator.restart_animation();
 
 	// useless now, previous short draw() just did one
@@ -347,10 +356,11 @@ void unit_mover::proceed_to(unit& u, size_t path_index, bool update, bool wait)
 				wait_until_ =
 					move_unit_between(path_[current_], path_[current_+1],
 					                  *temp_unit_ptr_, current_,
-					                  path_.size() - (current_+2), animator_);
+					                  path_.size() - (current_+2), animator_,
+					                  *disp_);
 			else if ( path_[current_] != path_[current_+1] )
 				teleport_unit_between(path_[current_], path_[current_+1],
-				                      *temp_unit_ptr_);
+				                      *temp_unit_ptr_, *disp_);
 		}
 
 	// Update the unit's facing.
