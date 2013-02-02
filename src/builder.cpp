@@ -666,19 +666,19 @@ void terrain_builder::add_constraints(terrain_builder::constraint_set &constrain
 		t_translation::t_match(cfg["type"], t_translation::WILDCARD), global_images);
 
 
-	std::vector<std::string> item_string = utils::split(cfg["set_flag"]);
+	std::vector<std::string> item_string = utils::square_parenthetical_split(cfg["set_flag"],',',"[","]");
 	constraint.set_flag.insert(constraint.set_flag.end(),
 			item_string.begin(), item_string.end());
 
-	item_string = utils::split(cfg["has_flag"]);
+	item_string = utils::square_parenthetical_split(cfg["has_flag"],',',"[","]");
 	constraint.has_flag.insert(constraint.has_flag.end(),
 			item_string.begin(), item_string.end());
 
-	item_string = utils::split(cfg["no_flag"]);
+	item_string = utils::square_parenthetical_split(cfg["no_flag"],',',"[","]");
 	constraint.no_flag.insert(constraint.no_flag.end(),
 			item_string.begin(), item_string.end());
 
-	item_string = utils::split(cfg["set_no_flag"]);
+	item_string = utils::square_parenthetical_split(cfg["set_no_flag"],',',"[","]");
 	constraint.set_flag.insert(constraint.set_flag.end(),
 			item_string.begin(), item_string.end());
 	constraint.no_flag.insert(constraint.no_flag.end(),
