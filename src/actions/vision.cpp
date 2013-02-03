@@ -279,6 +279,7 @@ bool shroud_clearer::clear_loc(team &tm, const map_location &loc,
  * @param enemy_count      Incremented for each enemy uncovered (excluding known_units).
  * @param friend_count     Incremented for each friend uncovered (excluding known_units).
  * @param spectator        Will be told of uncovered units (excluding known_units).
+ * @param instant          If true, then drawing delays (used to make animations look better) are suppressed.
  *
  * @return whether or not information was uncovered (i.e. returns true if any
  *         locations in visual range were fogged/shrouded under shared vision/maps).
@@ -287,8 +288,12 @@ bool shroud_clearer::clear_unit(const map_location &view_loc,
                                 const unit &viewer, team &view_team,
                                 const std::set<map_location>* known_units,
                                 size_t * enemy_count, size_t * friend_count,
-                                move_unit_spectator * spectator)
+                                move_unit_spectator * spectator, bool instant)
 {
+	// Give animations a chance to progress; see bug #20324.
+	if ( !instant  &&  resources::screen )
+		resources::screen->draw(true);
+
 	bool cleared_something = false;
 	// Dummy variables to make some logic simpler.
 	size_t enemies=0, friends=0;
@@ -298,11 +303,20 @@ bool shroud_clearer::clear_unit(const map_location &view_loc,
 		friend_count = &friends;
 
 	// Make sure the jamming map is up-to-date.
-	if ( view_team_ != &view_team )
+	if ( view_team_ != &view_team ) {
 		calculate_jamming(&view_team);
+		// Give animations a chance to progress; see bug #20324.
+		if ( !instant  &&  resources::screen )
+			resources::screen->draw(true);
+	}
+
+	// Determine the hexes to clear.
+	pathfind::vision_path sight(*resources::game_map, viewer, view_loc, jamming_);
+	// Give animations a chance to progress; see bug #20324.
+	if ( !instant  &&  resources::screen )
+		resources::screen->draw(true);
 
 	// Clear the fog.
-	pathfind::vision_path sight(*resources::game_map, viewer, view_loc, jamming_);
 	BOOST_FOREACH (const pathfind::paths::step &dest, sight.destinations) {
 		bool known = known_units  &&  known_units->count(dest.curr) != 0;
 		if ( clear_loc(view_team, dest.curr, viewer, view_loc, !known,
@@ -331,12 +345,14 @@ bool shroud_clearer::clear_unit(const map_location &view_loc,
  * for the caller to check these.)
  * In addition, if @a invalidate is left as true, invalidate_after_clear()
  * will be called.
+ * Setting @a instant to true suppresses some drawing delays that are used to
+ * make animations look better.
  *
  * @return whether or not information was uncovered (i.e. returns true if any
  *         locations in visual range were fogged/shrouded under shared vision/maps).
  */
 bool shroud_clearer::clear_unit(const map_location &view_loc, const unit &viewer,
-                                bool can_delay, bool invalidate)
+                                bool can_delay, bool invalidate, bool instant)
 {
 	team & viewing_team = (*resources::teams)[viewer.side()-1];
 
@@ -347,7 +363,7 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, const unit &viewer
 	     viewer.side() == resources::controller->current_side()  )
 		return false;
 
-	if ( !clear_unit(view_loc, viewer, viewing_team) )
+	if ( !clear_unit(view_loc, viewer, viewing_team, instant) )
 		// Nothing uncovered.
 		return false;
 
@@ -561,7 +577,8 @@ void recalculate_fog(int side)
 	BOOST_FOREACH(const unit &u, *resources::units)
 	{
 		if ( u.side() == side )
-			clearer.clear_unit(u.get_location(), u, tm, &visible_locs);
+			clearer.clear_unit(u.get_location(), u, tm, &visible_locs, NULL,
+			                   NULL, NULL, true);
 	}
 	// Update the screen.
 	clearer.invalidate_after_clear();
@@ -597,7 +614,7 @@ bool clear_shroud(int side, bool reset_fog, bool fire_events)
 	BOOST_FOREACH(const unit &u, *resources::units)
 	{
 		if ( u.side() == side )
-			result |= clearer.clear_unit(u.get_location(), u, tm);
+			result |= clearer.clear_unit(u.get_location(), u, tm, true);
 	}
 	// Update the screen.
 	if ( result )

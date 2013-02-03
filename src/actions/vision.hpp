@@ -61,11 +61,18 @@ public:
 	                const unit &viewer, team &view_team,
     	            const std::set<map_location>* known_units = NULL,
 	                size_t * enemy_count = NULL, size_t * friend_count = NULL,
-	                move_unit_spectator * spectator = NULL);
+	                move_unit_spectator * spectator = NULL, bool instant = false);
+	/// Clears shroud (and fog) around the provided location for @a view_team
+	/// as if @a viewer was standing there. Setting @a instant to true
+	/// suppresses some drawing delays that are used to make animations look better.
+	bool clear_unit(const map_location &view_loc, const unit &viewer,
+	                team &view_team, bool instant)
+	{ return clear_unit(view_loc, viewer, view_team, NULL, NULL, NULL, NULL, instant); }
 	/// Clears shroud (and fog) around the provided location as if @a viewer
 	/// was standing there.
 	bool clear_unit(const map_location &view_loc, const unit &viewer,
-	                bool can_delay = false, bool invalidate = true);
+	                bool can_delay = false, bool invalidate = true,
+	                bool instant = false);
 
 	/// Erases the record of sighted events from earlier fog/shroud clearing.
 	void drop_events();

@@ -254,11 +254,12 @@ namespace { // Private helpers for move_unit()
 		inline bool check_for_obstructing_unit(const map_location & hex,
 		                                       const map_location & prev_hex);
 		/// Moves the unit the next step.
-		inline void do_move(const route_iterator & step_from,
+		inline bool do_move(const route_iterator & step_from,
 		                    const route_iterator & step_to,
 		                    unit_display::unit_mover & animator);
 		/// Clears fog/shroud and handles units being sighted.
-		inline void handle_fog(const map_location & hex, bool ally_interrupts);
+		inline void handle_fog(const map_location & hex, bool ally_interrupts,
+		                       bool new_animation);
 		inline bool is_reasonable_stop(const map_location & hex) const;
 		/// Reveals the units stored in to_reveal_.
 		inline void reveal_ambushers() const;
@@ -467,8 +468,9 @@ namespace { // Private helpers for move_unit()
 	 * @a step_from is the hex before that in the route.
 	 * (The unit is actually at *move_loc_.)
 	 * @a animator is the unit_display::unit_mover being used.
+	 * @return whether or not we started a new animation.
 	 */
-	inline void unit_mover::do_move(const route_iterator & step_from,
+	inline bool unit_mover::do_move(const route_iterator & step_from,
 	                                const route_iterator & step_to,
 	                                unit_display::unit_mover & animator)
 	{
@@ -505,6 +507,8 @@ namespace { // Private helpers for move_unit()
 			do_move_track_ = current_tracking;
 			disp.redraw_minimap();
 		}
+
+		return move_result.second;
 	}
 
 
@@ -514,11 +518,13 @@ namespace { // Private helpers for move_unit()
 	 * @a hex is both the center of fog clearing and the filtered location of
 	 * the moving unit when the sighted events will be fired.
 	 */
-	inline void unit_mover::handle_fog(const map_location & hex, bool ally_interrupts)
+	inline void unit_mover::handle_fog(const map_location & hex, bool ally_interrupts,
+	                                   bool new_animation)
 	{
 		// Clear the fog.
 		if ( clearer_.clear_unit(hex, *move_it_, *current_team_, NULL,
-		                         &enemy_count_, &friend_count_, spectator_) )
+		                         &enemy_count_, &friend_count_, spectator_,
+		                         !new_animation) )
 		{
 			clearer_.invalidate_after_clear();
 			fog_changed_ = true;
@@ -920,10 +926,10 @@ namespace { // Private helpers for move_unit()
 					break;
 
 				// We can leave *step_from. Make the move to *real_end_.
-				do_move(step_from, real_end_, animator);
+				bool new_animation = do_move(step_from, real_end_, animator);
 				// Update the fog.
 				if ( current_uses_fog_ )
-					handle_fog(*real_end_, ally_interrupts);
+					handle_fog(*real_end_, ally_interrupts, new_animation);
 				animator.wait_for_anims();
 
 				// Fire the events for this step.
