@@ -42,6 +42,8 @@ Version 1.11.1+svn:
      Ctrl+C/Command+C.
    * Color coded the resistance table in the hp display's tooltip.
    * Tooltip for the movement points display shows the movement costs.
+   * Updating the shroud after delaying shroud updates is done gradually instead
+     of instantly.
 
  * Miscellaneous and bug fixes:
    * The undo stack is preserved across a save-reload.

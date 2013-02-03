@@ -643,8 +643,8 @@ size_t undo_list::apply_shroud_changes() const
 		std::vector<map_location>::const_iterator step;
 		for (step = action.route.begin(); step != action.route.end(); ++step) {
 			// Clear the shroud, collecting new sighted events.
-			// (This can be made gradual by changing "true" tp "false".)
-			if ( clearer.clear_unit(*step, *action.affected_unit, tm, true) ) {
+			// (If the gradual clearing is too slow, change "false" to "true".)
+			if ( clearer.clear_unit(*step, *action.affected_unit, tm, false) ) {
 				cleared_shroud = true;
 				erase_to = i + 1;
 			}
