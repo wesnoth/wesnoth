@@ -74,6 +74,9 @@ public:
 	                bool can_delay = false, bool invalidate = true,
 	                bool instant = false);
 
+	/// Clears shroud (and fog) at the provided location and it immediate neighbors.
+	bool clear_dest(const map_location &dest, const unit &viewer);
+
 	/// Erases the record of sighted events from earlier fog/shroud clearing.
 	void drop_events();
 

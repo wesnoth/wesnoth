@@ -375,6 +375,45 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, const unit &viewer
 
 
 /**
+ * Clears shroud (and fog) at the provided location and it immediate neighbors.
+ * This is an aid for the [teleport] action, allowing the destination to be
+ * cleared before teleporting, while the unit's full visual range gets cleared
+ * after.
+ * The @a viewer is needed for correct firing of sighted events.
+ *
+ * @return whether or not information was uncovered (i.e. returns true if the
+ *         locations in question were fogged/shrouded under shared vision/maps).
+ */
+bool shroud_clearer::clear_dest(const map_location &dest, const unit &viewer)
+{
+	team & viewing_team = (*resources::teams)[viewer.side()-1];
+	// A pair of dummy variables needed to simplify some logic.
+	size_t enemies, friends;
+
+	// Abort if there is nothing to clear.
+	if ( !viewing_team.fog_or_shroud() )
+		return false;
+
+	// Clear the destination.
+	bool cleared_something = clear_loc(viewing_team, dest, viewer, dest, true,
+	                                   enemies, friends);
+
+	// Clear the adjacent hexes (will be seen even if vision is 0, and the
+	// graphics do not work so well for an isolated cleared hex).
+	map_location adjacent[6];
+	get_adjacent_tiles(dest, adjacent);
+	for ( int i = 0; i != 6; ++i )
+		cleared_something = clear_loc(viewing_team, adjacent[i], viewer, dest,
+		                              true, enemies, friends);
+
+	if ( cleared_something )
+		invalidate_after_clear();
+
+	return cleared_something;
+}
+
+
+/**
  * Clears the record of sighted events from earlier fog/shroud clearing.
  * This should be called if the events are to be ignored and not fired.
  * (Non-cleared, non-fired events will be logged as an error.)
