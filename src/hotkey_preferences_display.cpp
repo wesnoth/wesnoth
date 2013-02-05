@@ -167,7 +167,7 @@ public:
 				hotkey_cfg_(),
 				resetter_(disp, hotkey_preferences_dialog) {
 		gui::dialog_button* reset_button = new gui::dialog_button(disp.video(),
-				_("Reset Defaults"), gui::button::TYPE_PRESS,
+				_("Defaults"), gui::button::TYPE_PRESS,
 				gui::CONTINUE_DIALOG, &resetter_);
 		reset_button->set_help_string(
 				_("Reset all bindings to the default values") );
