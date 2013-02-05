@@ -217,7 +217,7 @@ void manager::show_dialog()
 
 	config& defaults_button = defaults_column.add_child("button");
 	defaults_button["definition"] = "default";
-	defaults_button["label"] = _("Restore defaults");
+	defaults_button["label"] = _("Defaults");
 	defaults_button["id"] = "restore_defaults";
 
 	config& ok_button = ok_column.add_child("button");
