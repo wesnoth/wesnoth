@@ -18,6 +18,8 @@
 
 #include "gui/dialogs/dialog.hpp"
 
+class display;
+
 namespace gui2 {
 
 /** Addon connect dialog. */
@@ -33,14 +35,21 @@ public:
 	 *                            dialog returns @ref twindow::OK or 3
 	 *                            undefined otherwise.
 	 * @param allow_remove        Sets @ref allow_remove_.
+	 * @param disp                The display object used for showing the
+	 *                            in-game help when requested.
 	 */
 	taddon_connect(std::string& host_name
-			, const bool allow_remove);
+			, const bool allow_remove
+			, display* disp = NULL);
 
 private:
 
 	/** Enable the addon remove button? */
 	bool allow_remove_;
+
+	display* disp_;
+
+	void help_button_callback(twindow& window);
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;

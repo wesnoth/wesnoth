@@ -21,6 +21,9 @@
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
+#include "help.hpp"
+
+#include <boost/bind.hpp>
 
 namespace gui2 {
 
@@ -36,6 +39,9 @@ namespace gui2 {
  * hostname & & text_box & m &
  *         This text contains the name of the server to connect to. $
  *
+ * show_help & & button & m &
+ *         Thus button shows the in-game help about add-ons maangement when triggered. $
+ *
  * & 2 & button & o &
  *         This button closes the dialog to display a dialog for removing installed add-ons. $
  *
@@ -45,16 +51,28 @@ namespace gui2 {
 REGISTER_DIALOG(addon_connect)
 
 taddon_connect::taddon_connect(std::string& host_name
-		, const bool allow_remove)
+		, const bool allow_remove, display* disp)
 	: allow_remove_(allow_remove)
+	, disp_(disp)
 {
 	register_text("host_name", false, host_name, true);
+}
+
+void taddon_connect::help_button_callback(twindow& /*window*/)
+{
+	if(disp_) {
+		help::show_help(*disp_, "installing_addons");
+	}
 }
 
 void taddon_connect::pre_show(CVideo& /*video*/, twindow& window)
 {
 	find_widget<tbutton>(&window, "remove_addons", false)
 			.set_active(allow_remove_);
+
+	connect_signal_mouse_left_click(
+		find_widget<tbutton>(&window, "show_help", false),
+			boost::bind(&taddon_connect::help_button_callback, this, boost::ref(window)));
 }
 
 void taddon_connect::post_show(twindow& window)
