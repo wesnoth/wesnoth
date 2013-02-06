@@ -979,11 +979,21 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			unit_map::unit_iterator u = resources::units->find(from);
 
 			std::set<std::string> recruits = current_team.recruits();
-			//TODO fendrin
-			//The next code line (only the condition) is a workaround for the ai not transmitting the from information.
-			//See the talk to crab TODOs in ai
-			//Note that the ai is not able to recruit from the leader specific recruit list until the bug is fixed entirely.
-			if (u != resources::units->end())
+			// Account for leader-specific recruits.
+			if ( !from.valid() ) {
+				// This will be the case for AI recruits in replays saved
+				// before 1.11.2, so it is not more severe than a warning.
+				WRN_REPLAY << "Missing leader location for recruitment.\n";
+			}
+			else if ( u == resources::units->end() ) {
+				// Sync problem?
+				std::stringstream errbuf;
+				errbuf << "Recruiting leader not found at " << from << ".\n";
+				replay::process_error(errbuf.str());
+				// Can still proceed I guess. The leader's recruit list
+				// usually does not matter.
+			}
+			else
 				recruits.insert((u->recruits()).begin(), (u->recruits()).end());
 
 			if(val < 0 || static_cast<size_t>(val) >= recruits.size()) {
