@@ -316,7 +316,7 @@ void manager::add_entry(const config& data, config& column) const
 
 	config& label = label_column.add_child("label");
 	label["definition"] = "default";
-	label["label"] = data["description"];
+	label["label"] = data["name"];
 
 	config& entry = entry_column.add_child("text_box");
 	entry["id"] = data["id"];
@@ -335,13 +335,13 @@ void manager::add_slider(const config& data, config& column) const
 
 	config& label = label_column.add_child("label");
 	label["definition"] = "default";
-	label["label"] = data["description"];
+	label["label"] = data["name"];
 
 	config& slider = slider_column.add_child("slider");
 	slider["id"] = data["id"];
 	slider["definition"] = "default";
-	slider["minimum_value"] = data["min_value"];
-	slider["maximum_value"] = data["max_value"];
+	slider["minimum_value"] = data["min"];
+	slider["maximum_value"] = data["max"];
 	slider["step_size"] = data["step"].to_int() ? data["step"].to_int() : 1;
 	slider["value"] = get_stored_value(data["id"]);
 }
@@ -357,7 +357,7 @@ void manager::add_checkbox(const config& data, config& column) const
 	config& checkbox = box_column.add_child("toggle_button");
 	checkbox["id"] = data["id"];
 	checkbox["definition"] = "default";
-	checkbox["label"] = data["description"];
+	checkbox["label"] = data["name"];
 }
 
 config& manager::get_value_cfg(const std::string& id)
