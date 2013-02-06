@@ -322,6 +322,7 @@ void manager::add_entry(const config& data, config& column) const
 	entry["id"] = data["id"];
 	entry["definition"] = "default";
 	entry["label"] = get_stored_value(data["id"]);
+	entry["tooltip"] = data["description"];
 }
 
 void manager::add_slider(const config& data, config& column) const
@@ -344,6 +345,7 @@ void manager::add_slider(const config& data, config& column) const
 	slider["maximum_value"] = data["max"];
 	slider["step_size"] = data["step"].to_int() ? data["step"].to_int() : 1;
 	slider["value"] = get_stored_value(data["id"]);
+	slider["tooltip"] = data["description"];
 }
 
 void manager::add_checkbox(const config& data, config& column) const
@@ -358,6 +360,7 @@ void manager::add_checkbox(const config& data, config& column) const
 	checkbox["id"] = data["id"];
 	checkbox["definition"] = "default";
 	checkbox["label"] = data["name"];
+	checkbox["tooltip"] = data["description"];
 }
 
 config& manager::get_value_cfg(const std::string& id)
