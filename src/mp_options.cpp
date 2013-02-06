@@ -207,11 +207,13 @@ void manager::show_dialog()
 	row["grow_factor"] = 0;
 
 	config& column = add_column(row, "right", 1);
+	column["horizontal_grow"] = true;
+
 	config& widget_grid = column.add_child("grid");
 	config& widget_row = widget_grid.add_child("row");
 	widget_row["grow_factor"] = 0;
 
-	config& defaults_column = add_column(widget_row);
+	config& defaults_column = add_column(widget_row, "left", 1);
 	config& ok_column = add_column(widget_row, "right");
 	config& cancel_column = add_column(widget_row);
 
