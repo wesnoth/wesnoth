@@ -532,9 +532,9 @@ std::string find_recall_location(const int side, map_location& recall_loc, map_l
 
 		if ( can_recruit_on(*leader_fit, recall_loc) ) {
 			leader_opt = leader_fit;
+			recall_from = leader_opt->get_location();
 			if (resources::units->count(recall_loc) == 1)
 				recall_loc = tmp_location;
-				recall_from = leader_opt->get_location();
 			break;
 		} else {
 			alternate_location = tmp_location;
@@ -616,9 +616,9 @@ std::string find_recruit_location(const int side, map_location& recruit_location
 
 		if ( can_recruit_on(*leader_fit, recruit_location) ) {
 			leader_opt = leader_fit;
+			recruited_from = leader_opt->get_location();
 			if (resources::units->count(recruit_location) == 1)
 				recruit_location = tmp_location;
-				recruited_from = leader_opt->get_location();
 			break;
 		} else {
 			alternate_location = tmp_location;
