@@ -549,7 +549,7 @@ std::string find_recall_location(const int side, map_location& recall_loc, map_l
 
 	if (leader_able == u_end) {
 		LOG_NG << "No Leader able to recall unit: " << recall_unit.id() << " on side " << side << '\n';
-		return _("None of your leaders is able to recall that unit.");
+		return _("None of your leaders are able to recall that unit.");
 	}
 
 	if (leader_keep == u_end) {
@@ -631,8 +631,13 @@ std::string find_recruit_location(const int side, map_location& recruit_location
 		return _("You don’t have a leader to recruit with.");
 	}
 
+	if (leader_able == u_end) {
+		LOG_NG << "No leader able to recruit '" << unit_type << "' on side " << side << '\n';
+		return _("None of your leaders are able to recruit that unit.");
+	}
+
 	if (leader_keep == u_end) {
-		LOG_NG << "Leader not on start: leader is on " << leader->get_location() << '\n';
+		LOG_NG << "Leader not on keep: able leader is on " << leader_able->get_location() << '\n';
 		return _("You must have a leader on a keep who is able to recruit the unit.");
 	}
 
