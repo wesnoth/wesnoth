@@ -84,7 +84,7 @@ inline bool can_recruit_on(const unit& leader, const map_location& recruit_loc)
 { return can_recruit_on(leader.get_location(), recruit_loc, leader.side()); }
 
 /**
- * Finds a location to place a unit.
+ * Finds a location on which to place a unit.
  * A leader of the @a side must be on a keep
  * connected by castle to a legal recruiting location. Otherwise, an error
  * message explaining this is returned.
@@ -92,6 +92,10 @@ inline bool can_recruit_on(const unit& leader, const map_location& recruit_loc)
  * If no errors are encountered, the location where a unit can be recruited
  * is stored in @a recruit_location. Its value is considered first, if it is a
  * legal option.
+ * Also, the location of the recruiting leader is stored in @a recruited_from
+ * (whose value is not considered first).
+ *
+ * The @a unit_type is needed in case this is a leader-specific recruit.
  *
  * @return an empty string on success. Otherwise a human-readable message
  *         describing the failure is returned.
@@ -99,7 +103,7 @@ inline bool can_recruit_on(const unit& leader, const map_location& recruit_loc)
 std::string find_recruit_location(const int side, map_location &recruit_location, map_location& recruited_from, const std::string& unit_type);
 
 /**
- * Finds a location to recall @a unit_recall.
+ * Finds a location on which to recall @a unit_recall.
  * A leader of the @a side must be on a keep
  * connected by castle to a legal recalling location. Otherwise, an error
  * message explaining this is returned.
@@ -107,6 +111,8 @@ std::string find_recruit_location(const int side, map_location &recruit_location
  * If no errors are encountered, the location where a unit can be recalled
  * is stored in @a recall_location. Its value is considered first, if it is a
  * legal option.
+ * Also, the location of the recalling leader is stored in @a recall_from
+ * (whose value is not considered first).
  *
  * @return an empty string on success. Otherwise a human-readable message
  *         describing the failure is returned.
