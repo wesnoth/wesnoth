@@ -89,6 +89,18 @@ static void team_init(config& level, game_state& gamestate){
 	gamestate.carryover_sides = sides.to_config();
 }
 
+static void mp_events_init(config& level, game_state& gamestate, const config& gamecfg){
+	const std::string& era = gamestate.mp_settings().mp_era;
+	if (!era.empty()) {
+		level.add_child("era", gamecfg.find_child("era", "id", era));
+	}
+	
+	const std::vector<std::string>& mods = gamestate.mp_settings().active_mods;
+	BOOST_FOREACH (const std::string& mod, mods) {
+		level.add_child("modification", gamecfg.find_child("modification", "id", mod));
+	}
+}
+
 static void store_carryover(game_state& gamestate, playsingle_controller& playcontroller, display& disp, const end_level_data& end_level){
 	bool has_next_scenario = !resources::gamedata->next_scenario().empty() &&
 			resources::gamedata->next_scenario() != "null";
@@ -262,6 +274,7 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 
 	config init_level = *level;
 	team_init(init_level, state_of_game);
+	mp_events_init(init_level, state_of_game, game_config);
 
 	playmp_controller playcontroller(init_level, state_of_game, ticks, num_turns,
 		game_config, disp.video(), skip_replay, io_type == IO_SERVER);
