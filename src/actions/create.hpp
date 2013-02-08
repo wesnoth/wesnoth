@@ -107,7 +107,9 @@ enum RECRUIT_CHECK {
  * occur.
  *
  * The location of the recruiting leader is stored in @a recruited_from.
- * (The incoming value of this parameter is ignored.)
+ * The incoming value of this parameter is used as a hint for finding a
+ * legal recruiter, but this hint is given lower priority than finding a
+ * leader who can recruit at recruit_location.
  *
  * The @a unit_type is needed in case this is a leader-specific recruit.
  */
@@ -124,8 +126,10 @@ RECRUIT_CHECK check_recruit_location(const int side, map_location &recruit_locat
  * If no errors are encountered, the location where a unit can be recruited
  * is stored in @a recruit_location. Its value is considered first, if it is a
  * legal option.
- * Also, the location of the recruiting leader is stored in @a recruited_from
- * (whose value is not considered first).
+ * Also, the location of the recruiting leader is stored in @a recruited_from.
+ * The incoming value of recruited_from is used as a hint for finding a
+ * legal recruiter, but this hint is given lower priority than finding a
+ * leader who can recruit at recruit_location.
  *
  * The @a unit_type is needed in case this is a leader-specific recruit.
  *
@@ -145,7 +149,9 @@ std::string find_recruit_location(const int side, map_location &recruit_location
  * occur.
  *
  * The location of the recalling leader is stored in @a recall_from.
- * (The incoming value of this parameter is ignored.)
+ * The incoming value of this parameter is used as a hint for finding a
+ * legal recaller, but this hint is given lower priority than finding a
+ * leader who can recall at recall_location.
  */
 RECRUIT_CHECK check_recall_location(const int side, map_location& recall_location,
                                     map_location& recall_from,
@@ -160,8 +166,10 @@ RECRUIT_CHECK check_recall_location(const int side, map_location& recall_locatio
  * If no errors are encountered, the location where a unit can be recalled
  * is stored in @a recall_location. Its value is considered first, if it is a
  * legal option.
- * Also, the location of the recalling leader is stored in @a recall_from
- * (whose value is not considered first).
+ * Also, the location of the recalling leader is stored in @a recall_from.
+ * The incoming value of this parameter is used as a hint for finding a
+ * legal recaller, but this hint is given lower priority than finding a
+ * leader who can recall at recall_location.
  *
  * @return an empty string on success. Otherwise a human-readable message
  *         describing the failure is returned.

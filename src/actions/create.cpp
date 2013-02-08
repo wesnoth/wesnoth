@@ -543,6 +543,9 @@ RECRUIT_CHECK check_recall_location(const int side, map_location& recall_locatio
                                     map_location& recall_from,
                                     const unit &unit_recall)
 {
+	const unit_map & units = *resources::units;
+	const unit_map::const_iterator u_end = units.end();
+
 	map_location check_location = recall_location;
 	map_location alternative;	// Set by check_unit_recall_location().
 
@@ -555,10 +558,15 @@ RECRUIT_CHECK check_recall_location(const int side, map_location& recall_locatio
 	                                                           RECRUIT_ALTERNATE_LOCATION;
 	RECRUIT_CHECK best_result = RECRUIT_NO_LEADER;
 
+	// Test the specified recaller (if there is one).
+	unit_map::const_iterator u = units.find(recall_from);
+	if ( u != u_end  &&  u->side() == side ) {
+		best_result =
+			check_unit_recall_location(*u, unit_recall, check_location, alternative);
+	}
+
 	// Loop through all units on the specified side.
-	unit_map::const_iterator const u_end = resources::units->end();
-	unit_map::const_iterator u = resources::units->begin();
-	for ( ; best_result < goal_result  &&  u != u_end; ++u ) {
+	for ( u = units.begin(); best_result < goal_result  &&  u != u_end; ++u ) {
 		if ( u->side() != side )
 			continue;
 
@@ -665,6 +673,9 @@ RECRUIT_CHECK check_recruit_location(const int side, map_location &recruit_locat
                                      map_location& recruited_from,
                                      const std::string& unit_type)
 {
+	const unit_map & units = *resources::units;
+	const unit_map::const_iterator u_end = units.end();
+
 	map_location check_location = recruit_location;
 	std::string check_type = unit_type;
 	map_location alternative;	// Set by check_unit_recruit_location().
@@ -683,10 +694,15 @@ RECRUIT_CHECK check_recruit_location(const int side, map_location &recruit_locat
 	                                                           RECRUIT_ALTERNATE_LOCATION;
 	RECRUIT_CHECK best_result = RECRUIT_NO_LEADER;
 
+	// Test the specified recruiter (if there is one).
+	unit_map::const_iterator u = units.find(recruited_from);
+	if ( u != u_end  &&  u->side() == side ) {
+		best_result =
+			check_unit_recruit_location(*u, check_type, check_location, alternative);
+	}
+
 	// Loop through all units on the specified side.
-	unit_map::const_iterator const u_end = resources::units->end();
-	unit_map::const_iterator u = resources::units->begin();
-	for ( ; best_result < goal_result  &&  u != u_end; ++u ) {
+	for ( u = units.begin(); best_result < goal_result  &&  u != u_end; ++u ) {
 		if ( u->side() != side )
 			continue;
 
