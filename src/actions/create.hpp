@@ -83,6 +83,9 @@ bool can_recruit_on(const map_location& leader_loc, const map_location& recruit_
 inline bool can_recruit_on(const unit& leader, const map_location& recruit_loc)
 { return can_recruit_on(leader.get_location(), recruit_loc, leader.side()); }
 
+
+namespace actions {
+
 /**
  * Finds a location on which to place a unit.
  * A leader of the @a side must be on a keep
@@ -125,7 +128,7 @@ std::string find_recall_location(const int side, map_location& recall_location, 
  * @param recruit_location the hex field being part of the castle the player wants to recruit on or from.
  * @return a set of units that can be recruited either by the leader on @a recruit_location or by leaders on keeps connected by castle tiles to @a recruit_location.
  */
-const std::set<std::string> get_recruits_for_location(int side, const map_location &recruit_location);
+const std::set<std::string> get_recruits(int side, const map_location &recruit_location);
 
 /**
  * Gets the recallable units for a side, restricted by that side's leaders' personal abilities to recall on or from a specific hex field.
@@ -134,7 +137,7 @@ const std::set<std::string> get_recruits_for_location(int side, const map_locati
  * @param recall_loc the hex field being part of the castle the player wants to recruit on or from.
  * @return a set of units that can be recalled by @a side on (or from) @a recall_loc or the full recall list of @a side.
  */
-const std::vector<const unit*> get_recalls_for_location(int side, const map_location &recall_loc);
+const std::vector<const unit*> get_recalls(int side, const map_location &recall_loc);
 
 /**
  * Place a unit into the game.
@@ -145,9 +148,6 @@ const std::vector<const unit*> get_recalls_for_location(int side, const map_loca
 bool place_recruit(const unit &u, const map_location &recruit_location, const map_location& recruited_from,
 	int cost, bool is_recall, bool show = false, bool fire_event = true, bool full_movement = false,
 	bool wml_triggered = false);
-
-
-namespace actions {
 
 /**
  * Recruits a unit of the given type for the given side.

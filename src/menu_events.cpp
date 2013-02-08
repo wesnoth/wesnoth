@@ -739,7 +739,7 @@ void menu_handler::recruit(int side_num, const map_location &last_hex)
 	std::vector<std::string> item_keys;
 	std::vector<std::string> items;
 
-	std::set<std::string> recruits = get_recruits_for_location(side_num, last_hex);
+	std::set<std::string> recruits = actions::get_recruits(side_num, last_hex);
 
 	for(std::set<std::string>::const_iterator it = recruits.begin(); it != recruits.end(); ++it) {
 		const unit_type *type = unit_types.find(*it);
@@ -819,7 +819,7 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 
 	//search for the unit to be recruited in recruits
 	int recruit_num = 0;
-	std::set<std::string> recruits = get_recruits_for_location(side_num, last_hex);
+	std::set<std::string> recruits = actions::get_recruits(side_num, last_hex);
 
 	for(std::set<std::string>::const_iterator r = recruits.begin(); ; ++r) {
 		if (r == recruits.end()) {
@@ -848,7 +848,7 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 	map_location recruited_from = map_location::null_location;
 	std::string msg;
 	{ wb::future_map_if_active future; //< start planned unit map scope if in planning mode
-		msg = find_recruit_location(side_num, loc, recruited_from, u_type->id());
+		msg = actions::find_recruit_location(side_num, loc, recruited_from, u_type->id());
 	} // end planned unit map scope
 	if (!msg.empty()) {
 		gui2::show_transient_message(gui_->video(), "", msg);
@@ -890,7 +890,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 
 	std::vector<const unit*> recall_list_team;
 	{ wb::future_map future; // ensures recall list has planned recalls removed
-		recall_list_team = get_recalls_for_location(side_num, last_hex);
+		recall_list_team = actions::get_recalls(side_num, last_hex);
 	}
 
 	gui_->draw(); //clear the old menu
@@ -1039,7 +1039,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	map_location recall_from = map_location::null_location;
 	std::string err;
 	{ wb::future_map_if_active future; // future unit map removes invisible units from map, don't do this outside of planning mode
-		err = find_recall_location(side_num, recall_location, recall_from, *(recall_list_team[res]));
+		err = actions::find_recall_location(side_num, recall_location, recall_from, *(recall_list_team[res]));
 	} // end planned unit map scope
 	if(!err.empty()) {
 		gui2::show_transient_message(gui_->video(), "", err);

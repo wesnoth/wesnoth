@@ -51,33 +51,32 @@ static lg::log_domain log_engine("engine");
 
 
 namespace {
-
-struct castle_cost_calculator : pathfind::cost_calculator
-{
-	castle_cost_calculator(const gamemap& map, const team & view_team) :
-		map_(map),
-		viewer_(view_team),
-		use_shroud_(view_team.uses_shroud())
-	{}
-
-	virtual double cost(const map_location& loc, const double) const
+	struct castle_cost_calculator : pathfind::cost_calculator
 	{
-		if(!map_.is_castle(loc))
-			return 10000;
+		castle_cost_calculator(const gamemap& map, const team & view_team) :
+			map_(map),
+			viewer_(view_team),
+			use_shroud_(view_team.uses_shroud())
+		{}
 
-		if ( use_shroud_ && viewer_.shrouded(loc) )
-			return 10000;
+		virtual double cost(const map_location& loc, const double) const
+		{
+			if(!map_.is_castle(loc))
+				return 10000;
 
-		return 1;
-	}
+			if ( use_shroud_ && viewer_.shrouded(loc) )
+				return 10000;
 
-private:
-	const gamemap& map_;
-	const team& viewer_;
-	const bool use_shroud_; // Allows faster checks when shroud is disabled.
-};
+			return 1;
+		}
 
+	private:
+		const gamemap& map_;
+		const team& viewer_;
+		const bool use_shroud_; // Allows faster checks when shroud is disabled.
+	};
 }//anonymous namespace
+
 
 unit_creator::unit_creator(team &tm, const map_location &start_pos)
   : add_to_recall_(false),discover_(false),get_village_(false),invalidate_(false), rename_side_(false), show_(false), start_pos_(start_pos), team_(tm)
@@ -325,7 +324,11 @@ bool can_recruit_on(const map_location& leader_loc, const map_location& recruit_
 	return !rt.steps.empty();
 }
 
-const std::set<std::string> get_recruits_for_location(int side, const map_location &recruit_loc)
+
+namespace actions {
+
+
+const std::set<std::string> get_recruits(int side, const map_location &recruit_loc)
 {
 	const team & current_team = (*resources::teams)[side -1];
 
@@ -388,41 +391,42 @@ const std::set<std::string> get_recruits_for_location(int side, const map_locati
 }
 
 
-/**
- * Adds to @a result those units that @a leader (assumed a leader) can recall.
- * If @a already_added is supplied, it contains the underlying IDs of units
- * that can be skipped (because they are already in @a result), and the
- * underlying ID of units added to @a result will be added to @a already_added.
- */
-static void add_leader_filtered_recalls(const unit & leader,
-                                        std::vector<const unit*> & result,
-                                        std::set<size_t> * already_added = NULL)
-{
-	const team& leader_team = (*resources::teams)[leader.side()-1];
-	const std::vector<unit>& recall_list = leader_team.recall_list();
-	const std::string& save_id = leader_team.save_id();
-
-	BOOST_FOREACH(const unit& recall_unit, recall_list)
+namespace { // Helpers for get_recalls_for_location()
+	/**
+	 * Adds to @a result those units that @a leader (assumed a leader) can recall.
+	 * If @a already_added is supplied, it contains the underlying IDs of units
+	 * that can be skipped (because they are already in @a result), and the
+	 * underlying ID of units added to @a result will be added to @a already_added.
+	 */
+	void add_leader_filtered_recalls(const unit & leader,
+	                                 std::vector<const unit*> & result,
+	                                 std::set<size_t> * already_added = NULL)
 	{
-		// Do not add a unit twice.
-		size_t underlying_id = recall_unit.underlying_id();
-		if ( !already_added  ||  already_added->count(underlying_id) == 0 )
-		{
-			// Only units that match the leader's recall filter are valid.
-			scoped_recall_unit this_unit("this_unit", save_id, &recall_unit - &recall_list[0]);
+		const team& leader_team = (*resources::teams)[leader.side()-1];
+		const std::vector<unit>& recall_list = leader_team.recall_list();
+		const std::string& save_id = leader_team.save_id();
 
-			if ( recall_unit.matches_filter(vconfig(leader.recall_filter()), map_location::null_location) )
+		BOOST_FOREACH(const unit& recall_unit, recall_list)
+		{
+			// Do not add a unit twice.
+			size_t underlying_id = recall_unit.underlying_id();
+			if ( !already_added  ||  already_added->count(underlying_id) == 0 )
 			{
-				result.push_back(&recall_unit);
-				if ( already_added != NULL )
-					already_added->insert(underlying_id);
+				// Only units that match the leader's recall filter are valid.
+				scoped_recall_unit this_unit("this_unit", save_id, &recall_unit - &recall_list[0]);
+
+				if ( recall_unit.matches_filter(vconfig(leader.recall_filter()), map_location::null_location) )
+				{
+					result.push_back(&recall_unit);
+					if ( already_added != NULL )
+						already_added->insert(underlying_id);
+				}
 			}
 		}
 	}
-}
+}// anonymous namespace
 
-
-const std::vector<const unit*> get_recalls_for_location(int side, const map_location &recall_loc)
+const std::vector<const unit*> get_recalls(int side, const map_location &recall_loc)
 {
 	LOG_NG << "getting recall list for side " << side << " at location " << recall_loc << "\n";
 
@@ -655,82 +659,83 @@ std::string find_recruit_location(const int side, map_location& recruit_location
 }
 
 
-/**
- * Performs a checksum check on a newly recruited/recalled unit.
- */
-static void recruit_checksums(const unit &new_unit, bool wml_triggered)
-{
-	const config* ran_results = get_random_results();
-	if ( ran_results != NULL ) {
-		// When recalling from WML there should be no random results, if we use
-		// random we might get the replay out of sync.
-		assert(!wml_triggered);
-		const std::string checksum = get_checksum(new_unit);
-		const std::string rc = (*ran_results)["checksum"];
-		if ( rc != checksum ) {
-			std::stringstream error_msg;
-			error_msg << "SYNC: In recruit " << new_unit.type_id() <<
-				": has checksum " << checksum <<
-				" while datasource has checksum " << rc << "\n";
-			ERR_NG << error_msg.str();
+namespace { // Helpers for place_recruit()
+	/**
+	 * Performs a checksum check on a newly recruited/recalled unit.
+	 */
+	void recruit_checksums(const unit &new_unit, bool wml_triggered)
+	{
+		const config* ran_results = get_random_results();
+		if ( ran_results != NULL ) {
+			// When recalling from WML there should be no random results, if we
+			// use random we might get the replay out of sync.
+			assert(!wml_triggered);
+			const std::string checksum = get_checksum(new_unit);
+			const std::string rc = (*ran_results)["checksum"];
+			if ( rc != checksum ) {
+				std::stringstream error_msg;
+				error_msg << "SYNC: In recruit " << new_unit.type_id() <<
+					": has checksum " << checksum <<
+					" while datasource has checksum " << rc << "\n";
+				ERR_NG << error_msg.str();
 
-			config cfg_unit1;
-			new_unit.write(cfg_unit1);
-			DBG_NG << cfg_unit1;
-			replay::process_error(error_msg.str());
+				config cfg_unit1;
+				new_unit.write(cfg_unit1);
+				DBG_NG << cfg_unit1;
+				replay::process_error(error_msg.str());
+			}
+
+		} else if ( wml_triggered == false ) {
+			config cfg;
+			cfg["checksum"] = get_checksum(new_unit);
+			set_random_results(cfg);
 		}
-
-	} else if ( wml_triggered == false ) {
-		config cfg;
-		cfg["checksum"] = get_checksum(new_unit);
-		set_random_results(cfg);
 	}
-}
 
-/**
- * Locates a leader on side @a side who can recruit at @a recruit_location.
- * A leader at @a recruited_from is chosen in preference to others.
- */
-static const map_location & find_recruit_leader(int side,
-	const map_location &recruit_location, const map_location &recruited_from)
-{
-	const unit_map & units = *resources::units;
+	/**
+	 * Locates a leader on side @a side who can recruit at @a recruit_location.
+	 * A leader at @a recruited_from is chosen in preference to others.
+	 */
+	const map_location & find_recruit_leader(int side,
+		const map_location &recruit_location, const map_location &recruited_from)
+	{
+		const unit_map & units = *resources::units;
 
-	// See if the preferred location is an option.
-	unit_map::const_iterator leader = units.find(recruited_from);
-	if ( leader != units.end()  &&  leader->can_recruit()  &&
-	     leader->side() == side &&  can_recruit_on(*leader, recruit_location) )
-		return leader->get_location();
-
-	// Check all units.
-	for ( leader = units.begin(); leader != units.end(); ++leader )
-		if ( leader->can_recruit()  &&  leader->side() == side  &&
-		     can_recruit_on(*leader, recruit_location) )
+		// See if the preferred location is an option.
+		unit_map::const_iterator leader = units.find(recruited_from);
+		if ( leader != units.end()  &&  leader->can_recruit()  &&
+			 leader->side() == side &&  can_recruit_on(*leader, recruit_location) )
 			return leader->get_location();
 
-	// No usable leader found.
-	return map_location::null_location;
-}
+		// Check all units.
+		for ( leader = units.begin(); leader != units.end(); ++leader )
+			if ( leader->can_recruit()  &&  leader->side() == side  &&
+				 can_recruit_on(*leader, recruit_location) )
+				return leader->get_location();
 
-
-/**
- * Tries to make @a un_it valid, and updates @a current_loc.
- * Used by place_recruit() after WML might have changed something.
- * @returns true if the iterator was made valid.
- */
-static bool validate_recruit_iterator(unit_map::iterator & un_it,
-                                      map_location & current_loc)
-{
-	if ( !un_it.valid() ) {
-		// Maybe WML provided a replacement?
-		un_it = resources::units->find(current_loc);
-		if ( un_it == resources::units->end() )
-			// The unit is gone.
-			return false;
+		// No usable leader found.
+		return map_location::null_location;
 	}
-	current_loc = un_it->get_location();
-	return true;
-}
+
+	/**
+	 * Tries to make @a un_it valid, and updates @a current_loc.
+	 * Used by place_recruit() after WML might have changed something.
+	 * @returns true if the iterator was made valid.
+	 */
+	bool validate_recruit_iterator(unit_map::iterator & un_it,
+		                           map_location & current_loc)
+	{
+		if ( !un_it.valid() ) {
+			// Maybe WML provided a replacement?
+			un_it = resources::units->find(current_loc);
+			if ( un_it == resources::units->end() )
+				// The unit is gone.
+				return false;
+		}
+		current_loc = un_it->get_location();
+		return true;
+	}
+}// anonymous namespace
 
 bool place_recruit(const unit &u, const map_location &recruit_location, const map_location& recruited_from,
     int cost, bool is_recall, bool show, bool fire_event, bool full_movement,
@@ -814,9 +819,6 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 
 	return mutated;
 }
-
-
-namespace actions {
 
 
 /**

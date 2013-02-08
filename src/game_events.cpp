@@ -1957,8 +1957,9 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 						if(resources::game_map->on_board(loc)) {
 							DBG_NG << "...valid location for the recall found. Recalling.\n";
 							avail.erase(u);	// Erase before recruiting, since recruiting can fire more events
-							place_recruit(to_recruit, loc, leader->get_location(), 0, true,
-									cfg["show"].to_bool(true), cfg["fire_event"].to_bool(false), true, true);
+							actions::place_recruit(to_recruit, loc, leader->get_location(), 0, true,
+							                       cfg["show"].to_bool(true), cfg["fire_event"].to_bool(false),
+							                       true, true);
 							return;
 						}
 					}
@@ -1972,8 +1973,8 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 						DBG_NG << "No usable leader found, but found usable location. Recalling.\n";
 						avail.erase(u);	// Erase before recruiting, since recruiting can fire more events
 						map_location null_location = map_location::null_location;
-						place_recruit(to_recruit, loc, null_location, 0, true,
-								cfg["show"].to_bool(true), cfg["fire_event"].to_bool(false), true, true);
+						actions::place_recruit(to_recruit, loc, null_location, 0, true, cfg["show"].to_bool(true),
+						                       cfg["fire_event"].to_bool(false), true, true);
 						return;
 					}
 				}

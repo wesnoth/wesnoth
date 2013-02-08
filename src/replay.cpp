@@ -1015,7 +1015,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				continue;
 			}
 
-			const std::string res = find_recruit_location(side_num, loc, from, u_type->id());
+			const std::string res = actions::find_recruit_location(side_num, loc, from, u_type->id());
 			const int beginning_gold = current_team.gold();
 
 			if (res.empty()) {
