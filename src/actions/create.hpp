@@ -86,6 +86,35 @@ inline bool can_recruit_on(const unit& leader, const map_location& recruit_loc)
 
 namespace actions {
 
+/// The possible results of finding a location for recruiting (or recalling).
+enum RECRUIT_CHECK {
+	RECRUIT_NO_LEADER,         	/// No leaders exist
+	RECRUIT_NO_ABLE_LEADER,    	/// No leaders able to recall/recruit the given unit/type.
+	RECRUIT_NO_KEEP_LEADER,    	/// No able leaders are on a keep.
+	RECRUIT_NO_VACANCY,        	/// No vacant castle tiles around a leader on a keep.
+	RECRUIT_ALTERNATE_LOCATION,	/// Recruitment OK, but not at the specified location.
+	RECRUIT_OK                 	/// Recruitment OK.
+};
+
+/**
+ * Checks if there is a location on which to place a recruited unit.
+ * A leader of the @a side must be on a keep connected by castle to a
+ * legal recruiting location to get an "OK" or "ALTERNATE_LOCATION" result.
+ *
+ * If "OK" is returned, then the location provided in @a recruit_location
+ * is legal. If "ALTERNATE_LOCATION" is returned, the provided location was
+ * illegal, so its value was replaced by a location where recruitment can
+ * occur.
+ *
+ * The location of the recruiting leader is stored in @a recruited_from.
+ * (The incoming value of this parameter is ignored.)
+ *
+ * The @a unit_type is needed in case this is a leader-specific recruit.
+ */
+RECRUIT_CHECK check_recruit_location(const int side, map_location &recruit_location,
+                                     map_location& recruited_from,
+                                     const std::string& unit_type);
+
 /**
  * Finds a location on which to place a unit.
  * A leader of the @a side must be on a keep
@@ -104,6 +133,23 @@ namespace actions {
  *         describing the failure is returned.
  */
 std::string find_recruit_location(const int side, map_location &recruit_location, map_location& recruited_from, const std::string& unit_type);
+
+/**
+ * Checks if there is a location on which to recall @a unit_recall.
+ * A leader of the @a side must be on a keep connected by castle to a legal
+ * recalling location to get an "OK" or "ALTERNATE_LOCATION" result.
+ *
+ * If "OK" is returned, then the location provided in @a recall_location
+ * is legal. If "ALTERNATE_LOCATION" is returned, the provided location was
+ * illegal, so its value was replaced by a location where recalling can
+ * occur.
+ *
+ * The location of the recalling leader is stored in @a recall_from.
+ * (The incoming value of this parameter is ignored.)
+ */
+RECRUIT_CHECK check_recall_location(const int side, map_location& recall_location,
+                                    map_location& recall_from,
+                                    const unit &unit_recall);
 
 /**
  * Finds a location on which to recall @a unit_recall.

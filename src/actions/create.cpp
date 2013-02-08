@@ -391,7 +391,7 @@ const std::set<std::string> get_recruits(int side, const map_location &recruit_l
 }
 
 
-namespace { // Helpers for get_recalls_for_location()
+namespace { // Helpers for get_recalls()
 	/**
 	 * Adds to @a result those units that @a leader (assumed a leader) can recall.
 	 * If @a already_added is supplied, it contains the underlying IDs of units
@@ -495,167 +495,271 @@ const std::vector<const unit*> get_recalls(int side, const map_location &recall_
 	return result;
 }
 
-std::string find_recall_location(const int side, map_location& recall_loc, map_location& recall_from, const unit &recall_unit)
-{
-	LOG_NG << "finding recall location for side " << side << " and unit " << recall_unit.id() << "\n";
+namespace { // Helpers for check_recall_location()
+	/**
+	 * Checks if @a recaller can recall @a recall_unit at @a preferred.
+	 * If recalling can occur but not at the preferred location, then a
+	 * permissible location is stored in @a alternative.
+	 * @returns the reason why recalling is not allowed (or RECRUIT_OK).
+	 */
+	RECRUIT_CHECK check_unit_recall_location(
+		const unit & recaller, const unit & recall_unit,
+		const map_location & preferred, map_location & alternative)
+	{
+		// Make sure the unit can actually recall.
+		if ( !recaller.can_recruit() )
+			return RECRUIT_NO_LEADER;
 
-	unit_map::const_iterator u = resources::units->begin(),
-		u_end = resources::units->end(), leader = u_end, leader_keep = u_end, leader_fit = u_end,
-			leader_able = u_end, leader_opt = u_end;
+		// Make sure the recalling unit can recall this specific unit.
+		const team& recall_team = (*resources::teams)[recaller.side()-1];
+		scoped_recall_unit this_unit("this_unit", recall_team.save_id(),
+		                             &recall_unit - &recall_team.recall_list()[0]);
+		if ( !recall_unit.matches_filter(vconfig(recaller.recall_filter()),
+		                                 map_location::null_location) )
+			return RECRUIT_NO_ABLE_LEADER;
 
-	map_location alternate_location = map_location::null_location;
-	map_location alternate_from = map_location::null_location;
+		// Make sure the unit is on a keep.
+		if ( !resources::game_map->is_keep(recaller.get_location()) )
+			return RECRUIT_NO_KEEP_LEADER;
 
-	for(; u != u_end; ++u) {
-		//quit if it is not a leader on the @side
-		if (!(u->can_recruit() && u->side() == side))
-			continue;
-		leader = u;
+		// Make sure there is a permissible location to which to recruit.
+		map_location permissible = pathfind::find_vacant_castle(recaller);
+		if ( !permissible.valid() )
+			return RECRUIT_NO_VACANCY;
 
-		//quit if the leader is not able to recall the @recall_unit
-		const team& t = (*resources::teams)[side-1];
-		scoped_recall_unit this_unit("this_unit",
-			t.save_id(),
-			&recall_unit - &t.recall_list()[0]);
-		if (!(recall_unit.matches_filter(vconfig(leader->recall_filter()), map_location::null_location)))
-			continue;
-		leader_able = leader;
-
-		//quit if the leader is not on a keep
-		if (!(resources::game_map->is_keep(leader->get_location())))
-			continue;
-		leader_keep = leader_able;
-
-		//find a place to recall in the leader's keep
-		map_location tmp_location = pathfind::find_vacant_castle(*leader_keep);
-
-		//quit if there is no place to recruit on
-		if (tmp_location == map_location::null_location)
-			continue;
-		leader_fit = leader_keep;
-
-		if ( can_recruit_on(*leader_fit, recall_loc) ) {
-			leader_opt = leader_fit;
-			recall_from = leader_opt->get_location();
-			if (resources::units->count(recall_loc) == 1)
-				recall_loc = tmp_location;
-			break;
-		} else {
-			alternate_location = tmp_location;
-			alternate_from = leader_fit->get_location();
+		// See if the preferred location cannot be used.
+		if ( !can_recruit_on(recaller, preferred) ) {
+			alternative = permissible;
+			return RECRUIT_ALTERNATE_LOCATION;
 		}
+
+		// All tests passed.
+		return RECRUIT_OK;
+	}
+}//anonymous namespace
+
+/// Checks if there is a location on which to recall @a unit_recall.
+RECRUIT_CHECK check_recall_location(const int side, map_location& recall_location,
+                                    map_location& recall_from,
+                                    const unit &unit_recall)
+{
+	map_location check_location = recall_location;
+	map_location alternative;	// Set by check_unit_recall_location().
+
+	// If the specified location is occupied, proceed as if no location was specified.
+	if ( resources::units->count(recall_location) != 0 )
+		check_location = map_location::null_location;
+
+	// If the check location is not valid, we will never get an "OK" result.
+	RECRUIT_CHECK const goal_result = check_location.valid() ? RECRUIT_OK :
+	                                                           RECRUIT_ALTERNATE_LOCATION;
+	RECRUIT_CHECK best_result = RECRUIT_NO_LEADER;
+
+	// Loop through all units on the specified side.
+	unit_map::const_iterator const u_end = resources::units->end();
+	unit_map::const_iterator u = resources::units->begin();
+	for ( ; best_result < goal_result  &&  u != u_end; ++u ) {
+		if ( u->side() != side )
+			continue;
+
+		// Check this unit's viability as a recaller.
+		RECRUIT_CHECK current_result =
+			check_unit_recall_location(*u, unit_recall, check_location, alternative);
+
+		// If this is not an improvement, proceed to the next unit.
+		if ( current_result <= best_result )
+			continue;
+		best_result = current_result;
+
+		// If we have a viable recaller, record its location.
+		if ( current_result >= RECRUIT_ALTERNATE_LOCATION )
+			recall_from = u->get_location();
 	}
 
-	if (leader == u_end) {
-		LOG_NG << "No Leader on side " << side << " when recalling " << recall_unit.id() << '\n';
+	if ( best_result == RECRUIT_ALTERNATE_LOCATION )
+		// Report the alternate location to the caller.
+		recall_location = alternative;
+
+	return best_result;
+}
+
+std::string find_recall_location(const int side, map_location& recall_location, map_location& recall_from, const unit &unit_recall)
+{
+	LOG_NG << "finding recall location for side " << side << " and unit " << unit_recall.id() << "\n";
+
+	// This function basically translates check_recall_location() to a
+	// human-readable string.
+	switch ( check_recall_location(side, recall_location, recall_from, unit_recall) )
+	{
+	case RECRUIT_NO_LEADER:
+		LOG_NG << "No leaders on side " << side << " when recalling " << unit_recall.id() << ".\n";
 		return _("You don’t have a leader to recall with.");
-	}
 
-	if (leader_able == u_end) {
-		LOG_NG << "No Leader able to recall unit: " << recall_unit.id() << " on side " << side << '\n';
+	case RECRUIT_NO_ABLE_LEADER:
+		LOG_NG << "No leader is able to recall " << unit_recall.id() << " on side " << side << ".\n";
 		return _("None of your leaders are able to recall that unit.");
-	}
 
-	if (leader_keep == u_end) {
-		LOG_NG << "No Leader on a keep to recall the unit " << recall_unit.id() << " at " << recall_loc  << '\n';
+	case RECRUIT_NO_KEEP_LEADER:
+		LOG_NG << "No leader able to recall " << unit_recall.id() << " is on a keep.\n";
 		return _("You must have a leader on a keep who is able to recall that unit.");
-	}
 
-	if (leader_fit == u_end) {
-		LOG_NG << "No vacant castle tiles on a keep available to recall the unit " << recall_unit.id() << " at " << recall_loc  << '\n';
+	case RECRUIT_NO_VACANCY:
+		LOG_NG << "No vacant castle tiles around a keep are available for recalling " << unit_recall.id() << "; requested location is " << recall_location << ".\n";
 		return _("There are no vacant castle tiles in which to recall the unit.");
+
+	case RECRUIT_ALTERNATE_LOCATION:
+	case RECRUIT_OK:
+		return std::string();
 	}
 
-	if (leader_opt == u_end) {
-		recall_loc = alternate_location;
-		recall_from = alternate_from;
+	// We should never get down to here. But just in case someone decides to
+	// mess with the enum without updating this function:
+	ERR_NG << "Unrecognized enum in find_recall_location()\n";
+	return _("An unrecognized error has occurred.");
+}
+
+namespace { // Helpers for check_recruit_location()
+	/// Returns whether or not the value is found in the vector.
+	template<typename T>
+	inline bool contains(const std::vector<T> & container, const T & value)
+	{
+		typename std::vector<T>::const_iterator end = container.end();
+
+		return std::find(container.begin(), end, value) != end;
 	}
 
-	return std::string();
+	/// Returns whether or not the value is found in the set.
+	template<typename T>
+	inline bool contains(const std::set<T> & container, const T & value)
+	{
+		return container.find(value) != container.end();
+	}
+
+	/**
+	 * Checks if @a recruiter can recruit at @a preferred.
+	 * If @a unit_type is not empty, it must be in the unit-specific recruit list.
+	 * If recruitment can occur but not at the preferred location, then a
+	 * permissible location is stored in @a alternative.
+	 * @returns the reason why recruitment is not allowed (or RECRUIT_OK).
+	 */
+	RECRUIT_CHECK check_unit_recruit_location(
+		const unit & recruiter, const std::string & unit_type,
+		const map_location & preferred, map_location & alternative)
+	{
+		// Make sure the unit can actually recruit.
+		if ( !recruiter.can_recruit() )
+			return RECRUIT_NO_LEADER;
+
+		if ( !unit_type.empty() ) {
+			// Make sure the specified type is in the unit's recruit list.
+			if ( !contains(recruiter.recruits(), unit_type) )
+				return RECRUIT_NO_ABLE_LEADER;
+		}
+
+		// Make sure the unit is on a keep.
+		if ( !resources::game_map->is_keep(recruiter.get_location()) )
+			return RECRUIT_NO_KEEP_LEADER;
+
+		// Make sure there is a permissible location to which to recruit.
+		map_location permissible = pathfind::find_vacant_castle(recruiter);
+		if ( !permissible.valid() )
+			return RECRUIT_NO_VACANCY;
+
+		// See if the preferred location cannot be used.
+		if ( !can_recruit_on(recruiter, preferred) ) {
+			alternative = permissible;
+			return RECRUIT_ALTERNATE_LOCATION;
+		}
+
+		// All tests passed.
+		return RECRUIT_OK;
+	}
+}//anonymous namespace
+
+/// Checks if there is a location on which to place a recruited unit.
+RECRUIT_CHECK check_recruit_location(const int side, map_location &recruit_location,
+                                     map_location& recruited_from,
+                                     const std::string& unit_type)
+{
+	map_location check_location = recruit_location;
+	std::string check_type = unit_type;
+	map_location alternative;	// Set by check_unit_recruit_location().
+
+	// If the specified location is occupied, proceed as if no location was specified.
+	if ( resources::units->count(recruit_location) != 0 )
+		check_location = map_location::null_location;
+
+	// If the specified unit type is in the team's recruit list, there is no
+	// need to check each leader's list.
+	if ( contains((*resources::teams)[side-1].recruits(), unit_type) )
+		check_type.clear();
+
+	// If the check location is not valid, we will never get an "OK" result.
+	RECRUIT_CHECK const goal_result = check_location.valid() ? RECRUIT_OK :
+	                                                           RECRUIT_ALTERNATE_LOCATION;
+	RECRUIT_CHECK best_result = RECRUIT_NO_LEADER;
+
+	// Loop through all units on the specified side.
+	unit_map::const_iterator const u_end = resources::units->end();
+	unit_map::const_iterator u = resources::units->begin();
+	for ( ; best_result < goal_result  &&  u != u_end; ++u ) {
+		if ( u->side() != side )
+			continue;
+
+		// Check this unit's viability as a recruiter.
+		RECRUIT_CHECK current_result =
+			check_unit_recruit_location(*u, check_type, check_location, alternative);
+
+		// If this is not an improvement, proceed to the next unit.
+		if ( current_result <= best_result )
+			continue;
+		best_result = current_result;
+
+		// If we have a viable recruiter, record its location.
+		if ( current_result >= RECRUIT_ALTERNATE_LOCATION )
+			recruited_from = u->get_location();
+	}
+
+	if ( best_result == RECRUIT_ALTERNATE_LOCATION )
+		// Report the alternate location to the caller.
+		recruit_location = alternative;
+
+	return best_result;
 }
 
 std::string find_recruit_location(const int side, map_location& recruit_location, map_location& recruited_from, const std::string& unit_type)
 {
 	LOG_NG << "finding recruit location for side " << side << "\n";
 
-	unit_map::const_iterator u = resources::units->begin(), u_end = resources::units->end(),
-			leader = u_end, leader_keep = u_end, leader_fit = u_end,
-			leader_able = u_end, leader_opt = u_end;
-
-	map_location alternate_location = map_location::null_location;
-	map_location alternate_from = map_location::null_location;
-
-	const std::set<std::string>& recruit_list = (*resources::teams)[side -1].recruits();
-	std::set<std::string>::const_iterator recruit_it = recruit_list.find(unit_type);
-	bool is_on_team_list = (recruit_it != recruit_list.end());
-
-	for(; u != u_end; ++u) {
-		if (!(u->can_recruit() && u->side() == side))
-			continue;
-		leader = u;
-
-		bool can_recruit_unit = is_on_team_list;
-		if (!can_recruit_unit) {
-			BOOST_FOREACH(const std::string &recruitable, leader->recruits()) {
-				if (recruitable == unit_type) {
-					can_recruit_unit = true;
-					break;
-				}
-			}
-		}
-
-		if (!can_recruit_unit)
-			continue;
-		leader_able = leader;
-
-		if (!(resources::game_map->is_keep(leader_able->get_location())))
-			continue;
-		leader_keep = leader_able;
-
-		map_location tmp_location = pathfind::find_vacant_castle(*leader_keep);
-
-		if (tmp_location == map_location::null_location)
-			continue;
-		leader_fit = leader_keep;
-
-		if ( can_recruit_on(*leader_fit, recruit_location) ) {
-			leader_opt = leader_fit;
-			recruited_from = leader_opt->get_location();
-			if (resources::units->count(recruit_location) == 1)
-				recruit_location = tmp_location;
-			break;
-		} else {
-			alternate_location = tmp_location;
-			alternate_from = leader_fit->get_location();
-		}
-	}
-
-	if (leader == u_end) {
-		LOG_NG << "No Leader on side " << side << " when recruiting " << unit_type << '\n';
+	// This function basically translates check_recruit_location() to a
+	// human-readable string.
+	switch ( check_recruit_location(side, recruit_location, recruited_from, unit_type) )
+	{
+	case RECRUIT_NO_LEADER:
+		LOG_NG << "No leaders on side " << side << " when recruiting '" << unit_type << "'.\n";
 		return _("You don’t have a leader to recruit with.");
-	}
 
-	if (leader_able == u_end) {
-		LOG_NG << "No leader able to recruit '" << unit_type << "' on side " << side << '\n';
+	case RECRUIT_NO_ABLE_LEADER:
+		LOG_NG << "No leader is able to recruit '" << unit_type << "' on side " << side << ".\n";
 		return _("None of your leaders are able to recruit that unit.");
-	}
 
-	if (leader_keep == u_end) {
-		LOG_NG << "Leader not on keep: able leader is on " << leader_able->get_location() << '\n';
+	case RECRUIT_NO_KEEP_LEADER:
+		LOG_NG << "No leader able to recruit '" << unit_type << "' is on a keep.\n";
 		return _("You must have a leader on a keep who is able to recruit the unit.");
-	}
 
-	if (leader_fit == u_end) {
-		LOG_NG << "No vacant castle tiles on a keep available to recruit the unit " << unit_type << " at " << recruit_location  << '\n';
+	case RECRUIT_NO_VACANCY:
+		LOG_NG << "No vacant castle tiles around a keep are available for recruiting '" << unit_type << "'; requested location is " << recruit_location  << ".\n";
 		return _("There are no vacant castle tiles in which to recruit the unit.");
+
+	case RECRUIT_ALTERNATE_LOCATION:
+	case RECRUIT_OK:
+		return std::string();
 	}
 
-	if (leader_opt == u_end) {
-		recruit_location = alternate_location;
-		recruited_from = alternate_from;
-	}
-
-	return std::string();
+	// We should never get down to here. But just in case someone decides to
+	// mess with the enum without updating this function:
+	ERR_NG << "Unrecognized enum in find_recruit_location()\n";
+	return _("An unrecognized error has occurred.");
 }
 
 
