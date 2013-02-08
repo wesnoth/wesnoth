@@ -241,7 +241,42 @@ public:
 	T &operator*() const { return *ptr_; }
 };
 
+namespace detail {
+	/// A struct that exists to implement a generic wrapper for std::find.
+	/// Container should "look like" an STL container of Values.
+	template<typename Container, typename Value> struct contains_impl {
+		static bool eval(const Container & container, const Value & value)
+		{
+			typename Container::const_iterator end = container.end();
+			return std::find(container.begin(), end, value) != end;
+		}
+	};
+	/// A struct that exists to implement a generic wrapper for the find()
+	/// member of associative containers.
+	/// Container should "look like" an STL associative container.
+	template<typename Container>
+	struct contains_impl<Container, typename Container::key_type>  {
+		static bool eval(const Container & container,
+		                 const typename Container::key_type & value)
+		{
+			return container.find(value) != container.end();
+		}
+	};
+}//namespace detail
+
+/// Returns true iff @a value is found in @a container.
+/// This should work whenever Container "looks like" an STL container of Values.
+/// Normally this uses std::find(), but a simulated partial template specialization
+/// exists when Value is Container::key_type. In this case, Container is assumed
+/// an associative container, and the member function find() is used.
+template<typename Container, typename Value>
+inline bool contains(const Container & container, const Value & value)
+{
+	return detail::contains_impl<Container, Value>::eval(container, value);
 }
+
+}//namespace util
+
 
 #if 1
 # include <SDL_types.h>

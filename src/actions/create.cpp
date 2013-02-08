@@ -619,22 +619,6 @@ std::string find_recall_location(const int side, map_location& recall_location, 
 }
 
 namespace { // Helpers for check_recruit_location()
-	/// Returns whether or not the value is found in the vector.
-	template<typename T>
-	inline bool contains(const std::vector<T> & container, const T & value)
-	{
-		typename std::vector<T>::const_iterator end = container.end();
-
-		return std::find(container.begin(), end, value) != end;
-	}
-
-	/// Returns whether or not the value is found in the set.
-	template<typename T>
-	inline bool contains(const std::set<T> & container, const T & value)
-	{
-		return container.find(value) != container.end();
-	}
-
 	/**
 	 * Checks if @a recruiter can recruit at @a preferred.
 	 * If @a unit_type is not empty, it must be in the unit-specific recruit list.
@@ -652,7 +636,7 @@ namespace { // Helpers for check_recruit_location()
 
 		if ( !unit_type.empty() ) {
 			// Make sure the specified type is in the unit's recruit list.
-			if ( !contains(recruiter.recruits(), unit_type) )
+			if ( !util::contains(recruiter.recruits(), unit_type) )
 				return RECRUIT_NO_ABLE_LEADER;
 		}
 
@@ -691,7 +675,7 @@ RECRUIT_CHECK check_recruit_location(const int side, map_location &recruit_locat
 
 	// If the specified unit type is in the team's recruit list, there is no
 	// need to check each leader's list.
-	if ( contains((*resources::teams)[side-1].recruits(), unit_type) )
+	if ( util::contains((*resources::teams)[side-1].recruits(), unit_type) )
 		check_type.clear();
 
 	// If the check location is not valid, we will never get an "OK" result.
