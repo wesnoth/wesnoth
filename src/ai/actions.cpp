@@ -792,7 +792,7 @@ void recruit_result::do_execute()
 	assert(location_checked_  &&  u != NULL);
 
 	// Calculate the index to be fed to the recorder.
-	const std::set<std::string> recruit_set = get_my_team().recruits();
+	const std::set<std::string> recruit_set = ::actions::get_recruits(get_side(), recruit_location_);
 	int num = std::distance(recruit_set.begin(), recruit_set.find(unit_name_));
 
 	recorder.add_recruit(num, recruit_location_, recruit_from_);
