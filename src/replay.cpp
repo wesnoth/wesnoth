@@ -975,27 +975,21 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 
 			map_location loc(child, resources::gamedata);
 			map_location from(child.child_or_empty("from"), resources::gamedata);
-
-			unit_map::unit_iterator u = resources::units->find(from);
-
-			std::set<std::string> recruits = current_team.recruits();
-			// Account for leader-specific recruits.
+			// Validate "from".
 			if ( !from.valid() ) {
 				// This will be the case for AI recruits in replays saved
 				// before 1.11.2, so it is not more severe than a warning.
 				WRN_REPLAY << "Missing leader location for recruitment.\n";
 			}
-			else if ( u == resources::units->end() ) {
+			else if ( resources::units->find(from) == resources::units->end() ) {
 				// Sync problem?
 				std::stringstream errbuf;
 				errbuf << "Recruiting leader not found at " << from << ".\n";
 				replay::process_error(errbuf.str());
-				// Can still proceed I guess. The leader's recruit list
-				// usually does not matter.
+				// Can still try to proceed I guess.
 			}
-			else
-				recruits.insert((u->recruits()).begin(), (u->recruits()).end());
 
+			std::set<std::string> recruits = actions::get_recruits(side_num, loc);
 			if(val < 0 || static_cast<size_t>(val) >= recruits.size()) {
 				std::stringstream errbuf;
 				errbuf << "recruitment index is illegal: " << val
