@@ -217,20 +217,16 @@ protected:
 	virtual void do_execute();
 	virtual void do_init_for_execution();
 private:
-	bool test_available_for_recalling(
+	const unit * get_recall_unit(
 		const team& my_team);
 	bool test_enough_gold(
 		const team& my_team);
-	const unit *get_leader();
-	bool test_leader_on_keep(
-		const unit &my_leader);
-	bool test_suitable_recall_location(
-		const unit &my_leader);
 
 	const std::string& unit_id_;
 	const map_location where_;
 	map_location recall_location_;
 	map_location recall_from_;
+	bool location_checked_;
 };
 
 class recruit_result : public action_result {
@@ -253,23 +249,17 @@ protected:
 	virtual void do_execute();
 	virtual void do_init_for_execution();
 private:
-	const std::string &get_available_for_recruiting(
-		const team& my_team);
 	const unit_type *get_unit_type_known(
 		const std::string &recruit);
 	bool test_enough_gold(
 		const team& my_team,
 		const unit_type &type );
-	const unit *get_leader();
-	bool test_leader_on_keep(
-		const unit &my_leader);
-	bool test_suitable_recruit_location (
-		const unit &my_leader);
+
 	const std::string& unit_name_;
 	const map_location& where_;
 	map_location recruit_location_;
 	map_location recruit_from_;
-	int num_;
+	bool location_checked_;
 };
 
 class stopunit_result : public action_result {

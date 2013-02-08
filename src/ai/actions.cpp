@@ -528,17 +528,18 @@ recall_result::recall_result(side_number side,
 	, where_(where)
 	, recall_location_(where)
 	, recall_from_(from)
+	, location_checked_(false)
 {
 }
 
-bool recall_result::test_available_for_recalling(const team &my_team)
+const unit * recall_result::get_recall_unit(const team &my_team)
 {
 	const std::vector<unit>::const_iterator rec = find_if_matches_id(my_team.recall_list(), unit_id_);
 	if (rec == my_team.recall_list().end()) {
 		set_error(E_NOT_AVAILABLE_FOR_RECALLING);
-		return false;
+		return NULL;
 	}
-	return true;
+	return &*rec;
 }
 
 
@@ -551,74 +552,49 @@ bool recall_result::test_enough_gold(const team &my_team)
 	return true;
 }
 
-const unit *recall_result::get_leader()
-{
-	unit_map::const_iterator my_leader = resources::units->find_leader(get_side());
-	if (my_leader == resources::units->end()){
-		set_error(E_NO_LEADER);
-		return NULL;
-	}
-	return &*my_leader;
-
-}
-
-bool recall_result::test_leader_on_keep(const unit &my_leader)
-{
-	if (!resources::game_map->is_keep(my_leader.get_location())) {
-		set_error(E_LEADER_NOT_ON_KEEP);
-		return false;
-	}
-	return true;
-}
-
-bool recall_result::test_suitable_recall_location(const unit &my_leader)
-{
-	recall_location_ = where_;
-
-	//If we have an off-board location, such as null_location, then the caller wants us to recall on 'any' possible tile.
-	if (!resources::game_map->on_board(recall_location_)) {
-		recall_location_ = pathfind::find_vacant_castle(my_leader);
-	}
-
-	if ( !can_recruit_on(my_leader, recall_location_) ) {
-		set_error(E_BAD_RECALL_LOCATION);
-		return false;
-	}
-	return true;
-}
-
 void recall_result::do_check_before()
 {
 	LOG_AI_ACTIONS << " check_before " << *this << std::endl;
 	const team& my_team = get_my_team();
-
-	//Unit available for recalling?
-	if ( !test_available_for_recalling(my_team)) {
-		return;
-	}
+	const bool location_specified = recall_location_.valid();
 
 	//Enough gold?
 	if (!test_enough_gold(my_team)) {
 		return;
 	}
 
-	//Leader present?
-	const unit *my_leader = get_leader();
-
-	if (!my_leader) {
+	//Unit available for recalling?
+	const unit * to_recall = get_recall_unit(my_team);
+	if ( !to_recall ) {
 		return;
 	}
 
-	//Leader on keep?
-	if (!test_leader_on_keep(*my_leader)) {
+	// Leader available for recalling?
+	switch ( ::actions::check_recall_location(get_side(), recall_location_,
+	                                          recall_from_, *to_recall) )
+	{
+	case ::actions::RECRUIT_NO_LEADER:
+	case ::actions::RECRUIT_NO_ABLE_LEADER:
+		set_error(E_NO_LEADER);
 		return;
-	}
 
-	//Try to get suitable recall location. Is suitable location available ?
-	if (!test_suitable_recall_location(*my_leader)) {
+	case ::actions::RECRUIT_NO_KEEP_LEADER:
+		set_error(E_LEADER_NOT_ON_KEEP);
 		return;
-	}
 
+	case ::actions::RECRUIT_NO_VACANCY:
+		set_error(E_BAD_RECALL_LOCATION);
+		return;
+
+	case ::actions::RECRUIT_ALTERNATE_LOCATION:
+		if ( location_specified ) {
+			set_error(E_BAD_RECALL_LOCATION);
+			return;
+		}
+		// No break. If the location was not specified, this counts as "OK".
+	case ::actions::RECRUIT_OK:
+		location_checked_ = true;
+	}
 }
 
 
@@ -662,29 +638,24 @@ void recall_result::do_execute()
 	LOG_AI_ACTIONS << "start of execution of: " << *this << std::endl;
 	assert(is_success());
 
-	team& my_team = get_my_team();
-
 	const events::command_disabler disable_commands;
 
-	std::vector<unit>::iterator rec = find_if_matches_id(my_team.recall_list(), unit_id_);
-	assert(rec != my_team.recall_list().end());
+	// Assert that recall_location_ has been validated.
+	// This should be implied by is_success() once check_before() has been
+	// called, so this is a guard against future breakage.
+	assert(location_checked_);
 
-	const std::string &err = ::actions::find_recall_location(get_side(), recall_location_, recall_from_, *rec);
-	if(!err.empty()) {
-		set_error(AI_ACTION_FAILURE);
-		return;
-	} else {
-		::actions::recall_unit(unit_id_, my_team, recall_location_, recall_from_, preferences::show_ai_moves(), false);
+	// Do the actual recalling.
+	::actions::recall_unit(unit_id_, get_my_team(), recall_location_,
+	                       recall_from_, preferences::show_ai_moves(), false);
 
-		set_gamestate_changed();
-		try {
-			manager::raise_gamestate_changed();
-		} catch (...) {
-			is_ok(); //Silences "unchecked result" warning
-			throw;
-		}
+	set_gamestate_changed();
+	try {
+		manager::raise_gamestate_changed();
+	} catch (...) {
+		is_ok(); //Silences "unchecked result" warning
+		throw;
 	}
-
 }
 
 
@@ -703,21 +674,8 @@ recruit_result::recruit_result(side_number side,
 	, where_(where)
 	, recruit_location_(where)
 	, recruit_from_(from)
-	, num_(0)
+	, location_checked_(false)
 {
-}
-
-const std::string &recruit_result::get_available_for_recruiting(const team &my_team)
-{
-	const std::set<std::string> &recruit_set = my_team.recruits();
-	std::set<std::string>::const_iterator recruit = recruit_set.find(unit_name_);
-	if (recruit == recruit_set.end()) {
-		set_error(E_NOT_AVAILABLE_FOR_RECRUITING);
-		static std::string dummy;
-		return dummy;
-	}
-	num_ = std::distance(recruit_set.begin(),recruit);
-	return *recruit;
 }
 
 const unit_type *recruit_result::get_unit_type_known(const std::string &recruit)
@@ -739,57 +697,14 @@ bool recruit_result::test_enough_gold(const team &my_team, const unit_type &type
 	return true;
 }
 
-const unit *recruit_result::get_leader()
-{
-	unit_map::const_iterator my_leader = resources::units->find_leader(get_side());
-	if (my_leader == resources::units->end()){
-		set_error(E_NO_LEADER);
-		return NULL;
-	}
-	return &*my_leader;
-
-}
-
-bool recruit_result::test_leader_on_keep(const unit &my_leader)
-{
-	if (!resources::game_map->is_keep(my_leader.get_location())) {
-		set_error(E_LEADER_NOT_ON_KEEP);
-		return false;
-	}
-	return true;
-}
-
-bool recruit_result::test_suitable_recruit_location(const unit &my_leader)
-{
-	recruit_location_ = where_;
-
-	//If we have an off-board location, such as null_location, then the caller wants us to recruit on 'any' possible tile.
-	if (!resources::game_map->on_board(recruit_location_)) {
-		recruit_location_ = pathfind::find_vacant_castle(my_leader);
-	}
-
-	if ( !can_recruit_on(my_leader, recruit_location_) ) {
-		set_error(E_BAD_RECRUIT_LOCATION);
-		return false;
-	}
-	return true;
-}
-
 void recruit_result::do_check_before()
 {
 	LOG_AI_ACTIONS << " check_before " << *this << std::endl;
-
 	const team& my_team = get_my_team();
-
-	//Unit available for recruiting?
-	const std::string &s_recruit = get_available_for_recruiting(my_team);
-
-	if (s_recruit.empty()) {
-		return;
-	}
+	const bool location_specified = recruit_location_.valid();
 
 	//Unit type known ?
-	const unit_type *s_type = get_unit_type_known(s_recruit);
+	const unit_type *s_type = get_unit_type_known(unit_name_);
 	if (!s_type) {
 		return;
 	}
@@ -799,24 +714,32 @@ void recruit_result::do_check_before()
 		return;
 	}
 
-	//Leader present?
-	const unit *my_leader = get_leader();
-
-	if (!my_leader ) {
+	// Leader available for recruiting?
+	switch ( ::actions::check_recruit_location(get_side(), recruit_location_,
+	                                           recruit_from_, unit_name_) )
+	{
+	case ::actions::RECRUIT_NO_LEADER:
+	case ::actions::RECRUIT_NO_ABLE_LEADER:
+		set_error(E_NO_LEADER);
 		return;
-	}
 
-	//Leader on keep?
-
-	if (!test_leader_on_keep(*my_leader)) {
+	case ::actions::RECRUIT_NO_KEEP_LEADER:
+		set_error(E_LEADER_NOT_ON_KEEP);
 		return;
-	}
 
-	//Try to get suitable recruit location. Is suitable location available ?
-	if (!test_suitable_recruit_location(*my_leader)) {
+	case ::actions::RECRUIT_NO_VACANCY:
+		set_error(E_BAD_RECRUIT_LOCATION);
 		return;
-	}
 
+	case ::actions::RECRUIT_ALTERNATE_LOCATION:
+		if ( location_specified ) {
+			set_error(E_BAD_RECRUIT_LOCATION);
+			return;
+		}
+		// No break. If the location was not specified, this counts as "OK".
+	case ::actions::RECRUIT_OK:
+		location_checked_ = true;
+	}
 }
 
 
@@ -863,19 +786,25 @@ void recruit_result::do_execute()
 	const unit_type *u = unit_types.find(unit_name_);
 	const events::command_disabler disable_commands;
 
-	const std::string recruit_err = ::actions::find_recruit_location(get_side(), recruit_location_, recruit_from_, u->id());
-	if(recruit_err.empty()) {
-		recorder.add_recruit(num_,recruit_location_,recruit_from_);
-		::actions::recruit_unit(*u, get_side(), recruit_location_, recruit_from_, preferences::show_ai_moves(), true);
-		set_gamestate_changed();
-		try {
-			manager::raise_gamestate_changed();
-		} catch (...) {
-			is_ok(); //Silences "unchecked result" warning
-			throw;
-		}
-	} else {
-		set_error(AI_ACTION_FAILURE);
+	// Assert that recruit_location_ has been validated.
+	// This should be implied by is_success() once check_before() has been
+	// called, so this is a guard against future breakage.
+	assert(location_checked_  &&  u != NULL);
+
+	// Calculate the index to be fed to the recorder.
+	const std::set<std::string> recruit_set = get_my_team().recruits();
+	int num = std::distance(recruit_set.begin(), recruit_set.find(unit_name_));
+
+	recorder.add_recruit(num, recruit_location_, recruit_from_);
+	::actions::recruit_unit(*u, get_side(), recruit_location_, recruit_from_,
+	                        preferences::show_ai_moves(), true);
+
+	set_gamestate_changed();
+	try {
+		manager::raise_gamestate_changed();
+	} catch (...) {
+		is_ok(); //Silences "unchecked result" warning
+		throw;
 	}
 }
 
