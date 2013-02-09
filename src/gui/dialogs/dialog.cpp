@@ -19,15 +19,14 @@
 
 #include "gui/dialogs/field.hpp"
 #include "gui/widgets/integer_selector.hpp"
+#include "utils/foreach.tpp"
 #include "video.hpp"
-
-#include <boost/foreach.hpp>
 
 namespace gui2 {
 
 tdialog::~tdialog()
 {
-	BOOST_FOREACH(tfield_* field, fields_) {
+	FOREACH(AUTO field, fields_) {
 		delete field;
 	}
 }
@@ -194,7 +193,7 @@ twindow* tdialog::build_window(CVideo& video) const
 
 void tdialog::init_fields(twindow& window)
 {
-	BOOST_FOREACH(tfield_* field, fields_) {
+	FOREACH(AUTO field, fields_) {
 		field->attach_to_window(window);
 		field->widget_init(window);
 	}
@@ -208,7 +207,7 @@ void tdialog::init_fields(twindow& window)
 
 void tdialog::finalize_fields(twindow& window, const bool save_fields)
 {
-	BOOST_FOREACH(tfield_* field, fields_) {
+	FOREACH(AUTO field, fields_) {
 		if(save_fields) {
 			field->widget_finalize(window);
 		}
