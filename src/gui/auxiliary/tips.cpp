@@ -19,9 +19,8 @@
 
 #include "config.hpp"
 #include "game_preferences.hpp"
+#include "utils/foreach.tpp"
 #include "serialization/string_utils.hpp"
-
-#include <boost/foreach.hpp>
 
 namespace gui2 {
 
@@ -40,7 +39,7 @@ std::vector<ttip> load(const config& cfg)
 {
 	std::vector<ttip> result;
 
-	BOOST_FOREACH(const config &tip, cfg.child_range("tip")) {
+	FOREACH(const AUTO& tip, cfg.child_range("tip")) {
 		result.push_back(ttip(tip["text"]
 				, tip["source"]
 				, tip["encountered_units"]));
@@ -55,11 +54,11 @@ std::vector<ttip> shuffle(const std::vector<ttip>& tips)
 
 	const std::set<std::string>& units = preferences::encountered_units();
 
-	BOOST_FOREACH(const ttip& tip, tips) {
+	FOREACH(const AUTO& tip, tips) {
 		if(tip.unit_filter_.empty()) {
 			result.push_back(tip);
 		} else {
-			BOOST_FOREACH(const std::string& unit, tip.unit_filter_) {
+			FOREACH(const AUTO& unit, tip.unit_filter_) {
 				if(units.find(unit) != units.end()) {
 					result.push_back(tip);
 					break;
