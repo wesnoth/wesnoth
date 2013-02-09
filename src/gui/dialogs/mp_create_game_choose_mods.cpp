@@ -72,7 +72,7 @@ void tmp_create_game_choose_mods::pre_show(CVideo &/*video*/, twindow &window)
 	mod_list_ = find_widget<tlistbox>(&window, "mod_list", false, true);
 	std::vector<string_map>::iterator mod_itor;
 
-	BOOST_FOREACH (const config& mod, game_cfg_.child_range("modification")) {
+	FOREACH(const AUTO& mod, game_cfg_.child_range("modification")) {
 
 		string_map column;
 		std::map<std::string, string_map> item;
