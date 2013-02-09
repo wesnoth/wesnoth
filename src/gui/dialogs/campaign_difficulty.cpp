@@ -25,8 +25,7 @@
 #endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-
-#include <boost/foreach.hpp>
+#include "utils/foreach.tpp"
 
 namespace gui2 {
 
@@ -68,7 +67,7 @@ tcampaign_difficulty::tcampaign_difficulty(
 	: index_(-1)
 	, items_()
 {
-	BOOST_FOREACH(const std::string& it, items) {
+	FOREACH(const AUTO& it, items) {
 		items_.push_back(tlegacy_menu_item(it));
 	}
 }
@@ -80,7 +79,7 @@ void tcampaign_difficulty::pre_show(CVideo& /*video*/, twindow& window)
 
 	std::map<std::string, string_map> data;
 
-	BOOST_FOREACH(const tlegacy_menu_item& item, items_) {
+	FOREACH(const AUTO& item, items_) {
 		if(item.is_default()) {
 			index_ = list.get_item_count();
 		}
