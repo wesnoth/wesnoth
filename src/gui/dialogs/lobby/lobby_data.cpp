@@ -24,9 +24,8 @@
 #include "log.hpp"
 #include "map.hpp"
 #include "map_exception.hpp"
+#include "utils/foreach.tpp"
 #include "wml_exception.hpp"
-
-#include <boost/foreach.hpp>
 
 #include <iterator>
 
@@ -90,7 +89,7 @@ void room_info::remove_member(const std::string& user)
 void room_info::process_room_members(const config& data)
 {
 	members_.clear();
-	BOOST_FOREACH(const config& m, data.child_range("member")) {
+	FOREACH(const AUTO& m, data.child_range("member")) {
 		members_.insert(m["name"]);
 	}
 }
@@ -256,7 +255,7 @@ game_info::game_info(const config& game, const config& game_config)
 				if (const config& hashes = game_config.child("multiplayer_hashes")) {
 					std::string hash = game["hash"];
 					bool hash_found = false;
-					BOOST_FOREACH(const config::attribute &i, hashes.attribute_range()) {
+					FOREACH(const AUTO& i, hashes.attribute_range()) {
 						if (i.first == game["mp_scenario"] && i.second == hash) {
 							hash_found = true;
 							break;
@@ -359,7 +358,7 @@ game_filter_stack::game_filter_stack()
 
 game_filter_stack::~game_filter_stack()
 {
-	BOOST_FOREACH(game_filter_base* f, filters_) {
+	FOREACH(AUTO f, filters_) {
 		delete f;
 	}
 }
@@ -371,7 +370,7 @@ void game_filter_stack::append(game_filter_base *f)
 
 void game_filter_stack::clear()
 {
-	BOOST_FOREACH(game_filter_base* f, filters_) {
+	FOREACH(AUTO f, filters_) {
 		delete f;
 	}
 	filters_.clear();
@@ -379,7 +378,7 @@ void game_filter_stack::clear()
 
 bool game_filter_and_stack::match(const game_info &game) const
 {
-	BOOST_FOREACH(game_filter_base* f, filters_) {
+	FOREACH(AUTO f, filters_) {
 		if (!f->match(game)) return false;
 	}
 	return true;
