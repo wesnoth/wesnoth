@@ -30,10 +30,10 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
+#include "utils/foreach.tpp"
 #include "serialization/string_utils.hpp"
 
 #include <boost/bind.hpp>
-#include <boost/foreach.hpp>
 
 namespace gui2 {
 
@@ -189,7 +189,7 @@ void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 		 * @todo do we really want to keep the length limit for the various
 		 * items?
 		 */
-		BOOST_FOREACH(const config &c, cfg_.child_range("campaign")) {
+		FOREACH(const AUTO& c, cfg_.child_range("campaign")) {
 			std::map<std::string, string_map> data;
 			string_map item;
 
