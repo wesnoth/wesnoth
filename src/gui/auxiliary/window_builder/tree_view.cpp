@@ -22,9 +22,8 @@
 #include "gui/auxiliary/widget_definition/tree_view.hpp"
 #include "gui/auxiliary/window_builder/helper.hpp"
 #include "gui/widgets/tree_view.hpp"
+#include "utils/foreach.tpp"
 #include "wml_exception.hpp"
-
-#include <boost/foreach.hpp>
 
 namespace gui2 {
 
@@ -40,7 +39,7 @@ tbuilder_tree_view::tbuilder_tree_view(const config& cfg)
 	, nodes()
 {
 
-	BOOST_FOREACH(const config &node, cfg.child_range("node")) {
+	FOREACH(const AUTO& node, cfg.child_range("node")) {
 		nodes.push_back(tnode(node));
 	}
 
