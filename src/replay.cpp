@@ -224,12 +224,12 @@ void replay::add_start()
 	cmd->add_child("start");
 }
 
-void replay::add_recruit(int value, const map_location& loc, const map_location& from)
+void replay::add_recruit(const std::string& type_id, const map_location& loc, const map_location& from)
 {
 	config* const cmd = add_command();
 
 	config val;
-	val["value"] = value;
+	val["type"] = type_id;
 	loc.write(val);
 	config& leader_position = val.add_child("from");
 	from.write(leader_position);
@@ -787,6 +787,37 @@ replay& get_replay_source()
 	}
 }
 
+
+/**
+ * Converts a recruit index to a type_id.
+ * This is a legacy support function to allow showing replays saved before 1.11.2.
+ */
+static std::string type_by_index(int index, int side_num, const map_location & loc)
+{
+	if ( index < 0 ) {
+		std::stringstream errbuf;
+		errbuf << "Recruitment index is illegal: " << index
+		       << " is negative.\n";
+		replay::process_error(errbuf.str());
+		return std::string();
+	}
+
+	// Get the set of recruits.
+	std::set<std::string> recruits = actions::get_recruits(side_num, loc);
+	if ( static_cast<size_t>(index) >= recruits.size() ) {
+		std::stringstream errbuf;
+		errbuf << "Recruitment index is illegal: " << (index+1)
+		       << " is larger than the " << recruits.size()
+		       << " unit types available for recruitment.\n";
+		replay::process_error(errbuf.str());
+		return std::string();
+	}
+
+	std::set<std::string>::const_iterator itor = recruits.begin();
+	std::advance(itor, index);
+	return *itor;
+}
+
 static void check_checksums(const config &cfg)
 {
 	if(! game_config::mp_debug) {
@@ -971,8 +1002,6 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 
 		else if (const config &child = cfg->child("recruit"))
 		{
-			int val = child["value"];
-
 			map_location loc(child, resources::gamedata);
 			map_location from(child.child_or_empty("from"), resources::gamedata);
 			// Validate "from".
@@ -989,22 +1018,28 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				// Can still try to proceed I guess.
 			}
 
-			std::set<std::string> recruits = actions::get_recruits(side_num, loc);
-			if(val < 0 || static_cast<size_t>(val) >= recruits.size()) {
-				std::stringstream errbuf;
-				errbuf << "recruitment index is illegal: " << val
-				       << " while this side only has " << recruits.size()
-				       << " units available for recruitment\n";
-				replay::process_error(errbuf.str());
-				continue;
+			// Get the unit_type ID.
+			std::string type_id = child["type"];
+			if ( type_id.empty() ) {
+				// Legacy support: before 1.11.2, replays used a numerical
+				// "value" instead of a string "type".
+				const config::attribute_value & value = child["value"];
+				if ( !value.blank() ) {
+					type_id = type_by_index(value, side_num, loc);
+					if ( type_id.empty() )
+						// A replay error was reported by type_by_index().
+						continue;
+				}
+				else {
+					replay::process_error("Corrupt replay: recruitment is missing a unit type.");
+					continue;
+				}
 			}
 
-			std::set<std::string>::const_iterator itor = recruits.begin();
-			std::advance(itor,val);
-			const unit_type *u_type = unit_types.find(*itor);
+			const unit_type *u_type = unit_types.find(type_id);
 			if (!u_type) {
 				std::stringstream errbuf;
-				errbuf << "recruiting illegal unit: '" << *itor << "'\n";
+				errbuf << "Recruiting illegal unit: '" << type_id << "'.\n";
 				replay::process_error(errbuf.str());
 				continue;
 			}

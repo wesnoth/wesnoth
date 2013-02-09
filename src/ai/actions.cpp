@@ -791,11 +791,7 @@ void recruit_result::do_execute()
 	// called, so this is a guard against future breakage.
 	assert(location_checked_  &&  u != NULL);
 
-	// Calculate the index to be fed to the recorder.
-	const std::set<std::string> recruit_set = ::actions::get_recruits(get_side(), recruit_location_);
-	int num = std::distance(recruit_set.begin(), recruit_set.find(unit_name_));
-
-	recorder.add_recruit(num, recruit_location_, recruit_from_);
+	recorder.add_recruit(unit_name_, recruit_location_, recruit_from_);
 	::actions::recruit_unit(*u, get_side(), recruit_location_, recruit_from_,
 	                        preferences::show_ai_moves(), true);
 

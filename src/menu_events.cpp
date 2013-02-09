@@ -818,19 +818,8 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 	team &current_team = teams_[side_num - 1];
 
 	//search for the unit to be recruited in recruits
-	int recruit_num = 0;
-	std::set<std::string> recruits = actions::get_recruits(side_num, last_hex);
-
-	for(std::set<std::string>::const_iterator r = recruits.begin(); ; ++r) {
-		if (r == recruits.end()) {
-			return false;
-		}
-
-		if (name == *r) {
-			break;
-		}
-		++recruit_num;
-	}
+	if ( !util::contains(actions::get_recruits(side_num, last_hex), name) )
+		return false;
 
 	const unit_type *u_type = unit_types.find(name);
 	assert(u_type);
@@ -856,7 +845,7 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 	}
 
 	if (!resources::whiteboard->save_recruit(name, side_num, loc)) {
-		recorder.add_recruit(recruit_num, loc, recruited_from);
+		recorder.add_recruit(name, loc, recruited_from);
 
 		//MP_COUNTDOWN grant time bonus for recruiting
 		current_team.set_action_bonus_count(1 + current_team.action_bonus_count());

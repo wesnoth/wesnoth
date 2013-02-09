@@ -515,22 +515,15 @@ void undo_list::redo()
 		const std::string name = action.affected_unit->type().base_id();
 
 		//search for the unit to be recruited in recruits
-		int recruit_num = 0;
-		const std::set<std::string>& recruits = current_team.recruits();
-		for(std::set<std::string>::const_iterator r = recruits.begin(); ; ++r) {
-			if (r == recruits.end()) {
-				ERR_NG << "trying to redo a recruit for side " << side_
-					<< ", which does not recruit type \"" << name << "\"\n";
-				assert(false);
-				return;
-			}
-			if (name == *r) {
-				break;
-			}
-			++recruit_num;
+		if ( !util::contains(actions::get_recruits(side_, loc), name) ) {
+			ERR_NG << "trying to redo a recruit for side " << side_
+				<< ", which does not recruit type \"" << name << "\"\n";
+			assert(false);
+			return;
 		}
+
 		current_team.last_recruit(name);
-		recorder.add_recruit(recruit_num,loc,from);
+		recorder.add_recruit(name, loc, from);
 		const std::string &msg = find_recruit_location(side_, loc, from, action.affected_unit->type().base_id());
 		if(msg.empty()) {
 			const unit new_unit = *action.affected_unit;
