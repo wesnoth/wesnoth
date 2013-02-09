@@ -24,8 +24,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
-
-#include <boost/foreach.hpp>
+#include "utils/foreach.tpp"
 
 namespace gui2 {
 
@@ -98,7 +97,7 @@ void tmessage::pre_show(CVideo& /*video*/, twindow& window)
 
 void tmessage::post_show(twindow& /*window*/)
 {
-	BOOST_FOREACH(tbutton_status& button_status, buttons_) {
+	FOREACH(AUTO& button_status, buttons_) {
 		button_status.button = NULL;
 	}
 }
