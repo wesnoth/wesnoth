@@ -33,8 +33,7 @@
 #include "serialization/preprocessor.hpp"
 #include "serialization/schema_validator.hpp"
 #include "formula_string_utils.hpp"
-
-#include <boost/foreach.hpp>
+#include "utils/foreach.tpp"
 
 namespace gui2 {
 
@@ -276,20 +275,13 @@ const std::string& tgui_definition::read(const config& cfg)
 	DBG_GUI_P << "Parsing gui " << id << '\n';
 
 	/***** Control definitions *****/
-	typedef std::pair<
-			  const std::string
-			, boost::function<void(
-				  tgui_definition&
-				  , const std::string&
-				  , const config&
-				  , const char *key)> > thack;
 
-	BOOST_FOREACH(thack& widget_type, registred_widget_type()) {
+	FOREACH(AUTO& widget_type, registred_widget_type()) {
 		widget_type.second(*this, widget_type.first, cfg, NULL);
 	}
 
 	/***** Window types *****/
-	BOOST_FOREACH(const config &w, cfg.child_range("window")) {
+	FOREACH(const AUTO& w, cfg.child_range("window")) {
 		std::pair<std::string, twindow_builder> child;
 		child.first = child.second.read(w);
 		window_types.insert(child);
@@ -424,7 +416,7 @@ void tgui_definition::load_widget_definitions(
 		  const std::string& definition_type
 		, const std::vector<tcontrol_definition_ptr>& definitions)
 {
-	BOOST_FOREACH(const tcontrol_definition_ptr& def, definitions) {
+	FOREACH(const AUTO& def, definitions) {
 
 		// We assume all definitions are unique if not we would leak memory.
 		assert(control_definition[definition_type].find(def->id)
@@ -499,7 +491,7 @@ void load_settings()
 			ERR_GUI_P << e.message;
 	}
 	// Parse guis
-	BOOST_FOREACH(const config &g, cfg.child_range("gui")) {
+	FOREACH(const AUTO& g, cfg.child_range("gui")) {
 		std::pair<std::string, tgui_definition> child;
 		child.first = child.second.read(g);
 		guis.insert(child);
