@@ -23,8 +23,9 @@
 
 #include "gui/auxiliary/widget_definition/window.hpp"
 
+#include "utils/foreach.tpp"
+
 #include <boost/function.hpp>
-#include <boost/foreach.hpp>
 
 #include <string>
 #include <vector>
@@ -125,7 +126,7 @@ void load_widget_definitions(
 {
 	std::vector<tcontrol_definition_ptr> definitions;
 
-	BOOST_FOREACH(const config& definition
+	FOREACH(const AUTO& definition
 			, cfg.child_range(key ? key : definition_type + "_definition")) {
 
 		definitions.push_back(new T(definition));
