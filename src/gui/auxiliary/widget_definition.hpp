@@ -18,8 +18,7 @@
 
 #include "config.hpp"
 #include "gui/auxiliary/canvas.hpp"
-
-#include <boost/foreach.hpp>
+#include "utils/foreach.tpp"
 
 namespace gui2 {
 
@@ -99,7 +98,7 @@ struct tcontrol_definition
 	void load_resolutions(const config &cfg)
 	{
 		config::const_child_itors itors = cfg.child_range("resolution");
-		BOOST_FOREACH(const config &resolution, itors) {
+		FOREACH(const AUTO& resolution, itors) {
 			resolutions.push_back(new T(resolution));
 		}
 	}
