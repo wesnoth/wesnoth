@@ -53,6 +53,7 @@
 #include "wml_exception.hpp"
 #include "play_controller.hpp"
 #include "persist_var.hpp"
+#include "utils/foreach.tpp"
 #include "whiteboard/manager.hpp"
 
 #include <boost/scoped_array.hpp>
@@ -3058,6 +3059,15 @@ WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 
 	gamemap map(*game_map);
 
+	/* Remember the locations where a village is owned by a side. */
+	std::map<map_location, int> villages;
+	FOREACH(const AUTO& village, map.villages()) {
+		const int owner = village_owner(village);
+		if(owner != -1) {
+			villages[village] = owner;
+		}
+	}
+
 	try {
 		if (cfg["map"].empty()) {
 			const vconfig& map_cfg = cfg.child("map");
@@ -3097,6 +3107,14 @@ WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 			}
 		}
 	}
+
+	/* Disown villages that are no longer villages. */
+	FOREACH(const AUTO& village, villages) {
+		if(!map.is_village(village.first)) {
+			(*resources::teams)[village.second].lose_village(village.first);
+		}
+	}
+
 	*game_map = map;
 	resources::screen->reload_map();
 	screen_needs_rebuild = true;

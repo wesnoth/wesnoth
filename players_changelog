@@ -45,6 +45,10 @@ Version 1.11.1+svn:
    * Updating the shroud after delaying shroud updates is done gradually instead
      of instantly.
 
+ * WML Engine:
+   * When a map is replaced the number of owned villages for a side is updated
+     properly updated.
+
  * Miscellaneous and bug fixes:
    * The undo stack is preserved across a save-reload.
    * Fixed the present in-game command line autocompletion feature so it

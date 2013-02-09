@@ -78,6 +78,7 @@ Version 1.11.1+svn:
     halo="pic[1-2,5]:[10,20,30]" expands to halo="pic1:10,pic2:20,pic5:30"
     this is used for halos, team flags, animated terrains and unit animations
   * Changed default unit halos and macros to use new square bracket expansion
+  * Fixed bug #20468: Update the owned villages when using [replace_map].
  Miscellaneous and bug fixes:
    * The undo stack is preserved across a save-reload.
    * Removed several unused private member variables.
