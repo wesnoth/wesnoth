@@ -30,10 +30,10 @@
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 #include "gui/widgets/window.hpp"
+#include "utils/foreach.tpp"
 #include "serialization/string_utils.hpp"
 
 #include <boost/bind.hpp>
-#include <boost/foreach.hpp>
 
 namespace gui2 {
 
@@ -140,7 +140,7 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 				&window, "campaign_details", false);
 
 		unsigned id = 0;
-		BOOST_FOREACH(const config &campaign, campaigns_) {
+		FOREACH(const AUTO& campaign, campaigns_) {
 
 			/*** Add tree item ***/
 			tree_group_field["label"] = campaign["icon"];
@@ -206,16 +206,16 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 		tmulti_page& multi_page = find_widget<tmulti_page>(
 				&window, "campaign_details", false);
 
-		BOOST_FOREACH(const config &c, campaigns_) {
+		FOREACH(const AUTO& campaign, campaigns_) {
 
 			/*** Add list item ***/
 			string_map list_item;
 			std::map<std::string, string_map> list_item_item;
 
-			list_item["label"] = c["icon"];
+			list_item["label"] = campaign["icon"];
 			list_item_item.insert(std::make_pair("icon", list_item));
 
-			list_item["label"] = c["name"];
+			list_item["label"] = campaign["name"];
 			list_item_item.insert(std::make_pair("name", list_item));
 
 			list.add_row(list_item_item);
@@ -224,7 +224,7 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 			assert(grid);
 
 			twidget* widget = grid->find("victory", false);
-			if (widget && !c["completed"].to_bool()) {
+			if (widget && !campaign["completed"].to_bool()) {
 				widget->set_visible(twidget::HIDDEN);
 			}
 
@@ -232,11 +232,11 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 			string_map detail_item;
 			std::map<std::string, string_map> detail_page;
 
-			detail_item["label"] = c["description"];
+			detail_item["label"] = campaign["description"];
 			detail_item["use_markup"] = "true";
 			detail_page.insert(std::make_pair("description", detail_item));
 
-			detail_item["label"] = c["image"];
+			detail_item["label"] = campaign["image"];
 			detail_page.insert(std::make_pair("image", detail_item));
 
 			multi_page.add_page(detail_page);
