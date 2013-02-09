@@ -26,8 +26,7 @@
 #endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-
-#include <boost/foreach.hpp>
+#include "utils/foreach.tpp"
 
 namespace gui2 {
 
@@ -80,7 +79,7 @@ void tsimple_item_selector::pre_show(CVideo& /*video*/, twindow& window)
 	tlistbox& list = find_widget<tlistbox>(&window, "listbox", false);
 	window.keyboard_capture(&list);
 
-	BOOST_FOREACH(const tsimple_item_selector::item_type& it, items_) {
+	FOREACH(const AUTO& it, items_) {
 		std::map<std::string, string_map> data;
 		string_map column;
 
