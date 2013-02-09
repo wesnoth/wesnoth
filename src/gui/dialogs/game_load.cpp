@@ -39,10 +39,10 @@
 #include "gui/widgets/window.hpp"
 #include "language.hpp"
 #include "preferences_display.hpp"
+#include "utils/foreach.tpp"
 
 #include <cctype>
 #include <boost/bind.hpp>
-#include <boost/foreach.hpp>
 
 namespace gui2 {
 
@@ -153,7 +153,7 @@ void tgame_load::fill_game_list(twindow& window
 	tlistbox& list = find_widget<tlistbox>(&window, "savegame_list", false);
 	list.clear();
 
-	BOOST_FOREACH(const savegame::save_info game, games) {
+	FOREACH(const AUTO& game, games) {
 		std::map<std::string, string_map> data;
 		string_map item;
 
@@ -195,7 +195,7 @@ bool tgame_load::filter_text_changed(ttext_* textbox, const std::string& text)
 				find_widget<tlabel>(*it, "filename", false);
 
 			bool found = false;
-			BOOST_FOREACH(const std::string& word, words){
+			FOREACH(const AUTO& word, words){
 				found = std::search(filename_label.label().str().begin()
 						, filename_label.label().str().end()
 						, word.begin(), word.end()
