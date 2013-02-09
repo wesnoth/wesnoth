@@ -90,7 +90,7 @@ void tmp_depcheck_select_new::pre_show(CVideo& /*video*/, twindow& window)
 {
 	tlistbox& listbox = find_widget<tlistbox>(&window, "itemlist", false);
 
-	BOOST_FOREACH(const std::string& item, items_) {
+	FOREACH(const AUTO& item, items_) {
 		string_map current;
 		current.insert(std::make_pair("label", item));
 
