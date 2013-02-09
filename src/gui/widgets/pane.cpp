@@ -158,8 +158,7 @@ unsigned tpane::create_item(
 
 	item.grid->set_parent(this);
 
-	typedef std::pair<std::string, string_map> hack ;
-	BOOST_FOREACH(const hack& data, item_data) {
+	FOREACH(const AUTO& data, item_data) {
 		tcontrol* control = find_widget<tcontrol>(
 				  item.grid
 				, data.first
@@ -196,7 +195,7 @@ void tpane::layout_init(const bool full_initialization)
 
 	twidget::layout_init(full_initialization);
 
-	BOOST_FOREACH(titem& item, items_) {
+	FOREACH(AUTO& item, items_) {
 		if(item.grid->get_visible() != twidget::INVISIBLE) {
 			item.grid->layout_init(full_initialization);
 		}
@@ -210,7 +209,7 @@ void tpane::impl_draw_children(
 {
 	DBG_GUI_D << LOG_HEADER << '\n';
 
-	BOOST_FOREACH(titem& item, items_) {
+	FOREACH(AUTO& item, items_) {
 		if(item.grid->get_visible() != twidget::INVISIBLE) {
 			item.grid->draw_children(frame_buffer, x_offset, y_offset);
 		}
@@ -220,7 +219,7 @@ void tpane::impl_draw_children(
 void tpane::child_populate_dirty_list(twindow& caller,
 			const std::vector<twidget*>& call_stack)
 {
-	BOOST_FOREACH(titem& item, items_) {
+	FOREACH(AUTO& item, items_) {
 		std::vector<twidget*> child_call_stack = call_stack;
 		item.grid->populate_dirty_list(caller, child_call_stack);
 	}
@@ -235,7 +234,7 @@ void tpane::sort(const tcompare_functor& compare_functor)
 
 void tpane::filter(const tfilter_functor& filter_functor)
 {
-	BOOST_FOREACH(titem& item, items_) {
+	FOREACH(AUTO& item, items_) {
 		item.grid->set_visible(
 				filter_functor(item)
 					? twidget::VISIBLE
@@ -302,7 +301,7 @@ void tpane::place_children()
 {
 	prepare_placement();
 	unsigned index = 0;
-	BOOST_FOREACH(titem& item, items_) {
+	FOREACH(AUTO& item, items_) {
 		if(item.grid->get_visible() == twidget::INVISIBLE) {
 			continue;
 		}
@@ -317,7 +316,7 @@ void tpane::set_origin_children()
 {
 	prepare_placement();
 	unsigned index = 0;
-	BOOST_FOREACH(titem& item, items_) {
+	FOREACH(AUTO& item, items_) {
 		if(item.grid->get_visible() == twidget::INVISIBLE) {
 			continue;
 		}
@@ -332,7 +331,7 @@ void tpane::place_or_set_origin_children()
 {
 	prepare_placement();
 	unsigned index = 0;
-	BOOST_FOREACH(titem& item, items_) {
+	FOREACH(AUTO& item, items_) {
 		if(item.grid->get_visible() == twidget::INVISIBLE) {
 			continue;
 		}
@@ -352,7 +351,7 @@ void tpane::prepare_placement() const
 	assert(placer_.get());
 	placer_->initialize();
 
-	BOOST_FOREACH(const titem& item, items_) {
+	FOREACH(const AUTO& item, items_) {
 		if(item.grid->get_visible() == twidget::INVISIBLE) {
 			continue;
 		}
@@ -370,7 +369,7 @@ void tpane::signal_handler_request_placement(
 
 	twidget* widget = dynamic_cast<twidget*>(&dispatcher);
 	if(widget) {
-		BOOST_FOREACH(titem& item, items_) {
+		FOREACH(AUTO& item, items_) {
 			if(item.grid->has_widget(widget)) {
 				if(item.grid->get_visible() != twidget::INVISIBLE) {
 
