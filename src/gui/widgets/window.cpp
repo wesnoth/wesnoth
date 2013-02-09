@@ -40,10 +40,10 @@
 #endif
 #include "preferences.hpp"
 #include "preferences_display.hpp"
+#include "utils/foreach.tpp"
 #include "video.hpp"
 
 #include <boost/bind.hpp>
-#include <boost/foreach.hpp>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -731,7 +731,7 @@ void twindow::draw()
 		return;
 	}
 
-	BOOST_FOREACH(std::vector<twidget*>& item, dirty_list_) {
+	FOREACH(AUTO& item, dirty_list_) {
 
 		assert(!item.empty());
 
@@ -1097,13 +1097,12 @@ void twindow::layout()
 void twindow::layout_linked_widgets()
 {
 	// evaluate the group sizes
-	typedef std::pair<const std::string, tlinked_size> hack;
-	BOOST_FOREACH(hack& linked_size, linked_size_) {
+	FOREACH(AUTO& linked_size, linked_size_) {
 
 		tpoint max_size(0, 0);
 
 		// Determine the maximum size.
-		BOOST_FOREACH(twidget* widget, linked_size.second.widgets) {
+		FOREACH(AUTO widget, linked_size.second.widgets) {
 
 			const tpoint size = widget->get_best_size();
 
@@ -1116,7 +1115,7 @@ void twindow::layout_linked_widgets()
 		}
 
 		// Set the maximum size.
-		BOOST_FOREACH(twidget* widget, linked_size.second.widgets) {
+		FOREACH(AUTO widget, linked_size.second.widgets) {
 
 			tpoint size = widget->get_best_size();
 
