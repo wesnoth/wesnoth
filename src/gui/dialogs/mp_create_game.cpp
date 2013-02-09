@@ -30,11 +30,12 @@
 #include "gui/widgets/minimap.hpp"
 #include "gui/widgets/settings.hpp"
 #include "../../settings.hpp"
+#include "utils/foreach.tpp"
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include <boost/bind.hpp>
 #endif
-#include <boost/foreach.hpp>
+
 namespace gui2 {
 
 REGISTER_DIALOG(mp_create_game)
@@ -105,7 +106,7 @@ void tmp_create_game::pre_show(CVideo& /*video*/, twindow& window)
 	std::vector<std::string> maps;
 	get_files_in_dir(get_user_data_dir() + "/editor/maps", &maps, NULL, FILE_NAME_ONLY);
 
-	BOOST_FOREACH(const std::string& map, maps) {
+	FOREACH(const AUTO& map, maps) {
 		std::map<std::string, t_string> item;
 		item.insert(std::make_pair("label", map));
 		list->add_row(item);
@@ -114,7 +115,7 @@ void tmp_create_game::pre_show(CVideo& /*video*/, twindow& window)
 
 	// Standard maps
 	int i = 0;
-	BOOST_FOREACH(const config &map, cfg_.child_range("multiplayer"))
+	FOREACH(const AUTO& map, cfg_.child_range("multiplayer"))
 	{
 		if (map["allow_new_game"].to_bool(true)) {
 			string_map item;
