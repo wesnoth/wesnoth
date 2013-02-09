@@ -22,9 +22,9 @@
 #include "gui/widgets/clickable.hpp"
 #include "gui/widgets/spacer.hpp"
 #include "gui/widgets/window.hpp"
+#include "utils/foreach.tpp"
 
 #include <boost/bind.hpp>
-#include <boost/foreach.hpp>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -691,8 +691,7 @@ void tscrollbar_container::finalize_setup()
 				, this));
 
 	/***** Setup the scrollbar buttons *****/
-	typedef std::pair<std::string, tscrollbar_::tscroll> hack;
-	BOOST_FOREACH(const hack& item, scroll_lookup()) {
+	FOREACH(const AUTO& item, scroll_lookup()) {
 
 		// Vertical.
 		tclickable_* button = find_widget<tclickable_>(
@@ -852,7 +851,7 @@ void tscrollbar_container::set_scrollbar_button_status()
 {
 	if(true) { /** @todo scrollbar visibility. */
 		/***** set scroll up button status *****/
-		BOOST_FOREACH(const std::string& name, button_up_names) {
+		FOREACH(const AUTO& name, button_up_names) {
 			tcontrol* button = find_widget<tcontrol>(
 					vertical_scrollbar_grid_, name, false, false);
 
@@ -862,7 +861,7 @@ void tscrollbar_container::set_scrollbar_button_status()
 		}
 
 		/***** set scroll down status *****/
-		BOOST_FOREACH(const std::string& name, button_down_names) {
+		FOREACH(const AUTO& name, button_down_names) {
 			tcontrol* button = find_widget<tcontrol>(
 					vertical_scrollbar_grid_, name, false, false);
 
@@ -878,7 +877,7 @@ void tscrollbar_container::set_scrollbar_button_status()
 
 	if(true) { /** @todo scrollbar visibility. */
 		/***** Set scroll left button status *****/
-		BOOST_FOREACH(const std::string& name, button_up_names) {
+		FOREACH(const AUTO& name, button_up_names) {
 			tcontrol* button = find_widget<tcontrol>(
 					horizontal_scrollbar_grid_, name, false, false);
 
@@ -888,7 +887,7 @@ void tscrollbar_container::set_scrollbar_button_status()
 		}
 
 		/***** Set scroll right button status *****/
-		BOOST_FOREACH(const std::string& name, button_down_names) {
+		FOREACH(const AUTO& name, button_down_names) {
 			tcontrol* button = find_widget<tcontrol>(
 					horizontal_scrollbar_grid_, name, false, false);
 
