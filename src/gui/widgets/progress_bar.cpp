@@ -21,9 +21,9 @@
 #include "gui/auxiliary/window_builder/progress_bar.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/settings.hpp"
+#include "utils/foreach.tpp"
 
 #include <boost/bind.hpp>
-#include <boost/foreach.hpp>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -39,7 +39,7 @@ void tprogress_bar::set_percentage(const unsigned percentage)
 	if(percentage_ != percentage) {
 		percentage_ = percentage;
 
-		BOOST_FOREACH(tcanvas& c, canvas()) {
+		FOREACH(AUTO& c, canvas()) {
 			c.set_variable("percentage", variant(percentage));
 		}
 
