@@ -1796,6 +1796,16 @@ WML_HANDLER_FUNCTION(remove_sound_source, /*event_info*/, cfg)
 void change_terrain(const map_location &loc, const t_translation::t_terrain &t,
 	gamemap::tmerge_mode mode, bool replace_if_failed)
 {
+	/*
+	 * When a hex changes from a village terrain to a non-village terrain, and
+	 * a team owned that village it loses that village. When a hex changes from
+	 * a non-village terrain to a village terrain and there is a unit on that
+	 * hex it does not automatically capture the village. The reason for not
+	 * capturing villages it that there are too many choices to make; should a
+	 * unit loose its movement points, should capture events be fired. It is
+	 * easier to do this as wanted by the author in WML.
+	 */
+
 	gamemap *game_map = resources::game_map;
 
 	t_translation::t_terrain
@@ -3055,6 +3065,16 @@ WML_HANDLER_FUNCTION(event, /*event_info*/, cfg)
 // Experimental map replace
 WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 {
+	/*
+	 * When a hex changes from a village terrain to a non-village terrain, and
+	 * a team owned that village it loses that village. When a hex changes from
+	 * a non-village terrain to a village terrain and there is a unit on that
+	 * hex it does not automatically capture the village. The reason for not
+	 * capturing villages it that there are too many choices to make; should a
+	 * unit loose its movement points, should capture events be fired. It is
+	 * easier to do this as wanted by the author in WML.
+	 */
+
 	gamemap *game_map = resources::game_map;
 
 	gamemap map(*game_map);
