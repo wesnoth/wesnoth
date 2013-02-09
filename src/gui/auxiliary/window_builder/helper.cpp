@@ -21,8 +21,7 @@
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/window.hpp"
-
-#include <boost/foreach.hpp>
+#include "utils/foreach.tpp"
 
 namespace gui2 {
 
@@ -58,19 +57,19 @@ unsigned get_h_align(const std::string& h_align)
 	}
 }
 
-unsigned get_border(const std::vector<std::string>& border)
+unsigned get_border(const std::vector<std::string>& borders)
 {
 	unsigned result = 0;
-	BOOST_FOREACH(const std::string& s, border) {
-		if (s == "all") {
+	FOREACH(const AUTO& border, borders) {
+		if(border == "all") {
 			return tgrid::BORDER_ALL;
-		} else if (s == "top") {
+		} else if(border == "top") {
 			result |= tgrid::BORDER_TOP;
-		} else if (s == "bottom") {
+		} else if(border == "bottom") {
 			result |= tgrid::BORDER_BOTTOM;
-		} else if (s == "left") {
+		} else if(border == "left") {
 			result |= tgrid::BORDER_LEFT;
-		} else if (s == "right") {
+		} else if(border == "right") {
 			result |= tgrid::BORDER_RIGHT;
 		}
 	}

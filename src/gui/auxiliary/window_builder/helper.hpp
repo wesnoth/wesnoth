@@ -48,11 +48,11 @@ unsigned get_h_align(const std::string& h_align);
 /**
  * Returns the border flags.
  *
- * @param border                  The string representing the border flags.
+ * @param borders                 The string representing the border flags.
  *
  * @returns                       The border flags.
  */
-unsigned get_border(const std::vector<std::string>& border);
+unsigned get_border(const std::vector<std::string>& borders);
 
 /**
  * Returns the placement/resize flags.
