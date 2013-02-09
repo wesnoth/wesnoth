@@ -22,9 +22,8 @@
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/widget_definition/multi_page.hpp"
 #include "gui/widgets/multi_page.hpp"
+#include "utils/foreach.tpp"
 #include "wml_exception.hpp"
-
-#include <boost/foreach.hpp>
 
 namespace gui2 {
 
@@ -47,12 +46,12 @@ tbuilder_multi_page::tbuilder_multi_page(const config& cfg)
 		return;
 	}
 
-	BOOST_FOREACH(const config &row, d.child_range("row")) {
+	FOREACH(const AUTO& row, d.child_range("row")) {
 		unsigned col = 0;
 
-		BOOST_FOREACH(const config &column, row.child_range("column")) {
+		FOREACH(const AUTO& column, row.child_range("column")) {
 			data.push_back(string_map());
-			BOOST_FOREACH(const config::attribute &i, column.attribute_range()) {
+			FOREACH(const AUTO& i, column.attribute_range()) {
 				data.back()[i.first] = i.second;
 			}
 			++col;
