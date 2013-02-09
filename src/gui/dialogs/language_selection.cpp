@@ -26,8 +26,7 @@
 #include "gui/widgets/window.hpp"
 #include "language.hpp"
 #include "preferences.hpp"
-
-#include <boost/foreach.hpp>
+#include "utils/foreach.tpp"
 
 namespace gui2 {
 
@@ -66,7 +65,7 @@ void tlanguage_selection::pre_show(CVideo& /*video*/, twindow& window)
 
 	const std::vector<language_def>& languages = get_languages();
 	const language_def& current_language = get_language();
-	BOOST_FOREACH(const language_def& lang, languages) {
+	FOREACH(const AUTO& lang, languages) {
 		string_map item;
 		item.insert(std::make_pair("label", lang.language));
 
