@@ -18,8 +18,7 @@
 #include "gui/widgets/generator_private.hpp"
 
 #include "gui/widgets/window.hpp"
-
-#include <boost/foreach.hpp>
+#include "utils/foreach.tpp"
 
 namespace gui2 {
 
@@ -679,8 +678,7 @@ void tshow::init(tgrid* grid
 {
 	assert(!callback);
 
-	typedef std::pair<std::string, string_map> hack;
-	BOOST_FOREACH(const hack& item, data) {
+	FOREACH(const AUTO& item, data) {
 		if(item.first.empty()) {
 			for(unsigned row = 0; row < grid->get_rows(); ++row) {
 				for(unsigned col = 0; col < grid->get_cols(); ++col) {
