@@ -23,9 +23,9 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "sound.hpp"
+#include "utils/foreach.tpp"
 
 #include <boost/bind.hpp>
-#include <boost/foreach.hpp>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -88,8 +88,7 @@ void ttoggle_button::update_canvas()
 	tcontrol::update_canvas();
 
 	// set icon in canvases
-	std::vector<tcanvas>& canvases = tcontrol::canvas();
-	BOOST_FOREACH(tcanvas& canvas, canvases) {
+	FOREACH(AUTO& canvas, tcontrol::canvas()) {
 		canvas.set_variable("icon", variant(icon_name_));
 	}
 
