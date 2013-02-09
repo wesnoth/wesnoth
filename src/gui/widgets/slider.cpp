@@ -24,9 +24,9 @@
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/settings.hpp"
 #include "sound.hpp"
+#include "utils/foreach.tpp"
 
 #include <boost/bind.hpp>
-#include <boost/foreach.hpp>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -232,7 +232,7 @@ void tslider::update_canvas()
 	// Inherited.
 	tscrollbar_::update_canvas();
 
-	BOOST_FOREACH(tcanvas& tmp, canvas()) {
+	FOREACH(AUTO& tmp, canvas()) {
 		tmp.set_variable("text", variant(get_value_label()));
 	}
 }
