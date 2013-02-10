@@ -195,7 +195,8 @@ protected:
 			, const bool mandatory
 			, const boost::function<bool ()>& callback_load_value
 				= boost::function<bool ()>()
-			, void (*callback_save_value) (const bool value) = NULL
+			, const boost::function<void (const bool)>& callback_save_value
+				= boost::function<void (const bool)>()
 			, void (*callback_change) (twidget* widget) = NULL);
 
 	/**
@@ -227,7 +228,8 @@ protected:
 			, const bool mandatory
 			, const boost::function<int ()>& callback_load_value
 				= boost::function<int ()>()
-			, void (*callback_save_value) (const int value) = NULL);
+			, const boost::function<void (const int)>& callback_save_value
+				= boost::function<void (const int)>());
 
 	/**
 	 * Creates a new integer field.
@@ -246,7 +248,9 @@ protected:
 			, const bool mandatory
 			, const boost::function<std::string ()>& callback_load_value
 				= boost::function<std::string ()>()
-			, void (*callback_save_value) (const std::string& value) = NULL
+			, const boost::function<void (const std::string&)>&
+				callback_save_value
+				= boost::function<void (const std::string&)>()
 			, const bool capture_focus = false);
 
 	/**

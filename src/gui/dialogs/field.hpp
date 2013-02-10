@@ -274,7 +274,7 @@ public:
 	tfield(const std::string& id,
 			const bool mandatory,
 			const boost::function<T ()>& callback_load_value,
-			void (*callback_save_value) (CT value)) :
+			const boost::function<void (CT)>& callback_save_value) :
 		tfield_(id, mandatory),
 		value_(T()),
 		link_(value_),
@@ -305,7 +305,7 @@ public:
 		, value_(T())
 		, link_(linked_variable)
 		, callback_load_value_(boost::function<T ()>())
-		, callback_save_value_(NULL)
+		, callback_save_value_(boost::function<void (CT)>())
 	{
 		BOOST_STATIC_ASSERT((!boost::is_same<tcontrol, W>::value));
 	}
@@ -334,7 +334,7 @@ public:
 		, value_(value)
 		, link_(value_)
 		, callback_load_value_(boost::function<T ()>())
-		, callback_save_value_(NULL)
+		, callback_save_value_(boost::function<void (CT)>())
 	{
 		BOOST_STATIC_ASSERT((boost::is_same<tcontrol, W>::value));
 	}
@@ -454,7 +454,7 @@ private:
 	 * Once the dialog has been successful this function is used to store the
 	 * result of this widget.
 	 */
-	void (*callback_save_value_) ( CT value);
+	boost::function<void (CT)> callback_save_value_;
 
 	/**
 	 * Test whether the widget exists if the widget is mandatory.
@@ -538,7 +538,7 @@ public:
 	tfield_bool(const std::string& id,
 			const bool mandatory,
 			const boost::function<bool ()>& callback_load_value,
-			void (*callback_save_value) (const bool value),
+			const boost::function<void (const bool)>& callback_save_value,
 			void (*callback_change) (twidget* widget)) :
 		tfield<bool, gui2::tselectable_>
 			(id, mandatory, callback_load_value, callback_save_value),
@@ -580,7 +580,8 @@ public:
 	tfield_text(const std::string& id,
 			const bool mandatory,
 			const boost::function<std::string ()>& callback_load_value,
-			void (*callback_save_value) (const std::string& value)) :
+			const boost::function<void (const std::string&)>&
+				callback_save_value) :
 		tfield<std::string, ttext_, const std::string& >
 			(id, mandatory, callback_load_value, callback_save_value)
 		{
