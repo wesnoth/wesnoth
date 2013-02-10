@@ -26,7 +26,8 @@ namespace gui2 {
  * This class holds a number of widgets and their wanted layout parameters. It
  * also layouts the items in the grid and hanldes their drawing.
  */
-class tgrid : public virtual twidget
+class tgrid
+	: public twidget
 {
 	friend class tdebug_layout_graph;
 	friend struct tgrid_implementation;
