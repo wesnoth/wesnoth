@@ -27,7 +27,8 @@ namespace implementation {
 } // namespace implementation
 
 /** Base class for all visible items. */
-class tcontrol : public virtual twidget
+class tcontrol
+	: public twidget
 {
 	friend class tdebug_layout_graph;
 public:
