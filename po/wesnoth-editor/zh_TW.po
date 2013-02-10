@@ -8,14 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-10-27 15:56+0200\n"
-"PO-Revision-Date: 2010-06-25 13:28+0800\n"
-"Last-Translator: YP_Lin <yenpinlin@gmail.com>\n"
+"POT-Creation-Date: 2012-12-08 12:33+0100\n"
+"PO-Revision-Date: 2013-02-07 15:14+0800\n"
+"Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:5
@@ -67,7 +68,7 @@ msgstr "沙漠"
 #. [editor_group]: id=embellishments
 #: data/core/editor/terrain-groups.cfg:38
 msgid "embellishments"
-msgstr ""
+msgstr "裝飾"
 
 #. [editor_group]: id=forest
 #: data/core/editor/terrain-groups.cfg:45
@@ -97,7 +98,7 @@ msgstr "洞窟"
 #. [editor_group]: id=obstacle
 #: data/core/editor/terrain-groups.cfg:80
 msgid "obstacle"
-msgstr ""
+msgstr "障礙物"
 
 #. [editor_group]: id=village
 #: data/core/editor/terrain-groups.cfg:87
@@ -112,7 +113,7 @@ msgstr "城堡"
 #. [editor_group]: id=bridge
 #: data/core/editor/terrain-groups.cfg:101
 msgid "bridge"
-msgstr ""
+msgstr "橋"
 
 #. [editor_group]: id=special
 #: data/core/editor/terrain-groups.cfg:108
@@ -339,30 +340,23 @@ msgstr "如果不特別注意，在遊戲中就不會正常運作。"
 
 #: src/editor/palette/terrain_palettes.cpp:55
 msgid "FG: "
-msgstr ""
+msgstr "前景地形"
 
 #: src/editor/palette/terrain_palettes.cpp:56
 msgid "BG: "
-msgstr ""
+msgstr "背景地形"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:84
-#, fuzzy
-#| msgid "(Player)^None"
 msgid "player^None"
 msgstr "無"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:96
 msgid "Player $player_number"
-msgstr ""
+msgstr "玩家 $player_number"
 
 #: src/gui/dialogs/editor_settings.cpp:166
 msgid "Custom setting"
 msgstr "自選設定"
-
-#, fuzzy
-#~| msgid "Action not implemented"
-#~ msgid "Flip Map - Not implemented yet."
-#~ msgstr "事件未執行"
 
 #~ msgid "Quit Editor"
 #~ msgstr "退出編輯器"
@@ -388,11 +382,6 @@ msgstr "自選設定"
 #~ msgid "Auto-update Terrain Transitions: No"
 #~ msgstr "自動更新地形轉換：否"
 
-#, fuzzy
-#~| msgid "Empty map file"
-#~ msgid "Empty file"
-#~ msgstr "空白地圖檔案"
-
 #~ msgid "Choose player"
 #~ msgstr "選擇玩家"
 
@@ -413,6 +402,9 @@ msgstr "自選設定"
 
 #~ msgid "Error creating action object"
 #~ msgstr "新增事件時錯誤"
+
+#~ msgid "Action not implemented"
+#~ msgstr "事件未執行"
 
 #~ msgid "Error"
 #~ msgstr "錯誤"

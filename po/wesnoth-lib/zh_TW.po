@@ -7,14 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-12-07 20:59+0100\n"
-"PO-Revision-Date: 2012-01-18 23:52+0800\n"
-"Last-Translator: 楊綮銘 <steven.sheep@hotmail.com>\n"
+"POT-Creation-Date: 2012-12-08 12:33+0100\n"
+"PO-Revision-Date: 2013-02-07 15:01+0800\n"
+"Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
 
 #. [terrain_type]: id=deep_water
 #. [terrain_type]: id=deep_water_gray
@@ -3639,9 +3640,9 @@ msgstr ""
 
 #: src/hotkey_preferences_display.cpp:659
 #, fuzzy
-#| msgid "Save Hotkeys"
+#| msgid "Clear Hotkey"
 msgid "Reassign Hotkey"
-msgstr "儲存快捷鍵"
+msgstr "更改快捷鍵"
 
 #: src/hotkeys.cpp:62
 #, fuzzy
@@ -3867,50 +3868,38 @@ msgstr "略過動畫"
 
 #. TRANSLATORS: whiteboard menu entry: toggle planning mode
 #: src/hotkeys.cpp:128
-#, fuzzy
-#| msgid "Toggle Planning Mode"
 msgid "whiteboard^Planning Mode"
-msgstr "開始模式"
+msgstr "規劃模式"
 
 #. TRANSLATORS: whiteboard menu entry: execute planned action
 #: src/hotkeys.cpp:130
-#, fuzzy
-#| msgid "Execute All Actions"
 msgid "whiteboard^Execute Action"
-msgstr "執行所有動作"
+msgstr "執行動作"
 
 #. TRANSLATORS: whiteboard menu entry: execute all planned actions
 #: src/hotkeys.cpp:132
-#, fuzzy
-#| msgid "Execute All Actions"
 msgid "whiteboard^Execute All Actions"
 msgstr "執行所有動作"
 
 #. TRANSLATORS: whiteboard menu entry: delete planned action
 #: src/hotkeys.cpp:134
 msgid "whiteboard^Delete Action"
-msgstr ""
+msgstr "刪除動作"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action up queue
 #: src/hotkeys.cpp:136
-#, fuzzy
-#| msgid "Move Action Up Queue"
 msgid "whiteboard^Move Action Up"
 msgstr "將此動作向上移"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action down queue
 #: src/hotkeys.cpp:138
-#, fuzzy
-#| msgid "Move Action Down Queue"
 msgid "whiteboard^Move Action Down"
 msgstr "將此動作向下移"
 
 #. TRANSLATORS: whiteboard menu entry: plan as though the chosen unit were dead
 #: src/hotkeys.cpp:140
-#, fuzzy
-#| msgid "Suppose Dead"
 msgid "whiteboard^Suppose Dead"
-msgstr "已死亡"
+msgstr "設為死亡"
 
 #: src/hotkeys.cpp:142
 msgid "Quit to Desktop"
@@ -4449,17 +4438,6 @@ msgstr ""
 "按鍵'$deprecated_key'已經被更名為'$key'。'$deprecated_key'將在"
 "$removal_version版本中移除。"
 
-#~ msgid "Change Hotkey"
-#~ msgstr "更改快捷鍵"
-
-#, fuzzy
-#~| msgid "Select All"
-#~ msgid "Reset All"
-#~ msgstr "全選"
-
-#~ msgid "This hotkey is already in use."
-#~ msgstr "此快捷鍵已經被使用"
-
 #~ msgid "Update Add-ons"
 #~ msgstr "更新模組"
 
@@ -4486,6 +4464,12 @@ msgstr ""
 
 #~ msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 #~ msgstr "遊戲勝利或失敗時，删除自動存檔"
+
+#~ msgid "Change Hotkey"
+#~ msgstr "更改快捷鍵"
+
+#~ msgid "This hotkey is already in use."
+#~ msgstr "此快捷鍵已經被使用"
 
 #~ msgid "Execute Planned Action"
 #~ msgstr "執行動作"
@@ -4721,3 +4705,6 @@ msgstr ""
 
 #~ msgid "Automatically delete saves on SP victory or SP/MP defeat"
 #~ msgstr "遊戲勝利或失敗時，删除自動存檔（除了單人遊戲失敗）"
+
+#~ msgid "Save Hotkeys"
+#~ msgstr "儲存快捷鍵"
