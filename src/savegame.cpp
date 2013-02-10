@@ -434,10 +434,11 @@ void read_save_file(const std::string& name, config& cfg, std::string* error_log
 			*error_log += e.what();
 		}
 		throw game::load_game_failed();
-	} catch (config::error &err)
-	{
+	} catch(const config::error &err) {
 		LOG_SAVE << err.message;
-		if (error_log) *error_log += err.message;
+		if(error_log) {
+			*error_log += err.message;
+		}
 		throw game::load_game_failed();
 	}
 
