@@ -34,6 +34,9 @@
 
 #include <sys/stat.h> // for setting the permissions of the preferences file
 
+static lg::log_domain log_config("config");
+#define ERR_CFG LOG_STREAM(err , log_config)
+
 static lg::log_domain log_filesystem("filesystem");
 #define ERR_FS LOG_STREAM(err, log_filesystem)
 
@@ -54,8 +57,14 @@ namespace preferences {
 
 base_manager::base_manager()
 {
-	scoped_istream stream = istream_file(get_prefs_file());
-	read(prefs, *stream);
+	try{
+		scoped_istream stream = istream_file(get_prefs_file());
+		read(prefs, *stream);
+	} catch(const config::error& e) {
+		ERR_CFG << "Error loading preference, message: "
+				<< e.what()
+				<< '\n';
+	}
 }
 
 base_manager::~base_manager()
