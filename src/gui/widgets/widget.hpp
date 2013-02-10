@@ -50,7 +50,7 @@ typedef std::map< std::string, t_string > string_map;
 class twidget
 	: private boost::noncopyable
 	, public tevent_executor
-	, public virtual event::tdispatcher
+	, public event::tdispatcher
 {
 	friend class tdebug_layout_graph;
 	friend class twindow; // needed for modifying the layout_size.
