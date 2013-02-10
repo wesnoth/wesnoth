@@ -210,27 +210,27 @@ struct comp {
  * Creates a list of routes that a unit can traverse from the provided location.
  * (This is called when creating pathfind::paths and descendant classes.)
  *
- * @param map[in]              The gamemap to use (for identifying terrain).
- * @param units[in]            Currently unused.
- * @param u[in]                The unit whose moves and movement type will be used.
- * @param loc[in]              The location at which to begin the routes.
- * @param move_left[in]        The number of movement points left for the current turn.
- * @param destinations[out]    The traversable routes.
- * @param edges[out]           The hexes (possibly off-map) adjacent to those in
- *                             destinations. (It is permissible for this to contain
- *                             some hexes that are also in destinations.)
- * @param teams[in]            The teams of the game (for recognizing enemies).
- * @param force_ignore_zoc[in] Set to true to completely ignore zones of control.
- * @param allow_teleport[in]   Set to true to consider teleportation abilities.
- * @param turns_left[in]       The number of additional turns of movement to use,
- *                             in addition to the current turn.
- * @param viewing_team[in]     Usually the current team, except for "show enemy
- *                             moves", etc. Relevant if allowing teleports or
- *                             if not ignoring units.
- * @param see_all[in]          Set to true to remove unit visibility from consideration.
- * @param ignore_units[in]     Set to true if units should never obstruct paths
- *                             (implies ignoring ZoC as well).
- * @param vision[in]           Set if the move_costs or the vision_costs are used.
+ * @param[in]  map              The gamemap to use (for identifying terrain).
+ * @param[in]  units            Currently unused.
+ * @param[in]  u                The unit whose moves and movement type will be used.
+ * @param[in]  loc              The location at which to begin the routes.
+ * @param[in]  move_left        The number of movement points left for the current turn.
+ * @param[out] destinations     The traversable routes.
+ * @param[out] edges            The hexes (possibly off-map) adjacent to those in
+ *                              destinations. (It is permissible for this to contain
+ *                              some hexes that are also in destinations.)
+ * @param[in]  teams            The teams of the game (for recognizing enemies).
+ * @param[in]  force_ignore_zoc Set to true to completely ignore zones of control.
+ * @param[in]  allow_teleport   Set to true to consider teleportation abilities.
+ * @param[in]  turns_left       The number of additional turns of movement to use,
+ *                              in addition to the current turn.
+ * @param[in]  viewing_team     Usually the current team, except for "show enemy
+ *                              moves", etc. Relevant if allowing teleports or
+ *                              if not ignoring units.
+ * @param[in] see_all           Set to true to remove unit visibility from consideration.
+ * @param[in] ignore_units      Set to true if units should never obstruct paths
+ *                              (implies ignoring ZoC as well).
+ * @param[in] vision            Set if the move_costs or the vision_costs are used.
  */
 static void find_routes(const gamemap& map, const unit& u, const map_location& loc,
 		int move_left, pathfind::paths::dest_vect &destinations,
