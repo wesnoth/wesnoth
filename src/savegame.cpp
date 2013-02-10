@@ -428,6 +428,12 @@ void read_save_file(const std::string& name, config& cfg, std::string* error_log
 		} else {
 			read(cfg, *file_stream);
 		}
+	} catch(const std::ios_base::failure& e) {
+		LOG_SAVE << e.what();
+		if(error_log) {
+			*error_log += e.what();
+		}
+		throw game::load_game_failed();
 	} catch (config::error &err)
 	{
 		LOG_SAVE << err.message;
