@@ -185,7 +185,7 @@ class rotate_modification : public modification
 public:
 	/**
 	 * Constructor.
-	 * @param amount  Amount of rotation (in degrees).
+	 * @param degrees Amount of rotation (in degrees).
 	 *                Positive values are clockwise; negative are counter-clockwise.
 	 *                Only multiples of 90 are supported.
 	 */
