@@ -63,7 +63,7 @@ void taddon_uninstall_list::pre_show(CVideo& /*video*/, twindow& window)
 	this->names_.clear();
 	this->selections_.clear();
 
-	FOREACH(const AUTO& id, this->ids_) {
+	FOREACH(const AUTO& id, ids_) {
 		this->names_.push_back(make_addon_title(id));
 		this->selections_[id] = false;
 
@@ -99,7 +99,7 @@ std::vector<std::string> taddon_uninstall_list::selected_addons() const
 {
 	std::vector<std::string> retv;
 
-	FOREACH(const AUTO& entry, this->selections_) {
+	FOREACH(const AUTO& entry, selections_) {
 		if(entry.second) {
 			retv.push_back(entry.first);
 		}
