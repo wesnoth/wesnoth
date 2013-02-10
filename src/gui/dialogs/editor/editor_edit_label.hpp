@@ -27,11 +27,11 @@ public:
 	/**
 	 * Constructor.
 	 *
-	 * @param label [in]          The initial value of the label.
-	 * @param label [out]         The label text the user entered if the dialog
+	 * @param[in] text            The initial value of the label.
+	 * @param[out] text           The label text the user entered if the dialog
 	 *                            returns @ref twindow::OK undefined otherise.
-	 * @param team_only [in]      The initial value of the team only toggle.
-	 * @param team_only [out]     The final value of the team only toggle if the
+	 * @param[in] team_only       The initial value of the team only toggle.
+	 * @param[out] team_only      The final value of the team only toggle if the
 	 *                            dialog returns @ref twindow::OK undefined
 	 *                            otherise.
 	 */
