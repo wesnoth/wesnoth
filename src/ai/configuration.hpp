@@ -103,7 +103,7 @@ public:
 	/**
 	 * change a bunch of old aspect configs into a new-style [ai] snippet
 	 * @param[in] ai_parameters - old [ai] snippets
-	 * @param[out cfg - new-style [ai] snippet
+	 * @param[out] cfg - new-style [ai] snippet
 	 */
 	static void upgrade_aspect_configs_from_1_07_02_to_1_07_03(side_number side, const config::const_child_itors &ai_parameters, config &parsed_cfg);
 
