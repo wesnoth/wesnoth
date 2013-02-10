@@ -165,26 +165,38 @@ std::vector< std::string > square_parenthetical_split(std::string const &val,
 
 	while (true) {
 		if(i2 == val.end() || (!in_parenthesis && *i2 == separator)) {
+			//push back square contents
 			size_t size_square_exp = 0;
 			for (size_t i=0; i < square_left.size(); i++) {
 				std::string tmp_val(square_left[i]+1,square_right[i]);
 				std::vector< std::string > tmp = split(tmp_val);
 				std::vector<std::string>::const_iterator itor = tmp.begin();
 				for(; itor != tmp.end(); ++itor) {
-					size_t found = (*itor).find_first_of('~');
-					if (found == std::string::npos) {
-						std::string tmp = (*itor);
-						square_expansion.push_back(strip(tmp));
+					size_t found_tilde = (*itor).find_first_of('~');
+					if (found_tilde == std::string::npos) {
+						size_t found_asterisk = (*itor).find_first_of('*');
+						if (found_asterisk == std::string::npos) {
+							std::string tmp = (*itor);
+							square_expansion.push_back(strip(tmp));
+						}
+						else { //'*' multiple expansion
+							std::string s_begin = (*itor).substr(0,found_asterisk);
+							s_begin = strip(s_begin);
+							std::string s_end = (*itor).substr(found_asterisk+1);
+							s_end = strip(s_end);
+							for (int ast=atoi(s_end.c_str()); ast>0; --ast)
+								square_expansion.push_back(s_begin);
+						}
 					}
 					else { //expand number range
-						std::string s_begin = (*itor).substr(0,found);
+						std::string s_begin = (*itor).substr(0,found_tilde);
 						s_begin = strip(s_begin);
 						int begin = atoi(s_begin.c_str());
 						size_t padding = 0;
 						while (padding<s_begin.size() && s_begin[padding]=='0') {
 							padding++;
 						}
-						std::string s_end = (*itor).substr(found+1);
+						std::string s_end = (*itor).substr(found_tilde+1);
 						s_end = strip(s_end);
 						int end = atoi(s_end.c_str());
 						if (padding==0) {
@@ -209,6 +221,8 @@ std::vector< std::string > square_parenthetical_split(std::string const &val,
 				}
 				size_square_exp = square_expansion.size();
 			}
+			
+			//combine square contents and rest of string for comma zone block
 			size_t j = 0;
 			size_t j_max = 0;
 			if (square_left.size() != 0)

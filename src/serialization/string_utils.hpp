@@ -84,6 +84,7 @@ std::vector< std::string > parenthetical_split(std::string const &val,
  * Separator must be specified and number of entries in each square bracket
  * must match in each section.
  * Leading zeros are preserved if specified between square brackets.
+ * An asterisk as in [a*n] indicates to expand 'a' n times
  * 
  * This is useful to expand animation WML code.
  * Examples:
@@ -97,6 +98,8 @@ std::vector< std::string > parenthetical_split(std::string const &val,
  * <"abc3.png","abc2.png","abc1.png">
  * square_parenthetical_split("abc[de,xyz]") should return
  * <"abcde","abcxyz">
+ * square_parenthetical_split("abc[1*3]") should return
+ * <"abc1","abc1","abc1">
  */
 std::vector< std::string > square_parenthetical_split(std::string const &val,
 	const char separator = ',' , std::string const &left="([",
