@@ -89,10 +89,11 @@ public:
 	 * The planned turn of the inserted action is the same as the planned turn of position-1 before the insertion.
 	 * If position == begin(), the new action will became the first action of the current turn.
 	 *
-	 * @param itor the iterator before which action will be inserted
-	 * @param action the action to insert
-	 * @return the inserted action's position
-	 * @retval end() when the action can't be inserted
+	 * @param position   The iterator before which action will be inserted.
+	 * @param action     The action to insert.
+	 *
+	 * @return           The inserted action's position.
+	 * @retval end()     When the action can't be inserted.
 	 */
 	iterator insert(iterator position, action_ptr action);
 
