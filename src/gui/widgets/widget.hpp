@@ -49,7 +49,7 @@ typedef std::map< std::string, t_string > string_map;
  */
 class twidget
 	: private boost::noncopyable
-	, public virtual tevent_executor
+	, public tevent_executor
 	, public virtual event::tdispatcher
 {
 	friend class tdebug_layout_graph;
