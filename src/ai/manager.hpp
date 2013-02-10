@@ -323,7 +323,7 @@ public:
 	 * Returns a smart pointer to a new AI.
 	 * @param ai_algorithm_type type of AI algorithm to create
 	 * @param cfg a config of the ai
-	 * @param context context in which this ai is created
+	 * @param ai_context context in which this ai is created
 	 * @return the reference to the created AI
 	 */
 	static ai_ptr create_transient_ai( const std::string &ai_algorithm_type, const config &cfg, ai_context *ai_context);
@@ -441,7 +441,7 @@ public:
 	 * @param cfg - content of [modify_ai] tag
 	 */
 
-	static void modify_active_ai_for_side( ai::side_number, const config &cfg );
+	static void modify_active_ai_for_side( ai::side_number side, const config &cfg );
 
 	// =======================================================================
 	// PROXY
