@@ -349,7 +349,7 @@ void tpane::place_or_set_origin_children()
 void tpane::prepare_placement() const
 {
 	assert(placer_.get());
-	placer_->initialize();
+	placer_->initialise();
 
 	FOREACH(const AUTO& item, items_) {
 		if(item.grid->get_visible() == twidget::INVISIBLE) {

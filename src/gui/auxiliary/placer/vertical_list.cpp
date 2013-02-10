@@ -36,7 +36,7 @@ tplacer_vertical_list::tplacer_vertical_list(const unsigned maximum_columns)
 	assert(maximum_columns_ > 0);
 }
 
-void tplacer_vertical_list::initialize()
+void tplacer_vertical_list::initialise()
 {
 	rows_.clear();
 	rows_.push_back(std::make_pair(0, 0));

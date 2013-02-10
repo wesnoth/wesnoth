@@ -1577,7 +1577,7 @@ surface blend_surface(
 
 #ifdef PANDORA
 		/*
-		 * Use an optimized version of the generic algorithm. The optimized
+		 * Use an optimised version of the generic algorithm. The optimised
 		 * version processes 8 pixels a time. If the number of pixels is not an
 		 * exact multiple of 8 it falls back to the generic algorithm to handle
 		 * the last pixels.
