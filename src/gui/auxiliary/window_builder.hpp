@@ -22,10 +22,6 @@
 
 #include <boost/function.hpp>
 
-#include <map>
-#include <string>
-#include <vector>
-
 class config;
 class CVideo;
 
