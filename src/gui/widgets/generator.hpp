@@ -37,7 +37,7 @@ class tgrid;
  * is the factory to generate the classes as well.
  */
 class tgenerator_
-		: public virtual twidget
+	: public twidget
 {
 	friend class tdebug_layout_graph;
 
