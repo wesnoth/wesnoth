@@ -209,7 +209,7 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_callback_value_change(void (*callback) (twidget* caller))
+	void set_callback_value_change(const boost::function<void (twidget*)>& callback)
 		{ callback_value_changed_ = callback; }
 
 	void set_list_builder(tbuilder_grid_ptr list_builder)
@@ -278,7 +278,7 @@ private:
 	 * there might be too many calls. That might happen if an arrow up didn't
 	 * change the selected item.
 	 */
-	void (*callback_value_changed_) (twidget*);
+	boost::function<void (twidget*)> callback_value_changed_;
 
 	bool need_layout_;
 

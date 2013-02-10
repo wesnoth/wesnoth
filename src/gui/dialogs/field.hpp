@@ -539,17 +539,17 @@ public:
 			const bool mandatory,
 			const boost::function<bool ()>& callback_load_value,
 			const boost::function<void (const bool)>& callback_save_value,
-			void (*callback_change) (twidget* widget)) :
-		tfield<bool, gui2::tselectable_>
-			(id, mandatory, callback_load_value, callback_save_value),
-		callback_change_(callback_change)
+			const boost::function<void (twidget*)>& callback_change)
+		: tfield<bool, gui2::tselectable_>
+			(id, mandatory, callback_load_value, callback_save_value)
+		, callback_change_(callback_change)
 		{
 		}
 
 	tfield_bool(const std::string& id
 			, const bool mandatory
 			, bool& linked_variable
-			, void (*callback_change) (twidget* widget))
+			, const boost::function<void (twidget*)>& callback_change)
 		: tfield<bool, gui2::tselectable_>(id, mandatory, linked_variable)
 		, callback_change_(callback_change)
 	{
@@ -570,7 +570,7 @@ private:
 		}
 	}
 
-	void (*callback_change_) (twidget* widget);
+	boost::function<void (twidget*)> callback_change_;
 };
 
 /** Specialized field class for text. */
