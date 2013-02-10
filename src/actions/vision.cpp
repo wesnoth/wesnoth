@@ -149,7 +149,7 @@ shroud_clearer::~shroud_clearer()
  * Causes this object's "jamming" map to be recalculated.
  * This gets called as needed, and can also be manually invoked
  * via cache_units().
- * @param new_team[in]  The team whose vision will be used. If NULL, the
+ * @param[in] new_team  The team whose vision will be used. If NULL, the
  *                      jamming map will be cleared.
  */
 void shroud_clearer::calculate_jamming(const team * new_team)
