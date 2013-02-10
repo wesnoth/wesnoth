@@ -274,7 +274,7 @@ bool in_mask_surface(const surface &surf, const surface &mask);
  *  @param depth             The height of the bottom part in pixels
  *  @param alpha_base        The alpha adjustement at the interface
  *  @param alpha_delta       The alpha adjustement reduction rate by pixel depth
- *  @param optimize_format   Optimize by converting to result to display
+ *  @param optimize          Optimize by converting to result to display
 */
 surface submerge_alpha(const surface &surf, int depth, float alpha_base, float alpha_delta, bool optimize=true);
 
@@ -344,11 +344,12 @@ surface blend_surface(
  * @return                        The rotated surface.
  */
 surface rotate_180_surface(const surface &surf, bool optimize=true);
+
 /**
  * Rotates a surface 90 degrees.
  *
  * @param surf                    The surface to rotate.
- * @param clockwize               Whether the rotation should be clockwise (true)
+ * @param clockwise               Whether the rotation should be clockwise (true)
  *                                or counter-clockwise (false).
  * @param optimize                Should the return surface be RLE optimized.
  *
