@@ -18,7 +18,7 @@
  * This file stream operators for the enum types.
  *
  * This code helps with input or outputting enumerates. For an example of its
- * usage look at @ref lib::texception::ttupe.
+ * usage look at @ref lib::texception::ttype.
  *
  * The file contains the declarations needed in the header and the
  * definitions needed in the implementation.
