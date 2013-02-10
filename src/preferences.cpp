@@ -35,6 +35,9 @@
 #include <sys/stat.h> // for setting the permissions of the preferences file
 #include <boost/concept_check.hpp>
 
+static lg::log_domain log_config("config");
+#define ERR_CFG LOG_STREAM(err , log_config)
+
 static lg::log_domain log_filesystem("filesystem");
 #define ERR_FS LOG_STREAM(err, log_filesystem)
 
@@ -55,19 +58,25 @@ namespace preferences {
 
 base_manager::base_manager()
 {
+	try{
 #ifdef DEFAULT_PREFS_PATH
-	scoped_istream stream = istream_file(get_default_prefs_file());
-	read(prefs, *stream);
+		scoped_istream stream = istream_file(get_default_prefs_file());
+		read(prefs, *stream);
 
-	config user_prefs;
-	stream = istream_file(get_prefs_file());
-	read(user_prefs, *stream);
+		config user_prefs;
+		stream = istream_file(get_prefs_file());
+		read(user_prefs, *stream);
 
-	prefs.merge_with(user_prefs);
+		prefs.merge_with(user_prefs);
 #else
-	scoped_istream stream = istream_file(get_prefs_file());
-	read(prefs, *stream);
+		scoped_istream stream = istream_file(get_prefs_file());
+		read(prefs, *stream);
 #endif
+	} catch(const config::error& e) {
+		ERR_CFG << "Error loading preference, message: "
+				<< e.what()
+				<< '\n';
+	}
 }
 
 base_manager::~base_manager()
