@@ -18,6 +18,8 @@
 
 #include "gui/dialogs/field-fwd.hpp"
 
+#include <boost/function.hpp>
+
 #include <string>
 #include <vector>
 
@@ -191,7 +193,8 @@ protected:
 	 */
 	tfield_bool* register_bool(const std::string& id
 			, const bool mandatory
-			, bool (*callback_load_value) () = NULL
+			, const boost::function<bool ()>& callback_load_value
+				= boost::function<bool ()>()
 			, void (*callback_save_value) (const bool value) = NULL
 			, void (*callback_change) (twidget* widget) = NULL);
 
@@ -222,7 +225,8 @@ protected:
 	 */
 	tfield_integer* register_integer(const std::string& id
 			, const bool mandatory
-			, int (*callback_load_value) () = NULL
+			, const boost::function<int ()>& callback_load_value
+				= boost::function<int ()>()
 			, void (*callback_save_value) (const int value) = NULL);
 
 	/**
@@ -240,7 +244,8 @@ protected:
 	 */
 	tfield_text* register_text(const std::string& id
 			, const bool mandatory
-			, std::string (*callback_load_value) () = NULL
+			, const boost::function<std::string ()>& callback_load_value
+				= boost::function<std::string ()>()
 			, void (*callback_save_value) (const std::string& value) = NULL
 			, const bool capture_focus = false);
 

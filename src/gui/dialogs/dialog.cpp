@@ -74,7 +74,7 @@ bool tdialog::show(CVideo& video, const unsigned auto_close_time)
 tfield_bool* tdialog::register_bool(
 		  const std::string& id
 		, const bool mandatory
-		, bool (*callback_load_value) ()
+		, const boost::function<bool ()>& callback_load_value
 		, void (*callback_save_value) (const bool value)
 		, void (*callback_change) (twidget* widget))
 {
@@ -106,7 +106,7 @@ tfield_bool* tdialog::register_bool(const std::string& id
 tfield_integer* tdialog::register_integer(
 		  const std::string& id
 		, const bool mandatory
-		, int (*callback_load_value) ()
+		, const boost::function<int ()>& callback_load_value
 		, void (*callback_save_value) (const int value))
 {
 	tfield_integer* field =  new tfield_integer(
@@ -135,7 +135,7 @@ tfield_integer* tdialog::register_integer(const std::string& id
 tfield_text* tdialog::register_text(
 		  const std::string& id
 		, const bool mandatory
-		, std::string (*callback_load_value) ()
+		, const boost::function<std::string ()>& callback_load_value
 		, void (*callback_save_value) (const std::string& value)
 		, const bool capture_focus)
 {

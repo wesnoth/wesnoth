@@ -273,7 +273,7 @@ public:
 	 */
 	tfield(const std::string& id,
 			const bool mandatory,
-			T (*callback_load_value) (),
+			const boost::function<T ()>& callback_load_value,
 			void (*callback_save_value) (CT value)) :
 		tfield_(id, mandatory),
 		value_(T()),
@@ -304,7 +304,7 @@ public:
 		: tfield_(id, mandatory)
 		, value_(T())
 		, link_(linked_variable)
-		, callback_load_value_(NULL)
+		, callback_load_value_(boost::function<T ()>())
 		, callback_save_value_(NULL)
 	{
 		BOOST_STATIC_ASSERT((!boost::is_same<tcontrol, W>::value));
@@ -333,7 +333,7 @@ public:
 		: tfield_(id, mandatory)
 		, value_(value)
 		, link_(value_)
-		, callback_load_value_(NULL)
+		, callback_load_value_(boost::function<T ()>())
 		, callback_save_value_(NULL)
 	{
 		BOOST_STATIC_ASSERT((boost::is_same<tcontrol, W>::value));
@@ -420,7 +420,7 @@ private:
 	 *
 	 * This is used to load the initial value of the widget, if defined.
 	 */
-	T (*callback_load_value_) ();
+	boost::function<T ()> callback_load_value_;
 
 	/** Inherited from tfield_. */
 	void init_generic(twindow& window)
@@ -537,7 +537,7 @@ class tfield_bool : public tfield<bool, tselectable_>
 public:
 	tfield_bool(const std::string& id,
 			const bool mandatory,
-			bool (*callback_load_value) (),
+			const boost::function<bool ()>& callback_load_value,
 			void (*callback_save_value) (const bool value),
 			void (*callback_change) (twidget* widget)) :
 		tfield<bool, gui2::tselectable_>
@@ -579,7 +579,7 @@ class tfield_text : public tfield<std::string, ttext_, const std::string& >
 public:
 	tfield_text(const std::string& id,
 			const bool mandatory,
-			std::string (*callback_load_value) (),
+			const boost::function<std::string ()>& callback_load_value,
 			void (*callback_save_value) (const std::string& value)) :
 		tfield<std::string, ttext_, const std::string& >
 			(id, mandatory, callback_load_value, callback_save_value)
