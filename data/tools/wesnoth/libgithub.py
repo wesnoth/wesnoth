@@ -482,7 +482,7 @@ class GitHub(object):
         # Manually adding authentication data
         # Basic works in curl, but urllib2 doesn't
         # probably because github's API doesn't send a www-authenticate header
-        if authenticate:
+        if authenticate or self._github_have_authorization():
             from base64 import encodestring
             auth = self._github_authorization()
             if ":" in auth:
@@ -518,6 +518,8 @@ class GitHub(object):
 
         return json_parsed
 
+    def _github_have_authorization(self):
+        return self.authorization != None
     def _github_authorization(self):
         if self.authorization:
             return self.authorization
