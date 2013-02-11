@@ -211,7 +211,8 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
  * statistics, and (unless @a is_ai) updating the undo stack.
  */
 void recruit_unit(const unit_type & u_type, int side_num, const map_location & loc,
-                  const map_location & from, bool show = true, bool is_ai = false);
+                  const map_location & from, bool show=true, bool use_undo=true,
+                  bool use_recorder=true);
 
 /**
  * Recalls the unit with the indicated ID for the provided team.

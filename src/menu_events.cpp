@@ -837,7 +837,7 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 	map_location recruited_from = map_location::null_location;
 	std::string msg;
 	{ wb::future_map_if_active future; //< start planned unit map scope if in planning mode
-		msg = actions::find_recruit_location(side_num, loc, recruited_from, u_type->id());
+		msg = actions::find_recruit_location(side_num, loc, recruited_from, name);
 	} // end planned unit map scope
 	if (!msg.empty()) {
 		gui2::show_transient_message(gui_->video(), "", msg);
@@ -845,19 +845,11 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 	}
 
 	if (!resources::whiteboard->save_recruit(name, side_num, loc)) {
-		recorder.add_recruit(name, loc, recruited_from);
-
 		//MP_COUNTDOWN grant time bonus for recruiting
 		current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
 
 		// Do the recruiting.
 		actions::recruit_unit(*u_type, side_num, loc, recruited_from);
-
-		// Update the display,
-		gui_->redraw_minimap();
-		gui_->invalidate_game_status();
-		gui_->invalidate(loc);
-		recorder.add_checksum_check(loc);
 		return true;
 	}
 	return false;

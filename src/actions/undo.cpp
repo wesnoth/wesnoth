@@ -523,19 +523,13 @@ void undo_list::redo()
 		}
 
 		current_team.last_recruit(name);
-		recorder.add_recruit(name, loc, from);
-		const std::string &msg = find_recruit_location(side_, loc, from, action.affected_unit->type().base_id());
+		const std::string &msg = find_recruit_location(side_, loc, from, name);
 		if(msg.empty()) {
-			const unit new_unit = *action.affected_unit;
-			//unit new_unit(action.affected_unit->type(),team_num_,true);
-			place_recruit(new_unit, loc, from, new_unit.type().cost(), false, true);
-			statistics::recruit_unit(new_unit);
-			gui.invalidate(loc);
-
 			//MP_COUNTDOWN: restore recruitment bonus
 			current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
 
-			recorder.add_checksum_check(loc);
+			recruit_unit(action.affected_unit->type(), side_, loc, from, true, false);
+
 			// Quick error check. (Abuse of [allow_undo]?)
 			if ( loc != action.route.front() ) {
 				ERR_NG << "When redoing a recruit at " << action.route.front()
@@ -545,7 +539,6 @@ void undo_list::redo()
 				action.route.front() = loc;
 			}
 		} else {
-			recorder.undo();
 			gui::dialog(gui, "", msg,gui::OK_ONLY).show();
 			return;
 		}

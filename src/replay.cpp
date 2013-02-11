@@ -1044,11 +1044,13 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				continue;
 			}
 
-			const std::string res = actions::find_recruit_location(side_num, loc, from, u_type->id());
+			const std::string res = actions::find_recruit_location(side_num, loc, from, type_id);
 			const int beginning_gold = current_team.gold();
 
 			if (res.empty()) {
-				actions::recruit_unit(*u_type, side_num, loc, from, !get_replay_source().is_skipping());
+				actions::recruit_unit(*u_type, side_num, loc, from,
+				                      !get_replay_source().is_skipping(), true,
+				                      false);
 			} else {
 				std::stringstream errbuf;
 				errbuf << "cannot recruit unit: " << res << "\n";
@@ -1060,11 +1062,11 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 
 			if ( u_type->cost() > beginning_gold ) {
 				std::stringstream errbuf;
-				errbuf << "unit '" << u_type->id() << "' is too expensive to recruit: "
+				errbuf << "unit '" << type_id << "' is too expensive to recruit: "
 					<< u_type->cost() << "/" << beginning_gold << "\n";
 				replay::process_error(errbuf.str());
 			}
-			LOG_REPLAY << "recruit: team=" << side_num << " '" << u_type->id() << "' at (" << loc
+			LOG_REPLAY << "recruit: team=" << side_num << " '" << type_id << "' at (" << loc
 			           << ") cost=" << u_type->cost() << " from gold=" << beginning_gold << ' '
 			           << "-> " << current_team.gold() << "\n";
 

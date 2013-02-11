@@ -791,9 +791,8 @@ void recruit_result::do_execute()
 	// called, so this is a guard against future breakage.
 	assert(location_checked_  &&  u != NULL);
 
-	recorder.add_recruit(unit_name_, recruit_location_, recruit_from_);
 	::actions::recruit_unit(*u, get_side(), recruit_location_, recruit_from_,
-	                        preferences::show_ai_moves(), true);
+	                        preferences::show_ai_moves(), false);
 
 	set_gamestate_changed();
 	try {

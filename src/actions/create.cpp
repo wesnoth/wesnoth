@@ -929,9 +929,14 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
  * Recruits a unit of the given type for the given side.
  */
 void recruit_unit(const unit_type & u_type, int side_num, const map_location & loc,
-                  const map_location & from, bool show, bool is_ai)
+                  const map_location & from, bool show, bool use_undo,
+                  bool use_recorder)
 {
 	const unit new_unit(u_type, side_num, true);
+
+	// Record this before actually recruiting.
+	if ( use_recorder )
+		recorder.add_recruit(u_type.id(), loc, from);
 
 	// Place the recruit.
 	bool mutated = place_recruit(new_unit, loc, from, u_type.cost(), false, show);
@@ -939,7 +944,8 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
 
 	// To speed things a bit, don't bother with the undo stack during
 	// an AI turn. The AI will not undo nor delay shroud updates.
-	if ( !is_ai ) {
+	// (Undo stack processing is also suppressed when redoing a recruit.)
+	if ( use_undo ) {
 		resources::undo_stack->add_recruit(new_unit, loc, from);
 		// Check for information uncovered or randomness used.
 		if ( mutated  ||  u_type.genders().size() > 1  ||
@@ -947,6 +953,15 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
 			resources::undo_stack->clear();
 		}
 	}
+
+	// Update the screen.
+	if ( resources::screen != NULL )
+		resources::screen->invalidate_game_status();
+		// Other updates were done by place_recruit().
+
+	// Record a checksum so the replay can be verified.
+	if ( use_recorder )
+		recorder.add_checksum_check(loc);
 }
 
 
