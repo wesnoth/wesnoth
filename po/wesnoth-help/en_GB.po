@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-12-08 12:33+0100\n"
-"PO-Revision-Date: 2012-12-26 23:25-0500\n"
+"PO-Revision-Date: 2013-01-09 00:09-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -811,8 +811,8 @@ msgstr ""
 "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
 "mainline campaigns revolve around it. It is bounded on the map by the Great "
 "River to the north, the shore of the Great Ocean to the west, the Aethenwood "
-"to the <ref>dst='southwest_elven_lands' text='southwest'</ref>, and the "
-"Bitter Swamp to the southeast (lower right corner of the main map).\n"
+"to the <ref>dst='southwest_elven_lands' text='south-west'</ref>, and the "
+"Bitter Swamp to the south-east (lower right corner of the main map).\n"
 "\n"
 "Over the River Aethen, south of Fort Tahn, is a Wesnothian frontier region. "
 "It is bounded to the south (off-map) by dense woods of which the Aethenwood "
@@ -966,7 +966,7 @@ msgstr ""
 "Knalga in the southern Heart Mountains. A major trade centre.\n"
 "          ◦ Dallben and Delwyn: Human villages originally built by settlers "
 "who crossed the Great River during Wesnoth’s Golden Age expansion. Now "
-"abandoned. The forested area northeast of Elensefar, where these villages "
+"abandoned. The forested area north-east of Elensefar, where these villages "
 "were located, was named the Annuvin province by men but was known by the "
 "elves as Wesmere.\n"
 "\n"
@@ -974,7 +974,7 @@ msgstr ""
 "          ◦ Heart Mountains: A virtually impassable barrier between the "
 "river country and the Northern Plains.\n"
 "          ◦ Heartfangs: the particularly forbidding stretch of high peaks "
-"southwest of Lake Vrug and north of the Forest of Wesmere. The most "
+"south-west of Lake Vrug and north of the Forest of Wesmere. The most "
 "inhospitable and dangerous portion of the Heart Mountains; only hermits, "
 "madmen, and mages live there.\n"
 "          ◦ Swamp of Dread: a very large bog located between the Heart "
@@ -995,7 +995,7 @@ msgstr ""
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:135
 msgid "Southwest Elven Lands"
-msgstr "Southwest Elven Lands"
+msgstr "South-west Elven Lands"
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:136
@@ -1014,14 +1014,14 @@ msgid ""
 msgstr ""
 "The Wood Elves are separate from those of the north, and have only "
 "intermittent relations with them and most other countries. Its borders are "
-"the Green Swamp to the northeast, the desert (not shown) to the south, and "
+"the Green Swamp to the north-east, the desert (not shown) to the south, and "
 "the <ref>dst='great_ocean' text='Ocean'</ref> to the west.\n"
 "\n"
 "    • Notable cities\n"
 "          ◦ None known\n"
 "    • Notable land features:\n"
 "          ◦ Aethen Forest: The largest southern forest, it extends far to "
-"the southwest—much farther than is charted—and is home to <ref>dst='.."
+"the south-west—much farther than is charted—and is home to <ref>dst='.."
 "race_elf' text='elves'</ref>."
 
 #. [topic]: id=heart_mountains
@@ -1164,7 +1164,7 @@ msgstr "Terrains"
 #. [topic]: id=..addons
 #: data/core/help.cfg:70 data/core/help.cfg:793
 msgid "Add-ons"
-msgstr ""
+msgstr "Add-ons"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
@@ -3438,15 +3438,10 @@ msgstr ""
 #. [topic]: id=using_addons
 #: data/core/help.cfg:804
 msgid "Using Add-ons"
-msgstr ""
+msgstr "Using Add-ons"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:805
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -3454,7 +3449,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Damage</header>"
+"<header>text='Campaigns and Scenarios'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:805
@@ -3476,13 +3471,14 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:809
-#, fuzzy
-#| msgid "<header>text='Units having this special attack'</header>"
 msgid ""
 "\n"
 "\n"
 "<header>text='Multiplayer Campaigns, Scenarios, and Map Packs'</header>"
-msgstr "<header>text='Units having this special attack'</header>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='Multiplayer Campaigns, Scenarios, and Map Packs'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:811
@@ -3497,11 +3493,6 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:813
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Order and Number of Strikes'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3509,7 +3500,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Order and Number of Strikes'</header>"
+"<header>text='Multiplayer Eras and Factions'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:815
@@ -3528,11 +3519,6 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:819
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Chance to Hit'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3540,7 +3526,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Chance to Hit'</header>"
+"<header>text='Creator Resources'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:821
@@ -3557,7 +3543,7 @@ msgstr ""
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:830
 msgid "Installing Add-ons"
-msgstr ""
+msgstr "Installing Add-ons"
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:831
@@ -3588,7 +3574,7 @@ msgstr ""
 #. [topic]: id=removing_addons
 #: data/core/help.cfg:844
 msgid "Removing Add-ons"
-msgstr ""
+msgstr "Removing Add-ons"
 
 #. [topic]: id=removing_addons
 #: data/core/help.cfg:845
@@ -4246,15 +4232,11 @@ msgstr "feeding"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:505
-#, fuzzy
-#| msgid ""
-#| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
-#| "living unit."
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
-" This unit gains 1 hitpoint added to its maximum whenever it kills a living "
+"This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 
 #. [unstore_unit]
@@ -4417,10 +4399,8 @@ msgstr ""
 
 #. [firststrike]: id=firststrike
 #: data/core/macros/abilities.cfg:686
-#, fuzzy
-#| msgid "firststrike"
 msgid "first strike"
-msgstr "firststrike"
+msgstr "first strike"
 
 #. [firststrike]: id=firststrike
 #: data/core/macros/abilities.cfg:687
@@ -5356,7 +5336,7 @@ msgstr ""
 "race can rival their archers in speed and accuracy. All elves also share an "
 "intense affection for unspoiled nature. They often feel uncomfortable in "
 "open unvegetated spaces. They live primarily in the forests of the Great "
-"Continent; the Aethenwood in the southwest, Wesmere in the northwest, and "
+"Continent; the Aethenwood in the south-west, Wesmere in the north-west, and "
 "the great northern woods of which the Lintanir Forest is the southernmost "
 "edge.\n"
 "\n"
@@ -6083,13 +6063,11 @@ msgstr "Advances to: "
 
 #: src/help.cpp:1414
 msgid "Base unit: "
-msgstr ""
+msgstr "Base unit: "
 
 #: src/help.cpp:1424
-#, fuzzy
-#| msgid "Factions:"
 msgid "Variations: "
-msgstr "Factions:"
+msgstr "Variations: "
 
 #: src/help.cpp:1450 src/help.cpp:1825 src/help.cpp:1898
 msgid "race^Miscellaneous"
@@ -6117,11 +6095,11 @@ msgstr "Moves: "
 
 #: src/help.cpp:1495
 msgid "Vision: "
-msgstr ""
+msgstr "Vision: "
 
 #: src/help.cpp:1497
 msgid "Jamming: "
-msgstr ""
+msgstr "Jamming: "
 
 #: src/help.cpp:1498
 msgid "Cost: "
@@ -6189,11 +6167,11 @@ msgstr "Movement Cost"
 
 #: src/help.cpp:1624
 msgid "Vision Cost"
-msgstr ""
+msgstr "Vision Cost"
 
 #: src/help.cpp:1626
 msgid "Jamming Cost"
-msgstr ""
+msgstr "Jamming Cost"
 
 #: src/help.cpp:1904
 msgid "<header>text='Units of this race'</header>"
