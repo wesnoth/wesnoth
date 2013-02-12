@@ -406,6 +406,9 @@ if __name__ == "__main__":
     optionparser.add_option("-b", "--build-system",
         help = "Path to a github.com/wescamp/build-system checkout.")
 
+    optionparser.add_option("-e", "--error-log",
+        help = "File to append errors and warnings to.")
+
     options, args = optionparser.parse_args()
 
     campaignd_configured = False
@@ -424,6 +427,25 @@ if __name__ == "__main__":
         logging.basicConfig(level=logging.INFO,
             format='[%(levelname)s] %(message)s',
             stream=sys.stdout)
+
+    if options.error_log:
+        import time
+        formatter = logging.Formatter(fmt="[%(levelname)s %(asctime)s]\n%(message)s")
+        formatter.converter = time.gmtime
+        handler = logging.FileHandler(options.error_log)
+        handler.setLevel(logging.WARN)
+        handler.setFormatter(formatter)
+        record = logging.LogRecord(
+            name = None,
+            level = logging.INFO,
+            pathname = '',
+            lineno = 0,
+            msg = "{0}\nwescamp.py run start\n".format("="*80),
+            args = [],
+            exc_info = None,
+            )
+        handler.emit(record)
+        logging.getLogger().addHandler(handler)
 
     server = "localhost"
     if(options.server != None):
