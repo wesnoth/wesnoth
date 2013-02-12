@@ -362,7 +362,7 @@ if __name__ == "__main__":
         help = "Server to connect to [localhost]")
 
     optionparser.add_option("-p", "--port",
-        help = "Port on the server to connect to ['']")
+        help = "Port on the server to connect to. If omitted will try to selet a port based on --branch. ['']")
 
     optionparser.add_option("-t", "--temp-dir", help = "Directory to store the "
         + "tempory data, if omitted a tempdir is created and destroyed after "
@@ -417,8 +417,13 @@ if __name__ == "__main__":
     if(options.server != None):
         server = options.server
 
-    if(options.port != None):
+    if options.port != None:
         server += ":" + options.port
+    elif options.branch != None:
+        for port, version in libwml.CampaignClient.portmap:
+            if version.startswith(options.branch):
+                server += ":" + port
+                break
 
     target = None
     tmp = tempdir()
