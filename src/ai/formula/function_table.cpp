@@ -81,7 +81,7 @@ class unit_adapter {
 			}
 		}
 
-		int movement_cost(const gamemap& map, const t_translation::t_terrain terrain) const {
+		int movement_cost(const gamemap& map, const t_translation::t_terrain & terrain) const {
 			if(unit_type_ != NULL) {
 				return unit_type_->movement_type().movement_cost(map, terrain);
 			} else {

@@ -38,9 +38,9 @@ public:
 	// The underlying terrain is the name of the terrain for game-logic purposes.
 	// I.e. if the terrain is simply an alias, the underlying terrain name
 	// is the name of the terrain that it's aliased to.
-	const t_translation::t_list& underlying_mvt_terrain(t_translation::t_terrain terrain) const;
-	const t_translation::t_list& underlying_def_terrain(t_translation::t_terrain terrain) const;
-	const t_translation::t_list& underlying_union_terrain(t_translation::t_terrain terrain) const;
+	const t_translation::t_list& underlying_mvt_terrain(const t_translation::t_terrain & terrain) const;
+	const t_translation::t_list& underlying_def_terrain(const t_translation::t_terrain & terrain) const;
+	const t_translation::t_list& underlying_union_terrain(const t_translation::t_terrain & terrain) const;
 	/**
 	 * Get a formatted terrain name -- terrain (underlying, terrains)
 	 */
@@ -58,13 +58,13 @@ public:
 		{ return get_terrain_string(get_terrain(loc)); }
 	std::string get_terrain_editor_string(const map_location& loc) const
 		{ return get_terrain_editor_string(get_terrain(loc)); }
-	bool is_village(t_translation::t_terrain terrain) const
+	bool is_village(const t_translation::t_terrain & terrain) const
 		{ return get_terrain_info(terrain).is_village(); }
-	int gives_healing(t_translation::t_terrain terrain) const
+	int gives_healing(const t_translation::t_terrain & terrain) const
 		{ return get_terrain_info(terrain).gives_healing(); }
-	bool is_castle(t_translation::t_terrain terrain) const
+	bool is_castle(const t_translation::t_terrain & terrain) const
 		{ return get_terrain_info(terrain).is_castle(); }
-	bool is_keep(t_translation::t_terrain terrain) const
+	bool is_keep(const t_translation::t_terrain & terrain) const
 		{ return get_terrain_info(terrain).is_keep(); }
 
 	bool is_village(const map_location& loc) const
@@ -183,7 +183,7 @@ public:
 	 * Get the corresponding terrain_type information object
 	 * for a given type of terrain.
 	 */
-	const terrain_type& get_terrain_info(const t_translation::t_terrain terrain) const;
+	const terrain_type& get_terrain_info(const t_translation::t_terrain & terrain) const;
 
 	/** Shortcut to get_terrain_info(get_terrain(loc)). */
 	const terrain_type& get_terrain_info(const map_location &loc) const
@@ -197,7 +197,7 @@ public:
 	 * Clobbers over the terrain at location 'loc', with the given terrain.
 	 * Uses mode and replace_if_failed like merge_terrains().
 	 */
-	void set_terrain(const map_location& loc, const t_translation::t_terrain terrain, const tmerge_mode mode=BOTH, bool replace_if_failed = false);
+	void set_terrain(const map_location& loc, const t_translation::t_terrain & terrain, const tmerge_mode mode=BOTH, bool replace_if_failed = false);
 
 	/**
 	 * Returns a list of the frequencies of different terrain types on the map,
@@ -242,7 +242,7 @@ public:
 	 * (using the default base if new terrain is an overlay terrain)
 	 * Will return the resulting terrain or NONE_TERRAIN if merging failed
 	 */
-    t_translation::t_terrain merge_terrains(const t_translation::t_terrain old_t, const t_translation::t_terrain new_t, const tmerge_mode mode, bool replace_if_failed = false);
+    t_translation::t_terrain merge_terrains(const t_translation::t_terrain & old_t, const t_translation::t_terrain & new_t, const tmerge_mode mode, bool replace_if_failed = false);
 
 protected:
 	t_translation::t_map tiles_;
@@ -281,7 +281,7 @@ private:
 	 * terrains Will add the resulting terrain to the terrain list if
 	 * successful
 	 */
-	bool try_merge_terrains(const t_translation::t_terrain terrain);
+	bool try_merge_terrains(const t_translation::t_terrain & terrain);
 
 	t_translation::t_list terrainList_;
 	std::map<t_translation::t_terrain, terrain_type> tcodeToTerrain_;

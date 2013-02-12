@@ -143,8 +143,8 @@ bool mouse_action::has_ctrl_modifier() const
 #endif
 }
 
-void mouse_action::set_terrain_mouse_overlay(editor_display& disp, t_translation::t_terrain fg,
-		t_translation::t_terrain bg)
+void mouse_action::set_terrain_mouse_overlay(editor_display& disp, const t_translation::t_terrain & fg,
+		const t_translation::t_terrain & bg)
 {
 	surface image_fg(image::get_image("terrain/"
 		+ disp.get_map().get_terrain_info(fg).editor_image() + ".png"));

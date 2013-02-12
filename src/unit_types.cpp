@@ -432,7 +432,7 @@ bool unit_movement_type::is_flying() const
 
 int movement_cost_internal(std::map<t_translation::t_terrain, int>& move_costs,
 		const config& cfg, const unit_movement_type* parent,
-		const gamemap& map, t_translation::t_terrain terrain, int recurse_count)
+		const gamemap& map, const t_translation::t_terrain & terrain, int recurse_count)
 {
 	const int impassable = unit_movement_type::UNREACHABLE;
 
@@ -514,7 +514,7 @@ int movement_cost_internal(std::map<t_translation::t_terrain, int>& move_costs,
 
 const defense_range &defense_range_modifier_internal(defense_cache &defense_mods,
 		const config& cfg, const unit_movement_type* parent,
-		const gamemap& map, t_translation::t_terrain terrain, int recurse_count)
+		const gamemap& map, const t_translation::t_terrain & terrain, int recurse_count)
 {
 	defense_range dummy = { 0, 100 };
 	std::pair<defense_cache::iterator, bool> ib =
@@ -601,7 +601,7 @@ const defense_range &defense_range_modifier_internal(defense_cache &defense_mods
 
 int defense_modifier_internal(defense_cache &defense_mods,
 	const config &cfg, const unit_movement_type *parent,
-	const gamemap &map, t_translation::t_terrain terrain, int recurse_count)
+	const gamemap &map, const t_translation::t_terrain & terrain, int recurse_count)
 {
 	const defense_range &def = defense_range_modifier_internal(defense_mods,
 		cfg, parent, map, terrain, recurse_count);

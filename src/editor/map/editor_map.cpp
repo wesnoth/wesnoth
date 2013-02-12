@@ -67,7 +67,7 @@ editor_map editor_map::from_string(const config& terrain_cfg, const std::string&
 	}
 }
 
-editor_map::editor_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler)
+editor_map::editor_map(const config& terrain_cfg, size_t width, size_t height, const t_translation::t_terrain & filler)
 	: gamemap(terrain_cfg, gamemap::default_map_header + t_translation::write_game_map(
 		t_translation::t_map(width + 2, t_translation::t_list(height + 2, filler))))
 	, selection_()
@@ -204,7 +204,7 @@ bool editor_map::everything_selected() const
 }
 
 void editor_map::resize(int width, int height, int x_offset, int y_offset,
-	t_translation::t_terrain filler)
+	const t_translation::t_terrain & filler)
 {
 	int old_w = w();
 	int old_h = h();
@@ -274,7 +274,7 @@ bool editor_map::same_size_as(const gamemap& other) const
 		&& w() == other.w();
 }
 
-t_translation::t_list editor_map::clone_column(int x, t_translation::t_terrain filler)
+t_translation::t_list editor_map::clone_column(int x, const t_translation::t_terrain & filler)
 {
 	int h = tiles_[1].size();
 	t_translation::t_list column(h);
@@ -288,7 +288,7 @@ t_translation::t_list editor_map::clone_column(int x, t_translation::t_terrain f
 	return column;
 }
 
-void editor_map::expand_right(int count, t_translation::t_terrain filler)
+void editor_map::expand_right(int count, const t_translation::t_terrain & filler)
 {
 	int w = tiles_.size();
 	for (int x = 0; x < count; ++x) {
@@ -298,7 +298,7 @@ void editor_map::expand_right(int count, t_translation::t_terrain filler)
 	total_width_ += count;
 }
 
-void editor_map::expand_left(int count, t_translation::t_terrain filler)
+void editor_map::expand_left(int count, const t_translation::t_terrain & filler)
 {
 	for (int x = 0; x < count; ++x) {
 		tiles_.insert(tiles_.begin(), 1, clone_column(0, filler));
@@ -308,7 +308,7 @@ void editor_map::expand_left(int count, t_translation::t_terrain filler)
 	total_width_ += count;
 }
 
-void editor_map::expand_top(int count, t_translation::t_terrain filler)
+void editor_map::expand_top(int count, const t_translation::t_terrain & filler)
 {
 	for (int y = 0; y < count; ++y) {
 		for (int x = 0; x < static_cast<int>(tiles_.size()); ++x) {
@@ -325,7 +325,7 @@ void editor_map::expand_top(int count, t_translation::t_terrain filler)
 	total_height_ += count;
 }
 
-void editor_map::expand_bottom(int count, t_translation::t_terrain filler)
+void editor_map::expand_bottom(int count, const t_translation::t_terrain & filler)
 {
 	int h = tiles_[1].size();
 	for (int y = 0; y < count; ++y) {

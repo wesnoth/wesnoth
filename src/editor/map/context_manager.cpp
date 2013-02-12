@@ -651,7 +651,7 @@ void context_manager::revert_map()
 	load_map(filename, false);
 }
 
-void context_manager::new_map(int width, int height, t_translation::t_terrain fill, bool new_context)
+void context_manager::new_map(int width, int height, const t_translation::t_terrain & fill, bool new_context)
 {
 	editor_map m(game_config_, width, height, fill);
 	if (new_context) {

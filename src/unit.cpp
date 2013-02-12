@@ -2211,7 +2211,7 @@ bool unit::loyal() const
 	return cfg_["upkeep"] == "loyal" || cfg_["upkeep"] == "free";
 }
 
-int unit::movement_cost(const t_translation::t_terrain terrain) const
+int unit::movement_cost(const t_translation::t_terrain & terrain) const
 {
 	assert(resources::game_map != NULL);
 	const int res = movement_cost_internal(movement_costs_,
@@ -2225,7 +2225,7 @@ int unit::movement_cost(const t_translation::t_terrain terrain) const
 	return res;
 }
 
-int unit::vision_cost(const t_translation::t_terrain terrain) const
+int unit::vision_cost(const t_translation::t_terrain & terrain) const
 {
 	if (cfg_.child_count("vision_costs") == 0) return movement_cost(terrain);
 
@@ -2241,7 +2241,7 @@ int unit::vision_cost(const t_translation::t_terrain terrain) const
 	return res;
 }
 
-int unit::jamming_cost(const t_translation::t_terrain terrain) const
+int unit::jamming_cost(const t_translation::t_terrain & terrain) const
 {
 //	if (cfg_.child_count("jamming_costs") == 0) return movement_cost(terrain);
 
@@ -2257,7 +2257,7 @@ int unit::jamming_cost(const t_translation::t_terrain terrain) const
 	return res;
 }
 
-int unit::defense_modifier(t_translation::t_terrain terrain) const
+int unit::defense_modifier(const t_translation::t_terrain & terrain) const
 {
 	assert(resources::game_map != NULL);
 	int def = defense_modifier_internal(defense_mods_, cfg_, NULL, *resources::game_map, terrain);

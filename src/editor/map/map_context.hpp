@@ -105,7 +105,7 @@ public:
 	/**
 	 * Actual drawing function used by both overloaded variants of draw_terrain.
 	 */
-	void draw_terrain_actual(t_translation::t_terrain terrain, const map_location& loc,
+	void draw_terrain_actual(const t_translation::t_terrain & terrain, const map_location& loc,
 		bool one_layer_only = false);
 
 	/**

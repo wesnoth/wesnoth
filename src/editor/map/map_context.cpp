@@ -204,7 +204,7 @@ void map_context::draw_terrain(t_translation::t_terrain terrain,
 	draw_terrain_actual(terrain, loc, one_layer_only);
 }
 
-void map_context::draw_terrain_actual(t_translation::t_terrain terrain,
+void map_context::draw_terrain_actual(const t_translation::t_terrain & terrain,
 	const map_location& loc, bool one_layer_only)
 {
 	if (!map_.on_board_with_border(loc)) {

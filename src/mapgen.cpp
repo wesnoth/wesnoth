@@ -693,7 +693,7 @@ class terrain_converter
 public:
 	explicit terrain_converter(const config& cfg);
 
-	bool convert_terrain(const t_translation::t_terrain terrain, const int height, const int temperature) const;
+	bool convert_terrain(const t_translation::t_terrain & terrain, const int height, const int temperature) const;
 	t_translation::t_terrain convert_to() const;
 
 private:
@@ -716,7 +716,7 @@ terrain_converter::terrain_converter(const config& cfg)
 	}
 }
 
-bool terrain_converter::convert_terrain(const t_translation::t_terrain terrain,
+bool terrain_converter::convert_terrain(const t_translation::t_terrain & terrain,
 		const int height, const int temperature) const
 {
 	return std::find(from.begin(),from.end(),terrain) != from.end() && height >= min_height && height <= max_height &&

@@ -33,11 +33,11 @@ namespace {
 
 namespace editor {
 
-void set_selected_bg_terrain(t_translation::t_terrain terrain) {
+void set_selected_bg_terrain(const t_translation::t_terrain & terrain) {
 	bg_terrain = terrain;
 }
 
-void set_selected_fg_terrain(t_translation::t_terrain terrain) {
+void set_selected_fg_terrain(const t_translation::t_terrain & terrain) {
 	fg_terrain = terrain;
 }
 
@@ -45,7 +45,7 @@ t_translation::t_terrain get_selected_bg_terrain() {
 	return bg_terrain;
 }
 
-static bool is_valid_terrain(t_translation::t_terrain c) {
+static bool is_valid_terrain(const t_translation::t_terrain & c) {
 	return !(c == t_translation::VOID_TERRAIN || c == t_translation::FOGGED);
 }
 

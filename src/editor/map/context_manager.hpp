@@ -210,7 +210,7 @@ private:
 	/**
 	 * Create a new map.
 	 */
-	void new_map(int width, int height, t_translation::t_terrain fill,
+	void new_map(int width, int height, const t_translation::t_terrain & fill,
 			bool new_context);
 
 	/**

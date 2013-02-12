@@ -724,7 +724,7 @@ private:
 	 * @return			returns true if "tcode" matches the list or the list is empty,
 	 *					else false.
 	 */
-	bool terrain_matches(t_translation::t_terrain tcode, const t_translation::t_list& terrains) const
+	bool terrain_matches(const t_translation::t_terrain & tcode, const t_translation::t_list& terrains) const
 		{ return terrains.empty()? true : t_translation::terrain_matches(tcode, terrains); }
 
 	/**
@@ -737,7 +737,7 @@ private:
 	 * @return			returns true if "tcode" matches the list or the list is empty,
 	 *					else false.
 	 */
-	bool terrain_matches(t_translation::t_terrain tcode, const t_translation::t_match &terrain) const
+	bool terrain_matches(const t_translation::t_terrain & tcode, const t_translation::t_match &terrain) const
 		{ return terrain.is_empty ? true : t_translation::terrain_matches(tcode, terrain); }
 
 	/**

@@ -91,7 +91,7 @@ public:
 	/**
 	 * Create an editor map with the given dimensions and filler terrain
 	 */
-	editor_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler);
+	editor_map(const config& terrain_cfg, size_t width, size_t height, const t_translation::t_terrain & filler);
 
 	/**
 	 * Create an editor_map by upgrading an existing gamemap. The map data is
@@ -169,7 +169,7 @@ public:
 	 * when expanding, otherwise the filler terrain will be inserted there
 	 */
 	void resize(int width, int height, int x_offset, int y_offset,
-		t_translation::t_terrain filler = t_translation::NONE_TERRAIN);
+		const t_translation::t_terrain & filler = t_translation::NONE_TERRAIN);
 
 	/**
 	 * A sort-of diff operation returning a mask that, when applied to the current editor_map,
@@ -184,13 +184,13 @@ public:
 	bool same_size_as(const gamemap& other) const;
 
 protected:
-	t_translation::t_list clone_column(int x, t_translation::t_terrain filler);
+	t_translation::t_list clone_column(int x, const t_translation::t_terrain & filler);
 
 	//helper functions for resizing
-	void expand_right(int count, t_translation::t_terrain filler);
-	void expand_left(int count, t_translation::t_terrain filler);
-	void expand_top(int count, t_translation::t_terrain filler);
-	void expand_bottom(int count, t_translation::t_terrain filler);
+	void expand_right(int count, const t_translation::t_terrain & filler);
+	void expand_left(int count, const t_translation::t_terrain & filler);
+	void expand_top(int count, const t_translation::t_terrain & filler);
+	void expand_bottom(int count, const t_translation::t_terrain & filler);
 	void shrink_right(int count);
 	void shrink_left(int count);
 	void shrink_top(int count);
