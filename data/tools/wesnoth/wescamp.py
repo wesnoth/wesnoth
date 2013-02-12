@@ -380,11 +380,6 @@ if __name__ == "__main__":
     optionparser.add_option("-P", "--password",
         help = "The master password for the addon server. ['']")
 
-    optionparser.add_option("-g", "--git",
-        action = "store_true",
-        help = "Use git instead of svn to interface with wescamp. "
-        + "This is a temporary option for the conversion from berlios to github.")
-
     optionparser.add_option("-G", "--github-auth",
         help = "Username and password for github in the user:pass format, or an OAuth2 token.")
 
@@ -440,17 +435,14 @@ if __name__ == "__main__":
     password = options.password
     build_sys_dir = options.build_system
 
-    if(options.git):
-        logging.warn("--git is no longer required, as svn is no longer supported")
-        #TODO: remove entirely
     git_auth = options.github_auth
     if not wescamp:
-        logging.error("No wescamp checkout specified. Needed for git usage.")
+        logging.error("No wescamp checkout specified. Currently needed to determine version.")
         sys.exit(2)
     try:
         git_version = wescamp.split("-")[-1].strip("/").split("/")[-1]
     except:
-        logging.error("Wescamp directory path does not end in a version suffix. Currently needed for git usage.")
+        logging.error("Wescamp directory path does not end in a version suffix. Currently needed to determine version.")
         sys.exit(2)
 
     # List the addons on the server and optional filter on translatable
