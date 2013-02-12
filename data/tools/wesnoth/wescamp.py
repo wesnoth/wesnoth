@@ -340,6 +340,15 @@ if __name__ == "__main__":
             addon_obj = github.addon(addon, readonly=readonly)
             addon_obj.update()
 
+    def assert_campaignd(configured):
+        if not configured:
+            logging.error("No branch or port specified. Unable to determine which addon server to use.")
+            sys.exit(2)
+    def assert_wescamp(configured):
+        if not configured:
+            logging.error("No branch or wescamp checkout specified. Unable to determine which version branch to use.")
+            sys.exit(2)
+
 
     optionparser = optparse.OptionParser("%prog [options]")
 
@@ -399,6 +408,9 @@ if __name__ == "__main__":
 
     options, args = optionparser.parse_args()
 
+    campaignd_configured = False
+    wescamp_configured = False
+
     if(options.verbosity == "verbose"):
         logging.basicConfig(level=logging.DEBUG,
             format='[%(levelname)s] %(message)s',
@@ -419,10 +431,12 @@ if __name__ == "__main__":
 
     if options.port != None:
         server += ":" + options.port
+        campaignd_configured = True
     elif options.branch != None:
         for port, version in libwml.CampaignClient.portmap:
             if version.startswith(options.branch):
                 server += ":" + port
+                campaignd_configured = True
                 break
 
     target = None
@@ -447,20 +461,20 @@ if __name__ == "__main__":
 
     if options.branch:
         git_version = options.branch
+        wescamp_configured = True
     elif wescamp:
         try:
             git_version = wescamp.split("-")[-1].strip("/").split("/")[-1]
+            wescamp_configured = True
         except:
+            # FIXME: this never happens
             logging.error("No branch specified and wescamp directory path does not end in a version suffix. Unable to determine which version branch to use.")
             sys.exit(2)
-    else:
-        logging.error("No branch or wescamp checkout specified. Unable to determine which version branch to use.")
-        sys.exit(2)
 
     # List the addons on the server and optional filter on translatable
     # addons.
     if(options.list or options.list_translatable):
-
+        assert_campaignd(campaignd_configured)
         try:
             addons = list_addons(server, options.list_translatable)
         except libgithub.AddonError, e:
@@ -484,7 +498,8 @@ if __name__ == "__main__":
 
     # Upload an addon to wescamp.
     elif(options.upload != None):
-
+        assert_campaignd(campaignd_configured)
+        assert_wescamp(wescamp_configured)
         if(wescamp == None):
             logging.error("No wescamp checkout specified")
             sys.exit(2)
@@ -506,7 +521,8 @@ if __name__ == "__main__":
 
     # Upload all addons from wescamp.
     elif(options.upload_all != None):
-
+        assert_campaignd(campaignd_configured)
+        assert_wescamp(wescamp_configured)
         if(wescamp == None):
             logging.error("No wescamp checkout specified.")
             sys.exit(2)
@@ -540,6 +556,7 @@ if __name__ == "__main__":
             sys.exit(1)
 
     elif(options.checkout != None or options.checkout_readonly != None):
+        assert_wescamp(wescamp_configured)
 
         if(wescamp == None):
             logging.error("No wescamp checkout specified.")
