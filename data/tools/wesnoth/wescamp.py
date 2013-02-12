@@ -383,6 +383,9 @@ if __name__ == "__main__":
     optionparser.add_option("-G", "--github-auth",
         help = "Username and password for github in the user:pass format, or an OAuth2 token.")
 
+    optionparser.add_option("-B", "--branch",
+        help = "WesCamp version branch to use. If omitted, we try to determine this from the wescamp directory.")
+
     optionparser.add_option("-c", "--checkout", action = "store_true",
         help = "Create a new branch checkout directory. "
         + "Can also be used to update existing checkout directories.")
@@ -436,13 +439,17 @@ if __name__ == "__main__":
     build_sys_dir = options.build_system
 
     git_auth = options.github_auth
-    if not wescamp:
-        logging.error("No wescamp checkout specified. Currently needed to determine version.")
-        sys.exit(2)
-    try:
-        git_version = wescamp.split("-")[-1].strip("/").split("/")[-1]
-    except:
-        logging.error("Wescamp directory path does not end in a version suffix. Currently needed to determine version.")
+
+    if options.branch:
+        git_version = options.branch
+    elif wescamp:
+        try:
+            git_version = wescamp.split("-")[-1].strip("/").split("/")[-1]
+        except:
+            logging.error("No branch specified and wescamp directory path does not end in a version suffix. Unable to determine which version branch to use.")
+            sys.exit(2)
+    else:
+        logging.error("No branch or wescamp checkout specified. Unable to determine which version branch to use.")
         sys.exit(2)
 
     # List the addons on the server and optional filter on translatable
