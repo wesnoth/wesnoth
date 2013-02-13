@@ -331,16 +331,18 @@ void cave_map_generator::place_passage(const passage& p)
 	}
 }
 
-void cave_map_generator::set_terrain(map_location loc, t_translation::t_terrain t)
+void cave_map_generator::set_terrain(map_location loc, const t_translation::t_terrain & t)
 {
 	if (on_board(loc)) {
-		if (t == clear_ && (rand() % 1000) < village_density_) {
-			t = village_;
-		}
-
 		t_translation::t_terrain& c = map_[loc.x + gamemap::default_border][loc.y + gamemap::default_border];
+
 		if(c == clear_ || c == wall_ || c == village_) {
-			c = t;
+			// Change this terrain.
+			if ( t == clear_  &&  rand() % 1000 < village_density_ )
+				// Override with a village.
+				c = village_;
+			else
+				c = t;
 		}
 	}
 }

@@ -99,7 +99,7 @@ public:
 	 * Draw a terrain on a single location on the map.
 	 * Sets the refresh flags accordingly.
 	 */
-	void draw_terrain(t_translation::t_terrain terrain, const map_location& loc,
+	void draw_terrain(const t_translation::t_terrain & terrain, const map_location& loc,
 		bool one_layer_only = false);
 
 	/**
@@ -112,7 +112,7 @@ public:
 	 * Draw a terrain on a set of locations on the map.
 	 * Sets the refresh flags accordingly.
 	 */
-	void draw_terrain(t_translation::t_terrain terrain, const std::set<map_location>& locs,
+	void draw_terrain(const t_translation::t_terrain & terrain, const std::set<map_location>& locs,
 		bool one_layer_only = false);
 
 	/**

@@ -75,7 +75,7 @@ private:
 		return loc.x >= 0 && loc.y >= 0 && loc.x < width_ && loc.y < height_;
 	}
 
-	void set_terrain(map_location loc, t_translation::t_terrain t);
+	void set_terrain(map_location loc, const t_translation::t_terrain & t);
 	void place_castle(int starting_position, const map_location &loc);
 
 	t_translation::t_terrain wall_, clear_, village_, castle_, keep_;

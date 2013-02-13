@@ -195,13 +195,13 @@ map_context::~map_context()
 	clear_stack(redo_stack_);
 }
 
-void map_context::draw_terrain(t_translation::t_terrain terrain,
+void map_context::draw_terrain(const t_translation::t_terrain & terrain,
 	const map_location& loc, bool one_layer_only)
 {
-	if (!one_layer_only) {
-		terrain = map_.get_terrain_info(terrain).terrain_with_default_base();
-	}
-	draw_terrain_actual(terrain, loc, one_layer_only);
+	t_translation::t_terrain full_terrain = one_layer_only ? terrain :
+		map_.get_terrain_info(terrain).terrain_with_default_base();
+
+	draw_terrain_actual(full_terrain, loc, one_layer_only);
 }
 
 void map_context::draw_terrain_actual(const t_translation::t_terrain & terrain,
@@ -226,14 +226,14 @@ void map_context::draw_terrain_actual(const t_translation::t_terrain & terrain,
 	}
 }
 
-void map_context::draw_terrain(t_translation::t_terrain terrain,
+void map_context::draw_terrain(const t_translation::t_terrain & terrain,
 	const std::set<map_location>& locs, bool one_layer_only)
 {
-	if (!one_layer_only) {
-		terrain = map_.get_terrain_info(terrain).terrain_with_default_base();
-	}
+	t_translation::t_terrain full_terrain = one_layer_only ? terrain :
+		map_.get_terrain_info(terrain).terrain_with_default_base();
+
 	BOOST_FOREACH(const map_location& loc, locs) {
-		draw_terrain_actual(terrain, loc, one_layer_only);
+		draw_terrain_actual(full_terrain, loc, one_layer_only);
 	}
 }
 
