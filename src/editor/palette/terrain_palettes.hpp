@@ -54,10 +54,6 @@ private:
 	virtual void draw_item(SDL_Rect& dstrect, const t_translation::t_terrain& terrain, std::stringstream& tooltip_text);
 
 	virtual void update_report();
-
-	/** Return a string representing the terrain and the underlying ones. */
-	std::string get_terrain_string(const t_translation::t_terrain &);
-
 };
 
 }
