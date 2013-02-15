@@ -70,7 +70,6 @@ tmp_create_game_choose_mods::tmp_create_game_choose_mods
 void tmp_create_game_choose_mods::pre_show(CVideo &/*video*/, twindow &window)
 {
 	mod_list_ = find_widget<tlistbox>(&window, "mod_list", false, true);
-	std::vector<string_map>::iterator mod_itor;
 
 	FOREACH(const AUTO& mod, game_cfg_.child_range("modification")) {
 
