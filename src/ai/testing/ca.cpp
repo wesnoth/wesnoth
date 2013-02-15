@@ -1970,7 +1970,6 @@ double leader_shares_keep_phase::evaluate()
 	if(get_passive_leader() && !get_passive_leader_shares_keep()){
 		return BAD_SCORE;
 	}
-	std::vector<unit_map::unit_iterator> ai_leaders = resources::units->find_leaders(get_side());
 	bool allied_leaders_available = false;
 	BOOST_FOREACH(team &tmp_team, *resources::teams){
 		if(!current_team().is_enemy(tmp_team.side())){
