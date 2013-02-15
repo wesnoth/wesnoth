@@ -107,8 +107,6 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 	// later, so it ought to be empty before proceeding.
 	type_ids_.clear();
 
-	std::vector< std::string > type_labels;
-
 	FOREACH(const AUTO& i, unit_types.types())
 	{
 		// Make sure this unit type is built with the data we need.
