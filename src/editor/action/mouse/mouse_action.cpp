@@ -239,7 +239,6 @@ editor_action* brush_drag_mouse_action::drag_generic(editor_display& disp, int x
 	map_location hex = disp.hex_clicked_on(x, y);
 	move(disp, hex);
 	if (hex != previous_drag_hex_) {
-		std::set<map_location> current_step_locs = affected_hexes(disp, hex);
 		editor_action_extendable* last_undo_x = dynamic_cast<editor_action_extendable*>(last_undo);
 		LOG_ED << "Last undo is " << last_undo << " and as x " << last_undo_x << "\n";
 		partial = true;
