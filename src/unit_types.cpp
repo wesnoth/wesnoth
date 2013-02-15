@@ -698,7 +698,7 @@ unit_type::unit_type(const config &cfg, const std::string & parent_id) :
 	gender_types_(),
 	variations_(),
 	race_(&unit_race::null_race),
-	alpha_(),
+	alpha_(ftofxp(1.0)),
 	abilities_(),
 	adv_abilities_(),
 	ability_tooltips_(),
@@ -790,9 +790,9 @@ void unit_type::build_full(const movement_type_map &mv_types,
 
 	zoc_ = cfg_["zoc"].to_bool(level_ > 0);
 
-	const std::string& alpha_blend = cfg_["alpha"];
+	const config::attribute_value & alpha_blend = cfg_["alpha"];
 	if(alpha_blend.empty() == false) {
-		alpha_ = ftofxp(atof(alpha_blend.c_str()));
+		alpha_ = ftofxp(alpha_blend.to_double());
 	}
 
 	const std::string& move_type = cfg_["movement_type"];
@@ -907,7 +907,6 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	}
 
 	movementType_ = unit_movement_type(cfg_);
-	alpha_ = ftofxp(1.0);
 
 	BOOST_FOREACH(const config &t, traits)
 	{
