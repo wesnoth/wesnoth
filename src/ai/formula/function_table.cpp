@@ -1153,7 +1153,7 @@ private:
                 }
 
                 for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
-                    if (unit_it->movement_cost((*resources::game_map)[*loc_iter]) < 99 )
+                    if (unit_it->movement_cost((*resources::game_map)[*loc_iter]) < unit_movement_type::UNREACHABLE )
                         locations.push_back( variant( new location_callable(*loc_iter) ));
                     else
                         break;
