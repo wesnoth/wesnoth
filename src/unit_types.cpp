@@ -27,6 +27,7 @@
 #include "loadscreen.hpp"
 #include "log.hpp"
 #include "map.hpp"
+#include "resources.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -432,8 +433,10 @@ bool unit_movement_type::is_flying() const
 
 int movement_cost_internal(std::map<t_translation::t_terrain, int>& move_costs,
 		const config& cfg, const unit_movement_type* parent,
-		const gamemap& map, const t_translation::t_terrain & terrain, int recurse_count)
+		const t_translation::t_terrain & terrain, int recurse_count)
 {
+	assert(resources::game_map != NULL);
+	const gamemap & map = *resources::game_map;
 	const int impassable = unit_movement_type::UNREACHABLE;
 
 	const std::map<t_translation::t_terrain, int>::const_iterator i = move_costs.find(terrain);
@@ -466,7 +469,7 @@ int movement_cost_internal(std::map<t_translation::t_terrain, int>& move_costs,
 				continue;
 			}
 			const int value = movement_cost_internal(move_costs, cfg,
-					parent, map, *i, recurse_count + 1);
+					parent, *i, recurse_count + 1);
 
 			if (value < ret_value && !revert) {
 				ret_value = value;
@@ -499,7 +502,7 @@ int movement_cost_internal(std::map<t_translation::t_terrain, int>& move_costs,
 	}
 
 	if (!result_found && parent != NULL) {
-		res = parent->movement_cost(map, terrain);
+		res = parent->movement_cost(terrain);
 	}
 
 	if (res <= 0) {
@@ -514,8 +517,11 @@ int movement_cost_internal(std::map<t_translation::t_terrain, int>& move_costs,
 
 const defense_range &defense_range_modifier_internal(defense_cache &defense_mods,
 		const config& cfg, const unit_movement_type* parent,
-		const gamemap& map, const t_translation::t_terrain & terrain, int recurse_count)
+		const t_translation::t_terrain & terrain, int recurse_count)
 {
+	assert(resources::game_map != NULL);
+	const gamemap & map = *resources::game_map;
+
 	defense_range dummy = { 0, 100 };
 	std::pair<defense_cache::iterator, bool> ib =
 		defense_mods.insert(defense_cache::value_type(terrain, dummy));
@@ -554,7 +560,7 @@ const defense_range &defense_range_modifier_internal(defense_cache &defense_mods
 				continue;
 			}
 			const defense_range &inh = defense_range_modifier_internal
-				(defense_mods, cfg, parent, map, *i, recurse_count + 1);
+				(defense_mods, cfg, parent, *i, recurse_count + 1);
 
 			if (!revert) {
 				if (inh.max_ < res.max_) res.max_ = inh.max_;
@@ -581,7 +587,7 @@ const defense_range &defense_range_modifier_internal(defense_cache &defense_mods
 
 	if (parent) {
 		/* Assign to the reference res to put the value in the defense_cache. */
-		res = parent->defense_range_modifier(map, terrain);
+		res = parent->defense_range_modifier(terrain);
 		return res;
 	}
 
@@ -601,10 +607,10 @@ const defense_range &defense_range_modifier_internal(defense_cache &defense_mods
 
 int defense_modifier_internal(defense_cache &defense_mods,
 	const config &cfg, const unit_movement_type *parent,
-	const gamemap &map, const t_translation::t_terrain & terrain, int recurse_count)
+	const t_translation::t_terrain & terrain, int recurse_count)
 {
 	const defense_range &def = defense_range_modifier_internal(defense_mods,
-		cfg, parent, map, terrain, recurse_count);
+		cfg, parent, terrain, recurse_count);
 	return (std::max)(def.max_, def.min_);
 }
 

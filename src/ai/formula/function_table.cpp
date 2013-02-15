@@ -81,9 +81,9 @@ class unit_adapter {
 			}
 		}
 
-		int movement_cost(const gamemap& map, const t_translation::t_terrain & terrain) const {
+		int movement_cost(const t_translation::t_terrain & terrain) const {
 			if(unit_type_ != NULL) {
-				return unit_type_->movement_type().movement_cost(map, terrain);
+				return unit_type_->movement_type().movement_cost(terrain);
 			} else {
 				return unit_->movement_cost(terrain);
 			}
@@ -232,7 +232,7 @@ private:
 				// test if the current path to locs[i] is better than this one could possibly be.
 				// we do this a couple more times below
 				if (next_visited &&  !(n < next) ) continue;
-				const int move_cost = u.movement_cost(map, map[locs[i]]);
+				const int move_cost = u.movement_cost(map[locs[i]]);
 
 				node t = node(n.movement_cost_ + move_cost, locs[i]);
 
@@ -1536,14 +1536,14 @@ private:
 		{
 			const unit_type& un = u_type->get_unit_type();
 
-                        if( un.movement() < un.movement_type().movement_cost(*resources::game_map, (*resources::game_map)[loc]) )
-                            return variant();
+			if( un.movement() < un.movement_type().movement_cost((*resources::game_map)[loc]) )
+				return variant();
 
 			if(!resources::game_map->on_board(loc)) {
 				return variant();
 			}
 
-			return variant(100 - un.movement_type().defense_modifier(*resources::game_map, (*resources::game_map)[loc]));
+			return variant(100 - un.movement_type().defense_modifier((*resources::game_map)[loc]));
 		}
 
 		return variant();
@@ -1587,7 +1587,7 @@ private:
 				return variant();
 			}
 
-			return variant(un.movement_type().defense_modifier(*resources::game_map, (*resources::game_map)[loc]));
+			return variant(un.movement_type().defense_modifier((*resources::game_map)[loc]));
 		}
 
 		return variant();
@@ -1631,7 +1631,7 @@ private:
 				return variant();
 			}
 
-			return variant(un.movement_type().movement_cost(*resources::game_map, (*resources::game_map)[loc]));
+			return variant(un.movement_type().movement_cost((*resources::game_map)[loc]));
 		}
 
 		return variant();

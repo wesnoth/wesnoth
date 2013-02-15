@@ -706,7 +706,7 @@ double pathfind::move_type_path_calculator::cost(const map_location& loc, const 
 		return getNoPathValue();
 
 	const t_translation::t_terrain terrain = map_[loc];
-	int const terrain_cost = movement_type_.movement_cost(map_, terrain);
+	int const terrain_cost = movement_type_.movement_cost(terrain);
 
 	if (total_movement_ < terrain_cost)
 		return getNoPathValue();

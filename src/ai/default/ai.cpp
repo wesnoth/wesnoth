@@ -319,16 +319,15 @@ private:
 int ai_default_recruitment_stage::average_resistance_against(const unit_type& a, const unit_type& b) const
 {
 	int weighting_sum = 0, defense = 0;
-	gamemap &map_ = *resources::game_map;
 	const std::map<t_translation::t_terrain, size_t>& terrain =
-		map_.get_weighted_terrain_frequencies();
+		resources::game_map->get_weighted_terrain_frequencies();
 
 	for (std::map<t_translation::t_terrain, size_t>::const_iterator j = terrain.begin(),
 	     j_end = terrain.end(); j != j_end; ++j)
 	{
 		// Use only reachable tiles when computing the average defense.
-	  if (a.movement_type().movement_cost(map_, j->first) < unit_movement_type::UNREACHABLE) {
-			defense += a.movement_type().defense_modifier(map_, j->first) * j->second;
+	  if (a.movement_type().movement_cost(j->first) < unit_movement_type::UNREACHABLE) {
+			defense += a.movement_type().defense_modifier(j->first) * j->second;
 			weighting_sum += j->second;
 		}
 	}
@@ -340,7 +339,7 @@ int ai_default_recruitment_stage::average_resistance_against(const unit_type& a,
 		for (std::map<t_translation::t_terrain, size_t>::const_iterator jj = terrain.begin(),
 				jj_end = terrain.end(); jj != jj_end; ++jj)
 		{
-			defense += a.movement_type().defense_modifier(map_, jj->first) * jj->second;
+			defense += a.movement_type().defense_modifier(jj->first) * jj->second;
 			weighting_sum += jj->second;
 		}
 	}

@@ -1630,9 +1630,9 @@ public:
 					std::vector<item> row;
 					const std::string& name = info.name();
 					const std::string id = info.id();
-					const int moves = movement_type.movement_cost(*map,terrain);
-					const int views = movement_type.vision_cost(*map,terrain);
-					const int jamms = movement_type.jamming_cost(*map,terrain);
+					const int moves = movement_type.movement_cost(terrain);
+					const int views = movement_type.vision_cost(terrain);
+					const int jamms = movement_type.jamming_cost(terrain);
 					std::stringstream str;
 					str << "<ref>text='" << escape(name) << "' dst='"
 							<< escape(std::string("terrain_") + id) << "'</ref>";
@@ -1642,7 +1642,7 @@ public:
 					//defense  -  range: +10 % .. +70 %
 					str.str(clear_stringstream);
 					const int defense =
-							100 - movement_type.defense_modifier(*map,terrain);
+							100 - movement_type.defense_modifier(terrain);
 					std::string color;
 					if (defense <= 10)
 						color = "red";

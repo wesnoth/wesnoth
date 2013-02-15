@@ -2213,9 +2213,8 @@ bool unit::loyal() const
 
 int unit::movement_cost(const t_translation::t_terrain & terrain) const
 {
-	assert(resources::game_map != NULL);
 	const int res = movement_cost_internal(movement_costs_,
-			cfg_.child("movement_costs"), NULL, *resources::game_map, terrain);
+			cfg_.child("movement_costs"), NULL, terrain);
 
 	if (res == unit_movement_type::UNREACHABLE) {
 		return res;
@@ -2229,9 +2228,8 @@ int unit::vision_cost(const t_translation::t_terrain & terrain) const
 {
 	if (cfg_.child_count("vision_costs") == 0) return movement_cost(terrain);
 
-	assert(resources::game_map != NULL);
 	const int res = movement_cost_internal(vision_costs_,
-			cfg_.child("vision_costs"), NULL, *resources::game_map, terrain);
+			cfg_.child("vision_costs"), NULL, terrain);
 
 	if (res == unit_movement_type::UNREACHABLE) {
 		return res;
@@ -2245,9 +2243,8 @@ int unit::jamming_cost(const t_translation::t_terrain & terrain) const
 {
 //	if (cfg_.child_count("jamming_costs") == 0) return movement_cost(terrain);
 
-	assert(resources::game_map != NULL);
 	const int res = movement_cost_internal(jamming_costs_,
-			cfg_.child("jamming_costs"), NULL, *resources::game_map, terrain);
+			cfg_.child("jamming_costs"), NULL, terrain);
 
 	if (res == unit_movement_type::UNREACHABLE) {
 		return res;
@@ -2259,8 +2256,7 @@ int unit::jamming_cost(const t_translation::t_terrain & terrain) const
 
 int unit::defense_modifier(const t_translation::t_terrain & terrain) const
 {
-	assert(resources::game_map != NULL);
-	int def = defense_modifier_internal(defense_mods_, cfg_, NULL, *resources::game_map, terrain);
+	int def = defense_modifier_internal(defense_mods_, cfg_, NULL, terrain);
 #if 0
 	// A [defense] ability is too costly and doesn't take into account target locations.
 	// Left as a comment in case someone ever wonders why it isn't a good idea.

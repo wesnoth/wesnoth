@@ -119,15 +119,15 @@ typedef std::map<t_translation::t_terrain, defense_range> defense_cache;
 
 const defense_range &defense_range_modifier_internal(defense_cache &defense_mods,
 	const config &cfg, const unit_movement_type *parent,
-	const gamemap &map, const t_translation::t_terrain & terrain, int recurse_count = 0);
+	const t_translation::t_terrain & terrain, int recurse_count = 0);
 
 int defense_modifier_internal(defense_cache &defense_mods,
 	const config &cfg, const unit_movement_type *parent,
-	const gamemap &map, const t_translation::t_terrain & terrain, int recurse_count = 0);
+	const t_translation::t_terrain & terrain, int recurse_count = 0);
 
 int movement_cost_internal(std::map<t_translation::t_terrain, int> &move_costs,
 	const config &cfg, const unit_movement_type *parent,
-	const gamemap &map, const t_translation::t_terrain & terrain, int recurse_count = 0);
+	const t_translation::t_terrain & terrain, int recurse_count = 0);
 
 //the 'unit movement type' is the basic size of the unit - flying, small land,
 //large land, etc etc.
@@ -145,16 +145,16 @@ public:
 	unit_movement_type();
 
 	std::string name() const;
-	int movement_cost(const gamemap &map, const t_translation::t_terrain & terrain) const
-	{ return movement_cost_internal(moveCosts_, cfg_.child("movement_costs"), parent_, map, terrain); }
-	int vision_cost(const gamemap &map, const t_translation::t_terrain & terrain) const
-	{ return movement_cost_internal(visionCosts_, cfg_.child("vision_costs"), parent_, map, terrain); }
-	int jamming_cost(const gamemap &map, const t_translation::t_terrain & terrain) const
-	{ return movement_cost_internal(jammingCosts_, cfg_.child("jamming_costs"), parent_, map, terrain); }
-	int defense_modifier(const gamemap &map, const t_translation::t_terrain & terrain) const
-	{ return defense_modifier_internal(defenseMods_, cfg_, parent_, map, terrain); }
-	const defense_range &defense_range_modifier(const gamemap &map, const t_translation::t_terrain & terrain) const
-	{ return defense_range_modifier_internal(defenseMods_, cfg_, parent_, map, terrain); }
+	int movement_cost(const t_translation::t_terrain & terrain) const
+	{ return movement_cost_internal(moveCosts_, cfg_.child("movement_costs"), parent_, terrain); }
+	int vision_cost(const t_translation::t_terrain & terrain) const
+	{ return movement_cost_internal(visionCosts_, cfg_.child("vision_costs"), parent_, terrain); }
+	int jamming_cost(const t_translation::t_terrain & terrain) const
+	{ return movement_cost_internal(jammingCosts_, cfg_.child("jamming_costs"), parent_, terrain); }
+	int defense_modifier(const t_translation::t_terrain & terrain) const
+	{ return defense_modifier_internal(defenseMods_, cfg_, parent_, terrain); }
+	const defense_range &defense_range_modifier(const t_translation::t_terrain & terrain) const
+	{ return defense_range_modifier_internal(defenseMods_, cfg_, parent_, terrain); }
 	int damage_against(const attack_type& attack) const { return resistance_against(attack); }
 	int resistance_against(const attack_type& attack) const;
 
