@@ -1,3 +1,4 @@
+/* $Id$ */
 /*
    Copyright (C) 2009 - 2013 by Bartosz Waresiak <dragonking@o2.pl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
