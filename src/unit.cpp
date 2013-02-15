@@ -660,7 +660,7 @@ unit::unit(const unit_type &u_type, int side, bool real_unit,
 	}
 	set_underlying_id();
 
-	// fill those after traits and modifs to have correct max
+	// Set these after traits and modifications have set the maximums.
 	movement_ = max_movement_;
 	hit_points_ = max_hit_points_;
 	attacks_left_ = max_attacks_;
