@@ -620,6 +620,8 @@ int defense_modifier_internal(defense_cache &defense_mods,
 
 unit_type::unit_type(const unit_type& o) :
 	cfg_(o.cfg_),
+	unit_cfg_(),  // Not copied; will be re-created if needed.
+	built_unit_cfg_(false),
 	id_(o.id_),
 	debug_id_(o.debug_id_),
 	base_id_(o.base_id_),
@@ -671,6 +673,8 @@ unit_type::unit_type(const unit_type& o) :
 
 unit_type::unit_type(const config &cfg, const std::string & parent_id) :
 	cfg_(cfg),
+	unit_cfg_(),
+	built_unit_cfg_(false),
 	id_(cfg_.has_attribute("id") ? cfg_["id"].str() : parent_id),
 	debug_id_(),
 	base_id_(!parent_id.empty() ? parent_id : id_),
@@ -1307,6 +1311,33 @@ std::vector<std::string> unit_type::variations() const
 		retval.push_back(val.first);
 	}
 	return retval;
+}
+
+
+/**
+ * Generates (and returns) a trimmed config suitable for use with units.
+ */
+const config & unit_type::build_unit_cfg() const
+{
+	// We start with everything.
+	unit_cfg_ = cfg_;
+
+	// Remove "pure" unit_type attributes (attributes that do not get directly
+	// copied to units; some do get copied, but under different keys).
+	static char const *unit_type_attrs[] = { "attacks", "die_sound",
+		"experience", "flies", "hide_help", "hitpoints", "id",
+		"ignore_race_traits", "inherit", "movement", "movement_type",
+		"name", "num_traits", "variation_name" };
+	BOOST_FOREACH(const char *attr, unit_type_attrs) {
+		unit_cfg_.remove_attribute(attr);
+	}
+
+	// Remove gendered children.
+	unit_cfg_.clear_children("male");
+	unit_cfg_.clear_children("female");
+
+	built_unit_cfg_ = true;
+	return unit_cfg_;
 }
 
 

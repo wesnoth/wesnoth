@@ -327,11 +327,19 @@ public:
 	const std::vector<tportrait>& portraits() const { return portraits_; }
 
 	const config &get_cfg() const { return cfg_; }
+	/// Returns a trimmed config suitable for use with units.
+	const config & get_cfg_for_units() const
+	{ return built_unit_cfg_ ? unit_cfg_ : build_unit_cfg(); }
+private:
+	/// Generates (and returns) a trimmed config suitable for use with units.
+	const config & build_unit_cfg() const;
 
 private:
 	void operator=(const unit_type& o);
 
 	const config &cfg_;
+	mutable config unit_cfg_;  /// Generated as needed via get_cfg_for_units().
+	mutable bool built_unit_cfg_;
 
 	std::string id_;
 	std::string debug_id_;  /// A suffix for id_, used when logging messages.

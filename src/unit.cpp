@@ -838,19 +838,15 @@ void unit::advance_to(const config &old_cfg, const unit_type &u_type,
 
 	if ( new_type.movement_type().get_parent() ) {
 		new_cfg.merge_with(new_type.movement_type().get_parent()->get_cfg());
+		// Convert movement type's "flies" to unit's "flying".
+		if ( const config::attribute_value * flies = new_cfg.get("flies") ) {
+			new_cfg["flying"] = flies->to_bool();
+			new_cfg.remove_attribute("flies");
+		}
 	}
 
-	new_cfg.merge_with(new_type.get_cfg());
-
-	// Remove "pure" unit_type attributes (attributes that do not get directly
-	// copied to units; some do get copied, but under different keys).
-	static char const *unit_type_attrs[] = { "attacks", "die_sound",
-		"experience", "flies", "hide_help", "hitpoints", "id",
-		"ignore_race_traits", "inherit", "movement", "movement_type",
-		"name", "num_traits", "variation_name" };
-	BOOST_FOREACH(const char *attr, unit_type_attrs) {
-		new_cfg.remove_attribute(attr);
-	}
+	// Inherit from the new unit type.
+	new_cfg.merge_with(new_type.get_cfg_for_units());
 
 	// If unit has specific profile, remember it and keep it after advancing
 	std::string profile = old_cfg["profile"].str();
@@ -867,8 +863,6 @@ void unit::advance_to(const config &old_cfg, const unit_type &u_type,
 	}
 
 	cfg_.swap(new_cfg);
-	cfg_.clear_children("male");
-	cfg_.clear_children("female");
 	// NOTE: There should be no need to access old_cfg (or new_cfg) after this
 	//       line. Particularly since the swap might have affected old_cfg.
 
