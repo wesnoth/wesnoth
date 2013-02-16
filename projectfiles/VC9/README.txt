@@ -238,7 +238,7 @@ compile Wesnoth.
 	General Folder'.
 
 
-5k. >=pangocairo-1.14.8 ( http://www.gtk.org/download-windows.html )
+5k. >=pangocairo-1.24.4 ( http://www.gtk.org/download-windows.html )
 
 	Download the following 'Binaryies' and 'Dev' packages from the 
 	'GTK+ individual packages' 
