@@ -19,6 +19,8 @@
 #include "portrait.hpp"
 #include "race.hpp"
 
+#include <boost/noncopyable.hpp>
+
 class gamemap;
 class unit;
 class unit_ability_list;
@@ -401,6 +403,7 @@ private:
 };
 
 class unit_type_data
+	: private boost::noncopyable
 {
 public:
 	unit_type_data();
@@ -427,10 +430,6 @@ public:
 	bool hide_help(const std::string &type_id, const std::string &race_id) const;
 
 private:
-	// Not to be copied.
-	unit_type_data(const unit_type_data &);
-	void operator=(const unit_type_data &);
-
 	/** Parses the [hide_help] tag. */
 	void read_hide_help(const config &cfg);
 
