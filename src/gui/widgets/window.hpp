@@ -583,8 +583,35 @@ private:
 	 */
 	void layout_linked_widgets();
 
-	/** Inherited from tevent_handler. */
-	bool click_dismiss();
+	/**
+	 * Handles a mouse click event for dismissing the dialogue.
+	 *
+	 * @param mouse_button_mask   The SDL_BUTTON mask for the button used to
+	 *                            dismiss the click. If the caller is from the
+	 *                            keyboard code the value should be 0.
+	 *
+	 * @return                    Whether the event should be considered as
+	 *                            handled.
+	 */
+	bool click_dismiss(const Uint8 mouse_button_mask);
+
+	/**
+	 * The state of the mouse button.
+	 *
+	 * When click dismissing a dialogue in the past the DOWN event was used.
+	 * This lead to a bug [1]. The obvious change was to switch to the UP
+	 * event, this lead to another bug; the dialogue was directly dismissed.
+	 * Since the game map code uses the UP and DOWN event to select a unit
+	 * there is no simple solution.
+	 *
+	 * Upon entry this value stores the mouse button state at entry. When a
+	 * button is DOWN and goes UP that button does \em not trigger a dismissal
+	 * of the dialogue, instead that button's down state is removed from this
+	 * variable. Therefore the next UP event does dismiss the dialogue.
+	 *
+	 * [1] https://gna.org/bugs/index.php?18970
+	 */
+	Uint8 mouse_button_state_;
 
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const;
@@ -661,8 +688,19 @@ private:
 	void signal_handler_sdl_video_resize(
 			const event::tevent event, bool& handled, const tpoint& new_size);
 
+	/**
+	 * The handler for the click dismiss mouse 'event'.
+	 *
+	 * @param event               See @ref event::tdispatcher::fire.
+	 * @param handled             See @ref event::tdispatcher::fire.
+	 * @param halt                See @ref event::tdispatcher::fire.
+	 * @param mouse_button_mask   Forwared to @ref click_dismiss.
+	 */
 	void signal_handler_click_dismiss(
-			const event::tevent event, bool& handled, bool& halt);
+			  const event::tevent event
+			, bool& handled
+			, bool& halt
+			, const Uint8 mouse_button_mask);
 
 	void signal_handler_sdl_key_down(
 			const event::tevent event, bool& handled, const SDLKey key);

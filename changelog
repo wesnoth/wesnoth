@@ -58,6 +58,7 @@ Version 1.11.1+svn:
    * Tooltip for the movement points display shows the movement costs.
    * Updating the shroud after delaying shroud updates is done gradually instead
      of instantly.
+   * Fixed (bug #18970): Moving a unit after closing a click dismiss dialogue.
  * WML engine:
    * [unit_overlay] and [remove_unit_overlay] now return a more meaningful
      error message if the image= key is missing

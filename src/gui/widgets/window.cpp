@@ -299,6 +299,7 @@ twindow::twindow(CVideo& video,
 	, enter_disabled_(false)
 	, escape_disabled_(false)
 	, linked_size_()
+	, mouse_button_state_(0) /**< Needs to be initialised in @ref show. */
 	, dirty_list_()
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	, debug_layout_(new tdebug_layout_graph(this))
@@ -325,17 +326,32 @@ twindow::twindow(CVideo& video,
 			  boost::bind(&event::tdistributor::initialize_state
 				  , event_distributor_));
 
-	connect_signal<event::SDL_LEFT_BUTTON_DOWN>(
+	connect_signal<event::SDL_LEFT_BUTTON_UP>(
 			  boost::bind(
-				  &twindow::signal_handler_click_dismiss, this, _2, _3, _4)
+				    &twindow::signal_handler_click_dismiss
+				  , this
+				  , _2
+				  , _3
+				  , _4
+				  , SDL_BUTTON_LMASK)
 			, event::tdispatcher::front_child);
-	connect_signal<event::SDL_MIDDLE_BUTTON_DOWN>(
+	connect_signal<event::SDL_MIDDLE_BUTTON_UP>(
 			  boost::bind(
-				  &twindow::signal_handler_click_dismiss, this, _2, _3, _4)
+				    &twindow::signal_handler_click_dismiss
+				  , this
+				  , _2
+				  , _3
+				  , _4
+				  , SDL_BUTTON_MMASK)
 			, event::tdispatcher::front_child);
-	connect_signal<event::SDL_RIGHT_BUTTON_DOWN>(
+	connect_signal<event::SDL_RIGHT_BUTTON_UP>(
 			  boost::bind(
-				  &twindow::signal_handler_click_dismiss, this, _2, _3, _4)
+				    &twindow::signal_handler_click_dismiss
+				  , this
+				  , _2
+				  , _3
+				  , _4
+				  , SDL_BUTTON_RMASK)
 			, event::tdispatcher::front_child);
 
 	connect_signal<event::SDL_KEY_DOWN>(
@@ -620,11 +636,29 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 		delay_event(event, auto_close_timeout);
 	}
 
+
 	try {
 		// Start our loop drawing will happen here as well.
+		bool mouse_button_state_initialised = false;
 		for(status_ = SHOWING; status_ != REQUEST_CLOSE; ) {
 			// process installed callback if valid, to allow e.g. network polling
 			events::pump();
+
+			if(!mouse_button_state_initialised) {
+				/*
+				 * The state must be initialise when showing the dialogue.
+				 * However when initialised before this point there were random
+				 * errors. This only happened when the 'click' was done fast; a
+				 * slower click worked properly.
+				 *
+				 * So it seems the events need to be processed before SDL can
+				 * return the proper button state. When initialising here all
+				 * works fine.
+				 */
+				mouse_button_state_ = SDL_GetMouseState(NULL, NULL);
+				mouse_button_state_initialised = true;
+			}
+
 			// Add a delay so we don't keep spinning if there's no event.
 			SDL_Delay(10);
 		}
@@ -1131,10 +1165,14 @@ void twindow::layout_linked_widgets()
 	}
 }
 
-bool twindow::click_dismiss()
+bool twindow::click_dismiss(const Uint8 mouse_button_mask)
 {
 	if(does_click_dismiss()) {
-		set_retval(OK);
+		if((mouse_button_state_ & mouse_button_mask) == 0) {
+			set_retval(OK);
+		} else {
+			mouse_button_state_ &= ~mouse_button_mask;
+		}
 		return true;
 	}
 	return false;
@@ -1340,11 +1378,16 @@ void twindow::signal_handler_sdl_video_resize(
 }
 
 void twindow::signal_handler_click_dismiss(
-		const event::tevent event, bool& handled, bool& halt)
+		  const event::tevent event
+		, bool& handled
+		, bool& halt
+		, const Uint8 mouse_button_mask)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event
+			<< " mouse_button_mask " << static_cast<unsigned>(mouse_button_mask)
+			<< ".\n";
 
-	handled = halt = click_dismiss();
+	handled = halt = click_dismiss(mouse_button_mask);
 }
 
 void twindow::signal_handler_sdl_key_down(
@@ -1359,7 +1402,7 @@ void twindow::signal_handler_sdl_key_down(
 		set_retval(CANCEL);
 		handled = true;
 	} else if(key == SDLK_SPACE) {
-		handled = click_dismiss();
+		handled = click_dismiss(0);
 	}
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	if(key == SDLK_F12) {
