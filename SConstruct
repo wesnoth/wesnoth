@@ -329,7 +329,7 @@ if env["prereqs"]:
     conf = client_env.Configure(**configure_args)
     have_client_prereqs = have_server_prereqs and \
         CheckAsio(conf, not env["use_network_ana"]) and \
-        conf.CheckPango("cairo") and \
+        conf.CheckPango("cairo", require_version = "1.24.4") and \
         conf.CheckPKG("fontconfig") and \
         conf.CheckBoost("program_options", require_version="1.35.0") and \
         conf.CheckBoost("regex", require_version = "1.35.0") and \
