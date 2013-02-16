@@ -30,10 +30,6 @@
 #include <cassert>
 #include <cstring>
 
-#ifndef PANGO_VERSION_CHECK
-#define PANGO_VERSION_CHECK(a,b,c) 0
-#endif
-
 namespace font {
 
 namespace {
@@ -86,12 +82,7 @@ std::string escape_text(const std::string& text)
 }
 
 ttext::ttext() :
-#if PANGO_VERSION_CHECK(1,22,0)
 	context_(pango_font_map_create_context(pango_cairo_font_map_get_default())),
-#else
-	context_(pango_cairo_font_map_create_context((
-		reinterpret_cast<PangoCairoFontMap*>(pango_cairo_font_map_get_default())))),
-#endif
 	layout_(pango_layout_new(context_)),
 	rect_(),
 	surface_(),
@@ -172,11 +163,7 @@ bool ttext::is_truncated() const
 {
 	recalculate();
 
-#if PANGO_VERSION_CHECK(1,16,0)
 	return (pango_layout_is_ellipsized(layout_) != 0);
-#else
-	return false;
-#endif
 }
 
 unsigned ttext::insert_text(const unsigned offset, const std::string& text)
@@ -412,13 +399,7 @@ ttext& ttext::set_maximum_height(int height, bool multiline)
 	if(height != maximum_height_) {
 		assert(context_);
 
-/**
- * @todo See whether we can make pango 1.20 mandatory before Wesnoth 1.6 is
- * released.
- */
-#if PANGO_VERSION_CHECK(1,20,0)
 		pango_layout_set_height(layout_, !multiline ? -1 : height * PANGO_SCALE);
-#endif
 		maximum_height_ = height;
 		calculation_dirty_ = true;
 		surface_dirty_ = true;
