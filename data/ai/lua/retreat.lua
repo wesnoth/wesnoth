@@ -54,7 +54,7 @@ function retreat_functions.retreat_injured_units(units)
 
     -- Then we retreat regenerating units to terrain with high defense
     if regen[1] then
-        local action = retreat_functions.get_retreat_injured_units(regen, false)
+        local unit, loc = retreat_functions.get_retreat_injured_units(regen, false)
         if unit then
             return unit, loc
         end
