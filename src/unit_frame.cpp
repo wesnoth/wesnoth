@@ -48,12 +48,54 @@ int progressive_string::duration() const
 		total += cur_halo->second;
 	}
 	return total;
+}
 
+progressive_image::progressive_image(const std::string & data,int duration) :
+	data_(),
+	input_(data)
+{
+		const std::vector<std::string> first_pass = utils::square_parenthetical_split(data);
+		const int time_chunk = std::max<int>(duration / (first_pass.size()?first_pass.size():1),1);
+
+		std::vector<std::string>::const_iterator tmp;
+		for(tmp=first_pass.begin();tmp != first_pass.end() ; ++tmp) {
+			std::vector<std::string> second_pass = utils::split(*tmp,':');
+			if(second_pass.size() > 1) {
+				data_.push_back(std::pair<image::locator,int>(second_pass[0],atoi(second_pass[1].c_str())));
+			} else {
+				data_.push_back(std::pair<image::locator,int>(second_pass[0],time_chunk));
+			}
+		}
+}
+int progressive_image::duration() const
+{
+	int total =0;
+	std::vector<std::pair<image::locator,int> >::const_iterator cur_halo;
+	for(cur_halo = data_.begin() ; cur_halo != data_.end() ; ++cur_halo) {
+		total += cur_halo->second;
+	}
+	return total;
+}
+
+const image::locator empty_image;
+
+const image::locator& progressive_image::get_current_element(int current_time) const
+{
+	int time = 0;
+	unsigned int sub_image = 0;
+	if(data_.empty()) return empty_image;
+	while(time < current_time&& sub_image < data_.size()) {
+		time += data_[sub_image].second;
+		++sub_image;
+
+	}
+	if(sub_image) sub_image--;
+	return data_[sub_image].first;
 }
 
 static const std::string empty_string;
 
-const std::string& progressive_string::get_current_element(int current_time)const
+const std::string& progressive_string::get_current_element(int current_time) const
 {
 	int time = 0;
 	unsigned int sub_halo = 0;
@@ -249,7 +291,10 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string) 
 	if (const config::attribute_value *v = cfg.get(frame_string + "duration")) {
 		duration(*v);
 	} else if (!cfg.get(frame_string + "end")) {
-		duration((progressive_string(halo_,1)).duration());
+		int halo_duration = (progressive_string(halo_,1)).duration();
+		int image_duration = (progressive_image(image_,1)).duration();
+		int image_diagonal_duration = (progressive_image(image_diagonal_,1)).duration();
+		duration(std::max(std::max(image_duration,image_diagonal_duration),halo_duration));
 		
 	} else {
 		duration(cfg[frame_string + "end"].to_int() - cfg[frame_string + "begin"].to_int());
@@ -262,13 +307,13 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string) 
 	}
 }
 
-frame_builder & frame_builder::image(const image::locator& image ,const std::string & image_mod)
+frame_builder & frame_builder::image(const std::string& image ,const std::string & image_mod)
 {
 	image_ = image;
 	image_mod_ = image_mod;
 	return *this;
 }
-frame_builder & frame_builder::image_diagonal(const image::locator& image_diagonal,const std::string& image_mod)
+frame_builder & frame_builder::image_diagonal(const std::string& image_diagonal,const std::string& image_mod)
 {
 	image_diagonal_ = image_diagonal;
 	image_mod_ = image_mod;
@@ -366,8 +411,8 @@ frame_builder & frame_builder::drawing_layer(const std::string& drawing_layer)
 
 frame_parsed_parameters::frame_parsed_parameters(const frame_builder & builder, int duration) :
 	duration_(duration ? duration :builder.duration_),
-	image_(builder.image_),
-	image_diagonal_(builder.image_diagonal_),
+	image_(builder.image_,duration),
+	image_diagonal_(builder.image_diagonal_,duration),
 	image_mod_(builder.image_mod_),
 	halo_(builder.halo_,duration_),
 	halo_x_(builder.halo_x_,duration_),
@@ -394,7 +439,9 @@ frame_parsed_parameters::frame_parsed_parameters(const frame_builder & builder, 
 
 bool frame_parsed_parameters::does_not_change() const
 {
-	return halo_.does_not_change() &&
+	return image_.does_not_change() &&
+		image_diagonal_.does_not_change() &&
+		halo_.does_not_change() &&
 		halo_x_.does_not_change() &&
 		halo_y_.does_not_change() &&
 		blend_ratio_.does_not_change() &&
@@ -409,7 +456,9 @@ bool frame_parsed_parameters::does_not_change() const
 }
 bool frame_parsed_parameters::need_update() const
 {
-	if(!halo_.does_not_change() ||
+	if(!image_.does_not_change() ||
+			!image_diagonal_.does_not_change() ||
+			!halo_.does_not_change() ||
 			!halo_x_.does_not_change() ||
 			!halo_y_.does_not_change() ||
 			!blend_ratio_.does_not_change() ||
@@ -430,8 +479,8 @@ const frame_parameters frame_parsed_parameters::parameters(int current_time) con
 {
 	frame_parameters result;
 	result.duration = duration_;
-	result.image = image_;
-	result.image_diagonal = image_diagonal_;
+	result.image = image_.get_current_element(current_time);
+	result.image_diagonal = image_diagonal_.get_current_element(current_time);
 	result.image_mod = image_mod_;
 	result.halo = halo_.get_current_element(current_time);
 	result.halo_x = halo_x_.get_current_element(current_time);
@@ -490,6 +539,8 @@ void frame_parsed_parameters::override( int duration
 	}
 
 	if(duration != duration_) {
+		image_ = progressive_image(image_.get_original(),duration);
+		image_diagonal_ = progressive_image(image_diagonal_.get_original(),duration);
 		halo_ = progressive_string(halo_.get_original(),duration);
 		halo_x_ = progressive_int(halo_x_.get_original(),duration);
 		halo_y_ = progressive_int(halo_y_.get_original(),duration);

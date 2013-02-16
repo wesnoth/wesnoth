@@ -37,6 +37,18 @@ class progressive_string {
 		std::string input_;
 };
 
+class progressive_image {
+	public:
+		progressive_image(const std::string& data = "",int duration = 0);
+		int duration() const;
+		const image::locator & get_current_element(int time) const;
+		bool does_not_change() const { return data_.size() <= 1; }
+		std::string get_original() const { return input_; }
+	private:
+		std::vector<std::pair<image::locator,int> > data_;
+		std::string input_;
+};
+
 template <class T>
 class progressive_
 {
@@ -94,8 +106,8 @@ class frame_builder {
 		frame_builder(const config& cfg,const std::string &frame_string = "");
 		/** allow easy chained modifications will raised assert if used after initialization */
 		frame_builder & duration(const int duration);
-		frame_builder & image(const image::locator& image ,const std::string & image_mod="");
-		frame_builder & image_diagonal(const image::locator& image_diagonal,const std::string & image_mod="");
+		frame_builder & image(const std::string& image ,const std::string & image_mod="");
+		frame_builder & image_diagonal(const std::string& image_diagonal,const std::string & image_mod="");
 		frame_builder & sound(const std::string& sound);
 		frame_builder & text(const std::string& text,const  Uint32 text_color);
 		frame_builder & halo(const std::string &halo, const std::string &halo_x, const std::string& halo_y,const std::string& halo_mod);
@@ -115,8 +127,8 @@ class frame_builder {
 	private:
 		friend class frame_parsed_parameters;
 		int duration_;
-		image::locator image_;
-		image::locator image_diagonal_;
+		std::string image_;
+		std::string image_diagonal_;
 		std::string image_mod_;
 		std::string halo_;
 		std::string halo_x_;
@@ -162,8 +174,8 @@ class frame_parsed_parameters {
 		bool need_update() const;
 	private:
 		int duration_;
-		image::locator image_;
-		image::locator image_diagonal_;
+		progressive_image image_;
+		progressive_image image_diagonal_;
 		std::string image_mod_;
 		progressive_string halo_;
 		progressive_int halo_x_;

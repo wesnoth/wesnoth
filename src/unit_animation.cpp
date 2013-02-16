@@ -360,7 +360,7 @@ int unit_animation::matches(const display &disp,const map_location& loc,const ma
 
 void unit_animation::fill_initial_animations( std::vector<unit_animation> & animations, const config & cfg)
 {
-	const image::locator default_image = image::locator(cfg["image"]);
+	const std::string default_image = cfg["image"];
 	std::vector<unit_animation>  animation_base;
 	std::vector<unit_animation>::const_iterator itor;
 	add_anims(animations,cfg);
@@ -523,15 +523,6 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, "standing_anim"))
 	{
 		config anim = ab.merge();
-		anim["apply_to"] = "default";
-		anim["cycles"] = "false";
-		if (anim["layer"].empty()) anim["layer"] = default_layer;
-		if (anim["offscreen"].empty()) anim["offscreen"] = false;
-		animations.push_back(unit_animation(anim));
-	}
-	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, "standing_anim"))
-	{
-		config anim = ab.merge();
 		anim["apply_to"] = "standing";
 		anim["cycles"] = "true";
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
@@ -601,7 +592,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 			anim["hits"] = true;
 			animations.push_back(unit_animation(anim));
 			animations.back().add_frame(225,frame_builder()
-					.image(animations.back().get_last_frame().parameters(0).image)
+					.image(animations.back().get_last_frame().parameters(0).image.get_filename())
 					.duration(225)
 					.blend("0.0,0.5:75,0.0:75,0.5:75,0.0",game_display::rgb(255,0,0)));
 		}
@@ -615,7 +606,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 				animations.push_back(unit_animation(tmp));
 				if(hit_type == "yes" || hit_type == "hit" || hit_type=="kill") {
 					animations.back().add_frame(225,frame_builder()
-							.image(animations.back().get_last_frame().parameters(0).image)
+							.image(animations.back().get_last_frame().parameters(0).image.get_filename())
 							.duration(225)
 							.blend("0.0,0.5:75,0.0:75,0.5:75,0.0",game_display::rgb(255,0,0)));
 				}
@@ -654,7 +645,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
 		animations.push_back(unit_animation(anim));
 		image::locator image_loc = animations.back().get_last_frame().parameters(0).image;
-		animations.back().add_frame(600,frame_builder().image(image_loc).duration(600).highlight("1~0:600"));
+		animations.back().add_frame(600,frame_builder().image(image_loc.get_filename()).duration(600).highlight("1~0:600"));
 		if(!cfg["die_sound"].empty()) {
 			animations.back().sub_anims_["_death_sound"] = particule();
 			animations.back().sub_anims_["_death_sound"].add_frame(1,frame_builder());
