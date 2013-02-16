@@ -18,8 +18,8 @@ def CheckPango(context, backend, require_version = None):
         env["ENV"]["PKG_CONFIG_PATH"] = environ.get("PKG_CONFIG_PATH")
         version_arg = ""
         if require_version:
-            version_arg = "--atleast-version=" + require_version
-        env.ParseConfig("pkg-config --libs --cflags %s $PKGCONFIG_FLAGS pango" % version_arg + backend)
+            version_arg = " \\>= " + require_version
+        env.ParseConfig("pkg-config --libs --cflags $PKGCONFIG_FLAGS pango" + backend + version_arg)
         context.Result("yes")
         return True
     except OSError:
