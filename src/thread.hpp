@@ -62,10 +62,6 @@ public:
 	// thread object has finished its operation.
 	~thread();
 
-	// Kill the thread. If the thread has already been killed, this
-	// is a no-op.
-	void kill();
-
 	// Join (wait) on the thread to finish. When the thread finishes,
 	// the function will return. calling wait() on an already killed
 	// thread is a no-op.

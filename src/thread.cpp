@@ -58,14 +58,6 @@ thread::~thread()
 	join();
 }
 
-void thread::kill()
-{
-	if(thread_ != NULL) {
-		SDL_KillThread(thread_);
-		thread_ = NULL;
-	}
-}
-
 void thread::join()
 {
 	if(thread_ != NULL) {
