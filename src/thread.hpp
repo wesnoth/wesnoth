@@ -21,6 +21,7 @@
 
 #include <list>
 
+#include <boost/noncopyable.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/smart_ptr.hpp>
 
@@ -43,6 +44,7 @@ struct manager
 // used for manipulating threads instead of poking around with SDL_Thread
 // calls.
 class thread
+	: private boost::noncopyable
 {
 public:
 	// Construct a new thread to start executing the function
@@ -73,8 +75,6 @@ public:
 
 	Uint32 get_id() { return SDL_GetThreadID(thread_); }
 private:
-	thread(const thread&);
-	void operator=(const thread&);
 
 	SDL_Thread* thread_;
 };
@@ -87,6 +87,7 @@ inline Uint32 get_current_thread_id() { return SDL_ThreadID(); }
 // and monitor interfacing through condition variables is handled through
 // the friend class condition.
 class mutex
+	: private boost::noncopyable
 {
 public:
 	mutex();
@@ -96,8 +97,6 @@ public:
 	friend class condition;
 
 private:
-	mutex(const mutex&);
-	void operator=(const mutex&);
 
 	SDL_mutex* const m_;
 };
@@ -108,6 +107,7 @@ private:
 // object on a mutex will lock the mutex as long as this object is
 // not deleted.
 class lock
+	: private boost::noncopyable
 {
 public:
 	// Create a lock object on the mutex given as a parameter to
@@ -122,8 +122,6 @@ public:
 	// on the mutex which the lock object was created with.
 	~lock();
 private:
-	lock(const lock&);
-	void operator=(const lock&);
 
 	mutex& m_;
 };
@@ -135,6 +133,7 @@ private:
 // of the code and regain it later. Condition classes only make
 // sense to do operations on, if one already acquired a mutex.
 class condition
+	: private boost::noncopyable
 {
 public:
 	condition();
@@ -181,8 +180,6 @@ public:
 	bool notify_all();
 
 private:
-	condition(const condition&);
-	void operator=(const condition&);
 
 	SDL_cond* const cond_;
 };
