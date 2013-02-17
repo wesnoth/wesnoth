@@ -160,7 +160,7 @@ display::display(unit_map* units, CVideo& video, const gamemap* map, const std::
 
 	init_flags();
 
-#if defined(__GLIBC__)
+#if defined(__GLIBC__) && !SDL_VERSION_ATLEAST(2,0,0)
 	// Runtime checks for bug #17573
 	// Get glibc runtime version information
 	int glibc, glibc_minor;
