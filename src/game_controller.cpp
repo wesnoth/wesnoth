@@ -966,8 +966,20 @@ void game_controller::load_game_cfg(const bool force)
 			const std::string file = *uc;
 			const int size_minus_extension = file.size() - 4;
 			if(file.substr(size_minus_extension, file.size()) == ".cfg") {
+				bool ok = true;
 				// Allowing it if the dir doesn't exist, for the single-file add-on.
 				if(file_exists(file.substr(0, size_minus_extension))) {
+					// Unfortunately, we create the dir plus _info.cfg ourselves on download
+					std::vector<std::string> dirs, files;
+					get_files_in_dir(file.substr(0, size_minus_extension), &files, &dirs);
+					if(dirs.size() > 0)
+						ok = false;
+					if(files.size() > 1)
+						ok = false;
+					if(files.size() == 1 && files[0] != "_info.cfg")
+						ok = false;
+				}
+				if(!ok) {
 					const int userdata_loc = file.find("data/add-ons") + 5;
 					ERR_CONFIG << "error reading usermade add-on '" << file << "'\n";
 					error_addons.push_back(file);
