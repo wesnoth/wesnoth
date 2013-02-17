@@ -630,12 +630,26 @@ void set_pixel_format(SDL_PixelFormat* format)
 	// if the pixel format change, we clear the cache,
 	// because some images are now optimized for the wrong display format
 	// FIXME: 8 bpp use palette, need to compare them. For now assume a change
-	if (format->BitsPerPixel == 8 ||
-		f.BitsPerPixel != l.BitsPerPixel || f.BytesPerPixel != l.BytesPerPixel ||
-		f.Rmask != l.Rmask || f.Gmask != l.Gmask || f.Bmask != l.Bmask ||
-		f.Rloss != l.Rloss || f.Gloss != l.Gloss || f.Bloss != l.Bloss ||
-		f.Rshift != l.Rshift || f.Gshift != l.Gshift || f.Bshift != l.Bshift ||
-		f.colorkey != l.colorkey || f.alpha != l.alpha)
+	if (format->BitsPerPixel == 8
+			|| f.BitsPerPixel != l.BitsPerPixel
+			|| f.BytesPerPixel != l.BytesPerPixel
+			|| f.Rmask != l.Rmask
+			|| f.Gmask != l.Gmask
+			|| f.Bmask != l.Bmask
+//			|| f.Amask != l.Amask This field in not checked, not sure why.
+			|| f.Rloss != l.Rloss
+			|| f.Gloss != l.Gloss
+			|| f.Bloss != l.Bloss
+//			|| f.Aloss != l.Aloss This field in not checked, not sure why.
+			|| f.Rshift != l.Rshift
+			|| f.Gshift != l.Gshift
+			|| f.Bshift != l.Bshift
+//			|| f.Ashift != l.Ashift This field in not checked, not sure why.
+#if !SDL_VERSION_ATLEAST(2,0,0)
+			|| f.colorkey != l.colorkey
+			|| f.alpha != l.alpha
+#endif
+			)
 	{
 		LOG_DP << "detected a new display format\n";
 		flush_cache();
