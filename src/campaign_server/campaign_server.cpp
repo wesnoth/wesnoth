@@ -581,8 +581,8 @@ namespace {
 				if(err_sock == 0 && sock > 0)
 					err_sock = sock;
 				if(err_sock) {
-					LOG_CS << "client disconnect due to exception: " << e.what() << " " << network::ip_address(*err_connection) << "\n";
-					network::disconnect(*err_connection);
+					LOG_CS << "client disconnect due to exception: " << e.what() << " " << network::ip_address(err_sock) << "\n";
+					network::disconnect(err_sock);
 				} else {
 					throw;
 				}
