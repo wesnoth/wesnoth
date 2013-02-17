@@ -20,10 +20,43 @@
 #include "clipboard.hpp"
 #include <algorithm>
 
-#if defined(_X11) && !defined(__APPLE__)
+#include <SDL_version.h>
+
+#if SDL_VERSION_ATLEAST(2,0,0)
 
 #define CLIPBOARD_FUNCS_DEFINED
 
+/*
+ * Note SDL 2.0 has its own clipboard routines, but they don't support
+ * different clipboards (yet).
+ */
+
+void copy_to_clipboard(const std::string& text, const bool)
+{
+	SDL_SetClipboardText(text.c_str());
+}
+
+std::string copy_from_clipboard(const bool)
+{
+	char* clipboard = SDL_GetClipboardText();
+	if(!clipboard) {
+		return std::string();
+	}
+
+	const std::string result(clipboard);
+	SDL_free(clipboard);
+	return result;
+}
+
+void handle_system_event(const SDL_Event& /*event*/)
+{
+}
+
+#else
+
+#if defined(_X11) && !defined(__APPLE__)
+
+#define CLIPBOARD_FUNCS_DEFINED
 
 #include "SDL_syswm.h"
 
@@ -578,5 +611,6 @@ void handle_system_event(const SDL_Event& /*event*/)
 {
 }
 
+#endif
 #endif
 
