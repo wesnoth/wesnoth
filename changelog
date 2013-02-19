@@ -23,6 +23,7 @@ Version 1.10.5+svn:
    * Made wmllint recognize victory_string, defeat_string, gold_carryover_string,
      and notes_string (all from the [objectives] tag) as attributes that need
      to be made translatable
+   * Fixed wmllint complaining about id= attributes in [time_area]s
    * Make drakes fly on volcano tiles (bug #20485).
    * Fixed bug #20290: No longer terminate due to a corrupt savegame.
    * Fixed bug #19970: No longer terminate due to corrupt preferences.
