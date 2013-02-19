@@ -1249,9 +1249,9 @@ def global_sanity_check(filename, lines):
             in_time_area = True
         elif "[/time_area]" in lines[i]:
             in_time_area = False
-        elif "[label]" in lines[i] or "[chamber]" in lines[i] or "[time]" in lines[i] or "[time_area]" in lines [i]:
+        elif "[label]" in lines[i] or "[chamber]" in lines[i] or "[time]" in lines[i]:
             ignore_id = True
-        elif "[/label]" in lines[i] or "[/chamber]" in lines[i] or "[/time]" in lines[i] or "[/time_area]" in lines [i]:
+        elif "[/label]" in lines[i] or "[/chamber]" in lines[i] or "[/time]" in lines[i]:
             ignore_id = False
         elif "[kill]" in lines[i] or "[effect]" in lines[i] or "[move_unit_fake]" in lines[i] or "[scroll_to_unit]" in lines[i]:
             ignoreable = True
