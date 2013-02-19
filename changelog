@@ -90,6 +90,8 @@ Version 1.11.1+svn:
    * Made wmllint recognize victory_string, defeat_string,
      gold_carryover_string, and notes_string (all from the [objectives] tag) as
      attributes that need to be made translatable
+   * Made wmllint ignore the id attribute in [time_area] as it is not  associated
+     to units most of the time
    * Added -Wdocumentation to the CMake pedantic flags.
    * Make drakes fly on volcano tiles (bug #20485).
    * Added a FOREACH macro to emulate C++11 for(... : ...) style loops.
