@@ -102,23 +102,32 @@ public:
 		cfg_(that.cfg_), cache_(that.cache_), params_(that.params_)
 	{}
 
+	/// Clears the cached data (presumably our fallback has changed).
+	void clear_cache(const terrain_info * cascade) const;
 	/// Tests for no data in this object.
 	bool empty() const { return cfg_.empty(); }
 	/// Merges the given config over the existing costs.
-	void merge(const config & new_values, bool overwrite);
+	void merge(const config & new_values, bool overwrite,
+	           const terrain_info * cascade);
+	/// Read-only access to our parameters.
+	const parameters & params() const { return params_; }
 	/// Returns the value associated with the given terrain.
-	int value(const t_translation::t_terrain & terrain) const
-	{ return value(terrain, 0); }
+	int value(const t_translation::t_terrain & terrain,
+	          const terrain_info * fallback) const
+	{ return value(terrain, fallback, 0); }
 	/// If there is data, writes it to the config.
 	void write(config & out_cfg, const std::string & child_name) const;
+	/// If there is (merged) data, writes it to the config.
+	void write(config & out_cfg, const std::string & child_name,
+	           const terrain_info * fallback) const;
 
 private:
 	/// Calculates the value associated with the given terrain.
 	int calc_value(const t_translation::t_terrain & terrain,
-	               unsigned recurse_count) const;
+	               const terrain_info * fallback, unsigned recurse_count) const;
 	/// Returns the value associated with the given terrain (possibly cached).
 	int value(const t_translation::t_terrain & terrain,
-	          unsigned recurse_count) const;
+	          const terrain_info * fallback, unsigned recurse_count) const;
 
 private:
 	typedef std::map<t_translation::t_terrain, int> cache_t;
@@ -133,13 +142,27 @@ private:
 
 
 /**
+ * Clears the cached data (presumably our fallback has changed).
+ * @param[in] cascade  Cache clearing will be cascaded into this terrain_info.
+ */
+void movetype::terrain_info::data::clear_cache(const terrain_info * cascade) const
+{
+	cache_.clear();
+	// Cascade the clear to whichever terrain_info falls back on us.
+	if ( cascade )
+		cascade->clear_cache();
+}
+
+
+/**
  * Merges the given config over the existing costs.
  * @param[in] new_values  The new values.
  * @param[in] overwrite   If true, the new values overwrite the old.
  *                        If false, the new values are added to the old.
  * @param[in] cascade     Cache clearing will be cascaded into this terrain_info.
  */
-void movetype::terrain_info::data::merge(const config & new_values, bool overwrite)
+void movetype::terrain_info::data::merge(const config & new_values, bool overwrite,
+                                         const terrain_info * cascade)
 {
 	if ( overwrite )
 		// We do not support child tags here, so do not copy any that might
@@ -165,7 +188,7 @@ void movetype::terrain_info::data::merge(const config & new_values, bool overwri
 	}
 
 	// The new data has invalidated the cache.
-	cache_.clear();
+	clear_cache(cascade);
 }
 
 
@@ -189,14 +212,35 @@ void movetype::terrain_info::data::write(
 
 
 /**
+ * Writes merged data to a config.
+ * @param[out] out_cfg     The config that will receive the data.
+ * @param[in]  child_name  If not empty, create and write to a child config with this tag.
+ *                         This *will* be created even if there is no data to write.
+ * @param[in]  fallback    If not NULL, its data will be merged with ours for the write.
+ */
+void movetype::terrain_info::data::write(
+	config & out_cfg, const std::string & child_name, const terrain_info * fallback) const
+{
+	// Get a place to write to.
+	config & merged = child_name.empty() ? out_cfg : out_cfg.add_child(child_name);
+
+	if ( fallback )
+		fallback->write(merged, "", true);
+	merged.merge_with(cfg_);
+}
+
+
+/**
  * Calculates the value associated with the given terrain.
  * This is separate from value() to separate the calculating of the
  * value from the caching of it.
  * @param[in]  terrain        The terrain whose value is requested.
+ * @param[in]  fallback       Consulted if we are missing data.
  * @param[in]  recurse_count  Detects (probable) infinite recursion.
  */
 int movetype::terrain_info::data::calc_value(
 	const t_translation::t_terrain & terrain,
+	const terrain_info * fallback,
 	unsigned recurse_count) const
 {
 	// Infinite recursion detection:
@@ -228,6 +272,10 @@ int movetype::terrain_info::data::calc_value(
 			result = val->to_int(params_.default_value);
 			if ( params_.eval != NULL )
 				result = params_.eval(result);
+		}
+		else if ( fallback != NULL ) {
+			// Get the value from our fallback.
+			result = fallback->value(terrain);
 		}
 
 		// Validate the value.
@@ -272,7 +320,7 @@ int movetype::terrain_info::data::calc_value(
 			}
 			else {
 				// Test the underlying terrain's value against the best so far.
-				const int num = value(*i, recurse_count + 1);
+				const int num = value(*i, fallback, recurse_count + 1);
 
 				if ( ( prefer_high  &&  num > result)  ||
 					 (!prefer_high  &&  num < result) )
@@ -288,10 +336,12 @@ int movetype::terrain_info::data::calc_value(
 /**
  * Returns the value associated with the given terrain (possibly cached).
  * @param[in]  terrain        The terrain whose value is requested.
+ * @param[in]  fallback       Consulted if we are missing data.
  * @param[in]  recurse_count  Detects (probable) infinite recursion.
  */
 int movetype::terrain_info::data::value(
 	const t_translation::t_terrain & terrain,
+	const terrain_info * fallback,
 	unsigned recurse_count) const
 {
 	// Check the cache.
@@ -299,7 +349,7 @@ int movetype::terrain_info::data::value(
 		cache_.insert(std::make_pair(terrain, -127)); // Bogus value that should never be seen.
 	if ( cache_it.second )
 		// The cache did not have an entry for this terrain, so calculate the value.
-		cache_it.first->second = calc_value(terrain, recurse_count);
+		cache_it.first->second = calc_value(terrain, fallback, recurse_count);
 
 	return cache_it.first->second;
 }
@@ -312,14 +362,18 @@ int movetype::terrain_info::data::value(
  * Constructor.
  * @param[in] params    The parameters to use when calculating values.
  *                      This is stored as a reference, so it must be long-lived (typically a static variable).
- * @param[in] fallback  Used as a backup in case we have no data (think vision costs falling back to movement costs).
- * @note The fallback mechanism is a bit fragile and really should only
+ * @param[in] fallback  Used as a backup in case we are asked for data we do not have (think vision costs falling back to movement costs).
+ * @param[in] cascade   A terrain_info that uses us as a fallback. (Needed to sync cache clearing.)
+ * @note The fallback/cascade mechanism is a bit fragile and really should only
  *       be used by movetype.
  */
 movetype::terrain_info::terrain_info(const parameters & params,
-                                     const terrain_info * fallback) :
+                                     const terrain_info * fallback,
+                                     const terrain_info * cascade) :
 	data_(new data(params)),
-	fallback_(fallback)
+	merged_data_(NULL),
+	fallback_(fallback),
+	cascade_(cascade)
 {
 }
 
@@ -329,14 +383,18 @@ movetype::terrain_info::terrain_info(const parameters & params,
  * @param[in] cfg       An initial data set.
  * @param[in] params    The parameters to use when calculating values.
  *                      This is stored as a reference, so it must be long-lived (typically a static variable).
- * @param[in] fallback  Used as a backup in case we have no data (think vision costs falling back to movement costs).
- * @note The fallback mechanism is a bit fragile and really should only
+ * @param[in] fallback  Used as a backup in case we are asked for data we do not have (think vision costs falling back to movement costs).
+ * @param[in] cascade   A terrain_info that uses us as a fallback. (Needed to sync cache clearing.)
+ * @note The fallback/cascade mechanism is a bit fragile and really should only
  *       be used by movetype.
  */
 movetype::terrain_info::terrain_info(const config & cfg, const parameters & params,
-                                     const terrain_info * fallback) :
+                                     const terrain_info * fallback,
+                                     const terrain_info * cascade) :
 	data_(new data(cfg, params)),
-	fallback_(fallback)
+	merged_data_(NULL),
+	fallback_(fallback),
+	cascade_(cascade)
 {
 }
 
@@ -344,16 +402,20 @@ movetype::terrain_info::terrain_info(const config & cfg, const parameters & para
 /**
  * Copy constructor.
  * @param[in] that      The terran_info to copy.
- * @param[in] fallback  Used as a backup in case we have no data (think vision costs falling back to movement costs).
- * @note The fallback mechanism is a bit fragile and really should only
+ * @param[in] fallback  Used as a backup in case we are asked for data we do not have (think vision costs falling back to movement costs).
+ * @param[in] cascade   A terrain_info that uses us as a fallback. (Needed to sync cache clearing.)
+ * @note The fallback/cascade mechanism is a bit fragile and really should only
  *       be used by movetype.
  */
 movetype::terrain_info::terrain_info(const terrain_info & that,
-                                     const terrain_info * fallback) :
+                                     const terrain_info * fallback,
+                                     const terrain_info * cascade) :
 	// If we do not have a fallback, we need to incorporate that's fallback.
 	// (See also the assignment operator.)
 	data_(new data(fallback ? *that.data_ : that.get_merged())),
-	fallback_(fallback)
+	merged_data_(NULL),
+	fallback_(fallback),
+	cascade_(cascade)
 {
 }
 
@@ -364,6 +426,7 @@ movetype::terrain_info::terrain_info(const terrain_info & that,
 movetype::terrain_info::~terrain_info()
 {
 	delete data_;
+	delete merged_data_;
 }
 
 
@@ -378,10 +441,23 @@ movetype::terrain_info & movetype::terrain_info::operator=(const terrain_info & 
 		// (See also the copy constructor.)
 		data_ = new data(fallback_ ? *that.data_ : that.get_merged());
 
-		// We do not change our fallback.
+		delete merged_data_;
+		merged_data_ = NULL;
+		// We do not change our fallback nor our cascade.
 	}
 
 	return *this;
+}
+
+
+/**
+ * Clears the cache of values.
+ */
+void movetype::terrain_info::clear_cache() const
+{
+	delete merged_data_;
+	merged_data_ = NULL;
+	data_->clear_cache(cascade_);
 }
 
 
@@ -393,7 +469,11 @@ movetype::terrain_info & movetype::terrain_info::operator=(const terrain_info & 
  */
 void movetype::terrain_info::merge(const config & new_values, bool overwrite)
 {
-	data_->merge(new_values, overwrite);
+	// Reset merged_data_.
+	delete merged_data_;
+	merged_data_ = NULL;
+
+	data_->merge(new_values, overwrite, cascade_);
 }
 
 
@@ -402,10 +482,7 @@ void movetype::terrain_info::merge(const config & new_values, bool overwrite)
  */
 int movetype::terrain_info::value(const t_translation::t_terrain & terrain) const
 {
-	if ( fallback_ && data_->empty() )
-		return fallback_->value(terrain);
-
-	return data_->value(terrain);
+	return data_->value(terrain, fallback_);
 }
 
 
@@ -422,15 +499,7 @@ void movetype::terrain_info::write(config & cfg, const std::string & child_name,
 	if ( !merged )
 		data_->write(cfg, child_name);
 	else
-	{
-		// Get a place to write to.
-		config & merged_cfg = child_name.empty() ? cfg : cfg.add_child(child_name);
-
-		if ( fallback_ && data_->empty() )
-			fallback_->write(merged_cfg, "", true);
-		else
-			data_->write(merged_cfg, "");
-	}
+		data_->write(cfg, child_name, fallback_);
 }
 
 
@@ -439,10 +508,25 @@ void movetype::terrain_info::write(config & cfg, const std::string & child_name,
  */
 const movetype::terrain_info::data & movetype::terrain_info::get_merged() const
 {
-	if ( !fallback_  ||  !data_->empty() )
-		return *data_;
-	else
-		return fallback_->get_merged();
+	// Create-on-demand.
+	if ( !merged_data_ )
+	{
+		if ( !fallback_ )
+			// Nothing to incorporate.
+			merged_data_ = new data(*data_);
+
+		else if ( data_->empty() )
+			// Pure fallback.
+			merged_data_ = new data(fallback_->get_merged());
+
+		else {
+			// Need to merge data.
+			config merged;
+			write(merged, "", true);
+			merged_data_ = new data(merged, data_->params());
+		}
+	}
+	return *merged_data_;
 }
 
 
@@ -523,9 +607,9 @@ void movetype::resistances::write(config & out_cfg, const std::string & child_na
  * Default constructor
  */
 movetype::movetype() :
-	movement_(NULL),
-	vision_(&movement_),
-	jamming_(NULL),
+	movement_(NULL, &vision_),      // This is not access before initialization; the address is merely stored at this point.
+	vision_(&movement_, &jamming_), // This is not access before initialization; the address is merely stored at this point.
+	jamming_(&vision_, NULL),
 	defense_(),
 	resist_(),
 	flying_(false)
@@ -537,9 +621,9 @@ movetype::movetype() :
  * Constructor from a config
  */
 movetype::movetype(const config & cfg) :
-	movement_(cfg.child_or_empty("movement_costs"), NULL),
-	vision_(cfg.child_or_empty("vision_costs"), &movement_),
-	jamming_(cfg.child_or_empty("jamming_costs"), NULL),
+	movement_(cfg.child_or_empty("movement_costs"), NULL, &vision_),    // This is not access before initialization; the address is merely stored at this point.
+	vision_(cfg.child_or_empty("vision_costs"), &movement_, &jamming_), // This is not access before initialization; the address is merely stored at this point.
+	jamming_(cfg.child_or_empty("jamming_costs"), &vision_, NULL),
 	defense_(cfg.child_or_empty("defense")),
 	resist_(cfg.child_or_empty("resistance")),
 	flying_(cfg["flies"].to_bool(false))
@@ -551,9 +635,9 @@ movetype::movetype(const config & cfg) :
  * Copy constructor
  */
 movetype::movetype(const movetype & that) :
-	movement_(that.movement_, NULL),
-	vision_(that.vision_, &movement_),
-	jamming_(that.jamming_, NULL),
+	movement_(that.movement_, NULL, &vision_),    // This is not access before initialization; the address is merely stored at this point.
+	vision_(that.vision_, &movement_, &jamming_), // This is not access before initialization; the address is merely stored at this point.
+	jamming_(that.jamming_, &vision_, NULL),
 	defense_(that.defense_),
 	resist_(that.resist_),
 	flying_(that.flying_)
