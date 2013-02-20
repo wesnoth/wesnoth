@@ -371,7 +371,7 @@ int recruitment_phase::average_resistance_against(const unit_type& a, const unit
 	     j_end = terrain.end(); j != j_end; ++j)
 	{
 		// Use only reachable tiles when computing the average defense.
-	  if (a.movement_type().movement_cost(j->first) < unit_movement_type::UNREACHABLE) {
+	  if (a.movement_type().movement_cost(j->first) < movetype::UNREACHABLE) {
 			defense += a.movement_type().defense_modifier(j->first) * j->second;
 			weighting_sum += j->second;
 		}

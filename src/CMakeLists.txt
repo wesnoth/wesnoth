@@ -705,7 +705,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/debug_clock.cpp
 	gui/dialogs/dialog.cpp
 	gui/dialogs/edit_label.cpp
-        gui/dialogs/editor/editor_edit_label.cpp
+	gui/dialogs/editor/editor_edit_label.cpp
 	gui/dialogs/editor_generate_map.cpp
 	gui/dialogs/editor_new_map.cpp
 	gui/dialogs/editor_resize_map.cpp
@@ -752,6 +752,7 @@ set(wesnoth-main_SRC
 	menu_events.cpp
 	mouse_events.cpp
 	mouse_handler_base.cpp
+	movetype.cpp
 	mp_depcheck.cpp
 	mp_game_settings.cpp
 	mp_options.cpp

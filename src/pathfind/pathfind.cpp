@@ -81,7 +81,7 @@ map_location pathfind::find_vacant_tile(const map_location& loc,
 			//If this area is not a castle but should, skip it.
 			if (vacancy == pathfind::VACANT_CASTLE && !map.is_castle(loc)) continue;
 			const bool pass_check_and_unreachable = pass_check
-				&& pass_check->movement_cost(map[loc]) == unit_movement_type::UNREACHABLE;
+				&& pass_check->movement_cost(map[loc]) == movetype::UNREACHABLE;
 			//If the unit can't reach the tile and we have searched
 			//an area of at least radius 10 (arbitrary), skip the tile.
 			//Neccessary for cases such as an unreachable
@@ -693,7 +693,7 @@ double pathfind::shortest_path_calculator::cost(const map_location& loc, const d
 	return move_cost + (defense_subcost + other_unit_subcost) / 10000.0;
 }
 
-pathfind::move_type_path_calculator::move_type_path_calculator(const unit_movement_type& mt, int movement_left, int total_movement, team const &t, gamemap const &map)
+pathfind::move_type_path_calculator::move_type_path_calculator(const movetype& mt, int movement_left, int total_movement, team const &t, gamemap const &map)
 	: movement_type_(mt), movement_left_(movement_left),
 	  total_movement_(total_movement), viewing_team_(t), map_(map)
 {}

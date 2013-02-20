@@ -22,10 +22,10 @@
 #define PATHFIND_H_INCLUDED
 
 class gamemap;
+class movetype;
 class team;
 class unit;
 class unit_map;
-class unit_movement_type;
 
 #include "map_location.hpp"
 
@@ -227,11 +227,11 @@ private:
 
 struct move_type_path_calculator : cost_calculator
 {
-	move_type_path_calculator(const unit_movement_type& mt, int movement_left, int total_movement, const team& t, const gamemap& map);
+	move_type_path_calculator(const movetype& mt, int movement_left, int total_movement, const team& t, const gamemap& map);
 	virtual double cost(const map_location& loc, const double so_far) const;
 
 private:
-	const unit_movement_type &movement_type_;
+	const movetype &movement_type_;
 	const int movement_left_;
 	const int total_movement_;
 	team const &viewing_team_;

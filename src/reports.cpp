@@ -601,7 +601,7 @@ static config unit_moves(const unit* u)
 			tooltip << name << ": ";
 
 			std::string color;
-			//movement  -  range: 1 .. 5, unit_movement_type::UNREACHABLE=impassable
+			//movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
 			const bool cannot_move = moves > u->total_movement();
 			if (cannot_move)		// cannot move in this terrain
 				color = "red";
@@ -1263,7 +1263,7 @@ REPORT_GENERATOR(position)
 
 	int move_cost = u->movement_cost(terrain);
 	int defense = 100 - u->defense_modifier(terrain);
-	if (move_cost < unit_movement_type::UNREACHABLE) {
+	if (move_cost < movetype::UNREACHABLE) {
 		str << " (" << defense << "%," << move_cost << ')';
 	} else if (mouseover_hex == displayed_unit_hex) {
 		str << " (" << defense << "%,‒)";

@@ -145,12 +145,9 @@ unit::unit(const unit& o):
 
            movement_(o.movement_),
            max_movement_(o.max_movement_),
-           movement_costs_(o.movement_costs_),
            vision_(o.vision_),
-           vision_costs_(o.vision_costs_),
            jamming_(o.jamming_),
-           jamming_costs_(o.jamming_costs_),
-           defense_mods_(o.defense_mods_),
+           movement_type_(o.movement_type_),
            hold_position_(o.hold_position_),
            end_turn_(o.end_turn_),
            resting_(o.resting_),
@@ -176,7 +173,6 @@ unit::unit(const unit& o):
            unit_value_(o.unit_value_),
            goto_(o.goto_),
            interrupted_move_(o.interrupted_move_),
-           flying_(o.flying_),
            is_fearless_(o.is_fearless_),
            is_healthy_(o.is_healthy_),
 
@@ -231,12 +227,9 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 	formula_vars_(),
 	movement_(0),
 	max_movement_(0),
-	movement_costs_(),
 	vision_(-1),
-	vision_costs_(),
 	jamming_(0),
-	jamming_costs_(),
-	defense_mods_(),
+	movement_type_(),
 	hold_position_(false),
 	end_turn_(false),
 	resting_(false),
@@ -258,7 +251,6 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 	unit_value_(),
 	goto_(),
 	interrupted_move_(),
-	flying_(false),
 	is_fearless_(false),
 	is_healthy_(false),
 	modification_descriptions_(),
@@ -345,9 +337,6 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 	if (const config::attribute_value *v = cfg.get("zoc")) {
 		emit_zoc_ = v->to_bool(level_ > 0);
 	}
-	if (const config::attribute_value *v = cfg.get("flying")) {
-		flying_ = v->to_bool();
-	}
 	if (const config::attribute_value *v = cfg.get("description")) {
 		cfg_["description"] = *v;
 	}
@@ -416,50 +405,9 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 		} while(++cfg_range.first != cfg_range.second);
 	}
 
-	//adjust the unit_type's defense if this config has its own defined
-	cfg_range = cfg.child_range("defense");
-	if(cfg_range.first != cfg_range.second) {
-		config &target = cfg_.child_or_add("defense");
-		do {
-			target.append(*cfg_range.first);
-		} while(++cfg_range.first != cfg_range.second);
-	}
-
-	//adjust the unit_type's movement costs if this config has its own defined
-	cfg_range = cfg.child_range("movement_costs");
-	if(cfg_range.first != cfg_range.second) {
-		config &target = cfg_.child_or_add("movement_costs");
-		do {
-			target.append(*cfg_range.first);
-		} while(++cfg_range.first != cfg_range.second);
-	}
-
-	//adjust the unit_type's vision costs if this config has its own defined
-	cfg_range = cfg.child_range("vision_costs");
-	if(cfg_range.first != cfg_range.second) {
-		config &target = cfg_.child_or_add("vision_costs");
-		do {
-			target.append(*cfg_range.first);
-		} while(++cfg_range.first != cfg_range.second);
-	}
-
-	//adjust the unit_type's jamming costs if this config has its own defined
-	cfg_range = cfg.child_range("jamming_costs");
-	if(cfg_range.first != cfg_range.second) {
-		config &target = cfg_.child_or_add("jamming_costs");
-		do {
-			target.append(*cfg_range.first);
-		} while(++cfg_range.first != cfg_range.second);
-	}
-
-	//adjust the unit_type's resistance if this config has its own defined
-	cfg_range = cfg.child_range("resistance");
-	if(cfg_range.first != cfg_range.second) {
-		config &target = cfg_.child_or_add("resistance");
-		do {
-			target.append(*cfg_range.first);
-		} while(++cfg_range.first != cfg_range.second);
-	}
+	// Adjust the unit's defense, movement, vision, jamming, resistances, and
+	// flying status if this config has its own defined.
+	movement_type_.merge(cfg);
 
 	if (const config &status_flags = cfg.child("status"))
 	{
@@ -607,12 +555,9 @@ unit::unit(const unit_type &u_type, int side, bool real_unit,
 	formula_vars_(),
 	movement_(0),
 	max_movement_(0),
-	movement_costs_(),
 	vision_(-1),
-	vision_costs_(),
 	jamming_(0),
-	jamming_costs_(),
-	defense_mods_(),
+	movement_type_(),
 	hold_position_(false),
 	end_turn_(false),
 	resting_(false),
@@ -634,7 +579,6 @@ unit::unit(const unit_type &u_type, int side, bool real_unit,
 	unit_value_(),
 	goto_(),
 	interrupted_move_(),
-	flying_(false),
 	is_fearless_(false),
 	is_healthy_(false),
 	modification_descriptions_(),
@@ -820,10 +764,6 @@ void unit::advance_to(const config &old_cfg, const unit_type &u_type,
 
 	// Clear modification-related caches
 	modification_descriptions_.clear();
-	movement_costs_.clear();
-	vision_costs_.clear();
-	jamming_costs_.clear();
-	defense_mods_.clear();
 
 	// Clear the stored config and replace it with the one from the unit type,
 	// except for a few attributes.
@@ -833,15 +773,6 @@ void unit::advance_to(const config &old_cfg, const unit_type &u_type,
 	BOOST_FOREACH(const char *attr, persistent_attrs) {
 		if (const config::attribute_value *v = old_cfg.get(attr)) {
 			new_cfg[attr] = *v;
-		}
-	}
-
-	if ( new_type.movement_type().get_parent() ) {
-		new_cfg.merge_with(new_type.movement_type().get_parent()->get_cfg());
-		// Convert movement type's "flies" to unit's "flying".
-		if ( const config::attribute_value * flies = new_cfg.get("flies") ) {
-			new_cfg["flying"] = flies->to_bool();
-			new_cfg.remove_attribute("flies");
 		}
 	}
 
@@ -881,10 +812,10 @@ void unit::advance_to(const config &old_cfg, const unit_type &u_type,
 	max_movement_ = new_type.movement();
 	vision_ = new_type.vision();
 	jamming_ = new_type.jamming();
+	movement_type_ = new_type.movement_type();
 	emit_zoc_ = new_type.has_zoc();
 	attacks_ = new_type.attacks();
 	unit_value_ = new_type.cost();
-	flying_ = new_type.movement_type().is_flying();
 
 	max_attacks_ = new_type.max_attacks();
 
@@ -1673,6 +1604,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 void unit::write(config& cfg) const
 {
 	cfg.append(cfg_);
+	movement_type_.write(cfg);
 
 	if ( cfg["description"] == type().unit_description() ) {
 		cfg.remove_attribute("description");
@@ -1724,11 +1656,8 @@ void unit::write(config& cfg) const
 	}
 
 	cfg["gender"] = gender_string(gender_);
-
 	cfg["variation"] = variation_;
-
 	cfg["role"] = role_;
-	cfg["flying"] = flying_;
 
 	config status_flags;
 	std::map<std::string,std::string> all_states = get_states();
@@ -2207,10 +2136,9 @@ bool unit::loyal() const
 
 int unit::movement_cost(const t_translation::t_terrain & terrain) const
 {
-	const int res = movement_cost_internal(movement_costs_,
-			cfg_.child("movement_costs"), NULL, terrain);
+	const int res = movement_type_.movement_cost(terrain);
 
-	if (res == unit_movement_type::UNREACHABLE) {
+	if ( res == movetype::UNREACHABLE ) {
 		return res;
 	} else if(get_state(STATE_SLOWED)) {
 		return res*2;
@@ -2220,12 +2148,9 @@ int unit::movement_cost(const t_translation::t_terrain & terrain) const
 
 int unit::vision_cost(const t_translation::t_terrain & terrain) const
 {
-	if (cfg_.child_count("vision_costs") == 0) return movement_cost(terrain);
+	const int res = movement_type_.vision_cost(terrain);
 
-	const int res = movement_cost_internal(vision_costs_,
-			cfg_.child("vision_costs"), NULL, terrain);
-
-	if (res == unit_movement_type::UNREACHABLE) {
+	if ( res == movetype::UNREACHABLE ) {
 		return res;
 	} else if(get_state(STATE_SLOWED)) {
 		return res*2;
@@ -2235,12 +2160,9 @@ int unit::vision_cost(const t_translation::t_terrain & terrain) const
 
 int unit::jamming_cost(const t_translation::t_terrain & terrain) const
 {
-//	if (cfg_.child_count("jamming_costs") == 0) return movement_cost(terrain);
+	const int res = movement_type_.jamming_cost(terrain);
 
-	const int res = movement_cost_internal(jamming_costs_,
-			cfg_.child("jamming_costs"), NULL, terrain);
-
-	if (res == unit_movement_type::UNREACHABLE) {
+	if ( res == movetype::UNREACHABLE ) {
 		return res;
 	} else if(get_state(STATE_SLOWED)) {
 		return res*2;
@@ -2250,7 +2172,7 @@ int unit::jamming_cost(const t_translation::t_terrain & terrain) const
 
 int unit::defense_modifier(const t_translation::t_terrain & terrain) const
 {
-	int def = defense_modifier_internal(defense_mods_, cfg_, NULL, terrain);
+	int def = movement_type_.defense_modifier(terrain);
 #if 0
 	// A [defense] ability is too costly and doesn't take into account target locations.
 	// Left as a comment in case someone ever wonders why it isn't a good idea.
@@ -2289,11 +2211,7 @@ bool unit::resistance_filter_matches(const config& cfg, bool attacker, const std
 
 int unit::resistance_against(const std::string& damage_name,bool attacker,const map_location& loc) const
 {
-	int res = 100;
-
-	if (const config &resistance = cfg_.child("resistance")) {
-		res = resistance[damage_name].to_int(100);
-	}
+	int res = movement_type_.resistance_against(damage_name);
 
 	unit_ability_list resistance_abilities = get_abilities("resistance",loc);
 	for (unit_ability_list::iterator i = resistance_abilities.begin(); i != resistance_abilities.end();) {
@@ -2311,26 +2229,6 @@ int unit::resistance_against(const std::string& damage_name,bool attacker,const 
 	}
 	return res;
 }
-
-utils::string_map unit::get_base_resistances() const
-{
-	if (const config &resistance = cfg_.child("resistance"))
-	{
-		utils::string_map res;
-		BOOST_FOREACH(const config::attribute &i, resistance.attribute_range()) {
-			res[i.first] = i.second;
-		}
-		return res;
-	}
-	return utils::string_map();
-}
-
-#if 0
-std::map<terrain_type::TERRAIN,int> unit::movement_type() const
-{
-	return movement_costs_;
-}
-#endif
 
 std::map<std::string,std::string> unit::advancement_icons() const
 {
@@ -2429,16 +2327,6 @@ size_t unit::modification_count(const std::string& mod_type, const std::string& 
 	}
 
 	return res;
-}
-
-/** Helper function for add_modifications */
-static void mod_mdr_merge(config& dst, const config& mod, bool delta, int minimum)
-{
-	BOOST_FOREACH(const config::attribute &i, mod.attribute_range()) {
-		int base = delta ? dst[i.first].to_int() : 0;
-
-		dst[i.first] = std::max(minimum, base + i.second.to_int());
-	}
 }
 
 void unit::add_modification(const std::string& mod_type, const config& mod, bool no_add)
@@ -2635,59 +2523,27 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 						set_state(remove, false);
 						set_poisoned = set_poisoned  &&  remove != "poisoned";
 					}
+				// Note: It would not be hard to define a new "applies_to=" that
+				//       combines the next five options (the movetype effects).
 				} else if (apply_to == "movement_costs") {
-					config &mv = cfg_.child_or_add("movement_costs");
 					if (const config &ap = effect.child("movement_costs")) {
-						mod_mdr_merge(mv, ap, !effect["replace"].to_bool(), 1);
+						movement_type_.get_movement().merge(ap, effect["replace"].to_bool());
 					}
-					movement_costs_.clear();
 				} else if (apply_to == "vision_costs") {
-					config &vi = cfg_.child_or_add("vision_costs");
 					if (const config &ap = effect.child("vision_costs")) {
-						mod_mdr_merge(vi, ap, !effect["replace"].to_bool(), 1);
+						movement_type_.get_vision().merge(ap, effect["replace"].to_bool());
 					}
-					vision_costs_.clear();
 				} else if (apply_to == "jamming_costs") {
-					config &jm = cfg_.child_or_add("jamming_costs");
 					if (const config &ap = effect.child("jamming_costs")) {
-						mod_mdr_merge(jm, ap, !effect["replace"].to_bool(), 1);
+						movement_type_.get_jamming().merge(ap, effect["replace"].to_bool());
 					}
-					jamming_costs_.clear();
 				} else if (apply_to == "defense") {
-					config &def = cfg_.child_or_add("defense");
 					if (const config &ap = effect.child("defense")) {
-						bool replace = effect["replace"].to_bool();
-						BOOST_FOREACH(const config::attribute &i, ap.attribute_range()) {
-							// The new value:
-							int value = i.second.to_int(replace ? 100 : 0);
-							// Where the value gets stored:
-							config::attribute_value &dst = def[i.first];
-
-							if ( replace ) {
-								// The new value gets capped between -100 and +100.
-								value = std::max(-100, std::min(value, 100));
-							}
-							else {
-								int old = dst.to_int(100);
-
-								// Add the absolute value of the old value.
-								value += abs(old);
-								// This gets capped between 0 and 100.
-								value = std::max(0, std::min(value, 100));
-								// Restore the sign of the old value.
-								if ( old < 0 )
-									value = -value;
-							}
-
-							// Save this value.
-							dst = value;
-						}
+						movement_type_.get_defense().merge(ap, effect["replace"].to_bool());
 					}
-					defense_mods_.clear();
 				} else if (apply_to == "resistance") {
-					config &mv = cfg_.child_or_add("resistance");
 					if (const config &ap = effect.child("resistance")) {
-						mod_mdr_merge(mv, ap, !effect["replace"].to_bool(), 0);
+						movement_type_.get_resistances().merge(ap, effect["replace"].to_bool());
 					}
 				} else if (apply_to == "zoc") {
 					if (const config::attribute_value *v = effect.get("value")) {

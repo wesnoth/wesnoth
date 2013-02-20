@@ -15,17 +15,19 @@
 #ifndef UNIT_TYPES_H_INCLUDED
 #define UNIT_TYPES_H_INCLUDED
 
-#include "unit_animation.hpp"
-#include "portrait.hpp"
+#include "map_location.hpp"
+#include "movetype.hpp"
 #include "race.hpp"
+#include "util.hpp"
 
 #include <boost/noncopyable.hpp>
 
-class gamemap;
-class unit;
+class tportrait;
 class unit_ability_list;
-class unit_map;
-class unit_type_data;
+class unit_animation;
+
+
+typedef std::map<std::string, movetype> movement_type_map;
 
 
 //the 'attack type' is the type of attack, how many times it strikes,
@@ -105,82 +107,6 @@ private:
 	int movement_used_;
 	int parry_;
 };
-
-class unit_movement_type;
-
-/**
- * Possible range of the defense. When a single value is needed, #max_
- * (maximum defense) is selected, unless #min_ is bigger.
- */
-struct defense_range
-{
-	int min_, max_;
-};
-
-typedef std::map<t_translation::t_terrain, defense_range> defense_cache;
-
-const defense_range &defense_range_modifier_internal(defense_cache &defense_mods,
-	const config &cfg, const unit_movement_type *parent,
-	const t_translation::t_terrain & terrain, int recurse_count = 0);
-
-int defense_modifier_internal(defense_cache &defense_mods,
-	const config &cfg, const unit_movement_type *parent,
-	const t_translation::t_terrain & terrain, int recurse_count = 0);
-
-int movement_cost_internal(std::map<t_translation::t_terrain, int> &move_costs,
-	const config &cfg, const unit_movement_type *parent,
-	const t_translation::t_terrain & terrain, int recurse_count = 0);
-
-//the 'unit movement type' is the basic size of the unit - flying, small land,
-//large land, etc etc.
-class unit_movement_type
-{
-public:
-	//this move distance means a hex is unreachable
-	//if there is an UNREACHABLE macro declared in the data tree
-	//it should match this value.
-	static const int UNREACHABLE = 99;
-
-	//this class assumes that the passed in reference will remain valid
-	//for at least as long as the class instance
-	explicit unit_movement_type(const config& cfg, const unit_movement_type* parent=NULL);
-	unit_movement_type();
-
-	std::string name() const;
-	int movement_cost(const t_translation::t_terrain & terrain) const
-	{ return movement_cost_internal(moveCosts_, cfg_.child("movement_costs"), parent_, terrain); }
-	int vision_cost(const t_translation::t_terrain & terrain) const
-	{ return movement_cost_internal(visionCosts_, cfg_.child("vision_costs"), parent_, terrain); }
-	int jamming_cost(const t_translation::t_terrain & terrain) const
-	{ return movement_cost_internal(jammingCosts_, cfg_.child("jamming_costs"), parent_, terrain); }
-	int defense_modifier(const t_translation::t_terrain & terrain) const
-	{ return defense_modifier_internal(defenseMods_, cfg_, parent_, terrain); }
-	const defense_range &defense_range_modifier(const t_translation::t_terrain & terrain) const
-	{ return defense_range_modifier_internal(defenseMods_, cfg_, parent_, terrain); }
-	int damage_against(const attack_type& attack) const { return resistance_against(attack); }
-	int resistance_against(const attack_type& attack) const;
-
-	utils::string_map damage_table() const;
-
-	void set_parent(const unit_movement_type* parent) { parent_ = parent; }
-
-	bool is_flying() const;
-
-	const config& get_cfg() const { return cfg_; }
-	const unit_movement_type* get_parent() const { return parent_; }
-private:
-	mutable std::map<t_translation::t_terrain, int> moveCosts_;
-	mutable std::map<t_translation::t_terrain, int> visionCosts_;
-	mutable std::map<t_translation::t_terrain, int> jammingCosts_;
-
-	mutable defense_cache defenseMods_;
-
-	const unit_movement_type* parent_;
-
-	config cfg_;
-};
-
-typedef std::map<std::string,unit_movement_type> movement_type_map;
 
 class unit_type
 {
@@ -274,7 +200,7 @@ public:
 	const std::string& flag_rgb() const { return flag_rgb_; }
 
 	std::vector<attack_type> attacks() const;
-	const unit_movement_type& movement_type() const { return movementType_; }
+	const movetype & movement_type() const { return movement_type_; }
 
 	int experience_needed(bool with_acceleration=true) const;
 
@@ -387,7 +313,7 @@ private:
 
 	ALIGNMENT alignment_;
 
-	unit_movement_type movementType_;
+	movetype movement_type_;
 
 	config possibleTraits_;
 

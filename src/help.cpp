@@ -1573,7 +1573,7 @@ public:
 		push_header(first_res_row, _("Attack Type"));
 		push_header(first_res_row, _("Resistance"));
 		resistance_table.push_back(first_res_row);
-		const unit_movement_type &movement_type = type_.movement_type();
+		const movetype &movement_type = type_.movement_type();
 		utils::string_map dam_tab = movement_type.damage_table();
 		for(utils::string_map::const_iterator dam_it = dam_tab.begin(), dam_end = dam_tab.end();
 			 dam_it != dam_end; ++dam_it) {
@@ -1660,7 +1660,7 @@ public:
 					row.push_back(std::make_pair(markup,
 							font::line_width(str.str(), normal_font_size)));
 
-					//movement  -  range: 1 .. 5, unit_movement_type::UNREACHABLE=impassable
+					//movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
 					str.str(clear_stringstream);
 					const bool cannot_move = moves > type_.movement();
 					if (cannot_move)		// cannot move in this terrain

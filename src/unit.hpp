@@ -21,7 +21,9 @@
 #include <boost/tuple/tuple.hpp>
 
 #include "formula_callable.hpp"
+#include "portrait.hpp"
 #include "resources.hpp"
+#include "unit_animation.hpp"
 #include "unit_types.hpp"
 #include "unit_map.hpp"
 
@@ -265,7 +267,7 @@ public:
 
 	void set_hidden(bool state);
 	bool get_hidden() const { return hidden_; }
-	bool is_flying() const { return flying_; }
+	bool is_flying() const { return movement_type_.is_flying(); }
 	bool is_fearless() const { return is_fearless_; }
 	bool is_healthy() const { return is_healthy_; }
 	int movement_cost(const t_translation::t_terrain & terrain) const;
@@ -277,8 +279,8 @@ public:
 		{return resistance_against(damage_type.type(), attacker, loc);};
 
 	//return resistances without any abilities applied
-	utils::string_map get_base_resistances() const;
-//		std::map<terrain_type::TERRAIN,int> movement_type() const;
+	utils::string_map get_base_resistances() const { return movement_type_.damage_table(); }
+	const movetype & movement_type() const { return movement_type_; }
 
 	bool can_advance() const { return advances_to_.empty()==false || get_modification_advances().empty() == false; }
 	bool advances() const { return experience_ >= max_experience() && can_advance(); }
@@ -449,12 +451,9 @@ private:
 
 	int movement_;
 	int max_movement_;
-	mutable std::map<t_translation::t_terrain, int> movement_costs_; // movement cost cache
 	int vision_;
-	mutable std::map<t_translation::t_terrain, int> vision_costs_;   // view cost cache
 	int jamming_;
-	mutable std::map<t_translation::t_terrain, int> jamming_costs_;  // jamming cost cache
-	mutable defense_cache defense_mods_; // defense modifiers cache
+	movetype movement_type_;
 	bool hold_position_;
 	bool end_turn_;
 	bool resting_;
@@ -482,7 +481,7 @@ private:
 	int unit_value_;
 	map_location goto_, interrupted_move_;
 
-	bool flying_, is_fearless_, is_healthy_;
+	bool is_fearless_, is_healthy_;
 
 	utils::string_map modification_descriptions_;
 	// Animations:

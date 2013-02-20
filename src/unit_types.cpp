@@ -26,8 +26,8 @@
 #include "gettext.hpp"
 #include "loadscreen.hpp"
 #include "log.hpp"
-#include "map.hpp"
-#include "resources.hpp"
+#include "portrait.hpp"
+#include "unit_animation.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -337,284 +337,6 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 }
 
 
-/* ** unit_movement_type ** */
-
-
-unit_movement_type::unit_movement_type(const config& cfg, const unit_movement_type* parent) :
-	moveCosts_(),
-	visionCosts_(),
-	jammingCosts_(),
-	defenseMods_(),
-	parent_(parent),
-	cfg_()
-{
-	//the unit_type give its whole cfg, we don't need all that.
-	//so we filter to keep only keys related to movement_type
-	//FIXME: This helps but it's still not clean, both cfg use a "name" key
-
-	const t_string& name = cfg["name"];
-	if (!name.empty())
-		cfg_["name"]= cfg["name"];
-
-	const t_string& flies = cfg["flies"];
-	if (!flies.empty())
-		cfg_["flies"]= cfg["flies"];
-
-	if (const config &movement_costs = cfg.child("movement_costs"))
-		cfg_.add_child("movement_costs", movement_costs);
-
-	if (const config &vision_costs = cfg.child("vision_costs"))
-		cfg_.add_child("vision_costs", vision_costs);
-
-	if (const config &jamming_costs = cfg.child("jamming_costs"))
-		cfg_.add_child("jamming_costs", jamming_costs);
-
-	if (const config &defense = cfg.child("defense"))
-		cfg_.add_child("defense", defense);
-
-	if (const config &resistance = cfg.child("resistance"))
-		cfg_.add_child("resistance", resistance);
-}
-
-unit_movement_type::unit_movement_type(): moveCosts_(), visionCosts_(), jammingCosts_(), defenseMods_(), parent_(NULL), cfg_()
-{}
-
-std::string unit_movement_type::name() const
-{
-	if (!cfg_.has_attribute("name") && parent_)
-		return parent_->name();
-	else
-		return cfg_["name"];
-}
-
-int unit_movement_type::resistance_against(const attack_type& attack) const
-{
-	bool result_found = false;
-	int res = 100;
-
-	if (const config &resistance = cfg_.child("resistance"))
-	{
-		if (const::config::attribute_value *val = resistance.get(attack.type())) {
-			res = *val;
-			result_found = true;
-		}
-	}
-
-	if(!result_found && parent_ != NULL) {
-		res = parent_->resistance_against(attack);
-	}
-
-	return res;
-}
-
-utils::string_map unit_movement_type::damage_table() const
-{
-	utils::string_map res;
-	if(parent_ != NULL)
-		res = parent_->damage_table();
-
-	if (const config &resistance = cfg_.child("resistance"))
-	{
-		BOOST_FOREACH(const config::attribute &i, resistance.attribute_range()) {
-			res[i.first] = i.second;
-		}
-	}
-
-	return res;
-}
-
-bool unit_movement_type::is_flying() const
-{
-	if (!cfg_.has_attribute("flies") && parent_)
-		return parent_->is_flying();
-
-	return cfg_["flies"].to_bool();
-}
-
-int movement_cost_internal(std::map<t_translation::t_terrain, int>& move_costs,
-		const config& cfg, const unit_movement_type* parent,
-		const t_translation::t_terrain & terrain, int recurse_count)
-{
-	assert(resources::game_map != NULL);
-	const gamemap & map = *resources::game_map;
-	const int impassable = unit_movement_type::UNREACHABLE;
-
-	const std::map<t_translation::t_terrain, int>::const_iterator i = move_costs.find(terrain);
-
-	if (i != move_costs.end()) return i->second;
-
-	// If this is an alias, then select the best of all underlying terrains.
-	const t_translation::t_list& underlying = map.underlying_mvt_terrain(terrain);
-	assert(!underlying.empty());
-
-	if (underlying.size() != 1 || underlying.front() != terrain) {
-		bool revert = (underlying.front() == t_translation::MINUS ? true : false);
-		if (recurse_count >= 100) {
-			ERR_CF << "infinite movement_cost recursion: "
-				<< t_translation::write_terrain_code(terrain)
-				<< " depth " << recurse_count << "\n";
-			move_costs.insert(std::pair<t_translation::t_terrain, int>(terrain, impassable));
-			return impassable;
-		}
-
-		int ret_value = revert ? 0 : impassable;
-		for (t_translation::t_list::const_iterator i = underlying.begin();
-				i != underlying.end(); ++i)
-		{
-			if (*i == t_translation::PLUS) {
-				revert = false;
-				continue;
-			} else if (*i == t_translation::MINUS) {
-				revert = true;
-				continue;
-			}
-			const int value = movement_cost_internal(move_costs, cfg,
-					parent, *i, recurse_count + 1);
-
-			if (value < ret_value && !revert) {
-				ret_value = value;
-			} else if (value > ret_value && revert) {
-				ret_value = value;
-			}
-		}
-
-		move_costs.insert(std::pair<t_translation::t_terrain, int>(terrain, ret_value));
-		return ret_value;
-	}
-
-	bool result_found = false;
-	int res = impassable;
-
-	if (cfg) {
-		if (underlying.size() != 1) {
-			ERR_CF << "Terrain '" << terrain << "' has "
-				<< underlying.size() << " underlying names - 0 expected.\n";
-
-			move_costs.insert(std::pair<t_translation::t_terrain, int>(terrain, impassable));
-			return impassable;
-		}
-
-		const std::string& id = map.get_terrain_info(underlying.front()).id();
-		if (const config::attribute_value *val = cfg.get(id)) {
-			res = *val;
-			result_found = true;
-		}
-	}
-
-	if (!result_found && parent != NULL) {
-		res = parent->movement_cost(terrain);
-	}
-
-	if (res <= 0) {
-		WRN_CF << "Terrain '" << terrain << "' has a movement cost of '"
-			<< res << "' which is '<= 0'; resetting to 1.\n";
-		res = 1;
-	}
-
-	move_costs.insert(std::pair<t_translation::t_terrain, int>(terrain, res));
-	return res;
-}
-
-const defense_range &defense_range_modifier_internal(defense_cache &defense_mods,
-		const config& cfg, const unit_movement_type* parent,
-		const t_translation::t_terrain & terrain, int recurse_count)
-{
-	assert(resources::game_map != NULL);
-	const gamemap & map = *resources::game_map;
-
-	defense_range dummy = { 0, 100 };
-	std::pair<defense_cache::iterator, bool> ib =
-		defense_mods.insert(defense_cache::value_type(terrain, dummy));
-	if (!ib.second) return ib.first->second;
-
-	defense_range &res = ib.first->second;
-
-	// If this is an alias, then select the best of all underlying terrains.
-	const t_translation::t_list& underlying = map.underlying_def_terrain(terrain);
-	assert(!underlying.empty());
-
-	if (underlying.size() != 1 || underlying.front() != terrain) {
-		bool revert = underlying.front() == t_translation::MINUS;
-		if(recurse_count >= 90) {
-			ERR_CF << "infinite defense_modifier recursion: "
-				<< t_translation::write_terrain_code(terrain)
-				<< " depth " << recurse_count << "\n";
-		}
-		if (recurse_count >= 100) {
-			return res;
-		}
-
-		if (revert) {
-			res.max_ = 0;
-			res.min_ = 100;
-		}
-
-		for (t_translation::t_list::const_iterator i = underlying.begin();
-				i != underlying.end(); ++i) {
-
-			if (*i == t_translation::PLUS) {
-				revert = false;
-				continue;
-			} else if (*i == t_translation::MINUS) {
-				revert = true;
-				continue;
-			}
-			const defense_range &inh = defense_range_modifier_internal
-				(defense_mods, cfg, parent, *i, recurse_count + 1);
-
-			if (!revert) {
-				if (inh.max_ < res.max_) res.max_ = inh.max_;
-				if (inh.min_ > res.min_) res.min_ = inh.min_;
-			} else {
-				if (inh.max_ > res.max_) res.max_ = inh.max_;
-				if (inh.min_ < res.min_) res.min_ = inh.min_;
-			}
-		}
-
-		goto check;
-	}
-
-	if (const config& defense = cfg.child("defense"))
-	{
-		const std::string& id = map.get_terrain_info(underlying.front()).id();
-		if (const config::attribute_value *val = defense.get(id)) {
-			int def = *val;
-			if (def >= 0) res.max_ = def;
-			else res.max_ = res.min_ = -def;
-			goto check;
-		}
-	}
-
-	if (parent) {
-		/* Assign to the reference res to put the value in the defense_cache. */
-		res = parent->defense_range_modifier(terrain);
-		return res;
-	}
-
-	check:
-
-	if (res.min_ < 0) {
-		WRN_CF << "Defense '" << res.min_ << "' is '< 0' reset to 0 (100% defense).\n";
-		res.min_ = 0;
-	}
-	if (res.max_ > 100) {
-		WRN_CF << "Defense '" << res.max_ << "' is '> 100' reset to 100 (0% defense).\n";
-		res.max_ = 100;
-	}
-
-	return res;
-}
-
-int defense_modifier_internal(defense_cache &defense_mods,
-	const config &cfg, const unit_movement_type *parent,
-	const t_translation::t_terrain & terrain, int recurse_count)
-{
-	const defense_range &def = defense_range_modifier_internal(defense_mods,
-		cfg, parent, terrain, recurse_count);
-	return (std::max)(def.max_, def.min_);
-}
-
-
 /* ** unit_type ** */
 
 
@@ -655,7 +377,7 @@ unit_type::unit_type(const unit_type& o) :
 	experience_needed_(o.experience_needed_),
 	in_advancefrom_(o.in_advancefrom_),
 	alignment_(o.alignment_),
-	movementType_(o.movementType_),
+	movement_type_(o.movement_type_),
 	possibleTraits_(o.possibleTraits_),
 	genders_(o.genders_),
 	animations_(o.animations_),
@@ -709,7 +431,7 @@ unit_type::unit_type(const config &cfg, const std::string & parent_id) :
 	experience_needed_(0),
 	in_advancefrom_(false),
 	alignment_(),
-	movementType_(),
+	movement_type_(),
 	possibleTraits_(),
 	genders_(),
 	animations_(),
@@ -795,20 +517,7 @@ void unit_type::build_full(const movement_type_map &mv_types,
 		alpha_ = ftofxp(alpha_blend.to_double());
 	}
 
-	const std::string& move_type = cfg_["movement_type"];
-
-	const movement_type_map::const_iterator it = mv_types.find(move_type);
-
-	if(it != mv_types.end()) {
-	    DBG_UT << "setting parent for movement_type " << move_type << "\n";
-		movementType_.set_parent(&(it->second));
-	}
-	else{
-	    DBG_UT << "no parent found for movement_type " << move_type << "\n";
-	}
-
 	game_config::add_color_info(cfg_);
-
 
 	BOOST_FOREACH(const config &portrait, cfg_.child_range("portrait")) {
 		portraits_.push_back(tportrait(portrait));
@@ -906,7 +615,18 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 		}
 	}
 
-	movementType_ = unit_movement_type(cfg_);
+	// Set the movement type.
+	const std::string move_type = cfg_["movement_type"];
+	const movement_type_map::const_iterator find_it = mv_types.find(move_type);
+	if ( find_it != mv_types.end() ) {
+		DBG_UT << "inheriting from movement_type '" << move_type << "'\n";
+		movement_type_ = find_it->second;
+	}
+	else if ( !move_type.empty() ) {
+		DBG_UT << "movement_type '" << move_type << "' not found\n";
+	}
+	// Override parts of the movement type with what is in our config.
+	movement_type_.merge(cfg_);
 
 	BOOST_FOREACH(const config &t, traits)
 	{
@@ -1335,6 +1055,13 @@ const config & unit_type::build_unit_cfg() const
 	unit_cfg_.clear_children("male");
 	unit_cfg_.clear_children("female");
 
+	// Remove movement type data (it will be received via a movetype object).
+	unit_cfg_.clear_children("movement_costs");
+	unit_cfg_.clear_children("vision_costs");
+	unit_cfg_.clear_children("jamming_costs");
+	unit_cfg_.clear_children("defense");
+	unit_cfg_.clear_children("resistance");
+
 	built_unit_cfg_ = true;
 	return unit_cfg_;
 }
@@ -1478,9 +1205,7 @@ void unit_type_data::set_config(config &cfg)
 
 	BOOST_FOREACH(const config &mt, cfg.child_range("movetype"))
 	{
-		const unit_movement_type move_type(mt);
-		movement_types_.insert(
-			std::pair<std::string,unit_movement_type>(move_type.name(), move_type));
+		movement_types_.insert(std::make_pair(mt["name"].str(), movetype(mt)));
 		loadscreen::increment_progress();
 	}
 
