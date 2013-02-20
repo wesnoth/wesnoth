@@ -27,6 +27,7 @@
 #include "unit_types.hpp" // for attack_type
 
 #include <boost/foreach.hpp>
+#include <boost/make_shared.hpp>
 
 
 static lg::log_domain log_config("config");
@@ -98,12 +99,16 @@ public:
 		cfg_(cfg), cache_(), params_(params)
 	{}
 
+	// The copy constructor does not bother copying the cache since
+	// typically the cache will be cleared shortly after the copy.
 	data(const data & that) :
-		cfg_(that.cfg_), cache_(that.cache_), params_(that.params_)
+		cfg_(that.cfg_), cache_(), params_(that.params_)
 	{}
 
 	/// Clears the cached data (presumably our fallback has changed).
 	void clear_cache(const terrain_info * cascade) const;
+	/// Tests if merging @a new_values would result in changes.
+	bool config_has_changes(const config & new_values, bool overwrite) const;
 	/// Tests for no data in this object.
 	bool empty() const { return cfg_.empty(); }
 	/// Merges the given config over the existing costs.
@@ -151,6 +156,31 @@ void movetype::terrain_info::data::clear_cache(const terrain_info * cascade) con
 	// Cascade the clear to whichever terrain_info falls back on us.
 	if ( cascade )
 		cascade->clear_cache();
+}
+
+
+/**
+ * Tests if merging @a new_values would result in changes.
+ * This allows the shared data to actually work, as otherwise each unit created
+ * via WML (including unstored units) would "overwrite" its movement data with
+ * a usually identical copy and thus break the sharing.
+ */
+bool movetype::terrain_info::data::config_has_changes(const config & new_values,
+                                                      bool overwrite) const
+{
+	if ( overwrite ) {
+		BOOST_FOREACH( const config::attribute & a, new_values.attribute_range() )
+			if ( a.second != cfg_[a.first] )
+				return true;
+	}
+	else {
+		BOOST_FOREACH( const config::attribute & a, new_values.attribute_range() )
+			if ( a.second.to_int() != 0 )
+				return true;
+	}
+
+	// If we make it here, new_values has no changes for us.
+	return false;
 }
 
 
@@ -371,7 +401,7 @@ movetype::terrain_info::terrain_info(const parameters & params,
                                      const terrain_info * fallback,
                                      const terrain_info * cascade) :
 	data_(new data(params)),
-	merged_data_(NULL),
+	merged_data_(),
 	fallback_(fallback),
 	cascade_(cascade)
 {
@@ -392,7 +422,7 @@ movetype::terrain_info::terrain_info(const config & cfg, const parameters & para
                                      const terrain_info * fallback,
                                      const terrain_info * cascade) :
 	data_(new data(cfg, params)),
-	merged_data_(NULL),
+	merged_data_(),
 	fallback_(fallback),
 	cascade_(cascade)
 {
@@ -412,8 +442,8 @@ movetype::terrain_info::terrain_info(const terrain_info & that,
                                      const terrain_info * cascade) :
 	// If we do not have a fallback, we need to incorporate that's fallback.
 	// (See also the assignment operator.)
-	data_(new data(fallback ? *that.data_ : that.get_merged())),
-	merged_data_(NULL),
+	data_(fallback ? that.data_ : that.get_merged()),
+	merged_data_(that.merged_data_),
 	fallback_(fallback),
 	cascade_(cascade)
 {
@@ -425,8 +455,9 @@ movetype::terrain_info::terrain_info(const terrain_info & that,
  */
 movetype::terrain_info::~terrain_info()
 {
-	delete data_;
-	delete merged_data_;
+	// While this appears to be simply the default destructor, it needs
+	// to be defined in this file so that it knows about ~data(), which
+	// is called from the smart pointers' destructor.
 }
 
 
@@ -436,13 +467,10 @@ movetype::terrain_info::~terrain_info()
 movetype::terrain_info & movetype::terrain_info::operator=(const terrain_info & that)
 {
 	if ( this != &that ) {
-		delete data_;
 		// If we do not have a fallback, we need to incorporate that's fallback.
 		// (See also the copy constructor.)
-		data_ = new data(fallback_ ? *that.data_ : that.get_merged());
-
-		delete merged_data_;
-		merged_data_ = NULL;
+		data_ = fallback_ ? that.data_ : that.get_merged();
+		merged_data_ = that.merged_data_;
 		// We do not change our fallback nor our cascade.
 	}
 
@@ -455,8 +483,7 @@ movetype::terrain_info & movetype::terrain_info::operator=(const terrain_info & 
  */
 void movetype::terrain_info::clear_cache() const
 {
-	delete merged_data_;
-	merged_data_ = NULL;
+	merged_data_.reset();
 	data_->clear_cache(cascade_);
 }
 
@@ -469,9 +496,30 @@ void movetype::terrain_info::clear_cache() const
  */
 void movetype::terrain_info::merge(const config & new_values, bool overwrite)
 {
-	// Reset merged_data_.
-	delete merged_data_;
-	merged_data_ = NULL;
+	if ( !data_->config_has_changes(new_values, overwrite) )
+		// Nothing will change, so skip the copy-on-write.
+		return;
+
+	// Reset merged_data_ before seeing if data_ is unique, since the two might
+	// point to the same thing.
+	merged_data_.reset();
+
+	// Copy-on-write.
+	if ( !data_.unique() ) {
+		data_.reset(new data(*data_));
+		// We also need to make copies of our fallback and cascade.
+		// This is to keep the caching manageable, as this means each
+		// individual movetype will either share *all* of its cost data
+		// or not share *all* of its cost data. In particular, we avoid:
+		// 1) many sets of (unshared) vision costs whose cache would need
+		//    to be cleared when a shared set of movement costs changes;
+		// 2) a caching nightmare when shared vision costs fallback to
+		//    unshared movement costs.
+		if ( fallback_ )
+			fallback_->make_unique_fallback();
+		if ( cascade_ )
+			cascade_->make_unique_cascade();
+	}
 
 	data_->merge(new_values, overwrite, cascade_);
 }
@@ -504,29 +552,58 @@ void movetype::terrain_info::write(config & cfg, const std::string & child_name,
 
 
 /**
- * Returns data that incorporates our fallback.
+ * Returns a pointer to data the incorporates our fallback.
  */
-const movetype::terrain_info::data & movetype::terrain_info::get_merged() const
+const boost::shared_ptr<movetype::terrain_info::data> &
+	movetype::terrain_info::get_merged() const
 {
 	// Create-on-demand.
 	if ( !merged_data_ )
 	{
 		if ( !fallback_ )
 			// Nothing to incorporate.
-			merged_data_ = new data(*data_);
+			merged_data_ = data_;
 
 		else if ( data_->empty() )
 			// Pure fallback.
-			merged_data_ = new data(fallback_->get_merged());
+			merged_data_ = fallback_->get_merged();
 
 		else {
 			// Need to merge data.
 			config merged;
 			write(merged, "", true);
-			merged_data_ = new data(merged, data_->params());
+			merged_data_ = boost::make_shared<data>(merged, data_->params());
 		}
 	}
-	return *merged_data_;
+	return merged_data_;
+}
+
+
+/**
+ * Ensures our data is not shared, and propagates to our cascade.
+ */
+void movetype::terrain_info::make_unique_cascade() const
+{
+	if ( !data_.unique() )
+		// Const hack because this is not really changing the data.
+		const_cast<terrain_info *>(this)->data_.reset(new data(*data_));
+
+	if ( cascade_ )
+		cascade_->make_unique_cascade();
+}
+
+
+/**
+ * Ensures our data is not shared, and propagates to our fallback.
+ */
+void movetype::terrain_info::make_unique_fallback() const
+{
+	if ( !data_.unique() )
+		// Const hack because this is not really changing the data.
+		const_cast<terrain_info *>(this)->data_.reset(new data(*data_));
+
+	if ( fallback_ )
+		fallback_->make_unique_fallback();
 }
 
 

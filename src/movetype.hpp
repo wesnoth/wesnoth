@@ -18,6 +18,8 @@
 #include "config.hpp"
 #include "serialization/string_utils.hpp"
 
+#include <boost/shared_ptr.hpp>
+
 class attack_type;
 namespace t_translation { class t_terrain; }
 
@@ -61,12 +63,16 @@ class movetype
 		void write(config & cfg, const std::string & child_name="", bool merged=true) const;
 
 	private:
-		// Returns data that incorporates our fallback.
-		const data & get_merged() const;
+		// Returns a pointer to data the incorporates our fallback.
+		const boost::shared_ptr<data> & get_merged() const;
+		// Ensures our data is not shared, and propagates to our cascade.
+		void make_unique_cascade() const;
+		// Ensures our data is not shared, and propagates to our fallback.
+		void make_unique_fallback() const;
 
 	private:
-		data * data_;                 /// Never NULL
-		mutable data * merged_data_;  /// Created as needed.
+		boost::shared_ptr<data> data_;                 /// Never NULL
+		mutable boost::shared_ptr<data> merged_data_;  /// Created as needed.
 		const terrain_info * const fallback_;
 		const terrain_info * const cascade_;
 	};
