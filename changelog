@@ -75,11 +75,12 @@ Version 1.11.1+svn:
    * Fixed bug #20401: [remove_unit_overlay] did not work when the image used an
      image path function that took multiple parameters.
    * Improved support for setting id= within a [variation].
-  * Added support for square bracket expansion in animation strings I.E
-    halo="pic[1-2,5]:[10,20,30]" expands to halo="pic1:10,pic2:20,pic5:30"
-    this is used for halos, team flags, animated terrains and unit animations
-  * Changed default unit halos and macros to use new square bracket expansion
-  * Fixed bug #20468: Update the owned villages when using [replace_map].
+   * Added support for square bracket expansion in animation strings I.E
+     halo="pic[1-2,5]:[10,20,30]" expands to halo="pic1:10,pic2:20,pic5:30"
+     this is used for halos, team flags, animated terrains and unit animations
+   * Changed default unit halos and macros to use new square bracket expansion
+   * Fixed bug #20468: Update the owned villages when using [replace_map].
+   * Changed [vision_costs] to default to movement costs on a per-terrain basis.
  Miscellaneous and bug fixes:
    * The undo stack is preserved across a save-reload.
    * Removed several unused private member variables.
