@@ -143,10 +143,6 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 
 	std::vector<target> targets;
 
-	std::map<map_location,pathfind::paths> friends_possible_moves;
-	move_map friends_srcdst, friends_dstsrc;
-	calculate_possible_moves(friends_possible_moves,friends_srcdst,friends_dstsrc,false,true);
-
 	//=== start getting targets
 
 	//if enemy units are in range of the leader, then we target the enemies who are in range.
@@ -187,6 +183,10 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 	double corner_distance = distance_between(map_location(0,0), map_location(map_.w(),map_.h()));
 	double village_value = get_village_value();
 	if(has_leader && get_village_value() > 0.0) {
+		std::map<map_location,pathfind::paths> friends_possible_moves;
+		move_map friends_srcdst, friends_dstsrc;
+		calculate_possible_moves(friends_possible_moves, friends_srcdst, friends_dstsrc, false, true);
+
 		const std::vector<map_location>& villages = map_.villages();
 		for(std::vector<map_location>::const_iterator t =
 				villages.begin(); t != villages.end(); ++t) {
