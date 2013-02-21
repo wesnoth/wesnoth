@@ -1609,9 +1609,11 @@ public:
 			push_header(first_row, _("Defense"));
 			push_header(first_row, _("Movement Cost"));
 
-			if (type_.get_cfg().child_count("vision_costs") != 0)
+			const bool has_vision = type_.movement_type().has_vision_data();
+			if ( has_vision )
 				push_header(first_row, _("Vision Cost"));
-			if (type_.get_cfg().child_count("jamming_costs") != 0)
+			const bool has_jamming = type_.movement_type().has_jamming_data();
+			if ( has_jamming )
 				push_header(first_row, _("Jamming Cost"));
 
 			table.push_back(first_row);
@@ -1632,7 +1634,7 @@ public:
 					const std::string id = info.id();
 					const int moves = movement_type.movement_cost(terrain);
 					const int views = movement_type.vision_cost(terrain);
-					const int jamms = movement_type.jamming_cost(terrain);
+					const int jams  = movement_type.jamming_cost(terrain);
 					std::stringstream str;
 					str << "<ref>text='" << escape(name) << "' dst='"
 							<< escape(std::string("terrain_") + id) << "'</ref>";
@@ -1685,7 +1687,7 @@ public:
 							font::line_width(str.str(), normal_font_size)));
 
 					//vision
-					if (type_.get_cfg().child_count("vision_costs") != 0) {
+					if ( has_vision ) {
 						str.str(clear_stringstream);
 						const bool cannot_view = views > type_.vision();
 						if (cannot_view)		// cannot view in this terrain
@@ -1705,28 +1707,28 @@ public:
 						str << "'</format>";
 						markup = str.str();
 						str.str(clear_stringstream);
-						str << jamms;
+						str << views;
 						row.push_back(std::make_pair(markup,
 								font::line_width(str.str(), normal_font_size)));
 					}
 
 					//jamming
-					if (type_.get_cfg().child_count("jamming_costs") != 0) {
+					if ( has_jamming ) {
 						str.str(clear_stringstream);
-						const bool cannot_jamm = jamms > type_.jamming();
-						if (cannot_jamm)		// cannot jamm in this terrain
+						const bool cannot_jam = jams > type_.jamming();
+						if ( cannot_jam )		// cannot jamm in this terrain
 							color = "red";
-						else if (jamms > 1)
+						else if ( jams > 1 )
 							color = "yellow";
 						else
 							color = "white";
 						str << "<format>color=" << color << " text='";
 						// A 5 MP margin; if the jamming costs go above
 						// the unit's jamming + 5, we replace it with dashes.
-						if(cannot_jamm && (jamms > type_.jamming() + 5)) {
+						if ( cannot_jam  &&  jams > type_.jamming() + 5 ) {
 							str << utils::unicode_figure_dash;
 						} else {
-							str << jamms;
+							str << jams;
 						}
 						str << "'</format>";
 

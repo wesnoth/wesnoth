@@ -53,8 +53,10 @@ class movetype
 		terrain_info & operator=(const terrain_info & that);
 
 
-		// Clears the cache of values.
+		/// Clears the cache of values.
 		void clear_cache() const;
+		/// Returns whether or not our data is empty.
+		bool empty() const;
 		/// Merges the given config over the existing values.
 		void merge(const config & new_values, bool overwrite);
 		/// Returns the value associated with the given terrain.
@@ -212,6 +214,11 @@ public:
 	/// Returns a map from attack types to resistances.
 	utils::string_map damage_table() const
 	{ return resist_.damage_table(); }
+
+	/// Returns whether or not there are any vision-specific costs.
+	bool has_vision_data()  const { return !vision_.empty(); }
+	/// Returns whether or not there are any jamming-specific costs.
+	bool has_jamming_data() const { return !jamming_.empty(); }
 
 	/// Merges the given config over the existing data.
 	void merge(const config & new_cfg, bool overwrite=true);

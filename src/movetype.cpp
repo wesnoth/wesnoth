@@ -489,6 +489,15 @@ void movetype::terrain_info::clear_cache() const
 
 
 /**
+ * Returns whether or not our data is empty.
+ */
+bool movetype::terrain_info::empty() const
+{
+	return data_->empty();
+}
+
+
+/**
  * Merges the given config over the existing values.
  * @param[in] new_values  The new values.
  * @param[in] overwrite   If true, the new values overwrite the old.
