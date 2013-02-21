@@ -1692,10 +1692,12 @@ public:
 						const bool cannot_view = views > type_.vision();
 						if (cannot_view)		// cannot view in this terrain
 							color = "red";
-						else if (views > 1)
+						else if ( views > moves )
 							color = "yellow";
-						else
+						else if ( views == moves )
 							color = "white";
+						else
+							color = "green";
 						str << "<format>color=" << color << " text='";
 						// A 5 MP margin; if the vision costs go above
 						// the unit's vision + 5, we replace it with dashes.
@@ -1718,10 +1720,12 @@ public:
 						const bool cannot_jam = jams > type_.jamming();
 						if ( cannot_jam )		// cannot jamm in this terrain
 							color = "red";
-						else if ( jams > 1 )
+						else if ( jams > views )
 							color = "yellow";
-						else
+						else if ( jams == views )
 							color = "white";
+						else
+							color = "green";
 						str << "<format>color=" << color << " text='";
 						// A 5 MP margin; if the jamming costs go above
 						// the unit's jamming + 5, we replace it with dashes.
