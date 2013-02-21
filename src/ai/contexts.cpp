@@ -368,8 +368,7 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 		 */
 		res.insert(std::pair<map_location,pathfind::paths>(
 			un_it->get_location(), pathfind::paths(
-			units, *un_it, false,
-			true, current_team(), 0, see_all)));
+				*un_it, false, true, current_team(), 0, see_all)));
 	}
 
 	// deactivate terrain filtering if it's just the dummy 'matches nothing'
@@ -970,8 +969,7 @@ bool readonly_context_impl::leader_can_reach_keep() const
 	}
 
 	// Find where the leader can move
-	const pathfind::paths leader_paths(*resources::units,
-		*leader, false, true, current_team());
+	const pathfind::paths leader_paths(*leader, false, true, current_team());
 
 	return leader_paths.destinations.contains(start_pos);
 }

@@ -1051,8 +1051,7 @@ void menu_handler::show_enemy_moves(bool ignore_units, int side_num)
 		    !gui_->fogged(u->get_location()) && !u->incapacitated() && !invisible)
 		{
 			const unit_movement_resetter move_reset(*u);
-			const pathfind::paths& path = pathfind::paths(units_,
-				*u, false, true,
+			const pathfind::paths& path = pathfind::paths(*u, false, true,
 				teams_[gui_->viewing_team()], 0, false, ignore_units);
 
 			gui_->highlight_another_reach(path);

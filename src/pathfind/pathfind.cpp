@@ -441,7 +441,6 @@ bool pathfind::paths::dest_vect::contains(const map_location &loc) const
  *
  * This function is used for several purposes, including showing a unit's
  * potential moves and generating currently possible paths.
- * @param units            Currently unused.
  * @param u                The unit whose moves and movement type will be used.
  * @param force_ignore_zoc Set to true to completely ignore zones of control.
  * @param allow_teleport   Set to true to consider teleportation abilities.
@@ -450,9 +449,8 @@ bool pathfind::paths::dest_vect::contains(const map_location &loc) const
  * @param see_all          Set to true to remove unit visibility from consideration.
  * @param ignore_units     Set to true if units should never obstruct paths (implies ignoring ZoC as well).
  */
-pathfind::paths::paths(unit_map const &/*units*/,
-		const unit& u,
-		bool force_ignore_zoc, bool allow_teleport, const team &viewing_team,
+pathfind::paths::paths(const unit& u, bool force_ignore_zoc,
+		bool allow_teleport, const team &viewing_team,
 		int additional_turns, bool see_all, bool ignore_units)
 	: destinations()
 {

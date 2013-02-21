@@ -1093,8 +1093,8 @@ void play_controller::process_keyup_event(const SDL_Event& event) {
 				// if it's not the unit's turn, we reset its moves
 				unit_movement_resetter move_reset(*u, u->side() != player_number_);
 
-				mouse_handler_.set_current_paths(pathfind::paths(units_, *u,
-				                       false, true, teams_[gui_->viewing_team()],
+				mouse_handler_.set_current_paths(pathfind::paths(*u, false,
+				                       true, teams_[gui_->viewing_team()],
 				                       mouse_handler_.get_path_turns()));
 
 				gui_->highlight_reach(mouse_handler_.current_paths());

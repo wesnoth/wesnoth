@@ -290,8 +290,8 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 
 				{ // start planned unit map scope
 					wb::future_map_if_active raii;
-					current_paths_ = pathfind::paths(units_, *un,
-														false,true,viewing_team(),path_turns_);
+					current_paths_ = pathfind::paths(*un, false, true,
+					                                 viewing_team(), path_turns_);
 				} // end planned unit map scope
 
 				gui().highlight_reach(current_paths_);
@@ -649,8 +649,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 		next_unit_ = u->get_location();
 
 		{
-			current_paths_ = pathfind::paths(units_, *u,
-				false, true, viewing_team(), path_turns_);
+			current_paths_ = pathfind::paths(*u, false, true, viewing_team(), path_turns_);
 		}
 		if(highlight) {
 			show_attack_options(u);
@@ -694,8 +693,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 			if (!gui_->fogged(u->get_location()) && !u->incapacitated() && !invisible)
 			{
 
-				const pathfind::paths& path = pathfind::paths(units_,
-						*u, false, true,
+				const pathfind::paths& path = pathfind::paths(*u, false, true,
 						teams_[gui_->viewing_team()], path_turns_, false, false);
 
 				if (path.destinations.find(hex) != path.destinations.end()) {
