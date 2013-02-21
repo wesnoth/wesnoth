@@ -12,6 +12,7 @@ except ImportError: pass
   
 import sys, os, glob, shutil, urllib2, optparse, traceback
 import subprocess, yaml
+import multiprocessing, Queue
 
 import wesnoth.wmlparser2 as wmlparser2
 import unit_tree.helpers as helpers
@@ -122,12 +123,26 @@ def list_contents():
         return info
 
     def parse(wml, defines):
-        local.wesnoth = helpers.WesnothList(
-            options.wesnoth,
-            options.config_dir,
-            options.data_dir,
-            options.transdir)
-        local.wesnoth.parser.parse_text(wml, defines)
+        def f(options, wml, defines, q):
+            local.wesnoth = helpers.WesnothList(
+                options.wesnoth,
+                options.config_dir,
+                options.data_dir,
+                options.transdir)
+            #print("remote", local.wesnoth)
+            local.wesnoth.parser.parse_text(wml, defines)
+            q.put(local.wesnoth)
+        
+        q = multiprocessing.Queue()
+        p = multiprocessing.Process(target = f, args = (options, wml, defines, q))
+        p.start()
+        try:
+            local.wesnoth = q.get(timeout = 5)
+        except Queue.Empty:
+            p.terminate()
+            raise
+        #print("local", local.wesnoth)
+        p.join()
     
     def get_version(addon):
         try:
@@ -199,6 +214,13 @@ def list_contents():
             info["version"] = version
             sys.stdout.write("ok\n")
         except wmlparser2.WMLError as e:
+            ef = open(logname, "w")
+            ef.write("<PARSE ERROR>\n")
+            ef.write(str(e))
+            ef.write("</PARSE ERROR>\n")
+            ef.close()
+            sys.stdout.write("failed\n")
+        except Queue.Empty as e:
             ef = open(logname, "w")
             ef.write("<PARSE ERROR>\n")
             ef.write(str(e))
@@ -401,7 +423,7 @@ if __name__ == '__main__':
     op.add_option("-D", "--data-dir",
         help="Specify the wesnoth data dir (wesnoth --path).")
     op.add_option("-l", "--language", default="all",
-        help="Specify a language to use. Else outputs is produced for all languages.")
+        help="Specify a language to use. Else output is produced for all languages.")
     op.add_option("-o", "--output",
         help="Specify the output directory.")
     op.add_option("-n", "--nocopy", action="store_true",
