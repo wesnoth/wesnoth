@@ -668,7 +668,7 @@ private:
 		if (u == units.end()){
 			return variant();
 		}
-		const pathfind::paths unit_paths(*resources::game_map, units, *u ,*resources::teams, false, true, ai_.current_team());
+		const pathfind::paths unit_paths(units, *u ,*resources::teams, false, true, ai_.current_team());
 		return variant(new location_callable(ai_.suitable_keep(loc,unit_paths)));
 	}
 

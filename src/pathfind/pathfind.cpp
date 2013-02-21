@@ -210,8 +210,6 @@ struct comp {
  * Creates a list of routes that a unit can traverse from the provided location.
  * (This is called when creating pathfind::paths and descendant classes.)
  *
- * @param[in]  map              The gamemap to use (for identifying terrain).
- * @param[in]  units            Currently unused.
  * @param[in]  u                The unit whose moves and movement type will be used.
  * @param[in]  loc              The location at which to begin the routes.
  * @param[in]  move_left        The number of movement points left for the current turn.
@@ -232,13 +230,15 @@ struct comp {
  *                              (implies ignoring ZoC as well).
  * @param[in] vision            Set if the move_costs or the vision_costs are used.
  */
-static void find_routes(const gamemap& map, const unit& u, const map_location& loc,
+static void find_routes(const unit& u, const map_location& loc,
 		int move_left, pathfind::paths::dest_vect &destinations,
 		std::set<map_location> *edges, const team &current_team,
 		bool force_ignore_zocs, bool allow_teleport, int turns_left,
 		const team &viewing_team,
 		bool see_all, bool ignore_units, pathfind::PATH_TYPE type, const std::map<map_location, int>* jamming_map)
 {
+	const gamemap& map = *resources::game_map;
+
 	pathfind::teleport_map teleports;
 	if (allow_teleport) {
 	  teleports = pathfind::get_teleport_locations(u, viewing_team, see_all, ignore_units);
@@ -441,8 +441,7 @@ bool pathfind::paths::dest_vect::contains(const map_location &loc) const
  *
  * This function is used for several purposes, including showing a unit's
  * potential moves and generating currently possible paths.
- * @param map              The gamemap to use (for identifying terrain).
- * @param units            The unit_map to use (for identifying units).
+ * @param units            Currently unused.
  * @param u                The unit whose moves and movement type will be used.
  * @param teams            The teams of the game (for recognizing enemies).
  * @param force_ignore_zoc Set to true to completely ignore zones of control.
@@ -452,7 +451,7 @@ bool pathfind::paths::dest_vect::contains(const map_location &loc) const
  * @param see_all          Set to true to remove unit visibility from consideration.
  * @param ignore_units     Set to true if units should never obstruct paths (implies ignoring ZoC as well).
  */
-pathfind::paths::paths(gamemap const &map, unit_map const &/*units*/,
+pathfind::paths::paths(unit_map const &/*units*/,
 		const unit& u, std::vector<team> const &teams,
 		bool force_ignore_zoc, bool allow_teleport, const team &viewing_team,
 		int additional_turns, bool see_all, bool ignore_units)
@@ -462,7 +461,7 @@ pathfind::paths::paths(gamemap const &map, unit_map const &/*units*/,
 		return;
 	}
 
-	find_routes(map, u, u.get_location(), u.movement_left(), destinations, NULL,
+	find_routes(u, u.get_location(), u.movement_left(), destinations, NULL,
 	            teams[u.side()-1], force_ignore_zoc, allow_teleport,
 	            additional_turns, viewing_team, see_all, ignore_units, pathfind::MOVE, NULL);
 }
@@ -481,13 +480,12 @@ pathfind::paths::~paths()
  * It differs from pathfinding in that it will only ever go out one turn,
  * and that it will also collect a set of border hexes (the "one hex beyond"
  * movement to which vision extends).
- * @param map        The gamemap to use (for identifying terrain).
  * @param viewer     The unit doing the viewing.
  * @param loc        The location from which the viewing occurs
  *                   (does not have to be the unit's location).
  */
-pathfind::vision_path::vision_path(gamemap const &map, const unit& viewer,
-                                   map_location const &loc, const std::map<map_location, int>& jamming_map)
+pathfind::vision_path::vision_path(const unit& viewer, map_location const &loc,
+                                   const std::map<map_location, int>& jamming_map)
 	: paths(), edges()
 {
 	const team & viewer_team = (*resources::teams)[viewer.side()-1];
@@ -498,7 +496,7 @@ pathfind::vision_path::vision_path(gamemap const &map, const unit& viewer,
 	// (The "see all" setting does not currently matter since teleports are
 	// not allowed and units are ignored. If something changes to make it
 	// significant, I might have incorrectly guessed the appropriate value.)
-	find_routes(map, viewer, loc, sight_range, destinations, &edges,
+	find_routes(viewer, loc, sight_range, destinations, &edges,
 			viewer_team, true, false, 0, viewer_team, true, true, pathfind::VISION, &jamming_map);
 
 }
@@ -514,17 +512,14 @@ pathfind::vision_path::~vision_path()
  *
  * This is used to construct a list of hexes that the indicated unit can jam.
  * It differs from pathfinding in that it will only ever go out one turn.
- * @param map        The gamemap to use (for identifying terrain).
  * @param jammer     The unit doing the jamming.
  * @param loc        The location from which the jamming occurs
  *                   (does not have to be the unit's location).
  */
-pathfind::jamming_path::jamming_path(gamemap const &map, const unit& jammer,
-                                   map_location const &loc)
-	: paths()//, edges()
+pathfind::jamming_path::jamming_path(const unit& jammer, map_location const &loc)
+	: paths()
 {
 	const team & jammer_team = (*resources::teams)[jammer.side()-1];
-
 	const int jamming_range = jammer.jamming();
 
 	// Finding routes: ignore ZoC, disallow teleports, zero turns left,
@@ -532,7 +527,7 @@ pathfind::jamming_path::jamming_path(gamemap const &map, const unit& jammer,
 	// (The "see all" setting does not currently matter since teleports are
 	// not allowed and units are ignored. If something changes to make it
 	// significant, I might have incorrectly guessed the appropriate value.)
-	find_routes(map, jammer, loc, jamming_range, destinations, NULL,
+	find_routes(jammer, loc, jamming_range, destinations, NULL,
 			jammer_team, true, false, 0, jammer_team, true, true, pathfind::JAMMING, NULL);
 }
 

@@ -77,7 +77,7 @@ struct paths
 	}
 
 	/// Construct a list of paths for the specified unit.
-	paths(gamemap const &map,
+	paths(
 	      unit_map const &/*units*/, // Not used
 	      const unit& u, std::vector<team> const &teams,
 	      bool force_ignore_zocs, bool allow_teleport,
@@ -109,8 +109,8 @@ struct paths
 struct vision_path : public paths
 {
 	/// Construct a list of seen hexes for a unit.
-	vision_path(gamemap const &map, const unit& viewer,
-	            map_location const &loc, const std::map<map_location, int>& jamming_map);
+	vision_path(const unit& viewer, map_location const &loc,
+	            const std::map<map_location, int>& jamming_map);
 	virtual ~vision_path();
 
 	/// The edges are the non-destination hexes bordering the destinations.
@@ -123,12 +123,8 @@ struct vision_path : public paths
 struct jamming_path : public paths
 {
 	/// Construct a list of jammed hexes for a unit.
-	jamming_path(gamemap const &map, const unit& jammer,
-	            map_location const &loc);
+	jamming_path(const unit& jammer, map_location const &loc);
 	virtual ~jamming_path();
-
-	/// The edges are the non-destination hexes bordering the destinations.
-	//std::set<map_location> edges;
 };
 
 

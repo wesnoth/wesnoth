@@ -59,7 +59,7 @@ static void create_jamming_map(std::map<map_location, int> & jamming,
 		if ( u.jamming() < 1  ||  !view_team.is_enemy(u.side()) )
 			continue;
 
-		pathfind::jamming_path jam_path(*resources::game_map, u, u.get_location());
+		pathfind::jamming_path jam_path(u, u.get_location());
 		BOOST_FOREACH(const pathfind::paths::step& st, jam_path.destinations) {
 			if ( jamming[st.curr] < st.move_left )
 				jamming[st.curr] = st.move_left;
@@ -86,7 +86,7 @@ static bool can_see(const unit & viewer, const map_location & loc,
 	}
 
 	// Determine which hexes this unit can see.
-	pathfind::vision_path sight(*resources::game_map, viewer, viewer.get_location(), *jamming);
+	pathfind::vision_path sight(viewer, viewer.get_location(), *jamming);
 
 	return sight.destinations.contains(loc)  ||  sight.edges.count(loc) != 0;
 }
@@ -311,7 +311,7 @@ bool shroud_clearer::clear_unit(const map_location &view_loc,
 	}
 
 	// Determine the hexes to clear.
-	pathfind::vision_path sight(*resources::game_map, viewer, view_loc, jamming_);
+	pathfind::vision_path sight(viewer, view_loc, jamming_);
 	// Give animations a chance to progress; see bug #20324.
 	if ( !instant  &&  resources::screen )
 		resources::screen->draw(true);

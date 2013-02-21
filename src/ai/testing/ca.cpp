@@ -674,7 +674,7 @@ double move_leader_to_goals_phase::evaluate()
 		return BAD_SCORE;
 	}
 
-	const pathfind::paths leader_paths(*resources::game_map, *resources::units, *leader,
+	const pathfind::paths leader_paths(*resources::units, *leader,
 				 *resources::teams, false, true, current_team());
 
 	std::map<map_location,pathfind::paths> possible_moves;
@@ -752,7 +752,7 @@ double move_leader_to_keep_phase::evaluate()
 	}
 
 	// Find where the leader can move
-	const pathfind::paths leader_paths(*resources::game_map, units_, *leader,
+	const pathfind::paths leader_paths(units_, *leader,
 		*resources::teams, false, true, current_team());
 	const map_location& keep = suitable_keep(leader->get_location(), leader_paths);
 	if (keep == map_location::null_location) {
