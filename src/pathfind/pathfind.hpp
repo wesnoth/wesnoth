@@ -79,7 +79,7 @@ struct paths
 	/// Construct a list of paths for the specified unit.
 	paths(
 	      unit_map const &/*units*/, // Not used
-	      const unit& u, std::vector<team> const &teams,
+	      const unit& u,
 	      bool force_ignore_zocs, bool allow_teleport,
 	      const team &viewing_team, int additional_turns = 0,
 	      bool see_all = false, bool ignore_units = false);

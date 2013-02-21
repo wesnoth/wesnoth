@@ -443,7 +443,6 @@ bool pathfind::paths::dest_vect::contains(const map_location &loc) const
  * potential moves and generating currently possible paths.
  * @param units            Currently unused.
  * @param u                The unit whose moves and movement type will be used.
- * @param teams            The teams of the game (for recognizing enemies).
  * @param force_ignore_zoc Set to true to completely ignore zones of control.
  * @param allow_teleport   Set to true to consider teleportation abilities.
  * @param viewing_team     Usually the current team, except for "show enemy moves", etc.
@@ -452,11 +451,12 @@ bool pathfind::paths::dest_vect::contains(const map_location &loc) const
  * @param ignore_units     Set to true if units should never obstruct paths (implies ignoring ZoC as well).
  */
 pathfind::paths::paths(unit_map const &/*units*/,
-		const unit& u, std::vector<team> const &teams,
+		const unit& u,
 		bool force_ignore_zoc, bool allow_teleport, const team &viewing_team,
 		int additional_turns, bool see_all, bool ignore_units)
 	: destinations()
 {
+	std::vector<team> const &teams = *resources::teams;
 	if (u.side() < 1 || u.side() > int(teams.size())) {
 		return;
 	}

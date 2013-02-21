@@ -1094,7 +1094,7 @@ void play_controller::process_keyup_event(const SDL_Event& event) {
 				unit_movement_resetter move_reset(*u, u->side() != player_number_);
 
 				mouse_handler_.set_current_paths(pathfind::paths(units_, *u,
-				                       teams_,false,true, teams_[gui_->viewing_team()],
+				                       false, true, teams_[gui_->viewing_team()],
 				                       mouse_handler_.get_path_turns()));
 
 				gui_->highlight_reach(mouse_handler_.current_paths());
