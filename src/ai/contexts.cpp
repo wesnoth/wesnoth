@@ -354,6 +354,18 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 			srcdst.insert(trivial_mv);
 			dstsrc.insert(trivial_mv);
 		}
+		/**
+		 * @todo This is where support for a speculative unit map is incomplete.
+		 *       There are several places (deep) within the paths constructor
+		 *       where *resources::units is assumed to be the unit map. Rather
+		 *       than introduce a new parameter to numerous functions, a better
+		 *       solution may be for the creator of the speculative map (if one
+		 *       is used in the future) to cause resources::units to point to
+		 *       that map (and restore the "real" pointer when the speculating
+		 *       is completed). If that approach is adopted, calculate_moves()
+		 *       and calculate_possible_moves() become redundant, and one of
+		 *       them should probably be eliminated.
+		 */
 		res.insert(std::pair<map_location,pathfind::paths>(
 			un_it->get_location(), pathfind::paths(*resources::game_map,
 			units, *un_it, *resources::teams, false,
