@@ -810,7 +810,7 @@ void unit::advance_to(const config &old_cfg, const unit_type &u_type,
 	alpha_ = new_type.alpha();
 	max_hit_points_ = new_type.hitpoints();
 	max_movement_ = new_type.movement();
-	vision_ = new_type.vision();
+	vision_ = new_type.vision(true);
 	jamming_ = new_type.jamming();
 	movement_type_ = new_type.movement_type();
 	emit_zoc_ = new_type.has_zoc();

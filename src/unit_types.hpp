@@ -185,7 +185,9 @@ public:
 	int hitpoints() const { return hitpoints_; }
 	int level() const { return level_; }
 	int movement() const { return movement_; }
-	int vision() const { return vision_; }
+	int vision() const { return vision_ < 0 ? movement() : vision_; }
+	/// If @a base_value is set to true, do not fall back to movement().
+	int vision(bool base_value) const { return base_value ? vision_ : vision(); }
 	int jamming() const {return jamming_; }
 	int max_attacks() const { return max_attacks_; }
 	int cost() const { return cost_; }

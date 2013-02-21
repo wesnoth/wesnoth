@@ -1489,7 +1489,7 @@ public:
 		// Print some basic information such as HP and movement points.
 		ss << _("HP: ") << type_.hitpoints() << jump(30)
 		   << _("Moves: ") << type_.movement() << jump(30);
-		if (type_.vision() >= 0)
+		if (type_.vision() != type_.movement())
 			ss << _("Vision: ") << type_.vision() << jump(30);
 		if (type_.jamming() > 0)
 			ss << _("Jamming: ") << type_.jamming() << jump(30);
