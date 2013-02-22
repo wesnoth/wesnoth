@@ -43,6 +43,9 @@
 static lg::log_domain log_engine("engine");
 #define ERR_PF LOG_STREAM(err, log_engine)
 
+namespace pathfind {
+
+
 /**
  * Function that will find a location on the board that is as near
  * to @a loc as possible, but which is unoccupied by any units.
@@ -52,10 +55,8 @@ static lg::log_domain log_engine("engine");
  * If @a shroud_check is provided, only locations not covered by this
  * team's shroud will be considered.
  */
-map_location pathfind::find_vacant_tile(const map_location& loc,
-                                        pathfind::VACANT_TILE_TYPE vacancy,
-                                        const unit* pass_check,
-                                        const team* shroud_check)
+map_location find_vacant_tile(const map_location& loc, VACANT_TILE_TYPE vacancy,
+                              const unit* pass_check, const team* shroud_check)
 {
 	const gamemap & map = *resources::game_map;
 	const unit_map & units = *resources::units;
@@ -79,7 +80,7 @@ map_location pathfind::find_vacant_tile(const map_location& loc,
 			if ( do_shroud  &&  shroud_check->shrouded(loc) )
 				continue;
 			//If this area is not a castle but should, skip it.
-			if (vacancy == pathfind::VACANT_CASTLE && !map.is_castle(loc)) continue;
+			if ( vacancy == VACANT_CASTLE  &&  !map.is_castle(loc) ) continue;
 			const bool pass_check_and_unreachable = pass_check
 				&& pass_check->movement_cost(map[loc]) == movetype::UNREACHABLE;
 			//If the unit can't reach the tile and we have searched
@@ -115,7 +116,7 @@ map_location pathfind::find_vacant_tile(const map_location& loc,
  * near a leader.
  * If no valid location can be found, it will return a null location.
  */
-map_location pathfind::find_vacant_castle(const unit & leader)
+map_location find_vacant_castle(const unit & leader)
 {
 	return find_vacant_tile(leader.get_location(), VACANT_CASTLE,
 	                        NULL, &(*resources::teams)[leader.side()-1]);
@@ -132,8 +133,8 @@ map_location pathfind::find_vacant_castle(const unit & leader)
  *
  * @return true iff a visible enemy exerts zone of control over loc.
  */
-bool pathfind::enemy_zoc(team const &current_team, map_location const &loc,
-                         team const &viewing_team, bool see_all)
+bool enemy_zoc(team const &current_team, map_location const &loc,
+               team const &viewing_team, bool see_all)
 {
 	// Check the adjacent tiles.
 	map_location locs[6];
@@ -242,7 +243,7 @@ struct comp {
 static void find_routes(
 		const map_location & origin, const movetype::terrain_costs & costs,
 		bool slowed, int moves_left, int max_moves, int turns_left,
-		pathfind::paths::dest_vect & destinations, std::set<map_location> * edges,
+		paths::dest_vect & destinations, std::set<map_location> * edges,
 		const unit * teleporter, const team * current_team,
 		const unit * skirmisher, const team * viewing_team,
 		const std::map<map_location, int> * jamming_map=NULL)
@@ -255,10 +256,10 @@ static void find_routes(
 	if ( viewing_team == NULL )
 		viewing_team = &resources::teams->front();
 
-	pathfind::teleport_map teleports;
+	teleport_map teleports;
 	if ( teleporter ) {
-		teleports = pathfind::get_teleport_locations(*teleporter, *viewing_team, see_all,
-		                                             current_team == NULL);
+		teleports = get_teleport_locations(*teleporter, *viewing_team, see_all,
+		                                   current_team == NULL);
 	}
 
 	search_counter += 2;
@@ -344,7 +345,7 @@ static void find_routes(
 				}
 
 				if ( skirmisher  &&  t.movement_left > 0  &&
-				     pathfind::enemy_zoc(*current_team, locs[i], *viewing_team, see_all)  &&
+				     enemy_zoc(*current_team, locs[i], *viewing_team, see_all)  &&
 				     !skirmisher->get_ability_bool("skirmisher", locs[i]) ) {
 					t.movement_left = 0;
 				}
@@ -380,14 +381,14 @@ static void find_routes(
 		{
 			const node &n = nodes[index(map_location(x, y))];
 			if (n.in - search_counter > 1u) continue;
-			pathfind::paths::step s =
+			paths::step s =
 				{ n.curr, n.prev, n.movement_left + n.turns_left * max_moves };
 			destinations.push_back(s);
 		}
 	}
 }
 
-static pathfind::paths::dest_vect::iterator lower_bound(pathfind::paths::dest_vect &v, const map_location &loc)
+static paths::dest_vect::iterator lower_bound(paths::dest_vect &v, const map_location &loc)
 {
 	size_t sz = v.size(), pos = 0;
 	while (sz)
@@ -400,14 +401,14 @@ static pathfind::paths::dest_vect::iterator lower_bound(pathfind::paths::dest_ve
 	return v.begin() + pos;
 }
 
-pathfind::paths::dest_vect::const_iterator pathfind::paths::dest_vect::find(const map_location &loc) const
+paths::dest_vect::const_iterator paths::dest_vect::find(const map_location &loc) const
 {
 	const_iterator i = lower_bound(const_cast<dest_vect &>(*this), loc), i_end = end();
 	if (i != i_end && i->curr != loc) i = i_end;
 	return i;
 }
 
-void pathfind::paths::dest_vect::insert(const map_location &loc)
+void paths::dest_vect::insert(const map_location &loc)
 {
 	iterator i = lower_bound(*this, loc), i_end = end();
 	if (i != i_end && i->curr == loc) return;
@@ -419,7 +420,7 @@ void pathfind::paths::dest_vect::insert(const map_location &loc)
  * Returns the path going from the source point (included) to the
  * destination point @a j (excluded).
  */
-std::vector<map_location> pathfind::paths::dest_vect::get_path(const const_iterator &j) const
+std::vector<map_location> paths::dest_vect::get_path(const const_iterator &j) const
 {
 	std::vector<map_location> path;
 	if (!j->prev.valid()) {
@@ -436,7 +437,7 @@ std::vector<map_location> pathfind::paths::dest_vect::get_path(const const_itera
 	return path;
 }
 
-bool pathfind::paths::dest_vect::contains(const map_location &loc) const
+bool paths::dest_vect::contains(const map_location &loc) const
 {
 	return find(loc) != end();
 }
@@ -454,7 +455,7 @@ bool pathfind::paths::dest_vect::contains(const map_location &loc) const
  * @param see_all          Set to true to remove unit visibility from consideration.
  * @param ignore_units     Set to true if units should never obstruct paths (implies ignoring ZoC as well).
  */
-pathfind::paths::paths(const unit& u, bool force_ignore_zoc,
+paths::paths(const unit& u, bool force_ignore_zoc,
 		bool allow_teleport, const team &viewing_team,
 		int additional_turns, bool see_all, bool ignore_units)
 	: destinations()
@@ -476,7 +477,7 @@ pathfind::paths::paths(const unit& u, bool force_ignore_zoc,
 /**
  * Virtual destructor to support child classes.
  */
-pathfind::paths::~paths()
+paths::~paths()
 {
 }
 
@@ -491,8 +492,8 @@ pathfind::paths::~paths()
  * @param loc        The location from which the viewing occurs
  *                   (does not have to be the unit's location).
  */
-pathfind::vision_path::vision_path(const unit& viewer, map_location const &loc,
-                                   const std::map<map_location, int>& jamming_map)
+vision_path::vision_path(const unit& viewer, map_location const &loc,
+                         const std::map<map_location, int>& jamming_map)
 	: paths(), edges()
 {
 	const int sight_range = viewer.vision();
@@ -505,7 +506,7 @@ pathfind::vision_path::vision_path(const unit& viewer, map_location const &loc,
 }
 
 /// Default destructor
-pathfind::vision_path::~vision_path()
+vision_path::~vision_path()
 {
 }
 
@@ -519,7 +520,7 @@ pathfind::vision_path::~vision_path()
  * @param loc        The location from which the jamming occurs
  *                   (does not have to be the unit's location).
  */
-pathfind::jamming_path::jamming_path(const unit& jammer, map_location const &loc)
+jamming_path::jamming_path(const unit& jammer, map_location const &loc)
 	: paths()
 {
 	const int jamming_range = jammer.jamming();
@@ -532,11 +533,11 @@ pathfind::jamming_path::jamming_path(const unit& jammer, map_location const &loc
 }
 
 /// Default destructor
-pathfind::jamming_path::~jamming_path()
+jamming_path::~jamming_path()
 {
 }
 
-pathfind::marked_route pathfind::mark_route(const plain_route &rt)
+marked_route mark_route(const plain_route &rt)
 {
 	marked_route res;
 
@@ -598,7 +599,7 @@ pathfind::marked_route pathfind::mark_route(const plain_route &rt)
 	return res;
 }
 
-pathfind::shortest_path_calculator::shortest_path_calculator(unit const &u, team const &t,
+shortest_path_calculator::shortest_path_calculator(unit const &u, team const &t,
 		std::vector<team> const &teams, gamemap const &map,
 		bool ignore_unit, bool ignore_defense, bool see_all)
 	: unit_(u), viewing_team_(t), teams_(teams), map_(map),
@@ -608,7 +609,7 @@ pathfind::shortest_path_calculator::shortest_path_calculator(unit const &u, team
 	  see_all_(see_all)
 {}
 
-double pathfind::shortest_path_calculator::cost(const map_location& loc, const double so_far) const
+double shortest_path_calculator::cost(const map_location& loc, const double so_far) const
 {
 	assert(map_.on_board(loc));
 
@@ -688,13 +689,13 @@ double pathfind::shortest_path_calculator::cost(const map_location& loc, const d
 	return move_cost + (defense_subcost + other_unit_subcost) / 10000.0;
 }
 
-pathfind::move_type_path_calculator::move_type_path_calculator(const movetype& mt, int movement_left, int total_movement, team const &t, gamemap const &map)
+move_type_path_calculator::move_type_path_calculator(const movetype& mt, int movement_left, int total_movement, team const &t, gamemap const &map)
 	: movement_type_(mt), movement_left_(movement_left),
 	  total_movement_(total_movement), viewing_team_(t), map_(map)
 {}
 
 // This is an simplified version of shortest_path_calculator (see above for explanation)
-double pathfind::move_type_path_calculator::cost(const map_location& loc, const double so_far) const
+double move_type_path_calculator::cost(const map_location& loc, const double so_far) const
 {
 	assert(map_.on_board(loc));
 	if (viewing_team_.shrouded(loc))
@@ -722,21 +723,24 @@ double pathfind::move_type_path_calculator::cost(const map_location& loc, const 
 }
 
 
-pathfind::emergency_path_calculator::emergency_path_calculator(const unit& u, const gamemap& map)
+emergency_path_calculator::emergency_path_calculator(const unit& u, const gamemap& map)
 	: unit_(u), map_(map)
 {}
 
-double pathfind::emergency_path_calculator::cost(const map_location& loc, const double) const
+double emergency_path_calculator::cost(const map_location& loc, const double) const
 {
 	assert(map_.on_board(loc));
 
 	return unit_.movement_cost(map_[loc]);
 }
 
-pathfind::dummy_path_calculator::dummy_path_calculator(const unit&, const gamemap&)
+dummy_path_calculator::dummy_path_calculator(const unit&, const gamemap&)
 {}
 
-double pathfind::dummy_path_calculator::cost(const map_location&, const double) const
+double dummy_path_calculator::cost(const map_location&, const double) const
 {
 	return 1.0;
 }
+
+
+}//namespace pathfind

@@ -29,6 +29,9 @@ static lg::log_domain log_engine("engine");
 #define DBG_PF LOG_STREAM(debug, log_engine)
 #define ERR_PF LOG_STREAM(err, log_engine)
 
+namespace pathfind {
+
+
 namespace {
 double heuristic(const map_location& src, const map_location& dst)
 {
@@ -79,7 +82,7 @@ struct node {
 		, in(bad_search_counter)
 	{
 	}
-	node(double s, const map_location &c, const map_location &p, const map_location &dst, bool i, const pathfind::teleport_map* teleports):
+	node(double s, const map_location &c, const map_location &p, const map_location &dst, bool i, const teleport_map* teleports):
 		g(s), h(heuristic(c, dst)), t(g + h), curr(c), prev(p), in(search_counter + i)
 	{
 		if (teleports && !teleports->empty()) {
@@ -136,13 +139,13 @@ public:
 		return loc.y * w_ + loc.x;
 	}
 };
-}
+}//anonymous namespace
 
 
-pathfind::plain_route pathfind::a_star_search(const map_location& src, const map_location& dst,
-                            double stop_at, const cost_calculator *calc, const size_t width,
-                            const size_t height,
-                            const teleport_map *teleports) {
+plain_route a_star_search(const map_location& src, const map_location& dst,
+                          double stop_at, const cost_calculator *calc,
+                          const size_t width, const size_t height,
+                          const teleport_map *teleports) {
 	//----------------- PRE_CONDITIONS ------------------
 	assert(src.valid(width, height));
 	assert(dst.valid(width, height));
@@ -154,7 +157,7 @@ pathfind::plain_route pathfind::a_star_search(const map_location& src, const map
 
 	if (calc->cost(dst, 0) >= stop_at) {
 		LOG_PF << "aborted A* search because Start or Dest is invalid\n";
-		pathfind::plain_route locRoute;
+		plain_route locRoute;
 		locRoute.move_cost = int(calc->getNoPathValue());
 		return locRoute;
 	}
@@ -227,7 +230,7 @@ pathfind::plain_route pathfind::a_star_search(const map_location& src, const map
 		}
 	}
 
-	pathfind::plain_route route;
+	plain_route route;
 	if (nodes[index(dst)].g <= stop_at) {
 		DBG_PF << "found solution; calculating it...\n";
 		route.move_cost = static_cast<int>(nodes[index(dst)].g);
@@ -244,3 +247,5 @@ pathfind::plain_route pathfind::a_star_search(const map_location& src, const map
 	return route;
 }
 
+
+}//namespace pathfind

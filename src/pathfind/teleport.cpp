@@ -26,12 +26,15 @@
 static lg::log_domain log_engine("engine");
 #define ERR_PF LOG_STREAM(err, log_engine)
 
+namespace pathfind {
+
+
 namespace {
 	const std::string reversed_suffix = "-__REVERSED__";
 }
 
 // This constructor is *only* meant for loading from saves
-pathfind::teleport_group::teleport_group(const config& cfg) : cfg_(cfg), reversed_(cfg["reversed"].to_bool(false)), id_(cfg["id"])
+teleport_group::teleport_group(const config& cfg) : cfg_(cfg), reversed_(cfg["reversed"].to_bool(false)), id_(cfg["id"])
 {
 	assert(cfg.has_attribute("id"));
 	assert(cfg.has_attribute("reversed"));
@@ -41,7 +44,7 @@ pathfind::teleport_group::teleport_group(const config& cfg) : cfg_(cfg), reverse
 	assert(cfg_.child_count("filter") == 1);
 }
 
-pathfind::teleport_group::teleport_group(const vconfig& cfg, bool reversed) : cfg_(cfg.get_config()), reversed_(reversed), id_()
+teleport_group::teleport_group(const vconfig& cfg, bool reversed) : cfg_(cfg.get_config()), reversed_(reversed), id_()
 {
 	assert(cfg_.child_count("source") == 1);
 	assert(cfg_.child_count("target") == 1);
@@ -55,7 +58,7 @@ pathfind::teleport_group::teleport_group(const vconfig& cfg, bool reversed) : cf
 	}
 }
 
-void pathfind::teleport_group::get_teleport_pair(
+void teleport_group::get_teleport_pair(
 		  teleport_pair& loc_pair
 		, const unit& u
 		, const bool ignore_units) const
@@ -83,15 +86,15 @@ void pathfind::teleport_group::get_teleport_pair(
 	}
 }
 
-const std::string& pathfind::teleport_group::get_teleport_id() const {
+const std::string& teleport_group::get_teleport_id() const {
 	return id_;
 }
 
-bool pathfind::teleport_group::always_visible() const {
+bool teleport_group::always_visible() const {
 	return cfg_["always_visible"].to_bool(false);
 }
 
-config pathfind::teleport_group::to_config() const {
+config teleport_group::to_config() const {
 	config retval = cfg_;
 	retval["saved"] = "yes";
 	retval["reversed"] = reversed_ ? "yes" : "no";
@@ -99,7 +102,7 @@ config pathfind::teleport_group::to_config() const {
 	return retval;
 }
 
-pathfind::teleport_map::teleport_map(
+teleport_map::teleport_map(
 		  const std::vector<teleport_group>& groups
 		, const unit& u
 		, const team &viewing_team
@@ -142,7 +145,7 @@ pathfind::teleport_map::teleport_map(
 	}
 }
 
-void pathfind::teleport_map::get_adjacents(std::set<map_location>& adjacents, map_location loc) const {
+void teleport_map::get_adjacents(std::set<map_location>& adjacents, map_location loc) const {
 
 	if (teleport_map_.count(loc) == 0) {
 		return;
@@ -156,7 +159,7 @@ void pathfind::teleport_map::get_adjacents(std::set<map_location>& adjacents, ma
 	}
 }
 
-void pathfind::teleport_map::get_sources(std::set<map_location>& sources) const {
+void teleport_map::get_sources(std::set<map_location>& sources) const {
 
 	std::map<std::string, std::set<map_location> >::const_iterator it;
 	for(it = sources_.begin(); it != sources_.end(); ++it) {
@@ -164,7 +167,7 @@ void pathfind::teleport_map::get_sources(std::set<map_location>& sources) const 
 	}
 }
 
-void pathfind::teleport_map::get_targets(std::set<map_location>& targets) const {
+void teleport_map::get_targets(std::set<map_location>& targets) const {
 
 	std::map<std::string, std::set<map_location> >::const_iterator it;
 	for(it = targets_.begin(); it != targets_.end(); ++it) {
@@ -173,7 +176,7 @@ void pathfind::teleport_map::get_targets(std::set<map_location>& targets) const 
 }
 
 
-const pathfind::teleport_map pathfind::get_teleport_locations(const unit &u,
+const teleport_map get_teleport_locations(const unit &u,
 	const team &viewing_team,
 	bool see_all, bool ignore_units)
 {
@@ -195,7 +198,7 @@ const pathfind::teleport_map pathfind::get_teleport_locations(const unit &u,
 	return teleport_map(groups, u, viewing_team, see_all, ignore_units);
 }
 
-pathfind::manager::manager(const config &cfg) : tunnels_(), id_(cfg["next_teleport_group_id"].to_int(0)) {
+manager::manager(const config &cfg) : tunnels_(), id_(cfg["next_teleport_group_id"].to_int(0)) {
 	const int tunnel_count = cfg.child_count("tunnel");
 	for(int i = 0; i < tunnel_count; ++i) {
 		const config& t = cfg.child("tunnel", i);
@@ -203,17 +206,17 @@ pathfind::manager::manager(const config &cfg) : tunnels_(), id_(cfg["next_telepo
 			lg::wml_error << "Do not use [tunnel] directly in a [scenario]. Use it in an [event] or [abilities] tag.\n";
 			continue;
 		}
-		const pathfind::teleport_group tunnel(t);
+		const teleport_group tunnel(t);
 		this->add(tunnel);
 	}
 }
 
-void pathfind::manager::add(const teleport_group &group) {
+void manager::add(const teleport_group &group) {
 	tunnels_.push_back(group);
 }
 
-void pathfind::manager::remove(const std::string &id) {
-	std::vector<pathfind::teleport_group>::iterator t = tunnels_.begin();
+void manager::remove(const std::string &id) {
+	std::vector<teleport_group>::iterator t = tunnels_.begin();
 	for(;t != tunnels_.end();) {
 		if (t->get_teleport_id() == id || t->get_teleport_id() == id + reversed_suffix) {
 			t = tunnels_.erase(t);
@@ -223,14 +226,14 @@ void pathfind::manager::remove(const std::string &id) {
 	}
 }
 
-const std::vector<pathfind::teleport_group>& pathfind::manager::get() const {
+const std::vector<teleport_group>& manager::get() const {
 	return tunnels_;
 }
 
-config pathfind::manager::to_config() const {
+config manager::to_config() const {
 	config store;
 
-	std::vector<pathfind::teleport_group>::const_iterator tunnel = tunnels_.begin();
+	std::vector<teleport_group>::const_iterator tunnel = tunnels_.begin();
 	for(; tunnel != tunnels_.end(); ++tunnel) {
 		store.add_child("tunnel", tunnel->to_config());
 	}
@@ -239,7 +242,9 @@ config pathfind::manager::to_config() const {
 	return store;
 }
 
-std::string pathfind::manager::next_unique_id() {
+std::string manager::next_unique_id() {
 	return str_cast(++id_);
 }
 
+
+}//namespace pathfind
