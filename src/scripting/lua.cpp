@@ -1543,7 +1543,7 @@ static int intf_highlight_hex(lua_State *L)
 	unit_map::const_unit_iterator i = resources::units->find(loc);
 	if(i != resources::units->end()) {
 		resources::screen->highlight_reach(pathfind::paths(*i, false,
-			(*i).get_ability_bool("teleport"), resources::teams->front()));
+			true, resources::teams->front()));
 			/// @todo: resources::teams->front() is not always the correct
 			///        choice for the viewing team.
 	}
