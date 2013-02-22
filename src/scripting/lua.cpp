@@ -1544,6 +1544,8 @@ static int intf_highlight_hex(lua_State *L)
 	if(i != resources::units->end()) {
 		resources::screen->highlight_reach(pathfind::paths(*i, false,
 			(*i).get_ability_bool("teleport"), resources::teams->front()));
+			/// @todo: resources::teams->front() is not always the correct
+			///        choice for the viewing team.
 	}
 
 	return 0;
