@@ -275,31 +275,32 @@ static void find_routes(
 	int nb_dest = 1;
 
 	nodes[index(origin)] = node(moves_left, turns_left, map_location::null_location, origin);
-	std::vector<int> pq;
-	pq.push_back(index(origin));
+	std::vector<int> hexes_to_process;
+	hexes_to_process.push_back(index(origin));
 
-	while (!pq.empty()) {
-		node& n = nodes[pq.front()];
-		std::pop_heap(pq.begin(), pq.end(), node_comp);
-		pq.pop_back();
+	while ( !hexes_to_process.empty() ) {
+		node& n = nodes[hexes_to_process.front()];
+		std::pop_heap(hexes_to_process.begin(), hexes_to_process.end(), node_comp);
+		hexes_to_process.pop_back();
 		n.in = search_counter;
 
 		std::set<map_location> allowed_teleports;
 		teleports.get_adjacents(allowed_teleports, n.curr);
-		std::vector<map_location> locs(6 + allowed_teleports.size());
-		std::copy(allowed_teleports.begin(), allowed_teleports.end(), locs.begin() + 6);
-		get_adjacent_tiles(n.curr, &locs[0]);
-		for (int i = locs.size(); i-- > 0; ) {
-			if (!locs[i].valid(map.w(), map.h())) {
+		std::vector<map_location> adj_locs(6 + allowed_teleports.size());
+		std::copy(allowed_teleports.begin(), allowed_teleports.end(), adj_locs.begin() + 6);
+		get_adjacent_tiles(n.curr, &adj_locs[0]);
+		for ( int i = adj_locs.size(); i-- > 0; ) {
+			// Get the node associated with this location.
+			const map_location & next_hex = adj_locs[i];
+			if ( !next_hex.valid(map.w(), map.h()) ) {
 				if ( edges != NULL )
-					edges->insert(locs[i]);
+					edges->insert(next_hex);
 				continue;
 			}
 
-			if (locs[i] == n.curr) continue;
+			if ( next_hex == n.curr ) continue;
 
-			node& next = nodes[index(locs[i])];
-
+			node& next = nodes[index(next_hex)];
 			bool next_visited = next.in - search_counter <= 1u;
 
 			// Classic Dijkstra allow to skip chosen nodes (with next.in==search_counter)
@@ -312,15 +313,15 @@ static void find_routes(
 			// Thus, 'src-..-n-next' can't be shorter.
 			if (next_visited) continue;
 
-			int cost = costs.cost(map[locs[i]], slowed);
+			int cost = costs.cost(map[next_hex], slowed);
 			if ( jamming_map ) {
 				const std::map<map_location, int>::const_iterator jam_it =
-					jamming_map->find(locs[i]);
+					jamming_map->find(next_hex);
 				if ( jam_it != jamming_map->end() )
 					cost += jam_it->second;
 			}
 
-			node t = node(n.movement_left, n.turns_left, n.curr, locs[i]);
+			node t = node(n.movement_left, n.turns_left, n.curr, next_hex);
 			if (t.movement_left < cost) {
 				t.movement_left = max_moves;
 				t.turns_left--;
@@ -336,8 +337,7 @@ static void find_routes(
 
 			if ( current_team ) {
 				// Account for enemy units.
-				const unit *v =
-					get_visible_unit(locs[i], *viewing_team, see_all);
+				const unit *v = get_visible_unit(next_hex, *viewing_team, see_all);
 				if ( v && current_team->is_enemy(v->side()) ) {
 					if ( edges != NULL )
 						edges->insert(t.curr);
@@ -345,17 +345,17 @@ static void find_routes(
 				}
 
 				if ( skirmisher  &&  t.movement_left > 0  &&
-				     enemy_zoc(*current_team, locs[i], *viewing_team, see_all)  &&
-				     !skirmisher->get_ability_bool("skirmisher", locs[i]) ) {
+				     enemy_zoc(*current_team, next_hex, *viewing_team, see_all)  &&
+				     !skirmisher->get_ability_bool("skirmisher", next_hex) ) {
 					t.movement_left = 0;
 				}
 			}
 
 			++nb_dest;
-			int x = locs[i].x;
+			int x = next_hex.x;
 			if (x < xmin) xmin = x;
 			if (xmax < x) xmax = x;
-			int y = locs[i].y;
+			int y = next_hex.y;
 			if (y < ymin) ymin = y;
 			if (ymax < y) ymax = y;
 
@@ -365,10 +365,10 @@ static void find_routes(
 
 			// if already in the priority queue then we just update it, else push it.
 			if (in_list) { // never happen see next_visited above
-				std::push_heap(pq.begin(), std::find(pq.begin(), pq.end(), index(locs[i])) + 1, node_comp);
+				std::push_heap(hexes_to_process.begin(), std::find(hexes_to_process.begin(), hexes_to_process.end(), index(next_hex)) + 1, node_comp);
 			} else {
-				pq.push_back(index(locs[i]));
-				std::push_heap(pq.begin(), pq.end(), node_comp);
+				hexes_to_process.push_back(index(next_hex));
+				std::push_heap(hexes_to_process.begin(), hexes_to_process.end(), node_comp);
 			}
 		}
 	}
