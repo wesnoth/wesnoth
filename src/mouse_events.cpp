@@ -1208,7 +1208,7 @@ void mouse_handler::cycle_units(const bool browse, const bool reverse)
 	}
 }
 
-void mouse_handler::set_current_paths(pathfind::paths new_paths) {
+void mouse_handler::set_current_paths(const pathfind::paths & new_paths) {
 	gui().unhighlight_reach();
 	current_paths_ = new_paths;
 	current_route_.steps.clear();

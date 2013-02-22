@@ -46,7 +46,7 @@ public:
 	const map_location& get_last_hex() const { return last_hex_; }
 	map_location get_selected_hex() const { return selected_hex_; }
 	void set_path_turns(const int path_turns) { path_turns_ = path_turns; }
-	void set_current_paths(pathfind::paths new_paths);
+	void set_current_paths(const pathfind::paths & new_paths);
 	void deselect_hex();
 	void invalidate_reachmap() { reachmap_invalid_ = true; }
 
