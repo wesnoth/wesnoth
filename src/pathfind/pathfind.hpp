@@ -25,7 +25,6 @@ class gamemap;
 class movetype;
 class team;
 class unit;
-class unit_map;
 
 #include "map_location.hpp"
 
