@@ -2769,14 +2769,14 @@ static int intf_select_hex(lua_State *L)
 	const int x = luaL_checkinteger(L, 1) - 1;
 	const int y = luaL_checkinteger(L, 2) - 1;
 
-	map_location loc(x, y);
+	const map_location loc(x, y);
 	if(!resources::game_map->on_board(loc)) return luaL_argerror(L, 1, "not on board");
 	bool highlight = true;
 	if(!lua_isnoneornil(L, 3))
 		highlight = lua_toboolean(L, 3);
 	const bool fire_event = lua_toboolean(L, 4);
 	resources::controller->get_mouse_handler_base().select_hex(
-		map_location(x, y), false, highlight, fire_event);
+		loc, false, highlight, fire_event);
 	if(highlight)
 		resources::screen->highlight_hex(loc);
 	return 0;
