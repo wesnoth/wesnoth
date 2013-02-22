@@ -37,7 +37,6 @@ namespace pathfind {
 class teleport_map;
 
 enum VACANT_TILE_TYPE { VACANT_CASTLE, VACANT_ANY };
-enum PATH_TYPE { MOVE, VISION, JAMMING };
 
 /// Function that will find a location on the board that is as near
 /// to @a loc as possible, but which is unoccupied by any units.

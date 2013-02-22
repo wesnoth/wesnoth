@@ -210,44 +210,56 @@ struct comp {
  * Creates a list of routes that a unit can traverse from the provided location.
  * (This is called when creating pathfind::paths and descendant classes.)
  *
- * @param[in]  u                The unit whose moves and movement type will be used.
- * @param[in]  loc              The location at which to begin the routes.
- * @param[in]  move_left        The number of movement points left for the current turn.
- * @param[out] destinations     The traversable routes.
- * @param[out] edges            The hexes (possibly off-map) adjacent to those in
- *                              destinations. (It is permissible for this to contain
- *                              some hexes that are also in destinations.)
- * @param[in]  current_team     The team whose enemies will be recognized as such.
- * @param[in]  force_ignore_zoc Set to true to completely ignore zones of control.
- * @param[in]  allow_teleport   Set to true to consider teleportation abilities.
- * @param[in]  turns_left       The number of additional turns of movement to use,
- *                              in addition to the current turn.
- * @param[in]  viewing_team     Usually the current team, except for "show enemy
- *                              moves", etc. Relevant if allowing teleports or
- *                              if not ignoring units.
- * @param[in] see_all           Set to true to remove unit visibility from consideration.
- * @param[in] ignore_units      Set to true if units should never obstruct paths
- *                              (implies ignoring ZoC as well).
- * @param[in] type              Determines which set of costs (movement, vision, or "jamming") is used.
- * @param[in] jamming_map       The relevant "jamming" of the costs being used. (Only applies if using vision costs.)
+ * @param[in]  origin        The location at which to begin the routes.
+ * @param[in]  costs         The costs to use for route finding.
+ * @param[in]  slowed        Whether or not to use the slowed costs.
+ * @param[in]  moves_left    The number of movement points left for the current turn.
+ * @param[in]  max_moves     The number of movement points in each future turn.
+ * @param[in]  turns_left    The number of future turns of movement to calculate.
+ * @param[out] destinations  The traversable routes.
+ * @param[out] edges         The hexes (possibly off-map) adjacent to those in
+ *                           destinations. (It is permissible for this to contain
+ *                           some hexes that are also in destinations.)
+ *
+ * @param[in]  teleporter    If not NULL, teleportaion will be considered, using
+ *                           this unit's abilities.
+ * @param[in]  current_team  If not NULL, enemies of this team can obstruct routes
+ *                           both by occupying hexes and by exerting zones of control.
+ *                           In addition, the presence of units can affect
+ *                           teleportation options.
+ * @param[in]  skirmisher    If not NULL, use this to determine where ZoC can and
+ *                           cannot be ignored (due to this unit having or not
+ *                           having the skirmisher ability).
+ *                           If NULL, then ignore all zones of control.
+ *                           (No effect if current_team is NULL).
+ * @param[in]  viewing_team  If not NULL, use this team's vision when detecting
+ *                           enemy units and teleport destinations.
+ *                           If NULL, then "see all".
+ *                           (No effect if teleporter and current_team are both NULL.)
+ * @param[in]  jamming_map   The relevant "jamming" of the costs being used
+ *                           (currently only used with vision costs).
  */
-static void find_routes(const unit& u, const map_location& loc,
-		int move_left, pathfind::paths::dest_vect &destinations,
-		std::set<map_location> *edges, const team &current_team,
-		bool force_ignore_zocs, bool allow_teleport, int turns_left,
-		const team &viewing_team,
-		bool see_all, bool ignore_units, pathfind::PATH_TYPE type, const std::map<map_location, int>* jamming_map)
+static void find_routes(
+		const map_location & origin, const movetype::terrain_costs & costs,
+		bool slowed, int moves_left, int max_moves, int turns_left,
+		pathfind::paths::dest_vect & destinations, std::set<map_location> * edges,
+		const unit * teleporter, const team * current_team,
+		const unit * skirmisher, const team * viewing_team,
+		const std::map<map_location, int> * jamming_map=NULL)
 {
 	const gamemap& map = *resources::game_map;
 
-	pathfind::teleport_map teleports;
-	if (allow_teleport) {
-	  teleports = pathfind::get_teleport_locations(u, viewing_team, see_all, ignore_units);
-	}
+	const bool see_all =  viewing_team == NULL;
+	// When see_all is true, the viewing team never matters, but we still
+	// need to supply one to some functions.
+	if ( viewing_team == NULL )
+		viewing_team = &resources::teams->front();
 
-	/// @todo: total_movement is not set correctly for vision and "jamming" maps,
-	/// but those maps currently do not make use of total_movement (so not urgent).
-	const int total_movement = u.total_movement();
+	pathfind::teleport_map teleports;
+	if ( teleporter ) {
+		teleports = pathfind::get_teleport_locations(*teleporter, *viewing_team, see_all,
+		                                             current_team == NULL);
+	}
 
 	search_counter += 2;
 	if (search_counter == 0) search_counter = 2;
@@ -258,11 +270,12 @@ static void find_routes(const unit& u, const map_location& loc,
 	indexer index(map.w(), map.h());
 	comp node_comp(nodes);
 
-	int xmin = loc.x, xmax = loc.x, ymin = loc.y, ymax = loc.y, nb_dest = 1;
+	int xmin = origin.x, xmax = origin.x, ymin = origin.y, ymax = origin.y;
+	int nb_dest = 1;
 
-	nodes[index(loc)] = node(move_left, turns_left, map_location::null_location, loc);
+	nodes[index(origin)] = node(moves_left, turns_left, map_location::null_location, origin);
 	std::vector<int> pq;
-	pq.push_back(index(loc));
+	pq.push_back(index(origin));
 
 	while (!pq.empty()) {
 		node& n = nodes[pq.front()];
@@ -298,27 +311,17 @@ static void find_routes(const unit& u, const map_location& loc,
 			// Thus, 'src-..-n-next' can't be shorter.
 			if (next_visited) continue;
 
-			int cost = 1;
-			switch (type) {
-				case pathfind::MOVE:
-					cost = u.movement_cost(map[locs[i]]);
-					break;
-				case pathfind::VISION:
-					cost = u.vision_cost(map[locs[i]]);
-					if (jamming_map->count(locs[i]) == 1)
-						cost += (jamming_map->find(locs[i]))->second;
-					break;
-				case pathfind::JAMMING:
-					cost = u.vision_cost(map[locs[i]]);
-					break;
-				default:
-					cost = u.movement_cost(map[locs[i]]);
-					break;
+			int cost = costs.cost(map[locs[i]], slowed);
+			if ( jamming_map ) {
+				const std::map<map_location, int>::const_iterator jam_it =
+					jamming_map->find(locs[i]);
+				if ( jam_it != jamming_map->end() )
+					cost += jam_it->second;
 			}
 
 			node t = node(n.movement_left, n.turns_left, n.curr, locs[i]);
 			if (t.movement_left < cost) {
-				t.movement_left = total_movement;
+				t.movement_left = max_moves;
 				t.turns_left--;
 			}
 
@@ -330,18 +333,19 @@ static void find_routes(const unit& u, const map_location& loc,
 
 			t.movement_left -= cost;
 
-			if (!ignore_units) {
+			if ( current_team ) {
+				// Account for enemy units.
 				const unit *v =
-					get_visible_unit(locs[i], viewing_team, see_all);
-				if (v && current_team.is_enemy(v->side())) {
+					get_visible_unit(locs[i], *viewing_team, see_all);
+				if ( v && current_team->is_enemy(v->side()) ) {
 					if ( edges != NULL )
 						edges->insert(t.curr);
 					continue;
 				}
 
-				if (!force_ignore_zocs && t.movement_left > 0
-				    && pathfind::enemy_zoc(current_team, locs[i], viewing_team, see_all)
-						&& !u.get_ability_bool("skirmisher", locs[i])) {
+				if ( skirmisher  &&  t.movement_left > 0  &&
+				     pathfind::enemy_zoc(*current_team, locs[i], *viewing_team, see_all)  &&
+				     !skirmisher->get_ability_bool("skirmisher", locs[i]) ) {
 					t.movement_left = 0;
 				}
 			}
@@ -377,7 +381,7 @@ static void find_routes(const unit& u, const map_location& loc,
 			const node &n = nodes[index(map_location(x, y))];
 			if (n.in - search_counter > 1u) continue;
 			pathfind::paths::step s =
-				{ n.curr, n.prev, n.movement_left + n.turns_left * total_movement };
+				{ n.curr, n.prev, n.movement_left + n.turns_left * max_moves };
 			destinations.push_back(s);
 		}
 	}
@@ -460,9 +464,13 @@ pathfind::paths::paths(const unit& u, bool force_ignore_zoc,
 		return;
 	}
 
-	find_routes(u, u.get_location(), u.movement_left(), destinations, NULL,
-	            teams[u.side()-1], force_ignore_zoc, allow_teleport,
-	            additional_turns, viewing_team, see_all, ignore_units, pathfind::MOVE, NULL);
+	find_routes(u.get_location(), u.movement_type().get_movement(),
+	            u.get_state(unit::STATE_SLOWED), u.movement_left(),
+	            u.total_movement(), additional_turns, destinations, NULL,
+	            allow_teleport ? &u : NULL,
+	            ignore_units ? NULL : &teams[u.side()-1],
+	            force_ignore_zoc ? NULL : &u,
+	            see_all ? NULL : &viewing_team);
 }
 
 /**
@@ -487,17 +495,13 @@ pathfind::vision_path::vision_path(const unit& viewer, map_location const &loc,
                                    const std::map<map_location, int>& jamming_map)
 	: paths(), edges()
 {
-	const team & viewer_team = (*resources::teams)[viewer.side()-1];
 	const int sight_range = viewer.vision();
 
-	// Finding routes: ignore ZoC, disallow teleports, zero turns left,
-	// (viewing team), see all, and ignore units.
-	// (The "see all" setting does not currently matter since teleports are
-	// not allowed and units are ignored. If something changes to make it
-	// significant, I might have incorrectly guessed the appropriate value.)
-	find_routes(viewer, loc, sight_range, destinations, &edges,
-			viewer_team, true, false, 0, viewer_team, true, true, pathfind::VISION, &jamming_map);
-
+	// The four NULL parameters indicate (in order): no teleports,
+	// ignore units, ignore ZoC (no effect), and see all (no effect).
+	find_routes(loc, viewer.movement_type().get_vision(),
+	            viewer.get_state(unit::STATE_SLOWED), sight_range, sight_range,
+	            0, destinations, &edges, NULL, NULL, NULL, NULL, &jamming_map);
 }
 
 /// Default destructor
@@ -518,16 +522,13 @@ pathfind::vision_path::~vision_path()
 pathfind::jamming_path::jamming_path(const unit& jammer, map_location const &loc)
 	: paths()
 {
-	const team & jammer_team = (*resources::teams)[jammer.side()-1];
 	const int jamming_range = jammer.jamming();
 
-	// Finding routes: ignore ZoC, disallow teleports, zero turns left,
-	// (jamming team), see all, and ignore units.
-	// (The "see all" setting does not currently matter since teleports are
-	// not allowed and units are ignored. If something changes to make it
-	// significant, I might have incorrectly guessed the appropriate value.)
-	find_routes(jammer, loc, jamming_range, destinations, NULL,
-			jammer_team, true, false, 0, jammer_team, true, true, pathfind::JAMMING, NULL);
+	// The five NULL parameters indicate (in order): no edges, no teleports,
+	// ignore units, ignore ZoC (no effect), and see all (no effect).
+	find_routes(loc, jammer.movement_type().get_jamming(),
+	            jammer.get_state(unit::STATE_SLOWED), jamming_range, jamming_range,
+	            0, destinations, NULL, NULL, NULL, NULL, NULL);
 }
 
 /// Default destructor
