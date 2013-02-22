@@ -106,8 +106,10 @@ public:
 		{}
 
 		/// Returns the cost associated with the given terrain.
-		int cost(const t_translation::t_terrain & terrain) const
-		{ return value(terrain); }
+		/// Costs are doubled when @a slowed is true.
+		int cost(const t_translation::t_terrain & terrain, bool slowed=false) const
+		{ int result = value(terrain);
+		  return  slowed  &&  result != movetype::UNREACHABLE ? 2 * result : result; }
 
 		// Inherited from terrain_info:
 		//void merge(const config & new_values, bool overwrite);
@@ -192,14 +194,14 @@ public:
 	void set_flying(bool flies=true) { flying_ = flies; }
 
 	/// Returns the cost to move through the indicated terrain.
-	int movement_cost(const t_translation::t_terrain & terrain) const
-	{ return movement_.cost(terrain); }
+	int movement_cost(const t_translation::t_terrain & terrain, bool slowed=false) const
+	{ return movement_.cost(terrain, slowed); }
 	/// Returns the cost to see through the indicated terrain.
-	int vision_cost(const t_translation::t_terrain & terrain) const
-	{ return vision_.cost(terrain); }
+	int vision_cost(const t_translation::t_terrain & terrain, bool slowed=false) const
+	{ return vision_.cost(terrain, slowed); }
 	/// Returns the cost to "jam" through the indicated terrain.
-	int jamming_cost(const t_translation::t_terrain & terrain) const
-	{ return jamming_.cost(terrain); }
+	int jamming_cost(const t_translation::t_terrain & terrain, bool slowed=false) const
+	{ return jamming_.cost(terrain, slowed); }
 
 	/// Returns the defensive value of the indicated terrain.
 	int defense_modifier(const t_translation::t_terrain & terrain) const

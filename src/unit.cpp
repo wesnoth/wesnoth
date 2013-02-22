@@ -2134,42 +2134,6 @@ bool unit::loyal() const
 	return cfg_["upkeep"] == "loyal" || cfg_["upkeep"] == "free";
 }
 
-int unit::movement_cost(const t_translation::t_terrain & terrain) const
-{
-	const int res = movement_type_.movement_cost(terrain);
-
-	if ( res == movetype::UNREACHABLE ) {
-		return res;
-	} else if(get_state(STATE_SLOWED)) {
-		return res*2;
-	}
-	return res;
-}
-
-int unit::vision_cost(const t_translation::t_terrain & terrain) const
-{
-	const int res = movement_type_.vision_cost(terrain);
-
-	if ( res == movetype::UNREACHABLE ) {
-		return res;
-	} else if(get_state(STATE_SLOWED)) {
-		return res*2;
-	}
-	return res;
-}
-
-int unit::jamming_cost(const t_translation::t_terrain & terrain) const
-{
-	const int res = movement_type_.jamming_cost(terrain);
-
-	if ( res == movetype::UNREACHABLE ) {
-		return res;
-	} else if(get_state(STATE_SLOWED)) {
-		return res*2;
-	}
-	return res;
-}
-
 int unit::defense_modifier(const t_translation::t_terrain & terrain) const
 {
 	int def = movement_type_.defense_modifier(terrain);

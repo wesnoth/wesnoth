@@ -270,13 +270,16 @@ public:
 	bool is_flying() const { return movement_type_.is_flying(); }
 	bool is_fearless() const { return is_fearless_; }
 	bool is_healthy() const { return is_healthy_; }
-	int movement_cost(const t_translation::t_terrain & terrain) const;
-	int vision_cost(const t_translation::t_terrain & terrain) const;
-	int jamming_cost(const t_translation::t_terrain & terrain) const;
+	int movement_cost(const t_translation::t_terrain & terrain) const
+	{ return movement_type_.movement_cost(terrain, get_state(STATE_SLOWED)); }
+	int vision_cost(const t_translation::t_terrain & terrain) const
+	{ return movement_type_.vision_cost(terrain, get_state(STATE_SLOWED)); }
+	int jamming_cost(const t_translation::t_terrain & terrain) const
+	{ return movement_type_.jamming_cost(terrain, get_state(STATE_SLOWED)); }
 	int defense_modifier(const t_translation::t_terrain & terrain) const;
 	int resistance_against(const std::string& damage_name,bool attacker,const map_location& loc) const;
 	int resistance_against(const attack_type& damage_type,bool attacker,const map_location& loc) const
-		{return resistance_against(damage_type.type(), attacker, loc);};
+	{ return resistance_against(damage_type.type(), attacker, loc); }
 
 	//return resistances without any abilities applied
 	utils::string_map get_base_resistances() const { return movement_type_.damage_table(); }
@@ -295,7 +298,7 @@ public:
 	size_t modification_count(const std::string& type, const std::string& id) const;
 
 	void add_modification(const std::string& type, const config& modification,
-	                  bool no_add=false);
+	                      bool no_add=false);
 	void expire_modifications(const std::string & duration);
 
 	bool move_interrupted() const { return movement_left() > 0 && interrupted_move_.x >= 0 && interrupted_move_.y >= 0; }
