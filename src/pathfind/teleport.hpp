@@ -15,13 +15,14 @@
 #ifndef TELEPORT_H_INCLUDED
 #define TELEPORT_H_INCLUDED
 
-#include "map.hpp"
-
 #include "config.hpp"
-#include "team.hpp"
-#include "terrain_filter.hpp"
+#include "map_location.hpp"
 #include "savegame_config.hpp"
-#include "pathfind/pathfind.hpp"
+
+
+class team;
+class unit;
+class vconfig;
 
 
 namespace pathfind {
