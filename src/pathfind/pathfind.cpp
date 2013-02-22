@@ -217,7 +217,7 @@ struct comp {
  * @param[out] edges            The hexes (possibly off-map) adjacent to those in
  *                              destinations. (It is permissible for this to contain
  *                              some hexes that are also in destinations.)
- * @param[in]  teams            The teams of the game (for recognizing enemies).
+ * @param[in]  current_team     The team whose enemies will be recognized as such.
  * @param[in]  force_ignore_zoc Set to true to completely ignore zones of control.
  * @param[in]  allow_teleport   Set to true to consider teleportation abilities.
  * @param[in]  turns_left       The number of additional turns of movement to use,
@@ -228,7 +228,8 @@ struct comp {
  * @param[in] see_all           Set to true to remove unit visibility from consideration.
  * @param[in] ignore_units      Set to true if units should never obstruct paths
  *                              (implies ignoring ZoC as well).
- * @param[in] vision            Set if the move_costs or the vision_costs are used.
+ * @param[in] type              Determines which set of costs (movement, vision, or "jamming") is used.
+ * @param[in] jamming_map       The relevant "jamming" of the costs being used. (Only applies if using vision costs.)
  */
 static void find_routes(const unit& u, const map_location& loc,
 		int move_left, pathfind::paths::dest_vect &destinations,
