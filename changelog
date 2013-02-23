@@ -99,6 +99,8 @@ Version 1.11.1+svn:
    * Changed: Increased the pango cairo dependency to version 1.24.4.
    * Fixed a display artifact (halos not cleared) when WML moves a unit.
    * Improved the display of vision costs in the unit help.
+   * Fixed wmllint, wmlscope and wmlindent not working correctly on Windows if a
+     command line argument ends with a backslash
 
 Version 1.11.1:
  * AI:

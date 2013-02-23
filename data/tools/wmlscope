@@ -425,6 +425,12 @@ Usage: macroscope [options] dirpath
             elif switch in ('-w', '--warnlevel'):
                 warnlevel = int(val)
 
+        # in certain situations, Windows' command prompt appends a double quote
+        # to the command line parameters. This block takes care of this issue.
+        for i,arg in enumerate(arguments):
+            if arg.endswith('"'):
+                arguments[i] = arg[:-1]
+
         forceused = "|".join(forceused)
         if len(arguments):
             dirpath = arguments
