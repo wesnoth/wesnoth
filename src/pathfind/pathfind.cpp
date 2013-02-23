@@ -150,61 +150,79 @@ bool enemy_zoc(team const &current_team, map_location const &loc,
 	return false;
 }
 
-static unsigned search_counter;
 
 namespace {
+	/**
+	 * Nodes used by find_routes().
+	 * These store the information necessary for extending the path
+	 * and for tracing the route back to the source.
+	 */
+	struct findroute_node {
+		int moves_left, turns_left;
+		map_location prev;
+		// search_num is used to detect which nodes have been collected
+		// in the current search. (More than just a boolean value so
+		// that nodes can be stored between searches.)
+		unsigned search_num;
 
-struct node {
-	int movement_left, turns_left;
-	map_location prev, curr;
+		// Constructors.
+		findroute_node(int moves, int turns, const map_location &prev_loc, unsigned search_count)
+			: moves_left(moves)
+			, turns_left(turns)
+			, prev(prev_loc)
+			, search_num(search_count)
+		{ }
+		findroute_node()
+			: moves_left(0)
+			, turns_left(0)
+			, prev()
+			, search_num(0)
+		{ }
+
+		// Compare these nodes based on movement consumed.
+		bool operator<(const findroute_node& o) const {
+			return turns_left > o.turns_left ||
+				  (turns_left == o.turns_left && moves_left > o.moves_left);
+		}
+	};
 
 	/**
-	 * If equal to search_counter, the node is off the list.
-	 * If equal to search_counter + 1, the node is on the list.
-	 * Otherwise it is outdated.
+	 * Converts map locations to and from integer indices.
 	 */
-	unsigned in;
+	struct findroute_indexer {
+		int w, h; // Width and height of the map.
 
-	node(int moves, int turns, const map_location &p, const map_location &c)
-		: movement_left(moves)
-		, turns_left(turns)
-		, prev(p)
-		, curr(c)
-		, in(0)
-	{
-	}
+		// Constructor:
+		findroute_indexer(int a, int b) : w(a), h(b) { }
+		// Convert to an index: (returns -1 on out of bounds)
+		int operator()(int x, int y) const {
+			if ( x < 0  || w <= x  ||  y < 0 || h <= y )
+				return -1;
+			else
+				return x + y*w;
+		}
+		int operator()(const map_location& loc) const {
+			return (*this)(loc.x, loc.y);
+		}
+		// Convert from an index:
+		map_location operator()(int index) const {
+			return map_location(index%w, index/w);
+		}
+	};
 
-	node()
-		: movement_left(0)
-		, turns_left(0)
-		, prev()
-		, curr()
-		, in(0)
-	{
-	}
+	/**
+	 * A function object for comparing indices.
+	 */
+	struct findroute_comp {
+		const std::vector<findroute_node>& nodes;
 
-	bool operator<(const node& o) const {
-		return turns_left > o.turns_left
-				|| (turns_left == o.turns_left
-						&& movement_left > o.movement_left);
-	}
-};
-
-struct indexer {
-	int w, h;
-	indexer(int a, int b) : w(a), h(b) { }
-	int operator()(const map_location& loc) const {
-		return loc.y * w + loc.x;
-	}
-};
-
-struct comp {
-	const std::vector<node>& nodes;
-	comp(const std::vector<node>& n) : nodes(n) { }
-	bool operator()(int l, int r) const {
-		return nodes[r] < nodes[l];
-	}
-};
+		// Constructor:
+		findroute_comp(const std::vector<findroute_node>& n) : nodes(n) { }
+		// Binary predicate evaluating the order of its arguments:
+		bool operator()(int l, int r) const {
+			return nodes[r] < nodes[l];
+		}
+	};
 }
 
 /**
@@ -256,63 +274,79 @@ static void find_routes(
 	if ( viewing_team == NULL )
 		viewing_team = &resources::teams->front();
 
-	teleport_map teleports;
-	if ( teleporter ) {
-		teleports = get_teleport_locations(*teleporter, *viewing_team, see_all,
-		                                   current_team == NULL);
+	// Build a teleport map, if needed.
+	const teleport_map teleports = teleporter ?
+			get_teleport_locations(*teleporter, *viewing_team, see_all, current_team == NULL) :
+			teleport_map();
+
+	// Since this is called so often, keep memory reserved for the node list.
+	static std::vector<findroute_node> nodes;
+	static unsigned search_counter = 0;
+	// Incrementing search_counter means we ignore results from earlier searches.
+	++search_counter;
+	// Whenever the counter cycles, trash the contents of nodes and restart at 1.
+	if ( search_counter == 0 ) {
+		nodes.resize(0);
+		search_counter = 1;
 	}
-
-	search_counter += 2;
-	if (search_counter == 0) search_counter = 2;
-
-	static std::vector<node> nodes;
+	// Initialize the nodes for this search.
 	nodes.resize(map.w() * map.h());
+	findroute_comp node_comp(nodes);
+	findroute_indexer index(map.w(), map.h());
 
-	indexer index(map.w(), map.h());
-	comp node_comp(nodes);
-
+	// Used to optimize the final collection of routes.
 	int xmin = origin.x, xmax = origin.x, ymin = origin.y, ymax = origin.y;
 	int nb_dest = 1;
 
-	nodes[index(origin)] = node(moves_left, turns_left, map_location::null_location, origin);
-	std::vector<int> hexes_to_process;
-	hexes_to_process.push_back(index(origin));
+	// Record the starting location.
+	assert(index(origin) >= 0);
+	nodes[index(origin)] = findroute_node(moves_left, turns_left,
+	                                      map_location::null_location,
+	                                      search_counter);
+	// Begin the search at the starting location.
+	std::vector<int> hexes_to_process(1, index(origin));  // Will be maintained as a heap.
 
 	while ( !hexes_to_process.empty() ) {
-		node& n = nodes[hexes_to_process.front()];
+		// Process the hex closest to the origin.
+		const int cur_index = hexes_to_process.front();
+		const map_location cur_hex = index(cur_index);
+		const findroute_node& current = nodes[cur_index];
+		// Remove from the heap.
 		std::pop_heap(hexes_to_process.begin(), hexes_to_process.end(), node_comp);
 		hexes_to_process.pop_back();
-		n.in = search_counter;
 
-		std::set<map_location> allowed_teleports;
-		teleports.get_adjacents(allowed_teleports, n.curr);
-		std::vector<map_location> adj_locs(6 + allowed_teleports.size());
-		std::copy(allowed_teleports.begin(), allowed_teleports.end(), adj_locs.begin() + 6);
-		get_adjacent_tiles(n.curr, &adj_locs[0]);
-		for ( int i = adj_locs.size(); i-- > 0; ) {
+		// Get the locations adjacent to current.
+		std::vector<map_location> adj_locs(6);
+		get_adjacent_tiles(cur_hex, &adj_locs[0]);
+		if ( teleporter ) {
+			std::set<map_location> allowed_teleports;
+			teleports.get_adjacents(allowed_teleports, cur_hex);
+			adj_locs.insert(adj_locs.end(), allowed_teleports.begin(), allowed_teleports.end());
+		}
+		for ( int i = adj_locs.size()-1; i >= 0; --i ) {
 			// Get the node associated with this location.
 			const map_location & next_hex = adj_locs[i];
-			if ( !next_hex.valid(map.w(), map.h()) ) {
+			const int next_index = index(next_hex);
+			if ( next_index < 0 ) {
+				// Off the map.
 				if ( edges != NULL )
 					edges->insert(next_hex);
 				continue;
 			}
+			findroute_node & next = nodes[next_index];
 
-			if ( next_hex == n.curr ) continue;
+			// Skip nodes we have already collected.
+			// (Since no previously checked routes were longer than
+			// the current one, the current route cannot be shorter.)
+			// (Significant difference from classic Dijkstra: we have
+			// vertex weights, not edge weights.)
+			if ( next.search_num == search_counter )
+				continue;
 
-			node& next = nodes[index(next_hex)];
-			bool next_visited = next.in - search_counter <= 1u;
+			// If we go to next, it will be from current.
+			next.prev = cur_hex;
 
-			// Classic Dijkstra allow to skip chosen nodes (with next.in==search_counter)
-			// But the cost function and hex grid allow to also skip visited nodes:
-			// if next was visited, then we already have a path 'src-..-n2-next'
-			// - n2 was chosen before n, meaning that it is nearer to src.
-			// - the cost of 'n-next' can't be smaller than 'n2-next' because
-			//   cost is independent of direction and we don't have more MP at n
-			//   (important because more MP may allow to avoid waiting next turn)
-			// Thus, 'src-..-n-next' can't be shorter.
-			if (next_visited) continue;
-
+			// Calculate the cost of entering next_hex.
 			int cost = costs.cost(map[next_hex], slowed);
 			if ( jamming_map ) {
 				const std::map<map_location, int>::const_iterator jam_it =
@@ -321,57 +355,57 @@ static void find_routes(
 					cost += jam_it->second;
 			}
 
-			node t = node(n.movement_left, n.turns_left, n.curr, next_hex);
-			if (t.movement_left < cost) {
-				t.movement_left = max_moves;
-				t.turns_left--;
+			// Calculate movement remaining after entering next_hex.
+			next.moves_left = current.moves_left - cost;
+			next.turns_left = current.turns_left;
+			if ( next.moves_left < 0 ) {
+				// Have to delay until the next turn.
+				next.turns_left--;
+				next.moves_left = max_moves - cost;
 			}
-
-			if (t.movement_left < cost || t.turns_left < 0) {
+			if ( next.moves_left < 0 || next.turns_left < 0 ) {
+				// Either can never enter this hex or out of turns.
 				if ( edges != NULL )
-					edges->insert(t.curr);
+					edges->insert(next_hex);
 				continue;
 			}
-
-			t.movement_left -= cost;
 
 			if ( current_team ) {
 				// Account for enemy units.
 				const unit *v = get_visible_unit(next_hex, *viewing_team, see_all);
 				if ( v && current_team->is_enemy(v->side()) ) {
+					// Cannot enter enemy hexes.
 					if ( edges != NULL )
-						edges->insert(t.curr);
+						edges->insert(next_hex);
 					continue;
 				}
 
-				if ( skirmisher  &&  t.movement_left > 0  &&
+				if ( skirmisher  &&  next.moves_left > 0  &&
 				     enemy_zoc(*current_team, next_hex, *viewing_team, see_all)  &&
 				     !skirmisher->get_ability_bool("skirmisher", next_hex) ) {
-					t.movement_left = 0;
+					next.moves_left = 0;
 				}
 			}
 
+			// Mark next as being collected.
+			next.search_num = search_counter;
+
+			// Add this node to the heap.
+			hexes_to_process.push_back(next_index);
+			std::push_heap(hexes_to_process.begin(), hexes_to_process.end(), node_comp);
+
+			// Bookkeeping (for later).
 			++nb_dest;
-			int x = next_hex.x;
-			if (x < xmin) xmin = x;
-			if (xmax < x) xmax = x;
-			int y = next_hex.y;
-			if (y < ymin) ymin = y;
-			if (ymax < y) ymax = y;
-
-			bool in_list = next.in == search_counter + 1;
-			t.in = search_counter + 1;
-			next = t;
-
-			// if already in the priority queue then we just update it, else push it.
-			if (in_list) { // never happen see next_visited above
-				std::push_heap(hexes_to_process.begin(), std::find(hexes_to_process.begin(), hexes_to_process.end(), index(next_hex)) + 1, node_comp);
-			} else {
-				hexes_to_process.push_back(index(next_hex));
-				std::push_heap(hexes_to_process.begin(), hexes_to_process.end(), node_comp);
-			}
-		}
-	}
+			if ( next_hex.x < xmin )
+				xmin = next_hex.x;
+			else if ( xmax < next_hex.x )
+				xmax = next_hex.x;
+			if ( next_hex.y < ymin )
+				ymin = next_hex.y;
+			else if ( ymax < next_hex.y )
+				ymax = next_hex.y;
+		}//for (i)
+	}//while (hexes_to_process)
 
 	// Build the routes for every map_location that we reached.
 	// The ordering must be compatible with map_location::operator<.
@@ -379,14 +413,16 @@ static void find_routes(
 	for (int x = xmin; x <= xmax; ++x) {
 		for (int y = ymin; y <= ymax; ++y)
 		{
-			const node &n = nodes[index(map_location(x, y))];
-			if (n.in - search_counter > 1u) continue;
-			paths::step s =
-				{ n.curr, n.prev, n.movement_left + n.turns_left * max_moves };
-			destinations.push_back(s);
+			const findroute_node &n = nodes[index(x,y)];
+			if ( n.search_num == search_counter ) {
+				paths::step s =
+					{ map_location(x,y), n.prev, n.moves_left + n.turns_left*max_moves };
+				destinations.push_back(s);
+			}
 		}
 	}
 }
+
 
 static paths::dest_vect::iterator lower_bound(paths::dest_vect &v, const map_location &loc)
 {
