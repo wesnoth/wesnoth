@@ -403,8 +403,9 @@ bool shroud_clearer::clear_dest(const map_location &dest, const unit &viewer)
 	map_location adjacent[6];
 	get_adjacent_tiles(dest, adjacent);
 	for ( int i = 0; i != 6; ++i )
-		cleared_something = clear_loc(viewing_team, adjacent[i], viewer, dest,
-		                              true, enemies, friends);
+		if ( clear_loc(viewing_team, adjacent[i], viewer, dest,
+		               true, enemies, friends) )
+			cleared_something = true;
 
 	if ( cleared_something )
 		invalidate_after_clear();
