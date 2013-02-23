@@ -21,7 +21,7 @@
 #include <boost/shared_ptr.hpp>
 
 class attack_type;
-namespace t_translation { class t_terrain; }
+namespace t_translation { struct t_terrain; }
 
 
 /// The basic "size" of the unit - flying, small land, large land, etc.
