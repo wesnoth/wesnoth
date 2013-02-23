@@ -53,4 +53,12 @@
 #define HAVE_CXX11
 #endif
 
+#ifdef HAVE_CXX11
+#define FINAL final
+#define OVERRIDE override
+#else
+#define FINAL
+#define OVERRIDE
+#endif
+
 #endif //GLOBAL_HPP_INCLUDED
