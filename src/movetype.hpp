@@ -175,7 +175,7 @@ public:
 	movetype(const movetype & that);
 
 	// This class is basically just a holder for its various pieces, so
-	// provide access to those pieces on demenad.
+	// provide access to those pieces on demand.
 	terrain_costs & get_movement()   { return movement_; }
 	terrain_costs & get_vision()     { return vision_; }
 	terrain_costs & get_jamming()    { return jamming_; }
