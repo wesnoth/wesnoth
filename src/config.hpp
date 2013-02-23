@@ -70,7 +70,7 @@ class config
 	 */
 	void check_valid(const config &cfg) const;
 
-#ifndef HAVE_CXX0X
+#ifndef HAVE_CXX11
 	struct safe_bool_impl { void nonnull() {} };
 	/**
 	 * Used as the return type of the conversion operator for boolean contexts.
@@ -87,7 +87,7 @@ public:
 	config(const config &);
 	config &operator=(const config &);
 
-#ifdef HAVE_CXX0X
+#ifdef HAVE_CXX11
 	config(config &&);
 	config &operator=(config &&);
 #endif
@@ -100,7 +100,7 @@ public:
 	~config();
 
 
-#ifdef HAVE_CXX0X
+#ifdef HAVE_CXX11
 	explicit operator bool() const
 	{ return this != &invalid; }
 #else
@@ -396,7 +396,7 @@ public:
 	config& add_child(const std::string& key, const config& val);
 	config& add_child_at(const std::string &key, const config &val, unsigned index);
 
-#ifdef HAVE_CXX0X
+#ifdef HAVE_CXX11
 	config &add_child(const std::string &key, config &&val);
 #endif
 

@@ -427,7 +427,7 @@ config& config::operator=(const config& cfg)
 	return *this;
 }
 
-#ifdef HAVE_CXX0X
+#ifdef HAVE_CXX11
 config::config(config &&cfg):
 	values(std::move(cfg.values)),
 	children(std::move(cfg.children)),
@@ -641,7 +641,7 @@ config& config::add_child(const std::string& key, const config& val)
 	return *v.back();
 }
 
-#ifdef HAVE_CXX0X
+#ifdef HAVE_CXX11
 config &config::add_child(const std::string &key, config &&val)
 {
 	check_valid(val);
