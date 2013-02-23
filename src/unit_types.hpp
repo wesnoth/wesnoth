@@ -22,7 +22,7 @@
 
 #include <boost/noncopyable.hpp>
 
-class tportrait;
+struct tportrait;
 class unit_ability_list;
 class unit_animation;
 
