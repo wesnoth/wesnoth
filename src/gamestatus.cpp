@@ -765,9 +765,10 @@ game_data::game_data(const game_data& data)
 		, next_scenario_(data.next_scenario_)
 {}
 
-game_data::~game_data(){
+game_data::~game_data()
+{
 	wml_menu_items_.clear_wmi();
-};
+}
 
 config::attribute_value &game_data::get_variable(const std::string& key)
 {
