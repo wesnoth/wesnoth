@@ -127,7 +127,7 @@ REGISTER(scale,
 	"|The width in pixel of the image after scaling."
 "|new_height"
 	"|unsigned"
-	"|The height in pixel of the image after scaling.");
+	"|The height in pixel of the image after scaling.")
 
 static void
 brighten(surface& surf, const std::string& parameters)
@@ -151,7 +151,7 @@ REGISTER(brighten,
 	"|float"
 	"|The amount the image should be brightened. The value of the every "
 		"color channel is multiplied by this value. Value less than zero "
-		"are set to zero. The alpha channel is not modified.");
+		"are set to zero. The alpha channel is not modified.")
 
 static void
 blend(surface& surf, const std::string& parameters)
@@ -184,7 +184,7 @@ REGISTER(blend,
 		"hexadecimal value. The first fields should look like AARRGGBB, "
 		"where AA is the alpha channel, RR is the red channel, GG is the "
 		"green channel and BB is the blue channel. (Note the alpha channel "
-		"is ignored.");
+		"is ignored.")
 
 void
 filter_apply(surface& surf, const std::string& filter)
