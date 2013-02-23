@@ -2078,6 +2078,12 @@ if __name__ == '__main__':
     if not arguments:
         arguments = ["."]
 
+    # in certain situations, Windows' command prompt appends a double quote
+    # to the command line parameters. This block takes care of this issue.
+    for i,arg in enumerate(arguments):
+        if arg.endswith('"'):
+            arguments[i] = arg[:-1]
+
     for dir in arguments:
         ofp = None
         if "older" in versions:

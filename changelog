@@ -14,6 +14,8 @@ Version 1.4.7+svn:
    * Fixed bug #12896: Map generator does not sync between clients when
      advancing in MP campaigns
    * Removed support for PythonAI to handle CVE-2009-0367
+   * Fixed wmllint, wmlscope and wmlindent not working correctly on Windows if a
+     command line argument ends with a backslash
 
 Version 1.4.7:
  * campaigns:
