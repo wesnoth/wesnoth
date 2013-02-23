@@ -2355,6 +2355,7 @@ static int intf_put_unit(lua_State *L)
 		u = new unit(cfg, true, resources::state_of_game);
 	}
 
+	resources::screen->invalidate(loc);
 	resources::units->erase(loc);
 	if (!u) return 0;
 
@@ -2437,6 +2438,7 @@ static int intf_extract_unit(lua_State *L)
 	if (lu->on_map()) {
 		u = resources::units->extract(u->get_location());
 		assert(u);
+		u->clear_haloes();
 	} else if (int side = lu->on_recall_list()) {
 		team &t = (*resources::teams)[side - 1];
 		unit *v = new unit(*u);

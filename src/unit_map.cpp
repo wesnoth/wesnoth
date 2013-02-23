@@ -271,7 +271,6 @@ unit *unit_map::extract(const map_location &loc) {
 	DBG_NG << "Extract unit " << uid << " - " << u->id()
 			<< " from location: (" << loc << ")\n";
 
-	u->clear_haloes();
 	if(lit->ref_count == 0){
 		assert(lit != the_end_);
 		if(umap_.erase(uid) != 1){
