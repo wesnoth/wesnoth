@@ -41,11 +41,11 @@
  * Enable C++11 support in some parts of the code.
  *
  * These parts \em must  also work without C++11, since Wesnoth still uses C++98
- * as officiaal C++ version.
+ * as the official C++ version.
  *
- * @note Older version of GCC don't define the proper version for
+ * @note Older versions of GCC don't define the proper version for
  * @c __cplusplus,  but have their own test macro. That test is omitted since
- * the amount of support for these compilers depends al lot on the exact
+ * the amount of support for these compilers depends a lot on the exact
  * compiler version. If you want to enable it for these compilers simply define
  * the macro manually.
  */
