@@ -36,6 +36,36 @@ joystick_manager::~joystick_manager() {
 	close();
 }
 
+#if SDL_VERSION_ATLEAST(2,0,0)
+
+static bool attached(
+		  const std::vector<SDL_Joystick*>& joysticks
+		, const size_t index)
+{
+	return SDL_JoystickGetAttached(joysticks[index]);
+}
+
+static const char* name(
+		  const std::vector<SDL_Joystick*>& joysticks
+		, const size_t index)
+{
+	return SDL_JoystickName(joysticks[index]);
+}
+
+#else
+
+static bool attached(const std::vector<SDL_Joystick*>&, const size_t index)
+{
+	return SDL_JoystickOpened(index);
+}
+
+static const char* name(const std::vector<SDL_Joystick*>&, const size_t index)
+{
+	return SDL_JoystickName(index);
+}
+
+#endif
+
 bool joystick_manager::close() {
 	if(SDL_WasInit(SDL_INIT_JOYSTICK) == 0)
 		return true;
@@ -44,10 +74,10 @@ bool joystick_manager::close() {
 	bool all_closed = true;
 
 	for (int i = 0; i<joysticks; i++)  {
-		if (SDL_JoystickOpened(i)) {
+		if (attached(joysticks_, i)) {
 			SDL_JoystickClose(joysticks_[i]);
 			LOG_JOY << "Closed Joystick" << i;
-		    LOG_JOY << "Name: " << SDL_JoystickName(i);
+		    LOG_JOY << "Name: " << name(joysticks_, i);
 		} else {
 			ERR_JOY << "Joystick" << i << " closing failed.";
 			all_closed = false;
@@ -84,12 +114,12 @@ bool joystick_manager::init() {
 		joysticks_.resize(i+1);
 		joysticks_[i] = SDL_JoystickOpen(i);
 
-		if (joysticks_[i] && SDL_JoystickOpened(i)) {
+		if (joysticks_[i] && attached(joysticks_, i)) {
 
 			joystick_found = true;
 
 		    LOG_JOY << "Opened Joystick" << i;
-		    LOG_JOY << "Name: " << SDL_JoystickName(i);
+		    LOG_JOY << "Name: " << name(joysticks_, i);
 		    LOG_JOY << "Number of Axes: " << SDL_JoystickNumAxes(joysticks_[i]);
 		    LOG_JOY << "Number of Buttons: " << SDL_JoystickNumButtons(joysticks_[i]);
 		    LOG_JOY << "Number of Balls: " << SDL_JoystickNumBalls(joysticks_[i]);
@@ -217,11 +247,11 @@ std::pair<int, int> joystick_manager::get_axis_pair(int joystick_xaxis, int xaxi
 	int x_axis = 0, y_axis = 0;
 	bool get_xaxis = false, get_yaxis = false;
 
-	if(SDL_JoystickOpened(joystick_xaxis))
+	if(attached(joysticks_, joystick_xaxis))
 		if(SDL_JoystickNumAxes(joysticks_[joystick_xaxis]) > xaxis)
 			get_xaxis = true;
 
-	if(SDL_JoystickOpened(joystick_yaxis))
+	if(attached(joysticks_, joystick_yaxis))
 		if(SDL_JoystickNumAxes(joysticks_[joystick_yaxis]) > yaxis)
 			get_yaxis = true;
 
@@ -238,7 +268,7 @@ int joystick_manager::get_axis(int joystick_axis, int axis) {
 	if(!SDL_WasInit(SDL_INIT_JOYSTICK))
 		return 0;
 
-	if(SDL_JoystickOpened(joystick_axis))
+	if(attached(joysticks_, joystick_axis))
 		if(SDL_JoystickNumAxes(joysticks_[joystick_axis]) > axis)
 			return SDL_JoystickGetAxis(joysticks_[joystick_axis], axis);
 	return 0;
