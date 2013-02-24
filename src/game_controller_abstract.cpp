@@ -121,7 +121,7 @@ bool game_controller_abstract::init_video()
 	surface icon(image::get_image("game-icon.png", image::UNSCALED));
 	if(icon != NULL) {
 		///must be called after SDL_Init() and before setting video mode
-		::SDL_WM_SetIcon(icon,NULL);
+		SDL_WM_SetIcon(icon,NULL);
 	}
 #endif
 
