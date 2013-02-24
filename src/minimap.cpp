@@ -108,7 +108,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw)
 						}
 					}
 
-					surf = scale_surface(tile, scale, scale);
+					surf = scale_surface_sharp(tile, scale, scale);
 
 					i = normal_cache->insert(cache_map::value_type(terrain,surf)).first;
 				}
@@ -142,7 +142,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw)
 	double hratio = h*1.0 / minimap->h;
 	double ratio = std::min<double>(wratio, hratio);
 
-	minimap = scale_surface(minimap,
+	minimap = scale_surface_sharp(minimap,
 		static_cast<int>(minimap->w * ratio), static_cast<int>(minimap->h * ratio));
 
 	DBG_DP << "done generating minimap\n";
