@@ -146,19 +146,29 @@ void part_ui::prepare_background()
 
 		layer = tile_surface(layer, tilew, tileh);
 
-		SDL_Rect drect;
-		drect.h = layer->h;
-		drect.w = layer->w;
-		drect.x = (background_->w - layer->w) / 2;
-		drect.y = (background_->h - layer->h) / 2;
+		SDL_Rect drect = {(background_->w - layer->w) / 2, (background_->h - layer->h) / 2, layer->w, layer->h};
+		SDL_Rect srect = {0, 0, layer->w, layer->h};
+		SDL_Rect base_rect = drect;
 
-		blit_surface(layer, NULL, background_, &drect);
+		// If we can't see the whole image anyways, we'll want to display the
+		// top-middle area.
+		if (drect.y < 0) {
+			drect.y = 0;
+			base_rect.y = 0;
+		}
+		
+		if (drect.x < 0) {
+			srect.x -= drect.x;
+			drect.x = 0;
+		}
+
+		blit_surface(layer, &srect, background_, &drect);
 		ASSERT_LOG(layer.null() == false, "Oops: a storyscreen part background layer got NULL");
 
 		if (bl.is_base_layer() || no_base_yet) {
 			x_scale_factor_ = x_scale_factor;
 			y_scale_factor_ = y_scale_factor;
-			base_rect_ = drect;
+			base_rect_ = base_rect;
 			no_base_yet = false;
 		}
 	}
