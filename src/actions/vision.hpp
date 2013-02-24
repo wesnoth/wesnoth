@@ -21,6 +21,8 @@
 #ifndef ACTIONS_VISION_H_INCLUDED
 #define ACTIONS_VISION_H_INCLUDED
 
+#include "../movetype.hpp"
+
 struct map_location;
 class  team;
 class  unit;
@@ -34,6 +36,21 @@ class  unit;
 
 namespace actions {
 	class  move_unit_spectator;
+
+/// Class that stores the part of a unit's data that is needed for fog clearing.
+/// (Used by the undo stack as that cannot rely on a unit sticking around, and
+/// we do not really need to copy the entire unit.)
+struct clearer_info {
+	size_t underlying_id;
+	int sight_range;
+	bool slowed;
+	movetype::terrain_costs costs;
+
+	clearer_info(const unit & viewer);
+	clearer_info(const config & cfg);
+
+	void write(config & cfg) const;
+};
 
 /// Class to encapsulate fog/shroud clearing and the resultant sighted events.
 /// Note: This class uses teams as parameters (instead of sides) since a
@@ -56,10 +73,19 @@ public:
 	// while the public one says why it might be invoked.
 
 	/// Clears shroud (and fog) around the provided location for @a view_team
+	/// based on @a sight_range, @a costs, and @a slowed.
+	bool clear_unit(const map_location &view_loc, team &view_team,
+	                size_t viewer_id, int sight_range, bool slowed,
+	                const movetype::terrain_costs & costs,
+	                const map_location & real_loc,
+	  	            const std::set<map_location>* known_units = NULL,
+	                size_t * enemy_count = NULL, size_t * friend_count = NULL,
+	                move_unit_spectator * spectator = NULL, bool instant = false);
+	/// Clears shroud (and fog) around the provided location for @a view_team
 	/// as if @a viewer was standing there.
 	bool clear_unit(const map_location &view_loc,
 	                const unit &viewer, team &view_team,
-    	            const std::set<map_location>* known_units = NULL,
+	                const std::set<map_location>* known_units = NULL,
 	                size_t * enemy_count = NULL, size_t * friend_count = NULL,
 	                move_unit_spectator * spectator = NULL, bool instant = false);
 	/// Clears shroud (and fog) around the provided location for @a view_team
@@ -68,13 +94,17 @@ public:
 	bool clear_unit(const map_location &view_loc, const unit &viewer,
 	                team &view_team, bool instant)
 	{ return clear_unit(view_loc, viewer, view_team, NULL, NULL, NULL, NULL, instant); }
+	/// Clears shroud (and fog) around the provided location for @a view_team
+	/// as if @a viewer was standing there.
+	bool clear_unit(const map_location &view_loc, team &view_team,
+	                const clearer_info &viewer, bool instant);
 	/// Clears shroud (and fog) around the provided location as if @a viewer
 	/// was standing there.
 	bool clear_unit(const map_location &view_loc, const unit &viewer,
 	                bool can_delay = false, bool invalidate = true,
 	                bool instant = false);
 
-	/// Clears shroud (and fog) at the provided location and it immediate neighbors.
+	/// Clears shroud (and fog) at the provided location and its immediate neighbors.
 	bool clear_dest(const map_location &dest, const unit &viewer);
 
 	/// Erases the record of sighted events from earlier fog/shroud clearing.
@@ -94,14 +124,14 @@ private:
 	void calculate_jamming(const team * new_team);
 
 	/// Clears shroud from a single location.
-	bool clear_loc(team &tm, const map_location &loc,
-	               const unit & viewer, const map_location &view_loc,
+	bool clear_loc(team &tm, const map_location &loc, const map_location &view_loc,
+	               const map_location &event_non_loc, size_t viewer_id,
 	               bool check_units, size_t &enemy_count, size_t &friend_count,
 	               move_unit_spectator * spectator = NULL);
 
 	/// Convenience wrapper for adding sighting data to the sightings_ vector.
-	inline void record_sighting(const unit & seen,    const map_location & seen_loc,
-	                            const unit & sighter, const map_location & sighter_loc);
+	inline void record_sighting(const unit & seen, const map_location & seen_loc,
+	                            size_t sighter_id, const map_location & sighter_loc);
 
 private: // data
 	std::map<map_location, int> jamming_;
