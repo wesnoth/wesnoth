@@ -21,6 +21,7 @@
 #ifndef ACTIONS_UNDO_H_INCLUDED
 #define ACTIONS_UNDO_H_INCLUDED
 
+#include "vision.hpp"
 #include "../map_location.hpp"
 #include "../unit.hpp"
 
@@ -51,9 +52,13 @@ class undo_list {
 				original_village_owner(orig),
 				recall_from(),
 				type(MOVE),
-				affected_unit(boost::make_shared<unit>(u)),
+				affected_unit(),
+				view_info(boost::make_shared<clearer_info>(u)),
 				countdown_time_bonus(timebonus),
 				starting_dir(dir == map_location::NDIRECTIONS ? u.facing() : dir),
+				unit_goto(u.get_goto()),
+				id(),
+				u_type(NULL),
 				active()
 			{
 			}
@@ -67,9 +72,13 @@ class undo_list {
 				original_village_owner(),
 				recall_from(from),
 				type(action_type),
-				affected_unit(boost::make_shared<unit>(u)),
+				affected_unit(),
+				view_info(boost::make_shared<clearer_info>(u)),
 				countdown_time_bonus(1),
-				starting_dir(u.facing()),
+				starting_dir(map_location::NDIRECTIONS),
+				unit_goto(),
+				id(u.id()),
+				u_type(&u.type()),
 				active()
 			{}
 
@@ -81,8 +90,12 @@ class undo_list {
 				recall_from(),
 				type(DISMISS),
 				affected_unit(boost::make_shared<unit>(u)),
+				view_info(),
 				countdown_time_bonus(),
 				starting_dir(map_location::NDIRECTIONS),
+				unit_goto(),
+				id(),
+				u_type(NULL),
 				active()
 			{}
 
@@ -94,8 +107,12 @@ class undo_list {
 				recall_from(),
 				type(action_type),
 				affected_unit(),
+				view_info(),
 				countdown_time_bonus(),
 				starting_dir(map_location::NDIRECTIONS),
+				unit_goto(),
+				id(),
+				u_type(NULL),
 				active(turned_on)
 			{}
 
@@ -116,21 +133,28 @@ class undo_list {
 
 		/// This identifies which types of actions must (and always will) have
 		/// a unit.
-		bool needs_unit() const { return type == DISMISS  ||  type == RECALL  ||
-		                                 type == RECRUIT  ||  type == MOVE; }
+		bool needs_unit() const { return type == DISMISS; }
+		/// This identifies which types of actions must (and always will) have
+		/// vision info.
+		bool needs_vision() const { return type == RECALL  || type == RECRUIT  ||
+		                                   type == MOVE; }
 
 
 		// Data:
-		/// The hexes occupied by affected_unit during this action.
+		/// The hexes occupied by the affected unit during this action.
 		std::vector<map_location> route;
 		int starting_moves;
 		int original_village_owner;
 		map_location recall_from;
 		ACTION_TYPE type;
-		// Use a shared (not scoped) pointer because this will get copied.
+		// Use shared (not scoped) pointers because this will get copied.
 		boost::shared_ptr<unit> affected_unit;
+		boost::shared_ptr<clearer_info> view_info;
 		int countdown_time_bonus;
 		map_location::DIRECTION starting_dir;
+		map_location unit_goto;
+		std::string id;
+		const unit_type * u_type;
 		bool active;
 	};
 	typedef std::vector<undo_action> action_list;

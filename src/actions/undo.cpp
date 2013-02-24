@@ -22,7 +22,6 @@
 
 #include "create.hpp"
 #include "move.hpp"
-#include "vision.hpp"
 
 #include "../game_display.hpp"
 #include "../game_events.hpp"
@@ -86,13 +85,38 @@ undo_list::undo_action::undo_action(const config & cfg, const std::string & tag)
 	recall_from( cfg.child_or_empty("leader"), NULL ),
 	type( parse_type(cfg["type"]) ),
 	affected_unit(),
+	view_info(),
 	countdown_time_bonus( cfg["time_bonus"] ),
 	starting_dir( map_location::parse_direction(cfg["starting_direction"]) ),
+	unit_goto(),
+	id(),
+	u_type(NULL),
 	active( cfg["active"].to_bool() )
 {
 	// Only some action types have a unit.
 	if ( needs_unit() )
 		affected_unit = boost::make_shared<unit>(cfg.child("unit", tag));
+	// Only some action types have vision info.
+	if ( needs_vision() ) {
+		const config & child = cfg.child("unit", tag);
+		view_info = boost::make_shared<clearer_info>(child);
+
+		// Some other data to grab from [unit]
+		if ( type == RECALL )
+			id = child["id"].str();
+		else if ( type == RECRUIT ) {
+			u_type = unit_types.find(child["type"]);
+			if ( !u_type ) {
+				ERR_NG << "Invalid unit type '" << child["type"]
+				       << "' when loading the undo stack.\n";
+				type = NONE;
+			}
+		}
+		else if ( type == MOVE ) {
+			unit_goto.x = cfg["goto_x"].to_int(-999) - 1;
+			unit_goto.y = cfg["goto_y"].to_int(-999) - 1;
+		}
+	}
 
 	// Now read the route.
 	if ( type == MOVE )
@@ -119,7 +143,10 @@ void undo_list::undo_action::write(config & cfg) const
 		cfg["type"] = "recall";
 		route.front().write(cfg);
 		recall_from.write(cfg.add_child("leader"));
-		affected_unit->write(cfg.add_child("unit"));
+
+		config & child = cfg.add_child("unit");
+		view_info->write(child);
+		child["id"] = id;
 	}
 
 	else if ( is_recruit() )
@@ -127,7 +154,10 @@ void undo_list::undo_action::write(config & cfg) const
 		cfg["type"] = "recruit";
 		route.front().write(cfg);
 		recall_from.write(cfg.add_child("leader"));
-		affected_unit->write(cfg.add_child("unit"));
+
+		config & child = cfg.add_child("unit");
+		view_info->write(child);
+		child["type"] = u_type->base_id();
 	}
 
 	else if ( is_move() )
@@ -138,7 +168,11 @@ void undo_list::undo_action::write(config & cfg) const
 		cfg["time_bonus"] = countdown_time_bonus;
 		cfg["village_owner"] = original_village_owner;
 		write_locations(route, cfg);
-		affected_unit->write(cfg.add_child("unit"));
+
+		config & child = cfg.add_child("unit");
+		view_info->write(child);
+		child["goto_x"] = unit_goto.x + 1;
+		child["goto_y"] = unit_goto.y + 1;
 	}
 
 	else if ( is_auto_shroud() )
@@ -400,7 +434,7 @@ void undo_list::undo()
 
 		// Record the unit's current state so it can be redone.
 		action.starting_moves = u->movement_left();
-		action.affected_unit->set_goto(u->get_goto());
+		action.unit_goto = u->get_goto();
 
 		unit_display::move_unit(route, *u, true, action.starting_dir);
 
@@ -491,9 +525,16 @@ void undo_list::redo()
 		map_location loc = action.route.front();
 		map_location from = action.recall_from;
 
-		const std::string &msg = find_recall_location(side_, loc, from, *action.affected_unit);
+		const std::vector<unit> & recalls = current_team.recall_list();
+		std::vector<unit>::const_iterator unit_it = find_if_matches_id(recalls, action.id);
+		if ( unit_it == recalls.end() ) {
+			ERR_NG << "Trying to redo a recall of '" << action.id
+			       << "', but that unit is not in the recall list.";
+			return;
+		}
+		const std::string &msg = find_recall_location(side_, loc, from, *unit_it);
 		if(msg.empty()) {
-			recall_unit(action.affected_unit->id(), current_team, loc, from, true, false);
+			recall_unit(action.id, current_team, loc, from, true, false);
 
 			// Quick error check. (Abuse of [allow_undo]?)
 			if ( loc != action.route.front() ) {
@@ -512,10 +553,10 @@ void undo_list::redo()
 		// Redo recruit action
 		map_location loc = action.route.front();
 		map_location from = action.recall_from;
-		const std::string name = action.affected_unit->type().base_id();
+		const std::string & name = action.u_type->base_id();
 
 		//search for the unit to be recruited in recruits
-		if ( !util::contains(actions::get_recruits(side_, loc), name) ) {
+		if ( !util::contains(get_recruits(side_, loc), name) ) {
 			ERR_NG << "trying to redo a recruit for side " << side_
 				<< ", which does not recruit type \"" << name << "\"\n";
 			assert(false);
@@ -528,7 +569,7 @@ void undo_list::redo()
 			//MP_COUNTDOWN: restore recruitment bonus
 			current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
 
-			recruit_unit(action.affected_unit->type(), side_, loc, from, true, false);
+			recruit_unit(*action.u_type, side_, loc, from, true, false);
 
 			// Quick error check. (Abuse of [allow_undo]?)
 			if ( loc != action.route.front() ) {
@@ -562,7 +603,7 @@ void undo_list::redo()
 		u = units.find(route.back());
 
 		unit::clear_status_caches();
-		u->set_goto(action.affected_unit->get_goto());
+		u->set_goto(action.unit_goto);
 		u->set_movement(starting_moves, true);
 		u->set_standing();
 
@@ -619,8 +660,8 @@ size_t undo_list::apply_shroud_changes() const
 	// Loop through the list of undo_actions.
 	for( size_t i = 0; i != list_size; ++i ) {
 		const undo_action & action = undos_[i];
-		// Only actions with a unit are relevant.
-		if ( !action.affected_unit )
+		// Only actions with vision data are relevant.
+		if ( !action.view_info )
 			continue;
 		LOG_NG << "Turning an undo...\n";
 
@@ -630,7 +671,7 @@ size_t undo_list::apply_shroud_changes() const
 		for (step = action.route.begin(); step != action.route.end(); ++step) {
 			// Clear the shroud, collecting new sighted events.
 			// (If the gradual clearing is too slow, change "false" to "true".)
-			if ( clearer.clear_unit(*step, *action.affected_unit, tm, false) ) {
+			if ( clearer.clear_unit(*step, tm, *action.view_info, false) ) {
 				cleared_shroud = true;
 				erase_to = i + 1;
 			}
