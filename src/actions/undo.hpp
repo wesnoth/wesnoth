@@ -23,171 +23,114 @@
 
 #include "vision.hpp"
 #include "../map_location.hpp"
-#include "../unit.hpp"
 
-#include <boost/make_shared.hpp>
-#include <boost/shared_ptr.hpp>
+#include <boost/noncopyable.hpp>
+#include <boost/ptr_container/ptr_vector.hpp>
 #include <vector>
+
+class unit;
 
 
 namespace actions {
 
 
 /// Class to store the actions that a player can undo and redo.
-class undo_list {
+class undo_list : boost::noncopyable {
 	/// Records information to be able to undo an action.
-	struct undo_action {
-		enum ACTION_TYPE { NONE, MOVE, RECRUIT, RECALL, DISMISS, AUTO_SHROUD,
-		                   UPDATE_SHROUD };
-		static ACTION_TYPE parse_type(const std::string & str);
-
+	/// Each type of action gets its own derived type.
+	struct undo_action : boost::noncopyable {
 		/// Constructor for move actions.
 		undo_action(const unit& u,
 			        const std::vector<map_location>::const_iterator & begin,
-			        const std::vector<map_location>::const_iterator & end,
-			        int sm, int timebonus=0, int orig=-1,
-			        const map_location::DIRECTION dir=map_location::NDIRECTIONS) :
+			        const std::vector<map_location>::const_iterator & end) :
 				route(begin, end),
-				starting_moves(sm),
-				original_village_owner(orig),
-				recall_from(),
-				type(MOVE),
-				affected_unit(),
-				view_info(boost::make_shared<clearer_info>(u)),
-				countdown_time_bonus(timebonus),
-				starting_dir(dir == map_location::NDIRECTIONS ? u.facing() : dir),
-				unit_goto(u.get_goto()),
-				id(),
-				u_type(NULL),
-				active()
+				view_info(new clearer_info(u))
 			{
 			}
-
 		/// Constructor for recruit and recall actions.
 		/// These types of actions are guaranteed to have a non-empty route.
-		undo_action(const unit& u, const map_location& loc, const map_location& from,
-			        const ACTION_TYPE action_type) :
+		undo_action(const unit& u, const map_location& loc) :
 				route(1, loc),
-				starting_moves(),
-				original_village_owner(),
-				recall_from(from),
-				type(action_type),
-				affected_unit(),
-				view_info(boost::make_shared<clearer_info>(u)),
-				countdown_time_bonus(1),
-				starting_dir(map_location::NDIRECTIONS),
-				unit_goto(),
-				id(u.id()),
-				u_type(&u.type()),
-				active()
+				view_info(new clearer_info(u))
 			{}
-
-		// Constructor for dismissals.
-		explicit undo_action(const unit& u) :
+		/// Constructor from a config storing the view info.
+		/// Does not set @a route.
+		explicit undo_action(const config & cfg) :
 				route(),
-				starting_moves(),
-				original_village_owner(),
-				recall_from(),
-				type(DISMISS),
-				affected_unit(boost::make_shared<unit>(u)),
-				view_info(),
-				countdown_time_bonus(),
-				starting_dir(map_location::NDIRECTIONS),
-				unit_goto(),
-				id(),
-				u_type(NULL),
-				active()
+				view_info(new clearer_info(cfg))
 			{}
-
-		// Constructor for shroud actions.
-		explicit undo_action(const ACTION_TYPE action_type, bool turned_on=true) :
+		/// Constructor from a config storing the view info and a location.
+		/// Guarantees a non-empty route.
+		explicit undo_action(const config & cfg, const map_location & loc) :
+				route(1, loc),
+				view_info(new clearer_info(cfg))
+			{}
+		/// Default constructor.
+		/// This is the only way to get NULL view_info.
+		undo_action() :
 				route(),
-				starting_moves(),
-				original_village_owner(),
-				recall_from(),
-				type(action_type),
-				affected_unit(),
-				view_info(),
-				countdown_time_bonus(),
-				starting_dir(map_location::NDIRECTIONS),
-				unit_goto(),
-				id(),
-				u_type(NULL),
-				active(turned_on)
+				view_info(NULL)
 			{}
+		// Virtual destructor to support derived classes.
+		virtual ~undo_action();
 
-		/// Constructor from a config.
-		undo_action(const config & cfg, const std::string & tag);
 
-		/// For converting to a config.
-		void write(config & cfg) const;
+		/// Creates an undo_action based on a config.
+		static undo_action * create(const config & cfg, const std::string & tag);
+		/// Writes this into the provided config.
+		virtual void write(config & cfg) const = 0;
 
-		// Shortcuts for identifying the type of action:
-		bool is_dismiss() const { return type == DISMISS; }
-		bool is_recall()  const { return type == RECALL; }
-		bool is_recruit() const { return type == RECRUIT; }
-		bool is_move()    const { return type == MOVE; }
-		bool is_auto_shroud()   const { return type == AUTO_SHROUD; }
-		bool is_update_shroud() const { return type == UPDATE_SHROUD; }
-		bool valid()      const { return type != NONE; }
-
-		/// This identifies which types of actions must (and always will) have
-		/// a unit.
-		bool needs_unit() const { return type == DISMISS; }
-		/// This identifies which types of actions must (and always will) have
-		/// vision info.
-		bool needs_vision() const { return type == RECALL  || type == RECRUIT  ||
-		                                   type == MOVE; }
-
+		/// Undoes this action.
+		/// @return true on success; false on an error.
+		virtual bool undo(int side, undo_list & undos) = 0;
+		/// Redoes this action.
+		/// @return true on success; false on an error.
+		virtual bool redo(int side) = 0;
 
 		// Data:
 		/// The hexes occupied by the affected unit during this action.
 		std::vector<map_location> route;
-		int starting_moves;
-		int original_village_owner;
-		map_location recall_from;
-		ACTION_TYPE type;
-		// Use shared (not scoped) pointers because this will get copied.
-		boost::shared_ptr<unit> affected_unit;
-		boost::shared_ptr<clearer_info> view_info;
-		int countdown_time_bonus;
-		map_location::DIRECTION starting_dir;
-		map_location unit_goto;
-		std::string id;
-		const unit_type * u_type;
-		bool active;
+		/// A record of the affected unit's ability to see.
+		/// For derived classes that use this, it must be never NULL.
+		clearer_info * const view_info;
+		// This pointer is the reason for deriving from noncopyable (an
+		// alternative would be to implement deep copies, but we have no
+		// need for copying, so noncopyable is simpler).
 	};
-	typedef std::vector<undo_action> action_list;
+	// The structs derived from undo_action.
+	struct dismiss_action;
+	struct move_action;
+	struct recall_action;
+	struct recruit_action;
+	struct auto_shroud_action;
+	struct update_shroud_action;
+	// The update_shroud_action needs to be able to call add_update_shroud().
+	friend struct update_shroud_action;
+
+	typedef boost::ptr_vector<undo_action> action_list;
 
 public:
-	/// The config may be invalid.
-	explicit undo_list(const config & cfg) :
-		undos_(), redos_(), side_(1), committed_actions_(false)
-	{ if ( cfg ) read(cfg); }
-	~undo_list() {}
+	explicit undo_list(const config & cfg);
+	~undo_list();
 
 	// Functions related to managing the undo stack:
 
 	/// Adds an auto-shroud toggle to the undo stack.
 	void add_auto_shroud(bool turned_on);
 	/// Adds a dismissal to the undo stack.
-	void add_dissmissal(const unit & u)
-	{ add(undo_action(u)); }
+	void add_dissmissal(const unit & u);
 	/// Adds a move to the undo stack.
 	void add_move(const unit& u,
 	              const std::vector<map_location>::const_iterator & begin,
 	              const std::vector<map_location>::const_iterator & end,
 	              int start_moves, int timebonus=0, int village_owner=-1,
-	              const map_location::DIRECTION dir=map_location::NDIRECTIONS)
-	{ add(undo_action(u, begin, end, start_moves, timebonus, village_owner, dir)); }
+	              const map_location::DIRECTION dir=map_location::NDIRECTIONS);
 	/// Adds a recall to the undo stack.
 	void add_recall(const unit& u, const map_location& loc,
-	                const map_location& from)
-	{ add(undo_action(u, loc, from, undo_action::RECALL)); }
+	                const map_location& from);
 	/// Adds a recruit to the undo stack.
 	void add_recruit(const unit& u, const map_location& loc,
-	                 const map_location& from)
-	{ add(undo_action(u, loc, from, undo_action::RECRUIT)); }
+	                 const map_location& from);
 private:
 	/// Adds a shroud update to the undo stack.
 	void add_update_shroud();
@@ -218,13 +161,8 @@ public:
 	void redo();
 
 private: // functions
-	/// Copying the undo list is probably an error, so it is not implemented.
-	undo_list(const undo_list &);
-	/// Assigning the undo list is probably an error, so it is not implemented.
-	undo_list & operator=(const undo_list &);
-
 	/// Adds an action to the undo stack.
-	void add(const undo_action & action)
+	void add(undo_action * action)
 	{ undos_.push_back(action);  redos_.clear(); }
 	/// Applies the pending fog/shroud changes from the undo stack.
 	size_t apply_shroud_changes() const;
