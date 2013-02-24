@@ -387,7 +387,7 @@ void undo_list::add_auto_shroud(bool turned_on)
 /**
  * Adds a dismissal to the undo stack.
  */
-void undo_list::add_dissmissal(const unit & u)
+void undo_list::add_dismissal(const unit & u)
 {
 	add(new dismiss_action(u));
 }

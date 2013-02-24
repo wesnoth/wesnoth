@@ -118,7 +118,7 @@ public:
 	/// Adds an auto-shroud toggle to the undo stack.
 	void add_auto_shroud(bool turned_on);
 	/// Adds a dismissal to the undo stack.
-	void add_dissmissal(const unit & u);
+	void add_dismissal(const unit & u);
 	/// Adds a move to the undo stack.
 	void add_move(const unit& u,
 	              const std::vector<map_location>::const_iterator & begin,

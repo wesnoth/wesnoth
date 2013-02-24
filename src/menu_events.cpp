@@ -123,7 +123,7 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 		// Remove the item from filter_textbox memory
 		filter_.delete_item(index);
 		//add dismissal to the undo stack
-		resources::undo_stack->add_dissmissal(u);
+		resources::undo_stack->add_dismissal(u);
 
 		// Find the unit in the recall list.
 		std::vector<unit>& recall_list = (*resources::teams)[u.side() -1].recall_list();
