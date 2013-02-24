@@ -22,15 +22,15 @@
 #define PATHFIND_H_INCLUDED
 
 class gamemap;
-class movetype;
 class team;
 class unit;
 
 #include "map_location.hpp"
+#include "movetype.hpp"
 
+#include <vector>
 #include <map>
-#include <list>
-#include <functional>
+#include <set>
 
 namespace pathfind {
 
@@ -106,6 +106,9 @@ struct vision_path : public paths
 {
 	/// Construct a list of seen hexes for a unit.
 	vision_path(const unit& viewer, map_location const &loc,
+	            const std::map<map_location, int>& jamming_map);
+	vision_path(const movetype::terrain_costs & view_costs, bool slowed,
+	            int sight_range, const map_location & loc,
 	            const std::map<map_location, int>& jamming_map);
 	virtual ~vision_path();
 

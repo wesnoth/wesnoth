@@ -541,6 +541,28 @@ vision_path::vision_path(const unit& viewer, map_location const &loc,
 	            0, destinations, &edges, NULL, NULL, NULL, NULL, &jamming_map);
 }
 
+/**
+ * Constructs a list of vision paths for a unit.
+ *
+ * This constructor is provided so that only the relevant portion of a unit's
+ * data is required to construct the vision paths.
+ * @param view_costs   The vision costs of the unit doing the viewing.
+ * @param slowed       Whether or not the unit is slowed.
+ * @param sight_range  The vision() of the unit.
+ * @param loc          The location from which the viewing occurs
+ *                     (does not have to be the unit's location).
+ */
+vision_path::vision_path(const movetype::terrain_costs & view_costs, bool slowed,
+                         int sight_range, const map_location & loc,
+                         const std::map<map_location, int>& jamming_map)
+	: paths(), edges()
+{
+	// The four NULL parameters indicate (in order): no teleports,
+	// ignore units, ignore ZoC (no effect), and see all (no effect).
+	find_routes(loc, view_costs, slowed, sight_range, sight_range, 0,
+	            destinations, &edges, NULL, NULL, NULL, NULL, &jamming_map);
+}
+
 /// Default destructor
 vision_path::~vision_path()
 {
