@@ -429,7 +429,9 @@ surface scale_surface(const surface &surf, int w, int h, bool optimize)
 		return NULL;
 	}
 
+#ifdef PANDORA
 	if (w > surf->w || h > surf->h)
+#endif
 	{
 		const_surface_lock src_lock(src);
 		surface_lock dst_lock(dst);
@@ -557,11 +559,49 @@ surface scale_surface(const surface &surf, int w, int h, bool optimize)
 			}
 		}
 	}
+#ifdef PANDORA
 	else
 	{
-#ifdef PANDORA
 		scale_surface_down(dst, src, w, h);
+	}
+#endif
+
+	return optimize ? create_optimized_surface(dst) : dst;
+}
+
+surface scale_surface_sharp(const surface& surf, int w, int h, bool optimize)
+{
+	// Since SDL version 1.1.5 0 is transparent, before 255 was transparent.
+	assert(SDL_ALPHA_TRANSPARENT==0);
+
+	if(surf == NULL)
+		return NULL;
+
+	if(w == surf->w && h == surf->h) {
+		return surf;
+	}
+	assert(w >= 0);
+	assert(h >= 0);
+
+	surface dst(create_neutral_surface(w,h));
+
+	if (w == 0 || h ==0) {
+		std::cerr << "Create an empty image\n";
+		return create_optimized_surface(dst);
+	}
+
+	surface src(make_neutral_surface(surf));
+	// Now both surfaces are always in the "neutral" pixel format
+
+	if(src == NULL || dst == NULL) {
+		std::cerr << "Could not create surface to scale onto\n";
+		return NULL;
+	}
+
+#ifdef PANDORA
+	scale_surface_down(dst);
 #else
+	{
 		const_surface_lock src_lock(src);
 		surface_lock dst_lock(dst);
 
@@ -571,23 +611,23 @@ surface scale_surface(const surface &surf, int w, int h, bool optimize)
 		double xratio = double(surf->w) / w;
 		double yratio = double(surf->h) / h;
 
-		double ysrc = 0.0;
+		double ysrc = 0;
 		for(int ydst = 0; ydst != h; ++ydst, ysrc += yratio) {
-			double xsrc = 0.0;
+			double xsrc = 0;
 			for(int xdst = 0; xdst != w; ++xdst, xsrc += xratio) {
-				double red = 0.0, green = 0.0, blue = 0.0, alpha = 0.0;
+				double red = 0, green = 0, blue = 0, alpha = 0;
 
-				double summation = 0.0;
+				double summation = 0;
 
 				// We now have a rectangle, (xsrc,ysrc,xratio,yratio)
 				// which we want to derive the pixel from
-				for(double xloc = xsrc; xloc < xsrc+xratio; xloc += 1.0) {
-					const double xsize = std::min<double>(std::floor(xloc+1.0)-xloc,xsrc+xratio-xloc);
-					for(double yloc = ysrc; yloc < ysrc+yratio; yloc += 1.0) {
+				for(double xloc = xsrc; xloc < xsrc+xratio; xloc += 1) {
+					const double xsize = std::min<double>(floor(xloc + 1)-xloc,xsrc+xratio-xloc);
+
+					for(double yloc = ysrc; yloc < ysrc+yratio; yloc += 1) {
 						const int xsrcint = std::max<int>(0,std::min<int>(src->w-1,static_cast<int>(xsrc)));
 						const int ysrcint = std::max<int>(0,std::min<int>(src->h-1,static_cast<int>(ysrc)));
-
-						const double ysize = std::min<double>(std::floor(yloc+1.0)-yloc,ysrc+yratio-yloc);
+						const double ysize = std::min<double>(floor(yloc+1)-yloc,ysrc+yratio-yloc);
 
 						Uint8 r,g,b,a;
 
@@ -603,19 +643,24 @@ surface scale_surface(const surface &surf, int w, int h, bool optimize)
 					}
 				}
 
-				if (alpha != 0.0) {
-					double factor = 1 / alpha;
+				if (alpha != 0) {
+					red = red / alpha + 0.5;
+					green = green / alpha + 0.5;
+					blue = blue / alpha + 0.5;
 					alpha = alpha / summation + 0.5;
-					red = red * factor + 0.5;
-					green = green * factor + 0.5;
-					blue = blue * factor + 0.5;
 				}
 
-				dst_pixels[ydst*dst->w + xdst] = SDL_MapRGBA(dst->format,Uint8(red),Uint8(green),Uint8(blue),Uint8(alpha));
+				dst_pixels[ydst*dst->w + xdst] = SDL_MapRGBA(
+				dst->format
+				, static_cast<int>(red)
+				, static_cast<int>(green)
+				, static_cast<int>(blue)
+				, static_cast<int>(alpha));
 			}
+
 		}
-#endif
 	}
+#endif
 
 	return optimize ? create_optimized_surface(dst) : dst;
 }
