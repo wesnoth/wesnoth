@@ -113,8 +113,8 @@ undo_list::undo_action::undo_action(const config & cfg, const std::string & tag)
 			}
 		}
 		else if ( type == MOVE ) {
-			unit_goto.x = cfg["goto_x"].to_int(-999) - 1;
-			unit_goto.y = cfg["goto_y"].to_int(-999) - 1;
+			unit_goto.x = child["goto_x"].to_int(-999) - 1;
+			unit_goto.y = child["goto_y"].to_int(-999) - 1;
 		}
 	}
 
