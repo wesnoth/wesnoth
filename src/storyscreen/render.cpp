@@ -146,8 +146,16 @@ void part_ui::prepare_background()
 
 		layer = tile_surface(layer, tilew, tileh);
 
-		SDL_Rect drect = {(background_->w - layer->w) / 2, (background_->h - layer->h) / 2, layer->w, layer->h};
-		SDL_Rect srect = {0, 0, layer->w, layer->h};
+		SDL_Rect drect = create_rect(
+				  (background_->w - layer->w) / 2
+				, (background_->h - layer->h) / 2
+				, layer->w
+				, layer->h);
+		SDL_Rect srect = create_rect(
+				  0
+				, 0
+				, layer->w
+				, layer->h);
 		SDL_Rect base_rect = drect;
 
 		// If we can't see the whole image anyways, we'll want to display the
@@ -156,7 +164,7 @@ void part_ui::prepare_background()
 			drect.y = 0;
 			base_rect.y = 0;
 		}
-		
+
 		if (drect.x < 0) {
 			srect.x -= drect.x;
 			drect.x = 0;
