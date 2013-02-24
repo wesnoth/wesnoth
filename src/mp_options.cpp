@@ -206,7 +206,7 @@ void manager::show_dialog()
 	config& row = grid.add_child("row");
 	row["grow_factor"] = 0;
 
-	config& column = add_column(row, "right", 1);
+	config& column = add_column(row, "", 1);
 	column["horizontal_grow"] = true;
 
 	config& widget_grid = column.add_child("grid");
