@@ -105,6 +105,11 @@ static void store_carryover(game_state& gamestate, playsingle_controller& playco
 	bool has_next_scenario = !resources::gamedata->next_scenario().empty() &&
 			resources::gamedata->next_scenario() != "null";
 
+	if(resources::teams->size() < 1){
+		gamestate.carryover_sides_start["next_scenario"] = resources::gamedata->next_scenario();
+		return;
+	}
+
 	carryover_info sides(gamestate.carryover_sides);
 
 	sides.transfer_from(*resources::gamedata);

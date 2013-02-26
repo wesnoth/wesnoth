@@ -296,15 +296,7 @@ carryover_info::carryover_info(const config& cfg)
 {
 	end_level_.read(cfg.child_or_empty("end_level_data"));
 	BOOST_FOREACH(const config& side, cfg.child_range("side")){
-		if(resources::teams != NULL){
-			BOOST_FOREACH(const team &t, *resources::teams){
-				if(t.save_id() == side["save_id"]){
-					this->carryover_sides_.push_back(carryover(side));
-				}
-			}
-		} else {
-			this->carryover_sides_.push_back(carryover(side));
-		}
+		this->carryover_sides_.push_back(carryover(side));
 	}
 
 	wml_menu_items_.set_menu_items(cfg);
