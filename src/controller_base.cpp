@@ -98,7 +98,7 @@ void controller_base::handle_event(const SDL_Event& event)
 		}
 		break;
 	case SDL_ACTIVEEVENT:
-		if (event.active.type == SDL_APPMOUSEFOCUS && event.active.gain == 0) {
+		if (event.active.state == SDL_APPMOUSEFOCUS && event.active.gain == 0) {
 			if (get_mouse_handler_base().is_dragging()) {
 				//simulate mouse button up when the app has lost mouse focus
 				//this should be a general fix for the issue when the mouse
