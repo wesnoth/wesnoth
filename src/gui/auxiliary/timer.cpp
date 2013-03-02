@@ -29,7 +29,7 @@ namespace gui2 {
 struct ttimer
 {
 	ttimer()
-		: sdl_id(NULL)
+		: sdl_id(0)
 		, interval(0)
 		, callback()
 	{
@@ -131,7 +131,7 @@ add_timer(const Uint32 interval
 	ttimer timer;
 	timer.sdl_id = SDL_AddTimer(
 			interval, timer_callback, reinterpret_cast<void*>(id));
-	if(timer.sdl_id == NULL) {
+	if(timer.sdl_id == 0) {
 		WRN_GUI_E << "Failed to create an sdl timer.\n";
 		return 0;
 	}
