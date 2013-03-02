@@ -103,17 +103,6 @@ version_info::version_info(const std::string& str)
 	}
 }
 
-void version_info::assign(const version_info& o)
-{
-	if(&o == this) return;
-
-	this->sane_ = o.sane_;
-	this->special_separator_ = o.special_separator_;
-	this->special_ = o.special_;
-	this->nums_.clear();
-	this->nums_ = o.nums_;
-}
-
 std::string version_info::str() const
 {
 	const size_t s = nums_.size();

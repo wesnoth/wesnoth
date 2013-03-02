@@ -42,12 +42,6 @@ public:
 	version_info(unsigned int major, unsigned int minor, unsigned int revision_level, bool sane = true,
 	             char special_separator='\0', const std::string& special=std::string());
 
-	/** Assignment operator. */
-	version_info& operator=(const version_info& o) {
-		this->assign(o);
-		return *this;
-	}
-
 	bool good() const { return this->sane_; }
 	bool is_canonical() const;
 
@@ -135,10 +129,6 @@ public:
 
 	/** Syntactic shortcut for str(). */
 	operator std::string() const { return this->str(); }
-
-protected:
-	/** Assign from other version_info object. */
-	void assign(const version_info&);
 
 private:
 	std::vector<unsigned int> nums_;
