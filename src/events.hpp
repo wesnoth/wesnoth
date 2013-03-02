@@ -113,15 +113,20 @@ void raise_draw_event();
 void raise_volatile_draw_event();
 void raise_volatile_undraw_event();
 void raise_help_string_event(int mousex, int mousey);
+
+
+/**
+ * Is the event an input event?
+ *
+ * @returns                       Whether or not the event is an input event.
+ */
+bool is_input(const SDL_Event& event);
+
+/** Discards all input events. */
+void discard_input();
+
 }
 
 typedef std::vector<events::handler*> handler_vector;
-
-#define INPUT_MASK (SDL_EVENTMASK(SDL_KEYDOWN)|\
-			               SDL_EVENTMASK(SDL_KEYUP)|\
-			               SDL_EVENTMASK(SDL_MOUSEBUTTONDOWN)|\
-			               SDL_EVENTMASK(SDL_MOUSEBUTTONUP)|\
-			               SDL_EVENTMASK(SDL_JOYBUTTONDOWN)|\
-			               SDL_EVENTMASK(SDL_JOYBUTTONUP))
 
 #endif

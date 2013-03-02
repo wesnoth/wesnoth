@@ -282,7 +282,7 @@ void pump()
 		++poll_count;
 		if(!begin_ignoring && temp_event.type == SDL_ACTIVEEVENT) {
 			begin_ignoring = poll_count;
-		} else if(begin_ignoring > 0 && SDL_EVENTMASK(temp_event.type)&INPUT_MASK) {
+		} else if(begin_ignoring > 0 && is_input(temp_event)) {
 			//ignore user input events that occurred after the window was activated
 			continue;
 		}
@@ -290,7 +290,7 @@ void pump()
 	}
 	std::vector<SDL_Event>::iterator ev_it = events.begin();
 	for(int i=1; i < begin_ignoring; ++i){
-		if(SDL_EVENTMASK(ev_it->type)&INPUT_MASK) {
+		if(is_input(*ev_it)) {
 			//ignore user input events that occurred before the window was activated
 			ev_it = events.erase(ev_it);
 		} else {
@@ -485,5 +485,42 @@ int pump_info::ticks(unsigned *refresh_counter, unsigned refresh_rate) {
 	}
 	return ticks_;
 }
+
+#if SDL_VERSION_ATLEAST(2,0,0)
+
+/* The contanstants for the minimum and maximum are picked from the headers. */
+#define INPUT_MIN 0x200
+#define INPUT_MAX 0x8FF
+
+bool is_input(const SDL_Event& event)
+{
+	return event.type >= INPUT_MIN && event.type <= INPUT_MAX;
+}
+
+void discard_input()
+{
+	SDL_FlushEvents(INPUT_MIN, INPUT_MAX);
+}
+
+#else
+
+#define INPUT_MASK (SDL_EVENTMASK(SDL_KEYDOWN)|\
+		SDL_EVENTMASK(SDL_KEYUP)|\
+		SDL_EVENTMASK(SDL_MOUSEBUTTONDOWN)|\
+		SDL_EVENTMASK(SDL_MOUSEBUTTONUP)|\
+		SDL_EVENTMASK(SDL_JOYBUTTONDOWN)|\
+		SDL_EVENTMASK(SDL_JOYBUTTONUP))
+
+bool is_input(const SDL_Event& event)
+{
+	return SDL_EVENTMASK(event.type) & INPUT_MASK;
+}
+
+void discard_input()
+{
+	discard(INPUT_MASK);
+}
+
+#endif
 
 } //end events namespace

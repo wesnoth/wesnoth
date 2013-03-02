@@ -787,7 +787,7 @@ bool game_controller::play_multiplayer()
 			cache_.clear_defines();
 			game_config::scoped_preproc_define multiplayer(state_.classification().campaign_define);
 			load_game_cfg();
-			events::discard(INPUT_MASK); // prevent the "keylogger" effect
+			events::discard_input(); // prevent the "keylogger" effect
 			cursor::set(cursor::NORMAL);
 			// update binary paths
 			paths_manager_.set_paths(game_config());
@@ -863,7 +863,7 @@ bool game_controller::play_multiplayer_commandline()
 	cache_.clear_defines();
 	game_config::scoped_preproc_define multiplayer(state_.classification().campaign_define);
 	load_game_cfg();
-	events::discard(INPUT_MASK); // prevent the "keylogger" effect
+	events::discard_input(); // prevent the "keylogger" effect
 	cursor::set(cursor::NORMAL);
 	// update binary paths
 	paths_manager_.set_paths(game_config());
