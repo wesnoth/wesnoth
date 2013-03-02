@@ -35,7 +35,6 @@ public:
 	struct not_sane_exception {};
 
 	version_info();                    /**< Default constructor. */
-	version_info(const version_info&); /**< Copy constructor. */
 	version_info(const std::string&);  /**< String constructor. */
 
 	/** Simple list constructor. */

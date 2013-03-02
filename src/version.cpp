@@ -19,14 +19,6 @@
 
 #include <cassert>
 
-version_info::version_info(const version_info& o)
-	: nums_                 (o.nums_),
-	  special_              (o.special_),
-	  special_separator_    (o.special_separator_),
-	  sane_                 (o.sane_)
-{
-}
-
 version_info::version_info()
 	: nums_(3,0), special_(""), special_separator_('\0'), sane_(true)
 {
