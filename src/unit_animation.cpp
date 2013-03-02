@@ -529,6 +529,16 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		if (anim["offscreen"].empty()) anim["offscreen"] = false;
 		animations.push_back(unit_animation(anim));
 	}
+	// standing animations are also used as default animations
+	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, "standing_anim"))
+	{
+		config anim = ab.merge();
+		anim["apply_to"] = "default";
+		anim["cycles"] = "false";
+		if (anim["layer"].empty()) anim["layer"] = default_layer;
+		if (anim["offscreen"].empty()) anim["offscreen"] = false;
+		animations.push_back(unit_animation(anim));
+	}
 	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, "healing_anim"))
 	{
 		config anim = ab.merge();
