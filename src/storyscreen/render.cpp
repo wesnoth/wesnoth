@@ -107,6 +107,8 @@ part_ui::part_ui(part &p, display &disp, gui::button &next_button,
 void part_ui::prepare_background()
 {
 	background_.assign( create_neutral_surface(video_.getx(), video_.gety()) );
+	base_rect_.w = video_.getx();
+	base_rect_.h = video_.gety();
 	has_background_ = false;
 	bool no_base_yet = true;
 	
