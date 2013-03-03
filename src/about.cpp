@@ -202,7 +202,7 @@ void show_about(display &disp, const std::string &campaign)
 	}
 
 	if(!map_image){
-		image_list[0]=game_config::images::game_title;
+        image_list[0]=game_config::images::game_title_background;
 		map_image=scale_surface(image::get_image(image_list[0]), screen->w, screen->h);
 	}
 
