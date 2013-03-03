@@ -106,8 +106,6 @@ public:
 	virtual void process(pump_info& info) = 0;
 };
 
-int discard(Uint32 event_mask);
-
 void raise_process_event();
 void raise_draw_event();
 void raise_volatile_draw_event();
@@ -128,5 +126,18 @@ void discard_input();
 }
 
 typedef std::vector<events::handler*> handler_vector;
+
+#if ! SDL_VERSION_ATLEAST(2,0,0)
+
+/**
+ * Removes events from the queue.
+ *
+ * This emulates the function available in SDL 2.0.
+ *
+ * @param type                    The type of event to flush.
+ */
+void SDL_FlushEvent(Uint32 type);
+
+#endif
 
 #endif

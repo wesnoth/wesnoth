@@ -62,7 +62,7 @@ bool tdialog::show(CVideo& video, const unsigned auto_close_time)
 	 * to avoid that problem, filter all pending DOUBLE_CLICK_EVENT events after
 	 * the window is closed.
 	 */
-	events::discard(SDL_EVENTMASK(DOUBLE_CLICK_EVENT));
+	SDL_FlushEvent(DOUBLE_CLICK_EVENT);
 
 	finalize_fields(*window, (retval_ ==  twindow::OK || always_save_fields_));
 

@@ -454,31 +454,6 @@ void raise_help_string_event(int mousex, int mousey)
 	}
 }
 
-int discard(Uint32 event_mask)
-{
-	int discard_count = 0;
-	SDL_Event temp_event;
-	std::vector< SDL_Event > keepers;
-	SDL_Delay(10);
-	while(SDL_PollEvent(&temp_event) > 0) {
-		if((SDL_EVENTMASK(temp_event.type) & event_mask) == 0) {
-			keepers.push_back( temp_event );
-		} else {
-			++discard_count;
-		}
-	}
-
-	//FIXME: there is a chance new events are added before kept events are replaced
-	for (unsigned int i=0; i < keepers.size(); ++i)
-	{
-		if(SDL_PushEvent(&keepers[i]) != 0) {
-			ERR_GEN << "failed to return an event to the queue.";
-		}
-	}
-
-	return discard_count;
-}
-
 int pump_info::ticks(unsigned *refresh_counter, unsigned refresh_rate) {
 	if(!ticks_ && !(refresh_counter && ++*refresh_counter % refresh_rate)) {
 		ticks_ = ::SDL_GetTicks();
@@ -516,6 +491,26 @@ bool is_input(const SDL_Event& event)
 	return SDL_EVENTMASK(event.type) & INPUT_MASK;
 }
 
+static void discard(Uint32 event_mask)
+{
+	SDL_Event temp_event;
+	std::vector< SDL_Event > keepers;
+	SDL_Delay(10);
+	while(SDL_PollEvent(&temp_event) > 0) {
+		if((SDL_EVENTMASK(temp_event.type) & event_mask) == 0) {
+			keepers.push_back( temp_event );
+		}
+	}
+
+	//FIXME: there is a chance new events are added before kept events are replaced
+	for (unsigned int i=0; i < keepers.size(); ++i)
+	{
+		if(SDL_PushEvent(&keepers[i]) != 0) {
+			ERR_GEN << "failed to return an event to the queue.";
+		}
+	}
+}
+
 void discard_input()
 {
 	discard(INPUT_MASK);
@@ -524,3 +519,12 @@ void discard_input()
 #endif
 
 } //end events namespace
+
+#if !SDL_VERSION_ATLEAST(2,0,0)
+
+void SDL_FlushEvent(Uint32 type)
+{
+	events::discard(SDL_EVENTMASK(type));
+}
+
+#endif
