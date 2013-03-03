@@ -302,5 +302,10 @@ if __name__ == '__main__':
             quiet = True
         elif opt in ('-v', '--verbose'):
             verbose += 1
+    # in certain situations, Windows' command prompt appends a double quote
+    # to the command line parameters. This block takes care of this issue.
+    for i,arg in enumerate(arguments):
+        if arg.endswith('"'):
+            arguments[i] = arg[:-1]
     convertor(lambda n, f1, f2: reindent(n, f1, f2),
               arguments, "|".join(exclude))

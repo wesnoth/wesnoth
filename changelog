@@ -29,6 +29,8 @@ Version 1.10.5+svn:
    * Fixed bug #19970: No longer terminate due to corrupt preferences.
    * Fixed a display artifact (halos not cleared) when WML moves a unit.
    * Use bilinear interpolation for scaling images down.
+   * Fixed wmllint, wmlscope and wmlindent not working correctly on Windows if a
+     command line argument ends with a backslash
 
 Version 1.10.5:
  * Campaigns:
