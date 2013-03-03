@@ -69,6 +69,7 @@ namespace game_config
 
 	namespace images {
 	std::string game_title,
+            game_title_background,
 			// orbs and hp/xp bar
 			moved_orb,
 			unmoved_orb,
@@ -195,6 +196,7 @@ namespace game_config
 		if(const config &i = v.child("images")){
 			using namespace game_config::images;
 			game_title = i["game_title"].str();
+            game_title_background = i["game_title_background"].str();
 
 			moved_orb = i["moved_orb"].str();
 			unmoved_orb = i["unmoved_orb"].str();
