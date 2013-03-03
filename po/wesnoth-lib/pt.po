@@ -2,20 +2,21 @@
 # Copyright (C) 2005 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2005.
-#
+# trewe <sjrs456@yahoo.fr>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-12-08 12:33+0100\n"
-"PO-Revision-Date: 2012-12-15 19:15+0100\n"
-"Last-Translator: trewe <sjr456@yahoo.fr>\n"
-"Language-Team: European Portuguese\n"
-"Language: \n"
+"PO-Revision-Date: 2013-03-02 22:01+0100\n"
+"Last-Translator: trewe <sjrs456@yahoo.fr>\n"
+"Language-Team: wesn-pt-trans\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Virtaal 0.7.1\n"
 "X-Poedit-Language: Portuguese\n"
 "X-Poedit-Country: PORTUGAL\n"
 
@@ -513,7 +514,7 @@ msgstr "Colinas de Outono de floresta mista"
 #. [terrain_type]: id=mixed_forest_winter_hills
 #: data/core/terrain.cfg:834
 msgid "Winter Mixed Forested Hills"
-msgstr "Colinas de Inverno de floresta mista "
+msgstr "Colinas de Inverno de floresta mista"
 
 #. [terrain_type]: id=mixed_forest_winter_snow_hills
 #: data/core/terrain.cfg:845
@@ -1270,7 +1271,7 @@ msgstr "Irás agora ligar-te ao servidor para carregar extras."
 #: data/gui/default/window/addon_connect.cfg:89
 #: data/gui/default/window/mp_connect.cfg:90
 msgid "Server:"
-msgstr "Servidor: "
+msgstr "Servidor:"
 
 #. [button]: id=remove_addons
 #: data/gui/default/window/addon_connect.cfg:147
@@ -1336,7 +1337,7 @@ msgstr "Autor:"
 #. [label]
 #: data/gui/default/window/addon_description.cfg:150
 msgid "Version:"
-msgstr "Versão: "
+msgstr "Versão:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:180
@@ -1514,7 +1515,7 @@ msgstr "Dificuldade"
 #. [scroll_label]: id=message
 #: data/gui/default/window/campaign_difficulty.cfg:77
 msgid "Select difficulty level:"
-msgstr "Escolha o nível de dificuldade: "
+msgstr "Escolha o nível de dificuldade:"
 
 #. [label]
 #: data/gui/default/window/chat_log.cfg:38
@@ -1754,12 +1755,12 @@ msgstr "Vermelho:"
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:161
 msgid "Green:"
-msgstr "Verde: "
+msgstr "Verde:"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:187
 msgid "Blue:"
-msgstr "Azul: "
+msgstr "Azul:"
 
 #. [toggle_button]: id=use_mdi
 #: data/gui/default/window/editor_settings.cfg:231
@@ -2052,7 +2053,7 @@ msgstr "Ouro por aldeia"
 #: data/gui/default/window/lobby_main.cfg:184
 #: data/gui/default/window/mp_create_game.cfg:420
 msgid "Experience modifier"
-msgstr "Modificador de Experiência "
+msgstr "Modificador de experiência"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:186
@@ -2333,7 +2334,7 @@ msgstr "Jogadores: "
 #. [label]: id=map_size
 #: data/gui/default/window/mp_create_game.cfg:167
 msgid "Map size: "
-msgstr "Tamanho do mapa:"
+msgstr "Tamanho do mapa: "
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:185
@@ -2659,7 +2660,7 @@ msgstr "Criar Unidade (Modo de Depuração!)"
 #. [label]
 #: data/gui/default/window/unit_create.cfg:67
 msgid "Gender:"
-msgstr "Sexo: "
+msgstr "Sexo:"
 
 #. [toggle_button]: id=male_toggle
 #: data/gui/default/window/unit_create.cfg:77
@@ -2678,7 +2679,7 @@ msgstr "Raça"
 
 #: src/filechooser.cpp:77
 msgid "File: "
-msgstr "Ficheiro:"
+msgstr "Ficheiro: "
 
 #: src/filechooser.cpp:80
 msgid "Delete File"
@@ -3113,7 +3114,7 @@ msgstr "Ver e configurar atalhos de teclado"
 
 #: src/game_preferences_display.cpp:759
 msgid "Speed: "
-msgstr "Velocidade:"
+msgstr "Velocidade: "
 
 #: src/game_preferences_display.cpp:764 src/game_preferences_display.cpp:766
 msgid "Maximum auto-saves: "
@@ -3234,11 +3235,12 @@ msgstr "Nenhuma grade definida"
 
 #: src/gui/auxiliary/window_builder.cpp:100
 msgid "Linked '$id' group has multiple definitions."
-msgstr ""
+msgstr "O grupo vinculado '$id' tem múltiplas definições."
 
 #: src/gui/auxiliary/window_builder.cpp:426
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
+"O grupo vinculado '$id' precisa de uma chave 'fixed_width' ou 'fixed_height'."
 
 #: src/gui/auxiliary/window_builder.cpp:541
 msgid "A row must have a column."
@@ -3250,7 +3252,7 @@ msgstr "Numero de colunas difere"
 
 #: src/gui/auxiliary/window_builder/control.cpp:43
 msgid "Found a widget with a helptip and without a tooltip."
-msgstr ""
+msgstr "Encontrado um item com uma ajuda mas sem uma dica."
 
 #: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:48
 #: src/gui/auxiliary/window_builder/listbox.cpp:62
@@ -3261,7 +3263,7 @@ msgstr "Nenhuma lista definida."
 #: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:52
 #: src/gui/auxiliary/window_builder/listbox.cpp:66
 msgid "A 'list_definition' should contain one row."
-msgstr ""
+msgstr "Uma \"list_definition\" deve conter uma coluna."
 
 #: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:68
 #: src/gui/auxiliary/window_builder/listbox.cpp:85
@@ -3269,6 +3271,7 @@ msgstr ""
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
+"'lista_data' tem de ter o mesmo número de colunas que a 'list_definition'."
 
 #: src/gui/auxiliary/window_builder/multi_page.cpp:40
 msgid "No page defined."
@@ -3280,7 +3283,7 @@ msgstr "É necessário pelo menos um item em paralelo."
 
 #: src/gui/auxiliary/window_builder/slider.cpp:67
 msgid "The number of value_labels and values don't match."
-msgstr ""
+msgstr "O número dos value_labels e valores não coincidem."
 
 #: src/gui/auxiliary/window_builder/stacked_widget.cpp:38
 msgid "No stack defined."
@@ -3292,7 +3295,7 @@ msgstr "Nenhum nó definido para visualização de árvore."
 
 #: src/gui/auxiliary/window_builder/tree_view.cpp:87
 msgid "[node]id 'root' is reserved for the implementation."
-msgstr ""
+msgstr "a ID 'root' deste [nó] é reservado para implementação futura."
 
 #: src/gui/auxiliary/window_builder/tree_view.cpp:91
 msgid "No node defined."
@@ -3356,7 +3359,7 @@ msgstr "Não Instalado"
 
 #: src/gui/dialogs/addon/filter_options.cpp:111
 msgid "addons_view^Upgradable"
-msgstr "Actializável"
+msgstr "Actualizável"
 
 #: src/gui/dialogs/addon/filter_options.cpp:113
 msgid "addons_view^Installed"
@@ -3434,7 +3437,7 @@ msgstr "Juntado a sala $name"
 
 #: src/gui/dialogs/lobby_main.cpp:1420
 msgid "$player has entered the room"
-msgstr "%player entrou na sala"
+msgstr "$player entrou na sala"
 
 #: src/gui/dialogs/lobby_main.cpp:1458
 msgid "$player has left the room"
@@ -3450,7 +3453,7 @@ msgstr "Ligar a esta partida requer uma senha."
 
 #: src/gui/dialogs/lobby_main.cpp:1573
 msgid "Password: "
-msgstr "Senha:"
+msgstr "Senha: "
 
 #: src/gui/dialogs/message.cpp:191 src/gui/dialogs/transient_message.cpp:62
 msgid "Error"
@@ -3498,7 +3501,7 @@ msgstr ""
 
 #: src/gui/dialogs/title_screen.cpp:297
 msgid "Version "
-msgstr "Versão"
+msgstr "Versão "
 
 #: src/gui/dialogs/title_screen.cpp:300
 msgid "Version"
@@ -3506,12 +3509,13 @@ msgstr "Versão"
 
 #: src/gui/widgets/helper.cpp:117
 msgid "Mandatory widget '$id' hasn't been defined."
-msgstr ""
+msgstr "Campo obrigatório '$id' não foi definido."
 
 #: src/gui/widgets/settings.cpp:441
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
+"A definição do campo '$definition' não contém uma referencia para '$id'."
 
 #: src/gui/widgets/settings.cpp:508
 msgid "No default gui defined."
@@ -3523,7 +3527,7 @@ msgstr "Nenhum estado ou secção de desenho definida."
 
 #: src/gui/widgets/tree_view_node.cpp:104
 msgid "Unknown builder id for tree view node."
-msgstr ""
+msgstr "Identificação construtiva desconhecida do nó da árvore."
 
 #: src/gui/widgets/window.cpp:975
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
@@ -3911,11 +3915,11 @@ msgstr "Mudar Grupo de Desenho"
 
 #: src/hotkeys.cpp:158
 msgid "Scroll Palette Left"
-msgstr ""
+msgstr "Rolar para a esquerda"
 
 #: src/hotkeys.cpp:159
 msgid "Scroll Palette Right"
-msgstr ""
+msgstr "Rolar para a direita"
 
 #: src/hotkeys.cpp:160
 msgid "Next Tool"
@@ -4039,7 +4043,7 @@ msgstr "Criar Máscara"
 
 #: src/hotkeys.cpp:191
 msgid "Refresh Display"
-msgstr "Actualizar Tela"
+msgstr "Actualizar Ecrã"
 
 #: src/hotkeys.cpp:192
 msgid "Update Terrain Transitions"
@@ -4213,10 +4217,12 @@ msgstr "Esquerda Abaixo"
 msgid "Unknown"
 msgstr "Desconhecido"
 
+# Not sure what "Hat" is...
+# Chapéu é que não...
+# Um tipo de cabana qualquer...
 #: src/hotkeys.cpp:401
-#, fuzzy
 msgid "Hat"
-msgstr "Cabana/fresco/?"
+msgstr "Choupana"
 
 #: src/hotkeys.cpp:828 src/hotkeys.cpp:1174
 msgid "Do you really want to quit?"
@@ -4230,6 +4236,7 @@ msgstr "Capturar Mapa"
 msgid "Screenshot done"
 msgstr "Fotografia do ecrã tirada"
 
+# any portuguese image localization is fine (and as last even galician)
 #. TRANSLATORS: This is the language code which will be used
 #. to store and fetch localized non-textual resources, such as images,
 #. when they exist. Normally it is just the code of the PO file itself,
@@ -4242,7 +4249,7 @@ msgstr "Fotografia do ecrã tirada"
 #. translate this message as "sv,da", while Danish as "da,sv".
 #: src/image.cpp:425
 msgid "language code for localized resources^en_US"
-msgstr "pt"
+msgstr "pt,pt_PT,pt_BR"
 
 #: src/mapgen_dialog.cpp:114
 msgid "Map Generator"
@@ -4316,7 +4323,7 @@ msgstr "Não estão disponíveis modos de vídeo alternativos"
 
 #: src/preferences_display.cpp:358
 msgid " (widescreen)"
-msgstr "(Ecrã largo)"
+msgstr " (ecrã largo)"
 
 #: src/preferences_display.cpp:362
 msgid "Choose Resolution"
@@ -4332,7 +4339,7 @@ msgstr ""
 
 #: src/text.cpp:754
 msgid "The text contains invalid markup: "
-msgstr "O texto contem código inválido:"
+msgstr "O texto contem código inválido: "
 
 #: src/wml_exception.cpp:65
 msgid ""

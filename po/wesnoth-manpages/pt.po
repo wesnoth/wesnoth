@@ -1,19 +1,20 @@
 # Portuguese translations for Battle for Wesnoth package
 # Copyright (C) 2006 Wesnoth development team.
 # Automatically generated, 2006.
-#
+# trewe <sjrs456@yahoo.fr>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "POT-Creation-Date: 2012-08-18 09:40+0300\n"
-"PO-Revision-Date: 2012-12-15 19:19+0100\n"
-"Last-Translator: trewe <sjr456@yahoo.fr>\n"
-"Language-Team: none\n"
-"Language: \n"
+"PO-Revision-Date: 2013-03-02 22:07+0100\n"
+"Last-Translator: trewe <sjrs456@yahoo.fr>\n"
+"Language-Team: wesn-pt-trans\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Virtaal 0.7.1\n"
 
 # type: TH
 #. type: TH
@@ -144,7 +145,7 @@ msgid ""
 "dir."
 msgstr ""
 "vai directamente para a campanha com base nos parâmetros. Podes escolher a "
-"campanha duma lista se não especificaste nenhuma. B<Nota:> Ao usar esta "
+"campanha duma lista se não especificaste nenhuma.  B<Nota:> Ao usar esta "
 "opção por favor, verifique se especificaste o caminho do directório de dados "
 "como o argumento final, caso contrário o jogo vai tomar a ID da campanha / "
 "cenário como os dados padrão."
@@ -195,7 +196,7 @@ msgid ""
 "Games\""
 msgstr ""
 "define o directório I<nome> do utilizador em $HOME ou \"Os meus Documentos"
-"\\Os Meus Jogos\" em Windows. Também podes especificar o caminho absoluto "
+"\\Os Meus Jogos\" em Windows.  Também podes especificar o caminho absoluto "
 "para as configurações fora de $HOME ou \"Os meus Documentos\\Os Meus Jogos\"."
 
 # type: TP
@@ -253,7 +254,7 @@ msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
 "to B<-l --load>"
 msgstr ""
-"inicia o editor de mapas  directamente. Se o I<ficheiro> for especificado é "
+"inicia o editor de mapas directamente. Se o I<ficheiro> for especificado é "
 "equivalente a B<-l --load>"
 
 # type: TP
@@ -373,7 +374,7 @@ msgid ""
 msgstr ""
 "Ajusta o nível de severidade dos domínios de log.  B<all> (tudo) pode ser "
 "usado para qualquer domínio de log. Níveis disponíveis: B<error> (erro),\\ "
-"B<warning> (aviso),\\ B<info> (informação),\\ B<debug> (depuração). O nível "
+"B<warning> (aviso),\\ B<info> (informação),\\ B<debug> (depuração).  O nível "
 "padrão é B<error>."
 
 #. type: TP
@@ -514,6 +515,13 @@ msgid ""
 "preprocessor visit: http://wiki.wesnoth.org/PreprocessorRef#Command-"
 "line_preprocessor"
 msgstr ""
+"processa um ficheiro/directório especifico. Para cada ficheiro será escrito "
+"um documento .cfg simples e um processado no directório indicado. Se uma "
+"pasta for indicada, será processada de acordo com as regras de processamento "
+"conhecidos. Os macros comuns em \"data/core/macros\" serão processados antes "
+"de qualquer outro recurso. Por exemplo: B<-p ~/wesnoth/data/campaigns/"
+"tutorial ~/result >. Para mais detalhes em como funciona o processador "
+"visita \"http://wiki.wesnoth.org/PrepocessorRef#Command-line_prepocessor\"."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:170
@@ -528,6 +536,9 @@ msgid ""
 "B<SKIP_CORE> is in the define list the \"data/core\" directory won't be "
 "preprocessed."
 msgstr ""
+"Um lista continua separada por virgula de definições usado pelo comando \"--"
+"prepocess\". Se B<SKIP_CORE> estiver na lista o directório \"data/core\" não "
+"irá ser carregado."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:175
@@ -541,6 +552,8 @@ msgid ""
 "used only by the '--preprocess' command.  Specifies a file that contains "
 "[preproc_define]s to be included before preprocessing."
 msgstr ""
+"usado apenas pelo comando \"--prepocess\". Especifica o ficheiro que contem "
+"[definições_predefinidas] para serem incluídos antes de carregar o jogo."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:179
@@ -556,6 +569,10 @@ msgid ""
 "file '_MACROS_.cfg' in the target directory of preprocess's command.  This "
 "switch should be typed before the --preprocess command."
 msgstr ""
+"apenas usado pelo comando \"--prepocess\". Irá imprimir todas as macros "
+"lidas no ficheiro alvo. Se o ficheiro não for indicado será escrito um com o "
+"nome _MACROS_.cfg no directório processado. Isto deve ser indicado antes do "
+"comando \"--prepocess\"."
 
 # type: TP
 #. type: TP
@@ -599,6 +616,8 @@ msgid ""
 "uses E<lt>usernameE<gt> when connecting to a server, ignoring other "
 "preferences."
 msgstr ""
+"usa o E<lt>nomeE<gt> quando ligar ao servidor, ignorando as outras "
+"preferências."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:196
@@ -612,6 +631,8 @@ msgid ""
 "uses E<lt>passwordE<gt> when connecting to a server, ignoring other "
 "preferences. Unsafe."
 msgstr ""
+"usa a E<lt>palavra-passeE<gt> quando ligar ao servidor, ignorando as outras "
+"preferências. Inseguro."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:199
@@ -893,6 +914,9 @@ msgid ""
 "fonts, etc) initialization error. An exit status of 2 indicates an error "
 "with the command line options."
 msgstr ""
+"O estado normal de saída é 0 (zero). Um estado de 1 indica um erro (SDL, "
+"vídeo, tipo de letra, etc) de inicialização. Um estado de 2 indica um erro "
+"com as opções da linha de comando."
 
 # type: SH
 #. type: SH
@@ -996,7 +1020,7 @@ msgstr "Deamon de rede para jogos multi-jogadores da Batalha por Wesnoth"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:23
 msgid "wesnothd - Battle for B<Wesnoth> multiplayer network daemon"
-msgstr ""
+msgstr "wesnothd - Um daemon de rede para a Batalha por B<Wesnoth>."
 
 # type: Plain text
 #. type: Plain text
@@ -1041,6 +1065,9 @@ msgid ""
 "B<SERVER CONFIG> below for the syntax. You can reload the config with "
 "sending SIGHUP to the server process."
 msgstr ""
+"diz a wesnothd onde encontrar o ficheiro de configuração para usar. Veja a "
+"secção B<CONFIGURAÇÃO DO SERVIDOR> abaixo para os comandos. Podes recarregar "
+"as configurações ao enviar um SIGHUP  ao servidor."
 
 # type: TP
 #. type: TP
@@ -1070,6 +1097,10 @@ msgid ""
 "B<debug>.  By default the B<error> level is used and the B<info> level for "
 "the B<server> domain."
 msgstr ""
+"define o nível de gravidade dos domínios de log. B <all> pode ser usado para "
+"combinar com qualquer domínio de log. Níveis disponíveis: B<erro>,\\ "
+"B<warning>,\\ B<info>,\\ B<debug>. Por defeito, o nivel B<erro> é usado do "
+"nível B<info> para o domínio B<servidor>."
 
 # type: TP
 #. type: TP
@@ -1085,6 +1116,8 @@ msgid ""
 "binds the server to the specified port. If no port is specified, port "
 "B<15000> will be used."
 msgstr ""
+"conecta o servidor à porta escolhida. Se nenhuma porta for escolhida, a "
+"porta B<15000> será usada."
 
 # type: TP
 #. type: TP
@@ -1100,6 +1133,8 @@ msgid ""
 "sets the maximum number of waiting worker threads for network I/O to n "
 "(default: B<5>,\\ max:\\ B<30>)."
 msgstr ""
+"muda para n a quantidade máxima de threads de trabalho em espera para E/S de "
+"rede (padrão: B<5>,\\ max:\\ B<30>)."
 
 # type: TP
 #. type: TP
@@ -1115,6 +1150,8 @@ msgid ""
 "sets the maximum number of worker threads that will be created.  If set to "
 "B<0> there will be no limit (default: B<0>)."
 msgstr ""
+"configura o número máximo de threads de trabalho que serão criadas. Se "
+"ajustado para B<0>, não haverá limites (padrão: B<0>)."
 
 # type: TP
 #. type: TP
@@ -1202,6 +1239,9 @@ msgid ""
 "they come from the fifo.  Set it to B<yes> to allow remote shutdown via a /"
 "query by an administrator."
 msgstr ""
+"se ajustado para B<no> (o padrão), pedidos de desligar e reiniciar serão "
+"ignorados, a menos que venham do fifo.  Coloque como B<yes> para permitir "
+"desligamento remoto via um /query de um administrador."
 
 # type: TP
 #. type: TP
@@ -1217,6 +1257,9 @@ msgid ""
 "Full or relative path to a (gzip compressed) file that the server can read "
 "and write.  Bans will be saved to this file and read again on server start."
 msgstr ""
+"caminho completo ou relativo para um arquivo (comprimido com gzip) que o "
+"servidor possa ler e escrever.  Expulsões serão gravados para o arquivo e "
+"lidos de novo ao ligar o servidor."
 
 # type: TP
 #. type: TP
@@ -1232,6 +1275,8 @@ msgid ""
 "Determines whether the rooms file should be read and written to in "
 "compressed form. Defaults to B<yes>."
 msgstr ""
+"Determina quando o arquivo 'rooms' pode ser lido e escrito em forma "
+"compacta. O padrão é B<yes>."
 
 # type: TP
 #. type: TP
@@ -1247,6 +1292,8 @@ msgid ""
 "The number of allowed connections from the same IP. B<0> means infinite. "
 "(default: B<5>)"
 msgstr ""
+"O número de conexões permitidas do mesmo IP. B<0> para infinito. (padrão: "
+"B<5>)"
 
 # type: TP
 #. type: TP
@@ -1264,6 +1311,10 @@ msgid ""
 "(used if nothing is specified) are: B<*admin*,*admln*,*server*,ai,ai?,"
 "computer,human,network,player>."
 msgstr ""
+"Nomes/alcunhas que não são aceites pelo servidor. B<*> e B<?> podem ser "
+"usados como jóqueres. Veja B<glob>(7) para mais detalhes. Os valores padrão "
+"(usados se nada for especificado) são: B<*admin*,*admln*,*server*,ai,ai?,"
+"computer,human,network,player>."
 
 # type: TP
 #. type: TP
@@ -1280,6 +1331,9 @@ msgid ""
 "from wesnoth).  If not specified defaults to the compile-time path (default: "
 "B</var/run/socket/wesnothd/socket>)."
 msgstr ""
+"O caminho para o fifo que exibe os comandos do servidor (o mesmo que /"
+"query ... de wesnoth).  Se não especificado, o padrão é o caminho da "
+"compilação (padrão: B</var/run/socket/wesnothd/socket>)."
 
 # type: TP
 #. type: TP
@@ -1294,6 +1348,8 @@ msgstr "B<max_messages>"
 msgid ""
 "The number of allowed messages in B<messages_time_period>. (default: B<4>)"
 msgstr ""
+"O número de mensagens permitidas no período de B<messages_time_period>. "
+"(padrão: B<4>)"
 
 # type: TP
 #. type: TP
@@ -1309,6 +1365,8 @@ msgid ""
 "The time period (in seconds) message flooding is detected in. (default: "
 "B<10> seconds)"
 msgstr ""
+"O período de tempo (em segundos) de inundação de mensagens é detectado "
+"(padrão: B<10> segundos)"
 
 # type: TP
 #. type: TP
@@ -1339,6 +1397,10 @@ msgid ""
 "respectively to everyone, registered users, admin users or disables new room "
 "creation. Default value is B<everyone>."
 msgstr ""
+"Determina quem pode criar novas salas no servidor. Os valores disponíveis "
+"são B<everyone>, B<registered>, B<admin> e B<nobody>, e dar a permisão, "
+"respectivamente, para todos, de usuários registados, administradores ou "
+"criação desactivada de salas. O valor por defeito é B<everyone>."
 
 # type: TP
 #. type: TP
@@ -1353,6 +1415,8 @@ msgstr "B<passwd>"
 msgid ""
 "The password used to gain admin privileges (via B</query admin >I<password>)."
 msgstr ""
+"A palavra-passe usada para ganhar privilégios de administrador (por via B-/"
+"query administrador > I<palavra-passe>)"
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:150
@@ -1385,6 +1449,9 @@ msgid ""
 "B<restart> command. (Can only be issued via the fifo. See the "
 "B<allow_remote_shutdown> setting.)"
 msgstr ""
+"O comando que o servidor usa para começar um novo processo de servidor por "
+"via do comando B<restart>. (Só pode ser dado no fifo. Veja a configuração "
+"B<allow_remote_shutdown>.)"
 
 # type: TP
 #. type: TP
@@ -1401,6 +1468,9 @@ msgid ""
 "server startup and written to later. If empty or not set, rooms are not "
 "loaded and not saved."
 msgstr ""
+"Caminho para um arquivo onde as informações da sala devem ser guardadas. "
+"Este arquivo é lido quando o servidor começa e escrito depois. Se em branco "
+"ou não definidas, as salas não são carregadas nem salvas."
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:159
@@ -1432,6 +1502,9 @@ msgid ""
 "and B<?> from wildcard patterns are supported.  (defaults to the "
 "corresponding wesnoth version)"
 msgstr ""
+"Uma lista, separada por vírgulas de strings de versão que serão aceitas pelo "
+"servidor. B<*>e B<?> podem ser usados como jóqueres.  (o padrão é a versão "
+"desta instalação do wesnoth)"
 
 # type: Plain text
 #. type: Plain text
@@ -1514,6 +1587,8 @@ msgid ""
 "A comma separated list of versions to redirect. Behaves the same way as "
 "B<versions_accepted> in regard to wildcard patterns."
 msgstr ""
+"Uma lista separada por vírgulas das versões para redireccionar. Comporta-se "
+"do mesmo modo que B<versions_accepted> em relação a jóqueres."
 
 # type: Plain text
 #. type: Plain text
@@ -1522,6 +1597,8 @@ msgid ""
 "B<[ban_time]> A tag to define convenient keywords for temporary ban time "
 "lengths."
 msgstr ""
+"B<[tempo de expulsão]> Uma tag para definir palavras chave para medir o "
+"tempo de expulsão."
 
 # type: TP
 #. type: TP
@@ -1553,6 +1630,11 @@ msgid ""
 "Example: B<time=\"1D12h30m\"> results in a ban time of 1 day, 12 hours and "
 "30 minutes."
 msgstr ""
+"A definição do tempo limite.  O formato é:  %d[%s[%d%s[...]]] onde s são os "
+"segundos, m os minutos, h as horas, D os dias, M os meses ou Y os anos e %d "
+"é um valor numérico.  Se nenhum tempo for referido serão assumidos minutos. "
+"Por exemplo: B<time=\"1D12h30m\"> resulta num tempo de expulsão de 1 dia, 12 "
+"horas e 30 minutos."
 
 # type: Plain text
 #. type: Plain text
@@ -1562,15 +1644,18 @@ msgid ""
 "connected client's requests to the specified server.  Accepts the same keys "
 "as B<[redirect]>."
 msgstr ""
+"B<[proxy]> Uma etiqueta que diz ao servidor para agir como proxy, e enviar "
+"as requisições dos clientes conectados para um outro servidor especificado.  "
+"Aceita as mesmas chaves que B<[redirect]>."
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:221
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
-"on which user handler is set with the B<user_handler> key. If no B<"
-"[user_handler]> section is present in the configuration the server will run "
-"without any nick registration service."
+"on which user handler is set with the B<user_handler> key. If no "
+"B<[user_handler]> section is present in the configuration the server will "
+"run without any nick registration service."
 msgstr ""
 
 # type: TP
@@ -1688,6 +1773,8 @@ msgid ""
 "B<[mail]> Configures an SMTP server through which the user handler can send "
 "mail. Currently only used by the sample user handler."
 msgstr ""
+"B<[email]> Configura um servidor SMTP pelo qual os utilizadores podem enviar "
+"correio. De momento só usado pelo controlador do utilizador de exemplo."
 
 # type: TP
 #. type: TP
@@ -1773,10 +1860,10 @@ msgid ""
 "baumhauer@gmail.comE<gt>.  This manual page was originally written by Cyril "
 "Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
-"Escrito por David White E<lt>davidnwhite@verizon.netE<gt>. Editado por Nils "
+"Escrito por David White E<lt>davidnwhite@verizon.netE<gt>.  Editado por Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> e "
 "Soliton E<lt>soliton.de@gmail.comE<gt> e Thomas Baumhauer E<lt>thomas."
-"baumhauer@gmail.comE<gt>. Esta página de manual foi originalmente escrita "
+"baumhauer@gmail.comE<gt>.  Esta página de manual foi originalmente escrita "
 "por Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 
 #. type: Plain text

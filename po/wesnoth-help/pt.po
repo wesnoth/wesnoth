@@ -1,16 +1,18 @@
+# trewe <sjrs456@yahoo.fr>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-10-27 15:56+0200\n"
-"PO-Revision-Date: 2012-12-15 16:53+0100\n"
-"Last-Translator: trewe <sjr456@yahoo.fr>\n"
-"Language-Team: none\n"
-"Language: \n"
+"PO-Revision-Date: 2013-03-02 22:44+0100\n"
+"Last-Translator: trewe <sjrs456@yahoo.fr>\n"
+"Language-Team: wesn-pt-trans\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Virtaal 0.7.1\n"
 
 #. [time]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:529
@@ -514,9 +516,10 @@ msgid ""
 "text='aerie'</ref> that recurs every <ref>dst='breeding_cycle' "
 "text='breeding cycle'</ref>. See <ref>dst='swarm' text='Swarm'</ref>"
 msgstr ""
-"A <ref>dst='flight' text='fuga'</ref> de cada novo drago do <ref>dst='aerie' "
-"text='aéreo'</ref> que ocorre a cada <ref>dst='breeding_cycle' text='ciclo "
-"de criação'</ref>. Veja <ref>dst='swarm' text='Espalhamento'</ref>"
+" A <ref>dst='flight' text='fuga'</ref> de cada novo drago do "
+"<ref>dst='aerie' text='aéreo'</ref> que ocorre a cada "
+"<ref>dst='breeding_cycle' text='ciclo de criação'</ref>. Veja "
+"<ref>dst='swarm' text='Espalhamento'</ref>"
 
 #. [topic]: id=runners
 #: data/core/encyclopedia/drakes.cfg:151
@@ -697,7 +700,7 @@ msgid ""
 "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
 "Fica à oeste de <ref>dst='morogor' text='Morogor'</ref> do outro lado do "
-"<ref>dst='Great Ocean' text='Grande Oceano'</ref>."
+"<ref>dst='great_ocean' text='Grande Oceano'</ref>."
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:57
@@ -1512,31 +1515,31 @@ msgstr ""
 #. [topic]: id=orbs
 #: data/core/help.cfg:189
 msgid " green if it hasn’t moved this turn,"
-msgstr "verde se a unidade ainda não se moveu neste turno,"
+msgstr " verde se a unidade ainda não se moveu neste turno,"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:190
 msgid " yellow if it has moved, but could still move further or attack, or"
 msgstr ""
-"amarela se já se moveu, mas ainda pode mover mais um pouco ou atacar, ou"
+" amarela se já se moveu, mas ainda pode mover mais um pouco ou atacar, ou"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:191
 msgid ""
 " red if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
-"vermelha se já não se pode nem mover nem atacar, ou o utilizador terminou o "
+" vermelha se já não se pode nem mover nem atacar, ou o utilizador terminou o "
 "seu turno."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:192
 msgid " blue if the unit is an ally you do not control."
-msgstr "azul se a unidade é de um aliado que não controlas."
+msgstr " azul se a unidade é de um aliado que não controlas."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:193
 msgid " Enemy units have no orb on top of their energy bar."
-msgstr "Unidades inimigas não têm esferas no topo das suas barras de energia."
+msgstr " Unidades inimigas não têm esferas no topo das suas barras de energia."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:200
@@ -1736,7 +1739,7 @@ msgstr ""
 "bold> no menu de acções. Isto impedirá que as unidades removam o Nevoeiro ou "
 "a Sombra até o próximo evento aleatório, ou até que uma actualização manual "
 "ocorra, via o comando <bold>text='actualizar nevoeiro agora'</bold>, ou o "
-"fim do teu turno. Isso preservará a tua habilidade em desfazer movimentos."
+"fim do teu turno. Isto preservará a tua habilidade em desfazer movimentos."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:237
@@ -1997,11 +2000,11 @@ msgid ""
 " Liminal units get −25% damage during both night and daytime."
 msgstr ""
 "O tempo de dia afecta o dano das unidades do modo seguinte:\n"
-"Unidades diurnas têm um bónus de 25% de dia e uma penalidade de 25% à "
+" Unidades diurnas têm um bónus de 25% de dia e uma penalidade de 25% à "
 "noite.\n"
-"Unidades nocturnas têm um bónus de 25% à noite e uma penalidade de 25% de "
+" Unidades nocturnas têm um bónus de 25% à noite e uma penalidade de 25% de "
 "dia.\n"
-"Unidades neutras não são afectadas pelo tempo do dia."
+" Unidades neutras não são afectadas pelo tempo do dia."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:278
@@ -2204,7 +2207,7 @@ msgstr ""
 "<italic>text='Sarar Unidades'</italic>: Unidades com a habilidade "
 "<ref>dst='ability_heals +4' text='Sarar'</ref> podem tratar unidades aliadas "
 "que estejam adjacentes, normalmente recuperando <ref>dst='ability_heals +4' "
-"text='4 PV'</ref>  ou <ref>dst='ability_heals +8' text='8 PV'</ref> por "
+"text='4 PV'</ref> ou <ref>dst='ability_heals +8' text='8 PV'</ref> por "
 "turno, ou evitam que o Veneno cause dano."
 
 #. [topic]: id=healing
@@ -2326,12 +2329,13 @@ msgid ""
 "playing (such as Konrad) will almost always be a leader."
 msgstr ""
 "\n"
-"Existe uma excepção importante para a regra de Manutenção: unidades com a "
-"característica \"Leal\" nunca requerem manutenção. As unidades com as quais "
+"​\n"
+"​Existe uma excepção importante para a regra de manutenção: unidades com a "
+"característica Leal nunca requerem manutenção. As unidades com as quais "
 "começas o jogo (como Delfador), ou unidades que se juntam a ti durante um "
-"cenário (como o Escudeiro no segundo cenário de \"O Herdeiro do Trono\") "
-"normalmente possuirão a característica Leal. A unidade com a qual jogas "
-"(como Konrad) quase sempre será um líder."
+"cenário (como o Escudeiro no segundo cenário de <italic>text='O Herdeiro do "
+"Trono'</italic>) normalmente possuirão a característica Leal. A unidade com "
+"a qual jogas (como Konrad) quase sempre será um líder."
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:338
@@ -2361,7 +2365,7 @@ msgstr "Contribuidores"
 #. [topic]: id=license
 #: data/core/help.cfg:350
 msgid "License"
-msgstr "Licenças"
+msgstr "Licença"
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:359
@@ -2807,7 +2811,7 @@ msgstr ""
 msgid ""
 "<italic>text='Slow'</italic> units have −1 movement but 5% more hitpoints."
 msgstr ""
-"As unidades <italic>text='lentas'</italic> têm  menos 1 ponto de movimento, "
+"As unidades <italic>text='lentas'</italic> têm menos 1 ponto de movimento, "
 "mas mais 5% de pontos de vida (PV)."
 
 #. [topic]: id=traits_weak
@@ -2927,12 +2931,13 @@ msgstr ""
 "Anões são uma outra excepção a esta regra, embora sejam capazes de ir "
 "através das florestas sem muita perda de velocidade, o seu absoluto "
 "desconhecimento com o terreno faz com que eles não recebem nenhum bónus "
-"defensivo \n"
-".\n"
+"defensivo.\n"
+"\n"
 "A maioria das unidades têm 50% de defesa em florestas, mas a cavalaria estão "
 "limitados a 30%. Elfos, por outro lado, desfrute de 60-70% de defesa, mesmo "
 "as suas unidades montadas. Anões geralmente recebem apenas 30% de defesa nas "
-"florestas. \n"
+"florestas.\n"
+"\n"
 
 #. [topic]: id=terrain_hills
 #: data/core/help.cfg:542
@@ -3179,7 +3184,7 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgstr ""
-"<italic>text='Cavernas'</italic>  representam qualquer caverna subterrânea "
+"<italic>text='Cavernas'</italic> representam qualquer caverna subterrânea "
 "com espaço suficiente para uma unidade passar. A maioria das unidades são "
 "totalmente estranhos com o terreno, e, portanto, são mais lentos e "
 "prejudicados na defesa. Anões e trogloditas, que fazem os seus lares em "
@@ -3349,7 +3354,7 @@ msgstr ""
 "Um <italic>text='Desfiladeiro'</italic> é uma rachadura no solo, que chega a "
 "profundidades desconhecidas. Desfiladeiros são conhecidos pelas suas paredes "
 "recortadas que tomam dias para serem atravessadas. No jogo, só as unidades "
-"que podem voar sobre desfiladeiros podem atravessar este terreno. "
+"que podem voar sobre desfiladeiros podem atravessar este terreno."
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:738
@@ -3507,7 +3512,7 @@ msgid ""
 "according to their purpose."
 msgstr ""
 "O jogo suporta vários tipos de suplementos que serão usados de forma "
-"diferente conforme com  seu fim."
+"diferente conforme com seu fim."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:807
@@ -4692,7 +4697,7 @@ msgid ""
 " This unit’s arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
 msgstr ""
-"  O ataque arcano desta unidade causa uma grande quantidade de dano a "
+" O ataque arcano desta unidade causa uma grande quantidade de dano a "
 "criaturas mágicas, e mesmo a criaturas mundanas."
 
 #: data/core/macros/special-notes.cfg:14
@@ -4717,7 +4722,7 @@ msgid ""
 " This unit is capable of neutralizing the effects of poison in units around "
 "it."
 msgstr ""
-"  Esta unidade é capaz de neutralizar o efeito de veneno nas unidades ao seu "
+" Esta unidade é capaz de neutralizar o efeito de veneno nas unidades ao seu "
 "redor."
 
 #: data/core/macros/special-notes.cfg:26
@@ -4819,7 +4824,7 @@ msgid ""
 "attacking it, this unit may backstab, inflicting double damage by creeping "
 "around behind that enemy."
 msgstr ""
-"  Se houver um inimigo do alvo do lado oposto do alvo, esta unidade pode "
+" Se houver um inimigo do alvo do lado oposto do alvo, esta unidade pode "
 "realizar um ataque sorrateiro, que causa o dobro do dano ao golpear o "
 "adversário pelas costas."
 
@@ -4905,7 +4910,7 @@ msgstr ""
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:8
 msgid "loyal"
-msgstr "leal "
+msgstr "leal"
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:9
@@ -4938,7 +4943,7 @@ msgstr "Imune a drenar vida, veneno e praga"
 #. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:37
 msgid "mechanical"
-msgstr "mecânico "
+msgstr "mecânico"
 
 #. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:38
@@ -6198,7 +6203,7 @@ msgstr "nível"
 
 #: src/help.cpp:1389
 msgid "Advances from: "
-msgstr "Avança de:"
+msgstr "Avança de: "
 
 #: src/help.cpp:1391
 msgid "Advances to: "
@@ -6206,11 +6211,11 @@ msgstr "Avança para: "
 
 #: src/help.cpp:1414
 msgid "Base unit: "
-msgstr "Unidade base:"
+msgstr "Unidade base: "
 
 #: src/help.cpp:1424
 msgid "Variations: "
-msgstr "Variações:"
+msgstr "Variações: "
 
 #: src/help.cpp:1450 src/help.cpp:1825 src/help.cpp:1898
 msgid "race^Miscellaneous"
@@ -6218,11 +6223,11 @@ msgstr "Diversos"
 
 #: src/help.cpp:1452
 msgid "Race: "
-msgstr "Raça:"
+msgstr "Raça: "
 
 #: src/help.cpp:1459
 msgid "Abilities: "
-msgstr "Habilidades:"
+msgstr "Habilidades: "
 
 #: src/help.cpp:1476
 msgid "Ability Upgrades: "
@@ -6238,16 +6243,16 @@ msgstr "Movimento: "
 
 #: src/help.cpp:1495
 msgid "Vision: "
-msgstr "Visão:"
+msgstr "Visão: "
 
 # don't quite understand what this effect has on gameplay
 #: src/help.cpp:1497
 msgid "Jamming: "
-msgstr "Bloqueio da Visão:"
+msgstr "Bloqueio da visão: "
 
 #: src/help.cpp:1498
 msgid "Cost: "
-msgstr "Custo:"
+msgstr "Custo: "
 
 #: src/help.cpp:1499
 msgid "Alignment: "
@@ -6255,7 +6260,7 @@ msgstr "Alinhamento: "
 
 #: src/help.cpp:1505
 msgid "Required XP: "
-msgstr "XP Necessário:"
+msgstr "XP Necessário: "
 
 #: src/help.cpp:1514
 msgid "unit help^Attacks"
@@ -6324,7 +6329,7 @@ msgstr "<header>text='Unidades desta raça'</header>"
 
 #: src/help.cpp:2817
 msgid " < Back"
-msgstr "< Voltar"
+msgstr " < Voltar"
 
 #: src/help.cpp:2818
 msgid "Forward >"
