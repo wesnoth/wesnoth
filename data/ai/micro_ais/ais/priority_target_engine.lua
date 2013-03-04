@@ -16,7 +16,7 @@ return {
             --print("\nAttackers:",#attackers)
 
             -- This gets set to >0 if unit that can attack target is found
-            local target_in_reach = 0
+            local target_in_reach
 
             -- See if any of those units can reach our target(s)
             for i,u in ipairs(attackers) do
@@ -42,7 +42,7 @@ return {
                 --print("reachable locs:",u.id,#tir)
 
                 -- If unit can reach a target -> set variable to 1
-                if (#tir > 0) then target_in_reach = 1 end
+                if (#tir > 0) then target_in_reach = true end
             end
 
             -- Always delete the attacks aspect first, so that we do not end up with 100 copies of the facet
@@ -66,7 +66,7 @@ return {
             }
 
             -- If the target is in reach, set the 'attacks' aspect accordingly ...
-            if (target_in_reach > 0) then
+            if target_in_reach then
                 --print("Setting attacks aspect")
                 W.modify_ai {
                     side = wesnoth.current.side,
