@@ -344,9 +344,16 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 	if(game_config::images::game_title.empty()) {
 		ERR_CF << "No title image defined\n";
 	} else {
-		window.canvas()[0].set_variable("background_image",
+        window.canvas()[0].set_variable("title_image",
 			variant(game_config::images::game_title));
 	}
+
+    if(game_config::images::game_title_background.empty()) {
+        ERR_CF << "No title background image defined\n";
+    } else {
+        window.canvas()[0].set_variable("background_image",
+            variant(game_config::images::game_title_background));
+    }
 
 	/***** Set the logo *****/
 	tprogress_bar* logo =
