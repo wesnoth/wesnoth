@@ -793,8 +793,16 @@ void menu_handler::recruit(int side_num, const map_location &last_hex)
 				  gui::dialog::default_style);
 		rmenu.add_button(new help::help_button(*gui_,"recruit_and_recall"),
 			gui::dialog::BUTTON_HELP);
-		rmenu.set_menu(items, &sorter);
-		rmenu.get_menu().sort_by(1); // otherwise it's unsorted by default
+
+		gui::menu::imgsel_style units_display_style(gui::menu::bluebg_style);
+		units_display_style.scale_images(font::relative_size(72), font::relative_size(72));
+
+		gui::menu* units_menu = new gui::menu(gui_->video(), items, false, -1,
+			gui::dialog::max_menu_width, &sorter, &units_display_style, false);
+
+		units_menu->sort_by(1); // otherwise it's unsorted by default
+
+		rmenu.set_menu(units_menu);
 		rmenu.set_panes(preview_panes);
 		recruit_res = rmenu.show();
 	}
@@ -963,7 +971,14 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 		gui::dialog rmenu(*gui_, _("Recall") + get_title_suffix(side_num),
 			_("Select unit:") + std::string("\n"),
 			gui::OK_CANCEL, gui::dialog::default_style);
-		rmenu.set_menu(options, &sorter);
+
+		gui::menu::imgsel_style units_display_style(gui::menu::bluebg_style);
+		units_display_style.scale_images(font::relative_size(72), font::relative_size(72));
+
+		gui::menu* units_menu = new gui::menu(gui_->video(), options, false, -1,
+			gui::dialog::max_menu_width, &sorter, &units_display_style, false);
+
+		rmenu.set_menu(units_menu);
 
 		gui::filter_textbox* filter = new gui::filter_textbox(gui_->video(),
 			_("Filter: "), options, options_to_filter, 1, rmenu, 200);
