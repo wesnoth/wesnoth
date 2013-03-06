@@ -600,7 +600,7 @@ void hotkey_preferences_dialog::show_binding_dialog(
 		hotkey::hotkey_item newhk(id);
 		hotkey::hotkey_item* oldhk = NULL;
 
-		Uint8 *keystate = SDL_GetKeyState(NULL);
+		CKey keystate;
 		bool shift = keystate[SDLK_RSHIFT] || keystate[SDLK_LSHIFT];
 		bool ctrl  = keystate[SDLK_RCTRL]  || keystate[SDLK_LCTRL];
 		bool cmd   = keystate[SDLK_RMETA]  || keystate[SDLK_LMETA];

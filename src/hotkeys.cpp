@@ -722,7 +722,7 @@ void add_hotkey(const hotkey_item& item) {
 
 hotkey_item& get_hotkey(const SDL_JoyButtonEvent& event)
 {
-	Uint8 *keystate = SDL_GetKeyState(NULL);
+	CKey keystate;
 	bool shift = keystate[SDLK_RSHIFT] || keystate[SDLK_LSHIFT];
 	bool ctrl  = keystate[SDLK_RCTRL]  || keystate[SDLK_LCTRL];
 	bool cmd   = keystate[SDLK_RMETA]  || keystate[SDLK_LMETA];
@@ -733,7 +733,7 @@ hotkey_item& get_hotkey(const SDL_JoyButtonEvent& event)
 
 hotkey_item& get_hotkey(const SDL_JoyHatEvent& event)
 {
-	Uint8 *keystate = SDL_GetKeyState(NULL);
+	CKey keystate;
 	bool shift = keystate[SDLK_RSHIFT] || keystate[SDLK_LSHIFT];
 	bool ctrl  = keystate[SDLK_RCTRL]  || keystate[SDLK_LCTRL];
 	bool cmd   = keystate[SDLK_RMETA]  || keystate[SDLK_LMETA];
@@ -744,7 +744,7 @@ hotkey_item& get_hotkey(const SDL_JoyHatEvent& event)
 
 static hotkey_item& get_hotkey(const SDL_MouseButtonEvent& event)
 {
-	Uint8 *keystate = SDL_GetKeyState(NULL);
+	CKey keystate;
 	bool shift = keystate[SDLK_RSHIFT] || keystate[SDLK_LSHIFT];
 	bool ctrl  = keystate[SDLK_RCTRL]  || keystate[SDLK_LCTRL];
 	bool cmd   = keystate[SDLK_RMETA]  || keystate[SDLK_LMETA];
