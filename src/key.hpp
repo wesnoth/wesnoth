@@ -31,7 +31,7 @@ class CKey
 
 public:
 	CKey();
-	bool operator[](int k) const { return key_list[k] > 0; }
+	bool operator[](int k) const;
 };
 
 #endif

@@ -20,3 +20,12 @@ CKey::CKey() :
 	key_list(SDL_GetKeyState(NULL))
 {
 }
+
+bool CKey::operator[](int k) const
+{
+#if SDL_VERSION_ATLEAST(2,0,0)
+	return key_list[SDL_GetScancodeFromKey(k)] > 0;
+#else
+	return key_list[k] > 0;
+#endif
+}
