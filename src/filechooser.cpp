@@ -96,7 +96,7 @@ gui::dialog::dimension_measurements file_dialog::layout(int xloc, int yloc)
 	//shift the extra buttons up
 	if (show_directory_buttons_)
 	{
-		std::map<gui::dialog_button *const, std::pair<int,int> >::iterator i;
+		std::map<gui::dialog_button *, std::pair<int,int> >::iterator i;
 		for(i = dim.buttons.begin(); i != dim.buttons.end(); ++i)
 		{
 			const int btn_h = i->first->height();
