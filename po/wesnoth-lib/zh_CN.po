@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-11-11 17:55+0100\n"
+"POT-Creation-Date: 2013-03-09 08:33+0100\n"
 "PO-Revision-Date: 2012-04-04 18:51+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
@@ -1281,7 +1281,7 @@ msgstr "选择您希望移除的附加组件。"
 #. [button]: id=ok
 #: data/gui/default/window/addon_uninstall_list.cfg:162
 #: data/gui/default/window/mp_cmd_wrapper.cfg:200
-#: src/game_preferences_display.cpp:192
+#: src/game_preferences_display.cpp:190
 msgid "Remove"
 msgstr "移除"
 
@@ -1563,7 +1563,7 @@ msgstr "允许同时打开多张地图"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
 #: data/gui/default/window/editor_settings.cfg:272
-#: src/game_preferences_display.cpp:214
+#: src/game_preferences_display.cpp:212
 msgid "Apply"
 msgstr "应用"
 
@@ -2437,482 +2437,474 @@ msgstr "删除文件失败。"
 msgid "Creation of the directory failed."
 msgstr "建立目录失败。"
 
-#: src/game_preferences.cpp:316
+#: src/game_preferences.cpp:311
 msgid "No server has been defined."
 msgstr "服务器未定义。"
 
-#: src/game_preferences.cpp:396
+#: src/game_preferences.cpp:391
 msgid "player"
 msgstr "玩家"
 
-#: src/game_preferences.cpp:838
+#: src/game_preferences.cpp:833
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/game_preferences.cpp:841
+#: src/game_preferences.cpp:836
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
-#: src/game_preferences_display.cpp:173
+#: src/game_preferences_display.cpp:172
 msgid "Full screen"
 msgstr "全屏"
 
-#: src/game_preferences_display.cpp:174
+#: src/game_preferences_display.cpp:173
 msgid "Accelerated speed"
 msgstr "加速"
 
-#: src/game_preferences_display.cpp:175
+#: src/game_preferences_display.cpp:174
 msgid "Skip AI moves"
 msgstr "略过AI的移动"
 
-#: src/game_preferences_display.cpp:176
+#: src/game_preferences_display.cpp:175
 msgid "Interrupt move when an ally is sighted"
 msgstr "发现友军时中断移动"
 
-#: src/game_preferences_display.cpp:177
+#: src/game_preferences_display.cpp:176
 msgid "Show grid"
 msgstr "显示网格"
 
-#: src/game_preferences_display.cpp:178
+#: src/game_preferences_display.cpp:177
 msgid "Save replay on SP/MP victory or MP defeat"
 msgstr "当单人/多人游戏胜利或者多人游戏失败时，保存录像"
 
-#: src/game_preferences_display.cpp:179
+#: src/game_preferences_display.cpp:178
 msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgstr "当单人/多人游戏胜利或者多人游戏失败时，删除自动存档"
 
-#: src/game_preferences_display.cpp:180
+#: src/game_preferences_display.cpp:179
 msgid "Do not show lobby joins"
 msgstr "不显示玩家进入游戏大厅的信息"
 
-#: src/game_preferences_display.cpp:181
+#: src/game_preferences_display.cpp:180
 msgid "Show lobby joins of friends only"
 msgstr "只显示好友进入游戏大厅的信息"
 
-#: src/game_preferences_display.cpp:182
+#: src/game_preferences_display.cpp:181
 msgid "Show all lobby joins"
 msgstr "显示所有玩家进入游戏大厅的信息"
 
-#: src/game_preferences_display.cpp:183
-msgid "Use new lobby interface"
-msgstr "使用新版多人游戏大厅界面"
-
-#: src/game_preferences_display.cpp:184
+#: src/game_preferences_display.cpp:182
 msgid "Sort lobby list"
 msgstr "对玩家列表排序"
 
-#: src/game_preferences_display.cpp:185
+#: src/game_preferences_display.cpp:183
 msgid "Iconize lobby list"
 msgstr "以图标形式显示玩家列表"
 
-#: src/game_preferences_display.cpp:186
+#: src/game_preferences_display.cpp:184
 msgid "Save password to preferences (plain text)"
 msgstr "保存首选项的密码（明文）"
 
-#: src/game_preferences_display.cpp:187
+#: src/game_preferences_display.cpp:185
 msgid "Set Path to wesnothd"
 msgstr "设置wesnothd所在路径"
 
-#: src/game_preferences_display.cpp:188
+#: src/game_preferences_display.cpp:186
 msgid "Friends List"
 msgstr "好友列表"
 
-#: src/game_preferences_display.cpp:189
+#: src/game_preferences_display.cpp:187
 msgid "Multiplayer Options"
 msgstr "多人游戏选项"
 
-#: src/game_preferences_display.cpp:190
+#: src/game_preferences_display.cpp:188
 msgid "Add As Friend"
 msgstr "加入好友列表"
 
-#: src/game_preferences_display.cpp:191
+#: src/game_preferences_display.cpp:189
 msgid "Add As Ignore"
 msgstr "加入忽略列表"
 
-#: src/game_preferences_display.cpp:193
+#: src/game_preferences_display.cpp:191
 msgid "Show floating labels"
 msgstr "显示浮动标签"
 
-#: src/game_preferences_display.cpp:194
+#: src/game_preferences_display.cpp:192
 msgid "Turn dialog"
 msgstr "回合对话框"
 
-#: src/game_preferences_display.cpp:195
+#: src/game_preferences_display.cpp:193
 msgid "Enable planning mode on start"
 msgstr "开始时便启用计划模式"
 
-#: src/game_preferences_display.cpp:196
+#: src/game_preferences_display.cpp:194
 msgid "Hide allies’ plans by default"
 msgstr "默认隐藏盟友的计划"
 
-#: src/game_preferences_display.cpp:197
+#: src/game_preferences_display.cpp:195
 msgid "Turn bell"
 msgstr "回合提示音"
 
-#: src/game_preferences_display.cpp:198
+#: src/game_preferences_display.cpp:196
 msgid "Show team colors"
 msgstr "显示团队颜色"
 
-#: src/game_preferences_display.cpp:199
+#: src/game_preferences_display.cpp:197
 msgid "Show color cursors"
 msgstr "显示彩色光标"
 
-#: src/game_preferences_display.cpp:200
+#: src/game_preferences_display.cpp:198
 msgid "Show haloing effects"
 msgstr "开启光晕效果"
 
-#: src/game_preferences_display.cpp:201
+#: src/game_preferences_display.cpp:199
 msgid "Change Resolution"
 msgstr "改变分辨率"
 
-#: src/game_preferences_display.cpp:202
+#: src/game_preferences_display.cpp:200
 msgid "Theme"
 msgstr "主题"
 
-#: src/game_preferences_display.cpp:203
+#: src/game_preferences_display.cpp:201
 msgid "Hotkeys"
 msgstr "快捷键"
 
-#: src/game_preferences_display.cpp:205
+#: src/game_preferences_display.cpp:203
 msgid "Sound effects"
 msgstr "音效"
 
-#: src/game_preferences_display.cpp:206
+#: src/game_preferences_display.cpp:204
 msgid "Music"
 msgstr "音乐"
 
-#: src/game_preferences_display.cpp:207
+#: src/game_preferences_display.cpp:205
 msgid "Chat timestamping"
 msgstr "开启聊天时间戳"
 
-#: src/game_preferences_display.cpp:208
+#: src/game_preferences_display.cpp:206
 msgid "sound^Advanced Options"
 msgstr "高级选项"
 
-#: src/game_preferences_display.cpp:209
+#: src/game_preferences_display.cpp:207
 msgid "sound^Standard Options"
 msgstr "标准选项"
 
-#: src/game_preferences_display.cpp:210
+#: src/game_preferences_display.cpp:208
 msgid "User interface sounds"
 msgstr "用户界面声效"
 
-#: src/game_preferences_display.cpp:213
+#: src/game_preferences_display.cpp:211
 msgid "Custom"
 msgstr "自定义"
 
-#: src/game_preferences_display.cpp:215
+#: src/game_preferences_display.cpp:213
 msgid "Show unit idle animations"
 msgstr "显示单位空闲动画"
 
-#: src/game_preferences_display.cpp:216
+#: src/game_preferences_display.cpp:214
 msgid "Show unit standing animations"
 msgstr "显示单位站立动画"
 
-#: src/game_preferences_display.cpp:217
+#: src/game_preferences_display.cpp:215
 msgid "Animate map"
 msgstr "开启地图动画"
 
+#: src/game_preferences_display.cpp:217 src/game_preferences_display.cpp:218
 #: src/game_preferences_display.cpp:219 src/game_preferences_display.cpp:220
-#: src/game_preferences_display.cpp:221 src/game_preferences_display.cpp:222
 msgid "Volume:"
 msgstr "音量："
 
-#: src/game_preferences_display.cpp:224
+#: src/game_preferences_display.cpp:222
 msgid "Scroll speed:"
 msgstr "滚屏速度："
 
-#: src/game_preferences_display.cpp:227
+#: src/game_preferences_display.cpp:225
 msgid "Sample rate (Hz):"
 msgstr "采样频率（Hz）："
 
-#: src/game_preferences_display.cpp:228
+#: src/game_preferences_display.cpp:226
 msgid "Frequency:"
 msgstr "频率："
 
-#: src/game_preferences_display.cpp:251
+#: src/game_preferences_display.cpp:249
 msgid "Sound effects on/off"
 msgstr "开/关音效"
 
-#: src/game_preferences_display.cpp:255
+#: src/game_preferences_display.cpp:253
 msgid "Change the sound effects volume"
 msgstr "调整音效的音量大小"
 
-#: src/game_preferences_display.cpp:258
+#: src/game_preferences_display.cpp:256
 msgid "Music on/off"
 msgstr "开/关音乐"
 
-#: src/game_preferences_display.cpp:262
+#: src/game_preferences_display.cpp:260
 msgid "Change the music volume"
 msgstr "调整音乐的音量大小"
 
-#: src/game_preferences_display.cpp:268
+#: src/game_preferences_display.cpp:266
 msgid "Change the bell volume"
 msgstr "调整提示音的音量大小"
 
-#: src/game_preferences_display.cpp:271
+#: src/game_preferences_display.cpp:269
 msgid "Turn menu and button sounds on/off"
 msgstr "开/关菜单和按钮音效"
 
-#: src/game_preferences_display.cpp:275
+#: src/game_preferences_display.cpp:273
 msgid "Change the sound volume for button clicks, etc."
 msgstr "调整点击按钮等操作时的音量大小。"
 
-#: src/game_preferences_display.cpp:277
+#: src/game_preferences_display.cpp:275
 msgid "Change the sample rate"
 msgstr "调整采样频率"
 
-#: src/game_preferences_display.cpp:286
+#: src/game_preferences_display.cpp:284
 msgid "User defined sample rate"
 msgstr "用户自定义采样频率"
 
-#: src/game_preferences_display.cpp:295 src/game_preferences_display.cpp:299
+#: src/game_preferences_display.cpp:293 src/game_preferences_display.cpp:297
 msgid "Change the buffer size"
 msgstr "调整缓冲区大小"
 
-#: src/game_preferences_display.cpp:297 src/game_preferences_display.cpp:896
+#: src/game_preferences_display.cpp:295 src/game_preferences_display.cpp:888
 msgid "Buffer size: "
 msgstr "缓冲区大小："
 
-#: src/game_preferences_display.cpp:304
+#: src/game_preferences_display.cpp:302
 msgid "Change the speed of scrolling around the map"
 msgstr "调整卷屏速度"
 
-#: src/game_preferences_display.cpp:309 src/game_preferences_display.cpp:311
+#: src/game_preferences_display.cpp:307 src/game_preferences_display.cpp:309
 msgid "Set the amount of chat lines shown"
 msgstr "设置在屏幕上显示的聊天记录的行数"
 
-#: src/game_preferences_display.cpp:314
+#: src/game_preferences_display.cpp:312
 msgid "Add a timestamp to chat messages"
 msgstr "在聊天消息上加上时间戳"
 
-#: src/game_preferences_display.cpp:317
+#: src/game_preferences_display.cpp:315
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "选择游戏是以全屏模式还是窗口模式运行"
 
-#: src/game_preferences_display.cpp:320
+#: src/game_preferences_display.cpp:318
 msgid "Make units move and fight faster"
 msgstr "加快单位的移动和攻击速度"
 
-#: src/game_preferences_display.cpp:339
+#: src/game_preferences_display.cpp:337
 msgid "Units move and fight speed"
 msgstr "单位的移动和攻击速度"
 
-#: src/game_preferences_display.cpp:342
+#: src/game_preferences_display.cpp:340
 msgid "Play short random animations for idle units"
 msgstr "在空闲单位上显示随机而短小的待机动画"
 
-#: src/game_preferences_display.cpp:345
+#: src/game_preferences_display.cpp:343
 msgid "Continuously animate standing units in the battlefield"
 msgstr "让战场上的待命单位持续地做小动作"
 
-#: src/game_preferences_display.cpp:348
+#: src/game_preferences_display.cpp:346
 msgid "Display animated terrain graphics"
 msgstr "显示地形动画效果"
 
-#: src/game_preferences_display.cpp:354
+#: src/game_preferences_display.cpp:352
 msgid "Set the frequency of unit idle animations"
 msgstr "设置单位空闲动画显示频率"
 
-#: src/game_preferences_display.cpp:359
+#: src/game_preferences_display.cpp:357
 msgid "Set maximum number of automatic saves to be retained"
 msgstr "设置自动存档的最大保留数量"
 
-#: src/game_preferences_display.cpp:363
+#: src/game_preferences_display.cpp:361
 msgid "Do not animate AI units moving"
 msgstr "不显示AI单位的移动动画"
 
-#: src/game_preferences_display.cpp:366
+#: src/game_preferences_display.cpp:364
 msgid "Sighting an allied unit interrupts your unit’s movement"
 msgstr "当看到友军单位时中断您的单位的移动"
 
-#: src/game_preferences_display.cpp:369
+#: src/game_preferences_display.cpp:367
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr "游戏胜利或者多人游戏失败时，保存录像"
 
-#: src/game_preferences_display.cpp:372
+#: src/game_preferences_display.cpp:370
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr "游戏胜利或者多人游戏失败时，删除自动存档"
 
-#: src/game_preferences_display.cpp:374
+#: src/game_preferences_display.cpp:372
 msgid "Overlay a grid onto the map"
 msgstr "在地图上显示六角网格"
 
-#: src/game_preferences_display.cpp:377
+#: src/game_preferences_display.cpp:375
 msgid "Sort the player list in the lobby by player groups"
 msgstr "根据玩家分组对游戏大厅中的玩家列表进行排序"
 
-#: src/game_preferences_display.cpp:380
+#: src/game_preferences_display.cpp:378
 msgid "Show icons in front of the player names in the lobby."
 msgstr "在游戏大厅中玩家的名字前显示图标。"
 
-#: src/game_preferences_display.cpp:383
+#: src/game_preferences_display.cpp:381
 msgid "Uncheck to delete the saved password (on exit)."
 msgstr "取消勾选，以删除以前保存的密码（在退出时）。"
 
-#: src/game_preferences_display.cpp:387
+#: src/game_preferences_display.cpp:385
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr "不显示玩家进入多人游戏大厅的信息"
 
-#: src/game_preferences_display.cpp:389
+#: src/game_preferences_display.cpp:387
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr "显示好友进入多人游戏大厅的信息"
 
-#: src/game_preferences_display.cpp:391
+#: src/game_preferences_display.cpp:389
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "显示所有玩家进入多人游戏大厅的信息"
 
-#: src/game_preferences_display.cpp:394
-msgid "Use New Lobby Interface"
-msgstr "使用新版多人游戏大厅界面"
-
-#: src/game_preferences_display.cpp:396
+#: src/game_preferences_display.cpp:391
 msgid "Find and set path to MP server to host LAN games."
 msgstr "查找并设置多人游戏服务器的路径以便建立局域网游戏。"
 
-#: src/game_preferences_display.cpp:397
+#: src/game_preferences_display.cpp:392
 msgid "View and edit your friends and ignores list"
 msgstr "查看并编辑好友和忽略列表"
 
-#: src/game_preferences_display.cpp:398
+#: src/game_preferences_display.cpp:393
 msgid "Back to the multiplayer options"
 msgstr "回到多人游戏选项"
 
-#: src/game_preferences_display.cpp:399
+#: src/game_preferences_display.cpp:394
 msgid "Add this username to your friends list"
 msgstr "把这个用户名加入好友列表"
 
-#: src/game_preferences_display.cpp:400
+#: src/game_preferences_display.cpp:395
 msgid "Add this username to your ignores list"
 msgstr "把这个用户名加入忽略列表"
 
-#: src/game_preferences_display.cpp:401
+#: src/game_preferences_display.cpp:396
 msgid "Remove this username from your list"
 msgstr "把这个用户名从列表中移除"
 
-#: src/game_preferences_display.cpp:404
+#: src/game_preferences_display.cpp:399
 msgid "Insert a username"
 msgstr "插入一个用户名"
 
-#: src/game_preferences_display.cpp:407
+#: src/game_preferences_display.cpp:402
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr "在单位受到攻击时，在其上显示所受到的伤害值"
 
-#: src/game_preferences_display.cpp:409
+#: src/game_preferences_display.cpp:404
 msgid "Change the resolution the game runs at"
 msgstr "改变游戏运行分辨率"
 
-#: src/game_preferences_display.cpp:410
+#: src/game_preferences_display.cpp:405
 msgid "Change the theme the game runs with"
 msgstr "改变游戏界面主题"
 
-#: src/game_preferences_display.cpp:413
+#: src/game_preferences_display.cpp:408
 msgid "Display a dialog at the beginning of your turn"
 msgstr "在您的回合开始时显示提示对话框"
 
-#: src/game_preferences_display.cpp:416
+#: src/game_preferences_display.cpp:411
 msgid "Activates Planning Mode on game start"
 msgstr "当游戏开始时，激活计划模式"
 
-#: src/game_preferences_display.cpp:419
+#: src/game_preferences_display.cpp:414
 msgid "Hides allies’ Planning Mode plans in multiplayer games"
 msgstr "在多人游戏中，隐藏盟友在计划模式下所制定的计划"
 
-#: src/game_preferences_display.cpp:422
+#: src/game_preferences_display.cpp:417
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "在您的回合开始时播放提示音"
 
-#: src/game_preferences_display.cpp:425
+#: src/game_preferences_display.cpp:420
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr "在单位脚底周围显示彩色圆环以表示其所属阵营"
 
-#: src/game_preferences_display.cpp:428
+#: src/game_preferences_display.cpp:423
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "使用彩色鼠标指针（可能会使游戏变慢）"
 
-#: src/game_preferences_display.cpp:431
+#: src/game_preferences_display.cpp:426
 msgid "Use graphical special effects (may be slower)"
 msgstr "使用图形特效（可能会使游戏变慢）"
 
-#: src/game_preferences_display.cpp:433
+#: src/game_preferences_display.cpp:428
 msgid "View and configure keyboard shortcuts"
 msgstr "查看并设置快捷键"
 
-#: src/game_preferences_display.cpp:760
+#: src/game_preferences_display.cpp:752
 msgid "Speed: "
 msgstr "速度："
 
-#: src/game_preferences_display.cpp:765 src/game_preferences_display.cpp:767
+#: src/game_preferences_display.cpp:757 src/game_preferences_display.cpp:759
 msgid "Maximum auto-saves: "
 msgstr "最大自动存档数："
 
-#: src/game_preferences_display.cpp:765
+#: src/game_preferences_display.cpp:757
 msgid "infinite"
 msgstr "无限"
 
-#: src/game_preferences_display.cpp:950
+#: src/game_preferences_display.cpp:940
 msgid "Chat lines: "
 msgstr "聊天记录行数："
 
-#: src/game_preferences_display.cpp:972 src/game_preferences_display.cpp:980
+#: src/game_preferences_display.cpp:962 src/game_preferences_display.cpp:970
 msgid "Invalid username"
 msgstr "用户名无效"
 
-#: src/game_preferences_display.cpp:1083
+#: src/game_preferences_display.cpp:1073
 msgid "yes"
 msgstr "是"
 
-#: src/game_preferences_display.cpp:1085
+#: src/game_preferences_display.cpp:1075
 msgid "no"
 msgstr "否"
 
-#: src/game_preferences_display.cpp:1119
+#: src/game_preferences_display.cpp:1109
 msgid "friend"
 msgstr "好友"
 
-#: src/game_preferences_display.cpp:1125
+#: src/game_preferences_display.cpp:1115
 msgid "ignored"
 msgstr "被忽略"
 
-#: src/game_preferences_display.cpp:1129
+#: src/game_preferences_display.cpp:1119
 msgid "(empty list)"
 msgstr "（空列表）"
 
-#: src/game_preferences_display.cpp:1254
+#: src/game_preferences_display.cpp:1243
 msgid "Prefs section^General"
 msgstr "常规"
 
-#: src/game_preferences_display.cpp:1255
+#: src/game_preferences_display.cpp:1244
 msgid "Prefs section^Display"
 msgstr "图像"
 
-#: src/game_preferences_display.cpp:1256
+#: src/game_preferences_display.cpp:1245
 msgid "Prefs section^Sound"
 msgstr "声音"
 
-#: src/game_preferences_display.cpp:1257
+#: src/game_preferences_display.cpp:1246
 msgid "Prefs section^Multiplayer"
 msgstr "多人游戏"
 
-#: src/game_preferences_display.cpp:1258
+#: src/game_preferences_display.cpp:1247
 msgid "Advanced section^Advanced"
 msgstr "高级"
 
-#: src/game_preferences_display.cpp:1292
+#: src/game_preferences_display.cpp:1281
 msgid "Choose Theme"
 msgstr "选择主题"
 
-#: src/game_preferences_display.cpp:1307
+#: src/game_preferences_display.cpp:1296
 msgid "New theme will take effect on next new or loaded game."
 msgstr "新主题在下一次新建或读取游戏时生效。"
 
-#: src/game_preferences_display.cpp:1311
+#: src/game_preferences_display.cpp:1300
 msgid "No known themes. Try changing from within an existing game."
 msgstr "当前无已知主题。请尝试在游戏时切换主题。"
 
-#: src/game_preferences_display.cpp:1354
+#: src/game_preferences_display.cpp:1343
 msgid "Find $filename server binary to host networked games"
 msgstr "查找$filename服务器可执行文件以便建立联网游戏"
 
@@ -3839,3 +3831,9 @@ msgid ""
 msgstr ""
 "主键“$deprecated_key”已被重命名为“$key”，对“$deprecated_key”的支持将在版本 "
 "$removal_version 中移除。"
+
+#~ msgid "Use new lobby interface"
+#~ msgstr "使用新版多人游戏大厅界面"
+
+#~ msgid "Use New Lobby Interface"
+#~ msgstr "使用新版多人游戏大厅界面"

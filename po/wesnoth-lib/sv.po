@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-11-11 17:55+0100\n"
+"POT-Creation-Date: 2013-03-09 08:33+0100\n"
 "PO-Revision-Date: 2011-09-13 14:06+0100\n"
 "Last-Translator: Andreas Tyrberg <tyrberg.andreas@gmail.com>\n"
 "Language-Team: Swedish\n"
@@ -1285,7 +1285,7 @@ msgstr ""
 #. [button]: id=ok
 #: data/gui/default/window/addon_uninstall_list.cfg:162
 #: data/gui/default/window/mp_cmd_wrapper.cfg:200
-#: src/game_preferences_display.cpp:192
+#: src/game_preferences_display.cpp:190
 msgid "Remove"
 msgstr "Ta bort"
 
@@ -1579,7 +1579,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
 #: data/gui/default/window/editor_settings.cfg:272
-#: src/game_preferences_display.cpp:214
+#: src/game_preferences_display.cpp:212
 msgid "Apply"
 msgstr "Verkställ"
 
@@ -2462,407 +2462,397 @@ msgstr "Kunde ej radera fil."
 msgid "Creation of the directory failed."
 msgstr "Kunde ej skapa mapp."
 
-#: src/game_preferences.cpp:316
+#: src/game_preferences.cpp:311
 msgid "No server has been defined."
 msgstr "Ingen server har definierats."
 
-#: src/game_preferences.cpp:396
+#: src/game_preferences.cpp:391
 msgid "player"
 msgstr "spelare"
 
-#: src/game_preferences.cpp:838
+#: src/game_preferences.cpp:833
 msgid "%H:%M"
 msgstr ""
 
-#: src/game_preferences.cpp:841
+#: src/game_preferences.cpp:836
 msgid "%I:%M %p"
 msgstr ""
 
-#: src/game_preferences_display.cpp:173
+#: src/game_preferences_display.cpp:172
 msgid "Full screen"
 msgstr "Helskärm på/av"
 
-#: src/game_preferences_display.cpp:174
+#: src/game_preferences_display.cpp:173
 msgid "Accelerated speed"
 msgstr "Accelererad"
 
-#: src/game_preferences_display.cpp:175
+#: src/game_preferences_display.cpp:174
 msgid "Skip AI moves"
 msgstr "Visa ej datorns steg"
 
-#: src/game_preferences_display.cpp:176
+#: src/game_preferences_display.cpp:175
 #, fuzzy
 #| msgid "Interrupt move when an ally is sighted"
 msgid "Interrupt move when an ally is sighted"
 msgstr "Pausa förflyttningen om en allierad siktas"
 
-#: src/game_preferences_display.cpp:177
+#: src/game_preferences_display.cpp:176
 msgid "Show grid"
 msgstr "Visa rutnät"
 
-#: src/game_preferences_display.cpp:178
+#: src/game_preferences_display.cpp:177
 msgid "Save replay on SP/MP victory or MP defeat"
 msgstr "Spara repris vid seger eller gruppspelsnederlag"
 
-#: src/game_preferences_display.cpp:179
+#: src/game_preferences_display.cpp:178
 msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgstr "Radera autosparade spel vid seger eller gruppspelsnederlag"
 
-#: src/game_preferences_display.cpp:180
+#: src/game_preferences_display.cpp:179
 msgid "Do not show lobby joins"
 msgstr "Visa ej lobbyanslutningar"
 
-#: src/game_preferences_display.cpp:181
+#: src/game_preferences_display.cpp:180
 msgid "Show lobby joins of friends only"
 msgstr "Visa när vänner ansluter till lobbyn"
 
-#: src/game_preferences_display.cpp:182
+#: src/game_preferences_display.cpp:181
 msgid "Show all lobby joins"
 msgstr "Visa alla lobbyanslutningar"
 
-#: src/game_preferences_display.cpp:183
-msgid "Use new lobby interface"
-msgstr "Använd den nya lobbyn"
-
-#: src/game_preferences_display.cpp:184
+#: src/game_preferences_display.cpp:182
 msgid "Sort lobby list"
 msgstr "Sortera lobbylista"
 
-#: src/game_preferences_display.cpp:185
+#: src/game_preferences_display.cpp:183
 msgid "Iconize lobby list"
 msgstr "Ikonifiera lobbylistan"
 
-#: src/game_preferences_display.cpp:186
+#: src/game_preferences_display.cpp:184
 #, fuzzy
 #| msgid "Save password to preferences (clear text)"
 msgid "Save password to preferences (plain text)"
 msgstr "Spara lösenord i inställningarna (klartext)"
 
-#: src/game_preferences_display.cpp:187
+#: src/game_preferences_display.cpp:185
 #, fuzzy
 #| msgid "Set path to wesnothd"
 msgid "Set Path to wesnothd"
 msgstr "Ställ in sökväg till wesnothd"
 
-#: src/game_preferences_display.cpp:188
+#: src/game_preferences_display.cpp:186
 msgid "Friends List"
 msgstr "Vänner"
 
-#: src/game_preferences_display.cpp:189
+#: src/game_preferences_display.cpp:187
 msgid "Multiplayer Options"
 msgstr "Gruppspelsalternativ"
 
-#: src/game_preferences_display.cpp:190
+#: src/game_preferences_display.cpp:188
 msgid "Add As Friend"
 msgstr "Lägg till som vän"
 
-#: src/game_preferences_display.cpp:191
+#: src/game_preferences_display.cpp:189
 msgid "Add As Ignore"
 msgstr "Lägg till för att ignorera"
 
-#: src/game_preferences_display.cpp:193
+#: src/game_preferences_display.cpp:191
 msgid "Show floating labels"
 msgstr "Visa svävande etiketter"
 
-#: src/game_preferences_display.cpp:194
+#: src/game_preferences_display.cpp:192
 msgid "Turn dialog"
 msgstr "Dragdialogruta"
 
-#: src/game_preferences_display.cpp:195
+#: src/game_preferences_display.cpp:193
 msgid "Enable planning mode on start"
 msgstr "Använd planeringsläge från början"
 
-#: src/game_preferences_display.cpp:196
+#: src/game_preferences_display.cpp:194
 msgid "Hide allies’ plans by default"
 msgstr "Göm allierades planer som standard"
 
-#: src/game_preferences_display.cpp:197
+#: src/game_preferences_display.cpp:195
 msgid "Turn bell"
 msgstr "Dragringklocka"
 
-#: src/game_preferences_display.cpp:198
+#: src/game_preferences_display.cpp:196
 msgid "Show team colors"
 msgstr "Visa lagfärger"
 
-#: src/game_preferences_display.cpp:199
+#: src/game_preferences_display.cpp:197
 msgid "Show color cursors"
 msgstr "Visa pekare i färg"
 
-#: src/game_preferences_display.cpp:200
+#: src/game_preferences_display.cpp:198
 msgid "Show haloing effects"
 msgstr "Visa halo-effekter"
 
-#: src/game_preferences_display.cpp:201
+#: src/game_preferences_display.cpp:199
 msgid "Change Resolution"
 msgstr "Ändra upplösning"
 
-#: src/game_preferences_display.cpp:202
+#: src/game_preferences_display.cpp:200
 msgid "Theme"
 msgstr "Tema"
 
-#: src/game_preferences_display.cpp:203
+#: src/game_preferences_display.cpp:201
 msgid "Hotkeys"
 msgstr "Snabbtangenter"
 
-#: src/game_preferences_display.cpp:205
+#: src/game_preferences_display.cpp:203
 msgid "Sound effects"
 msgstr "Ljudeffekter"
 
-#: src/game_preferences_display.cpp:206
+#: src/game_preferences_display.cpp:204
 msgid "Music"
 msgstr "Musik"
 
-#: src/game_preferences_display.cpp:207
+#: src/game_preferences_display.cpp:205
 msgid "Chat timestamping"
 msgstr "Chattidsangivelser"
 
-#: src/game_preferences_display.cpp:208
+#: src/game_preferences_display.cpp:206
 msgid "sound^Advanced Options"
 msgstr "Avancerade inställningar"
 
-#: src/game_preferences_display.cpp:209
+#: src/game_preferences_display.cpp:207
 msgid "sound^Standard Options"
 msgstr "Standardinställningar"
 
-#: src/game_preferences_display.cpp:210
+#: src/game_preferences_display.cpp:208
 msgid "User interface sounds"
 msgstr "Användargränssnittsljud"
 
-#: src/game_preferences_display.cpp:213
+#: src/game_preferences_display.cpp:211
 msgid "Custom"
 msgstr "Anpassa"
 
-#: src/game_preferences_display.cpp:215
+#: src/game_preferences_display.cpp:213
 msgid "Show unit idle animations"
 msgstr "Visa truppernas stillastående animeringar"
 
-#: src/game_preferences_display.cpp:216
+#: src/game_preferences_display.cpp:214
 msgid "Show unit standing animations"
 msgstr "Visa truppernas stillastående animationer"
 
-#: src/game_preferences_display.cpp:217
+#: src/game_preferences_display.cpp:215
 msgid "Animate map"
 msgstr "Liva upp karta"
 
+#: src/game_preferences_display.cpp:217 src/game_preferences_display.cpp:218
 #: src/game_preferences_display.cpp:219 src/game_preferences_display.cpp:220
-#: src/game_preferences_display.cpp:221 src/game_preferences_display.cpp:222
 msgid "Volume:"
 msgstr "Volym:"
 
-#: src/game_preferences_display.cpp:224
+#: src/game_preferences_display.cpp:222
 msgid "Scroll speed:"
 msgstr "Rullningsfart:"
 
-#: src/game_preferences_display.cpp:227
+#: src/game_preferences_display.cpp:225
 msgid "Sample rate (Hz):"
 msgstr "Samplingsfrekvens (Hz):"
 
-#: src/game_preferences_display.cpp:228
+#: src/game_preferences_display.cpp:226
 msgid "Frequency:"
 msgstr "Frekvens:"
 
-#: src/game_preferences_display.cpp:251
+#: src/game_preferences_display.cpp:249
 msgid "Sound effects on/off"
 msgstr "Ljudeffekter på/av"
 
-#: src/game_preferences_display.cpp:255
+#: src/game_preferences_display.cpp:253
 msgid "Change the sound effects volume"
 msgstr "Ändra volymen på ljudeffekterna"
 
-#: src/game_preferences_display.cpp:258
+#: src/game_preferences_display.cpp:256
 msgid "Music on/off"
 msgstr "Musik på/av"
 
-#: src/game_preferences_display.cpp:262
+#: src/game_preferences_display.cpp:260
 msgid "Change the music volume"
 msgstr "Ändra musikvolym"
 
-#: src/game_preferences_display.cpp:268
+#: src/game_preferences_display.cpp:266
 msgid "Change the bell volume"
 msgstr "Ändra klockvolym"
 
-#: src/game_preferences_display.cpp:271
+#: src/game_preferences_display.cpp:269
 msgid "Turn menu and button sounds on/off"
 msgstr "Stäng av/sätt på meny- och knappljud"
 
-#: src/game_preferences_display.cpp:275
+#: src/game_preferences_display.cpp:273
 msgid "Change the sound volume for button clicks, etc."
 msgstr "Ändra ljudvolymen för knapptryck etc."
 
-#: src/game_preferences_display.cpp:277
+#: src/game_preferences_display.cpp:275
 msgid "Change the sample rate"
 msgstr "Byt samplingsfrekvens"
 
-#: src/game_preferences_display.cpp:286
+#: src/game_preferences_display.cpp:284
 msgid "User defined sample rate"
 msgstr "Egendefinierad samplingsfrekvens"
 
-#: src/game_preferences_display.cpp:295 src/game_preferences_display.cpp:299
+#: src/game_preferences_display.cpp:293 src/game_preferences_display.cpp:297
 msgid "Change the buffer size"
 msgstr "Ändra buffertstorlek"
 
-#: src/game_preferences_display.cpp:297 src/game_preferences_display.cpp:896
+#: src/game_preferences_display.cpp:295 src/game_preferences_display.cpp:888
 msgid "Buffer size: "
 msgstr "Buffertstorlek: "
 
-#: src/game_preferences_display.cpp:304
+#: src/game_preferences_display.cpp:302
 msgid "Change the speed of scrolling around the map"
 msgstr "Ändra rullningshastigheten på kartan"
 
-#: src/game_preferences_display.cpp:309 src/game_preferences_display.cpp:311
+#: src/game_preferences_display.cpp:307 src/game_preferences_display.cpp:309
 msgid "Set the amount of chat lines shown"
 msgstr "Ange antalet rader som skall visas i chatten"
 
-#: src/game_preferences_display.cpp:314
+#: src/game_preferences_display.cpp:312
 msgid "Add a timestamp to chat messages"
 msgstr "Visa tidsangivelser för chattmeddelanden"
 
-#: src/game_preferences_display.cpp:317
+#: src/game_preferences_display.cpp:315
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Välj om spelet skall visas i helskärm eller i ett fönster"
 
-#: src/game_preferences_display.cpp:320
+#: src/game_preferences_display.cpp:318
 msgid "Make units move and fight faster"
 msgstr "Gör att trupper förflyttar sig och slåss snabbare"
 
-#: src/game_preferences_display.cpp:339
+#: src/game_preferences_display.cpp:337
 msgid "Units move and fight speed"
 msgstr "Förflyttnings- och stridshastighet"
 
-#: src/game_preferences_display.cpp:342
+#: src/game_preferences_display.cpp:340
 msgid "Play short random animations for idle units"
 msgstr "Visa korta slumpmässiga animationer för overksamma trupper"
 
-#: src/game_preferences_display.cpp:345
+#: src/game_preferences_display.cpp:343
 msgid "Continuously animate standing units in the battlefield"
 msgstr "Animera oupphörligen stillastående trupper"
 
-#: src/game_preferences_display.cpp:348
+#: src/game_preferences_display.cpp:346
 msgid "Display animated terrain graphics"
 msgstr "Visa animerad terräng-grafik"
 
-#: src/game_preferences_display.cpp:354
+#: src/game_preferences_display.cpp:352
 msgid "Set the frequency of unit idle animations"
 msgstr "Ange frekvensen för truppernas stillastående animeringar"
 
-#: src/game_preferences_display.cpp:359
+#: src/game_preferences_display.cpp:357
 msgid "Set maximum number of automatic saves to be retained"
 msgstr "Ange maximalt antal sparade spel som skall behållas"
 
-#: src/game_preferences_display.cpp:363
+#: src/game_preferences_display.cpp:361
 msgid "Do not animate AI units moving"
 msgstr "Animera ej de förflyttningar som datorns trupper gör"
 
-#: src/game_preferences_display.cpp:366
+#: src/game_preferences_display.cpp:364
 msgid "Sighting an allied unit interrupts your unit’s movement"
 msgstr "Om truppen ser en allierad trupp, avbryter den sin förflyttning"
 
-#: src/game_preferences_display.cpp:369
+#: src/game_preferences_display.cpp:367
 #, fuzzy
 #| msgid "Save replay on SP/MP victory or MP defeat"
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr "Spara repris vid seger eller gruppspelsnederlag"
 
-#: src/game_preferences_display.cpp:372
+#: src/game_preferences_display.cpp:370
 #, fuzzy
 #| msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr "Radera autosparade spel vid seger eller gruppspelsnederlag"
 
-#: src/game_preferences_display.cpp:374
+#: src/game_preferences_display.cpp:372
 msgid "Overlay a grid onto the map"
 msgstr "Lägg ett rutnät över kartan"
 
-#: src/game_preferences_display.cpp:377
+#: src/game_preferences_display.cpp:375
 msgid "Sort the player list in the lobby by player groups"
 msgstr "Sortera spelarlistan i lobbyn efter spelargrupper"
 
-#: src/game_preferences_display.cpp:380
+#: src/game_preferences_display.cpp:378
 msgid "Show icons in front of the player names in the lobby."
 msgstr "Visa ikoner framför spelarnamn i lobbyn"
 
-#: src/game_preferences_display.cpp:383
+#: src/game_preferences_display.cpp:381
 msgid "Uncheck to delete the saved password (on exit)."
 msgstr "Bakca av för att radera det sparade lösenordet (vid avslut)."
 
-#: src/game_preferences_display.cpp:387
+#: src/game_preferences_display.cpp:385
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr "Underrätta ej vid anslutningar till gruppspelslobbyn"
 
-#: src/game_preferences_display.cpp:389
+#: src/game_preferences_display.cpp:387
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr "Underrätta när vänner ansluter till gruppspelslobbyn"
 
-#: src/game_preferences_display.cpp:391
+#: src/game_preferences_display.cpp:389
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "Underrätta vid samtliga anslutningar till gruppspelslobbyn"
 
-#: src/game_preferences_display.cpp:394
-#, fuzzy
-#| msgid "Use new lobby interface"
-msgid "Use New Lobby Interface"
-msgstr "Använd den nya lobbyn"
-
-#: src/game_preferences_display.cpp:396
+#: src/game_preferences_display.cpp:391
 msgid "Find and set path to MP server to host LAN games."
 msgstr ""
 "Hitta och ange sökväg till gruppspelsserver för att vara värd för LAN-spel."
 
-#: src/game_preferences_display.cpp:397
+#: src/game_preferences_display.cpp:392
 msgid "View and edit your friends and ignores list"
 msgstr "Se och redigera dina listor över vänner och ignorerade"
 
-#: src/game_preferences_display.cpp:398
+#: src/game_preferences_display.cpp:393
 msgid "Back to the multiplayer options"
 msgstr "Tillbaka till gruppspelsalternativ"
 
-#: src/game_preferences_display.cpp:399
+#: src/game_preferences_display.cpp:394
 msgid "Add this username to your friends list"
 msgstr "Lägg detta användarnamn till din lista över vänner"
 
-#: src/game_preferences_display.cpp:400
+#: src/game_preferences_display.cpp:395
 msgid "Add this username to your ignores list"
 msgstr "Lägg detta användarnamn till din lista över ignorerade"
 
-#: src/game_preferences_display.cpp:401
+#: src/game_preferences_display.cpp:396
 msgid "Remove this username from your list"
 msgstr "Ta bort detta användarnamn från din lista"
 
-#: src/game_preferences_display.cpp:404
+#: src/game_preferences_display.cpp:399
 msgid "Insert a username"
 msgstr "Lägg till ett användarnamn"
 
-#: src/game_preferences_display.cpp:407
+#: src/game_preferences_display.cpp:402
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr ""
 "Visa text över en trupp när den blir träffad för att visa hur mycket skada "
 "som vållats"
 
-#: src/game_preferences_display.cpp:409
+#: src/game_preferences_display.cpp:404
 msgid "Change the resolution the game runs at"
 msgstr "Ändra bildskärmens upplösning som spelet använder"
 
-#: src/game_preferences_display.cpp:410
+#: src/game_preferences_display.cpp:405
 msgid "Change the theme the game runs with"
 msgstr "Ändra spelets layouttema"
 
-#: src/game_preferences_display.cpp:413
+#: src/game_preferences_display.cpp:408
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Visa en dialogruta när ditt drag börjar"
 
-#: src/game_preferences_display.cpp:416
+#: src/game_preferences_display.cpp:411
 msgid "Activates Planning Mode on game start"
 msgstr "Aktiverar planeringsläget när spelet börjar."
 
-#: src/game_preferences_display.cpp:419
+#: src/game_preferences_display.cpp:414
 msgid "Hides allies’ Planning Mode plans in multiplayer games"
 msgstr "Göm allierades planer i planeringsläge under gruppspel"
 
-#: src/game_preferences_display.cpp:422
+#: src/game_preferences_display.cpp:417
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Ring en klocka när ditt drag börjar"
 
-#: src/game_preferences_display.cpp:425
+#: src/game_preferences_display.cpp:420
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -2870,93 +2860,93 @@ msgstr ""
 "Visa en färgcirkel runt varje trupps bas, för att visa vilken sida den "
 "tillhör"
 
-#: src/game_preferences_display.cpp:428
+#: src/game_preferences_display.cpp:423
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Använd muspekare i färg (kan göra spelet långsammare)"
 
-#: src/game_preferences_display.cpp:431
+#: src/game_preferences_display.cpp:426
 msgid "Use graphical special effects (may be slower)"
 msgstr "Använd grafiska specialeffekter (kan göra spelet långsammare)"
 
-#: src/game_preferences_display.cpp:433
+#: src/game_preferences_display.cpp:428
 msgid "View and configure keyboard shortcuts"
 msgstr "Se och konfigurera snabbtangenter"
 
-#: src/game_preferences_display.cpp:760
+#: src/game_preferences_display.cpp:752
 msgid "Speed: "
 msgstr "Fart: "
 
-#: src/game_preferences_display.cpp:765 src/game_preferences_display.cpp:767
+#: src/game_preferences_display.cpp:757 src/game_preferences_display.cpp:759
 msgid "Maximum auto-saves: "
 msgstr "Maximalt antal sparade spel: "
 
-#: src/game_preferences_display.cpp:765
+#: src/game_preferences_display.cpp:757
 msgid "infinite"
 msgstr "oändligt"
 
-#: src/game_preferences_display.cpp:950
+#: src/game_preferences_display.cpp:940
 msgid "Chat lines: "
 msgstr "Chattrader: "
 
-#: src/game_preferences_display.cpp:972 src/game_preferences_display.cpp:980
+#: src/game_preferences_display.cpp:962 src/game_preferences_display.cpp:970
 msgid "Invalid username"
 msgstr "Ogiltigt användarnamn"
 
-#: src/game_preferences_display.cpp:1083
+#: src/game_preferences_display.cpp:1073
 msgid "yes"
 msgstr "ja"
 
-#: src/game_preferences_display.cpp:1085
+#: src/game_preferences_display.cpp:1075
 msgid "no"
 msgstr "nej"
 
-#: src/game_preferences_display.cpp:1119
+#: src/game_preferences_display.cpp:1109
 msgid "friend"
 msgstr "vän"
 
-#: src/game_preferences_display.cpp:1125
+#: src/game_preferences_display.cpp:1115
 msgid "ignored"
 msgstr "Ignorerad"
 
-#: src/game_preferences_display.cpp:1129
+#: src/game_preferences_display.cpp:1119
 msgid "(empty list)"
 msgstr "(tom lista)"
 
-#: src/game_preferences_display.cpp:1254
+#: src/game_preferences_display.cpp:1243
 msgid "Prefs section^General"
 msgstr "Allmänt"
 
-#: src/game_preferences_display.cpp:1255
+#: src/game_preferences_display.cpp:1244
 msgid "Prefs section^Display"
 msgstr "Skärm"
 
-#: src/game_preferences_display.cpp:1256
+#: src/game_preferences_display.cpp:1245
 msgid "Prefs section^Sound"
 msgstr "Ljud"
 
-#: src/game_preferences_display.cpp:1257
+#: src/game_preferences_display.cpp:1246
 msgid "Prefs section^Multiplayer"
 msgstr "Gruppspel"
 
-#: src/game_preferences_display.cpp:1258
+#: src/game_preferences_display.cpp:1247
 msgid "Advanced section^Advanced"
 msgstr "Avancerat"
 
-#: src/game_preferences_display.cpp:1292
+#: src/game_preferences_display.cpp:1281
 #, fuzzy
 #| msgid "Choose theme"
 msgid "Choose Theme"
 msgstr "Välj tema"
 
-#: src/game_preferences_display.cpp:1307
+#: src/game_preferences_display.cpp:1296
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Det nya temat träder i kraft vid nästa spel."
 
-#: src/game_preferences_display.cpp:1311
+#: src/game_preferences_display.cpp:1300
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Inga kända teman. Försök att ändra i ett existerande spel."
 
-#: src/game_preferences_display.cpp:1354
+#: src/game_preferences_display.cpp:1343
 msgid "Find $filename server binary to host networked games"
 msgstr "Hitta serverbinären $filename för att vara värd för gruppspel"
 
@@ -3946,6 +3936,14 @@ msgid ""
 msgstr ""
 "Nyckeln '$deprecated_key' har döpts om till '$key'. Stödet för "
 "'$deprecated_key' försvinner i och med version $removal_version."
+
+#~ msgid "Use new lobby interface"
+#~ msgstr "Använd den nya lobbyn"
+
+#, fuzzy
+#~| msgid "Use new lobby interface"
+#~ msgid "Use New Lobby Interface"
+#~ msgstr "Använd den nya lobbyn"
 
 #~ msgid "Execute Planned Action"
 #~ msgstr "Utför planerad handling"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-11-11 17:55+0100\n"
+"POT-Creation-Date: 2013-03-09 08:33+0100\n"
 "PO-Revision-Date: 2012-04-28 22:46+0300\n"
 "Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1280,7 +1280,7 @@ msgstr "Виберіть які аддони треба видалити."
 #. [button]: id=ok
 #: data/gui/default/window/addon_uninstall_list.cfg:162
 #: data/gui/default/window/mp_cmd_wrapper.cfg:200
-#: src/game_preferences_display.cpp:192
+#: src/game_preferences_display.cpp:190
 msgid "Remove"
 msgstr "Видалити"
 
@@ -1562,7 +1562,7 @@ msgstr "Дозволити відкривати відразу декілька 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
 #: data/gui/default/window/editor_settings.cfg:272
-#: src/game_preferences_display.cpp:214
+#: src/game_preferences_display.cpp:212
 msgid "Apply"
 msgstr "Застосувати"
 
@@ -2439,398 +2439,390 @@ msgstr "Помилка видалення файлу."
 msgid "Creation of the directory failed."
 msgstr "Помилка створення каталогу."
 
-#: src/game_preferences.cpp:316
+#: src/game_preferences.cpp:311
 msgid "No server has been defined."
 msgstr "Сервер не визначено."
 
-#: src/game_preferences.cpp:396
+#: src/game_preferences.cpp:391
 msgid "player"
 msgstr "гравець"
 
-#: src/game_preferences.cpp:838
+#: src/game_preferences.cpp:833
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/game_preferences.cpp:841
+#: src/game_preferences.cpp:836
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
-#: src/game_preferences_display.cpp:173
+#: src/game_preferences_display.cpp:172
 msgid "Full screen"
 msgstr "На весь екран"
 
-#: src/game_preferences_display.cpp:174
+#: src/game_preferences_display.cpp:173
 msgid "Accelerated speed"
 msgstr "Прискорити рух"
 
-#: src/game_preferences_display.cpp:175
+#: src/game_preferences_display.cpp:174
 msgid "Skip AI moves"
 msgstr "Пропускати ходи комп'ютера"
 
-#: src/game_preferences_display.cpp:176
+#: src/game_preferences_display.cpp:175
 msgid "Interrupt move when an ally is sighted"
 msgstr "Переривати рух, якщо помічений союзник"
 
-#: src/game_preferences_display.cpp:177
+#: src/game_preferences_display.cpp:176
 msgid "Show grid"
 msgstr "Показати сітку"
 
-#: src/game_preferences_display.cpp:178
+#: src/game_preferences_display.cpp:177
 msgid "Save replay on SP/MP victory or MP defeat"
 msgstr "Зберігати повтори перемог (ОГ/МП) і поразок (лише МП)"
 
-#: src/game_preferences_display.cpp:179
+#: src/game_preferences_display.cpp:178
 msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgstr "Автом. видаляти автозбер. перемог (ОГ/МП) і поразок (лише МП)"
 
-#: src/game_preferences_display.cpp:180
+#: src/game_preferences_display.cpp:179
 msgid "Do not show lobby joins"
 msgstr "Не показувати підключення в фойє"
 
-#: src/game_preferences_display.cpp:181
+#: src/game_preferences_display.cpp:180
 msgid "Show lobby joins of friends only"
 msgstr "Показувати лише підключення друзів в фойє"
 
-#: src/game_preferences_display.cpp:182
+#: src/game_preferences_display.cpp:181
 msgid "Show all lobby joins"
 msgstr "Показувати усі підключення в фойє"
 
-#: src/game_preferences_display.cpp:183
-msgid "Use new lobby interface"
-msgstr "Використовувати новий інтерфейс фойє"
-
-#: src/game_preferences_display.cpp:184
+#: src/game_preferences_display.cpp:182
 msgid "Sort lobby list"
 msgstr "Сортувати список фойє"
 
-#: src/game_preferences_display.cpp:185
+#: src/game_preferences_display.cpp:183
 msgid "Iconize lobby list"
 msgstr "Значки в списку фойє"
 
-#: src/game_preferences_display.cpp:186
+#: src/game_preferences_display.cpp:184
 msgid "Save password to preferences (plain text)"
 msgstr "Зберігати пароль в налаштуваннях (простий текст)"
 
-#: src/game_preferences_display.cpp:187
+#: src/game_preferences_display.cpp:185
 msgid "Set Path to wesnothd"
 msgstr "Задати шлях до wesnothd"
 
-#: src/game_preferences_display.cpp:188
+#: src/game_preferences_display.cpp:186
 msgid "Friends List"
 msgstr "Перелік друзів"
 
-#: src/game_preferences_display.cpp:189
+#: src/game_preferences_display.cpp:187
 msgid "Multiplayer Options"
 msgstr "Параметри мультиплеєра"
 
-#: src/game_preferences_display.cpp:190
+#: src/game_preferences_display.cpp:188
 msgid "Add As Friend"
 msgstr "Додати до Друзів"
 
-#: src/game_preferences_display.cpp:191
+#: src/game_preferences_display.cpp:189
 msgid "Add As Ignore"
 msgstr "Додати до ігнору"
 
-#: src/game_preferences_display.cpp:193
+#: src/game_preferences_display.cpp:191
 msgid "Show floating labels"
 msgstr "Показувати плаваючі мітки"
 
-#: src/game_preferences_display.cpp:194
+#: src/game_preferences_display.cpp:192
 msgid "Turn dialog"
 msgstr "Вікно початку ходу"
 
-#: src/game_preferences_display.cpp:195
+#: src/game_preferences_display.cpp:193
 msgid "Enable planning mode on start"
 msgstr "Включити режим планування на початку гри"
 
-#: src/game_preferences_display.cpp:196
+#: src/game_preferences_display.cpp:194
 msgid "Hide allies’ plans by default"
 msgstr "За умовчанням не показувати плани союзників"
 
-#: src/game_preferences_display.cpp:197
+#: src/game_preferences_display.cpp:195
 msgid "Turn bell"
 msgstr "Сигнал початку ходу"
 
-#: src/game_preferences_display.cpp:198
+#: src/game_preferences_display.cpp:196
 msgid "Show team colors"
 msgstr "Показувати кольори команд"
 
-#: src/game_preferences_display.cpp:199
+#: src/game_preferences_display.cpp:197
 msgid "Show color cursors"
 msgstr "Включити кольорові курсори"
 
-#: src/game_preferences_display.cpp:200
+#: src/game_preferences_display.cpp:198
 msgid "Show haloing effects"
 msgstr "Включити ефекти свічення"
 
-#: src/game_preferences_display.cpp:201
+#: src/game_preferences_display.cpp:199
 msgid "Change Resolution"
 msgstr "Змінити розширення"
 
-#: src/game_preferences_display.cpp:202
+#: src/game_preferences_display.cpp:200
 msgid "Theme"
 msgstr "Тема"
 
-#: src/game_preferences_display.cpp:203
+#: src/game_preferences_display.cpp:201
 msgid "Hotkeys"
 msgstr "Гарячі клавіші"
 
-#: src/game_preferences_display.cpp:205
+#: src/game_preferences_display.cpp:203
 msgid "Sound effects"
 msgstr "Звукові ефекти"
 
-#: src/game_preferences_display.cpp:206
+#: src/game_preferences_display.cpp:204
 msgid "Music"
 msgstr "Музика"
 
-#: src/game_preferences_display.cpp:207
+#: src/game_preferences_display.cpp:205
 msgid "Chat timestamping"
 msgstr "Відмітка часу в чаті"
 
-#: src/game_preferences_display.cpp:208
+#: src/game_preferences_display.cpp:206
 msgid "sound^Advanced Options"
 msgstr "Додаткові параметри"
 
-#: src/game_preferences_display.cpp:209
+#: src/game_preferences_display.cpp:207
 msgid "sound^Standard Options"
 msgstr "Стандартні параметри"
 
-#: src/game_preferences_display.cpp:210
+#: src/game_preferences_display.cpp:208
 msgid "User interface sounds"
 msgstr "Звуки інтерфейсу користувача"
 
-#: src/game_preferences_display.cpp:213
+#: src/game_preferences_display.cpp:211
 msgid "Custom"
 msgstr "Нетипове"
 
-#: src/game_preferences_display.cpp:215
+#: src/game_preferences_display.cpp:213
 msgid "Show unit idle animations"
 msgstr "Анімувати бездіяльних бійців"
 
-#: src/game_preferences_display.cpp:216
+#: src/game_preferences_display.cpp:214
 msgid "Show unit standing animations"
 msgstr "Анімувати нерухомих бійців"
 
-#: src/game_preferences_display.cpp:217
+#: src/game_preferences_display.cpp:215
 msgid "Animate map"
 msgstr "Анімувати карту"
 
+#: src/game_preferences_display.cpp:217 src/game_preferences_display.cpp:218
 #: src/game_preferences_display.cpp:219 src/game_preferences_display.cpp:220
-#: src/game_preferences_display.cpp:221 src/game_preferences_display.cpp:222
 msgid "Volume:"
 msgstr "Гучність:"
 
-#: src/game_preferences_display.cpp:224
+#: src/game_preferences_display.cpp:222
 msgid "Scroll speed:"
 msgstr "Швидкість гортання:"
 
-#: src/game_preferences_display.cpp:227
+#: src/game_preferences_display.cpp:225
 msgid "Sample rate (Hz):"
 msgstr "Частота (Гц):"
 
-#: src/game_preferences_display.cpp:228
+#: src/game_preferences_display.cpp:226
 msgid "Frequency:"
 msgstr "Частота:"
 
-#: src/game_preferences_display.cpp:251
+#: src/game_preferences_display.cpp:249
 msgid "Sound effects on/off"
 msgstr "Звукові ефекти вкл/викл"
 
-#: src/game_preferences_display.cpp:255
+#: src/game_preferences_display.cpp:253
 msgid "Change the sound effects volume"
 msgstr "Змінити гучність звукових ефектів"
 
-#: src/game_preferences_display.cpp:258
+#: src/game_preferences_display.cpp:256
 msgid "Music on/off"
 msgstr "Музика вкл/викл"
 
-#: src/game_preferences_display.cpp:262
+#: src/game_preferences_display.cpp:260
 msgid "Change the music volume"
 msgstr "Змінити гучність музики"
 
-#: src/game_preferences_display.cpp:268
+#: src/game_preferences_display.cpp:266
 msgid "Change the bell volume"
 msgstr "Змінити гучність дзвону"
 
-#: src/game_preferences_display.cpp:271
+#: src/game_preferences_display.cpp:269
 msgid "Turn menu and button sounds on/off"
 msgstr "Ввімкнути/Вимкнути звуки меню і кнопок"
 
-#: src/game_preferences_display.cpp:275
+#: src/game_preferences_display.cpp:273
 msgid "Change the sound volume for button clicks, etc."
 msgstr "Змінити гучність звуку при натисненні на кнопки і т.д."
 
-#: src/game_preferences_display.cpp:277
+#: src/game_preferences_display.cpp:275
 msgid "Change the sample rate"
 msgstr "Змінити частоту звуку"
 
-#: src/game_preferences_display.cpp:286
+#: src/game_preferences_display.cpp:284
 msgid "User defined sample rate"
 msgstr "Користувацька частота звуку"
 
-#: src/game_preferences_display.cpp:295 src/game_preferences_display.cpp:299
+#: src/game_preferences_display.cpp:293 src/game_preferences_display.cpp:297
 msgid "Change the buffer size"
 msgstr "Змінити розмір буферу"
 
-#: src/game_preferences_display.cpp:297 src/game_preferences_display.cpp:896
+#: src/game_preferences_display.cpp:295 src/game_preferences_display.cpp:888
 msgid "Buffer size: "
 msgstr "Розмір буферу: "
 
-#: src/game_preferences_display.cpp:304
+#: src/game_preferences_display.cpp:302
 msgid "Change the speed of scrolling around the map"
 msgstr "Змінити швидкість прокручування карти"
 
-#: src/game_preferences_display.cpp:309 src/game_preferences_display.cpp:311
+#: src/game_preferences_display.cpp:307 src/game_preferences_display.cpp:309
 msgid "Set the amount of chat lines shown"
 msgstr "Задати кількість показуваних рядків в чаті"
 
-#: src/game_preferences_display.cpp:314
+#: src/game_preferences_display.cpp:312
 msgid "Add a timestamp to chat messages"
 msgstr "Додати відмітку часу для повідомлень в чаті"
 
-#: src/game_preferences_display.cpp:317
+#: src/game_preferences_display.cpp:315
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Виберіть режим гри: повноекранний або віконний"
 
-#: src/game_preferences_display.cpp:320
+#: src/game_preferences_display.cpp:318
 msgid "Make units move and fight faster"
 msgstr "Збільшити швидкість руху і битви"
 
-#: src/game_preferences_display.cpp:339
+#: src/game_preferences_display.cpp:337
 msgid "Units move and fight speed"
 msgstr "Швидкість руху бійців і битви"
 
-#: src/game_preferences_display.cpp:342
+#: src/game_preferences_display.cpp:340
 msgid "Play short random animations for idle units"
 msgstr "Програвати коротку випадкову анімацію для стоячих бійців"
 
-#: src/game_preferences_display.cpp:345
+#: src/game_preferences_display.cpp:343
 msgid "Continuously animate standing units in the battlefield"
 msgstr "Безперервно анімувати стоячих бійців на полі бою"
 
-#: src/game_preferences_display.cpp:348
+#: src/game_preferences_display.cpp:346
 msgid "Display animated terrain graphics"
 msgstr "Показувати анімацію місцевості"
 
-#: src/game_preferences_display.cpp:354
+#: src/game_preferences_display.cpp:352
 msgid "Set the frequency of unit idle animations"
 msgstr "Задати частоту анімації при бездіяльності"
 
-#: src/game_preferences_display.cpp:359
+#: src/game_preferences_display.cpp:357
 msgid "Set maximum number of automatic saves to be retained"
 msgstr "Встановити максимальну кількість автозбережень"
 
-#: src/game_preferences_display.cpp:363
+#: src/game_preferences_display.cpp:361
 msgid "Do not animate AI units moving"
 msgstr "Не анімувати рух комп'ютерних бійців"
 
-#: src/game_preferences_display.cpp:366
+#: src/game_preferences_display.cpp:364
 msgid "Sighting an allied unit interrupts your unit’s movement"
 msgstr "Перервати рух вашого бійця при зустрічі з дружнім бійцем"
 
-#: src/game_preferences_display.cpp:369
+#: src/game_preferences_display.cpp:367
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr ""
 "Зберігати повтори перемог (одинарна гра і мультиплеєр) і поразок (лише "
 "мультиплеєр)"
 
-#: src/game_preferences_display.cpp:372
+#: src/game_preferences_display.cpp:370
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr ""
 "Автоматично видаляти автозбереження перемог (одинична гра і мультиплеєр) і "
 "поразок (лише мультиплеєр)"
 
-#: src/game_preferences_display.cpp:374
+#: src/game_preferences_display.cpp:372
 msgid "Overlay a grid onto the map"
 msgstr "Показувати сітку на карті"
 
-#: src/game_preferences_display.cpp:377
+#: src/game_preferences_display.cpp:375
 msgid "Sort the player list in the lobby by player groups"
 msgstr "Сортувати список гравців в фойє по групах"
 
-#: src/game_preferences_display.cpp:380
+#: src/game_preferences_display.cpp:378
 msgid "Show icons in front of the player names in the lobby."
 msgstr "Показувати значки напроти гравців в фойє."
 
-#: src/game_preferences_display.cpp:383
+#: src/game_preferences_display.cpp:381
 msgid "Uncheck to delete the saved password (on exit)."
 msgstr "Вимкніть - тоді пароль буде видалений (при виході)."
 
-#: src/game_preferences_display.cpp:387
+#: src/game_preferences_display.cpp:385
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr "Не показувати повідомлення про гравців, що зайшли в фойє"
 
-#: src/game_preferences_display.cpp:389
+#: src/game_preferences_display.cpp:387
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr "Показувати повідомлення про друзів, що зайшли в фойє"
 
-#: src/game_preferences_display.cpp:391
+#: src/game_preferences_display.cpp:389
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "Показувати повідомлення про всіх гравців, що зайшли в фойє"
 
-#: src/game_preferences_display.cpp:394
-msgid "Use New Lobby Interface"
-msgstr "Використовувати новий інтерфейс фойє"
-
-#: src/game_preferences_display.cpp:396
+#: src/game_preferences_display.cpp:391
 msgid "Find and set path to MP server to host LAN games."
 msgstr ""
 "Знайти і вказати шлях до МП-сервера, який буде хостити ігри в локальній "
 "мережі."
 
-#: src/game_preferences_display.cpp:397
+#: src/game_preferences_display.cpp:392
 msgid "View and edit your friends and ignores list"
 msgstr "Перегляд і зміна вашого списку друзів і ігнорованих"
 
-#: src/game_preferences_display.cpp:398
+#: src/game_preferences_display.cpp:393
 msgid "Back to the multiplayer options"
 msgstr "Назад до параметрів мультиплеєру"
 
-#: src/game_preferences_display.cpp:399
+#: src/game_preferences_display.cpp:394
 msgid "Add this username to your friends list"
 msgstr "Додати гравця в список друзів"
 
-#: src/game_preferences_display.cpp:400
+#: src/game_preferences_display.cpp:395
 msgid "Add this username to your ignores list"
 msgstr "Додати гравця в список ігнорованих"
 
-#: src/game_preferences_display.cpp:401
+#: src/game_preferences_display.cpp:396
 msgid "Remove this username from your list"
 msgstr "Видалити цього гравця із списку"
 
-#: src/game_preferences_display.cpp:404
+#: src/game_preferences_display.cpp:399
 msgid "Insert a username"
 msgstr "Вставити ім'я користувача"
 
-#: src/game_preferences_display.cpp:407
+#: src/game_preferences_display.cpp:402
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr "При попаданні показувати над бійцем нанесені йому пошкодження"
 
-#: src/game_preferences_display.cpp:409
+#: src/game_preferences_display.cpp:404
 msgid "Change the resolution the game runs at"
 msgstr "Змінити розширення гри, запущеної в"
 
-#: src/game_preferences_display.cpp:410
+#: src/game_preferences_display.cpp:405
 msgid "Change the theme the game runs with"
 msgstr "Змінити тему гри, запущеної з"
 
-#: src/game_preferences_display.cpp:413
+#: src/game_preferences_display.cpp:408
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Показувати діалог на початку вашого ходу"
 
-#: src/game_preferences_display.cpp:416
+#: src/game_preferences_display.cpp:411
 msgid "Activates Planning Mode on game start"
 msgstr "Активує режим планування при старті гри"
 
-#: src/game_preferences_display.cpp:419
+#: src/game_preferences_display.cpp:414
 msgid "Hides allies’ Planning Mode plans in multiplayer games"
 msgstr "Не показувати плани союзників в мультиплеєрі"
 
-#: src/game_preferences_display.cpp:422
+#: src/game_preferences_display.cpp:417
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Програвати звук дзвону на початку вашого ходу"
 
-#: src/game_preferences_display.cpp:425
+#: src/game_preferences_display.cpp:420
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -2838,91 +2830,91 @@ msgstr ""
 "Показувати кольорові круги навколо кожного бійця, щоб розрізняти, хто на "
 "чиїй стороні"
 
-#: src/game_preferences_display.cpp:428
+#: src/game_preferences_display.cpp:423
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Використовувати кольорові курсори мишки (може уповільнити гру)"
 
-#: src/game_preferences_display.cpp:431
+#: src/game_preferences_display.cpp:426
 msgid "Use graphical special effects (may be slower)"
 msgstr "Використовувати графічні ефекти (може уповільнити гру)"
 
-#: src/game_preferences_display.cpp:433
+#: src/game_preferences_display.cpp:428
 msgid "View and configure keyboard shortcuts"
 msgstr "Перегляд і налаштування гарячих клавіш"
 
-#: src/game_preferences_display.cpp:760
+#: src/game_preferences_display.cpp:752
 msgid "Speed: "
 msgstr "Швидкість: "
 
-#: src/game_preferences_display.cpp:765 src/game_preferences_display.cpp:767
+#: src/game_preferences_display.cpp:757 src/game_preferences_display.cpp:759
 msgid "Maximum auto-saves: "
 msgstr "Макс. к-сть автозбережень: "
 
-#: src/game_preferences_display.cpp:765
+#: src/game_preferences_display.cpp:757
 msgid "infinite"
 msgstr "необмежено"
 
-#: src/game_preferences_display.cpp:950
+#: src/game_preferences_display.cpp:940
 msgid "Chat lines: "
 msgstr "Рядки чату: "
 
-#: src/game_preferences_display.cpp:972 src/game_preferences_display.cpp:980
+#: src/game_preferences_display.cpp:962 src/game_preferences_display.cpp:970
 msgid "Invalid username"
 msgstr "Невірне ім'я користувача"
 
-#: src/game_preferences_display.cpp:1083
+#: src/game_preferences_display.cpp:1073
 msgid "yes"
 msgstr "так"
 
-#: src/game_preferences_display.cpp:1085
+#: src/game_preferences_display.cpp:1075
 msgid "no"
 msgstr "ні"
 
-#: src/game_preferences_display.cpp:1119
+#: src/game_preferences_display.cpp:1109
 msgid "friend"
 msgstr "друг"
 
-#: src/game_preferences_display.cpp:1125
+#: src/game_preferences_display.cpp:1115
 msgid "ignored"
 msgstr "ігнорується"
 
-#: src/game_preferences_display.cpp:1129
+#: src/game_preferences_display.cpp:1119
 msgid "(empty list)"
 msgstr "(порожній список)"
 
-#: src/game_preferences_display.cpp:1254
+#: src/game_preferences_display.cpp:1243
 msgid "Prefs section^General"
 msgstr "Загальні"
 
-#: src/game_preferences_display.cpp:1255
+#: src/game_preferences_display.cpp:1244
 msgid "Prefs section^Display"
 msgstr "Дисплей"
 
-#: src/game_preferences_display.cpp:1256
+#: src/game_preferences_display.cpp:1245
 msgid "Prefs section^Sound"
 msgstr "Звук"
 
-#: src/game_preferences_display.cpp:1257
+#: src/game_preferences_display.cpp:1246
 msgid "Prefs section^Multiplayer"
 msgstr "МУльтиплеєр"
 
-#: src/game_preferences_display.cpp:1258
+#: src/game_preferences_display.cpp:1247
 msgid "Advanced section^Advanced"
 msgstr "Додатково"
 
-#: src/game_preferences_display.cpp:1292
+#: src/game_preferences_display.cpp:1281
 msgid "Choose Theme"
 msgstr "Виберіть тему"
 
-#: src/game_preferences_display.cpp:1307
+#: src/game_preferences_display.cpp:1296
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Нова тема буде задіяна при наступній новій або завантаженій грі."
 
-#: src/game_preferences_display.cpp:1311
+#: src/game_preferences_display.cpp:1300
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Невідома тема. Спробуйте поміняти в існуючій грі."
 
-#: src/game_preferences_display.cpp:1354
+#: src/game_preferences_display.cpp:1343
 msgid "Find $filename server binary to host networked games"
 msgstr "Знайти сервер $filename, на якому будуть хоститься мережеві ігри"
 
@@ -3864,6 +3856,12 @@ msgid ""
 msgstr ""
 "Клавіша '$deprecated_key' перейменована в '$key'. Вона буде видалена у "
 "версії $removal_version."
+
+#~ msgid "Use new lobby interface"
+#~ msgstr "Використовувати новий інтерфейс фойє"
+
+#~ msgid "Use New Lobby Interface"
+#~ msgstr "Використовувати новий інтерфейс фойє"
 
 #~ msgid "Execute Planned Action"
 #~ msgstr "Виконати заплановану дію"

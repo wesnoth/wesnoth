@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-11-11 17:55+0100\n"
+"POT-Creation-Date: 2013-03-09 08:33+0100\n"
 "PO-Revision-Date: 2008-09-21 19:29+0100\n"
 "Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
 "Language-Team: none\n"
@@ -1392,7 +1392,7 @@ msgstr ""
 #. [button]: id=ok
 #: data/gui/default/window/addon_uninstall_list.cfg:162
 #: data/gui/default/window/mp_cmd_wrapper.cfg:200
-#: src/game_preferences_display.cpp:192
+#: src/game_preferences_display.cpp:190
 msgid "Remove"
 msgstr "Eliminar"
 
@@ -1695,7 +1695,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
 #: data/gui/default/window/editor_settings.cfg:272
-#: src/game_preferences_display.cpp:214
+#: src/game_preferences_display.cpp:212
 msgid "Apply"
 msgstr "Aplicar"
 
@@ -2627,313 +2627,309 @@ msgstr "No ha segut possible borrar l'archiu."
 msgid "Creation of the directory failed."
 msgstr "Ha fallat la creació del directori"
 
-#: src/game_preferences.cpp:316
+#: src/game_preferences.cpp:311
 msgid "No server has been defined."
 msgstr "No s'ha definit cap servidor"
 
-#: src/game_preferences.cpp:396
+#: src/game_preferences.cpp:391
 msgid "player"
 msgstr "jugador"
 
-#: src/game_preferences.cpp:838
+#: src/game_preferences.cpp:833
 msgid "%H:%M"
 msgstr ""
 
-#: src/game_preferences.cpp:841
+#: src/game_preferences.cpp:836
 msgid "%I:%M %p"
 msgstr ""
 
-#: src/game_preferences_display.cpp:173
+#: src/game_preferences_display.cpp:172
 #, fuzzy
 msgid "Full screen"
 msgstr "Activar Pantalla Completa"
 
-#: src/game_preferences_display.cpp:174
+#: src/game_preferences_display.cpp:173
 msgid "Accelerated speed"
 msgstr "Velocitat accelerada"
 
-#: src/game_preferences_display.cpp:175
+#: src/game_preferences_display.cpp:174
 msgid "Skip AI moves"
 msgstr "Ometre els moviments de la IA"
 
-#: src/game_preferences_display.cpp:176
+#: src/game_preferences_display.cpp:175
 msgid "Interrupt move when an ally is sighted"
 msgstr ""
 
-#: src/game_preferences_display.cpp:177
+#: src/game_preferences_display.cpp:176
 msgid "Show grid"
 msgstr "Mostrar la quadrícula"
 
-#: src/game_preferences_display.cpp:178
+#: src/game_preferences_display.cpp:177
 msgid "Save replay on SP/MP victory or MP defeat"
 msgstr ""
 "Guardar Repetició de victòries d'un Jug./Multijug. o derrotes Multijug."
 
-#: src/game_preferences_display.cpp:179
+#: src/game_preferences_display.cpp:178
 msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgstr ""
 "Borrar auto-guardats en les victòries d'un Jug./Multijug. o derrotes "
 "Multijug."
 
-#: src/game_preferences_display.cpp:180
+#: src/game_preferences_display.cpp:179
 msgid "Do not show lobby joins"
 msgstr "No mostrar incorporacions a la sala de joc"
 
-#: src/game_preferences_display.cpp:181
+#: src/game_preferences_display.cpp:180
 msgid "Show lobby joins of friends only"
 msgstr "Mostrar només incorporacions d'amics a la sala de joc"
 
-#: src/game_preferences_display.cpp:182
+#: src/game_preferences_display.cpp:181
 msgid "Show all lobby joins"
 msgstr "Mostrar totes les incorporacions a la sala de joc"
 
-#: src/game_preferences_display.cpp:183
-msgid "Use new lobby interface"
-msgstr ""
-
-#: src/game_preferences_display.cpp:184
+#: src/game_preferences_display.cpp:182
 msgid "Sort lobby list"
 msgstr "Ordenar la llista de partides de la sala de joc"
 
-#: src/game_preferences_display.cpp:185
+#: src/game_preferences_display.cpp:183
 msgid "Iconize lobby list"
 msgstr "Minimisar la llista de partides de la sala de joc"
 
-#: src/game_preferences_display.cpp:186
+#: src/game_preferences_display.cpp:184
 msgid "Save password to preferences (plain text)"
 msgstr ""
 
-#: src/game_preferences_display.cpp:187
+#: src/game_preferences_display.cpp:185
 msgid "Set Path to wesnothd"
 msgstr ""
 
-#: src/game_preferences_display.cpp:188
+#: src/game_preferences_display.cpp:186
 msgid "Friends List"
 msgstr "Llista d'amics"
 
-#: src/game_preferences_display.cpp:189
+#: src/game_preferences_display.cpp:187
 msgid "Multiplayer Options"
 msgstr "Opcions multijugador"
 
-#: src/game_preferences_display.cpp:190
+#: src/game_preferences_display.cpp:188
 msgid "Add As Friend"
 msgstr "Afegir com amic"
 
-#: src/game_preferences_display.cpp:191
+#: src/game_preferences_display.cpp:189
 msgid "Add As Ignore"
 msgstr "Afegir com ignorat"
 
-#: src/game_preferences_display.cpp:193
+#: src/game_preferences_display.cpp:191
 msgid "Show floating labels"
 msgstr "Mostrar etiquetes flotants"
 
-#: src/game_preferences_display.cpp:194
+#: src/game_preferences_display.cpp:192
 msgid "Turn dialog"
 msgstr "Activar els diàlecs"
 
-#: src/game_preferences_display.cpp:195
+#: src/game_preferences_display.cpp:193
 msgid "Enable planning mode on start"
 msgstr ""
 
-#: src/game_preferences_display.cpp:196
+#: src/game_preferences_display.cpp:194
 msgid "Hide allies’ plans by default"
 msgstr ""
 
-#: src/game_preferences_display.cpp:197
+#: src/game_preferences_display.cpp:195
 msgid "Turn bell"
 msgstr "Activar el timbre"
 
-#: src/game_preferences_display.cpp:198
+#: src/game_preferences_display.cpp:196
 msgid "Show team colors"
 msgstr "Mostrar els colors del bando"
 
-#: src/game_preferences_display.cpp:199
+#: src/game_preferences_display.cpp:197
 msgid "Show color cursors"
 msgstr "Mostrar cursors de colors"
 
-#: src/game_preferences_display.cpp:200
+#: src/game_preferences_display.cpp:198
 msgid "Show haloing effects"
 msgstr "Mostrar efectes d'halo"
 
-#: src/game_preferences_display.cpp:201
+#: src/game_preferences_display.cpp:199
 msgid "Change Resolution"
 msgstr "Canviar la resolució"
 
-#: src/game_preferences_display.cpp:202
+#: src/game_preferences_display.cpp:200
 msgid "Theme"
 msgstr "Tema"
 
-#: src/game_preferences_display.cpp:203
+#: src/game_preferences_display.cpp:201
 msgid "Hotkeys"
 msgstr "Atalls de teclat"
 
-#: src/game_preferences_display.cpp:205
+#: src/game_preferences_display.cpp:203
 msgid "Sound effects"
 msgstr "Activar els efectes de sò"
 
-#: src/game_preferences_display.cpp:206
+#: src/game_preferences_display.cpp:204
 msgid "Music"
 msgstr "Activar la música"
 
-#: src/game_preferences_display.cpp:207
+#: src/game_preferences_display.cpp:205
 msgid "Chat timestamping"
 msgstr "Marca horària en el chat"
 
-#: src/game_preferences_display.cpp:208
+#: src/game_preferences_display.cpp:206
 msgid "sound^Advanced Options"
 msgstr "Opcions alvançades"
 
-#: src/game_preferences_display.cpp:209
+#: src/game_preferences_display.cpp:207
 msgid "sound^Standard Options"
 msgstr "Opcions estàndart"
 
-#: src/game_preferences_display.cpp:210
+#: src/game_preferences_display.cpp:208
 msgid "User interface sounds"
 msgstr "Sons de l'interfaç de l'usuari"
 
-#: src/game_preferences_display.cpp:213
+#: src/game_preferences_display.cpp:211
 msgid "Custom"
 msgstr "Personalisat"
 
-#: src/game_preferences_display.cpp:215
+#: src/game_preferences_display.cpp:213
 msgid "Show unit idle animations"
 msgstr "Mostrar les animacions de les unitats inactives"
 
-#: src/game_preferences_display.cpp:216
+#: src/game_preferences_display.cpp:214
 #, fuzzy
 #| msgid "Show Unit Idle Animations"
 msgid "Show unit standing animations"
 msgstr "Mostrar les animacions de les unitats inactives"
 
-#: src/game_preferences_display.cpp:217
+#: src/game_preferences_display.cpp:215
 #, fuzzy
 msgid "Animate map"
 msgstr "Generar nou mapa"
 
+#: src/game_preferences_display.cpp:217 src/game_preferences_display.cpp:218
 #: src/game_preferences_display.cpp:219 src/game_preferences_display.cpp:220
-#: src/game_preferences_display.cpp:221 src/game_preferences_display.cpp:222
 #, fuzzy
 #| msgid "SFX Volume:"
 msgid "Volume:"
 msgstr "Volum dels efectes de sò:"
 
-#: src/game_preferences_display.cpp:224
+#: src/game_preferences_display.cpp:222
 msgid "Scroll speed:"
 msgstr "Velocitat de desplaçament:"
 
-#: src/game_preferences_display.cpp:227
+#: src/game_preferences_display.cpp:225
 msgid "Sample rate (Hz):"
 msgstr "Velocitat de refresc (Hz):"
 
-#: src/game_preferences_display.cpp:228
+#: src/game_preferences_display.cpp:226
 msgid "Frequency:"
 msgstr "Freqüència:"
 
-#: src/game_preferences_display.cpp:251
+#: src/game_preferences_display.cpp:249
 msgid "Sound effects on/off"
 msgstr "Encendre/apagar els efectes de sò"
 
-#: src/game_preferences_display.cpp:255
+#: src/game_preferences_display.cpp:253
 msgid "Change the sound effects volume"
 msgstr "Canviar el volum dels efectes de sò"
 
-#: src/game_preferences_display.cpp:258
+#: src/game_preferences_display.cpp:256
 msgid "Music on/off"
 msgstr "Encendre/apagar la música"
 
-#: src/game_preferences_display.cpp:262
+#: src/game_preferences_display.cpp:260
 msgid "Change the music volume"
 msgstr "Canviar el volum de la música"
 
-#: src/game_preferences_display.cpp:268
+#: src/game_preferences_display.cpp:266
 msgid "Change the bell volume"
 msgstr "Canviar el volum de la campana"
 
-#: src/game_preferences_display.cpp:271
+#: src/game_preferences_display.cpp:269
 msgid "Turn menu and button sounds on/off"
 msgstr "Activar/desactivar els sons del menú i dels botons"
 
-#: src/game_preferences_display.cpp:275
+#: src/game_preferences_display.cpp:273
 msgid "Change the sound volume for button clicks, etc."
 msgstr "Canviar el volum del sò per a les pulsacions dels botons, etc."
 
-#: src/game_preferences_display.cpp:277
+#: src/game_preferences_display.cpp:275
 msgid "Change the sample rate"
 msgstr "Velocitat de refresc definit per l'usuari"
 
-#: src/game_preferences_display.cpp:286
+#: src/game_preferences_display.cpp:284
 msgid "User defined sample rate"
 msgstr "Velocitat de refresc definida per l'usuari"
 
-#: src/game_preferences_display.cpp:295 src/game_preferences_display.cpp:299
+#: src/game_preferences_display.cpp:293 src/game_preferences_display.cpp:297
 msgid "Change the buffer size"
 msgstr "Canvia el tamany del buffer"
 
-#: src/game_preferences_display.cpp:297 src/game_preferences_display.cpp:896
+#: src/game_preferences_display.cpp:295 src/game_preferences_display.cpp:888
 msgid "Buffer size: "
 msgstr "Tamany del buffer:"
 
-#: src/game_preferences_display.cpp:304
+#: src/game_preferences_display.cpp:302
 msgid "Change the speed of scrolling around the map"
 msgstr "Canviar la velocitat de desplaçament entorn al mapa"
 
-#: src/game_preferences_display.cpp:309 src/game_preferences_display.cpp:311
+#: src/game_preferences_display.cpp:307 src/game_preferences_display.cpp:309
 msgid "Set the amount of chat lines shown"
 msgstr "Establir el número de llínees de chat"
 
-#: src/game_preferences_display.cpp:314
+#: src/game_preferences_display.cpp:312
 msgid "Add a timestamp to chat messages"
 msgstr "Afegir una marca horària als mensages de chat"
 
-#: src/game_preferences_display.cpp:317
+#: src/game_preferences_display.cpp:315
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Mostrar el joc a pantalla completa o en finestra"
 
-#: src/game_preferences_display.cpp:320
+#: src/game_preferences_display.cpp:318
 msgid "Make units move and fight faster"
 msgstr "Les unitats es mouen i lluiten més ràpit"
 
-#: src/game_preferences_display.cpp:339
+#: src/game_preferences_display.cpp:337
 msgid "Units move and fight speed"
 msgstr "Moviment de les unitats i velocitat de lluita"
 
-#: src/game_preferences_display.cpp:342
+#: src/game_preferences_display.cpp:340
 msgid "Play short random animations for idle units"
 msgstr ""
 
-#: src/game_preferences_display.cpp:345
+#: src/game_preferences_display.cpp:343
 msgid "Continuously animate standing units in the battlefield"
 msgstr ""
 
-#: src/game_preferences_display.cpp:348
+#: src/game_preferences_display.cpp:346
 msgid "Display animated terrain graphics"
 msgstr ""
 
-#: src/game_preferences_display.cpp:354
+#: src/game_preferences_display.cpp:352
 msgid "Set the frequency of unit idle animations"
 msgstr "Establir la freqüència de les animacions de les unitats inactives"
 
-#: src/game_preferences_display.cpp:359
+#: src/game_preferences_display.cpp:357
 msgid "Set maximum number of automatic saves to be retained"
 msgstr ""
 "Establir el número màxim de guardats automàtics que han de ser conservats"
 
-#: src/game_preferences_display.cpp:363
+#: src/game_preferences_display.cpp:361
 msgid "Do not animate AI units moving"
 msgstr "Ometre les animacions de la IA"
 
-#: src/game_preferences_display.cpp:366
+#: src/game_preferences_display.cpp:364
 msgid "Sighting an allied unit interrupts your unit’s movement"
 msgstr ""
 
-#: src/game_preferences_display.cpp:369
+#: src/game_preferences_display.cpp:367
 #, fuzzy
 #| msgid "Save replay on SP/MP victory or MP defeat"
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr ""
 "Guardar Repetició de victòries d'un Jug./Multijug. o derrotes Multijug."
 
-#: src/game_preferences_display.cpp:372
+#: src/game_preferences_display.cpp:370
 #, fuzzy
 #| msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
@@ -2941,188 +2937,184 @@ msgstr ""
 "Borrar auto-guardats en les victòries d'un Jug./Multijug. o derrotes "
 "Multijug."
 
-#: src/game_preferences_display.cpp:374
+#: src/game_preferences_display.cpp:372
 msgid "Overlay a grid onto the map"
 msgstr "Mostrar una quadrícula sobre el mapa"
 
-#: src/game_preferences_display.cpp:377
+#: src/game_preferences_display.cpp:375
 msgid "Sort the player list in the lobby by player groups"
 msgstr "Ordenar per grups la llista de jugadors de la sala de joc"
 
-#: src/game_preferences_display.cpp:380
+#: src/game_preferences_display.cpp:378
 msgid "Show icons in front of the player names in the lobby."
 msgstr "Mostrar icons davant dels noms dels jugadors en la sala de joc"
 
-#: src/game_preferences_display.cpp:383
+#: src/game_preferences_display.cpp:381
 msgid "Uncheck to delete the saved password (on exit)."
 msgstr ""
 
-#: src/game_preferences_display.cpp:387
+#: src/game_preferences_display.cpp:385
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr "No mostrar mensages quan entren jugadors en el joc multijugador"
 
-#: src/game_preferences_display.cpp:389
+#: src/game_preferences_display.cpp:387
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr "Mostrar mensages als teus amics que entren en el joc multijugador"
 
-#: src/game_preferences_display.cpp:391
+#: src/game_preferences_display.cpp:389
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "Mostrar mensages a qualsevol jugador que entra en el joc multijugador"
 
-#: src/game_preferences_display.cpp:394
-msgid "Use New Lobby Interface"
-msgstr ""
-
-#: src/game_preferences_display.cpp:396
+#: src/game_preferences_display.cpp:391
 msgid "Find and set path to MP server to host LAN games."
 msgstr ""
 
-#: src/game_preferences_display.cpp:397
+#: src/game_preferences_display.cpp:392
 msgid "View and edit your friends and ignores list"
 msgstr "Vore i editar la teua llista d'amics i ignorats"
 
-#: src/game_preferences_display.cpp:398
+#: src/game_preferences_display.cpp:393
 msgid "Back to the multiplayer options"
 msgstr "Retornar a les opcions multijugador"
 
-#: src/game_preferences_display.cpp:399
+#: src/game_preferences_display.cpp:394
 msgid "Add this username to your friends list"
 msgstr "Afegir est usuari a la teua llista d'amics"
 
-#: src/game_preferences_display.cpp:400
+#: src/game_preferences_display.cpp:395
 msgid "Add this username to your ignores list"
 msgstr "Afegir est usuari a la teua llista d'ignorats"
 
-#: src/game_preferences_display.cpp:401
+#: src/game_preferences_display.cpp:396
 msgid "Remove this username from your list"
 msgstr "Borrar a est usuari de la teua llista"
 
-#: src/game_preferences_display.cpp:404
+#: src/game_preferences_display.cpp:399
 msgid "Insert a username"
 msgstr "Insertar un nom d'usuari"
 
-#: src/game_preferences_display.cpp:407
+#: src/game_preferences_display.cpp:402
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr "Mostrar el dany infligit a les unitats"
 
-#: src/game_preferences_display.cpp:409
+#: src/game_preferences_display.cpp:404
 msgid "Change the resolution the game runs at"
 msgstr "Canviar la resolució del joc"
 
-#: src/game_preferences_display.cpp:410
+#: src/game_preferences_display.cpp:405
 msgid "Change the theme the game runs with"
 msgstr "Canviar el tema del joc"
 
-#: src/game_preferences_display.cpp:413
+#: src/game_preferences_display.cpp:408
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Mostrar un diàlec al començament de la tanda"
 
-#: src/game_preferences_display.cpp:416
+#: src/game_preferences_display.cpp:411
 msgid "Activates Planning Mode on game start"
 msgstr ""
 
-#: src/game_preferences_display.cpp:419
+#: src/game_preferences_display.cpp:414
 msgid "Hides allies’ Planning Mode plans in multiplayer games"
 msgstr ""
 
-#: src/game_preferences_display.cpp:422
+#: src/game_preferences_display.cpp:417
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Fer sonar un timbre al començament de la tanda"
 
-#: src/game_preferences_display.cpp:425
+#: src/game_preferences_display.cpp:420
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr "Mostrar un círcul de diferent color segons el bando de l'unitat"
 
-#: src/game_preferences_display.cpp:428
+#: src/game_preferences_display.cpp:423
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Utilisar cursor de colors (pot ser més lent)"
 
-#: src/game_preferences_display.cpp:431
+#: src/game_preferences_display.cpp:426
 msgid "Use graphical special effects (may be slower)"
 msgstr "Activar efectes gràfics especials (pot ser més lent)"
 
-#: src/game_preferences_display.cpp:433
+#: src/game_preferences_display.cpp:428
 msgid "View and configure keyboard shortcuts"
 msgstr "Configurar els atalls de teclat"
 
-#: src/game_preferences_display.cpp:760
+#: src/game_preferences_display.cpp:752
 msgid "Speed: "
 msgstr "Velocitat:"
 
-#: src/game_preferences_display.cpp:765 src/game_preferences_display.cpp:767
+#: src/game_preferences_display.cpp:757 src/game_preferences_display.cpp:759
 msgid "Maximum auto-saves: "
 msgstr "Auto-Guardats màxims:"
 
-#: src/game_preferences_display.cpp:765
+#: src/game_preferences_display.cpp:757
 msgid "infinite"
 msgstr "infinit"
 
-#: src/game_preferences_display.cpp:950
+#: src/game_preferences_display.cpp:940
 msgid "Chat lines: "
 msgstr "Llínees de chat: "
 
-#: src/game_preferences_display.cpp:972 src/game_preferences_display.cpp:980
+#: src/game_preferences_display.cpp:962 src/game_preferences_display.cpp:970
 msgid "Invalid username"
 msgstr "Nom d'usuari invàlit"
 
-#: src/game_preferences_display.cpp:1083
+#: src/game_preferences_display.cpp:1073
 msgid "yes"
 msgstr "sí"
 
-#: src/game_preferences_display.cpp:1085
+#: src/game_preferences_display.cpp:1075
 msgid "no"
 msgstr "no"
 
-#: src/game_preferences_display.cpp:1119
+#: src/game_preferences_display.cpp:1109
 #, fuzzy
 msgid "friend"
 msgstr "Llista d'amics"
 
-#: src/game_preferences_display.cpp:1125
+#: src/game_preferences_display.cpp:1115
 msgid "ignored"
 msgstr ""
 
-#: src/game_preferences_display.cpp:1129
+#: src/game_preferences_display.cpp:1119
 msgid "(empty list)"
 msgstr "(llista buida)"
 
-#: src/game_preferences_display.cpp:1254
+#: src/game_preferences_display.cpp:1243
 msgid "Prefs section^General"
 msgstr "General"
 
-#: src/game_preferences_display.cpp:1255
+#: src/game_preferences_display.cpp:1244
 msgid "Prefs section^Display"
 msgstr "Visualisació"
 
-#: src/game_preferences_display.cpp:1256
+#: src/game_preferences_display.cpp:1245
 msgid "Prefs section^Sound"
 msgstr "Sò"
 
-#: src/game_preferences_display.cpp:1257
+#: src/game_preferences_display.cpp:1246
 msgid "Prefs section^Multiplayer"
 msgstr "Multijugador"
 
-#: src/game_preferences_display.cpp:1258
+#: src/game_preferences_display.cpp:1247
 msgid "Advanced section^Advanced"
 msgstr "Alvançat"
 
-#: src/game_preferences_display.cpp:1292
+#: src/game_preferences_display.cpp:1281
 msgid "Choose Theme"
 msgstr ""
 
-#: src/game_preferences_display.cpp:1307
+#: src/game_preferences_display.cpp:1296
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 "El canvi de tema es farà efectiu al tornar a carregar o en la pròxima "
 "partida."
 
-#: src/game_preferences_display.cpp:1311
+#: src/game_preferences_display.cpp:1300
 msgid "No known themes. Try changing from within an existing game."
 msgstr "No hi ha temes coneguts. Intenta canviar-los des d'un joc existent."
 
-#: src/game_preferences_display.cpp:1354
+#: src/game_preferences_display.cpp:1343
 msgid "Find $filename server binary to host networked games"
 msgstr ""
 

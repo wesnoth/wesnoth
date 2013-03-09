@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-01-06 12:00+0100\n"
+"POT-Creation-Date: 2013-03-09 08:32+0100\n"
 "PO-Revision-Date: 2012-01-14 13:14+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Český <wesnoth-cs-l@buchtovi.cz>\n"
@@ -37,8 +37,8 @@ msgstr "WESNOTH"
 #. type: TH
 #: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
 #, no-wrap
-msgid "2011"
-msgstr "2011"
+msgid "2013"
+msgstr ""
 
 #. type: TH
 #: ../../doc/man/wesnoth.6:16
@@ -922,7 +922,10 @@ msgstr "COPYRIGHT"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:291 ../../doc/man/wesnothd.6:280
-msgid "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
+#, fuzzy
+#| msgid ""
+#| "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
+msgid "Copyright \\(co 2003-2013 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
 
@@ -1603,17 +1606,17 @@ msgid ""
 "as B<[redirect]>."
 msgstr ""
 "B<[proxy]> Značka říkající serveru, aby se choval jako proxy a přesměrovával "
-"na určený server klientské požadavky. Akceptuje stejné klíče jako B<"
-"[redirect]>."
+"na určený server klientské požadavky. Akceptuje stejné klíče jako "
+"B<[redirect]>."
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:221
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
-"on which user handler is set with the B<user_handler> key. If no B<"
-"[user_handler]> section is present in the configuration the server will run "
-"without any nick registration service."
+"on which user handler is set with the B<user_handler> key. If no "
+"B<[user_handler]> section is present in the configuration the server will "
+"run without any nick registration service."
 msgstr ""
 "B<[user_handler]> Konfiguruje uživatelský handler. Dostupné klíče se liší "
 "podle toho, který handler je použit - nastaveno klíčem B<user_handler>. "
@@ -1841,3 +1844,6 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:286
 msgid "B<wesnoth>(6)."
 msgstr "B<wesnoth>(6)."
+
+#~ msgid "2011"
+#~ msgstr "2011"

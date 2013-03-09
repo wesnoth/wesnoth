@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.10\n"
-"POT-Creation-Date: 2012-01-06 12:00+0100\n"
+"POT-Creation-Date: 2013-03-09 08:32+0100\n"
 "PO-Revision-Date: 2012-02-19 14:15+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
@@ -27,8 +27,8 @@ msgstr "WESNOTH"
 #. type: TH
 #: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
 #, no-wrap
-msgid "2011"
-msgstr "2011"
+msgid "2013"
+msgstr ""
 
 #. type: TH
 #: ../../doc/man/wesnoth.6:16
@@ -794,7 +794,10 @@ msgstr "版权"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:291 ../../doc/man/wesnothd.6:280
-msgid "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
+#, fuzzy
+#| msgid ""
+#| "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
+msgid "Copyright \\(co 2003-2013 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr "版权所有 \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 #. type: Plain text
@@ -1272,8 +1275,8 @@ msgid ""
 msgstr ""
 "希望使用的用户信息处理器的名称。目前可选的有B<forum>（将wesnothd与phpbb论坛的"
 "数据库连接起来）和B<sample>（一个用户信息处理接口的样例实现，如果您真的在实际"
-"中使用它，那您一定是疯了）。默认值是B<forum>，同时您必须添加一个B<"
-"[user_handler]>小节，请看下面。"
+"中使用它，那您一定是疯了）。默认值是B<forum>，同时您必须添加一个"
+"B<[user_handler]>小节，请看下面。"
 
 #. type: SS
 #: ../../doc/man/wesnothd.6:174
@@ -1380,9 +1383,9 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:221
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
-"on which user handler is set with the B<user_handler> key. If no B<"
-"[user_handler]> section is present in the configuration the server will run "
-"without any nick registration service."
+"on which user handler is set with the B<user_handler> key. If no "
+"B<[user_handler]> section is present in the configuration the server will "
+"run without any nick registration service."
 msgstr ""
 "B<[user_handler]> 配置用户数据处理器。可设置的主键取决于通过B<user_handler>设"
 "置的用户数据处理器是哪一个。如果配置文件中没有B<[user_handler]>小节，则服务器"
@@ -1574,3 +1577,6 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:286
 msgid "B<wesnoth>(6)."
 msgstr "B<wesnoth>(6)."
+
+#~ msgid "2011"
+#~ msgstr "2011"

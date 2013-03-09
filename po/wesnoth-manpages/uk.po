@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.10\n"
-"POT-Creation-Date: 2012-01-06 12:00+0100\n"
+"POT-Creation-Date: 2013-03-09 08:32+0100\n"
 "PO-Revision-Date: 2012-08-18 19:32+0200\n"
 "Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: none\n"
@@ -26,8 +26,8 @@ msgstr "ВЕСНОТ"
 #. type: TH
 #: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
 #, no-wrap
-msgid "2011"
-msgstr "2011"
+msgid "2013"
+msgstr ""
 
 #. type: TH
 #: ../../doc/man/wesnoth.6:16
@@ -821,7 +821,10 @@ msgstr "АВТОРСЬКІ ПРАВА"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:291 ../../doc/man/wesnothd.6:280
-msgid "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
+#, fuzzy
+#| msgid ""
+#| "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
+msgid "Copyright \\(co 2003-2013 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 "Авторське право \\(co 2003-2011 Девід Уайт (David White) "
 "E<lt>davidnwhite@verizon.netE<gt>"
@@ -1424,16 +1427,16 @@ msgid ""
 "as B<[redirect]>."
 msgstr ""
 "B<[proxy]> Тег вказує серверу працювати в якості проксі і передавати вхідні "
-"запити користувачів на вказаний сервер. Приймає ті ж ключі, що і B<[redirect]"
-">."
+"запити користувачів на вказаний сервер. Приймає ті ж ключі, що і "
+"B<[redirect]>."
 
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:221
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
-"on which user handler is set with the B<user_handler> key. If no B<"
-"[user_handler]> section is present in the configuration the server will run "
-"without any nick registration service."
+"on which user handler is set with the B<user_handler> key. If no "
+"B<[user_handler]> section is present in the configuration the server will "
+"run without any nick registration service."
 msgstr ""
 "B<[user_handler]> Налаштовує обробника користувачів. Доступні ключі "
 "відрізняються залежно від обробник, який встановлений ключем "
@@ -1634,3 +1637,6 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:286
 msgid "B<wesnoth>(6)."
 msgstr "B<wesnoth>(6)."
+
+#~ msgid "2011"
+#~ msgstr "2011"

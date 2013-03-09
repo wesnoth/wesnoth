@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-11-11 17:55+0100\n"
+"POT-Creation-Date: 2013-03-09 08:33+0100\n"
 "PO-Revision-Date: 2012-04-06 15:19+0400\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1288,7 +1288,7 @@ msgstr "Какие аддоны удалить?"
 #. [button]: id=ok
 #: data/gui/default/window/addon_uninstall_list.cfg:162
 #: data/gui/default/window/mp_cmd_wrapper.cfg:200
-#: src/game_preferences_display.cpp:192
+#: src/game_preferences_display.cpp:190
 msgid "Remove"
 msgstr "Удалить"
 
@@ -1570,7 +1570,7 @@ msgstr "Разрешить открыть сразу несколько карт
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
 #: data/gui/default/window/editor_settings.cfg:272
-#: src/game_preferences_display.cpp:214
+#: src/game_preferences_display.cpp:212
 msgid "Apply"
 msgstr "Применить"
 
@@ -2448,402 +2448,394 @@ msgstr "Ошибка удаления файла."
 msgid "Creation of the directory failed."
 msgstr "Ошибка создания каталога."
 
-#: src/game_preferences.cpp:316
+#: src/game_preferences.cpp:311
 msgid "No server has been defined."
 msgstr "Сервер не определён."
 
-#: src/game_preferences.cpp:396
+#: src/game_preferences.cpp:391
 msgid "player"
 msgstr "игрок"
 
-#: src/game_preferences.cpp:838
+#: src/game_preferences.cpp:833
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/game_preferences.cpp:841
+#: src/game_preferences.cpp:836
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
-#: src/game_preferences_display.cpp:173
+#: src/game_preferences_display.cpp:172
 msgid "Full screen"
 msgstr "Во весь экран"
 
-#: src/game_preferences_display.cpp:174
+#: src/game_preferences_display.cpp:173
 msgid "Accelerated speed"
 msgstr "Ускоренные движения"
 
-#: src/game_preferences_display.cpp:175
+#: src/game_preferences_display.cpp:174
 msgid "Skip AI moves"
 msgstr "Пропускать ходы компьютера"
 
-#: src/game_preferences_display.cpp:176
+#: src/game_preferences_display.cpp:175
 msgid "Interrupt move when an ally is sighted"
 msgstr "Прерывать движение, если замечен союзник"
 
-#: src/game_preferences_display.cpp:177
+#: src/game_preferences_display.cpp:176
 msgid "Show grid"
 msgstr "Показывать сетку"
 
-#: src/game_preferences_display.cpp:178
+#: src/game_preferences_display.cpp:177
 msgid "Save replay on SP/MP victory or MP defeat"
 msgstr ""
 "Сохранять повторы побед (одиночная игра и мультиплеер) и поражений (только "
 "мультиплеер)"
 
-#: src/game_preferences_display.cpp:179
+#: src/game_preferences_display.cpp:178
 msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgstr ""
 "Автоматически удалять автосохранения побед (одиночная игра и мультиплеер) и "
 "поражений (только мультиплеер)"
 
-#: src/game_preferences_display.cpp:180
+#: src/game_preferences_display.cpp:179
 msgid "Do not show lobby joins"
 msgstr "Не показывать подключения в холле"
 
-#: src/game_preferences_display.cpp:181
+#: src/game_preferences_display.cpp:180
 msgid "Show lobby joins of friends only"
 msgstr "Показывать только подключения друзей в холле"
 
-#: src/game_preferences_display.cpp:182
+#: src/game_preferences_display.cpp:181
 msgid "Show all lobby joins"
 msgstr "Показывать все подключения в холле"
 
-#: src/game_preferences_display.cpp:183
-msgid "Use new lobby interface"
-msgstr "Использовать новый интерфейс холла"
-
-#: src/game_preferences_display.cpp:184
+#: src/game_preferences_display.cpp:182
 msgid "Sort lobby list"
 msgstr "Сортировать список в холле"
 
-#: src/game_preferences_display.cpp:185
+#: src/game_preferences_display.cpp:183
 msgid "Iconize lobby list"
 msgstr "Иконки в списке холла"
 
-#: src/game_preferences_display.cpp:186
+#: src/game_preferences_display.cpp:184
 msgid "Save password to preferences (plain text)"
 msgstr "Сохранять пароль в настройках (в незашифрованном виде)"
 
-#: src/game_preferences_display.cpp:187
+#: src/game_preferences_display.cpp:185
 msgid "Set Path to wesnothd"
 msgstr "Установить путь к wesnothd"
 
-#: src/game_preferences_display.cpp:188
+#: src/game_preferences_display.cpp:186
 msgid "Friends List"
 msgstr "Ваш список друзей"
 
-#: src/game_preferences_display.cpp:189
+#: src/game_preferences_display.cpp:187
 msgid "Multiplayer Options"
 msgstr "Параметры многопользовательской игры"
 
-#: src/game_preferences_display.cpp:190
+#: src/game_preferences_display.cpp:188
 msgid "Add As Friend"
 msgstr "Добавить в друзья"
 
-#: src/game_preferences_display.cpp:191
+#: src/game_preferences_display.cpp:189
 msgid "Add As Ignore"
 msgstr "Добавить в качестве игнорируемого"
 
-#: src/game_preferences_display.cpp:193
+#: src/game_preferences_display.cpp:191
 msgid "Show floating labels"
 msgstr "Показывать плавающие метки"
 
-#: src/game_preferences_display.cpp:194
+#: src/game_preferences_display.cpp:192
 msgid "Turn dialog"
 msgstr "Окно начала хода"
 
-#: src/game_preferences_display.cpp:195
+#: src/game_preferences_display.cpp:193
 msgid "Enable planning mode on start"
 msgstr "Включить режим планирования в начале игры"
 
-#: src/game_preferences_display.cpp:196
+#: src/game_preferences_display.cpp:194
 msgid "Hide allies’ plans by default"
 msgstr "По умолчанию не показывать планы союзников"
 
-#: src/game_preferences_display.cpp:197
+#: src/game_preferences_display.cpp:195
 msgid "Turn bell"
 msgstr "Сигнал начала хода"
 
-#: src/game_preferences_display.cpp:198
+#: src/game_preferences_display.cpp:196
 msgid "Show team colors"
 msgstr "Показывать цвета команд"
 
-#: src/game_preferences_display.cpp:199
+#: src/game_preferences_display.cpp:197
 msgid "Show color cursors"
 msgstr "Включить цветные курсоры"
 
-#: src/game_preferences_display.cpp:200
+#: src/game_preferences_display.cpp:198
 msgid "Show haloing effects"
 msgstr "Включить эффекты свечения"
 
-#: src/game_preferences_display.cpp:201
+#: src/game_preferences_display.cpp:199
 msgid "Change Resolution"
 msgstr "Изменить разрешение"
 
-#: src/game_preferences_display.cpp:202
+#: src/game_preferences_display.cpp:200
 msgid "Theme"
 msgstr "Тема"
 
-#: src/game_preferences_display.cpp:203
+#: src/game_preferences_display.cpp:201
 msgid "Hotkeys"
 msgstr "Горячие клавиши"
 
-#: src/game_preferences_display.cpp:205
+#: src/game_preferences_display.cpp:203
 msgid "Sound effects"
 msgstr "Звуковые эффекты"
 
-#: src/game_preferences_display.cpp:206
+#: src/game_preferences_display.cpp:204
 msgid "Music"
 msgstr "Музыка"
 
-#: src/game_preferences_display.cpp:207
+#: src/game_preferences_display.cpp:205
 msgid "Chat timestamping"
 msgstr "Отметка времени в чате"
 
-#: src/game_preferences_display.cpp:208
+#: src/game_preferences_display.cpp:206
 msgid "sound^Advanced Options"
 msgstr "Продвинутые настройки"
 
-#: src/game_preferences_display.cpp:209
+#: src/game_preferences_display.cpp:207
 msgid "sound^Standard Options"
 msgstr "Стандартные настройки"
 
-#: src/game_preferences_display.cpp:210
+#: src/game_preferences_display.cpp:208
 msgid "User interface sounds"
 msgstr "Звуки интерфейса"
 
-#: src/game_preferences_display.cpp:213
+#: src/game_preferences_display.cpp:211
 msgid "Custom"
 msgstr "Другая"
 
-#: src/game_preferences_display.cpp:215
+#: src/game_preferences_display.cpp:213
 msgid "Show unit idle animations"
 msgstr "Анимировать бездействующих бойцов"
 
-#: src/game_preferences_display.cpp:216
+#: src/game_preferences_display.cpp:214
 msgid "Show unit standing animations"
 msgstr "Показывать анимацию неподвижных бойцов"
 
-#: src/game_preferences_display.cpp:217
+#: src/game_preferences_display.cpp:215
 msgid "Animate map"
 msgstr "Анимированная карта"
 
+#: src/game_preferences_display.cpp:217 src/game_preferences_display.cpp:218
 #: src/game_preferences_display.cpp:219 src/game_preferences_display.cpp:220
-#: src/game_preferences_display.cpp:221 src/game_preferences_display.cpp:222
 msgid "Volume:"
 msgstr "Громкость:"
 
-#: src/game_preferences_display.cpp:224
+#: src/game_preferences_display.cpp:222
 msgid "Scroll speed:"
 msgstr "Скорость прокрутки:"
 
-#: src/game_preferences_display.cpp:227
+#: src/game_preferences_display.cpp:225
 msgid "Sample rate (Hz):"
 msgstr "Частота сэмпла (Гц):"
 
-#: src/game_preferences_display.cpp:228
+#: src/game_preferences_display.cpp:226
 msgid "Frequency:"
 msgstr "Частота:"
 
-#: src/game_preferences_display.cpp:251
+#: src/game_preferences_display.cpp:249
 msgid "Sound effects on/off"
 msgstr "Звуковые эффекты вкл/выкл"
 
-#: src/game_preferences_display.cpp:255
+#: src/game_preferences_display.cpp:253
 msgid "Change the sound effects volume"
 msgstr "Изменить громкость звуков"
 
-#: src/game_preferences_display.cpp:258
+#: src/game_preferences_display.cpp:256
 msgid "Music on/off"
 msgstr "Музыка вкл/выкл"
 
-#: src/game_preferences_display.cpp:262
+#: src/game_preferences_display.cpp:260
 msgid "Change the music volume"
 msgstr "Изменить громкость музыки"
 
-#: src/game_preferences_display.cpp:268
+#: src/game_preferences_display.cpp:266
 msgid "Change the bell volume"
 msgstr "Изменить громкость сигнала"
 
-#: src/game_preferences_display.cpp:271
+#: src/game_preferences_display.cpp:269
 msgid "Turn menu and button sounds on/off"
 msgstr "Включить/Выключить звуки меню и кнопок"
 
-#: src/game_preferences_display.cpp:275
+#: src/game_preferences_display.cpp:273
 msgid "Change the sound volume for button clicks, etc."
 msgstr "Изменить громкость звука при нажатии на кнопки и т.п."
 
-#: src/game_preferences_display.cpp:277
+#: src/game_preferences_display.cpp:275
 msgid "Change the sample rate"
 msgstr "Изменить частоту сэмпла"
 
-#: src/game_preferences_display.cpp:286
+#: src/game_preferences_display.cpp:284
 msgid "User defined sample rate"
 msgstr "Пользовательская частота сэмпла"
 
-#: src/game_preferences_display.cpp:295 src/game_preferences_display.cpp:299
+#: src/game_preferences_display.cpp:293 src/game_preferences_display.cpp:297
 msgid "Change the buffer size"
 msgstr "Изменить размер буфера"
 
-#: src/game_preferences_display.cpp:297 src/game_preferences_display.cpp:896
+#: src/game_preferences_display.cpp:295 src/game_preferences_display.cpp:888
 msgid "Buffer size: "
 msgstr "Размер буфера: "
 
-#: src/game_preferences_display.cpp:304
+#: src/game_preferences_display.cpp:302
 msgid "Change the speed of scrolling around the map"
 msgstr "Изменить скорость прокрутки карты"
 
-#: src/game_preferences_display.cpp:309 src/game_preferences_display.cpp:311
+#: src/game_preferences_display.cpp:307 src/game_preferences_display.cpp:309
 msgid "Set the amount of chat lines shown"
 msgstr "Установите количество показываемых строк в чате"
 
-#: src/game_preferences_display.cpp:314
+#: src/game_preferences_display.cpp:312
 msgid "Add a timestamp to chat messages"
 msgstr "Добавить отметку времени сообщениями в чате"
 
-#: src/game_preferences_display.cpp:317
+#: src/game_preferences_display.cpp:315
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Выберите режим игры: полноэкранный или оконный"
 
-#: src/game_preferences_display.cpp:320
+#: src/game_preferences_display.cpp:318
 msgid "Make units move and fight faster"
 msgstr "Увеличить скорость движения и битвы"
 
-#: src/game_preferences_display.cpp:339
+#: src/game_preferences_display.cpp:337
 msgid "Units move and fight speed"
 msgstr "Скорость движения и битвы"
 
-#: src/game_preferences_display.cpp:342
+#: src/game_preferences_display.cpp:340
 msgid "Play short random animations for idle units"
 msgstr "Проигрывать короткую случайную анимацию для стоящих бойцов"
 
-#: src/game_preferences_display.cpp:345
+#: src/game_preferences_display.cpp:343
 msgid "Continuously animate standing units in the battlefield"
 msgstr "Непрерывно анимировать стоящих бойцов на поле боя"
 
-#: src/game_preferences_display.cpp:348
+#: src/game_preferences_display.cpp:346
 msgid "Display animated terrain graphics"
 msgstr "Показывать анимацию местности"
 
-#: src/game_preferences_display.cpp:354
+#: src/game_preferences_display.cpp:352
 msgid "Set the frequency of unit idle animations"
 msgstr "Задать частоту анимации при бездействии"
 
-#: src/game_preferences_display.cpp:359
+#: src/game_preferences_display.cpp:357
 msgid "Set maximum number of automatic saves to be retained"
 msgstr "Установить максимальное количество автосохранений"
 
-#: src/game_preferences_display.cpp:363
+#: src/game_preferences_display.cpp:361
 msgid "Do not animate AI units moving"
 msgstr "Не анимировать движения бойцов компьютера"
 
-#: src/game_preferences_display.cpp:366
+#: src/game_preferences_display.cpp:364
 msgid "Sighting an allied unit interrupts your unit’s movement"
 msgstr "Прервать движение вашего бойца при встрече с дружественным бойцом"
 
-#: src/game_preferences_display.cpp:369
+#: src/game_preferences_display.cpp:367
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr ""
 "Сохранять повторы побед (одиночная игра и мультиплеер) и поражений (только "
 "мультиплеер)"
 
-#: src/game_preferences_display.cpp:372
+#: src/game_preferences_display.cpp:370
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr ""
 "Автоматически удалять автосохранения побед (одиночная игра и мультиплеер) и "
 "поражений (только мультиплеер)"
 
-#: src/game_preferences_display.cpp:374
+#: src/game_preferences_display.cpp:372
 msgid "Overlay a grid onto the map"
 msgstr "Показывать сетку на карте"
 
-#: src/game_preferences_display.cpp:377
+#: src/game_preferences_display.cpp:375
 msgid "Sort the player list in the lobby by player groups"
 msgstr "Сортировать список игроков в холле по группам"
 
-#: src/game_preferences_display.cpp:380
+#: src/game_preferences_display.cpp:378
 msgid "Show icons in front of the player names in the lobby."
 msgstr "Показывать иконки напротив игроков в холле."
 
-#: src/game_preferences_display.cpp:383
+#: src/game_preferences_display.cpp:381
 msgid "Uncheck to delete the saved password (on exit)."
 msgstr "Отключите — тогда пароль будет удалён (при выходе)."
 
-#: src/game_preferences_display.cpp:387
+#: src/game_preferences_display.cpp:385
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr "Не показывать сообщения об игроках, подключившихся к холлу игр"
 
-#: src/game_preferences_display.cpp:389
+#: src/game_preferences_display.cpp:387
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr "Показывать сообщения о друзьях, подключившихся к холлу игр"
 
-#: src/game_preferences_display.cpp:391
+#: src/game_preferences_display.cpp:389
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "Показывать сообщения о всех игроках, подключившихся к холлу игр"
 
-#: src/game_preferences_display.cpp:394
-msgid "Use New Lobby Interface"
-msgstr "Использовать новый интерфейс холла"
-
-#: src/game_preferences_display.cpp:396
+#: src/game_preferences_display.cpp:391
 msgid "Find and set path to MP server to host LAN games."
 msgstr ""
 "Найти и указать путь к МП-серверу, который будет хостить игры в локальной "
 "сети."
 
-#: src/game_preferences_display.cpp:397
+#: src/game_preferences_display.cpp:392
 msgid "View and edit your friends and ignores list"
 msgstr "Просмотр и изменение вашего списка друзей и игнорируемых"
 
-#: src/game_preferences_display.cpp:398
+#: src/game_preferences_display.cpp:393
 msgid "Back to the multiplayer options"
 msgstr "Назад к параметрам многопользовательской игры"
 
-#: src/game_preferences_display.cpp:399
+#: src/game_preferences_display.cpp:394
 msgid "Add this username to your friends list"
 msgstr "Добавить игрока в список друзей"
 
-#: src/game_preferences_display.cpp:400
+#: src/game_preferences_display.cpp:395
 msgid "Add this username to your ignores list"
 msgstr "Добавить игрока в список игнорируемых"
 
-#: src/game_preferences_display.cpp:401
+#: src/game_preferences_display.cpp:396
 msgid "Remove this username from your list"
 msgstr "Удалить этого игрока из списка"
 
-#: src/game_preferences_display.cpp:404
+#: src/game_preferences_display.cpp:399
 msgid "Insert a username"
 msgstr "Вставить игрока"
 
-#: src/game_preferences_display.cpp:407
+#: src/game_preferences_display.cpp:402
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr "При попадании показывать над бойцом нанесённый урон"
 
-#: src/game_preferences_display.cpp:409
+#: src/game_preferences_display.cpp:404
 msgid "Change the resolution the game runs at"
 msgstr "Изменить разрешение игры, запущенной в"
 
-#: src/game_preferences_display.cpp:410
+#: src/game_preferences_display.cpp:405
 msgid "Change the theme the game runs with"
 msgstr "Изменить тему игры, запущенной с"
 
-#: src/game_preferences_display.cpp:413
+#: src/game_preferences_display.cpp:408
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Показывать диалог в начале вашего хода"
 
-#: src/game_preferences_display.cpp:416
+#: src/game_preferences_display.cpp:411
 msgid "Activates Planning Mode on game start"
 msgstr "Активирует режим планирования при старте игры"
 
-#: src/game_preferences_display.cpp:419
+#: src/game_preferences_display.cpp:414
 msgid "Hides allies’ Planning Mode plans in multiplayer games"
 msgstr "Не показывать планы союзников в мультиплеере"
 
-#: src/game_preferences_display.cpp:422
+#: src/game_preferences_display.cpp:417
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Проигрывать звук колокола в начале вашего хода"
 
-#: src/game_preferences_display.cpp:425
+#: src/game_preferences_display.cpp:420
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -2851,92 +2843,92 @@ msgstr ""
 "Показывать цветные круги вокруг каждого бойца, чтобы различать, кто на чьей "
 "стороне"
 
-#: src/game_preferences_display.cpp:428
+#: src/game_preferences_display.cpp:423
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Использовать цветные курсоры мышки (может замедлить игру)"
 
-#: src/game_preferences_display.cpp:431
+#: src/game_preferences_display.cpp:426
 msgid "Use graphical special effects (may be slower)"
 msgstr "Использовать графические эффекты (может замедлить игру)"
 
-#: src/game_preferences_display.cpp:433
+#: src/game_preferences_display.cpp:428
 msgid "View and configure keyboard shortcuts"
 msgstr "Просмотр и настройка горячих клавиш"
 
-#: src/game_preferences_display.cpp:760
+#: src/game_preferences_display.cpp:752
 msgid "Speed: "
 msgstr "Скорость: "
 
-#: src/game_preferences_display.cpp:765 src/game_preferences_display.cpp:767
+#: src/game_preferences_display.cpp:757 src/game_preferences_display.cpp:759
 msgid "Maximum auto-saves: "
 msgstr "Макс. число автосохранений: "
 
-#: src/game_preferences_display.cpp:765
+#: src/game_preferences_display.cpp:757
 msgid "infinite"
 msgstr "неограничено"
 
-#: src/game_preferences_display.cpp:950
+#: src/game_preferences_display.cpp:940
 msgid "Chat lines: "
 msgstr "Строк в чате: "
 
-#: src/game_preferences_display.cpp:972 src/game_preferences_display.cpp:980
+#: src/game_preferences_display.cpp:962 src/game_preferences_display.cpp:970
 msgid "Invalid username"
 msgstr "Неверное имя пользователя"
 
-#: src/game_preferences_display.cpp:1083
+#: src/game_preferences_display.cpp:1073
 msgid "yes"
 msgstr "да"
 
-#: src/game_preferences_display.cpp:1085
+#: src/game_preferences_display.cpp:1075
 msgid "no"
 msgstr "нет"
 
-#: src/game_preferences_display.cpp:1119
+#: src/game_preferences_display.cpp:1109
 msgid "friend"
 msgstr "друг"
 
-#: src/game_preferences_display.cpp:1125
+#: src/game_preferences_display.cpp:1115
 msgid "ignored"
 msgstr "в игноре"
 
-#: src/game_preferences_display.cpp:1129
+#: src/game_preferences_display.cpp:1119
 msgid "(empty list)"
 msgstr "(список пуст)"
 
-#: src/game_preferences_display.cpp:1254
+#: src/game_preferences_display.cpp:1243
 msgid "Prefs section^General"
 msgstr "Общие"
 
-#: src/game_preferences_display.cpp:1255
+#: src/game_preferences_display.cpp:1244
 msgid "Prefs section^Display"
 msgstr "Графика"
 
-#: src/game_preferences_display.cpp:1256
+#: src/game_preferences_display.cpp:1245
 msgid "Prefs section^Sound"
 msgstr "Звук"
 
-#: src/game_preferences_display.cpp:1257
+#: src/game_preferences_display.cpp:1246
 msgid "Prefs section^Multiplayer"
 msgstr "Многопользовательская игра"
 
-#: src/game_preferences_display.cpp:1258
+#: src/game_preferences_display.cpp:1247
 msgid "Advanced section^Advanced"
 msgstr "Другие"
 
-#: src/game_preferences_display.cpp:1292
+#: src/game_preferences_display.cpp:1281
 msgid "Choose Theme"
 msgstr "Выберите тему"
 
-#: src/game_preferences_display.cpp:1307
+#: src/game_preferences_display.cpp:1296
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 "Новая тема будет задействована при следующей новой или загруженной игре."
 
-#: src/game_preferences_display.cpp:1311
+#: src/game_preferences_display.cpp:1300
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Неизвестная тема. Попробуйте поменять в существующей игре."
 
-#: src/game_preferences_display.cpp:1354
+#: src/game_preferences_display.cpp:1343
 msgid "Find $filename server binary to host networked games"
 msgstr "Найти сервер $filename, на котором будут хоститься сетевые игры"
 
@@ -3867,3 +3859,9 @@ msgid ""
 msgstr ""
 "Клавиша '$deprecated_key' переименована в '$key'. Она будет удалена в версии "
 "$removal_version."
+
+#~ msgid "Use new lobby interface"
+#~ msgstr "Использовать новый интерфейс холла"
+
+#~ msgid "Use New Lobby Interface"
+#~ msgstr "Использовать новый интерфейс холла"

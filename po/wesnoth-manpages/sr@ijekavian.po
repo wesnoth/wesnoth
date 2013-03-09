@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-manpages\n"
-"POT-Creation-Date: 2012-01-06 12:00+0100\n"
+"POT-Creation-Date: 2013-03-09 08:32+0100\n"
 "PO-Revision-Date: 2012-01-14 14:50+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -29,8 +29,8 @@ msgstr "WESNOTH"
 #. type: TH
 #: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
 #, no-wrap
-msgid "2011"
-msgstr "2011"
+msgid "2013"
+msgstr ""
 
 #. type: TH
 #: ../../doc/man/wesnoth.6:16
@@ -822,7 +822,10 @@ msgstr "АУТОРСКА ПРАВА"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:291 ../../doc/man/wesnothd.6:280
-msgid "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
+#, fuzzy
+#| msgid ""
+#| "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
+msgid "Copyright \\(co 2003-2013 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 "Ауторска права \\(co 2003-2011 Дејвид Вајт (David White) "
 "E<lt>davidnwhite@verizon.netE<gt>."
@@ -1325,8 +1328,8 @@ msgstr ""
 "Име руковаоца корисницима. Тренутно доступни су B<forum> (сервер се повезује "
 "са пхпББ базом података форума) и B<sample> (примјерна изведба сучеља "
 "руковаоца корисницима, луди сте ако ово употријебите негдје заозбиљно). "
-"Подразумијевана вриједност је B<forum>. Такође морате додати одјељак B<"
-"[user_handler]>, в. испод."
+"Подразумијевана вриједност је B<forum>. Такође морате додати одјељак "
+"B<[user_handler]>, в. испод."
 
 #. type: SS
 #: ../../doc/man/wesnothd.6:174
@@ -1435,9 +1438,9 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:221
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
-"on which user handler is set with the B<user_handler> key. If no B<"
-"[user_handler]> section is present in the configuration the server will run "
-"without any nick registration service."
+"on which user handler is set with the B<user_handler> key. If no "
+"B<[user_handler]> section is present in the configuration the server will "
+"run without any nick registration service."
 msgstr ""
 "B<[user_handler]> подешава руковалац корисницима. Доступност кључева зависи "
 "од тога који је руковалац постављен кључем B<user_handler>. Ако у постави "
@@ -1637,3 +1640,6 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:286
 msgid "B<wesnoth>(6)."
 msgstr "B<wesnoth>(6)."
+
+#~ msgid "2011"
+#~ msgstr "2011"

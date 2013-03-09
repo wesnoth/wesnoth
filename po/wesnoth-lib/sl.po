@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-11-11 17:55+0100\n"
+"POT-Creation-Date: 2013-03-09 08:33+0100\n"
 "PO-Revision-Date: 2010-10-03 10:36+0100\n"
 "Last-Translator: Klemen Košir <klemen913@gmail.com>\n"
 "Language-Team: Slovenian\n"
@@ -1399,7 +1399,7 @@ msgstr ""
 #. [button]: id=ok
 #: data/gui/default/window/addon_uninstall_list.cfg:162
 #: data/gui/default/window/mp_cmd_wrapper.cfg:200
-#: src/game_preferences_display.cpp:192
+#: src/game_preferences_display.cpp:190
 msgid "Remove"
 msgstr "Odstrani"
 
@@ -1693,7 +1693,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
 #: data/gui/default/window/editor_settings.cfg:272
-#: src/game_preferences_display.cpp:214
+#: src/game_preferences_display.cpp:212
 msgid "Apply"
 msgstr "Uveljavi"
 
@@ -2600,527 +2600,519 @@ msgstr "Izbris datoteke ni uspel."
 msgid "Creation of the directory failed."
 msgstr "Izbris datoteke ni uspel."
 
-#: src/game_preferences.cpp:316
+#: src/game_preferences.cpp:311
 msgid "No server has been defined."
 msgstr ""
 
-#: src/game_preferences.cpp:396
+#: src/game_preferences.cpp:391
 msgid "player"
 msgstr "igralec"
 
-#: src/game_preferences.cpp:838
+#: src/game_preferences.cpp:833
 msgid "%H:%M"
 msgstr ""
 
-#: src/game_preferences.cpp:841
+#: src/game_preferences.cpp:836
 msgid "%I:%M %p"
 msgstr ""
 
-#: src/game_preferences_display.cpp:173
+#: src/game_preferences_display.cpp:172
 msgid "Full screen"
 msgstr "Celozaslonski način"
 
-#: src/game_preferences_display.cpp:174
+#: src/game_preferences_display.cpp:173
 #, fuzzy
 msgid "Accelerated speed"
 msgstr "Višja hitrost"
 
-#: src/game_preferences_display.cpp:175
+#: src/game_preferences_display.cpp:174
 msgid "Skip AI moves"
 msgstr "Preskoči premike UI"
 
-#: src/game_preferences_display.cpp:176
+#: src/game_preferences_display.cpp:175
 msgid "Interrupt move when an ally is sighted"
 msgstr ""
 
-#: src/game_preferences_display.cpp:177
+#: src/game_preferences_display.cpp:176
 msgid "Show grid"
 msgstr "Pokaži mrežo"
 
-#: src/game_preferences_display.cpp:178
+#: src/game_preferences_display.cpp:177
 msgid "Save replay on SP/MP victory or MP defeat"
 msgstr ""
 
-#: src/game_preferences_display.cpp:179
+#: src/game_preferences_display.cpp:178
 msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgstr ""
 
-#: src/game_preferences_display.cpp:180
+#: src/game_preferences_display.cpp:179
 #, fuzzy
 msgid "Do not show lobby joins"
 msgstr "Pokaži pridružitve v avlo"
 
-#: src/game_preferences_display.cpp:181
+#: src/game_preferences_display.cpp:180
 #, fuzzy
 msgid "Show lobby joins of friends only"
 msgstr "Pokaži pridružitve v avlo"
 
-#: src/game_preferences_display.cpp:182
+#: src/game_preferences_display.cpp:181
 #, fuzzy
 msgid "Show all lobby joins"
 msgstr "Pokaži pridružitve v avlo"
 
-#: src/game_preferences_display.cpp:183
-msgid "Use new lobby interface"
-msgstr ""
-
-#: src/game_preferences_display.cpp:184
+#: src/game_preferences_display.cpp:182
 #, fuzzy
 msgid "Sort lobby list"
 msgstr "Pokaži pridružitve v avlo"
 
-#: src/game_preferences_display.cpp:185
+#: src/game_preferences_display.cpp:183
 #, fuzzy
 msgid "Iconize lobby list"
 msgstr "Pokaži pridružitve v avlo"
 
-#: src/game_preferences_display.cpp:186
+#: src/game_preferences_display.cpp:184
 msgid "Save password to preferences (plain text)"
 msgstr ""
 
-#: src/game_preferences_display.cpp:187
+#: src/game_preferences_display.cpp:185
 #, fuzzy
 #| msgid "Set path to wesnothd"
 msgid "Set Path to wesnothd"
 msgstr "Nastavi pot do wesnothd"
 
-#: src/game_preferences_display.cpp:188
+#: src/game_preferences_display.cpp:186
 msgid "Friends List"
 msgstr "Seznam prijateljev"
 
-#: src/game_preferences_display.cpp:189
+#: src/game_preferences_display.cpp:187
 msgid "Multiplayer Options"
 msgstr "Možnosti večigralstva"
 
-#: src/game_preferences_display.cpp:190
+#: src/game_preferences_display.cpp:188
 msgid "Add As Friend"
 msgstr "Dodaj kot prijatelja"
 
-#: src/game_preferences_display.cpp:191
+#: src/game_preferences_display.cpp:189
 msgid "Add As Ignore"
 msgstr ""
 
-#: src/game_preferences_display.cpp:193
+#: src/game_preferences_display.cpp:191
 #, fuzzy
 msgid "Show floating labels"
 msgstr "Prikaži lebdeče oznake"
 
-#: src/game_preferences_display.cpp:194
+#: src/game_preferences_display.cpp:192
 #, fuzzy
 msgid "Turn dialog"
 msgstr "Pogovorno okno ob začetku vaše poteze"
 
-#: src/game_preferences_display.cpp:195
+#: src/game_preferences_display.cpp:193
 msgid "Enable planning mode on start"
 msgstr ""
 
-#: src/game_preferences_display.cpp:196
+#: src/game_preferences_display.cpp:194
 msgid "Hide allies’ plans by default"
 msgstr ""
 
-#: src/game_preferences_display.cpp:197
+#: src/game_preferences_display.cpp:195
 msgid "Turn bell"
 msgstr "Zvonjenje ob začetku poteze"
 
-#: src/game_preferences_display.cpp:198
+#: src/game_preferences_display.cpp:196
 #, fuzzy
 msgid "Show team colors"
 msgstr "Prikaži ekipne barve"
 
-#: src/game_preferences_display.cpp:199
+#: src/game_preferences_display.cpp:197
 msgid "Show color cursors"
 msgstr "Prikaži barvne kazalke"
 
-#: src/game_preferences_display.cpp:200
+#: src/game_preferences_display.cpp:198
 #, fuzzy
 msgid "Show haloing effects"
 msgstr "Prikaži halo učinke"
 
-#: src/game_preferences_display.cpp:201
+#: src/game_preferences_display.cpp:199
 msgid "Change Resolution"
 msgstr "Spremeni ločljivost"
 
-#: src/game_preferences_display.cpp:202
+#: src/game_preferences_display.cpp:200
 msgid "Theme"
 msgstr "Tema"
 
-#: src/game_preferences_display.cpp:203
+#: src/game_preferences_display.cpp:201
 msgid "Hotkeys"
 msgstr "Hitre tipke"
 
-#: src/game_preferences_display.cpp:205
+#: src/game_preferences_display.cpp:203
 msgid "Sound effects"
 msgstr "Zvočni učinki"
 
-#: src/game_preferences_display.cpp:206
+#: src/game_preferences_display.cpp:204
 msgid "Music"
 msgstr "Glasba"
 
-#: src/game_preferences_display.cpp:207
+#: src/game_preferences_display.cpp:205
 #, fuzzy
 msgid "Chat timestamping"
 msgstr "Časovno označevanje pogovorov"
 
-#: src/game_preferences_display.cpp:208
+#: src/game_preferences_display.cpp:206
 msgid "sound^Advanced Options"
 msgstr "Napredne možnosti"
 
-#: src/game_preferences_display.cpp:209
+#: src/game_preferences_display.cpp:207
 msgid "sound^Standard Options"
 msgstr "Običajne možnosti"
 
-#: src/game_preferences_display.cpp:210
+#: src/game_preferences_display.cpp:208
 msgid "User interface sounds"
 msgstr "Zvoki uporabniškega vmesnika"
 
-#: src/game_preferences_display.cpp:213
+#: src/game_preferences_display.cpp:211
 msgid "Custom"
 msgstr "Po meri"
 
-#: src/game_preferences_display.cpp:215
+#: src/game_preferences_display.cpp:213
 #, fuzzy
 msgid "Show unit idle animations"
 msgstr "Preskoči animacijo"
 
-#: src/game_preferences_display.cpp:216
+#: src/game_preferences_display.cpp:214
 #, fuzzy
 msgid "Show unit standing animations"
 msgstr "Preskoči animacijo"
 
-#: src/game_preferences_display.cpp:217
+#: src/game_preferences_display.cpp:215
 #, fuzzy
 msgid "Animate map"
 msgstr "Ustvari mapo"
 
+#: src/game_preferences_display.cpp:217 src/game_preferences_display.cpp:218
 #: src/game_preferences_display.cpp:219 src/game_preferences_display.cpp:220
-#: src/game_preferences_display.cpp:221 src/game_preferences_display.cpp:222
 #, fuzzy
 #| msgid "SFX Volume:"
 msgid "Volume:"
 msgstr "Glasnost zvočnih učinkov:"
 
-#: src/game_preferences_display.cpp:224
+#: src/game_preferences_display.cpp:222
 msgid "Scroll speed:"
 msgstr "Hitrost drsenja:"
 
-#: src/game_preferences_display.cpp:227
+#: src/game_preferences_display.cpp:225
 msgid "Sample rate (Hz):"
 msgstr ""
 
-#: src/game_preferences_display.cpp:228
+#: src/game_preferences_display.cpp:226
 msgid "Frequency:"
 msgstr "Pogostost:"
 
-#: src/game_preferences_display.cpp:251
+#: src/game_preferences_display.cpp:249
 msgid "Sound effects on/off"
 msgstr "Zvočni učinki da/ne"
 
-#: src/game_preferences_display.cpp:255
+#: src/game_preferences_display.cpp:253
 msgid "Change the sound effects volume"
 msgstr "Spremeni glasnost zvočnih učinkov"
 
-#: src/game_preferences_display.cpp:258
+#: src/game_preferences_display.cpp:256
 msgid "Music on/off"
 msgstr "Glasba da/ne"
 
-#: src/game_preferences_display.cpp:262
+#: src/game_preferences_display.cpp:260
 msgid "Change the music volume"
 msgstr "Spremeni glasnost glasbe"
 
-#: src/game_preferences_display.cpp:268
+#: src/game_preferences_display.cpp:266
 msgid "Change the bell volume"
 msgstr "Spremeni glasnost zvonjenja"
 
-#: src/game_preferences_display.cpp:271
+#: src/game_preferences_display.cpp:269
 msgid "Turn menu and button sounds on/off"
 msgstr ""
 
-#: src/game_preferences_display.cpp:275
+#: src/game_preferences_display.cpp:273
 msgid "Change the sound volume for button clicks, etc."
 msgstr ""
 
-#: src/game_preferences_display.cpp:277
+#: src/game_preferences_display.cpp:275
 #, fuzzy
 msgid "Change the sample rate"
 msgstr "Spremeni jezik (prevod)"
 
-#: src/game_preferences_display.cpp:286
+#: src/game_preferences_display.cpp:284
 #, fuzzy
 msgid "User defined sample rate"
 msgstr "Spremeni jezik (prevod)"
 
-#: src/game_preferences_display.cpp:295 src/game_preferences_display.cpp:299
+#: src/game_preferences_display.cpp:293 src/game_preferences_display.cpp:297
 msgid "Change the buffer size"
 msgstr "Spremeni velikost medpomnilnika"
 
-#: src/game_preferences_display.cpp:297 src/game_preferences_display.cpp:896
+#: src/game_preferences_display.cpp:295 src/game_preferences_display.cpp:888
 msgid "Buffer size: "
 msgstr "Velikost medpomnilnika:"
 
-#: src/game_preferences_display.cpp:304
+#: src/game_preferences_display.cpp:302
 #, fuzzy
 msgid "Change the speed of scrolling around the map"
 msgstr "Spremeni hitrost drsenja po karti"
 
-#: src/game_preferences_display.cpp:309 src/game_preferences_display.cpp:311
+#: src/game_preferences_display.cpp:307 src/game_preferences_display.cpp:309
 #, fuzzy
 msgid "Set the amount of chat lines shown"
 msgstr "Število prikazanih vrstic pogovora"
 
-#: src/game_preferences_display.cpp:314
+#: src/game_preferences_display.cpp:312
 #, fuzzy
 msgid "Add a timestamp to chat messages"
 msgstr "Dodaj časovno oznako k sporočilom pogovora"
 
-#: src/game_preferences_display.cpp:317
+#: src/game_preferences_display.cpp:315
 #, fuzzy
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Izberite ali naj igra teče v oknu ali v celozaslonskem načinu"
 
-#: src/game_preferences_display.cpp:320
+#: src/game_preferences_display.cpp:318
 #, fuzzy
 msgid "Make units move and fight faster"
 msgstr "Enote naj se premikajo in bojujejo hitreje"
 
-#: src/game_preferences_display.cpp:339
+#: src/game_preferences_display.cpp:337
 #, fuzzy
 msgid "Units move and fight speed"
 msgstr "Enote naj se premikajo in bojujejo hitreje"
 
-#: src/game_preferences_display.cpp:342
+#: src/game_preferences_display.cpp:340
 msgid "Play short random animations for idle units"
 msgstr ""
 
-#: src/game_preferences_display.cpp:345
+#: src/game_preferences_display.cpp:343
 msgid "Continuously animate standing units in the battlefield"
 msgstr ""
 
-#: src/game_preferences_display.cpp:348
+#: src/game_preferences_display.cpp:346
 msgid "Display animated terrain graphics"
 msgstr ""
 
-#: src/game_preferences_display.cpp:354
+#: src/game_preferences_display.cpp:352
 msgid "Set the frequency of unit idle animations"
 msgstr ""
 
-#: src/game_preferences_display.cpp:359
+#: src/game_preferences_display.cpp:357
 msgid "Set maximum number of automatic saves to be retained"
 msgstr ""
 
-#: src/game_preferences_display.cpp:363
+#: src/game_preferences_display.cpp:361
 #, fuzzy
 msgid "Do not animate AI units moving"
 msgstr "Ne animiraj potez UI"
 
-#: src/game_preferences_display.cpp:366
+#: src/game_preferences_display.cpp:364
 msgid "Sighting an allied unit interrupts your unit’s movement"
 msgstr ""
 
-#: src/game_preferences_display.cpp:369
+#: src/game_preferences_display.cpp:367
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr ""
 
-#: src/game_preferences_display.cpp:372
+#: src/game_preferences_display.cpp:370
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr ""
 
-#: src/game_preferences_display.cpp:374
+#: src/game_preferences_display.cpp:372
 #, fuzzy
 msgid "Overlay a grid onto the map"
 msgstr "Čez karto položi mrežo"
 
-#: src/game_preferences_display.cpp:377
+#: src/game_preferences_display.cpp:375
 msgid "Sort the player list in the lobby by player groups"
 msgstr ""
 
-#: src/game_preferences_display.cpp:380
+#: src/game_preferences_display.cpp:378
 #, fuzzy
 msgid "Show icons in front of the player names in the lobby."
 msgstr "Prikaži sporočila o igralcih, ki se pridružijo v avlo"
 
-#: src/game_preferences_display.cpp:383
+#: src/game_preferences_display.cpp:381
 msgid "Uncheck to delete the saved password (on exit)."
 msgstr ""
 
-#: src/game_preferences_display.cpp:387
+#: src/game_preferences_display.cpp:385
 #, fuzzy
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr "Prikaži sporočila o igralcih, ki se pridružijo v avlo"
 
-#: src/game_preferences_display.cpp:389
+#: src/game_preferences_display.cpp:387
 #, fuzzy
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr "Prikaži sporočila o igralcih, ki se pridružijo v avlo"
 
-#: src/game_preferences_display.cpp:391
+#: src/game_preferences_display.cpp:389
 #, fuzzy
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "Prikaži sporočila o igralcih, ki se pridružijo v avlo"
 
-#: src/game_preferences_display.cpp:394
-msgid "Use New Lobby Interface"
-msgstr ""
-
-#: src/game_preferences_display.cpp:396
+#: src/game_preferences_display.cpp:391
 msgid "Find and set path to MP server to host LAN games."
 msgstr ""
 
-#: src/game_preferences_display.cpp:397
+#: src/game_preferences_display.cpp:392
 msgid "View and edit your friends and ignores list"
 msgstr ""
 
-#: src/game_preferences_display.cpp:398
+#: src/game_preferences_display.cpp:393
 msgid "Back to the multiplayer options"
 msgstr "Nazaj na možnosti večigralstva"
 
-#: src/game_preferences_display.cpp:399
+#: src/game_preferences_display.cpp:394
 msgid "Add this username to your friends list"
 msgstr ""
 
-#: src/game_preferences_display.cpp:400
+#: src/game_preferences_display.cpp:395
 msgid "Add this username to your ignores list"
 msgstr ""
 
-#: src/game_preferences_display.cpp:401
+#: src/game_preferences_display.cpp:396
 msgid "Remove this username from your list"
 msgstr ""
 
-#: src/game_preferences_display.cpp:404
+#: src/game_preferences_display.cpp:399
 msgid "Insert a username"
 msgstr "Vnesite uporabniško ime"
 
-#: src/game_preferences_display.cpp:407
+#: src/game_preferences_display.cpp:402
 #, fuzzy
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr "Nad enotami prikaži v napadu utrpelo škodo"
 
-#: src/game_preferences_display.cpp:409
+#: src/game_preferences_display.cpp:404
 msgid "Change the resolution the game runs at"
 msgstr "Spremeni ločljivost igre"
 
-#: src/game_preferences_display.cpp:410
+#: src/game_preferences_display.cpp:405
 msgid "Change the theme the game runs with"
 msgstr "Spremeni temo vmesnika igre"
 
-#: src/game_preferences_display.cpp:413
+#: src/game_preferences_display.cpp:408
 #, fuzzy
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Prikaži pogovorno okno ob začetku moje poteze"
 
-#: src/game_preferences_display.cpp:416
+#: src/game_preferences_display.cpp:411
 msgid "Activates Planning Mode on game start"
 msgstr ""
 
-#: src/game_preferences_display.cpp:419
+#: src/game_preferences_display.cpp:414
 msgid "Hides allies’ Planning Mode plans in multiplayer games"
 msgstr ""
 
-#: src/game_preferences_display.cpp:422
+#: src/game_preferences_display.cpp:417
 #, fuzzy
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Pozvoni ob začetku moje poteze"
 
-#: src/game_preferences_display.cpp:425
+#: src/game_preferences_display.cpp:420
 #, fuzzy
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr "Pod vsako enoto prikaži obarvan krog, ki kaže kateri ekipi pripada"
 
-#: src/game_preferences_display.cpp:428
+#: src/game_preferences_display.cpp:423
 #, fuzzy
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Uporabljaj barvne miškine kazalce (lahko upočasni igro)"
 
-#: src/game_preferences_display.cpp:431
+#: src/game_preferences_display.cpp:426
 #, fuzzy
 msgid "Use graphical special effects (may be slower)"
 msgstr "Uporabljaj posebne slikovne učinke (lahko upočasni igro)"
 
-#: src/game_preferences_display.cpp:433
+#: src/game_preferences_display.cpp:428
 #, fuzzy
 msgid "View and configure keyboard shortcuts"
 msgstr "Poglej in nastavi hitre tipke"
 
-#: src/game_preferences_display.cpp:760
+#: src/game_preferences_display.cpp:752
 msgid "Speed: "
 msgstr "Hitrost:"
 
-#: src/game_preferences_display.cpp:765 src/game_preferences_display.cpp:767
+#: src/game_preferences_display.cpp:757 src/game_preferences_display.cpp:759
 msgid "Maximum auto-saves: "
 msgstr ""
 
-#: src/game_preferences_display.cpp:765
+#: src/game_preferences_display.cpp:757
 msgid "infinite"
 msgstr "neskončno"
 
-#: src/game_preferences_display.cpp:950
+#: src/game_preferences_display.cpp:940
 #, fuzzy
 msgid "Chat lines: "
 msgstr "Vrstic pogovora:"
 
-#: src/game_preferences_display.cpp:972 src/game_preferences_display.cpp:980
+#: src/game_preferences_display.cpp:962 src/game_preferences_display.cpp:970
 msgid "Invalid username"
 msgstr "Neveljavno uporabniško ime"
 
-#: src/game_preferences_display.cpp:1083
+#: src/game_preferences_display.cpp:1073
 msgid "yes"
 msgstr "da"
 
-#: src/game_preferences_display.cpp:1085
+#: src/game_preferences_display.cpp:1075
 msgid "no"
 msgstr "ne"
 
-#: src/game_preferences_display.cpp:1119
+#: src/game_preferences_display.cpp:1109
 #, fuzzy
 msgid "friend"
 msgstr "Prijatelji"
 
-#: src/game_preferences_display.cpp:1125
+#: src/game_preferences_display.cpp:1115
 msgid "ignored"
 msgstr ""
 
-#: src/game_preferences_display.cpp:1129
+#: src/game_preferences_display.cpp:1119
 msgid "(empty list)"
 msgstr ""
 
-#: src/game_preferences_display.cpp:1254
+#: src/game_preferences_display.cpp:1243
 msgid "Prefs section^General"
 msgstr "Splošno"
 
-#: src/game_preferences_display.cpp:1255
+#: src/game_preferences_display.cpp:1244
 msgid "Prefs section^Display"
 msgstr "Prikaz"
 
-#: src/game_preferences_display.cpp:1256
+#: src/game_preferences_display.cpp:1245
 msgid "Prefs section^Sound"
 msgstr "Zvok"
 
-#: src/game_preferences_display.cpp:1257
+#: src/game_preferences_display.cpp:1246
 msgid "Prefs section^Multiplayer"
 msgstr "Večigralstvo"
 
-#: src/game_preferences_display.cpp:1258
+#: src/game_preferences_display.cpp:1247
 msgid "Advanced section^Advanced"
 msgstr "Napredno"
 
-#: src/game_preferences_display.cpp:1292
+#: src/game_preferences_display.cpp:1281
 #, fuzzy
 msgid "Choose Theme"
 msgstr "Izberite igro, ki jo želite naložiti"
 
-#: src/game_preferences_display.cpp:1307
+#: src/game_preferences_display.cpp:1296
 #, fuzzy
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 "Nova tema bo prikazana, ko naslednjič zaženete novo ali shranjeno igro."
 
-#: src/game_preferences_display.cpp:1311
+#: src/game_preferences_display.cpp:1300
 #, fuzzy
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Ni poznanih tem. Poizkusite jo spremeniti iz obstoječe igre."
 
-#: src/game_preferences_display.cpp:1354
+#: src/game_preferences_display.cpp:1343
 msgid "Find $filename server binary to host networked games"
 msgstr ""
 

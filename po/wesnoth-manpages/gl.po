@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
-"POT-Creation-Date: 2012-01-06 12:00+0100\n"
+"POT-Creation-Date: 2013-03-09 08:32+0100\n"
 "PO-Revision-Date: 2012-05-22 07:06+0200\n"
 "Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
@@ -37,8 +37,8 @@ msgstr "WESNOTH"
 #. type: TH
 #: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
 #, no-wrap
-msgid "2011"
-msgstr "2011"
+msgid "2013"
+msgstr ""
 
 # type: TH
 #. type: TH
@@ -942,7 +942,10 @@ msgstr "DEREITOS DE AUTOR"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:291 ../../doc/man/wesnothd.6:280
-msgid "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
+#, fuzzy
+#| msgid ""
+#| "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
+msgid "Copyright \\(co 2003-2013 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
 
@@ -1513,8 +1516,8 @@ msgstr ""
 "actualmente son B<forum> —para conectar wesnothd á base de datos dun foro "
 "phpbb— e B<sample> —unha mostra de exemplo da interface do xestor de "
 "usuarios, hai que estar tolo para utilizala en algo de verdade—. O valor "
-"predeterminado é B<forum>. Tamén hai que engadir unha sección B<"
-"[user_handler]>, véxase a continuación."
+"predeterminado é B<forum>. Tamén hai que engadir unha sección "
+"B<[user_handler]>, véxase a continuación."
 
 # type: SS
 #. type: SS
@@ -1639,15 +1642,15 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:221
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
-"on which user handler is set with the B<user_handler> key. If no B<"
-"[user_handler]> section is present in the configuration the server will run "
-"without any nick registration service."
+"on which user handler is set with the B<user_handler> key. If no "
+"B<[user_handler]> section is present in the configuration the server will "
+"run without any nick registration service."
 msgstr ""
 "B<[user_handler]> configura o xestor de usuarios. As palabras clave "
 "dispoñíbeis variarán dependendo do xestor de usuarios que se estableza "
-"mediante a palabra clave B<user_handler>. Se non hai ningunha sección B<"
-"[user_handler]> na configuración, o servidor executarase sen ningún servizo "
-"de rexistro de alcumes."
+"mediante a palabra clave B<user_handler>. Se non hai ningunha sección "
+"B<[user_handler]> na configuración, o servidor executarase sen ningún "
+"servizo de rexistro de alcumes."
 
 # type: TP
 #. type: TP
@@ -1743,8 +1746,8 @@ msgid ""
 msgstr ""
 "O nome da táboa na que wesnothd gardará os seus propios datos dos usuarios "
 "(para «user_handler=forum»). Terás que crear a táboa manualmente, por "
-"exemplo mediante: B<CREATE TABLE E<lt>nome-da-táboaE<gt>(username VARCHAR"
-"(255) PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, "
+"exemplo mediante: B<CREATE TABLE E<lt>nome-da-táboaE<gt>(username "
+"VARCHAR(255) PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, "
 "user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);>"
 
 # type: TP
@@ -1873,6 +1876,9 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:286
 msgid "B<wesnoth>(6)."
 msgstr "B<wesnoth>(6)."
+
+#~ msgid "2011"
+#~ msgstr "2011"
 
 #~ msgid "B<--new-syntax>"
 #~ msgstr "B<--new-syntax>"
