@@ -1702,7 +1702,6 @@ void unit::write(config& cfg) const
 	cfg["race"] = race_->id();
 	cfg["language_name"] = type_name_;
 	cfg["undead_variation"] = undead_variation_;
-	cfg["variation"] = variation_;
 	cfg["level"] = level_;
 	switch(alignment_) {
 		case unit_type::LAWFUL:
