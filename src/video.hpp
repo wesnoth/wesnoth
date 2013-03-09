@@ -25,8 +25,6 @@ struct surface;
 
 //possible flags when setting video modes
 #define FULL_SCREEN SDL_FULLSCREEN
-#define VIDEO_MEMORY SDL_HWSURFACE
-#define SYSTEM_MEMORY SDL_SWSURFACE
 
 surface display_format_alpha(surface surf);
 surface get_video_surface();
