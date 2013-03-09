@@ -28,6 +28,7 @@
 #include "log.hpp"
 #include "gui/auxiliary/event/distributor.hpp"
 #include "gui/auxiliary/event/message.hpp"
+#include "gui/auxiliary/find_widget.tpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/layout_exception.hpp"
 #include "gui/auxiliary/window_builder/control.hpp"

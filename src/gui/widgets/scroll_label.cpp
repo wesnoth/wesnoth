@@ -18,6 +18,7 @@
 #include "gui/widgets/scroll_label.hpp"
 
 #include "gui/widgets/label.hpp"
+#include "gui/auxiliary/find_widget.tpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/widget_definition/scroll_label.hpp"
 #include "gui/auxiliary/window_builder/scroll_label.hpp"

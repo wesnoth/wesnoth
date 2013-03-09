@@ -17,6 +17,7 @@
 
 #include "gui/dialogs/gamestate_inspector.hpp"
 
+#include "gui/auxiliary/find_widget.tpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/widgets/button.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX

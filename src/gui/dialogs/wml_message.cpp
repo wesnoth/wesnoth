@@ -17,6 +17,7 @@
 
 #include "gui/dialogs/wml_message.hpp"
 
+#include "gui/auxiliary/find_widget.tpp"
 #include "gui/auxiliary/old_markup.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"

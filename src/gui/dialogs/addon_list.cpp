@@ -19,6 +19,7 @@
 
 #include "gettext.hpp"
 #include "gui/auxiliary/filter.hpp"
+#include "gui/auxiliary/find_widget.tpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX

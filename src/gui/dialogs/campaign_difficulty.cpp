@@ -17,6 +17,7 @@
 
 #include "gui/dialogs/campaign_difficulty.hpp"
 
+#include "gui/auxiliary/find_widget.tpp"
 #include "gui/auxiliary/old_markup.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	#include "gui/widgets/list.hpp"

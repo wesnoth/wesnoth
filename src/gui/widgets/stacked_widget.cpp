@@ -17,6 +17,7 @@
 
 #include "gui/widgets/stacked_widget.hpp"
 
+#include "gui/auxiliary/find_widget.tpp"
 #include "gui/auxiliary/widget_definition/stacked_widget.hpp"
 #include "gui/auxiliary/window_builder/stacked_widget.hpp"
 #include "gui/widgets/detail/register.tpp"

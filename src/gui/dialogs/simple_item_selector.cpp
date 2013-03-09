@@ -17,6 +17,7 @@
 
 #include "gui/dialogs/simple_item_selector.hpp"
 
+#include "gui/auxiliary/find_widget.tpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX

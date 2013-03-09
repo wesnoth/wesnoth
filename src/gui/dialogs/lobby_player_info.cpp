@@ -13,6 +13,7 @@
    See the COPYING file for more details.
 */
 
+#include "gui/auxiliary/find_widget.tpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/dialogs/lobby_player_info.hpp"
 #include "gui/widgets/button.hpp"

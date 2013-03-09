@@ -18,6 +18,7 @@
 #include "gui/dialogs/tip.hpp"
 
 #include "gui/dialogs/dialog.hpp"
+#include "gui/auxiliary/find_widget.tpp"
 #include "gui/dialogs/popup.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"

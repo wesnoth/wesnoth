@@ -17,6 +17,7 @@
 
 #include "gui/widgets/pane.hpp"
 
+#include "gui/auxiliary/find_widget.tpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/window.hpp"

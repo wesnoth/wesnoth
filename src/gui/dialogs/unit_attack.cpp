@@ -17,6 +17,7 @@
 
 #include "gui/dialogs/unit_attack.hpp"
 
+#include "gui/auxiliary/find_widget.tpp"
 #include "gui/widgets/image.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"

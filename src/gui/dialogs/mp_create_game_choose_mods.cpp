@@ -18,6 +18,7 @@
 #include "gui/dialogs/mp_create_game_choose_mods.hpp"
 
 #include "game_preferences.hpp"
+#include "gui/auxiliary/find_widget.tpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"

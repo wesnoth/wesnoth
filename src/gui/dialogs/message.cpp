@@ -18,6 +18,7 @@
 #include "gui/dialogs/message.hpp"
 
 #include "gettext.hpp"
+#include "gui/auxiliary/find_widget.tpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"

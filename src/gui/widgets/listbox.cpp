@@ -19,6 +19,7 @@
 
 #include "gui/widgets/listbox.hpp"
 
+#include "gui/auxiliary/find_widget.tpp"
 #include "gui/auxiliary/layout_exception.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/widget_definition/listbox.hpp"

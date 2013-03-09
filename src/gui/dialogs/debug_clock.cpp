@@ -17,6 +17,7 @@
 
 #include "gui/dialogs/debug_clock.hpp"
 
+#include "gui/auxiliary/find_widget.tpp"
 #include "gui/dialogs/dialog.hpp"
 #include "gui/widgets/integer_selector.hpp"
 #include "gui/widgets/window.hpp"

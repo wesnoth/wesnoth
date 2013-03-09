@@ -17,6 +17,7 @@
 
 #include "gui/widgets/matrix.hpp"
 
+#include "gui/auxiliary/find_widget.tpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/widget_definition/matrix.hpp"
 #include "gui/auxiliary/window_builder/matrix.hpp"

@@ -22,6 +22,7 @@
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "gui/auxiliary/find_widget.tpp"
 #include "gui/auxiliary/timer.hpp"
 #include "gui/auxiliary/tips.hpp"
 #include "gui/dialogs/debug_clock.hpp"

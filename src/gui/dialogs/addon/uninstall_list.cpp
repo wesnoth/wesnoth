@@ -16,6 +16,7 @@
 #include "gui/dialogs/addon/uninstall_list.hpp"
 
 #include "addon/info.hpp"
+#include "gui/auxiliary/find_widget.tpp"
 #include "gui/widgets/grid.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	#include "gui/widgets/list.hpp"

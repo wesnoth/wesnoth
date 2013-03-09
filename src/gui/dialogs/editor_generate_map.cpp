@@ -16,6 +16,7 @@
 
 #include "gui/dialogs/editor_generate_map.hpp"
 
+#include "gui/auxiliary/find_widget.tpp"
 #include "gui/dialogs/helper.hpp"
 
 #include "gui/widgets/button.hpp"

@@ -17,6 +17,7 @@
 
 #include "gui/dialogs/mp_depcheck_select_new.hpp"
 
+#include "gui/auxiliary/find_widget.tpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/listbox.hpp"

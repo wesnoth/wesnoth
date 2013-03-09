@@ -17,6 +17,7 @@
 
 #include "gui/dialogs/unit_create.hpp"
 
+#include "gui/auxiliary/find_widget.tpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/dialogs/helper.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX

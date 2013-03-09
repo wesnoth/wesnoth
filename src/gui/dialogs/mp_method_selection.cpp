@@ -18,6 +18,7 @@
 #include "gui/dialogs/mp_method_selection.hpp"
 
 #include "game_preferences.hpp"
+#include "gui/auxiliary/find_widget.tpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
 #else

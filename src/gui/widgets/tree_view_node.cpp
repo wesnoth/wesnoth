@@ -18,6 +18,7 @@
 #include "gui/widgets/tree_view_node.hpp"
 
 #include "gettext.hpp"
+#include "gui/auxiliary/find_widget.tpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/toggle_panel.hpp"

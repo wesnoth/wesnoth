@@ -17,6 +17,7 @@
 
 #include "gui/dialogs/campaign_selection.hpp"
 
+#include "gui/auxiliary/find_widget.tpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/widgets/image.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX

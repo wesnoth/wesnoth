@@ -17,6 +17,7 @@
 
 #include "gui/widgets/multi_page.hpp"
 
+#include "gui/auxiliary/find_widget.tpp"
 #include "gui/auxiliary/widget_definition/multi_page.hpp"
 #include "gui/auxiliary/window_builder/multi_page.hpp"
 #include "gui/widgets/detail/register.tpp"
