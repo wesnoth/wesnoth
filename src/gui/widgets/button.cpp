@@ -20,6 +20,7 @@
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/widget_definition/button.hpp"
 #include "gui/auxiliary/window_builder/button.hpp"
+#include "gui/widgets/detail/register.tpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "sound.hpp"

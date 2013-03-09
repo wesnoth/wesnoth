@@ -21,6 +21,7 @@
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/widget_definition/scroll_label.hpp"
 #include "gui/auxiliary/window_builder/scroll_label.hpp"
+#include "gui/widgets/detail/register.tpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/scrollbar.hpp"
 #include "gui/widgets/spacer.hpp"

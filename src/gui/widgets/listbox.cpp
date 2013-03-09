@@ -24,6 +24,7 @@
 #include "gui/auxiliary/widget_definition/listbox.hpp"
 #include "gui/auxiliary/window_builder/listbox.hpp"
 #include "gui/auxiliary/window_builder/horizontal_listbox.hpp"
+#include "gui/widgets/detail/register.tpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 

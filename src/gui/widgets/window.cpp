@@ -34,6 +34,7 @@
 #include "gui/dialogs/title_screen.hpp"
 #include "gui/dialogs/tip.hpp"
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/detail/register.tpp"
 #include "gui/widgets/settings.hpp"
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"

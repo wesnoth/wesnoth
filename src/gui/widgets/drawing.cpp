@@ -19,6 +19,7 @@
 
 #include "gui/auxiliary/widget_definition/drawing.hpp"
 #include "gui/auxiliary/window_builder/drawing.hpp"
+#include "gui/widgets/detail/register.tpp"
 #include "gui/widgets/settings.hpp"
 
 #include <boost/bind.hpp>

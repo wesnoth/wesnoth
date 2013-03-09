@@ -20,6 +20,7 @@
 #include "gui/auxiliary/widget_definition/progress_bar.hpp"
 #include "gui/auxiliary/window_builder/progress_bar.hpp"
 #include "gui/auxiliary/log.hpp"
+#include "gui/widgets/detail/register.tpp"
 #include "gui/widgets/settings.hpp"
 #include "utils/foreach.tpp"
 

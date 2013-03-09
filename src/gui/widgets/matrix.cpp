@@ -20,6 +20,7 @@
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/widget_definition/matrix.hpp"
 #include "gui/auxiliary/window_builder/matrix.hpp"
+#include "gui/widgets/detail/register.tpp"
 #include "gui/widgets/settings.hpp"
 
 #include <boost/bind.hpp>
