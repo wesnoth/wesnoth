@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-10-27 15:56+0200\n"
+"POT-Creation-Date: 2013-03-09 08:51+0100\n"
 "PO-Revision-Date: 2011-11-30 16:10+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -200,15 +200,15 @@ msgstr ""
 msgid "villages"
 msgstr "sela"
 
-#: src/editor/editor_controller.cpp:154
+#: src/editor/editor_controller.cpp:155
 msgid "Fatal error"
 msgstr "Kobna greška"
 
-#: src/editor/editor_controller.cpp:178
+#: src/editor/editor_controller.cpp:179
 msgid "Do you really want to quit?"
 msgstr "Želite li zaista da napustite?"
 
-#: src/editor/editor_controller.cpp:180
+#: src/editor/editor_controller.cpp:181
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
@@ -216,7 +216,7 @@ msgstr ""
 "Želite li zaista da napustite? Izmene na mapi od poslednjeg upisa biće "
 "izgubljene."
 
-#: src/editor/editor_controller.cpp:182
+#: src/editor/editor_controller.cpp:183
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -225,89 +225,89 @@ msgstr ""
 "poslednjeg upisa biće izgubljene:"
 
 # наслов
-#: src/editor/editor_controller.cpp:185
+#: src/editor/editor_controller.cpp:186
 msgid "Quit"
 msgstr "Napuštanje"
 
-#: src/editor/editor_controller.cpp:196
+#: src/editor/editor_controller.cpp:197
 msgid "No editor time-of-day found."
 msgstr "Nema doba dana u uređivaču."
 
-#: src/editor/map/context_manager.cpp:101
-#: src/editor/map/context_manager.cpp:193
+#: src/editor/map/context_manager.cpp:104
+#: src/editor/map/context_manager.cpp:196
 msgid "(New Map)"
 msgstr "(nova mapa)"
 
 # наслов
-#: src/editor/map/context_manager.cpp:162
+#: src/editor/map/context_manager.cpp:165
 msgid "Choose a Map to Open"
 msgstr "Izbor mape za otvaranje"
 
 # наслов
-#: src/editor/map/context_manager.cpp:236
+#: src/editor/map/context_manager.cpp:239
 msgid "Choose a Mask to Apply"
 msgstr "Izbor maske za primenjivanje"
 
-#: src/editor/map/context_manager.cpp:243
+#: src/editor/map/context_manager.cpp:246
 msgid "Error loading mask"
 msgstr "Greška pri učitavanju maske"
 
 # наслов
-#: src/editor/map/context_manager.cpp:264
+#: src/editor/map/context_manager.cpp:267
 msgid "Choose Target Map"
 msgstr "Izbor ciljne mape"
 
-#: src/editor/map/context_manager.cpp:271
-#: src/editor/map/context_manager.cpp:635
+#: src/editor/map/context_manager.cpp:274
+#: src/editor/map/context_manager.cpp:638
 msgid "Error loading map"
 msgstr "Greška pri učitavanju mape"
 
-#: src/editor/map/context_manager.cpp:389
+#: src/editor/map/context_manager.cpp:392
 msgid "Save the Map As"
 msgstr "Sačuvaj mapu kao"
 
-#: src/editor/map/context_manager.cpp:392
+#: src/editor/map/context_manager.cpp:395
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Datoteka već postoji. Želite li da je prebrišete?"
 
-#: src/editor/map/context_manager.cpp:426
+#: src/editor/map/context_manager.cpp:429
 msgid "No random map generators found."
 msgstr "Nema nijednog generatora nasumičnih mapa."
 
-#: src/editor/map/context_manager.cpp:439
-#: src/editor/map/context_manager.cpp:443
+#: src/editor/map/context_manager.cpp:442
+#: src/editor/map/context_manager.cpp:446
 msgid "Map creation failed."
 msgstr "Stvaranje mape nije uspelo."
 
-#: src/editor/map/context_manager.cpp:455
+#: src/editor/map/context_manager.cpp:458
 msgid "Unsaved Changes"
 msgstr "Nesačuvane izmene"
 
-#: src/editor/map/context_manager.cpp:456
+#: src/editor/map/context_manager.cpp:459
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr "Želite li da odbacite sve izmene nad mapom od poslednjeg upisa?"
 
-#: src/editor/map/context_manager.cpp:550
-#: src/editor/map/context_manager.cpp:591
+#: src/editor/map/context_manager.cpp:553
+#: src/editor/map/context_manager.cpp:594
 msgid "This map is already open."
 msgstr "Ova mapa je već otvorena."
 
-#: src/editor/map/context_manager.cpp:571
+#: src/editor/map/context_manager.cpp:574
 msgid "Map saved."
 msgstr "Mapa je sačuvana."
 
-#: src/editor/map/context_manager.cpp:614
+#: src/editor/map/context_manager.cpp:617
 msgid "Loaded embedded map data"
 msgstr "Učitani ugnežđeni podaci mape."
 
 # >> @title:window
-#: src/editor/map/context_manager.cpp:615
-#: src/editor/map/context_manager.cpp:629
+#: src/editor/map/context_manager.cpp:618
+#: src/editor/map/context_manager.cpp:632
 msgid "Map loaded from scenario"
 msgstr "Mapa učitana iz scenarija"
 
-#: src/editor/map/context_manager.cpp:625
+#: src/editor/map/context_manager.cpp:628
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -370,11 +370,11 @@ msgstr "Pred: "
 msgid "BG: "
 msgstr "Poz: "
 
-#: src/gui/dialogs/editor_set_starting_position.cpp:84
+#: src/gui/dialogs/editor_set_starting_position.cpp:86
 msgid "player^None"
 msgstr "nijedan"
 
-#: src/gui/dialogs/editor_set_starting_position.cpp:96
+#: src/gui/dialogs/editor_set_starting_position.cpp:98
 msgid "Player $player_number"
 msgstr "Igrač $player_number"
 

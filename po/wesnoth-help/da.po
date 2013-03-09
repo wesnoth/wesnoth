@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-10-27 15:56+0200\n"
+"POT-Creation-Date: 2013-03-09 08:51+0100\n"
 "PO-Revision-Date: 2008-11-04 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -32,8 +32,14 @@ msgstr "bersærk"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:757
+#: data/core/macros/abilities.cfg:563
+#, fuzzy
+#| msgid ""
+#| "Berserk:\n"
+#| "Whether used offensively or defensively, this attack presses the "
+#| "engagement until one of the combatants is slain, or 30 rounds of attacks "
+#| "have occurred."
 msgid ""
-"Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
@@ -42,15 +48,20 @@ msgstr ""
 "af parterne dør, eller 30 runder af angreb er foretaget."
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:770
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:769
 #: data/core/macros/abilities.cfg:641
 msgid "magical"
 msgstr "magisk"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:772
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:771
+#: data/core/macros/abilities.cfg:642
+#, fuzzy
+#| msgid ""
+#| "Magical:\n"
+#| "This attack always has a 70% chance to hit regardless of the defensive "
+#| "ability of the unit being attacked."
 msgid ""
-"Magical:\n"
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
 msgstr ""
@@ -59,14 +70,22 @@ msgstr ""
 "enhed som bliver angrebet."
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:785
-msgid "firststrike"
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:783
+#: data/core/macros/abilities.cfg:686
+#, fuzzy
+#| msgid "firststrike"
+msgid "first strike"
 msgstr "initiativ"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:787
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:785
+#: data/core/macros/abilities.cfg:687
+#, fuzzy
+#| msgid ""
+#| "First Strike:\n"
+#| "This unit always strikes first with this attack, even if they are "
+#| "defending."
 msgid ""
-"First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
 "Initiativ:\n"
@@ -4135,22 +4154,6 @@ msgstr ""
 msgid "+1 max HP"
 msgstr "+1 maks liv"
 
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:563
-#, fuzzy
-#| msgid ""
-#| "Berserk:\n"
-#| "Whether used offensively or defensively, this attack presses the "
-#| "engagement until one of the combatants is slain, or 30 rounds of attacks "
-#| "have occurred."
-msgid ""
-"Whether used offensively or defensively, this attack presses the engagement "
-"until one of the combatants is slain, or 30 rounds of attacks have occurred."
-msgstr ""
-"Bersærk:\n"
-"Uanset om det bruges offensivt eller defensivt, så fortsættes en kamp til en "
-"af parterne dør, eller 30 runder af angreb er foretaget."
-
 # Der må være noget bedre end "stikke i ryggen"... Hvad med "dolke"?
 # snigangreb eller bagholdsangreb er vist bedre som abilities. Joe 18.feb 2007.
 #. [damage]: id=backstab
@@ -4274,21 +4277,6 @@ msgstr ""
 "Skarpskytte:\n"
 "Hvis anvendt offensivt, har dette angreb en træfsikkerhed på mindst 60 %."
 
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:642
-#, fuzzy
-#| msgid ""
-#| "Magical:\n"
-#| "This attack always has a 70% chance to hit regardless of the defensive "
-#| "ability of the unit being attacked."
-msgid ""
-"This attack always has a 70% chance to hit regardless of the defensive "
-"ability of the unit being attacked."
-msgstr ""
-"Magisk:\n"
-"Dette angreb har altid en træfsikkerhed på 70 % uanset forsvarsevnen hos den "
-"enhed som bliver angrebet."
-
 #. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:653
 msgid "swarm"
@@ -4349,27 +4337,6 @@ msgstr ""
 "Dræn:\n"
 "Denne enhed dræner livsenergi fra levende enheder - den helbreder sig selv "
 "med halvdelen af det drænede (nedrundet)."
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:686
-#, fuzzy
-#| msgid "firststrike"
-msgid "first strike"
-msgstr "initiativ"
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:687
-#, fuzzy
-#| msgid ""
-#| "First Strike:\n"
-#| "This unit always strikes first with this attack, even if they are "
-#| "defending."
-msgid ""
-"This unit always strikes first with this attack, even if they are defending."
-msgstr ""
-"Initiativ:\n"
-"Denne enhed angriber først - har initiativet - med dette angreb, også selv "
-"om den forsvarer sig."
 
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:696
@@ -4791,174 +4758,174 @@ msgstr "udød"
 #. [trait]: id=elemental
 #. [trait]: id=mechanical
 #. [trait]: id=undead
-#: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:39
-#: data/core/macros/traits.cfg:54
+#: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:47
+#: data/core/macros/traits.cfg:70
 msgid "Immune to drain, poison, and plague"
 msgstr "Immun overfor bloddræning, gift og pest"
 
 #. [trait]: id=mechanical
-#: data/core/macros/traits.cfg:37
+#: data/core/macros/traits.cfg:45
 msgid "mechanical"
 msgstr "mekaniske"
 
 #. [trait]: id=mechanical
-#: data/core/macros/traits.cfg:38
+#: data/core/macros/traits.cfg:46
 msgid "female^mechanical"
 msgstr "mekaniske"
 
 #. [trait]: id=elemental
-#: data/core/macros/traits.cfg:52
+#: data/core/macros/traits.cfg:68
 #, fuzzy
 msgid "elemental"
 msgstr "skjul"
 
 #. [trait]: id=elemental
-#: data/core/macros/traits.cfg:53
+#: data/core/macros/traits.cfg:69
 #, fuzzy
 msgid "female^elemental"
 msgstr "loyal"
 
 #. [trait]: id=strong
-#: data/core/macros/traits.cfg:66
+#: data/core/macros/traits.cfg:90
 msgid "strong"
 msgstr "stærk"
 
 #. [trait]: id=strong
-#: data/core/macros/traits.cfg:67
+#: data/core/macros/traits.cfg:91
 msgid "female^strong"
 msgstr "stærk"
 
 #. [trait]: id=dextrous
-#: data/core/macros/traits.cfg:84
+#: data/core/macros/traits.cfg:108
 msgid "dextrous"
 msgstr "behændig"
 
 #. [trait]: id=dextrous
-#: data/core/macros/traits.cfg:85
+#: data/core/macros/traits.cfg:109
 msgid "female^dextrous"
 msgstr "behændig"
 
 #. [trait]: id=quick
-#: data/core/macros/traits.cfg:98
+#: data/core/macros/traits.cfg:122
 msgid "quick"
 msgstr "hurtig"
 
 #. [trait]: id=quick
-#: data/core/macros/traits.cfg:99
+#: data/core/macros/traits.cfg:123
 msgid "female^quick"
 msgstr "hurtig"
 
 #. [trait]: id=intelligent
-#: data/core/macros/traits.cfg:115
+#: data/core/macros/traits.cfg:139
 msgid "intelligent"
 msgstr "intelligent"
 
 #. [trait]: id=intelligent
-#: data/core/macros/traits.cfg:116
+#: data/core/macros/traits.cfg:140
 msgid "female^intelligent"
 msgstr "intelligent"
 
 # > spændstig, elastisk, ukuelig..
 # Robust!
 #. [trait]: id=resilient
-#: data/core/macros/traits.cfg:128
+#: data/core/macros/traits.cfg:152
 msgid "resilient"
 msgstr "robust"
 
 # > spændstig, elastisk, ukuelig..
 # Robust!
 #. [trait]: id=resilient
-#: data/core/macros/traits.cfg:129
+#: data/core/macros/traits.cfg:153
 msgid "female^resilient"
 msgstr "robust"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:146
+#: data/core/macros/traits.cfg:170
 msgid "healthy"
 msgstr "sund"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:147
+#: data/core/macros/traits.cfg:171
 msgid "female^healthy"
 msgstr "sund"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:148
+#: data/core/macros/traits.cfg:172
 msgid "Always rest heals"
 msgstr ""
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:165 data/core/macros/traits.cfg:178
+#: data/core/macros/traits.cfg:189 data/core/macros/traits.cfg:202
 msgid "fearless"
 msgstr "frygløs"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:166 data/core/macros/traits.cfg:179
+#: data/core/macros/traits.cfg:190 data/core/macros/traits.cfg:203
 msgid "female^fearless"
 msgstr "frygtløs"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:167 data/core/macros/traits.cfg:180
+#: data/core/macros/traits.cfg:191 data/core/macros/traits.cfg:204
 msgid "Fights normally during unfavorable times of day/night"
 msgstr "Kæmper normalt under ikkefavorable tider af døgnet"
 
 #. [trait]: id=feral
-#: data/core/macros/traits.cfg:190
+#: data/core/macros/traits.cfg:214
 #, fuzzy
 msgid "feral"
 msgstr "I alt"
 
 #. [trait]: id=feral
-#: data/core/macros/traits.cfg:191
+#: data/core/macros/traits.cfg:215
 #, fuzzy
 msgid "female^feral"
 msgstr "udød"
 
 #. [trait]: id=feral
-#: data/core/macros/traits.cfg:192
+#: data/core/macros/traits.cfg:216
 msgid "Receives only 50% defense in land-based villages"
 msgstr ""
 
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:208
+#: data/core/macros/traits.cfg:232
 msgid "weak"
 msgstr "svag"
 
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:209
+#: data/core/macros/traits.cfg:233
 msgid "female^weak"
 msgstr "svag"
 
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:226
+#: data/core/macros/traits.cfg:250
 msgid "slow"
 msgstr "langsom"
 
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:227
+#: data/core/macros/traits.cfg:251
 msgid "female^slow"
 msgstr "langsom"
 
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:243
+#: data/core/macros/traits.cfg:267
 #, fuzzy
 msgid "dim"
 msgstr "Middel"
 
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:244
+#: data/core/macros/traits.cfg:268
 #, fuzzy
 msgid "female^dim"
 msgstr "frygtløs"
 
 #. [trait]: id=aged
-#: data/core/macros/traits.cfg:256
+#: data/core/macros/traits.cfg:280
 #, fuzzy
 msgid "aged"
 msgstr "afstands"
 
 #. [trait]: id=aged
-#: data/core/macros/traits.cfg:257
+#: data/core/macros/traits.cfg:281
 #, fuzzy
 msgid "female^aged"
 msgstr "frygtløs"
@@ -5658,7 +5625,7 @@ msgstr "Træsjæl"
 msgid "race^Woses"
 msgstr "Træsjæle"
 
-#: src/help.cpp:52
+#: src/help.cpp:53
 msgid "Help"
 msgstr "Hjælp"
 
@@ -5714,141 +5681,172 @@ msgstr ""
 msgid "Variations: "
 msgstr "Deling"
 
-#: src/help.cpp:1450 src/help.cpp:1825 src/help.cpp:1898
+#: src/help.cpp:1448 src/help.cpp:1820 src/help.cpp:1893
 msgid "race^Miscellaneous"
 msgstr "Diverse"
 
-#: src/help.cpp:1452
+#: src/help.cpp:1450
 msgid "Race: "
 msgstr "Race: "
 
-#: src/help.cpp:1459
+#: src/help.cpp:1457
 msgid "Abilities: "
 msgstr "Evner: "
 
-#: src/help.cpp:1476
+#: src/help.cpp:1474
 msgid "Ability Upgrades: "
 msgstr "Evneopgraderinger: "
 
-#: src/help.cpp:1492
+#: src/help.cpp:1490
 msgid "HP: "
 msgstr "L: "
 
-#: src/help.cpp:1493
+#: src/help.cpp:1491
 msgid "Moves: "
 msgstr "Bevægelser: "
 
-#: src/help.cpp:1495
+#: src/help.cpp:1493
 msgid "Vision: "
 msgstr ""
 
-#: src/help.cpp:1497
+#: src/help.cpp:1495
 msgid "Jamming: "
 msgstr ""
 
-#: src/help.cpp:1498
+#: src/help.cpp:1496
 msgid "Cost: "
 msgstr "Pris: "
 
-#: src/help.cpp:1499
+#: src/help.cpp:1497
 msgid "Alignment: "
 msgstr "Sindelag: "
 
-#: src/help.cpp:1505
+#: src/help.cpp:1503
 msgid "Required XP: "
 msgstr "Nødvendig EP: "
 
-#: src/help.cpp:1514
+#: src/help.cpp:1512
 msgid "unit help^Attacks"
 msgstr "Angreb"
 
-#: src/help.cpp:1521
+#: src/help.cpp:1519
 msgid "unit help^Name"
 msgstr "Navn"
 
-#: src/help.cpp:1522
+#: src/help.cpp:1520
 msgid "Type"
 msgstr "Type"
 
-#: src/help.cpp:1523
+#: src/help.cpp:1521
 msgid "Strikes"
 msgstr "Slag"
 
-#: src/help.cpp:1524
+#: src/help.cpp:1522
 msgid "Range"
 msgstr "Afstand"
 
-#: src/help.cpp:1525
+#: src/help.cpp:1523
 msgid "Special"
 msgstr "Speciel"
 
-#: src/help.cpp:1571
+#: src/help.cpp:1569
 msgid "Resistances"
 msgstr "Modstandskræfter"
 
-#: src/help.cpp:1575
+#: src/help.cpp:1573
 msgid "Attack Type"
 msgstr "Angrebstype"
 
-#: src/help.cpp:1576
+#: src/help.cpp:1574
 msgid "Resistance"
 msgstr "Modstandskraft"
 
-#: src/help.cpp:1615
+#: src/help.cpp:1604
 msgid "Terrain Modifiers"
 msgstr "Terrænpåvirkninger"
 
-#: src/help.cpp:1619
+#: src/help.cpp:1608
 msgid "Terrain"
 msgstr "Terræn"
 
-#: src/help.cpp:1620
+#: src/help.cpp:1609
 msgid "Defense"
 msgstr "Forsvar"
 
-#: src/help.cpp:1621
+#: src/help.cpp:1610
 msgid "Movement Cost"
 msgstr "Bevægelsespris"
 
-#: src/help.cpp:1624
+#: src/help.cpp:1614
 msgid "Vision Cost"
 msgstr ""
 
-#: src/help.cpp:1626
+#: src/help.cpp:1617
 msgid "Jamming Cost"
 msgstr ""
 
-#: src/help.cpp:1904
+#: src/help.cpp:1899
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text=»Enheder af denne race«</header>"
 
-#: src/help.cpp:2817
+#: src/help.cpp:2811
 msgid " < Back"
 msgstr " < Tilbage"
 
-#: src/help.cpp:2818
+#: src/help.cpp:2812
 msgid "Forward >"
 msgstr "Fremad >"
 
-#: src/help.cpp:2926
+#: src/help.cpp:2920
 msgid "Reference to unknown topic: "
 msgstr "Reference til ukendt emne: "
 
-#: src/help.cpp:3182
+#: src/help.cpp:3176
 msgid "corrupted original file"
 msgstr "korrupt original fil"
 
-#: src/help.cpp:3281
+#: src/help.cpp:3275
 msgid "Close"
 msgstr "Luk"
 
-#: src/help.cpp:3284
+#: src/help.cpp:3278
 msgid "The Battle for Wesnoth Help"
 msgstr "Hjælp til Kampen om Wesnoth"
 
-#: src/help.cpp:3340
+#: src/help.cpp:3334
 msgid "Parse error when parsing help text: "
 msgstr "Fortolk fejl når der fortolkes hjælpetekst: "
+
+#~ msgid ""
+#~ "Berserk:\n"
+#~ "Whether used offensively or defensively, this attack presses the "
+#~ "engagement until one of the combatants is slain, or 30 rounds of attacks "
+#~ "have occurred."
+#~ msgstr ""
+#~ "Bersærk:\n"
+#~ "Uanset om det bruges offensivt eller defensivt, så fortsættes en kamp til "
+#~ "en af parterne dør, eller 30 runder af angreb er foretaget."
+
+#~ msgid ""
+#~ "Magical:\n"
+#~ "This attack always has a 70% chance to hit regardless of the defensive "
+#~ "ability of the unit being attacked."
+#~ msgstr ""
+#~ "Magisk:\n"
+#~ "Dette angreb har altid en træfsikkerhed på 70 % uanset forsvarsevnen hos "
+#~ "den enhed som bliver angrebet."
+
+#~ msgid "firststrike"
+#~ msgstr "initiativ"
+
+#~ msgid ""
+#~ "First Strike:\n"
+#~ "This unit always strikes first with this attack, even if they are "
+#~ "defending."
+#~ msgstr ""
+#~ "Initiativ:\n"
+#~ "Denne enhed angriber først - har initiativet - med dette angreb, også "
+#~ "selv om den forsvarer sig."
 
 #~ msgid ""
 #~ "Feeding:\n"

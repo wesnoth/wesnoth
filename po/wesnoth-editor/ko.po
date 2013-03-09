@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-10-27 15:56+0200\n"
+"POT-Creation-Date: 2013-03-09 08:51+0100\n"
 "PO-Revision-Date: 2011-11-14 21:31+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -185,22 +185,22 @@ msgstr ""
 msgid "villages"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:154
+#: src/editor/editor_controller.cpp:155
 msgid "Fatal error"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:178
+#: src/editor/editor_controller.cpp:179
 msgid "Do you really want to quit?"
 msgstr "정말로 종료하시겠습니까?"
 
-#: src/editor/editor_controller.cpp:180
+#: src/editor/editor_controller.cpp:181
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr ""
 "정말로 종료하시겠습니까? 마지막 저장 이후에 행한 맵 변경사항을 잃게 됩니다."
 
-#: src/editor/editor_controller.cpp:182
+#: src/editor/editor_controller.cpp:183
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -208,66 +208,66 @@ msgstr ""
 "정말로 종료하시겠습니까? 다음의 맵이 수정되어 있으며 종료하면 변경한 부분은 "
 "사라집니다:"
 
-#: src/editor/editor_controller.cpp:185
+#: src/editor/editor_controller.cpp:186
 msgid "Quit"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:196
+#: src/editor/editor_controller.cpp:197
 msgid "No editor time-of-day found."
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:101
-#: src/editor/map/context_manager.cpp:193
+#: src/editor/map/context_manager.cpp:104
+#: src/editor/map/context_manager.cpp:196
 msgid "(New Map)"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:162
+#: src/editor/map/context_manager.cpp:165
 msgid "Choose a Map to Open"
 msgstr "불러올 맵을 선택하십시오"
 
-#: src/editor/map/context_manager.cpp:236
+#: src/editor/map/context_manager.cpp:239
 #, fuzzy
 #| msgid "Choose a Map to Open"
 msgid "Choose a Mask to Apply"
 msgstr "불러올 맵을 선택하십시오"
 
-#: src/editor/map/context_manager.cpp:243
+#: src/editor/map/context_manager.cpp:246
 msgid "Error loading mask"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:264
+#: src/editor/map/context_manager.cpp:267
 #, fuzzy
 #| msgid "Choose a Map to Open"
 msgid "Choose Target Map"
 msgstr "불러올 맵을 선택하십시오"
 
-#: src/editor/map/context_manager.cpp:271
-#: src/editor/map/context_manager.cpp:635
+#: src/editor/map/context_manager.cpp:274
+#: src/editor/map/context_manager.cpp:638
 msgid "Error loading map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:389
+#: src/editor/map/context_manager.cpp:392
 msgid "Save the Map As"
 msgstr "저장할 곳을 선택하십시오"
 
-#: src/editor/map/context_manager.cpp:392
+#: src/editor/map/context_manager.cpp:395
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "파일이 이미 존재합니다. 덮어 씌우시겠습니까?"
 
-#: src/editor/map/context_manager.cpp:426
+#: src/editor/map/context_manager.cpp:429
 msgid "No random map generators found."
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:439
-#: src/editor/map/context_manager.cpp:443
+#: src/editor/map/context_manager.cpp:442
+#: src/editor/map/context_manager.cpp:446
 msgid "Map creation failed."
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:455
+#: src/editor/map/context_manager.cpp:458
 msgid "Unsaved Changes"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:456
+#: src/editor/map/context_manager.cpp:459
 #, fuzzy
 #| msgid ""
 #| "Do you really want to quit? Changes in the map since the last save will "
@@ -277,25 +277,25 @@ msgid ""
 msgstr ""
 "정말로 종료하시겠습니까? 마지막 저장 이후에 행한 맵 변경사항을 잃게 됩니다."
 
-#: src/editor/map/context_manager.cpp:550
-#: src/editor/map/context_manager.cpp:591
+#: src/editor/map/context_manager.cpp:553
+#: src/editor/map/context_manager.cpp:594
 msgid "This map is already open."
 msgstr "해당 맵은 이미 열려 있습니다."
 
-#: src/editor/map/context_manager.cpp:571
+#: src/editor/map/context_manager.cpp:574
 msgid "Map saved."
 msgstr "맵이 저장되었습니다."
 
-#: src/editor/map/context_manager.cpp:614
+#: src/editor/map/context_manager.cpp:617
 msgid "Loaded embedded map data"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:615
-#: src/editor/map/context_manager.cpp:629
+#: src/editor/map/context_manager.cpp:618
+#: src/editor/map/context_manager.cpp:632
 msgid "Map loaded from scenario"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:625
+#: src/editor/map/context_manager.cpp:628
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -351,11 +351,11 @@ msgstr ""
 msgid "BG: "
 msgstr ""
 
-#: src/gui/dialogs/editor_set_starting_position.cpp:84
+#: src/gui/dialogs/editor_set_starting_position.cpp:86
 msgid "player^None"
 msgstr "선택 해제"
 
-#: src/gui/dialogs/editor_set_starting_position.cpp:96
+#: src/gui/dialogs/editor_set_starting_position.cpp:98
 msgid "Player $player_number"
 msgstr "$player_number 번 플레이어"
 

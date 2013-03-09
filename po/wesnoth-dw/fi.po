@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-10-27 15:56+0200\n"
+"POT-Creation-Date: 2013-03-09 08:51+0100\n"
 "PO-Revision-Date: 2012-05-15 03:23+0300\n"
 "Last-Translator: Jarkko Patteri <jarkkopatteri@gmail.com>\n"
 "Language-Team: Finnish <wiki.wesnoth.org/FinnishTranslation>\n"
@@ -705,7 +705,7 @@ msgstr "Mutta katso, se nuolee käsiäni."
 #. This should just be "translated" to whatever noise a bat makes in your language.
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:583
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:609
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:723
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:726
 msgid "Neep?"
 msgstr "Iip?"
 
@@ -1045,16 +1045,23 @@ msgid "A brave and kindhearted choice! I cannot abide slavery."
 msgstr "Rohkea ja hyvä veto! En voi sietää orjuutta."
 
 #. [message]: speaker=Gwabbo
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:398
+#. The phrase 'words of a man' does *not* have the sense of 
+#. 'words of a human' here; it signifies rather 'words of a
+#. moral adult' as opposed to a child or dependant.
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:401
+#, fuzzy
+#| msgid ""
+#| "Those were the words of a merman, Kai Krellis, and well spoken. The folk "
+#| "are truly yours now."
 msgid ""
-"Those were the words of a merman, Kai Krellis, and well spoken. The folk are "
-"truly yours now."
+"Those were the words of a man and a leader, Kai Krellis, and well spoken. "
+"The folk are truly yours now."
 msgstr ""
 "Nämä olivat merenmies Kai Krellisin loistavat sanat. Nyt kansa todellakin "
 "luottaa sinuun."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:405
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:408
 msgid ""
 "Kai Krellis saw that it was so. The refugee merfolk, sore in their pride "
 "from fleeing their enemies, cheered his ultimatum and made ready to fight "
@@ -1064,19 +1071,19 @@ msgstr ""
 "uholle. Se kannusti heidät raivokkaaseen taisteluun."
 
 #. [message]: speaker=Gilak
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:411
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:414
 msgid "Foolish merman! You will sssoon wish you had minded your own affairs."
 msgstr "Typerysss! Kohta toivot, ettet olisssi sssekaantunut!"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:420
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:423
 msgid ""
 "Perhaps if I called out to the slaves, I could rouse them to help us fight "
 "against their captors."
 msgstr "Orjat pystyisivät taistelemaan rinnallamme."
 
 #. [message]: speaker=Gwabbo
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:430
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:433
 msgid ""
 "I think that would work. If I may make a suggestion though, I think we "
 "should wait for a more strategic moment."
@@ -1085,7 +1092,7 @@ msgstr ""
 "tilaisuutta."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:434
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:437
 msgid ""
 "Never hesitate to speak your counsel to me, Gwabbo. You have been my right "
 "arm on this journey; your courage and loyalty are well proven."
@@ -1094,7 +1101,7 @@ msgstr ""
 "Lojaalisuutesi ja rohkeutesi on todistettu."
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:438
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:441
 msgid ""
 "Those are the words of a true kai and your father’s son. I am proud of you, "
 "Krellis."
@@ -1102,7 +1109,7 @@ msgstr ""
 "Nuo ovat oikean Kain ja Laudissin jälkeläisen sanoja. Olen ylpeä sinusta."
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:444
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:447
 msgid ""
 "I believe that would work, but many of them will be killed if you do it now. "
 "It might be better to wait."
@@ -1111,7 +1118,7 @@ msgstr ""
 "Parempi odottaa hetki."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:453
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:456
 msgid ""
 "You can choose when the slaves come out of their villages and attack their "
 "captors. When you are ready, right click anywhere and select the slave "
@@ -1121,12 +1128,12 @@ msgstr ""
 "valitse \"kapina\"."
 
 #. [set_menu_item]: id=peasant_revolt_menu_option
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:468
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:471
 msgid "Inspire the slaves to revolt"
 msgstr "Levitä kapinahenkeä"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:482
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:485
 msgid ""
 "Hear this! Slaves, the merfolk have sworn war against your tormentors. If "
 "you would be free, arise and seize your liberty!"
@@ -1135,7 +1142,7 @@ msgstr ""
 "Meidän avulla vapautenne koittaa! Hakkaa päälle!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:521
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:524
 msgid ""
 "Cheers erupted from several villages, and former slaves rushed out with "
 "whatever meager weapons they could find, or fists and rocks if no weapons "
@@ -1146,28 +1153,28 @@ msgstr ""
 "ja kiroilusta."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:559
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:562
 msgid "There is a treasure chest there! Good bat!"
 msgstr "Täällä on aarrearkku! Hyvää työtä, lepakko."
 
 #. [message]: speaker=unit
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:565
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:568
 msgid "There is a treasure chest here!"
 msgstr "Täällä on aarrearkku!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:578
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:581
 #: data/campaigns/Dead_Water/scenarios/11_Getting_Help.cfg:282
 msgid "You receive 100 gold."
 msgstr "Saat 100 kultaa."
 
 #. [message]: speaker=$unit.id
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:600
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:603
 msgid "Neep!"
 msgstr "Iip!"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:604
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:607
 msgid ""
 "I believe our bat is impressed! That must be a drake. I am told they are "
 "fearsome, but honorable, creatures. I think we can let him out of the cage."
@@ -1177,7 +1184,7 @@ msgstr ""
 "hänet häkistään."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:616
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:619
 msgid ""
 "This must be a drake. I am told they are honorable creatures. I am going to "
 "let him out of the cage."
@@ -1186,7 +1193,7 @@ msgstr ""
 "Vapautan hänet"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:622
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:625
 msgid ""
 "That must be a drake. I am told they are fearsome, but honorable, creatures. "
 "Let him out of the cage."
@@ -1195,32 +1202,32 @@ msgstr ""
 "kunniakkaita olentoja. Vapauttakaa hänet."
 
 #. [message]: speaker=unit
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:626
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:629
 msgid "Uh...If you say so."
 msgstr "No... jos niin sanot."
 
 #. [unit]: type=Drake Burner, id=Keshan
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:639
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:642
 msgid "Keshan"
 msgstr "Keshan"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:653
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:656
 msgid "What is your name?"
 msgstr "Mikä on sinun nimesi?"
 
 #. [message]: speaker=Keshan
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:658
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:661
 msgid "I am Keshan."
 msgstr "Olen Keshan"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:663
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:666
 msgid "How did you come to be in a cage?"
 msgstr "Miten jouduit häkkiin?"
 
 #. [message]: speaker=Keshan
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:668
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:671
 msgid ""
 "I was hunting north of here when the small ones captured me. I killed many, "
 "but I was humiliated in the end."
@@ -1229,17 +1236,17 @@ msgstr ""
 "mutta lopussa nöyryytys seisoi."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:673
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:676
 msgid "Will you fight with us, Keshan?"
 msgstr "Taisteletko kanssamme, Keshan?"
 
 #. [message]: speaker=Keshan
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:678
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:681
 msgid "You have released me, so I owe you a great debt. I will fight with you."
 msgstr "Vapautit minut, joten olen kiitollisuudenvelassa. Taistelen kanssanne."
 
 #. [message]: speaker=Gwabbo
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:683
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:686
 msgid ""
 "Don’t let him go too crazy. Those saurian spears will go right through his "
 "scales."
@@ -1248,19 +1255,19 @@ msgstr ""
 "keihäiltä."
 
 #. [unit]: type=Poacher, id=Siddry
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:703
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:706
 msgid "Siddry"
 msgstr "Siddry"
 
 #. [message]: speaker=Kai Krellis
 #. [message]: speaker=unit
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:727
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:733
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:730
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:736
 msgid "Who are you, and what are you doing in a cage?"
 msgstr "Kuka olet ja miksi olet häkissä?"
 
 #. [message]: speaker=Siddry
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:740
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:743
 msgid ""
 "My name is Siddry. These cursed saurians nabbed me a week ago — wanted me to "
 "turn overseer to their other slaves. I wouldn’t do it, so they caged me with "
@@ -1271,12 +1278,12 @@ msgstr ""
 "Joustani he ei vaan saanu kammettua pois."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:745
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:748
 msgid "So you will help us defeat them?"
 msgstr "Joten autatko minua kukistamaan nuo?"
 
 #. [message]: speaker=Siddry
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:750
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:753
 msgid ""
 "The way I see it, you’re helping me. There is nothing I would like better "
 "than to put their slavery to an end. I can’t swim, so I won’t be able to "
@@ -1288,13 +1295,13 @@ msgstr ""
 "tarviitte mua, niin auttelen tarpeen mukaan. Sen verran mä oon teille velkaa."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:755
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:758
 msgid ""
 "Well met, then, friend. I am Kai Krellis, leader of the people of Jotha."
 msgstr "Hyvä, että tapasimme. Olen Kai Krellis, Jothan kansan johtaja."
 
 #. [message]
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:770
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:773
 msgid ""
 "Kai Krellis, you have freed us, and we are forever in your debt. How can we "
 "repay you?"
@@ -1302,7 +1309,7 @@ msgstr ""
 "Kai Krellis. Olette vapauttaneet meidät. Miten voimme ikinä korvata tämän?"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:775
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:778
 msgid ""
 "I will not ask you to follow me. You have suffered enough for the benefit of "
 "others. Go back to your families if you have them, and work for yourselves "

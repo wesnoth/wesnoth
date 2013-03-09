@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.0-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-10-27 15:56+0200\n"
+"POT-Creation-Date: 2013-03-09 08:51+0100\n"
 "PO-Revision-Date: 2009-06-15 15:08-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: \n"
@@ -34,8 +34,14 @@ msgstr "berserk"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:757
+#: data/core/macros/abilities.cfg:563
+#, fuzzy
+#| msgid ""
+#| "Berserk:\n"
+#| "Whether used offensively or defensively, this attack presses the "
+#| "engagement until one of the combatants is slain, or 30 rounds of attacks "
+#| "have occurred."
 msgid ""
-"Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
@@ -44,15 +50,20 @@ msgstr ""
 "eða þar til 30 umferðir hafa átt sér stað."
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:770
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:769
 #: data/core/macros/abilities.cfg:641
 msgid "magical"
 msgstr "galdrar"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:772
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:771
+#: data/core/macros/abilities.cfg:642
+#, fuzzy
+#| msgid ""
+#| "Magical:\n"
+#| "This attack always has a 70% chance to hit regardless of the defensive "
+#| "ability of the unit being attacked."
 msgid ""
-"Magical:\n"
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
 msgstr ""
@@ -61,14 +72,22 @@ msgstr ""
 "skotmarks líður."
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:785
-msgid "firststrike"
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:783
+#: data/core/macros/abilities.cfg:686
+#, fuzzy
+#| msgid "firststrike"
+msgid "first strike"
 msgstr "fyrsta högg"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:787
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:785
+#: data/core/macros/abilities.cfg:687
+#, fuzzy
+#| msgid ""
+#| "First Strike:\n"
+#| "This unit always strikes first with this attack, even if they are "
+#| "defending."
 msgid ""
-"First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
 "Fyrsta högg:\n"
@@ -1485,9 +1504,9 @@ msgstr ""
 "ráðast á: Þín eining mun hreyfa sig að óvininum, og þegar þau eru hlið við "
 "hlið, mun bardagi byrjast. Árásaraðilinn og varnaraðilinn munu berjast þar "
 "til hver eining hefur notað allar árásinar sínar. Árásaraðilinn velur hvaða "
-"vopn skal nota, og varnaraðilinn lemur til baka með vopni með sömu hæfileika"
-"(ef sverðmaður ræðst á bogmann, mun bogmaður svara fyrir sig með eigin "
-"sverði enn ekki boga) Það eru tvær tegundir af árásum: skylmingar, sem "
+"vopn skal nota, og varnaraðilinn lemur til baka með vopni með sömu "
+"hæfileika(ef sverðmaður ræðst á bogmann, mun bogmaður svara fyrir sig með "
+"eigin sverði enn ekki boga) Það eru tvær tegundir af árásum: skylmingar, sem "
 "innihalda oftast sverð, axir, eða vígtennur; og langdrægar, sem innihalda "
 "vopn eins og boga, spjót og eldhnetti."
 
@@ -3943,22 +3962,6 @@ msgstr ""
 msgid "+1 max HP"
 msgstr "+1 á hámarks lífspunkta"
 
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:563
-#, fuzzy
-#| msgid ""
-#| "Berserk:\n"
-#| "Whether used offensively or defensively, this attack presses the "
-#| "engagement until one of the combatants is slain, or 30 rounds of attacks "
-#| "have occurred."
-msgid ""
-"Whether used offensively or defensively, this attack presses the engagement "
-"until one of the combatants is slain, or 30 rounds of attacks have occurred."
-msgstr ""
-"Berserk:\n"
-"Þessi árásartegund þrýstir einvígið þar til annar hvor liggur dauður niðri, "
-"eða þar til 30 umferðir hafa átt sér stað."
-
 #. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:573
 msgid "backstab"
@@ -4086,21 +4089,6 @@ msgstr ""
 "Þegar notað í árás(ekki vörn), hefur þessi árás alltaf að minsta kosti 60% "
 "líkur á að hitta."
 
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:642
-#, fuzzy
-#| msgid ""
-#| "Magical:\n"
-#| "This attack always has a 70% chance to hit regardless of the defensive "
-#| "ability of the unit being attacked."
-msgid ""
-"This attack always has a 70% chance to hit regardless of the defensive "
-"ability of the unit being attacked."
-msgstr ""
-"Galdrar:\n"
-"Þessi árás hefur alltaf 70% líkur á að hitta, hvað sem varnaraðstaðstöðu "
-"skotmarks líður."
-
 #. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:653
 msgid "swarm"
@@ -4168,26 +4156,6 @@ msgstr ""
 "Tæmir:\n"
 "Þessi eining tæmir líf úr lifandi einingum, læknandi sjálfan sig fyrir "
 "helmingin af skaðanum sem hún olli. (gerir 4 í skaða, læknar sjálfa sig um 2)"
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:686
-#, fuzzy
-#| msgid "firststrike"
-msgid "first strike"
-msgstr "fyrsta högg"
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:687
-#, fuzzy
-#| msgid ""
-#| "First Strike:\n"
-#| "This unit always strikes first with this attack, even if they are "
-#| "defending."
-msgid ""
-"This unit always strikes first with this attack, even if they are defending."
-msgstr ""
-"Fyrsta högg:\n"
-"Þessi eining fær alltaf að eiga fyrsta höggið, líka ef hún er í vörn"
 
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:696
@@ -4604,168 +4572,168 @@ msgstr "ódauð"
 #. [trait]: id=elemental
 #. [trait]: id=mechanical
 #. [trait]: id=undead
-#: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:39
-#: data/core/macros/traits.cfg:54
+#: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:47
+#: data/core/macros/traits.cfg:70
 msgid "Immune to drain, poison, and plague"
 msgstr "Ónæmt tæmingu, eitrun og plágum."
 
 #. [trait]: id=mechanical
-#: data/core/macros/traits.cfg:37
+#: data/core/macros/traits.cfg:45
 msgid "mechanical"
 msgstr "vélrænn"
 
 #. [trait]: id=mechanical
-#: data/core/macros/traits.cfg:38
+#: data/core/macros/traits.cfg:46
 msgid "female^mechanical"
 msgstr "vélræn"
 
 #. [trait]: id=elemental
-#: data/core/macros/traits.cfg:52
+#: data/core/macros/traits.cfg:68
 #, fuzzy
 msgid "elemental"
 msgstr "leynd"
 
 #. [trait]: id=elemental
-#: data/core/macros/traits.cfg:53
+#: data/core/macros/traits.cfg:69
 #, fuzzy
 msgid "female^elemental"
 msgstr "dygg"
 
 #. [trait]: id=strong
-#: data/core/macros/traits.cfg:66
+#: data/core/macros/traits.cfg:90
 msgid "strong"
 msgstr "sterkur"
 
 #. [trait]: id=strong
-#: data/core/macros/traits.cfg:67
+#: data/core/macros/traits.cfg:91
 msgid "female^strong"
 msgstr "sterk"
 
 #. [trait]: id=dextrous
-#: data/core/macros/traits.cfg:84
+#: data/core/macros/traits.cfg:108
 msgid "dextrous"
 msgstr "fimur"
 
 #. [trait]: id=dextrous
-#: data/core/macros/traits.cfg:85
+#: data/core/macros/traits.cfg:109
 msgid "female^dextrous"
 msgstr "fim"
 
 #. [trait]: id=quick
-#: data/core/macros/traits.cfg:98
+#: data/core/macros/traits.cfg:122
 msgid "quick"
 msgstr "hraður"
 
 #. [trait]: id=quick
-#: data/core/macros/traits.cfg:99
+#: data/core/macros/traits.cfg:123
 msgid "female^quick"
 msgstr "hröð"
 
 #. [trait]: id=intelligent
-#: data/core/macros/traits.cfg:115
+#: data/core/macros/traits.cfg:139
 msgid "intelligent"
 msgstr "snarpur"
 
 #. [trait]: id=intelligent
-#: data/core/macros/traits.cfg:116
+#: data/core/macros/traits.cfg:140
 msgid "female^intelligent"
 msgstr "snörp"
 
 #. [trait]: id=resilient
-#: data/core/macros/traits.cfg:128
+#: data/core/macros/traits.cfg:152
 msgid "resilient"
 msgstr "stældur"
 
 #. [trait]: id=resilient
-#: data/core/macros/traits.cfg:129
+#: data/core/macros/traits.cfg:153
 msgid "female^resilient"
 msgstr "stæld"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:146
+#: data/core/macros/traits.cfg:170
 msgid "healthy"
 msgstr "heilbrygður"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:147
+#: data/core/macros/traits.cfg:171
 msgid "female^healthy"
 msgstr "heilbrygð"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:148
+#: data/core/macros/traits.cfg:172
 msgid "Always rest heals"
 msgstr ""
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:165 data/core/macros/traits.cfg:178
+#: data/core/macros/traits.cfg:189 data/core/macros/traits.cfg:202
 msgid "fearless"
 msgstr "óttalaus"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:166 data/core/macros/traits.cfg:179
+#: data/core/macros/traits.cfg:190 data/core/macros/traits.cfg:203
 msgid "female^fearless"
 msgstr "óttalaus"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:167 data/core/macros/traits.cfg:180
+#: data/core/macros/traits.cfg:191 data/core/macros/traits.cfg:204
 msgid "Fights normally during unfavorable times of day/night"
 msgstr "Berst eðlilega þrátt fyrir nótt sem dag."
 
 #. [trait]: id=feral
-#: data/core/macros/traits.cfg:190
+#: data/core/macros/traits.cfg:214
 #, fuzzy
 msgid "feral"
 msgstr "Yfir allt"
 
 #. [trait]: id=feral
-#: data/core/macros/traits.cfg:191
+#: data/core/macros/traits.cfg:215
 #, fuzzy
 msgid "female^feral"
 msgstr "hlutlaus"
 
 #. [trait]: id=feral
-#: data/core/macros/traits.cfg:192
+#: data/core/macros/traits.cfg:216
 msgid "Receives only 50% defense in land-based villages"
 msgstr ""
 
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:208
+#: data/core/macros/traits.cfg:232
 msgid "weak"
 msgstr "veikburða"
 
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:209
+#: data/core/macros/traits.cfg:233
 msgid "female^weak"
 msgstr "veikburða"
 
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:226
+#: data/core/macros/traits.cfg:250
 msgid "slow"
 msgstr "hægur"
 
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:227
+#: data/core/macros/traits.cfg:251
 msgid "female^slow"
 msgstr "hæg"
 
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:243
+#: data/core/macros/traits.cfg:267
 msgid "dim"
 msgstr "tregur"
 
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:244
+#: data/core/macros/traits.cfg:268
 msgid "female^dim"
 msgstr "treg"
 
 #. [trait]: id=aged
-#: data/core/macros/traits.cfg:256
+#: data/core/macros/traits.cfg:280
 #, fuzzy
 msgid "aged"
 msgstr "langdræg"
 
 #. [trait]: id=aged
-#: data/core/macros/traits.cfg:257
+#: data/core/macros/traits.cfg:281
 #, fuzzy
 msgid "female^aged"
 msgstr "treg"
@@ -5465,7 +5433,7 @@ msgstr "Vosi"
 msgid "race^Woses"
 msgstr "Vosar"
 
-#: src/help.cpp:52
+#: src/help.cpp:53
 msgid "Help"
 msgstr "Hjálp"
 
@@ -5521,141 +5489,171 @@ msgstr ""
 msgid "Variations: "
 msgstr "Klíka"
 
-#: src/help.cpp:1450 src/help.cpp:1825 src/help.cpp:1898
+#: src/help.cpp:1448 src/help.cpp:1820 src/help.cpp:1893
 msgid "race^Miscellaneous"
 msgstr "Annað"
 
-#: src/help.cpp:1452
+#: src/help.cpp:1450
 msgid "Race: "
 msgstr "Ætt: "
 
-#: src/help.cpp:1459
+#: src/help.cpp:1457
 msgid "Abilities: "
 msgstr "Hæfileikar: "
 
-#: src/help.cpp:1476
+#: src/help.cpp:1474
 msgid "Ability Upgrades: "
 msgstr "Uppfærlsa hæfileika: "
 
-#: src/help.cpp:1492
+#: src/help.cpp:1490
 msgid "HP: "
 msgstr "HP: "
 
-#: src/help.cpp:1493
+#: src/help.cpp:1491
 msgid "Moves: "
 msgstr "Hreyfipunktar: "
 
-#: src/help.cpp:1495
+#: src/help.cpp:1493
 msgid "Vision: "
 msgstr ""
 
-#: src/help.cpp:1497
+#: src/help.cpp:1495
 msgid "Jamming: "
 msgstr ""
 
-#: src/help.cpp:1498
+#: src/help.cpp:1496
 msgid "Cost: "
 msgstr "Kostnaður: "
 
-#: src/help.cpp:1499
+#: src/help.cpp:1497
 msgid "Alignment: "
 msgstr "Stilling: "
 
-#: src/help.cpp:1505
+#: src/help.cpp:1503
 msgid "Required XP: "
 msgstr "Nauðsynleg Reynsla: "
 
-#: src/help.cpp:1514
+#: src/help.cpp:1512
 msgid "unit help^Attacks"
 msgstr "Árásir"
 
-#: src/help.cpp:1521
+#: src/help.cpp:1519
 msgid "unit help^Name"
 msgstr "Nafn"
 
-#: src/help.cpp:1522
+#: src/help.cpp:1520
 msgid "Type"
 msgstr "Tegund"
 
-#: src/help.cpp:1523
+#: src/help.cpp:1521
 msgid "Strikes"
 msgstr "Högg"
 
-#: src/help.cpp:1524
+#: src/help.cpp:1522
 msgid "Range"
 msgstr "Skotmál"
 
-#: src/help.cpp:1525
+#: src/help.cpp:1523
 msgid "Special"
 msgstr "Sérstakt"
 
-#: src/help.cpp:1571
+#: src/help.cpp:1569
 msgid "Resistances"
 msgstr "Mótstöður"
 
-#: src/help.cpp:1575
+#: src/help.cpp:1573
 msgid "Attack Type"
 msgstr "Tegund árásar"
 
-#: src/help.cpp:1576
+#: src/help.cpp:1574
 msgid "Resistance"
 msgstr "Mótstaða"
 
-#: src/help.cpp:1615
+#: src/help.cpp:1604
 msgid "Terrain Modifiers"
 msgstr "Landslags Áhrifavaldar"
 
-#: src/help.cpp:1619
+#: src/help.cpp:1608
 msgid "Terrain"
 msgstr "Jörð"
 
-#: src/help.cpp:1620
+#: src/help.cpp:1609
 msgid "Defense"
 msgstr "Vörn"
 
-#: src/help.cpp:1621
+#: src/help.cpp:1610
 msgid "Movement Cost"
 msgstr "Kostnaður Hreyfingar"
 
-#: src/help.cpp:1624
+#: src/help.cpp:1614
 msgid "Vision Cost"
 msgstr ""
 
-#: src/help.cpp:1626
+#: src/help.cpp:1617
 msgid "Jamming Cost"
 msgstr ""
 
-#: src/help.cpp:1904
+#: src/help.cpp:1899
 msgid "<header>text='Units of this race'</header>"
 msgstr ""
 
-#: src/help.cpp:2817
+#: src/help.cpp:2811
 msgid " < Back"
 msgstr " < Til baka"
 
-#: src/help.cpp:2818
+#: src/help.cpp:2812
 msgid "Forward >"
 msgstr "Áfram >"
 
-#: src/help.cpp:2926
+#: src/help.cpp:2920
 msgid "Reference to unknown topic: "
 msgstr "Tilvitnun í óþekkt umræðuefni: "
 
-#: src/help.cpp:3182
+#: src/help.cpp:3176
 msgid "corrupted original file"
 msgstr "skemmd upprunaleg skrá"
 
-#: src/help.cpp:3281
+#: src/help.cpp:3275
 msgid "Close"
 msgstr "Loka"
 
-#: src/help.cpp:3284
+#: src/help.cpp:3278
 msgid "The Battle for Wesnoth Help"
 msgstr "Bardaginn um Wesnoth Hjálp"
 
-#: src/help.cpp:3340
+#: src/help.cpp:3334
 msgid "Parse error when parsing help text: "
 msgstr ""
+
+#~ msgid ""
+#~ "Berserk:\n"
+#~ "Whether used offensively or defensively, this attack presses the "
+#~ "engagement until one of the combatants is slain, or 30 rounds of attacks "
+#~ "have occurred."
+#~ msgstr ""
+#~ "Berserk:\n"
+#~ "Þessi árásartegund þrýstir einvígið þar til annar hvor liggur dauður "
+#~ "niðri, eða þar til 30 umferðir hafa átt sér stað."
+
+#~ msgid ""
+#~ "Magical:\n"
+#~ "This attack always has a 70% chance to hit regardless of the defensive "
+#~ "ability of the unit being attacked."
+#~ msgstr ""
+#~ "Galdrar:\n"
+#~ "Þessi árás hefur alltaf 70% líkur á að hitta, hvað sem varnaraðstaðstöðu "
+#~ "skotmarks líður."
+
+#~ msgid "firststrike"
+#~ msgstr "fyrsta högg"
+
+#~ msgid ""
+#~ "First Strike:\n"
+#~ "This unit always strikes first with this attack, even if they are "
+#~ "defending."
+#~ msgstr ""
+#~ "Fyrsta högg:\n"
+#~ "Þessi eining fær alltaf að eiga fyrsta höggið, líka ef hún er í vörn"
 
 #~ msgid ""
 #~ "Feeding:\n"

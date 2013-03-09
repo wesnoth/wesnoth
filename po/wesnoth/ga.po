@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ga\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-12-07 20:59+0100\n"
+"POT-Creation-Date: 2013-03-09 08:51+0100\n"
 "PO-Revision-Date: 2012-02-20 16:40-0800\n"
 "Last-Translator: Carson Callis aka Mountian_King <tree_rings@rocketmail."
 "com>\n"
@@ -167,113 +167,124 @@ msgid "Compress savegames using bzip2"
 msgstr "Sábháil Comhbhrúite"
 
 #. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:171
+msgid "Experimental multiplayer lobby"
+msgstr ""
+
+#. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:172
+msgid ""
+"Replace the classic multiplayer lobby with a newer, experimental interface"
+msgstr ""
+
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:180
 msgid "Joystick support"
 msgstr "Tacaíocht Luamháin Stiúrtha"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:179
+#: data/advanced_preferences.cfg:187
 #, fuzzy
 msgid "Joystick: number of the scroll X-axis joystick"
 msgstr "Luamhán stiúrtha: uimhir an sá-aise"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:189
+#: data/advanced_preferences.cfg:197
 #, fuzzy
 msgid "Joystick: number of the scroll X-axis"
 msgstr "Luamhán stiúrtha: uimhir an sá-aise"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:199
+#: data/advanced_preferences.cfg:207
 #, fuzzy
 msgid "Joystick: number of the scroll Y-axis joystick"
 msgstr "Luamhán stiúrtha: uimhir an sá-aise"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:209
+#: data/advanced_preferences.cfg:217
 #, fuzzy
 msgid "Joystick: number of the scroll Y-axis"
 msgstr "Luamhán stiúrtha: uimhir an sá-aise"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:219
+#: data/advanced_preferences.cfg:227
 #, fuzzy
 msgid "Joystick: deadzone of the scrolling stick"
 msgstr "Luamhán stiúrtha:"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:229
+#: data/advanced_preferences.cfg:237
 #, fuzzy
 msgid "Joystick: number of the cursor X-axis joystick"
 msgstr "Luamhán stiúrtha: uimhir an sá-aise"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:239
+#: data/advanced_preferences.cfg:247
 #, fuzzy
 msgid "Joystick: number of the cursor X-axis"
 msgstr "Luamhán stiúrtha: uimhir an sá-aise"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:249
+#: data/advanced_preferences.cfg:257
 #, fuzzy
 msgid "Joystick: number of the cursor Y-axis joystick"
 msgstr "Luamhán stiúrtha: uimhir an sá-aise"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:259
+#: data/advanced_preferences.cfg:267
 #, fuzzy
 msgid "Joystick: number of the cursor Y-axis"
 msgstr "Luamhán stiúrtha: uimhir an sá-aise"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:269
+#: data/advanced_preferences.cfg:277
 #, fuzzy
 msgid "Joystick: deadzone of the cursor stick"
 msgstr "Luamhán stiúrtha:"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:279
+#: data/advanced_preferences.cfg:287
 #, fuzzy
 msgid "Joystick: number of the mouse X-axis joystick"
 msgstr "Luamhán stiúrtha: uimhir an sá-aise"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:289
+#: data/advanced_preferences.cfg:297
 #, fuzzy
 msgid "Joystick: number of the mouse X-axis"
 msgstr "Luamhán stiúrtha: uimhir an sá-aise"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:299
+#: data/advanced_preferences.cfg:307
 #, fuzzy
 msgid "Joystick: number of the mouse Y-axis joystick"
 msgstr "Luamhán stiúrtha: uimhir an sá-aise"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:309
+#: data/advanced_preferences.cfg:317
 #, fuzzy
 msgid "Joystick: number of the mouse Y-axis"
 msgstr "Luamhán stiúrtha: uimhir an sá-aise"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:319
+#: data/advanced_preferences.cfg:327
 #, fuzzy
 msgid "Joystick: deadzone of the mouse stick"
 msgstr "Luamhán stiúrtha:"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:329
+#: data/advanced_preferences.cfg:337
 #, fuzzy
 msgid "Joystick: number of the thrust axis joystick"
 msgstr "Luamhán stiúrtha: uimhir an sá-aise"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:339
+#: data/advanced_preferences.cfg:347
 msgid "Joystick: number of the thrust axis"
 msgstr "Luamhán stiúrtha: uimhir an sá-aise"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:349
+#: data/advanced_preferences.cfg:357
 msgid "Joystick: deadzone of the thruster"
 msgstr "Luamhán stiúrtha: marbhchrios an cheartaitheoir"
 
@@ -291,11 +302,2198 @@ msgstr "RCA IS"
 msgid "Multiplayer_AI^Experimental AI"
 msgstr "RCA IS"
 
+#. [ai]: id=ai_akihara
+#. [ai]: id=testing_ai_recruitment
+#: data/ai/dev/akihara_recruitment.cfg:6 data/ai/dev/testing_recruiting.cfg:5
+msgid "Experimental Recruitment AI"
+msgstr ""
+
+#. [ai]: id=formula_ai # id is needed to uniquely identify a MP AI, it is not needed in the scenario AI
+#: data/ai/dev/formula_ai.cfg:4
+msgid "Formula AI dev"
+msgstr ""
+
+#. [ai]: id=default_ai_poisoning
+#: data/ai/dev/formula_ai_poisoning.cfg:5
+msgid "Default AI with poisoning formula"
+msgstr ""
+
+#. [ai]: id=ai_idle
+#: data/ai/dev/idle_ai.cfg:4
+msgid "Idle AI"
+msgstr ""
+
+#. [lua]: init
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4636
+msgid ""
+"Enemy unit weight: The (negative) weight given to each enemy unit that can "
+"reach a potential target location.  Default: 100"
+msgstr ""
+
+#. [lua]: init
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4637
+msgid ""
+"My unit weight: The (positive) weight given to each of the AI's units that "
+"can reach a potential target location.  Default: 1"
+msgstr ""
+
+#. [lua]: init
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4638
+msgid ""
+"Goal distance weight: The (negative) weight for each step the unit is away "
+"from its goal location.\n"
+"Default: 3 -- thus, by default, being a step closer to the goal is as "
+"important as being in reach of 3 of AI's units."
+msgstr ""
+
+#. [lua]: init
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4639
+msgid ""
+"Terrain defense weight: The (positive) weight of the terrain defense rating "
+"for a potential target location.\n"
+"Default: 0.1 -- thus, by default, a difference of 30 in terrain defense "
+"rating is as important as being a step closer to the goal."
+msgstr ""
+
+#. [lua]: init
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4640
+msgid ""
+"Bearing: Everything else being equal, move protected unit toward or away "
+"from enemy groups.  Default: toward"
+msgstr ""
+
+#. [lua]: init
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4648
+msgid "Set AI parameters"
+msgstr ""
+
+#. [lua]: init
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4654
+msgid ""
+"Click on 'Close' without changing anything to use defaults.\n"
+"All weights must be 0 or larger.  Invalid inputs are converted to default "
+"values.\n"
+"Tooltips enabled for all parameters."
+msgstr ""
+
+#. [lua]: init
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4662
+#, fuzzy
+#| msgid "Enemy unit sighted!"
+#| msgid_plural "$enemies enemy units sighted!"
+msgid "Enemy unit weight  (default: 100)"
+msgstr "Chonacthas $enemies aonad na namhad!"
+
+#. [lua]: init
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4670
+msgid "My unit weight  (default: 1)"
+msgstr ""
+
+#. [lua]: init
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4678
+msgid "Goal distance weight  (default: 3)"
+msgstr ""
+
+#. [lua]: init
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4686
+msgid "Terrain defense weight  (default: 0.1)"
+msgstr ""
+
+#. [test]: id=The_Elves_Besieged
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:5
+msgid "The Elves Besieged"
+msgstr ""
+
+#. [side]
+#. [side]: type=Spearman, id=Konrad
+#. [unit]: type=Spearman, id=Konrad
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:34
+#: data/ai/micro_ais/scenarios/patrols.cfg:40
+#: data/ai/micro_ais/scenarios/patrols.cfg:94
+msgid "Konrad"
+msgstr ""
+
+#. [side]: type=Elvish Champion, id=Galdrad
+#. [side]: type=Elvish Shyde, id=Chantal
+#. [side]: type=Spearman, id=Konrad
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:46
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:156
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:176
+msgid "Rebels"
+msgstr ""
+
+#. [unit]: id=Delfador, type=Elder Mage
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:49
+msgid "Delfador"
+msgstr ""
+
+#. [side]: type=Orcish Warlord, id=Urug-Telfar
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:90
+msgid "Urug-Telfar"
+msgstr ""
+
+#. [side]: id=Vanak, type=Orcish Ruler
+#. [side]: type=Orcish Warlord, id=Knafa-Tan
+#. [side]: type=Orcish Warlord, id=Maga-Knafa
+#. [side]: type=Orcish Warlord, id=Urug-Telfar
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:102
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:116
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:134
+#: data/ai/micro_ais/scenarios/messenger-escort.cfg:23
+msgid "Orcs"
+msgstr ""
+
+#. [side]: type=Orcish Warlord, id=Knafa-Tan
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:109
+msgid "Knafa-Tan"
+msgstr ""
+
+#. [side]: type=Orcish Warlord, id=Maga-Knafa
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:127
+msgid "Maga-Knafa"
+msgstr ""
+
+#. [side]: type=Elvish Champion, id=Galdrad
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:146
+msgid "Galdrad"
+msgstr ""
+
+#. [side]: type=Elvish Shyde, id=Chantal
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:163
+msgid "Chantal"
+msgstr ""
+
+#. [message]: speaker=Konrad
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:213
+msgid ""
+"Master Delfador! Look, there are orcs coming from all directions! What shall "
+"we do?"
+msgstr ""
+
+#. [message]: speaker=Delfador
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:217
+msgid "There are too many to fight, far too many. We must escape!"
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:220
+msgid ""
+"This is a reenactment of scenario \"The Elves Besieged\" of the mainline "
+"campaign \"Heir to the Throne\", just that the AI is playing Konrad's side "
+"here.  The goal is to move Konrad to the signpost in the northwest, while "
+"keeping both Konrad and Delfador alive.  The same AI as in scenario "
+"\"Protect Unit"
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:226
+#, fuzzy
+#| msgid "Move leader here"
+msgid "Move Konrad here"
+msgstr "Bog do cheannfort anseo"
+
+#. [message]: speaker=unit
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:242
+msgid "Very well, we have made it this far! But where do we go next?"
+msgstr ""
+
+#. [message]: speaker=Delfador
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:246
+msgid ""
+"In HttT, we would travel north now, and try to make it to the Isle of "
+"Alduin. But for this demo campaign, we'll call it good here."
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:271
+msgid "I... I don’t think I can make it anymore."
+msgstr ""
+
+#. [message]: speaker=Delfador
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:275
+msgid "Prince... you must keep fighting! Nooooooo!"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:279
+msgid "It is over. I am doomed..."
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:293
+msgid "I have... have failed in my duty to protect the prince! I am defeated."
+msgstr ""
+
+#. [message]: speaker=Konrad
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:297
+msgid "Don’t die, Delfador! Please, you have to stay alive!"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:301
+msgid "Ugh!"
+msgstr ""
+
+#. [message]: speaker=Delfador
+#: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:312
+msgid ""
+"Oh, no! We have run out of time, they have arrived with reinforcements..."
+msgstr ""
+
+#: data/ai/micro_ais/scenarios/animals.cfg:4
+msgid ""
+"<u>General</u>: These AI's are set up to simulate (to some extent) how these "
+"animals behave in real life.  This includes that they are animals, meaning "
+"that they are not super smart.  As an example, the wolves generally hunt in "
+"a pack, but are easily distracted by prey coming into range.  They are also "
+"decent, but not great at cornering deer.  For the most part, this is "
+"intentional.\n"
+"\n"
+"<u>Bears (replaced by Ghasts), Spiders and Yetis</u> mostly just wander in "
+"their respective parts of the map.  They stay out of each other's way (and "
+"out of the way of the dogs), but do attack each other if cornered.  They "
+"attack the other, weaker animals (deer etc.) if those are within range.\n"
+"\n"
+"<u>Wolves</u> hunt in a pack.  They actively go after the closest deer (as "
+"long as it stays in the forest) and try to corner it (not always super "
+"successfully), but are easily distracted by other prey coming into range.  "
+"The wolves try to avoid getting into the range of bears, spiders, dogs and "
+"the yeti, except when they are going in for an attack.  If you let them move "
+"for long enough, they will also learn that it is not healthy to attack the "
+"tusklets.  When no deer is left, they wander randomly.  Note that, unlike "
+"the Wolves Multipack AI (used in a different scenario), this Wolves AI "
+"combines all wolves of the side in the same pack."
+msgstr ""
+
+#: data/ai/micro_ais/scenarios/animals.cfg:12
+msgid ""
+"Each <u>Deer (replaced by Vampire Bats)</u> wanders randomly on forest "
+"tiles, except when enemies get in its (the deer's) range, in which case it "
+"flees to the farthest point it can reach.\n"
+"\n"
+"<u>Tuskers (replaced by Ogres)</u> exhibit the same behavior as deer, except "
+"when an enemy is next to one of the tusklets.  This enemy will then "
+"experience the full wrath of an irate boar.\n"
+"\n"
+"<u>Tusklets (replaced by Young Ogres)</u> blindly follow the closest adult "
+"tusker, except when there is no tusker left, in which case they behave the "
+"same as deer.\n"
+"\n"
+"<u>Rabbits (replaced by Rats)</u> also wander randomly, but in addition "
+"disappear into their holes (replaced by straw bales; if any are within "
+"reach) when enemies are close.  They reappear out of their holes at the "
+"beginning of the turn, if it is safe.\n"
+"\n"
+"<u>Sheep dogs (replaced by Footpads)</u> try to keep their sheep safe.  This "
+"involves keeping them inside the area outlined by the path the dogs have "
+"worn into the meadow, positioning themselves in between the sheep and "
+"approaching enemies, and attacking the enemies if those get too close.  You "
+"might have to let the scenario play for quite some time before you get to "
+"see an interesting dog/wolf interaction.  If no active herding or protecting "
+"move is needed, the dogs go to a random location on the path.\n"
+"\n"
+"<u>Sheep (replaced by Troll Whelps)</u> wander aimlessly except when a sheep "
+"dog is next to them, in which case they run away from the dog.  The dogs "
+"exploit this by positioning themselves on the outside of the sheep, if "
+"possible.  Sheep also run away from approaching enemies.  The sheep, dogs "
+"and forest creatures (deer, tuskers, rabbits) have learned that they are no "
+"threat to each other and leave each other alone, demonstrating the enormous "
+"self control of a well trained sheep dog."
+msgstr ""
+
+#. [event]
+#. [test]: id=animals
+#: data/ai/micro_ais/scenarios/animals.cfg:27
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:44
+msgid "Animals"
+msgstr ""
+
+#. [side]: id=Rutburt, type=Outlaw
+#: data/ai/micro_ais/scenarios/animals.cfg:47
+#: data/ai/micro_ais/scenarios/wolves.cfg:26
+msgid "Humans"
+msgstr ""
+
+#. [side]
+#: data/ai/micro_ais/scenarios/animals.cfg:61
+msgid "Forest Creatures"
+msgstr ""
+
+#. [side]
+#: data/ai/micro_ais/scenarios/animals.cfg:76
+msgid "Ghasts"
+msgstr ""
+
+#. [side]
+#: data/ai/micro_ais/scenarios/animals.cfg:91
+msgid "Spiders"
+msgstr ""
+
+#. [side]
+#: data/ai/micro_ais/scenarios/animals.cfg:106
+msgid "Yetis"
+msgstr ""
+
+#. [event]
+#. [side]
+#. [test]: id=wolves
+#: data/ai/micro_ais/scenarios/animals.cfg:121
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:47
+#: data/ai/micro_ais/scenarios/wolves.cfg:5
+#: data/ai/micro_ais/scenarios/wolves.cfg:40
+msgid "Wolves"
+msgstr ""
+
+#. [side]
+#: data/ai/micro_ais/scenarios/animals.cfg:136
+#, fuzzy
+#| msgid "help"
+msgid "Whelps"
+msgstr "cúnamh"
+
+#. [set_menu_item]: id=m01_end_animals
+#. [set_menu_item]: id=m01_end_swarm
+#. [set_menu_item]: id=m01_end_wolves
+#: data/ai/micro_ais/scenarios/animals.cfg:214
+#: data/ai/micro_ais/scenarios/swarm.cfg:67
+#: data/ai/micro_ais/scenarios/wolves.cfg:96
+#, fuzzy
+#| msgid "End Scenario"
+msgid "End scenario"
+msgstr "Críochnaigh Mísean"
+
+#. [command]
+#. [then]
+#: data/ai/micro_ais/scenarios/animals.cfg:226
+#: data/ai/micro_ais/scenarios/bottleneck-defense.cfg:183
+#: data/ai/micro_ais/scenarios/recruiting.cfg:105
+#: data/ai/micro_ais/scenarios/swarm.cfg:73
+#: data/ai/micro_ais/scenarios/swarm.cfg:179
+#: data/ai/micro_ais/scenarios/wolves.cfg:102
+#: data/ai/micro_ais/scenarios/wolves.cfg:260
+msgid "Well, that was that."
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/animals.cfg:355
+msgid ""
+"<span color='#A00000'>Important:</span> The animal Micro AIs in this "
+"scenario are written for a number of animal unit types that do not exist in "
+"Wesnoth mainline, such as bears, sheep and sheep dogs, or deer.  In this "
+"test scenario, theses units have been replaced by mainline units.  If you "
+"want to get the \"full experience\" with the original animal unit types, "
+"check out the 'Animals' scenario in the 'AI Modification Demos' add-on."
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/animals.cfg:357
+msgid ""
+"This is a fun little scenario with a bunch of different animal AIs, mostly "
+"for watching only.  The animal AIs behave as follows:\n"
+"\n"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/ai/micro_ais/scenarios/animals.cfg:364
+#: data/ai/micro_ais/scenarios/bottleneck-defense.cfg:97
+#: data/ai/micro_ais/scenarios/protect-unit.cfg:136
+#: data/ai/micro_ais/scenarios/wolves.cfg:199
+msgid "Question for the Player"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/ai/micro_ais/scenarios/animals.cfg:367
+msgid ""
+"It is possible to include a human-controlled Side 1, so that the action "
+"stops once every turn for looking around (or to mess with things in debug "
+"mode).\n"
+"\n"
+"Note that there is no end to this scenario.  For demonstration purposes, any "
+"unit that is killed is replaced by another unit of the same type at the "
+"beginning of the next turn.  In order to end the scenario, there's a right-"
+"click option - but that only works in human-controlled mode.  In AI-only "
+"mode, you have to press 'Esc' or reload a previous savefile.\n"
+"\n"
+"Also note: The Animal AIs are coded as Micro AIs.  A Micro AI can be added "
+"and adapted to the need of a scenario easily using only WML and the "
+"[micro_ai] tag.  Check out the <span color='#00A000'>Micro AI wiki page</"
+"span> at http://wiki.wesnoth.org/Micro_AIs for more information."
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/ai/micro_ais/scenarios/animals.cfg:374
+msgid "<span font='16'>I'll just watch the animals.</span>"
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/ai/micro_ais/scenarios/animals.cfg:387
+#: data/ai/micro_ais/scenarios/wolves.cfg:222
+msgid "<span font='16'>I want to have control of Side 1.</span>"
+msgstr ""
+
+#. [objectives]
+#: data/ai/micro_ais/scenarios/animals.cfg:393
+msgid "Watch the animals do their things"
+msgstr ""
+
+#. [objective]: condition=win
+#: data/ai/micro_ais/scenarios/animals.cfg:395
+#: data/ai/micro_ais/scenarios/swarm.cfg:154
+#: data/ai/micro_ais/scenarios/wolves.cfg:234
+msgid "Use right-click option"
+msgstr ""
+
+#. [objective]: condition=lose
+#: data/ai/micro_ais/scenarios/animals.cfg:399
+#: data/ai/micro_ais/scenarios/wolves.cfg:238
+msgid "Death of Rutburt"
+msgstr ""
+
+#. [note]
+#: data/ai/micro_ais/scenarios/animals.cfg:403
+#: data/ai/micro_ais/scenarios/swarm.cfg:162
+#: data/ai/micro_ais/scenarios/wolves.cfg:242
+msgid "Check out the right-click menu options for additional actions"
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/animals.cfg:420
+msgid ""
+"Yowl!\n"
+"Translation: Those Ogres are mean!  We better stay away from them and their "
+"young."
+msgstr ""
+
+#. [test]: id=bottleneck-defense
+#: data/ai/micro_ais/scenarios/bottleneck-defense.cfg:5
+msgid "Bottleneck Defense"
+msgstr ""
+
+#. [side]: type=Orcish Leader, id=Big Bad Orc
+#: data/ai/micro_ais/scenarios/bottleneck-defense.cfg:38
+msgid "Big Bad Orc"
+msgstr ""
+
+#. [event]: (id=Big Bad Orc) profile profile}
+#: data/ai/micro_ais/scenarios/bottleneck-defense.cfg:85
+msgid "All right, chaps.  Those orcs need to be stopped."
+msgstr ""
+
+#. [event]: (id=Big Bad Orc) profile profile}
+#. [event]: id=Kraa profile profile}
+#. [event]: id=Vanak profile profile}
+#: data/ai/micro_ais/scenarios/bottleneck-defense.cfg:87
+#: data/ai/micro_ais/scenarios/guardians.cfg:427
+#: data/ai/micro_ais/scenarios/messenger-escort.cfg:136
+msgid "They there!  We them get!"
+msgstr ""
+
+#. [event]: (id=Big Bad Orc) profile profile}
+#: data/ai/micro_ais/scenarios/bottleneck-defense.cfg:90
+msgid ""
+"We need to hold that pass for as long as we can.  Let's put our strongest "
+"fighters on the front line and bring injured units to the back for healing.  "
+"If we're careful enough, we might even win this battle.  I'll join you as "
+"soon as I'm done recruiting and do my share of the fighting.\n"
+"\n"
+"Note: The Bottleneck Defense AI is coded as a Micro AI.  A Micro AI can be "
+"added and adapted to the need of a scenario easily using only WML and the "
+"[micro_ai] tag.  Check out the <span color='#00A000'>Micro AI wiki page</"
+"span> at http://wiki.wesnoth.org/Micro_AIs for more information."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/ai/micro_ais/scenarios/bottleneck-defense.cfg:99
+msgid ""
+"In this scenario, the AI playing the humans in the east is instructed to "
+"form a defensive line at the pass and hold off the orcs for as long as "
+"possible. Do you want to play the orc side or let the default (RCA) AI do "
+"that?"
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/ai/micro_ais/scenarios/bottleneck-defense.cfg:101
+msgid "<span font='16'>I'll watch the two AI's fight it out.</span>"
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/ai/micro_ais/scenarios/bottleneck-defense.cfg:104
+msgid "<span font='16'>I'll play the orcs.</span>"
+msgstr ""
+
+#. [objectives]
+#: data/ai/micro_ais/scenarios/bottleneck-defense.cfg:115
+#, fuzzy
+#| msgid "Save the Map As"
+msgid "Take the pass"
+msgstr "Sábháil Léarscáil Mar"
+
+#. [objective]: condition=win
+#: data/ai/micro_ais/scenarios/bottleneck-defense.cfg:117
+msgid "Defeat all humans"
+msgstr ""
+
+#. [objective]: condition=lose
+#: data/ai/micro_ais/scenarios/bottleneck-defense.cfg:121
+msgid "Death of Big Bad Orc"
+msgstr ""
+
+#. [objective]: condition=lose
+#: data/ai/micro_ais/scenarios/bottleneck-defense.cfg:125
+msgid "Only one orc remains"
+msgstr ""
+
+#. [then]
+#: data/ai/micro_ais/scenarios/bottleneck-defense.cfg:150
+msgid ""
+"I may have fallen, but we will continue to defend the pass to the last man!"
+msgstr ""
+
+#. [event]
+#. [test]: id=dragon
+#: data/ai/micro_ais/scenarios/dragon.cfg:5
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:53
+msgid "Dragon"
+msgstr ""
+
+#. [side]
+#. [unit]: id=Rowck, type=Fire Dragon
+#: data/ai/micro_ais/scenarios/dragon.cfg:20
+#: data/ai/micro_ais/scenarios/dragon.cfg:55
+msgid "Rowck"
+msgstr ""
+
+#. [side]: type=Dread Bat, id=Dreadful Bat
+#: data/ai/micro_ais/scenarios/dragon.cfg:33
+msgid "Dreadful Bat"
+msgstr ""
+
+#. [event]
+#. [menu]: id=button-endturn
+#: data/ai/micro_ais/scenarios/dragon.cfg:48
+#: data/ai/micro_ais/scenarios/guardians.cfg:84
+#: data/ai/micro_ais/scenarios/lurkers.cfg:368
+#: data/ai/micro_ais/scenarios/patrols.cfg:156 data/themes/default.cfg:147
+#: data/themes/dfool.cfg:158 data/themes/widescreen.cfg:179
+msgid "End Scenario"
+msgstr "Críochnaigh Mísean"
+
+#. [event]
+#: data/ai/micro_ais/scenarios/dragon.cfg:51
+msgid "Rowck's Home"
+msgstr ""
+
+#. [event]: (id=Dreadful Bat) profile profile}
+#: data/ai/micro_ais/scenarios/dragon.cfg:84
+msgid "Be careful to stay out of the way of that dragon.  He's a mean one."
+msgstr ""
+
+#. [event]: (id=Dreadful Bat) profile profile}
+#: data/ai/micro_ais/scenarios/dragon.cfg:87
+msgid ""
+"Hi there.  I am Rowck and here is what I do:\n"
+"When hungry, I move around part of the map in a random wander until I get "
+"into range of an enemy.  If enemies are within range, I attack and devour "
+"the weakest of them.  After that, I retreat to my rest location, where I "
+"stay for a certain number of turns or until fully healed.\n"
+"A few details (features, not bugs, but can be changed if desired):\n"
+"- If my way home is blocked on the return, the normal RCA AI takes over my "
+"behavior.\n"
+"- I will, however, attack any enemy occupying my rest hex, if I can get "
+"there.\n"
+"- A kill only makes me go home when I am the attacker, not as defender.\n"
+"- Occasionally I will not move at all while wandering (a dragon has to rest "
+"sometimes!)\n"
+"\n"
+"Note: The Hunter AI is coded as a Micro AI.  A Micro AI can be added and "
+"adapted to the need of a scenario easily using only WML and the [micro_ai] "
+"tag.  Check out the <span color='#00A000'>Micro AI wiki page</span> at "
+"http://wiki.wesnoth.org/Micro_AIs for more information."
+msgstr ""
+
+#. [objectives]
+#: data/ai/micro_ais/scenarios/dragon.cfg:99
+msgid "Move the bats around to explore how Rowck reacts"
+msgstr ""
+
+#. [objective]: condition=win
+#: data/ai/micro_ais/scenarios/dragon.cfg:101
+#, fuzzy
+#| msgid "Defeat"
+msgid "Defeat Rowck"
+msgstr "Díomua"
+
+#. [objective]: condition=win
+#: data/ai/micro_ais/scenarios/dragon.cfg:105
+msgid "Move the lead bat to the signpost"
+msgstr ""
+
+#. [objective]: condition=lose
+#: data/ai/micro_ais/scenarios/dragon.cfg:109
+msgid "Death of the bat leader"
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/dragon.cfg:142
+msgid "I'm out of here."
+msgstr ""
+
+#. [event]
+#. [test]: id=guardians
+#: data/ai/micro_ais/scenarios/guardians.cfg:17
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:56
+msgid "Guardians"
+msgstr ""
+
+#. [side]: id=Kraa, type=Gryphon
+#: data/ai/micro_ais/scenarios/guardians.cfg:30
+msgid "Kraa"
+msgstr ""
+
+#. [side]: id=Kraa, type=Gryphon
+#: data/ai/micro_ais/scenarios/guardians.cfg:36
+#: data/ai/micro_ais/scenarios/swarm.cfg:26
+msgid "Gryphons"
+msgstr ""
+
+#. [side]: type=Orcish Leader, id=Another Bad Orc
+#: data/ai/micro_ais/scenarios/guardians.cfg:48
+msgid "Another Bad Orc"
+msgstr ""
+
+#. [unit]: type=Dwarvish Guardsman, id=guardian1
+#: data/ai/micro_ais/scenarios/guardians.cfg:95
+msgid "Guardian 1"
+msgstr ""
+
+#. [variables]
+#: data/ai/micro_ais/scenarios/guardians.cfg:99
+#: data/ai/micro_ais/scenarios/guardians.cfg:110
+msgid "ai_special=guardian"
+msgstr ""
+
+#. [unit]: type=Dwarvish Guardsman, id=guardian2
+#: data/ai/micro_ais/scenarios/guardians.cfg:106
+msgid "Guardian 2"
+msgstr ""
+
+#. [unit]: type=Giant Rat, id=coward1
+#: data/ai/micro_ais/scenarios/guardians.cfg:119
+msgid "Coward 1"
+msgstr ""
+
+#. [variables]
+#: data/ai/micro_ais/scenarios/guardians.cfg:125
+msgid "coward r=5"
+msgstr ""
+
+#. [unit]: type=Giant Rat, id=coward2
+#: data/ai/micro_ais/scenarios/guardians.cfg:142
+msgid "Coward 2"
+msgstr ""
+
+#. [variables]
+#: data/ai/micro_ais/scenarios/guardians.cfg:148
+msgid ""
+"coward r=5\n"
+"    s=24 5"
+msgstr ""
+
+#. [unit]: type=Giant Rat, id=coward3
+#: data/ai/micro_ais/scenarios/guardians.cfg:167
+msgid "Coward 3"
+msgstr ""
+
+#. [variables]
+#: data/ai/micro_ais/scenarios/guardians.cfg:173
+msgid ""
+"   coward r=5\n"
+" s=24,5 a=24,15"
+msgstr ""
+
+#. [unit]: type=Giant Rat, id=coward4
+#: data/ai/micro_ais/scenarios/guardians.cfg:193
+msgid "Coward 4"
+msgstr ""
+
+#. [variables]
+#: data/ai/micro_ais/scenarios/guardians.cfg:199
+msgid ""
+"coward r=5\n"
+"    s=32,--"
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/guardians.cfg:214
+msgid "Move gryphons here to see different coward reactions"
+msgstr ""
+
+#. [unit]: type=Troll, id=return1
+#: data/ai/micro_ais/scenarios/guardians.cfg:223
+msgid "Return Guardian 1"
+msgstr ""
+
+#. [variables]
+#: data/ai/micro_ais/scenarios/guardians.cfg:226
+msgid "return 20,2"
+msgstr ""
+
+#. [unit]: type=Troll Whelp, id=return2
+#: data/ai/micro_ais/scenarios/guardians.cfg:243
+msgid "Return Guardian 2"
+msgstr ""
+
+#. [variables]
+#: data/ai/micro_ais/scenarios/guardians.cfg:246
+msgid "return 21,9"
+msgstr ""
+
+#. [unit]: type=Troll Whelp, id=home1
+#: data/ai/micro_ais/scenarios/guardians.cfg:264
+msgid "Home Guard 1"
+msgstr ""
+
+#. [variables]
+#: data/ai/micro_ais/scenarios/guardians.cfg:267
+msgid "home 19,2"
+msgstr ""
+
+#. [unit]: type=Troll, id=home 2
+#: data/ai/micro_ais/scenarios/guardians.cfg:276
+msgid "Home Guard 2"
+msgstr ""
+
+#. [variables]
+#: data/ai/micro_ais/scenarios/guardians.cfg:279
+msgid "home 21,10"
+msgstr ""
+
+#. [unit]: type=Skeleton Archer, id=stationed1
+#: data/ai/micro_ais/scenarios/guardians.cfg:289
+msgid "Stationed Guardian 1"
+msgstr ""
+
+#. [variables]
+#: data/ai/micro_ais/scenarios/guardians.cfg:292
+msgid ""
+" stationed r=4\n"
+"s=2,14 g=3,13"
+msgstr ""
+
+#. [unit]: type=Skeleton, id=stationed2
+#: data/ai/micro_ais/scenarios/guardians.cfg:312
+msgid "Stationed Guardian 2"
+msgstr ""
+
+#. [variables]
+#: data/ai/micro_ais/scenarios/guardians.cfg:315
+msgid ""
+" stationed r=4\n"
+"s=4,14 g=7,13"
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/guardians.cfg:331
+#, fuzzy
+#| msgid "Invalid location"
+msgid "Guarded Location"
+msgstr "Suíomh neamhbhailí"
+
+#. [event]
+#: data/ai/micro_ais/scenarios/guardians.cfg:332
+#, fuzzy
+#| msgid "Faction"
+msgid "Station 1"
+msgstr "Faicsean"
+
+#. [event]
+#: data/ai/micro_ais/scenarios/guardians.cfg:333
+#, fuzzy
+#| msgid "Faction"
+msgid "Station 2"
+msgstr "Faicsean"
+
+#. [command]
+#. [set_menu_item]: id=m01_guardian
+#: data/ai/micro_ais/scenarios/guardians.cfg:351
+#: data/ai/micro_ais/scenarios/guardians.cfg:357
+msgid "Standard WML Guardian"
+msgstr ""
+
+#. [command]
+#: data/ai/micro_ais/scenarios/guardians.cfg:357
+msgid ""
+"This is the built-in WML guardian coded using 'ai_special=guardian'.  These "
+"guardians attack if there is an enemy within their movement range, otherwise "
+"they do nothing (except maybe retreating to a village for healing)."
+msgstr ""
+
+#. [command]
+#. [set_menu_item]: id=m02_return
+#: data/ai/micro_ais/scenarios/guardians.cfg:362
+#: data/ai/micro_ais/scenarios/guardians.cfg:368
+msgid "Return Guardian"
+msgstr ""
+
+#. [command]
+#: data/ai/micro_ais/scenarios/guardians.cfg:368
+msgid ""
+"A 'return guardian' is a variation of the standard Wesnoth guardian. It has "
+"an assigned guard position (GP) to which it returns after attacks on "
+"approaching enemies:\n"
+"- If at GP with no enemy in reach, do nothing.\n"
+"- If at GP with enemy in reach, leave attack to default AI (note that this "
+"may include not attacking if the enemy is deemed too strong).\n"
+"- If not at GP, return there, no matter whether an enemy is in reach or "
+"not.\n"
+"- If enemies are blocking your way back, do your best to get there anyway.\n"
+"- If you end up next to an enemy on the way back, attack after the move."
+msgstr ""
+
+#. [command]
+#. [set_menu_item]: id=m03_home
+#: data/ai/micro_ais/scenarios/guardians.cfg:378
+#: data/ai/micro_ais/scenarios/guardians.cfg:384
+msgid "Home Guard"
+msgstr ""
+
+#. [command]
+#: data/ai/micro_ais/scenarios/guardians.cfg:384
+msgid ""
+"A 'home guard' is a variant on the 'guardian' AI special. With this variant, "
+"the unit has an assigned 'home' location, and will return there if not "
+"involved in combat and if not going to a village, whether for healing or to "
+"capture it this turn. (By contrast, the standard guardian AI will cause the "
+"unit to stay where it last attacked.) This differs from 'return guardian' in "
+"that a home guard will press the attack, possibly getting drawn quite far "
+"from 'home', rather than returning after each attack.  (It can also be lured "
+"away by a string of closely-placed villages, but that is something a map "
+"builder can control.)\n"
+"This also demonstrates how to combine candidate actions from Formula AI and "
+"Lua AI in one side.  The home guard is written in Formula AI, while the "
+"return and stationed guardians and the cowards are written in Lua AI.  In "
+"addition the non-guardian units of the side follow the default AI behavior."
+msgstr ""
+
+#. [command]
+#. [set_menu_item]: id=m04_stationed
+#: data/ai/micro_ais/scenarios/guardians.cfg:390
+#: data/ai/micro_ais/scenarios/guardians.cfg:396
+msgid "Stationed Guardian"
+msgstr ""
+
+#. [command]
+#: data/ai/micro_ais/scenarios/guardians.cfg:396
+msgid ""
+"A 'stationed guardian' is another variation of the standard Wesnoth guardian "
+"with a somewhat more complex behavior than that of the 'return guardian'. "
+"Two positions are defined for it, a 'station' and a 'guarded location', as "
+"well as a 'distance'. The behavior is as follows:\n"
+"- If no enemy is within 'distance' of the guard's current position, do "
+"nothing.\n"
+"- Otherwise: If an enemy is within 'distance' of the guard, but not also "
+"within the same distance of the guarded location and the station (all of "
+"this simultaneously), move the guard in the direction of the station.\n"
+"- Otherwise:\n"
+"  - Pick the enemy unit that is closest to the guarded location.\n"
+"  - If we can reach it, pick the adjacent hex with the highest defense "
+"rating and attack from there.\n"
+"  - If not in reach, move toward this unit."
+msgstr ""
+
+#. [command]
+#. [set_menu_item]: id=m05_coward
+#: data/ai/micro_ais/scenarios/guardians.cfg:407
+#: data/ai/micro_ais/scenarios/guardians.cfg:413
+msgid "Coward"
+msgstr ""
+
+#. [command]
+#: data/ai/micro_ais/scenarios/guardians.cfg:413
+msgid ""
+"Cowards are units that, like guardians, sit around doing nothing until an "
+"enemy comes into range.  Unlike guardians, however, they run away once "
+"enemies approach. Applications might be wild animals, unarmed civilians "
+"getting in the way of a battle, etc.  The coward macro can be called with "
+"two optional locations, 'seek' and 'avoid':\n"
+"- If neither is given, the coward retreats to the position farthest away "
+"from the approaching enemies.\n"
+"- If 'seek' is given, it preferentially goes toward that location (but "
+"getting away from enemies takes priority).\n"
+"- If 'avoid' is given, it in addition tries to avoid that location (with "
+"both maximizing distance from enemies and going toward 'seek' taking "
+"priority).\n"
+"- Both 'seek' and 'avoid' may consist of only one coordinate ('x' or 'y'), "
+"in which case not a single hex, but a line of hexes is sought or avoided."
+msgstr ""
+
+#. [event]: id=Kraa profile profile}
+#: data/ai/micro_ais/scenarios/guardians.cfg:426
+msgid "Kraahhh!!!!"
+msgstr ""
+
+#. [event]: id=Kraa profile profile}
+#: data/ai/micro_ais/scenarios/guardians.cfg:429
+msgid ""
+"Gryphons of the High Plains, look at all these enemies.  They don't behave "
+"normally.  Most of them don't move at all unless we get close.  Let's check "
+"out how they react to us.\n"
+"\n"
+"Note to the player: the right-click context menu provides information about "
+"each of the units' behavior.\n"
+"\n"
+"Another note: Most of the Guardian AIs are coded as Micro AIs.  A Micro AI "
+"can be added and adapted to the need of a scenario easily using only WML and "
+"the [micro_ai] tag.  Check out the <span color='#00A000'>Micro AI wiki page</"
+"span> at http://wiki.wesnoth.org/Micro_AIs for more information."
+msgstr ""
+
+#. [objectives]
+#: data/ai/micro_ais/scenarios/guardians.cfg:438
+msgid "Move the Gryphons around to explore how the guardians react"
+msgstr ""
+
+#. [objective]: condition=win
+#: data/ai/micro_ais/scenarios/guardians.cfg:440
+#: data/ai/micro_ais/scenarios/patrols.cfg:211
+#, fuzzy
+#| msgid "Defeat enemy leader(s)"
+msgid "Defeat all enemy units"
+msgstr "Buaigh ar (an/na) ceannfo(i)rt naimhdeach(a)"
+
+#. [objective]: condition=win
+#: data/ai/micro_ais/scenarios/guardians.cfg:444
+msgid "Move Kraa to the signpost"
+msgstr ""
+
+#. [objective]: condition=lose
+#: data/ai/micro_ais/scenarios/guardians.cfg:448
+msgid "Death of Kraa"
+msgstr ""
+
+#. [note]
+#: data/ai/micro_ais/scenarios/guardians.cfg:452
+msgid ""
+"Check out the right-click menu options for information on each guardian type"
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/guardians.cfg:507
+msgid ""
+"Gryphons of the High Plains, it is time to return to said plains.  Follow me."
+msgstr ""
+
+#. [test]: id=healer_support
+#: data/ai/micro_ais/scenarios/healer_support.cfg:5
+msgid "Healer Support"
+msgstr ""
+
+#. [side]: id=Rebels1, type=Elvish Ranger
+#: data/ai/micro_ais/scenarios/healer_support.cfg:21
+msgid "Rebels 1"
+msgstr ""
+
+#. [side]: id=Rebels2, type=Elvish Marksman
+#: data/ai/micro_ais/scenarios/healer_support.cfg:37
+msgid "Rebels 2"
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/healer_support.cfg:83
+msgid ""
+"In this scenario, we demonstrate the use of the Healer Support Micro AI.  "
+"This AI configures the healers of a side to stay behind the battle lines and "
+"heal injured and/or threatened units rather than participate in the attacks "
+"under all circumstances.  It includes several configurable options (which "
+"are set differently for the two sides in this scenario) that determine how "
+"aggressive/careful the healers are, whether they also attack, how much risk "
+"they are willing to take, etc.\n"
+"\n"
+"For clarity, each healer announces her upcoming support move.  If you don't "
+"want to see that each time, just hit 'esc' when it happens the first time.\n"
+"\n"
+"Note: The Healer Support AI is coded as a Micro AI.  A Micro AI can be added "
+"and adapted to the need of a scenario easily using only WML and the "
+"[micro_ai] tag.  Check out the <span color='#00A000'>Micro AI wiki page</"
+"span> at http://wiki.wesnoth.org/Micro_AIs for more information."
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/healer_support.cfg:99
+msgid "Argh!  They got us..."
+msgstr ""
+
+#. [test]: id=lurkers
+#: data/ai/micro_ais/scenarios/lurkers.cfg:172
+msgid "Lurkers of the Swamp"
+msgstr ""
+
+#. [side]: id=Pekzs, type=Saurian Soothsayer
+#: data/ai/micro_ais/scenarios/lurkers.cfg:191
+msgid "Pekzs"
+msgstr ""
+
+#. [side]: type=Saurian Oracle
+#: data/ai/micro_ais/scenarios/lurkers.cfg:207
+msgid "Micro AI Lurkers (saurians, stationary)"
+msgstr ""
+
+#. [side]: type=Saurian Oracle
+#: data/ai/micro_ais/scenarios/lurkers.cfg:224
+msgid "Micro AI Lurkers (saurians, wanderers)"
+msgstr ""
+
+#. [side]: type=Naga Warrior
+#: data/ai/micro_ais/scenarios/lurkers.cfg:241
+msgid "Micro AI Lurkers (nagas)"
+msgstr ""
+
+#. [side]: type=Saurian Oracle
+#: data/ai/micro_ais/scenarios/lurkers.cfg:258
+msgid "WML Lurkers (saurians)"
+msgstr ""
+
+#. [side]: type=Saurian Oracle
+#: data/ai/micro_ais/scenarios/lurkers.cfg:274
+msgid "Formula AI Lurkers (saurians)"
+msgstr ""
+
+#. [set_menu_item]: id=m01_menu_lurker2
+#: data/ai/micro_ais/scenarios/lurkers.cfg:373
+msgid "Place a Side 2 lurker"
+msgstr ""
+
+#. [set_menu_item]: id=m01_menu_lurker3
+#: data/ai/micro_ais/scenarios/lurkers.cfg:385
+msgid "Place a Side 3 lurker"
+msgstr ""
+
+#. [set_menu_item]: id=m01_menu_lurker4
+#: data/ai/micro_ais/scenarios/lurkers.cfg:397
+msgid "Place a Side 4 lurker"
+msgstr ""
+
+#. [set_menu_item]: id=m01_menu_lurker5
+#: data/ai/micro_ais/scenarios/lurkers.cfg:409
+msgid "Place a Side 5 lurker"
+msgstr ""
+
+#. [set_menu_item]: id=m01_menu_lurker6
+#: data/ai/micro_ais/scenarios/lurkers.cfg:421
+msgid "Place a Side 6 lurker"
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/lurkers.cfg:436
+msgid ""
+"In this scenario we demonstrate the Lurker Micro AI.  A lurker is a unit "
+"that is capable of moving across most terrains, but that only stops on and "
+"attacks from specific terrain.  It might also have the ability to hide on "
+"this terrain (which is the reason why this is called the Lurker AI).\n"
+"\n"
+"Lurkers move individually without any strategy and always attack the weakest "
+"enemy within their reach.  If no enemy is in reach, the lurker does a random "
+"move instead - or it just sits and waits (lurks)."
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/lurkers.cfg:441
+msgid ""
+"Three different lurker behaviors are set up here using the [micro_ai] tag "
+"with different parameters:\n"
+"\n"
+"Side 2 (blue): saurians attacking only from swamp.  If no enemy is in range, "
+"they do not move.\n"
+"\n"
+"Side 3 (green): saurians attacking only from swamp.  If no enemy is in "
+"range, they wander randomly (on swamp only).\n"
+"\n"
+"Side 4 (purple): nagas wandering only on water terrain, but attacking from "
+"both water and swamp.\n"
+"\n"
+"We also added two other sides, which demonstrate lurker behavior coded in "
+"WML (Side 5, gray) and Formula AI (Side 6, brown)."
+msgstr ""
+
+#. [event]
+#. [event]: id=Konrad profile profile}
+#. [event]: id=Vanak profile profile}
+#: data/ai/micro_ais/scenarios/lurkers.cfg:451
+#: data/ai/micro_ais/scenarios/messenger-escort.cfg:140
+#: data/ai/micro_ais/scenarios/patrols.cfg:195
+#, fuzzy
+#| msgid "Notes:"
+msgid "Notes"
+msgstr "Nótaí:"
+
+#. [event]
+#: data/ai/micro_ais/scenarios/lurkers.cfg:451
+msgid ""
+"You can use the right-click context menu to add additional lurkers.\n"
+"\n"
+"Any unit not adjacent to swamp (and water, for the nagas) is safe from the "
+"lurkers, thus it is easy to keep Pekzs from being attacked.\n"
+"\n"
+"The Lua Lurker AI is coded as a Micro AI.  A Micro AI can be added and "
+"adapted to the need of a scenario easily using only WML and the [micro_ai] "
+"tag.  Check out the <span color='#00A000'>Micro AI wiki page</span> at "
+"http://wiki.wesnoth.org/Micro_AIs for more information."
+msgstr ""
+
+#. [objectives]
+#: data/ai/micro_ais/scenarios/lurkers.cfg:460
+msgid "Watch the lurkers move around and fight them if you want"
+msgstr ""
+
+#. [objective]: condition=win
+#: data/ai/micro_ais/scenarios/lurkers.cfg:462
+#, fuzzy
+#| msgid "Clear all orders"
+msgid "Defeat all lurkers"
+msgstr "Glan orduithe uile"
+
+#. [objective]: condition=win
+#: data/ai/micro_ais/scenarios/lurkers.cfg:466
+msgid "Move Pekzs to the signpost"
+msgstr ""
+
+#. [objective]: condition=lose
+#: data/ai/micro_ais/scenarios/lurkers.cfg:470
+msgid "Death of Pekzs"
+msgstr ""
+
+#. [note]
+#: data/ai/micro_ais/scenarios/lurkers.cfg:474
+msgid "Right-click on unoccupied swamp hexes to add more lurkers"
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/lurkers.cfg:519
+msgid ""
+"Zzanksss for helping me wizz zzossse lurkerss.  Hope to sssee you again "
+"ssometime."
+msgstr ""
+
+#. [test]: id=messenger-escort
+#: data/ai/micro_ais/scenarios/messenger-escort.cfg:5
+msgid "Messenger Escort"
+msgstr ""
+
+#. [side]: id=Vanak, type=Orcish Ruler
+#: data/ai/micro_ais/scenarios/messenger-escort.cfg:17
+msgid "Vanak"
+msgstr ""
+
+#. [event]
+#. [side]
+#. [unit]: type=Dragoon, id=messenger
+#: data/ai/micro_ais/scenarios/messenger-escort.cfg:36
+#: data/ai/micro_ais/scenarios/messenger-escort.cfg:72
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:71
+#, fuzzy
+#| msgid "Message:"
+msgid "Messenger"
+msgstr "Teachtaireacht:"
+
+#. [event]
+#: data/ai/micro_ais/scenarios/messenger-escort.cfg:122
+msgid "Messanger Waypoint 1"
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/messenger-escort.cfg:124
+msgid "Messenger Waypoint 2"
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/messenger-escort.cfg:126
+msgid "Messenger Waypoint 3"
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/messenger-escort.cfg:129
+#, fuzzy
+#| msgid "Move leader here"
+msgid "AI moves Messenger here"
+msgstr "Bog do cheannfort anseo"
+
+#. [event]: id=Vanak profile profile}
+#: data/ai/micro_ais/scenarios/messenger-escort.cfg:138
+msgid ""
+"Men, I need to get to that signpost in the north, to get the message to our "
+"leader.  Let's head up there as quickly as we can."
+msgstr ""
+
+#. [event]: id=Vanak profile profile}
+#: data/ai/micro_ais/scenarios/messenger-escort.cfg:140
+msgid ""
+"The Messenger Escort AI will try to move the dragoon messenger to the "
+"signpost in the north, while protecting him as well as possible with the "
+"other units.  Vanak's orcs need to stop him.\n"
+"\n"
+"Note that the messenger route is set up through a series of waypoints here "
+"simply to demonstrate how to use waypoints.  On this map, using only a "
+"single waypoint at the end of the route would work just as well (or probably "
+"even better).\n"
+"\n"
+"Also note that the messenger does not have to get exactly to each signpost "
+"(except for the last one), getting close is good enough.\n"
+"\n"
+"The Messenger Escort AI is coded as a Micro AI.  A Micro AI can be added and "
+"adapted to the need of a scenario easily using only WML and the [micro_ai] "
+"tag.  Check out the <span color='#00A000'>Micro AI wiki page</span> at "
+"http://wiki.wesnoth.org/Micro_AIs for more information."
+msgstr ""
+
+#. [objective]: condition=win
+#: data/ai/micro_ais/scenarios/messenger-escort.cfg:152
+msgid "Defeat the messenger"
+msgstr ""
+
+#. [objective]: condition=lose
+#: data/ai/micro_ais/scenarios/messenger-escort.cfg:156
+msgid "Messenger gets to the signpost"
+msgstr ""
+
+#. [objective]: condition=lose
+#: data/ai/micro_ais/scenarios/messenger-escort.cfg:160
+msgid "Death of Vanak"
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/messenger-escort.cfg:174
+msgid "I made it!  Now our people will be safe."
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/messenger-escort.cfg:186
+msgid "Nooo!  All is lost.  We will never stop the orcs now!"
+msgstr ""
+
+#. [event]
+#. [test]: id=patrols
+#: data/ai/micro_ais/scenarios/patrols.cfg:5
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:74
+msgid "Patrols"
+msgstr ""
+
+#. [side]: id=Gertburt, type=Outlaw
+#: data/ai/micro_ais/scenarios/patrols.cfg:18
+msgid "Gertburt"
+msgstr ""
+
+#. [side]: id=Gertburt, type=Outlaw
+#: data/ai/micro_ais/scenarios/patrols.cfg:26
+msgid "Bandits"
+msgstr ""
+
+#. [side]
+#. [unit]: type=Orcish Slayer, id=Urudin
+#: data/ai/micro_ais/scenarios/patrols.cfg:56
+#: data/ai/micro_ais/scenarios/patrols.cfg:116
+msgid "Urudin"
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/patrols.cfg:159
+msgid "Konrad Waypoint 1"
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/patrols.cfg:161
+msgid "Konrad Waypoint 2"
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/patrols.cfg:163
+msgid "Konrad Final Waypoint"
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/patrols.cfg:166
+msgid "Patrol Waypoint 1"
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/patrols.cfg:168
+msgid "Patrol Waypoint 2"
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/patrols.cfg:170
+msgid "Patrol Waypoint 3"
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/patrols.cfg:172
+msgid "Patrol Waypoint 4"
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/patrols.cfg:175
+msgid "Urudin retreats here"
+msgstr ""
+
+#. [event]: id=Konrad profile profile}
+#: data/ai/micro_ais/scenarios/patrols.cfg:183
+msgid ""
+"Hello!  I'm a Konrad impostor.  We are going to demonstrate the Patrol AI to "
+"you in this scenario.\n"
+"\n"
+"I am heading for the keep east of the central mountain via a couple "
+"waypoints in the south.  I will stay there once I get there. By contrast, "
+"those two fellas in the center are perpetually circling the mountain, one of "
+"them always in the same direction, the other changing directions after every "
+"lap.\n"
+"\n"
+"All of this is implemented by use of the same [micro_ai] tag."
+msgstr ""
+
+#. [event]: id=Konrad profile profile}
+#: data/ai/micro_ais/scenarios/patrols.cfg:190
+msgid ""
+"And I am Urudin.  I will attack my enemies for a few turns, but will retreat "
+"toward the right edge of the map if my hitpoints are below half of maximum "
+"or by Turn 5, whatever happens first.\n"
+"\n"
+"This is an AI separate from the Patrols of Side 2."
+msgstr ""
+
+#. [event]: id=Konrad profile profile}
+#: data/ai/micro_ais/scenarios/patrols.cfg:195
+msgid ""
+"You, as the player, are in charge of Gertburt's bandits in this scenario.  "
+"You can either simply watch the patrols move around, or you can move units "
+"into their way.  The three patrol units are all instructed to behave "
+"differently when facing enemy units:\n"
+"\n"
+"Konrad only attacks Gertburt, or any enemy unit that blocks his final "
+"waypoint.\n"
+"\n"
+"The Swordsman never attacks at all.\n"
+"\n"
+"The Longbowman attacks any enemy unit he ends up next to at the end of his "
+"move.\n"
+"\n"
+"They all have in common, however, that getting to their next waypoint takes "
+"priority over attacking.  They will thus prefer to move around enemies "
+"rather than straight for them.  Also, if a waypoint is occupied by a unit "
+"they are not instructed to attack, they will (eventually) abandon that "
+"waypoint once they get close enough and move on to the next one.\n"
+"\n"
+"The Patrol AI controlling all Side 2 units is coded as a Micro AI.  A Micro "
+"AI can be added and adapted to the need of a scenario easily using only WML "
+"and the [micro_ai] tag.  Check out the <span color='#00A000'>Micro AI wiki "
+"page</span> at http://wiki.wesnoth.org/Micro_AIs for more information."
+msgstr ""
+
+#. [objectives]
+#: data/ai/micro_ais/scenarios/patrols.cfg:209
+msgid "Watch the patrols, attack them etc."
+msgstr ""
+
+#. [objective]: condition=win
+#: data/ai/micro_ais/scenarios/patrols.cfg:215
+msgid "Move Gertburt to the signpost"
+msgstr ""
+
+#. [objective]: condition=lose
+#: data/ai/micro_ais/scenarios/patrols.cfg:219
+msgid "Death of Gertburt"
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/patrols.cfg:234
+msgid ""
+"Well, that was fun!  I'll just hang out here now and watch those two guys "
+"walk and walk and ..."
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/patrols.cfg:275
+msgid "Let's go home, chaps."
+msgstr ""
+
+#. [event]
+#. [test]: id=protect-unit
+#: data/ai/micro_ais/scenarios/protect-unit.cfg:5
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:62
+msgid "Protect Unit"
+msgstr ""
+
+#. [side]: id=Langzhar, type=Lieutenant
+#: data/ai/micro_ais/scenarios/protect-unit.cfg:17
+#: data/ai/micro_ais/scenarios/protect-unit.cfg:23
+#: data/ai/micro_ais/scenarios/recruiting.cfg:17
+#: data/ai/micro_ais/scenarios/recruiting.cfg:23
+msgid "Langzhar"
+msgstr ""
+
+#. [side]: id=Koorzhar, type=Lieutenant
+#: data/ai/micro_ais/scenarios/protect-unit.cfg:34
+#: data/ai/micro_ais/scenarios/protect-unit.cfg:40
+#: data/ai/micro_ais/scenarios/recruiting.cfg:34
+#: data/ai/micro_ais/scenarios/recruiting.cfg:40
+msgid "Koorzhar"
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/protect-unit.cfg:121
+#, fuzzy
+#| msgid "Move leader here"
+msgid "Move Rossauba here"
+msgstr "Bog do cheannfort anseo"
+
+#. [event]: id=Koorzhar profile profile}
+#: data/ai/micro_ais/scenarios/protect-unit.cfg:128
+msgid "There's that traitor wizard.  Let's get him."
+msgstr ""
+
+#. [event]: id=Koorzhar profile profile}
+#: data/ai/micro_ais/scenarios/protect-unit.cfg:130
+msgid ""
+"Men, you know the deal.  We must protect Rossauba under all circumstances.  "
+"Even my survival is not as important."
+msgstr ""
+
+#. [event]: id=Koorzhar profile profile}
+#: data/ai/micro_ais/scenarios/protect-unit.cfg:131
+msgid "That's very kind of you, but ..."
+msgstr ""
+
+#. [event]: id=Koorzhar profile profile}
+#: data/ai/micro_ais/scenarios/protect-unit.cfg:132
+msgid ""
+"No buts!  You stay behind the lines and do not engage in battle unless there "
+"is no risk to your life, is that understood?  And get to that signpost in "
+"the northwest if it is safe."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/ai/micro_ais/scenarios/protect-unit.cfg:139
+msgid ""
+"In this scenario, the AI playing the humans in the east (Langzhar) is "
+"instructed to protect the wizard Rossauba, while moving him safely to the "
+"signpost. On the other side, Koorzhar's units (in the west) will primarily "
+"attack Rossauba, even if a better target is available. Do you want to play "
+"either of the sides or let the AI's battle it out among themselves?\n"
+"\n"
+"Note: The Protect Unit AI is coded as a Micro AI. A Micro AI can be added "
+"and adapted to the need of a scenario easily using only WML and the "
+"[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
+"span> at http://wiki.wesnoth.org/Micro_AIs for more information."
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/ai/micro_ais/scenarios/protect-unit.cfg:144
+msgid "<span font='16'>I'll watch the two AI's fight it out</span>"
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/ai/micro_ais/scenarios/protect-unit.cfg:147
+msgid ""
+"<span font='16'>I'll play Langzhar's side (to see how Koorzhar's units "
+"target Rossauba)</span>"
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/ai/micro_ais/scenarios/protect-unit.cfg:156
+msgid ""
+"<span font='16'>I'll play Koorzhar's side (to see how Langzhar's units "
+"protect Rossauba)</span>"
+msgstr ""
+
+#. [objectives]
+#: data/ai/micro_ais/scenarios/protect-unit.cfg:168
+msgid "Protect Rossauba while moving him to the signpost"
+msgstr ""
+
+#. [objective]: condition=lose
+#. [objective]: condition=win
+#: data/ai/micro_ais/scenarios/protect-unit.cfg:170
+#: data/ai/micro_ais/scenarios/protect-unit.cfg:190
+msgid "Rossauba makes it to the signpost"
+msgstr ""
+
+#. [objective]: condition=lose
+#: data/ai/micro_ais/scenarios/protect-unit.cfg:174
+msgid "Death of Rossauba"
+msgstr ""
+
+#. [objective]: condition=lose
+#: data/ai/micro_ais/scenarios/protect-unit.cfg:178
+msgid "Death of Langzhar"
+msgstr ""
+
+#. [objectives]
+#: data/ai/micro_ais/scenarios/protect-unit.cfg:184
+msgid "Get rid of that traitor wizard Rossauba"
+msgstr ""
+
+#. [objective]: condition=win
+#: data/ai/micro_ais/scenarios/protect-unit.cfg:186
+msgid "Defeat Rossauba"
+msgstr ""
+
+#. [objective]: condition=lose
+#: data/ai/micro_ais/scenarios/protect-unit.cfg:194
+msgid "Death of Koorzhar"
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/protect-unit.cfg:217
+msgid "I held out for as long as I could."
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/protect-unit.cfg:231
+msgid "I made it"
+msgstr ""
+
+#. [event]
+#. [test]: id=recruiting
+#: data/ai/micro_ais/scenarios/recruiting.cfg:5
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:77
+#, fuzzy
+#| msgid "Recruit"
+msgid "Recruiting"
+msgstr "Earcaigh"
+
+#. [event]: id=Koorzhar profile profile}
+#: data/ai/micro_ais/scenarios/recruiting.cfg:79
+msgid ""
+"This is a very simple scenario that can be used to test out different "
+"recruiting patterns."
+msgstr ""
+
+#. [event]: id=Koorzhar profile profile}
+#: data/ai/micro_ais/scenarios/recruiting.cfg:82
+msgid ""
+"Just watch the recruiting of both sides and see if it is what you would "
+"expect.  The recruitment lists cover level 0 to level 2 units, in order to "
+"make differences more obvious."
+msgstr ""
+
+#. [event]: id=Koorzhar profile profile}
+#: data/ai/micro_ais/scenarios/recruiting.cfg:84
+msgid ""
+"If you have not changed anything, Side 1 uses the Random Recruiting AI, with "
+"swordsmen and peasants having been given higher probability than the other "
+"units.  This is not meant as a good recruitment pattern, it simply serves as "
+"a demonstration how to use the AI.\n"
+"\n"
+"Side 2 uses Wesnoth' default recruiting.\n"
+"\n"
+"Also note that several Recruiting AIs are available as Micro AIs.  A Micro "
+"AI can be added and adapted to the need of a scenario easily using only WML "
+"and the [micro_ai] tag.  Check out the <span color='#00A000'>Micro AI wiki "
+"page</span> at http://wiki.wesnoth.org/Micro_AIs for more information."
+msgstr ""
+
+#. [test]: id=micro_ai_test
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:5
+msgid "Micro AI Tests"
+msgstr ""
+
+#. [side]: id=Grnk, type=Goblin Spearman
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:18
+msgid "Grnk the Frail"
+msgstr ""
+
+#. [side]: id=Grnk, type=Goblin Spearman
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:26
+msgid "Grnk"
+msgstr ""
+
+#. [event]
+#. [test]: id=swarm
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:50
+#: data/ai/micro_ais/scenarios/swarm.cfg:5
+#, fuzzy
+#| msgid "Swarm: "
+msgid "Swarm"
+msgstr "Saithe: "
+
+#. [event]
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:59
+msgid "Lurkers"
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:65
+msgid "HttT: The Elves Besieged"
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:68
+msgid "Bottleneck"
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:80
+msgid "Healers"
+msgstr ""
+
+#. [set_menu_item]: id=m01_menu_bottleneck_defense
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:87
+msgid "Bottleneck Defense Micro AI demo"
+msgstr ""
+
+#. [command]
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:96
+msgid "Bottleneck Defense Micro AI Demo"
+msgstr ""
+
+#. [command]
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:96
+msgid ""
+"In the Bottleneck Defense Micro AI scenario, a small group of human soldiers "
+"is instructed to hold a pass against a large horde of orcs.  You can either "
+"watch them fight it out against the standard RCA AI or take over the orc "
+"side."
+msgstr ""
+
+#. [command]
+#. [set_menu_item]: id=m02_swamp_lurkers
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:102
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:111
+msgid "Swamp Lurker Micro AI demo"
+msgstr ""
+
+#. [command]
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:111
+msgid ""
+"Swamp lurkers are dumb, impulse-driven creatures which can move across most "
+"terrain, but only stop on swamp.  They move individually without any "
+"strategy and always attack the weakest enemy within their reach.  If no "
+"enemy is in reach, the lurker does a random move instead."
+msgstr ""
+
+#. [command]
+#. [set_menu_item]: id=m03_guardians
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:117
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:126
+msgid "Guardian Micro AI demo"
+msgstr ""
+
+#. [command]
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:126
+msgid ""
+"In 'Guardians', several variations of the standard Wesnoth guardian are "
+"shown, including a \"coward\" unit that runs away from any approaching unit "
+"(an \"inverse guardian\", in a way)."
+msgstr ""
+
+#. [command]
+#. [set_menu_item]: id=m04_patrol
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:132
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:141
+msgid "Patrol Micro AI demo"
+msgstr ""
+
+#. [command]
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:141
+msgid "'Patrols' contains AI modifications for units following patrol routes."
+msgstr ""
+
+#. [command]
+#. [set_menu_item]: id=m05_recruiting
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:147
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:156
+msgid "Recruiting Tests Micro AI demo"
+msgstr ""
+
+#. [command]
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:156
+msgid ""
+"A simple scenario set up for the sole purpose of testing different "
+"recruiting patterns."
+msgstr ""
+
+#. [set_menu_item]: id=m05_protect
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:162
+msgid "Protect Unit Micro AI demo"
+msgstr ""
+
+#. [command]
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:171
+msgid "Protect Unit Micro AI Demo"
+msgstr ""
+
+#. [command]
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:171
+msgid ""
+"This scenario demonstrates one side protecting a wizard while moving him to "
+"a goal location.  At the same time, the other side is modified to do "
+"priority attacks on the wizard, even if a better target (by the default AI "
+"criteria) is available.  You can watch the two AIs fight it out, or take "
+"control of either side to explore how the opposing AI behaves."
+msgstr ""
+
+#. [command]
+#. [set_menu_item]: id=m05a_protect
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:177
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:186
+msgid "HttT: The Elves Besieged Micro AI demo"
+msgstr ""
+
+#. [command]
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:186
+msgid ""
+"This is a reenactment of scenario \"The Elves Besieged\" of the mainline "
+"campaign \"Heir to the Throne\", just that the AI is playing Konrad's side "
+"here.  The same algorithm as for scenario \"Protect Unit\" is used."
+msgstr ""
+
+#. [command]
+#. [set_menu_item]: id=m06_messenger
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:192
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:201
+msgid "Messenger Escort Micro AI demo"
+msgstr ""
+
+#. [command]
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:201
+msgid ""
+"'Messenger Escort' has the AI actively protect a messenger while he makes "
+"his way to the edge of the map.  The escort will also try to open the path "
+"for the messenger if there are enemies in the way."
+msgstr ""
+
+#. [command]
+#. [set_menu_item]: id=m08_animals
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:207
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:216
+msgid "Animals Micro AI demo"
+msgstr ""
+
+#. [command]
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:216
+msgid ""
+"This scenario demonstrates a number of different animals following "
+"customized AI behavior, including wolves hunting deer in packs; dogs herding "
+"sheep; bears, spiders, yetis, boar and rabbits wandering and hunting/"
+"avoiding each other."
+msgstr ""
+
+#. [command]
+#. [set_menu_item]: id=m09_wolves
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:222
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:231
+msgid "Wolves Micro AI demo"
+msgstr ""
+
+#. [command]
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:231
+msgid ""
+"Another demonstration of wolves wandering and attacking in packs, with a "
+"different behavior from that in 'Animals'."
+msgstr ""
+
+#. [command]
+#. [set_menu_item]: id=m10_swarm
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:237
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:246
+msgid "Swarm Micro AI demo"
+msgstr ""
+
+#. [command]
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:246
+msgid "This scenario features bats moving around semi-randomly in a swarm."
+msgstr ""
+
+#. [command]
+#. [set_menu_item]: id=m11_dragon
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:252
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:261
+msgid "Dragon Micro AI demo"
+msgstr ""
+
+#. [command]
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:261
+msgid ""
+"This scenario features a fire dragon displaying a hunt-and-rest behavior."
+msgstr ""
+
+#. [set_menu_item]: id=m30_healer_support
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:267
+msgid "Healer support Micro AI demo"
+msgstr ""
+
+#. [command]
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:276
+msgid "Healer Support Micro AI demo"
+msgstr ""
+
+#. [command]
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:276
+msgid ""
+"This scenario contains a simple demonstration of setting up the Healer "
+"Support Micro AI, which uses the healers of a side to back up injured or "
+"threatened units rather than having them participate in combat under all "
+"circumstances."
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:286
+msgid ""
+"Move me to any of the signposts to go to a Micro AI demonstration.\n"
+"\n"
+"Information about each demonstration can be accessed by right-clicking on "
+"the respective signpost."
+msgstr ""
+
+#. [objective]: condition=win
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:292
+msgid "Move Grnk to one of the signposts"
+msgstr ""
+
+#. [note]
+#: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:296
+msgid "Right-click on a signpost to get information about the scenario"
+msgstr ""
+
+#. [side]
+#: data/ai/micro_ais/scenarios/swarm.cfg:40
+msgid "Bats"
+msgstr ""
+
+#. [set_menu_item]: id=m02_new_gryphon
+#: data/ai/micro_ais/scenarios/swarm.cfg:92
+msgid "Place Side 1 Gryphon"
+msgstr ""
+
+#. [set_menu_item]: id=m03_new_bat
+#: data/ai/micro_ais/scenarios/swarm.cfg:103
+msgid "Place Side 2 Bat"
+msgstr ""
+
+#. [set_menu_item]: id=m05_kill_unit
+#: data/ai/micro_ais/scenarios/swarm.cfg:114
+#: data/ai/micro_ais/scenarios/wolves.cfg:154
+msgid "Kill Unit under Cursor"
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/swarm.cfg:139
+msgid ""
+"This scenario features bats moving around in a swarm.  Without adjacent "
+"enemies, they simply try to stay together and at a certain distance from "
+"enemies.  However, if an enemy unit is close to any bat, the swarm "
+"scatters.  This is particular fun to watch when one places an enemy unit in "
+"the middle of the swarm.  After being scattered, the swarm members slowly "
+"rejoin, but not in a very organized way.  Sub-swarms or individual bats "
+"might roam around for quite some time before they find their way back.  It "
+"is also possible that individual bats (or small groups) split off from the "
+"larger swarm at times.\n"
+"\n"
+"The player controls a side of gryphons, each of which is given 99 moves so "
+"that the reaction of the swarm to enemies can be tested easily.  There are "
+"also several right-click options, for example for adding bats or gryphons or "
+"for taking units off the map.\n"
+"\n"
+"Note: The Swarm AI is coded as a Micro AI.  A Micro AI can be added and "
+"adapted to the need of a scenario easily using only WML and the [micro_ai] "
+"tag.  Check out the <span color='#00A000'>Micro AI wiki page</span> at "
+"http://wiki.wesnoth.org/Micro_AIs for more information."
+msgstr ""
+
+#. [objectives]
+#: data/ai/micro_ais/scenarios/swarm.cfg:148
+msgid "Watch the bats move around and fight them if you want"
+msgstr ""
+
+#. [objective]: condition=win
+#: data/ai/micro_ais/scenarios/swarm.cfg:150
+msgid "Defeat all bats"
+msgstr ""
+
+#. [objective]: condition=lose
+#: data/ai/micro_ais/scenarios/swarm.cfg:158
+msgid "Death of all gryphons"
+msgstr ""
+
+#. [side]
+#: data/ai/micro_ais/scenarios/wolves.cfg:55
+msgid "More Wolves"
+msgstr ""
+
+#. [set_menu_item]: id=m02_new_peasant
+#: data/ai/micro_ais/scenarios/wolves.cfg:121
+msgid "Place Side 1 Peasant"
+msgstr ""
+
+#. [set_menu_item]: id=m03_new_wolf2
+#: data/ai/micro_ais/scenarios/wolves.cfg:132
+msgid "Place Side 2 Wolf"
+msgstr ""
+
+#. [set_menu_item]: id=m04_new_wolf3
+#: data/ai/micro_ais/scenarios/wolves.cfg:143
+msgid "Place Side 3 Wolf"
+msgstr ""
+
+#. [event]
+#: data/ai/micro_ais/scenarios/wolves.cfg:191
+msgid ""
+"This scenario features a different kind of wolf behavior from 'Animals'.  "
+"First, there can be an arbitrary number of wolf packs and the pack size on "
+"each side is a free parameter (set to 3 for Side 2 and 4 for Side 3 in this "
+"scenario).  At the beginning of the scenario, close wolves are grouped into "
+"packs in a semi-methodical way.  Wolves of the same pack begin by joining "
+"each other on the map.  After that, they stay together until only one wolf "
+"is left, which then tries to join up with an incomplete pack or with other "
+"single wolves.  Individual wolves entering the map during the scenario "
+"behave in that way as well.\n"
+"\n"
+"Second, wolves do not actively hunt here.  For the most part they just "
+"wander (often long distance).  However, the pack ferociously (and without "
+"regard for its own health) attacks any enemy units that come into range, as "
+"long as that does not mean separating the pack by more than a few hexes.  "
+"Staying together, or joining with a new wolf assigned to the pack, is the "
+"only thing that takes priority over satisfying the wolves' thirst for "
+"blood.\n"
+"\n"
+"To emphasize which wolf belongs to which pack, the pack number will be "
+"displayed below each wolf in this scenario once the AI takes control of a "
+"side the first time."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/ai/micro_ais/scenarios/wolves.cfg:202
+msgid ""
+"It is possible to include a human-controlled Side 1, so that the action "
+"stops once every turn for looking around (or for messing with things in "
+"debug mode). In human-controlled mode, several options are available through "
+"the right-click menu, such as adding additional wolves to either side, "
+"taking wolves off the map, adding peasants to the human-controlled side or "
+"ending the scenario. This enables easy exploring of the wolf AI behavior "
+"under different circumstances.\n"
+"\n"
+"Note that the leader of the human-controlled side, Rutburt, can move 99 "
+"hexes per turn, so that it is always possible to keep him out of harm's "
+"way.\n"
+"\n"
+"Also note that the wolves AI is coded as a Micro AI. A Micro AI can be added "
+"and adapted to the need of a scenario easily using only WML and the "
+"[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
+"span> at http://wiki.wesnoth.org/Micro_AIs for more information."
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/ai/micro_ais/scenarios/wolves.cfg:209
+msgid "<span font='16'>I'll just watch the two wolf sides.</span>"
+msgstr ""
+
+#. [objectives]
+#: data/ai/micro_ais/scenarios/wolves.cfg:228
+msgid "Watch the wolves move around and fight each other"
+msgstr ""
+
+#. [objective]: condition=win
+#: data/ai/micro_ais/scenarios/wolves.cfg:230
+msgid "No wolves left on one side"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/ai/scenarios/ai_arena_small/0001-healing.cfg:17
+msgid "This situation should test the ability of AI to heal efficiently..."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/ai/scenarios/ai_arena_small/0002-poisoning.cfg:17
+msgid "This situation should test the ability of AI to spread poison around..."
+msgstr ""
+
+#. [label]
+#: data/ai/scenarios/ai_arena_small/0002-poisoning.cfg:112
+msgid "Undead target test"
+msgstr ""
+
+#. [label]
+#: data/ai/scenarios/ai_arena_small/0002-poisoning.cfg:119
+msgid "Target choose test"
+msgstr ""
+
+#. [label]
+#: data/ai/scenarios/ai_arena_small/0002-poisoning.cfg:126
+msgid "Regeneration attack test"
+msgstr ""
+
+#. [label]
+#: data/ai/scenarios/ai_arena_small/0002-poisoning.cfg:133
+msgid "Weapon test with low hp target"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/ai/scenarios/ai_arena_small/0003-simple_combat.cfg:17
+msgid "This situation should test the ability of AI to make an attack..."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/ai/scenarios/ai_arena_small/0004-filtered_combat.cfg:17
+msgid ""
+"This situation should test the ability of AI to obey own unit and enemy unit "
+"filters while making attacks. Only dwarves should attack. Dark Adepts are "
+"not to be attacked."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/ai/scenarios/ai_arena_small/0005-recruitment_test.cfg:17
+msgid "This situation should test the recruitment phase"
+msgstr ""
+
+#. [test]: id=ai_arena_small
+#: data/ai/scenarios/scenario-AI_Arena_small.cfg:8
+msgid "Small ai arena"
+msgstr ""
+
+#. [set_menu_item]: id=repeat_test
+#: data/ai/scenarios/scenario-AI_Arena_small.cfg:65
+msgid "Repeat last test"
+msgstr ""
+
+#. [set_menu_item]: id=select_another_ai
+#: data/ai/scenarios/scenario-AI_Arena_small.cfg:81
+#, fuzzy
+#| msgid "Test scenario"
+msgid "Select another ai"
+msgstr "Misean tástála"
+
+#. [set_menu_item]: id=select_test
+#: data/ai/scenarios/scenario-AI_Arena_small.cfg:91
+#, fuzzy
+msgid "Select another test"
+msgstr "Roghnaigh an forlíontán a íoslódáil."
+
+#. [side]: id=leader1, type=Lich
+#. [side]: type=Nightgaunt
+#: data/ai/scenarios/scenario-AI_Arena_small.cfg:109
+#: data/ai/scenarios/scenario-test_move_to_targets.cfg:36
+msgid "AI Developer"
+msgstr ""
+
+#. [side]: type=White Mage
+#: data/ai/scenarios/scenario-AI_Arena_small.cfg:124
+msgid "North"
+msgstr ""
+
+#. [side]: type=Dark Adept
+#: data/ai/scenarios/scenario-AI_Arena_small.cfg:135
+msgid "South"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/ai/scenarios/scenario-AI_Arena_small.cfg:174
+msgid "Which AI do you wish to use, O Mighty AI Developer?"
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/ai/scenarios/scenario-AI_Arena_small.cfg:176
+msgid "I am happy with the current AI of team 2, [$test_path_to_ai]"
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/ai/scenarios/scenario-AI_Arena_small.cfg:179
+msgid "Akihara's ai will be awesome, won't it?"
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/ai/scenarios/scenario-AI_Arena_small.cfg:188
+msgid "My AI is TESTING AI DEFAULT, implemented as ai_composite."
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/ai/scenarios/scenario-AI_Arena_small.cfg:197
+msgid ""
+"I am the king of FORMULA AI, and I will use its vast powers for world "
+"domination."
+msgstr ""
+
+#. [option]: speaker=narrator
+#: data/ai/scenarios/scenario-AI_Arena_small.cfg:206
+msgid "I've come with my own AI, and I am ready to test its strength"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/ai/scenarios/scenario-AI_Arena_small.cfg:211
+msgid "and where is it located (path follows the usual WML convention)"
+msgstr ""
+
+#. [text_input]
+#: data/ai/scenarios/scenario-AI_Arena_small.cfg:213
+#, fuzzy
+#| msgid "Invalid location"
+msgid "AI Location:"
+msgstr "Suíomh neamhbhailí"
+
+#. [option]: speaker=narrator
+#: data/ai/scenarios/scenario-AI_Arena_small.cfg:220
+msgid "I want to test formulaAI-based poisoning improvements"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/ai/scenarios/scenario-AI_Arena_small.cfg:323
+msgid "and so, the AI for team 2 was redeployed from file '$test_path_to_ai'"
+msgstr ""
+
+#. [label]
+#: data/ai/scenarios/scenario-lua-ai.cfg:44
+#: data/ai/scenarios/scenario-no_engine.cfg:44
+msgid "Patrol waypoint 1"
+msgstr ""
+
+#. [label]
+#: data/ai/scenarios/scenario-lua-ai.cfg:49
+#: data/ai/scenarios/scenario-no_engine.cfg:49
+msgid "Patrol waypoint 2"
+msgstr ""
+
+#. [label]
+#: data/ai/scenarios/scenario-lua-ai.cfg:54
+#: data/ai/scenarios/scenario-no_engine.cfg:54
+msgid "Formula priorities test"
+msgstr ""
+
+#. [label]
+#: data/ai/scenarios/scenario-lua-ai.cfg:59
+#: data/ai/scenarios/scenario-no_engine.cfg:59
+msgid "first"
+msgstr ""
+
+#. [label]
+#: data/ai/scenarios/scenario-lua-ai.cfg:64
+#: data/ai/scenarios/scenario-no_engine.cfg:64
+msgid "second"
+msgstr ""
+
+#. [label]
+#: data/ai/scenarios/scenario-lua-ai.cfg:69
+#: data/ai/scenarios/scenario-no_engine.cfg:69
+msgid "third"
+msgstr ""
+
+#. [label]
+#: data/ai/scenarios/scenario-lua-ai.cfg:74
+#: data/ai/scenarios/scenario-no_engine.cfg:74
+msgid "Location guarded (range = 3)"
+msgstr ""
+
+#. [test]: id=move_to_targets
+#: data/ai/scenarios/scenario-test_move_to_targets.cfg:7
+msgid "Move to targets"
+msgstr ""
+
+#. [test]: id=move_to_targets
+#: data/ai/scenarios/scenario-test_move_to_targets.cfg:8
+msgid "Test ai move-to-targets logic"
+msgstr ""
+
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:309
-#: data/lua/wml-tags.lua:1265 src/actions/attack.cpp:802
+#: data/lua/wml-tags.lua:1313 src/actions/attack.cpp:801
 msgid "poisoned"
 msgstr "nimhithe"
 
@@ -315,316 +2513,316 @@ msgid "Artwork and Graphics"
 msgstr "Ealaín agus Grafaicí"
 
 #. [about]
-#: data/core/about.cfg:638
+#: data/core/about.cfg:642
 msgid "Music"
 msgstr "Ceol"
 
 #. [about]
-#: data/core/about.cfg:675
+#: data/core/about.cfg:679
 msgid "Sound Effects"
 msgstr "Maisíocht Fuaime"
 
 #. [about]
-#: data/core/about.cfg:691
+#: data/core/about.cfg:695
 msgid "Campaign Design"
 msgstr "Línitheoir Feachtais"
 
 #. [about]
-#: data/core/about.cfg:762
+#: data/core/about.cfg:766
 msgid "Multiplayer Maps and Balancing"
 msgstr "Léarscáileanna Ilimreora agus Cothromú"
 
 #. [about]
-#: data/core/about.cfg:803
+#: data/core/about.cfg:807
 msgid "Packagers"
 msgstr "Pacáisteoirí"
 
 #. [about]
-#: data/core/about.cfg:878
+#: data/core/about.cfg:882
 msgid "Miscellaneous Contributors"
 msgstr "Rannpháirtithe Ilghnéitheach"
 
 #. [about]
-#: data/core/about.cfg:1243
+#: data/core/about.cfg:1274
 msgid "Internationalization Managers"
 msgstr "Bainisteoir Idirnáisiúnú"
 
 #. [about]
-#: data/core/about.cfg:1268
+#: data/core/about.cfg:1299
 msgid "English strings edition"
 msgstr "Eagrán Béarla"
 
 #. [about]
-#: data/core/about.cfg:1275
+#: data/core/about.cfg:1306
 msgid "Afrikaans Translation"
 msgstr "Aistriúchán Afracáinise"
 
 #. [about]
-#: data/core/about.cfg:1295
+#: data/core/about.cfg:1326
 msgid "Arabic Translation"
 msgstr "Aistriúchán Araibise"
 
 #. [about]
-#: data/core/about.cfg:1302
+#: data/core/about.cfg:1333
 msgid "Basque Translation"
 msgstr "Aistriúchán Bascaise"
 
 #. [about]
-#: data/core/about.cfg:1315
+#: data/core/about.cfg:1346
 msgid "Bulgarian Translation"
 msgstr "Aistriúchán Bulgáraise"
 
 #. [about]
-#: data/core/about.cfg:1334
+#: data/core/about.cfg:1365
 msgid "Catalan Translation"
 msgstr "Aistriúchán Catalóinise"
 
 #. [about]
-#: data/core/about.cfg:1375
+#: data/core/about.cfg:1406
 msgid "Chinese Translation"
 msgstr "Aistriúchán Sínise"
 
 #. [about]
-#: data/core/about.cfg:1446
+#: data/core/about.cfg:1477
 msgid "Chinese (Taiwan) Translation"
 msgstr "Aistriúchán Sínise (Téaváin)"
 
 #. [about]
-#: data/core/about.cfg:1459
+#: data/core/about.cfg:1490
 msgid "Croatian Translation"
 msgstr "Aistriúchán Cróitise"
 
 #. [about]
-#: data/core/about.cfg:1469
+#: data/core/about.cfg:1500
 msgid "Czech Translation"
 msgstr "Aistriúchán Seicise"
 
 #. [about]
-#: data/core/about.cfg:1529
+#: data/core/about.cfg:1560
 msgid "Danish Translation"
 msgstr "Aistriúchán Danmhairgise"
 
 #. [about]
-#: data/core/about.cfg:1560
+#: data/core/about.cfg:1591
 msgid "Dutch Translation"
 msgstr "Aistriúchán Ollannaise"
 
 #. [about]
-#: data/core/about.cfg:1624
+#: data/core/about.cfg:1655
 msgid "English (GB) Translation"
 msgstr "Aistriúchán Béarla (Breatain Mór)"
 
 #. [about]
-#: data/core/about.cfg:1647
+#: data/core/about.cfg:1678
 msgid "English (Shaw) Translation"
 msgstr "Aistriúchán Béarla (Shaw)"
 
 #. [about]
-#: data/core/about.cfg:1665
+#: data/core/about.cfg:1696
 msgid "Esperanto Translation"
 msgstr "Aistriúchán Esperanto"
 
 #. [about]
-#: data/core/about.cfg:1684
+#: data/core/about.cfg:1715
 msgid "Estonian Translation"
 msgstr "Aistriúchán Eastóinise"
 
 #. [about]
-#: data/core/about.cfg:1694
+#: data/core/about.cfg:1725
 msgid "Filipino Translation"
 msgstr "Aistriúchán Filipínise"
 
 #. [about]
-#: data/core/about.cfg:1704
+#: data/core/about.cfg:1735
 msgid "Finnish Translation"
 msgstr "Aistriúchán Fionlannaise"
 
 #. [about]
-#: data/core/about.cfg:1750
+#: data/core/about.cfg:1781
 msgid "French Translation"
 msgstr "Aistriúchán Fraincise"
 
 #. [about]
-#: data/core/about.cfg:1912
+#: data/core/about.cfg:1943
 msgid "Friulian Translation"
 msgstr "Aistriúchán Friúilise"
 
 #. [about]
-#: data/core/about.cfg:1919
+#: data/core/about.cfg:1950
 msgid "Galician Translation"
 msgstr "Aistriúchán Gailísise"
 
 #. [about]
-#: data/core/about.cfg:1955
+#: data/core/about.cfg:1986
 msgid "German Translation"
 msgstr "Aistriúchán Gearmáinise"
 
 #. [about]
-#: data/core/about.cfg:2029
+#: data/core/about.cfg:2060
 msgid "Greek Translation"
 msgstr "Aistriúchán Gréigise"
 
 #. [about]
-#: data/core/about.cfg:2069
+#: data/core/about.cfg:2100
 msgid "Hebrew Translation"
 msgstr "Aistriúchán Eabhraise"
 
 #. [about]
-#: data/core/about.cfg:2082
+#: data/core/about.cfg:2113
 msgid "Hungarian Translation"
 msgstr "Aistriúchán Ungáraise"
 
 #. [about]
-#: data/core/about.cfg:2143
+#: data/core/about.cfg:2174
 msgid "Icelandic Translation"
 msgstr "Aistriúchán Íoslainnise"
 
 #. [about]
-#: data/core/about.cfg:2153
+#: data/core/about.cfg:2184
 msgid "Indonesian Translation"
 msgstr "Aistriúchán Indinéisise"
 
 #. [about]
-#: data/core/about.cfg:2176
+#: data/core/about.cfg:2207
 msgid "Irish Translation"
 msgstr "Aistriúchán Gaeilge"
 
 #. [about]
-#: data/core/about.cfg:2183
+#: data/core/about.cfg:2214
 msgid "Italian Translation"
 msgstr "Aistriúchán Iodáilise"
 
 #. [about]
-#: data/core/about.cfg:2227
+#: data/core/about.cfg:2261
 msgid "Japanese Translation"
 msgstr "Aistriúchán Seapánise"
 
 #. [about]
-#: data/core/about.cfg:2295
+#: data/core/about.cfg:2329
 msgid "Korean Translation"
 msgstr "Aistriúchán Cóiréise"
 
 #. [about]
-#: data/core/about.cfg:2303
+#: data/core/about.cfg:2337
 msgid "Latin Translation"
 msgstr "Aistriúchán Laidine"
 
 #. [about]
-#: data/core/about.cfg:2329
+#: data/core/about.cfg:2363
 msgid "Latvian Translation"
 msgstr "Aistriúchán Laitvise"
 
 #. [about]
-#: data/core/about.cfg:2340
+#: data/core/about.cfg:2374
 msgid "Lithuanian Translation"
 msgstr "Aistriúchán Liotuáinise"
 
 #. [about]
-#: data/core/about.cfg:2362
+#: data/core/about.cfg:2396
 msgid "Macedonian Translation"
 msgstr "Aistriúchán Macadónise"
 
 #. [about]
-#: data/core/about.cfg:2369
+#: data/core/about.cfg:2403
 msgid "Marathi Translation"
 msgstr "Aistriúchán Maraitise"
 
 #. [about]
-#: data/core/about.cfg:2378
+#: data/core/about.cfg:2412
 msgid "Norwegian Translation"
 msgstr "Aistriúchán Ioruaise"
 
 #. [about]
-#: data/core/about.cfg:2403
+#: data/core/about.cfg:2437
 msgid "Old English Translation"
 msgstr "Aistriúchán Angla-Shacsanaise"
 
 #. [about]
-#: data/core/about.cfg:2421
+#: data/core/about.cfg:2455
 msgid "Polish Translation"
 msgstr "Aistriúchán Polainnaise"
 
 #. [about]
-#: data/core/about.cfg:2461
+#: data/core/about.cfg:2495
 msgid "Portuguese Translation"
 msgstr "Aistriúchán Portaingéilise"
 
 #. [about]
-#: data/core/about.cfg:2468
+#: data/core/about.cfg:2509
 msgid "Portuguese (Brazil) Translation"
 msgstr "Aistriúchán Portaingéilise (Brasaíl)"
 
 #. [about]
-#: data/core/about.cfg:2516
+#: data/core/about.cfg:2563
 msgid "Romanian Translation"
 msgstr "Aistriúchán Rúmánaise"
 
 #. [about]
-#: data/core/about.cfg:2524
+#: data/core/about.cfg:2571
 msgid "Russian Translation"
 msgstr "Aistriúchán Rúisise"
 
 #. [about]
-#: data/core/about.cfg:2609
+#: data/core/about.cfg:2656
 #, fuzzy
 #| msgid "Galician Translation"
 msgid "Scottish Gaelic Translation"
 msgstr "Aistriúchán Gailísise"
 
 #. [about]
-#: data/core/about.cfg:2618
+#: data/core/about.cfg:2665
 msgid "Serbian Translation"
 msgstr "Aistriúchán Seirbise"
 
 #. [about]
-#: data/core/about.cfg:2637
+#: data/core/about.cfg:2684
 msgid "Slovak Translation"
 msgstr "Aistriúchán Slóvaicise"
 
 #. [about]
-#: data/core/about.cfg:2666
+#: data/core/about.cfg:2713
 msgid "Slovenian Translation"
 msgstr "Aistriúchán Slóivéanaise"
 
 #. [about]
-#: data/core/about.cfg:2682
+#: data/core/about.cfg:2729
 msgid "Spanish Translation"
 msgstr "Aistriúchán Spáinnise"
 
 #. [about]
-#: data/core/about.cfg:2766
+#: data/core/about.cfg:2813
 msgid "Swedish Translation"
 msgstr "Aistriúchán Sualainnise"
 
 #. [about]
-#: data/core/about.cfg:2807
+#: data/core/about.cfg:2854
 msgid "Turkish Translation"
 msgstr "Aistriúchán Tuircise"
 
 #. [about]
-#: data/core/about.cfg:2829
+#: data/core/about.cfg:2876
 #, fuzzy
 #| msgid "Romanian Translation"
 msgid "Ukrainian Translation"
 msgstr "Aistriúchán Rúmánaise"
 
 #. [about]
-#: data/core/about.cfg:2842
+#: data/core/about.cfg:2889
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Aistriúchán Vaileinsise (Catalóinis dheiscearteach)"
 
 #. [about]
-#: data/core/about.cfg:2855
+#: data/core/about.cfg:2902
 msgid "Vietnamese Translation"
 msgstr "Aistriúchán Vítneaimise"
 
 #. [about]
-#: data/core/about.cfg:2874
+#: data/core/about.cfg:2921
 msgid "RACV’s Translation"
 msgstr "Aistriúchán RACV"
 
 #. [about]
-#: data/core/about.cfg:2881
+#: data/core/about.cfg:2928
 msgid "Bots"
 msgstr "Róbait"
 
@@ -842,6 +3040,51 @@ msgid ""
 msgstr ""
 "Speisialta: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
+
+#. [ai]: id=healer_support
+#: data/core/macros/ai_micro_ais.cfg:28
+msgid "Healer Support Micro AI"
+msgstr ""
+
+#. [ai]: id=bottleneck_defense
+#: data/core/macros/ai_micro_ais.cfg:48
+msgid "Bottleneck Defense Micro AI"
+msgstr ""
+
+#. [ai]: id=messenger_escort
+#: data/core/macros/ai_micro_ais.cfg:68
+msgid "Messenger Escort Micro AI"
+msgstr ""
+
+#. [ai]: id=animals
+#: data/core/macros/ai_micro_ais.cfg:88
+msgid "Animals Micro AI"
+msgstr ""
+
+#. [ai]: id=guardian
+#: data/core/macros/ai_micro_ais.cfg:108
+msgid "Guardian Micro AI"
+msgstr ""
+
+#. [ai]: id=protect_unit
+#: data/core/macros/ai_micro_ais.cfg:128
+msgid "Protect Unit Micro AI"
+msgstr ""
+
+#. [ai]: id=patrol
+#: data/core/macros/ai_micro_ais.cfg:148
+msgid "Patrol Micro AI"
+msgstr ""
+
+#. [ai]: id=lurkers
+#: data/core/macros/ai_micro_ais.cfg:168
+msgid "Lurkers Micro AI"
+msgstr ""
+
+#. [ai]: id=recruiting
+#: data/core/macros/ai_micro_ais.cfg:188
+msgid "Recruiting Micro AI"
+msgstr ""
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:21
@@ -1830,12 +4073,12 @@ msgid "Turns run out"
 msgstr "Críochnú sealanna"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:1798
+#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:1844
 msgid "Early finish bonus."
 msgstr "Bónas luath-críochnú."
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:1800
+#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:1846
 msgid "No early finish bonus."
 msgstr "Níl bónas luath-críochnú duit."
 
@@ -1848,7 +4091,7 @@ msgid "(early finish bonus)"
 msgstr "(bónas luath-críochnú)"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:1808
+#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:1854
 msgid "No gold carried over to the next scenario."
 msgstr ""
 
@@ -2345,8 +4588,8 @@ msgstr ""
 msgid ""
 "<i>― Royal Compendium of Battle Terminology: Volume II (reprinted 221YW)</i>"
 msgstr ""
-"<i>― Ciclipéid Ríoga Théarmeolaíochta Chatha: Imleabhar II (d'athchló 221YW)"
-"</i>"
+"<i>― Ciclipéid Ríoga Théarmeolaíochta Chatha: Imleabhar II (d'athchló "
+"221YW)</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:48
@@ -2798,101 +5041,101 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1265 src/actions/attack.cpp:802
+#: data/lua/wml-tags.lua:1313 src/actions/attack.cpp:801
 msgid "female^poisoned"
 msgstr "nimhithe"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1267 src/actions/attack.cpp:807
+#: data/lua/wml-tags.lua:1315 src/actions/attack.cpp:806
 msgid "female^slowed"
 msgstr "moillithe"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1267 src/actions/attack.cpp:807
+#: data/lua/wml-tags.lua:1315 src/actions/attack.cpp:806
 msgid "slowed"
 msgstr "moillithe"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1268 src/actions/attack.cpp:812
+#: data/lua/wml-tags.lua:1316 src/actions/attack.cpp:811
 msgid "female^petrified"
 msgstr "clochraithe"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1268 src/actions/attack.cpp:812
+#: data/lua/wml-tags.lua:1316 src/actions/attack.cpp:811
 msgid "petrified"
 msgstr "clochraithe"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1269
+#: data/lua/wml-tags.lua:1317
 msgid "female^unhealable"
 msgstr "ní féidir a shlánú"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1269
+#: data/lua/wml-tags.lua:1317
 msgid "unhealable"
 msgstr "ní féidir a shlánú"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1734 src/multiplayer_connect.cpp:1723
+#: data/lua/wml/objectives.lua:1780 src/multiplayer_connect.cpp:1856
 msgid "Victory:"
 msgstr "Bua:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1735
+#: data/lua/wml/objectives.lua:1781
 msgid "Defeat:"
 msgstr "Díomua:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1736
+#: data/lua/wml/objectives.lua:1782
 msgid "Gold carryover:"
 msgstr "Réamhíoctha óir:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1737
+#: data/lua/wml/objectives.lua:1783
 msgid "Notes:"
 msgstr "Nótaí:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1755
+#: data/lua/wml/objectives.lua:1801
 msgid "(%d turns left)"
 msgstr "(%d seal atá fanta)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1757
+#: data/lua/wml/objectives.lua:1803
 msgid "(this turn left)"
 msgstr "(an seal seo atá fanta)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1810
+#: data/lua/wml/objectives.lua:1856
 msgid "%d%% of gold carried over to the next scenario."
 msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
-#: data/scenario-test.cfg:833 src/dialogs.cpp:629 src/mp_depcheck.cpp:468
-#: src/mp_options.cpp:225 src/multiplayer_create.cpp:102
+#: data/scenario-test.cfg:857 src/dialogs.cpp:625 src/mp_depcheck.cpp:459
+#: src/mp_options.cpp:227 src/multiplayer_create.cpp:102
 msgid "OK"
 msgstr "Tá go maith"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
-#: data/scenario-test.cfg:834 src/dialogs.cpp:630 src/dialogs.cpp:1081
-#: src/dialogs.cpp:1187 src/mp_options.cpp:230
-#: src/multiplayer_connect.cpp:1036 src/multiplayer_create.cpp:101
+#: data/scenario-test.cfg:858 src/dialogs.cpp:626 src/dialogs.cpp:1067
+#: src/dialogs.cpp:1173 src/mp_options.cpp:232
+#: src/multiplayer_connect.cpp:1074 src/multiplayer_create.cpp:101
 #: src/multiplayer_wait.cpp:180
 msgid "Cancel"
 msgstr "Cealaigh"
 
-#: data/scenario-test.cfg:3553
+#: data/scenario-test.cfg:3669
 msgid "very long"
 msgstr "an-fhada"
 
-#: data/scenario-test.cfg:3554
+#: data/scenario-test.cfg:3670
 msgid "electrical"
 msgstr "leictreach"
 
@@ -2914,19 +5157,13 @@ msgstr "Gníomhuithe"
 msgid "End Turn"
 msgstr "Críochnaigh Seal"
 
-#. [menu]: id=button-endturn
-#: data/themes/default.cfg:147 data/themes/dfool.cfg:158
-#: data/themes/widescreen.cfg:179
-msgid "End Scenario"
-msgstr "Críochnaigh Mísean"
-
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #. [label]: id=selected-label-hp
 #: data/themes/default.cfg:205 data/themes/dfool.cfg:229
 #: data/themes/experimental.cfg:179 data/themes/widescreen.cfg:237
-#: data/themes/widescreen.cfg:257 src/menu_events.cpp:221 src/unit.cpp:2553
-#: src/unit.cpp:2770
+#: data/themes/widescreen.cfg:257 src/menu_events.cpp:220 src/unit.cpp:2409
+#: src/unit.cpp:2609
 msgid "HP"
 msgstr "PS"
 
@@ -2935,8 +5172,8 @@ msgstr "PS"
 #. [label]: id=selected-label-xp
 #: data/themes/default.cfg:214 data/themes/dfool.cfg:239
 #: data/themes/experimental.cfg:188 data/themes/widescreen.cfg:246
-#: data/themes/widescreen.cfg:266 src/menu_events.cpp:223
-#: src/menu_events.cpp:934
+#: data/themes/widescreen.cfg:266 src/menu_events.cpp:222
+#: src/menu_events.cpp:912
 msgid "XP"
 msgstr "PT"
 
@@ -3065,48 +5302,57 @@ msgstr "Peirspictíocht"
 msgid "Skip animation"
 msgstr "Scipeáil beochana"
 
-#: src/about.cpp:209 src/menu_events.cpp:330 src/menu_events.cpp:357
+#: src/about.cpp:209 src/menu_events.cpp:329 src/menu_events.cpp:356
 #: src/statistics_dialog.cpp:183
 msgid "Close"
 msgstr "Dún"
 
-#: src/actions/attack.cpp:219 src/actions/attack.cpp:421
-#: src/actions/attack.cpp:1051
+#: src/actions/attack.cpp:218 src/actions/attack.cpp:420
+#: src/actions/attack.cpp:1050
 msgid "An invalid attacker weapon got selected."
 msgstr ""
 
-#: src/actions/attack.cpp:224
+#: src/actions/attack.cpp:223
 msgid "An invalid defender weapon got selected."
 msgstr ""
 
-#: src/actions/create.cpp:545
+#: src/actions/create.cpp:604
 #, fuzzy
 msgid "You don’t have a leader to recall with."
 msgstr "Níl treoraí agat le haghaidh"
 
-#: src/actions/create.cpp:550
-msgid "None of your leaders is able to recall that unit."
+#: src/actions/create.cpp:608
+msgid "None of your leaders are able to recall that unit."
 msgstr ""
 
-#: src/actions/create.cpp:555
+#: src/actions/create.cpp:612
 msgid "You must have a leader on a keep who is able to recall that unit."
 msgstr ""
 
-#: src/actions/create.cpp:560
+#: src/actions/create.cpp:616
 msgid "There are no vacant castle tiles in which to recall the unit."
 msgstr ""
 
-#: src/actions/create.cpp:629
+#: src/actions/create.cpp:626 src/actions/create.cpp:762
+msgid "An unrecognized error has occurred."
+msgstr ""
+
+#: src/actions/create.cpp:740
 #, fuzzy
 msgid "You don’t have a leader to recruit with."
 msgstr "Níl treoraí agat  le haghaidh"
 
-#: src/actions/create.cpp:634
+#: src/actions/create.cpp:744
+#, fuzzy
+msgid "None of your leaders are able to recruit that unit."
+msgstr "Níl treoraí agat "
+
+#: src/actions/create.cpp:748
 #, fuzzy
 msgid "You must have a leader on a keep who is able to recruit the unit."
 msgstr "Níl treoraí agat "
 
-#: src/actions/create.cpp:639
+#: src/actions/create.cpp:752
 msgid "There are no vacant castle tiles in which to recruit the unit."
 msgstr ""
 
@@ -3120,15 +5366,15 @@ msgstr ""
 msgid "female^cured"
 msgstr "moillithe"
 
-#: src/actions/move.cpp:957
+#: src/actions/move.cpp:966
 msgid "Ambushed!"
 msgstr "Luíochán!"
 
-#: src/actions/move.cpp:1064
+#: src/actions/move.cpp:1073
 msgid "Failed teleport! Exit not empty"
 msgstr "Theip ar teileapórtáil! Níl imeacht folamh"
 
-#: src/actions/move.cpp:1081
+#: src/actions/move.cpp:1090
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "$friends aonad na gcarad"
@@ -3137,7 +5383,7 @@ msgstr[2] "$friends aonad na gcarad"
 msgstr[3] "$friends aonad na gcarad"
 msgstr[4] "$friends aonad na gcarad"
 
-#: src/actions/move.cpp:1082
+#: src/actions/move.cpp:1091
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "$enemies aonad na namhad"
@@ -3146,11 +5392,11 @@ msgstr[2] "$enemies aonad na namhad"
 msgstr[3] "$enemies aonad na namhad"
 msgstr[4] "$enemies aonad na namhad"
 
-#: src/actions/move.cpp:1083
+#: src/actions/move.cpp:1092
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Chonacthas aonaid! ($friendphrase, $enemyphrase)"
 
-#: src/actions/move.cpp:1087
+#: src/actions/move.cpp:1096
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Chonacthas $enemies aonad na namhad!"
@@ -3159,7 +5405,7 @@ msgstr[2] "Chonacthas $enemies aonad na namhad!"
 msgstr[3] "Chonacthas $enemies aonad na namhad!"
 msgstr[4] "Chonacthas $enemies aonad na namhad!"
 
-#: src/actions/move.cpp:1091
+#: src/actions/move.cpp:1100
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Chonacthas aonad na gcarad!"
@@ -3168,7 +5414,7 @@ msgstr[2] "Chonacthas $friends aonad na gcarad!"
 msgstr[3] "Chonacthas $friends aonad na gcarad!"
 msgstr[4] "Chonacthas $friends aonad na gcarad!"
 
-#: src/actions/move.cpp:1107
+#: src/actions/move.cpp:1116
 msgid "(press $hotkey to keep moving)"
 msgstr ""
 
@@ -3342,7 +5588,7 @@ msgid "Author"
 msgstr "Údar"
 
 #: src/addon/manager_ui.cpp:173 src/addon/manager_ui.cpp:513
-#: src/dialogs.cpp:576 src/menu_events.cpp:218 src/menu_events.cpp:932
+#: src/dialogs.cpp:576 src/menu_events.cpp:217 src/menu_events.cpp:910
 msgid "Name"
 msgstr "Ainm"
 
@@ -3355,7 +5601,7 @@ msgid "Size"
 msgstr "Méid"
 
 #: src/addon/manager_ui.cpp:174 src/addon/manager_ui.cpp:528
-#: src/menu_events.cpp:217 src/menu_events.cpp:931 src/menu_events.cpp:1332
+#: src/menu_events.cpp:216 src/menu_events.cpp:909 src/menu_events.cpp:1292
 msgid "Type"
 msgstr "Sórt"
 
@@ -3424,7 +5670,7 @@ msgid "Do you really wish to continue?"
 msgstr "An dteastaíonn uait lean ar aghaidh?"
 
 #: src/addon/manager_ui.cpp:293 src/addon/manager_ui.cpp:304
-#: src/addon/manager_ui.cpp:970 src/multiplayer.cpp:271
+#: src/addon/manager_ui.cpp:970 src/multiplayer.cpp:273
 msgid "Confirm"
 msgstr "Deimhnigh"
 
@@ -3479,8 +5725,8 @@ msgstr ""
 msgid "There are no add-ons matching the specified criteria on this server."
 msgstr ""
 
-#: src/addon/manager_ui.cpp:701 src/dialogs.cpp:601 src/menu_events.cpp:999
-#: src/menu_events.cpp:1368
+#: src/addon/manager_ui.cpp:701 src/dialogs.cpp:601 src/menu_events.cpp:984
+#: src/menu_events.cpp:1325
 msgid "Filter: "
 msgstr "Scagaire: "
 
@@ -3639,47 +5885,47 @@ msgstr[2] ""
 msgstr[3] ""
 msgstr[4] ""
 
-#: src/attack_prediction_display.cpp:106 src/attack_prediction_display.cpp:238
+#: src/attack_prediction_display.cpp:105 src/attack_prediction_display.cpp:237
 msgid "Attacker"
 msgstr "Ionsaitheoir"
 
-#: src/attack_prediction_display.cpp:107 src/attack_prediction_display.cpp:237
+#: src/attack_prediction_display.cpp:106 src/attack_prediction_display.cpp:236
 msgid "Defender"
 msgstr "Cosantóir"
 
-#: src/attack_prediction_display.cpp:125
+#: src/attack_prediction_display.cpp:124
 msgid "Expected Battle Result (HP)"
 msgstr "Toradh Catha Ionchais (PS)"
 
-#: src/attack_prediction_display.cpp:216
+#: src/attack_prediction_display.cpp:215
 msgid "Time of day"
 msgstr "Tráth an lae"
 
-#: src/attack_prediction_display.cpp:226
+#: src/attack_prediction_display.cpp:225
 msgid "Leadership"
 msgstr "Ceannas"
 
-#: src/attack_prediction_display.cpp:239
+#: src/attack_prediction_display.cpp:238
 msgid " resistance vs "
 msgstr " seasmhacht vs "
 
-#: src/attack_prediction_display.cpp:240
+#: src/attack_prediction_display.cpp:239
 msgid " vulnerability vs "
 msgstr " leochaileacht vs"
 
-#: src/attack_prediction_display.cpp:250
+#: src/attack_prediction_display.cpp:249
 msgid "Slowed"
 msgstr "Moillithe"
 
-#: src/attack_prediction_display.cpp:255 src/reports.cpp:840
+#: src/attack_prediction_display.cpp:254 src/reports.cpp:905
 msgid "Total damage"
 msgstr "Damáiste iomlán"
 
-#: src/attack_prediction_display.cpp:262 src/mouse_events.cpp:914
+#: src/attack_prediction_display.cpp:261 src/mouse_events.cpp:911
 msgid "No usable weapon"
 msgstr "Níl arm inúsáidte aige"
 
-#: src/attack_prediction_display.cpp:267
+#: src/attack_prediction_display.cpp:266
 #, fuzzy
 msgid "Chance of being unscathed"
 msgstr ""
@@ -3687,7 +5933,7 @@ msgstr ""
 "\n"
 "<header>text='Seans a Bualadh'</header>"
 
-#: src/attack_prediction_display.cpp:546 src/mouse_events.cpp:983
+#: src/attack_prediction_display.cpp:545 src/mouse_events.cpp:980
 msgid "Damage Calculations"
 msgstr "Suimeanna Damáiste"
 
@@ -3703,11 +5949,11 @@ msgstr ""
 msgid "No objectives available"
 msgstr "Ní aidhmeanna infhaighte"
 
-#: src/dialogs.cpp:431 src/savegame.cpp:316
+#: src/dialogs.cpp:431 src/savegame.cpp:307
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %H:%M %d %b %Y"
 
-#: src/dialogs.cpp:431 src/savegame.cpp:316
+#: src/dialogs.cpp:431 src/savegame.cpp:307
 msgid "%a %b %d %I:%M %p %Y"
 msgstr "%a %d %b  %I:%M %p %Y"
 
@@ -3731,7 +5977,7 @@ msgstr "Teagaisc"
 msgid "Test scenario"
 msgstr "Misean tástála"
 
-#: src/dialogs.cpp:486 src/savegame.cpp:1144
+#: src/dialogs.cpp:486 src/savegame.cpp:1143
 msgid "Turn"
 msgstr "Seal"
 
@@ -3747,28 +5993,28 @@ msgstr "Deacracht: "
 msgid "Version: "
 msgstr "Leagan: "
 
-#: src/dialogs.cpp:517 src/dialogs.cpp:543 src/savegame.cpp:346
-#: src/savegame.cpp:372
+#: src/dialogs.cpp:517 src/dialogs.cpp:543 src/savegame.cpp:337
+#: src/savegame.cpp:363
 msgid "%b %d %y"
 msgstr "%d %b %y"
 
-#: src/dialogs.cpp:524 src/reports.cpp:1259 src/savegame.cpp:353
+#: src/dialogs.cpp:524 src/reports.cpp:1336 src/savegame.cpp:344
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/dialogs.cpp:527 src/reports.cpp:1259 src/savegame.cpp:356
+#: src/dialogs.cpp:527 src/reports.cpp:1336 src/savegame.cpp:347
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
-#: src/dialogs.cpp:532 src/savegame.cpp:361
+#: src/dialogs.cpp:532 src/savegame.cpp:352
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/dialogs.cpp:535 src/savegame.cpp:364
+#: src/dialogs.cpp:535 src/savegame.cpp:355
 msgid "%A, %I:%M %p"
 msgstr "%A, %I:%M %p"
 
-#: src/dialogs.cpp:539 src/savegame.cpp:368
+#: src/dialogs.cpp:539 src/savegame.cpp:359
 msgid "%b %d"
 msgstr "%d %b"
 
@@ -3787,7 +6033,7 @@ msgstr ""
 msgid "Date"
 msgstr "Dáta"
 
-#: src/dialogs.cpp:593 src/multiplayer_create.cpp:126 src/savegame.cpp:687
+#: src/dialogs.cpp:593 src/multiplayer_create.cpp:126 src/savegame.cpp:686
 msgid "Load Game"
 msgstr "Lódáil Cluiche"
 
@@ -3795,176 +6041,176 @@ msgstr "Lódáil Cluiche"
 msgid "Show replay"
 msgstr "Taispeáin athfhéachaint"
 
-#: src/dialogs.cpp:612
+#: src/dialogs.cpp:610
 msgid "Play the embedded replay from the saved game if applicable"
 msgstr ""
 
-#: src/dialogs.cpp:616
+#: src/dialogs.cpp:614
 msgid "Cancel orders"
 msgstr "Cealaigh orduithe"
 
-#: src/dialogs.cpp:620
+#: src/dialogs.cpp:616
 msgid "Cancel any pending unit movements in the saved game"
 msgstr ""
 
-#: src/dialogs.cpp:624
+#: src/dialogs.cpp:620
 #, fuzzy
 #| msgid "Difficulty: "
 msgid "Change difficulty"
 msgstr "Deacracht: "
 
-#: src/dialogs.cpp:626
+#: src/dialogs.cpp:622
 msgid "Change campaign difficulty before loading"
 msgstr ""
 
-#: src/dialogs.cpp:633
+#: src/dialogs.cpp:629
 msgid "Delete Save"
 msgstr "Scrios Sábháil"
 
-#: src/dialogs.cpp:692
+#: src/dialogs.cpp:687
 msgid "Profile"
 msgstr "Próifíl"
 
-#: src/dialogs.cpp:805
+#: src/dialogs.cpp:800
 msgid "level"
 msgstr "leibhéal"
 
-#: src/dialogs.cpp:818
+#: src/dialogs.cpp:813
 msgid "HP: "
 msgstr "PS: "
 
-#: src/dialogs.cpp:821
+#: src/dialogs.cpp:816
 msgid "XP: "
 msgstr "PT: "
 
-#: src/dialogs.cpp:825
+#: src/dialogs.cpp:820
 msgid "Moves: "
 msgstr "Gluaiseachtaí: "
 
-#: src/dialogs.cpp:1114
+#: src/dialogs.cpp:1100
 msgid "KB"
 msgstr "KB"
 
-#: src/game_config.cpp:339
+#: src/game_config.cpp:341
 msgid "Invalid color range: "
 msgstr "Raon datha neamhbhailí: "
 
-#: src/game_controller.cpp:633 src/game_controller.cpp:651
+#: src/game_controller.cpp:411 src/game_controller.cpp:429
 msgid "The file you have tried to load is corrupt"
 msgstr ""
 
-#: src/game_controller.cpp:636 src/game_controller.cpp:654
-#: src/savegame.cpp:735
+#: src/game_controller.cpp:414 src/game_controller.cpp:432
+#: src/savegame.cpp:734
 msgid "The file you have tried to load is corrupt: '"
 msgstr ""
 
-#: src/game_controller.cpp:644
+#: src/game_controller.cpp:422
 msgid "File I/O Error while reading the game"
 msgstr ""
 
-#: src/game_controller.cpp:646
+#: src/game_controller.cpp:424
 msgid "File I/O Error while reading the game: '"
 msgstr ""
 
-#: src/game_controller.cpp:743
+#: src/game_controller.cpp:521
 msgid "No campaigns are available.\n"
 msgstr "Níl aon fheachtas ar bith infhaighte. \n"
 
-#: src/game_controller.cpp:1040
+#: src/game_controller.cpp:818
 msgid "Error while starting server: "
 msgstr ""
 
-#: src/game_controller.cpp:1042 src/playcampaign.cpp:198
-#: src/playcampaign.cpp:486
+#: src/game_controller.cpp:820 src/playcampaign.cpp:215
+#: src/playcampaign.cpp:504
 msgid "The game could not be loaded: "
 msgstr ""
 
-#: src/game_controller.cpp:1044 src/playcampaign.cpp:200
-#: src/playcampaign.cpp:489
+#: src/game_controller.cpp:822 src/playcampaign.cpp:217
+#: src/playcampaign.cpp:507
 msgid "Error while playing the game: "
 msgstr ""
 
-#: src/game_controller.cpp:1062 src/playcampaign.cpp:202
-#: src/playcampaign.cpp:492
+#: src/game_controller.cpp:840 src/playcampaign.cpp:219
+#: src/playcampaign.cpp:510
 msgid "The game map could not be loaded: "
 msgstr ""
 
-#: src/game_controller.cpp:1079 src/game_controller_abstract.cpp:100
+#: src/game_controller.cpp:887 src/game_controller_abstract.cpp:100
 msgid "The Battle for Wesnoth"
 msgstr "An Cath ar son Wesnoth"
 
-#: src/game_controller.cpp:1202
+#: src/game_controller.cpp:1022
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/game_controller.cpp:1209
+#: src/game_controller.cpp:1029
 msgid "ERROR DETAILS:"
 msgstr "MIONPHÁIRTEANNA ERRÁIDE:"
 
-#: src/game_controller.cpp:1242
+#: src/game_controller.cpp:1062
 msgid "Error loading game configuration files: '"
 msgstr ""
 
-#: src/game_controller.cpp:1243
+#: src/game_controller.cpp:1063
 msgid "' (The game will now exit)"
 msgstr "' (Scoirfidh an cluiche anois)"
 
-#: src/game_events.cpp:186
+#: src/game_events.cpp:188
 msgid "Error: "
 msgstr "Earráid: "
 
-#: src/game_events.cpp:189
+#: src/game_events.cpp:191
 msgid "Warning: "
 msgstr "Rabhadh: "
 
-#: src/game_events.cpp:192
+#: src/game_events.cpp:194
 msgid "Debug: "
 msgstr "Dífhabhtaigh: "
 
-#: src/game_events.cpp:195
+#: src/game_events.cpp:197
 msgid "Info: "
 msgstr "Eolas: "
 
-#: src/game_events.cpp:2522
+#: src/game_events.cpp:2545
 msgid "Invalid value in the result key for [end_level]"
 msgstr ""
 
-#: src/gamestatus.cpp:652 src/multiplayer_connect.cpp:969
+#: src/gamestatus.cpp:649 src/multiplayer_connect.cpp:973
 msgid "Unable to find a leader type for faction $faction"
 msgstr ""
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:207 src/multiplayer_lobby.cpp:463
+#: src/gui/dialogs/lobby/lobby_data.cpp:206 src/multiplayer_lobby.cpp:463
 msgid "Unknown era: $era_id"
 msgstr "Aois anaithnid: $era_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:212 src/multiplayer_lobby.cpp:467
+#: src/gui/dialogs/lobby/lobby_data.cpp:211 src/multiplayer_lobby.cpp:467
 msgid "Unknown era"
 msgstr "Aois anaithnid"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:268 src/multiplayer_lobby.cpp:529
+#: src/gui/dialogs/lobby/lobby_data.cpp:267 src/multiplayer_lobby.cpp:529
 msgid "Remote scenario"
 msgstr "Cianmhisean"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:276 src/multiplayer_lobby.cpp:536
+#: src/gui/dialogs/lobby/lobby_data.cpp:275 src/multiplayer_lobby.cpp:536
 msgid "Unknown scenario: $scenario_id"
 msgstr "Misean anaithnid: $scenario_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:281 src/multiplayer_lobby.cpp:540
+#: src/gui/dialogs/lobby/lobby_data.cpp:280 src/multiplayer_lobby.cpp:540
 msgid "Unknown scenario"
 msgstr "Misean anaithnid"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:287 src/multiplayer_lobby.cpp:571
+#: src/gui/dialogs/lobby/lobby_data.cpp:286 src/multiplayer_lobby.cpp:571
 msgid "Reloaded game"
 msgstr "Cluiche athlódáilte"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:298 src/multiplayer_lobby.cpp:587
+#: src/gui/dialogs/lobby/lobby_data.cpp:297 src/multiplayer_lobby.cpp:587
 msgid "Turn "
 msgstr "Seal"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:302 src/multiplayer_lobby.cpp:591
+#: src/gui/dialogs/lobby/lobby_data.cpp:301 src/multiplayer_lobby.cpp:591
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Sliotán Folamh:"
@@ -3973,17 +6219,17 @@ msgstr[2] "Sliotáin Fholamha:"
 msgstr[3] "Sliotáin Fholamha:"
 msgstr[4] "Sliotáin Fholamha:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:308 src/multiplayer_lobby.cpp:602
+#: src/gui/dialogs/lobby/lobby_data.cpp:307 src/multiplayer_lobby.cpp:602
 msgid "Fog"
 msgstr "Ceo"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:311
-#: src/gui/dialogs/lobby/lobby_data.cpp:314 src/multiplayer_create.cpp:97
+#: src/gui/dialogs/lobby/lobby_data.cpp:310
+#: src/gui/dialogs/lobby/lobby_data.cpp:313 src/multiplayer_create.cpp:97
 #: src/multiplayer_lobby.cpp:606 src/multiplayer_lobby.cpp:612
 msgid "Shroud"
 msgstr "Dorcha"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:316 src/multiplayer_lobby.cpp:616
+#: src/gui/dialogs/lobby/lobby_data.cpp:315 src/multiplayer_lobby.cpp:616
 msgid "none"
 msgstr "dada"
 
@@ -4031,18 +6277,18 @@ msgstr "Deireadh Scéil"
 msgid "System default language"
 msgstr "Béarla réamhshocraithe ar córais"
 
-#: src/leader_list.cpp:142 src/menu_events.cpp:1358
-#: src/multiplayer_connect.cpp:225 src/multiplayer_connect.cpp:269
+#: src/leader_list.cpp:142 src/menu_events.cpp:1315
+#: src/multiplayer_connect.cpp:226 src/multiplayer_connect.cpp:270
 msgid "gender^Random"
 msgstr "Randam"
 
-#: src/leader_list.cpp:152 src/multiplayer_connect.cpp:221
-#: src/multiplayer_connect.cpp:265
+#: src/leader_list.cpp:152 src/multiplayer_connect.cpp:222
+#: src/multiplayer_connect.cpp:266
 msgid "Female ♀"
 msgstr "Baineann ♀"
 
-#: src/leader_list.cpp:156 src/multiplayer_connect.cpp:223
-#: src/multiplayer_connect.cpp:267
+#: src/leader_list.cpp:156 src/multiplayer_connect.cpp:224
+#: src/multiplayer_connect.cpp:268
 msgid "Male ♂"
 msgstr "Fireann ♂"
 
@@ -4150,84 +6396,84 @@ msgstr ""
 msgid "This unit is close to advancing a level. "
 msgstr ""
 
-#: src/menu_events.cpp:118 src/menu_events.cpp:1003
+#: src/menu_events.cpp:118 src/menu_events.cpp:988
 msgid "Dismiss Unit"
 msgstr "Bris Aonad"
 
-#: src/menu_events.cpp:208
+#: src/menu_events.cpp:207
 msgid "Statistics"
 msgstr "Staitisticí"
 
-#: src/menu_events.cpp:219
+#: src/menu_events.cpp:218
 msgid "Moves"
 msgstr "Gluaiseachtaí"
 
-#: src/menu_events.cpp:220
+#: src/menu_events.cpp:219
 msgid "Status"
 msgstr "Stádas"
 
-#: src/menu_events.cpp:222 src/menu_events.cpp:933
+#: src/menu_events.cpp:221 src/menu_events.cpp:911
 msgid "Level^Lvl."
 msgstr "Lbhl."
 
-#: src/menu_events.cpp:224
+#: src/menu_events.cpp:223
 msgid "unit list^Traits"
 msgstr "Treithe"
 
-#: src/menu_events.cpp:322
+#: src/menu_events.cpp:321
 msgid "Unit List"
 msgstr "Liosta Aonaid"
 
-#: src/menu_events.cpp:328 src/menu_events.cpp:350
+#: src/menu_events.cpp:327 src/menu_events.cpp:349
 msgid "Scroll To"
 msgstr "Scrollaigh Go"
 
-#: src/menu_events.cpp:382
+#: src/menu_events.cpp:381
 msgid "Leader"
 msgstr "Treoraí"
 
-#: src/menu_events.cpp:383 src/multiplayer_connect.cpp:1021
+#: src/menu_events.cpp:382 src/multiplayer_connect.cpp:1060
 msgid "Team"
 msgstr "Foireann"
 
-#: src/menu_events.cpp:384 src/multiplayer_connect.cpp:1032
+#: src/menu_events.cpp:383 src/multiplayer_connect.cpp:1070
 msgid "Gold"
 msgstr "Ór"
 
-#: src/menu_events.cpp:385
+#: src/menu_events.cpp:384
 msgid "Villages"
 msgstr "Bailte"
 
-#: src/menu_events.cpp:386
+#: src/menu_events.cpp:385
 msgid "status^Units"
 msgstr "Aonaid"
 
-#: src/menu_events.cpp:387
+#: src/menu_events.cpp:386
 msgid "Upkeep"
 msgstr "Cothabháil"
 
-#: src/menu_events.cpp:388 src/multiplayer_connect.cpp:1033
+#: src/menu_events.cpp:387 src/multiplayer_connect.cpp:1071
 #: src/multiplayer_wait.cpp:521
 msgid "Income"
 msgstr "Ioncam"
 
-#: src/menu_events.cpp:493
+#: src/menu_events.cpp:492
 msgid "Current Status"
 msgstr "Stádas na Linne"
 
-#: src/menu_events.cpp:494
+#: src/menu_events.cpp:493
 msgid "More >"
 msgstr "Níos Mó >"
 
-#: src/menu_events.cpp:512
+#: src/menu_events.cpp:511
 msgid "scenario settings^Leader"
 msgstr "Ceannfort"
 
-#: src/menu_events.cpp:514
+#: src/menu_events.cpp:513
 msgid "scenario settings^Side"
 msgstr "Foireann"
 
-#: src/menu_events.cpp:515
+#: src/menu_events.cpp:514
 msgid ""
 "scenario settings^Start\n"
 "Gold"
@@ -4235,7 +6481,7 @@ msgstr ""
 "Ór i\n"
 "dTús Baire"
 
-#: src/menu_events.cpp:516
+#: src/menu_events.cpp:515
 msgid ""
 "scenario settings^Base\n"
 "Income"
@@ -4243,7 +6489,7 @@ msgstr ""
 "Bun\n"
 "Ioncam"
 
-#: src/menu_events.cpp:517
+#: src/menu_events.cpp:516
 msgid ""
 "scenario settings^Gold Per\n"
 "Village"
@@ -4251,7 +6497,7 @@ msgstr ""
 "Ór ó gach\n"
 "Baile"
 
-#: src/menu_events.cpp:518
+#: src/menu_events.cpp:517
 #, fuzzy
 #| msgid ""
 #| "scenario settings^Gold Per\n"
@@ -4263,59 +6509,59 @@ msgstr ""
 "Ór ó gach\n"
 "Baile"
 
-#: src/menu_events.cpp:519
+#: src/menu_events.cpp:518
 msgid "scenario settings^Fog"
 msgstr "Ceo"
 
-#: src/menu_events.cpp:520
+#: src/menu_events.cpp:519
 msgid "scenario settings^Shroud"
 msgstr "Dorcha"
 
-#: src/menu_events.cpp:570 src/menu_events.cpp:571
+#: src/menu_events.cpp:569 src/menu_events.cpp:570
 msgid "no"
 msgstr "ni hea"
 
-#: src/menu_events.cpp:570 src/menu_events.cpp:571
+#: src/menu_events.cpp:569 src/menu_events.cpp:570
 msgid "yes"
 msgstr "is ea"
 
-#: src/menu_events.cpp:587
+#: src/menu_events.cpp:586
 msgid "Scenario Settings"
 msgstr "Socruithe Misin"
 
-#: src/menu_events.cpp:590
+#: src/menu_events.cpp:589
 msgid " < Back"
 msgstr " < Siar"
 
-#: src/menu_events.cpp:609
+#: src/menu_events.cpp:608
 msgid "Save the Map As"
 msgstr "Sábháil Léarscáil Mar"
 
-#: src/menu_events.cpp:613
+#: src/menu_events.cpp:612
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Léarscáil ann cheana. Forscríobh?"
 
-#: src/menu_events.cpp:625
+#: src/menu_events.cpp:624
 msgid "Map saved."
 msgstr "Léarscáil sábháilte."
 
-#: src/menu_events.cpp:629
+#: src/menu_events.cpp:628
 msgid "Could not save the map: $msg"
 msgstr ""
 
-#: src/menu_events.cpp:701
+#: src/menu_events.cpp:700
 msgid "Message:"
 msgstr "Teachtaireacht:"
 
-#: src/menu_events.cpp:702
+#: src/menu_events.cpp:701
 msgid "Send to allies only"
 msgstr "Seol go comhghuaillithe amháin"
 
-#: src/menu_events.cpp:702
+#: src/menu_events.cpp:701
 msgid "Send to observers only"
 msgstr "Seol go breathnóirí amháin"
 
-#: src/menu_events.cpp:769
+#: src/menu_events.cpp:768
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "phíosa óir"
@@ -4324,437 +6570,437 @@ msgstr[2] "phíosa óir"
 msgstr[3] "bpíosa óir"
 msgstr[4] "píosa óir"
 
-#: src/menu_events.cpp:776
+#: src/menu_events.cpp:775
 msgid "You have no units available to recruit."
 msgstr ""
 
-#: src/menu_events.cpp:791
+#: src/menu_events.cpp:790
 msgid "Recruit"
 msgstr "Earcaigh"
 
-#: src/menu_events.cpp:792 src/menu_events.cpp:994
+#: src/menu_events.cpp:791 src/menu_events.cpp:972
 msgid "Select unit:"
 msgstr "Roghnaigh aonad:"
 
-#: src/menu_events.cpp:841
+#: src/menu_events.cpp:837
 msgid "You don’t have enough gold to recruit that unit"
 msgstr ""
 
-#: src/menu_events.cpp:891
+#: src/menu_events.cpp:869
 msgid "You are separated from your soldiers and may not recall them"
 msgstr ""
 
-#: src/menu_events.cpp:918
+#: src/menu_events.cpp:896
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
 
-#: src/menu_events.cpp:924
+#: src/menu_events.cpp:902
 msgid "You currently can't recall at the highlighted location"
 msgstr ""
 
-#: src/menu_events.cpp:935
+#: src/menu_events.cpp:913
 msgid "Traits"
 msgstr "Tréithe"
 
-#: src/menu_events.cpp:993
+#: src/menu_events.cpp:971
 msgid "Recall"
 msgstr "Athghair"
 
-#: src/menu_events.cpp:1039
+#: src/menu_events.cpp:1024
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/menu_events.cpp:1183
+#: src/menu_events.cpp:1143
 msgid "You cannot end your turn yet!"
 msgstr ""
 
-#: src/menu_events.cpp:1197
+#: src/menu_events.cpp:1157
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 
-#: src/menu_events.cpp:1204 src/menu_events.cpp:1211
+#: src/menu_events.cpp:1164 src/menu_events.cpp:1171
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 
-#: src/menu_events.cpp:1251
+#: src/menu_events.cpp:1211
 msgid "Rename Unit"
 msgstr "Athainmnigh Aonad"
 
-#: src/menu_events.cpp:1331
+#: src/menu_events.cpp:1291
 msgid "Race"
 msgstr "Cine"
 
-#: src/menu_events.cpp:1355
+#: src/menu_events.cpp:1312
 msgid "Create Unit (Debug!)"
 msgstr "Cruthaigh Aonad (Dífhabhtaigh!)"
 
-#: src/menu_events.cpp:1358 src/multiplayer_wait.cpp:132
+#: src/menu_events.cpp:1315 src/multiplayer_wait.cpp:132
 msgid "Gender: "
 msgstr "Inscne: "
 
-#: src/menu_events.cpp:1649
+#: src/menu_events.cpp:1606
 msgid "Search"
 msgstr "Cuardach"
 
-#: src/menu_events.cpp:1826
+#: src/menu_events.cpp:1783
 msgid "This command is currently unavailable."
 msgstr "Tá an órdú seo díchumasaithe i láthair na huaire."
 
-#: src/menu_events.cpp:1832
+#: src/menu_events.cpp:1789
 msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
 msgstr ""
 
-#: src/menu_events.cpp:1850
+#: src/menu_events.cpp:1807
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
 msgstr ""
 
-#: src/menu_events.cpp:1852
+#: src/menu_events.cpp:1809
 msgid "do not translate the 'all'^[all|<command>]"
 msgstr "[all|<ordú>]"
 
-#: src/menu_events.cpp:1896
+#: src/menu_events.cpp:1853
 msgid "Error:"
 msgstr "Earráid:"
 
-#: src/menu_events.cpp:1902
+#: src/menu_events.cpp:1859
 msgid "Missing argument $arg_id"
 msgstr "Argóint ar iarraidh $arg_id"
 
-#: src/menu_events.cpp:1950
+#: src/menu_events.cpp:1907
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
 msgstr ""
 
-#: src/menu_events.cpp:1950 src/menu_events.cpp:1951 src/menu_events.cpp:1974
+#: src/menu_events.cpp:1907 src/menu_events.cpp:1908 src/menu_events.cpp:1931
 msgid "help"
 msgstr "cúnamh"
 
-#: src/menu_events.cpp:1951
+#: src/menu_events.cpp:1908
 msgid "Type $help_command <command> for more info."
 msgstr ""
 
-#: src/menu_events.cpp:1962
+#: src/menu_events.cpp:1919
 msgid " No help available."
 msgstr " Ní infhaighte é cabhair."
 
-#: src/menu_events.cpp:1967
+#: src/menu_events.cpp:1924
 msgid "Usage:"
 msgstr "Úsáid:"
 
-#: src/menu_events.cpp:1972
+#: src/menu_events.cpp:1929
 msgid "aliases:"
 msgstr "ainmneacha bréige:"
 
-#: src/menu_events.cpp:2093
+#: src/menu_events.cpp:2050
 msgid "(A) — admin command"
 msgstr "(A) - ordú riarthóra"
 
-#: src/menu_events.cpp:2100 src/menu_events.cpp:2307
+#: src/menu_events.cpp:2057 src/menu_events.cpp:2264
 msgid "(admin only)"
 msgstr "(riarthóir amháin)"
 
-#: src/menu_events.cpp:2120
+#: src/menu_events.cpp:2077
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
 msgstr ""
 
-#: src/menu_events.cpp:2124
+#: src/menu_events.cpp:2081
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
 msgstr ""
 
-#: src/menu_events.cpp:2125 src/menu_events.cpp:2128 src/menu_events.cpp:2130
-#: src/menu_events.cpp:2132 src/menu_events.cpp:2134 src/menu_events.cpp:2161
-#: src/menu_events.cpp:2163 src/menu_events.cpp:2165 src/menu_events.cpp:2179
+#: src/menu_events.cpp:2082 src/menu_events.cpp:2085 src/menu_events.cpp:2087
+#: src/menu_events.cpp:2089 src/menu_events.cpp:2091 src/menu_events.cpp:2118
+#: src/menu_events.cpp:2120 src/menu_events.cpp:2122 src/menu_events.cpp:2136
 msgid "<nickname>"
 msgstr "<leasainm>"
 
-#: src/menu_events.cpp:2127
+#: src/menu_events.cpp:2084
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
 
-#: src/menu_events.cpp:2130
+#: src/menu_events.cpp:2087
 msgid "Kick a player or observer."
 msgstr "Ciceáil imreoir nó breathnóir."
 
-#: src/menu_events.cpp:2132
+#: src/menu_events.cpp:2089
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr ""
 
-#: src/menu_events.cpp:2134
+#: src/menu_events.cpp:2091
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
 
-#: src/menu_events.cpp:2136
+#: src/menu_events.cpp:2093
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr ""
 
-#: src/menu_events.cpp:2146
+#: src/menu_events.cpp:2103
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
 msgstr ""
 
-#: src/menu_events.cpp:2150
+#: src/menu_events.cpp:2107
 msgid "<message>"
 msgstr "<teachtaireacht>"
 
-#: src/menu_events.cpp:2150
+#: src/menu_events.cpp:2107
 msgid "Send an emotion or personal action in chat."
 msgstr ""
 
-#: src/menu_events.cpp:2153
+#: src/menu_events.cpp:2110
 msgid ""
 "Sends a private message. You cannot send private messages to players in a "
 "running game you observe or play in."
 msgstr ""
 
-#: src/menu_events.cpp:2155
+#: src/menu_events.cpp:2112
 msgid "<nickname> <message>"
 msgstr "<leasainm> <teachtaireacht>"
 
-#: src/menu_events.cpp:2159
+#: src/menu_events.cpp:2116
 msgid "<level> <domain>"
 msgstr "<leibhéal> <fearann>"
 
-#: src/menu_events.cpp:2159
+#: src/menu_events.cpp:2116
 #, fuzzy
 msgid "Change the log level of a log domain."
 msgstr "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
 
-#: src/menu_events.cpp:2161
+#: src/menu_events.cpp:2118
 msgid "Add a nickname to your ignores list."
 msgstr "Cuir ainm ar do liosta díbeartach."
 
-#: src/menu_events.cpp:2163
+#: src/menu_events.cpp:2120
 msgid "Add a nickname to your friends list."
 msgstr "Cuir ainm ar do liosta carad."
 
-#: src/menu_events.cpp:2165
+#: src/menu_events.cpp:2122
 msgid "Remove a nickname from your ignores or friends list."
 msgstr "Bain ainm as do liosta carad nó díbeartach."
 
-#: src/menu_events.cpp:2167
+#: src/menu_events.cpp:2124
 msgid "Show your ignores and friends list."
 msgstr "Taispeáin do liosta carad agus díbeartach."
 
-#: src/menu_events.cpp:2170
+#: src/menu_events.cpp:2127
 msgid "Display version information."
 msgstr "Taispeáin eolas leagain."
 
-#: src/menu_events.cpp:2172
+#: src/menu_events.cpp:2129
 msgid "<password> <email (optional)>"
 msgstr "<pasfhocal> <ríomhphost (roghnach)>"
 
-#: src/menu_events.cpp:2172
+#: src/menu_events.cpp:2129
 msgid "Register your nickname"
 msgstr "Cláraigh do leasainm"
 
-#: src/menu_events.cpp:2174
+#: src/menu_events.cpp:2131
 msgid "Drop your nickname."
 msgstr "Fág do leasainm."
 
-#: src/menu_events.cpp:2176
+#: src/menu_events.cpp:2133
 msgid "Update details for your nickname. For possible details see '/details'."
 msgstr ""
 
-#: src/menu_events.cpp:2177
+#: src/menu_events.cpp:2134
 msgid "<detail> <value>"
 msgstr "<sonra> <fiúntas>"
 
-#: src/menu_events.cpp:2179
+#: src/menu_events.cpp:2136
 msgid "Request information about a nickname."
 msgstr ""
 
-#: src/menu_events.cpp:2181
+#: src/menu_events.cpp:2138
 msgid "Request a list of details you can set for your registered nickname."
 msgstr ""
 
-#: src/menu_events.cpp:2183 src/menu_events.cpp:2186 src/menu_events.cpp:2188
+#: src/menu_events.cpp:2140 src/menu_events.cpp:2143 src/menu_events.cpp:2145
 msgid "<room>"
 msgstr "<seomra>"
 
-#: src/menu_events.cpp:2183
+#: src/menu_events.cpp:2140
 msgid "Join a room."
 msgstr "Téigh isteach i seomra."
 
-#: src/menu_events.cpp:2186
+#: src/menu_events.cpp:2143
 msgid "Part a room."
 msgstr "Scar seomra."
 
-#: src/menu_events.cpp:2188
+#: src/menu_events.cpp:2145
 msgid "List room members."
 msgstr "Liostaigh comhaltaí den sheomra."
 
-#: src/menu_events.cpp:2190
+#: src/menu_events.cpp:2147
 msgid "List available rooms."
 msgstr "Liostaigh seomraí ar fáil."
 
-#: src/menu_events.cpp:2192
+#: src/menu_events.cpp:2149
 msgid "<room> <msg>"
 msgstr "<seomra> <teachtaireacht>"
 
-#: src/menu_events.cpp:2192
+#: src/menu_events.cpp:2149
 msgid "Room message."
 msgstr "Teachtaireacht seomra."
 
-#: src/menu_events.cpp:2194
+#: src/menu_events.cpp:2151
 #, fuzzy
 msgid "<room> <type> [value]"
 msgstr "<seomra> <sórt> [value]"
 
-#: src/menu_events.cpp:2194
+#: src/menu_events.cpp:2151
 msgid "Room query."
 msgstr "Ceist seomra."
 
-#: src/menu_events.cpp:2299
+#: src/menu_events.cpp:2256
 msgid "(D) — debug only, (N) — network only, (A) — admin only"
 msgstr "(D) - dífhabhtú amháin, (N) - líonra amháin, (A) - riarthóir amháin"
 
-#: src/menu_events.cpp:2305
+#: src/menu_events.cpp:2262
 msgid "(debug command)"
 msgstr "(ordú dífhabhtúcháin)"
 
-#: src/menu_events.cpp:2306
+#: src/menu_events.cpp:2263
 msgid "(network only)"
 msgstr "(líonra amháin)"
 
-#: src/menu_events.cpp:2331
+#: src/menu_events.cpp:2288
 msgid "Refresh gui."
 msgstr "Athnuaigh GUI."
 
-#: src/menu_events.cpp:2333
+#: src/menu_events.cpp:2290
 msgid "Switch a side to/from AI control."
 msgstr ""
 
-#: src/menu_events.cpp:2333
+#: src/menu_events.cpp:2290
 msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr "[<foireann> [on/off]]"
 
-#: src/menu_events.cpp:2336
+#: src/menu_events.cpp:2293
 msgid "<side> <nickname>"
 msgstr "<foireann> <leasainm>"
 
-#: src/menu_events.cpp:2336
+#: src/menu_events.cpp:2293
 msgid "Assign control of a side to a different player or observer."
 msgstr ""
 
-#: src/menu_events.cpp:2338
+#: src/menu_events.cpp:2295
 msgid "Clear chat history."
 msgstr "Glan stair comhrá."
 
-#: src/menu_events.cpp:2340
+#: src/menu_events.cpp:2297
 msgid "Visualize the screen refresh procedure."
 msgstr ""
 
-#: src/menu_events.cpp:2342
+#: src/menu_events.cpp:2299
 #, fuzzy
 msgid "Debug foreground terrain."
 msgstr "Tiomsú rialacha tír-raon"
 
-#: src/menu_events.cpp:2344
+#: src/menu_events.cpp:2301
 msgid "Debug layers from terrain under the mouse."
 msgstr ""
 
-#: src/menu_events.cpp:2345
+#: src/menu_events.cpp:2302
 msgid "Show fps."
 msgstr "Taispeáin FPS."
 
-#: src/menu_events.cpp:2347
+#: src/menu_events.cpp:2304
 msgid "Save game."
 msgstr "Sábháil cluiche."
 
-#: src/menu_events.cpp:2349
+#: src/menu_events.cpp:2306
 msgid "Quit game."
 msgstr "Scoir an cluiche."
 
-#: src/menu_events.cpp:2353
+#: src/menu_events.cpp:2310
 msgid "Save and quit."
 msgstr "Sábháil agus scoir."
 
-#: src/menu_events.cpp:2356
+#: src/menu_events.cpp:2313
 #, fuzzy
 msgid "Ignore replay errors."
 msgstr "B<replay_save_path>"
 
-#: src/menu_events.cpp:2358
+#: src/menu_events.cpp:2315
 msgid "Disable autosaves."
 msgstr "Díchumasaigh uathshábháilte."
 
-#: src/menu_events.cpp:2360
+#: src/menu_events.cpp:2317
 msgid "<id>"
 msgstr "<id>"
 
-#: src/menu_events.cpp:2360
+#: src/menu_events.cpp:2317
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr ""
 
-#: src/menu_events.cpp:2363
+#: src/menu_events.cpp:2320
 msgid "Choose next scenario"
 msgstr "Roghnaigh misean eile"
 
-#: src/menu_events.cpp:2366
+#: src/menu_events.cpp:2323
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
 msgstr ""
 
-#: src/menu_events.cpp:2366
+#: src/menu_events.cpp:2323
 msgid "[turn]"
 msgstr "[seal]"
 
-#: src/menu_events.cpp:2368
+#: src/menu_events.cpp:2325
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
 msgstr ""
 
-#: src/menu_events.cpp:2368
+#: src/menu_events.cpp:2325
 msgid "[limit]"
 msgstr "[treorainn]"
 
-#: src/menu_events.cpp:2370
+#: src/menu_events.cpp:2327
 msgid "Turn debug mode on."
 msgstr "Cas ar mód dífhabhtúcháin."
 
-#: src/menu_events.cpp:2372
+#: src/menu_events.cpp:2329
 msgid "Turn debug mode off."
 msgstr "Cas as mód dífhabhtúcháin."
 
-#: src/menu_events.cpp:2374 src/menu_events.cpp:2378
+#: src/menu_events.cpp:2331 src/menu_events.cpp:2335
 msgid "<command>[;<command>...]"
 msgstr "<ordaigh>[;<ordaigh>...]"
 
-#: src/menu_events.cpp:2374
+#: src/menu_events.cpp:2331
 msgid "Execute a Lua statement."
 msgstr "Rith ráiteas Lua"
 
-#: src/menu_events.cpp:2376
+#: src/menu_events.cpp:2333
 msgid "Grant higher privileges to Lua scripts."
 msgstr ""
 
-#: src/menu_events.cpp:2378
+#: src/menu_events.cpp:2335
 msgid "Set the command used by the custom command hotkey"
 msgstr ""
 
-#: src/menu_events.cpp:2381
+#: src/menu_events.cpp:2338
 msgid "Invoke a dialog allowing changing control of MP sides."
 msgstr ""
 
-#: src/menu_events.cpp:2385
+#: src/menu_events.cpp:2342
 #, fuzzy
 msgid "Launch the gamestate inspector"
 msgstr ""
@@ -4762,307 +7008,307 @@ msgstr ""
 "Taispeáin athróg staidchluiche.\n"
 "\n"
 
-#: src/menu_events.cpp:2387
+#: src/menu_events.cpp:2344
 msgid "Manage persistence data"
 msgstr "Bainistigh sonraí marthanachta"
 
-#: src/menu_events.cpp:2389
+#: src/menu_events.cpp:2346
 msgid "<name>[=<command>]"
 msgstr "<ainm>[=<ordú>]"
 
-#: src/menu_events.cpp:2389
+#: src/menu_events.cpp:2346
 msgid "Set or show alias to a command"
 msgstr ""
 
-#: src/menu_events.cpp:2391
+#: src/menu_events.cpp:2348
 msgid "<var>=<value>"
 msgstr "<var>=<value>"
 
-#: src/menu_events.cpp:2391
+#: src/menu_events.cpp:2348
 msgid "Set a scenario variable."
 msgstr "Socraigh athróg misin"
 
-#: src/menu_events.cpp:2393
+#: src/menu_events.cpp:2350
 msgid "<var>"
 msgstr "<var>"
 
-#: src/menu_events.cpp:2393
+#: src/menu_events.cpp:2350
 msgid "Show a scenario variable."
 msgstr "Taispeáin athróg misin."
 
-#: src/menu_events.cpp:2395
+#: src/menu_events.cpp:2352
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
 
-#: src/menu_events.cpp:2402
+#: src/menu_events.cpp:2359
 msgid "Discover all units in help."
 msgstr "Aimsigh gach aonaid sa chabhair."
 
-#: src/menu_events.cpp:2404
+#: src/menu_events.cpp:2361
 msgid "'Undiscover' all units in help."
 msgstr "'Neamhaimsigh' gach aonaid sa chabhair."
 
-#: src/menu_events.cpp:2406
+#: src/menu_events.cpp:2363
 msgid "Create a unit."
 msgstr "Cruthaigh aonad."
 
-#: src/menu_events.cpp:2408
+#: src/menu_events.cpp:2365
 msgid "Toggle fog for the current player."
 msgstr ""
 
-#: src/menu_events.cpp:2410
+#: src/menu_events.cpp:2367
 msgid "Toggle shroud for the current player."
 msgstr ""
 
-#: src/menu_events.cpp:2412
+#: src/menu_events.cpp:2369
 msgid "Give gold to the current player."
 msgstr "Tabhair ór don imreoir reatha."
 
-#: src/menu_events.cpp:2414
+#: src/menu_events.cpp:2371
 msgid "Fire a game event."
 msgstr "Truicear eachtra chluiche."
 
-#: src/menu_events.cpp:2417
+#: src/menu_events.cpp:2374
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr ""
 
-#: src/menu_events.cpp:2420
+#: src/menu_events.cpp:2377
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr ""
 
-#: src/menu_events.cpp:2423
+#: src/menu_events.cpp:2380
 msgid "Toggle planning mode."
 msgstr "Scoránaigh mód pleanála."
 
-#: src/menu_events.cpp:2426
+#: src/menu_events.cpp:2383
 msgid "Access whiteboard options dialog."
 msgstr ""
 
-#: src/menu_events.cpp:2469
+#: src/menu_events.cpp:2426
 msgid "Unknown debug level: '$level'."
 msgstr "Leibhéal dífhabhtúcháin anaithnid: '$level'."
 
-#: src/menu_events.cpp:2471 src/menu_events.cpp:2480
+#: src/menu_events.cpp:2428 src/menu_events.cpp:2437
 msgid "error"
 msgstr "earráid"
 
-#: src/menu_events.cpp:2478
+#: src/menu_events.cpp:2435
 msgid "Unknown debug domain: '$domain'."
 msgstr "Fearann dífhabhtúcháin anaithnid: '$domain'."
 
-#: src/menu_events.cpp:2487
+#: src/menu_events.cpp:2444
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr ""
 
-#: src/menu_events.cpp:2558
+#: src/menu_events.cpp:2515
 msgid "whisper to $receiver"
 msgstr "cogar a thabhairt do $receiver"
 
-#: src/menu_events.cpp:2565 src/multiplayer_ui.cpp:550
+#: src/menu_events.cpp:2522 src/multiplayer_ui.cpp:551
 msgid "whisper: $sender"
 msgstr "cogar: $sender"
 
-#: src/menu_events.cpp:2661 src/menu_events.cpp:2680
-#: src/multiplayer_connect.cpp:666
+#: src/menu_events.cpp:2618 src/menu_events.cpp:2637
+#: src/multiplayer_connect.cpp:667
 msgid "(empty)"
 msgstr "(folamh)"
 
-#: src/menu_events.cpp:2661 src/menu_events.cpp:2667 src/menu_events.cpp:2717
+#: src/menu_events.cpp:2618 src/menu_events.cpp:2624 src/menu_events.cpp:2674
 msgid "ignores list"
 msgstr "liosta díbeartach"
 
-#: src/menu_events.cpp:2667
+#: src/menu_events.cpp:2624
 msgid "Added to ignore list: $nick"
 msgstr "Chuir tú $nick ar liosta díbeartach"
 
-#: src/menu_events.cpp:2670 src/menu_events.cpp:2689
+#: src/menu_events.cpp:2627 src/menu_events.cpp:2646
 msgid "Invalid username: $nick"
 msgstr "Ainm úsáideora anaithnid: $nick"
 
-#: src/menu_events.cpp:2680 src/menu_events.cpp:2687 src/menu_events.cpp:2713
+#: src/menu_events.cpp:2637 src/menu_events.cpp:2644 src/menu_events.cpp:2670
 msgid "friends list"
 msgstr "liosta carad"
 
-#: src/menu_events.cpp:2687
+#: src/menu_events.cpp:2644
 msgid "Added to friends list: $nick"
 msgstr "Chuir tú $nick ar liosta carad"
 
-#: src/menu_events.cpp:2703
+#: src/menu_events.cpp:2660
 msgid "Removed from list: $nick"
 msgstr "Tá ainm bainte as liosta: $nick"
 
-#: src/menu_events.cpp:2703 src/menu_events.cpp:2721
+#: src/menu_events.cpp:2660 src/menu_events.cpp:2678
 msgid "friends and ignores list"
 msgstr "liosta carad agus díbeartach"
 
-#: src/menu_events.cpp:2721
+#: src/menu_events.cpp:2678
 msgid "There are no players on your friends or ignore list."
 msgstr "Níl aon imreoir ar bith ar do liosta carad nó díbeartach."
 
-#: src/menu_events.cpp:2726
+#: src/menu_events.cpp:2683
 msgid "version"
 msgstr "insint"
 
-#: src/menu_events.cpp:2742
+#: src/menu_events.cpp:2699
 msgid "registering with password *** and no email address"
 msgstr ""
 
-#: src/menu_events.cpp:2746
+#: src/menu_events.cpp:2703
 msgid "registering with password *** and email address $email"
 msgstr ""
 
-#: src/menu_events.cpp:2749 src/menu_events.cpp:2760 src/menu_events.cpp:2778
-#: src/menu_events.cpp:2792
+#: src/menu_events.cpp:2706 src/menu_events.cpp:2717 src/menu_events.cpp:2735
+#: src/menu_events.cpp:2749
 msgid "nick registration"
 msgstr "clárúchán leasainm"
 
-#: src/menu_events.cpp:2760
+#: src/menu_events.cpp:2717
 msgid "dropping your username"
 msgstr "cailleadh d'ainm úsáideora"
 
-#: src/menu_events.cpp:2778
+#: src/menu_events.cpp:2735
 msgid "setting $var to $value"
 msgstr ""
 
-#: src/menu_events.cpp:2792
+#: src/menu_events.cpp:2749
 msgid "requesting information for user $nick"
 msgstr ""
 
-#: src/menu_events.cpp:2905
+#: src/menu_events.cpp:2862
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
 
-#: src/menu_events.cpp:2939
+#: src/menu_events.cpp:2901
 msgid "Can't droid invalid side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2944
+#: src/menu_events.cpp:2906
 msgid "Can't droid networked side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2982
+#: src/menu_events.cpp:2944
 msgid "Can't change control of invalid side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2988
+#: src/menu_events.cpp:2950
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:3102
+#: src/menu_events.cpp:3064
 msgid "Layers"
 msgstr "Sraitheanna"
 
-#: src/menu_events.cpp:3175
+#: src/menu_events.cpp:3138
 msgid "Choose Scenario (Debug!)"
 msgstr "Roghnaigh Misean (Dífhabhtaigh)"
 
-#: src/menu_events.cpp:3221
+#: src/menu_events.cpp:3184
 msgid "Debug mode activated!"
 msgstr "Gníomhachtáitear mód dífhabhtúcháin!"
 
-#: src/menu_events.cpp:3224
+#: src/menu_events.cpp:3187
 msgid "Debug mode not available in network games"
 msgstr ""
 
-#: src/menu_events.cpp:3229
+#: src/menu_events.cpp:3192
 msgid "Debug mode deactivated!"
 msgstr "Díghníomhachtáitear mód dífhabhtúcháin!"
 
-#: src/menu_events.cpp:3240
+#: src/menu_events.cpp:3203
 msgid "Unsafe Lua scripts."
 msgstr "Scripteanna Lua fabhtach."
 
-#: src/menu_events.cpp:3241
+#: src/menu_events.cpp:3204
 msgid ""
 "You are about to open a security breach in Wesnoth. Are you sure you want to "
 "continue? If you have downloaded add-ons, do not click 'ok'! They would "
 "instantly take over your computer. You have been warned."
 msgstr ""
 
-#: src/menu_events.cpp:3244
+#: src/menu_events.cpp:3207
 #, fuzzy
 msgid "Unsafe mode enabled!"
 msgstr "Scoránaigh mód pleanála"
 
-#: src/menu_events.cpp:3287
+#: src/menu_events.cpp:3250
 msgid "Variable not found"
 msgstr "Níor aimsíodh athróg"
 
-#: src/menu_events.cpp:3338
+#: src/menu_events.cpp:3301
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
 msgstr ""
 
-#: src/menu_events.cpp:3394
+#: src/menu_events.cpp:3357
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr ""
 
-#: src/menu_events.cpp:3405
+#: src/menu_events.cpp:3368
 msgid "Invalid unit type"
 msgstr "Sórt aonaid anaithnid"
 
-#: src/menu_events.cpp:3418
+#: src/menu_events.cpp:3381
 msgid "Invalid location"
 msgstr "Suíomh neamhbhailí"
 
-#: src/menu_events.cpp:3453
+#: src/menu_events.cpp:3416
 msgid "Planning mode activated!"
 msgstr "Gníomhachtáitear mód pleanála!"
 
-#: src/menu_events.cpp:3456
+#: src/menu_events.cpp:3419
 msgid "Planning mode deactivated!"
 msgstr "Díghníomhachtáitear mód pleanála!"
 
-#: src/menu_events.cpp:3469
+#: src/menu_events.cpp:3432
 msgid "ai"
 msgstr "is"
 
-#: src/menu_events.cpp:3479 src/menu_events.cpp:3509
+#: src/menu_events.cpp:3442 src/menu_events.cpp:3472
 msgid "prompt^Command:"
 msgstr "Ordú:"
 
-#: src/mouse_events.cpp:798
+#: src/mouse_events.cpp:794
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
 msgstr ""
 
-#: src/mouse_events.cpp:913 src/mouse_events.cpp:993
+#: src/mouse_events.cpp:910 src/mouse_events.cpp:990
 msgid "Attack Enemy"
 msgstr "Ionsaigh Namhaid"
 
-#: src/mouse_events.cpp:994
+#: src/mouse_events.cpp:991
 msgid "Choose weapon:"
 msgstr "Roghnaigh arm:"
 
-#: src/mp_depcheck.cpp:468
+#: src/mp_depcheck.cpp:459
 #, fuzzy
 #| msgid "Install dependencies"
 msgid "Failed to resolve dependencies"
 msgstr "Suiteáil spleáchais"
 
-#: src/mp_depcheck.cpp:494
+#: src/mp_depcheck.cpp:485
 msgid "Scenario can't be activated. Some dependencies are missing: "
 msgstr ""
 
-#: src/mp_depcheck.cpp:550 src/mp_depcheck.cpp:673
+#: src/mp_depcheck.cpp:541 src/mp_depcheck.cpp:664
 #, fuzzy
 #| msgid "No eras found."
 msgid "No compatible eras found."
 msgstr "Níor aimsíodh aoiseanna."
 
-#: src/mp_depcheck.cpp:566
+#: src/mp_depcheck.cpp:557
 msgid "Era can't be activated. Some dependencies are missing: "
 msgstr ""
 
-#: src/mp_depcheck.cpp:619 src/mp_depcheck.cpp:710
+#: src/mp_depcheck.cpp:610 src/mp_depcheck.cpp:701
 #, fuzzy
 #| msgid "No multiplayer sides found"
 msgid "No compatible scenarios found."
 msgstr "Níor aimsíodh foirne ilimreora"
 
-#: src/mp_depcheck.cpp:648
+#: src/mp_depcheck.cpp:639
 msgid ""
 "Not all of the chosen modifications are compatible. Some of them will be "
 "disabled."
@@ -5074,232 +7320,232 @@ msgid ""
 "options."
 msgstr ""
 
-#: src/mp_options.cpp:220
-msgid "Restore defaults"
+#: src/mp_options.cpp:222
+msgid "Defaults"
 msgstr ""
 
-#: src/multiplayer.cpp:150 src/multiplayer.cpp:193
+#: src/multiplayer.cpp:152 src/multiplayer.cpp:195
 msgid "Connecting to Server..."
 msgstr "Nasctha chuig an bhFreastalaí..."
 
-#: src/multiplayer.cpp:160
+#: src/multiplayer.cpp:162
 msgid "Reading from Server..."
 msgstr "Léamh as Freastalaí..."
 
-#: src/multiplayer.cpp:176
+#: src/multiplayer.cpp:178
 msgid ""
 "The server accepts versions '$version1' while you are using version "
 "'$version2'"
 msgstr ""
 
-#: src/multiplayer.cpp:187
+#: src/multiplayer.cpp:189
 msgid "Server-side redirect loop"
 msgstr ""
 
-#: src/multiplayer.cpp:234 src/multiplayer.cpp:319 src/multiplayer_ui.cpp:85
+#: src/multiplayer.cpp:236 src/multiplayer.cpp:321 src/multiplayer_ui.cpp:85
 msgid "Connection timed out"
 msgstr "Nasc am istigh"
 
-#: src/multiplayer.cpp:246
+#: src/multiplayer.cpp:248
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
 "to do it for you."
 msgstr ""
 
-#: src/multiplayer.cpp:255
+#: src/multiplayer.cpp:257
 msgid "Do you want to continue?"
 msgstr "An dteastaíonn uait lean ar aghaidh?"
 
-#: src/multiplayer.cpp:257
+#: src/multiplayer.cpp:259
 msgid "Warning"
 msgstr "Rabhadh"
 
-#: src/multiplayer.cpp:301
+#: src/multiplayer.cpp:303
 msgid "Bad data received from server"
 msgstr "Fuarthas drochshonraí ón bhfreastalaí"
 
-#: src/multiplayer.cpp:342
+#: src/multiplayer.cpp:344
 msgid "You must login first."
 msgstr "Tá ort logáil isteach i dtosach."
 
-#: src/multiplayer.cpp:344
+#: src/multiplayer.cpp:346
 msgid "The nickname ‘$nick’ is already taken."
 msgstr ""
 
-#: src/multiplayer.cpp:346
+#: src/multiplayer.cpp:348
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters, underscores and hyphens are allowed."
 msgstr ""
 
-#: src/multiplayer.cpp:350
+#: src/multiplayer.cpp:352
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr ""
 
-#: src/multiplayer.cpp:353
+#: src/multiplayer.cpp:355
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr ""
 
-#: src/multiplayer.cpp:355
+#: src/multiplayer.cpp:357
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr ""
 
-#: src/multiplayer.cpp:356
+#: src/multiplayer.cpp:358
 msgid " This server disallows unregistered nicknames."
 msgstr ""
 
-#: src/multiplayer.cpp:358 src/multiplayer.cpp:360
+#: src/multiplayer.cpp:360 src/multiplayer.cpp:362
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr ""
 
-#: src/multiplayer.cpp:361
+#: src/multiplayer.cpp:363
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
 msgstr ""
 
-#: src/multiplayer.cpp:364
+#: src/multiplayer.cpp:366
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
 
-#: src/multiplayer.cpp:367
+#: src/multiplayer.cpp:369
 msgid "The password you provided was incorrect."
 msgstr ""
 
-#: src/multiplayer.cpp:369
+#: src/multiplayer.cpp:371
 msgid "You have made too many login attempts."
 msgstr ""
 
-#: src/multiplayer_connect.cpp:101 src/multiplayer_connect.cpp:450
-#: src/multiplayer_connect.cpp:598
+#: src/multiplayer_connect.cpp:102 src/multiplayer_connect.cpp:451
+#: src/multiplayer_connect.cpp:599
 msgid "Normal"
 msgstr "Meánach"
 
-#: src/multiplayer_connect.cpp:446 src/multiplayer_connect.cpp:594
+#: src/multiplayer_connect.cpp:447 src/multiplayer_connect.cpp:595
 #: src/multiplayer_wait.cpp:513 src/multiplayer_wait.cpp:521
 msgid "("
 msgstr "("
 
-#: src/multiplayer_connect.cpp:446 src/multiplayer_connect.cpp:594
+#: src/multiplayer_connect.cpp:447 src/multiplayer_connect.cpp:595
 #: src/multiplayer_wait.cpp:513 src/multiplayer_wait.cpp:524
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_connect.cpp:448 src/multiplayer_connect.cpp:596
+#: src/multiplayer_connect.cpp:449 src/multiplayer_connect.cpp:597
 #: src/multiplayer_wait.cpp:523
 msgid "+"
 msgstr "+"
 
-#: src/multiplayer_connect.cpp:626
+#: src/multiplayer_connect.cpp:627
 msgid "(Vacant slot)"
 msgstr "(Sliotán folamh)"
 
-#: src/multiplayer_connect.cpp:634
+#: src/multiplayer_connect.cpp:635
 msgid "Anonymous local player"
 msgstr "Imreoir áitiúil dí-ainm"
 
-#: src/multiplayer_connect.cpp:647 src/multiplayer_connect.cpp:1526
+#: src/multiplayer_connect.cpp:648 src/multiplayer_connect.cpp:1659
 msgid "Computer Player"
 msgstr "Imreoir Ríomhaire"
 
-#: src/multiplayer_connect.cpp:650
+#: src/multiplayer_connect.cpp:651
 msgid "$playername $side"
 msgstr "$side $playername"
 
-#: src/multiplayer_connect.cpp:654
+#: src/multiplayer_connect.cpp:655
 msgid "(Empty slot)"
 msgstr "(Sliotán folamh)"
 
-#: src/multiplayer_connect.cpp:661
+#: src/multiplayer_connect.cpp:662
 msgid "(Reserved for $playername)"
 msgstr "(In áirithe do $playername)"
 
-#: src/multiplayer_connect.cpp:763
+#: src/multiplayer_connect.cpp:764
 msgid "Reserved"
 msgstr "In áirithe"
 
-#: src/multiplayer_connect.cpp:764
+#: src/multiplayer_connect.cpp:765
 msgid "--give--"
 msgstr "--tabhair--"
 
-#: src/multiplayer_connect.cpp:945
+#: src/multiplayer_connect.cpp:946
 msgid "Only random sides in the current era."
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1006
+#: src/multiplayer_connect.cpp:1045
 msgid "Game Lobby: "
 msgstr "Forhalla Cluiche: "
 
-#: src/multiplayer_connect.cpp:1028
+#: src/multiplayer_connect.cpp:1066
 msgid "Player/Type"
 msgstr "Imreoir/Sórt"
 
-#: src/multiplayer_connect.cpp:1029
+#: src/multiplayer_connect.cpp:1067
 msgid "Faction"
 msgstr "Faicsean"
 
-#: src/multiplayer_connect.cpp:1030
+#: src/multiplayer_connect.cpp:1068
 msgid "Team/Gender"
 msgstr "Foireann/Inscne"
 
-#: src/multiplayer_connect.cpp:1031
+#: src/multiplayer_connect.cpp:1069
 msgid "Color"
 msgstr "Dath"
 
-#: src/multiplayer_connect.cpp:1035
+#: src/multiplayer_connect.cpp:1073
 msgid "I’m Ready"
 msgstr "Táim Réidh"
 
-#: src/multiplayer_connect.cpp:1037
+#: src/multiplayer_connect.cpp:1075
 #, fuzzy
 msgid "Add named local player"
 msgstr "Athsholáthair le imreoir logánta"
 
-#: src/multiplayer_connect.cpp:1047
+#: src/multiplayer_connect.cpp:1085
 msgid "The scenario is invalid because it has no id."
 msgstr "Tá an misean seo neamhbhailí mar níl CA aige."
 
-#: src/multiplayer_connect.cpp:1051
+#: src/multiplayer_connect.cpp:1089
 msgid "The scenario is invalid because it has no sides."
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1118
+#: src/multiplayer_connect.cpp:1156
 msgid "Enter a name for the new player"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1119 src/reports.cpp:155 src/savegame.cpp:890
+#: src/multiplayer_connect.cpp:1157 src/reports.cpp:156 src/savegame.cpp:889
 msgid "Name: "
 msgstr "Ainm: "
 
-#: src/multiplayer_connect.cpp:1523
+#: src/multiplayer_connect.cpp:1656
 msgid "Network Player"
 msgstr "Imreoir Líonra"
 
-#: src/multiplayer_connect.cpp:1525
+#: src/multiplayer_connect.cpp:1658
 msgid "Local Player"
 msgstr "Imreoir Áitiúil"
 
-#: src/multiplayer_connect.cpp:1527
+#: src/multiplayer_connect.cpp:1660
 msgid "Empty"
 msgstr "Folamh"
 
-#: src/multiplayer_connect.cpp:1684
+#: src/multiplayer_connect.cpp:1817
 #, fuzzy
 msgid "Cannot find era $era"
 msgstr "Aois anaithnid: $era_id"
 
-#: src/multiplayer_connect.cpp:1725
+#: src/multiplayer_connect.cpp:1858
 msgid "Defeat enemy leader(s)"
 msgstr "Buaigh ar (an/na) ceannfo(i)rt naimhdeach(a)"
 
-#: src/multiplayer_connect.cpp:1830
+#: src/multiplayer_connect.cpp:1963
 #, fuzzy
 msgid "Waiting for players to join..."
 msgstr "Ag fanacht ar tús an cluiche..."
 
-#: src/multiplayer_connect.cpp:1831
+#: src/multiplayer_connect.cpp:1964
 msgid "Waiting for players to choose factions..."
 msgstr ""
 
@@ -5624,7 +7870,7 @@ msgstr "Pasfhocal: "
 msgid "Invalid Color"
 msgstr "Dath Neamhbhailí"
 
-#: src/multiplayer_ui.cpp:433
+#: src/multiplayer_ui.cpp:434
 msgid "Selected user: "
 msgstr "Úsáideoir roghnaithe: "
 
@@ -5696,7 +7942,7 @@ msgstr ""
 msgid "Could not connect to host"
 msgstr ""
 
-#: src/pathfind/pathfind.cpp:628
+#: src/pathfind/pathfind.cpp:682
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr ""
 
@@ -5704,74 +7950,74 @@ msgstr ""
 msgid "time left for current turn"
 msgstr ""
 
-#: src/play_controller.cpp:255 src/replay_controller.cpp:144
+#: src/play_controller.cpp:255 src/replay_controller.cpp:143
 msgid "current local time"
 msgstr "am áitúil"
 
-#: src/play_controller.cpp:1130 src/savegame.cpp:468 src/savegame.cpp:480
-#: src/savegame.cpp:1100 src/savegame.cpp:1102
+#: src/play_controller.cpp:1135 src/savegame.cpp:466 src/savegame.cpp:478
+#: src/savegame.cpp:1099 src/savegame.cpp:1101
 msgid "Auto-Save"
 msgstr "Uathshábháil"
 
-#: src/play_controller.cpp:1137
+#: src/play_controller.cpp:1142
 #, fuzzy
 #| msgid "Back to turn "
 msgid "Back to Turn "
 msgstr "Siar go seal a "
 
-#: src/play_controller.cpp:1148
+#: src/play_controller.cpp:1153
 #, fuzzy
 #| msgid "Back to turn "
 msgid "Back to Start"
 msgstr "Siar go seal a "
 
-#: src/play_controller.cpp:1410
+#: src/play_controller.cpp:1415
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
 msgstr ""
 
-#: src/play_controller.cpp:1411 src/replay_controller.cpp:336
+#: src/play_controller.cpp:1416 src/replay_controller.cpp:335
 msgid "Error details:"
 msgstr "Mionpháirteanna erráid: "
 
-#: src/playcampaign.cpp:106
+#: src/playcampaign.cpp:123
 msgid "Scenario Report"
 msgstr "Tuarascáil ar Misean"
 
-#: src/playcampaign.cpp:108
+#: src/playcampaign.cpp:125
 msgid "Victory"
 msgstr "Bua"
 
-#: src/playcampaign.cpp:109
+#: src/playcampaign.cpp:126
 msgid "You have emerged victorious!"
 msgstr "Tá an bua agat!"
 
-#: src/playcampaign.cpp:232 src/playcampaign.cpp:282
+#: src/playcampaign.cpp:249 src/playcampaign.cpp:300
 msgid "Defeat"
 msgstr "Díomua"
 
-#: src/playcampaign.cpp:233 src/playcampaign.cpp:283
+#: src/playcampaign.cpp:250 src/playcampaign.cpp:301
 msgid "You have been defeated!"
 msgstr "Tá díomua ort!"
 
-#: src/playcampaign.cpp:496
+#: src/playcampaign.cpp:514
 msgid "Error while reading the WML: "
 msgstr ""
 
-#: src/playcampaign.cpp:532 src/playsingle_controller.cpp:457
+#: src/playcampaign.cpp:550 src/playsingle_controller.cpp:452
 msgid "Game Over"
 msgstr "Cluiche Thart"
 
-#: src/playcampaign.cpp:533
+#: src/playcampaign.cpp:551
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr ""
 
-#: src/playcampaign.cpp:564
+#: src/playcampaign.cpp:582
 msgid "Downloading next scenario..."
 msgstr "Misean eile á íosódáil"
 
-#: src/playcampaign.cpp:717
+#: src/playcampaign.cpp:735
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Misean anaithnid: '$scenario|'"
 
@@ -5871,17 +8117,17 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/playsingle_controller.cpp:458
+#: src/playsingle_controller.cpp:453
 msgid "The game is over."
 msgstr "Tá an cluiche thart."
 
-#: src/playsingle_controller.cpp:539
+#: src/playsingle_controller.cpp:534
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
 
-#: src/playsingle_controller.cpp:711
+#: src/playsingle_controller.cpp:701
 msgid "It is now $name|’s turn"
 msgstr "Tá seala $name| anois"
 
@@ -5905,59 +8151,59 @@ msgstr "Athsholáthair le $player"
 msgid "$player has left the game. What do you want to do?"
 msgstr ""
 
-#: src/replay_controller.cpp:335
+#: src/replay_controller.cpp:334
 msgid ""
 "The replay is corrupt/out of sync. It might not make much sense to continue. "
 "Do you want to save the game?"
 msgstr ""
 
-#: src/reports.cpp:175
+#: src/reports.cpp:176
 msgid "Type: "
 msgstr "Sórt: "
 
-#: src/reports.cpp:195
+#: src/reports.cpp:196
 msgid "Race: "
 msgstr "Cine: "
 
-#: src/reports.cpp:237
+#: src/reports.cpp:238
 msgid "Level: "
 msgstr "Leibhéal: "
 
-#: src/reports.cpp:240
+#: src/reports.cpp:241
 msgid "No advancement"
 msgstr "Gan ardú"
 
-#: src/reports.cpp:242
+#: src/reports.cpp:243
 msgid "Advances to:"
 msgstr "Ardaíonn go:"
 
-#: src/reports.cpp:281
+#: src/reports.cpp:282
 msgid "Trait: "
 msgstr "Tréith: "
 
-#: src/reports.cpp:304
+#: src/reports.cpp:305
 msgid "invisible: "
 msgstr "dofheicthe: "
 
-#: src/reports.cpp:305
+#: src/reports.cpp:306
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 
-#: src/reports.cpp:308
+#: src/reports.cpp:309
 msgid "slowed: "
 msgstr "moillithe: "
 
-#: src/reports.cpp:309
+#: src/reports.cpp:310
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking and its movement cost is doubled."
 msgstr ""
 
-#: src/reports.cpp:312
+#: src/reports.cpp:313
 msgid "poisoned: "
 msgstr "nimhithe: "
 
-#: src/reports.cpp:313
+#: src/reports.cpp:314
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the ‘cures’ "
@@ -5967,227 +8213,239 @@ msgid ""
 "1 HP."
 msgstr ""
 
-#: src/reports.cpp:316
+#: src/reports.cpp:317
 msgid "petrified: "
 msgstr "clochraithe: "
 
-#: src/reports.cpp:317
+#: src/reports.cpp:318
 #, fuzzy
 msgid "This unit has been petrified. It may not move or attack."
 msgstr "Tá an aonad seo clochraithe. Ní bhféidir dó gluaiseacht nó ionsaí."
 
-#: src/reports.cpp:340
+#: src/reports.cpp:341
 msgid "Alignment: "
 msgstr "Ailíniú: "
 
-#: src/reports.cpp:380
+#: src/reports.cpp:381
 msgid "Ability: "
 msgstr "Cumas: "
 
-#: src/reports.cpp:382 src/reports.cpp:740
+#: src/reports.cpp:383 src/reports.cpp:807
 msgid " (inactive)"
 msgstr ""
 
-#: src/reports.cpp:429
+#: src/reports.cpp:436
 msgid "Resistances: "
 msgstr "Friotaíochta: "
 
-#: src/reports.cpp:431
+#: src/reports.cpp:438
 msgid "(Att / Def)"
 msgstr "(Ion / Cos)"
 
-#: src/reports.cpp:457
+#: src/reports.cpp:464
 msgid "Experience Modifier: "
 msgstr "Mionathraitheoir Taithí: "
 
-#: src/reports.cpp:508
+#: src/reports.cpp:515
 msgid "Terrain: "
 msgstr "Tír-raon: "
 
-#: src/reports.cpp:525
+#: src/reports.cpp:532
 msgid "maximum^max."
 msgstr "uas."
 
-#: src/reports.cpp:525
+#: src/reports.cpp:532
 msgid "minimum^min."
 msgstr "íos."
 
-#: src/reports.cpp:530
+#: src/reports.cpp:537
 msgid "Defense: "
 msgstr "Cosaint: "
 
-#: src/reports.cpp:610 src/reports.cpp:827 src/reports.cpp:839
+#: src/reports.cpp:558
+#, fuzzy
+#| msgid "Version: "
+msgid "vision: "
+msgstr "Leagan: "
+
+#: src/reports.cpp:586
+msgid "Movement Costs:"
+msgstr ""
+
+#: src/reports.cpp:677 src/reports.cpp:892 src/reports.cpp:904
 msgid "Weapon: "
 msgstr "Arm: "
 
-#: src/reports.cpp:611 src/reports.cpp:828
+#: src/reports.cpp:678 src/reports.cpp:893
 msgid "Damage: "
 msgstr "Damáiste: "
 
-#: src/reports.cpp:615
+#: src/reports.cpp:682
 msgid "Base damage: "
 msgstr "Bundhamáiste: "
 
-#: src/reports.cpp:617 src/reports.cpp:651 src/reports.cpp:661
+#: src/reports.cpp:684 src/reports.cpp:718 src/reports.cpp:728
 #, fuzzy
 #| msgid "Weapon special: "
 msgid "With specials: "
 msgstr "Speisialta airm: "
 
-#: src/reports.cpp:620
+#: src/reports.cpp:687
 msgid "Time of day: "
 msgstr "Tráth an lae: "
 
-#: src/reports.cpp:624
+#: src/reports.cpp:691
 msgid "Leadership: "
 msgstr "Ceannas: "
 
-#: src/reports.cpp:628
+#: src/reports.cpp:695
 msgid "Slowed: "
 msgstr "Moillithe: "
 
-#: src/reports.cpp:632
+#: src/reports.cpp:699
 msgid "Attacks: "
 msgstr "Ionsaithe: "
 
-#: src/reports.cpp:636
+#: src/reports.cpp:703
 #, fuzzy
 #| msgid "Turn bonus: "
 msgid "Max swarm bonus: "
 msgstr "Bónas Seala: "
 
-#: src/reports.cpp:637 src/reports.cpp:656
+#: src/reports.cpp:704 src/reports.cpp:723
 msgid "Swarm: "
 msgstr "Saithe: "
 
-#: src/reports.cpp:638 src/reports.cpp:649 src/reports.cpp:660
+#: src/reports.cpp:705 src/reports.cpp:716 src/reports.cpp:727
 msgid "Base attacks: "
 msgstr "Ionsaithe bunaidh: "
 
-#: src/reports.cpp:644
+#: src/reports.cpp:711
 #, fuzzy
 #| msgid "Weapon special: "
 msgid "Specials: "
 msgstr "Speisialta airm: "
 
-#: src/reports.cpp:654
+#: src/reports.cpp:721
 msgid "Subject to swarm: "
 msgstr ""
 
-#: src/reports.cpp:673
+#: src/reports.cpp:740
 msgid "Weapon range: "
 msgstr "Raon airm: "
 
-#: src/reports.cpp:674
+#: src/reports.cpp:741
 msgid "Damage type: "
 msgstr "Cineál damáiste: "
 
-#: src/reports.cpp:675
+#: src/reports.cpp:742
 msgid "Damage versus: "
 msgstr "Damaiste vs: "
 
-#: src/reports.cpp:714
+#: src/reports.cpp:781
 msgid "Accuracy:"
 msgstr "Cruinneas:"
 
-#: src/reports.cpp:719
+#: src/reports.cpp:786
 msgid "Parry:"
 msgstr "Cosc:"
 
-#: src/reports.cpp:738
+#: src/reports.cpp:805
 msgid "Weapon special: "
 msgstr "Speisialta airm: "
 
-#: src/reports.cpp:811
+#: src/reports.cpp:876
 msgid "None"
 msgstr "Dada"
 
-#: src/reports.cpp:1002
-msgid "Lawful units: "
+#: src/reports.cpp:1076
+#, fuzzy
+#| msgid "Lawful units: "
+msgid "Lawful  units: "
 msgstr "Aonaid Fianna: "
 
-#: src/reports.cpp:1003
+#: src/reports.cpp:1078
 msgid "Neutral units: "
 msgstr "Aonaid Neodracha: "
 
-#: src/reports.cpp:1004
+#: src/reports.cpp:1079
 msgid "Chaotic units: "
 msgstr "Aonad Díbheargacha: "
 
-#: src/reports.cpp:1005
+#: src/reports.cpp:1081
 msgid "Liminal units: "
 msgstr "Aonad le chlapsholais:"
 
-#: src/reports.cpp:1218
+#: src/reports.cpp:1295
 msgid "Observers:"
 msgstr "Breathnóirí:"
 
-#: src/savegame.cpp:394 src/savegame.cpp:396
+#: src/savegame.cpp:385 src/savegame.cpp:387
 msgid " replay"
 msgstr " athfhéachaint"
 
-#: src/savegame.cpp:629 src/savegame.cpp:633
+#: src/savegame.cpp:627 src/savegame.cpp:631
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 
-#: src/savegame.cpp:675
+#: src/savegame.cpp:674
 msgid ""
 "This save is from an old, unsupported version ($version_number|) and cannot "
 "be loaded."
 msgstr ""
 
-#: src/savegame.cpp:684
+#: src/savegame.cpp:683
 msgid ""
 "This save is from a different version of the game ($version_number|). Do you "
 "wish to try to load it?"
 msgstr ""
 
-#: src/savegame.cpp:741
+#: src/savegame.cpp:740
 msgid "This is not a multiplayer save"
 msgstr "Ní sábhála ilimreora é seo"
 
-#: src/savegame.cpp:808
+#: src/savegame.cpp:807
 msgid "The game could not be saved: "
 msgstr ""
 
-#: src/savegame.cpp:890
+#: src/savegame.cpp:889
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Sábháil ann cheana. Forscríobh?"
 
-#: src/savegame.cpp:891
+#: src/savegame.cpp:890
 msgid "Overwrite?"
 msgstr "Forscríobh?"
 
-#: src/savegame.cpp:901
+#: src/savegame.cpp:900
 msgid ""
 "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
 msgstr ""
 
-#: src/savegame.cpp:967
+#: src/savegame.cpp:966
 msgid "Saved"
 msgstr "Sábháilte"
 
-#: src/savegame.cpp:967
+#: src/savegame.cpp:966
 msgid "The game has been saved"
 msgstr ""
 
-#: src/savegame.cpp:1001 src/savegame.cpp:1022
+#: src/savegame.cpp:1000 src/savegame.cpp:1021
 msgid "Could not write to file"
 msgstr ""
 
-#: src/savegame.cpp:1056
+#: src/savegame.cpp:1055
 msgid "Save Replay"
 msgstr "Sabhail Athfhéachaint"
 
-#: src/savegame.cpp:1065
+#: src/savegame.cpp:1064
 msgid "replay"
 msgstr "athfhéachaint"
 
-#: src/savegame.cpp:1083
+#: src/savegame.cpp:1082
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 
-#: src/savegame.cpp:1132
+#: src/savegame.cpp:1131
 msgid "Save Game"
 msgstr "Sábháil Cluiche"
 
@@ -6253,75 +8511,75 @@ msgstr ""
 msgid "$error, value '$value' at $pos"
 msgstr "Tá an clib dheiridh ar iarraidh do $tag ag $pos"
 
-#: src/serialization/string_utils.cpp:302
+#: src/serialization/string_utils.cpp:485
 msgid "prefix_milli^m"
 msgstr "m"
 
-#: src/serialization/string_utils.cpp:303
+#: src/serialization/string_utils.cpp:486
 msgid "prefix_micro^µ"
 msgstr "μ"
 
-#: src/serialization/string_utils.cpp:304
+#: src/serialization/string_utils.cpp:487
 msgid "prefix_nano^n"
 msgstr "n"
 
-#: src/serialization/string_utils.cpp:305
+#: src/serialization/string_utils.cpp:488
 msgid "prefix_pico^p"
 msgstr "p"
 
-#: src/serialization/string_utils.cpp:306
+#: src/serialization/string_utils.cpp:489
 msgid "prefix_femto^f"
 msgstr "f"
 
-#: src/serialization/string_utils.cpp:307
+#: src/serialization/string_utils.cpp:490
 msgid "prefix_atto^a"
 msgstr "a"
 
-#: src/serialization/string_utils.cpp:308
+#: src/serialization/string_utils.cpp:491
 msgid "prefix_zepto^z"
 msgstr "z"
 
-#: src/serialization/string_utils.cpp:309
+#: src/serialization/string_utils.cpp:492
 msgid "prefix_yocto^y"
 msgstr "y"
 
-#: src/serialization/string_utils.cpp:321
+#: src/serialization/string_utils.cpp:504
 msgid "prefix_kibi^K"
 msgstr "K"
 
-#: src/serialization/string_utils.cpp:322
+#: src/serialization/string_utils.cpp:505
 msgid "prefix_kilo^k"
 msgstr "k"
 
-#: src/serialization/string_utils.cpp:324
+#: src/serialization/string_utils.cpp:507
 msgid "prefix_mega^M"
 msgstr "M"
 
-#: src/serialization/string_utils.cpp:325
+#: src/serialization/string_utils.cpp:508
 msgid "prefix_giga^G"
 msgstr "G"
 
-#: src/serialization/string_utils.cpp:326
+#: src/serialization/string_utils.cpp:509
 msgid "prefix_tera^T"
 msgstr "T"
 
-#: src/serialization/string_utils.cpp:327
+#: src/serialization/string_utils.cpp:510
 msgid "prefix_peta^P"
 msgstr "P"
 
-#: src/serialization/string_utils.cpp:328
+#: src/serialization/string_utils.cpp:511
 msgid "prefix_exa^E"
 msgstr "E"
 
-#: src/serialization/string_utils.cpp:329
+#: src/serialization/string_utils.cpp:512
 msgid "prefix_zetta^Z"
 msgstr "Z"
 
-#: src/serialization/string_utils.cpp:330
+#: src/serialization/string_utils.cpp:513
 msgid "prefix_yotta^Y"
 msgstr "Y"
 
-#: src/serialization/string_utils.cpp:344
+#: src/serialization/string_utils.cpp:527
 msgid "infix_binary^i"
 msgstr "i"
 
@@ -6387,7 +8645,7 @@ msgstr "Ghearr"
 msgid "Taken"
 msgstr "Glactha"
 
-#: src/storyscreen/controller.cpp:136
+#: src/storyscreen/controller.cpp:135
 msgid "Skip"
 msgstr "Scipeáil"
 
@@ -6411,35 +8669,31 @@ msgstr "Baile úinéireacht"
 msgid "border_size should be between 0.0 and 0.5."
 msgstr ""
 
-#: src/unit.cpp:751
-msgid "Unknown unit type '$type|' while generating traits"
-msgstr ""
-
-#: src/unit.cpp:2512 src/unit.cpp:2759 src/unit.cpp:2835
+#: src/unit.cpp:2368 src/unit.cpp:2598 src/unit.cpp:2677
 msgid " and "
 msgstr " agus"
 
-#: src/unit.cpp:2523
+#: src/unit.cpp:2379
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2584
+#: src/unit.cpp:2440
 msgid "moves"
 msgstr "gluaiseachtaí"
 
-#: src/unit.cpp:2614 src/unit.cpp:2783
+#: src/unit.cpp:2470 src/unit.cpp:2622
 msgid "XP to advance"
 msgstr "PT go ardú"
 
-#: src/unit.cpp:2776
+#: src/unit.cpp:2615
 msgid " move"
 msgstr " gluais"
 
-#: src/unit.cpp:2791
+#: src/unit.cpp:2630
 msgid "$effect_description per level"
 msgstr "$effect_description sa leibhéal"
 
-#: src/unit_types.cpp:234 src/unit_types.cpp:314
+#: src/unit_types.cpp:240 src/unit_types.cpp:320
 msgid "damage"
 msgid_plural "damage"
 msgstr[0] "damáiste"
@@ -6448,7 +8702,7 @@ msgstr[2] "dhamáiste"
 msgstr[3] "ndamáiste"
 msgstr[4] "damáiste"
 
-#: src/unit_types.cpp:245 src/unit_types.cpp:322
+#: src/unit_types.cpp:251 src/unit_types.cpp:328
 msgid "strike"
 msgid_plural "strikes"
 msgstr[0] "bualadh"
@@ -6457,71 +8711,71 @@ msgstr[2] "bhualadh"
 msgstr[3] "mbualadh"
 msgstr[4] "bualadh"
 
-#: src/unit_types.cpp:257
+#: src/unit_types.cpp:263
 #, no-c-format
 msgid "% accuracy"
 msgstr "% cruinneas"
 
-#: src/unit_types.cpp:268
+#: src/unit_types.cpp:274
 #, no-c-format
 msgid "% parry"
 msgstr "% cosc"
 
-#: src/unit_types.cpp:985
+#: src/unit_types.cpp:763
 msgid "No description available."
 msgstr "Ní infhaighte é tuarascáil."
 
-#: src/unit_types.cpp:1041
+#: src/unit_types.cpp:819
 msgid "chaotic"
 msgstr "díbheargach"
 
-#: src/unit_types.cpp:1041
+#: src/unit_types.cpp:819
 msgid "lawful"
 msgstr "fiann"
 
-#: src/unit_types.cpp:1041
+#: src/unit_types.cpp:819
 msgid "liminal"
 msgstr "clapsholas"
 
-#: src/unit_types.cpp:1041
+#: src/unit_types.cpp:819
 msgid "neutral"
 msgstr "neodrach"
 
-#: src/unit_types.cpp:1042
+#: src/unit_types.cpp:820
 msgid "female^chaotic"
 msgstr "díbheargach"
 
-#: src/unit_types.cpp:1042
+#: src/unit_types.cpp:820
 msgid "female^lawful"
 msgstr "fiann"
 
-#: src/unit_types.cpp:1042
+#: src/unit_types.cpp:820
 msgid "female^liminal"
 msgstr "le clapsholas"
 
-#: src/unit_types.cpp:1042
+#: src/unit_types.cpp:820
 msgid "female^neutral"
 msgstr "neodrach"
 
-#: src/whiteboard/manager.cpp:1093
+#: src/whiteboard/manager.cpp:1095
 #, fuzzy
 msgid "SHOW ALL allies’ plans"
 msgstr "Taispeáin pleananna do $player"
 
-#: src/whiteboard/manager.cpp:1094
+#: src/whiteboard/manager.cpp:1096
 #, fuzzy
 msgid "HIDE ALL allies’ plans"
 msgstr "Folaigh pleananna do $player"
 
-#: src/whiteboard/manager.cpp:1108
+#: src/whiteboard/manager.cpp:1110
 msgid "Show plans for $player"
 msgstr "Taispeáin pleananna do $player"
 
-#: src/whiteboard/manager.cpp:1110
+#: src/whiteboard/manager.cpp:1112
 msgid "Hide plans for $player"
 msgstr "Folaigh pleananna do $player"
 
-#: src/whiteboard/manager.cpp:1113
+#: src/whiteboard/manager.cpp:1115
 msgid "Whiteboard Options"
 msgstr "Roghanna Cláir Bháin"
 
@@ -6772,10 +9026,6 @@ msgstr "Roghanna Cláir Bháin"
 
 #~ msgid "Update add-ons"
 #~ msgstr "Nuashonraigh na forlíontáin"
-
-#, fuzzy
-#~ msgid "Select an add-on to update:"
-#~ msgstr "Roghnaigh an forlíontán a íoslódáil."
 
 #~ msgid "Update succeeded"
 #~ msgstr "Nuashonrúchán i gcrích"

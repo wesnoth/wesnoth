@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth svn-trunk\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-10-27 15:56+0200\n"
+"POT-Creation-Date: 2013-03-09 08:51+0100\n"
 "PO-Revision-Date: 2012-07-09 05:15+0900\n"
 "Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team:  <wesnoth-ja-translate@lists.sourceforge.jp>\n"
@@ -42,8 +42,14 @@ msgstr "狂戦"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:757
+#: data/core/macros/abilities.cfg:563
+#, fuzzy
+#| msgid ""
+#| "Berserk:\n"
+#| "Whether used offensively or defensively, this attack presses the "
+#| "engagement until one of the combatants is slain, or 30 rounds of attacks "
+#| "have occurred."
 msgid ""
-"Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
@@ -52,15 +58,20 @@ msgstr ""
 "ニットが倒されるまで交戦をやめません。もしくは 30 回の攻撃が行われるまで。"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:770
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:769
 #: data/core/macros/abilities.cfg:641
 msgid "magical"
 msgstr "魔法"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:772
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:771
+#: data/core/macros/abilities.cfg:642
+#, fuzzy
+#| msgid ""
+#| "Magical:\n"
+#| "This attack always has a 70% chance to hit regardless of the defensive "
+#| "ability of the unit being attacked."
 msgid ""
-"Magical:\n"
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
 msgstr ""
@@ -69,14 +80,22 @@ msgstr ""
 "70% となります。"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:785
-msgid "firststrike"
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:783
+#: data/core/macros/abilities.cfg:686
+#, fuzzy
+#| msgid "firststrike"
+msgid "first strike"
 msgstr "先制"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:787
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:785
+#: data/core/macros/abilities.cfg:687
+#, fuzzy
+#| msgid ""
+#| "First Strike:\n"
+#| "This unit always strikes first with this attack, even if they are "
+#| "defending."
 msgid ""
-"First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
 "先制:\n"
@@ -4288,22 +4307,6 @@ msgstr ""
 msgid "+1 max HP"
 msgstr "最大 HP +1"
 
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:563
-#, fuzzy
-#| msgid ""
-#| "Berserk:\n"
-#| "Whether used offensively or defensively, this attack presses the "
-#| "engagement until one of the combatants is slain, or 30 rounds of attacks "
-#| "have occurred."
-msgid ""
-"Whether used offensively or defensively, this attack presses the engagement "
-"until one of the combatants is slain, or 30 rounds of attacks have occurred."
-msgstr ""
-"狂戦:\n"
-"攻撃においても防御においても、この攻撃が戦いで使われた場合、いずれかの戦闘ユ"
-"ニットが倒されるまで交戦をやめません。もしくは 30 回の攻撃が行われるまで。"
-
 #. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:573
 msgid "backstab"
@@ -4432,21 +4435,6 @@ msgstr ""
 "射撃:\n"
 "攻撃時に使用された場合、この攻撃は命中率が最低 60% はあるようになります。"
 
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:642
-#, fuzzy
-#| msgid ""
-#| "Magical:\n"
-#| "This attack always has a 70% chance to hit regardless of the defensive "
-#| "ability of the unit being attacked."
-msgid ""
-"This attack always has a 70% chance to hit regardless of the defensive "
-"ability of the unit being attacked."
-msgstr ""
-"魔法:\n"
-"この攻撃は攻撃されるユニットが持っているどんな防御能力も関係なく常に命中率が "
-"70% となります。"
-
 #. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:653
 msgid "swarm"
@@ -4512,26 +4500,6 @@ msgstr ""
 "生命吸収:\n"
 "このユニットは生者から生命力を奪って、与えたダメージの半分（切り下げ）だけ自"
 "分の HP を回復させます。"
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:686
-#, fuzzy
-#| msgid "firststrike"
-msgid "first strike"
-msgstr "先制"
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:687
-#, fuzzy
-#| msgid ""
-#| "First Strike:\n"
-#| "This unit always strikes first with this attack, even if they are "
-#| "defending."
-msgid ""
-"This unit always strikes first with this attack, even if they are defending."
-msgstr ""
-"先制:\n"
-"このユニットは、たとえ防御時であっても常にこの攻撃で先に攻撃します。"
 
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:696
@@ -4930,164 +4898,164 @@ msgstr "アンデッド"
 #. [trait]: id=elemental
 #. [trait]: id=mechanical
 #. [trait]: id=undead
-#: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:39
-#: data/core/macros/traits.cfg:54
+#: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:47
+#: data/core/macros/traits.cfg:70
 msgid "Immune to drain, poison, and plague"
 msgstr "吸収、毒、疫病への耐性"
 
 #. [trait]: id=mechanical
-#: data/core/macros/traits.cfg:37
+#: data/core/macros/traits.cfg:45
 msgid "mechanical"
 msgstr "機械"
 
 #. [trait]: id=mechanical
-#: data/core/macros/traits.cfg:38
+#: data/core/macros/traits.cfg:46
 msgid "female^mechanical"
 msgstr "機械"
 
 #. [trait]: id=elemental
-#: data/core/macros/traits.cfg:52
+#: data/core/macros/traits.cfg:68
 msgid "elemental"
 msgstr "超自然"
 
 #. [trait]: id=elemental
-#: data/core/macros/traits.cfg:53
+#: data/core/macros/traits.cfg:69
 msgid "female^elemental"
 msgstr "超自然"
 
 #. [trait]: id=strong
-#: data/core/macros/traits.cfg:66
+#: data/core/macros/traits.cfg:90
 msgid "strong"
 msgstr "強力"
 
 #. [trait]: id=strong
-#: data/core/macros/traits.cfg:67
+#: data/core/macros/traits.cfg:91
 msgid "female^strong"
 msgstr "強力"
 
 #. [trait]: id=dextrous
-#: data/core/macros/traits.cfg:84
+#: data/core/macros/traits.cfg:108
 msgid "dextrous"
 msgstr "器用"
 
 #. [trait]: id=dextrous
-#: data/core/macros/traits.cfg:85
+#: data/core/macros/traits.cfg:109
 msgid "female^dextrous"
 msgstr "器用"
 
 #. [trait]: id=quick
-#: data/core/macros/traits.cfg:98
+#: data/core/macros/traits.cfg:122
 msgid "quick"
 msgstr "敏捷"
 
 #. [trait]: id=quick
-#: data/core/macros/traits.cfg:99
+#: data/core/macros/traits.cfg:123
 msgid "female^quick"
 msgstr "敏捷"
 
 #. [trait]: id=intelligent
-#: data/core/macros/traits.cfg:115
+#: data/core/macros/traits.cfg:139
 msgid "intelligent"
 msgstr "知的"
 
 #. [trait]: id=intelligent
-#: data/core/macros/traits.cfg:116
+#: data/core/macros/traits.cfg:140
 msgid "female^intelligent"
 msgstr "知的"
 
 #. [trait]: id=resilient
-#: data/core/macros/traits.cfg:128
+#: data/core/macros/traits.cfg:152
 msgid "resilient"
 msgstr "頑強"
 
 #. [trait]: id=resilient
-#: data/core/macros/traits.cfg:129
+#: data/core/macros/traits.cfg:153
 msgid "female^resilient"
 msgstr "頑強"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:146
+#: data/core/macros/traits.cfg:170
 msgid "healthy"
 msgstr "壮健"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:147
+#: data/core/macros/traits.cfg:171
 msgid "female^healthy"
 msgstr "壮健"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:148
+#: data/core/macros/traits.cfg:172
 msgid "Always rest heals"
 msgstr "常時休息回復"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:165 data/core/macros/traits.cfg:178
+#: data/core/macros/traits.cfg:189 data/core/macros/traits.cfg:202
 msgid "fearless"
 msgstr "勇敢"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:166 data/core/macros/traits.cfg:179
+#: data/core/macros/traits.cfg:190 data/core/macros/traits.cfg:203
 msgid "female^fearless"
 msgstr "勇敢"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:167 data/core/macros/traits.cfg:180
+#: data/core/macros/traits.cfg:191 data/core/macros/traits.cfg:204
 msgid "Fights normally during unfavorable times of day/night"
 msgstr "昼／夜の不利な時間帯でも通常通りに戦います"
 
 #. [trait]: id=feral
-#: data/core/macros/traits.cfg:190
+#: data/core/macros/traits.cfg:214
 msgid "feral"
 msgstr "野生"
 
 #. [trait]: id=feral
-#: data/core/macros/traits.cfg:191
+#: data/core/macros/traits.cfg:215
 msgid "female^feral"
 msgstr "野生"
 
 #. [trait]: id=feral
-#: data/core/macros/traits.cfg:192
+#: data/core/macros/traits.cfg:216
 #, fuzzy
 msgid "Receives only 50% defense in land-based villages"
 msgstr "陸にある村では防御が 50% になってしまいます"
 
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:208
+#: data/core/macros/traits.cfg:232
 msgid "weak"
 msgstr "非力"
 
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:209
+#: data/core/macros/traits.cfg:233
 msgid "female^weak"
 msgstr "非力"
 
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:226
+#: data/core/macros/traits.cfg:250
 msgid "slow"
 msgstr "鈍重"
 
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:227
+#: data/core/macros/traits.cfg:251
 msgid "female^slow"
 msgstr "鈍重"
 
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:243
+#: data/core/macros/traits.cfg:267
 msgid "dim"
 msgstr "凡愚"
 
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:244
+#: data/core/macros/traits.cfg:268
 msgid "female^dim"
 msgstr "凡愚"
 
 #. [trait]: id=aged
-#: data/core/macros/traits.cfg:256
+#: data/core/macros/traits.cfg:280
 msgid "aged"
 msgstr "老化"
 
 #. [trait]: id=aged
-#: data/core/macros/traits.cfg:257
+#: data/core/macros/traits.cfg:281
 msgid "female^aged"
 msgstr "老化"
 
@@ -6096,7 +6064,7 @@ msgstr "ウーズ"
 msgid "race^Woses"
 msgstr "ウーズ"
 
-#: src/help.cpp:52
+#: src/help.cpp:53
 msgid "Help"
 msgstr "ヘルプ"
 
@@ -6150,141 +6118,172 @@ msgstr ""
 msgid "Variations: "
 msgstr "党派:"
 
-#: src/help.cpp:1450 src/help.cpp:1825 src/help.cpp:1898
+#: src/help.cpp:1448 src/help.cpp:1820 src/help.cpp:1893
 msgid "race^Miscellaneous"
 msgstr "その他"
 
-#: src/help.cpp:1452
+#: src/help.cpp:1450
 msgid "Race: "
 msgstr "種族: "
 
-#: src/help.cpp:1459
+#: src/help.cpp:1457
 msgid "Abilities: "
 msgstr "能力: "
 
-#: src/help.cpp:1476
+#: src/help.cpp:1474
 msgid "Ability Upgrades: "
 msgstr "能力のアップグレード: "
 
-#: src/help.cpp:1492
+#: src/help.cpp:1490
 msgid "HP: "
 msgstr "HP: "
 
-#: src/help.cpp:1493
+#: src/help.cpp:1491
 msgid "Moves: "
 msgstr "移動: "
 
-#: src/help.cpp:1495
+#: src/help.cpp:1493
 msgid "Vision: "
 msgstr ""
 
-#: src/help.cpp:1497
+#: src/help.cpp:1495
 msgid "Jamming: "
 msgstr ""
 
-#: src/help.cpp:1498
+#: src/help.cpp:1496
 msgid "Cost: "
 msgstr "コスト: "
 
-#: src/help.cpp:1499
+#: src/help.cpp:1497
 msgid "Alignment: "
 msgstr "属性: "
 
-#: src/help.cpp:1505
+#: src/help.cpp:1503
 msgid "Required XP: "
 msgstr "必要経験値: "
 
-#: src/help.cpp:1514
+#: src/help.cpp:1512
 msgid "unit help^Attacks"
 msgstr "攻撃"
 
-#: src/help.cpp:1521
+#: src/help.cpp:1519
 msgid "unit help^Name"
 msgstr "名前"
 
-#: src/help.cpp:1522
+#: src/help.cpp:1520
 msgid "Type"
 msgstr "型"
 
-#: src/help.cpp:1523
+#: src/help.cpp:1521
 msgid "Strikes"
 msgstr "回数"
 
-#: src/help.cpp:1524
+#: src/help.cpp:1522
 msgid "Range"
 msgstr "範囲"
 
-#: src/help.cpp:1525
+#: src/help.cpp:1523
 msgid "Special"
 msgstr "特殊"
 
-#: src/help.cpp:1571
+#: src/help.cpp:1569
 msgid "Resistances"
 msgstr "抵抗力"
 
-#: src/help.cpp:1575
+#: src/help.cpp:1573
 msgid "Attack Type"
 msgstr "攻撃型"
 
-#: src/help.cpp:1576
+#: src/help.cpp:1574
 msgid "Resistance"
 msgstr "抵抗値"
 
-#: src/help.cpp:1615
+#: src/help.cpp:1604
 msgid "Terrain Modifiers"
 msgstr "地形による修正"
 
-#: src/help.cpp:1619
+#: src/help.cpp:1608
 msgid "Terrain"
 msgstr "地形"
 
-#: src/help.cpp:1620
+#: src/help.cpp:1609
 msgid "Defense"
 msgstr "防御"
 
-#: src/help.cpp:1621
+#: src/help.cpp:1610
 msgid "Movement Cost"
 msgstr "移動コスト"
 
-#: src/help.cpp:1624
+#: src/help.cpp:1614
 msgid "Vision Cost"
 msgstr ""
 
-#: src/help.cpp:1626
+#: src/help.cpp:1617
 msgid "Jamming Cost"
 msgstr ""
 
-#: src/help.cpp:1904
+#: src/help.cpp:1899
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='この種族のユニット'</header>"
 
-#: src/help.cpp:2817
+#: src/help.cpp:2811
 msgid " < Back"
 msgstr " < 戻る"
 
-#: src/help.cpp:2818
+#: src/help.cpp:2812
 msgid "Forward >"
 msgstr "進む >"
 
-#: src/help.cpp:2926
+#: src/help.cpp:2920
 msgid "Reference to unknown topic: "
 msgstr "不明なトピックへの参照: "
 
-#: src/help.cpp:3182
+#: src/help.cpp:3176
 msgid "corrupted original file"
 msgstr "破損した元のファイル"
 
-#: src/help.cpp:3281
+#: src/help.cpp:3275
 msgid "Close"
 msgstr "閉じる"
 
-#: src/help.cpp:3284
+#: src/help.cpp:3278
 msgid "The Battle for Wesnoth Help"
 msgstr "The Battle for Wesnoth ヘルプ"
 
-#: src/help.cpp:3340
+#: src/help.cpp:3334
 msgid "Parse error when parsing help text: "
 msgstr "ヘルプ文書を解析中にエラー: "
+
+#~ msgid ""
+#~ "Berserk:\n"
+#~ "Whether used offensively or defensively, this attack presses the "
+#~ "engagement until one of the combatants is slain, or 30 rounds of attacks "
+#~ "have occurred."
+#~ msgstr ""
+#~ "狂戦:\n"
+#~ "攻撃においても防御においても、この攻撃が戦いで使われた場合、いずれかの戦闘"
+#~ "ユニットが倒されるまで交戦をやめません。もしくは 30 回の攻撃が行われるま"
+#~ "で。"
+
+#~ msgid ""
+#~ "Magical:\n"
+#~ "This attack always has a 70% chance to hit regardless of the defensive "
+#~ "ability of the unit being attacked."
+#~ msgstr ""
+#~ "魔法:\n"
+#~ "この攻撃は攻撃されるユニットが持っているどんな防御能力も関係なく常に命中率"
+#~ "が 70% となります。"
+
+#~ msgid "firststrike"
+#~ msgstr "先制"
+
+#~ msgid ""
+#~ "First Strike:\n"
+#~ "This unit always strikes first with this attack, even if they are "
+#~ "defending."
+#~ msgstr ""
+#~ "先制:\n"
+#~ "このユニットは、たとえ防御時であっても常にこの攻撃で先に攻撃します。"
 
 #~ msgid ""
 #~ "Feeding:\n"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-10-27 15:56+0200\n"
+"POT-Creation-Date: 2013-03-09 08:51+0100\n"
 "PO-Revision-Date: 2008-02-21 10:21+0800\n"
 "Last-Translator: eve <eve_eso@yahoo.com>\n"
 "Language-Team: \n"
@@ -31,8 +31,14 @@ msgstr "mabangis"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:757
+#: data/core/macros/abilities.cfg:563
+#, fuzzy
+#| msgid ""
+#| "Berserk:\n"
+#| "Whether used offensively or defensively, this attack presses the "
+#| "engagement until one of the combatants is slain, or 30 rounds of attacks "
+#| "have occurred."
 msgid ""
-"Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
@@ -42,15 +48,20 @@ msgstr ""
 "pauliulit na atake ang naganap."
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:770
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:769
 #: data/core/macros/abilities.cfg:641
 msgid "magical"
 msgstr "mahiwaga"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:772
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:771
+#: data/core/macros/abilities.cfg:642
+#, fuzzy
+#| msgid ""
+#| "Magical:\n"
+#| "This attack always has a 70% chance to hit regardless of the defensive "
+#| "ability of the unit being attacked."
 msgid ""
-"Magical:\n"
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
 msgstr ""
@@ -59,14 +70,22 @@ msgstr ""
 "pagsasaalang-alang ng abilidad sa depensa ng yunit na sinasalakay. "
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:785
-msgid "firststrike"
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:783
+#: data/core/macros/abilities.cfg:686
+#, fuzzy
+#| msgid "firststrike"
+msgid "first strike"
 msgstr "unang tama"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:787
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:785
+#: data/core/macros/abilities.cfg:687
+#, fuzzy
+#| msgid ""
+#| "First Strike:\n"
+#| "This unit always strikes first with this attack, even if they are "
+#| "defending."
 msgid ""
-"First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
 "Unang Tama:\n"
@@ -3245,23 +3264,6 @@ msgstr ""
 msgid "+1 max HP"
 msgstr "+1 max HP"
 
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:563
-#, fuzzy
-#| msgid ""
-#| "Berserk:\n"
-#| "Whether used offensively or defensively, this attack presses the "
-#| "engagement until one of the combatants is slain, or 30 rounds of attacks "
-#| "have occurred."
-msgid ""
-"Whether used offensively or defensively, this attack presses the engagement "
-"until one of the combatants is slain, or 30 rounds of attacks have occurred."
-msgstr ""
-"Mabangis:\n"
-"Gamitin man sa paraang opensiba o depensibo, ang atakeng ito ay nanatili sa "
-"engkwentro hanggang may mapatay na isang kombantante, o kung may 30 na "
-"pauliulit na atake ang naganap."
-
 #. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:573
 msgid "backstab"
@@ -3335,21 +3337,6 @@ msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
 
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:642
-#, fuzzy
-#| msgid ""
-#| "Magical:\n"
-#| "This attack always has a 70% chance to hit regardless of the defensive "
-#| "ability of the unit being attacked."
-msgid ""
-"This attack always has a 70% chance to hit regardless of the defensive "
-"ability of the unit being attacked."
-msgstr ""
-"Mahiwaga:\n"
-"Ang atakeng ito ay laging may 70% na tsansa sa pagtama na walang "
-"pagsasaalang-alang ng abilidad sa depensa ng yunit na sinasalakay. "
-
 #. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:653
 msgid "swarm"
@@ -3387,27 +3374,6 @@ msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
 msgstr ""
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:686
-#, fuzzy
-#| msgid "firststrike"
-msgid "first strike"
-msgstr "unang tama"
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:687
-#, fuzzy
-#| msgid ""
-#| "First Strike:\n"
-#| "This unit always strikes first with this attack, even if they are "
-#| "defending."
-msgid ""
-"This unit always strikes first with this attack, even if they are defending."
-msgstr ""
-"Unang Tama:\n"
-" Itong yunit ay laging unang umaatake gamit ang atakeng ito, kahit sila ay "
-"dumidepensa."
 
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:696
@@ -3758,172 +3724,172 @@ msgstr ""
 #. [trait]: id=elemental
 #. [trait]: id=mechanical
 #. [trait]: id=undead
-#: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:39
-#: data/core/macros/traits.cfg:54
+#: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:47
+#: data/core/macros/traits.cfg:70
 msgid "Immune to drain, poison, and plague"
 msgstr ""
 
 #. [trait]: id=mechanical
-#: data/core/macros/traits.cfg:37
+#: data/core/macros/traits.cfg:45
 msgid "mechanical"
 msgstr ""
 
 #. [trait]: id=mechanical
-#: data/core/macros/traits.cfg:38
+#: data/core/macros/traits.cfg:46
 msgid "female^mechanical"
 msgstr ""
 
 #. [trait]: id=elemental
-#: data/core/macros/traits.cfg:52
+#: data/core/macros/traits.cfg:68
 msgid "elemental"
 msgstr ""
 
 #. [trait]: id=elemental
-#: data/core/macros/traits.cfg:53
+#: data/core/macros/traits.cfg:69
 #, fuzzy
 msgid "female^elemental"
 msgstr "matapat"
 
 #. [trait]: id=strong
-#: data/core/macros/traits.cfg:66
+#: data/core/macros/traits.cfg:90
 msgid "strong"
 msgstr "malakas"
 
 #. [trait]: id=strong
-#: data/core/macros/traits.cfg:67
+#: data/core/macros/traits.cfg:91
 msgid "female^strong"
 msgstr "malakas"
 
 #. [trait]: id=dextrous
-#: data/core/macros/traits.cfg:84
+#: data/core/macros/traits.cfg:108
 msgid "dextrous"
 msgstr ""
 
 #. [trait]: id=dextrous
-#: data/core/macros/traits.cfg:85
+#: data/core/macros/traits.cfg:109
 msgid "female^dextrous"
 msgstr ""
 
 #. [trait]: id=quick
-#: data/core/macros/traits.cfg:98
+#: data/core/macros/traits.cfg:122
 msgid "quick"
 msgstr "mabilis"
 
 #. [trait]: id=quick
-#: data/core/macros/traits.cfg:99
+#: data/core/macros/traits.cfg:123
 msgid "female^quick"
 msgstr "mabilis"
 
 #. [trait]: id=intelligent
-#: data/core/macros/traits.cfg:115
+#: data/core/macros/traits.cfg:139
 msgid "intelligent"
 msgstr "matalino"
 
 #. [trait]: id=intelligent
-#: data/core/macros/traits.cfg:116
+#: data/core/macros/traits.cfg:140
 msgid "female^intelligent"
 msgstr "matalino"
 
 #. [trait]: id=resilient
-#: data/core/macros/traits.cfg:128
+#: data/core/macros/traits.cfg:152
 msgid "resilient"
 msgstr ""
 
 #. [trait]: id=resilient
-#: data/core/macros/traits.cfg:129
+#: data/core/macros/traits.cfg:153
 msgid "female^resilient"
 msgstr ""
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:146
+#: data/core/macros/traits.cfg:170
 msgid "healthy"
 msgstr "malusog"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:147
+#: data/core/macros/traits.cfg:171
 msgid "female^healthy"
 msgstr "malusog"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:148
+#: data/core/macros/traits.cfg:172
 msgid "Always rest heals"
 msgstr ""
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:165 data/core/macros/traits.cfg:178
+#: data/core/macros/traits.cfg:189 data/core/macros/traits.cfg:202
 msgid "fearless"
 msgstr "walang takot"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:166 data/core/macros/traits.cfg:179
+#: data/core/macros/traits.cfg:190 data/core/macros/traits.cfg:203
 msgid "female^fearless"
 msgstr "walang takot"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:167 data/core/macros/traits.cfg:180
+#: data/core/macros/traits.cfg:191 data/core/macros/traits.cfg:204
 msgid "Fights normally during unfavorable times of day/night"
 msgstr ""
 
 #. [trait]: id=feral
-#: data/core/macros/traits.cfg:190
+#: data/core/macros/traits.cfg:214
 #, fuzzy
 msgid "feral"
 msgstr "Pader ng kuweba"
 
 #. [trait]: id=feral
-#: data/core/macros/traits.cfg:191
+#: data/core/macros/traits.cfg:215
 #, fuzzy
 msgid "female^feral"
 msgstr "malusog"
 
 #. [trait]: id=feral
-#: data/core/macros/traits.cfg:192
+#: data/core/macros/traits.cfg:216
 msgid "Receives only 50% defense in land-based villages"
 msgstr ""
 
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:208
+#: data/core/macros/traits.cfg:232
 msgid "weak"
 msgstr ""
 
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:209
+#: data/core/macros/traits.cfg:233
 #, fuzzy
 msgid "female^weak"
 msgstr "matapat"
 
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:226
+#: data/core/macros/traits.cfg:250
 #, fuzzy
 msgid "slow"
 msgstr "humina"
 
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:227
+#: data/core/macros/traits.cfg:251
 #, fuzzy
 msgid "female^slow"
 msgstr "matapat"
 
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:243
+#: data/core/macros/traits.cfg:267
 #, fuzzy
 msgid "dim"
 msgstr "Katamtaman"
 
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:244
+#: data/core/macros/traits.cfg:268
 #, fuzzy
 msgid "female^dim"
 msgstr "walang takot"
 
 #. [trait]: id=aged
-#: data/core/macros/traits.cfg:256
+#: data/core/macros/traits.cfg:280
 #, fuzzy
 msgid "aged"
 msgstr "Sakop"
 
 #. [trait]: id=aged
-#: data/core/macros/traits.cfg:257
+#: data/core/macros/traits.cfg:281
 #, fuzzy
 msgid "female^aged"
 msgstr "walang takot"
@@ -4624,7 +4590,7 @@ msgstr "Wose"
 msgid "race^Woses"
 msgstr ""
 
-#: src/help.cpp:52
+#: src/help.cpp:53
 msgid "Help"
 msgstr "Tulong"
 
@@ -4680,142 +4646,174 @@ msgstr ""
 msgid "Variations: "
 msgstr "Mga galaw"
 
-#: src/help.cpp:1450 src/help.cpp:1825 src/help.cpp:1898
+#: src/help.cpp:1448 src/help.cpp:1820 src/help.cpp:1893
 msgid "race^Miscellaneous"
 msgstr "Miselanyo"
 
-#: src/help.cpp:1452
+#: src/help.cpp:1450
 msgid "Race: "
 msgstr "Karera:"
 
-#: src/help.cpp:1459
+#: src/help.cpp:1457
 msgid "Abilities: "
 msgstr "Mga Abilidad:"
 
-#: src/help.cpp:1476
+#: src/help.cpp:1474
 #, fuzzy
 msgid "Ability Upgrades: "
 msgstr "Mga Abilidad:"
 
-#: src/help.cpp:1492
+#: src/help.cpp:1490
 msgid "HP: "
 msgstr "HP:"
 
-#: src/help.cpp:1493
+#: src/help.cpp:1491
 msgid "Moves: "
 msgstr "Mga galaw"
 
-#: src/help.cpp:1495
+#: src/help.cpp:1493
 msgid "Vision: "
 msgstr ""
 
-#: src/help.cpp:1497
+#: src/help.cpp:1495
 msgid "Jamming: "
 msgstr ""
 
-#: src/help.cpp:1498
+#: src/help.cpp:1496
 msgid "Cost: "
 msgstr ""
 
-#: src/help.cpp:1499
+#: src/help.cpp:1497
 msgid "Alignment: "
 msgstr ""
 
-#: src/help.cpp:1505
+#: src/help.cpp:1503
 msgid "Required XP: "
 msgstr "Nangangailangan ng XP:"
 
-#: src/help.cpp:1514
+#: src/help.cpp:1512
 msgid "unit help^Attacks"
 msgstr ""
 
-#: src/help.cpp:1521
+#: src/help.cpp:1519
 msgid "unit help^Name"
 msgstr ""
 
-#: src/help.cpp:1522
+#: src/help.cpp:1520
 msgid "Type"
 msgstr "Tipo"
 
-#: src/help.cpp:1523
+#: src/help.cpp:1521
 msgid "Strikes"
 msgstr "Mga Tama"
 
-#: src/help.cpp:1524
+#: src/help.cpp:1522
 msgid "Range"
 msgstr "Sakop"
 
-#: src/help.cpp:1525
+#: src/help.cpp:1523
 msgid "Special"
 msgstr "Espesyal"
 
-#: src/help.cpp:1571
+#: src/help.cpp:1569
 msgid "Resistances"
 msgstr "Mga Resistensya"
 
-#: src/help.cpp:1575
+#: src/help.cpp:1573
 msgid "Attack Type"
 msgstr "Tipo ng Atake"
 
-#: src/help.cpp:1576
+#: src/help.cpp:1574
 msgid "Resistance"
 msgstr "Resistensya"
 
-#: src/help.cpp:1615
+#: src/help.cpp:1604
 msgid "Terrain Modifiers"
 msgstr "Taga-bago ng Pook"
 
-#: src/help.cpp:1619
+#: src/help.cpp:1608
 msgid "Terrain"
 msgstr "Pook"
 
-#: src/help.cpp:1620
+#: src/help.cpp:1609
 msgid "Defense"
 msgstr "Depensa"
 
-#: src/help.cpp:1621
+#: src/help.cpp:1610
 msgid "Movement Cost"
 msgstr ""
 
-#: src/help.cpp:1624
+#: src/help.cpp:1614
 msgid "Vision Cost"
 msgstr ""
 
-#: src/help.cpp:1626
+#: src/help.cpp:1617
 msgid "Jamming Cost"
 msgstr ""
 
-#: src/help.cpp:1904
+#: src/help.cpp:1899
 msgid "<header>text='Units of this race'</header>"
 msgstr "l"
 
-#: src/help.cpp:2817
+#: src/help.cpp:2811
 msgid " < Back"
 msgstr " < Bumalik"
 
-#: src/help.cpp:2818
+#: src/help.cpp:2812
 msgid "Forward >"
 msgstr "Unahan >"
 
-#: src/help.cpp:2926
+#: src/help.cpp:2920
 msgid "Reference to unknown topic: "
 msgstr ""
 
-#: src/help.cpp:3182
+#: src/help.cpp:3176
 msgid "corrupted original file"
 msgstr ""
 
-#: src/help.cpp:3281
+#: src/help.cpp:3275
 msgid "Close"
 msgstr "Isara"
 
-#: src/help.cpp:3284
+#: src/help.cpp:3278
 msgid "The Battle for Wesnoth Help"
 msgstr ""
 
-#: src/help.cpp:3340
+#: src/help.cpp:3334
 msgid "Parse error when parsing help text: "
 msgstr ""
+
+#~ msgid ""
+#~ "Berserk:\n"
+#~ "Whether used offensively or defensively, this attack presses the "
+#~ "engagement until one of the combatants is slain, or 30 rounds of attacks "
+#~ "have occurred."
+#~ msgstr ""
+#~ "Mabangis:\n"
+#~ "Gamitin man sa paraang opensiba o depensibo, ang atakeng ito ay nanatili "
+#~ "sa engkwentro hanggang may mapatay na isang kombantante, o kung may 30 na "
+#~ "pauliulit na atake ang naganap."
+
+#~ msgid ""
+#~ "Magical:\n"
+#~ "This attack always has a 70% chance to hit regardless of the defensive "
+#~ "ability of the unit being attacked."
+#~ msgstr ""
+#~ "Mahiwaga:\n"
+#~ "Ang atakeng ito ay laging may 70% na tsansa sa pagtama na walang "
+#~ "pagsasaalang-alang ng abilidad sa depensa ng yunit na sinasalakay. "
+
+#~ msgid "firststrike"
+#~ msgstr "unang tama"
+
+#~ msgid ""
+#~ "First Strike:\n"
+#~ "This unit always strikes first with this attack, even if they are "
+#~ "defending."
+#~ msgstr ""
+#~ "Unang Tama:\n"
+#~ " Itong yunit ay laging unang umaatake gamit ang atakeng ito, kahit sila "
+#~ "ay dumidepensa."
 
 #~ msgid ""
 #~ "Some weapons have special features that increase the effectiveness of "

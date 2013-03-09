@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-10-27 15:56+0200\n"
+"POT-Creation-Date: 2013-03-09 08:51+0100\n"
 "PO-Revision-Date: 2012-02-28 17:17+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -32,8 +32,14 @@ msgstr "광전사"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:757
+#: data/core/macros/abilities.cfg:563
+#, fuzzy
+#| msgid ""
+#| "Berserk:\n"
+#| "Whether used offensively or defensively, this attack presses the "
+#| "engagement until one of the combatants is slain, or 30 rounds of attacks "
+#| "have occurred."
 msgid ""
-"Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
@@ -42,15 +48,20 @@ msgstr ""
 "때까지 강제로 전투를 계속합니다."
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:770
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:769
 #: data/core/macros/abilities.cfg:641
 msgid "magical"
 msgstr "마법"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:772
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:771
+#: data/core/macros/abilities.cfg:642
+#, fuzzy
+#| msgid ""
+#| "Magical:\n"
+#| "This attack always has a 70% chance to hit regardless of the defensive "
+#| "ability of the unit being attacked."
 msgid ""
-"Magical:\n"
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
 msgstr ""
@@ -59,14 +70,22 @@ msgstr ""
 "다."
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:785
-msgid "firststrike"
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:783
+#: data/core/macros/abilities.cfg:686
+#, fuzzy
+#| msgid "firststrike"
+msgid "first strike"
 msgstr "선공"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:787
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:785
+#: data/core/macros/abilities.cfg:687
+#, fuzzy
+#| msgid ""
+#| "First Strike:\n"
+#| "This unit always strikes first with this attack, even if they are "
+#| "defending."
 msgid ""
-"First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
 "선공:\n"
@@ -1856,13 +1875,13 @@ msgstr ""
 "\n"
 "대부분의 유닛은 3 레벨까지 올라갈 수 있지만 모두 그런것은 아닙니다. "
 "<ref>dst='unit_Mage' text='마법사'</ref> 같은 일부 유닛은 4 레벨까지 있습니"
-"다. 일단 유닛이 그 최고 레벨까지 도달하면 <italic>text='한계승급'</italic>"
-"(AMLA)이 가능해집니다. 한계승급에 필요한 경험치는 유닛이 경험치 목표량에 도달"
-"할때마다 수정되지만, 해당 유닛의 레벨은 오르지 않습니다. 한계승급의 일반적인 "
-"효과는 유닛의 최고 HP를 3 늘리고 완전회복시켜주는 것입니다. 최초의 AMLA는 보"
-"통 150XP (영리한 유닛의 경우 120XP)를 모았을때 일어납니다. 하지만 한계승급을 "
-"계속하는 것은 이것이 중첩될때마다 점점 어려워지므로, 보통은 낮은 레벨 유닛을 "
-"승급시키는 편이 좀더 유용합니다."
+"다. 일단 유닛이 그 최고 레벨까지 도달하면 <italic>text='한계승급'</"
+"italic>(AMLA)이 가능해집니다. 한계승급에 필요한 경험치는 유닛이 경험치 목표량"
+"에 도달할때마다 수정되지만, 해당 유닛의 레벨은 오르지 않습니다. 한계승급의 일"
+"반적인 효과는 유닛의 최고 HP를 3 늘리고 완전회복시켜주는 것입니다. 최초의 "
+"AMLA는 보통 150XP (영리한 유닛의 경우 120XP)를 모았을때 일어납니다. 하지만 한"
+"계승급을 계속하는 것은 이것이 중첩될때마다 점점 어려워지므로, 보통은 낮은 레"
+"벨 유닛을 승급시키는 편이 좀더 유용합니다."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:307
@@ -3833,22 +3852,6 @@ msgstr " 이 유닛은 생체 유닛을 하나 죽일때마다 최대 HP를 1 �
 msgid "+1 max HP"
 msgstr "최대 HP +1"
 
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:563
-#, fuzzy
-#| msgid ""
-#| "Berserk:\n"
-#| "Whether used offensively or defensively, this attack presses the "
-#| "engagement until one of the combatants is slain, or 30 rounds of attacks "
-#| "have occurred."
-msgid ""
-"Whether used offensively or defensively, this attack presses the engagement "
-"until one of the combatants is slain, or 30 rounds of attacks have occurred."
-msgstr ""
-"광전사:\n"
-"공격이나 방어시 이 공격을 쓰면, 적아 중 하나가 죽거나 30번의 공방이 이루어질 "
-"때까지 강제로 전투를 계속합니다."
-
 #. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:573
 msgid "backstab"
@@ -3974,21 +3977,6 @@ msgstr ""
 "저격:\n"
 "방어가 아닌 공격에 이 무기를 사용하면 항상 60% 이상의 명중률을 갖습니다."
 
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:642
-#, fuzzy
-#| msgid ""
-#| "Magical:\n"
-#| "This attack always has a 70% chance to hit regardless of the defensive "
-#| "ability of the unit being attacked."
-msgid ""
-"This attack always has a 70% chance to hit regardless of the defensive "
-"ability of the unit being attacked."
-msgstr ""
-"마법:\n"
-"이 공격은 공격받는 유닛의 방어능력과는 무관하게 언제나 70%의 명중률을 갖습니"
-"다."
-
 #. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:653
 msgid "swarm"
@@ -4054,26 +4042,6 @@ msgstr ""
 "흡수:\n"
 "이 유닛은 생명체 유닛에게 준 데미지의 절반을 그로부터 흡수해서 자신을 치유합"
 "니다.(소수점 이하 내림)"
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:686
-#, fuzzy
-#| msgid "firststrike"
-msgid "first strike"
-msgstr "선공"
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:687
-#, fuzzy
-#| msgid ""
-#| "First Strike:\n"
-#| "This unit always strikes first with this attack, even if they are "
-#| "defending."
-msgid ""
-"This unit always strikes first with this attack, even if they are defending."
-msgstr ""
-"선공:\n"
-"이 유닛은 항상 이 공격으로 선공할 수 있으며, 이것은 방어시에도 적용됩니다."
 
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:696
@@ -4458,163 +4426,163 @@ msgstr "언데드"
 #. [trait]: id=elemental
 #. [trait]: id=mechanical
 #. [trait]: id=undead
-#: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:39
-#: data/core/macros/traits.cfg:54
+#: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:47
+#: data/core/macros/traits.cfg:70
 msgid "Immune to drain, poison, and plague"
 msgstr "흡수, 독, 역병에 면역"
 
 #. [trait]: id=mechanical
-#: data/core/macros/traits.cfg:37
+#: data/core/macros/traits.cfg:45
 msgid "mechanical"
 msgstr "기계"
 
 #. [trait]: id=mechanical
-#: data/core/macros/traits.cfg:38
+#: data/core/macros/traits.cfg:46
 msgid "female^mechanical"
 msgstr "기계"
 
 #. [trait]: id=elemental
-#: data/core/macros/traits.cfg:52
+#: data/core/macros/traits.cfg:68
 msgid "elemental"
 msgstr "원소계"
 
 #. [trait]: id=elemental
-#: data/core/macros/traits.cfg:53
+#: data/core/macros/traits.cfg:69
 msgid "female^elemental"
 msgstr "원소계"
 
 #. [trait]: id=strong
-#: data/core/macros/traits.cfg:66
+#: data/core/macros/traits.cfg:90
 msgid "strong"
 msgstr "힘센"
 
 #. [trait]: id=strong
-#: data/core/macros/traits.cfg:67
+#: data/core/macros/traits.cfg:91
 msgid "female^strong"
 msgstr "힘센"
 
 #. [trait]: id=dextrous
-#: data/core/macros/traits.cfg:84
+#: data/core/macros/traits.cfg:108
 msgid "dextrous"
 msgstr "능란함"
 
 #. [trait]: id=dextrous
-#: data/core/macros/traits.cfg:85
+#: data/core/macros/traits.cfg:109
 msgid "female^dextrous"
 msgstr "능란함"
 
 #. [trait]: id=quick
-#: data/core/macros/traits.cfg:98
+#: data/core/macros/traits.cfg:122
 msgid "quick"
 msgstr "신속한"
 
 #. [trait]: id=quick
-#: data/core/macros/traits.cfg:99
+#: data/core/macros/traits.cfg:123
 msgid "female^quick"
 msgstr "신속한"
 
 #. [trait]: id=intelligent
-#: data/core/macros/traits.cfg:115
+#: data/core/macros/traits.cfg:139
 msgid "intelligent"
 msgstr "영리한"
 
 #. [trait]: id=intelligent
-#: data/core/macros/traits.cfg:116
+#: data/core/macros/traits.cfg:140
 msgid "female^intelligent"
 msgstr "영리한"
 
 #. [trait]: id=resilient
-#: data/core/macros/traits.cfg:128
+#: data/core/macros/traits.cfg:152
 msgid "resilient"
 msgstr "튼튼한"
 
 #. [trait]: id=resilient
-#: data/core/macros/traits.cfg:129
+#: data/core/macros/traits.cfg:153
 msgid "female^resilient"
 msgstr "튼튼한"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:146
+#: data/core/macros/traits.cfg:170
 msgid "healthy"
 msgstr "건강한"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:147
+#: data/core/macros/traits.cfg:171
 msgid "female^healthy"
 msgstr "건강한"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:148
+#: data/core/macros/traits.cfg:172
 msgid "Always rest heals"
 msgstr "항상 휴식 회복을 받는다"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:165 data/core/macros/traits.cfg:178
+#: data/core/macros/traits.cfg:189 data/core/macros/traits.cfg:202
 msgid "fearless"
 msgstr "용맹한"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:166 data/core/macros/traits.cfg:179
+#: data/core/macros/traits.cfg:190 data/core/macros/traits.cfg:203
 msgid "female^fearless"
 msgstr "용맹한"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:167 data/core/macros/traits.cfg:180
+#: data/core/macros/traits.cfg:191 data/core/macros/traits.cfg:204
 msgid "Fights normally during unfavorable times of day/night"
 msgstr "낮/밤 중 좋지 않은 시간대에도 평소처럼 싸울 수 있다"
 
 #. [trait]: id=feral
-#: data/core/macros/traits.cfg:190
+#: data/core/macros/traits.cfg:214
 msgid "feral"
 msgstr "야생종"
 
 #. [trait]: id=feral
-#: data/core/macros/traits.cfg:191
+#: data/core/macros/traits.cfg:215
 msgid "female^feral"
 msgstr "야생종"
 
 #. [trait]: id=feral
-#: data/core/macros/traits.cfg:192
+#: data/core/macros/traits.cfg:216
 msgid "Receives only 50% defense in land-based villages"
 msgstr "땅에 있는 마을에서 방어도가 50%"
 
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:208
+#: data/core/macros/traits.cfg:232
 msgid "weak"
 msgstr "약한"
 
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:209
+#: data/core/macros/traits.cfg:233
 msgid "female^weak"
 msgstr "약한"
 
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:226
+#: data/core/macros/traits.cfg:250
 msgid "slow"
 msgstr "둔한"
 
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:227
+#: data/core/macros/traits.cfg:251
 msgid "female^slow"
 msgstr "둔한"
 
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:243
+#: data/core/macros/traits.cfg:267
 msgid "dim"
 msgstr "돌머리"
 
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:244
+#: data/core/macros/traits.cfg:268
 msgid "female^dim"
 msgstr "돌머리"
 
 #. [trait]: id=aged
-#: data/core/macros/traits.cfg:256
+#: data/core/macros/traits.cfg:280
 msgid "aged"
 msgstr "늙은"
 
 #. [trait]: id=aged
-#: data/core/macros/traits.cfg:257
+#: data/core/macros/traits.cfg:281
 msgid "female^aged"
 msgstr "늙은"
 
@@ -5343,7 +5311,7 @@ msgstr "나모"
 msgid "race^Woses"
 msgstr "나모족"
 
-#: src/help.cpp:52
+#: src/help.cpp:53
 msgid "Help"
 msgstr "도움말"
 
@@ -5397,141 +5365,171 @@ msgstr ""
 msgid "Variations: "
 msgstr "당파:"
 
-#: src/help.cpp:1450 src/help.cpp:1825 src/help.cpp:1898
+#: src/help.cpp:1448 src/help.cpp:1820 src/help.cpp:1893
 msgid "race^Miscellaneous"
 msgstr "기타"
 
-#: src/help.cpp:1452
+#: src/help.cpp:1450
 msgid "Race: "
 msgstr "종족:"
 
-#: src/help.cpp:1459
+#: src/help.cpp:1457
 msgid "Abilities: "
 msgstr "능력:"
 
-#: src/help.cpp:1476
+#: src/help.cpp:1474
 msgid "Ability Upgrades: "
 msgstr "추가 능력:"
 
-#: src/help.cpp:1492
+#: src/help.cpp:1490
 msgid "HP: "
 msgstr "체력: "
 
-#: src/help.cpp:1493
+#: src/help.cpp:1491
 msgid "Moves: "
 msgstr "이동력: "
 
-#: src/help.cpp:1495
+#: src/help.cpp:1493
 msgid "Vision: "
 msgstr ""
 
-#: src/help.cpp:1497
+#: src/help.cpp:1495
 msgid "Jamming: "
 msgstr ""
 
-#: src/help.cpp:1498
+#: src/help.cpp:1496
 msgid "Cost: "
 msgstr "소집비용: "
 
-#: src/help.cpp:1499
+#: src/help.cpp:1497
 msgid "Alignment: "
 msgstr "선호시간대: "
 
-#: src/help.cpp:1505
+#: src/help.cpp:1503
 msgid "Required XP: "
 msgstr "필요 경험치: "
 
-#: src/help.cpp:1514
+#: src/help.cpp:1512
 msgid "unit help^Attacks"
 msgstr "공격"
 
-#: src/help.cpp:1521
+#: src/help.cpp:1519
 msgid "unit help^Name"
 msgstr "이름"
 
-#: src/help.cpp:1522
+#: src/help.cpp:1520
 msgid "Type"
 msgstr "속성"
 
-#: src/help.cpp:1523
+#: src/help.cpp:1521
 msgid "Strikes"
 msgstr "공격력"
 
-#: src/help.cpp:1524
+#: src/help.cpp:1522
 msgid "Range"
 msgstr "공격범위"
 
-#: src/help.cpp:1525
+#: src/help.cpp:1523
 msgid "Special"
 msgstr "특수능력"
 
-#: src/help.cpp:1571
+#: src/help.cpp:1569
 msgid "Resistances"
 msgstr "저항력"
 
-#: src/help.cpp:1575
+#: src/help.cpp:1573
 msgid "Attack Type"
 msgstr "공격 유형"
 
-#: src/help.cpp:1576
+#: src/help.cpp:1574
 msgid "Resistance"
 msgstr "저항도"
 
-#: src/help.cpp:1615
+#: src/help.cpp:1604
 msgid "Terrain Modifiers"
 msgstr "지형 수정"
 
-#: src/help.cpp:1619
+#: src/help.cpp:1608
 msgid "Terrain"
 msgstr "지형"
 
-#: src/help.cpp:1620
+#: src/help.cpp:1609
 msgid "Defense"
 msgstr "방어도"
 
-#: src/help.cpp:1621
+#: src/help.cpp:1610
 msgid "Movement Cost"
 msgstr "소모 이동력"
 
-#: src/help.cpp:1624
+#: src/help.cpp:1614
 msgid "Vision Cost"
 msgstr ""
 
-#: src/help.cpp:1626
+#: src/help.cpp:1617
 msgid "Jamming Cost"
 msgstr ""
 
-#: src/help.cpp:1904
+#: src/help.cpp:1899
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='이 종족 소속 유닛'</header>"
 
-#: src/help.cpp:2817
+#: src/help.cpp:2811
 msgid " < Back"
 msgstr "< 뒤로"
 
-#: src/help.cpp:2818
+#: src/help.cpp:2812
 msgid "Forward >"
 msgstr "앞으로 >"
 
-#: src/help.cpp:2926
+#: src/help.cpp:2920
 msgid "Reference to unknown topic: "
 msgstr "없는 항목으로 이어져 있습니다: "
 
-#: src/help.cpp:3182
+#: src/help.cpp:3176
 msgid "corrupted original file"
 msgstr ""
 
-#: src/help.cpp:3281
+#: src/help.cpp:3275
 msgid "Close"
 msgstr "닫기"
 
-#: src/help.cpp:3284
+#: src/help.cpp:3278
 msgid "The Battle for Wesnoth Help"
 msgstr "Battle for Wesnoth 도움말"
 
-#: src/help.cpp:3340
+#: src/help.cpp:3334
 msgid "Parse error when parsing help text: "
 msgstr ""
+
+#~ msgid ""
+#~ "Berserk:\n"
+#~ "Whether used offensively or defensively, this attack presses the "
+#~ "engagement until one of the combatants is slain, or 30 rounds of attacks "
+#~ "have occurred."
+#~ msgstr ""
+#~ "광전사:\n"
+#~ "공격이나 방어시 이 공격을 쓰면, 적아 중 하나가 죽거나 30번의 공방이 이루어"
+#~ "질 때까지 강제로 전투를 계속합니다."
+
+#~ msgid ""
+#~ "Magical:\n"
+#~ "This attack always has a 70% chance to hit regardless of the defensive "
+#~ "ability of the unit being attacked."
+#~ msgstr ""
+#~ "마법:\n"
+#~ "이 공격은 공격받는 유닛의 방어능력과는 무관하게 언제나 70%의 명중률을 갖습"
+#~ "니다."
+
+#~ msgid "firststrike"
+#~ msgstr "선공"
+
+#~ msgid ""
+#~ "First Strike:\n"
+#~ "This unit always strikes first with this attack, even if they are "
+#~ "defending."
+#~ msgstr ""
+#~ "선공:\n"
+#~ "이 유닛은 항상 이 공격으로 선공할 수 있으며, 이것은 방어시에도 적용됩니다."
 
 #~ msgid ""
 #~ "Feeding:\n"

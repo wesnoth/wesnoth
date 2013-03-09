@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
-"POT-Creation-Date: 2012-08-18 09:40+0300\n"
+"POT-Creation-Date: 2013-03-09 08:50+0100\n"
 "PO-Revision-Date: 2012-01-15 18:56+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
@@ -27,8 +27,8 @@ msgstr "WESNOTH"
 #. type: TH
 #: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
 #, no-wrap
-msgid "2011"
-msgstr "2011"
+msgid "2013"
+msgstr ""
 
 # type: TH
 #. type: TH
@@ -820,16 +820,27 @@ msgstr ""
 "porážke, ktorý by od používateľa vyžadoval kliknutie OK. Toto sa tiež "
 "používa na automatizované meranie rýchlosti."
 
-# type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:254
+#, no-wrap
+msgid "B<--ignore-map-settings>"
+msgstr ""
+
+#. type: Plain text
+#: ../../doc/man/wesnoth.6:257
+msgid "do not use map settings, use default values instead."
+msgstr ""
+
+# type: TP
+#. type: TP
+#: ../../doc/man/wesnoth.6:257
 #, no-wrap
 msgid "B<--nogui>"
 msgstr "B<--nogui>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:259
+#: ../../doc/man/wesnoth.6:262
 msgid ""
 "runs the game without the GUI. Must appear before B<--multiplayer> to have "
 "the desired effect."
@@ -839,14 +850,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:259
+#: ../../doc/man/wesnoth.6:262
 #, no-wrap
 msgid "B<--parm>I<number>B<=>I<name>B<:>I<value>"
 msgstr "B<--parm>I<číslo>B<=>I<názov>B<:>I<hodnota>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:268
+#: ../../doc/man/wesnoth.6:271
 msgid ""
 "sets additional parameters for this side. This parameter depends on the "
 "options used with B<--controller> and B<--algorithm>.  It should only be "
@@ -859,14 +870,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:268
+#: ../../doc/man/wesnoth.6:271
 #, no-wrap
 msgid "B<--scenario=>I<value>"
 msgstr "B<--scenario=>I<hodnota>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:272
+#: ../../doc/man/wesnoth.6:275
 msgid ""
 "selects a multiplayer scenario by id. The default scenario id is "
 "B<multiplayer_The_Freelands>."
@@ -876,14 +887,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:272
+#: ../../doc/man/wesnoth.6:275
 #, no-wrap
 msgid "B<--side>I<number>B<=>I<value>"
 msgstr "B<--side>I<číslo>B<=>I<hodnota>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:277
+#: ../../doc/man/wesnoth.6:280
 msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
 "an id. Factions are described in the data/multiplayer.cfg file."
@@ -893,25 +904,25 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:277
+#: ../../doc/man/wesnoth.6:280
 #, no-wrap
 msgid "B<--turns=>I<value>"
 msgstr "B<--turns=>I<hodnota>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:281
+#: ../../doc/man/wesnoth.6:284
 msgid "sets the number of turns for the chosen scenario. The default is B<50>."
 msgstr "nastaví počet ťahov pre danú scénu. Štandardná hodnota je B<50>."
 
 #. type: SH
-#: ../../doc/man/wesnoth.6:282 ../../doc/man/wesnothd.6:265
+#: ../../doc/man/wesnoth.6:285 ../../doc/man/wesnothd.6:265
 #, no-wrap
 msgid "EXIT STATUS"
 msgstr "NÁVRATOVÝ KÓD"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:285
+#: ../../doc/man/wesnoth.6:288
 msgid ""
 "Normal exit status is 0. An exit status of 1 indicates an (SDL, video, "
 "fonts, etc) initialization error. An exit status of 2 indicates an error "
@@ -923,20 +934,20 @@ msgstr ""
 
 # type: SH
 #. type: SH
-#: ../../doc/man/wesnoth.6:286 ../../doc/man/wesnothd.6:269
+#: ../../doc/man/wesnoth.6:289 ../../doc/man/wesnothd.6:269
 #, no-wrap
 msgid "AUTHOR"
 msgstr "AUTOR"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:289
+#: ../../doc/man/wesnoth.6:292
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
 msgstr "Napísal David White E<lt>davidnwhite@verizon.netE<gt>."
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:291
+#: ../../doc/man/wesnoth.6:294
 msgid ""
 "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
 "netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
@@ -947,7 +958,7 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:293
+#: ../../doc/man/wesnoth.6:296
 msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
@@ -957,27 +968,30 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:295 ../../doc/man/wesnothd.6:276
+#: ../../doc/man/wesnoth.6:298 ../../doc/man/wesnothd.6:276
 msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgstr "Navštívte oficiálnu stránku: http://www.wesnoth.org/"
 
 # type: SH
 #. type: SH
-#: ../../doc/man/wesnoth.6:296 ../../doc/man/wesnothd.6:277
+#: ../../doc/man/wesnoth.6:299 ../../doc/man/wesnothd.6:277
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "COPYRIGHT"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:299 ../../doc/man/wesnothd.6:280
-msgid "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
+#: ../../doc/man/wesnoth.6:302 ../../doc/man/wesnothd.6:280
+#, fuzzy
+#| msgid ""
+#| "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
+msgid "Copyright \\(co 2003-2013 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:302 ../../doc/man/wesnothd.6:283
+#: ../../doc/man/wesnoth.6:305 ../../doc/man/wesnothd.6:283
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -990,14 +1004,14 @@ msgstr ""
 
 # type: SH
 #. type: SH
-#: ../../doc/man/wesnoth.6:303 ../../doc/man/wesnothd.6:284
+#: ../../doc/man/wesnoth.6:306 ../../doc/man/wesnothd.6:284
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "VIĎ AJ"
 
 # type: TH
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:305
+#: ../../doc/man/wesnoth.6:308
 msgid "B<wesnothd>(6)."
 msgstr "B<wesnothd>(6)."
 
@@ -1662,9 +1676,9 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:221
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
-"on which user handler is set with the B<user_handler> key. If no B<"
-"[user_handler]> section is present in the configuration the server will run "
-"without any nick registration service."
+"on which user handler is set with the B<user_handler> key. If no "
+"B<[user_handler]> section is present in the configuration the server will "
+"run without any nick registration service."
 msgstr ""
 "B<[user_handler]> Nastaví obslužný program pre správu používateľov. Dostupné "
 "kľúče závisia od zvoleného programu v kľúči B<user_handler>. Ak nie je "
@@ -1891,3 +1905,6 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:286
 msgid "B<wesnoth>(6)."
 msgstr "B<wesnoth>(6)."
+
+#~ msgid "2011"
+#~ msgstr "2011"

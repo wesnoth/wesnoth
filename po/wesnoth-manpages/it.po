@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
-"POT-Creation-Date: 2012-08-18 09:40+0300\n"
+"POT-Creation-Date: 2013-03-09 08:50+0100\n"
 "PO-Revision-Date: 2012-01-27 22:40+0100\n"
 "Last-Translator: Antonio \"Antro\" Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -28,8 +28,8 @@ msgstr "WESNOTH"
 #. type: TH
 #: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
 #, no-wrap
-msgid "2011"
-msgstr "2011"
+msgid "2013"
+msgstr ""
 
 # type: TH
 #. type: TH
@@ -836,16 +836,27 @@ msgstr ""
 "sconfitte, che richiede che l'utente prema il pulsante OK. Anche questa "
 "opzione è usata per eseguire dei benchmark con script."
 
-# type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:254
+#, no-wrap
+msgid "B<--ignore-map-settings>"
+msgstr ""
+
+#. type: Plain text
+#: ../../doc/man/wesnoth.6:257
+msgid "do not use map settings, use default values instead."
+msgstr ""
+
+# type: TP
+#. type: TP
+#: ../../doc/man/wesnoth.6:257
 #, no-wrap
 msgid "B<--nogui>"
 msgstr "B<--nogui>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:259
+#: ../../doc/man/wesnoth.6:262
 msgid ""
 "runs the game without the GUI. Must appear before B<--multiplayer> to have "
 "the desired effect."
@@ -855,14 +866,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:259
+#: ../../doc/man/wesnoth.6:262
 #, no-wrap
 msgid "B<--parm>I<number>B<=>I<name>B<:>I<value>"
 msgstr "B<--parm>I<numero>B<=>I<nome>B<:>I<valore>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:268
+#: ../../doc/man/wesnoth.6:271
 msgid ""
 "sets additional parameters for this side. This parameter depends on the "
 "options used with B<--controller> and B<--algorithm>.  It should only be "
@@ -875,14 +886,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:268
+#: ../../doc/man/wesnoth.6:271
 #, no-wrap
 msgid "B<--scenario=>I<value>"
 msgstr "B<--scenario=>I<valore>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:272
+#: ../../doc/man/wesnoth.6:275
 msgid ""
 "selects a multiplayer scenario by id. The default scenario id is "
 "B<multiplayer_The_Freelands>."
@@ -892,14 +903,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:272
+#: ../../doc/man/wesnoth.6:275
 #, no-wrap
 msgid "B<--side>I<number>B<=>I<value>"
 msgstr "B<--side>I<numero>B<=>I<valore>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:277
+#: ../../doc/man/wesnoth.6:280
 msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
 "an id. Factions are described in the data/multiplayer.cfg file."
@@ -909,27 +920,27 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:277
+#: ../../doc/man/wesnoth.6:280
 #, no-wrap
 msgid "B<--turns=>I<value>"
 msgstr "B<--turns=>I<valore>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:281
+#: ../../doc/man/wesnoth.6:284
 msgid "sets the number of turns for the chosen scenario. The default is B<50>."
 msgstr ""
 "imposta il numero di turni per lo scenario scelto. L'impostazione standard è "
 "B<50>."
 
 #. type: SH
-#: ../../doc/man/wesnoth.6:282 ../../doc/man/wesnothd.6:265
+#: ../../doc/man/wesnoth.6:285 ../../doc/man/wesnothd.6:265
 #, no-wrap
 msgid "EXIT STATUS"
 msgstr "STATO DI USCITA"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:285
+#: ../../doc/man/wesnoth.6:288
 msgid ""
 "Normal exit status is 0. An exit status of 1 indicates an (SDL, video, "
 "fonts, etc) initialization error. An exit status of 2 indicates an error "
@@ -941,20 +952,20 @@ msgstr ""
 
 # type: SH
 #. type: SH
-#: ../../doc/man/wesnoth.6:286 ../../doc/man/wesnothd.6:269
+#: ../../doc/man/wesnoth.6:289 ../../doc/man/wesnothd.6:269
 #, no-wrap
 msgid "AUTHOR"
 msgstr "AUTORE"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:289
+#: ../../doc/man/wesnoth.6:292
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
 msgstr "Scritto da David White E<lt>davidnwhite@verizon.netE<gt>."
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:291
+#: ../../doc/man/wesnoth.6:294
 msgid ""
 "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
 "netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
@@ -964,7 +975,7 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:293
+#: ../../doc/man/wesnoth.6:296
 msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
@@ -974,27 +985,30 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:295 ../../doc/man/wesnothd.6:276
+#: ../../doc/man/wesnoth.6:298 ../../doc/man/wesnothd.6:276
 msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgstr "Visita la pagina home ufficiale: http://www.wesnoth.org/"
 
 # type: SH
 #. type: SH
-#: ../../doc/man/wesnoth.6:296 ../../doc/man/wesnothd.6:277
+#: ../../doc/man/wesnoth.6:299 ../../doc/man/wesnothd.6:277
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "COPYRIGHT"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:299 ../../doc/man/wesnothd.6:280
-msgid "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
+#: ../../doc/man/wesnoth.6:302 ../../doc/man/wesnothd.6:280
+#, fuzzy
+#| msgid ""
+#| "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
+msgid "Copyright \\(co 2003-2013 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:302 ../../doc/man/wesnothd.6:283
+#: ../../doc/man/wesnoth.6:305 ../../doc/man/wesnothd.6:283
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -1007,14 +1021,14 @@ msgstr ""
 
 # type: SH
 #. type: SH
-#: ../../doc/man/wesnoth.6:303 ../../doc/man/wesnothd.6:284
+#: ../../doc/man/wesnoth.6:306 ../../doc/man/wesnothd.6:284
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "SEE ALSO"
 
 # type: TH
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:305
+#: ../../doc/man/wesnoth.6:308
 msgid "B<wesnothd>(6)."
 msgstr "B<wesnothd>(6)."
 
@@ -1926,3 +1940,6 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:286
 msgid "B<wesnoth>(6)."
 msgstr "B<wesnoth>(6)."
+
+#~ msgid "2011"
+#~ msgstr "2011"

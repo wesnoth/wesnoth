@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-18 09:40+0300\n"
+"POT-Creation-Date: 2013-03-09 08:50+0100\n"
 "PO-Revision-Date: 2009-10-14 16:00-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -31,7 +31,7 @@ msgstr "·𐑢𐑧𐑕𐑯𐑷𐑔"
 #. type: TH
 #: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
 #, no-wrap
-msgid "2011"
+msgid "2013"
 msgstr ""
 
 # type: TH
@@ -782,16 +782,27 @@ msgstr ""
 "𐑧𐑜𐑟𐑦𐑑𐑕 𐑢𐑳𐑯𐑕 𐑞 𐑕𐑦𐑯𐑺𐑰𐑴 𐑦𐑟 𐑴𐑝𐑼, 𐑢𐑦𐑞𐑬𐑑 𐑛𐑦𐑕𐑐𐑤𐑱𐑦𐑙 𐑝𐑦𐑒𐑑𐑼𐑦/𐑛𐑦𐑓𐑰𐑑 𐑛𐑲𐑩𐑤𐑪𐑜 𐑢𐑦𐑗 𐑮𐑦𐑒𐑢𐑲𐑼𐑟 "
 "𐑞 𐑿𐑟𐑼 𐑑 𐑒𐑤𐑦𐑒 𐑴𐑒𐑱. 𐑞𐑦𐑕 𐑦𐑟 𐑷𐑤𐑕𐑴 𐑫𐑖𐑔𐑴𐑵𐑿𐑕𐑑 𐑓𐑹 scriptable benchmarking."
 
-# type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:254
+#, no-wrap
+msgid "B<--ignore-map-settings>"
+msgstr ""
+
+#. type: Plain text
+#: ../../doc/man/wesnoth.6:257
+msgid "do not use map settings, use default values instead."
+msgstr ""
+
+# type: TP
+#. type: TP
+#: ../../doc/man/wesnoth.6:257
 #, fuzzy, no-wrap
 msgid "B<--nogui>"
 msgstr "B<--nogui>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:259
+#: ../../doc/man/wesnoth.6:262
 msgid ""
 "runs the game without the GUI. Must appear before B<--multiplayer> to have "
 "the desired effect."
@@ -800,14 +811,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:259
+#: ../../doc/man/wesnoth.6:262
 #, no-wrap
 msgid "B<--parm>I<number>B<=>I<name>B<:>I<value>"
 msgstr "B<--parm>I<number>B<=>I<name>B<:>I<value>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:268
+#: ../../doc/man/wesnoth.6:271
 msgid ""
 "sets additional parameters for this side. This parameter depends on the "
 "options used with B<--controller> and B<--algorithm>.  It should only be "
@@ -819,14 +830,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:268
+#: ../../doc/man/wesnoth.6:271
 #, no-wrap
 msgid "B<--scenario=>I<value>"
 msgstr "B<--scenario=>I<value>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:272
+#: ../../doc/man/wesnoth.6:275
 msgid ""
 "selects a multiplayer scenario by id. The default scenario id is "
 "B<multiplayer_The_Freelands>."
@@ -836,14 +847,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:272
+#: ../../doc/man/wesnoth.6:275
 #, no-wrap
 msgid "B<--side>I<number>B<=>I<value>"
 msgstr "B<--side>I<number>B<=>I<value>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:277
+#: ../../doc/man/wesnoth.6:280
 #, fuzzy
 msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
@@ -854,25 +865,25 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:277
+#: ../../doc/man/wesnoth.6:280
 #, no-wrap
 msgid "B<--turns=>I<value>"
 msgstr "B<--turns=>I<value>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:281
+#: ../../doc/man/wesnoth.6:284
 msgid "sets the number of turns for the chosen scenario. The default is B<50>."
 msgstr "𐑕𐑧𐑑𐑕 𐑞 𐑯𐑳𐑥𐑚𐑻 𐑝 𐑑𐑻𐑯𐑟 𐑓𐑹 𐑞 𐑗𐑴𐑟𐑩𐑯 𐑕𐑦𐑯𐑺𐑰𐑴. 𐑞 𐑛𐑰𐑓𐑷𐑤𐑑 𐑦𐑟 B<50>."
 
 #. type: SH
-#: ../../doc/man/wesnoth.6:282 ../../doc/man/wesnothd.6:265
+#: ../../doc/man/wesnoth.6:285 ../../doc/man/wesnothd.6:265
 #, no-wrap
 msgid "EXIT STATUS"
 msgstr ""
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:285
+#: ../../doc/man/wesnoth.6:288
 msgid ""
 "Normal exit status is 0. An exit status of 1 indicates an (SDL, video, "
 "fonts, etc) initialization error. An exit status of 2 indicates an error "
@@ -881,21 +892,21 @@ msgstr ""
 
 # type: SH
 #. type: SH
-#: ../../doc/man/wesnoth.6:286 ../../doc/man/wesnothd.6:269
+#: ../../doc/man/wesnoth.6:289 ../../doc/man/wesnothd.6:269
 #, no-wrap
 msgid "AUTHOR"
 msgstr "𐑷𐑔𐑼"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:289
+#: ../../doc/man/wesnoth.6:292
 #, fuzzy
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
 msgstr "𐑮𐑦𐑑𐑩𐑯 𐑚𐑲 ·𐑛𐑱𐑝𐑦𐑛 𐑢𐑲𐑑 𐑧<·𐑤𐑿𐑑𐑧𐑯𐑩𐑯𐑑>davidnwhite@verizon.netE<gt>."
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:291
+#: ../../doc/man/wesnoth.6:294
 #, fuzzy
 msgid ""
 "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
@@ -906,7 +917,7 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:293
+#: ../../doc/man/wesnoth.6:296
 #, fuzzy
 msgid ""
 "This manual page was originally written by Cyril Bouthors "
@@ -917,29 +928,29 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:295 ../../doc/man/wesnothd.6:276
+#: ../../doc/man/wesnoth.6:298 ../../doc/man/wesnothd.6:276
 #, fuzzy
 msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgstr "𐑝𐑦𐑟𐑦𐑑 𐑞 𐑪𐑓𐑦𐑖𐑩𐑤 homepage: http://·𐑢·𐑢·𐑢.·𐑢𐑧𐑕𐑯𐑷𐑔.𐑹𐑜/"
 
 # type: SH
 #. type: SH
-#: ../../doc/man/wesnoth.6:296 ../../doc/man/wesnothd.6:277
+#: ../../doc/man/wesnoth.6:299 ../../doc/man/wesnothd.6:277
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "𐑒𐑪𐑐𐑦𐑮𐑲𐑑"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:299 ../../doc/man/wesnothd.6:280
+#: ../../doc/man/wesnoth.6:302 ../../doc/man/wesnothd.6:280
 #, fuzzy
-msgid "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
+msgid "Copyright \\(co 2003-2013 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 "𐑒𐑪𐑐𐑦𐑮𐑲𐑑 \\(𐑒𐑴 2003-2009 ·𐑛𐑱𐑝𐑦𐑛 𐑢𐑲𐑑 𐑧<·𐑤𐑿𐑑𐑧𐑯𐑩𐑯𐑑>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:302 ../../doc/man/wesnothd.6:283
+#: ../../doc/man/wesnoth.6:305 ../../doc/man/wesnothd.6:283
 #, fuzzy
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
@@ -952,14 +963,14 @@ msgstr ""
 
 # type: SH
 #. type: SH
-#: ../../doc/man/wesnoth.6:303 ../../doc/man/wesnothd.6:284
+#: ../../doc/man/wesnoth.6:306 ../../doc/man/wesnothd.6:284
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "𐑕𐑰 𐑷𐑤𐑕𐑴"
 
 # type: TH
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:305
+#: ../../doc/man/wesnoth.6:308
 #, fuzzy
 msgid "B<wesnothd>(6)."
 msgstr "wesnothd"
@@ -1626,9 +1637,9 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:221
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
-"on which user handler is set with the B<user_handler> key. If no B<"
-"[user_handler]> section is present in the configuration the server will run "
-"without any nick registration service."
+"on which user handler is set with the B<user_handler> key. If no "
+"B<[user_handler]> section is present in the configuration the server will "
+"run without any nick registration service."
 msgstr ""
 "B<[user_handler]> 𐑒𐑩𐑯𐑓𐑦𐑜𐑘𐑼𐑟 𐑞 𐑿𐑟𐑼 𐑣𐑨𐑯𐑛𐑤𐑼. 𐑩𐑝𐑱𐑤𐑩𐑚𐑩𐑤 𐑒𐑰𐑟 𐑝𐑺𐑦 𐑛𐑦𐑐𐑧𐑯𐑛𐑦𐑙 𐑪𐑯 𐑢𐑦𐑗 "
 "𐑿𐑟𐑼 𐑣𐑨𐑯𐑛𐑤𐑼 𐑦𐑟 𐑕𐑧𐑑 𐑢𐑦𐑞 𐑞 B<user_handler> 𐑒𐑰. 𐑦𐑓 𐑯𐑴 B<[user_handler]> 𐑕𐑧𐑒𐑖𐑩𐑯 "

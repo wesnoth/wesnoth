@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth-editor 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-10-27 15:56+0200\n"
+"POT-Creation-Date: 2013-03-09 08:51+0100\n"
 "PO-Revision-Date: 2012-12-19 21:22-0000\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
@@ -190,21 +190,21 @@ msgstr "Classis"
 msgid "villages"
 msgstr "viculi"
 
-#: src/editor/editor_controller.cpp:154
+#: src/editor/editor_controller.cpp:155
 msgid "Fatal error"
 msgstr "Error gravis"
 
-#: src/editor/editor_controller.cpp:178
+#: src/editor/editor_controller.cpp:179
 msgid "Do you really want to quit?"
 msgstr "Itane vis exire?"
 
-#: src/editor/editor_controller.cpp:180
+#: src/editor/editor_controller.cpp:181
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr "Itane vis exire? Omnes mutationes in charta post servatum delebuntur."
 
-#: src/editor/editor_controller.cpp:182
+#: src/editor/editor_controller.cpp:183
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -212,85 +212,85 @@ msgstr ""
 "Itane vis exire? Hae chartae mutatae sunt et omnes mutationes post "
 "servatumdelebuntur:"
 
-#: src/editor/editor_controller.cpp:185
+#: src/editor/editor_controller.cpp:186
 msgid "Quit"
 msgstr "Exire"
 
-#: src/editor/editor_controller.cpp:196
+#: src/editor/editor_controller.cpp:197
 msgid "No editor time-of-day found."
 msgstr "Hora pro chartographia non inventa est."
 
-#: src/editor/map/context_manager.cpp:101
-#: src/editor/map/context_manager.cpp:193
+#: src/editor/map/context_manager.cpp:104
+#: src/editor/map/context_manager.cpp:196
 msgid "(New Map)"
 msgstr "(Charta Nova)"
 
-#: src/editor/map/context_manager.cpp:162
+#: src/editor/map/context_manager.cpp:165
 msgid "Choose a Map to Open"
 msgstr "Chartam Eligere ut Aperiatur"
 
-#: src/editor/map/context_manager.cpp:236
+#: src/editor/map/context_manager.cpp:239
 msgid "Choose a Mask to Apply"
 msgstr "Personam Eligere ut Aptetur"
 
-#: src/editor/map/context_manager.cpp:243
+#: src/editor/map/context_manager.cpp:246
 msgid "Error loading mask"
 msgstr "Error dum persona arcessitur"
 
-#: src/editor/map/context_manager.cpp:264
+#: src/editor/map/context_manager.cpp:267
 msgid "Choose Target Map"
 msgstr "Chartam Eligere"
 
-#: src/editor/map/context_manager.cpp:271
-#: src/editor/map/context_manager.cpp:635
+#: src/editor/map/context_manager.cpp:274
+#: src/editor/map/context_manager.cpp:638
 msgid "Error loading map"
 msgstr "Error dum charta arcessitur"
 
-#: src/editor/map/context_manager.cpp:389
+#: src/editor/map/context_manager.cpp:392
 msgid "Save the Map As"
 msgstr "Chartam Servare ut..."
 
-#: src/editor/map/context_manager.cpp:392
+#: src/editor/map/context_manager.cpp:395
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Fasciculus iam est. Visne eum superscribere?"
 
-#: src/editor/map/context_manager.cpp:426
+#: src/editor/map/context_manager.cpp:429
 msgid "No random map generators found."
 msgstr "Nollus generatores chartarum fortunae inventi sunt."
 
-#: src/editor/map/context_manager.cpp:439
-#: src/editor/map/context_manager.cpp:443
+#: src/editor/map/context_manager.cpp:442
+#: src/editor/map/context_manager.cpp:446
 msgid "Map creation failed."
 msgstr "Chartam creare male evenit."
 
-#: src/editor/map/context_manager.cpp:455
+#: src/editor/map/context_manager.cpp:458
 msgid "Unsaved Changes"
 msgstr "Mutationes Non Servatae"
 
-#: src/editor/map/context_manager.cpp:456
+#: src/editor/map/context_manager.cpp:459
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr "Itane vis omnes mutationes in charta post servatum delere?"
 
-#: src/editor/map/context_manager.cpp:550
-#: src/editor/map/context_manager.cpp:591
+#: src/editor/map/context_manager.cpp:553
+#: src/editor/map/context_manager.cpp:594
 msgid "This map is already open."
 msgstr "Charta iam aperta est."
 
-#: src/editor/map/context_manager.cpp:571
+#: src/editor/map/context_manager.cpp:574
 msgid "Map saved."
 msgstr "Charta servata est."
 
-#: src/editor/map/context_manager.cpp:614
+#: src/editor/map/context_manager.cpp:617
 msgid "Loaded embedded map data"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:615
-#: src/editor/map/context_manager.cpp:629
+#: src/editor/map/context_manager.cpp:618
+#: src/editor/map/context_manager.cpp:632
 msgid "Map loaded from scenario"
 msgstr "Charta ab scaenario arcessita"
 
-#: src/editor/map/context_manager.cpp:625
+#: src/editor/map/context_manager.cpp:628
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -352,11 +352,11 @@ msgstr "EM: "
 msgid "BG: "
 msgstr "AB: "
 
-#: src/gui/dialogs/editor_set_starting_position.cpp:84
+#: src/gui/dialogs/editor_set_starting_position.cpp:86
 msgid "player^None"
 msgstr "Nemo"
 
-#: src/gui/dialogs/editor_set_starting_position.cpp:96
+#: src/gui/dialogs/editor_set_starting_position.cpp:98
 msgid "Player $player_number"
 msgstr "Lusor $player_number"
 

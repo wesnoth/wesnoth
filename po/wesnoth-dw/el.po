@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-10-27 15:56+0200\n"
+"POT-Creation-Date: 2013-03-09 08:51+0100\n"
 "PO-Revision-Date: 2012-07-12 13:10+0100\n"
 "Last-Translator: nikos\n"
 "Language-Team: none\n"
@@ -714,7 +714,7 @@ msgstr "Αλλά κοίτα, μου γλείφει το χέρι."
 #. This should just be "translated" to whatever noise a bat makes in your language.
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:583
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:609
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:723
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:726
 msgid "Neep?"
 msgstr "Νιιπ;"
 
@@ -1075,16 +1075,23 @@ msgid "A brave and kindhearted choice! I cannot abide slavery."
 msgstr "Μια γενναία και ευγενική επιλογή! Δεν ανέχομαι την δουλεία."
 
 #. [message]: speaker=Gwabbo
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:398
+#. The phrase 'words of a man' does *not* have the sense of 
+#. 'words of a human' here; it signifies rather 'words of a
+#. moral adult' as opposed to a child or dependant.
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:401
+#, fuzzy
+#| msgid ""
+#| "Those were the words of a merman, Kai Krellis, and well spoken. The folk "
+#| "are truly yours now."
 msgid ""
-"Those were the words of a merman, Kai Krellis, and well spoken. The folk are "
-"truly yours now."
+"Those were the words of a man and a leader, Kai Krellis, and well spoken. "
+"The folk are truly yours now."
 msgstr ""
 "Αυτά ήταν λόγια αντάξια ενός Γοργόνου, Κάι Κρέλις, και σωστά ειπωμένα. Ο "
 "λαός σου πραγματικά σου ανήκει τώρα."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:405
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:408
 msgid ""
 "Kai Krellis saw that it was so. The refugee merfolk, sore in their pride "
 "from fleeing their enemies, cheered his ultimatum and made ready to fight "
@@ -1095,12 +1102,12 @@ msgstr ""
 "ετοιμάστηκε για μάχη."
 
 #. [message]: speaker=Gilak
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:411
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:414
 msgid "Foolish merman! You will sssoon wish you had minded your own affairs."
 msgstr "Ανόητε γοργόνε! Σσσύντομα θα εύχεσσσαι να μην ανακατευόσσσσουν."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:420
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:423
 msgid ""
 "Perhaps if I called out to the slaves, I could rouse them to help us fight "
 "against their captors."
@@ -1109,7 +1116,7 @@ msgstr ""
 "βοηθήσουν ενάντια στους δουλέμπορους."
 
 #. [message]: speaker=Gwabbo
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:430
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:433
 msgid ""
 "I think that would work. If I may make a suggestion though, I think we "
 "should wait for a more strategic moment."
@@ -1118,7 +1125,7 @@ msgstr ""
 "να περιμένουμε για κάποια καλύτερη στιγμή."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:434
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:437
 msgid ""
 "Never hesitate to speak your counsel to me, Gwabbo. You have been my right "
 "arm on this journey; your courage and loyalty are well proven."
@@ -1128,7 +1135,7 @@ msgstr ""
 "αφοσίωσή σου."
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:438
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:441
 msgid ""
 "Those are the words of a true kai and your father’s son. I am proud of you, "
 "Krellis."
@@ -1137,7 +1144,7 @@ msgstr ""
 "περήφανος για σένα, Κρέλις."
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:444
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:447
 msgid ""
 "I believe that would work, but many of them will be killed if you do it now. "
 "It might be better to wait."
@@ -1147,7 +1154,7 @@ msgstr ""
 "παραμελήσουν την οπισθοφυλακή τους."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:453
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:456
 msgid ""
 "You can choose when the slaves come out of their villages and attack their "
 "captors. When you are ready, right click anywhere and select the slave "
@@ -1158,12 +1165,12 @@ msgstr ""
 "και επίλεξε την εξέγερση των σκλάβων."
 
 #. [set_menu_item]: id=peasant_revolt_menu_option
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:468
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:471
 msgid "Inspire the slaves to revolt"
 msgstr "Εξέγερση των σκλάβων"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:482
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:485
 msgid ""
 "Hear this! Slaves, the merfolk have sworn war against your tormentors. If "
 "you would be free, arise and seize your liberty!"
@@ -1173,7 +1180,7 @@ msgstr ""
 "ελευθερία σας με τα χέρια σας."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:521
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:524
 msgid ""
 "Cheers erupted from several villages, and former slaves rushed out with "
 "whatever meager weapons they could find, or fists and rocks if no weapons "
@@ -1185,28 +1192,28 @@ msgstr ""
 "ακούγονται από τα κάστρα των Σαυροειδών."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:559
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:562
 msgid "There is a treasure chest there! Good bat!"
 msgstr "Εδώ έχει ένα σεντούκι με χρυσά νομίσματα! Καλή νυχτερίδα!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:565
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:568
 msgid "There is a treasure chest here!"
 msgstr "Ένα σεντούκι με νομίσματα!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:578
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:581
 #: data/campaigns/Dead_Water/scenarios/11_Getting_Help.cfg:282
 msgid "You receive 100 gold."
 msgstr "Παίρνεις 100 χρυσά νομίσματα."
 
 #. [message]: speaker=$unit.id
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:600
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:603
 msgid "Neep!"
 msgstr "Νιιπ!"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:604
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:607
 msgid ""
 "I believe our bat is impressed! That must be a drake. I am told they are "
 "fearsome, but honorable, creatures. I think we can let him out of the cage."
@@ -1217,7 +1224,7 @@ msgstr ""
 "κλουβί του."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:616
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:619
 msgid ""
 "This must be a drake. I am told they are honorable creatures. I am going to "
 "let him out of the cage."
@@ -1226,7 +1233,7 @@ msgstr ""
 "βγει από το κλουβί."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:622
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:625
 msgid ""
 "That must be a drake. I am told they are fearsome, but honorable, creatures. "
 "Let him out of the cage."
@@ -1235,32 +1242,32 @@ msgstr ""
 "πλάσματα. Αφήστε τον να βγει από το κλουβί."
 
 #. [message]: speaker=unit
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:626
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:629
 msgid "Uh...If you say so."
 msgstr "Ε... εντάξει."
 
 #. [unit]: type=Drake Burner, id=Keshan
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:639
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:642
 msgid "Keshan"
 msgstr "Κέσαν"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:653
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:656
 msgid "What is your name?"
 msgstr "Ποιο είναι το όνομά σου;"
 
 #. [message]: speaker=Keshan
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:658
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:661
 msgid "I am Keshan."
 msgstr "Είμαι ο Κέσαν."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:663
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:666
 msgid "How did you come to be in a cage?"
 msgstr "Πώς βρέθηκες στο κλουβί;"
 
 #. [message]: speaker=Keshan
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:668
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:671
 msgid ""
 "I was hunting north of here when the small ones captured me. I killed many, "
 "but I was humiliated in the end."
@@ -1269,17 +1276,17 @@ msgstr ""
 "Σκότωσα πολλές, αλλά στο τέλος ντροπιάστηκα."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:673
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:676
 msgid "Will you fight with us, Keshan?"
 msgstr "Θα πολεμήσεις μαζί μας, Κέσαν;"
 
 #. [message]: speaker=Keshan
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:678
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:681
 msgid "You have released me, so I owe you a great debt. I will fight with you."
 msgstr "Με ελευθέρωσες, οπότε σου χρωστάω μεγάλη χάρη. Θα πολεμήσω μαζί σας."
 
 #. [message]: speaker=Gwabbo
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:683
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:686
 msgid ""
 "Don’t let him go too crazy. Those saurian spears will go right through his "
 "scales."
@@ -1288,19 +1295,19 @@ msgstr ""
 "και οι φολίδες του δεν ειναι πανοπλία."
 
 #. [unit]: type=Poacher, id=Siddry
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:703
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:706
 msgid "Siddry"
 msgstr "Σίντρι"
 
 #. [message]: speaker=Kai Krellis
 #. [message]: speaker=unit
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:727
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:733
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:730
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:736
 msgid "Who are you, and what are you doing in a cage?"
 msgstr "Ποιος είσαι εσύ, και πώς βρέθηκες στο κλουβί;"
 
 #. [message]: speaker=Siddry
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:740
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:743
 msgid ""
 "My name is Siddry. These cursed saurians nabbed me a week ago — wanted me to "
 "turn overseer to their other slaves. I wouldn’t do it, so they caged me with "
@@ -1312,12 +1319,12 @@ msgstr ""
 "αλλά δεν τους άφησα."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:745
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:748
 msgid "So you will help us defeat them?"
 msgstr "Ωστέ θα μας βοηθήσεις να τους πολεμήσουμε;"
 
 #. [message]: speaker=Siddry
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:750
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:753
 msgid ""
 "The way I see it, you’re helping me. There is nothing I would like better "
 "than to put their slavery to an end. I can’t swim, so I won’t be able to "
@@ -1330,7 +1337,7 @@ msgstr ""
 "κάνω ότι μπορώ για να το ξεπληρώσω όταν θα έρθει η ώρα."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:755
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:758
 msgid ""
 "Well met, then, friend. I am Kai Krellis, leader of the people of Jotha."
 msgstr ""
@@ -1338,7 +1345,7 @@ msgstr ""
 "Γοργόνων της Τζόθα."
 
 #. [message]
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:770
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:773
 msgid ""
 "Kai Krellis, you have freed us, and we are forever in your debt. How can we "
 "repay you?"
@@ -1347,7 +1354,7 @@ msgstr ""
 "μπορούμε να σε αυχαριστήσουμε για το καλό που μας έκανες;"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:775
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:778
 msgid ""
 "I will not ask you to follow me. You have suffered enough for the benefit of "
 "others. Go back to your families if you have them, and work for yourselves "

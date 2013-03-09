@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-12-07 20:59+0100\n"
+"POT-Creation-Date: 2013-03-09 08:51+0100\n"
 "PO-Revision-Date: 2012-10-31 12:38+0200\n"
 "Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1252,7 +1252,7 @@ msgstr "Огорожа"
 #. [button]: id=close_window
 #. [button]: id=ok
 #: data/gui/default/widget/window_default.cfg:140
-#: data/gui/default/window/addon_filter_options.cfg:254
+#: data/gui/default/window/addon_filter_options.cfg:314
 #: data/gui/default/window/chat_log.cfg:121
 #: data/gui/default/window/gamestate_inspector.cfg:339
 #: data/gui/default/window/lobby_main.cfg:619
@@ -1288,9 +1288,17 @@ msgstr "Сервер:"
 msgid "Remove Add-ons"
 msgstr "Видалити аддони"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=help
+#. [button]: id=show_help
+#: data/gui/default/window/addon_connect.cfg:188
+#: data/gui/default/window/title_screen.cfg:179 src/hotkeys.cpp:210
+msgid "Help"
+msgstr "Довідка"
+
 #. [button]: id=ok
-#: data/gui/default/window/addon_connect.cfg:186
-#: data/gui/default/window/addon_connect.cfg:187
+#: data/gui/default/window/addon_connect.cfg:202
+#: data/gui/default/window/addon_connect.cfg:203
 #: data/gui/default/window/mp_connect.cfg:161
 #: data/gui/default/window/mp_connect.cfg:162
 msgid "Connect"
@@ -1298,7 +1306,7 @@ msgstr "Під'єднатись"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
-#: data/gui/default/window/addon_connect.cfg:201
+#: data/gui/default/window/addon_connect.cfg:217
 #: data/gui/default/window/addon_uninstall_list.cfg:174
 #: data/gui/default/window/campaign_dialog.cfg:439
 #: data/gui/default/window/campaign_difficulty.cfg:192
@@ -1449,14 +1457,21 @@ msgid "Add-ons matching the following criteria will be displayed."
 msgstr "Будуть показані аддони, що відповідають наступним критеріям."
 
 #. [label]
-#: data/gui/default/window/addon_filter_options.cfg:197
+#: data/gui/default/window/addon_filter_options.cfg:205
+msgid "Installation status:"
+msgstr "Стан встановлення:"
+
+#. [label]
+#: data/gui/default/window/addon_filter_options.cfg:248
 msgid "Add-on types:"
 msgstr "Типи аддонів:"
 
-#. [label]
-#: data/gui/default/window/addon_filter_options.cfg:209
-msgid "Installation status:"
-msgstr "Стан встановлення:"
+#. [button]: id=toggle_all_displayed_types
+#: data/gui/default/window/addon_filter_options.cfg:261
+#, fuzzy
+#| msgid "Toggle Ellipses"
+msgid "Toggle All"
+msgstr "Перемкнути багатокрапки"
 
 #. [label]
 #: data/gui/default/window/addon_uninstall_list.cfg:51
@@ -1473,7 +1488,7 @@ msgstr "Виберіть які аддони треба видалити."
 #. [button]: id=remove
 #: data/gui/default/window/addon_uninstall_list.cfg:161
 #: data/gui/default/window/mp_cmd_wrapper.cfg:200
-#: src/game_preferences_display.cpp:192
+#: src/game_preferences_display.cpp:190
 msgid "Remove"
 msgstr "Видалити"
 
@@ -1510,8 +1525,8 @@ msgstr "Грати кампанію"
 #: data/gui/default/window/unit_create.cfg:199
 #: data/gui/default/window/wml_message.cfg:485
 #: data/gui/default/window/wml_message.cfg:714 src/construct_dialog.cpp:122
-#: src/construct_dialog.cpp:129 src/gui/dialogs/message.cpp:163
-#: src/gui/dialogs/message.cpp:170
+#: src/construct_dialog.cpp:129 src/gui/dialogs/message.cpp:162
+#: src/gui/dialogs/message.cpp:169
 msgid "OK"
 msgstr "Гаразд"
 
@@ -1543,7 +1558,7 @@ msgstr "Остання"
 #. [button]: id=previous_page
 #. [button]: id=previous_tip
 #: data/gui/default/window/chat_log.cfg:79
-#: data/gui/default/window/title_screen.cfg:162
+#: data/gui/default/window/title_screen.cfg:195
 msgid "Previous"
 msgstr "Попередня"
 
@@ -1553,7 +1568,7 @@ msgstr "Попередня"
 #: data/gui/default/window/chat_log.cfg:89
 #: data/gui/default/window/editor_settings.cfg:79
 #: data/gui/default/window/editor_settings.cfg:80
-#: data/gui/default/window/title_screen.cfg:177
+#: data/gui/default/window/title_screen.cfg:210
 msgid "Next"
 msgstr "Наступна"
 
@@ -1778,7 +1793,7 @@ msgstr "Дозволити відкривати відразу декілька 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
 #: data/gui/default/window/editor_settings.cfg:272
-#: src/game_preferences_display.cpp:214
+#: src/game_preferences_display.cpp:212
 msgid "Apply"
 msgstr "Застосувати"
 
@@ -1853,7 +1868,7 @@ msgstr "Трейс виконання"
 #. [grid]
 #: data/gui/default/window/formula_debugger.cfg:234
 #: data/gui/default/window/lobby_main.cfg:660
-#: data/gui/default/window/title_screen.cfg:232 src/hotkeys.cpp:827
+#: data/gui/default/window/title_screen.cfg:265 src/hotkeys.cpp:827
 #: src/hotkeys.cpp:1173
 msgid "Quit"
 msgstr "Вийти"
@@ -1887,7 +1902,7 @@ msgstr "Не показувати знову"
 #: data/gui/default/window/game_save_overwrite.cfg:97
 #: data/gui/default/window/mp_depcheck_confirm_change.cfg:130
 #: data/gui/default/window/mp_host_game_prompt.cfg:105
-#: src/construct_dialog.cpp:125 src/gui/dialogs/message.cpp:177
+#: src/construct_dialog.cpp:125 src/gui/dialogs/message.cpp:176
 msgid "Yes"
 msgstr "Так"
 
@@ -1899,14 +1914,14 @@ msgstr "Так"
 #: data/gui/default/window/game_save_overwrite.cfg:111
 #: data/gui/default/window/mp_depcheck_confirm_change.cfg:144
 #: data/gui/default/window/mp_host_game_prompt.cfg:118
-#: src/construct_dialog.cpp:126 src/gui/dialogs/message.cpp:179
+#: src/construct_dialog.cpp:126 src/gui/dialogs/message.cpp:178
 msgid "No"
 msgstr "Ні"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_load.cfg:50
-#: src/gui/dialogs/mp_create_game.cpp:99 src/hotkeys.cpp:91
+#: src/gui/dialogs/mp_create_game.cpp:100 src/hotkeys.cpp:91
 msgid "Load Game"
 msgstr "Завантажити гру"
 
@@ -2010,7 +2025,7 @@ msgstr "Змінна"
 #. [grid]
 #. [label]
 #: data/gui/default/window/language_selection.cfg:41
-#: data/gui/default/window/title_screen.cfg:229
+#: data/gui/default/window/title_screen.cfg:262
 msgid "Language"
 msgstr "Мова"
 
@@ -2168,7 +2183,7 @@ msgstr "Надіслати"
 #. [button]: id=show_preferences
 #. [grid]
 #: data/gui/default/window/lobby_main.cfg:666
-#: data/gui/default/window/title_screen.cfg:230
+#: data/gui/default/window/title_screen.cfg:263
 #: src/game_preferences_display.cpp:64 src/hotkeys.cpp:104
 msgid "Preferences"
 msgstr "Параметри"
@@ -2478,7 +2493,7 @@ msgstr "Нагадувач паролю"
 #. [grid]
 #. [label]
 #: data/gui/default/window/mp_method_selection.cfg:39
-#: data/gui/default/window/title_screen.cfg:225
+#: data/gui/default/window/title_screen.cfg:258
 #: src/gui/dialogs/game_load.cpp:297
 msgid "Multiplayer"
 msgstr "Мультриплеєр"
@@ -2540,51 +2555,45 @@ msgstr "Адреса"
 msgid "Select"
 msgstr "Вибрати"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=help
-#: data/gui/default/window/title_screen.cfg:146 src/hotkeys.cpp:210
-msgid "Help"
-msgstr "Довідка"
-
-#. [button]: id=help
-#: data/gui/default/window/title_screen.cfg:147
+#: data/gui/default/window/title_screen.cfg:180
 msgid "Show Battle for Wesnoth help"
 msgstr "Показати довідку Battle for Wesnoth"
 
 #. [button]: id=previous_tip
-#: data/gui/default/window/title_screen.cfg:163
+#: data/gui/default/window/title_screen.cfg:196
 msgid "Show previous tip of the day"
 msgstr "Показати попередню пораду дня"
 
 #. [button]: id=next_tip
-#: data/gui/default/window/title_screen.cfg:178
+#: data/gui/default/window/title_screen.cfg:211
 msgid "Show next tip of the day"
 msgstr "Показати наступну пораду дня"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:223
+#: data/gui/default/window/title_screen.cfg:256
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Почати навчання щоб ознайомитися з грою"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:223
+#: data/gui/default/window/title_screen.cfg:256
 #: src/gui/dialogs/game_load.cpp:299
 msgid "Tutorial"
 msgstr "Посібник"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:224
+#: data/gui/default/window/title_screen.cfg:257
 msgid "Campaign"
 msgstr "Кампанія"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:224
+#: data/gui/default/window/title_screen.cfg:257
 msgid "Start a new single player campaign"
 msgstr "Почати нову кампанію одного гравця"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:225
+#: data/gui/default/window/title_screen.cfg:258
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
@@ -2593,57 +2602,57 @@ msgstr ""
 "проти комп'ютера"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:226
+#: data/gui/default/window/title_screen.cfg:259
 msgid "Load"
 msgstr "Завантажити"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:226
+#: data/gui/default/window/title_screen.cfg:259
 msgid "Load a saved game"
 msgstr "Завантажити збережену гру"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:227
+#: data/gui/default/window/title_screen.cfg:260
 msgid "Add-ons"
 msgstr "Аддони"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:227
+#: data/gui/default/window/title_screen.cfg:260
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr "Завантажити кампанії, ери, або пакунки карт"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:228
+#: data/gui/default/window/title_screen.cfg:261
 msgid "Map Editor"
 msgstr "Редактор карт"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:228
+#: data/gui/default/window/title_screen.cfg:261
 msgid "Start the map editor"
 msgstr "Запустити редактор карт"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:229
+#: data/gui/default/window/title_screen.cfg:262
 msgid "Change the language"
 msgstr "Змінити мову"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:230
+#: data/gui/default/window/title_screen.cfg:263
 msgid "Configure the game’s settings"
 msgstr "Налаштувати параметри гри"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:231
+#: data/gui/default/window/title_screen.cfg:264
 msgid "Credits"
 msgstr "Автори"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:231
+#: data/gui/default/window/title_screen.cfg:264
 msgid "View the credits"
 msgstr "Переглянути перелік авторів"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:232
+#: data/gui/default/window/title_screen.cfg:265
 msgid "Quit the game"
 msgstr "Вийти з гри"
 
@@ -2699,398 +2708,390 @@ msgstr "Помилка видалення файлу."
 msgid "Creation of the directory failed."
 msgstr "Помилка створення каталогу."
 
-#: src/game_preferences.cpp:329
+#: src/game_preferences.cpp:324
 msgid "No server has been defined."
 msgstr "Сервер не визначено."
 
-#: src/game_preferences.cpp:409
+#: src/game_preferences.cpp:404
 msgid "player"
 msgstr "гравець"
 
-#: src/game_preferences.cpp:901
+#: src/game_preferences.cpp:896
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/game_preferences.cpp:904
+#: src/game_preferences.cpp:899
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
-#: src/game_preferences_display.cpp:173
+#: src/game_preferences_display.cpp:172
 msgid "Full screen"
 msgstr "На весь екран"
 
-#: src/game_preferences_display.cpp:174
+#: src/game_preferences_display.cpp:173
 msgid "Accelerated speed"
 msgstr "Прискорити рух"
 
-#: src/game_preferences_display.cpp:175
+#: src/game_preferences_display.cpp:174
 msgid "Skip AI moves"
 msgstr "Пропускати ходи комп'ютера"
 
-#: src/game_preferences_display.cpp:176
+#: src/game_preferences_display.cpp:175
 msgid "Interrupt move when an ally is sighted"
 msgstr "Переривати рух, якщо помічений союзник"
 
-#: src/game_preferences_display.cpp:177
+#: src/game_preferences_display.cpp:176
 msgid "Show grid"
 msgstr "Показати сітку"
 
-#: src/game_preferences_display.cpp:178
+#: src/game_preferences_display.cpp:177
 msgid "Save replays at the end of scenarios"
 msgstr "Зберігати повтори в кінці сценарію"
 
-#: src/game_preferences_display.cpp:179
+#: src/game_preferences_display.cpp:178
 msgid "Delete auto-saves at the end of scenarios"
 msgstr "Видаляти автозбереження в кінці сценарію"
 
-#: src/game_preferences_display.cpp:180
+#: src/game_preferences_display.cpp:179
 msgid "Do not show lobby joins"
 msgstr "Не показувати підключення в фойє"
 
-#: src/game_preferences_display.cpp:181
+#: src/game_preferences_display.cpp:180
 msgid "Show lobby joins of friends only"
 msgstr "Показувати лише підключення друзів в фойє"
 
-#: src/game_preferences_display.cpp:182
+#: src/game_preferences_display.cpp:181
 msgid "Show all lobby joins"
 msgstr "Показувати усі підключення в фойє"
 
-#: src/game_preferences_display.cpp:183
-msgid "Use new lobby interface"
-msgstr "Використовувати новий інтерфейс фойє"
-
-#: src/game_preferences_display.cpp:184
+#: src/game_preferences_display.cpp:182
 msgid "Sort lobby list"
 msgstr "Сортувати список фойє"
 
-#: src/game_preferences_display.cpp:185
+#: src/game_preferences_display.cpp:183
 msgid "Iconize lobby list"
 msgstr "Значки в списку фойє"
 
-#: src/game_preferences_display.cpp:186
+#: src/game_preferences_display.cpp:184
 msgid "Save password to preferences (plain text)"
 msgstr "Зберігати пароль в налаштуваннях (простий текст)"
 
-#: src/game_preferences_display.cpp:187
+#: src/game_preferences_display.cpp:185
 msgid "Set Path to wesnothd"
 msgstr "Задати шлях до wesnothd"
 
-#: src/game_preferences_display.cpp:188
+#: src/game_preferences_display.cpp:186
 msgid "Friends List"
 msgstr "Перелік друзів"
 
-#: src/game_preferences_display.cpp:189
+#: src/game_preferences_display.cpp:187
 msgid "Multiplayer Options"
 msgstr "Параметри мультиплеєра"
 
-#: src/game_preferences_display.cpp:190
+#: src/game_preferences_display.cpp:188
 msgid "Add As Friend"
 msgstr "Додати до Друзів"
 
-#: src/game_preferences_display.cpp:191
+#: src/game_preferences_display.cpp:189
 msgid "Add As Ignore"
 msgstr "Додати до ігнору"
 
-#: src/game_preferences_display.cpp:193
+#: src/game_preferences_display.cpp:191
 msgid "Show floating labels"
 msgstr "Показувати плаваючі мітки"
 
-#: src/game_preferences_display.cpp:194
+#: src/game_preferences_display.cpp:192
 msgid "Turn dialog"
 msgstr "Вікно початку ходу"
 
-#: src/game_preferences_display.cpp:195
+#: src/game_preferences_display.cpp:193
 msgid "Enable planning mode on start"
 msgstr "Включити режим планування на початку гри"
 
-#: src/game_preferences_display.cpp:196
+#: src/game_preferences_display.cpp:194
 msgid "Hide allies’ plans by default"
 msgstr "За умовчанням не показувати плани союзників"
 
-#: src/game_preferences_display.cpp:197
+#: src/game_preferences_display.cpp:195
 msgid "Turn bell"
 msgstr "Сигнал початку ходу"
 
-#: src/game_preferences_display.cpp:198
+#: src/game_preferences_display.cpp:196
 msgid "Show team colors"
 msgstr "Показувати кольори команд"
 
-#: src/game_preferences_display.cpp:199
+#: src/game_preferences_display.cpp:197
 msgid "Show color cursors"
 msgstr "Включити кольорові курсори"
 
-#: src/game_preferences_display.cpp:200
+#: src/game_preferences_display.cpp:198
 msgid "Show haloing effects"
 msgstr "Включити ефекти свічення"
 
-#: src/game_preferences_display.cpp:201
+#: src/game_preferences_display.cpp:199
 msgid "Change Resolution"
 msgstr "Змінити розширення"
 
-#: src/game_preferences_display.cpp:202
+#: src/game_preferences_display.cpp:200
 msgid "Theme"
 msgstr "Тема"
 
-#: src/game_preferences_display.cpp:203
+#: src/game_preferences_display.cpp:201
 msgid "Hotkeys"
 msgstr "Гарячі клавіші"
 
-#: src/game_preferences_display.cpp:205
+#: src/game_preferences_display.cpp:203
 msgid "Sound effects"
 msgstr "Звукові ефекти"
 
-#: src/game_preferences_display.cpp:206
+#: src/game_preferences_display.cpp:204
 msgid "Music"
 msgstr "Музика"
 
-#: src/game_preferences_display.cpp:207
+#: src/game_preferences_display.cpp:205
 msgid "Chat timestamping"
 msgstr "Відмітка часу в чаті"
 
-#: src/game_preferences_display.cpp:208
+#: src/game_preferences_display.cpp:206
 msgid "sound^Advanced Options"
 msgstr "Додаткові параметри"
 
-#: src/game_preferences_display.cpp:209
+#: src/game_preferences_display.cpp:207
 msgid "sound^Standard Options"
 msgstr "Стандартні параметри"
 
-#: src/game_preferences_display.cpp:210
+#: src/game_preferences_display.cpp:208
 msgid "User interface sounds"
 msgstr "Звуки інтерфейсу користувача"
 
-#: src/game_preferences_display.cpp:213
+#: src/game_preferences_display.cpp:211
 msgid "Custom"
 msgstr "Нетипове"
 
-#: src/game_preferences_display.cpp:215
+#: src/game_preferences_display.cpp:213
 msgid "Show unit idle animations"
 msgstr "Анімувати бездіяльних бійців"
 
-#: src/game_preferences_display.cpp:216
+#: src/game_preferences_display.cpp:214
 msgid "Show unit standing animations"
 msgstr "Анімувати нерухомих бійців"
 
-#: src/game_preferences_display.cpp:217
+#: src/game_preferences_display.cpp:215
 msgid "Animate map"
 msgstr "Анімувати карту"
 
+#: src/game_preferences_display.cpp:217 src/game_preferences_display.cpp:218
 #: src/game_preferences_display.cpp:219 src/game_preferences_display.cpp:220
-#: src/game_preferences_display.cpp:221 src/game_preferences_display.cpp:222
 msgid "Volume:"
 msgstr "Гучність:"
 
-#: src/game_preferences_display.cpp:224
+#: src/game_preferences_display.cpp:222
 msgid "Scroll speed:"
 msgstr "Швидкість гортання:"
 
-#: src/game_preferences_display.cpp:227
+#: src/game_preferences_display.cpp:225
 msgid "Sample rate (Hz):"
 msgstr "Частота (Гц):"
 
-#: src/game_preferences_display.cpp:228
+#: src/game_preferences_display.cpp:226
 msgid "Frequency:"
 msgstr "Частота:"
 
-#: src/game_preferences_display.cpp:250
+#: src/game_preferences_display.cpp:248
 msgid "Sound effects on/off"
 msgstr "Звукові ефекти вкл/викл"
 
-#: src/game_preferences_display.cpp:254
+#: src/game_preferences_display.cpp:252
 msgid "Change the sound effects volume"
 msgstr "Змінити гучність звукових ефектів"
 
-#: src/game_preferences_display.cpp:257
+#: src/game_preferences_display.cpp:255
 msgid "Music on/off"
 msgstr "Музика вкл/викл"
 
-#: src/game_preferences_display.cpp:261
+#: src/game_preferences_display.cpp:259
 msgid "Change the music volume"
 msgstr "Змінити гучність музики"
 
-#: src/game_preferences_display.cpp:267
+#: src/game_preferences_display.cpp:265
 msgid "Change the bell volume"
 msgstr "Змінити гучність дзвону"
 
-#: src/game_preferences_display.cpp:270
+#: src/game_preferences_display.cpp:268
 msgid "Turn menu and button sounds on/off"
 msgstr "Ввімкнути/Вимкнути звуки меню і кнопок"
 
-#: src/game_preferences_display.cpp:274
+#: src/game_preferences_display.cpp:272
 msgid "Change the sound volume for button clicks, etc."
 msgstr "Змінити гучність звуку при натисненні на кнопки і т.д."
 
-#: src/game_preferences_display.cpp:276
+#: src/game_preferences_display.cpp:274
 msgid "Change the sample rate"
 msgstr "Змінити частоту звуку"
 
-#: src/game_preferences_display.cpp:285
+#: src/game_preferences_display.cpp:283
 msgid "User defined sample rate"
 msgstr "Користувацька частота звуку"
 
-#: src/game_preferences_display.cpp:294 src/game_preferences_display.cpp:298
+#: src/game_preferences_display.cpp:292 src/game_preferences_display.cpp:296
 msgid "Change the buffer size"
 msgstr "Змінити розмір буферу"
 
-#: src/game_preferences_display.cpp:296 src/game_preferences_display.cpp:895
+#: src/game_preferences_display.cpp:294 src/game_preferences_display.cpp:887
 msgid "Buffer size: "
 msgstr "Розмір буферу: "
 
-#: src/game_preferences_display.cpp:303
+#: src/game_preferences_display.cpp:301
 msgid "Change the speed of scrolling around the map"
 msgstr "Змінити швидкість прокручування карти"
 
-#: src/game_preferences_display.cpp:308 src/game_preferences_display.cpp:310
+#: src/game_preferences_display.cpp:306 src/game_preferences_display.cpp:308
 msgid "Set the amount of chat lines shown"
 msgstr "Задати кількість показуваних рядків в чаті"
 
-#: src/game_preferences_display.cpp:313
+#: src/game_preferences_display.cpp:311
 msgid "Add a timestamp to chat messages"
 msgstr "Додати відмітку часу для повідомлень в чаті"
 
-#: src/game_preferences_display.cpp:316
+#: src/game_preferences_display.cpp:314
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Виберіть режим гри: повноекранний або віконний"
 
-#: src/game_preferences_display.cpp:319
+#: src/game_preferences_display.cpp:317
 msgid "Make units move and fight faster"
 msgstr "Збільшити швидкість руху і битви"
 
-#: src/game_preferences_display.cpp:338
+#: src/game_preferences_display.cpp:336
 msgid "Units move and fight speed"
 msgstr "Швидкість руху бійців і битви"
 
-#: src/game_preferences_display.cpp:341
+#: src/game_preferences_display.cpp:339
 msgid "Play short random animations for idle units"
 msgstr "Програвати коротку випадкову анімацію для стоячих бійців"
 
-#: src/game_preferences_display.cpp:344
+#: src/game_preferences_display.cpp:342
 msgid "Continuously animate standing units in the battlefield"
 msgstr "Безперервно анімувати стоячих бійців на полі бою"
 
-#: src/game_preferences_display.cpp:347
+#: src/game_preferences_display.cpp:345
 msgid "Display animated terrain graphics"
 msgstr "Показувати анімацію місцевості"
 
-#: src/game_preferences_display.cpp:353
+#: src/game_preferences_display.cpp:351
 msgid "Set the frequency of unit idle animations"
 msgstr "Задати частоту анімації при бездіяльності"
 
-#: src/game_preferences_display.cpp:358
+#: src/game_preferences_display.cpp:356
 msgid "Set maximum number of automatic saves to be retained"
 msgstr "Встановити максимальну кількість автозбережень"
 
-#: src/game_preferences_display.cpp:362
+#: src/game_preferences_display.cpp:360
 msgid "Do not animate AI units moving"
 msgstr "Не анімувати рух комп'ютерних бійців"
 
-#: src/game_preferences_display.cpp:365
+#: src/game_preferences_display.cpp:363
 msgid "Sighting an allied unit interrupts your unit’s movement"
 msgstr "Перервати рух вашого бійця при зустрічі з дружнім бійцем"
 
-#: src/game_preferences_display.cpp:368
+#: src/game_preferences_display.cpp:366
 msgid ""
 "Saves replays of games on victory in all modes and defeat in multiplayer"
 msgstr ""
 "Зберігає повтори ігор при перемозі в усіх режимах і при поразці в "
 "мультирлеєрі"
 
-#: src/game_preferences_display.cpp:371
+#: src/game_preferences_display.cpp:369
 msgid ""
 "Deletes previous auto-saves on victory in all modes and defeat in multiplayer"
 msgstr "Видаляти попередні автозбер. при перемозі (ОГ/МП) і поразці (лише МП)"
 
-#: src/game_preferences_display.cpp:373
+#: src/game_preferences_display.cpp:371
 msgid "Overlay a grid onto the map"
 msgstr "Показувати сітку на карті"
 
-#: src/game_preferences_display.cpp:376
+#: src/game_preferences_display.cpp:374
 msgid "Sort the player list in the lobby by player groups"
 msgstr "Сортувати список гравців в фойє по групах"
 
-#: src/game_preferences_display.cpp:379
+#: src/game_preferences_display.cpp:377
 msgid "Show icons in front of the player names in the lobby"
 msgstr "Показувати значки напроти гравців в фойє"
 
-#: src/game_preferences_display.cpp:382
+#: src/game_preferences_display.cpp:380
 msgid "Uncheck to delete the saved password (on exit)"
 msgstr "Вимкніть, щоб видалити збережений пароль (при виході)"
 
-#: src/game_preferences_display.cpp:386
+#: src/game_preferences_display.cpp:384
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr "Не показувати повідомлення про гравців, що зайшли в фойє"
 
-#: src/game_preferences_display.cpp:388
+#: src/game_preferences_display.cpp:386
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr "Показувати повідомлення про друзів, що зайшли в фойє"
 
-#: src/game_preferences_display.cpp:390
+#: src/game_preferences_display.cpp:388
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "Показувати повідомлення про всіх гравців, що зайшли в фойє"
 
-#: src/game_preferences_display.cpp:393
-msgid "Use New Lobby Interface"
-msgstr "Використовувати новий інтерфейс фойє"
-
-#: src/game_preferences_display.cpp:395
+#: src/game_preferences_display.cpp:390
 msgid "Find and set path to MP server to host LAN games"
 msgstr ""
 "Знайти і вказати шлях до МП-сервера, який буде хостити ігри в локальній "
 "мережі"
 
-#: src/game_preferences_display.cpp:396
+#: src/game_preferences_display.cpp:391
 msgid "View and edit your friends and ignores list"
 msgstr "Перегляд і зміна вашого списку друзів і ігнорованих"
 
-#: src/game_preferences_display.cpp:397
+#: src/game_preferences_display.cpp:392
 msgid "Back to the multiplayer options"
 msgstr "Назад до параметрів мультиплеєру"
 
-#: src/game_preferences_display.cpp:398
+#: src/game_preferences_display.cpp:393
 msgid "Add this username to your friends list"
 msgstr "Додати гравця в список друзів"
 
-#: src/game_preferences_display.cpp:399
+#: src/game_preferences_display.cpp:394
 msgid "Add this username to your ignores list"
 msgstr "Додати гравця в список ігнорованих"
 
-#: src/game_preferences_display.cpp:400
+#: src/game_preferences_display.cpp:395
 msgid "Remove this username from your list"
 msgstr "Видалити цього гравця із списку"
 
-#: src/game_preferences_display.cpp:403
+#: src/game_preferences_display.cpp:398
 msgid "Insert a username"
 msgstr "Вставити ім'я користувача"
 
-#: src/game_preferences_display.cpp:406
+#: src/game_preferences_display.cpp:401
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr "При попаданні показувати над бійцем нанесені йому пошкодження"
 
-#: src/game_preferences_display.cpp:408
+#: src/game_preferences_display.cpp:403
 msgid "Change the resolution the game runs at"
 msgstr "Змінити розширення гри, запущеної в"
 
-#: src/game_preferences_display.cpp:409
+#: src/game_preferences_display.cpp:404
 msgid "Change the theme the game runs with"
 msgstr "Змінити тему гри, запущеної з"
 
-#: src/game_preferences_display.cpp:412
+#: src/game_preferences_display.cpp:407
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Показувати діалог на початку вашого ходу"
 
-#: src/game_preferences_display.cpp:415
+#: src/game_preferences_display.cpp:410
 msgid "Activates Planning Mode on game start"
 msgstr "Активує режим планування при старті гри"
 
-#: src/game_preferences_display.cpp:418
+#: src/game_preferences_display.cpp:413
 msgid "Hides allies’ Planning Mode plans in multiplayer games"
 msgstr "Не показувати плани союзників в мультиплеєрі"
 
-#: src/game_preferences_display.cpp:421
+#: src/game_preferences_display.cpp:416
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Програвати звук дзвону на початку вашого ходу"
 
-#: src/game_preferences_display.cpp:424
+#: src/game_preferences_display.cpp:419
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -3098,123 +3099,123 @@ msgstr ""
 "Показувати кольорові круги навколо кожного бійця, щоб розрізняти, хто на "
 "чиїй стороні"
 
-#: src/game_preferences_display.cpp:427
+#: src/game_preferences_display.cpp:422
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Використовувати кольорові курсори мишки (може уповільнити гру)"
 
-#: src/game_preferences_display.cpp:430
+#: src/game_preferences_display.cpp:425
 msgid "Use graphical special effects (may be slower)"
 msgstr "Використовувати графічні ефекти (може уповільнити гру)"
 
-#: src/game_preferences_display.cpp:432
+#: src/game_preferences_display.cpp:427
 msgid "View and configure keyboard shortcuts"
 msgstr "Перегляд і налаштування гарячих клавіш"
 
-#: src/game_preferences_display.cpp:759
+#: src/game_preferences_display.cpp:751
 msgid "Speed: "
 msgstr "Швидкість: "
 
-#: src/game_preferences_display.cpp:764 src/game_preferences_display.cpp:766
+#: src/game_preferences_display.cpp:756 src/game_preferences_display.cpp:758
 msgid "Maximum auto-saves: "
 msgstr "Макс. к-сть автозбережень: "
 
-#: src/game_preferences_display.cpp:764
+#: src/game_preferences_display.cpp:756
 msgid "infinite"
 msgstr "необмежено"
 
-#: src/game_preferences_display.cpp:949
+#: src/game_preferences_display.cpp:939
 msgid "Chat lines: "
 msgstr "Рядки чату: "
 
-#: src/game_preferences_display.cpp:971 src/game_preferences_display.cpp:979
+#: src/game_preferences_display.cpp:961 src/game_preferences_display.cpp:969
 msgid "Invalid username"
 msgstr "Невірне ім'я користувача"
 
-#: src/game_preferences_display.cpp:1082
+#: src/game_preferences_display.cpp:1072
 msgid "yes"
 msgstr "так"
 
-#: src/game_preferences_display.cpp:1084
+#: src/game_preferences_display.cpp:1074
 msgid "no"
 msgstr "ні"
 
-#: src/game_preferences_display.cpp:1118
+#: src/game_preferences_display.cpp:1108
 msgid "friend"
 msgstr "друг"
 
-#: src/game_preferences_display.cpp:1124
+#: src/game_preferences_display.cpp:1114
 msgid "ignored"
 msgstr "ігнорується"
 
-#: src/game_preferences_display.cpp:1128
+#: src/game_preferences_display.cpp:1118
 msgid "(empty list)"
 msgstr "(порожній список)"
 
-#: src/game_preferences_display.cpp:1253
+#: src/game_preferences_display.cpp:1242
 #: src/hotkey_preferences_display.cpp:215
 msgid "Prefs section^General"
 msgstr "Загальні"
 
-#: src/game_preferences_display.cpp:1254
+#: src/game_preferences_display.cpp:1243
 msgid "Prefs section^Display"
 msgstr "Дисплей"
 
-#: src/game_preferences_display.cpp:1255
+#: src/game_preferences_display.cpp:1244
 msgid "Prefs section^Sound"
 msgstr "Звук"
 
-#: src/game_preferences_display.cpp:1256
+#: src/game_preferences_display.cpp:1245
 msgid "Prefs section^Multiplayer"
 msgstr "МУльтиплеєр"
 
-#: src/game_preferences_display.cpp:1257
+#: src/game_preferences_display.cpp:1246
 msgid "Advanced section^Advanced"
 msgstr "Додатково"
 
-#: src/game_preferences_display.cpp:1291
+#: src/game_preferences_display.cpp:1280
 msgid "Choose Theme"
 msgstr "Виберіть тему"
 
-#: src/game_preferences_display.cpp:1306
+#: src/game_preferences_display.cpp:1295
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Нова тема буде задіяна при наступній новій або завантаженій грі."
 
-#: src/game_preferences_display.cpp:1310
+#: src/game_preferences_display.cpp:1299
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Невідома тема. Спробуйте поміняти в існуючій грі."
 
-#: src/game_preferences_display.cpp:1353
+#: src/game_preferences_display.cpp:1342
 msgid "Find $filename server binary to host networked games"
 msgstr "Знайти сервер $filename, на якому будуть хоститься мережеві ігри"
 
-#: src/gui/auxiliary/canvas.cpp:611
+#: src/gui/auxiliary/canvas.cpp:610
 msgid "Line doesn't fit on canvas."
 msgstr "Лінія не поміщається на підкладці."
 
-#: src/gui/auxiliary/canvas.cpp:750
+#: src/gui/auxiliary/canvas.cpp:749
 msgid "Rectangle doesn't fit on canvas."
 msgstr "Прямокутник не поміщається на підкладці."
 
-#: src/gui/auxiliary/canvas.cpp:883 src/gui/auxiliary/canvas.cpp:888
-#: src/gui/auxiliary/canvas.cpp:893 src/gui/auxiliary/canvas.cpp:899
+#: src/gui/auxiliary/canvas.cpp:882 src/gui/auxiliary/canvas.cpp:887
+#: src/gui/auxiliary/canvas.cpp:892 src/gui/auxiliary/canvas.cpp:898
 msgid "Circle doesn't fit on canvas."
 msgstr "Круг не поміщається на підкладці."
 
-#: src/gui/auxiliary/canvas.cpp:1085 src/gui/auxiliary/canvas.cpp:1092
-#: src/gui/auxiliary/canvas.cpp:1102 src/gui/auxiliary/canvas.cpp:1109
+#: src/gui/auxiliary/canvas.cpp:1084 src/gui/auxiliary/canvas.cpp:1091
+#: src/gui/auxiliary/canvas.cpp:1101 src/gui/auxiliary/canvas.cpp:1108
 msgid "Image doesn't fit on canvas."
 msgstr "Картинка не поміщається на підкладці."
 
-#: src/gui/auxiliary/canvas.cpp:1321
+#: src/gui/auxiliary/canvas.cpp:1320
 msgid "Text has a font size of 0."
 msgstr "Розмір шрифту тексту 0."
 
-#: src/gui/auxiliary/canvas.cpp:1391
+#: src/gui/auxiliary/canvas.cpp:1390
 msgid "Text doesn't start on canvas."
 msgstr "Початок тексту за межами підкладки."
 
 #: src/gui/auxiliary/widget_definition.cpp:147
-#: src/gui/auxiliary/window_builder.cpp:264
+#: src/gui/auxiliary/window_builder.cpp:258
 msgid "No resolution defined."
 msgstr "Розширення не визначене."
 
@@ -3224,26 +3225,26 @@ msgstr "Розширення не визначене."
 #: src/gui/auxiliary/widget_definition/scrollbar_panel.cpp:68
 #: src/gui/auxiliary/widget_definition/stacked_widget.cpp:64
 #: src/gui/auxiliary/widget_definition/tree_view.cpp:69
-#: src/gui/auxiliary/window_builder.cpp:395
+#: src/gui/auxiliary/window_builder.cpp:389
 #: src/gui/auxiliary/window_builder/panel.cpp:36
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:39
 msgid "No grid defined."
 msgstr "Сітка не визначена."
 
-#: src/gui/auxiliary/window_builder.cpp:100
+#: src/gui/auxiliary/window_builder.cpp:99
 msgid "Linked '$id' group has multiple definitions."
 msgstr "Пов'язана група '$id' визначена більше одного разу."
 
-#: src/gui/auxiliary/window_builder.cpp:426
+#: src/gui/auxiliary/window_builder.cpp:420
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
 "Пов'язаній групі '$id' потрібний ключ 'fixed_width' або 'fixed_height'."
 
-#: src/gui/auxiliary/window_builder.cpp:541
+#: src/gui/auxiliary/window_builder.cpp:533
 msgid "A row must have a column."
 msgstr "У рядка має бути стовпець."
 
-#: src/gui/auxiliary/window_builder.cpp:542
+#: src/gui/auxiliary/window_builder.cpp:534
 msgid "Number of columns differ."
 msgstr "Кількість стовпців відрізняється."
 
@@ -3251,26 +3252,26 @@ msgstr "Кількість стовпців відрізняється."
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr "Знайдений елемент керування з підказкою але без спливаючої підказки."
 
-#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:48
-#: src/gui/auxiliary/window_builder/listbox.cpp:62
+#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:47
+#: src/gui/auxiliary/window_builder/listbox.cpp:61
 #: src/gui/auxiliary/window_builder/scrollbar_panel.cpp:42
 msgid "No list defined."
 msgstr "Список не визначений."
 
-#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:52
-#: src/gui/auxiliary/window_builder/listbox.cpp:66
+#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:51
+#: src/gui/auxiliary/window_builder/listbox.cpp:65
 msgid "A 'list_definition' should contain one row."
 msgstr "У 'list_definition' має бути один рядок."
 
-#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:68
-#: src/gui/auxiliary/window_builder/listbox.cpp:85
-#: src/gui/auxiliary/window_builder/multi_page.cpp:62
+#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:67
+#: src/gui/auxiliary/window_builder/listbox.cpp:84
+#: src/gui/auxiliary/window_builder/multi_page.cpp:61
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 "'list_data' повинен містити стільки ж стовпців, скільки і 'list_definition'."
 
-#: src/gui/auxiliary/window_builder/multi_page.cpp:40
+#: src/gui/auxiliary/window_builder/multi_page.cpp:39
 msgid "No page defined."
 msgstr "Сторінка не визначена."
 
@@ -3278,91 +3279,91 @@ msgstr "Сторінка не визначена."
 msgid "Need at least 1 parallel item."
 msgstr "Потрібен принаймні 1 паралельний елемент."
 
-#: src/gui/auxiliary/window_builder/slider.cpp:67
+#: src/gui/auxiliary/window_builder/slider.cpp:66
 msgid "The number of value_labels and values don't match."
 msgstr "Кількості value_labels і values не співпадають."
 
-#: src/gui/auxiliary/window_builder/stacked_widget.cpp:38
+#: src/gui/auxiliary/window_builder/stacked_widget.cpp:37
 msgid "No stack defined."
 msgstr "Стек не визначений."
 
-#: src/gui/auxiliary/window_builder/tree_view.cpp:47
+#: src/gui/auxiliary/window_builder/tree_view.cpp:46
 msgid "No nodes defined for a tree view."
 msgstr "У дереві не визначені вузли."
 
-#: src/gui/auxiliary/window_builder/tree_view.cpp:87
+#: src/gui/auxiliary/window_builder/tree_view.cpp:86
 msgid "[node]id 'root' is reserved for the implementation."
 msgstr "[вузол]назва 'root' зарезервована."
 
-#: src/gui/auxiliary/window_builder/tree_view.cpp:91
+#: src/gui/auxiliary/window_builder/tree_view.cpp:90
 msgid "No node defined."
 msgstr "Вузли не визначені."
 
-#: src/gui/dialogs/addon/description.cpp:49
+#: src/gui/dialogs/addon/description.cpp:48
 msgid "addon_state^Not installed"
 msgstr "Не встановлений"
 
-#: src/gui/dialogs/addon/description.cpp:51
+#: src/gui/dialogs/addon/description.cpp:50
 msgid "addon_state^Published, not installed"
 msgstr "Опублікований, не встановлений"
 
-#: src/gui/dialogs/addon/description.cpp:57
+#: src/gui/dialogs/addon/description.cpp:56
 msgid "addon_state^Installed"
 msgstr "Встановлений"
 
-#: src/gui/dialogs/addon/description.cpp:59
+#: src/gui/dialogs/addon/description.cpp:58
 msgid "addon_state^Published"
 msgstr "Опублкований"
 
-#: src/gui/dialogs/addon/description.cpp:66
+#: src/gui/dialogs/addon/description.cpp:65
 msgid "addon_state^Installed, not tracking local version"
 msgstr "Встановлений, не відслідкована локальна версія"
 
-#: src/gui/dialogs/addon/description.cpp:70
+#: src/gui/dialogs/addon/description.cpp:69
 msgid "addon_state^Published, not tracking local version"
 msgstr "Опублікований, не відслідкована локальна версія"
 
-#: src/gui/dialogs/addon/description.cpp:78
+#: src/gui/dialogs/addon/description.cpp:77
 msgid "addon_state^Installed ($local_version|), upgradable"
 msgstr "Встановлений ($local_version|), оновлюваний"
 
-#: src/gui/dialogs/addon/description.cpp:79
+#: src/gui/dialogs/addon/description.cpp:78
 msgid "addon_state^Published ($local_version| installed), upgradable"
 msgstr "Опублікований ($local_version| встановлений), оновлюваний"
 
-#: src/gui/dialogs/addon/description.cpp:88
+#: src/gui/dialogs/addon/description.cpp:87
 msgid "addon_state^Installed ($local_version|), outdated on server"
 msgstr "Встановлений ($local_version|), застарілий на сервері"
 
-#: src/gui/dialogs/addon/description.cpp:89
+#: src/gui/dialogs/addon/description.cpp:88
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr "Опублікований ($local_version| встановлений), застарілий на сервері"
 
-#: src/gui/dialogs/addon/description.cpp:97
+#: src/gui/dialogs/addon/description.cpp:96
 msgid "addon_state^Installed, broken"
 msgstr "Встановлений, зламаний"
 
-#: src/gui/dialogs/addon/description.cpp:99
+#: src/gui/dialogs/addon/description.cpp:98
 msgid "addon_state^Published, broken"
 msgstr "Опублікований, зламаний"
 
-#: src/gui/dialogs/addon/description.cpp:105
+#: src/gui/dialogs/addon/description.cpp:104
 msgid "addon_state^Unknown"
 msgstr "Невідомо"
 
-#: src/gui/dialogs/addon/filter_options.cpp:109
+#: src/gui/dialogs/addon/filter_options.cpp:142
 msgid "addons_view^Not Installed"
 msgstr "Не встановлений"
 
-#: src/gui/dialogs/addon/filter_options.cpp:111
+#: src/gui/dialogs/addon/filter_options.cpp:144
 msgid "addons_view^Upgradable"
 msgstr "Оновлюваний"
 
-#: src/gui/dialogs/addon/filter_options.cpp:113
+#: src/gui/dialogs/addon/filter_options.cpp:146
 msgid "addons_view^Installed"
 msgstr "Встановлений"
 
-#: src/gui/dialogs/addon/filter_options.cpp:115
+#: src/gui/dialogs/addon/filter_options.cpp:148
 msgid "addons_view^All Add-ons"
 msgstr "Всі аддони"
 
@@ -3408,19 +3409,19 @@ msgstr "Версія: "
 msgid "whisper to $receiver"
 msgstr "шепотіти користувачеві $receiver"
 
-#: src/gui/dialogs/lobby_main.cpp:662
+#: src/gui/dialogs/lobby_main.cpp:661
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Ігри: показано $num_shown з $num_total"
 
-#: src/gui/dialogs/lobby_main.cpp:705
+#: src/gui/dialogs/lobby_main.cpp:704
 msgid "Observers allowed"
 msgstr "Спостереження дозволене"
 
-#: src/gui/dialogs/lobby_main.cpp:708
+#: src/gui/dialogs/lobby_main.cpp:707
 msgid "Observers not allowed"
 msgstr "Спостереження не дозволене"
 
-#: src/gui/dialogs/lobby_main.cpp:1107
+#: src/gui/dialogs/lobby_main.cpp:1106
 msgid ""
 "Whisper session with $name started. If you don’t want to receive messages "
 "from this user, type /ignore $name\n"
@@ -3428,31 +3429,31 @@ msgstr ""
 "Відкрився приватний чат з $name. Якщо Ви не хочете отримувати повідомлення "
 "від цього користувача, наберіть /ignore $name\n"
 
-#: src/gui/dialogs/lobby_main.cpp:1113
+#: src/gui/dialogs/lobby_main.cpp:1112
 msgid "Room $name joined"
 msgstr "Зайшли в кімнату $name"
 
-#: src/gui/dialogs/lobby_main.cpp:1420
+#: src/gui/dialogs/lobby_main.cpp:1419
 msgid "$player has entered the room"
 msgstr "$player увійшов до кімнати"
 
-#: src/gui/dialogs/lobby_main.cpp:1458
+#: src/gui/dialogs/lobby_main.cpp:1457
 msgid "$player has left the room"
 msgstr "$player вийшов з кімнати"
 
-#: src/gui/dialogs/lobby_main.cpp:1571
+#: src/gui/dialogs/lobby_main.cpp:1570
 msgid "Password Required"
 msgstr "Потрібний пароль"
 
-#: src/gui/dialogs/lobby_main.cpp:1572
+#: src/gui/dialogs/lobby_main.cpp:1571
 msgid "Joining this game requires a password."
 msgstr "Щоб приєднатися до гри, потрібний пароль."
 
-#: src/gui/dialogs/lobby_main.cpp:1573
+#: src/gui/dialogs/lobby_main.cpp:1572
 msgid "Password: "
 msgstr "Пароль: "
 
-#: src/gui/dialogs/message.cpp:191 src/gui/dialogs/transient_message.cpp:62
+#: src/gui/dialogs/message.cpp:190 src/gui/dialogs/transient_message.cpp:62
 msgid "Error"
 msgstr "Помилка"
 
@@ -3460,7 +3461,7 @@ msgstr "Помилка"
 msgid "Side $side"
 msgstr "Сторона $side"
 
-#: src/gui/dialogs/mp_create_game.cpp:100
+#: src/gui/dialogs/mp_create_game.cpp:101
 msgid "Load Game..."
 msgstr "Завантажити гру..."
 
@@ -3508,16 +3509,16 @@ msgstr "Версія"
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Обов'язковий віджет '$id' не визначений."
 
-#: src/gui/widgets/settings.cpp:441
+#: src/gui/widgets/settings.cpp:433
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "Опис виджетів '$definition' не містить опису для '$id'."
 
-#: src/gui/widgets/settings.cpp:508
+#: src/gui/widgets/settings.cpp:500
 msgid "No default gui defined."
 msgstr "Типовий GUI не визначений."
 
-#: src/gui/widgets/settings.cpp:538
+#: src/gui/widgets/settings.cpp:530
 msgid "No state or draw section defined."
 msgstr "Не визначений стан або секція відмальовки."
 
@@ -3525,12 +3526,12 @@ msgstr "Не визначений стан або секція відмальо�
 msgid "Unknown builder id for tree view node."
 msgstr "Невідомий id конструктора для вузла в деревовидній структурі."
 
-#: src/gui/widgets/window.cpp:975
+#: src/gui/widgets/window.cpp:1009
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Закриття по кліку вимагає кнопки \"click_dismiss\" або \"ok\"."
 
-#: src/gui/widgets/window.cpp:1000 src/gui/widgets/window.cpp:1040
-#: src/tests/gui/test_gui2.cpp:445
+#: src/gui/widgets/window.cpp:1034 src/gui/widgets/window.cpp:1074
+#: src/tests/gui/test_gui2.cpp:433
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Не можу показати діалог, він не поміщається на екрані."
 
@@ -3547,8 +3548,10 @@ msgid "Hotkey Settings"
 msgstr "Параметри гарячих клавіш"
 
 #: src/hotkey_preferences_display.cpp:170
-msgid "Reset Defaults"
-msgstr "Скинути типові"
+#, fuzzy
+#| msgid "Default"
+msgid "Defaults"
+msgstr "Типово"
 
 #: src/hotkey_preferences_display.cpp:173
 msgid "Reset all bindings to the default values"
@@ -4239,7 +4242,7 @@ msgstr "Знімок зроблено"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/image.cpp:425
+#: src/image.cpp:422
 msgid "language code for localized resources^en_US"
 msgstr "uk,ru"
 
@@ -4329,7 +4332,7 @@ msgid ""
 "affected terrain is :"
 msgstr "Знайдена місцевість з рядком із понад 4 символів, це :"
 
-#: src/text.cpp:754
+#: src/text.cpp:735
 msgid "The text contains invalid markup: "
 msgstr "Текст містить неприпустиму розмітку: "
 
@@ -4371,6 +4374,15 @@ msgid ""
 msgstr ""
 "Клавіша '$deprecated_key' перейменована в '$key'. Вона буде видалена у "
 "версії $removal_version."
+
+#~ msgid "Use new lobby interface"
+#~ msgstr "Використовувати новий інтерфейс фойє"
+
+#~ msgid "Use New Lobby Interface"
+#~ msgstr "Використовувати новий інтерфейс фойє"
+
+#~ msgid "Reset Defaults"
+#~ msgstr "Скинути типові"
 
 #~ msgid "Change Hotkey"
 #~ msgstr "Змінити"

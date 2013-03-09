@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.10\n"
-"POT-Creation-Date: 2012-08-18 09:40+0300\n"
+"POT-Creation-Date: 2013-03-09 08:50+0100\n"
 "PO-Revision-Date: 2012-02-19 14:15+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
@@ -27,8 +27,8 @@ msgstr "WESNOTH"
 #. type: TH
 #: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
 #, no-wrap
-msgid "2011"
-msgstr "2011"
+msgid "2013"
+msgstr ""
 
 #. type: TH
 #: ../../doc/man/wesnoth.6:16
@@ -721,11 +721,22 @@ msgstr ""
 #. type: TP
 #: ../../doc/man/wesnoth.6:254
 #, no-wrap
+msgid "B<--ignore-map-settings>"
+msgstr ""
+
+#. type: Plain text
+#: ../../doc/man/wesnoth.6:257
+msgid "do not use map settings, use default values instead."
+msgstr ""
+
+#. type: TP
+#: ../../doc/man/wesnoth.6:257
+#, no-wrap
 msgid "B<--nogui>"
 msgstr "B<--nogui>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:259
+#: ../../doc/man/wesnoth.6:262
 msgid ""
 "runs the game without the GUI. Must appear before B<--multiplayer> to have "
 "the desired effect."
@@ -734,13 +745,13 @@ msgstr ""
 "有效。"
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:259
+#: ../../doc/man/wesnoth.6:262
 #, no-wrap
 msgid "B<--parm>I<number>B<=>I<name>B<:>I<value>"
 msgstr "B<--parm>I<number>B<=>I<name>B<:>I<value>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:268
+#: ../../doc/man/wesnoth.6:271
 msgid ""
 "sets additional parameters for this side. This parameter depends on the "
 "options used with B<--controller> and B<--algorithm>.  It should only be "
@@ -750,26 +761,26 @@ msgstr ""
 "况。这个选项应该只对自己设计AI的人比较有用。（目前还没有完整的文档）"
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:268
+#: ../../doc/man/wesnoth.6:271
 #, no-wrap
 msgid "B<--scenario=>I<value>"
 msgstr "B<--scenario=>I<value>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:272
+#: ../../doc/man/wesnoth.6:275
 msgid ""
 "selects a multiplayer scenario by id. The default scenario id is "
 "B<multiplayer_The_Freelands>."
 msgstr "通过id选择多人游戏地图。默认地图id是B<multiplayer_The_Freelands>。"
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:272
+#: ../../doc/man/wesnoth.6:275
 #, no-wrap
 msgid "B<--side>I<number>B<=>I<value>"
 msgstr "B<--side>I<number>B<=>I<value>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:277
+#: ../../doc/man/wesnoth.6:280
 msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
 "an id. Factions are described in the data/multiplayer.cfg file."
@@ -778,24 +789,24 @@ msgstr ""
 "multiplayer.cfg文件中描述。"
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:277
+#: ../../doc/man/wesnoth.6:280
 #, no-wrap
 msgid "B<--turns=>I<value>"
 msgstr "B<--turns=>I<value>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:281
+#: ../../doc/man/wesnoth.6:284
 msgid "sets the number of turns for the chosen scenario. The default is B<50>."
 msgstr "设置所选场景的回合数限制。默认值为B<50>。"
 
 #. type: SH
-#: ../../doc/man/wesnoth.6:282 ../../doc/man/wesnothd.6:265
+#: ../../doc/man/wesnoth.6:285 ../../doc/man/wesnothd.6:265
 #, no-wrap
 msgid "EXIT STATUS"
 msgstr "退出状态码"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:285
+#: ../../doc/man/wesnoth.6:288
 msgid ""
 "Normal exit status is 0. An exit status of 1 indicates an (SDL, video, "
 "fonts, etc) initialization error. An exit status of 2 indicates an error "
@@ -805,18 +816,18 @@ msgstr ""
 "码2代表命令行选项中有错误。"
 
 #. type: SH
-#: ../../doc/man/wesnoth.6:286 ../../doc/man/wesnothd.6:269
+#: ../../doc/man/wesnoth.6:289 ../../doc/man/wesnothd.6:269
 #, no-wrap
 msgid "AUTHOR"
 msgstr "作者"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:289
+#: ../../doc/man/wesnoth.6:292
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
 msgstr "由David White E<lt>davidnwhite@verizon.netE<gt> 编写。"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:291
+#: ../../doc/man/wesnoth.6:294
 msgid ""
 "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
 "netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
@@ -825,32 +836,35 @@ msgstr ""
 "和 Soliton E<lt>soliton.de@gmail.comE<gt> 编辑。"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:293
+#: ../../doc/man/wesnoth.6:296
 msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
 msgstr "这个手册页最初由 Cyril Bouthors E<lt>cyril@bouthors.orgE<gt> 编写。"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:295 ../../doc/man/wesnothd.6:276
+#: ../../doc/man/wesnoth.6:298 ../../doc/man/wesnothd.6:276
 msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgstr ""
 "请访问官方主页：http://www.wesnoth.org/\n"
 "以及Wesnoth中文爱好者主页：http://www.wesnoth.cn"
 
 #. type: SH
-#: ../../doc/man/wesnoth.6:296 ../../doc/man/wesnothd.6:277
+#: ../../doc/man/wesnoth.6:299 ../../doc/man/wesnothd.6:277
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "版权"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:299 ../../doc/man/wesnothd.6:280
-msgid "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
+#: ../../doc/man/wesnoth.6:302 ../../doc/man/wesnothd.6:280
+#, fuzzy
+#| msgid ""
+#| "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
+msgid "Copyright \\(co 2003-2013 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr "版权所有 \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:302 ../../doc/man/wesnothd.6:283
+#: ../../doc/man/wesnoth.6:305 ../../doc/man/wesnothd.6:283
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -861,13 +875,13 @@ msgstr ""
 "文翻译不具有法律效力，只有GPL英文原本才具有法律效力。"
 
 #. type: SH
-#: ../../doc/man/wesnoth.6:303 ../../doc/man/wesnothd.6:284
+#: ../../doc/man/wesnoth.6:306 ../../doc/man/wesnothd.6:284
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "参见"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:305
+#: ../../doc/man/wesnoth.6:308
 msgid "B<wesnothd>(6)."
 msgstr "B<wesnothd>(6)."
 
@@ -1324,8 +1338,8 @@ msgid ""
 msgstr ""
 "希望使用的用户信息处理器的名称。目前可选的有B<forum>（将wesnothd与phpbb论坛的"
 "数据库连接起来）和B<sample>（一个用户信息处理接口的样例实现，如果您真的在实际"
-"中使用它，那您一定是疯了）。默认值是B<forum>，同时您必须添加一个B<"
-"[user_handler]>小节，请看下面。"
+"中使用它，那您一定是疯了）。默认值是B<forum>，同时您必须添加一个"
+"B<[user_handler]>小节，请看下面。"
 
 #. type: SS
 #: ../../doc/man/wesnothd.6:174
@@ -1432,9 +1446,9 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:221
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
-"on which user handler is set with the B<user_handler> key. If no B<"
-"[user_handler]> section is present in the configuration the server will run "
-"without any nick registration service."
+"on which user handler is set with the B<user_handler> key. If no "
+"B<[user_handler]> section is present in the configuration the server will "
+"run without any nick registration service."
 msgstr ""
 "B<[user_handler]> 配置用户数据处理器。可设置的主键取决于通过B<user_handler>设"
 "置的用户数据处理器是哪一个。如果配置文件中没有B<[user_handler]>小节，则服务器"
@@ -1626,3 +1640,6 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:286
 msgid "B<wesnoth>(6)."
 msgstr "B<wesnoth>(6)."
+
+#~ msgid "2011"
+#~ msgstr "2011"

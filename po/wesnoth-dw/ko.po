@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-10-27 15:56+0200\n"
+"POT-Creation-Date: 2013-03-09 08:51+0100\n"
 "PO-Revision-Date: 2012-03-02 17:28+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -696,7 +696,7 @@ msgstr "하지만 보세요, 이녀석 내 손을 핥고 있어요."
 #. This should just be "translated" to whatever noise a bat makes in your language.
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:583
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:609
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:723
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:726
 msgid "Neep?"
 msgstr "찍?"
 
@@ -1042,16 +1042,23 @@ msgid "A brave and kindhearted choice! I cannot abide slavery."
 msgstr "인정있고 용기있는 결정입니다! 노예제를 따를 수는 없지요."
 
 #. [message]: speaker=Gwabbo
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:398
+#. The phrase 'words of a man' does *not* have the sense of 
+#. 'words of a human' here; it signifies rather 'words of a
+#. moral adult' as opposed to a child or dependant.
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:401
+#, fuzzy
+#| msgid ""
+#| "Those were the words of a merman, Kai Krellis, and well spoken. The folk "
+#| "are truly yours now."
 msgid ""
-"Those were the words of a merman, Kai Krellis, and well spoken. The folk are "
-"truly yours now."
+"Those were the words of a man and a leader, Kai Krellis, and well spoken. "
+"The folk are truly yours now."
 msgstr ""
 "Kai Kerllis, 인어들을 대표하여 정의로운 발언을 하셨습니다. 이제 인어들은 진정"
 "으로 당신의 백성입니다."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:405
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:408
 msgid ""
 "Kai Krellis saw that it was so. The refugee merfolk, sore in their pride "
 "from fleeing their enemies, cheered his ultimatum and made ready to fight "
@@ -1062,12 +1069,12 @@ msgstr ""
 "다."
 
 #. [message]: speaker=Gilak
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:411
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:414
 msgid "Foolish merman! You will sssoon wish you had minded your own affairs."
 msgstr "멍청한 인어! 너희는 곧 자기 일에나 신경쓰지 않은 걸 후회하게 될거다."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:420
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:423
 msgid ""
 "Perhaps if I called out to the slaves, I could rouse them to help us fight "
 "against their captors."
@@ -1076,7 +1083,7 @@ msgstr ""
 "움에 도움을 받을 수 있을 것 같군."
 
 #. [message]: speaker=Gwabbo
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:430
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:433
 msgid ""
 "I think that would work. If I may make a suggestion though, I think we "
 "should wait for a more strategic moment."
@@ -1085,7 +1092,7 @@ msgstr ""
 "지 기다리는 편이 좋을 것 같습니다."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:434
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:437
 msgid ""
 "Never hesitate to speak your counsel to me, Gwabbo. You have been my right "
 "arm on this journey; your courage and loyalty are well proven."
@@ -1094,7 +1101,7 @@ msgstr ""
 "어주었지. 그대의 용기와 충성은 증명되었네."
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:438
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:441
 msgid ""
 "Those are the words of a true kai and your father’s son. I am proud of you, "
 "Krellis."
@@ -1103,14 +1110,14 @@ msgstr ""
 "요, Krellis."
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:444
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:447
 msgid ""
 "I believe that would work, but many of them will be killed if you do it now. "
 "It might be better to wait."
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:453
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:456
 msgid ""
 "You can choose when the slaves come out of their villages and attack their "
 "captors. When you are ready, right click anywhere and select the slave "
@@ -1120,12 +1127,12 @@ msgstr ""
 "디든 오른쪽 클릭해서 노예 봉기를 선택하라."
 
 #. [set_menu_item]: id=peasant_revolt_menu_option
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:468
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:471
 msgid "Inspire the slaves to revolt"
 msgstr "노예들이 봉기하도록 격려한다"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:482
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:485
 msgid ""
 "Hear this! Slaves, the merfolk have sworn war against your tormentors. If "
 "you would be free, arise and seize your liberty!"
@@ -1134,7 +1141,7 @@ msgstr ""
 "너희가 자유를 얻고 싶다면, 일어나서 너희의 자유를 쟁취하라!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:521
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:524
 msgid ""
 "Cheers erupted from several villages, and former slaves rushed out with "
 "whatever meager weapons they could find, or fists and rocks if no weapons "
@@ -1145,35 +1152,35 @@ msgstr ""
 "언 성채에서 비명과 저주가 흘러나왔다."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:559
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:562
 msgid "There is a treasure chest there! Good bat!"
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:565
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:568
 msgid "There is a treasure chest here!"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:578
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:581
 #: data/campaigns/Dead_Water/scenarios/11_Getting_Help.cfg:282
 msgid "You receive 100 gold."
 msgstr ""
 
 #. [message]: speaker=$unit.id
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:600
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:603
 msgid "Neep!"
 msgstr ""
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:604
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:607
 msgid ""
 "I believe our bat is impressed! That must be a drake. I am told they are "
 "fearsome, but honorable, creatures. I think we can let him out of the cage."
 msgstr ""
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:616
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:619
 msgid ""
 "This must be a drake. I am told they are honorable creatures. I am going to "
 "let him out of the cage."
@@ -1182,7 +1189,7 @@ msgstr ""
 "창에서 꺼내줘야겠다."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:622
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:625
 msgid ""
 "That must be a drake. I am told they are fearsome, but honorable, creatures. "
 "Let him out of the cage."
@@ -1191,32 +1198,32 @@ msgstr ""
 "군. 그를 철창에서 빼내줘라."
 
 #. [message]: speaker=unit
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:626
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:629
 msgid "Uh...If you say so."
 msgstr "어... 그렇게 말씀하신다면야."
 
 #. [unit]: type=Drake Burner, id=Keshan
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:639
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:642
 msgid "Keshan"
 msgstr "Keshan"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:653
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:656
 msgid "What is your name?"
 msgstr "그대의 이름은 무엇인가?"
 
 #. [message]: speaker=Keshan
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:658
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:661
 msgid "I am Keshan."
 msgstr "나는 Keshan."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:663
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:666
 msgid "How did you come to be in a cage?"
 msgstr "어떻게 이 철창에 갇히게 되었나?"
 
 #. [message]: speaker=Keshan
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:668
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:671
 msgid ""
 "I was hunting north of here when the small ones captured me. I killed many, "
 "but I was humiliated in the end."
@@ -1225,17 +1232,17 @@ msgstr ""
 "만 결국에는 굴욕을 당했다."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:673
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:676
 msgid "Will you fight with us, Keshan?"
 msgstr "우리와 함께 싸우겠나, Keshan?"
 
 #. [message]: speaker=Keshan
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:678
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:681
 msgid "You have released me, so I owe you a great debt. I will fight with you."
 msgstr "너는 나를 풀어주었지, 나는 네게 큰 빚을 졌다. 나는 함께 싸우겠다."
 
 #. [message]: speaker=Gwabbo
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:683
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:686
 msgid ""
 "Don’t let him go too crazy. Those saurian spears will go right through his "
 "scales."
@@ -1244,19 +1251,19 @@ msgstr ""
 "릴 겁니다."
 
 #. [unit]: type=Poacher, id=Siddry
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:703
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:706
 msgid "Siddry"
 msgstr "Siddry"
 
 #. [message]: speaker=Kai Krellis
 #. [message]: speaker=unit
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:727
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:733
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:730
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:736
 msgid "Who are you, and what are you doing in a cage?"
 msgstr "당신은 누구고, 왜 이 철창에 갇혀있는 건가?"
 
 #. [message]: speaker=Siddry
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:740
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:743
 msgid ""
 "My name is Siddry. These cursed saurians nabbed me a week ago — wanted me to "
 "turn overseer to their other slaves. I wouldn’t do it, so they caged me with "
@@ -1267,12 +1274,12 @@ msgstr ""
 "노예들과 같이 가두었소. 놈들은 내 활도 뺏으려 들었지만 거기에는 실패했지."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:745
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:748
 msgid "So you will help us defeat them?"
 msgstr "그럼 우리가 놈들을 무찌르는 걸 도와주겠나?"
 
 #. [message]: speaker=Siddry
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:750
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:753
 msgid ""
 "The way I see it, you’re helping me. There is nothing I would like better "
 "than to put their slavery to an end. I can’t swim, so I won’t be able to "
@@ -1284,13 +1291,13 @@ msgstr ""
 "를 좀 지겠소. 나중에라도 내가 뭔가 할 수 있는 일이 있다면 하도록 하겠소."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:755
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:758
 msgid ""
 "Well met, then, friend. I am Kai Krellis, leader of the people of Jotha."
 msgstr "그럼 반갑소, 친구. 나는 Jotha 사람들의 지도자인 Kai Krellis요."
 
 #. [message]
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:770
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:773
 msgid ""
 "Kai Krellis, you have freed us, and we are forever in your debt. How can we "
 "repay you?"
@@ -1299,7 +1306,7 @@ msgstr ""
 "을까요?"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:775
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:778
 msgid ""
 "I will not ask you to follow me. You have suffered enough for the benefit of "
 "others. Go back to your families if you have them, and work for yourselves "
