@@ -2637,7 +2637,9 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 	if (!last_effect.empty() && no_add == false) {
 		if ((last_effect)["apply_to"] == "variation") {
 			variation_ = last_effect["name"].str();
-			advance_to(type());
+			const unit_type * base_type = unit_types.find(type().base_id());
+			assert(base_type != NULL);
+			advance_to(*base_type);
 		} else if ((last_effect)["apply_to"] == "type") {
 			config::attribute_value &prev_type = (*new_child)["prev_type"];
 			if (prev_type.blank()) prev_type = type().base_id();
