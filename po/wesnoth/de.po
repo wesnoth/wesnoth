@@ -11,16 +11,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2013-03-09 08:51+0100\n"
-"PO-Revision-Date: 2012-10-28 17:31+0100\n"
-"Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
+"PO-Revision-Date: 2013-03-10 12:41+0100\n"
+"Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de <>\n"
-"Language: \n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Country: GERMANY\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-Language: German\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:4
@@ -174,13 +173,15 @@ msgstr "Komprimierte Spielstände"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:171
 msgid "Experimental multiplayer lobby"
-msgstr ""
+msgstr "Experimentelle Mehrspielerlobby"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:172
 msgid ""
 "Replace the classic multiplayer lobby with a newer, experimental interface"
 msgstr ""
+"Ersetzt die klassische Merhspielerlobby mit einer neuen, experimentellen "
+"Oberfläche"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:180
@@ -2345,9 +2346,9 @@ msgstr ""
 #. [set_menu_item]: id=select_another_ai
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:81
 #, fuzzy
-#| msgid "Test scenario"
+#| msgid "Selected user: "
 msgid "Select another ai"
-msgstr "Testszenario"
+msgstr "Benutzer auswählen: "
 
 #. [set_menu_item]: id=select_test
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:91
@@ -9136,10 +9137,6 @@ msgstr "Pläne für Spieler $player verbergen"
 msgid "Whiteboard Options"
 msgstr "Reißbrett Optionen"
 
-#~ msgid "Unknown unit type '$type|' while generating traits"
-#~ msgstr ""
-#~ "Unbekannter Einheitentyp '$type|' beim Generieren der Charakteristiken"
-
 #~ msgid ""
 #~ "Aban,Abbas,Abbud,Abdul-ʿAdl,Abdul-Ahad,Abdul-Alim,Abdul-Aliyy,Abdul-Azim,"
 #~ "Abdul-Aziz,Abdul-Badi,Abdul-Baʿith,Abdul-Baqi,Abdul-Bari,Abdul-Barr,Abdul-"
@@ -9398,3 +9395,7 @@ msgstr "Reißbrett Optionen"
 
 #~ msgid "A map without a header is not supported"
 #~ msgstr "Eine Karte ohne Kopfzeile wird nicht unterstützt"
+
+#~ msgid "Unknown unit type '$type|' while generating traits"
+#~ msgstr ""
+#~ "Unbekannter Einheitentyp '$type|' beim Generieren der Charakteristiken"
