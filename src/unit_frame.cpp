@@ -299,6 +299,7 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string) 
 	} else {
 		duration(cfg[frame_string + "end"].to_int() - cfg[frame_string + "begin"].to_int());
 	}
+	duration_ = std::max(duration_,1);
 
 	color = utils::split(cfg[frame_string + "blend_color"]);
 	if (color.size() == 3) {
