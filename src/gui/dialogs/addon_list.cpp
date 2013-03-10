@@ -75,25 +75,25 @@ REGISTER_DIALOG(addon_list)
 void taddon_list::collapse(tgrid& grid)
 {
 	find_widget<ttoggle_button>(&grid, "expand", false)
-			.set_visible(twidget::VISIBLE);
+			.set_visible(twidget::tvisible::visible);
 
 	find_widget<ttoggle_button>(&grid, "collapse", false)
-			.set_visible(twidget::INVISIBLE);
+			.set_visible(twidget::tvisible::invisible);
 
 	find_widget<tlabel>(&grid, "description", false)
-			.set_visible(twidget::INVISIBLE);
+			.set_visible(twidget::tvisible::invisible);
 }
 
 void taddon_list::expand(tgrid& grid)
 {
 	find_widget<ttoggle_button>(&grid, "expand", false)
-			.set_visible(twidget::HIDDEN);
+			.set_visible(twidget::tvisible::hidden);
 
 	find_widget<ttoggle_button>(&grid, "collapse", false)
-			.set_visible(twidget::VISIBLE);
+			.set_visible(twidget::tvisible::visible);
 
 	find_widget<tlabel>(&grid, "description", false)
-			.set_visible(twidget::VISIBLE);
+			.set_visible(twidget::tvisible::visible);
 }
 
 void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
@@ -291,7 +291,7 @@ void taddon_list::create_campaign(tpane& pane, const config& campaign)
 					, false);
 
 			if(collapse) {
-				collapse->set_visible(twidget::INVISIBLE);
+				collapse->set_visible(twidget::tvisible::invisible);
 				collapse->set_callback_state_change(boost::bind(
 						  &taddon_list::collapse
 						, this
@@ -304,7 +304,7 @@ void taddon_list::create_campaign(tpane& pane, const config& campaign)
 							, boost::ref(*grid)));
 
 				find_widget<tlabel>(grid, "description", false)
-						.set_visible(twidget::INVISIBLE);
+						.set_visible(twidget::tvisible::invisible);
 			}
 
 }

@@ -430,7 +430,7 @@ void thandler::disconnect(tdispatcher* dispatcher)
 
 	/***** Set proper state for the other dispatchers. *****/
 	FOREACH(AUTO dispatcher, dispatchers_) {
-		dynamic_cast<twidget&>(*dispatcher).set_dirty();
+		dynamic_cast<twidget&>(*dispatcher).set_dirty(true);
 	}
 
 	activate();
@@ -480,7 +480,7 @@ void thandler::draw(const bool force)
 			 * causes black borders around the window. So there's the choice
 			 * between two evils.
 			 */
-			dynamic_cast<twidget&>(*dispatcher).set_dirty();
+			dynamic_cast<twidget&>(*dispatcher).set_dirty(true);
 		} else {
 			first = false;
 		}

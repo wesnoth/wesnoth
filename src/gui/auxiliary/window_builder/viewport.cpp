@@ -17,6 +17,7 @@
 
 #include "gui/auxiliary/window_builder/viewport.hpp"
 
+#include "config.hpp"
 #include "gui/widgets/viewport.hpp"
 
 namespace gui2 {

@@ -151,7 +151,7 @@ static void animate_logo(
 	 * this possible problem. Of course this is expensive but the logo is
 	 * animated once so the cost is only once.
 	 */
-	window.set_dirty();
+	window.set_dirty(true);
 
 	if(percentage == 100) {
 		remove_timer(timer_id);
@@ -385,8 +385,8 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 	/***** Set the clock button. *****/
 	tbutton& clock = find_widget<tbutton>(&window, "clock", false);
 	clock.set_visible(show_debug_clock_button
-			? twidget::VISIBLE
-			: twidget::INVISIBLE);
+			? twidget::tvisible::visible
+			: twidget::tvisible::invisible);
 
 	connect_signal_mouse_left_click(
 			  clock

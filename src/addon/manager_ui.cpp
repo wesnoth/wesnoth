@@ -40,6 +40,7 @@
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "wml_separators.hpp"
+#include "wml_exception.hpp"
 
 #include <boost/scoped_ptr.hpp>
 #include <boost/foreach.hpp>

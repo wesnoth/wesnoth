@@ -20,6 +20,8 @@
 #include "gui/widgets/widget.hpp"
 #include "../../text.hpp"
 
+typedef std::map<std::string, t_string> string_map;
+
 namespace gui2 {
 
 namespace implementation {
@@ -140,10 +142,13 @@ public:
 	 */
 	virtual unsigned get_characters_per_line() const;
 
-	/** Inherited from twidget. */
-	/** @todo Also handle the tooltip state if shrunken_ &&
-	 * use_tooltip_on_label_overflow_. */
-	void layout_init(const bool full_initialization);
+	/**
+	 * See @ref twidget::layout_initialise.
+	 *
+	 * @todo Also handle the tooltip state.
+	 * Handle if shrunken_ && use_tooltip_on_label_overflow_.
+	 */
+	virtual void layout_initialise(const bool full_initialisation) OVERRIDE;
 
 	/** Inherited from twidget. */
 	void request_reduce_width(const unsigned maximum_width);

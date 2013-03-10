@@ -19,6 +19,7 @@
 
 #include "gui/widgets/window.hpp"
 #include "utils/foreach.tpp"
+#include "wml_exception.hpp"
 
 namespace gui2 {
 
@@ -120,7 +121,9 @@ tpoint thorizontal_list::calculate_best_size() const
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		const tgrid& grid = item(i);
-		if(grid.get_visible() == twidget::INVISIBLE || !get_item_shown(i)) {
+		if(grid.get_visible() == twidget::tvisible::invisible
+				|| !get_item_shown(i)) {
+
 			continue;
 		}
 
@@ -150,7 +153,9 @@ void thorizontal_list::place(const tpoint& origin, const tpoint& size)
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		tgrid& grid = item(i);
-		if(grid.get_visible() == twidget::INVISIBLE || !get_item_shown(i)) {
+		if(grid.get_visible() == twidget::tvisible::invisible
+				|| !get_item_shown(i)) {
+
 			continue;
 		}
 
@@ -173,7 +178,9 @@ void thorizontal_list::set_origin(const tpoint& origin)
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		tgrid& grid = item(i);
-		if(grid.get_visible() == twidget::INVISIBLE || !get_item_shown(i)) {
+		if(grid.get_visible() == twidget::tvisible::invisible
+				|| !get_item_shown(i)) {
+
 			continue;
 		}
 
@@ -182,7 +189,7 @@ void thorizontal_list::set_origin(const tpoint& origin)
 	}
 }
 
-void thorizontal_list::set_visible_area(const SDL_Rect& area)
+void thorizontal_list::set_visible_rectangle(const SDL_Rect& rectangle)
 {
 	/*
 	 * Note for most implementations this function could work only for the
@@ -193,7 +200,7 @@ void thorizontal_list::set_visible_area(const SDL_Rect& area)
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		tgrid& grid = item(i);
-		grid.set_visible_area(area);
+		grid.set_visible_rectangle(rectangle);
 	}
 }
 
@@ -205,7 +212,9 @@ twidget* thorizontal_list::find_at(
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		tgrid& grid = item(i);
-		if(grid.get_visible() == twidget::INVISIBLE || !get_item_shown(i)) {
+		if(grid.get_visible() == twidget::tvisible::invisible
+				|| !get_item_shown(i)) {
+
 			continue;
 		}
 
@@ -227,7 +236,9 @@ const twidget* thorizontal_list::find_at(const tpoint& coordinate,
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		const tgrid& grid = item(i);
-		if(grid.get_visible() == twidget::INVISIBLE || !get_item_shown(i)) {
+		if(grid.get_visible() == twidget::tvisible::invisible
+				|| !get_item_shown(i)) {
+
 			continue;
 		}
 
@@ -275,7 +286,7 @@ void thorizontal_list::handle_key_right_arrow(
 
 	for(size_t i = get_selected_item() + 1; i < get_item_count(); ++i) {
 
-		if(item(i).get_visible() == twidget::INVISIBLE
+		if(item(i).get_visible() == twidget::tvisible::invisible
 				|| !get_item_shown(i)) {
 
 			continue;
@@ -313,7 +324,9 @@ tpoint tvertical_list::calculate_best_size() const
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		const tgrid& grid = item(i);
-		if(grid.get_visible() == twidget::INVISIBLE || !get_item_shown(i)) {
+		if(grid.get_visible() == twidget::tvisible::invisible
+				|| !get_item_shown(i)) {
+
 			continue;
 		}
 
@@ -343,7 +356,9 @@ void tvertical_list::place(const tpoint& origin, const tpoint& size)
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		tgrid& grid = item(i);
-		if(grid.get_visible() == twidget::INVISIBLE || !get_item_shown(i)) {
+		if(grid.get_visible() == twidget::tvisible::invisible
+				|| !get_item_shown(i)) {
+
 			continue;
 		}
 
@@ -366,7 +381,9 @@ void tvertical_list::set_origin(const tpoint& origin)
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		tgrid& grid = item(i);
-		if(grid.get_visible() == twidget::INVISIBLE || !get_item_shown(i)) {
+		if(grid.get_visible() == twidget::tvisible::invisible
+				|| !get_item_shown(i)) {
+
 			continue;
 		}
 
@@ -375,7 +392,7 @@ void tvertical_list::set_origin(const tpoint& origin)
 	}
 }
 
-void tvertical_list::set_visible_area(const SDL_Rect& area)
+void tvertical_list::set_visible_rectangle(const SDL_Rect& rectangle)
 {
 	/*
 	 * Note for most implementations this function could work only for the
@@ -386,7 +403,7 @@ void tvertical_list::set_visible_area(const SDL_Rect& area)
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		tgrid& grid = item(i);
-		grid.set_visible_area(area);
+		grid.set_visible_rectangle(rectangle);
 	}
 }
 
@@ -398,7 +415,9 @@ twidget* tvertical_list::find_at(
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		tgrid& grid = item(i);
-		if(grid.get_visible() == twidget::INVISIBLE || !get_item_shown(i)) {
+		if(grid.get_visible() == twidget::tvisible::invisible
+				|| !get_item_shown(i)) {
+
 			continue;
 		}
 
@@ -421,7 +440,9 @@ const twidget* tvertical_list::find_at(const tpoint& coordinate,
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		const tgrid& grid = item(i);
-		if(grid.get_visible() == twidget::INVISIBLE || !get_item_shown(i)) {
+		if(grid.get_visible() == twidget::tvisible::invisible
+				|| !get_item_shown(i)) {
+
 			continue;
 		}
 
@@ -467,7 +488,7 @@ void tvertical_list::handle_key_down_arrow(SDLMod /*modifier*/, bool& handled)
 
 	for(size_t i = get_selected_item() + 1; i < get_item_count(); ++i) {
 
-		if(item(i).get_visible() == twidget::INVISIBLE
+		if(item(i).get_visible() == twidget::tvisible::invisible
 					|| !get_item_shown(i)) {
 
 			continue;
@@ -606,10 +627,10 @@ const twidget* tindependent::find(
 	return NULL;
 }
 
-void tindependent::set_visible_area(const SDL_Rect& area)
+void tindependent::set_visible_rectangle(const SDL_Rect& rectangle)
 {
 	/*
-	 * Set the visible area for every item.
+	 * Set the visible rectangle for every item.
 	 *
 	 * @todo evaluate whether setting it only for the visible item is better
 	 * and what the consequences are.
@@ -617,7 +638,7 @@ void tindependent::set_visible_area(const SDL_Rect& area)
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		tgrid& grid = item(i);
-		grid.set_visible_area(area);
+		grid.set_visible_rectangle(rectangle);
 	}
 }
 

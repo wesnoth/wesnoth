@@ -70,7 +70,7 @@ public:
 			const std::string& caption);
 
 	void set_button_visible(const tbutton_id button,
-			const twidget::tvisible visible);
+			const twidget::tvisible::scoped_enum visible);
 
 	void set_button_retval(const tbutton_id button,
 			const int retval);
@@ -118,7 +118,7 @@ private:
 
 		tbutton* button;
 		std::string caption;
-		twidget::tvisible visible;
+		twidget::tvisible::scoped_enum visible;
 		int retval;
 	};
 

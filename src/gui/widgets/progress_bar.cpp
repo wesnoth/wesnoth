@@ -44,7 +44,7 @@ void tprogress_bar::set_percentage(const unsigned percentage)
 			c.set_variable("percentage", variant(percentage));
 		}
 
-		set_dirty();
+		set_dirty(true);
 	}
 }
 

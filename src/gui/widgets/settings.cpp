@@ -34,6 +34,7 @@
 #include "serialization/schema_validator.hpp"
 #include "formula_string_utils.hpp"
 #include "utils/foreach.tpp"
+#include "wml_exception.hpp"
 
 namespace gui2 {
 

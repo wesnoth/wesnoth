@@ -22,6 +22,7 @@
 #include "gettext.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/control.hpp"
+#include "wml_exception.hpp"
 
 namespace gui2 {
 
@@ -63,7 +64,7 @@ void tbuilder_control::init_control(tcontrol* control) const
 	control->set_use_tooltip_on_label_overflow(use_tooltip_on_label_overflow);
 #ifndef LOW_MEM
 	control->set_debug_border_mode(debug_border_mode);
-	control->set_debug_border_color(debug_border_color);
+	control->set_debug_border_colour(debug_border_color);
 #endif
 }
 

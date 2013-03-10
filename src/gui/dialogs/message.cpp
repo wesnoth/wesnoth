@@ -113,7 +113,7 @@ void tmessage::set_button_caption(const tbutton_id button,
 }
 
 void tmessage::set_button_visible(const tbutton_id button,
-		const twidget::tvisible visible)
+		const twidget::tvisible::scoped_enum visible)
 {
 	buttons_[button].visible = visible;
 	if(buttons_[button].button) {
@@ -133,7 +133,7 @@ void tmessage::set_button_retval(const tbutton_id button,
 tmessage::tbutton_status::tbutton_status()
 	: button(NULL)
 	, caption()
-	, visible(twidget::INVISIBLE)
+	, visible(twidget::tvisible::invisible)
 	, retval(twindow::NONE)
 {
 }
@@ -159,23 +159,23 @@ int show_message(CVideo& video, const std::string& title,
 		case tmessage::auto_close :
 			break;
 		case tmessage::ok_button :
-			dlg.set_button_visible(tmessage::ok, twidget::VISIBLE);
+			dlg.set_button_visible(tmessage::ok, twidget::tvisible::visible);
 			dlg.set_button_caption(tmessage::ok, _("OK"));
 			break;
 		case tmessage::close_button :
-			dlg.set_button_visible(tmessage::ok, twidget::VISIBLE);
+			dlg.set_button_visible(tmessage::ok, twidget::tvisible::visible);
 			break;
 		case tmessage::ok_cancel_buttons :
-			dlg.set_button_visible(tmessage::ok, twidget::VISIBLE);
+			dlg.set_button_visible(tmessage::ok, twidget::tvisible::visible);
 			dlg.set_button_caption(tmessage::ok, _("OK"));
 			/* FALL DOWN */
 		case tmessage::cancel_button :
-			dlg.set_button_visible(tmessage::cancel, twidget::VISIBLE);
+			dlg.set_button_visible(tmessage::cancel, twidget::tvisible::visible);
 			break;
 		case tmessage::yes_no_buttons :
-			dlg.set_button_visible(tmessage::ok, twidget::VISIBLE);
+			dlg.set_button_visible(tmessage::ok, twidget::tvisible::visible);
 			dlg.set_button_caption(tmessage::ok, _("Yes"));
-			dlg.set_button_visible(tmessage::cancel, twidget::VISIBLE);
+			dlg.set_button_visible(tmessage::cancel, twidget::tvisible::visible);
 			dlg.set_button_caption(tmessage::cancel, _("No"));
 			break;
 	}

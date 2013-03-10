@@ -108,10 +108,10 @@ void tsub_player_list::init(gui2::twindow &w, const std::string &id)
 void tsub_player_list::show_toggle_callback(gui2::twidget* /*widget*/)
 {
 	if (show_toggle->get_value()) {
-		list->set_visible(twidget::INVISIBLE);
+		list->set_visible(twidget::tvisible::invisible);
 		show_toggle->set_icon_name("lobby/group-folded.png");
 	} else {
-		list->set_visible(twidget::VISIBLE);
+		list->set_visible(twidget::tvisible::visible);
 		show_toggle->set_icon_name("lobby/group-expanded.png");
 	}
 }
@@ -130,13 +130,13 @@ void tsub_player_list::auto_hide()
 		 */
 		assert(label);
 		tree_label->set_label(label->label() + " (0)");
-//			tree_label->set_visible(twidget::INVISIBLE);
+//			tree_label->set_visible(twidget::tvisible::invisible);
 	} else {
 		assert(label);
 		std::stringstream ss;
 		ss << label->label() << " (" << tree->size() << ")";
 		tree_label->set_label(ss.str());
-//			tree_label->set_visible(twidget::VISIBLE);
+//			tree_label->set_visible(twidget::tvisible::visible);
 		}
 }
 
@@ -157,7 +157,7 @@ void tplayer_list::init(gui2::twindow &w)
 			, true);
 
 	find_widget<twidget>(&w, "old_player_list", false)
-			.set_visible(twidget::INVISIBLE);
+			.set_visible(twidget::tvisible::invisible);
 
 	/**
 	 * @todo This is a hack to fold the items.
@@ -519,7 +519,9 @@ void set_visible_if_exists(tgrid* grid, const char* id, bool visible)
 {
 	twidget* w = grid->find(id, false);
 	if (w) {
-		w->set_visible(visible ? twidget::VISIBLE : twidget::INVISIBLE);
+		w->set_visible(visible
+				? twidget::tvisible::visible
+				: twidget::tvisible::invisible);
 	}
 }
 
@@ -1147,7 +1149,7 @@ void tlobby_main::increment_waiting_whsipers(const std::string& name)
 			//label.set_use_markup(true);
 			//label.set_label(colorize("<" + t->name + ">", "red"));
 			find_widget<timage>(grid, "pending_messages", false)
-					.set_visible(twidget::VISIBLE);
+					.set_visible(twidget::tvisible::visible);
 		}
 	}
 }
@@ -1166,7 +1168,7 @@ void tlobby_main::increment_waiting_messages(const std::string& room)
 			//label.set_use_markup(true);
 			//label.set_label(colorize(t->name, "red"));
 			find_widget<timage>(grid, "pending_messages", false)
-					.set_visible(twidget::VISIBLE);
+					.set_visible(twidget::tvisible::visible);
 		}
 	}
 }
@@ -1257,7 +1259,7 @@ void tlobby_main::active_window_changed()
 	//tlabel& label = grid->get_widget<tlabel>("room", false);
 	//label.set_label(expected_label);
 	find_widget<timage>(grid, "pending_messages", false)
-			.set_visible(twidget::HIDDEN);
+			.set_visible(twidget::tvisible::hidden);
 	t.pending_messages = 0;
 
 	find_widget<tbutton>(window_, "close_window", false)

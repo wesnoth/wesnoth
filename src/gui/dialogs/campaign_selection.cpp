@@ -185,7 +185,7 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 		if(ttree_view* tree = find_widget<ttree_view>(
 				&window, "campaign_tree", false, false)) {
 
-			tree->set_visible(twidget::INVISIBLE);
+			tree->set_visible(twidget::tvisible::invisible);
 		}
 
 		/***** Setup campaign list. *****/
@@ -226,7 +226,7 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 
 			twidget* widget = grid->find("victory", false);
 			if (widget && !campaign["completed"].to_bool()) {
-				widget->set_visible(twidget::HIDDEN);
+				widget->set_visible(twidget::tvisible::hidden);
 			}
 
 			/*** Add detail item ***/

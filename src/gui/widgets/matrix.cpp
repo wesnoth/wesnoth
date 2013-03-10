@@ -108,9 +108,9 @@ void tmatrix::place(const tpoint& origin, const tpoint& size)
 	content_.place(origin, size);
 }
 
-void tmatrix::layout_init(const bool full_initialization)
+void tmatrix::layout_initialise(const bool full_initialisation)
 {
-	content_.layout_init(full_initialization);
+	content_.layout_initialise(full_initialisation);
 }
 
 void tmatrix::impl_draw_children(

@@ -104,10 +104,10 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_width(const unsigned width) { w_ = width; set_dirty(); }
+	void set_width(const unsigned width) { w_ = width; set_dirty(true); }
 	unsigned get_width() const { return w_; }
 
-	void set_height(const unsigned height) { h_ = height; set_dirty(); }
+	void set_height(const unsigned height) { h_ = height; set_dirty(true); }
 	unsigned get_height() const { return h_; }
 
 	surface& surf() { return canvas_; }
@@ -115,7 +115,7 @@ public:
 	void set_variable(const std::string& key, const variant& value)
 	{
 		variables_.add(key, value);
-		set_dirty();
+		set_dirty(true);
 	}
 
 private:

@@ -94,7 +94,7 @@ void ttoggle_button::update_canvas()
 		canvas.set_variable("icon", variant(icon_name_));
 	}
 
-	set_dirty();
+	set_dirty(true);
 }
 
 void ttoggle_button::set_value(const bool selected)

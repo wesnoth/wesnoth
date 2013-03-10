@@ -45,6 +45,7 @@
 #include "gui/widgets/window.hpp"
 #include "formula_string_utils.hpp"
 #include "utils/foreach.tpp"
+#include "wml_exception.hpp"
 
 #include <boost/bind.hpp>
 

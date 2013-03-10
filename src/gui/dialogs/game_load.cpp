@@ -234,9 +234,9 @@ void tgame_load::display_savegame(twindow& window)
 			find_widget<twidget>(&window, "preview_pane", false);
 
 	if(selected_row == -1) {
-		preview_pane.set_visible(twidget::HIDDEN);
+		preview_pane.set_visible(twidget::tvisible::hidden);
 	} else {
-		preview_pane.set_visible(twidget::VISIBLE);
+		preview_pane.set_visible(twidget::tvisible::visible);
 
 		savegame::save_info& game = games_[selected_row];
 		filename_ = game.name();

@@ -18,6 +18,8 @@
 
 #include "gui/auxiliary/window_builder.hpp"
 
+#include "config.hpp"
+
 namespace gui2 {
 
 namespace implementation {

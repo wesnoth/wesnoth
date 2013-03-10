@@ -675,9 +675,9 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 
 		// restore area
 		if(restore) {
-			SDL_Rect rect = get_rect();
+			SDL_Rect rect = get_rectangle();
 			sdl_blit(restorer_, 0, video_.getSurface(), &rect);
-			update_rect(get_rect());
+			update_rect(get_rectangle());
 			font::undraw_floating_labels(video_.getSurface());
 		}
 		throw;
@@ -687,9 +687,9 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 
 	// restore area
 	if(restore) {
-		SDL_Rect rect = get_rect();
+		SDL_Rect rect = get_rectangle();
 		sdl_blit(restorer_, 0, video_.getSurface(), &rect);
-		update_rect(get_rect());
+		update_rect(get_rectangle());
 		font::undraw_floating_labels(video_.getSurface());
 	}
 
@@ -712,7 +712,7 @@ void twindow::draw()
 		// since all will be redrawn when needed with dirty rects. Since that
 		// doesn't work yet we need to undraw the window.
 		if(restorer_) {
-			SDL_Rect rect = get_rect();
+			SDL_Rect rect = get_rectangle();
 			sdl_blit(restorer_, 0, frame_buffer, &rect);
 			// Since the old area might be bigger as the new one, invalidate
 			// it.
@@ -722,7 +722,7 @@ void twindow::draw()
 		layout();
 
 		// Get new surface for restoring
-		SDL_Rect rect = get_rect();
+		SDL_Rect rect = get_rectangle();
 		// We want the labels underneath the window so draw them and use them
 		// as restore point.
 		font::draw_floating_labels(frame_buffer);
@@ -773,7 +773,7 @@ void twindow::draw()
 
 		const SDL_Rect dirty_rect = new_widgets
 				? screen_area()
-				: item.back()->get_dirty_rect();
+				: item.back()->get_dirty_rectangle();
 
 // For testing we disable the clipping rect and force the entire screen to
 // update. This way an item rendered at the wrong place is directly visible.
@@ -801,16 +801,17 @@ void twindow::draw()
 		 *
 		 * Before drawing there needs to be determined whether a dirty widget
 		 * really needs to be redrawn. If the widget doesn't need to be
-		 * redrawing either being not VISIBLE or has status NOT_DRAWN. If
-		 * it's not drawn it's still set not dirty to avoid it keep getting
-		 * on the dirty list.
+		 * redrawing either being not tvisible::visible or has status
+		 * twidget::tredraw_action::none. If it's not drawn it's still set not
+		 * dirty to avoid it keep getting on the dirty list.
 		 */
 
 		for(std::vector<twidget*>::iterator itor = item.begin();
 				itor != item.end(); ++itor) {
 
-			if((**itor).get_visible() != twidget::VISIBLE
-					|| (**itor).get_drawing_action() == twidget::NOT_DRAWN) {
+			if((**itor).get_visible() != twidget::tvisible::visible
+					|| (**itor).get_drawing_action()
+						== twidget::tredraw_action::none) {
 
 				for(std::vector<twidget*>::iterator citor = itor;
 						citor != item.end(); ++citor) {
@@ -824,7 +825,7 @@ void twindow::draw()
 		}
 
 		// Restore.
-		SDL_Rect rect = get_rect();
+		SDL_Rect rect = get_rectangle();
 		sdl_blit(restorer_, 0, frame_buffer, &rect);
 
 		/**
@@ -890,14 +891,14 @@ void twindow::draw()
 	populate_dirty_list(*this, call_stack);
 	assert(dirty_list_.empty());
 
-	SDL_Rect rect = get_rect();
+	SDL_Rect rect = get_rectangle();
 	update_rect(rect);
 }
 
 void twindow::undraw()
 {
 	if(restorer_) {
-		SDL_Rect rect = get_rect();
+		SDL_Rect rect = get_rectangle();
 		sdl_blit(restorer_, 0, video_.getSurface(), &rect);
 		// Since the old area might be bigger as the new one, invalidate
 		// it.
@@ -999,12 +1000,12 @@ void twindow::layout()
 	if((click_dismiss_button
 			= find_widget<tbutton>(this, "click_dismiss", false, false))) {
 
-		click_dismiss_button->set_visible(twidget::INVISIBLE);
+		click_dismiss_button->set_visible(twidget::tvisible::invisible);
 	}
 	if(click_dismiss_) {
 		tbutton* button = find_widget<tbutton>(this, "ok", false, false);
 		if(button) {
-			button->set_visible(twidget::INVISIBLE);
+			button->set_visible(twidget::tvisible::invisible);
 			click_dismiss_button = button;
 		}
 		VALIDATE(click_dismiss_button
@@ -1012,8 +1013,8 @@ void twindow::layout()
 	}
 
 	/***** Layout. *****/
-	layout_init(true);
-	generate_dot_file("layout_init", LAYOUT);
+	layout_initialise(true);
+	generate_dot_file("layout_initialise", LAYOUT);
 
 	layout_linked_widgets();
 
@@ -1040,7 +1041,7 @@ void twindow::layout()
 	/****** Validate click dismiss status. *****/
 	if(click_dismiss_ && disable_click_dismiss()) {
 		assert(click_dismiss_button);
-		click_dismiss_button->set_visible(twidget::VISIBLE);
+		click_dismiss_button->set_visible(twidget::tvisible::visible);
 
 		connect_signal_mouse_left_click(
 				  *click_dismiss_button
@@ -1050,8 +1051,8 @@ void twindow::layout()
 					, OK
 					, true));
 
-		layout_init(true);
-		generate_dot_file("layout_init", LAYOUT);
+		layout_initialise(true);
+		generate_dot_file("layout_initialise", LAYOUT);
 
 		layout_linked_widgets();
 
@@ -1312,7 +1313,7 @@ void twindow_implementation::layout(twindow& window,
 		DBG_GUI_L << LOG_IMPL_HEADER
 				<< " Status: Width has been modified, rerun.\n";
 
-		window.layout_init(false);
+		window.layout_initialise(false);
 		window.layout_linked_widgets();
 		layout(window, maximum_width, maximum_height);
 		return;
@@ -1499,13 +1500,14 @@ void twindow::signal_handler_request_placement(
  *   layout property must be set by the engine after validation.
  *
  * - All visible grid cells; A grid cell is visible when the widget inside
- *   of it doesn't have the state INVISIBLE. Widgets which are HIDDEN are
- *   sized properly since when they become VISIBLE the layout shouldn't be
- *   invalidated. A grid cell that's invisible has size 0,0.
+ *   of it doesn't have the state tvisible::invisible. Widgets which have the
+ *   state @ref tvisible::hidden are sized properly since when they become
+ *   @ref tvisible::visible the layout shouldn't be invalidated. A grid cell
+ *   that's invisible has size 0,0.
  *
  * - All resizable grid cells; A grid cell is resizable under the following
  *   conditions:
- *   - The widget is VISIBLE.
+ *   - The widget is tvisible::visible.
  *   - The widget is not in a shared size group.
  *
  * There are two layout algorithms with a different purpose.
@@ -1524,7 +1526,7 @@ void twindow::signal_handler_request_placement(
  * Here is the algorithm used to layout the window:
  *
  * - Perform a full initialization
- *   (@ref gui2::twidget::layout_init (full_initialization = true)):
+ *   (@ref gui2::twidget::layout_initialise (full_initialisation = true)):
  *   - Clear the internal best size cache for all widgets.
  *   - For widgets with scrollbars hide them unless the
  *     @ref gui2::tscrollbar_container::tscrollbar_mode "scrollbar_mode" is
@@ -1616,7 +1618,7 @@ void twindow::signal_handler_request_placement(
  *
  * - Relayout:
  *   - Initialize all widgets
- *     (@ref gui2::twidget::layout_init (full_initialization = false))
+ *     (@ref gui2::twidget::layout_initialise (full_initialisation = false))
  *   - Handle shared sizes, since the reinitialization resets that state.
  *   - Goto start layout loop.
  *

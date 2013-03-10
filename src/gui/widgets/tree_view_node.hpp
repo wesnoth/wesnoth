@@ -248,7 +248,8 @@ private:
 			, tpoint origin
 			, unsigned width);
 
-	void set_visible_area(const SDL_Rect& area);
+	/** See @ref twidget::set_visible_rectangle. */
+	virtual void set_visible_rectangle(const SDL_Rect& rectangle) OVERRIDE;
 
 	void impl_draw_children(surface& frame_buffer);
 	void impl_draw_children(surface& frame_buffer, int x_offset, int y_offset);

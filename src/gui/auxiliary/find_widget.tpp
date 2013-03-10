@@ -16,7 +16,10 @@
 #ifndef GUI_AUXILIARY_FIND_WIDGET_TPP_INCLUDED
 #define GUI_AUXILIARY_FIND_WIDGET_TPP_INCLUDED
 
+#include "gui/widgets/helper.hpp"
 #include "gui/widgets/widget.hpp"
+#include "utils/const_clone.tpp"
+#include "wml_exception.hpp"
 
 namespace gui2 {
 

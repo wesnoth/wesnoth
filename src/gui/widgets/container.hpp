@@ -45,12 +45,12 @@ public:
 	 *
 	 * The client area is the area available for widgets.
 	 */
-	virtual SDL_Rect get_client_rect() const { return get_rect(); }
+	virtual SDL_Rect get_client_rect() const { return get_rectangle(); }
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
-	/** Inherited from tcontrol. */
-	void layout_init(const bool full_initialization);
+	/** See @ref twidget::layout_initialise. */
+	virtual void layout_initialise(const bool full_initialisation) OVERRIDE;
 
 	/**
 	 * Tries to reduce the width of a container.
@@ -102,8 +102,8 @@ public:
 	/** Inherited from twidget. */
 	void set_origin(const tpoint& origin);
 
-	/** Inherited from twidget. */
-	void set_visible_area(const SDL_Rect& area);
+	/** See @ref twidget::set_visible_rectangle. */
+	virtual void set_visible_rectangle(const SDL_Rect& rectangle) OVERRIDE;
 
 	/** Inherited from twidget. */
 	void impl_draw_children(surface& frame_buffer);

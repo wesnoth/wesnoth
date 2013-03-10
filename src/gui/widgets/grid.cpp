@@ -182,15 +182,15 @@ void tgrid::set_active(const bool active)
 	}
 }
 
-void tgrid::layout_init(const bool full_initialization)
+void tgrid::layout_initialise(const bool full_initialisation)
 {
 	// Inherited.
-	twidget::layout_init(full_initialization);
+	twidget::layout_initialise(full_initialisation);
 
 	// Clear child caches.
 	FOREACH(AUTO& child, children_) {
 
-		child.layout_init(full_initialization);
+		child.layout_initialise(full_initialisation);
 
 	}
 }
@@ -564,17 +564,17 @@ void tgrid::set_origin(const tpoint& origin)
 	}
 }
 
-void tgrid::set_visible_area(const SDL_Rect& area)
+void tgrid::set_visible_rectangle(const SDL_Rect& rectangle)
 {
 	// Inherited.
-	twidget::set_visible_area(area);
+	twidget::set_visible_rectangle(rectangle);
 
 	FOREACH(AUTO& child, children_) {
 
 		twidget* widget = child.widget();
 		assert(widget);
 
-		widget->set_visible_area(area);
+		widget->set_visible_rectangle(rectangle);
 	}
 }
 
@@ -643,7 +643,7 @@ bool tgrid::has_widget(const twidget* widget) const
 
 bool tgrid::disable_click_dismiss() const
 {
-	if(get_visible() != twidget::VISIBLE) {
+	if(get_visible() != twidget::tvisible::visible) {
 		return false;
 	}
 
@@ -711,7 +711,7 @@ tpoint tgrid::tchild::get_best_size() const
 		return border_space();
 	}
 
-	if(widget_->get_visible() == twidget::INVISIBLE) {
+	if(widget_->get_visible() == twidget::tvisible::invisible) {
 		DBG_GUI_L << LOG_CHILD_HEADER
 			<< " has widget " << true
 			<< " widget visible " << false
@@ -733,7 +733,7 @@ tpoint tgrid::tchild::get_best_size() const
 void tgrid::tchild::place(tpoint origin, tpoint size)
 {
 	assert(widget());
-	if(widget()->get_visible() == twidget::INVISIBLE) {
+	if(widget()->get_visible() == twidget::tvisible::invisible) {
 		return;
 	}
 
@@ -871,12 +871,12 @@ void tgrid::tchild::place(tpoint origin, tpoint size)
 	widget()->place(widget_orig, widget_size);
 }
 
-void tgrid::tchild::layout_init(const bool full_initialization)
+void tgrid::tchild::layout_initialise(const bool full_initialisation)
 {
 	assert(widget_);
 
-	if(widget_->get_visible() != twidget::INVISIBLE) {
-		widget_->layout_init(full_initialization);
+	if(widget_->get_visible() != twidget::tvisible::invisible) {
+		widget_->layout_initialise(full_initialisation);
 	}
 }
 
@@ -939,7 +939,7 @@ void tgrid::impl_draw_children(surface& frame_buffer)
 	 */
 	SDL_PumpEvents();
 
-	assert(get_visible() == twidget::VISIBLE);
+	assert(get_visible() == twidget::tvisible::visible);
 	set_dirty(false);
 
 	FOREACH(AUTO& child, children_) {
@@ -947,11 +947,11 @@ void tgrid::impl_draw_children(surface& frame_buffer)
 		twidget* widget = child.widget();
 		assert(widget);
 
-		if(widget->get_visible() != twidget::VISIBLE) {
+		if(widget->get_visible() != twidget::tvisible::visible) {
 			continue;
 		}
 
-		if(widget->get_drawing_action() == twidget::NOT_DRAWN) {
+		if(widget->get_drawing_action() == twidget::tredraw_action::none) {
 			continue;
 		}
 
@@ -978,7 +978,7 @@ void tgrid::impl_draw_children(
 	 */
 	SDL_PumpEvents();
 
-	assert(get_visible() == twidget::VISIBLE);
+	assert(get_visible() == twidget::tvisible::visible);
 	set_dirty(false);
 
 	FOREACH(AUTO& child, children_) {
@@ -986,11 +986,11 @@ void tgrid::impl_draw_children(
 		twidget* widget = child.widget();
 		assert(widget);
 
-		if(widget->get_visible() != twidget::VISIBLE) {
+		if(widget->get_visible() != twidget::tvisible::visible) {
 			continue;
 		}
 
-		if(widget->get_drawing_action() == twidget::NOT_DRAWN) {
+		if(widget->get_drawing_action() == twidget::tredraw_action::none) {
 			continue;
 		}
 
@@ -1060,7 +1060,7 @@ void tgrid_implementation::cell_request_reduce_height(
 {
 	assert(child.widget_);
 
-	if(child.widget_->get_visible() == twidget::INVISIBLE) {
+	if(child.widget_->get_visible() == twidget::tvisible::invisible) {
 		return;
 	}
 
@@ -1073,7 +1073,7 @@ void tgrid_implementation::cell_request_reduce_width(
 {
 	assert(child.widget_);
 
-	if(child.widget_->get_visible() == twidget::INVISIBLE) {
+	if(child.widget_->get_visible() == twidget::tvisible::invisible) {
 		return;
 	}
 

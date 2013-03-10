@@ -21,6 +21,8 @@
 
 #include <boost/intrusive_ptr.hpp>
 
+typedef std::map< std::string, t_string > string_map;
+
 namespace gui2 {
 
 struct tbuilder_grid;
@@ -236,8 +238,8 @@ public:
 	 * become pure virtuals.
 	 */
 
-	/** Inherited from twidget. */
-	virtual void layout_init(const bool full_initialization) = 0;
+	/** See @ref twidget::layout_initialise. */
+	virtual void layout_initialise(const bool full_initialisation) OVERRIDE = 0;
 
 	/** Inherited from twidget. */
 	virtual void request_reduce_width(const unsigned maximum_width) = 0;
@@ -254,8 +256,8 @@ public:
 	/** Inherited from twidget. */
 	virtual void set_origin(const tpoint& origin) = 0;
 
-	/** Inherited from twidget. */
-	void set_visible_area(const SDL_Rect& area) = 0;
+	/** See @ref twidget::set_visible_rectangle. */
+	virtual void set_visible_rectangle(const SDL_Rect& rectangle) OVERRIDE = 0;
 
 	/** Inherited from twidget. */
 	virtual void impl_draw_children(surface& frame_buffer) = 0;

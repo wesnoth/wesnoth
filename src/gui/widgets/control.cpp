@@ -152,7 +152,7 @@ void tcontrol::set_members(const string_map& data)
 
 bool tcontrol::disable_click_dismiss() const
 {
-	return get_visible() == twidget::VISIBLE && get_active();
+	return get_visible() == twidget::tvisible::visible && get_active();
 }
 
 iterator::twalker_* tcontrol::create_walker()
@@ -195,12 +195,12 @@ unsigned tcontrol::get_characters_per_line() const
 	return 0;
 }
 
-void tcontrol::layout_init(const bool full_initialization)
+void tcontrol::layout_initialise(const bool full_initialisation)
 {
 	// Inherited.
-	twidget::layout_init(full_initialization);
+	twidget::layout_initialise(full_initialisation);
 
-	if(full_initialization) {
+	if(full_initialisation) {
 		shrunken_ = false;
 	}
 }
@@ -310,7 +310,7 @@ void tcontrol::set_label(const t_string& label)
 	label_ = label;
 	set_layout_size(tpoint(0, 0));
 	update_canvas();
-	set_dirty();
+	set_dirty(true);
 }
 
 void tcontrol::set_use_markup(bool use_markup)
@@ -321,7 +321,7 @@ void tcontrol::set_use_markup(bool use_markup)
 
 	use_markup_ = use_markup;
 	update_canvas();
-	set_dirty();
+	set_dirty(true);
 }
 
 void tcontrol::set_text_alignment(const PangoAlignment text_alignment)
@@ -332,7 +332,7 @@ void tcontrol::set_text_alignment(const PangoAlignment text_alignment)
 
 	text_alignment_ = text_alignment;
 	update_canvas();
-	set_dirty();
+	set_dirty(true);
 }
 
 void tcontrol::update_canvas()
@@ -376,10 +376,10 @@ void tcontrol::impl_draw_background(surface& frame_buffer)
 {
 	DBG_GUI_D << LOG_HEADER
 			<< " label '" << debug_truncate(label_)
-			<< "' size " << get_rect()
+			<< "' size " << get_rectangle()
 			<< ".\n";
 
-	canvas(get_state()).blit(frame_buffer, get_rect());
+	canvas(get_state()).blit(frame_buffer, get_rectangle());
 }
 
 void tcontrol::impl_draw_background(
@@ -389,7 +389,7 @@ void tcontrol::impl_draw_background(
 {
 	DBG_GUI_D << LOG_HEADER
 			<< " label '" << debug_truncate(label_)
-			<< "' size " << get_rect()
+			<< "' size " << get_rectangle()
 			<< ".\n";
 
 	canvas(get_state()).blit(

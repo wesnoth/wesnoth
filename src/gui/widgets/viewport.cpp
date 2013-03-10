@@ -121,12 +121,12 @@ void tviewport::place(const tpoint& origin, const tpoint& size)
 	widget_.place(tpoint(0, 0), widget_.get_best_size());
 }
 
-void tviewport::layout_init(const bool full_initialization)
+void tviewport::layout_initialise(const bool full_initialisation)
 {
-	twidget::layout_init(full_initialization);
+	twidget::layout_initialise(full_initialisation);
 
-	if(widget_.get_visible() != twidget::INVISIBLE) {
-		widget_.layout_init(full_initialization);
+	if(widget_.get_visible() != twidget::tvisible::invisible) {
+		widget_.layout_initialise(full_initialisation);
 	}
 }
 
@@ -138,7 +138,7 @@ void tviewport::impl_draw_children(
 	x_offset += get_x();
 	y_offset += get_y();
 
-	if(widget_.get_visible() != twidget::INVISIBLE) {
+	if(widget_.get_visible() != twidget::tvisible::invisible) {
 		widget_.draw_background(frame_buffer, x_offset, y_offset);
 		widget_.draw_children(frame_buffer, x_offset, y_offset);
 		widget_.draw_foreground(frame_buffer, x_offset, y_offset);

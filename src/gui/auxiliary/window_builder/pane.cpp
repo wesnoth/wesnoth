@@ -17,8 +17,10 @@
 
 #include "gui/auxiliary/window_builder/pane.hpp"
 
+#include "config.hpp"
 #include "gettext.hpp"
 #include "gui/widgets/pane.hpp"
+#include "wml_exception.hpp"
 
 namespace gui2 {
 

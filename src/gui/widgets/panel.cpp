@@ -38,7 +38,7 @@ SDL_Rect tpanel::get_client_rect() const
 		boost::dynamic_pointer_cast<const tpanel_definition::tresolution>(config());
 	assert(conf);
 
-	SDL_Rect result = get_rect();
+	SDL_Rect result = get_rectangle();
 	result.x += conf->left_border;
 	result.y += conf->top_border;
 	result.w -= conf->left_border + conf->right_border;
@@ -50,10 +50,10 @@ SDL_Rect tpanel::get_client_rect() const
 void tpanel::impl_draw_background(surface& frame_buffer)
 {
 	DBG_GUI_D << LOG_HEADER
-			<< " size " << get_rect()
+			<< " size " << get_rectangle()
 			<< ".\n";
 
-	canvas(0).blit(frame_buffer, get_rect());
+	canvas(0).blit(frame_buffer, get_rectangle());
 }
 
 void tpanel::impl_draw_background(
@@ -62,7 +62,7 @@ void tpanel::impl_draw_background(
 		, int y_offset)
 {
 	DBG_GUI_D << LOG_HEADER
-			<< " size " << get_rect()
+			<< " size " << get_rectangle()
 			<< ".\n";
 
 	canvas(0).blit(
@@ -72,7 +72,7 @@ void tpanel::impl_draw_background(
 
 void tpanel::impl_draw_foreground(surface& frame_buffer)
 {
-	canvas(1).blit(frame_buffer, get_rect());
+	canvas(1).blit(frame_buffer, get_rectangle());
 }
 
 void tpanel::impl_draw_foreground(

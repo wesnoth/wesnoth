@@ -30,6 +30,7 @@
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
+#include "wml_exception.hpp"
 
 #include "../clipboard.hpp"
 #include "../game_preferences.hpp"

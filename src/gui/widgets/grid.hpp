@@ -83,7 +83,7 @@ public:
 	{
 		assert(row < row_grow_factor_.size());
 		row_grow_factor_[row] = factor;
-		set_dirty();
+		set_dirty(true);
 	}
 
 	/**
@@ -98,7 +98,7 @@ public:
 	{
 		assert(column< col_grow_factor_.size());
 		col_grow_factor_[column] = factor;
-		set_dirty();
+		set_dirty(true);
 	}
 
 	/***** ***** ***** ***** CHILD MANIPULATION ***** ***** ***** *****/
@@ -179,8 +179,8 @@ public:
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
-	/** Inherited from twidget. */
-	void layout_init(const bool full_initialization);
+	/** See @ref twidget::layout_initialise. */
+	virtual void layout_initialise(const bool full_initialisation) OVERRIDE;
 
 	/**
 	 * Tries to reduce the width of a container.
@@ -240,8 +240,8 @@ public:
 	/** Inherited from twidget. */
 	void set_origin(const tpoint& origin);
 
-	/** Inherited from twidget. */
-	void set_visible_area(const SDL_Rect& area);
+	/** See @ref twidget::set_visible_rectangle. */
+	virtual void set_visible_rectangle(const SDL_Rect& rectangle) OVERRIDE;
 
 	/** Inherited from twidget. */
 	void layout_children();
@@ -315,8 +315,8 @@ private:
 		 */
 		void place(tpoint origin, tpoint size);
 
-		/** Forwards layout_init() to the cell. */
-		void layout_init(const bool full_initialization);
+		/** Forwards @ref tgrid::layout_initialise to the cell. */
+		void layout_initialise(const bool full_initialisation);
 
 		/** Returns the can_wrap for the cell. */
 		bool can_wrap() const

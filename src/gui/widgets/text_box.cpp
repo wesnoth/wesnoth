@@ -235,7 +235,7 @@ void ttext_box::handle_mouse_selection(tpoint mouse, const bool start_selection)
 
 	set_cursor(offset, !start_selection);
 	update_canvas();
-	set_dirty();
+	set_dirty(true);
 	dragging_ |= start_selection;
 }
 
@@ -265,7 +265,7 @@ void ttext_box::update_offsets()
 		tmp.set_variable("text_font_height", variant(text_height_));
 	}
 
- 	// Force an update of the canvas since now text_font_height is known.
+	// Force an update of the canvas since now text_font_height is known.
 	update_canvas();
 }
 

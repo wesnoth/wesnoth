@@ -218,11 +218,11 @@ struct thorizontal_list
 	void set_origin(const tpoint& origin);
 
 	/**
-	 * Sets the visible area of the generator.
+	 * Sets the visible rectangle of the generator.
 	 *
-	 * @param area                The visible area.
+	 * @param rectangle           The visible rectangle.
 	 */
-	void set_visible_area(const SDL_Rect& area);
+	void set_visible_rectangle(const SDL_Rect& rectangle);
 
 	/** Inherited from tgenerator_. */
 	twidget* find_at(const tpoint& coordinate, const bool must_be_active);
@@ -288,8 +288,8 @@ struct tvertical_list
 	/** See thorizontal_list::set_origin(). */
 	void set_origin(const tpoint& origin);
 
-	/** See thorizontal_list::set_visible_area(). */
-	void set_visible_area(const SDL_Rect& area);
+	/** See @ref thorizontal_list::set_visible_rectangle(). */
+	void set_visible_rectangle(const SDL_Rect& rectangle);
 
 	/** See thorizontal_list::find_at(). */
 	twidget* find_at(const tpoint& coordinate, const bool must_be_active);
@@ -364,8 +364,8 @@ struct tmatrix
 	void set_origin(const tpoint& /*origin*/)
 		{ ERROR_LOG(false); }
 
-	/** See thorizontal_list::set_visible_area(). */
-	void set_visible_area(const SDL_Rect& /*area*/)
+	/** See @ref thorizontal_list::set_visible_rectangle(). */
+	void set_visible_rectangle(const SDL_Rect& /*rectangle*/ )
 		{ ERROR_LOG(false); }
 
 	/** See thorizontal_list::find_at(). */
@@ -425,8 +425,8 @@ struct tindependent
 	/** See thorizontal_list::set_origin(). */
 	void set_origin(const tpoint& origin);
 
-	/** See thorizontal_list::set_visible_area(). */
-	void set_visible_area(const SDL_Rect& area);
+	/** See @ref thorizontal_list::set_visible_rectangle(). */
+	void set_visible_rectangle(const SDL_Rect& rectangle);
 
 	/** See thorizontal_list::find_at(). */
 	twidget* find_at(const tpoint& coordinate, const bool must_be_active);
@@ -503,7 +503,9 @@ struct tshow
 {
 	void select(tgrid& grid, const bool show)
 	{
-		grid.set_visible(show ? twidget::VISIBLE : twidget::HIDDEN);
+		grid.set_visible(show
+				? twidget::tvisible::visible
+				: twidget::tvisible::hidden);
 	}
 
 	/**
@@ -624,8 +626,8 @@ public:
 			/*** Set the proper visible state. ***/
 			items_[index]->shown = show;
 			items_[index]->grid.set_visible(show
-					? twidget::VISIBLE
-					: twidget::INVISIBLE);
+					? twidget::tvisible::visible
+					: twidget::tvisible::invisible);
 
 			/*** Update the selection. ***/
 			minimum_selection::set_item_shown(index, show);
@@ -747,12 +749,14 @@ public:
 		impl_create_items(index, list_builder, data, callback);
 	}
 
-	/** Inherited from tgenerator_. */
-	void layout_init(const bool full_initialization)
+	/** See @ref twidget::layout_initialise. */
+	virtual void layout_initialise(const bool full_initialisation) OVERRIDE
 	{
 		FOREACH(AUTO item, items_) {
-			if(item->grid.get_visible() != twidget::INVISIBLE && item->shown) {
-				item->grid.layout_init(full_initialization);
+			if(item->grid.get_visible() != twidget::tvisible::invisible
+						&& item->shown) {
+
+				item->grid.layout_initialise(full_initialisation);
 			}
 		}
 	}
@@ -793,19 +797,21 @@ public:
 		placement::set_origin(origin);
 	}
 
-	/** Inherited from tgenerator_. */
-	void set_visible_area(const SDL_Rect& area)
+	/** See @ref twidget::set_visible_rectangle. */
+	virtual void set_visible_rectangle(const SDL_Rect& rectangle) OVERRIDE
 	{
-		placement::set_visible_area(area);
+		placement::set_visible_rectangle(rectangle);
 	}
 
 	/** Inherited from tgenerator_. */
 	void impl_draw_children(surface& frame_buffer)
 	{
-		assert(this->get_visible() == twidget::VISIBLE);
+		assert(this->get_visible() == twidget::tvisible::visible);
 
 		FOREACH(AUTO item, items_) {
-			if(item->grid.get_visible() == twidget::VISIBLE && item->shown) {
+			if(item->grid.get_visible() == twidget::tvisible::visible
+					&& item->shown) {
+
 				item->grid.draw_children(frame_buffer);
 			}
 		}
@@ -814,10 +820,12 @@ public:
 	/** Inherited from tgenerator_. */
 	void impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
 	{
-		assert(this->get_visible() == twidget::VISIBLE);
+		assert(this->get_visible() == twidget::tvisible::visible);
 
 		FOREACH(AUTO item, items_) {
-			if(item->grid.get_visible() == twidget::VISIBLE && item->shown) {
+			if(item->grid.get_visible() == twidget::tvisible::visible
+					&& item->shown) {
+
 				item->grid.draw_children(frame_buffer, x_offset, y_offset);
 			}
 		}

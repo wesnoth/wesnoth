@@ -62,7 +62,7 @@ ttree_view_node::ttree_view_node(const std::string& id
 						, false);
 
 				if(icon_) {
-					icon_->set_visible(twidget::HIDDEN);
+					icon_->set_visible(twidget::tvisible::hidden);
 					icon_->connect_signal<event::LEFT_BUTTON_CLICK>(
 							boost::bind(&ttree_view_node::
 								signal_handler_left_button_click
@@ -71,7 +71,7 @@ ttree_view_node::ttree_view_node(const std::string& id
 				}
 
 				if(parent_node_ && parent_node_->icon_) {
-					parent_node_->icon_->set_visible(twidget::VISIBLE);
+					parent_node_->icon_->set_visible(twidget::tvisible::visible);
 				}
 
 				twidget& widget = find_widget<twidget>(
@@ -329,7 +329,7 @@ tpoint ttree_view_node::get_current_size() const
 
 		const ttree_view_node& node = *itor;
 
-		if(node.grid_.get_visible() == twidget::INVISIBLE) {
+		if(node.grid_.get_visible() == twidget::tvisible::invisible) {
 			continue;
 		}
 
@@ -363,7 +363,7 @@ tpoint ttree_view_node::get_unfolded_size() const
 
 		const ttree_view_node& node = *itor;
 
-		if(node.grid_.get_visible() == twidget::INVISIBLE) {
+		if(node.grid_.get_visible() == twidget::tvisible::invisible) {
 			continue;
 		}
 
@@ -400,7 +400,7 @@ tpoint ttree_view_node::calculate_best_size(const int indention_level
 
 		const ttree_view_node& node = *itor;
 
-		if(node.grid_.get_visible() == twidget::INVISIBLE) {
+		if(node.grid_.get_visible() == twidget::tvisible::invisible) {
 			continue;
 		}
 
@@ -468,11 +468,11 @@ unsigned ttree_view_node::place(
 	return origin.y - offset;
 }
 
-void ttree_view_node::set_visible_area(const SDL_Rect& area)
+void ttree_view_node::set_visible_rectangle(const SDL_Rect& rectangle)
 {
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
-	DBG_GUI_L << LOG_HEADER << " area " << area << ".\n";
-	grid_.set_visible_area(area);
+	DBG_GUI_L << LOG_HEADER << " rectangle " << rectangle << ".\n";
+	grid_.set_visible_rectangle(rectangle);
 
 	if(is_folded()) {
 		DBG_GUI_L << LOG_HEADER << " folded node done.\n";
@@ -480,7 +480,7 @@ void ttree_view_node::set_visible_area(const SDL_Rect& area)
 	}
 
 	FOREACH(AUTO& node, children_) {
-		node.set_visible_area(area);
+		node.set_visible_rectangle(rectangle);
 	}
 }
 

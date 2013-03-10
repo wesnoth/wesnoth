@@ -131,7 +131,7 @@ void ttree_view::resize_content(
 		need_layout_ = true;
 		// If the content grows assume it "overwrites" the old content.
 		if(width_modification < 0 || height_modification < 0) {
-			set_dirty();
+			set_dirty(true);
 		}
 		DBG_GUI_L << LOG_HEADER << " succeeded.\n";
 	} else {
@@ -147,7 +147,7 @@ void ttree_view::layout_children(const bool force)
 		root_node_->place(indention_step_size_
 			, get_origin()
 			, content_grid()->get_size().x);
-		root_node_->set_visible_area(content_visible_area_);
+		root_node_->set_visible_rectangle(content_visible_area_);
 
 		need_layout_ = false;
 	}

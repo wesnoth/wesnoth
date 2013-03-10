@@ -85,8 +85,8 @@ public:
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
-	/** Inherited from tcontainer_. */
-	void layout_init(const bool full_initialization);
+	/** See @ref twidget::layout_initialise. */
+	virtual void layout_initialise(const bool full_initialisation) OVERRIDE;
 
 	/** Inherited from twidget. */
 	void request_reduce_height(const unsigned maximum_height);
@@ -114,8 +114,8 @@ public:
 	/** Inherited from tcontainer_. */
 	void set_origin(const tpoint& origin);
 
-	/** Inherited from tcontainer_. */
-	void set_visible_area(const SDL_Rect& area);
+	/** See @ref twidget::set_visible_rectangle. */
+	virtual void set_visible_rectangle(const SDL_Rect& rectangle) OVERRIDE;
 
 	/***** ***** ***** inherited ****** *****/
 

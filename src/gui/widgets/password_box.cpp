@@ -129,7 +129,7 @@ void tpassword_box::post_function() {
 	// Why do the selection functions not update
 	// the canvas?
 	update_canvas();
-	set_dirty();
+	set_dirty(true);
 }
 
 const std::string& tpassword_box::get_control_type() const

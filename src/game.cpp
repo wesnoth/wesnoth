@@ -35,6 +35,7 @@
 #include "serialization/parser.hpp"
 #include "serialization/validator.hpp"
 #include "version.hpp"
+#include "wml_exception.hpp"
 
 #include <cerrno>
 #include <clocale>

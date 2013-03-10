@@ -331,7 +331,7 @@ void tdebug_layout_graph::widget_generate_state_info(
 		<< "drawing action=" << control->get_drawing_action() << '\n'
 		<< "</td></tr>\n"
 		<< "<tr><td>\n"
-		<< "clip rect=" << control->clip_rect_ << '\n'
+		<< "clip rect=" << control->clipping_rectangle_ << '\n'
 		<< "</td></tr>\n"
 		<< "<tr><td>\n"
 		<< "use tooltip on label overflow="

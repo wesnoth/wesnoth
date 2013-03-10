@@ -108,7 +108,7 @@ void tsimple_item_selector::pre_show(CVideo& /*video*/, twindow& window)
 	}
 
 	if(single_button_) {
-		button_cancel.set_visible(gui2::twidget::INVISIBLE);
+		button_cancel.set_visible(gui2::twidget::tvisible::invisible);
 	}
 }
 

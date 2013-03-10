@@ -66,7 +66,7 @@ struct tpane_implementation
 		typedef typename utils::tconst_clone<tpane::titem, W>::reference thack;
 		BOOST_FOREACH(thack item, pane->items_) {
 
-			if(item.grid->get_visible() == twidget::INVISIBLE) {
+			if(item.grid->get_visible() == twidget::tvisible::invisible) {
 				continue;
 			}
 
@@ -74,7 +74,7 @@ struct tpane_implementation
 			 * If the adjusted coordinate is in the item's grid let the grid
 			 * resolve the coordinate.
 			 */
-			const SDL_Rect rect = item.grid->get_rect();
+			const SDL_Rect rect = item.grid->get_rectangle();
 			if(
 					   coordinate.x >= rect.x
 					&& coordinate.y >= rect.y
@@ -190,15 +190,15 @@ void tpane::place(const tpoint& origin, const tpoint& size)
 	place_children();
 }
 
-void tpane::layout_init(const bool full_initialization)
+void tpane::layout_initialise(const bool full_initialisation)
 {
 	DBG_GUI_D << LOG_HEADER << '\n';
 
-	twidget::layout_init(full_initialization);
+	twidget::layout_initialise(full_initialisation);
 
 	FOREACH(AUTO& item, items_) {
-		if(item.grid->get_visible() != twidget::INVISIBLE) {
-			item.grid->layout_init(full_initialization);
+		if(item.grid->get_visible() != twidget::tvisible::invisible) {
+			item.grid->layout_initialise(full_initialisation);
 		}
 	}
 }
@@ -211,7 +211,7 @@ void tpane::impl_draw_children(
 	DBG_GUI_D << LOG_HEADER << '\n';
 
 	FOREACH(AUTO& item, items_) {
-		if(item.grid->get_visible() != twidget::INVISIBLE) {
+		if(item.grid->get_visible() != twidget::tvisible::invisible) {
 			item.grid->draw_children(frame_buffer, x_offset, y_offset);
 		}
 	}
@@ -238,8 +238,8 @@ void tpane::filter(const tfilter_functor& filter_functor)
 	FOREACH(AUTO& item, items_) {
 		item.grid->set_visible(
 				filter_functor(item)
-					? twidget::VISIBLE
-					: twidget::INVISIBLE);
+					? twidget::tvisible::visible
+					: twidget::tvisible::invisible);
 	}
 
 	set_origin_children();
@@ -303,7 +303,7 @@ void tpane::place_children()
 	prepare_placement();
 	unsigned index = 0;
 	FOREACH(AUTO& item, items_) {
-		if(item.grid->get_visible() == twidget::INVISIBLE) {
+		if(item.grid->get_visible() == twidget::tvisible::invisible) {
 			continue;
 		}
 
@@ -318,7 +318,7 @@ void tpane::set_origin_children()
 	prepare_placement();
 	unsigned index = 0;
 	FOREACH(AUTO& item, items_) {
-		if(item.grid->get_visible() == twidget::INVISIBLE) {
+		if(item.grid->get_visible() == twidget::tvisible::invisible) {
 			continue;
 		}
 
@@ -333,7 +333,7 @@ void tpane::place_or_set_origin_children()
 	prepare_placement();
 	unsigned index = 0;
 	FOREACH(AUTO& item, items_) {
-		if(item.grid->get_visible() == twidget::INVISIBLE) {
+		if(item.grid->get_visible() == twidget::tvisible::invisible) {
 			continue;
 		}
 
@@ -353,7 +353,7 @@ void tpane::prepare_placement() const
 	placer_->initialise();
 
 	FOREACH(const AUTO& item, items_) {
-		if(item.grid->get_visible() == twidget::INVISIBLE) {
+		if(item.grid->get_visible() == twidget::tvisible::invisible) {
 			continue;
 		}
 
@@ -372,7 +372,7 @@ void tpane::signal_handler_request_placement(
 	if(widget) {
 		FOREACH(AUTO& item, items_) {
 			if(item.grid->has_widget(widget)) {
-				if(item.grid->get_visible() != twidget::INVISIBLE) {
+				if(item.grid->get_visible() != twidget::tvisible::invisible) {
 
 					/*
 					 * This time we call init layout but also the linked widget
@@ -380,7 +380,7 @@ void tpane::signal_handler_request_placement(
 					 * addon_list. This code can use some more tuning,
 					 * polishing and testing.
 					 */
-					item.grid->layout_init(false);
+					item.grid->layout_initialise(false);
 					get_window()->layout_linked_widgets();
 
 					/*

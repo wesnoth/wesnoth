@@ -156,7 +156,7 @@ void tlist::remove_row(const unsigned row, unsigned count)
 
 	unsigned height_reduced = 0;
 	for(; count; --count) {
-		if(generator_->item(row).get_visible() != INVISIBLE) {
+		if(generator_->item(row).get_visible() != tvisible::invisible) {
 			height_reduced += generator_->item(row).get_height();
 		}
 		generator_->delete_item(row);
@@ -208,8 +208,8 @@ void tlist::set_row_shown(const unsigned row, const bool shown)
 	if(resize_needed) {
 		window->invalidate_layout();
 	} else {
-//		grid().set_visible_area(content_visible_area());
-		set_dirty();
+//		grid().set_visible_rectangle(content_visible_rectangle());
+		set_dirty(true);
 	}
 
 	if(selected_row != get_selected_row()) {
@@ -242,8 +242,8 @@ void tlist::set_row_shown(const std::vector<bool>& shown)
 	if(resize_needed) {
 		window->invalidate_layout();
 	} else {
-//		content_grid_->set_visible_area(content_visible_area());
-		set_dirty();
+//		content_grid_->set_visible_rectangle(content_visible_rectangle());
+		set_dirty(true);
 	}
 
 	if(selected_row != get_selected_row()) {
@@ -297,7 +297,7 @@ void tlist::place(const tpoint& origin, const tpoint& size)
 	if(selected_item != -1) {
 /*
 		const SDL_Rect& visible = content_visible_area();
-		SDL_Rect rect = generator_->item(selected_item).get_rect();
+		SDL_Rect rect = generator_->item(selected_item).get_rectangle();
 
 		rect.x = visible.x;
 		rect.w = visible.w;
@@ -330,7 +330,7 @@ void tlist::resize_content(
 		need_layout_ = true;
 		// If the content grows assume it "overwrites" the old content.
 		if(width_modification < 0 || height_modification < 0) {
-			set_dirty();
+			set_dirty(true);
 		}
 		DBG_GUI_L << LOG_HEADER << " succeeded.\n";
 	} else {
@@ -352,16 +352,16 @@ void tlist::init()
 	 * So make them invisible for now.
 	 */
 	tgrid* g = find_widget<tgrid>(&grid(), "_header_grid", false, false);
-	if(g) g->set_visible(twidget::INVISIBLE);
+	if(g) g->set_visible(twidget::tvisible::invisible);
 
 	g = find_widget<tgrid>(&grid(), "_footer_grid", false, false);
-	if(g) g->set_visible(twidget::INVISIBLE);
+	if(g) g->set_visible(twidget::tvisible::invisible);
 
 	g = find_widget<tgrid>(&grid(), "_vertical_scrollbar_grid", false, false);
-	if(g) g->set_visible(twidget::INVISIBLE);
+	if(g) g->set_visible(twidget::tvisible::invisible);
 
 	g = find_widget<tgrid>(&grid(), "_horizontal_scrollbar_grid", false, false);
-	if(g) g->set_visible(twidget::INVISIBLE);
+	if(g) g->set_visible(twidget::tvisible::invisible);
 
 }
 
@@ -371,10 +371,10 @@ void tlist::layout_children(const bool force)
 		grid().place(grid().get_origin(), grid().get_size());
 
 /*
-		grid().set_visible_area(content_visible_area_);
+		grid().set_visible_rectangle(content_visible_area_);
 */
 		need_layout_ = false;
-		set_dirty();
+		set_dirty(true);
 	}
 }
 

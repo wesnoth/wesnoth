@@ -25,12 +25,12 @@
 
 namespace gui2 {
 
-void tcontainer_::layout_init(const bool full_initialization)
+void tcontainer_::layout_initialise(const bool full_initialisation)
 {
 	// Inherited.
-	tcontrol::layout_init(full_initialization);
+	tcontrol::layout_initialise(full_initialisation);
 
-	grid_.layout_init(full_initialization);
+	grid_.layout_initialise(full_initialisation);
 }
 
 void tcontainer_::reduce_width(const unsigned maximum_width)
@@ -108,18 +108,18 @@ void tcontainer_::set_origin(const tpoint& origin)
 	grid_.set_origin(client_position);
 }
 
-void tcontainer_::set_visible_area(const SDL_Rect& area)
+void tcontainer_::set_visible_rectangle(const SDL_Rect& rectangle)
 {
 	// Inherited.
-	twidget::set_visible_area(area);
+	twidget::set_visible_rectangle(rectangle);
 
-	grid_.set_visible_area(area);
+	grid_.set_visible_rectangle(rectangle);
 }
 
 void tcontainer_::impl_draw_children(surface& frame_buffer)
 {
-	assert(get_visible() == twidget::VISIBLE
-			&& grid_.get_visible() == twidget::VISIBLE);
+	assert(get_visible() == twidget::tvisible::visible
+			&& grid_.get_visible() == twidget::tvisible::visible);
 
 	grid_.draw_children(frame_buffer);
 }
@@ -129,8 +129,8 @@ void tcontainer_::impl_draw_children(
 		, int x_offset
 		, int y_offset)
 {
-	assert(get_visible() == twidget::VISIBLE
-			&& grid_.get_visible() == twidget::VISIBLE);
+	assert(get_visible() == twidget::tvisible::visible
+			&& grid_.get_visible() == twidget::tvisible::visible);
 
 	grid_.draw_children(frame_buffer, x_offset, y_offset);
 }
@@ -157,7 +157,7 @@ void tcontainer_::set_active(const bool active)
 		return;
 	}
 
-	set_dirty();
+	set_dirty(true);
 
 	set_self_active(active);
 }

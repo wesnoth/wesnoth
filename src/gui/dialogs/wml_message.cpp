@@ -90,8 +90,8 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 		window.set_click_dismiss(false);
 		window.set_escape_disabled(true);
 	} else {
-		caption.set_visible(twidget::INVISIBLE);
-		input.set_visible(twidget::INVISIBLE);
+		caption.set_visible(twidget::tvisible::invisible);
+		input.set_visible(twidget::tvisible::invisible);
 	}
 
 	// Find the option list related fields.
@@ -138,7 +138,7 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 			// click_dismiss has been disabled due to the input.
 		}
 	} else {
-		options.set_visible(twidget::INVISIBLE);
+		options.set_visible(twidget::tvisible::invisible);
 	}
 	window.set_click_dismiss(!has_input_ && option_list_.empty());
 }
