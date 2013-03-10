@@ -2,15 +2,15 @@
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated ail.com, 2005.
-#
+# revisão tradução em 10.03.2013 por gsavix@gmail.com
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2013-03-09 08:33+0100\n"
-"PO-Revision-Date: 2012-04-18 23:10-0300\n"
-"Last-Translator: Davi Duarte Pinheiro <daviduartep@gmail.com>\n"
+"PO-Revision-Date: 2013-03-10 03:55-0300\n"
+"Last-Translator: Gilberto dos Santos Alves <gsavix@gmail.com>\n"
 "Language-Team: Portuguese/Brazil\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -123,7 +123,7 @@ msgstr "Grama Seca"
 #. [terrain_type]: id=leaf_litter
 #: data/core/terrain.cfg:185
 msgid "Leaf Litter"
-msgstr ""
+msgstr "Folhas no Chão"
 
 #. [terrain_type]: id=dirt_dark
 #. [terrain_type]: id=dirt
@@ -162,7 +162,7 @@ msgstr "Estrada"
 #. [terrain_type]: id=road
 #: data/core/terrain.cfg:227
 msgid "Regular Cobbles"
-msgstr ""
+msgstr "Piso de Pedra Regular"
 
 #. [terrain_type]: id=road_clean
 #: data/core/terrain.cfg:237
@@ -172,7 +172,7 @@ msgstr "Pavimento Cinza Limpo"
 #. [terrain_type]: id=stone_path
 #: data/core/terrain.cfg:247
 msgid "Overgrown Cobbles"
-msgstr ""
+msgstr "Peso Pedra Irregular"
 
 #. [terrain_type]: id=ice
 #: data/core/terrain.cfg:260
@@ -521,7 +521,7 @@ msgstr "Chão de Caverna Terrosa"
 #. [terrain_type]: id=flagstones_dark
 #: data/core/terrain.cfg:846
 msgid "Dark Flagstones"
-msgstr ""
+msgstr "Pedra Escura"
 
 #. [terrain_type]: id=cave_path
 #: data/core/terrain.cfg:856
@@ -825,13 +825,13 @@ msgstr "Iglu"
 #. [terrain_type]: id=logcabin_village
 #: data/core/terrain.cfg:1438
 msgid "Log Cabin"
-msgstr ""
+msgstr "Cabana Madeira Rústica"
 
 #. [terrain_type]: id=logcabin_snow_village
 #: data/core/terrain.cfg:1451
 #, fuzzy
 msgid "Snowy Log Cabin"
-msgstr "Montanhas"
+msgstr "Cabana Montanhas"
 
 #. [terrain_type]: id=igloo
 #: data/core/terrain.cfg:1464
@@ -848,7 +848,7 @@ msgstr "Vila Pantanosa"
 #, fuzzy
 #| msgid "Swamp Merfolk Village"
 msgid "Merfolk Village"
-msgstr "Vila Serêiaca Pantanosa"
+msgstr "Vila Aquática"
 
 #. [terrain_type]: id=village_overlay
 #: data/core/terrain.cfg:1507
@@ -1053,7 +1053,7 @@ msgstr "Castelo"
 #. [terrain_type]: id=keep_overlay
 #: data/core/terrain.cfg:1877
 msgid "Keep Overlay"
-msgstr ""
+msgstr "Manter Sobreposição"
 
 #. [terrain_type]: id=bridge
 #. [terrain_type]: id=bridgediag1
@@ -1531,7 +1531,7 @@ msgstr "Preferências do Editor"
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:53
 msgid "Time of day lighting preset:"
-msgstr ""
+msgstr "Horário diurno programado:"
 
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:104
@@ -1613,7 +1613,7 @@ msgstr "Ações"
 #. [button]: id=step
 #: data/gui/default/window/formula_debugger.cfg:128
 msgid "Step operation"
-msgstr ""
+msgstr "Etapa operação"
 
 #. [button]: id=next
 #: data/gui/default/window/formula_debugger.cfg:139
@@ -1623,7 +1623,7 @@ msgstr "Próxima operação"
 #. [button]: id=stepout
 #: data/gui/default/window/formula_debugger.cfg:150
 msgid "Step out"
-msgstr ""
+msgstr "Passo saída"
 
 #. [button]: id=continue
 #: data/gui/default/window/formula_debugger.cfg:161
@@ -1724,7 +1724,7 @@ msgstr "x"
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_oos.cfg:62
 msgid "OOS error"
-msgstr ""
+msgstr "Erro OOS"
 
 #. [toggle_button]: id=ignore_all
 #: data/gui/default/window/game_save_oos.cfg:145
@@ -1750,7 +1750,7 @@ msgstr "Arquivo já existente. Deseja sobrescrevê-lo?"
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:46
 msgid "Gamestate Inspector"
-msgstr ""
+msgstr "Inspeciona Sit. Jogo"
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:100
@@ -1889,7 +1889,7 @@ msgstr "Sala atual"
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:339
 msgid "Lobby"
-msgstr ""
+msgstr "Saguão"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:340
@@ -2192,7 +2192,7 @@ msgstr "Senha:"
 #. [window]: id=mp_login
 #: data/gui/default/window/mp_login.cfg:8
 msgid "Multiplayer server login dialog"
-msgstr ""
+msgstr "Diálogo Login Servidor Multijogador"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:41
@@ -2208,7 +2208,7 @@ msgstr "Login:"
 #. [toggle_button]: id=remember_password
 #: data/gui/default/window/mp_login.cfg:200
 msgid "Save password to preferences (clear text)"
-msgstr "Salvar senha para preferências (limpar texto)"
+msgstr "Salvar senha para preferências (texto limpo)"
 
 #. [button]: id=password_reminder
 #: data/gui/default/window/mp_login.cfg:258
@@ -2234,6 +2234,12 @@ msgid ""
 "\n"
 "The Battle for Wesnoth forum can be found at http://forums.wesnoth.org/"
 msgstr ""
+"Você deve fazer login em um servidor oficial com seu usuário e senha do "
+"forum.\n"
+"Registrar-se não é necessário para associar-se ao servidor: só é necessário "
+"fornecer uma senha se desejar usar um nome usuário registrado.\n"
+"\n"
+"O forum Battle for Wesnoth pode ser encontrado em http://forums.wesnoth.org"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:146
@@ -2258,7 +2264,7 @@ msgstr "Hospedar Jogo em Rede"
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:167
 msgid "Host a game using dedicated server ‘wesnothd’"
-msgstr ""
+msgstr "Hospedar Jogo usando servidor dedicado 'wesnothd'"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:176
@@ -2447,11 +2453,11 @@ msgstr "jogador"
 
 #: src/game_preferences.cpp:833
 msgid "%H:%M"
-msgstr ""
+msgstr "%H:%M"
 
 #: src/game_preferences.cpp:836
 msgid "%I:%M %p"
-msgstr ""
+msgstr "%I:%M %p"
 
 #: src/game_preferences_display.cpp:172
 msgid "Full screen"
@@ -2729,7 +2735,7 @@ msgstr "Salvar Replay após uma vitória em SJ/MJ ou derrota em MJ"
 #: src/game_preferences_display.cpp:370
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr ""
-"Apagar jogos salvos automaticamente após vitória em SJ/MJ ou derrota em MJ"
+"Apagar jogos salvos automaticamente após vitóriaem SJ/MJ ou derrota em MJ"
 
 #: src/game_preferences_display.cpp:372
 msgid "Overlay a grid onto the map"
@@ -2911,7 +2917,7 @@ msgstr "Nenhum tema conhecido. Tente mudar de dentro de um jogo existente."
 
 #: src/game_preferences_display.cpp:1343
 msgid "Find $filename server binary to host networked games"
-msgstr ""
+msgstr "Procurar $filename servidor binario para hospedar jogo em rede"
 
 #: src/gui/auxiliary/canvas.cpp:597
 msgid "Line doesn't fit on canvas."
@@ -2958,11 +2964,11 @@ msgstr "Nenhuma grade definida."
 
 #: src/gui/auxiliary/window_builder.cpp:163
 msgid "Linked '$id' group has multiple definitions."
-msgstr ""
+msgstr "Ligar ao grupo '$id' com múltiplas definições"
 
 #: src/gui/auxiliary/window_builder.cpp:402
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
-msgstr ""
+msgstr "Ligação grupo '$id' precisa uma chave de 'largura' ou 'altura' fixa"
 
 #: src/gui/auxiliary/window_builder.cpp:527
 msgid "A row must have a column."
@@ -2974,7 +2980,7 @@ msgstr "Números de colunas divergem."
 
 #: src/gui/auxiliary/window_builder/control.cpp:49
 msgid "Found a widget with a helptip and without a tooltip."
-msgstr ""
+msgstr "Encontrado widget com dica ajuda e sem ferramenta de dica."
 
 #: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:48
 #: src/gui/auxiliary/window_builder/listbox.cpp:59
@@ -2985,14 +2991,14 @@ msgstr "Sem lista definida."
 #: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:52
 #: src/gui/auxiliary/window_builder/listbox.cpp:63
 msgid "A 'list_definition' should contain one row."
-msgstr ""
+msgstr "'list_definition' deve conter uma linha"
 
 #: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:68
 #: src/gui/auxiliary/window_builder/listbox.cpp:82
 #: src/gui/auxiliary/window_builder/multi_page.cpp:62
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
-msgstr ""
+msgstr "'list_data' deve ter mesmo número de colunas que a 'list-definition'"
 
 #: src/gui/auxiliary/window_builder/multi_page.cpp:40
 msgid "No page defined."
@@ -3000,7 +3006,7 @@ msgstr "Sem página definida."
 
 #: src/gui/auxiliary/window_builder/slider.cpp:67
 msgid "The number of value_labels and values don't match."
-msgstr ""
+msgstr "O número de 'value_labels' e os valores não combinam."
 
 #: src/gui/auxiliary/window_builder/stacked_widget.cpp:38
 msgid "No stack defined."
@@ -3012,7 +3018,7 @@ msgstr "Nenhum nó definido para visualização de árvore."
 
 #: src/gui/auxiliary/window_builder/tree_view.cpp:87
 msgid "[node]id 'root' is reserved for the implementation."
-msgstr ""
+msgstr "ID[node] 'raiz' reservado para implementação."
 
 #: src/gui/auxiliary/window_builder/tree_view.cpp:91
 msgid "No node defined."
@@ -3020,7 +3026,7 @@ msgstr "Nenhum nó definido."
 
 #: src/gui/dialogs/game_load.cpp:274
 msgid "#(Invalid)"
-msgstr ""
+msgstr "#(Invalido)"
 
 #: src/gui/dialogs/game_load.cpp:294
 msgid "Campaign: $campaign_name"
@@ -3071,10 +3077,12 @@ msgid ""
 "Whisper session with $name started. If you don’t want to receive messages "
 "from this user, type /ignore $name\n"
 msgstr ""
+"Sessão Whisper (sussuro) iniciada com $name. Caso não deseje receber "
+"mensagens desse usuário, digite /ignore $name\n"
 
 #: src/gui/dialogs/lobby_main.cpp:1113
 msgid "Room $name joined"
-msgstr ""
+msgstr "Associado a sala $name"
 
 #: src/gui/dialogs/lobby_main.cpp:1420
 msgid "$player has entered the room"
@@ -3102,7 +3110,7 @@ msgstr "Erro"
 
 #: src/gui/dialogs/mp_change_control.cpp:244
 msgid "Side $side"
-msgstr ""
+msgstr "Lado $side"
 
 #: src/gui/dialogs/mp_create_game.cpp:96
 msgid "Load Game..."
@@ -3111,7 +3119,7 @@ msgstr "Carregar Jogo..."
 #: src/gui/dialogs/network_transmission.cpp:54
 #: src/gui/dialogs/network_transmission.cpp:56 src/hotkeys.cpp:1186
 msgid "unit_byte^B"
-msgstr ""
+msgstr "unit_byte^B"
 
 #: src/gui/dialogs/title_screen.cpp:297
 msgid "Version "
@@ -3123,12 +3131,12 @@ msgstr "Versão"
 
 #: src/gui/widgets/helper.cpp:137
 msgid "Mandatory widget '$id' hasn't been defined."
-msgstr ""
+msgstr "Widget Obrigatório '$id' não foi definido."
 
 #: src/gui/widgets/settings.cpp:441
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
-msgstr ""
+msgstr "Definição Widget '$definition' não contém definição para '$id'."
 
 #: src/gui/widgets/settings.cpp:507
 msgid "No default gui defined."
@@ -3140,11 +3148,11 @@ msgstr "Nenhum estado ou seção de desenho definida."
 
 #: src/gui/widgets/tree_view_node.cpp:104
 msgid "Unknown builder id for tree view node."
-msgstr ""
+msgstr "Id construtor desconhecido para visão da árvore"
 
 #: src/gui/widgets/window.cpp:924
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
-msgstr ""
+msgstr "Clique desfazer precisa botão 'click_dismiss' ou 'ok'."
 
 #: src/gui/widgets/window.cpp:949 src/gui/widgets/window.cpp:989
 #: src/tests/gui/test_gui2.cpp:432
@@ -3379,7 +3387,7 @@ msgstr "Executar todas as ações"
 #. TRANSLATORS: whiteboard menu entry: delete planned action
 #: src/hotkeys.cpp:121
 msgid "whiteboard^Delete Action"
-msgstr ""
+msgstr "quadro branco Ação Deletar"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action up queue
 #: src/hotkeys.cpp:123
@@ -3500,19 +3508,19 @@ msgstr "Selecionar Nada"
 
 #: src/hotkeys.cpp:162
 msgid "Rotate Clipboard Clockwise"
-msgstr ""
+msgstr "Rotacionar Quadro Sentido Horário"
 
 #: src/hotkeys.cpp:164
 msgid "Rotate Clipboard Counter-Clockwise"
-msgstr ""
+msgstr "Rotacionar Quadro Sentido Anti-Horário"
 
 #: src/hotkeys.cpp:166
 msgid "Flip Clipboard Horizontally"
-msgstr ""
+msgstr "Inverter Quadro Horizontalmente"
 
 #: src/hotkeys.cpp:168
 msgid "Flip Clipboard Vertically"
-msgstr ""
+msgstr "Inverter Quadro Verticalmente"
 
 #: src/hotkeys.cpp:170
 msgid "Rotate Selection"
@@ -3781,6 +3789,8 @@ msgid ""
 "Screenshot hotkeys should be combined with the Control, Alt or Meta "
 "modifiers to avoid problems."
 msgstr ""
+"Teclas PrintScreen precisam ser combinadas com Control, Alt ou Meta para "
+"evitar problemas."
 
 #: src/preferences_display.cpp:430
 msgid "Warning"
@@ -3792,7 +3802,7 @@ msgstr "Não existem outros modos de vídeo disponíveis"
 
 #: src/preferences_display.cpp:562
 msgid " (widescreen)"
-msgstr ""
+msgstr " (tela larga)"
 
 #: src/preferences_display.cpp:566
 msgid "Choose Resolution"
