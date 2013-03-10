@@ -3,21 +3,22 @@
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2004.
-# Guillaume Pascal <guillaume.pascal43@laposte.net>, 2012.
+# Guillaume Pascal <guillaume.pascal43@laposte.net>, 2012, 2013.
+# Guigou Guillaume <guillaume.guigou@orange.fr>, 2013.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth\n"
+"Project-Id-Version: Wesnoth_Lib-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2013-03-09 08:51+0100\n"
-"PO-Revision-Date: 2012-03-31 14:56+0100\n"
-"Last-Translator: Guigou Guillaume <guillaume.guigou@orange.fr>\n"
-"Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
+"PO-Revision-Date: 2013-03-01 17:58+0200\n"
+"Last-Translator: Guillaume Pascal <guillaume.pascal43@laposte.net>\n"
+"Language-Team: French <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Virtaal 0.7.0\n"
+"X-Generator: Virtaal 0.7.1\n"
 
 #. [terrain_type]: id=deep_water
 #. [terrain_type]: id=deep_water_gray
@@ -262,10 +263,8 @@ msgstr "Moulin à vent"
 
 #. [terrain_type]: id=campfire
 #: data/core/terrain.cfg:409
-#, fuzzy
-#| msgid "Campaign"
 msgid "Campfire"
-msgstr "Campagne"
+msgstr "Feu de camp"
 
 #. [terrain_type]: id=fence
 #: data/core/terrain.cfg:418
@@ -333,24 +332,18 @@ msgstr "Forêt tropicale"
 
 #. [terrain_type]: id=rainforest
 #: data/core/terrain.cfg:497
-#, fuzzy
-#| msgid "Pine Forest"
 msgid "Rainforest"
-msgstr "Forêt de résineux"
+msgstr "Forêt tropicale humide"
 
 #. [terrain_type]: id=palm_desert_forest
 #: data/core/terrain.cfg:509
-#, fuzzy
-#| msgid "Pine Forest"
 msgid "Palm Forest"
-msgstr "Forêt de résineux"
+msgstr "Forêt de palmier"
 
 #. [terrain_type]: id=palm_forest
 #: data/core/terrain.cfg:521
-#, fuzzy
-#| msgid "Pine Forest"
 msgid "Dense Palm Forest"
-msgstr "Forêt de résineux"
+msgstr "Forêt dense de palmier"
 
 #. [terrain_type]: id=savanna_forest
 #: data/core/terrain.cfg:533
@@ -531,31 +524,23 @@ msgstr "Collines boisées enneigées (forêt mixte)"
 
 #. [terrain_type]: id=forest_tropical_hills
 #: data/core/terrain.cfg:856
-#, fuzzy
-#| msgid "Tropical Forest"
 msgid "Tropical Forested Hills"
-msgstr "Forêt tropicale"
+msgstr "Collines tropicales boisées"
 
 #. [terrain_type]: id=forest_palm_desert_hills
 #: data/core/terrain.cfg:867
-#, fuzzy
-#| msgid "Forested Hills"
 msgid "Palm Forested Hills"
-msgstr "Collines boisées"
+msgstr "Collines de palmier boisées"
 
 #. [terrain_type]: id=forest_palm_hills
 #: data/core/terrain.cfg:878
-#, fuzzy
-#| msgid "Forested Hills"
 msgid "Dense Palm Forested Hills"
-msgstr "Collines boisées"
+msgstr "Collines denses de palmier boisées"
 
 #. [terrain_type]: id=savanna_hills
 #: data/core/terrain.cfg:889
-#, fuzzy
-#| msgid "Forested Hills"
 msgid "Savanna Forested Hills"
-msgstr "Collines boisées"
+msgstr "CCollines de savane boisées"
 
 #. [terrain_type]
 #: data/core/terrain.cfg:901
@@ -732,10 +717,8 @@ msgstr "Surcouche infranchissable"
 # Laurent
 #. [terrain_type]: id=unwalkable_overlay
 #: data/core/terrain.cfg:1219
-#, fuzzy
-#| msgid "Impassable Overlay"
 msgid "Unwalkable Overlay"
-msgstr "Surcouche infranchissable"
+msgstr "Surcouche impraticable"
 
 #. [terrain_type]: id=off_map
 #. [terrain_type]: id=off_map2
@@ -1200,30 +1183,24 @@ msgstr "Pont souterrain"
 #. [terrain_type]: id=hangingbridgediag2
 #: data/core/terrain.cfg:2159 data/core/terrain.cfg:2170
 #: data/core/terrain.cfg:2181
-#, fuzzy
-#| msgid "Rotting Bridge"
 msgid "Hanging Bridge"
-msgstr "Pont délabré"
+msgstr "Pont suspendu"
 
 #. [terrain_type]: id=stonechasmbridge
 #. [terrain_type]: id=stonechasmbridgediag1
 #. [terrain_type]: id=stonechasmbridgediag2
 #: data/core/terrain.cfg:2195 data/core/terrain.cfg:2205
 #: data/core/terrain.cfg:2215
-#, fuzzy
-#| msgid "Cave Chasm Bridge"
 msgid "Stone Chasm Bridge"
-msgstr "Pont souterrain"
+msgstr "Pont de pierre souterrain"
 
 #. [terrain_type]: id=plankbridge
 #. [terrain_type]: id=plankbridgediag1
 #. [terrain_type]: id=plankbridgediag2
 #: data/core/terrain.cfg:2227 data/core/terrain.cfg:2237
 #: data/core/terrain.cfg:2247
-#, fuzzy
-#| msgid "Bridge"
 msgid "Plank Bridge"
-msgstr "Pont"
+msgstr "Pont de planche"
 
 #. [terrain_type]: id=off_map
 #: data/core/terrain.cfg:2263
@@ -1269,7 +1246,7 @@ msgstr "Impraticable"
 #. [terrain_type]: id=rails
 #: data/core/terrain.cfg:2346
 msgid "Rails"
-msgstr ""
+msgstr "Rails"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
@@ -1370,10 +1347,8 @@ msgstr "Annuler"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:88
-#, fuzzy
-#| msgid "Type"
 msgid "Type:"
-msgstr "Type"
+msgstr "Type :"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:120
@@ -1387,10 +1362,8 @@ msgstr "Version : "
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:180
-#, fuzzy
-#| msgid "Status"
 msgid "Status:"
-msgstr "Statut"
+msgstr "Statut :"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:212
@@ -1400,7 +1373,7 @@ msgstr "Taille :"
 #. [label]
 #: data/gui/default/window/addon_description.cfg:243
 msgid "Downloads:"
-msgstr ""
+msgstr "Téléchargements : "
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:274
@@ -1425,83 +1398,77 @@ msgstr "Aucune"
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:34
 msgid "addons_of_type^Campaigns"
-msgstr ""
+msgstr "Campagnes"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:35
 msgid "addons_of_type^MP eras"
-msgstr ""
+msgstr "Ères MJ"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:38
 msgid "addons_of_type^Scenarios"
-msgstr ""
+msgstr "Scénarios"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:39
 msgid "addons_of_type^MP factions"
-msgstr ""
+msgstr "Factions MJ"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:42
 msgid "addons_of_type^MP campaigns"
-msgstr ""
+msgstr "Campagnes MJ"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:43
 msgid "addons_of_type^Resources"
-msgstr ""
+msgstr "Ressources"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:46
 msgid "addons_of_type^MP scenarios"
-msgstr ""
+msgstr "Scénarios MJ"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:48
 msgid "addons_of_type^Other"
-msgstr ""
+msgstr "Ressources"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:51
 msgid "addons_of_type^MP map-packs"
-msgstr ""
+msgstr "Cartes additionnelles MJ"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:52
 msgid "addons_of_type^Unknown"
-msgstr ""
+msgstr "Inconnu"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:55
 msgid "addons_of_type^MP modifications"
-msgstr ""
+msgstr "Modifications MJ"
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:156
-#, fuzzy
-#| msgid "Multiplayer Options"
 msgid "Filter Options"
-msgstr "Options multijoueurs"
+msgstr "Options du filtre"
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:170
 msgid "Add-ons matching the following criteria will be displayed."
-msgstr ""
+msgstr "Les extensions répondant aux critères suivants seront affichées."
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:205
-#, fuzzy
-#| msgid "Translations:"
 msgid "Installation status:"
-msgstr "Traductions :"
+msgstr "Statut de l'installation :"
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:248
-#, fuzzy
-#| msgid "Add-ons"
 msgid "Add-on types:"
-msgstr "Extensions"
+msgstr "Types d'extensions :"
 
 #. [button]: id=toggle_all_displayed_types
 #: data/gui/default/window/addon_filter_options.cfg:261
@@ -1531,8 +1498,6 @@ msgstr "Enlever"
 
 #. [label]
 #: data/gui/default/window/campaign_dialog.cfg:55
-#, fuzzy
-#| msgid "Play a campaign"
 msgid "Play a Campaign"
 msgstr "Jouer une campagne"
 
@@ -1679,20 +1644,18 @@ msgstr "Équipe seulement"
 
 #. [toggle_button]: id=immutable_toggle
 #: data/gui/default/window/editor_edit_label.cfg:112
-#, fuzzy
-#| msgid "Impassable"
 msgid "Immutable"
-msgstr "Infranchissable"
+msgstr "Non modifiable"
 
 #. [toggle_button]: id=visible_fog_toggle
 #: data/gui/default/window/editor_edit_label.cfg:130
 msgid "Visible in fog"
-msgstr ""
+msgstr "Visible dans le brouillard"
 
 #. [toggle_button]: id=visible_shroud_toggle
 #: data/gui/default/window/editor_edit_label.cfg:148
 msgid "Visible in shroud"
-msgstr ""
+msgstr "Visible dans le voile"
 
 #. [label]
 #: data/gui/default/window/editor_generate_map.cfg:35
@@ -1736,10 +1699,8 @@ msgstr "Hauteur :"
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_new_map.cfg:115
-#, fuzzy
-#| msgid "Create Game"
 msgid "Create"
-msgstr "Créer un jeu"
+msgstr "Créer"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -1769,10 +1730,8 @@ msgstr "Ancienne hauteur :"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:154
-#, fuzzy
-#| msgid "Expand / shrink direction"
 msgid "Expand/shrink direction:"
-msgstr "Direction d'agrandissement / rétrécissement"
+msgstr "Direction d'agrandissement/rétrécissement :"
 
 #. [toggle_button]: id=copy_edge_terrain
 #: data/gui/default/window/editor_resize_map.cfg:253
@@ -1781,10 +1740,8 @@ msgstr "Copier le terrain en bordure"
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_resize_map.cfg:274
-#, fuzzy
-#| msgid "Resize Map"
 msgid "Resize"
-msgstr "Redimensionner la carte"
+msgstr "Redimensionner"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_set_starting_position.cfg:50
@@ -1934,10 +1891,8 @@ msgstr "Voulez-vous réellement effacer cette partie ?"
 #. [toggle_button]: id=dont_ask_again
 #: data/gui/default/window/game_delete.cfg:80
 #: data/gui/default/window/mp_host_game_prompt.cfg:79
-#, fuzzy
-#| msgid "Do not show lobby joins"
 msgid "Do not show again"
-msgstr "Ne pas afficher les arrivées au vestibule"
+msgstr "Ne plus afficher à nouveau"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -1982,15 +1937,13 @@ msgstr "Supprimer"
 
 #. [toggle_button]: id=change_difficulty
 #: data/gui/default/window/game_load.cfg:383
-#, fuzzy
-#| msgid "Difficulty"
 msgid "Change difficulty"
-msgstr "Difficulté"
+msgstr "Changer la difficulté"
 
 #. [toggle_button]: id=change_difficulty
 #: data/gui/default/window/game_load.cfg:384
 msgid "Change campaign difficulty before loading"
-msgstr ""
+msgstr "Changer la difficulté de la campagne avant le chargement"
 
 #. [toggle_button]: id=show_replay
 #: data/gui/default/window/game_load.cfg:403
@@ -1999,8 +1952,9 @@ msgstr "Montrer le film"
 
 #. [toggle_button]: id=show_replay
 #: data/gui/default/window/game_load.cfg:404
+#, fuzzy
 msgid "Play the embedded replay from the saved game if applicable"
-msgstr ""
+msgstr "Jouer le replay intégré à partir de la partie sauvegardée si possible"
 
 #. [toggle_button]: id=cancel_orders
 #: data/gui/default/window/game_load.cfg:422
@@ -2011,6 +1965,7 @@ msgstr "Annuler les ordres"
 #: data/gui/default/window/game_load.cfg:423
 msgid "Cancel any pending unit movements in the saved game"
 msgstr ""
+"Annuler tous les mouvements d'unités en attente dans la partie sauvegardée"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
@@ -2460,15 +2415,13 @@ msgstr "Heure de départ aléatoire"
 
 #. [label]
 #: data/gui/default/window/mp_create_game_choose_mods.cfg:54
-#, fuzzy
-#| msgid "Choose Resolution"
 msgid "Choose Modifications"
-msgstr "Choisir la résolution"
+msgstr "Choisir la modification"
 
 #. [label]: id=message
 #: data/gui/default/window/mp_create_game_choose_mods.cfg:73
 msgid "Enable the modifications you want to be active during the game."
-msgstr ""
+msgstr "Activer les modifications que vous voulez voir actives pendant le jeu."
 
 #. [scroll_label]: id=message
 #: data/gui/default/window/mp_create_game_set_password.cfg:61
@@ -2487,21 +2440,19 @@ msgstr "Mot de passe :"
 #. [label]
 #: data/gui/default/window/mp_depcheck_confirm_change.cfg:40
 msgid "Confirmation requested"
-msgstr ""
+msgstr "Demande de confirmation"
 
 #. [label]
 #: data/gui/default/window/mp_depcheck_confirm_change.cfg:98
 msgid "Would you like to apply the changes?"
-msgstr ""
+msgstr "Voulez-vous appliquer vos modifications ?"
 
 #. [label]
 #. [label]: id=message
 #: data/gui/default/window/mp_depcheck_select_new.cfg:40
 #: data/gui/default/window/mp_depcheck_select_new.cfg:59
-#, fuzzy
-#| msgid "User interface sounds"
 msgid "User interaction required"
-msgstr "Sons d'interface"
+msgstr "Intervention de l'utilisateur requise"
 
 #. [column]
 #. [label]
@@ -2517,6 +2468,9 @@ msgid ""
 "The server will run as a background process until all users have "
 "disconnected. Do you wish to continue?"
 msgstr ""
+"Une instance locale du serveur doit être démarrée afin d'héberger une partie "
+"en réseau. Le serveur sera exécuté comme un processus d'arrière-plan jusqu'à "
+"ce que tous les utilisateurs se soient déconnectés. Voulez-vous continuer ?"
 
 #. [window]: id=mp_login
 #: data/gui/default/window/mp_login.cfg:8
@@ -2807,11 +2761,11 @@ msgstr "Afficher la grille"
 
 #: src/game_preferences_display.cpp:177
 msgid "Save replays at the end of scenarios"
-msgstr ""
+msgstr "Enregistrer les replays à la fin des scénarios"
 
 #: src/game_preferences_display.cpp:178
 msgid "Delete auto-saves at the end of scenarios"
-msgstr ""
+msgstr "Supprimer les sauvegardes automatiques à la fin du scénario"
 
 #: src/game_preferences_display.cpp:179
 msgid "Do not show lobby joins"
@@ -3055,9 +3009,12 @@ msgid "Sighting an allied unit interrupts your unit’s movement"
 msgstr "Découvrir une unité alliée interrompt le mouvement de votre unité"
 
 #: src/game_preferences_display.cpp:366
+#, fuzzy
 msgid ""
 "Saves replays of games on victory in all modes and defeat in multiplayer"
 msgstr ""
+"Enregistre les replays des jeux en cas de victoire dans tous les modes et "
+"aussi en cas de défaite en multijoueur"
 
 # Benoit : obligé de faire ainsi, sinon la chaîne est bien trop longue...
 #: src/game_preferences_display.cpp:369
@@ -3065,7 +3022,9 @@ msgstr ""
 #| msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgid ""
 "Deletes previous auto-saves on victory in all modes and defeat in multiplayer"
-msgstr "Effacer les sauvegardes en cas de défaite multijoueur ou de victoire"
+msgstr ""
+"Effacer les sauvegardes automatiques en cas de victoire dans tous les modes "
+"et aussi en cas de défaite multijoueur"
 
 #: src/game_preferences_display.cpp:371
 msgid "Overlay a grid onto the map"
@@ -3076,16 +3035,12 @@ msgid "Sort the player list in the lobby by player groups"
 msgstr "Trier les joueurs du vestibule par groupes"
 
 #: src/game_preferences_display.cpp:377
-#, fuzzy
-#| msgid "Show icons in front of the player names in the lobby."
 msgid "Show icons in front of the player names in the lobby"
 msgstr "Afficher une icône devant le nom des joueurs connectés"
 
 #: src/game_preferences_display.cpp:380
-#, fuzzy
-#| msgid "Uncheck to delete the saved password (on exit)."
 msgid "Uncheck to delete the saved password (on exit)"
-msgstr "Décocher pour supprimer le mot de passe enregistré (en quittant)."
+msgstr "Décocher pour supprimer le mot de passe enregistré (en quittant)"
 
 #: src/game_preferences_display.cpp:384
 msgid "Do not show messages about players joining the multiplayer lobby"
@@ -3100,12 +3055,10 @@ msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "Signaler toute arrivée de joueur au vestibule"
 
 #: src/game_preferences_display.cpp:390
-#, fuzzy
-#| msgid "Find and set path to MP server to host LAN games."
 msgid "Find and set path to MP server to host LAN games"
 msgstr ""
 "Trouver et paramétrer le chemin du serveur hébergeant des parties LAN "
-"multijoueurs."
+"multijoueurs"
 
 #: src/game_preferences_display.cpp:391
 msgid "View and edit your friends and ignores list"
@@ -3346,8 +3299,9 @@ msgid "No page defined."
 msgstr "Aucune page définie."
 
 #: src/gui/auxiliary/window_builder/pane.cpp:34
+#, fuzzy
 msgid "Need at least 1 parallel item."
-msgstr ""
+msgstr "Besoin d'au moins 1 article parallèle."
 
 #: src/gui/auxiliary/window_builder/slider.cpp:66
 msgid "The number of value_labels and values don't match."
@@ -3373,73 +3327,71 @@ msgstr "Aucun nœud défini."
 
 #: src/gui/dialogs/addon/description.cpp:48
 msgid "addon_state^Not installed"
-msgstr ""
+msgstr "Non installée"
 
 #: src/gui/dialogs/addon/description.cpp:50
 msgid "addon_state^Published, not installed"
-msgstr ""
+msgstr "Publiée, non installée"
 
 #: src/gui/dialogs/addon/description.cpp:56
 msgid "addon_state^Installed"
-msgstr ""
+msgstr "Installée"
 
 #: src/gui/dialogs/addon/description.cpp:58
 msgid "addon_state^Published"
-msgstr ""
+msgstr "Publiée"
 
 #: src/gui/dialogs/addon/description.cpp:65
 msgid "addon_state^Installed, not tracking local version"
-msgstr ""
+msgstr "Installée, pas de suivi de la version locale"
 
 #: src/gui/dialogs/addon/description.cpp:69
 msgid "addon_state^Published, not tracking local version"
-msgstr ""
+msgstr "Publiée, pas de suivi de la version locale"
 
 #: src/gui/dialogs/addon/description.cpp:77
 msgid "addon_state^Installed ($local_version|), upgradable"
-msgstr ""
+msgstr "Installée ($local_version|), mise à jour disponible"
 
 #: src/gui/dialogs/addon/description.cpp:78
 msgid "addon_state^Published ($local_version| installed), upgradable"
-msgstr ""
+msgstr "Publiée, ($local_version| installée), mise à jour disponible"
 
 #: src/gui/dialogs/addon/description.cpp:87
 msgid "addon_state^Installed ($local_version|), outdated on server"
-msgstr ""
+msgstr "Installée ($local_version|), obsolète sur le serveur"
 
 #: src/gui/dialogs/addon/description.cpp:88
 msgid "addon_state^Published ($local_version| installed), outdated on server"
-msgstr ""
+msgstr "Publiée ($local_version| installée), obsolète sur le serveur"
 
 #: src/gui/dialogs/addon/description.cpp:96
 msgid "addon_state^Installed, broken"
-msgstr ""
+msgstr "Installée, corrompue"
 
 #: src/gui/dialogs/addon/description.cpp:98
 msgid "addon_state^Published, broken"
-msgstr ""
+msgstr "Publiée, corrompue"
 
 #: src/gui/dialogs/addon/description.cpp:104
 msgid "addon_state^Unknown"
-msgstr ""
+msgstr "Inconnu"
 
 #: src/gui/dialogs/addon/filter_options.cpp:142
 msgid "addons_view^Not Installed"
-msgstr ""
+msgstr "Non installées"
 
 #: src/gui/dialogs/addon/filter_options.cpp:144
 msgid "addons_view^Upgradable"
-msgstr ""
+msgstr "Mises à jour disponibles"
 
 #: src/gui/dialogs/addon/filter_options.cpp:146
 msgid "addons_view^Installed"
-msgstr ""
+msgstr "Installées"
 
 #: src/gui/dialogs/addon/filter_options.cpp:148
-#, fuzzy
-#| msgid "Uninstall Add-ons"
 msgid "addons_view^All Add-ons"
-msgstr "Désinstaller des extensions"
+msgstr "Toutes"
 
 # "B" = "Byte" => "octet" = "o" - GB
 #: src/gui/dialogs/addon_list.cpp:256
@@ -3542,29 +3494,39 @@ msgstr "Chargement du jeu…"
 
 #: src/gui/dialogs/mp_depcheck_confirm_change.cpp:65
 msgid "$requester requires the following modifications to be enabled:"
-msgstr ""
+msgstr "$requester nécessite que les modifications suivantes soient activées :"
 
 #: src/gui/dialogs/mp_depcheck_confirm_change.cpp:67
 msgid "$requester requires the following modifications to be disabled:"
 msgstr ""
+"$requester nécessite que les modifications suivantes soient désactivées :"
 
 #: src/gui/dialogs/mp_depcheck_select_new.cpp:69
 msgid ""
 "The currently chosen scenario is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
+"Le scénario actuellement sélectionné n'est pas compatible avec votre "
+"configuration.\n"
+"Merci d'en sélectionner un compatible."
 
 #: src/gui/dialogs/mp_depcheck_select_new.cpp:74
 msgid ""
 "The currently chosen era is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
+"L'ère actuellement sélectionnée n'est pas compatible avec votre "
+"configuration.\n"
+"Merci d'en sélectionner une compatible."
 
 #: src/gui/dialogs/mp_depcheck_select_new.cpp:80
 msgid ""
 "The currently chosen modification is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
+"La modification actuellement sélectionnée n'est pas compatible avec votre "
+"configuration.\n"
+"Merci d'en sélectionner une compatible."
 
 #: src/gui/dialogs/title_screen.cpp:297
 msgid "Version "
@@ -3608,14 +3570,13 @@ msgstr ""
 "Impossible d'afficher une boîte de dialogue qui ne tient pas dans l'écran."
 
 #: src/hotkey_preferences_display.cpp:148
-#, fuzzy
-#| msgid "Hotkeys"
 msgid "Hotkeys Reset"
-msgstr "Raccourcis clavier"
+msgstr "Raccourcis clavier réinitialisés"
 
 #: src/hotkey_preferences_display.cpp:149
 msgid "All hotkeys have been reset to their default values."
 msgstr ""
+"Tous les raccourcis clavier ont été réinitialisés à leurs valeurs par défaut."
 
 #: src/hotkey_preferences_display.cpp:165
 msgid "Hotkey Settings"
@@ -3629,29 +3590,23 @@ msgstr "Défaut"
 
 #: src/hotkey_preferences_display.cpp:173
 msgid "Reset all bindings to the default values"
-msgstr ""
+msgstr "Réinitialiser tous les raccourcis aux valeurs par défaut"
 
 #: src/hotkey_preferences_display.cpp:217
-#, fuzzy
-#| msgid "Prefs section^General"
 msgid "Prefs section^Game"
-msgstr "Général"
+msgstr "Jeu"
 
 #: src/hotkey_preferences_display.cpp:219
-#, fuzzy
-#| msgid "Prefs section^Sound"
 msgid "Prefs section^Editor"
-msgstr "Audio"
+msgstr "Éditeur"
 
 #: src/hotkey_preferences_display.cpp:246
-#, fuzzy
-#| msgid "Hotkeys"
 msgid "Add Hotkey"
-msgstr "Raccourcis clavier"
+msgstr "Ajouter un raccourci clavier"
 
 #: src/hotkey_preferences_display.cpp:247
 msgid "Clear Hotkey"
-msgstr "Effacer le raccourci"
+msgstr "Effacer un raccourci clavier"
 
 #: src/hotkey_preferences_display.cpp:252
 msgid "Action"
@@ -3683,24 +3638,22 @@ msgid ""
 "\"$hotkey_sequence|\" is in use by \"$old_hotkey_action|\". Do you wish to "
 "reassign it to \"$new_hotkey_action|\"?"
 msgstr ""
+"\"$hotkey_sequence|\" est utilisé par \"$old_hotkey_action|\". Voulez-vous "
+"le réattribuer à \"$new_hotkey_action|\" ?"
 
 #: src/hotkey_preferences_display.cpp:659
 #, fuzzy
 #| msgid "Hotkeys"
 msgid "Reassign Hotkey"
-msgstr "Raccourcis clavier"
+msgstr "Réassigner raccourci clavier"
 
 #: src/hotkeys.cpp:62
-#, fuzzy
-#| msgid "Flip Clipboard Horizontally"
 msgid "Scroll Viewport Horizontally"
-msgstr "Retourner horizontalement le presse-papier"
+msgstr "Faire défiler la zone d'affichage horizontalement"
 
 #: src/hotkeys.cpp:63
-#, fuzzy
-#| msgid "Flip Clipboard Vertically"
 msgid "Scroll Viewport Vertically"
-msgstr "Retourner verticalement le presse-papier"
+msgstr "Faire défiler la zone d'affichage verticalement"
 
 #: src/hotkeys.cpp:69
 msgid "Left Mouse Click"
@@ -3851,10 +3804,8 @@ msgid "Continue Network Game"
 msgstr "Reprendre le jeu en réseau"
 
 #: src/hotkeys.cpp:111
-#, fuzzy
-#| msgid "Start Editor"
 msgid "Quit Editor"
-msgstr "Ouvrir l'éditeur"
+msgstr "Quitter l'éditeur"
 
 #: src/hotkeys.cpp:112
 msgid "Set Team Label"
@@ -3984,32 +3935,31 @@ msgid "Map Information"
 msgstr "Information de la carte"
 
 #: src/hotkeys.cpp:154
-#, fuzzy
-#| msgid "Next Side"
 msgid "Add New Side"
-msgstr "Camp suivant"
+msgstr "Ajouter un nouveau camp"
 
 #: src/hotkeys.cpp:155
-#, fuzzy
-#| msgid "Switch Map"
 msgid "Switch Side"
-msgstr "Changer de carte"
+msgstr "Changer de camp"
 
 #: src/hotkeys.cpp:156
 msgid "Swap Foreground/Background Terrains"
 msgstr "Inverser les terrains d'avant et d'arrière-plan"
 
 #: src/hotkeys.cpp:157
+#, fuzzy
 msgid "Change Palette Group"
-msgstr ""
+msgstr "Changer le groupe de la palette"
 
 #: src/hotkeys.cpp:158
+#, fuzzy
 msgid "Scroll Palette Left"
-msgstr ""
+msgstr "Faire défiler la palette à gauche"
 
 #: src/hotkeys.cpp:159
+#, fuzzy
 msgid "Scroll Palette Right"
-msgstr ""
+msgstr "Faire défiler la palette à droite"
 
 #: src/hotkeys.cpp:160
 msgid "Next Tool"
@@ -4028,28 +3978,20 @@ msgid "Selection Tool"
 msgstr "Outil de sélection"
 
 #: src/hotkeys.cpp:164
-#, fuzzy
-#| msgid "Set Starting Positions Tool"
 msgid "Starting Positions Tool"
 msgstr "Outils de détermination des positions de départ"
 
 #: src/hotkeys.cpp:165
-#, fuzzy
-#| msgid "Fill Tool"
 msgid "Label Tool"
-msgstr "Outil de remplissage"
+msgstr "Outil d'étiquette"
 
 #: src/hotkeys.cpp:166
-#, fuzzy
-#| msgid "Paint Tool"
 msgid "Unit Tool"
-msgstr "Outils de peinture"
+msgstr "Outil d'unité"
 
 #: src/hotkeys.cpp:167
-#, fuzzy
-#| msgid "Village gold"
 msgid "Village Tool"
-msgstr "Or par village"
+msgstr "Outil de village"
 
 #: src/hotkeys.cpp:168
 msgid "Next Brush"
@@ -4154,22 +4096,17 @@ msgid "Auto-update Terrain Transitions"
 msgstr "Mettre à jour automatiquement les transitions de terrains"
 
 #: src/hotkeys.cpp:196
-#, fuzzy
-#| msgid "Auto-update Terrain Transitions"
 msgid "Auto-update Terrain Transitions: Yes"
-msgstr "Mettre à jour automatiquement les transitions de terrains"
+msgstr "Mettre à jour automatiquement les transitions de terrains : Oui"
 
 #: src/hotkeys.cpp:197
-#, fuzzy
-#| msgid "Auto-update Terrain Transitions"
 msgid "Auto-update Terrain Transitions: No"
-msgstr "Mettre à jour automatiquement les transitions de terrains"
+msgstr "Mettre à jour automatiquement les transitions de terrains : Non"
 
 #: src/hotkeys.cpp:198
-#, fuzzy
-#| msgid "Auto-update Terrain Transitions"
 msgid "Auto-update Terrain Transitions: Partial"
-msgstr "Mettre à jour automatiquement les transitions de terrains"
+msgstr ""
+"Mettre à jour automatiquement les transitions de terrains : Partiellement"
 
 #: src/hotkeys.cpp:200
 msgid "Refresh Image Cache"
@@ -4273,65 +4210,61 @@ msgstr "Afficher l'aide contextuelle"
 
 #: src/hotkeys.cpp:362 src/hotkeys.cpp:365
 msgid "Button"
-msgstr ""
+msgstr "Bouton"
 
 #: src/hotkeys.cpp:362
 msgid "Mouse"
-msgstr ""
+msgstr "Souris"
 
 #: src/hotkeys.cpp:365 src/hotkeys.cpp:401
 msgid "Joystick"
-msgstr ""
+msgstr "Joystick"
 
 #: src/hotkeys.cpp:371
 msgid "Centered"
-msgstr ""
+msgstr "Centré"
 
 #: src/hotkeys.cpp:374
 msgid "Up"
-msgstr ""
+msgstr "Haut"
 
 #: src/hotkeys.cpp:377
-#, fuzzy
-#| msgid "Height:"
 msgid "Right"
-msgstr "Hauteur :"
+msgstr "Droit"
 
 #: src/hotkeys.cpp:380
 msgid "Down"
-msgstr ""
+msgstr "Bas"
 
 #: src/hotkeys.cpp:383
 msgid "Left"
-msgstr ""
+msgstr "Gauche"
 
 #: src/hotkeys.cpp:386
 msgid "RightUp"
-msgstr ""
+msgstr "Droite Haut"
 
 #: src/hotkeys.cpp:389
 msgid "RightDown"
-msgstr ""
+msgstr "Droite Bas"
 
 #: src/hotkeys.cpp:392
 msgid "LeftUp"
-msgstr ""
+msgstr "Gauche Haut"
 
 #: src/hotkeys.cpp:395
 msgid "LeftDown"
-msgstr ""
+msgstr "Gauche Bas"
 
 #: src/hotkeys.cpp:398
-#, fuzzy
-#| msgid "Unknown era"
 msgid "Unknown"
-msgstr "Ère inconnue"
+msgstr "Inconnu"
 
 #: src/hotkeys.cpp:401
 #, fuzzy
 #| msgid "Hut"
 msgid "Hat"
-msgstr "Hutte"
+msgstr "Chapeau"
 
 #: src/hotkeys.cpp:828 src/hotkeys.cpp:1174
 msgid "Do you really want to quit?"
@@ -4398,10 +4331,8 @@ msgid "Roads between castles"
 msgstr "Routes entre les châteaux"
 
 #: src/mapgen_dialog.cpp:257
-#, fuzzy
-#| msgid "Show floating labels"
 msgid "Show labels"
-msgstr "Afficher les libellés flottants"
+msgstr "Afficher les étiquettes"
 
 #: src/mapgen_dialog.cpp:315
 msgid "/1000 tiles"
@@ -4507,15 +4438,13 @@ msgstr ""
 #~ msgid "Use New Lobby Interface"
 #~ msgstr "Utiliser l'interface du nouveau vestibule"
 
-#, fuzzy
 #~| msgid "Default"
 #~ msgid "Reset Defaults"
-#~ msgstr "Défaut"
+#~ msgstr "Réinitialiser aux réglages par défaut"
 
 #~ msgid "Change Hotkey"
 #~ msgstr "Modifier le raccourci"
 
-#, fuzzy
 #~| msgid "Select All"
 #~ msgid "Reset All"
 #~ msgstr "Sélectionner tout"

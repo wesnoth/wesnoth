@@ -1,21 +1,21 @@
 # French translations for Battle for Wesnoth package
 # Copyright (C) 2006 Wesnoth development team.
 # Automatically generated, 2006.
-# Guillaume Pascal <guillaume.pascal43@laposte.net>, 2011, 2012.
+# Guillaume Pascal <guillaume.pascal43@laposte.net>, 2011, 2012, 2013.
+# Guigou Guillaume <guillaume.guigou@orange.fr>, 2013.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
+"Project-Id-Version: Wesnoth_Manpages-1.12\n"
 "POT-Creation-Date: 2013-03-09 08:50+0100\n"
-"PO-Revision-Date: 2012-01-09 11:57+0100\n"
-"Last-Translator: Gérard Bodin <bodin.gnork@gmail.com>\n"
-"Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
+"PO-Revision-Date: 2013-03-02 14:18+0200\n"
+"Last-Translator: Guillaume Pascal <guillaume.pascal43@laposte.net>\n"
+"Language-Team: French <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Virtaal 0.7.0\n"
-"X-Poedit-Country: FRANCE\n"
+"X-Generator: Virtaal 0.7.1\n"
 
 # type: TH
 #. type: TH
@@ -152,10 +152,9 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:54
-#, fuzzy, no-wrap
-#| msgid "B<--campaign-difficulty E<lt>difficultyE<gt>>"
+#, no-wrap
 msgid "B<--campaign-difficulty [E<lt>difficultyE<gt>]>"
-msgstr "B<--campaign-difficulty E<lt>difficultéE<gt>>"
+msgstr "B<--campaign-difficulty [E<lt>difficultéE<gt>]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:57
@@ -506,25 +505,12 @@ msgstr "Affiche le nom du répertoire principal du jeu et quitte le programme."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:159
-#, fuzzy, no-wrap
-#| msgid "B<--preprocess, -p[=E<lt>define1E<gt>,E<lt>define2E<gt>,...] E<lt>file/folderE<gt> E<lt>target directoryE<gt>>"
+#, no-wrap
 msgid "B<-p, --preprocess E<lt>source file/folderE<gt> E<lt>target directoryE<gt>>"
-msgstr "B<--preprocess, -p[=E<lt>define1E<gt>,E<lt>define2E<gt>,...] E<lt>fichier/dossierE<gt> E<lt>répertoire cibleE<gt>>"
+msgstr "B<-p, --preprocess E<lt>fichier/dossierE<gt> E<lt>répertoire cibleE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:169
-#, fuzzy
-#| msgid ""
-#| "preprocesses a specified file/folder. The file(s) will be written in "
-#| "specified target directory: a plain cfg file and a processed cfg file. If "
-#| "a folder is specified, it will be preprocessed recursively based on the "
-#| "known preprocessor rules. The common macroses from the data/core/macros "
-#| "will be preprocessed before the specified resources.  B<define1,"
-#| "define2,...> - the extra defines will be added before processing the "
-#| "files. If you want to add them you must add the '=' character before.  If "
-#| "'SKIP_CORE' is in the define list the data/core won't be preprocessed.  "
-#| "Example: B<-p ~/wesnoth/data/campaigns/tutorial ~/result> or B<-"
-#| "p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result>"
 msgid ""
 "preprocesses a specified file/folder. For each file(s) a plain .cfg file and "
 "a processed .cfg file will be written in specified target directory. If a "
@@ -535,23 +521,20 @@ msgid ""
 "preprocessor visit: http://wiki.wesnoth.org/PreprocessorRef#Command-"
 "line_preprocessor"
 msgstr ""
-"Prétraite un fichier/dossier spécifié. Un ou plusieurs fichiers seront "
-"écrits dans le répertoire cible renseigné : un fichier cfg brut et un "
-"fichier cfg prétraité. Si un dossier est spécifié, il sera prétraité "
-"récursivement à partir des règles de prétraitement connues. Les macros "
-"standards contenues dans data/core/macros seront prétraitées avant les "
-"ressources spécifiées.  Les définitions supplémentaires (B<define1,"
-"define2,...>) seront ajoutées avant le traitement des fichiers. Pour en "
-"ajouter, il faut les faire précéder du caractère « = ».  Si « SKIP_CORE » "
-"est dans la liste de définitions, data/core ne sera pas prétraité.  "
-"Exemple : B<-p ~/wesnoth/data/campaigns/tutorial ~/result> ou B<-"
-"p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result>"
+"Prétraite un fichier/dossier spécifié. Pour chaque fichier(s) un fichier "
+"brut .cfg et un fichier traité .cfg sera écrit dans le répertoire cible "
+"spécifié. Si un dossier est spécifié, il sera prétraité récursivement à "
+"partir des règles de prétraitement connues. Les macros standards contenues "
+"dans « data/core/macros » seront prétraitées avant les ressources "
+"spécifiées. Exemple : B<-p ~/wesnoth/data/campaigns/tutorial ~/result.> Pour "
+"plus de détails concernant le prétraitement visiter : http://wiki.wesnoth."
+"org/PreprocessorRef#Command-line_preprocessor"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:170
 #, no-wrap
 msgid "B<--preprocess-defines=DEFINE1,DEFINE2,etc>"
-msgstr ""
+msgstr "B<--preprocess-defines=DEFINITION1,DEFINITION2,etc>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:175
@@ -560,6 +543,9 @@ msgid ""
 "B<SKIP_CORE> is in the define list the \"data/core\" directory won't be "
 "preprocessed."
 msgstr ""
+"Une liste séparée par des virgules est définie pour être utilisée par la "
+"commande « --preprocess ». Si B<SKIP_CORE> est définie dans la liste le "
+"répertoire « data/core » ne sera pas prétraité."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:175
@@ -631,7 +617,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:193
 #, no-wrap
 msgid "B<--username>I<E<lt>usernameE<gt>>"
-msgstr ""
+msgstr "B<--username>I<E<lt>nom d'utilisateurE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:196
@@ -639,12 +625,14 @@ msgid ""
 "uses E<lt>usernameE<gt> when connecting to a server, ignoring other "
 "preferences."
 msgstr ""
+"Utilise E<lt>nom d'utilisateurE<gt> lors de la connexion à un serveur, en "
+"ignorant d'autres préférences."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:196
 #, no-wrap
 msgid "B<--password>I<E<lt>passwordE<gt>>"
-msgstr ""
+msgstr "B<--password>I<E<lt>mot de passeE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:199
@@ -652,6 +640,8 @@ msgid ""
 "uses E<lt>passwordE<gt> when connecting to a server, ignoring other "
 "preferences. Unsafe."
 msgstr ""
+"Utilise E<lt>mot de passeE<gt> lors de la connexion à un serveur, en "
+"ignorant d'autres préférences. Dangereux."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:199

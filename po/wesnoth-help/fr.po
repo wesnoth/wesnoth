@@ -7,21 +7,22 @@
 # French Wesnoth translation team <wesnoth@ml.free.fr>, 2004.
 # Guillaume Melquiond <guillaume.melquiond@gmail.com>, 2009.
 # Guillaume Melquiond <guillaume.melquiond@gmail.com>, 2009.
-# Guillaume Pascal <guillaume.pascal43@laposte.net>, 2011, 2012.
+# Guillaume Pascal <guillaume.pascal43@laposte.net>, 2011, 2012, 2013.
+# Guigou Guillaume <guillaume.guigou@orange.fr>, 2013.
 msgid ""
 msgstr ""
-"Project-Id-Version: fr\n"
+"Project-Id-Version: Wesnoth_Help-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2013-03-09 08:51+0100\n"
-"PO-Revision-Date: 2012-03-25 14:49+0100\n"
-"Last-Translator: Guigou Guillaume <guillaume.guigou@orange.fr>\n"
-"Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
+"PO-Revision-Date: 2013-03-02 14:06+0200\n"
+"Last-Translator: Guillaume Pascal <guillaume.pascal43@laposte.net>\n"
+"Language-Team: French <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Virtaal 0.7.0\n"
+"X-Generator: Virtaal 0.7.1\n"
 
 #. [time]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:529
@@ -38,17 +39,10 @@ msgstr "fureur berserk"
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:757
 #: data/core/macros/abilities.cfg:563
-#, fuzzy
-#| msgid ""
-#| "Berserk:\n"
-#| "Whether used offensively or defensively, this attack presses the "
-#| "engagement until one of the combatants is slain, or 30 rounds of attacks "
-#| "have occurred."
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
-"Fureur berserk :\n"
 "En attaque comme en défense, cette attaque force le combat jusqu'à la mort "
 "de l'un des deux protagonistes ou jusqu'à un maximum de 30 tours."
 
@@ -61,40 +55,25 @@ msgstr "magique"
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:771
 #: data/core/macros/abilities.cfg:642
-#, fuzzy
-#| msgid ""
-#| "Magical:\n"
-#| "This attack always has a 70% chance to hit regardless of the defensive "
-#| "ability of the unit being attacked."
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
 msgstr ""
-"Magique :\n"
 "Cette attaque a toujours 70 % de chance d'atteindre sa cible quelle que soit "
 "la capacité défensive de l'ennemi."
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:783
 #: data/core/macros/abilities.cfg:686
-#, fuzzy
-#| msgid "firststrike"
 msgid "first strike"
 msgstr "initiative"
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:785
 #: data/core/macros/abilities.cfg:687
-#, fuzzy
-#| msgid ""
-#| "First Strike:\n"
-#| "This unit always strikes first with this attack, even if they are "
-#| "defending."
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
-msgstr ""
-"Initiative :\n"
-"Cette unité attaque toujours en premier, même quand elle se défend."
+msgstr "Cette unité attaque toujours en premier, même quand elle se défend."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
@@ -111,16 +90,6 @@ msgstr "soins +4"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:18
 #: data/core/macros/abilities.cfg:12
-#, fuzzy
-#| msgid ""
-#| "Heals +4:\n"
-#| "Allows the unit to heal adjacent allied units at the beginning of our "
-#| "turn.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 4 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -129,7 +98,6 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Soins +4 :\n"
 "Permet à cette unité de soigner les unités adjacentes au début de chaque "
 "tour.\n"
 "\n"
@@ -153,16 +121,6 @@ msgstr "soins +8"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
 #: data/core/macros/abilities.cfg:31
-#, fuzzy
-#| msgid ""
-#| "Heals +8:\n"
-#| "This unit combines herbal remedies with magic to heal units more quickly "
-#| "than is normally possible on the battlefield.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -172,7 +130,6 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Soins +8 :\n"
 "Cette unité combine des remèdes à base de plantes avec des incantations "
 "magiques pour soigner plus rapidement que la normale sur le champ de "
 "bataille.\n"
@@ -1209,7 +1166,7 @@ msgstr "Terrains"
 #. [topic]: id=..addons
 #: data/core/help.cfg:70 data/core/help.cfg:793
 msgid "Add-ons"
-msgstr ""
+msgstr "Extensions"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
@@ -1227,15 +1184,17 @@ msgid ""
 "its statistics, attacks, resistances, and movement and defense values.\n"
 "\n"
 msgstr ""
+"Cette section liste toutes les unités que vous découvrez lorsque vous "
+"explorez le monde de Wesnoth. Quand vous voyez une nouvelle unité au cours "
+"d'une campagne ou d'un scénario multijoueur, elle sera ajoutée à la sous-"
+"section de sa race et vous pourrez alors voir sa page chaque fois que vous "
+"le souhaiterez. La page d'une unité fournit une description générale, ses "
+"statistiques, ainsi que d'autres informations concernant ses attaques, ses "
+"capacités de résistance, et ses valeurs de mouvements et de défense.\n"
+"\n"
 
 #. [topic]: id=..abilities_section
 #: data/core/help.cfg:100
-#, fuzzy
-#| msgid ""
-#| "Certain units have abilities that either directly affect other units, or "
-#| "have an impact on how the unit interacts with other units. These "
-#| "abilities will be listed under this topic as you encounter them.\n"
-#| "\n"
 msgid ""
 "Certain units have abilities that either directly affect other units or have "
 "an impact on how the unit interacts with other units. These abilities will "
@@ -1247,6 +1206,8 @@ msgstr ""
 "Certaines unités ont des capacités qui affectent les autres unités ou la "
 "manière dont elles interagissent avec les autres. Ces capacités seront "
 "listées dans cette rubrique au fur et à mesure que vous les rencontrerez.\n"
+"Chaque page fournira une description de la capacité et listera les unités "
+"(actuellement découvertes) qui la possède.\n"
 "\n"
 
 #. [topic]: id=..weapon_specials
@@ -1259,6 +1220,13 @@ msgid ""
 "weapon special does and which (currently discovered) units have it.\n"
 "\n"
 msgstr ""
+"Certaines armes ont des caractéristiques particulières qui augmentent "
+"l'efficacité de l'attaque. Quand vous voyez une nouvelle arme spéciale lors "
+"d'un scénario de campagne ou de multijoueur, elle sera ajoutée à cette "
+"liste, vous pourrez alors voir sa page chaque fois que vous le souhaitez. "
+"Chaque page fournira une description de ce que fait l'arme spéciale ainsi "
+"qu'une liste des unités (actuellement découvertes) qui la possède.\n"
+"\n"
 
 #. [topic]: id=.unknown_unit
 #: data/core/help.cfg:118
@@ -3507,19 +3475,19 @@ msgid ""
 "offer.\n"
 "\n"
 msgstr ""
+"L'extensibilité de Wesnoth permet à la communauté florissante des "
+"utilisateurs de développer du contenu en utilisant le plein potentiel du "
+"moteur de jeu pour offrir de nouveaux scénarios, des campagnes, et bien au-"
+"delà de ce que l'ensemble des contenus officiels a à offrir.\n"
+"\n"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:804
 msgid "Using Add-ons"
-msgstr ""
+msgstr "Utiliser des extensions"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:805
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -3527,7 +3495,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Dégâts'</header>"
+"<header>text='Campagnes et scénarios'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:805
@@ -3535,6 +3503,8 @@ msgid ""
 "The game supports various types of add-ons that are used differently "
 "according to their purpose."
 msgstr ""
+"Le jeu est compatible avec divers types d'extensions qui sont utilisés "
+"différemment en fonction de leur usage."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:807
@@ -3546,16 +3516,25 @@ msgid ""
 "and regular campaigns are available from the <italic>text='Campaigns'</"
 "italic> menu in the title screen."
 msgstr ""
+"\n"
+"\n"
+"Les campagnes solos sont des collections de scénarios qui s'assemblent pour "
+"raconter une histoire. Aussi bien les scénarios indépendants — s'ils sont "
+"destinés à être joués en tant que tel — que les campagnes ordinaires sont "
+"disponibles à partir du menu <italic>text='Campagnes'</italic> dans l'écran "
+"d'accueil."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:809
-#, fuzzy
-#| msgid "<header>text='Units having this special attack'</header>"
 msgid ""
 "\n"
 "\n"
 "<header>text='Multiplayer Campaigns, Scenarios, and Map Packs'</header>"
-msgstr "<header>text='Unités ayant ce type d\\'attaque spéciale'</header>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='Campagnes multijoueurs, scénarios et cartes additionnelles'</"
+"header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:811
@@ -3567,14 +3546,16 @@ msgid ""
 "packs providing sets of individual multiplayer scenarios not connected in "
 "the form of a campaign."
 msgstr ""
+"\n"
+"\n"
+"Les parties <italic>text='multijoueurs'</italic> peuvent être jouées en "
+"étant entièrement personnalisées, sous forme de scénarios déterminés ou de "
+"campagnes spécialement conçues pour ça. Il y a aussi des modules qui "
+"fournissent des ensembles de scénarios multijoueurs individuels sous la "
+"forme d'une campagne."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:813
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Order and Number of Strikes'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3582,7 +3563,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Ordre et nombre d\\'attaques'</header>"
+"<header>text='Ères multijoueurs et Factions'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:815
@@ -3598,14 +3579,21 @@ msgid ""
 "creating a new game, and players can pick from the available factions for "
 "that era when setting up their sides and teams."
 msgstr ""
+"\n"
+"\n"
+"À des fins de jouabilité, diverses races de créatures dans le monde "
+"coopèrent les unes avec les autres au sein de factions. Les factions sont "
+"regroupées dans des ensembles équilibrés avec un thème commun; par exemple, "
+"les principales factions de Wesnoth peuvent être trouvées dans l'ère par "
+"défaut.\n"
+"\n"
+"En mode <italic>text='multijoueur'</italic>, vous pouvez choisir une ère à "
+"la création d'un nouveau jeu, et les joueurs peuvent choisir parmi les "
+"factions disponibles pour cette ère lorsqu'ils mettent en place leur camp et "
+"leur équipe."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:819
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Chance to Hit'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3613,7 +3601,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Probabilité de toucher'</header>"
+"<header>text='Créateur de ressources'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:821
@@ -3626,11 +3614,20 @@ msgid ""
 "directly used in-game on their own; however, other playable add-ons may "
 "depend on them and suggest or require their installation during download."
 msgstr ""
+"\n"
+"\n"
+"Les auteurs de contenu peuvent utiliser des packs de ressources disponibles "
+"sur le serveur d'extensions pour enrichir leur propre contenu avec les "
+"ressources existantes tels que des images, de la musique et du code. Ceux-ci "
+"ne sont généralement pas destinés à être utilisés par les joueurs et ne "
+"peuvent être utilisés directement dans le jeu, cependant, d'autres "
+"extensions jouables peuvent dépendre d'eux et suggérer ou exiger leur "
+"installation pendant le téléchargement."
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:830
 msgid "Installing Add-ons"
-msgstr ""
+msgstr "Installation des extensions"
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:831
@@ -3657,11 +3654,36 @@ msgid ""
 "about the add-on, such as its full description, installation status, and "
 "available languages."
 msgstr ""
+"Les extensions conçues par la communauté peuvent être obtenues et mises à "
+"jour via l'option <italic>text='Extensions'</italic> dans le menu principal. "
+"Une fois connecté au serveur d'extension (par défaut <italic>text='add_ons."
+"wesnoth.org'</italic>), il vous sera présenté la liste des extensions "
+"disponibles sur le serveur de téléchargement.\n"
+"\n"
+"L'état de l'installation pour chaque extension est indiqué en dessous de "
+"chaque entrée. Pour les extensions qui ont une <italic>text='mise à jour "
+"disponible'</italic> sur le serveur ou qui sont <italic>text='obsolète'</"
+"italic>, la version installée et la version disponible sur le serveur seront "
+"affichées dans la colonne <italic>text='Version'</italic>.\n"
+"\n"
+"Pour rechercher des extensions à l'aide de mots clés, tapez-les dans "
+"n'importe quel ordre dans la zone <bold>text='Filtre'</bold>, en les "
+"séparant par des espaces. Vous pouvez également trier la liste des "
+"extensions en cliquant sur les en-têtes de colonnes. Il est également "
+"possible de choisir d'afficher uniquement les extensions de catégories "
+"spécifiques en cliquant sur le bouton <bold>text='Options'</bold> dans le "
+"coin supérieur droit.\n"
+"\n"
+"Pour installer une extension, sélectionnez-la dans la liste et cliquez sur "
+"<bold>text='OK'</bold> ou double-cliquez simplement le titre de l'extension. "
+"Le bouton <bold>text='Description</bold> vous fournit des détails "
+"supplémentaires sur l'extension, comme sa description complète, l'état ​​de "
+"l'installation, et les langues disponibles."
 
 #. [topic]: id=removing_addons
 #: data/core/help.cfg:844
 msgid "Removing Add-ons"
-msgstr ""
+msgstr "Suppression des extensions"
 
 #. [topic]: id=removing_addons
 #: data/core/help.cfg:845
@@ -3675,6 +3697,16 @@ msgid ""
 "accidental loss. Instead, you have to manually delete the information files "
 "or the add-ons themselves using your platform’s facilities."
 msgstr ""
+"Pour supprimer les extensions, cliquez sur <bold>text='Supprimer des "
+"extensions'</bold> dans la boîte de dialogue de connexion au serveur "
+"d'extensions. Il vous sera présenté des cases à cocher pour supprimer un "
+"certain nombre de modules que vous avez installés.\n"
+"\n"
+"Cette fonction ne peut pas supprimer les extensions pour lesquelles il y a "
+"des informations publiées (fichiers <italic>text='.pbl'</italic>) attachées, "
+"afin d'éviter toute perte accidentelle. Au lieu de cela, vous devez "
+"supprimer manuellement les fichiers d'information ou les extensions elles-"
+"mêmes en passant par votre système d'exploitation."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:860
@@ -4068,18 +4100,12 @@ msgstr "guérison"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51
-#, fuzzy
-#| msgid ""
-#| "Cures:\n"
-#| "A curer can cure a unit of poison, although that unit will receive no "
-#| "additional healing on the turn it is cured of the poison."
 msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
-"Guérison : \n"
-"Un guérisseur peut guérir une unité empoisonnée, qui ne recevra alors pas de "
-"soins supplémentaires."
+"Un guérisseur peut guérir une unité empoisonnée, mais celle-ci ne recevra "
+"alors pas de soins supplémentaires ce tour-là."
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:73
@@ -4093,16 +4119,10 @@ msgstr "régénération"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:75
-#, fuzzy
-#| msgid ""
-#| "Regenerates:\n"
-#| "The unit will heal itself 8 HP per turn. If it is poisoned, it will "
-#| "remove the poison instead of healing."
 msgid ""
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
-"Régénération :\n"
 "L'unité se soigne de 8 PV par tour. Si elle est empoisonnée, elle élimine le "
 "poison au lieu de se soigner."
 
@@ -4118,16 +4138,10 @@ msgstr "inébranlable"
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:96
-#, fuzzy
-#| msgid ""
-#| "Steadfast:\n"
-#| "This unit’s resistances are doubled, up to a maximum of 50%, when "
-#| "defending. Vulnerabilities are not affected."
 msgid ""
 "This unit’s resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
 msgstr ""
-"Inébranlable :\n"
 "Les résistances de cette unité sont doublées, jusqu'à un maximum de 50 %, en "
 "défense. Les points faibles ne sont pas modifiés."
 
@@ -4149,16 +4163,6 @@ msgstr "commandement"
 #: data/core/macros/abilities.cfg:111 data/core/macros/abilities.cfg:133
 #: data/core/macros/abilities.cfg:167 data/core/macros/abilities.cfg:213
 #: data/core/macros/abilities.cfg:271
-#, fuzzy
-#| msgid ""
-#| "Leadership:\n"
-#| "This unit can lead our own units that are next to it, making them fight "
-#| "better.\n"
-#| "\n"
-#| "Adjacent own units of lower level will do more damage in battle. When a "
-#| "unit adjacent to, of a lower level than, and on the same side as a unit "
-#| "with Leadership engages in combat, its attacks do 25% more damage times "
-#| "the difference in their levels."
 msgid ""
 "This unit can lead our own units that are next to it, making them fight "
 "better.\n"
@@ -4168,7 +4172,6 @@ msgid ""
 "Leadership engages in combat, its attacks do 25% more damage times the "
 "difference in their levels."
 msgstr ""
-"Commandement :\n"
 "Cette unité peut commander les unités alliées présentes à ses côtés, les "
 "rendant meilleures au combat.\n"
 "\n"
@@ -4188,16 +4191,10 @@ msgstr "tirailleur"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:339
-#, fuzzy
-#| msgid ""
-#| "Skirmisher:\n"
-#| "This unit is skilled in moving past enemies quickly, and ignores all "
-#| "enemy Zones of Control."
 msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
-"Tirailleur :\n"
 "Cette unité est très habile pour aller rapidement derrière les lignes "
 "ennemies et ignore les zones de contrôle des adversaires."
 
@@ -4213,14 +4210,6 @@ msgstr "illumination"
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:354
-#, fuzzy
-#| msgid ""
-#| "Illuminates:\n"
-#| "This unit illuminates the surrounding area, making lawful units fight "
-#| "better, and chaotic units fight worse.\n"
-#| "\n"
-#| "Any units adjacent to this unit will fight as if it were dusk when it is "
-#| "night, and as if it were day when it is dusk."
 msgid ""
 "This unit illuminates the surrounding area, making lawful units fight "
 "better, and chaotic units fight worse.\n"
@@ -4228,7 +4217,6 @@ msgid ""
 "Any units adjacent to this unit will fight as if it were dusk when it is "
 "night, and as if it were day when it is dusk."
 msgstr ""
-"Illumination :\n"
 "Cette unité illumine les cases environnantes, rendant les unités loyales "
 "plus fortes et les unités chaotiques plus faibles.\n"
 "\n"
@@ -4247,16 +4235,10 @@ msgstr "téléportation"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:368
-#, fuzzy
-#| msgid ""
-#| "Teleport:\n"
-#| "This unit may teleport between any two empty villages owned by its side "
-#| "using one of its moves."
 msgid ""
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
-"Téléportation :\n"
 "Cette unité peut se téléporter instantanément entre deux villages d'un même "
 "camp pour un point de mouvement."
 
@@ -4272,14 +4254,6 @@ msgstr "embuscade"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:408 data/core/macros/abilities.cfg:411
-#, fuzzy
-#| msgid ""
-#| "Ambush:\n"
-#| "This unit can hide in forest, and remain undetected by its enemies.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in forest, except if they "
-#| "have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in forest, and remain undetected by its enemies.\n"
 "\n"
@@ -4287,7 +4261,6 @@ msgid ""
 "units next to it. Any enemy unit that first discovers this unit immediately "
 "loses all its remaining movement."
 msgstr ""
-"Embuscade :\n"
 "Cette unité peut se cacher dans les forêts et y rester invisible.\n"
 "\n"
 "Les ennemis ne peuvent pas voir cette unité tant qu'elle se trouve en forêt, "
@@ -4302,14 +4275,6 @@ msgstr "chasseur nocturne"
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:435
-#, fuzzy
-#| msgid ""
-#| "Nightstalk:\n"
-#| "The unit becomes invisible during night.\n"
-#| "\n"
-#| "Enemy units cannot see this unit at night, except if they have units next "
-#| "to it. Any enemy unit that first discovers this unit immediately loses "
-#| "all its remaining movement."
 msgid ""
 "The unit becomes invisible during night.\n"
 "\n"
@@ -4317,7 +4282,6 @@ msgid ""
 "it. Any enemy unit that first discovers this unit immediately loses all its "
 "remaining movement."
 msgstr ""
-"Chasseur nocturne :\n"
 "Cette unité devient invisible la nuit.\n"
 "\n"
 "Les ennemis ne peuvent pas voir cette unité la nuit, sauf s'ils sont juste à "
@@ -4341,16 +4305,6 @@ msgstr "dissimulation"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:454 data/core/macros/abilities.cfg:459
-#, fuzzy
-#| msgid ""
-#| "Concealment:\n"
-#| "This unit can hide in villages (with the exception of water villages), "
-#| "and remain undetected by its enemies, except by those standing next to "
-#| "it.\n"
-#| "\n"
-#| "Enemy units can not see this unit while it is in a village, except if "
-#| "they have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it.\n"
@@ -4359,8 +4313,7 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"Dissimulation :\n"
-"Cette unité peut se cacher dans les villages, sauf ceux aquatiques, et y "
+"Cette unité peut se cacher dans les villages (sauf ceux aquatiques), et y "
 "rester invisible.\n"
 "\n"
 "Les ennemis ne peuvent pas voir cette unité tant qu'elle se trouve dans un "
@@ -4379,14 +4332,6 @@ msgstr "immersion"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:478 data/core/macros/abilities.cfg:483
-#, fuzzy
-#| msgid ""
-#| "Submerge:\n"
-#| "This unit can hide in deep water, and remain undetected by its enemies.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in deep water, except if "
-#| "they have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
 "\n"
@@ -4394,7 +4339,6 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"Immersion :\n"
 "Cette unité peut se cacher dans les eaux profondes et y rester invisible.\n"
 "\n"
 "Les ennemis ne peuvent pas voir cette unité tant qu'elle se trouve dans les "
@@ -4414,16 +4358,12 @@ msgstr "nécrophagie"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:505
-#, fuzzy
-#| msgid ""
-#| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
-#| "living unit."
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
-" Cette unité gagne un point de vie rajouté à chaque fois qu'elle tue une "
-"unité vivante. Ce point de vie est aussi ajouté au maximum."
+"Cette unité gagne un point de vie rajouté à chaque fois qu'elle tue une "
+"unité."
 
 #. [unstore_unit]
 #: data/core/macros/abilities.cfg:531
@@ -4437,18 +4377,11 @@ msgstr "coup dans le dos"
 
 #. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:574
-#, fuzzy
-#| msgid ""
-#| "Backstab:\n"
-#| "When used offensively, this attack deals double damage if there is an "
-#| "enemy of the target on the opposite side of the target, and that unit is "
-#| "not incapacitated (turned to stone or otherwise paralyzed)."
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
 "incapacitated (turned to stone or otherwise paralyzed)."
 msgstr ""
-"Coup dans le dos :\n"
 "Lorsqu'elle est utilisée offensivement, cette attaque occasionne des dégâts "
 "doublés si une unité ennemie (ni pétrifiée ni paralysée) de la cible se "
 "trouve en vis-à-vis de l'attaquant."
@@ -4461,36 +4394,22 @@ msgstr "peste"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #: data/core/macros/abilities.cfg:587
-#, fuzzy
-#| msgid ""
-#| "Plague:\n"
-#| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#| "unit identical to and on the same side as the unit with the Plague "
-#| "attack. This doesn’t work on Undead or units in villages."
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
 "identical to and on the same side as the unit with the Plague attack. This "
 "doesn’t work on Undead or units in villages."
 msgstr ""
-"Peste :\n"
 "Une unité tuée par la peste se transforme en unité de même type appartenant "
 "à la même armée que celle ayant la peste. Cela ne fonctionne pas sur les "
 "morts-vivants ou sur les unités stationnées dans les villages."
 
 #. [plague]: id=plague, type=Walking Corpse
 #: data/core/macros/abilities.cfg:598
-#, fuzzy
-#| msgid ""
-#| "Plague:\n"
-#| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#| "Walking Corpse on the same side as the unit with the Plague attack. This "
-#| "doesn’t work on Undead or units in villages."
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
 "doesn’t work on Undead or units in villages."
 msgstr ""
-"Peste :\n"
 "Une unité tuée par la peste se transforme zombi appartenant à la même armée "
 "que celle ayant la peste. Cela ne fonctionne pas sur les morts-vivants ou "
 "sur les unités stationnées dans les villages."
@@ -4502,20 +4421,12 @@ msgstr "ralentissement"
 
 #. [slow]: id=slow
 #: data/core/macros/abilities.cfg:609
-#, fuzzy
-#| msgid ""
-#| "Slow:\n"
-#| "This attack slows the target until it ends a turn. Slow halves the damage "
-#| "caused by attacks and the movement cost for a slowed unit is doubled. A "
-#| "unit that is slowed will feature a snail icon in its sidebar information "
-#| "when it is selected."
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
 "that is slowed will feature a snail icon in its sidebar information when it "
 "is selected."
 msgstr ""
-"Ralentissement :\n"
 "Cette attaque ralentit la cible jusqu'à la fin de son tour. Une unité "
 "ralentie inflige moitié moins de dégâts et voit le coût de ses mouvements "
 "multiplié par deux. Lorsqu'elle est sélectionnée, une unité ralentie aura un "
@@ -4528,16 +4439,10 @@ msgstr "pétrification"
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:619
-#, fuzzy
-#| msgid ""
-#| "Petrify:\n"
-#| "This attack petrifies the target, turning it to stone. Units that have "
-#| "been petrified may not move or attack."
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
 msgstr ""
-"Pétrification :\n"
 "Cette attaque transforme la cible en pierre. Les unités ainsi pétrifiées ne "
 "peuvent plus se déplacer ou attaquer."
 
@@ -4548,15 +4453,9 @@ msgstr "tir d'élite"
 
 #. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:629
-#, fuzzy
-#| msgid ""
-#| "Marksman:\n"
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
-"Tir d'élite :\n"
 "Utilisée en attaque, cette attaque a toujours au moins 60 % de chance "
 "d'atteindre sa cible."
 
@@ -4567,20 +4466,12 @@ msgstr "essaim"
 
 #. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:654
-#, fuzzy
-#| msgid ""
-#| "Swarm:\n"
-#| "The number of strikes of this attack decreases when the unit is wounded. "
-#| "The number of strikes is proportional to the percentage of its of maximum "
-#| "HP the unit has. For example a unit with 3/4 of its maximum HP will get "
-#| "3/4 of the number of strikes."
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
 "unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
 "number of strikes."
 msgstr ""
-"Déferlement :\n"
 "Le nombre de frappes de cette attaque diminue lorsque l'unité est blessée. "
 "Ce nombre est proportionnel aux points de vie restants. Par exemple une "
 "unité avec 3/4 de ses points de vie aura 3/4 de ses frappes."
@@ -4592,17 +4483,10 @@ msgstr "charge"
 
 #. [damage]: id=charge
 #: data/core/macros/abilities.cfg:664
-#, fuzzy
-#| msgid ""
-#| "Charge:\n"
-#| "When used offensively, this attack deals double damage to the target. It "
-#| "also causes this unit to take double damage from the target’s "
-#| "counterattack."
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
 msgstr ""
-"Charge :\n"
 "Lorsqu'elle est utilisée offensivement, cette attaque inflige le double de "
 "dégâts à la cible, mais l'attaquant recevra également le double de dégâts "
 "lors de la riposte."
@@ -4614,16 +4498,10 @@ msgstr "drain"
 
 #. [drains]: id=drains
 #: data/core/macros/abilities.cfg:677
-#, fuzzy
-#| msgid ""
-#| "Drain:\n"
-#| "This unit drains health from living units, healing itself for half the "
-#| "amount of damage it deals (rounded down)."
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
 msgstr ""
-"Drain :\n"
 "Cette unité draine la vie des unités vivantes et se régénère de la moitié "
 "des dégâts causés (arrondis à l'inférieur)."
 
@@ -4634,18 +4512,11 @@ msgstr "empoisonnement"
 
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:697
-#, fuzzy
-#| msgid ""
-#| "Poison:\n"
-#| "This attack poisons living targets. Poisoned units lose 8 HP every turn "
-#| "until they are cured or are reduced to 1 HP. Poison can not, of itself, "
-#| "kill a unit."
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison can not, of itself, kill "
 "a unit."
 msgstr ""
-"Empoisonnement :\n"
 "Cette attaque empoisonne des cibles vivantes, qui perdent 8 points de vie "
 "chaque tour, jusqu'à ce qu'elles soient guéries ou qu'elles n'aient plus "
 "qu'un seul point de vie. Le poison seul ne peut pas tuer une unité."
@@ -6301,13 +6172,11 @@ msgstr "Évolue en : "
 
 #: src/help.cpp:1414
 msgid "Base unit: "
-msgstr ""
+msgstr "Unité de base : "
 
 #: src/help.cpp:1424
-#, fuzzy
-#| msgid "Factions:"
 msgid "Variations: "
-msgstr "Factions :"
+msgstr "Variantes : "
 
 #: src/help.cpp:1448 src/help.cpp:1820 src/help.cpp:1893
 msgid "race^Miscellaneous"
@@ -6335,11 +6204,12 @@ msgstr "Déplacements : "
 
 #: src/help.cpp:1493
 msgid "Vision: "
-msgstr ""
+msgstr "Vision : "
 
 #: src/help.cpp:1495
+#, fuzzy
 msgid "Jamming: "
-msgstr ""
+msgstr "Brouillage : "
 
 #: src/help.cpp:1496
 msgid "Cost: "
@@ -6406,12 +6276,14 @@ msgid "Movement Cost"
 msgstr "Coût des mouvements"
 
 #: src/help.cpp:1614
+#, fuzzy
 msgid "Vision Cost"
-msgstr ""
+msgstr "Coût de la vision"
 
 #: src/help.cpp:1617
+#, fuzzy
 msgid "Jamming Cost"
-msgstr ""
+msgstr "Coût du brouillage"
 
 #: src/help.cpp:1899
 msgid "<header>text='Units of this race'</header>"

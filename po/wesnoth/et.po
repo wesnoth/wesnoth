@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4 Estonian translation\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2013-03-09 08:51+0100\n"
-"PO-Revision-Date: 2012-04-02 21:49+0300\n"
-"Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
+"PO-Revision-Date: 2013-03-09 13:27+0300\n"
+"Last-Translator: Kaido Kikkas <kaido.kikkas@kakupesa.net>\n"
 "Language-Team: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -172,13 +172,13 @@ msgstr "Pakitud mängusalvestused"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:171
 msgid "Experimental multiplayer lobby"
-msgstr ""
+msgstr "Mitmemängija ooteruumi uus kasutajakeskkond"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:172
 msgid ""
 "Replace the classic multiplayer lobby with a newer, experimental interface"
-msgstr ""
+msgstr "Asenda klassikaline mitmemängija ooteruum uuema, katselise keskkonnaga"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:180
@@ -2380,9 +2380,9 @@ msgstr ""
 #. [set_menu_item]: id=select_another_ai
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:81
 #, fuzzy
-#| msgid "Test scenario"
+#| msgid "Selected user: "
 msgid "Select another ai"
-msgstr "Teststsenaarium"
+msgstr "Valitud kasutaja:"
 
 #. [set_menu_item]: id=select_test
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:91
@@ -2793,10 +2793,8 @@ msgstr "Venekeelne tõlge"
 
 #. [about]
 #: data/core/about.cfg:2656
-#, fuzzy
-#| msgid "Galician Translation"
 msgid "Scottish Gaelic Translation"
-msgstr "Galeegokeelne tõlge"
+msgstr "Gaelikeelne (šoti) tõlge"
 
 #. [about]
 #: data/core/about.cfg:2665
@@ -8991,9 +8989,6 @@ msgstr "Peida plaanid mängija $player eest"
 msgid "Whiteboard Options"
 msgstr "Tahvli sätted"
 
-#~ msgid "Unknown unit type '$type|' while generating traits"
-#~ msgstr "Vigane üksusetüüp '$type|' eripärade määramisel"
-
 #~ msgid "Multiplayer_AI^RCA AI"
 #~ msgstr "RCA arvutimängija"
 
@@ -9152,117 +9147,6 @@ msgstr "Tahvli sätted"
 #~ "Yasar,Yasin,Yasir,Yazan,Yazid,Yunus,Yushua,Yusri,Yusuf,Zafar,Zafir,Zahid,"
 #~ "Zahir,Zayd,Zaim,Zayn,Zarif,Zakarriya,Zaki,Zakwan,Ziyad,Zubayr,Zuhayr"
 
-#, fuzzy
-#~| msgid "invisible: "
-#~ msgid "invisible"
-#~ msgstr "nähtamatu: "
-
-#, fuzzy
-#~| msgid "female^slowed"
-#~ msgid "female^invisible"
-#~ msgstr "aeglustatud"
-
-#, fuzzy
-#~| msgid "Fire a game event."
-#~ msgid "I triggered a moveto event."
-#~ msgstr "Käivita mängusündmus."
-
-#, fuzzy
-#~| msgid "Password: "
-#~ msgid "sword"
-#~ msgstr "Parool:"
-
-#~ msgid "bow"
-#~ msgstr "vibu"
-
-#, fuzzy
-#~| msgid "drains"
-#~ msgid "drains 20%"
-#~ msgstr "kurnav"
-
-#, fuzzy
-#~| msgid ""
-#~| "Drain:\n"
-#~| "This unit drains health from living units, healing itself for half the "
-#~| "amount of damage it deals (rounded down)."
-#~ msgid ""
-#~ "Drain 20%:\n"
-#~ "This unit drains health from living units, healing itself for 20% of the "
-#~ "amount of damage it deals (rounded down)."
-#~ msgstr ""
-#~ "Kurnav:\n"
-#~ "See üksus suudab võtta elavatelt vastastelt elujõudu ning suunata poole "
-#~ "tekitatud kahjust (allapoole ümardatuna) enda ravimiseks."
-
-#, fuzzy
-#~| msgid "Version: "
-#~ msgid "Vision Test"
-#~ msgstr "Versioon:"
-
-#, fuzzy
-#~| msgid "invisible: "
-#~ msgid "It is invisible!"
-#~ msgstr "nähtamatu: "
-
-#, fuzzy
-#~| msgid "drains"
-#~ msgid "drains 100%"
-#~ msgstr "kurnav"
-
-#, fuzzy
-#~| msgid ""
-#~| "Drain:\n"
-#~| "This unit drains health from living units, healing itself for half the "
-#~| "amount of damage it deals (rounded down)."
-#~ msgid ""
-#~ "Drain 100%:\n"
-#~ "This unit drains health from living units, healing itself for 100% of the "
-#~ "amount of damage it deals (rounded down)."
-#~ msgstr ""
-#~ "Kurnav:\n"
-#~ "See üksus suudab võtta elavatelt vastastelt elujõudu ning suunata poole "
-#~ "tekitatud kahjust (allapoole ümardatuna) enda ravimiseks."
-
-#, fuzzy
-#~| msgid "Choose weapon:"
-#~ msgid "Choose a Map to Open"
-#~ msgstr "Vali relv:"
-
-#, fuzzy
-#~| msgid "Choose the game to load"
-#~ msgid "Choose a Mask to Apply"
-#~ msgstr "Vali laetav mäng"
-
-#, fuzzy
-#~| msgid "Choose weapon:"
-#~ msgid "Choose Target Map"
-#~ msgstr "Vali relv:"
-
-#, fuzzy
-#~| msgid "The map already exists. Do you want to overwrite it?"
-#~ msgid "The file already exists. Do you want to overwrite it?"
-#~ msgstr "Salvestus on juba olemas. Kas sa tahad selle üle kirjutada?"
-
-#, fuzzy
-#~| msgid "No era information found."
-#~ msgid "No random map generators found."
-#~ msgstr "Ajastuinfot ei leitud."
-
-#, fuzzy
-#~| msgid "Installation failed"
-#~ msgid "Map creation failed."
-#~ msgstr "Paigaldus ebaõnnestus"
-
-#, fuzzy
-#~| msgid "The map is invalid."
-#~ msgid "This map is already open."
-#~ msgstr "Vigane kaart."
-
-#, fuzzy
-#~| msgid "Next Side"
-#~ msgid "(New Side)"
-#~ msgstr "Järgmine osapool"
-
 #~ msgid "The server responded with an error: \"$error|\""
 #~ msgstr "Server andis veateate: \"$error|\""
 
@@ -9341,6 +9225,9 @@ msgstr "Tahvli sätted"
 #~ msgid "Choose the add-on to download."
 #~ msgstr "Vali allalaetav lisamoodul."
 
+#~ msgid "Choose the game to load"
+#~ msgstr "Vali laetav mäng"
+
 #~ msgid "Do you really want to start the server?"
 #~ msgstr "Kas sa tõesti tahad serveri käivitada?"
 
@@ -9355,6 +9242,9 @@ msgstr "Tahvli sätted"
 
 #~ msgid "A map without a header is not supported"
 #~ msgstr "Ilma päiseta kaarti ei saa kasutada."
+
+#~ msgid "Unknown unit type '$type|' while generating traits"
+#~ msgstr "Vigane üksusetüüp '$type|' eripärade määramisel"
 
 #~ msgid "Custom lighting for local time of day areas (uses more memory)"
 #~ msgstr "Kohandatud valgustus kohaliku päevaaja jaoks (vajab rohkem mälu)"
@@ -11897,6 +11787,18 @@ msgstr "Tahvli sätted"
 #~ "Rünnakul teeb see üksus topeltkahju, kuid saab ühtlasi topeltkahju ka "
 #~ "vastase vasturünnakutest."
 
+#~ msgid "drains"
+#~ msgstr "kurnav"
+
+#~ msgid ""
+#~ "Drain:\n"
+#~ "This unit drains health from living units, healing itself for half the "
+#~ "amount of damage it deals (rounded down)."
+#~ msgstr ""
+#~ "Kurnav:\n"
+#~ "See üksus suudab võtta elavatelt vastastelt elujõudu ning suunata poole "
+#~ "tekitatud kahjust (allapoole ümardatuna) enda ravimiseks."
+
 #~ msgid "poison"
 #~ msgstr "mürgitav"
 
@@ -13760,6 +13662,9 @@ msgstr "Tahvli sätted"
 #, fuzzy
 #~ msgid "Outlaw Ranger"
 #~ msgstr "Lindprii"
+
+#~ msgid "bow"
+#~ msgstr "vibu"
 
 #, fuzzy
 #~ msgid "Elven Castle"
