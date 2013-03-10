@@ -206,6 +206,7 @@ class unit_frame {
 		void redraw(const int frame_time,bool first_time,const map_location & src,const map_location & dst,int*halo_id,const frame_parameters & animation_val,const frame_parameters & engine_val)const;
 		const frame_parameters merge_parameters(int current_time,const frame_parameters & animation_val,const frame_parameters & engine_val=frame_parameters()) const;
 		const frame_parameters parameters(int current_time) const {return builder_.parameters(current_time);};
+		const frame_parameters end_parameters() const {return builder_.parameters(duration());};
 
 		int duration() const { return builder_.duration();};
 		bool does_not_change() const{ return builder_.does_not_change();};
