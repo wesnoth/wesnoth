@@ -4,12 +4,13 @@
 #
 # Automatically generated, 2006.
 # Luciano Montanaro <mikelima@cirulla.net>, 2007, 2008, 2009, 2011.
+# Antonio 'Antro' Rosella <arosella@yahoo.com> 2012-2013
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "POT-Creation-Date: 2013-03-09 08:50+0100\n"
-"PO-Revision-Date: 2012-01-27 22:40+0100\n"
-"Last-Translator: Antonio \"Antro\" Rosella <arosella@yahoo.com>\n"
+"PO-Revision-Date: 2013-03-10 19:33+0100\n"
+"Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +30,7 @@ msgstr "WESNOTH"
 #: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2013"
-msgstr ""
+msgstr "2013"
 
 # type: TH
 #. type: TH
@@ -155,10 +156,9 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:54
-#, fuzzy, no-wrap
-#| msgid "B<--campaign-difficulty E<lt>difficultyE<gt>>"
+#, no-wrap
 msgid "B<--campaign-difficulty [E<lt>difficultyE<gt>]>"
-msgstr "B<--campaign-difficulty E<lt>difficoltàE<gt>>"
+msgstr "B<--campaign-difficulty [E<lt>difficoltàE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:57
@@ -507,25 +507,12 @@ msgstr "stampa il nome della cartella contenente i dati del gioco ed esce."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:159
-#, fuzzy, no-wrap
-#| msgid "B<--preprocess, -p[=E<lt>define1E<gt>,E<lt>define2E<gt>,...] E<lt>file/folderE<gt> E<lt>target directoryE<gt>>"
+#, no-wrap
 msgid "B<-p, --preprocess E<lt>source file/folderE<gt> E<lt>target directoryE<gt>>"
-msgstr "B<--preprocess, -p[=E<lt>define1E<gt>,E<lt>define2E<gt>,...] E<lt>file/cartellaE<gt> E<lt>directory destinazioneE<gt>>"
+msgstr "B<-p, --preprocess, E<lt>file/cartellaE<gt> E<lt>directory destinazioneE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:169
-#, fuzzy
-#| msgid ""
-#| "preprocesses a specified file/folder. The file(s) will be written in "
-#| "specified target directory: a plain cfg file and a processed cfg file. If "
-#| "a folder is specified, it will be preprocessed recursively based on the "
-#| "known preprocessor rules. The common macroses from the data/core/macros "
-#| "will be preprocessed before the specified resources.  B<define1,"
-#| "define2,...> - the extra defines will be added before processing the "
-#| "files. If you want to add them you must add the '=' character before.  If "
-#| "'SKIP_CORE' is in the define list the data/core won't be preprocessed.  "
-#| "Example: B<-p ~/wesnoth/data/campaigns/tutorial ~/result> or B<-"
-#| "p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result>"
 msgid ""
 "preprocesses a specified file/folder. For each file(s) a plain .cfg file and "
 "a processed .cfg file will be written in specified target directory. If a "
@@ -537,22 +524,19 @@ msgid ""
 "line_preprocessor"
 msgstr ""
 "pre-processa uno specificato file/cartella. Il/I file saranno riscritti "
-"nella directory destinazione specificata: un file cfg piatto e un file cfg "
+"nella directory destinazione specificata: un file .cfg piatto e un file .cfg "
 "processato. Se viene specificata una cartella, sarà pre-processata "
 "ricorsivamente in base alle regole di pre-processing note. Le macro comuni "
-"per data/core/macros salanno pre-processate prima delle risorse specificate. "
-"B<define1,define2,...> - gli attributi di definizione addizionali verranno "
-"aggiunto prima di pre-processare il file. Se vuoi aggiungerli devono essere "
-"preceduti dal carattere «=». Se «SKIP_CORE» è definito nella lista, data/"
-"core non saranno pre-processati. Esempio: B<-p ~/wesnoth/data/campaigns/"
-"tutorial ~/result> o B<-p=MULTIPLAYER,MIA_CAMPAGNA ~/wesnoth/data/campaign/"
-"camp ~/result>"
+"della directory \"data/core/macros\" saranno pre-processate prima delle "
+"risorse specificate. Esempio: B<-p ~/wesnoth/data/campaigns/tutorial ~/"
+"result> Per ulteriori dettagli a riguardo de pre-processore puoi consultare "
+"http://wiki.wesnoth.org/PreprocessorRef#Command-line_preprocessor"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:170
 #, no-wrap
 msgid "B<--preprocess-defines=DEFINE1,DEFINE2,etc>"
-msgstr ""
+msgstr "B<--preprocess-defines=DEFINE1,DEFINE2,etc>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:175
@@ -561,6 +545,9 @@ msgid ""
 "B<SKIP_CORE> is in the define list the \"data/core\" directory won't be "
 "preprocessed."
 msgstr ""
+"lista di definizioni separate da una virgola per il comando '--preprocess'. "
+"Se il valore B<SKIP_CORE> è presente nella lista di definizioni della "
+"directory \"data/core\", la directory stessa non sarà processata."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:175
@@ -631,7 +618,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:193
 #, no-wrap
 msgid "B<--username>I<E<lt>usernameE<gt>>"
-msgstr ""
+msgstr "B<--username>I<E<lt>usernameE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:196
@@ -639,12 +626,14 @@ msgid ""
 "uses E<lt>usernameE<gt> when connecting to a server, ignoring other "
 "preferences."
 msgstr ""
+"utlizza E<lt>usernameE<gt> per la connessione ad un server, ignorando le "
+"altre scelte."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:196
 #, no-wrap
 msgid "B<--password>I<E<lt>passwordE<gt>>"
-msgstr ""
+msgstr "B<--password>I<E<lt>passwordE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:199
@@ -652,6 +641,8 @@ msgid ""
 "uses E<lt>passwordE<gt> when connecting to a server, ignoring other "
 "preferences. Unsafe."
 msgstr ""
+"utilizza E<lt>passwordE<gt> per la connessione ad un server, ignorando le "
+"altre scelte. Opzione non sicura."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:199
@@ -840,12 +831,13 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:254
 #, no-wrap
 msgid "B<--ignore-map-settings>"
-msgstr ""
+msgstr "B<--ignore-map-settings>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:257
 msgid "do not use map settings, use default values instead."
 msgstr ""
+"ignora le impostazioni della mappa, utilizza invece  i valori di default."
 
 # type: TP
 #. type: TP
@@ -999,12 +991,9 @@ msgstr "COPYRIGHT"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:302 ../../doc/man/wesnothd.6:280
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2013 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
+"Copyright \\(co 2003-2013 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
@@ -1940,6 +1929,3 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:286
 msgid "B<wesnoth>(6)."
 msgstr "B<wesnoth>(6)."
-
-#~ msgid "2011"
-#~ msgstr "2011"
