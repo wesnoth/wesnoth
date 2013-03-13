@@ -429,10 +429,10 @@ void part_ui::render_story_box()
 	}
 
 	int fix_text_y = text_y_;
-	if(fix_text_y + storybox_padding + txtsurf->h > screen_area().h && tbl != part::BLOCK_TOP) {
+	if(fix_text_y + 2*(storybox_padding+1) + txtsurf->h > screen_area().h && tbl != part::BLOCK_TOP) {
 		fix_text_y =
 			(screen_area().h > txtsurf->h + 1) ?
-			(std::max(0, screen_area().h - txtsurf->h - (storybox_padding+1))) :
+			(std::max(0, screen_area().h - txtsurf->h - 2*(storybox_padding+1))) :
 			(0);
 	}
 	int fix_text_h;
