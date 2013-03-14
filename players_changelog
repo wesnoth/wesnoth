@@ -45,6 +45,8 @@ Version 1.11.1+svn:
    * Tooltip for the movement points display shows the movement costs.
    * Updating the shroud after delaying shroud updates is done gradually instead
      of instantly.
+   * Fixed viewport centering issues with the Next Unit action, and some WML
+     actions such as [scroll_to], [scroll_to_unit], and [message] (bug #18793).
 
  * WML Engine:
    * When a map is replaced the number of owned villages for a side is updated

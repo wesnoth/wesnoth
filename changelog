@@ -65,6 +65,8 @@ Version 1.11.1+svn:
    * Fixed (bug #18970): Moving a unit after closing a click dismiss dialogue.
    * Increased bottom padding for story screen text when it reaches the bottom
      of the screen.
+   * Fix viewport centering issues with actions such as the Next Unit command,
+     and the [scroll_to], [scroll_to_unit], and [message] WML actions (bug #18793).
  * WML engine:
    * [unit_overlay] and [remove_unit_overlay] now return a more meaningful
      error message if the image= key is missing

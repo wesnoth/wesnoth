@@ -2024,7 +2024,7 @@ void display::scroll_to_tiles(const std::vector<map_location>::const_iterator & 
 	//if everything is fogged or the location list is empty
 	if(!valid) return;
 
-	if (scroll_type == ONSCREEN || ONSCREEN_WARP) {
+	if (scroll_type == ONSCREEN || scroll_type == ONSCREEN_WARP) {
 		SDL_Rect r = map_area();
 		int spacing = round_double(add_spacing*hex_size());
 		r.x += spacing;
@@ -2047,7 +2047,7 @@ void display::scroll_to_tiles(const std::vector<map_location>::const_iterator & 
 	int target_x = locs_bbox.x + locs_bbox.w/2;
 	int target_y = locs_bbox.y + locs_bbox.h/2;
 
-	if (scroll_type == ONSCREEN || ONSCREEN_WARP) {
+	if (scroll_type == ONSCREEN || scroll_type == ONSCREEN_WARP) {
 		// when doing an ONSCREEN scroll we do not center the target unless needed
 		SDL_Rect r = map_area();
 		int map_center_x = r.x + r.w/2;
