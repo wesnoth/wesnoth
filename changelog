@@ -5,6 +5,8 @@ Version 1.10.6+dev:
  * User interface:
    * Fixed (bug #17220): Cursor in gui2 text box now behaves appropriately after
      text box overflow occurs.
+   * Fix viewport centering issues with actions such as the Next Unit command,
+     and the [scroll_to], [scroll_to_unit], and [message] WML actions (bug #18793).
  * WML engine:
    * Fixed invalid memory access issues caused by subnamespaced persistent WML
      variables (bug #20385).
