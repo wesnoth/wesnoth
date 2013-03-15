@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2013-03-09 08:51+0100\n"
-"PO-Revision-Date: 2012-10-26 21:25-0500\n"
+"PO-Revision-Date: 2013-02-24 17:05-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -1355,10 +1355,8 @@ msgstr "Cancel"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:88
-#, fuzzy
-#| msgid "Type"
 msgid "Type:"
-msgstr "Type"
+msgstr "Type:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:120
@@ -1372,10 +1370,8 @@ msgstr "Version:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:180
-#, fuzzy
-#| msgid "Status"
 msgid "Status:"
-msgstr "Status"
+msgstr "Status:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:212
@@ -1518,10 +1514,8 @@ msgstr "Remove"
 
 #. [label]
 #: data/gui/default/window/campaign_dialog.cfg:55
-#, fuzzy
-#| msgid "Play a campaign"
 msgid "Play a Campaign"
-msgstr "Play a campaign"
+msgstr "Play a Campaign"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -1768,10 +1762,8 @@ msgstr "Copy edge terrain"
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_resize_map.cfg:274
-#, fuzzy
-#| msgid "Resize Map"
 msgid "Resize"
-msgstr "Resize Map"
+msgstr "Resize"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_set_starting_position.cfg:50
@@ -3407,10 +3399,8 @@ msgid "addons_view^Installed"
 msgstr ""
 
 #: src/gui/dialogs/addon/filter_options.cpp:148
-#, fuzzy
-#| msgid "Uninstall Add-ons"
 msgid "addons_view^All Add-ons"
-msgstr "Uninstall Add-ons"
+msgstr "All Add-ons"
 
 #: src/gui/dialogs/addon_list.cpp:256
 #: src/gui/dialogs/network_transmission.cpp:54
@@ -4250,17 +4240,15 @@ msgstr ""
 
 #: src/hotkeys.cpp:371
 msgid "Centered"
-msgstr ""
+msgstr "Centred"
 
 #: src/hotkeys.cpp:374
 msgid "Up"
 msgstr ""
 
 #: src/hotkeys.cpp:377
-#, fuzzy
-#| msgid "Height:"
 msgid "Right"
-msgstr "Height:"
+msgstr "Right"
 
 #: src/hotkeys.cpp:380
 msgid "Down"
@@ -4287,16 +4275,12 @@ msgid "LeftDown"
 msgstr ""
 
 #: src/hotkeys.cpp:398
-#, fuzzy
-#| msgid "Unknown era"
 msgid "Unknown"
-msgstr "Unknown era"
+msgstr "Unknown"
 
 #: src/hotkeys.cpp:401
-#, fuzzy
-#| msgid "Hut"
 msgid "Hat"
-msgstr "Hut"
+msgstr "Hat"
 
 #: src/hotkeys.cpp:828 src/hotkeys.cpp:1174
 msgid "Do you really want to quit?"
@@ -4360,7 +4344,7 @@ msgstr "Roads between castles"
 #, fuzzy
 #| msgid "Show floating labels"
 msgid "Show labels"
-msgstr "Show floating labels"
+msgstr "Show labels"
 
 #: src/mapgen_dialog.cpp:315
 msgid "/1000 tiles"
@@ -4469,11 +4453,3 @@ msgstr ""
 
 #~ msgid "Change Hotkey"
 #~ msgstr "Change Hotkey"
-
-#, fuzzy
-#~| msgid "Select All"
-#~ msgid "Reset All"
-#~ msgstr "Select All"
-
-#~ msgid "This hotkey is already in use."
-#~ msgstr "This hotkey is already in use."
