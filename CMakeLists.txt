@@ -82,6 +82,18 @@ option(ENABLE_NLS "Enable building of translations" ON)
 option(ENABLE_LOW_MEM "Reduce memory usage by removing extra functionality" OFF)
 option(ENABLE_OMP "Enables OpenMP, and has additional dependencies" OFF)
 
+if(NOT UNIX)
+	set(DEFAULT_ENABLE_DISPLAY_REVISION false)
+else()
+	set(DEFAULT_ENABLE_DISPLAY_REVISION true)
+endif()
+option(
+	ENABLE_DISPLAY_REVISION
+	"Enable the display of the revision number in the game"
+	${DEFAULT_ENABLE_DISPLAY_REVISION}
+)
+
+
 # The use of shared libraries makes compilation debug versions faster but
 # results in extra shared libraries. For installation this is not practical
 # since the libraries need to be given SONAMES and kept in sync. Therefore

@@ -139,7 +139,7 @@ endif(X11_FOUND)
 find_program(SVNVERSION_EXECUTABLE "svnversion")
 
 set(REVISION_FILE)
-if(SVNVERSION_EXECUTABLE)
+if(SVNVERSION_EXECUTABLE AND NOT ENABLE_DISPLAY_REVISION)
 	execute_process(COMMAND ${SVNVERSION_EXECUTABLE} -n ${CMAKE_SOURCE_DIR}
 		OUTPUT_VARIABLE SVN_VERSION)
 	if(SVN_VERSION MATCHES [0-9]+.*)
@@ -159,7 +159,7 @@ if(SVNVERSION_EXECUTABLE)
 
 		set(UPDATE_REVISION ON CACHE INTERNAL "")
 	endif(SVN_VERSION MATCHES [0-9]+.*)
-endif(SVNVERSION_EXECUTABLE)
+endif()
 
 if(MSVC)
 	SOURCE_GROUP("src" REGULAR_EXPRESSION ".*")
@@ -243,6 +243,39 @@ add_library(wesnoth-core ${LIBRARY_TYPE} EXCLUDE_FROM_ALL ${libwesnoth-core_STAT
 if(UPDATE_REVISION)
 	add_dependencies(wesnoth-core update_revision)
 endif(UPDATE_REVISION)
+
+# Depending on the flag create a real file or an empty dummy.
+#
+# Since the code is executed every build run of Wesnoth we need to make sure
+# that no modifications don't turn into a rebuild. Therefore a the dummy is
+# created and the second target only copies the file if modified.
+if(ENABLE_DISPLAY_REVISION)
+	add_custom_target(wesnoth-revision_dummy
+		COMMAND
+			${CMAKE_SOURCE_DIR}/utils/autorevision
+				-th
+				> ${CMAKE_CURRENT_BINARY_DIR}/revision.dummy
+		WORKING_DIRECTORY
+			${CMAKE_SOURCE_DIR}
+	)
+
+	add_custom_target(wesnoth-revision
+		COMMAND
+			${CMAKE_COMMAND} -E
+				copy_if_different
+					${CMAKE_CURRENT_BINARY_DIR}/revision.dummy
+					${CMAKE_CURRENT_BINARY_DIR}/revision.h
+	)
+
+	add_dependencies(wesnoth-revision wesnoth-revision_dummy)
+	add_dependencies(wesnoth-core wesnoth-revision)
+	set_source_files_properties(
+		game_config.cpp
+		PROPERTIES
+			COMPILE_DEFINITIONS "LOAD_REVISION"
+	)
+endif()
+
 
 ########### libwesnoth-lua ###############
 
