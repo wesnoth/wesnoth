@@ -2720,7 +2720,7 @@ const unit_animation* unit::choose_animation(const display& disp, const map_loca
 			options.push_back(&*i);
 		} else if(matching > max_val) {
 			max_val = matching;
-			options.erase(options.begin(),options.end());
+			options.clear();
 			options.push_back(&*i);
 		}
 	}

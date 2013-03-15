@@ -599,8 +599,10 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		{
 			anim["hits"] = false;
 			animations.push_back(unit_animation(anim));
+			animations.back().base_score_--; //so default doesn't interefere with 'if' block
 			anim["hits"] = true;
 			animations.push_back(unit_animation(anim));
+			animations.back().base_score_--;
 			animations.back().add_frame(225,frame_builder()
 					.image(animations.back().get_last_frame().end_parameters().image.get_filename())
 					.duration(225)
