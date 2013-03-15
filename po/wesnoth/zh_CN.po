@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2013-03-09 08:33+0100\n"
-"PO-Revision-Date: 2012-04-04 18:49+0800\n"
+"PO-Revision-Date: 2013-03-13 18:31+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
 "translation-cn>\n"
@@ -161,13 +161,13 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:164
 msgid "Experimental multiplayer lobby"
-msgstr ""
+msgstr "试验性多人游戏大厅"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:165
 msgid ""
 "Replace the classic multiplayer lobby with a newer, experimental interface"
-msgstr ""
+msgstr "用一个新的、试验性的界面来替换经典多人游戏大厅"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:173
@@ -543,10 +543,8 @@ msgstr "俄文翻译"
 
 #. [about]
 #: data/core/about.cfg:2593
-#, fuzzy
-#| msgid "Galician Translation"
 msgid "Scottish Gaelic Translation"
-msgstr "巴伦西亚文翻译"
+msgstr "苏格兰盖尔文翻译"
 
 #. [about]
 #: data/core/about.cfg:2602
@@ -893,7 +891,7 @@ msgid ""
 "Sprinkling this water on melee weapons grants them the <i>arcane</i> damage "
 "type until the end of the current scenario. Should $unit.name use it?"
 msgstr ""
-"近战武器沾上这种水之后，伤害类型将变为<i>奥术</i>，直到当前场景结束。$unit."
+"近战武器沾上这种水之后，伤害类型将变为<b>奥术</b>，直到当前场景结束。$unit."
 "name应该使用它吗？"
 
 #: data/core/macros/items.cfg:268
@@ -918,7 +916,7 @@ msgstr "圣水"
 msgid ""
 "This water will make melee weapons have the <i>arcane</i> damage type until "
 "the end of the current scenario."
-msgstr "这瓶水将使得近战武器的伤害类型变为<i>奥术</i>，直到当前场景结束。"
+msgstr "这瓶水将使得近战武器的伤害类型变为<b>奥术</b>，直到当前场景结束。"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:304
@@ -2349,7 +2347,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:5 data/hardwired/tips.cfg:137
 msgid "<i>― Great Mage Delfador, 516YW</i>"
-msgstr "<i>——大法师德法多，韦元516年</i>"
+msgstr "<b>——大法师德法多，韦元516年</b>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:8
@@ -2381,7 +2379,7 @@ msgstr ""
 #: data/hardwired/tips.cfg:209 data/hardwired/tips.cfg:229
 #: data/hardwired/tips.cfg:238
 msgid "<i>― The Wesnoth Tactical Guide</i>"
-msgstr "<i>——韦诺战术指南</i>"
+msgstr "<b>——韦诺战术指南</b>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:12
@@ -2390,13 +2388,13 @@ msgid ""
 "level up. Early in a campaign, try to give killing blows to these units so "
 "you can get some high-level troops sooner."
 msgstr ""
-"拥有<i>聪慧</i>特质的单位升级需要的经验比一般单位少。在战役早期，试着把最后一"
+"拥有<b>聪慧</b>特质的单位升级需要的经验比一般单位少。在战役早期，试着把最后一"
 "击留给这些单位，那么您就可以更快地拥有一些高等级部队了。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:13
 msgid "<i>― King Konrad, 536YW</i>"
-msgstr "<i>——科纳德国王，韦元536年</i>"
+msgstr "<b>——科纳德国王，韦元536年</b>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:16
@@ -2413,7 +2411,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:17 data/hardwired/tips.cfg:129
 msgid "<i>― Memoirs of Gweddry, 627YW</i>"
-msgstr "<i>——格温德利的回忆录，韦元627年</i>"
+msgstr "<b>——格温德利的回忆录，韦元627年</b>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:20
@@ -2444,7 +2442,7 @@ msgid ""
 "can be very important when moving through difficult terrain such as water or "
 "caves. It can make the difference between being able to move one hex or two."
 msgstr ""
-"拥有<i>迅捷</i>特质的单位每回合多一点额外的移动力。这在通过复杂地形，例如水域"
+"拥有<b>迅捷</b>特质的单位每回合多一点额外的移动力。这在通过复杂地形，例如水域"
 "或者洞穴时将变得非常重要。可以移动一格还是两格，这一区别足以对战局产生影响"
 "了。"
 
@@ -2452,7 +2450,7 @@ msgstr ""
 #: data/hardwired/tips.cfg:29 data/hardwired/tips.cfg:105
 #: data/hardwired/tips.cfg:213 data/hardwired/tips.cfg:225
 msgid "<i>― High Lord Kalenz, 470YW</i>"
-msgstr "<i>——凯雷茨高阶领主，韦元470年</i>"
+msgstr "<b>——凯雷茨高阶领主，韦元470年</b>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:32
@@ -2486,7 +2484,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:41
 msgid "<i>― The Wesnoth Community</i>"
-msgstr "<i>——韦诺社区</i>"
+msgstr "<b>——韦诺社区</b>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:44
@@ -2495,14 +2493,14 @@ msgid ""
 "better at night. <i>Neutral</i> units are unaffected by the time of day. The "
 "rare <i>liminal</i> units fight best during twilight."
 msgstr ""
-"<i>守序</i>单位更擅长在昼间战斗，<i>混沌</i>单位更擅长在夜间战斗。<i>中立</i>"
-"单位则不受时段的影响。少见的<i>边缘</i>单位在晨昏时段最能施展身手。"
+"<b>守序</b>单位更擅长在昼间战斗，<b>混沌</b>单位更擅长在夜间战斗。<b>中立</b>"
+"单位则不受时段的影响。少见的<b>边缘</b>单位在晨昏时段最能施展身手。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:45
 msgid ""
 "<i>― Royal Compendium of Battle Terminology: Volume II (reprinted 221YW)</i>"
-msgstr "<i>——《皇家战斗术语纲要》第二卷（韦元221年重印）</i>"
+msgstr "<b>——《皇家战斗术语纲要》第二卷（韦元221年重印）</b>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:48
@@ -2515,7 +2513,7 @@ msgstr "如果进攻的时段不对头，再好的战术也是白搭。"
 #: data/hardwired/tips.cfg:125 data/hardwired/tips.cfg:133
 #: data/hardwired/tips.cfg:217
 msgid "<i>― Haldric II, 42YW, Handbook of Tactical Analysis: Volume I</i>"
-msgstr "<i>——《战术分析手册》第一卷，哈德里克二世，韦元42年</i>"
+msgstr "<b>——《战术分析手册》第一卷，哈德里克二世，韦元42年</b>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:52
@@ -2525,7 +2523,7 @@ msgid ""
 "their cost. Try to choose scouts that can easily move across the surrounding "
 "terrain, because units can only see as far as they can move in one turn."
 msgstr ""
-"如果游戏时开启了<i>战场黑幕</i>和<i>战争迷雾</i>，您将不知道您面对的是什么。"
+"如果游戏时开启了<b>战场黑幕</b>和<b>战争迷雾</b>，您将不知道您面对的是什么。"
 "在这种情况下，远距离侦察单位会体现出他们的价值。尝试去选择一些可以很容易穿越"
 "周围地形的侦察单位，因为单位能看到的范围和他们在一回合内可以移动到的范围是一"
 "样的。"
@@ -2539,8 +2537,8 @@ msgid ""
 "Description</b> to see which attacks it is resistant to, and which will "
 "affect it the most."
 msgstr ""
-"有六种攻击类型：<i>穿刺</i>，<i>剑刃</i>，<i>冲击</i>，<i>火焰</i>，<i>寒冰</"
-"i>和<i>奥术</i>。不同的单位对不同的攻击有不同的弱点。鼠标右击一个单位，再选择"
+"有六种攻击类型：<b>穿刺</b>，<b>剑刃</b>，<b>冲击</b>，<b>火焰</b>，<b>寒冰</"
+"b>和<b>奥术</b>。不同的单位对不同的攻击有不同的弱点。鼠标右击一个单位，再选择"
 "<b>单位描述</b>，就可以查看它对哪些攻击有很高的抗性，又是哪些攻击对它的伤害最"
 "大。"
 
@@ -2566,7 +2564,7 @@ msgid ""
 msgstr ""
 "中毒的单位每回合会损失8点生命值，直到他们剩下1点生命值为止。如果毒性不解除，"
 "那他们将一直停留在鬼门关。疗伤者可以避免毒性恶化，但是除非中毒单位有再生能"
-"力，或者在回合开始时处于村庄里，或者在拥有<i>治愈</i>技能的单位旁边，否则毒性"
+"力，或者在回合开始时处于村庄里，或者在拥有<b>治愈</b>技能的单位旁边，否则毒性"
 "不会解除。"
 
 #. [tip]
@@ -2588,7 +2586,7 @@ msgid ""
 "between them and still create a barrier to the enemy. Beware, though: "
 "skirmishers can pass through these gaps."
 msgstr ""
-"一级或级别更高的单位旁边的六个六角格是他们的<i>控制区域</i>。如果单位移动到了"
+"一级或级别更高的单位旁边的六个六角格是他们的<b>控制区域</b>。如果单位移动到了"
 "敌人的控制区域，它在本回合将不能再移动。这意味着单位之间即使有两个空格也仍然"
 "能困住敌人。不过请当心：游击士可以通过这些空隙。"
 
@@ -2602,13 +2600,13 @@ msgid ""
 "turn."
 msgstr ""
 "命中单位的几率通常取决于这个单位在它所处的地形上能够多有效地进行闪避。不过，"
-"魔法攻击总是有70%的命中率，而拥有<i>精准</i>技能的单位在自己的行动回合中发起"
+"魔法攻击总是有70%的命中率，而拥有<b>精准</b>技能的单位在自己的行动回合中发起"
 "进攻时，也能保证至少有60%的命中率。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:77
 msgid "<i>― Haldric II, 43YW, Handbook of Tactical Analysis: Volume II</i>"
-msgstr "<i>——《战术分析手册》第二卷，哈德里克二世，韦元42年</i>"
+msgstr "<b>——《战术分析手册》第二卷，哈德里克二世，韦元42年</b>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:80
@@ -2636,7 +2634,7 @@ msgid ""
 "valuable but slow units, keep at least one fast unit with them so that you "
 "are not caught out by a surprise attack."
 msgstr ""
-"在开启了<i>战场黑幕</i>或<i>战争迷雾</i>的地图上，所有单位的视线都被他们的最"
+"在开启了<b>战场黑幕</b>或<b>战争迷雾</b>的地图上，所有单位的视线都被他们的最"
 "大移动步数所限制。如果您有一些很有价值但移动缓慢的单位，那一定要派至少一个快"
 "速单位跟随他们，这样便不会被突然袭击所算计。"
 
@@ -2653,7 +2651,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:93 data/hardwired/tips.cfg:173
 msgid "<i>― Sir Kaylan, 498YW</i>"
-msgstr "<i>——凯兰爵士，韦元498年</i>"
+msgstr "<b>——凯兰爵士，韦元498年</b>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:96
@@ -2668,7 +2666,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:97
 msgid "<i>― Sir Kaylan, 502YW</i>"
-msgstr "<i>——凯兰爵士，韦元502年</i>"
+msgstr "<b>——凯兰爵士，韦元502年</b>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:100
@@ -2714,7 +2712,7 @@ msgstr "别害怕撤退和重整队形：这通常是胜利的关键。"
 #. [tip]
 #: data/hardwired/tips.cfg:117
 msgid "<i>― Meneldur, 123YW</i>"
-msgstr "<i>——蒙内杜尔，韦元123年</i>"
+msgstr "<b>——蒙内杜尔，韦元123年</b>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:120
@@ -2736,7 +2734,7 @@ msgid ""
 "make room for you on their keep so you can recruit from there, and you can "
 "even capture an enemy’s keep and use that."
 msgstr ""
-"<i>领袖</i>们可以在任意城堡的主楼里征募或召回单位，而不仅仅是战斗开始时他们所"
+"<b>领袖</b>们可以在任意城堡的主楼里征募或召回单位，而不仅仅是战斗开始时他们所"
 "在的主楼。有些时候，您的盟友会愿意在他们的主楼里为您腾出空间以招募单位，而且"
 "您甚至可以占领敌人的主楼并利用之。"
 
@@ -2756,7 +2754,7 @@ msgid ""
 "the same side fight better. You can move these units slowly along your "
 "battle lines and give bonuses to large numbers of lower-level troops."
 msgstr ""
-"有<i>领导</i>技能的单位会使得与其相邻的同一阵营而等级低于它的单位更有效地战"
+"有<b>领导</b>技能的单位会使得与其相邻的同一阵营而等级低于它的单位更有效地战"
 "斗。您可以让这些单位沿着战线缓慢移动，这样便可以为大量等级较低的部队提供攻击"
 "加成。"
 
@@ -2778,7 +2776,7 @@ msgstr "让部队站成一线以掩护受伤的单位，让他们得到恢复。
 #. [tip]
 #: data/hardwired/tips.cfg:141
 msgid "<i>― Princess Li’sar, 515YW</i>"
-msgstr "<i>——莉莎公主，韦元515年</i>"
+msgstr "<b>——莉莎公主，韦元515年</b>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:144
@@ -2811,7 +2809,7 @@ msgstr "用疗伤者来支援您的进攻——他们不需要亲手攻击任何
 #. [tip]
 #: data/hardwired/tips.cfg:157 data/hardwired/tips.cfg:205
 msgid "<i>― The Scroll of Chantal, 516YW</i>"
-msgstr "<i>——香黛儿之卷轴，韦元516年</i>"
+msgstr "<b>——香黛儿之卷轴，韦元516年</b>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:160
@@ -2819,18 +2817,18 @@ msgid ""
 "The <i>Slow</i> attack makes enemy units move slower and halves the damage "
 "they do on all attacks until they end a turn."
 msgstr ""
-"<i>减速</i>攻击将使得敌方单位的移动变慢，并让他们所有攻击的伤害输出减半，直到"
+"<b>减速</b>攻击将使得敌方单位的移动变慢，并让他们所有攻击的伤害输出减半，直到"
 "本回合结束。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:164
 msgid "<i>Arcane</i> attacks are very powerful against undead."
-msgstr "<i>奥术</i>攻击对付亡灵时非常给力。"
+msgstr "<b>奥术</b>攻击对付亡灵时非常给力。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:165
 msgid "<i>― Great Sage Dacyn, 626YW</i>"
-msgstr "<i>——大贤者达辛，韦元626年</i>"
+msgstr "<b>——大贤者达辛，韦元626年</b>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:168
@@ -2855,7 +2853,7 @@ msgid ""
 "benefits of advancing a level, so it is generally wiser to advance your "
 "lower-level units instead."
 msgstr ""
-"高等级单位不能再升级，而是获得<i>满级奖励</i>（AMLA）。通常情况下，AMLA会使该"
+"高等级单位不能再升级，而是获得<b>满级奖励</b>（AMLA）。通常情况下，AMLA会使该"
 "单位增加3点最大生命值，并完全恢复。这比升级通常所能带来的好处要少得多，所以不"
 "获取AMLA，而是让您的低等级单位升级往往更加明智。"
 
@@ -2882,7 +2880,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:185
 msgid "<i>― Queen Li’sar, 528YW</i>"
-msgstr "<i>——莉莎女王，韦元528年</i>"
+msgstr "<b>——莉莎女王，韦元528年</b>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:188
@@ -2933,8 +2931,8 @@ msgid ""
 "to escape; slow enemies are almost immobilized, and your own units suffer "
 "less retaliation damage, so it’s quicker to heal them."
 msgstr ""
-"<i>减速</i>技能非常强力，这是由于其具有多样的效果。敌方亡灵的<i>吸血</i>技能"
-"的效果会减半，<i>冲锋</i>和<i>背刺</i>的伤害加成会无效化，而<i>狂暴</i>技能也"
+"<b>减速</b>技能非常强力，这是由于其具有多样的效果。敌方亡灵的<b>吸血</b>技能"
+"的效果会减半，<b>冲锋</b>和<b>背刺</b>的伤害加成会无效化，而<b>狂暴</b>技能也"
 "会被削弱。速度快的对手将疲于逃命，而速度慢的敌人则几乎会被钉死在原地。同时，"
 "你自己的单位所受到的反击伤害则会减轻，于是便可以更快地为他们疗伤。"
 
@@ -2986,7 +2984,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:221 data/hardwired/tips.cfg:233
 msgid "<i>― Lord Hamel of Knalga</i>"
-msgstr "<i>——纳尔迦的哈梅尔领主</i>"
+msgstr "<b>——纳尔迦的哈梅尔领主</b>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:224
@@ -2995,8 +2993,8 @@ msgid ""
 "work to combine, for example, <i>Leadership</i>, <i>Illuminates</i> and "
 "<i>Charge</i> against a slowed opponent, the results can be impressive."
 msgstr ""
-"将多种特殊技能组合起来运用将是致命的。例如，尽管要把<i>领导</i>，<i>照明</i>"
-"和<i>冲锋</i>组合起来是得花点工夫，但其效果实在会让人印象深刻。"
+"将多种特殊技能组合起来运用将是致命的。例如，尽管要把<b>领导</b>，<b>照明</b>"
+"和<b>冲锋</b>组合起来是得花点工夫，但其效果实在会让人印象深刻。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:228
@@ -3030,7 +3028,7 @@ msgid ""
 "if they occupy a village hex, they do not gain any defensive benefits from "
 "the village, although they will still be healed."
 msgstr ""
-"<i>野生</i>单位——例如蝙蝠和野生动物——会避开村庄。就算它们占据了一个村庄六角"
+"<b>野生</b>单位——例如蝙蝠和野生动物——会避开村庄。就算它们占据了一个村庄六角"
 "格，也不能够得到村庄带来的任何闪避率加成，虽然说它们仍然会得到治疗。"
 
 #: data/lua/wml-tags.lua:861 src/actions.cpp:1497
@@ -3674,6 +3672,7 @@ msgstr "您没有安装任何附加组件。"
 msgid "Are you sure you want to remove the following installed add-on?"
 msgid_plural "Are you sure you want to remove the following installed add-ons?"
 msgstr[0] "您确定要移除下列已安装的附加组件吗？"
+msgstr[1] "您确定要移除下列已安装的附加组件吗？"
 
 #: src/addon/manager.cpp:1443
 msgid ""
@@ -3684,21 +3683,26 @@ msgid_plural ""
 "information stored locally, and will not be removed:"
 msgstr[0] ""
 "下列附加组件似乎在本地存储了发布信息或版本控制信息，因此将不会被移除："
+msgstr[1] ""
+"下列附加组件似乎在本地存储了发布信息或版本控制信息，因此将不会被移除："
 
 #: src/addon/manager.cpp:1453
 msgid "The following add-on could not be deleted properly:"
 msgid_plural "The following add-ons could not be deleted properly:"
 msgstr[0] "下列附加组件无法正确删除："
+msgstr[1] "下列附加组件无法正确删除："
 
 #: src/addon/manager.cpp:1460
 msgid "Add-on Deleted"
 msgid_plural "Add-ons Deleted"
 msgstr[0] "附加组件已删除"
+msgstr[1] "附加组件已删除"
 
 #: src/addon/manager.cpp:1462
 msgid "The following add-on was successfully deleted:"
 msgid_plural "The following add-ons were successfully deleted:"
 msgstr[0] "下列附加组件已成功删除："
+msgstr[1] "下列附加组件已成功删除："
 
 #: src/attack_prediction_display.cpp:105 src/attack_prediction_display.cpp:237
 msgid "Attacker"
@@ -4892,7 +4896,7 @@ msgstr "将“$domain”域切换到“$level”级别。"
 
 #: src/menu_events.cpp:2785
 msgid "whisper to $receiver"
-msgstr "对$receiver说悄悄话："
+msgstr "对$receiver说悄悄话"
 
 #: src/menu_events.cpp:2792 src/multiplayer_ui.cpp:544
 msgid "whisper: $sender"
