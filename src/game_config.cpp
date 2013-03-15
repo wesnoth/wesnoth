@@ -27,6 +27,9 @@
 #ifdef HAVE_REVISION
 #include "revision.hpp"
 #endif /* HAVE_REVISION */
+#ifdef LOAD_REVISION
+#include "revision.h"
+#endif
 
 #include <boost/foreach.hpp>
 
@@ -48,6 +51,10 @@ namespace game_config
 	const std::string version = VERSION;
 #ifdef REVISION
 	const std::string revision = VERSION " (" REVISION ")";
+#elif defined(VCS_SHORT_HASH) && defined(VCS_WC_MODIFIED)
+	const std::string revision
+		= std::string(VCS_SHORT_HASH)
+		+ (VCS_WC_MODIFIED ? "-Modified" : "-Clean");
 #else
 	const std::string revision = VERSION;
 #endif
