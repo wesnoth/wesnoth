@@ -1,17 +1,17 @@
-# Phạm Thành Nam <phamthanhnam.ptn@gmail.com>, 2009.
+# Phạm Thành Nam <phamthanhnam.ptn@gmail.com>, 2009, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-05-11 22:06+0200\n"
-"PO-Revision-Date: 2011-05-31 09:30+0700\n"
-"Last-Translator: Huynh Yen Loc <nightgaunt13@gmail.com>\n"
-"Language-Team: Vietnamese <>\n"
+"POT-Creation-Date: 2013-03-09 08:33+0100\n"
+"PO-Revision-Date: 2013-03-06 20:18+0800\n"
+"Last-Translator: Phạm Thành Nam\n"
+"Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.4\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. [brush]
@@ -135,9 +135,9 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
-"Nút chuột trái hiển thị vùng chọn đấu thủ, nút chuột phải xóa vùng chọn. Các "
-"phím số cuộn đến vị trí vị trí ban đầu, alt+số thiết lập vị trí ban đầu "
-"tương ứng dưới con trỏ, delete xóa."
+"Nút chuột trái hiển thị vùng chọn của người chơi, nút chuột phải xóa vùng "
+"chọn. Các phím số cuộn đến vị trí vị trí ban đầu, alt+số thiết lập vị trí "
+"ban đầu tương ứng dưới con trỏ, delete xóa."
 
 #. [editor_tool_hint]: id=editor-paste
 #: data/core/editor/tool-hints.cfg:30
@@ -234,7 +234,7 @@ msgstr "Lưu bản đồ thành"
 
 #: src/editor/editor_controller.cpp:471
 msgid "The file already exists. Do you want to overwrite it?"
-msgstr "Tập tin đã tồn tại. Bạn có muốn ghi đè lên nó không?"
+msgstr "Tập tin đã tồn tại. Bạn có muốn ghi đè lên không?"
 
 #: src/editor/editor_controller.cpp:488
 msgid "No random map generators found."
@@ -330,11 +330,11 @@ msgstr "Sẽ không hoạt động trong trò chơi nếu không chú ý thêm."
 
 #: src/editor/editor_palettes.cpp:532
 msgid "FG: "
-msgstr "FG: "
+msgstr "TC: "
 
 #: src/editor/editor_palettes.cpp:533
 msgid "BG: "
-msgstr "BG: "
+msgstr "HC: "
 
 #: src/editor/map_context.cpp:71
 msgid "File not found"
@@ -346,7 +346,7 @@ msgid ""
 "an existing file"
 msgstr ""
 "Tập tin bản đồ trông giống như một màn chơi, nhưng giá trị map_data không "
-"chỉ đến một tập tin tồn tại."
+"chỉ đến một tập tin tồn tại"
 
 #: src/editor/map_context.cpp:100
 msgid "Empty map file"
@@ -361,18 +361,39 @@ msgid "Could not save the map: $msg"
 msgstr "Không thể lưu bản đồ: $msg"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:84
-#, fuzzy
-#| msgid "(Player)^None"
 msgid "player^None"
 msgstr "Không có"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:96
 msgid "Player $player_number"
-msgstr ""
+msgstr "Người chơi $player_number"
 
 #: src/gui/dialogs/editor_settings.cpp:166
 msgid "Custom setting"
 msgstr "Thiết lập tùy chỉnh"
+
+#~| msgid "Hex Line NW-SE"
+#~ msgid "Hex Line SE-NW"
+#~ msgstr "Đường lục giác ĐN-TB"
+
+#~ msgid "fall"
+#~ msgstr "mùa thu"
+
+#~ msgid "Group"
+#~ msgstr "Nhóm"
+
+#~ msgid "(Unknown Group)"
+#~ msgstr "(Nhóm không xác định)"
+
+#, fuzzy
+#~| msgid "Action not implemented"
+#~ msgid "Flip Map - Not implemented yet."
+#~ msgstr "Hành động không được thực hiện"
+
+#, fuzzy
+#~| msgid "Empty map file"
+#~ msgid "Empty file"
+#~ msgstr "Tập tin bản đồ rỗng"
 
 #~ msgid "Choose player"
 #~ msgstr "Chọn người chơi"
@@ -395,6 +416,3 @@ msgstr "Thiết lập tùy chỉnh"
 
 #~ msgid "Error creating action object"
 #~ msgstr "Lỗi khi tạo đối tượng hành động"
-
-#~ msgid "Action not implemented"
-#~ msgstr "Hành động không được thực hiện"

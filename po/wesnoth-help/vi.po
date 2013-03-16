@@ -1,18 +1,19 @@
 # Vietnamese translation for Wesnoth
-# Phạm Thành Nam <phamthanhnam.ptn@gmail.com>, 2009.
+# Phạm Thành Nam <phamthanhnam.ptn@gmail.com>, 2009, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-12 10:25+0200\n"
-"PO-Revision-Date: 2011-06-14 16:51+0700\n"
-"Last-Translator: Huynh Yen Loc <nightgaunt13@gmail.com>\n"
-"Language-Team: Vietnamese <>\n"
+"POT-Creation-Date: 2013-03-09 08:33+0100\n"
+"PO-Revision-Date: 2013-03-10 08:25+0800\n"
+"Last-Translator: Phạm Thành Nam\n"
+"Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Lokalize 1.4\n"
 
 #. [time]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:523
@@ -70,7 +71,7 @@ msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
 "Đánh trước:\n"
-"Đơn vị này luôn ra đon trước với đòn này, kể cả khi đang phòng thủ."
+"Đơn vị này luôn đánh trước với đòn này, kể cả khi đang phòng thủ."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
@@ -87,6 +88,15 @@ msgstr "hồi máu +4"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
 #: data/core/macros/abilities.cfg:16
+#, fuzzy
+#| msgid ""
+#| "Allows the unit to heal adjacent allied units at the beginning of our "
+#| "turn.\n"
+#| "\n"
+#| "A unit cared for by this healer may heal up to 4 HP per turn, or stop "
+#| "poison from taking effect for that turn.\n"
+#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
+#| "the care of a village or a unit that can cure."
 msgid ""
 "Heals +4:\n"
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
@@ -96,12 +106,10 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Hồi máu +4:\n"
-"Cho phép đơn vị hồi máu cho các đơn vị đồng minh đứng bên cạnh ở đầu mỗi "
-"lượt.\n"
+"Cho phép đơn vị hồi máu cho các đơn vị đồng minh đứng bên cạnh ở đầu lượt.\n"
 "\n"
-"Một đơn vị được đơn vị hồi máu này hồi máu có thể phục hồi lên tới 4 đơn vị "
-"máu mỗi lượt, hoặc ngăn chất độc phát huy hiệu lực ở lượt đó.\n"
+"Một đơn vị được điều trị viên này chăm sóc có thể phục hồi lên tới 4 máu mỗi "
+"lượt, hoặc ngăn chất độc phát huy hiệu lực ở lượt đó.\n"
 "Một đơn vị bị nhiễm độc không thể được một điều trị viên cứu chữa khỏi chất "
 "độc, mà phải tìm kiếm sự chăm sóc của một ngôi làng hoặc một đơn vị có khả "
 "năng giải độc."
@@ -121,6 +129,15 @@ msgstr "hồi máu +8"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
 #: data/core/macros/abilities.cfg:36
+#, fuzzy
+#| msgid ""
+#| "This unit combines herbal remedies with magic to heal units more quickly "
+#| "than is normally possible on the battlefield.\n"
+#| "\n"
+#| "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
+#| "poison from taking effect for that turn.\n"
+#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
+#| "the care of a village or a unit that can cure."
 msgid ""
 "Heals +8:\n"
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -131,12 +148,11 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Hồi máu +8:\n"
 "Đơn vị này kết hợp các phương thuốc thảo mộc với phép thuật để điều trị cho "
 "các đơn vị trên chiến trường nhanh hơn bình thường.\n"
 "\n"
-"Một đơn vị được đơn vị hồi máu này chăm sóc có thể phục hồi lên tới 8 đơn vị "
-"máu mỗi lượt, hoặc ngăn chất độc phát huy hiệu lực ở lượt đó.\n"
+"Một đơn vị được điều trị viên này chăm sóc có thể phục hồi lên tới 8 máu mỗi "
+"lượt, hoặc ngăn chất độc phát huy hiệu lực ở lượt đó.\n"
 "Một đơn vị bị nhiễm độc không thể được một điều trị viên cứu chữa khỏi chất "
 "độc, mà phải tìm kiếm sự chăm sóc của một ngôi làng hoặc một đơn vị có khả "
 "năng giải độc."
@@ -145,17 +161,17 @@ msgstr ""
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:5 data/core/encyclopedia/_main.cfg:12
 msgid "Encyclopedia"
-msgstr ""
+msgstr "Bách khoa toàn thư"
 
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:14
 msgid "<ref>dst='..geography' text='Geography'</ref>"
-msgstr ""
+msgstr "<ref>dst='..geography' text='Địa lý'</ref>"
 
 #. [topic]: id=caste
 #: data/core/encyclopedia/drakes.cfg:7
 msgid "Caste"
-msgstr "Lâu đài"
+msgstr "Đẳng cấp"
 
 #. [topic]: id=caste
 #: data/core/encyclopedia/drakes.cfg:8
@@ -164,11 +180,14 @@ msgid ""
 "Clasher' text='Clasher'</ref> or a <ref>dst='unit_Drake Fighter' text='Drake "
 "Fighter'</ref>."
 msgstr ""
+"Một trong những dạng biến thể của người rồng: hoặc là <ref>dst='unit_Drake "
+"Clasher' text='Người rồng đánh đập'</ref> hoặc là <ref>dst='unit_Drake "
+"Fighter' text='Đấu sĩ người rồng'</ref>."
 
 #. [topic]: id=aerie
 #: data/core/encyclopedia/drakes.cfg:13
 msgid "Aerie"
-msgstr ""
+msgstr "Tổ"
 
 #. [topic]: id=aerie
 #: data/core/encyclopedia/drakes.cfg:14
@@ -177,11 +196,13 @@ msgid ""
 "text='flight'</ref>. It contains the <ref>dst='breeding_pen' text='breeding "
 "pens'</ref>."
 msgstr ""
+"Một cấu trúc rất lớn giống lâu đài là nơi ở của <ref>dst='flight' "
+"text='đàn'</ref>. Chứa <ref>dst='breeding_pen' text='khu sinh sản'</ref>."
 
 #. [topic]: id=breeding_pen
 #: data/core/encyclopedia/drakes.cfg:19
 msgid "Breeding Pen"
-msgstr "Khu gây giống"
+msgstr "Khu sinh sản"
 
 #. [topic]: id=breeding_pen
 #: data/core/encyclopedia/drakes.cfg:20
@@ -190,11 +211,14 @@ msgid ""
 "<ref>dst='breeder' text='Breeders'</ref> live under the <ref>dst='dominant' "
 "text='Dominant'</ref>’s eye."
 msgstr ""
+"Một phần của <ref>dst='aerie' text='tổ'</ref> ở đó các <ref>dst='breeder' "
+"text='long nữ'</ref> sống dưới sự cai quản của <ref>dst='dominant' "
+"text='long chủ'</ref>."
 
 #. [topic]: id=breeding_cycle
 #: data/core/encyclopedia/drakes.cfg:25
 msgid "Breeding Cycle"
-msgstr ""
+msgstr "Chu kỳ sinh sản"
 
 #. [topic]: id=breeding_cycle
 #: data/core/encyclopedia/drakes.cfg:26
@@ -202,11 +226,13 @@ msgid ""
 "The time that passes between one <ref>dst=egg text='egg'</ref> laying to the "
 "next."
 msgstr ""
+"Thời gian trôi qua giữa một lần đẻ <ref>dst=egg text='trứng'</ref> tới lần "
+"kế tiếp."
 
 #. [topic]: id=world_ocean
 #: data/core/encyclopedia/drakes.cfg:31
 msgid "World Ocean"
-msgstr ""
+msgstr "Đại Dương Thế Giới"
 
 #. [topic]: id=world_ocean
 #: data/core/encyclopedia/drakes.cfg:32
@@ -215,11 +241,15 @@ msgid ""
 "of <ref>dst='morogor' text='Morogor'</ref>. The drakes believe it to end at "
 "the <ref>dst='abyss' text='Abyss'</ref>, a vast and deadly waterfall."
 msgstr ""
+"Đại Dương Thế Giới là tên của vùng biển khơi bao quanh quần đảo "
+"<ref>dst='morogor' text='Morogor'</ref>. Người rồng tin rằng nó kết thúc ở "
+"<ref>dst='abyss' text='Địa Ngục'</ref>, một thác nước lớn và nguy hiểm chết "
+"người."
 
 #. [topic]: id=new_continent
 #: data/core/encyclopedia/drakes.cfg:37
 msgid "New Continent"
-msgstr ""
+msgstr "Tân Lục Địa"
 
 #. [topic]: id=new_continent
 #: data/core/encyclopedia/drakes.cfg:38
@@ -227,11 +257,13 @@ msgid ""
 "The great continent to the east of <ref>dst='morogor' text='Morogor'</ref>. "
 "Its existence is unknown to the drakes until the flight of Galun."
 msgstr ""
+"Lục địa lớn ở phía đông <ref>dst='morogor' text='Morogor'</ref>. Người rồng "
+"không biết về sự tồn tại của nó trước chuyến bay của Galun."
 
 #. [topic]: id=abyss
 #: data/core/encyclopedia/drakes.cfg:43
 msgid "Abyss"
-msgstr ""
+msgstr "Địa Ngục"
 
 #. [topic]: id=abyss
 #: data/core/encyclopedia/drakes.cfg:44
@@ -239,11 +271,13 @@ msgid ""
 "In the cosmology of the Drakes, a vast and deadly waterfall where the ocean "
 "falls off the world-disc."
 msgstr ""
+"Theo thuyết vũ trụ của người rồng, đây là thác nước lớn và nguy hiểm chết "
+"người ở đó đại dương rơi ra khỏi đĩa thế giới."
 
 #. [topic]: id=spiral_path
 #: data/core/encyclopedia/drakes.cfg:49
 msgid "Spiral Path"
-msgstr ""
+msgstr "Đường xoắn ốc"
 
 #. [topic]: id=spiral_path
 #: data/core/encyclopedia/drakes.cfg:50
@@ -252,11 +286,14 @@ msgid ""
 "Malthusian final war. See also <ref>dst='straight_path' text='Straight "
 "Path'</ref>"
 msgstr ""
+"Một cách tổ chức gần như bí mật mà người rồng theo để tránh một cuộc chiến "
+"tranh cuối cùng theo thuyết Malthus. Xem thêm <ref>dst='straight_path' "
+"text='đường thẳng'</ref>"
 
 #. [topic]: id=straight_path
 #: data/core/encyclopedia/drakes.cfg:55
 msgid "Straight Path"
-msgstr ""
+msgstr "Đường thẳng"
 
 #. [topic]: id=straight_path
 #: data/core/encyclopedia/drakes.cfg:56
@@ -265,11 +302,14 @@ msgid ""
 "mostly used by the members of the <ref>dst='spiral_path' text='Spiral Path'</"
 "ref>."
 msgstr ""
+"Truyền thống bành trướng và chinh phục vĩnh cửu của người rồng. Khái niệm "
+"này chủ yếu được sử dụng bởi các thành viên của <ref>dst='spiral_path' "
+"text='đường xoắn ốc'</ref>."
 
 #. [topic]: id=dominant
 #: data/core/encyclopedia/drakes.cfg:61
 msgid "Dominant"
-msgstr ""
+msgstr "Long chủ"
 
 #. [topic]: id=dominant
 #: data/core/encyclopedia/drakes.cfg:62
@@ -279,11 +319,15 @@ msgid ""
 "<ref>dst='breeder' text='breeders'</ref>. Rarely, he may confer breeding "
 "privileges on others."
 msgstr ""
+"<ref>dst='aspirant' text='Long nam'</ref> nổi lên làm lãnh đạo người rồng, "
+"người rồng duy nhất trong bộ lạc được phép sinh sản với các "
+"<ref>dst='breeder' text='long nữ'</ref>. Hiếm khi một long chủ ban đặc quyền "
+"sinh sản của mình cho người khác."
 
 #. [topic]: id=vulcaniad
 #: data/core/encyclopedia/drakes.cfg:67
 msgid "Vulcaniad"
-msgstr ""
+msgstr "Vulcaniad"
 
 #. [topic]: id=vulcaniad
 #: data/core/encyclopedia/drakes.cfg:68
@@ -292,11 +336,14 @@ msgid ""
 "<ref>dst='mount_morogor' text='Mount Morogor'</ref>. The "
 "<ref>dst='long_count' text='Long Count'</ref> calendar is based upon it."
 msgstr ""
+"Khoảng thời gian (không theo quy tắc) giữa hai lần phun trào liên tiếp của "
+"<ref>dst='mount_morogor' text='núi Morogor'</ref>. Lịch "
+"<ref>dst='long_count' text='Long lịch'</ref> dựa trên khoảng thời gian này."
 
 #. [topic]: id=recorder
 #: data/core/encyclopedia/drakes.cfg:73
 msgid "Recorder"
-msgstr ""
+msgstr "Long thư"
 
 #. [topic]: id=recorder
 #: data/core/encyclopedia/drakes.cfg:74
@@ -306,27 +353,31 @@ msgid ""
 "<ref>dst='caste' text='caste'</ref> of Drake not determined by biology: they "
 "recruit their members from all of the other castes."
 msgstr ""
+"Long thư là một người giữ sổ sách thông thạo hệ thống "
+"<ref>dst='drakish_script' text='chữ viết Drakish'</ref>. Long thư là "
+"<ref>dst='caste' text='đẳng cấp'</ref> người rồng duy nhất không được xác "
+"định theo đặc điểm sinh học: chúng tuyển các thành viên từ mọi đẳng cấp."
 
 #. [topic]: id=laying
 #: data/core/encyclopedia/drakes.cfg:79
 msgid "Laying"
-msgstr ""
+msgstr "Đẻ trứng"
 
 #. [topic]: id=laying
 #. [topic]: id=hatching
 #: data/core/encyclopedia/drakes.cfg:80 data/core/encyclopedia/drakes.cfg:86
 msgid "A portion of the <ref>dst='breeding_cycle' text='breeding cycle'</ref>."
-msgstr ""
+msgstr "Một phần của <ref>dst='breeding_cycle' text='chu kỳ sinh sản'</ref>."
 
 #. [topic]: id=hatching
 #: data/core/encyclopedia/drakes.cfg:85
 msgid "Hatching"
-msgstr ""
+msgstr "Ấp trứng"
 
 #. [topic]: id=hatchling
 #: data/core/encyclopedia/drakes.cfg:91
 msgid "Hatchling"
-msgstr ""
+msgstr "Long nhi"
 
 #. [topic]: id=hatchling
 #: data/core/encyclopedia/drakes.cfg:92
@@ -335,11 +386,14 @@ msgid ""
 "the current generation of hatchlings are the most aggressive is the behavior "
 "of the <ref>dst='flight' text='flight'</ref>."
 msgstr ""
+"Người rồng nhỏ tuổi chưa được chứng kiến ổ trứng nở của một thế hệ khác. "
+"Trong thế hệ long nhi hiện tại, cá thể càng ít tuổi càng hung hăng, đó là "
+"tập tính của <ref>dst='flight' text='đàn'</ref>."
 
 #. [topic]: id=fledgling
 #: data/core/encyclopedia/drakes.cfg:97
 msgid "Fledgling"
-msgstr ""
+msgstr "Long thiếu"
 
 #. [topic]: id=fledgling
 #: data/core/encyclopedia/drakes.cfg:98
@@ -348,11 +402,14 @@ msgid ""
 "<ref>dst='flight' text='flight'</ref> can afford the loss of a generation "
 "they start the <ref>dst='swarming' text='Swarming'</ref>."
 msgstr ""
+"Người rồng trẻ tuổi đã chứng kiến ổ trứng nở của một thế hệ khác. Nếu "
+"<ref>dst='flight' text='đàn'</ref> có thể chịu mất một thế hệ, chúng bắt đầu "
+"<ref>dst='swarming' text='kết bầy'</ref>."
 
 #. [topic]: id=breeder
 #: data/core/encyclopedia/drakes.cfg:103
 msgid "Breeder"
-msgstr ""
+msgstr "Long nữ"
 
 #. [topic]: id=breeder
 #: data/core/encyclopedia/drakes.cfg:104
@@ -363,11 +420,16 @@ msgid ""
 "take care of their food for themselves when laying. Drake breeders become "
 "fertile after the next <ref>dst='hatching' text='hatching'</ref>."
 msgstr ""
+"Người rồng cái. Chúng hiếm vì các quả <ref>dst='egg' text='trứng'</ref> trở "
+"thành cá thể cái phải được chăm sóc đặc biệt. Số long nữ cũng bị giới hạn "
+"bởi lượng không phải long nữ xung quanh, vì các long nữ không thể chăm sóc "
+"cho thức ăn của chúng khi đẻ. Các long nữ bắt đầu có khả năng sinh sản sau "
+"lần <ref>dst='hatching' text='ấp trứng'</ref> kế tiếp."
 
 #. [topic]: id=egg
 #: data/core/encyclopedia/drakes.cfg:109
 msgid "Egg, Drake"
-msgstr ""
+msgstr "Trứng, người rồng"
 
 #. [topic]: id=egg
 #: data/core/encyclopedia/drakes.cfg:110
@@ -376,11 +438,14 @@ msgid ""
 "text='Hatchling'</ref> will belongs to is determined by the time it is laid "
 "and to some extent the ambient temperature."
 msgstr ""
+"<ref>dst=caste text='Đẳng cấp'</ref> mà các <ref>dst='hatchling' text='long "
+"nhi'</ref> sẽ thuộc vào được xác định bởi thời gian ấp và ở mức độ nào đó, "
+"nhiệt độ xung quanh."
 
 #. [topic]: id=flight
 #: data/core/encyclopedia/drakes.cfg:115
 msgid "Flight"
-msgstr ""
+msgstr "Đàn"
 
 #. [topic]: id=flight
 #: data/core/encyclopedia/drakes.cfg:116
@@ -389,11 +454,14 @@ msgid ""
 "controlling a hunting range. Each tribe has one <ref>dst='dominant' "
 "text='Dominant'</ref>, who confers mating privileges."
 msgstr ""
+"Bộ lạc người rồng, sống trong một <ref>dst='aerie' text='tổ'</ref>, kiểm "
+"soát phạm vi kiếm mồi. Mỗi bộ lạc có một <ref>dst='dominant' text='long "
+"chủ'</ref>, có đặc quyền kết đôi."
 
 #. [topic]: id=aspirant
 #: data/core/encyclopedia/drakes.cfg:121
 msgid "Aspirant"
-msgstr ""
+msgstr "Long nam"
 
 #. [topic]: id=aspirant
 #: data/core/encyclopedia/drakes.cfg:122
@@ -403,22 +471,27 @@ msgid ""
 "secretion of the hormone is caused by hunt and combat actions in which the "
 "drake is involved."
 msgstr ""
+"Người rồng đực đã trải qua một biến thái hoóc môn giúp nó có thể kết đôi với "
+"các <ref>dst='breeder' text='long nữ'</ref>. Sự tiết hoóc môn gây ra bởi các "
+"hoạt động săn đuổi và chiến đấu mà người rồng tham gia."
 
 #. [topic]: id=ascendant
 #: data/core/encyclopedia/drakes.cfg:127
 msgid "Ascendant"
-msgstr ""
+msgstr "Long tiên"
 
 #. [topic]: id=ascendant
 #: data/core/encyclopedia/drakes.cfg:128
 msgid ""
 "The drake name for a true <ref>dst='unit_Fire Dragon' text='dragon'</ref>."
 msgstr ""
+"Tên người rồng gọi một con <ref>dst='unit_Fire Dragon' text='rồng'</ref> "
+"thực sự."
 
 #. [topic]: id=intendant
 #: data/core/encyclopedia/drakes.cfg:133
 msgid "Intendant"
-msgstr ""
+msgstr "Long đốc"
 
 #. [topic]: id=intendant
 #: data/core/encyclopedia/drakes.cfg:134
@@ -430,12 +503,17 @@ msgid ""
 "likeliest to be granted mating privileges, especially after a notable "
 "service."
 msgstr ""
+"Một trong số các phụ tá <ref>dst='aspirant' text='long nam'</ref> của một "
+"<ref>dst='dominant' text='long chủ'</ref>. Theo truyền thống, long chủ có "
+"một 'long đốc' thuộc <ref>dst=caste text='đẳng cấp'</ref> khác với mình. Các "
+"long đốc còn lại đôi khi được bổ nhiệm các chức vụ đặc biệt. Các long đốc là "
+"những người nhiều cơ hội nhất được ban đặc quyền kết đôi, đặc biệt sau một "
+"sự phục vụ đáng chú ý."
 
 #. [topic]: id=swarm
 #: data/core/encyclopedia/drakes.cfg:139
-#, fuzzy
 msgid "Swarm"
-msgstr "liên hoàn"
+msgstr "Bầy"
 
 #. [topic]: id=swarm
 #: data/core/encyclopedia/drakes.cfg:140
@@ -443,12 +521,13 @@ msgid ""
 "The <ref>dst='swarmlings' text='Swarmlings'</ref> that have left the "
 "<ref>dst='aerie' text='aerie'</ref> to found a new one."
 msgstr ""
+"<ref>dst='swarmlings' text='Bầy'</ref> đã rời <ref>dst='aerie' text='tổ'</"
+"ref> để lập một tổ mới."
 
 #. [topic]: id=swarming
 #: data/core/encyclopedia/drakes.cfg:145
-#, fuzzy
 msgid "Swarming"
-msgstr "liên hoàn"
+msgstr "Kết bầy"
 
 #. [topic]: id=swarming
 #: data/core/encyclopedia/drakes.cfg:146
@@ -457,21 +536,24 @@ msgid ""
 "text='aerie'</ref> that recurs every <ref>dst='breeding_cycle' "
 "text='breeding cycle'</ref>. See <ref>dst='swarm' text='Swarm'</ref>"
 msgstr ""
+" <ref>dst='flight' text='Đàn'</ref> cho một <ref>dst='aerie' text='tổ'</ref> "
+"người rồng mới, lặp lại mỗi <ref>dst='breeding_cycle' text='chu kỳ sinh "
+"sản'</ref>. Xem <ref>dst='swarm' text='bầy'</ref>"
 
 #. [topic]: id=runners
 #: data/core/encyclopedia/drakes.cfg:151
 msgid "Runners"
-msgstr ""
+msgstr "Long nô"
 
 #. [topic]: id=runners
 #: data/core/encyclopedia/drakes.cfg:152
 msgid "Drakish term for escaped slaves hunted as game."
-msgstr ""
+msgstr "Thuật ngữ drakish để chỉ những nô lệ vượt ngục bị săn đuổi."
 
 #. [topic]: id=mount_morogor
 #: data/core/encyclopedia/drakes.cfg:157
 msgid "Mount Morogor"
-msgstr ""
+msgstr "Núi Morogor"
 
 #. [topic]: id=mount_morogor
 #: data/core/encyclopedia/drakes.cfg:158
@@ -479,11 +561,13 @@ msgid ""
 "Volcanic mountain on the central island of the archipelago "
 "<ref>dst='morogor' text='Morogor'</ref>."
 msgstr ""
+"Núi lửa trên hòn đảo trung tâm của quần đảo <ref>dst='morogor' "
+"text='Morogor'</ref>."
 
 #. [topic]: id=long_count
 #: data/core/encyclopedia/drakes.cfg:163
 msgid "Long Count"
-msgstr ""
+msgstr "Long lịch"
 
 #. [topic]: id=long_count
 #: data/core/encyclopedia/drakes.cfg:164
@@ -491,11 +575,13 @@ msgid ""
 "The drake calender based on <ref>dst='vulcaniad' text='Vulcaniad'</ref> and "
 "<ref>dst=breeding_cycle text='Breeding cycles'</ref>."
 msgstr ""
+"Lịch của người rồng dựa trên <ref>dst='vulcaniad' text='vulcaniad'</ref> và "
+"<ref>dst=breeding_cycle text='chu kỳ sinh sản'</ref>."
 
 #. [topic]: id=long_pig
 #: data/core/encyclopedia/drakes.cfg:169
 msgid "Long Pig"
-msgstr ""
+msgstr "Long heo"
 
 #. [topic]: id=long_pig
 #: data/core/encyclopedia/drakes.cfg:170
@@ -503,11 +589,12 @@ msgid ""
 "South Seas pidgin for human meat, used to translate a Drakish word with the "
 "same meaning."
 msgstr ""
+"Tiếng lóng để chỉ thịt người, dùng để dịch một từ drakish có cùng nghĩa."
 
 #. [topic]: id=ceramic
 #: data/core/encyclopedia/drakes.cfg:175
 msgid "Ceramics"
-msgstr ""
+msgstr "Đồ gốm"
 
 #. [topic]: id=ceramic
 #: data/core/encyclopedia/drakes.cfg:176
@@ -516,11 +603,14 @@ msgid ""
 "ceramics. Only the <ref>dst='unit_Drake Burner' text='burners'</ref> can "
 "generate the amount of heat to cure the pieces to full strength."
 msgstr ""
+"Người rồng chế biến kim loại, nhưng cũng là những chủ nhân của nghề làm gốm. "
+"Chỉ những <ref>dst='unit_Drake Burner' text='người rồng thiêu đốt'</ref> mới "
+"có thể tạo ra đủ lượng nhiệt để nung các mẩu gốm."
 
 #. [topic]: id=drakish_script
 #: data/core/encyclopedia/drakes.cfg:181
 msgid "Drakish, script"
-msgstr ""
+msgstr "Drakish, chữ viết"
 
 #. [topic]: id=drakish_script
 #: data/core/encyclopedia/drakes.cfg:182
@@ -529,28 +619,31 @@ msgid ""
 "text='ceramic'</ref> tablets by members of the <ref>dst='recorder' "
 "text='Recorder'</ref> vocation."
 msgstr ""
+"Chữ viết của người rồng. Được lưu trên những phiến <ref>dst='ceramic' "
+"text='gốm'</ref> bởi các thành viên của nghề <ref>dst='recorder' text='long "
+"thư'</ref>."
 
 #. [topic]: id=drakish_language
 #: data/core/encyclopedia/drakes.cfg:187
 msgid "Drakish, language"
-msgstr ""
+msgstr "Drakish, ngôn ngữ"
 
 #. [topic]: id=drakish_language
 #: data/core/encyclopedia/drakes.cfg:188
 msgid "The language spoken by the drakes."
-msgstr ""
+msgstr "Ngôn ngữ được nói bởi người rồng."
 
 #. [section]: id=geography
 #. [topic]: id=..geography
 #: data/core/encyclopedia/geography.cfg:11
 #: data/core/encyclopedia/geography.cfg:18
 msgid "Geography"
-msgstr ""
+msgstr "Địa lý"
 
 #. [topic]: id=arkan_thoria
 #: data/core/encyclopedia/geography.cfg:25
 msgid "Arkan-thoria"
-msgstr ""
+msgstr "Arkan-thoria"
 
 #. [topic]: id=arkan_thoria
 #: data/core/encyclopedia/geography.cfg:26
@@ -558,11 +651,13 @@ msgid ""
 "A river rising in the <ref>dst='heart_mountains' text='Heart Mountains'</"
 "ref> and running east to the Listra."
 msgstr ""
+"Một dòng sông bắt nguồn trong <ref>dst='heart_mountains' text='dãy núi Trái "
+"Tim'</ref> và chảy về phía đông đến sông Listra."
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:31
 msgid "Great Ocean"
-msgstr ""
+msgstr "Đại Dương Lớn"
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:32
@@ -571,11 +666,14 @@ msgid ""
 "and all rivers eventually flow to it. Far to the west in the the Great Ocean "
 "is a huge archipelago called <ref>dst='morogor' text='Morogor'</ref>."
 msgstr ""
+"Nằm về phía tây của <ref>dst='great_continent' text='lục địa'</ref> và tất "
+"cả các dòng sông cuối cùng cũng đổ ra đây. Xa về phía tây trong Đại Dương "
+"Lớn là một quần đảo khổng lồ gọi là <ref>dst='morogor' text='Morogor'</ref>."
 
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:37
 msgid "Morogor"
-msgstr ""
+msgstr "Morogor"
 
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:40
@@ -586,6 +684,12 @@ msgid ""
 "It is mostly inhabited by <ref>dst='..race_drake' text='drakes'</ref>.\n"
 "The central island of the archipelago is also called ‘Morogor’."
 msgstr ""
+"Quần đảo, nằm đâu đó trong <ref>dst='great_ocean' text='Đại Dương Lớn'</ref> "
+"về phía tây của <ref>dst='green_isle' text='Đảo Xanh'</ref> và về phía đông "
+"của <ref>dst=old_continent text='Cựu Lục Địa'</ref>.\n"
+"Phần lớn cư dân của quần đảo là <ref>dst='..race_drake' text='người rồng'</"
+"ref>.\n"
+"Hòn đảo trung tâm quần đảo cũng được gọi là 'Morogor'."
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:45
@@ -597,11 +701,13 @@ msgstr "Đảo Xanh"
 msgid ""
 "A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
+"Một hòn đảo lớn hơn nằm trong <ref>dst='great_ocean' text='Đại Dương Lớn'</"
+"ref>."
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:51
 msgid "Old Continent"
-msgstr ""
+msgstr "Cựu Lục Địa"
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:52
@@ -609,11 +715,13 @@ msgid ""
 "Lies to the west of <ref>dst='morogor' text='Morogor'</ref> across the "
 "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
+"Nằm về phía tây của <ref>dst='morogor' text='Morogor'</ref> băng qua "
+"<ref>dst='great_ocean' text='Đại Dương Lớn'</ref>."
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:57
 msgid "Great Continent"
-msgstr ""
+msgstr "Đại Lục Địa"
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:58
@@ -622,11 +730,14 @@ msgid ""
 "Wesnoth'</ref> lies. Its west coast is surrounded by the "
 "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
+"Lục địa trên đó có <ref>dst='kingdom_wesnoth' text='vương quốc Wesnoth'</"
+"ref>. Bờ biển phía tây được bao vây bởi <ref>dst='great_ocean' text='Đại "
+"Dương Lớn'</ref>."
 
 #. [topic]: id=irdya
 #: data/core/encyclopedia/geography.cfg:63
 msgid "Irdya"
-msgstr ""
+msgstr "Irdya"
 
 #. [topic]: id=irdya
 #: data/core/encyclopedia/geography.cfg:64
@@ -636,11 +747,15 @@ msgid ""
 "rarely used in the era depicted by the main map. People normally just say "
 "“the world” or, poetically, “the wide green world”."
 msgstr ""
+"Tên của thế giới trong đó vương quốc <ref>dst='kingdom_wesnoth' "
+"text='Wesnoth'</ref> hiện hữu là 'Irdya'. Tuy nhiên, thuật ngữ này hiếm khi "
+"được sử dụng trong thời đại được tả trên bản đồ chính. Mọi người thường chỉ "
+"nói \"thế giới\", hoặc thơ mộng hơn, \"thế giới xanh rộng lớn\"."
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:69
 msgid "Kingdom of Wesnoth"
-msgstr ""
+msgstr "Vương quốc Wesnoth"
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:95
@@ -699,11 +814,64 @@ msgid ""
 "south of Aldril. It receives drainage from the Brown Hills and feeds into "
 "the Great River. (Not shown on the main map.)"
 msgstr ""
+"Vương quốc Wesnoth nằm trong phần bắc-trung của <ref>dst='great_continent' "
+"text='Đại Lục Địa'</ref>. Hầu hết các chiến dịch chính đều xoay quanh nó. "
+"Giới hạn trên bản đồ bởi Dòng Sông Lớn về phía bắc, bờ biển của Đại Dương "
+"Lớn về phía tây, rừng Aethen về phía <ref>dst='southwest_elven_lands' "
+"text='tây nam'</ref>, và đầm lầy Cay Đắng về phía đông nam (góc phải phía "
+"dưới bản đồ chính).\n"
+"\n"
+"Trên sông Aethen, phía nam của pháo đài Tahn, là vùng biên giới Wesnoth. "
+"Giới hạn về phía nam (ngoài bản đồ) bởi khu rừng rậm trong đó Aethenwood có "
+"thể được coi là biên giới cực bắc.\n"
+"\n"
+"    • Các thành phố đáng chú ý:\n"
+"          ◦ Weldyn: Thủ đô của Wesnoth.\n"
+"          ◦ Aldril: Thành phố nằm trên vịnh Ngọc Trai.\n"
+"          ◦ Cảng Nước Đen: Thành phố nằm ở phía nam vịnh Ngọc Trai.\n"
+"          ◦ Carcyn: nằm giữa Rừng Xám và Dòng Sông Lớn.\n"
+"          ◦ Dan'Tonk: Thành phố lớn nhất của Wesnoth, nằm ở trung tâm của "
+"quốc gia, chỉ ngay phía tây và bắc Weldyn.\n"
+"          ◦ Soradoc: Tiền đồn biên giới cực bắc của Wesnoth, kiểm soát ngã "
+"ba sông Weldyn và Dòng Sông Lớn.\n"
+"          ◦ Pháo đài Tahn: Tiền đồn biên giới cực nam, kiểm soát con đường "
+"bắc/nam băng qua sông Aethen.\n"
+"          ◦ Tath: Thành phố pháo đài quan trọng phía bắc Dan'Tonk, nhằm kiểm "
+"soát vùng hoang dã quanh phía đông của vùng đồi Nâu và phía bắc của khúc cạn "
+"Abez.\n"
+"\n"
+"    • Những vùng đất đáng chú ý:\n"
+"          ◦ Núi Sư Tử Đầu Chim: Nơi ở của loài sư tử đầu chim truyền thuyết\n"
+"          ◦ Khúc cạn Abez: Đoạn nông của Dòng Sông Lớn, nó thường được kiểm "
+"soát bởi các lực lượng Wesnoth\n"
+"          ◦ Sông Weldyn: Bắt nhánh từ Dòng Sông Lớn và đi về phía nam\n"
+"          ◦ Đồng bằng lớn trung tâm: Vùng giới hạn bởi Weldyn, Dan'Tonk, và "
+"pháo đài Tahn, đồng bằng này là rổ bánh mì của Wesnoth nơi ở của hầu hết cư "
+"dân\n"
+"          ◦ Vùng đồi Dulatus: Những ngọn đồi nhấp nhô biên giới đồng bằng "
+"lớn trung tâm này cung cấp nhiều lương thực thực phẩm cho Wesnoth\n"
+"          ◦ Vùng đồi Nâu: Vùng đất hoang bao quanh núi Sư Tử Đầu Chim, không "
+"có nhiều người sinh sống và rất nguy hiểm.\n"
+"          ◦ Đồng bằng Ngựa: Vùng đồng bằng ngay phía nam Dòng Sông Lớn, giới "
+"hạn bởi khu rừng Glyn về phía tây và sông Weldyn về phía đông, dải phía nam "
+"hòa vào đồng bằng trung tâm. Quê hương của các thị tộc hùng mạnh, những con "
+"ngựa tốt nhất Wesnoth được gây giống ở đây.\n"
+"          ◦ Vùng đồi Estmark: Dải rộng nhô lên ở phía nam Dòng Sông Lớn và "
+"phía đông sông Weldyn. Đoạn cực bắc, gần sông Weldyn nhất, nhiều thời kỳ có "
+"người Wesnoth định cư, nhưng kiểm soát của vương quốc là yếu và nạn trộm "
+"cướp rất phổ biến.\n"
+"          ◦ Rừng Glyn: Còn được gọi là rừng Hoàng Gia, được đặt tên cho một "
+"trong các con trai của Haldric II\n"
+"          ◦ Rừng Xám: Khu rừng lớn nhất giữa vùng hoang vu của Wesnoth, nằm "
+"giữa Carcyn và Aldril, được cho là có ma ám\n"
+"          ◦ Đầm lầy Xanh: Đầm lầy lớn nằm giữa vùng hoang vu của Wesnoth, "
+"phía nam Aldril. Nó nhận nước chảy từ vùng đồi Nâu và chảy vào Dòng Sông "
+"Lớn. (Không hiện trên bản đồ chính)."
 
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:100
 msgid "Elensefar"
-msgstr ""
+msgstr "Elensefar"
 
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:107
@@ -724,11 +892,27 @@ msgid ""
 "          ◦ <ref>dst='great_river' text='Great River'</ref>: It is very wide "
 "at this point, and only ships can cross it."
 msgstr ""
+"Elensefar có lúc là một tỉnh của <ref>dst='kingdom_wesnoth' text='Wesnoth'</"
+"ref>, có lúc là một quốc gia độc lập, có lúc theo liên minh hiệp ước với "
+"Wesnoth. Các biên giới của nó là Dòng Sông Lớn ở phía bắc, một đường xác "
+"định lỏng lẻo với Wesnoth ở phía đông, vịnh Ngọc Trai ở phía nam, và "
+"<ref>dst='great_ocean' text='đại dương'</ref> ở phía tây. Nhiều thông tin "
+"hơn có trong thuyết minh lịch sử của Wesnoth.\n"
+"\n"
+"    • Các thành phố đáng chú ý:\n"
+"          ◦ Elensefar: Thủ đô, nằm trên một hòn đảo trong châu thổ "
+"<ref>dst='great_river' text='Dòng Sông Lớn'</ref>\n"
+"          ◦ Carcyn: Thủ đô trên biên giới Wesnoth–Elensefar, có tranh chấp "
+"với Wesnoth\n"
+"\n"
+"    • Những vùng đất đáng chú ý:\n"
+"          ◦ <ref>dst='great_river' text='Dòng Sông Lớn'</ref>: Nó rất rộng ở "
+"điểm này, và chỉ tàu thuyền mới có thể băng qua."
 
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:112
 msgid "Northlands"
-msgstr ""
+msgstr "Vùng đất phương Bắc"
 
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:130
@@ -773,11 +957,48 @@ msgid ""
 "          ◦ Great River: The origin of this river is somewhere in the east "
 "of the northern lands"
 msgstr ""
+"Không có chính quyền ở vùng đất phương Bắc. Nhiều nhóm người thú, người lùn, "
+"con người và cả thần tiên cư trú trong vùng. Biên giới phía bắc và phía đông "
+"không xác định, biên giới phía nam là <ref>dst='great_river' text='Dòng Sông "
+"Lớn'</ref>, và biên giới phía tây là <ref>dst='great_ocean' text='Đại Dương "
+"Lớn'</ref>.\n"
+"\n"
+"    • Các thành phố đáng chú ý:\n"
+"          ◦ Glamdrol: Thủ đô một bộ lạc người thú\n"
+"          ◦ Romyr: Thủ đô một bộ lạc người thú khác\n"
+"          ◦ Wesmere: Vị trí của Ka'lian - Hội đồng thần tiên\n"
+"          ◦ Cửa Hang Người Lùn: Thành phố của con người lẫn người lùn trong "
+"vùng Knalga ở phía nam dãy núi Trái Tim. Một trung tâm buôn bán lớn.\n"
+"          ◦ Dallben và Delwyn: Thành phố của con người ban đầu được xây dựng "
+"bởi những người định cư đã vượt qua Dòng Sông Lớn trong công cuộc bành "
+"trướng Thời đại vàng của Wesnoth. Bây giờ đã bị bỏ hoang. Vùng rừng phía "
+"đông bắc của Elensefar, nơi có những ngôi làng này, được con người đặt tên "
+"là tỉnh Annuvin nhưng được thần tiên gọi là Wesmere.\n"
+"\n"
+"    • Những vùng đất đáng chú ý:\n"
+"          ◦ Dãy núi Trái Tim: Một hàng rào gần như không thể qua giữa xứ sở "
+"sông và đồng bằng phương Bắc.\n"
+"          ◦ Heartfangs: dải núi cao chót vót phía tây nam của hồ Vrug và "
+"phía bắc của khu rừng Wesmere. Đoạn khắc nghiệt và nguy hiểm nhất của dãy "
+"núi Trái Tim; chỉ có các ẩn sĩ, những người điên và các pháp sư sống ở đó.\n"
+"          ◦ Đầm lầy Kinh Hoàng: bãi lầy rất lớn nằm giữa dãy núi Trái Tim và "
+"Dòng Sông Lớn. Nơi khét tiếng nguy hiểm.\n"
+"          ◦ Hồ Vrug: Hồ lớn trên núi có dòng sông lớn tạo thành con đường "
+"duy nhất qua dãy núi phương Bắc\n"
+"          ◦ Arkan-thoria: Dòng sông chảy từ hồ Vrug. Đây là tên của thần "
+"tiên, với con người nó được gọi là Longlier.\n"
+"          ◦ Sông Listra: Nhánh chảy về phía nam của Dòng Sông Lớn ở đó Arkan-"
+"thoria đổ vào.\n"
+"          ◦ Rừng Lintanir: Phần phía nam của khu rừng lớn phương Bắc, một "
+"khu rừng khổng lồ mà chỉ thần tiên biết biên giới phía đông và phía bắc của "
+"nó. Thủ phủ của nó, Elensiria, ít khi được thăm viếng bởi con người.\n"
+"          ◦ Dòng Sông Lớn: Ngọn nguồn của dòng sông này nằm ở đâu đó về phía "
+"đông của những vùng đất phương bắc"
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:135
 msgid "Southwest Elven Lands"
-msgstr ""
+msgstr "Vùng đất thần tiên Tây Nam"
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:141
@@ -794,11 +1015,23 @@ msgid ""
 "the southwest—much farther than is charted—and is home to <ref>dst='.."
 "race_elf' text='elves'</ref>."
 msgstr ""
+"Các thần tiên tây nam bị cách biệt với các thần tiên phương bắc, và chỉ có "
+"liên lạc rời rạc với họ cũng như hầu hết các xứ sở khác. Biên giới là Đầm "
+"Lầy Xanh ở phía đông bắc, sa mạc (không vẽ) ở phía nam, và "
+"<ref>dst='great_ocean' text='đại dương'</ref> ở phía tây.\n"
+"\n"
+"    • Các thành phố đáng chú ý\n"
+"          ◦ Không có thành phố nào được biết\n"
+"\n"
+"    • Những vùng đất đáng chú ý:\n"
+"          ◦ Rừng Aethen: Khu rừng phương nam lớn nhất, mở rộng xa về phía "
+"tây nam - xa hơn nhiều hình ảnh trên bản đồ - và là nơi ở của các "
+"<ref>dst='..race_elf' text='thần tiên'</ref>."
 
 #. [topic]: id=heart_mountains
 #: data/core/encyclopedia/geography.cfg:146
 msgid "Heart Mountains"
-msgstr "Núi Trái tim"
+msgstr "Dãy núi Trái Tim"
 
 #. [topic]: id=heart_mountains
 #: data/core/encyclopedia/geography.cfg:147
@@ -807,11 +1040,13 @@ msgid ""
 "text='river'</ref> country and the <ref>dst='far_north' text='Northern "
 "Plains'</ref>."
 msgstr ""
+"Một hàng rào gần như không thể qua giữa xứ sở <ref>dst='arkan_thoria' "
+"text='sông'</ref> và <ref>dst='far_north' text='đồng bằng phương Bắc'</ref>."
 
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:152
 msgid "Far North"
-msgstr ""
+msgstr "Viễn Bắc"
 
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:176
@@ -848,6 +1083,39 @@ msgid ""
 "          ◦ River Bork\n"
 "          ◦ Wild Steppe"
 msgstr ""
+"Lạnh, khắc nghiệt, và không thể vào được, vùng Viễn Bắc là quê hương tổ tiên "
+"của đại thị tộc người thú. Nằm về phía bắc của <ref>dst='heart_mountains' "
+"text='dãy núi Trái Tim'</ref>, mà người thú gọi là Haggid-Dargor và tuyên bố "
+"(không có bằng chứng) là của chúng. Về phía đông là các bộ lạc không liên "
+"kết của thảo nguyên Hoang Dã, nằm ngoài tầm kiểm soát của đại thị tộc, những "
+"kẻ mọi rợ hoang dã của loài người sống rải rác và xung đột với các thần tiên "
+"của đồng bằng phương Bắc (còn được gọi là thần tiên phương Bắc ở những vùng "
+"đất của loài người). Các thần tiên phương Bắc cư trú xa hơn về phía đông, "
+"người ta đồn rằng ở đó họ thống trị cả một vương quốc rộng lớn.\n"
+"\n"
+"    • Các thành phố đáng chú ý:\n"
+"          ◦ Barag Gor, thành phố quê hương của Hội đồng người thú\n"
+"          ◦ Bitok\n"
+"          ◦ Borstep\n"
+"          ◦ Castelfrang\n"
+"          ◦ Farzi\n"
+"          ◦ Festog\n"
+"          ◦ Grisbi\n"
+"          ◦ Lmarig\n"
+"          ◦ Melmog\n"
+"          ◦ Prestim\n"
+"          ◦ Tirigaz\n"
+"\n"
+"    • Những vùng đất đáng chú ý:\n"
+"          ◦ Đầm lầy Hoang Tàn\n"
+"          ◦ Dãy núi Dorth\n"
+"          ◦ Dãy núi Haag\n"
+"          ◦ Rừng Xanh\n"
+"          ◦ Rừng Yên Lặng\n"
+"          ◦ Rừng Thelien\n"
+"          ◦ Sông Oumph\n"
+"          ◦ Sông Bork\n"
+"          ◦ Thảo nguyên Hoang Dã"
 
 #. [section]: id=introduction
 #. [topic]: id=..introduction
@@ -905,6 +1173,14 @@ msgstr "Lệnh"
 
 #. [topic]: id=..abilities_section
 #: data/core/help.cfg:93
+#, fuzzy
+#| msgid ""
+#| "Certain units have abilities that either directly affect other units or "
+#| "have an impact on how the unit interacts with other units. These "
+#| "abilities will be listed under this section as you encounter them. Each "
+#| "page will provide a description of what the ability does and which "
+#| "(currently discovered) units have it.\n"
+#| "\n"
 msgid ""
 "Certain units have abilities that either directly affect other units, or "
 "have an impact on how the unit interacts with other units. These abilities "
@@ -913,7 +1189,9 @@ msgid ""
 msgstr ""
 "Một số đơn vị có khả năng hoặc tác động trực tiếp đến các đơn vị khác, hoặc "
 "tác động đến cách mà đơn vị đó tương tác với các đơn vị khác. Các khả năng "
-"sẽ được liệt kê dưới chủ đề này khi bạn bắt gặp chúng.\n"
+"sẽ được liệt kê dưới đề mục này khi bạn bắt gặp chúng. Mỗi trang sẽ cung cấp "
+"một mô tả về khả năng làm gì và những đơn vị nào (hiện đã được khám phá) có "
+"khả năng đó.\n"
 "\n"
 
 #. [topic]: id=..weapon_specials
@@ -929,7 +1207,7 @@ msgstr ""
 #. [topic]: id=.unknown_unit
 #: data/core/help.cfg:109
 msgid "Unknown Unit"
-msgstr "Đơn vị chưa xác định"
+msgstr "Đơn vị không xác định"
 
 #. [topic]: id=.unknown_unit
 #: data/core/help.cfg:112
@@ -941,7 +1219,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Đơn vị này hiện thời ch xác định. Bạn phải khám phá nó trong trò chơi để "
+"Đơn vị này hiện thời không xác định. Bạn phải khám phá nó trong trò chơi để "
 "được phép xem mô tả về nó."
 
 #. [topic]: id=introduction_topic
@@ -963,13 +1241,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<italic>text='Trận chiến vì Wesnoth'</italic> là một trò chơi chiến thuật "
-"dựa trên lượt đi, theo phong cách thần thoại, hơi khác so với những trò chơi "
-"chiến thuật hiện đại. Trong khi các trò chơi khác cố gắng để trở nên phức "
-"tạp, <italic>text='Trận chiến vì Wesnoth'</italic> tập trung vào tính đơn "
-"giản trong cả quy tắc lẫn cách chơi. Tuy nhiên — điều này không làm cho trò "
-"chơi trở nên dễ dàng chút nào - từ những quy tắc đơn giản sẽ xuất hiện nhiều "
-"chiến thuật phong phú, khiến cho trò chơi dễ để tìm hiểu nhưng không dễ để "
+"<italic>text='Trận chiến vì Wesnoth'</italic> là một trò chơi chiến lược dựa "
+"trên lượt đi, theo phong cách thần thoại, hơi khác so với các trò chơi chiến "
+"lược hiện đại. Trong khi các trò chơi khác cố gắng để trở nên phức tạp, "
+"<italic>text='Trận chiến vì Wesnoth'</italic> tập trung vào tính đơn giản "
+"trong cả quy tắc lẫn cách chơi. Tuy nhiên, điều này không làm cho trò chơi "
+"trở nên dễ dàng chút nào - từ những quy tắc đơn giản sẽ xuất hiện nhiều "
+"chiến lược phong phú, khiến cho trò chơi dễ để tìm hiểu nhưng không dễ để "
 "chinh phục."
 
 #. [topic]: id=fundamentals
@@ -989,9 +1267,9 @@ msgstr ""
 "Các trang sau đây tóm lược tất cả những gì bạn cần biết để chơi "
 "<italic>text='Trận chiến vì Wesnoth'</italic>, bao gồm cách chơi và những cơ "
 "chế đằng sau trò chơi. Trong lúc chơi, thông tin mới sẽ được thêm vào các "
-"trang này, khi bạn đến những khía cạnh mới của trò chơi. Để biết thêm thông "
-"tin chi tiết về những tình huống đặc biệt và các ngoại lệ, xin theo các liên "
-"kết đi kèm."
+"trang này, khi bạn bắt gặp những khía cạnh mới của trò chơi. Để biết thêm "
+"thông tin chi tiết về những tình huống và ngoại lệ đặc biệt, xin theo các "
+"liên kết đi kèm."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:135
@@ -1007,12 +1285,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Để bắt đầu, tốt nhất là nhấn nút <italic>text='Hướng dẫn'</italic> ở trình "
-"đơn chính. Một hướng dẫn tương tác sẽ dạy bạn những điều cơ bản của Wesnoth. "
-"Lần đầu tiên, bạn nên chơi chiến dịch Người thừa kế ngai vàng - nhấn "
-"<italic>text='Chiến dịch'</italic> sau đó <italic>text='Người thừa kế ngai "
+"Để bắt đầu, tốt nhất là nhấn nút <bold>text='Hướng dẫn'</bold> ở trình đơn "
+"chính. Một hướng dẫn tương tác sẽ dạy bạn những điều cơ bản của Wesnoth. Sau "
+"hướng dẫn này, bạn nên chơi chiến dịch đầu tiên Người thừa kế ngai vàng - "
+"nhấn <bold>text='Chiến dịch'</bold> sau đó <italic>text='Người thừa kế ngai "
 "vàng'</italic>. Do trò chơi <italic>text='Trận chiến vì Wesnoth'</italic> có "
-"thể khá thử thách, bạn có thể bắt đầu với mức độ <italic>text=Dễ</italic>."
+"thể khá thử thách, bạn có thể bắt đầu ở mức độ dễ."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:138
@@ -1023,7 +1301,7 @@ msgid ""
 "encounter new <ref>dst='..abilities_section' text='abilities'</ref> for the "
 "first time."
 msgstr ""
-"Trong khi chơi, lưu ý rằng nếu bạn di chuyển chuột trên các mục trong trò "
+"Trong khi chơi, lưu ý rằng nếu bạn di chuyển chuột trên nhiều mục trong trò "
 "chơi, sẽ có thông tin hiển thị trong khung trạng thái và một mô tả ngắn giải "
 "thích mỗi mục. Điều này đặc biệt hữu ích khi bạn gặp các <ref>dst='.."
 "abilities_section' text='khả năng'</ref> mới lần đầu tiên."
@@ -1035,7 +1313,6 @@ msgstr "Giới thiệu trò chơi"
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:144
-#, fuzzy
 msgid ""
 "The game takes place over a series of battles, called "
 "<italic>text='scenarios'</italic>. Each scenario pits your troops against "
@@ -1045,17 +1322,16 @@ msgid ""
 "other people connected to that network. If your computer has a connection to "
 "the Internet, you can play against other people across the Internet."
 msgstr ""
-"Trò chơi diễn ra theo một loạt các trận chiến, gọi là các màn. Trong mỗi "
-"màn, quân của bạn sẽ đọ sức với quân của một hoặc nhiều người chơi. Bạn có "
-"thể chơi đấu với máy tính, hoặc với bạn bè, mỗi người theo lượt khi ngồi bên "
-"máy tính (chế độ ghế nóng). Nếu máy tính của bạn kết nối với một mạng máy "
-"tính, bạn cũng có thể chơi đấu với những người khác cùng kết nối với mạng "
-"đó. Nếu máy tính của bạn có kết nối Internet, bạn có thể chơi đấu với những "
-"người khác qua Internet."
+"Trò chơi diễn ra theo một loạt các trận chiến, gọi là các <italic>text='màn "
+"chơi'</italic>. Trong mỗi màn chơi, quân của bạn sẽ đọ sức với quân của một "
+"hoặc nhiều kẻ địch. Bạn có thể chơi đấu với máy tính, hoặc với bạn bè, mỗi "
+"người một lượt khi ngồi bên máy tính (chế độ ghế nóng). Nếu máy tính của bạn "
+"kết nối với một mạng máy tính, bạn cũng có thể chơi đấu với những người khác "
+"cùng kết nối với mạng đó. Nếu máy tính của bạn có kết nối Internet, bạn có "
+"thể chơi đấu với những người khác qua Internet."
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:146
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1066,18 +1342,18 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Các chiến dịch bao gồm nhiều màn nối tiếp nhau, kể về câu chuyện. Trong một "
-"chiến dịch, bạn cần chơi cẩn thận hơn, giữ gìn những quân lính tốt nhất để "
-"có thể sử dụng lại trong các màn sau của chiến dịch."
+"<italic>text='Chiến dịch'</italic> bao gồm nhiều màn chơi nối tiếp nhau, kể "
+"một câu chuyện. Trong một chiến dịch, bạn cần chơi cẩn thận hơn, giữ gìn "
+"những quân lính tốt nhất để có thể sử dụng lại trong các màn sau của chiến "
+"dịch."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:152
 msgid "Victory and Defeat"
-msgstr "Chiến thắng và Bại trận"
+msgstr "Chiến thắng và Thua cuộc"
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:153
-#, fuzzy
 msgid ""
 "Pay careful attention to the <bold>text='Objectives'</bold> pop-up box at "
 "the beginning of each scenario. Usually you will achieve victory by killing "
@@ -1086,16 +1362,15 @@ msgid ""
 "designated point, say, or rescuing someone, or solving a puzzle, or holding "
 "out against a siege until a certain number of turns have elapsed."
 msgstr ""
-"Chú ý cẩn thận hộp thoại Mục tiêu ở đầu mỗi màn. Thông thường bạn sẽ giành "
-"chiến thắng bằng cách giết toàn bộ chỉ huy của kẻ thù, và chỉ bị thua cuộc "
-"khi để người chỉ huy của mình bị giết. Nhưng các màn có thể có những mục "
-"tiêu chiến thắng khác, đưa người lãnh đạo của bạn đến một điểm xác định, "
-"giải cứu ai đó, giải quyết một vấn đề, hoặc phòng thủ chống lại một cuộc bao "
-"vây đến hết một số lượt nhất định."
+"Chú ý cẩn thận hộp thoại <bold>text='Mục tiêu'</bold> ở đầu mỗi màn chơi. "
+"Thông thường bạn sẽ giành chiến thắng bằng cách giết toàn bộ chỉ huy của kẻ "
+"thù, và chỉ bị thua cuộc khi để người chỉ huy của mình bị giết. Nhưng các "
+"màn chơi có thể có những mục tiêu chiến thắng khác - đưa người chỉ huy của "
+"bạn đến một điểm xác định, giải cứu ai đó, giải quyết một vấn đề, hoặc phòng "
+"thủ chống lại một cuộc bao vây đến hết một số lượt nhất định."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:155
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1106,10 +1381,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Khi bạn thắng một màn, bản đồ sẽ xám lại và nút 'Kết thúc lượt' sẽ thay đổi "
-"thành 'Kết thúc màn'. Giờ bạn có thể làm những việc như thay đổi các tùy "
-"chọn lưu trò chơi hoặc (nếu bạn đang tham gia một trò chơi nhiều người "
-"chơi ) tán gẫu với các người chơi  khác trước khi ấn nút đó để đi tiếp."
+"Khi bạn thắng một màn chơi, bản đồ sẽ xám lại và nút <bold>text='Kết thúc "
+"lượt'</bold> sẽ thay đổi thành <bold>text='Kết thúc màn'</bold>. Giờ bạn có "
+"thể làm những việc như thay đổi các tùy chọn lưu trò chơi hoặc (nếu bạn đang "
+"tham gia một trò chơi nhiều người chơi) tán gẫu với những người chơi khác "
+"trước khi ấn nút đó để đi tiếp."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:162
@@ -1118,7 +1394,6 @@ msgstr "Tuyển quân và Gọi lại"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:163
-#, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -1134,25 +1409,17 @@ msgstr ""
 "Mỗi phe bắt đầu bằng một người chỉ huy trong pháo đài. Lúc bắt đầu trận "
 "chiến, và vào các thời điểm trong trận chiến, bạn cần tuyển các <ref>dst='.."
 "units' text='đơn vị'</ref> vào quân đội. Để tuyển quân, bạn phải để người "
-"chi huy của bạn (lấy ví dụ, Konrad trong chiến dịch Người thừa kế ngai vàng) "
-"trên ô pháo đài của một <ref>dst='terrain_castle' text='lâu đài'</ref>. Sau "
-"đó, bạn có thể tuyển quân bằng cách chọn Tuyển quân từ trình đơn hoặc nhấn "
-"chuột phải lên một ô lục giác và chọn <italic>text='Tuyển quân'</italic>. "
-"Thao tác này mở trình đơn tuyển quân, liệt kê các đơn vị có thể tuyển cùng "
-"với chi phí của chúng. Nhấn lên một đơn vị để xem những chỉ số thống kê của "
-"nó, sau đó ấn nút tuyển quân để tuyển đơn vị."
+"chi huy của bạn (lấy ví dụ, Konrad trong chiến dịch <italic>text='Người thừa "
+"kế ngai vàng'</italic>) trên ô lục giác pháo đài của một "
+"<ref>dst='terrain_castle' text='lâu đài'</ref>. Sau đó, bạn có thể tuyển "
+"quân bằng cách chọn <bold>text='Tuyển quân'</bold> từ trình đơn hoặc nhấn "
+"chuột phải lên một ô lục giác và chọn <bold>text='Tuyển quân'</bold>. Thao "
+"tác này mở trình đơn tuyển quân, liệt kê các đơn vị có thể tuyển cùng với "
+"chi phí của chúng. Nhấn lên một đơn vị để xem các chỉ số của nó, sau đó ấn "
+"nút tuyển quân để tuyển đơn vị."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:165
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "If you right-clicked on a castle hex and selected recruit, the new unit "
-#| "will appear in that square. Otherwise, it will appear in a free square "
-#| "near the keep. You may only recruit as many units as you have free hexes "
-#| "in your castle, and you cannot spend more gold than you actually have on "
-#| "recruiting."
 msgid ""
 "\n"
 "\n"
@@ -1163,15 +1430,14 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Nếu bạn nhấn chuột phải lên một hình lục giác lâu đài và chọn tuyển quân, "
-"đơn vị mới sẽ xuất hiện trong ô đó. Nếu không, nó sẽ xuất hiện trong một ô "
-"trống gần pháo đài. Bạn chỉ có thể tuyển số lượng đơn vị tối đa bằng số ô "
-"trống trong lâu đài, và bạn không thể tiêu nhiều vàng hơn lượng vàng bạn "
-"thực sự có."
+"Nếu bạn nhấn chuột phải lên một ô lục giác lâu đài và chọn tuyển quân, đơn "
+"vị mới sẽ xuất hiện trong ô lục giác đó. Nếu không, nó sẽ xuất hiện trong "
+"một ô lục giác trống gần pháo đài. Bạn chỉ có thể tuyển số lượng đơn vị tối "
+"đa bằng số ô lục giác trống bạn có trong lâu đài, và bạn không thể tiêu "
+"nhiều vàng hơn lượng vàng bạn thực sự có khi tuyển quân."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:167
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1181,7 +1447,7 @@ msgstr ""
 "\n"
 "\n"
 "Các đơn vị được tuyển có hai <ref>dst='..traits_section' text='đặc điểm'</"
-"ref> ngẫu nhiên làm thay đổi các chỉ số thống kê của chúng."
+"ref> ngẫu nhiên làm thay đổi các chỉ số của chúng."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:169
@@ -1194,13 +1460,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Trong các màn về sau, bạn cũng có thể Gọi lại những người sống sót từ các "
-"trận chiến trước. Việc gọi lại có giá chung 20 đơn vị vàng và hiện ra một "
-"danh sách tất cả những đơn vị sống sót từ các màn trước."
+"Trong các màn chơi về sau, bạn cũng có thể gọi lại những người sống sót từ "
+"các trận chiến trước. Gọi lại có giá chung 20 lượng vàng và hiện ra một danh "
+"sách tất cả những đơn vị sống sót từ các màn chơi trước."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:171
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1211,7 +1476,7 @@ msgstr ""
 "\n"
 "\n"
 "Bạn không chỉ mất vàng để tuyển hoặc gọi lại các đơn vị, mà còn cần cả tiền "
-"để nuôi quân. Xem <ref>dst='income_and_upkeep' text='Thu nhập và Phí bảo "
+"để nuôi quân. Xem <ref>dst='income_and_upkeep' text='thu nhập và phí bảo "
 "trì'</ref> để biết thêm thông tin."
 
 #. [topic]: id=orbs
@@ -1225,35 +1490,38 @@ msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
 msgstr ""
-"Phía trên thanh máu hiện bên cạnh mỗi đơn vị của bạn là một quả cầu. Đối với "
-"các đơn vị bạn điều khiển, quả cầu này có màu:"
+"Phía trên thanh năng lượng hiện bên cạnh mỗi đơn vị của bạn là một quả cầu. "
+"Đối với các đơn vị bạn điều khiển, quả cầu này có màu:"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:180
 msgid " green if it hasn’t moved this turn,"
-msgstr "xanh lá cây nếu đơn vị chưa di chuyển ở lượt này,"
+msgstr " xanh lá cây nếu đơn vị chưa di chuyển ở lượt này,"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:181
 msgid " yellow if it has moved, but could still move further or attack, or"
 msgstr ""
-"vàng nếu đã di chuyển, nhưng vẫn có thể di chuyển tiếp hoặc tấn công, hoặc"
+" vàng nếu đơn vị đã di chuyển, nhưng vẫn có thể di chuyển tiếp hoặc tấn "
+"công, hoặc"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:182
 msgid ""
 " red if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
+" đỏ nếu đơn vị không thể di chuyển hay tấn công được nữa, hoặc đã kết thúc "
+"lượt."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:183
 msgid " blue if the unit is an ally you do not control."
-msgstr "xanh lam nếu đơn vị là một đồng minh bạn không điều khiển."
+msgstr " xanh lam nếu đơn vị là một đồng minh bạn không điều khiển."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:184
 msgid " Enemy units have no orb on top of their energy bar."
-msgstr "Các đơn vị của kẻ thù không có quả cầu phía trên thanh máu."
+msgstr " Các đơn vị của kẻ thù không có quả cầu phía trên thanh năng lượng."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:191
@@ -1262,7 +1530,6 @@ msgstr "Máu và Kinh nghiệm"
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:192
-#, fuzzy
 msgid ""
 "Each unit has a certain number of <italic>text='hitpoints'</italic> (HP). If "
 "the hitpoints of a unit drop below 1, the unit dies. Each unit also has a "
@@ -1270,10 +1537,11 @@ msgid ""
 "recruited unit starts with no experience points, and gains experience by "
 "fighting enemies."
 msgstr ""
-"Mỗi đơn vị có một số lượng máu (Máu) nhất định. Nếu máu của một đơn vị xuống "
-"dưới 1, đơn vị đó sẽ chết. Mỗi đơn vị cũng có một số điểm kinh nghiệm (KN) "
-"nhất định. Một đơn vị vừa mới tuyển dụng ban đầu không có điểm kinh nghiệm, "
-"và giành kinh nghiệm bằng cách chiến đấu với kẻ thù."
+"Mỗi đơn vị có một lượng <italic>text='máu'</italic> nhất định. Nếu máu của "
+"một đơn vị xuống dưới 1, đơn vị đó sẽ chết. Mỗi đơn vị cũng có một số "
+"<italic>text='điểm kinh nghiệm'</italic> (KN) nhất định. Một đơn vị vừa mới "
+"tuyển dụng ban đầu không có điểm kinh nghiệm, và giành kinh nghiệm bằng cách "
+"chiến đấu với kẻ thù."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:196
@@ -1293,10 +1561,11 @@ msgid ""
 "experience bar, which turns white as the unit is about to "
 "<ref>dst='experience_and_advancement' text='advance'</ref>."
 msgstr ""
-"Máu cũng được chỉ thị bằng một thanh máu bên cạnh mỗi đơn vị, có màu xanh lá "
-"cây, vàng hoặc đỏ. Một đơn vị với ít nhất 1 điểm kinh nghiệm có thanh kinh "
-"nghiệm màu xanh lam, thanh kinh nghiệm chuyển thành màu trắng khi đơn vị đó "
-"sắp sửa <ref>dst='experience_and_advancement' text='nâng cấp'</ref>."
+"Máu cũng được chỉ thị bằng một thanh năng lượng bên cạnh mỗi đơn vị, có màu "
+"xanh lá cây, vàng hoặc đỏ. Một đơn vị với ít nhất 1 điểm kinh nghiệm có "
+"thanh kinh nghiệm màu xanh lam, thanh kinh nghiệm chuyển thành màu trắng khi "
+"đơn vị đó sắp sửa <ref>dst='experience_and_advancement' text='nâng cấp'</"
+"ref>."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:204
@@ -1320,14 +1589,14 @@ msgid ""
 "use up a unit’s movement, but will still allow it to attack."
 msgstr ""
 "Di chuyển trong <italic>text='Trận chiến vì Wesnoth'</italic> rất đơn giản. "
-"Nhấp chuột vào đơn vị bạn muốn di chuyển để chọn nó, sau đó nhấn lên ô lục "
-"giác bạn muốn di chuyển nó đến. Khi chọn một đơn vị, mọi nơi nó có thể di "
-"chuyển ở lượt này sẽ được tô sáng, và tất cả các hình lục giác khác trên bản "
-"đồ bị làm tối lại. Di chuyển chuột trên một hình lục giác được tô sáng sẽ "
-"hiện tỷ lệ phòng thủ đơn vị sẽ có nếu bạn di chuyển nó đến ô lục giác đó. Di "
-"chuyển chuột trên một ô lục giác tối cũng sẽ hiện số lượt cần thiết để đến "
-"được đó, và nhấn chuột sẽ làm cho đơn vị di chuyển đến đó theo đường ngắn "
-"nhất ở lượt này và các lượt tiếp theo. Nếu bạn không sử dụng hết toàn bộ di "
+"Nhấn vào đơn vị bạn muốn di chuyển để chọn nó, sau đó nhấn lên ô lục giác "
+"bạn muốn di chuyển nó đến. Khi chọn một đơn vị, mọi nơi nó có thể di chuyển "
+"ở lượt này sẽ được tô sáng, và tất cả các ô lục giác khác trên bản đồ bị làm "
+"tối lại. Di chuyển chuột trên một ô lục giác được tô sáng sẽ hiện tỷ lệ "
+"phòng thủ đơn vị sẽ có nếu bạn di chuyển nó đến ô lục giác đó. Di chuyển "
+"chuột trên một ô lục giác tối cũng sẽ hiện số lượt cần thiết để đến được đó, "
+"và nhấn chuột sẽ làm cho đơn vị di chuyển đến đó theo đường nhanh nhất ở "
+"lượt này và các lượt tiếp theo. Nếu bạn không sử dụng hết toàn bộ số điểm di "
 "chuyển khi bạn di chuyển một đơn vị, bạn có thể tiếp tục di chuyển nó. Thao "
 "tác này hữu ích khi để hai đơn vị chuyển đổi vị trí. Tấn công bằng một đơn "
 "vị sẽ sử dụng hết toàn bộ di chuyển của nó. Kết thúc di chuyển trong một "
@@ -1336,7 +1605,6 @@ msgstr ""
 
 #. [topic]: id=movement
 #: data/core/help.cfg:207
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1355,16 +1623,15 @@ msgstr ""
 "Mỗi đơn vị có một số điểm di chuyển nhất định, được sử dụng hết khi di "
 "chuyển đến một ô lục giác mới, tùy thuộc vào địa hình của ô lục giác cụ thể "
 "đó. Lấy ví dụ, để di chuyển vào đồng cỏ gần như luôn mất 1 điểm di chuyển. "
-"Số lượng điểm di chuyển chính xác cần tiêu tốn khi vào một ô lục giác phụ "
-"thuộc vào kiểu đơn vị - trong rừng, các đơn vị thần tiên chỉ tốn 1 điểm di "
-"chuyển, hầu hết các đơn vị con người và người thú tốn 2, trong khi kỵ binh "
-"tốn 3. Bạn có thể tìm hiểu số lượng điểm di chuyển mà một đơn vị cần để vào "
-"một kiểu địa hình nhất định bằng cách nhấn chuột phải lên nó, chọn Mô tả đơn "
-"vị, sau đó xem <italic>text='Hệ số địa hình'</italic>."
+"Số điểm di chuyển chính xác cần tiêu tốn khi vào một ô lục giác phụ thuộc "
+"vào kiểu đơn vị - trong rừng, các đơn vị thần tiên chỉ tốn 1 điểm di chuyển, "
+"hầu hết các đơn vị con người và người thú tốn 2, trong khi kỵ sĩ tốn 3. Bạn "
+"có thể tìm hiểu số điểm di chuyển mà một đơn vị cần để vào một kiểu địa hình "
+"nhất định bằng cách nhấn chuột phải lên nó, chọn <bold>text='Mô tả đơn vị'</"
+"bold>, sau đó xem <bold>text='Hệ số địa hình'</bold>."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:209
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1378,12 +1645,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Một thứ khác cần lưu ý trong khi di chuyển là Vùng kiểm soát. Mỗi đơn vị tạo "
-"ra một vùng kiểm soát trong các ô lục giác ngay xung quanh nó, và bất kỳ đơn "
-"vị kẻ thù nào khi vào các hình lục giác này đều kết thúc ngay lập tức di "
-"chuyển. Tìm hiểu cách sử dụng vùng kiểm soát là một phần quan trọng của "
-"Wesnoth, vì chỉ những đơn vị có khả năng <ref>dst='ability_skirmisher' "
-"text='đột nhập'</ref> mới có thể bỏ qua vùng kiểm soát."
+"Một thứ khác cần lưu ý trong khi di chuyển là <italic>text='vùng kiểm soát'</"
+"italic>. Mỗi đơn vị tạo ra một vùng kiểm soát trong các ô lục giác ngay xung "
+"quanh nó, và bất kỳ đơn vị kẻ thù nào khi vào các hình lục giác này đều kết "
+"thúc ngay lập tức di chuyển. Tìm hiểu cách sử dụng vùng kiểm soát là một "
+"phần quan trọng của Wesnoth, vì chỉ những đơn vị có khả năng "
+"<ref>dst='ability_skirmisher' text='đột nhập'</ref> mới có thể bỏ qua vùng "
+"kiểm soát."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:211
@@ -1396,9 +1664,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Để xem kẻ thù có thể di chuyển đến đâu trong lượt kế tiếp, ấn Ctrl-v hoặc "
-"Cmd-v. Ctrl-b hoặc Cmd-b hiện nơi kẻ thù có thể di chuyển, nếu các đơn vị "
-"của bạn không ở trên bản đồ để chặn đường chúng."
+"Để xem kẻ thù có thể di chuyển đến đâu trong lượt kế tiếp của chúng, ấn Ctrl-"
+"v hoặc Cmd-v. Ctrl-b hoặc Cmd-b hiện nơi kẻ thù có thể di chuyển, nếu các "
+"đơn vị của bạn không ở trên bản đồ để chặn đường chúng."
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:218
@@ -1407,7 +1675,6 @@ msgstr "Màn che và Sương mù chiến tranh"
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:221
-#, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The "
@@ -1430,25 +1697,26 @@ msgid ""
 "bold> (or the end of your turn) and thereby preserve your ability to undo "
 "movement."
 msgstr ""
-"Trong một số màn, các phần của bản đồ sẽ bị ẩn với bạn. Có hai cơ chế có thể "
-"được sử dụng riêng biệt hoặc đồng thời. Màn che ẩn cả địa hình lẫn mọi đơn "
-"vị tại một vị trí. Tuy nhiên, khi đã mở màn che, bạn luôn có thể nhìn thấy "
-"vị trí đó. Sương mù chiến tranh chỉ ẩn các đơn vị và quyền sở hữu các ngôi "
-"làng (không phải của bạn hoặc đồng minh). Sương mù chiến tranh mở tạm thời "
-"khi bạn có các đơn vị ở gần, nhưng phủ lại khi chúng rời đi. Cả hai màn che "
-"và sương mù chiến tranh đều do các đơn vị mở. Mỗi đơn vị mở các vị trí xung "
-"quanh chúng trong phạm vi di chuyển của một lượt (bỏ qua vùng kiểm soát và "
-"đơn vị kẻ thù).\n"
+"Trong một số màn chơi, các phần của bản đồ sẽ bị ẩn với bạn. Có hai cơ chế "
+"có thể được sử dụng riêng biệt hoặc đồng thời. <italic>text='Màn che'</"
+"italic> ẩn cả địa hình lẫn mọi đơn vị tại một vị trí. Tuy nhiên, khi đã mở "
+"màn che, bạn luôn có thể nhìn thấy vị trí đó. <italic>text='Sương mù chiến "
+"tranh'</italic> chỉ ẩn các đơn vị và quyền sở hữu các ngôi làng (không phải "
+"của bạn hoặc đồng minh). Sương mù chiến tranh mở tạm thời khi bạn có các đơn "
+"vị ở gần, nhưng phủ lại khi chúng rời đi. Cả hai màn che và sương mù chiến "
+"tranh đều do các đơn vị mở. Mỗi đơn vị mở các vị trí xung quanh chúng trong "
+"phạm vi di chuyển của một lượt (bỏ qua vùng kiểm soát và đơn vị kẻ thù).\n"
 "\n"
 "Thông thường, bạn có thể đảo ngược di chuyển của một đơn vị, miễn là một sự "
 "kiện có kết quả ngẫu nhiên chưa xảy ra, chẳng hạn như chiến đấu hoặc tuyển "
 "quân (do hầu hết các đơn vị đều nhận được những đặc điểm ngẫu nhiên khi "
 "tuyển quân). Khám phá địa hình ẩn bằng cách mở màn che hoặc sương mù cũng sẽ "
-"làm mất khả năng đảo ngược về trạng thái trước. Bạn có thể kích hoạt 'hoãn "
-"cập nhật màn che' trong trình đơn hành động. Thao tác này sẽ ngăn ngừa các "
-"đơn vị mở màn che hoặc sương mù đến khi xảy ra sự kiện ngẫu nhiên hoặc đến "
-"khi cập nhật thủ công qua 'cập nhật màn che ngay' (hoặc kết thúc lượt của "
-"bạn) và do đó giữ khả năng đảo ngược di chuyển."
+"làm mất khả năng đảo ngược về trạng thái trước. Bạn có thể kích hoạt "
+"<bold>text='Hoãn cập nhật màn che'</bold> trong trình đơn hành động. Thao "
+"tác này sẽ ngăn ngừa các đơn vị mở màn che hoặc sương mù đến khi xảy ra sự "
+"kiện ngẫu nhiên hoặc đến khi cập nhật thủ công qua <bold>text='Cập nhật màn "
+"che ngay'</bold> (hoặc kết thúc lượt của bạn) và do đó giữ khả năng đảo "
+"ngược di chuyển."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:228
@@ -1476,13 +1744,12 @@ msgstr ""
 "công và người phòng thủ đánh luân phiên đến khi mỗi bên đã sử dụng hết số "
 "lần đánh được phép. Người tấn công chọn một trong số các vũ khí để tấn công, "
 "và người phòng thủ phản công bằng một trong số các vũ khí có cùng kiểu. Có "
-"hai kiểu tấn công: cận chiến, thường liên quan đến những vũ khí như kiếm, "
-"rìu hoặc răng nanh; và từ xa, thường liên quan đến những vũ khí như cung, "
-"lao và cầu lửa."
+"hai kiểu tấn công: <italic>text='cận chiến'</italic>, thường liên quan đến "
+"những vũ khí như kiếm, rìu hoặc răng nanh; và <italic>text='từ xa'</italic>, "
+"thường liên quan đến những vũ khí như cung, lao và cầu lửa."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:231
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1494,7 +1761,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:233
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1546,15 +1812,14 @@ msgstr ""
 "Mọi đơn vị đều có khả năng bị đánh trúng, dựa vào <italic>text='địa hình'</"
 "italic> nó đang đứng. Hệ số này được hiển thị trong khung trạng thái, và "
 "cũng có thể được tìm thấy bằng cách nhấn chuột phải lên một đơn vị, chọn "
-"<bold>text='Mô tả đơn vị'</bold>, sau đó xem <italic>text='Hệ số địa hình'</"
-"italic>. Lấy ví dụ, nhiều thần tiên có tỷ lệ phòng thủ 70% trong rừng, do đó "
+"<bold>text='Mô tả đơn vị'</bold>, sau đó xem <bold>text='Hệ số địa hình'</"
+"bold>. Lấy ví dụ, nhiều thần tiên có tỷ lệ phòng thủ 70% trong rừng, do đó "
 "một đơn vị tấn công chúng chỉ có cơ hội đánh trúng 30%. Ngược lại, cơ hội "
 "đánh trúng khi phản công của thần tiên tùy thuộc vào địa hình đơn vị tấn "
 "công đang đứng."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:239
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1586,7 +1851,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:243
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1606,11 +1870,10 @@ msgstr ""
 "<ref>dst='damage_types_and_resistance' text='sức kháng cự'</ref> và "
 "<ref>dst='time_of_day' text='thời điểm trong ngày'</ref>. Để xem lượng thiệt "
 "hại cơ bản bị thay đổi như thế nào theo các tình huống, chọn "
-"<italic>text='Tính toán thiệt hại'</italic> trong trình đơn chọn tấn công."
+"<bold>text='Tính toán thiệt hại'</bold> trong trình đơn chọn tấn công."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:245
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1634,7 +1897,6 @@ msgstr "Kiểu thiệt hại và Sức kháng cự"
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:252
-#, fuzzy
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: <italic>text='blade, pierce, and impact damage'</italic>. "
@@ -1643,15 +1905,15 @@ msgid ""
 "italic>. Different units may have resistances which alter the damage which "
 "they take from certain damage types."
 msgstr ""
-"Trong Wesnoth, có ba kiểu thiệt hại thường kết hợp với các đòn tấn công vật "
-"lý: Chém, Đâm và Va đập. Ngoài ra, có ba kiểu thiệt hại khác thường kết hợp "
-"với các đòn tấn công phép thuật: Lửa, Lạnh và Bí kíp. Các đơn vị khác nhau "
-"có thể có những sức kháng cự khác nhau, làm thay đổi lượng thiệt hại mà "
-"chúng phải chịu từ các kiểu thiệt hại nhất định."
+"Trong Wesnoth, có ba kiểu thiệt hại thường gắn với các đòn tấn công hữu "
+"hình: <italic>text='chém, đâm và va đập'</italic>. Ngoài ra, có ba kiểu "
+"thiệt hại nữa thường gắn với các đòn tấn công phép thuật: <italic>text='lửa, "
+"lạnh và bí kíp'</italic>. Các đơn vị khác nhau có thể có những sức kháng cự "
+"khác nhau, làm thay đổi lượng thiệt hại mà chúng phải chịu từ các kiểu thiệt "
+"hại nhất định."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:254
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1671,7 +1933,6 @@ msgstr ""
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:256
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1681,9 +1942,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Ví dụ, các đơn vị bộ xương có sức kháng cự cao với kiểu thiệt hại Chém và "
-"Đâm, nhưng có nhược điểm với kiểu thiệt hại Va đập và Lửa, và cực kỳ yếu với "
-"kiểu thiệt hại Bí kíp."
+"Ví dụ, các bộ xương có sức kháng cự cao với kiểu thiệt hại chém và đâm, "
+"nhưng có nhược điểm với kiểu thiệt hại va đập và lửa, và cực kỳ yếu với kiểu "
+"thiệt hại bí kíp."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:258
@@ -1707,7 +1968,6 @@ msgstr "Thời điểm trong ngày"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:269
-#, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and −25% damage at night.\n"
@@ -1720,11 +1980,11 @@ msgstr ""
 "Các đơn vị chính thống gây thiệt hại +25% vào ban ngày, và −25% vào ban "
 "đêm.\n"
 "Các đơn vị hỗn độn gây thiệt hại +25% vào ban đêm, và −25% vào ban ngày.\n"
-"Các đơn vị trung lập không bị ảnh hưởng bởi thời điểm trong ngày."
+"Các đơn vị trung lập không bị ảnh hưởng bởi thời điểm trong ngày.\n"
+"Các đơn vị tính ngưỡng gây thiệt hại −25% trong cả ngày lẫn đêm."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:272
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1736,7 +1996,7 @@ msgstr ""
 "\n"
 "Có thể quan sát thời điểm trong ngày hiện thời dưới bản đồ nhỏ trong khung "
 "trạng thái. Đối với chu kỳ ngày/đêm thông thường, buổi sáng và buổi chiều "
-"được tính là ngày, canh một và canh hai được tính là đêm:\n"
+"tính là ngày, canh một và canh hai tính là đêm:\n"
 
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
@@ -1783,7 +2043,8 @@ msgstr "Canh hai"
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
-msgstr "Lưu ý rằng một số màn diễn ra dưới lòng đất, ở đó luôn luôn là đêm!"
+msgstr ""
+"Lưu ý rằng một số màn chơi diễn ra dưới lòng đất, ở đó luôn luôn là đêm!"
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:286
@@ -1819,11 +2080,10 @@ msgstr ""
 "Các đơn vị có một lượng kinh nghiệm nhất định cần để nâng cấp (ít hơn 20% "
 "với các đơn vị có đặc điểm thông minh). Khi chúng đạt đến số lượng này, "
 "chúng nâng cấp ngay lập tức lên cấp độ kế tiếp, phục hồi hoàn toàn máu. "
-"Trong một số trường hợp, bạn sẽ được chọn hướng nâng cấp."
+"Trong một số trường hợp, bạn sẽ được chọn tùy chọn nâng cấp."
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:291
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1842,14 +2102,15 @@ msgstr ""
 "\n"
 "Hầu hết các đơn vị có ba cấp độ, nhưng không phải tất cả đều như thế. Một số "
 "ít đơn vị (chẳng hạn <ref>dst='unit_Mage' text='pháp sư'</ref>) có thể có "
-"bốn. Khi một đơn vị đã đạt đến cấp độ tối đa, nó có thể Nâng cấp sau Cấp độ "
-"Tối đa (NCSCĐTĐ). NCSCĐTĐ sẽ làm thay đổi đơn vị mỗi lần nó đạt đến mục tiêu "
-"kinh nghiệm, nhưng đơn vị vẫn giữ nguyên cấp độ. Hiệu lực nâng cấp sau cấp "
-"độ tối đa thường là tăng lượng máu tối đa lên 3 và hồi máu hoàn toàn. Nâng "
-"cấp sau cấp độ tối đa lần đầu thường sẽ đạt đến sau khi giành được 150 KN "
-"(120 KN với các đơn vị thông minh). Tuy nhiên, giành được nâng cấp sau cấp "
-"độ tối đa dần dần trở nên khó hơn sau mỗi lần nâng cấp, do đó tìm cách nâng "
-"cấp những đơn vị có cấp độ thấp thường hữu ích hơn."
+"bốn. Khi một đơn vị đã đạt đến cấp độ tối đa, nó có thể <italic>text='Nâng "
+"cấp sau cấp độ tối đa'</italic>. Nâng cấp sau cấp độ tối đa sẽ làm thay đổi "
+"đơn vị mỗi lần nó đạt đến mục tiêu kinh nghiệm, nhưng đơn vị vẫn giữ nguyên "
+"cấp độ. Hiệu lực nâng cấp sau cấp độ tối đa thường là tăng lượng máu tối đa "
+"lên 3 và hồi máu hoàn toàn. Nâng cấp sau cấp độ tối đa lần đầu thường sẽ đạt "
+"đến sau khi giành được 150 KN (120 KN với các đơn vị thông minh). Tuy nhiên, "
+"giành được nâng cấp sau cấp độ tối đa dần dần trở nên khó hơn sau mỗi lần "
+"nâng cấp, do đó tìm cách nâng cấp những đơn vị có cấp độ thấp thường hữu ích "
+"hơn."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:298
@@ -1869,12 +2130,11 @@ msgstr ""
 "khỏi. Khi một đơn vị <ref>dst='experience_and_advancement' text='nâng cấp'</"
 "ref>, nó sẽ hồi máu hoàn toàn. Điều này có thể xảy ra khi bạn hoàn thành "
 "chiến đấu với kẻ thù, có thể ở lượt của bạn hoặc không. Wesnoth cung cấp một "
-"số cách khác để hồi máu cho các đơn vị, tất cả các cách điều trị này diễn ra "
-"ở đầu lượt của bạn, trước khi bạn hành động."
+"số cách khác để hồi máu cho các đơn vị, tất cả các cách này đều diễn ra ở "
+"đầu lượt của bạn, trước khi bạn hành động."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:301
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1883,19 +2143,19 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Nghỉ ngơi: Một đơn vị không di chuyển, không tấn công cũng như không bị tấn "
-"công sẽ phục hồi 2 đơn vị máu ở lượt tiếp theo của nó."
+"<italic>text='Nghỉ ngơi'</italic>: Một đơn vị không di chuyển, không tấn "
+"công cũng như không bị tấn công sẽ phục hồi 2 máu ở lượt tiếp theo của nó."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:302
-#, fuzzy
 msgid ""
 "\n"
 "<italic>text='Villages'</italic>: A unit which starts a turn in a village "
 "will heal 8HP."
 msgstr ""
 "\n"
-"Làng: Một đơn vị bắt đầu lượt trong một ngôi làng sẽ phục hồi 8 đợn vị máu."
+"<italic>text='Làng'</italic>: Một đơn vị bắt đầu lượt trong một ngôi làng sẽ "
+"phục hồi 8 máu."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:303
@@ -1906,11 +2166,10 @@ msgid ""
 msgstr ""
 "\n"
 "<ref>dst='ability_regenerates' text='Tái tạo'</ref>: Một số đơn vị (chẳng "
-"hạn như quỷ núi) sẽ tự động phục hồi 8 đơn vị máu mỗi lượt."
+"hạn như quỷ núi) sẽ tự động phục hồi 8 máu mỗi lượt."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:304
-#, fuzzy
 msgid ""
 "\n"
 "<italic>text='Healing units'</italic>: Units with the "
@@ -1920,15 +2179,14 @@ msgid ""
 "from causing that unit damage."
 msgstr ""
 "\n"
-"Đơn vị hồi máu: các đơn vị có khả năng <ref>dst='ability_heals +4' text='hồi "
-"máu'</ref> sẽ hồi máu cho mỗi đơn vị đồng minh đứng bên cạnh, thường là "
-"<ref>dst='ability_heals +4' text='4 đơn vị máu'</ref> hay "
-"<ref>dst='ability_heals +8' text='8 đơn vị máu'</ref> mỗi lượt, hoặc ngăn "
+"<italic>text='Đơn vị hồi máu'</italic>: Các đơn vị có khả năng "
+"<ref>dst='ability_heals +4' text='hồi máu'</ref> sẽ hồi máu cho mỗi đơn vị "
+"đồng minh đứng bên cạnh, thường là <ref>dst='ability_heals +4' text='4 máu'</"
+"ref> hoặc <ref>dst='ability_heals +8' text='8 máu'</ref> mỗi lượt, hoặc ngăn "
 "chất độc không gây thiệt hại cho đơn vị đó."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:305
-#, fuzzy
 msgid ""
 "\n"
 "<italic>text='Curing units'</italic>: Units with the "
@@ -1937,9 +2195,10 @@ msgid ""
 "well)."
 msgstr ""
 "\n"
-"Đơn vị giải độc: các đơn vị có khả năng <ref>dst='ability_cures' text='giải "
-"độc'</ref> sẽ cứu chữa độc tố có trong tất cả các đơn vị đồng minh đứng bên "
-"cạnh (ưu tiên hơn điều trị, nếu nó cũng có khả năng đó)."
+"<italic>text='Đơn vị giải độc'</italic>: Các đơn vị có khả năng "
+"<ref>dst='ability_cures' text='giải độc'</ref> sẽ xóa bỏ độc tố có trong tất "
+"cả các đơn vị đồng minh đứng bên cạnh (ưu tiên hơn hồi máu, nếu nó cũng có "
+"khả năng đó)."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:307
@@ -1952,9 +2211,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Nghỉ ngơi có thể được kết hợp với các dạng điều trị khác, nhưng làng, tái "
-"tạo, điều trị và giải độc không thể kết hợp với nhau: lựa chọn tốt nhất sẽ "
-"được sử dụng. Cuối cùng, các đơn vị phục hồi hoàn toàn giữa hai màn."
+"Nghỉ ngơi có thể được kết hợp với các dạng hồi máu khác, nhưng làng, tái "
+"tạo, hồi máu và giải độc không thể kết hợp với nhau: lựa chọn tốt nhất sẽ "
+"được sử dụng. Cuối cùng, các đơn vị phục hồi hoàn toàn giữa hai màn chơi."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:314
@@ -1963,7 +2222,6 @@ msgstr "Thu nhập và Phí bảo trì"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:315
-#, fuzzy
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -1972,11 +2230,11 @@ msgid ""
 msgstr ""
 "Trong Wesnoth, không chỉ đơn giản là tuyển các đơn vị và chiến đấu. Bạn cũng "
 "phải xem xét lượng vàng, đặc biệt trong các chiến dịch, ở đó bạn có thể mang "
-"thêm vàng từ màn này sang màn khác. Có hai yếu tố: thu nhập và phí bảo trì."
+"thêm vàng từ màn chơi này sang màn chơi khác. Có hai yếu tố: "
+"<italic>text='thu nhập'</italic> và <italic>text='phí bảo trì'</italic>."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:317
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1989,14 +2247,15 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Thu nhập thì khá đơn giản. Bạn có thu nhập cơ bản là 2 lượng vàng mỗi lượt. "
-"Với mỗi ngôi làng bạn kiểm soát, bạn giành thêm một lượng vàng mỗi lượt. Do "
-"đó, nếu bạn có mười ngôi làng, bạn sẽ có 12 lượng vàng mỗi lượt. Chi phí bảo "
-"trì bị trừ vào thu nhập này, như chi tiết bên dưới."
+"Thu nhập thì đơn giản. Bạn có thu nhập cơ bản là 2 lượng vàng mỗi lượt. Với "
+"mỗi ngôi làng bạn kiểm soát, bạn giành thêm một lượng vàng mỗi lượt. (Nói "
+"chung thông số này có thể cấu hình nhưng trong các chiến dịch thì gần như "
+"luôn là một lượng vàng mỗi ngôi làng). Do đó, nếu bạn có mười ngôi làng, bạn "
+"sẽ có 12 lượng vàng mỗi lượt. Chi phí bảo trì bị trừ vào thu nhập này, như "
+"chi tiết bên dưới."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:319
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2010,15 +2269,14 @@ msgstr ""
 "\n"
 "\n"
 "Phí bảo trì cũng khá đơn giản. Mỗi đơn vị đòi một lượng phí bảo trì bằng cấp "
-"độ của nó. Bạn có thể nuôi quân có <italic>text=tổng</italic> cấp độ bằng số "
-"lượng ngôi làng bạn có, mà không phải trả bất kỳ phí bảo trì nào. Tuy nhiên, "
-"với mỗi cấp độ của đơn vị vượt quá số lượng ngôi làng bạn có, bạn phải trả "
-"một lượng vàng mỗi lượt. Ví dụ, nếu bạn có mười hai đơn vị cấp độ một và "
-"mười ngôi làng, bạn sẽ phải trả hai lượng vàng mỗi lượt làm phí bảo trì."
+"độ của nó. Bạn có thể nuôi quân có tổng cấp độ bằng số lượng ngôi làng bạn "
+"có, mà không phải trả bất kỳ phí bảo trì nào. Tuy nhiên, với mỗi cấp độ của "
+"đơn vị vượt quá số lượng ngôi làng bạn có, bạn phải trả một lượng vàng mỗi "
+"lượt. Ví dụ, nếu bạn có mười hai đơn vị cấp độ một và mười ngôi làng, bạn sẽ "
+"phải trả hai lượng vàng mỗi lượt làm phí bảo trì."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:321
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2034,7 +2292,6 @@ msgstr ""
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:323
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2046,12 +2303,14 @@ msgid ""
 "playing (such as Konrad) will almost always be a leader."
 msgstr ""
 "\n"
+"\n"
 "Phí bảo trì có hai ngoại lệ quan trọng: các đơn vị có đặc điểm trung thành "
 "và những người chỉ huy không bao giờ đòi phí bảo trì. Các đơn vị bạn bắt đầu "
-"màn cùng (chẳng hạn Delfador), hoặc các đơn vị gia nhập vào quân đội của bạn "
-"trong một màn (chẳng hạn kỵ binh trong màn thứ hai của Người thừa kế ngai "
-"vàng) thường có đặc điểm trung thành. Đơn vị mà bạn đang chơi (chẳng hạn "
-"Konrad) gần như luôn là một người chỉ huy."
+"màn chơi cùng (chẳng hạn Delfador), hoặc các đơn vị gia nhập vào quân đội "
+"của bạn trong một màn chơi (chẳng hạn kỵ sĩ trong màn chơi thứ hai của "
+"<italic>text='Người thừa kế ngai vàng'</italic>) thường có đặc điểm "
+"<italic>text='trung thành'</italic>. Đơn vị mà bạn đang chơi (chẳng hạn "
+"Konrad) sẽ gần như luôn là một người chỉ huy."
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:329
@@ -2068,10 +2327,10 @@ msgid ""
 "<italic>text='Heir to the Throne'</italic> campaign. Have fun, and good luck!"
 msgstr ""
 "Trang này kết thúc những quy tắc cơ bản của Wesnoth. Bạn có thể nghiên cứu "
-"kỹ lưỡng chiến thuật cơ bản, hoặc làm quen với các <ref>dst='.."
+"kỹ lưỡng chiến lược cơ bản, hoặc làm quen với các <ref>dst='.."
 "traits_section' text='đặc điểm'</ref> và <ref>dst='..abilities_section' "
 "text='khả năng'</ref>, nhưng giờ bạn đã biết mọi thứ bạn cần để chơi chiến "
-"dịch<italic>text='Người thừa kế ngai vàng'</italic>. Chúc vui vẻ, và chúc "
+"dịch <italic>text='Người thừa kế ngai vàng'</italic>. Chúc vui vẻ, và chúc "
 "may mắn!"
 
 #. [topic]: id=about
@@ -2141,8 +2400,7 @@ msgstr "Thông minh"
 #: data/core/help.cfg:363
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
-"Các đơn vị thông minh đòi hỏi điểm kinh nghiệm để nâng cấp ít hơn bình "
-"thường 20%."
+"Các đơn vị thông minh cần kinh nghiệm để nâng cấp ít hơn bình thường 20%."
 
 #. [topic]: id=traits_intelligent
 #: data/core/help.cfg:365
@@ -2158,12 +2416,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Các đơn vị <italic>text='thông minh'</italic>  rất hữu ích ở đầu một chiến "
+"Các đơn vị <italic>text='thông minh'</italic> rất hữu ích ở đầu một chiến "
 "dịch vì chúng có thể nâng cấp lên cấp độ cao nhanh hơn. Về sau trong chiến "
-"dịch, thông minh không hữu ích lắm bởi vì <italic>text='Nâng cấp sau cấp độ "
-"tối đa'</italic> (NCSCĐTĐ) không phải là một thay đổi có ý nghĩa bằng nâng "
-"cấp cấp độ. Nếu bạn có nhiều đơn vị ở  ‘cấp độ tối đal’, bạn có thể gọi lại "
-"các đơn vị có những đặc điểm khác tốt hơn."
+"dịch, đặc điểm thông minh không hữu ích lắm bởi vì <italic>text='Nâng cấp "
+"sau cấp độ tối đa'</italic> không phải là một thay đổi có ý nghĩa bằng nâng "
+"cấp cấp độ. Nếu bạn có nhiều đơn vị ở 'cấp độ tối đa', bạn có thể muốn gọi "
+"lại các đơn vị có những đặc điểm khác tốt hơn."
 
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:370
@@ -2177,7 +2435,7 @@ msgid ""
 "HP than usual."
 msgstr ""
 "Các đơn vị <italic>text='nhanh nhẹn'</italic> có thêm 1 điểm di chuyển, "
-"nhưng ít đơn vị máu hơn bình thường 5%."
+"nhưng ít máu hơn bình thường 5%."
 
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:373
@@ -2211,8 +2469,8 @@ msgid ""
 "<italic>text='Resilient'</italic> units have 4 HP plus 1 HP per level more "
 "than usual."
 msgstr ""
-"Các đơn vị <italic>text='bền bỉ'</italic> có nhiều hơn bình thường 4 đơn vị "
-"máu cộng thêm 1 đơn vị máu với mỗi cấp độ."
+"Các đơn vị <italic>text='bền bỉ'</italic> có nhiều hơn bình thường 4 máu "
+"cộng thêm 1 máu với mỗi cấp độ."
 
 #. [topic]: id=traits_resilient
 #: data/core/help.cfg:381
@@ -2245,8 +2503,7 @@ msgid ""
 "strike in melee combat, and have 1 more HP."
 msgstr ""
 "Các đơn vị <italic>text='mạnh mẽ'</italic> gây nhiều hơn 1 điểm thiệt hại "
-"với mỗi đòn đánh trúng trong chiến đấu cận chiến, và có nhiều hơn 1 đơn vị "
-"máu."
+"cho mỗi đòn đánh trúng khi cận chiến, và có nhiều hơn 1 máu."
 
 #. [topic]: id=traits_strong
 #: data/core/help.cfg:389
@@ -2260,8 +2517,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Mặc dù hữu ích cho mọi đơn vị cận chiến, nhưng đặc điểm mạnh mẽ hiệu quả "
-"nhất với các đơn vị có số lần đánh cao chẳng hạn như chiến binh thần tiên. "
+"Mặc dù hữu ích cho bất kỳ đơn vị cận chiến nào, nhưng đặc điểm mạnh mẽ hiệu "
+"quả nhất với các đơn vị có số lần đánh cao chẳng hạn như đấu sĩ thần tiên. "
 "Các đơn vị mạnh mẽ có thể rất hữu ích khi một chút thiệt hại bổ sung là tất "
 "cả những gì cần để biến một đòn gây thiệt hại bình thường thành một đòn đánh "
 "kết liễu."
@@ -2291,6 +2548,10 @@ msgid ""
 "units receive a maximum of 50% defense in any land-based village regardless "
 "of base terrain."
 msgstr ""
+"Các sinh vật hoang dã có trí tuệ thấp không dễ sử dụng nơi ở của những sinh "
+"vật có tri giác làm nơi ẩn nấp. Do đó, các đơn vị <italic>text='hoang dã'</"
+"italic> nhận được tối đa 50% phòng thủ trong bất kỳ ngôi làng nào nằm trên "
+"cạn bất kể địa hình cơ bản."
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:406
@@ -2356,14 +2617,14 @@ msgstr ""
 "\n"
 "\n"
 "Các đơn vị ma quái nói chung có 'ma quái' là đặc điểm duy nhất. Bởi vì các "
-"đơn vị ma quái là thân xác của người chết, được gọi lên để chiến đấu, chất "
-"độc không có hiệu quả với chúng. Điều này có thể khiến chúng trở nên vô giá "
-"khi giao chiến những địch thủ sử dụng chất độc kết hợp với tấn công."
+"đơn vị ma quái là thân xác của người chết, được gọi lên để chiến đấu, nên "
+"chất độc không có tác dụng với chúng. Điều này có thể khiến chúng trở nên vô "
+"giá khi xử lý những kẻ thù sử dụng chất độc kết hợp với tấn công."
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:422
 msgid "trait^Mechanical"
-msgstr "Cơ giới"
+msgstr "Máy móc"
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:423
@@ -2371,7 +2632,7 @@ msgid ""
 "<italic>text='Mechanical'</italic> units are immune to poison, drain, and "
 "plague."
 msgstr ""
-"Các đơn vị <italic>text='máy móc'</italic> miễn nhiễm với độc,  bòn rút và "
+"Các đơn vị <italic>text='máy móc'</italic> miễn nhiễm với độc, bòn rút và "
 "bệnh dịch."
 
 #. [topic]: id=traits_mechanical
@@ -2385,9 +2646,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Các đơn vị máy móc nói chung có đặc điểm máy móc là đặc điểm duy nhất. Do "
-"các đơn vị máy móc không có sự sống, nên bòn rút, độc và bệnh dịch không có "
-"hiệu quả với chúng."
+"Các đơn vị máy móc nói chung có 'máy móc' là đặc điểm duy nhất. Do các đơn "
+"vị máy móc không thực sự có sự sống, nên bòn rút, độc và bệnh dịch không có "
+"tác dụng với chúng."
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:430
@@ -2414,9 +2675,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Các đơn vị nguyên tố nói chung có đặc điểm máy móc là đặc điểm duy nhất. Do "
-"các đơn vị máy móc không có sự sống, nên bòn rút, độc và bệnh dịch không có "
-"hiệu quả với chúng."
+"Các đơn vị nguyên tố nói chung có 'nguyên tố' là đặc điểm duy nhất. Do các "
+"đơn vị nguyên tố là những sinh vật dựa trên năng lượng, nên bòn rút, độc và "
+"bệnh dịch không có tác dụng với chúng."
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:438
@@ -2429,8 +2690,8 @@ msgid ""
 "<italic>text='Dextrous'</italic> units do 1 more damage for every successful "
 "strike in ranged combat."
 msgstr ""
-"Các đơn vị <italic>text='khéo léo'</italic> gây nhiều hơn 1điểm thiệt hại "
-"với mỗi đòn đánh trúng trong chiến đấu từ xa."
+"Các đơn vị <italic>text='khéo léo'</italic> gây nhiều hơn 1 điểm thiệt hại "
+"cho mỗi đòn đánh trúng khi chiến đấu từ xa."
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:441
@@ -2461,7 +2722,7 @@ msgid ""
 "rest even when travelling."
 msgstr ""
 "Lừng danh vì sức sống lâu bền, một số người lùn cứng cáp hơn những người "
-"khác và có thể nghỉ ngơi kể cả khi di chuyển."
+"khác và có thể nghỉ ngơi kể cả khi đang di chuyển."
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:449
@@ -2474,10 +2735,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Các đơn vị <italic>text='khỏe mạnh'</italic> có nhiều hơn bình thường 1 đơn "
-"vị máu cộng thêm 1 đơn vị máu với mỗi cấp độ và phục hồi 2 đơn vị máu khi "
-"nghỉ ngơi sau mỗi lượt nếu không chiến đấu. Chúng cũng chịu thiệt hại do độc "
-"tố ít hơn một phần tư."
+"Các đơn vị <italic>text='khỏe mạnh'</italic> có nhiều hơn bình thường 1 máu "
+"cộng thêm 1 máu với mỗi cấp độ và phục hồi 2 máu nghỉ ngơi thông thường sau "
+"mỗi lượt chúng không chiến đấu. Chúng cũng chịu thiệt hại do độc tố ít hơn "
+"một phần tư."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:454
@@ -2503,9 +2764,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Đần độn là đặc điểm rất phổ biến ở yêu tinh và những chủng tộc đẳng cấp thấp "
-"khác. Có nhiều lý do để các chủng tộc này thuộc đẳng cấp thấp, và đây là một "
-"trong số chúng."
+"Đần độn là đặc điểm rất phổ biến ở yêu tinh và những loài thấp kém khác. Có "
+"nhiều lý do để các loài này thuộc đẳng cấp thấp, và đây là một trong số "
+"chúng."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:462
@@ -2531,9 +2792,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Những cá thể nặng nề, vụng về, chậm chạp của yêu tinh và các chủng tộc khác "
-"chịu thiệt thòi khi di chuyển nhưng được bù lại bằng khả năng chịu đựng lâu "
-"hơn một chút."
+"Những cá thể nặng nề, vụng về, chậm chạp của yêu tinh và các loài khác chịu "
+"thiệt thòi khi di chuyển nhưng được bù lại bằng khả năng chịu đựng lâu hơn "
+"một chút."
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:470
@@ -2546,8 +2807,8 @@ msgid ""
 "Units with trait <italic>text='weak'</italic> get a −1 increment in "
 "hitpoints and melee damage."
 msgstr ""
-"Các đơn vị có đặc điểm <italic>text='yếu ớt'</italic> giảm 1 trong đơn vị "
-"máu và lượng thiệt hại gây ra khi cận chiến."
+"Các đơn vị có đặc điểm <italic>text='yếu ớt'</italic> giảm 1 máu và lượng "
+"thiệt hại cận chiến."
 
 #. [topic]: id=traits_aged
 #: data/core/help.cfg:476
@@ -2560,8 +2821,8 @@ msgid ""
 "Units with trait <italic>text='aged'</italic> get a −8 increment in "
 "hitpoints and a −1 increment in movement and melee damage."
 msgstr ""
-"Các đơn vị có đặc điểm <italic>text='già'</italic> giảm 8 trong đơn vị máu "
-"và 1 trong điểm di chuyển và lượng thiệt hại gây ra khi cận chiến."
+"Các đơn vị có đặc điểm <italic>text='già'</italic> giảm 8 máu, giảm 1 điểm "
+"di chuyển và lượng thiệt hại cận chiến."
 
 #. [topic]: id=..terrains
 #: data/core/help.cfg:485
@@ -2570,7 +2831,7 @@ msgid ""
 "unit’s defensive capability in combat.\n"
 "\n"
 msgstr ""
-"Bản đồ màn chơi bao gồm nhiều địa hình tác động đến cả di chuyển lẫn khả "
+"Bản đồ trò chơi bao gồm nhiều địa hình tác động đến cả di chuyển lẫn khả "
 "năng phòng thủ khi chiến đấu của một đơn vị.\n"
 "\n"
 
@@ -2581,7 +2842,6 @@ msgstr "Đất phẳng"
 
 #. [topic]: id=terrain_flat
 #: data/core/help.cfg:497
-#, fuzzy
 msgid ""
 "<italic>text='Grassland'</italic> represents open plains, whether "
 "cultivated, cut back for grazing, or wild. Being open ground, grassland is "
@@ -2591,11 +2851,11 @@ msgid ""
 "\n"
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
-"Đồng cỏ tương ứng với những vùng đồng bằng rộng lớn, có hoặc không canh tác, "
-"chăn thả súc vật, hoặc hoang dã. Là vùng đất trống trải, đồng cỏ vừa rất dễ "
-"băng qua, nhưng cũng khó để phòng thủ. Những đơn vị hoạt động tốt nhất trên "
-"đồng cỏ thường hoặc là kỵ binh, hoặc những đơn vị rất nhanh nhẹn có thể tận "
-"dụng lợi thế của không gian.\n"
+"<italic>text='Đồng cỏ'</italic> tương ứng với những vùng đồng bằng trống "
+"trải, có hoặc không canh tác, chăn thả súc vật, hoặc hoang dã. Là vùng đất "
+"trống trải, đồng cỏ vừa rất dễ băng qua, nhưng cũng khó để phòng thủ. Những "
+"đơn vị hoạt động tốt nhất trên đồng cỏ thường hoặc là kỵ binh, hoặc những "
+"đơn vị rất nhanh nhẹn có thể tận dụng lợi thế của không gian.\n"
 "\n"
 "Hầu hết các đơn vị có tỷ lệ phòng thủ 30% đến 40% trên đồng cỏ."
 
@@ -2606,16 +2866,16 @@ msgstr "Đường"
 
 #. [topic]: id=terrain_road
 #: data/core/help.cfg:511
-#, fuzzy
 msgid ""
 "<italic>text='Roads'</italic> are beaten paths of dirt, formed by many "
 "travelers passing over them. As far as gameplay is concerned, roads behave "
 "as <ref>dst='terrain_flat' text='flat'</ref> terrain.\n"
 "\n"
 msgstr ""
-"Đường là những con đường mòn bằng đất đá, được tạo nên dưới dấu chân của "
-"nhiều lữ khách. Đối với trò chơi, đường hoạt động như địa hình "
-"<ref>dst='terrain_flat' text='đất phẳng'</ref>."
+"<italic>text='Đường'</italic> là những con đường mòn bằng đất đá, được tạo "
+"nên dưới dấu chân của nhiều lữ khách. Đối với trò chơi, đường hoạt động như "
+"địa hình <ref>dst='terrain_flat' text='đất phẳng'</ref>.\n"
+"\n"
 
 #. [topic]: id=terrain_forest
 #: data/core/help.cfg:518
@@ -2624,7 +2884,6 @@ msgstr "Rừng"
 
 #. [topic]: id=terrain_forest
 #: data/core/help.cfg:525
-#, fuzzy
 msgid ""
 "<italic>text='Forests'</italic> represent any woodland with significant "
 "undergrowth, enough to hinder passage. Though they slow nearly everyone "
@@ -2642,19 +2901,20 @@ msgid ""
 "Dwarves generally receive only 30% defense in forests.\n"
 "\n"
 msgstr ""
-"Rừng tương ứng với những vùng có nhiều cây cối, đủ để cản trở người đi. Dù "
-"rừng gần như làm chậm bước mọi người, nhưng chúng cho hầu hết các đơn vị khả "
-"năng phòng thủ tốt hơn vùng đất trống trải. Tuy nhiên, kỵ binh lại gặp nhiều "
-"khó khăn khi di chuyển trong rừng đến mức mất hết mọi lợi ích từ việc ẩn "
-"nấp. Thần tiên là một ngoại lệ của quy tắc chung này. Họ không chỉ di chuyển "
-"dễ dàng trong rừng, mà còn có lợi thế phòng thủ lớn. Người lùn là một ngoại "
-"lệ khác của quy tắc này; dù họ có thể cày xuyên qua rừng mà không bị mất "
-"nhiều tốc độ, nhưng việc hoàn toàn xa lạ với địa hình khiến họ không nhận "
-"được lợi thế phòng thủ.\n"
+"<italic>text='Rừng'</italic> tương ứng với bất kỳ vùng nào có nhiều cây cối, "
+"đủ để cản trở người đi. Dù rừng làm chậm bước gần như mọi người, nhưng chúng "
+"cho hầu hết các đơn vị khả năng phòng thủ tốt hơn vùng đất trống trải. Tuy "
+"nhiên, kỵ binh lại gặp nhiều khó khăn khi di chuyển trong rừng đến mức mất "
+"hết mọi lợi ích từ việc ẩn nấp. Thần tiên với rừng là một ngoại lệ của quy "
+"tắc chung này. Họ không chỉ di chuyển dễ dàng trong rừng, mà còn có lợi thế "
+"phòng thủ lớn. Người lùn là một ngoại lệ khác của quy tắc này; dù họ có thể "
+"cày xuyên qua rừng mà không bị mất nhiều tốc độ, nhưng việc hoàn toàn xa lạ "
+"với địa hình khiến họ không nhận được lợi thế phòng thủ.\n"
 "\n"
 "Hầu hết các đơn vị có tỷ lệ phòng thủ 50% trong rừng, nhưng kỵ binh chỉ có "
-"30%. Thần tiên hưởng tỷ lệ phòng thủ 60% đến 70%, kể cả những đơn vị cưỡi "
-"ngựa. Người lùn nói chung chỉ nhận tỷ lệ phòng thủ 30% trong rừng.\n"
+"30%. Thần tiên, ngược lại, hưởng tỷ lệ phòng thủ 60% đến 70%, kể cả những "
+"đơn vị cưỡi ngựa. Người lùn nói chung chỉ nhận tỷ lệ phòng thủ 30% trong "
+"rừng.\n"
 "\n"
 
 #. [topic]: id=terrain_hills
@@ -2664,7 +2924,6 @@ msgstr "Đồi"
 
 #. [topic]: id=terrain_hills
 #: data/core/help.cfg:540
-#, fuzzy
 msgid ""
 "<italic>text='Hills'</italic> represent any reasonably rough terrain, with "
 "enough dips and rises in the ground to provide some cover. Hills are "
@@ -2677,14 +2936,16 @@ msgid ""
 "40%. Dwarves enjoy 60% defense in hills.\n"
 "\n"
 msgstr ""
-"Đồi tương ứng với những địa hình tương đối gồ ghề, có đủ chỗ trũng và gò cao "
-"trên bề mặt để ẩn nấp. Hầu hết quân lính khó di chuyển trên đồi. Người lùn, "
-"quỷ núi và người thú có đủ quen thuộc với địa hình nên chúng có thể băng qua "
-"đồi mà không bị giảm tốc độ. Kỵ binh gặp nhiều khó khăn khi di chuyển trên "
-"địa hình đến nỗi mất hết mọi lợi thế phòng thủ có được từ việc ẩn nấp.\n"
+"<italic>text='Đồi'</italic> tương ứng với bất kỳ địa hình nào tương đối gồ "
+"ghề, có đủ chỗ trũng và gò cao trên bề mặt để ẩn nấp. Hầu hết quân lính khó "
+"di chuyển trên đồi. Người lùn, quỷ núi và người thú có đủ quen thuộc với địa "
+"hình nên chúng có thể băng qua đồi mà không bị giảm tốc độ. Kỵ binh gặp "
+"nhiều khó khăn khi di chuyển trên địa hình đến nỗi mất hết mọi lợi thế phòng "
+"thủ có được từ việc ẩn nấp.\n"
 "\n"
 "Hầu hết các đơn vị có tỷ lệ phòng thủ khoảng 50% trên đồi, trong khi kỵ binh "
-"chỉ có 40%. Người lùn hưởng tỷ lệ phòng thủ 60% trên đồi."
+"chỉ có 40%. Người lùn hưởng tỷ lệ phòng thủ 60% trên đồi.\n"
+"\n"
 
 #. [topic]: id=terrain_mountains
 #: data/core/help.cfg:547
@@ -2693,7 +2954,6 @@ msgstr "Núi"
 
 #. [topic]: id=terrain_mountains
 #: data/core/help.cfg:552
-#, fuzzy
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move. By this nature, they provide a considerable "
@@ -2705,12 +2965,12 @@ msgid ""
 "\n"
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
-"Núi đủ đốc để các đơn vị phải trèo qua các chướng ngại vật khi di chuyển. "
-"Với bản chất này, địa hình núi cung cấp lợi thế phòng thủ đáng kể cho hầu "
-"hết quân lính, nhưng cũng cực kỳ cản trở người đi. Hầu hết kỵ binh đơn giản "
-"không thể vào địa hình núi; tuy nhiên, kỵ binh thần tiên là một ngoại lệ, "
-"cũng như yêu tinh cưỡi sói. Cả người lùn lẫn quỷ núi đều gắn bó với địa hình "
-"núi, và đi qua rất dễ dàng.\n"
+"<italic>text='Núi'</italic> đủ đốc để các đơn vị phải trèo qua các chướng "
+"ngại vật khi di chuyển. Với bản chất này, địa hình núi cung cấp lợi thế "
+"phòng thủ đáng kể cho hầu hết quân lính, nhưng cũng cực kỳ cản trở người đi. "
+"Hầu hết kỵ binh đơn giản không thể vào địa hình núi; tuy nhiên, kỵ binh thần "
+"tiên là một ngoại lệ, cũng như kỵ binh chó sói yêu tinh. Cả người lùn lẫn "
+"quỷ núi đều gắn bó với địa hình núi, và đi qua rất dễ dàng.\n"
 "\n"
 "Hầu hết các đơn vị nhận tỷ lệ phòng thủ khoảng 60% trên núi, trong khi người "
 "lùn hưởng 70%."
@@ -2722,7 +2982,6 @@ msgstr "Đầm lầy"
 
 #. [topic]: id=terrain_swamp_water
 #: data/core/help.cfg:564
-#, fuzzy
 msgid ""
 "<italic>text='Swamps'</italic> represent any sort of wetlands. Swamps slow "
 "down nearly everyone, and inhibit their ability to defend themselves. An "
@@ -2733,11 +2992,12 @@ msgid ""
 "Most units make do with 30% defense in swamps. Mermen, naga, and saurians "
 "all generally enjoy 60%."
 msgstr ""
-"Đầm lầy tương ứng với những vùng đất ẩm ướt. Đầm lầy làm chậm bước gần như "
-"mọi người và hạn chế khả năng phòng thủ. Quy tắc này có một ngoại lệ là "
-"những chủng tộc có cơ thể khéo léo khi di chuyển trong nước; chúng nhận được "
-"cả khả năng tự do di chuyển lẫn lợi thế phòng thủ. Những chủng tộc sinh sống "
-"ở đầm lầy cũng thông thạo trong việc sử dụng địa hình này để ẩn nấp.\n"
+"<italic>text='Đầm lầy'</italic> tương ứng với bất kỳ vùng đất ẩm ướt nào. "
+"Đầm lầy làm chậm bước gần như mọi người và hạn chế khả năng phòng thủ. Quy "
+"tắc này có một ngoại lệ là những chủng tộc có cơ thể khéo léo khi di chuyển "
+"trong nước; chúng nhận được cả khả năng tự do di chuyển lẫn lợi thế phòng "
+"thủ. Những người sinh sống ở vùng ẩm ướt cũng thông thạo trong việc sử dụng "
+"địa hình này để ẩn nấp.\n"
 "\n"
 "Hầu hết các đơn vị có tỷ lệ phòng thủ 30% trong đầm lầy. Người cá, người rắn "
 "và thằn lằn tất cả nói chung hưởng 60%."
@@ -2749,7 +3009,6 @@ msgstr "Nước nông"
 
 #. [topic]: id=terrain_shallow_water
 #: data/core/help.cfg:576
-#, fuzzy
 msgid ""
 "<italic>text='Shallow water'</italic> represents any body of water deep "
 "enough to come up to roughly a man’s waist. This is enough to slow down "
@@ -2762,11 +3021,12 @@ msgid ""
 "Most units make do with 20 to 30% defense in shallow water, whereas both "
 "naga and mermen enjoy 60%."
 msgstr ""
-"Nước nông tương ứng với những vùng nước sâu khoảng chừng thắt lưng người, đủ "
-"để làm chậm bước gần như bất kỳ ai và khiến họ sơ hở, dễ bị tấn công. Người "
-"lùn, do nước gần như chạm đến đầu, nên cực kỳ bất lợi trong nước. Ngoại lệ "
-"là những chủng tộc có cơ thể thích nghi với việc bơi lội, nhờ đó, chúng nhận "
-"lợi thế phòng thủ lớn và khả năng tự do di chuyển.\n"
+"<italic>text='Nước nông'</italic> tương ứng với bất kỳ vùng nước nào sâu "
+"khoảng chừng thắt lưng người, đủ để làm chậm bước gần như bất kỳ ai và khiến "
+"họ sơ hở, dễ bị tấn công. Người lùn, do nước gần như chạm đến đầu, nên cực "
+"kỳ bất lợi trong nước. Ngoại lệ là những chủng tộc có cơ thể thích nghi với "
+"việc bơi lội, nhờ đó, chúng nhận lợi thế phòng thủ lớn và khả năng tự do di "
+"chuyển.\n"
 "\n"
 "Hầu hết các đơn vị có tỷ lệ phòng thủ 20% đến 30% trong nước nông, trong khi "
 "cả người rắn lẫn người cá đều hưởng 60%."
@@ -2778,7 +3038,6 @@ msgstr "Nước sâu"
 
 #. [topic]: id=terrain_deep_water
 #: data/core/help.cfg:588
-#, fuzzy
 msgid ""
 "<italic>text='Deep water'</italic> represents any body of water deep enough "
 "to cover a man’s head. Most units cannot enter deep water: it is the domain "
@@ -2786,21 +3045,20 @@ msgid ""
 "\n"
 "Mermen and naga both receive 50% defense in deep water, with full movement."
 msgstr ""
-"Nước sâu tương ứng với những vùng nước sâu ngập đầu người. Hầu hết các đơn "
-"vị không thể vào nước sâu: đó là lãnh địa của những đơn vị biết bay, hoặc "
-"bơi cực kỳ giỏi.\n"
+"<italic>text='Nước sâu'</italic> tương ứng với bất kỳ vùng nước nào sâu ngập "
+"đầu người. Hầu hết các đơn vị không thể vào nước sâu: đó là lãnh địa của "
+"những đơn vị biết bay, hoặc bơi cực kỳ giỏi.\n"
 "\n"
-"Người cá và người rắn cả hai nhận tỷ lệ phòng thủ 50% trong nước sâu, cùng "
-"với khả năng tự do di chuyển."
+"Người cá và người rắn cả hai đều nhận tỷ lệ phòng thủ 50% trong nước sâu, "
+"cùng với khả năng tự do di chuyển."
 
 #. [topic]: id=terrain_frozen
 #: data/core/help.cfg:595
 msgid "Frozen"
-msgstr "Băng"
+msgstr "Đóng băng"
 
 #. [topic]: id=terrain_frozen
 #: data/core/help.cfg:600
-#, fuzzy
 msgid ""
 "<italic>text='Frozen'</italic> terrain represents any flat area that is "
 "covered by snow or ice. Most units are slowed down on it, and have a harder "
@@ -2809,12 +3067,13 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in frozen terrain."
 msgstr ""
-"Địa hình băng tương ứng với những vùng đất phẳng bị tuyết hoặc băng bao phủ. "
-"Hầu hết các đơn vị bị giảm tốc độ trên băng, và cũng gặp khó khăn khi phòng "
-"thủ. Chú ý rằng các đơn vị bơi, kể cả những đơn vị có thể thở dưới mặt nước, "
-"cũng không thể bơi dưới băng.\n"
+"Địa hình <italic>text='đóng băng'</italic> tương ứng với bất kỳ vùng đất "
+"phẳng nào bị tuyết hoặc băng bao phủ. Hầu hết các đơn vị bị giảm tốc độ trên "
+"địa hình đóng băng, và cũng gặp khó khăn hơn khi phòng thủ. Chú ý rằng các "
+"đơn vị bơi, kể cả những đơn vị có thể thở dưới mặt nước, cũng không thể bơi "
+"dưới băng.\n"
 "\n"
-"Hầu hết các đơn vị có tỷ lệ phòng thủ 20% đến 40% trên địa hình băng."
+"Hầu hết các đơn vị có tỷ lệ phòng thủ 20% đến 40% trên địa hình đóng băng."
 
 #. [topic]: id=terrain_castle
 #: data/core/help.cfg:607
@@ -2823,7 +3082,6 @@ msgstr "Lâu đài"
 
 #. [topic]: id=terrain_castle
 #: data/core/help.cfg:614
-#, fuzzy
 msgid ""
 "<italic>text='Castles'</italic> are any sort of permanent fortification. "
 "Nearly all units receive a considerable bonus to their defense by being "
@@ -2835,12 +3093,13 @@ msgid ""
 "Most units have about 60% defense in a castle.\n"
 "\n"
 msgstr ""
-"Lâu đài là các kiểu công sự bền vững. Gần như tất cả các đơn vị đều nhận "
-"được lợi thế phòng thủ lớn khi chiếm đóng lâu đài, và mọi đơn vị đều nhận "
-"được khả năng tự do di chuyển qua lâu đài. Các đơn vị đứng trong một lâu đài "
-"biểu thị khả năng phòng thủ của nó. Nếu bỏ trống đơn vị trên một hình lục "
-"giác tường thành, kẻ thù có thể đột nhập vào lâu đài mà không bị ngăn cản, "
-"giành được cùng lợi thế phòng thủ như mọi người bên trong.\n"
+"<italic>text='Lâu đài'</italic> là bất kỳ kiểu công sự bền vững nào. Gần như "
+"tất cả các đơn vị đều nhận được lợi thế phòng thủ lớn khi chiếm đóng lâu "
+"đài, và hầu hết các đơn vị đều nhận được khả năng tự do di chuyển qua lâu "
+"đài. Các đơn vị đứng trong một lâu đài biểu thị khả năng phòng thủ của nó. "
+"Nếu bỏ trống đơn vị trên một ô lục giác tường thành, kẻ thù có thể đột nhập "
+"vào lâu đài mà không bị ngăn cản, giành được cùng lợi thế phòng thủ như mọi "
+"người bên trong.\n"
 "\n"
 "Hầu hết các đơn vị có tỷ lệ phòng thủ khoảng 60% trong lâu đài.\n"
 "\n"
@@ -2852,7 +3111,6 @@ msgstr "Cát"
 
 #. [topic]: id=terrain_sand
 #: data/core/help.cfg:628
-#, fuzzy
 msgid ""
 "The instability of <italic>text='sand'</italic> makes it harder for most "
 "units to cross, and leaves them wide open to attack. In contrast, the wide "
@@ -2861,10 +3119,10 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in sand."
 msgstr ""
-"Tính không ổn định của cát khiến hầu hết các đơn vị gặp khó khăn khi băng "
-"qua, và khiến chúng sơ hở, dễ bị tấn công. Trái lại, những bàn chân rộng và "
-"cơ thể giống như rắn hay thằn lằn giúp chúng di chuyển dễ dàng hơn nhiều "
-"trên cát.\n"
+"Tính không ổn định của <italic>text='cát'</italic> khiến hầu hết các đơn vị "
+"gặp khó khăn khi băng qua, và khiến chúng sơ hở, dễ bị tấn công. Trái lại, "
+"những bàn chân rộng và cơ thể giống như rắn của các chủng tộc bò sát giúp "
+"chúng di chuyển trên cát dễ dàng hơn nhiều.\n"
 "\n"
 "Hầu hết các đơn vị nhận tỷ lệ phòng thủ 20% đến 40% trên cát."
 
@@ -2875,15 +3133,14 @@ msgstr "Sa mạc"
 
 #. [topic]: id=terrain_desert
 #: data/core/help.cfg:638
-#, fuzzy
 msgid ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
 "small sand pits or beaches, however for gameplay purposes they are "
 "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
 msgstr ""
-"Sa mạc có cấu tạo hơi khác so với những hố cát nhỏ hoặc bãi biển, tuy nhiên, "
-"đối với trò chơi, chúng giống nhau. Xem <ref>dst='terrain_sand' text='Cát'</"
-"ref>."
+"<italic>text='Sa mạc'</italic> có cấu tạo hơi khác so với những hố cát nhỏ "
+"hoặc bãi biển, tuy nhiên, đối với trò chơi, chúng giống nhau. Xem "
+"<ref>dst='terrain_sand' text='cát'</ref>."
 
 #. [topic]: id=terrain_cave
 #: data/core/help.cfg:645
@@ -2892,7 +3149,6 @@ msgstr "Hang động"
 
 #. [topic]: id=terrain_cave
 #: data/core/help.cfg:650
-#, fuzzy
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass. Most units are wholly unfamiliar with the "
@@ -2904,13 +3160,14 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgstr ""
-"Địa hình hang động tương ứng với những hang động dưới lòng đất có đủ chỗ cho "
-"một đơn vị đi qua. Hầu hết các đơn vị hoàn toàn xa lạ với địa hình, do đó "
-"vừa bị giảm tốc độ vừa bị hạn chế khả năng phòng thủ. Người lùn và quỷ núi, "
-"những chủng tộc sống trong hang động, cả hai đều di chuyển tương đối dễ dàng "
-"trên địa hình này, đặc biệt là người lùn, nhờ kích thước nhỏ nên có thể vượt "
-"qua nhiều chướng ngại vật mà những chủng tộc khác không thể. Một số ít hang "
-"động được <ref>dst='terrain_illuminated_cave' text='chiếu sáng'</ref>.\n"
+"Địa hình <italic>text='hang động'</italic> tương ứng với bất kỳ hang động "
+"nào dưới lòng đất có đủ chỗ cho một đơn vị đi qua. Hầu hết các đơn vị hoàn "
+"toàn xa lạ với địa hình, do đó vừa bị giảm tốc độ vừa bị hạn chế khả năng "
+"phòng thủ. Người lùn và quỷ núi, những chủng tộc sống trong hang động, cả "
+"hai đều di chuyển tương đối dễ dàng trên địa hình này, đặc biệt là người "
+"lùn, nhờ kích thước nhỏ nên có thể vượt qua nhiều chướng ngại vật mà những "
+"chủng tộc khác không thể. Một số ít hang động được "
+"<ref>dst='terrain_illuminated_cave' text='chiếu sáng'</ref>.\n"
 "\n"
 "Hầu hết các đơn vị nhận tỷ lệ phòng thủ 20% đến 40% trong hang động, trong "
 "khi người lùn có 50%."
@@ -2922,7 +3179,6 @@ msgstr "Hang đá"
 
 #. [topic]: id=terrain_rockbound_cave
 #: data/core/help.cfg:662
-#, fuzzy
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -2936,13 +3192,14 @@ msgid ""
 "Most units have about 50% defense in rocky caves, whereas cavalry are "
 "limited to 40%. Dwarves enjoy 60% defense in rockbound caves."
 msgstr ""
-"Địa hình hang đá được tạo nên bởi hoạt động của nước và gió, mang theo nhiều "
-"hạt xói mòn tạc thành đá. Địa hình này giống với hang động dưới lòng đất là "
-"làm giảm tính hiệu quả của hầu hết các đơn vị, nhưng tăng khả năng phòng "
-"thủ. Người lùn và quỷ núi, những cư dân chủ yếu của hang động, di chuyển "
-"tương đối dễ dàng trên địa hình này. Người lùn, nhờ kích thước nhỏ nên có "
-"đầy đủ lợi thế khi di chuyển trong địa hình như thế. Một số ít hang động "
-"được <ref>dst='terrain_illuminated_cave' text='chiếu sáng'</ref>.\n"
+"Địa hình <italic>text='hang đá'</italic> được tạo nên bởi hoạt động của nước "
+"và gió, mang theo nhiều hạt xói mòn tạc thành đá. Địa hình này giống với "
+"hang động dưới lòng đất là làm giảm tính hiệu quả của hầu hết các đơn vị, "
+"nhưng tăng khả năng phòng thủ. Người lùn và quỷ núi, những cư dân chủ yếu "
+"của hang động, di chuyển tương đối dễ dàng trên địa hình này. Người lùn, nhờ "
+"kích thước nhỏ nên có đầy đủ lợi thế khi di chuyển trong địa hình như thế. "
+"Một số ít hang động được <ref>dst='terrain_illuminated_cave' text='chiếu "
+"sáng'</ref>.\n"
 "\n"
 "Hầu hết các đơn vị có tỷ lệ phòng thủ khoảng 50% trong hang đá, trong khi kỵ "
 "binh chỉ có 40%. Người lùn hưởng tỷ lệ phòng thủ 60% trong hang đá."
@@ -2954,7 +3211,6 @@ msgstr "Hang động được chiếu sáng"
 
 #. [topic]: id=terrain_illuminated_cave
 #: data/core/help.cfg:672
-#, fuzzy
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
 "surface shining down into the gloomy darkness. This provides an attack bonus "
@@ -2964,9 +3220,9 @@ msgid ""
 msgstr ""
 "Một vài nơi hiếm hoi của thế giới dưới lòng đất được chiếu sáng nhờ ánh sáng "
 "từ bề mặt rọi xuống bóng tối u ám. Ánh sáng này tạo lợi thế tấn công cho các "
-"đơn vị chính thống và làm mất lợi thế tấn công của các đơn vị hỗn độn. Xét "
-"theo mọi yếu tố khác, địa hình này giống về mặt chức năng với địa hình hang "
-"động thông thường."
+"đơn vị chính thống và làm mất lợi thế tấn công của các đơn vị hỗn độn. Về "
+"tất cả các yếu tố khác, địa hình này giống về mặt chức năng với "
+"<ref>dst='terrain_cave' text='địa hình hang động'</ref> thông thường."
 
 #. [topic]: id=terrain_fungus
 #: data/core/help.cfg:679
@@ -2975,7 +3231,6 @@ msgstr "Lùm nấm"
 
 #. [topic]: id=terrain_fungus
 #: data/core/help.cfg:684
-#, fuzzy
 msgid ""
 "<italic>text='Mushroom groves'</italic> are vast underground forests of "
 "giant mushrooms, which thrive in the damp darkness. Most units have trouble "
@@ -2987,12 +3242,13 @@ msgid ""
 "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
 "receive only 20%."
 msgstr ""
-"Lùm nấm là những khu rừng nấm khổng lồ dưới lòng đất, phát triển trong bóng "
-"tối ẩm thấp. Hầu hết các đơn vị đều gặp khó khăn khi di chuyển trên bề mặt "
-"mềm xốp của những cây nấm nhỏ, nhưng lại có nhiều chỗ ẩn nấp đằng sau những "
-"cuống nấm lớn. Tuy nhiên, các đơn vị cưỡi ngựa trở nên hoàn toàn sa lầy và "
-"mất khả năng tự do di chuyển khi chiến đấu. Các đơn vị ma quái ham thích sự "
-"mục rữa và hoạt động khá tốt trong những khu rừng nấm.\n"
+"<italic>text='Lùm nấm'</italic> là những khu rừng nấm khổng lồ dưới lòng "
+"đất, phát triển trong bóng tối ẩm thấp. Hầu hết các đơn vị đều gặp khó khăn "
+"khi di chuyển trên bề mặt mềm xốp của những cây nấm nhỏ, nhưng lại có nhiều "
+"chỗ ẩn nấp đằng sau những cuống nấm lớn. Tuy nhiên, các đơn vị cưỡi ngựa trở "
+"nên hoàn toàn sa lầy và mất khả năng tự do di chuyển khi chiến đấu. Các đơn "
+"vị ma quái ham thích sự mục rữa và hoạt động khá tốt trong những khu rừng "
+"nấm.\n"
 "\n"
 "Hầu hết các đơn vị nhận tỷ lệ phòng thủ 50% đến 60% trong các lùm nấm, trong "
 "khi kỵ binh chỉ nhận 20%."
@@ -3004,7 +3260,6 @@ msgstr "Làng"
 
 #. [topic]: id=terrain_village
 #: data/core/help.cfg:698
-#, fuzzy
 msgid ""
 "<italic>text='Villages'</italic> represent any group of buildings, human or "
 "otherwise. Almost all units, even cavalry, have an easy time navigating "
@@ -3017,12 +3272,12 @@ msgid ""
 "40%.\n"
 "\n"
 msgstr ""
-"Làng tương ứng với các nhóm công trình xây dựng của con người hoặc những "
-"chủng tộc khác. Gần như mọi đơn vị, kể cả kỵ binh, đều dễ dàng di chuyển qua "
-"làng, và hầu hết các đơn vị đều giành được lợi thế phòng thủ khi chiếm đóng "
-"một ngôi làng. Làng cung cấp tài nguyên và chăm sóc các đơn vị bị thương, "
-"cho phép đơn vị đứng bên trong phục hồi tám đơn vị máu mỗi lượt, hoặc được "
-"giải độc.\n"
+"<italic>text='Làng'</italic> tương ứng với bất kỳ nhóm công trình xây dựng "
+"nào của con người hoặc những chủng tộc khác. Gần như mọi đơn vị, kể cả kỵ "
+"binh, đều dễ dàng di chuyển qua làng, và hầu hết các đơn vị đều giành được "
+"lợi thế phòng thủ khi chiếm đóng một ngôi làng. Làng cung cấp tài nguyên và "
+"chăm sóc các đơn vị bị thương, cho phép đơn vị đứng bên trong phục hồi tám "
+"máu mỗi lượt, hoặc được giải độc.\n"
 "\n"
 "Hầu hết các đơn vị có tỷ lệ phòng thủ 50% đến 60% trong làng, trong khi kỵ "
 "binh chỉ nhận được 40%.\n"
@@ -3035,7 +3290,6 @@ msgstr "Làng ngập nước"
 
 #. [topic]: id=terrain_water_village
 #: data/core/help.cfg:712
-#, fuzzy
 msgid ""
 "<italic>text='Submerged villages'</italic> are the homes of merfolk and "
 "nagas. While water-dwelling creatures are at home here, land-dwellers have a "
@@ -3047,15 +3301,15 @@ msgid ""
 "Merfolk and nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defense."
 msgstr ""
-"Làng ngập nước là nơi ở của người cá và người rắn. Đây là nơi cư ngụ của các "
-"sinh vật sống dưới nước, nhưng các cư dân trên cạn gặp khó khăn khi di "
-"chuyển và phòng thủ trong những ngôi làng này. Tuy nhiên, cũng giống như bất "
-"kỳ ngôi làng nào khác, tất cả mọi sinh vật đều nhận được lợi ích từ việc "
-"chăm sóc các đơn vị bị thương. Bất kỳ đơn vị nào đứng trong làng đều có thể "
-"phục hồi tám đơn vị máu mỗi lượt, hoặc được giải độc.\n"
+"<italic>text='Làng ngập nước'</italic> là nơi ở của người cá và người rắn. "
+"Đây là nơi cư ngụ của các sinh vật sống dưới nước, các cư dân trên cạn gặp "
+"khó khăn khi di chuyển và phòng thủ trong những ngôi làng này. Tuy nhiên, "
+"cũng giống như bất kỳ ngôi làng nào khác, tất cả mọi sinh vật đều nhận được "
+"lợi ích từ việc chăm sóc các đơn vị bị thương. Bất kỳ đơn vị nào đứng trong "
+"làng đều có thể phục hồi tám máu mỗi lượt, hoặc được giải độc.\n"
 "\n"
 "Người cá và người rắn có tỷ lệ phòng thủ 60% trong làng ngập nước, trong khi "
-"các đơn vị chiến đấu trên cạn thường có tỷ lệ phòng thủ thấp."
+"các đơn vị trên cạn thường có tỷ lệ phòng thủ thấp."
 
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:719
@@ -3064,17 +3318,17 @@ msgstr "Không thể đi bộ qua"
 
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:722
-#, fuzzy
 msgid ""
 "<italic>text='Unwalkable terrain'</italic> covers any chasm or gorge which, "
 "as the name implies, cannot be crossed simply by walking. Chasms are noted "
 "for sheer walls which would take days to traverse. As far as gameplay is "
 "concerned, only units capable of flying can cross this terrain."
 msgstr ""
-"Địa hình không thể đi bộ qua bao gồm các vực thẳm hoặc hẻm núi mà như tên "
-"gọi đã mô tả, không thể băng qua bằng cách đi bộ. Vực thẳm được coi là những "
-"bức tường dốc đứng cần mất vài ngày để băng qua. Đối với trò chơi, chỉ những "
-"đơn vị có khả năng bay mới có thể vượt qua địa hình này."
+"Địa hình <italic>text='không thể đi bộ qua'</italic> bao gồm bất kỳ vực thẳm "
+"hoặc hẻm núi nào mà như tên gọi đã mô tả, không thể băng qua bằng cách đi "
+"bộ. Vực thẳm được coi là những bức tường dốc đứng cần mất vài ngày để băng "
+"qua. Đối với trò chơi, chỉ những đơn vị có khả năng bay mới có thể vượt qua "
+"địa hình này."
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:729
@@ -3083,7 +3337,6 @@ msgstr "Dung nham"
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:732
-#, fuzzy
 msgid ""
 "The dangers inherent in trying to walk on <italic>text='lava'</italic> are "
 "fairly obvious. As far as movement is concerned, lava is equivalent to "
@@ -3093,13 +3346,13 @@ msgid ""
 "immediately above it. This provides an attack bonus for lawful units and "
 "removes the attack bonus from chaotic units."
 msgstr ""
-"Những nguy hiểm khi thử đi trên dung nham là rõ ràng. Xét về mặt di chuyển, "
-"dung nham tương đương với địa hình <ref>dst='terrain_unwalkable' text='không "
-"thể đi bộ qua'</ref>, và chỉ những đơn vị có khả năng bay ở một khoảng cách "
-"lớn trên bề mặt mới có thể vượt qua. Nham thạch nóng chảy cũng tạo ra luồng "
-"sáng lớn, chiếu sáng vùng ngay xung quanh nó. Ánh sáng này tạo lợi thế tấn "
-"công cho các đơn vị chính thống và làm mất lợi thế tấn công của các đơn vị "
-"hỗn độn."
+"Những nguy hiểm khi thử đi trên <italic>text='dung nham'</italic> là khá rõ "
+"ràng. Xét về mặt di chuyển, dung nham tương đương với địa hình "
+"<ref>dst='terrain_unwalkable' text='không thể đi bộ qua'</ref>, và chỉ những "
+"đơn vị có khả năng bay ở một khoảng cách lớn trên bề mặt mới có thể vượt "
+"qua. Nham thạch nóng chảy cũng tạo ra luồng sáng lớn, chiếu sáng vùng ngay "
+"xung quanh nó. Ánh sáng này tạo lợi thế tấn công cho các đơn vị chính thống "
+"và làm mất lợi thế tấn công của các đơn vị hỗn độn."
 
 #. [topic]: id=terrain_ford
 #: data/core/help.cfg:739
@@ -3117,11 +3370,11 @@ msgid ""
 "the unit on it."
 msgstr ""
 "Khi một dòng sông trở nên cực kỳ nông, việc băng qua nó là một chuyện bình "
-"thường với các đơn vị chiến đấu trên cạn. Ngoài ra, bất kỳ sinh vật nào "
-"thích nghi nhất với việc bơi lội cũng có đầy đủ tính linh động kể cả ở những "
-"nơi như thế trên sông. Đối với trò chơi, chỗ cạn ở sông được xử lý giống như "
-"hoặc là đồng cỏ hoặc là nước nông, chọn cái nào mang lại lợi thế phòng thủ "
-"và di chuyển tốt nhất cho đơn vị đứng trên nó."
+"thường với các đơn vị trên cạn. Ngoài ra, bất kỳ sinh vật nào thích nghi "
+"nhất với việc bơi lội cũng có đầy đủ tính linh động kể cả ở những nơi như "
+"thế trên sông. Đối với trò chơi, chỗ cạn ở sông được đối xử giống như hoặc "
+"là đồng cỏ hoặc là nước nông, chọn cái nào mang lại lợi thế phòng thủ và di "
+"chuyển tốt nhất cho đơn vị đứng trên nó."
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:749
@@ -3130,7 +3383,6 @@ msgstr "Đá ngầm ven biển"
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:754
-#, fuzzy
 msgid ""
 "<italic>text='Coastal reefs'</italic> are shallows formed by stone, coral "
 "and sand. This provides most land units with a more steady footing and "
@@ -3139,10 +3391,11 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
-"Đá ngầm ven biển là những vùng nước nông được tạo nên bởi đá, san hô và cát. "
-"Địa hình này cho hầu hết các đơn vị trên cạn một chỗ đứng và vị trí phòng "
-"thủ vững chắc hơn việc lội qua nước nông bình thường, và cũng cho hầu hết "
-"các chủng tộc sống dưới nước một tỷ lệ phòng thủ đặc biệt cao.\n"
+"<italic>text='Đá ngầm ven biển'</italic> là những vùng nước nông được tạo "
+"nên bởi đá, san hô và cát. Địa hình này cho hầu hết các đơn vị trên cạn một "
+"chỗ đứng và vị trí phòng thủ vững chắc hơn việc lội qua nước nông bình "
+"thường, và cũng cho hầu hết các chủng tộc sống dưới nước một tỷ lệ phòng thủ "
+"đặc biệt cao.\n"
 "\n"
 "Người cá và người rắn cả hai đều nhận được tỷ lệ phòng thủ 70% trên đá ngầm "
 "ven biển."
@@ -3154,7 +3407,6 @@ msgstr "Cầu"
 
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:767
-#, fuzzy
 msgid ""
 "To those capable of building one, the ability to lay a "
 "<italic>text='bridge'</italic> offers a liberation from the fickle nature of "
@@ -3168,17 +3420,17 @@ msgid ""
 "occupying the bridge hex. Note that a swimming unit and a land unit are not "
 "capable of occupying a bridge hex at the same time."
 msgstr ""
-"Với những người xây dựng, khả năng bắc một cây cầu giải phóng họ khỏi bản "
-"chất không ổn định của đường thủy, với những chỗ cạn đến rồi đi theo sự lên "
-"xuống của mực nước. Không cần nói gì về niềm hân hoan của những bàn chân khô "
-"ráo, những tổn thất không phải chuyện đùa trong những tháng ngày lạnh lẽo "
-"của năm.\n"
+"Với những người xây dựng, khả năng bắc một cây <italic>text='cầu'</italic> "
+"giải phóng họ khỏi bản chất không ổn định của đường thủy, với những chỗ cạn "
+"đến rồi đi theo sự lên xuống của mực nước. Không cần nói gì về niềm hân hoan "
+"của những bàn chân khô ráo, những tổn thất không phải chuyện đùa trong những "
+"tháng ngày lạnh lẽo của năm.\n"
 "\n"
 "Với những người đi đường bộ hoặc đường thủy, một cây cầu là phương tiện tốt "
-"nhất của cả hai thế giới - đối với trò chơi, nó được xử lý như hoặc là đồng "
+"nhất của cả hai thế giới - đối với trò chơi, nó được đối xử như hoặc là đồng "
 "cỏ hoặc là nước dưới cầu, tùy theo địa hình nào mang lại lợi thế di chuyển "
-"và phòng thủ tốt nhất cho đơn vị chiếm giữ hình lục giác cầu. Chú ý rằng một "
-"đơn vị bơi và một đơn vị trên cạn không thể đồng thời chiếm giữ một hình lục "
+"và phòng thủ tốt nhất cho đơn vị chiếm giữ ô lục giác cầu. Chú ý rằng một "
+"đơn vị bơi và một đơn vị trên cạn không thể đồng thời chiếm giữ một ô lục "
 "giác cầu."
 
 #. [topic]: id=terrain_impassable
@@ -3195,10 +3447,10 @@ msgid ""
 "jagged peaks at such rarified heights, and not even the fiercest troll can "
 "smash through thick walls of stone."
 msgstr ""
-"Các chướng ngại vật mà ngay cả người lữ khách kiên quyết nhất cũng không thể "
+"Các chướng ngại vật mà ngay cả người lữ hành kiên quyết nhất cũng không thể "
 "vượt qua bao gồm những bức tường đá rắn chắc, những ngọn núi cao và dốc đến "
 "nỗi chúng luôn có mây bao phủ. Kể cả các sinh vật bay cũng không thể di "
-"chuyển qua những đỉnh núi lởm chởm ở độ cao hiếm có như thế, và dù là con "
+"chuyển qua những đỉnh núi lởm chởm ở độ cao hiếm có như thế, và kể cả con "
 "quỷ núi dữ tợn nhất cũng không thể đập thủng những bức tường đá dày."
 
 #. [topic]: id=general_commands
@@ -3216,6 +3468,10 @@ msgid ""
 "'m' first to open the chat line).\n"
 "\n"
 msgstr ""
+"Có thể cấp các lệnh này qua dòng lệnh bằng cách thêm vào trước dấu ':' (như "
+"được hiển thị ở đây) hoặc qua tán gẫu bằng cách thêm vào trước dấu '/' (đầu "
+"tiên ấn 'm' để mở dòng tán gẫu).\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:797
@@ -3230,7 +3486,6 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:801
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -3315,7 +3570,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Thoát khỏi màn (không nhắc nhở).\n"
+"Thoát khỏi màn chơi (không nhắc nhở).\n"
 "\n"
 
 #. [topic]: id=general_commands
@@ -3336,7 +3591,7 @@ msgid ""
 "Save the game and quit the scenario (without prompting)."
 msgstr ""
 "\n"
-"Lưu trò chơi và thoát khỏi màn (không nhắc nhở)."
+"Lưu trò chơi và thoát khỏi màn chơi (không nhắc nhở)."
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:831
@@ -3355,12 +3610,11 @@ msgstr ""
 "\n"
 "Cấm một người trong một trò chơi nhiều người chơi theo địa chỉ IP người đó "
 "sử dụng và đuổi người đó. Có thể sử dụng lệnh này với những người không tham "
-"gia chơi nhưng ở trên máy chủ. (Tất nhiên họ sẽ không bị đuổi.)\n"
+"gia chơi nhưng ở trên máy chủ. (Tất nhiên họ sẽ không bị đuổi).\n"
 "\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:840
-#, fuzzy
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -3374,9 +3628,10 @@ msgstr ""
 "\n"
 "Thay đổi người điều khiển cho phe (viết số thứ tự phe ở đây) thành tên người "
 "dùng (viết biệt danh của người chơi hoặc người quan sát ở đây). Bạn có thể "
-"kiểm tra phe nào thuộc về người chơi  nào trong hộp thoại 'Thiết lập "
-"màn' (Ấn nút 'nhiều hơn' trong 'Bảng trạng thái' (alt+s theo mặc định).). "
-"Người chủ trò chơi có thể thay đổi quyền điều khiển của bất kỳ phe nào.\n"
+"kiểm tra phe nào thuộc về người chơi nào trong hộp thoại <bold>text='Thiết "
+"lập màn chơi'</bold> (Ấn nút <bold>text='Nhiều hơn'</bold> trong "
+"<bold>text='Bảng trạng thái'</bold> (alt+s theo mặc định)). Người chủ trò "
+"chơi có thể thay đổi quyền điều khiển của bất kỳ phe nào.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -3396,7 +3651,6 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:846
-#, fuzzy
 msgid ""
 "\n"
 "Send a private message to a user. When in a game, it is not possible to send "
@@ -3404,8 +3658,10 @@ msgid ""
 "game.\n"
 "\n"
 msgstr ""
-"Gửi tin nhắn riêng tư. Bạn không thể gửi tin nhắn đến những người chơi không "
-"điều khiển phe nào trong trò chơi bạn đang tham gia."
+"\n"
+"Gửi tin nhắn riêng đến một người dùng. Bạn không thể gửi tin nhắn riêng đến "
+"những người chơi không điều khiển phe nào trong trò chơi bạn đang tham gia.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:849
@@ -3459,7 +3715,7 @@ msgstr ""
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:863
 msgid "Debug mode commands"
-msgstr "Lệnh  trong chế độ gỡ lỗi"
+msgstr "Lệnh chế độ gỡ lỗi"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:869
@@ -3470,7 +3726,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Mở trình đơn chọn màn để vào ngay lập tức trong một chiến dịch.\n"
+"Mở trình đơn chọn màn chơi để vào ngay lập tức trong một chiến dịch.\n"
 "\n"
 
 #. [topic]: id=debug_commands
@@ -3481,7 +3737,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Tạo một đơn vị có kiểu chỉ định trên hình lục giác được chọn.\n"
+"Tạo một đơn vị có kiểu chỉ định trên ô lục giác được chọn.\n"
 "\n"
 
 #. [topic]: id=debug_commands
@@ -3514,7 +3770,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Vào ngay lập tức màn kế tiếp trong một chiến dịch.\n"
+"Vào ngay lập tức màn chơi kế tiếp trong một chiến dịch.\n"
 "\n"
 
 #. [topic]: id=debug_commands
@@ -3525,7 +3781,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Thiết lập thủ công một biến trạng thái của trò chơi thành một giá trị.\n"
+"Thiết lập thủ công một biến trạng thái trò chơi thành một giá trị.\n"
 "\n"
 
 #. [topic]: id=debug_commands
@@ -3583,12 +3839,15 @@ msgstr "giải độc"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:54
+#, fuzzy
+#| msgid ""
+#| "A curer can cure a unit of poison, although that unit will receive no "
+#| "additional healing on the turn it is cured of the poison."
 msgid ""
 "Cures:\n"
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
-"Giải độc:\n"
 "Một người giải độc có thể cứu chữa một đơn vị khỏi độc tố, mặc dù đơn vị đó "
 "sẽ không nhận được thêm lượng máu phục hồi ở lượt nó được giải độc."
 
@@ -3604,14 +3863,17 @@ msgstr "tái tạo"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:79
+#, fuzzy
+#| msgid ""
+#| "The unit will heal itself 8 HP per turn. If it is poisoned, it will "
+#| "remove the poison instead of healing."
 msgid ""
 "Regenerates:\n"
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
-"Tái tạo:\n"
-"Đơn vị sẽ tự phục hồi 8 đơn vị máu mỗi lượt. Nếu nó bị nhiễm độc, nó sẽ loại "
-"bỏ chất độc thay vì phục hồi."
+"Đơn vị sẽ tự phục hồi 8 máu mỗi lượt. Nếu nó bị nhiễm độc, nó sẽ loại bỏ "
+"chất độc thay vì phục hồi."
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:98
@@ -3625,12 +3887,15 @@ msgstr "chịu đòn"
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:101
+#, fuzzy
+#| msgid ""
+#| "This unit’s resistances are doubled, up to a maximum of 50%, when "
+#| "defending. Vulnerabilities are not affected."
 msgid ""
 "Steadfast:\n"
 "This unit’s resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
 msgstr ""
-"Chịu đòn:\n"
 "Sức kháng cự của đơn vị này tăng gấp đôi, lên tới tối đa 50%, khi phòng thủ. "
 "Sức kháng cự âm không bị ảnh hưởng."
 
@@ -3652,6 +3917,15 @@ msgstr "lãnh đạo"
 #: data/core/macros/abilities.cfg:119 data/core/macros/abilities.cfg:142
 #: data/core/macros/abilities.cfg:177 data/core/macros/abilities.cfg:224
 #: data/core/macros/abilities.cfg:283
+#, fuzzy
+#| msgid ""
+#| "This unit can lead our own units that are next to it, making them fight "
+#| "better.\n"
+#| "\n"
+#| "Adjacent own units of lower level will do more damage in battle. When a "
+#| "unit adjacent to, of a lower level than, and on the same side as a unit "
+#| "with Leadership engages in combat, its attacks do 25% more damage times "
+#| "the difference in their levels."
 msgid ""
 "Leadership:\n"
 "This unit can lead our own units that are next to it, making them fight "
@@ -3662,7 +3936,6 @@ msgid ""
 "Leadership engages in combat, its attacks do 25% more damage times the "
 "difference in their levels."
 msgstr ""
-"Lãnh đạo:\n"
 "Đơn vị này có thể lãnh đạo các đơn vị cùng phe đứng cạnh nó, làm cho chúng "
 "chiến đấu tốt hơn.\n"
 "\n"
@@ -3683,14 +3956,17 @@ msgstr "đột nhập"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:350
+#, fuzzy
+#| msgid ""
+#| "This unit is skilled in moving past enemies quickly, and ignores all "
+#| "enemy Zones of Control."
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
-"Đột nhập:\n"
 "Đơn vị này rất giỏi trong việc di chuyển nhanh chóng qua kẻ thù, và bỏ qua "
-"toàn bộ Vùng kiểm soát của kẻ thù."
+"toàn bộ vùng kiểm soát của kẻ thù."
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:363
@@ -3704,6 +3980,13 @@ msgstr "chiếu sáng"
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:368
+#, fuzzy
+#| msgid ""
+#| "This unit illuminates the surrounding area, making lawful units fight "
+#| "better, and chaotic units fight worse.\n"
+#| "\n"
+#| "Any units adjacent to this unit will fight as if it were dusk when it is "
+#| "night, and as if it were day when it is dusk."
 msgid ""
 "Illuminates:\n"
 "This unit illuminates the surrounding area, making lawful units fight "
@@ -3712,13 +3995,11 @@ msgid ""
 "Any units adjacent to this unit will fight as if it were dusk when it is "
 "night, and as if it were day when it is dusk."
 msgstr ""
-"Chiếu sáng:\n"
 "Đơn vị này chiếu sáng vùng xung quanh, làm cho các đơn vị chính thống chiến "
 "đấu tốt hơn, và các đơn vị hỗn độn chiến đấu kém hơn.\n"
 "\n"
 "Bất kỳ đơn vị nào đứng cạnh đơn vị này đều chiến đấu như thể đang là chạng "
-"vạng khi trời đang là ban đêm, và như thể đang là ban ngày khi trời đang là "
-"hoàng hôn."
+"vạng khi trời đang là ban đêm, và như thể đang là ban ngày khi chạng vạng."
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:378
@@ -3732,12 +4013,15 @@ msgstr "dịch chuyển tức thời"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:381
+#, fuzzy
+#| msgid ""
+#| "This unit may teleport between any two empty villages owned by its side "
+#| "using one of its moves."
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
-"Dịch chuyển tức thời:\n"
 "Đơn vị này có thể dịch chuyển tức thời giữa hai ngôi làng trống bất kỳ mà "
 "phe nó sở hữu, sử dụng một điểm di chuyển."
 
@@ -3753,6 +4037,13 @@ msgstr "mai phục"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:424 data/core/macros/abilities.cfg:428
+#, fuzzy
+#| msgid ""
+#| "This unit can hide in forest, and remain undetected by its enemies.\n"
+#| "\n"
+#| "Enemy units cannot see this unit while it is in forest, except if they "
+#| "have units next to it. Any enemy unit that first discovers this unit "
+#| "immediately loses all its remaining movement."
 msgid ""
 "Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -3761,7 +4052,6 @@ msgid ""
 "units next to it. Any enemy unit that first discovers this unit immediately "
 "loses all its remaining movement."
 msgstr ""
-"Mai phục:\n"
 "Đơn vị này có thể ẩn nấp trong rừng, và không bị kẻ thù phát hiện.\n"
 "\n"
 "Các đơn vị kẻ thù không thể nhìn thấy đơn vị này khi nó ở trong rừng, trừ "
@@ -3776,6 +4066,13 @@ msgstr "săn đêm"
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:448 data/core/macros/abilities.cfg:454
+#, fuzzy
+#| msgid ""
+#| "The unit becomes invisible during night.\n"
+#| "\n"
+#| "Enemy units cannot see this unit at night, except if they have units next "
+#| "to it. Any enemy unit that first discovers this unit immediately loses "
+#| "all its remaining movement."
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -3784,7 +4081,6 @@ msgid ""
 "it. Any enemy unit that first discovers this unit immediately loses all its "
 "remaining movement."
 msgstr ""
-"Săn đêm:\n"
 "Đơn vị này trở nên vô hình trong đêm.\n"
 "\n"
 "Các đơn vị kẻ thù không thể nhìn thấy đơn vị này vào ban đêm, trừ khi chúng "
@@ -3808,6 +4104,15 @@ msgstr "ẩn nấp"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:474 data/core/macros/abilities.cfg:480
+#, fuzzy
+#| msgid ""
+#| "This unit can hide in villages (with the exception of water villages), "
+#| "and remain undetected by its enemies, except by those standing next to "
+#| "it.\n"
+#| "\n"
+#| "Enemy units can not see this unit while it is in a village, except if "
+#| "they have units next to it. Any enemy unit that first discovers this unit "
+#| "immediately loses all its remaining movement."
 msgid ""
 "Concealment:\n"
 "This unit can hide in villages (with the exception of water villages), and "
@@ -3817,7 +4122,6 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"Ẩn nấp:\n"
 "Đơn vị này có thể ẩn nấp trong làng (trừ những ngôi làng dưới nước), và "
 "không bị kẻ thù phát hiện, trừ khi kẻ thù có đơn vị đứng cạnh nó.\n"
 "\n"
@@ -3837,6 +4141,13 @@ msgstr "lặn"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:500 data/core/macros/abilities.cfg:506
+#, fuzzy
+#| msgid ""
+#| "This unit can hide in deep water, and remain undetected by its enemies.\n"
+#| "\n"
+#| "Enemy units cannot see this unit while it is in deep water, except if "
+#| "they have units next to it. Any enemy unit that first discovers this unit "
+#| "immediately loses all its remaining movement."
 msgid ""
 "Submerge:\n"
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
@@ -3845,12 +4156,11 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"Lặn:\n"
 "Đơn vị này có thể ẩn nấp trong nước sâu, và không bị kẻ thù phát hiện.\n"
 "\n"
 "Các đơn vị kẻ thù không thể nhìn thấy đơn vị này khi nó ở trong nước sâu, "
 "trừ khi chúng có đơn vị bên cạnh nó. Bất kỳ đơn vị kẻ thù nào phát hiện ra "
-"đơn vị này đều mất ngay lập tức toàn bộ  điểm di chuyển còn lại."
+"đơn vị này đều mất ngay lập tức toàn bộ điểm di chuyển còn lại."
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:524
@@ -3875,7 +4185,7 @@ msgstr ""
 #. [unstore_unit]
 #: data/core/macros/abilities.cfg:552
 msgid "+1 max HP"
-msgstr "+1 đơn vị máu tối đa"
+msgstr "+1 máu tối đa"
 
 #. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:594
@@ -3884,13 +4194,17 @@ msgstr "đánh lén"
 
 #. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:596
+#, fuzzy
+#| msgid ""
+#| "When used offensively, this attack deals double damage if there is an "
+#| "enemy of the target on the opposite side of the target, and that unit is "
+#| "not incapacitated (turned to stone or otherwise paralyzed)."
 msgid ""
 "Backstab:\n"
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
 "incapacitated (turned to stone or otherwise paralyzed)."
 msgstr ""
-"Đánh lén:\n"
 "Khi được sử dụng để tấn công, đòn này gây lượng thiệt hại lớn gấp đôi nếu có "
 "một kẻ thù của đối phương ở phía đối diện của đối phương, và đơn vị đó không "
 "bị mất khả năng (hóa đá hay bị tê liệt)."
@@ -3903,30 +4217,37 @@ msgstr "bệnh dịch"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #: data/core/macros/abilities.cfg:610
+#, fuzzy
+#| msgid ""
+#| "When a unit is killed by a Plague attack, that unit is replaced with a "
+#| "unit identical to and on the same side as the unit with the Plague "
+#| "attack. This doesn’t work on Undead or units in villages."
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
 "identical to and on the same side as the unit with the Plague attack. This "
 "doesn’t work on Undead or units in villages."
 msgstr ""
-"Bệnh dịch:\n"
 "Khi một đơn vị bị giết bởi một đòn tấn công bệnh dịch, đơn vị đó sẽ bị thay "
-"thế bằng một đơn vị giống hệt và ở cùng phe với đơn vị có đòn tấn công lây "
-"truyền. Đòn này không có tác dụng với ma quái hoặc các đơn vị ở trong làng."
+"thế bằng một đơn vị giống hệt và ở cùng phe với đơn vị có đòn tấn công bệnh "
+"dịch. Đòn này không có tác dụng với ma quái hoặc các đơn vị ở trong làng."
 
 #. [plague]: id=plague, type=Walking Corpse
 #: data/core/macros/abilities.cfg:622
+#, fuzzy
+#| msgid ""
+#| "When a unit is killed by a Plague attack, that unit is replaced with a "
+#| "Walking Corpse on the same side as the unit with the Plague attack. This "
+#| "doesn’t work on Undead or units in villages."
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
 "doesn’t work on Undead or units in villages."
 msgstr ""
-"Bệnh dịch:\n"
 "Khi một đơn vị bị giết bởi một đòn tấn công bệnh dịch, đơn vị đó sẽ bị thay "
 "thế bằng một xác chết biết đi ở cùng phe với đơn vị có đòn tấn công bệnh "
-"dịch. Đòn này không có tác dụng với các đơn vị ma quái hoặc các đơn vị ở "
-"trong làng."
+"dịch. Đòn này không có tác dụng với ma quái hoặc các đơn vị ở trong làng."
 
 #. [slow]: id=slow
 #: data/core/macros/abilities.cfg:632
@@ -3935,6 +4256,12 @@ msgstr "chậm"
 
 #. [slow]: id=slow
 #: data/core/macros/abilities.cfg:634
+#, fuzzy
+#| msgid ""
+#| "This attack slows the target until it ends a turn. Slow halves the damage "
+#| "caused by attacks and the movement cost for a slowed unit is doubled. A "
+#| "unit that is slowed will feature a snail icon in its sidebar information "
+#| "when it is selected."
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -3942,11 +4269,10 @@ msgid ""
 "that is slowed will feature a snail icon in its sidebar information when it "
 "is selected."
 msgstr ""
-"Chậm:\n"
 "Đòn tấn công này làm chậm đối phương đến khi nó kết thúc lượt. Đòn tấn công "
 "chậm làm giảm một nửa lượng thiệt hại gây ra bởi đòn của đối phương và chi "
 "phí di chuyển của đơn vị bị chậm tăng gấp đôi. Một đơn vị bị chậm sẽ có biểu "
-"tượng con ốc sên trong thông tin bên phải màn hình khi chọn nó."
+"tượng con ốc sên trong thông tin trạng thái khi chọn nó."
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:643
@@ -3955,12 +4281,15 @@ msgstr "hóa đá"
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:645
+#, fuzzy
+#| msgid ""
+#| "This attack petrifies the target, turning it to stone. Units that have "
+#| "been petrified may not move or attack."
 msgid ""
 "Petrify:\n"
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
 msgstr ""
-"Hóa đá:\n"
 "Đòn tấn công này hóa đá đối phương, biến nó thành đá. Các đơn vị đã bị hóa "
 "đá không thể di chuyển hay tấn công."
 
@@ -3971,11 +4300,14 @@ msgstr "thiện xạ"
 
 #. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:656
+#, fuzzy
+#| msgid ""
+#| "When used offensively, this attack always has at least a 60% chance to "
+#| "hit."
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
-"Thiện xạ:\n"
 "Khi được sử dụng để tấn công, đòn này luôn có cơ hội đánh trúng ít nhất cũng "
 "là 60%."
 
@@ -3986,6 +4318,12 @@ msgstr "liên hoàn"
 
 #. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:683
+#, fuzzy
+#| msgid ""
+#| "The number of strikes of this attack decreases when the unit is wounded. "
+#| "The number of strikes is proportional to the percentage of its of maximum "
+#| "HP the unit has. For example a unit with 3/4 of its maximum HP will get "
+#| "3/4 of the number of strikes."
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -3993,7 +4331,6 @@ msgid ""
 "unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
 "number of strikes."
 msgstr ""
-"Liên hoàn:\n"
 "Số lần đánh của đòn tấn công này giảm khi đơn vị bị thương. Số lần đánh tỷ "
 "lệ với phần trăm lượng máu trên lượng tối đa đơn vị có. Ví dụ một đơn vị có "
 "lượng máu bằng 3/4 lượng máu tối đa sẽ có số lần đánh bằng 3/4 số lần đánh "
@@ -4006,12 +4343,16 @@ msgstr "xung kích"
 
 #. [damage]: id=charge
 #: data/core/macros/abilities.cfg:694
+#, fuzzy
+#| msgid ""
+#| "When used offensively, this attack deals double damage to the target. It "
+#| "also causes this unit to take double damage from the target’s "
+#| "counterattack."
 msgid ""
 "Charge:\n"
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
 msgstr ""
-"Xung kích:\n"
 "Khi được sử dụng để tấn công, đòn này gây lượng thiệt hại lớn gấp đôi cho "
 "đối phương. Nó cũng khiến cho đơn vị này phải chịu lượng thiệt hại lớn gấp "
 "đôi từ đòn phản công của đối phương."
@@ -4023,13 +4364,16 @@ msgstr "bòn rút"
 
 #. [drains]: id=drains
 #: data/core/macros/abilities.cfg:708
+#, fuzzy
+#| msgid ""
+#| "This unit drains health from living units, healing itself for half the "
+#| "amount of damage it deals (rounded down)."
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
 msgstr ""
-"Bòn rút:\n"
-"Đơn vị này bòn rút sức sống từ các đơn vị có sự sống, phục hồi máu cho bản "
+"Đơn vị này bòn rút sức khỏe từ các đơn vị có sự sống, phục hồi máu cho bản "
 "thân một lượng bằng một nửa lượng thiệt hại mà nó gây ra (làm tròn xuống)."
 
 #. [poison]: id=poison
@@ -4039,16 +4383,20 @@ msgstr "độc"
 
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:730
+#, fuzzy
+#| msgid ""
+#| "This attack poisons living targets. Poisoned units lose 8 HP every turn "
+#| "until they are cured or are reduced to 1 HP. Poison can not, of itself, "
+#| "kill a unit."
 msgid ""
 "Poison:\n"
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison can not, of itself, kill "
 "a unit."
 msgstr ""
-"Độc:\n"
 "Đòn tấn công này làm nhiễm độc những đối thủ có sự sống. Các đơn vị bị nhiễm "
-"độc mất 8 đơn vị máu mỗi lượt đến khi chúng được giải độc hoặc bị giảm xuống "
-"còn 1 đơn vị máu. Bản thân chất độc không thể giết một đơn vị."
+"độc mất 8 máu mỗi lượt đến khi chúng được giải độc hoặc bị giảm xuống còn 1 "
+"máu. Bản thân chất độc không thể giết một đơn vị."
 
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
@@ -4068,124 +4416,112 @@ msgstr "Sâu dưới lòng đất"
 #. [time]: id=midnight_hour
 #: data/core/macros/schedules.cfg:162
 msgid "Midnight"
-msgstr ""
+msgstr "Nửa đêm"
 
 #. [time]: id=second_watch_hour1
 #: data/core/macros/schedules.cfg:174
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — First Hour"
-msgstr "Canh hai"
+msgstr "Canh hai - Giờ đầu tiên"
 
 #. [time]: id=second_watch_hour2
 #: data/core/macros/schedules.cfg:186
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Second Hour"
-msgstr "Canh hai"
+msgstr "Canh hai - Giờ thứ hai"
 
 #. [time]: id=second_watch_hour3
 #: data/core/macros/schedules.cfg:198
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Third Hour"
-msgstr "Canh hai"
+msgstr "Canh hai - Giờ thứ ba"
 
 #. [time]: id=second_watch_hour4
 #: data/core/macros/schedules.cfg:210
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Fourth Hour"
-msgstr "Canh hai"
+msgstr "Canh hai - Giờ thứ tư"
 
 #. [time]: id=second_watch_hour5
 #: data/core/macros/schedules.cfg:222
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Fifth Hour"
-msgstr "Canh hai"
+msgstr "Canh hai - Giờ thứ năm"
 
 #. [time]: id=second_watch_hour6
 #: data/core/macros/schedules.cfg:234
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Sixth Hour"
-msgstr "Canh hai"
+msgstr "Canh hai - Giờ thứ sáu"
 
 #. [time]: id=morning_hour1
 #: data/core/macros/schedules.cfg:257
 msgid "Morning — First Hour"
-msgstr ""
+msgstr "Buổi sáng - Giờ đầu tiên"
 
 #. [time]: id=morning_hour2
 #: data/core/macros/schedules.cfg:266
 msgid "Morning — Second Hour"
-msgstr ""
+msgstr "Buổi sáng - Giờ thứ hai"
 
 #. [time]: id=morning_hour3
 #: data/core/macros/schedules.cfg:275
 msgid "Morning — Third Hour"
-msgstr ""
+msgstr "Buổi sáng - Giờ thứ ba"
 
 #. [time]: id=morning_hour4
 #: data/core/macros/schedules.cfg:284
 msgid "Morning — Fourth Hour"
-msgstr ""
+msgstr "Buổi sáng - Giờ thứ tư"
 
 #. [time]: id=midday_hour
 #: data/core/macros/schedules.cfg:293
 msgid "Midday"
-msgstr ""
+msgstr "Buổi trưa"
 
 #. [time]: id=afternoon_hour1
 #: data/core/macros/schedules.cfg:302
 msgid "Afternoon — First Hour"
-msgstr ""
+msgstr "Buổi chiều - Giờ đầu tiên"
 
 #. [time]: id=afternoon_hour2
 #: data/core/macros/schedules.cfg:311
 msgid "Afternoon — Second Hour"
-msgstr ""
+msgstr "Buổi chiều - Giờ thứ hai"
 
 #. [time]: id=afternoon_hour3
 #: data/core/macros/schedules.cfg:320
 msgid "Afternoon — Third Hour"
-msgstr ""
+msgstr "Buổi chiều - Giờ thứ ba"
 
 #. [time]: id=afternoon_hour4
 #: data/core/macros/schedules.cfg:329
 msgid "Afternoon — Fourth Hour"
-msgstr ""
+msgstr "Buổi chiều - Giờ thứ tư"
 
 #. [time]: id=afternoon_hour5
 #: data/core/macros/schedules.cfg:338
 msgid "Afternoon — Fifth Hour"
-msgstr ""
+msgstr "Buổi chiều - Giờ thứ năm"
 
 #. [time]: id=afternoon_hour6
 #: data/core/macros/schedules.cfg:347
 msgid "Afternoon — Sixth Hour"
-msgstr ""
+msgstr "Buổi chiều - Giờ thứ sáu"
 
 #. [time]: id=first_watch_hour1
 #: data/core/macros/schedules.cfg:369
 msgid "First Watch — First Hour"
-msgstr ""
+msgstr "Canh một - Giờ đầu tiên"
 
 #. [time]: id=first_watch_hour2
 #: data/core/macros/schedules.cfg:381
 msgid "First Watch — Second Hour"
-msgstr ""
+msgstr "Canh một - Giờ thứ hai"
 
 #. [time]: id=first_watch_hour3
 #: data/core/macros/schedules.cfg:393
 msgid "First Watch — Third Hour"
-msgstr ""
+msgstr "Canh một - Giờ thứ ba"
 
 #. [time]: id=first_watch_hour4
 #: data/core/macros/schedules.cfg:405
 msgid "First Watch — Fourth Hour"
-msgstr ""
+msgstr "Canh một - Giờ thứ tư"
 
 #: data/core/macros/special-notes.cfg:5
 msgid ""
@@ -4211,7 +4547,7 @@ msgid ""
 "even some to mundane creatures."
 msgstr ""
 " Đòn tấn công bí kíp của đơn vị này gây thiệt hại ghê gớm cho các sinh vật "
-"ma thuật, và cũng đáng kể cho các sinh vật cõi trần."
+"phép thuật, và cũng đáng kể cho các sinh vật cõi trần."
 
 #: data/core/macros/special-notes.cfg:14
 msgid " This unit is capable of basic healing."
@@ -4219,7 +4555,7 @@ msgstr " Đơn vị này có khả năng hồi máu cơ bản."
 
 #: data/core/macros/special-notes.cfg:17
 msgid " This unit is capable of rapid healing."
-msgstr "Đơn vị này có khả năng hồi máu nhanh chóng."
+msgstr " Đơn vị này có khả năng hồi máu nhanh chóng."
 
 #: data/core/macros/special-notes.cfg:20
 msgid ""
@@ -4308,7 +4644,7 @@ msgid ""
 " This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
 " Đơn vị này có thể di chuyển trong nước sâu mà không bị phát hiện, không cần "
-"không khí mặt thoáng để thở."
+"không khí trên bề mặt để thở."
 
 #: data/core/macros/special-notes.cfg:56
 msgid ""
@@ -4367,10 +4703,6 @@ msgstr ""
 "thù, nhưng chỉ khi tấn công."
 
 #: data/core/macros/special-notes.cfg:77
-#, fuzzy
-#| msgid ""
-#| " The unit has magical attacks, which always have a high chance of hitting "
-#| "an opponent."
 msgid ""
 " This unit has magical attacks, which always have a high chance of hitting "
 "an opponent."
@@ -4406,8 +4738,8 @@ msgid ""
 " The length of this unit’s weapon allows it to strike first in melee, even "
 "in defense."
 msgstr ""
-" Chiều dài vũ khí của đơn vị này cho phép nó ra đòn trước trong cận chiến, "
-"kể cả khi phòng thủ."
+" Chiều dài vũ khí của đơn vị này cho phép nó ra đòn trước khi cận chiến, kể "
+"cả khi phòng thủ."
 
 #: data/core/macros/special-notes.cfg:92
 msgid ""
@@ -4565,7 +4897,7 @@ msgstr "hoang dã"
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:192
 msgid "Receives only 50% defense in land-based villages"
-msgstr ""
+msgstr "Chỉ nhận 50% phòng thủ trong những ngôi làng trên cạn"
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:208
@@ -4631,6 +4963,11 @@ msgid ""
 "especially when encountered in groups. Typically nocturnal, they are often "
 "kept (and occasionally tamed) by those who share their love of the night."
 msgstr ""
+"Dơi có nhiều hình dạng và kích thước, và phần lớn khá là vô hại, chúng ăn "
+"côn trùng và những động vật nhỏ khác. Những nòi giống lớn và tàn ác hơn là "
+"mối đe dọa với con người và các chủng tộc khác, cũng như vật nuôi của họ, "
+"đặc biệt khi gặp cả bầy đàn. Thường hoạt động đêm, chúng thường được giữ (và "
+"thỉnh thoảng được thuần hóa) bởi những kẻ cũng yêu thích bóng đêm."
 
 #. [race]: id=drake
 #: data/core/units.cfg:54
@@ -4717,66 +5054,67 @@ msgid ""
 msgstr ""
 "Người rồng là những sinh vật lớn, có cánh và thở ra lửa, khiến người ta liên "
 "tưởng đến loài rồng thần thoại. Trung bình, một người rồng trưởng thành đứng "
-"cao khoảng ba mét và nặng hơn cả một người cộng với một con ngựa. Da của họ "
-"được tạo nên từ những chiếc vảy cứng, kháng cự với hầu hết các đòn tấn công "
-"vật lý trừ đâm và lạnh. Người rồng nói chung có khả năng bay thực sự và có "
-"thể băng qua nhanh chóng những khoảng cách lớn. Tuy nhiên, sức nặng và thân "
-"hình đồ sộ hơi làm hạn chế năng lực bay lượn, khiến họ trở nên lóng ngóng "
-"trong không trung. Khi có thể, họ sử dụng các đặc tính của địa hình như đồi, "
-"núi và cây làm bàn đạp để đạt được độ cao và tốc độ lớn hơn. May mắn cho kẻ "
-"thù, họ vẫn là những sinh vật khá vụng về và chậm chạp một cách đáng ngạc "
-"nhiên khi chiến đấu. Điều này, cùng với kích thước lớn, làm cho họ trở thành "
-"mục tiêu dễ dàng cho những ai dám tấn công.\n"
+"cao khoảng ba mét và dễ dàng nặng hơn cả một người với một con ngựa cộng "
+"lại. Da của chúng được tạo nên từ những chiếc vảy cứng, kháng cự với hầu hết "
+"các đòn tấn công hữu hình trừ đâm và lạnh. Hầu hết người rồng có khả năng "
+"bay thực sự và có thể băng qua nhanh chóng những khoảng cách lớn. Tuy nhiên, "
+"sức nặng và thân hình đồ sộ hơi làm hạn chế năng lực bay lượn, khiến chúng "
+"trở nên lóng ngóng trong không trung. Khi có thể, chúng sử dụng các đặc tính "
+"của địa hình như đồi, núi và cây làm bàn đạp để đạt được độ cao và tốc độ "
+"lớn hơn. May mắn cho kẻ thù, chúng vẫn là những sinh vật khá vụng về và chậm "
+"chạp một cách đáng ngạc nhiên khi chiến đấu. Điều này, cùng với kích thước "
+"lớn, làm cho chúng trở thành mục tiêu dễ dàng cho những ai dám tấn công.\n"
 "\n"
-"Người rồng vốn là những sinh vật có phép thuật, với một ngọn lửa bí ẩn nằm "
-"bên trong cung cấp năng lượng sống cho họ. Có thể dễ dàng chứng kiến điều "
-"này khi một người rồng bỏ mạng trong chiến trận, ngọn lửa bên trong cơ thể "
-"bùng lên, đốt toàn bộ thân xác ra tro. Ngọn lửa đó cũng là điểm yếu lớn nhất "
-"của chúng, khiến họ cực kỳ có yếu điểm trước các đòn tấn công lạnh. Dù bản "
-"chất có phép thuật, nhưng người rồng không thể kiểm soát được. Phép thuật "
-"ngập tràn bên trong cơ thể cho phép người rồng phun ra lửa, nhưng họ không "
-"có khả năng điều khiển chủ động sự vận hành của phép thuật này.\n"
+"Người rồng vốn là những sinh vật có phép thuật, với một ngọn lửa nội tại bí "
+"ẩn cung cấp năng lượng sống cho chúng. Có thể dễ dàng chứng kiến điều này "
+"khi một người rồng bỏ mạng trong chiến trận, ngọn lửa nội tại được giải "
+"phóng, đốt toàn bộ thân xác ra tro. Ngọn lửa đó cũng là điểm yếu lớn nhất "
+"của chúng, khiến chúng cực kỳ có nhược điểm trước các đòn tấn công lạnh. Dù "
+"bản chất có phép thuật, nhưng người rồng không thể kiểm soát được. Phép "
+"thuật ngập tràn bên trong cơ thể cho phép người rồng phun ra lửa, nhưng "
+"chúng không có khả năng điều khiển chủ động sự vận hành của phép thuật này.\n"
 "\n"
 "<header>text='Xã hội'</header>\n"
-"Người rồng là một chungr toocj tương đối hiếu chiến và có thể mô tả đời sống "
-"xã hội của họ là xã hội có văn hóa quân sự. Nòng cốt của một bộ tộc người "
-"rồng là một nhóm nhỏ các chiến binh kỳ cựu, được dẫn đầu bởi một lãnh tụ mà "
-"mọi thành viên đều tôn trọng, hoặc chỉ đơn thuần là sợ, người cai quản xã "
-"hội bằng với một kỷ cương thép. Mỗi thành viên phải xứng đáng với vị trí của "
-"mình trong hệ thống thứ bậc nghiêm ngặt, tuân lệnh cấp trên và chỉ huy cấp "
-"dưới. Được xếp vào thành phần xã hội ưu tú chỉ có thể thông qua việc thách "
-"thức và đánh bại cấp trên trong trận đấu một đối một, đó cũng là cách để "
-"thiết lập trật tự trong thành phần ưu tú. Việc sử dụng mưu mẹo gian dối dưới "
-"bất kỳ hình thức nào với đồng loại luôn bị xem là hèn nhát và không thể chấp "
-"nhận được.\n"
+"Người rồng là một chủng tộc tương đối hiếu chiến và có thể mô tả đời sống xã "
+"hội của chúng là xã hội có văn hóa quân sự. Nòng cốt của một bộ lạc người "
+"rồng là một nhóm nhỏ các chiến binh kỳ cựu, được dẫn đầu bởi một "
+"<ref>dst='dominant' text='lãnh tụ'</ref> mà mọi thành viên đều tôn trọng, "
+"hoặc chỉ đơn thuần là sợ, người cai quản xã hội bằng bằng nắm đấm thép. Mỗi "
+"thành viên phải xứng đáng với vị trí của mình trong hệ thống thứ bậc nghiêm "
+"ngặt, tuân lệnh cấp trên và chỉ huy cấp dưới. Được xếp vào thành phần xã hội "
+"ưu tú chỉ có thể thông qua việc thách thức và đánh bại cấp trên trong trận "
+"đấu một đối một, đó cũng là cách để thiết lập trật tự trong thành phần ưu "
+"tú. Việc sử dụng mưu mẹo gian dối dưới bất kỳ hình thức nào với đồng loại "
+"luôn bị xem là hèn nhát và không thể chấp nhận được.\n"
 "\n"
-"Bản chất hiếu chiến và ý thức sở hữu lãnh thổ khiến họ kiên quyết bảo vệ "
-"lãnh thổ của mình, nhưng người rồng hiếm khi xâm chiếm hay xâm phạm vào "
-"những vùng các loài khác đã chiếm hữu. Trái lại, họ chỉ cư ngụ trong những "
-"khu vực không dân cư để thiết lập lãnh thổ riêng ở đó. Họ kiếm mồi chủ yếu "
-"bằng cách đi săn trong những vùng đất thấp xung quanh nơi ở, nhưng những cá "
-"thể non và những cá thể đẳng cấp thấp ăn rêu và nấm trồng sâu trong hang "
-"động. Kỹ thuật duy nhất người rồng tự hào là nghề rèn áo giáp và vũ khí, họ "
-"không biết cũng như không cần khoa học hay văn hóa khác ngoài nghề này. Tuy "
-"nhiên, một vài công cụ họ chế tạo gần như là vô địch về mặt chất lượng, chỉ "
-"những sản phẩm từ các lò xưởng tốt nhất của người lùn mới có thể sánh được.\n"
+"Dù bản chất hiếu chiến và ý thức lãnh thổ khiến chúng kiên quyết bảo vệ lãnh "
+"thổ của mình, nhưng người rồng hiếm khi xâm chiếm hay xâm phạm vào những "
+"vùng các chủng tộc lớn khác đã chiếm hữu. Trái lại, chúng chỉ cư ngụ trong "
+"những khu vực không dân cư để thiết lập lãnh thổ riêng ở đó. Chúng kiếm mồi "
+"chủ yếu bằng cách đi săn trong những vùng đất thấp xung quanh nơi ở, nhưng "
+"những cá thể non và đẳng cấp thấp cũng ăn rêu và nấm chúng trồng sâu trong "
+"hang động. Kỹ thuật duy nhất người rồng tự hào là nghề rèn áo giáp và vũ "
+"khí, chúng không biết cũng như không cần khoa học hay văn hóa khác ngoài "
+"nghề này. Tuy nhiên, một vài công cụ chúng chế tạo gần như là vô địch về mặt "
+"chất lượng, chỉ những sản phẩm từ các lò xưởng tốt nhất của người lùn mới có "
+"thể sánh được.\n"
 "\n"
 "Người rồng nở ra từ trứng và thường sống tự nhiên giữa 20 đến 30 năm. Hy "
 "sinh khi chiến đấu là cách vinh dự nhất để một người rồng rời khỏi thế giới "
-"này. Không giống như những thành viên lớn tuổi của các loài khác, người rồng "
-"càng lớn càng trở nên hung hăng và liều lĩnh cho tới cuối đời, có lẽ để đảm "
-"bảo vị trí của mình trong những truyền thuyết anh hùng của đồng loại.\n"
+"này. Không giống như những thành viên lớn tuổi của các chủng tộc khác, người "
+"rồng càng lớn càng trở nên hung hăng và liều lĩnh cho tới cuối đời, có lẽ để "
+"đảm bảo vị trí của mình trong những truyền thuyết anh hùng của đồng loại.\n"
 "\n"
 "<header>text='Địa lý'</header>\n"
-"Người rồng bắt nguồn từ một loạt đảo núi lửa gọi là <ref>dst='morogor' "
-"text='Morogor'</ref> ở <ref>dst='great_ocean' text='Đại dương'</ref>. Ảnh "
-"hưởng kết hợp của sức ép dân số và sự chìm ngập của nhiều hòn đảo đã khiến "
-"các đoàn người rồng tản ra đến <ref>dst='great_continent' text='Đại Lục "
-"địa'</ref>. Họ có xu hướng xây nhà trong các hang động trên núi, gần núi lửa "
-"để bảo vệ trứng, cá thể còn non và lò xưởng của mình. Họ vốn thích hơi ấm, "
-"nhưng ngọn lửa bên trong có thể giúp họ chống chọi kể cả trong điều kiện khí "
-"hậu tương đối lạnh, một đặc điểm đã cho phép họ cư trú trên một số ngọn núi "
-"ở phương bắc xa xôi của Đại Lục địa."
+"Người rồng bắt nguồn từ một quần đảo núi lửa gọi là <ref>dst='morogor' "
+"text='Morogor'</ref> ở <ref>dst='great_ocean' text='Đại Dương Lớn'</ref>. "
+"Ảnh hưởng kết hợp của sức ép dân số và sự chìm ngập của nhiều hòn đảo đã "
+"khiến các đoàn người rồng tản ra đến <ref>dst='great_continent' text='Đại "
+"Lục Địa'</ref>. Người rồng có xu hướng xây nhà trong các hang động trên núi, "
+"gần núi lửa để bảo vệ trứng, con non và lò xưởng của mình. Chúng vốn thích "
+"hơi ấm, nhưng ngọn lửa nội tại có thể giúp chúng chống chọi kể cả trong điều "
+"kiện khí hậu tương đối lạnh, một đặc điểm đã cho phép chúng cư trú trên một "
+"số ngọn núi ở phương bắc xa xôi của Đại Lục Địa."
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:90
@@ -4843,50 +5181,50 @@ msgid ""
 "augment certain aspects of their natures."
 msgstr ""
 "Người lùn là chủng tộc nổi tiếng bởi các thợ mỏ, thợ rèn, nhà buôn và chiến "
-"binh. Được xem là loài lâu năm thứ ba trên Đại Lục địa sau thần tiên và quỷ "
-"núi, lịch sử trước đó của họ vẫn là điều bí ẩn. Truyền thuyết kể về một "
+"binh. Được xem là chủng tộc lâu năm thứ ba trên Đại Lục Địa sau thần tiên và "
+"quỷ núi, lịch sử trước đó của họ vẫn là điều bí ẩn. Truyền thuyết kể về một "
 "khoảng thời gian đã bị lãng quên từ lâu khi người lùn bắt đầu xuất hiện từ "
 "thế giới dưới lòng đất, xuyên qua hang động. Người ta không biết gì về cuộc "
 "sống của họ trước đó, cũng như lý do để vào thế giới trên mặt đất, nhưng họ "
 "đã trở thành một phần của lịch sử lục địa. Không lâu sau khi xuất hiện từ "
 "dưới lòng đất, người lùn bắt đầu xung đột với những cư dân đầu tiên của vùng "
 "đất, các thần tiên. Nguyên nhân tranh chấp đã thất lạc theo thời gian, nhưng "
-"hai loài đã đánh nhau suốt ba cuộc chiến tranh dài, bị gián đoạn bởi một vài "
-"thập kỷ hòa bình. Trong các cuộc chiến tranh này, người lùn không thể đánh "
-"đuổi thần tiên ra khỏi những khu rừng sâu phía nam, mà chỉ củng cố được vị "
-"trí của mình trong vùng đồi núi phía bắc lục địa, bây giờ gọi là vùng đất "
-"phương bắc. Kể từ đó họ đã xây dựng nhiều công sự và căn cứ lớn sâu bên "
-"trong núi với những vách đá lởm chởm trên lãnh thổ của họ.\n"
+"hai chủng tộc đã đánh nhau suốt ba cuộc chiến tranh dài, bị gián đoạn bởi "
+"một vài thập kỷ hòa bình. Trong các cuộc chiến tranh này, người lùn không "
+"thể đánh đuổi thần tiên ra khỏi những khu rừng sâu phía nam, mà chỉ củng cố "
+"được vị trí của mình trong vùng đồi núi phía bắc lục địa, bây giờ gọi là "
+"vùng đất phương bắc. Kể từ đó họ đã xây dựng nhiều công sự và căn cứ lớn sâu "
+"bên trong núi với những vách đá lởm chởm trên lãnh thổ của họ.\n"
 "\n"
 "Có lẽ do sống tách biệt, người lùn thường hay nghi ngờ hoặc thù địch với hầu "
-"hết các loài khác, đặc biệt là thần tiên. Ngoại lệ duy nhất của tính khí này "
-"là đối với con người. Nguyên nhân có thể bắt nguồn từ thời đại của Haldric I "
-"và sự di cư của con người và người thú vào lục địa. Ở điểm này người lùn bắt "
-"đầu cho phép một số con người, chủ yếu là những người chống đối và nằm ngoài "
-"vòng pháp luật đối với vương quốc Wesnoth, cư ngụ trong một số vùng của vùng "
-"đất phương bắc. Động cơ của họ không có gì đáng ngạc nhiên. Cảnh ngộ của "
-"những cá nhân này nhắc nhở người lùn về quá khứ bị ngược đãi trước đây của "
-"mình, gợi cho họ ý thức đoàn kết. Người lùn cũng kiếm được nhiều khi liên "
-"kết với những con người bơ vơ này - họ cư ngụ ở những khu vực mà người lùn "
-"không thích sống như đồng bằng, rừng, đầm lầy; giải phóng người lùn khỏi "
-"việc phải bảo vệ những vùng đó.\n"
+"hết các chủng tộc khác, đặc biệt là thần tiên. Ngoại lệ duy nhất của tính "
+"khí này là đối với con người. Nguyên nhân có thể bắt nguồn từ thời đại của "
+"Haldric I và sự di cư của con người và người thú vào lục địa. Ở điểm này "
+"người lùn bắt đầu cho phép một số con người, chủ yếu là những người chống "
+"đối và sống ngoài vòng pháp luật từ vương quốc Wesnoth, cư ngụ trong một số "
+"vùng của vùng đất phương bắc. Động cơ của họ không có gì đáng ngạc nhiên. "
+"Cảnh ngộ của những cá nhân này nhắc nhở người lùn về quá khứ bị ngược đãi "
+"trước đây của mình, gợi cho họ ý thức đoàn kết. Người lùn cũng kiếm được "
+"nhiều khi liên kết với những con người bơ vơ này - họ cư ngụ ở những khu vực "
+"mà người lùn không thích sống như đồng bằng, rừng, đầm lầy; giải phóng người "
+"lùn khỏi việc phải bảo vệ những vùng đó.\n"
 "\n"
 "Người lùn có vóc dáng nhỏ hơn con người, nhưng điều đó không có nghĩa là họ "
-"yếu ớt. Các chiến sĩ của họ dẻo dai và mạnh mẽ, vừa đáng sợ vừa đáng nể trên "
-"khắp lục địa vì lòng dũng cảm trong chiến đấu. Ngoài ra, người lùn cũng được "
-"biết đến vì tài trí tính toán và sự lành nghề tuyệt vời của họ. Thợ rèn "
+"yếu ớt. Các chiến binh của họ dẻo dai và mạnh mẽ, vừa đáng sợ vừa đáng nể "
+"trên khắp lục địa vì lòng dũng cảm trong chiến đấu. Ngoài ra, người lùn cũng "
+"được biết đến vì tài trí tính toán và sự lành nghề tuyệt vời của họ. Thợ rèn "
 "người lùn lừng danh vì những vũ khí chết người và áo giáo hạng nặng. Những "
 "quân dụng này là vô địch về mặt chất lượng, có lẽ chỉ những sản phẩm của "
 "người rồng mới có thể sánh được. Trí tuệ và tính tò mò bẩm sinh cũng khiến "
-"họ trở thành loài tiến bộ nhất về kỹ thuật trên lục địa. Một trong những "
-"phát minh nổi tiếng và đáng sợ nhất của họ là loại bột bí ẩn có thể tạo ra "
-"một vụ nổ lớn khi châm lửa. Một số chiến sĩ người lùn sử dụng loại bột này "
-"để phóng những vật thể nhỏ với tốc độ khủng khiếp. Do có năng khiếu về kỹ "
-"thuật, nhiều người lùn thường không tin vào những người sử dụng phép thuật. "
-"Tuy nhiên, một số người lùn tập luyện một dạng phép thuật dựa vào việc chạm "
-"trổ các dấu thần. Những người này được gọi là thợ khắc dấu thần, họ sử dụng "
-"nghệ thuật chạm khắc để ếm bùa các vật thể, làm phong phú thêm bản sắc của "
-"người lùn."
+"họ trở thành chủng tộc tiến bộ nhất về kỹ thuật trên lục địa. Một trong "
+"những phát minh nổi tiếng và đáng sợ nhất của họ là loại bột bí ẩn có thể "
+"tạo ra một vụ nổ lớn khi châm lửa. Một số chiến binh người lùn sử dụng loại "
+"bột này để phóng những vật thể nhỏ với tốc độ khủng khiếp. Do có năng khiếu "
+"về kỹ thuật, nhiều người lùn thường không tin vào những người sử dụng phép "
+"thuật. Tuy nhiên, một số người lùn tập luyện một dạng phép thuật dựa vào "
+"việc chạm trổ các dấu thần. Những người này được gọi là thợ khắc dấu thần, "
+"họ sử dụng nghệ thuật chạm khắc để ếm bùa các vật thể, làm phong phú thêm "
+"bản sắc của người lùn."
 
 #. [race]: id=elf
 #: data/core/units.cfg:110
@@ -4972,7 +5310,7 @@ msgstr ""
 "khác có thể sánh với các cung thủ ở tốc độ và độ chính xác. Tất cả các thần "
 "tiên cũng đều có chung một tình cảm mãnh liệt với thiên nhiên nguyên thủy. "
 "Họ thường cảm thấy không thoải mái khi ở trong những không gian trống trải "
-"không có cây cối. Họ sống chủ yếu trong những khu rừng của Đại Lục địa; như "
+"không có cây cối. Họ sống chủ yếu trong những khu rừng của Đại Lục Địa; như "
 "Aethenwood ở phía tây nam, Wesmere ở phía tây bắc và những khu rừng lớn phía "
 "bắc mà khu rừng Lintanir là rìa cực Nam.\n"
 "\n"
@@ -5016,6 +5354,24 @@ msgid ""
 "exception of jobs that require the brute strength of true orcs. Those the "
 "orcs revel in as proof of their prowess."
 msgstr ""
+"Bất kể vẻ bề ngoài, yêu tinh khi sinh ra là anh em với người thú và các "
+"thành viên cùng chủng tộc. Trong khi các chủng tộc khác thường sinh mỗi lần "
+"một hoặc hai trẻ em, người thú đẻ mỗi lứa nhiều con cùng lúc, khiến dân số "
+"của chúng bùng nổ nhanh chóng. Trong bất kỳ lứa nào, sẽ chỉ có một hoặc hai "
+"người thú thực sự, chúng sẽ đạt đến kích thước và sức mạnh đầy đủ của chủng "
+"tộc. Số nhiều hơn sẽ là nửa người thú, yếu hơn đáng kể so với các anh em lớn "
+"của chúng, và được giao vai trò hỗ trợ khi chiến đấu, chẳng hạn bắn cung. Số "
+"còn lại, thường là trên một nửa của lứa đẻ, sẽ là yêu tinh. Yêu tinh còi cọc "
+"và khá yếu, hiếm khi vượt quá kích thước và vóc dáng của một đứa trẻ loài "
+"người. Yêu tinh gần như cả đời làm nô lệ cho những đồng loại lớn hơn, và "
+"được sử dụng làm vật thí mạng trong chiến trận. Chúng vẫn phát triển mạnh "
+"bất chấp định mệnh bi kịch của mình, một phần bởi chúng rất đông, và cũng "
+"bởi những người thú anh em của chúng biết rõ mức độ phụ thuộc của chúng vào "
+"yêu tinh.\n"
+"\n"
+"Yêu tinh thực hiện phần lớn lao động thủ công của người thú, với ngoại lệ "
+"duy nhất là những công việc yêu cầu sức mạnh tàn bạo của những người thú "
+"thực sự."
 
 #. [race]: id=gryphon, description=
 #: data/core/units.cfg:150
@@ -5088,23 +5444,23 @@ msgid ""
 "general, the Clan warriors are less organized than the civilized fighters, "
 "and the strengths and weaknesses of these groups complement each other."
 msgstr ""
-"Con người là một chủng tộc cực kỳ phong phú. Ban đầu đến từ Lục địa Cũ, con "
+"Con người là một chủng tộc cực kỳ phong phú. Ban đầu đến từ Cựu Lục Địa, con "
 "người đã trải rộng trên khắp thế giới và phân chia thành nhiều nền văn hóa "
 "và chủng tộc khác nhau. Mặc dù không có phép thuật như các sinh vật khác, "
 "nhưng con người có thể tìm hiểu cách sử dụng nó và học được nhiều kiểu hơn "
 "hầu hết các loài khác. Con người không có khả năng hay năng lực gì thực sự "
-"đặc biệt ngoài tài linh hoạt và nghị lực. Thường bất hòa với các loài khác, "
-"nhưng con người đôi khi có thể liên minh với những loài ít hung hãn như thần "
-"tiên và người lùn. Một số người cũng không ngần ngại hay chùn bước khi mướn "
-"lính đánh thuê người thú. Con người không có kẻ thù bẩm sinh, mặc dù đa số, "
-"cũng giống như hầu hết người của mọi loài khác, căm ghét theo bản năng loài "
-"ma quái. Con người thấp hơn thần tiên, nhưng vẫn cao hơn người lùn. Màu da "
-"có thể biến đổi khác nhau, từ gần như trắng đến nâu sẫm.\n"
+"đặc biệt ngoài tài linh hoạt và nghị lực. Thường bất hòa với các chủng tộc "
+"khác, nhưng con người đôi khi có thể liên minh với những chủng tộc ít hung "
+"hãn như thần tiên và người lùn. Một số người cũng không ngần ngại hay chùn "
+"bước khi mướn lính đánh thuê người thú. Con người không có kẻ thù bẩm sinh, "
+"mặc dù đa số, cũng giống như hầu hết người của mọi chủng tộc khác, căm ghét "
+"theo bản năng loài ma quái. Con người thấp hơn thần tiên, nhưng vẫn cao hơn "
+"người lùn. Màu da có thể biến đổi khác nhau, từ gần như trắng đến nâu sẫm.\n"
 "\n"
 "<header>text='Thần dân của vương triều'</header>\n"
-"Có nhiều nhóm người khác nhau, nhưng đa số trên Đại Lục địa đều sống dưới sự "
+"Có nhiều nhóm người khác nhau, nhưng đa số trên Đại Lục Địa đều sống dưới sự "
 "cai trị của vương triều Wesnoth. Con người xuất hiện lần đầu trên Đại Lục "
-"địa từ một vùng đất xa xôi phía tây đại dương, Hòn đảo Xanh, và nhanh chóng "
+"Địa từ một vùng đất xa xôi phía tây đại dương, Đảo Xanh, và nhanh chóng "
 "thiết lập thủ đô ở thành phố nội địa Weldyn. Qua nhiều thế kỷ, họ đã xây "
 "dựng nhiều thành phố trên khắp lục địa. Quân lính của vương triều Wesnoth "
 "bảo vệ quốc gia, tạo nên lực lượng quân đội có tổ chức nhất trên thế giới. "
@@ -5118,11 +5474,11 @@ msgstr ""
 "với vương triều Wesnoth nhưng hoạt động độc lập và duy trì dòng dõi riêng "
 "của mình. Một số thị tộc coi mình là chư hầu, phải cống nộp thực phẩm và "
 "quân lính cho triều đình để được bảo vệ. Các thị tộc còn lại cho rằng họ ở "
-"cùng vị thế với nửa phía tây của Wesnoth. Trong cả hai trường hợp, các tỉnh "
-"phía đông không xây dựng quân đội bằng cách bắt người đi lính như phía tây "
+"cùng vị thế với nửa phía tây của Wesnoth. Dù thế nào đi nữa, các tỉnh phía "
+"đông không xây dựng quân đội bằng cách bắt người đi lính như phía tây "
 "Wesnoth. Việc đào tạo chiến đấu là một phần lối sinh hoạt của các thị tộc; "
 "cha mẹ dạy con cái cưỡi ngựa, chiến đấu và bắn cung khi còn nhỏ tuổi. Nói "
-"chung, các chiến sĩ thị tộc ít tính tổ chức hơn các đấu sĩ triều đình, sức "
+"chung, các chiến binh thị tộc ít tính tổ chức hơn các đấu sĩ triều đình, sức "
 "mạnh và điểm yếu của hai nhóm này bổ sung lẫn nhau."
 
 #. [race]: id=lizard, description=
@@ -5158,6 +5514,10 @@ msgid ""
 "intelligent being. Most mechanical things neither move nor think on their "
 "own, but some do so as a result of magical enchantment."
 msgstr ""
+"Hoạt động không phải do sự sống tự nhiên hay nhờ thuật gọi hồn, khái niệm "
+"<italic>text='máy móc'</italic> mô tả một tác phẩm được tạo ra của một sinh "
+"vật có trí tuệ. Hầu hết các đơn vị máy móc không tự di chuyển cũng không suy "
+"nghĩ, nhưng một số có thể làm thế nhờ bùa mê phép thuật."
 
 #. [race]: id=merman
 #: data/core/units.cfg:208
@@ -5187,6 +5547,15 @@ msgid ""
 "ocean. They are typically wary of dry land, as they are awkward and clumsy "
 "there and they struggle greatly to move over rough or forested terrain."
 msgstr ""
+"Một thứ giống như sự hợp nhất giữa người và cá, người cá là một chủng tộc bí "
+"ẩn với những thuộc tính giống cả cá lẫn con người. Họ có những chiếc đuôi "
+"mạnh giúp họ di chuyển nhanh trong mọi môi trường nước trong khi đôi tay "
+"khéo léo và trí tuệ thông minh cho phép phát triển nghề thủ công và chế tạo "
+"công cụ. Với bản chất nửa nước, người cá có thể cả trong nước lẫn không khí "
+"không mấy khó khăn. Dù có thể sống sót trên cạn, họ nhanh và lanh lợi hơn "
+"nhiều dưới nước và hiếm khi được bắt gặp ở xa ngoài đại dương. Họ thường "
+"thận trọng với những vùng đất kho, do họ lóng ngóng và vụng về khi ở đó, họ "
+"phải vật lộn để di chuyển qua địa hình rừng hoặc gồ ghề."
 
 #. [race]: id=monster
 #: data/core/units.cfg:220
@@ -5210,6 +5579,10 @@ msgid ""
 "wilderness, ocean depths, and other climes of the world. They figure largely "
 "in the tales and nightmares of its denizens, as well."
 msgstr ""
+"Khái niệm \"quái vật\" hợp nhất nhiều con vật gớm guốc lảng vảng trong các "
+"hang động, vùng hang vu, đáy đại dương và những vùng miền khác của thế giới. "
+"Chúng xuất hiện nhiều trong những câu chuyện, và cả trong ác mộng của các cư "
+"dân."
 
 #. [race]: id=naga
 #: data/core/units.cfg:230
@@ -5243,6 +5616,20 @@ msgid ""
 "themselves at odds with merfolk when their territories overlap, but overall "
 "nagas tend to favor swamps and rivers as much as open water."
 msgstr ""
+"Người rắn là một trong những chủng tộc ít được biết đến nhất của Đại Lục "
+"Địa. Một phần của điều này là do bản chất bài ngoại, một phần là do môi "
+"trường xa lạ của chúng. Người rắn là một trong số ít chủng tộc có khả năng "
+"di chuyển tự do trong nước, cho chúng cả một thế giới mà các cư dân trên cạn "
+"không thể xâm phạm, và càng chia rẽ chúng với những sinh vật mặt đất mà "
+"chúng lảng tránh. Thế nhưng chúng không phải là những sinh vật thực sự của "
+"biển cả, và khả năng không thở được trong nước khiến chúng gặp nhiều khó "
+"khăn dưới biển sâu. Sống trong những vùng ven biển cho chúng con đường trốn "
+"thoát trên cạn trước những cư dân của biển sâu trong khi vẫn giữ chúng ngoài "
+"tầm với của những sinh vật di chuyển bằng chân, cánh và móng guốc. Mặc dù "
+"người rắn hơi yếu về thể chất, chúng thường nhanh và lanh lợi hơn so với các "
+"đối thủ. Chúng đôi khi bất hòa với người cá khi lãnh thổ chồng chéo nhưng "
+"nói chung, người cá có xu hướng thích đầm lầy và sông hơn nhiều những vùng "
+"nước trống trải."
 
 #. [race]: id=ogre
 #: data/core/units.cfg:241
@@ -5277,6 +5664,20 @@ msgid ""
 "is a sign of cooperation, domestication, or simply mutual opportunism is not "
 "known."
 msgstr ""
+"Quỷ khổng lồ là một chủng tộc hoang dã và man rợ cư ngụ chủ yếu ở những vùng "
+"hoang vu của Đại Lục Địa. Chúng giống con người và người thú về mặt thể chất "
+"nhưng lớn hơn và mạnh hơn. Kể cả những cá thể trẻ tuổi cũng lớn hơn đa số "
+"con người. Quỷ khổng lồ bị ngờ vực ở nhiều vùng dân cư, chúng thường tránh "
+"những nơi đó hoặc bị xua đuổi bằng vũ lực. Thay vào đó, chúng ẩn náu ở vùng "
+"núi, ở đó những con quỷ khổng lồ háu đói luôn là mối đe doạ với lữ khách và "
+"các đoàn bộ hành. Quỷ khổng lồ không đặc biệt thông minh hay nhanh nhẹn, "
+"nhưng tính dẻo dai và sức mạnh thể chất khiến chúng trở thành một tài sản có "
+"giá trị trong quân đội của bất kỳ chủng tộc nào. Chúng đặc biệt có giá trị "
+"với những kẻ chỉ huy tàn nhẫn không bận tâm đến tính tàn bạo của quỷ khổng "
+"lồ. Người ta không biết nhiều về đặc điểm sinh học hay xã hội của chúng, "
+"nhưng nói rằng chúng tấn công cùng chó sói và các thú vật khác. Không biết "
+"đây là một biểu hiện cộng tác, thuần hóa hay chỉ đơn thuần là chủ nghĩa cơ "
+"hội qua lại."
 
 #. [race]: id=orc
 #: data/core/units.cfg:252
@@ -5352,28 +5753,29 @@ msgid ""
 "individuals tend to specialize in other skills, like archery or "
 "assassination."
 msgstr ""
-"Nhìn bề ngoài, người thú có hình dáng nửa người nửa thú. Họ cao hơn, khỏe và "
-"mạnh hơn con người. Họ có bản chất hiếu chiến, dã man và tàn ác. Máu của họ "
-"sẫm màu, đặc sệt hơn của người bình thường và họ ít quan tâm đến vệ sinh cá "
-"nhân hay diện mạo bên ngoài. Mặc dù người thú là những sinh vật tàn bạo với "
-"cả đồng loại, nhưng họ có xu hướng bầy đàn; một cá thể người thú không bao "
-"giờ đi lâu hay sống riêng lẻ theo từng nhóm nhỏ.\n"
+"Nhìn bề ngoài, người thú có hình dáng nửa người nửa thú. Chúng cao hơn, khỏe "
+"và mạnh hơn con người. Chúng có bản chất hiếu chiến, dã man và tàn ác. Máu "
+"của chúng sẫm màu, đặc sệt hơn của người bình thường và chúng ít quan tâm "
+"đến vệ sinh cá nhân hay diện mạo bên ngoài. Mặc dù người thú là những sinh "
+"vật tàn bạo với cả đồng loại, nhưng chúng vẫn có xu hướng bầy đàn; một cá "
+"thể người thú không bao giờ đi lâu hay sống riêng lẻ theo từng nhóm nhỏ.\n"
 "\n"
 "<header>text='Xã hội'</header>\n"
-"Gần như mọi cá thể người thú đều là thành viên của một bộ tộc hoặc một thị "
-"tộc. Mối quan hệ giữa các bộ tộc cạnh nhau thường là bạo lực, trừ trường hợp "
-"có một kẻ thù chung đe dọa sự tồn tại của họ hoặc những viễn cảnh cướp bóc "
-"lớn áp đảo tình trạng thù địch giữa họ. Thỉnh thoảng, một thủ lĩnh mạnh có "
-"thể nổi dậy để lãnh đạo nhiều bộ tộc, thường bằng cách đe dọa những kẻ tay "
-"sai. Một bộ tộc người thú trong thời gian hòa bình có xu hướng tập trung gần "
-"như duy nhất vào việc củng cố sức mạnh để chuẩn bị cho cuộc xung đột kế "
-"tiếp. Người thú sở hữu hệ thống chữ viết thô sơ - thường bằng máu - chủ yếu "
-"được những kẻ cầm đầu bộ tộc sử dụng để xúc phạm hoặc đe dọa lẫn nhau.\n"
+"Gần như mọi cá thể người thú đều là thành viên của một bộ lạc hoặc một thị "
+"tộc. Mối quan hệ giữa các bộ lạc cạnh nhau thường là bạo lực, trừ trường hợp "
+"có một kẻ thù chung đe dọa sự tồn tại của chúng hoặc những viễn cảnh cướp "
+"bóc lớn áp đảo tình trạng thù địch giữa chúng. Thỉnh thoảng, một thủ lĩnh "
+"mạnh có thể nổi dậy để lãnh đạo nhiều bộ lạc, thường bằng cách đe dọa những "
+"kẻ tay sai. Một bộ lạc người thú trong thời gian hòa bình có xu hướng tập "
+"trung gần như duy nhất vào việc củng cố sức mạnh để chuẩn bị cho cuộc xung "
+"đột vũ trang kế tiếp. Người thú sở hữu hệ thống chữ viết thô sơ - thường "
+"bằng máu - chủ yếu được những kẻ cầm đầu bộ lạc sử dụng để xúc phạm hoặc đe "
+"dọa lẫn nhau.\n"
 "\n"
 "Xã hội người thú ít dựa trên thứ gì khác ngoài sức mạnh; vũ lực tạo nên "
 "quyền lực, và một kẻ cầm đầu chỉ sống sót khi không có kẻ nào đủ sức cướp "
 "ngôi vị của hắn. Cuộc chiến không ngừng để giành giật sức mạnh luôn sôi sục "
-"giữa các thủ lĩnh bộ tộc. Một lãnh đạo người thú hiếm khi sống lâu hơn vài "
+"giữa các thủ lĩnh bộ lạc. Một lãnh đạo người thú hiếm khi sống lâu hơn vài "
 "năm để tận hưởng quyền lực tuyệt đối trước khi bị giết - mặc dù cũng có một "
 "số ngoại lệ đáng chú ý trong lịch sử. Người thú không theo bất kỳ đạo lý cụ "
 "thể nào, sức mạnh thô sơ thường là cách thức ưa thích để thể hiện quyền lực, "
@@ -5381,15 +5783,15 @@ msgstr ""
 "chấp nhận để đạt được mục đích.\n"
 "\n"
 "Người thú sống chủ yếu trong những vùng hoang dã, thường ở chân đồi hoặc "
-"vùng núi, đôi khi trong hang động. Họ không trồng trọt cũng không chăn nuôi, "
-"nhưng là một thợ săn thành thạo như là kết quả của dáng vóc và tính tàn bạo "
-"của mình. Nhờ số lượng lớn, họ có thể săn một vùng gần như sạch sẽ bất cứ "
-"con gì to hơn con chuột trong khoảng thời gian tương đối ngắn. Chính vì điều "
-"này và sự lãnh đạo không ổn định của mình, các bộ tộc người thú có xu hướng "
-"sống kiểu nửa du cư, không bao giờ định cư ở một vùng quá lâu. Những bộ tộc "
-"lớn hơn có thể ổn định ở một vùng trong vài năm hoặc thậm chí vài thập kỷ và "
-"xây dựng các doanh trại lớn gần giống các thành phố, nhưng các doanh trại "
-"này cũng có thể dễ dàng bị tháo dỡ và bỏ hoang nếu cần di chuyển binh đoàn.\n"
+"vùng núi, đôi khi trong hang động. Chúng không trồng trọt cũng không chăn "
+"nuôi, mà là những thợ săn thành thạo nhờ dáng vóc và tính tàn bạo của mình. "
+"Nhờ số lượng lớn, chúng có thể săn một vùng gần như sạch sẽ bất cứ thứ gì to "
+"hơn con chuột trong khoảng thời gian tương đối ngắn. Chính vì điều này và sự "
+"lãnh đạo không ổn định của mình, các bộ lạc người thú có xu hướng sống kiểu "
+"nửa du cư, không bao giờ định cư ở một vùng quá lâu. Những bộ lạc lớn hơn có "
+"thể ổn định ở một vùng trong vài năm hoặc thậm chí vài thập kỷ và xây dựng "
+"những doanh trại lớn gần giống các thành phố, nhưng những doanh trại này "
+"cũng có thể dễ dàng bị tháo dỡ và bỏ hoang nếu cần di chuyển binh đoàn.\n"
 "\n"
 "Người thú sống lâu nhất được biết vào khoảng 50 đến 60 tuổi, nhưng rất ít cá "
 "thể đã từng sống qua hai hoặc ba thập kỷ trước khi chết trong chiến tranh "
@@ -5398,7 +5800,7 @@ msgstr ""
 "coi là đáng tin cậy và trung lập. Không ai biết nguồn gốc của phong tục này, "
 "vì các pháp sư không đóng góp trực tiếp nhiều cho xã hội người thú mà chỉ "
 "hoạt động như những cố vấn - không phải là thứ người thú coi trọng. Pháp sư "
-"người thú đối lập nhiều với hầu hết các cá thể người thú khác: họ thường "
+"người thú đối lập nhiều với hầu hết các cá thể người thú khác: chúng thường "
 "tiều tụy, yếu đuối và thiếu năng lực chiến đấu. Dù dựa vào sức mạnh thô sơ, "
 "nhưng không phải mọi cá thể người thú khi lớn lên đều sở hữu sức mạnh. Nhiều "
 "cá thể người thú khi sinh ra nhỏ hơn và yếu hơn đồng loại, và hầu như ngay "
@@ -5460,39 +5862,39 @@ msgid ""
 "dwarves who migrated there. Trolls are a common sight on the mountain ranges "
 "north and east of Wesnoth, and wherever Orcish hordes travel."
 msgstr ""
-"Quỷ núi là những sinh vật cổ xưa, một trong những chủng tộc lâu năm nhất "
-"trên Đại Lục địa. Chúng to lớn, chậm chạp, suy nghĩ đơn giản và sống cực kỳ "
-"lâu trong các hang sâu hoặc các đỉnh núi cao. Đặc trưng gần như duy nhất của "
-"quỷ núi là sức sống bên trong giúp chúng chịu đựng và phục hồi từ bên trong. "
-"Do đó, chúng sống rất khác biệt với hầu hết các sinh vật khác. Quỷ núi có "
-"rất ít nhu cầu thạt sự: chúng chỉ cần một chút thức ăn hoặc nước, do đó "
-"chúng không có nhiều mục tiêu để theo đuổi ngoài việc bảo vệ bản thân trước "
-"những kẻ thù địch. Điều này có nghĩa là chúng hiếm khi phải lo lắng về bất "
-"cứ thứ gì và có thể dành nhiều thời gian để ngủ hoặc thưởng ngoạn. Quỷ núi "
-"có mối quan hệ kỳ lạ với tự nhiên. Chúng không gắn bó với những thứ sống "
-"động như các thần tiên, mà với đất và đá. Chúng cũng hơi tò mò về môi trường "
-"xung quanh, nhiều cá thể trẻ tuổi thậm chí còn thích ngao du và khám phá thế "
-"giới. Khi quỷ núi già đi, chúng có xu hướng trở nên ngày càng thụ động, dần "
-"dần ít quan tâm đến môi trường và dành nhiều thời gian để ngủ trong một góc "
-"yên tĩnh, thân thuộc của hang động nơi chúng ở. Chúng ngủ như thế đến khi "
-"vĩnh viễn ra đi, xác của chúng từ từ biến thành những bức tượng đá bất "
-"động.\n"
+"Quỷ núi là những sinh vật cổ xưa, một trong những chủng tộc lâu đời nhất "
+"sống trên Đại Lục địa. Chúng to lớn, chậm chạp, suy nghĩ đơn giản và sống "
+"cực kỳ lâu bên trong các hang sâu hoặc trên các đỉnh núi cao. Đặc trưng gần "
+"như duy nhất của quỷ núi là sức sống nội tại giúp chúng chịu đựng và phục "
+"hồi từ bên trong. Do đó, chúng sống rất khác biệt với hầu hết các sinh vật "
+"khác. Quỷ núi có rất ít nhu cầu thực sự: chúng chỉ cần một chút thức ăn hoặc "
+"nước, do đó chúng không có nhiều mục tiêu để theo đuổi ngoài việc bảo vệ bản "
+"thân trước những kẻ thù địch. Điều này có nghĩa là chúng hiếm khi phải lo "
+"lắng về bất cứ thứ gì và có thể dành nhiều thời gian để ngủ hoặc thưởng "
+"ngoạn. Quỷ núi có mối quan hệ kỳ lạ với tự nhiên. Chúng không gắn bó với "
+"những thứ sống động như các thần tiên, mà với đất và đá. Chúng cũng hơi tò "
+"mò về môi trường xung quanh, nhiều cá thể trẻ tuổi thậm chí còn thích ngao "
+"du và khám phá thế giới. Khi quỷ núi già đi, chúng có xu hướng trở nên ngày "
+"càng thụ động, dần dần ít quan tâm đến môi trường và dành nhiều thời gian để "
+"ngủ trong một góc yên tĩnh, thân thuộc của hang động nơi chúng ở. Chúng ngủ "
+"như thế đến khi vĩnh viễn ra đi, xác của chúng từ từ biến thành những bức "
+"tượng đá bất động.\n"
 "\n"
 "Quỷ núi bị nhiều người coi là một loài quái vật man rợ. Quan niệm sai lầm "
 "phổ biến này một phần là do bọn người thú đã thuyết phục quỷ núi gia nhập "
 "quân đội của chúng. Bởi vì quỷ núi khá ngờ nghệch và không hiểu được mưu đồ "
-"của các loài khác, hoặc không quan tâm, nên bọn người thú thường dễ dàng dụ "
-"dỗ một nhóm quỷ núi rằng bằng cách tham gia quân đội người thú, quỷ núi sẽ "
-"có cơ hội trả thù những kẻ trước đây đã từng săn đuổi chúng. Những lính mới "
-"này sau đó sẽ được điều ra tấn công bất cứ kẻ nào mà bọn người thú hiện đang "
-"xung đột, không biết trước đó có phải là kẻ thù của quỷ núi hay không; điều "
-"đó khiến những con quỷ núi bị lừa dối thậm chí còn có nhiều kẻ thù hơn cả "
-"bọn người thú. Kẻ thù phổ biến nhất của quỷ núi là người lùn, và tình trạng "
-"thù địch giữa hai loài này đã có từ rất lâu.\n"
+"của các chủng tộc khác, hoặc không quan tâm, nên bọn người thú thường dễ "
+"dàng dụ dỗ một nhóm quỷ núi rằng bằng cách tham gia cùng với chúng, quỷ núi "
+"sẽ có cơ hội trả thù những kẻ trước đây đã từng săn đuổi chúng. Những lính "
+"mới này sau đó sẽ được điều ra tấn công bất cứ kẻ nào mà bọn người thú hiện "
+"đang xung đột, không biết trước đó có phải là kẻ thù của quỷ núi hay không; "
+"điều đó khiến những con quỷ núi bị lừa dối thậm chí còn có nhiều kẻ thù hơn "
+"cả bọn người thú. Kẻ thù phổ biến nhất của quỷ núi là người lùn, và tình "
+"trạng thù địch giữa hai chủng tộc này đã có từ rất lâu.\n"
 "\n"
 "<header>text='Địa lý'</header>\n"
 "Quỷ núi sống ở vùng núi của Đại Lục Địa từ lâu đời hơn người lùn - những "
-"người đã di cư đến đó. Quỷ núi là một loài thường được thấy trên những dãy "
+"người đã di cư đến đó. Quỷ núi là một cảnh tượng thường thấy trên những dãy "
 "núi phía bắc và phía đông Wesnoth, và bất cứ nơi nào đạo quân người thú đi "
 "qua."
 
@@ -5544,25 +5946,25 @@ msgstr ""
 "năng lực, cũng đều có thể hồi sinh với sự sống giả tạo. Ma quái phần lớn là "
 "những kết cấu trái với tự nhiên nhưng không có trí tuệ, chỉ biết tuân lệnh "
 "bất cứ kẻ nào đã tạo ra chúng, mà không cần hỏi hay suy nghĩ. Điều bí ẩn lớn "
-"của thuật gọi hồn là những kết cấu đó được giữ vững bằng cách nào mà không "
-"cần sự chú ý liên tục từ pháp sư gọi hồn. Một sinh vật ma quái không cần sự "
-"chú ý liên tục của pháp sư gọi hồn để ra lệnh và duy trì, mà vẫn có thể hoạt "
-"động tự lập theo lệnh của chủ nhân. Hiếm khi, có thể là một lần mỗi vài "
-"tháng, pháp sư gọi hồn cần bảo trì tác phẩm của mình.\n"
+"của thuật gọi hồn là cách giữ vững những kết cấu đó mà không cần nỗ lực liên "
+"tục từ pháp sư gọi hồn. Một sinh vật ma quái không cần sự chú ý liên tục của "
+"pháp sư gọi hồn để ra lệnh và duy trì, mà vẫn có thể hoạt động tự lập theo "
+"lệnh của chủ nhân. Hiếm khi, có thể là một lần mỗi vài tháng, pháp sư gọi "
+"hồn cần bảo trì tác phẩm của mình.\n"
 "\n"
 "Thuật gọi hồn gần như chỉ dành riêng cho con người. Truyền thuyết của những "
-"loài có năng khiếu phép thuật như thần tiên và người cá cũng kể chỉ có rất "
-"ít người của họ đã từng nghiên cứu ma thuật. Người ta phỏng đoán rằng phép "
-"thuật gọi hồn đòi hỏi khả năng thích ứng lớn và một tâm trí linh hoạt, những "
-"điều kiện này phổ biến nhất ở loài người. Mục tiêu lớn nhất của các pháp sư "
-"gọi hồn là dùng phép thuật để kéo dài sự sống, sau đó tự biến đổi với bất cứ "
-"giá nào, cuối cùng thoát khỏi cái chết bằng cách giữ lại trí tuệ và linh hồn "
-"của mình.\n"
+"chủng tộc có năng khiếu phép thuật như thần tiên và người cá cũng kể chỉ có "
+"rất ít người của họ đã từng nghiên cứu ma thuật. Người ta phỏng đoán rằng "
+"phép thuật gọi hồn đòi hỏi khả năng thích ứng lớn và một tâm trí linh hoạt, "
+"những điều kiện này phổ biến nhất ở loài người. Mục tiêu lớn nhất của hầu "
+"hết các pháp sư gọi hồn là dùng phép thuật để kéo dài sự sống, để biến đổi "
+"bản thân bằng bất kỳ giá nào, để thoát khỏi cái chết bằng cách giữ lại trí "
+"tuệ và linh hồn của mình.\n"
 "\n"
 "<header>text='Địa lý'</header>\n"
-"Những tên chúa tể ma quái đã đến Đại Lục địa với số lượng lớn theo chân "
-"Haldric I, nhưng thần tiên và người lùn hoàn toàn chưa từng nghe nói về "
-"chúng trước đó."
+"Những tên chúa tể ma quái đã đến Đại Lục Địa với số lượng lớn theo chân "
+"Haldric I, nhưng thần tiên và người lùn không phải là hoàn toàn chưa từng "
+"nghe nói về chúng trước đó."
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:310
@@ -5603,7 +6005,7 @@ msgstr "<header>text='Các đơn vị có khả năng này'</header>"
 
 #: src/help.cpp:1261
 msgid "Leaders:"
-msgstr "Chỉ huy:"
+msgstr "Người chỉ huy:"
 
 #: src/help.cpp:1270
 msgid "Recruits:"
@@ -5611,11 +6013,11 @@ msgstr "Tuyển quân:"
 
 #: src/help.cpp:1284
 msgid "Era:"
-msgstr "Các liên miinh:"
+msgstr "Thời đại:"
 
 #: src/help.cpp:1292
 msgid "Factions:"
-msgstr "Liên minhi:"
+msgstr "Liên minh:"
 
 #: src/help.cpp:1302
 msgid "Factions are only used in multiplayer"
@@ -5752,6 +6154,325 @@ msgstr "Trợ giúp Trận chiến vì Wesnoth"
 #: src/help.cpp:3217
 msgid "Parse error when parsing help text: "
 msgstr "Lỗi phân tích khi phân tích văn bản trợ giúp: "
+
+#~ msgid "Add-ons"
+#~ msgstr "Phần bổ sung"
+
+#~ msgid ""
+#~ "This section will list all the units you discover as you explore the "
+#~ "world of Wesnoth. When you see a new unit during a campaign or "
+#~ "multiplayer scenario it will be added to its race’s subsection; you can "
+#~ "then view its page any time you wish. A unit’s page will provide a "
+#~ "general description, its statistics, attacks, resistances, and movement "
+#~ "and defense values.\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Phần này sẽ liệt kê tất cả các đơn vị bạn đã khám phá sau khi thám hiểm "
+#~ "thế giới Wesnoth. Khi bạn nhìn thấy một đơn vị mới trong một chiến dịch "
+#~ "hoặc màn chơi nhiều người chơi, nó sẽ được thêm vào đề mục chủng tộc của "
+#~ "nó; như thế bạn có thể xem trang của nó bất cứ lúc nào bạn muốn. Trang "
+#~ "của một đơn vị sẽ cung cấp mô tả chung, các chỉ số, đòn tấn công, sức "
+#~ "kháng cự, các giá trị di chuyển và phòng thủ.\n"
+#~ "\n"
+
+#~ msgid ""
+#~ "Some weapons have special features that increase the effectiveness of "
+#~ "attacking with them. When you see a new weapon special during a campaign "
+#~ "or multiplayer scenario it will be added to this list; you can then view "
+#~ "its page any time you wish. Each page will provide a description of what "
+#~ "the weapon special does and which (currently discovered) units have it.\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Một số vũ khí có các tính năng đặc biệt tăng cường tính hiệu quả của đòn "
+#~ "tấn công. Khi bạn nhìn thấy một tính đặc biệt mới của vũ khí trong một "
+#~ "chiến dịch hoặc một màn chơi nhiều người chơi, nó sẽ được thêm vào danh "
+#~ "sách này; như thế bạn có thể xem trang của nó bất cứ lúc nào bạn muốn. "
+#~ "Mỗi trang sẽ cung cấp một mô tả về tính đặc biệt của vũ khí làm gì và các "
+#~ "đơn vị nào (hiện đã được khám phá) có nó.\n"
+#~ "\n"
+
+#~ msgid ""
+#~ "Wesnoth’s extensibility allows the thriving user community to develop "
+#~ "content by making use of the game engine’s full potential to deliver new "
+#~ "scenarios, campaigns, and more beyond what the official content set has "
+#~ "to offer.\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Khả năng mở rộng của Wesnoth cho phép cộng đồng người chơi phát triển nội "
+#~ "dung bằng cách sử dụng tiềm năng đầy đủ của động cơ trò chơi để phân phối "
+#~ "những màn chơi, chiến dịch mới và nhiều hơn, vượt qua cả những thứ nội "
+#~ "dung chính thức cung cấp.\n"
+#~ "\n"
+
+#~ msgid "Using Add-ons"
+#~ msgstr "Sử dụng phần bổ sung"
+
+#~| msgid ""
+#~| "\n"
+#~| "\n"
+#~| "<header>text=Damage</header>"
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Campaigns and Scenarios'</header>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Chiến dịch và Màn chơi'</header>"
+
+#~ msgid ""
+#~ "The game supports various types of add-ons that are used differently "
+#~ "according to their purpose."
+#~ msgstr ""
+#~ "Trò chơi hỗ trợ nhiều kiểu phần bổ sung, được sử dụng khác nhau tùy theo "
+#~ "mục đích của chúng."
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "Single-player campaigns are collections of scenarios that fit together to "
+#~ "tell a story. Both stand-alone scenarios—if intended to be played as such—"
+#~ "and regular campaigns are available from the <italic>text='Campaigns'</"
+#~ "italic> menu in the title screen."
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "Chiến dịch một người chơi là tập hợp các màn chơi phù hợp với nhau để kể "
+#~ "một câu chuyện. Cả các màn chơi đơn - nếu được chủ định để chơi như thế - "
+#~ "lẫn các chiến dịch thông thường đều có từ trình đơn <italic>text='Chiến "
+#~ "dịch'</italic> trong màn hình tiêu đề."
+
+#~| msgid "<header>text='Units having this special attack'</header>"
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Multiplayer Campaigns, Scenarios, and Map Packs'</header>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Chiến dịch, màn chơi và gói bản đồ nhiều người chơi'</"
+#~ "header>"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<italic>text='Multiplayer'</italic> games can be played on fully "
+#~ "customized, scripted scenarios or even specially designed campaigns. "
+#~ "There are also packs providing sets of individual multiplayer scenarios "
+#~ "not connected in the form of a campaign."
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "Các trò chơi <italic>text='nhiều người chơi'</italic> có thể được chơi "
+#~ "trên các màn chơi có kịch bản hoàn toàn tùy chỉnh, hoặc thậm chí các "
+#~ "chiến dịch được thiết kế đặc biệt. Cũng có các gói cung cấp tập hợp các "
+#~ "màn chơi nhiều người chơi riêng lẻ, không kết nối dưới dạng một chiến "
+#~ "dịch."
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Multiplayer Eras and Factions'</header>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Thời đại và liên minh nhiều người chơi'</header>"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "For gameplay purposes, various races of creatures in the world cooperate "
+#~ "with each other in factions. Factions are grouped in balanced sets with a "
+#~ "common theme; for example, the main factions of Wesnoth can be found in "
+#~ "the included Default Era.\n"
+#~ "\n"
+#~ "In <italic>text='Multiplayer'</italic> mode, you can choose an era when "
+#~ "creating a new game, and players can pick from the available factions for "
+#~ "that era when setting up their sides and teams."
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "Trong trò chơi, các chủng tộc sinh vật khác nhau của thế giới hợp tác với "
+#~ "nhau thành các liên minh. Liên minh được phân nhóm theo các tập hợp cân "
+#~ "bằng với một chủ đề chung; ví dụ, các liên minh chính của Wesnoth có thể "
+#~ "được tìm thấy trong Thời đại mặc định kèm theo.\n"
+#~ "\n"
+#~ "Trong chế độ <italic>text='nhiều người chơi'</italic>, bạn có thể chọn "
+#~ "một thời đại khi tạo một trò chơi mới, và các người chơi có thể chọn liên "
+#~ "minh có trong thời đại đó khi thiết lập phe và đội của mình."
+
+#~| msgid ""
+#~| "\n"
+#~| "\n"
+#~| "<header>text='Chance to Hit'</header>"
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Creator Resources'</header>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Tài nguyên người tạo'</header>"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "Content authors can use resource packs available on the add-ons server to "
+#~ "enrich their own content with existing assets such as images, music, and "
+#~ "code. These are not generally intended for the players’ use and cannot be "
+#~ "directly used in-game on their own; however, other playable add-ons may "
+#~ "depend on them and suggest or require their installation during download."
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "Các tác giả nội dung có thể sử dụng các gói tài nguyên có trên máy chủ "
+#~ "phần bổ sung để làm phong phú thêm nội dung của mình bằng những tài sản "
+#~ "hiện có như ảnh, âm nhạc và mã nguồn. Những tài nguyên này nói chung "
+#~ "không dành cho người chơi và không thể được sử dụng trực tiếp để chơi; "
+#~ "tuy nhiên, các phần bổ sung chơi được khác có thể phụ thuộc vào chúng và "
+#~ "yêu cầu hoặc cần cài đặt những tài nguyên này trong khi tải về."
+
+#~ msgid "Installing Add-ons"
+#~ msgstr "Cài đặt phần bổ sung"
+
+#~ msgid ""
+#~ "User-made add-ons can be obtained and updated through the "
+#~ "<italic>text='Add-ons'</italic> option in the main menu. After connecting "
+#~ "to the add-ons server (by default <italic>text='add-ons.wesnoth.org'</"
+#~ "italic>), you will be presented with a list of add-ons available in the "
+#~ "server for downloading.\n"
+#~ "\n"
+#~ "The installation status for each add-on is shown below each entry. For "
+#~ "add-ons that are <italic>text='upgradable'</italic> or "
+#~ "<italic>text='outdated'</italic> on the server, their installed and "
+#~ "remote versions will be shown on the <italic>text='Version'</italic> "
+#~ "column.\n"
+#~ "\n"
+#~ "To search for add-ons by using keywords, type them in any order in the "
+#~ "<bold>text='Filter'</bold> box, separated by spaces. You can also sort "
+#~ "the add-on list by clicking the column headers. It is also possible to "
+#~ "choose to display only add-ons of specific categories by clicking on the "
+#~ "<bold>text='Options'</bold> button on the top-right corner.\n"
+#~ "\n"
+#~ "To install an add-on, select it from the list and click <bold>text='OK'</"
+#~ "bold>, or simply double click the add-on’s title. The "
+#~ "<bold>text='Description'</bold> button provides you with additional "
+#~ "details about the add-on, such as its full description, installation "
+#~ "status, and available languages."
+#~ msgstr ""
+#~ "Các phần bổ sung do người dùng tạo có thể được lấy và cập nhật qua tùy "
+#~ "chọn <italic>text='Phần bổ sung'</italic> trong trình đơn chính. Sau khi "
+#~ "kết nối đến máy chủ phần bổ sung (mặc định <italic>text='add-ons.wesnoth."
+#~ "org'</italic>), bạn sẽ có một danh sách các phần bổ sung hiện có trên máy "
+#~ "chủ để tải về.\n"
+#~ "\n"
+#~ "Trạng thái cài đặt của mỗi phần bổ sung được hiển thị dưới mỗi mục. Với "
+#~ "các phần bổ sung <italic>text='có thể nâng cấp'</italic> hoặc "
+#~ "<italic>text='đã hết hạn'</italic> trên máy chủ, các phiên bản đã cài đặt "
+#~ "và trên máy chủ sẽ được hiển thị trên cột <italic>text='Phiên bản'</"
+#~ "italic>.\n"
+#~ "\n"
+#~ "Để tìm kiếm phần bổ sung sử dụng từ khóa, đánh từ khóa theo bất kỳ thứ tự "
+#~ "nào trong hộp <bold>text='Bộ lọc'</bold>, phân cách bằng khoảng trống. "
+#~ "Bạn cũng có thể sắp xếp danh sách phần bổ sung bằng cách nhấn vào các đầu "
+#~ "đề cột. Cũng có thể chọn chỉ hiển thị những phần bổ sung của các danh mục "
+#~ "cụ thể bằng cách nhấn vào nút <bold>text='Tùy chọn'</bold> ở góc phải "
+#~ "phía trên.\n"
+#~ "\n"
+#~ "Để cài đặt một phần bổ sung, chọn nó từ danh sách và nhấn "
+#~ "<bold>text='Đồng ý'</bold>, hoặc đơn giản nhấn kép vào tiêu đề phần bổ "
+#~ "sung. Nút <bold>text='Mô tả'</bold> cung cấp thêm chi tiết về phần bổ "
+#~ "sung, chẳng hạn như mô tả đầy đủ, trạng thái cài đặt, và những ngôn ngữ "
+#~ "hiện có."
+
+#~ msgid "Removing Add-ons"
+#~ msgstr "Xóa phần bổ sung"
+
+#~ msgid ""
+#~ "To remove add-ons, click <bold>text='Remove Add-ons'</bold> in the add-"
+#~ "ons server connection dialog. You will be presented with options to "
+#~ "remove any number of add-ons you currently have installed.\n"
+#~ "\n"
+#~ "This feature cannot remove add-ons for which there is publishing "
+#~ "information (<italic>text='.pbl'</italic> files) attached, in order to "
+#~ "prevent accidental loss. Instead, you have to manually delete the "
+#~ "information files or the add-ons themselves using your platform’s "
+#~ "facilities."
+#~ msgstr ""
+#~ "Để xóa phần bổ sung, nhấn <bold>text='Xóa phần bổ sung'</bold> trong hộp "
+#~ "thoại kết nối máy chủ phần bổ sung. Bạn sẽ được lựa chọn để xóa bất kỳ "
+#~ "phần bổ sung nào bạn hiện đã cài đặt.\n"
+#~ "\n"
+#~ "Tính năng này không thể xóa những phần bổ sung có thông tin phát hành "
+#~ "(các tập tin <italic>text='.pbl'</italic> đi kèm) để tránh mất mát do sơ "
+#~ "ý. Thay vào đó, bạn phải xóa thủ công các tập tin thông tin hoặc phần bổ "
+#~ "sung sử dụng công cụ của hệ điều hành."
+
+#~| msgid ""
+#~| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
+#~| "living unit."
+#~ msgid ""
+#~ "This unit gains 1 hitpoint added to its maximum whenever it kills a "
+#~ "living unit."
+#~ msgstr ""
+#~ "Đơn vị này tăng thêm 1 máu tối đa khi nó giết một đơn vị có sự sống."
+
+#~| msgid ""
+#~| "Berserk:\n"
+#~| "Whether used offensively or defensively, this attack presses the "
+#~| "engagement until one of the combatants is slain, or 30 rounds of attacks "
+#~| "have occurred."
+#~ msgid ""
+#~ "Whether used offensively or defensively, this attack presses the "
+#~ "engagement until one of the combatants is slain, or 30 rounds of attacks "
+#~ "have occurred."
+#~ msgstr ""
+#~ "Bất kể được sử dụng để tấn công hay phòng thủ, đòn này đẩy cuộc giao "
+#~ "chiến đến khi một trong hai bên tham chiến bị tiêu diệt, hoặc 30 vòng đấu "
+#~ "đã diễn ra."
+
+#~| msgid ""
+#~| "Magical:\n"
+#~| "This attack always has a 70% chance to hit regardless of the defensive "
+#~| "ability of the unit being attacked."
+#~ msgid ""
+#~ "This attack always has a 70% chance to hit regardless of the defensive "
+#~ "ability of the unit being attacked."
+#~ msgstr ""
+#~ "Đòn này luôn có cơ hội đánh trúng 70% bất kể khả năng phòng thủ của đơn "
+#~ "vị bị tấn công."
+
+#~| msgid "firststrike"
+#~ msgid "first strike"
+#~ msgstr "đánh trước"
+
+#~| msgid ""
+#~| "First Strike:\n"
+#~| "This unit always strikes first with this attack, even if they are "
+#~| "defending."
+#~ msgid ""
+#~ "This unit always strikes first with this attack, even if they are "
+#~ "defending."
+#~ msgstr "Đơn vị này luôn đánh trước với đòn này, kể cả khi đang phòng thủ."
+
+#~ msgid "Base unit: "
+#~ msgstr "Đơn vị cơ bản: "
+
+#~| msgid "Factions:"
+#~ msgid "Variations: "
+#~ msgstr "Biến thể: "
+
+#~ msgid "Vision: "
+#~ msgstr "Tầm nhìn: "
+
+#~ msgid "Jamming: "
+#~ msgstr "Phá rối: "
+
+#~ msgid "Vision Cost"
+#~ msgstr "Chi phí tầm nhìn"
+
+#~ msgid "Jamming Cost"
+#~ msgstr "Chi phí phá rối"
 
 #~ msgid "race^Khalifate Human"
 #~ msgstr "Người Khalifate"

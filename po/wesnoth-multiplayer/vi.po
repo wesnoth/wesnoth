@@ -1,18 +1,18 @@
 # Vietnamese translation for Wesnoth
-# Phạm Thành Nam <phamthanhnam.ptn@gmail.com>, 2, 2010.
+# Phạm Thành Nam <phamthanhnam.ptn@gmail.com>, 2, 2010, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-12 10:25+0200\n"
-"PO-Revision-Date: 2011-06-27 15:16+0700\n"
-"Last-Translator: Huynh Yen Loc <nightgaunt13@gmail.com>\n"
-"Language-Team: Vietnamese <>\n"
+"POT-Creation-Date: 2013-03-09 08:33+0100\n"
+"PO-Revision-Date: 2013-03-12 21:33+0800\n"
+"Last-Translator: Phạm Thành Nam\n"
+"Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.4\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. [generic_multiplayer]: id=user_map
@@ -31,16 +31,18 @@ msgid ""
 "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
 "score = %d  Gold = %d"
 msgstr ""
+"<span foreground='#%02x%02x%02x'>Phe %d</span>:  Điểm thu nhập = %d  Điểm "
+"đơn vị = %d  Vàng = %d"
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
 #: data/multiplayer/eras.cfg:126
 msgid "Grand total: <b>%d</b>"
-msgstr ""
+msgstr "Tổng cộng: <b>%d</b>"
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
 #: data/multiplayer/eras.cfg:136
 msgid "<span foreground='%s'>Side %d</span> has the advantage."
-msgstr ""
+msgstr "<span foreground='%s'>Phe %d</span> có lợi thế."
 
 #. [era]: id=era_default
 #: data/multiplayer/eras.cfg:160
@@ -96,10 +98,8 @@ msgstr "Ma quái"
 
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:4
-#, fuzzy
-#| msgid "2p — The Freelands"
 msgid "2p — Aethermaw"
-msgstr "2nc - Vùng đất tự do"
+msgstr "2nc - Aethermaw"
 
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:6
@@ -117,6 +117,17 @@ msgid ""
 "herself by arranging battles between the mortal beings unlucky enough to be "
 "drawn into its depths. Designed by Doc Paterson."
 msgstr ""
+"Cách đây đã lâu, Đại pháp sư Sulla bị giam cầm ở Aethermaw, một vùng năng "
+"lượng bí ẩn với bản chất hỗn loạn có thể ngăn bà trốn thoát. Tuy nhiên, qua "
+"hàng thế kỷ, Sulla đã từ từ thích ứng sức mạnh của mình với vùng xoáy rối "
+"loạn Aethermaw, và bắt đầu chiếu ảnh hưởng của nó lên bề mặt vật chất, kiến "
+"thiết toàn bộ vùng đất từ hàng trăm thế giới, thực thể và thời kỳ khác nhau. "
+"Bà thử nghiệm với các mẩu tạp nham này của vũ trụ, điều khiển, hợp nhất và "
+"gửi chúng qua lại giữa Aethermaw và nơi ban đầu của chúng. Có lẽ một ngày "
+"nào đó, khi sự tinh thông của bà trên Aethermaw lớn mạnh, Sulla sẽ thoát "
+"khỏi cảnh kìm kẹp. Cho đến thời điểm đó, bà vẫn tiếp tục tiêu khiển bằng "
+"cách dàn xếp chiến trận giữa các sinh vật trần tục không may bị kéo vào nơi "
+"sâu tận cùng. Thiết kế bởi Doc Paterson."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:22
@@ -180,10 +191,8 @@ msgstr "Nam"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:288
-#, fuzzy
-#| msgid "Designed by Doc Paterson."
 msgid "Aethermaw — Created by Doc Paterson"
-msgstr "Thiết kế bởi Doc Paterson."
+msgstr "Aethermaw - Tạo bởi Doc Paterson."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:302
@@ -203,17 +212,31 @@ msgid ""
 "unite the two halves of the battlefield. The process will be complete by the "
 "end of turn 6.</span>\n"
 msgstr ""
+"Đại pháp sư Sulla đã đưa quân đội của bạn đến vùng đất kỳ quái này, và yêu "
+"cầu bạn mua vui cho bà ta bằng cách chiến đấu.\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"<span color='red'>Ghi chú:</span>\n"
+"\n"
+"<span color='green'>Các đơn vị không thể di chuyển vào ô lục giác có ụ đá. "
+"Tuy nhiên, chúng có thể được tuyển vào, hoặc di chuyển từ các ô như thế.</"
+"span>\n"
+"\n"
+"<span color='green'>Ở đầu lượt 4, Đại pháp sư Sulla sẽ bắt đầu hợp nhất hai "
+"nửa chiến trường. Quá trình sẽ hoàn thành trước cuối lượt 6.</span>\n"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:315
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:332
 msgid "The Aethermaw growls."
-msgstr ""
+msgstr "Aethermaw gầm thét."
 
 #. [multiplayer]: id=multiplayer_Arcanclave_Citadel
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:6
 msgid "2p — Arcanclave Citadel"
-msgstr "2nc — Thành trì Arcanclave"
+msgstr "2nc - Thành trì Arcanclave"
 
 #. [multiplayer]: id=multiplayer_Arcanclave_Citadel
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:7
@@ -237,6 +260,24 @@ msgid ""
 "Great Mage Dauntless, may yet remain hidden, lost somewhere within the "
 "granite and obsidian walls of Arcanclave Citadel. Designed by Doc Paterson."
 msgstr ""
+"Cách đây đã lâu, vô số thế kỷ trước thời Haldric, và vượt xa cực đông của "
+"khu rừng Lintanir, những cuộc chiến tranh vĩ đại và khủng khiếp đã nổ ra. "
+"Ghi chép kể về một pháp sư-chiến binh hùng mạnh, một nhà chiến thuật và "
+"người thực hành phép thuật bí truyền lỗi lạc, người đã được các môn đồ của "
+"mình đặt danh hiệu Bất khuất. Trong trận chiến Arcanclave, Bất khuất và quân "
+"đội của mình đã chiến đấu với một chủng tộc ma quỷ-phù thủy man rợ có tên "
+"Kah Ruuk. Bị hàng chục nghìn tên Kah Ruuk bao vây, Bất khuất sử dụng phép "
+"thuật của mình để triệu hồi nguyên tố đất mạnh mẽ (mà không biết vì lý do "
+"gì, đã nợ ơn Bất khuất). Nguyên tố đã gọi lên những tảng đá khổng lồ từ sâu "
+"bên trong lòng đất, tạo hình chúng, và trong khoảnh khắc, kết thành những "
+"bức tường của một pháo đài đồ sộ. Hàng nghìn tên Kah Ruuk đã bỏ mạng trong "
+"nỗ lực bao vây thành trì Arcanclave, Bất khuất và đồng đội đã chiến thắng "
+"ngày hôm đó. Hơn một nghìn năm sau, Nữ hoàng-chiến binh Cynsaun đệ nhất đã "
+"đánh đuổi một bè đảng các pháp sư gọi hồn khỏi đống đổ nát của thành trì "
+"Arcanclave, và trong những năm sau đó, chuyển vùng này thành một thành trì "
+"quân đội. Người ta đồn rằng một vài hiện vật mạnh mẽ, di tích từ triều đại "
+"của Đai pháp sư Bất khuất, có thể vẫn còn thất lạc đâu đó trong những bức "
+"tường đất đá của thành trì Arcanclave. Thiết kế bởi Doc Paterson."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:22
@@ -311,9 +352,9 @@ msgid ""
 "Basilisk. The petrified forms of his victims remain as monuments to his "
 "savage power."
 msgstr ""
-"Những hang động này đã từng là sào huyệt của Chak'kso Ney'yks, một mãng xà "
-"trong truyền thuyết. Hình dạng đã bị hóa đá của các nạn nhân vẫn còn như "
-"những tượng đài thể hiện sức mạnh tàn ác của hắn."
+"Những hang động này đã từng là sào huyệt của Chak’kso Ney’yks, một mãng xà "
+"trong truyền thuyết. Hình dạng bị hóa đá của các nạn nhân vẫn còn như những "
+"tượng đài thể hiện sức mạnh tàn ác của hắn."
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:101
@@ -390,24 +431,24 @@ msgid ""
 "cave, and lay down to rest. He was awoken by a bone-chilling roar."
 msgstr ""
 "Xikkrisx Syrsszk là một chiến binh thằn lằn hùng mạnh, được các bô lão của "
-"thị tộc Rysssrylosszkk (dịch: \"Thị tộc Những Kẻ Săn Mồi Trên Sông Nước Bỏng"
-"\") phái tới vùng này. Các bô lão chuẩn bị tiến hành chiến tranh nhằm vào "
+"thị tộc Rysssrylosszkk (dịch: “Thị tộc Những Kẻ Săn Mồi Trên Sông Nước "
+"Bỏng“) phái tới vùng này. Các bô lão chuẩn bị tiến hành chiến tranh nhằm vào "
 "một tiền đồn của loài người, và rất cần tới phép thuật mạnh mẽ của Oxsrrsk, "
 "một thằn lằn bí ẩn, người được nhìn thấy lần cuối cùng đang thẳng tiến theo "
 "hướng hồ Ruaskkolin. Xikkrisx tìm thấy cơ thể hóa đá của Oxsrrsk, cùng với "
 "một cuộn giấy được buộc cẩn thận, có vẻ như đã bị rơi xuống kẽ nứt nhỏ trên "
-"nền hang động. Hắn mở cuộn giấy và đọc một đoạn ngắn từ giữa văn bản: \"Sau "
+"nền hang động. Hắn mở cuộn giấy và đọc một đoạn ngắn từ giữa văn bản: “Sau "
 "khi bị xích trói và bị trục xuất khỏi thượng giới, linh hồn giận dữ của "
-"Chak'kso đã tìm cách giải thoát, và ảnh hưởng xấu đến nhiều vùng của thượng "
-"giới, thông qua \"những con đường đá\" kéo dài từ mặt đất đến tận đáy sâu "
-"địa ngục. Cơn thịnh nộ này làm biến đổi trứng của loài thằn lằn vĩ đại, định "
-"hình thể xác và linh hồn trong những quả trứng theo lòng căm thù của Chak'kso"
-"\". Bối rối, Xikkrisx cố gắng tập trung vào nhiệm vụ cần thực hiện. Nghĩ "
-"rằng các bô lão có thể tìm được cách nào đó để phục hồi Oxsrrsk, hắn bắt đầu "
-"công việc vất vả và căng thẳng để kéo bức tượng trở về lãnh địa của thị tộc "
-"Rysssrylosszkk. Kiệt sức, và chưa đi khỏi hồ được bao xa, Xikkrisx đặt bức "
-"tượng trong một cái hang nhỏ và nằm xuống để nghỉ ngơi. Hắn bị đánh thức bởi "
-"một tiếng gầm lạnh thấu xương."
+"Chak’kso đã tìm cách giải thoát, và ảnh hưởng xấu đến nhiều vùng của thượng "
+"giới, thông qua “những con đường đá“ kéo dài từ mặt đất đến tận đáy sâu địa "
+"ngục. Cơn thịnh nộ này làm biến đổi trứng của loài thằn lằn vĩ đại, định "
+"hình thể xác và linh hồn trong những quả trứng theo lòng căm thù của "
+"Chak’kso“. Bối rối, Xikkrisx cố gắng tập trung vào nhiệm vụ cần thực hiện. "
+"Nghĩ rằng các bô lão có thể tìm được cách nào đó để phục hồi Oxsrrsk, hắn "
+"bắt đầu công việc vất vả và căng thẳng để kéo bức tượng trở về lãnh địa của "
+"thị tộc Rysssrylosszkk. Kiệt sức, và chưa đi khỏi hồ được bao xa, Xikkrisx "
+"đặt bức tượng trong một cái hang nhỏ và nằm xuống để nghỉ. Hắn bị đánh thức "
+"bởi một tiếng gầm lạnh thấu xương."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:113
@@ -440,20 +481,21 @@ msgstr ""
 "Oxsrrsk là một nhà tiên tri thằn lằn hùng mạnh, người đã lấy được cuộn giấy "
 "quý báu nhất (từ hầm mộ của nhà tiên tri Hesx-Rzzak mà giờ đã chết) trong "
 "một cuộc đột kích chống lại thị tộc Xraxss thù địch. Cuộn giấy có tiêu đề "
-"\"Ney'yks ánh mắt đá\", và kể về một sinh vật có tên \"Chak'kso Ney'yks\", "
-"mà theo ngôn ngữ cổ của loài thằn lằn, có nghĩa là \"Con cả của Chak'kso\". "
-"Chak'kso là một á thần hùng mạnh của địa ngục, được mô tả là \"con quỷ của "
-"trái đất\" trong truyền thuyết của thần tiên. Theo những truyền thuyết này, "
-"Chak'kso đã từng tìm cách biến mọi sinh vật trên hành tinh thành đá; vì hắn "
-"căm thù những sinh vật bằng xương thịt. Cuối cùng hắn đã bị đánh bại và bị "
-"xích trói bởi phép thuật, nhưng vào nhiều thế kỷ sau khi trục xuất hắn (đến "
-"một nơi xa xôi dưới mặt đất), một mầm mống sinh vật mới bắt đầu xuất hiện, "
-"đó là một nòi giống có khả năng biến mọi sinh vật thành đá. Có một thời kỳ "
-"khi những con mãng xà này (người ta đã đặt tên cho chúng) tàn phá thế giới, "
-"biến hàng nghìn sinh vật thành đá. Từng con mãng xà một lần lượt bị đánh "
-"bại. Dường như tất cả đều bị tiêu diệt, trừ một con mãng xà có tên \"Ney'yks"
-"\", hay \"Con cả\" theo ngôn ngữ hiện đại. Hoàn toàn tin tưởng vào khả năng "
-"của mình trong việc buộc sinh vật này phải phục tùng, Oxsrrsk lên đường..."
+"“Ney’yks ánh mắt đá“, và kể về một sinh vật có tên “Chak’kso Ney’yks“, mà "
+"theo ngôn ngữ cổ của loài thằn lằn, có nghĩa là “Con cả của Chak’kso“. "
+"Chak’kso là một á thần hùng mạnh của địa ngục, được mô tả là “con quỷ lớn "
+"của trái đất“ trong sử sách của thần tiên. Theo những sử sách này, Chak’kso "
+"đã từng tìm cách biến mọi sinh vật trên hành tinh thành đá; vì hắn căm thù "
+"những sinh vật bằng xương thịt. Cuối cùng hắn đã bị đánh bại và bị xích trói "
+"bởi phép thuật, nhưng vào nhiều thế kỷ sau khi trục xuất hắn (đến một nơi xa "
+"xôi dưới mặt đất), một mầm mống sinh vật mới bắt đầu xuất hiện, đó là một "
+"nòi giống có khả năng biến mọi sinh vật thành đá. Có một thời kỳ khi những "
+"con mãng xà này (người ta đã đặt tên cho chúng) tàn phá thế giới, biến hàng "
+"nghìn người thành đá. Từng con mãng xà một lần lượt bị đánh bại, dù cái giá "
+"phải trả không hề nhỏ. Dường như tất cả đều bị tiêu diệt, trừ một con mãng "
+"xà có tên “Ney’yks“, hay “Con cả“ theo ngôn ngữ hiện đại. Hoàn toàn tin "
+"tưởng vào khả năng của mình trong việc định vị và buộc sinh vật này phải "
+"phục tùng, Oxsrrsk lên đường..."
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:129
@@ -473,7 +515,7 @@ msgstr ""
 "- - Bảy tảng đá và mười một\n"
 "Thiện xạ có tên Dũng sĩ diệt rồng\n"
 "đã bị giết như những bức tượng nơi đây\n"
-"- - Bảy tảng đá và - và thần tiên\n"
+"- - Bảy tảng đá - và thần tiên\n"
 "(đề bởi Gauteamus)"
 
 #. [side]
@@ -510,7 +552,7 @@ msgstr ""
 "Hắn sửng sốt. Ngay khi nhìn thấy con mãng xà, Blum Duk co rúm lại vì sợ. Hắn "
 "cố gắng điều khiển con sói chạy trốn, nhưng nó không di chuyển. Khi con vật "
 "tiến lại gần, hắn kêu thất thanh những lời cuối cùng: Gog của tao ơi, chó "
-"ơi, chân mày làm bằng đá à?!?\n"
+"ơi, chân mày làm bằng đá à?!\n"
 "(đề bởi Elvish Pillager)"
 
 #. [side]
@@ -533,13 +575,13 @@ msgid ""
 msgstr ""
 "Rah Ihn Mar, nhà vô địch của Những Ngọn đồi Bùng cháy, tìm đường đến vùng hồ "
 "Ruaskkolin để truy đuổi anh hùng thần tiên Terowydlithrol, mà thần tiên gọi "
-"là ‘Dũng sĩ diệt rồng’. Người ta kể rằng Terowydlithrol đã giết được con "
-"rồng lửa đe dọa một ngôi làng thần tiên, và đã phát động  ‘cuộc trả đũa’  "
-"giết 37 người rồng mà được cho là đã liên minh với con rồng lửa, đang đóng "
-"quân trong một khe núi gần đó. Biết rằng những người rồng này là vô tội, Rah "
-"Ihn Mar đến hồ Ruaskkolin để tìm giết Terowydlithrol, người mà người ta đã "
-"thấy đang tiến vào vùng hồ chỉ trước đó một ngày. Bừng bừng lòng căm thù, "
-"Rah Ihn Mar bắt đầu cuộc săn đuổi....."
+"là ’dũng sĩ diệt rồng’. Người ta kể rằng Terowydlithrol đã giết được con "
+"rồng lửa đe dọa một ngôi làng thần tiên, và đã phát động ’cuộc trả đũa’ giết "
+"37 người rồng, được cho là đã liên minh với con rồng lửa, đang đóng quân "
+"trong một khe núi gần đó. Biết rằng những người rồng này là vô tội, Rah Ihn "
+"Mar đến hồ Ruaskkolin để tìm giết Terowydlithrol, người được bắt gặp đã tiến "
+"vào vùng hồ chỉ trước đó một ngày. Bừng bừng lòng căm thù, Rah Ihn Mar bắt "
+"đầu cuộc săn đuổi..."
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:152
@@ -565,6 +607,8 @@ msgid ""
 "It would seem that no one knows the tale of this brave spider.\n"
 "(inscribed by WinnerA)"
 msgstr ""
+"Dường như không ai biết câu chuyện về con nhện dũng cảm này.\n"
+"(đề bởi WinnerA)"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:168
@@ -572,6 +616,8 @@ msgid ""
 "The tale of this unlucky highwayman is yet to be told.\n"
 "(inscribed by WinnerB)"
 msgstr ""
+"Câu chuyện về kẻ cướp đường xui xẻo này chưa từng được kể.\n"
+"(đề bởi WinnerB)"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:176
@@ -617,7 +663,7 @@ msgid ""
 "granted.\n"
 "(inscribed by Elvish Pillager)"
 msgstr ""
-"Thần rừng Bramwythl luôn bị coi là một anh chàng chậm chạp, ít nói, kể cả "
+"Thần rừng Bramwythl luôn bị coi là một anh chàng chậm chạp, lầm lì, kể cả "
 "những thần rừng khác cũng coi như thế. Anh thích đứng một mình dưới ánh mặt "
 "trời, hai tay giơ cao, ngắm nhìn vẻ đẹp của bầu trời trong trẻo. Thậm chí, "
 "có lần, anh đã tâm sự với một người bạn rằng mong muốn lớn nhất của mình là "
@@ -626,7 +672,7 @@ msgstr ""
 "một con quái vật khủng khiếp sắp đến, có đủ sức mạnh để tiêu diệt dễ dàng "
 "những thần rừng đang sống trong vùng. Họ nhanh chân chạy trốn (dẫu sao cũng "
 "là nhanh chân đối với thần rừng), nhưng Bramwythl bị bỏ lại đằng sau - trong "
-"lúc vội vã không ai nhớ   việc tìm anh cũng như nói cho anh biết về mối nguy "
+"lúc vội vã không ai nhớ việc tìm anh cũng như nói cho anh biết về mối nguy "
 "hiểm.\n"
 "Anh bị mãng xà bắt khá bất ngờ và biến thành đá trước khi kịp nhận ra con "
 "quái vật. Hình dạng hóa đá của anh ngày nay vẫn đứng đó, sưởi ấm trong những "
@@ -663,11 +709,11 @@ msgid ""
 "\n"
 "Perhaps he should not have shouted quite so loudly.... "
 msgstr ""
-"Những lời cuối cùng Đại nguyên soái Aethec Corryn đã nói: \"Talael Ryndoc! "
-"Ta đã chán tìm kiếm ngươi! Ta sẽ trở về hoàng cung của Haldric, và cho triều "
+"Những lời cuối cùng Đại nguyên soái Aethec Corryn đã nói: “Talael Ryndoc! Ta "
+"đã chán tìm kiếm ngươi! Ta sẽ trở về hoàng cung của Haldric, và cho triều "
 "đình biết rằng ngươi chỉ là một kẻ hèn nhát vì đã trốn tránh trận đấu giữa "
-"hai chúng ta! Nỗi nhục nhã sẽ còn đau đớn hơn cái chết ta định dành cho "
-"ngươi!\"\n"
+"hai chúng ta! Nỗi nhục nhã của ngươi sẽ còn đau đớn hơn cả cái chết ta định "
+"dành cho ngươi!”\n"
 "\n"
 "Có lẽ ông ta không nên hét to như thế... "
 
@@ -693,13 +739,13 @@ msgid ""
 msgstr ""
 "Chiến binh dũng cảm mà người rắn gọi là Rilhon này, đã nghe kể về một kho "
 "báu khó tin bị thất lạc trong những hang động ngập nước - một cây giáo có "
-"đầu được cho là làm từ răng của Chak'kso Ney'yks, một mãng xà đã bị giết từ "
+"đầu được cho là làm từ răng của Chak’kso Ney’yks, một mãng xà đã bị giết từ "
 "lâu dưới tay anh hùng thần tiên Eloralduil. Theo truyền thuyết, vũ khí vẫn "
 "còn ở đâu đó dưới đáy hồ này (hồ Ruaskkolin, được đặt theo tên con thuồng "
 "luồng biển sống dưới hồ). Đã chuẩn bị sẵn sàng để chiến đấu với con thuồng "
 "luồng, Rilhon lại gặp hai bất ngờ lớn khác. Điều bất ngờ đầu tiên là hình "
 "dạng hóa đá của con thuồng luồng Ruaskkolin. Điều bất ngờ thứ hai là con "
-"mãng xà Chak'kso Ney'yks vẫn còn sống, và lạ thay, vẫn có đầy đủ răng.\n"
+"mãng xà Chak’kso Ney’yks vẫn còn sống, và lạ thay, vẫn có đầy đủ răng.\n"
 "(đề bởi Paterson)"
 
 #. [unit]
@@ -748,7 +794,7 @@ msgid ""
 "Cynsaun Province was named for Warrior-Queen Cynsaun the First, who drove "
 "the necromancers from these lands in 961 YW."
 msgstr ""
-"Tỉnh Cynsaun được đặt theo tên của Nữ hoàng-chiến binh Cynsaun Đệ Nhất, "
+"Tỉnh Cynsaun được đặt theo tên của Nữ hoàng-chiến binh Cynsaun đệ nhất, "
 "người đã đánh đuổi các pháp sư gọi hồn khỏi những vùng đất này vào năm "
 "Wesnoth 961."
 
@@ -759,14 +805,6 @@ msgstr "2nc - Tương lai mờ mịt (Sống sót)"
 
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:8
-#, fuzzy
-#| msgid ""
-#| "Dark Forecast is a survival scenario for solitaire or two-player team-"
-#| "based play against randomly AI spawned units. Victory is achieved by "
-#| "surviving all enemy waves. During the course of play, the terrain will "
-#| "change based on random weather effects.\n"
-#| "\n"
-#| "Note: You need to use map settings for the scenario to work right."
 msgid ""
 "Dark Forecast is a survival scenario for solitaire or two-player team-based "
 "play against randomly-spawned AI units. Victory is achieved by surviving and "
@@ -778,11 +816,12 @@ msgid ""
 msgstr ""
 "Tương lai mờ mịt là một màn chơi sống sót để chơi một mình hoặc theo đội hai "
 "người chơi chống lại các đơn vị máy tính được sinh ra một cách ngẫu nhiên. "
-"Giành chiến thắng bằng cách sống sót qua tất cả các cuộc tấn công của kẻ "
-"thù. Trong quá trình chơi, địa hình sẽ thay đổi dựa trên những hiệu ứng thời "
-"tiết ngẫu nhiên.\n"
+"Giành chiến thắng bằng cách sống sót và đánh bại tất cả các đợt tấn công của "
+"kẻ thù. Trong quá trình chơi, địa hình sẽ thay đổi dựa trên những hiệu ứng "
+"thời tiết ngẫu nhiên.\n"
 "\n"
-"Ghi chú: Bạn cần sử dụng thiết lập bản đồ để màn chơi hoạt động đúng."
+"Ghi chú: Bạn cần sử dụng thiết lập bản đồ mặc định để màn chơi hoạt động "
+"đúng."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:434
@@ -845,10 +884,8 @@ msgstr "Con người"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1386
-#, fuzzy
-#| msgid "Death of your team leaders"
 msgid "Death of your leader"
-msgstr "Những người chỉ huy đội của bạn chết"
+msgstr "Người chỉ huy của bạn chết"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1387
@@ -856,26 +893,26 @@ msgid ""
 "Since your team has only one leader, the enemy waves will not be at full "
 "strength."
 msgstr ""
+"Do đội của bạn chỉ còn một người chỉ huy, các đợt tấn công của kẻ thù sẽ "
+"không sử dụng toàn bộ sức mạnh."
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1390
-#, fuzzy
-#| msgid "Death of your team leaders"
 msgid "Death of both of your team’s leaders"
-msgstr "Những người chỉ huy đội của bạn chết"
+msgstr "Cả hai người chỉ huy đội của bạn chết"
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1391
 msgid ""
 "Since your team has two leaders, the enemy waves will be at full strength."
 msgstr ""
+"Do đội của bạn có hai người chỉ huy, các đợt tấn công của kẻ thù sẽ sử dụng "
+"toàn bộ sức mạnh."
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1412
-#, fuzzy
-#| msgid "Survive all enemy attacks"
 msgid "Survive and defeat all enemy waves"
-msgstr "Sống sót qua tất cả các cuộc tấn công của kẻ thù"
+msgstr "Sống sót và đánh bại tất cả các đợt tấn công của kẻ thù"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1432
@@ -884,31 +921,6 @@ msgstr "Tương lai mờ mịt - màn chơi sống sót ngẫu nhiên"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1452
-#, fuzzy
-#| msgid ""
-#| "Your aim is to survive the spawning waves and defeat the final arch-"
-#| "enemies.\n"
-#| "\n"
-#| "The spawning waves are generated randomly and will different each time "
-#| "Dark Forecast is played.\n"
-#| "\n"
-#| "\n"
-#| "They appear along the north, south and west map edges — though they are "
-#| "most likely to spawn on the west edge. The spawn waves appear at somewhat "
-#| "regular intervals.\n"
-#| "\n"
-#| "\n"
-#| "The weather will also change randomly, affecting the layout of the map.\n"
-#| "\n"
-#| "\n"
-#| "\n"
-#| "<span color='red'>Dark Forecast was made by:</span>\n"
-#| "\n"
-#| "<span color='green'>jb</span>\n"
-#| "— map design, spawn groups and scenario concept\n"
-#| "\n"
-#| "<span color='green'>Rhuvaen</span>\n"
-#| "— WML implementation"
 msgid ""
 "Your aim is to survive the spawning waves of units and defeat the final "
 "archenemies.\n"
@@ -931,35 +943,32 @@ msgid ""
 "<span color='green'>Rhuvaen:</span>\n"
 "• WML implementation"
 msgstr ""
-"Nhiệm vụ của bạn là sống sót qua các cuộc tấn công và đánh bại kẻ thù cuối "
+"Nhiệm vụ của bạn là sống sót qua các đợt tấn công và đánh bại kẻ thù cuối "
 "cùng.\n"
 "\n"
-"Các cuộc tấn công sóng được tạo ra một cách ngẫu nhiên và sẽ khác nhau mỗi "
-"lần chơi Tương lai mờ mịt.\n"
+"Các đợt tấn công được tạo ra một cách ngẫu nhiên và sẽ khác nhau mỗi lần "
+"chơi Tương lai mờ mịt.\n"
 "\n"
-"\n"
-"Chúng xuất hiện dọc theo các cạnh bản đồ phía Bắc, Nam và Tây - chúng thường "
-"xuất hiện nhiều nhất ở cạnh phía Tây. Các cuộc tấn công xuất hiện theo những "
+"Chúng xuất hiện dọc theo các cạnh bản đồ phía bắc, nam và tây - chúng thường "
+"xuất hiện nhiều nhất ở cạnh phía tây. Các đợt tấn công thường theo những "
 "khoảng thời gian khá đều đặn.\n"
-"\n"
 "\n"
 "Thời tiết cũng sẽ thay đổi ngẫu nhiên, tác động đến bố cục của bản đồ.\n"
 "\n"
 "\n"
+"<b>Tương lai mờ mịt được thực hiện bởi:</b>\n"
 "\n"
-"<span color='red'>Tương lai mờ mịt được thực hiện bởi:</span>\n"
+"<span color='green'>jb:</span>\n"
+"• Thiết kế bản đồ, các nhóm đơn vị và ý tưởng màn chơi\n"
 "\n"
-"<span color='green'>jb</span>\n"
-"— thiết kế bản đồ, nhóm đơn vị và khái niệm màn chơi\n"
-"\n"
-"<span color='green'>Rhuvaen</span>\n"
-"— bổ sung mã WML"
+"<span color='green'>Rhuvaen:</span>\n"
+"• Cài đặt WML"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1457
 msgid "So this is the accursed valley — a land ours for the taking."
 msgstr ""
-"Vậy đây là thung lũng đáng nguyền rủa — chúng ta phải chiếm vùng đất này."
+"Vậy đây là thung lũng đáng nguyền rủa - chúng ta phải chiếm vùng đất này."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1461
@@ -987,8 +996,8 @@ msgid ""
 "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
 "me..."
 msgstr ""
-"Aaa! Sao lại thế này? Ta đã bại trận dưới tay những kẻ mọi rợ! Thượng đế đã "
-"bỏ rơi ta..."
+"Á! Sao lại thế này? Ta đã bại trận dưới tay những kẻ mọi rợ! Thượng đế đã bỏ "
+"rơi ta..."
 
 #. [message]: speaker=second_unit
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1516
@@ -1014,7 +1023,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
 msgid "2p — Den of Onis"
-msgstr "2nc - Sào huyệt của Onis"
+msgstr "2nc - Sào huyệt Oni"
 
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:7
@@ -1028,11 +1037,11 @@ msgid ""
 "creators."
 msgstr ""
 "Những hang động khác thường này đã từng được gọi là Phòng Quỷ Cười, và là "
-"thành nội của Kah Ruuk Oni. Kah Ruuk là một loài quỷ ăn thịt người độc ác và "
-"xảo trá, kẻ đã khủng bố người của vùng đất phía đông trong gần bốn trăm năm, "
-"trước khi biến mất khỏi Irdya không để lại dấu vết. Kể từ lúc đó, nhiều liên "
-"minh đã ganh đua giành quyền thống trị sào huyệt Onis, hy vọng giải mã được "
-"những phép thuật kỳ lạ và bí ẩn của những kẻ tạo ra nó."
+"thành trì trong cùng của Kah Ruuk Oni. Kah Ruuk là một loài quỷ ăn thịt "
+"người độc ác và xảo trá, kẻ đã khủng bố người của vùng đất phía đông trong "
+"gần bốn trăm năm, trước khi biến mất khỏi Irdya không để lại dấu vết. Kể từ "
+"lúc đó, nhiều liên minh đã ganh đua giành quyền thống trị sào huyệt Oni, hy "
+"vọng giải mã được những phép thuật kỳ lạ và bí ẩn của những kẻ tạo ra nó."
 
 #. [multiplayer]: id=multiplayer_elensefar_courtyard
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:5
@@ -1045,8 +1054,8 @@ msgid ""
 "Fight through corridors and gardens, and dominate the eastern courtyard of "
 "what used to be the glorious city of Elensefar."
 msgstr ""
-"Chiến đấu qua những hành lang và khu vườn, và chiếm ưu thế ở sân trong phía "
-"đông của nơi từng là thành phố rực rỡ của Elensefar"
+"Chiến đấu qua những hành lang và khu vườn, và kiểm soát sân trong phía đông "
+"của nơi từng là thành phố Elensefar huy hoàng."
 
 #. [time]: id=underground_illum
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:114
@@ -1092,6 +1101,8 @@ msgid ""
 "Players must forge strange alliances with the local inhabitants, in order to "
 "survive on this most unusual of islands. Designed by Doc Paterson."
 msgstr ""
+"Các người chơi phải tìm cách liên minh với các cư dân địa phương, để sống "
+"sót trên hòn đảo khác thường này. Thiết kế bởi Doc Paterson."
 
 #. [unit]: type=Young Ogre, id=Baby Baby Bo
 #. [unit]: type=Young Ogre, id=Big Baby Bo
@@ -1102,22 +1113,22 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:351
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:487
 msgid "Big Baby Bo"
-msgstr ""
+msgstr "Bé Bự Bo"
 
 #. [unit]: type=Drake Fighter, id=Rawffus the Dim
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:115
 msgid "Rawffus the Dim"
-msgstr ""
+msgstr "Rawffus Đen Tối"
 
 #. [unit]: type=Dwarvish Scout, id=Kolbur
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:168
 msgid "Kolbur"
-msgstr ""
+msgstr "Kolbur"
 
 #. [unit]: type=Dwarvish Scout, id=Vilhelm Viskitynnyri
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:195
 msgid "Vilhelm Viskitynnyri"
-msgstr ""
+msgstr "Vilhelm Viskitynnyri"
 
 #. [unit]: type=Woodsman, id=Clockwork Boy
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:257
@@ -1125,27 +1136,27 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:717
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:729
 msgid "Clockwork Boy"
-msgstr ""
+msgstr "Chàng thợ đồng hồ"
 
 #. [unit]: type=Orcish Leader, id=Neki the Brutal
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:322
 msgid "Neki the Brutal"
-msgstr ""
+msgstr "Neki Hung Bạo"
 
 #. [unit]: type=Elvish Fighter, id=Drowsk Calbeht
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:365
 msgid "Drowsk Calbeht"
-msgstr ""
+msgstr "Drowsk Calbeht"
 
 #. [unit]: id=Rzrrt the Dauntless, type=Soulless
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:428
 msgid "Rzrrt the Dauntless"
-msgstr ""
+msgstr "Rzrrt Bất Khuất"
 
 #. [unit]: id=Sorrek, Chosen of Death, type=Skeleton
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:469
 msgid "Sorrek, Chosen of Death"
-msgstr ""
+msgstr "Sorrek, Đại Diện Thần Chết"
 
 #. [unit]: type=Young Ogre, id=Baby Baby Dro
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:561
@@ -1155,42 +1166,42 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:811
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:947
 msgid "Big Baby Dro"
-msgstr ""
+msgstr "Dro Bé Bự"
 
 #. [unit]: type=Drake Fighter, id=Gawffus the Dim
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:575
 msgid "Gawffus the Dim"
-msgstr ""
+msgstr "Gawffus Đen Tối"
 
 #. [unit]: type=Dwarvish Scout, id=Rublok
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:628
 msgid "Rublok"
-msgstr ""
+msgstr "Rublok"
 
 #. [unit]: type=Dwarvish Scout, id=Ulysses Mantyjuuri
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:655
 msgid "Ulysses Mantyjuuri"
-msgstr ""
+msgstr "Ulysses Mantyjuuri"
 
 #. [unit]: type=Orcish Leader, id=Neki the Brute
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:782
 msgid "Neki the Brute"
-msgstr ""
+msgstr "Neki Hung Bạo"
 
 #. [unit]: type=Elvish Fighter, id=Claiomh Dubh
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:825
 msgid "Claiomh Dubh"
-msgstr ""
+msgstr "Claiomh Dubh"
 
 #. [unit]: id=Tyxrrn the Dauntless, type=Soulless
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:888
 msgid "Tyxrrn the Dauntless"
-msgstr ""
+msgstr "Tyxrrn Bất Khuất"
 
 #. [unit]: id=Rukhos, Chosen of Death, type=Skeleton
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:929
 msgid "Rukhos, Chosen of Death"
-msgstr ""
+msgstr "Rukhos, Đại Diện Thần Chết"
 
 #. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:5
@@ -1237,7 +1248,7 @@ msgstr ""
 #. [effect]: type=arcane
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:76
 msgid "evil eye"
-msgstr ""
+msgstr "mắt độc hại"
 
 #. [trait]: id=remove_hp
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:23
@@ -1260,7 +1271,7 @@ msgid ""
 "Flooded by the seas and battered by the winter elements, only ruins, water "
 "and ice now remain in the shadow of this once mighty empire."
 msgstr ""
-"Ngập dưới biển và bị sức mạnh của mùa đông tàn phá, giờ đây chỉ còn lại "
+"Ngập dưới biển và bị các yếu tố của mùa đông tàn phá, giờ đây chỉ còn lại "
 "những tàn tích, nước và băng trong hình bóng của đế chế hùng mạnh một thời "
 "này."
 
@@ -1335,7 +1346,7 @@ msgid ""
 "for hundreds of years, repelling great beasts from their western borders, "
 "and Carorathian Imperialists from their eastern borders."
 msgstr ""
-"Vùng đất tự do, còn được những người ở phía đông xa xôi gọi là Vùng đất "
+"Vùng đất tự do, còn được những người ở phía đông xa xôi gọi là vùng đất "
 "không có vua, nằm giữa vùng đất hoang vu và vương quốc Carorath, phân tách "
 "một vùng đất có luật với một vùng đất hoàn toàn hoang dã. Người của vùng đất "
 "tự do đã chiến đấu, trở thành những người chinh phục trong hàng trăm năm, "
@@ -1345,14 +1356,12 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:37
 msgid "2p — Thousand Stings Garrison"
-msgstr "2nc — Đồn trú nghìn ngòi đốt"
+msgstr "2nc - Đồn trú Nghìn Nọc Độc"
 
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:39
-#, fuzzy
-#| msgid "Designed by Doc Paterson."
 msgid "A strange place. Designed by Doc Paterson"
-msgstr "Thiết kế bởi Doc Paterson."
+msgstr "Một nơi kỳ lạ. Thiết kế bởi Doc Paterson"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:85
@@ -1435,8 +1444,8 @@ msgid ""
 "This vital supply route has played a key role in many of Wesnoth’s greatest "
 "battles."
 msgstr ""
-"Tuyến đường tiếp tế sống còn này đã từng đóng vai trò quan trọng trong nhiều "
-"trận chiến vĩ đại nhất Wesnoth."
+"Tuyến đường tiếp tế sống còn này đóng vai trò quan trọng trong nhiều trận "
+"chiến vĩ đại nhất Wesnoth."
 
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:5
@@ -1502,8 +1511,7 @@ msgid ""
 "Only one faction will emerge victorious from this tightly bordered three-"
 "player map."
 msgstr ""
-"Chỉ một liên minh sẽ giành chiến thắng trên bản đồ ba người chơi chật hẹp "
-"này."
+"Chỉ một phe sẽ giành chiến thắng trên bản đồ ba người chơi chật hẹp này."
 
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:5
@@ -1581,8 +1589,8 @@ msgid ""
 "Warfare transforms the simple farms and villages of a peaceful region into a "
 "subtly parceled battlefield."
 msgstr ""
-"Chiến tranh biến những trang trại và làng mạc đơn sơ của một vùng hòa bình "
-"thành một chiến trường tan hoang."
+"Chiến tranh biến những trang trại và làng mạc đơn sơ của một vùng quê yên "
+"bình thành một chiến trường tan hoang."
 
 #. [multiplayer]: id=multiplayer_Isars_Cross
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:7
@@ -1597,10 +1605,10 @@ msgid ""
 "1&4 vs. 2&3 (northeast vs. southwest). Designed for 75 starting gold, 20 "
 "villages."
 msgstr ""
-"Bản đồ 2 đấu với 2 rất nhỏ. Chiến đấu diễn ra trong phạm vi nhỏ, việc xoay "
-"chuyển vị trí các đơn vị và  lên kế hoạch di chuyển có ý nghĩa quan trọng. "
-"Đội chơi được thiết lập cho các người chơi 1&4 đấu với 2&3 (Đông Bắc đấu với "
-"Tây Nam). Được thiết kế cho 75 lượng vàng ban đầu, 20 ngôi làng."
+"Bản đồ 2 đấu với 2 rất nhỏ. Chiến đấu trong phạm vi nhỏ hẹp nghĩa là việc "
+"xoay chuyển các đơn vị và lập kế hoạch di chuyển là điều rất quan trọng. Đội "
+"chơi được thiết lập cho các người chơi 1&4 đấu với 2&3 (Đông Bắc đấu với Tây "
+"Nam). Được thiết kế cho 75 lượng vàng ban đầu, 20 ngôi làng."
 
 #. [side]
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:20
@@ -1651,7 +1659,7 @@ msgid ""
 "4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
 msgstr ""
 "Kiểm soát vùng xung quanh pháo đài trung tâm rất có lợi trên bản đồ 4 người "
-"chơi tự do 4 kích thước 36x36 này. Cũng hoạt động tốt cho 2 đấu với 2. Có 36 "
+"chơi tự do kích thước 36x36 này. Cũng hoạt động tốt cho 2 đấu với 2. Có 36 "
 "ngôi làng."
 
 #. [side]
@@ -1743,7 +1751,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:6
 msgid "4p — Ruins of Terra-Dwelve"
-msgstr "4nc - Tàn tích của Terra-Dwelve"
+msgstr "4nc - Tàn tích Terra-Dwelve"
 
 #. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:7
@@ -1751,8 +1759,9 @@ msgid ""
 "Battle over the legendary treasures of the ancient ruins of Terra-Dwelve. "
 "Large multi-fronted 2vs2 set in a vast underground complex."
 msgstr ""
-"Trận chiến tranh giành kho báu truyền thuyết trong những tàn tích cổ của "
-"Terra-Dwelve. Bản đồ lớn nhiều mặt trận 2 đấu với 2 dưới lòng đất."
+"Trận chiến tranh giành kho báu truyền thuyết trong của tàn tích cổ Terra-"
+"Dwelve. Bản đồ nhiều mặt trận 2 đấu với 2 trong một tổ hợp rộng lớn dưới "
+"lòng đất."
 
 #. [multiplayer]: id=multiplayer_Siege_Castles
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:7
@@ -1807,7 +1816,7 @@ msgid ""
 "a very small map so 75 gold is recommended for the other players."
 msgstr ""
 "4 người chơi bao bây một pháo đài trung tâm, chơi theo kiểu sống sót đấu với "
-"máy tính, hoàn toàn tự do hoặc 4 đấu với 1. người chơi ở giữa sẽ cần nhiều "
+"máy tính, hoàn toàn tự do hoặc 4 đấu với 1. Người chơi ở giữa sẽ cần nhiều "
 "vàng hơn trong một trò chơi 4 đấu với 1 hoặc hoàn toàn tự do, và cách tốt "
 "nhất để xác định phiên đấu giá là mức đặt giá THẤP NHẤT sẽ thắng. Đây là một "
 "bản đồ rất nhỏ do đó 75 lượng vàng là khuyến cáo cho bốn người chơi còn lại."
@@ -1996,7 +2005,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Volcano
 #: data/multiplayer/scenarios/6p_Volcano.cfg:7
 msgid "6p — Volcano"
-msgstr "6nc — Núi lửa"
+msgstr "6nc - Núi lửa"
 
 #. [multiplayer]: id=multiplayer_Volcano
 #: data/multiplayer/scenarios/6p_Volcano.cfg:9
@@ -2005,7 +2014,7 @@ msgid ""
 "volcanic eruption. It has 36 villages."
 msgstr ""
 "Một trận chiến 3 đấu với 3 nhằm kiểm soát những phế tích của một vương quốc "
-"bị sụp đổ bởi một đợt phun trào núi lửa. Có 36 ngôi làng."
+"bị sụp đổ bởi một trận phun trào núi lửa cách đây đã lâu. Có 36 ngôi làng."
 
 #. [multiplayer]: id=multiplayer_Waterloo_Sunset
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:7
@@ -2103,7 +2112,7 @@ msgid ""
 "good one."
 msgstr ""
 "Bản đồ ngẫu nhiên với cát là địa hình chủ yếu. Ghi chú: các bản đồ ngẫu "
-"nhiên thường không cân đối, nhưng nếu ó thời gian, bạn có thể tạo lại chúng "
+"nhiên thường không cân đối, nhưng nếu có thời gian, bạn có thể tạo lại chúng "
 "đến khi nhận được một bản đồ tốt."
 
 #. [scenario]: id=multiplayer_Random_Map_Marsh
@@ -2139,9 +2148,9 @@ msgid ""
 "can regenerate them until you get a good one."
 msgstr ""
 "Bản đồ ngẫu nhiên được thiết lập ở khoảng giữa mùa đông và mùa xuân, chủ yếu "
-"với địa hình nhiều tuyết. Ghi chú: các bản đồ ngẫu nhiên thường không cân "
-"đối, nhưng nếu có thời gian, bạn có thể tạo lại chúng đến khi nhận được một "
-"bản đồ tốt."
+"với địa hình phủ tuyết. Ghi chú: các bản đồ ngẫu nhiên thường không cân đối, "
+"nhưng nếu có thời gian, bạn có thể tạo lại chúng đến khi nhận được một bản "
+"đồ tốt."
 
 #. [multiplayer]: id=wesbench_ai
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:9
@@ -2184,6 +2193,9 @@ msgid ""
 msgstr ""
 "Kiểm nghiệm wesnoth, sử dụng --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
+
+#~ msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
+#~ msgstr "<span strikethrough='true' foreground='#%02x%02x%02x'>Phe %d</span>"
 
 #~ msgid "Default + Khalifate"
 #~ msgstr "Mặc định +  Khalifate"
