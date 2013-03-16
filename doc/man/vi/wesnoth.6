@@ -18,10 +18,10 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTH 6 2013 wesnoth "Trận chiến giành Wesnoth"
+.TH WESNOTH 6 2013 wesnoth "Trận chiến vì Wesnoth"
 .
 .SH TÊN
-wesnoth \- Trận chiến giành wesnoth, là trò chơi chiến thuật dựa trên lượt đi
+wesnoth \- Trận chiến vì wesnoth, một trò chơi chiến lược dựa trên lượt đi
 theo phong cách thần thoại
 .
 .SH "BẢNG TÓM TẮT"
@@ -30,116 +30,117 @@ theo phong cách thần thoại
 .
 .SH "MÔ TẢ"
 .
-Trận chiến giành \fBWesnoth\fP là trò chơi chiến thuật dựa trên lượt đi theo
+Trận chiến vì \fBWesnoth\fP là một trò chơi chiến lược dựa trên lượt đi theo
 phong cách thần thoại.
 
-Đánh bạo tất cả kẻ thù sử dụng đơn vị lính nòng cốt được tuyển chọn tốt,
-quản lý nguồn tài nguyên của bạn bao gồm vàng và các ngôi làng. Mỗi đơn vị
-lính đều có điểm mạnh và điểm yếu riêng; để chiến thắng, triển khai lực
-lượng của bạn để có lợi nhất trong khi ngăn cản đối phương làm tương tự. Khi
-đơn vị lính thu được kinh nghiệm, chúng đạt được những khả năng mới và trở
-nên mạnh mẽ hơn. Chơi bằng chính ngôn ngữ của bạn và thử thách khả năng khi
-đối đầu với đối phương đầy mưu mẹo được điều khiển bởi máy tính, hay tham
-gia vào cộng đồng rộng lớn Wesnoth của người chơi mạng. Từ tạo đơn vị lính,
-màn chơi hay chiến dịch của chính bạn và chia sẽ với những người khác.
+Đánh bại tất cả các chỉ huy của kẻ thù sử dụng lực lượng quân lính được
+tuyển chọn tốt, chú ý quản lý nguồn tài nguyên của bạn bao gồm vàng và các
+ngôi làng. Tất cả các đơn vị đều có điểm mạnh và điểm yếu riêng; để chiến
+thắng, triển khai lực lượng của bạn để phát huy lợi thế tốt nhất trong khi
+ngăn cản kẻ thù làm điều tương tự. Khi các đơn vị giành được kinh nghiệm,
+chúng đạt được những khả năng mới và trở nên mạnh mẽ hơn. Chơi bằng chính
+ngôn ngữ của bạn và thử thách kỹ năng khi đối đầu với một đối thủ máy tính
+đầy mưu mẹo, hay tham gia vào cộng đồng lớn những người chơi trực tuyến của
+Wesnoth. Tạo các đơn vị, màn chơi hay chiến dịch của riêng bạn và chia sẻ
+với những người khác.
 .
 .SH "TÙY CHỌN"
 .
 .TP 
 \fB\-\-bpp\fP\fI\ số\fP
-đặt giá trị bit trên mỗi điểm ảnh. Ví dụ: \fB\-\-bpp 32\fP
+đặt giá trị số bit mỗi điểm ảnh. Ví dụ: \fB\-\-bpp 32\fP
 .TP 
-\fB\-c, \-\-campaign \ [<id_campaign>]\fP
-goes directly to the campaign with id <id_campaign>. A selection
-menu will appear if no id was specified.  \fBNote:\fP When using this switch
-please ensure that you specify the data directory path as the final argument
-aswell, otherwise the game will take the campaign/scenario id as the data
-dir.
+\fB\-c, \-\-campaign \ [<định_danh_chiến_dịch>]\fP
+đến trực tiếp chiến dịch có định danh <định_danh_chiến_dịch>. Một
+trình đơn chọn lựa sẽ xuất hiện nếu không có định danh nào được chỉ
+định. \fBGhi chú:\fP Khi sử dụng tùy chọn này, đảm bảo rằng bạn cũng chỉ định
+đường dẫn thư mục dữ liệu làm tham số cuối cùng, nếu không trò chơi sẽ lấy
+định danh chiến dịch/màn chơi làm thư mục dữ liệu.
 .TP 
 \fB\-\-campaign\-difficulty <difficulty>\fP
-The difficulty of the specified campaign (1 to max). If none specified, the
-campaign difficulty selection widget will appear.
+Mức độ khó của chiến dịch được chỉ định (1 đến tối đa). Nếu không chỉ định,
+hộp chọn mức độ khó của chiến dịch sẽ xuất hiện.
 .TP 
-\fB\-\-campaign\-scenario <id_scenario>\fP
-The id of the scenario from the specified campaign. The default is the first
-scenario.
+\fB\-\-campaign\-scenario <định_danh_màn_chơi>\fP
+Định danh của màn chơi từ chiến dịch được chỉ định. Mặc định là màn chơi đầu
+tiên.
 .TP 
 \fB\-\-config\-dir\fP\fI\ tên\fP
-sets the user configuration directory to \fIname\fP under $HOME or "My
-Documents\eMy Games" for windows.  You can also specify an absolute path for
-the configuration directory outside the $HOME or "My Documents\eMy Games"
+đặt đường dẫn thư mục chứa thiết lập người dùng thành \fItên\fP dưới $HOME hoặc
+"My Documents\eMy Games" với windows. Bạn cũng có thể chỉ định một đường dẫn
+tuyệt đối cho thư mục chứa thiết lập nằm ngoài $HOME hoặc "My Documents\eMy
+Games"
 .TP 
 \fB\-\-config\-path\fP
-in đường dẫn của thư mục chứa thiết lập người dùng và toát.
+in đường dẫn của thư mục chứa thiết lập người dùng và thoát.
 .TP 
-\fB\-\-data\-dir <directory>\fP
-overrides the data directory with the one specified
+\fB\-\-data\-dir <thư mục>\fP
+ghi đè thư mục dữ liệu bằng thư mục được chỉ định
 .TP 
 \fB\-d, \-\-debug\fP
-bật tùy chọn cho chế độ lệnh bổ sung trong trò chơi (vào trang wiki ở địa
+bật các tùy chọn chế độ lệnh bổ sung trong trò chơi (xem trang wiki ở địa
 chỉ http://www.wesnoth.org/wiki/CommandMode để biết thêm chi tiết về chế độ
 lệnh).
 .TP 
-\fB\-e,\ \-\-editor\fP\fI\ tập tin\fP
-start the in\-game map editor directly. If \fIfile\fP is specified, equivalent
-to \fB\-l \-\-load\fP
+\fB\-e,\ \-\-editor\fP\fI\ tập_tin\fP
+chạy trực tiếp trình chỉnh sửa bản đồ trong trò chơi. Nếu \fItập_tin\fP được
+chỉ định, tương đương với \fB\-e \-\-load\fP
 .TP 
 \fB\-\-fps\fP
-hiển thị số khung hình mỗi giây trò chơi hiện giờ đang chạy, ở góc màn hình.
+hiển thị số khung hình mỗi giây trò chơi hiện đang chạy, ở góc màn hình.
 .TP 
 \fB\-f, \-\-fullscreen\fP
-chạy trò chơi ở toàn màn hình.
+chạy trò chơi ở chế độ toàn màn hình.
 .TP 
-\fB\-\-gunzip\fP\fI\ sắp xếp.gz\fP
-giải nén một tập tin ở định dạng gzip và lưu mà không để đuôi
-\&.gz. \fIinfile.gz\fP sẽ bị bỏ đi .
+\fB\-\-gunzip\fP\fI\ tập_tin.gz\fP
+giải nén một tập tin ở định dạng gzip và lưu không có đuôi
+\&.gz. \fItập_tin.gz\fP sẽ bị xóa.
 .TP 
-\fB\-\-gzip\fP\fI\ sắp xếp\fP
-nén một tập tin ở định dạng gzip, lưu nó dưới tên \fIinfile\fP.gz và bỏ
-\fIinfile\fP.
+\fB\-\-gzip\fP\fI\ tập_tin\fP
+nén một tập tin ở định dạng gzip, lưu nó dưới tên \fItập_tin\fP.gz và xóa
+\fItập_tin\fP.
 .TP 
 \fB\-h, \-\-help\fP
-hiển thị một tóm tắt về tùy chọn dòng lệnh cho tiêu chuẩn đầu ra, và thoát.
+hiển thị một tóm tắt về các tùy chọn dòng lệnh cho đầu ra chuẩn, và thoát.
 .TP 
-\fB\-l,\ \-\-load\fP\fI\ tập tin\fP
-tải bản lưu trò chơi \fIfile\fP từ thư mục lưu trò chơi chuẩn. Nếu tùy chọn
-\fB\-e\fP hoặc \fB\-\-editor\fP cũng được sử dụng, chạy trình sửa bản đồ với bản đồ
-từ tập tin \fIfile\fP mở sẵn. Nếu đó là một thư mục, trình sửa bản đồ sẽ chạy
-với hộp thoại tải bản đồ mở sẵn.
+\fB\-l,\ \-\-load\fP\fI\ tập_tin\fP
+tải bản lưu trò chơi \fItập_tin\fP từ thư mục lưu trò chơi chuẩn. Nếu tùy chọn
+\fB\-e\fP hoặc \fB\-\-editor\fP cũng được sử dụng, chạy trình chỉnh sửa bản đồ với
+bản đồ từ \fItập_tin\fP được mở. Nếu đó là một thư mục, trình chỉnh sửa bản đồ
+sẽ chạy với một hộp thoại tải bản đồ được mở ở đó.
 .TP 
-\fB\-\-log\-\fP\fIcấp\fP\fB=\fP\fImiền 1\fP\fB,\fP\fImiền 2\fP\fB,\fP\fI...\fP
-đặt mức độ của miền dăng nhập. \fBall\fP có thể phù hợp với bất cứ miền đăng
-nhập nào. Các mức có sẵn: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Theo
-mặc định sử dụng mức \fBerror\fP.
+\fB\-\-log\-\fP\fImức_độ\fP\fB=\fP\fImiền_1\fP\fB,\fP\fImiền_2\fP\fB,\fP\fI...\fP
+đặt mức độ nghiêm trọng của các miền ghi lưu. \fBall\fP có thể được sử dụng để
+khớp với bất kỳ miền ghi lưu nào. Các mức độ có sẵn: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Theo mặc định mức độ \fBerror\fP được sử dụng.
 .TP 
-\fB\-\-logdomains\ [filter]\fP
-lists defined log domains (only the ones containing \fBfilter\fP if used) and
-exits
+\fB\-\-logdomains\ [bộ_lọc]\fP
+liệt kê các miền ghi lưu được xác định (chỉ các miền ghi lưu chứa \fBbộ_lọc\fP
+nếu được sử dụng) và thoát
 .TP 
 \fB\-\-max\-fps\fP
-Số khung hình mỗi giây trò chơi có thể thể hiện, giá trị nên nằm giữa 1 và
+số khung hình mỗi giây trò chơi có thể hiển thị, giá trị nên nằm giữa 1 và
 1000, mặc định là \fB50\fP.
 .TP 
 \fB\-m, \-\-multiplayer\fP
-chạy một trò chơi nhiều người chơi. Có những tùy choinj bổ sung có thể dùng
-chung với \fB\-m, \-\-multiplayer\fP như giải thích bên dưới. Chỉ những tùy chọn
-này mới có thể theo sau \fB\-\-multiplayer\fP.
+chạy một trò chơi nhiều người chơi. Có các tùy chọn bổ sung có thể được sử
+dụng cùng với \fB\-m, \-\-multiplayer\fP như được giải thích bên dưới. Chỉ những
+tùy chọn bổ sung này mới có thể theo sau \fB\-\-multiplayer\fP.
 .TP 
 \fB\-\-no\-delay\fP
-chạy trò chơi mà không có hoãn để kiểm nghiệm đồ họa. tùy chọn được bật sẵn
-bởi \fB\-\-nogui\fP.
+chạy trò chơi mà không trì hoãn để kiểm nghiệm đồ họa. Tùy chọn này được bật
+tự động bởi \fB\-\-nogui\fP.
 .TP 
 \fB\-\-nocache\fP
-tắt lưu trữ dữ liệu của trò chơi.
+tắt lưu trữ đệm dữ liệu trò chơi.
 .TP 
 \fB\-\-nomusic\fP
-chạy trò chơi không có nhạc.
+chạy trò chơi không có âm nhạc.
 .TP 
 \fB\-\-nosound\fP
-chạy trò chơi không có âm thanh và nhạc.
+chạy trò chơi không có âm thanh và âm nhạc.
 .TP 
 \fB\-\-path\fP
-in tên của đường dẫn chứa dữ liệu trò chơi và thoát.
+in tên của thư mục dữ liệu trò chơi và thoát.
 .TP 
 \fB\-\-preprocess, \-p[=<define1>,<define2>,...] <file/folder> <target directory>\fP
 preprocesses a specified file/folder. The file(s) will be written in
@@ -153,93 +154,93 @@ list the data/core won't be preprocessed.  Example: \fB\-p
 ~/wesnoth/data/campaigns/tutorial ~/result\fP or
 \fB\-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result\fP
 .TP 
-\fB\-\-preprocess\-input\-macros <source file>\fP
-used only by the '\-\-preprocess' command.  Specifies a file that contains
-[preproc_define]s to be included before preprocessing.
+\fB\-\-preprocess\-input\-macros <tập_tin_nguồn>\fP
+chỉ được sử dụng bởi lệnh "\-\-preprocess". Chỉ định một tập tin chứa các
+[preproc_define] cần bao gồm trước khi tiền xử lý.
 .TP 
-\fB\-\-preprocess\-output\-macros [<target file>]\fP
-used only by the '\-\-preprocess' command.  Will output all preprocessed
-macros in the target file. If the file is not specified the output will be
-file '_MACROS_.cfg' in the target directory of preprocess's command.  This
-switch should be typed before the \-\-preprocess command.
+\fB\-\-preprocess\-output\-macros [<tập_tin_đích>]\fP
+chỉ được sử dụng bởi lệnh "\-\-preprocess". Sẽ kết xuất tất cả các macro đã
+tiền xử lý vào tập tin đích. Nếu tập tin không được chỉ định, kết xuất sẽ là
+tập tin '_MACROS_.cfg' trong thư mục đích của lệnh tiền xử lý. Tùy chọn này
+nên được đánh trước lệnh \-\-preprocess.
 .TP 
-\fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolotion\ \fP\fIX\fP\fBx\fP\fIY\fP
-đặt dồ phân giải màn hình. Ví dụ: \fB\-r 800x600\fP
+\fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
+đặt độ phân giải màn hình. Ví dụ: \fB\-r 800x600\fP
 .TP 
-\fB\-s,\ \-\-server\ [chủ]\fP
-kết nối đến máy chủ được chỉ định trước nếu có, còn không kết nối đến máy
-chủ đầu tiên trong phần tùy chọn. Ví dụ: \fB\-\-server server.wesnoth.org\fP
+\fB\-s,\ \-\-server\ [máy_chủ]\fP
+kết nối đến máy chủ được chỉ định nếu có, nếu không kết nối đến máy chủ đầu
+tiên trong phần tùy thích. Ví dụ: \fB\-\-server server.wesnoth.org\fP
 .TP 
 \fB\-\-strict\-validation\fP
-validation errors are treated as fatal errors.
+lỗi kiểm định được đối xử như là lỗi nghiêm trọng.
 .TP 
 \fB\-t, \-\-test\fP
-chạy trò chơi trong màn chơi nhỏ thử nghiệm.
+chạy trò chơi trong một màn chơi thử nghiệm nhỏ.
 .TP 
 \fB\-\-validcache\fP
-giả sử bộ nhớ hợp lệ. (nguy hiểm)
+giả sử rằng bộ nhớ đệm hợp lệ. (nguy hiểm)
 .TP 
 \fB\-v, \-\-version\fP
-hiện phiên bản và toát.
+hiện số phiên bản và thoát.
 .TP 
 \fB\-w, \-\-windowed\fP
 chạy trò chơi trong chế độ cửa sổ.
 .TP 
 \fB\-\-with\-replay\fP
-phát lại trò chơi với tùy chọn \fB\-\-load\fP.
+phát lại trò chơi được tải với tùy chọn \fB\-\-load\fP.
 .
 .SH "Tùy chọn cho \-\-multiplayer"
 .
-Các tùy chọn cho phe cụ thể trong nhiều người chơi được đánh dấu bằng
-\fInumber\fP. \fInumber\fP phải được thay thế bằng số hiệu của phe. Thường là 1
-hoặc 2 nhưng phụ thuộc vào số người chơi có thể có ở màn chơi đã chọn.
+Các tùy chọn nhiều người chơi cho phe được đánh dấu bằng
+\fInumber\fP. \fInumber\fP phải được thay thế bằng một số hiệu của phe. Thường là
+1 hoặc 2 nhưng phụ thuộc vào số người chơi có thể có trong màn chơi được
+chọn.
 .TP 
-\fB\-\-ai_config\fP\fIsố\fP\fB=\fP\fIgiá trị\fP
-chọn một tập tin tùy thích để dùng cho phe máy điều khiển này.
+\fB\-\-ai_config\fP\fIsố\fP\fB=\fP\fIgiá_trị\fP
+chọn một tập tin cấu hình để tải cho máy tính điều khiển phe này.
 .TP 
-\fB\-\-algorithm\fP\fIsố\fP\fB=\fP\fIgiá trị\fP
-chọn một thuật toán không chuẩn để sử dụng bởi phe máy điều khiển này. Giá
-trị có sẵn: \fBidle_ai\fP and \fBsample_ai\fP.
+\fB\-\-algorithm\fP\fIsố\fP\fB=\fP\fIgiá_trị\fP
+chọn một thuật toán không chuẩn để sử dụng bởi máy tính cho phe này. Giá trị
+có sẵn: \fBidle_ai\fP và \fBsample_ai\fP.
 .TP 
-\fB\-\-controller\fP\fIsố\fP\fB=\fP\fIgiá trị\fP
+\fB\-\-controller\fP\fIsố\fP\fB=\fP\fIgiá_trị\fP
 chọn người điều khiển cho phe này. Giá trị có sẵn: \fBhuman\fP và \fBai\fP.
 .TP 
-\fB\-\-era=\fP\fIgiá trị\fP
-sử dụng tùy chọn này để chơi sử dụng một thời đại đã chọn thay vì thời đại
-\fBDefault\fP. Thời đại được chọn bởi một số nhận diện. Thời đại được mô tả
+\fB\-\-era=\fP\fIgiá_trị\fP
+sử dụng tùy chọn này để chơi trong thời đại được chọn thay vì thời đại
+\fBDefault\fP. Thời đại được chọn theo một định danh. Các thời đại được mô tả
 trong tập tin \fBdata/multiplayer/eras.cfg\fP.
 .TP 
 \fB\-\-exit\-at\-end\fP
-thoát một khi màng chơi kết thúc mà không hiện hộp thoại thắng/thua cần
-người chơi phải nhấn nút đồng ý. Đây của sử dùng cho việc kiểm nghiệm có thể
-lập trình được.
+thoát một khi màn chơi kết thúc mà không hiện hộp thoại chiến thắng/thua
+cuộc cần người chơi phải nhấn Đồng ý. Tùy chọn này cũng được sử dụng để kiểm
+nghiệm theo kịch bản.
 .TP 
 \fB\-\-nogui\fP
-chạy trò chơi không có giao diện người dùng. Phải hiện lên trước khi
-\fB\-\-multiplayer\fP để cả hiệu quả mong muốn.
+chạy trò chơi không có giao diện người dùng đồ họa. Phải xuất hiện trước
+\fB\-\-multiplayer\fP để có hiệu quả mong muốn.
 .TP 
-\fB\-\-parm\fP\fIsố\fP\fB=\fP\fItên\fP\fB:\fP\fIgiá trị\fP
-đặt thông số bổ sung cho phe này. Thông số này phụ thuộc và tùy chọn sử dụng
-với \fB\-\-controller\fP và \fB\-\-algorithm\fP. Nó chỉ hưu ích với ai đang tự thiết
-kế trí tuệ máy (AI) của riêng mình. (chưa có tư liệu hoàn chỉnh)
+\fB\-\-parm\fP\fIsố\fP\fB=\fP\fItên\fP\fB:\fP\fIgiá_trị\fP
+đặt tham số bổ sung cho phe này. Tham số này phụ thuộc vào tùy chọn được sử
+dụng với \fB\-\-controller\fP và \fB\-\-algorithm\fP. Nó chỉ hữu ích với những người
+thiết kế trí tuệ máy của riêng mình. (chưa có tư liệu hoàn chỉnh)
 .TP 
-\fB\-\-scenario=\fP\fIgiá trị\fP
-chọn một màn nhiều người chơi bởi số nhận diện. Số nhận diện của màn chơi
-mặc định là \fBmultiplayer_The_Freelands\fP.
+\fB\-\-scenario=\fP\fIgiá_trị\fP
+chọn một màn chơi nhiều người chơi theo định danh. Định danh màn chơi mặc
+định là \fBmultiplayer_The_Freelands\fP.
 .TP 
-\fB\-\-side\fP\fIsố\fP\fB=\fP\fIgiá trị\fP
+\fB\-\-side\fP\fIsố\fP\fB=\fP\fIgiá_trị\fP
 chọn một liên minh của thời đại hiện thời cho phe này. Liên minh được chọn
-bởi một số nhận diện. Liên minh được mô tả trong tập tin
-data/multiplayer.cfg.
+bởi một định danh. Liên minh được mô tả trong tập tin data/multiplayer.cfg.
 .TP 
-\fB\-\-turns=\fP\fIgiá trị\fP
-đặt số lượt đi cho màn chơi đã chọn. Mặc định là \fB50\fP.
+\fB\-\-turns=\fP\fIgiá_trị\fP
+đặt số lượt cho màn chơi được chọn. Mặc định là \fB50\fP.
 .
-.SH "TÌNH TRẠNG THOÁT"
+.SH "TRẠNG THÁI THOÁT"
 .
-Tình trạng thoát bình thường là 0. Tình trạng thoát 1 biểu thị một lỗi khởi
-tạo (SDL, đoạn phim, phông chữ, vân vân). Tình trạng thoát 2 biểu thị một
-lỗi với tùy chọn dòng lệnh.
+Trạng thái thoát bình thường là 0. Trạng thái thoát 1 chỉ thị một lỗi khởi
+tạo (SDL, video, phông, v.v...). Trạng thái thoát 2 chỉ thị một lỗi với các
+tùy chọn dòng lệnh.
 .
 .SH "TÁC GIẢ"
 .
@@ -248,7 +249,7 @@ Viết bởi David White <davidnwhite@verizon.net>.
 Chỉnh sửa bởi Nils Kneuper <crazy\-ivanovic@gmx.net>, ott
 <ott@gaon.net> và Soliton <soliton.de@gmail.com>.
 .br
-Trang hướng dẫn này vốn được viết bởi Cyril Bouthors
+Trang hướng dẫn này ban đầu được viết bởi Cyril Bouthors
 <cyril@bouthors.org>.
 .br
 Truy cập trang chủ chính thức: http://www.wesnoth.org/
@@ -257,10 +258,11 @@ Truy cập trang chủ chính thức: http://www.wesnoth.org/
 .
 Copyright \(co 2003\-2013 David White <davidnwhite@verizon.net>
 .br
-Đây là Phần mềm Tự do; được cấp phép GPL phiên bản 2, được công bố bởi Free
-Software Foundation (Tổ chức phần mềm tự do). KHÔNG có sự đảm bảo; kể cả cho
-KHẢ NĂNG ĐEM LẠI LỢI NHUẬN HAY LỢI ÍCH CHO MỘT MỤC ĐÍCH CỤ THỂ.
+Đây là Phần mềm Tự do; phần mềm này được cấp phép theo GPL phiên bản 2, được
+công bố bởi Free Software Foundation (Tổ chức phần mềm tự do). KHÔNG có bảo
+hành; kể cả cho KHẢ NĂNG ĐEM LẠI LỢI NHUẬN hay LỢI ÍCH CHO MỘT MỤC ĐÍCH CỤ
+THỂ.
 .
-.SH "Cũng xem"
+.SH "XEM THÊM"
 .
 \fBwesnothd\fP(6).

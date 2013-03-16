@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-08-12 10:25+0200\n"
+"POT-Creation-Date: 2013-03-16 23:25+0100\n"
 "PO-Revision-Date: 2012-02-28 17:17+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -1714,42 +1714,42 @@ msgstr ""
 "현재의 시간대는 스테이터스 창의 미니맵 밑에 보여집니다. 일반적인 낮/밤 사이클"
 "에서는 아침과 오후는 낮으로, 초경과 삼경은 밤으로 칩니다.\n"
 
+#. [topic]: id=time_of_day
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
-#. [topic]: id=time_of_day
 #: data/core/help.cfg:272 data/core/macros/schedules.cfg:6
 #: data/core/macros/schedules.cfg:246
 msgid "Dawn"
 msgstr "새벽"
 
-#. [time]: id=morning
 #. [topic]: id=time_of_day
+#. [time]: id=morning
 #: data/core/help.cfg:273 data/core/macros/schedules.cfg:17
 msgid "Morning"
 msgstr "아침"
 
-#. [time]: id=afternoon
 #. [topic]: id=time_of_day
+#. [time]: id=afternoon
 #: data/core/help.cfg:274 data/core/macros/schedules.cfg:26
 msgid "Afternoon"
 msgstr "오후"
 
+#. [topic]: id=time_of_day
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
-#. [topic]: id=time_of_day
 #: data/core/help.cfg:275 data/core/macros/schedules.cfg:35
 #: data/core/macros/schedules.cfg:358
 msgid "Dusk"
 msgstr "황혼"
 
-#. [time]: id=first_watch
 #. [topic]: id=time_of_day
+#. [time]: id=first_watch
 #: data/core/help.cfg:276 data/core/macros/schedules.cfg:46
 msgid "First Watch"
 msgstr "초경"
 
-#. [time]: id=second_watch
 #. [topic]: id=time_of_day
+#. [time]: id=second_watch
 #: data/core/help.cfg:277 data/core/macros/schedules.cfg:58
 msgid "Second Watch"
 msgstr "삼경"
@@ -1816,13 +1816,13 @@ msgstr ""
 "\n"
 "대부분의 유닛은 3 레벨까지 올라갈 수 있지만 모두 그런것은 아닙니다. "
 "<ref>dst='unit_Mage' text='마법사'</ref> 같은 일부 유닛은 4 레벨까지 있습니"
-"다. 일단 유닛이 그 최고 레벨까지 도달하면 <italic>text='한계승급'</italic>"
-"(AMLA)이 가능해집니다. 한계승급에 필요한 경험치는 유닛이 경험치 목표량에 도달"
-"할때마다 수정되지만, 해당 유닛의 레벨은 오르지 않습니다. 한계승급의 일반적인 "
-"효과는 유닛의 최고 HP를 3 늘리고 완전회복시켜주는 것입니다. 최초의 AMLA는 보"
-"통 150XP (영리한 유닛의 경우 120XP)를 모았을때 일어납니다. 하지만 한계승급을 "
-"계속하는 것은 이것이 중첩될때마다 점점 어려워지므로, 보통은 낮은 레벨 유닛을 "
-"승급시키는 편이 좀더 유용합니다."
+"다. 일단 유닛이 그 최고 레벨까지 도달하면 <italic>text='한계승급'</"
+"italic>(AMLA)이 가능해집니다. 한계승급에 필요한 경험치는 유닛이 경험치 목표량"
+"에 도달할때마다 수정되지만, 해당 유닛의 레벨은 오르지 않습니다. 한계승급의 일"
+"반적인 효과는 유닛의 최고 HP를 3 늘리고 완전회복시켜주는 것입니다. 최초의 "
+"AMLA는 보통 150XP (영리한 유닛의 경우 120XP)를 모았을때 일어납니다. 하지만 한"
+"계승급을 계속하는 것은 이것이 중첩될때마다 점점 어려워지므로, 보통은 낮은 레"
+"벨 유닛을 승급시키는 편이 좀더 유용합니다."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:298
