@@ -198,14 +198,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 					}
 				} else {
 					// no selected unit or we can't move it
-
-					if (selected_hex_.valid() && mouseover_unit != units_.end()
-							&& mouseover_unit->side() == side_num_ ) {
-							// empty hex field selected and unit on our site under the cursor
-						cursor::set(dragging_started_ ? cursor::MOVE_DRAG : cursor::MOVE);
-					} else {
-						cursor::set(cursor::NORMAL);
-					}
+					cursor::set(cursor::NORMAL);
 				}
 			}
 		} // end planned unit map scope
@@ -253,24 +246,6 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 				}
 			}
 
-			if(selected_hex_.valid()
-					&& selected_unit == units_.end()
-					&& mouseover_unit.valid()
-					&& mouseover_unit != units_.end()) {
-				// Show the route from selected hex to mouseover unit
-				current_route_ = get_route(&*mouseover_unit, selected_hex_, viewing_team());
-
-				resources::whiteboard->create_temp_move();
-
-				if(!browse) {
-					gui().set_route(&current_route_);
-				}
-			} else if (selected_unit == units_.end()) {
-				current_route_.steps.clear();
-				gui().set_route(NULL);
-				resources::whiteboard->erase_temp_move();
-			}
-
 			unit_map::iterator iter = mouseover_unit;
 			if (iter != units_.end())
 				un = &*iter;
@@ -278,7 +253,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 				un = NULL;
 		} //end planned unit map scope
 
-		if ( (!selected_hex_.valid()) && un && current_paths_.destinations.empty() &&
+		if (un && current_paths_.destinations.empty() &&
 			!gui().fogged(un->get_location()))
 		{
 			if (un->side() != side_num_) {
@@ -456,7 +431,7 @@ bool mouse_handler::right_click_show_menu(int x, int y, const bool browse)
 		wb::future_map_if_active raii;
 		unit = find_unit(selected_hex_);
 	}
-	if (selected_hex_.valid()) {
+	if (selected_hex_.valid() && unit != units_.end()) {
 		select_hex(map_location(), browse);
 		return false;
 	} else {
@@ -567,26 +542,13 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 		}
 	}
 	//otherwise we're trying to move to a hex
-	else if (
-			// the old use case: move selected unit to mouse hex field
-			( (!browse || resources::whiteboard->is_active()) &&
-					selected_hex_.valid() && selected_hex_ != hex &&
-					u != units_.end() && u.valid() &&
-					(u->side() == side_num_ || resources::whiteboard->is_active()) &&
-					clicked_u == units_.end() &&
-					!current_route_.steps.empty() &&
-					current_route_.steps.front() == selected_hex_
-			)
-			|| // the new use case: move mouse unit to selected hex field
-			( (!browse || resources::whiteboard->is_active()) &&
-					selected_hex_.valid() && selected_hex_ != hex &&
-					clicked_u != units_.end() &&
-					!current_route_.steps.empty() &&
-					current_route_.steps.back() == selected_hex_
-					&& u == units_.end()
-					&& clicked_u->side() == side_num_
-			)
-	) {
+	else if((!browse || resources::whiteboard->is_active()) &&
+			selected_hex_.valid() && selected_hex_ != hex &&
+	         u != units_.end() && u.valid() &&
+	         (u->side() == side_num_ || resources::whiteboard->is_active()) &&
+		     clicked_u == units_.end() &&
+		     !current_route_.steps.empty() &&
+		     current_route_.steps.front() == selected_hex_) {
 
 		// Ignore this command if commands are disabled.
 		if ( commands_disabled )
@@ -610,8 +572,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 		} else {
 			//Don't move if the unit already has actions
 			//from the whiteboard.
-			if (resources::whiteboard->unit_has_actions(
-					u != units_.end() ? &*u : &*clicked_u )) {
+			if (resources::whiteboard->unit_has_actions(&*u)) {
 				return false;
 			}
 
@@ -674,37 +635,8 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 				}
 			}
 		}
-		return;
-	}
 
-	if (hex.valid() && u == units_.end()) {
-		// compute unit in range of the empty selected_hex field
-
-		gui_->unhighlight_reach();
-
-		pathfind::paths reaching_unit_locations;
-
-		pathfind::paths clicked_location;
-		clicked_location.destinations.insert(hex);
-
-		for(unit_map::iterator u = units_.begin(); u != units_.end(); ++u) {
-			bool invisible = u->invisible(u->get_location());
-
-			if (!gui_->fogged(u->get_location()) && !u->incapacitated() && !invisible)
-			{
-
-				const pathfind::paths& path = pathfind::paths(*u, false, true,
-						teams_[gui_->viewing_team()], path_turns_, false, false);
-
-				if (path.destinations.find(hex) != path.destinations.end()) {
-					reaching_unit_locations.destinations.insert(u->get_location());
-					gui_->highlight_another_reach(clicked_location);
-				}
-			}
-		}
-		gui_->highlight_another_reach(reaching_unit_locations);
-	}
-	else {
+	} else {
 		gui().unhighlight_reach();
 		current_paths_ = pathfind::paths();
 		current_route_.steps.clear();
