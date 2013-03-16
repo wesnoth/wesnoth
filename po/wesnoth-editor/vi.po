@@ -1,17 +1,17 @@
-# Phạm Thành Nam <phamthanhnam.ptn@gmail.com>, 2009.
+# Phạm Thành Nam <phamthanhnam.ptn@gmail.com>, 2009, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2013-03-09 08:51+0100\n"
-"PO-Revision-Date: 2011-05-31 09:30+0700\n"
-"Last-Translator: Huynh Yen Loc <nightgaunt13@gmail.com>\n"
-"Language-Team: Vietnamese <>\n"
+"PO-Revision-Date: 2013-03-06 20:18+0800\n"
+"Last-Translator: Phạm Thành Nam\n"
+"Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.4\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. [brush]
@@ -36,10 +36,8 @@ msgstr "Đường lục giác TB-ĐN"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:62
-#, fuzzy
-#| msgid "Hex Line NW-SE"
 msgid "Hex Line SE-NW"
-msgstr "Đường lục giác TB-ĐN"
+msgstr "Đường lục giác ĐN-TB"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:11
@@ -74,7 +72,7 @@ msgstr "rừng"
 #. [editor_group]: id=fall
 #: data/core/editor/terrain-groups.cfg:52
 msgid "fall"
-msgstr ""
+msgstr "mùa thu"
 
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:59
@@ -147,9 +145,9 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
-"Nút chuột trái hiển thị vùng chọn đấu thủ, nút chuột phải xóa vùng chọn. Các "
-"phím số cuộn đến vị trí vị trí ban đầu, alt+số thiết lập vị trí ban đầu "
-"tương ứng dưới con trỏ, delete xóa."
+"Nút chuột trái hiển thị vùng chọn của người chơi, nút chuột phải xóa vùng "
+"chọn. Các phím số cuộn đến vị trí vị trí ban đầu, alt+số thiết lập vị trí "
+"ban đầu tương ứng dưới con trỏ, delete xóa."
 
 #. [editor_tool_hint]: id=editor-paste
 #: data/core/editor/tool-hints.cfg:30
@@ -183,7 +181,7 @@ msgstr "Cửa sổ"
 #. [menu]: id=menu-editor-terrain
 #: data/themes/editor.cfg:439
 msgid "Group"
-msgstr ""
+msgstr "Nhóm"
 
 #. [label]: id=villages-icon
 #: data/themes/editor.cfg:463
@@ -254,7 +252,7 @@ msgstr "Lưu bản đồ thành"
 
 #: src/editor/map/context_manager.cpp:395
 msgid "The file already exists. Do you want to overwrite it?"
-msgstr "Tập tin đã tồn tại. Bạn có muốn ghi đè lên nó không?"
+msgstr "Tập tin đã tồn tại. Bạn có muốn ghi đè lên không?"
 
 #: src/editor/map/context_manager.cpp:429
 msgid "No random map generators found."
@@ -320,7 +318,7 @@ msgid ""
 "an existing file"
 msgstr ""
 "Tập tin bản đồ trông giống như một màn chơi, nhưng giá trị map_data không "
-"chỉ đến một tập tin tồn tại."
+"chỉ đến một tập tin tồn tại"
 
 #: src/editor/map/map_context.cpp:133
 msgid "Empty map file"
@@ -336,7 +334,7 @@ msgstr "Không thể lưu bản đồ: $msg"
 
 #: src/editor/palette/editor_palettes.cpp:48
 msgid "(Unknown Group)"
-msgstr ""
+msgstr "(Nhóm không xác định)"
 
 #: src/editor/palette/editor_palettes.cpp:305
 msgid "(non-core)"
@@ -348,21 +346,19 @@ msgstr "Sẽ không hoạt động trong trò chơi nếu không chú ý thêm."
 
 #: src/editor/palette/terrain_palettes.cpp:55
 msgid "FG: "
-msgstr "FG: "
+msgstr "TC: "
 
 #: src/editor/palette/terrain_palettes.cpp:56
 msgid "BG: "
-msgstr "BG: "
+msgstr "HC: "
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:86
-#, fuzzy
-#| msgid "(Player)^None"
 msgid "player^None"
 msgstr "Không có"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:98
 msgid "Player $player_number"
-msgstr ""
+msgstr "Người chơi $player_number"
 
 #: src/gui/dialogs/editor_settings.cpp:166
 msgid "Custom setting"
