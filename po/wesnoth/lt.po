@@ -15,6 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
+"X-Generator: Poedit 1.5.5\n"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:4
@@ -271,14 +272,12 @@ msgstr ""
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:5
 #, fuzzy
-#| msgid "Multiplayer_AI^RCA AI"
 msgid "Multiplayer_AI^Default AI (RCA)"
 msgstr "RCA DI"
 
 #. [ai]: id=experimental_ai
 #: data/ai/ais/ai_generic-rush.cfg:7
 #, fuzzy
-#| msgid "Multiplayer_AI^RCA AI"
 msgid "Multiplayer_AI^Experimental AI"
 msgstr "RCA DI"
 
@@ -345,7 +344,7 @@ msgstr ""
 #. [lua]: init
 #: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4648
 msgid "Set AI parameters"
-msgstr ""
+msgstr "Nustatyti DI parameterus"
 
 #. [lua]: init
 #: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4654
@@ -359,8 +358,6 @@ msgstr ""
 #. [lua]: init
 #: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4662
 #, fuzzy
-#| msgid "Enemy unit sighted!"
-#| msgid_plural "$enemies enemy units sighted!"
 msgid "Enemy unit weight  (default: 100)"
 msgstr "Pastebėtas priešiškas dalinys"
 
@@ -382,7 +379,7 @@ msgstr ""
 #. [test]: id=The_Elves_Besieged
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:5
 msgid "The Elves Besieged"
-msgstr ""
+msgstr "Elfai apsupti"
 
 #. [side]
 #. [side]: type=Spearman, id=Konrad
@@ -391,7 +388,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/patrols.cfg:40
 #: data/ai/micro_ais/scenarios/patrols.cfg:94
 msgid "Konrad"
-msgstr ""
+msgstr "Konradas"
 
 #. [side]: type=Elvish Champion, id=Galdrad
 #. [side]: type=Elvish Shyde, id=Chantal
@@ -400,17 +397,17 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:156
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:176
 msgid "Rebels"
-msgstr ""
+msgstr "Sukilėliai"
 
 #. [unit]: id=Delfador, type=Elder Mage
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:49
 msgid "Delfador"
-msgstr ""
+msgstr "Delfadoras"
 
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:90
 msgid "Urug-Telfar"
-msgstr ""
+msgstr "Urug-Telfaras"
 
 #. [side]: id=Vanak, type=Orcish Ruler
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
@@ -421,27 +418,27 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:134
 #: data/ai/micro_ais/scenarios/messenger-escort.cfg:23
 msgid "Orcs"
-msgstr ""
+msgstr "Orkai"
 
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:109
 msgid "Knafa-Tan"
-msgstr ""
+msgstr "Knafa-Tanas"
 
 #. [side]: type=Orcish Warlord, id=Maga-Knafa
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:127
 msgid "Maga-Knafa"
-msgstr ""
+msgstr "Maga-Knafas"
 
 #. [side]: type=Elvish Champion, id=Galdrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:146
 msgid "Galdrad"
-msgstr ""
+msgstr "Galdradas"
 
 #. [side]: type=Elvish Shyde, id=Chantal
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:163
 msgid "Chantal"
-msgstr ""
+msgstr "Čantal"
 
 #. [message]: speaker=Konrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:213
@@ -468,7 +465,6 @@ msgstr ""
 #. [event]
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:226
 #, fuzzy
-#| msgid "Move leader here"
 msgid "Move Konrad here"
 msgstr "Atveskite vadą čia"
 
@@ -586,18 +582,18 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/animals.cfg:27
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:44
 msgid "Animals"
-msgstr ""
+msgstr "Gyvūnai"
 
 #. [side]: id=Rutburt, type=Outlaw
 #: data/ai/micro_ais/scenarios/animals.cfg:47
 #: data/ai/micro_ais/scenarios/wolves.cfg:26
 msgid "Humans"
-msgstr ""
+msgstr "Žmonės"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:61
 msgid "Forest Creatures"
-msgstr ""
+msgstr "Miško būtybės"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:76
@@ -607,7 +603,7 @@ msgstr ""
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:91
 msgid "Spiders"
-msgstr ""
+msgstr "Vorai"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:106
@@ -622,12 +618,11 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/wolves.cfg:5
 #: data/ai/micro_ais/scenarios/wolves.cfg:40
 msgid "Wolves"
-msgstr ""
+msgstr "Vilkai"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:136
 #, fuzzy
-#| msgid "help"
 msgid "Whelps"
 msgstr "pagalba"
 
@@ -638,7 +633,6 @@ msgstr "pagalba"
 #: data/ai/micro_ais/scenarios/swarm.cfg:67
 #: data/ai/micro_ais/scenarios/wolves.cfg:96
 #, fuzzy
-#| msgid "End Scenario"
 msgid "End scenario"
 msgstr "Baigti scenarijų"
 
@@ -679,7 +673,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/protect-unit.cfg:136
 #: data/ai/micro_ais/scenarios/wolves.cfg:199
 msgid "Question for the Player"
-msgstr ""
+msgstr "Klausimas žaidėjui"
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/animals.cfg:367
@@ -727,7 +721,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/animals.cfg:399
 #: data/ai/micro_ais/scenarios/wolves.cfg:238
 msgid "Death of Rutburt"
-msgstr ""
+msgstr "Rutburto mirtis"
 
 #. [note]
 #: data/ai/micro_ais/scenarios/animals.cfg:403
@@ -752,7 +746,7 @@ msgstr ""
 #. [side]: type=Orcish Leader, id=Big Bad Orc
 #: data/ai/micro_ais/scenarios/bottleneck-defense.cfg:38
 msgid "Big Bad Orc"
-msgstr ""
+msgstr "Didelis blogas orkas"
 
 #. [event]: (id=Big Bad Orc) profile profile}
 #: data/ai/micro_ais/scenarios/bottleneck-defense.cfg:85
@@ -804,19 +798,18 @@ msgstr ""
 #. [objectives]
 #: data/ai/micro_ais/scenarios/bottleneck-defense.cfg:115
 #, fuzzy
-#| msgid "Save the Map As"
 msgid "Take the pass"
 msgstr "Išsaugoti žemėlapį kaip"
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/bottleneck-defense.cfg:117
 msgid "Defeat all humans"
-msgstr ""
+msgstr "Nugalėkite visus žmones"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/bottleneck-defense.cfg:121
 msgid "Death of Big Bad Orc"
-msgstr ""
+msgstr "Didelio blogo orko mirtis"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/bottleneck-defense.cfg:125
@@ -834,7 +827,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/dragon.cfg:5
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:53
 msgid "Dragon"
-msgstr ""
+msgstr "Drakonas"
 
 #. [side]
 #. [unit]: id=Rowck, type=Fire Dragon
@@ -899,7 +892,6 @@ msgstr ""
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/dragon.cfg:101
 #, fuzzy
-#| msgid "Defeat"
 msgid "Defeat Rowck"
 msgstr "Pralaimėjimas"
 
@@ -934,12 +926,12 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/guardians.cfg:36
 #: data/ai/micro_ais/scenarios/swarm.cfg:26
 msgid "Gryphons"
-msgstr ""
+msgstr "Grifai"
 
 #. [side]: type=Orcish Leader, id=Another Bad Orc
 #: data/ai/micro_ais/scenarios/guardians.cfg:48
 msgid "Another Bad Orc"
-msgstr ""
+msgstr "Kitas blogas orkas"
 
 #. [unit]: type=Dwarvish Guardsman, id=guardian1
 #: data/ai/micro_ais/scenarios/guardians.cfg:95
@@ -960,7 +952,7 @@ msgstr ""
 #. [unit]: type=Giant Rat, id=coward1
 #: data/ai/micro_ais/scenarios/guardians.cfg:119
 msgid "Coward 1"
-msgstr ""
+msgstr "c1"
 
 #. [variables]
 #: data/ai/micro_ais/scenarios/guardians.cfg:125
@@ -970,7 +962,7 @@ msgstr ""
 #. [unit]: type=Giant Rat, id=coward2
 #: data/ai/micro_ais/scenarios/guardians.cfg:142
 msgid "Coward 2"
-msgstr ""
+msgstr "Bailys 2"
 
 #. [variables]
 #: data/ai/micro_ais/scenarios/guardians.cfg:148
@@ -982,7 +974,7 @@ msgstr ""
 #. [unit]: type=Giant Rat, id=coward3
 #: data/ai/micro_ais/scenarios/guardians.cfg:167
 msgid "Coward 3"
-msgstr ""
+msgstr "Bailys 3"
 
 #. [variables]
 #: data/ai/micro_ais/scenarios/guardians.cfg:173
@@ -994,7 +986,7 @@ msgstr ""
 #. [unit]: type=Giant Rat, id=coward4
 #: data/ai/micro_ais/scenarios/guardians.cfg:193
 msgid "Coward 4"
-msgstr ""
+msgstr "Bailys 4"
 
 #. [variables]
 #: data/ai/micro_ais/scenarios/guardians.cfg:199
@@ -1075,21 +1067,18 @@ msgstr ""
 #. [event]
 #: data/ai/micro_ais/scenarios/guardians.cfg:331
 #, fuzzy
-#| msgid "Invalid location"
 msgid "Guarded Location"
 msgstr "Netinkama vietovė"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/guardians.cfg:332
 #, fuzzy
-#| msgid "Faction"
 msgid "Station 1"
 msgstr "Frakcija"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/guardians.cfg:333
 #, fuzzy
-#| msgid "Faction"
 msgid "Station 2"
 msgstr "Frakcija"
 
@@ -1186,7 +1175,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/guardians.cfg:407
 #: data/ai/micro_ais/scenarios/guardians.cfg:413
 msgid "Coward"
-msgstr ""
+msgstr "Bailys"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/guardians.cfg:413
@@ -1237,7 +1226,6 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/guardians.cfg:440
 #: data/ai/micro_ais/scenarios/patrols.cfg:211
 #, fuzzy
-#| msgid "Defeat enemy leader(s)"
 msgid "Defeat all enemy units"
 msgstr "Nugalėkite priešų vadus"
 
@@ -1402,7 +1390,6 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/messenger-escort.cfg:140
 #: data/ai/micro_ais/scenarios/patrols.cfg:195
 #, fuzzy
-#| msgid "Notes:"
 msgid "Notes"
 msgstr "Pastabos:"
 
@@ -1428,7 +1415,6 @@ msgstr ""
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/lurkers.cfg:462
 #, fuzzy
-#| msgid "Clear all orders"
 msgid "Defeat all lurkers"
 msgstr "Atšaukti visus nurodymus"
 
@@ -1462,7 +1448,7 @@ msgstr ""
 #. [side]: id=Vanak, type=Orcish Ruler
 #: data/ai/micro_ais/scenarios/messenger-escort.cfg:17
 msgid "Vanak"
-msgstr ""
+msgstr "Vanakas"
 
 #. [event]
 #. [side]
@@ -1471,7 +1457,6 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/messenger-escort.cfg:72
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:71
 #, fuzzy
-#| msgid "Message:"
 msgid "Messenger"
 msgstr "Pranešimas:"
 
@@ -1493,7 +1478,6 @@ msgstr ""
 #. [event]
 #: data/ai/micro_ais/scenarios/messenger-escort.cfg:129
 #, fuzzy
-#| msgid "Move leader here"
 msgid "AI moves Messenger here"
 msgstr "Atveskite vadą čia"
 
@@ -1538,7 +1522,7 @@ msgstr ""
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/messenger-escort.cfg:160
 msgid "Death of Vanak"
-msgstr ""
+msgstr "Vanako mirtis"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/messenger-escort.cfg:174
@@ -1565,7 +1549,7 @@ msgstr ""
 #. [side]: id=Gertburt, type=Outlaw
 #: data/ai/micro_ais/scenarios/patrols.cfg:26
 msgid "Bandits"
-msgstr ""
+msgstr "Banditai"
 
 #. [side]
 #. [unit]: type=Orcish Slayer, id=Urudin
@@ -1680,7 +1664,7 @@ msgstr ""
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/patrols.cfg:219
 msgid "Death of Gertburt"
-msgstr ""
+msgstr "Gertburto mirtis"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:234
@@ -1720,7 +1704,6 @@ msgstr ""
 #. [event]
 #: data/ai/micro_ais/scenarios/protect-unit.cfg:121
 #, fuzzy
-#| msgid "Move leader here"
 msgid "Move Rossauba here"
 msgstr "Atveskite vadą čia"
 
@@ -1835,7 +1818,6 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/recruiting.cfg:5
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:77
 #, fuzzy
-#| msgid "Recruit"
 msgid "Recruiting"
 msgstr "Samdyti"
 
@@ -2135,7 +2117,7 @@ msgstr ""
 #. [side]
 #: data/ai/micro_ais/scenarios/swarm.cfg:40
 msgid "Bats"
-msgstr ""
+msgstr "Šikšnosparniai"
 
 #. [set_menu_item]: id=m02_new_gryphon
 #: data/ai/micro_ais/scenarios/swarm.cfg:92
@@ -2185,17 +2167,17 @@ msgstr ""
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/swarm.cfg:150
 msgid "Defeat all bats"
-msgstr ""
+msgstr "Nugalėkite visus šikšnosparnius"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/swarm.cfg:158
 msgid "Death of all gryphons"
-msgstr ""
+msgstr "Visų grifų mirtis"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/wolves.cfg:55
 msgid "More Wolves"
-msgstr ""
+msgstr "Daugiau vilkų"
 
 #. [set_menu_item]: id=m02_new_peasant
 #: data/ai/micro_ais/scenarios/wolves.cfg:121
@@ -2353,12 +2335,12 @@ msgstr ""
 #. [side]: type=White Mage
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:124
 msgid "North"
-msgstr ""
+msgstr "Šiaurė"
 
 #. [side]: type=Dark Adept
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:135
 msgid "South"
-msgstr ""
+msgstr "Pietūs"
 
 #. [message]: speaker=narrator
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:174
@@ -2400,7 +2382,6 @@ msgstr ""
 #. [text_input]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:213
 #, fuzzy
-#| msgid "Invalid location"
 msgid "AI Location:"
 msgstr "Netinkama vietovė"
 
@@ -2777,9 +2758,8 @@ msgstr "Turkų vertimas"
 
 #. [about]
 #: data/core/about.cfg:2876
-#, fuzzy
 msgid "Ukrainian Translation"
-msgstr "Rumunų vertimas"
+msgstr "Ukrainiečių vertimas"
 
 #. [about]
 #: data/core/about.cfg:2889
@@ -5481,7 +5461,6 @@ msgstr "Neturite vado, su kuriuo galite grąžinti."
 
 #: src/actions/create.cpp:608
 #, fuzzy
-#| msgid "None of your leaders is able to recall that unit."
 msgid "None of your leaders are able to recall that unit."
 msgstr "Nė vienas iš jūsų vadų negali grąžinto šio dalinio."
 
@@ -5503,7 +5482,6 @@ msgstr "Neturite vado, su kuriuo galite samdyti."
 
 #: src/actions/create.cpp:744
 #, fuzzy
-#| msgid "None of your leaders is able to recall that unit."
 msgid "None of your leaders are able to recruit that unit."
 msgstr "Nė vienas iš jūsų vadų negali grąžinto šio dalinio."
 
@@ -6489,7 +6467,6 @@ msgstr "Ar tikrai norite atleisti jį?"
 #. TRANSLATORS: this string ends with a space
 #: src/menu_events.cpp:104
 #, fuzzy
-#| msgid "This unit is loyal and requires no upkeep."
 msgid "This unit is loyal and requires no upkeep. "
 msgstr "Šis dalinys yra ištikimas ir nereikalauja išlaikymo."
 
@@ -6500,14 +6477,12 @@ msgstr "Ar tikrai norite atleisti ją?"
 #. TRANSLATORS: this string ends with a space
 #: src/menu_events.cpp:108
 #, fuzzy
-#| msgid "This unit is an experienced one, having advanced levels."
 msgid "This unit is an experienced one, having advanced levels. "
 msgstr "Tai patyręs dalinys, turintis paaukštinimų."
 
 #. TRANSLATORS: this string ends with a space
 #: src/menu_events.cpp:113
 #, fuzzy
-#| msgid "This unit is close to advancing a level."
 msgid "This unit is close to advancing a level. "
 msgstr "Šis dalinys tuoj gali pasikelti lygį."
 
@@ -8428,7 +8403,6 @@ msgstr "Gynyba:"
 
 #: src/reports.cpp:558
 #, fuzzy
-#| msgid "Version: "
 msgid "vision: "
 msgstr "Versija: "
 
@@ -8522,7 +8496,6 @@ msgstr "Nėra"
 
 #: src/reports.cpp:1076
 #, fuzzy
-#| msgid "Lawful units: "
 msgid "Lawful  units: "
 msgstr "Šviesos daliniai: "
 
@@ -8779,19 +8752,16 @@ msgid "Details"
 msgstr "Detalės"
 
 #: src/statistics_dialog.cpp:170
-#, fuzzy
 msgid "Select Scenario"
-msgstr "Testinis scenarijus"
+msgstr "Pasirinkite scenarijų"
 
 #: src/statistics_dialog.cpp:226 src/statistics_dialog.cpp:304
-#, fuzzy
 msgid "Campaign"
-msgstr "Kampanijų kūrimas"
+msgstr "Kampanija"
 
 #: src/statistics_dialog.cpp:226 src/statistics_dialog.cpp:304
-#, fuzzy
 msgid "Scenario"
-msgstr "Baigti scenarijų"
+msgstr "Scenarijus"
 
 #: src/statistics_dialog.cpp:284
 msgid "Damage"
@@ -8949,6 +8919,3 @@ msgstr ""
 
 #~ msgid "Unknown unit type '$type|' while generating traits"
 #~ msgstr "Generuojant bruožus nežinomas dalinio tipas „$type|“"
-
-#~ msgid "A component"
-#~ msgstr "Komponentas"
