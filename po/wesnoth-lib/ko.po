@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-03-09 08:51+0100\n"
+"POT-Creation-Date: 2013-03-16 23:53+0100\n"
 "PO-Revision-Date: 2011-11-22 18:38+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -1545,8 +1545,8 @@ msgstr "캠페인을 시작합니다"
 #: data/gui/default/window/unit_create.cfg:199
 #: data/gui/default/window/wml_message.cfg:485
 #: data/gui/default/window/wml_message.cfg:714 src/construct_dialog.cpp:122
-#: src/construct_dialog.cpp:129 src/gui/dialogs/message.cpp:162
-#: src/gui/dialogs/message.cpp:169
+#: src/construct_dialog.cpp:129 src/gui/dialogs/message.cpp:163
+#: src/gui/dialogs/message.cpp:170
 msgid "OK"
 msgstr "확인"
 
@@ -1934,7 +1934,7 @@ msgstr "로비 입장 메세지 보이지 않기"
 #: data/gui/default/window/game_save_overwrite.cfg:97
 #: data/gui/default/window/mp_depcheck_confirm_change.cfg:130
 #: data/gui/default/window/mp_host_game_prompt.cfg:105
-#: src/construct_dialog.cpp:125 src/gui/dialogs/message.cpp:176
+#: src/construct_dialog.cpp:125 src/gui/dialogs/message.cpp:177
 msgid "Yes"
 msgstr "예"
 
@@ -1946,7 +1946,7 @@ msgstr "예"
 #: data/gui/default/window/game_save_overwrite.cfg:111
 #: data/gui/default/window/mp_depcheck_confirm_change.cfg:144
 #: data/gui/default/window/mp_host_game_prompt.cfg:118
-#: src/construct_dialog.cpp:126 src/gui/dialogs/message.cpp:178
+#: src/construct_dialog.cpp:126 src/gui/dialogs/message.cpp:179
 msgid "No"
 msgstr "아니오"
 
@@ -3250,7 +3250,7 @@ msgid "Text doesn't start on canvas."
 msgstr ""
 
 #: src/gui/auxiliary/widget_definition.cpp:147
-#: src/gui/auxiliary/window_builder.cpp:258
+#: src/gui/auxiliary/window_builder.cpp:259
 msgid "No resolution defined."
 msgstr ""
 
@@ -3260,29 +3260,29 @@ msgstr ""
 #: src/gui/auxiliary/widget_definition/scrollbar_panel.cpp:68
 #: src/gui/auxiliary/widget_definition/stacked_widget.cpp:64
 #: src/gui/auxiliary/widget_definition/tree_view.cpp:69
-#: src/gui/auxiliary/window_builder.cpp:389
+#: src/gui/auxiliary/window_builder.cpp:390
 #: src/gui/auxiliary/window_builder/panel.cpp:36
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:39
 msgid "No grid defined."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:99
+#: src/gui/auxiliary/window_builder.cpp:100
 msgid "Linked '$id' group has multiple definitions."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:420
+#: src/gui/auxiliary/window_builder.cpp:421
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:533
+#: src/gui/auxiliary/window_builder.cpp:534
 msgid "A row must have a column."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:534
+#: src/gui/auxiliary/window_builder.cpp:535
 msgid "Number of columns differ."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder/control.cpp:43
+#: src/gui/auxiliary/window_builder/control.cpp:44
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr ""
 
@@ -3308,7 +3308,7 @@ msgstr ""
 msgid "No page defined."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder/pane.cpp:34
+#: src/gui/auxiliary/window_builder/pane.cpp:36
 msgid "Need at least 1 parallel item."
 msgstr ""
 
@@ -3402,9 +3402,9 @@ msgstr ""
 msgid "addons_view^All Add-ons"
 msgstr "추가 기능 삭제"
 
-#: src/gui/dialogs/addon_list.cpp:256
-#: src/gui/dialogs/network_transmission.cpp:54
-#: src/gui/dialogs/network_transmission.cpp:56 src/hotkeys.cpp:1130
+#: src/gui/dialogs/addon_list.cpp:257
+#: src/gui/dialogs/network_transmission.cpp:55
+#: src/gui/dialogs/network_transmission.cpp:57 src/hotkeys.cpp:1130
 msgid "unit_byte^B"
 msgstr ""
 
@@ -3448,53 +3448,53 @@ msgstr ""
 msgid "whisper to $receiver"
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:661
+#: src/gui/dialogs/lobby_main.cpp:663
 msgid "Games: showing $num_shown out of $num_total"
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:704
+#: src/gui/dialogs/lobby_main.cpp:706
 msgid "Observers allowed"
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:707
+#: src/gui/dialogs/lobby_main.cpp:709
 msgid "Observers not allowed"
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:1106
+#: src/gui/dialogs/lobby_main.cpp:1108
 msgid ""
 "Whisper session with $name started. If you don’t want to receive messages "
 "from this user, type /ignore $name\n"
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:1112
+#: src/gui/dialogs/lobby_main.cpp:1114
 msgid "Room $name joined"
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:1419
+#: src/gui/dialogs/lobby_main.cpp:1421
 msgid "$player has entered the room"
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:1457
+#: src/gui/dialogs/lobby_main.cpp:1459
 msgid "$player has left the room"
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:1570
+#: src/gui/dialogs/lobby_main.cpp:1572
 msgid "Password Required"
 msgstr "비밀방"
 
-#: src/gui/dialogs/lobby_main.cpp:1571
+#: src/gui/dialogs/lobby_main.cpp:1573
 msgid "Joining this game requires a password."
 msgstr "이 방에 들어가려면 암호를 입력하세요."
 
-#: src/gui/dialogs/lobby_main.cpp:1572
+#: src/gui/dialogs/lobby_main.cpp:1574
 msgid "Password: "
 msgstr "암호:"
 
-#: src/gui/dialogs/message.cpp:190 src/gui/dialogs/transient_message.cpp:62
+#: src/gui/dialogs/message.cpp:191 src/gui/dialogs/transient_message.cpp:62
 msgid "Error"
 msgstr "에러"
 
-#: src/gui/dialogs/mp_change_control.cpp:245
+#: src/gui/dialogs/mp_change_control.cpp:246
 msgid "Side $side"
 msgstr ""
 
@@ -3510,29 +3510,29 @@ msgstr ""
 msgid "$requester requires the following modifications to be disabled:"
 msgstr ""
 
-#: src/gui/dialogs/mp_depcheck_select_new.cpp:69
+#: src/gui/dialogs/mp_depcheck_select_new.cpp:70
 msgid ""
 "The currently chosen scenario is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
 
-#: src/gui/dialogs/mp_depcheck_select_new.cpp:74
+#: src/gui/dialogs/mp_depcheck_select_new.cpp:75
 msgid ""
 "The currently chosen era is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
 
-#: src/gui/dialogs/mp_depcheck_select_new.cpp:80
+#: src/gui/dialogs/mp_depcheck_select_new.cpp:81
 msgid ""
 "The currently chosen modification is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
 
-#: src/gui/dialogs/title_screen.cpp:297
+#: src/gui/dialogs/title_screen.cpp:298
 msgid "Version "
 msgstr ""
 
-#: src/gui/dialogs/title_screen.cpp:300
+#: src/gui/dialogs/title_screen.cpp:301
 msgid "Version"
 msgstr ""
 
@@ -3540,28 +3540,28 @@ msgstr ""
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:433
+#: src/gui/widgets/settings.cpp:434
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:500
+#: src/gui/widgets/settings.cpp:501
 msgid "No default gui defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:530
+#: src/gui/widgets/settings.cpp:531
 msgid "No state or draw section defined."
 msgstr ""
 
-#: src/gui/widgets/tree_view_node.cpp:104
+#: src/gui/widgets/tree_view_node.cpp:105
 msgid "Unknown builder id for tree view node."
 msgstr ""
 
-#: src/gui/widgets/window.cpp:1009
+#: src/gui/widgets/window.cpp:1012
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr ""
 
-#: src/gui/widgets/window.cpp:1034 src/gui/widgets/window.cpp:1074
+#: src/gui/widgets/window.cpp:1037 src/gui/widgets/window.cpp:1077
 #: src/tests/gui/test_gui2.cpp:433
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr ""

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-03-09 08:51+0100\n"
+"POT-Creation-Date: 2013-03-16 23:53+0100\n"
 "PO-Revision-Date: 2012-12-29 07:37+0100\n"
 "Last-Translator: Adrian Chaves Fernandez <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -310,21 +310,21 @@ msgid "Idle AI"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4636
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6053
 msgid ""
 "Enemy unit weight: The (negative) weight given to each enemy unit that can "
 "reach a potential target location.  Default: 100"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4637
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6054
 msgid ""
 "My unit weight: The (positive) weight given to each of the AI's units that "
 "can reach a potential target location.  Default: 1"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4638
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6055
 msgid ""
 "Goal distance weight: The (negative) weight for each step the unit is away "
 "from its goal location.\n"
@@ -333,7 +333,7 @@ msgid ""
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4639
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6056
 msgid ""
 "Terrain defense weight: The (positive) weight of the terrain defense rating "
 "for a potential target location.\n"
@@ -342,19 +342,19 @@ msgid ""
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4640
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6057
 msgid ""
 "Bearing: Everything else being equal, move protected unit toward or away "
 "from enemy groups.  Default: toward"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4648
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6065
 msgid "Set AI parameters"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4654
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6071
 msgid ""
 "Click on 'Close' without changing anything to use defaults.\n"
 "All weights must be 0 or larger.  Invalid inputs are converted to default "
@@ -363,7 +363,7 @@ msgid ""
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4662
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6079
 #, fuzzy
 #| msgid "Enemy unit sighted!"
 #| msgid_plural "$enemies enemy units sighted!"
@@ -371,17 +371,17 @@ msgid "Enemy unit weight  (default: 100)"
 msgstr "Albiscouse un inimigo!"
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4670
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6087
 msgid "My unit weight  (default: 1)"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4678
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6095
 msgid "Goal distance weight  (default: 3)"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4686
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6103
 msgid "Terrain defense weight  (default: 0.1)"
 msgstr ""
 
@@ -2517,8 +2517,8 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #. [unstore_unit]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:309
-#: data/lua/wml-tags.lua:1313 src/actions/attack.cpp:801
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:311
+#: data/lua/wml-tags.lua:10661 src/actions/attack.cpp:801
 msgid "poisoned"
 msgstr "envelenado"
 
@@ -4062,12 +4062,12 @@ msgid "Turns run out"
 msgstr "Que se esgoten as roldas."
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:1844
+#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:11192
 msgid "Early finish bonus."
 msgstr "Hai bonificación por rematar cedo."
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:1846
+#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:11194
 msgid "No early finish bonus."
 msgstr "Non hai bonificación por rematar cedo."
 
@@ -4080,7 +4080,7 @@ msgid "(early finish bonus)"
 msgstr "(hai bonificación por rematar cedo)"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:1854
+#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:11202
 msgid "No gold carried over to the next scenario."
 msgstr "Non se conserva ouro para o seguinte escenario."
 
@@ -5360,93 +5360,93 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1313 src/actions/attack.cpp:801
+#: data/lua/wml-tags.lua:10661 src/actions/attack.cpp:801
 msgid "female^poisoned"
 msgstr "envelenada"
 
 # “ralentizada” non é unha palabra normativa, pero dada a súa popularidade (por efecto do castelán?) e maila falta de boas alternativas (frear, refrear, entorpecer, desacelerar...) paréceme a mellor escolla.
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1315 src/actions/attack.cpp:806
+#: data/lua/wml-tags.lua:10663 src/actions/attack.cpp:806
 msgid "female^slowed"
 msgstr "ralentizada"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1315 src/actions/attack.cpp:806
+#: data/lua/wml-tags.lua:10663 src/actions/attack.cpp:806
 msgid "slowed"
 msgstr "ralentizado"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1316 src/actions/attack.cpp:811
+#: data/lua/wml-tags.lua:10664 src/actions/attack.cpp:811
 msgid "female^petrified"
 msgstr "petrificada"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1316 src/actions/attack.cpp:811
+#: data/lua/wml-tags.lua:10664 src/actions/attack.cpp:811
 msgid "petrified"
 msgstr "petrificado"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1317
+#: data/lua/wml-tags.lua:10665
 msgid "female^unhealable"
 msgstr "insandábel"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1317
+#: data/lua/wml-tags.lua:10665
 msgid "unhealable"
 msgstr "insandábel"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1780 src/multiplayer_connect.cpp:1856
+#: data/lua/wml/objectives.lua:11128 src/multiplayer_connect.cpp:1856
 msgid "Victory:"
 msgstr "Vitoria:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1781
+#: data/lua/wml/objectives.lua:11129
 msgid "Defeat:"
 msgstr "Derrota:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1782
+#: data/lua/wml/objectives.lua:11130
 msgid "Gold carryover:"
 msgstr "Ouro retido:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1783
+#: data/lua/wml/objectives.lua:11131
 msgid "Notes:"
 msgstr "Notas:"
 
 # Aparece na lista de obxectivos dos escenarios. Pode verse, por exemplo, na segunda parte da aprendizaxe. Vai a continuación do texto «Que se esgoten as roldas. ».
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1801
+#: data/lua/wml/objectives.lua:11149
 msgid "(%d turns left)"
 msgstr "Restan %d roldas."
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1803
+#: data/lua/wml/objectives.lua:11151
 msgid "(this turn left)"
 msgstr "(é a última rolda)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1856
+#: data/lua/wml/objectives.lua:11204
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "Conservarase un %d%% do ouro para o seguinte escenario."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
 #: data/scenario-test.cfg:857 src/dialogs.cpp:625 src/mp_depcheck.cpp:459
-#: src/mp_options.cpp:227 src/multiplayer_create.cpp:102
+#: src/mp_options.cpp:228 src/multiplayer_create.cpp:102
 msgid "OK"
 msgstr "Aceptar"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
 #: data/scenario-test.cfg:858 src/dialogs.cpp:626 src/dialogs.cpp:1067
-#: src/dialogs.cpp:1173 src/mp_options.cpp:232
+#: src/dialogs.cpp:1173 src/mp_options.cpp:233
 #: src/multiplayer_connect.cpp:1074 src/multiplayer_create.cpp:101
 #: src/multiplayer_wait.cpp:180
 msgid "Cancel"
@@ -5485,8 +5485,8 @@ msgstr "Continuar"
 #. [label]: id=selected-label-hp
 #: data/themes/default.cfg:205 data/themes/dfool.cfg:229
 #: data/themes/experimental.cfg:179 data/themes/widescreen.cfg:237
-#: data/themes/widescreen.cfg:257 src/menu_events.cpp:220 src/unit.cpp:2409
-#: src/unit.cpp:2609
+#: data/themes/widescreen.cfg:257 src/menu_events.cpp:220 src/unit.cpp:2408
+#: src/unit.cpp:2608
 msgid "HP"
 msgstr "Vida"
 
@@ -5762,7 +5762,7 @@ msgstr ""
 "A ruta ao complemento «<i>$addon_title</i>» contén caracteres incorrectos, "
 "así que non se pode instalar."
 
-#: src/addon/client.cpp:301 src/addon/manager_ui.cpp:682
+#: src/addon/client.cpp:301 src/addon/manager_ui.cpp:683
 msgid "Add-ons Manager"
 msgstr "Xestor de complementos"
 
@@ -5820,51 +5820,51 @@ msgstr "(descoñecido)"
 msgid "unit_byte^B"
 msgstr "B"
 
-#: src/addon/manager_ui.cpp:97
+#: src/addon/manager_ui.cpp:98
 msgid "addon_state^Not installed"
 msgstr "Non instalado"
 
-#: src/addon/manager_ui.cpp:97
+#: src/addon/manager_ui.cpp:98
 msgid "addon_state^Published, not installed"
 msgstr "Publicado, non instalado"
 
-#: src/addon/manager_ui.cpp:104
+#: src/addon/manager_ui.cpp:105
 msgid "addon_state^Installed"
 msgstr "Instalado"
 
-#: src/addon/manager_ui.cpp:104
+#: src/addon/manager_ui.cpp:105
 msgid "addon_state^Published"
 msgstr "Publicado"
 
-#: src/addon/manager_ui.cpp:107
+#: src/addon/manager_ui.cpp:108
 msgid "addon_state^Installed, upgradable"
 msgstr "Instalado, anovábel"
 
-#: src/addon/manager_ui.cpp:107
+#: src/addon/manager_ui.cpp:108
 msgid "addon_state^Published, upgradable"
 msgstr "Publicado, anovábel"
 
-#: src/addon/manager_ui.cpp:110
+#: src/addon/manager_ui.cpp:111
 msgid "addon_state^Installed, outdated on server"
 msgstr "Instalado, obsoleto no servidor"
 
-#: src/addon/manager_ui.cpp:110
+#: src/addon/manager_ui.cpp:111
 msgid "addon_state^Published, outdated on server"
 msgstr "Publicado, obsoleto no servidor"
 
-#: src/addon/manager_ui.cpp:113
+#: src/addon/manager_ui.cpp:114
 msgid "addon_state^Installed, broken"
 msgstr "Instalado, roto"
 
-#: src/addon/manager_ui.cpp:113
+#: src/addon/manager_ui.cpp:114
 msgid "addon_state^Published, broken"
 msgstr "Publicado, roto"
 
-#: src/addon/manager_ui.cpp:115
+#: src/addon/manager_ui.cpp:116
 msgid "addon_state^Unknown"
 msgstr "Descoñecido"
 
-#: src/addon/manager_ui.cpp:148
+#: src/addon/manager_ui.cpp:149
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -5878,37 +5878,37 @@ msgstr[1] ""
 "O complemento escollido ten as seguintes dependencias, que non están nin "
 "instaladas nin dispoñíbeis no servidor. Queres continuar?"
 
-#: src/addon/manager_ui.cpp:157
+#: src/addon/manager_ui.cpp:158
 msgid "Broken Dependencies"
 msgstr "Dependencias rotas"
 
-#: src/addon/manager_ui.cpp:173 src/addon/manager_ui.cpp:519
+#: src/addon/manager_ui.cpp:174 src/addon/manager_ui.cpp:520
 msgid "Author"
 msgstr "Autor"
 
-#: src/addon/manager_ui.cpp:173 src/addon/manager_ui.cpp:513
+#: src/addon/manager_ui.cpp:174 src/addon/manager_ui.cpp:514
 #: src/dialogs.cpp:576 src/menu_events.cpp:217 src/menu_events.cpp:910
 msgid "Name"
 msgstr "Nome"
 
-#: src/addon/manager_ui.cpp:173 src/addon/manager_ui.cpp:517
+#: src/addon/manager_ui.cpp:174 src/addon/manager_ui.cpp:518
 msgid "Version"
 msgstr "Versión"
 
-#: src/addon/manager_ui.cpp:174 src/addon/manager_ui.cpp:519
+#: src/addon/manager_ui.cpp:175 src/addon/manager_ui.cpp:520
 msgid "Size"
 msgstr "Tamaño"
 
-#: src/addon/manager_ui.cpp:174 src/addon/manager_ui.cpp:528
+#: src/addon/manager_ui.cpp:175 src/addon/manager_ui.cpp:529
 #: src/menu_events.cpp:216 src/menu_events.cpp:909 src/menu_events.cpp:1292
 msgid "Type"
 msgstr "Tipo"
 
-#: src/addon/manager_ui.cpp:204
+#: src/addon/manager_ui.cpp:205
 msgid "Install Dependencies"
 msgstr "Instalar as dependencias"
 
-#: src/addon/manager_ui.cpp:205
+#: src/addon/manager_ui.cpp:206
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed. Do you wish to install it before continuing?"
@@ -5922,13 +5922,13 @@ msgstr[1] ""
 "O complemento escollido ten a seguinte dependencia, que non está actualmente "
 "instalada. Queres instalala antes de continuar?"
 
-#: src/addon/manager_ui.cpp:241 src/addon/manager_ui.cpp:313
-#: src/addon/manager_ui.cpp:328 src/addon/manager_ui.cpp:333
-#: src/addon/manager_ui.cpp:815
+#: src/addon/manager_ui.cpp:242 src/addon/manager_ui.cpp:314
+#: src/addon/manager_ui.cpp:329 src/addon/manager_ui.cpp:334
+#: src/addon/manager_ui.cpp:816
 msgid "The server responded with an error:"
 msgstr "O servidor respondeu cun erro:"
 
-#: src/addon/manager_ui.cpp:252
+#: src/addon/manager_ui.cpp:253
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5939,11 +5939,11 @@ msgstr[0] "Non se puido instalar a seguinte dependencia. Queres continuar?"
 msgstr[1] ""
 "Non se puideron instalar as seguintes dependencias. Queres continuar?"
 
-#: src/addon/manager_ui.cpp:256
+#: src/addon/manager_ui.cpp:257
 msgid "Dependencies Installation Failed"
 msgstr "Non se instalaron as dependencias"
 
-#: src/addon/manager_ui.cpp:279
+#: src/addon/manager_ui.cpp:280
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
@@ -5951,24 +5951,24 @@ msgstr ""
 "O complemento «$addon|» xa está instalado e contén información adicional que "
 "se perderá de maneira permanente se continúas:"
 
-#: src/addon/manager_ui.cpp:283
+#: src/addon/manager_ui.cpp:284
 msgid "Publishing information file (.pbl)"
 msgstr "Ficheiro de publicación de información (.pbl)"
 
-#: src/addon/manager_ui.cpp:287
+#: src/addon/manager_ui.cpp:288
 msgid "Version control system (VCS) information"
 msgstr "Información do sistema de control de versións (VCS)"
 
-#: src/addon/manager_ui.cpp:291
+#: src/addon/manager_ui.cpp:292
 msgid "Do you really wish to continue?"
 msgstr "Queres continuar?"
 
-#: src/addon/manager_ui.cpp:293 src/addon/manager_ui.cpp:304
-#: src/addon/manager_ui.cpp:970 src/multiplayer.cpp:273
+#: src/addon/manager_ui.cpp:294 src/addon/manager_ui.cpp:305
+#: src/addon/manager_ui.cpp:971 src/multiplayer.cpp:273
 msgid "Confirm"
 msgstr "Confirmar"
 
-#: src/addon/manager_ui.cpp:301
+#: src/addon/manager_ui.cpp:302
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -5977,103 +5977,103 @@ msgstr ""
 "tamén se eliminarán do servidor de complementos. Está seguro de que quere "
 "continuar?"
 
-#: src/addon/manager_ui.cpp:317 src/addon/manager_ui.cpp:336
+#: src/addon/manager_ui.cpp:318 src/addon/manager_ui.cpp:337
 #: src/multiplayer_wait.cpp:408
 msgid "Response"
 msgstr "Resposta"
 
-#: src/addon/manager_ui.cpp:330
+#: src/addon/manager_ui.cpp:331
 msgid "Terms"
 msgstr "Termos"
 
-#: src/addon/manager_ui.cpp:515
+#: src/addon/manager_ui.cpp:516
 msgid "New Version"
 msgstr "Versión nova"
 
-#: src/addon/manager_ui.cpp:515
+#: src/addon/manager_ui.cpp:516
 msgid "Old Version"
 msgstr "Versión antiga"
 
 # Optimizado para baixas resolucións.
-#: src/addon/manager_ui.cpp:528
+#: src/addon/manager_ui.cpp:529
 msgid "Downloads"
 msgstr "Desc."
 
-#: src/addon/manager_ui.cpp:642
+#: src/addon/manager_ui.cpp:643
 msgid "Publish: $addon_title"
 msgstr "Publicar: $addon_title"
 
-#: src/addon/manager_ui.cpp:651
+#: src/addon/manager_ui.cpp:652
 msgid "Delete: $addon_title"
 msgstr "Eliminar: $addon_title"
 
-#: src/addon/manager_ui.cpp:678
+#: src/addon/manager_ui.cpp:679
 msgid "There are no add-ons available for download from this server."
 msgstr "Non hai complementos dispoñíbeis para descargar neste servidor."
 
-#: src/addon/manager_ui.cpp:679
+#: src/addon/manager_ui.cpp:680
 msgid "There are no add-ons matching the specified criteria on this server."
 msgstr ""
 "Non hai complementos neste servidor que coincidan cos criterios indicados."
 
-#: src/addon/manager_ui.cpp:701 src/dialogs.cpp:601 src/menu_events.cpp:984
+#: src/addon/manager_ui.cpp:702 src/dialogs.cpp:601 src/menu_events.cpp:984
 #: src/menu_events.cpp:1325
 msgid "Filter: "
 msgstr "Filtro: "
 
-#: src/addon/manager_ui.cpp:711
+#: src/addon/manager_ui.cpp:712
 msgid "Description"
 msgstr "Descrición"
 
-#: src/addon/manager_ui.cpp:716
+#: src/addon/manager_ui.cpp:717
 msgid "Update All"
 msgstr "Actualizalos todos"
 
-#: src/addon/manager_ui.cpp:723
+#: src/addon/manager_ui.cpp:724
 msgid "filter^Options"
 msgstr "Opcións"
 
-#: src/addon/manager_ui.cpp:829
+#: src/addon/manager_ui.cpp:830
 msgid "Add-on Installed"
 msgstr "Instalouse o complemento."
 
-#: src/addon/manager_ui.cpp:829
+#: src/addon/manager_ui.cpp:830
 msgid "Add-on Updated"
 msgstr "Complemento actualizado"
 
-#: src/addon/manager_ui.cpp:830
+#: src/addon/manager_ui.cpp:831
 msgid "The add-on '$addon_title|' has been successfully installed."
 msgstr "O complemento «$addon_title|» instalouse correctamente."
 
-#: src/addon/manager_ui.cpp:830
+#: src/addon/manager_ui.cpp:831
 msgid "The add-on '$addon_title|' has been successfully updated."
 msgstr "O complemento «$addon_title|» actualizouse correctamente."
 
-#: src/addon/manager_ui.cpp:835
+#: src/addon/manager_ui.cpp:836
 msgid "Add-ons Installed"
 msgstr "Instaláronse os complementos"
 
-#: src/addon/manager_ui.cpp:835
+#: src/addon/manager_ui.cpp:836
 msgid "Add-ons Updated"
 msgstr "Actualizáronse os complementos"
 
-#: src/addon/manager_ui.cpp:836
+#: src/addon/manager_ui.cpp:837
 msgid "All add-ons installed successfully."
 msgstr "Todos os complementos se instalaron correctamente."
 
-#: src/addon/manager_ui.cpp:836
+#: src/addon/manager_ui.cpp:837
 msgid "All add-ons updated successfully."
 msgstr "Todos os complementos se actualizaron correctamente."
 
-#: src/addon/manager_ui.cpp:840
+#: src/addon/manager_ui.cpp:841
 msgid "Installation Failed"
 msgstr "Non se efectuou a instalación"
 
-#: src/addon/manager_ui.cpp:840
+#: src/addon/manager_ui.cpp:841
 msgid "Update Failed"
 msgstr "Non se efectuou a actualización"
 
-#: src/addon/manager_ui.cpp:842
+#: src/addon/manager_ui.cpp:843
 msgid "The following add-on could not be downloaded or installed successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or installed successfully:"
@@ -6083,19 +6083,19 @@ msgstr[1] ""
 "Non se puideron descargar ou instalar correctamente os seguintes "
 "complementos:"
 
-#: src/addon/manager_ui.cpp:884 src/addon/manager_ui.cpp:894
+#: src/addon/manager_ui.cpp:885 src/addon/manager_ui.cpp:895
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "Houbo un erro ao descargar a lista de complementos do servidor."
 
-#: src/addon/manager_ui.cpp:912
+#: src/addon/manager_ui.cpp:913
 msgid "Network communication error."
 msgstr "Erro de comunicación a través da rede."
 
-#: src/addon/manager_ui.cpp:915 src/addon/manager_ui.cpp:918
+#: src/addon/manager_ui.cpp:916 src/addon/manager_ui.cpp:919
 msgid "Remote host disconnected."
 msgstr "O servidor remoto desconectouse."
 
-#: src/addon/manager_ui.cpp:921
+#: src/addon/manager_ui.cpp:922
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
@@ -6103,21 +6103,21 @@ msgstr ""
 "Houbo un problema ao crear os ficheiros necesarios para instalar o "
 "complemento."
 
-#: src/addon/manager_ui.cpp:927
+#: src/addon/manager_ui.cpp:928
 msgid "The add-ons server address specified is not valid."
 msgstr "O enderezo indicado do servidor de complementos non é correcto."
 
-#: src/addon/manager_ui.cpp:941
+#: src/addon/manager_ui.cpp:942
 msgid "You have no add-ons installed."
 msgstr "Non tes ningún complemento instalado."
 
-#: src/addon/manager_ui.cpp:965
+#: src/addon/manager_ui.cpp:966
 msgid "Are you sure you want to remove the following installed add-on?"
 msgid_plural "Are you sure you want to remove the following installed add-ons?"
 msgstr[0] "Seguro que queres eliminar este complemento?"
 msgstr[1] "Seguro que queres eliminar estes complementos?"
 
-#: src/addon/manager_ui.cpp:991
+#: src/addon/manager_ui.cpp:992
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -6131,19 +6131,19 @@ msgstr[1] ""
 "Estes complementos parecen conter información local de publicación ou "
 "control de versións, e non se eliminarán:"
 
-#: src/addon/manager_ui.cpp:1001
+#: src/addon/manager_ui.cpp:1002
 msgid "The following add-on could not be deleted properly:"
 msgid_plural "The following add-ons could not be deleted properly:"
 msgstr[0] "Non se puido eliminar correctamente o seguinte complemento:"
 msgstr[1] "Non se puideron eliminar correctamente os seguintes complementos:"
 
-#: src/addon/manager_ui.cpp:1008
+#: src/addon/manager_ui.cpp:1009
 msgid "Add-on Deleted"
 msgid_plural "Add-ons Deleted"
 msgstr[0] "Complemento eliminado"
 msgstr[1] "Complementos eliminados"
 
-#: src/addon/manager_ui.cpp:1010
+#: src/addon/manager_ui.cpp:1011
 msgid "The following add-on was successfully deleted:"
 msgid_plural "The following add-ons were successfully deleted:"
 msgstr[0] "O seguinte complemento eliminouse correctamente:"
@@ -6186,7 +6186,7 @@ msgid "Total damage"
 msgstr "Dano total:"
 
 # Situación do defensor cando o atacante utiliza un tipo de ataque do que non dispón o defensor.
-#: src/attack_prediction_display.cpp:261 src/mouse_events.cpp:911
+#: src/attack_prediction_display.cpp:261 src/mouse_events.cpp:843
 msgid "No usable weapon"
 msgstr "Non é posíbel contraatacar."
 
@@ -6194,7 +6194,7 @@ msgstr "Non é posíbel contraatacar."
 msgid "Chance of being unscathed"
 msgstr "Probabilidade de resultar ileso:"
 
-#: src/attack_prediction_display.cpp:545 src/mouse_events.cpp:980
+#: src/attack_prediction_display.cpp:545 src/mouse_events.cpp:912
 msgid "Damage Calculations"
 msgstr "Cálculo de danos"
 
@@ -6358,7 +6358,7 @@ msgstr "Movementos: "
 msgid "KB"
 msgstr "KiB"
 
-#: src/game_config.cpp:341
+#: src/game_config.cpp:348
 msgid "Invalid color range: "
 msgstr "Rango de cores incorrecto: "
 
@@ -6499,40 +6499,40 @@ msgstr "Manto do descoñecido"
 msgid "none"
 msgstr "ningún"
 
-#: src/gui/dialogs/lobby_player_info.cpp:98
+#: src/gui/dialogs/lobby_player_info.cpp:99
 msgid "In game:"
 msgstr "Na partida:"
 
-#: src/gui/dialogs/lobby_player_info.cpp:100
+#: src/gui/dialogs/lobby_player_info.cpp:101
 msgid "(observing)"
 msgstr "(observando)"
 
-#: src/gui/dialogs/lobby_player_info.cpp:102
+#: src/gui/dialogs/lobby_player_info.cpp:103
 msgid "(playing)"
 msgstr "(xogando)"
 
 # Aparece na nova interface da sala de espera para partidas con varios xogadores, ao premer dúas veces seguidas sobre un xogador que está na sala de espera.
-#: src/gui/dialogs/lobby_player_info.cpp:105
+#: src/gui/dialogs/lobby_player_info.cpp:106
 msgid "In lobby"
 msgstr "Na sala de espera."
 
-#: src/gui/dialogs/lobby_player_info.cpp:129
+#: src/gui/dialogs/lobby_player_info.cpp:130
 msgid "On friends list"
 msgstr "Na lista de amigos"
 
-#: src/gui/dialogs/lobby_player_info.cpp:134
+#: src/gui/dialogs/lobby_player_info.cpp:135
 msgid "On ignores list"
 msgstr "Na lista de ignorados"
 
-#: src/gui/dialogs/lobby_player_info.cpp:139
+#: src/gui/dialogs/lobby_player_info.cpp:140
 msgid "Neither a friend nor ignored"
 msgstr "Nin amigo nin ignorado"
 
-#: src/gui/dialogs/lobby_player_info.cpp:144
+#: src/gui/dialogs/lobby_player_info.cpp:145
 msgid "You"
 msgstr "Ti"
 
-#: src/gui/dialogs/lobby_player_info.cpp:147 src/multiplayer_create.cpp:667
+#: src/gui/dialogs/lobby_player_info.cpp:148 src/multiplayer_create.cpp:667
 msgid "Error"
 msgstr "Houbo un erro"
 
@@ -7578,7 +7578,7 @@ msgstr "ia"
 msgid "prompt^Command:"
 msgstr "Orde:"
 
-#: src/mouse_events.cpp:794
+#: src/mouse_events.cpp:726
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
@@ -7586,11 +7586,11 @@ msgstr ""
 "Non podes sacar ao líder da torre se planificaches recrutar ou reincorporar "
 "máis unidades."
 
-#: src/mouse_events.cpp:910 src/mouse_events.cpp:990
+#: src/mouse_events.cpp:842 src/mouse_events.cpp:922
 msgid "Attack Enemy"
 msgstr "Atacar ao inimigo"
 
-#: src/mouse_events.cpp:991
+#: src/mouse_events.cpp:923
 msgid "Choose weapon:"
 msgstr "Escoller un ataque:"
 
@@ -7623,7 +7623,7 @@ msgstr ""
 "Non todas as modificacións seleccionadas son compatíbeis. Algunhas serán "
 "desactivadas."
 
-#: src/mp_options.cpp:199
+#: src/mp_options.cpp:200
 msgid ""
 "None of the selected modifications, era or scenario provide configuration "
 "options."
@@ -7631,7 +7631,7 @@ msgstr ""
 "Ningunha das modificacións, eras e escenarios seleccionados fornecen opcións "
 "de configuración."
 
-#: src/mp_options.cpp:222
+#: src/mp_options.cpp:223
 #, fuzzy
 #| msgid "Default AI"
 msgid "Defaults"
@@ -9022,27 +9022,27 @@ msgstr "Vila posuída"
 msgid "border_size should be between 0.0 and 0.5."
 msgstr "border_size debe estar entre 0.0 e 0.5."
 
-#: src/unit.cpp:2368 src/unit.cpp:2598 src/unit.cpp:2677
+#: src/unit.cpp:2367 src/unit.cpp:2597 src/unit.cpp:2678
 msgid " and "
 msgstr " e "
 
-#: src/unit.cpp:2379
+#: src/unit.cpp:2378
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description|."
 
-#: src/unit.cpp:2440
+#: src/unit.cpp:2439
 msgid "moves"
 msgstr "movementos"
 
-#: src/unit.cpp:2470 src/unit.cpp:2622
+#: src/unit.cpp:2469 src/unit.cpp:2621
 msgid "XP to advance"
 msgstr "Experiencia para avanzar"
 
-#: src/unit.cpp:2615
+#: src/unit.cpp:2614
 msgid " move"
 msgstr " movemento"
 
-#: src/unit.cpp:2630
+#: src/unit.cpp:2629
 msgid "$effect_description per level"
 msgstr "$effect_description por nivel."
 

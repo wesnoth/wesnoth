@@ -56,7 +56,7 @@ assurez\-vous d'avoir spécifié le chemin vers le dossier de données en
 argument final, sinon le jeu prendra l'identifiant campagne/scénario comme
 répertoire de données.
 .TP 
-\fB\-\-campaign\-difficulty [<difficulty>]\fP
+\fB\-\-campaign\-difficulty [<difficulté>]\fP
 La difficulté de la campagne spécifiée (de 1 à max). Si la difficulté n'est
 pas spécifiée, le menu de sélection de difficulté apparaîtra.
 .TP 
@@ -144,21 +144,21 @@ Lance le jeu sans son ni musique.
 \fB\-\-path\fP
 Affiche le nom du répertoire principal du jeu et quitte le programme.
 .TP 
-\fB\-p, \-\-preprocess <source file/folder> <target directory>\fP
-preprocesses a specified file/folder. For each file(s) a plain .cfg file and
-a processed .cfg file will be written in specified target directory. If a
-folder is specified, it will be preprocessed recursively based on the known
-preprocessor rules. The common macroses from the "data/core/macros"
-directory will be preprocessed before the specified resources.  Example:
-\fB\-p ~/wesnoth/data/campaigns/tutorial ~/result.\fP For details regarding the
-preprocessor visit:
+\fB\-p, \-\-preprocess <fichier/dossier> <répertoire cible>\fP
+Prétraite un fichier/dossier spécifié. Pour chaque fichier(s) un fichier
+brut .cfg et un fichier traité .cfg sera écrit dans le répertoire cible
+spécifié. Si un dossier est spécifié, il sera prétraité récursivement à
+partir des règles de prétraitement connues. Les macros standards contenues
+dans « data/core/macros » seront prétraitées avant les ressources
+spécifiées. Exemple : \fB\-p ~/wesnoth/data/campaigns/tutorial ~/result.\fP Pour
+plus de détails concernant le prétraitement visiter :
 http://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor
 
 .TP 
-\fB\-\-preprocess\-defines=DEFINE1,DEFINE2,etc\fP
-comma separated list of defines to be used by the '\-\-preprocess' command. If
-\fBSKIP_CORE\fP is in the define list the "data/core" directory won't be
-preprocessed.
+\fB\-\-preprocess\-defines=DEFINITION1,DEFINITION2,etc\fP
+Une liste séparée par des virgules est définie pour être utilisée par la
+commande « \-\-preprocess ». Si \fBSKIP_CORE\fP est définie dans la liste le
+répertoire « data/core » ne sera pas prétraité.
 .TP 
 \fB\-\-preprocess\-input\-macros <fichier source>\fP
 Utilisé uniquement par la commande «\ \-\-preprocess\ ». Spécifie un fichier qui
@@ -179,13 +179,13 @@ Se connecte à un hôte prédéfini s'il existe, sinon tente de se connecter au
 premier serveur paramétré dans les préférences. Exemple\ : \fB\-\-server
 server.wesnoth.org\fP
 .TP 
-\fB\-\-username\fP\fI<username>\fP
-uses <username> when connecting to a server, ignoring other
-preferences.
+\fB\-\-username\fP\fI<nom d'utilisateur>\fP
+Utilise <nom d'utilisateur> lors de la connexion à un serveur, en
+ignorant d'autres préférences.
 .TP 
-\fB\-\-password\fP\fI<password>\fP
-uses <password> when connecting to a server, ignoring other
-preferences. Unsafe.
+\fB\-\-password\fP\fI<mot de passe>\fP
+Utilise <mot de passe> lors de la connexion à un serveur, en
+ignorant d'autres préférences. Dangereux.
 .TP 
 \fB\-\-strict\-validation\fP
 Les erreurs de validation sont traitées comme des erreurs fatales.

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-03-09 08:51+0100\n"
+"POT-Creation-Date: 2013-03-16 23:53+0100\n"
 "PO-Revision-Date: 2012-10-26 21:21-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -308,21 +308,21 @@ msgid "Idle AI"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4636
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6053
 msgid ""
 "Enemy unit weight: The (negative) weight given to each enemy unit that can "
 "reach a potential target location.  Default: 100"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4637
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6054
 msgid ""
 "My unit weight: The (positive) weight given to each of the AI's units that "
 "can reach a potential target location.  Default: 1"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4638
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6055
 msgid ""
 "Goal distance weight: The (negative) weight for each step the unit is away "
 "from its goal location.\n"
@@ -331,7 +331,7 @@ msgid ""
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4639
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6056
 msgid ""
 "Terrain defense weight: The (positive) weight of the terrain defense rating "
 "for a potential target location.\n"
@@ -340,19 +340,19 @@ msgid ""
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4640
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6057
 msgid ""
 "Bearing: Everything else being equal, move protected unit toward or away "
 "from enemy groups.  Default: toward"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4648
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6065
 msgid "Set AI parameters"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4654
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6071
 msgid ""
 "Click on 'Close' without changing anything to use defaults.\n"
 "All weights must be 0 or larger.  Invalid inputs are converted to default "
@@ -361,7 +361,7 @@ msgid ""
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4662
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6079
 #, fuzzy
 #| msgid "Enemy unit sighted!"
 #| msgid_plural "$enemies enemy units sighted!"
@@ -369,17 +369,17 @@ msgid "Enemy unit weight  (default: 100)"
 msgstr "Enemy unit sighted!"
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4670
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6087
 msgid "My unit weight  (default: 1)"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4678
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6095
 msgid "Goal distance weight  (default: 3)"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4686
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6103
 msgid "Terrain defense weight  (default: 0.1)"
 msgstr ""
 
@@ -2475,8 +2475,8 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #. [unstore_unit]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:309
-#: data/lua/wml-tags.lua:1313 src/actions/attack.cpp:801
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:311
+#: data/lua/wml-tags.lua:10661 src/actions/attack.cpp:801
 msgid "poisoned"
 msgstr "poisoned"
 
@@ -4067,12 +4067,12 @@ msgid "Turns run out"
 msgstr "Turns run out"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:1844
+#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:11192
 msgid "Early finish bonus."
 msgstr "Early finish bonus."
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:1846
+#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:11194
 msgid "No early finish bonus."
 msgstr "No early finish bonus."
 
@@ -4085,7 +4085,7 @@ msgid "(early finish bonus)"
 msgstr "(early finish bonus)"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:1854
+#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:11202
 msgid "No gold carried over to the next scenario."
 msgstr "No gold carried over to the next scenario."
 
@@ -5194,91 +5194,91 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1313 src/actions/attack.cpp:801
+#: data/lua/wml-tags.lua:10661 src/actions/attack.cpp:801
 msgid "female^poisoned"
 msgstr "poisoned"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1315 src/actions/attack.cpp:806
+#: data/lua/wml-tags.lua:10663 src/actions/attack.cpp:806
 msgid "female^slowed"
 msgstr "slowed"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1315 src/actions/attack.cpp:806
+#: data/lua/wml-tags.lua:10663 src/actions/attack.cpp:806
 msgid "slowed"
 msgstr "slowed"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1316 src/actions/attack.cpp:811
+#: data/lua/wml-tags.lua:10664 src/actions/attack.cpp:811
 msgid "female^petrified"
 msgstr "petrified"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1316 src/actions/attack.cpp:811
+#: data/lua/wml-tags.lua:10664 src/actions/attack.cpp:811
 msgid "petrified"
 msgstr "petrified"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1317
+#: data/lua/wml-tags.lua:10665
 msgid "female^unhealable"
 msgstr "unhealable"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1317
+#: data/lua/wml-tags.lua:10665
 msgid "unhealable"
 msgstr "unhealable"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1780 src/multiplayer_connect.cpp:1856
+#: data/lua/wml/objectives.lua:11128 src/multiplayer_connect.cpp:1856
 msgid "Victory:"
 msgstr "Victory:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1781
+#: data/lua/wml/objectives.lua:11129
 msgid "Defeat:"
 msgstr "Defeat:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1782
+#: data/lua/wml/objectives.lua:11130
 msgid "Gold carryover:"
 msgstr "Gold carryover:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1783
+#: data/lua/wml/objectives.lua:11131
 msgid "Notes:"
 msgstr "Notes:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1801
+#: data/lua/wml/objectives.lua:11149
 msgid "(%d turns left)"
 msgstr "(%d turns left)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1803
+#: data/lua/wml/objectives.lua:11151
 msgid "(this turn left)"
 msgstr "(this turn left)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1856
+#: data/lua/wml/objectives.lua:11204
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "%d%% of gold carried over to the next scenario."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
 #: data/scenario-test.cfg:857 src/dialogs.cpp:625 src/mp_depcheck.cpp:459
-#: src/mp_options.cpp:227 src/multiplayer_create.cpp:102
+#: src/mp_options.cpp:228 src/multiplayer_create.cpp:102
 msgid "OK"
 msgstr "OK"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
 #: data/scenario-test.cfg:858 src/dialogs.cpp:626 src/dialogs.cpp:1067
-#: src/dialogs.cpp:1173 src/mp_options.cpp:232
+#: src/dialogs.cpp:1173 src/mp_options.cpp:233
 #: src/multiplayer_connect.cpp:1074 src/multiplayer_create.cpp:101
 #: src/multiplayer_wait.cpp:180
 msgid "Cancel"
@@ -5315,8 +5315,8 @@ msgstr "End Turn"
 #. [label]: id=selected-label-hp
 #: data/themes/default.cfg:205 data/themes/dfool.cfg:229
 #: data/themes/experimental.cfg:179 data/themes/widescreen.cfg:237
-#: data/themes/widescreen.cfg:257 src/menu_events.cpp:220 src/unit.cpp:2409
-#: src/unit.cpp:2609
+#: data/themes/widescreen.cfg:257 src/menu_events.cpp:220 src/unit.cpp:2408
+#: src/unit.cpp:2608
 msgid "HP"
 msgstr "HP"
 
@@ -5601,7 +5601,7 @@ msgid ""
 msgstr ""
 "The add-on has an invalid file or directory name and cannot be installed."
 
-#: src/addon/client.cpp:301 src/addon/manager_ui.cpp:682
+#: src/addon/client.cpp:301 src/addon/manager_ui.cpp:683
 #, fuzzy
 #| msgid "Add-on Installed"
 msgid "Add-ons Manager"
@@ -5657,55 +5657,55 @@ msgstr "(unknown)"
 msgid "unit_byte^B"
 msgstr "B"
 
-#: src/addon/manager_ui.cpp:97
+#: src/addon/manager_ui.cpp:98
 #, fuzzy
 #| msgid "Add-on Installed"
 msgid "addon_state^Not installed"
 msgstr "Add-on Installed"
 
-#: src/addon/manager_ui.cpp:97
+#: src/addon/manager_ui.cpp:98
 msgid "addon_state^Published, not installed"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:104
+#: src/addon/manager_ui.cpp:105
 #, fuzzy
 #| msgid "Add-on Installed"
 msgid "addon_state^Installed"
 msgstr "Add-on Installed"
 
-#: src/addon/manager_ui.cpp:104
+#: src/addon/manager_ui.cpp:105
 msgid "addon_state^Published"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:107
+#: src/addon/manager_ui.cpp:108
 msgid "addon_state^Installed, upgradable"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:107
+#: src/addon/manager_ui.cpp:108
 msgid "addon_state^Published, upgradable"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:110
+#: src/addon/manager_ui.cpp:111
 msgid "addon_state^Installed, outdated on server"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:110
+#: src/addon/manager_ui.cpp:111
 msgid "addon_state^Published, outdated on server"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:113
+#: src/addon/manager_ui.cpp:114
 msgid "addon_state^Installed, broken"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:113
+#: src/addon/manager_ui.cpp:114
 msgid "addon_state^Published, broken"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:115
+#: src/addon/manager_ui.cpp:116
 msgid "addon_state^Unknown"
 msgstr "Unknown"
 
-#: src/addon/manager_ui.cpp:148
+#: src/addon/manager_ui.cpp:149
 #, fuzzy
 #| msgid ""
 #| "The selected add-on has the following dependency. Do you want to install "
@@ -5725,41 +5725,41 @@ msgstr[1] ""
 "The selected add-on has the following dependencies. Do you want to install "
 "them?"
 
-#: src/addon/manager_ui.cpp:157
+#: src/addon/manager_ui.cpp:158
 #, fuzzy
 #| msgid "Install dependencies"
 msgid "Broken Dependencies"
 msgstr "Install dependencies"
 
-#: src/addon/manager_ui.cpp:173 src/addon/manager_ui.cpp:519
+#: src/addon/manager_ui.cpp:174 src/addon/manager_ui.cpp:520
 msgid "Author"
 msgstr "Author"
 
-#: src/addon/manager_ui.cpp:173 src/addon/manager_ui.cpp:513
+#: src/addon/manager_ui.cpp:174 src/addon/manager_ui.cpp:514
 #: src/dialogs.cpp:576 src/menu_events.cpp:217 src/menu_events.cpp:910
 msgid "Name"
 msgstr "Name"
 
-#: src/addon/manager_ui.cpp:173 src/addon/manager_ui.cpp:517
+#: src/addon/manager_ui.cpp:174 src/addon/manager_ui.cpp:518
 msgid "Version"
 msgstr "Version"
 
-#: src/addon/manager_ui.cpp:174 src/addon/manager_ui.cpp:519
+#: src/addon/manager_ui.cpp:175 src/addon/manager_ui.cpp:520
 msgid "Size"
 msgstr "Size"
 
-#: src/addon/manager_ui.cpp:174 src/addon/manager_ui.cpp:528
+#: src/addon/manager_ui.cpp:175 src/addon/manager_ui.cpp:529
 #: src/menu_events.cpp:216 src/menu_events.cpp:909 src/menu_events.cpp:1292
 msgid "Type"
 msgstr "Type"
 
-#: src/addon/manager_ui.cpp:204
+#: src/addon/manager_ui.cpp:205
 #, fuzzy
 #| msgid "Install dependencies"
 msgid "Install Dependencies"
 msgstr "Install dependencies"
 
-#: src/addon/manager_ui.cpp:205
+#: src/addon/manager_ui.cpp:206
 #, fuzzy
 #| msgid ""
 #| "The selected add-on has the following dependency. Do you want to install "
@@ -5779,15 +5779,15 @@ msgstr[1] ""
 "The selected add-on has the following dependencies. Do you want to install "
 "them?"
 
-#: src/addon/manager_ui.cpp:241 src/addon/manager_ui.cpp:313
-#: src/addon/manager_ui.cpp:328 src/addon/manager_ui.cpp:333
-#: src/addon/manager_ui.cpp:815
+#: src/addon/manager_ui.cpp:242 src/addon/manager_ui.cpp:314
+#: src/addon/manager_ui.cpp:329 src/addon/manager_ui.cpp:334
+#: src/addon/manager_ui.cpp:816
 #, fuzzy
 #| msgid "The server responded with an error: \""
 msgid "The server responded with an error:"
 msgstr "The server responded with an error: \""
 
-#: src/addon/manager_ui.cpp:252
+#: src/addon/manager_ui.cpp:253
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5797,38 +5797,38 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon/manager_ui.cpp:256
+#: src/addon/manager_ui.cpp:257
 #, fuzzy
 #| msgid "Installation failed"
 msgid "Dependencies Installation Failed"
 msgstr "Installation failed"
 
-#: src/addon/manager_ui.cpp:279
+#: src/addon/manager_ui.cpp:280
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:283
+#: src/addon/manager_ui.cpp:284
 msgid "Publishing information file (.pbl)"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:287
+#: src/addon/manager_ui.cpp:288
 msgid "Version control system (VCS) information"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:291
+#: src/addon/manager_ui.cpp:292
 #, fuzzy
 #| msgid "Do you want to continue?"
 msgid "Do you really wish to continue?"
 msgstr "Do you want to continue?"
 
-#: src/addon/manager_ui.cpp:293 src/addon/manager_ui.cpp:304
-#: src/addon/manager_ui.cpp:970 src/multiplayer.cpp:273
+#: src/addon/manager_ui.cpp:294 src/addon/manager_ui.cpp:305
+#: src/addon/manager_ui.cpp:971 src/multiplayer.cpp:273
 msgid "Confirm"
 msgstr "Confirm"
 
-#: src/addon/manager_ui.cpp:301
+#: src/addon/manager_ui.cpp:302
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -5836,131 +5836,131 @@ msgstr ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
 
-#: src/addon/manager_ui.cpp:317 src/addon/manager_ui.cpp:336
+#: src/addon/manager_ui.cpp:318 src/addon/manager_ui.cpp:337
 #: src/multiplayer_wait.cpp:408
 msgid "Response"
 msgstr "Response"
 
-#: src/addon/manager_ui.cpp:330
+#: src/addon/manager_ui.cpp:331
 msgid "Terms"
 msgstr "Terms"
 
-#: src/addon/manager_ui.cpp:515
+#: src/addon/manager_ui.cpp:516
 #, fuzzy
 #| msgid "New version"
 msgid "New Version"
 msgstr "New version"
 
-#: src/addon/manager_ui.cpp:515
+#: src/addon/manager_ui.cpp:516
 #, fuzzy
 #| msgid "Old version"
 msgid "Old Version"
 msgstr "Old version"
 
-#: src/addon/manager_ui.cpp:528
+#: src/addon/manager_ui.cpp:529
 msgid "Downloads"
 msgstr "Downloads"
 
-#: src/addon/manager_ui.cpp:642
+#: src/addon/manager_ui.cpp:643
 #, fuzzy
 #| msgid "Publish add-on: "
 msgid "Publish: $addon_title"
 msgstr "Publish add-on: "
 
-#: src/addon/manager_ui.cpp:651
+#: src/addon/manager_ui.cpp:652
 #, fuzzy
 #| msgid "Delete add-on: "
 msgid "Delete: $addon_title"
 msgstr "Delete add-on: "
 
-#: src/addon/manager_ui.cpp:678
+#: src/addon/manager_ui.cpp:679
 msgid "There are no add-ons available for download from this server."
 msgstr "There are no add-ons available for download from this server."
 
-#: src/addon/manager_ui.cpp:679
+#: src/addon/manager_ui.cpp:680
 #, fuzzy
 #| msgid "There are no add-ons available for download from this server."
 msgid "There are no add-ons matching the specified criteria on this server."
 msgstr "There are no add-ons available for download from this server."
 
-#: src/addon/manager_ui.cpp:701 src/dialogs.cpp:601 src/menu_events.cpp:984
+#: src/addon/manager_ui.cpp:702 src/dialogs.cpp:601 src/menu_events.cpp:984
 #: src/menu_events.cpp:1325
 msgid "Filter: "
 msgstr "Filter: "
 
-#: src/addon/manager_ui.cpp:711
+#: src/addon/manager_ui.cpp:712
 msgid "Description"
 msgstr "Description"
 
-#: src/addon/manager_ui.cpp:716
+#: src/addon/manager_ui.cpp:717
 #, fuzzy
 #| msgid "Update all"
 msgid "Update All"
 msgstr "Update all"
 
-#: src/addon/manager_ui.cpp:723
+#: src/addon/manager_ui.cpp:724
 #, fuzzy
 #| msgid "Whiteboard Options"
 msgid "filter^Options"
 msgstr "Whiteboard Options"
 
-#: src/addon/manager_ui.cpp:829
+#: src/addon/manager_ui.cpp:830
 msgid "Add-on Installed"
 msgstr "Add-on Installed"
 
-#: src/addon/manager_ui.cpp:829
+#: src/addon/manager_ui.cpp:830
 #, fuzzy
 #| msgid "Add-on Deleted"
 #| msgid_plural "Add-ons Deleted"
 msgid "Add-on Updated"
 msgstr "Add-on Deleted"
 
-#: src/addon/manager_ui.cpp:830
+#: src/addon/manager_ui.cpp:831
 msgid "The add-on '$addon_title|' has been successfully installed."
 msgstr "The add-on '$addon_title|' has been successfully installed."
 
-#: src/addon/manager_ui.cpp:830
+#: src/addon/manager_ui.cpp:831
 #, fuzzy
 #| msgid "The add-on '$addon_title|' has been successfully installed."
 msgid "The add-on '$addon_title|' has been successfully updated."
 msgstr "The add-on '$addon_title|' has been successfully installed."
 
-#: src/addon/manager_ui.cpp:835
+#: src/addon/manager_ui.cpp:836
 #, fuzzy
 #| msgid "Add-on Installed"
 msgid "Add-ons Installed"
 msgstr "Add-on Installed"
 
-#: src/addon/manager_ui.cpp:835
+#: src/addon/manager_ui.cpp:836
 #, fuzzy
 #| msgid "Add-on Deleted"
 #| msgid_plural "Add-ons Deleted"
 msgid "Add-ons Updated"
 msgstr "Add-on Deleted"
 
-#: src/addon/manager_ui.cpp:836
+#: src/addon/manager_ui.cpp:837
 #, fuzzy
 #| msgid "All add-ons updated successfully."
 msgid "All add-ons installed successfully."
 msgstr "All add-ons updated successfully."
 
-#: src/addon/manager_ui.cpp:836
+#: src/addon/manager_ui.cpp:837
 msgid "All add-ons updated successfully."
 msgstr "All add-ons updated successfully."
 
-#: src/addon/manager_ui.cpp:840
+#: src/addon/manager_ui.cpp:841
 #, fuzzy
 #| msgid "Installation failed"
 msgid "Installation Failed"
 msgstr "Installation failed"
 
-#: src/addon/manager_ui.cpp:840
+#: src/addon/manager_ui.cpp:841
 #, fuzzy
 #| msgid "Update failed"
 msgid "Update Failed"
 msgstr "Update failed"
 
-#: src/addon/manager_ui.cpp:842
+#: src/addon/manager_ui.cpp:843
 #, fuzzy
 #| msgid ""
 #| "The following add-on could not be downloaded or updated successfully:"
@@ -5974,21 +5974,21 @@ msgstr[0] ""
 msgstr[1] ""
 "The following add-ons could not be downloaded or updated successfully:"
 
-#: src/addon/manager_ui.cpp:884 src/addon/manager_ui.cpp:894
+#: src/addon/manager_ui.cpp:885 src/addon/manager_ui.cpp:895
 #, fuzzy
 #| msgid "An error occurred while communicating with the server."
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "An error occurred while communicating with the server."
 
-#: src/addon/manager_ui.cpp:912
+#: src/addon/manager_ui.cpp:913
 msgid "Network communication error."
 msgstr "Network communication error."
 
-#: src/addon/manager_ui.cpp:915 src/addon/manager_ui.cpp:918
+#: src/addon/manager_ui.cpp:916 src/addon/manager_ui.cpp:919
 msgid "Remote host disconnected."
 msgstr "Remote host disconnected."
 
-#: src/addon/manager_ui.cpp:921
+#: src/addon/manager_ui.cpp:922
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
@@ -5996,21 +5996,21 @@ msgstr ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
 
-#: src/addon/manager_ui.cpp:927
+#: src/addon/manager_ui.cpp:928
 msgid "The add-ons server address specified is not valid."
 msgstr ""
 
-#: src/addon/manager_ui.cpp:941
+#: src/addon/manager_ui.cpp:942
 msgid "You have no add-ons installed."
 msgstr "You have no add-ons installed."
 
-#: src/addon/manager_ui.cpp:965
+#: src/addon/manager_ui.cpp:966
 msgid "Are you sure you want to remove the following installed add-on?"
 msgid_plural "Are you sure you want to remove the following installed add-ons?"
 msgstr[0] "Are you sure you want to remove the following installed add-on?"
 msgstr[1] "Are you sure you want to remove the following installed add-ons?"
 
-#: src/addon/manager_ui.cpp:991
+#: src/addon/manager_ui.cpp:992
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -6024,19 +6024,19 @@ msgstr[1] ""
 "The following add-ons appear to have publishing or version control "
 "information stored locally, and will not be removed:"
 
-#: src/addon/manager_ui.cpp:1001
+#: src/addon/manager_ui.cpp:1002
 msgid "The following add-on could not be deleted properly:"
 msgid_plural "The following add-ons could not be deleted properly:"
 msgstr[0] "The following add-on could not be deleted properly:"
 msgstr[1] "The following add-ons could not be deleted properly:"
 
-#: src/addon/manager_ui.cpp:1008
+#: src/addon/manager_ui.cpp:1009
 msgid "Add-on Deleted"
 msgid_plural "Add-ons Deleted"
 msgstr[0] "Add-on Deleted"
 msgstr[1] "Add-ons Deleted"
 
-#: src/addon/manager_ui.cpp:1010
+#: src/addon/manager_ui.cpp:1011
 msgid "The following add-on was successfully deleted:"
 msgid_plural "The following add-ons were successfully deleted:"
 msgstr[0] "The following add-on was successfully deleted:"
@@ -6078,7 +6078,7 @@ msgstr "Slowed"
 msgid "Total damage"
 msgstr "Total damage"
 
-#: src/attack_prediction_display.cpp:261 src/mouse_events.cpp:911
+#: src/attack_prediction_display.cpp:261 src/mouse_events.cpp:843
 msgid "No usable weapon"
 msgstr "No usable weapon"
 
@@ -6086,7 +6086,7 @@ msgstr "No usable weapon"
 msgid "Chance of being unscathed"
 msgstr "Chance of being unscathed"
 
-#: src/attack_prediction_display.cpp:545 src/mouse_events.cpp:980
+#: src/attack_prediction_display.cpp:545 src/mouse_events.cpp:912
 msgid "Damage Calculations"
 msgstr "Damage Calculations"
 
@@ -6247,7 +6247,7 @@ msgstr "Moves: "
 msgid "KB"
 msgstr "KB"
 
-#: src/game_config.cpp:341
+#: src/game_config.cpp:348
 msgid "Invalid color range: "
 msgstr "Invalid colour range: "
 
@@ -6385,39 +6385,39 @@ msgstr "Shroud"
 msgid "none"
 msgstr "none"
 
-#: src/gui/dialogs/lobby_player_info.cpp:98
+#: src/gui/dialogs/lobby_player_info.cpp:99
 msgid "In game:"
 msgstr "In game:"
 
-#: src/gui/dialogs/lobby_player_info.cpp:100
+#: src/gui/dialogs/lobby_player_info.cpp:101
 msgid "(observing)"
 msgstr "(observing)"
 
-#: src/gui/dialogs/lobby_player_info.cpp:102
+#: src/gui/dialogs/lobby_player_info.cpp:103
 msgid "(playing)"
 msgstr "(playing)"
 
-#: src/gui/dialogs/lobby_player_info.cpp:105
+#: src/gui/dialogs/lobby_player_info.cpp:106
 msgid "In lobby"
 msgstr "In lobby"
 
-#: src/gui/dialogs/lobby_player_info.cpp:129
+#: src/gui/dialogs/lobby_player_info.cpp:130
 msgid "On friends list"
 msgstr "On friends list"
 
-#: src/gui/dialogs/lobby_player_info.cpp:134
+#: src/gui/dialogs/lobby_player_info.cpp:135
 msgid "On ignores list"
 msgstr "On ignores list"
 
-#: src/gui/dialogs/lobby_player_info.cpp:139
+#: src/gui/dialogs/lobby_player_info.cpp:140
 msgid "Neither a friend nor ignored"
 msgstr "Neither a friend nor ignored"
 
-#: src/gui/dialogs/lobby_player_info.cpp:144
+#: src/gui/dialogs/lobby_player_info.cpp:145
 msgid "You"
 msgstr "You"
 
-#: src/gui/dialogs/lobby_player_info.cpp:147 src/multiplayer_create.cpp:667
+#: src/gui/dialogs/lobby_player_info.cpp:148 src/multiplayer_create.cpp:667
 msgid "Error"
 msgstr "Error"
 
@@ -7438,7 +7438,7 @@ msgstr "ai"
 msgid "prompt^Command:"
 msgstr "Command:"
 
-#: src/mouse_events.cpp:794
+#: src/mouse_events.cpp:726
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
@@ -7446,11 +7446,11 @@ msgstr ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
 
-#: src/mouse_events.cpp:910 src/mouse_events.cpp:990
+#: src/mouse_events.cpp:842 src/mouse_events.cpp:922
 msgid "Attack Enemy"
 msgstr "Attack Enemy"
 
-#: src/mouse_events.cpp:991
+#: src/mouse_events.cpp:923
 msgid "Choose weapon:"
 msgstr "Choose weapon:"
 
@@ -7486,13 +7486,13 @@ msgid ""
 "disabled."
 msgstr ""
 
-#: src/mp_options.cpp:199
+#: src/mp_options.cpp:200
 msgid ""
 "None of the selected modifications, era or scenario provide configuration "
 "options."
 msgstr ""
 
-#: src/mp_options.cpp:222
+#: src/mp_options.cpp:223
 msgid "Defaults"
 msgstr ""
 
@@ -8881,27 +8881,27 @@ msgstr "Owned village"
 msgid "border_size should be between 0.0 and 0.5."
 msgstr "border_size should be between 0.0 and 0.5."
 
-#: src/unit.cpp:2368 src/unit.cpp:2598 src/unit.cpp:2677
+#: src/unit.cpp:2367 src/unit.cpp:2597 src/unit.cpp:2678
 msgid " and "
 msgstr " and "
 
-#: src/unit.cpp:2379
+#: src/unit.cpp:2378
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2440
+#: src/unit.cpp:2439
 msgid "moves"
 msgstr "moves"
 
-#: src/unit.cpp:2470 src/unit.cpp:2622
+#: src/unit.cpp:2469 src/unit.cpp:2621
 msgid "XP to advance"
 msgstr "XP to advance"
 
-#: src/unit.cpp:2615
+#: src/unit.cpp:2614
 msgid " move"
 msgstr " move"
 
-#: src/unit.cpp:2630
+#: src/unit.cpp:2629
 msgid "$effect_description per level"
 msgstr "$effect_description per level"
 

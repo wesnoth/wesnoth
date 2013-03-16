@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-03-09 08:51+0100\n"
+"POT-Creation-Date: 2013-03-16 23:53+0100\n"
 "PO-Revision-Date: 2012-04-01 12:02+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
@@ -312,21 +312,21 @@ msgid "Idle AI"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4636
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6053
 msgid ""
 "Enemy unit weight: The (negative) weight given to each enemy unit that can "
 "reach a potential target location.  Default: 100"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4637
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6054
 msgid ""
 "My unit weight: The (positive) weight given to each of the AI's units that "
 "can reach a potential target location.  Default: 1"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4638
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6055
 msgid ""
 "Goal distance weight: The (negative) weight for each step the unit is away "
 "from its goal location.\n"
@@ -335,7 +335,7 @@ msgid ""
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4639
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6056
 msgid ""
 "Terrain defense weight: The (positive) weight of the terrain defense rating "
 "for a potential target location.\n"
@@ -344,19 +344,19 @@ msgid ""
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4640
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6057
 msgid ""
 "Bearing: Everything else being equal, move protected unit toward or away "
 "from enemy groups.  Default: toward"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4648
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6065
 msgid "Set AI parameters"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4654
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6071
 msgid ""
 "Click on 'Close' without changing anything to use defaults.\n"
 "All weights must be 0 or larger.  Invalid inputs are converted to default "
@@ -365,7 +365,7 @@ msgid ""
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4662
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6079
 #, fuzzy
 #| msgid "Enemy unit sighted!"
 #| msgid_plural "$enemies enemy units sighted!"
@@ -373,17 +373,17 @@ msgid "Enemy unit weight  (default: 100)"
 msgstr "Ellenséges egység a láthatáron!"
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4670
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6087
 msgid "My unit weight  (default: 1)"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4678
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6095
 msgid "Goal distance weight  (default: 3)"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4686
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6103
 msgid "Terrain defense weight  (default: 0.1)"
 msgstr ""
 
@@ -2485,8 +2485,8 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #. [unstore_unit]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:309
-#: data/lua/wml-tags.lua:1313 src/actions/attack.cpp:801
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:311
+#: data/lua/wml-tags.lua:10661 src/actions/attack.cpp:801
 msgid "poisoned"
 msgstr "megmérgezve"
 
@@ -4081,12 +4081,12 @@ msgid "Turns run out"
 msgstr "Kifutsz az időből"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:1844
+#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:11192
 msgid "Early finish bonus."
 msgstr "A korai befejezésért jutalom jár."
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:1846
+#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:11194
 msgid "No early finish bonus."
 msgstr "A korai befejezésért nem jár jutalom."
 
@@ -4099,7 +4099,7 @@ msgid "(early finish bonus)"
 msgstr "(jutalom a korai befejezésért)"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:1854
+#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:11202
 msgid "No gold carried over to the next scenario."
 msgstr "A következő pályára nem vihető át arany."
 
@@ -5239,91 +5239,91 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1313 src/actions/attack.cpp:801
+#: data/lua/wml-tags.lua:10661 src/actions/attack.cpp:801
 msgid "female^poisoned"
 msgstr "megmérgezve"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1315 src/actions/attack.cpp:806
+#: data/lua/wml-tags.lua:10663 src/actions/attack.cpp:806
 msgid "female^slowed"
 msgstr "lelassítva"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1315 src/actions/attack.cpp:806
+#: data/lua/wml-tags.lua:10663 src/actions/attack.cpp:806
 msgid "slowed"
 msgstr "lelassítva"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1316 src/actions/attack.cpp:811
+#: data/lua/wml-tags.lua:10664 src/actions/attack.cpp:811
 msgid "female^petrified"
 msgstr "kővé vált"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1316 src/actions/attack.cpp:811
+#: data/lua/wml-tags.lua:10664 src/actions/attack.cpp:811
 msgid "petrified"
 msgstr "kővé vált"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1317
+#: data/lua/wml-tags.lua:10665
 msgid "female^unhealable"
 msgstr "gyógyíthatatlan"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1317
+#: data/lua/wml-tags.lua:10665
 msgid "unhealable"
 msgstr "gyógyíthatatlan"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1780 src/multiplayer_connect.cpp:1856
+#: data/lua/wml/objectives.lua:11128 src/multiplayer_connect.cpp:1856
 msgid "Victory:"
 msgstr "Győzöl, ha:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1781
+#: data/lua/wml/objectives.lua:11129
 msgid "Defeat:"
 msgstr "Veszítesz, ha:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1782
+#: data/lua/wml/objectives.lua:11130
 msgid "Gold carryover:"
 msgstr "Arany továbbvitel:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1783
+#: data/lua/wml/objectives.lua:11131
 msgid "Notes:"
 msgstr "Megjegyzések:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1801
+#: data/lua/wml/objectives.lua:11149
 msgid "(%d turns left)"
 msgstr "(%d kör van hátra)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1803
+#: data/lua/wml/objectives.lua:11151
 msgid "(this turn left)"
 msgstr "(ez az utolsó kör)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1856
+#: data/lua/wml/objectives.lua:11204
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "%d%% aranyat viszel át a következő pályára."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
 #: data/scenario-test.cfg:857 src/dialogs.cpp:625 src/mp_depcheck.cpp:459
-#: src/mp_options.cpp:227 src/multiplayer_create.cpp:102
+#: src/mp_options.cpp:228 src/multiplayer_create.cpp:102
 msgid "OK"
 msgstr "Rendben"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
 #: data/scenario-test.cfg:858 src/dialogs.cpp:626 src/dialogs.cpp:1067
-#: src/dialogs.cpp:1173 src/mp_options.cpp:232
+#: src/dialogs.cpp:1173 src/mp_options.cpp:233
 #: src/multiplayer_connect.cpp:1074 src/multiplayer_create.cpp:101
 #: src/multiplayer_wait.cpp:180
 msgid "Cancel"
@@ -5360,8 +5360,8 @@ msgstr "Kör vége"
 #. [label]: id=selected-label-hp
 #: data/themes/default.cfg:205 data/themes/dfool.cfg:229
 #: data/themes/experimental.cfg:179 data/themes/widescreen.cfg:237
-#: data/themes/widescreen.cfg:257 src/menu_events.cpp:220 src/unit.cpp:2409
-#: src/unit.cpp:2609
+#: data/themes/widescreen.cfg:257 src/menu_events.cpp:220 src/unit.cpp:2408
+#: src/unit.cpp:2608
 msgid "HP"
 msgstr "ÉP"
 
@@ -5654,7 +5654,7 @@ msgstr ""
 "A kiegészítésben érvénytelen fájl- vagy könyvtárnév szerepel, nem lehet "
 "telepíteni."
 
-#: src/addon/client.cpp:301 src/addon/manager_ui.cpp:682
+#: src/addon/client.cpp:301 src/addon/manager_ui.cpp:683
 #, fuzzy
 #| msgid "Add-on Installed"
 msgid "Add-ons Manager"
@@ -5710,57 +5710,57 @@ msgstr "(ismeretlen)"
 msgid "unit_byte^B"
 msgstr "B"
 
-#: src/addon/manager_ui.cpp:97
+#: src/addon/manager_ui.cpp:98
 #, fuzzy
 #| msgid "Add-on Installed"
 msgid "addon_state^Not installed"
 msgstr "Kiegészítés telepítve"
 
-#: src/addon/manager_ui.cpp:97
+#: src/addon/manager_ui.cpp:98
 msgid "addon_state^Published, not installed"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:104
+#: src/addon/manager_ui.cpp:105
 #, fuzzy
 #| msgid "Add-on Installed"
 msgid "addon_state^Installed"
 msgstr "Kiegészítés telepítve"
 
-#: src/addon/manager_ui.cpp:104
+#: src/addon/manager_ui.cpp:105
 msgid "addon_state^Published"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:107
+#: src/addon/manager_ui.cpp:108
 msgid "addon_state^Installed, upgradable"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:107
+#: src/addon/manager_ui.cpp:108
 msgid "addon_state^Published, upgradable"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:110
+#: src/addon/manager_ui.cpp:111
 msgid "addon_state^Installed, outdated on server"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:110
+#: src/addon/manager_ui.cpp:111
 msgid "addon_state^Published, outdated on server"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:113
+#: src/addon/manager_ui.cpp:114
 msgid "addon_state^Installed, broken"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:113
+#: src/addon/manager_ui.cpp:114
 msgid "addon_state^Published, broken"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:115
+#: src/addon/manager_ui.cpp:116
 #, fuzzy
 #| msgid "addon_type^(unknown)"
 msgid "addon_state^Unknown"
 msgstr "(ismeretlen)"
 
-#: src/addon/manager_ui.cpp:148
+#: src/addon/manager_ui.cpp:149
 #, fuzzy
 #| msgid ""
 #| "The selected add-on has the following dependency. Do you want to install "
@@ -5780,41 +5780,41 @@ msgstr[1] ""
 "Az alábbi csomagok a kiválasztott kiegészítés függőségei. Szeretnéd "
 "telepíteni őket?"
 
-#: src/addon/manager_ui.cpp:157
+#: src/addon/manager_ui.cpp:158
 #, fuzzy
 #| msgid "Install dependencies"
 msgid "Broken Dependencies"
 msgstr "Függőségek telepítése"
 
-#: src/addon/manager_ui.cpp:173 src/addon/manager_ui.cpp:519
+#: src/addon/manager_ui.cpp:174 src/addon/manager_ui.cpp:520
 msgid "Author"
 msgstr "Szerző"
 
-#: src/addon/manager_ui.cpp:173 src/addon/manager_ui.cpp:513
+#: src/addon/manager_ui.cpp:174 src/addon/manager_ui.cpp:514
 #: src/dialogs.cpp:576 src/menu_events.cpp:217 src/menu_events.cpp:910
 msgid "Name"
 msgstr "Név"
 
-#: src/addon/manager_ui.cpp:173 src/addon/manager_ui.cpp:517
+#: src/addon/manager_ui.cpp:174 src/addon/manager_ui.cpp:518
 msgid "Version"
 msgstr "Verzió"
 
-#: src/addon/manager_ui.cpp:174 src/addon/manager_ui.cpp:519
+#: src/addon/manager_ui.cpp:175 src/addon/manager_ui.cpp:520
 msgid "Size"
 msgstr "Méret"
 
-#: src/addon/manager_ui.cpp:174 src/addon/manager_ui.cpp:528
+#: src/addon/manager_ui.cpp:175 src/addon/manager_ui.cpp:529
 #: src/menu_events.cpp:216 src/menu_events.cpp:909 src/menu_events.cpp:1292
 msgid "Type"
 msgstr "Típus"
 
-#: src/addon/manager_ui.cpp:204
+#: src/addon/manager_ui.cpp:205
 #, fuzzy
 #| msgid "Install dependencies"
 msgid "Install Dependencies"
 msgstr "Függőségek telepítése"
 
-#: src/addon/manager_ui.cpp:205
+#: src/addon/manager_ui.cpp:206
 #, fuzzy
 #| msgid ""
 #| "The selected add-on has the following dependency. Do you want to install "
@@ -5834,15 +5834,15 @@ msgstr[1] ""
 "Az alábbi csomagok a kiválasztott kiegészítés függőségei. Szeretnéd "
 "telepíteni őket?"
 
-#: src/addon/manager_ui.cpp:241 src/addon/manager_ui.cpp:313
-#: src/addon/manager_ui.cpp:328 src/addon/manager_ui.cpp:333
-#: src/addon/manager_ui.cpp:815
+#: src/addon/manager_ui.cpp:242 src/addon/manager_ui.cpp:314
+#: src/addon/manager_ui.cpp:329 src/addon/manager_ui.cpp:334
+#: src/addon/manager_ui.cpp:816
 #, fuzzy
 #| msgid "The server responded with an error: \""
 msgid "The server responded with an error:"
 msgstr "A kiszolgáló a következő hibajelzéssel válaszolt: \""
 
-#: src/addon/manager_ui.cpp:252
+#: src/addon/manager_ui.cpp:253
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5852,38 +5852,38 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon/manager_ui.cpp:256
+#: src/addon/manager_ui.cpp:257
 #, fuzzy
 #| msgid "Installation failed"
 msgid "Dependencies Installation Failed"
 msgstr "A telepítés sikertelen"
 
-#: src/addon/manager_ui.cpp:279
+#: src/addon/manager_ui.cpp:280
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:283
+#: src/addon/manager_ui.cpp:284
 msgid "Publishing information file (.pbl)"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:287
+#: src/addon/manager_ui.cpp:288
 msgid "Version control system (VCS) information"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:291
+#: src/addon/manager_ui.cpp:292
 #, fuzzy
 #| msgid "Do you want to continue?"
 msgid "Do you really wish to continue?"
 msgstr "Folytatni akarod?"
 
-#: src/addon/manager_ui.cpp:293 src/addon/manager_ui.cpp:304
-#: src/addon/manager_ui.cpp:970 src/multiplayer.cpp:273
+#: src/addon/manager_ui.cpp:294 src/addon/manager_ui.cpp:305
+#: src/addon/manager_ui.cpp:971 src/multiplayer.cpp:273
 msgid "Confirm"
 msgstr "Megerősítés"
 
-#: src/addon/manager_ui.cpp:301
+#: src/addon/manager_ui.cpp:302
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -5892,131 +5892,131 @@ msgstr ""
 "lenullázódik a le- és feltöltésszámlálója a kiegészítéseket kezelő "
 "kiszolgálón. Biztosan folytatni akarod?"
 
-#: src/addon/manager_ui.cpp:317 src/addon/manager_ui.cpp:336
+#: src/addon/manager_ui.cpp:318 src/addon/manager_ui.cpp:337
 #: src/multiplayer_wait.cpp:408
 msgid "Response"
 msgstr "Válasz"
 
-#: src/addon/manager_ui.cpp:330
+#: src/addon/manager_ui.cpp:331
 msgid "Terms"
 msgstr "Feltételek"
 
-#: src/addon/manager_ui.cpp:515
+#: src/addon/manager_ui.cpp:516
 #, fuzzy
 #| msgid "New version"
 msgid "New Version"
 msgstr "Új verzió"
 
-#: src/addon/manager_ui.cpp:515
+#: src/addon/manager_ui.cpp:516
 #, fuzzy
 #| msgid "Old version"
 msgid "Old Version"
 msgstr "Régi verzió"
 
-#: src/addon/manager_ui.cpp:528
+#: src/addon/manager_ui.cpp:529
 msgid "Downloads"
 msgstr "Letöltések"
 
-#: src/addon/manager_ui.cpp:642
+#: src/addon/manager_ui.cpp:643
 #, fuzzy
 #| msgid "Publish add-on: "
 msgid "Publish: $addon_title"
 msgstr "Kiegészítés közzététele: "
 
-#: src/addon/manager_ui.cpp:651
+#: src/addon/manager_ui.cpp:652
 #, fuzzy
 #| msgid "Delete add-on: "
 msgid "Delete: $addon_title"
 msgstr "Kiegészítés törlése: "
 
-#: src/addon/manager_ui.cpp:678
+#: src/addon/manager_ui.cpp:679
 msgid "There are no add-ons available for download from this server."
 msgstr "Nincsenek elérhető kiegészítések ezen a kiszolgálón."
 
-#: src/addon/manager_ui.cpp:679
+#: src/addon/manager_ui.cpp:680
 #, fuzzy
 #| msgid "There are no add-ons available for download from this server."
 msgid "There are no add-ons matching the specified criteria on this server."
 msgstr "Nincsenek elérhető kiegészítések ezen a kiszolgálón."
 
-#: src/addon/manager_ui.cpp:701 src/dialogs.cpp:601 src/menu_events.cpp:984
+#: src/addon/manager_ui.cpp:702 src/dialogs.cpp:601 src/menu_events.cpp:984
 #: src/menu_events.cpp:1325
 msgid "Filter: "
 msgstr "Szűrés: "
 
-#: src/addon/manager_ui.cpp:711
+#: src/addon/manager_ui.cpp:712
 msgid "Description"
 msgstr "Leírás"
 
-#: src/addon/manager_ui.cpp:716
+#: src/addon/manager_ui.cpp:717
 #, fuzzy
 #| msgid "Update all"
 msgid "Update All"
 msgstr "Mindet frissít"
 
-#: src/addon/manager_ui.cpp:723
+#: src/addon/manager_ui.cpp:724
 #, fuzzy
 #| msgid "Whiteboard Options"
 msgid "filter^Options"
 msgstr "Lépéstervező beállítása"
 
-#: src/addon/manager_ui.cpp:829
+#: src/addon/manager_ui.cpp:830
 msgid "Add-on Installed"
 msgstr "Kiegészítés telepítve"
 
-#: src/addon/manager_ui.cpp:829
+#: src/addon/manager_ui.cpp:830
 #, fuzzy
 #| msgid "Add-on Deleted"
 #| msgid_plural "Add-ons Deleted"
 msgid "Add-on Updated"
 msgstr "Kiegészítés törölve"
 
-#: src/addon/manager_ui.cpp:830
+#: src/addon/manager_ui.cpp:831
 msgid "The add-on '$addon_title|' has been successfully installed."
 msgstr "A(z) „$addon_title|” kiegészítés sikeresen telepítve."
 
-#: src/addon/manager_ui.cpp:830
+#: src/addon/manager_ui.cpp:831
 #, fuzzy
 #| msgid "The add-on '$addon_title|' has been successfully installed."
 msgid "The add-on '$addon_title|' has been successfully updated."
 msgstr "A(z) „$addon_title|” kiegészítés sikeresen telepítve."
 
-#: src/addon/manager_ui.cpp:835
+#: src/addon/manager_ui.cpp:836
 #, fuzzy
 #| msgid "Add-on Installed"
 msgid "Add-ons Installed"
 msgstr "Kiegészítés telepítve"
 
-#: src/addon/manager_ui.cpp:835
+#: src/addon/manager_ui.cpp:836
 #, fuzzy
 #| msgid "Add-on Deleted"
 #| msgid_plural "Add-ons Deleted"
 msgid "Add-ons Updated"
 msgstr "Kiegészítés törölve"
 
-#: src/addon/manager_ui.cpp:836
+#: src/addon/manager_ui.cpp:837
 #, fuzzy
 #| msgid "All add-ons updated successfully."
 msgid "All add-ons installed successfully."
 msgstr "Minden kiegészítés frissítése sikerült."
 
-#: src/addon/manager_ui.cpp:836
+#: src/addon/manager_ui.cpp:837
 msgid "All add-ons updated successfully."
 msgstr "Minden kiegészítés frissítése sikerült."
 
-#: src/addon/manager_ui.cpp:840
+#: src/addon/manager_ui.cpp:841
 #, fuzzy
 #| msgid "Installation failed"
 msgid "Installation Failed"
 msgstr "A telepítés sikertelen"
 
-#: src/addon/manager_ui.cpp:840
+#: src/addon/manager_ui.cpp:841
 #, fuzzy
 #| msgid "Update failed"
 msgid "Update Failed"
 msgstr "A frissítés nem sikerült"
 
-#: src/addon/manager_ui.cpp:842
+#: src/addon/manager_ui.cpp:843
 #, fuzzy
 #| msgid ""
 #| "The following add-on could not be downloaded or updated successfully:"
@@ -6030,41 +6030,41 @@ msgstr[0] ""
 msgstr[1] ""
 "A következő kiegészítéseket nem sikerült letölteni, illetve frissíteni:"
 
-#: src/addon/manager_ui.cpp:884 src/addon/manager_ui.cpp:894
+#: src/addon/manager_ui.cpp:885 src/addon/manager_ui.cpp:895
 #, fuzzy
 #| msgid "An error occurred while communicating with the server."
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "Hiba a kiszolgálóval való kommunikáció során."
 
-#: src/addon/manager_ui.cpp:912
+#: src/addon/manager_ui.cpp:913
 msgid "Network communication error."
 msgstr "Hálózati kommunikációs hiba."
 
-#: src/addon/manager_ui.cpp:915 src/addon/manager_ui.cpp:918
+#: src/addon/manager_ui.cpp:916 src/addon/manager_ui.cpp:919
 msgid "Remote host disconnected."
 msgstr "A távoli kiszolgáló lekapcsolódott."
 
-#: src/addon/manager_ui.cpp:921
+#: src/addon/manager_ui.cpp:922
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
 msgstr "Hiba a kiegészítés telepítéséhez szükséges fájlok létrehozása során."
 
-#: src/addon/manager_ui.cpp:927
+#: src/addon/manager_ui.cpp:928
 msgid "The add-ons server address specified is not valid."
 msgstr ""
 
-#: src/addon/manager_ui.cpp:941
+#: src/addon/manager_ui.cpp:942
 msgid "You have no add-ons installed."
 msgstr "Nincsen kiegészítés telepítve."
 
-#: src/addon/manager_ui.cpp:965
+#: src/addon/manager_ui.cpp:966
 msgid "Are you sure you want to remove the following installed add-on?"
 msgid_plural "Are you sure you want to remove the following installed add-ons?"
 msgstr[0] "Biztosan el akarod távolítani az alábbi kiegészítést?"
 msgstr[1] "Biztosan el akarod távolítani az alábbi kiegészítéseket?"
 
-#: src/addon/manager_ui.cpp:991
+#: src/addon/manager_ui.cpp:992
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -6078,19 +6078,19 @@ msgstr[1] ""
 "Úgy tűnik, hogy az alábbi kiegészítések helyben tárolt közzétételi és "
 "verziókövetési információkat tartalmaznak, ezért nem lesznek eltávolítva:"
 
-#: src/addon/manager_ui.cpp:1001
+#: src/addon/manager_ui.cpp:1002
 msgid "The following add-on could not be deleted properly:"
 msgid_plural "The following add-ons could not be deleted properly:"
 msgstr[0] "Az alábbi kiegészítést nem sikerült törölni:"
 msgstr[1] "Az alábbi kiegészítéseket nem sikerült törölni:"
 
-#: src/addon/manager_ui.cpp:1008
+#: src/addon/manager_ui.cpp:1009
 msgid "Add-on Deleted"
 msgid_plural "Add-ons Deleted"
 msgstr[0] "Kiegészítés törölve"
 msgstr[1] "Kiegészítések törölve"
 
-#: src/addon/manager_ui.cpp:1010
+#: src/addon/manager_ui.cpp:1011
 msgid "The following add-on was successfully deleted:"
 msgid_plural "The following add-ons were successfully deleted:"
 msgstr[0] "Az alábbi kiegészítés sikeresen törlődött:"
@@ -6132,7 +6132,7 @@ msgstr "Lelassítva"
 msgid "Total damage"
 msgstr "Összsebzés"
 
-#: src/attack_prediction_display.cpp:261 src/mouse_events.cpp:911
+#: src/attack_prediction_display.cpp:261 src/mouse_events.cpp:843
 msgid "No usable weapon"
 msgstr "Nincsen használható fegyver"
 
@@ -6140,7 +6140,7 @@ msgstr "Nincsen használható fegyver"
 msgid "Chance of being unscathed"
 msgstr "Sértetlenül maradás esélye"
 
-#: src/attack_prediction_display.cpp:545 src/mouse_events.cpp:980
+#: src/attack_prediction_display.cpp:545 src/mouse_events.cpp:912
 msgid "Damage Calculations"
 msgstr "Sebzés előszámítások"
 
@@ -6301,7 +6301,7 @@ msgstr "Lépés: "
 msgid "KB"
 msgstr "KB"
 
-#: src/game_config.cpp:341
+#: src/game_config.cpp:348
 msgid "Invalid color range: "
 msgstr "Érvénytelen színtartomány: "
 
@@ -6439,39 +6439,39 @@ msgstr "Eltakarás"
 msgid "none"
 msgstr "semelyik"
 
-#: src/gui/dialogs/lobby_player_info.cpp:98
+#: src/gui/dialogs/lobby_player_info.cpp:99
 msgid "In game:"
 msgstr "Ebben a játékban:"
 
-#: src/gui/dialogs/lobby_player_info.cpp:100
+#: src/gui/dialogs/lobby_player_info.cpp:101
 msgid "(observing)"
 msgstr "(megfigyelő)"
 
-#: src/gui/dialogs/lobby_player_info.cpp:102
+#: src/gui/dialogs/lobby_player_info.cpp:103
 msgid "(playing)"
 msgstr "(játszik)"
 
-#: src/gui/dialogs/lobby_player_info.cpp:105
+#: src/gui/dialogs/lobby_player_info.cpp:106
 msgid "In lobby"
 msgstr "A játékcsarnokban"
 
-#: src/gui/dialogs/lobby_player_info.cpp:129
+#: src/gui/dialogs/lobby_player_info.cpp:130
 msgid "On friends list"
 msgstr "Szerepel a barátok listáján"
 
-#: src/gui/dialogs/lobby_player_info.cpp:134
+#: src/gui/dialogs/lobby_player_info.cpp:135
 msgid "On ignores list"
 msgstr "Szerepel a mellőzöttek listáján"
 
-#: src/gui/dialogs/lobby_player_info.cpp:139
+#: src/gui/dialogs/lobby_player_info.cpp:140
 msgid "Neither a friend nor ignored"
 msgstr "Se nem barát, se nem mellőzött"
 
-#: src/gui/dialogs/lobby_player_info.cpp:144
+#: src/gui/dialogs/lobby_player_info.cpp:145
 msgid "You"
 msgstr "Te"
 
-#: src/gui/dialogs/lobby_player_info.cpp:147 src/multiplayer_create.cpp:667
+#: src/gui/dialogs/lobby_player_info.cpp:148 src/multiplayer_create.cpp:667
 msgid "Error"
 msgstr "Hiba"
 
@@ -7504,7 +7504,7 @@ msgstr "MI"
 msgid "prompt^Command:"
 msgstr "Parancs:"
 
-#: src/mouse_events.cpp:794
+#: src/mouse_events.cpp:726
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
@@ -7512,11 +7512,11 @@ msgstr ""
 "Nem hagyhatod ott a vezéreddel a várkastélyt, amíg tervezett toborzások vagy "
 "visszahívások vannak hátra."
 
-#: src/mouse_events.cpp:910 src/mouse_events.cpp:990
+#: src/mouse_events.cpp:842 src/mouse_events.cpp:922
 msgid "Attack Enemy"
 msgstr "Ellenség megtámadása"
 
-#: src/mouse_events.cpp:991
+#: src/mouse_events.cpp:923
 msgid "Choose weapon:"
 msgstr "Válassz fegyvert:"
 
@@ -7552,13 +7552,13 @@ msgid ""
 "disabled."
 msgstr ""
 
-#: src/mp_options.cpp:199
+#: src/mp_options.cpp:200
 msgid ""
 "None of the selected modifications, era or scenario provide configuration "
 "options."
 msgstr ""
 
-#: src/mp_options.cpp:222
+#: src/mp_options.cpp:223
 msgid "Defaults"
 msgstr ""
 
@@ -8975,27 +8975,27 @@ msgstr ""
 "A „border_size” változó (szegélyméret) értékének 0,0 és 0,5 között kell "
 "lennie."
 
-#: src/unit.cpp:2368 src/unit.cpp:2598 src/unit.cpp:2677
+#: src/unit.cpp:2367 src/unit.cpp:2597 src/unit.cpp:2678
 msgid " and "
 msgstr " és "
 
-#: src/unit.cpp:2379
+#: src/unit.cpp:2378
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2440
+#: src/unit.cpp:2439
 msgid "moves"
 msgstr "lépések"
 
-#: src/unit.cpp:2470 src/unit.cpp:2622
+#: src/unit.cpp:2469 src/unit.cpp:2621
 msgid "XP to advance"
 msgstr "TP a szintlépéshez"
 
-#: src/unit.cpp:2615
+#: src/unit.cpp:2614
 msgid " move"
 msgstr " lép"
 
-#: src/unit.cpp:2630
+#: src/unit.cpp:2629
 msgid "$effect_description per level"
 msgstr "$effect_description szintenként"
 

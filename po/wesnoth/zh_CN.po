@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-03-09 08:51+0100\n"
+"POT-Creation-Date: 2013-03-16 23:53+0100\n"
 "PO-Revision-Date: 2012-04-04 18:49+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
@@ -307,21 +307,21 @@ msgid "Idle AI"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4636
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6053
 msgid ""
 "Enemy unit weight: The (negative) weight given to each enemy unit that can "
 "reach a potential target location.  Default: 100"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4637
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6054
 msgid ""
 "My unit weight: The (positive) weight given to each of the AI's units that "
 "can reach a potential target location.  Default: 1"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4638
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6055
 msgid ""
 "Goal distance weight: The (negative) weight for each step the unit is away "
 "from its goal location.\n"
@@ -330,7 +330,7 @@ msgid ""
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4639
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6056
 msgid ""
 "Terrain defense weight: The (positive) weight of the terrain defense rating "
 "for a potential target location.\n"
@@ -339,19 +339,19 @@ msgid ""
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4640
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6057
 msgid ""
 "Bearing: Everything else being equal, move protected unit toward or away "
 "from enemy groups.  Default: toward"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4648
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6065
 msgid "Set AI parameters"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4654
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6071
 msgid ""
 "Click on 'Close' without changing anything to use defaults.\n"
 "All weights must be 0 or larger.  Invalid inputs are converted to default "
@@ -360,7 +360,7 @@ msgid ""
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4662
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6079
 #, fuzzy
 #| msgid "Enemy unit sighted!"
 #| msgid_plural "$enemies enemy units sighted!"
@@ -368,17 +368,17 @@ msgid "Enemy unit weight  (default: 100)"
 msgstr "发现敌军单位！"
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4670
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6087
 msgid "My unit weight  (default: 1)"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4678
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6095
 msgid "Goal distance weight  (default: 3)"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4686
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6103
 msgid "Terrain defense weight  (default: 0.1)"
 msgstr ""
 
@@ -2476,8 +2476,8 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #. [unstore_unit]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:309
-#: data/lua/wml-tags.lua:1313 src/actions/attack.cpp:801
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:311
+#: data/lua/wml-tags.lua:10661 src/actions/attack.cpp:801
 msgid "poisoned"
 msgstr "中毒"
 
@@ -4072,12 +4072,12 @@ msgid "Turns run out"
 msgstr "回合耗尽"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:1844
+#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:11192
 msgid "Early finish bonus."
 msgstr "提前过关奖励："
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:1846
+#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:11194
 msgid "No early finish bonus."
 msgstr "无提前过关奖励。"
 
@@ -4090,7 +4090,7 @@ msgid "(early finish bonus)"
 msgstr "（提前过关奖励）"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:1854
+#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:11202
 msgid "No gold carried over to the next scenario."
 msgstr "不会有任何金币被带到下一场景。"
 
@@ -5136,91 +5136,91 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1313 src/actions/attack.cpp:801
+#: data/lua/wml-tags.lua:10661 src/actions/attack.cpp:801
 msgid "female^poisoned"
 msgstr "中毒"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1315 src/actions/attack.cpp:806
+#: data/lua/wml-tags.lua:10663 src/actions/attack.cpp:806
 msgid "female^slowed"
 msgstr "减速"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1315 src/actions/attack.cpp:806
+#: data/lua/wml-tags.lua:10663 src/actions/attack.cpp:806
 msgid "slowed"
 msgstr "减速"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1316 src/actions/attack.cpp:811
+#: data/lua/wml-tags.lua:10664 src/actions/attack.cpp:811
 msgid "female^petrified"
 msgstr "石化"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1316 src/actions/attack.cpp:811
+#: data/lua/wml-tags.lua:10664 src/actions/attack.cpp:811
 msgid "petrified"
 msgstr "石化"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1317
+#: data/lua/wml-tags.lua:10665
 msgid "female^unhealable"
 msgstr "不可治疗"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1317
+#: data/lua/wml-tags.lua:10665
 msgid "unhealable"
 msgstr "不可治疗"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1780 src/multiplayer_connect.cpp:1856
+#: data/lua/wml/objectives.lua:11128 src/multiplayer_connect.cpp:1856
 msgid "Victory:"
 msgstr "胜利："
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1781
+#: data/lua/wml/objectives.lua:11129
 msgid "Defeat:"
 msgstr "失败："
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1782
+#: data/lua/wml/objectives.lua:11130
 msgid "Gold carryover:"
 msgstr "带出金币："
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1783
+#: data/lua/wml/objectives.lua:11131
 msgid "Notes:"
 msgstr "备注："
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1801
+#: data/lua/wml/objectives.lua:11149
 msgid "(%d turns left)"
 msgstr "（剩余%d回合）"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1803
+#: data/lua/wml/objectives.lua:11151
 msgid "(this turn left)"
 msgstr "（剩余本回合）"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1856
+#: data/lua/wml/objectives.lua:11204
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "%d%%的金币将会带到下一场景。"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
 #: data/scenario-test.cfg:857 src/dialogs.cpp:625 src/mp_depcheck.cpp:459
-#: src/mp_options.cpp:227 src/multiplayer_create.cpp:102
+#: src/mp_options.cpp:228 src/multiplayer_create.cpp:102
 msgid "OK"
 msgstr "确定"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
 #: data/scenario-test.cfg:858 src/dialogs.cpp:626 src/dialogs.cpp:1067
-#: src/dialogs.cpp:1173 src/mp_options.cpp:232
+#: src/dialogs.cpp:1173 src/mp_options.cpp:233
 #: src/multiplayer_connect.cpp:1074 src/multiplayer_create.cpp:101
 #: src/multiplayer_wait.cpp:180
 msgid "Cancel"
@@ -5257,8 +5257,8 @@ msgstr "结束回合"
 #. [label]: id=selected-label-hp
 #: data/themes/default.cfg:205 data/themes/dfool.cfg:229
 #: data/themes/experimental.cfg:179 data/themes/widescreen.cfg:237
-#: data/themes/widescreen.cfg:257 src/menu_events.cpp:220 src/unit.cpp:2409
-#: src/unit.cpp:2609
+#: data/themes/widescreen.cfg:257 src/menu_events.cpp:220 src/unit.cpp:2408
+#: src/unit.cpp:2608
 msgid "HP"
 msgstr "生命值"
 
@@ -5544,7 +5544,7 @@ msgid ""
 "cannot be installed."
 msgstr "附加组件中的文件或者目录名称无效，因此无法安装。"
 
-#: src/addon/client.cpp:301 src/addon/manager_ui.cpp:682
+#: src/addon/client.cpp:301 src/addon/manager_ui.cpp:683
 #, fuzzy
 #| msgid "Add-on Installed"
 msgid "Add-ons Manager"
@@ -5600,57 +5600,57 @@ msgstr "（未知）"
 msgid "unit_byte^B"
 msgstr "B"
 
-#: src/addon/manager_ui.cpp:97
+#: src/addon/manager_ui.cpp:98
 #, fuzzy
 #| msgid "Add-on Installed"
 msgid "addon_state^Not installed"
 msgstr "附加组件已安装"
 
-#: src/addon/manager_ui.cpp:97
+#: src/addon/manager_ui.cpp:98
 msgid "addon_state^Published, not installed"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:104
+#: src/addon/manager_ui.cpp:105
 #, fuzzy
 #| msgid "Add-on Installed"
 msgid "addon_state^Installed"
 msgstr "附加组件已安装"
 
-#: src/addon/manager_ui.cpp:104
+#: src/addon/manager_ui.cpp:105
 msgid "addon_state^Published"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:107
+#: src/addon/manager_ui.cpp:108
 msgid "addon_state^Installed, upgradable"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:107
+#: src/addon/manager_ui.cpp:108
 msgid "addon_state^Published, upgradable"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:110
+#: src/addon/manager_ui.cpp:111
 msgid "addon_state^Installed, outdated on server"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:110
+#: src/addon/manager_ui.cpp:111
 msgid "addon_state^Published, outdated on server"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:113
+#: src/addon/manager_ui.cpp:114
 msgid "addon_state^Installed, broken"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:113
+#: src/addon/manager_ui.cpp:114
 msgid "addon_state^Published, broken"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:115
+#: src/addon/manager_ui.cpp:116
 #, fuzzy
 #| msgid "addon_type^(unknown)"
 msgid "addon_state^Unknown"
 msgstr "（未知）"
 
-#: src/addon/manager_ui.cpp:148
+#: src/addon/manager_ui.cpp:149
 #, fuzzy
 #| msgid ""
 #| "The selected add-on has the following dependency. Do you want to install "
@@ -5667,41 +5667,41 @@ msgid_plural ""
 msgstr[0] "这个插件必须依赖以下插件。您要安装吗？"
 msgstr[1] "这个插件必须依赖以下插件。您要安装吗？"
 
-#: src/addon/manager_ui.cpp:157
+#: src/addon/manager_ui.cpp:158
 #, fuzzy
 #| msgid "Install dependencies"
 msgid "Broken Dependencies"
 msgstr "安装依赖的插件"
 
-#: src/addon/manager_ui.cpp:173 src/addon/manager_ui.cpp:519
+#: src/addon/manager_ui.cpp:174 src/addon/manager_ui.cpp:520
 msgid "Author"
 msgstr "作者"
 
-#: src/addon/manager_ui.cpp:173 src/addon/manager_ui.cpp:513
+#: src/addon/manager_ui.cpp:174 src/addon/manager_ui.cpp:514
 #: src/dialogs.cpp:576 src/menu_events.cpp:217 src/menu_events.cpp:910
 msgid "Name"
 msgstr "名称"
 
-#: src/addon/manager_ui.cpp:173 src/addon/manager_ui.cpp:517
+#: src/addon/manager_ui.cpp:174 src/addon/manager_ui.cpp:518
 msgid "Version"
 msgstr "版本"
 
-#: src/addon/manager_ui.cpp:174 src/addon/manager_ui.cpp:519
+#: src/addon/manager_ui.cpp:175 src/addon/manager_ui.cpp:520
 msgid "Size"
 msgstr "大小"
 
-#: src/addon/manager_ui.cpp:174 src/addon/manager_ui.cpp:528
+#: src/addon/manager_ui.cpp:175 src/addon/manager_ui.cpp:529
 #: src/menu_events.cpp:216 src/menu_events.cpp:909 src/menu_events.cpp:1292
 msgid "Type"
 msgstr "类型"
 
-#: src/addon/manager_ui.cpp:204
+#: src/addon/manager_ui.cpp:205
 #, fuzzy
 #| msgid "Install dependencies"
 msgid "Install Dependencies"
 msgstr "安装依赖的插件"
 
-#: src/addon/manager_ui.cpp:205
+#: src/addon/manager_ui.cpp:206
 #, fuzzy
 #| msgid ""
 #| "The selected add-on has the following dependency. Do you want to install "
@@ -5718,15 +5718,15 @@ msgid_plural ""
 msgstr[0] "这个插件必须依赖以下插件。您要安装吗？"
 msgstr[1] "这个插件必须依赖以下插件。您要安装吗？"
 
-#: src/addon/manager_ui.cpp:241 src/addon/manager_ui.cpp:313
-#: src/addon/manager_ui.cpp:328 src/addon/manager_ui.cpp:333
-#: src/addon/manager_ui.cpp:815
+#: src/addon/manager_ui.cpp:242 src/addon/manager_ui.cpp:314
+#: src/addon/manager_ui.cpp:329 src/addon/manager_ui.cpp:334
+#: src/addon/manager_ui.cpp:816
 #, fuzzy
 #| msgid "The server responded with an error: \""
 msgid "The server responded with an error:"
 msgstr "服务器返回一个错误：\""
 
-#: src/addon/manager_ui.cpp:252
+#: src/addon/manager_ui.cpp:253
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5736,38 +5736,38 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon/manager_ui.cpp:256
+#: src/addon/manager_ui.cpp:257
 #, fuzzy
 #| msgid "Installation failed"
 msgid "Dependencies Installation Failed"
 msgstr "安装失败"
 
-#: src/addon/manager_ui.cpp:279
+#: src/addon/manager_ui.cpp:280
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:283
+#: src/addon/manager_ui.cpp:284
 msgid "Publishing information file (.pbl)"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:287
+#: src/addon/manager_ui.cpp:288
 msgid "Version control system (VCS) information"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:291
+#: src/addon/manager_ui.cpp:292
 #, fuzzy
 #| msgid "Do you want to continue?"
 msgid "Do you really wish to continue?"
 msgstr "您希望继续吗？"
 
-#: src/addon/manager_ui.cpp:293 src/addon/manager_ui.cpp:304
-#: src/addon/manager_ui.cpp:970 src/multiplayer.cpp:273
+#: src/addon/manager_ui.cpp:294 src/addon/manager_ui.cpp:305
+#: src/addon/manager_ui.cpp:971 src/multiplayer.cpp:273
 msgid "Confirm"
 msgstr "确认"
 
-#: src/addon/manager_ui.cpp:301
+#: src/addon/manager_ui.cpp:302
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -5775,131 +5775,131 @@ msgstr ""
 "删除“$addon|”将永久性地擦除其在附加组件服务器上的下载与上传计数。您真的希望继"
 "续吗？"
 
-#: src/addon/manager_ui.cpp:317 src/addon/manager_ui.cpp:336
+#: src/addon/manager_ui.cpp:318 src/addon/manager_ui.cpp:337
 #: src/multiplayer_wait.cpp:408
 msgid "Response"
 msgstr "回应"
 
-#: src/addon/manager_ui.cpp:330
+#: src/addon/manager_ui.cpp:331
 msgid "Terms"
 msgstr "条件"
 
-#: src/addon/manager_ui.cpp:515
+#: src/addon/manager_ui.cpp:516
 #, fuzzy
 #| msgid "New version"
 msgid "New Version"
 msgstr "新版本"
 
-#: src/addon/manager_ui.cpp:515
+#: src/addon/manager_ui.cpp:516
 #, fuzzy
 #| msgid "Old version"
 msgid "Old Version"
 msgstr "旧版本"
 
-#: src/addon/manager_ui.cpp:528
+#: src/addon/manager_ui.cpp:529
 msgid "Downloads"
 msgstr "下载数"
 
-#: src/addon/manager_ui.cpp:642
+#: src/addon/manager_ui.cpp:643
 #, fuzzy
 #| msgid "Publish add-on: "
 msgid "Publish: $addon_title"
 msgstr "发布附加组件： "
 
-#: src/addon/manager_ui.cpp:651
+#: src/addon/manager_ui.cpp:652
 #, fuzzy
 #| msgid "Delete add-on: "
 msgid "Delete: $addon_title"
 msgstr "删除附加组件： "
 
-#: src/addon/manager_ui.cpp:678
+#: src/addon/manager_ui.cpp:679
 msgid "There are no add-ons available for download from this server."
 msgstr "这个服务器上无可供下载的附加组件。"
 
-#: src/addon/manager_ui.cpp:679
+#: src/addon/manager_ui.cpp:680
 #, fuzzy
 #| msgid "There are no add-ons available for download from this server."
 msgid "There are no add-ons matching the specified criteria on this server."
 msgstr "这个服务器上无可供下载的附加组件。"
 
-#: src/addon/manager_ui.cpp:701 src/dialogs.cpp:601 src/menu_events.cpp:984
+#: src/addon/manager_ui.cpp:702 src/dialogs.cpp:601 src/menu_events.cpp:984
 #: src/menu_events.cpp:1325
 msgid "Filter: "
 msgstr "过滤条件："
 
-#: src/addon/manager_ui.cpp:711
+#: src/addon/manager_ui.cpp:712
 msgid "Description"
 msgstr "描述"
 
-#: src/addon/manager_ui.cpp:716
+#: src/addon/manager_ui.cpp:717
 #, fuzzy
 #| msgid "Update all"
 msgid "Update All"
 msgstr "全部更新"
 
-#: src/addon/manager_ui.cpp:723
+#: src/addon/manager_ui.cpp:724
 #, fuzzy
 #| msgid "Whiteboard Options"
 msgid "filter^Options"
 msgstr "白板选项"
 
-#: src/addon/manager_ui.cpp:829
+#: src/addon/manager_ui.cpp:830
 msgid "Add-on Installed"
 msgstr "附加组件已安装"
 
-#: src/addon/manager_ui.cpp:829
+#: src/addon/manager_ui.cpp:830
 #, fuzzy
 #| msgid "Add-on Deleted"
 #| msgid_plural "Add-ons Deleted"
 msgid "Add-on Updated"
 msgstr "附加组件已删除"
 
-#: src/addon/manager_ui.cpp:830
+#: src/addon/manager_ui.cpp:831
 msgid "The add-on '$addon_title|' has been successfully installed."
 msgstr "附加组件“$addon_title|”已经成功安装。"
 
-#: src/addon/manager_ui.cpp:830
+#: src/addon/manager_ui.cpp:831
 #, fuzzy
 #| msgid "The add-on '$addon_title|' has been successfully installed."
 msgid "The add-on '$addon_title|' has been successfully updated."
 msgstr "附加组件“$addon_title|”已经成功安装。"
 
-#: src/addon/manager_ui.cpp:835
+#: src/addon/manager_ui.cpp:836
 #, fuzzy
 #| msgid "Add-on Installed"
 msgid "Add-ons Installed"
 msgstr "附加组件已安装"
 
-#: src/addon/manager_ui.cpp:835
+#: src/addon/manager_ui.cpp:836
 #, fuzzy
 #| msgid "Add-on Deleted"
 #| msgid_plural "Add-ons Deleted"
 msgid "Add-ons Updated"
 msgstr "附加组件已删除"
 
-#: src/addon/manager_ui.cpp:836
+#: src/addon/manager_ui.cpp:837
 #, fuzzy
 #| msgid "All add-ons updated successfully."
 msgid "All add-ons installed successfully."
 msgstr "所有附加组件都更新成功了。"
 
-#: src/addon/manager_ui.cpp:836
+#: src/addon/manager_ui.cpp:837
 msgid "All add-ons updated successfully."
 msgstr "所有附加组件都更新成功了。"
 
-#: src/addon/manager_ui.cpp:840
+#: src/addon/manager_ui.cpp:841
 #, fuzzy
 #| msgid "Installation failed"
 msgid "Installation Failed"
 msgstr "安装失败"
 
-#: src/addon/manager_ui.cpp:840
+#: src/addon/manager_ui.cpp:841
 #, fuzzy
 #| msgid "Update failed"
 msgid "Update Failed"
 msgstr "更新失败"
 
-#: src/addon/manager_ui.cpp:842
+#: src/addon/manager_ui.cpp:843
 #, fuzzy
 #| msgid ""
 #| "The following add-on could not be downloaded or updated successfully:"
@@ -5911,40 +5911,40 @@ msgid_plural ""
 msgstr[0] "以下附加组件有错误，无法成功地下载或更新："
 msgstr[1] "以下附加组件有错误，无法成功地下载或更新："
 
-#: src/addon/manager_ui.cpp:884 src/addon/manager_ui.cpp:894
+#: src/addon/manager_ui.cpp:885 src/addon/manager_ui.cpp:895
 #, fuzzy
 #| msgid "An error occurred while communicating with the server."
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "与服务器通讯时发生错误。"
 
-#: src/addon/manager_ui.cpp:912
+#: src/addon/manager_ui.cpp:913
 msgid "Network communication error."
 msgstr "网络通讯错误。"
 
-#: src/addon/manager_ui.cpp:915 src/addon/manager_ui.cpp:918
+#: src/addon/manager_ui.cpp:916 src/addon/manager_ui.cpp:919
 msgid "Remote host disconnected."
 msgstr "远程主机断开连接。"
 
-#: src/addon/manager_ui.cpp:921
+#: src/addon/manager_ui.cpp:922
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
 msgstr "试图创建安装本附加组件所必需的文件时发生了问题。"
 
-#: src/addon/manager_ui.cpp:927
+#: src/addon/manager_ui.cpp:928
 msgid "The add-ons server address specified is not valid."
 msgstr ""
 
-#: src/addon/manager_ui.cpp:941
+#: src/addon/manager_ui.cpp:942
 msgid "You have no add-ons installed."
 msgstr "您没有安装任何附加组件。"
 
-#: src/addon/manager_ui.cpp:965
+#: src/addon/manager_ui.cpp:966
 msgid "Are you sure you want to remove the following installed add-on?"
 msgid_plural "Are you sure you want to remove the following installed add-ons?"
 msgstr[0] "您确定要移除下列已安装的附加组件吗？"
 
-#: src/addon/manager_ui.cpp:991
+#: src/addon/manager_ui.cpp:992
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -5954,17 +5954,17 @@ msgid_plural ""
 msgstr[0] ""
 "下列附加组件似乎在本地存储了发布信息或版本控制信息，因此将不会被移除："
 
-#: src/addon/manager_ui.cpp:1001
+#: src/addon/manager_ui.cpp:1002
 msgid "The following add-on could not be deleted properly:"
 msgid_plural "The following add-ons could not be deleted properly:"
 msgstr[0] "下列附加组件无法正确删除："
 
-#: src/addon/manager_ui.cpp:1008
+#: src/addon/manager_ui.cpp:1009
 msgid "Add-on Deleted"
 msgid_plural "Add-ons Deleted"
 msgstr[0] "附加组件已删除"
 
-#: src/addon/manager_ui.cpp:1010
+#: src/addon/manager_ui.cpp:1011
 msgid "The following add-on was successfully deleted:"
 msgid_plural "The following add-ons were successfully deleted:"
 msgstr[0] "下列附加组件已成功删除："
@@ -6005,7 +6005,7 @@ msgstr "减速"
 msgid "Total damage"
 msgstr "总伤害输出"
 
-#: src/attack_prediction_display.cpp:261 src/mouse_events.cpp:911
+#: src/attack_prediction_display.cpp:261 src/mouse_events.cpp:843
 msgid "No usable weapon"
 msgstr "无可用武器"
 
@@ -6013,7 +6013,7 @@ msgstr "无可用武器"
 msgid "Chance of being unscathed"
 msgstr "不受伤的几率"
 
-#: src/attack_prediction_display.cpp:545 src/mouse_events.cpp:980
+#: src/attack_prediction_display.cpp:545 src/mouse_events.cpp:912
 msgid "Damage Calculations"
 msgstr "伤害计算"
 
@@ -6174,7 +6174,7 @@ msgstr "移动："
 msgid "KB"
 msgstr "KB"
 
-#: src/game_config.cpp:341
+#: src/game_config.cpp:348
 msgid "Invalid color range: "
 msgstr "无效颜色范围："
 
@@ -6312,39 +6312,39 @@ msgstr "战场黑幕"
 msgid "none"
 msgstr "无"
 
-#: src/gui/dialogs/lobby_player_info.cpp:98
+#: src/gui/dialogs/lobby_player_info.cpp:99
 msgid "In game:"
 msgstr "在游戏中："
 
-#: src/gui/dialogs/lobby_player_info.cpp:100
+#: src/gui/dialogs/lobby_player_info.cpp:101
 msgid "(observing)"
 msgstr "（观察中）"
 
-#: src/gui/dialogs/lobby_player_info.cpp:102
+#: src/gui/dialogs/lobby_player_info.cpp:103
 msgid "(playing)"
 msgstr "（正在游戏）"
 
-#: src/gui/dialogs/lobby_player_info.cpp:105
+#: src/gui/dialogs/lobby_player_info.cpp:106
 msgid "In lobby"
 msgstr "在大厅中"
 
-#: src/gui/dialogs/lobby_player_info.cpp:129
+#: src/gui/dialogs/lobby_player_info.cpp:130
 msgid "On friends list"
 msgstr "在好友列表中"
 
-#: src/gui/dialogs/lobby_player_info.cpp:134
+#: src/gui/dialogs/lobby_player_info.cpp:135
 msgid "On ignores list"
 msgstr "在忽略列表中"
 
-#: src/gui/dialogs/lobby_player_info.cpp:139
+#: src/gui/dialogs/lobby_player_info.cpp:140
 msgid "Neither a friend nor ignored"
 msgstr "不在好友或忽略列表中"
 
-#: src/gui/dialogs/lobby_player_info.cpp:144
+#: src/gui/dialogs/lobby_player_info.cpp:145
 msgid "You"
 msgstr "您自己"
 
-#: src/gui/dialogs/lobby_player_info.cpp:147 src/multiplayer_create.cpp:667
+#: src/gui/dialogs/lobby_player_info.cpp:148 src/multiplayer_create.cpp:667
 msgid "Error"
 msgstr "错误"
 
@@ -7351,17 +7351,17 @@ msgstr "ai"
 msgid "prompt^Command:"
 msgstr "命令："
 
-#: src/mouse_events.cpp:794
+#: src/mouse_events.cpp:726
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
 msgstr "在有剩余的征募或者召回计划时，您不能将领袖移动到主楼之外。"
 
-#: src/mouse_events.cpp:910 src/mouse_events.cpp:990
+#: src/mouse_events.cpp:842 src/mouse_events.cpp:922
 msgid "Attack Enemy"
 msgstr "攻击敌人"
 
-#: src/mouse_events.cpp:991
+#: src/mouse_events.cpp:923
 msgid "Choose weapon:"
 msgstr "选择武器："
 
@@ -7397,13 +7397,13 @@ msgid ""
 "disabled."
 msgstr ""
 
-#: src/mp_options.cpp:199
+#: src/mp_options.cpp:200
 msgid ""
 "None of the selected modifications, era or scenario provide configuration "
 "options."
 msgstr ""
 
-#: src/mp_options.cpp:222
+#: src/mp_options.cpp:223
 msgid "Defaults"
 msgstr ""
 
@@ -8759,27 +8759,27 @@ msgstr "我军的村庄"
 msgid "border_size should be between 0.0 and 0.5."
 msgstr "border_size应设为0.0到0.5之间的数值。"
 
-#: src/unit.cpp:2368 src/unit.cpp:2598 src/unit.cpp:2677
+#: src/unit.cpp:2367 src/unit.cpp:2597 src/unit.cpp:2678
 msgid " and "
 msgstr " 以及"
 
-#: src/unit.cpp:2379
+#: src/unit.cpp:2378
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|：$effect_description"
 
-#: src/unit.cpp:2440
+#: src/unit.cpp:2439
 msgid "moves"
 msgstr "移动点数"
 
-#: src/unit.cpp:2470 src/unit.cpp:2622
+#: src/unit.cpp:2469 src/unit.cpp:2621
 msgid "XP to advance"
 msgstr "升级所需经验值"
 
-#: src/unit.cpp:2615
+#: src/unit.cpp:2614
 msgid " move"
 msgstr " 移动"
 
-#: src/unit.cpp:2630
+#: src/unit.cpp:2629
 msgid "$effect_description per level"
 msgstr "每一等级$effect_description"
 
