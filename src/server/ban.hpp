@@ -82,6 +82,7 @@ namespace wesnothd {
 
 		std::string get_human_end_time() const;
 		std::string get_human_start_time() const;
+		std::string get_human_time_span() const;
 		static std::string get_human_time(const time_t&);
 
 		std::string get_reason() const

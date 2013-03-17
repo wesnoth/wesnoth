@@ -124,6 +124,22 @@ std::string get_timestamp(const time_t& t, const std::string& format) {
 	}
 	return buf;
 }
+std::string get_timespan(const time_t& t) {
+	char buf[100];
+	// There doesn't seem to be any library function for this
+	const time_t minutes = t / 60;
+	const time_t days = minutes / 60 / 24;
+	if(t <= 0) {
+		strncpy(buf, "expired", 100);
+	} else if(minutes == 0) {
+		snprintf(buf, 100, "00:00:%02ld", t);
+	} else if(days == 0) {
+		snprintf(buf, 100, "%02ld:%02ld", minutes / 60, minutes % 60);
+	} else {
+		snprintf(buf, 100, "%ld %02ld:%02ld", days, (minutes / 60) % 24, minutes % 60);
+	}
+	return buf;
+}
 
 std::ostream &logger::operator()(log_domain const &domain, bool show_names, bool do_indent) const
 {
