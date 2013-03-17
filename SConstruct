@@ -444,7 +444,7 @@ for env in [test_env, client_env, env]:
 if not env['static_test']:
     test_env.Append(CPPDEFINES = "BOOST_TEST_DYN_LINK")
 
-if os.path.exists('.git'):
+if os.path.exists('.git') and (file(".git/config").read().find("svn-remote") != -1):
     try:
         env["svnrev"] = Popen(Split("git svn find-rev refs/remotes/trunk"), stdout=PIPE, stderr=PIPE).communicate()[0].rstrip("\n")
         if not env["svnrev"]:
@@ -458,10 +458,12 @@ if os.path.exists('.git'):
     except:
         env["svnrev"] = ""
 else:
+    env["svnrev"] = ""
     try:
-        env["svnrev"] = Popen(Split("svnversion -n ."), stdout=PIPE).communicate()[0]
+        if call("utils/autorevision -t h > revision.h", shell=True) == 0:
+            env["have_autorevision"] = True
     except:
-        env["svnrev"] = ""
+        pass
 
 Export(Split("env client_env test_env have_client_prereqs have_server_prereqs have_test_prereqs"))
 SConscript(dirs = Split("po doc packaging/windows"))

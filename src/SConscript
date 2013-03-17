@@ -574,6 +574,8 @@ if env["svnrev"] != "" and env["svnrev"] != "exported":
                     "Generating revision.hpp..."
                     ))
     game_config_env.Append(CPPDEFINES = 'HAVE_REVISION')
+if env.get("have_autorevision"):
+    game_config_env.Append(CPPDEFINES = 'LOAD_REVISION')
 
 sources = []
 if "TAGS" in COMMAND_LINE_TARGETS:
