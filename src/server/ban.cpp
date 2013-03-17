@@ -219,7 +219,7 @@ static lg::log_domain log_server("server");
 	{
 		if (start_time_ == 0)
 			return "unknown";
-		return lg::get_timestamp(start_time_, "%H:%M:%S %d.%m.%Y");
+		return lg::get_timestamp(start_time_);
 	}
 
 	std::string banned::get_human_end_time() const
@@ -228,7 +228,7 @@ static lg::log_domain log_server("server");
 		{
 			return "permanent";
 		}
-		return lg::get_timestamp(end_time_, "%H:%M:%S %d.%m.%Y");
+		return lg::get_timestamp(end_time_);
 	}
 
 	bool banned::operator>(const banned& b) const
