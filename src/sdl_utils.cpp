@@ -602,7 +602,7 @@ surface scale_surface_sharp(const surface& surf, int w, int h, bool optimize)
 	}
 
 #ifdef PANDORA
-	scale_surface_down(dst);
+	scale_surface_down(dst, src, w, h);
 #else
 	{
 		const_surface_lock src_lock(src);
