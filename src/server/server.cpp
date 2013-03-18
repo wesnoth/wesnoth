@@ -735,17 +735,17 @@ void server::run() {
 				if (!reason.empty()) {
 					LOG_SERVER << ip << "\trejected banned user. Reason: " << reason << "\n";
 					send_error(sock, "You are banned. Reason: " + reason);
-					network::disconnect(sock);
+					network::queue_disconnect(sock);
 				} else if (ip_exceeds_connection_limit(ip)) {
 					LOG_SERVER << ip << "\trejected ip due to excessive connections\n";
 					send_error(sock, "Too many connections from your IP.");
-					network::disconnect(sock);
+					network::queue_disconnect(sock);
 				} else {
 					DBG_SERVER << ip << "\tnew connection accepted. (socket: "
 						<< sock << ")\n";
 					send_doc(version_query_response_, sock);
-					not_logged_in_.insert(sock);
 				}
+				not_logged_in_.insert(sock);
 			}
 
 			static int sample_counter = 0;
