@@ -49,6 +49,46 @@ namespace gui2 {
  *
  * @begin{table}{dialog_widgets}
  *
+ * statuses_list & & listbox & m &
+ *     A listbox for displaying and selecting add-on installation status
+ *     filter options. $
+ *
+ * toggle_all_displayed_types & & button & m &
+ *     This button toggles the values for all the widgets used to control the
+ *     following add-on display options. $
+ *
+ * show_unknown & & toggle_button & m &
+ *     Whether to display add-ons of unknown type. $
+ *
+ * show_sp_campaigns & & toggle_button & m &
+ *     Whether to display single-player campaign add-ons. $
+ *
+ * show_sp_scenarios & & toggle_button & m &
+ *     Whether to display single-player scenario add-ons. $
+ *
+ * show_mp_campaigns & & toggle_button & m &
+ *     Whether to display multiplayer campaign add-ons. $
+ *
+ * show_mp_scenarios & & toggle_button & m &
+ *     Whether to display multiplayer scenario add-ons. $
+ *
+ * show_mp_maps & & toggle_button & m &
+ *     Whether to display multiplayer map-pack add-ons. $
+ *
+ * show_mp_eras & & toggle_button & m &
+ *     Whether to display multiplayer era add-ons. $
+ *
+ * show_mp_factions & & toggle_button & m &
+ *     Whether to display multiplayer faction add-ons. $
+ *
+ * show_mp_mods & & toggle_button & m &
+ *     Whether to display multiplayer mod add-ons. $
+ *
+ * show_media & & toggle_button & m &
+ *     Whether to display author resource add-ons. $
+ *
+ * show_other & & toggle_button & m &
+ *     Whether to display add-ons of indeterminate types. $
  *
  * @end{table}
  */
