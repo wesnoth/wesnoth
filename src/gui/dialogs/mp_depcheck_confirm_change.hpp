@@ -1,6 +1,6 @@
 /* $Id: mp_game_settings.cpp 55412 2012 - 2013-09-25 17:42:18Z lipk $ */
 /*
-   Copyright (C) 2012 - 2013 by Boldizsár Lipka <lipka.boldizsar@gmail.com>
+   Copyright (C) 2012 - 2013 by Boldizsár Lipka <lipkab@zoho.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
