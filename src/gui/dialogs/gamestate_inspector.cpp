@@ -373,7 +373,9 @@ public:
 
 			std::stringstream s;
 			FOREACH(const AUTO& u, recall_list) {
-				s << "id=\""<<u.id() << "\" ("<<u.type_id() << ")\nL"<<u.level()<<"; " << u.experience() <<"/" << u.max_experience()<< " xp "<< std::endl;
+				s << "id=\""<<u.id() << "\" ("<<u.type_id() << ")\nL"<<u.level()<<"; "
+					<< u.experience() << "/" << u.max_experience() << " xp; "
+					<< u.hitpoints() << "/" << u.max_hitpoints() << " hp\n";
 				FOREACH(const AUTO& str, u.get_traits_list() ) {
 					s << "\t" << str<< std::endl;
 				}
