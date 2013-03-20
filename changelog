@@ -71,7 +71,7 @@ Version 1.11.2:
    * Removed the "move unit to hexfield" feature.
    * Rearranged :inspect dialog elements to provide the data visualization
      panel with more horizontal space.
-* WML engine:
+ * WML engine:
    * [unit_overlay] and [remove_unit_overlay] now return a more meaningful
      error message if the image= key is missing
    * When not replacing values, [effect] apply_to=defense will now modify
@@ -93,7 +93,7 @@ Version 1.11.2:
    * Changed default unit halos and macros to use new square bracket expansion
    * Fixed bug #20468: Update the owned villages when using [replace_map].
    * Changed [vision_costs] to default to movement costs on a per-terrain basis.
- Miscellaneous and bug fixes:
+ * Miscellaneous and bug fixes:
    * The undo stack is preserved across a save-reload.
    * Removed several unused private member variables.
    * Fixed the present in-game command line autocompletion feature so it
