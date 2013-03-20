@@ -69,6 +69,8 @@ Version 1.11.2:
    * Fix viewport centering issues with actions such as the Next Unit command,
      and the [scroll_to], [scroll_to_unit], and [message] WML actions (bug #18793).
    * Removed the "move unit to hexfield" feature.
+   * Rearranged :inspect dialog elements to provide the data visualization
+     panel with more horizontal space.
 * WML engine:
    * [unit_overlay] and [remove_unit_overlay] now return a more meaningful
      error message if the image= key is missing
