@@ -235,7 +235,7 @@ public:
 	virtual void update_view_from_model()
 	{
 		show_stuff_list();
-		//handle_stuff_list_selection();
+		handle_stuff_list_selection();
 	}
 };
 
@@ -311,7 +311,7 @@ public:
 	virtual void update_view_from_model()
 	{
 		show_stuff_list();
-		//handle_stuff_list_selection();
+		handle_stuff_list_selection();
 	}
 };
 
@@ -441,7 +441,7 @@ public:
 	virtual void update_view_from_model()
 	{
 		show_stuff_list();
-		//handle_stuff_list_selection();
+		handle_stuff_list_selection();
 	}
 private:
 	int side_;
