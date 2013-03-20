@@ -264,13 +264,13 @@ public:
 					s << "LEADER ";
 				}
 
-				s << "id=[" << i->id() << "] " << i->type_id()
-					<< "; L" << i->level()<< "; " << i->experience()
+				s << "\nid=\"" << i->id() << "\" (" << i->type_id() << ")\n"
+					<< "L" << i->level()<< "; " << i->experience()
 					<< '/' << i->max_experience() << " xp; "
 					<< i->hitpoints() << '/' << i->max_hitpoints()
-					<< " hp; ";
+					<< " hp;";
 				FOREACH(const AUTO& str, i->get_traits_list()) {
-					s << str <<" ";
+					s << " " << str;
 				}
 
 				std::string key = s.str();
@@ -373,11 +373,11 @@ public:
 
 			std::stringstream s;
 			FOREACH(const AUTO& u, recall_list) {
-				s << "id=["<<u.id() << "] "<<u.type_id() << "; L"<<u.level()<<"; " << u.experience() <<"/" << u.max_experience()<< " xp "<< std::endl;
+				s << "id=\""<<u.id() << "\" ("<<u.type_id() << ")\nL"<<u.level()<<"; " << u.experience() <<"/" << u.max_experience()<< " xp "<< std::endl;
 				FOREACH(const AUTO& str, u.get_traits_list() ) {
 					s << "\t" << str<< std::endl;
 				}
-				s << std::endl << std::endl;
+				s << std::endl;
 			}
 			model_.set_inspect_window_text(s.str());
 			return;
@@ -413,21 +413,21 @@ public:
 					if (i->side()!=side_) {
 						continue;
 					}
-					s << i->get_location();
+					s << '(' << i->get_location() << ") ";
 					if (i->can_recruit()) {
-						s << " LEADER ";
+						s << "LEADER ";
 					}
 
-					s << "id=[" << i->id() << "] " << i->type_id()
-						<< "; L" << i->level()<< "; "
+					s << "\nid=\"" << i->id() << "\" (" << i->type_id() << ")\n"
+						<< "L" << i->level()<< "; "
 						<< i->experience() << '/'
 						<< i->max_experience() << " xp; "
 						<< i->hitpoints() << '/'
-						<< i->max_hitpoints()<<" hp.\n";
+						<< i->max_hitpoints()<<" hp\n";
 					FOREACH(const AUTO& str, i->get_traits_list() ) {
 						s << "\t" << str<< std::endl;
 					}
-					s << std::endl << std::endl;
+					s << std::endl;
 				}
 			}
 			model_.set_inspect_window_text(s.str());
