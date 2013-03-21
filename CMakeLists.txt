@@ -85,11 +85,12 @@ option(ENABLE_OMP "Enables OpenMP, and has additional dependencies" OFF)
 if(NOT UNIX)
 	set(DEFAULT_ENABLE_DISPLAY_REVISION false)
 else()
-	set(DEFAULT_ENABLE_DISPLAY_REVISION true)
+	# TODO test whether can be enabled by default
+	set(DEFAULT_ENABLE_DISPLAY_REVISION false)
 endif()
 option(
 	ENABLE_DISPLAY_REVISION
-	"Enable the display of the revision number in the game"
+	"Enable the display of the revision number in the game, only enable it when in a checkout"
 	${DEFAULT_ENABLE_DISPLAY_REVISION}
 )
 
