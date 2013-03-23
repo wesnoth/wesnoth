@@ -610,7 +610,7 @@ private:
 	}
 };
 
-/** Specialized field class for a control, used for labels and images.. */
+/** Specialized field class for a control, used for labels and images. */
 class tfield_label : public tfield<std::string, tcontrol, const std::string&>
 {
 public:
