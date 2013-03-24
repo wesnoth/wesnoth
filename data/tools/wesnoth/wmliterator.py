@@ -23,7 +23,7 @@ Limitations:
 import sys, re, copy
 keyPattern = re.compile('(\w+)(,\s?\w+)*\s*=')
 keySplit = re.compile(r'[=,\s]')
-tagPattern = re.compile(r'(^|(?<![\w\|\}]))(\[/?\+?[a-z].*?\])')
+tagPattern = re.compile(r'(^|[^\w|}])(\[/?\+?[a-z _]+\])')
 macroOpenPattern = re.compile(r'(\{[^\s\}\{]*)')
 macroClosePattern = re.compile(r'\}')
 closeMacroType = 'end of macro'
