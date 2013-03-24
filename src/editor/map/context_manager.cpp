@@ -489,11 +489,8 @@ void context_manager::create_default_context()
 
 void context_manager::fill_selection()
 {
-	//TODO
-
 	perform_refresh(editor_action_paint_area(get_map().selection(),
 			get_selected_bg_terrain()));
-
 }
 
 void context_manager::close_current_context()
