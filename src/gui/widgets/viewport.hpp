@@ -63,8 +63,8 @@ public:
 	void child_populate_dirty_list(twindow& caller,
 			const std::vector<twidget*>& call_stack);
 
-	/** Inherited from twidget. */
-	void request_reduce_width(const unsigned maximum_width);
+	/** See @ref twidget::request_reduce_width. */
+	virtual void request_reduce_width(const unsigned maximum_width) OVERRIDE;
 
 	/** Inherited from twidget. */
 	twidget* find_at(const tpoint& coordinate, const bool must_be_active);

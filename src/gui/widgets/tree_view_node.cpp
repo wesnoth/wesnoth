@@ -190,6 +190,11 @@ ttree_view& ttree_view_node::tree_view()
 	return tree_view_;
 }
 
+void ttree_view_node::request_reduce_width(const unsigned /*maximum_width*/)
+{
+	/* DO NOTHING */
+}
+
 const ttree_view& ttree_view_node::tree_view() const
 {
 	return tree_view_;

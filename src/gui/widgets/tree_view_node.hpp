@@ -181,8 +181,8 @@ public:
 
 private:
 
-	/** Inherited from twidget. */
-	void request_reduce_width(const unsigned /*maximum_width*/) {}
+	/** See @ref twidget::request_reduce_width. */
+	virtual void request_reduce_width(const unsigned maximum_width) OVERRIDE;
 
 	/**
 	 * Our parent node.

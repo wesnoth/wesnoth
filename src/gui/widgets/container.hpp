@@ -61,8 +61,8 @@ public:
 	 */
 	void reduce_width(const unsigned maximum_width);
 
-	/** Inherited from tcontrol. */
-	void request_reduce_width(const unsigned maximum_width);
+	/** See @ref twidget::request_reduce_width. */
+	virtual void request_reduce_width(const unsigned maximum_width) OVERRIDE;
 
 	/** Inherited from twidget. */
 	void demand_reduce_width(const unsigned maximum_width);

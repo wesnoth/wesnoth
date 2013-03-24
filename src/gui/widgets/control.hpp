@@ -150,8 +150,8 @@ public:
 	 */
 	virtual void layout_initialise(const bool full_initialisation) OVERRIDE;
 
-	/** Inherited from twidget. */
-	void request_reduce_width(const unsigned maximum_width);
+	/** See @ref twidget::request_reduce_width. */
+	virtual void request_reduce_width(const unsigned maximum_width) OVERRIDE;
 
 protected:
 	/** Inherited from twidget. */

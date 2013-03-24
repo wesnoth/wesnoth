@@ -241,8 +241,9 @@ public:
 	/** See @ref twidget::layout_initialise. */
 	virtual void layout_initialise(const bool full_initialisation) OVERRIDE = 0;
 
-	/** Inherited from twidget. */
-	virtual void request_reduce_width(const unsigned maximum_width) = 0;
+	/** See @ref twidget::request_reduce_width. */
+	virtual void request_reduce_width(
+			const unsigned maximum_width) OVERRIDE = 0;
 
 	/** Inherited from twidget. */
 	virtual void request_reduce_height(const unsigned maximum_height) = 0;
