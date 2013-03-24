@@ -352,11 +352,12 @@ std::string gamemap::write() const
 		starting_positions[i] = position;
 	}
 
-	// Let the low level convertor do the conversion
+	// Let the low level converter do the conversion
 	std::ostringstream s;
 	s << "border_size=" << border_size_ << "\nusage="
 		<< (usage_ == IS_MAP ? "map" : "mask") << "\n\n"
-		<< t_translation::write_game_map(tiles_, starting_positions);
+		<< t_translation::write_game_map(tiles_, starting_positions)
+		<< "\n";
 	return s.str();
 }
 
