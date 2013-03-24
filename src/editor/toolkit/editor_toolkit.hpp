@@ -25,6 +25,7 @@
 #include "editor/palette/palette_manager.hpp"
 #include "hotkeys.hpp"
 #include "editor/toolkit/brush_bar.hpp"
+#include "editor/map/context_manager.hpp"
 
 namespace editor {
 
@@ -32,7 +33,8 @@ namespace editor {
 class editor_toolkit {
 
 public:
-	editor_toolkit(editor_display& gui, const CKey& key, const config& game_config);
+	editor_toolkit(editor_display& gui, const CKey& key,
+			const config& game_config, context_manager& c_manager);
 
 	~editor_toolkit();
 
@@ -48,7 +50,7 @@ private:
 	void init_brushes(const config& game_config);
 
 	/** init the mouse actions (tools) */
-	void init_mouse_actions(const config& game_config);
+	void init_mouse_actions(const config& game_config, context_manager& c_manager);
 
 public:
 	void set_mouseover_overlay();

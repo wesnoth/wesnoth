@@ -25,7 +25,8 @@
 
 namespace editor {
 
-editor_toolkit::editor_toolkit(editor_display& gui, const CKey& key, const config& game_config)
+editor_toolkit::editor_toolkit(editor_display& gui, const CKey& key,
+		const config& game_config, context_manager& c_manager)
 	: gui_(gui)
 	, key_(key)
 	, palette_manager_()
@@ -39,7 +40,7 @@ editor_toolkit::editor_toolkit(editor_display& gui, const CKey& key, const confi
 {
 	init_brushes(game_config);
 	init_sidebar(game_config);
-	init_mouse_actions(game_config);
+	init_mouse_actions(game_config, c_manager);
 }
 
 editor_toolkit::~editor_toolkit()
@@ -72,7 +73,7 @@ void editor_toolkit::init_sidebar(const config& game_config)
 	palette_manager_.reset(new palette_manager(gui_, game_config, &mouse_action_));
 }
 
-void editor_toolkit::init_mouse_actions(const config& game_config)
+void editor_toolkit::init_mouse_actions(const config& game_config, context_manager& cmanager)
 {
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_PAINT,
 		new mouse_action_paint(&brush_, key_, *palette_manager_->terrain_palette_.get())));
@@ -88,10 +89,8 @@ void editor_toolkit::init_mouse_actions(const config& game_config)
 		new mouse_action_unit(key_, *palette_manager_->unit_palette_.get())));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_VILLAGE,
 			new mouse_action_village(key_, *palette_manager_->empty_palette_.get())));
-
-	//TODO
-	//	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_PASTE,
-	//		new mouse_action_paste(clipboard_, key_, *palette_manager_->empty_palette_.get())));
+	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_PASTE,
+			new mouse_action_paste(cmanager.get_clipboard(), key_, *palette_manager_->empty_palette_.get())));
 
 	BOOST_FOREACH(const theme::menu& menu, gui_.get_theme().menus()) {
 		if (menu.items().size() == 1) {
@@ -122,7 +121,7 @@ void editor_toolkit::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 		mouse_action_ = i->second;
 		palette_manager_->adjust_size();
 
-		//TODO make active_palette() privat again.
+		//TODO make active_palette() private again.
 		//palette_manager_->switch_palette();
 		gui_.set_palette_report(palette_manager_->active_palette().active_group_report());
 

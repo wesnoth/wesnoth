@@ -71,7 +71,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	, quit_mode_(EXIT_ERROR)
 {
 	init_gui();
-	toolkit_.reset(new editor_toolkit(*gui_.get(), key_, game_config_));
+	toolkit_.reset(new editor_toolkit(*gui_.get(), key_, game_config_, *context_manager_.get()));
 	init_tods(game_config);
 	init_music(game_config);
 	rng_.reset(new rand_rng::rng());
