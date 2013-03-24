@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-units-fi\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-03-09 08:51+0100\n"
+"POT-Creation-Date: 2013-03-24 13:24+0100\n"
 "PO-Revision-Date: 2012-01-18 00:29+0200\n"
 "Last-Translator: Jarkko Patteri <jarkkopatteri@gmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
@@ -92,10 +92,10 @@ msgstr ""
 #: data/core/units/dwarves/Pathfinder.cfg:49
 #: data/core/units/dwarves/Pathfinder.cfg:57
 #: data/core/units/dwarves/Scout.cfg:41 data/core/units/dwarves/Scout.cfg:49
-#: data/core/units/undead/Skele_Deathblade.cfg:162
+#: data/core/units/undead/Skele_Deathblade.cfg:66
 #: data/core/units/undead/Skele_Draug.cfg:43
 #: data/core/units/undead/Skele_Revenant.cfg:43
-#: data/core/units/undead/Skeleton.cfg:122
+#: data/core/units/undead/Skeleton.cfg:63
 msgid "axe"
 msgstr "kirves"
 
@@ -314,7 +314,7 @@ msgstr "jäämyrsky"
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:56
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:72
 #: data/core/units/undead/Necro_Dark_Adept.cfg:55
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:87
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:82
 #: data/core/units/undead/Necro_Lich.cfg:72
 #: data/core/units/undead/Necromancer.cfg:63
 msgid "shadow wave"
@@ -574,8 +574,8 @@ msgstr ""
 #: data/core/units/monsters/Skeletal_Dragon.cfg:42
 #: data/core/units/undead/Corpse_Ghoul.cfg:27
 #: data/core/units/undead/Corpse_Necrophage.cfg:39
-#: data/core/units/undead/Spirit_Nightgaunt.cfg:67
-#: data/core/units/undead/Spirit_Shadow.cfg:135
+#: data/core/units/undead/Spirit_Nightgaunt.cfg:46
+#: data/core/units/undead/Spirit_Shadow.cfg:78
 msgid "claws"
 msgstr "kynnet"
 
@@ -1153,7 +1153,7 @@ msgstr ""
 #: data/core/units/elves/Archer.cfg:36 data/core/units/elves/Avenger.cfg:50
 #: data/core/units/elves/Captain.cfg:46 data/core/units/elves/Champion.cfg:36
 #: data/core/units/elves/Fighter.cfg:37 data/core/units/elves/Hero.cfg:35
-#: data/core/units/elves/High_Lord.cfg:67 data/core/units/elves/Lord.cfg:40
+#: data/core/units/elves/High_Lord.cfg:61 data/core/units/elves/Lord.cfg:40
 #: data/core/units/elves/Marksman.cfg:42 data/core/units/elves/Marshal.cfg:45
 #: data/core/units/elves/Outrider.cfg:46 data/core/units/elves/Ranger.cfg:47
 #: data/core/units/elves/Rider.cfg:48 data/core/units/elves/Scout.cfg:47
@@ -1197,7 +1197,7 @@ msgid "bow"
 msgstr "jousi"
 
 #. [female]
-#: data/core/units/elves/Archer.cfg:122
+#: data/core/units/elves/Archer.cfg:93
 msgid "female^Elvish Archer"
 msgstr "Jousihaltia"
 
@@ -1230,7 +1230,7 @@ msgstr ""
 "Vaikkei kyse ole välttämättä tästä, ei tämä arvio aina ole väärä."
 
 #. [female]
-#: data/core/units/elves/Avenger.cfg:136
+#: data/core/units/elves/Avenger.cfg:107
 msgid "female^Elvish Avenger"
 msgstr "Haltiasissi"
 
@@ -1314,7 +1314,7 @@ msgstr ""
 #: data/core/units/saurians/Augur.cfg:38
 #: data/core/units/saurians/Oracle.cfg:49
 #: data/core/units/saurians/Soothsayer.cfg:38
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:66
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:61
 msgid "staff"
 msgstr "sauva"
 
@@ -1357,7 +1357,7 @@ msgstr "sitominen"
 
 #. [attack]: type=arcane
 #: data/core/units/elves/Enchantress.cfg:59
-#: data/core/units/elves/High_Lord.cfg:76 data/core/units/elves/Lord.cfg:49
+#: data/core/units/elves/High_Lord.cfg:70 data/core/units/elves/Lord.cfg:49
 #: data/core/units/elves/Sorceress.cfg:61 data/core/units/elves/Sylph.cfg:65
 msgid "faerie fire"
 msgstr "keijutuli"
@@ -1484,7 +1484,7 @@ msgid "longbow"
 msgstr "pitkäjousi"
 
 #. [female]
-#: data/core/units/elves/Marksman.cfg:131
+#: data/core/units/elves/Marksman.cfg:102
 msgid "female^Elvish Marksman"
 msgstr "Haltiatarkk’ampuja"
 
@@ -1651,7 +1651,7 @@ msgstr ""
 "jousiammunnan mestareita."
 
 #. [female]
-#: data/core/units/elves/Sharpshooter.cfg:123
+#: data/core/units/elves/Sharpshooter.cfg:94
 msgid "female^Elvish Sharpshooter"
 msgstr "Haltiain jousimestari"
 
@@ -2258,7 +2258,7 @@ msgstr ""
 
 #. [attack]: type=blade
 #: data/core/units/humans/Loyalist_Duelist.cfg:49
-#: data/core/units/humans/Loyalist_Fencer.cfg:98
+#: data/core/units/humans/Loyalist_Fencer.cfg:66
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:44
 msgid "saber"
 msgstr "sapeli"
@@ -2390,7 +2390,7 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Bandit.cfg:35
 #: data/core/units/humans/Outlaw_Fugitive.cfg:41
 #: data/core/units/humans/Outlaw_Highwayman.cfg:37
-#: data/core/units/humans/Royal_Warrior.cfg:35
+#: data/core/units/humans/Royal_Warrior.cfg:34
 msgid "mace"
 msgstr "helanuija"
 
@@ -2733,7 +2733,7 @@ msgid "missile"
 msgstr "tulipallo"
 
 #. [female]
-#: data/core/units/humans/Mage.cfg:126
+#: data/core/units/humans/Mage.cfg:97
 msgid "female^Mage"
 msgstr "Velhotar"
 
@@ -2778,7 +2778,7 @@ msgid "fireball"
 msgstr "tulipallo"
 
 #. [female]
-#: data/core/units/humans/Mage_Arch.cfg:119
+#: data/core/units/humans/Mage_Arch.cfg:106
 msgid "female^Arch Mage"
 msgstr "Arkkivelhotar"
 
@@ -2835,7 +2835,7 @@ msgstr ""
 "jotain, mitä muut sotilaat katsovat kauhuissaan."
 
 #. [female]
-#: data/core/units/humans/Mage_Great.cfg:113
+#: data/core/units/humans/Mage_Great.cfg:100
 msgid "female^Great Mage"
 msgstr "Suurvelhotar"
 
@@ -2873,7 +2873,7 @@ msgstr ""
 "joilla he ovat sinetöineet arkikielisen nimensä."
 
 #. [female]
-#: data/core/units/humans/Mage_Red.cfg:114
+#: data/core/units/humans/Mage_Red.cfg:101
 msgid "female^Red Mage"
 msgstr "Punainen velhotar"
 
@@ -2933,7 +2933,7 @@ msgstr ""
 "siksi erittäin vastustuskykyisiä hengellisille(esim. taikuus) hyökkäyksille."
 
 #. [female]
-#: data/core/units/humans/Mage_Silver.cfg:200
+#: data/core/units/humans/Mage_Silver.cfg:171
 msgid "female^Silver Mage"
 msgstr "Hopeavelhotar"
 
@@ -2973,7 +2973,7 @@ msgid "lightbeam"
 msgstr "valonsäde"
 
 #. [female]
-#: data/core/units/humans/Mage_White.cfg:143
+#: data/core/units/humans/Mage_White.cfg:108
 msgid "female^White Mage"
 msgstr "Valkea velhotar"
 
@@ -3006,7 +3006,7 @@ msgid "morning star"
 msgstr "piikkinuija"
 
 #. [female]
-#: data/core/units/humans/Mage_of_Light.cfg:141
+#: data/core/units/humans/Mage_of_Light.cfg:112
 msgid "female^Mage of Light"
 msgstr "Valon velhotar"
 
@@ -3042,7 +3042,7 @@ msgid "sling"
 msgstr "linko"
 
 #. [female]
-#: data/core/units/humans/Outlaw.cfg:103
+#: data/core/units/humans/Outlaw.cfg:87
 msgid "female^Outlaw"
 msgstr "Lainsuojaton"
 
@@ -3074,7 +3074,7 @@ msgid "knife"
 msgstr "veitsi"
 
 #. [female]
-#: data/core/units/humans/Outlaw_Assassin.cfg:154
+#: data/core/units/humans/Outlaw_Assassin.cfg:115
 msgid "female^Assassin"
 msgstr "Salamurhaaja"
 
@@ -3131,7 +3131,7 @@ msgid "club"
 msgstr "puunuija"
 
 #. [female]
-#: data/core/units/humans/Outlaw_Footpad.cfg:117
+#: data/core/units/humans/Outlaw_Footpad.cfg:101
 msgid "female^Footpad"
 msgstr "Rosvo"
 
@@ -3153,7 +3153,7 @@ msgstr ""
 "mutta heistä ei ole oikeaa vastusta ammattimaisille lainvalvontajoukoille."
 
 #. [female]
-#: data/core/units/humans/Outlaw_Fugitive.cfg:110
+#: data/core/units/humans/Outlaw_Fugitive.cfg:94
 msgid "female^Fugitive"
 msgstr "Karkuritar"
 
@@ -3199,7 +3199,7 @@ msgstr ""
 "monien öisten retkien kokemusten jälkeen he taistelevat mieluiten yöllä."
 
 #. [female]
-#: data/core/units/humans/Outlaw_Rogue.cfg:120
+#: data/core/units/humans/Outlaw_Rogue.cfg:97
 msgid "female^Rogue"
 msgstr "Hiippari"
 
@@ -3247,7 +3247,7 @@ msgstr ""
 "taktiikoita taistelussa ymmärtämättä 'reilun pelin' henkeä."
 
 #. [female]
-#: data/core/units/humans/Outlaw_Thief.cfg:171
+#: data/core/units/humans/Outlaw_Thief.cfg:161
 msgid "female^Thief"
 msgstr "Varas"
 
@@ -3300,7 +3300,7 @@ msgid "Royal Warrior"
 msgstr "Kuninkaallinen taistelija"
 
 #. [unit_type]: id=Royal Warrior, race=human
-#: data/core/units/humans/Royal_Warrior.cfg:31
+#: data/core/units/humans/Royal_Warrior.cfg:30
 msgid ""
 "Royal warriors are the kings and princes of human noble houses, armed and "
 "armored to a degree heavier than that of their knights."
@@ -4090,7 +4090,7 @@ msgstr ""
 "mutta usein ketterämpiä kuin vihollisensa."
 
 #. [female]
-#: data/core/units/nagas/Fighter.cfg:79
+#: data/core/units/nagas/Fighter.cfg:63
 msgid "Nagini Fighter"
 msgstr "Nagataistelija"
 
@@ -4115,12 +4115,12 @@ msgstr ""
 "sallii tappavan liikkuvuuden vedessä."
 
 #. [female]
-#: data/core/units/nagas/Myrmidon.cfg:78
+#: data/core/units/nagas/Myrmidon.cfg:61
 msgid "Nagini Myrmidon"
 msgstr "Myrmidonitar"
 
 #. [female]
-#: data/core/units/nagas/Myrmidon.cfg:80
+#: data/core/units/nagas/Myrmidon.cfg:63
 msgid ""
 "The most practiced of the nagini blademasters are initiated into the caste "
 "of the Myrmidon, masters of their twin-bladed art. They strike as fast as "
@@ -4157,12 +4157,12 @@ msgstr ""
 "tehdä tätä."
 
 #. [female]
-#: data/core/units/nagas/Warrior.cfg:75
+#: data/core/units/nagas/Warrior.cfg:59
 msgid "Nagini Warrior"
 msgstr "Nagasoturi"
 
 #. [female]
-#: data/core/units/nagas/Warrior.cfg:77
+#: data/core/units/nagas/Warrior.cfg:61
 msgid ""
 "Many of the young warriors of the nagini aspire for the day when they merit "
 "their second blade. Their martial practice of using twin blades is wholly "
@@ -4826,7 +4826,7 @@ msgstr ""
 #: data/core/units/undead/Corpse_Walking.cfg:25
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:48
 #: data/core/units/undead/Necro_Lich.cfg:48
-#: data/core/units/undead/Spirit_Ghost.cfg:130
+#: data/core/units/undead/Spirit_Ghost.cfg:74
 msgid "touch"
 msgstr "kosketus"
 
@@ -4893,13 +4893,13 @@ msgstr ""
 
 #. [attack]: type=cold
 #: data/core/units/undead/Necro_Dark_Adept.cfg:43
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:75
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:70
 #: data/core/units/undead/Necromancer.cfg:51
 msgid "chill wave"
 msgstr "jäätävä polte"
 
 #. [female]
-#: data/core/units/undead/Necro_Dark_Adept.cfg:151
+#: data/core/units/undead/Necro_Dark_Adept.cfg:132
 msgid "female^Dark Adept"
 msgstr "Pimeyden tuntija"
 
@@ -4945,12 +4945,12 @@ msgstr ""
 "heikoin halukkuus voimalle."
 
 #. [female]
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:173
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:136
 msgid "Dark Sorceress"
 msgstr "Pimeyden noita"
 
 #. [female]
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:177
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:140
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
 "about it by the common man. Dark sorceresses have begun to unlock the "
@@ -5043,7 +5043,7 @@ msgid "plague staff"
 msgstr "ruttosauva"
 
 #. [female]
-#: data/core/units/undead/Necromancer.cfg:176
+#: data/core/units/undead/Necromancer.cfg:139
 msgid "female^Necromancer"
 msgstr "Pimeyden rouva"
 
@@ -5241,8 +5241,8 @@ msgstr ""
 "jonka mestari voi määrätä sen mihin tahansa tehtävään."
 
 #. [attack]: type=cold
-#: data/core/units/undead/Spirit_Ghost.cfg:142
-#: data/core/units/undead/Spirit_Spectre.cfg:116
+#: data/core/units/undead/Spirit_Ghost.cfg:86
+#: data/core/units/undead/Spirit_Spectre.cfg:55
 #: data/core/units/undead/Spirit_Wraith.cfg:45
 msgid "wail"
 msgstr "vaikerointi"
@@ -5308,7 +5308,7 @@ msgstr ""
 "luultavasti se, että ne ovat vain paljon vaarallisemman voiman airuita."
 
 #. [attack]: type=arcane
-#: data/core/units/undead/Spirit_Spectre.cfg:105
+#: data/core/units/undead/Spirit_Spectre.cfg:44
 #: data/core/units/undead/Spirit_Wraith.cfg:34
 msgid "baneblade"
 msgstr "turmion terä"

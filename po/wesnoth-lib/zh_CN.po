@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-03-16 23:53+0100\n"
+"POT-Creation-Date: 2013-03-24 13:24+0100\n"
 "PO-Revision-Date: 2012-04-04 18:51+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
@@ -1271,7 +1271,7 @@ msgstr ""
 #: data/gui/default/widget/window_default.cfg:140
 #: data/gui/default/window/addon_filter_options.cfg:314
 #: data/gui/default/window/chat_log.cfg:121
-#: data/gui/default/window/gamestate_inspector.cfg:339
+#: data/gui/default/window/gamestate_inspector.cfg:254
 #: data/gui/default/window/lobby_main.cfg:619
 #: data/gui/default/window/lobby_player_info.cfg:200
 #: data/gui/default/window/message.cfg:135 src/construct_dialog.cpp:136
@@ -1871,7 +1871,6 @@ msgstr "调用栈"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:94
-#: data/gui/default/window/gamestate_inspector.cfg:276
 msgid "Actions"
 msgstr "行动"
 
@@ -2033,36 +2032,28 @@ msgid "Save already exists. Do you want to overwrite it?"
 msgstr "存档已经存在。要覆盖吗？"
 
 #. [label]
-#: data/gui/default/window/gamestate_inspector.cfg:46
+#: data/gui/default/window/gamestate_inspector.cfg:45
 msgid "Gamestate Inspector"
 msgstr "游戏状态观察器"
 
-#. [label]
-#: data/gui/default/window/gamestate_inspector.cfg:100
-msgid "Types"
-msgstr "类型"
-
-#. [label]
-#: data/gui/default/window/gamestate_inspector.cfg:111
-msgid "Content"
-msgstr "内容"
-
-#. [label]
-#: data/gui/default/window/gamestate_inspector.cfg:122
-msgid "Inspection window"
-msgstr "观察窗口"
-
 #. [label]: id=typename
 #. [label]: id=unit_type
-#: data/gui/default/window/gamestate_inspector.cfg:153
+#: data/gui/default/window/gamestate_inspector.cfg:102
 #: data/gui/default/window/unit_create.cfg:131
 msgid "Type"
 msgstr "类型"
 
 #. [label]: id=name
-#: data/gui/default/window/gamestate_inspector.cfg:214
-msgid "Variable"
-msgstr "变量"
+#: data/gui/default/window/gamestate_inspector.cfg:164
+msgid "Items"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/gamestate_inspector.cfg:223
+#, fuzzy
+#| msgid "Content"
+msgid "Contents"
+msgstr "内容"
 
 #. [grid]
 #. [label]
@@ -3392,19 +3383,19 @@ msgstr ""
 msgid "addon_state^Unknown"
 msgstr ""
 
-#: src/gui/dialogs/addon/filter_options.cpp:142
+#: src/gui/dialogs/addon/filter_options.cpp:182
 msgid "addons_view^Not Installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/filter_options.cpp:144
+#: src/gui/dialogs/addon/filter_options.cpp:184
 msgid "addons_view^Upgradable"
 msgstr ""
 
-#: src/gui/dialogs/addon/filter_options.cpp:146
+#: src/gui/dialogs/addon/filter_options.cpp:186
 msgid "addons_view^Installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/filter_options.cpp:148
+#: src/gui/dialogs/addon/filter_options.cpp:188
 #, fuzzy
 #| msgid "Uninstall Add-ons"
 msgid "addons_view^All Add-ons"
@@ -4447,6 +4438,15 @@ msgid ""
 msgstr ""
 "主键“$deprecated_key”已被重命名为“$key”，对“$deprecated_key”的支持将在版本 "
 "$removal_version 中移除。"
+
+#~ msgid "Types"
+#~ msgstr "类型"
+
+#~ msgid "Inspection window"
+#~ msgstr "观察窗口"
+
+#~ msgid "Variable"
+#~ msgstr "变量"
 
 #~ msgid "Use new lobby interface"
 #~ msgstr "使用新版多人游戏大厅界面"

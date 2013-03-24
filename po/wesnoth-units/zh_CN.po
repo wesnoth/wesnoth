@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-03-09 08:51+0100\n"
+"POT-Creation-Date: 2013-03-24 13:24+0100\n"
 "PO-Revision-Date: 2011-11-14 22:06+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
@@ -91,10 +91,10 @@ msgstr ""
 #: data/core/units/dwarves/Pathfinder.cfg:49
 #: data/core/units/dwarves/Pathfinder.cfg:57
 #: data/core/units/dwarves/Scout.cfg:41 data/core/units/dwarves/Scout.cfg:49
-#: data/core/units/undead/Skele_Deathblade.cfg:162
+#: data/core/units/undead/Skele_Deathblade.cfg:66
 #: data/core/units/undead/Skele_Draug.cfg:43
 #: data/core/units/undead/Skele_Revenant.cfg:43
-#: data/core/units/undead/Skeleton.cfg:122
+#: data/core/units/undead/Skeleton.cfg:63
 msgid "axe"
 msgstr "斧"
 
@@ -303,7 +303,7 @@ msgstr "冷冻风暴"
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:56
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:72
 #: data/core/units/undead/Necro_Dark_Adept.cfg:55
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:87
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:82
 #: data/core/units/undead/Necro_Lich.cfg:72
 #: data/core/units/undead/Necromancer.cfg:63
 msgid "shadow wave"
@@ -553,8 +553,8 @@ msgstr ""
 #: data/core/units/monsters/Skeletal_Dragon.cfg:42
 #: data/core/units/undead/Corpse_Ghoul.cfg:27
 #: data/core/units/undead/Corpse_Necrophage.cfg:39
-#: data/core/units/undead/Spirit_Nightgaunt.cfg:67
-#: data/core/units/undead/Spirit_Shadow.cfg:135
+#: data/core/units/undead/Spirit_Nightgaunt.cfg:46
+#: data/core/units/undead/Spirit_Shadow.cfg:78
 msgid "claws"
 msgstr "爪"
 
@@ -1085,7 +1085,7 @@ msgstr ""
 #: data/core/units/elves/Archer.cfg:36 data/core/units/elves/Avenger.cfg:50
 #: data/core/units/elves/Captain.cfg:46 data/core/units/elves/Champion.cfg:36
 #: data/core/units/elves/Fighter.cfg:37 data/core/units/elves/Hero.cfg:35
-#: data/core/units/elves/High_Lord.cfg:67 data/core/units/elves/Lord.cfg:40
+#: data/core/units/elves/High_Lord.cfg:61 data/core/units/elves/Lord.cfg:40
 #: data/core/units/elves/Marksman.cfg:42 data/core/units/elves/Marshal.cfg:45
 #: data/core/units/elves/Outrider.cfg:46 data/core/units/elves/Ranger.cfg:47
 #: data/core/units/elves/Rider.cfg:48 data/core/units/elves/Scout.cfg:47
@@ -1129,7 +1129,7 @@ msgid "bow"
 msgstr "弓"
 
 #. [female]
-#: data/core/units/elves/Archer.cfg:122
+#: data/core/units/elves/Archer.cfg:93
 msgid "female^Elvish Archer"
 msgstr "精灵弓箭手"
 
@@ -1159,7 +1159,7 @@ msgstr ""
 "为。尽管原本并不是如此设想的，但这个说法也完全不能说是不准确的。"
 
 #. [female]
-#: data/core/units/elves/Avenger.cfg:136
+#: data/core/units/elves/Avenger.cfg:107
 msgid "female^Elvish Avenger"
 msgstr "精灵复仇者"
 
@@ -1236,7 +1236,7 @@ msgstr ""
 #: data/core/units/saurians/Augur.cfg:38
 #: data/core/units/saurians/Oracle.cfg:49
 #: data/core/units/saurians/Soothsayer.cfg:38
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:66
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:61
 msgid "staff"
 msgstr "法杖"
 
@@ -1276,7 +1276,7 @@ msgstr "缠绕"
 
 #. [attack]: type=arcane
 #: data/core/units/elves/Enchantress.cfg:59
-#: data/core/units/elves/High_Lord.cfg:76 data/core/units/elves/Lord.cfg:49
+#: data/core/units/elves/High_Lord.cfg:70 data/core/units/elves/Lord.cfg:49
 #: data/core/units/elves/Sorceress.cfg:61 data/core/units/elves/Sylph.cfg:65
 msgid "faerie fire"
 msgstr "仙境之火"
@@ -1392,7 +1392,7 @@ msgid "longbow"
 msgstr "长弓"
 
 #. [female]
-#: data/core/units/elves/Marksman.cfg:131
+#: data/core/units/elves/Marksman.cfg:102
 msgid "female^Elvish Marksman"
 msgstr "精灵神射手"
 
@@ -1545,7 +1545,7 @@ msgstr ""
 "艺术而已。"
 
 #. [female]
-#: data/core/units/elves/Sharpshooter.cfg:123
+#: data/core/units/elves/Sharpshooter.cfg:94
 msgid "female^Elvish Sharpshooter"
 msgstr "精灵狙击手"
 
@@ -2098,7 +2098,7 @@ msgstr ""
 
 #. [attack]: type=blade
 #: data/core/units/humans/Loyalist_Duelist.cfg:49
-#: data/core/units/humans/Loyalist_Fencer.cfg:98
+#: data/core/units/humans/Loyalist_Fencer.cfg:66
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:44
 msgid "saber"
 msgstr "轻剑"
@@ -2216,7 +2216,7 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Bandit.cfg:35
 #: data/core/units/humans/Outlaw_Fugitive.cfg:41
 #: data/core/units/humans/Outlaw_Highwayman.cfg:37
-#: data/core/units/humans/Royal_Warrior.cfg:35
+#: data/core/units/humans/Royal_Warrior.cfg:34
 msgid "mace"
 msgstr "锤"
 
@@ -2525,7 +2525,7 @@ msgid "missile"
 msgstr "魔法飞弹"
 
 #. [female]
-#: data/core/units/humans/Mage.cfg:126
+#: data/core/units/humans/Mage.cfg:97
 msgid "female^Mage"
 msgstr "法师"
 
@@ -2567,7 +2567,7 @@ msgid "fireball"
 msgstr "火球"
 
 #. [female]
-#: data/core/units/humans/Mage_Arch.cfg:119
+#: data/core/units/humans/Mage_Arch.cfg:106
 msgid "female^Arch Mage"
 msgstr "大法师"
 
@@ -2621,7 +2621,7 @@ msgstr ""
 "站在一旁看着，内心充满着敬畏。"
 
 #. [female]
-#: data/core/units/humans/Mage_Great.cfg:113
+#: data/core/units/humans/Mage_Great.cfg:100
 msgid "female^Great Mage"
 msgstr "高阶大法师"
 
@@ -2655,7 +2655,7 @@ msgstr ""
 "的能力，这也很可能正是口语中他们名号的来源。"
 
 #. [female]
-#: data/core/units/humans/Mage_Red.cfg:114
+#: data/core/units/humans/Mage_Red.cfg:101
 msgid "female^Red Mage"
 msgstr "红袍法师"
 
@@ -2705,7 +2705,7 @@ msgid ""
 msgstr "银袍法师与他们的魔法体质协调一致，因而对非物理攻击有很高的抗性。"
 
 #. [female]
-#: data/core/units/humans/Mage_Silver.cfg:200
+#: data/core/units/humans/Mage_Silver.cfg:171
 msgid "female^Silver Mage"
 msgstr "银袍法师"
 
@@ -2743,7 +2743,7 @@ msgid "lightbeam"
 msgstr "光束"
 
 #. [female]
-#: data/core/units/humans/Mage_White.cfg:143
+#: data/core/units/humans/Mage_White.cfg:108
 msgid "female^White Mage"
 msgstr "白袍法师"
 
@@ -2773,7 +2773,7 @@ msgid "morning star"
 msgstr "晨星之锤"
 
 #. [female]
-#: data/core/units/humans/Mage_of_Light.cfg:141
+#: data/core/units/humans/Mage_of_Light.cfg:112
 msgid "female^Mage of Light"
 msgstr "光明法师"
 
@@ -2807,7 +2807,7 @@ msgid "sling"
 msgstr "投石器"
 
 #. [female]
-#: data/core/units/humans/Outlaw.cfg:103
+#: data/core/units/humans/Outlaw.cfg:87
 msgid "female^Outlaw"
 msgstr "游寇"
 
@@ -2837,7 +2837,7 @@ msgid "knife"
 msgstr "匕首"
 
 #. [female]
-#: data/core/units/humans/Outlaw_Assassin.cfg:154
+#: data/core/units/humans/Outlaw_Assassin.cfg:115
 msgid "female^Assassin"
 msgstr "刺客"
 
@@ -2890,7 +2890,7 @@ msgid "club"
 msgstr "木棒"
 
 #. [female]
-#: data/core/units/humans/Outlaw_Footpad.cfg:117
+#: data/core/units/humans/Outlaw_Footpad.cfg:101
 msgid "female^Footpad"
 msgstr "走卒"
 
@@ -2910,7 +2910,7 @@ msgstr ""
 "们很危险，但是这显然无法和守法的军队所能派遣来对付他们的士兵数量相比。"
 
 #. [female]
-#: data/core/units/humans/Outlaw_Fugitive.cfg:110
+#: data/core/units/humans/Outlaw_Fugitive.cfg:94
 msgid "female^Fugitive"
 msgstr "亡命徒"
 
@@ -2952,7 +2952,7 @@ msgstr ""
 "准。由于长时间在夜晚潜行，他们更适合在黑暗中战斗。"
 
 #. [female]
-#: data/core/units/humans/Outlaw_Rogue.cfg:120
+#: data/core/units/humans/Outlaw_Rogue.cfg:97
 msgid "female^Rogue"
 msgstr "飞贼"
 
@@ -2997,7 +2997,7 @@ msgstr ""
 "平的交手”。"
 
 #. [female]
-#: data/core/units/humans/Outlaw_Thief.cfg:171
+#: data/core/units/humans/Outlaw_Thief.cfg:161
 msgid "female^Thief"
 msgstr "盗贼"
 
@@ -3047,7 +3047,7 @@ msgid "Royal Warrior"
 msgstr "皇家勇士"
 
 #. [unit_type]: id=Royal Warrior, race=human
-#: data/core/units/humans/Royal_Warrior.cfg:31
+#: data/core/units/humans/Royal_Warrior.cfg:30
 msgid ""
 "Royal warriors are the kings and princes of human noble houses, armed and "
 "armored to a degree heavier than that of their knights."
@@ -3777,7 +3777,7 @@ msgstr ""
 "对深渊心怀恐惧。他们小巧，而且有点脆弱，但常常比他们的对手更灵活。"
 
 #. [female]
-#: data/core/units/nagas/Fighter.cfg:79
+#: data/core/units/nagas/Fighter.cfg:63
 msgid "Nagini Fighter"
 msgstr "娜迦战士"
 
@@ -3800,12 +3800,12 @@ msgstr ""
 "地形上都是强大的敌手，善于游泳的特质更是在水中赋予他们致命的机动性。"
 
 #. [female]
-#: data/core/units/nagas/Myrmidon.cfg:78
+#: data/core/units/nagas/Myrmidon.cfg:61
 msgid "Nagini Myrmidon"
 msgstr "娜迦忠勇武士"
 
 #. [female]
-#: data/core/units/nagas/Myrmidon.cfg:80
+#: data/core/units/nagas/Myrmidon.cfg:63
 msgid ""
 "The most practiced of the nagini blademasters are initiated into the caste "
 "of the Myrmidon, masters of their twin-bladed art. They strike as fast as "
@@ -3837,12 +3837,12 @@ msgstr ""
 "避攻击。这使他们在陆地上很强大，但水的阻力却大大影响了他们闪躲的能力。"
 
 #. [female]
-#: data/core/units/nagas/Warrior.cfg:75
+#: data/core/units/nagas/Warrior.cfg:59
 msgid "Nagini Warrior"
 msgstr "娜迦勇士"
 
 #. [female]
-#: data/core/units/nagas/Warrior.cfg:77
+#: data/core/units/nagas/Warrior.cfg:61
 msgid ""
 "Many of the young warriors of the nagini aspire for the day when they merit "
 "their second blade. Their martial practice of using twin blades is wholly "
@@ -4447,7 +4447,7 @@ msgstr ""
 #: data/core/units/undead/Corpse_Walking.cfg:25
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:48
 #: data/core/units/undead/Necro_Lich.cfg:48
-#: data/core/units/undead/Spirit_Ghost.cfg:130
+#: data/core/units/undead/Spirit_Ghost.cfg:74
 msgid "touch"
 msgstr "触碰"
 
@@ -4508,13 +4508,13 @@ msgstr ""
 
 #. [attack]: type=cold
 #: data/core/units/undead/Necro_Dark_Adept.cfg:43
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:75
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:70
 #: data/core/units/undead/Necromancer.cfg:51
 msgid "chill wave"
 msgstr "冷冻波"
 
 #. [female]
-#: data/core/units/undead/Necro_Dark_Adept.cfg:151
+#: data/core/units/undead/Necro_Dark_Adept.cfg:132
 msgid "female^Dark Adept"
 msgstr "黑暗狂徒"
 
@@ -4554,12 +4554,12 @@ msgstr ""
 "无与伦比的吸引力。"
 
 #. [female]
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:173
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:136
 msgid "Dark Sorceress"
 msgstr "黑暗巫师"
 
 #. [female]
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:177
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:140
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
 "about it by the common man. Dark sorceresses have begun to unlock the "
@@ -4643,7 +4643,7 @@ msgid "plague staff"
 msgstr "瘟疫法杖"
 
 #. [female]
-#: data/core/units/undead/Necromancer.cfg:176
+#: data/core/units/undead/Necromancer.cfg:139
 msgid "female^Necromancer"
 msgstr "死灵法师"
 
@@ -4825,8 +4825,8 @@ msgstr ""
 "成了唯命是从的仆人，它们可以被派给任何任务，只要它们的主人乐意就行。"
 
 #. [attack]: type=cold
-#: data/core/units/undead/Spirit_Ghost.cfg:142
-#: data/core/units/undead/Spirit_Spectre.cfg:116
+#: data/core/units/undead/Spirit_Ghost.cfg:86
+#: data/core/units/undead/Spirit_Spectre.cfg:55
 #: data/core/units/undead/Spirit_Wraith.cfg:45
 msgid "wail"
 msgstr "哀嚎"
@@ -4890,7 +4890,7 @@ msgstr ""
 "鬼很可能只是先头兵而已，其后往往跟随着一支危险得多的大军。"
 
 #. [attack]: type=arcane
-#: data/core/units/undead/Spirit_Spectre.cfg:105
+#: data/core/units/undead/Spirit_Spectre.cfg:44
 #: data/core/units/undead/Spirit_Wraith.cfg:34
 msgid "baneblade"
 msgstr "诅咒之刃"

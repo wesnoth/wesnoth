@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-03-09 08:51+0100\n"
+"POT-Creation-Date: 2013-03-24 13:24+0100\n"
 "PO-Revision-Date: 2012-05-22 09:33+0200\n"
 "Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
@@ -108,10 +108,10 @@ msgstr ""
 #: data/core/units/dwarves/Pathfinder.cfg:49
 #: data/core/units/dwarves/Pathfinder.cfg:57
 #: data/core/units/dwarves/Scout.cfg:41 data/core/units/dwarves/Scout.cfg:49
-#: data/core/units/undead/Skele_Deathblade.cfg:162
+#: data/core/units/undead/Skele_Deathblade.cfg:66
 #: data/core/units/undead/Skele_Draug.cfg:43
 #: data/core/units/undead/Skele_Revenant.cfg:43
-#: data/core/units/undead/Skeleton.cfg:122
+#: data/core/units/undead/Skeleton.cfg:63
 msgid "axe"
 msgstr "machado"
 
@@ -343,7 +343,7 @@ msgstr "tempestade xélida"
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:56
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:72
 #: data/core/units/undead/Necro_Dark_Adept.cfg:55
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:87
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:82
 #: data/core/units/undead/Necro_Lich.cfg:72
 #: data/core/units/undead/Necromancer.cfg:63
 msgid "shadow wave"
@@ -626,8 +626,8 @@ msgstr ""
 #: data/core/units/monsters/Skeletal_Dragon.cfg:42
 #: data/core/units/undead/Corpse_Ghoul.cfg:27
 #: data/core/units/undead/Corpse_Necrophage.cfg:39
-#: data/core/units/undead/Spirit_Nightgaunt.cfg:67
-#: data/core/units/undead/Spirit_Shadow.cfg:135
+#: data/core/units/undead/Spirit_Nightgaunt.cfg:46
+#: data/core/units/undead/Spirit_Shadow.cfg:78
 msgid "claws"
 msgstr "poutas"
 
@@ -1255,7 +1255,7 @@ msgstr ""
 #: data/core/units/elves/Archer.cfg:36 data/core/units/elves/Avenger.cfg:50
 #: data/core/units/elves/Captain.cfg:46 data/core/units/elves/Champion.cfg:36
 #: data/core/units/elves/Fighter.cfg:37 data/core/units/elves/Hero.cfg:35
-#: data/core/units/elves/High_Lord.cfg:67 data/core/units/elves/Lord.cfg:40
+#: data/core/units/elves/High_Lord.cfg:61 data/core/units/elves/Lord.cfg:40
 #: data/core/units/elves/Marksman.cfg:42 data/core/units/elves/Marshal.cfg:45
 #: data/core/units/elves/Outrider.cfg:46 data/core/units/elves/Ranger.cfg:47
 #: data/core/units/elves/Rider.cfg:48 data/core/units/elves/Scout.cfg:47
@@ -1301,7 +1301,7 @@ msgstr "arco"
 
 # female^Elvish Archer=elfa arqueira FIXADO
 #. [female]
-#: data/core/units/elves/Archer.cfg:122
+#: data/core/units/elves/Archer.cfg:93
 msgid "female^Elvish Archer"
 msgstr "Elfa arqueira"
 
@@ -1336,7 +1336,7 @@ msgstr ""
 
 # female^Elvish Avenger=elfa vingadora FIXADO
 #. [female]
-#: data/core/units/elves/Avenger.cfg:136
+#: data/core/units/elves/Avenger.cfg:107
 msgid "female^Elvish Avenger"
 msgstr "Elfa vingadora"
 
@@ -1424,7 +1424,7 @@ msgstr ""
 #: data/core/units/saurians/Augur.cfg:38
 #: data/core/units/saurians/Oracle.cfg:49
 #: data/core/units/saurians/Soothsayer.cfg:38
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:66
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:61
 msgid "staff"
 msgstr "bastón"
 
@@ -1471,7 +1471,7 @@ msgstr "enredar"
 # faerie fire=lume feérico FIXADO
 #. [attack]: type=arcane
 #: data/core/units/elves/Enchantress.cfg:59
-#: data/core/units/elves/High_Lord.cfg:76 data/core/units/elves/Lord.cfg:49
+#: data/core/units/elves/High_Lord.cfg:70 data/core/units/elves/Lord.cfg:49
 #: data/core/units/elves/Sorceress.cfg:61 data/core/units/elves/Sylph.cfg:65
 msgid "faerie fire"
 msgstr "lume feérico"
@@ -1607,7 +1607,7 @@ msgstr "arco longo"
 
 # female^Elvish Marksman=elfa tiradora FIXADO
 #. [female]
-#: data/core/units/elves/Marksman.cfg:131
+#: data/core/units/elves/Marksman.cfg:102
 msgid "female^Elvish Marksman"
 msgstr "Elfa tiradora"
 
@@ -1786,7 +1786,7 @@ msgstr ""
 
 # female^Elvish Sharpshooter=Tiradora de elite élfica FIXADO
 #. [female]
-#: data/core/units/elves/Sharpshooter.cfg:123
+#: data/core/units/elves/Sharpshooter.cfg:94
 msgid "female^Elvish Sharpshooter"
 msgstr "Tiradora de elite élfica"
 
@@ -2423,7 +2423,7 @@ msgstr ""
 # saber=sabre FIXADO
 #. [attack]: type=blade
 #: data/core/units/humans/Loyalist_Duelist.cfg:49
-#: data/core/units/humans/Loyalist_Fencer.cfg:98
+#: data/core/units/humans/Loyalist_Fencer.cfg:66
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:44
 msgid "saber"
 msgstr "sabre"
@@ -2559,7 +2559,7 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Bandit.cfg:35
 #: data/core/units/humans/Outlaw_Fugitive.cfg:41
 #: data/core/units/humans/Outlaw_Highwayman.cfg:37
-#: data/core/units/humans/Royal_Warrior.cfg:35
+#: data/core/units/humans/Royal_Warrior.cfg:34
 msgid "mace"
 msgstr "maza"
 
@@ -2923,7 +2923,7 @@ msgstr "mísil"
 
 # female^Mage=maga FIXADO
 #. [female]
-#: data/core/units/humans/Mage.cfg:126
+#: data/core/units/humans/Mage.cfg:97
 msgid "female^Mage"
 msgstr "Maga"
 
@@ -2972,7 +2972,7 @@ msgstr "bóla de lume"
 
 # female^Arch Mage=arquimaga FIXADO
 #. [female]
-#: data/core/units/humans/Mage_Arch.cfg:119
+#: data/core/units/humans/Mage_Arch.cfg:106
 msgid "female^Arch Mage"
 msgstr "Arquimaga"
 
@@ -3034,7 +3034,7 @@ msgstr ""
 
 # female^Great Mage=gran maga FIXADO
 #. [female]
-#: data/core/units/humans/Mage_Great.cfg:113
+#: data/core/units/humans/Mage_Great.cfg:100
 msgid "female^Great Mage"
 msgstr "Gran maga"
 
@@ -3074,7 +3074,7 @@ msgstr ""
 
 # female^Red Mage=maga vermella FIXADO
 #. [female]
-#: data/core/units/humans/Mage_Red.cfg:114
+#: data/core/units/humans/Mage_Red.cfg:101
 msgid "female^Red Mage"
 msgstr "Maga vermella"
 
@@ -3135,7 +3135,7 @@ msgstr ""
 
 # female^Silver Mage=maga prateada FIXADO
 #. [female]
-#: data/core/units/humans/Mage_Silver.cfg:200
+#: data/core/units/humans/Mage_Silver.cfg:171
 msgid "female^Silver Mage"
 msgstr "Maga prateada"
 
@@ -3180,7 +3180,7 @@ msgstr "raiola"
 
 # female^White Mage=maga branca FIXADO
 #. [female]
-#: data/core/units/humans/Mage_White.cfg:143
+#: data/core/units/humans/Mage_White.cfg:108
 msgid "female^White Mage"
 msgstr "Maga branca"
 
@@ -3212,7 +3212,7 @@ msgid "morning star"
 msgstr "mazo"
 
 #. [female]
-#: data/core/units/humans/Mage_of_Light.cfg:141
+#: data/core/units/humans/Mage_of_Light.cfg:112
 msgid "female^Mage of Light"
 msgstr "Maga da luz"
 
@@ -3252,7 +3252,7 @@ msgstr "tirafonda"
 
 # female^Outlaw=proscrita FIXADO
 #. [female]
-#: data/core/units/humans/Outlaw.cfg:103
+#: data/core/units/humans/Outlaw.cfg:87
 msgid "female^Outlaw"
 msgstr "Proscrita"
 
@@ -3287,7 +3287,7 @@ msgstr "coitelo"
 
 # female^Assassin=asasina FIXADO
 #. [female]
-#: data/core/units/humans/Outlaw_Assassin.cfg:154
+#: data/core/units/humans/Outlaw_Assassin.cfg:115
 msgid "female^Assassin"
 msgstr "Asasina"
 
@@ -3349,7 +3349,7 @@ msgstr "tranca"
 
 # female^Footpad=bandoleira FIXADO
 #. [female]
-#: data/core/units/humans/Outlaw_Footpad.cfg:117
+#: data/core/units/humans/Outlaw_Footpad.cfg:101
 msgid "female^Footpad"
 msgstr "Bandoleira"
 
@@ -3373,7 +3373,7 @@ msgstr ""
 
 # female^Fugitive=fuxitiva FIXADO
 #. [female]
-#: data/core/units/humans/Outlaw_Fugitive.cfg:110
+#: data/core/units/humans/Outlaw_Fugitive.cfg:94
 msgid "female^Fugitive"
 msgstr "Fuxitiva"
 
@@ -3424,7 +3424,7 @@ msgstr ""
 
 # female^Rogue=pillabana FIXADO
 #. [female]
-#: data/core/units/humans/Outlaw_Rogue.cfg:120
+#: data/core/units/humans/Outlaw_Rogue.cfg:97
 msgid "female^Rogue"
 msgstr "Pillabana"
 
@@ -3476,7 +3476,7 @@ msgstr ""
 
 # female^Thief=ladroa FIXADO
 #. [female]
-#: data/core/units/humans/Outlaw_Thief.cfg:171
+#: data/core/units/humans/Outlaw_Thief.cfg:161
 msgid "female^Thief"
 msgstr "Ladroa"
 
@@ -3533,7 +3533,7 @@ msgid "Royal Warrior"
 msgstr "Guerreiro real"
 
 #. [unit_type]: id=Royal Warrior, race=human
-#: data/core/units/humans/Royal_Warrior.cfg:31
+#: data/core/units/humans/Royal_Warrior.cfg:30
 msgid ""
 "Royal warriors are the kings and princes of human noble houses, armed and "
 "armored to a degree heavier than that of their knights."
@@ -4379,7 +4379,7 @@ msgstr ""
 
 # Nagini Fighter=naga loitadora FIXADO
 #. [female]
-#: data/core/units/nagas/Fighter.cfg:79
+#: data/core/units/nagas/Fighter.cfg:63
 msgid "Nagini Fighter"
 msgstr "Naga loitadora"
 
@@ -4406,12 +4406,12 @@ msgstr ""
 
 # Nagini Myrmidon=naga mirmidoa FIXADO
 #. [female]
-#: data/core/units/nagas/Myrmidon.cfg:78
+#: data/core/units/nagas/Myrmidon.cfg:61
 msgid "Nagini Myrmidon"
 msgstr "Naga mirmidoa"
 
 #. [female]
-#: data/core/units/nagas/Myrmidon.cfg:80
+#: data/core/units/nagas/Myrmidon.cfg:63
 msgid ""
 "The most practiced of the nagini blademasters are initiated into the caste "
 "of the Myrmidon, masters of their twin-bladed art. They strike as fast as "
@@ -4450,12 +4450,12 @@ msgstr ""
 
 # Nagini Warrior=naga guerreira FIXADO
 #. [female]
-#: data/core/units/nagas/Warrior.cfg:75
+#: data/core/units/nagas/Warrior.cfg:59
 msgid "Nagini Warrior"
 msgstr "Naga guerreira"
 
 #. [female]
-#: data/core/units/nagas/Warrior.cfg:77
+#: data/core/units/nagas/Warrior.cfg:61
 msgid ""
 "Many of the young warriors of the nagini aspire for the day when they merit "
 "their second blade. Their martial practice of using twin blades is wholly "
@@ -5158,7 +5158,7 @@ msgstr ""
 #: data/core/units/undead/Corpse_Walking.cfg:25
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:48
 #: data/core/units/undead/Necro_Lich.cfg:48
-#: data/core/units/undead/Spirit_Ghost.cfg:130
+#: data/core/units/undead/Spirit_Ghost.cfg:74
 msgid "touch"
 msgstr "tocar"
 
@@ -5229,14 +5229,14 @@ msgstr ""
 # chill wave=onda xélida FIXADO
 #. [attack]: type=cold
 #: data/core/units/undead/Necro_Dark_Adept.cfg:43
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:75
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:70
 #: data/core/units/undead/Necromancer.cfg:51
 msgid "chill wave"
 msgstr "onda xélida"
 
 # female^Dark Adept=adepta escura FIXADO
 #. [female]
-#: data/core/units/undead/Necro_Dark_Adept.cfg:151
+#: data/core/units/undead/Necro_Dark_Adept.cfg:132
 msgid "female^Dark Adept"
 msgstr "Adepta escura"
 
@@ -5283,12 +5283,12 @@ msgstr ""
 
 # Dark Sorceress=feiticeira escura FIXADO
 #. [female]
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:173
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:136
 msgid "Dark Sorceress"
 msgstr "Feiticeira escura"
 
 #. [female]
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:177
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:140
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
 "about it by the common man. Dark sorceresses have begun to unlock the "
@@ -5387,7 +5387,7 @@ msgstr "Bastón de peste"
 
 # female^Necromancer=nigromante FIXADO
 #. [female]
-#: data/core/units/undead/Necromancer.cfg:176
+#: data/core/units/undead/Necromancer.cfg:139
 msgid "female^Necromancer"
 msgstr "Nigromante"
 
@@ -5599,8 +5599,8 @@ msgstr ""
 
 # wail=salaio FIXADO
 #. [attack]: type=cold
-#: data/core/units/undead/Spirit_Ghost.cfg:142
-#: data/core/units/undead/Spirit_Spectre.cfg:116
+#: data/core/units/undead/Spirit_Ghost.cfg:86
+#: data/core/units/undead/Spirit_Spectre.cfg:55
 #: data/core/units/undead/Spirit_Wraith.cfg:45
 msgid "wail"
 msgstr "salaio"
@@ -5673,7 +5673,7 @@ msgstr ""
 # baneblade=espada funesta FIXADO
 # tamén espada maldita...
 #. [attack]: type=arcane
-#: data/core/units/undead/Spirit_Spectre.cfg:105
+#: data/core/units/undead/Spirit_Spectre.cfg:44
 #: data/core/units/undead/Spirit_Wraith.cfg:34
 msgid "baneblade"
 msgstr "espada funesta"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-lib_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-03-16 23:53+0100\n"
+"POT-Creation-Date: 2013-03-24 13:24+0100\n"
 "PO-Revision-Date: 2012-04-01 12:11+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
@@ -1269,7 +1269,7 @@ msgstr ""
 #: data/gui/default/widget/window_default.cfg:140
 #: data/gui/default/window/addon_filter_options.cfg:314
 #: data/gui/default/window/chat_log.cfg:121
-#: data/gui/default/window/gamestate_inspector.cfg:339
+#: data/gui/default/window/gamestate_inspector.cfg:254
 #: data/gui/default/window/lobby_main.cfg:619
 #: data/gui/default/window/lobby_player_info.cfg:200
 #: data/gui/default/window/message.cfg:135 src/construct_dialog.cpp:136
@@ -1869,7 +1869,6 @@ msgstr "Halmaz behívása"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:94
-#: data/gui/default/window/gamestate_inspector.cfg:276
 msgid "Actions"
 msgstr "Parancsok"
 
@@ -2031,36 +2030,28 @@ msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Már van ilyen mentés. Felülírjam?"
 
 #. [label]
-#: data/gui/default/window/gamestate_inspector.cfg:46
+#: data/gui/default/window/gamestate_inspector.cfg:45
 msgid "Gamestate Inspector"
 msgstr "Játékállapot-figyelő"
 
-#. [label]
-#: data/gui/default/window/gamestate_inspector.cfg:100
-msgid "Types"
-msgstr "Típusok"
-
-#. [label]
-#: data/gui/default/window/gamestate_inspector.cfg:111
-msgid "Content"
-msgstr "Tartalom"
-
-#. [label]
-#: data/gui/default/window/gamestate_inspector.cfg:122
-msgid "Inspection window"
-msgstr "Megfigyelőablak"
-
 #. [label]: id=typename
 #. [label]: id=unit_type
-#: data/gui/default/window/gamestate_inspector.cfg:153
+#: data/gui/default/window/gamestate_inspector.cfg:102
 #: data/gui/default/window/unit_create.cfg:131
 msgid "Type"
 msgstr "Egységtípus"
 
 #. [label]: id=name
-#: data/gui/default/window/gamestate_inspector.cfg:214
-msgid "Variable"
-msgstr "Változó"
+#: data/gui/default/window/gamestate_inspector.cfg:164
+msgid "Items"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/gamestate_inspector.cfg:223
+#, fuzzy
+#| msgid "Content"
+msgid "Contents"
+msgstr "Tartalom"
 
 #. [grid]
 #. [label]
@@ -3422,19 +3413,19 @@ msgstr ""
 msgid "addon_state^Unknown"
 msgstr ""
 
-#: src/gui/dialogs/addon/filter_options.cpp:142
+#: src/gui/dialogs/addon/filter_options.cpp:182
 msgid "addons_view^Not Installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/filter_options.cpp:144
+#: src/gui/dialogs/addon/filter_options.cpp:184
 msgid "addons_view^Upgradable"
 msgstr ""
 
-#: src/gui/dialogs/addon/filter_options.cpp:146
+#: src/gui/dialogs/addon/filter_options.cpp:186
 msgid "addons_view^Installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/filter_options.cpp:148
+#: src/gui/dialogs/addon/filter_options.cpp:188
 #, fuzzy
 #| msgid "Uninstall Add-ons"
 msgid "addons_view^All Add-ons"
@@ -4487,6 +4478,15 @@ msgid ""
 msgstr ""
 "Ez a kulcs („$deprecated_key”) új nevet kapott: „$key”. A régi elnevezés "
 "támogatása a(z) $removal_version. verzió után megszűnik."
+
+#~ msgid "Types"
+#~ msgstr "Típusok"
+
+#~ msgid "Inspection window"
+#~ msgstr "Megfigyelőablak"
+
+#~ msgid "Variable"
+#~ msgstr "Változó"
 
 #~ msgid "Use new lobby interface"
 #~ msgstr "Az új játékcsarnok felületének használata"

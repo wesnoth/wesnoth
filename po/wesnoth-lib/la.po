@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-03-16 23:53+0100\n"
+"POT-Creation-Date: 2013-03-24 13:24+0100\n"
 "PO-Revision-Date: 2012-12-19 21:21-0000\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
@@ -1247,7 +1247,7 @@ msgstr "Laminae"
 #: data/gui/default/widget/window_default.cfg:140
 #: data/gui/default/window/addon_filter_options.cfg:314
 #: data/gui/default/window/chat_log.cfg:121
-#: data/gui/default/window/gamestate_inspector.cfg:339
+#: data/gui/default/window/gamestate_inspector.cfg:254
 #: data/gui/default/window/lobby_main.cfg:619
 #: data/gui/default/window/lobby_player_info.cfg:200
 #: data/gui/default/window/message.cfg:135 src/construct_dialog.cpp:136
@@ -1826,7 +1826,6 @@ msgstr "Acervum arcessere"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:94
-#: data/gui/default/window/gamestate_inspector.cfg:276
 msgid "Actions"
 msgstr "Acta"
 
@@ -1986,36 +1985,28 @@ msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Est iam servatus? Visne rescribere?"
 
 #. [label]
-#: data/gui/default/window/gamestate_inspector.cfg:46
+#: data/gui/default/window/gamestate_inspector.cfg:45
 msgid "Gamestate Inspector"
-msgstr ""
-
-#. [label]
-#: data/gui/default/window/gamestate_inspector.cfg:100
-msgid "Types"
-msgstr "Species"
-
-#. [label]
-#: data/gui/default/window/gamestate_inspector.cfg:111
-msgid "Content"
-msgstr ""
-
-#. [label]
-#: data/gui/default/window/gamestate_inspector.cfg:122
-msgid "Inspection window"
 msgstr ""
 
 #. [label]: id=typename
 #. [label]: id=unit_type
-#: data/gui/default/window/gamestate_inspector.cfg:153
+#: data/gui/default/window/gamestate_inspector.cfg:102
 #: data/gui/default/window/unit_create.cfg:131
 msgid "Type"
 msgstr "Species"
 
 #. [label]: id=name
-#: data/gui/default/window/gamestate_inspector.cfg:214
-msgid "Variable"
-msgstr "Variabile"
+#: data/gui/default/window/gamestate_inspector.cfg:164
+msgid "Items"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/gamestate_inspector.cfg:223
+#, fuzzy
+#| msgid "Continue"
+msgid "Contents"
+msgstr "Pergere"
 
 #. [grid]
 #. [label]
@@ -3357,19 +3348,19 @@ msgstr "Edita, fracta"
 msgid "addon_state^Unknown"
 msgstr "Ignota"
 
-#: src/gui/dialogs/addon/filter_options.cpp:142
+#: src/gui/dialogs/addon/filter_options.cpp:182
 msgid "addons_view^Not Installed"
 msgstr "Non impositae"
 
-#: src/gui/dialogs/addon/filter_options.cpp:144
+#: src/gui/dialogs/addon/filter_options.cpp:184
 msgid "addons_view^Upgradable"
 msgstr ""
 
-#: src/gui/dialogs/addon/filter_options.cpp:146
+#: src/gui/dialogs/addon/filter_options.cpp:186
 msgid "addons_view^Installed"
 msgstr "Impositae"
 
-#: src/gui/dialogs/addon/filter_options.cpp:148
+#: src/gui/dialogs/addon/filter_options.cpp:188
 msgid "addons_view^All Add-ons"
 msgstr "Omnes Appendices"
 
@@ -4386,6 +4377,12 @@ msgid ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
+
+#~ msgid "Types"
+#~ msgstr "Species"
+
+#~ msgid "Variable"
+#~ msgstr "Variabile"
 
 #~ msgid "Use new lobby interface"
 #~ msgstr "Faciei atrii novi uti "

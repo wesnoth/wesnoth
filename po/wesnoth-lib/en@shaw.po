@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-03-16 23:53+0100\n"
+"POT-Creation-Date: 2013-03-24 13:24+0100\n"
 "PO-Revision-Date: 2010-09-30 05:00-0400\n"
 "Last-Translator: Arc Riley <arcriley@gmail.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -1355,7 +1355,7 @@ msgstr ""
 #: data/gui/default/widget/window_default.cfg:140
 #: data/gui/default/window/addon_filter_options.cfg:314
 #: data/gui/default/window/chat_log.cfg:121
-#: data/gui/default/window/gamestate_inspector.cfg:339
+#: data/gui/default/window/gamestate_inspector.cfg:254
 #: data/gui/default/window/lobby_main.cfg:619
 #: data/gui/default/window/lobby_player_info.cfg:200
 #: data/gui/default/window/message.cfg:135 src/construct_dialog.cpp:136
@@ -1970,7 +1970,6 @@ msgstr "𐑒𐑷𐑤 𐑕𐑑𐑨𐑒"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:94
-#: data/gui/default/window/gamestate_inspector.cfg:276
 msgid "Actions"
 msgstr "𐑨𐑒𐑖𐑩𐑯𐑟"
 
@@ -2131,36 +2130,28 @@ msgid "Save already exists. Do you want to overwrite it?"
 msgstr "𐑕𐑱𐑝 𐑷𐑤𐑮𐑧𐑛𐑦 𐑧𐑒𐑟𐑦𐑕𐑑𐑕. 𐑛𐑵 𐑿 𐑢𐑪𐑯𐑑 𐑑 𐑴𐑝𐑼𐑮𐑲𐑑 𐑦𐑑?"
 
 #. [label]
-#: data/gui/default/window/gamestate_inspector.cfg:46
+#: data/gui/default/window/gamestate_inspector.cfg:45
 msgid "Gamestate Inspector"
 msgstr "𐑜𐑱𐑥𐑕𐑑𐑱𐑑 𐑦𐑯𐑕𐑐𐑧𐑒𐑑𐑻"
 
-#. [label]
-#: data/gui/default/window/gamestate_inspector.cfg:100
-msgid "Types"
-msgstr "𐑑𐑲𐑐𐑕"
-
-#. [label]
-#: data/gui/default/window/gamestate_inspector.cfg:111
-msgid "Content"
-msgstr "𐑒𐑩𐑯𐑑𐑧𐑯𐑑"
-
-#. [label]
-#: data/gui/default/window/gamestate_inspector.cfg:122
-msgid "Inspection window"
-msgstr "𐑦𐑯𐑕𐑐𐑧𐑒𐑖𐑩𐑯 𐑢𐑦𐑯𐑛𐑴"
-
 #. [label]: id=typename
 #. [label]: id=unit_type
-#: data/gui/default/window/gamestate_inspector.cfg:153
+#: data/gui/default/window/gamestate_inspector.cfg:102
 #: data/gui/default/window/unit_create.cfg:131
 msgid "Type"
 msgstr "𐑑𐑲𐑐"
 
 #. [label]: id=name
-#: data/gui/default/window/gamestate_inspector.cfg:214
-msgid "Variable"
-msgstr "𐑝𐑺𐑦𐑩𐑚𐑩𐑤"
+#: data/gui/default/window/gamestate_inspector.cfg:164
+msgid "Items"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/gamestate_inspector.cfg:223
+#, fuzzy
+#| msgid "Content"
+msgid "Contents"
+msgstr "𐑒𐑩𐑯𐑑𐑧𐑯𐑑"
 
 #. [grid]
 #. [label]
@@ -3531,19 +3522,19 @@ msgstr ""
 msgid "addon_state^Unknown"
 msgstr ""
 
-#: src/gui/dialogs/addon/filter_options.cpp:142
+#: src/gui/dialogs/addon/filter_options.cpp:182
 msgid "addons_view^Not Installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/filter_options.cpp:144
+#: src/gui/dialogs/addon/filter_options.cpp:184
 msgid "addons_view^Upgradable"
 msgstr ""
 
-#: src/gui/dialogs/addon/filter_options.cpp:146
+#: src/gui/dialogs/addon/filter_options.cpp:186
 msgid "addons_view^Installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/filter_options.cpp:148
+#: src/gui/dialogs/addon/filter_options.cpp:188
 #, fuzzy
 msgid "addons_view^All Add-ons"
 msgstr "𐑳𐑐𐑛𐑱𐑑 𐑨𐑛-𐑭𐑯𐑟"
@@ -4629,6 +4620,15 @@ msgid ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
+
+#~ msgid "Types"
+#~ msgstr "𐑑𐑲𐑐𐑕"
+
+#~ msgid "Inspection window"
+#~ msgstr "𐑦𐑯𐑕𐑐𐑧𐑒𐑖𐑩𐑯 𐑢𐑦𐑯𐑛𐑴"
+
+#~ msgid "Variable"
+#~ msgstr "𐑝𐑺𐑦𐑩𐑚𐑩𐑤"
 
 #~ msgid "Use new lobby interface"
 #~ msgstr "𐑿𐑟 𐑯𐑿 𐑤𐑭𐑚𐑰 𐑦𐑯𐑑𐑻𐑓𐑱𐑕"

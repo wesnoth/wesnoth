@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-03-09 08:51+0100\n"
+"POT-Creation-Date: 2013-03-24 13:24+0100\n"
 "PO-Revision-Date: 2011-12-11 13:08+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -97,10 +97,10 @@ msgstr ""
 #: data/core/units/dwarves/Pathfinder.cfg:49
 #: data/core/units/dwarves/Pathfinder.cfg:57
 #: data/core/units/dwarves/Scout.cfg:41 data/core/units/dwarves/Scout.cfg:49
-#: data/core/units/undead/Skele_Deathblade.cfg:162
+#: data/core/units/undead/Skele_Deathblade.cfg:66
 #: data/core/units/undead/Skele_Draug.cfg:43
 #: data/core/units/undead/Skele_Revenant.cfg:43
-#: data/core/units/undead/Skeleton.cfg:122
+#: data/core/units/undead/Skeleton.cfg:63
 msgid "axe"
 msgstr "sekera"
 
@@ -320,7 +320,7 @@ msgstr "mrazivá bouře"
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:56
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:72
 #: data/core/units/undead/Necro_Dark_Adept.cfg:55
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:87
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:82
 #: data/core/units/undead/Necro_Lich.cfg:72
 #: data/core/units/undead/Necromancer.cfg:63
 msgid "shadow wave"
@@ -582,8 +582,8 @@ msgstr ""
 #: data/core/units/monsters/Skeletal_Dragon.cfg:42
 #: data/core/units/undead/Corpse_Ghoul.cfg:27
 #: data/core/units/undead/Corpse_Necrophage.cfg:39
-#: data/core/units/undead/Spirit_Nightgaunt.cfg:67
-#: data/core/units/undead/Spirit_Shadow.cfg:135
+#: data/core/units/undead/Spirit_Nightgaunt.cfg:46
+#: data/core/units/undead/Spirit_Shadow.cfg:78
 msgid "claws"
 msgstr "drápy"
 
@@ -1151,7 +1151,7 @@ msgstr ""
 #: data/core/units/elves/Archer.cfg:36 data/core/units/elves/Avenger.cfg:50
 #: data/core/units/elves/Captain.cfg:46 data/core/units/elves/Champion.cfg:36
 #: data/core/units/elves/Fighter.cfg:37 data/core/units/elves/Hero.cfg:35
-#: data/core/units/elves/High_Lord.cfg:67 data/core/units/elves/Lord.cfg:40
+#: data/core/units/elves/High_Lord.cfg:61 data/core/units/elves/Lord.cfg:40
 #: data/core/units/elves/Marksman.cfg:42 data/core/units/elves/Marshal.cfg:45
 #: data/core/units/elves/Outrider.cfg:46 data/core/units/elves/Ranger.cfg:47
 #: data/core/units/elves/Rider.cfg:48 data/core/units/elves/Scout.cfg:47
@@ -1195,7 +1195,7 @@ msgid "bow"
 msgstr "luk"
 
 #. [female]
-#: data/core/units/elves/Archer.cfg:122
+#: data/core/units/elves/Archer.cfg:93
 msgid "female^Elvish Archer"
 msgstr "Elfí lučištnice"
 
@@ -1226,7 +1226,7 @@ msgstr ""
 "msta není základní myšlenkou nejedná se o nepřesný termín jejich pojmenování."
 
 #. [female]
-#: data/core/units/elves/Avenger.cfg:136
+#: data/core/units/elves/Avenger.cfg:107
 msgid "female^Elvish Avenger"
 msgstr "Elfí mstitelka"
 
@@ -1310,7 +1310,7 @@ msgstr ""
 #: data/core/units/saurians/Augur.cfg:38
 #: data/core/units/saurians/Oracle.cfg:49
 #: data/core/units/saurians/Soothsayer.cfg:38
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:66
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:61
 msgid "staff"
 msgstr "hůl"
 
@@ -1351,7 +1351,7 @@ msgstr "zamotání"
 
 #. [attack]: type=arcane
 #: data/core/units/elves/Enchantress.cfg:59
-#: data/core/units/elves/High_Lord.cfg:76 data/core/units/elves/Lord.cfg:49
+#: data/core/units/elves/High_Lord.cfg:70 data/core/units/elves/Lord.cfg:49
 #: data/core/units/elves/Sorceress.cfg:61 data/core/units/elves/Sylph.cfg:65
 msgid "faerie fire"
 msgstr "kouzelný oheň"
@@ -1474,7 +1474,7 @@ msgid "longbow"
 msgstr "dlouhý luk"
 
 #. [female]
-#: data/core/units/elves/Marksman.cfg:131
+#: data/core/units/elves/Marksman.cfg:102
 msgid "female^Elvish Marksman"
 msgstr "Elfí střelkyně"
 
@@ -1642,7 +1642,7 @@ msgstr ""
 "ovládají umění lučištnictví."
 
 #. [female]
-#: data/core/units/elves/Sharpshooter.cfg:123
+#: data/core/units/elves/Sharpshooter.cfg:94
 msgid "female^Elvish Sharpshooter"
 msgstr "Elfí ostrostřelkyně"
 
@@ -2236,7 +2236,7 @@ msgstr ""
 
 #. [attack]: type=blade
 #: data/core/units/humans/Loyalist_Duelist.cfg:49
-#: data/core/units/humans/Loyalist_Fencer.cfg:98
+#: data/core/units/humans/Loyalist_Fencer.cfg:66
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:44
 msgid "saber"
 msgstr "šavle"
@@ -2365,7 +2365,7 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Bandit.cfg:35
 #: data/core/units/humans/Outlaw_Fugitive.cfg:41
 #: data/core/units/humans/Outlaw_Highwayman.cfg:37
-#: data/core/units/humans/Royal_Warrior.cfg:35
+#: data/core/units/humans/Royal_Warrior.cfg:34
 msgid "mace"
 msgstr "palcát"
 
@@ -2709,7 +2709,7 @@ msgid "missile"
 msgstr "střela"
 
 #. [female]
-#: data/core/units/humans/Mage.cfg:126
+#: data/core/units/humans/Mage.cfg:97
 msgid "female^Mage"
 msgstr "Čarodějka"
 
@@ -2754,7 +2754,7 @@ msgid "fireball"
 msgstr "ohnivá koule"
 
 #. [female]
-#: data/core/units/humans/Mage_Arch.cfg:119
+#: data/core/units/humans/Mage_Arch.cfg:106
 msgid "female^Arch Mage"
 msgstr "Arcimagyně"
 
@@ -2811,7 +2811,7 @@ msgstr ""
 "je něco, co často způsobí, že ostatní vojáci jen v bázni ustupují stranou."
 
 #. [female]
-#: data/core/units/humans/Mage_Great.cfg:113
+#: data/core/units/humans/Mage_Great.cfg:100
 msgid "female^Great Mage"
 msgstr "Velká magyně"
 
@@ -2849,7 +2849,7 @@ msgstr ""
 "postaraly o jejich hovorové pojmenování."
 
 #. [female]
-#: data/core/units/humans/Mage_Red.cfg:114
+#: data/core/units/humans/Mage_Red.cfg:101
 msgid "female^Red Mage"
 msgstr "Červená magyně"
 
@@ -2905,7 +2905,7 @@ msgid ""
 msgstr " Stříbrní mágové mají vysokou odolnost proti mnoha formám magie."
 
 #. [female]
-#: data/core/units/humans/Mage_Silver.cfg:200
+#: data/core/units/humans/Mage_Silver.cfg:171
 msgid "female^Silver Mage"
 msgstr "Stříbrná magyně"
 
@@ -2947,7 +2947,7 @@ msgid "lightbeam"
 msgstr "paprsek světla"
 
 #. [female]
-#: data/core/units/humans/Mage_White.cfg:143
+#: data/core/units/humans/Mage_White.cfg:108
 msgid "female^White Mage"
 msgstr "Bílá magyně"
 
@@ -2979,7 +2979,7 @@ msgid "morning star"
 msgstr "řemdih"
 
 #. [female]
-#: data/core/units/humans/Mage_of_Light.cfg:141
+#: data/core/units/humans/Mage_of_Light.cfg:112
 msgid "female^Mage of Light"
 msgstr "Světlá čarodějka"
 
@@ -3015,7 +3015,7 @@ msgid "sling"
 msgstr "prak"
 
 #. [female]
-#: data/core/units/humans/Outlaw.cfg:103
+#: data/core/units/humans/Outlaw.cfg:87
 msgid "female^Outlaw"
 msgstr "Zbojnice"
 
@@ -3047,7 +3047,7 @@ msgid "knife"
 msgstr "nůž"
 
 #. [female]
-#: data/core/units/humans/Outlaw_Assassin.cfg:154
+#: data/core/units/humans/Outlaw_Assassin.cfg:115
 msgid "female^Assassin"
 msgstr "Vražedkyně"
 
@@ -3104,7 +3104,7 @@ msgstr "kyj"
 
 # změnit?
 #. [female]
-#: data/core/units/humans/Outlaw_Footpad.cfg:117
+#: data/core/units/humans/Outlaw_Footpad.cfg:101
 msgid "female^Footpad"
 msgstr "Lapka"
 
@@ -3125,7 +3125,7 @@ msgstr ""
 "s množstvím nebo profesionálními jednotkami zástupců práva se nemohou měřit."
 
 #. [female]
-#: data/core/units/humans/Outlaw_Fugitive.cfg:110
+#: data/core/units/humans/Outlaw_Fugitive.cfg:94
 msgid "female^Fugitive"
 msgstr "Uprchlice"
 
@@ -3172,7 +3172,7 @@ msgstr ""
 "preferují boj za tmy."
 
 #. [female]
-#: data/core/units/humans/Outlaw_Rogue.cfg:120
+#: data/core/units/humans/Outlaw_Rogue.cfg:97
 msgid "female^Rogue"
 msgstr "Darebačka"
 
@@ -3220,7 +3220,7 @@ msgstr ""
 "„férovém“ zápase."
 
 #. [female]
-#: data/core/units/humans/Outlaw_Thief.cfg:171
+#: data/core/units/humans/Outlaw_Thief.cfg:161
 msgid "female^Thief"
 msgstr "Zlodějka"
 
@@ -3272,7 +3272,7 @@ msgid "Royal Warrior"
 msgstr "Královský válečník"
 
 #. [unit_type]: id=Royal Warrior, race=human
-#: data/core/units/humans/Royal_Warrior.cfg:31
+#: data/core/units/humans/Royal_Warrior.cfg:30
 msgid ""
 "Royal warriors are the kings and princes of human noble houses, armed and "
 "armored to a degree heavier than that of their knights."
@@ -4051,7 +4051,7 @@ msgstr ""
 
 # nagini - ženský rod
 #. [female]
-#: data/core/units/nagas/Fighter.cfg:79
+#: data/core/units/nagas/Fighter.cfg:63
 msgid "Nagini Fighter"
 msgstr "Nagini bojovnice"
 
@@ -4076,12 +4076,12 @@ msgstr ""
 "smrtící pohyblivost."
 
 #. [female]
-#: data/core/units/nagas/Myrmidon.cfg:78
+#: data/core/units/nagas/Myrmidon.cfg:61
 msgid "Nagini Myrmidon"
 msgstr "Myrmidoňanka"
 
 #. [female]
-#: data/core/units/nagas/Myrmidon.cfg:80
+#: data/core/units/nagas/Myrmidon.cfg:63
 msgid ""
 "The most practiced of the nagini blademasters are initiated into the caste "
 "of the Myrmidon, masters of their twin-bladed art. They strike as fast as "
@@ -4118,12 +4118,12 @@ msgstr ""
 "bojové schopnosti."
 
 #. [female]
-#: data/core/units/nagas/Warrior.cfg:75
+#: data/core/units/nagas/Warrior.cfg:59
 msgid "Nagini Warrior"
 msgstr "Nagini válečnice"
 
 #. [female]
-#: data/core/units/nagas/Warrior.cfg:77
+#: data/core/units/nagas/Warrior.cfg:61
 msgid ""
 "Many of the young warriors of the nagini aspire for the day when they merit "
 "their second blade. Their martial practice of using twin blades is wholly "
@@ -4777,7 +4777,7 @@ msgstr ""
 #: data/core/units/undead/Corpse_Walking.cfg:25
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:48
 #: data/core/units/undead/Necro_Lich.cfg:48
-#: data/core/units/undead/Spirit_Ghost.cfg:130
+#: data/core/units/undead/Spirit_Ghost.cfg:74
 msgid "touch"
 msgstr "dotek"
 
@@ -4841,13 +4841,13 @@ msgstr ""
 
 #. [attack]: type=cold
 #: data/core/units/undead/Necro_Dark_Adept.cfg:43
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:75
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:70
 #: data/core/units/undead/Necromancer.cfg:51
 msgid "chill wave"
 msgstr "vlna mrazu"
 
 #. [female]
-#: data/core/units/undead/Necro_Dark_Adept.cfg:151
+#: data/core/units/undead/Necro_Dark_Adept.cfg:132
 msgid "female^Dark Adept"
 msgstr "Temná učednice"
 
@@ -4890,12 +4890,12 @@ msgstr ""
 "velké lákadlo těch, kteří touží po moci."
 
 #. [female]
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:173
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:136
 msgid "Dark Sorceress"
 msgstr "Temná čarodějka"
 
 #. [female]
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:177
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:140
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
 "about it by the common man. Dark sorceresses have begun to unlock the "
@@ -4985,7 +4985,7 @@ msgid "plague staff"
 msgstr "hůl nákazy"
 
 #. [female]
-#: data/core/units/undead/Necromancer.cfg:176
+#: data/core/units/undead/Necromancer.cfg:139
 msgid "female^Necromancer"
 msgstr "Nekromantka"
 
@@ -5184,8 +5184,8 @@ msgstr ""
 "vyplní jakýkoliv úkol, který je mu pánem zadán."
 
 #. [attack]: type=cold
-#: data/core/units/undead/Spirit_Ghost.cfg:142
-#: data/core/units/undead/Spirit_Spectre.cfg:116
+#: data/core/units/undead/Spirit_Ghost.cfg:86
+#: data/core/units/undead/Spirit_Spectre.cfg:55
 #: data/core/units/undead/Spirit_Wraith.cfg:45
 msgid "wail"
 msgstr "skřek"
@@ -5254,7 +5254,7 @@ msgstr ""
 "nebezpečí, kráčejícího v jejich stopách."
 
 #. [attack]: type=arcane
-#: data/core/units/undead/Spirit_Spectre.cfg:105
+#: data/core/units/undead/Spirit_Spectre.cfg:44
 #: data/core/units/undead/Spirit_Wraith.cfg:34
 msgid "baneblade"
 msgstr "čepel zkázy"
