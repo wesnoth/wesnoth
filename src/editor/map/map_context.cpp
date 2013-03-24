@@ -289,9 +289,56 @@ void map_context::reset_starting_position_labels(display& disp)
 bool map_context::save()
 {
 	std::string data = map_.write();
+
+	config wml_data;
+	labels_.write(wml_data);
+
+	//TODO think about saving the map to the wml file
+	//config& map = cfg.add_child("map");
+	//gamemap::write(map);
+
+	std::stringstream buf;
+
+	for(std::vector<team>::const_iterator t = teams_.begin(); t != teams_.end(); ++t) {
+		int side_num = t - teams_.begin() + 1;
+
+		config& side = wml_data.add_child("side");
+		t->write(side);
+		// TODO make this customizable via gui
+		side["no_leader"] = "no";
+		side["allow_player"] = "yes";
+		side.remove_attribute("color");
+		side.remove_attribute("recruit");
+		side.remove_attribute("recall_cost");
+		side.remove_attribute("gold");
+		side.remove_attribute("start_gold");
+		side.remove_attribute("hidden");
+		buf.str(std::string());
+		buf << side_num;
+		side["side"] = buf.str();
+
+		//current visible units
+		for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
+			if(i->side() == side_num) {
+				config& u = side.add_child("unit");
+				i->get_location().write(u); // TODO: Needed?
+				i->write(u);
+			}
+		}
+	}
+
 	try {
 		if (!is_embedded()) {
 			write_file(get_filename(), data);
+
+			std::stringstream wml_stream;
+			{
+				config_writer out(wml_stream, false);
+				out.write(wml_data);
+			}
+			if (!wml_stream.str().empty()) {
+				write_file(get_filename() + ".cfg", wml_stream.str());
+			}
 		} else {
 			std::string map_string = read_file(get_filename());
 			boost::regex re("(.*map_data\\s*=\\s*\")(.+?)(\".*)");
@@ -313,66 +360,9 @@ bool map_context::save()
 		const std::string msg = vgettext("Could not save the map: $msg", symbols);
 		throw editor_map_save_exception(msg);
 	}
-	return true;
-
-
-
-
-
-
-
-	//TODO the return value of this method does not need to be bool.
+	//TODO the return value of this method does not need to be boolean.
 	//We either return true or there is an exception thrown.
-/*
-	config data;
-	map_.write(data);
-
-	std::stringstream ss;
-	{
-		config_writer out(ss, false);
-		out.write(data);
-	}
-
-	try {
-		if (!is_embedded()) {
-			std::stringstream ss;
-			config_writer writer(ss, false);
-			writer.write(data);
-			write_file(get_filename(), ss.str());
-		} else {
-			std::string map_string = read_file(get_filename());
-			boost::regex re("(.*)(map_data\\s*=\\s*\".+?\")(.*)");
-			boost::smatch m;
-			if (boost::regex_search(map_string, m, re, boost::regex_constants::match_not_dot_null)) {
-				std::stringstream ss2;
-				ss2 << m[1];
-				ss2 << ss.str();
-				ss2 << m[3];
-				write_file(get_filename(), ss2.str());
-			} else {
-				//TODO that reg expression is still not working.
-				boost::regex re_maptag("(.*)([map].+?)([/map].*)");
-				boost::smatch match_maptag;
-				if (boost::regex_search(map_string, match_maptag, re_maptag, boost::regex_constants::match_not_dot_null)) {
-					std::stringstream ss3;
-					ss3 << match_maptag[1];
-					ss3 << ss.str();
-					ss3 << match_maptag[3];
-					write_file(get_filename(), ss3.str());
-				} else {
-					throw editor_map_save_exception(_("Could not save into scenario"));
-				}
-			}
-		}
-		clear_modified();
-	} catch (io_exception& e) {
-		utils::string_map symbols;
-		symbols["msg"] = e.what();
-		const std::string msg = vgettext("Could not save the map: $msg", symbols);
-		throw editor_map_save_exception(msg);
-	}
 	return true;
-	*/
 }
 
 void map_context::set_map(const editor_map& map)
