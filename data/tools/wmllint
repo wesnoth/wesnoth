@@ -496,9 +496,9 @@ linechanges = (
         ("portraits/nagas/fighter+female.png", "portraits/nagas/fighter.png"),
         # Changes after 1.8rc1
         ("portraits/orcs/warlord.png", "portraits/orcs/transparent/warlord.png"),
-        ("portraits/orcs/warlord2.png","portraits/orcs/transparent/warlord.png"),
+        #("portraits/orcs/warlord2.png","portraits/orcs/transparent/warlord.png"), // see 1.11.5
         ("portraits/orcs/warlord3.png","portraits/orcs/transparent/grunt-2.png"),
-        ("portraits/orcs/warlord4.png","portraits/orcs/transparent/grunt-2.png"),
+        #("portraits/orcs/warlord4.png","portraits/orcs/transparent/grunt-2.png"), // see 1.11.5
         ("portraits/orcs/warlord5.png","portraits/orcs/transparent/grunt-3.png"),
         # Changes just before 1.9.0
         ("flat/grass-r8", "flat/grass6"),
@@ -522,7 +522,10 @@ linechanges = (
         ("[/removeitem]", "[/remove_item]"),
         # Changes just before 1.11.0
         ("viewing_side", "side"),
-        ("duration=level", "duration=scenario") # Note: this may be removed after 1.11.2, so an actual duration=level can be implemented
+        ("duration=level", "duration=scenario"), # Note: this may be removed after 1.11.2, so an actual duration=level can be implemented
+        # Changed before 1.11.5 to incorporate 1.9.0 portraits
+        ("portraits/orcs/warlord2.png","portraits/orcs/transparent/grunt-5.png"),
+        ("portraits/orcs/warlord4.png","portraits/orcs/transparent/grunt-6.png"),
         )
 
 def validate_on_pop(tagstack, closer, filename, lineno):
