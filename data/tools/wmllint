@@ -76,6 +76,16 @@
 # declaration will be useful if you are declaring units with macros that
 # include a substitutable formal in the unit name; there are examples in UtBS.
 #
+# If your recruitment patterns include any usage classes besides the standard
+# recruitable classes, you can tell wmllint about them with the magic comment
+# "wmllint: usagetype".  If you have more than one, this comment is
+# comma-separable, and can even be pluralized, for example:
+#    wmllint: usagetypes stonegazer, statue
+# This comment should be added in a file that wmllint checks before the
+# non-standard usage class appears in a scenario, preferably the _main.cfg.
+# (Adding it to the file of a unit generally won't work, because wmllint
+# checks the directory's /units subfolder after /scenarios, alphabetically.)
+#
 # You can disable stack-based malformation checks with a comment
 # containing "wmllint: validate-off" and re-enable with "wmllint: validate-on".
 #
@@ -644,8 +654,10 @@ notepairs = [
     ]
 
 
-# This needs to match the list of usage types in ai_python.cpp
-usage_types = ("scout", "fighter", "mixed fighter", "archer", "healer")
+# This is a list of the standard mainline recruitable usage types. (Two other
+# usage types, null and transport, are not normally recruitable.) Additional
+# usage classes can be appended with the magic comment, "#wmllint: usagetype".
+usage_types = ["scout", "fighter", "mixed fighter", "archer", "healer"]
 
 # These are accumulated by sanity_check() and examined by consistency_check()
 unit_types = []
@@ -1102,6 +1114,11 @@ def global_sanity_check(filename, lines):
             sidecount += 1
         if not in_side or in_subunit or '=' not in lines[i]:
             continue
+        # Magic comment for adding non-standard usage types
+        m = re.search('# *wmllint: usagetypes? +(.*)', lines[i])
+        if m:
+            for newusage in m.group(1).split(","):
+                usage_types.append(newusage.strip())
         try:
             (key, prefix, value, comment) = parse_attribute(lines[i])
             if key in ("recruit", "extra_recruit") and value:
