@@ -18,7 +18,7 @@ class GameResult:
 	is_success = 'false'
 	local_modifications = 'false'
 	map = ''
-	svn_release = '0'
+	repo_release = '0'
 	test = 'default'
 	end_turn = '0'
 	version_string = ''
@@ -84,8 +84,8 @@ def run_game(cfg,game_result):
 				if (n3>-1):
 					sz = sz[:n3]
 					game_result.local_modifications = 1
-				#parse svn_release
-				game_result.svn_release = sz
+				#parse repo_release
+				game_result.repo_release = sz
 			continue
 
 		n,s = do_filter(str,'info ai/testing: GAME_END_TURN:')
@@ -132,7 +132,7 @@ def run_game(cfg,game_result):
 def save_result(cfg,log_file,game_result):
 	print 'Saving to log file....'
 	print 'game duration: '+str(game_result.duration);
-	log_file.write('"'+game_result.ai_config1+'", "'+game_result.ai_config2+'", "'+game_result.ai_ident1+'", "'+game_result.ai_ident2+'", "'+ str(game_result.duration)+'", "'+game_result.faction1+'", "'+game_result.faction2+'", "'+str(game_result.is_success)+'", "'+str(game_result.local_modifications)+'", "'+game_result.map+'", "'+str(game_result.svn_release)+'", "'+str(game_result.test)+'", "'+str(game_result.end_turn)+'", "'+str(game_result.version_string)+'", "'+str(game_result.winner_side)+'"\n');
+	log_file.write('"'+game_result.ai_config1+'", "'+game_result.ai_config2+'", "'+game_result.ai_ident1+'", "'+game_result.ai_ident2+'", "'+ str(game_result.duration)+'", "'+game_result.faction1+'", "'+game_result.faction2+'", "'+str(game_result.is_success)+'", "'+str(game_result.local_modifications)+'", "'+game_result.map+'", "'+str(game_result.repo_release)+'", "'+str(game_result.test)+'", "'+str(game_result.end_turn)+'", "'+str(game_result.version_string)+'", "'+str(game_result.winner_side)+'"\n');
 	log_file.flush();
 	print 'Saved to log file'
 
@@ -171,7 +171,7 @@ cfg = ConfigParser.ConfigParser()
 cfg.read('ai_test.cfg')
 
 log_file = open(datetime.now().strftime(cfg.get('default','log_file').strip())  , 'w')
-log_file.write('"ai_config1"'+', '+'"ai_config2"'+', '+'"ai_ident1"'+', '+'"ai_ident2"'+', '+ '"duration"'+', '+'"faction1"'+', '+'"faction2"'+', '+'"is_success"'+', '+'"local_modifications"'+', '+'"map"'+', '+'"svn_release"'+', '+'"test"'+', '+'"end_turn"'+', '+'"version_string"'+', '+'"winner_side"'+'\n');
+log_file.write('"ai_config1"'+', '+'"ai_config2"'+', '+'"ai_ident1"'+', '+'"ai_ident2"'+', '+ '"duration"'+', '+'"faction1"'+', '+'"faction2"'+', '+'"is_success"'+', '+'"local_modifications"'+', '+'"map"'+', '+'"repo_release"'+', '+'"test"'+', '+'"end_turn"'+', '+'"version_string"'+', '+'"winner_side"'+'\n');
 log_file.flush();
 for test in tests(cfg):
 	game_result = run_game(cfg,test)

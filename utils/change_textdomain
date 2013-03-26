@@ -37,12 +37,12 @@
 # [/textdomain]
 # 
 # 3) move the folder po/wesnoth-oldtextdomain to
-#    po/wesnoth-newtextdomain (svn mv if the file is already under
-#    version conrol, normal mv if it is not)
+#    po/wesnoth-newtextdomain (git mv if the file is already under
+#    version control, normal mv if it is not)
 # 
 # 4) move the file (folders are already changed)
 #    po/wesnoth-newtextdomain/wesnoth-oldtextdomain.pot to
-#    po/wesnoth-newtextdomain/wensoth-newtextdomain.pot (via svn mv if
+#    po/wesnoth-newtextdomain/wensoth-newtextdomain.pot (via git mv if
 #    files are under version control already, --force will be needed,
 #    since it is a 2nd move)
 # 
@@ -118,10 +118,10 @@ overwrite()
     rm -f $new $old
 }
 
-svnmove()
+repomove()
 # Move a file, whether under version control or not
 {
-    if svn mv --force $1 $2
+    if git mv $1 $2
     then
         :
     else
@@ -196,6 +196,6 @@ else
 	`find data/campaigns/${campaign} -name "*.cfg" -print`
 
     # Then do the .pot and folder moves
-    ${do} svnmove po/${oldtextdomain}/${oldtextdomain}.pot po/${oldtextdomain}/${newtextdomain}.pot
-    ${do} svnmove po/${oldtextdomain} po/${newtextdomain}
+    ${do} repomove po/${oldtextdomain}/${oldtextdomain}.pot po/${oldtextdomain}/${newtextdomain}.pot
+    ${do} repomove po/${oldtextdomain} po/${newtextdomain}
 fi

@@ -3,6 +3,7 @@
 --
 
 -- Started on 2009-04-28 03:24:33 EEST
+-- In March 2013, svn_release -> repo_release
 
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = off;
@@ -34,7 +35,7 @@ SET default_with_oids = false;
 
 CREATE TABLE game (
     id bigint NOT NULL,
-    svn_release integer DEFAULT 0 NOT NULL,
+    repo_release integer DEFAULT 0 NOT NULL,
     datetime timestamp with time zone DEFAULT now() NOT NULL,
     winner_side integer DEFAULT 0 NOT NULL,
     ai_config1 text DEFAULT ''::text NOT NULL,
@@ -63,7 +64,7 @@ ALTER TABLE public.game OWNER TO wesnoth_ai_test_user;
 --
 
 CREATE VIEW games_side AS
-    SELECT game.id, game.svn_release, game.datetime, game.duration, game.map, 1 AS my_side, CASE WHEN (game.winner_side = 1) THEN 1 WHEN (game.winner_side = 2) THEN -1 ELSE 0 END AS outcome, CASE WHEN (game.winner_side = 1) THEN 1 ELSE 0 END AS win, CASE WHEN (game.winner_side = 0) THEN 1 ELSE 0 END AS draw, CASE WHEN (game.winner_side = 2) THEN 1 ELSE 0 END AS loss, CASE WHEN (game.winner_side = 1) THEN game.turn ELSE 0 END AS win_turns, CASE WHEN (game.winner_side = 2) THEN game.turn ELSE 0 END AS loss_turns, game.is_success, game.version_string, game.ai_config1 AS ai_config_me, game.ai_config2 AS ai_config_enemy, game.ai_ident1 AS ai_ident_me, game.ai_ident2 AS ai_ident_enemy, game.local_modifications, game.turn, game.faction1 AS faction_me, game.faction2 AS faction_enemy FROM game WHERE (game.svn_release <> 0) UNION SELECT game.id, game.svn_release, game.datetime, game.duration, game.map, 2 AS my_side, CASE WHEN (game.winner_side = 1) THEN -1 WHEN (game.winner_side = 2) THEN 1 ELSE 0 END AS outcome, CASE WHEN (game.winner_side = 2) THEN 1 ELSE 0 END AS win, CASE WHEN (game.winner_side = 0) THEN 1 ELSE 0 END AS draw, CASE WHEN (game.winner_side = 1) THEN 1 ELSE 0 END AS loss, CASE WHEN (game.winner_side = 2) THEN game.turn ELSE 0 END AS win_turns, CASE WHEN (game.winner_side = 1) THEN game.turn ELSE 0 END AS loss_turns, game.is_success, game.version_string, game.ai_config2 AS ai_config_me, game.ai_config1 AS ai_config_enemy, game.ai_ident2 AS ai_ident_me, game.ai_ident1 AS ai_ident_enemy, game.local_modifications, game.turn, game.faction1 AS faction_me, game.faction2 AS faction_enemy FROM game WHERE (game.svn_release <> 0);
+    SELECT game.id, game.repo_release, game.datetime, game.duration, game.map, 1 AS my_side, CASE WHEN (game.winner_side = 1) THEN 1 WHEN (game.winner_side = 2) THEN -1 ELSE 0 END AS outcome, CASE WHEN (game.winner_side = 1) THEN 1 ELSE 0 END AS win, CASE WHEN (game.winner_side = 0) THEN 1 ELSE 0 END AS draw, CASE WHEN (game.winner_side = 2) THEN 1 ELSE 0 END AS loss, CASE WHEN (game.winner_side = 1) THEN game.turn ELSE 0 END AS win_turns, CASE WHEN (game.winner_side = 2) THEN game.turn ELSE 0 END AS loss_turns, game.is_success, game.version_string, game.ai_config1 AS ai_config_me, game.ai_config2 AS ai_config_enemy, game.ai_ident1 AS ai_ident_me, game.ai_ident2 AS ai_ident_enemy, game.local_modifications, game.turn, game.faction1 AS faction_me, game.faction2 AS faction_enemy FROM game WHERE (game.repo_release <> 0) UNION SELECT game.id, game.repo_release, game.datetime, game.duration, game.map, 2 AS my_side, CASE WHEN (game.winner_side = 1) THEN -1 WHEN (game.winner_side = 2) THEN 1 ELSE 0 END AS outcome, CASE WHEN (game.winner_side = 2) THEN 1 ELSE 0 END AS win, CASE WHEN (game.winner_side = 0) THEN 1 ELSE 0 END AS draw, CASE WHEN (game.winner_side = 1) THEN 1 ELSE 0 END AS loss, CASE WHEN (game.winner_side = 2) THEN game.turn ELSE 0 END AS win_turns, CASE WHEN (game.winner_side = 1) THEN game.turn ELSE 0 END AS loss_turns, game.is_success, game.version_string, game.ai_config2 AS ai_config_me, game.ai_config1 AS ai_config_enemy, game.ai_ident2 AS ai_ident_me, game.ai_ident1 AS ai_ident_enemy, game.local_modifications, game.turn, game.faction1 AS faction_me, game.faction2 AS faction_enemy FROM game WHERE (game.repo_release <> 0);
 
 
 ALTER TABLE public.games_side OWNER TO wesnoth_ai_test_user;

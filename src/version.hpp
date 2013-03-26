@@ -58,7 +58,7 @@ public:
 
 	/**
 	 * It is sometimes useful so append special build/distribution
-	 * information to version numbers, in the form of "X.Y.Z+svn",
+	 * information to version numbers, in the form of "X.Y.Z+dev",
 	 * "X.Y.Za", etcetera. This member function retrieves such if
 	 * available.
 	 */

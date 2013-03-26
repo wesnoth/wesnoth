@@ -14,6 +14,7 @@ $branch="1.10"; //version of current stable (folder name of the checkout folder)
 $wescampbranchversion="1.10";
 $wescamptrunkversion="1.12";
 
+//FIXME-GIT: this will need to be updated
 $trunkbasedir="/usr/src/svn-checkouts/trunk/";
 $branchbasedir="/usr/src/svn-checkouts/$branch/";
 $extratbasedir="/usr/src/svn-checkouts/wescamp-i18n/branch-$wescamptrunkversion/"; //trunk addon server

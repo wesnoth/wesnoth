@@ -15,7 +15,7 @@
 class Build {
 	private $db;
 	private $id;
-	private $svn_version;
+	private $repo_version;
 	private $time;
 	private $status;
 	private $error_msg;
@@ -37,7 +37,7 @@ class Build {
 		$this->result = null;
 		$this->errors = null;
 		if ($revision >= 0)
-			$this->fetch("WHERE svn_version=?", array($revision));
+			$this->fetch("WHERE repo_version=?", array($revision));
 	}
 
 	private function fetch($where, $params = array())
@@ -110,7 +110,7 @@ class Build {
 	public function reset()
 	{
 		$this->init(array('id' 			=> -1,
-						  'svn_version'	=> -1,
+						  'repo_version'	=> -1,
 					  	  'time'		=> $this->db->DBTimeStamp(0),
 						  'status'		=> -1,
 						  'error_msg'	=> ""));
@@ -213,7 +213,7 @@ class Build {
 		}
 
 		$this->time = time();
-		$this->svn_revision = $revision;
+		$this->repo_revision = $revision;
 
 		if ($this->status == self::S_GOOD)
 			return true;
@@ -229,9 +229,9 @@ class Build {
 	public function insert()
 	{
 		$result = $this->db->Execute('INSERT INTO builds 
-			(svn_version, status, error_msg) 
+			(repo_version, status, error_msg) 
 			VALUES (?, ?, ?)',
-				array($this->svn_revision,
+				array($this->repo_revision,
 				  	  $this->status,
 					  $this->error_msg));
 	
@@ -245,7 +245,7 @@ class Build {
 			if ($result->EOF())
 			{
 				$result = $this->db->Execute('INSERT INTO builds 
-					(svn_version, status, error_msg) 
+					(repo_version, status, error_msg) 
 					VALUES (?, ?, ?)',
 						array(0,
 						  	  self::S_GOOD,
@@ -328,7 +328,7 @@ class Build {
 					 'id'				=> $this->id,
 					 'result_style'		=> $this->result->getResult(),
 					 'error_msg'		=> $this->error_msg,
-					 'svn_rev'			=> $this->svn_version,
+					 'repo_rev'			=> $this->repo_version,
 					 'result_passed'	=> $this->result->getAssertionsPassed(),
 					 'result_failed'	=> $this->result->getAssertionsFailed());
 	}

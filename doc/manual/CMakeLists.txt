@@ -3,7 +3,7 @@ set_directory_properties(PROPERTIES CLEAN_NO_CUSTOM true)
 install(FILES manual.en.html DESTINATION "${DOCDIR}")
 install(DIRECTORY images styles
 	DESTINATION "${DOCDIR}"
-	PATTERN ".svn" EXCLUDE
+	PATTERN ".git" EXCLUDE
 )
 
 if(ENABLE_NLS)

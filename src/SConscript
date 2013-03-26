@@ -640,13 +640,6 @@ create_images_sources = Split("""
 
 env.WesnothProgram("create_images", create_images_sources + [libwesnoth_core], have_server_prereqs, OBJPREFIX = "create_images_", LIBS = ["$LIBS", "png"])
 
-if env["svnrev"] != "" and env["svnrev"] != "exported":
-    revision_define = "#define REVISION \"%s\"\n" % env["svnrev"]
-    env.Command("#/src/revision.hpp", Value(env["svnrev"]), Action(
-                    lambda target, source, env: open(str(target[0]), "w").write(revision_define),
-                    "Generating revision.hpp..."
-                    ))
-    game_config_env.Append(CPPDEFINES = 'HAVE_REVISION')
 if env.get("have_autorevision"):
     game_config_env.Append(CPPDEFINES = 'LOAD_REVISION')
 

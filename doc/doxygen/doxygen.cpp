@@ -299,13 +299,11 @@ to the project.
 Before you can join the development team, your work
 needs to be reviewed by a current developer.
 It works like this:
-you first get the
-<a href="http://gna.org/svn/?group=wesnoth">latest source code</a>
+you first get the latest source code
 and then submit your modified source code as
 <a href="http://www.kegel.com/academy/opensource.html">patches</a> to
 <a href="http://gna.org/patch/?group=wesnoth">Gna!</a>.
-Eventually, you may be given
-<a href="http://svnbook.org">SVN access</a>.
+Eventually, you may be given repository access.
 
 One way to contribute is to find an unassigned bug in the
 <a href="http://gna.org/bugs/?group=wesnoth">bug repository</a>

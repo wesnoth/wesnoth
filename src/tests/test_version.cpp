@@ -30,7 +30,7 @@ BOOST_AUTO_TEST_CASE( test_version_info )
 
 	BOOST_CHECK( canonical.is_canonical() );
 
-	version_info canonical_suffixed("1.2.3+svn");
+	version_info canonical_suffixed("1.2.3+dev");
 
 	BOOST_CHECK( canonical_suffixed > canonical );
 	BOOST_CHECK( canonical < canonical_suffixed );
@@ -39,7 +39,7 @@ BOOST_AUTO_TEST_CASE( test_version_info )
 
 	BOOST_CHECK( !non_canonical.is_canonical() );
 
-	version_info non_canonical_suffixed("1.2.3.4.5.7.8.9+svn");
+	version_info non_canonical_suffixed("1.2.3.4.5.7.8.9+dev");
 
 	BOOST_CHECK( non_canonical_suffixed > non_canonical );
 	BOOST_CHECK( non_canonical < non_canonical_suffixed );

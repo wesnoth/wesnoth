@@ -269,6 +269,7 @@ foreach($stats as $lang => $stat){
 if ($package=='alloff' || $package=='allun' || $package=='all' || $package=='allcore'){
 	echo "<strong>" . $langs[$lang] . "</strong> (" . $lang . ")";
 }else{
+        <!-- FIXME-GIT: This will need to be updated -->
 	if($official){
 		$repo = ($version == 'trunk') ? 'trunk' : "branches/$branch";
 		echo "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/$repo/po/" . $package . "/" . $lang . ".po?view=markup'>" . $langs[$lang] . "</a> (" .$lang . ")";

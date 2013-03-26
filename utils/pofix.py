@@ -36,9 +36,9 @@
 # that states when it was added (current version number is enough) so that
 # the file can be cleaned up more easily every now and then.
 # Example:
-# # conversion added in 1.9.5+svn
+# # conversion added in 1.9.5+dev
 # ("foo addwd bar", "foo added bar"),
-# # conversion added in 1.9.8+svn
+# # conversion added in 1.9.8+dev
 # ("fooba foo", "foobar foo"),
 #
 # NOTE:
@@ -53,12 +53,12 @@ stringfixes = {
 ),
 
 "wesnoth-httt" : (
-# fix added in 1.10.0+svn
+# fix added in 1.10.0+dev
 ("Second, who you most", "Second, whom you most"),
 ),
 
 "wesnoth-tutorial" : (
-# conversion added in 1.11.0-svn
+# conversion added in 1.11.0-dev
 ("$unit.type", "$unit.language_name"),
 ),
 

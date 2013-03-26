@@ -18,6 +18,3 @@
  * Template for new cpp-files.
  */
 
-// After adding the file don't forget to set the properties
-// svn propset svn:keywords 'Author Date Id Revision' file
-// svn propset svn:eol-style 'native' file

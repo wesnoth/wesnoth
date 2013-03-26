@@ -32,7 +32,7 @@
 	</a>
 {/if}
 </td>
-<td class="revision {$build.style}">r{$build.svn_rev}</td>
+<td class="revision {$build.style}">r{$build.repo_rev}</td>
 <td class="message {$build.style}">{$build.result|autohide:20:true}</td>
 <td class="testresult {$build.result_style}">{$build.result_passed}/{$build.result_passed+$build.result_failed}</td>
 </tr>

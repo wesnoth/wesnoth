@@ -24,8 +24,8 @@ if(DOMAIN STREQUAL ${DEFAULT_DOMAIN})
 		COMMAND ${CMAKE_COMMAND} 
 				-E touch ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/POTFILES.in
 
-		# Find all cpp files which are not in a .svn directory.
-		COMMAND find src  -name .svn -prune -o -name '*cpp' -print |
+		# Find all cpp files which are not in a .git directory.
+		COMMAND find src  -name .git -prune -o -name '*cpp' -print |
 				sort |
 				while read file\; do
 					# If the file doesn't contain a GETTEXT_DOMAIN
@@ -54,8 +54,8 @@ else(DOMAIN STREQUAL ${DEFAULT_DOMAIN})
 		COMMAND ${CMAKE_COMMAND} 
 				-E touch ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/POTFILES.in
 
-		# Find all cpp files which are not in a .svn directory.
-		COMMAND find src  -name .svn -prune -o -name '*cpp' -print |
+		# Find all cpp files which are not in a .git directory.
+		COMMAND find src  -name .git -prune -o -name '*cpp' -print |
 				sort |
 				while read file\; do 
 					# If the file contains a GETTEXT_DOMAIN definition for

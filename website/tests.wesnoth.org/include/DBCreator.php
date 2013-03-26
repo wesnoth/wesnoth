@@ -320,13 +320,13 @@ class DBCreator {
 
 		$buildstable = new DBTable('builds', 'InnoDB');
 		$buildstable->addChild(new DBField('id', 'INT NOT NULL AUTO_INCREMENT'));
-		$buildstable->addChild(new DBField('svn_version', 'INT NOT NULL'));
+		$buildstable->addChild(new DBField('repo_version', 'INT NOT NULL'));
 		$buildstable->addChild(new DBField('time', 'TIMESTAMP NOT NULL', 'CURRENT_TIMESTAMP'));
 		$buildstable->addChild(new DBField('status', 'INT NOT NULL'));
 		$buildstable->addChild(new DBField('error_msg', 'BLOB NOT NULL'));
 		$buildstable->addChild(new DBIndex('`id`', 'PRIMARY KEY'));
 		$buildstable->addChild(new DBIndex('`time`', 'KEY'));
-		$buildstable->addChild(new DBIndex('`svn_version`', 'KEY'));
+		$buildstable->addChild(new DBIndex('`repo_version`', 'KEY'));
 		$buildstable->addChild(new DBIndex('`id`,`status`', 'KEY', 'id_status'));
 		$this->format->addChild($buildstable);
 

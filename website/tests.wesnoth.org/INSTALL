@@ -17,13 +17,10 @@ You will need libs required to build wesnoth client.
 
 2. Setting up directories
 
-Go to directory where you want to settup auto unit testing.
+Go to directory where you want to setup auto unit testing.
 
-Do a svn checkout from wesnoth trunk.
- svn co svn://svn.gna.org/svn/wesnoth/trunk/ trunk
-
-Export website from svn work directory
- svn export trunk/utils/tests tests
+Do a checkout from the wesnoth repository and copy files from under
+website/ to your test directory.
 
 3. Configuring database
 

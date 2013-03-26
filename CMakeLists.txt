@@ -506,7 +506,7 @@ add_subdirectory(src)
 #
 # Install files
 #
-install(DIRECTORY data fonts images sounds DESTINATION ${DATADIR} USE_SOURCE_PERMISSIONS PATTERN ".svn" EXCLUDE )
+install(DIRECTORY data fonts images sounds DESTINATION ${DATADIR} USE_SOURCE_PERMISSIONS PATTERN ".git" EXCLUDE )
 
 
 #

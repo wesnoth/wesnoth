@@ -22,7 +22,7 @@ followed by :: and a unit class.
 
 The script generates a sequence of shell commands.  These commands
 will move the unit and all its resources to appropriate places under
-the target campaign or core directories.  Subversion move commands
+the target campaign or core directories.  Appropriate VCS move commands
 will be used on version-controlled files.
 
 A resource is considered to belong to a unit (and moves with it) if the

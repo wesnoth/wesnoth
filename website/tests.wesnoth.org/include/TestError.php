@@ -149,7 +149,7 @@ class TestError {
 	{
 		if ($this->start_version == -1)
 		{
-			$result = $this->db->Execute('SELECT svn_version as start_version FROM builds WHERE id=?',array($this->before_id));
+			$result = $this->db->Execute('SELECT repo_version as start_version FROM builds WHERE id=?',array($this->before_id));
 			$this->start_version = $result->fields['start_version'];
 		}
 		return $this->start_version;
@@ -160,7 +160,7 @@ class TestError {
 		if ($this->end_version == -1)
 		{
 			// might need optimization
-			$result = $this->db->Execute('SELECT MIN(svn_version) as end_version FROM builds WHERE id>? AND status=?',array($this->before_id, Build::S_GOOD));
+			$result = $this->db->Execute('SELECT MIN(repo_version) as end_version FROM builds WHERE id>? AND status=?',array($this->before_id, Build::S_GOOD));
 			$this->end_version = $result->fields['end_version'];
 		}
 		return $this->end_version;

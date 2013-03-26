@@ -2,7 +2,7 @@
 #
 # wescamp_import -- generate a shellscript to import a campaign from WesCamp
 #
-# Pipe the output of this comman to sh to actually perform the opetation
+# Pipe the output of this command to sh to actually perform the operation
 #
 import sys, os, getopt, shutil
 
@@ -135,9 +135,9 @@ po/%(textdomain)s/Makefile.in
 wq
 EOF
 
-svn add po/%(textdomain)s
+git add po/%(textdomain)s
 
 # To be able to review the commit before actually doing it
 # recommended commit-msg: Wescamp import
-svn commit configure.ac po/Makefile.am po/%(textdomain)s
+git commit configure.ac po/Makefile.am po/%(textdomain)s
 """ % locals()

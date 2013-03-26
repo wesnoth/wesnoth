@@ -3,7 +3,7 @@
 # SCons build description for the Wesnoth project
 #
 # Prerequisites are:
-# 1. Subversion command-line client programs svnstatus and svnversion.
+# 1. autorevision for getting the repository revision level.
 # 2. msgfmt(1) for making builds with i18n support.
 # 3. graph-includes for making the project dependency graph.
 
@@ -443,26 +443,11 @@ for env in [test_env, client_env, env]:
 if not env['static_test']:
     test_env.Append(CPPDEFINES = "BOOST_TEST_DYN_LINK")
 
-if os.path.exists('.git') and (file(".git/config").read().find("svn-remote") != -1):
-    try:
-        env["svnrev"] = Popen(Split("git svn find-rev refs/remotes/trunk"), stdout=PIPE, stderr=PIPE).communicate()[0].rstrip("\n")
-        if not env["svnrev"]:
-            # If you use git svn for one svn path only there's no refs/remotes/trunk, only git svn branch
-            env["svnrev"] = Popen(Split("git svn find-rev git svn"), stdout=PIPE, stderr=PIPE).communicate()[0].rstrip("\n")
-        # if git svn can't find HEAD it's a local commit
-        if Popen(Split("git svn find-rev HEAD"), stdout=PIPE).communicate()[0].rstrip("\n") == "":
-            env["svnrev"] += "L"
-        if Popen(Split("git diff --exit-code --quiet")).wait() == 1:
-            env["svnrev"] += "M"
-    except:
-        env["svnrev"] = ""
-else:
-    env["svnrev"] = ""
-    try:
-        if call("utils/autorevision -t h > revision.h", shell=True) == 0:
-            env["have_autorevision"] = True
-    except:
-        pass
+try:
+    if call("utils/autorevision -t h > revision.h", shell=True) == 0:
+        env["have_autorevision"] = True
+except:
+    pass
 
 Export(Split("env client_env test_env have_client_prereqs have_server_prereqs have_test_prereqs"))
 SConscript(dirs = Split("po doc packaging/windows packaging/systemd"))
@@ -531,7 +516,7 @@ pythonmodules = Split("wmltools.py wmlparser.py wmldata.py wmliterator.py campai
 
 def CopyFilter(fn):
     "Filter out data-tree things that shouldn't be installed."
-    return not ".svn" in str(fn) and not "Makefile" in str(fn)
+    return not ".git" in str(fn) and not "Makefile" in str(fn)
 
 env["copy_filter"] = CopyFilter
 
@@ -618,7 +603,7 @@ if 'dist' in COMMAND_LINE_TARGETS:    # Speedup, the manifest is expensive
     def dist_manifest():
         "Get an argument list suitable for passing to a distribution archiver."
         # Start by getting a list of all files under version control
-        lst = commands.getoutput("svn -v status | grep -v 'data\/test\/.*' | awk '/^[^?]/ {print $4;}'").split()
+        lst = commands.getoutput("git ls-files | grep -v 'data\/test\/.*' | awk '/^[^?]/ {print $4;}'").split()
         lst = filter(os.path.isfile, lst)
         return lst
     dist_tarball = env.Tar('wesnoth-${version}.tar.bz2', [])

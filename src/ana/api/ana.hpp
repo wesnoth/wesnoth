@@ -47,8 +47,8 @@
  * This project is being carried out as part of a Google Summer of Code 2010
  * project to reimplement <A HREF="http://wesnoth.org"> Wesnoth</A>'s stack.
  *
- * The projects' source code can be found at:
- * <A HREF="http://svn.gna.org/viewcvs/wesnoth/trunk/src/ana/"> Wesnoth's repository </A>
+ * The project's source code can be found in the src/ana directory of
+ * the Battle for Wesnoth repository
  *
  * @section requirements Requirements
  * To compile ana, you need:

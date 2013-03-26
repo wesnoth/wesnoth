@@ -60,7 +60,7 @@ if __name__ == "__main__":
                 email = entry.get_text_val("email", "")
                 # Mask email names from spammers
                 email = email.replace("@", "&#x40;").replace(".", "&#x2E;")
-                # Interpret our local conventions for obfuscsting in SVN files
+                # Interpret our local conventions for obfuscating in repo files
                 email = email.replace("_AT_", "&#x40;").replace("_DOT_", "&#x2E;")
                 section.lines.append((name, comment, wikiuser, email))
             if section.title:
@@ -77,7 +77,7 @@ __NOEDITSECTION__
 In July 2003, '''David White''' released the first version of Wesnoth. Since
 then, many people have joined the project, contributing in very different ways.
 
-To make any changes to this list, please modify about.cfg in SVN or ask any
+To make any changes to this list, please modify about.cfg in the repo or ask any
 developer to do it for you.
 
 """.lstrip())

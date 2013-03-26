@@ -205,6 +205,7 @@ foreach($stats as $stat){
 ?>
 <tr class="row<?=$class?>">
     <td>
+<!-- FIXME-GIT: this will need to be updated -->
 <?
 	if($official == 0){
 		$repo = ($version == 'trunk') ? 'trunk' : "branches/$branch";

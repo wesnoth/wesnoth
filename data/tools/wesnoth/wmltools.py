@@ -31,9 +31,6 @@ def pop_to_top(whoami):
         sys.stderr.write(whoami + ": must be run from within a Battle "
                          "for Wesnoth source tree.\n")
         sys.exit(1)
-    # In case we're looking at a whole-repo checkout in SVN
-    if os.path.exists("trunk"):
-        os.chdir("trunk")
 
 def string_strip(value):
     "String-strip the value"
@@ -857,50 +854,43 @@ baseindent = "    "
 
 ## Version-control hooks begin here.
 #
-# Change these if we move away from Subversion
+# Not tested since the git transition
 
-if sys.platform.startswith("win"):
-    mv = "rename"
-    rm = "del"
-else:
-    mv = "mv"
-    rm = "rm"
-
-vcdir = ".svn"
+vcdir = ".git"
 
 def vcmove(src, dst):
     "Move a file under version control. Only applied to unmodified files."
     (path, base) = os.path.split(src)
-    if os.path.exists(os.path.join(path, ".svn")):
-        return "svn mv %s %s" % (src, dst)
+    if os.path.exists(os.path.join(path, ".git")):
+        return "git mv %s %s" % (src, dst)
     else:
-        return mv + " " + src + " " + dst
+        return "echo 'cannot move %s to %s, .git is missing'" % (src, dst)
 
 def vcunmove(src, dst):
     "Revert the result of a previous move (before commit)."
     (path, base) = os.path.split(src)
-    if os.path.exists(os.path.join(path, ".svn")):
-        return "svn revert %s" % dst	# Revert the add at the destination
-        return rm + " " + dst		# Remove the moved copy
-        return "svn revert %s" % src	# Revert the deletion
+    if os.path.exists(os.path.join(path, ".git")):
+        return "git checkout %s" % dst	# Revert the add at the destination
+        return "git rm " + dst		# Remove the moved copy
+        return "git checkout %s" % src	# Revert the deletion
     else:
-        return mv + " " + dst + " " + src
+        return "echo 'cannot unmove %s from %s, .git is missing'" % (src, dst)
 
 def vcdelete(src):
     "Delete a file under version control."
     (path, base) = os.path.split(src)
-    if os.path.exists(os.path.join(path, ".svn")):
-        return "svn rm %s" % src
+    if os.path.exists(os.path.join(path, ".git")):
+        return "git rm %s" % src
     else:
-        return rm + " " + src
+        return "echo 'cannot undelete %s, .git is missing'" % src
 
 def vcundelete(src):
     "Revert the result of a previous delete (before commit)."
     (path, base) = os.path.split(src)
-    if os.path.exists(os.path.join(path, ".svn")):
-        return "svn revert %s" % src	# Revert the deletion
+    if os.path.exists(os.path.join(path, ".git")):
+        return "git checkout %s" % src	# Revert the deletion
     else:
-        return "echo 'can't undelete %s, not under version control'" % src
+        return "echo 'cannot undelete %s, .git is missing'" % src
 
 #
 ## Version-control hooks end here

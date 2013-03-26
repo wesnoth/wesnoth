@@ -344,6 +344,7 @@ foreach($stats as $lang => $stat){
 if ($package=='alloff' || $package=='allun' || $package=='all' || $package=='allcore'){
 	echo "<strong><a href='index.lang.php?lang=$lang&amp;version=$version'>" . $langs[$lang] . "</a></strong> (" . $lang . ")";
 }else{
+        <!-- FIXME-GIT: this will need to be updated -->
 	if($official){
 		$repo = ($version == 'trunk') ? 'trunk' : "branches/$branch";
 		echo "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/$repo/po/" . $package . "/" . $lang . ".po'>" . $langs[$lang] . "</a> (" .$lang . ")";

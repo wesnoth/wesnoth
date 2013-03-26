@@ -1,5 +1,8 @@
 README.txt
 
+(FIXME-GIT: These directions are slightly broken following the git
+transition and will need to be updated.)
+
 Compiling wesnoth on windows using CodeBlocks 10.05
 (June 2011, development version 1.9.6+svn r49843,
 earlier source versions untested)

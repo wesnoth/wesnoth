@@ -136,31 +136,6 @@ endif(X11_FOUND)
 # Create targets for revision.hpp
 #
 
-find_program(SVNVERSION_EXECUTABLE "svnversion")
-
-set(REVISION_FILE)
-if(SVNVERSION_EXECUTABLE AND NOT ENABLE_DISPLAY_REVISION)
-	execute_process(COMMAND ${SVNVERSION_EXECUTABLE} -n ${CMAKE_SOURCE_DIR}
-		OUTPUT_VARIABLE SVN_VERSION)
-	if(SVN_VERSION MATCHES [0-9]+.*)
-		add_custom_target(update_revision ALL
-			COMMAND ${CMAKE_COMMAND}
-				-DSVNVERSION_EXECUTABLE="${SVNVERSION_EXECUTABLE}"
-				-DSRC_DIR="${CMAKE_SOURCE_DIR}"
-				-P "${CMAKE_MODULE_PATH}/revision.cmake"
-			WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-			COMMENT "Updating revision")
-
-		set(REVISION_FILE revision.hpp)
-		set_source_files_properties(
-			revision.hpp
-			PROPERTIES GENERATED true)
-		add_definitions(-DHAVE_REVISION)
-
-		set(UPDATE_REVISION ON CACHE INTERNAL "")
-	endif(SVN_VERSION MATCHES [0-9]+.*)
-endif()
-
 if(MSVC)
 	SOURCE_GROUP("src" REGULAR_EXPRESSION ".*")
 	SOURCE_GROUP("src ai" REGULAR_EXPRESSION "ai/.*")

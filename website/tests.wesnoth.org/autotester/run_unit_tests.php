@@ -27,20 +27,20 @@ require_once $root_dir . '/../include/settup.php';
 $creator = new DBCreator();
 $creator->checkDB();
 
-// do svn up
-$svn = new SVNUpdater();
+// get a fresh checkout
+$repo = new RepoUpdater();
 
-if ($svn->getRevision() === false)
+if ($repo->getRevision() === false)
 {
-	trigger_error("SVN is down", E_USER_ERROR);
+	trigger_error("Repository is down", E_USER_ERROR);
 }
 
-$build = new Build($svn->getRevision());
+$build = new Build($repo->getRevision());
 
 if (!$build->Exists())
 {
-	// Only run tests if build doesn't exists
-	if ($build->compile($svn->getRevision()))
+	// Only run tests if build doesn't exist
+	if ($build->compile($repo->getRevision()))
 	{
 		$test_runner = new TestRunner();
 		$test_runner->run($build);

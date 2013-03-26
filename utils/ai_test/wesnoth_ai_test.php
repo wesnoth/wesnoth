@@ -12,9 +12,9 @@
 #    print("Connection Ok!");
   }
 ?>
-<h2>Latest svn AI wins % graph:</h2>
+<h2>Latest repository AI wins % graph:</h2>
 <?php
-$query  = "select ai_ident_me,avg_from(sum(win)*100,count(*))::bigint as win_percent from games_side where svn_release=(select max(svn_release) from games_side) group by ai_ident_me order by ai_ident_me;";
+$query  = "select ai_ident_me,avg_from(sum(win)*100,count(*))::bigint as win_percent from games_side where repo_release=(select max(repo_release) from games_side) group by ai_ident_me order by ai_ident_me;";
  $result = pg_query($query);
  if (!$result) {
             echo pg_last_error();
@@ -41,7 +41,7 @@ printf("<img src=\"http://chart.apis.google.com/chart?cht=p3&amp;chd=t:$b&amp;ch
 <table border=1>
 <tr>
 <th>AI</th>
-<th>SVN Release</th>
+<th>Repository_Revision</th>
 <th>Win %</th>
 <th>Games</th>
 <th>Wins</th>
@@ -50,7 +50,7 @@ printf("<img src=\"http://chart.apis.google.com/chart?cht=p3&amp;chd=t:$b&amp;ch
 <th>Avg. turns to lose</th>
 </tr>
 <?php
-$query  = "select ai_ident_me, svn_release, avg_from(sum(win)*100,count(*)) as win_percent, count(*) as games, sum(win) as wins, sum(draw) as draws, sum(loss) as losses, avg_from(sum(win_turns),sum(win)) as avg_win_turns, avg_from(sum(loss_turns),sum(loss)) as avg_loss_turns from games_side group by ai_ident_me, svn_release order by ai_ident_me, svn_release desc;";
+$query  = "select ai_ident_me, repo_release, avg_from(sum(win)*100,count(*)) as win_percent, count(*) as games, sum(win) as wins, sum(draw) as draws, sum(loss) as losses, avg_from(sum(win_turns),sum(win)) as avg_win_turns, avg_from(sum(loss_turns),sum(loss)) as avg_loss_turns from games_side group by ai_ident_me, repo_release order by ai_ident_me, repo_release desc;";
  $result = pg_query($query);
  if (!$result) {
             echo pg_last_error();
@@ -59,7 +59,7 @@ $query  = "select ai_ident_me, svn_release, avg_from(sum(win)*100,count(*)) as w
 	
 while($myrow = pg_fetch_assoc($result)) {
 	printf ("<tr><td>%s</td><td>%d</td><td>%.1f</td><td>%d</td><td>%d</td><td>%d</td><td>%.1f</td><td>%.1f</td></tr>",  
-	$myrow['ai_ident_me'],$myrow['svn_release'],$myrow['win_percent'],$myrow['games'],$myrow['wins'],$myrow['losses'],$myrow['avg_win_turns'],$myrow['avg_loss_turns']);
+	$myrow['ai_ident_me'],$myrow['repo_release'],$myrow['win_percent'],$myrow['games'],$myrow['wins'],$myrow['losses'],$myrow['avg_win_turns'],$myrow['avg_loss_turns']);
 }
   ?>
 </table>
@@ -68,7 +68,7 @@ while($myrow = pg_fetch_assoc($result)) {
 <tr>
 <th>AI</th>
 <th>Side</th>
-<th>SVN Release</th>
+<th>Repository_Revision</th>
 <th>Win %</th>
 <th>Games</th>
 <th>Wins</th>
@@ -77,7 +77,7 @@ while($myrow = pg_fetch_assoc($result)) {
 <th>Avg. turns to lose</th>
 </tr>
 <?php
-$query  = "select ai_ident_me, my_side, svn_release, avg_from(sum(win)*100,count(*)) as win_percent, count(*) as games, sum(win) as wins, sum(draw) as draws, sum(loss) as losses, avg_from(sum(win_turns),sum(win)) as avg_win_turns, avg_from(sum(loss_turns),sum(loss)) as avg_loss_turns from games_side group by ai_ident_me, my_side, svn_release order by ai_ident_me, my_side, svn_release desc;";
+$query  = "select ai_ident_me, my_side, repo_release, avg_from(sum(win)*100,count(*)) as win_percent, count(*) as games, sum(win) as wins, sum(draw) as draws, sum(loss) as losses, avg_from(sum(win_turns),sum(win)) as avg_win_turns, avg_from(sum(loss_turns),sum(loss)) as avg_loss_turns from games_side group by ai_ident_me, my_side, repo_release order by ai_ident_me, my_side, repo_release desc;";
  $result = pg_query($query);
  if (!$result) {
             echo pg_last_error();
@@ -86,7 +86,7 @@ $query  = "select ai_ident_me, my_side, svn_release, avg_from(sum(win)*100,count
 	
 while($myrow = pg_fetch_assoc($result)) {
 	printf ("<tr><td>%s</td><td>%s</td><td>%d</td><td>%.1f</td><td>%d</td><td>%d</td><td>%d</td><td>%.1f</td><td>%.1f</td></tr>",  
-	$myrow['ai_ident_me'],$myrow['my_side'],$myrow['svn_release'],$myrow['win_percent'],$myrow['games'],$myrow['wins'],$myrow['losses'],$myrow['avg_win_turns'],$myrow['avg_loss_turns']);
+	$myrow['ai_ident_me'],$myrow['my_side'],$myrow['repo_release'],$myrow['win_percent'],$myrow['games'],$myrow['wins'],$myrow['losses'],$myrow['avg_win_turns'],$myrow['avg_loss_turns']);
 }
   ?>
 </table>
@@ -95,7 +95,7 @@ while($myrow = pg_fetch_assoc($result)) {
 <tr>
 <th>AI</th>
 <th>Map</th>
-<th>SVN Release</th>
+<th>Repository_Revision</th>
 <th>Win %</th>
 <th>Games</th>
 <th>Wins</th>
@@ -104,7 +104,7 @@ while($myrow = pg_fetch_assoc($result)) {
 <th>Avg. turns to lose</th>
 </tr>
 <?php
-$query  = "select ai_ident_me, map, svn_release, avg_from(sum(win)*100,count(*)) as win_percent, count(*) as games, sum(win) as wins, sum(draw) as draws, sum(loss) as losses, avg_from(sum(win_turns),sum(win)) as avg_win_turns, avg_from(sum(loss_turns),sum(loss)) as avg_loss_turns from games_side group by ai_ident_me, map, svn_release order by ai_ident_me, map, svn_release desc;";
+$query  = "select ai_ident_me, map, repo_release, avg_from(sum(win)*100,count(*)) as win_percent, count(*) as games, sum(win) as wins, sum(draw) as draws, sum(loss) as losses, avg_from(sum(win_turns),sum(win)) as avg_win_turns, avg_from(sum(loss_turns),sum(loss)) as avg_loss_turns from games_side group by ai_ident_me, map, repo_release order by ai_ident_me, map, repo_release desc;";
  $result = pg_query($query);
  if (!$result) {
             echo pg_last_error();
@@ -113,7 +113,7 @@ $query  = "select ai_ident_me, map, svn_release, avg_from(sum(win)*100,count(*))
 	
 while($myrow = pg_fetch_assoc($result)) {
 	printf ("<tr><td>%s</td><td>%s</td><td>%d</td><td>%.1f</td><td>%d</td><td>%d</td><td>%d</td><td>%.1f</td><td>%.1f</td></tr>",  
-	$myrow['ai_ident_me'],$myrow['map'],$myrow['svn_release'],$myrow['win_percent'],$myrow['games'],$myrow['wins'],$myrow['losses'],$myrow['avg_win_turns'],$myrow['avg_loss_turns']);
+	$myrow['ai_ident_me'],$myrow['map'],$myrow['repo_release'],$myrow['win_percent'],$myrow['games'],$myrow['wins'],$myrow['losses'],$myrow['avg_win_turns'],$myrow['avg_loss_turns']);
 }
   ?>
 </table>
@@ -122,7 +122,7 @@ while($myrow = pg_fetch_assoc($result)) {
 <tr>
 <th>AI</th>
 <th>Own faction</th>
-<th>SVN Release</th>
+<th>Repository_Revision</th>
 <th>Win %</th>
 <th>Games</th>
 <th>Wins</th>
@@ -131,7 +131,7 @@ while($myrow = pg_fetch_assoc($result)) {
 <th>Avg. turns to lose</th>
 </tr>
 <?php
-$query  = "select ai_ident_me, faction_me, svn_release, avg_from(sum(win)*100,count(*)) as win_percent, count(*) as games, sum(win) as wins, sum(draw) as draws, sum(loss) as losses, avg_from(sum(win_turns),sum(win)) as avg_win_turns, avg_from(sum(loss_turns),sum(loss)) as avg_loss_turns from games_side group by ai_ident_me, faction_me, svn_release order by ai_ident_me, faction_me, svn_release desc;";
+$query  = "select ai_ident_me, faction_me, repo_release, avg_from(sum(win)*100,count(*)) as win_percent, count(*) as games, sum(win) as wins, sum(draw) as draws, sum(loss) as losses, avg_from(sum(win_turns),sum(win)) as avg_win_turns, avg_from(sum(loss_turns),sum(loss)) as avg_loss_turns from games_side group by ai_ident_me, faction_me, repo_release order by ai_ident_me, faction_me, repo_release desc;";
  $result = pg_query($query);
  if (!$result) {
             echo pg_last_error();
@@ -140,7 +140,7 @@ $query  = "select ai_ident_me, faction_me, svn_release, avg_from(sum(win)*100,co
 	
 while($myrow = pg_fetch_assoc($result)) {
 	printf ("<tr><td>%s</td><td>%s</td><td>%d</td><td>%.1f</td><td>%d</td><td>%d</td><td>%d</td><td>%.1f</td><td>%.1f</td></tr>",  
-	$myrow['ai_ident_me'],$myrow['faction_me'],$myrow['svn_release'],$myrow['win_percent'],$myrow['games'],$myrow['wins'],$myrow['losses'],$myrow['avg_win_turns'],$myrow['avg_loss_turns']);
+	$myrow['ai_ident_me'],$myrow['faction_me'],$myrow['repo_release'],$myrow['win_percent'],$myrow['games'],$myrow['wins'],$myrow['losses'],$myrow['avg_win_turns'],$myrow['avg_loss_turns']);
 }
   ?>
 </table>
@@ -149,7 +149,7 @@ while($myrow = pg_fetch_assoc($result)) {
 <tr>
 <th>AI</th>
 <th>Enemy faction</th>
-<th>SVN Release</th>
+<th>Repository_Revision</th>
 <th>Win %</th>
 <th>Games</th>
 <th>Wins</th>
@@ -158,7 +158,7 @@ while($myrow = pg_fetch_assoc($result)) {
 <th>Avg. turns to lose</th>
 </tr>
 <?php
-$query  = "select ai_ident_me, faction_enemy, svn_release, avg_from(sum(win)*100,count(*)) as win_percent, count(*) as games, sum(win) as wins, sum(draw) as draws, sum(loss) as losses, avg_from(sum(win_turns),sum(win)) as avg_win_turns, avg_from(sum(loss_turns),sum(loss)) as avg_loss_turns from games_side group by ai_ident_me, faction_enemy, svn_release order by ai_ident_me, faction_enemy, svn_release desc;";
+$query  = "select ai_ident_me, faction_enemy, repo_release, avg_from(sum(win)*100,count(*)) as win_percent, count(*) as games, sum(win) as wins, sum(draw) as draws, sum(loss) as losses, avg_from(sum(win_turns),sum(win)) as avg_win_turns, avg_from(sum(loss_turns),sum(loss)) as avg_loss_turns from games_side group by ai_ident_me, faction_enemy, repo_release order by ai_ident_me, faction_enemy, repo_release desc;";
  $result = pg_query($query);
  if (!$result) {
             echo pg_last_error();
@@ -167,7 +167,7 @@ $query  = "select ai_ident_me, faction_enemy, svn_release, avg_from(sum(win)*100
 	
 while($myrow = pg_fetch_assoc($result)) {
 	printf ("<tr><td>%s</td><td>%s</td><td>%d</td><td>%.1f</td><td>%d</td><td>%d</td><td>%d</td><td>%.1f</td><td>%.1f</td></tr>",  
-	$myrow['ai_ident_me'],$myrow['faction_enemy'],$myrow['svn_release'],$myrow['win_percent'],$myrow['games'],$myrow['wins'],$myrow['losses'],$myrow['avg_win_turns'],$myrow['avg_loss_turns']);
+	$myrow['ai_ident_me'],$myrow['faction_enemy'],$myrow['repo_release'],$myrow['win_percent'],$myrow['games'],$myrow['wins'],$myrow['losses'],$myrow['avg_win_turns'],$myrow['avg_loss_turns']);
 }
   ?>
 </table>
@@ -177,7 +177,7 @@ while($myrow = pg_fetch_assoc($result)) {
 <th>AI</th>
 <th>Own faction</th>
 <th>Enemy faction</th>
-<th>SVN Release</th>
+<th>Repository_Revision</th>
 <th>Win %</th>
 <th>Games</th>
 <th>Wins</th>
@@ -186,7 +186,7 @@ while($myrow = pg_fetch_assoc($result)) {
 <th>Avg. turns to lose</th>
 </tr>
 <?php
-$query  = "select ai_ident_me, faction_me, faction_enemy, svn_release, avg_from(sum(win)*100,count(*)) as win_percent, count(*) as games, sum(win) as wins, sum(draw) as draws, sum(loss) as losses, avg_from(sum(win_turns),sum(win)) as avg_win_turns, avg_from(sum(loss_turns),sum(loss)) as avg_loss_turns from games_side group by ai_ident_me, faction_me, faction_enemy ,svn_release order by ai_ident_me, faction_me, faction_enemy, svn_release desc;";
+$query  = "select ai_ident_me, faction_me, faction_enemy, repo_release, avg_from(sum(win)*100,count(*)) as win_percent, count(*) as games, sum(win) as wins, sum(draw) as draws, sum(loss) as losses, avg_from(sum(win_turns),sum(win)) as avg_win_turns, avg_from(sum(loss_turns),sum(loss)) as avg_loss_turns from games_side group by ai_ident_me, faction_me, faction_enemy ,repo_release order by ai_ident_me, faction_me, faction_enemy, repo_release desc;";
  $result = pg_query($query);
  if (!$result) {
             echo pg_last_error();
@@ -195,7 +195,7 @@ $query  = "select ai_ident_me, faction_me, faction_enemy, svn_release, avg_from(
 	
 while($myrow = pg_fetch_assoc($result)) {
 	printf ("<tr><td>%s</td><td>%s</td><td>%s</td><td>%d</td><td>%.1f</td><td>%d</td><td>%d</td><td>%d</td><td>%.1f</td><td>%.1f</td></tr>",  
-	$myrow['ai_ident_me'],$myrow['faction_me'],$myrow['faction_enemy'],$myrow['svn_release'],$myrow['win_percent'],$myrow['games'],$myrow['wins'],$myrow['losses'],$myrow['avg_win_turns'],$myrow['avg_loss_turns']);
+	$myrow['ai_ident_me'],$myrow['faction_me'],$myrow['faction_enemy'],$myrow['repo_release'],$myrow['win_percent'],$myrow['games'],$myrow['wins'],$myrow['losses'],$myrow['avg_win_turns'],$myrow['avg_loss_turns']);
 }
   ?>
 </table>

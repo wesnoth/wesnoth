@@ -81,7 +81,8 @@ After you got all the prerequisites, you need to setup the eclipse installation.
 
 \item In the list populated with items, select from the ``Modelling" category: ``Xtext SDK", and install it. Restart eclipse after that.
 
-\item For the plugin's source, checkout the folder ``umc\_dev" from the following SVN url: http://svn.gna.org/svn/wesnoth/trunk/utils/.
+\item For the plugin's source, checkout the folder ``umc\_dev" from
+  the Battle for Wesnoth repository.
 
 \item In Eclipse, right click in \textbf{Package Explorer/Navigator} and then select \textbf{Import - General - Existing projects into Workspace}
 
@@ -175,7 +176,7 @@ The plugin can be built as a zip archive (usually) for different operating syste
 
   \item If you want to build the plugin using the scripts, do the following:
   \begin{enumerate}
-    \item Go to the ``build" directory in the checked-out directory from the SVN.
+    \item Go to the ``build" directory in the repository checkout.
     \item The build is done via Scons.
     \item When launching the build first time you need to specify the ``eclipsedir" argument that specifies the path to a valid Eclipse + deltapack installation. The file you have previously downloaded contains this.
     \item You can invoke the build like: \textit{scons  eclipsedir=/path/to/eclipsedir}. After the first run, the path is cached and you won't need to specify it anymore.

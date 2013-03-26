@@ -16,6 +16,8 @@ except ImportError:
     print('Please install argparse by running "easy_install argparse"')
     sys.exit(1)
 
+# Where to get terrain images
+terrain_url = "http://svn.gna.org/svn/wesnoth/trunk/data/core/images/terrain/%s.png"
 
 def parse_terrain(data):
     """
@@ -66,7 +68,7 @@ def parse_terrain(data):
 | <code>%s</code>
 | %s
 """ % (
-"http://svn.gna.org/svn/wesnoth/trunk/data/core/images/terrain/%s.png" % (content['editor_image'] if 'editor_image' in content else content['symbol_image']),
+terrain_url % (content['editor_image'] if 'editor_image' in content else content['symbol_image']),
 content['editor_name'][4:-1] if 'editor_name' in content else content['name'][4:-1],
 content['string'].replace("# wmllint: ignore", "").replace("|", "&#124;"),
 content['aliasof'].replace("|", "&#124;") if 'aliasof' in content else "",

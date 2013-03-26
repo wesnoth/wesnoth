@@ -3,6 +3,8 @@
    Copyright (C) 2008 by Pauli Nieminen <paniemin@cc.hut.fi>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
+   Adapted for git and name changed in 2013 at git conversion time.
+
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License version 2
    or at your option any later version.
@@ -13,11 +15,11 @@
 */
 
 
-class SVNUpdater {
+class RepoUpdater {
 	private $revision;
 	function __construct()
 	{
-		$this->updateSVN();
+		$this->updateRepo();
 	}
 
 	public function getRevision()
@@ -25,23 +27,23 @@ class SVNUpdater {
 		return $this->revision;
 	}
 
-	private function updateSVN()
+	private function updateRepo()
 	{
 		$success = false;
 		$m = array();
 		$tries = 3;
 		while(!$success && $tries--)
 		{
-			$svnlog = shell_exec('svn up 2>&1');
+			shell_exec('git checkout 2>&1');
+			$gitversion = shell_exec('git rev-parse HEAD");
 			global $db;
 			if ($db->debug)
-				echo $svnlog;
-			$success = preg_match('/At revision ([0-9]*)\./m', $svnlog, $m);
+				echo $gitversion;
 			if (!$success && $tries)
 				sleep(60);
 		}
 		if ($success)
-			$this->revision = (int)$m[1];
+			$this->revision = $gitversion;
 		else
 			$this->revision = false;
 	}

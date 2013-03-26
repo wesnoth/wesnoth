@@ -1,3 +1,5 @@
+FIXME-GIT: this file will need to be updated
+
 This directory exists so that Subversion-based projects can share a single
 copy of the ``ez_setup`` bootstrap module for ``setuptools``, and have it
 automatically updated in their projects when ``setuptools`` is updated.

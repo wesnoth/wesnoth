@@ -6,6 +6,7 @@ then
 fi
 INSTALL_DIR=$1
 
+#FIXME-GIT: This needs to be updated
 svn export svn://svn.gna.org/svn/wesnoth/branches/resources/tests.wesnoth.org/ $INSTALL_DIR
 
 cd $INSTALL_DIR

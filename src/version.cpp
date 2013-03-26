@@ -47,7 +47,7 @@ version_info::version_info(const std::string& str)
 
 	//
 	// The breakpoint is where the "special" version component begins.
-	// For 1.1.2a it would at the index of the char 'a'. For 1.1.4+svn it is at '+'.
+	// For 1.1.2a it would at the index of the char 'a'. For 1.1.4+dev it is at '+'.
 	//
 	// For 1.5.2 it is at npos.
 	//
