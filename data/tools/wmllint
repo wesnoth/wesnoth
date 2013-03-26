@@ -66,8 +66,8 @@
 # who should be recognized in descriptions.  This will be useful,
 # for example, if your scenario follows a continue so there are
 # characters present who were not explicitly recalled.  It may
-# also be useful if you have wrapped unit-creation or recall markup in macros
-# and wmllint cannot recognize it.
+# also be useful if you have wrapped unit-creation or recall markup in
+# non-core macros and wmllint cannot recognize it.
 #
 # Similarly, it is possible to explicitly declare a unit's usage class
 # with a magic comment that looks like this:
@@ -1273,6 +1273,10 @@ def global_sanity_check(filename, lines):
                 lines[i] = lines[i].replace("{LOYAL_UNIT ", "{NAMED_LOYAL_UNIT ")
                 print '"%s", line %d: {LOYAL_UNIT -> {NAMED_LOYAL_UNIT -- 1.4 version of LOYAL_UNIT' \
                       % (filename, i+1)
+            # Auto-recognize the people in the {NAMED_*UNIT} macros.
+            named = re.search(r'^[^#]*{NAMED_[A-Z_]*UNIT +[0-9]+ +(\([^)}]*\)|"[^"}]*"|[^(" ][^ }]*) +([0-9]+|[^ ]*\$[^ ]*x[^ ]*) +([0-9]+|[^ ]*\$[^ ]*y[^ ]*) +(\([" ]*[^)}" ]+[^)}]*\)|"[^"}]+"|[^(" ][^ }]*) +[^} ]', lines[i])
+            if named:
+                present.append(named.group(4).strip('"() '))
         m = re.search("# *wmllint: recognize +(.*)", lines[i])
         if m:
             present.append(string_strip(m.group(1)).strip())
