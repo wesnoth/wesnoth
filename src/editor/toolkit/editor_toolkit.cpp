@@ -185,19 +185,9 @@ void editor_toolkit::redraw_toolbar()
 {
 	BOOST_FOREACH(mouse_action_map::value_type a, mouse_actions_) {
 		if (a.second->toolbar_button() != NULL) {
-			SDL_Rect r = a.second->toolbar_button()->location(gui_.screen_area());
-			SDL_Rect outline = create_rect(r.x - 2, r.y - 2, r.h + 4, r.w + 4);
-			//TODO comment or remove
-			//outline = intersect_rects(r, gui().screen_area());
-			surface screen = gui_.video().getSurface();
-			Uint32 color;
-			if (a.second == mouse_action_) {
-				color = SDL_MapRGB(screen->format, 0xFF, 0x00, 0x00);
-			} else {
-				color = SDL_MapRGB(screen->format, 0x00, 0x00, 0x00);
-			}
-			draw_rectangle(outline.x, outline.y, outline.w, outline.h, color, screen);
-			update_rect(outline);
+			const std::string& button_id = a.second->toolbar_button()->get_id();
+			gui::button* button = gui_.find_button(button_id);
+			button->set_check(a.second == mouse_action_);
 		}
 	}
 	toolbar_dirty_ = false;
