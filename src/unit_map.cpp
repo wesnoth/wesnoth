@@ -1,4 +1,3 @@
-/* $Id$ */
 /*
    Copyright (C) 2006 - 2009 by Rusty Russell <rusty@rustcorp.com.au>
    Copyright (C) 2010 - 2013 by Guillaume Melquiond <guillaume.melquiond@gmail.com>

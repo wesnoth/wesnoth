@@ -1,4 +1,3 @@
-/* $Id$ */
 /*
    Copyright (C) 2012 - 2013 by Étienne Simon <etienne.jl.simon@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/

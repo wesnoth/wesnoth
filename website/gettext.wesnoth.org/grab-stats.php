@@ -1,7 +1,6 @@
 <?php
 
 ////////////////////////////////////////////////////////////////////////////
-// $Id: grab-stats.php,v 1.3 2004/01/29 23:32:37 claudiuc Exp $
 //
 // Description: Grab GUI messages statistics
 //

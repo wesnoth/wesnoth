@@ -1,7 +1,6 @@
 <?php
 
 ////////////////////////////////////////////////////////////////////////////
-// $Id: grab-functions.php,v 1.4 2004/02/21 00:45:53 claudiuc Exp $
 //
 // Description: Common functions for GUI statistics grabbing program
 //

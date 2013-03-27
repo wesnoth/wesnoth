@@ -1,4 +1,3 @@
-/* $Id$ */
 /*
    Copyright (C) 2003 - 2013 by Jörg Hinrichs, refactored from various
    places formerly created by David White <dave@whitevine.net>

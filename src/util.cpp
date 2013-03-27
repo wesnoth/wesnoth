@@ -1,4 +1,3 @@
-/* $Id$ */
 /*
    Copyright (C) 2005 - 2013 by Philippe Plantier <ayin@anathas.org>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/

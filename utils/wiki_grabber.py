@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # vim: tabstop=4: shiftwidth=4: expandtab: softtabstop=4: autoindent:
-# $Id$
 
 """
    Copyright (C) 2007 - 2009 by Mark de Wever <koraq@xs4all.nl>

@@ -1,4 +1,3 @@
-/* $Id$ */
 /*
    Copyright (C) 2011 - 2013 by Sergey Popov <loonycyborg@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/

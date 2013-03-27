@@ -1,5 +1,4 @@
 /*
-** $Id: lparser.c,v 2.124 2011/12/02 13:23:56 roberto Exp $
 ** Lua Parser
 ** See Copyright Notice in lua.h
 */

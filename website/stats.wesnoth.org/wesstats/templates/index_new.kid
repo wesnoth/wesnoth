@@ -1,4 +1,3 @@
-<!-- $Id$ -->
 <!--
    Copyright (C) 2009 by Gregory Shikhman <cornmander@cornmander.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/

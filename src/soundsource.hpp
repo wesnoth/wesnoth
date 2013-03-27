@@ -1,4 +1,3 @@
-/* $Id$ */
 /*
    Copyright (C) 2006 - 2013 by Karol Nowak <grzywacz@sul.uni.lodz.pl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # vim: tabstop=4: shiftwidth=4: expandtab: softtabstop=4: autoindent:
-# $Id$
+#
 """
    Copyright (C) 2007 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/

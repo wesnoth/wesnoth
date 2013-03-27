@@ -1,5 +1,4 @@
 /*
-** $Id: luac.c,v 1.69 2011/11/29 17:46:33 lhf Exp $
 ** Lua compiler (saves bytecodes to files; also list bytecodes)
 ** See Copyright Notice in lua.h
 */
@@ -203,7 +202,6 @@ int main(int argc, char* argv[])
 }
 
 /*
-** $Id: print.c,v 1.68 2011/09/30 10:21:20 lhf Exp $
 ** print bytecodes
 ** See Copyright Notice in lua.h
 */

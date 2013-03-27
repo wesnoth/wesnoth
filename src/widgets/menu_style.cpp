@@ -1,4 +1,3 @@
-/* $Id$ */
 /*
    wesnoth menu styles Copyright (C) 2006 - 2013 by Patrick Parker <patrick_x99@hotmail.com>
    wesnoth menu Copyright (C) 2003-5 by David White <dave@whitevine.net>

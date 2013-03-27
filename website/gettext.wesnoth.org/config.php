@@ -1,7 +1,6 @@
 <?php
 
 ////////////////////////////////////////////////////////////////////////////
-// $Id: grab-config.php,v 1.4 2003/08/12 20:01:30 claudiuc Exp $
 //
 // Description: Configuration file for GUI statistics grabbing program
 //

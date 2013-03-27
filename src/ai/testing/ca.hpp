@@ -1,4 +1,3 @@
-/* $Id$ */
 
 /*
    Copyright (C) 2009 - 2013 by Yurii Chernyi <terraninfo@terraninfo.net>

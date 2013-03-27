@@ -1,4 +1,3 @@
-/* $Id$ */
 /*
    Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
    Copyright (C) 2009 - 2013 by Tomasz Sniatowski <kailoran@gmail.com>

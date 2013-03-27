@@ -1,5 +1,4 @@
 /*
-** $Id: ldblib.c,v 1.131 2011/10/24 14:54:05 roberto Exp $
 ** Interface from Lua to its debug API
 ** See Copyright Notice in lua.h
 */

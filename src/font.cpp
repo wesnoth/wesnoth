@@ -1,4 +1,3 @@
-/* $Id$ */
 /* vim:set encoding=utf-8: */
 /*
    Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>

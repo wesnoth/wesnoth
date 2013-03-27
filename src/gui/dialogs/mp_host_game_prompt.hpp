@@ -1,4 +1,3 @@
-/* $Id$ */
 /*
    Copyright (C) 2008 - 2013 by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
    Copyright (C) 2012 - 2013 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>

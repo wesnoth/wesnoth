@@ -1,4 +1,3 @@
-/* $Id: mp_options.cpp 55420 2012 - 2013-09-26 14:23:00Z lipk $ */
 /*
    Copyright (C) 2012 - 2013 by Boldizsár Lipka <lipkab@zoho.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/

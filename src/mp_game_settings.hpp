@@ -1,4 +1,3 @@
-/* $Id$ */
 /*
    Copyright (C) 2003 - 2013 by Jörg Hinrichs
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/

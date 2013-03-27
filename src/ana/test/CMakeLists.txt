@@ -1,4 +1,3 @@
-# $Id$
 
 find_package(SDL_net REQUIRED)
 

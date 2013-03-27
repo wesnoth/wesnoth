@@ -1,4 +1,3 @@
-/* $Id$ */
 /*
    Copyright (C) 2004 by Philippe Plantier <ayin@anathas.org>
    Copyright (C) 2005 - 2013 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
