@@ -255,6 +255,12 @@ void editor_palette<Item>::draw(bool)
 	if(ending > num_items() ){
 		ending = num_items();
 	}
+
+	gui::button* upscroll_button = gui_.find_button("upscroll-button-editor");
+	upscroll_button->enable(starting != 0);
+	gui::button* downscroll_button = gui_.find_button("downscroll-button-editor");
+	downscroll_button->enable(ending != num_items());
+
 	for(unsigned int counter = starting; counter < ending; counter++){
 
 		const int counter_from_zero = counter - starting;
