@@ -17,7 +17,7 @@ except ImportError:
     sys.exit(1)
 
 # Where to get terrain images
-terrain_url = "http://svn.gna.org/svn/wesnoth/trunk/data/core/images/terrain/%s.png"
+terrain_url = "https://sourceforge.net/p/wesnoth/code/ci/master/tree/data/core/images/terrain/%s.png?format=raw"
 
 def parse_terrain(data):
     """
