@@ -100,6 +100,8 @@ void brush_bar::draw(bool force) {
 	surface screen = gui_.video().getSurface();
 	for (size_t i = 0; i < brushes_.size(); i++) {
 		std::string filename = brushes_[i].image();
+		filename += ( i == selected_brush_size() ?
+				"-pressed.png" : ".png" );
 		surface image(image::get_image(filename));
 		if (image == NULL) {
 			ERR_ED << "Image " << filename << " not found." << std::endl;
@@ -111,12 +113,6 @@ void brush_bar::draw(bool force) {
 		}
 		SDL_Rect dstrect = create_rect(x, gui_.brush_bar_area().y, image->w, image->h);
 		sdl_blit(image, NULL, screen, &dstrect);
-		const Uint32 color = i == selected_brush_size() ?
-			SDL_MapRGB(screen->format,0xFF,0x00,0x00) :
-			SDL_MapRGB(screen->format,0x00,0x00,0x00);
-		//TODO fendrin
-		//draw_rectangle(dstrect.x -1, dstrect.y -1, image->w +2, image->h+2, color, screen);
-		draw_rectangle(dstrect.x, dstrect.y, image->w, image->h, color, screen);
 		x += image->w + brush_padding_;
 	}
 	update_rect(loc);
