@@ -22,27 +22,52 @@
 #include "editor_palettes.hpp"
 
 namespace editor {
-	static const std::string empty_string = "";
 
 /** Empty palette */
-class empty_palette : public editor_palette<unit_type> {
+class empty_palette : public common_palette {
+
 public:
 
-	empty_palette(editor_display &gui, const config& cfg,
-			mouse_action** active_mouse_action)
-	: editor_palette<unit_type>(gui, cfg, 0, 0, active_mouse_action) {};
+	empty_palette(display& gui) : gui_(gui), empty_() {};
 
-	// think about removing it
-	virtual void setup(const config& /*cfg*/) {};
+	//event handling
+	virtual bool left_mouse_click(const int /*x*/, const int /*y*/) { return false;};
+	virtual bool right_mouse_click(const int /*x*/, const int /*y*/) { return false;};
 
-	bool scroll_up() { return false; };
-	bool scroll_down() { return false; };
+	virtual bool scroll_up() { return false;};
+	virtual bool scroll_down() { return false;};
+
+	//drawing
+	virtual void adjust_size(const SDL_Rect& /*target*/) {};
+	virtual void draw(bool) {
+		gui::button* upscroll_button = gui_.find_button("upscroll-button-editor");
+		upscroll_button->hide(true);
+		gui::button* downscroll_button = gui_.find_button("downscroll-button-editor");
+		downscroll_button->hide(true);
+		gui::button* palette_menu_button = gui_.find_button("menu-editor-terrain");
+		palette_menu_button->hide(true);
+	};
+
+	//group
+	virtual void set_group(size_t /*index*/) {};
+	virtual void next_group() {};
+	virtual void prev_group() {};
+	virtual const config active_group_report() { return config();};
+	virtual const std::vector<item_group>& get_groups() const { return empty_; };
+
+	/** Menu expanding for palette group list */
+	virtual void expand_palette_groups_menu(std::vector<std::string>& /*items*/) {};
+
+    //item
+	virtual size_t num_items() {return 0;};
+	virtual size_t start_num() {return 0;};
+	virtual void set_start_item(size_t /*index*/) {};
+	virtual void swap() {};
 
 private:
-	virtual const std::string& get_id(const unit_type& /*terrain*/) { return empty_string; };
+	display& gui_;
+	std::vector<item_group> empty_;
 
-	virtual void draw_item(SDL_Rect& /*dstrect*/, const unit_type& /*terrain*/,
-			std::stringstream& /*tooltip_text*/) {};
 };
 
 

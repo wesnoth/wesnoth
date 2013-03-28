@@ -28,12 +28,9 @@
 
 namespace editor {
 
-//TODO move to the palette
 template<class Item>
 void editor_palette<Item>::expand_palette_groups_menu(std::vector<std::string>& items)
 {
-	//TODO
-	//active_menu_ = editor::PALETTE;
 	for (unsigned int i = 0; i < items.size(); ++i) {
 		if (items[i] == "editor-palette-groups") {
 			items.erase(items.begin() + i);
@@ -144,7 +141,6 @@ void editor_palette<Item>::set_group(const std::string& id)
 }
 template void editor_palette<t_translation::t_terrain>::set_group(const std::string& id);
 template void editor_palette<unit_type>::set_group(const std::string& id);
-//template void editor_palette<void*>::set_group(const std::string& id);
 
 template<class Item>
 void editor_palette<Item>::set_group(size_t index)
@@ -154,7 +150,6 @@ void editor_palette<Item>::set_group(size_t index)
 }
 template void editor_palette<t_translation::t_terrain>::set_group(size_t index);
 template void editor_palette<unit_type>::set_group(size_t index);
-//template void editor_palette<void*>::set_group(size_t index);
 
 template<class Item>
 size_t editor_palette<Item>::active_group_index()
@@ -170,7 +165,6 @@ size_t editor_palette<Item>::active_group_index()
 }
 template size_t editor_palette<t_translation::t_terrain>::active_group_index();
 template size_t editor_palette<unit_type>::active_group_index();
-//template size_t editor_palette<void*>::active_group_index();
 
 template<class Item>
 const config editor_palette<Item>::active_group_report()
@@ -188,7 +182,6 @@ const config editor_palette<Item>::active_group_report()
 }
 template const config editor_palette<t_translation::t_terrain>::active_group_report();
 template const config editor_palette<unit_type>::active_group_report();
-//template const config editor_palette<void*>::active_group_report();
 
 template<class Item>
 void editor_palette<Item>::adjust_size(const SDL_Rect& target)
@@ -203,7 +196,6 @@ void editor_palette<Item>::adjust_size(const SDL_Rect& target)
 }
 template void editor_palette<t_translation::t_terrain>::adjust_size(const SDL_Rect& target);
 template void editor_palette<unit_type>::adjust_size(const SDL_Rect& target);
-//template void editor_palette<void*>::adjust_size(const SDL_Rect& target);
 
 template<class Item>
 void editor_palette<Item>::select_fg_item(std::string item_id)
@@ -214,7 +206,6 @@ void editor_palette<Item>::select_fg_item(std::string item_id)
 }
 template void editor_palette<t_translation::t_terrain>::select_fg_item(std::string terrain_id);
 template void editor_palette<unit_type>::select_fg_item(std::string unit_id);
-//template void editor_palette<void*>::select_fg_item(std::string unit_id);
 
 template<class Item>
 void editor_palette<Item>::select_bg_item(std::string item_id)
@@ -225,7 +216,6 @@ void editor_palette<Item>::select_bg_item(std::string item_id)
 }
 template void editor_palette<t_translation::t_terrain>::select_bg_item(std::string terrain_id);
 template void editor_palette<unit_type>::select_bg_item(std::string unit_id);
-//template void editor_palette<void*>::select_bg_item(std::string unit_id);
 
 template<class Item>
 void editor_palette<Item>::swap()
@@ -234,7 +224,6 @@ void editor_palette<Item>::swap()
 }
 template void editor_palette<t_translation::t_terrain>::swap();
 template void editor_palette<unit_type>::swap();
-//template void editor_palette<void*>::swap();
 
 template<class Item>
 size_t editor_palette<Item>::num_items()
@@ -318,7 +307,6 @@ void editor_palette<Item>::draw(bool)
 }
 template void editor_palette<t_translation::t_terrain>::draw(bool);
 template void editor_palette<unit_type>::draw(bool);
-//template void editor_palette<void*>::draw(bool);
 
 template<class Item>
 int editor_palette<Item>::tile_selected(const int x, const int y) const

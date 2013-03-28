@@ -30,7 +30,7 @@ palette_manager::palette_manager(editor_display& gui, const config& cfg
 		  mouse_action_(active_mouse_action),
 		  terrain_palette_(new terrain_palette(gui, cfg, active_mouse_action)),
 		  unit_palette_(new unit_palette(gui, cfg, active_mouse_action)),
-		  empty_palette_(new empty_palette(gui, cfg, active_mouse_action))
+		  empty_palette_(new empty_palette(gui))
 {
 	unit_palette_->setup(cfg);
 	terrain_palette_->setup(cfg);
@@ -107,6 +107,13 @@ void palette_manager::draw(bool force)
 	const SDL_Rect &loc = location();
 
 	tooltips::clear_tooltips(loc);
+
+	gui::button* upscroll_button = gui_.find_button("upscroll-button-editor");
+	upscroll_button->hide(false);
+	gui::button* downscroll_button = gui_.find_button("downscroll-button-editor");
+	downscroll_button->hide(false);
+	gui::button* palette_menu_button = gui_.find_button("menu-editor-terrain");
+	palette_menu_button->hide(false);
 
 	active_palette().draw(force);
 
