@@ -168,7 +168,7 @@ def formaltype(f):
         ftype = "terrain_pattern"
     elif f.startswith("TERRAIN") or f.endswith("TERRAIN"):
         ftype = "terrain_code"
-    elif f in ("NAME", "NAMESPACE", "VAR", "IMAGESTEM", "ID", "FLAG", "BUILDER") or f.endswith("_NAME") or f.endswith("_ID") or f.endswith("_VAR"):
+    elif f in ("NAME", "NAMESPACE", "VAR", "IMAGESTEM", "ID", "FLAG", "BUILDER") or f.endswith("_NAME") or f.endswith("_ID") or f.endswith("_VAR") or f.endswith("_OVERLAY"):
         ftype = "name"
     elif f in ("ID_STRING", "NAME_STRING", "DESCRIPTION", "IPF"):
         ftype = "optional_string"
