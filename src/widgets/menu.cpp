@@ -192,19 +192,20 @@ bool menu::basic_sorter::less(int column, const item& row1, const item& row2) co
 }
 
 menu::menu(CVideo& video, const std::vector<std::string>& items,
-           bool click_selects, int max_height, int max_width,
-		   const sorter* sorter_obj, style *menu_style, const bool auto_join)
-        : scrollarea(video, auto_join), silent_(false),
-          max_height_(max_height), max_width_(max_width), max_items_(-1), item_height_(-1),
-		  heading_height_(-1),
-	  cur_help_(-1,-1), help_string_(-1),
-	  selected_(0), click_selects_(click_selects), out_(false),
-	  previous_button_(true), show_result_(false),
-	  double_clicked_(false),
-	  num_selects_(true),
-	  ignore_next_doubleclick_(false),
-	  last_was_doubleclick_(false), use_ellipsis_(false),
-	  sorter_(sorter_obj), sortby_(-1), sortreversed_(false), highlight_heading_(-1)
+		bool click_selects, int max_height, int max_width,
+		const sorter* sorter_obj, style *menu_style, const bool auto_join)
+: scrollarea(video, auto_join), silent_(false),
+  max_height_(max_height), max_width_(max_width),
+  max_items_(-1), item_height_(-1),
+  heading_height_(-1),
+  cur_help_(-1,-1), help_string_(-1),
+  selected_(0), click_selects_(click_selects), out_(false),
+  previous_button_(true), show_result_(false),
+  double_clicked_(false),
+  num_selects_(true),
+  ignore_next_doubleclick_(false),
+  last_was_doubleclick_(false), use_ellipsis_(false),
+  sorter_(sorter_obj), sortby_(-1), sortreversed_(false), highlight_heading_(-1)
 {
 	style_ = (menu_style) ? menu_style : &default_style;
 	style_->init();
