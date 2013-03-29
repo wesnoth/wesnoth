@@ -55,6 +55,7 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 	surface pressed_image(image::get_image("buttons/" + button_image_name + "-pressed.png"));
 	surface active_image(image::get_image("buttons/" + button_image_name + "-active.png"));
 	surface pressed_active_image;
+	surface touched_image;
 
 	if (pressed_image.null())
 		pressed_image.assign(button_image);
@@ -63,9 +64,14 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 		active_image.assign(button_image);
 
 	if (type == TYPE_CHECK) {
+		touched_image.assign(image::get_image("buttons/" + button_image_name + "-touched.png"));
+		if (touched_image.null())
+			touched_image.assign(pressed_image);
+
 		pressed_active_image.assign(image::get_image("buttons/" + button_image_name + "-active-pressed.png"));
 		if (pressed_active_image.null())
 			pressed_active_image.assign(pressed_image);
+		//touchedImage_.assign
 	}
 
 	if (button_image.null()) {
@@ -90,6 +96,7 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 		activeImage_.assign(scale_surface(active_image,button_image->w,button_image->h));
 		if (type == TYPE_CHECK)
 			pressedActiveImage_.assign(scale_surface(pressed_active_image, button_image->w, button_image->h));
+			touchedImage_.assign(scale_surface(touched_image, button_image->w, button_image->h));
 	}
 
 	if (type_ == TYPE_IMAGE){
@@ -211,6 +218,10 @@ void button::draw_contents()
 	case PRESSED_ACTIVE:
 		image = pressedActiveImage_;
 		break;
+	case TOUCHED_NORMAL:
+	case TOUCHED_PRESSED:
+		image = touchedImage_;
+		break;
 	default:
 		break;
 	}
@@ -283,18 +294,46 @@ void button::mouse_motion(SDL_MouseMotionEvent const &event)
 			state_ = PRESSED_ACTIVE;
 	} else {
 		// the cursor is not over the widget
-		if (state_ == PRESSED_ACTIVE)
-			state_ = PRESSED;
-		else if ((type_ != TYPE_CHECK && type_ != TYPE_IMAGE) || state_ != PRESSED)
-			state_ = NORMAL;
+
+		if (type_ == TYPE_CHECK) {
+
+			switch (state_) {
+				case TOUCHED_NORMAL:
+					state_ = NORMAL;
+					break;
+				case TOUCHED_PRESSED:
+					state_ = PRESSED;
+					break;
+				case PRESSED_ACTIVE:
+					state_ = PRESSED;
+					break;
+				case ACTIVE:
+					state_ = NORMAL;
+					break;
+				default:
+					break;
+			}
+		} else {
+			if (state_ == PRESSED_ACTIVE)
+				state_ = PRESSED;
+			else if ((type_ != TYPE_IMAGE) || state_ != PRESSED)
+				state_ = NORMAL;
+		}
 	}
 }
 
 void button::mouse_down(SDL_MouseButtonEvent const &event)
 {
-	if (hit(event.x, event.y) && event.button == SDL_BUTTON_LEFT && type_ != TYPE_CHECK){
-		state_ = PRESSED;
-		sound::play_UI_sound(game_config::sounds::button_press);
+	if (hit(event.x, event.y) && event.button == SDL_BUTTON_LEFT) { //&& type_ != TYPE_CHECK){
+		if (type_ == TYPE_CHECK) {
+			if (state_ == PRESSED_ACTIVE)
+				state_ = TOUCHED_PRESSED;
+			else if (state_ == ACTIVE)
+				state_ = TOUCHED_NORMAL;
+		} else {
+			state_ = PRESSED;
+			sound::play_UI_sound(game_config::sounds::button_press);
+		}
 	}
 }
 
@@ -310,9 +349,21 @@ void button::mouse_up(SDL_MouseButtonEvent const &event)
 	// the user has stopped pressing the mouse left button while on the widget
 	switch (type_) {
 	case TYPE_CHECK:
-		state_ = state_ == ACTIVE ? PRESSED_ACTIVE : ACTIVE;
-		pressed_ = true;
-		sound::play_UI_sound(game_config::sounds::checkbox_release);
+
+		switch (state_) {
+			case TOUCHED_NORMAL:
+				state_ = PRESSED_ACTIVE;
+				pressed_ = true;
+				sound::play_UI_sound(game_config::sounds::checkbox_release);
+				break;
+			case TOUCHED_PRESSED:
+				state_ = ACTIVE;
+				pressed_ = false;
+				sound::play_UI_sound(game_config::sounds::checkbox_release);
+				break;
+			default:
+				break;
+		}
 		break;
 	case TYPE_PRESS:
 		if (state_ == PRESSED) {
