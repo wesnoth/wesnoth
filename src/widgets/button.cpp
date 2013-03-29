@@ -184,7 +184,7 @@ void button::set_active(bool active)
 
 bool button::checked() const
 {
-	return state_ == PRESSED || state_ == PRESSED_ACTIVE;
+	return state_ == PRESSED || state_ == PRESSED_ACTIVE || state_ == TOUCHED_PRESSED;
 }
 
 void button::enable(bool new_val)
@@ -313,12 +313,8 @@ void button::mouse_motion(SDL_MouseMotionEvent const &event)
 				default:
 					break;
 			}
-		} else {
-			if (state_ == PRESSED_ACTIVE)
-				state_ = PRESSED;
-			else if ((type_ != TYPE_IMAGE) || state_ != PRESSED)
+		} else if ((type_ != TYPE_IMAGE) || state_ != PRESSED)
 				state_ = NORMAL;
-		}
 	}
 }
 
@@ -346,6 +342,7 @@ void button::mouse_up(SDL_MouseButtonEvent const &event)
 {
 	if (!(hit(event.x, event.y) && event.button == SDL_BUTTON_LEFT))
 		return;
+
 	// the user has stopped pressing the mouse left button while on the widget
 	switch (type_) {
 	case TYPE_CHECK:
@@ -358,7 +355,7 @@ void button::mouse_up(SDL_MouseButtonEvent const &event)
 				break;
 			case TOUCHED_PRESSED:
 				state_ = ACTIVE;
-				pressed_ = false;
+				pressed_ = true;
 				sound::play_UI_sound(game_config::sounds::checkbox_release);
 				break;
 			default:
@@ -415,7 +412,7 @@ bool button::pressed()
 		pressed_ = false;
 		return res;
 	} else
-		return state_ == PRESSED || state_ == PRESSED_ACTIVE;
+		return state_ == PRESSED || state_ == PRESSED_ACTIVE || state_ == TOUCHED_PRESSED;
 }
 
 }
