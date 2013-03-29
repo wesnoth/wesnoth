@@ -48,6 +48,10 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 		button_image_name = "button";
 	} else if(button_image_name.empty() && type == TYPE_CHECK) {
 		button_image_name = "checkbox";
+	} else if(button_image_name.empty() && type == TYPE_RADIO) {
+		//TODO
+		//button_image_name = "radiobox";
+		button_image_name = "checkbox";
 	}
 
 	const std::string button_image_file = "buttons/" + button_image_name + ".png";
@@ -63,7 +67,7 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 	if (active_image.null())
 		active_image.assign(button_image);
 
-	if (type == TYPE_CHECK) {
+	if (type == TYPE_CHECK || type == TYPE_RADIO) {
 		touched_image.assign(image::get_image("buttons/" + button_image_name + "-touched.png"));
 		if (touched_image.null())
 			touched_image.assign(pressed_image);
@@ -86,7 +90,7 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 		set_label(label);
 	}
 
-	if(type == TYPE_PRESS) {
+	if(type_ == TYPE_PRESS) {
 		image_.assign(scale_surface(button_image,location().w,location().h));
 		pressedImage_.assign(scale_surface(pressed_image,location().w,location().h));
 		activeImage_.assign(scale_surface(active_image,location().w,location().h));
@@ -94,7 +98,7 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 		image_.assign(scale_surface(button_image,button_image->w,button_image->h));
 		pressedImage_.assign(scale_surface(pressed_image,button_image->w,button_image->h));
 		activeImage_.assign(scale_surface(active_image,button_image->w,button_image->h));
-		if (type == TYPE_CHECK)
+		if (type_ == TYPE_CHECK || type_ == TYPE_RADIO)
 			pressedActiveImage_.assign(scale_surface(pressed_active_image, button_image->w, button_image->h));
 			touchedImage_.assign(scale_surface(touched_image, button_image->w, button_image->h));
 	}
@@ -162,7 +166,7 @@ void button::calculate_size()
 
 void button::set_check(bool check)
 {
-	if (type_ != TYPE_CHECK)
+	if (type_ != TYPE_CHECK && type_ != TYPE_RADIO)
 		return;
 	STATE new_state = check ? PRESSED : NORMAL;
 	if (state_ != new_state) {
@@ -231,7 +235,7 @@ void button::draw_contents()
 	const int texty = loc.y + loc.h / 2 - textRect_.h / 2 + offset;
 	int textx;
 
-	if (type_ != TYPE_CHECK)
+	if (type_ != TYPE_CHECK && type_ != TYPE_RADIO)
 		textx = loc.x + image->w / 2 - textRect_.w / 2 + offset;
 	else {
 		clipArea.w += image_w + checkbox_horizontal_padding;
@@ -295,7 +299,7 @@ void button::mouse_motion(SDL_MouseMotionEvent const &event)
 	} else {
 		// the cursor is not over the widget
 
-		if (type_ == TYPE_CHECK) {
+		if (type_ == TYPE_CHECK || type_ == TYPE_RADIO) {
 
 			switch (state_) {
 				case TOUCHED_NORMAL:
@@ -320,8 +324,8 @@ void button::mouse_motion(SDL_MouseMotionEvent const &event)
 
 void button::mouse_down(SDL_MouseButtonEvent const &event)
 {
-	if (hit(event.x, event.y) && event.button == SDL_BUTTON_LEFT) { //&& type_ != TYPE_CHECK){
-		if (type_ == TYPE_CHECK) {
+	if (hit(event.x, event.y) && event.button == SDL_BUTTON_LEFT) {
+		if (type_ == TYPE_CHECK || type_ == TYPE_RADIO) {
 			if (state_ == PRESSED_ACTIVE)
 				state_ = TOUCHED_PRESSED;
 			else if (state_ == ACTIVE)
@@ -360,6 +364,13 @@ void button::mouse_up(SDL_MouseButtonEvent const &event)
 				break;
 		}
 		if (pressed_) sound::play_UI_sound(game_config::sounds::checkbox_release);
+		break;
+	case TYPE_RADIO:
+		if (state_ == TOUCHED_NORMAL) {
+			state_ = PRESSED_ACTIVE;
+			pressed_ = true;
+			sound::play_UI_sound(game_config::sounds::checkbox_release);
+		}
 		break;
 	case TYPE_PRESS:
 		if (state_ == PRESSED) {

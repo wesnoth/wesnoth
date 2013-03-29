@@ -821,6 +821,7 @@ gui::button::TYPE display::string_to_button_type(std::string type)
 	gui::button::TYPE res = gui::button::TYPE_PRESS;
 	if (type == "checkbox") { res = gui::button::TYPE_CHECK; }
 	else if (type == "image") { res = gui::button::TYPE_IMAGE; }
+	else if (type == "radiobox") { res = gui::button::TYPE_RADIO; }
 	return res;
 }
 
