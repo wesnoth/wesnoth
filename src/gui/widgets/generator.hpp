@@ -247,8 +247,8 @@ public:
 	/** Inherited from twidget. */
 	virtual void request_reduce_height(const unsigned maximum_height) = 0;
 
-	/** Inherited from twidget. */
-	virtual tpoint calculate_best_size() const = 0;
+	/** See @ref twidget::calculate_best_size. */
+	virtual tpoint calculate_best_size() const OVERRIDE = 0;
 
 	/** Inherited from twidget. */
 	virtual void place(const tpoint& origin, const tpoint& size) = 0;

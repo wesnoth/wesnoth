@@ -223,8 +223,8 @@ public:
 
 private:
 
-	/** Inherited from twidget. */
-	tpoint calculate_best_size() const;
+	/** See @ref twidget::calculate_best_size. */
+	virtual tpoint calculate_best_size() const OVERRIDE;
 public:
 
 	/** Inherited from twidget. */

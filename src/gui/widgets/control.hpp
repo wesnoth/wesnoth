@@ -153,8 +153,8 @@ public:
 	virtual void request_reduce_width(const unsigned maximum_width) OVERRIDE;
 
 protected:
-	/** Inherited from twidget. */
-	tpoint calculate_best_size() const;
+	/** See @ref twidget::calculate_best_size. */
+	virtual tpoint calculate_best_size() const OVERRIDE;
 public:
 
 	/** Inherited from twidget. */

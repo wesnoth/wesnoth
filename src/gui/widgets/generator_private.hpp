@@ -191,12 +191,8 @@ struct thorizontal_list
 	{
 	}
 
-	/**
-	 * Calculates the best size for the generator.
-	 *
-	 * @return                    The best size,
-	 */
-	tpoint calculate_best_size() const;
+	/** See @ref twidget::calculate_best_size. */
+	virtual tpoint calculate_best_size() const OVERRIDE;
 
 	/**
 	 * Sets the size of the generator.
@@ -278,8 +274,8 @@ struct tvertical_list
 	{
 	}
 
-	/** See thorizontal_list::calculate_best_size(). */
-	tpoint calculate_best_size() const;
+	/** See @ref twidget::calculate_best_size. */
+	virtual tpoint calculate_best_size() const OVERRIDE;
 
 	/** See thorizontal_list::place(). */
 	void place(const tpoint& origin, const tpoint& size);
@@ -354,9 +350,11 @@ struct tmatrix
 	{
 	}
 
-	/** See thorizontal_list::calculate_best_size(). */
-	tpoint calculate_best_size() const
-		{ ERROR_LOG(false); }
+	/** See @ref twidget::calculate_best_size. */
+	virtual tpoint calculate_best_size() const OVERRIDE
+	{
+		ERROR_LOG(false);
+	}
 
 	/** See thorizontal_list::place(). */
 	void place(const tpoint& /*origin*/, const tpoint& /*size*/)
@@ -418,8 +416,8 @@ struct tindependent
 	/** See thorizontal_list::request_reduce_height. */
 	virtual void request_reduce_height(const unsigned maximum_height);
 
-	/** See thorizontal_list::calculate_best_size(). */
-	tpoint calculate_best_size() const;
+	/** See @ref twidget::calculate_best_size. */
+	virtual tpoint calculate_best_size() const OVERRIDE;
 
 	/** See thorizontal_list::place(). */
 	void place(const tpoint& origin, const tpoint& size);
@@ -775,8 +773,8 @@ public:
 		placement::request_reduce_height(maximum_height);
 	}
 
-	/** Inherited from tgenerator_. */
-	tpoint calculate_best_size() const
+	/** See @ref twidget::calculate_best_size. */
+	virtual tpoint calculate_best_size() const OVERRIDE
 	{
 		return placement::calculate_best_size();
 	}

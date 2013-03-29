@@ -227,7 +227,8 @@ private:
 	void impl_populate_dirty_list(twindow& caller,
 			const std::vector<twidget*>& call_stack);
 
-	tpoint calculate_best_size() const;
+	/** See @ref twidget::calculate_best_size. */
+	virtual tpoint calculate_best_size() const OVERRIDE;
 
 	bool disable_click_dismiss() const { return true; }
 

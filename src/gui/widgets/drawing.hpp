@@ -38,12 +38,8 @@ public:
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
 private:
-	/** Inherited from tcontrol. */
-	tpoint calculate_best_size() const
-	{
-		return best_size_ != tpoint(0, 0)
-			? best_size_ : tcontrol::calculate_best_size();
-	}
+	/** See @ref twidget::calculate_best_size. */
+	virtual tpoint calculate_best_size() const OVERRIDE;
 public:
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/

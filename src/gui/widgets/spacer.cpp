@@ -27,6 +27,13 @@ namespace gui2 {
 
 REGISTER_WIDGET(spacer)
 
+tpoint tspacer::calculate_best_size() const
+{
+	return best_size_ != tpoint(0, 0)
+			? best_size_
+			: tcontrol::calculate_best_size();
+}
+
 const std::string& tspacer::get_control_type() const
 {
 	static const std::string type = "spacer";
