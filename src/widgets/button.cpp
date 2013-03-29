@@ -351,16 +351,15 @@ void button::mouse_up(SDL_MouseButtonEvent const &event)
 			case TOUCHED_NORMAL:
 				state_ = PRESSED_ACTIVE;
 				pressed_ = true;
-				sound::play_UI_sound(game_config::sounds::checkbox_release);
 				break;
 			case TOUCHED_PRESSED:
 				state_ = ACTIVE;
 				pressed_ = true;
-				sound::play_UI_sound(game_config::sounds::checkbox_release);
 				break;
 			default:
 				break;
 		}
+		if (pressed_) sound::play_UI_sound(game_config::sounds::checkbox_release);
 		break;
 	case TYPE_PRESS:
 		if (state_ == PRESSED) {
