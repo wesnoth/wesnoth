@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2013-03-16 23:25+0100\n"
-"PO-Revision-Date: 2012-01-27 22:37+0700\n"
+"PO-Revision-Date: 2012-12-31 00:00+0700\n"
 "Last-Translator: Yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #. [time]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:523
@@ -106,8 +107,8 @@ msgstr ""
 "Memampukan unit ini mengobati unit-unit sekutu disebelahnya pada mulai ronde "
 "kita.\n"
 "\n"
-"Unit yang diobati oleh dukun ini akan diobati sampai maksimum 4 darah per "
-"ronde, atau menyetop racun berpengaruh pada ronde itu.\n"
+"Unit yang diobati oleh penyembuh ini akan diobati sampai maksimum 4 darah "
+"per ronde, atau menyetop racun berpengaruh pada ronde itu.\n"
 "Unit yang keracunan tidak bisa disembuhkan oleh dukun, dan harus mencari "
 "perawatan di desa atau dari unit yang bisa menyembuhkan."
 
@@ -140,8 +141,8 @@ msgstr ""
 "Unit ini menyampurkan obat daun-daunan dengan sihir untuk mengobati unit "
 "lain lebih cepat dari yang biasanya mungkin di medan perang.\n"
 "\n"
-"Unit yang diobati oleh dukun ini akan diobati sampai maksimum 8 darah per "
-"ronde, atau menyetop racun berpengaruh pada ronde itu.\n"
+"Unit yang diobati oleh penyembuh ini akan diobati sampai maksimum 8 darah "
+"per ronde, atau menyetop racun berpengaruh pada ronde itu.\n"
 "Unit yang keracunan tidak bisa disembuhkan oleh dukun, dan harus mencari "
 "perawatan di desa atau dari unit yang bisa menyembuhkan."
 
@@ -527,7 +528,7 @@ msgid ""
 "text='aerie'</ref> that recurs every <ref>dst='breeding_cycle' "
 "text='breeding cycle'</ref>. See <ref>dst='swarm' text='Swarm'</ref>"
 msgstr ""
-"Para <ref>dst='flight' text='flight'</ref> untuk seorang drake baru "
+" Para <ref>dst='flight' text='flight'</ref> untuk seorang drake baru "
 "<ref>dst='aerie' text='aerie'</ref> yang berulang setiap "
 "<ref>dst='breeding_cycle' text='siklus perkembangbiakan'</ref>. Lihat "
 "<ref>dst='swarm' text='Swarm'</ref>"
@@ -1498,7 +1499,7 @@ msgstr ""
 #. [topic]: id=orbs
 #: data/core/help.cfg:180
 msgid " green if it hasn’t moved this turn,"
-msgstr "hijau jika ia belum bergerak di giliran ini,"
+msgstr " hijau jika ia belum bergerak di giliran ini,"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:181
@@ -1512,7 +1513,7 @@ msgstr ""
 msgid ""
 " red if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
-"merah jika ia tidak dapat lagi bergerak atau menyerang, atau pemain "
+" merah jika ia tidak dapat lagi bergerak atau menyerang, atau pemain "
 "mengakhiri giliran unit."
 
 #. [topic]: id=orbs
@@ -3502,6 +3503,11 @@ msgid ""
 "'m' first to open the chat line).\n"
 "\n"
 msgstr ""
+"Perintah-perintah ini dapat dikeluarkan melalui saluran perintah dengan "
+"menambahkan didepannya dengan ':' (seperti ditunjukkan disini) atau melalui "
+"obrolan dengan menambahkan didepannya dengan '/' (tekan 'm' terlebih dulu "
+"untuk membuka saluran obrolan).\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:797
@@ -4479,30 +4485,30 @@ msgid ""
 " Spirits have very unusual resistances to damage, and move quite slowly over "
 "open water."
 msgstr ""
-"Roh-roh memiliki daya tahan yang sangat aneh, dan bergerak lumayan lambat di "
-"atas perairan."
+" Roh-roh memiliki daya tahan yang sangat aneh, dan bergerak lumayan lambat "
+"di atas perairan."
 
 #: data/core/macros/special-notes.cfg:11
 msgid ""
 " This unit’s arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
 msgstr ""
-"Serangan misterius unit ini melukai makhluk-makhluk magis dengan luar biasa, "
-"dan bahkan lumayan ke makhluk-makhluk biasa."
+" Serangan misterius unit ini melukai makhluk-makhluk magis dengan luar "
+"biasa, dan bahkan lumayan ke makhluk-makhluk biasa."
 
 #: data/core/macros/special-notes.cfg:14
 msgid " This unit is capable of basic healing."
-msgstr "Unit ini sanggup mengobati."
+msgstr " Unit ini menguasai pengobatan dasar."
 
 #: data/core/macros/special-notes.cfg:17
 msgid " This unit is capable of rapid healing."
-msgstr " Unit ini sanggup mengobati."
+msgstr " Unit ini menguasai pengobatan cepat."
 
 #: data/core/macros/special-notes.cfg:20
 msgid ""
 " This unit is capable of healing those around it, and curing them of poison."
 msgstr ""
-"Unit ini sanggup mengobati semua orang di sekelilingnya, dan menyembuhkan "
+" Unit ini sanggup mengobati semua orang di sekelilingnya, dan menyembuhkan "
 "mereka dari racun."
 
 #: data/core/macros/special-notes.cfg:23
@@ -4510,14 +4516,14 @@ msgid ""
 " This unit is capable of neutralizing the effects of poison in units around "
 "it."
 msgstr ""
-"Unit ini sanggup menetralkan efek racun di dalam unit di sekelilingnya."
+" Unit ini sanggup menetralkan efek racun di dalam unit di sekelilingnya."
 
 #: data/core/macros/special-notes.cfg:26
 msgid ""
 " This unit regenerates, which allows it to heal as though always stationed "
 "in a village."
 msgstr ""
-"Unit ini memulihkan diri sendiri, menyanggupkannya mengobati diri sendiri "
+" Unit ini memulihkan diri sendiri, menyanggupkannya mengobati diri sendiri "
 "seperti ia selalu di dalam sebuah desa."
 
 #: data/core/macros/special-notes.cfg:29
@@ -4525,7 +4531,7 @@ msgid ""
 " The steadiness of this unit reduces damage from some attacks, but only "
 "while defending."
 msgstr ""
-"Kekukuhan unit ini mengurangi luka dari beberapa serangan, tetapi jika "
+" Kekukuhan unit ini mengurangi luka dari beberapa serangan, tetapi jika "
 "melindungi diri sendiri."
 
 #: data/core/macros/special-notes.cfg:32
@@ -4533,7 +4539,7 @@ msgid ""
 " The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
 msgstr ""
-"Kepemimpinan unit ini menyanggupkan unit di sebelahnya di sisi yang sama "
+" Kepemimpinan unit ini menyanggupkan unit di sebelahnya di pihak yang sama "
 "melukai lebih banyak darah di peperangan, meskipun ini hanya berlaku untuk "
 "unit berlevel lebih rendah."
 
@@ -4542,19 +4548,19 @@ msgid ""
 " This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 "control and thus move unhindered around them."
 msgstr ""
-"Kemampuan unit ini menyelinap membolehkannya mengabaikan zona kekuasaan "
+" Kemampuan unit ini menyelinap membolehkannya mengabaikan zona kekuasaan "
 "musuh dan dengan demikian, bisa bergerak melewat mereka tanpa dihalangi."
 
 #: data/core/macros/special-notes.cfg:38
 msgid " Illumination increases the lighting level in adjacent areas."
-msgstr "Penerangan menambahkan level cahaya di daerah sekitar."
+msgstr " Penerangan menambahkan level cahaya di daerah sekitar."
 
 #: data/core/macros/special-notes.cfg:41
 msgid ""
 " This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
-"Unit ini bisa menggunakan satu angka pergerakan untuk teleportasi di antara "
+" Unit ini bisa menggunakan satu angka pergerakan untuk teleportasi di antara "
 "dua desa kosong yang dikontrol oleh sisinya."
 
 #: data/core/macros/special-notes.cfg:44
@@ -4562,28 +4568,28 @@ msgid ""
 " In woodlands, this unit’s ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
 msgstr ""
-"Di daerah berhutan, kemampuan unit ini menyergap membuat ia tidak bisa "
+" Di daerah berhutan, kemampuan unit ini menyergap membuat ia tidak bisa "
 "dilihat oleh musuh kecuali jika ia di sebelah unit musuh, atau sudah "
 "menunjukkan diri sendiri dengan menyerang."
 
 #: data/core/macros/special-notes.cfg:47
 msgid " This unit is able to hide at night, leaving no trace of its presence."
 msgstr ""
-"Unit ini bisa bersembunyi pada malam hari, tidak meninggalkan jejak apapun."
+" Unit ini bisa bersembunyi pada malam hari, tidak meninggalkan jejak apapun."
 
 #: data/core/macros/special-notes.cfg:50
 msgid ""
 " This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
 msgstr ""
-"Unit ini bisa bersembunyi di desa (kecuali desa air), dan tidak dideteksi "
+" Unit ini bisa bersembunyi di desa (kecuali desa air), dan tidak dideteksi "
 "oleh musuhnya, kecuali mereka yang berdiri di sebelahnya."
 
 #: data/core/macros/special-notes.cfg:53
 msgid ""
 " This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
-"Unit ini bisa bergerak tanpa terlihat di perairan dalam, tidak memerlukan "
+" Unit ini bisa bergerak tanpa terlihat di perairan dalam, tidak memerlukan "
 "udara dari permukaan."
 
 #: data/core/macros/special-notes.cfg:56
@@ -4591,7 +4597,7 @@ msgid ""
 " This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
-"Unit ini memperoleh 1 darah ditambahkan ke darah maksimumnya ketika ia "
+" Unit ini memperoleh 1 darah ditambahkan ke darah maksimumnya ketika ia "
 "membunuh sebuah unit hidup."
 
 #: data/core/macros/special-notes.cfg:59
@@ -4599,7 +4605,7 @@ msgid ""
 " Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
 msgstr ""
-"Ketika serangan mengamuknya digunakan, unit ini meneruskan serangannya "
+" Ketika serangan mengamuknya digunakan, unit ini meneruskan serangannya "
 "sampai ia atau musuhnya terbunuh."
 
 #: data/core/macros/special-notes.cfg:62
@@ -4608,7 +4614,7 @@ msgid ""
 "attacking it, this unit may backstab, inflicting double damage by creeping "
 "around behind that enemy."
 msgstr ""
-"Jika ada musuh sasaran di belakang sasaran ketika menyerangnya, unit ini "
+" Jika ada musuh sasaran di belakang sasaran ketika menyerangnya, unit ini "
 "bisa membokong, melukai dua kali lipat dengan merangkak ke belakang musuh "
 "itu."
 
@@ -4617,22 +4623,22 @@ msgid ""
 " Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
 msgstr ""
-"Musuh yang kehilangan nyawanya ke wabah akan bangkit lagi setelah kematian, "
-"kecuali jika mereka berdiri di sebuah desa."
+" Musuh yang kehilangan nyawanya karena wabah akan bangkit lagi setelah "
+"kematian, kecuali jika mereka berdiri di sebuah desa."
 
 #: data/core/macros/special-notes.cfg:68
 msgid ""
 " This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
 msgstr ""
-"Unit ini bisa melambatkan musuhnya, membagi dua kecepatan bergerak dan luka "
+" Unit ini bisa melambatkan musuhnya, membagi dua kecepatan bergerak dan luka "
 "serangannya sampai ia mengakhirkan gilirannya."
 
 #: data/core/macros/special-notes.cfg:71
 msgid ""
 " The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr ""
-"Kemampuan merubah makhluk hidup menjadi batu membuat unit ini sangat "
+" Kemampuan merubah makhluk hidup menjadi batu membuat unit ini sangat "
 "berbahaya."
 
 #: data/core/macros/special-notes.cfg:74
@@ -4640,7 +4646,7 @@ msgid ""
 " This unit’s marksmanship gives it a high chance of hitting targeted "
 "enemies, but only on the attack."
 msgstr ""
-"Kejituan unit ini memberikannya kemungkinan tinggi mengenai sasaran, tetapi "
+" Kejituan unit ini memberikannya kemungkinan tinggi mengenai sasaran, tetapi "
 "hanya ketika ia menyerang."
 
 #: data/core/macros/special-notes.cfg:77
@@ -4656,7 +4662,7 @@ msgid ""
 " The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
 msgstr ""
-"Serangan menyerubung unit ini menjadi kurang berbahaya ketika bagian "
+" Serangan menyerubung unit ini menjadi kurang berbahaya ketika bagian "
 "badannya terluka."
 
 #: data/core/macros/special-notes.cfg:83
@@ -4664,15 +4670,15 @@ msgid ""
 " Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr ""
-"Menggunakan serangan menyerbu mendua kali lipatkan luka yang diberi dan "
-"diterima; ini tidak mempengaruhi balasan lindungan."
+" Menggunakan serangan menyerbu menggandakan luka yang diberi dan diterima; "
+"ini tidak mempengaruhi balasan bertahan."
 
 #: data/core/macros/special-notes.cfg:86
 msgid ""
 " During battle, this unit can drain life from victims to renew its own "
 "health."
 msgstr ""
-"Ketika bertempur, unit ini bisa menghisap kehidupan dari korban untuk "
+" Ketika bertempur, unit ini bisa menghisap kehidupan dari korban untuk "
 "memperpanjang hidupnya sendiri."
 
 #: data/core/macros/special-notes.cfg:89
@@ -4680,7 +4686,7 @@ msgid ""
 " The length of this unit’s weapon allows it to strike first in melee, even "
 "in defense."
 msgstr ""
-"Panjang senjata unit ini membolehkannya menyerang pertama di pertarungan "
+" Panjang senjata unit ini membolehkannya menyerang pertama di pertarungan "
 "jarak dekat, bahkan ketika berlindung."
 
 #: data/core/macros/special-notes.cfg:92
@@ -4688,8 +4694,8 @@ msgid ""
 " The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
 msgstr ""
-"Korban dari racun unit ini akan terus dilukai sampai ia bisa disembuhkan di "
-"desa atau oleh sebuah unit yang bisa menyembuhkan."
+" Korban-korban dari racun unit ini akan terus dilukai sampai ia bisa "
+"disembuhkan di desa atau oleh sebuah unit yang bisa menyembuhkan."
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:8
@@ -6116,7 +6122,7 @@ msgstr "<header>text='Unit-unit ras ini'</header>"
 
 #: src/help.cpp:2702
 msgid " < Back"
-msgstr " < Kembali"
+msgstr "  < Kembali"
 
 #: src/help.cpp:2703
 msgid "Forward >"

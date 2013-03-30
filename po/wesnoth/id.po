@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2013-03-16 23:25+0100\n"
-"PO-Revision-Date: 2011-11-24 17:31+0700\n"
+"PO-Revision-Date: 2012-12-30 18:12+0700\n"
 "Last-Translator: Yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:4
@@ -544,10 +545,8 @@ msgstr "Bahasa Rusia"
 
 #. [about]
 #: data/core/about.cfg:2593
-#, fuzzy
-#| msgid "Galician Translation"
 msgid "Scottish Gaelic Translation"
-msgstr "Bahasa Galatia"
+msgstr "Bahasa Gael Skotlandia"
 
 #. [about]
 #: data/core/about.cfg:2602
@@ -581,10 +580,8 @@ msgstr "Bahasa Turki"
 
 #. [about]
 #: data/core/about.cfg:2813
-#, fuzzy
-#| msgid "Romanian Translation"
 msgid "Ukrainian Translation"
-msgstr "Bahasa Rumania"
+msgstr "Bahasa Ukrania"
 
 #. [about]
 #: data/core/about.cfg:2826
@@ -610,8 +607,8 @@ msgstr "Robot"
 #: data/core/macros/ai.cfg:523
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
 msgstr ""
-"menanyakan $ally_pemimpin.nama (pihak dari pimpinan $ally_pimpinan.pihak) "
-"untuk pindah kemari"
+"Meminta $ally_leader.name (pihak dari pimpinan $ally_leader.side) untuk "
+"pindah kemari"
 
 #. [note]
 #: data/core/macros/ai_controller.cfg:5
@@ -911,11 +908,11 @@ msgstr ""
 
 #: data/core/macros/items.cfg:268
 msgid "holy water^Take it"
-msgstr "air suci^Ambil ini"
+msgstr "Ambil ini"
 
 #: data/core/macros/items.cfg:269
 msgid "holy water^Leave it"
-msgstr "air suci^Biarkan saja"
+msgstr "Biarkan saja"
 
 #: data/core/macros/items.cfg:270
 msgid "I am not suited to the use of this item! Let another take it."
@@ -1000,11 +997,11 @@ msgstr "Haruskah $unit.name mengambil trisula?"
 
 #: data/core/macros/items.cfg:514
 msgid "storm trident^Leave it"
-msgstr "trisula badai^Biarkan saja"
+msgstr "Biarkan saja"
 
 #: data/core/macros/items.cfg:514
 msgid "storm trident^Take it"
-msgstr "trisula badai^Ambil ini"
+msgstr "Ambil ini"
 
 #. [object]
 #: data/core/macros/items.cfg:516
@@ -2178,22 +2175,22 @@ msgstr ""
 #. [language]
 #: data/english.cfg:23
 msgid "$name|’s Bridge,$name|’s Crossing"
-msgstr "Jembatan $name,Pengarungan $name"
+msgstr "Jembatan $name|, Arungan $name|"
 
 #. [language]
 #: data/english.cfg:24
 msgid "$name|’s Highway,$name|’s Pass,Path of $name"
-msgstr "Jalan Besar $name,$"
+msgstr "Jalan Raya $name|, Jalan $name|,Jalan $name"
 
 #. [language]
 #: data/english.cfg:25
 msgid "$name River,River $name"
-msgstr "Sungai $name,Sungai $name"
+msgstr "Sungai $name ,Sungai $name"
 
 #. [language]
 #: data/english.cfg:26
 msgid "$name Forest,$name|’s Forest"
-msgstr "Hutan $name,Rimba $name"
+msgstr "Hutan $name ,Hutan $name|"
 
 #. [language]
 #: data/english.cfg:27
@@ -2203,110 +2200,70 @@ msgstr "Danau $name"
 #. [language]
 #: data/english.cfg:28
 msgid "$name|’s Peak,Mount $name"
-msgstr "$nama Puncak,Gunung $nama"
+msgstr "Puncak $name|,Gunung $nama"
 
-# ignore-interpolations: $name
 #. [language]
 #: data/english.cfg:29
 msgid "$name|’s Swamp,$name|marsh,$name|fen"
-msgstr "$name|’s Swamp,$name|marsh,$name|fen"
+msgstr "Rawa $name|,rawa $name|,rawa $name|"
 
-# ignore-interpolations: $name
 #. [language]
 #: data/english.cfg:30
 msgid "$name|bury,$name|ham,$name|ton,$name|bury"
 msgstr "$name|bury,$name|ham,$name|ton,$name|bury"
 
-# ignore-interpolations: $name
 #. [language]
 #: data/english.cfg:31
 msgid "$name|harbor,$name|port,$lake|port,$lake|harbor"
-msgstr "$name|harbor,$name|port,$lake|port,$lake|harbor"
+msgstr "pelabuhan $name|,pelabuhan $name|,pelabuhan $lake|,pelabuhan $lake|"
 
-# ignore-interpolations: $name $river
 #. [language]
 #: data/english.cfg:32
 msgid ""
 "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross,$name on river"
 msgstr ""
-"$name|ham,$name|ford,$name|cross,$river|ford,$river|cross,$name on river"
+"$name|ham,arungan $name|,$name|cross,arungan $river|,$river|cross,$name di "
+"sungai"
 
-# ignore-interpolations: $river $name
 #. [language]
 #: data/english.cfg:33
 msgid ""
 "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge,$bridge|ham,"
 "$bridge|ton"
 msgstr ""
-"$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge,$bridge|ham,"
-"$bridge|ton"
+"jembatan $river|,jembatan $river|,jembatan $river|,$name|ham,jembatan $name|,"
+"$bridge|ham,$bridge|ton"
 
-# ignore-interpolations: $name
 #. [language]
 #: data/english.cfg:34
 msgid "$name|ham,$name|ton,$name|field"
-msgstr ""
-"Bandung,Banjar,Batu,Bekasi,Blitar,Bogor,Cilegon,Cimahi,Cirebon,Depok,Jakarta,"
-"Madiun,Magelang,Malang,Mojokerto,Pasuruan,Pekalongan,Probolinggo,Salatiga,"
-"Semarang,Tangerang,Sukabumi,Surabaya,Surakarta,Tasikmalaya,Yogyakarta,Kediri,"
-"Balikpapan,Banjarmasin,Bontang,Palangkaraya,Pontianak,Samarinda,Singkawang,"
-"Tarakan,Ambon,Ternate,Tidore,Bima,Denpasar,Mataram,Kupang,Jayapura,Bau-bau,"
-"Bitung,Gorontalo,Kendari,Makassar,Manado,Palu,Pare-pare,Palopo,Tomohon,Banda "
-"Aceh,Bandar Lampung,Batam,Bengkulu,Binjai,Bukittinggi,Dumai,Jambi,Langsa,"
-"Lhokseumawe,Lubuklinggau,Medan,Metro,Padang,Padang Panjang,Padang Sidempuan,"
-"Pagar Alam,Pangkal Pinang,Pariaman,Payakumbuh,Pekanbaru,Pematang Siantar,"
-"Palembang,Prabumulih,Sabang,Sawah Lunto,Sibolga,Solok,Surantih,Tanjung Balai,"
-"Tanjung Pinang,Tebing Tinggi"
+msgstr "$name|ham,$name|ton,$name|field"
 
-# ignore-interpolations: $name
 #. [language]
 #: data/english.cfg:35
 msgid ""
 "$name|ham,$name|ton,$name|wood,$name Forest,$forest|wood,$forest|ham,$forest|"
 "ton"
 msgstr ""
-"$name|ham,$name|ton,$name|wood,$name Forest,$forest|wood,$forest|ham,$forest|"
-"ton"
+"$name|ham,$name|ton,hutan $name|,Hutan $name,hutan $forest|,$forest|ham,"
+"$forest|ton"
 
-# ignore-interpolations: $name
 #. [language]
 #: data/english.cfg:36
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
-msgstr ""
-"Bandung,Banjar,Batu,Bekasi,Blitar,Bogor,Cilegon,Cimahi,Cirebon,Depok,Jakarta,"
-"Madiun,Magelang,Malang,Mojokerto,Pasuruan,Pekalongan,Probolinggo,Salatiga,"
-"Semarang,Tangerang,Sukabumi,Surabaya,Surakarta,Tasikmalaya,Yogyakarta,Kediri,"
-"Balikpapan,Banjarmasin,Bontang,Palangkaraya,Pontianak,Samarinda,Singkawang,"
-"Tarakan,Ambon,Ternate,Tidore,Bima,Denpasar,Mataram,Kupang,Jayapura,Bau-bau,"
-"Bitung,Gorontalo,Kendari,Makassar,Manado,Palu,Pare-pare,Palopo,Tomohon,Banda "
-"Aceh,Bandar Lampung,Batam,Bengkulu,Binjai,Bukittinggi,Dumai,Jambi,Langsa,"
-"Lhokseumawe,Lubuklinggau,Medan,Metro,Padang,Padang Panjang,Padang Sidempuan,"
-"Pagar Alam,Pangkal Pinang,Pariaman,Payakumbuh,Pekanbaru,Pematang Siantar,"
-"Palembang,Prabumulih,Sabang,Sawah Lunto,Sibolga,Solok,Surantih,Tanjung Balai,"
-"Tanjung Pinang,Tebing Tinggi"
+msgstr "$name|ham,$name|bury,$name|ton,bukit $name|,puncak $name|"
 
 #. [language]
 #: data/english.cfg:37
 msgid "$mountain|mont,$mountain|cliff,$mountain|bury,$mountain|ham"
-msgstr "$pegunungan|mont,$pegunungan|jurang,$pegunungan|bury,$pegunungan|ham"
+msgstr "$mountain|mont,jurang $mountain|,$mountain|bury,$mountain|ham"
 
-# ignore-interpolations: $name
 #. [language]
 #: data/english.cfg:38
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
-"Bandung,Banjar,Batu,Bekasi,Blitar,Bogor,Cilegon,Cimahi,Cirebon,Depok,Jakarta,"
-"Madiun,Magelang,Malang,Mojokerto,Pasuruan,Pekalongan,Probolinggo,Salatiga,"
-"Semarang,Tangerang,Sukabumi,Surabaya,Surakarta,Tasikmalaya,Yogyakarta,Kediri,"
-"Balikpapan,Banjarmasin,Bontang,Palangkaraya,Pontianak,Samarinda,Singkawang,"
-"Tarakan,Ambon,Ternate,Tidore,Bima,Denpasar,Mataram,Kupang,Jayapura,Bau-bau,"
-"Bitung,Gorontalo,Kendari,Makassar,Manado,Palu,Pare-pare,Palopo,Tomohon,Banda "
-"Aceh,Bandar Lampung,Batam,Bengkulu,Binjai,Bukittinggi,Dumai,Jambi,Langsa,"
-"Lhokseumawe,Lubuklinggau,Medan,Metro,Padang,Padang Panjang,Padang Sidempuan,"
-"Pagar Alam,Pangkal Pinang,Pariaman,Payakumbuh,Pekanbaru,Pematang Siantar,"
-"Palembang,Prabumulih,Sabang,Sawah Lunto,Sibolga,Solok,Surantih,Tanjung Balai,"
-"Tanjung Pinang,Tebing Tinggi"
+"$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 
 #. [language]
 #: data/english.cfg:39
@@ -2315,7 +2272,6 @@ msgid ""
 msgstr ""
 "$road|’s Rest,$road|’s Waypoint,$road|bury,$road|ham,$name|bury,$name|ham"
 
-# ignore-interpolations: $name
 #. [language]
 #: data/english.cfg:40
 msgid "$name|bury,$name|ham,$name|ton,$swamp|bury,$swamp|ham,$swamp|ton,"
@@ -2398,7 +2354,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:5 data/hardwired/tips.cfg:137
 msgid "<i>― Great Mage Delfador, 516YW</i>"
-msgstr "<i>― Penyihir Hebat Delfador, 516YW</i>"
+msgstr "<i>― Penyihir Hebat Delfador, 516TW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:8
@@ -2449,7 +2405,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:13
 msgid "<i>― King Konrad, 536YW</i>"
-msgstr "<i>― Raja Konrad, 536YW</i>"
+msgstr "<i>― Raja Konrad, 536TW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:16
@@ -2467,7 +2423,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:17 data/hardwired/tips.cfg:129
 msgid "<i>― Memoirs of Gweddry, 627YW</i>"
-msgstr "<i>― Riwayat Hidup Gweddry, 627YW</i>"
+msgstr "<i>― Riwayat Hidup Gweddry, 627TW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:20
@@ -2510,7 +2466,7 @@ msgstr ""
 #: data/hardwired/tips.cfg:29 data/hardwired/tips.cfg:105
 #: data/hardwired/tips.cfg:213 data/hardwired/tips.cfg:225
 msgid "<i>― High Lord Kalenz, 470YW</i>"
-msgstr "<i>― Tuan Tinggi Kalenz, 470YW</i>"
+msgstr "<i>― Tuan Tinggi Kalenz, 470TW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:32
@@ -2566,7 +2522,7 @@ msgid ""
 "<i>― Royal Compendium of Battle Terminology: Volume II (reprinted 221YW)</i>"
 msgstr ""
 "<i>― Ikhtisar Kerajaan tentang Istilah Peperangan: Jilid II (dicetak kembali "
-"221YW)</i>"
+"221TW)</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:48
@@ -2580,7 +2536,7 @@ msgstr ""
 #: data/hardwired/tips.cfg:125 data/hardwired/tips.cfg:133
 #: data/hardwired/tips.cfg:217
 msgid "<i>― Haldric II, 42YW, Handbook of Tactical Analysis: Volume I</i>"
-msgstr "<i>― Haldric II, 42YW, Buku Pedoman Analisa Taktis: Jilid I</i>"
+msgstr "<i>― Haldric II, 42TW, Buku Pedoman Analisa Taktis: Jilid I</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:52
@@ -2687,7 +2643,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:77
 msgid "<i>― Haldric II, 43YW, Handbook of Tactical Analysis: Volume II</i>"
-msgstr "<i>― Haldric II, 43YW, Buku Pedoman Analisa Taktis: Jilid II</i>"
+msgstr "<i>― Haldric II, 43TW, Buku Pedoman Analisa Taktis: Jilid II</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:80
@@ -2736,7 +2692,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:93 data/hardwired/tips.cfg:173
 msgid "<i>― Sir Kaylan, 498YW</i>"
-msgstr "<i>― Sir Kaylan, 498YW</i>"
+msgstr "<i>― Sir Kaylan, 498TW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:96
@@ -2751,7 +2707,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:97
 msgid "<i>― Sir Kaylan, 502YW</i>"
-msgstr "<i>― Sir Kaylan, 502YW</i>"
+msgstr "<i>― Sir Kaylan, 502TW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:100
@@ -2805,7 +2761,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:117
 msgid "<i>― Meneldur, 123YW</i>"
-msgstr "<i>― Meneldur, 123YW</i>"
+msgstr "<i>― Meneldur, 123TW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:120
@@ -2878,7 +2834,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:141
 msgid "<i>― Princess Li’sar, 515YW</i>"
-msgstr "<i>― Putri Li'sar, 515YW</i>"
+msgstr "<i>― Putri Li'sar, 515TW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:144
@@ -2916,7 +2872,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:157 data/hardwired/tips.cfg:205
 msgid "<i>― The Scroll of Chantal, 516YW</i>"
-msgstr "<i>―Gulungan Surat Perkamen Chantal, 516YW</i>"
+msgstr "<i>―Gulungan Surat Perkamen Chantal, 516TW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:160
@@ -2936,7 +2892,7 @@ msgstr "Serangan <i>Misterius</i> sangat ampuh melawan mayat hidup."
 #. [tip]
 #: data/hardwired/tips.cfg:165
 msgid "<i>― Great Sage Dacyn, 626YW</i>"
-msgstr "<i>― Guru Bijaksana Hebat Dacyn, 626YW</i>"
+msgstr "<i>― Guru Bijaksana Hebat Dacyn, 626TW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:168
@@ -2997,7 +2953,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:185
 msgid "<i>― Queen Li’sar, 528YW</i>"
-msgstr "<i>― Ratu Li'sar, 528YW</i>"
+msgstr "<i>― Ratu Li'sar, 528TW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:188
@@ -3193,7 +3149,7 @@ msgstr "membatu"
 
 #: data/lua/wml-tags.lua:865
 msgid "female^unhealable"
-msgstr "wanita^tidak bisa menyembuhkan"
+msgstr "tidak bisa menyembuhkan"
 
 #: data/lua/wml-tags.lua:865
 msgid "unhealable"
@@ -3503,7 +3459,7 @@ msgstr "(tekan $hotkey untuk pindah terus)"
 
 #: src/addon/manager.cpp:424
 msgid "unit_byte^B"
-msgstr "unit_byte^B"
+msgstr "B"
 
 #: src/addon/manager.cpp:441
 msgid "addon_type^Campaign"
@@ -4573,13 +4529,13 @@ msgstr "Anda belum bisa mengakhiri giliran anda!"
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
-"Anda belum memulai giliran anda. Apakah anda benar-benar mau mengakhirkan "
+"Anda belum memulai giliran anda. Apakah anda benar-benar mau mengakhiri "
 "giliran anda?"
 
 #: src/menu_events.cpp:1430 src/menu_events.cpp:1435
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
-"Beberapa unit masih bisa bergerak. Apakah anda benar-benar mau mengakhirkan "
+"Beberapa unit masih bisa bergerak. Apakah anda benar-benar mau mengakhiri "
 "giliran anda?"
 
 #: src/menu_events.cpp:1476
@@ -5155,7 +5111,7 @@ msgstr "Tidak bisa menemukan label atau unit dengan untaian '$search'."
 
 #: src/menu_events.cpp:3166
 msgid "Can't droid invalid side: '$side'."
-msgstr "Tidak bisa mendroid sisi tidak berlaku: '$sisi'."
+msgstr "Tidak bisa mendroid sisi tidak berlaku: '$side'."
 
 #: src/menu_events.cpp:3171
 msgid "Can't droid networked side: '$side'."
@@ -5249,16 +5205,12 @@ msgid "prompt^Command:"
 msgstr "Perintah:"
 
 #: src/mouse_events.cpp:710
-#, fuzzy
-#| msgid ""
-#| "You cannot move your leader away from the keep with some planned recruits "
-#| "left."
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
 msgstr ""
 "Anda tidak bisa menggerakkan pemimpin anda jauh dari benteng dengan suatu "
-"rencana merekrut tersisa."
+"rencana merekrut atau memanggil kembali tersisa."
 
 #: src/mouse_events.cpp:841 src/mouse_events.cpp:921
 msgid "Attack Enemy"
@@ -5770,8 +5722,8 @@ msgid ""
 "Show all games that do *not* match your filter. Useful for hiding games you "
 "are not interested in."
 msgstr ""
-"Menunjukkan semua game yang  * not* tidak dapat disaring. sangat bermanfaat "
-"untuk menyembunyikan game yang kamu tidak tertarik."
+"Menunjukkan semua game yang  *tidak* dapat disaring. Sangat bermanfaat untuk "
+"menyembunyikan game yang kamu tidak tertarik."
 
 #: src/multiplayer_lobby.cpp:769
 msgid "Only show games that have at least one vacant slot"
@@ -6014,8 +5966,8 @@ msgid ""
 msgid_plural ""
 "You will start the next scenario with the defined minimum starting gold."
 msgstr[0] ""
-"Anda akan memulai skenario berikutnya dengan $gold di atas emas permulaan "
-"minimum terpasang."
+"Anda akan memulai skenario berikutnya dengan emas permulaan minimum "
+"terpasang."
 
 #: src/playsingle_controller.cpp:308
 msgid ""
@@ -6184,11 +6136,11 @@ msgstr "Daerah:"
 
 #: src/reports.cpp:511
 msgid "maximum^max."
-msgstr "maksimum^maks."
+msgstr "maks."
 
 #: src/reports.cpp:511
 msgid "minimum^min."
-msgstr "minimum^min."
+msgstr "min."
 
 #: src/reports.cpp:516
 msgid "Defense: "
@@ -6386,7 +6338,7 @@ msgstr "Tag penutup tidak terharap"
 #: src/serialization/parser.cpp:208
 msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
 msgstr ""
-"Tag penutup tidak berlaku ditemukan $tag2 untuk tag $tag (dibuka di $pos)"
+"Tag penutup tidak berlaku ditemukan $tag2 untuk tag $tag1 (dibuka di $pos)"
 
 #: src/serialization/parser.cpp:237 src/serialization/parser.cpp:249
 msgid "Empty variable name"
@@ -6410,75 +6362,75 @@ msgstr " $error, value '$value' di $pos"
 
 #: src/serialization/string_utils.cpp:299
 msgid "prefix_milli^m"
-msgstr "prefix_milli^m"
+msgstr "m"
 
 #: src/serialization/string_utils.cpp:300
 msgid "prefix_micro^µ"
-msgstr "prefix_micro^µ"
+msgstr "µ"
 
 #: src/serialization/string_utils.cpp:301
 msgid "prefix_nano^n"
-msgstr "prefix_nano^n"
+msgstr "n"
 
 #: src/serialization/string_utils.cpp:302
 msgid "prefix_pico^p"
-msgstr "prefix_pico^p"
+msgstr "p"
 
 #: src/serialization/string_utils.cpp:303
 msgid "prefix_femto^f"
-msgstr "prefix_femto^f"
+msgstr "f"
 
 #: src/serialization/string_utils.cpp:304
 msgid "prefix_atto^a"
-msgstr "prefix_atto^a"
+msgstr "a"
 
 #: src/serialization/string_utils.cpp:305
 msgid "prefix_zepto^z"
-msgstr "prefix_zepto^z"
+msgstr "z"
 
 #: src/serialization/string_utils.cpp:306
 msgid "prefix_yocto^y"
-msgstr "prefix_yocto^y"
+msgstr "y"
 
 #: src/serialization/string_utils.cpp:318
 msgid "prefix_kibi^K"
-msgstr "prefix_kibi^K"
+msgstr "K"
 
 #: src/serialization/string_utils.cpp:319
 msgid "prefix_kilo^k"
-msgstr "prefix_kilo^k"
+msgstr "k"
 
 #: src/serialization/string_utils.cpp:321
 msgid "prefix_mega^M"
-msgstr "prefix_mega^M"
+msgstr "M"
 
 #: src/serialization/string_utils.cpp:322
 msgid "prefix_giga^G"
-msgstr "prefix_giga^G"
+msgstr "G"
 
 #: src/serialization/string_utils.cpp:323
 msgid "prefix_tera^T"
-msgstr "prefix_tera^T"
+msgstr "T"
 
 #: src/serialization/string_utils.cpp:324
 msgid "prefix_peta^P"
-msgstr "prefix_peta^P"
+msgstr "P"
 
 #: src/serialization/string_utils.cpp:325
 msgid "prefix_exa^E"
-msgstr "prefix_exa^E"
+msgstr "E"
 
 #: src/serialization/string_utils.cpp:326
 msgid "prefix_zetta^Z"
-msgstr "prefix_zetta^Z"
+msgstr "Z"
 
 #: src/serialization/string_utils.cpp:327
 msgid "prefix_yotta^Y"
-msgstr "prefix_yotta^Y"
+msgstr "Y"
 
 #: src/serialization/string_utils.cpp:341
 msgid "infix_binary^i"
-msgstr "infix_binary^i"
+msgstr "i"
 
 #: src/statistics_dialog.cpp:70 src/statistics_dialog.cpp:126
 msgid "Recruits"
