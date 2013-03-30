@@ -325,14 +325,22 @@ void button::mouse_motion(SDL_MouseMotionEvent const &event)
 void button::mouse_down(SDL_MouseButtonEvent const &event)
 {
 	if (hit(event.x, event.y) && event.button == SDL_BUTTON_LEFT) {
-		if (type_ == TYPE_CHECK || type_ == TYPE_RADIO) {
-			if (state_ == PRESSED_ACTIVE)
-				state_ = TOUCHED_PRESSED;
-			else if (state_ == ACTIVE)
-				state_ = TOUCHED_NORMAL;
-		} else {
-			state_ = PRESSED;
-			sound::play_UI_sound(game_config::sounds::button_press);
+
+		switch (type_) {
+			case TYPE_RADIO:
+			case TYPE_CHECK:
+				if (state_ == PRESSED_ACTIVE)
+					state_ = TOUCHED_PRESSED;
+				else if (state_ == ACTIVE)
+					state_ = TOUCHED_NORMAL;
+				break;
+			case TYPE_TURBO:
+				sound::play_UI_sound(game_config::sounds::button_press);
+				state_ = PRESSED;
+				break;
+			default:
+				state_ = PRESSED;
+				break;
 		}
 	}
 }
@@ -369,7 +377,6 @@ void button::mouse_up(SDL_MouseButtonEvent const &event)
 		if (state_ == TOUCHED_NORMAL) {
 			state_ = PRESSED_ACTIVE;
 			pressed_ = true;
-			sound::play_UI_sound(game_config::sounds::checkbox_release);
 		}
 		break;
 	case TYPE_PRESS:
@@ -385,6 +392,8 @@ void button::mouse_up(SDL_MouseButtonEvent const &event)
 		pressed_ = true;
 		break;
 	}
+	if (pressed_)
+		sound::play_UI_sound(game_config::sounds::button_press);
 }
 
 void button::handle_event(const SDL_Event& event)
