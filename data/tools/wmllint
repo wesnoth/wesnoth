@@ -1537,7 +1537,7 @@ def hack_syntax(filename, lines):
     for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
             break
-        if lines[i].startswith("#"):
+        if lines[i].lstrip().startswith("#"):
             pass
         elif "{DOT_CENTERED" in lines[i]:
             lines[i] = lines[i].replace("DOT_CENTERED", "NEW_JOURNEY")
@@ -1581,7 +1581,7 @@ def hack_syntax(filename, lines):
     for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
             break
-        if lines[i].startswith("#"):
+        if lines[i].lstrip().startswith("#"):
             pass
         # RC -> PAL
         elif "RC" in lines[i]:
@@ -1591,7 +1591,7 @@ def hack_syntax(filename, lines):
     for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
             break
-        if lines[i].startswith("#"):
+        if lines[i].lstrip().startswith("#"):
             pass
         # Ugh...relies on code having been wmlindented
         lines[i] = re.sub(r"^\[terrain\]", "[terrain_type]", lines[i])
@@ -1607,7 +1607,7 @@ def hack_syntax(filename, lines):
     for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
             break
-        if lines[i].startswith("#"):
+        if lines[i].lstrip().startswith("#"):
             pass
         if "[set_variable]" in lines[i]:
             in_set_variable = True
@@ -1621,7 +1621,7 @@ def hack_syntax(filename, lines):
     for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
             break
-        if lines[i].startswith("#"):
+        if lines[i].lstrip().startswith("#"):
             pass
         # The trouble with this transformation is that it's only right for UMC;
         # it clobbers mainline.
