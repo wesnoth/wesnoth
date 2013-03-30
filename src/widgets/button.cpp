@@ -168,7 +168,14 @@ void button::set_check(bool check)
 {
 	if (type_ != TYPE_CHECK && type_ != TYPE_RADIO)
 		return;
-	STATE new_state = check ? PRESSED : NORMAL;
+	STATE new_state;
+
+	if (check) {
+		new_state = (state_ == ACTIVE || state_ == PRESSED_ACTIVE)? PRESSED_ACTIVE : PRESSED;
+	} else {
+		new_state = (state_ == ACTIVE || state_ == PRESSED_ACTIVE)? ACTIVE : NORMAL;
+	}
+
 	if (state_ != new_state) {
 		state_ = new_state;
 		set_dirty();
@@ -294,7 +301,7 @@ void button::mouse_motion(SDL_MouseMotionEvent const &event)
 		// the cursor is over the widget
 		if (state_ == NORMAL)
 			state_ = ACTIVE;
-		else if (state_ == PRESSED && type_ == TYPE_CHECK)
+		else if (state_ == PRESSED && (type_ == TYPE_CHECK || type_ == TYPE_RADIO))
 			state_ = PRESSED_ACTIVE;
 	} else {
 		// the cursor is not over the widget
@@ -328,6 +335,8 @@ void button::mouse_down(SDL_MouseButtonEvent const &event)
 
 		switch (type_) {
 			case TYPE_RADIO:
+				state_ = TOUCHED_PRESSED;
+				break;
 			case TYPE_CHECK:
 				if (state_ == PRESSED_ACTIVE)
 					state_ = TOUCHED_PRESSED;
@@ -374,15 +383,21 @@ void button::mouse_up(SDL_MouseButtonEvent const &event)
 		if (pressed_) sound::play_UI_sound(game_config::sounds::checkbox_release);
 		break;
 	case TYPE_RADIO:
-		if (state_ == TOUCHED_NORMAL) {
+		if (state_ == TOUCHED_NORMAL || state_ == TOUCHED_PRESSED) {
 			state_ = PRESSED_ACTIVE;
 			pressed_ = true;
+		//	exit(0);
+			sound::play_UI_sound(game_config::sounds::checkbox_release);
 		}
+		//} else if (state_ == TOUCHED_PRESSED) {
+		//	state_ = PRESSED_ACTIVE;
+		//}
 		break;
 	case TYPE_PRESS:
 		if (state_ == PRESSED) {
 			state_ = ACTIVE;
 			pressed_ = true;
+			sound::play_UI_sound(game_config::sounds::button_press);
 		}
 		break;
 	case TYPE_TURBO:
@@ -390,10 +405,9 @@ void button::mouse_up(SDL_MouseButtonEvent const &event)
 		break;
 	case TYPE_IMAGE:
 		pressed_ = true;
+		sound::play_UI_sound(game_config::sounds::button_press);
 		break;
 	}
-	if (pressed_)
-		sound::play_UI_sound(game_config::sounds::button_press);
 }
 
 void button::handle_event(const SDL_Event& event)
