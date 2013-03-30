@@ -35,8 +35,8 @@ namespace gui {
 
 slider::slider(CVideo &video)
 	: widget(video), image_(image::get_image(slider_image)),
-	  activeImage_(image::get_image(active_image)),
 	  pressedImage_(image::get_image(pressed_image)),
+	  activeImage_(image::get_image(active_image)),
 	  disabledImage_(image::get_image(disabled_image)),
 	  min_(-100000), max_(100000), value_(0),
 	  increment_(1), value_change_(false), state_(NORMAL)
