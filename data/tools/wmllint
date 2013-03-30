@@ -1682,19 +1682,6 @@ def hack_syntax(filename, lines):
             break
         if lines[i].lstrip().startswith("#"):
             pass
-        # The trouble with this transformation is that it's only right for UMC;
-        # it clobbers mainline.
-        if 0:
-            if "[binary_path]" in lines[i]:
-                in_binary_path = True
-            if "[/binary_path]" in lines[i]:
-                in_binary_path = False
-            if "[textdomain]" in lines[i]:
-                in_textdomain = True
-            if "[/textdomain]" in lines[i]:
-                in_textdomain = False
-            if in_binary_path or in_textdomain:
-                lines[i] = re.sub(r"data/campaigns", r"data/add_ons", lines[i])
         # This is done on every line
         if "campaigns/" in lines[i]:
             lines[i] = lines[i].replace("{~campaigns/", "{~add-ons/")
@@ -1717,6 +1704,22 @@ def hack_syntax(filename, lines):
                       %(filename, i+1, dc.group(1), dc.group(1))
         elif "@add-ons/" in lines[i]:
             lines[i] = lines[i].replace("{@add-ons/", "{~add-ons/")
+        # Occasionally authors try to use '~' with [textdomain] or [binary_path].
+        if "[binary_path]" in lines[i]:
+            in_binary_path = True
+        if "[/binary_path]" in lines[i]:
+            in_binary_path = False
+        if "[textdomain]" in lines[i]:
+            in_textdomain = True
+        if "[/textdomain]" in lines[i]:
+            in_textdomain = False
+        if in_binary_path or in_textdomain:
+            if '~' in lines[i]:
+                tilde = re.search('(^\s*path) *= *([^#]{0,5})(~/?(data/)?add-ons/)', lines[i])
+                if tilde:
+                    lines[i] = tilde.group(1) + '=' + tilde.group(2) + 'data/add-ons' + lines[i][tilde.end():]
+                    print '"%s", line %d: %s -> data/add-ons -- [textdomain] and [binary_path] paths do not accept "~" for userdata'\
+                          % (filename, i+1, tilde.group(3))
     # More syntax transformations would go here.
     return lines
 
