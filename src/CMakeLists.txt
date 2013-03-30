@@ -132,34 +132,6 @@ if(X11_FOUND)
 	include_directories( ${X11_INCLUDE_DIR} )
 	set(game-external-libs ${game-external-libs} ${X11_LIBRARIES})
 endif(X11_FOUND)
-#
-# Create targets for revision.hpp
-#
-
-find_program(SVNVERSION_EXECUTABLE "svnversion")
-
-set(REVISION_FILE)
-if(SVNVERSION_EXECUTABLE)
-	execute_process(COMMAND ${SVNVERSION_EXECUTABLE} -n ${CMAKE_SOURCE_DIR}
-		OUTPUT_VARIABLE SVN_VERSION)
-	if(SVN_VERSION MATCHES [0-9]+.*)
-		add_custom_target(update_revision ALL
-			COMMAND ${CMAKE_COMMAND}
-				-DSVNVERSION_EXECUTABLE="${SVNVERSION_EXECUTABLE}"
-				-DSRC_DIR="${CMAKE_SOURCE_DIR}"
-				-P "${CMAKE_MODULE_PATH}/revision.cmake"
-			WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-			COMMENT "Updating revision")
-
-		set(REVISION_FILE revision.hpp)
-		set_source_files_properties(
-			revision.hpp
-			PROPERTIES GENERATED true)
-		add_definitions(-DHAVE_REVISION)
-
-		set(UPDATE_REVISION ON CACHE INTERNAL "")
-	endif(SVN_VERSION MATCHES [0-9]+.*)
-endif(SVNVERSION_EXECUTABLE)
 
 if(MSVC)
 	SOURCE_GROUP("src" REGULAR_EXPRESSION ".*")
@@ -220,7 +192,6 @@ set(libwesnoth-core_STAT_SRC
 	serialization/string_utils.cpp
 	serialization/tokenizer.cpp
 	serialization/validator.cpp
-	${REVISION_FILE}
 )
 
 if(ENABLE_POOL_ALLOC AND NOT WIN32)
@@ -235,9 +206,37 @@ endif(ENABLE_POOL_ALLOC AND NOT WIN32)
 # internal reference is the name given here
 add_library(wesnoth-core STATIC EXCLUDE_FROM_ALL ${libwesnoth-core_STAT_SRC})
 
-if(UPDATE_REVISION)
-	add_dependencies(wesnoth-core update_revision)
-endif(UPDATE_REVISION)
+# Depending on the flag create a real file or an empty dummy.
+#
+# Since the code is executed every build run of Wesnoth we need to make sure
+# that no modifications don't turn into a rebuild. Therefore a the dummy is
+# created and the second target only copies the file if modified.
+if(ENABLE_DISPLAY_REVISION)
+	add_custom_target(wesnoth-revision_dummy
+		COMMAND
+			${CMAKE_SOURCE_DIR}/utils/autorevision
+				-th
+				> ${CMAKE_CURRENT_BINARY_DIR}/revision.dummy
+		WORKING_DIRECTORY
+			${CMAKE_SOURCE_DIR}
+	)
+
+	add_custom_target(wesnoth-revision
+		COMMAND
+			${CMAKE_COMMAND} -E
+				copy_if_different
+					${CMAKE_CURRENT_BINARY_DIR}/revision.dummy
+					${CMAKE_CURRENT_BINARY_DIR}/revision.h
+	)
+
+	add_dependencies(wesnoth-revision wesnoth-revision_dummy)
+	add_dependencies(wesnoth-core wesnoth-revision)
+	set_source_files_properties(
+		game_config.cpp
+		PROPERTIES
+			COMPILE_DEFINITIONS "LOAD_REVISION"
+	)
+endif()
 
 ########### libwesnoth-lua ###############
 

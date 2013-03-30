@@ -82,6 +82,39 @@ option(ENABLE_POOL_ALLOC "Enable custom pool malloc" OFF)
 option(ENABLE_LOW_MEM "Reduce memory usage by removing extra functionality" OFF)
 option(ENABLE_OMP "Enables OpenMP, and has additional dependencies" OFF)
 
+if(NOT DEFINED ENABLE_DISPLAY_REVISION)
+	# Test whether the code is used in a repository if not autorevision will
+	# fail and should be disabled by default. If inside a repository enable
+	# the display of revision numbers by default.
+	execute_process(
+		COMMAND
+			${CMAKE_SOURCE_DIR}/utils/autorevision
+				-th
+				> ${CMAKE_CURRENT_BINARY_DIR}/revision.dummy
+		WORKING_DIRECTORY
+			${CMAKE_SOURCE_DIR}
+		OUTPUT_VARIABLE
+			 ENABLE_DISPLAY_REVISION_TEST_OUTPUT
+		ERROR_VARIABLE
+			ENABLE_DISPLAY_REVISION_TEST_ERRNO
+	)
+
+	if("${ENABLE_DISPLAY_REVISION_TEST_ERRNO}" STREQUAL "")
+		set(DEFAULT_ENABLE_DISPLAY_REVISION true)
+	else()
+		set(DEFAULT_ENABLE_DISPLAY_REVISION false)
+	endif()
+
+	unset(ENABLE_DISPLAY_REVISION_TEST_OUTPUT)
+	unset(ENABLE_DISPLAY_REVISION_TEST_ERRNO)
+
+endif()
+
+option(
+	ENABLE_DISPLAY_REVISION
+	"Enable the display of the revision number in the game, only enable it when in a checkout"
+	${DEFAULT_ENABLE_DISPLAY_REVISION}
+)
 if(UNIX AND NOT APPLE AND NOT CYGWIN)
 	option(ENABLE_DESKTOP_ENTRY "enable installation of desktop entry files" ON)
 	set(ICONDIR "${DATAROOTDIR}/pixmaps" CACHE STRING "Sets the icon directory for desktop entry to a non-default location.")
