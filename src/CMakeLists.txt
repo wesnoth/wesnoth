@@ -132,9 +132,6 @@ if(X11_FOUND)
 	include_directories( ${X11_INCLUDE_DIR} )
 	set(game-external-libs ${game-external-libs} ${X11_LIBRARIES})
 endif(X11_FOUND)
-#
-# Create targets for revision.hpp
-#
 
 if(MSVC)
 	SOURCE_GROUP("src" REGULAR_EXPRESSION ".*")
@@ -208,7 +205,6 @@ set(libwesnoth-core_STAT_SRC
 	serialization/string_utils.cpp
 	serialization/tokenizer.cpp
 	serialization/validator.cpp
-	${REVISION_FILE}
 )
 
 # a 'lib' is automatically set in front when creating the library (as in the filename)
