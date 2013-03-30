@@ -335,8 +335,6 @@ void button::mouse_down(SDL_MouseButtonEvent const &event)
 
 		switch (type_) {
 			case TYPE_RADIO:
-				state_ = TOUCHED_PRESSED;
-				break;
 			case TYPE_CHECK:
 				if (state_ == PRESSED_ACTIVE)
 					state_ = TOUCHED_PRESSED;
