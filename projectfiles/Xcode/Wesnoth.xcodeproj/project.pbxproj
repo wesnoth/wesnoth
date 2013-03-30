@@ -891,6 +891,7 @@
 		B5FCE9371104C2A50081F1DF /* toggle_panel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5FCE9091104C2A50081F1DF /* toggle_panel.cpp */; };
 		B5FCE9391104C2A50081F1DF /* vertical_scrollbar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5FCE90D1104C2A50081F1DF /* vertical_scrollbar.cpp */; };
 		B5FCE93A1104C2A50081F1DF /* window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5FCE90F1104C2A50081F1DF /* window.cpp */; };
+		F40C04851706613100B4DA68 /* rename_unit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40C04811706613100B4DA68 /* rename_unit.cpp */; };
 		F419A1F414E21246002F9ADC /* game_end_exceptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F419A1F314E21246002F9ADC /* game_end_exceptions.cpp */; };
 		F419A2C314F5BCFE002F9ADC /* info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F419A2C114F5BCFE002F9ADC /* info.cpp */; };
 		F419A31214F8868A002F9ADC /* manager_ui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F419A31014F8868A002F9ADC /* manager_ui.cpp */; };
@@ -1966,6 +1967,11 @@
 		B5FCE90E1104C2A50081F1DF /* vertical_scrollbar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = vertical_scrollbar.hpp; sourceTree = "<group>"; };
 		B5FCE90F1104C2A50081F1DF /* window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = window.cpp; sourceTree = "<group>"; };
 		B5FCE9101104C2A50081F1DF /* window.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = window.hpp; sourceTree = "<group>"; };
+		F40C04801706613100B4DA68 /* rename_unit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rename_unit.hpp; sourceTree = "<group>"; };
+		F40C04811706613100B4DA68 /* rename_unit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rename_unit.cpp; sourceTree = "<group>"; };
+		F40C04821706613100B4DA68 /* tip.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tip.hpp; sourceTree = "<group>"; };
+		F40C04831706613100B4DA68 /* popup.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = popup.hpp; sourceTree = "<group>"; };
+		F40C04841706613100B4DA68 /* mp_login.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mp_login.hpp; sourceTree = "<group>"; };
 		F419A1F314E21246002F9ADC /* game_end_exceptions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_end_exceptions.cpp; sourceTree = "<group>"; };
 		F419A2C014F5BCFE002F9ADC /* client.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = client.hpp; sourceTree = "<group>"; };
 		F419A2C114F5BCFE002F9ADC /* info.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = info.cpp; sourceTree = "<group>"; };
@@ -3303,6 +3309,11 @@
 		B5A9BCA20ECA805A002BE442 /* dialogs */ = {
 			isa = PBXGroup;
 			children = (
+				F40C04801706613100B4DA68 /* rename_unit.hpp */,
+				F40C04811706613100B4DA68 /* rename_unit.cpp */,
+				F40C04821706613100B4DA68 /* tip.hpp */,
+				F40C04831706613100B4DA68 /* popup.hpp */,
+				F40C04841706613100B4DA68 /* mp_login.hpp */,
 				F4D043D416167BF6007566E8 /* mp_depcheck_select_new.hpp */,
 				F4D043D516167BF6007566E8 /* mp_depcheck_select_new.cpp */,
 				F4D043D616167BF6007566E8 /* mp_depcheck_confirm_change.hpp */,
@@ -4222,6 +4233,7 @@
 				F4D043DB16167BF6007566E8 /* mp_depcheck_confirm_change.cpp in Sources */,
 				F4D043DC16167BF6007566E8 /* mp_create_game_choose_mods.cpp in Sources */,
 				F468E6AD16DF872200A31A5A /* movetype.cpp in Sources */,
+				F40C04851706613100B4DA68 /* rename_unit.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
