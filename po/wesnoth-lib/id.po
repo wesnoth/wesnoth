@@ -5,16 +5,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.3-dev\n"
+"Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2013-03-24 13:24+0100\n"
-"PO-Revision-Date: 2012-01-27 22:37+0700\n"
+"PO-Revision-Date: 2012-12-29 23:17+0700\n"
 "Last-Translator: Yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #. [terrain_type]: id=deep_water
 #. [terrain_type]: id=deep_water_gray
@@ -1404,7 +1405,7 @@ msgstr "Terjemahan:"
 #. [scroll_label]: id=translations
 #: data/gui/default/window/addon_description.cfg:320
 msgid "translations^None"
-msgstr "Tidak ada^terjemahan "
+msgstr "Tidak ada"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:34
@@ -3416,7 +3417,7 @@ msgstr "Menguninstal Add-ons"
 #: src/gui/dialogs/network_transmission.cpp:55
 #: src/gui/dialogs/network_transmission.cpp:57 src/hotkeys.cpp:1130
 msgid "unit_byte^B"
-msgstr "unit_byte^B"
+msgstr "B"
 
 #: src/gui/dialogs/game_load.cpp:270
 msgid "#(Invalid)"
@@ -3652,9 +3653,9 @@ msgstr ""
 
 #: src/hotkey_preferences_display.cpp:659
 #, fuzzy
-#| msgid "Hotkeys"
+#| msgid "Clear Hotkey"
 msgid "Reassign Hotkey"
-msgstr "Hotkey"
+msgstr "Singkir Hotkey"
 
 #: src/hotkeys.cpp:62
 #, fuzzy
@@ -3880,50 +3881,38 @@ msgstr "Lompati animasi"
 
 #. TRANSLATORS: whiteboard menu entry: toggle planning mode
 #: src/hotkeys.cpp:128
-#, fuzzy
-#| msgid "Toggle Planning Mode"
 msgid "whiteboard^Planning Mode"
-msgstr "Mengaktifkan mode yang direncanakan"
+msgstr "Mode yang Direncanakan"
 
 #. TRANSLATORS: whiteboard menu entry: execute planned action
 #: src/hotkeys.cpp:130
-#, fuzzy
-#| msgid "Execute All Actions"
 msgid "whiteboard^Execute Action"
-msgstr "Melaksanakan semua tindakan"
+msgstr "Melaksanakan Tindakan"
 
 #. TRANSLATORS: whiteboard menu entry: execute all planned actions
 #: src/hotkeys.cpp:132
-#, fuzzy
-#| msgid "Execute All Actions"
 msgid "whiteboard^Execute All Actions"
-msgstr "Melaksanakan semua tindakan"
+msgstr "Melaksanakan Semua Tindakan"
 
 #. TRANSLATORS: whiteboard menu entry: delete planned action
 #: src/hotkeys.cpp:134
 msgid "whiteboard^Delete Action"
-msgstr ""
+msgstr "Menghapus Tindakan"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action up queue
 #: src/hotkeys.cpp:136
-#, fuzzy
-#| msgid "Move Action Up Queue"
 msgid "whiteboard^Move Action Up"
-msgstr "Pindahkan tindakan atas antrian"
+msgstr "Pindahkan Tindakan ke Atas"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action down queue
 #: src/hotkeys.cpp:138
-#, fuzzy
-#| msgid "Move Action Down Queue"
 msgid "whiteboard^Move Action Down"
-msgstr "Pindahkan tindakan bawah antrian"
+msgstr "Pindahkan Tindakan ke Bawah"
 
 #. TRANSLATORS: whiteboard menu entry: plan as though the chosen unit were dead
 #: src/hotkeys.cpp:140
-#, fuzzy
-#| msgid "Suppose Dead"
 msgid "whiteboard^Suppose Dead"
-msgstr "Misalkan mati"
+msgstr "Misalkan Mati"
 
 #: src/hotkeys.cpp:142
 msgid "Quit to Desktop"
@@ -4467,37 +4456,6 @@ msgstr ""
 "Kunci '$deprecated_key' telah diubah namanya menjadi '$key'. Dukungan untuk "
 "'$deprecated_key' akan dipindahkan dalam versi $removal_version."
 
-#~ msgid "Types"
-#~ msgstr "Jenis"
-
-#~ msgid "Inspection window"
-#~ msgstr "Jendela Pemeriksaan"
-
-#~ msgid "Variable"
-#~ msgstr "Variable"
-
-#~ msgid "Use new lobby interface"
-#~ msgstr "Gunakan alat penghubung lobi baru"
-
-#~ msgid "Use New Lobby Interface"
-#~ msgstr "Gunakan Alat Penghubung Lobi Baru"
-
-#, fuzzy
-#~| msgid "Default"
-#~ msgid "Reset Defaults"
-#~ msgstr "Default"
-
-#~ msgid "Change Hotkey"
-#~ msgstr "Ganti Hotkey"
-
-#, fuzzy
-#~| msgid "Select All"
-#~ msgid "Reset All"
-#~ msgstr "Pilih Semua"
-
-#~ msgid "This hotkey is already in use."
-#~ msgstr "Hotkey ini sudah dipakai."
-
 #~ msgid "Update Add-ons"
 #~ msgstr "Update Add-ons"
 
@@ -4513,17 +4471,38 @@ msgstr ""
 #~ msgid "OOS error"
 #~ msgstr "Ada kesalahan OOS"
 
+#~ msgid "Types"
+#~ msgstr "Jenis"
+
+#~ msgid "Inspection window"
+#~ msgstr "Jendela Pemeriksaan"
+
+#~ msgid "Variable"
+#~ msgstr "Variable"
+
 #~ msgid "Create game"
 #~ msgstr "Buat permainan"
 
 #~ msgid "Save replay on SP/MP victory or MP defeat"
 #~ msgstr "Simpan replay pada Kemenangan PS/MP atau Kekalahan MP"
 
+#~ msgid "Use new lobby interface"
+#~ msgstr "Gunakan alat penghubung lobi baru"
+
 #~ msgid "Save Replay on SP/MP Victory or MP Defeat"
 #~ msgstr "Simpan ulangan permainan pada Kemenangan PS/MP atau Kekalahan MP"
 
 #~ msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 #~ msgstr "Hapus Simpanan-Otomatis pada Kemenangan PS/MP atau Kekalahan MP"
+
+#~ msgid "Use New Lobby Interface"
+#~ msgstr "Gunakan Alat Penghubung Lobi Baru"
+
+#~ msgid "Change Hotkey"
+#~ msgstr "Ganti Hotkey"
+
+#~ msgid "This hotkey is already in use."
+#~ msgstr "Hotkey ini sudah dipakai."
 
 #~ msgid "Execute Planned Action"
 #~ msgstr "Melaksanakan tindakan yang direncanakan"
