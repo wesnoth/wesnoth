@@ -23,9 +23,6 @@
 #include "version.hpp"
 #include "wesconfig.h"
 #include "serialization/string_utils.hpp"
-#ifdef HAVE_REVISION
-#include "revision.hpp"
-#endif /* HAVE_REVISION */
 #ifdef LOAD_REVISION
 #include "revision.h"
 #endif
