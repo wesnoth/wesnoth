@@ -2,33 +2,35 @@
 # Vietnamese translations for Battle for Wesnoth package.
 # Copyright (C) 2009 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Automatically generated, 2009.
 #
+# Automatically generated, 2009.
 # Automatically generated <>, 2010.
 # Huynh Yen Loc <nightgaunt13@gmail.com>, 2010, 2011.
+# Phạm Thành Nam <phamthanhnam.ptn@gmail.com>, 2013.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.5.7+dev\n"
+"Project-Id-Version: Battle for Wesnoth 1.5.7+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-03-09 08:51+0100\n"
-"PO-Revision-Date: 2011-03-30 14:11SE Asi\n"
-"Last-Translator: Huynh Yen Loc <nightgaunt13@gmail.com>\n"
-"Language-Team: Vietnamese <nightgaunt13@gmail.com>\n"
-"Language: \n"
+"POT-Creation-Date: 2013-03-24 13:24+0100\n"
+"PO-Revision-Date: 2013-03-27 14:57+0800\n"
+"Last-Translator: Phạm Thành Nam <phamthanhnam.ptn@gmail.com>\n"
+"Language-Team: Vietnamese <>\n"
+"Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Lokalize 1.4\n"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:9
 msgid "The South Guard"
-msgstr "Phòng tuyến phía Nam"
+msgstr "Đội bảo vệ phương nam"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:10
 msgid "TSG"
-msgstr "PTpN"
+msgstr "ĐBVPN"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:17
@@ -38,20 +40,20 @@ msgid ""
 "‘Civilian’ difficulty level is aimed at first-time players.\n"
 "\n"
 msgstr ""
-"Một kỵ sĩ trẻ, Deoran, được phái đến để chỉ huy Phòng tuyến phía Nam... Ghi "
-"chú: Chiến dịch này được thiết kế như là một bảngiới thiệu về Wesnoth. Độ "
-"khó 'Thường dân' dành cho người mới chơi lần đầu.\n"
+"Một hiệp sĩ trẻ, Deoran, được phái đi chỉ huy đội bảo vệ phương nam... Ghi "
+"chú: Chiến dịch này được thiết kế như một lời giới thiệu về Wesnoth. Mức độ "
+"khó 'Thường dân' dành cho người chơi lần đầu.\n"
 "\n"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:19
 msgid "(Novice level, 9 scenarios.)"
-msgstr "(Mức độ mới bắt đầu, 9 màn chơi.)"
+msgstr "(Mức độ mới bắt đầu, 9 màn chơi)"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:22
 msgid "(Beginner)"
-msgstr "(Người mới bắt đầu)"
+msgstr "(Mới bắt đầu)"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:22
@@ -91,12 +93,12 @@ msgstr "Bảo trì chiến dịch"
 #. [about]
 #: data/campaigns/The_South_Guard/_main.cfg:48
 msgid "Artwork and Graphics Design"
-msgstr "Thiết kế đồ họa và mỹ thuật"
+msgstr "Thiết kế nghệ thuật và đồ họa"
 
 #. [scenario]: id=01_Born_to_the_Banner
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:5
 msgid "Born to the Banner"
-msgstr "Sinh ra để phục vụ ngọn cờ"
+msgstr "Sinh ra để theo ngọn cờ"
 
 #. [side]: id=Deoran
 #. [side]: type=Horseman Commander, id=Deoran
@@ -140,7 +142,7 @@ msgstr "Deoran"
 #: data/campaigns/The_South_Guard/scenarios/09b_Bandit_Epilogue.cfg:20
 #: data/campaigns/The_South_Guard/scenarios/10a_Elf_Epilogue.cfg:20
 msgid "South Guard"
-msgstr "Phòng tuyến phía Nam"
+msgstr "Đội bảo vệ phương nam"
 
 #. [side]: type=Bandit, id=Urza Mathin
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:55
@@ -160,7 +162,7 @@ msgstr "Urza Mathin"
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:70
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_to_Kerlath.cfg:108
 msgid "Bandits"
-msgstr "Những kẻ cướp"
+msgstr "Kẻ cướp"
 
 #. [label]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:94
@@ -170,7 +172,7 @@ msgstr "Pháo đài bên sông"
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:105
 msgid "Investigate the river fort"
-msgstr "Kiểm tra pháo đài bên sông"
+msgstr "Điều tra pháo đài bên sông"
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:109
@@ -208,10 +210,9 @@ msgid ""
 "previous commander, had squandered his time in games and diversions and "
 "bandits had overrun the land..."
 msgstr ""
-"Deoran sớm nhận ra mình phải đối đầu với những khó khăn ngay khi lên chỉ "
-"huy. Loris, viên chỉ huy trước đó, trong thời gian qua đã phung phí quá "
-"nhiều thời gian vào những thú vui vô bổ và bọn cướp đã lan ra khắp vùng "
-"đất...."
+"Deoran sớm nhận ra mình đang gặp nhiều thử thách trong vai trò chỉ huy. "
+"Loris, viên chỉ huy trước đó, đã phung phí thời gian vào những thú vui vô bổ "
+"và bọn cướp đã lan tràn khắp vùng đất..."
 
 #. [unit]: id=Moreth
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:167
@@ -224,8 +225,8 @@ msgid ""
 "You’ll never take this village! I’ve seen your kind kill too many townsmen, "
 "and I’ll defend them to the death!"
 msgstr ""
-"Ngươi sẽ không bao giờ chiếm được làng này đâu! Ta đã thấy bọn ngươi giết "
-"quá nhiều thường dân rồi. Dù có chết ta cũng sẽ bảo vệ nơi này!"
+"Ngươi sẽ không bao giờ chiếm được làng này đâu! Ta thấy bè lũ các ngươi giết "
+"quá nhiều thường dân rồi. Ta sẽ bảo vệ họ đến hơi thở cuối cùng!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:185
@@ -233,9 +234,8 @@ msgid ""
 "My kind? I am a soldier of Wesnoth, a messenger of King Haldric, and the new "
 "commander of the South Guard! What do you mean, <i>“my kind”</i>?"
 msgstr ""
-"Bọn ngươi? Ta là chiến binh của Wesnoth, là người đưa tin của Vua Haldric, "
-"và cũng là chỉ huy mới của Phòng tuyến phía Nam. Ngươi nói 'bọn ngươi' thế "
-"nghĩa là sao?"
+"Bè lũ bọn ta? Ta là lính của Wesnoth, sứ giả của vua Haldric, và người chỉ "
+"huy mới của đội bảo vệ phương nam. Ngươi nói <i>“bè lũ”</i> nghĩa là sao?"
 
 #. [message]: speaker=Moreth
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:190
@@ -244,9 +244,9 @@ msgid ""
 "the towns and killing the villagers. What are you doing here? Sir Gerrick "
 "and I were the last of the South Guard..."
 msgstr ""
-"Xin lỗi, thưa ngài! Tôi nghĩ ngài là một trong bọn cướp phá và giết chóc dân "
-"làng. Ngài có việc gì ở đây? Ngài Gerrick và tôi là những chiến binh cuối "
-"cùng còn của Phòng tuyến phía Nam...."
+"Xin lỗi, thưa ngài! Tôi cứ nghĩ ngài là một trong số bọn cướp chuyên lùng "
+"sục và giết hại dân làng. Ngài đang làm gì ở đây? Ngài Gerrick và tôi là "
+"những người cuối cùng của đội bảo vệ phương nam..."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:195
@@ -255,9 +255,9 @@ msgid ""
 "must arm the villagers and drive off the bandits before they can do any more "
 "harm!"
 msgstr ""
-"Ta được phái đến để lãnh đạo Phòng tuyến phía Nam và lập lại trật tự. Chúng "
-"ta phải trang bị cho dân làng và quét sạch lũ cướp đó trước khi chúng gây "
-"thêm đau khổ!"
+"Ta được phái đến để chỉ huy đội bảo vệ phương nam và thiết lập trật tự. "
+"Chúng ta phải vũ trang cho dân làng và tống cổ bọn cướp trước khi chúng có "
+"thể làm bất cứ thứ gì tai hại hơn!"
 
 #. [message]: speaker=Moreth
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:200
@@ -265,23 +265,17 @@ msgid ""
 "You should head to the river fort! Sir Gerrick will want to know that "
 "reinforcements have arrived!"
 msgstr ""
-"Thế thì ngài nên đến pháo đài bên sông! Ngài Gerrick đang mong tin viện binh "
-"đến!"
+"Ngài nên đến pháo đài bên sông! Ngài Gerrick muốn biết rằng viện binh đã đến!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:209
-#, fuzzy
-#| msgid ""
-#| "Whenever you see a target that looks like this, you should move your "
-#| "leader (or whatever unit the dialogue just suggested) onto the hex that "
-#| "contains it."
 msgid ""
 "Whenever you see a target that looks like this, you should move your leader "
 "(or whatever unit the dialog just suggested) onto the hex that contains it."
 msgstr ""
-"Khi nào bạn thấy một dấu hiệu trông giống như thế này, bạn nên di chuyển chỉ "
-"huy của bạn (hay bất cứ quân lính của bạn trước đó được nhắc đến) đến ô chứa "
-"dấu hiệu đấy."
+"Mỗi khi bạn thấy một mục tiêu trông giống như thế này, bạn nên di chuyển "
+"người chỉ huy của mình (hoặc bất kỳ đơn vị nào hộp thoại vừa đề nghị) đến ô "
+"lục giác chứa nó."
 
 #. [message]: speaker=Urza Mathin
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:215
@@ -289,8 +283,8 @@ msgid ""
 "Ha! This new commander is a mere boy. He will soon share the fate of that "
 "swine Loris!"
 msgstr ""
-"Ha! Tên chỉ huy mới chỉ là đứa nhóc con. Hắn sẽ sớm giống như con lợn Loris "
-"kia thôi!"
+"Ha! Tên chỉ huy mới chỉ là một thằng nhóc. Hắn sẽ sớm cùng chung số phận với "
+"con lợn Loris đó thôi!"
 
 #. [unit]: type=Infantry Lieutenant, id=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:237
@@ -304,9 +298,9 @@ msgid ""
 "have overrun the whole countryside, and are killing and pillaging without "
 "pity. You must raise the South Guard again and drive off the bandits!"
 msgstr ""
-"Thưa ngài, thật là tốt khi Vua Haldric đã cho ngài đến đây! Bọn cướp đã tràn "
-"ngập toàn bộ vùng quê, chúng giết và cướp bóc một cách tàn nhẫn. Ngài phải "
-"phát động Phòng tuyến phía Nam và đuổi bọn chúng đi!"
+"Thưa ngài, thật tốt khi vua Haldric đã điều ngài đến vùng đất của chúng tôi! "
+"Bọn cướp đã tràn ngập toàn bộ vùng quê, giết chóc và cướp bóc không ghê tay. "
+"Ngài phải vực lại đội bảo vệ phương nam và tống cổ bọn cướp đi!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:254
@@ -314,9 +308,9 @@ msgid ""
 "No doubt I am needed here. Unfortunately I have seen only farm tools to arm "
 "our men with. They are valorous, but cannot fight bandits with pitchforks!"
 msgstr ""
-"Đúng là nơi này cần ta. Nhưng làm sao nông dân có thể chống lại bọn cướp kia "
-"với nông cụ thô sơ. Họ dũng cảm, nhưng không thể chống lại kẻ thù bằng chỉ "
-"cây chĩa được!"
+"Chắc chắn nơi này cần ta. Khốn nỗi ta chỉ nhìn thấy các nông cụ thô sơ để "
+"trang bị cho mọi người. Họ dũng cảm, nhưng không thể chiến đấu với bọn cướp "
+"bằng chĩa hất cỏ được!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:259
@@ -324,8 +318,8 @@ msgid ""
 "I will open the citadel’s armory. We have a supply of spears and bows, and "
 "lacked only a leader to bring us to battle with them!"
 msgstr ""
-"Tôi sẽ mở kho vũ khí dự trữ. Chúng tôi có một kho giáo và cung, chỉ thiếu "
-"một người chỉ huy dẫn dắt để chống lại bọn chúng!"
+"Tôi sẽ mở kho vũ khí trong thành. Chúng tôi có nguồn dự trữ giáo và cung, "
+"chỉ thiếu một người chỉ huy để dẫn dắt chúng tôi chiến đấu với bọn chúng!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:266
@@ -334,9 +328,9 @@ msgid ""
 "right, but when he is near less experienced troops, he makes their attack "
 "better too!"
 msgstr ""
-"Ngài Gerrick là một vị tướng bộ binh. Ông ta là một chiến binh dũng mãnh như "
-"ông vốn có, nhưng khi những người lính cấp thấp chiến đấu bên cạnh ông, họ "
-"cũng sẽ đạt hiệu quả cao hơn trong cuộc chiến!"
+"Ngài Gerrick là một sĩ quan chỉ huy bộ binh. Bản thân ông ta là một chiến "
+"binh mạnh, nhưng khi ông ta ở gần những quân lính ít kinh nghiệm hơn, ông ta "
+"cũng làm cho đòn tấn công của họ mạnh hơn!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:272
@@ -344,8 +338,8 @@ msgid ""
 "Units that have a <i>hero</i> marker are vital to your campaign. If any of "
 "them die, you will lose the scenario, so guard them carefully!"
 msgstr ""
-"Đơn vị quân có dấu hiệu \"anh hùng\" là điều kiện sống còn cho chiến dịch. "
-"Nếu bất kì ai trong số họ hi sinh, bạn sẽ thất bại ở màn chơi, vì thế bảo vệ "
+"Các đơn vị có dấu hiệu <i>anh hùng</i> là tối quan trọng đối với chiến dịch "
+"của bạn. Nếu bất kì ai trong số họ chết, bạn sẽ thua cuộc, vì thế hãy bảo vệ "
 "họ cẩn thận!"
 
 #. [objective]: condition=lose
@@ -367,7 +361,7 @@ msgstr "Ngài Gerrick chết"
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:303
 msgid "Head back to the encampment where you started and recruit some troops!"
-msgstr "Quay về chỗ cắm trại nơi bạn bắt đầu và tuyển vài đơn vị lính!"
+msgstr "Quay về doanh trại nơi bạn đã bắt đầu và tuyển một số quân lính!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:326
@@ -375,8 +369,8 @@ msgid ""
 "While you’re in your camp, you can recruit more troops. Build up a small "
 "force to use against the bandits that Urza Mathin recruits."
 msgstr ""
-"Khi bạn đang ở trong trại của mình, bạn có thể tuyển thêm lính. Tạo nên một "
-"tiểu đội để chống lại bọn cướp dưới trướng Urza Mathin"
+"Chừng nào bạn còn ở trong trại, bạn còn có thể tuyển thêm quân lính. Xây "
+"dựng một lực lượng nhỏ để chống lại bọn cướp mà Urza Mathin tuyển."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:332
@@ -385,9 +379,9 @@ msgid ""
 "that lack a ranged attack, like Thieves and Thugs. They also carry a sword "
 "and can defend themselves against melee attacks."
 msgstr ""
-"Lính cung có đòn tấn công từ xa tốt, và rất hiệu quả khi đấu với những đơn "
-"vị không có vũ khí tầm xa, như là Kẻ trộm cắp và Kẻ côn đồ. Lính cung cũng "
-"được trang bị một thanh kiếm để tự vệ khi cận chiến."
+"Lính cung có đòn tấn công từ xa mạnh, và rất hiệu quả để chống lại các đơn "
+"vị không có đòn tấn công từ xa, như Kẻ trộm cắp và Kẻ côn đồ. Lính cung cũng "
+"mang kiếm và có thể tự bảo vệ trước các đòn tấn công cận chiến."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:337
@@ -396,9 +390,9 @@ msgid ""
 "They also have a weak ranged attack. They form the backbone of the South "
 "Guard."
 msgstr ""
-"Lính giáo có đòn cận chiến tốt, và có thể chống lại hầu hết các đơn vị quân. "
-"Lính giáo còn có một đòn tấn công tầm xa yếu. Họ chính là trụ cột của phòng "
-"tuyến phía Nam."
+"Lính giáo có đòn tấn công cận chiến mạnh, và hiệu quả trước hầu hết các đơn "
+"vị. Họ cũng có một đòn tấn công từ xa yếu. Họ tạo thành xương sống của đội "
+"bảo vệ phương nam."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:341
@@ -407,9 +401,9 @@ msgid ""
 "that you will encounter. For now, concentrate on creating a small corps of "
 "experienced Bowmen."
 msgstr ""
-"Đội quân tốt nhất sẽ có sự phối hợp của những binh chủng khác nhau để đối "
-"phó với kẻ thủ khác nhau mà bạn gặp. Bây giờ, tập trung để tuyển một toán "
-"Lính cung thiện chiến."
+"Quân đội tốt nhất sẽ có sự trộn lẫn của nhiều đơn vị để đối phó với các kẻ "
+"thù khác nhau mà bạn sẽ gặp. Ngay bây giờ, hãy tập trung vào việc tạo một "
+"quân đoàn nhỏ các Lính cung có kinh nghiệm."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:364
@@ -417,8 +411,8 @@ msgid ""
 "Sir, bandits are most dangerous at night. Let us hold the north bank of the "
 "river until dawn and press our attack in the morning!"
 msgstr ""
-"Thưa ngài, lũ cướp nguy hiểm nhất vào ban đêm. Chúng ta hãy giữ bờ Bắc của "
-"con sông đến khi bình minh và phản công vào buổi sáng!"
+"Thưa ngài, bọn cướp nguy hiểm nhất vào ban đêm. Chúng ta hãy giữ bờ bắc của "
+"dòng sông đến bình minh và phản công vào buổi sáng!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:370
@@ -428,11 +422,11 @@ msgid ""
 "<i>chaotic</i>, which means that they receive a bonus at night and a penalty "
 "during the day. You will be much more effective fighting during the day."
 msgstr ""
-"Tất cả binh chủng của bạn đều là 'Chính thống'. Có nghĩa là họ sẽ nhận thêm "
-"lợi thế khi chiến đấu vào ban ngày, và hạn chế vào ban đêm. Còn những binh "
-"lính của Urza Mathin đều là 'Hỗn độn', tức là bọn chúng sẽ mạnh hơn vào ban "
-"đêm và yếu hơn vào ban ngày. Bạn sẽ chiến đấu hiệu quả hơn vào lúc trời còn "
-"sáng."
+"Tất cả các đơn vị của bạn đều là <i>chính thống</i>. Điều này có nghĩa là họ "
+"tăng thêm sức mạnh chiến đấu vào ban ngày, và giảm đi vào ban đêm. Tất cả "
+"các đơn vị của Urza Mathin đều là <i>hỗn độn</i>, nghĩa là chúng mạnh lên "
+"vào ban đêm và yếu đi vào ban ngày. Bạn sẽ chiến đấu hiệu quả hơn nhiều vào "
+"ban ngày."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:390
@@ -440,9 +434,9 @@ msgid ""
 "My lord! The dawn is breaking — now is the time for us to attack and drive "
 "these bandits from our lands. To me men of the South Guard!"
 msgstr ""
-"Thưa ngài! Bình minh đang đến - giờ là lúc để chúng ta đánh và quét sạch lũ "
-"cướp ra khỏi vùng đất này. Theo tôi, hỡi những chiến binh của Phòng tuyến "
-"phía Nam!"
+"Thưa ngài! Bình minh đang đến - giờ là lúc để chúng ta tấn công và đuổi cổ "
+"bọn cướp này khỏi vùng đất của chúng ta. Theo tôi, hỡi các anh em của đội "
+"bảo vệ phương nam!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:396
@@ -450,9 +444,9 @@ msgid ""
 "During the day your units will deal more damage, and Urza Mathin’s less. The "
 "more of his troops you can defeat during the day, the better!"
 msgstr ""
-"Vào ban ngày quân của bạn sẽ có sức sát thương cao hơn, và quân của Urza "
-"Mathin có sức sát thương kém hơn. Càng giết nhiều binh lính của hắn vào ban "
-"ngày, càng có lợi cho chúng ta!"
+"Vào ban ngày, các đơn vị của bạn sẽ gây nhiều thiệt hại hơn, và các đơn vị "
+"của Urza Mathin ít hơn. Bạn có thể đánh bại binh lính của hắn vào ban ngày, "
+"càng nhiều càng tốt!"
 
 #. [unit]: type=Merman Warrior, type=Merman Warrior, type=Merman Fighter, id=Myssh
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:423
@@ -470,9 +464,9 @@ msgid ""
 "Your people have been allies of our lord, King Typhon. We will help you "
 "drive these bandits from your land if you allow us to live here in peace."
 msgstr ""
-"Người dân của ngài là đồng minh của chủ tướng chúng tôi, Vua Typhon. Chúng "
-"tôi sẽ giúp ngài đánh bại lũ cướp nếu ngài đồng ý cho chúng tôi sống yên ổn "
-"nơi đây."
+"Người của ngài từng là đồng minh của chủ tướng chúng tôi, vua Typhon. Chúng "
+"tôi sẽ giúp ngài đánh đuổi bọn cướp khỏi vùng đất này, nếu ngài cho phép "
+"chúng tôi sống yên ổn ở đây."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:459
@@ -480,9 +474,9 @@ msgid ""
 "We welcome your aid in the fight against these criminals! The rivers of this "
 "land are yours if you will aid us in our battles."
 msgstr ""
-"Chúng tôi sẵn sàng đón nhận sự trợ giúp của các bạn để chống lại lũ cướp "
-"này. Các bạn sẽ sở hữu những dòng sông trong vùng đất nếu các bạn giúp chúng "
-"tôi trong cuộc chiến."
+"Chúng tôi hoan nghênh sự giúp đỡ của các bạn trong cuộc chiến chống lại bọn "
+"tội phạm! Những dòng sông của vùng đất này sẽ là của các bạn, nếu các bạn "
+"giúp chúng tôi."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:466
@@ -491,9 +485,9 @@ msgid ""
 "in rivers and swamps and they will fight well! Put them on dry land and "
 "they’re in trouble!"
 msgstr ""
-"Bây giờ bạn có thể tuyển Thợ săn người cá. Người cá là chủng tộc sống dưới "
-"nước. Họ sẽ chiến đấu tốt trong môi trường nước hoặc đầm lầy. Nếu lên trên "
-"vùng cạn thì họ sẽ gặp khó khăn!"
+"Bây giờ bạn có thể tuyển Thợ săn người cá. Người cá là các sinh vật sống "
+"dưới nước. Hãy giữ họ ở dưới sông và trong đầm lầy, họ sẽ chiến đấu tốt! Nếu "
+"đưa họ lên đất khô, họ sẽ gặp rắc rối!"
 
 #. [unit]: type=Longbowman, id=Aleron
 #. [unit]: type=Peasant, id=Aleron
@@ -513,8 +507,8 @@ msgid ""
 "Stay! It’s me, Aleron! The villagers hid me from the bandits when the town "
 "was overrun. They have kept me safe, though I was gravely wounded..."
 msgstr ""
-"Là tôi - Aleron! Dân làng đã giấu tôi khỏi lũ cướp khi thị trấn bị càn quét. "
-"Họ đã giữ tôi an toàn mặc dù bị thương nặng."
+"Đừng! Là tôi, Aleron! Dân làng đã che giấu tôi khỏi bọn cướp khi thị trấn bị "
+"tàn phá. Họ đã giữ tôi an toàn, dù tôi bị thương nặng..."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:510
@@ -522,8 +516,8 @@ msgid ""
 "I am glad to find you alive Aleron, we feared the worst when you did not "
 "return after the battle!"
 msgstr ""
-"Tôi mừng vì anh vẫn còn sống Aleron, chúng tôi đã nghĩ đến điều tệ nhất khi "
-"anh không trở về sau trận chiến!"
+"Tôi mừng vì anh vẫn còn sống, Aleron. Chúng tôi đã lo sợ điều tồi tệ nhất "
+"khi anh không trở về sau trận chiến!"
 
 #. [message]: speaker=Aleron
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:514
@@ -531,8 +525,8 @@ msgid ""
 "Let us punish these bandits for their crimes and murders! My wounds are "
 "healed and I am ready for battle!"
 msgstr ""
-"Lũ cướp phải trả giá cho những gì chúng gây ra! Tôi đã bình phục và sẵn sàng "
-"cho cuộc chiến!"
+"Hãy trừng trị bọn cướp vì những tội ác và hành động giết người của chúng! "
+"Tôi đã bình phục và sẵn sàng chiến đấu!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:518
@@ -540,14 +534,14 @@ msgid ""
 "Aleron is a Longbowman, stronger and better trained than regular bowmen. His "
 "arrows are deadly to enemies without a ranged attack."
 msgstr ""
-"Aleron là một người lính trường cung, khỏe hơn và được huấn luyện tốt hơn "
-"lính cung thường. Mũi tên của anh ta là vũ khí lợi hại khi giao chiến với "
-"những kẻ thù không có đòn tấn công tầm xa."
+"Aleron là một Lính trường cung, mạnh hơn và được huấn luyện tốt hơn các lính "
+"cung thông thường. Những mũi tên của anh ta là vũ khí lợi hại với những kẻ "
+"thù không có đòn tấn công từ xa."
 
 #. [message]: speaker=Aleron
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:539
 msgid "Not more bandits... We have nothing left. Begone!"
-msgstr "Cướp nữa à... Chúng ta chẳng còn gì nữa đâu. Cút đi!"
+msgstr "Lại cướp nữa à... Bọn ta chẳng còn gì đâu. Cút đi!"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:543
@@ -555,13 +549,13 @@ msgid ""
 "We are no bandits. The banner of the South Guard flies again! Help us drive "
 "these criminals from your land."
 msgstr ""
-"Chúng tôi không phải là cướp. Cờ hiệu của Phòng tuyến phía Nam được giương "
-"cao lại rồi! Hãy giúp chúng tôi đánh đuổi lũ cướp này ra khỏi vùng đất này."
+"Chúng tôi không phải là cướp. Ngọn cờ của đội bảo vệ phương nam lại tung "
+"bay! Hãy giúp chúng tôi tống cổ bọn tội phạm khỏi vùng đất này."
 
 #. [message]: speaker=Aleron
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:547
 msgid "However I can, I will help you!"
-msgstr "Tôi sẽ giúp bằng tất cả khả năng !"
+msgstr "Tôi sẽ giúp các bạn bằng tất cả khả năng của mình!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:551
@@ -569,8 +563,8 @@ msgid ""
 "Garrison the villages behind our lines and keep the enemy from slipping "
 "around us at night."
 msgstr ""
-"Bảo vệ dân làng sau hàng ngũ chúng ta và giữ cho kẻ thù không lẻn ra sau tấn "
-"công vào ban đêm."
+"Hãy bố trí lực lượng ở các ngôi làng phía sau hàng ngũ và ngăn không cho kẻ "
+"thù lẻn quanh chúng ta vào ban đêm."
 
 #. [unit]: type=Footpad, id=Glasar
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:561
@@ -580,7 +574,7 @@ msgstr "Glasar"
 #. [message]: speaker=Glasar
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:567
 msgid "This village is ours to plunder! Begone or I will kill you all!"
-msgstr "Làng này là của bọn ta! Cút đi hoặc ta sẽ giết hết các ngươi!"
+msgstr "Làng này là của bọn ta! Cút đi nếu không ta sẽ giết hết các ngươi!"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:571
@@ -588,9 +582,9 @@ msgid ""
 "Do you not see the banners flying in the wind? The South Guard fights again. "
 "Flee while you can, or you will meet swift death on our spears!"
 msgstr ""
-"Ngươi không thấy cờ hiệu sao ? Phòng tuyến phía Nam đã tập hợp lại rồi. Chạy "
-"ngay khi còn có thể, hay là nhận lấy cái chết nhanh gọn dưới ngọn giáo của "
-"chúng ta!"
+"Ngươi không thấy cờ đang bay trong gió sao? Đội bảo vệ phương nam lại chiến "
+"đấu. Hãy chạy ngay khi còn có thể, nếu không ngươi sẽ chết nhanh chóng dưới "
+"những mũi giáo của bọn ta!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:594
@@ -598,8 +592,8 @@ msgid ""
 "Remember, Moreth told you that you should go meet Sir Gerrick at the river "
 "fort. Move Deoran there and find out what Sir Gerrick has to say!"
 msgstr ""
-"Nhớ rằng, Moreth bảo bạn là nên gặp ngài Gerrick tại pháo đài bên sông. Di "
-"chuyển Deoran lại đó và xem ngài Gerrick sẽ nói gì!"
+"Nhớ rằng, Moreth đã bảo bạn nên gặp ngài Gerrick tại pháo đài bên sông. Di "
+"chuyển Deoran đến đó và xem ngài Gerrick sẽ nói gì!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:627
@@ -608,15 +602,16 @@ msgid ""
 "Archers will be especially effective against him, because he has no ranged "
 "attack. Surround him, and kill him!"
 msgstr ""
-"Nhớ là, nhiệm vụ của bạn là đánh bại Urza Mathin. Hắn là mục tiêu chính. "
-"Lính cung đặc biệt hiệu quả để tiêu diệt hắn ta, vì hắn không có đòn đánh "
-"xa. Bao vây và tiêu diệt hắn!"
+"Nhớ rằng, nhiệm vụ của bạn là đánh bại Urza Mathin. Hắn là mục tiêu chính. "
+"Các lính cung đặc biệt hiệu quả để chống lại hắn, vì hắn không có đòn tấn "
+"công từ xa. Hãy bao vây và tiêu diệt hắn!"
 
 #. [message]: speaker=Urza Mathin
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:645
 msgid "My days of pillage and plunder are over! My brothers will avenge me..."
 msgstr ""
-"Những ngày cướp phá giết chóc hết rồi! Anh em của ta sẽ sẽ báo thù cho ta ..."
+"Những ngày cướp phá của ta thế là hết! Các anh trai của ta sẽ báo thù cho "
+"ta..."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:655
@@ -624,8 +619,8 @@ msgid ""
 "He is dead! Congratulations, commander. We thought we would never see "
 "reinforcements — Did Sir Loris send you from Westin?"
 msgstr ""
-"Hắn đã chết! Chúc mừng ngài! Chúng tôi đã nghĩ rằng viện binh sẽ không bao "
-"giờ đến. Ngài Loris gởi ngài đến từ Westin phải không?"
+"Hắn đã chết! Chúc mừng ngài, chỉ huy. Chúng tôi cứ nghĩ sẽ không bao giờ gặp "
+"viện binh. Ngài Loris đã điều ngài đến từ Westin phải không?"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:660
@@ -634,9 +629,9 @@ msgid ""
 "King has heard no news in weeks. How long have you and your men been shut up "
 "in the citadel?"
 msgstr ""
-"Không, Ta được lệnh của Vua Hadric đến chỉ huy Phòng tuyến phía Nam. Đức vua "
-"đã không nghe tin tức gì mấy tuần rồi. Các anh đã đóng cổng thành từ bao lâu "
-"rồi?"
+"Không. Ta được vua Haldric điều đến để chỉ huy đội bảo vệ phương nam. Đức "
+"vua không nghe được tin tức gì trong nhiều tuần qua. Các anh đã bị vây trong "
+"thành bao lâu rồi?"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:665
@@ -646,10 +641,10 @@ msgid ""
 "my men. We held the citadel, and held out vain hope for reinforcement from "
 "Westin. We never thought we would see men sent from the King!"
 msgstr ""
-"Gần hai tháng. Ngài Loris dẫn một đội quân tuần tra dọc theo đường Westin và "
-"không thấy quay về, đêm sau thì bọn cướp tấn công và giết tám người lính. "
-"Chúng tôi cố thủ trong thành, và giữ niềm hi vọng nhỏ nhoi rằng viện binh từ "
-"Westin sẽ đến. Chúng tôi không ngờ rằng đức vua lại cử quân đến!"
+"Gần hai tháng. Ngài Loris dẫn một đội tuần tra dọc theo đường Westin và "
+"chẳng bao giờ trở về. Đêm hôm sau, bọn cướp đã tấn công và giết tám người. "
+"Chúng tôi cố thủ trong thành, và không còn hy vọng vào viện binh từ Westin. "
+"Chúng tôi không bao giờ nghĩ sẽ gặp những người nhà vua cử đến!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:671
@@ -657,8 +652,9 @@ msgid ""
 "This is worse than even my darkest fears. We must ride to Westin at once, "
 "and hope that Sir Loris is there and well! Come men! Ride for Westin!"
 msgstr ""
-"Chuyện này còn tệ hơn cả điều ta sợ. Chúng ta phải đến Westin ngay lập tức, "
-"và hi vọng ngài Loris ở đó và vẫn ổn! Nào mọi người! Đến Westin!"
+"Chuyện này còn tệ hơn cả những điều ta sợ. Chúng ta phải phi ngựa đến Westin "
+"ngay lập tức, hy vọng ngài Loris ở đó và vẫn ổn! Đi thôi mọi người! Đến "
+"Westin!"
 
 #. [scenario]: id=02_Proven_by_the_Sword
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:5
@@ -692,8 +688,8 @@ msgid ""
 "Look! There is smoke coming from Westin. That can only mean that bandits "
 "have overrun the garrison and are sacking the city!"
 msgstr ""
-"Nhìn kìa! Có khói bốc ra từ Westin. Vậy là lũ cướp đã vào được thành phố và "
-"đang cướp bóc!"
+"Nhìn kìa! Có khói bốc ra từ Westin. Điều đó chỉ có thể là bọn cướp đã tràn "
+"qua đồn trú và đang cướp phá thành phố!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:188
@@ -702,8 +698,8 @@ msgid ""
 "ruins and make a great slaughter of all who live therein. We must act "
 "quickly."
 msgstr ""
-"Nếu để bọn chúng tự do quá lâu, chúng sẽ biến cả phá hủy cả thành phố và "
-"thảm sát tất cả người dân... Chúng ta phải hành động thật nhanh."
+"Nếu để bọn chúng tự do quá lâu, chúng sẽ biến thành phố thành đống đổ nát và "
+"tàn sát tất cả những người sống ở đó. Chúng ta phải hành động nhanh."
 
 #. [message]: speaker=Urza Nalmath
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:195
@@ -712,13 +708,14 @@ msgid ""
 "my brother Mathin is surely dead... They will pay for his death, just as Sir "
 "Loris paid for his pride!"
 msgstr ""
-"Cái gì ? Nếu có lính từ phía Bắc xuống, tức là anh Mathin đã chết... Chúng "
-"sẽ phải trả giá, cũng như tên Loris đã trả giá cho tính kiêu ngạo của hắn!"
+"Cái gì?! Nếu có lính của Wesnoth đến từ các pháo đài phía bắc, thì chắc chắn "
+"em trai Mathin của ta đã chết... Chúng sẽ phải trả giá, giống như tên Loris "
+"đã trả giá cho tính kiêu ngạo của hắn!"
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:201
 msgid "Take the Citadel at Westin by the end of the ninth turn"
-msgstr "Chiếm thành Westin vào cuối lượt thứ chín"
+msgstr "Chiếm thành Westin trước cuối lượt thứ chín"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:243
@@ -728,22 +725,22 @@ msgstr "Cuối cùng thành cũng được bảo vệ."
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:247
 msgid "Now, Deoran, take your post of command at the Citadel of Westin."
-msgstr "Từ giờ, Deoran, ngài sẽ chỉ huy từ Thành Westin."
+msgstr "Deoran, hãy nhận nhiệm vụ chỉ huy của ngài tại thành Westin."
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:252
 msgid "Bring Deoran to the Citadel of Westin"
-msgstr "Đưa Deoran đến Thành Westin."
+msgstr "Đưa Deoran đến thành Westin"
 
 #. [unit]: type=White Mage, id=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:292
 msgid "Minister Hylas"
-msgstr "Giáo sĩ Hylas"
+msgstr "Mục sư Hylas"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:305
 msgid "More bandits?! They’ll feel the deadly bite of my lance!"
-msgstr "Cướp à! Chúng sẽ nếm mùi ngọn thương của ta!"
+msgstr "Lại cướp à?! Chúng sẽ nếm mùi ngọn thương của ta!"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:309
@@ -751,8 +748,9 @@ msgid ""
 "Peace! For I am no enemy. I am Minister Hylas, advisor to Sir Loris! You "
 "came just in time! We couldn’t have held them off another day..."
 msgstr ""
-"Bình tĩnh nào! Tôi không phải kẻ thù, tôi là Giáo sĩ Hylas, quân sư của ngài "
-"Loris! Anh đến vừa đúng lúc! Chúng tôi không thể cản chúng thêm nữa..."
+"Hòa bình nào! Tôi không phải kẻ thù. Tôi là mục sư Hylas, cố vấn của ngài "
+"Loris! Anh đến thật đúng lúc! Chúng tôi không thể cầm cự chúng thêm được "
+"nữa..."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:313
@@ -761,9 +759,10 @@ msgid ""
 "garrison of the city? I was sent by Haldric to relieve him and take command "
 "of the South Guard, for the King has heard no news from Westin in two months."
 msgstr ""
-"Đúng vậy. nhưng ngài Loris đâu rồi? Vệ binh thành phố đâu? Vua Hadric đã cử "
-"tôi đến để thay ông ấy và chỉ huy Phòng tuyến phía Nam, vì nhà vua đã không "
-"nghe tin tức gì về Westin hai tháng nay rồi."
+"Đúng vậy, chúng tôi đã đến kịp thời. Nhưng ngài Loris đâu? Quân đồn trú của "
+"thành phố đâu? Tôi được vua Haldric điều đến để thay phiên ông ấy và chỉ huy "
+"đội bảo vệ phương nam, vì nhà vua không nghe được tin tức gì từ Westin hai "
+"tháng nay rồi."
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:317
@@ -773,10 +772,10 @@ msgid ""
 "And yet he would never lead his men against them until their strength had "
 "waxed and ours waned."
 msgstr ""
-"Than ôi, ngài Loris không còn có thể cảm thấy an tâm nữa rồi. Ông ta được "
-"chôn ở phía Tây Bắc của thành phố, nơi ông đã ngã xuống. Chúng tôi đã cảnh "
-"báo ông ấy nhiều lần về lũ cướp. Và ông ấy đã không dẫn quân đánh bọn chúng, "
-"đến khi bọn chúng mạnh lên trong khi quân ta đã quá suy yếu."
+"Than ôi, ngài Loris giờ không đổi phiên được nữa. Ông ấy được chôn ở phía "
+"tây bắc thành phố, nơi ông ấy ngã xuống. Chúng tôi đã cảnh báo ông ấy nhiều "
+"lần về bọn cướp này. Nhưng ông ấy chẳng bao giờ dẫn quân đi đánh bọn chúng, "
+"đến khi bọn chúng mạnh lên còn chúng tôi thì yếu đi."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:322
@@ -785,10 +784,10 @@ msgid ""
 "though, there are more pressing matters. Rise, men of Wesnoth! We must drive "
 "these bandits from our city!"
 msgstr ""
-"Thật đau buồn khi nghe tin ông ấy hi sinh, cho dù ông ấy đã phạm sai lầm "
-"xuẩn ngốc như thế! bây giờ, dù sao, chúng ta còn có những chuyện quan trọng "
-"hơn. Đứng lên, những chiến binh Wesnoth! Chúng ta phải quét sạch lũ cướp ra "
-"khỏi thành phố!"
+"Thật đau buồn khi nghe tin ông ấy hy sinh, cho dù ông ấy đã phạm sai lầm "
+"xuẩn ngốc như thế! Nhưng giờ, vẫn có những vấn đề thúc bách hơn. Đứng lên, "
+"người của Wesnoth! Chúng ta phải tống cổ bọn cướp này khỏi thành phố của "
+"chúng ta!"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:325
@@ -816,8 +815,8 @@ msgid ""
 "We will do our best to hold the city — you lead your men across the river "
 "and kill the bandit leader!"
 msgstr ""
-"Chúng tôi sẽ cố hết sức để giữ thành phố - trong khi ngài dẫn quân vượt sông "
-"và giết tên thủ lĩnh!"
+"Chúng tôi sẽ cố hết sức để giữ thành phố - còn ngài dẫn quân qua sông và "
+"giết tên tướng cướp!"
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:338
@@ -837,7 +836,7 @@ msgstr "Giết tướng cướp Urza Nalmath"
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:522
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_to_Kerlath.cfg:46
 msgid "Death of Minister Hylas"
-msgstr "Giáo sĩ Hylas chết"
+msgstr "Mục sư Hylas chết"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:401
@@ -845,8 +844,8 @@ msgid ""
 "They are almost to the great hall! Hurry, Deoran! You must reach the citadel "
 "or all will be lost!"
 msgstr ""
-"Bọn chúng gần như tiến đến sảnh lớn rồi! Nhanh lên, Deoran! Ngài phải đến "
-"thành hoặc là tất cả sẽ tiêu tan!"
+"Bọn chúng sắp vào đại sảnh rồi! Nhanh lên, Deoran! Ngài phải đến được thành, "
+"nếu không tất cả sẽ tiêu tan!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:407
@@ -854,13 +853,13 @@ msgid ""
 "You must move Deoran here by the end of the next turn, or Westin will fall "
 "and you will be defeated!"
 msgstr ""
-"Bạn phải đưa Deoran đến đây khi hết lượt tiếp theo, nếu không Westin sẽ thất "
-"thủ và bạn thua!"
+"Bạn phải di chuyển Deoran đến đây trước cuối lượt tiếp theo, nếu không "
+"Westin sẽ thất thủ và bạn thua cuộc!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:425
 msgid "We’re too late! They’re burning the city..."
-msgstr "Chúng ta đến quá trễ rồi! Chúng đang đốt thành phố..."
+msgstr "Quá muộn rồi! Bọn chúng đang đốt thành phố..."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:430
@@ -868,8 +867,8 @@ msgid ""
 "Westin has fallen! This is a problem too great for me to handle — I must "
 "return to Haldric and tell him of our loss..."
 msgstr ""
-"Westin đã thất thủ! Vấn đề quá lớn ngoài khả năng giải quyết của ta. Ta phải "
-"về báo cho Vua Hadric biết tin..."
+"Westin đã thất thủ! Đây là vấn đề quá khó cho ta xử lý. Ta phải về báo cho "
+"vua Haldric biết tin..."
 
 #. [message]: speaker=Urza Nalmath
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:463
@@ -877,16 +876,15 @@ msgid ""
 "Now the Guard will feel the wrath of my new friends! It is time for the dead "
 "to wage war! Rise, warriors!"
 msgstr ""
-"Giờ bọn Vệ binh sẽ hứng chịu cơn thịnh nộ từ bằng những đồng minh mới của "
-"ta! Giờ là lúc để cái chết tham gia chiến tranh. Sống dậy nào, hỡi các chiến "
-"binh!"
+"Giờ bọn vệ binh sẽ hứng chịu cơn thịnh nộ từ những người bạn mới của ta! Đã "
+"đến lúc cho người chết tiến hành chiến tranh! Đứng lên, hỡi các chiến binh!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:468
 msgid "What devilry is this?! Those are no living men that fight for him!"
 msgstr ""
-"Cái thứ quái quỷ gì thế này? Những thứ đang chiến đấu cho hắn không phải là "
-"người sống!"
+"Cái quái quỷ gì thế này?! Những thứ chiến đấu cho hắn không phải là người "
+"sống!"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:472
@@ -894,13 +892,14 @@ msgid ""
 "He has made some pact with the undead. How could a mere brigand have gained "
 "such great powers?"
 msgstr ""
-"Hắn ta đã cấu kết với lũ ma quái. Làm sao một tên cướp quèn có thể có được "
-"một sức mạnh như thế?"
+"Hắn đã cấu kết với lũ ma quái. Làm sao một tên cướp quèn có thể giành được "
+"sức mạnh lớn như thế?"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:476
 msgid "However he has done this fell thing, we must defeat him!"
-msgstr "Dù hắn có làm gì, ta cũng phải đánh bại hắn!"
+msgstr ""
+"Dù hắn có làm gì với thứ quái quỷ này, chúng ta cũng phải đánh bại hắn!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:483
@@ -908,36 +907,35 @@ msgid ""
 "Not only will Minister Hylas’s <i>arcane</i> attack melt undead bones, but "
 "he can also heal wounded units near him."
 msgstr ""
-"Giáo sĩ Hylas không chỉ có đòn đánh có thể làm tan xương lũ ma quái, mà ông "
-"cũng có thể chữa trị vết thương cho quân lính đứng cạnh ông."
+"Đòn tấn công <i>bí kíp</i> của mục sư Hylas không chỉ làm tan xương lũ ma "
+"quái, mà ông ta còn có thể điều trị cho các đơn vị bị thương đứng gần mình."
 
 #. [message]: speaker=Urza Nalmath
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:507
 msgid "Leave nothing standing! Burn their villages down and kill them all!"
-msgstr "San bằng tất cả! Đốt làng của chúng và không cho kẻ nào sống sót!"
+msgstr "Đừng bỏ sót thứ gì! Hãy đốt trụi làng và giết hết bọn chúng!"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:511
 msgid "We will avenge your brother’s death!"
-msgstr "Chúng ta sẽ trả thù cho cái chết của anh em ngài!"
+msgstr "Chúng tôi sẽ trả thù cho cái chết của em trai ngài!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:515
 msgid "They are burning our villages! We must stop them!"
-msgstr "Chúng đang đốt những ngôi làng! Chúng ta phải ngăn chúng!"
+msgstr "Bọn chúng đang đốt làng! Chúng ta phải ngăn chặn chúng!"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:554
 msgid "My brother has died unavenged! What have we done?!"
-msgstr ""
-"Anh trai ta chết mà chưa được báo thù quá! Bọn ta đã làm gì nên nỗi này?"
+msgstr "Em trai ta chết mà chưa được báo thù! Bọn ta đã làm gì?!"
 
 #. [message]: speaker=Deoran
 #. [message]: speaker=second_unit
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:571
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:578
 msgid "How can a bandit have summoned undead?"
-msgstr "Làm sao lũ cướp lại có thể triệu dậy ma quái được?"
+msgstr "Làm sao một kẻ cướp có thể triệu gọi ma quái được?"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:585
@@ -946,15 +944,14 @@ msgid ""
 "elves of the Aethenwood west of here. He asked that a knight be sent to "
 "discuss a new threat to Wesnoth."
 msgstr ""
-"Ngay trước khoảng thời gian lũ cướp tấn công, Ngài Loris đã tiếp một vị sứ "
-"giả của chủng tộc thần tiên từ rừng Aethen, phía Tây nơi đây. Vị sứ giả đó "
-"yêu cầu chúng tôi gởi một kỵ sĩ để thảo luận về một mối nguy hại mới của "
-"Wesnoth."
+"Ngay trước khi bọn cướp tấn công, một sứ giả của các thần tiên từ Aethenwood "
+"ở phía tây nơi đây đã đến gặp ngài Loris. Ông ấy yêu cầu cử một hiệp sĩ đi "
+"để thảo luận về mối đe dọa mới đối với Wesnoth."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:590
 msgid "And did Sir Loris go to the elves?"
-msgstr "Và ngài Loris nghe theo?"
+msgstr "Và ngài Loris đã đi gặp các thần tiên?"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:595
@@ -962,8 +959,8 @@ msgid ""
 "No. He suspected the elves of some trickery and made no reply to them. "
 "Perhaps they know the origin of these dead warriors we now face."
 msgstr ""
-"Không. Ông ta nghi ngờ những thần tiên có âm mưu gì đó và không trả lời họ. "
-"Có thể họ biết nguồn gốc của lũ ma quái này."
+"Không. Ông ấy nghi ngờ các thần tiên có âm mưu gì đó và không trả lời họ. Có "
+"thể họ biết nguồn gốc của lũ ma quái này."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:600
@@ -972,9 +969,9 @@ msgid ""
 "protect the city from foes so dark as these. I shall go meet the elves and "
 "see if they can be of any aid!"
 msgstr ""
-"Lính của ta được huấn luyện để chống lại những kẻ còn sống. Ta không biết "
-"chúng ta có thể chống lại lũ ma quái này không. Ta thấy là nên tìm những "
-"thần tiên và xem họ có thể giúp gì cho chúng ta không!"
+"Lính của ta được đào tạo để chiến đấu với người sống. Ta không biết liệu "
+"chúng ta có thể bảo vệ thành phố trước những kẻ thù nham hiểm như thế này "
+"hay không. Ta sẽ đi gặp các thần tiên và xem họ có thể giúp gì được không!"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:605
@@ -982,8 +979,8 @@ msgid ""
 "I will accompany you, my lord. I have studied the arts of holy magic and my "
 "skill may be of some use against the dark ones."
 msgstr ""
-"Tôi sẽ hộ tống anh. Tôi đã nghiên cứu về thánh thuật và tôi có thể góp chút "
-"sức chống lại lũ ma quái."
+"Tôi sẽ đi cùng ngài. Tôi đã nghiên cứu về phép thuật linh thiêng, năng lực "
+"của tôi có thể hữu ích để chống lại những kẻ thù đen tối."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:610
@@ -991,8 +988,8 @@ msgid ""
 "Deoran sent a rider to request mounted reinforcements and set out at once "
 "towards the Aethenwood..."
 msgstr ""
-"Deoran phái một kỵ binh để yêu cầu thêm quân tiếp viện và hướng thẳng đến "
-"rừng Aethen ngay lập tức..."
+"Deoran phái một kỵ binh để xin thêm quân tiếp viện và khởi hành ngay lập tức "
+"hướng về Aethenwood..."
 
 #. [scenario]: id=03_A_Desperate_Errand
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:5
@@ -1007,7 +1004,8 @@ msgstr "Urza Fastik"
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:129
 msgid "Deoran and his men came to the eastern border of the Aethenwood..."
-msgstr "Deoran và binh lính của anh đã đến rìa phía Đông của rừng Aethen..."
+msgstr ""
+"Deoran và binh lính của mình đến biên giới phía đông khu rừng Aethenwood..."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:135
@@ -1015,8 +1013,8 @@ msgid ""
 "Look, men! There is the forest of the Elves to the northwest. Let us hasten "
 "across the river and the hills."
 msgstr ""
-"Nhìn kìa! Rừng của thần tiên ở phía Tây Bắc. Chúng ta hãy mau chóng băng qua "
-"sông và những ngọn đồi."
+"Nhìn kìa, mọi người! Rừng của thần tiên ở phía tây bắc. Chúng ta hãy mau "
+"chóng băng qua sông và những ngọn đồi."
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:140
@@ -1025,9 +1023,9 @@ msgid ""
 "We do not know how they will receive us. Sir Loris thought that it was some "
 "trick of theirs trying to bring him into the woods..."
 msgstr ""
-"Cần thận, Deoran. Đã nhiều năm không có con người nào bước chân qua vùng "
-"rừng của thần tiên. Chúng ta vẫn chưa biết thái độ của họ thế nào. Ngài "
-"Loris đã nghi rằng họ dùng kế dẫn dụ ông ta vào rừng..."
+"Cẩn thận, Deoran. Nhiều năm qua chưa có con người nào từng đặt chân vào rừng "
+"của thần tiên. Chúng ta không biết họ sẽ tiếp đón chúng ta thế nào. Ngài "
+"Loris đã nghĩ rằng họ âm mưu tìm cách dụ ông ấy vào rừng..."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:145
@@ -1036,9 +1034,9 @@ msgid ""
 "province shall surely be swallowed up by them, and then their bandit masters "
 "will fare no better. We cannot allow it!"
 msgstr ""
-"Nhưng nếu chúng ta không tìm ra nguồn gốc của lũ ma quái, toàn Vùng đất sẽ "
-"chắc chắn bị bọn chúng chiếm cứ, và những tên cầm đầu sẽ hả hê trong cơn đau "
-"khổ của người dân. Chúng ta không thể để chúng làm điều đó!"
+"Nhưng nếu chúng ta không tìm ra nguồn gốc của lũ ma quái đó, toàn bộ tỉnh "
+"thành chắc chắn sẽ bị bọn chúng nuốt trọn, và những tên cướp chủ nhân của "
+"chúng sẽ còn đi xa hơn. Chúng ta không thể để điều đó xảy ra!"
 
 #. [message]: speaker=Urza Fastik
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:150
@@ -1046,9 +1044,9 @@ msgid ""
 "I have lost two brothers to Deoran — I shall not allow him to reach the "
 "accursed elves! Deoran will die before he reaches the western forest!"
 msgstr ""
-"Ta đã mất hai người anh bởi tên Deoran đó. Ta sẽ không cho hắn tìm đến lũ "
-"thần tiên khốn kiếp kia. Deoran sẽ phải chết trước khi hắn đến được bìa rừng "
-"phía Tâyy!"
+"Ta đã mất hai em trai vì tên Deoran đó. Ta sẽ không cho phép hắn tiếp cận "
+"bọn thần tiên đáng nguyền rủa đâu! Deoran sẽ phải chết trước khi hắn đến "
+"được khu rừng phía tây!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:158
@@ -1057,13 +1055,14 @@ msgid ""
 "a force strong enough to drive off the bandits before moving Deoran from his "
 "encampment!"
 msgstr ""
-"Bạn phải di chuyển Deoran đến trung tâm thành phố của thần tiên. Hãy đảm bảo "
-"là tuyển một lực lượng đủ mạnh để dẹp sạch lũ cướp trước khi Deoran rời trại!"
+"Bạn phải di chuyển Deoran đến trung tâm thành trì của thần tiên. Đảm bảo "
+"tuyển một lực lượng đủ mạnh để dẹp sạch bọn cướp trước khi đưa Deoran rời "
+"khỏi doanh trại!"
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:170
 msgid "Move Deoran to the elvish city in the northern woods"
-msgstr "Di chuyển Deoran đến thành phố của thần tiên trong khu rừng phía Bắc"
+msgstr "Di chuyển Deoran đến thành phố của thần tiên ở khu rừng phía bắc"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:200
@@ -1080,7 +1079,9 @@ msgstr "Jarek"
 msgid ""
 "Commander, I received your request for reinforcements, and I have brought my "
 "riders with me!"
-msgstr "Chỉ huy, tôi đã nhận được lời yêu cầu của ngài, và viện binh đã đến!"
+msgstr ""
+"Chỉ huy, tôi đã nhận được lời yêu cầu xin quân tiếp viện của ngài, và tôi "
+"mang theo kỵ binh đến đây!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:230
@@ -1089,14 +1090,14 @@ msgid ""
 "weak in forests and hills. They can keep up with Deoran, so use them to "
 "guard him!"
 msgstr ""
-"Bạn bây giờ có thể tuyển kỵ binh. Họ nhanh và nguy hiểm trên địa hình trống, "
-"nhưng yếu khi chiến đấu trong rừng hay trên những ngọn đồi. Họ có thể đuổi "
-"kịp Deoran, cho nên hãy dùng họ để bảo vệ anh ta!"
+"Bây giờ bạn có thể tuyển Kỵ binh. Họ nhanh và nguy hiểm trên đồng cỏ, nhưng "
+"yếu trong rừng và trên đồi. Họ có thể bắt kịp Deoran, do đó hãy sử dụng họ "
+"để bảo vệ anh ta!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:232
 msgid "You may now recruit Cavalrymen."
-msgstr ""
+msgstr "Bây giờ bạn có thể tuyển Kỵ binh."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:250
@@ -1104,8 +1105,8 @@ msgid ""
 "What have we done?! Even our undead allies cannot stand against this "
 "commander!"
 msgstr ""
-"Cái gì thế này?! Thậm chí đồng minh ma quái của ta cũng không thể chống lại "
-"tên chỉ huy này!"
+"Bọn ta đã làm gì?! Thậm chí đồng minh ma quái của bọn ta cũng không thể "
+"chống lại tên chỉ huy này!"
 
 #. [message]: role=second
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:265
@@ -1113,15 +1114,17 @@ msgid ""
 "I hope that’s the last of the bandits! How many more of these foul undead "
 "must we fight?"
 msgstr ""
-"Tôi hi vọng đấy là những tên cướp cuối cùng! Chúng ta còn phải giết bao "
-"nhiêu ma quái nữa để mọi chuyện kết thúc?"
+"Tôi hy vọng đó là những tên cướp cuối cùng! Chúng ta còn phải chiến đấu với "
+"bao nhiêu ma quái bẩn thỉu nữa?"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:272
 msgid ""
 "If we are to check the advance of the dead, I must reach the home of the "
 "elves!"
-msgstr "Nếu muốn kìm hãm bọn chúng, ta phải đến được chỗ của những thần tiên!"
+msgstr ""
+"Nếu muốn kìm hãm bước tiến của người chết, ta phải đến được nơi ở của các "
+"thần tiên!"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:287
@@ -1146,7 +1149,7 @@ msgstr "Eltenmir"
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:291
 msgid "Vardanos"
-msgstr "Varnados"
+msgstr "Vardanos"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:292
@@ -1161,7 +1164,7 @@ msgstr "Ethiliel"
 #. [message]: speaker=Linderion
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:315
 msgid "Halt! Who has entered our citadel without leave?"
-msgstr "Dừng lại! Kẻ nào dám vào thành khi chúng ta chưa cho phép?"
+msgstr "Dừng lại! Kẻ nào dám vào thành của chúng ta mà không xin phép?"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:320
@@ -1174,8 +1177,8 @@ msgid ""
 "Speak carefully, for the penalty for trespass on our lands is death, and "
 "your life is thus forfeit."
 msgstr ""
-"Nói năng cẩn thận, vì hình phạt cho sự xâm nhập vào đất của chúng ta là cái "
-"chết, và ngươi sẽ phải mất mạng."
+"Nói năng cẩn thận, vì hình phạt cho tội xâm phạm vào vùng đất của bọn ta là "
+"cái chết, và ngươi sẽ phải mất mạng."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:330
@@ -1189,9 +1192,9 @@ msgid ""
 "all the folk of Wesnoth are foes of the elves. Tell us, then, what brings "
 "you to the hallowed citadel of Elrath?"
 msgstr ""
-"Khoan đã. Người này mang trang phục của Wesnoth, và Kalenz nói rằng không "
-"phải tất cả bọn họ đều là thù. Vậy, hãy nói cho chúng ta, điều gì mang ngươi "
-"đến vùng đất linh thiêng của Elrath?"
+"Khoan đã. Người này mặc trang phục của Wesnoth, và Kalenz đã nói với chúng "
+"ta, không phải tất cả những người Wesnoth đều là kẻ thù của thần tiên. Vậy, "
+"hãy nói cho bọn ta biết, điều gì mang ngươi đến thành trì Elrath linh thiêng?"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:341
@@ -1201,10 +1204,10 @@ msgid ""
 "villages. They are coming across the river from the great forest to the "
 "south of our lands, where no man has yet traveled."
 msgstr ""
-"Quý cô, chúng tôi đến đây mong tìm sự chỉ dẫn từ thần tiên. Bọn cướp đã "
-"triệu dậy ma quái để giúp chúng cướp phá làng mạc và giết chóc ... Chúng "
-"đang băng qua sông từ khu rừng lớn ở phía Nam, nơi chưa con người nào đặt "
-"chân đến. "
+"Quý cô, chúng tôi đến gặp các thần tiên mong tìm sự chỉ dẫn. Bọn cướp và tội "
+"phạm ở vùng đất của chúng tôi đã triệu gọi người chết giúp chúng cướp phá "
+"trang trại và làng mạc. Chúng đang băng qua sông từ khu rừng lớn phía nam "
+"vùng đất của chúng tôi, nơi chưa con người nào từng đặt chân đến."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:346
@@ -1212,7 +1215,7 @@ msgid ""
 "The elves know of the great southern forest, and have walked its paths many "
 "times. What would you do, Deoran?"
 msgstr ""
-"Thần tiên biết rất rõ về khu rừng lớn, và đã đi trên những lối mòn ở đó "
+"Thần tiên biết về khu rừng lớn phía nam, và đã đi trên những lối mòn ở đó "
 "nhiều lần. Deoran, anh sẽ làm gì?"
 
 #. [message]: speaker=Deoran
@@ -1222,9 +1225,9 @@ msgid ""
 "darkness that we might destroy it. For surely, ere that be done, we cannot "
 "stand against them for long."
 msgstr ""
-"Tôi sẽ dẫn người của tôi tiến về phía Nam của sông và tìm nguồn gốc của lũ "
-"ma quái kia, để tiêu diệt chúng. Bằng không, chúng tôi không thể trụ được "
-"lâu."
+"Tôi sẽ dẫn người về phía nam dòng sông để tìm hiểu nguồn gốc của những sinh "
+"vật bóng tối mà chúng tôi có thể tiêu diệt. Nếu không, chắc chắn chúng tôi "
+"không thể trụ được lâu trước bọn chúng."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:356
@@ -1234,11 +1237,11 @@ msgid ""
 "learned when Haldric I came to our land. His name is Mebrin, and he lives, "
 "secluded in the hills, near here. I will take you to him."
 msgstr ""
-"Anh qua thật rất can đảm khi dám đối mặt với chúng. Nhưng ta sợ một mình anh "
-"sẽ thất bại.Có một người nhớ những bí mật mà thần tiên đã học được về lũ ma "
-"quái này từ khi Hadric Đệ Nhất đến vùng đất của chúng tôi. Tên của ông ta là "
-"Mebrin, và ông ta còn sống, ẩn dật trên những ngọn đồi gần đây. Ta sẽ dẫn "
-"anh đến chỗ ông ta."
+"Anh quả thật rất can đảm khi đối mặt với những kẻ thù như thế. Nhưng ta sợ "
+"một mình anh sẽ thất bại. Có một thần tiên giờ còn sống, vẫn nhớ những bí "
+"mật của lũ ma quái mà chúng tôi đã biết được khi Haldric đệ nhất đến vùng "
+"đất của chúng tôi. Tên ông ấy là Mebrin, ông ấy sống ẩn dật trên những ngọn "
+"đồi gần đây. Tôi sẽ dẫn anh đến chỗ ông ấy."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:362
@@ -1287,8 +1290,9 @@ msgid ""
 "We have followed you away from our homes and left them unguarded. Now, where "
 "can we find this sage who knows the southern forest well?"
 msgstr ""
-"Chúng tôi đã theo cô rời xa vùng đất của mình, và để lại nó mà không có sự "
-"bảo vệ. Giờ thì chúng tôi có thể tìm thấy nhà hiền triết kia ở đâu?"
+"Chúng tôi đã theo cô rời xa nhà của mình, và bỏ lại chúng mà không bảo vệ. "
+"Giờ thì chúng tôi có thể tìm thấy nhà hiền triết, người biết rõ khu rừng "
+"phía nam, ở đâu?"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:175
@@ -1297,9 +1301,10 @@ msgid ""
 "they feel that it is time for them to allow others to lead our people. The "
 "sage you speak of lives in a secluded village between the two lakes."
 msgstr ""
-"Đây là thung lũng Nở hoa. Những nhà hiền triết của chúng tôi sẽ đến đây khi "
-"họ cảm thấy đến lúc họ nên để người khác lãnh đạo người dân. Nhà hiền triết "
-"anh cần tìm sống ở một ngôi làng hẻo lánh nằm giữa hai hồ nước."
+"Đây là thung lũng Rừng cây ra hoa. Các nhà hiền triết vĩ đại của chúng tôi "
+"đến đây sống khi họ cảm thấy đã đến lúc họ nên để người khác lãnh đạo nhân "
+"dân. Nhà hiền triết mà anh nói sống trong một ngôi làng hẻo lánh giữa hai hồ "
+"nước."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:182
@@ -1307,9 +1312,9 @@ msgid ""
 "Why, my lady, are there humans camped to the south of us? Are they friends "
 "of the elves? I had thought that no humans had set foot in this valley."
 msgstr ""
-"Thưa quý cô, tại sao lại có con người đóng trại tại phía Nam của chúng ta? "
-"Họ là bạn của thần tiên ư? Tôi nghĩ là không có con người nào từng đặt chân "
-"qua thung lũng này chứ."
+"Thưa quý cô, tại sao lại có con người đóng trại ở phía nam của chúng ta? Họ "
+"là bạn của thần tiên ư? Tôi cứ nghĩ rằng không con người nào từng đặt chân "
+"vào thung lũng này chứ."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:188
@@ -1317,8 +1322,8 @@ msgid ""
 "What?! Those are no friends of the elves! They are brigands, and they must "
 "be destroyed!"
 msgstr ""
-"Sao cơ!? Đấy không phải là bạn của thân tiên. Chúng là lũ cướp, và chúng ta "
-"phải tiêu diệt chúng!"
+"Cái gì?! Đó không phải là bạn của thần tiên! Chúng là kẻ cướp, chúng phải bị "
+"tiêu diệt!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:193
@@ -1326,8 +1331,8 @@ msgid ""
 "Perhaps they are allied with the bandits who have been sacking our towns! "
 "They have grown bold to attack the elves!"
 msgstr ""
-"Có lẽ chúng là đồng minh với lũ cướp đã tấn công chúng tôi. Bọn chúng quả "
-"thật đã đủ cả gan để tấn công thần tiên!"
+"Có lẽ chúng là đồng minh với bọn cướp đã tấn công các thị trấn của chúng "
+"tôi! Bọn chúng thật táo tợn khi tấn công các thần tiên!"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:198
@@ -1336,15 +1341,15 @@ msgid ""
 "he remembers well Haldric’s betrayal of the elves, so if a human sets foot "
 "in his village first, he almost certainly will have nothing to do with us!"
 msgstr ""
-"Tiêu diệt những kẻ xâm lăng, và tôi sẽ hỏi xem ông ta có thể giúp anh hay "
-"không. Ông ấy đã sống từ rất lâu, và nhớ rõ Hadric đã phản bội thần tiên như "
-"thế nào, cho nên nếu con người đặt chân vào làng, chắc chắn ông ta sẽ không "
-"giúp gì hết!"
+"Hãy tiêu diệt những kẻ xâm lăng, tôi sẽ nhờ ông ấy giúp các anh. Ông ấy đã "
+"sống từ rất lâu, và nhớ rõ sự phản bội các thần tiên của Haldric, vì thế nếu "
+"một con người đặt chân vào làng của ông ấy trước, gần như chắc chắn ông ấy "
+"sẽ không giúp gì hết!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:203
 msgid "Sounds like a charming fellow..."
-msgstr "Nghe hay nhỉ..."
+msgstr "Nghe như một người bạn tốt..."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:208
@@ -1353,19 +1358,21 @@ msgid ""
 "We do that which we must. Ethiliel, you make for Mebrin’s village. We will "
 "handle the intruders."
 msgstr ""
-"Vào lúc này, như cô ta nói, ông ấy là hi vọng tốt nhất để chúng ta đối phó "
-"với mối đe dọa kia. Chúng ta làm điều bắt buộc phải làm. Ethiliel, cô đến "
-"làng của Mebrin đi. Chúng tôi sẽ lo lũ cướp."
+"Như cô ấy nói, ông ta là hy vọng tốt nhất để trừ khử mối đe dọa mới này khỏi "
+"vùng đất của chúng ta. Chúng ta làm điều bắt buộc phải làm. Ethiliel, cô đến "
+"làng của Mebrin đi. Chúng tôi sẽ xử lý những kẻ xâm lăng."
 
 #. [message]: speaker=Mal A'kai
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:213
 msgid "Ha! You’re too late. We’ve taken what we want from this valley."
-msgstr "Ha! Các ngươi đến quá trễ rồi. Chúng ta đã lấy hết những gì mình muốn."
+msgstr ""
+"Ha! Quá muộn cho các ngươi rồi. Bọn ta đã lấy được những gì bọn ta muốn từ "
+"thung lũng này."
 
 #. [message]: speaker=Jera Ilras
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:218
 msgid "Now your blood and tears will join that of the elves!"
-msgstr "Giờ máu và nước mắt của bọn ngươi sẽ hòa chung với lũ thần tiên!"
+msgstr "Giờ máu và nước mắt của các ngươi sẽ hòa chung với lũ thần tiên!"
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:224
@@ -1375,7 +1382,7 @@ msgstr "Dọn sạch thung lũng Nước mắt"
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:228
 msgid "Move Ethiliel to Mebrin’s village"
-msgstr "Đưa Ethiliel đến làng của Mebrin"
+msgstr "Di chuyển Ethiliel đến làng của Mebrin"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:244
@@ -1395,8 +1402,8 @@ msgid ""
 "Our weapons are useless against these skeletons! They have nothing for our "
 "shafts to pierce but air!"
 msgstr ""
-"Vũ khí của tôi vô dụng đối với những bộ xương này! Chúng ta không thể đâm "
-"chúng được!"
+"Vũ khí của chúng ta vô dụng trước những bộ xương này! Đâm vào chúng chẳng "
+"khác gì đâm vào không khí!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:290
@@ -1404,8 +1411,8 @@ msgid ""
 "We must clear out these undead if you are to reach Mebrin’s village! What "
 "should we do?"
 msgstr ""
-"Chúng ta phải quét sạch lũ ma quái này nếu cô muốn tiến đến làng của Mebrin! "
-"Giờ chúng ta nên làm gì đây?"
+"Chúng ta phải dọn sạch lũ ma quái này nếu cô muốn tiến đến làng của Mebrin! "
+"Chúng ta nên làm gì?"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:295
@@ -1413,8 +1420,8 @@ msgid ""
 "For now, I can slow them down. Where are the elves who used to live in this "
 "valley? They should come to our aid!"
 msgstr ""
-"Tạm thời tôi có thể làm chậm chúng. Những thần tiên sống trong thung lũng "
-"đâu rồi? Họ đáng lẽ phải ra trợ giúp chúng ta!"
+"Ngay bây giờ, tôi có thể làm chậm bọn chúng. Các thần tiên từng sống trong "
+"thung lũng này đâu rồi? Họ nên đến giúp đỡ chúng ta!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:300
@@ -1422,20 +1429,22 @@ msgid ""
 "You said this valley would be safe, and we find it filled with skeletal "
 "foes! Cannot some of your elf friends help us in our struggle?"
 msgstr ""
-"Cô nói thung lũng này an toàn, vậy mà ở đây toàn là lũ xương ma quái! Bạn cô "
-"có thể ra giúp chúng ta không?"
+"Cô đã nói thung lũng này an toàn, vậy mà giờ chúng tôi thấy nó tràn ngập "
+"những kẻ thù xương khô! Các bạn thần tiên của cô không thể giúp chúng tôi "
+"chiến đấu được sao?"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:313
 msgid "I shall not join these accursed undead! Bury me deeply my friends..."
 msgstr ""
 "Tôi sẽ không nhập bọn với lũ ma quái đáng nguyền rủa đó đâu! Hãy chôn tôi "
-"thật sâu, bằng hữu,.."
+"thật sâu, các bạn..."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:323
 msgid "You shall not die in vain! My bodyguard will avenge you!"
-msgstr "Anh sẽ không chết một cách vô nghĩa đâu! Vệ sĩ của tôi sẽ trả thù..."
+msgstr ""
+"Anh sẽ không chết một cách vô ích đâu! Vệ sĩ của tôi sẽ trả thù cho anh!"
 
 #. [message]: speaker=Deoran
 #. [message]: speaker=Sir Gerrick
@@ -1455,8 +1464,8 @@ msgid ""
 "We stand ready, my lady, to protect you! We shall lead these men of Wesnoth "
 "into the fray!"
 msgstr ""
-"Chúng tôi đã sẵn sàng để bảo vệ quý cô! Chúng ta sẽ sát cánh bên nhau cùng "
-"xông trận!"
+"Chúng tôi đã sẵn sàng để bảo vệ quý cô! Chúng tôi sẽ dẫn những người Wesnoth "
+"này vào cuộc chiến!"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:419
@@ -1474,19 +1483,19 @@ msgid ""
 "You’re too late! You’ll never find our stronghold, and even if you did, what "
 "can you do against the dead?"
 msgstr ""
-"Các ngươi đến quá muộn rồi! Các ngươi sẽ không tìm ra pháo đài của chúng ta "
-"đâu, và nếu tìm được, thì các ngươi liệu có thể chống lại những kẻ đã chết "
-"rồi không?"
+"Quá muộn cho các ngươi rồi! Các ngươi sẽ không bao giờ tìm thấy thành trì "
+"của bọn ta đâu, và kể cả nếu tìm được, các ngươi có thể làm gì để chống lại "
+"người chết?"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:487
 msgid "You, at least, will trouble us no more!"
-msgstr "Ít nhất, ngươi cũng không thể quấy rối chúng ta nữa!"
+msgstr "Ít nhất, ngươi cũng không thể quấy rối bọn ta nữa!"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:545
 msgid "Mebrin! Are you there? We have come to seek your aid!"
-msgstr "Mebrin! Ông có ở đó không? Chúng tôi cần ông giúp!"
+msgstr "Mebrin! Thầy có ở đó không? Bọn em đến tìm thầy nhờ giúp đỡ!"
 
 #. [message]: speaker=Kramak
 #. [message]: speaker=narrator
@@ -1499,7 +1508,7 @@ msgstr "..."
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:556
 msgid "Mebrin! Where are you?!"
-msgstr "Mebrin! Ông ở đâu?!"
+msgstr "Mebrin! Thầy ở đâu?!"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:567
@@ -1507,13 +1516,13 @@ msgid ""
 "His home is empty... There are footprints leading away to the south... What "
 "can have happened here?"
 msgstr ""
-"Nhà của ông ấy không có ai... Có những dấu chân hướng về phía Nam... Chuyện "
-"gì đã xảy ra ở đây?"
+"Nhà của ông ấy không có ai... Có dấu chân dẫn về phía nam... Chuyện gì đã "
+"xảy ra ở đây?"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:572
 msgid "Maybe whoever summoned these undead knows where he is?"
-msgstr "Có thể kẻ triệu dậy lũ ma quái biết ông ta ở đâu?"
+msgstr "Có thể kẻ triệu gọi lũ ma quái đó biết ông ta ở đâu chăng?"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:577
@@ -1522,14 +1531,15 @@ msgid ""
 "the undead would have slain him and made him one of them. Who then can have "
 "taken him?"
 msgstr ""
-"Không có vết máu ở đây, và cũng không có Mebrin. Vậy là ông ta đã bị bắt đi. "
-"Nhưng nếu là lũ ma quái, thì bọn chúng đã giết và biến ông ta thành một "
-"trong số chúng. Vậy kẻ đã bắt ông ta là ai?"
+"Không có vết máu ở đây, cũng không có Mebrin. Chắc ai đó đã bắt cóc ông ấy. "
+"Nhưng nếu là lũ ma quái, thì bọn chúng đã giết và biến ông ấy thành một "
+"trong số chúng rồi. Vậy ai có thể bắt ông ấy?"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:582
 msgid "Maybe the bandits who have been summoning the undead took him?"
-msgstr "Hay là lũ cướp?"
+msgstr ""
+"Có thể bọn cướp, những kẻ đang triệu gọi lũ ma quái, đã bắt ông ấy chăng?"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:588
@@ -1537,9 +1547,9 @@ msgid ""
 "We must follow these footprints into the woods! Whoever took our greatest "
 "sage must pay! Nothing will stop the vengeance of the elves!"
 msgstr ""
-"Chúng ta phải lần theo những dấu chân này vào trong rừng! Kẻ nào dám bắt nhà "
-"hiền triết vĩ đại nhất định phải trả giá! Không có gì ngăn cản được thần "
-"tiên báo thù đâu!"
+"Chúng ta phải lần theo những dấu chân này vào rừng! Kẻ nào bắt nhà hiền "
+"triết vĩ đại nhất của chúng tôi sẽ phải trả giá! Chẳng thứ gì có thể ngăn "
+"cản được các thần tiên báo thù đâu!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:593
@@ -1547,13 +1557,13 @@ msgid ""
 "Well, vengeance or no, if you will lead us into the forest, we will follow "
 "you and battle the undead!"
 msgstr ""
-"Tốt thôi, báo thù hay không, nếu cô dẫn chúng tôi vào rừng, chúng tôi sẽ đi "
-"theo và chiến đấu với lũ ma quái!"
+"Tốt thôi, báo thù hay không, nếu cô dẫn chúng tôi vào rừng, chúng tôi sẽ "
+"theo cô và chiến đấu với lũ ma quái!"
 
 #. [scenario]: id=05_Choice_in_the_Fog
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:5
 msgid "Choice in the Fog"
-msgstr "Sự lựa chọn trong sương mù"
+msgstr "Lựa chọn trong sương mù"
 
 #. [side]: type=Outlaw, id=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:63
@@ -1576,8 +1586,8 @@ msgid ""
 "The heat in this forest is oppressive, and this fog cannot be natural. I "
 "wonder what evil lurks nearby?"
 msgstr ""
-"Không khí ngột ngạt quá, và màn sương này trông không tự nhiên. Cái quái quỷ "
-"gì đang diễn ra?"
+"Hơi nóng trong khu rừng này thật ngột ngạt, và màn sương này trông không tự "
+"nhiên. Ta tự hỏi thứ quái quỷ gì đang ẩn nấp quanh đây?"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:199
@@ -1585,14 +1595,16 @@ msgid ""
 "I fear the fog emanates from some powerful lord of the undead. We may be "
 "overmatched..."
 msgstr ""
-"Tôi e rằng sương mù bắt nguồn từ một số chủ tướng chỉ huy lũ ma quái. Chúng "
-"ta có lẽ đang bị áp đảo..."
+"Tôi e sương mù phát ra từ một chúa tể mạnh nào đó của lũ ma quái. Có thể "
+"chúng ta đang bị áp đảo..."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:204
 msgid ""
 "This is quite a change from fighting bandits in the farmland near Westin!"
-msgstr "Đây thực sư là thay đổi so với việc đánh nhau với lũ cướp ở Westin!"
+msgstr ""
+"Đây đúng là một thay đổi so với việc đánh bọn cướp ở vùng nông thôn gần "
+"Westin!"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:209
@@ -1600,8 +1612,8 @@ msgid ""
 "I have brought many of my people along to aid us. My soldiers and shamans "
 "will now fight at your command."
 msgstr ""
-"Tôi có đem theo nhiều người để hỗ trợ. Binh lính và pháp sư của tôi sẽ chiến "
-"đấu dưới sự chỉ huy của anh."
+"Tôi đã mang theo nhiều người để hỗ trợ. Binh lính và pháp sư của tôi giờ sẽ "
+"chiến đấu theo lệnh của anh."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:215
@@ -1610,9 +1622,9 @@ msgid ""
 "a bow and are deadly with both. They are quick and can hold their own "
 "against just about anything."
 msgstr ""
-"Chiến binh thần tiên phát huy sở trường ở nơi rừng rậm. Họ có kiếm lẫn cung "
-"và sử dụng chúng hiệu quả như nhau. Họ nhanh nhẹn và đủ sức mạnh để đương "
-"đâu với bất cứ thứ gì."
+"Đấu sĩ thần tiên phát huy sở trường trong rừng sâu. Họ có cả kiếm lẫn cung "
+"và lợi hại với cả hai. Họ nhanh nhẹn và đủ sức mạnh để đương đầu với bất kỳ "
+"thứ gì."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:220
@@ -1621,14 +1633,14 @@ msgid ""
 "however, heal units next to them every turn. Use them to bolster your "
 "weakening lines and heal wounded soldiers."
 msgstr ""
-"Pháp sư thần tiên rát yếu khi chiến đấu trực diện với đối thủ. Dù sao, họ có "
-"thể chữa thương cho những đơn vị lính xung quanh vào mỗi lượt. Dùng họ để "
-"giữ vững những hàng ngũ đã yếu và hồi máu cho binh lính bị thương."
+"Pháp sư thần tiên không phải là đối thủ với hầu hết kẻ thù khi chiến đấu tay "
+"đôi. Tuy nhiên, họ điều trị cho các đơn vị bên cạnh mình mỗi lượt. Sử dụng "
+"họ để hỗ trợ những hàng ngũ suy yếu và điều trị cho binh lính bị thương."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:225
 msgid "Why did we stop and make camp here?"
-msgstr "Tại sao chúng ta lại dựng trại ở đây?"
+msgstr "Tại sao chúng ta lại dừng lại và dựng trại ở đây?"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:230
@@ -1637,39 +1649,39 @@ msgid ""
 "undead come from across the river, then we must search for them carefully, "
 "for I know not the way."
 msgstr ""
-"Dòng sông Đen ở ngay phía trước chúng ta. Không có thần tiên nào băng qua đó "
-"mà còn sống. Nếu lũ ma quái đó đến từ bên kia sông, thì chúng ta phải tìm "
-"chúng cẩn thận, vì tôi không biết đường đi."
+"Dòng sông Đen ở phía trước chúng ta. Không thần tiên nào băng qua đó mà còn "
+"sống. Nếu lũ ma quái đến từ bên kia sông, thì chúng ta phải tìm chúng cẩn "
+"thận, vì tôi không biết đường."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:235
 msgid ""
 "I fear no forests. Let us find this river and whatever enemies lie beyond."
 msgstr ""
-"Tôi không sợ rừng rậm. Chúng ta cứ tiến lên tìm dòng sông và kể cả kẻ thù "
+"Tôi không sợ rừng. Chúng ta hãy tìm dòng sông và bất cứ kẻ thù nào nằm phía "
 "bên kia."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:240
 msgid "Very well. We will seek the river and probe its secrets."
-msgstr "Được lắm. Chúng ta sẽ tìm dòng sông và tìm ra bí mật của nó."
+msgstr "Được. Chúng ta sẽ tìm dòng sông và thăm dò bí mật của nó."
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:246
 msgid "Investigate the areas to the south of the Black River"
-msgstr "Thăm dò khu vực phía Nam của sông Đen"
+msgstr "Điều tra khu vực phía nam dòng sông Đen"
 
 #. [message]: speaker=Sir Gerrick
 #. [message]: speaker=second_unit
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:303
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:310
 msgid "The master of the undead is defeated!"
-msgstr "Kẻ cầm đầu lũ ma quái đã bị tiêu diệt!"
+msgstr "Chủ nhân của lũ ma quái đã bị tiêu diệt!"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:317
 msgid "No... I fear there is still much evil present."
-msgstr "Không... Tôi e rằng vẫn còn nhiều thứ phải làm."
+msgstr "Không... Tôi e cái ác vẫn còn tồn tại."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:322
@@ -1677,27 +1689,27 @@ msgid ""
 "Surely the undead infestation cannot be dispatched so easily. We have merely "
 "destroyed a servant of a far darker master."
 msgstr ""
-"Chắc chắn là bọn ma quái này không thể bị chặn đứng dễ dàng thế đâu. Chúng "
-"ta chỉ mới giết một tay sai của tên thủ lĩnh tối cao hơn nhiều."
+"Chắc chắn mầm mống ma quái không thể bị kết liễu dễ dàng đến thế. Chúng ta "
+"chỉ mới tiêu diệt một kẻ hầu mà thôi, tên chủ nhân nham hiểm hơn nhiều."
 
 #. [message]: speaker=Deoran
 #. [message]: speaker=second_unit
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:377
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:411
 msgid "We found the lich!"
-msgstr ""
+msgstr "Chúng tôi đã tìm thấy tên thây ma!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:458
 msgid ""
 "I think I see something moving in the fog... it looks like an encampment!"
 msgstr ""
-"Tôi thấy có cái gì đó di chuyển sau màn sương... trông như là một trại quân"
+"Tôi thấy có cái gì đó di chuyển trong sương mù... giống như một doanh trại!"
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:484
 msgid "Thank heaven! You’re alive!"
-msgstr "Ơn trời! Các người còn sống"
+msgstr "Cảm ơn trời! Các người còn sống!"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:489
@@ -1705,8 +1717,8 @@ msgid ""
 "Save your thanks! We are here to root out all the evil from these woods, and "
 "that means you!"
 msgstr ""
-"Đừng nóng vội! Bọn ta ở đấy để nhổ tận gốc lũ xấu xa trong rừng, và có nghĩa "
-"là cả ngươi nữa!"
+"Đừng cảm ơn vội! Bọn ta ở đây để nhổ tận gốc toàn bộ cái ác khỏi khu rừng "
+"này, và điều đó có nghĩa là ngươi đấy!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:494
@@ -1714,8 +1726,8 @@ msgid ""
 "Draw your swords and say your prayers! You cannot stand against us! You will "
 "pay for your crimes!"
 msgstr ""
-"Rút kiếm ra và cầu nguyện đi! Ngươi không thể chống lại chúng ta! Ngươi phải "
-"đền tội!"
+"Rút kiếm ra và cầu nguyện đi! Ngươi không thể chống lại bọn ta đâu! Ngươi sẽ "
+"phải đền tội!"
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:499
@@ -1723,8 +1735,8 @@ msgid ""
 "But have you not seen the undead in these forests? I know you have seen them "
 "under the control of the many bandit leaders before..."
 msgstr ""
-"Các người không thấy lũ ma quái trong những cánh rừng sao? Tôi biết các "
-"người đã thấy chúng dưới sự điều khiển của những tướng cướp trước đây..."
+"Nhưng các người không thấy lũ ma quái trong rừng này sao? Tôi biết các người "
+"đã thấy chúng dưới sự điều khiển của nhiều tướng cướp trước đây..."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:504
@@ -1738,9 +1750,9 @@ msgid ""
 "a great sage. We forced him to teach us the secrets of this forest and of "
 "the undead."
 msgstr ""
-"Năm ngoái, chúng tôi đã mạo hiểm đi vào vùng đất của thần tiên trong bí mật, "
-"và bọn tôi đã bắt một nhà hiền triết. Bọn tôi đã ép ông ta nói ra bí mật của "
-"khu rừng và của bọn ma quái."
+"Năm ngoái, chúng tôi mạo hiểm, bí mật vào vùng đất của thần tiên, và bắt một "
+"nhà hiền triết. Chúng tôi ép ông ta dạy cho chúng tôi bí mật của khu rừng "
+"này và của bọn ma quái."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:514
@@ -1748,8 +1760,9 @@ msgid ""
 "You imprisoned Mebrin?! For that you must surely pay. Speak swiftly so that "
 "we may end this parley and dispatch you quickly! We will have vengeance!"
 msgstr ""
-"Các ngươi đã bắt Mebrin? Vậy thì ngươi chết chắc rồi. Nói nhanh và chúng ta "
-"sẽ giải quyết ngươi nhanh gọn! Chúng ta sẽ trả thù!"
+"Các ngươi đã bắt Mebrin sao?! Các ngươi chắc chắn phải trả giá vì điều đó. "
+"Nói mau để bọn ta kết thúc cuộc thương lượng này và khử ngươi nhanh gọn! Bọn "
+"ta sẽ báo thù!"
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:519
@@ -1759,23 +1772,23 @@ msgid ""
 "fell sway to the influence of the undead, and now he leads them. For a time "
 "he served us, but now he has gone mad and is attacking us as well!"
 msgstr ""
-"Hãy nghe tôi nói đã! Ông ấy đã dạy chúng tôi triệu hồi ma quái để chiến đấu. "
-"Chúng tôi đã ngu ngốc triệu hồi lên lũ ma quái vượt quá sức điều khiển. "
-"Mebrin đã bị lũ ma quái ảnh hưởng quá sâu, và giờ ông ấy cầm đầu bọn chúng. "
-"Một thời gian ông ấy còn phục vụ chúng tôi, nhưng sau đó ông ta hóa điên và "
-"tấn công cả bọn tôi!"
+"Hãy nghe tôi! Ông ấy đã dạy bọn tôi cách triệu gọi ma quái để chiến đấu. Bọn "
+"tôi yếu, ngốc nghếch và sớm triệu gọi ra những ma quái mà bọn tôi không thể "
+"điều khiển. Mebrin cũng dao động trước ảnh hưởng của lũ ma quái, và giờ ông "
+"ấy cầm đầu bọn chúng. Một thời gian ông ấy còn phục vụ bọn tôi, nhưng giờ "
+"ông ấy đã hóa điên và đang tấn công cả bọn tôi!"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:525
 msgid "Lies! Mebrin would never fight for the undead, much less lead them!"
 msgstr ""
-"Nói dối! Mebrin không bao giờ theo lũ ma quái kia, nói gì đến việc cầm đầu "
-"bọn chúng!"
+"Nói láo! Mebrin chẳng bao giờ chiến đấu cho lũ ma quái, nói gì đến việc cầm "
+"đầu bọn chúng!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:530
 msgid "But what do you want us to do about it? You are criminals!"
-msgstr "Nhưng ngươi muốn chúng ta làm gì? Ngươi là tội phạm!"
+msgstr "Nhưng các ngươi muốn bọn ta làm gì? Các ngươi là tội phạm!"
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:535
@@ -1783,8 +1796,8 @@ msgid ""
 "Join us in the fight! Together we can drive off these cruel undead and "
 "restore peace to the land."
 msgstr ""
-"Chúng ta phải hợp sức lại! Cùng nhau tiêu diệt lũ ma quái và đem lại hòa "
-"bình cho vùng đất."
+"Hãy tham gia chiến đấu cùng bọn tôi! Chúng ta có thể cùng nhau đánh đuổi lũ "
+"ma quái độc ác và lập lại hòa bình cho vùng đất."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:540
@@ -1792,9 +1805,9 @@ msgid ""
 "My lord, they could be valuable allies, and the undead are a greater threat "
 "to our lands. Justice can wait until we are all safely in Westin."
 msgstr ""
-"Thưa ngài, chúng có thể là đồng minh quan trọng, hơn nữa lũ ma quái là mối "
-"đe dọa nguy hiểm hơn. Chúng ta có thể xử tội chúng sau khi mà tất cả chúng "
-"ta đã an toàn ở Westin."
+"Thưa ngài, chúng có thể là những đồng minh quý giá, hơn nữa lũ ma quái là "
+"mối đe dọa lớn hơn với vùng đất của chúng ta. Chúng ta có thể xét xử chúng, "
+"sau khi tất cả chúng ta đã an toàn ở Westin."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:546
@@ -1802,8 +1815,8 @@ msgid ""
 "But think of the destruction they wrought on your borders! You cannot ally "
 "yourselves with these evil men! Vengeance!"
 msgstr ""
-"Những hãy nghĩ về những điều mà chúng đã làm trên vùng đất của anh! Anh "
-"không thể tự hạ thấp mình làm đồng minh với lũ xấu xa này! Trả thù!"
+"Nhưng hãy nghĩ về cảnh tượng phá hủy mà chúng đã gây ra trên biên giới của "
+"các anh! Anh không thể liên minh với bọn xấu xa này! Trả thù!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:551
@@ -1811,20 +1824,22 @@ msgid ""
 "Hmm... I have to consider this... If I ally with the elves, I must fight the "
 "bandits, but if I ally with the bandits I will make enemies of the elves..."
 msgstr ""
-"Hmm... Ta phải cân nhắc chuyện này... Nếu ta liên minh với thần tiên, ta "
-"phải chiến đấu với lũ cướp, nhưng nếu liên minh với cướp, thì sẽ là kẻ thù "
-"của thần tiên..."
+"Hừm... Ta phải cân nhắc chuyện này... Nếu ta liên minh với thần tiên, ta "
+"phải chiến đấu với bọn cướp, nhưng nếu ta liên minh với bọn cướp, ta sẽ là "
+"kẻ thù của thần tiên..."
 
 #. [option]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:553
 msgid "Very well. All men must unite against the undead."
-msgstr "Thôi được. Con người nên chung sức với nhau để chống lại ma quái."
+msgstr "Thôi được. Con người phải hợp sức để chống lại ma quái."
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:597
 msgid ""
 "We will now fight alongside you. Come, my thugs and footpads, rally to me!"
-msgstr "Chúng tôi sẽ chiến đấu sát cánh bên anh. Tất cả mọi người, theo ta!"
+msgstr ""
+"Giờ chúng tôi sẽ chiến đấu sát cánh bên anh. Đi thôi, bọn bay, tập hợp theo "
+"ta!"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:603
@@ -1834,10 +1849,10 @@ msgid ""
 "were foolish to ever have any dealings with these humans. Do not set foot in "
 "our land ever again, Deoran, for you have brought us nothing but grief."
 msgstr ""
-"Các ngươi cũng không tốt hơn những tên cướp! Để xem các ngươi có tìm đường "
-"ra khỏi rừng không! Đi nào, mọi người, hãy về vùng đất của chúng ta. Chúng "
-"ta thật ngu ngốc khi giúp đỡ những kẻ này. Đừng bao giờ đặt chân lên vùng "
-"đất của chúng ta nữa, Deoran, vì ngươi chỉ đem lại cho chúng ta tai họa mà "
+"Các ngươi chẳng hơn gì bọn tội phạm này! Để xem các ngươi có tự tìm được "
+"đường ra khỏi rừng không! Đi thôi, mọi người, hãy trở về vùng đất của chúng "
+"ta. Chúng ta thật ngu ngốc khi qua lại với bọn người này. Đừng đặt chân vào "
+"vùng đất của bọn ta nữa, Deoran, vì ngươi chỉ đem đến cho bọn ta tai họa mà "
 "thôi."
 
 #. [message]: speaker=Sir Gerrick
@@ -1845,13 +1860,13 @@ msgstr ""
 msgid ""
 "The elves have abandoned us in this accursed forest! We are surely lost!"
 msgstr ""
-"Thần tiên đã bỏ rơi chúng ta trong khu rừng nguyền rủa này! Chúng ta bị lạc "
-"rồi!"
+"Thần tiên đã bỏ rơi chúng ta trong khu rừng đáng nguyền rủa này! Chúng ta "
+"chắc chắn bị lạc rồi!"
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:620
 msgid "Do not fear, I can lead you out when the time is right."
-msgstr "Đừng sợ, tôi có thể dẫn mọi người ra khi đến lúc."
+msgstr "Đừng sợ, tôi có thể dẫn các bạn ra khi đúng lúc."
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:643
@@ -1863,25 +1878,26 @@ msgstr "Tìm ra nguồn gốc của lũ ma quái và tiêu diệt nó"
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:659
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:536
 msgid "Death of Urza Afalas"
-msgstr "Urza Afalas chết."
+msgstr "Urza Afalas chết"
 
 #. [option]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:674
 msgid ""
 "Your crimes are too great. You will fall with the rest of the foul undead!"
-msgstr "Tội ác của ngươi quá lớn. Ngươi phải chết cùng lũ ma quái kia!"
+msgstr ""
+"Tội ác của các ngươi quá lớn. Các ngươi sẽ chết cùng lũ ma quái bẩn thỉu!"
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:688
 msgid "Then this parley is over! You may have sounded the doom of all of us!"
 msgstr ""
-"Vậy là cuộc thương lượng kết thúc! Các người đã tự giết tất cả chúng ta rồi "
-"đấy!"
+"Thế thì cuộc thương lượng này kết thúc! Các người đã kết án tử cho tất cả "
+"chúng ta rồi đấy!"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:694
 msgid "You will pay for taking Mebrin from us! If he is harmed..."
-msgstr "Ngươi phải trả giá vì đã bắt đi Mebrin! Nếu ông ta bị hại..."
+msgstr "Các ngươi sẽ trả giá vì đã bắt Mebrin! Nếu ông ấy bị hại..."
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:709
@@ -1894,24 +1910,25 @@ msgstr "Đánh bại Urza Afalas"
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1122
 msgid "Now I pay for my crimes. But how many others will also suffer for them?"
 msgstr ""
-"Giờ ta trả giá cho tội ác của ta. Nhưng còn bao nhiêu kẻ nữa sẽ phải chết?"
+"Giờ ta phải trả giá cho tội ác của mình. Nhưng còn bao nhiêu kẻ khác cũng sẽ "
+"bị xử tử?"
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:779
 msgid "Fools! That lich will be the death of us all! You have sealed our doom!"
 msgstr ""
-"Ngu ngốc! Cái xương ma kia sẽ đem lại cái chết cho tất cả! Các người đã tự "
-"định đoạt cái chết cho chúng ta rồi!"
+"Bọn ngu xuẩn! Cái thây ma kia sẽ là cái chết cho tất cả chúng ta! Các người "
+"đã tự định đoạt số phận của chúng ta rồi!"
 
 #. [unit]: type=Water Serpent, id=Beast of the Lake
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:805
 msgid "Beast of the Lake"
-msgstr "Quái vật bên hồ"
+msgstr "Quái vật trong hồ"
 
 #. [message]: speaker=Beast of the Lake
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:811
 msgid "Graar!"
-msgstr "Graar!"
+msgstr "Gràào!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:834
@@ -1919,13 +1936,12 @@ msgid ""
 "Well! That was easier than I thought it’d be. Looks like the undead aren’t "
 "so tough after all!"
 msgstr ""
-"À! Có vẻ mọi việc dễ hơn tôi nghĩ. Lũ ma quái không mạnh như chúng ta vẫn "
-"tưởng!"
+"Hừm! Dễ hơn tôi nghĩ. Rốt cuộc có vẻ như lũ ma quái không đến nỗi quá mạnh!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:839
 msgid "Indeed. The dark king has fallen."
-msgstr "Đúng vậy. Vua bóng tối đã bị đánh bại."
+msgstr "Đúng vậy. Vua bóng tối đã bại trận."
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:843
@@ -1934,9 +1950,9 @@ msgid ""
 "mere phantom. He resides in catacombs deep underneath the castle, but they "
 "cannot be entered without magical means."
 msgstr ""
-"Tôi e rằng không phải thế đâu. Không phải Mebrin thật bị diệt đâu, chỉ là "
-"một cái bóng thôi. Ông ta đang ở trong một hầm mộ sâu bên dưới lâu đài, và "
-"không thể vào nếu không có sự trợ giúp của phép thuật."
+"Tôi e không phải thế. Không phải Mebrin thật bị tiêu diệt đâu, chỉ là một "
+"bóng ma thôi. Hắn trú ngụ trong hầm mộ sâu bên dưới lâu đài, nhưng chúng ta "
+"không thể vào nếu không có phép thuật."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:848
@@ -1945,10 +1961,10 @@ msgid ""
 "you tell us we cannot even reach it?! Ethiliel could have dispelled these "
 "magical wards if we hadn’t fallen for your lies!"
 msgstr ""
-"Chúng ta đã tha mạng cho ngươi để đổi lấy việc tiêu diệt nguồn gốc của ma "
-"quái, và giờ ngươi lại nói là chúng ta thậm chí không thể đến gần chúng? "
-"Ethiliel hẳn là có thể hóa giải những bùa phép này nếu chúng ta không nghe "
-"theo lời dối trá của mi!"
+"Bọn ta đã tha mạng cho ngươi để đánh bại tận gốc lũ ma quái đó, vậy mà giờ "
+"ngươi lại nói chúng ta thậm chí không thể tiếp cận được chúng?! Ethiliel hẳn "
+"có thể hóa giải bùa phép đó, nếu bọn ta không nghe theo những lời dối trá "
+"của ngươi!"
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:852
@@ -1956,13 +1972,13 @@ msgid ""
 "If I had told you, you and the elves would have killed me! I didn’t have a "
 "choice!"
 msgstr ""
-"Nếu tôi nói thế, thì các anh và thần tiên sẽ giết tôi! Tôi không còn cách "
+"Nếu tôi nói ra, thì các anh và thần tiên sẽ giết tôi! Tôi không còn lựa chọn "
 "nào khác!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:856
 msgid "Perhaps we should correct that error now."
-msgstr "Có lẽ chúng ta giờ nên làm việc đáng ra phải làm..."
+msgstr "Có lẽ giờ chúng ta nên sửa chữa sai lầm đó."
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:860
@@ -1971,9 +1987,8 @@ msgid ""
 "undead. I can lead you and your men back to the lands of Wesnoth if you will "
 "grant me pardon."
 msgstr ""
-"Và các anh chắc chắn sẽ bị lạc trong rừng mãi mãi, nếu như lũ ma quái kia "
-"không giết được các anh. Tôi sẽ giúp các anh ra khỏi khu rừng, trở về "
-"Wesnoth, với điều kiện các anh phải tha cho tôi."
+"Thế thì các anh chắc chắn sẽ bị lạc trong rừng này mãi mãi. Tôi có thể dẫn "
+"các anh trở về vùng đất của Wesnoth, với điều kiện các anh phải tha cho tôi."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:865
@@ -1982,9 +1997,9 @@ msgid ""
 "But what about Mebrin? The undead will keep attacking our homes unless we "
 "root them out at the source."
 msgstr ""
-"Giờ thần tiên đã bỏ mặc chúng ta, có vẻ đây là lựa chọn duy nhất. Nhưng còn "
-"Mebrin thì sao? Lũ ma quái sẽ quấy nhiễu vùng đất của chúng ta, trừ khi "
-"chúng ta diệt trừ tận gốc chúng."
+"Giờ thần tiên đã bỏ rơi bọn ta, có vẻ đó là lựa chọn duy nhất. Nhưng còn "
+"Mebrin thì sao? Lũ ma quái sẽ tiếp tục tấn công nhà của bọn ta, trừ khi bọn "
+"ta diệt trừ tận gốc chúng."
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:869
@@ -1994,10 +2009,11 @@ msgid ""
 "I know that he will march to ravage your city of Westin with all his might "
 "soon, and that the city cannot hold out against such a force unprepared."
 msgstr ""
-"Tôi không biết. Nhưng nếu không làm thật nhanh thì hoặc phải trốn khỏi đây "
-"hoặc ở lại và cầm chắc cái chết. Tôi biết ông ta sẽ sớm dồn toàn lực đánh "
-"vào Westin, và thành phố sẽ không thể chống lại bằng một lực lượng mỏng manh "
-"như thế."
+"Tôi không biết. Nhưng nếu chúng ta không thể đột chiếm hầm ngầm của hắn, thì "
+"chúng ta hoặc phải chạy trốn hoặc chờ ở đây và chắc chắn bỏ mạng khi đánh "
+"trên sân nhà của hắn. Tôi biết rằng hắn sẽ sớm dồn toàn lực tàn phá Westin, "
+"và thành phố không thể cầm cự trước một lực lượng như thế mà không được "
+"chuẩn bị."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:874
@@ -2005,18 +2021,18 @@ msgid ""
 "Then we shall retreat towards Westin and prepare for the oncoming battle. I "
 "pray our only chance at victory was not lost today."
 msgstr ""
-"Vậy chúng ta sẽ lui về Westin và chuẩn bị cho trận chiến sắp tới. Tôi hi "
-"vọng cơ hội duy nhất của chúng ta  sẽ không tàn lụi."
+"Thế thì chúng ta sẽ rút lui về Westin và chuẩn bị cho trận chiến sắp tới. "
+"Tôi cầu mong cơ hội chiến thắng duy nhất của chúng ta hôm nay không bị mất."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:891
 msgid "Now, on with those bandits!"
-msgstr ""
+msgstr "Giờ, xử lý bọn cướp đó!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:909
 msgid "We have beaten them both, criminals and undead!"
-msgstr "Chúng ta đã diệt cả hai, lũ cướp và ma quái!"
+msgstr "Chúng ta đã đánh bại cả hai, bọn tội phạm và lũ ma quái!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:914
@@ -2024,8 +2040,8 @@ msgid ""
 "We should make haste to return to Wesnoth before the harvest. Fall arrived "
 "some time ago."
 msgstr ""
-"Chúng ta phải nhanh chóng trở về Wesnoth trước mùa thu hoạch. Trời vào thu "
-"rồi."
+"Chúng ta nên nhanh chóng trở về Wesnoth trước vụ thu hoạch. Mùa thu đến cách "
+"đây cũng lâu rồi."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:918
@@ -2036,10 +2052,11 @@ msgid ""
 "the land of his evil, we must enter the darkness and root him out from "
 "within."
 msgstr ""
-"Đừng vội thế; những pháp sư vĩ đại không dễ chết thế đâu, ta sợ rằng có "
-"những đường dẫn và hầm mộ sâu bên dưới pháo đài của ông ta và chúng ta chỉ "
-"vừa mới giết một cái bóng. Nếu muốn tiêu diệt tận gốc lũ ma quái thì chúng "
-"ta phải đi vào trong và tiêu diệt tận gốc."
+"Đừng vội thế, các pháp sư vĩ đại không phải là những kẻ lừa đảo tầm thường "
+"để dễ bị đánh bại thế đâu. Tôi sợ rằng có nhiều đường ống và hầm mộ chôn "
+"dưới pháo đài của hắn, và chúng ta mới chỉ tiêu diệt một bóng ma. Nếu chúng "
+"ta muốn dọn sạch vùng đất này khỏi cái ác, chúng ta phải vào bóng tối và nhổ "
+"tận gốc hắn từ bên trong."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:922
@@ -2047,14 +2064,15 @@ msgid ""
 "There are strong magical wards placed here that would prevent you from "
 "entering, but I am capable of opening them to let us all pass."
 msgstr ""
-"Có những lá bùa đặt ở đây để ngăn chúng ta, nhưng tôi có thể vô hiệu chúng."
+"Có bùa phép mạnh được đặt ở đây ngăn các anh vào, nhưng tôi có thể mở chúng "
+"để tất cả chúng ta đi qua."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:927
 msgid "My men are not dwarves! How are we to fight in catacombs and tunnels?"
 msgstr ""
 "Binh lính của tôi không phải là người lùn! Làm sao chúng ta có thể chiến đấu "
-"trong các hầm mộ hay đường hầm?"
+"trong hầm mộ hay đường ống?"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:931
@@ -2062,8 +2080,8 @@ msgid ""
 "Someone must take news back to Wesnoth of this new evil that lurks near our "
 "borders. Who knows how many more of these undead are hiding in the forest?"
 msgstr ""
-"Phải có người trở về Wesnoth đưa tin báo về lũ ma quái này. Ai biết còn bao "
-"nhiêu ma quái ẩn nấp trong rừng?"
+"Phải có người trở về Wesnoth đưa tin về kẻ xấu mới nổi ẩn náu gần biên giới "
+"của chúng ta. Ai mà biết còn bao nhiêu ma quái nấp trong rừng nữa?"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:935
@@ -2071,14 +2089,13 @@ msgid ""
 "Go, Sir Gerrick, and take with you an escort of elves, if Ethiliel will "
 "permit it."
 msgstr ""
-"Đi đi, ngài Gerick, và dẫn theo vài thần tiên hộ tống ngài, Elithiel sẽ cho "
-"ngài những người ngài cần."
+"Đi đi, ngài Gerrick, và hãy dẫn theo một đội thần tiên hộ tống, nếu Ethiliel "
+"cho phép."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:939
 msgid "Indeed I will. My kinsfolk will protect you and your message!"
-msgstr ""
-"Đúng thế. Binh lính của tôi sẽ bảo vệ anh và cả thông điệp anh mang đi!"
+msgstr "Tôi cho phép. Người của tôi sẽ bảo vệ anh và thông điệp của anh!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:943
@@ -2091,7 +2108,7 @@ msgstr "Tạm biệt, Deoran! Tôi sẽ chào đón ngài khi ngài trở về t
 #. The ogre purposely has very bad grammar, because he is very stupid.
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:5
 msgid "Tidings, Good and Ill"
-msgstr "Tin tức, Điềm lành và Vận rủi."
+msgstr "Tin tức, điềm lành và vận rủi"
 
 #. [side]
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:58
@@ -2116,7 +2133,7 @@ msgstr "Zerix"
 #. [side]
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:67
 msgid "Scorpion"
-msgstr "Bọ cạp "
+msgstr "Bọ cạp"
 
 #. [side]
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:68
@@ -2179,9 +2196,9 @@ msgid ""
 "and Deoran."
 msgstr ""
 "Ngài Gerrick, ngài phải trở về tỉnh Kerlath và cảnh báo người của ngài về "
-"mối nguy từ phía Nam này. Chúng tôi sẽ dẫn anh xuyên qua rừng và dọn đường "
-"cho anh. Anh có thể chọn vài người đi cùng, và những người anh để lại vẫn đủ "
-"thời gian bắt kịp Ethiliel và Deoran."
+"mối nguy hiểm từ phía nam. Chúng tôi sẽ dẫn ngài qua rừng và dọn sạch kẻ thù "
+"khỏi đường đi của ngài. Ngài cũng có thể chọn vài người của ngài đi cùng, và "
+"bất kỳ ai ngài để lại vẫn có thời gian để tham gia cùng Ethiliel và Deoran."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:209
@@ -2189,36 +2206,38 @@ msgid ""
 "With the bandits and undead vanquished behind us, what foes can there be "
 "ahead? Let us hope this is a speedy journey, for the specter of winter looms."
 msgstr ""
-"Chúng ta đã đánh bại cướp và cả ma quái, còn phải sợ cái gì nữa? Mong rằng "
-"chuyến đi của ta sẽ nhanh chóng, vì mùa đông đã rất gần rồi."
+"Bọn cướp và lũ ma quái đã bị đánh bại đằng sau chúng ta, còn kẻ thù nào đằng "
+"trước nữa? Hy vọng đây là một chuyến đi nhanh chóng, vì mùa đông đã rất gần "
+"rồi."
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:215
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:294
 msgid "Move Sir Gerrick to the north end of the woods"
-msgstr "Đưa ngài Gerrick đến bìa rừng phía Bắc"
+msgstr "Di chuyển ngài Gerrick đến bìa rừng phía bắc"
 
 #. [note]
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:231
 msgid "Unrecalled units will be available for Deoran."
-msgstr "Những binh lính chưa được gọi lại sẽ có sẵn cho Deoran chỉ huy."
+msgstr "Các đơn vị không được gọi lại sẽ do Deoran chỉ huy."
 
 #. [message]: speaker=Queen Xeila
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:254
 msgid ""
 "Hss... Here are the humans who have made a pact with the cursed mermen! "
 "Hss..."
-msgstr "Hss... Đây là lũ con người đã liên minh với bọn người cá! Hss..."
+msgstr ""
+"Hư... Đó là lũ con người đã cấu kết với bọn người cá đáng nguyền rủa! Hư..."
 
 #. [message]: speaker=Eliomir
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:258
 msgid "We have stumbled into a den of nagas!"
-msgstr "Chúng ta đã lạc vào hang của người rắn!"
+msgstr "Chúng ta đã lạc vào sào huyệt của bọn người rắn!"
 
 #. [message]: speaker=Queen Xeila
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:262
 msgid "Hss... We will kill them all, my brood. Hss..."
-msgstr "Hss... Chúng ta sẽ giết sạch bọn chúng, các con của ta. Hss"
+msgstr "Hư... Chúng ta sẽ giết hết bọn chúng, các con của ta. Hư..."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:266
@@ -2226,20 +2245,20 @@ msgid ""
 "We must clear this road for Deoran and Ethiliel! We must destroy the naga "
 "lair!"
 msgstr ""
-"Chúng ta phải dọn sạch lối đi này cho Deoran và Ethiliel! Chúng ta phải diệt "
-"hang ổ người rắn!"
+"Chúng ta phải dọn con đường này cho Deoran và Ethiliel! Chúng ta phải tiêu "
+"diệt hang ổ người rắn!"
 
 #. [message]: speaker=Queen Xeila
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:272
 msgid "Hss... elves! Are they friends or enemies? Hss..."
-msgstr "Hss... thần tiên! Chúng là bạn hay thù? Hss.."
+msgstr "Hư... thần tiên! Chúng là bạn hay thù? Hư..."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:276
 msgid "We are weary travelers, seeking our homes. If you but let us pass..."
 msgstr ""
-"Chúng tôi chỉ là những kẻ lũ hành mỏi mệt, tìm đường về nhà. Nếu cô để chúng "
-"tôi qua.."
+"Chúng tôi chỉ là những người lữ hành mỏi mệt, đang tìm đường về nhà. Nếu cô "
+"để chúng tôi qua..."
 
 #. [message]: speaker=Queen Xeila
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:280
@@ -2247,9 +2266,9 @@ msgid ""
 "Hss... And humans! Humans drained our swamps and made them fields for farms, "
 "and now they have found my winter nest. The Land-Walkers must die! Hss..."
 msgstr ""
-"Hss... Và con người! Con người đã rút cạn đầm lầy của chúng ta và biến chúng "
-"thành cánh đồng, nông trại, và giờ chúng đã tìm đến ổ trú đông của ta. Những "
-"kẻ sống trên cạn phải chết! Hss..."
+"Hư... Và con người! Con người đã tháo cạn đầm lầy của bọn ta và biến chúng "
+"thành cánh đồng, nông trại, và giờ chúng đã tìm thấy ổ trú đông của ta. "
+"Những kẻ sống trên cạn phải chết! Hư..."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:284
@@ -2257,20 +2276,21 @@ msgid ""
 "She won’t listen. If we leave these nagas here, they will ambush Deoran and "
 "Ethiliel! We must destroy them!"
 msgstr ""
-"Cô ta sẽ không nghe đâu. Nếu chúng ta để lũ người rắn ở đây, chúng sẽ phục "
+"Cô ta sẽ không nghe đâu. Nếu chúng ta để bọn người rắn ở đây, chúng sẽ phục "
 "kích Deoran và Ethiliel! Chúng ta phải tiêu diệt chúng!"
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:298
 msgid "Defeat the Queen Xeila"
-msgstr "Đánh bại Nữ hoàng Xeila."
+msgstr "Đánh bại nữ hoàng Xeila"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:331
 msgid ""
 "There are a group of naga occupying this area... they don’t look very "
 "friendly."
-msgstr "Có một nhóm người rắn chiếm vùng này... Họ có vẻ không thân thiện lắm."
+msgstr ""
+"Có một nhóm người rắn chiếm khu vực này... trông chúng không thân thiện lắm."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:336
@@ -2278,24 +2298,23 @@ msgid ""
 "if they are hostile to us, they could endanger Deoran and Ethiliel as well. "
 "Perhaps their leader can be reasoned with."
 msgstr ""
-"Nếu họ xem ta như thù, thì họ cũng xem Deoran và Ethiliel như thế. Có lẽ "
-"chúng ta nên nói chuyện với thủ lĩnh của họ."
+"Nếu chúng thù địch với chúng ta, chúng cũng có thể gây nguy hiểm cho Deoran "
+"và Ethiliel. Có lẽ chúng ta nên giải thích với chỉ huy của chúng."
 
 #. [message]: speaker=Queen Xeila
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:351
 msgid "Hss... Who will watch over my brood now? Hss..."
-msgstr "Hsss.... Ai sẽ trông chừng con ta đây? Hsss..."
+msgstr "Hư... Giờ ai sẽ trông nom lũ con của ta? Hư..."
 
 #. [message]: speaker=Kramak
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:365
 msgid "Ho! Me see elves. Elves tasty? Me take elves to eat."
-msgstr ""
-"Hô! Ta thấy thần tiên. Thần tiên ăn có ngon không? Ta muốn ăn thần tiên."
+msgstr "Hô! Ta thấy thần tiên. Thần tiên ngon không? Ta bắt thần tiên để ăn."
 
 #. [message]: race=elf
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:370
 msgid "Err, Mr. Ogre, we are not very tasty."
-msgstr "Ờ ờ, Ngài quỷ khổng lồ ạ, chúng tôi không ngon lắm đâu."
+msgstr "Ờ ờ, ngài quỷ khổng lồ ạ, chúng tôi không ngon lắm đâu."
 
 #. [message]: speaker=Kramak
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:374
@@ -2310,7 +2329,7 @@ msgstr "Đợi đã! Ta không tin ngươi. Ta ăn ngươi!"
 #. [message]: speaker=Ogre
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:393
 msgid "Bad food! It hurt me. Arrrrggghhhh!!"
-msgstr "Thức ăn hư! Nó làm đau ta. Aaaaaarrrr!"
+msgstr "Thức ăn hư! Nó làm ta đau. Aaaaa!!"
 
 #. [message]: speaker=Abdur
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:405
@@ -2318,8 +2337,9 @@ msgid ""
 "Travelers in this desolate land! I seek that dark Sage who is rumored to "
 "dwell in these lands. Surely you have come from him?"
 msgstr ""
-"Những người lữ hành qua vùng đất hoang! Mọi người nói Nhà hiền triết Bóng "
-"tối đang ở trong vùng này. Các người chắc hẳn được ông ta phái đến ?"
+"Những kẻ lữ hành ở vùng đất hoang vắng! Ta tìm kiếm nhà hiền triết bóng tối, "
+"người được đồn đang cư ngụ trong vùng này. Các người chắc hẳn đến từ chỗ ông "
+"ấy?"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:409
@@ -2327,13 +2347,13 @@ msgid ""
 "Indeed! I just left my comrades, who were preparing to kill the vile "
 "Necromancer."
 msgstr ""
-"Thực ra, tôi vừa tách khỏi đội quân của mình. Những đồng đội của tôi đang "
-"chuẩn bị giết tên pháp sư gọi hồn xấu xa."
+"Thực ra, tôi vừa rời khỏi đồng đội của mình, họ đang chuẩn bị giết tên pháp "
+"sư gọi hồn hèn hạ."
 
 #. [message]: speaker=Abdur
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:413
 msgid "Unworthy fools! I’ll kill you for this sacrilege!"
-msgstr "Bọn ngốc vô dụng! Ta sẽ giết ngươi vì những lời phỉ báng này!"
+msgstr "Bọn ngu xuẩn đáng khinh bỉ! Ta sẽ giết các ngươi vì tội báng bổ này!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:434
@@ -2341,8 +2361,8 @@ msgid ""
 "These naga are still in control of the road. We must clear the way for "
 "Deoran and Ethiliel!"
 msgstr ""
-"Bọn người rắn vẫn đang chiếm giữ con đường. Chúng ta phải dọn sạch chúng cho "
-"Deoran và Ethiliel!"
+"Bọn người rắn vẫn đang kiểm soát con đường. Chúng ta phải dọn nó cho Deoran "
+"và Ethiliel!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:447
@@ -2357,8 +2377,8 @@ msgstr ""
 msgid ""
 "We too will return to our councils. We have much to tell them... Much indeed."
 msgstr ""
-"Chúng tôi cũng sẽ về gặp hội đồng của chúng tôi. Chúng tôi có nhiều chuyện "
-"để nói với họ.. Quả thực là rất nhiều."
+"Chúng tôi cũng sẽ trở về gặp hội đồng của chúng tôi. Chúng tôi có nhiều "
+"chuyện để nói với họ... Quả thực là rất nhiều."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:455
@@ -2366,8 +2386,8 @@ msgid ""
 "While the council debated the best course of action, Deoran and Ethiliel "
 "prepared to enter the caves under Mebrin’s fortress..."
 msgstr ""
-"Khi hội đồng đang cân nhắc phương án tốt nhất, Deoran và Ethiliel đã chuẩn "
-"bị tiến vào hang động bên dưới pháo đài của Mebrin..."
+"Trong lúc hội đồng tranh luận phương án hành động tốt nhất, Deoran và "
+"Ethiliel chuẩn bị vào hang động dưới pháo đài của Mebrin..."
 
 #. [scenario]: id=06b_The_Long_March
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:5
@@ -2394,14 +2414,13 @@ msgstr "Wizzi"
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:468
 msgid "Deoran and Urza Afalas led their men quickly from Mebrin’s fortress..."
 msgstr ""
-"Deoran và Urza Afalas nhanh chóng dẫn binh lính đi khỏi pháo đài của "
-"Mebrin..."
+"Deoran và Urza Afalas nhanh chóng dẫn người rời khỏi pháo đài của Mebrin..."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:487
 msgid "Will this forest ever end? How can we know what path to take?!"
 msgstr ""
-"Khu rừng này kéo dài vô tận vậy? Làm sao chúng ta biết phải đi đường nào?!"
+"Khu rừng này bao giờ mới kết thúc? Làm sao chúng ta biết phải đi đường nào?!"
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:491
@@ -2409,15 +2428,15 @@ msgid ""
 "You have to follow me! I have often traveled these woods avoiding the elves "
 "with my comrades, and I know a secret path through it."
 msgstr ""
-"Các anh phải theo tôi! Tôi thường đi qua khu rừng này tránh mặt thần tiên "
-"cùng với anh em tôi, và tôi biết một lối đi bí mật qua đây."
+"Các anh phải theo tôi! Tôi cùng với các bạn của tôi thường đi qua khu rừng "
+"này tránh mặt thần tiên, và tôi biết một lối đi bí mật."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:495
 msgid "Can we trust him? His people are murderers and thieves!"
 msgstr ""
-"Liệu chúng ta có thể tin hắn được không? Người của hắn là những tên giết "
-"người và trộm cắp!"
+"Chúng ta có thể tin hắn được không? Người của hắn là những kẻ sát nhân và "
+"trộm cắp!"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:499
@@ -2425,7 +2444,7 @@ msgid ""
 "Do we have any choice? Our food is running out, and it will be winter soon..."
 msgstr ""
 "Chúng ta có còn lựa chọn nào khác không? Thực phẩm đang cạn dần, và mùa đông "
-"sẽ sớm đến thôi..."
+"sắp đến..."
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:503
@@ -2433,13 +2452,13 @@ msgid ""
 "Beware! I sense that there are many undead creatures chasing us. We should "
 "move quickly."
 msgstr ""
-"Cẩn thận! Tôi cảm nhận được rằng đang có lũ ma quái đuổi theo chúng ta. "
-"Chúng ta nên di chuyển nhanh chóng."
+"Cẩn thận! Tôi cảm nhận thấy có nhiều sinh vật ma quái đang đuổi theo chúng "
+"ta. Chúng ta nên di chuyển nhanh chóng."
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:507
 msgid "Let us go quickly, then. I will show you the way."
-msgstr "Mọi người hãy đi nhanh lên nào. Tôi sẽ chỉ đường."
+msgstr "Thế thì hãy đi mau. Tôi sẽ chỉ đường."
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:514
@@ -2448,14 +2467,14 @@ msgid ""
 "receive us too kindly. Stay on the path and perhaps we can avoid at least "
 "most of them."
 msgstr ""
-"Hãy nhớ rằng những khu rừng này đầy rấy thần tieenb, và tôi không nghĩ họ sẽ "
-"đối xử tốt với chúng ta. Hãy cứ đi theo đường mòn và có lẽ chúng ta sẽ tránh "
-"mặt được đa số họ."
+"Hãy nhớ rằng khu rừng này đầy rẫy thần tiên, và tôi không nghĩ họ sẽ tiếp "
+"đón chúng ta tử tế. Cứ đi theo đường mòn, chúng ta có thể tránh được phần "
+"lớn bọn họ."
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:520
 msgid "Move Deoran through the woods and over the river"
-msgstr "Đưa Deoran đi qua khu rừng và băng qua con sông"
+msgstr "Di chuyển Deoran qua khu rừng và băng qua sông"
 
 #. [objectives]
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:547
@@ -2463,13 +2482,13 @@ msgid ""
 "At the start of each turn, Urza Afalas will reveal as much of the secret "
 "path as is within his vision range."
 msgstr ""
-"Ở đầu mỗi lượt đi,  Urza Afalas sẽ mở ra tất cả lối đi bí mật trong tầm nhìn "
-"của anh."
+"Ở đầu mỗi lượt, Urza Afalas sẽ mở ra con đường bí mật trong phạm vi tầm nhìn "
+"của anh ta."
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:733
 msgid "Just a little further!"
-msgstr "Chỉ xa hơn một chút nữa!"
+msgstr "Chỉ xa hơn một chút nữa thôi!"
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:752
@@ -2479,12 +2498,12 @@ msgstr "Chúng ta gần tới nơi rồi!"
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:771
 msgid "Come on! Hurry!"
-msgstr "Thôi nào! Nhanh lên!"
+msgstr "Đi thôi! Nhanh lên!"
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:790
 msgid "Keep moving!"
-msgstr "Tiếp tục di chuyển!"
+msgstr "Cứ tiếp tục di chuyển!"
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:814
@@ -2493,15 +2512,15 @@ msgid ""
 "again, and an end to these cursed trees!"
 msgstr ""
 "Từ đây các anh có thể thấy bờ sông! Băng qua nó chúng ta sẽ lại thấy ánh mặt "
-"trời, và thoát khỏi những cái cây đáng nguyền rủa!"
+"trời, và thoát khỏi những cái cây đáng nguyền rủa này!"
 
 #. [message]: race=elf
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:868
 msgid ""
 "You humans have kidnapped Mebrin the Sage. You will pay for your crimes."
 msgstr ""
-"Con người các ngươi đã bắt cóc nhà Hiền triết Mabrin. Các ngươi sẽ trả giá "
-"cho tội ác này."
+"Con người các ngươi đã bắt cóc nhà hiền triết Mebrin. Các ngươi sẽ phải đền "
+"tội."
 
 #. [message]: id=Deoran
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:872
@@ -2510,8 +2529,9 @@ msgid ""
 "an army of undead. By the laws of Wesnoth, the punishment for his crimes is "
 "death!"
 msgstr ""
-"Nhà hiền triết Mebrin của các người là người phạm tội. Ông ta đã tập luyện "
-"thuật gọi hồn. Theo luật Wesnoth, án phạt cho tội ác của ông ta là tử hình! "
+"Nhà hiền triết Mebrin của các người là tội phạm. Ông ta đã tập luyện thuật "
+"gọi hồn và giờ chỉ huy quân đội ma quái. Theo luật Wesnoth, hình phạt cho "
+"tội ác của ông ta là tử hình!"
 
 #. [message]: race=elf
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:881
@@ -2519,43 +2539,44 @@ msgid ""
 "It is you who is a criminal and who is in a company of criminals. We will "
 "not let you kill Mebrin!"
 msgstr ""
-"Chính ngươi mới là kẻ phạm tội và ở trong một nhóm tội phạm. Chúng ta sẽ "
-"không để ngươi giết Mebrin!"
+"Chính ngươi mới là tội phạm trong một nhóm tội phạm. Bọn ta sẽ không để các "
+"ngươi giết Mebrin đâu!"
 
 #. [message]: race=elf
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:915
 msgid "We cannot allow you bandits and criminals to pass through our lands!"
-msgstr "Chúng ta không thể để cướp và tội phạm đi qua vùng đất của mình!"
+msgstr ""
+"Bọn ta không cho phép lũ cướp và tội phạm các ngươi qua vùng đất của bọn ta!"
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:919
 msgid "We wish only to return to our homes!"
-msgstr "Chúng ta chỉ muốn trở về nhà!"
+msgstr "Bọn ta chỉ muốn trở về nhà!"
 
 #. [message]: race=elf
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:928
 msgid "Nevertheless, we will have vengeance for Mebrin!!"
-msgstr "Tuy nhiên, chúng ta sẽ trả thù cho Mebrin!!"
+msgstr "Không cần biết, bọn ta sẽ trả thù cho Mebrin!!"
 
 #. [message]: race=elf
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:962
 msgid "Get them!"
-msgstr "Giết chúng!"
+msgstr "Thanh toán chúng!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1149
 msgid "Thank heaven we have escaped that awful forest!"
-msgstr "Cảm ơn trời đất chúng ta đã thoát khỏi khu rừng kinh khủng đó!"
+msgstr "Cảm ơn trời, chúng ta đã thoát khỏi khu rừng khủng khiếp đó!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1153
 msgid "Indeed, Afalas, you’ve earned my trust today."
-msgstr "Đúng thế,  Afalas, hôm nay anh đã có được sự tin tưởng của tôi."
+msgstr "Đúng thế, Afalas, hôm nay anh đã có được sự tin tưởng của tôi."
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1157
 msgid "I can only hope for mercy when I return to Westin."
-msgstr "Tôi chỉ có thể hy vọng sự tha thứ khi tôi trở về Westin."
+msgstr "Tôi chỉ có thể hy vọng được tha thứ khi tôi trở về Westin."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1162
@@ -2565,7 +2586,7 @@ msgstr "Nhưng có một đám mây đen lờ mờ đằng sau Deoran và binh l
 #. [scenario]: id=07a_Into_the_Depths
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:5
 msgid "Into the Depths"
-msgstr "Tiến vào lòng đất"
+msgstr "Tiến vào hang sâu"
 
 #. [side]: type=Ancient Lich, id=Mal M'Brin
 #. [side]: type=Lich, id=Mal M'Brin
@@ -2588,7 +2609,7 @@ msgstr "Grek"
 #. [unit]: type=Eyestalk, id=Eye Guardian
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:222
 msgid "Eye Guardian"
-msgstr "Quái vật canh gác"
+msgstr "Hộ vệ mắt"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:255
@@ -2596,6 +2617,8 @@ msgid ""
 "Proceed slowly, who knows what evils inhabited these parts before Mebrin was "
 "turned! We cannot be too careful."
 msgstr ""
+"Tiến lên từ từ, ai mà biết những thứ quái quỷ gì sống ở đây trước khi Mebrin "
+"biến đổi! Chúng ta phải cẩn thận."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:261
@@ -2603,18 +2626,22 @@ msgid ""
 "Cavalrymen and Dragoons will be less useful in the caves than soldiers who "
 "fight on foot."
 msgstr ""
+"Kỵ binh và Long kỵ binh trong hang động không hữu ích bằng các đơn vị bộ "
+"binh."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:266
 msgid "Also, soldiers with the <i>quick</i> trait will be useful in the dark."
 msgstr ""
+"Ngoài ra, các binh lính có đặc điểm <i>nhanh nhẹn</i> sẽ hữu ích trong bóng "
+"tối."
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:274
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:452
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:510
 msgid "Find the source of the undead under the citadel"
-msgstr ""
+msgstr "Tìm nguồn gốc của lũ ma quái dưới thành trì"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:312
@@ -2622,6 +2649,8 @@ msgid ""
 "What horrid creature may that be? I’ve seen many wicked things in my life, "
 "but never one such as that."
 msgstr ""
+"Sinh vật kinh khủng gì thế? Tôi đã nhìn thấy nhiều thứ xấu xa trong đời, "
+"nhưng chưa bao giờ thấy một thứ như thế."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:317
@@ -2630,6 +2659,9 @@ msgid ""
 "stories of these creatures but I wouldn’t have expected to come across "
 "one... the least of all here. Let us proceed with caution."
 msgstr ""
+"Chắc nó là một kiểu hộ vệ do Mebrin đặt ở đây. Thần tiên bọn tôi đã nghe "
+"nhiều câu chuyện về những sinh vật này, nhưng tôi không ngờ lại bắt gặp ở "
+"đây. Hãy tiếp tục một cách thận trọng."
 
 #. [message]: speaker=Grek
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:330
@@ -2637,11 +2669,13 @@ msgid ""
 "Ha! Humans and elves! What are you doing in our caves, and why shouldn’t we "
 "grind your bones and gnaw on your flesh?"
 msgstr ""
+"Ha! Con người và thần tiên! Các ngươi đang làm gì trong hang động của bọn "
+"ta, sao bọn ta không nghiền xương và gặm thịt các ngươi?"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:335
 msgid "We mean no trespass. We are hunting the undead."
-msgstr ""
+msgstr "Chúng tôi không có ý xâm phạm. Chúng tôi đang săn đuổi lũ ma quái."
 
 #. [message]: speaker=Grek
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:340
@@ -2649,6 +2683,8 @@ msgid ""
 "Undead! Ha! We kill undead all the time. You be friendly enough so we won’t "
 "kill you, but why should we help you?"
 msgstr ""
+"Ma quái! Ha! Bọn ta giết ma quái suốt. Các ngươi đủ thân thiện, vì thế bọn "
+"ta sẽ không giết các ngươi, nhưng tại sao bọn ta phải giúp ngươi?"
 
 #. [message]: speaker=Grek
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:401
@@ -2656,12 +2692,16 @@ msgid ""
 "Gold is good. We can trade gold for weapons and fire. We will help you "
 "defeat the undead now."
 msgstr ""
+"Vàng thì tốt. Bọn ta có thể đổi vàng lấy vũ khí và lửa. Giờ bọn ta sẽ giúp "
+"các ngươi đánh bại lũ ma quái."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:405
 msgid ""
 "What aid can you offer us? We are not well suited to fighting in the caves."
 msgstr ""
+"Các ông có thể giúp gì cho chúng tôi? Chúng tôi không thích hợp để chiến đấu "
+"trong hang động lắm."
 
 #. [message]: speaker=Grek
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:409
@@ -2670,6 +2710,9 @@ msgid ""
 "though! Now we have dwarvish thunder fire and many trolls ready for "
 "fighting. They come too and help you smash them undead."
 msgstr ""
+"Bọn ta đã lập kế hoạch để giết lũ ma quái... Nhưng bọn ta phải giết người "
+"lùn trước! Giờ bọn ta có lửa sấm của bọn người lùn và nhiều quỷ núi sẵn sàng "
+"chiến đấu. Họ cũng đến và giúp các ngươi đập tan lũ ma quái."
 
 #. [message]: speaker=Grek
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:413
@@ -2677,11 +2720,13 @@ msgid ""
 "Go here and light the thunder fire and it will blast a back door into the "
 "lich’s lair!"
 msgstr ""
+"Hãy đến đây và châm lửa sấm, nó sẽ phá tung cửa sau vào hang ổ của tên thây "
+"ma!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:424
 msgid "What should we offer them for their help?"
-msgstr ""
+msgstr "Chúng ta nên cho họ cái gì để được giúp đỡ?"
 
 #. [option]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:426
@@ -2689,6 +2734,8 @@ msgid ""
 "We will give you $troll_help_cost gold pieces if you help us defeat the "
 "undead."
 msgstr ""
+"Chúng tôi sẽ cho các ông $troll_help_cost lượng vàng, nếu các ông giúp chúng "
+"tôi đánh bại lũ ma quái."
 
 #. [message]: speaker=Grek
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:446
@@ -2696,6 +2743,9 @@ msgid ""
 "Haha, you humans and elves poor, you have not enough gold! If you want troll "
 "help, you must come to me when you have the gold."
 msgstr ""
+"Ha ha, bọn con người và thần tiên nghèo khổ, các ngươi không có đủ vàng! Nếu "
+"các ngươi muốn quỷ núi giúp đỡ, các ngươi phải đến gặp ta khi các ngươi có "
+"vàng."
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:456
@@ -2704,21 +2754,24 @@ msgid ""
 "Meet with and pay the troll leader $troll_help_cost gold to receive their "
 "help"
 msgstr ""
+"Gặp và trả thủ lĩnh quỷ núi $troll_help_cost lượng vàng để nhận trợ giúp"
 
 #. [option]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:487
 msgid "We will offer you freedom and a place in our lands."
 msgstr ""
+"Chúng tôi sẽ cho các ông tự do và một nơi trong vùng đất của chúng tôi."
 
 #. [message]: speaker=Grek
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:491
 msgid "Ha! Who wants stupid human lands!"
-msgstr ""
+msgstr "Ha! Ai cần vùng đất của bọn con người đần độn!"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:495
 msgid "Then you will not aid us in our quest to destroy the undead menace?"
 msgstr ""
+"Thế là các ông sẽ không giúp chúng tôi tiêu diệt mối đe dọa ma quái sao?"
 
 #. [message]: speaker=Grek
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:500
@@ -2726,6 +2779,8 @@ msgid ""
 "Bah! We destroy the undead when we want. Maybe wait for a few years first. "
 "If you want troll help, you come see me and give proper payment!"
 msgstr ""
+"Hừ! Bọn ta tiêu diệt lũ ma quái khi bọn ta muốn. Có lẽ bọn ta sẽ chờ vài "
+"năm. Nếu các ngươi muốn quỷ núi giúp đỡ, hãy đến gặp ta và thanh toán đầy đủ!"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:504
@@ -2733,48 +2788,53 @@ msgid ""
 "These creatures are much too simpleminded to be of any help to us but at "
 "least they will not attack us outright. We will have to face Mebrin alone."
 msgstr ""
+"Những sinh vật này quá chất phác để có thể giúp chúng ta, nhưng ít nhất "
+"chúng cũng không tấn công chúng ta ngay lập tức. Chúng ta sẽ phải một mình "
+"đối mặt với Mebrin."
 
 #. [message]: speaker=Grek
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:574
 msgid "Ha, you can afford troll help this time?"
-msgstr ""
+msgstr "Ha, lần này các ngươi có đủ tiền để quỷ núi giúp đỡ sao?"
 
 #. [option]: speaker=Grek
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:583
 msgid "Here’s $troll_help_cost for your help against the undead."
 msgstr ""
+"Đây là $troll_help_cost lượng vàng cho sự giúp đỡ của các bạn chống lại lũ "
+"ma quái."
 
 #. [option]: speaker=Grek
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:591
 msgid "No, sorry."
-msgstr ""
+msgstr "Không, xin lỗi."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:624
 msgid "I’m lighting it!"
-msgstr ""
+msgstr "Tôi đang châm lửa!"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:658
 msgid "I’ve broken through!"
-msgstr ""
+msgstr "Tôi đã qua được!"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:681
 msgid "Mebrin! My teacher of old! Can that truly be you?"
-msgstr ""
+msgstr "Mebrin! Thầy cũ của em? Đó thực sự là thầy sao?"
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:687
 msgid "Eth...Ethiliel? You are here?"
-msgstr ""
+msgstr "Eth... Ethiliel? Em ở đây sao?"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:692
 msgid ""
 "How did you come to be here, you of all people, shut away from the trees and "
 "the light of the sun?"
-msgstr ""
+msgstr "Sao thầy lại ở đây, tránh xa rừng cây và ánh sáng mặt trời?"
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:697
@@ -2783,11 +2843,14 @@ msgid ""
 "Kidnapped me to raise undead for them. Menaced me with cold iron... ahh, the "
 "iron on my skin, it burned, it burned!"
 msgstr ""
+"Ta đã phá dây xích. Chúng đã trói ta, bọn con người đáng nguyền rủa! Trói "
+"ta! Bắt cóc ta để triệu gọi ma quái cho chúng. Đe dọa ta bằng sắt lạnh... à, "
+"sắt trên da ta, nó cháy, nó cháy!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:702
 msgid "What is this? Elves bear steel swords."
-msgstr ""
+msgstr "Cái gì thế này? Thần tiên mang kiếm thép."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:707
@@ -2797,6 +2860,10 @@ msgid ""
 "touches on mysteries that are not for men to know, human. I bind you never "
 "to speak of it."
 msgstr ""
+"Họ không phải là chiến binh. Tất cả các thần tiên đều cảm nhận được bóng tối "
+"của sắt thép, và với những người có địa vị cao, đó là một liều thuốc độc, "
+"xung đột với phép thuật của chúng tôi. Nhưng điều này liên quan đến những bí "
+"ẩn mà con người không nên biết tới. Tôi cấm anh nói về nó."
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:712
@@ -2805,6 +2872,9 @@ msgid ""
 "bring my new servants north to the lands we so foolishly granted to men in "
 "ages past, and destroy them all!"
 msgstr ""
+"Con người! Những kẻ phản bội! Những kẻ chặt cây! Chúng là tai họa trên thế "
+"giới! Ta sẽ mang những người hầu mới về phía bắc, đến vùng đất mà bọn ta "
+"thật dại dột đã ban cho con người trong quá khứ, để tiêu diệt hết bọn chúng!"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:717
@@ -2814,6 +2884,10 @@ msgid ""
 "speaking. He would never have allied himself with the dead against the "
 "living!"
 msgstr ""
+"Những người hầu! Những người hầu của ông còn kinh tởm hơn bất kỳ con người "
+"nào. Chúng bốc mùi mồ mả. Đây không phải nhà hiền triết Mebrin mà tôi biết "
+"và kính trọng. Ông ấy chẳng bao giờ liên minh với người chết để chống lại "
+"người sống!"
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:722
@@ -2824,6 +2898,11 @@ msgid ""
 "have touched the void at the heart of all things. You, too, can partake of "
 "its boundless power."
 msgstr ""
+"Giờ ta là Mal M’Brin, Ethiliel, học trò ưu tú nhất của ta. Đã đến lúc cho "
+"một bài học mới. Ta đã từng như ngươi, đầy hồ nghi và yếu đuối, nhưng giờ ta "
+"đã vượt qua và trở nên mạnh hơn ngươi nghĩ. Có tính vô tận trong cái chết, "
+"ta đã chạm đến hư không ở giữa tất cả mọi thứ. Ngươi nữa, ngươi cũng có thể "
+"cùng hưởng sức mạnh vô biên của nó."
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:727
@@ -2831,6 +2910,9 @@ msgid ""
 "Join me! Stand by my side! We shall rise and sweep the humans from the green "
 "world. Their corpses will serve us; their bones will dance for our pleasure."
 msgstr ""
+"Hãy tham gia cùng ta! Hãy đứng bên cạnh ta! Chúng ta sẽ đứng lên và quét "
+"sạch con người khỏi hành tinh xanh. Thân xác của chúng sẽ phục vụ chúng ta, "
+"xương của chúng sẽ nhảy múa mua vui cho chúng ta."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:732
@@ -2838,12 +2920,16 @@ msgid ""
 "And when we were done, what would we have become? Unlife. Hungering shadows, "
 "devouring all we once cherished."
 msgstr ""
+"Vậy khi chúng ta xong việc, chúng ta sẽ trở thành gì? Những bóng đen háu "
+"đói, ngấu nghiến tất cả mọi thứ chúng ta đã từng yêu thương."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:738
 msgid ""
 "No. It shall not be. The sage Mebrin is dead. It is time to put him to rest."
 msgstr ""
+"Không. Không thể như thế. Nhà hiền triết Mebrin đã chết. Đã đến lúc để ông "
+"ấy yên nghỉ."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:744
@@ -2852,6 +2938,9 @@ msgid ""
 "once believed in. I will destroy you and your works if it’s the last thing I "
 "do!"
 msgstr ""
+"Kể cả một con người cũng có thể nhìn thấy, ngươi đã trở thành trò hề của tất "
+"cả những gì ngươi đã từng tin. Ta sẽ tiêu diệt ngươi và các tác phẩm của "
+"ngươi nếu đó là điều cuối cùng ta làm!"
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:748
@@ -2859,6 +2948,8 @@ msgid ""
 "You, destroy me? Fool human. You will die, and the elves you have seduced "
 "with you. And you shall serve me beyond death, forever."
 msgstr ""
+"Ngươi, tiêu diệt ta? Con người ngu xuẩn. Ngươi sẽ chết, và các thần tiên "
+"ngươi đã dụ dỗ. Các ngươi sẽ phục vụ ta sau khi chết, mãi mãi."
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:760
@@ -2866,82 +2957,84 @@ msgid ""
 "Nooo! This cannot be. The elves I once led have destroyed me. After all I "
 "have sacrificed, I still die..."
 msgstr ""
+"Khôôông! Không thể như thế này. Các thần tiên ta từng dẫn dắt đã tiêu diệt "
+"ta. Sau tất cả những gì ta đã hy sinh, ta vẫn chết..."
 
 #. [scenario]: id=07b_Pebbles_in_the_Flood, id=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:5
 msgid "Pebbles in the Flood"
-msgstr ""
+msgstr "Sỏi trong nước lũ"
 
 #. [side]: type=Lich, id=Mal Tera
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:87
 msgid "Mal Tera"
-msgstr ""
+msgstr "Mal Tera"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:130
 msgid "Sgt. Finde"
-msgstr ""
+msgstr "Trung sĩ Finde"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:131
 msgid "Maelvas"
-msgstr ""
+msgstr "Maelvas"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:132
 msgid "Orome"
-msgstr ""
+msgstr "Orome"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:133
 msgid "Mitche"
-msgstr ""
+msgstr "Mitche"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:137
 msgid "Lt. Illan"
-msgstr ""
+msgstr "Trung úy Illan"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:138
 msgid "Rheban"
-msgstr ""
+msgstr "Rheban"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:139
 msgid "Jul"
-msgstr ""
+msgstr "Jul"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:143
 msgid "Lt. Meris"
-msgstr ""
+msgstr "Trung úy Meris"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:144
 msgid "Findlas"
-msgstr ""
+msgstr "Findlas"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:145
 msgid "Chumet"
-msgstr ""
+msgstr "Chumet"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:146
 msgid "Neras"
-msgstr ""
+msgstr "Neras"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:147
 msgid "Eera"
-msgstr ""
+msgstr "Eera"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:151
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:152
 msgid "Death Guard"
-msgstr ""
+msgstr "Vệ binh chết chóc"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:173
@@ -2949,6 +3042,8 @@ msgid ""
 "We have escaped the great forest, but look! The undead are chasing us — we "
 "must not have rooted them all out of the wood."
 msgstr ""
+"Chúng ta đã thoát khỏi khu rừng lớn, nhưng nhìn kìa! Lũ ma quái đang đuổi "
+"theo chúng ta. Chúng ta đã không nhổ tận gốc chúng khỏi khu rừng."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:177
@@ -2956,6 +3051,8 @@ msgid ""
 "My lord, you must hasten back to Westin to prepare a defense against them. I "
 "will command the defense of the border forts."
 msgstr ""
+"Thưa ngài, ngài phải mau chóng trở lại Westin để chuẩn bị phòng thủ chống "
+"lại chúng. Tôi sẽ chỉ huy lực lượng phòng thủ của các pháo đài biên giới."
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:181
@@ -2963,6 +3060,9 @@ msgid ""
 "I too will make my stand here — I owe you my life and must atone for my "
 "crimes. Together we will hold off the foul undead as long as we can."
 msgstr ""
+"Tôi cũng sẽ cầm cự ở đây. Tôi nợ ngài mạng sống và phải chuộc lại tội lỗi "
+"của mình. Chúng tôi sẽ cùng nhau trấn giữ lũ ma quái bẩn thỉu lâu hết mức có "
+"thể."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:185
@@ -2971,6 +3071,9 @@ msgid ""
 "Westin while I prepare the city’s defenses. We shall return as soon as we "
 "can in force and relieve you."
 msgstr ""
+"Mục sư Hylas, phi ngựa cùng tôi đến Westin, ngài phải triệu tập Hội đồng "
+"Westin trong lúc tôi chuẩn bị lực lượng phòng thủ của thành phố. Chúng tôi "
+"sẽ trở lại với lực lượng đông đảo ngay khi có thể để giải cứu các ông."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:189
@@ -2978,6 +3081,8 @@ msgid ""
 "Make no promises you know you cannot keep. Organize the defense of Westin, "
 "and if you survive, remember those who fell here."
 msgstr ""
+"Đừng hứa những điều ngài biết không thể giữ lời. Hãy tổ chức bảo vệ Westin, "
+"và nếu ngài sống sót, hãy nhớ những người đã ngã xuống ở đây."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:196
@@ -2985,6 +3090,8 @@ msgid ""
 "Your name will be sounded in the roll of heroes, and you will be avenged. "
 "Thank you, my friend."
 msgstr ""
+"Tên của ông sẽ được nhắc đến trong danh sách các anh hùng, ông sẽ được trả "
+"thù. Cảm ơn, bạn của tôi."
 
 #. [message]: speaker=Lt. Illan
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:214
@@ -2993,16 +3100,19 @@ msgid ""
 "that you and Deoran are, but we will hold our lines staunchly, until the "
 "bitter end."
 msgstr ""
+"Chúng tôi theo lệnh của ngài, ngài Gerrick. Người của chúng tôi không phải "
+"là những chiến binh vĩ đại như ngài và Deoran, nhưng chúng tôi sẽ giữ vững "
+"phòng tuyến của chúng ta, đến hơi thở cuối cùng."
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:220
 msgid "Hold the line: Keep Sir Gerrick alive as long as possible"
-msgstr ""
+msgstr "Trấn giữ phòng tuyến: giữ ngài Gerrick sống sót càng lâu càng tốt"
 
 #. [objectives]
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:224
 msgid "No gold carried over to the next scenario."
-msgstr ""
+msgstr "Không có lượng vàng nào được mang sang màn chơi kế tiếp."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:229
@@ -3011,11 +3121,16 @@ msgid ""
 "undead hordes as long as you can. Keep Sir Gerrick alive as long as you can. "
 "Every turn that passes strengthens the defenses of Westin."
 msgstr ""
+"Không có cách nào để thắng màn chơi này, cũng không có cách nào để thua. "
+"Trấn giữ các đạo quân ma quái lâu đến mức có thể. Giữ ngài Gerrick sống càng "
+"lâu càng tốt. Mỗi lượt trôi qua sẽ củng cố khả năng phòng thủ của Westin."
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:263
 msgid "Now I will never see my home again... Hold back the undead, Gerrick!"
 msgstr ""
+"Giờ ta sẽ chẳng bao giờ nhìn thấy quê hương nữa... Hãy trấn giữ lũ ma quái, "
+"Gerrick!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:275
@@ -3023,6 +3138,8 @@ msgid ""
 "I only hope we have bought Deoran enough time to secure Westin for the "
 "onslaught!"
 msgstr ""
+"Ta chỉ hy vọng chúng ta đã cho Deoran đủ thời gian để củng cố Westin trước "
+"cuộc công kích!"
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:283
@@ -3030,26 +3147,28 @@ msgid ""
 "We will crush Westin as we have crushed you! No one shall stand between us "
 "and our home."
 msgstr ""
+"Bọn ta sẽ đè bẹp Westin như đã đè bẹp các ngươi! Không ai có thể đứng giữa "
+"bọn ta và nhà của bọn ta."
 
 #. [scenario]: id=08a_Return_to_Kerlath
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_to_Kerlath.cfg:4
 msgid "Return to Kerlath"
-msgstr ""
+msgstr "Trở về Kerlath"
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_to_Kerlath.cfg:38
 msgid "Move Deoran into Kerlath Province"
-msgstr ""
+msgstr "Di chuyển Deoran vào tỉnh Kerlath"
 
 #. [side]: type=Outlaw, id=Tharzo Kalain
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_to_Kerlath.cfg:97
 msgid "Tharzo Kalain"
-msgstr ""
+msgstr "Tharzo Kalain"
 
 #. [side]: type=Lieutenant, id=Plynry
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_to_Kerlath.cfg:142
 msgid "Plynry"
-msgstr ""
+msgstr "Plynry"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_to_Kerlath.cfg:165
@@ -3058,7 +3177,7 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_to_Kerlath.cfg:168
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_to_Kerlath.cfg:169
 msgid "Border Guard"
-msgstr ""
+msgstr "Vệ binh biên giới"
 
 #. [message]
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_to_Kerlath.cfg:182
@@ -3066,6 +3185,8 @@ msgid ""
 "Tharzo! That meddler who killed the Urza brothers approaches from the south. "
 "His men and horses look worn out."
 msgstr ""
+"Tharzo! Kẻ thích nhúng mũi đã giết các anh em Urza đó đang đến từ phía nam. "
+"Người và ngựa của hắn trông có vẻ tàn tạ."
 
 #. [message]: speaker=Tharzo Kalain
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_to_Kerlath.cfg:187
@@ -3073,16 +3194,18 @@ msgid ""
 "The dark gods have put revenge in our laps. Destroy them all before they "
 "reach the border fort!"
 msgstr ""
+"Các vị thần bóng tối đã cho chúng ta cơ hội trả thù. Hãy tiêu diệt chúng "
+"trước khi chúng đến được pháo đài biên giới!"
 
 #. [message]: speaker=Plynry
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_to_Kerlath.cfg:202
 msgid "Halt! Who comes to the border of Wesnoth?"
-msgstr ""
+msgstr "Dừng lại! Kẻ nào đến biên giới Wesnoth thế?"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_to_Kerlath.cfg:207
 msgid "It is I, Deoran, commander of the South Guard, and my men."
-msgstr ""
+msgstr "Tôi đây, Deoran, chỉ huy đội bảo vệ phương nam, và người của tôi."
 
 #. [message]: speaker=Plynry
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_to_Kerlath.cfg:212
@@ -3090,11 +3213,15 @@ msgid ""
 "Deoran? You had been thought lost long since. But I see by your men’s gear "
 "and drill that they are of the South Guard indeed. Pass."
 msgstr ""
+"Deoran? Các anh đã mất tích từ lâu. Nhưng dựa vào quân trang quân phục của "
+"các anh, tôi thấy các anh đúng là đội bảo vệ phương nam. Qua đi."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_to_Kerlath.cfg:217
 msgid "We, and our elvish allies, have won a great battle against a lich."
 msgstr ""
+"Chúng tôi, và các đồng minh thần tiên, đã thắng một trận chiến lớn chống lại "
+"một thây ma."
 
 #. [message]: speaker=Plynry
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_to_Kerlath.cfg:222
@@ -3102,11 +3229,13 @@ msgid ""
 "Elvish allies? I think you had best make haste to Westin. There are rumors "
 "of trouble with the elves of the Aethenwood."
 msgstr ""
+"Đồng minh thần tiên? Tôi nghĩ anh nên mau chóng đến Westin. Có tin đồn về "
+"rắc rối với các thần tiên từ Aethenwood."
 
 #. [scenario]: id=08b_The_Tides_of_War
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:5
 msgid "The Tides of War"
-msgstr ""
+msgstr "Chiều hướng chiến tranh"
 
 #. [value]
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:124
@@ -3115,12 +3244,12 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:165
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:170
 msgid "Provincial Guard"
-msgstr ""
+msgstr "Vệ binh cấp tỉnh"
 
 #. [value]
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:154
 msgid "Lt. Nilaf"
-msgstr ""
+msgstr "Trung úy Nilaf"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:289
@@ -3128,6 +3257,8 @@ msgid ""
 "Look! The undead army has broken through Sir Gerrick’s lines! Alas, he is "
 "lost!"
 msgstr ""
+"Nhìn kìa! Quân đội ma quái đã vượt qua hàng phòng thủ của ngài Gerrick! Than "
+"ôi, ông ấy đã thất trận!"
 
 #. [message]: speaker=Moreth
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:294
@@ -3135,6 +3266,8 @@ msgid ""
 "Since I was a boy, Gerrick was my leader, and there was no one braver. Today "
 "we shall defend our homes, and avenge him!"
 msgstr ""
+"Khi tôi còn là một cậu bé, Gerrick là thủ lĩnh của tôi, và không có ai dũng "
+"cảm hơn. Hôm nay chúng ta sẽ bảo vệ quê hương, và trả thù cho ông ấy!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:309
@@ -3142,6 +3275,9 @@ msgid ""
 "But in the narrow window his valiant stand gave us, we have roused some of "
 "the provincial guard and reinforced our defenses!"
 msgstr ""
+"Nhưng trong khoảng thời gian hẹp mà cuộc kháng cự dũng cảm của ông ấy cho "
+"chúng ta, chúng ta đã huy động được một phần đội bảo vệ cấp tỉnh và củng cố "
+"được lực lượng phòng thủ!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:325
@@ -3149,6 +3285,9 @@ msgid ""
 "But in the narrow window his valiant stand gave us, we have roused the whole "
 "provincial guard and reinforced our defenses!"
 msgstr ""
+"Nhưng trong khoảng thời gian hẹp mà cuộc kháng cự dũng cảm của ông ấy cho "
+"chúng ta, chúng ta đã huy động được toàn bộ đội bảo vệ cấp tỉnh và củng cố "
+"được lực lượng phòng thủ!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:341
@@ -3156,23 +3295,26 @@ msgid ""
 "But in the narrow window his valiant stand gave us, we have roused the whole "
 "provincial guard and fully embattled the city!"
 msgstr ""
+"Nhưng trong khoảng thời gian hẹp mà cuộc kháng cự dũng cảm của ông ấy cho "
+"chúng ta, chúng ta đã huy động được toàn bộ đội bảo vệ cấp tỉnh và dàn thế "
+"trận toàn thành phố!"
 
 #. [message]: speaker=Lt. Nilaf
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:352
 msgid "Indeed, Lord, we are ready to defend our homes!"
-msgstr ""
+msgstr "Đúng vậy, thưa ngài, chúng tôi sẵn sàng bảo vệ quê hương!"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:363
 msgid "I have summoned the great Council of Westin!"
-msgstr ""
+msgstr "Tôi đã triệu tập Đại hội đồng Westin!"
 
 #. [else]
 #. [then]
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:366
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:380
 msgid "Minister Mefel"
-msgstr ""
+msgstr "Mục sư Mefel"
 
 #. [message]: speaker=Minister Mefel
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:369
@@ -3180,27 +3322,29 @@ msgid ""
 "Hylas, I have made all possible haste, but my Council brethren are not as "
 "swift as I. It will take more time for them to arrive."
 msgstr ""
+"Hylas, tôi đã cố gắng khẩn trương hết mức có thể, nhưng các thành viên hội "
+"đồng không nhanh như tôi. Họ sẽ đến sau một lúc nữa."
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:378
 msgid ""
 "And I have summoned the great Council of Westin! They will battle with all "
 "their might!"
-msgstr ""
+msgstr "Còn tôi đã triệu tập Đại hội đồng Westin! Họ sẽ dốc hết sức chiến đấu!"
 
 #. [else]
 #. [then]
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:381
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:457
 msgid "Minister Romand"
-msgstr ""
+msgstr "Mục sư Romand"
 
 #. [else]
 #. [then]
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:382
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:458
 msgid "Minister Alanafel"
-msgstr ""
+msgstr "Mục sư Alanafel"
 
 #. [message]: speaker=Minister Mefel
 #. [message]: speaker=Minister Romand
@@ -3210,6 +3354,8 @@ msgid ""
 "We have heard your summons, and we shall send these dark foes back to the "
 "abyss that spawned them!"
 msgstr ""
+"Tôi đã nghe lời triệu tập của ngài, chúng tôi sẽ gửi những kẻ thù đen tối đó "
+"trở về địa ngục nơi đã sinh ra chúng!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:391
@@ -3218,6 +3364,8 @@ msgid ""
 "Council of Westin, we are cheered by your presence. Your aid will be most "
 "welcome."
 msgstr ""
+"Hội đồng Westin, chúng tôi rất mừng vì sự có mặt của các ngài. Chúng tôi "
+"hoan nghênh sự giúp đỡ của các ngài."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:398
@@ -3225,42 +3373,46 @@ msgid ""
 "We have rallied all the forces that we will be able to! Let us not make Sir "
 "Gerrick’s sacrifice a vain one. For Wesnoth!"
 msgstr ""
+"Chúng ta đã tập hợp tất cả lực lượng mà chúng ta có thể! Đừng để sự hy sinh "
+"của ngài Gerrick trở thành vô ích. Vì Wesnoth!"
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:410
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:428
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:474
 msgid "Defeat Mal M’Brin"
-msgstr ""
+msgstr "Đánh bại Mal M’Brin"
 
 #. [objectives]
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:421
 msgid "The Council of Westin will arrive on turn $council_arrive_turn|."
-msgstr ""
+msgstr "Hội đồng Westin sẽ đến ở lượt $council_arrive_turn|."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:514
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:326
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:12
 msgid "I have failed my kingdom and duty..."
-msgstr ""
+msgstr "Ta đã không hoàn thành nhiệm vụ bảo vệ vương quốc..."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:529
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:79
 msgid "Now I will never see Westin free again..."
-msgstr ""
+msgstr "Giờ ta sẽ chẳng bao giờ thấy Westin tự do nữa..."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:540
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:93
 msgid "Far from home I fall — but not in vain! Guard our people, Deoran!"
 msgstr ""
+"Ta đã ngã xuống xa quê hương - nhưng không phải là vô ích! Hãy bảo vệ người "
+"của chúng ta, Deoran!"
 
 #. [scenario]: id=09a_Vengeance
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:5
 msgid "Vengeance"
-msgstr ""
+msgstr "Báo thù"
 
 #. [side]: type=Horseman Commander, id=Deoran
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:48
@@ -3270,17 +3422,17 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:52
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:53
 msgid "Westin Guard"
-msgstr ""
+msgstr "Vệ binh Westin"
 
 #. [side]: type=Elvish Marshal, id=Ithelden
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:64
 msgid "Ithelden"
-msgstr ""
+msgstr "Ithelden"
 
 #. [side]: type=Elvish Marshal, id=Ithelden
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:67
 msgid "Enraged Elves"
-msgstr ""
+msgstr "Thần tiên nổi giận"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:125
@@ -3288,6 +3440,9 @@ msgid ""
 "Commander! I took your message to the council, and your deeds have pleased "
 "them. Are the undead finally gone from our lands?"
 msgstr ""
+"Chỉ huy! Tôi mang thông điệp của ngài đến hội đồng, và những hành động của "
+"ngài làm họ rất hài lòng. Cuối cùng thì lũ ma quái cũng biến khỏi vùng đất "
+"của chúng ta, phải không?"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:129
@@ -3295,6 +3450,8 @@ msgid ""
 "The undead are gone! Perhaps now there will be peace for a time in Westin. "
 "You have our thanks Lady Ethiliel."
 msgstr ""
+"Lũ ma quái đã tan biến! Có lẽ sẽ có hòa bình ở Westin trong thời gian tới. "
+"Chúng tôi cảm ơn cô, Ethiliel."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:133
@@ -3302,6 +3459,9 @@ msgid ""
 "Though the undead are vanquished, they have brought us much sorrow. Deoran, "
 "your people have restored their honor. Let us part in peace."
 msgstr ""
+"Dù lũ ma quái đã bị đánh bại, chúng cũng đã mang đến cho chúng ta nhiều đau "
+"khổ. Deoran, người của anh đã phục hồi lại danh dự của mình. Chúng ta chia "
+"tay nhau trong hòa bình."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:137
@@ -3309,27 +3469,29 @@ msgid ""
 "Indeed. Neither the bandits nor the undead will trouble us for some time. We "
 "will tend our wounds and you yours."
 msgstr ""
+"Đúng vậy. Trong thời gian tới, sẽ không có cướp hay ma quái làm phiền chúng "
+"ta nữa. Chúng ta sẽ chăm sóc những người bị thương của mình."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:141
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:151
 msgid "Help!"
-msgstr ""
+msgstr "Cứu!"
 
 #. [unit]: type=Peasant, id=Poor Farmer
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:163
 msgid "Poor Farmer"
-msgstr ""
+msgstr "Nông dân tội nghiệp"
 
 #. [message]: speaker=Ithelden
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:170
 msgid "You must pay for killing Mebrin!"
-msgstr ""
+msgstr "Ngươi phải trả giá vì đã giết Mebrin!"
 
 #. [message]: speaker=Poor Farmer
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:174
 msgid "I am just a farmer! What did I do?!"
-msgstr ""
+msgstr "Tôi chỉ là một nông dân! Tôi đã làm gì?!"
 
 #. [message]: speaker=Ithelden
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:178
@@ -3337,11 +3499,13 @@ msgid ""
 "What did you do?! Your people kidnapped and murdered our greatest leader! "
 "And now you will pay!"
 msgstr ""
+"Ngươi đã làm gì à?! Người của ngươi đã bắt cóc và sát hại thủ lĩnh vĩ đại "
+"nhất của chúng ta! Giờ thì ngươi sẽ trả giá!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:199
 msgid "He just killed that innocent farmer! We must stop him!"
-msgstr ""
+msgstr "Hắn ta vừa giết người nông dân vô tội đó! Chúng ta phải ngăn chặn hắn!"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:203
@@ -3349,6 +3513,8 @@ msgid ""
 "Stop, Ithelden! I have traveled with these humans, and they are not the ones "
 "who harmed Mebrin. They are our allies!"
 msgstr ""
+"Dừng lại, Ithelden! Tôi đã đi cùng những con người này, và họ không phải là "
+"kẻ đã làm hại Mebrin. Họ là đồng minh của chúng ta!"
 
 #. [message]: speaker=Ithelden
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:207
@@ -3357,6 +3523,9 @@ msgid ""
 "the earth; now they have felled our leader! We cannot brook such deeds! You "
 "will die with them!"
 msgstr ""
+"Lại là cô sao, Ethiliel? Tất cả bọn con người này đều như nhau! Chúng chặt "
+"cây để cày đất, giờ chúng còn sát hại thủ lĩnh của chúng ta! Chúng ta không "
+"thể chịu đựng những hành động như thế! Cô sẽ chết cùng với chúng!"
 
 #. [event]
 #. [message]
@@ -3371,13 +3540,13 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:301
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:313
 msgid "Disciple of Mebrin"
-msgstr ""
+msgstr "Học trò của Mebrin"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:240
 msgid ""
 "We won’t be able to hold them off for long. I should go reason with them!"
-msgstr ""
+msgstr "Chúng ta không thể cầm cự họ lâu. Tôi sẽ đi thuyết phục họ!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:244
@@ -3385,32 +3554,37 @@ msgid ""
 "Are you sure that the elves will greet you any more kindly than they have "
 "met us? After all, you did lead us into the forests..."
 msgstr ""
+"Cô có chắc các thần tiên sẽ chào đón cô tử tế hơn cách họ đã tiếp đón chúng "
+"tôi không? Rốt cuộc, cô đã dẫn chúng tôi vào rừng..."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:248
 msgid "Perhaps not, but it is your only hope. I must reach Ithelden!"
 msgstr ""
+"Có lẽ là không, nhưng đó là hy vọng duy nhất của chúng ta. Tôi phải đến gặp "
+"Ithelden!"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:251
 msgid "Ithelden’s base"
-msgstr ""
+msgstr "Căn cứ của Ithelden"
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:257
 msgid "Send Ethiliel to the Great Tree and parley with Ithelden"
-msgstr ""
+msgstr "Đưa Ethiliel đến cái cây lớn và thương lượng với Ithelden"
 
 #. [message]
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:314
 msgid "For every one of us you strike down, more will rise!"
-msgstr ""
+msgstr "Cứ mỗi người bọn ta bị các ngươi hạ gục, nhiều người khác sẽ đứng lên!"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:340
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:64
 msgid "I have given my all for my kingdom! Avenge me, Deoran!"
 msgstr ""
+"Tôi đã trao tất cả cho vương quốc của mình! Hãy trả thù cho tôi, Deoran!"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:353
@@ -3418,6 +3592,9 @@ msgid ""
 "Ithelden’s elves have killed Ethiliel! Now we have no chance to come to an "
 "agreement with them. A war with the Elves is imminent."
 msgstr ""
+"Các thần tiên của Ithelden đã giết Ethiliel! Giờ chúng ta không còn cơ hội "
+"nào để đi đến một thỏa thuận với họ. Cuộc chiến tranh với thần tiên sắp xảy "
+"ra."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:357
@@ -3425,18 +3602,20 @@ msgid ""
 "We are far away from Weldyn. We’ll surely all be killed long before any "
 "reinforcements arrive."
 msgstr ""
+"Chúng ta đang cách xa Weldyn. Chắc chắn chúng ta sẽ bị giết trước khi bất kỳ "
+"viện binh nào đến."
 
 #. [scenario]: id=09b_Bandit_Epilogue
 #. [scenario]: id=10a_Elf_Epilogue
 #: data/campaigns/The_South_Guard/scenarios/09b_Bandit_Epilogue.cfg:5
 #: data/campaigns/The_South_Guard/scenarios/10a_Elf_Epilogue.cfg:5
 msgid "Epilogue"
-msgstr ""
+msgstr "Hồi kết"
 
 #. [unit_type]: id=Eyestalk, race=monster
 #: data/campaigns/The_South_Guard/units/Eyestalk.cfg:4
 msgid "Eyestalk"
-msgstr ""
+msgstr "Cuống mắt"
 
 #. [unit_type]: id=Eyestalk, race=monster
 #: data/campaigns/The_South_Guard/units/Eyestalk.cfg:25
@@ -3446,21 +3625,26 @@ msgid ""
 "them to replenish their own. While almost defenseless against melee attacks, "
 "its deadly gaze from afar is not to be underestimated."
 msgstr ""
+"Được đặt tên là ‘cuống mắt’ vì lý do hiển nhiên, những sinh vật giống cây "
+"này có thể nhìn chằm chằm vào một kẻ thù bất cẩn để bòn rút trực tiếp năng "
+"lượng sống để bổ sung cho chúng. Dù gần như không thể phòng thủ trước những "
+"đòn tấn công cận chiến, nhưng cái nhìn chết chóc của nó từ xa thì không thể "
+"đánh giá thấp."
 
 #. [attack]: type=impact
 #: data/campaigns/The_South_Guard/units/Eyestalk.cfg:32
 msgid "smash"
-msgstr ""
+msgstr "đập"
 
 #. [attack]: type=arcane
 #: data/campaigns/The_South_Guard/units/Eyestalk.cfg:86
 msgid "gaze"
-msgstr ""
+msgstr "nhìn chằm chằm"
 
 #. [unit_type]: id=Horseman Commander, race=human
 #: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:4
 msgid "Horseman Commander"
-msgstr ""
+msgstr "Chỉ huy kỵ binh"
 
 #. [unit_type]: id=Horseman Commander, race=human
 #: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:27
@@ -3469,23 +3653,26 @@ msgid ""
 "ride and fight, but to lead. They command the garrisons that keep peace in "
 "the provinces of Wesnoth."
 msgstr ""
+"Những người lãnh đạo của đội bảo vệ biên giới, các chỉ huy kỵ binh không chỉ "
+"được đào tạo thuật cưỡi ngựa và chiến đấu, mà cả tài lãnh đạo. Họ chỉ huy "
+"các đồn trú gìn giữ hòa bình ở các tỉnh thành của Wesnoth."
 
 #. [attack]: type=pierce
 #: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:31
 #: data/campaigns/The_South_Guard/units/Mounted_General.cfg:33
 msgid "lance"
-msgstr ""
+msgstr "thương"
 
 #. [attack]: type=impact
 #: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:42
 #: data/campaigns/The_South_Guard/units/Mounted_General.cfg:44
 msgid "mace"
-msgstr ""
+msgstr "chùy"
 
 #. [unit_type]: id=Infantry Commander, race=human
 #: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:4
 msgid "Infantry Commander"
-msgstr ""
+msgstr "Chỉ huy bộ binh"
 
 #. [unit_type]: id=Infantry Commander, race=human
 #: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:28
@@ -3493,22 +3680,24 @@ msgid ""
 "Veteran commanders have faced battle many times and led their men with "
 "steady hands and calm determination."
 msgstr ""
+"Những chỉ huy kỳ cựu đã nhiều lần đối mặt với chiến trận, dẫn dắt binh lính "
+"của mình với đôi bàn tay vững chắc và tính quyết đoán không nao núng."
 
 #. [attack]: type=blade
 #: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:32
 #: data/campaigns/The_South_Guard/units/Infantry_Lieutenant.cfg:31
 msgid "glaive"
-msgstr ""
+msgstr "mã tấu"
 
 #. [attack]: type=impact
 #: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:41
 msgid "shield"
-msgstr ""
+msgstr "khiên"
 
 #. [unit_type]: id=Infantry Lieutenant, race=human
 #: data/campaigns/The_South_Guard/units/Infantry_Lieutenant.cfg:4
 msgid "Infantry Lieutenant"
-msgstr ""
+msgstr "Trung úy bộ binh"
 
 #. [unit_type]: id=Infantry Lieutenant, race=human
 #: data/campaigns/The_South_Guard/units/Infantry_Lieutenant.cfg:27
@@ -3518,11 +3707,15 @@ msgid ""
 "veteran soldiers, not nobility, and all have shown leadership and courage in "
 "battle."
 msgstr ""
+"Chỉ huy bộ binh Wesnoth chịu trách nhiệm cho các đồn trú, bảo vệ các thị "
+"trấn và làng mạc vùng biên giới. Họ xuất thân từ hàng ngũ binh sĩ kỳ cựu, "
+"không phải tầng lớp quý tộc, tất cả đều đã chứng tỏ được khả năng lãnh đạo "
+"và lòng dũng cảm khi chiến đấu."
 
 #. [unit_type]: id=Junior Commander, race=human
 #: data/campaigns/The_South_Guard/units/Junior_Commander.cfg:4
 msgid "Junior Commander"
-msgstr ""
+msgstr "Chỉ huy cấp thấp"
 
 #. [unit_type]: id=Junior Commander, race=human
 #: data/campaigns/The_South_Guard/units/Junior_Commander.cfg:27
@@ -3531,16 +3724,19 @@ msgid ""
 "and swords and told to become leaders of men. Those whose mettle was strong "
 "enough for the task became the commanders of the armies of Wesnoth."
 msgstr ""
+"Mới 17 hay 18 tuổi, con trai của các hiệp sĩ và chủ tướng được trao ngựa "
+"cưỡi và kiếm, được chỉ dạy để trở thành người lãnh đạo. Những người có dũng "
+"khí đủ mạnh cho nhiệm vụ trở thành các chỉ huy của quân đội Wesnoth."
 
 #. [attack]: type=pierce
 #: data/campaigns/The_South_Guard/units/Junior_Commander.cfg:31
 msgid "spear"
-msgstr ""
+msgstr "giáo"
 
 #. [unit_type]: id=Mounted General, race=human
 #: data/campaigns/The_South_Guard/units/Mounted_General.cfg:4
 msgid "Mounted General"
-msgstr ""
+msgstr "Tướng cưỡi ngựa"
 
 #. [unit_type]: id=Mounted General, race=human
 #: data/campaigns/The_South_Guard/units/Mounted_General.cfg:29
@@ -3549,16 +3745,21 @@ msgid ""
 "trained not only to ride and fight, but to lead. They command the garrisons "
 "that keep peace in the provinces of Wesnoth."
 msgstr ""
+"Là những người lãnh đạo có năng lực nhất của đội bảo vệ biên giới, các tướng "
+"cưỡi ngựa không chỉ được đào tạo thuật cưỡi ngựa và chiến đấu, mà cả tài "
+"lãnh đạo. Họ chỉ huy các đồn trú gìn giữ hòa bình ở các tỉnh thành của "
+"Wesnoth."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:35
 msgid "Taste cold steel!"
-msgstr ""
+msgstr "Hãy nếm đòn của ta!"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:50
 msgid "I have lost all helping the humans... Now they will surely perish!"
 msgstr ""
+"Ta đã mất tất cả khả năng giúp đỡ con người... Giờ chắc chắn họ sẽ bỏ mạng!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:29
@@ -3568,6 +3769,10 @@ msgid ""
 "strike fear into their hearts! Like all of the bandit units, they are much "
 "more dangerous at night."
 msgstr ""
+"Kẻ côn đồ là trụ cột của quân đội trộm cướp. Chúng không có đòn tấn công "
+"<i>từ xa</i>, và có nhược điểm trước các lính cung của bạn. Ngọn thương của "
+"Deoran cũng đánh thẳng nỗi sợ hãi vào tim chúng! Giống như tất cả các đơn vị "
+"trộm cướp, chúng nguy hiểm hơn nhiều vào ban đêm."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:56
@@ -3578,6 +3783,11 @@ msgid ""
 "do double damage! Like thugs, thieves are vulnerable to the ranged attacks "
 "of your archers."
 msgstr ""
+"Kẻ trộm cắp xảo quyệt hơn kẻ côn đồ. Chúng tìm cách bao vây các đơn vị của "
+"bạn và đánh lén họ từ sau lưng. Đảm bảo rằng các kẻ trộm cắp không bao giờ "
+"có cơ hội tấn công khi chúng có một đồng minh trực tiếp đằng sau đơn vị "
+"chúng tấn công - chúng sẽ tăng gấp đôi lượng thiệt hại! Giống như kẻ côn đồ, "
+"kẻ trộm cắp có nhược điểm trước các đòn tấn công từ xa của lính cung của bạn."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:83
@@ -3587,6 +3797,10 @@ msgid ""
 "is very strong, however, and your spearmen will make quick work of them "
 "during the day."
 msgstr ""
+"Kẻ cướp cạn là trinh sát của quân đội trộm cướp. Chúng nhanh, có cả hai đòn "
+"tấn công <i>cận chiến</i> và <i>từ xa</i>. Tuy nhiên, không có đòn tấn công "
+"nào của chúng quá mạnh, và lính giáo của bạn sẽ xử lý nhanh chúng vào ban "
+"ngày."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:110
@@ -3597,6 +3811,11 @@ msgid ""
 "deadly against them. Like the rest of the bandits, they are more dangerous "
 "at night!"
 msgstr ""
+"Bộ xương là xương của các chiến binh tử trận được gọi dậy nhờ một phép thuật "
+"đen tối nào đó. Chúng gần như miễn nhiễm với các vũ khí đâm như mũi tên và "
+"giáo. Các đòn tấn công chém như kiếm sẽ làm chúng bị thương, và đòn tấn công "
+"<i>bí kíp</i> của mục sư Hylas vô cùng lợi hại để chống lại chúng. Giống như "
+"bọn trộm cướp, chúng nguy hiểm hơn vào ban đêm!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:137
@@ -3605,6 +3824,9 @@ msgid ""
 "magic. They are slow and weak — any of your units is more than a match for "
 "them. They are only dangerous in packs..."
 msgstr ""
+"Xác chết biết đi là thân thể của các chiến binh bị giết, lấp đầy một phép "
+"thuật đen tối nào đó. Chúng chậm và yếu - bất kỳ đơn vị nào của bạn cũng hơn "
+"hẳn một đối thủ tương xứng cho chúng. Chúng chỉ nguy hiểm nhờ số đông..."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:20
@@ -3614,6 +3836,10 @@ msgid ""
 "almost deserted. The elves in the western forest kept to their own affairs. "
 "In the prosperous south men built new towns and farms."
 msgstr ""
+"Vào triều đại Haldric VII, vùng đất Wesnoth rất thanh bình. Konrad I đã đánh "
+"đuổi bọn người thú ở phía bắc. Các pháo đài phía đông yên tĩnh và gần như bị "
+"bỏ hoang. Thần tiên ở khu rừng phía tây theo đuổi những việc của riêng họ. Ở "
+"khu vực phía nam thịnh vượng, con người xây nhiều thị trấn và trang trại."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:25
@@ -3627,6 +3853,14 @@ msgid ""
 "the ancient heart forest of the Great Continent so dense and gloomy that "
 "even elves forbore from dwelling there."
 msgstr ""
+"Trong tám năm, đội bảo vệ phương nam đã bảo vệ trang trại và nhà cửa xung "
+"quanh thành phố Westin, thủ phủ tỉnh biên giới cực nam Kerlath của Wesnoth. "
+"Kẻ thù dữ tợn nhất họ đối mặt là bọn cướp lẻ tẻ. Người thú ở xa về phía bắc. "
+"Các thần tiên cư trú ở Aethenwood về phía tây, không phải là kẻ thù của loài "
+"người nhưng xa lánh con người. Chỉ số ít những kẻ ngoài vòng pháp luật sống "
+"rải rác ở vùng hoang vu phía nam Kerlath, một pháo đài trong khu rừng cổ "
+"trung tâm Đại Lục Địa rậm rạp và u ám đến nỗi kể cả thần tiên cũng không cư "
+"ngụ ở đó."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:29
@@ -3635,6 +3869,9 @@ msgid ""
 "under the command of Sir Loris, suddenly ceased. King Haldric decided to "
 "send someone to investigate."
 msgstr ""
+"Sau đó, vào mùa xuân năm thứ chín, báo cáo từ đội bảo vệ phương nam, dưới sự "
+"chỉ huy của ngài Loris, đột ngột ngừng. Vua Haldric quyết định cử người đến "
+"điều tra."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:33
@@ -3644,6 +3881,10 @@ msgid ""
 "alongside Konrad I in the wars against the orcs. The King had a mission for "
 "Haldiel’s son."
 msgstr ""
+"Vua Haldric triệu tập một sĩ quan chỉ huy kỵ binh trẻ, không nổi bật nhưng "
+"đầy triển vọng, tên là Deoran. Deoran là con trai của Haldiel, người đã "
+"chiến đấu xuất sắc sát cánh cùng Konrad I trong những cuộc chiến chống lại "
+"người thú. Nhà vua có một nhiệm vụ cho con trai của Haldiel."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:37
@@ -3652,6 +3893,9 @@ msgid ""
 "Westin, to demand an accounting from Sir Loris, the commander of the South "
 "Guard..."
 msgstr ""
+"Vua Haldric phong tước hiệp sĩ cho chàng trai trẻ Deoran, và giao nhiệm vụ "
+"cho anh phi ngựa đến Westin, để yêu cầu giải thích từ ngài Loris, chỉ huy "
+"của đội bảo vệ phương nam..."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:47
@@ -3661,6 +3905,10 @@ msgid ""
 "terrorizing the peasants and villagers. Nowhere did they find soldiers of "
 "the South Guard."
 msgstr ""
+"Sau khi đánh bại Urza Mathin, Deoran ngay lập tức phái trinh sát tỏa ra khắp "
+"toàn bộ vùng nông thôn. Người của anh báo cáo bọn cướp đang lang thang tự do "
+"ở vùng biên giới, khủng bố dân làng. Họ không tìm thấy lính của đội bảo vệ "
+"phương nam."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:52
@@ -3670,6 +3918,10 @@ msgid ""
 "fighting age. With this small force he rode in haste to Westin, capital of "
 "the province."
 msgstr ""
+"Deoran quyết định hành động và triệt hạ bọn cướp. Anh tập hợp người dưới sự "
+"chỉ huy của ngài Gerrick cũng như bất kỳ nông dân nào khỏe mạnh và đủ tuổi "
+"chiến đấu. Với lực lượng nhỏ này, anh mau chóng phi ngựa đến Westin, thủ phủ "
+"của tỉnh."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:56
@@ -3677,6 +3929,8 @@ msgid ""
 "Deoran and his men approached the old city, and they saw that their fears "
 "were well founded..."
 msgstr ""
+"Deoran và binh lính tiếp cận thành phố cổ, và họ thấy những nỗi sợ của mình "
+"hoàn toàn có cơ sở..."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:66
@@ -3684,6 +3938,9 @@ msgid ""
 "Ethiliel led the men of the South Guard into the southern forest. Shadows "
 "soon covered their paths day and night, and a thick fog filled the air."
 msgstr ""
+"Ethiliel dẫn người của đội bảo vệ phương nam vào khu rừng phía nam. Bóng tối "
+"nhanh chóng bao phủ con đường của họ cả ngày lẫn đêm, và một màn sương dày "
+"lấp đầy không khí."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:72
@@ -3692,6 +3949,10 @@ msgid ""
 "From time to time they saw ghostly images of elven villages and halls in the "
 "deep woods, but as they advanced, even those became scarce."
 msgstr ""
+"Trong nhiều tuần, họ hành quân theo những lối mòn không tên mà chưa có con "
+"người nào từng bước chân lên trước đó. Đôi lúc họ thấy ảo ảnh của những ngôi "
+"làng và lâu đài thần tiên trong rừng sâu, nhưng khi họ tiến lên, những hình "
+"ảnh đó lại trở nên thưa thớt."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:77
@@ -3699,6 +3960,8 @@ msgid ""
 "Finally Ethiliel told the men to halt and pitch camp — they had reached the "
 "Black River, beyond which no elf or man would willingly pass."
 msgstr ""
+"Cuối cùng Ethiliel bảo mọi người dừng lại và dựng trại. Họ đã đến dòng sông "
+"Đen, mà không thần tiên hay con người nào muốn băng qua bờ bên kia."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:86
@@ -3707,6 +3970,9 @@ msgid ""
 "north for home. As they re-crossed the Black River, fall was fading into "
 "winter."
 msgstr ""
+"Sau khi đánh bại Mal M’Brin, binh lính của Deoran và các đồng minh thần tiên "
+"quay trở về nhà theo hướng bắc. Khi họ băng qua dòng sông Đen một lần nữa, "
+"mùa thu chuyển dần thành mùa đông."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:92
@@ -3715,6 +3981,9 @@ msgid ""
 "lifted by the thought of home, but their bodies became gaunt. The long weeks "
 "of trudging northward took its toll."
 msgstr ""
+"Lương thực và thịt thú săn trở nên khan hiếm trong khu rừng u ám. Mọi người "
+"hoan hỉ tinh thần với suy nghĩ được trở về nhà, nhưng thể xác của họ bắt đầu "
+"xuống sức. Những tuần lễ dài lê bước về phía bắc khiến họ hao mòn."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:101
@@ -3723,6 +3992,9 @@ msgid ""
 "southern forest. An oppressive silence hung over the land, and an ominous "
 "gloom followed close behind the men of the South Guard."
 msgstr ""
+"Tuyết rơi khi Deoran, ngài Gerrick và Urza Afalas thoát khỏi khu rừng lớn "
+"phía nam. Một khoảng lặng ngột ngạt treo trên vùng đất, và một điềm gở mù mờ "
+"theo sát sau binh lính của đội bảo vệ phương nam."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:107
@@ -3730,6 +4002,8 @@ msgid ""
 "Finally they arrived at the southern border of Wesnoth and the forts that "
 "guarded it. The undead were close on their heels..."
 msgstr ""
+"Cuối cùng họ cũng đến biên giới phía nam Wesnoth với các pháo đài bảo vệ. Lũ "
+"ma quái theo sát gót..."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:116
@@ -3739,6 +4013,11 @@ msgid ""
 "of the South Guard pressed their elven foes back from the walls. Suddenly "
 "the field was covered in a great fog..."
 msgstr ""
+"Cuối cùng mặt trời cũng nhô trên đường chân trời, những tia nắng thổi một "
+"luồng sinh khí mới vào những người bảo vệ Westin đầy mỏi mệt. Một tiếng thét "
+"lớn vang vọng khắp thung lũng, khi binh lính của đội bảo vệ phương nam đẩy "
+"lùi kẻ thù thần tiên của mình khỏi tường thành. Đột nhiên chiến trường bị "
+"bao phủ trong một màn sương dày..."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:121
@@ -3748,6 +4027,11 @@ msgid ""
 "has been spilled before the walls of this city! The injury you humans have "
 "done to the elves is great, but your service also was worthy.”</i>"
 msgstr ""
+"Khi sương mù tan, Ethiliel đứng một mình, đối mặt với bức tường giáo mác. "
+"Ngập trong ánh sáng, cô phát biểu trước những con người Wesnoth, nói: "
+"<i>“Dừng lại! Quá nhiều máu đã đổ trước bức tường thành phố này! Tổn thất mà "
+"con người các ngươi đã gây ra cho thần tiên rất lớn, nhưng công lao của các "
+"ngươi cũng đáng giá.”</i>"
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:125
@@ -3757,6 +4041,10 @@ msgid ""
 "send ambassadors or councilors to Westin, and no more will men wander the "
 "green woods.”</i>"
 msgstr ""
+"<i>“Đây là điều khoản hòa bình giữa chúng ta: bất kỳ con người nào được tìm "
+"thấy trong rừng hoặc đồi thuộc về thần tiên đều phải chết. Thần tiên sẽ "
+"không gửi đại sứ hay thành viên hội đồng đến Westin nữa, và con người không "
+"được lai vãng trong rừng xanh nữa.”</i>"
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:129
@@ -3766,6 +4054,11 @@ msgid ""
 "growing farms and villages. Finally, as the snow melted and the roads bore "
 "their burdens again, a messenger came from King Haldric."
 msgstr ""
+"Như thế một nền hòa bình mong manh được thiết lập giữa con người và thần "
+"tiên. Trong nhiều tuần, đội bảo vệ phương nam tuần tra biên giới rừng của "
+"thần tiên, canh gác các trang trại và làng mạc đang phát triển. Cuối cùng, "
+"khi tuyết tan và những con đường nhộn nhịp trở lại, một sứ giả của vua "
+"Haldric đến."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:133
@@ -3774,6 +4067,9 @@ msgid ""
 "King Haldric himself. Storm clouds were brewing throughout the realm, and "
 "every commander would be needed to weather the storm..."
 msgstr ""
+"Ngài Deoran, hiệp sĩ Wesnoth, được triệu tập đến Weldyn để họp hội đồng với "
+"vua Haldric. Mây đen đang tích tụ khắp lãnh thổ, và vương quốc cần mọi vị "
+"chỉ huy để vượt qua cơn bão..."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:143
@@ -3784,6 +4080,12 @@ msgid ""
 "were filled with new life. A great cry they let out as they stormed the "
 "encampment of Mal M’Brin himself, and threw down the mighty wizard."
 msgstr ""
+"Với vũ khí sắc nhọn và khuôn mặt dữ tợn, binh lính Wesnoth tiến hành cuộc "
+"công kích cuối cùng với lũ ma quái. Khi họ chém đứt những tảng thịt không "
+"còn sinh khí và đập vỡ những khúc xương lạnh lẽo, một tia nắng xuyên qua mây "
+"mù. Gió ngừng thổi và mọi người tràn đầy sức sống mới. Một tiếng thét lớn "
+"phát ra khi họ đột chiếm doanh trại của Mal M’Brin, và hạ gục tên phù thủy "
+"hùng mạnh."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:149
@@ -3792,6 +4094,9 @@ msgid ""
 "lifted their helmets from their brows. The moans of the wounded overshadowed "
 "the rustling of the north wind in the distance. The undead were gone."
 msgstr ""
+"Kiệt sức, Deoran thả rơi ngọn thương của mình xuống đất. Những người xung "
+"quanh từ từ nhấc mũ sắt khỏi trán. Tiếng rên rỉ của những người bị thương át "
+"cả tiếng xào xạc của cơn gió từ phía bắc. Lũ ma quái đã tan biến."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:154
@@ -3801,6 +4106,10 @@ msgid ""
 "homes for the fallen in the fields north of the city, and to the roll of "
 "fallen heroes many names were added."
 msgstr ""
+"Trong nhiều ngày, các điều trị viên của Westin cuống cuồng làm việc hết mức "
+"có thể để cứu nhiều binh lính dũng cảm. Dù vậy, nhiều mô đất vẫn được đắp "
+"làm nơi yên nghỉ cho những người thiệt mạng ở bãi đất phía bắc thành phố, và "
+"nhiều cái tên được thêm vào danh sách tưởng niệm các anh hùng tử trận."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:159
@@ -3810,6 +4119,10 @@ msgid ""
 "sword and shield. Those he placed atop Gerrick’s mound, and they were a "
 "symbol of loyalty and valor to all the people of Westin."
 msgstr ""
+"Mô đất cao nhất thuộc về ngài Gerrick. Sau trận chiến, Deoran dẫn đầu một "
+"đội viễn chinh đến các đồn biên giới phía nam, ở đó anh tìm thấy kiếm và "
+"khiên của ngài Gerrick. Anh đặt chúng trên nấm mộ của Gerrick, chúng là biểu "
+"tượng của lòng trung thành và sự dũng cảm của tất cả người dân Westin."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:163
@@ -3819,6 +4132,10 @@ msgid ""
 "last stand at the border posts passed into song, and was not forgotten for "
 "many generations."
 msgstr ""
+"Tên của Gerrick được thêm vào trên cùng danh sách tưởng niệm các anh hùng tử "
+"trận, và được đọc to ở đầu mỗi cuộc họp đại hội đồng. Kỷ niệm về cuộc kháng "
+"cự liều mạng cuối cùng của ông ấy ở các đồn biên giới đi vào lời ca, không "
+"bao giờ bị lãng quên suốt nhiều thế hệ."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:168
@@ -3828,6 +4145,10 @@ msgid ""
 "melted and the roads bore their burdens again, a messenger came from King "
 "Haldric."
 msgstr ""
+"Deoran dành thời gian thăm hỏi những người bị thương và chỉ đạo binh lính "
+"khi họ xây dựng lại những bức tường thành bị vỡ của thành phố. Cuối cùng, "
+"khi tuyết tan và những con đường nhộn nhịp trở lại, một sứ giả của vua "
+"Haldric đến."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:173
@@ -3836,6 +4157,9 @@ msgid ""
 "King Haldric himself. Storm clouds were brewing throughout the realm, and "
 "every commander would be needed to weather the onslaught..."
 msgstr ""
+"Ngài Deoran, hiệp sĩ Wesnoth, được triệu tập đến Weldyn để họp hội đồng với "
+"vua Haldric. Mây đen đang tích tụ khắp lãnh thổ, và vương quốc cần mọi vị "
+"chỉ huy để vượt qua cuộc công kích..."
 
 #~ msgid "(Novice level, 8 or 9 scenarios depending on the branch you take.)"
 #~ msgstr ""
