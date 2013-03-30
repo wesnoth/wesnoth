@@ -1,15 +1,16 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.3.2+dev\n"
+"Project-Id-Version: Battle for Wesnoth 1.3.2+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2013-03-24 13:24+0100\n"
-"PO-Revision-Date: 2011-11-16 16:22+0700\n"
+"PO-Revision-Date: 2012-12-29 23:07+0700\n"
 "Last-Translator: Yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:39
 msgid ""
@@ -98,7 +99,7 @@ msgid ""
 "of the river."
 msgstr ""
 "Selama pelatihan ini, anda memainkan Konrad.\n"
-"Anda sedang berdiri didalam benteng, dan penasehatmu Delfador berada di "
+"Anda sedang berdiri di dalam benteng, dan penasehatmu Delfador berada di "
 "sebelah timur sungai."
 
 #. [message]: speaker=narrator
@@ -241,8 +242,8 @@ msgid ""
 "female^Young lady, you have 32 hitpoints and a sword. I’m fairly sure you’ll "
 "win."
 msgstr ""
-"perempuan^Wanita muda, kau telah memiliki 32 hitpoint dan sebuah pedang. Aku "
-"cukup yakin kamu akan menang."
+"Wanita muda, kau telah memiliki 32 hitpoint dan sebuah pedang. Aku cukup "
+"yakin kamu akan menang."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:389
@@ -305,32 +306,22 @@ msgstr "Mahkota"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:461
-#, fuzzy
-#| msgid ""
-#| "Note: The tiny metal crown above Delfador means you will lose the game if "
-#| "he is killed. You will also lose the game if your leader (Konrad) is "
-#| "killed."
 msgid ""
 "The tiny metal crown above Delfador means you will lose the game if he is "
 "killed. You will also lose the game if your leader (Konrad) is killed."
 msgstr ""
-"Catatan: mahkota logam yang kecil di atas Delfador bermakna kamu akan kalah "
-"dalam permainan, jika ia dibunuh. Kamu juga akan kalah jika pemimpin mu "
-"(Konrad) dibunuh."
+"Mahkota logam yang kecil di atas Delfador bermakna kamu akan kalah dalam "
+"permainan, jika ia dibunuh. Kamu juga akan kalah jika pemimpinmu (Konrad) "
+"dibunuh."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:465
-#, fuzzy
-#| msgid ""
-#| "Note: The tiny metal crown above Delfador means you will lose the game if "
-#| "he is killed. You will also lose the game if your leader (Li’sar) is "
-#| "killed."
 msgid ""
 "The tiny metal crown above Delfador means you will lose the game if he is "
 "killed. You will also lose the game if your leader (Li’sar) is killed."
 msgstr ""
-"Catatan: mahkota logam yang kecil di atas Delfador bermakna kamu akan kalah "
-"dalam permainan, jika ia dibunuh. Kamu juga akan kalah jika pemimpin mu "
+"Mahkota logam yang kecil di atas Delfador bermakna kamu akan kalah dalam "
+"permainan, jika ia dibunuh. Kamu juga akan kalah jika pemimpinmu "
 "(Li'sar)dibunuh."
 
 #. [message]: id=Delfador
@@ -339,8 +330,8 @@ msgid ""
 "Unfortunately, you’ve used up your turn attacking the quintain. The quintain "
 "now gets to attack."
 msgstr ""
-"Sayang sekali, anda telah menggunakan giliran mu menyerang quintain itu. "
-"Kini quintain yang akan menyerang."
+"Sayang sekali, anda telah menggunakan giliranmu menyerang quintain itu. Kini "
+"quintain yang akan menyerang."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:482
@@ -348,8 +339,8 @@ msgid ""
 "female^Unfortunately, you’ve used up your turn attacking the quintain. The "
 "quintain now gets to attack."
 msgstr ""
-"Sayang sekali, anda telah menggunakan giliran mu menyerang quintain itu. "
-"Kini quintain yang akan menyerang."
+"Sayang sekali, anda telah menggunakan giliranmu menyerang quintain itu. Kini "
+"quintain yang akan menyerang."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:488
@@ -365,9 +356,10 @@ msgid ""
 "yourself!"
 msgstr ""
 "Ya. tentu saja ini adalah quintain yang ajaib.\n"
-"Sekarang, quintain ini mendapat/kan 5 kesempatan untuk menyerangmu yang "
-"masing-masing berdampak 3 kerusakan . Jika ia menyerangmu setiap kali, "
-"darahmu akan berkurang $student_hp to $future_hp hit points. Kuatkan dirimu!"
+"Sekarang, quintain ini mendapatkan 5 kesempatan untuk menyerangmu yang "
+"masing-masing berdampak 3 kerusakan. Jika ia menyerangmu setiap kali, "
+"darahmu akan berkurang $student_hp sampai $future_hp hitpoint. Kuatkan "
+"dirimu!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:497
@@ -378,7 +370,7 @@ msgstr ""
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:518
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
-msgstr "Aduh! Aku harus menyembuhkan! Hanya $student_hp hitpoints tinggal!"
+msgstr "Aduh! Aku harus menyembuhkan! Hanya $student_hp hitpoint tersisa!"
 
 #. [event]
 #. [then]
@@ -394,7 +386,7 @@ msgid ""
 "good idea, and ending your turn in one will heal you. To the village!"
 msgstr ""
 "Ada suatu desa di sebelah lain sungai itu. mengunjungi desa adalah suatu "
-"gagasan baik, dan jika giliran mu berakhir  di dalamnya hal itu akan "
+"gagasan baik, dan jika giliranmu berakhir  di dalamnya hal itu akan "
 "menyembuhkanmu. pergilah ke desa!"
 
 #. [message]: id=Delfador
@@ -404,7 +396,7 @@ msgid ""
 "is a good idea, and ending your turn in one will heal you. To the village!"
 msgstr ""
 "Ada suatu desa di sebelah lain sungai itu. mengunjungi desa adalah suatu "
-"gagasan baik, dan jika giliran mu berakhir  di dalamnya hal itu akan "
+"gagasan baik, dan jika giliranmu berakhir  di dalamnya hal itu akan "
 "menyembuhkanmu. pergilah ke desa!"
 
 #. [event]
@@ -431,7 +423,7 @@ msgid ""
 "recruit units. Each turn, you gain two gold plus one for every village you "
 "own."
 msgstr ""
-"Kamu telah merebut sebuah desa! sekarang telah berkibar warna bendera mu dan "
+"Kamu telah merebut sebuah desa! sekarang telah berkibar warna benderamu dan "
 "telah dihitung dalam jumlah desa yang kamu miliki. (icon bergambar rumah "
 "pada layar bagian atas menunjukkan seberapa banyak desa yang anda kendalikan "
 "sekarang ini). Setiap desa menyediakan emas yang dibutuhkan untuk merekrut "
@@ -455,7 +447,7 @@ msgid ""
 "You’re about to be healed by $hp_difference hitpoints, but it’s time to "
 "summon some help against that quintain."
 msgstr ""
-"Kamu mulai disembuhkan $hp_difference hitpoints, tetapi sudah waktunya untuk "
+"Kamu mulai disembuhkan $hp_difference hitpoint, tetapi sudah waktunya untuk "
 "memanggil sedikit bantuan untuk melawan quintain itu."
 
 #. [message]: id=Delfador
@@ -464,8 +456,8 @@ msgid ""
 "female^You’re about to be healed by $hp_difference hitpoints, but it’s time "
 "to summon some help against that quintain."
 msgstr ""
-"perempuan^Kamu mulai disembuhkan $hp_difference hitpoints, tetapi sudah "
-"waktunya untuk memanggil sedikit bantuan untuk melawan quintain itu."
+"Kamu mulai disembuhkan $hp_difference hitpoint, tetapi sudah waktunya untuk "
+"memanggil sedikit bantuan untuk melawan quintain itu."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:615
@@ -561,7 +553,7 @@ msgstr "Klik kanan pada lantai benteng lainnya dan rekrut unit lain"
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I’d better attack it at once!"
 msgstr ""
-"Hey, quintainnya sembuh 2 hitpoints! lebih baik aku menyerangnya secara "
+"Hey, quintainnya sembuh 2 hitpoint! lebih baik aku menyerangnya secara "
 "serentak!"
 
 #. [message]: id=Delfador
@@ -578,7 +570,7 @@ msgid ""
 "hitpoints. If a unit doesn’t do anything for a turn, it will slowly heal."
 msgstr ""
 "bila quintain selamat dari serangan gencar mu, maka pasti ia mendapatkan "
-"kembali dua hitpoints. Jika suatu unit tidak lakukan apapun untuk satu "
+"kembali dua hitpoint. Jika suatu unit tidak lakukan apapun untuk satu "
 "giliran,hal itu pelan-pelan akan  menyembuhkannya."
 
 #. [message]: id=Delfador
@@ -587,7 +579,7 @@ msgid ""
 "But before you send your fighters against the quintain, you should know they "
 "have two kinds of attack..."
 msgstr ""
-"Tetapi Sebelum anda mengirim pasukanmu melawan quintain, terlebih dahulu "
+"Tetapi sebelum anda mengirim pasukanmu melawan quintain, terlebih dahulu "
 "anda harus mengetahui bahwa ada dua jenis serangan..."
 
 #. [message]: id=student
@@ -603,8 +595,8 @@ msgid ""
 "And which would that be? The sword (5–4) or the bow (3–3)? I suppose you’ll "
 "find out..."
 msgstr ""
-"Dan manakah yang lebih baik digunakan? Pedang ( 5-4) atau busur panah "
-"( 3-3)? Aku harap kamu akan menemukan jawabanya..."
+"Dan manakah yang lebih baik digunakan? Pedang (5-4) atau busur panah (3-3)? "
+"Aku harap kamu akan menemukan jawabanya..."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:794
@@ -783,19 +775,19 @@ msgid ""
 "has a 70% chance of hitting no matter what terrain its target occupies."
 msgstr ""
 "Sewaktu-waktu anda memilih suatu unit, kamu akan lihat perbedaan persentase "
-"saat anda menggerakan mouse pada medan yang berbeda. Persentase tertinggi , "
+"saat anda menggerakan mouse pada medan yang berbeda. Persentase tertinggi, "
 "akan membuat <i>pertahanan</i> unit semakin baik pada jenis medan itu. "
-"Sebagai contoh, kebanyakan unit memiliki pertahanan baik bila berada didalam "
-"benteng-benteng dan desa-desa tetapi buruk bila di sungai-sungai. Tetapi, "
-"quintain-quintain ini menggunakan serangan <i>sihir</i>, yang mana selalu "
-"mempunyai 70% kesempatan memukul tidak peduli di medan mana saja sasarannya "
-"berada."
+"Sebagai contoh, kebanyakan unit memiliki pertahanan baik bila berada di "
+"dalam benteng-benteng dan desa-desa tetapi buruk bila di sungai-sungai. "
+"Tetapi, quintain-quintain ini menggunakan serangan <i>sihir</i>, yang mana "
+"selalu mempunyai 70% kesempatan memukul tidak peduli di medan mana saja "
+"sasarannya berada."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1075
 msgid "The quintain is destroyed, and I have gained more experience!"
 msgstr ""
-"Quintain telah dihancurkan,dan saya telah memperoleh tambahan pengalaman!"
+"Quintain telah dihancurkan, dan saya telah memperoleh tambahan pengalaman!"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1081
@@ -878,12 +870,11 @@ msgid ""
 "mode</i>. When you’re finished, click the <b>End Scenario</b> button to go "
 "on the next scenario in the campaign."
 msgstr ""
-"Setelah pemberitahuan kemenangan mu, peta akan berubah menjadi abu-abu "
+"Setelah pemberitahuan kemenanganmu, peta akan berubah menjadi abu-abu "
 "menunjukkan bahwa skenario telah selesai, tetapi kamu masih dapat memeriksa "
-"posisi terakhirmu dan keadaan pasukan mu dan musuh-musuh yang masih "
-"bertahan. Ini disebut <i>mode tetap hidup</i>. Ketika anda selesai, klik "
-"tombol <b>Akhir Giliran</b> untuk berlanjut ke skenario berikutnya dalam "
-"kampanye."
+"posisi terakhirmu dan keadaan pasukanmu dan musuh-musuh yang masih bertahan. "
+"Ini disebut <i>mode tetap hidup</i>. Ketika anda selesai, klik tombol "
+"<b>Akhir Giliran</b> untuk berlanjut ke skenario berikutnya dalam kampanye."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:31
@@ -950,8 +941,8 @@ msgid ""
 "she will heal it 4 hitpoints per turn. Just be careful not to expose the "
 "Shaman to attack since she is fairly weak herself."
 msgstr ""
-"Dengan sedikit bantuan tentunya. Jika kamu pindahkan dukun mu dekat dengan "
-"unit yang sedang bertahan, dia akan menyembuhkannya 4 hitpoints setiap "
+"Dengan sedikit bantuan tentunya. Jika kamu pindahkan dukunmu dekat dengan "
+"unit yang sedang bertahan, dia akan menyembuhkannya 4 hitpoint setiap "
 "giliran. Hanya saja berhati-hatilah untuk tidak memaksakan dukun untuk "
 "menyerang karena dia sebenarnya lemah."
 
@@ -998,7 +989,7 @@ msgstr "Aduh! Aku bisa menyembuhkan diri pada suatu desa."
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:336
 msgid "I have $side.gold gold; enough to recruit!"
-msgstr "Aku mempunyai $side.gold gold; cukup untuk merekrut!"
+msgstr "Aku mempunyai $side.gold emas; cukup untuk merekrut!"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:337
@@ -1155,7 +1146,7 @@ msgid ""
 "$recall_xp1 experience points. You should <i>recall</i> them now so they can "
 "gain more experience, rather than recruiting new Fighters."
 msgstr ""
-"Selama pelatihan mu, baik $recall_name1 and $recall_name2 mendapatkan "
+"Selama pelatihan mu, baik $recall_name1 dan $recall_name2 mendapatkan "
 "$recall_xp1 poin pengalaman. Kamu perlu <i>memanggil kembali</i> mereka "
 "sekarang sehingga mereka dapat memperoleh lebih banyak pengalaman, daripada "
 "merekrut Petarung-Petarung baru."
@@ -1264,7 +1255,7 @@ msgid ""
 "income."
 msgstr ""
 "Selagi tidak satupun dari unit yang direkrut tidak dapat digerakkan, kamu "
-"masih dapat bergerak. Untuk llima  unit mu akan mengurangi 5 emas di dalam "
+"masih dapat bergerak. Untuk lima unitmu akan mengurangi 5 emas di dalam "
 "pendapatan emas, menyisakan kamu 3 emas yang lebih sedikit pergilirannya. "
 "Kamu memerlukan lebih banyak lagi pendapatan."
 
@@ -1300,7 +1291,7 @@ msgstr "Dukun"
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:716
 msgid "Recruit an Elvish Shaman to your north"
-msgstr "Rekrut seorang Elf Dukun disebelah utara mu"
+msgstr "Rekrutlah seorang Elf Dukun disebelah utaramu"
 
 #. [else]
 #. [unit]: id=Elriend, type=Elvish Archer
@@ -1332,7 +1323,7 @@ msgstr "Pemanah #2"
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:784
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:821
 msgid "Recruit two Elvish Archers in the tiles to your west"
-msgstr "Rekrutlah dua Elf Pemanah di lantai sebelah barat mu"
+msgstr "Rekrutlah dua Elf Pemanah di lantai sebelah baratmu"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:797
@@ -1506,8 +1497,9 @@ msgid ""
 "unit will have an 80% chance of being hit when the enemy counter-attacks! "
 "Cancel!"
 msgstr ""
-"Sangat berbahaya untuk berdiri air ketika ada musuh! Unit mu akan mempunyai "
-"80% kesempatan untuk dipukul ketika musuh menyerang balik! Batalkan!"
+"Sangat berbahaya untuk berdiri di air ketika ada musuh! Unitmu akan "
+"mempunyai 80% kesempatan untuk dipukul ketika musuh menyerang balik! "
+"Batalkan!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1006
@@ -1587,7 +1579,7 @@ msgstr ""
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1051
 msgid "Recruit another Archer and a Fighter"
-msgstr "Rekrutlah seorang Pemanah and  Petarung lagi"
+msgstr "Rekrutlah seorang Pemanah dan Petarung lagi"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1066
@@ -1604,12 +1596,12 @@ msgstr ""
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1068
 msgid "Move Konrad to another (unowned) village"
-msgstr "Pindahkan Konrad (desa yang belum dimiliki) desa"
+msgstr "Pindahkan Konrad ke desa (desa yang belum dimiliki)"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1069
 msgid "Move Li’sar to another (unowned) village"
-msgstr "Pindahkan Li'sar (desa yang belum dimiliki) desa"
+msgstr "Pindahkan Li'sar ke desa (desa yang belum dimiliki)"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1094
@@ -1646,7 +1638,7 @@ msgstr ""
 "Tidak. Sekali anda pindahkan suatu unit dekat dengan suatu unit musuh, anda "
 "berada di dalam <i>Zona Kontrol</i> dan tidak bisa bergerak lebih lanjut "
 "pada giliran itu.\n"
-"Untuk memindahkan pasukan mu ke pulau itu tanpa menyeberangi pelan-pelan "
+"Untuk memindahkan pasukanmu ke pulau itu tanpa menyeberangi pelan-pelan "
 "melalui air, kamu harus membunuh orc muda itu."
 
 #. [event]
@@ -1673,11 +1665,6 @@ msgstr ""
 #. [else]
 #. The unit with unit type $unit.language_name is female.
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1151
-#, fuzzy
-#| msgid ""
-#| "No other units can reach that orc. I hope my $unit.language_name survives "
-#| "its counter-attack! I’d better grab more villages and move everyone "
-#| "closer for next turn."
 msgid ""
 "female^No other units can reach that orc. I hope my $unit.language_name "
 "survives its counter-attack! I’d better grab more villages and move everyone "
@@ -1686,7 +1673,7 @@ msgstr ""
 "Tidak ada unit lain yang dapat menjangkau orc itu. Aku berharap $unit."
 "language_name ku dapat bertahan terhadap serangan balasannya! Aku lebih baik "
 "merebut lebih banyak desa dan menggerakkan seluruh unit agar semakin dekat "
-"untuk giliaran selanjutnya."
+"untuk giliran selanjutnya."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1154
@@ -1728,8 +1715,8 @@ msgid ""
 "Don’t forget about your Fighter in the east; you can move him south to that "
 "last village near the channel."
 msgstr ""
-"Jangan lupa pada Petarung mu yang berada di timur; kamu dapat memindahkan "
-"dia ke selatan untuk mengunjungi desa terakhir di dekat terusan."
+"Jangan lupa pada Petarungmu yang berada di timur; kamu dapat memindahkan dia "
+"ke selatan untuk mengunjungi desa terakhir di dekat terusan."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1229
@@ -1834,12 +1821,12 @@ msgid ""
 "end your turn."
 msgstr ""
 "\n"
-"Kamu dapat memastikan diri telah menggerakkan semua pasukan mu dengan "
-"menekan <b>n</b> untuk melangkah dari satu unit ke unit yang berikutnya. "
-"Jika anda menekan <b>spasi</b>, anda akan menandai unit terpilih sekarang "
-"sebagai yang sudah digerakkan, yang mana akan menghentikanmu kebetulan "
-"menggerakkannya kemudian. Ketika <b>n</b> tidak lagi memilih suatu unit "
-"baru, kamu dapat dengan aman mengakhiri giliranmu."
+"Kamu dapat memastikan diri telah menggerakkan semua pasukanmu dengan menekan "
+"<b>n</b> untuk melangkah dari satu unit ke unit yang berikutnya. Jika anda "
+"menekan <b>spasi</b>, anda akan menandai unit terpilih sekarang sebagai yang "
+"sudah digerakkan, yang mana akan menghentikanmu kebetulan menggerakkannya "
+"kemudian. Ketika <b>n</b> tidak lagi memilih suatu unit baru, kamu dapat "
+"dengan aman mengakhiri giliranmu."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1268
@@ -1937,7 +1924,7 @@ msgid ""
 "carefully!"
 msgstr ""
 "Kamu hampir membunuh pemimpin mereka! Unit yang membunuhnya akan memperoleh "
-"16 poin pengalaman sebab pemimpin mereka berlevel 2. Pilih unit penyerang mu "
+"16 poin pengalaman sebab pemimpin mereka berlevel 2. Pilih unit penyerangmu "
 "dengan seksama!"
 
 #. [then]
