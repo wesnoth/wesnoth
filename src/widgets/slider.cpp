@@ -191,7 +191,7 @@ void slider::set_slider_position(int x)
 void slider::mouse_motion(const SDL_MouseMotionEvent& event)
 {
 	if (state_ == NORMAL || state_ == ACTIVE) {
-		bool on = point_in_rect(event.x, event.y, slider_area());
+		bool on = point_in_rect(event.x, event.y, location());
 		state_ = on ? ACTIVE : NORMAL;
 	} else if (state_ == CLICKED || state_ == DRAGGED) {
 		state_ = DRAGGED;
@@ -211,8 +211,8 @@ void slider::mouse_down(const SDL_MouseButtonEvent& event)
 	if (event.button != SDL_BUTTON_LEFT || !point_in_rect(event.x, event.y, location()))
 		return;
 
+	state_ = CLICKED;
 	if (point_in_rect(event.x, event.y, slider_area())) {
-		state_ = CLICKED;
 		sound::play_UI_sound(game_config::sounds::button_press);
 	} else {
 		bool prev_change = value_change_;
