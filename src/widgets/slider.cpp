@@ -25,15 +25,19 @@
 
 
 namespace {
-	const std::string slider_image = "buttons/slider.png";
-	const std::string selected_image = "buttons/slider-selected.png";
+	const std::string slider_image   = "buttons/slider.png";
+	const std::string disabled_image = "buttons/slider-disabled.png";
+	const std::string pressed_image = "buttons/slider-pressed.png";
+	const std::string active_image   = "buttons/slider-active.png";
 }
 
 namespace gui {
 
 slider::slider(CVideo &video)
 	: widget(video), image_(image::get_image(slider_image)),
-	  highlightedImage_(image::get_image(selected_image)),
+	  activeImage_(image::get_image(active_image)),
+	  pressedImage_(image::get_image(pressed_image)),
+	  disabledImage_(image::get_image(disabled_image)),
 	  min_(-100000), max_(100000), value_(0),
 	  increment_(1), value_change_(false), state_(NORMAL)
 {
@@ -132,12 +136,25 @@ SDL_Rect slider::slider_area() const
 
 void slider::draw_contents()
 {
-	surface image(state_ != NORMAL ? highlightedImage_ : image_);
-	if (image == NULL)
-		return;
+	surface image;
+
+	switch (state_) {
+		case NORMAL:
+			image.assign(image_);
+			break;
+		case ACTIVE:
+			image.assign(activeImage_);
+			break;
+		default:
+			image.assign(pressedImage_);
+			break;
+	}
+
+	assert(image != NULL);
+
 	SDL_Color line_color = font::NORMAL_COLOR;
 	if (!enabled()) {
-		image = greyscale_image(image);
+		image.assign(disabledImage_);
 		line_color = font::DISABLED_COLOR;
 	}
 
@@ -240,8 +257,10 @@ void slider::handle_event(const SDL_Event& event)
 
 	switch(event.type) {
 	case SDL_MOUSEBUTTONUP:
-		if (!mouse_locked())
-			state_ = NORMAL;
+		if (!mouse_locked()) {
+			bool on = point_in_rect(event.button.x, event.button.y, slider_area());
+			state_ = on ? ACTIVE : NORMAL;
+		}
 		break;
 	case SDL_MOUSEBUTTONDOWN:
 		if (!mouse_locked())

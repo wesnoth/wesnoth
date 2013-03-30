@@ -56,7 +56,7 @@ private:
 	void mouse_down(const SDL_MouseButtonEvent& event);
 	void set_slider_position(int x);
 	SDL_Rect slider_area() const;
-	surface image_, highlightedImage_;
+	surface image_, pressedImage_, activeImage_, disabledImage_;
 
 	int min_;
 	int max_;
