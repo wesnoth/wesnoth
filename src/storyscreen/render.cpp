@@ -122,7 +122,9 @@ void part_ui::prepare_background()
 		if(layer.null() || layer->w * layer->h == 0) {
 			continue;
 		}
-
+		
+		layer = make_neutral_surface(layer);
+		
 		const double xscale = 1.0 * video_.getx() / layer->w;
 		const double yscale = 1.0 * video_.gety() / layer->h;
 		const bool scalev = bl.scale_vertically();
@@ -140,12 +142,12 @@ void part_ui::prepare_background()
 			x_scale_factor = y_scale_factor = yscale;
 		}
 
-		layer = scale_surface(layer, static_cast<int>(layer->w*x_scale_factor), static_cast<int>(layer->h*y_scale_factor));
+		layer = scale_surface(layer, static_cast<int>(layer->w*x_scale_factor), static_cast<int>(layer->h*y_scale_factor), false);
 
 		const int tilew = bl.tile_horizontally() ? video_.getx() : layer->w;
 		const int tileh = bl.tile_vertically() ? video_.gety() : layer->h;
 
-		layer = tile_surface(layer, tilew, tileh);
+		layer = tile_surface(layer, tilew, tileh, false);
 
 		SDL_Rect drect = create_rect(
 				  (background_->w - layer->w) / 2
