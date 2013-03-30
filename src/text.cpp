@@ -207,7 +207,7 @@ gui2::tpoint ttext::get_cursor_position(
 	// would be a good idea to make it a separate function.
 	titor itor(layout_);
 
-	// Go the the wanted line.
+	// Go the wanted line.
 	if(line != 0) {
 		if(pango_layout_get_line_count(layout_) >= static_cast<int>(line)) {
 			return gui2::tpoint(0, 0);
@@ -227,7 +227,7 @@ gui2::tpoint ttext::get_cursor_position(
 			if(i + 1 == column) {
 				break;
 			}
-			// beyound data.
+			// We are beyond data.
 			return gui2::tpoint(0, 0);
 		}
 	}
