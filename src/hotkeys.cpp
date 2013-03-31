@@ -18,16 +18,17 @@
 
 #include "construct_dialog.hpp"
 #include "display.hpp"
-#include "hotkeys.hpp"
+#include "filesystem.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
-#include "filesystem.hpp"
+#include "hotkeys.hpp"
 #include "log.hpp"
 #include "preferences_display.hpp"
+#include "theme.hpp"
 #include "wesconfig.h"
 #include "wml_separators.hpp"
 
@@ -843,6 +844,7 @@ void mbutton_event_execute(display& disp, const SDL_MouseButtonEvent& event, com
 	}
 
 	execute_command(disp, hk->get_id(), executor);
+	executor->set_button_state(disp, hk->get_id());
 }
 
 void jbutton_event_execute(display& disp, const SDL_JoyButtonEvent& event, command_executor* executor)
@@ -853,6 +855,7 @@ void jbutton_event_execute(display& disp, const SDL_JoyButtonEvent& event, comma
 	}
 
 	execute_command(disp, hk->get_id(), executor);
+	executor->set_button_state(disp, hk->get_id());
 }
 
 void jhat_event_execute(display& disp, const SDL_JoyHatEvent& event, command_executor* executor)
@@ -863,6 +866,7 @@ void jhat_event_execute(display& disp, const SDL_JoyHatEvent& event, command_exe
 	}
 
 	execute_command(disp, hk->get_id(), executor);
+	executor->set_button_state(disp, hk->get_id());
 }
 
 
@@ -883,6 +887,7 @@ void key_event_execute(display& disp, const SDL_KeyboardEvent& event, command_ex
 	}
 
 	execute_command(disp, hk->get_id(), executor);
+	executor->set_button_state(disp, hk->get_id());
 }
 
 bool command_executor::execute_command(HOTKEY_COMMAND command, int /*index*/)
@@ -1181,6 +1186,36 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 			DBG_G << "command_executor: unknown command number " << command << ", ignoring.\n";
 			break;
 	}
+}
+
+void command_executor::set_button_state(display& disp, HOTKEY_COMMAND command, int index) { //, command_executor* executor, int index) {
+
+	BOOST_FOREACH(const theme::menu& menu, disp.get_theme().menus()) {
+
+			if (menu.items().size() == 1) {
+				hotkey::HOTKEY_COMMAND hk = hotkey::get_id(menu.items().front());
+
+				if (hk == command) {
+
+					//TODO 1?
+					ACTION_STATE state = get_action_state(command, index);
+					gui::button* button = disp.find_button(menu.get_id());
+					button->enable(can_execute_command(command, index));
+					switch (state) {
+					case ACTION_ON:
+							button->set_check(true);
+							break;
+						case ACTION_OFF:
+							button->set_check(false);
+							break;
+						case ACTION_STATELESS:
+							break;
+						default:
+							break;
+					}
+				}
+			}
+		}
 }
 
 void command_executor::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& gui)
