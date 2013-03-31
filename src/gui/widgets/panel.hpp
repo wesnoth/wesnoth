@@ -58,12 +58,14 @@ public:
 
 private:
 
-	/** Inherited from tcontrol. */
-	void impl_draw_background(surface& frame_buffer);
-	void impl_draw_background(
+	/** See @ref twidget::impl_draw_background. */
+	virtual void impl_draw_background(surface& frame_buffer) OVERRIDE;
+
+	/** See @ref twidget::impl_draw_background. */
+	virtual void impl_draw_background(
 			  surface& frame_buffer
 			, int x_offset
-			, int y_offset);
+			, int y_offset) OVERRIDE;
 
 	/** Inherited from tcontrol. */
 	void impl_draw_foreground(surface& frame_buffer);
