@@ -247,8 +247,14 @@ private:
 	/** See @ref twidget::set_visible_rectangle. */
 	virtual void set_visible_rectangle(const SDL_Rect& rectangle) OVERRIDE;
 
-	void impl_draw_children(surface& frame_buffer);
-	void impl_draw_children(surface& frame_buffer, int x_offset, int y_offset);
+	/** See @ref twidget::impl_draw_children. */
+	virtual void impl_draw_children(surface& frame_buffer) OVERRIDE;
+
+	/** See @ref twidget::impl_draw_children. */
+	virtual void impl_draw_children(
+			  surface& frame_buffer
+			, int x_offset
+			, int y_offset) OVERRIDE;
 
 	// FIXME rename to icon
 	void signal_handler_left_button_click(const event::tevent event);

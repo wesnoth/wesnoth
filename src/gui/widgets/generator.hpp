@@ -259,12 +259,14 @@ public:
 	/** See @ref twidget::set_visible_rectangle. */
 	virtual void set_visible_rectangle(const SDL_Rect& rectangle) OVERRIDE = 0;
 
-	/** Inherited from twidget. */
-	virtual void impl_draw_children(surface& frame_buffer) = 0;
+	/** See @ref twidget::impl_draw_children. */
+	virtual void impl_draw_children(surface& frame_buffer) OVERRIDE = 0;
+
+	/** See @ref twidget::impl_draw_children. */
 	virtual void impl_draw_children(
 			  surface& frame_buffer
 			, int x_offset
-			, int y_offset) = 0;
+			, int y_offset) OVERRIDE = 0;
 
 protected:
 

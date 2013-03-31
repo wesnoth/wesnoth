@@ -824,8 +824,8 @@ public:
 		placement::set_visible_rectangle(rectangle);
 	}
 
-	/** Inherited from tgenerator_. */
-	void impl_draw_children(surface& frame_buffer)
+	/** See @ref twidget::impl_draw_children. */
+	virtual void impl_draw_children(surface& frame_buffer) OVERRIDE
 	{
 		assert(this->get_visible() == twidget::tvisible::visible);
 
@@ -838,8 +838,11 @@ public:
 		}
 	}
 
-	/** Inherited from tgenerator_. */
-	void impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
+	/** See @ref twidget::impl_draw_children. */
+	virtual void impl_draw_children(
+			  surface& frame_buffer
+			, int x_offset
+			, int y_offset) OVERRIDE
 	{
 		assert(this->get_visible() == twidget::tvisible::visible);
 
