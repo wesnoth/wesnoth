@@ -146,6 +146,20 @@ void tcontainer_::child_populate_dirty_list(twindow& caller,
 	grid_.populate_dirty_list(caller, child_call_stack);
 }
 
+twidget* tcontainer_::find_at(
+		  const tpoint& coordinate
+		, const bool must_be_active)
+{
+	return grid_.find_at(coordinate, must_be_active);
+}
+
+const twidget* tcontainer_::find_at(
+		  const tpoint& coordinate
+		, const bool must_be_active) const
+{
+	return grid_.find_at(coordinate, must_be_active);
+}
+
 void tcontainer_::set_active(const bool active)
 {
 	// Not all our children might have the proper state so let them run

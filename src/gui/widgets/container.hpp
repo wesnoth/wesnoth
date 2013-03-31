@@ -119,14 +119,15 @@ protected:
 
 public:
 
-	/** Inherited from tcontrol. */
-	twidget* find_at(const tpoint& coordinate, const bool must_be_active)
-		{ return grid_.find_at(coordinate, must_be_active); }
+	/** See @ref twidget::find_at. */
+	virtual twidget* find_at(
+			  const tpoint& coordinate
+			, const bool must_be_active) OVERRIDE;
 
-	/** Inherited from tcontrol. */
-	const twidget* find_at(const tpoint& coordinate,
-			const bool must_be_active) const
-		{ return grid_.find_at(coordinate, must_be_active); }
+	/** See @ref twidget::find_at. */
+	virtual const twidget* find_at(
+			  const tpoint& coordinate
+			, const bool must_be_active) const OVERRIDE;
 
 	/** Inherited from tcontrol.*/
 	twidget* find(const std::string& id, const bool must_be_active)

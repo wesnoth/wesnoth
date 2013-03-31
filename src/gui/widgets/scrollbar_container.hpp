@@ -124,12 +124,15 @@ public:
 	/** Inherited from tcontainer_. */
 	unsigned get_state() const { return state_; }
 
-	/** Inherited from tcontainer_. */
-	twidget* find_at(const tpoint& coordinate, const bool must_be_active);
+	/** See @ref twidget::find_at. */
+	virtual twidget* find_at(
+			  const tpoint& coordinate
+			, const bool must_be_active) OVERRIDE;
 
-	/** Inherited from tcontainer_. */
-	const twidget* find_at(const tpoint& coordinate,
-			const bool must_be_active) const;
+	/** See @ref twidget::find_at. */
+	virtual const twidget* find_at(
+			  const tpoint& coordinate
+			, const bool must_be_active) const OVERRIDE;
 
 	/** Inherited from tcontainer_. */
 	twidget* find(const std::string& id, const bool must_be_active);

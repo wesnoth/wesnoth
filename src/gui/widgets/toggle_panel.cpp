@@ -77,6 +77,29 @@ void ttoggle_panel::set_child_members(const std::map<std::string /* widget id */
 		}
 	}
 }
+twidget* ttoggle_panel::find_at(
+		  const tpoint& coordinate
+		, const bool must_be_active)
+{
+	/**
+	 * @todo since there is no mouse event nesting (or event nesting at all)
+	 * we need to capture all events. This means items on the panel will
+	 * never receive an event, which gives problems with for example the
+	 * intended button on the addon panel. So we need to chain mouse events
+	 * as well and also add a handled flag for them.
+	 */
+
+	twidget* result = tcontainer_::find_at(coordinate, must_be_active);
+	return result ? result : tcontrol::find_at(coordinate, must_be_active);
+}
+
+const twidget* ttoggle_panel::find_at(
+		  const tpoint& coordinate
+		, const bool must_be_active) const
+{
+	const twidget* result = tcontainer_::find_at(coordinate, must_be_active);
+	return result ? result : tcontrol::find_at(coordinate, must_be_active);
+}
 
 void ttoggle_panel::set_active(const bool active)
 {

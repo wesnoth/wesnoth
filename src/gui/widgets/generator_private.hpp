@@ -211,12 +211,15 @@ struct thorizontal_list
 	 */
 	void set_visible_rectangle(const SDL_Rect& rectangle);
 
-	/** Inherited from tgenerator_. */
-	twidget* find_at(const tpoint& coordinate, const bool must_be_active);
+	/** See @ref twidget::find_at. */
+	virtual twidget* find_at(
+			  const tpoint& coordinate
+			, const bool must_be_active) OVERRIDE;
 
-	/** Inherited from tgenerator_. */
-	const twidget* find_at(const tpoint& coordinate
-			, const bool must_be_active) const;
+	/** See @ref twidget::find_at. */
+	virtual const twidget* find_at(
+			  const tpoint& coordinate
+			, const bool must_be_active) const OVERRIDE;
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
@@ -281,12 +284,15 @@ struct tvertical_list
 	/** See @ref thorizontal_list::set_visible_rectangle(). */
 	void set_visible_rectangle(const SDL_Rect& rectangle);
 
-	/** See thorizontal_list::find_at(). */
-	twidget* find_at(const tpoint& coordinate, const bool must_be_active);
+	/** See @ref twidget::find_at. */
+	virtual twidget* find_at(
+			  const tpoint& coordinate
+			, const bool must_be_active) OVERRIDE;
 
-	/** See thorizontal_list::find_at(). */
-	const twidget* find_at(const tpoint& coordinate,
-			const bool must_be_active) const;
+	/** See @ref twidget::find_at. */
+	virtual const twidget* find_at(
+			  const tpoint& coordinate
+			, const bool must_be_active) const OVERRIDE;
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
@@ -367,12 +373,21 @@ struct tmatrix
 	void set_visible_rectangle(const SDL_Rect& /*rectangle*/ )
 		{ ERROR_LOG(false); }
 
-	/** See thorizontal_list::find_at(). */
-	twidget* find_at(const tpoint&, const bool) { ERROR_LOG(false); }
+	/** See @ref twidget::find_at. */
+	virtual twidget* find_at(
+			  const tpoint& /*coordinate*/
+			, const bool /*must_be_active*/) OVERRIDE
+	{
+		ERROR_LOG(false);
+	}
 
-	/** See thorizontal_list::find_at(). */
-	const twidget* find_at(const tpoint&, const bool) const
-		{ ERROR_LOG(false); }
+	/** See @ref twidget::find_at. */
+	virtual const twidget* find_at(
+			  const tpoint& /*coordinate*/
+			, const bool /*must_be_active*/) const OVERRIDE
+	{
+		ERROR_LOG(false);
+	}
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
@@ -427,12 +442,15 @@ struct tindependent
 	/** See @ref thorizontal_list::set_visible_rectangle(). */
 	void set_visible_rectangle(const SDL_Rect& rectangle);
 
-	/** See thorizontal_list::find_at(). */
-	twidget* find_at(const tpoint& coordinate, const bool must_be_active);
+	/** See @ref twidget::find_at. */
+	virtual twidget* find_at(
+			  const tpoint& coordinate
+			, const bool must_be_active) OVERRIDE;
 
-	/** See thorizontal_list::find_at(). */
-	const twidget* find_at(const tpoint& coordinate
-			, const bool must_be_active) const;
+	/** See @ref twidget::find_at. */
+	virtual const twidget* find_at(
+			  const tpoint& coordinate
+			, const bool must_be_active) const OVERRIDE;
 
 	twidget* find(const std::string& id, const bool must_be_active);
 
@@ -840,16 +858,18 @@ public:
 		}
 	}
 
-	/** Inherited from tgenerator_. */
-	twidget* find_at(
-			const tpoint& coordinate, const bool must_be_active)
+	/** See @ref twidget::find_at. */
+	virtual twidget* find_at(
+			  const tpoint& coordinate
+			, const bool must_be_active) OVERRIDE
 	{
 		return placement::find_at(coordinate, must_be_active);
 	}
 
-	/** Inherited from tgenerator_. */
-	const twidget* find_at(
-			const tpoint& coordinate, const bool must_be_active) const
+	/** See @ref twidget::find_at. */
+	virtual const twidget* find_at(
+			  const tpoint& coordinate
+			, const bool must_be_active) const OVERRIDE
 	{
 		return placement::find_at(coordinate, must_be_active);
 	}

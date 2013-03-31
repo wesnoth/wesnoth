@@ -186,20 +186,16 @@ private:
 	friend class twindow;
 
 public:
-	/** Inherited from twidget. */
-	twidget* find_at(const tpoint& coordinate, const bool must_be_active)
-	{
-		return (twidget::find_at(coordinate, must_be_active)
-			&& (!must_be_active || get_active())) ? this : NULL;
-	}
 
-	/** Inherited from twidget. */
-	const twidget* find_at(const tpoint& coordinate,
-			const bool must_be_active) const
-	{
-		return (twidget::find_at(coordinate, must_be_active)
-			&& (!must_be_active || get_active())) ? this : NULL;
-	}
+	/** See @ref twidget::find_at. */
+	virtual twidget* find_at(
+			  const tpoint& coordinate
+			, const bool must_be_active) OVERRIDE;
+
+	/** See @ref twidget::find_at. */
+	virtual const twidget* find_at(
+			  const tpoint& coordinate
+			, const bool must_be_active) const OVERRIDE;
 
 	/** Inherited from twidget.*/
 	twidget* find(const std::string& id, const bool must_be_active)

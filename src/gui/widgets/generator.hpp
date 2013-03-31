@@ -274,13 +274,15 @@ protected:
 
 public:
 
-	/** Inherited from twidget. */
+	/** See @ref twidget::find_at. */
 	virtual twidget* find_at(
-			const tpoint& coordinate, const bool must_be_active) = 0;
+			  const tpoint& coordinate
+			, const bool must_be_active) OVERRIDE = 0;
 
-	/** Inherited from twidget. */
+	/** See @ref twidget::find_at. */
 	virtual const twidget* find_at(
-			const tpoint& coordinate, const bool must_be_active) const = 0;
+			  const tpoint& coordinate
+			, const bool must_be_active) const OVERRIDE = 0;
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 

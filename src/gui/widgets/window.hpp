@@ -259,14 +259,15 @@ public:
 	/** Inherited from tevent_handler. */
 	const twindow& get_window() const { return *this; }
 
-	/** Inherited from tevent_handler. */
-	twidget* find_at(const tpoint& coordinate, const bool must_be_active)
-		{ return tpanel::find_at(coordinate, must_be_active); }
+	/** See @ref twidget::find_at. */
+	virtual twidget* find_at(
+			  const tpoint& coordinate
+			, const bool must_be_active) OVERRIDE;
 
-	/** Inherited from tevent_handler. */
-	const twidget* find_at(const tpoint& coordinate,
-			const bool must_be_active) const
-		{ return tpanel::find_at(coordinate, must_be_active); }
+	/** See @ref twidget::find_at. */
+	virtual const twidget* find_at(
+			  const tpoint& coordinate
+			, const bool must_be_active) const OVERRIDE;
 
 	/** Inherited from twidget. */
 	tdialog* dialog() { return owner_; }

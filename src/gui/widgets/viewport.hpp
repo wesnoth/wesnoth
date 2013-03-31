@@ -65,13 +65,15 @@ public:
 	/** See @ref twidget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned maximum_width) OVERRIDE;
 
-	/** Inherited from twidget. */
-	twidget* find_at(const tpoint& coordinate, const bool must_be_active);
-
-	/** Inherited from twidget. */
-	const twidget* find_at(
+	/** See @ref twidget::find_at. */
+	virtual twidget* find_at(
 			  const tpoint& coordinate
-			, const bool must_be_active) const;
+			, const bool must_be_active) OVERRIDE;
+
+	/** See @ref twidget::find_at. */
+	virtual const twidget* find_at(
+			  const tpoint& coordinate
+			, const bool must_be_active) const OVERRIDE;
 
 	/** Inherited from twidget. */
 	twidget* find(const std::string& id, const bool must_be_active);
