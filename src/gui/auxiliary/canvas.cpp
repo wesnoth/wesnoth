@@ -1347,7 +1347,7 @@ void ttext::draw(surface& canvas
 			.set_alignment(text_alignment_(variables))
 			.set_foreground_color(color_)
 			.set_maximum_width(maximum_width_(variables))
-			.set_maximum_height(maximum_height_(variables))
+			.set_maximum_height(maximum_height_(variables), true)
 			.set_ellipse_mode(variables.has_key("text_wrap_mode")
 				? static_cast<PangoEllipsizeMode>
 					(variables.query_value("text_wrap_mode").as_int())

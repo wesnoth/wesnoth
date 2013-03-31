@@ -188,7 +188,7 @@ public:
 
 	ttext& set_characters_per_line(const unsigned characters_per_line);
 
-	ttext& set_maximum_height(int height, bool multiline = true);
+	ttext& set_maximum_height(int height, bool multiline);
 
 	ttext& set_ellipse_mode(const PangoEllipsizeMode ellipse_mode);
 

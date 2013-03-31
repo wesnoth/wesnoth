@@ -952,7 +952,7 @@ surface floating_label::create_surface()
 		text.set_foreground_color((color_.r << 24) | (color_.g << 16) | (color_.b << 8) | 255);
 		text.set_font_size(font_size_);
 		text.set_maximum_width(width_ < 0 ? clip_rect_.w : width_);
-		text.set_maximum_height(height_ < 0 ? clip_rect_.h : height_);
+		text.set_maximum_height(height_ < 0 ? clip_rect_.h : height_, true);
 
 		//ignore last '\n'
 		if(!text_.empty() && *(text_.rbegin()) == '\n'){
