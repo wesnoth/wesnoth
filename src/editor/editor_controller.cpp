@@ -327,6 +327,10 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND command, int index) const {
 	using namespace hotkey;
 	switch (command) {
+		case HOTKEY_ZOOM_DEFAULT:
+			return (gui_->get_zoom_factor() == 1.0) ? ACTION_ON : ACTION_OFF;
+		case HOTKEY_TOGGLE_GRID:
+			return preferences::grid() ? ACTION_ON : ACTION_OFF;
 		case HOTKEY_EDITOR_TOOL_FILL:
 		case HOTKEY_EDITOR_TOOL_LABEL:
 		case HOTKEY_EDITOR_TOOL_PAINT:
