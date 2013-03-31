@@ -120,7 +120,7 @@ void ttext_box::place(const tpoint& origin, const tpoint& size)
 	tcontrol::place(origin, size);
 
 	set_maximum_width(get_text_maximum_width());
-	set_maximum_height(get_text_maximum_height());
+	set_maximum_height(get_text_maximum_height(), false);
 
 	update_offsets();
 }

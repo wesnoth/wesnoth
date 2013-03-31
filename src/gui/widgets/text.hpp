@@ -171,8 +171,8 @@ protected:
 	void set_maximum_width(const int width)
 		{ text_.set_maximum_width(width); }
 
-	void set_maximum_height(const int height)
-		{ text_.set_maximum_height(height); }
+	void set_maximum_height(const int height, const bool multiline)
+		{ text_.set_maximum_height(height, multiline); }
 
 	void set_ellipse_mode(const PangoEllipsizeMode ellipse_mode)
 		{ text_.set_ellipse_mode(ellipse_mode); }
