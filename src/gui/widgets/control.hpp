@@ -380,13 +380,14 @@ protected:
 			, int x_offset
 			, int y_offset) OVERRIDE;
 
-	/** Inherited from twidget. */
-	void impl_draw_foreground(surface& /*frame_buffer*/) { /* do nothing */ }
-	void impl_draw_foreground(
-			  surface& /*frame_buffer*/
-			, int /*x_offset*/
-			, int /*y_offset*/)
-	{ /* do nothing */ }
+	/** See @ref twidget::impl_draw_foreground. */
+	virtual void impl_draw_foreground(surface& frame_buffer) OVERRIDE;
+
+	/** See @ref twidget::impl_draw_foreground. */
+	virtual void impl_draw_foreground(
+			  surface& frame_buffer
+			, int x_offset
+			, int y_offset) OVERRIDE;
 
 private:
 

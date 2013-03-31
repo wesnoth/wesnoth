@@ -192,6 +192,23 @@ void ttoggle_panel::impl_draw_background(
 	tcontrol::impl_draw_background(frame_buffer, x_offset, y_offset);
 }
 
+void ttoggle_panel::impl_draw_foreground(surface& frame_buffer)
+{
+	// We don't have a fore and background and need to draw depending on
+	// our state, like a control. So we use the controls drawing method.
+	tcontrol::impl_draw_foreground(frame_buffer);
+}
+
+void ttoggle_panel::impl_draw_foreground(
+		  surface& frame_buffer
+		, int x_offset
+		, int y_offset)
+{
+	// We don't have a fore and background and need to draw depending on
+	// our state, like a control. So we use the controls drawing method.
+	tcontrol::impl_draw_foreground(frame_buffer, x_offset, y_offset);
+}
+
 const std::string& ttoggle_panel::get_control_type() const
 {
 	static const std::string type = "toggle_panel";

@@ -434,6 +434,19 @@ void tcontrol::impl_draw_background(
 			, calculate_blitting_rectangle(x_offset, y_offset));
 }
 
+void tcontrol::impl_draw_foreground(surface& /*frame_buffer*/)
+{
+	/* DO NOTHING */
+}
+
+void tcontrol::impl_draw_foreground(
+		  surface& /*frame_buffer*/
+		, int /*x_offset*/
+		, int /*y_offset*/)
+{
+	/* DO NOTHING */
+}
+
 void tcontrol::definition_load_configuration(const std::string& control_type)
 {
 	assert(!config());
