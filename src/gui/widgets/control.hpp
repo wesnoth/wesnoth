@@ -197,20 +197,13 @@ public:
 			  const tpoint& coordinate
 			, const bool must_be_active) const OVERRIDE;
 
-	/** Inherited from twidget.*/
-	twidget* find(const std::string& id, const bool must_be_active)
-	{
-		return (twidget::find(id, must_be_active)
-			&& (!must_be_active || get_active())) ? this : NULL;
-	}
+	/** See @ref twidget::find. */
+	twidget* find(const std::string& id, const bool must_be_active) OVERRIDE;
 
-	/** Inherited from twidget.*/
-	const twidget* find(const std::string& id,
-			const bool must_be_active) const
-	{
-		return (twidget::find(id, must_be_active)
-			&& (!must_be_active || get_active())) ? this : NULL;
-	}
+	/** See @ref twidget::find. */
+	const twidget* find(
+			  const std::string& id
+			, const bool must_be_active) const OVERRIDE;
 
 	/**
 	 * Sets the definition.

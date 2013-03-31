@@ -296,6 +296,20 @@ const twidget* ttree_view_node::find_at(
 			*this, coordinate, must_be_active);
 }
 
+twidget* ttree_view_node::find(const std::string& id, const bool must_be_active)
+{
+	twidget* result = twidget::find(id, must_be_active);
+	return result ? result : grid_.find(id, must_be_active);
+}
+
+const twidget* ttree_view_node::find(
+		  const std::string& id
+		, const bool must_be_active) const
+{
+	const twidget* result = twidget::find(id, must_be_active);
+	return result ? result : grid_.find(id, must_be_active);
+}
+
 void ttree_view_node::impl_populate_dirty_list(twindow& caller
 		, const std::vector<twidget*>& call_stack)
 {

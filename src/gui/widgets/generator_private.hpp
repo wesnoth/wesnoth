@@ -452,9 +452,13 @@ struct tindependent
 			  const tpoint& coordinate
 			, const bool must_be_active) const OVERRIDE;
 
-	twidget* find(const std::string& id, const bool must_be_active);
+	/** See @ref twidget::find. */
+	twidget* find(const std::string& id, const bool must_be_active) OVERRIDE;
 
-	const twidget* find(const std::string& id, const bool must_be_active) const;
+	/** See @ref twidget::find. */
+	const twidget* find(
+			  const std::string& id
+			, const bool must_be_active) const OVERRIDE;
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 

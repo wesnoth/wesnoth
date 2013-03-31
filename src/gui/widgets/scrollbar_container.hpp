@@ -134,11 +134,13 @@ public:
 			  const tpoint& coordinate
 			, const bool must_be_active) const OVERRIDE;
 
-	/** Inherited from tcontainer_. */
-	twidget* find(const std::string& id, const bool must_be_active);
+	/** See @ref twidget::find. */
+	twidget* find(const std::string& id, const bool must_be_active) OVERRIDE;
 
-	/** Inherited from tcontrol.*/
-	const twidget* find(const std::string& id, const bool must_be_active) const;
+	/** See @ref twidget::find. */
+	const twidget* find(
+			  const std::string& id
+			, const bool must_be_active) const OVERRIDE;
 
 	/** Inherited from tcontainer_. */
 	bool disable_click_dismiss() const;

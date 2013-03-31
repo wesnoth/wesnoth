@@ -129,19 +129,13 @@ public:
 			  const tpoint& coordinate
 			, const bool must_be_active) const OVERRIDE;
 
-	/** Inherited from tcontrol.*/
-	twidget* find(const std::string& id, const bool must_be_active)
-	{
-		twidget* result = tcontrol::find(id, must_be_active);
-		return result ? result : grid_.find(id, must_be_active);
-	}
+	/** See @ref twidget::find. */
+	twidget* find(const std::string& id, const bool must_be_active) OVERRIDE;
 
-	/** Inherited from tcontrol.*/
-	const twidget* find(const std::string& id, const bool must_be_active) const
-	{
-		const twidget* result = tcontrol::find(id, must_be_active);
-		return result ? result : grid_.find(id, must_be_active);
-	}
+	/** See @ref twidget::find. */
+	const twidget* find(
+			  const std::string& id
+			, const bool must_be_active) const OVERRIDE;
 
 	/** Inherited from tcontrol. */
 	void set_active(const bool active);

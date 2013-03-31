@@ -160,6 +160,20 @@ const twidget* tcontainer_::find_at(
 	return grid_.find_at(coordinate, must_be_active);
 }
 
+twidget* tcontainer_::find(const std::string& id, const bool must_be_active)
+{
+	twidget* result = tcontrol::find(id, must_be_active);
+	return result ? result : grid_.find(id, must_be_active);
+}
+
+const twidget* tcontainer_::find(
+		  const std::string& id
+		, const bool must_be_active) const
+{
+	const twidget* result = tcontrol::find(id, must_be_active);
+	return result ? result : grid_.find(id, must_be_active);
+}
+
 void tcontainer_::set_active(const bool active)
 {
 	// Not all our children might have the proper state so let them run

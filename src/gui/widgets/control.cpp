@@ -308,6 +308,24 @@ const twidget* tcontrol::find_at(
 				: NULL;
 }
 
+twidget* tcontrol::find(const std::string& id, const bool must_be_active)
+{
+	return (twidget::find(id, must_be_active)
+			&& (!must_be_active || get_active()))
+				? this
+				: NULL;
+}
+
+const twidget* tcontrol::find(
+			  const std::string& id
+			, const bool must_be_active) const
+{
+	return (twidget::find(id, must_be_active)
+			&& (!must_be_active || get_active()))
+				? this
+				: NULL;
+}
+
 void tcontrol::set_definition(const std::string& definition)
 {
 	assert(!config());

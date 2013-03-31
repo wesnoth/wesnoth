@@ -936,6 +936,18 @@ const twidget* twindow::find_at(
 	return tpanel::find_at(coordinate, must_be_active);
 }
 
+twidget* twindow::find(const std::string& id, const bool must_be_active)
+{
+	return tcontainer_::find(id, must_be_active);
+}
+
+const twidget* twindow::find(
+		  const std::string& id
+		, const bool must_be_active) const
+{
+	return tcontainer_::find(id, must_be_active);
+}
+
 void twindow::init_linked_size_group(const std::string& id,
 		const bool fixed_width, const bool fixed_height)
 {
