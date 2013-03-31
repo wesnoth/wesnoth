@@ -387,6 +387,10 @@ public:
 	std::vector<std::string> get_menu_images(display &, const std::vector<std::string>& items_arg);
 
 	void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& gui);
+
+	/**
+	 * Adjusts the state of those theme menu buttons which trigger hotkey events.
+	 * \param command The command whose linked buttons are adjusted */
 	void set_button_state(display& disp, HOTKEY_COMMAND command, int index = -1);
 
 	virtual bool can_execute_command(HOTKEY_COMMAND command, int index=-1) const = 0;

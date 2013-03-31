@@ -1188,34 +1188,33 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 	}
 }
 
-void command_executor::set_button_state(display& disp, HOTKEY_COMMAND command, int index) { //, command_executor* executor, int index) {
+void command_executor::set_button_state(display& disp, HOTKEY_COMMAND command, int index) {
 
 	BOOST_FOREACH(const theme::menu& menu, disp.get_theme().menus()) {
 
-			if (menu.items().size() == 1) {
-				hotkey::HOTKEY_COMMAND hk = hotkey::get_id(menu.items().front());
+		if (menu.items().size() == 1) {
+			hotkey::HOTKEY_COMMAND hk = hotkey::get_id(menu.items().front());
 
-				if (hk == command) {
+			if (hk == command) {
 
-					//TODO 1?
-					ACTION_STATE state = get_action_state(command, index);
-					gui::button* button = disp.find_button(menu.get_id());
-					button->enable(can_execute_command(command, index));
-					switch (state) {
-					case ACTION_ON:
-							button->set_check(true);
-							break;
-						case ACTION_OFF:
-							button->set_check(false);
-							break;
-						case ACTION_STATELESS:
-							break;
-						default:
-							break;
-					}
+				ACTION_STATE state = get_action_state(command, index);
+				gui::button* button = disp.find_button(menu.get_id());
+				button->enable(can_execute_command(command, index));
+				switch (state) {
+				case ACTION_ON:
+					button->set_check(true);
+					break;
+				case ACTION_OFF:
+					button->set_check(false);
+					break;
+				case ACTION_STATELESS:
+					break;
+				default:
+					break;
 				}
 			}
 		}
+	}
 }
 
 void command_executor::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& gui)
