@@ -107,8 +107,8 @@ private:
 	virtual tpoint calculate_best_size() const OVERRIDE;
 public:
 
-	/** Inherited from tcontainer_. */
-	void place(const tpoint& origin, const tpoint& size);
+	/** See @ref twidget::place. */
+	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;
 
 	/** Inherited from tcontainer_. */
 	void set_origin(const tpoint& origin);

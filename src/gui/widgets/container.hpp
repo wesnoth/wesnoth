@@ -89,8 +89,8 @@ public:
 	/** Inherited from twidget. */
 	bool can_wrap() const { return grid_.can_wrap() || twidget::can_wrap(); }
 
-	/** Inherited from twidget. */
-	void place(const tpoint& origin, const tpoint& size);
+	/** See @ref twidget::place. */
+	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 

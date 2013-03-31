@@ -250,8 +250,8 @@ public:
 	/** See @ref twidget::calculate_best_size. */
 	virtual tpoint calculate_best_size() const OVERRIDE = 0;
 
-	/** Inherited from twidget. */
-	virtual void place(const tpoint& origin, const tpoint& size) = 0;
+	/** See @ref twidget::place. */
+	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE = 0;
 
 	/** Inherited from twidget. */
 	virtual void set_origin(const tpoint& origin) = 0;

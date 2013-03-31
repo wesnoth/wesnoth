@@ -241,7 +241,8 @@ private:
 
 	void set_origin(const tpoint& origin);
 
-	void place(const tpoint& origin, const tpoint& size);
+	/** See @ref twidget::place. */
+	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;
 
 	unsigned place(
 			  const unsigned indention_step_size

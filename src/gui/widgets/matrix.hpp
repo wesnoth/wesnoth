@@ -110,8 +110,8 @@ public:
 
 	/***** ***** ***** ***** Inherited operations. ***** ***** ****** *****/
 
-	/** Inherited from twidget. */
-	void place(const tpoint& origin, const tpoint& size);
+	/** See @ref twidget::place. */
+	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;
 
 	/** See @ref twidget::layout_initialise. */
 	virtual void layout_initialise(const bool full_initialisation) OVERRIDE;

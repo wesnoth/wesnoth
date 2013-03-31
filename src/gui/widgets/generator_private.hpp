@@ -194,13 +194,8 @@ struct thorizontal_list
 	/** See @ref twidget::calculate_best_size. */
 	virtual tpoint calculate_best_size() const OVERRIDE;
 
-	/**
-	 * Sets the size of the generator.
-	 *
-	 * @param origin              The origin of the generator.
-	 * @param size                The size of the generator.
-	 */
-	void place(const tpoint& origin, const tpoint& size);
+	/** See @ref twidget::place. */
+	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;
 
 	/**
 	 * Sets the origin of the generator.
@@ -277,8 +272,8 @@ struct tvertical_list
 	/** See @ref twidget::calculate_best_size. */
 	virtual tpoint calculate_best_size() const OVERRIDE;
 
-	/** See thorizontal_list::place(). */
-	void place(const tpoint& origin, const tpoint& size);
+	/** See @ref twidget::place. */
+	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;
 
 	/** See thorizontal_list::set_origin(). */
 	void set_origin(const tpoint& origin);
@@ -356,9 +351,13 @@ struct tmatrix
 		ERROR_LOG(false);
 	}
 
-	/** See thorizontal_list::place(). */
-	void place(const tpoint& /*origin*/, const tpoint& /*size*/)
-		{ ERROR_LOG(false); }
+	/** See @ref twidget::place. */
+	virtual void place(
+			  const tpoint& /*origin*/
+			, const tpoint& /*size*/) OVERRIDE
+	{
+		ERROR_LOG(false);
+	}
 
 	/** See thorizontal_list::set_origin(). */
 	void set_origin(const tpoint& /*origin*/)
@@ -419,8 +418,8 @@ struct tindependent
 	/** See @ref twidget::calculate_best_size. */
 	virtual tpoint calculate_best_size() const OVERRIDE;
 
-	/** See thorizontal_list::place(). */
-	void place(const tpoint& origin, const tpoint& size);
+	/** See @ref twidget::place. */
+	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;
 
 	/** See thorizontal_list::set_origin(). */
 	void set_origin(const tpoint& origin);
@@ -779,8 +778,8 @@ public:
 		return placement::calculate_best_size();
 	}
 
-	/** Inherited from tgenerator_. */
-	void place(const tpoint& origin, const tpoint& size)
+	/** See @ref twidget::place. */
+	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE
 	{
 		// Inherited, so we get useful debug info.
 		twidget::place(origin, size);

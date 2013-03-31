@@ -127,8 +127,8 @@ protected:
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
-	/** Inherited from tcontrol. */
-	void place(const tpoint& origin, const tpoint& size);
+	/** See @ref twidget::place. */
+	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
