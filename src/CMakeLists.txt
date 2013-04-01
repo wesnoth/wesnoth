@@ -211,10 +211,6 @@ set(libwesnoth-core_STAT_SRC
 # internal reference is the name given here
 add_library(wesnoth-core ${LIBRARY_TYPE} EXCLUDE_FROM_ALL ${libwesnoth-core_STAT_SRC})
 
-if(UPDATE_REVISION)
-	add_dependencies(wesnoth-core update_revision)
-endif(UPDATE_REVISION)
-
 # Depending on the flag create a real file or an empty dummy.
 #
 # Since the code is executed every build run of Wesnoth we need to make sure
