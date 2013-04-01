@@ -238,7 +238,9 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_PALETTE_DOWNSCROLL:
 			return true;
 		case HOTKEY_ZOOM_IN:
+			return !gui_->zoom_at_max();
 		case HOTKEY_ZOOM_OUT:
+			return !gui_->zoom_at_min();
 		case HOTKEY_ZOOM_DEFAULT:
 		case HOTKEY_FULLSCREEN:
 		case HOTKEY_SCREENSHOT:
@@ -280,10 +282,11 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_TOOL_FILL:
 		case HOTKEY_EDITOR_TOOL_SELECT:
 		case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
-		case HOTKEY_EDITOR_TOOL_LABEL:
 			return true;
+		case HOTKEY_EDITOR_TOOL_LABEL:
 		case HOTKEY_EDITOR_TOOL_UNIT:
 		case HOTKEY_EDITOR_TOOL_VILLAGE:
+			return false;
 		//	return !context_manager_->get_map().get_teams().empty();
 		case HOTKEY_EDITOR_CUT:
 		case HOTKEY_EDITOR_COPY:
@@ -662,11 +665,10 @@ void editor_controller::refresh_image_cache()
 	context_manager_->refresh_all();
 }
 
-void editor_controller::display_redraw_callback(display&)
+void editor_controller::display_redraw_callback(display& disp)
 {
+	set_button_state(disp);
 	toolkit_->adjust_size();
-	//TODO seems not to be needed and slows down the drawing?
-	//gui().invalidate_all();
 }
 
 void editor_controller::undo()
@@ -735,6 +737,7 @@ bool editor_controller::left_click(int x, int y, const bool browse)
 	LOG_ED << "Left click action " << hex_clicked.x << " " << hex_clicked.y << "\n";
 	editor_action* a = toolkit_->get_mouse_action()->click_left(*gui_, x, y);
 	perform_refresh_delete(a, true);
+	if (a) set_button_state(*gui_);
 	toolkit_->get_mouse_action()->get_palette().draw(true);
 	return false;
 }
@@ -749,6 +752,7 @@ void editor_controller::left_mouse_up(int x, int y, const bool /*browse*/)
 {
 	editor_action* a = toolkit_->get_mouse_action()->up_left(*gui_, x, y);
 	perform_delete(a);
+	if (a) set_button_state(*gui_);
 	context_manager_->refresh_after_action();
 	toolkit_->set_mouseover_overlay();
 }
@@ -763,6 +767,7 @@ bool editor_controller::right_click(int x, int y, const bool browse)
 	LOG_ED << "Right click action " << hex_clicked.x << " " << hex_clicked.y << "\n";
 	editor_action* a = toolkit_->get_mouse_action()->click_right(*gui_, x, y);
 	perform_refresh_delete(a, true);
+	if (a) set_button_state(*gui_);
 	toolkit_->get_mouse_action()->get_palette().draw(true);
 	return false;
 }
@@ -777,6 +782,7 @@ void editor_controller::right_mouse_up(int x, int y, const bool /*browse*/)
 {
 	editor_action* a = toolkit_->get_mouse_action()->up_right(*gui_, x, y);
 	perform_delete(a);
+	if (a) set_button_state(*gui_);
 	context_manager_->refresh_after_action();
 	toolkit_->set_mouseover_overlay();
 }

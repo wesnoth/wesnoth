@@ -772,6 +772,8 @@ basic_handler::basic_handler(display* disp, command_executor* exec) : disp_(disp
 
 void basic_handler::handle_event(const SDL_Event& event)
 {
+	//TODO this code path is never called?
+
 	if (disp_ == NULL) {
 		return;
 	}
@@ -844,7 +846,7 @@ void mbutton_event_execute(display& disp, const SDL_MouseButtonEvent& event, com
 	}
 
 	execute_command(disp, hk->get_id(), executor);
-	executor->set_button_state(disp, hk->get_id());
+	executor->set_button_state(disp);
 }
 
 void jbutton_event_execute(display& disp, const SDL_JoyButtonEvent& event, command_executor* executor)
@@ -855,7 +857,7 @@ void jbutton_event_execute(display& disp, const SDL_JoyButtonEvent& event, comma
 	}
 
 	execute_command(disp, hk->get_id(), executor);
-	executor->set_button_state(disp, hk->get_id());
+	executor->set_button_state(disp);
 }
 
 void jhat_event_execute(display& disp, const SDL_JoyHatEvent& event, command_executor* executor)
@@ -866,7 +868,7 @@ void jhat_event_execute(display& disp, const SDL_JoyHatEvent& event, command_exe
 	}
 
 	execute_command(disp, hk->get_id(), executor);
-	executor->set_button_state(disp, hk->get_id());
+	executor->set_button_state(disp);
 }
 
 
@@ -887,7 +889,7 @@ void key_event_execute(display& disp, const SDL_KeyboardEvent& event, command_ex
 	}
 
 	execute_command(disp, hk->get_id(), executor);
-	executor->set_button_state(disp, hk->get_id());
+	executor->set_button_state(disp);
 }
 
 bool command_executor::execute_command(HOTKEY_COMMAND command, int /*index*/)
@@ -1188,30 +1190,27 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 	}
 }
 
-void command_executor::set_button_state(display& disp, HOTKEY_COMMAND command, int index) {
+void command_executor::set_button_state(display& disp) {
 
 	BOOST_FOREACH(const theme::menu& menu, disp.get_theme().menus()) {
 
 		if (menu.items().size() == 1) {
-			hotkey::HOTKEY_COMMAND hk = hotkey::get_id(menu.items().front());
+			hotkey::HOTKEY_COMMAND command = hotkey::get_id(menu.items().front());
 
-			if (hk == command) {
-
-				ACTION_STATE state = get_action_state(command, index);
-				gui::button* button = disp.find_button(menu.get_id());
-				button->enable(can_execute_command(command, index));
-				switch (state) {
-				case ACTION_ON:
-					button->set_check(true);
-					break;
-				case ACTION_OFF:
-					button->set_check(false);
-					break;
-				case ACTION_STATELESS:
-					break;
-				default:
-					break;
-				}
+			ACTION_STATE state = get_action_state(command, -1);
+			gui::button* button = disp.find_button(menu.get_id());
+			button->enable(can_execute_command(command));
+			switch (state) {
+			case ACTION_ON:
+				button->set_check(true);
+				break;
+			case ACTION_OFF:
+				button->set_check(false);
+				break;
+			case ACTION_STATELESS:
+				break;
+			default:
+				break;
 			}
 		}
 	}
@@ -1227,6 +1226,7 @@ void command_executor::show_menu(const std::vector<std::string>& items_arg, int 
 		// If just one item is passed in, that means we should execute that item.
 		if (!context_menu && items.size() == 1 && items_arg.size() == 1) {
 			hotkey::execute_command(gui,hotkey::get_id(items.front()), this);
+			set_button_state(gui);
 			return;
 		}
 
@@ -1245,6 +1245,7 @@ void command_executor::show_menu(const std::vector<std::string>& items_arg, int 
 
 		const hotkey::HOTKEY_COMMAND cmd = hotkey::get_id(items[res]);
 		hotkey::execute_command(gui,cmd,this,res);
+		set_button_state(gui);
 	}
 }
 
