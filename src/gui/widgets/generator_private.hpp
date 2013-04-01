@@ -180,15 +180,11 @@ struct thorizontal_list
 		/* DO NOTHING */
 	}
 
-	/**
-	 * Tries to reduce the height for the generator.
-	 *
-	 * @see @ref layout_algorithm for more information.
-	 *
-	 * @param maximum_height      The wanted maximum height.
-	 */
-	virtual void request_reduce_height(const unsigned /*maximum_height*/)
+	/** See @ref twidget::request_reduce_height. */
+	virtual void request_reduce_height(
+			const unsigned /*maximum_height*/) OVERRIDE
 	{
+		/* DO NOTHING */
 	}
 
 	/** See @ref twidget::calculate_best_size. */
@@ -267,9 +263,11 @@ struct tvertical_list
 		/* DO NOTHING */
 	}
 
-	/** See thorizontal_list::request_reduce_height. */
-	virtual void request_reduce_height(const unsigned /*maximum_height*/)
+	/** See @ref twidget::request_reduce_height. */
+	virtual void request_reduce_height(
+			const unsigned /*maximum_height*/) OVERRIDE
 	{
+		/* DO NOTHING */
 	}
 
 	/** See @ref twidget::calculate_best_size. */
@@ -346,9 +344,11 @@ struct tmatrix
 		/* DO NOTHING */
 	}
 
-	/** See thorizontal_list::request_reduce_height. */
-	virtual void request_reduce_height(const unsigned /*maximum_height*/)
+	/** See @ref twidget::request_reduce_height. */
+	virtual void request_reduce_height(
+			const unsigned /*maximum_height*/) OVERRIDE
 	{
+		/* DO NOTHING */
 	}
 
 	/** See @ref twidget::calculate_best_size. */
@@ -788,8 +788,8 @@ public:
 		placement::request_reduce_width(maximum_width);
 	}
 
-	/** Inherited from tgenerator_. */
-	void request_reduce_height(const unsigned maximum_height)
+	/** See @ref twidget::request_reduce_height. */
+	virtual void request_reduce_height(const unsigned maximum_height) OVERRIDE
 	{
 		placement::request_reduce_height(maximum_height);
 	}

@@ -244,8 +244,9 @@ public:
 	virtual void request_reduce_width(
 			const unsigned maximum_width) OVERRIDE = 0;
 
-	/** Inherited from twidget. */
-	virtual void request_reduce_height(const unsigned maximum_height) = 0;
+	/** See @ref twidget::request_reduce_height. */
+	virtual void request_reduce_height(
+			const unsigned maximum_height) OVERRIDE = 0;
 
 	/** See @ref twidget::calculate_best_size. */
 	virtual tpoint calculate_best_size() const OVERRIDE = 0;
