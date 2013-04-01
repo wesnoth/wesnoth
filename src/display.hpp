@@ -480,6 +480,9 @@ public:
 	 */
 	void set_zoom(int amount);
 
+	bool zoom_at_max() const;
+	bool zoom_at_min() const;
+
 	/** Sets the zoom amount to the default. */
 	void set_default_zoom();
 

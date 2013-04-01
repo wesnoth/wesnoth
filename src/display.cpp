@@ -1817,6 +1817,16 @@ bool display::scroll(int xmove, int ymove, bool force)
 	return true;
 }
 
+bool display::zoom_at_max() const
+{
+	return zoom_ == MaxZoom;
+}
+
+bool display::zoom_at_min() const
+{
+	return zoom_ == MinZoom;
+}
+
 void display::set_zoom(int amount)
 {
 	int new_zoom = zoom_ + amount;
