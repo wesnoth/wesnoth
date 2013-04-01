@@ -32,8 +32,8 @@ public:
 	{
 	}
 
-	/** Inherited from twidget. */
-	bool can_wrap() const;
+	/** See @ref twidget::can_wrap. */
+	virtual bool can_wrap() const OVERRIDE;
 
 	/** Inherited from tcontrol. */
 	unsigned get_characters_per_line() const;
@@ -48,8 +48,8 @@ public:
 	/** Inherited from tcontrol. */
 	unsigned get_state() const { return state_; }
 
-	/** Inherited from tcontrol. */
-	bool disable_click_dismiss() const { return false; }
+	/** See @ref twidget::disable_click_dismiss. */
+	bool disable_click_dismiss() const OVERRIDE;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 

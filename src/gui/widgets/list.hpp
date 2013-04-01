@@ -206,8 +206,8 @@ public:
 	/** Inherited from tcontainer_. */
 	unsigned get_state() const { return state_; }
 
-	/** Inherited from tscrollbar_container. */
-	void place(const tpoint& origin, const tpoint& size);
+	/** See @ref twidget::place. */
+	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;
 
 private:
 	/**

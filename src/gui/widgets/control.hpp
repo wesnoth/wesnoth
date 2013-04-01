@@ -91,15 +91,15 @@ public:
 	/***** ***** ***** ***** Easy close handling ***** ***** ***** *****/
 
 	/**
-	 * Inherited from twidget.
+	 * See @ref twidget::disable_click_dismiss.
 	 *
 	 * The default behavious is that a widget blocks easy close, if not it
-	 * hould override this function.
+	 * should override this function.
 	 */
-	bool disable_click_dismiss() const;
+	bool disable_click_dismiss() const OVERRIDE;
 
-	/** Inherited from twidget. */
-	virtual iterator::twalker_* create_walker();
+	/** See @ref twidget::create_walker. */
+	virtual iterator::twalker_* create_walker() OVERRIDE;
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
@@ -157,8 +157,8 @@ protected:
 	virtual tpoint calculate_best_size() const OVERRIDE;
 public:
 
-	/** Inherited from twidget. */
-	void place(const tpoint& origin, const tpoint& size);
+	/** See @ref twidget::place. */
+	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
@@ -186,35 +186,24 @@ private:
 	friend class twindow;
 
 public:
-	/** Inherited from twidget. */
-	twidget* find_at(const tpoint& coordinate, const bool must_be_active)
-	{
-		return (twidget::find_at(coordinate, must_be_active)
-			&& (!must_be_active || get_active())) ? this : NULL;
-	}
 
-	/** Inherited from twidget. */
-	const twidget* find_at(const tpoint& coordinate,
-			const bool must_be_active) const
-	{
-		return (twidget::find_at(coordinate, must_be_active)
-			&& (!must_be_active || get_active())) ? this : NULL;
-	}
+	/** See @ref twidget::find_at. */
+	virtual twidget* find_at(
+			  const tpoint& coordinate
+			, const bool must_be_active) OVERRIDE;
 
-	/** Inherited from twidget.*/
-	twidget* find(const std::string& id, const bool must_be_active)
-	{
-		return (twidget::find(id, must_be_active)
-			&& (!must_be_active || get_active())) ? this : NULL;
-	}
+	/** See @ref twidget::find_at. */
+	virtual const twidget* find_at(
+			  const tpoint& coordinate
+			, const bool must_be_active) const OVERRIDE;
 
-	/** Inherited from twidget.*/
-	const twidget* find(const std::string& id,
-			const bool must_be_active) const
-	{
-		return (twidget::find(id, must_be_active)
-			&& (!must_be_active || get_active())) ? this : NULL;
-	}
+	/** See @ref twidget::find. */
+	twidget* find(const std::string& id, const bool must_be_active) OVERRIDE;
+
+	/** See @ref twidget::find. */
+	const twidget* find(
+			  const std::string& id
+			, const bool must_be_active) const OVERRIDE;
 
 	/**
 	 * Sets the definition.
@@ -381,20 +370,24 @@ public:
 	virtual const std::string& get_control_type() const = 0;
 
 protected:
-	/** Inherited from twidget. */
-	void impl_draw_background(surface& frame_buffer);
-	void impl_draw_background(
+
+	/** See @ref twidget::impl_draw_background. */
+	virtual void impl_draw_background(surface& frame_buffer) OVERRIDE;
+
+	/** See @ref twidget::impl_draw_background. */
+	virtual void impl_draw_background(
 			  surface& frame_buffer
 			, int x_offset
-			, int y_offset);
+			, int y_offset) OVERRIDE;
 
-	/** Inherited from twidget. */
-	void impl_draw_foreground(surface& /*frame_buffer*/) { /* do nothing */ }
-	void impl_draw_foreground(
-			  surface& /*frame_buffer*/
-			, int /*x_offset*/
-			, int /*y_offset*/)
-	{ /* do nothing */ }
+	/** See @ref twidget::impl_draw_foreground. */
+	virtual void impl_draw_foreground(surface& frame_buffer) OVERRIDE;
+
+	/** See @ref twidget::impl_draw_foreground. */
+	virtual void impl_draw_foreground(
+			  surface& frame_buffer
+			, int x_offset
+			, int y_offset) OVERRIDE;
 
 private:
 

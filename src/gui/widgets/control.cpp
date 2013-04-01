@@ -288,6 +288,44 @@ void tcontrol::load_config()
 	}
 }
 
+twidget* tcontrol::find_at(
+		  const tpoint& coordinate
+		, const bool must_be_active)
+{
+	return (twidget::find_at(coordinate, must_be_active)
+			&& (!must_be_active || get_active()))
+				? this
+				: NULL;
+}
+
+const twidget* tcontrol::find_at(
+		  const tpoint& coordinate
+		, const bool must_be_active) const
+{
+	return (twidget::find_at(coordinate, must_be_active)
+			&& (!must_be_active || get_active()))
+				? this
+				: NULL;
+}
+
+twidget* tcontrol::find(const std::string& id, const bool must_be_active)
+{
+	return (twidget::find(id, must_be_active)
+			&& (!must_be_active || get_active()))
+				? this
+				: NULL;
+}
+
+const twidget* tcontrol::find(
+			  const std::string& id
+			, const bool must_be_active) const
+{
+	return (twidget::find(id, must_be_active)
+			&& (!must_be_active || get_active()))
+				? this
+				: NULL;
+}
+
 void tcontrol::set_definition(const std::string& definition)
 {
 	assert(!config());
@@ -394,6 +432,19 @@ void tcontrol::impl_draw_background(
 	canvas(get_state()).blit(
 			  frame_buffer
 			, calculate_blitting_rectangle(x_offset, y_offset));
+}
+
+void tcontrol::impl_draw_foreground(surface& /*frame_buffer*/)
+{
+	/* DO NOTHING */
+}
+
+void tcontrol::impl_draw_foreground(
+		  surface& /*frame_buffer*/
+		, int /*x_offset*/
+		, int /*y_offset*/)
+{
+	/* DO NOTHING */
 }
 
 void tcontrol::definition_load_configuration(const std::string& control_type)

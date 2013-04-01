@@ -259,26 +259,27 @@ public:
 	/** Inherited from tevent_handler. */
 	const twindow& get_window() const { return *this; }
 
-	/** Inherited from tevent_handler. */
-	twidget* find_at(const tpoint& coordinate, const bool must_be_active)
-		{ return tpanel::find_at(coordinate, must_be_active); }
+	/** See @ref twidget::find_at. */
+	virtual twidget* find_at(
+			  const tpoint& coordinate
+			, const bool must_be_active) OVERRIDE;
 
-	/** Inherited from tevent_handler. */
-	const twidget* find_at(const tpoint& coordinate,
-			const bool must_be_active) const
-		{ return tpanel::find_at(coordinate, must_be_active); }
+	/** See @ref twidget::find_at. */
+	virtual const twidget* find_at(
+			  const tpoint& coordinate
+			, const bool must_be_active) const OVERRIDE;
 
 	/** Inherited from twidget. */
 	tdialog* dialog() { return owner_; }
 
-	/** Inherited from tcontainer_. */
-	twidget* find(const std::string& id, const bool must_be_active)
-		{ return tcontainer_::find(id, must_be_active); }
+	/** See @ref twidget::find. */
+	twidget* find(const std::string& id, const bool must_be_active) OVERRIDE;
 
-	/** Inherited from tcontainer_. */
-	const twidget* find(const std::string& id,
-			const bool must_be_active) const
-		{ return tcontainer_::find(id, must_be_active); }
+	/** See @ref twidget::find. */
+	const twidget* find(
+			  const std::string& id
+			, const bool must_be_active) const OVERRIDE;
+
 #if 0
 	/** @todo Implement these functions. */
 	/**

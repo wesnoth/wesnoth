@@ -244,14 +244,15 @@ public:
 	virtual void request_reduce_width(
 			const unsigned maximum_width) OVERRIDE = 0;
 
-	/** Inherited from twidget. */
-	virtual void request_reduce_height(const unsigned maximum_height) = 0;
+	/** See @ref twidget::request_reduce_height. */
+	virtual void request_reduce_height(
+			const unsigned maximum_height) OVERRIDE = 0;
 
 	/** See @ref twidget::calculate_best_size. */
 	virtual tpoint calculate_best_size() const OVERRIDE = 0;
 
-	/** Inherited from twidget. */
-	virtual void place(const tpoint& origin, const tpoint& size) = 0;
+	/** See @ref twidget::place. */
+	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE = 0;
 
 	/** Inherited from twidget. */
 	virtual void set_origin(const tpoint& origin) = 0;
@@ -259,12 +260,14 @@ public:
 	/** See @ref twidget::set_visible_rectangle. */
 	virtual void set_visible_rectangle(const SDL_Rect& rectangle) OVERRIDE = 0;
 
-	/** Inherited from twidget. */
-	virtual void impl_draw_children(surface& frame_buffer) = 0;
+	/** See @ref twidget::impl_draw_children. */
+	virtual void impl_draw_children(surface& frame_buffer) OVERRIDE = 0;
+
+	/** See @ref twidget::impl_draw_children. */
 	virtual void impl_draw_children(
 			  surface& frame_buffer
 			, int x_offset
-			, int y_offset) = 0;
+			, int y_offset) OVERRIDE = 0;
 
 protected:
 
@@ -274,13 +277,15 @@ protected:
 
 public:
 
-	/** Inherited from twidget. */
+	/** See @ref twidget::find_at. */
 	virtual twidget* find_at(
-			const tpoint& coordinate, const bool must_be_active) = 0;
+			  const tpoint& coordinate
+			, const bool must_be_active) OVERRIDE = 0;
 
-	/** Inherited from twidget. */
+	/** See @ref twidget::find_at. */
 	virtual const twidget* find_at(
-			const tpoint& coordinate, const bool must_be_active) const = 0;
+			  const tpoint& coordinate
+			, const bool must_be_active) const OVERRIDE = 0;
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 

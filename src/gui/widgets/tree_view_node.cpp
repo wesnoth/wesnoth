@@ -296,6 +296,20 @@ const twidget* ttree_view_node::find_at(
 			*this, coordinate, must_be_active);
 }
 
+twidget* ttree_view_node::find(const std::string& id, const bool must_be_active)
+{
+	twidget* result = twidget::find(id, must_be_active);
+	return result ? result : grid_.find(id, must_be_active);
+}
+
+const twidget* ttree_view_node::find(
+		  const std::string& id
+		, const bool must_be_active) const
+{
+	const twidget* result = twidget::find(id, must_be_active);
+	return result ? result : grid_.find(id, must_be_active);
+}
+
 void ttree_view_node::impl_populate_dirty_list(twindow& caller
 		, const std::vector<twidget*>& call_stack)
 {
@@ -315,6 +329,11 @@ void ttree_view_node::impl_populate_dirty_list(twindow& caller
 tpoint ttree_view_node::calculate_best_size() const
 {
 	return calculate_best_size(-1, tree_view().indention_step_size_);
+}
+
+bool ttree_view_node::disable_click_dismiss() const
+{
+	return true;
 }
 
 tpoint ttree_view_node::get_current_size() const

@@ -121,34 +121,29 @@ public:
 #endif
 
 	/**
-	 * Inherited from twidget.
+	 * See @ref twidget::create_walker.
 	 *
 	 * @todo Implement properly.
 	 */
-	virtual iterator::twalker_* create_walker() { return NULL; }
+	virtual iterator::twalker_* create_walker() OVERRIDE { return NULL; }
 
-	/** Inherited from twidget.*/
-	twidget* find_at(const tpoint& coordinate, const bool must_be_active);
-
-	/** Inherited from twidget.*/
-	const twidget* find_at(
+	/** See @ref twidget::find_at. */
+	virtual twidget* find_at(
 			  const tpoint& coordinate
-			, const bool must_be_active) const;
+			, const bool must_be_active) OVERRIDE;
 
-	/** Inherited from twidget.*/
-	twidget* find(const std::string& id, const bool must_be_active)
-	{
-		twidget* result = twidget::find(id, must_be_active);
-		return result ? result : grid_.find(id, must_be_active);
-	}
+	/** See @ref twidget::find_at. */
+	virtual const twidget* find_at(
+			  const tpoint& coordinate
+			, const bool must_be_active) const OVERRIDE;
 
-	/** Inherited from twidget.*/
-	const twidget* find(const std::string& id
-			, const bool must_be_active) const
-	{
-		const twidget* result = twidget::find(id, must_be_active);
-		return result ? result : grid_.find(id, must_be_active);
-	}
+	/** See @ref twidget::find. */
+	twidget* find(const std::string& id, const bool must_be_active) OVERRIDE;
+
+	/** See @ref twidget::find. */
+	const twidget* find(
+			  const std::string& id
+			, const bool must_be_active) const OVERRIDE;
 
 	/**
 	 * The "size" of the widget.
@@ -230,7 +225,8 @@ private:
 	/** See @ref twidget::calculate_best_size. */
 	virtual tpoint calculate_best_size() const OVERRIDE;
 
-	bool disable_click_dismiss() const { return true; }
+	/** See @ref twidget::disable_click_dismiss. */
+	bool disable_click_dismiss() const OVERRIDE;
 
 	tpoint calculate_best_size(const int indention_level
 			, const unsigned indention_step_size) const;
@@ -241,7 +237,8 @@ private:
 
 	void set_origin(const tpoint& origin);
 
-	void place(const tpoint& origin, const tpoint& size);
+	/** See @ref twidget::place. */
+	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;
 
 	unsigned place(
 			  const unsigned indention_step_size
@@ -251,8 +248,14 @@ private:
 	/** See @ref twidget::set_visible_rectangle. */
 	virtual void set_visible_rectangle(const SDL_Rect& rectangle) OVERRIDE;
 
-	void impl_draw_children(surface& frame_buffer);
-	void impl_draw_children(surface& frame_buffer, int x_offset, int y_offset);
+	/** See @ref twidget::impl_draw_children. */
+	virtual void impl_draw_children(surface& frame_buffer) OVERRIDE;
+
+	/** See @ref twidget::impl_draw_children. */
+	virtual void impl_draw_children(
+			  surface& frame_buffer
+			, int x_offset
+			, int y_offset) OVERRIDE;
 
 	// FIXME rename to icon
 	void signal_handler_left_button_click(const event::tevent event);

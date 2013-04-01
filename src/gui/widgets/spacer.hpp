@@ -55,8 +55,8 @@ public:
 	/** Inherited from tcontrol. */
 	unsigned get_state() const { return 0; }
 
-	/** Inherited from tcontrol. */
-	bool disable_click_dismiss() const { return false; }
+	/** See @ref twidget::disable_click_dismiss. */
+	bool disable_click_dismiss() const OVERRIDE;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -67,16 +67,14 @@ private:
 	/** When we're used as a fixed size item, this holds the best size. */
 	tpoint best_size_;
 
-	/**
-	 * Inherited from tcontrol.
-	 *
-	 * Since we're always empty the draw does nothing.
-	 */
-	void impl_draw_background(surface& /*frame_buffer*/) {}
-	void impl_draw_background(
-			  surface& /*frame_buffer*/
-			, int /*x_offset*/
-			, int /*y_offset*/) {}
+	/** See @ref twidget::impl_draw_background. */
+	virtual void impl_draw_background(surface& frame_buffer) OVERRIDE;
+
+	/** See @ref twidget::impl_draw_background. */
+	virtual void impl_draw_background(
+			  surface& frame_buffer
+			, int x_offset
+			, int y_offset) OVERRIDE;
 
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const;

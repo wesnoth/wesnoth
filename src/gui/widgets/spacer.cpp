@@ -34,6 +34,24 @@ tpoint tspacer::calculate_best_size() const
 			: tcontrol::calculate_best_size();
 }
 
+bool tspacer::disable_click_dismiss() const
+{
+	return false;
+}
+
+void tspacer::impl_draw_background(surface& /*frame_buffer*/)
+{
+	/* DO NOTHING */
+}
+
+void tspacer::impl_draw_background(
+		  surface& /*frame_buffer*/
+		, int /*x_offset*/
+		, int /*y_offset*/)
+{
+	/* DO NOTHING */
+}
+
 const std::string& tspacer::get_control_type() const
 {
 	static const std::string type = "spacer";

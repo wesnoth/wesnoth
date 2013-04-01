@@ -193,8 +193,8 @@ public:
 	/** See @ref twidget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned maximum_width) OVERRIDE;
 
-	/** Inherited from twidget. */
-	void demand_reduce_width(const unsigned maximum_width);
+	/** See @ref twidget::demand_reduce_width. */
+	virtual void demand_reduce_width(const unsigned maximum_width) OVERRIDE;
 
 	/**
 	 * Tries to reduce the height of a container.
@@ -205,11 +205,11 @@ public:
 	 */
 	void reduce_height(const unsigned maximum_height);
 
-	/** Inherited from twidget. */
-	void request_reduce_height(const unsigned maximum_height);
+	/** See @ref twidget::request_reduce_height. */
+	virtual void request_reduce_height(const unsigned maximum_height) OVERRIDE;
 
-	/** Inherited from twidget. */
-	void demand_reduce_height(const unsigned maximum_height);
+	/** See @ref twidget::demand_reduce_height. */
+	virtual void demand_reduce_height(const unsigned maximum_height) OVERRIDE;
 
 	/**
 	 * Recalculates the best size.
@@ -227,12 +227,12 @@ private:
 	virtual tpoint calculate_best_size() const OVERRIDE;
 public:
 
-	/** Inherited from twidget. */
-	bool can_wrap() const;
+	/** See @ref twidget::can_wrap. */
+	virtual bool can_wrap() const OVERRIDE;
 
 public:
-	/** Inherited from twidget. */
-	void place(const tpoint& origin, const tpoint& size);
+	/** See @ref twidget::place. */
+	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
@@ -249,28 +249,32 @@ public:
 	void child_populate_dirty_list(twindow& caller,
 			const std::vector<twidget*>& call_stack);
 
-	/** Inherited from twidget. */
-	twidget* find_at(const tpoint& coordinate, const bool must_be_active);
+	/** See @ref twidget::find_at. */
+	virtual twidget* find_at(
+			  const tpoint& coordinate
+			, const bool must_be_active) OVERRIDE;
 
-	/** Inherited from twidget. */
-	const twidget* find_at(const tpoint& coordinate,
-			const bool must_be_active) const;
+	/** See @ref twidget::find_at. */
+	virtual const twidget* find_at(
+			  const tpoint& coordinate
+			, const bool must_be_active) const OVERRIDE;
 
-	/** Inherited from twidget.*/
-	twidget* find(const std::string& id, const bool must_be_active);
+	/** See @ref twidget::find. */
+	twidget* find(const std::string& id, const bool must_be_active) OVERRIDE;
 
-	/** Inherited from twidget.*/
-	const twidget* find(const std::string& id,
-			const bool must_be_active) const;
+	/** See @ref twidget::find. */
+	const twidget* find(
+			  const std::string& id
+			, const bool must_be_active) const OVERRIDE;
 
 	/** Inherited from twidget.*/
 	bool has_widget(const twidget* widget) const;
 
-	/** Inherited from tcontrol. */
-	bool disable_click_dismiss() const;
+	/** See @ref twidget::disable_click_dismiss. */
+	bool disable_click_dismiss() const OVERRIDE;
 
-	/** Inherited from twidget. */
-	virtual iterator::twalker_* create_walker();
+	/** See @ref twidget::create_walker. */
+	virtual iterator::twalker_* create_walker() OVERRIDE;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -425,10 +429,14 @@ private:
 	/** Layouts the children in the grid. */
 	void layout(const tpoint& origin);
 
-	/** Inherited from twidget. */
-	void impl_draw_children(surface& frame_buffer);
-	void impl_draw_children(surface& frame_buffer, int x_offset, int y_offset);
+	/** See @ref twidget::impl_draw_children. */
+	virtual void impl_draw_children(surface& frame_buffer) OVERRIDE;
 
+	/** See @ref twidget::impl_draw_children. */
+	virtual void impl_draw_children(
+			  surface& frame_buffer
+			, int x_offset
+			, int y_offset) OVERRIDE;
 };
 
 /**

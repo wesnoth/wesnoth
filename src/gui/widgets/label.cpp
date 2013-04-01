@@ -37,6 +37,11 @@ unsigned tlabel::get_characters_per_line() const
 	return characters_per_line_;
 }
 
+bool tlabel::disable_click_dismiss() const
+{
+	return false;
+}
+
 void tlabel::set_characters_per_line(const unsigned characters_per_line)
 {
 	characters_per_line_ = characters_per_line;

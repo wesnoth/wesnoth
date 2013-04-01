@@ -143,6 +143,19 @@ void tmulti_page::finalize(
 	swap_grid(NULL, &grid(), generator_, "_content_grid");
 }
 
+void tmulti_page::impl_draw_background(surface& /*frame_buffer*/)
+{
+	/* DO NOTHING */
+}
+
+void tmulti_page::impl_draw_background(
+		  surface& /*frame_buffer*/
+		, int /*x_offset*/
+		, int /*y_offset*/)
+{
+	/* DO NOTHING */
+}
+
 const std::string& tmulti_page::get_control_type() const
 {
 	static const std::string type = "multi_page";

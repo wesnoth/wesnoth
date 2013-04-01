@@ -44,29 +44,15 @@ public:
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** Inherited from tcontainer_ */
-	twidget* find_at(const tpoint& coordinate, const bool must_be_active)
-	{
-		/**
-		 * @todo since there is no mouse event nesting (or event nesting at all)
-		 * we need to capture all events. This means items on the panel will
-		 * never receive an event, which gives problems with for example the
-		 * intended button on the addon panel. So we need to chain mouse events
-		 * as well and also add a handled flag for them.
-		 */
+	/** See @ref twidget::find_at. */
+	virtual twidget* find_at(
+			  const tpoint& coordinate
+			, const bool must_be_active) OVERRIDE;
 
-		twidget* result = tcontainer_::find_at(coordinate, must_be_active);
-		return result ? result : tcontrol::find_at(coordinate, must_be_active);
-	}
-
-	/** Inherited from tcontainer_ */
-	const twidget* find_at(
-			const tpoint& coordinate, const bool must_be_active) const
-	{
-		const twidget* result =
-				tcontainer_::find_at(coordinate, must_be_active);
-		return result ? result : tcontrol::find_at(coordinate, must_be_active);
-	}
+	/** See @ref twidget::find_at. */
+	virtual const twidget* find_at(
+			  const tpoint& coordinate
+			, const bool must_be_active) const OVERRIDE;
 
 	/** Inherited from tpanel. */
 	void set_active(const bool active);
@@ -151,38 +137,23 @@ private:
 	/** Mouse left double click callback */
 	boost::function<void (twidget*)> callback_mouse_left_double_click_;
 
-	/** Inherited from tpanel. */
-	void impl_draw_background(surface& frame_buffer)
-	{
-		// We don't have a fore and background and need to draw depending on
-		// our state, like a control. So we use the controls drawing method.
-		tcontrol::impl_draw_background(frame_buffer);
-	}
+	/** See @ref twidget::impl_draw_background. */
+	virtual void impl_draw_background(surface& frame_buffer) OVERRIDE;
 
-	/** Inherited from tpanel. */
-	void impl_draw_background(surface& frame_buffer, int x_offset, int y_offset)
-	{
-		// We don't have a fore and background and need to draw depending on
-		// our state, like a control. So we use the controls drawing method.
-		tcontrol::impl_draw_background(frame_buffer, x_offset, y_offset);
-	}
+	/** See @ref twidget::impl_draw_background. */
+	virtual void impl_draw_background(
+			  surface& frame_buffer
+			, int x_offset
+			, int y_offset) OVERRIDE;
 
-	/** Inherited from tpanel. */
-	void impl_draw_foreground(surface& frame_buffer)
-	{
-		// We don't have a fore and background and need to draw depending on
-		// our state, like a control. So we use the controls drawing method.
-		tcontrol::impl_draw_foreground(frame_buffer);
-	}
+	/** See @ref twidget::impl_draw_foreground. */
+	virtual void impl_draw_foreground(surface& frame_buffer) OVERRIDE;
 
-	/** Inherited from tpanel. */
-	void impl_draw_foreground(surface& frame_buffer, int x_offset, int y_offset)
-	{
-		// We don't have a fore and background and need to draw depending on
-		// our state, like a control. So we use the controls drawing method.
-		tcontrol::impl_draw_foreground(frame_buffer, x_offset, y_offset);
-	}
-
+	/** See @ref twidget::impl_draw_foreground. */
+	virtual void impl_draw_foreground(
+			  surface& frame_buffer
+			, int x_offset
+			, int y_offset) OVERRIDE;
 
 	/** Inherited from tpanel. */
 	const std::string& get_control_type() const;

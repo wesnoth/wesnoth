@@ -110,14 +110,17 @@ public:
 
 	/***** ***** ***** ***** Inherited operations. ***** ***** ****** *****/
 
-	/** Inherited from twidget. */
-	void place(const tpoint& origin, const tpoint& size);
+	/** See @ref twidget::place. */
+	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;
 
 	/** See @ref twidget::layout_initialise. */
 	virtual void layout_initialise(const bool full_initialisation) OVERRIDE;
 
-	/** Inherited from twidget. */
-	void impl_draw_children(surface& frame_buffer, int x_offset, int y_offset);
+	/** See @ref twidget::impl_draw_children. */
+	virtual void impl_draw_children(
+			  surface& frame_buffer
+			, int x_offset
+			, int y_offset) OVERRIDE;
 
 	/** Inherited from twidget. */
 	void layout_children();
@@ -126,23 +129,26 @@ public:
 	void child_populate_dirty_list(twindow& caller,
 			const std::vector<twidget*>& call_stack);
 
-
 	/** See @ref twidget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned maximum_width) OVERRIDE;
 
-	/** Inherited from twidget. */
-	twidget* find_at(const tpoint& coordinate, const bool must_be_active);
+	/** See @ref twidget::find_at. */
+	virtual twidget* find_at(
+			  const tpoint& coordinate
+			, const bool must_be_active) OVERRIDE;
 
-	/** Inherited from twidget. */
-	const twidget* find_at(
-			const tpoint& coordinate,
-			const bool must_be_active) const;
+	/** See @ref twidget::find_at. */
+	virtual const twidget* find_at(
+			  const tpoint& coordinate
+			, const bool must_be_active) const OVERRIDE;
 
-	/** Inherited from twidget. */
-	twidget* find(const std::string& id, const bool must_be_active);
+	/** See @ref twidget::find. */
+	twidget* find(const std::string& id, const bool must_be_active) OVERRIDE;
 
-	/** Inherited from twidget. */
-	const twidget* find(const std::string& id, const bool must_be_active) const;
+	/** See @ref twidget::find. */
+	const twidget* find(
+			  const std::string& id
+			, const bool must_be_active) const OVERRIDE;
 
 	/***** ***** ***** ***** Forwarded to pane_. ***** ***** ****** *****/
 	/**
@@ -176,12 +182,12 @@ private:
 	virtual tpoint calculate_best_size() const OVERRIDE;
 
 public:
-	/** Inherited from twidget. */
-	bool disable_click_dismiss() const;
 
-	/** Inherited from twidget. */
-	virtual iterator::twalker_* create_walker();
+	/** See @ref twidget::disable_click_dismiss. */
+	bool disable_click_dismiss() const OVERRIDE;
 
+	/** See @ref twidget::create_walker. */
+	virtual iterator::twalker_* create_walker() OVERRIDE;
 
 	/**
 	 * Returns a grid in the pane.
