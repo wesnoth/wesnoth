@@ -193,8 +193,8 @@ public:
 	/** See @ref twidget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned maximum_width) OVERRIDE;
 
-	/** Inherited from twidget. */
-	void demand_reduce_width(const unsigned maximum_width);
+	/** See @ref twidget::demand_reduce_width. */
+	virtual void demand_reduce_width(const unsigned maximum_width) OVERRIDE;
 
 	/**
 	 * Tries to reduce the height of a container.
