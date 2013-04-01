@@ -121,11 +121,11 @@ public:
 #endif
 
 	/**
-	 * Inherited from twidget.
+	 * See @ref twidget::create_walker.
 	 *
 	 * @todo Implement properly.
 	 */
-	virtual iterator::twalker_* create_walker() { return NULL; }
+	virtual iterator::twalker_* create_walker() OVERRIDE { return NULL; }
 
 	/** See @ref twidget::find_at. */
 	virtual twidget* find_at(

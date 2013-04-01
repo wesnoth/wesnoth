@@ -95,8 +95,8 @@ public:
 	/** See @ref twidget::disable_click_dismiss. */
 	bool disable_click_dismiss() const OVERRIDE;
 
-	/** Inherited from twidget. */
-	virtual iterator::twalker_* create_walker();
+	/** See @ref twidget::create_walker. */
+	virtual iterator::twalker_* create_walker() OVERRIDE;
 
 private:
 
