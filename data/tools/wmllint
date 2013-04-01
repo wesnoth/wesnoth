@@ -1479,6 +1479,24 @@ def hack_syntax(filename, lines):
     # array of strings in lines.  Modify lines in place as needed;
     # changes will be detected by the caller.
     #
+    # Deal with a few Windows-specific problems for the sake of cross-
+    # platform harmony. First, the use of backslashes in file paths.
+    for i in range(len(lines)):
+        if "no-syntax-rewrite" in lines[i]:
+            break
+        if lines[i].lstrip().startswith("#"):
+            pass
+        # Looking out for "#" used for color markup
+        precomment = re.split(r'\s#', lines[i], 1)[0]
+        comment = lines[i][len(precomment):]
+        if '\\' in precomment:
+            while re.search(r'(?<!\\)\\(?!\\)[^ ={}"]+\.(png|ogg|wav|gif|jpe?g|map|mask|cfg)\b', precomment, flags=re.IGNORECASE):
+                backslash = re.search(r'([^ ={}"]*(?<!\\)\\(?!\\)[^ ={}"]+\.)(png|ogg|wav|gif|jpe?g|map|mask|cfg)(?=\b)', precomment, flags=re.IGNORECASE)
+                fronted = backslash.group(1).replace("\\","/") + backslash.group(2)
+                precomment = precomment[:backslash.start()] + fronted + precomment[backslash.end():]
+                print '"%s", line %d: %s -> %s -- please use frontslash (/) for cross-platform compatibility' \
+                      % (filename, i+1, backslash.group(), fronted)
+        lines[i] = precomment + comment
     # Ensure that every attack has a translatable description.
     for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
