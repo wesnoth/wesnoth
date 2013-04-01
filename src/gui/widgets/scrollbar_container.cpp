@@ -301,6 +301,13 @@ void tscrollbar_container::request_reduce_width(
 			<< ".\n";
 }
 
+bool tscrollbar_container::can_wrap() const
+{
+	return content_grid_
+			? content_grid_->can_wrap()
+			: false;
+}
+
 tpoint tscrollbar_container::calculate_best_size() const
 {
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);

@@ -227,8 +227,8 @@ private:
 	virtual tpoint calculate_best_size() const OVERRIDE;
 public:
 
-	/** Inherited from twidget. */
-	bool can_wrap() const;
+	/** See @ref twidget::can_wrap. */
+	virtual bool can_wrap() const OVERRIDE;
 
 public:
 	/** See @ref twidget::place. */

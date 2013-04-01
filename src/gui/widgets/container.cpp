@@ -62,6 +62,11 @@ void tcontainer_::demand_reduce_height(const unsigned maximum_height)
 	grid_.demand_reduce_height(maximum_height - border_space().y);
 }
 
+bool tcontainer_::can_wrap() const
+{
+	return grid_.can_wrap() || twidget::can_wrap();
+}
+
 void tcontainer_::place(const tpoint& origin, const tpoint& size)
 {
 	tcontrol::place(origin, size);

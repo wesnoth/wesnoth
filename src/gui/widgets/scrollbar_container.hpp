@@ -93,14 +93,12 @@ public:
 	/** See @ref twidget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned maximum_width) OVERRIDE;
 
-	/** Inherited from tcontainer_. */
-	bool can_wrap() const
-	{
-		// Note this function is called before the object is finalized.
-		return content_grid_
-			? content_grid_->can_wrap()
-			: false;
-	}
+	/**
+	 * See @ref twidget::can_wrap.
+	 *
+	 * @note This function is called before the object is finalised.
+	 */
+	virtual bool can_wrap() const OVERRIDE;
 
 private:
 	/** See @ref twidget::calculate_best_size. */
