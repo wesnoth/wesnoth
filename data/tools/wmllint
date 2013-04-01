@@ -1496,6 +1496,13 @@ def hack_syntax(filename, lines):
                 precomment = precomment[:backslash.start()] + fronted + precomment[backslash.end():]
                 print '"%s", line %d: %s -> %s -- please use frontslash (/) for cross-platform compatibility' \
                       % (filename, i+1, backslash.group(), fronted)
+        # Then get rid of the 'userdata/' headache.
+        if 'userdata/' in precomment:
+            while re.search(r'user(data/)?data/[ac]', precomment):
+                userdata = re.search(r'(?:\.\./)?user(?:data/)?(data/[ac][^/]*/?)', precomment)
+                precomment = precomment[:userdata.start()] + userdata.group(1) + precomment[userdata.end():]
+                print '"%s", line %d: %s -> %s -- DO NOT PREFIX PATHS WITH "userdata/"' \
+                      % (filename, i+1, userdata.group(), userdata.group(1))
         lines[i] = precomment + comment
     # Ensure that every attack has a translatable description.
     for i in range(len(lines)):
