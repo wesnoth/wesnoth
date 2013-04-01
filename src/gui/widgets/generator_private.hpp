@@ -881,8 +881,8 @@ public:
 		return placement::find_at(coordinate, must_be_active);
 	}
 
-	/** Inherited from widget. */
-	bool disable_click_dismiss() const
+	/** See @ref twidget::disable_click_dismiss. */
+	bool disable_click_dismiss() const OVERRIDE
 	{
 		FOREACH(AUTO item, items_) {
 			if(item->grid.disable_click_dismiss()) {

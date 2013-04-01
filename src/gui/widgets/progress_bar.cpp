@@ -47,6 +47,11 @@ void tprogress_bar::set_percentage(const unsigned percentage)
 	}
 }
 
+bool tprogress_bar::disable_click_dismiss() const
+{
+	return false;
+}
+
 const std::string& tprogress_bar::get_control_type() const
 {
 	static const std::string type = "progress_bar";

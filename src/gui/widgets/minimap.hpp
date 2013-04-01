@@ -48,8 +48,8 @@ public:
 	/** Inherited from tcontrol. */
 	unsigned get_state() const { return 0; }
 
-	/** Inherited from tcontrol. */
-	bool disable_click_dismiss() const { return false; }
+	/** See @ref twidget::disable_click_dismiss. */
+	bool disable_click_dismiss() const OVERRIDE;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 

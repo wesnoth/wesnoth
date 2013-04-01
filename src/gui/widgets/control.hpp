@@ -91,12 +91,12 @@ public:
 	/***** ***** ***** ***** Easy close handling ***** ***** ***** *****/
 
 	/**
-	 * Inherited from twidget.
+	 * See @ref twidget::disable_click_dismiss.
 	 *
 	 * The default behavious is that a widget blocks easy close, if not it
-	 * hould override this function.
+	 * should override this function.
 	 */
-	bool disable_click_dismiss() const;
+	bool disable_click_dismiss() const OVERRIDE;
 
 	/** Inherited from twidget. */
 	virtual iterator::twalker_* create_walker();

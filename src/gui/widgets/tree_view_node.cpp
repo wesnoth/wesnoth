@@ -331,6 +331,11 @@ tpoint ttree_view_node::calculate_best_size() const
 	return calculate_best_size(-1, tree_view().indention_step_size_);
 }
 
+bool ttree_view_node::disable_click_dismiss() const
+{
+	return true;
+}
+
 tpoint ttree_view_node::get_current_size() const
 {
 	if(parent_node_ && parent_node_->is_folded()) {

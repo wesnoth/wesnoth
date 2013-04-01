@@ -142,8 +142,8 @@ public:
 			  const std::string& id
 			, const bool must_be_active) const OVERRIDE;
 
-	/** Inherited from tcontainer_. */
-	bool disable_click_dismiss() const;
+	/** See @ref twidget::disable_click_dismiss. */
+	bool disable_click_dismiss() const OVERRIDE;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 

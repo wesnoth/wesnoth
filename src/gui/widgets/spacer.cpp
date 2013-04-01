@@ -34,6 +34,11 @@ tpoint tspacer::calculate_best_size() const
 			: tcontrol::calculate_best_size();
 }
 
+bool tspacer::disable_click_dismiss() const
+{
+	return false;
+}
+
 void tspacer::impl_draw_background(surface& /*frame_buffer*/)
 {
 	/* DO NOTHING */

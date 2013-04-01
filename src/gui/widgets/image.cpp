@@ -68,6 +68,11 @@ tpoint timage::calculate_best_size() const
 	return result;
 }
 
+bool timage::disable_click_dismiss() const
+{
+	return false;
+}
+
 const std::string& timage::get_control_type() const
 {
 	static const std::string type = "image";

@@ -160,6 +160,11 @@ static void shrink_cache()
 #endif
 }
 
+bool tminimap::disable_click_dismiss() const
+{
+	return false;
+}
+
 const surface tminimap::get_image(const int w, const int h) const
 {
 	if(!terrain_) {

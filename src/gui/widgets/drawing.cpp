@@ -34,6 +34,11 @@ tpoint tdrawing::calculate_best_size() const
 			: tcontrol::calculate_best_size();
 }
 
+bool tdrawing::disable_click_dismiss() const
+{
+	return false;
+}
+
 const std::string& tdrawing::get_control_type() const
 {
 	static const std::string type = "drawing";

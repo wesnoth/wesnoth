@@ -270,8 +270,8 @@ public:
 	/** Inherited from twidget.*/
 	bool has_widget(const twidget* widget) const;
 
-	/** Inherited from tcontrol. */
-	bool disable_click_dismiss() const;
+	/** See @ref twidget::disable_click_dismiss. */
+	bool disable_click_dismiss() const OVERRIDE;
 
 	/** Inherited from twidget. */
 	virtual iterator::twalker_* create_walker();

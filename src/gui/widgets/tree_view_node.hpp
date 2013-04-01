@@ -225,7 +225,8 @@ private:
 	/** See @ref twidget::calculate_best_size. */
 	virtual tpoint calculate_best_size() const OVERRIDE;
 
-	bool disable_click_dismiss() const { return true; }
+	/** See @ref twidget::disable_click_dismiss. */
+	bool disable_click_dismiss() const OVERRIDE;
 
 	tpoint calculate_best_size(const int indention_level
 			, const unsigned indention_step_size) const;

@@ -145,8 +145,8 @@ public:
 	/** Inherited from tcontrol. */
 	void set_active(const bool active);
 
-	/** Inherited from tcontrol. */
-	bool disable_click_dismiss() const;
+	/** See @ref twidget::disable_click_dismiss. */
+	bool disable_click_dismiss() const OVERRIDE;
 
 	/**
 	 * Inherited from twidget.

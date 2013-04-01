@@ -91,8 +91,9 @@ private:
 	virtual tpoint calculate_best_size() const OVERRIDE;
 
 public:
-	/** Inherited from twidget. */
-	bool disable_click_dismiss() const;
+
+	/** See @ref twidget::disable_click_dismiss. */
+	bool disable_click_dismiss() const OVERRIDE;
 
 	/** Inherited from twidget. */
 	virtual iterator::twalker_* create_walker();
