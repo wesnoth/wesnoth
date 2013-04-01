@@ -69,8 +69,6 @@ public:
 	/** Get the current mouse action */
  	mouse_action* get_mouse_action() { return mouse_action_; };
 
-	void redraw_toolbar();
-
 	/** Brush related methods */
 
 	/** Cycle to the next brush. */
@@ -86,11 +84,6 @@ private:
 
 	/** TODO */
 	boost::scoped_ptr<palette_manager> palette_manager_;
-
-//Toolbar
-
-	/** Toolbar-requires-redraw flag */
-	bool toolbar_dirty_;
 
 //Tools
 

@@ -29,7 +29,6 @@ editor_toolkit::editor_toolkit(editor_display& gui, const CKey& key,
 	: gui_(gui)
 	, key_(key)
 	, palette_manager_()
-	, toolbar_dirty_(true)
 	, mouse_action_(NULL)
 	, mouse_actions_()
 	, mouse_action_hints_()
@@ -125,7 +124,6 @@ void editor_toolkit::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 		gui_.set_palette_report(palette_manager_->active_palette().active_group_report());
 
 		set_mouseover_overlay();
-		redraw_toolbar();
 		gui_.invalidate_game_status();
 	} else {
 		ERR_ED << "Invalid hotkey command ("
@@ -178,19 +176,6 @@ void editor_toolkit::adjust_size()
 	brush_bar_->adjust_size();
 	brush_bar_->draw(true);
 
-	redraw_toolbar();
-}
-
-void editor_toolkit::redraw_toolbar()
-{
-	BOOST_FOREACH(mouse_action_map::value_type a, mouse_actions_) {
-		if (a.second->toolbar_button() != NULL) {
-			const std::string& button_id = a.second->toolbar_button()->get_id();
-			gui::button* button = gui_.find_button(button_id);
-			button->set_check(a.second == mouse_action_);
-		}
-	}
-	toolbar_dirty_ = false;
 }
 
 
