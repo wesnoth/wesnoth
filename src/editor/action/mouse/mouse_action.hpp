@@ -117,6 +117,9 @@ public:
 	 */
 	common_palette& get_palette() { return palette_; }
 
+	/** Wether we need the brush bar, is used to grey it out.*/
+	virtual bool supports_brushes() { return false; }
+
 	/**
 	 * Set the mouse overlay for this action. Defaults to an empty overlay.
 	 */
@@ -275,6 +278,8 @@ public:
 
 	void set_mouse_overlay(editor_display& disp);
 
+	bool supports_brushes() { return true; }
+
 protected:
 
 	const terrain_palette& terrain_palette_;
@@ -315,6 +320,8 @@ public:
 	editor_action* click_perform_right(editor_display& disp, const std::set<map_location>& hexes);
 
 	virtual void set_mouse_overlay(editor_display& disp);
+
+	bool supports_brushes() { return true; }
 };
 
 /**
