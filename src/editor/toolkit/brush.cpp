@@ -61,14 +61,14 @@ namespace editor {
 brush::brush()
 	: relative_tiles_()
 	, name_()
-	, image_()
+	, id_()
 {
 }
 
 brush::brush(const config& cfg)
 	: relative_tiles_()
  	, name_(cfg["name"])
-	, image_(cfg["image"])
+	, id_(cfg["id"])
 {
 	int radius = cfg["radius"];
 	if (radius > 0) {

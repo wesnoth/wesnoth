@@ -15,20 +15,18 @@
 #ifndef EDITOR_TOOLKIT_H_INCLUDED
 #define EDITOR_TOOLKIT_H_INCLUDED
 
-//#include "../../display.hpp"
-//#include "brush.hpp"
-//#include "palette_layout.hpp"
 
 #include "config.hpp"
-#include <boost/scoped_ptr.hpp>
-#include "editor/palette/palette_manager.hpp"
-#include "hotkeys.hpp"
-#include "editor/toolkit/brush_bar.hpp"
 #include "editor/map/context_manager.hpp"
+#include "editor/palette/palette_manager.hpp"
+#include "editor/toolkit/brush.hpp"
+#include "hotkeys.hpp"
+
+#include <boost/scoped_ptr.hpp>
 
 namespace editor {
 
-/** A bar where the brush is drawn */
+
 class editor_toolkit {
 
 public:
@@ -69,10 +67,16 @@ public:
 	/** Get the current mouse action */
  	mouse_action* get_mouse_action() { return mouse_action_; };
 
-	/** Brush related methods */
+// Brush related methods
 
 	/** Cycle to the next brush. */
 	void cycle_brush();
+
+	/** TODO */
+	void set_brush(std::string id);
+
+	/** TODO */
+	bool is_active_brush(std::string id) const { return brush_->id() == id; };
 
 	palette_manager* get_palette_manager() { return palette_manager_.get(); };
 
@@ -82,7 +86,6 @@ private:
 
 	const CKey& key_;
 
-	/** TODO */
 	boost::scoped_ptr<palette_manager> palette_manager_;
 
 //Tools
@@ -105,9 +108,6 @@ private:
 
 	/** All available brushes */
 	std::vector<brush> brushes_;
-
-	/** The brush selector */
-	boost::scoped_ptr<brush_bar> brush_bar_;
 
 };
 

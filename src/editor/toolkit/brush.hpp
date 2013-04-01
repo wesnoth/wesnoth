@@ -55,7 +55,7 @@ public:
 	/**
 	 * @return the image of this brush
 	 */
-	const std::string image() const { return image_; }
+	const std::string id() const { return id_; }
 
 protected:
 	/**
@@ -64,7 +64,7 @@ protected:
 	std::set<map_location> relative_tiles_;
 
 	std::string name_;
-	std::string image_;
+	std::string id_;
 };
 
 

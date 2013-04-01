@@ -535,7 +535,6 @@ theme::theme(const config& cfg, const SDL_Rect& screen) :
 	mini_map_(),
 	unit_image_(),
 	palette_(),
-	brush_bar_(),
 	border_()
 {
 	config tmp;
@@ -612,10 +611,6 @@ void theme::add_object(const config& cfg)
 
 	if (const config &c = cfg.child("palette")) {
 		palette_ = object(c);
-	}
-
-	if (const config &c = cfg.child("brush_bar")) {
-		brush_bar_ = object(c);
 	}
 
 	if (const config &status_cfg = cfg.child("status"))
@@ -748,7 +743,6 @@ theme::object& theme::find_element(std::string id){
 	if (id == "main-map") { res = &main_map_; }
 	if (id == "mini-map") { res = &mini_map_; }
 	if (id == "palette") { res = &palette_; }
-	if (id == "brush-bar") { res = &brush_bar_; }
 	if (id == "unit-image") { res = &unit_image_; }
 	return *res;
 }

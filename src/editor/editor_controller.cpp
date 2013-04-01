@@ -268,9 +268,17 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_MAP_LOAD:
 		case HOTKEY_EDITOR_MAP_SAVE_AS:
 		case HOTKEY_EDITOR_BRUSH_NEXT:
+			return true;
+		case HOTKEY_EDITOR_BRUSH_1:
+		case HOTKEY_EDITOR_BRUSH_2:
+		case HOTKEY_EDITOR_BRUSH_3:
+		case HOTKEY_EDITOR_BRUSH_NW_SE:
+		case HOTKEY_EDITOR_BRUSH_SE_NW:
+			return toolkit_->get_mouse_action()->supports_brushes();
+
 		case HOTKEY_EDITOR_TOOL_NEXT:
 		case HOTKEY_EDITOR_PALETTE_ITEM_SWAP:
-			return true; //editor hotkeys we can always do
+			return true;
 		case HOTKEY_EDITOR_MAP_SAVE:
 		case HOTKEY_EDITOR_MAP_SAVE_ALL:
 		case HOTKEY_EDITOR_SWITCH_MAP:
@@ -330,6 +338,18 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND command, int index) const {
 	using namespace hotkey;
 	switch (command) {
+
+		case HOTKEY_EDITOR_BRUSH_1:
+			return toolkit_->is_active_brush("brush-1") ? ACTION_ON : ACTION_OFF;
+		case HOTKEY_EDITOR_BRUSH_2:
+			return toolkit_->is_active_brush("brush-2") ? ACTION_ON : ACTION_OFF;
+		case HOTKEY_EDITOR_BRUSH_3:
+			return toolkit_->is_active_brush("brush-3") ? ACTION_ON : ACTION_OFF;
+		case HOTKEY_EDITOR_BRUSH_NW_SE:
+			return toolkit_->is_active_brush("brush-nw-se") ? ACTION_ON : ACTION_OFF;
+		case HOTKEY_EDITOR_BRUSH_SE_NW:
+			return toolkit_->is_active_brush("brush-se-nw") ? ACTION_ON : ACTION_OFF;
+
 		case HOTKEY_ZOOM_DEFAULT:
 			return (gui_->get_zoom_factor() == 1.0) ? ACTION_ON : ACTION_OFF;
 		case HOTKEY_TOGGLE_GRID:
@@ -458,6 +478,23 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 		case HOTKEY_EDITOR_BRUSH_NEXT:
 			toolkit_->cycle_brush();
 			return true;
+		case HOTKEY_EDITOR_BRUSH_1:
+			toolkit_->set_brush("brush-1");
+			return true;
+		case HOTKEY_EDITOR_BRUSH_2:
+			toolkit_->set_brush("brush-2");
+			return true;
+		case HOTKEY_EDITOR_BRUSH_3:
+			toolkit_->set_brush("brush-3");
+			return true;
+		case HOTKEY_EDITOR_BRUSH_NW_SE:
+			toolkit_->set_brush("brush-nw-se");
+			return true;
+		case HOTKEY_EDITOR_BRUSH_SE_NW:
+			toolkit_->set_brush("brush-se-nw");
+			return true;
+
+
 		case HOTKEY_EDITOR_COPY:
 			copy_selection();
 			return true;

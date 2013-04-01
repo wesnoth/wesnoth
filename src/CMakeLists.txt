@@ -664,7 +664,6 @@ set(wesnoth-main_SRC
 	editor/map/map_fragment.cpp
 	editor/palette/palette_manager.cpp
 	editor/toolkit/brush.cpp
-	editor/toolkit/brush_bar.cpp
 	editor/palette/editor_palettes.cpp
 	editor/palette/terrain_palettes.cpp
 	editor/palette/unit_palette.cpp

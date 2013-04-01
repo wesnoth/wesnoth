@@ -34,7 +34,6 @@ editor_toolkit::editor_toolkit(editor_display& gui, const CKey& key,
 	, mouse_action_hints_()
 	, brush_(NULL)
 	, brushes_()
-	, brush_bar_(NULL)
 {
 	init_brushes(game_config);
 	init_sidebar(game_config);
@@ -44,12 +43,10 @@ editor_toolkit::editor_toolkit(editor_display& gui, const CKey& key,
 editor_toolkit::~editor_toolkit()
 {
 	//TODO ask someone about that
-//	BOOST_FOREACH(const mouse_action_map::value_type a, mouse_actions_) {
-//		delete a.second;
-//	}
+	//BOOST_FOREACH(const mouse_action_map::value_type a, mouse_actions_) {
+	//	delete a.second;
+	//}
 	//delete palette_manager_.get();
-	//delete brush_bar_.get();
-//	delete brush_bar_.
 }
 
 void editor_toolkit::init_brushes(const config& game_config)
@@ -67,7 +64,6 @@ void editor_toolkit::init_brushes(const config& game_config)
 
 void editor_toolkit::init_sidebar(const config& game_config)
 {
-	brush_bar_.reset(new brush_bar(gui_, brushes_, &brush_));
 	palette_manager_.reset(new palette_manager(gui_, game_config, &mouse_action_));
 }
 
@@ -119,8 +115,7 @@ void editor_toolkit::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 		mouse_action_ = i->second;
 		palette_manager_->adjust_size();
 
-		//TODO make active_palette() private again.
-		//palette_manager_->switch_palette();
+		/// @TODO make active_palette() private again.
 		gui_.set_palette_report(palette_manager_->active_palette().active_group_report());
 
 		set_mouseover_overlay();
@@ -157,6 +152,15 @@ void editor_toolkit::clear_mouseover_overlay()
 	gui_.clear_mouseover_hex_overlay();
 }
 
+void editor_toolkit::set_brush(std::string id) {
+
+	BOOST_FOREACH(brush& i, brushes_) {
+		if (i.id() == id) {
+			brush_ = &i;
+		}
+	}
+}
+
 void editor_toolkit::cycle_brush()
 {
 	if (brush_ == &brushes_.back()) {
@@ -172,10 +176,6 @@ void editor_toolkit::adjust_size()
 {
 	palette_manager_->adjust_size();
 	palette_manager_->draw(true);
-
-	brush_bar_->adjust_size();
-	brush_bar_->draw(true);
-
 }
 
 
