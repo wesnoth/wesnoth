@@ -49,9 +49,7 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 	} else if(button_image_name.empty() && type == TYPE_CHECK) {
 		button_image_name = "checkbox";
 	} else if(button_image_name.empty() && type == TYPE_RADIO) {
-		//TODO
-		//button_image_name = "radiobox";
-		button_image_name = "checkbox";
+		button_image_name = "radiobox";
 	}
 
 	const std::string button_image_file = "buttons/" + button_image_name + ".png";
