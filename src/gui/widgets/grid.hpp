@@ -208,8 +208,8 @@ public:
 	/** See @ref twidget::request_reduce_height. */
 	virtual void request_reduce_height(const unsigned maximum_height) OVERRIDE;
 
-	/** Inherited from twidget. */
-	void demand_reduce_height(const unsigned maximum_height);
+	/** See @ref twidget::demand_reduce_height. */
+	virtual void demand_reduce_height(const unsigned maximum_height) OVERRIDE;
 
 	/**
 	 * Recalculates the best size.
