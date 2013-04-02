@@ -515,7 +515,7 @@ manager::manager()
 
 void manager::init()
 {
-	for (size_t i = 0; hotkey_list_[i-1].id != hotkey::HOTKEY_NULL; ++i) {
+	for (size_t i = 0; hotkey_list_[i].id != hotkey::HOTKEY_NULL; ++i) {
 		command_map_[hotkey_list_[i].command] = i;
 	}
 }
