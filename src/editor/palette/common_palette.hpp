@@ -49,9 +49,11 @@ public:
 
 	/** Scroll the editor-palette up one step if possible. */
 	virtual bool scroll_up() = 0;
+	virtual bool can_scroll_up() = 0;
 
 	/** Scroll the editor-palette down one step if possible. */
 	virtual bool scroll_down() = 0;
+	virtual bool can_scroll_down() = 0;
 
 	//drawing
 	virtual void adjust_size(const SDL_Rect& target) = 0;
