@@ -170,7 +170,7 @@ class editor_controller : public controller_base,
 
 		/**
 		 * Callback for the editor settings dialog to allow on-the-fly
-		 * updating of the lighting display on the game map behing the dialog
+		 * updating of the lighting display on the game map behind the dialog
 		 */
 		void editor_settings_dialog_redraw_callback(int r, int g, int b);
 
