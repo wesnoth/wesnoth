@@ -235,7 +235,8 @@ private:
 	tpoint get_folded_size() const;
 	tpoint get_unfolded_size() const;
 
-	void set_origin(const tpoint& origin);
+	/** See @ref twidget::set_origin. */
+	virtual void set_origin(const tpoint& origin) OVERRIDE;
 
 	/** See @ref twidget::place. */
 	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;

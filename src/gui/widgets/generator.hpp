@@ -254,8 +254,8 @@ public:
 	/** See @ref twidget::place. */
 	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE = 0;
 
-	/** Inherited from twidget. */
-	virtual void set_origin(const tpoint& origin) = 0;
+	/** See @ref twidget::set_origin. */
+	virtual void set_origin(const tpoint& origin) OVERRIDE = 0;
 
 	/** See @ref twidget::set_visible_rectangle. */
 	virtual void set_visible_rectangle(const SDL_Rect& rectangle) OVERRIDE = 0;

@@ -98,8 +98,8 @@ public:
 	bool has_widget(const twidget* widget) const
 		{ return twidget::has_widget(widget) || grid_.has_widget(widget); }
 
-	/** Inherited from twidget. */
-	void set_origin(const tpoint& origin);
+	/** See @ref twidget::set_origin. */
+	virtual void set_origin(const tpoint& origin) OVERRIDE;
 
 	/** See @ref twidget::set_visible_rectangle. */
 	virtual void set_visible_rectangle(const SDL_Rect& rectangle) OVERRIDE;

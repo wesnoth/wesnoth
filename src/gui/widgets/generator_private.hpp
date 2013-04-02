@@ -193,12 +193,8 @@ struct thorizontal_list
 	/** See @ref twidget::place. */
 	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;
 
-	/**
-	 * Sets the origin of the generator.
-	 *
-	 * @param origin              The origin of the generator.
-	 */
-	void set_origin(const tpoint& origin);
+	/** See @ref twidget::set_origin. */
+	virtual void set_origin(const tpoint& origin) OVERRIDE;
 
 	/**
 	 * Sets the visible rectangle of the generator.
@@ -276,8 +272,8 @@ struct tvertical_list
 	/** See @ref twidget::place. */
 	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;
 
-	/** See thorizontal_list::set_origin(). */
-	void set_origin(const tpoint& origin);
+	/** See @ref twidget::set_origin. */
+	virtual void set_origin(const tpoint& origin) OVERRIDE;
 
 	/** See @ref thorizontal_list::set_visible_rectangle(). */
 	void set_visible_rectangle(const SDL_Rect& rectangle);
@@ -365,9 +361,11 @@ struct tmatrix
 		ERROR_LOG(false);
 	}
 
-	/** See thorizontal_list::set_origin(). */
-	void set_origin(const tpoint& /*origin*/)
-		{ ERROR_LOG(false); }
+	/** See @ref twidget::set_origin. */
+	virtual void set_origin(const tpoint& /*origin*/) OVERRIDE
+	{
+		ERROR_LOG(false);
+	}
 
 	/** See @ref thorizontal_list::set_visible_rectangle(). */
 	void set_visible_rectangle(const SDL_Rect& /*rectangle*/ )
@@ -436,8 +434,8 @@ struct tindependent
 	/** See @ref twidget::place. */
 	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;
 
-	/** See thorizontal_list::set_origin(). */
-	void set_origin(const tpoint& origin);
+	/** See @ref twidget::set_origin. */
+	virtual void set_origin(const tpoint& origin) OVERRIDE;
 
 	/** See @ref thorizontal_list::set_visible_rectangle(). */
 	void set_visible_rectangle(const SDL_Rect& rectangle);
@@ -809,8 +807,8 @@ public:
 		placement::place(origin, size);
 	}
 
-	/** Inherited from tgenerator_. */
-	void set_origin(const tpoint& origin)
+	/** See @ref twidget::set_origin. */
+	virtual void set_origin(const tpoint& origin) OVERRIDE
 	{
 		// Inherited.
 		twidget::set_origin(origin);
