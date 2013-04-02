@@ -231,7 +231,7 @@ const hotkey_command hotkey_list_[] = {
 	{ hotkey::GLOBAL__HELPTIP, "global__helptip", N_("Show Helptip"), false, hotkey::SCOPE_GENERAL },
 
 	//This list item must stay at the end since it is used as terminator for iterating.
-	{ hotkey::HOTKEY_NULL, "null", NULL, true, hotkey::SCOPE_GENERAL }
+	{ hotkey::HOTKEY_NULL, "null", N_("Unrecognized Command"), true, hotkey::SCOPE_GENERAL }
 };
 
 const hotkey_command* get_hotkey_commands() {
@@ -515,7 +515,7 @@ manager::manager()
 
 void manager::init()
 {
-	for (size_t i = 0; hotkey_list_[i].id != hotkey::HOTKEY_NULL; ++i) {
+	for (size_t i = 0; hotkey_list_[i-1].id != hotkey::HOTKEY_NULL; ++i) {
 		command_map_[hotkey_list_[i].command] = i;
 	}
 }
@@ -590,7 +590,11 @@ void save_hotkeys(config& cfg)
 }
 
 const std::string get_description(const std::string& command) {
-	return t_string(hotkey_list_[command_map_[command]].description,
+	std::string tmp(command);
+	if (command_map_.find(tmp) == command_map_.end()) {
+		tmp = "null";
+	}
+	return t_string(hotkey_list_[command_map_[tmp]].description,
 			PACKAGE "-lib");
 }
 
