@@ -153,11 +153,11 @@ void verify_and_set_global_variable(const vconfig &pcfg)
 {
 	bool valid = true;
 	if (!pcfg.has_attribute("to_global")) {
-		LOG_PERSIST << "Error: [set_global_variable] missing required attribute \"from_global\"";
+		LOG_PERSIST << "Error: [set_global_variable] missing required attribute \"to_global\"";
 		valid = false;
 	}
 	if (!pcfg.has_attribute("from_local")) {
-		LOG_PERSIST << "Warning: [set_global_variable] missing attribute \"to_local\", global variable will be cleared";
+		LOG_PERSIST << "Warning: [set_global_variable] missing attribute \"from_local\", global variable will be cleared";
 	}
 	// TODO: allow for global namespace.
 	if (!pcfg.has_attribute("namespace")) {
