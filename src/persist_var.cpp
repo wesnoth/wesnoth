@@ -207,7 +207,7 @@ void verify_and_clear_global_variable(const vconfig &pcfg)
 	}
 	if (network::nconnections() != 0) {
 		if (!pcfg.has_attribute("side")) {
-			LOG_PERSIST << "Error: [set_global_variable] missing attribute \"side\" required in multiplayer context.";
+			LOG_PERSIST << "Error: [clear_global_variable] missing attribute \"side\" required in multiplayer context.";
 			valid = false;
 		} else {
 			config::attribute_value pcfg_side = pcfg["side"];
