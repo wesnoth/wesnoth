@@ -202,7 +202,7 @@ void carryover::transfer_all_gold_to(config& side_cfg){
 		side_cfg["gold"] = cfg_gold;
 	}
 
-	if(add_){
+	if(add_ && gold_ > 0){
 		side_cfg["gold"] = cfg_gold + gold_;
 	}
 	else if(gold_ > cfg_gold){
