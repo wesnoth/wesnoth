@@ -54,7 +54,6 @@
 		62973FDE15C2EA7800D18140 /* action_village.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62973FDC15C2EA7800D18140 /* action_village.cpp */; };
 		62973FE215C2EAF300D18140 /* mouse_action_village.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62973FE015C2EAF300D18140 /* mouse_action_village.cpp */; };
 		62D24F2D1519982500350848 /* brush.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F271519982500350848 /* brush.cpp */; };
-		62D24F2E1519982500350848 /* brush_bar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F291519982500350848 /* brush_bar.cpp */; };
 		62D24F2F1519982500350848 /* editor_toolkit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F2B1519982500350848 /* editor_toolkit.cpp */; };
 		62D24F321519987400350848 /* context_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F311519987400350848 /* context_manager.cpp */; };
 		62D24F351519995200350848 /* palette_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F341519995200350848 /* palette_manager.cpp */; };
@@ -1101,8 +1100,6 @@
 		62973FE115C2EAF300D18140 /* mouse_action_village.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mouse_action_village.hpp; sourceTree = "<group>"; };
 		62D24F271519982500350848 /* brush.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = brush.cpp; sourceTree = "<group>"; };
 		62D24F281519982500350848 /* brush.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = brush.hpp; sourceTree = "<group>"; };
-		62D24F291519982500350848 /* brush_bar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = brush_bar.cpp; sourceTree = "<group>"; };
-		62D24F2A1519982500350848 /* brush_bar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = brush_bar.hpp; sourceTree = "<group>"; };
 		62D24F2B1519982500350848 /* editor_toolkit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = editor_toolkit.cpp; sourceTree = "<group>"; };
 		62D24F2C1519982500350848 /* editor_toolkit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = editor_toolkit.hpp; sourceTree = "<group>"; };
 		62D24F301519986600350848 /* context_manager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = context_manager.hpp; sourceTree = "<group>"; };
@@ -2690,8 +2687,6 @@
 			children = (
 				62D24F271519982500350848 /* brush.cpp */,
 				62D24F281519982500350848 /* brush.hpp */,
-				62D24F291519982500350848 /* brush_bar.cpp */,
-				62D24F2A1519982500350848 /* brush_bar.hpp */,
 				62D24F2B1519982500350848 /* editor_toolkit.cpp */,
 				62D24F2C1519982500350848 /* editor_toolkit.hpp */,
 			);
@@ -4198,7 +4193,6 @@
 				6295C3D9150FC9EB0077D8C5 /* unit_palette.cpp in Sources */,
 				F4D5483E15198D060058C8A7 /* lua_jailbreak_exception.cpp in Sources */,
 				62D24F2D1519982500350848 /* brush.cpp in Sources */,
-				62D24F2E1519982500350848 /* brush_bar.cpp in Sources */,
 				62D24F2F1519982500350848 /* editor_toolkit.cpp in Sources */,
 				62D24F321519987400350848 /* context_manager.cpp in Sources */,
 				62D24F351519995200350848 /* palette_manager.cpp in Sources */,
