@@ -234,9 +234,11 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 			}
 			return false;
 		case HOTKEY_EDITOR_PALETTE_GROUPS:
-		case HOTKEY_EDITOR_PALETTE_UPSCROLL:
-		case HOTKEY_EDITOR_PALETTE_DOWNSCROLL:
 			return true;
+		case HOTKEY_EDITOR_PALETTE_UPSCROLL:
+			return toolkit_->get_palette_manager()->can_scroll_up();
+		case HOTKEY_EDITOR_PALETTE_DOWNSCROLL:
+			return toolkit_->get_palette_manager()->can_scroll_down();
 		case HOTKEY_ZOOM_IN:
 			return !gui_->zoom_at_max();
 		case HOTKEY_ZOOM_OUT:
@@ -417,9 +419,11 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			return true;
 		case HOTKEY_EDITOR_PALETTE_UPSCROLL:
 			toolkit_->get_palette_manager()->scroll_up();
+			gui_->draw(true,false);
 			return true;
 		case HOTKEY_EDITOR_PALETTE_DOWNSCROLL:
 			toolkit_->get_palette_manager()->scroll_down();
+			gui_->draw(true,false);
 			return true;
 		case HOTKEY_QUIT_GAME:
 			quit_confirm(EXIT_NORMAL);

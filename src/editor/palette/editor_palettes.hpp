@@ -78,7 +78,9 @@ public:
 	void adjust_size(const SDL_Rect& target);
 
 	virtual bool scroll_up();
+	virtual bool can_scroll_up();
 	virtual bool scroll_down();
+	virtual bool can_scroll_down();
 
 	virtual const config active_group_report();
 

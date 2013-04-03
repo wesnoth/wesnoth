@@ -102,20 +102,38 @@ template bool editor_palette<t_translation::t_terrain>::scroll_up();
 template bool editor_palette<unit_type>::scroll_up();
 
 template<class Item>
+bool editor_palette<Item>::can_scroll_up()
+{
+	return (items_start_ != 0);
+}
+template bool editor_palette<t_translation::t_terrain>::can_scroll_up();
+template bool editor_palette<unit_type>::can_scroll_up();
+
+template<class Item>
+bool editor_palette<Item>::can_scroll_down()
+{
+	return (items_start_ + nitems_ + item_width_ <= num_items());
+}
+template bool editor_palette<t_translation::t_terrain>::can_scroll_down();
+template bool editor_palette<unit_type>::can_scroll_down();
+
+template<class Item>
 bool editor_palette<Item>::scroll_down()
 {
 	bool end_reached = (!(items_start_ + nitems_ + item_width_ <= num_items()));
+	bool scrolled = false;
 
 	// move downwards
 	if(!end_reached) {
 		items_start_ += item_width_;
-		return true;
+		scrolled = true;
 	}
 	else if (items_start_ + nitems_ + (num_items() % item_width_) <= num_items()) {
 		items_start_ += num_items() % item_width_;
-		return true;
+		scrolled = true;
 	}
-	return false;
+	draw(scrolled);
+	return scrolled;
 }
 template bool editor_palette<t_translation::t_terrain>::scroll_down();
 template bool editor_palette<unit_type>::scroll_down();
@@ -235,8 +253,9 @@ template size_t editor_palette<t_translation::t_terrain>::num_items();
 template size_t editor_palette<unit_type>::num_items();
 
 template<class Item>
-void editor_palette<Item>::draw(bool)
+void editor_palette<Item>::draw(bool dirty)
 {
+	if (!dirty) return;
 	unsigned int y = palette_y_;
 	unsigned int x = palette_x_;
 	unsigned int starting = items_start_;

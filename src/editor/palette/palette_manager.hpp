@@ -46,6 +46,9 @@ public:
 	/** Scroll the editor-palette up one step if possible. */
 	void scroll_up();
 
+	bool can_scroll_down();
+	bool can_scroll_up();
+
 	/** Scroll the editor-palette down one step if possible. */
 	void scroll_down();
 
@@ -67,7 +70,7 @@ public:
 	virtual void handle_event(const SDL_Event& event);
 
 	void draw(bool force=false);
-	void draw() { draw(false); };
+	void draw() { draw(true); };
 
 	/**
 	 * To be called when a mouse click occurs.

@@ -62,7 +62,18 @@ void palette_manager::scroll_down()
 		const SDL_Rect& rect = gui_.palette_area();
 		bg_restore(rect);
 		set_dirty();
+		draw(true);
 	}
+}
+
+bool palette_manager::can_scroll_up()
+{
+	return active_palette().can_scroll_up();
+}
+
+bool palette_manager::can_scroll_down()
+{
+	return active_palette().can_scroll_down();
 }
 
 void palette_manager::scroll_up()
@@ -72,6 +83,7 @@ void palette_manager::scroll_up()
 		const SDL_Rect rect = gui_.palette_area();
 		bg_restore(rect);
 		set_dirty();
+		draw(true);
 	}
 }
 

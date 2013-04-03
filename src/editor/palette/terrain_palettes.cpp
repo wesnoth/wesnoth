@@ -80,7 +80,7 @@ void terrain_palette::setup(const config& cfg)
 			cfg["id"] = g["id"];
 			cfg["name"] = g["name"];
 
-			cfg["icon"] = "buttons/" + g["icon"].t_str() + ".png";
+			cfg["icon"] = "buttons/editor/" + g["icon"].t_str() + ".png";
 			cfg["core"] = "yes";
 			groups_.push_back(item_group(cfg));
 

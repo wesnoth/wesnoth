@@ -35,7 +35,9 @@ public:
 	virtual bool right_mouse_click(const int /*x*/, const int /*y*/) { return false;};
 
 	virtual bool scroll_up() { return false;};
+	virtual bool can_scroll_up() { return false;};
 	virtual bool scroll_down() { return false;};
+	virtual bool can_scroll_down() { return false;};
 
 	//drawing
 	virtual void adjust_size(const SDL_Rect& /*target*/) {};
