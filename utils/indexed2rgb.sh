@@ -55,19 +55,19 @@ echo -n "Converting $input_number files to RGB mode... "
 
 for f in $filelist
 do
-    if !(pngcheck $f|grep 'RGB+alpha' &> /dev/null)
+    if !(pngcheck $f|grep -q 'RGB+alpha')
     then
         # -define png:color-type=6 is the PNG way to specify RGBA, it doesn't always work though
         # http://www.imagemagick.org/Usage/formats/#png_write
         convert -define png:color-type=6 $f $f.new
 
-        if !(pngcheck $f.new|grep 'RGB+alpha' &> /dev/null)
+        if !(pngcheck $f.new|grep -q 'RGB+alpha')
         then
             # asking the PNG writer nicely didn't work, force it instead
             convert -type TrueColorMatte $f $f.new
         fi
 
-        if (pngcheck $f.new|grep 'RGB+alpha' &> /dev/null)
+        if (pngcheck $f.new|grep -q 'RGB+alpha')
         then
             mv -f $f.new $f
             converted="${converted} ${f}"
