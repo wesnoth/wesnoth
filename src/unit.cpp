@@ -2770,7 +2770,7 @@ bool unit::invisible(const map_location& loc, bool see_all) const
 		BOOST_FOREACH(const unit &u, *resources::units)
 		{
 			const map_location &u_loc = u.get_location();
-			if (teams[side_-1].is_enemy(u.side()) && tiles_adjacent(loc, u_loc)) {
+			if (teams[side_-1].is_enemy(u.side()) && !u.incapacitated() && tiles_adjacent(loc, u_loc)) {
 				// Enemy spotted in adjacent tiles, check if we can see him.
 				// Watch out to call invisible with see_all=true to avoid infinite recursive calls!
 				if(see_all) {
