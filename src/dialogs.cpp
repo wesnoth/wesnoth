@@ -248,6 +248,37 @@ void show_objectives(const config &level, const std::string &objectives)
 		(objectives.empty() ? no_objectives : objectives), "", true);
 }
 
+int recruit_dialog(display& disp, std::vector< const unit_type* >& units, const std::vector< std::string >& items, int side, const std::string& title_suffix)
+{
+	dialogs::unit_types_preview_pane unit_preview(
+		units, NULL, side);
+	std::vector<gui::preview_pane*> preview_panes;
+	preview_panes.push_back(&unit_preview);
+
+	gui::menu::basic_sorter sorter;
+	sorter.set_alpha_sort(1);
+
+	gui::dialog rmenu(disp, _("Recruit") + title_suffix,
+			  _("Select unit:") + std::string("\n"),
+			  gui::OK_CANCEL,
+			  gui::dialog::default_style);
+	rmenu.add_button(new help::help_button(disp, "recruit_and_recall"),
+		gui::dialog::BUTTON_HELP);
+
+	gui::menu::imgsel_style units_display_style(gui::menu::bluebg_style);
+	units_display_style.scale_images(font::relative_size(72), font::relative_size(72));
+
+	gui::menu* units_menu = new gui::menu(disp.video(), items, false, -1,
+		gui::dialog::max_menu_width, &sorter, &units_display_style, false);
+
+	units_menu->sort_by(1); // otherwise it's unsorted by default
+
+	rmenu.set_menu(units_menu);
+	rmenu.set_panes(preview_panes);
+	return rmenu.show();
+}
+
+
 namespace {
 
 /** Class to handle deleting a saved game. */
