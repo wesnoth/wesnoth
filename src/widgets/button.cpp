@@ -41,6 +41,7 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
                std::string button_image_name, SPACE_CONSUMPTION spacing, const bool auto_join)
 	: widget(video, auto_join), type_(type), label_(label),
 	  image_(NULL), pressedImage_(NULL), activeImage_(NULL), pressedActiveImage_(NULL),
+	  disabledImage_(NULL), pressedDisabledImage_(NULL),
 	  state_(NORMAL), pressed_(false),
 	  spacing_(spacing), base_height_(0), base_width_(0)
 {
@@ -52,12 +53,19 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 		button_image_name = "radiobox";
 	}
 
-	const std::string button_image_file = "buttons/" + button_image_name + ".png";
-	surface button_image(image::get_image(button_image_file));
-	surface pressed_image(image::get_image("buttons/" + button_image_name + "-pressed.png"));
-	surface active_image(image::get_image("buttons/" + button_image_name + "-active.png"));
-	surface pressed_active_image;
-	surface touched_image;
+	const std::string button_image_filebase = "buttons/" + button_image_name ;
+	surface button_image(image::get_image(button_image_filebase + ".png"));
+	surface pressed_image(image::get_image(button_image_filebase + "-pressed.png"));
+	surface active_image(image::get_image(button_image_filebase + "-active.png"));
+	surface disabled_image(image::get_image(button_image_filebase + "-disabled.png"));
+	surface pressed_disabled_image, pressed_active_image, touched_image;
+
+	static const Uint32 disabled_btn_color = 0xAAAAAA;
+	static const double disabled_btn_adjust = 0.18;
+	if (disabled_image == NULL) {
+		disabled_image = blend_surface(greyscale_image(button_image),
+				disabled_btn_adjust, disabled_btn_color);
+	}
 
 	if (pressed_image.null())
 		pressed_image.assign(button_image);
@@ -73,7 +81,12 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 		pressed_active_image.assign(image::get_image("buttons/" + button_image_name + "-active-pressed.png"));
 		if (pressed_active_image.null())
 			pressed_active_image.assign(pressed_image);
-		//touchedImage_.assign
+
+		pressed_disabled_image.assign(image::get_image(button_image_filebase + "-disabled-pressed.png"));
+		if (pressed_disabled_image.null()) {
+				pressed_disabled_image = blend_surface(greyscale_image(pressed_image),
+						disabled_btn_adjust, disabled_btn_color);
+		}
 	}
 
 	if (button_image.null()) {
@@ -84,7 +97,7 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 	base_height_ = button_image->h;
 	base_width_ = button_image->w;
 
-	if (type_ != TYPE_IMAGE){
+	if (type_ != TYPE_IMAGE) {
 		set_label(label);
 	}
 
@@ -92,13 +105,17 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 		image_.assign(scale_surface(button_image,location().w,location().h));
 		pressedImage_.assign(scale_surface(pressed_image,location().w,location().h));
 		activeImage_.assign(scale_surface(active_image,location().w,location().h));
+		disabledImage_.assign(scale_surface(disabled_image,location().w,location().h));
 	} else {
 		image_.assign(scale_surface(button_image,button_image->w,button_image->h));
-		pressedImage_.assign(scale_surface(pressed_image,button_image->w,button_image->h));
 		activeImage_.assign(scale_surface(active_image,button_image->w,button_image->h));
-		if (type_ == TYPE_CHECK || type_ == TYPE_RADIO)
+		disabledImage_.assign(scale_surface(disabled_image,button_image->w,button_image->h));
+		pressedImage_.assign(scale_surface(pressed_image,button_image->w,button_image->h));
+		if (type_ == TYPE_CHECK || type_ == TYPE_RADIO) {
+			pressedDisabledImage_.assign(scale_surface(pressed_disabled_image,button_image->w,button_image->h));
 			pressedActiveImage_.assign(scale_surface(pressed_active_image, button_image->w, button_image->h));
 			touchedImage_.assign(scale_surface(touched_image, button_image->w, button_image->h));
+		}
 	}
 
 	if (type_ == TYPE_IMAGE){
@@ -250,9 +267,11 @@ void button::draw_contents()
 	SDL_Color button_color = font::BUTTON_COLOR;
 
 	if (!enabled()) {
-		static const Uint32 disabled_btn_color = 0xAAAAAA;
-		static const double disabled_btn_adjust = 0.18;
-		image = blend_surface(greyscale_image(image), disabled_btn_adjust, disabled_btn_color);
+
+		if (state_ == PRESSED || state_ == PRESSED_ACTIVE)
+			image = pressedDisabledImage_;
+		else image = disabledImage_;
+
 		button_color = font::GRAY_COLOR;
 	}
 

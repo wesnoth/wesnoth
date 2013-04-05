@@ -64,7 +64,8 @@ private:
 	void calculate_size();
 
 	std::string label_;
-	surface image_, pressedImage_, activeImage_, pressedActiveImage_, touchedImage_;
+	surface image_, pressedImage_, activeImage_, pressedActiveImage_,
+		touchedImage_, disabledImage_, pressedDisabledImage_;
 	SDL_Rect textRect_;
 
 	enum STATE { UNINIT, NORMAL, ACTIVE, PRESSED, PRESSED_ACTIVE, TOUCHED_NORMAL, TOUCHED_PRESSED };
