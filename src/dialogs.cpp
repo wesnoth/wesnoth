@@ -298,22 +298,36 @@ class save_preview_pane : public gui::preview_pane
 public:
 	save_preview_pane(CVideo &video, const config& game_config, gamemap* map,
 			const std::vector<savegame::save_info>& info,
-			const gui::filter_textbox& textbox) :
+			const gui::filter_textbox& textbox,
+			gui::dialog_button* difficulty_option) :
 		gui::preview_pane(video),
 		game_config_(&game_config),
 		map_(map), info_(&info),
 		index_(0),
 		map_cache_(),
-		textbox_(textbox)
+		textbox_(textbox),
+		difficulty_option_(difficulty_option)
 	{
 		set_measurements(std::min<int>(200,video.getx()/4),
 				 std::min<int>(400,video.gety() * 4/5));
+
+		if (difficulty_option_ != NULL) {
+			difficulty_option_->enable(false);
+		}
 	}
 
 	void draw_contents();
+
+	/**
+	 * Enables "Change difficulty" option box for start-of-scenario
+	 * save-files only
+	 */
+	void decide_on_difficulty_option();
+
 	void set_selection(int index) {
 		int res = textbox_.get_index(index);
 		index_ = (res >= 0) ? res : index_;
+		decide_on_difficulty_option();
 		set_dirty();
 	}
 
@@ -326,7 +340,19 @@ private:
 	int index_;
 	std::map<std::string,surface> map_cache_;
 	const gui::filter_textbox& textbox_;
+	gui::dialog_button* difficulty_option_;
 };
+
+void save_preview_pane::decide_on_difficulty_option()
+{
+	if (difficulty_option_ == NULL) {
+		return;
+	}
+
+	const config& summary = ((*info_)[index_]).summary();
+	const bool start_of_scenario = summary["turn"].empty() && !summary["replay"].to_bool();
+	difficulty_option_->enable(start_of_scenario);
+}
 
 void save_preview_pane::draw_contents()
 {
@@ -600,7 +626,18 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sel
 	gui::filter_textbox* filter = new gui::filter_textbox(disp.video(), _("Filter: "), items, items, 1, lmenu);
 	lmenu.set_textbox(filter);
 
-	save_preview_pane save_preview(disp.video(),game_config,&map_obj,games,*filter);
+	gui::dialog_button* change_difficulty_option = NULL;
+
+	if(select_difficulty != NULL) {
+		// implmentation of gui::dialog::add_option, needed for storing a pointer to the option-box
+		change_difficulty_option = new gui::dialog_button(disp.video(), _("Change difficulty"), gui::button::TYPE_CHECK);
+		change_difficulty_option->set_check(false);
+
+		change_difficulty_option->set_help_string(_("Change campaign difficulty before loading"));
+		lmenu.add_button(change_difficulty_option, gui::dialog::BUTTON_CHECKBOX);
+	}
+
+	save_preview_pane save_preview(disp.video(),game_config,&map_obj,games,*filter,change_difficulty_option);
 	lmenu.add_pane(&save_preview);
 	// create an option for whether the replay should be shown or not
 	if(show_replay != NULL) {
@@ -613,12 +650,6 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sel
 		lmenu.add_option(_("Cancel orders"), false,
 			gui::dialog::BUTTON_CHECKBOX_LEFT,
 			_("Cancel any pending unit movements in the saved game")
-			);
-	}
-	if(select_difficulty != NULL) {
-		lmenu.add_option(_("Change difficulty"), false,
-			gui::dialog::BUTTON_CHECKBOX,
-			_("Change campaign difficulty before loading")
 			);
 	}
 	lmenu.add_button(new gui::standard_dialog_button(disp.video(),_("OK"),0,false), gui::dialog::BUTTON_STANDARD);
@@ -638,6 +669,9 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sel
 
 	res = filter->get_index(res);
 	int option_index = 0;
+	if (select_difficulty != NULL) {
+		*select_difficulty = lmenu.option_checked(option_index++) && change_difficulty_option->enabled();
+	}
 	if(show_replay != NULL) {
 	  *show_replay = lmenu.option_checked(option_index++);
 
@@ -648,9 +682,6 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sel
 	}
 	if (cancel_orders != NULL) {
 		*cancel_orders = lmenu.option_checked(option_index++);
-	}
-	if (select_difficulty != NULL) {
-		*select_difficulty = lmenu.option_checked(option_index++);
 	}
 
 	return games[res].name();

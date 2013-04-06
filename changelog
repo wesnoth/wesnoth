@@ -4,6 +4,8 @@ Version 1.11.2+dev:
  * User interface:
    * Fixed (bug #17220): Cursor in gui2 text box now behaves appropriately after
      text box overflow occurs.
+   * Change Difficulty checkbox in Load Game dialog in GUI1 gets disabled if
+     change in difficulty of a loading game won't take effect (bug #20381).
  * Miscellaneous and bug fixes
    * Switched to git version control. Hosting moved to SourceForge
    * Improved: Autorevision based revision numbers in CMake.
