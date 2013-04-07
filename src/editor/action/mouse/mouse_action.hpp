@@ -282,10 +282,8 @@ public:
 
 protected:
 
-	const terrain_palette& terrain_palette_;
+	terrain_palette& terrain_palette_;
 
-	//t_translation::t_terrain& terrain_left_;
-	//t_translation::t_terrain& terrain_right_;
 };
 
 /**
@@ -367,13 +365,10 @@ protected:
 class mouse_action_fill : public mouse_action
 {
 public:
-	mouse_action_fill(
-		//	t_translation::t_terrain& terrain_left, t_translation::t_terrain& terrain_right,
-			const CKey& key, terrain_palette& terrain_palette)
+	mouse_action_fill(const CKey& key,
+			terrain_palette& terrain_palette)
 	: mouse_action(terrain_palette, key)
 	, terrain_palette_(terrain_palette)
-//	, terrain_left_(terrain_left)
-//	, terrain_right_(terrain_right)
 	{
 	}
 
@@ -395,9 +390,7 @@ public:
 	virtual void set_mouse_overlay(editor_display& disp);
 
 protected:
-	const terrain_palette& terrain_palette_;
-	//t_translation::t_terrain& terrain_left_;
-	//t_translation::t_terrain& terrain_right_;
+	terrain_palette& terrain_palette_;
 };
 
 /**

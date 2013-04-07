@@ -261,7 +261,7 @@ editor_action* mouse_action_paint::click_left(editor_display& disp, int x, int y
 {
 	if (has_ctrl_modifier()) {
 		map_location hex = disp.hex_clicked_on(x, y);
-		set_selected_fg_terrain(disp.map().get_terrain(hex));
+		terrain_palette_.select_fg_item(disp.map().get_terrain(hex));
 		return NULL;
 	} else {
 		return brush_drag_mouse_action::click_left(disp, x, y);
@@ -272,7 +272,7 @@ editor_action* mouse_action_paint::click_right(editor_display& disp, int x, int 
 {
 	if (has_ctrl_modifier()) {
 		map_location hex = disp.hex_clicked_on(x, y);
-		set_selected_bg_terrain(disp.map().get_terrain(hex));
+		terrain_palette_.select_bg_item(disp.map().get_terrain(hex));
 		return NULL;
 	} else {
 		return brush_drag_mouse_action::click_right(disp, x, y);
@@ -388,10 +388,10 @@ editor_action* mouse_action_fill::click_left(editor_display& disp, int x, int y)
 {
 	map_location hex = disp.hex_clicked_on(x, y);
 	if (has_ctrl_modifier()) {
-		set_selected_fg_terrain(disp.map().get_terrain(hex));
+		terrain_palette_.select_fg_item(disp.map().get_terrain(hex));
 		return NULL;
 	} else {
-		//TODO only take the base terrain into account when searching for contiguous terrain when painting base only
+		///@TODO only take the base terrain into account when searching for contiguous terrain when painting base only
 		//or use a different key modifier for that
 		editor_action_fill* a = new editor_action_fill(hex, terrain_palette_.selected_fg_item(),
 				has_shift_modifier());
@@ -403,10 +403,10 @@ editor_action* mouse_action_fill::click_right(editor_display& disp, int x, int y
 {
 	map_location hex = disp.hex_clicked_on(x, y);
 	if (has_ctrl_modifier()) {
-		set_selected_bg_terrain(disp.map().get_terrain(hex));
+		terrain_palette_.select_bg_item(disp.map().get_terrain(hex));
 		return NULL;
 	} else {
-		//TODO only take the base terrain into account when searching for contiguous terrain when painting base only
+		///@TODO only take the base terrain into account when searching for contiguous terrain when painting base only
 		//or use a different key modifier for that
 		editor_action_fill* a = new editor_action_fill(hex, terrain_palette_.selected_bg_item(),
 				has_shift_modifier());

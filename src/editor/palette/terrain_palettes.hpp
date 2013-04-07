@@ -24,19 +24,14 @@
 
 namespace editor {
 
-//TODO
-//std::string get_selected_terrain();
-
-t_translation::t_terrain get_selected_fg_terrain();
-t_translation::t_terrain get_selected_bg_terrain();
-
-//Those could be moved inside the class.
-void set_selected_fg_terrain(const t_translation::t_terrain & terrain);
-void set_selected_bg_terrain(const t_translation::t_terrain & terrain);
+const t_translation::t_terrain& get_selected_fg_terrain();
+const t_translation::t_terrain& get_selected_bg_terrain();
 
 /** Palette where the terrain to be drawn can be selected. */
 class terrain_palette : public editor_palette<t_translation::t_terrain> {
+
 public:
+
 	terrain_palette(editor_display &gui, const config& cfg,
 			mouse_action** active_mouse_action);
 
@@ -44,9 +39,16 @@ public:
 
 	virtual void setup(const config& cfg);
 
+	void select_bg_item(const t_translation::t_terrain& terrain);
+	void select_fg_item(const t_translation::t_terrain& terrain);
+
+	const t_translation::t_terrain& selected_fg_item() const;
+	const t_translation::t_terrain& selected_bg_item() const;
+
 private:
 
-	virtual void select_bg_item(std::string item_id);
+	virtual void select_bg_item(const std::string& item_id);
+	virtual void select_fg_item(const std::string& item_id);
 
 	virtual const std::string& get_id(const t_translation::t_terrain& terrain);
 

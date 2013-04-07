@@ -129,8 +129,8 @@ protected:
 	const std::vector<std::string>& active_group() { return group_map_[active_group_]; };
 
 	/** Select a foreground item. */
-	virtual void select_fg_item(std::string item_id);
-	virtual void select_bg_item(std::string item_id);
+	virtual void select_fg_item(const std::string& item_id);
+	virtual void select_bg_item(const std::string& item_id);
 
 	/**
 	 * The editor_groups as defined in editor-groups.cfg.

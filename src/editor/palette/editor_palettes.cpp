@@ -216,24 +216,24 @@ template void editor_palette<t_translation::t_terrain>::adjust_size(const SDL_Re
 template void editor_palette<unit_type>::adjust_size(const SDL_Rect& target);
 
 template<class Item>
-void editor_palette<Item>::select_fg_item(std::string item_id)
+void editor_palette<Item>::select_fg_item(const std::string& item_id)
 {
 	if (selected_fg_item_ != item_id) {
 		selected_fg_item_ = item_id;
 	}
 }
-template void editor_palette<t_translation::t_terrain>::select_fg_item(std::string terrain_id);
-template void editor_palette<unit_type>::select_fg_item(std::string unit_id);
+template void editor_palette<t_translation::t_terrain>::select_fg_item(const std::string& terrain_id);
+template void editor_palette<unit_type>::select_fg_item(const std::string& unit_id);
 
 template<class Item>
-void editor_palette<Item>::select_bg_item(std::string item_id)
+void editor_palette<Item>::select_bg_item(const std::string& item_id)
 {
 	if (selected_bg_item_ != item_id) {
 		selected_bg_item_ = item_id;
 	}
 }
-template void editor_palette<t_translation::t_terrain>::select_bg_item(std::string terrain_id);
-template void editor_palette<unit_type>::select_bg_item(std::string unit_id);
+template void editor_palette<t_translation::t_terrain>::select_bg_item(const std::string& terrain_id);
+template void editor_palette<unit_type>::select_bg_item(const std::string& unit_id);
 
 template<class Item>
 void editor_palette<Item>::swap()

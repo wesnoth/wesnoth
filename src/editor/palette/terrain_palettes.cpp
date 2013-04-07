@@ -32,17 +32,17 @@ namespace {
 
 namespace editor {
 
-void set_selected_bg_terrain(const t_translation::t_terrain & terrain) {
-	bg_terrain = terrain;
-}
-
-void set_selected_fg_terrain(const t_translation::t_terrain & terrain) {
-	fg_terrain = terrain;
-}
-
-t_translation::t_terrain get_selected_bg_terrain() {
+const t_translation::t_terrain& get_selected_bg_terrain() {
 	return bg_terrain;
 }
+
+const t_translation::t_terrain& get_selected_fg_terrain() {
+	return fg_terrain;
+}
+
+const t_translation::t_terrain& terrain_palette::selected_fg_item() const { return fg_terrain; };
+const t_translation::t_terrain& terrain_palette::selected_bg_item() const { return bg_terrain; };
+
 
 static bool is_valid_terrain(const t_translation::t_terrain & c) {
 	return !(c == t_translation::VOID_TERRAIN || c == t_translation::FOGGED);
@@ -56,10 +56,26 @@ void terrain_palette::update_report()
 	selected_terrain = msg.str();
 }
 
-void terrain_palette::select_bg_item(std::string item_id) {
+void terrain_palette::select_bg_item(const std::string& item_id) {
 	editor_palette<t_translation::t_terrain>::select_bg_item(item_id);
-	bg_terrain = selected_bg_item();
+	bg_terrain = editor_palette<t_translation::t_terrain>::selected_bg_item();
 }
+
+void terrain_palette::select_fg_item(const std::string& item_id) {
+	editor_palette<t_translation::t_terrain>::select_fg_item(item_id);
+	fg_terrain = editor_palette<t_translation::t_terrain>::selected_fg_item();
+}
+
+void terrain_palette::select_bg_item(const t_translation::t_terrain& terrain) {
+	editor_palette<t_translation::t_terrain>::select_bg_item(get_id(terrain));
+	bg_terrain = terrain;
+}
+
+void terrain_palette::select_fg_item(const t_translation::t_terrain& terrain) {
+	editor_palette<t_translation::t_terrain>::select_fg_item(get_id(terrain));
+	fg_terrain = terrain;
+}
+
 
 void terrain_palette::setup(const config& cfg)
 {
