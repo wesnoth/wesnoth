@@ -94,9 +94,8 @@ public:
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** Inherited from twidget.*/
-	bool has_widget(const twidget* widget) const
-		{ return twidget::has_widget(widget) || grid_.has_widget(widget); }
+	/** See @ref twidget::has_widget. */
+	virtual bool has_widget(const twidget* widget) const OVERRIDE;
 
 	/** See @ref twidget::set_origin. */
 	virtual void set_origin(const tpoint& origin) OVERRIDE;
