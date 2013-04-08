@@ -77,6 +77,10 @@ public:
 		return teams_;
 	}
 
+	map_labels& get_labels() {
+		return labels_;
+	}
+
 	/** Get the unit map from the current map context object */
 	unit_map& get_units() {
 		return units_;
