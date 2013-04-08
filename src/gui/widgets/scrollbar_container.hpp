@@ -452,8 +452,8 @@ private:
 	 */
 	virtual void finalize_subclass() {}
 
-	/** Inherited from tcontainer_. */
-	void layout_children();
+	/** See @ref twidget::layout_children. */
+	virtual void layout_children() OVERRIDE;
 
 	/** See @ref twidget::impl_draw_children. */
 	virtual void impl_draw_children(surface& frame_buffer) OVERRIDE;

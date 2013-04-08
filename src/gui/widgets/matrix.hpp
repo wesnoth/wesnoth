@@ -122,8 +122,8 @@ public:
 			, int x_offset
 			, int y_offset) OVERRIDE;
 
-	/** Inherited from twidget. */
-	void layout_children();
+	/** See @ref twidget::layout_children. */
+	virtual void layout_children() OVERRIDE;
 
 	/** Inherited from twidget. */
 	void child_populate_dirty_list(twindow& caller,

@@ -242,8 +242,8 @@ public:
 	/** See @ref twidget::set_visible_rectangle. */
 	virtual void set_visible_rectangle(const SDL_Rect& rectangle) OVERRIDE;
 
-	/** Inherited from twidget. */
-	void layout_children();
+	/** See @ref twidget::layout_children. */
+	virtual void layout_children() OVERRIDE;
 
 	/** Inherited from twidget. */
 	void child_populate_dirty_list(twindow& caller,

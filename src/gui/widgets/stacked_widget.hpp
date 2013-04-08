@@ -43,8 +43,8 @@ public:
 	/** Inherited from tcontrol. */
 	unsigned get_state() const { return 0; }
 
-	/** Inherited from tscrollbar_container. */
-	void layout_children();
+	/** See @ref twidget::layout_children. */
+	virtual void layout_children() OVERRIDE;
 
 private:
 

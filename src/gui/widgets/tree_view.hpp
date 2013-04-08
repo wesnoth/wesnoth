@@ -63,8 +63,8 @@ public:
 
 	bool empty() const;
 
-	/** Inherited from tscrollbar_container. */
-	void layout_children();
+	/** See @ref twidget::layout_children. */
+	virtual void layout_children() OVERRIDE;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 

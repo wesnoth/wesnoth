@@ -199,8 +199,8 @@ public:
 	/** See @ref twidget::place. */
 	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;
 
-	/** Inherited from tscrollbar_container. */
-	void layout_children();
+	/** See @ref twidget::layout_children. */
+	virtual void layout_children() OVERRIDE;
 
 	/** Inherited from tscrollbar_container. */
 	void child_populate_dirty_list(twindow& caller,
