@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="windows-1250"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9.00"
+	Version="9,00"
 	Name="wesnothlib"
 	ProjectGUID="{4A16638B-127B-4AE8-8E0B-4B211B96F976}"
 	RootNamespace="wesnothlib"
@@ -287,6 +287,14 @@
 			<File
 				RelativePath="..\..\src\serialization\binary_or_text.cpp"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						DisableSpecificWarnings="4706"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\serialization\binary_or_text.hpp"
@@ -295,6 +303,14 @@
 			<File
 				RelativePath="..\..\src\serialization\parser.cpp"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						DisableSpecificWarnings="4706"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\serialization\parser.hpp"

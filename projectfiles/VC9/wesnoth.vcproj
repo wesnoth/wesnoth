@@ -17481,6 +17481,14 @@
 		<File
 			RelativePath="..\..\src\game.cpp"
 			>
+			<FileConfiguration
+				Name="Debug|Win32"
+				>
+				<Tool
+					Name="VCCLCompilerTool"
+					DisableSpecificWarnings="4706"
+				/>
+			</FileConfiguration>
 		</File>
 		<File
 			RelativePath="..\..\src\game_config.hpp"
@@ -17901,6 +17909,14 @@
 		<File
 			RelativePath="..\..\src\network_asio.cpp"
 			>
+			<FileConfiguration
+				Name="Debug|Win32"
+				>
+				<Tool
+					Name="VCCLCompilerTool"
+					DisableSpecificWarnings="4800"
+				/>
+			</FileConfiguration>
 		</File>
 		<File
 			RelativePath="..\..\src\network_asio.hpp"
