@@ -32,6 +32,11 @@ namespace gui2 {
 
 REGISTER_WIDGET(progress_bar)
 
+void tprogress_bar::set_active(const bool /*active*/)
+{
+	/* DO NOTHING */
+}
+
 void tprogress_bar::set_percentage(const unsigned percentage)
 {
 	assert(percentage <= 100);

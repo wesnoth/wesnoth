@@ -91,9 +91,8 @@ public:
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** Inherited from tcontrol. */
-	void set_active(const bool active)
-		{ if(get_active() != active) set_state(active ? ENABLED : DISABLED); };
+	/** See @ref tcontrol::set_active. */
+	virtual void set_active(const bool active) OVERRIDE;
 
 	/** Inherited from tcontrol. */
 	bool get_active() const { return state_ != DISABLED; }

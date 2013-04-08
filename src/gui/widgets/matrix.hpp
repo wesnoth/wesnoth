@@ -69,7 +69,8 @@ public:
 	{
 	}
 
-	void set_active(const bool active)
+	/** See @ref tcontrol::set_active. */
+	virtual void set_active(const bool active) OVERRIDE
 	{
 		STATE::set_active(active);
 	}

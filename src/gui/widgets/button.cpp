@@ -52,6 +52,13 @@ tbutton::tbutton()
 				&tbutton::signal_handler_left_button_click, this, _2, _3));
 }
 
+void tbutton::set_active(const bool active)
+{
+	if(get_active() != active) {
+		set_state(active ? ENABLED : DISABLED);
+	}
+}
+
 void tbutton::set_state(const tstate state)
 {
 	if(state != state_) {

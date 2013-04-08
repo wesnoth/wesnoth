@@ -51,6 +51,13 @@ ttext_::ttext_()
 			&ttext_::signal_handler_lose_keyboard_focus, this, _2));
 }
 
+void ttext_::set_active(const bool active)
+{
+	if(get_active() != active) {
+		set_state(active ? ENABLED : DISABLED);
+	}
+}
+
 void ttext_::set_maximum_length(const size_t maximum_length)
 {
 	const bool need_update = text_.get_length() > maximum_length;

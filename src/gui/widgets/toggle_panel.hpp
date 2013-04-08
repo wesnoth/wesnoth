@@ -54,8 +54,8 @@ public:
 			  const tpoint& coordinate
 			, const bool must_be_active) const OVERRIDE;
 
-	/** Inherited from tpanel. */
-	void set_active(const bool active);
+	/** See @ref tcontrol::set_active. */
+	virtual void set_active(const bool active) OVERRIDE;
 
 	/** Inherited from tpanel. */
 	bool get_active() const

@@ -108,6 +108,13 @@ void tscrollbar_::place(const tpoint& origin, const tpoint& size)
 	recalculate();
 }
 
+void tscrollbar_::set_active(const bool active)
+{
+	if(get_active() != active) {
+		set_state(active ? ENABLED : DISABLED);
+	}
+}
+
 void tscrollbar_::set_item_position(const unsigned item_position)
 {
 	// Set the value always execute since we update a part of the state.

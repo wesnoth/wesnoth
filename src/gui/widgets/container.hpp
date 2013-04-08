@@ -142,8 +142,8 @@ public:
 			  const std::string& id
 			, const bool must_be_active) const OVERRIDE;
 
-	/** Inherited from tcontrol. */
-	void set_active(const bool active);
+	/** See @ref tcontrol::set_active. */
+	virtual void set_active(const bool active) OVERRIDE;
 
 	/** See @ref twidget::disable_click_dismiss. */
 	bool disable_click_dismiss() const OVERRIDE;

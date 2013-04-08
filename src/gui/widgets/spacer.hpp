@@ -46,8 +46,8 @@ public:
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** Inherited from tcontrol. */
-	void set_active(const bool) {}
+	/** See @ref tcontrol::set_active. */
+	virtual void set_active(const bool active) OVERRIDE;
 
 	/** Inherited from tcontrol. */
 	bool get_active() const { return true; }

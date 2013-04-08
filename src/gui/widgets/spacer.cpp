@@ -34,6 +34,11 @@ tpoint tspacer::calculate_best_size() const
 			: tcontrol::calculate_best_size();
 }
 
+void tspacer::set_active(const bool /*active*/)
+{
+	/* DO NOTHING */
+}
+
 bool tspacer::disable_click_dismiss() const
 {
 	return false;

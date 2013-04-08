@@ -36,8 +36,8 @@ public:
 	/** See @ref tcontrol::set_members. */
 	void set_members(const string_map& data);
 
-	/** Inherited from tcontrol. */
-	void set_active(const bool active);
+	/** See @ref tcontrol::set_active. */
+	virtual void set_active(const bool active) OVERRIDE;
 
 	/** Inherited from tcontrol. */
 	bool get_active() const
