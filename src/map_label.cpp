@@ -32,12 +32,12 @@ static bool is_shrouded(const display& disp, const map_location& loc)
 }
 
 map_labels::map_labels(const display &disp, const team *team) :
-	disp_(disp), team_(team), labels_()
+	disp_(disp), team_(team), labels_(), enabled_(true)
 {
 }
 
 map_labels::map_labels(const map_labels& other) :
-	disp_(other.disp_), team_(other.team_), labels_()
+	disp_(other.disp_), team_(other.team_), labels_(), enabled_(true)
 {
 	config cfg;
 	other.write(cfg);
@@ -260,6 +260,13 @@ void map_labels::recalculate_labels()
 	}
 }
 
+void map_labels::enable(bool is_enabled) {
+	if (is_enabled != enabled_) {
+		enabled_ = is_enabled;
+		recalculate_labels();
+	}
+}
+
 bool map_labels::visible_global_label(const map_location& loc) const
 {
 	const team_label_map::const_iterator glabels = labels_.find(team_name());
@@ -402,10 +409,7 @@ std::string terrain_label::cfg_color() const
 	const unsigned int green = static_cast<unsigned int>(color_.g);
 	const unsigned int blue = static_cast<unsigned int>(color_.b);
 	const unsigned int alpha = static_cast<unsigned int>(color_.unused);
-	buf << red << ","
-			<< green << ","
-			<< blue << ","
-			<< alpha;
+	buf << red << "," << green << "," << blue << "," << alpha;
 	return buf.str();
 }
 
@@ -489,6 +493,7 @@ void terrain_label::draw()
 
 bool terrain_label::visible() const
 {
+	if (!parent_->enabled()) return false;
 	if ((!visible_in_fog_ && parent_->disp().fogged(loc_))
         || (!visible_in_shroud_ && parent_->disp().shrouded(loc_))) {
             return false;

@@ -52,6 +52,9 @@ public:
 							   const bool visible_in_shroud = false,
 							   const bool immutable = false);
 
+	bool enabled() const { return enabled_; };
+	void enable(bool is_enabled);
+
 	void add_label(const map_location &, terrain_label *);
 
 	void clear(const std::string&, bool force);
@@ -76,6 +79,7 @@ private:
 	const team* team_;
 
 	team_label_map labels_;
+	bool enabled_;
 };
 
 /// To store label data
