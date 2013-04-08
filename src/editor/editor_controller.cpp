@@ -71,6 +71,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 {
 	init_gui();
 	toolkit_.reset(new editor_toolkit(*gui_.get(), key_, game_config_, *context_manager_.get()));
+	context_manager_->switch_context(0);
 	init_tods(game_config);
 	init_music(game_config);
 	rng_.reset(new rand_rng::rng());
@@ -92,13 +93,6 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 
 void editor_controller::init_gui()
 {
-	//TODO duplicate code, see the map_context_refresher
-	resources::game_map = &context_manager_->get_map();
-	resources::units = &context_manager_->get_map_context().get_units();
-	resources::tod_manager = &context_manager_->get_map_context().get_time_manager();
-	resources::teams = &context_manager_->get_map_context().get_teams();
-	resources::state_of_game = &context_manager_->get_map_context().get_game_state();
-
 	gui_->change_map(&context_manager_->get_map());
 	gui_->change_units(&context_manager_->get_map_context().get_units());
 	gui_->change_teams(&context_manager_->get_map_context().get_teams());
@@ -294,6 +288,7 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
 			return true;
 		case HOTKEY_EDITOR_TOOL_LABEL:
+			return true;
 		case HOTKEY_EDITOR_TOOL_UNIT:
 		case HOTKEY_EDITOR_TOOL_VILLAGE:
 			return false;
@@ -388,6 +383,8 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 
 bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int index)
 {
+	const int zoom_amount = 4;
+
 	SCOPE_ED;
 	using namespace hotkey;
 	switch (command) {
@@ -414,6 +411,18 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 				//TODO
 				return true;
 			}
+			return true;
+		case HOTKEY_ZOOM_IN:
+			gui_->set_zoom(zoom_amount);
+			context_manager_->get_map_context().get_labels().recalculate_labels();
+			return true;
+		case HOTKEY_ZOOM_OUT:
+			gui_->set_zoom(-zoom_amount);
+			context_manager_->get_map_context().get_labels().recalculate_labels();
+			return true;
+		case HOTKEY_ZOOM_DEFAULT:
+			gui_->set_default_zoom();
+			context_manager_->get_map_context().get_labels().recalculate_labels();
 			return true;
 		case HOTKEY_EDITOR_PALETTE_GROUPS:
 			return true;
