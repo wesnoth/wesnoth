@@ -25,6 +25,8 @@
 
 namespace editor {
 
+map_labels* get_current_labels();
+
 class context_manager {
 
 public:
@@ -75,7 +77,7 @@ public:
 	;
 
 	/**
-	 * Peform an action on the current map_context, then refresh the display.
+	 * Perform an action on the current map_context, then refresh the display.
 	 */
 	void perform_refresh(const editor_action& action, bool drag_part = false);
 
@@ -245,7 +247,7 @@ public:
 	void revert_map();
 
 	/**
-	 * Reload the map after ot has significantly changed (when e.g. the dimensions changed).
+	 * Reload the map after it has significantly changed (when e.g. the dimensions changed).
 	 * This is necessary to avoid issues with parts of the map being cached in the display class.
 	 */
 	void reload_map();

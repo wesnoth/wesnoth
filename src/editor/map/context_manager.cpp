@@ -43,6 +43,13 @@ static std::vector<std::string> saved_windows_;
 
 namespace editor {
 
+map_labels* current_labels;
+
+map_labels* get_current_labels() {
+	return current_labels;
+}
+
+
 /**
  * Utility class to properly refresh the display when the map context object is replaced
  * without duplicating code.
@@ -73,6 +80,10 @@ public:
 
 		//resources::state_of_game = &ec_.get_map().get_game_state();
 		context_manager_.gui().init_flags();
+
+		current_labels->enable(false);
+		current_labels = &context_manager_.get_map_context().get_labels();
+		current_labels->enable(true);
 	}
 private:
 	context_manager& context_manager_;
@@ -673,6 +684,7 @@ void context_manager::switch_context(const int index)
 		return;
 	}
 	map_context_refresher mcr(*this, *map_contexts_[index]);
+	current_labels = &get_map_context().get_labels();
 	current_context_index_ = index;
 }
 
