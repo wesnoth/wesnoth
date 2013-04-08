@@ -33,12 +33,7 @@ public:
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/**
-	 * Inherited from tcontrol.
-	 *
-	 * Sets the additional member
-	 *  * icon_name_              icon
-	 */
+	/** See @ref tcontrol::set_members. */
 	void set_members(const string_map& data);
 
 	/** Inherited from tcontrol. */
