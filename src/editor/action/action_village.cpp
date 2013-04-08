@@ -34,30 +34,31 @@ editor_action* editor_action_village::perform(map_context& mc) const
 	std::auto_ptr<editor_action> undo;
 
 	if(!mc.get_map().is_village(loc_)) return NULL;
-	//std::vector<team>& teams = mc.get_map().get_teams();
-	//team *t = unsigned(side_number_) < teams.size() ? &teams[side_number_] : NULL;
-	//if (t && t->owns_village(loc_))	return NULL;
+	std::vector<team>& teams = mc.get_teams();
+	team *t = unsigned(side_number_) < teams.size() ? &teams[side_number_] : NULL;
+	if (t && t->owns_village(loc_))	return NULL;
 
 	undo.reset(new editor_action_village_delete(loc_));
 
-	//for(std::vector<team>::iterator i = teams.begin(); i != teams.end(); ++i) {
-	//	if (i->owns_village(loc_))
-	//		undo.reset(new editor_action_village(loc_, i->side() -1));
-	//}
+	for(std::vector<team>::iterator i = teams.begin(); i != teams.end(); ++i) {
+		if (i->owns_village(loc_))
+			undo.reset(new editor_action_village(loc_, i->side() -1));
+	}
 
 	perform_without_undo(mc);
 	return undo.release();
 }
 
-void editor_action_village::perform_without_undo(map_context& /*mc*/) const
+void editor_action_village::perform_without_undo(map_context& mc) const
 {
-	//std::vector<team>& teams = mc.get_map().get_teams();
-	//for(std::vector<team>::iterator i = teams.begin(); i != teams.end(); ++i) {
-	//	if (i->owns_village(loc_))
-	//			i->lose_village(loc_);
-	//}
+	std::vector<team>& teams = mc.get_teams();
+	for(std::vector<team>::iterator i = teams.begin(); i != teams.end(); ++i) {
+		if (i->owns_village(loc_))
+				i->lose_village(loc_);
+	}
 
-	//teams[side_number_].get_village(loc_, 0, false);
+	//TODO 0 is a bad argument
+	teams[side_number_].get_village(loc_, 0, false);
 }
 
 
@@ -70,26 +71,26 @@ editor_action* editor_action_village_delete::perform(map_context& mc) const
 {
 	std::auto_ptr<editor_action> undo;
 
-	//const std::vector<team>& teams = mc.get_map().get_teams();
-	//for(std::vector<team>::const_iterator i = teams.begin(); i != teams.end(); ++i) {
-	//	if (i->owns_village(loc_)) {
+	const std::vector<team>& teams = mc.get_teams();
+	for(std::vector<team>::const_iterator i = teams.begin(); i != teams.end(); ++i) {
+		if (i->owns_village(loc_)) {
 			perform_without_undo(mc);
-	//		undo.reset(new editor_action_village(loc_, i->side() -1));
-	//	}
-	//}
+			undo.reset(new editor_action_village(loc_, i->side() -1));
+		}
+	}
 
 	return undo.release();
 }
 
-void editor_action_village_delete::perform_without_undo(map_context& /*mc*/) const
+void editor_action_village_delete::perform_without_undo(map_context& mc) const
 {
-	//std::vector<team>& teams = mc.get_map().get_teams();
-	//for(std::vector<team>::iterator i = teams.begin(); i != teams.end(); ++i) {
-	//	if (i->owns_village(loc_)) {
-	//		i->lose_village(loc_);
-	//		mc.add_changed_location(loc_);
-	//	}
-	//}
+	std::vector<team>& teams = mc.get_teams();
+	for(std::vector<team>::iterator i = teams.begin(); i != teams.end(); ++i) {
+		if (i->owns_village(loc_)) {
+			i->lose_village(loc_);
+			mc.add_changed_location(loc_);
+		}
+	}
 }
 
 
