@@ -53,9 +53,10 @@ public:
 
 	void remove_node(ttree_view_node* tree_view_node);
 
-	/** Inherited from tscrollbar_container. */
-	void child_populate_dirty_list(twindow& caller,
-			const std::vector<twidget*>& call_stack);
+	/** See @ref twidget::child_populate_dirty_list. */
+	virtual void child_populate_dirty_list(
+			  twindow& caller
+			, const std::vector<twidget*>& call_stack) OVERRIDE;
 
 	/** Inherited from tcontainer_. */
 	void set_self_active(const bool /*active*/)  {}

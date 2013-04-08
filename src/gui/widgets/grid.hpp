@@ -245,9 +245,10 @@ public:
 	/** See @ref twidget::layout_children. */
 	virtual void layout_children() OVERRIDE;
 
-	/** Inherited from twidget. */
-	void child_populate_dirty_list(twindow& caller,
-			const std::vector<twidget*>& call_stack);
+	/** See @ref twidget::child_populate_dirty_list. */
+	virtual void child_populate_dirty_list(
+			  twindow& caller
+			, const std::vector<twidget*>& call_stack) OVERRIDE;
 
 	/** See @ref twidget::find_at. */
 	virtual twidget* find_at(

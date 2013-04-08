@@ -202,9 +202,10 @@ public:
 	/** See @ref twidget::layout_children. */
 	virtual void layout_children() OVERRIDE;
 
-	/** Inherited from tscrollbar_container. */
-	void child_populate_dirty_list(twindow& caller,
-			const std::vector<twidget*>& call_stack);
+	/** See @ref twidget::child_populate_dirty_list. */
+	virtual void child_populate_dirty_list(
+			  twindow& caller
+			, const std::vector<twidget*>& call_stack) OVERRIDE;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 

@@ -464,9 +464,10 @@ private:
 			, int x_offset
 			, int y_offset) OVERRIDE;
 
-	/** Inherited from tcontainer_. */
-	void child_populate_dirty_list(twindow& caller,
-		const std::vector<twidget*>& call_stack);
+	/** See @ref twidget::child_populate_dirty_list. */
+	virtual void child_populate_dirty_list(
+			  twindow& caller
+			, const std::vector<twidget*>& call_stack) OVERRIDE;
 
 	/**
 	 * Sets the size of the content grid.
