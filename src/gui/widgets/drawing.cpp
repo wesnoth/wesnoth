@@ -39,6 +39,11 @@ void tdrawing::set_active(const bool /*active*/)
 	/* DO NOTHING */
 }
 
+bool tdrawing::get_active() const
+{
+	return true;
+}
+
 bool tdrawing::disable_click_dismiss() const
 {
 	return false;

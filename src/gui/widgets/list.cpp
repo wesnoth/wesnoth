@@ -364,6 +364,11 @@ void tlist::init()
 
 }
 
+bool tlist::get_active() const
+{
+	return state_ != DISABLED;
+}
+
 void tlist::layout_children(const bool force)
 {
 	if(need_layout_ || force) {

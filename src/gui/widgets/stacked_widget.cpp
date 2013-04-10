@@ -37,6 +37,11 @@ tstacked_widget::tstacked_widget()
 {
 }
 
+bool tstacked_widget::get_active() const
+{
+	return true;
+}
+
 void tstacked_widget::layout_children()
 {
 	assert(generator_);

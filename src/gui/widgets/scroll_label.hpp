@@ -52,7 +52,8 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	bool get_active() const { return state_ != DISABLED; }
+	/** See @ref tcontrol::get_active. */
+	virtual bool get_active() const OVERRIDE;
 
 	unsigned get_state() const { return state_; }
 

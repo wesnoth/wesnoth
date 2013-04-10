@@ -46,6 +46,11 @@ SDL_Rect tpanel::get_client_rect() const
 	return result;
 }
 
+bool tpanel::get_active() const
+{
+	return true;
+}
+
 void tpanel::impl_draw_background(surface& frame_buffer)
 {
 	DBG_GUI_D << LOG_HEADER

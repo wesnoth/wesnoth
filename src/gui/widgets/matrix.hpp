@@ -75,7 +75,8 @@ public:
 		STATE::set_active(active);
 	}
 
-	bool get_active() const
+	/** See @ref tcontrol::get_active. */
+	virtual bool get_active() const OVERRIDE
 	{
 		return STATE::get_active();
 	}

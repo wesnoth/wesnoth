@@ -47,6 +47,11 @@ void tminimap::set_active(const bool /*active*/)
 	/* DO NOTHING */
 }
 
+bool tminimap::get_active() const
+{
+	return true;
+}
+
 /** Key type for the cache. */
 struct tkey
 {

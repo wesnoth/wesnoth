@@ -438,6 +438,11 @@ void tscrollbar_container::set_visible_rectangle(const SDL_Rect& rectangle)
 	content_grid_->set_visible_rectangle(content_visible_area_);
 }
 
+bool tscrollbar_container::get_active() const
+{
+	return state_ != DISABLED;
+}
+
 twidget* tscrollbar_container::find_at(
 		const tpoint& coordinate, const bool must_be_active)
 {

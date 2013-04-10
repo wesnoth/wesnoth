@@ -102,6 +102,11 @@ tgrid& tmulti_page::page_grid(const unsigned page)
 	return generator_->item(page);
 }
 
+bool tmulti_page::get_active() const
+{
+	return true;
+}
+
 namespace {
 
 /**

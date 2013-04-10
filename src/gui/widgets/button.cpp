@@ -59,6 +59,11 @@ void tbutton::set_active(const bool active)
 	}
 }
 
+bool tbutton::get_active() const
+{
+	return state_ != DISABLED;
+}
+
 void tbutton::set_state(const tstate state)
 {
 	if(state != state_) {

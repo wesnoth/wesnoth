@@ -39,6 +39,11 @@ void tspacer::set_active(const bool /*active*/)
 	/* DO NOTHING */
 }
 
+bool tspacer::get_active() const
+{
+	return true;
+}
+
 bool tspacer::disable_click_dismiss() const
 {
 	return false;

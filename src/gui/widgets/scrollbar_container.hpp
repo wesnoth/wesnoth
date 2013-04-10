@@ -116,8 +116,8 @@ public:
 
 	/***** ***** ***** inherited ****** *****/
 
-	/** Inherited from tcontainer_. */
-	bool get_active() const { return state_ != DISABLED; }
+	/** See @ref tcontrol::get_active. */
+	virtual bool get_active() const OVERRIDE;
 
 	/** Inherited from tcontainer_. */
 	unsigned get_state() const { return state_; }

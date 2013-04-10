@@ -73,6 +73,11 @@ void timage::set_active(const bool /*active*/)
 	/* DO NOTHING */
 }
 
+bool timage::get_active() const
+{
+	return true;
+}
+
 bool timage::disable_click_dismiss() const
 {
 	return false;

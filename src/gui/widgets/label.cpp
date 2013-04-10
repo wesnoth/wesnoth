@@ -44,6 +44,11 @@ void tlabel::set_active(const bool active)
 	}
 }
 
+bool tlabel::get_active() const
+{
+	return state_ != DISABLED;
+}
+
 bool tlabel::disable_click_dismiss() const
 {
 	return false;

@@ -74,6 +74,11 @@ void tscroll_label::set_use_markup(bool use_markup)
 	}
 }
 
+bool tscroll_label::get_active() const
+{
+	return state_ != DISABLED;
+}
+
 void tscroll_label::finalize_subclass()
 {
 	assert(content_grid());

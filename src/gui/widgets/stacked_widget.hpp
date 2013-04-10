@@ -37,8 +37,8 @@ public:
 
 	/***** ***** ***** inherited ***** ****** *****/
 
-	/** Inherited from tcontrol. */
-	bool get_active() const { return true; }
+	/** See @ref tcontrol::get_active. */
+	virtual bool get_active() const OVERRIDE;
 
 	/** Inherited from tcontrol. */
 	unsigned get_state() const { return 0; }
