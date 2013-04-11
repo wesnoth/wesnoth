@@ -35,8 +35,8 @@ public:
 	/** See @ref twidget::can_wrap. */
 	virtual bool can_wrap() const OVERRIDE;
 
-	/** Inherited from tcontrol. */
-	unsigned get_characters_per_line() const;
+	/** See @ref tcontrol::get_characters_per_line. */
+	virtual unsigned get_characters_per_line() const OVERRIDE;
 
 	/** See @ref tcontrol::set_active. */
 	virtual void set_active(const bool active) OVERRIDE;
