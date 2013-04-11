@@ -40,8 +40,8 @@ public:
 
 	tscroll_label();
 
-	/** Inherited from tcontrol. */
-	void set_label(const t_string& label);
+	/** See @ref tcontrol::set_label. */
+	virtual void set_label(const t_string& label) OVERRIDE;
 
 	/** Inherited from tcontrol. */
 	void set_use_markup(bool use_markup);
