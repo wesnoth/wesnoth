@@ -132,8 +132,8 @@ protected:
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** Inherited from tcontrol. */
-	void update_canvas();
+	/** See @ref tcontrol::update_canvas. */
+	virtual void update_canvas() OVERRIDE;
 
 	/** Inherited from ttext_. */
 	void goto_end_of_line(const bool select = false)

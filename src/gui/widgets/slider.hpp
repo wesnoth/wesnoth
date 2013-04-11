@@ -123,8 +123,8 @@ private:
 	int get_length_difference(const tpoint& original, const tpoint& current) const
 		{ return current.x - original.x; }
 
-	/** Inherited from tscrollbar. */
-	void update_canvas();
+	/** See @ref tcontrol::update_canvas. */
+	virtual void update_canvas() OVERRIDE;
 
 	/**
 	 * When the slider shows the minimum value can show a special text.

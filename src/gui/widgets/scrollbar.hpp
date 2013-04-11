@@ -126,8 +126,12 @@ protected:
 
 	unsigned get_positioner_length() const { return positioner_length_; }
 
-	/** After a recalculation the canvasses also need to be updated. */
-	virtual void update_canvas();
+	/**
+	 * See @ref tcontrol::update_canvas.
+	 *
+	 * After a recalculation the canvasses also need to be updated.
+	 */
+	virtual void update_canvas() OVERRIDE;
 
 	/**
 	 * Callback for subclasses to get notified about positioner movement.
