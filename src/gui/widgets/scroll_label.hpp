@@ -43,8 +43,8 @@ public:
 	/** See @ref tcontrol::set_label. */
 	virtual void set_label(const t_string& label) OVERRIDE;
 
-	/** Inherited from tcontrol. */
-	void set_use_markup(bool use_markup);
+	/** See @ref tcontrol::set_use_markup. */
+	virtual void set_use_markup(bool use_markup) OVERRIDE;
 
 	/** Inherited from tcontainer_. */
 	void set_self_active(const bool active)
