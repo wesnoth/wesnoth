@@ -88,6 +88,11 @@ bool trepeating_button::get_active() const
 	return state_ != DISABLED;
 }
 
+unsigned trepeating_button::get_state() const
+{
+	return state_;
+}
+
 void trepeating_button::set_state(const tstate state)
 {
 	if(state != state_) {

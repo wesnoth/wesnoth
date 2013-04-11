@@ -81,7 +81,8 @@ public:
 		return STATE::get_active();
 	}
 
-	unsigned get_state() const
+	/** See @ref tcontrol::get_state. */
+	virtual unsigned get_state() const OVERRIDE
 	{
 		return STATE::get_state();
 	}

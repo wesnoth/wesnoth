@@ -40,8 +40,8 @@ public:
 	/** See @ref tcontrol::get_active. */
 	virtual bool get_active() const OVERRIDE;
 
-	/** Inherited from tcontrol. */
-	unsigned get_state() const { return 0; }
+	/** See @ref tcontrol::get_state. */
+	virtual unsigned get_state() const OVERRIDE;
 
 	/** See @ref twidget::layout_children. */
 	virtual void layout_children() OVERRIDE;

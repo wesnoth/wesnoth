@@ -44,6 +44,11 @@ bool tdrawing::get_active() const
 	return true;
 }
 
+unsigned tdrawing::get_state() const
+{
+	return 0;
+}
+
 bool tdrawing::disable_click_dismiss() const
 {
 	return false;

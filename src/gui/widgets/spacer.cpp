@@ -44,6 +44,11 @@ bool tspacer::get_active() const
 	return true;
 }
 
+unsigned tspacer::get_state() const
+{
+	return 0;
+}
+
 bool tspacer::disable_click_dismiss() const
 {
 	return false;

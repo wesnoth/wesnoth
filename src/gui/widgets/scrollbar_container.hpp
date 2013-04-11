@@ -119,8 +119,8 @@ public:
 	/** See @ref tcontrol::get_active. */
 	virtual bool get_active() const OVERRIDE;
 
-	/** Inherited from tcontainer_. */
-	unsigned get_state() const { return state_; }
+	/** See @ref tcontrol::get_state. */
+	virtual unsigned get_state() const OVERRIDE;
 
 	/** See @ref twidget::find_at. */
 	virtual twidget* find_at(

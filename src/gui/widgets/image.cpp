@@ -78,6 +78,11 @@ bool timage::get_active() const
 	return true;
 }
 
+unsigned timage::get_state() const
+{
+	return ENABLED;
+}
+
 bool timage::disable_click_dismiss() const
 {
 	return false;

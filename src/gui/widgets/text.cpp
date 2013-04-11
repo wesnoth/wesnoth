@@ -63,6 +63,11 @@ bool ttext_::get_active() const
 	return state_ != DISABLED;
 }
 
+unsigned ttext_::get_state() const
+{
+	return state_;
+}
+
 void ttext_::set_maximum_length(const size_t maximum_length)
 {
 	const bool need_update = text_.get_length() > maximum_length;

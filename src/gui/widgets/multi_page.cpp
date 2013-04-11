@@ -107,6 +107,11 @@ bool tmulti_page::get_active() const
 	return true;
 }
 
+unsigned tmulti_page::get_state() const
+{
+	return 0;
+}
+
 namespace {
 
 /**

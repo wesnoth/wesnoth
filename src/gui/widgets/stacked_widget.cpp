@@ -42,6 +42,11 @@ bool tstacked_widget::get_active() const
 	return true;
 }
 
+unsigned tstacked_widget::get_state() const
+{
+	return 0;
+}
+
 void tstacked_widget::layout_children()
 {
 	assert(generator_);

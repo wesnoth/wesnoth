@@ -60,8 +60,8 @@ public:
 	/** See @ref tcontrol::get_active. */
 	virtual bool get_active() const OVERRIDE;
 
-	/** Inherited from tpanel. */
-	unsigned get_state() const { return state_; }
+	/** See @ref tcontrol::get_state. */
+	virtual unsigned get_state() const OVERRIDE;
 
 	/**
 	 * Inherited from tpanel.

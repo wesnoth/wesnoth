@@ -42,6 +42,11 @@ bool tprogress_bar::get_active() const
 	return true;
 }
 
+unsigned tprogress_bar::get_state() const
+{
+	return ENABLED;
+}
+
 void tprogress_bar::set_percentage(const unsigned percentage)
 {
 	assert(percentage <= 100);

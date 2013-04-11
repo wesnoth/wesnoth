@@ -51,6 +51,11 @@ bool tpanel::get_active() const
 	return true;
 }
 
+unsigned tpanel::get_state() const
+{
+	return 0;
+}
+
 void tpanel::impl_draw_background(surface& frame_buffer)
 {
 	DBG_GUI_D << LOG_HEADER
