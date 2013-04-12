@@ -469,7 +469,7 @@ surface scale_surface(const surface &surf, int w, int h, bool optimize)
 				// input pixels. The labels assume
 				// that the upper left corner of the
 				// screen ("northeast") is 0,0 but the
-				// code should still be consistant if
+				// code should still be consistent if
 				// the graphics origin is actually
 				// somewhere else.
 
