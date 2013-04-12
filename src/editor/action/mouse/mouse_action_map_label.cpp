@@ -33,7 +33,7 @@ editor_action* mouse_action_map_label::click_left(editor_display& disp, int x, i
 }
 
 editor_action* mouse_action_map_label::drag_left(editor_display& disp, int x, int y
-		, bool& /*partial*/, editor_action* /*last_undo*/)
+		, bool& partial, editor_action* /*last_undo*/)
 {
 	map_location hex = disp.hex_clicked_on(x, y);
 
@@ -47,7 +47,7 @@ editor_action* mouse_action_map_label::drag_left(editor_display& disp, int x, in
 
 
 	if (label) {
-	//	partial = true;
+		partial = true;
 		chain = new editor_action_chain(new editor_action_label_delete(last_draged_));
 		chain->append_action(new editor_action_label(hex, label->text(), label->team_name(), label->color(),
 				label->visible_in_shroud(), label->visible_in_fog(), label->immutable()));
