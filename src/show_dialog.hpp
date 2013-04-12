@@ -173,7 +173,7 @@ public:
 	virtual handler_vector handler_members() { return widget::handler_members(); }
 };
 
-//if a menu is given, then returns -1 if the dialog was cancelled, and the
+//if a menu is given, then returns -1 if the dialog was canceled, and the
 //index of the selection otherwise. If no menu is given, returns the index
 //of the button that was pressed
 int show_dialog(display &screen, surface image,
