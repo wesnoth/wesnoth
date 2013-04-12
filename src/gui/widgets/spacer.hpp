@@ -76,8 +76,8 @@ private:
 			, int x_offset
 			, int y_offset) OVERRIDE;
 
-	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const;
+	/** See @ref tcontrol::get_control_type. */
+	virtual const std::string& get_control_type() const OVERRIDE;
 };
 
 

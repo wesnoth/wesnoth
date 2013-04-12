@@ -224,8 +224,8 @@ private:
 	/** Inherited from ttext_. */
 	void handle_key_clear_line(SDLMod modifier, bool& handled);
 
-	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const;
+	/** See @ref tcontrol::get_control_type. */
+	virtual const std::string& get_control_type() const OVERRIDE;
 
 	/** Inherited from tcontrol. */
 	void load_config_extra();

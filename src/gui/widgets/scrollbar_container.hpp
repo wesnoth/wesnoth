@@ -483,8 +483,8 @@ private:
 	/** Helper function which needs to be called after the scollbar moved. */
 	void scrollbar_moved();
 
-	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const;
+	/** See @ref tcontrol::get_control_type. */
+	virtual const std::string& get_control_type() const OVERRIDE;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 

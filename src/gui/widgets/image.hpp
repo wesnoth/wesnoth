@@ -85,8 +85,8 @@ private:
 	 */
 	enum tstate { ENABLED, COUNT };
 
-	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const;
+	/** See @ref tcontrol::get_control_type. */
+	virtual const std::string& get_control_type() const OVERRIDE;
 };
 
 } // namespace gui2

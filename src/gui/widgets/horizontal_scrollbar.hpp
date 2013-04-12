@@ -56,8 +56,8 @@ private:
 	int get_length_difference(const tpoint& original, const tpoint& current) const
 		{ return current.x - original.x; }
 
-	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const;
+	/** See @ref tcontrol::get_control_type. */
+	virtual const std::string& get_control_type() const OVERRIDE;
 };
 
 } // namespace gui2

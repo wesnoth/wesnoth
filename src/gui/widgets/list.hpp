@@ -267,8 +267,8 @@ private:
 	/** Inherited from tcontainer_. */
 	void set_self_active(const bool)  {}
 
-	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const;
+	/** See @ref tcontrol::get_control_type. */
+	virtual const std::string& get_control_type() const OVERRIDE;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 

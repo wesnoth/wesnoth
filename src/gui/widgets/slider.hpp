@@ -146,8 +146,8 @@ private:
 	 */
 	std::vector<t_string> value_labels_;
 
-	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const;
+	/** See @ref tcontrol::get_control_type. */
+	virtual const std::string& get_control_type() const OVERRIDE;
 
 	/**
 	 * Handlers for keyboard input

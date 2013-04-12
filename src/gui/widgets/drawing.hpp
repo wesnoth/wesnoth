@@ -73,8 +73,8 @@ private:
 	/** When we're used as a fixed size item, this holds the best size. */
 	tpoint best_size_;
 
-	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const;
+	/** See @ref tcontrol::get_control_type. */
+	virtual const std::string& get_control_type() const OVERRIDE;
 };
 
 
