@@ -4,6 +4,9 @@ Version 1.10.6+dev:
  * User interface:
    * Fixed (bug #17220): Cursor in gui2 text box now behaves appropriately after
      text box overflow occurs.
+ * WML engine:
+   * Fixed invalid memory access issues caused by subnamespaced persistent WML
+     variables (bug #20385).
  * Miscellaneous and bug fixes
    * Improved: Autorevision based revision numbers in CMake.
 
