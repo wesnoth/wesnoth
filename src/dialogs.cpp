@@ -20,11 +20,14 @@
 #include "global.hpp"
 
 #include "actions/attack.hpp"
+#include "actions/undo.hpp"
 #include "dialogs.hpp"
 #include "game_events.hpp"
 #include "game_display.hpp"
 #include "game_preferences.hpp"
 #include "gui/dialogs/game_delete.hpp"
+#include "gui/dialogs/message.hpp"
+#include "gui/widgets/window.hpp"
 #include "gettext.hpp"
 #include "help.hpp"
 #include "language.hpp"
@@ -70,6 +73,77 @@ static lg::log_domain log_config("config");
 
 namespace dialogs
 {
+
+namespace
+{
+
+class delete_recall_unit : public gui::dialog_button_action
+{
+public:
+	delete_recall_unit(display& disp, gui::filter_textbox& filter, const std::vector<const unit*>& units) : disp_(disp), filter_(filter), units_(units) {}
+private:
+	gui::dialog_button_action::RESULT button_pressed(int menu_selection);
+
+	display& disp_;
+	gui::filter_textbox& filter_;
+	const std::vector<const unit*>& units_;
+};
+
+gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_selection)
+{
+	const std::vector<std::pair<int, int> >& param = std::vector<std::pair<int, int> >();
+	param.back();
+	const size_t index = size_t(filter_.get_index(menu_selection));
+	if(index < units_.size()) {
+		const unit &u = *(units_[index]);
+
+		//If the unit is of level > 1, or is close to advancing,
+		//we warn the player about it
+		std::stringstream message;
+		if (u.loyal()) {
+			// TRANSLATORS: this string ends with a space
+			message << _("This unit is loyal and requires no upkeep. ") << (u.gender() == unit_race::MALE ? _("Do you really want to dismiss him?")
+					: _("Do you really want to dismiss her?"));
+		} else if(u.level() > 1) {
+			// TRANSLATORS: this string ends with a space
+			message << _("This unit is an experienced one, having advanced levels. ") << (u.gender() == unit_race::MALE ? _("Do you really want to dismiss him?")
+					: _("Do you really want to dismiss her?"));
+
+		} else if(u.experience() > u.max_experience()/2) {
+			// TRANSLATORS: this string ends with a space
+			message << _("This unit is close to advancing a level. ") << (u.gender() == unit_race::MALE ? _("Do you really want to dismiss him?")
+					: _("Do you really want to dismiss her?"));
+		}
+
+		if(!message.str().empty()) {
+			const int res = gui2::show_message(disp_.video(), _("Dismiss Unit"), message.str(), gui2::tmessage::yes_no_buttons);
+			if(res == gui2::twindow::CANCEL) {
+				return gui::CONTINUE_DIALOG;
+			}
+		}
+		// Remove the item from filter_textbox memory
+		filter_.delete_item(index);
+		//add dismissal to the undo stack
+		resources::undo_stack->add_dismissal(u);
+
+		// Find the unit in the recall list.
+		std::vector<unit>& recall_list = (*resources::teams)[u.side() -1].recall_list();
+		assert(!recall_list.empty());
+		std::vector<unit>::iterator dismissed_unit =
+				find_if_matches_id(recall_list, u.id());
+		assert(dismissed_unit != recall_list.end());
+
+		// Record the dismissal, then delete the unit.
+		recorder.add_disband(dismissed_unit->id());
+		recall_list.erase(dismissed_unit);
+
+		return gui::DELETE_ITEM;
+	} else {
+		return gui::CONTINUE_DIALOG;
+	}
+}
+
+} //anon namespace
 
 int advance_unit_dialog(const map_location &loc)
 {
@@ -277,6 +351,119 @@ int recruit_dialog(display& disp, std::vector< const unit_type* >& units, const 
 	rmenu.set_panes(preview_panes);
 	return rmenu.show();
 }
+
+
+int recall_dialog(display& disp, std::vector< const unit* >& units, int side, const std::string& title_suffix)
+{	
+	std::vector<std::string> options, options_to_filter;
+
+	std::ostringstream heading;
+	heading << HEADING_PREFIX << COLUMN_SEPARATOR << _("Type")
+		<< COLUMN_SEPARATOR << _("Name")
+		<< COLUMN_SEPARATOR << _("Level^Lvl.")
+		<< COLUMN_SEPARATOR << _("XP");
+	heading << COLUMN_SEPARATOR << _("Traits");
+
+	gui::menu::basic_sorter sorter;
+	sorter.set_alpha_sort(1).set_alpha_sort(2);
+	sorter.set_level_sort(3,4).set_xp_sort(4).set_alpha_sort(5);
+
+	options.push_back(heading.str());
+	options_to_filter.push_back(options.back());
+
+	BOOST_FOREACH(const unit* u, units)
+	{
+		std::stringstream option, option_to_filter;
+		std::string name = u->name();
+		if (name.empty()) name = utils::unicode_em_dash;
+
+		option << IMAGE_PREFIX << u->absolute_image();
+	#ifndef LOW_MEM
+		option << "~RC("  << u->team_color() << '>'
+			<< team::get_side_color_index(side) << ')';
+	#endif
+		option << COLUMN_SEPARATOR
+			<< u->type_name() << COLUMN_SEPARATOR
+			<< name << COLUMN_SEPARATOR;
+
+		// Show units of level (0=gray, 1 normal, 2 bold, 2+ bold&wbright)
+		const int level = u->level();
+		if(level < 1) {
+			option << "<150,150,150>";
+		} else if(level == 1) {
+			option << font::NORMAL_TEXT;
+		} else if(level == 2) {
+			option << font::BOLD_TEXT;
+		} else if(level > 2 ) {
+			option << font::BOLD_TEXT << "<255,255,255>";
+		}
+		option << level << COLUMN_SEPARATOR;
+
+		option << font::color2markup(u->xp_color()) << u->experience() << "/";
+		if (u->can_advance())
+			option << u->max_experience();
+		else
+			option << "-";
+
+		option_to_filter << u->type_name() << " " << name << " " << u->level();
+
+		option << COLUMN_SEPARATOR;
+		BOOST_FOREACH(const t_string& trait, u->trait_names()) {
+			option << trait << '\n';
+			option_to_filter << " " << trait;
+		}
+
+		options.push_back(option.str());
+		options_to_filter.push_back(option_to_filter.str());
+	}
+	
+	gui::dialog rmenu(disp, _("Recall") + title_suffix,
+		_("Select unit:") + std::string("\n"),
+		gui::OK_CANCEL, gui::dialog::default_style);
+
+	gui::menu::imgsel_style units_display_style(gui::menu::bluebg_style);
+	units_display_style.scale_images(font::relative_size(72), font::relative_size(72));
+
+	gui::menu* units_menu = new gui::menu(disp.video(), options, false, -1,
+		gui::dialog::max_menu_width, &sorter, &units_display_style, false);
+
+	rmenu.set_menu(units_menu);
+
+	gui::filter_textbox* filter = new gui::filter_textbox(disp.video(),
+		_("Filter: "), options, options_to_filter, 1, rmenu, 200);
+	rmenu.set_textbox(filter);
+
+	delete_recall_unit recall_deleter(disp, *filter, units);
+	gui::dialog_button_info delete_button(&recall_deleter,_("Dismiss Unit"));
+	rmenu.add_button(delete_button);
+
+	rmenu.add_button(new help::help_button(disp,"recruit_and_recall"),
+		gui::dialog::BUTTON_HELP);
+
+	dialogs::units_list_preview_pane unit_preview(units, filter);
+	rmenu.add_pane(&unit_preview);
+
+	//sort by level
+	static int sort_by = 3;
+	static bool sort_reversed = false;
+
+	if(sort_by >= 0) {
+		rmenu.get_menu().sort_by(sort_by);
+		// "reclick" on the sorter to reverse the order
+		if(sort_reversed) {
+			rmenu.get_menu().sort_by(sort_by);
+		}
+	}
+
+	int res = rmenu.show();
+	res = filter->get_index(res);
+
+	sort_by = rmenu.get_menu().get_sort_by();
+	sort_reversed = rmenu.get_menu().get_sort_reversed();
+
+	return res;
+}
+
 
 
 namespace {
