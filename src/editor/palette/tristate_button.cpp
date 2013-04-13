@@ -155,7 +155,7 @@ void tristate_button::calculate_size() {
 
 void tristate_button::set_pressed(PRESSED_STATE new_pressed_state) {
 
-	STATE new_state;
+	STATE new_state = state_;
 
 	switch (new_pressed_state) {
 		case LEFT:
