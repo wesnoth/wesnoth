@@ -72,12 +72,12 @@ bool persist_file_context::clear_var(const std::string &global, bool immediate)
 	if (active == NULL)
 		return false;
 
-	bool ret = active->has_child("variables");
+	bool ret = !(active->child_or_empty("variables").empty());
 	if (ret) {
 		config &cfg = active->child("variables");
 		bool exists = cfg.has_attribute(global);
 		if (!exists) {
-			if (cfg.has_child(global)) {
+			if (!cfg.child_or_empty(global).empty()) {
 				exists = true;
 				std::string::const_iterator index_start = std::find(global.begin(),global.end(),'[');
 				if (index_start != global.end())
@@ -104,7 +104,7 @@ bool persist_file_context::clear_var(const std::string &global, bool immediate)
 					name_space prev = working.prev();
 					active = get_node(cfg_, prev);
 					active->clear_children(working.node_);
-					if (active->has_child("variables") && active->child("variables").empty()) {
+					if (!(active->child_or_empty("variables").empty()) && active->child("variables").empty()) {
 						active->clear_children("variables");
 						active->remove_attribute("variables");
 					}
@@ -145,7 +145,7 @@ bool persist_file_context::clear_var(const std::string &global, bool immediate)
 		name_space prev = namespace_.prev();
 		active = get_node(cfg_, prev);
 		active->clear_children(namespace_.node_);
-		if (active->has_child("variables") && active->child("variables").empty()) {
+		if (!(active->child_or_empty("variables").empty()) && active->child("variables").empty()) {
 			active->clear_children("variables");
 			active->remove_attribute("variables");
 		}
@@ -158,7 +158,7 @@ config persist_file_context::get_var(const std::string &global) const
 {
 	config ret;
 	const config *active = get_node(cfg_, namespace_);
-	if (active && (active->has_child("variables"))) {
+	if (active && !(active->child_or_empty("variables").empty())) {
 		const config &cfg = active->child("variables");
 		size_t arrsize = cfg.child_count(global);
 		if (arrsize > 0) {

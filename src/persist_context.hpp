@@ -124,7 +124,7 @@ protected:
 		if (next) {
 			if (force)
 				return get_node(cfg.child_or_add(next.root_), next, true);
-			else if (cfg.has_child(next.root_))
+			else if (!cfg.child_or_empty(next.root_).empty())
 				return get_node(cfg.child(next.root_), next);
 			else
 				return NULL;
@@ -136,7 +136,7 @@ protected:
 	const config *get_node(const config &cfg, const name_space &ns) const {
 		name_space next = ns.next();
 		if (next) {
-			if (cfg.has_child(next.root_))
+			if (!cfg.child_or_empty(next.root_).empty())
 				return get_node(cfg.child(next.root_), next);
 			else
 				return NULL;
