@@ -37,6 +37,7 @@ public:
 	       std::string button_image="", SPACE_CONSUMPTION spacing=DEFAULT_SPACE,
 		   const bool auto_join=true);
 
+
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
 	virtual ~button();
 	void set_check(bool check);
@@ -44,6 +45,7 @@ public:
 	bool checked() const;
 
 	void set_label(const std::string& val);
+	void set_image(const std::string& image_file_base);
 
 	bool pressed();
 	bool hit(int x, int y) const;
@@ -61,6 +63,8 @@ protected:
 
 private:
 
+	void load_images();
+
 	void calculate_size();
 
 	std::string label_;
@@ -76,6 +80,8 @@ private:
 	SPACE_CONSUMPTION spacing_;
 
 	int base_height_, base_width_;
+
+	std::string button_image_name_;
 
 }; //end class button
 

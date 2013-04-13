@@ -43,21 +43,42 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 	  image_(NULL), pressedImage_(NULL), activeImage_(NULL), pressedActiveImage_(NULL),
 	  disabledImage_(NULL), pressedDisabledImage_(NULL),
 	  state_(NORMAL), pressed_(false),
-	  spacing_(spacing), base_height_(0), base_width_(0)
+	  spacing_(spacing), base_height_(0), base_width_(0),
+	  button_image_name_()
 {
-	if(button_image_name.empty() && type == TYPE_PRESS) {
-		button_image_name = "button";
-	} else if(button_image_name.empty() && type == TYPE_CHECK) {
-		button_image_name = "checkbox";
-	} else if(button_image_name.empty() && type == TYPE_RADIO) {
-		button_image_name = "radiobox";
+	if (button_image_name.empty()) {
+
+		switch (type_) {
+			case TYPE_PRESS:
+				button_image_name_ = "buttons/button";
+				break;
+			case TYPE_CHECK:
+				button_image_name_ = "buttons/checkbox";
+				break;
+			case TYPE_RADIO:
+				button_image_name_ = "buttons/radiobox";
+				break;
+			default:
+				break;
+		}
+	} else {
+		button_image_name_ = "buttons/" + button_image_name;
 	}
 
-	const std::string button_image_filebase = "buttons/" + button_image_name ;
-	surface button_image(image::get_image(button_image_filebase + ".png"));
-	surface pressed_image(image::get_image(button_image_filebase + "-pressed.png"));
-	surface active_image(image::get_image(button_image_filebase + "-active.png"));
-	surface disabled_image(image::get_image(button_image_filebase + "-disabled.png"));
+	if(button_image_name_.empty() && type_ == TYPE_PRESS) {
+	} else if(button_image_name_.empty() && type_ == TYPE_CHECK) {
+	} else if(button_image_name_.empty() && type_ == TYPE_RADIO) {
+	}
+
+	load_images();
+}
+
+void button::load_images() {
+
+	surface button_image(image::get_image(button_image_name_ + ".png"));
+	surface pressed_image(image::get_image(button_image_name_ + "-pressed.png"));
+	surface active_image(image::get_image(button_image_name_ + "-active.png"));
+	surface disabled_image(image::get_image(button_image_name_ + "-disabled.png"));
 	surface pressed_disabled_image, pressed_active_image, touched_image;
 
 	static const Uint32 disabled_btn_color = 0xAAAAAA;
@@ -73,20 +94,19 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 	if (active_image.null())
 		active_image.assign(button_image);
 
-	if (type == TYPE_CHECK || type == TYPE_RADIO) {
-		touched_image.assign(image::get_image("buttons/" + button_image_name + "-touched.png"));
+	if (type_ == TYPE_CHECK || type_ == TYPE_RADIO) {
+		touched_image.assign(image::get_image(button_image_name_ + "-touched.png"));
 		if (touched_image.null())
 			touched_image.assign(pressed_image);
 
-		pressed_active_image.assign(image::get_image("buttons/" + button_image_name + "-active-pressed.png"));
+		pressed_active_image.assign(image::get_image(button_image_name_ + "-active-pressed.png"));
 		if (pressed_active_image.null())
 			pressed_active_image.assign(pressed_image);
 
-		pressed_disabled_image.assign(image::get_image(button_image_filebase + "-disabled-pressed.png"));
-		if (pressed_disabled_image.null()) {
-				pressed_disabled_image = blend_surface(greyscale_image(pressed_image),
-						disabled_btn_adjust, disabled_btn_color);
-		}
+		pressed_disabled_image.assign(image::get_image(button_image_name_ + "-disabled-pressed.png"));
+		if (pressed_disabled_image.null())
+			pressed_disabled_image = blend_surface(greyscale_image(pressed_image),
+					disabled_btn_adjust, disabled_btn_color);
 	}
 
 	if (button_image.null()) {
@@ -98,7 +118,7 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 	base_width_ = button_image->w;
 
 	if (type_ != TYPE_IMAGE) {
-		set_label(label);
+		set_label(label_);
 	}
 
 	if(type_ == TYPE_PRESS) {
@@ -293,6 +313,13 @@ bool button::hit(int x, int y) const
 }
 
 static bool not_image(const std::string& str) { return !str.empty() && str[0] != IMAGE_PREFIX; }
+
+void button::set_image(const std::string& image_file)
+{
+	button_image_name_ = image_file;
+	load_images();
+	set_dirty();
+}
 
 void button::set_label(const std::string& val)
 {
