@@ -57,11 +57,8 @@ void editor_palette<Item>::expand_palette_groups_menu(std::vector< std::pair< st
 		}
 		std::string img = item_groups[mci].icon;
 		std::stringstream str;
-		//TODO
-		//std::string postfix = ".png"; //(toolkit_->active_group_index() == mci) ? "-pressed.png" : ".png";
-		//str << IMAGE_PREFIX << "buttons/" << img << postfix << COLUMN_SEPARATOR << groupname;
-		str << IMAGE_PREFIX << img << COLUMN_SEPARATOR << groupname;
-		items.push_back(std::pair<std::string, std::string>( str.str(), str.str()));
+		str << groupname;
+		items.push_back(std::pair<std::string, std::string>( "editor/group/" + img, str.str()));
 	}
 	//items.insert(items.begin() + i, groups.begin(), groups.end());
 	//break;
