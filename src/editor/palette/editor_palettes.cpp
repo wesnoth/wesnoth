@@ -55,10 +55,8 @@ void editor_palette<Item>::expand_palette_groups_menu(std::vector< std::pair< st
 		if (groupname.empty()) {
 			groupname = _("(Unknown Group)");
 		}
-		std::string img = item_groups[mci].icon;
-		std::stringstream str;
-		str << groupname;
-		items.push_back(std::pair<std::string, std::string>( "editor/group/" + img, str.str()));
+		const std::string img = item_groups[mci].icon + ".png";
+		items.push_back(std::pair<std::string, std::string>(img, groupname));
 	}
 	//items.insert(items.begin() + i, groups.begin(), groups.end());
 	//break;
