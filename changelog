@@ -6,6 +6,9 @@ Version 1.11.2+dev:
      text box overflow occurs.
    * Change Difficulty checkbox in Load Game dialog in GUI1 gets disabled if
      change in difficulty of a loading game won't take effect (bug #20381).
+ * WML engine:
+   * Fixed invalid memory access issues caused by subnamespaced persistent WML
+     variables (bug #20385).
  * Miscellaneous and bug fixes
    * Switched to git version control. Hosting moved to SourceForge
    * Improved: Autorevision based revision numbers in CMake.
