@@ -234,6 +234,11 @@ void tlistbox::list_item_clicked(twidget* caller)
 	assert(false);
 }
 
+void tlistbox::set_self_active(const bool /*active*/)
+{
+	/* DO NOTHING */
+}
+
 bool tlistbox::update_content_size()
 {
 	if(get_visible() == twidget::tvisible::invisible) {

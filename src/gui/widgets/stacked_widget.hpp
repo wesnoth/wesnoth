@@ -37,14 +37,14 @@ public:
 
 	/***** ***** ***** inherited ***** ****** *****/
 
-	/** Inherited from tcontrol. */
-	bool get_active() const { return true; }
+	/** See @ref tcontrol::get_active. */
+	virtual bool get_active() const OVERRIDE;
 
-	/** Inherited from tcontrol. */
-	unsigned get_state() const { return 0; }
+	/** See @ref tcontrol::get_state. */
+	virtual unsigned get_state() const OVERRIDE;
 
-	/** Inherited from tscrollbar_container. */
-	void layout_children();
+	/** See @ref twidget::layout_children. */
+	virtual void layout_children() OVERRIDE;
 
 private:
 
@@ -65,11 +65,11 @@ private:
 	 */
 	tgenerator_* generator_;
 
-	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const;
+	/** See @ref tcontrol::get_control_type. */
+	virtual const std::string& get_control_type() const OVERRIDE;
 
-	/** Inherited from tcontainer_. */
-	void set_self_active(const bool /*active*/) {}
+	/** See @ref tcontainer_::set_self_active. */
+	virtual void set_self_active(const bool active) OVERRIDE;
 };
 
 } // namespace gui2

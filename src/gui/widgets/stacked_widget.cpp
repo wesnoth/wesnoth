@@ -37,6 +37,16 @@ tstacked_widget::tstacked_widget()
 {
 }
 
+bool tstacked_widget::get_active() const
+{
+	return true;
+}
+
+unsigned tstacked_widget::get_state() const
+{
+	return 0;
+}
+
 void tstacked_widget::layout_children()
 {
 	assert(generator_);
@@ -97,6 +107,11 @@ const std::string& tstacked_widget::get_control_type() const
 {
     static const std::string type = "stacked_widget";
     return type;
+}
+
+void tstacked_widget::set_self_active(const bool /*active*/)
+{
+	/* DO NOTHING */
 }
 
 } // namespace gui2

@@ -123,8 +123,8 @@ private:
 	int get_length_difference(const tpoint& original, const tpoint& current) const
 		{ return current.x - original.x; }
 
-	/** Inherited from tscrollbar. */
-	void update_canvas();
+	/** See @ref tcontrol::update_canvas. */
+	virtual void update_canvas() OVERRIDE;
 
 	/**
 	 * When the slider shows the minimum value can show a special text.
@@ -146,8 +146,8 @@ private:
 	 */
 	std::vector<t_string> value_labels_;
 
-	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const;
+	/** See @ref tcontrol::get_control_type. */
+	virtual const std::string& get_control_type() const OVERRIDE;
 
 	/**
 	 * Handlers for keyboard input

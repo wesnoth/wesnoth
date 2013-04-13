@@ -242,12 +242,13 @@ public:
 	/** See @ref twidget::set_visible_rectangle. */
 	virtual void set_visible_rectangle(const SDL_Rect& rectangle) OVERRIDE;
 
-	/** Inherited from twidget. */
-	void layout_children();
+	/** See @ref twidget::layout_children. */
+	virtual void layout_children() OVERRIDE;
 
-	/** Inherited from twidget. */
-	void child_populate_dirty_list(twindow& caller,
-			const std::vector<twidget*>& call_stack);
+	/** See @ref twidget::child_populate_dirty_list. */
+	virtual void child_populate_dirty_list(
+			  twindow& caller
+			, const std::vector<twidget*>& call_stack) OVERRIDE;
 
 	/** See @ref twidget::find_at. */
 	virtual twidget* find_at(
@@ -267,8 +268,8 @@ public:
 			  const std::string& id
 			, const bool must_be_active) const OVERRIDE;
 
-	/** Inherited from twidget.*/
-	bool has_widget(const twidget* widget) const;
+	/** See @ref twidget::has_widget. */
+	virtual bool has_widget(const twidget* widget) const OVERRIDE;
 
 	/** See @ref twidget::disable_click_dismiss. */
 	bool disable_click_dismiss() const OVERRIDE;

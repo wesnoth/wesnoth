@@ -44,14 +44,14 @@ public:
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** Inherited from tcontrol. */
-	void set_active(const bool) {}
+	/** See @ref tcontrol::set_active. */
+	virtual void set_active(const bool active) OVERRIDE;
 
-	/** Inherited from tcontrol. */
-	bool get_active() const { return true; }
+	/** See @ref tcontrol::get_active. */
+	virtual bool get_active() const OVERRIDE;
 
-	/** Inherited from tcontrol. */
-	unsigned get_state() const { return 0; }
+	/** See @ref tcontrol::get_state. */
+	virtual unsigned get_state() const OVERRIDE;
 
 	/** See @ref twidget::disable_click_dismiss. */
 	bool disable_click_dismiss() const OVERRIDE;
@@ -73,8 +73,8 @@ private:
 	/** When we're used as a fixed size item, this holds the best size. */
 	tpoint best_size_;
 
-	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const;
+	/** See @ref tcontrol::get_control_type. */
+	virtual const std::string& get_control_type() const OVERRIDE;
 };
 
 

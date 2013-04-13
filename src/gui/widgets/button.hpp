@@ -32,15 +32,14 @@ public:
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** Inherited from tcontrol. */
-	void set_active(const bool active)
-		{ if(get_active() != active) set_state(active ? ENABLED : DISABLED); };
+	/** See @ref tcontrol::set_active. */
+	virtual void set_active(const bool active) OVERRIDE;
 
-	/** Inherited from tcontrol. */
-	bool get_active() const { return state_ != DISABLED; }
+	/** See @ref tcontrol::get_active. */
+	virtual bool get_active() const OVERRIDE;
 
-	/** Inherited from tcontrol. */
-	unsigned get_state() const { return state_; }
+	/** See @ref tcontrol::get_state. */
+	virtual unsigned get_state() const OVERRIDE;
 
 	/** Inherited from tclickable. */
 	void connect_click_handler(const event::tsignal_function& signal)
@@ -83,8 +82,8 @@ private:
 	 */
 	int retval_;
 
-	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const;
+	/** See @ref tcontrol::get_control_type. */
+	virtual const std::string& get_control_type() const OVERRIDE;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 

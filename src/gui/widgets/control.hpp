@@ -61,7 +61,8 @@ public:
 	 *  * help_message_           help
 	 *
 	 *
-	 * @param data                Map with the key value pairs to set the members.
+	 * @param data                Map with the key value pairs to set the
+	 *                            members.
 	 */
 	virtual void set_members(const string_map& data);
 

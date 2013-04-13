@@ -200,11 +200,11 @@ public:
 	/** Inherited from tcontrol_. */
 	void init();
 
-	/** Inherited from tcontainer_. */
-	bool get_active() const { return state_ != DISABLED; }
+	/** See @ref tcontrol::get_active. */
+	virtual bool get_active() const OVERRIDE;
 
-	/** Inherited from tcontainer_. */
-	unsigned get_state() const { return state_; }
+	/** See @ref tcontrol::get_state. */
+	virtual unsigned get_state() const OVERRIDE;
 
 	/** See @ref twidget::place. */
 	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;
@@ -264,11 +264,11 @@ private:
 	/** Inherited from tscrollbar_container. */
 	virtual void set_content_size(const tpoint& origin, const tpoint& size);
 #endif
-	/** Inherited from tcontainer_. */
-	void set_self_active(const bool)  {}
+	/** See @ref tcontainer_::set_self_active. */
+	virtual void set_self_active(const bool active) OVERRIDE;
 
-	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const;
+	/** See @ref tcontrol::get_control_type. */
+	virtual const std::string& get_control_type() const OVERRIDE;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 

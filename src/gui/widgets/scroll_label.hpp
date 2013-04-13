@@ -40,21 +40,22 @@ public:
 
 	tscroll_label();
 
-	/** Inherited from tcontrol. */
-	void set_label(const t_string& label);
+	/** See @ref tcontrol::set_label. */
+	virtual void set_label(const t_string& label) OVERRIDE;
 
-	/** Inherited from tcontrol. */
-	void set_use_markup(bool use_markup);
+	/** See @ref tcontrol::set_use_markup. */
+	virtual void set_use_markup(bool use_markup) OVERRIDE;
 
-	/** Inherited from tcontainer_. */
-	void set_self_active(const bool active)
-		{ state_ = active ? ENABLED : DISABLED; }
+	/** See @ref tcontainer_::set_self_active. */
+	virtual void set_self_active(const bool active) OVERRIDE;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	bool get_active() const { return state_ != DISABLED; }
+	/** See @ref tcontrol::get_active. */
+	virtual bool get_active() const OVERRIDE;
 
-	unsigned get_state() const { return state_; }
+	/** See @ref tcontrol::get_state. */
+	virtual unsigned get_state() const OVERRIDE;
 
 private:
 	/**
@@ -79,8 +80,8 @@ private:
 
 	/***** ***** ***** inherited ****** *****/
 
-	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const;
+	/** See @ref tcontrol::get_control_type. */
+	virtual const std::string& get_control_type() const OVERRIDE;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 

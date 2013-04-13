@@ -37,6 +37,23 @@ unsigned tlabel::get_characters_per_line() const
 	return characters_per_line_;
 }
 
+void tlabel::set_active(const bool active)
+{
+	if(get_active() != active) {
+		set_state(active ? ENABLED : DISABLED);
+	}
+}
+
+bool tlabel::get_active() const
+{
+	return state_ != DISABLED;
+}
+
+unsigned tlabel::get_state() const
+{
+	return state_;
+}
+
 bool tlabel::disable_click_dismiss() const
 {
 	return false;

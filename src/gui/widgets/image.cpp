@@ -68,6 +68,21 @@ tpoint timage::calculate_best_size() const
 	return result;
 }
 
+void timage::set_active(const bool /*active*/)
+{
+	/* DO NOTHING */
+}
+
+bool timage::get_active() const
+{
+	return true;
+}
+
+unsigned timage::get_state() const
+{
+	return ENABLED;
+}
+
 bool timage::disable_click_dismiss() const
 {
 	return false;

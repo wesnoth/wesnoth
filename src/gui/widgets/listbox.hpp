@@ -173,10 +173,8 @@ public:
 	/** Function to call after the user clicked on a row. */
 	void list_item_clicked(twidget* caller);
 
-	/** Inherited from tcontainer_. */
-	void set_self_active(const bool /*active*/)  {}
-//		{ state_ = active ? ENABLED : DISABLED; }
-//
+	/** See @ref tcontainer_::set_self_active. */
+	virtual void set_self_active(const bool active) OVERRIDE;
 
 	/**
 	 * Request to update the size of the content after changing the content.
@@ -199,12 +197,13 @@ public:
 	/** See @ref twidget::place. */
 	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;
 
-	/** Inherited from tscrollbar_container. */
-	void layout_children();
+	/** See @ref twidget::layout_children. */
+	virtual void layout_children() OVERRIDE;
 
-	/** Inherited from tscrollbar_container. */
-	void child_populate_dirty_list(twindow& caller,
-			const std::vector<twidget*>& call_stack);
+	/** See @ref twidget::child_populate_dirty_list. */
+	virtual void child_populate_dirty_list(
+			  twindow& caller
+			, const std::vector<twidget*>& call_stack) OVERRIDE;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -306,8 +305,8 @@ private:
 	/** Inherited from tscrollbar_container. */
 	virtual void set_content_size(const tpoint& origin, const tpoint& size);
 
-	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const;
+	/** See @ref tcontrol::get_control_type. */
+	virtual const std::string& get_control_type() const OVERRIDE;
 };
 
 } // namespace gui2

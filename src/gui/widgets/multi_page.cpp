@@ -102,6 +102,16 @@ tgrid& tmulti_page::page_grid(const unsigned page)
 	return generator_->item(page);
 }
 
+bool tmulti_page::get_active() const
+{
+	return true;
+}
+
+unsigned tmulti_page::get_state() const
+{
+	return 0;
+}
+
 namespace {
 
 /**
@@ -162,6 +172,9 @@ const std::string& tmulti_page::get_control_type() const
 	return type;
 }
 
+void tmulti_page::set_self_active(const bool /*active*/)
+{
+	/* DO NOTHING */
+}
+
 } // namespace gui2
-
-

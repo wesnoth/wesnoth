@@ -46,6 +46,16 @@ SDL_Rect tpanel::get_client_rect() const
 	return result;
 }
 
+bool tpanel::get_active() const
+{
+	return true;
+}
+
+unsigned tpanel::get_state() const
+{
+	return 0;
+}
+
 void tpanel::impl_draw_background(surface& frame_buffer)
 {
 	DBG_GUI_D << LOG_HEADER
@@ -98,6 +108,11 @@ const std::string& tpanel::get_control_type() const
 {
 	static const std::string type = "panel";
 	return type;
+}
+
+void tpanel::set_self_active(const bool /*active*/)
+{
+	/* DO NOTHING */
 }
 
 } // namespace gui2

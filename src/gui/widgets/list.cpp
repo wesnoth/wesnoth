@@ -364,6 +364,16 @@ void tlist::init()
 
 }
 
+bool tlist::get_active() const
+{
+	return state_ != DISABLED;
+}
+
+unsigned tlist::get_state() const
+{
+	return state_;
+}
+
 void tlist::layout_children(const bool force)
 {
 	if(need_layout_ || force) {
@@ -375,6 +385,11 @@ void tlist::layout_children(const bool force)
 		need_layout_ = false;
 		set_dirty(true);
 	}
+}
+
+void tlist::set_self_active(const bool active)
+{
+	/* DO NOTHING */
 }
 
 const std::string& tlist::get_control_type() const

@@ -42,6 +42,21 @@ namespace gui2 {
 
 REGISTER_WIDGET(minimap)
 
+void tminimap::set_active(const bool /*active*/)
+{
+	/* DO NOTHING */
+}
+
+bool tminimap::get_active() const
+{
+	return true;
+}
+
+unsigned tminimap::get_state() const
+{
+	return 0;
+}
+
 /** Key type for the cache. */
 struct tkey
 {

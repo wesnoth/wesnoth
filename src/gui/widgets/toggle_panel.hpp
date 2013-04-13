@@ -54,33 +54,32 @@ public:
 			  const tpoint& coordinate
 			, const bool must_be_active) const OVERRIDE;
 
-	/** Inherited from tpanel. */
-	void set_active(const bool active);
+	/** See @ref tcontrol::set_active. */
+	virtual void set_active(const bool active) OVERRIDE;
 
-	/** Inherited from tpanel. */
-	bool get_active() const
-		{ return state_ != DISABLED && state_ != DISABLED_SELECTED; }
+	/** See @ref tcontrol::get_active. */
+	virtual bool get_active() const OVERRIDE;
 
-	/** Inherited from tpanel. */
-	unsigned get_state() const { return state_; }
+	/** See @ref tcontrol::get_state. */
+	virtual unsigned get_state() const OVERRIDE;
 
 	/**
-	 * Inherited from tpanel.
+	 * See @ref tcontainer_::get_client_rect.
+	 *
+	 * @todo only due to the fact our definition is slightly different from
+	 * tpanel_definition we need to override this function and do about the
+	 * same, look at a way to 'fix' that.
+	 */
+	virtual SDL_Rect get_client_rect() const OVERRIDE;
+
+	/**
+	 * See @ref tcontainer_::border_space.
 	 *
 	 * @todo only due to the fact our definition is slightly different from
 	 * tpanel_definition we need to override this function and do about the same,
 	 * look at a way to 'fix' that.
 	 */
-	SDL_Rect get_client_rect() const;
-
-	/**
-	 * Inherited from tpanel.
-	 *
-	 * @todo only due to the fact our definition is slightly different from
-	 * tpanel_definition we need to override this function and do about the same,
-	 * look at a way to 'fix' that.
-	 */
-	tpoint border_space() const;
+	virtual tpoint border_space() const OVERRIDE;
 
 	/** Inherited from tselectable_ */
 	bool get_value() const { return state_ >= ENABLED_SELECTED; }
@@ -155,8 +154,8 @@ private:
 			, int x_offset
 			, int y_offset) OVERRIDE;
 
-	/** Inherited from tpanel. */
-	const std::string& get_control_type() const;
+	/** See @ref tcontrol::get_control_type. */
+	virtual const std::string& get_control_type() const OVERRIDE;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 

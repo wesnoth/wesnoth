@@ -118,6 +118,16 @@ void ttoggle_panel::set_active(const bool active)
 	}
 }
 
+bool ttoggle_panel::get_active() const
+{
+	return state_ != DISABLED && state_ != DISABLED_SELECTED;
+}
+
+unsigned ttoggle_panel::get_state() const
+{
+	return state_;
+}
+
 SDL_Rect ttoggle_panel::get_client_rect() const
 {
 	boost::intrusive_ptr<const ttoggle_panel_definition::tresolution> conf =

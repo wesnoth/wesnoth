@@ -82,6 +82,16 @@ void ttoggle_button::set_active(const bool active)
 	}
 }
 
+bool ttoggle_button::get_active() const
+{
+	return state_ != DISABLED && state_ != DISABLED_SELECTED;
+}
+
+unsigned ttoggle_button::get_state() const
+{
+	return state_;
+}
+
 void ttoggle_button::update_canvas()
 {
 	// Inherit.

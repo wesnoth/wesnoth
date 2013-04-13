@@ -116,11 +116,11 @@ public:
 
 	/***** ***** ***** inherited ****** *****/
 
-	/** Inherited from tcontainer_. */
-	bool get_active() const { return state_ != DISABLED; }
+	/** See @ref tcontrol::get_active. */
+	virtual bool get_active() const OVERRIDE;
 
-	/** Inherited from tcontainer_. */
-	unsigned get_state() const { return state_; }
+	/** See @ref tcontrol::get_state. */
+	virtual unsigned get_state() const OVERRIDE;
 
 	/** See @ref twidget::find_at. */
 	virtual twidget* find_at(
@@ -452,8 +452,8 @@ private:
 	 */
 	virtual void finalize_subclass() {}
 
-	/** Inherited from tcontainer_. */
-	void layout_children();
+	/** See @ref twidget::layout_children. */
+	virtual void layout_children() OVERRIDE;
 
 	/** See @ref twidget::impl_draw_children. */
 	virtual void impl_draw_children(surface& frame_buffer) OVERRIDE;
@@ -464,9 +464,10 @@ private:
 			, int x_offset
 			, int y_offset) OVERRIDE;
 
-	/** Inherited from tcontainer_. */
-	void child_populate_dirty_list(twindow& caller,
-		const std::vector<twidget*>& call_stack);
+	/** See @ref twidget::child_populate_dirty_list. */
+	virtual void child_populate_dirty_list(
+			  twindow& caller
+			, const std::vector<twidget*>& call_stack) OVERRIDE;
 
 	/**
 	 * Sets the size of the content grid.
@@ -482,8 +483,8 @@ private:
 	/** Helper function which needs to be called after the scollbar moved. */
 	void scrollbar_moved();
 
-	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const;
+	/** See @ref tcontrol::get_control_type. */
+	virtual const std::string& get_control_type() const OVERRIDE;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 

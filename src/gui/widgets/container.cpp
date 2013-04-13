@@ -24,6 +24,11 @@
 
 namespace gui2 {
 
+SDL_Rect tcontainer_::get_client_rect() const
+{
+	return get_rectangle();
+}
+
 void tcontainer_::layout_initialise(const bool full_initialisation)
 {
 	// Inherited.
@@ -75,6 +80,11 @@ void tcontainer_::place(const tpoint& origin, const tpoint& size)
 	const tpoint client_size(rect.w, rect.h);
 	const tpoint client_position(rect.x, rect.y);
 	grid_.place(client_position, client_size);
+}
+
+bool tcontainer_::has_widget(const twidget* widget) const
+{
+	return twidget::has_widget(widget) || grid_.has_widget(widget);
 }
 
 tpoint tcontainer_::calculate_best_size() const
@@ -207,6 +217,11 @@ void tcontainer_::init_grid(
 	assert(initial_grid().get_rows() == 0 && initial_grid().get_cols() == 0);
 
 	grid_builder->build(&initial_grid());
+}
+
+tpoint tcontainer_::border_space() const
+{
+	return tpoint(0, 0);
 }
 
 } // namespace gui2

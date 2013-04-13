@@ -34,6 +34,21 @@ tpoint tdrawing::calculate_best_size() const
 			: tcontrol::calculate_best_size();
 }
 
+void tdrawing::set_active(const bool /*active*/)
+{
+	/* DO NOTHING */
+}
+
+bool tdrawing::get_active() const
+{
+	return true;
+}
+
+unsigned tdrawing::get_state() const
+{
+	return 0;
+}
+
 bool tdrawing::disable_click_dismiss() const
 {
 	return false;

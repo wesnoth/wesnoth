@@ -271,9 +271,10 @@ public:
 
 protected:
 
-	/** Inherited from twidget. */
-	virtual void child_populate_dirty_list(twindow& caller,
-			const std::vector<twidget*>& call_stack) = 0;
+	/** See @ref twidget::child_populate_dirty_list. */
+	virtual void child_populate_dirty_list(
+			  twindow& caller
+			, const std::vector<twidget*>& call_stack) OVERRIDE = 0;
 
 public:
 

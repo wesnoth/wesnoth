@@ -53,18 +53,18 @@ public:
 
 	void remove_node(ttree_view_node* tree_view_node);
 
-	/** Inherited from tscrollbar_container. */
-	void child_populate_dirty_list(twindow& caller,
-			const std::vector<twidget*>& call_stack);
+	/** See @ref twidget::child_populate_dirty_list. */
+	virtual void child_populate_dirty_list(
+			  twindow& caller
+			, const std::vector<twidget*>& call_stack) OVERRIDE;
 
-	/** Inherited from tcontainer_. */
-	void set_self_active(const bool /*active*/)  {}
-//		{ state_ = active ? ENABLED : DISABLED; }
+	/** See @ref tcontainer_::set_self_active. */
+	virtual void set_self_active(const bool active) OVERRIDE;
 
 	bool empty() const;
 
-	/** Inherited from tscrollbar_container. */
-	void layout_children();
+	/** See @ref twidget::layout_children. */
+	virtual void layout_children() OVERRIDE;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -143,8 +143,8 @@ private:
 	/** Inherited from tcontainer_. */
 	virtual void finalize_setup();
 
-	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const;
+	/** See @ref tcontrol::get_control_type. */
+	virtual const std::string& get_control_type() const OVERRIDE;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 

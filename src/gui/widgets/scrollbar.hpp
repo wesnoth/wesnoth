@@ -91,15 +91,14 @@ public:
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** Inherited from tcontrol. */
-	void set_active(const bool active)
-		{ if(get_active() != active) set_state(active ? ENABLED : DISABLED); };
+	/** See @ref tcontrol::set_active. */
+	virtual void set_active(const bool active) OVERRIDE;
 
-	/** Inherited from tcontrol. */
-	bool get_active() const { return state_ != DISABLED; }
+	/** See @ref tcontrol::get_active. */
+	virtual bool get_active() const OVERRIDE;
 
-	/** Inherited from tcontrol. */
-	unsigned get_state() const { return state_; }
+	/** See @ref tcontrol::get_state. */
+	virtual unsigned get_state() const OVERRIDE;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -127,8 +126,12 @@ protected:
 
 	unsigned get_positioner_length() const { return positioner_length_; }
 
-	/** After a recalculation the canvasses also need to be updated. */
-	virtual void update_canvas();
+	/**
+	 * See @ref tcontrol::update_canvas.
+	 *
+	 * After a recalculation the canvasses also need to be updated.
+	 */
+	virtual void update_canvas() OVERRIDE;
 
 	/**
 	 * Callback for subclasses to get notified about positioner movement.

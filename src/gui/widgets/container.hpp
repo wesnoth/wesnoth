@@ -40,11 +40,14 @@ public:
 	}
 
 	/**
-	 * Returns the size of the client area.
+	 * Returns the client rect.
 	 *
-	 * The client area is the area available for widgets.
+	 * The client rect is the area which is used for child items. The rest of
+	 * the area of this widget is used for its own decoration.
+	 *
+	 * @returns                   The client rect.
 	 */
-	virtual SDL_Rect get_client_rect() const { return get_rectangle(); }
+	virtual SDL_Rect get_client_rect() const;
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
@@ -94,9 +97,8 @@ public:
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** Inherited from twidget.*/
-	bool has_widget(const twidget* widget) const
-		{ return twidget::has_widget(widget) || grid_.has_widget(widget); }
+	/** See @ref twidget::has_widget. */
+	virtual bool has_widget(const twidget* widget) const OVERRIDE;
 
 	/** See @ref twidget::set_origin. */
 	virtual void set_origin(const tpoint& origin) OVERRIDE;
@@ -115,12 +117,13 @@ public:
 
 protected:
 
-	/** Inherited from twidget. */
-	void layout_children();
+	/** See @ref twidget::layout_children. */
+	virtual void layout_children() OVERRIDE;
 
-	/** Inherited from twidget. */
-	void child_populate_dirty_list(twindow& caller,
-			const std::vector<twidget*>& call_stack);
+	/** See @ref twidget::child_populate_dirty_list. */
+	virtual void child_populate_dirty_list(
+			  twindow& caller
+			, const std::vector<twidget*>& call_stack) OVERRIDE;
 
 public:
 
@@ -142,8 +145,8 @@ public:
 			  const std::string& id
 			, const bool must_be_active) const OVERRIDE;
 
-	/** Inherited from tcontrol. */
-	void set_active(const bool active);
+	/** See @ref tcontrol::set_active. */
+	virtual void set_active(const bool active) OVERRIDE;
 
 	/** See @ref twidget::disable_click_dismiss. */
 	bool disable_click_dismiss() const OVERRIDE;
@@ -213,7 +216,7 @@ private:
 	virtual tgrid& initial_grid() { return grid_; }
 
 	/** Returns the space used by the border. */
-	virtual tpoint border_space() const { return tpoint(0, 0); }
+	virtual tpoint border_space() const;
 
 	/**
 	 * Helper for set_active.

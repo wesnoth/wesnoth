@@ -27,10 +27,25 @@ namespace gui2 {
 
 REGISTER_WIDGET(scrollbar_panel)
 
+bool tscrollbar_panel::get_active() const
+{
+	return true;
+}
+
+unsigned tscrollbar_panel::get_state() const
+{
+	return 0;
+}
+
 const std::string& tscrollbar_panel::get_control_type() const
 {
     static const std::string type = "scrollbar_panel";
     return type;
+}
+
+void tscrollbar_panel::set_self_active(const bool /*active*/)
+{
+	/* DO NOTHING */
 }
 
 } // namespace gui2

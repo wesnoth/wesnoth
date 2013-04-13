@@ -76,6 +76,23 @@ void trepeating_button::disconnect_signal_mouse_left_down(
 	disconnect_signal<event::LEFT_BUTTON_DOWN>(signal);
 }
 
+void trepeating_button::set_active(const bool active)
+{
+	if(get_active() != active) {
+		set_state(active ? ENABLED : DISABLED);
+	}
+}
+
+bool trepeating_button::get_active() const
+{
+	return state_ != DISABLED;
+}
+
+unsigned trepeating_button::get_state() const
+{
+	return state_;
+}
+
 void trepeating_button::set_state(const tstate state)
 {
 	if(state != state_) {

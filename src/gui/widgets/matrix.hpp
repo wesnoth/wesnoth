@@ -69,17 +69,20 @@ public:
 	{
 	}
 
-	void set_active(const bool active)
+	/** See @ref tcontrol::set_active. */
+	virtual void set_active(const bool active) OVERRIDE
 	{
 		STATE::set_active(active);
 	}
 
-	bool get_active() const
+	/** See @ref tcontrol::get_active. */
+	virtual bool get_active() const OVERRIDE
 	{
 		return STATE::get_active();
 	}
 
-	unsigned get_state() const
+	/** See @ref tcontrol::get_state. */
+	virtual unsigned get_state() const OVERRIDE
 	{
 		return STATE::get_state();
 	}
@@ -122,12 +125,13 @@ public:
 			, int x_offset
 			, int y_offset) OVERRIDE;
 
-	/** Inherited from twidget. */
-	void layout_children();
+	/** See @ref twidget::layout_children. */
+	virtual void layout_children() OVERRIDE;
 
-	/** Inherited from twidget. */
-	void child_populate_dirty_list(twindow& caller,
-			const std::vector<twidget*>& call_stack);
+	/** See @ref twidget::child_populate_dirty_list. */
+	virtual void child_populate_dirty_list(
+			  twindow& caller
+			, const std::vector<twidget*>& call_stack) OVERRIDE;
 
 	/** See @ref twidget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned maximum_width) OVERRIDE;
@@ -225,9 +229,8 @@ private:
 	 */
 	tpane* pane_;
 
-
-	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const;
+	/** See @ref tcontrol::get_control_type. */
+	virtual const std::string& get_control_type() const OVERRIDE;
 };
 
 } // namespace gui2

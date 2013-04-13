@@ -270,6 +270,12 @@ private:
 			, const std::map<
 				std::string /* widget id */, string_map>& data);
 
+	/**
+	 * Returns the control_type of the @ref ttree_view_node.
+	 *
+	 * This class does not derive from @ref tcontrol but the function behaves
+	 * similar as @ref tcontrol::get_control_type.
+	 */
 	const std::string& get_control_type() const;
 };
 
