@@ -215,7 +215,6 @@ tristate_button::PRESSED_STATE tristate_button::pressed_state() const {
 			return NONE;
 			break;
 	}
-	return NONE;
 }
 
 void tristate_button::enable(bool new_val) {
