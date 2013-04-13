@@ -387,6 +387,11 @@ void tlist::layout_children(const bool force)
 	}
 }
 
+void tlist::set_self_active(const bool active)
+{
+	/* DO NOTHING */
+}
+
 const std::string& tlist::get_control_type() const
 {
 	static const std::string type = "list";

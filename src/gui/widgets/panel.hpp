@@ -75,9 +75,8 @@ private:
 	/** See @ref tcontainer_::border_space. */
 	virtual tpoint border_space() const OVERRIDE;
 
-	/** Inherited from tcontainer_. */
-	void set_self_active(const bool /*active*/) {}
-
+	/** See @ref tcontainer_::set_self_active. */
+	virtual void set_self_active(const bool active) OVERRIDE;
 };
 
 } // namespace gui2

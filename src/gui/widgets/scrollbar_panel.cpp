@@ -43,5 +43,10 @@ const std::string& tscrollbar_panel::get_control_type() const
     return type;
 }
 
+void tscrollbar_panel::set_self_active(const bool /*active*/)
+{
+	/* DO NOTHING */
+}
+
 } // namespace gui2
 

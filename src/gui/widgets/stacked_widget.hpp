@@ -68,8 +68,8 @@ private:
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const OVERRIDE;
 
-	/** Inherited from tcontainer_. */
-	void set_self_active(const bool /*active*/) {}
+	/** See @ref tcontainer_::set_self_active. */
+	virtual void set_self_active(const bool active) OVERRIDE;
 };
 
 } // namespace gui2

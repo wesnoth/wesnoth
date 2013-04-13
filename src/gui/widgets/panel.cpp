@@ -110,5 +110,10 @@ const std::string& tpanel::get_control_type() const
 	return type;
 }
 
+void tpanel::set_self_active(const bool /*active*/)
+{
+	/* DO NOTHING */
+}
+
 } // namespace gui2
 

@@ -109,5 +109,10 @@ const std::string& tstacked_widget::get_control_type() const
     return type;
 }
 
+void tstacked_widget::set_self_active(const bool /*active*/)
+{
+	/* DO NOTHING */
+}
+
 } // namespace gui2
 

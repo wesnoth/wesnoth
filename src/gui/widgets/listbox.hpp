@@ -173,10 +173,8 @@ public:
 	/** Function to call after the user clicked on a row. */
 	void list_item_clicked(twidget* caller);
 
-	/** Inherited from tcontainer_. */
-	void set_self_active(const bool /*active*/)  {}
-//		{ state_ = active ? ENABLED : DISABLED; }
-//
+	/** See @ref tcontainer_::set_self_active. */
+	virtual void set_self_active(const bool active) OVERRIDE;
 
 	/**
 	 * Request to update the size of the content after changing the content.

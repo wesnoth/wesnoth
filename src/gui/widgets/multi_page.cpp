@@ -172,6 +172,9 @@ const std::string& tmulti_page::get_control_type() const
 	return type;
 }
 
+void tmulti_page::set_self_active(const bool /*active*/)
+{
+	/* DO NOTHING */
+}
+
 } // namespace gui2
-
-

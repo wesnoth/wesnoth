@@ -46,9 +46,8 @@ public:
 	/** See @ref tcontrol::set_use_markup. */
 	virtual void set_use_markup(bool use_markup) OVERRIDE;
 
-	/** Inherited from tcontainer_. */
-	void set_self_active(const bool active)
-		{ state_ = active ? ENABLED : DISABLED; }
+	/** See @ref tcontainer_::set_self_active. */
+	virtual void set_self_active(const bool active) OVERRIDE;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 

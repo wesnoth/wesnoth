@@ -97,6 +97,11 @@ void ttree_view::child_populate_dirty_list(twindow& caller
 	root_node_->impl_populate_dirty_list(caller, call_stack);
 }
 
+void ttree_view::set_self_active(const bool /*active*/)
+{
+	/* DO NOTHING */
+}
+
 bool ttree_view::empty() const
 {
 	return root_node_->empty();

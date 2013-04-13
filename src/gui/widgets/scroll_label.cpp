@@ -74,6 +74,11 @@ void tscroll_label::set_use_markup(bool use_markup)
 	}
 }
 
+void tscroll_label::set_self_active(const bool active)
+{
+	state_ = active ? ENABLED : DISABLED;
+}
+
 bool tscroll_label::get_active() const
 {
 	return state_ != DISABLED;

@@ -58,9 +58,8 @@ public:
 			  twindow& caller
 			, const std::vector<twidget*>& call_stack) OVERRIDE;
 
-	/** Inherited from tcontainer_. */
-	void set_self_active(const bool /*active*/)  {}
-//		{ state_ = active ? ENABLED : DISABLED; }
+	/** See @ref tcontainer_::set_self_active. */
+	virtual void set_self_active(const bool active) OVERRIDE;
 
 	bool empty() const;
 
