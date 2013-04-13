@@ -40,11 +40,14 @@ public:
 	}
 
 	/**
-	 * Returns the size of the client area.
+	 * Returns the client rect.
 	 *
-	 * The client area is the area available for widgets.
+	 * The client rect is the area which is used for child items. The rest of
+	 * the area of this widget is used for its own decoration.
+	 *
+	 * @returns                   The client rect.
 	 */
-	virtual SDL_Rect get_client_rect() const { return get_rectangle(); }
+	virtual SDL_Rect get_client_rect() const;
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 

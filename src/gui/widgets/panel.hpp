@@ -40,15 +40,8 @@ public:
 	{
 	}
 
-	/**
-	 * Returns the client rect.
-	 *
-	 * The client rect is the area which is used for child items. The rest of
-	 * the area of this widget is used for its own decoration.
-	 *
-	 * @returns                   The client rect.
-	 */
-	virtual SDL_Rect get_client_rect() const;
+	/** See @ref tcontainer_::get_client_rect. */
+	virtual SDL_Rect get_client_rect() const OVERRIDE;
 
 	/** See @ref tcontrol::get_active. */
 	virtual bool get_active() const OVERRIDE;

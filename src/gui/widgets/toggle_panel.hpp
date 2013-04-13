@@ -64,13 +64,13 @@ public:
 	virtual unsigned get_state() const OVERRIDE;
 
 	/**
-	 * Inherited from tpanel.
+	 * See @ref tcontainer_::get_client_rect.
 	 *
 	 * @todo only due to the fact our definition is slightly different from
-	 * tpanel_definition we need to override this function and do about the same,
-	 * look at a way to 'fix' that.
+	 * tpanel_definition we need to override this function and do about the
+	 * same, look at a way to 'fix' that.
 	 */
-	SDL_Rect get_client_rect() const;
+	virtual SDL_Rect get_client_rect() const OVERRIDE;
 
 	/**
 	 * Inherited from tpanel.

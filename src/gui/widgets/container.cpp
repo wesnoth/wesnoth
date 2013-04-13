@@ -24,6 +24,11 @@
 
 namespace gui2 {
 
+SDL_Rect tcontainer_::get_client_rect() const
+{
+	return get_rectangle();
+}
+
 void tcontainer_::layout_initialise(const bool full_initialisation)
 {
 	// Inherited.
