@@ -353,8 +353,12 @@ int recruit_dialog(display& disp, std::vector< const unit_type* >& units, const 
 }
 
 
+#ifdef LOW_MEM
+int recall_dialog(display& disp, std::vector< const unit* >& units, int /*side*/, const std::string& title_suffix)
+#else
 int recall_dialog(display& disp, std::vector< const unit* >& units, int side, const std::string& title_suffix)
-{	
+#endif
+{
 	std::vector<std::string> options, options_to_filter;
 
 	std::ostringstream heading;
