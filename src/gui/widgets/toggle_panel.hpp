@@ -73,13 +73,13 @@ public:
 	virtual SDL_Rect get_client_rect() const OVERRIDE;
 
 	/**
-	 * Inherited from tpanel.
+	 * See @ref tcontainer_::border_space.
 	 *
 	 * @todo only due to the fact our definition is slightly different from
 	 * tpanel_definition we need to override this function and do about the same,
 	 * look at a way to 'fix' that.
 	 */
-	tpoint border_space() const;
+	virtual tpoint border_space() const OVERRIDE;
 
 	/** Inherited from tselectable_ */
 	bool get_value() const { return state_ >= ENABLED_SELECTED; }

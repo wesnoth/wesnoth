@@ -72,8 +72,8 @@ private:
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const OVERRIDE;
 
-	/** Inherited from tcontainer_. */
-	tpoint border_space() const;
+	/** See @ref tcontainer_::border_space. */
+	virtual tpoint border_space() const OVERRIDE;
 
 	/** Inherited from tcontainer_. */
 	void set_self_active(const bool /*active*/) {}

@@ -216,7 +216,7 @@ private:
 	virtual tgrid& initial_grid() { return grid_; }
 
 	/** Returns the space used by the border. */
-	virtual tpoint border_space() const { return tpoint(0, 0); }
+	virtual tpoint border_space() const;
 
 	/**
 	 * Helper for set_active.

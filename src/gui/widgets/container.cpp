@@ -219,5 +219,10 @@ void tcontainer_::init_grid(
 	grid_builder->build(&initial_grid());
 }
 
+tpoint tcontainer_::border_space() const
+{
+	return tpoint(0, 0);
+}
+
 } // namespace gui2
 
