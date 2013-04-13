@@ -17,6 +17,7 @@
 
 #include "../editor_display.hpp"
 #include "common_palette.hpp"
+#include "tristate_button.hpp"
 
 namespace editor {
 
@@ -31,7 +32,8 @@ public:
 		, gui_(gui)
 		, item_size_(item_size)
 		, item_width_(item_width)
-		, item_space_(item_size + 3)
+//TODO avoid magic number
+		, item_space_(item_size + 5)
 		, palette_y_(0)
 		, palette_x_(0)
 		, group_map_()
@@ -44,8 +46,11 @@ public:
 		, selected_fg_item_()
 		, selected_bg_item_()
 		, active_mouse_action_(active_mouse_action)
+		, buttons_()
 	{
 	};
+
+	virtual handler_vector handler_members();
 
 	void set_start_item(size_t index) { items_start_ = index; };
 
@@ -58,10 +63,7 @@ public:
 
 	const std::vector<item_group>& get_groups() const { return groups_; };
 
-	virtual void draw(bool);
-
-	bool left_mouse_click(const int, const int);
-	bool right_mouse_click(const int, const int);
+	virtual void draw(bool force);
 
 	void next_group() {
 		set_group( (active_group_index() +1) % (groups_.size() -1) );
@@ -92,9 +94,6 @@ public:
 
 private:
 
-	/** Return the number of the tile that is at coordinates (x, y) in the panel. */
-	int tile_selected(const int x, const int y) const;
-
 	/** TODO */
 	size_t active_group_index();
 
@@ -104,7 +103,7 @@ private:
 	/** Scroll the editor-palette to the bottom. */
 	void scroll_bottom();
 
-	virtual void draw_item(SDL_Rect& dstrect, const Item& item, std::stringstream& tooltip) = 0;
+	virtual void draw_item(const Item& item, surface& item_image, std::stringstream& tooltip) = 0;
 
 	virtual const std::string& get_id(const Item& item) = 0;
 
@@ -116,7 +115,7 @@ private:
 	/** Return the number of items in the palette. */
 	size_t num_items();
 
-	void draw_old(bool);
+	//void draw_old(bool);
 
 protected:
 	/**
@@ -163,6 +162,7 @@ private:
 	std::string selected_bg_item_;
 
     mouse_action** active_mouse_action_;
+    std::vector<gui::tristate_button> buttons_;
 };
 
 

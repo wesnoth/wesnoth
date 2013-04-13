@@ -89,7 +89,7 @@ void unit_palette::setup(const config& /*cfg*/)
 //	update_report();
 }
 
-void unit_palette::draw_item(SDL_Rect& dstrect, const unit_type& u, std::stringstream& tooltip_text) {
+void unit_palette::draw_item(const unit_type& u, surface& image, std::stringstream& tooltip_text) {
 
 	surface screen = gui_.video().getSurface();
 
@@ -97,7 +97,7 @@ void unit_palette::draw_item(SDL_Rect& dstrect, const unit_type& u, std::strings
 	filename << u.image() << "~RC(" << u.flag_rgb() << '>'
 	    	 << team::get_side_color_index(gui_.viewing_side()) << ')';
 
-	surface image(image::get_image(filename.str()));
+	image = surface(image::get_image(filename.str()));
 	if(image == NULL) {
 		tooltip_text << "IMAGE NOT FOUND\n";
 		ERR_ED << "image for unit type: '" << filename.str() << "' not found\n";
@@ -112,8 +112,6 @@ void unit_palette::draw_item(SDL_Rect& dstrect, const unit_type& u, std::strings
 		image.assign(scale_surface(image,
 				item_size_, item_size_));
 	}
-
-	sdl_blit(image, NULL, screen, &dstrect);
 
 	tooltip_text << u.type_name();
 }

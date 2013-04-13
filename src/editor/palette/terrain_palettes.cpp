@@ -166,11 +166,11 @@ void terrain_palette::setup(const config& cfg)
 //	update_report();
 }
 
-void terrain_palette::draw_item(SDL_Rect& dstrect, const t_translation::t_terrain& terrain, std::stringstream& tooltip_text) {
+void terrain_palette::draw_item(const t_translation::t_terrain& terrain,
+		surface& image, std::stringstream& tooltip_text) {
 
-	const t_translation::t_terrain base_terrain = map().get_terrain_info(terrain).default_base();
-
-	surface screen = gui_.video().getSurface();
+	const t_translation::t_terrain base_terrain =
+			map().get_terrain_info(terrain).default_base();
 
 	//Draw default base for overlay terrains
 	if(base_terrain != t_translation::NONE_TERRAIN) {
@@ -191,12 +191,10 @@ void terrain_palette::draw_item(SDL_Rect& dstrect, const t_translation::t_terrai
 			base_image.assign(scale_surface(base_image,
 					item_size_, item_size_));
 		}
-
-		sdl_blit(base_image, NULL, screen, &dstrect);
 	}
 
 	const std::string filename = "terrain/" + map().get_terrain_info(terrain).editor_image() + ".png";
-	surface image(image::get_image(filename));
+	image = surface(image::get_image(filename));
 	if(image == NULL) {
 		tooltip_text << "IMAGE NOT FOUND\n";
 		ERR_ED << "image for terrain: '" << filename << "' not found\n";
@@ -211,8 +209,6 @@ void terrain_palette::draw_item(SDL_Rect& dstrect, const t_translation::t_terrai
 		image.assign(scale_surface(image,
 				item_size_, item_size_));
 	}
-
-	sdl_blit(image, NULL, screen, &dstrect);
 
 	tooltip_text << map().get_terrain_editor_string(terrain);
 	if (gui_.get_draw_terrain_codes()) {

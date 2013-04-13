@@ -31,24 +31,31 @@ public:
 	empty_palette(display& gui) : gui_(gui), empty_() {};
 
 	//event handling
-	virtual bool left_mouse_click(const int /*x*/, const int /*y*/) { return false;};
-	virtual bool right_mouse_click(const int /*x*/, const int /*y*/) { return false;};
+	virtual bool mouse_click() { return false;};
 
 	virtual bool scroll_up() { return false;};
 	virtual bool can_scroll_up() { return false;};
 	virtual bool scroll_down() { return false;};
 	virtual bool can_scroll_down() { return false;};
 
+	virtual void select_fg_item(const std::string& /*item_id*/) {};
+	virtual void select_bg_item(const std::string& /*item_id*/) {};
+
 	//drawing
 	virtual void adjust_size(const SDL_Rect& /*target*/) {};
 	virtual void draw(bool) {
+		//TODO
+		/*
 		gui::button* upscroll_button = gui_.find_button("upscroll-button-editor");
 		upscroll_button->hide(true);
 		gui::button* downscroll_button = gui_.find_button("downscroll-button-editor");
 		downscroll_button->hide(true);
 		gui::button* palette_menu_button = gui_.find_button("menu-editor-terrain");
 		palette_menu_button->hide(true);
+		*/
 	};
+
+	std::vector<gui::widget>* get_widgets() { return NULL; };
 
 	//group
 	virtual void set_group(size_t /*index*/) {};
@@ -69,7 +76,6 @@ public:
 private:
 	display& gui_;
 	std::vector<item_group> empty_;
-
 };
 
 

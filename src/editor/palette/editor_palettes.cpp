@@ -29,6 +29,18 @@
 namespace editor {
 
 template<class Item>
+handler_vector editor_palette<Item>::handler_members()
+{
+	handler_vector h;
+	BOOST_FOREACH(gui::widget& b, buttons_) {
+		h.push_back(&b);
+	}
+	return h;
+}
+template handler_vector editor_palette<t_translation::t_terrain>::handler_members();
+template handler_vector editor_palette<unit_type>::handler_members();
+
+template<class Item>
 void editor_palette<Item>::expand_palette_groups_menu(std::vector<std::string>& items)
 {
 	for (unsigned int i = 0; i < items.size(); ++i) {
@@ -58,32 +70,6 @@ void editor_palette<Item>::expand_palette_groups_menu(std::vector<std::string>& 
 }
 template void editor_palette<t_translation::t_terrain>::expand_palette_groups_menu(std::vector<std::string>& items);
 template void editor_palette<unit_type>::expand_palette_groups_menu(std::vector<std::string>& items);
-
-template<class Item>
-bool editor_palette<Item>::left_mouse_click(const int mousex, const int mousey)
-{
-	int tselect = tile_selected(mousex, mousey);
-	if(tselect >= 0 && (items_start_+tselect) < active_group().size()) {
-		select_fg_item(active_group()[items_start_+tselect]);
-		return true;
-	}
-	return false;
-}
-template bool editor_palette<t_translation::t_terrain>::left_mouse_click(const int mousex, const int mousey);
-template bool editor_palette<unit_type>::left_mouse_click(const int mousex, const int mousey);
-
-template<class Item>
-bool editor_palette<Item>::right_mouse_click(const int mousex, const int mousey)
-{
-	int tselect = tile_selected(mousex, mousey);
-	if(tselect >= 0 && (items_start_+tselect) < active_group().size()) {
-		select_bg_item(active_group()[items_start_+tselect]);
-		return true;
-	}
-	return false;
-}
-template bool editor_palette<t_translation::t_terrain>::right_mouse_click(const int mousex, const int mousey);
-template bool editor_palette<unit_type>::right_mouse_click(const int mousex, const int mousey);
 
 template<class Item>
 bool editor_palette<Item>::scroll_up()
@@ -211,6 +197,7 @@ void editor_palette<Item>::adjust_size(const SDL_Rect& target)
 		static_cast<unsigned> (space_for_items / item_space_) *
 		item_width_;
 	nitems_ = std::min<int>(items_fitting, nmax_items_);
+	buttons_.resize(nitems_, gui::tristate_button(gui_.video(), "", this));
 }
 template void editor_palette<t_translation::t_terrain>::adjust_size(const SDL_Rect& target);
 template void editor_palette<unit_type>::adjust_size(const SDL_Rect& target);
@@ -253,9 +240,9 @@ template size_t editor_palette<t_translation::t_terrain>::num_items();
 template size_t editor_palette<unit_type>::num_items();
 
 template<class Item>
-void editor_palette<Item>::draw(bool dirty)
+void editor_palette<Item>::draw(bool force)
 {
-	if (!dirty) return;
+	if (!force) return;
 	unsigned int y = palette_y_;
 	unsigned int x = palette_x_;
 	unsigned int starting = items_start_;
@@ -269,47 +256,25 @@ void editor_palette<Item>::draw(bool dirty)
 	gui::button* downscroll_button = gui_.find_button("downscroll-button-editor");
 	downscroll_button->enable(ending != num_items());
 
-	for(unsigned int counter = starting; counter < ending; counter++){
 
-		const int counter_from_zero = counter - starting;
-		SDL_Rect dstrect;
-		dstrect.x = x + (counter_from_zero % item_width_) * item_space_;
-		dstrect.y = y;
-		dstrect.w = item_size_;
-		dstrect.h = item_size_;
+	unsigned int counter = starting;
+	for (unsigned int i = 0 ; i < buttons_.size() ; i++) {
+		//TODO check if the conditions still hold for the counter variable
+		//for (unsigned int counter = starting; counter < ending; counter++)
 
-		std::stringstream tooltip_text;
+		gui::tristate_button& tile = buttons_[i];
+
+		tile.hide(true);
+
+		if (i >= ending) continue;
 
 		const std::string item_id = active_group()[counter];
-
 		typedef std::map<std::string, Item> item_map_wurscht;
-
 		typename item_map_wurscht::iterator item = item_map_.find(item_id);
 
-		draw_item(dstrect, (*item).second, tooltip_text);
-
-		surface screen = gui_.video().getSurface();
-		Uint32 color;
-
-		if (get_id((*item).second) == selected_bg_item_
-				&& get_id((*item).second) == selected_fg_item_) {
-			color = SDL_MapRGB(screen->format,0xFF,0x00,0xFF);
-		}
-		else if (get_id((*item).second) == selected_bg_item_) {
-			color = SDL_MapRGB(screen->format,0x00,0x00,0xFF);
-		}
-		else if (get_id((*item).second) == selected_fg_item_) {
-			color = SDL_MapRGB(screen->format,0xFF,0x00,0x00);
-		}
-		else {
-			color = SDL_MapRGB(screen->format,0x00,0x00,0x00);
-		}
-
-		draw_rectangle(dstrect.x, dstrect.y, dstrect.w, dstrect.h, color, screen);
-		/* TODO The call above overdraws the border of the terrain image.
-			   The following call is doing better but causing other drawing glitches.
-			   draw_rectangle(dstrect.x -1, dstrect.y -1, image->w +2, image->h +2, color, screen);
-		 */
+		surface item_image(NULL);
+		std::stringstream tooltip_text;
+		draw_item((*item).second, item_image, tooltip_text);
 
 		bool is_core = non_core_items_.find(get_id((*item).second)) == non_core_items_.end();
 		if (!is_core) {
@@ -319,29 +284,41 @@ void editor_palette<Item>::draw(bool dirty)
 			<< _("Will not work in game without extra care.")
 			<< "</span>";
 		}
-		tooltips::add_tooltip(dstrect, tooltip_text.str());
+
+		const int counter_from_zero = counter - starting;
+		SDL_Rect dstrect;
+		dstrect.x = x + (counter_from_zero % item_width_) * item_space_;
+		dstrect.y = y;
+		dstrect.w = item_size_ + 2;
+		dstrect.h = item_size_ + 2;
+
+		tile.set_location(dstrect);
+		tile.set_help_string(tooltip_text.str());
+		tile.set_item_image(item_image);
+		tile.set_item_id(item_id);
+
+		if (get_id((*item).second) == selected_bg_item_
+				&& get_id((*item).second) == selected_fg_item_) {
+			tile.set_pressed(gui::tristate_button::BOTH);
+		} else if (get_id((*item).second) == selected_bg_item_) {
+			tile.set_pressed(gui::tristate_button::RIGHT);
+		} else if (get_id((*item).second) == selected_fg_item_) {
+			tile.set_pressed(gui::tristate_button::LEFT);
+		} else {
+			tile.set_pressed(gui::tristate_button::NONE);
+		}
+
+		tile.set_dirty(true);
+		tile.hide(false);
+
+		// Adjust location
 		if (counter_from_zero % item_width_ == item_width_ - 1)
 			y += item_space_;
+		counter++;
 	}
 }
 template void editor_palette<t_translation::t_terrain>::draw(bool);
 template void editor_palette<unit_type>::draw(bool);
-
-template<class Item>
-int editor_palette<Item>::tile_selected(const int x, const int y) const
-{
-	for(unsigned int i = 0; i != nitems_; i++) {
-		const int px = palette_x_ + (i % item_width_) * item_space_;
-		const int py = palette_y_ + (i / item_width_) * item_space_;
-		const int pw = item_space_;
-		const int ph = item_space_;
-
-		if(x > px && x < px + pw && y > py && y < py + ph) {
-			return i;
-		}
-	}
-	return -1;
-}
 
 
 } // end namespace editor

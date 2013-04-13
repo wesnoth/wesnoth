@@ -19,6 +19,7 @@
 
 #include "tooltips.hpp"
 #include "editor/action/mouse/mouse_action.hpp"
+#include <boost/foreach.hpp>
 
 namespace editor {
 
@@ -127,10 +128,21 @@ void palette_manager::draw(bool force)
 	gui::button* palette_menu_button = gui_.find_button("menu-editor-terrain");
 	palette_menu_button->hide(false);
 
-	active_palette().draw(force);
+	bg_restore(loc);
+	active_palette().draw(dirty() || force);
 
 	update_rect(loc);
 	set_dirty(false);
+}
+
+handler_vector palette_manager::handler_members()
+{
+	//handler_vector h;
+//	BOOST_FOREACH(gui::widget& b, active_palette().get_widgets()) {
+//		h.push_back(&b);
+//	}
+	//return h;
+	return active_palette().handler_members();
 }
 
 void palette_manager::handle_event(const SDL_Event& event) {
@@ -138,35 +150,17 @@ void palette_manager::handle_event(const SDL_Event& event) {
 	if (event.type == SDL_MOUSEMOTION) {
 		// If the mouse is inside the palette, give it focus.
 		if (point_in_rect(event.button.x, event.button.y, location())) {
-			if (!focus(&event)) {
-				set_focus(true);
-			}
+			if (!focus(&event)) set_focus(true);
 		}
 		// If the mouse is outside, remove focus.
-		else {
-			if (focus(&event)) {
-				set_focus(false);
-			}
-		}
+		else if (focus(&event)) set_focus(false);
 	}
 	if (!focus(&event)) {
 		return;
 	}
-	int mousex, mousey;
-	SDL_GetMouseState(&mousex,&mousey);
+
 	const SDL_MouseButtonEvent mouse_button_event = event.button;
 	if (mouse_button_event.type == SDL_MOUSEBUTTONDOWN) {
-		if (mouse_button_event.button == SDL_BUTTON_LEFT) {
-			left_mouse_click(mousex, mousey);
-		}
-		/* TODO
-		if (mouse_button_event.button == SDL_BUTTON_MIDDLE) {
-			middle_mouse_click(mousex, mousey);
-		}
-		*/
-		if (mouse_button_event.button == SDL_BUTTON_RIGHT) {
-			right_mouse_click(mousex, mousey);
-		}
 		if (mouse_button_event.button == SDL_BUTTON_WHEELUP) {
 			scroll_up();
 		}
@@ -181,30 +175,16 @@ void palette_manager::handle_event(const SDL_Event& event) {
 			active_palette().next_group();
 			scroll_top();
 		}
+		//set_dirty(true);
 	}
+
 	if (mouse_button_event.type == SDL_MOUSEBUTTONUP) {
-		if (mouse_button_event.button == SDL_BUTTON_LEFT) {
-			//TODO What is missing here?
-		}
-	}
-}
-
-void palette_manager::left_mouse_click(const int mousex, const int mousey)
-{
-	if ( active_palette().left_mouse_click(mousex, mousey) ) {
-		set_dirty();
-		gui_.invalidate_game_status();
-	}
-}
-
-void palette_manager::right_mouse_click(const int mousex, const int mousey)
-{
-	if ( active_palette().right_mouse_click(mousex, mousey) ) {
-		set_dirty();
-		gui_.invalidate_game_status();
+		//set_dirty(true);
+//		draw(true);
+//		set_dirty(active_palette().mouse_click());
+//		gui_.invalidate_game_status();
 	}
 }
 
 
 } //Namespace editor
-

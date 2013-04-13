@@ -52,7 +52,7 @@ private:
 
 	virtual const std::string& get_id(const t_translation::t_terrain& terrain);
 
-	virtual void draw_item(SDL_Rect& dstrect, const t_translation::t_terrain& terrain, std::stringstream& tooltip_text);
+	virtual void draw_item(const t_translation::t_terrain& terrain, surface& item_image, std::stringstream& tooltip_text);
 
 	virtual void update_report();
 };

@@ -16,6 +16,7 @@
 #define COMMON_PALETTES_H_INCLUDED
 
 #include "config.hpp"
+#include "gui/widgets/widget.hpp"
 
 struct SDL_Rect;
 
@@ -44,8 +45,11 @@ public:
 	virtual ~common_palette() {}
 
 	//event handling
-	virtual bool left_mouse_click(const int x, const int y) = 0;
-	virtual bool right_mouse_click(const int x, const int y) = 0;
+
+	virtual handler_vector handler_members() { return handler_vector(); };
+	
+	virtual void select_fg_item(const std::string& item_id) = 0;
+	virtual void select_bg_item(const std::string& item_id) = 0;
 
 	/** Scroll the editor-palette up one step if possible. */
 	virtual bool scroll_up() = 0;
@@ -57,7 +61,7 @@ public:
 
 	//drawing
 	virtual void adjust_size(const SDL_Rect& target) = 0;
-	virtual void draw(bool) = 0;
+	virtual void draw(bool force) = 0;
 
 	//group
 	virtual void set_group(size_t index) = 0;

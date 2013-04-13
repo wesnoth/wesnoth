@@ -659,6 +659,7 @@ set(wesnoth-main_SRC
 	editor/map/map_context.cpp
 	editor/map/map_fragment.cpp
 	editor/palette/palette_manager.cpp
+	editor/palette/tristate_button.cpp
 	editor/toolkit/brush.cpp
 	editor/palette/editor_palettes.cpp
 	editor/palette/terrain_palettes.cpp

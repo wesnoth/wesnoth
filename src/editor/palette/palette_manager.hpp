@@ -21,9 +21,9 @@
 
 #include "common_palette.hpp"
 
+#include "empty_palette.hpp"
 #include "terrain_palettes.hpp"
 #include "unit_palette.hpp"
-#include "empty_palette.hpp"
 
 namespace editor {
 
@@ -32,33 +32,29 @@ class palette_manager : public gui::widget {
 
 public:
 
-	//palette_manager();
-
 	palette_manager(editor_display &gui, const config& cfg
 				, mouse_action** active_mouse_action);
 
 	void set_group(size_t index);
 
-//	virtual size_t active_group_index();
-
-//	virtual const std::vector<item_group>& get_groups();
-
 	/** Scroll the editor-palette up one step if possible. */
 	void scroll_up();
-
-	bool can_scroll_down();
-	bool can_scroll_up();
-
 	/** Scroll the editor-palette down one step if possible. */
 	void scroll_down();
 
-	void scroll_top();
+	bool can_scroll_up();
+	bool can_scroll_down();
 
+	void scroll_top();
 	void scroll_bottom();
 
-//	virtual void swap();
+//TODO
+//	void swap();
 
 	void adjust_size();
+
+	handler_vector handler_members();
+	virtual void handle_event(const SDL_Event& event);
 
 	/**
 	 * Draw the palette.
@@ -66,47 +62,24 @@ public:
 	 * If force is true everything will be redrawn,
 	 * even though it is not invalidated.
 	 */
-
-	virtual void handle_event(const SDL_Event& event);
-
 	void draw(bool force=false);
-	void draw() { draw(true); };
-
-	/**
-	 * To be called when a mouse click occurs.
-	 *
-	 * Check if the coordinates is a terrain that may be chosen,
-	 * and select the terrain if that is the case.
-	 */
-	void left_mouse_click(const int mousex, const int mousey);
-	void right_mouse_click(const int mousex, const int mousey);
-
-	/** Return the number of the tile that is at coordinates (x, y) in the panel. */
-	//TODO
-//	int tile_selected(const int x, const int y) const;
-
+	void draw() { draw(false); };
 
 public:
 
 	common_palette& active_palette();
-	//TODO { return (*mouse_action_)->get_palette(); };
-
-	//TODO
-//	terrain_palette* terrain_palette() { return terrain_palette_; };
-//	unit_palette* unit_palette() { return unit_palette_; };
-//	empty_palette* empty_palette() { return empty_palette_; };
 
 private:
 
 	editor_display& gui_;
 	int palette_start_;
-
 	mouse_action** mouse_action_;
 
 public:
+
 	boost::scoped_ptr<terrain_palette> terrain_palette_;
-	boost::scoped_ptr<unit_palette> unit_palette_;
-	boost::scoped_ptr<empty_palette> empty_palette_;
+	boost::scoped_ptr<unit_palette>    unit_palette_;
+	boost::scoped_ptr<empty_palette>   empty_palette_;
 
 };
 
