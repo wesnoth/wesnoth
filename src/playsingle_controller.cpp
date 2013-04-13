@@ -212,6 +212,17 @@ void playsingle_controller::clear_messages(){
 
 void playsingle_controller::whiteboard_toggle() {
 	resources::whiteboard->set_active(!resources::whiteboard->is_active());
+
+	if (resources::whiteboard->is_active()) {
+		std::string hk = hotkey::get_names(hotkey::HOTKEY_WB_TOGGLE);
+		utils::string_map symbols;
+		symbols["hk"] = hk;
+
+		std::string msg = vgettext("Planning mode activated! (use $hk to deactivate)", symbols);
+		gui_->announce(msg, font::NORMAL_COLOR);
+	} else {
+		gui_->announce(_("Planning mode deactivated!"), font::NORMAL_COLOR);
+	}
 	//@todo Stop printing whiteboard help in the chat once we have better documentation/help
 	resources::whiteboard->print_help_once();
 }
