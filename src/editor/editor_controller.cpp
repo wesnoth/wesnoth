@@ -425,6 +425,10 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			context_manager_->get_map_context().get_labels().recalculate_labels();
 			return true;
 		case HOTKEY_EDITOR_PALETTE_GROUPS:
+			//TODO mordante
+			//std::vector< std::pair< std::string, std::string > > items;
+			//toolkit_->get_palette_manager()->active_palette().expand_palette_groups_menu(items);
+			//new_dialog(items);
 			return true;
 		case HOTKEY_EDITOR_PALETTE_UPSCROLL:
 			toolkit_->get_palette_manager()->scroll_up();
@@ -635,11 +639,11 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 		context_manager_->expand_open_maps_menu(items);
 		context_menu = true; //FIXME hack to display a one-item menu
 	}
-	if (!items.empty() && items.front() == "editor-palette-groups") {
-		active_menu_ = editor::PALETTE;
-		toolkit_->get_palette_manager()->active_palette().expand_palette_groups_menu(items);
-		context_menu = true; //FIXME hack to display a one-item menu
-	}
+//	if (!items.empty() && items.front() == "editor-palette-groups") {
+//		active_menu_ = editor::PALETTE;
+//		toolkit_->get_palette_manager()->active_palette().expand_palette_groups_menu(items);
+//		context_menu = true; //FIXME hack to display a one-item menu
+//	}
 	if (!items.empty() && items.front() == "editor-side-switch") {
 		active_menu_ = editor::SIDE;
 		context_manager_->expand_sides_menu(items);

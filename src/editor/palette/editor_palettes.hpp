@@ -57,7 +57,7 @@ public:
 	size_t start_num(void) { return items_start_; };
 
 	/** Menu expanding for palette group list */
-	void expand_palette_groups_menu(std::vector<std::string>& items);
+	void expand_palette_groups_menu(std::vector< std::pair<std::string, std::string> >& items);
 
 	void set_group(size_t index);
 
