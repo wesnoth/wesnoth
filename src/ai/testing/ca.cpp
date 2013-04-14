@@ -29,6 +29,7 @@
 #include "../../resources.hpp"
 #include "../../team.hpp"
 #include "../../pathfind/pathfind.hpp"
+#include "../../pathfind/teleport.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -79,24 +80,42 @@ double goto_phase::evaluate()
 			continue;//@todo: only bail out if goto is on keep
 		}
 		// end of passive_leader
-		int closest_distance = -1;
-		std::pair<map_location,map_location> closest_move;
-		for(move_map::const_iterator i = get_dstsrc().begin(); i != get_dstsrc().end(); ++i) {
-			if(i->second != ui->get_location()) {
-				continue;
+
+		const pathfind::shortest_path_calculator calc(*ui, current_team(), *resources::teams, *resources::game_map);
+
+		const pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(*ui, current_team());
+
+		pathfind::plain_route route;
+		route = pathfind::a_star_search(ui->get_location(), ui->get_goto(), 10000.0, &calc, map_.w(), map_.h(), &allowed_teleports);
+
+		if (!route.steps.empty()){
+			move_ = check_move_action(ui->get_location(), route.steps.back());
+		} else {
+			// there is no direct path (yet)
+			// go to the nearest hex instead.
+			// maybe a door will open later or something
+
+			int closest_distance = -1;
+			std::pair<map_location,map_location> closest_move;
+			for(move_map::const_iterator i = get_dstsrc().begin(); i != get_dstsrc().end(); ++i) {
+				if(i->second != ui->get_location()) {
+						continue;
+				}
+				int distance = distance_between(i->first,ui->get_goto());
+				if(closest_distance == -1 || distance < closest_distance) {
+					closest_distance = distance;
+					closest_move = *i;
+				}
 			}
-			int distance = distance_between(i->first,ui->get_goto());
-			if(closest_distance == -1 || distance < closest_distance) {
-				closest_distance = distance;
-				closest_move = *i;
+			if(closest_distance != -1) {
+				move_ = check_move_action(ui->get_location(), closest_move.first);
+			} else {
+				return BAD_SCORE;
 			}
 		}
 
-		if(closest_distance != -1) {
-			move_ = check_move_action(ui->get_location(), closest_move.first);
-			if (move_->is_ok()) {
-				return get_score();
-			}
+		if (move_->is_ok()) {
+			return get_score();
 		}
 	}
 
