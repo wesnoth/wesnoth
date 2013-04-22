@@ -25,13 +25,19 @@ class unit_type;
 #include "map_location.hpp"
 #include "construct_dialog.hpp"
 #include "network.hpp"
+#include "ai/lua/unit_advancements_aspect.hpp"
 
 namespace dialogs {
 
 /**
  * Function to handle an advancing unit. If there is only one choice to advance
- * to, the unit will be automatically advanced. If there is a choice, and
- * 'random_choice' is true, then a unit will be selected at random. Otherwise,
+ * to, the unit will be automatically advanced.
+
+ * If 'automatic' is true,
+ * a unit will be selected at by given 'advancements' or at random when
+ * 'advancements' is empty or don't match any possible advancement options.
+ *
+ * If 'automatic' is false,
  * a dialog will be displayed asking the user what to advance to.
  *
  * Note that 'loc' is not a reference, because deleting an item from the units
@@ -42,7 +48,7 @@ namespace dialogs {
  * cause for advancement is different (eg unstore_unit) this routine
  * should _not_ be used.
  */
-void advance_unit(const map_location &loc, bool random_choice = false, bool add_replay_event = false);
+void advance_unit(const map_location &loc, bool automatic = false, bool add_replay_event = false, const ai::unit_advancements_aspect& advancements = ai::unit_advancements_aspect());
 
 /**
  * Lets the user to select a unit advancement. This should always be used

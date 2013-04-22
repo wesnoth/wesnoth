@@ -179,8 +179,8 @@ team& action_result::get_my_team() const
 
 
 // attack_result
-attack_result::attack_result( side_number side, const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon, double aggression)
-	: action_result(side), attacker_loc_(attacker_loc), defender_loc_(defender_loc), attacker_weapon_(attacker_weapon), aggression_(aggression){
+attack_result::attack_result( side_number side, const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon, double aggression, const unit_advancements_aspect& advancements)
+	: action_result(side), attacker_loc_(attacker_loc), defender_loc_(defender_loc), attacker_weapon_(attacker_weapon), aggression_(aggression), advancements_(advancements){
 }
 
 
@@ -302,7 +302,8 @@ void attack_result::do_execute()
 	}
 	recorder.add_seed("attack", rand_rng::get_last_seed());
 	attack_unit(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon);
-	dialogs::advance_unit(attacker_loc_, true);
+
+	dialogs::advance_unit(attacker_loc_, true, false, advancements_);
 
 	const unit_map::const_iterator defender = resources::units->find(defender_loc_);
 	if(defender != resources::units->end()) {
@@ -922,9 +923,10 @@ attack_result_ptr actions::execute_attack_action( side_number side,
 	const map_location& attacker_loc,
 	const map_location& defender_loc,
 	int attacker_weapon,
-	double aggression)
+	double aggression,
+	const unit_advancements_aspect& advancements)
 {
-	attack_result_ptr action(new attack_result(side,attacker_loc,defender_loc,attacker_weapon,aggression));
+	attack_result_ptr action(new attack_result(side,attacker_loc,defender_loc,attacker_weapon,aggression,advancements));
 	execute ? action->execute() : action->check_before();
 	return action;
 }

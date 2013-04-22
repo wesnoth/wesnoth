@@ -27,6 +27,7 @@
 #include "../../util.hpp"
 #include "../../serialization/string_utils.hpp"
 #include "../../resources.hpp"
+#include "../lua/unit_advancements_aspect.hpp"
 
 namespace ai {
 
@@ -201,6 +202,35 @@ public:
 		return cfg;
 	}
 };
+
+template<>
+class config_value_translator<unit_advancements_aspect> {
+public:
+
+	static unit_advancements_aspect cfg_to_value(const config &cfg)
+	{
+		return unit_advancements_aspect(cfg["value"]);
+	}
+
+	static void cfg_to_value(const config &cfg, unit_advancements_aspect &value)
+	{
+		value = cfg_to_value(cfg);
+	}
+
+	static void value_to_cfg(const unit_advancements_aspect &value, config &cfg)
+	{
+		cfg["value"] = value.get_value();
+
+	}
+
+	static config value_to_cfg(const unit_advancements_aspect &value)
+	{
+		config cfg;
+		value_to_cfg(value,cfg);
+		return cfg;
+	}
+};
+
 
 
 // variant value translator

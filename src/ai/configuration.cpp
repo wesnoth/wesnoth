@@ -59,6 +59,7 @@ void configuration::init(const config &game_config)
 	ai_configurations_.clear();
 	era_ai_configurations_.clear();
 	well_known_aspects.clear();
+	well_known_aspects.push_back(well_known_aspect("advancements"));
 	well_known_aspects.push_back(well_known_aspect("aggression"));
 	well_known_aspects.push_back(well_known_aspect("attack_depth"));
 	well_known_aspects.push_back(well_known_aspect("attacks"));

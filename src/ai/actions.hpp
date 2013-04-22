@@ -23,6 +23,7 @@
 #include "game_info.hpp"
 
 #include "../actions/move.hpp"
+#include "lua/unit_advancements_aspect.hpp"
 
 namespace pathfind {
 struct plain_route;
@@ -130,7 +131,8 @@ public:
 		const map_location& attacker_loc,
 		const map_location& defender_loc,
 		int attacker_weapon,
-		double aggression );
+		double aggression,
+		const unit_advancements_aspect& advancements = unit_advancements_aspect());
 
 	enum tresult {
 		E_EMPTY_ATTACKER = 1001,
@@ -156,6 +158,7 @@ private:
 	const map_location& defender_loc_;
 	int attacker_weapon_;
 	double aggression_;
+	const unit_advancements_aspect& advancements_;
 };
 
 class move_result : public action_result {
@@ -314,7 +317,8 @@ static attack_result_ptr execute_attack_action( side_number side,
 	const map_location& attacker_loc,
 	const map_location& defender_loc,
 	int attacker_weapon,
-	double aggression );
+	double aggression,
+	const unit_advancements_aspect& advancements = unit_advancements_aspect());
 
 
 /**

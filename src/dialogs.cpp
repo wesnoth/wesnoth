@@ -50,6 +50,7 @@
 #include "formula_string_utils.hpp"
 #include "gui/dialogs/game_save.hpp"
 #include "gui/dialogs/transient_message.hpp"
+#include "ai/lua/unit_advancements_aspect.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -206,7 +207,7 @@ int advance_unit_dialog(const map_location &loc)
 	return 0;
 }
 
-void advance_unit(const map_location &loc, bool random_choice, bool add_replay_event)
+void advance_unit(const map_location &loc, bool automatic, bool add_replay_event, const ai::unit_advancements_aspect& advancements)
 {
 	unit_map::iterator u = resources::units->find(loc);
 	if(!unit_helper::will_certainly_advance(u)) {
@@ -218,12 +219,24 @@ void advance_unit(const map_location &loc, bool random_choice, bool add_replay_e
 
 	int res;
 
-	if (random_choice) {
+	if (automatic) {
+
+		//if the advancements are empty or don't match any option
+		//choose random instead.
 		res = rand() % unit_helper::number_of_possible_advances(*u);
+
+		const std::vector<std::string>& options = u->advances_to();
+		const std::vector<std::string>& allowed = advancements.get_advancements(u);
+
+		for(std::vector<std::string>::const_iterator a = options.begin(); a != options.end(); ++a) {
+			if (std::find(allowed.begin(), allowed.end(), *a) != allowed.end()){
+				res = a - options.begin();
+				break;
+			}
+		}
 	} else {
 		res = advance_unit_dialog(loc);
 	}
-
 	if(add_replay_event) {
 		recorder.add_advancement(loc);
 	}
@@ -244,7 +257,7 @@ void advance_unit(const map_location &loc, bool random_choice, bool add_replay_e
 		if (u->experience() < 81) {
 			// For all leveling up we have to add advancement to replay here because replay
 			// doesn't handle cascading advancement since it just calls animate_unit_advancement().
-			advance_unit(loc, random_choice, true);
+			advance_unit(loc, automatic, true, advancements);
 		} else {
 			ERR_CF << "Unit has too many (" << u->experience()
 				<< ") XP left; cascade leveling disabled.\n";

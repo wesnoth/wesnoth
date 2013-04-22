@@ -864,7 +864,7 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
                    "recruitment_ignore_bad_combat",
                    "recruitment_pattern",
                    "villages_per_scout", "leader_value", "village_value",
-                   "aggression", "caution", "attack_depth", "grouping"):
+                   "aggression", "caution", "attack_depth", "grouping", "advancements"):
             print errlead + key + " outside [ai] scope"
     # Bad [recruit] attribute
     if parent in ("[allow_recruit]", "[disallow_recruit]") and key == "recruit":

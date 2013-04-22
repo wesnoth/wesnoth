@@ -34,6 +34,7 @@
 #include "testing/stage_rca.hpp"
 #include "testing/stage_fallback.hpp"
 #include "akihara/recruitment.hpp"
+#include "lua/unit_advancements_aspect.hpp"
 
 namespace ai {
 // =======================================================================
@@ -224,6 +225,10 @@ static register_goal_factory<lua_goal>
 // =======================================================================
 
 //name=composite_aspect
+
+static register_aspect_factory< composite_aspect< unit_advancements_aspect > >
+	advancements__composite_aspect_factory("advancements*composite_aspect");
+
 static register_aspect_factory< composite_aspect<double> >
 	aggression__composite_aspect_factory("aggression*composite_aspect");
 
@@ -292,6 +297,9 @@ static register_aspect_factory< composite_aspect<int> >
 
 
 //name=standard_aspect
+static register_aspect_factory< standard_aspect< unit_advancements_aspect > >
+	advancements__standard_aspect_factory("advancements*standard_aspect");
+
 static register_aspect_factory< standard_aspect<double> >
 	aggression__standard_aspect_factory("aggression*standard_aspect");
 
@@ -358,11 +366,15 @@ static register_aspect_factory< standard_aspect<double> >
 static register_aspect_factory< standard_aspect<int> >
 	villages_per_scout__standard_aspect_factory("villages_per_scout*standard_aspect");
 
+
 // Also keep the old syntax
 static register_aspect_factory< testing_ai_default::aspect_attacks >
 	old_attacks__testing_ai_default_aspect_attacks_factory("attacks*testing_ai_default::aspect_attacks");
 
 //name = default
+static register_aspect_factory< standard_aspect< unit_advancements_aspect > >
+	advancements__standard_aspect_factory2("advancements*");
+
 static register_aspect_factory< standard_aspect<double> >
 	aggression__standard_aspect_factory2("aggression*");
 
@@ -429,7 +441,11 @@ static register_aspect_factory< standard_aspect<double> >
 static register_aspect_factory< standard_aspect<int> >
 	villages_per_scout__standard_aspect_factory2("villages_per_scout*");
 
+
 //name = lua
+static register_lua_aspect_factory< lua_aspect< unit_advancements_aspect > >
+	advancements__lua_aspect_factory("advancements*lua_aspect");
+
 static register_lua_aspect_factory< lua_aspect<double> >
 	aggression__lua_aspect_factory("aggression*lua_aspect");
 

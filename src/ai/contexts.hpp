@@ -24,6 +24,7 @@
 #include "game_info.hpp"
 #include "../generic_event.hpp"
 #include "../config.hpp"
+#include "lua/unit_advancements_aspect.hpp"
 
 
 //#include "../unit.hpp"
@@ -207,6 +208,9 @@ public:
 	virtual std::map<map_location,defensive_position>& defensive_position_cache() const = 0;
 
 
+	virtual const unit_advancements_aspect& get_advancements() const = 0;
+
+
 	virtual double get_aggression() const = 0;
 
 
@@ -324,6 +328,7 @@ public:
 
 
 	virtual int get_villages_per_scout() const = 0;
+
 
 
 	virtual bool is_active(const std::string &time_of_day, const std::string &turns) const = 0;
@@ -604,6 +609,12 @@ public:
 	virtual std::map<map_location,defensive_position>& defensive_position_cache() const
 	{
 		return target_->defensive_position_cache();
+	}
+
+
+	virtual const unit_advancements_aspect& get_advancements() const
+	{
+		return target_->get_advancements();
 	}
 
 
@@ -1264,6 +1275,9 @@ public:
 	virtual std::map<map_location,defensive_position>& defensive_position_cache() const;
 
 
+	virtual const unit_advancements_aspect& get_advancements() const;
+
+
 	virtual double get_aggression() const;
 
 
@@ -1449,6 +1463,7 @@ private:
 
 	known_aspect_map known_aspects_;
 
+	aspect_type< unit_advancements_aspect >::typesafe_ptr advancements_;
 	aspect_type<double>::typesafe_ptr aggression_;
 	aspect_type<int>::typesafe_ptr attack_depth_;
 	aspect_map aspects_;

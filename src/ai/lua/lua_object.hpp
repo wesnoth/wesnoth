@@ -31,6 +31,7 @@
 #include "../default/contexts.hpp"
 #include "terrain_filter.hpp"
 #include "resources.hpp"
+#include "unit_advancements_aspect.hpp"
 
 namespace ai {
 
@@ -190,6 +191,12 @@ inline boost::shared_ptr<std::vector<target> > lua_object< std::vector<target> >
 	return targets;
 }
 
+template <>
+inline boost::shared_ptr<unit_advancements_aspect> lua_object<unit_advancements_aspect>::to_type(lua_State *L, int n)
+{
+	boost::shared_ptr<unit_advancements_aspect> uaa = boost::shared_ptr<unit_advancements_aspect>(new unit_advancements_aspect(L, n));
+	return uaa;
+}
 } // end of namespace ai
 
 

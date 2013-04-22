@@ -90,14 +90,16 @@ team& readwrite_context_impl::current_team_w()
 attack_result_ptr readwrite_context_impl::execute_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon){
 	unit_map::iterator i = resources::units->find(attacker_loc);
 	double m_aggression = i.valid() && i->can_recruit() ? get_leader_aggression() : get_aggression();
-	return actions::execute_attack_action(get_side(),true,attacker_loc,defender_loc,attacker_weapon, m_aggression);
+	const unit_advancements_aspect& m_advancements = get_advancements();
+	return actions::execute_attack_action(get_side(),true,attacker_loc,defender_loc,attacker_weapon, m_aggression, m_advancements);
 }
 
 
 attack_result_ptr readonly_context_impl::check_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon){
 	unit_map::iterator i = resources::units->find(attacker_loc);
 	double m_aggression = i.valid() && i->can_recruit() ? get_leader_aggression() : get_aggression();
-	return actions::execute_attack_action(get_side(),false,attacker_loc,defender_loc,attacker_weapon, m_aggression);
+	const unit_advancements_aspect& m_advancements = get_advancements();
+	return actions::execute_attack_action(get_side(),false,attacker_loc,defender_loc,attacker_weapon, m_aggression, m_advancements);
 }
 
 
@@ -152,6 +154,7 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 		: cfg_(cfg),
 		engines_(),
 		known_aspects_(),
+		advancements_(),
 		aggression_(),
 		attack_depth_(),
 		aspects_(),
@@ -195,6 +198,7 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 		init_side_context_proxy(context);
 		manager::add_gamestate_observer(this);
 
+		add_known_aspect("advancements", advancements_);
 		add_known_aspect("aggression",aggression_);
 		add_known_aspect("attack_depth",attack_depth_);
 		add_known_aspect("attacks",attacks_);
@@ -488,6 +492,17 @@ const defensive_position& readonly_context_impl::best_defensive_position(const m
 std::map<map_location,defensive_position>& readonly_context_impl::defensive_position_cache() const
 {
 	return defensive_position_cache_;
+}
+
+
+const unit_advancements_aspect& readonly_context_impl::get_advancements() const
+{
+	if (advancements_) {
+		return advancements_->get();
+	}
+
+	static unit_advancements_aspect uaa = unit_advancements_aspect();
+	return uaa;
 }
 
 
@@ -841,6 +856,7 @@ int readonly_context_impl::get_villages_per_scout() const
 	}
 	return 0;
 }
+
 
 bool readonly_context_impl::is_dst_src_valid_lua() const
 {

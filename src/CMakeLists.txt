@@ -631,6 +631,7 @@ set(wesnoth-main_SRC
 	ai/interface.cpp
 	ai/lua/core.cpp
 	ai/lua/lua_object.cpp
+	ai/lua/unit_advancements_aspect.cpp
 	ai/manager.cpp
 	ai/registry.cpp
 	ai/testing.cpp

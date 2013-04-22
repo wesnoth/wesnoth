@@ -213,6 +213,7 @@ void recruitment_phase::execute()
 	analyze_potential_recruit_combat();
 
 	std::vector<std::string> options = get_recruitment_pattern();
+
 	if (std::count(options.begin(), options.end(), "scout") > 0) {
 		size_t neutral_villages = 0;
 
@@ -527,6 +528,8 @@ combat_phase::~combat_phase()
 
 double combat_phase::evaluate()
 {
+	std::vector<std::string> options = get_recruitment_pattern();
+
 	choice_rating_ = -1000.0;
 	int ticks = SDL_GetTicks();
 

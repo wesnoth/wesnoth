@@ -234,6 +234,7 @@ const std::string holder::get_ai_overview()
 		get_ai_ref();
 	}
 	std::stringstream s;
+	s << "advancements:  " << this->ai_->get_advancements().get_value() << std::endl;
 	s << "aggression:  " << this->ai_->get_aggression() << std::endl;
 	s << "attack_depth:  " << this->ai_->get_attack_depth() << std::endl;
 	s << "caution:  " << this->ai_->get_caution() << std::endl;
@@ -259,6 +260,7 @@ const std::string holder::get_ai_overview()
 	s << "support_villages:  " << this->ai_->get_support_villages() << std::endl;
 	s << "village_value:  " << this->ai_->get_village_value() << std::endl;
 	s << "villages_per_scout:  " << this->ai_->get_villages_per_scout() << std::endl;
+
 	return s.str();
 }
 
