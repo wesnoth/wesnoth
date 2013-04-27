@@ -815,6 +815,76 @@ static int cfun_ai_recalculate_move_maps_enemy(lua_State *L)
 	return 1;
 }
 
+static void generate_and_push_ai_table(lua_State* L, ai::engine_lua* engine) {
+	//push data table here
+	lua_newtable(L);
+	lua_pushinteger(L, engine->get_readonly_context().get_side());
+	lua_setfield(L, -2, "side"); //stack size is 2 [- 1: new table; -2 ai as string]
+	static luaL_Reg const callbacks[] = {
+			{ "attack", &cfun_ai_execute_attack },
+			// Move maps
+			{ "get_new_dst_src", &cfun_ai_get_dstsrc },
+			{ "get_new_src_dst", &cfun_ai_get_srcdst },
+			{ "get_new_enemy_dst_src", &cfun_ai_get_enemy_dstsrc },
+			{ "get_new_enemy_src_dst", &cfun_ai_get_enemy_srcdst },
+			{ "recalculate_move_maps", &cfun_ai_recalculate_move_maps },
+			{ "recalculate_enemy_move_maps", &cfun_ai_recalculate_move_maps_enemy },
+			// End of move maps
+			// Goals and targets
+			{ "get_targets", &cfun_ai_get_targets },
+			// End of G & T
+			// Aspects
+			{ "get_aggression", &cfun_ai_get_aggression },
+			{ "get_avoid", &cfun_ai_get_avoid },
+			{ "get_attack_depth", &cfun_ai_get_attack_depth },
+			{ "get_attacks", &cfun_ai_get_attacks },
+			{ "get_caution", &cfun_ai_get_caution },
+			{ "get_grouping", &cfun_ai_get_grouping },
+			{ "get_leader_aggression", &cfun_ai_get_leader_aggression },
+			{ "get_leader_goal", &cfun_ai_get_leader_goal },
+			{ "get_leader_ignores_keep", &cfun_ai_get_leader_ignores_keep },
+			{ "get_leader_value", &cfun_ai_get_leader_value },
+			{ "get_number_of_possible_recruits_to_force_recruit", &cfun_ai_get_number_of_possible_recruits_to_force_recruit },
+			{ "get_passive_leader", &cfun_ai_get_passive_leader },
+			{ "get_passive_leader_shares_keep", &cfun_ai_get_passive_leader_shares_keep },
+			{ "get_recruitment_ignore_bad_combat", &cfun_ai_get_recruitment_ignore_bad_combat },
+			{ "get_recruitment_ignore_bad_movement", &cfun_ai_get_recruitment_ignore_bad_movement },
+			{ "get_recruitment_pattern", &cfun_ai_get_recruitment_pattern },
+			{ "get_scout_village_targeting", &cfun_ai_get_scout_village_targeting },
+			{ "get_simple_targeting", &cfun_ai_get_simple_targeting },
+			{ "get_support_villages", &cfun_ai_get_support_villages },
+			{ "get_village_value", &cfun_ai_get_village_value },
+			{ "get_villages_per_scout", &cfun_ai_get_villages_per_scout },
+			// End of aspects
+			// Validation/cache functions
+			{ "is_dst_src_valid", &cfun_ai_is_dst_src_valid },
+			{ "is_enemy_dst_src_valid", &cfun_ai_is_dst_src_enemy_valid },
+			{ "is_src_dst_valid", &cfun_ai_is_src_dst_valid },
+			{ "is_enemy_src_dst_valid", &cfun_ai_is_src_dst_enemy_valid },
+			// End of validation functions
+			{ "move", &cfun_ai_execute_move_partial },
+			{ "move_full", &cfun_ai_execute_move_full },
+			{ "recall", &cfun_ai_execute_recall },
+			{ "recruit", &cfun_ai_execute_recruit },
+			{ "stopunit_all", &cfun_ai_execute_stopunit_all },
+			{ "stopunit_attacks", &cfun_ai_execute_stopunit_attacks },
+			{ "stopunit_moves", &cfun_ai_execute_stopunit_moves },
+			{ "suitable_keep", &cfun_ai_get_suitable_keep },
+			{ "check_recall", &cfun_ai_check_recall },
+			{ "check_move", &cfun_ai_check_move },
+			{ "check_stopunit", &cfun_ai_check_stopunit },
+			{ "check_attack", &cfun_ai_check_attack },
+			{ "check_recruit", &cfun_ai_check_recruit },
+			//{ "",},
+			//{ "",},
+			{ NULL, NULL } };
+	for (const luaL_Reg* p = callbacks; p->name; ++p) {
+		lua_pushlightuserdata(L, engine);
+		lua_pushcclosure(L, p->func, 1);
+		lua_setfield(L, -2, p->name);
+	}
+}
+
 lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engine_lua *engine)
 {
 	int res_ai = luaL_loadstring(L, code);//stack size is now 1 [ -1: ai_context]
@@ -827,76 +897,7 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 		return NULL;
 	}
 	//push data table here
-	lua_newtable(L);// stack size is 2 [ -1: new table, -2: ai as string ]
-	lua_pushinteger(L, engine->get_readonly_context().get_side());
-
-	lua_setfield(L, -2, "side");//stack size is 2 [- 1: new table; -2 ai as string]
-
-	static luaL_Reg const callbacks[] = {
-		{ "attack", 			&cfun_ai_execute_attack			},
-		// Move maps
-		{ "get_new_dst_src", 		&cfun_ai_get_dstsrc			},
-		{ "get_new_src_dst", 		&cfun_ai_get_srcdst			},
-		{ "get_new_enemy_dst_src", 	&cfun_ai_get_enemy_dstsrc		},
-		{ "get_new_enemy_src_dst", 	&cfun_ai_get_enemy_srcdst		},
-		{ "recalculate_move_maps",	&cfun_ai_recalculate_move_maps		},
-		{ "recalculate_enemy_move_maps",&cfun_ai_recalculate_move_maps_enemy	},
-		// End of move maps
-		// Goals and targets
-		{ "get_targets",		&cfun_ai_get_targets			},
-		// End of G & T
-		// Aspects
-		{ "get_aggression", 		&cfun_ai_get_aggression           	},
-		{ "get_avoid", 			&cfun_ai_get_avoid			},
-		{ "get_attack_depth",		&cfun_ai_get_attack_depth		},
-		{ "get_attacks",		&cfun_ai_get_attacks			},
-		{ "get_caution", 		&cfun_ai_get_caution			},
-		{ "get_grouping",		&cfun_ai_get_grouping			},
-		{ "get_leader_aggression", 	&cfun_ai_get_leader_aggression		},
-		{ "get_leader_goal", 		&cfun_ai_get_leader_goal		},
-		{ "get_leader_ignores_keep", &cfun_ai_get_leader_ignores_keep},
-		{ "get_leader_value", 		&cfun_ai_get_leader_value		},
-		{ "get_number_of_possible_recruits_to_force_recruit", &cfun_ai_get_number_of_possible_recruits_to_force_recruit},
-		{ "get_passive_leader", 	&cfun_ai_get_passive_leader		},
-		{ "get_passive_leader_shares_keep", &cfun_ai_get_passive_leader_shares_keep},
-		{ "get_recruitment_ignore_bad_combat", &cfun_ai_get_recruitment_ignore_bad_combat},
-		{ "get_recruitment_ignore_bad_movement", &cfun_ai_get_recruitment_ignore_bad_movement},
-		{ "get_recruitment_pattern", 	&cfun_ai_get_recruitment_pattern 	},
-		{ "get_scout_village_targeting", &cfun_ai_get_scout_village_targeting	},
-		{ "get_simple_targeting", 	&cfun_ai_get_simple_targeting		},
-		{ "get_support_villages",	&cfun_ai_get_support_villages		},
-		{ "get_village_value",		&cfun_ai_get_village_value		},
-		{ "get_villages_per_scout",	&cfun_ai_get_villages_per_scout		},
-		// End of aspects
-		// Validation/cache functions
-		{ "is_dst_src_valid",		&cfun_ai_is_dst_src_valid		},
-		{ "is_enemy_dst_src_valid",	&cfun_ai_is_dst_src_enemy_valid		},
-		{ "is_src_dst_valid",		&cfun_ai_is_src_dst_valid		},
-		{ "is_enemy_src_dst_valid",	&cfun_ai_is_src_dst_enemy_valid		},
-		// End of validation functions
-		{ "move",             		&cfun_ai_execute_move_partial		},
-		{ "move_full",        		&cfun_ai_execute_move_full        	},
-		{ "recall",          		&cfun_ai_execute_recall           	},
-		{ "recruit",          		&cfun_ai_execute_recruit         	},
-		{ "stopunit_all",     		&cfun_ai_execute_stopunit_all     	},
-		{ "stopunit_attacks",		&cfun_ai_execute_stopunit_attacks 	},
-		{ "stopunit_moves",   		&cfun_ai_execute_stopunit_moves 	},
-		{ "suitable_keep",   		&cfun_ai_get_suitable_keep		},
-		{ "check_recall",		&cfun_ai_check_recall			},
-		{ "check_move",			&cfun_ai_check_move			},
-		{ "check_stopunit",		&cfun_ai_check_stopunit			},
-		{ "check_attack",		&cfun_ai_check_attack			},
-		{ "check_recruit",		&cfun_ai_check_recruit			},
-		//{ "",},
-		//{ "",},
-		{ NULL, NULL }
-	};
-
-	for (const luaL_Reg *p = callbacks; p->name; ++p) {
-		lua_pushlightuserdata(L, engine);
-		lua_pushcclosure(L, p->func, 1);
-		lua_setfield(L, -2, p->name);
-	}
+	generate_and_push_ai_table(L, engine);
 
 	//compile the ai as a closure
 	if (!luaW_pcall(L, 1, 1, true)) {
@@ -946,6 +947,13 @@ void lua_ai_context::load()
 	lua_rawget(L, LUA_REGISTRYINDEX);//stack size is still 1 [-1: ais_table]
 	lua_rawgeti(L, -1, num_);//stack size is 2 [-1: ai_context -2: ais_table]
 	lua_remove(L,-2);
+}
+
+void lua_ai_context::load_and_inject_ai_table(ai::engine_lua* engine)
+{
+	load(); //stack size is 1 [-1: ai_context]
+	generate_and_push_ai_table(L, engine); //stack size is 2 [-1: ai_table -2: ai_context]
+	lua_setfield(L, -2, "ai"); //stack size is 1 [-1: ai_context]
 }
 
 lua_ai_context::~lua_ai_context()

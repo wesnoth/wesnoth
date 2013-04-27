@@ -59,6 +59,9 @@
 #include "ai/lua/core.hpp"
 #include "version.hpp"
 #include "gui/widgets/clickable.hpp"
+#include "ai/contexts.hpp"
+#include "ai/configuration.hpp"
+#include "ai/composite/ai.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
 #else
@@ -3608,8 +3611,20 @@ static int intf_debug_ai(lua_State *L)
 
 	if (lua_engine == NULL)
 	{
-		lua_createtable(L, 0, 0);
-		return 1;
+		//no lua engine is defined for this side.
+		//so set up a dummy engine
+
+		ai::ai_composite * ai_ptr = dynamic_cast<ai::ai_composite *>(c);
+		ai::ai_context& ai_context = ai_ptr->get_ai_context();
+		config cfg = ai::configuration::get_default_ai_parameters();
+
+		lua_engine = new ai::engine_lua(ai_context, cfg);
+		LOG_LUA << "Created new dummy lua-engine for debug_ai(). \n";
+
+		//and add the dummy engine as a component
+		//to the manager, so we could use it later
+		cfg.add_child("engine", lua_engine->to_config());
+		ai::component_manager::add_component(c, "engine[]", cfg);
 	}
 
 	lua_engine->push_ai_table(); // stack: [-1: ai_context]

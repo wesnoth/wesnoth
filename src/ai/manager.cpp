@@ -286,6 +286,11 @@ component* holder::get_component(component *root, const std::string &path) {
 
 	if (root == NULL) // Return root component(ai_)
 	{
+		if (!this->ai_) {
+			this->init(this->side_);
+		}
+		assert(this->ai_);
+
 		return &*this->ai_;
 	}
 

@@ -51,6 +51,7 @@ public:
 	{
 	}
 	void load();
+	void load_and_inject_ai_table(engine_lua* engine);
 	void get_persistent_data(config &) const;
 	void set_persistent_data(const config &);
 	static void init(lua_State *L);

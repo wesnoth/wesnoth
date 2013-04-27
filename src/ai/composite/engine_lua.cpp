@@ -234,7 +234,7 @@ private:
  */
 engine_lua::engine_lua( readonly_context &context, const config &cfg )
 	: engine(context,cfg)
-	, code_(cfg["code"])
+	, code_(get_engine_code(cfg))
 	, lua_ai_context_(resources::lua_kernel->create_lua_ai_context(
 		get_engine_code(cfg).c_str(), this))
 {
@@ -269,7 +269,7 @@ void engine_lua::push_ai_table()
 {
 	if (game_config::debug)
 	{
-		lua_ai_context_->load();
+		lua_ai_context_->load_and_inject_ai_table(this);
 	}
 }
 
