@@ -17,6 +17,7 @@
 #include "util.hpp"
 
 #include <cassert>
+#include <functional>
 
 version_info::version_info()
 	: nums_(3,0), special_(""), special_separator_('\0'), sane_(true)
