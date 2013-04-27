@@ -18,6 +18,7 @@
 #include "util.hpp"
 
 #include <cassert>
+#include <functional>
 
 version_info::version_info(const version_info& o)
 	: nums_                 (o.nums_),
