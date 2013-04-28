@@ -35,7 +35,6 @@ public:
 	~create();
 
 	mp_game_settings& get_parameters();
-	int num_turns() const { return num_turns_; }
 
 protected:
 	virtual void layout_children(const SDL_Rect& rect);
@@ -51,8 +50,6 @@ private:
 	tooltips::manager tooltip_manager_;
 	int era_selection_;
 	int map_selection_;
-	int mp_countdown_init_time_;
-	int mp_countdown_reservoir_time_;
 
 
 	std::vector<std::string> user_maps_;
@@ -66,58 +63,28 @@ private:
 	std::vector<size_t> map_index_;
 
 	gui::menu maps_menu_;
-	gui::slider turns_slider_;
-	gui::label turns_label_;
-	gui::button countdown_game_;
-	gui::slider countdown_init_time_slider_;
-	gui::label countdown_init_time_label_;
-	gui::slider countdown_reservoir_time_slider_;
-	gui::label countdown_reservoir_time_label_;
-	gui::label countdown_turn_bonus_label_;
-	gui::slider countdown_turn_bonus_slider_;
-	gui::label countdown_action_bonus_label_;
-	gui::slider countdown_action_bonus_slider_;
-	gui::slider village_gold_slider_;
-	gui::label village_gold_label_;
-	gui::slider village_support_slider_;
-	gui::label village_support_label_;
-	gui::slider xp_modifier_slider_;
-	gui::label xp_modifier_label_;
 
-	gui::label name_entry_label_;
-	gui::label num_players_label_;
 	gui::label map_size_label_;
 	gui::label era_label_;
 	gui::label map_label_;
+	gui::label num_players_label_;
 
-	gui::button use_map_settings_;
-	gui::button random_start_time_;
-	gui::button fog_game_;
-	gui::button shroud_game_;
-	gui::button observers_game_;
-	gui::button shuffle_sides_;
-	gui::button options_;
-	gui::button cancel_game_;
+	gui::button choose_mods_;
 	gui::button launch_game_;
+	gui::button cancel_game_;
 	gui::button regenerate_map_;
 	gui::button generator_settings_;
-	gui::button password_button_;
-	gui::button choose_mods_;
 
 	gui::combo era_combo_;
-	gui::combo vision_combo_;
-	gui::textbox name_entry_;
 
 	util::scoped_ptr<surface_restorer> minimap_restorer_;
 	SDL_Rect minimap_rect_;
 
 	util::scoped_ptr<map_generator> generator_;
 
-	int num_turns_;
 	mp_game_settings parameters_;
 
 	depcheck::manager dependency_manager_;
-	options::manager options_manager_;
 };
 
 } // end namespace mp
