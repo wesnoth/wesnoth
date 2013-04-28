@@ -60,59 +60,26 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	tooltip_manager_(disp.video()),
 	era_selection_(-1),
 	map_selection_(-1),
-	mp_countdown_init_time_(270),
-	mp_countdown_reservoir_time_(330),
 	user_maps_(),
 	map_options_(),
 	available_mods_(),
 	map_index_(),
-
 	maps_menu_(disp.video(), std::vector<std::string>()),
-	turns_slider_(disp.video()),
-	turns_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
-	countdown_game_(disp.video(), _("Time limit"), gui::button::TYPE_CHECK),
-	countdown_init_time_slider_(disp.video()),
-	countdown_init_time_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
-	countdown_reservoir_time_slider_(disp.video()),
-	countdown_reservoir_time_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
-	countdown_turn_bonus_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
-	countdown_turn_bonus_slider_(disp.video()),
-	countdown_action_bonus_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
-	countdown_action_bonus_slider_(disp.video()),
-	village_gold_slider_(disp.video()),
-	village_gold_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
-	village_support_slider_(disp.video()),
-	village_support_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
-	xp_modifier_slider_(disp.video()),
-	xp_modifier_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
-	name_entry_label_(disp.video(), _("Name of game:"), font::SIZE_PLUS, font::LOBBY_COLOR),
-	num_players_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
 	map_size_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
 	era_label_(disp.video(), _("Era:"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	map_label_(disp.video(), _("Map to play:"), font::SIZE_SMALL, font::LOBBY_COLOR),
-	use_map_settings_(disp.video(), _("Use map settings"), gui::button::TYPE_CHECK),
-	random_start_time_(disp.video(), _("Random start time"), gui::button::TYPE_CHECK),
-	fog_game_(disp.video(), _("Fog of war"), gui::button::TYPE_CHECK),
-	shroud_game_(disp.video(), _("Shroud"), gui::button::TYPE_CHECK),
-	observers_game_(disp.video(), _("Observers"), gui::button::TYPE_CHECK),
-	shuffle_sides_(disp.video(), _("Shuffle sides"), gui::button::TYPE_CHECK),
-	options_(disp.video(), _("Options...")),
-	cancel_game_(disp.video(), _("Cancel")),
+	num_players_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
+	choose_mods_(disp.video(), _("Modifications")),
 	launch_game_(disp.video(), _("OK")),
+	cancel_game_(disp.video(), _("Cancel")),
 	regenerate_map_(disp.video(), _("Regenerate")),
 	generator_settings_(disp.video(), _("Settings...")),
-	password_button_(disp.video(), _("Set Password...")),
-	choose_mods_(disp.video(), _("Modifications...")),
 	era_combo_(disp, std::vector<std::string>()),
-	vision_combo_(disp, std::vector<std::string>()),
-	name_entry_(disp.video(), 32),
 	minimap_restorer_(NULL),
 	minimap_rect_(null_rect),
 	generator_(NULL),
-	num_turns_(0),
 	parameters_(),
-	dependency_manager_(cfg, disp.video()),
-	options_manager_(cfg, disp.video(), preferences::options())
+	dependency_manager_(cfg, disp.video())
 {
 	// Build the list of scenarios to play
 
@@ -130,7 +97,6 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	load_game_info["id"] = "multiplayer_load_game";
 	load_game_info["name"] = "Load Game";
 	dependency_manager_.insert_element(depcheck::SCENARIO, load_game_info, 0);
-	options_manager_.insert_element(options::SCENARIO, load_game_info, 0);
 
 
 	// User maps
@@ -150,13 +116,6 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 		depinfo["name"] = user_maps_[i];
 
 		dependency_manager_.insert_element(depcheck::SCENARIO, depinfo, i+1);
-
-		// Same with options
-		// FIXME: options::elem_type duplicates depcheck::component_type
-		//        Perhaps they should me merged?
-		const config& optinfo = depinfo;
-
-		options_manager_.insert_element(options::SCENARIO, optinfo, i+1);
 	}
 
 	// Standard maps
@@ -178,84 +137,8 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	if (size_t(preferences::map()) < map_options_.size()) {
 		maps_menu_.move_selection(preferences::map());
 		dependency_manager_.try_scenario_by_index(preferences::map(), true);
-		options_manager_.set_scenario_by_index(preferences::map());
 	}
 	maps_menu_.set_numeric_keypress_selection(false);
-
-	turns_slider_.set_min(settings::turns_min);
-	turns_slider_.set_max(settings::turns_max);
-	turns_slider_.set_increment(settings::turns_step);
-	turns_slider_.set_value(preferences::turns());
-	turns_slider_.set_help_string(_("The maximum number of turns the game can last"));
-
-	countdown_game_.set_check(preferences::countdown());
-	countdown_game_.set_help_string(_("Enables user time limit"));
-
-	countdown_init_time_slider_.set_min(30);
-	countdown_init_time_slider_.set_max(1500);
-	countdown_init_time_slider_.set_increment(30);
-	countdown_init_time_slider_.set_value(preferences::countdown_init_time());
-	countdown_init_time_slider_.set_help_string(_("Longest time allowed for first turn (seconds)"));
-
-	countdown_reservoir_time_slider_.set_min(30);
-	countdown_reservoir_time_slider_.set_max(1500);
-	countdown_reservoir_time_slider_.set_increment(30);
-	countdown_reservoir_time_slider_.set_value(preferences::countdown_reservoir_time());
-	countdown_reservoir_time_slider_.set_help_string(_("Longest time possible for any turn (seconds)"));
-
-	countdown_turn_bonus_slider_.set_min(10);
-	countdown_turn_bonus_slider_.set_max(300);
-	countdown_turn_bonus_slider_.set_increment(5);
-	countdown_turn_bonus_slider_.set_value(preferences::countdown_turn_bonus());
-	countdown_turn_bonus_slider_.set_help_string(_("Time for general tasks each turn (seconds)"));
-
-	countdown_action_bonus_slider_.set_min(0);
-	countdown_action_bonus_slider_.set_max(30);
-	countdown_action_bonus_slider_.set_increment(1);
-	countdown_action_bonus_slider_.set_value(preferences::countdown_action_bonus());
-	countdown_action_bonus_slider_.set_help_string(_("Time for each attack, recruit, and capture"));
-
-	village_gold_slider_.set_min(1);
-	village_gold_slider_.set_max(5);
-	village_gold_slider_.set_value(preferences::village_gold());
-	village_gold_slider_.set_help_string(_("The amount of income each village yields per turn"));
-
-	village_support_slider_.set_min(0);
-	village_support_slider_.set_max(4);
-	village_support_slider_.set_value(preferences::village_support());
-	village_support_slider_.set_help_string(_("The number of unit levels each village can support"));
-
-	xp_modifier_slider_.set_min(30);
-	xp_modifier_slider_.set_max(200);
-	xp_modifier_slider_.set_value(preferences::xp_modifier());
-	xp_modifier_slider_.set_increment(10);
-	xp_modifier_slider_.set_help_string(_("The amount of experience a unit needs to advance"));
-
-	use_map_settings_.set_check(preferences::use_map_settings());
-	use_map_settings_.set_help_string(_("Use scenario specific settings"));
-
-	random_start_time_.set_check(preferences::random_start_time());
-	random_start_time_.set_help_string(_("Randomize time of day in begin"));
-
-	fog_game_.set_check(preferences::fog());
-	fog_game_.set_help_string(_("Enemy units cannot be seen unless they are in range of your units"));
-
-	shroud_game_.set_check(preferences::shroud());
-	shroud_game_.set_help_string(_("The map is unknown until your units explore it"));
-
-	observers_game_.set_check(preferences::allow_observers());
-	observers_game_.set_help_string(_("Allow users who are not playing to watch the game"));
-
-	shuffle_sides_.set_check(preferences::shuffle_sides());
-	shuffle_sides_.set_help_string(_("Assign sides to players at random"));
-
-	// The possible vision settings
-	std::vector<std::string> vision_types;
-	vision_types.push_back(_("Share View"));
-	vision_types.push_back(_("Share Maps"));
-	vision_types.push_back(_("Share None"));
-	vision_combo_.set_items(vision_types);
-	vision_combo_.set_selected(0);
 
 	// The possible eras to play
 	std::vector<std::string> eras;
@@ -275,7 +158,6 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	}
 
 	dependency_manager_.try_era_by_index(era_selection_, true);
-	options_manager_.set_era_by_index(era_selection_);
 
 	// Available modifications
 	BOOST_FOREACH (const config& mod, cfg.child_range("modification")) {
@@ -288,12 +170,10 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	}
 
 	dependency_manager_.try_modifications(parameters_.active_mods, true);
-	options_manager_.set_modifications(parameters_.active_mods);
 
 
 	utils::string_map i18n_symbols;
 	i18n_symbols["login"] = preferences::login();
-	name_entry_.set_text(vgettext("$login|’s game", i18n_symbols));
 
 	gamelist_updated();
 }
@@ -312,52 +192,14 @@ create::~create()
 
 	// Save values for next game
 	DBG_MP << "storing parameter values in preferences" << std::endl;
-	preferences::set_allow_observers(parameters_.allow_observers);
-	preferences::set_shuffle_sides(parameters_.shuffle_sides);
-	preferences::set_use_map_settings(parameters_.use_map_settings);
-	preferences::set_countdown(parameters_.mp_countdown);
-	preferences::set_countdown_init_time(parameters_.mp_countdown_init_time);
-	preferences::set_countdown_turn_bonus(parameters_.mp_countdown_turn_bonus);
-	preferences::set_countdown_reservoir_time(parameters_.mp_countdown_reservoir_time);
-	preferences::set_countdown_action_bonus(parameters_.mp_countdown_action_bonus);
-	preferences::set_era(era_selection_); /** @todo FIXME: may be broken if new eras are added. */
-	preferences::set_map(map_selection_);
-	preferences::set_modifications(parameters_.active_mods);
-	preferences::set_options(parameters_.options);
-
-	// When using map settings, the following variables are determined by the map,
-	// so don't store them as the new preferences.
-	if(!parameters_.use_map_settings) {
-		preferences::set_fog(parameters_.fog_game);
-		preferences::set_shroud(parameters_.shroud_game);
-		preferences::set_turns(num_turns_);
-		preferences::set_random_start_time(parameters_.random_start_time);
-		preferences::set_village_gold(parameters_.village_gold);
-		preferences::set_village_support(parameters_.village_support);
-		preferences::set_xp_modifier(parameters_.xp_modifier);
-	}
 }
 
 mp_game_settings& create::get_parameters()
 {
 	DBG_MP << "getting parameter values from widgets" << std::endl;
-	num_turns_ = turns_slider_.value() < turns_slider_.max_value() ?
-		turns_slider_.value() : -1;
-
-	const int mp_countdown_turn_bonus_val = countdown_turn_bonus_slider_.value() <= countdown_turn_bonus_slider_.max_value() ?
-		countdown_turn_bonus_slider_.value() : -1;
-	const int mp_countdown_action_bonus_val = countdown_action_bonus_slider_.value() <= countdown_action_bonus_slider_.max_value() ?
-		countdown_action_bonus_slider_.value() : -1;
-	const int mp_countdown_reservoir_time_val = countdown_reservoir_time_slider_.value() <= countdown_reservoir_time_slider_.max_value() ?
-		countdown_reservoir_time_slider_.value() : -1;
-	int mp_countdown_init_time_val = countdown_init_time_slider_.value() <= countdown_init_time_slider_.max_value() ?
-		countdown_init_time_slider_.value() : -1;
-	if(mp_countdown_reservoir_time_val > 0 && mp_countdown_init_time_val > mp_countdown_reservoir_time_val)
-		mp_countdown_init_time_val = mp_countdown_reservoir_time_val;
 
 	// Updates the values in the "parameters_" member to match
 	// the values selected by the user with the widgets:
-	parameters_.name = name_entry_.text();
 
 	config::const_child_itors era_list = game_config().child_range("era");
 	for (int num = era_combo_.selected(); num > 0; --num) {
@@ -368,24 +210,6 @@ mp_game_settings& create::get_parameters()
 	}
 
 	parameters_.mp_era = (*era_list.first)["id"].str();
-	// CHECK
-	parameters_.mp_countdown_init_time = mp_countdown_init_time_val;
-	parameters_.mp_countdown_turn_bonus = mp_countdown_turn_bonus_val;
-	parameters_.mp_countdown_reservoir_time = mp_countdown_reservoir_time_val;
-	parameters_.mp_countdown_action_bonus = mp_countdown_action_bonus_val;
-	parameters_.mp_countdown = countdown_game_.checked();
-	parameters_.village_gold = village_gold_slider_.value();
-	parameters_.village_support = village_support_slider_.value();
-	parameters_.xp_modifier = xp_modifier_slider_.value();
-	parameters_.use_map_settings = use_map_settings_.checked();
-	parameters_.random_start_time = random_start_time_.checked();
-	parameters_.fog_game = fog_game_.checked();
-	parameters_.shroud_game = shroud_game_.checked();
-	parameters_.allow_observers = observers_game_.checked();
-	parameters_.shuffle_sides = shuffle_sides_.checked();
-	parameters_.share_view = vision_combo_.selected() == 0;
-	parameters_.share_maps = vision_combo_.selected() == 1;
-	parameters_.options = options_manager_.get_values();
 
 	return parameters_;
 }
@@ -412,23 +236,13 @@ void create::process_event()
 
 		if (map.get() == NULL) {
 			gui2::show_transient_message(disp_.video(), "", _("The map is invalid."));
-		} else if (name_entry_.text() == "") {
-			gui2::show_transient_message(disp_.video(), "", _("You must enter a name."));
 		} else {
 			set_result(CREATE);
 			return;
 		}
 	}
 
-	if(options_.pressed()) {
-		options_manager_.show_dialog();
-	}
 
-	if(password_button_.pressed()) {
-		gui2::tmp_create_game_set_password::execute(
-				  parameters_.password
-				, disp_.video());
-	}
 
 	if(choose_mods_.pressed()) {
 		if (available_mods_.empty()) {
@@ -444,89 +258,15 @@ void create::process_event()
 			dialog.show(disp_.video());
 
 			dependency_manager_.try_modifications(parameters_.active_mods);
-			options_manager_.set_modifications(parameters_.active_mods);
 			synchronize_selections();
 		}
 	}
-
-	// Turns per game
-	const int cur_turns = turns_slider_.value();
-
-	std::stringstream buf;
-	if(cur_turns < 100) {
-		buf << _("Turns: ") << cur_turns;
-	} else {
-		buf << _("Unlimited turns");
-	}
-	turns_label_.set_text(buf.str());
-
-	countdown_init_time_label_.enable(countdown_game_.checked());
-	countdown_init_time_slider_.enable(countdown_game_.checked());
-	countdown_turn_bonus_label_.enable(countdown_game_.checked());
-	countdown_turn_bonus_slider_.enable(countdown_game_.checked());
-
-	countdown_reservoir_time_label_.enable(countdown_game_.checked());
-	countdown_reservoir_time_slider_.enable(countdown_game_.checked());
-	countdown_action_bonus_label_.enable(countdown_game_.checked());
-	countdown_action_bonus_slider_.enable(countdown_game_.checked());
-
-	if(mp_countdown_init_time_ != countdown_init_time_slider_.value()
-		&& countdown_init_time_slider_.value() > countdown_reservoir_time_slider_.value())
-	{
-		countdown_reservoir_time_slider_.set_value(countdown_init_time_slider_.value());
-	}
-	if(mp_countdown_reservoir_time_ != countdown_reservoir_time_slider_.value()
-		&& countdown_reservoir_time_slider_.value() < countdown_init_time_slider_.value())
-	{
-		countdown_init_time_slider_.set_value(countdown_reservoir_time_slider_.value());
-	}
-	mp_countdown_init_time_ = countdown_init_time_slider_.value();
-	mp_countdown_reservoir_time_ = countdown_reservoir_time_slider_.value();
-
-	buf.str("");
-	buf <<  _("Init. limit: ") << mp_countdown_init_time_; // << _(" sec.");
-	countdown_init_time_label_.set_text(buf.str());
-
-	const int mp_countdown_turn_bonus_val = countdown_turn_bonus_slider_.value();
-	buf.str("");
-	buf <<  _("Turn bonus: ") << mp_countdown_turn_bonus_val; // << _(" sec.");
-	countdown_turn_bonus_label_.set_text(buf.str());
-
-	buf.str("");
-	buf <<  _("Reservoir: ") << mp_countdown_reservoir_time_; // << _(" sec.");
-	countdown_reservoir_time_label_.set_text(buf.str());
-
-	const int mp_countdown_action_bonus_val = countdown_action_bonus_slider_.value();
-	buf.str("");
-	buf <<  _("Action bonus: ") << mp_countdown_action_bonus_val; // << _(" sec.");
-	countdown_action_bonus_label_.set_text(buf.str());
-
-
-	// Villages can produce between 1 and 5 gold a turn
-	const int village_gold = village_gold_slider_.value();
-	buf.str("");
-	buf << _("Village gold: ") << village_gold;
-	village_gold_label_.set_text(buf.str());
-
-	// Unit levels supported per village
-	const int village_support = village_support_slider_.value();
-	buf.str("");
-	buf << _("Village support: ") << village_support;
-	village_support_label_.set_text(buf.str());
-
-	// Experience modifier
-	const int xpmod = xp_modifier_slider_.value();
-	buf.str("");
-	buf << _("Experience modifier: ") << xpmod << "%";
-
-	xp_modifier_label_.set_text(buf.str());
 
 	bool era_changed = era_selection_ != era_combo_.selected();
 	era_selection_ = era_combo_.selected();
 
 	if (era_changed) {
 		dependency_manager_.try_era_by_index(era_selection_);
-		options_manager_.set_era_by_index(era_selection_);
 		synchronize_selections();
 	}
 
@@ -535,7 +275,6 @@ void create::process_event()
 
 	if (map_changed) {
 		dependency_manager_.try_scenario_by_index(map_selection_);
-		options_manager_.set_scenario_by_index(map_selection_);
 		synchronize_selections();
 	}
 
@@ -666,64 +405,8 @@ void create::process_event()
 			players << _("Error");
 			map_size << "";
 		}
-		num_players_label_.set_text(players.str());
 		map_size_label_.set_text(map_size.str());
-	}
-
-	if(map_changed || use_map_settings_.pressed()) {
-		const bool map_settings = use_map_settings_.checked();
-
-		// If the map settings are wanted use them,
-		// if not properly defined fall back to the default settings
-		turns_slider_.set_value(map_settings ?
-			settings::get_turns(parameters_.scenario_data["turns"]) :
-			preferences::turns());
-
-		xp_modifier_slider_.set_value(map_settings ?
-			settings::get_xp_modifier(parameters_.scenario_data["experience_modifier"]) :
-			preferences::xp_modifier());
-
-		random_start_time_.set_check(map_settings ?
-			parameters_.scenario_data["random_start_time"].to_bool(true) :
-			preferences::random_start_time());
-
-		// These are per player, always show values of player 1.
-		/**
-		 * @todo This might not be 100% correct, but at the moment
-		 * it is not possible to show the fog and shroud per player.
-		 * This might change in the future.
-		 * NOTE when 'load game' is selected there are no sides.
-		 */
-		config::const_child_itors sides = parameters_.scenario_data.child_range("side");
-		if (sides.first != sides.second)
-		{
-			const config &cfg = *sides.first;
-
-			village_gold_slider_.set_value(map_settings ?
-				settings::get_village_gold(cfg["village_gold"]) :
-				preferences::village_gold());
-
-			village_support_slider_.set_value(map_settings ?
-				settings::get_village_support(cfg["village_support"]) :
-				preferences::village_support());
-
-			fog_game_.set_check(map_settings ?
-				cfg["fog"].to_bool(true) :
-				preferences::fog());
-
-			shroud_game_.set_check(map_settings ?
-				cfg["shroud"].to_bool(false) :
-				preferences::shroud());
-		}
-
-		// Set the widget states
-		turns_slider_.enable(!map_settings);
-		village_gold_slider_.enable(!map_settings);
-		village_support_slider_.enable(!map_settings);
-		xp_modifier_slider_.enable(!map_settings);
-		random_start_time_.enable(!map_settings);
-		fog_game_.enable(!map_settings);
-		shroud_game_.enable(!map_settings);
+		num_players_label_.set_text(players.str());
 	}
 }
 
@@ -734,49 +417,20 @@ void create::hide_children(bool hide)
 	ui::hide_children(hide);
 
 	maps_menu_.hide(hide);
-	turns_slider_.hide(hide);
-	turns_label_.hide(hide);
 
-	countdown_init_time_slider_.hide(hide);
-	countdown_init_time_label_.hide(hide);
-	countdown_turn_bonus_slider_.hide(hide);
-	countdown_turn_bonus_label_.hide(hide);
-	countdown_reservoir_time_slider_.hide(hide);
-	countdown_reservoir_time_label_.hide(hide);
-	countdown_action_bonus_slider_.hide(hide);
-	countdown_action_bonus_label_.hide(hide);
-	countdown_game_.hide(hide);
-
-	village_gold_slider_.hide(hide);
-	village_gold_label_.hide(hide);
-	village_support_slider_.hide(hide);
-	village_support_label_.hide(hide);
-	xp_modifier_slider_.hide(hide);
-	xp_modifier_label_.hide(hide);
-
-	name_entry_label_.hide(hide);
-	num_players_label_.hide(hide);
 	map_size_label_.hide(hide);
 	era_label_.hide(hide);
 	map_label_.hide(hide);
+	num_players_label_.hide(hide);
 
-	use_map_settings_.hide(hide);
-	random_start_time_.hide(hide);
-	fog_game_.hide(hide);
-	shroud_game_.hide(hide);
-	observers_game_.hide(hide);
-	shuffle_sides_.hide(hide);
 	cancel_game_.hide(hide);
 	launch_game_.hide(hide);
-	options_.hide(hide);
-	regenerate_map_.hide(hide || generator_ == NULL);
-	generator_settings_.hide(hide || generator_ == NULL);
 
 	era_combo_.hide(hide);
 	choose_mods_.hide(hide);
-	password_button_.hide(hide);
-	vision_combo_.hide(hide);
-	name_entry_.hide(hide);
+
+	regenerate_map_.hide(hide || generator_ == NULL);
+	generator_settings_.hide(hide || generator_ == NULL);
 
 	if (hide) {
 		minimap_restorer_.assign(NULL);
@@ -823,16 +477,6 @@ void create::layout_children(const SDL_Rect& rect)
 	// Dialog title
 	ypos += low_vres ? 0 : title().height() + border_size;
 
-	// Name Entry
-	name_entry_label_.set_location(xpos, ypos);
-	name_entry_.set_location(xpos + name_entry_label_.width() + border_size, ypos);
-	if (low_vres) {
-		name_entry_.set_width(minimap_width + maps_menu_width + border_size - name_entry_label_.width());
-	} else {
-		name_entry_.set_width(ca.w - name_entry_label_.width() - border_size);
-	}
-	ypos += std::max<int>(name_entry_.height(), name_entry_label_.height()) + border_size;
-
 	// Save ypos here (column top)
 	int ypos_columntop = ypos;
 
@@ -857,17 +501,6 @@ void create::layout_children(const SDL_Rect& rect)
 	ypos += era_combo_.height() + border_size;
 	choose_mods_.set_location(xpos, ypos);
 	ypos += choose_mods_.height() + border_size;
-	if(!local_players_only_) {
-		password_button_.set_location(xpos, ypos);
-		ypos += password_button_.height() + border_size;
-	} else {
-		password_button_.hide(true);
-	}
-
-#ifdef MP_VISION_OPTIONAL
-	vision_combo_.set_location(xpos, ypos);
-	ypos += vision_combo_.height() + border_size;
-#endif
 
 	// Second column: map menu
 	ypos = ypos_columntop;
@@ -883,92 +516,6 @@ void create::layout_children(const SDL_Rect& rect)
 	maps_menu_.set_items(map_options_);
 	maps_menu_.move_selection(mapsel_save);
 
-	// Third column: big bunch of options
-	const bool two_sliders_per_row = low_vres;
-
-	ypos = ypos_columntop - (low_vres ? name_entry_.height() + border_size : 0);
-	xpos += maps_menu_width + column_border_size;
-
-	int slider_width = two_sliders_per_row ? (ca.w - xpos)/2 : ca.w -xpos;
-
-	use_map_settings_.set_location(xpos, ypos);
-	fog_game_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
-	ypos += use_map_settings_.height() + border_size;
-
-	random_start_time_.set_location(xpos, ypos);
-	shroud_game_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
-	ypos += random_start_time_.height() + border_size;
-
-	turns_label_.set_location(xpos, ypos);
-	ypos += turns_label_.height() + border_size;
-	turns_slider_.set_width(slider_width);
-	turns_slider_.set_location(xpos, ypos);
-
-	if (two_sliders_per_row) {
-	  ypos -= turns_label_.height() + border_size;
-	  xpos += turns_slider_.width() + border_size;
-	} else {
-	  ypos += turns_slider_.height() + border_size;
-	}
-
-	xp_modifier_label_.set_location(xpos, ypos);
-	ypos += xp_modifier_label_.height() + border_size;
-	xp_modifier_slider_.set_width(slider_width);
-	xp_modifier_slider_.set_location(xpos, ypos);
-	ypos += xp_modifier_slider_.height() + border_size;
-
-	if (two_sliders_per_row) {
-	  xpos -= xp_modifier_slider_.width() + border_size;
-	}
-
-	village_support_label_.set_location(xpos, ypos);
-	ypos += village_support_label_.height() + border_size;
-	village_support_slider_.set_width(slider_width);
-	village_support_slider_.set_location(xpos, ypos);
-
-	if (two_sliders_per_row) {
-	  ypos -= village_support_label_.height() + border_size;
-	  xpos += village_support_slider_.width() + border_size;
-	} else {
-	  ypos += village_support_slider_.height() + border_size;
-	}
-
-	village_gold_label_.set_location(xpos, ypos);
-	ypos += village_gold_label_.height() + border_size;
-	village_gold_slider_.set_width(slider_width);
-	village_gold_slider_.set_location(xpos, ypos);
-	ypos += village_gold_slider_.height() + 3 * border_size;
-
-	if (two_sliders_per_row) {
-	  xpos -= village_gold_slider_.width() + border_size;
-	}
-
-	countdown_game_.set_location(xpos, ypos);
-	ypos += countdown_game_.height() + border_size;
-
-	countdown_init_time_label_.set_location(xpos, ypos);
-	countdown_turn_bonus_label_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
-	ypos += countdown_init_time_label_.height() + border_size;
-	countdown_init_time_slider_.set_width(((ca.w - xpos)/2)-5);
-	countdown_turn_bonus_slider_.set_width(((ca.w - xpos)/2)-5);
-	countdown_init_time_slider_.set_location(xpos, ypos);
-	countdown_turn_bonus_slider_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
-	ypos += countdown_init_time_slider_.height() + border_size;
-
-	countdown_reservoir_time_label_.set_location(xpos, ypos);
-	countdown_action_bonus_label_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
-	ypos += countdown_reservoir_time_label_.height() + border_size;
-	countdown_reservoir_time_slider_.set_width(((ca.w - xpos)/2)-5);
-	countdown_action_bonus_slider_.set_width(((ca.w - xpos)/2)-5);
-	countdown_reservoir_time_slider_.set_location(xpos, ypos);
-	countdown_action_bonus_slider_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
-	ypos += countdown_reservoir_time_slider_.height() + 3 * border_size;
-
-	shuffle_sides_.set_location(xpos, ypos);
-	observers_game_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
-	ypos += shuffle_sides_.height() + border_size;
-
-
 	// OK / Cancel buttons
 	gui::button* left_button = &launch_game_;
 	gui::button* right_button = &cancel_game_;
@@ -982,9 +529,6 @@ void create::layout_children(const SDL_Rect& rect)
 	                           ca.y + ca.h - right_button->height());
 	left_button->set_location(right_button->location().x - left_button->width() -
 	                          gui::ButtonHPadding, ca.y + ca.h - left_button->height());
-
-	options_.set_location(left_button->location().x - options_.width() -
-					gui::ButtonHPadding, ca.y + ca.h - options_.height());
 }
 
 void create::synchronize_selections()
@@ -1001,9 +545,6 @@ void create::synchronize_selections()
 	}
 
 	parameters_.active_mods = dependency_manager_.get_modifications();
-	options_manager_.set_modifications(dependency_manager_.get_modifications());
-	options_manager_.set_era(dependency_manager_.get_era());
-	options_manager_.set_scenario(dependency_manager_.get_scenario());
 }
 
 } // namespace mp
