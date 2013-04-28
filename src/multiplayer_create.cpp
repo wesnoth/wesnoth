@@ -485,7 +485,7 @@ void create::layout_children(const SDL_Rect& rect)
 	ypos += map_label_.height() + border_size;
 
 	maps_menu_.set_max_width(maps_menu_width);
-	maps_menu_.set_max_height(ca.h + ca.y - ypos - cancel_game_.height());
+	maps_menu_.set_max_height(ca.h + ca.y - ypos - cancel_game_.height() - border_size);
 	maps_menu_.set_location(xpos, ypos);
 	// Menu dimensions are only updated when items are set. So do this now.
 	int mapsel_save = maps_menu_.selection();
@@ -498,7 +498,7 @@ void create::layout_children(const SDL_Rect& rect)
 	era_label_.set_location(xpos, ypos);
 	ypos += era_label_.height() + border_size;
 	eras_menu_.set_max_width(eras_menu_width);
-	eras_menu_.set_max_height(ca.h + ca.y - ypos - cancel_game_.height());
+	eras_menu_.set_max_height(ca.h + ca.y - ypos - cancel_game_.height() - border_size);
 	eras_menu_.set_location(xpos, ypos);
 	// Menu dimensions are only updated when items are set. So do this now.
 	int erasel_save = eras_menu_.selection();
@@ -511,7 +511,7 @@ void create::layout_children(const SDL_Rect& rect)
 	mod_label_.set_location(xpos, ypos);
 	ypos += mod_label_.height() + border_size;
 	mods_menu_.set_max_width(mods_menu_width);
-	mods_menu_.set_max_height(ca.h + ca.y - ypos - cancel_game_.height());
+	mods_menu_.set_max_height(ca.h + ca.y - ypos - cancel_game_.height() - border_size);
 	mods_menu_.set_location(xpos, ypos);
 	// Menu dimensions are only updated when items are set. So do this now.
 	int modsel_save = mods_menu_.selection();
