@@ -62,19 +62,20 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	map_selection_(-1),
 	user_maps_(),
 	map_options_(),
+	era_options_(),
 	available_mods_(),
 	map_index_(),
+	eras_menu_(disp.video(), std::vector<std::string>()),
 	maps_menu_(disp.video(), std::vector<std::string>()),
-	map_size_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
 	era_label_(disp.video(), _("Era:"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	map_label_(disp.video(), _("Map to play:"), font::SIZE_SMALL, font::LOBBY_COLOR),
+	map_size_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
 	num_players_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
 	choose_mods_(disp.video(), _("Modifications")),
 	launch_game_(disp.video(), _("OK")),
 	cancel_game_(disp.video(), _("Cancel")),
 	regenerate_map_(disp.video(), _("Regenerate")),
 	generator_settings_(disp.video(), _("Settings...")),
-	era_combo_(disp, std::vector<std::string>()),
 	minimap_restorer_(NULL),
 	minimap_rect_(null_rect),
 	generator_(NULL),
@@ -141,20 +142,19 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	maps_menu_.set_numeric_keypress_selection(false);
 
 	// The possible eras to play
-	std::vector<std::string> eras;
 	BOOST_FOREACH(const config &er, cfg.child_range("era")) {
-		eras.push_back(er["name"]);
+		era_options_.push_back(er["name"]);
 	}
-	if(eras.empty()) {
+	if(era_options_.empty()) {
 		gui2::show_transient_message(disp.video(), "", _("No eras found."));
 		throw config::error(_("No eras found"));
 	}
-	era_combo_.set_items(eras);
+	eras_menu_.set_items(era_options_);
 
-	if (size_t(preferences::era()) < eras.size()) {
-		era_combo_.set_selected(preferences::era());
+	if (size_t(preferences::era()) < era_options_.size()) {
+		eras_menu_.move_selection(preferences::era());
 	} else {
-		era_combo_.set_selected(preferences::era());
+		eras_menu_.move_selection(0);
 	}
 
 	dependency_manager_.try_era_by_index(era_selection_, true);
@@ -202,7 +202,7 @@ mp_game_settings& create::get_parameters()
 	// the values selected by the user with the widgets:
 
 	config::const_child_itors era_list = game_config().child_range("era");
-	for (int num = era_combo_.selected(); num > 0; --num) {
+	for (int num = eras_menu_.selection(); num > 0; --num) {
 		if (era_list.first == era_list.second) {
 			throw config::error(_("Invalid era selected"));
 		}
@@ -262,8 +262,8 @@ void create::process_event()
 		}
 	}
 
-	bool era_changed = era_selection_ != era_combo_.selected();
-	era_selection_ = era_combo_.selected();
+	bool era_changed = era_selection_ != eras_menu_.selection();
+	era_selection_ = eras_menu_.selection();
 
 	if (era_changed) {
 		dependency_manager_.try_era_by_index(era_selection_);
@@ -426,7 +426,7 @@ void create::hide_children(bool hide)
 	cancel_game_.hide(hide);
 	launch_game_.hide(hide);
 
-	era_combo_.hide(hide);
+	eras_menu_.hide(hide);
 	choose_mods_.hide(hide);
 
 	regenerate_map_.hide(hide || generator_ == NULL);
@@ -460,22 +460,19 @@ void create::layout_children(const SDL_Rect& rect)
 
 	ui::layout_children(rect);
 
-	std::pair<int,int> resolution = preferences::resolution();
-	const bool low_hres = resolution.first <= 840;
-	const bool low_vres = resolution.second < 768;
-
-	const int border_size = low_vres ? 4 : 6;
-	const int column_border_size = low_hres ? 8 : 10;
+	const int border_size =  6;
+	const int column_border_size = 10;
 
 	SDL_Rect ca = client_area();
 	int xpos = ca.x;
 	int ypos = ca.y;
 
-	const int minimap_width = !low_vres ? 200 : 100;
-	const int maps_menu_width = !low_hres ? 200 : 175;
+	const int minimap_width = 200;
+	const int maps_menu_width = 200;
+	const int eras_menu_width = maps_menu_width;
 
 	// Dialog title
-	ypos += low_vres ? 0 : title().height() + border_size;
+	ypos += title().height() + border_size;
 
 	// Save ypos here (column top)
 	int ypos_columntop = ypos;
@@ -495,10 +492,6 @@ void create::layout_children(const SDL_Rect& rect)
 	generator_settings_.set_location(xpos, ypos);
 	ypos += generator_settings_.height() + 2 * border_size;
 
-	era_label_.set_location(xpos, ypos);
-	ypos += era_label_.height() + border_size;
-	era_combo_.set_location(xpos, ypos);
-	ypos += era_combo_.height() + border_size;
 	choose_mods_.set_location(xpos, ypos);
 	ypos += choose_mods_.height() + border_size;
 
@@ -515,6 +508,19 @@ void create::layout_children(const SDL_Rect& rect)
 	int mapsel_save = maps_menu_.selection();
 	maps_menu_.set_items(map_options_);
 	maps_menu_.move_selection(mapsel_save);
+
+	//Third column: eras menu
+	ypos = ypos_columntop;
+	xpos += maps_menu_width + column_border_size;
+	era_label_.set_location(xpos, ypos);
+	ypos += era_label_.height() + border_size;
+	eras_menu_.set_max_width(eras_menu_width);
+	eras_menu_.set_max_height(ca.h + ca.y - ypos);
+	eras_menu_.set_location(xpos, ypos);
+	// Menu dimensions are only updated when items are set. So do this now.
+	int erasel_save = eras_menu_.selection();
+	eras_menu_.set_items(era_options_);
+	eras_menu_.move_selection(erasel_save);
 
 	// OK / Cancel buttons
 	gui::button* left_button = &launch_game_;
@@ -535,7 +541,7 @@ void create::synchronize_selections()
 {
 	DBG_MP << "Synchronizing with the dependency manager" << std::endl;
 	if (era_selection_ != dependency_manager_.get_era_index()) {
-		era_combo_.set_selected(dependency_manager_.get_era_index());
+		eras_menu_.move_selection(dependency_manager_.get_era_index());
 		process_event();
 	}
 
