@@ -55,6 +55,18 @@ enum { REMOVE_EMPTY = 0x01,	/**< REMOVE_EMPTY : remove empty elements. */
 std::vector< std::string > split(std::string const &val, const char c = ',', const int flags = REMOVE_EMPTY | STRIP_SPACES);
 
 /**
+ * Splits a string based on two separators into a map.
+ * major: the separator between elements of the map
+ * minor: the separator between keys and values in one element
+ *
+ * For example, the string 'a:b,c:d,e:f' would be parsed into:
+ *  a => b
+ *  c => d
+ *  e => f
+*/
+std::map< std::string, std::string > map_split(std::string const &val, char major = ',', char minor = ':', int flags = REMOVE_EMPTY | STRIP_SPACES, std::string const default_value = "");
+
+/**
  * Splits a string based either on a separator where text within parenthesis
  * is protected from splitting (Note that one can use the same character for
  * both the left and right parenthesis. In this mode it usually makes only
@@ -84,7 +96,7 @@ std::vector< std::string > parenthetical_split(std::string const &val,
  * must match in each section.
  * Leading zeros are preserved if specified between square brackets.
  * An asterisk as in [a*n] indicates to expand 'a' n times
- * 
+ *
  * This is useful to expand animation WML code.
  * Examples:
  * square_parenthetical_split("a[1-3](1,[5,6,7]),b[8,9]",",") should return
@@ -118,6 +130,19 @@ std::string join(T const &v, const std::string& s = ",")
                 str << *i;
                 if (boost::next(i) != v.end())
                         str << s;
+        }
+
+        return str.str();
+}
+
+template <typename T>
+std::string join_map(T const &v, char major = ',', char minor = ':')
+{
+        std::stringstream str;
+        for(typename T::const_iterator i = v.begin(); i != v.end(); ++i) {
+                str << i->first << minor << i->second;
+                if (boost::next(i) != v.end())
+                        str << major;
         }
 
         return str.str();
@@ -183,6 +208,9 @@ inline std::string escape(const std::string &str)
 
 /** Remove all escape characters (backslash) */
 std::string unescape(const std::string &str);
+
+/** Replace all instances of src in str with dst */
+std::string replace(std::string str, const std::string &src, const std::string &dst);
 
 /** Remove whitespace from the front and back of the string 'str'. */
 std::string &strip(std::string &str);

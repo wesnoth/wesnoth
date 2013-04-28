@@ -65,6 +65,16 @@ bool notspace(const char c)
 	return !portable_isspace(c);
 }
 
+std::string replace(std::string str, const std::string &src, const std::string &dst)
+{
+	std::string::size_type pos = 0;
+	while ( (pos = str.find(src, pos)) != std::string::npos ) {
+		str.replace( pos, src.size(), dst );
+		pos++;
+	}
+	return str;
+}
+
 std::string &strip(std::string &str)
 {
 	// If all the string contains is whitespace,
@@ -286,6 +296,32 @@ std::vector< std::string > square_parenthetical_split(std::string const &val,
 
 	if(!part.empty()){
 			ERR_GENERAL << "Mismatched parenthesis:\n"<<val<<"\n";;
+	}
+
+	return res;
+}
+
+std::map< std::string, std::string > map_split(std::string const &val, char major, char minor, int flags, std::string const default_value)
+{
+	//first split by major so that we get a vector with the key-value pairs
+	std::vector< std::string > v = split(val, major, flags);
+
+	//now split by minor to extract keys and values
+	std::map< std::string, std::string > res;
+
+	for( std::vector< std::string >::iterator i = v.begin(); i != v.end(); ++i) {
+		size_t pos = (*i).find_first_of(minor);
+		std::string key, value;
+
+		if(pos == std::string::npos) {
+			key = (*i);
+			value = default_value;
+		} else {
+			key = (*i).substr(0, pos);
+			value = (*i).substr(pos + 1);
+		}
+
+		res[key] = value;
 	}
 
 	return res;

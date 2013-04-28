@@ -47,7 +47,7 @@ std::map<std::string, std::vector<std::string> > history_map;
 const unsigned max_history_saved = 50;
 
 std::set<std::string> friends;
-std::set<std::string> ignores;
+std::map<std::string, std::string> ignores; //maps from name to reason ignored
 
 bool friends_initialized = false;
 bool ignores_initialized = false;
@@ -204,15 +204,14 @@ const std::set<std::string> & get_friends() {
 
 static void initialize_ignores() {
 	if(!ignores_initialized) {
-		std::vector<std::string> names = utils::split(preferences::get("ignores"));
-		std::set<std::string> tmp(names.begin(), names.end());
+		std::map<std::string, std::string> tmp = utils::map_split(preferences::get("ignores"), ';', ' ');
 		ignores.swap(tmp);
 
 		ignores_initialized = true;
 	}
 }
 
-const std::set<std::string> & get_ignores() {
+const std::map<std::string, std::string> & get_ignores() {
 	return ignores;
 }
 
@@ -223,10 +222,10 @@ bool add_friend(const std::string& nick) {
 	return true;
 }
 
-bool add_ignore(const std::string& nick) {
+bool add_ignore(const std::string& nick, const std::string& reason) {
 	if (!utils::isvalid_wildcard(nick)) return false;
-	ignores.insert(nick);
-	preferences::set("ignores", utils::join(ignores));
+	ignores[nick] = utils::replace(reason, ";", "");
+	preferences::set("ignores", utils::join_map(ignores, ';', ' '));
 	return true;
 }
 
@@ -239,10 +238,20 @@ void remove_friend(const std::string& nick) {
 }
 
 void remove_ignore(const std::string& nick) {
-	std::set<std::string>::iterator i = ignores.find(nick);
+	std::map<std::string, std::string>::iterator i = ignores.find(nick);
+
+	//nick might include the reason, depending on how we're removing
+	if(i == ignores.end()) {
+		size_t pos = nick.find_first_of(' ');
+
+		if(pos != std::string::npos) {
+			i = ignores.find(nick.substr(0, pos));
+		}
+	}
+
 	if(i != ignores.end()) {
 		ignores.erase(i);
-		preferences::set("ignores", utils::join(ignores));
+		preferences::set("ignores", utils::join_map(ignores, ';', ' '));
 	}
 }
 

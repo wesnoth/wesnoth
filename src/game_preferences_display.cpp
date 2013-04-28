@@ -136,7 +136,7 @@ private:
 	           scroll_label_, chat_lines_label_,
 	           turbo_slider_label_, sample_rate_label_, buffer_size_label_,
 			   idle_anim_slider_label_, autosavemax_slider_label_,
-			   advanced_slider_label_;
+			   advanced_slider_label_, friends_ignore_label_;
 	gui::textbox sample_rate_input_, friends_input_;
 
 	unsigned slider_label_width_;
@@ -225,6 +225,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  idle_anim_slider_label_(disp.video(), _("Frequency:"), font::SIZE_SMALL ),
 	  autosavemax_slider_label_(disp.video(), "", font::SIZE_SMALL),
 	  advanced_slider_label_(disp.video(), "", font::SIZE_SMALL),
+	  friends_ignore_label_(disp.video(), _("Ignore: add optional reason"), font::SIZE_SMALL),
 
 	  sample_rate_input_(disp.video(), 70),
 	  friends_input_(disp.video(), 170),
@@ -390,7 +391,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	friends_list_button_.set_help_string(_("View and edit your friends and ignores list"));
 	friends_back_button_.set_help_string(_("Back to the multiplayer options"));
 	friends_add_friend_button_.set_help_string(_("Add this username to your friends list"));
-	friends_add_ignore_button_.set_help_string(_("Add this username to your ignores list"));
+	friends_add_ignore_button_.set_help_string(_("Add this username to your ignores list (add optional reason, e.g., 'player_name reason ignored')"));
 	friends_remove_button_.set_help_string(_("Remove this username from your list"));
 
 	friends_input_.set_text("");
@@ -497,6 +498,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&idle_anim_slider_label_);
 	h.push_back(&autosavemax_slider_label_);
 	h.push_back(&advanced_slider_label_);
+	h.push_back(&friends_ignore_label_);
 	h.push_back(&chat_lines_label_);
 	h.push_back(&sample_rate_label_);
 	h.push_back(&buffer_size_label_);
@@ -695,6 +697,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	friends_add_friend_button_.set_location(friends_xpos,ypos);
 	ypos += short_interline+3; friends_add_ignore_button_.set_location(friends_xpos,ypos);
 	ypos += short_interline+3; friends_remove_button_.set_location(friends_xpos,ypos);
+	ypos += short_interline+3; friends_ignore_label_.set_location(friends_xpos,ypos);
 	friends_back_button_.set_location(rect.x, bottom_row_y - friends_back_button_.height());
 
 	//Advanced tab
@@ -961,7 +964,16 @@ void preferences_dialog::process_event()
             }
         }
 		if (friends_add_ignore_button_.pressed()) {
-			if (preferences::add_ignore(friends_input_.text())) {
+			std::string reason = "";
+			std::string username = friends_input_.text();
+			size_t pos = username.find_first_of(' ');
+
+			if(pos != std::string::npos) {
+				reason = username.substr(pos + 1);
+				username = username.substr(0, pos);
+			}
+
+			if (preferences::add_ignore(username, reason)) {
 				friends_input_.clear();
 				set_friends_menu();
 			} else {
@@ -1094,24 +1106,23 @@ void preferences_dialog::sort_advanced_preferences()
 void preferences_dialog::set_friends_menu()
 {
 	const std::set<std::string>& friends = preferences::get_friends();
-	const std::set<std::string>& ignores = preferences::get_ignores();
+	const std::map<std::string, std::string>& ignores = preferences::get_ignores();
 
 	std::vector<std::string> friends_items;
 	std::vector<std::string> friends_names;
 	std::string const imgpre = IMAGE_PREFIX + std::string("misc/status-");
 
-	std::set<std::string>::const_iterator i;
-	for (i = friends.begin(); i != friends.end(); ++i)
+	for (std::set<std::string>::const_iterator i = friends.begin(); i != friends.end(); ++i)
 	{
 		friends_items.push_back(imgpre + "friend.png" + COLUMN_SEPARATOR
 				+ *i + COLUMN_SEPARATOR + _("friend"));
 		friends_names.push_back(*i);
 	}
-	for (i = ignores.begin(); i != ignores.end(); ++i)
+	for (std::map<std::string, std::string>::const_iterator i = ignores.begin(); i != ignores.end(); ++i)
 	{
 		friends_items.push_back(imgpre + "ignore.png" + COLUMN_SEPARATOR
-				+ *i + COLUMN_SEPARATOR + _("ignored"));
-		friends_names.push_back(*i);
+				+ i->first + " (" + i->second + ")" + COLUMN_SEPARATOR + _("ignored"));
+		friends_names.push_back(i->first + " " + i->second);
 	}
 	if (friends_items.empty()) {
 		friends_items.push_back(_("(empty list)"));
@@ -1219,6 +1230,7 @@ void preferences_dialog::set_selection(int index)
 	friends_add_ignore_button_.hide(hide_friends);
 	friends_remove_button_.hide(hide_friends);
 	friends_input_.hide(hide_friends);
+	friends_ignore_label_.hide(hide_friends);
 
 	const bool hide_advanced = tab_ != ADVANCED_TAB;
 	advanced_.hide(hide_advanced);

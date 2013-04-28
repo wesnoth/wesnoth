@@ -45,9 +45,9 @@ namespace preferences {
 	bool new_lobby();
 
 	const std::set<std::string> & get_friends();
-	const std::set<std::string> & get_ignores();
+	const std::map<std::string, std::string> & get_ignores();
 	bool add_friend(const std::string& nick);
-	bool add_ignore(const std::string& nick);
+	bool add_ignore(const std::string& nick, const std::string& reason);
 	void add_completed_campaign(const std::string& campaign_id);
 	void remove_friend(const std::string& nick);
 	void remove_ignore(const std::string& nick);

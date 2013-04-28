@@ -158,7 +158,7 @@ void tlobby_player_info::add_to_friends_button_callback(twindow& w)
 
 void tlobby_player_info::add_to_ignores_button_callback(twindow& w)
 {
-	preferences::add_ignore(info_.name);
+	preferences::add_ignore(info_.name, "");
 	info_.relation = user_info::IGNORED;
 	update_relation(w);
 }

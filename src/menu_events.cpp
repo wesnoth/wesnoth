@@ -2409,18 +2409,18 @@ void chat_command_handler::do_log()
 void chat_command_handler::do_ignore()
 {
 	if (get_arg(1).empty()) {
-		const std::set<std::string>& tmp = preferences::get_ignores();
-		print(_("ignores list"), tmp.empty() ? _("(empty)") : utils::join(tmp));
+		const std::map<std::string, std::string>& tmp = preferences::get_ignores();
+		print(_("ignores list"), tmp.empty() ? _("(empty)") : utils::join_map(tmp, '\n', ':'));
 	} else {
-		for(int i = 1; !get_arg(i).empty(); i++){
-			utils::string_map symbols;
-			symbols["nick"] = get_arg(i);
-			if (preferences::add_ignore(get_arg(i))) {
-				print(_("ignores list"),  VGETTEXT("Added to ignore list: $nick", symbols));
-				chat_handler_.user_relation_changed(get_arg(i));
-			} else {
-				command_failed(VGETTEXT("Invalid username: $nick", symbols));
-			}
+		std::string reason = get_data(2);
+		utils::string_map symbols;
+		symbols["nick"] = get_arg(1);
+
+		if (preferences::add_ignore(get_arg(1), reason)) {
+			print(_("ignores list"),  VGETTEXT("Added to ignore list: $nick", symbols));
+			chat_handler_.user_relation_changed(get_arg(1));
+		} else {
+			command_failed(VGETTEXT("Invalid username: $nick", symbols));
 		}
 	}
 }
@@ -2459,14 +2459,14 @@ void chat_command_handler::do_remove()
 void chat_command_handler::do_display()
 {
 	const std::set<std::string> & friends = preferences::get_friends();
-	const std::set<std::string> & ignores = preferences::get_ignores();
+	const std::map<std::string, std::string> & ignores = preferences::get_ignores();
 
 	if (!friends.empty()) {
 		print(_("friends list"), utils::join(friends));
 	}
 
 	if (!ignores.empty()) {
-		print(_("ignores list"), utils::join(ignores));
+		print(_("ignores list"), utils::join_map(ignores));
 	}
 
 	if (friends.empty() && ignores.empty()) {
@@ -3292,4 +3292,3 @@ void menu_handler::change_side_controller(const std::string& side, const std::st
 	network::send_data(cfg, 0);
 }
 } // end namespace events
-
