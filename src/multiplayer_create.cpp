@@ -61,17 +61,18 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	era_selection_(-1),
 	map_selection_(-1),
 	user_maps_(),
-	map_options_(),
 	era_options_(),
-	available_mods_(),
+	map_options_(),
+	mod_options_(),
 	map_index_(),
 	eras_menu_(disp.video(), std::vector<std::string>()),
 	maps_menu_(disp.video(), std::vector<std::string>()),
+	mods_menu_(disp.video(), std::vector<std::string>()),
 	era_label_(disp.video(), _("Era:"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	map_label_(disp.video(), _("Map to play:"), font::SIZE_SMALL, font::LOBBY_COLOR),
+	mod_label_(disp.video(), _("Modifications:"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	map_size_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
 	num_players_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
-	choose_mods_(disp.video(), _("Modifications")),
 	launch_game_(disp.video(), _("OK")),
 	cancel_game_(disp.video(), _("Cancel")),
 	regenerate_map_(disp.video(), _("Regenerate")),
@@ -161,8 +162,12 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 
 	// Available modifications
 	BOOST_FOREACH (const config& mod, cfg.child_range("modification")) {
-		available_mods_.add_child("modification", mod);
+		mod_options_.push_back(mod["name"]);
 	}
+	if (mod_options_.empty()) {
+		mod_options_.push_back(_("No modifications found"));
+	}
+	mods_menu_.set_items(mod_options_);
 
 	BOOST_FOREACH (const std::string& str, preferences::modifications()) {
 		if (cfg.find_child("modification", "id", str))
@@ -239,26 +244,6 @@ void create::process_event()
 		} else {
 			set_result(CREATE);
 			return;
-		}
-	}
-
-
-
-	if(choose_mods_.pressed()) {
-		if (available_mods_.empty()) {
-			gui2::show_transient_message(disp_.video(), "",
-			_(	"There are no modifications currently installed." \
-				" To download modifications, connect to the add-ons server" \
-				" by choosing the 'Add-ons' option on the main screen."		));
-		} else {
-
-			gui2::tmp_create_game_choose_mods
-						dialog(available_mods_, parameters_.active_mods);
-
-			dialog.show(disp_.video());
-
-			dependency_manager_.try_modifications(parameters_.active_mods);
-			synchronize_selections();
 		}
 	}
 
@@ -416,18 +401,18 @@ void create::hide_children(bool hide)
 
 	ui::hide_children(hide);
 
+	eras_menu_.hide(hide),
 	maps_menu_.hide(hide);
+	mods_menu_.hide(hide);
 
 	map_size_label_.hide(hide);
 	era_label_.hide(hide);
 	map_label_.hide(hide);
+	mod_label_.hide(hide);
 	num_players_label_.hide(hide);
 
 	cancel_game_.hide(hide);
 	launch_game_.hide(hide);
-
-	eras_menu_.hide(hide);
-	choose_mods_.hide(hide);
 
 	regenerate_map_.hide(hide || generator_ == NULL);
 	generator_settings_.hide(hide || generator_ == NULL);
@@ -470,6 +455,7 @@ void create::layout_children(const SDL_Rect& rect)
 	const int minimap_width = 200;
 	const int maps_menu_width = 200;
 	const int eras_menu_width = maps_menu_width;
+	const int mods_menu_width = maps_menu_width;
 
 	// Dialog title
 	ypos += title().height() + border_size;
@@ -491,9 +477,6 @@ void create::layout_children(const SDL_Rect& rect)
 	ypos += regenerate_map_.height() + border_size;
 	generator_settings_.set_location(xpos, ypos);
 	ypos += generator_settings_.height() + 2 * border_size;
-
-	choose_mods_.set_location(xpos, ypos);
-	ypos += choose_mods_.height() + border_size;
 
 	// Second column: map menu
 	ypos = ypos_columntop;
@@ -521,6 +504,19 @@ void create::layout_children(const SDL_Rect& rect)
 	int erasel_save = eras_menu_.selection();
 	eras_menu_.set_items(era_options_);
 	eras_menu_.move_selection(erasel_save);
+
+	//Fourth column: mods menu
+	ypos = ypos_columntop;
+	xpos += eras_menu_width + column_border_size;
+	mod_label_.set_location(xpos, ypos);
+	ypos += mod_label_.height() + border_size;
+	mods_menu_.set_max_width(mods_menu_width);
+	mods_menu_.set_max_height(ca.h + ca.y - ypos);
+	mods_menu_.set_location(xpos, ypos);
+	// Menu dimensions are only updated when items are set. So do this now.
+	int modsel_save = mods_menu_.selection();
+	mods_menu_.set_items(mod_options_);
+	mods_menu_.move_selection(modsel_save);
 
 	// OK / Cancel buttons
 	gui::button* left_button = &launch_game_;

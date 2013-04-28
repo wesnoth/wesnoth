@@ -53,9 +53,9 @@ private:
 
 
 	std::vector<std::string> user_maps_;
-	std::vector<std::string> map_options_;
 	std::vector<std::string> era_options_;
-	config available_mods_;
+	std::vector<std::string> map_options_;
+	std::vector<std::string> mod_options_;
 
 	/**
 	 * Due to maps not available the index of the selected map and mp scenarios
@@ -65,13 +65,14 @@ private:
 
 	gui::menu eras_menu_;
 	gui::menu maps_menu_;
+	gui::menu mods_menu_;
 
 	gui::label era_label_;
 	gui::label map_label_;
+	gui::label mod_label_;
 	gui::label map_size_label_;
 	gui::label num_players_label_;
 
-	gui::button choose_mods_;
 	gui::button launch_game_;
 	gui::button cancel_game_;
 	gui::button regenerate_map_;
