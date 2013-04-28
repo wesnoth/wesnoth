@@ -27,6 +27,7 @@
 #include "gui/widgets/window.hpp"
 #include "hash.hpp"
 #include "multiplayer.hpp"
+#include "multiplayer_configure.hpp"
 #include "multiplayer_connect.hpp"
 #include "multiplayer_create.hpp"
 #include "multiplayer_error_codes.hpp"
@@ -517,14 +518,18 @@ static bool enter_connect_mode(game_display& disp, const config& game_config,
 	return true;
 }
 
+static bool enter_configure_mode(game_display& disp, const config& game_config,
+		mp::chat& chat, config& gamelist, mp_game_settings& params,
+		mp::controller default_controller, bool local_players_only = false);
+
 static void enter_create_mode(game_display& disp, const config& game_config, mp::chat& chat, config& gamelist, mp::controller default_controller, bool local_players_only)
 {
 	DBG_MP << "entering create mode" << std::endl;
 
-	bool connect_canceled;
+	bool configure_canceled;
 
 	do {
-		connect_canceled = false;
+		configure_canceled = false;
 
 		if (gui2::new_widgets) {
 
@@ -537,19 +542,17 @@ static void enter_create_mode(game_display& disp, const config& game_config, mp:
 
 			mp::ui::result res;
 			mp_game_settings params;
-			int num_turns;
 
 			{
 				mp::create ui(disp, game_config, chat, gamelist, local_players_only);
 				run_lobby_loop(disp, ui);
 				res = ui.get_result();
 				params = ui.get_parameters();
-				num_turns = ui.num_turns();
 			}
 
 			switch (res) {
 			case mp::ui::CREATE:
-				connect_canceled = !enter_connect_mode(disp, game_config, chat, gamelist, params, num_turns, default_controller, local_players_only);
+				configure_canceled = !enter_configure_mode(disp, game_config, chat, gamelist, params, default_controller, local_players_only);
 				break;
 			case mp::ui::QUIT:
 			default:
@@ -558,7 +561,45 @@ static void enter_create_mode(game_display& disp, const config& game_config, mp:
 				break;
 			}
 		}
+	} while(configure_canceled);
+}
+
+static bool enter_configure_mode(game_display& disp, const config& game_config,
+		mp::chat& chat, config& gamelist, mp_game_settings& params,
+		mp::controller default_controller, bool local_players_only)
+{
+	DBG_MP << "entering configure mode" << std::endl;
+
+	bool connect_canceled;
+
+	do {
+		connect_canceled = false;
+
+		mp::ui::result res;
+		int num_turns;
+
+		{
+			mp::configure ui(disp, game_config, chat, gamelist, local_players_only);
+			run_lobby_loop(disp, ui);
+			res = ui.get_result();
+			params = ui.get_parameters();
+			num_turns = ui.num_turns();
+		}
+
+		switch (res) {
+		case mp::ui::CREATE:
+			connect_canceled = !enter_connect_mode(disp, game_config, chat, gamelist, params, num_turns, default_controller, local_players_only);
+			break;
+		case mp::ui::QUIT:
+		default:
+			//update lobby content
+			return false;
+			network::send_data(config("refresh_lobby"), 0);
+			break;
+		}
 	} while(connect_canceled);
+
+	return true;
 }
 
 static void do_preferences_dialog(game_display& disp, const config& game_config)
