@@ -1233,7 +1233,7 @@ static void draw_panel(CVideo& video, const theme::panel& panel, std::vector<gui
 
 	if(!surf.null()) {
 		if(surf->w != loc.w || surf->h != loc.h) {
-			surf.assign(scale_surface(surf,loc.w,loc.h));
+			surf.assign(tile_surface(surf,loc.w,loc.h));
 		}
 
 		video.blit_surface(loc.x,loc.y,surf);
