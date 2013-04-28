@@ -78,7 +78,7 @@ public:
 	enum result { CONTINUE, JOIN, OBSERVE, CREATE, PREFERENCES, PLAY, QUIT };
 
 	ui(game_display& d, const std::string& title,
-			const config& cfg, chat& c, config& gamelist, bool title_hidden = false);
+			const config& cfg, chat& c, config& gamelist);
 
 	/**
 	 * Asks the multiplayer_ui to pump some data from the network, and then to
@@ -206,7 +206,6 @@ private:
 	 */
 	bool initialized_;
 	bool gamelist_initialized_;
-	bool title_hidden_;
 
 	/** Ensures standard hotkeys are coorectly handled. */
 	const hotkey::basic_handler hotkey_handler_;

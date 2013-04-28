@@ -49,7 +49,7 @@ const SDL_Rect null_rect = {0, 0, 0, 0};
 namespace mp {
 
 configure::configure(game_display& disp, const config &cfg, chat& c, config& gamelist, const mp_game_settings& params, bool local_players_only) :
-	ui(disp, _("Configure Game"), cfg, c, gamelist, preferences::resolution().second < 768),
+	ui(disp, _("Configure Game"), cfg, c, gamelist),
 
 	local_players_only_(local_players_only),
 	tooltip_manager_(disp.video()),
