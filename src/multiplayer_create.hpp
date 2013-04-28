@@ -54,6 +54,7 @@ private:
 
 	std::vector<std::string> user_maps_;
 	std::vector<std::string> map_options_;
+	std::vector<std::string> era_options_;
 	config available_mods_;
 
 	/**
@@ -62,11 +63,12 @@ private:
 	 */
 	std::vector<size_t> map_index_;
 
+	gui::menu eras_menu_;
 	gui::menu maps_menu_;
 
-	gui::label map_size_label_;
 	gui::label era_label_;
 	gui::label map_label_;
+	gui::label map_size_label_;
 	gui::label num_players_label_;
 
 	gui::button choose_mods_;
@@ -74,8 +76,6 @@ private:
 	gui::button cancel_game_;
 	gui::button regenerate_map_;
 	gui::button generator_settings_;
-
-	gui::combo era_combo_;
 
 	util::scoped_ptr<surface_restorer> minimap_restorer_;
 	SDL_Rect minimap_rect_;
