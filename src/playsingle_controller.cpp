@@ -218,8 +218,8 @@ void playsingle_controller::whiteboard_toggle() {
 		utils::string_map symbols;
 		symbols["hk"] = hk;
 
-		std::string msg = vgettext("Planning mode activated! (use $hk to deactivate)", symbols);
-		gui_->announce(msg, font::NORMAL_COLOR);
+		gui_->announce(_("Planning mode activated!"), font::NORMAL_COLOR);
+		gui_->announce("\n" + vgettext("(press $hk to deactivate)", symbols), font::NORMAL_COLOR);
 	} else {
 		gui_->announce(_("Planning mode deactivated!"), font::NORMAL_COLOR);
 	}
