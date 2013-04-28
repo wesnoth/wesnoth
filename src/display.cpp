@@ -794,7 +794,7 @@ void display::create_buttons()
 	DBG_DP << "creating buttons...\n";
 	const std::vector<theme::menu>& buttons = theme_.menus();
 	for(std::vector<theme::menu>::const_iterator i = buttons.begin(); i != buttons.end(); ++i) {
-		gui::button b(screen_,i->title(),string_to_button_type(i->type()),i->image());
+		gui::button b(screen_,i->title(), gui::button::TYPE_TURBO, i->image());
 		DBG_DP << "drawing button " << i->get_id() << "\n";
 		b.set_id(i->get_id());
 		const SDL_Rect& loc = i->location(screen_area());
