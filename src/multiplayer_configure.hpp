@@ -29,7 +29,7 @@ namespace mp {
 class configure : public mp::ui
 {
 public:
-	configure(game_display& dist, const config& game_config, chat& c, config& gamelist, bool local_players_only);
+	configure(game_display& dist, const config& game_config, chat& c, config& gamelist, const mp_game_settings& params, bool local_players_only);
 	~configure();
 
 	mp_game_settings& get_parameters();
@@ -41,29 +41,12 @@ protected:
 	virtual void hide_children(bool hide=true);
 
 private:
-
-	void synchronize_selections();
-
 	bool local_players_only_;
 
 	tooltips::manager tooltip_manager_;
-	int era_selection_;
-	int map_selection_;
 	int mp_countdown_init_time_;
 	int mp_countdown_reservoir_time_;
 
-
-	std::vector<std::string> user_maps_;
-	std::vector<std::string> map_options_;
-	config available_mods_;
-
-	/**
-	 * Due to maps not available the index of the selected map and mp scenarios
-	 * is not 1:1 so we use a lookup table.
-	 */
-	std::vector<size_t> map_index_;
-
-	gui::menu maps_menu_;
 	gui::slider turns_slider_;
 	gui::label turns_label_;
 	gui::button countdown_game_;
@@ -85,9 +68,6 @@ private:
 	gui::label name_entry_label_;
 	gui::label num_players_label_;
 	gui::label map_size_label_;
-	gui::label era_label_;
-	gui::label map_label_;
-
 	gui::button use_map_settings_;
 	gui::button random_start_time_;
 	gui::button fog_game_;
@@ -97,24 +77,14 @@ private:
 	gui::button options_;
 	gui::button cancel_game_;
 	gui::button launch_game_;
-	gui::button regenerate_map_;
-	gui::button generator_settings_;
 	gui::button password_button_;
-	gui::button choose_mods_;
 
-	gui::combo era_combo_;
 	gui::combo vision_combo_;
 	gui::textbox name_entry_;
-
-	util::scoped_ptr<surface_restorer> minimap_restorer_;
-	SDL_Rect minimap_rect_;
-
-	util::scoped_ptr<map_generator> generator_;
 
 	int num_turns_;
 	mp_game_settings parameters_;
 
-	depcheck::manager dependency_manager_;
 	options::manager options_manager_;
 };
 

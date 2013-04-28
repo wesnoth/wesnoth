@@ -48,21 +48,14 @@ const SDL_Rect null_rect = {0, 0, 0, 0};
 
 namespace mp {
 
-configure::configure(game_display& disp, const config &cfg, chat& c, config& gamelist, bool local_players_only) :
-	ui(disp, _("Create Game"), cfg, c, gamelist, preferences::resolution().second < 768),
+configure::configure(game_display& disp, const config &cfg, chat& c, config& gamelist, const mp_game_settings& params, bool local_players_only) :
+	ui(disp, _("Configure Game"), cfg, c, gamelist, preferences::resolution().second < 768),
 
 	local_players_only_(local_players_only),
 	tooltip_manager_(disp.video()),
-	era_selection_(-1),
-	map_selection_(-1),
 	mp_countdown_init_time_(270),
 	mp_countdown_reservoir_time_(330),
-	user_maps_(),
-	map_options_(),
-	available_mods_(),
-	map_index_(),
 
-	maps_menu_(disp.video(), std::vector<std::string>()),
 	turns_slider_(disp.video()),
 	turns_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
 	countdown_game_(disp.video(), _("Time limit"), gui::button::TYPE_CHECK),
@@ -83,8 +76,6 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	name_entry_label_(disp.video(), _("Name of game:"), font::SIZE_PLUS, font::LOBBY_COLOR),
 	num_players_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
 	map_size_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
-	era_label_(disp.video(), _("Era:"), font::SIZE_SMALL, font::LOBBY_COLOR),
-	map_label_(disp.video(), _("Map to play:"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	use_map_settings_(disp.video(), _("Use map settings"), gui::button::TYPE_CHECK),
 	random_start_time_(disp.video(), _("Random start time"), gui::button::TYPE_CHECK),
 	fog_game_(disp.video(), _("Fog of war"), gui::button::TYPE_CHECK),
@@ -94,88 +85,16 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	options_(disp.video(), _("Options...")),
 	cancel_game_(disp.video(), _("Cancel")),
 	launch_game_(disp.video(), _("OK")),
-	regenerate_map_(disp.video(), _("Regenerate")),
-	generator_settings_(disp.video(), _("Settings...")),
 	password_button_(disp.video(), _("Set Password...")),
-	choose_mods_(disp.video(), _("Modifications...")),
-	era_combo_(disp, std::vector<std::string>()),
 	vision_combo_(disp, std::vector<std::string>()),
 	name_entry_(disp.video(), 32),
-	minimap_restorer_(NULL),
-	minimap_rect_(null_rect),
-	generator_(NULL),
 	num_turns_(0),
-	parameters_(),
-	dependency_manager_(cfg, disp.video()),
+	parameters_(params),
 	options_manager_(cfg, disp.video(), preferences::options())
 {
 	// Build the list of scenarios to play
 
 	DBG_MP << "constructing multiplayer configure dialog" << std::endl;
-
-	// Add the 'load game' option
-	std::string markup_txt = "`~";
-	std::string help_sep = " ";
-	help_sep[0] = HELP_STRING_SEPARATOR;
-	std::string menu_help_str = help_sep + _("Load Game");
-	map_options_.push_back(markup_txt + _("Load Game...") + menu_help_str);
-
-	// Treat the Load game option as a scenario
-	config load_game_info;
-	load_game_info["id"] = "multiplayer_load_game";
-	load_game_info["name"] = "Load Game";
-	dependency_manager_.insert_element(depcheck::SCENARIO, load_game_info, 0);
-	options_manager_.insert_element(options::SCENARIO, load_game_info, 0);
-
-
-	// User maps
-	get_files_in_dir(get_user_data_dir() + "/editor/maps",&user_maps_,NULL,FILE_NAME_ONLY);
-
-	size_t i = 0;
-	for(i = 0; i < user_maps_.size(); i++)
-	{
-		menu_help_str = help_sep + user_maps_[i];
-		map_options_.push_back(user_maps_[i] + menu_help_str);
-
-		// Since user maps are treated as scenarios,
-		// some dependency info is required
-		config depinfo;
-
-		depinfo["id"] = user_maps_[i];
-		depinfo["name"] = user_maps_[i];
-
-		dependency_manager_.insert_element(depcheck::SCENARIO, depinfo, i+1);
-
-		// Same with options
-		// FIXME: options::elem_type duplicates depcheck::component_type
-		//        Perhaps they should me merged?
-		const config& optinfo = depinfo;
-
-		options_manager_.insert_element(options::SCENARIO, optinfo, i+1);
-	}
-
-	// Standard maps
-	i = 0;
-	BOOST_FOREACH(const config &j, cfg.child_range("multiplayer"))
-	{
-		if (j["allow_new_game"].to_bool(true))
-		{
-			std::string name = j["name"];
-			menu_help_str = help_sep + name;
-			map_options_.push_back(name + menu_help_str);
-			map_index_.push_back(i);
-		}
-		++i;
-	}
-
-	// Create the scenarios menu
-	maps_menu_.set_items(map_options_);
-	if (size_t(preferences::map()) < map_options_.size()) {
-		maps_menu_.move_selection(preferences::map());
-		dependency_manager_.try_scenario_by_index(preferences::map(), true);
-		options_manager_.set_scenario_by_index(preferences::map());
-	}
-	maps_menu_.set_numeric_keypress_selection(false);
 
 	turns_slider_.set_min(settings::turns_min);
 	turns_slider_.set_max(settings::turns_max);
@@ -252,38 +171,10 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	vision_combo_.set_items(vision_types);
 	vision_combo_.set_selected(0);
 
-	// The possible eras to play
-	std::vector<std::string> eras;
-	BOOST_FOREACH(const config &er, cfg.child_range("era")) {
-		eras.push_back(er["name"]);
-	}
-	if(eras.empty()) {
-		gui2::show_transient_message(disp.video(), "", _("No eras found."));
-		throw config::error(_("No eras found"));
-	}
-	era_combo_.set_items(eras);
-
-	if (size_t(preferences::era()) < eras.size()) {
-		era_combo_.set_selected(preferences::era());
-	} else {
-		era_combo_.set_selected(preferences::era());
-	}
-
-	dependency_manager_.try_era_by_index(era_selection_, true);
-	options_manager_.set_era_by_index(era_selection_);
-
-	// Available modifications
-	BOOST_FOREACH (const config& mod, cfg.child_range("modification")) {
-		available_mods_.add_child("modification", mod);
-	}
-
-	BOOST_FOREACH (const std::string& str, preferences::modifications()) {
-		if (cfg.find_child("modification", "id", str))
-			parameters_.active_mods.push_back(str);
-	}
-
-	dependency_manager_.try_modifications(parameters_.active_mods, true);
-	options_manager_.set_modifications(parameters_.active_mods);
+	// Options
+	options_manager_.set_modifications(params.active_mods);
+	options_manager_.set_era(params.mp_era);
+	options_manager_.set_scenario(params.mp_scenario);
 
 
 	utils::string_map i18n_symbols;
@@ -315,9 +206,6 @@ configure::~configure()
 	preferences::set_countdown_turn_bonus(parameters_.mp_countdown_turn_bonus);
 	preferences::set_countdown_reservoir_time(parameters_.mp_countdown_reservoir_time);
 	preferences::set_countdown_action_bonus(parameters_.mp_countdown_action_bonus);
-	preferences::set_era(era_selection_); /** @todo FIXME: may be broken if new eras are added. */
-	preferences::set_map(map_selection_);
-	preferences::set_modifications(parameters_.active_mods);
 	preferences::set_options(parameters_.options);
 
 	// When using map settings, the following variables are determined by the map,
@@ -354,15 +242,6 @@ mp_game_settings& configure::get_parameters()
 	// the values selected by the user with the widgets:
 	parameters_.name = name_entry_.text();
 
-	config::const_child_itors era_list = game_config().child_range("era");
-	for (int num = era_combo_.selected(); num > 0; --num) {
-		if (era_list.first == era_list.second) {
-			throw config::error(_("Invalid era selected"));
-		}
-		++era_list.first;
-	}
-
-	parameters_.mp_era = (*era_list.first)["id"].str();
 	// CHECK
 	parameters_.mp_countdown_init_time = mp_countdown_init_time_val;
 	parameters_.mp_countdown_turn_bonus = mp_countdown_turn_bonus_val;
@@ -396,18 +275,9 @@ void configure::process_event()
 		return;
 	}
 
-	if(launch_game_.pressed() || maps_menu_.double_clicked()) {
+	if(launch_game_.pressed()) {
 		// check if the map is valid
-		const std::string& map_data = parameters_.scenario_data["map_data"];
-		util::unique_ptr<gamemap> map;
-		try {
-			map.reset(new gamemap(game_config(), map_data));
-		} catch(incorrect_map_format_error&) {
-		} catch(twml_exception&) {}
-
-		if (map.get() == NULL) {
-			gui2::show_transient_message(disp_.video(), "", _("The map is invalid."));
-		} else if (name_entry_.text() == "") {
+		if (name_entry_.text() == "") {
 			gui2::show_transient_message(disp_.video(), "", _("You must enter a name."));
 		} else {
 			set_result(CREATE);
@@ -423,25 +293,6 @@ void configure::process_event()
 		gui2::tmp_create_game_set_password::execute(
 				  parameters_.password
 				, disp_.video());
-	}
-
-	if(choose_mods_.pressed()) {
-		if (available_mods_.empty()) {
-			gui2::show_transient_message(disp_.video(), "",
-			_(	"There are no modifications currently installed." \
-				" To download modifications, connect to the add-ons server" \
-				" by choosing the 'Add-ons' option on the main screen."		));
-		} else {
-
-			gui2::tmp_create_game_choose_mods
-						dialog(available_mods_, parameters_.active_mods);
-
-			dialog.show(disp_.video());
-
-			dependency_manager_.try_modifications(parameters_.active_mods);
-			options_manager_.set_modifications(parameters_.active_mods);
-			synchronize_selections();
-		}
 	}
 
 	// Turns per game
@@ -516,156 +367,7 @@ void configure::process_event()
 
 	xp_modifier_label_.set_text(buf.str());
 
-	bool era_changed = era_selection_ != era_combo_.selected();
-	era_selection_ = era_combo_.selected();
-
-	if (era_changed) {
-		dependency_manager_.try_era_by_index(era_selection_);
-		options_manager_.set_era_by_index(era_selection_);
-		synchronize_selections();
-	}
-
-	bool map_changed = map_selection_ != maps_menu_.selection();
-	map_selection_ = maps_menu_.selection();
-
-	if (map_changed) {
-		dependency_manager_.try_scenario_by_index(map_selection_);
-		options_manager_.set_scenario_by_index(map_selection_);
-		synchronize_selections();
-	}
-
-	if(map_changed) {
-		generator_.assign(NULL);
-
-		tooltips::clear_tooltips(minimap_rect_);
-
-		const size_t select = size_t(maps_menu_.selection());
-
-		if(select > 0 && select <= user_maps_.size()) {
-			parameters_.saved_game = false;
-			if (const config &generic_multiplayer = game_config().child("generic_multiplayer")) {
-				parameters_.scenario_data = generic_multiplayer;
-				parameters_.scenario_data["map_data"] = read_map(user_maps_[select-1]);
-			}
-
-		} else if(select > user_maps_.size() && select <= maps_menu_.number_of_items()-1) {
-			parameters_.saved_game = false;
-			size_t index = select - user_maps_.size() - 1;
-			assert(index < map_index_.size());
-			index = map_index_[index];
-
-			config::const_child_itors levels = game_config().child_range("multiplayer");
-			for (; index > 0; --index) {
-				if (levels.first == levels.second) break;
-				++levels.first;
-			}
-
-			if (levels.first != levels.second)
-			{
-				const config &level = *levels.first;
-				parameters_.scenario_data = level;
-				std::string map_data = level["map_data"];
-
-				if (map_data.empty() && !level["map"].empty()) {
-					map_data = read_map(level["map"]);
-				}
-
-				// If the map should be randomly generated.
-				if (!level["map_generation"].empty()) {
-					generator_.assign(create_map_generator(level["map_generation"], level.child("generator")));
-				}
-
-				if (!level["description"].empty()) {
-					tooltips::add_tooltip(minimap_rect_, level["description"], "", false);
-				}
-			}
-		} else {
-			parameters_.scenario_data.clear();
-			parameters_.saved_game = true;
-
-			if (minimap_restorer_ != NULL)
-				minimap_restorer_->restore();
-		}
-	}
-
-	if(generator_ != NULL && generator_->allow_user_config() && generator_settings_.pressed()) {
-		generator_->user_config(disp_);
-		map_changed = true;
-	}
-
-	if(generator_ != NULL && (map_changed || regenerate_map_.pressed())) {
-		const cursor::setter cursor_setter(cursor::WAIT);
-
-		// Generate the random map
-		cursor::setter cur(cursor::WAIT);
-		parameters_.scenario_data = generator_->create_scenario(std::vector<std::string>());
-		map_changed = true;
-
-		if (!parameters_.scenario_data["error_message"].empty())
-			gui2::show_message(disp().video(), "map generation error", parameters_.scenario_data["error_message"]);
-
-		// Set the scenario to have placing of sides
-		// based on the terrain they prefer
-		parameters_.scenario_data["modify_placing"] = "true";
-	}
-
-	if(map_changed) {
-		generator_settings_.hide(generator_ == NULL);
-		regenerate_map_.hide(generator_ == NULL);
-
-		const std::string& map_data = parameters_.scenario_data["map_data"];
-		parameters_.hash = parameters_.scenario_data.hash();
-		util::unique_ptr<gamemap> map;
-		try {
-			map.reset(new gamemap(game_config(), map_data));
-		} catch(incorrect_map_format_error& e) {
-			ERR_CF << "map could not be loaded: " << e.message << '\n';
-
-			tooltips::clear_tooltips(minimap_rect_);
-			tooltips::add_tooltip(minimap_rect_,e.message);
-		} catch(twml_exception& e) {
-			ERR_CF << "map could not be loaded: " << e.dev_message << '\n';
-		}
-
-		launch_game_.enable(map.get() != NULL);
-
-		// If there are less sides in the configuration than there are
-		// starting positions, then generate the additional sides
-		const int map_positions = map.get() != NULL ? map->num_valid_starting_positions() : 0;
-
-		for (int pos = parameters_.scenario_data.child_count("side"); pos < map_positions; ++pos) {
-			config& side = parameters_.scenario_data.add_child("side");
-			side["side"] = pos + 1;
-			side["team_name"] = pos + 1;
-			side["canrecruit"] = true;
-			side["controller"] = "human";
-		}
-
-		if(map.get() != NULL) {
-			const surface mini(image::getMinimap(minimap_rect_.w,minimap_rect_.h,*map,0));
-			SDL_Color back_color = {0,0,0,255};
-			draw_centered_on_background(mini, minimap_rect_, back_color, video().getSurface());
-		}
-
-		int nsides = 0;
-		BOOST_FOREACH(const config &k, parameters_.scenario_data.child_range("side")) {
-			if (k["allow_player"].to_bool(true)) ++nsides;
-		}
-
-		std::stringstream players;
-		std::stringstream map_size;
-		if(map.get() != NULL) {
-			players << _("Players: ") << nsides;
-			map_size << _("Size: ") << map.get()->w() << utils::unicode_multiplication_sign << map.get()->h();
-		} else {
-			players << _("Error");
-			map_size << "";
-		}
-		num_players_label_.set_text(players.str());
-		map_size_label_.set_text(map_size.str());
-	}
-
-	if(map_changed || use_map_settings_.pressed()) {
+	if(use_map_settings_.pressed()) {
 		const bool map_settings = use_map_settings_.checked();
 
 		// If the map settings are wanted use them,
@@ -728,7 +430,6 @@ void configure::hide_children(bool hide)
 
 	ui::hide_children(hide);
 
-	maps_menu_.hide(hide);
 	turns_slider_.hide(hide);
 	turns_label_.hide(hide);
 
@@ -752,8 +453,6 @@ void configure::hide_children(bool hide)
 	name_entry_label_.hide(hide);
 	num_players_label_.hide(hide);
 	map_size_label_.hide(hide);
-	era_label_.hide(hide);
-	map_label_.hide(hide);
 
 	use_map_settings_.hide(hide);
 	random_start_time_.hide(hide);
@@ -764,35 +463,10 @@ void configure::hide_children(bool hide)
 	cancel_game_.hide(hide);
 	launch_game_.hide(hide);
 	options_.hide(hide);
-	regenerate_map_.hide(hide || generator_ == NULL);
-	generator_settings_.hide(hide || generator_ == NULL);
 
-	era_combo_.hide(hide);
-	choose_mods_.hide(hide);
 	password_button_.hide(hide);
 	vision_combo_.hide(hide);
 	name_entry_.hide(hide);
-
-	if (hide) {
-		minimap_restorer_.assign(NULL);
-	} else {
-		minimap_restorer_.assign(new surface_restorer(&video(), minimap_rect_));
-
-		const std::string& map_data = parameters_.scenario_data["map_data"];
-
-		try {
-			gamemap map(game_config(), map_data);
-
-			const surface mini(image::getMinimap(minimap_rect_.w,minimap_rect_.h,map,0));
-			SDL_Color back_color = {0,0,0,255};
-			draw_centered_on_background(mini, minimap_rect_, back_color, video().getSurface());
-		} catch(incorrect_map_format_error& e) {
-			ERR_CF << "map could not be loaded: " << e.message << "\n";
-		} catch(twml_exception& e) {
-			ERR_CF <<  "map could not be loaded: " << e.dev_message << '\n';
-		}
-
-	}
 }
 
 void configure::layout_children(const SDL_Rect& rect)
@@ -832,26 +506,6 @@ void configure::layout_children(const SDL_Rect& rect)
 	int ypos_columntop = ypos;
 
 	// First column: minimap & random map options
-	minimap_rect_ = create_rect(xpos, ypos, minimap_width, minimap_width);
-	ypos += minimap_width + border_size;
-
-	num_players_label_.set_location(xpos, ypos);
-	ypos += num_players_label_.height() + border_size;
-
-	map_size_label_.set_location(xpos, ypos);
-	ypos += map_size_label_.height() + 2 * border_size;
-
-	regenerate_map_.set_location(xpos, ypos);
-	ypos += regenerate_map_.height() + border_size;
-	generator_settings_.set_location(xpos, ypos);
-	ypos += generator_settings_.height() + 2 * border_size;
-
-	era_label_.set_location(xpos, ypos);
-	ypos += era_label_.height() + border_size;
-	era_combo_.set_location(xpos, ypos);
-	ypos += era_combo_.height() + border_size;
-	choose_mods_.set_location(xpos, ypos);
-	ypos += choose_mods_.height() + border_size;
 	if(!local_players_only_) {
 		password_button_.set_location(xpos, ypos);
 		ypos += password_button_.height() + border_size;
@@ -863,20 +517,6 @@ void configure::layout_children(const SDL_Rect& rect)
 	vision_combo_.set_location(xpos, ypos);
 	ypos += vision_combo_.height() + border_size;
 #endif
-
-	// Second column: map menu
-	ypos = ypos_columntop;
-	xpos += minimap_width + column_border_size;
-	map_label_.set_location(xpos, ypos);
-	ypos += map_label_.height() + border_size;
-
-	maps_menu_.set_max_width(maps_menu_width);
-	maps_menu_.set_max_height(ca.h + ca.y - ypos);
-	maps_menu_.set_location(xpos, ypos);
-	// Menu dimensions are only updated when items are set. So do this now.
-	int mapsel_save = maps_menu_.selection();
-	maps_menu_.set_items(map_options_);
-	maps_menu_.move_selection(mapsel_save);
 
 	// Third column: big bunch of options
 	const bool two_sliders_per_row = low_vres;
@@ -980,25 +620,6 @@ void configure::layout_children(const SDL_Rect& rect)
 
 	options_.set_location(left_button->location().x - options_.width() -
 					gui::ButtonHPadding, ca.y + ca.h - options_.height());
-}
-
-void configure::synchronize_selections()
-{
-	DBG_MP << "Synchronizing with the dependency manager" << std::endl;
-	if (era_selection_ != dependency_manager_.get_era_index()) {
-		era_combo_.set_selected(dependency_manager_.get_era_index());
-		process_event();
-	}
-
-	if (map_selection_ != dependency_manager_.get_scenario_index()) {
-		maps_menu_.move_selection(dependency_manager_.get_scenario_index());
-		process_event();
-	}
-
-	parameters_.active_mods = dependency_manager_.get_modifications();
-	options_manager_.set_modifications(dependency_manager_.get_modifications());
-	options_manager_.set_era(dependency_manager_.get_era());
-	options_manager_.set_scenario(dependency_manager_.get_scenario());
 }
 
 } // namespace mp

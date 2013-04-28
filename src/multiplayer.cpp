@@ -579,7 +579,7 @@ static bool enter_configure_mode(game_display& disp, const config& game_config,
 		int num_turns;
 
 		{
-			mp::configure ui(disp, game_config, chat, gamelist, local_players_only);
+			mp::configure ui(disp, game_config, chat, gamelist, params, local_players_only);
 			run_lobby_loop(disp, ui);
 			res = ui.get_result();
 			params = ui.get_parameters();
