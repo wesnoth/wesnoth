@@ -98,6 +98,8 @@ namespace game_config
 			observer,
 			tod_bright,
 			tod_dark,
+			selected_menu,
+			deselected_menu,
 			checked_menu,
 			unchecked_menu,
 			wml_menu,
