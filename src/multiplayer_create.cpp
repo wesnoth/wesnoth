@@ -470,10 +470,13 @@ void create::layout_children(const SDL_Rect& rect)
 	int xpos = ca.x;
 	int ypos = ca.y;
 
-	const int minimap_width = 200;
-	const int maps_menu_width = 200;
-	const int eras_menu_width = maps_menu_width;
-	const int mods_menu_width = maps_menu_width;
+	// 222 is two times a button's minimal width plus one time border_size.
+	// Instead of binding this value to the actual button widths, I chose this
+	// because it makes no difference for most languages, and where it does, I
+	// guess we'd prefer having the buttons less neatly aligned to having a
+	// potentially giant minimap.
+	const int minimap_width = 222;
+	const int menu_width = (ca.w - 3*column_border_size - minimap_width)/3;
 
 	// Dialog title
 	ypos += title().height() + border_size;
@@ -506,7 +509,7 @@ void create::layout_children(const SDL_Rect& rect)
 	map_label_.set_location(xpos, ypos);
 	ypos += map_label_.height() + border_size;
 
-	maps_menu_.set_max_width(maps_menu_width);
+	maps_menu_.set_max_width(menu_width);
 	maps_menu_.set_max_height(ca.h + ca.y - ypos - cancel_game_.height());
 	maps_menu_.set_location(xpos, ypos);
 	// Menu dimensions are only updated when items are set. So do this now.
@@ -516,10 +519,10 @@ void create::layout_children(const SDL_Rect& rect)
 
 	//Third column: eras menu
 	ypos = ypos_columntop;
-	xpos += maps_menu_width + column_border_size;
+	xpos += menu_width + column_border_size;
 	era_label_.set_location(xpos, ypos);
 	ypos += era_label_.height() + border_size;
-	eras_menu_.set_max_width(eras_menu_width);
+	eras_menu_.set_max_width(menu_width);
 	eras_menu_.set_max_height(ca.h + ca.y - ypos - cancel_game_.height() - border_size);
 	eras_menu_.set_location(xpos, ypos);
 	// Menu dimensions are only updated when items are set. So do this now.
@@ -529,10 +532,10 @@ void create::layout_children(const SDL_Rect& rect)
 
 	//Fourth column: mods menu
 	ypos = ypos_columntop;
-	xpos += eras_menu_width + column_border_size;
+	xpos += menu_width + column_border_size;
 	mod_label_.set_location(xpos, ypos);
 	ypos += mod_label_.height() + border_size;
-	mods_menu_.set_max_width(mods_menu_width);
+	mods_menu_.set_max_width(menu_width);
 	mods_menu_.set_max_height(ca.h + ca.y - ypos - cancel_game_.height() - border_size);
 	mods_menu_.set_location(xpos, ypos);
 	// Menu dimensions are only updated when items are set. So do this now.
