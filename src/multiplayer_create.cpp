@@ -60,10 +60,14 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	tooltip_manager_(disp.video()),
 	era_selection_(-1),
 	map_selection_(-1),
+	mod_selection_(-1),
 	user_maps_(),
 	era_options_(),
 	map_options_(),
 	mod_options_(),
+	era_descriptions_(),
+	map_descriptions_(),
+	mod_descriptions_(),
 	map_index_(),
 	eras_menu_(disp.video(), std::vector<std::string>()),
 	maps_menu_(disp.video(), std::vector<std::string>()),
@@ -77,6 +81,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	cancel_game_(disp.video(), _("Cancel")),
 	regenerate_map_(disp.video(), _("Regenerate")),
 	generator_settings_(disp.video(), _("Settings...")),
+	description_(disp.video(), 100, "Testtestetstet\nubhfkasdf", false),
 	minimap_restorer_(NULL),
 	minimap_rect_(null_rect),
 	generator_(NULL),
@@ -93,6 +98,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	help_sep[0] = HELP_STRING_SEPARATOR;
 	std::string menu_help_str = help_sep + _("Load Game");
 	map_options_.push_back(markup_txt + _("Load Game...") + menu_help_str);
+	map_descriptions_.push_back(_("Continue a saved game"));
 
 	// Treat the Load game option as a scenario
 	config load_game_info;
@@ -109,6 +115,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	{
 		menu_help_str = help_sep + user_maps_[i];
 		map_options_.push_back(user_maps_[i] + menu_help_str);
+		map_descriptions_.push_back(_("User made map"));
 
 		// Since user maps are treated as scenarios,
 		// some dependency info is required
@@ -129,6 +136,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 			std::string name = j["name"];
 			menu_help_str = help_sep + name;
 			map_options_.push_back(name + menu_help_str);
+			map_descriptions_.push_back(j["description"]);
 			map_index_.push_back(i);
 		}
 		++i;
@@ -145,6 +153,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	// The possible eras to play
 	BOOST_FOREACH(const config &er, cfg.child_range("era")) {
 		era_options_.push_back(er["name"]);
+		era_descriptions_.push_back(er["description"]);
 	}
 	if(era_options_.empty()) {
 		gui2::show_transient_message(disp.video(), "", _("No eras found."));
@@ -163,9 +172,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	// Available modifications
 	BOOST_FOREACH (const config& mod, cfg.child_range("modification")) {
 		mod_options_.push_back(mod["name"]);
-	}
-	if (mod_options_.empty()) {
-		mod_options_.push_back(_("No modifications found"));
+		mod_descriptions_.push_back(mod["description"]);
 	}
 	mods_menu_.set_items(mod_options_);
 
@@ -251,6 +258,7 @@ void create::process_event()
 	era_selection_ = eras_menu_.selection();
 
 	if (era_changed) {
+		description_.set_text(era_descriptions_[era_selection_]);
 		dependency_manager_.try_era_by_index(era_selection_);
 		synchronize_selections();
 	}
@@ -259,6 +267,7 @@ void create::process_event()
 	map_selection_ = maps_menu_.selection();
 
 	if (map_changed) {
+		description_.set_text(map_descriptions_[map_selection_]);
 		dependency_manager_.try_scenario_by_index(map_selection_);
 		synchronize_selections();
 	}
@@ -393,6 +402,13 @@ void create::process_event()
 		map_size_label_.set_text(map_size.str());
 		num_players_label_.set_text(players.str());
 	}
+
+	bool mod_selection_changed = mod_selection_ != mods_menu_.selection();
+	mod_selection_ = mods_menu_.selection();
+
+	if (mod_selection_changed) {
+		description_.set_text(mod_descriptions_[mod_selection_]);
+	}
 }
 
 void create::hide_children(bool hide)
@@ -416,6 +432,8 @@ void create::hide_children(bool hide)
 
 	regenerate_map_.hide(hide || generator_ == NULL);
 	generator_settings_.hide(hide || generator_ == NULL);
+
+	description_.hide(hide);
 
 	if (hide) {
 		minimap_restorer_.assign(NULL);
@@ -477,6 +495,10 @@ void create::layout_children(const SDL_Rect& rect)
 	ypos += regenerate_map_.height() + border_size;
 	generator_settings_.set_location(xpos, ypos);
 	ypos += generator_settings_.height() + 2 * border_size;
+	description_.set_location(xpos, ypos);
+	description_.set_measurements(minimap_width, ca.h + ca.y - ypos - border_size);
+	description_.set_wrap(true);
+	ypos += description_.height() + border_size;
 
 	// Second column: map menu
 	ypos = ypos_columntop;
@@ -485,7 +507,7 @@ void create::layout_children(const SDL_Rect& rect)
 	ypos += map_label_.height() + border_size;
 
 	maps_menu_.set_max_width(maps_menu_width);
-	maps_menu_.set_max_height(ca.h + ca.y - ypos - cancel_game_.height() - border_size);
+	maps_menu_.set_max_height(ca.h + ca.y - ypos - cancel_game_.height());
 	maps_menu_.set_location(xpos, ypos);
 	// Menu dimensions are only updated when items are set. So do this now.
 	int mapsel_save = maps_menu_.selection();

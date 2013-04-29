@@ -50,12 +50,16 @@ private:
 	tooltips::manager tooltip_manager_;
 	int era_selection_;
 	int map_selection_;
+	int mod_selection_;
 
 
 	std::vector<std::string> user_maps_;
 	std::vector<std::string> era_options_;
 	std::vector<std::string> map_options_;
 	std::vector<std::string> mod_options_;
+	std::vector<std::string> era_descriptions_;
+	std::vector<std::string> map_descriptions_;
+	std::vector<std::string> mod_descriptions_;
 
 	/**
 	 * Due to maps not available the index of the selected map and mp scenarios
@@ -77,6 +81,8 @@ private:
 	gui::button cancel_game_;
 	gui::button regenerate_map_;
 	gui::button generator_settings_;
+
+	gui::textbox description_;
 
 	util::scoped_ptr<surface_restorer> minimap_restorer_;
 	SDL_Rect minimap_rect_;
