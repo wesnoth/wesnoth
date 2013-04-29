@@ -203,6 +203,13 @@ void controller_base::play_slice(bool is_delay_enabled)
 
 		return;
 	}
+	const theme::action* const a = get_display().action_pressed();
+	if(a != NULL) {
+		const SDL_Rect& action_loc = a->location(get_display().screen_area());
+		execute_action(a->items(), action_loc.x+1, action_loc.y + action_loc.h + 1,false);
+
+		return;
+	}
 
 	bool was_scrolling = scrolling_;
 
@@ -284,6 +291,24 @@ void controller_base::show_menu(const std::vector<std::string>& items_arg, int x
 		return;
 	command_executor::show_menu(items, xloc, yloc, context_menu, get_display());
 }
+
+void controller_base::execute_action(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu)
+{
+
+	std::vector<std::string> items;
+	BOOST_FOREACH(const std::string& item, items_arg) {
+
+		hotkey::HOTKEY_COMMAND command = hotkey::get_id(item);
+		if(can_execute_command(command))
+			items.push_back(item);
+	}
+
+	if(items.empty())
+		return;
+	command_executor::execute_action(items, xloc, yloc, context_menu, get_display());
+}
+
+
 
 bool controller_base::in_context_menu(hotkey::HOTKEY_COMMAND /*command*/) const
 {

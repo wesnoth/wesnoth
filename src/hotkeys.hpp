@@ -162,7 +162,7 @@ struct hotkey_command {
 	bool hidden;
 	/// The visibility scope of the command.
 	hotkey::scope scope;
-	/// Tooltip for buttons bound to the hotkey.
+	///
 	const char* tooltip;
 };
 

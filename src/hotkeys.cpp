@@ -1242,10 +1242,15 @@ void command_executor::set_button_state(display& disp) {
 
 			hotkey::HOTKEY_COMMAND command_id = hotkey::get_id(command);
 			std::string tooltip = action.tooltip();
+			if (file_exists("images/icons/action/" + command + "_30.png" ))
+				button->set_overlay("icons/action/" + command);
+			if (!tooltip.empty())
+				button->set_tooltip_string(tooltip);
 
 			bool can_execute = can_execute_command(command_id);
 			if (!can_execute) continue;
 			enabled = true;
+
 
 			ACTION_STATE state = get_action_state(command_id, -1);
 			switch (state) {
