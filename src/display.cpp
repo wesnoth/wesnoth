@@ -1218,7 +1218,7 @@ void display::update_display()
 	flip();
 }
 
-static void draw_panel(CVideo& video, const theme::panel& panel, std::vector<gui::button>& buttons)
+static void draw_panel(CVideo& video, const theme::panel& panel, std::vector<gui::button>& /*buttons*/)
 {
 	//log_scope("draw panel");
 	DBG_DP << "drawing panel " << panel.get_id() << "\n";
