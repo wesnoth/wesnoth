@@ -121,12 +121,17 @@ void palette_manager::draw(bool force)
 
 	tooltips::clear_tooltips(loc);
 
-	gui::button* upscroll_button = gui_.find_button("upscroll-button-editor");
-	upscroll_button->hide(false);
-	gui::button* downscroll_button = gui_.find_button("downscroll-button-editor");
-	downscroll_button->hide(false);
-	gui::button* palette_menu_button = gui_.find_button("menu-editor-terrain");
-	palette_menu_button->hide(false);
+	gui::button* upscroll_button = gui_.find_action_button("upscroll-button-editor");
+	if (upscroll_button)
+		upscroll_button->hide(false);
+
+	gui::button* downscroll_button = gui_.find_action_button("downscroll-button-editor");
+	if (downscroll_button)
+		downscroll_button->hide(false);
+
+	gui::button* palette_menu_button = gui_.find_action_button("menu-editor-terrain");
+	if (palette_menu_button)
+		palette_menu_button->hide(false);
 
 	bg_restore(loc);
 	active_palette().draw(dirty() || force);

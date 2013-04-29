@@ -148,27 +148,27 @@ void replay_controller::rebuild_replay_theme()
 
 gui::button* replay_controller::play_button()
 {
-	return gui_->find_button("button-playreplay");
+	return gui_->find_action_button("button-playreplay");
 }
 
 gui::button* replay_controller::stop_button()
 {
-	return gui_->find_button("button-stopreplay");
+	return gui_->find_action_button("button-stopreplay");
 }
 
 gui::button* replay_controller::reset_button()
 {
-	return gui_->find_button("button-resetreplay");
+	return gui_->find_action_button("button-resetreplay");
 }
 
 gui::button* replay_controller::play_turn_button()
 {
-	return gui_->find_button("button-nextturn");
+	return gui_->find_action_button("button-nextturn");
 }
 
 gui::button* replay_controller::play_side_button()
 {
-	return gui_->find_button("button-nextside");
+	return gui_->find_action_button("button-nextside");
 }
 
 void replay_controller::update_replay_ui()
@@ -495,7 +495,7 @@ void replay_controller::handle_generic_event(const std::string& name){
 	if( name == "completely_redrawn" ) {
 		update_replay_ui();
 
-		gui::button* skip_animation_button = gui_->find_button("skip-animation");
+		gui::button* skip_animation_button = gui_->find_action_button("skip-animation");
 		if(skip_animation_button) {
 			skip_animation_button->set_check(skip_replay_);
 		}

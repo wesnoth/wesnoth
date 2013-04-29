@@ -813,8 +813,7 @@ void display::create_buttons()
 		const SDL_Rect& loc = i->location(screen_area());
 		b.set_location(loc.x,loc.y);
 		if (!i->tooltip().empty()){
-		//	b.set_tooltip_string(i->tooltip());
-			//tooltips::add_tooltip(loc, i->tooltip());
+			b.set_tooltip_string(i->tooltip());
 		}
 		if(rects_overlap(b.location(),map_outside_area())) {
 			b.set_volatile(true);
@@ -828,7 +827,7 @@ void display::create_buttons()
 	DBG_DP << "creating action buttons...\n";
 	const std::vector<theme::action>& actions = theme_.actions();
 	for(std::vector<theme::action>::const_iterator i = actions.begin(); i != actions.end(); ++i) {
-		gui::button b(screen_, i->title(), string_to_button_type(i->type()),i->image(),
+		gui::button b(screen_, i->title(), string_to_button_type(i->type()), i->image(),
 				gui::button::DEFAULT_SPACE, true, i->overlay());
 
 		DBG_DP << "drawing button " << i->get_id() << "\n";
@@ -836,9 +835,7 @@ void display::create_buttons()
 		const SDL_Rect& loc = i->location(screen_area());
 		b.set_location(loc.x,loc.y);
 		if (!i->tooltip().empty()){
-//			b.set_tooltip_string("so ein tooltip hier");
 			b.set_tooltip_string(i->tooltip());
-			//tooltips::add_tooltip(loc, i->tooltip());
 		}
 		if(rects_overlap(b.location(),map_outside_area())) {
 			b.set_volatile(true);

@@ -254,7 +254,7 @@ void playmp_controller::set_end_scenario_button()
 {
 	// Modify the end-turn button
 	if (! is_host_) {
-		gui::button* btn_end = gui_->find_button("button-endturn");
+		gui::button* btn_end = gui_->find_action_button("button-endturn");
 		btn_end->enable(false);
 	}
 	gui_->get_theme().refresh_title2("button-endturn", "title2");
@@ -511,7 +511,7 @@ void playmp_controller::handle_generic_event(const std::string& name){
 	else if (name == "host_transfer"){
 		is_host_ = true;
 		if (linger_){
-			gui::button* btn_end = gui_->find_button("button-endturn");
+			gui::button* btn_end = gui_->find_action_button("button-endturn");
 			btn_end->enable(true);
 			gui_->invalidate_theme();
 		}

@@ -1234,14 +1234,14 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 
 void command_executor::set_button_state(display& disp) {
 
-	BOOST_FOREACH(const theme::menu& menu, disp.get_theme().menus()) {
+	BOOST_FOREACH(const theme::action& action, disp.get_theme().actions()) {
 
-		gui::button* button = disp.find_button(menu.get_id());
+		gui::button* button = disp.find_action_button(action.get_id());
 		bool enabled = false;
-		BOOST_FOREACH(const std::string& command, menu.items()) {
+		BOOST_FOREACH(const std::string& command, action.items()) {
 
 			hotkey::HOTKEY_COMMAND command_id = hotkey::get_id(command);
-			std::string tooltip = menu.tooltip();
+			std::string tooltip = action.tooltip();
 
 			bool can_execute = can_execute_command(command_id);
 			if (!can_execute) continue;

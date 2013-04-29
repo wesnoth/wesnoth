@@ -126,11 +126,10 @@ void editor_palette<Item>::set_group(const std::string& id)
 	BOOST_FOREACH(const item_group& group, groups_) {
 		if (group.id == id) {
 			found = true;
-			gui::button* palette_menu_button = gui_.find_button("menu-editor-terrain");
-			if (palette_menu_button) {
-				palette_menu_button->set_label(group.name);
-				ERR_ED << group.icon << " sowas \n";
-				palette_menu_button->set_image(group.icon);
+			gui::button* palette_action_button = gui_.find_action_button("menu-editor-terrain");
+			if (palette_action_button) {
+				palette_action_button->set_label(group.name);
+				palette_action_button->set_image(group.icon);
 			}
 		}
 	}
@@ -253,11 +252,12 @@ void editor_palette<Item>::draw(bool force)
 		ending = num_items();
 	}
 
-	gui::button* upscroll_button = gui_.find_button("upscroll-button-editor");
-	upscroll_button->enable(starting != 0);
-	gui::button* downscroll_button = gui_.find_button("downscroll-button-editor");
-	downscroll_button->enable(ending != num_items());
-
+	gui::button* upscroll_button = gui_.find_action_button("upscroll-button-editor");
+	if (upscroll_button)
+		upscroll_button->enable(starting != 0);
+	gui::button* downscroll_button = gui_.find_action_button("downscroll-button-editor");
+	if (downscroll_button)
+		downscroll_button->enable(ending != num_items());
 
 	unsigned int counter = starting;
 	for (unsigned int i = 0 ; i < buttons_.size() ; i++) {
