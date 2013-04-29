@@ -491,14 +491,14 @@ void create::layout_children(const SDL_Rect& rect)
 	map_size_label_.set_location(xpos, ypos);
 	ypos += map_size_label_.height() + 2 * border_size;
 
-	regenerate_map_.set_location(xpos, ypos);
-	ypos += regenerate_map_.height() + border_size;
-	generator_settings_.set_location(xpos, ypos);
-	ypos += generator_settings_.height() + 2 * border_size;
 	description_.set_location(xpos, ypos);
-	description_.set_measurements(minimap_width, ca.h + ca.y - ypos - border_size);
+	description_.set_measurements(minimap_width, ca.h + ca.y - ypos - border_size - regenerate_map_.height());
 	description_.set_wrap(true);
 	ypos += description_.height() + border_size;
+
+	regenerate_map_.set_location(xpos, ypos);
+	generator_settings_.set_location(xpos + regenerate_map_.width() + border_size, ypos);
+	ypos += generator_settings_.height() + 2 * border_size;
 
 	// Second column: map menu
 	ypos = ypos_columntop;
