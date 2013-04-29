@@ -638,6 +638,19 @@ std::string get_names(HOTKEY_COMMAND id) {
 	return boost::algorithm::join(names, ", ");
 }
 
+std::string get_names(std::string id) {
+
+	std::vector<std::string> names;
+	BOOST_FOREACH(const hotkey::hotkey_item& item, hotkeys_) {
+		if (item.get_command() == id && (!item.null()) ) {
+			names.push_back(item.get_name());
+		}
+	}
+
+	return boost::algorithm::join(names, ", ");
+}
+
+
 HOTKEY_COMMAND get_hotkey_command(const std::string& command)
 {
 	if (command_map_.find(command) != command_map_.end()) {
@@ -1223,17 +1236,25 @@ void command_executor::set_button_state(display& disp) {
 
 	BOOST_FOREACH(const theme::menu& menu, disp.get_theme().menus()) {
 
-		if (menu.items().size() == 1) {
-			hotkey::HOTKEY_COMMAND command = hotkey::get_id(menu.items().front());
+		gui::button* button = disp.find_button(menu.get_id());
+		bool enabled = false;
+		BOOST_FOREACH(const std::string& command, menu.items()) {
 
-			ACTION_STATE state = get_action_state(command, -1);
-			gui::button* button = disp.find_button(menu.get_id());
-			button->enable(can_execute_command(command));
+			hotkey::HOTKEY_COMMAND command_id = hotkey::get_id(command);
+			std::string tooltip = menu.tooltip();
+
+			bool can_execute = can_execute_command(command_id);
+			if (!can_execute) continue;
+			enabled = true;
+
+			ACTION_STATE state = get_action_state(command_id, -1);
 			switch (state) {
+			case ACTION_SELECTED:
 			case ACTION_ON:
 				button->set_check(true);
 				break;
 			case ACTION_OFF:
+			case ACTION_DESELECTED:
 				button->set_check(false);
 				break;
 			case ACTION_STATELESS:
@@ -1241,23 +1262,29 @@ void command_executor::set_button_state(display& disp) {
 			default:
 				break;
 			}
+
+			break;
 		}
+		button->enable(enabled);
 	}
 }
 
-void command_executor::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& gui)
+void command_executor::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool /*context_menu*/, display& gui)
 {
 	std::vector<std::string> items = items_arg;
 	if (items.empty()) {
 		return;
 	}
+	//TODO this does not make sense anymore
 	if (can_execute_command(hotkey::get_id(items.front()), 0)) {
 		// If just one item is passed in, that means we should execute that item.
+		/*
 		if (!context_menu && items.size() == 1 && items_arg.size() == 1) {
 			hotkey::execute_command(gui,hotkey::get_id(items.front()), this);
 			set_button_state(gui);
 			return;
 		}
+		*/
 
 		std::vector<std::string> menu = get_menu_images(gui, items);
 
@@ -1278,11 +1305,53 @@ void command_executor::show_menu(const std::vector<std::string>& items_arg, int 
 	}
 }
 
-std::string command_executor::get_menu_image(hotkey::HOTKEY_COMMAND command, int index) const {
-	switch (get_action_state(command, index)) {
-		case ACTION_ON:  return game_config::images::checked_menu;
-		case ACTION_OFF: return game_config::images::unchecked_menu;
-		default: return get_action_image(command, index);
+void command_executor::execute_action(const std::vector<std::string>& items_arg, int /*xloc*/, int /*yloc*/, bool /*context_menu*/, display& gui)
+{
+	std::vector<std::string> items = items_arg;
+	if (items.empty()) {
+		return;
+	}
+
+	hotkey::HOTKEY_COMMAND command;
+	std::vector<std::string>::iterator i = items.begin();
+	while(i != items.end()) {
+		command = hotkey::get_id(*i);
+		if (can_execute_command(command)) {
+			hotkey::execute_command(gui, command, this);
+			set_button_state(gui);
+		}
+		++i;
+	}
+}
+
+std::string command_executor::get_menu_image(const std::string& command, int index) const {
+
+	const std::string base_image_name = "icons/action/" + command + "_25.png";
+	const std::string pressed_image_name = "icons/action/" + command + "_25-pressed.png";
+
+	const hotkey::HOTKEY_COMMAND hk = hotkey::get_id(command);
+	const hotkey::ACTION_STATE state = get_action_state(hk, index);
+
+	if (file_exists("images/" + base_image_name)) {
+		switch (state) {
+			case ACTION_ON:
+			case ACTION_SELECTED:
+				return pressed_image_name;
+			default:
+				return base_image_name;
+		}
+	}
+
+	switch (get_action_state(hk, index)) {
+		case ACTION_ON:
+			return game_config::images::checked_menu;
+		case ACTION_OFF:
+			return game_config::images::unchecked_menu;
+		case ACTION_SELECTED:
+			return game_config::images::selected_menu;
+		case ACTION_DESELECTED:
+			return game_config::images::deselected_menu;
+		default: return get_action_image(hk, index);
 	}
 }
 
@@ -1296,7 +1365,7 @@ std::vector<std::string> command_executor::get_menu_images(display& disp, const 
 
 		std::stringstream str;
 		//see if this menu item has an associated image
-		std::string img(get_menu_image(hk, i));
+		std::string img(get_menu_image(item, i));
 		if (img.empty() == false) {
 			has_image = true;
 			str << IMAGE_PREFIX << img << COLUMN_SEPARATOR;

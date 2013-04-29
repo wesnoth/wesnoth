@@ -163,6 +163,35 @@ public:
 		std::string image_;
 	};
 
+	class action : public object
+	{
+	public:
+		action();
+		explicit action(const config& cfg);
+
+		using object::location;
+
+		bool is_context() const  { return context_; }
+
+		const std::string& title() const { return title_; }
+
+		const std::string& tooltip() const { return tooltip_; }
+
+		const std::string& type() const { return type_; }
+
+		const std::string& image() const { return image_; }
+
+		const std::string& overlay() const { return overlay_; }
+
+		const std::vector<std::string>& items() const { return items_; }
+
+		void set_title(const std::string& new_title) { title_ = new_title; }
+	private:
+		bool context_;
+		std::string title_, tooltip_, image_, overlay_,  type_;
+		std::vector<std::string> items_;
+	};
+
 	class menu : public object
 	{
 	public:
@@ -177,16 +206,16 @@ public:
 
 		const std::string& tooltip() const { return tooltip_; }
 
-		const std::string& type() const { return type_; }
-
 		const std::string& image() const { return image_; }
+
+		const std::string& overlay() const { return overlay_; }
 
 		const std::vector<std::string>& items() const { return items_; }
 
 		void set_title(const std::string& new_title) { title_ = new_title; }
 	private:
 		bool context_;
-		std::string title_, tooltip_, image_, type_;
+		std::string title_, tooltip_, image_, overlay_;
 		std::vector<std::string> items_;
 	};
 
@@ -197,6 +226,7 @@ public:
 	const std::vector<panel>& panels() const { return panels_; }
 	const std::vector<label>& labels() const { return labels_; }
 	const std::vector<menu>& menus() const { return menus_; }
+	const std::vector<action>& actions() const { return actions_; }
 
 	const menu* context_menu() const
 		{ return context_.is_context() ? &context_ : NULL; }
@@ -242,8 +272,10 @@ private:
 	std::vector<panel> panels_;
 	std::vector<label> labels_;
 	std::vector<menu> menus_;
+	std::vector<action> actions_;
 
 	menu context_;
+	action action_context_;
 
 	std::map<std::string,status_item> status_;
 

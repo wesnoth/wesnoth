@@ -287,11 +287,14 @@ void load_hotkeys(const config& cfg, bool set_as_default = false);
 void reset_default_hotkeys();
 void save_hotkeys(config& cfg);
 
+//TODO they do the same?
 HOTKEY_COMMAND get_id(const std::string& command);
+HOTKEY_COMMAND get_hotkey_command(const std::string& command);
 const std::string get_description(const std::string& command);
 const std::string get_tooltip(const std::string& command);
 
 std::string get_names(hotkey::HOTKEY_COMMAND id);
+std::string get_names(std::string id);
 void add_hotkey(const hotkey_item& item);
 void clear_hotkeys(const std::string& command);
 
@@ -305,11 +308,10 @@ hotkey_item& get_hotkey(const SDL_JoyButtonEvent& event);
 hotkey_item& get_hotkey(const SDL_JoyHatEvent& event);
 hotkey_item& get_hotkey(const SDL_KeyboardEvent& event);
 
-HOTKEY_COMMAND get_hotkey_command(const std::string& command);
 
 std::vector<hotkey_item>& get_hotkeys();
 
-enum ACTION_STATE { ACTION_STATELESS, ACTION_ON, ACTION_OFF };
+enum ACTION_STATE { ACTION_STATELESS, ACTION_ON, ACTION_OFF, ACTION_SELECTED, ACTION_DESELECTED };
 
 // Abstract base class for objects that implement the ability
 // to execute hotkey commands.
@@ -387,11 +389,12 @@ public:
 	// Does the action control a toggle switch? If so, return the state of the action (on or off).
 	virtual ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND /*command*/, int /*index*/) const { return ACTION_STATELESS; }
 	// Returns the appropriate menu image. Checkable items will get a checked/unchecked image.
-	std::string get_menu_image(hotkey::HOTKEY_COMMAND command, int index=-1) const;
+	std::string get_menu_image(const std::string& command, int index=-1) const;
 	// Returns a vector of images for a given menu.
 	std::vector<std::string> get_menu_images(display &, const std::vector<std::string>& items_arg);
 
 	void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& gui);
+	void execute_action(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& gui);
 
 	/**
 	 * Adjusts the state of those theme menu buttons which trigger hotkey events.

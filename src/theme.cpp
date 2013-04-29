@@ -505,20 +505,46 @@ theme::menu::menu() :
 	title_(),
 	tooltip_(),
 	image_(),
-	type_(),
+	overlay_(),
 	items_()
 {}
 
 theme::menu::menu(const config &cfg):
 	object(cfg), context_(cfg["is_context_menu"].to_bool()),
 	title_(cfg["title"].str() + cfg["title_literal"].str()),
-	tooltip_(cfg["tooltip"]), image_(cfg["image"]), type_(cfg["type"]),
+	tooltip_(cfg["tooltip"]), image_(cfg["image"]), overlay_(cfg["overlay"]),
 	items_(utils::split(cfg["items"]))
 {
 	if (cfg["auto_tooltip"].to_bool() && tooltip_.empty() && items_.size() == 1) {
-		tooltip_ = hotkey::get_description(items_[0]);
+		tooltip_ = hotkey::get_description(items_[0])
+		+ hotkey::get_names(items_[0]) +  "\n" + hotkey::get_tooltip(items_[0]);
 	} else if (cfg["tooltip_name_prepend"].to_bool() && items_.size() == 1) {
-		tooltip_ = hotkey::get_description(items_[0]) + "\n" + tooltip_;
+		tooltip_ = hotkey::get_description(items_[0])
+		+ hotkey::get_names(items_[0]) + "\n" + tooltip_;
+	}
+}
+
+theme::action::action() :
+	object(),
+	context_(false),
+	title_(),
+	tooltip_(),
+	image_(),
+	overlay_(),
+	type_(),
+	items_()
+{}
+
+theme::action::action(const config &cfg):
+	object(cfg), context_(cfg["is_context_menu"].to_bool()),
+	title_(cfg["title"].str() + cfg["title_literal"].str()),
+	tooltip_(cfg["tooltip"]), image_(cfg["image"]), overlay_(cfg["overlay"]), type_(cfg["type"]),
+	items_(utils::split(cfg["items"]))
+{
+	if (cfg["auto_tooltip"].to_bool() && tooltip_.empty() && items_.size() == 1) {
+		tooltip_ = hotkey::get_description(items_[0]) + "  hotkeys: " + hotkey::get_names(items_[0]) +  "\n" + hotkey::get_tooltip(items_[0]);
+	} else if (cfg["tooltip_name_prepend"].to_bool() && items_.size() == 1) {
+		tooltip_ = hotkey::get_description(items_[0]) + "  hotkeys: " + hotkey::get_names(items_[0]) + "\n" + tooltip_;
 	}
 }
 
@@ -529,6 +555,7 @@ theme::theme(const config& cfg, const SDL_Rect& screen) :
 	panels_(),
 	labels_(),
 	menus_(),
+	actions_(),
 	context_(),
 	status_(),
 	main_map_(),
@@ -586,6 +613,7 @@ bool theme::set_resolution(const SDL_Rect& screen)
 	labels_.clear();
 	status_.clear();
 	menus_.clear();
+	actions_.clear();
 
 	add_object(*current);
 
@@ -651,6 +679,20 @@ void theme::add_object(const config& cfg)
 		DBG_DP << "done adding menu...\n";
 	}
 
+	BOOST_FOREACH(const config &a, cfg.child_range("action"))
+	{
+			action new_action(a);
+			DBG_DP << "adding action: " << (new_action.is_context() ? "is context" : "not context") << "\n";
+			if(new_action.is_context())
+				action_context_ = new_action;
+			else{
+				set_object_location(new_action, a["rect"], a["ref"]);
+				actions_.push_back(new_action);
+			}
+
+			DBG_DP << "done adding action...\n";
+	}
+
 	if (const config &c = cfg.child("main_map_border")) {
 		border_ = tborder(c);
 	} else {
@@ -674,6 +716,12 @@ void theme::remove_object(std::string id){
 	for(std::vector<theme::menu>::iterator m = menus_.begin(); m != menus_.end(); ++m) {
 		if (m->get_id() == id){
 			menus_.erase(m);
+			return;
+		}
+	}
+	for(std::vector<theme::action>::iterator a = actions_.begin(); a != actions_.end(); ++a) {
+		if (a->get_id() == id){
+			actions_.erase(a);
 			return;
 		}
 	}
@@ -702,6 +750,12 @@ void theme::modify(const config &cfg)
 			title_stash[m->get_id()] = m->title();
 	}
 
+	std::vector<theme::action>::iterator a;
+	for (a = actions_.begin(); a != actions_.end(); ++a) {
+		if (!a->title().empty() && !a->get_id().empty())
+			title_stash[a->get_id()] = a->title();
+	}
+
 	// Change existing theme objects.
 	BOOST_FOREACH(const config &c, cfg.child_range("change"))
 	{
@@ -726,6 +780,10 @@ void theme::modify(const config &cfg)
 		if (title_stash.find(m->get_id()) != title_stash.end())
 			m->set_title(title_stash[m->get_id()]);
 	}
+	for (a = actions_.begin(); a != actions_.end(); ++a) {
+		if (title_stash.find(a->get_id()) != title_stash.end())
+			a->set_title(title_stash[a->get_id()]);
+	}
 }
 
 theme::object& theme::find_element(std::string id){
@@ -739,6 +797,9 @@ theme::object& theme::find_element(std::string id){
 	}
 	for (std::vector<theme::menu>::iterator m = menus_.begin(); m != menus_.end(); ++m){
 		if (m->get_id() == id) { res = &(*m); }
+	}
+	for (std::vector<theme::action>::iterator a = actions_.begin(); a != actions_.end(); ++a){
+		if (a->get_id() == id) { res = &(*a); }
 	}
 	if (id == "main-map") { res = &main_map_; }
 	if (id == "mini-map") { res = &mini_map_; }
