@@ -122,6 +122,7 @@ void get_screen_size_variables(game_logic::map_formula_callable& variable)
 	variable.add("screen_height", variant(settings::screen_height));
 	variable.add("gamemap_width", variant(settings::gamemap_width));
 	variable.add("gamemap_height", variant(settings::gamemap_height));
+	variable.add("gamemap_x_offset", variant(settings::gamemap_x_offset));
 }
 
 game_logic::map_formula_callable get_screen_size_variables()

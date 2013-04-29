@@ -360,6 +360,8 @@ tline::tline(const config& cfg)
  *                                      window. $
  *     screen_height & unsigned &       The usable height of the Wesnoth main
  *                                      window. $
+ *     gamemapx_offset & unsigned &     The distance between left edge of the
+ *                                      screen and the game map. $
  *     gamemap_width & unsigned &       The usable width of the Wesnoth gamemap,
  *                                      if no gamemap shown it's the same value as
  *                                      screen_width. $

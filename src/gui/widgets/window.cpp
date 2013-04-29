@@ -447,11 +447,12 @@ void twindow::update_screen_size()
 
 		display* display = display::get_singleton();
 		if(display) {
-			const unsigned w = display->map_outside_area().w;
-			const unsigned h = display->map_outside_area().h;
-			if(w && h) {
-				settings::gamemap_width = w;
-				settings::gamemap_height = h;
+			const SDL_Rect rect_gm = display->map_outside_area();
+
+			if(rect_gm.w && rect_gm.h) {
+				settings::gamemap_width = rect_gm.w;
+				settings::gamemap_height = rect_gm.h;
+				settings::gamemap_x_offset = rect_gm.x;
 			}
 		}
 	}

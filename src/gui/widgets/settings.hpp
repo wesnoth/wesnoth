@@ -174,6 +174,11 @@ void load_widget_definitions(
 		extern unsigned screen_height;
 
 		/**
+		 * The offset between the left edge of the screen and the gamemap.
+		 */
+		extern unsigned gamemap_x_offset;
+
+		/**
 		 * The size of the map area, if not available equal to the screen
 		 * size.
 		 */

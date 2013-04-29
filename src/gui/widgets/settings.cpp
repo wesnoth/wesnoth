@@ -43,6 +43,8 @@ namespace settings {
 	unsigned screen_width = 0;
 	unsigned screen_height = 0;
 
+	unsigned gamemap_x_offset = 0;
+
 	unsigned gamemap_width = 0;
 	unsigned gamemap_height = 0;
 

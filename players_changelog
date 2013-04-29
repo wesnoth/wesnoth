@@ -14,6 +14,8 @@ Version 1.11.2+dev:
    * Fixed a bug in the cursor positioning in some text entries (bug #17220).
    * Change Difficulty checkbox in Load Game dialog gets disabled if change
      in difficulty of a loading game won't take effect (bug #20381).
+   * Dialog (wml_message) is shifted by the
+     distance between the left edge of the screen and the game map (bug #20592).
 
  * WML engine:
    * fix negative gold carried over (bug #20676)
