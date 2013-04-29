@@ -27,6 +27,8 @@
 #include "video.hpp"
 #include "wml_separators.hpp"
 
+#include "filesystem.hpp"
+
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 
@@ -38,36 +40,33 @@ const int checkbox_horizontal_padding = font::SIZE_SMALL / 2;
 const int vertical_padding = font::SIZE_SMALL / 2;
 
 button::button(CVideo& video, const std::string& label, button::TYPE type,
-               std::string button_image_name, SPACE_CONSUMPTION spacing, const bool auto_join)
+               std::string button_image_name, SPACE_CONSUMPTION spacing,
+               const bool auto_join, std::string overlay_image)
 	: widget(video, auto_join), type_(type), label_(label),
 	  image_(NULL), pressedImage_(NULL), activeImage_(NULL), pressedActiveImage_(NULL),
 	  disabledImage_(NULL), pressedDisabledImage_(NULL),
+	  overlayImage_(NULL), overlayPressedImage_(NULL),
 	  state_(NORMAL), pressed_(false),
 	  spacing_(spacing), base_height_(0), base_width_(0),
-	  button_image_name_()
+	  button_image_name_(), button_overlay_image_name_(overlay_image)
 {
 	if (button_image_name.empty()) {
 
 		switch (type_) {
-			case TYPE_PRESS:
-				button_image_name_ = "buttons/button";
-				break;
-			case TYPE_CHECK:
-				button_image_name_ = "buttons/checkbox";
-				break;
-			case TYPE_RADIO:
-				button_image_name_ = "buttons/radiobox";
-				break;
-			default:
-				break;
+		case TYPE_PRESS:
+			button_image_name_ = "buttons/button";
+			break;
+		case TYPE_CHECK:
+			button_image_name_ = "buttons/checkbox";
+			break;
+		case TYPE_RADIO:
+			button_image_name_ = "buttons/radiobox";
+			break;
+		default:
+			break;
 		}
 	} else {
 		button_image_name_ = "buttons/" + button_image_name;
-	}
-
-	if(button_image_name_.empty() && type_ == TYPE_PRESS) {
-	} else if(button_image_name_.empty() && type_ == TYPE_CHECK) {
-	} else if(button_image_name_.empty() && type_ == TYPE_RADIO) {
 	}
 
 	load_images();
@@ -75,14 +74,48 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 
 void button::load_images() {
 
+	std::string size_postfix;
+
+	switch (location().h) {
+		case 25:
+			size_postfix = "_25";
+			break;
+		case 30:
+			size_postfix = "_30";
+			break;
+		case 60:
+			size_postfix = "_60";
+			break;
+		default:
+			break;
+	}
+
 	surface button_image(image::get_image(button_image_name_ + ".png"));
 	surface pressed_image(image::get_image(button_image_name_ + "-pressed.png"));
 	surface active_image(image::get_image(button_image_name_ + "-active.png"));
-	surface disabled_image(image::get_image(button_image_name_ + "-disabled.png"));
+	surface disabled_image;
+	if (file_exists("images/" + button_image_name_ + "-disabled.png"))
+		disabled_image.assign((image::get_image(button_image_name_ + "-disabled.png")));
 	surface pressed_disabled_image, pressed_active_image, touched_image;
 
 	static const Uint32 disabled_btn_color = 0xAAAAAA;
 	static const double disabled_btn_adjust = 0.18;
+
+	if (!button_overlay_image_name_.empty()) {
+		overlayImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + ".png"));
+		overlayPressedImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-pressed.png"));
+		if (file_exists("images/" + button_overlay_image_name_ + size_postfix + "-pressed-disabled.png"))
+			overlayPressedDisabledImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-pressed-disabled.png"));
+		if (file_exists("images/" + button_overlay_image_name_ + "_30-disabled.png"))
+			overlayDisabledImage_.assign(image::get_image(button_overlay_image_name_ + "_30-disabled.png"));
+		if (overlayDisabledImage_.null())
+				overlayDisabledImage_ = blend_surface(greyscale_image(overlayImage_),
+						disabled_btn_adjust, disabled_btn_color);
+		if (overlayPressedDisabledImage_.null())
+				overlayPressedDisabledImage_ = blend_surface(greyscale_image(overlayPressedImage_),
+						disabled_btn_adjust, disabled_btn_color);
+	}
+
 	if (disabled_image == NULL) {
 		disabled_image = blend_surface(greyscale_image(button_image),
 				disabled_btn_adjust, disabled_btn_color);
@@ -121,7 +154,7 @@ void button::load_images() {
 		set_label(label_);
 	}
 
-	if(type_ == TYPE_PRESS) {
+	if(type_ == TYPE_PRESS || type_ == TYPE_TURBO) {
 		image_.assign(scale_surface(button_image,location().w,location().h));
 		pressedImage_.assign(scale_surface(pressed_image,location().w,location().h));
 		activeImage_.assign(scale_surface(active_image,location().w,location().h));
@@ -160,7 +193,7 @@ void button::calculate_size()
 	bool change_size = loc.h == 0 || loc.w == 0;
 
 	if (!change_size) {
-		unsigned w = loc.w - (type_ == TYPE_PRESS ? horizontal_padding : checkbox_horizontal_padding + base_width_);
+		unsigned w = loc.w - (type_ == TYPE_PRESS || type_ == TYPE_TURBO ? horizontal_padding : checkbox_horizontal_padding + base_width_);
 		if (type_ != TYPE_IMAGE)
 		{
 			int fs = font_size;
@@ -184,7 +217,7 @@ void button::calculate_size()
 		return;
 
 	set_height(std::max(textRect_.h+vertical_padding,base_height_));
-	if(type_ == TYPE_PRESS) {
+	if(type_ == TYPE_PRESS || type_ == TYPE_TURBO) {
 		if(spacing_ == MINIMUM_SPACE) {
 			set_width(textRect_.w + horizontal_padding);
 		} else {
@@ -295,6 +328,32 @@ void button::draw_contents()
 		button_color = font::GRAY_COLOR;
 	}
 
+	if (!overlayImage_.null()) {
+
+		surface noverlay = make_neutral_surface(
+				enabled() ? overlayImage_ : overlayDisabledImage_);
+
+		if (!overlayPressedImage_.null()) {
+			switch (state_) {
+			case PRESSED:
+			case PRESSED_ACTIVE:
+			case TOUCHED_NORMAL:
+			case TOUCHED_PRESSED:
+				noverlay = make_neutral_surface( enabled() ?
+						overlayPressedImage_ : overlayPressedDisabledImage_);
+				break;
+			default:
+				break;
+			}
+		}
+
+		surface nimage   = make_neutral_surface(image);
+		//TODO avoid magic numbers
+		//SDL_Rect r = create_rect(1, 1, 0, 0);
+		blit_surface(noverlay, NULL, nimage, NULL);
+		image = nimage;
+	}
+
 	video().blit_surface(loc.x, loc.y, image);
 	if (type_ != TYPE_IMAGE){
 		clipArea.x += offset;
@@ -317,6 +376,13 @@ static bool not_image(const std::string& str) { return !str.empty() && str[0] !=
 void button::set_image(const std::string& image_file)
 {
 	button_image_name_ = image_file;
+	load_images();
+	set_dirty();
+}
+
+void button::set_overlay(const std::string& image_file)
+{
+	button_overlay_image_name_ = image_file;
 	load_images();
 	set_dirty();
 }

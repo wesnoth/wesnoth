@@ -108,7 +108,8 @@ display::display(unit_map* units, CVideo& video, const gamemap* map, const std::
 	reportRects_(),
 	reportSurfaces_(),
 	reports_(),
-	buttons_(),
+	menu_buttons_(),
+	action_buttons_(),
 	invalidated_(),
 	previous_invalidated_(),
 	mouseover_hex_overlay_(NULL),
@@ -777,11 +778,21 @@ int display::screenshot(std::string filename, bool map_screenshot)
 	return size;
 }
 
-gui::button* display::find_button(const std::string& id)
+gui::button* display::find_action_button(const std::string& id)
 {
-	for (size_t i = 0; i < buttons_.size(); ++i) {
-		if(buttons_[i].id() == id) {
-			return &buttons_[i];
+	for (size_t i = 0; i < action_buttons_.size(); ++i) {
+		if(action_buttons_[i].id() == id) {
+			return &action_buttons_[i];
+		}
+	}
+	return NULL;
+}
+
+gui::button* display::find_menu_button(const std::string& id)
+{
+	for (size_t i = 0; i < menu_buttons_.size(); ++i) {
+		if(menu_buttons_[i].id() == id) {
+			return &menu_buttons_[i];
 		}
 	}
 	return NULL;
@@ -789,30 +800,58 @@ gui::button* display::find_button(const std::string& id)
 
 void display::create_buttons()
 {
-	std::vector<gui::button> work;
+	std::vector<gui::button> menu_work;
+	std::vector<gui::button> action_work;
 
-	DBG_DP << "creating buttons...\n";
+	DBG_DP << "creating menu buttons...\n";
 	const std::vector<theme::menu>& buttons = theme_.menus();
 	for(std::vector<theme::menu>::const_iterator i = buttons.begin(); i != buttons.end(); ++i) {
-		gui::button b(screen_,i->title(), gui::button::TYPE_TURBO, i->image());
+		gui::button b(screen_, i->title(), gui::button::TYPE_TURBO, i->image(),
+				gui::button::DEFAULT_SPACE, true, i->overlay());
 		DBG_DP << "drawing button " << i->get_id() << "\n";
 		b.set_id(i->get_id());
 		const SDL_Rect& loc = i->location(screen_area());
 		b.set_location(loc.x,loc.y);
 		if (!i->tooltip().empty()){
-			tooltips::add_tooltip(loc, i->tooltip());
+		//	b.set_tooltip_string(i->tooltip());
+			//tooltips::add_tooltip(loc, i->tooltip());
 		}
 		if(rects_overlap(b.location(),map_outside_area())) {
 			b.set_volatile(true);
 		}
 
-		gui::button* b_prev = find_button(b.id());
+		gui::button* b_prev = find_menu_button(b.id());
 		if(b_prev) b.enable(b_prev->enabled());
 
-		work.push_back(b);
+		menu_work.push_back(b);
+	}
+	DBG_DP << "creating action buttons...\n";
+	const std::vector<theme::action>& actions = theme_.actions();
+	for(std::vector<theme::action>::const_iterator i = actions.begin(); i != actions.end(); ++i) {
+		gui::button b(screen_, i->title(), string_to_button_type(i->type()),i->image(),
+				gui::button::DEFAULT_SPACE, true, i->overlay());
+
+		DBG_DP << "drawing button " << i->get_id() << "\n";
+		b.set_id(i->get_id());
+		const SDL_Rect& loc = i->location(screen_area());
+		b.set_location(loc.x,loc.y);
+		if (!i->tooltip().empty()){
+//			b.set_tooltip_string("so ein tooltip hier");
+			b.set_tooltip_string(i->tooltip());
+			//tooltips::add_tooltip(loc, i->tooltip());
+		}
+		if(rects_overlap(b.location(),map_outside_area())) {
+			b.set_volatile(true);
+		}
+
+		gui::button* b_prev = find_action_button(b.id());
+		if(b_prev) b.enable(b_prev->enabled());
+
+		action_work.push_back(b);
 	}
 
-	buttons_.swap(work);
+	menu_buttons_.swap(menu_work);
+	action_buttons_.swap(action_work);
 	DBG_DP << "buttons created\n";
 }
 
@@ -1239,6 +1278,26 @@ static void draw_panel(CVideo& video, const theme::panel& panel, std::vector<gui
 		video.blit_surface(loc.x,loc.y,surf);
 		update_rect(loc);
 	}
+
+	//TODO this code seems to be no longer necessary, remove if this holds.
+//	static bool first_time = true;
+//	for(std::vector<gui::button>::iterator b = buttons.begin(); b != buttons.end(); ++b) {
+//		if(rects_overlap(b->location(),loc)) {
+//			b->set_dirty(true);
+//			if (first_time){
+//				/**
+//				 * @todo FixMe YogiHH:
+//				 * This is only made to have the buttons store their background
+//				 * information, otherwise the background will appear completely
+//				 * black. It would more straightforward to call bg_update, but
+//				 * that is not public and there seems to be no other way atm to
+//				 * call it. I will check if bg_update can be made public.
+//				 */
+//				b->hide(true);
+//				b->hide(false);
+//			}
+//		}
+//	}
 }
 
 static void draw_label(CVideo& video, surface target, const theme::label& label)
@@ -1290,7 +1349,7 @@ void display::draw_all_panels()
 
 	const std::vector<theme::panel>& panels = theme_.panels();
 	for(std::vector<theme::panel>::const_iterator p = panels.begin(); p != panels.end(); ++p) {
-		draw_panel(video(),*p,buttons_);
+		draw_panel(video(), *p, menu_buttons_);
 	}
 
 	const std::vector<theme::label>& labels = theme_.labels();
@@ -1524,20 +1583,37 @@ void display::delay(unsigned int milliseconds) const
 		SDL_Delay(milliseconds);
 }
 
+const theme::action* display::action_pressed()
+{
+	for(std::vector<gui::button>::iterator i = action_buttons_.begin();
+			i != action_buttons_.end(); ++i) {
+		if(i->pressed()) {
+			const size_t index = i - action_buttons_.begin();
+			if(index >= theme_.actions().size()) {
+				assert(false);
+				return NULL;
+			}
+			return &theme_.actions()[index];
+		}
+	}
+
+	return NULL;
+}
+
 const theme::menu* display::menu_pressed()
 {
-	for(std::vector<gui::button>::iterator i = buttons_.begin(); i != buttons_.end(); ++i) {
+	for(std::vector<gui::button>::iterator i = menu_buttons_.begin(); i != menu_buttons_.end(); ++i) {
 		if(i->pressed()) {
-			const size_t index = i - buttons_.begin();
+			const size_t index = i - menu_buttons_.begin();
 			if(index >= theme_.menus().size()) {
 				assert(false);
-				return 0;
+				return NULL;
 			}
 			return &theme_.menus()[index];
 		}
 	}
 
-	return 0;
+	return NULL;
 }
 
 void display::enable_menu(const std::string& item, bool enable)
@@ -1550,11 +1626,11 @@ void display::enable_menu(const std::string& item, bool enable)
 
 		if(hasitem != menu->items().end()) {
 			const size_t index = menu - theme_.menus().begin();
-			if(index >= buttons_.size()) {
+			if(index >= menu_buttons_.size()) {
 				assert(false);
 				return;
 			}
-			buttons_[index].enable(enable);
+			menu_buttons_[index].enable(enable);
 		}
 	}
 }
@@ -2180,7 +2256,7 @@ void display::redraw_everything()
 
 	theme_.set_resolution(screen_area());
 
-	if(buttons_.empty() == false) {
+	if(menu_buttons_.empty() == false) {
 		create_buttons();
 	}
 
@@ -2356,7 +2432,8 @@ void display::draw_hex(const map_location& loc) {
 	}
 
 	// Paint mouseover overlays
-	if(loc == mouseoverHex_ && (on_map || (in_editor() && get_map().on_board_with_border(loc))) && mouseover_hex_overlay_ != NULL) {
+	if(loc == mouseoverHex_ && (on_map || (in_editor() && get_map().on_board_with_border(loc)))
+			&& mouseover_hex_overlay_ != NULL) {
 		drawing_buffer_add(LAYER_MOUSEOVER_OVERLAY, loc, xpos, ypos, mouseover_hex_overlay_);
 	}
 
@@ -2430,9 +2507,9 @@ image::TYPE display::get_image_type(const map_location& /*loc*/) {
 	return image::TOD_COLORED;
 }
 
-void display::draw_sidebar() {
+/*void display::draw_sidebar() {
 
-}
+}*/
 
 void display::draw_image_for_report(surface& img, SDL_Rect& rect)
 {
@@ -2774,7 +2851,7 @@ std::vector<unit*> display::get_unit_list_for_invalidation() {
 	BOOST_FOREACH(unit &u, *units_) {
 		unit_list.push_back(&u);
 	}
-	return unit_list;;
+	return unit_list;
 }
 void display::invalidate_animations()
 {

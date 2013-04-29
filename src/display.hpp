@@ -348,7 +348,9 @@ public:
 	 *       these pointers for longer than strictly necessary to
 	 *       accomplish a specific task before the next screen refresh.
 	 */
-	gui::button* find_button(const std::string& id);
+	gui::button* find_action_button(const std::string& id);
+	gui::button* find_menu_button(const std::string& id);
+
 	gui::button::TYPE string_to_button_type(std::string type);
 	void create_buttons();
 	void invalidate_theme() { panelsDrawn_ = false; }
@@ -432,7 +434,8 @@ public:
 	/** Rebuild all dynamic terrain. */
 	void rebuild_all();
 
-	const theme::menu* menu_pressed();
+	const theme::action* action_pressed();
+	const theme::menu*   menu_pressed();
 
 	/**
 	 * Finds the menu which has a given item in it,
@@ -576,7 +579,7 @@ private:
 	void read(const config& cfg);
 
 public:
-	/** Inits the flag list and the team colors used by ~TC */
+	/** Init the flag list and the team colors used by ~TC */
 	void init_flags();
 
 private:
@@ -648,7 +651,7 @@ protected:
 	 * Called near the end of a draw operation, derived classes can use this
 	 * to render a specific sidebar. Very similar to post_commit.
 	 */
-	virtual void draw_sidebar();
+	virtual void draw_sidebar() {};
 
 	/**
 	 * Draws the border tile overlay.
@@ -727,7 +730,7 @@ protected:
 	std::map<std::string, SDL_Rect> reportRects_;
 	std::map<std::string, surface> reportSurfaces_;
 	std::map<std::string, config> reports_;
-	std::vector<gui::button> buttons_;
+	std::vector<gui::button> menu_buttons_, action_buttons_;
 	std::set<map_location> invalidated_;
 	std::set<map_location> previous_invalidated_;
 	surface mouseover_hex_overlay_;

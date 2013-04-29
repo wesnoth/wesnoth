@@ -35,7 +35,7 @@ public:
 
 	button(CVideo& video, const std::string& label, TYPE type=TYPE_PRESS,
 	       std::string button_image="", SPACE_CONSUMPTION spacing=DEFAULT_SPACE,
-		   const bool auto_join=true);
+		   const bool auto_join=true, std::string overlay_image="");
 
 
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
@@ -46,6 +46,7 @@ public:
 
 	void set_label(const std::string& val);
 	void set_image(const std::string& image_file_base);
+	void set_overlay(const std::string& image_file_base);
 
 	bool pressed();
 	bool hit(int x, int y) const;
@@ -69,7 +70,8 @@ private:
 
 	std::string label_;
 	surface image_, pressedImage_, activeImage_, pressedActiveImage_,
-		touchedImage_, disabledImage_, pressedDisabledImage_;
+		touchedImage_, disabledImage_, pressedDisabledImage_,
+		overlayImage_, overlayPressedImage_, overlayPressedDisabledImage_, overlayDisabledImage_;
 	SDL_Rect textRect_;
 
 	enum STATE { UNINIT, NORMAL, ACTIVE, PRESSED, PRESSED_ACTIVE, TOUCHED_NORMAL, TOUCHED_PRESSED };
@@ -82,6 +84,7 @@ private:
 	int base_height_, base_width_;
 
 	std::string button_image_name_;
+	std::string button_overlay_image_name_;
 
 }; //end class button
 

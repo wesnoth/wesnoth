@@ -62,8 +62,10 @@ public:
 	void set_id(const std::string& id);
 
 	void set_help_string(const std::string& str);
+	void set_tooltip_string(const std::string& str);
 
 	virtual void process_help_string(int mousex, int mousey);
+	virtual void process_tooltip_string(int mousex, int mousey);
 
 protected:
 	widget(widget const &o);
@@ -114,6 +116,7 @@ private:
 	bool volatile_;
 
 	std::string help_text_;
+	std::string tooltip_text_;
 	int help_string_;
 	std::string id_;
 

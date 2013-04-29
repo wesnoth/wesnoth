@@ -19,6 +19,7 @@
 
 #include "widgets/widget.hpp"
 #include "video.hpp"
+#include "tooltips.hpp"
 
 #include <cassert>
 
@@ -34,7 +35,7 @@ widget::widget(const widget &o)
 	: events::handler(), focus_(o.focus_), video_(o.video_), restorer_(o.restorer_), rect_(o.rect_),
 	   needs_restore_(o.needs_restore_), state_(o.state_), hidden_override_(o.hidden_override_),
 	  enabled_(o.enabled_), clip_(o.clip_), clip_rect_(o.clip_rect_), volatile_(o.volatile_),
-	  help_text_(o.help_text_), help_string_(o.help_string_), id_(o.id_), mouse_lock_local_(o.mouse_lock_local_)
+	  help_text_(o.help_text_), tooltip_text_(o.tooltip_text_), help_string_(o.help_string_), id_(o.id_), mouse_lock_local_(o.mouse_lock_local_)
 {
 }
 
@@ -314,6 +315,11 @@ void widget::set_help_string(const std::string& str)
 	help_text_ = str;
 }
 
+void widget::set_tooltip_string(const std::string& str)
+{
+	tooltip_text_ = str;
+}
+
 void widget::process_help_string(int mousex, int mousey)
 {
 	if (!hidden() && point_in_rect(mousex, mousey, rect_)) {
@@ -326,5 +332,14 @@ void widget::process_help_string(int mousex, int mousey)
 		help_string_ = 0;
 	}
 }
+
+void widget::process_tooltip_string(int mousex, int mousey)
+{
+	if (!hidden() && point_in_rect(mousex, mousey, rect_)) {
+		if (!tooltip_text_.empty())
+			tooltips::add_tooltip(rect_, tooltip_text_ );
+	}
+}
+
 
 }
