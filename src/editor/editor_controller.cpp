@@ -269,7 +269,7 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_BRUSH_2:
 		case HOTKEY_EDITOR_BRUSH_3:
 		case HOTKEY_EDITOR_BRUSH_NW_SE:
-		case HOTKEY_EDITOR_BRUSH_SE_NW:
+		case HOTKEY_EDITOR_BRUSH_SW_NE:
 			return toolkit_->get_mouse_action()->supports_brushes();
 
 		case HOTKEY_EDITOR_TOOL_NEXT:
@@ -344,7 +344,7 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 			return toolkit_->is_active_brush("brush-3") ? ACTION_ON : ACTION_OFF;
 		case HOTKEY_EDITOR_BRUSH_NW_SE:
 			return toolkit_->is_active_brush("brush-nw-se") ? ACTION_ON : ACTION_OFF;
-		case HOTKEY_EDITOR_BRUSH_SE_NW:
+		case HOTKEY_EDITOR_BRUSH_SW_NE:
 			return toolkit_->is_active_brush("brush-se-nw") ? ACTION_ON : ACTION_OFF;
 
 		case HOTKEY_ZOOM_DEFAULT:
@@ -507,8 +507,8 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 		case HOTKEY_EDITOR_BRUSH_NW_SE:
 			toolkit_->set_brush("brush-nw-se");
 			return true;
-		case HOTKEY_EDITOR_BRUSH_SE_NW:
-			toolkit_->set_brush("brush-se-nw");
+		case HOTKEY_EDITOR_BRUSH_SW_NE:
+			toolkit_->set_brush("brush-sw-ne");
 			return true;
 
 
