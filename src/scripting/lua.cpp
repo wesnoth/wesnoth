@@ -3381,7 +3381,12 @@ static int intf_add_modification(lua_State *L)
 static int intf_add_known_unit(lua_State *L)
 {
 	char const *ty = luaL_checkstring(L, 1);
-	if(!unit_types.find(ty)) return luaL_argerror(L, 1, "unknown unit type");
+	if(!unit_types.find(ty))
+	{
+		std::stringstream ss;
+		ss << "unknown unit type: '" << ty << "'";
+		return luaL_argerror(L, 1, ss.str().c_str());
+	}
 	preferences::encountered_units().insert(ty);
 	return 0;
 }
