@@ -56,6 +56,9 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 		case TYPE_PRESS:
 			button_image_name_ = "buttons/button";
 			break;
+		case TYPE_TURBO:
+			button_image_name_ = "buttons/lite";
+			break;
 		case TYPE_CHECK:
 			button_image_name_ = "buttons/checkbox";
 			break;
