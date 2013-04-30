@@ -23,6 +23,7 @@
 #include "variable.hpp"
 #include "team.hpp"
 #include "serialization/string_utils.hpp"
+#include "network.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -168,6 +169,19 @@ bool side_filter::match_internal(const team &t) const
 		if(teams.empty()) return false;
 		BOOST_FOREACH(const int side, teams) {
 			if((*resources::teams)[side - 1].is_enemy(t.side()))
+				return false;
+		}
+	}
+
+	const config::attribute_value cfg_controller = cfg_["controller"];
+	if (!cfg_controller.blank())
+	{
+		if (network::nconnections() > 0)
+			ERR_NG << "ignoring controller= in SSF due to danger of OOS errors\n";
+		else
+		{
+			const std::string& controller = cfg_controller;
+			if(strcmp(controller.c_str(), t.controller_string()) != 0)
 				return false;
 		}
 	}
