@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2013 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -47,8 +47,6 @@ public:
 
 	void set_pressed(PRESSED_STATE new_pressed_state);
 
-	//	void set_active(bool active);
-
 	bool pressed();
 	PRESSED_STATE pressed_state() const;
 
@@ -68,6 +66,9 @@ public:
 		item_id_ = id;
 	}
 
+	void draw() {
+		widget::draw();
+	}
 
 protected:
 
@@ -86,11 +87,9 @@ private:
 
 	surface baseImage_, touchedBaseImage_, activeBaseImage_,
 		itemImage_,
-	//	normalImage_, activeImage_,
 		pressedDownImage_, pressedUpImage_, pressedBothImage_,
 		pressedBothActiveImage_, pressedDownActiveImage_, pressedUpActiveImage_,
 		touchedDownImage_, touchedUpImage_, touchedBothImage_;
-	//	disabledImage_, pressedDownDisabledImage_, pressedUpDisabledImage_, pressedBothDisabledImage_;
 
 	SDL_Rect textRect_;
 
@@ -101,13 +100,10 @@ private:
 		PRESSED_LEFT, PRESSED_RIGHT, PRESSED_BOTH
 	};
 
-
 	STATE state_;
-
 	bool pressed_;
 
 	SPACE_CONSUMPTION spacing_;
-
 	int base_height_, base_width_;
 
 	editor::common_palette* palette_;

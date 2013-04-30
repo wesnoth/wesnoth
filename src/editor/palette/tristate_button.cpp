@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2013 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -42,27 +42,20 @@ tristate_button::tristate_button(CVideo& video, const std::string& label,
 		editor::common_palette* palette,
 		std::string button_image_name, SPACE_CONSUMPTION spacing,
 		const bool auto_join) :
-				widget(video, auto_join)
-				, label_(label),
-
+				widget(video, auto_join),
+				label_(label),
 				baseImage_(NULL), touchedBaseImage_(NULL), activeBaseImage_(NULL),
-
 				itemImage_(NULL),
-
-//				normalImage_(NULL), activeImage_(NULL),
 				pressedDownImage_(NULL), pressedUpImage_(NULL), pressedBothImage_(NULL),
 				pressedBothActiveImage_(NULL), pressedDownActiveImage_(NULL), pressedUpActiveImage_(NULL),
 				touchedDownImage_(NULL), touchedUpImage_(NULL), touchedBothImage_(NULL),
-//				disabledImage_(NULL), pressedDownDisabledImage_(NULL),
-//				pressedUpDisabledImage_(NULL), pressedBothDisabledImage_(NULL),
-
 				state_(NORMAL), pressed_(false),
-				spacing_(spacing), base_height_(0), base_width_(0)
-				, palette_(palette), item_id_()
+				spacing_(spacing), base_height_(0), base_width_(0),
+				palette_(palette), item_id_()
 {
 
 	if (button_image_name.empty()) {
-		button_image_name = "buttons/editor/palette/";
+		button_image_name = "buttons/button_selectable/button_selectable_38_";
 	}
 
 	baseImage_.assign(
@@ -73,26 +66,27 @@ tristate_button::tristate_button(CVideo& video, const std::string& label,
 			image::get_image(button_image_name + "base-touched.png"));
 
 	touchedBothImage_.assign(
-			image::get_image(button_image_name + "touched-both.png"));
+			image::get_image(button_image_name + "border-touched-both.png"));
 	touchedUpImage_.assign(
-			image::get_image(button_image_name + "touched-up.png"));
+			image::get_image(button_image_name + "border-touched-up.png"));
 	touchedDownImage_.assign(
-			image::get_image(button_image_name + "touched-down.png"));
+			image::get_image(button_image_name + "border-touched-down.png"));
 
 	pressedUpImage_.assign(
-			image::get_image(button_image_name + "pressed-up.png"));
+			image::get_image(button_image_name + "border-pressed-up.png"));
 	pressedDownImage_.assign(
-			image::get_image(button_image_name + "pressed-down.png"));
+			image::get_image(button_image_name + "border-pressed-down.png"));
 	pressedBothImage_.assign(
-			image::get_image(button_image_name + "pressed-both.png"));
+			image::get_image(button_image_name + "border-pressed-both.png"));
 
 	pressedUpActiveImage_.assign(
-			image::get_image(button_image_name + "active-pressed-up.png"));
+			image::get_image(button_image_name + "border-active-pressed-up.png"));
 	pressedDownActiveImage_.assign(
-			image::get_image(button_image_name + "active-pressed-down.png"));
+			image::get_image(button_image_name + "border-active-pressed-down.png"));
 	pressedBothActiveImage_.assign(
-			image::get_image(button_image_name + "active-pressed-both.png"));
+			image::get_image(button_image_name + "border-active-pressed-both.png"));
 
+	//TODO
 //	if (button_image.null()) {
 //		ERR_DP<< "error initializing button!\n";
 //		throw error();
@@ -101,57 +95,9 @@ tristate_button::tristate_button(CVideo& video, const std::string& label,
 	base_height_ = baseImage_->h;
 	base_width_  = baseImage_->w;
 
-//  calculate_size();
-
 }
 
-tristate_button::~tristate_button() {
-}
-
-void tristate_button::calculate_size() {
-
-//  TODO
-//	if (type_ == TYPE_IMAGE){
-//		SDL_Rect loc_image = location();
-//		loc_image.h = normalImage_->h;
-//		loc_image.w = normalImage_->w;
-//		set_location(loc_image);
-//		return;
-//	}
-
-	SDL_Rect const &loc = location();
-	bool change_size = loc.h == 0 || loc.w == 0;
-
-	if (!change_size) {
-		unsigned w = loc.w - (checkbox_horizontal_padding + base_width_);
-
-		int fs = font_size;
-		int style = TTF_STYLE_NORMAL;
-		std::string::const_iterator i_beg = label_.begin(), i_end =
-				label_.end(), i = font::parse_markup(i_beg, i_end, &fs, NULL,
-						&style);
-		if (i != i_end) {
-			std::string tmp(i, i_end);
-			label_.erase(i - i_beg, i_end - i_beg);
-			label_ += font::make_text_ellipsis(tmp, fs, w, style);
-		}
-	}
-
-	textRect_ = font::draw_text(NULL, screen_area(), font_size,
-			font::BUTTON_COLOR, label_, 0, 0);
-
-	if (!change_size)
-		return;
-
-	set_height(std::max(textRect_.h + vertical_padding, base_height_));
-
-	if (label_.empty()) {
-		set_width(base_width_);
-	} else {
-		set_width(checkbox_horizontal_padding + textRect_.w + base_width_);
-	}
-
-}
+tristate_button::~tristate_button() {}
 
 void tristate_button::set_pressed(PRESSED_STATE new_pressed_state) {
 
@@ -171,22 +117,13 @@ void tristate_button::set_pressed(PRESSED_STATE new_pressed_state) {
 			new_state = NORMAL;
 	}
 
-//	if (check) {
-//		new_state =
-//				(state_ == ACTIVE || state_ == PRESSED_ACTIVE) ?
-//						PRESSED_ACTIVE : PRESSED;
-//	} else {
-//		new_state =
-//				(state_ == ACTIVE || state_ == PRESSED_ACTIVE) ?
-//						ACTIVE : NORMAL;
-//	}
-
 	if (state_ != new_state) {
 		state_ = new_state;
 		set_dirty();
 	}
 }
 
+//TODO
 //void tristate_button::set_active(bool active) {
 //	if ((state_ == NORMAL) && active) {
 //		state_ = ACTIVE;
@@ -196,7 +133,7 @@ void tristate_button::set_pressed(PRESSED_STATE new_pressed_state) {
 //		set_dirty();
 //	}
 //}
-//
+
 tristate_button::PRESSED_STATE tristate_button::pressed_state() const {
 
 	switch (state_) {
@@ -213,7 +150,6 @@ tristate_button::PRESSED_STATE tristate_button::pressed_state() const {
 			return BOTH;
 		default:
 			return NONE;
-			break;
 	}
 }
 
@@ -261,12 +197,15 @@ void tristate_button::draw_contents() {
 		base = activeBaseImage_;
 		break;
 	case PRESSED_LEFT:
+		base = activeBaseImage_;
 		overlay = pressedUpImage_;
 		break;
 	case PRESSED_RIGHT:
+		base = activeBaseImage_;
 		overlay = pressedDownImage_;
 		break;
 	case PRESSED_BOTH:
+		base = activeBaseImage_;
 		overlay = pressedBothImage_;
 		break;
 	case PRESSED_ACTIVE_LEFT:
@@ -296,8 +235,12 @@ void tristate_button::draw_contents() {
 
 	SDL_Color button_color = font::BUTTON_COLOR;
 
+	surface scalled_item;
+	scalled_item.assign(scale_surface(itemImage_,
+			36, 36));
+
 	// blit_surface want neutral surfaces
-	surface nitem = make_neutral_surface(itemImage_);
+	surface nitem = make_neutral_surface(scalled_item);
 	surface nbase = make_neutral_surface(base);
 
 	//TODO avoid magic numbers
@@ -332,29 +275,6 @@ void tristate_button::draw_contents() {
 //TODO move to widget
 bool tristate_button::hit(int x, int y) const {
 	return point_in_rect(x, y, location());
-}
-
-static bool not_image(const std::string& str) {
-	return !str.empty() && str[0] != IMAGE_PREFIX;
-}
-
-void tristate_button::set_label(const std::string& val) {
-	label_ = val;
-
-	//if we have a list of items, use the first one that isn't an image
-	if (std::find(label_.begin(), label_.end(), COLUMN_SEPARATOR)
-	!= label_.end()) {
-		const std::vector<std::string>& items = utils::split(label_,
-				COLUMN_SEPARATOR);
-		const std::vector<std::string>::const_iterator i = std::find_if(
-				items.begin(), items.end(), not_image);
-		if (i != items.end()) {
-			label_ = *i;
-		}
-	}
-
-	calculate_size();
-	set_dirty(true);
 }
 
 void tristate_button::mouse_motion(SDL_MouseMotionEvent const &event) {
@@ -449,14 +369,15 @@ void tristate_button::mouse_up(SDL_MouseButtonEvent const &event) {
 		if (state_ == TOUCHED_LEFT) {
 			state_ = PRESSED_ACTIVE_LEFT;
 			palette_->select_fg_item(item_id_);
-			palette_->draw(true);
+			//TODO
+		//	palette_->draw(true);
 			pressed_ = true;
 		}
 		if (state_ == TOUCHED_BOTH_RIGHT) {
 			state_ = PRESSED_ACTIVE_BOTH;
 			palette_->select_fg_item(item_id_);
 			palette_->select_bg_item(item_id_);
-			palette_->draw(true);
+		//	palette_->draw(true);
 			pressed_ = true;
 		}
 	}
@@ -466,14 +387,14 @@ void tristate_button::mouse_up(SDL_MouseButtonEvent const &event) {
 		if (state_ == TOUCHED_RIGHT) {
 			state_ = PRESSED_ACTIVE_RIGHT;
 			palette_->select_bg_item(item_id_);
-			palette_->draw(true);
+		//	palette_->draw(true);
 			pressed_ = true;
 		}
 		if (state_ == TOUCHED_BOTH_LEFT) {
 			state_ = PRESSED_ACTIVE_BOTH;
 			palette_->select_fg_item(item_id_);
 			palette_->select_bg_item(item_id_);
-			palette_->draw(true);
+		//	palette_->draw(true);
 			pressed_ = true;
 		}
 	}
