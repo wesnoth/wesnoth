@@ -3,6 +3,10 @@ changes may be omitted). For a complete list of changes, see the main
 changelog: https://sourceforge.net/p/wesnoth/code/ci/master/tree/changelog
 
 Version 1.11.2+dev:
+ * Campaigns:
+   * Descend into Darkness:
+     * Fix the surviving orc leader starting poisoned after scenario 5.
+
  * Language and i18n:
    * Updated translations: Indonesian, Portuguese, Vietnamese.
 
@@ -10,6 +14,9 @@ Version 1.11.2+dev:
    * Fixed a bug in the cursor positioning in some text entries (bug #17220).
    * Change Difficulty checkbox in Load Game dialog gets disabled if change
      in difficulty of a loading game won't take effect (bug #20381).
+
+ * WML engine:
+   * fix negative gold carried over (bug #20676)
 
 
 Version 1.11.2:

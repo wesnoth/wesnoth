@@ -1,4 +1,7 @@
 Version 1.11.2+dev:
+ * Campaigns:
+   * Descend into Darkness:
+     * Fix the surviving orc leader starting poisoned after scenario 5.
  * Language and i18n:
    * Updated translations: Indonesian, Portuguese, Vietnamese
  * User interface:
@@ -9,6 +12,8 @@ Version 1.11.2+dev:
  * WML engine:
    * Fixed invalid memory access issues caused by subnamespaced persistent WML
      variables (bug #20385).
+   * fix negative gold carried over (bug #20676)
+   * Allow filtering on controller= in SSFs. Cannot be used in networked multiplayer.
  * Miscellaneous and bug fixes
    * Switched to git version control. Hosting moved to SourceForge
    * Improved: Autorevision based revision numbers in CMake.
