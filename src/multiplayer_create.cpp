@@ -477,6 +477,7 @@ void create::layout_children(const SDL_Rect& rect)
 	// potentially giant minimap.
 	const int minimap_width = 222;
 	const int menu_width = (ca.w - 3*column_border_size - minimap_width)/3;
+	const int eras_menu_height = (ca.h / 2 - era_label_.height() - 2*border_size - cancel_game_.height());
 
 	// Dialog title
 	ypos += title().height() + border_size;
@@ -495,7 +496,7 @@ void create::layout_children(const SDL_Rect& rect)
 	ypos += map_size_label_.height() + 2 * border_size;
 
 	description_.set_location(xpos, ypos);
-	description_.set_measurements(minimap_width, ca.h + ca.y - ypos - border_size - regenerate_map_.height());
+	description_.set_measurements(minimap_width + border_size + menu_width, ca.h + ca.y - ypos - border_size - regenerate_map_.height());
 	description_.set_wrap(true);
 	ypos += description_.height() + border_size;
 
@@ -503,9 +504,14 @@ void create::layout_children(const SDL_Rect& rect)
 	generator_settings_.set_location(xpos + regenerate_map_.width() + border_size, ypos);
 	ypos += generator_settings_.height() + 2 * border_size;
 
-	// Second column: map menu
+	// Second column: now empty
 	ypos = ypos_columntop;
 	xpos += minimap_width + column_border_size;
+
+
+	//Third column: maps menu
+	ypos = ypos_columntop;
+	xpos += menu_width + column_border_size;
 	map_label_.set_location(xpos, ypos);
 	ypos += map_label_.height() + border_size;
 
@@ -517,26 +523,24 @@ void create::layout_children(const SDL_Rect& rect)
 	maps_menu_.set_items(map_options_);
 	maps_menu_.move_selection(mapsel_save);
 
-	//Third column: eras menu
+
+	//Fourth column: eras & mods menu
 	ypos = ypos_columntop;
 	xpos += menu_width + column_border_size;
 	era_label_.set_location(xpos, ypos);
 	ypos += era_label_.height() + border_size;
 	eras_menu_.set_max_width(menu_width);
-	eras_menu_.set_max_height(ca.h + ca.y - ypos - cancel_game_.height() - border_size);
+	eras_menu_.set_max_height(eras_menu_height);
 	eras_menu_.set_location(xpos, ypos);
 	// Menu dimensions are only updated when items are set. So do this now.
 	int erasel_save = eras_menu_.selection();
 	eras_menu_.set_items(era_options_);
 	eras_menu_.move_selection(erasel_save);
-
-	//Fourth column: mods menu
-	ypos = ypos_columntop;
-	xpos += menu_width + column_border_size;
+	ypos += eras_menu_height;
 	mod_label_.set_location(xpos, ypos);
 	ypos += mod_label_.height() + border_size;
 	mods_menu_.set_max_width(menu_width);
-	mods_menu_.set_max_height(ca.h + ca.y - ypos - cancel_game_.height() - border_size);
+	mods_menu_.set_max_height(ca.h - eras_menu_height);
 	mods_menu_.set_location(xpos, ypos);
 	// Menu dimensions are only updated when items are set. So do this now.
 	int modsel_save = mods_menu_.selection();
