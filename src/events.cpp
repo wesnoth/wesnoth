@@ -449,6 +449,7 @@ void raise_help_string_event(int mousex, int mousey)
 
 		for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
 			event_handlers[i1]->process_help_string(mousex,mousey);
+			event_handlers[i1]->process_tooltip_string(mousex,mousey);
 		}
 	}
 }

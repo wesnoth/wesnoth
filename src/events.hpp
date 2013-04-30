@@ -49,6 +49,7 @@ public:
 	virtual bool requires_event_focus(const SDL_Event * = NULL) const { return false; }
 
 	virtual void process_help_string(int /*mousex*/, int /*mousey*/) {}
+	virtual void process_tooltip_string(int /*mousex*/, int /*mousey*/) {}
 
 	virtual void join(); /*joins the current event context*/
 	virtual void leave(); /*leave the event context*/
