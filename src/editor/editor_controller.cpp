@@ -689,10 +689,10 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 		context_manager_->expand_open_maps_menu(items);
 	}
 	//TODO
-//	if (!items.empty() && items.front() == "editor-palette-groups") {
-//		active_menu_ = editor::PALETTE;
-//		toolkit_->get_palette_manager()->active_palette().expand_palette_groups_menu(items);
-//	}
+	if (!items.empty() && items.front() == "editor-palette-groups") {
+		active_menu_ = editor::PALETTE;
+		toolkit_->get_palette_manager()->active_palette().expand_palette_groups_menu(items);
+	}
 	if (!items.empty() && items.front() == "editor-side-switch") {
 		active_menu_ = editor::SIDE;
 		context_manager_->expand_sides_menu(items);

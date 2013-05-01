@@ -41,21 +41,35 @@ template handler_vector editor_palette<t_translation::t_terrain>::handler_member
 template handler_vector editor_palette<unit_type>::handler_members();
 
 template<class Item>
-void editor_palette<Item>::expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items)
+void editor_palette<Item>::expand_palette_groups_menu(std::vector<std::string>& items)
 {
-	const std::vector<item_group>& item_groups = get_groups();
+	for (unsigned int i = 0; i < items.size(); ++i) {
+		if (items[i] == "editor-palette-groups") {
+			items.erase(items.begin() + i);
 
-	for (size_t mci = 0; mci < item_groups.size(); ++mci) {
-		std::string groupname = item_groups[mci].name;
-		if (groupname.empty()) {
-			groupname = _("(Unknown Group)");
+			std::vector<std::string> groups;
+			const std::vector<item_group>& item_groups = get_groups();
+
+			for (size_t mci = 0; mci < item_groups.size(); ++mci) {
+				std::string groupname = item_groups[mci].name;
+				if (groupname.empty()) {
+					groupname = _("(Unknown Group)");
+				}
+				std::string img = item_groups[mci].icon + "_30.png";
+				std::stringstream str;
+				//TODO
+				//std::string postfix = ".png"; //(toolkit_->active_group_index() == mci) ? "-pressed.png" : ".png";
+				//str << IMAGE_PREFIX << "buttons/" << img << postfix << COLUMN_SEPARATOR << groupname;
+				str << IMAGE_PREFIX << img << COLUMN_SEPARATOR << groupname;
+				groups.push_back(str.str());
+			}
+			items.insert(items.begin() + i, groups.begin(), groups.end());
+			break;
 		}
-		const std::string& img = item_groups[mci].icon;
-		items.push_back(std::pair<std::string, std::string>( img, groupname));
 	}
 }
-template void editor_palette<t_translation::t_terrain>::expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items);
-template void editor_palette<unit_type>::expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items);
+template void editor_palette<t_translation::t_terrain>::expand_palette_groups_menu(std::vector<std::string>& items);
+template void editor_palette<unit_type>::expand_palette_groups_menu(std::vector<std::string>& items);
 
 template<class Item>
 bool editor_palette<Item>::scroll_up()
@@ -73,6 +87,24 @@ bool editor_palette<Item>::scroll_up()
 }
 template bool editor_palette<t_translation::t_terrain>::scroll_up();
 template bool editor_palette<unit_type>::scroll_up();
+
+template<class Item>
+void editor_palette<Item>::expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items)
+{
+	const std::vector<item_group>& item_groups = get_groups();
+
+	for (size_t mci = 0; mci < item_groups.size(); ++mci) {
+		std::string groupname = item_groups[mci].name;
+		if (groupname.empty()) {
+			groupname = _("(Unknown Group)");
+		}
+		const std::string& img = item_groups[mci].icon;
+		items.push_back(std::pair<std::string, std::string>( img, groupname));
+	}
+}
+template void editor_palette<t_translation::t_terrain>::expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items);
+template void editor_palette<unit_type>::expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items);
+
 
 template<class Item>
 bool editor_palette<Item>::can_scroll_up()
@@ -121,7 +153,7 @@ void editor_palette<Item>::set_group(const std::string& id)
 	BOOST_FOREACH(const item_group& group, groups_) {
 		if (group.id == id) {
 			found = true;
-			gui::button* palette_menu_button = gui_.find_action_button("menu-editor-terrain");
+			gui::button* palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
 			if (palette_menu_button) {
 				//palette_menu_button->set_label(group.name);
 				palette_menu_button->set_tooltip_string(group.name);

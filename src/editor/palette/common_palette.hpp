@@ -74,6 +74,7 @@ public:
 	virtual const std::vector<item_group>& get_groups() const = 0;
 
 	/** Menu expanding for palette group list */
+	virtual void expand_palette_groups_menu(std::vector<std::string>& items) = 0;
 	virtual void expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items) = 0;
 
     //item
@@ -81,6 +82,7 @@ public:
 	virtual size_t start_num() = 0;
 	virtual void set_start_item(size_t index) = 0;
 	virtual void swap() = 0;
+
 };
 
 
