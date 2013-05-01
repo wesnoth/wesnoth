@@ -693,6 +693,7 @@ void playsingle_controller::before_human_turn(bool save)
 	browse_ = false;
 	linger_ = false;
 
+	set_button_state(*gui_);
 
 	ai::manager::raise_turn_started();
 
