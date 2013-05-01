@@ -421,6 +421,9 @@ function wesnoth.wml_actions.micro_ai(cfg)
         required_keys["stationed_guardian"] = { "id", "distance", "station_x", "station_y", "guard_x", "guard_y" }
         optional_keys["stationed_guardian"] = {}
 
+        required_keys["zone_guardian"] = { "id", "filter_location" }
+        optional_keys["zone_guardian"] = { "filter_location_enemy" }
+
         required_keys["coward"] = { "id", "distance" }
         optional_keys["coward"] = { "seek_x", "seek_y","avoid_x","avoid_y" }
 
@@ -460,6 +463,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
 
         local max_scores = {}
         max_scores["stationed_guardian"] = 100010
+        max_scores["zone_guardian"] = 100010
         max_scores["coward"] = 300000
 
         local unit = wesnoth.get_units { id=cfg.id }[1]
