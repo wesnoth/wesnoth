@@ -71,6 +71,9 @@ private:
 	gui::menu maps_menu_;
 	gui::menu mods_menu_;
 
+	gui::label filter_name_label_;
+	gui::label filter_num_players_label_;
+	gui::label map_generator_label_;
 	gui::label era_label_;
 	gui::label map_label_;
 	gui::label mod_label_;
@@ -82,7 +85,13 @@ private:
 	gui::button regenerate_map_;
 	gui::button generator_settings_;
 
+	gui::button show_scenarios_;
+	gui::button show_campaigns_;
+
+	gui::slider filter_num_players_slider_;
+
 	gui::textbox description_;
+	gui::textbox filter_name_;
 
 	util::scoped_ptr<surface_restorer> minimap_restorer_;
 	SDL_Rect minimap_rect_;
