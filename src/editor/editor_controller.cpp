@@ -61,16 +61,18 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	, teams_()
 	, tods_()
 	, context_manager_(new context_manager(*gui_.get(), game_config_))
-	, toolkit_()
+	, toolkit_(NULL)
 	, prefs_disp_manager_(NULL)
 	, tooltip_manager_(video)
 	, floating_label_manager_(NULL)
 	, halo_manager_(NULL)
+	, help_manager_(NULL)
 	, do_quit_(false)
 	, quit_mode_(EXIT_ERROR)
 {
 	init_gui();
 	toolkit_.reset(new editor_toolkit(*gui_.get(), key_, game_config_, *context_manager_.get()));
+	help_manager_.reset(new help::help_manager(&game_config, &(context_manager_->get_map_context().get_map())));
 	context_manager_->switch_context(0);
 	init_tods(game_config);
 	init_music(game_config);
@@ -654,6 +656,12 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 		default:
 			return controller_base::execute_command(command, index);
 	}
+}
+
+void editor_controller::show_help()
+{
+	help::show_help(*gui_);
+	//menu_handler_.show_help();
 }
 
 void editor_controller::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu)

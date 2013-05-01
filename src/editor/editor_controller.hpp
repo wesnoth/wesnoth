@@ -15,18 +15,18 @@
 #ifndef EDITOR_EDITOR_CONTROLLER_HPP_INCLUDED
 #define EDITOR_EDITOR_CONTROLLER_HPP_INCLUDED
 
-#include "editor_display.hpp"
-#include "editor_main.hpp"
-#include "map/map_context.hpp"
-#include "map/map_fragment.hpp"
-
+#include "editor/editor_display.hpp"
+#include "editor/editor_main.hpp"
+#include "editor/map/context_manager.hpp"
+#include "editor/map/map_context.hpp"
+#include "editor/map/map_fragment.hpp"
 #include "editor/toolkit/editor_toolkit.hpp"
 
 #include "../controller_base.hpp"
+#include "../help.hpp"
 #include "../mouse_handler_base.hpp"
 #include "../tooltips.hpp"
 
-#include "editor/map/context_manager.hpp"
 
 class map_generator;
 
@@ -113,6 +113,8 @@ class editor_controller : public controller_base,
 
 		/** controller_base override */
 		void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu);
+
+		void show_help();
 
 		/** Show the preferences dialog */
 		void preferences();
@@ -233,6 +235,7 @@ class editor_controller : public controller_base,
 		boost::scoped_ptr<font::floating_label_context> floating_label_manager_;
 
 		boost::scoped_ptr<halo::manager> halo_manager_;
+		boost::scoped_ptr<help::help_manager> help_manager_;
 
 		/** Quit main loop flag */
 		bool do_quit_;
