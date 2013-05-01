@@ -69,7 +69,7 @@ return {
                 local r = AH.random(10)
                 if (not unit.variables.goal_x) or (r <= 1) then
                     -- 'locs' includes border hexes, but that does not matter here
-                    locs = AH.get_passable_locations((cfg.hunting_ground or {}), unit)
+                    locs = AH.get_passable_locations((cfg.filter_location or {}), unit)
                     local rand = AH.random(#locs)
                     --print('#locs', #locs, rand)
                     unit.variables.goal_x, unit.variables.goal_y = locs[rand][1], locs[rand][2]
@@ -840,7 +840,7 @@ return {
                 -- Unit gets a new goal if none exist or on any move with 10% random chance
                 local r = AH.random(10)
                 if (not unit.variables.goal_x) or (r == 1) then
-                    local locs = AH.get_passable_locations(cfg.goal_terrain or {})
+                    local locs = AH.get_passable_locations(cfg.filter_location or {})
                     local rand = AH.random(#locs)
                     --print(type, ': #locs', #locs, rand)
                     unit.variables.goal_x, unit.variables.goal_y = locs[rand][1], locs[rand][2]
@@ -849,7 +849,7 @@ return {
 
                 -- hexes the unit can reach
                 local reach_map = AH.get_reachable_unocc(unit)
-                local wander_terrain = cfg.wander_terrain or {}
+                local wander_terrain = cfg.filter_location_wander or {}
                 reach_map:iter( function(x, y, v)
                     -- Remove tiles that do not comform to the wander terrain filter
                     if (not wesnoth.match_location(x, y, wander_terrain) ) then
@@ -1056,13 +1056,13 @@ return {
             -- First, find all contiguous hexes around center hex that are inside herding_perimeter
             local herding_area = LS.of_pairs(wesnoth.get_locations {
                 x = cfg.herd_x, y = cfg.herd_y, radius = 999,
-                {"filter_radius", { { "not", cfg.herding_perimeter } } }
+                {"filter_radius", { { "not", cfg.filter_location } } }
             } )
 
             -- Then, also exclude hexes next to herding_perimeter; some of the functions work better like that
             herding_area:iter( function(x, y, v)
                 for xa, ya in H.adjacent_tiles(x, y) do
-                    if (wesnoth.match_location(xa, ya, cfg.herding_perimeter) ) then herding_area:remove(x, y) end
+                    if (wesnoth.match_location(xa, ya, cfg.filter_location) ) then herding_area:remove(x, y) end
                 end
             end)
             --AH.put_labels(herding_area)
@@ -1334,7 +1334,7 @@ return {
                         -- And the closer dog goes first (so that it might be able to chase another sheep afterward)
                         rating = rating - H.distance_between(x, y, d.x, d.y) / 100.
                         -- Finally, prefer to stay on path, if possible
-                        if (wesnoth.match_location(x, y, cfg.herding_perimeter) ) then rating = rating + 0.001 end
+                        if (wesnoth.match_location(x, y, cfg.filter_location) ) then rating = rating + 0.001 end
 
                         reach_map:insert(x, y, rating)
 
@@ -1418,7 +1418,7 @@ return {
                 { "not", { { "filter_adjacent", { side = wesnoth.current.side, {"and", cfg.filter_second} } } } }
             }[1]
 
-            local herding_perimeter = LS.of_pairs(wesnoth.get_locations(cfg.herding_perimeter))
+            local herding_perimeter = LS.of_pairs(wesnoth.get_locations(cfg.filter_location))
             --AH.put_labels(herding_perimeter)
 
             -- Find average distance of herding_perimeter from center
@@ -1601,7 +1601,7 @@ return {
             local rabbit_type = cfg.rabbit_type or "no_unit_of_this_type"
             local tusker_type = cfg.tusker_type or "no_unit_of_this_type"
             local tusklet_type = cfg.tusklet_type or "no_unit_of_this_type"
-            local wander_terrain = cfg.wander_terrain or {}
+            local wander_terrain = cfg.filter_location or {}
 
             -- We want the deer/rabbits to move first, tuskers later
             local units = wesnoth.get_units { side = wesnoth.current.side, type = deer_type .. ',' .. rabbit_type, formula = '$this_unit.moves > 0' }

@@ -40,7 +40,7 @@ return {
             local reachable_attack_terrain =
                  LS.of_pairs( wesnoth.get_locations  {
                     {"and", {x = me.x, y = me.y, radius = me.moves} },
-                    {"and", cfg.attack_terrain}
+                    {"and", cfg.filter_location}
                 } )
             reachable_attack_terrain:inter(reach)
             --print("  reach: " .. reach:size() .. "    reach_attack: " .. reachable_attack_terrain:size())
@@ -82,7 +82,7 @@ return {
                 local reachable_wander_terrain =
                     LS.of_pairs( wesnoth.get_locations  {
                         {"and", {x = me.x, y = me.y, radius = me.moves} },
-                        {"and", (cfg.wander_terrain or cfg.attack_terrain)}
+                        {"and", (cfg.filter_location_wander or cfg.filter_location)}
                     } )
                 reachable_wander_terrain:inter(reach)
 

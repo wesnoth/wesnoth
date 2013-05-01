@@ -278,8 +278,8 @@ function wesnoth.wml_actions.micro_ai(cfg)
         if (cfg.action ~= "delete") then
             -- Required keys
             cfg = cfg.__parsed
-            local required_keys = {"filter", "attack_terrain"}
-            local optional_keys = {"stationary", "wander_terrain"}
+            local required_keys = {"filter", "filter_location"}
+            local optional_keys = {"stationary", "filter_location_wander"}
 
             for k, v in pairs(required_keys) do
                 local child = H.get_child(cfg, v)
@@ -496,7 +496,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
 
         -- This list does not contain id because we check for that differently
         required_keys["hunter_unit"] = { "id", "home_x", "home_y" }
-        optional_keys["hunter_unit"] = { "hunting_ground", "rest_turns", "show_messages" }
+        optional_keys["hunter_unit"] = { "filter_location", "rest_turns", "show_messages" }
 
         required_keys["wolves"] = { "filter", "filter_second" }
         optional_keys["wolves"] = { "avoid_type" }
@@ -505,17 +505,17 @@ function wesnoth.wml_actions.micro_ai(cfg)
         optional_keys["wolves_multipacks"] = { "type", "pack_size", "show_pack_number" }
 
         required_keys["big_animals"] = { "filter"}
-        optional_keys["big_animals"] = { "avoid_unit", "goal_terrain", "wander_terrain" }
+        optional_keys["big_animals"] = { "avoid_unit", "filter_location", "filter_location_wander" }
 
         required_keys["forest_animals"] = {}
         optional_keys["forest_animals"] = { "rabbit_type", "rabbit_number", "rabbit_enemy_distance", "rabbit_hole_img",
-            "tusker_type", "tusklet_type", "deer_type", "wander_terrain"
+            "tusker_type", "tusklet_type", "deer_type", "filter_location"
         }
 
         required_keys["swarm"] = {}
         optional_keys["swarm"] = { "scatter_distance", "vision_distance", "enemy_distance" }
 
-        required_keys["herding"] = { "herding_perimeter", "filter", "filter_second", "herd_x", "herd_y" }
+        required_keys["herding"] = { "filter_location", "filter", "filter_second", "herd_x", "herd_y" }
         optional_keys["herding"] = { "attention_distance", "attack_distance" }
 
         if (cfg.action~='delete') then
