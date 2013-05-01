@@ -72,6 +72,9 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	eras_menu_(disp.video(), std::vector<std::string>()),
 	maps_menu_(disp.video(), std::vector<std::string>()),
 	mods_menu_(disp.video(), std::vector<std::string>()),
+	filter_name_label_(disp.video(), _("Filter:"), font::SIZE_SMALL, font::LOBBY_COLOR),
+	filter_num_players_label_(disp.video(), _("Number of players: any"), font::SIZE_SMALL, font::LOBBY_COLOR),
+	map_generator_label_(disp.video(), _("Random map options:"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	era_label_(disp.video(), _("Era:"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	map_label_(disp.video(), _("Map to play:"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	mod_label_(disp.video(), _("Modifications:"), font::SIZE_SMALL, font::LOBBY_COLOR),
@@ -81,13 +84,21 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	cancel_game_(disp.video(), _("Cancel")),
 	regenerate_map_(disp.video(), _("Regenerate")),
 	generator_settings_(disp.video(), _("Settings...")),
+	show_scenarios_(disp.video(), _("Show scenarios"), gui::button::TYPE_CHECK),
+	show_campaigns_(disp.video(), _("Show campaigns"), gui::button::TYPE_CHECK),
+	filter_num_players_slider_(disp.video()),
 	description_(disp.video(), 100, "", false),
+	filter_name_(disp.video(), 100, "", false),
 	minimap_restorer_(NULL),
 	minimap_rect_(null_rect),
 	generator_(NULL),
 	parameters_(),
 	dependency_manager_(cfg, disp.video())
 {
+	filter_num_players_slider_.set_min(0);
+	filter_num_players_slider_.set_max(9);
+	filter_num_players_slider_.set_increment(1);
+
 	// Build the list of scenarios to play
 
 	DBG_MP << "constructing multiplayer create dialog" << std::endl;
@@ -421,11 +432,17 @@ void create::hide_children(bool hide)
 	maps_menu_.hide(hide);
 	mods_menu_.hide(hide);
 
+	filter_name_.hide(hide);
+	filter_num_players_label_.hide(hide);
+	map_generator_label_.hide(hide);
 	map_size_label_.hide(hide);
 	era_label_.hide(hide);
 	map_label_.hide(hide);
 	mod_label_.hide(hide);
 	num_players_label_.hide(hide);
+
+	show_campaigns_.hide(hide);
+	show_scenarios_.hide(hide);
 
 	cancel_game_.hide(hide);
 	launch_game_.hide(hide);
@@ -433,7 +450,10 @@ void create::hide_children(bool hide)
 	regenerate_map_.hide(hide || generator_ == NULL);
 	generator_settings_.hide(hide || generator_ == NULL);
 
+	filter_num_players_slider_.hide(hide);
+
 	description_.hide(hide);
+	filter_name_.hide(hide);
 
 	if (hide) {
 		minimap_restorer_.assign(NULL);
@@ -496,18 +516,32 @@ void create::layout_children(const SDL_Rect& rect)
 	ypos += map_size_label_.height() + 2 * border_size;
 
 	description_.set_location(xpos, ypos);
-	description_.set_measurements(minimap_width + border_size + menu_width, ca.h + ca.y - ypos - border_size - regenerate_map_.height());
+	description_.set_measurements(minimap_width + border_size + menu_width, ca.h + ca.y - ypos - border_size - cancel_game_.height());
 	description_.set_wrap(true);
 	ypos += description_.height() + border_size;
 
-	regenerate_map_.set_location(xpos, ypos);
-	generator_settings_.set_location(xpos + regenerate_map_.width() + border_size, ypos);
-	ypos += generator_settings_.height() + 2 * border_size;
-
-	// Second column: now empty
+	// Second column: filtering options
 	ypos = ypos_columntop;
 	xpos += minimap_width + column_border_size;
-
+	filter_name_label_.set_location(xpos, ypos);
+	filter_name_.set_location(xpos + filter_name_label_.width() + border_size, ypos);
+	filter_name_.set_measurements(menu_width - border_size - filter_name_label_.width(), filter_name_label_.height());
+	ypos += filter_name_.height() + border_size;
+	filter_num_players_label_.set_location(xpos, ypos);
+	ypos += filter_num_players_label_.height() + border_size;
+	filter_num_players_slider_.set_location(xpos, ypos);
+	filter_num_players_slider_.set_width(menu_width);
+	ypos += filter_num_players_slider_.height() + border_size;
+	show_scenarios_.set_location(xpos, ypos);
+	ypos += show_scenarios_.height() + border_size;
+	show_campaigns_.set_location(xpos, ypos);
+	ypos += show_campaigns_.height() + 2*border_size;
+	map_generator_label_.set_location(xpos, ypos);
+	ypos += map_generator_label_.height() + border_size;
+	regenerate_map_.set_location(xpos, ypos);
+	ypos += regenerate_map_.height() + border_size;
+	generator_settings_.set_location(xpos, ypos);
+	ypos += generator_settings_.height() + 2 * border_size;
 
 	//Third column: maps menu
 	ypos = ypos_columntop;
