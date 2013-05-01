@@ -155,9 +155,12 @@ function wesnoth.wml_actions.micro_ai(cfg)
         local cfg_hs = {}
         if (cfg.action ~= 'delete') then
             -- Optional keys
+            cfg = cfg.__parsed
             cfg_hs.aggression = cfg.aggression or 1.0
             cfg_hs.injured_units_only = cfg.injured_units_only
             cfg_hs.max_threats = cfg.max_threats
+
+            cfg_hs.filter = H.get_child(cfg, "filter")
         end
 
         -- Set up the CA add/delete parameters
