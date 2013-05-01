@@ -96,7 +96,7 @@ void terrain_palette::setup(const config& cfg)
 			cfg["id"] = g["id"];
 			cfg["name"] = g["name"];
 
-			cfg["icon"] = "buttons/editor/group/" + g["icon"].t_str();
+			cfg["icon"] = "icons/terrain/terrain_" + g["icon"].t_str();
 			cfg["core"] = "yes";
 			groups_.push_back(item_group(cfg));
 
@@ -194,7 +194,7 @@ void terrain_palette::draw_item(const t_translation::t_terrain& terrain,
 	}
 
 	const std::string filename = "terrain/" + map().get_terrain_info(terrain).editor_image() + ".png";
-	image = image::get_image(filename);
+	image = surface(image::get_image(filename));
 	if(image == NULL) {
 		tooltip_text << "IMAGE NOT FOUND\n";
 		ERR_ED << "image for terrain: '" << filename << "' not found\n";
@@ -219,7 +219,7 @@ void terrain_palette::draw_item(const t_translation::t_terrain& terrain,
 terrain_palette::terrain_palette(editor_display &gui, const config& cfg,
 								 mouse_action** active_mouse_action)
 //TODO avoid magic numbers
-	:	editor_palette<t_translation::t_terrain>(gui, cfg, 36, 4, active_mouse_action)
+	:	editor_palette<t_translation::t_terrain>(gui, cfg, 38, 4, active_mouse_action)
 {
 }
 

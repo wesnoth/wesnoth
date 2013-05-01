@@ -19,6 +19,8 @@
 #include "common_palette.hpp"
 #include "tristate_button.hpp"
 
+#include <boost/foreach.hpp>
+
 namespace editor {
 
 template<class Item>
@@ -28,12 +30,13 @@ public:
 
 	editor_palette(editor_display &gui, const config& /*cfg*/
 			, size_t item_size, size_t item_width, mouse_action** active_mouse_action)
-		: groups_()
+		: common_palette(gui)
+		, groups_()
 		, gui_(gui)
 		, item_size_(item_size)
 		, item_width_(item_width)
 //TODO avoid magic number
-		, item_space_(item_size + 5)
+		, item_space_(item_size + 3)
 		, palette_y_(0)
 		, palette_x_(0)
 		, group_map_()
@@ -50,6 +53,8 @@ public:
 	{
 	};
 
+
+
 	virtual handler_vector handler_members();
 
 	void set_start_item(size_t index) { items_start_ = index; };
@@ -60,16 +65,20 @@ public:
 	void expand_palette_groups_menu(std::vector< std::pair<std::string, std::string> >& items);
 
 	void set_group(size_t index);
+//	int active_group();
 
 	const std::vector<item_group>& get_groups() const { return groups_; };
 
-	virtual void draw(bool force);
+	virtual void draw() {
+		widget::draw();
+	};
+	virtual void draw_contents();
 
 	void next_group() {
-		set_group( (active_group_index() +1) % (groups_.size() -1) );
+		set_group( (active_group_index() +1) % (groups_.size()) );
 	};
 	void prev_group() {
-		set_group( (active_group_index() -1) % (groups_.size() -1) );
+		set_group( (active_group_index() -1) % (groups_.size()) );
 	};
 
 	/**
@@ -94,7 +103,6 @@ public:
 
 private:
 
-	/** TODO */
 	size_t active_group_index();
 
 	/** Scroll the editor-palette to the top. */
@@ -115,7 +123,12 @@ private:
 	/** Return the number of items in the palette. */
 	size_t num_items();
 
-	//void draw_old(bool);
+	void hide(bool hidden) {
+		widget::hide(hidden);
+		BOOST_FOREACH(gui::widget& w, buttons_) {
+			w.hide(hidden);
+		}
+	}
 
 protected:
 	/**

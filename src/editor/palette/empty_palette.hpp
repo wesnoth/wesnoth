@@ -28,7 +28,9 @@ class empty_palette : public common_palette {
 
 public:
 
-	empty_palette(display& gui) : gui_(gui), empty_() {};
+	empty_palette(display& gui) :
+		common_palette(gui),
+		gui_(gui), empty_() {};
 
 	//event handling
 	virtual bool mouse_click() { return false;};
@@ -43,7 +45,7 @@ public:
 
 	//drawing
 	virtual void adjust_size(const SDL_Rect& /*target*/) {};
-	virtual void draw(bool) {
+	virtual void draw() {
 		//TODO
 		/*
 		gui::button* upscroll_button = gui_.find_button("upscroll-button-editor");

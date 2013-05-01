@@ -62,8 +62,8 @@ public:
 	 * If force is true everything will be redrawn,
 	 * even though it is not invalidated.
 	 */
-	void draw(bool force=false);
-	void draw() { draw(false); };
+	//void draw(bool force=false);
+	void draw_contents(); // { draw(false); };
 
 public:
 

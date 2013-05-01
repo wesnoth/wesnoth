@@ -43,11 +43,6 @@ template handler_vector editor_palette<unit_type>::handler_members();
 template<class Item>
 void editor_palette<Item>::expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items)
 {
-	//for (unsigned int i = 0; i < items.size(); ++i) {
-	//	if (items[i] == "editor-palette-groups") {
-	//		items.erase(items.begin() + i);
-
-	//std::vector<std::string> groups;
 	const std::vector<item_group>& item_groups = get_groups();
 
 	for (size_t mci = 0; mci < item_groups.size(); ++mci) {
@@ -55,11 +50,9 @@ void editor_palette<Item>::expand_palette_groups_menu(std::vector< std::pair< st
 		if (groupname.empty()) {
 			groupname = _("(Unknown Group)");
 		}
-		const std::string img = item_groups[mci].icon + ".png";
-		items.push_back(std::pair<std::string, std::string>(img, groupname));
+		const std::string& img = item_groups[mci].icon;
+		items.push_back(std::pair<std::string, std::string>( img, groupname));
 	}
-	//items.insert(items.begin() + i, groups.begin(), groups.end());
-	//break;
 }
 template void editor_palette<t_translation::t_terrain>::expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items);
 template void editor_palette<unit_type>::expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items);
@@ -73,6 +66,7 @@ bool editor_palette<Item>::scroll_up()
 	}
 	if(items_start_ >= decrement) {
 		items_start_ -= decrement;
+		draw();
 		return true;
 	}
 	return false;
@@ -111,7 +105,8 @@ bool editor_palette<Item>::scroll_down()
 		items_start_ += num_items() % item_width_;
 		scrolled = true;
 	}
-	draw(scrolled);
+	set_dirty(scrolled);
+	draw();
 	return scrolled;
 }
 template bool editor_palette<t_translation::t_terrain>::scroll_down();
@@ -126,10 +121,11 @@ void editor_palette<Item>::set_group(const std::string& id)
 	BOOST_FOREACH(const item_group& group, groups_) {
 		if (group.id == id) {
 			found = true;
-			gui::button* palette_action_button = gui_.find_action_button("menu-editor-terrain");
-			if (palette_action_button) {
-				palette_action_button->set_label(group.name);
-				palette_action_button->set_image(group.icon);
+			gui::button* palette_menu_button = gui_.find_action_button("menu-editor-terrain");
+			if (palette_menu_button) {
+				//palette_menu_button->set_label(group.name);
+				palette_menu_button->set_tooltip_string(group.name);
+				palette_menu_button->set_overlay(group.icon);
 			}
 		}
 	}
@@ -141,7 +137,6 @@ void editor_palette<Item>::set_group(const std::string& id)
 		ERR_ED << "No items found in group with the id: '" << id << "'.\n";
 	}
 
-	//if (groups_.size() >= 3)
 	gui_.set_palette_report(active_group_report());
 }
 template void editor_palette<t_translation::t_terrain>::set_group(const std::string& id);
@@ -199,6 +194,8 @@ void editor_palette<Item>::adjust_size(const SDL_Rect& target)
 		item_width_;
 	nitems_ = std::min<int>(items_fitting, nmax_items_);
 	buttons_.resize(nitems_, gui::tristate_button(gui_.video(), "", this));
+	set_location(target);
+	set_dirty(true);
 }
 template void editor_palette<t_translation::t_terrain>::adjust_size(const SDL_Rect& target);
 template void editor_palette<unit_type>::adjust_size(const SDL_Rect& target);
@@ -208,6 +205,7 @@ void editor_palette<Item>::select_fg_item(const std::string& item_id)
 {
 	if (selected_fg_item_ != item_id) {
 		selected_fg_item_ = item_id;
+		set_dirty();
 	}
 }
 template void editor_palette<t_translation::t_terrain>::select_fg_item(const std::string& terrain_id);
@@ -218,6 +216,7 @@ void editor_palette<Item>::select_bg_item(const std::string& item_id)
 {
 	if (selected_bg_item_ != item_id) {
 		selected_bg_item_ = item_id;
+		set_dirty();
 	}
 }
 template void editor_palette<t_translation::t_terrain>::select_bg_item(const std::string& terrain_id);
@@ -241,9 +240,9 @@ template size_t editor_palette<t_translation::t_terrain>::num_items();
 template size_t editor_palette<unit_type>::num_items();
 
 template<class Item>
-void editor_palette<Item>::draw(bool force)
+void editor_palette<Item>::draw_contents()
 {
-	if (!force) return;
+//	if (!force && !dirty()) return;
 	unsigned int y = palette_y_;
 	unsigned int x = palette_x_;
 	unsigned int starting = items_start_;
@@ -258,6 +257,7 @@ void editor_palette<Item>::draw(bool force)
 	gui::button* downscroll_button = gui_.find_action_button("downscroll-button-editor");
 	if (downscroll_button)
 		downscroll_button->enable(ending != num_items());
+
 
 	unsigned int counter = starting;
 	for (unsigned int i = 0 ; i < buttons_.size() ; i++) {
@@ -295,7 +295,7 @@ void editor_palette<Item>::draw(bool force)
 		dstrect.h = item_size_ + 2;
 
 		tile.set_location(dstrect);
-		tile.set_help_string(tooltip_text.str());
+		tile.set_tooltip_string(tooltip_text.str());
 		tile.set_item_image(item_image);
 		tile.set_item_id(item_id);
 
@@ -312,15 +312,17 @@ void editor_palette<Item>::draw(bool force)
 
 		tile.set_dirty(true);
 		tile.hide(false);
+		tile.draw();
 
 		// Adjust location
 		if (counter_from_zero % item_width_ == item_width_ - 1)
 			y += item_space_;
 		counter++;
 	}
+	update_rect(location());
 }
-template void editor_palette<t_translation::t_terrain>::draw(bool);
-template void editor_palette<unit_type>::draw(bool);
+template void editor_palette<t_translation::t_terrain>::draw_contents();
+template void editor_palette<unit_type>::draw_contents();
 
 
 } // end namespace editor

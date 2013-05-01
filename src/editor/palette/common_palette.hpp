@@ -15,6 +15,7 @@
 #ifndef COMMON_PALETTES_H_INCLUDED
 #define COMMON_PALETTES_H_INCLUDED
 
+#include "display.hpp"
 #include "config.hpp"
 #include "gui/widgets/widget.hpp"
 
@@ -38,9 +39,11 @@ struct item_group
 };
 
 
-class common_palette {
+class common_palette  : public gui::widget {
 
 public:
+
+	common_palette(display& gui) : gui::widget(gui.video(), true) {}
 
 	virtual ~common_palette() {}
 
@@ -61,7 +64,7 @@ public:
 
 	//drawing
 	virtual void adjust_size(const SDL_Rect& target) = 0;
-	virtual void draw(bool force) = 0;
+	virtual void draw() = 0;
 
 	//group
 	virtual void set_group(size_t index) = 0;

@@ -112,6 +112,7 @@ void editor_toolkit::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 {
 	std::map<hotkey::HOTKEY_COMMAND, mouse_action*>::iterator i = mouse_actions_.find(command);
 	if (i != mouse_actions_.end()) {
+		palette_manager_->active_palette().hide(true);
 		mouse_action_ = i->second;
 		palette_manager_->adjust_size();
 
@@ -120,6 +121,7 @@ void editor_toolkit::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 
 		set_mouseover_overlay();
 		gui_.invalidate_game_status();
+		palette_manager_->active_palette().hide(false);
 	} else {
 		ERR_ED << "Invalid hotkey command ("
 			<< static_cast<int>(command) << ") passed to set_mouse_action\n";
@@ -175,7 +177,6 @@ void editor_toolkit::cycle_brush()
 void editor_toolkit::adjust_size()
 {
 	palette_manager_->adjust_size();
-	palette_manager_->draw(true);
 }
 
 

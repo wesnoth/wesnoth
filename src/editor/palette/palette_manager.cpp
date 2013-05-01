@@ -60,10 +60,10 @@ void palette_manager::scroll_down()
 
 	if (scrolled) {
 
-		const SDL_Rect& rect = gui_.palette_area();
-		bg_restore(rect);
+//		const SDL_Rect& rect = gui_.palette_area();
+//		bg_restore(rect);
 		set_dirty();
-		draw(true);
+		draw();
 	}
 }
 
@@ -81,10 +81,10 @@ void palette_manager::scroll_up()
 {
 	bool scrolled_up = active_palette().scroll_up();
 	if(scrolled_up) {
-		const SDL_Rect rect = gui_.palette_area();
-		bg_restore(rect);
+//		const SDL_Rect rect = gui_.palette_area();
+//		bg_restore(rect);
 		set_dirty();
-		draw(true);
+		draw();
 	}
 }
 
@@ -111,11 +111,11 @@ void palette_manager::scroll_bottom()
 	}
 }
 
-void palette_manager::draw(bool force)
+void palette_manager::draw_contents()
 {
-	if (!dirty() && !force) {
-		return;
-	}
+	//if (!dirty() && !force) {
+	//	return;
+	//}
 
 	const SDL_Rect &loc = location();
 
@@ -124,20 +124,19 @@ void palette_manager::draw(bool force)
 	gui::button* upscroll_button = gui_.find_action_button("upscroll-button-editor");
 	if (upscroll_button)
 		upscroll_button->hide(false);
-
 	gui::button* downscroll_button = gui_.find_action_button("downscroll-button-editor");
 	if (downscroll_button)
 		downscroll_button->hide(false);
-
 	gui::button* palette_menu_button = gui_.find_action_button("menu-editor-terrain");
 	if (palette_menu_button)
 		palette_menu_button->hide(false);
 
-	bg_restore(loc);
-	active_palette().draw(dirty() || force);
+//	bg_restore(loc);
+	active_palette().set_dirty(true);
+	active_palette().draw();
+	//active_palette().hide(false);
 
-	update_rect(loc);
-	set_dirty(false);
+//	set_dirty(false);
 }
 
 handler_vector palette_manager::handler_members()
