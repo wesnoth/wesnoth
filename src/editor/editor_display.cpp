@@ -15,6 +15,9 @@
 
 #include "editor_display.hpp"
 #include "builder.hpp"
+#include "reports.hpp"
+
+#include <boost/foreach.hpp>
 
 namespace editor {
 
@@ -105,6 +108,7 @@ void editor_display::draw_sidebar()
 	if (get_map().on_board_with_border(mouseoverHex_)) {
 		text = get_map().get_terrain_editor_string(mouseoverHex_);
 		refresh_report("terrain", &element);
+		refresh_report("terrain_info");
 		text = str_cast(mouseoverHex_);
 		refresh_report("position", &element);
 	}
@@ -113,7 +117,9 @@ void editor_display::draw_sidebar()
 	text = toolbar_hint_;
 	refresh_report("editor_tool_hint", &element);
 
-	refresh_report("terrain_image", &palette_report_);
+	//TODO
+	//	refresh_report("terrain_image", &palette_report_);
 }
+
 
 } //end namespace editor

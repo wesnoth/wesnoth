@@ -1200,6 +1200,33 @@ REPORT_GENERATOR(income)
 	return text_report(str.str());
 }
 
+
+REPORT_GENERATOR(terrain_info)
+{
+	const gamemap &map = *resources::game_map;
+	map_location mouseover_hex = display::get_singleton()->mouseover_hex();
+
+	t_translation::t_terrain terrain = map.get_terrain(mouseover_hex);
+	if (terrain == t_translation::OFF_MAP_USER)
+		return report();
+
+	std::ostringstream str;
+	config cfg;
+
+	if (map.is_castle(mouseover_hex)) {
+		add_image(cfg, "icons/terrain/terrain_type_keep.png", "");
+	}
+
+	const t_translation::t_list& underlying_terrains = map.underlying_union_terrain(terrain);
+	BOOST_FOREACH(const t_translation::t_terrain& underlying_terrain, underlying_terrains) {
+
+		const std::string& terrain_id = map.get_terrain_info(underlying_terrain).id();
+		str << terrain_id;
+		add_image(cfg, "icons/terrain/terrain_type_" + terrain_id + ".png", str.str());
+	}
+	return cfg;
+}
+
 REPORT_GENERATOR(terrain)
 {
 	const gamemap &map = *resources::game_map;
