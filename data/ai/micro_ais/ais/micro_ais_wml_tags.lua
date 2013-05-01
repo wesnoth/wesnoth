@@ -12,7 +12,7 @@ function add_CAs(side, CA_parms)
     --  - exec_name: name of the execution function
     --
     -- Optional keys for CA_parms:
-    --  - cfg_str: a configuration string (in form of a Lua WML table), to be passed to eval and exec functions
+    --  - cfg_table: a configuration table (Lua WML table format), to be passed to eval and exec functions
     --      Note: we pass the same string to both functions, even if it contains unnecessary parameters for one or the other
     --  - max_score: maximum score the CA can return
 
@@ -49,8 +49,8 @@ function add_CAs(side, CA_parms)
             id = ca_id,
             name = ca_id,
             max_score = parms.max_score,  -- This works even if parms.max_score is nil
-            evaluation = "return (...):" .. parms.eval_name .. "(" .. cfg_str .. ")",
-            execution = "(...):" .. parms.exec_name .. "(" .. cfg_str .. ")"
+            evaluation = "return (...):" .. parms.eval_name .. "(" .. AH.serialize(cfg_table) .. ")",
+            execution = "(...):" .. parms.exec_name .. "(" .. AH.serialize(cfg_table) .. ")"
         }
 
         if parms.sticky then
@@ -164,11 +164,11 @@ function wesnoth.wml_actions.micro_ai(cfg)
         local CA_parms = {
             {
                 id = 'initialize_healer_support', eval_name = 'initialize_healer_support_eval', exec_name = 'initialize_healer_support_exec',
-                max_score = 999990, cfg_str = ''
+                max_score = 999990, cfg_table = {}
             },
             {
                 id = 'healer_support', eval_name = 'healer_support_eval', exec_name = 'healer_support_exec',
-                max_score = 105000, cfg_str = AH.serialize(cfg_hs)
+                max_score = 105000, cfg_table = cfg_hs
             },
         }
 
@@ -178,7 +178,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
             table.insert(CA_parms,
                 {
                     id = 'healers_can_attack', eval_name = 'healers_can_attack_eval', exec_name = 'healers_can_attack_exec',
-                    max_score = 99990, cfg_str = ''
+                    max_score = 99990, cfg_table = {}
                 }
             )
         end
@@ -215,11 +215,11 @@ function wesnoth.wml_actions.micro_ai(cfg)
         local CA_parms = {
             {
                 id = 'bottleneck_move', eval_name = 'bottleneck_move_eval', exec_name = 'bottleneck_move_exec',
-                max_score = 300000, cfg_str = AH.serialize(cfg_bd)
+                max_score = 300000, cfg_table = cfg_bd
             },
             {
                 id = 'bottleneck_attack', eval_name = 'bottleneck_attack_eval', exec_name = 'bottleneck_attack_exec',
-                max_score = 290000, cfg_str = ''
+                max_score = 290000, cfg_table = {}
             }
         }
 
@@ -251,15 +251,15 @@ function wesnoth.wml_actions.micro_ai(cfg)
         local CA_parms = {
             {
                 id = 'attack', eval_name = 'attack_eval', exec_name = 'attack_exec',
-                max_score = 300000, cfg_str = AH.serialize(cfg_me)
+                max_score = 300000, cfg_table = cfg_me
             },
             {
                 id = 'messenger_move', eval_name = 'messenger_move_eval', exec_name = 'messenger_move_exec',
-                max_score = 290000, cfg_str = AH.serialize(cfg_me)
+                max_score = 290000, cfg_table = cfg_me
             },
             {
                 id = 'other_move', eval_name = 'other_move_eval', exec_name = 'other_move_exec',
-                max_score = 280000, cfg_str = AH.serialize(cfg_me)
+                max_score = 280000, cfg_table = cfg_me
             },
         }
 
@@ -297,7 +297,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
         local CA_parms = {
             {
                 id = 'lurker_moves_lua', eval_name = 'lurker_attack_eval', exec_name = 'lurker_attack_exec',
-                max_score = 100010, cfg_str = AH.serialize(cfg_lurk)
+                max_score = 100010, cfg_table = cfg_lurk
             },
         }
 
@@ -356,15 +356,15 @@ function wesnoth.wml_actions.micro_ai(cfg)
         local CA_parms = {
             {
                 id = 'finish', eval_name = 'finish_eval', exec_name = 'finish_exec',
-                max_score = 300000, cfg_str = AH.serialize(cfg_pu)
+                max_score = 300000, cfg_table = cfg_pu
             },
             {
                 id = 'attack', eval_name = 'attack_eval', exec_name = 'attack_exec',
-                max_score = 95000, cfg_str = AH.serialize(cfg_pu)
+                max_score = 95000, cfg_table = cfg_pu
             },
             {
                 id = 'move', eval_name = 'move_eval', exec_name = 'move_exec',
-                max_score = 94000, cfg_str = AH.serialize(cfg_pu)
+                max_score = 94000, cfg_table = cfg_pu
             }
         }
 
@@ -464,7 +464,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
         local CA_parms = {
             {
                 id = guardian_type .. '_' .. cfg.id, eval_name = guardian_type .. '_eval', exec_name = guardian_type .. '_exec',
-                max_score = max_scores[guardian_type], sticky = true, unit_x = unit.x, unit_y = unit.y, cfg_str = AH.serialize(cfg_guardian)
+                max_score = max_scores[guardian_type], sticky = true, unit_x = unit.x, unit_y = unit.y, cfg_table = cfg_guardian
             },
         }
 
@@ -551,7 +551,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
             CA_parms = {
                 {
                     id = "big_animal", eval_name = 'big_eval', exec_name = 'big_exec',
-                    max_score = 300000, cfg_str = AH.serialize(cfg_animals)
+                    max_score = 300000, cfg_table = cfg_animals
                 }
             }
         end
@@ -560,11 +560,11 @@ function wesnoth.wml_actions.micro_ai(cfg)
             CA_parms = {
                 {
                     id = "wolves", eval_name = 'wolves_eval', exec_name = 'wolves_exec',
-                    max_score = 95000, cfg_str = AH.serialize(cfg_animals)
+                    max_score = 95000, cfg_table = cfg_animals
                 },
                 {
                     id = "wolves_wander", eval_name = 'wolves_wander_eval', exec_name = 'wolves_wander_exec',
-                    max_score = 90000, cfg_str = AH.serialize(cfg_animals)
+                    max_score = 90000, cfg_table = cfg_animals
                 }
             }
 
@@ -594,27 +594,27 @@ function wesnoth.wml_actions.micro_ai(cfg)
             CA_parms = {
                 {
                     id = "close_enemy", eval_name = 'herding_attack_close_enemy_eval', exec_name = 'herding_attack_close_enemy_exec',
-                    max_score = 300000, cfg_str = AH.serialize(cfg_animals)
+                    max_score = 300000, cfg_table = cfg_animals
                 },
                 {
                     id = "sheep_runs_enemy", eval_name = 'sheep_runs_enemy_eval', exec_name = 'sheep_runs_enemy_exec',
-                    max_score = 295000, cfg_str = AH.serialize(cfg_animals)
+                    max_score = 295000, cfg_table = cfg_animals
                 },
                 {
                     id = "sheep_runs_dog", eval_name = 'sheep_runs_dog_eval', exec_name = 'sheep_runs_dog_exec',
-                    max_score = 290000, cfg_str = AH.serialize(cfg_animals)
+                    max_score = 290000, cfg_table = cfg_animals
                 },
                 {
                     id = "herd_sheep", eval_name = 'herd_sheep_eval', exec_name = 'herd_sheep_exec',
-                    max_score = 280000, cfg_str = AH.serialize(cfg_animals)
+                    max_score = 280000, cfg_table = cfg_animals
                 },
                 {
                     id = "sheep_move", eval_name = 'sheep_move_eval', exec_name = 'sheep_move_exec',
-                    max_score = 270000, cfg_str = AH.serialize(cfg_animals)
+                    max_score = 270000, cfg_table = cfg_animals
                 },
                 {
                     id = "dog_move", eval_name = 'dog_move_eval', exec_name = 'dog_move_exec',
-                    max_score = 260000, cfg_str = AH.serialize(cfg_animals)
+                    max_score = 260000, cfg_table = cfg_animals
                 }
             }
         end
@@ -623,19 +623,19 @@ function wesnoth.wml_actions.micro_ai(cfg)
             CA_parms = {
                 {
                     id = "new_rabbit", eval_name = 'new_rabbit_eval', exec_name = 'new_rabbit_exec',
-                    max_score = 310000, cfg_str = AH.serialize(cfg_animals)
+                    max_score = 310000, cfg_table = cfg_animals
                 },
                 {
                     id = "tusker_attack", eval_name = 'tusker_attack_eval', exec_name = 'tusker_attack_exec',
-                    max_score = 300000, cfg_str = AH.serialize(cfg_animals)
+                    max_score = 300000, cfg_table = cfg_animals
                 },
                 {
                     id = "move", eval_name = 'forest_animals_move_eval', exec_name = 'forest_animals_move_exec',
-                    max_score = 290000, cfg_str = AH.serialize(cfg_animals)
+                    max_score = 290000, cfg_table = cfg_animals
                 },
                 {
                     id = "tusklet", eval_name = 'tusklet_eval', exec_name = 'tusklet_exec',
-                    max_score = 280000, cfg_str = AH.serialize(cfg_animals)
+                    max_score = 280000, cfg_table = cfg_animals
                 }
             }
         end
@@ -644,11 +644,11 @@ function wesnoth.wml_actions.micro_ai(cfg)
             CA_parms = {
                 {
                     id = "scatter_swarm", eval_name = 'scatter_swarm_eval', exec_name = 'scatter_swarm_exec',
-                    max_score = 300000, cfg_str = AH.serialize(cfg_animals)
+                    max_score = 300000, cfg_table = cfg_animals
                 },
                 {
                     id = "move_swarm", eval_name = 'move_swarm_eval', exec_name = 'move_swarm_exec',
-                    max_score = 290000, cfg_str = AH.serialize(cfg_animals)
+                    max_score = 290000, cfg_table = cfg_animals
                 }
             }
         end
@@ -657,11 +657,11 @@ function wesnoth.wml_actions.micro_ai(cfg)
             CA_parms = {
                 {
                     id = "wolves_multipacks_attack", eval_name = 'wolves_multipacks_attack_eval', exec_name = 'wolves_multipacks_attack_exec',
-                    max_score = 300000, cfg_str = AH.serialize(cfg_animals)
+                    max_score = 300000, cfg_table = cfg_animals
                 },
                 {
                     id = "wolves_multipacks_wander_eval", eval_name = 'wolves_multipacks_wander_eval', exec_name = 'wolves_multipacks_wander_exec',
-                    max_score = 290000, cfg_str = AH.serialize(cfg_animals)
+                    max_score = 290000, cfg_table = cfg_animals
                 }
             }
         end
@@ -671,7 +671,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
             CA_parms = {
                 {
                     id = "hunter_unit_" .. cfg_animals.id, eval_name = 'hunter_unit_eval', exec_name = 'hunter_unit_exec',
-                    max_score = 300000, sticky = true, unit_x = unit.x, unit_y = unit.y, cfg_str = AH.serialize(cfg_animals)
+                    max_score = 300000, sticky = true, unit_x = unit.x, unit_y = unit.y, cfg_table = cfg_animals
                 }
             }
         end
@@ -710,7 +710,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
         local CA_parms = {
             {
                 id = "patrol_unit_" .. cfg_p.id, eval_name = 'patrol_eval', exec_name = 'patrol_exec',
-                max_score = 300000, sticky = true, unit_x = unit.x, unit_y = unit.y, cfg_str = AH.serialize(cfg_p)
+                max_score = 300000, sticky = true, unit_x = unit.x, unit_y = unit.y, cfg_table = cfg_p
             },
         }
 
@@ -757,7 +757,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
             H.wml_error("[micro_ai] missing required recruiting_type= key")
         end
 
-        recruit_CA.cfg_str = AH.serialize(cfg_recruiting)
+        recruit_CA.cfg_table = cfg_recruiting
 
         CA_action(cfg.action, cfg.side, {recruit_CA})
 
