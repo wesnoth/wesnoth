@@ -9,7 +9,7 @@ return {
         function lurkers:lurker_attack_eval(cfg)
             -- If any lurker has moves left, we return score just above standard combat CA
             local units = wesnoth.get_units { side = wesnoth.current.side,
-                { "and", cfg.lurkers }, formula = '$this_unit.moves > 0'
+                { "and", cfg.filter }, formula = '$this_unit.moves > 0'
             }
 
             local eval = 0
@@ -22,7 +22,7 @@ return {
         function lurkers:lurker_attack_exec(cfg)
             -- We simply pick the first of the lurkers, they have no strategy
             local me = wesnoth.get_units { side = wesnoth.current.side,
-                { "and", cfg.lurkers }, formula = '$this_unit.moves > 0'
+                { "and", cfg.filter }, formula = '$this_unit.moves > 0'
             }[1]
             --print("me at:" .. me.x .. "," .. me.y)
 

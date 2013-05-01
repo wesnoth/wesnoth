@@ -278,7 +278,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
         if (cfg.action ~= "delete") then
             -- Required keys
             cfg = cfg.__parsed
-            local required_keys = {"lurkers", "attack_terrain"}
+            local required_keys = {"filter", "attack_terrain"}
             local optional_keys = {"stationary", "wander_terrain"}
 
             for k, v in pairs(required_keys) do
@@ -498,13 +498,13 @@ function wesnoth.wml_actions.micro_ai(cfg)
         required_keys["hunter_unit"] = { "id", "home_x", "home_y" }
         optional_keys["hunter_unit"] = { "hunting_ground", "rest_turns", "show_messages" }
 
-        required_keys["wolves"] = { "predators", "prey" }
+        required_keys["wolves"] = { "filter", "filter_second" }
         optional_keys["wolves"] = { "avoid_type" }
 
         required_keys["wolves_multipacks"] = {}
         optional_keys["wolves_multipacks"] = { "type", "pack_size", "show_pack_number" }
 
-        required_keys["big_animals"] = { "big_animals"}
+        required_keys["big_animals"] = { "filter"}
         optional_keys["big_animals"] = { "avoid_unit", "goal_terrain", "wander_terrain" }
 
         required_keys["forest_animals"] = {}
@@ -515,7 +515,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
         required_keys["swarm"] = {}
         optional_keys["swarm"] = { "scatter_distance", "vision_distance", "enemy_distance" }
 
-        required_keys["herding"] = { "herding_perimeter", "herd", "herders", "herd_x", "herd_y" }
+        required_keys["herding"] = { "herding_perimeter", "filter", "filter_second", "herd_x", "herd_y" }
         optional_keys["herding"] = { "attention_distance", "attack_distance" }
 
         if (cfg.action~='delete') then
