@@ -254,7 +254,7 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_REDO:
 			return context_manager_->get_map_context().can_redo();
 		case HOTKEY_EDITOR_PARTIAL_UNDO:
-			return true;
+			return context_manager_->get_map_context().can_undo();
 		case TITLE_SCREEN__RELOAD_WML:
 		case HOTKEY_EDITOR_QUIT_TO_DESKTOP:
 		case HOTKEY_EDITOR_SETTINGS:
@@ -263,8 +263,10 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_SIDE_SWITCH:
 		case HOTKEY_EDITOR_MAP_LOAD:
 		case HOTKEY_EDITOR_MAP_SAVE_AS:
-		case HOTKEY_EDITOR_BRUSH_NEXT:
 			return true;
+
+		// brushes
+		case HOTKEY_EDITOR_BRUSH_NEXT:
 		case HOTKEY_EDITOR_BRUSH_1:
 		case HOTKEY_EDITOR_BRUSH_2:
 		case HOTKEY_EDITOR_BRUSH_3:
@@ -276,29 +278,38 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_PALETTE_ITEM_SWAP:
 			return true;
 		case HOTKEY_EDITOR_MAP_SAVE:
+			return context_manager_->get_map_context().modified();
 		case HOTKEY_EDITOR_MAP_SAVE_ALL:
 		case HOTKEY_EDITOR_SWITCH_MAP:
 		case HOTKEY_EDITOR_CLOSE_MAP:
 			return true;
 		case HOTKEY_EDITOR_MAP_REVERT:
-			return !context_manager_->get_map_context().get_filename().empty();
+			return !context_manager_->get_map_context().get_filename().empty()
+					&& context_manager_->get_map_context().modified();
+
+		// Tools
 		case HOTKEY_EDITOR_TOOL_PAINT:
 		case HOTKEY_EDITOR_TOOL_FILL:
 		case HOTKEY_EDITOR_TOOL_SELECT:
 		case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
-			return true;
 		case HOTKEY_EDITOR_TOOL_LABEL:
 			return true;
 		case HOTKEY_EDITOR_TOOL_UNIT:
 		case HOTKEY_EDITOR_TOOL_VILLAGE:
-			return false;
-		//	return !context_manager_->get_map().get_teams().empty();
+			return !context_manager_->get_map_context().get_teams().empty();
+
 		case HOTKEY_EDITOR_CUT:
 		case HOTKEY_EDITOR_COPY:
-		case HOTKEY_EDITOR_EXPORT_SELECTION_COORDS:
+
+			//TODO
+//		case HOTKEY_EDITOR_EXPORT_SELECTION_COORDS:
+
 		case HOTKEY_EDITOR_SELECTION_FILL:
+			return !context_manager_->get_map().selection().empty()
+					&& !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_PASTE);
 		case HOTKEY_EDITOR_SELECTION_RANDOMIZE:
-			return !context_manager_->get_map().selection().empty();
+			return (context_manager_->get_map().selection().size() > 1
+					&& !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_PASTE));
 		case HOTKEY_EDITOR_SELECTION_ROTATE:
 		case HOTKEY_EDITOR_SELECTION_FLIP:
 		case HOTKEY_EDITOR_SELECTION_GENERATE:
@@ -309,10 +320,15 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_CLIPBOARD_ROTATE_CCW:
 		case HOTKEY_EDITOR_CLIPBOARD_FLIP_HORIZONTAL:
 		case HOTKEY_EDITOR_CLIPBOARD_FLIP_VERTICAL:
-			return !context_manager_->clipboard_empty();
+			return !context_manager_->clipboard_empty()
+					&& toolkit_->is_mouse_action_set(HOTKEY_EDITOR_PASTE);
 		case HOTKEY_EDITOR_SELECT_ALL:
-		case HOTKEY_EDITOR_SELECT_INVERSE:
 		case HOTKEY_EDITOR_SELECT_NONE:
+			return !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_PASTE);
+		case HOTKEY_EDITOR_SELECT_INVERSE:
+			return !context_manager_->get_map_context().get_map().selection().empty()
+					&& !context_manager_->get_map_context().get_map().everything_selected()
+					&& !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_PASTE);
 		case HOTKEY_EDITOR_MAP_RESIZE:
 		case HOTKEY_EDITOR_MAP_GENERATE:
 		case HOTKEY_EDITOR_MAP_APPLY_MASK:
@@ -320,6 +336,8 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_REFRESH:
 		case HOTKEY_EDITOR_UPDATE_TRANSITIONS:
 		case HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS:
+		case HOTKEY_EDITOR_PARTIAL_UPDATE_TRANSITIONS:
+		case HOTKEY_EDITOR_NO_UPDATE_TRANSITIONS:
 		case HOTKEY_EDITOR_REFRESH_IMAGE_CACHE:
 			return true;
 		case HOTKEY_EDITOR_MAP_ROTATE:
@@ -336,46 +354,63 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 	using namespace hotkey;
 	switch (command) {
 
-		case HOTKEY_EDITOR_BRUSH_1:
-			return toolkit_->is_active_brush("brush-1") ? ACTION_ON : ACTION_OFF;
-		case HOTKEY_EDITOR_BRUSH_2:
-			return toolkit_->is_active_brush("brush-2") ? ACTION_ON : ACTION_OFF;
-		case HOTKEY_EDITOR_BRUSH_3:
-			return toolkit_->is_active_brush("brush-3") ? ACTION_ON : ACTION_OFF;
-		case HOTKEY_EDITOR_BRUSH_NW_SE:
-			return toolkit_->is_active_brush("brush-nw-se") ? ACTION_ON : ACTION_OFF;
-		case HOTKEY_EDITOR_BRUSH_SW_NE:
-			return toolkit_->is_active_brush("brush-se-nw") ? ACTION_ON : ACTION_OFF;
+	//TODO remove hardcoded hotkey names
+	case HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS:
+		return context_manager_->is_active_transitions_hotkey("editor-auto-update-transitions")
+				? ACTION_SELECTED : ACTION_DESELECTED;
+	case HOTKEY_EDITOR_PARTIAL_UPDATE_TRANSITIONS:
+		return context_manager_->is_active_transitions_hotkey("editor-partial-update-transitions")
+				? ACTION_SELECTED : ACTION_DESELECTED;
+	case HOTKEY_EDITOR_NO_UPDATE_TRANSITIONS:
+		return context_manager_->is_active_transitions_hotkey("editor-no-update-transitions")
+				? ACTION_SELECTED : ACTION_DESELECTED;
+	case HOTKEY_EDITOR_BRUSH_1:
+		return toolkit_->is_active_brush("brush-1") ? ACTION_ON : ACTION_OFF;
+	case HOTKEY_EDITOR_BRUSH_2:
+		return toolkit_->is_active_brush("brush-2") ? ACTION_ON : ACTION_OFF;
+	case HOTKEY_EDITOR_BRUSH_3:
+		return toolkit_->is_active_brush("brush-3") ? ACTION_ON : ACTION_OFF;
+	case HOTKEY_EDITOR_BRUSH_NW_SE:
+		return toolkit_->is_active_brush("brush-nw-se") ? ACTION_ON : ACTION_OFF;
+	case HOTKEY_EDITOR_BRUSH_SW_NE:
+		return toolkit_->is_active_brush("brush-se-nw") ? ACTION_ON : ACTION_OFF;
 
-		case HOTKEY_ZOOM_DEFAULT:
-			return (gui_->get_zoom_factor() == 1.0) ? ACTION_ON : ACTION_OFF;
-		case HOTKEY_TOGGLE_GRID:
-			return preferences::grid() ? ACTION_ON : ACTION_OFF;
-		case HOTKEY_EDITOR_TOOL_FILL:
-		case HOTKEY_EDITOR_TOOL_LABEL:
-		case HOTKEY_EDITOR_TOOL_PAINT:
-		case HOTKEY_EDITOR_TOOL_SELECT:
-		case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
-		case HOTKEY_EDITOR_TOOL_UNIT:
-		case HOTKEY_EDITOR_TOOL_VILLAGE:
-			return toolkit_->is_mouse_action_set(command) ? ACTION_ON : ACTION_OFF;
-		case HOTKEY_EDITOR_DRAW_COORDINATES:
-			return gui_->get_draw_coordinates() ? ACTION_ON : ACTION_OFF;
-		case HOTKEY_EDITOR_DRAW_TERRAIN_CODES:
-			return gui_->get_draw_terrain_codes() ? ACTION_ON : ACTION_OFF;
-		case HOTKEY_NULL:
-			switch (active_menu_) {
-				case editor::MAP:
-					return index == context_manager_->current_context_index() ? ACTION_ON : ACTION_OFF;
-				case editor::PALETTE:
-					return ACTION_STATELESS;
-				case editor::AREA:
-				case editor::SIDE:
-					return static_cast<size_t>(index) == gui_->playing_team()
-							? ACTION_ON
-							: ACTION_OFF;
-			}
-			return ACTION_ON;
+	case HOTKEY_ZOOM_DEFAULT:
+		return (gui_->get_zoom_factor() == 1.0) ? ACTION_ON : ACTION_OFF;
+	case HOTKEY_TOGGLE_GRID:
+		return preferences::grid() ? ACTION_ON : ACTION_OFF;
+	case HOTKEY_EDITOR_SELECT_ALL:
+		return context_manager_->get_map_context().get_map().everything_selected() ?
+				ACTION_SELECTED : ACTION_DESELECTED;
+	case HOTKEY_EDITOR_SELECT_NONE:
+		return context_manager_->get_map_context().get_map().selection().empty() ?
+				ACTION_SELECTED : ACTION_DESELECTED;
+	case HOTKEY_EDITOR_TOOL_FILL:
+	case HOTKEY_EDITOR_TOOL_LABEL:
+	case HOTKEY_EDITOR_TOOL_PAINT:
+	case HOTKEY_EDITOR_TOOL_SELECT:
+	case HOTKEY_EDITOR_PASTE:
+	case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
+	case HOTKEY_EDITOR_TOOL_UNIT:
+	case HOTKEY_EDITOR_TOOL_VILLAGE:
+		return toolkit_->is_mouse_action_set(command) ? ACTION_ON : ACTION_OFF;
+	case HOTKEY_EDITOR_DRAW_COORDINATES:
+		return gui_->get_draw_coordinates() ? ACTION_ON : ACTION_OFF;
+	case HOTKEY_EDITOR_DRAW_TERRAIN_CODES:
+		return gui_->get_draw_terrain_codes() ? ACTION_ON : ACTION_OFF;
+	case HOTKEY_NULL:
+		switch (active_menu_) {
+		case editor::MAP:
+			return index == context_manager_->current_context_index()
+					? ACTION_SELECTED : ACTION_DESELECTED;
+		case editor::PALETTE:
+			return ACTION_STATELESS;
+		case editor::AREA:
+		case editor::SIDE:
+			return static_cast<size_t>(index) == gui_->playing_team()
+					? ACTION_SELECTED : ACTION_DESELECTED;
+		}
+		return ACTION_ON;
 		default:
 			return command_executor::get_action_state(command, index);
 	}
@@ -405,13 +440,16 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			case SIDE:
 				gui_->set_team(index, true);
 				gui_->set_playing_team(index);
-				toolkit_->get_palette_manager()->draw(true);
+				//TODO
+			//	toolkit_->get_palette_manager()->draw();
 				return true;
 			case AREA:
 				//TODO
 				return true;
 			}
 			return true;
+
+			//Zoom
 		case HOTKEY_ZOOM_IN:
 			gui_->set_zoom(zoom_amount);
 			context_manager_->get_map_context().get_labels().recalculate_labels();
@@ -424,11 +462,16 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			gui_->set_default_zoom();
 			context_manager_->get_map_context().get_labels().recalculate_labels();
 			return true;
+
+			//Palette
 		case HOTKEY_EDITOR_PALETTE_GROUPS:
-			//TODO mordante
-			//std::vector< std::pair< std::string, std::string > > items;
-			//toolkit_->get_palette_manager()->active_palette().expand_palette_groups_menu(items);
-			//new_dialog(items);
+		{
+			//TODO
+//			std::vector< std::pair< std::string, std::string > > blah_items;
+//			toolkit_->get_palette_manager()->active_palette().expand_palette_groups_menu(blah_items);
+//			int selected = 1; //toolkit_->get_palette_manager()->active_palette().get_selected;
+//			gui2::teditor_select_palette_group::execute(selected, blah_items, gui_->video());
+		}
 			return true;
 		case HOTKEY_EDITOR_PALETTE_UPSCROLL:
 			toolkit_->get_palette_manager()->scroll_up();
@@ -438,6 +481,7 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			toolkit_->get_palette_manager()->scroll_down();
 			gui_->draw(true,false);
 			return true;
+
 		case HOTKEY_QUIT_GAME:
 			quit_confirm(EXIT_NORMAL);
 			return true;
@@ -464,6 +508,8 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 				undo();
 			}
 			return true;
+
+			//Tool Selection
 		case HOTKEY_EDITOR_TOOL_PAINT:
 		case HOTKEY_EDITOR_TOOL_FILL:
 		case HOTKEY_EDITOR_TOOL_SELECT:
@@ -473,9 +519,12 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 		case HOTKEY_EDITOR_TOOL_VILLAGE:
 			toolkit_->hotkey_set_mouse_action(command);
 			return true;
+
 		case HOTKEY_EDITOR_PASTE: //paste is somewhat different as it might be "one action then revert to previous mode"
 			toolkit_->hotkey_set_mouse_action(command);
 			return true;
+
+			//Clipboard
 		case HOTKEY_EDITOR_CLIPBOARD_ROTATE_CW:
 			context_manager_->get_clipboard().rotate_60_cw();
 			toolkit_->update_mouse_action_highlights();
@@ -492,6 +541,8 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			context_manager_->get_clipboard().flip_vertical();
 			toolkit_->update_mouse_action_highlights();
 			return true;
+
+			//Brushes
 		case HOTKEY_EDITOR_BRUSH_NEXT:
 			toolkit_->cycle_brush();
 			return true;
@@ -511,16 +562,17 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			toolkit_->set_brush("brush-sw-ne");
 			return true;
 
-
 		case HOTKEY_EDITOR_COPY:
 			copy_selection();
 			return true;
 		case HOTKEY_EDITOR_CUT:
 			cut_selection();
 			return true;
+		/* TODO
 		case HOTKEY_EDITOR_EXPORT_SELECTION_COORDS:
 			export_selection_coords();
 			return true;
+		*/
 		case HOTKEY_EDITOR_SELECT_ALL:
 			if (!context_manager_->get_map().everything_selected()) {
 				context_manager_->perform_refresh(editor_action_select_all());
@@ -552,7 +604,7 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			context_manager_->new_map_dialog();
 			return true;
 		case HOTKEY_EDITOR_SIDE_NEW:
-		//	context_manager_->get_map().new_side();
+			context_manager_->get_map_context().new_side();
 			gui_->init_flags();
 			return true;
 		case HOTKEY_EDITOR_MAP_SAVE:
@@ -616,16 +668,6 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 	std::vector<std::string>::iterator i = items.begin();
 	while(i != items.end()) {
 
-		if ( (*i == "editor-update-transitions-enabled")
-				|| (*i == "editor-update-transitions-partial")
-				|| (*i == "editor-update-transitions-disabled") ) {
-
-			if (!context_manager_->is_active_transitions_hotkey(*i)) {
-				i = items.erase(i);
-				continue;
-			}
-		}
-
 		hotkey::HOTKEY_COMMAND command = hotkey::get_id(*i);
 		if(!can_execute_command(command)
 				|| (context_menu && !in_context_menu(command))) {
@@ -637,17 +679,15 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 	if (!items.empty() && items.front() == "editor-switch-map") {
 		active_menu_ = editor::MAP;
 		context_manager_->expand_open_maps_menu(items);
-		context_menu = true; //FIXME hack to display a one-item menu
 	}
+	//TODO
 //	if (!items.empty() && items.front() == "editor-palette-groups") {
 //		active_menu_ = editor::PALETTE;
 //		toolkit_->get_palette_manager()->active_palette().expand_palette_groups_menu(items);
-//		context_menu = true; //FIXME hack to display a one-item menu
 //	}
 	if (!items.empty() && items.front() == "editor-side-switch") {
 		active_menu_ = editor::SIDE;
 		context_manager_->expand_sides_menu(items);
-		context_menu = true; //FIXME hack to display a one-item menu
 	}
 
 	command_executor::show_menu(items, xloc, yloc, context_menu, gui());
@@ -679,6 +719,7 @@ void editor_controller::cut_selection()
 	context_manager_->perform_refresh(editor_action_paint_area(context_manager_->get_map().selection(), get_selected_bg_terrain()));
 }
 
+/* TODO
 void editor_controller::export_selection_coords()
 {
 	std::stringstream ssx, ssy;
@@ -696,6 +737,7 @@ void editor_controller::export_selection_coords()
 		copy_to_clipboard(ssx.str(), false);
 	}
 }
+*/
 
 void editor_controller::perform_delete(editor_action* action)
 {
@@ -784,15 +826,19 @@ bool editor_controller::right_click_show_menu(int /*x*/, int /*y*/, const bool /
 bool editor_controller::left_click(int x, int y, const bool browse)
 {
 	toolkit_->clear_mouseover_overlay();
-	if (mouse_handler_base::left_click(x, y, browse)) return true;
+	if (mouse_handler_base::left_click(x, y, browse))
+		return true;
+
 	LOG_ED << "Left click, after generic handling\n";
 	map_location hex_clicked = gui().hex_clicked_on(x, y);
-	if (!context_manager_->get_map().on_board_with_border(hex_clicked)) return true;
+	if (!context_manager_->get_map().on_board_with_border(hex_clicked))
+		return true;
+
 	LOG_ED << "Left click action " << hex_clicked.x << " " << hex_clicked.y << "\n";
 	editor_action* a = toolkit_->get_mouse_action()->click_left(*gui_, x, y);
 	perform_refresh_delete(a, true);
 	if (a) set_button_state(*gui_);
-	toolkit_->get_mouse_action()->get_palette().draw(true);
+
 	return false;
 }
 
@@ -807,8 +853,8 @@ void editor_controller::left_mouse_up(int x, int y, const bool /*browse*/)
 	editor_action* a = toolkit_->get_mouse_action()->up_left(*gui_, x, y);
 	perform_delete(a);
 	if (a) set_button_state(*gui_);
-	context_manager_->refresh_after_action();
 	toolkit_->set_mouseover_overlay();
+	context_manager_->refresh_after_action();
 }
 
 bool editor_controller::right_click(int x, int y, const bool browse)
@@ -822,7 +868,6 @@ bool editor_controller::right_click(int x, int y, const bool browse)
 	editor_action* a = toolkit_->get_mouse_action()->click_right(*gui_, x, y);
 	perform_refresh_delete(a, true);
 	if (a) set_button_state(*gui_);
-	toolkit_->get_mouse_action()->get_palette().draw(true);
 	return false;
 }
 
@@ -837,8 +882,8 @@ void editor_controller::right_mouse_up(int x, int y, const bool /*browse*/)
 	editor_action* a = toolkit_->get_mouse_action()->up_right(*gui_, x, y);
 	perform_delete(a);
 	if (a) set_button_state(*gui_);
-	context_manager_->refresh_after_action();
 	toolkit_->set_mouseover_overlay();
+	context_manager_->refresh_after_action();
 }
 
 void editor_controller::process_keyup_event(const SDL_Event& event)
