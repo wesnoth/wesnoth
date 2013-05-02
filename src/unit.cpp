@@ -1809,7 +1809,9 @@ void unit::start_animation(int start_time, const unit_animation *animation,
 {
 	const display * disp =  display::get_singleton();
 	if (!animation) {
-		if (!anim_ || state_ != STATE_STANDING)
+		if (state == STATE_STANDING)
+			state_ = state;
+		if (!anim_ && state_ != STATE_STANDING)
 			set_standing(with_bars);
 		return ;
 	}
