@@ -471,7 +471,8 @@ scoped_wml_variable::scoped_wml_variable(const std::string& var_name) :
 	var_name_(var_name),
 	activated_(false)
 {
-	resources::gamedata->scoped_variables.push_back(this);
+	if (resources::gamedata)
+		resources::gamedata->scoped_variables.push_back(this);
 }
 
 config &scoped_wml_variable::store(const config &var_value)
@@ -495,8 +496,10 @@ scoped_wml_variable::~scoped_wml_variable()
 		}
 		LOG_NG << "scoped_wml_variable: var_name \"" << var_name_ << "\" has been reverted.\n";
 	}
-	assert(resources::gamedata->scoped_variables.back() == this);
-	resources::gamedata->scoped_variables.pop_back();
+	if (resources::gamedata) {
+		assert(resources::gamedata->scoped_variables.back() == this);
+		resources::gamedata->scoped_variables.pop_back();
+	}
 }
 
 void scoped_xy_unit::activate()
