@@ -1269,7 +1269,7 @@ function battle_calcs.relative_damage_map(units, enemies, cache)
         local max_rating, best_enemy = -9e99, {}
         for j,e in ipairs(enemies) do
             local rating, defender_rating, attacker_rating, attacker_rating_av =
-                battle_calcs.attack_rating(u, e, { u.x, u.y }, {}, cache)
+                battle_calcs.attack_rating(u, e, { u.x, u.y }, { enemy_leader_weight = 1 }, cache)
             --print('my', u.id, e.id, rating, defender_rating, attacker_rating, attacker_rating_av)
             local eff_rating = defender_rating
             if (eff_rating > max_rating) then
@@ -1286,7 +1286,7 @@ function battle_calcs.relative_damage_map(units, enemies, cache)
         local max_rating, best_unit = -9e99, {}
         for j,u in ipairs(units) do
             local rating, defender_rating, attacker_rating, attacker_rating_av =
-                battle_calcs.attack_rating(e, u, { e.x, e.y }, {}, cache)
+                battle_calcs.attack_rating(e, u, { e.x, e.y }, { enemy_leader_weight = 1 }, cache)
             --print('enemy', e.id, u.id, rating, defender_rating, attacker_rating, attacker_rating_av)
             local eff_rating = defender_rating
             if (eff_rating > max_rating) then
