@@ -1248,9 +1248,12 @@ function battle_calcs.relative_damage_map(units, enemies, cache)
     -- units vs. enemies on the part of the map that the combined units
     -- can reach.  The damage is calculated as the sum of defender_rating
     -- from attack_rating(), and thus (roughly) in gold units.
+    -- Also returns the same maps for the own and enemy units only
+    -- (with the enemy_damage_map having positive sign, while in the
+    --  overall damage map it is subtracted)
 
     -- Get the attack maps for each unit in 'units' and 'enemies'
-    my_attack_maps, enemy_attack_maps = {}, {}
+    local my_attack_maps, enemy_attack_maps = {}, {}
     for i,u in ipairs(units) do
         my_attack_maps[i] = battle_calcs.get_attack_map_unit(u, cfg)
     end
@@ -1296,20 +1299,22 @@ function battle_calcs.relative_damage_map(units, enemies, cache)
 
     -- The damage map is now the sum of these ratings for each unit that can attack a given hex,
     -- counting own-unit ratings as positive, enemy ratings as negative
-    local damage_map = LS.create()
+    local damage_map, own_damage_map, enemy_damage_map = LS.create(), LS.create(), LS.create()
     for i,u in ipairs(units) do
         my_attack_maps[i].units:iter(function(x, y, v)
+            own_damage_map:insert(x, y, (own_damage_map:get(x, y) or 0) + unit_ratings[i].rating)
             damage_map:insert(x, y, (damage_map:get(x, y) or 0) + unit_ratings[i].rating)
         end)
     end
     for i,e in ipairs(enemies) do
         enemy_attack_maps[i].units:iter(function(x, y, v)
+            enemy_damage_map:insert(x, y, (enemy_damage_map:get(x, y) or 0) + enemy_ratings[i].rating)
             damage_map:insert(x, y, (damage_map:get(x, y) or 0) - enemy_ratings[i].rating)
         end)
     end
     --AH.put_labels(damage_map)
 
-    return damage_map
+    return damage_map, own_damage_map, enemy_damage_map
 end
 
 return battle_calcs
