@@ -35,6 +35,11 @@ public:
 
 	size_t modified_maps(std::string& modified);
 
+	void set_update_trasitions_mode(int mode) {
+		auto_update_transitions_ = mode;
+		preferences::editor::set_auto_update_transitions(mode);
+	}
+
 	bool toggle_update_transitions() {
 		auto_update_transitions_ = (auto_update_transitions_ + 1)
 				% preferences::editor::TransitionUpdateMode::count;

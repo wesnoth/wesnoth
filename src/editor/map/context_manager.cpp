@@ -72,10 +72,10 @@ public:
 		resources::units = &context_manager_.get_map_context().get_units();
 
 		// TODO register the tod_manager with the gui?
-		//resources::tod_manager = &ec_.get_map().get_time_manager();
-		//ec_.gui().change_teams(&ec_.get_map().get_teams());
+		resources::tod_manager = &context_manager_.get_map_context().get_time_manager();
+		context_manager_.gui().change_teams(&context_manager_.get_map_context().get_teams());
 
-		//resources::teams = &ec_.get_map().get_teams();
+		resources::teams = &context_manager_.get_map_context().get_teams();
 		context_manager_.reload_map();
 
 		//resources::state_of_game = &ec_.get_map().get_game_state();
@@ -95,11 +95,11 @@ bool context_manager::is_active_transitions_hotkey(const std::string& item) {
 	switch (auto_update_transitions_) {
 
 		case preferences::editor::TransitionUpdateMode::on:
-			return (item == "editor-update-transitions-enabled");
+			return (item == "editor-auto-update-transitions");
 		case preferences::editor::TransitionUpdateMode::partial:
-			return (item == "editor-update-transitions-partial");
+			return (item == "editor-partial-update-transitions");
 		case preferences::editor::TransitionUpdateMode::off:
-			return (item == "editor-update-transitions-disabled");
+			return (item == "editor-no-update-transitions");
 	}
 	return true; //should not be reached
 }
@@ -224,16 +224,16 @@ void context_manager::expand_sides_menu(std::vector<std::string>& items)
                if (items[i] == "editor-side-switch") {
                        items.erase(items.begin() + i);
                        std::vector<std::string> contexts;
-                       /*
-                       for (size_t mci = 0; mci < get_map().get_teams().size(); ++mci) {
 
-                    	   	   const team& t = get_map().get_teams()[mci];
+                       for (size_t mci = 0; mci < get_map_context().get_teams().size(); ++mci) {
+
+                    	   	   const team& t = get_map_context().get_teams()[mci];
                                std::stringstream label;
                                label << "[" << mci+1 << "] ";
                                label << (t.name().empty() ? _("(New Side)") : t.name());
                                contexts.push_back(label.str());
                        }
-                       */
+
                        items.insert(items.begin() + i, contexts.begin(), contexts.end());
                        break;
                }
