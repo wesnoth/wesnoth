@@ -35,8 +35,11 @@ end
 
 function ai_helper.done_eval_messages(start_time, ca_name)
     ca_name = ca_name or 'unknown'
-    local dt = os.clock() - start_time
-    if ai_helper.print_eval() then print('       - Done evaluating ' .. ca_name .. ':', os.clock(), ' ---------------> ', dt) end
+    local dt = wesnoth.get_time_stamp() /1000. - start_time
+    if ai_helper.print_eval() then
+        ai_helper.print_ts_delta(start_time, '       - Done evaluating ' .. ca_name .. ':')
+    end
+
     if (dt >= 10) then
         W.message{
             speaker = 'narrator',
@@ -69,6 +72,38 @@ function ai_helper.put_labels(map, factor)
           if (out ~= 'nan') then out = out * factor end
           W.label { x = x, y = y, text = out }
     end)
+end
+
+function ai_helper.print_ts(...)
+    -- Print arguments preceded by a time stamp in seconds
+    -- Also returns that time stamp
+
+    local ts = wesnoth.get_time_stamp() / 1000.
+
+    local arg = {...}
+    arg[#arg+1] = string.format('[ t = %.3f ]', ts)
+
+    print(table.unpack(arg))
+
+    return ts
+end
+
+function ai_helper.print_ts_delta(start_time, ...)
+    -- start_time: time stamp in seconds as returned by wesnoth.get_time_stamp / 1000.
+
+    -- Same as ai_helper.print_ts(), but also adds time elapsed since
+    -- the time given in the first argument (in seconds)
+    -- Returns time stamp as well as time elapsed
+
+    local ts = wesnoth.get_time_stamp() / 1000.
+    local delta = ts - start_time
+
+    local arg = {...}
+    arg[#arg+1] = string.format('[ t = %.3f, dt = %.3f ]', ts, delta)
+
+    print(table.unpack(arg))
+
+    return ts, delta
 end
 
 ----- General functionality and maths helper functions ------
@@ -644,7 +679,7 @@ function ai_helper.get_dst_src_units(units, cfg)
         end
         for j,r in ipairs(reach) do
             local tmp = dstsrc:get(r[1], r[2]) or {}
-            table.insert(tmp, {x = u.x, y = u.y})
+            table.insert(tmp, { x = u.x, y = u.y })
             dstsrc:insert(r[1], r[2], tmp)
         end
     end
@@ -669,10 +704,10 @@ function ai_helper.get_enemy_dst_src()
     -- Produces the same output as ai.get_enemy_dst_src()   (available in 1.11.0)
 
     local enemies = wesnoth.get_units {
-        { "filter_side", {{"enemy_of", {side = wesnoth.current.side} }} }
+        { "filter_side", { { "enemy_of", { side = wesnoth.current.side} } } }
     }
 
-    return ai_helper.get_dst_src_units(enemies, {moves = 'max'})
+    return ai_helper.get_dst_src_units(enemies, { moves = 'max' })
 end
 
 function ai_helper.my_moves()
@@ -717,7 +752,8 @@ end
 
 function ai_helper.next_hop(unit, x, y, cfg)
     -- Finds the next "hop" of 'unit' on its way to (x,y)
-    -- Returns coordinates of the endpoint of the hop, and movement cost to get there
+    -- Returns coordinates of the endpoint of the hop (or nil if no path to
+    -- (x,y) is found for the unit), and movement cost to get there
     -- only unoccupied hexes are considered
     -- cfg: standard extra options for wesnoth.find_path()
     --   plus:
@@ -729,7 +765,7 @@ function ai_helper.next_hop(unit, x, y, cfg)
     if cost >= ai_helper.no_path then return nil, cost end
 
     -- If none of the hexes are unoccupied, use current position as default
-    local next_hop, nh_cost = {unit.x, unit.y}, 0
+    local next_hop, nh_cost = { unit.x, unit.y }, 0
 
     -- Go through loop to find reachable, unoccupied hex along the path
     -- Start at second index, as first is just the unit position itself
@@ -808,8 +844,8 @@ end
 function ai_helper.get_reachable_unocc(unit, cfg)
     -- Get all reachable hexes for unit that are unoccupied (incl. by allied units)
     -- Returned array is a location set, with value = 1 for each reachable hex
-    -- cfg: parameters to wesnoth.find_reach, such as {additional_turns = 1}
-    -- additional, {moves = 'max'} can be set inside cfg, which sets unit MP to max_moves before calculation
+    -- cfg: parameters to wesnoth.find_reach, such as { additional_turns = 1 }
+    -- additional, { moves = 'max' } can be set inside cfg, which sets unit MP to max_moves before calculation
 
     local old_moves = unit.moves
     if cfg then
@@ -847,6 +883,7 @@ function ai_helper.find_best_move(units, rating_function, cfg)
     -- OUTPUTS:
     --  best_hex: format { x, y }
     --  best_unit: unit for which this rating function produced the maximum value
+    --  max_rating: the rating found for this hex/unit combination
     -- If no valid moves were found, best_unit and best_hex are empty arrays
 
     -- If 'cfg' is not set, we need it as an empty array
@@ -875,7 +912,7 @@ function ai_helper.find_best_move(units, rating_function, cfg)
         if cfg.labels then ai_helper.put_labels(reach_map) end
     end
 
-    return best_hex, best_unit
+    return best_hex, best_unit, max_rating
 end
 
 function ai_helper.move_unit_out_of_way(ai, unit, cfg)
@@ -1207,28 +1244,78 @@ function ai_helper.get_attack_combos(units, enemy, cfg)
     --   1. Attack combinations in form { dst = src }
     --   2. All the attacks indexed by [dst][src]
 
-    local attacks = ai_helper.get_attacks(units, cfg)
-    --print('# all attacks', #attacks, os.clock())
+    -- We don't need the full attacks here, just the coordinates,
+    -- so for speed reasons, we do not use ai_helper.get_attacks()
 
-    --Eliminate those that are not on 'enemy'
-    for i = #attacks,1,-1 do
-        if (attacks[i].target.x ~= enemy.x) or (attacks[i].target.y ~= enemy.y) then
-            table.remove(attacks, i)
+    -- For units on the current side, we need to make sure that
+    -- there isn't a unit in the way that cannot move any more
+    -- TODO: generalize it so that it works not only for units with moves=0, but blocked units etc.
+    local blocked_hexes = LS.create()
+    if units[1] and (units[1].side == wesnoth.current.side) then
+        local all_units = wesnoth.get_units { side = wesnoth.current.side }
+        for i,u in ipairs(all_units) do
+            if (u.moves == 0) then
+                blocked_hexes:insert(u.x, u.y)
+            end
         end
     end
-    --print('# enemy attacks', #attacks)
+    --ai_helper.print_ts('blocked_hexes:size()', blocked_hexes:size())
 
-    if (not attacks[1]) then return {}, {} end
-
-    -- Find all hexes adjacent to enemy that can be reached by any attacker
-    -- Put this into an array that has dst as key,
-    -- and array of all units (src) that can get there as value (in from x*1000+y)
-    local attacks_dst_src = {}
-    for i,a in ipairs(attacks) do
-        local xy = a.dst.x * 1000 + a.dst.y
-        if (not attacks_dst_src[xy]) then attacks_dst_src[xy] = { 0 } end  -- for attack by no unit on this hex
-        table.insert(attacks_dst_src[xy], a.src.x * 1000 + a.src.y )
+    local old_moves = {}
+    -- For sides other than the current, we always use max_moves,
+    -- for the current side we always use current moves
+    for i,u in ipairs(units) do
+        if (u.side ~= wesnoth.current.side) then
+            old_moves[i] = u.moves
+            u.moves = u.max_moves
+        end
     end
+
+    -- Find which units in 'units' can get to hexes next to the enemy
+    local attacks_dst_src = {}
+    local found_attacks = false
+    for x, y in H.adjacent_tiles(enemy.x, enemy.y) do
+
+        -- Make sure the hex is not occupied by unit that cannot move out of the way
+
+        local dst = x * 1000 + y
+
+        for i,u in ipairs(units) do
+            if ((u.x == x) and (u.y == y)) or (not blocked_hexes:get(x, y)) then
+
+                -- helper.distance_between() is much faster than wesnoth.find_path()
+                --> pre-filter using the former
+                local cost = H.distance_between(u.x, u.y, x, y)
+
+                -- If the distance is <= the unit's MP, then see if it can actually get there
+                -- This also means that only short paths have to be evaluated (in most situations)
+                if (cost <= u.moves) then
+                    local path  -- since cost is already defined outside this block
+                    path, cost = wesnoth.find_path(u, x, y)
+                end
+
+                if (cost <= u.moves) then
+                    -- for attack by no unit on this hex
+                    if (not attacks_dst_src[dst]) then
+                        attacks_dst_src[dst] = { 0, u.x * 1000 + u.y }
+                        found_attacks = true  -- since attacks_dst_src is not a simple array, this is easier
+                    else
+                        table.insert(attacks_dst_src[dst], u.x * 1000 + u.y )
+                    end
+                end
+            end
+        end
+    end
+
+    -- Reset moves for all units
+    for i,u in ipairs(units) do
+        if (u.side ~= wesnoth.current.side) then
+            u.moves = old_moves[i]
+        end
+    end
+
+    --ai_helper.print_ts('Attacks selected', found_attacks)
+    if (not found_attacks) then return {}, {} end
 
     -- Now we set up an array of all attack combinations
     -- at this time, this includes all the 'no unit attacks this hex' elements
@@ -1269,7 +1356,7 @@ function ai_helper.get_attack_combos(units, enemy, cfg)
             end
         end
     end
-    --print('#attack_array before:', #attack_array)
+    --ai_helper.print_ts('#attack_array before:', #attack_array)
 
     -- Now eliminate all the 0s
     -- Also eliminate the combo that has no attacks on any hex (all zeros)
@@ -1287,7 +1374,7 @@ function ai_helper.get_attack_combos(units, enemy, cfg)
     end
     -- This last step eliminates the "empty attack combo" (the one with all zeros)
     table.remove(attack_array, i_empty)
-    --print('#attack_array after:', #attack_array)
+    --ai_helper.print_ts('#attack_array after:', #attack_array)
 
     return attack_array
 end
