@@ -791,9 +791,9 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
     local xp_weight = cfg.xp_weight or 0.25
     local level_weight = cfg.level_weight or 1.0
     local defender_level_weight = cfg.defender_level_weight or 1.0
-    local distance_leader_weight = cfg.distance_leader_weight or 0.02
+    local distance_leader_weight = cfg.distance_leader_weight or 0.002
     local defense_weight = cfg.defense_weight or 0.5
-    local occupied_hex_penalty = cfg.occupied_hex_penalty or -0.01
+    local occupied_hex_penalty = cfg.occupied_hex_penalty or -0.001
     local own_value_weight = cfg.own_value_weight or 1.0
 
     -- Get att_stats, def_stats
@@ -839,7 +839,7 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
     --print('  value_fraction damage + CTD:', value_fraction)
 
     -- Being closer to leveling is good (this makes AI prefer units with lots of XP)
-    local xp_bonus = 1. - (attacker.max_experience - attacker.experience) / attacker.max_experience
+    local xp_bonus = attacker.experience / attacker.max_experience
     value_fraction = value_fraction + xp_bonus * xp_weight
     --print('  XP bonus:', xp_bonus, value_fraction)
 
@@ -889,6 +889,14 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
     local attacker_defense = - wesnoth.unit_defense(attacker, wesnoth.get_terrain(dst[1], dst[2])) / 100.
     attacker_defense = attacker_defense * defense_weight
     local attacker_rating_av = attacker_defense * wesnoth.unit_types[attacker.type].cost
+
+    -- And a small bonus for good terrain defense of the _defender_ on the _attack_ hex
+    -- This is in order to take good terrain away from defender on next move
+    -- but it really is an attacker rating
+    local defender_defense = - wesnoth.unit_defense(defender, wesnoth.get_terrain(dst[1], dst[2])) / 100.
+    defender_defense = defender_defense * defense_weight / 5.
+    local attacker_rating_av = defender_defense * wesnoth.unit_types[defender.type].cost
+
     --print('-> attacker rating for averaging:', attacker_rating_av)
 
     ------ Now (most of) the same for the defender ------
@@ -924,7 +932,7 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
     --print('  defender_starting_damage_fraction:', defender_starting_damage_fraction, value_fraction)
 
     -- Being closer to leveling is good, we want to get rid of those enemies first
-    local xp_bonus = 1. - (defender.max_experience - defender.experience) / defender.max_experience
+    local xp_bonus = defender.experience / defender.max_experience
     value_fraction = value_fraction + xp_bonus * xp_weight
     --print('  defender XP bonus:', xp_bonus, value_fraction)
 
