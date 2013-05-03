@@ -92,8 +92,8 @@ function battle_calcs.strike_damage(attacker, defender, att_weapon, def_weapon, 
     -- unit can level up.  Side is added to avoid the problem of MP leaders sometimes having
     -- the same id when the game is started from the command-line
     -- Also need to add the weapons and lawful_bonus values for each unit
-    local att_lawful_bonus = wesnoth.get_time_of_day({ dst[1], dst[2], true}).lawful_bonus
-    local def_lawful_bonus = wesnoth.get_time_of_day({ defender.x, defender.y, true}).lawful_bonus
+    local att_lawful_bonus = wesnoth.get_time_of_day({ dst[1], dst[2], true }).lawful_bonus
+    local def_lawful_bonus = wesnoth.get_time_of_day({ defender.x, defender.y, true }).lawful_bonus
 
     local cind = 'SD-' .. attacker.id .. attacker.max_hitpoints .. attacker.side
     cind = cind .. 'x' .. defender.id .. defender.max_hitpoints .. defender.side
@@ -183,8 +183,8 @@ function battle_calcs.best_weapons(attacker, defender, dst, cache)
     -- unit can level up.  Side is added to avoid the problem of MP leaders sometimes having
     -- the same id when the game is started from the command-line
     -- Also need to add the weapons and lawful_bonus values for each unit
-    local att_lawful_bonus = wesnoth.get_time_of_day({ dst[1], dst[2], true}).lawful_bonus
-    local def_lawful_bonus = wesnoth.get_time_of_day({ defender.x, defender.y, true}).lawful_bonus
+    local att_lawful_bonus = wesnoth.get_time_of_day({ dst[1], dst[2], true }).lawful_bonus
+    local def_lawful_bonus = wesnoth.get_time_of_day({ defender.x, defender.y, true }).lawful_bonus
 
     local cind = 'BW-' .. attacker.id .. attacker.max_hitpoints .. attacker.side
     cind = cind .. 'x' .. defender.id .. defender.max_hitpoints .. defender.side
@@ -377,7 +377,7 @@ function battle_calcs.battle_outcome_coefficients(cfg, cache)
     for am,v1 in pairs(counts) do  -- attacker miss count
         for ah,v2 in pairs(v1) do  -- attacker hit count
             -- Set up the exponent coefficients for attacker hits/misses
-        local exp = { }  -- Array for an individual set of coefficients
+        local exp = {}  -- Array for an individual set of coefficients
             -- Only populate those indices that have exponents > 0
             if (am > 0) then exp.am = am end
         if (ah > 0) then exp.ah = ah end
@@ -402,7 +402,7 @@ function battle_calcs.battle_outcome_coefficients(cfg, cache)
             if (not coeffs_def[ah]) then coeffs_def[ah] = {} end
 
             -- If sum1 and sum2 are equal, that means all the defender probs added up to 1, or
-        -- multiple thereof, which means the can all be combine in the calculation
+            -- multiple thereof, which means the can all be combine in the calculation
             if (math.abs(sum1 - sum2) < 1e-9) then
                 exp.num = sum1
             table.insert(coeffs_def[ah], exp)
@@ -440,7 +440,7 @@ function battle_calcs.battle_outcome_coefficients(cfg, cache)
     for dm,v1 in pairs(counts) do  -- defender miss count
         for dh,v2 in pairs(v1) do  -- defender hit count
             -- Set up the exponent coefficients for attacker hits/misses
-            local exp = { }  -- Array for an individual set of coefficients
+            local exp = {}  -- Array for an individual set of coefficients
             -- Only populate those indices that have exponents > 0
             if (dm > 0) then exp.dm = dm end
             if (dh > 0) then exp.dh = dh end
@@ -450,7 +450,7 @@ function battle_calcs.battle_outcome_coefficients(cfg, cache)
             -- This will only happen is the coefficients add up to multiples of 1
             local sum1, sum2 = 0,0
             local hp1, hp2 = 0.6, 0.137
-        for am,v3 in pairs(v2) do  -- attacker miss count
+            for am,v3 in pairs(v2) do  -- attacker miss count
                 for ah,num in pairs(v3) do  -- attacker hit count
                     --print(am, ah, dm, dh, num)
                 sum1 = sum1 + num * hp1^ah * (1-hp1)^am
@@ -649,7 +649,7 @@ function battle_calcs.battle_outcome(attacker, defender, cfg, cache)
     -- cfg: optional input parameters
     --  - att_weapon/def_weapon: attacker/defender weapon number
     --      if not given, get "best" weapon (Note: both must be given, or they will both be determined)
-    --  - dst: { x, y }: the attack location; defaults to { attacker.x, attacker. y }
+    --  - dst: { x, y }: the attack location; defaults to { attacker.x, attacker.y }
     -- cache: to be passed on to other functions.  battle_outcome itself is not cached, too many factors enter
 
     cfg = cfg or {}
@@ -742,7 +742,7 @@ end
 
 function battle_calcs.simulate_combat_loc(attacker, dst, defender, weapon)
     -- Get simulate_combat results for unit 'attacker' attacking unit at 'defender'
-    -- when on terrain of same type as that at 'dst', which is of form {x,y}
+    -- when on terrain of same type as that at 'dst', which is of form { x, y }
     -- If 'weapon' is set (to number of attack), use that weapon (starting at 1), otherwise use best weapon
 
     local attacker_dst = wesnoth.copy_unit(attacker)
@@ -918,7 +918,7 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
         value_fraction = value_fraction * enemy_leader_weight
     end
 
-    -- And prefer to attack already damage enemies
+    -- And prefer to attack already damaged enemies
     local defender_starting_damage_fraction = (defender.max_hitpoints - defender.hitpoints) / defender.max_hitpoints
     value_fraction = value_fraction + defender_starting_damage_fraction * defender_starting_damage_weight
     --print('  defender_starting_damage_fraction:', defender_starting_damage_fraction, value_fraction)
@@ -969,7 +969,7 @@ function battle_calcs.attack_combo_stats(tmp_attackers, tmp_dsts, defender, cach
     -- tmp_attackers: array of attacker units (this is done so that
     --   the units need not be found here, as likely doing it in the
     --   calling function is more efficient (because of repetition)
-    -- tmp_dsts: array of the hexes (format {x, y}) from which the attackers attack
+    -- tmp_dsts: array of the hexes (format { x, y }) from which the attackers attack
     --   must be in same order as 'attackers'
     -- defender: the unit being attacked
     -- cache: the cache table to be passed through to other battle_calcs functions
