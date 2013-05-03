@@ -23,6 +23,7 @@
 #include "map_label.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
+#include "team.hpp"
 #include "wml_exception.hpp"
 
 
@@ -134,58 +135,33 @@ map_context::map_context(const config& game_config, const std::string& filename,
 	}
 	map_ = editor_map::from_string(game_config, map_string); //throws on error
 
-//	log_scope2(log_editor, "Loading map " + filename);
-//	if (!file_exists(filename) || is_directory(filename)) {
-//		throw editor_map_load_exception(filename, _("File not found"));
-//	}
-//
-//	std::string map_string = read_file(filename);
-//
-//	if (map_string.empty()) {
-//		std::string message = _("Empty file");
-//		throw editor_map_load_exception(filename, message);
-//	}
-//
-//	try {
-//		config file;
-//		::read(file, map_string);
-//
-//		map_ = editor_map(game_config, file, disp);
-//		return;
-//	} catch (config::error&) {
-//	}
-//
-//	boost::regex re("data\\s*=\\s*\"(.+?)\"");
-//	boost::smatch m;
-//	if (boost::regex_search(map_string, m, re, boost::regex_constants::match_not_dot_null)) {
-//		boost::regex re2("\\{(.+?)\\}");
-//		boost::smatch m2;
-//		std::string m1 = m[1];
-//		if (boost::regex_search(m1, m2, re2)) {
-//			map_data_key_ = m1;
-//			LOG_ED << "Map looks like a scenario, trying {" << m2[1] << "}\n";
-//			std::string new_filename = get_wml_location(m2[1], directory_name(m2[1]));
-//			if (new_filename.empty()) {
-//				std::string message = _("The map file looks like a scenario, "
-//					"but the map_data value does not point to an existing file")
-//					+ std::string("\n") + m2[1];
-//				throw editor_map_load_exception(filename, message);
-//			}
-//			LOG_ED << "New filename is: " << new_filename << "\n";
-//			filename_ = new_filename;
-//			map_string = read_file(filename_);
-//		} else {
-//			LOG_ED << "Loading embedded map file\n";
-//			embedded_ = true;
-//			map_string = m[1];
-//		}
-//	}
-//	if (map_string.empty()) {
-//		std::string message = _("Empty map file");
-//		throw editor_map_load_exception(filename, message);
-//	}
-//
-//	map_ = editor_map::from_string(game_config, map_string, disp); //throws on error
+	config level;
+	read(level, *(preprocess_file(filename_ + ".cfg")));
+
+	labels_.read(level);
+
+	resources::teams = &teams_;
+
+	int i = 1;
+	BOOST_FOREACH(config &side, level.child_range("side"))
+	{
+		//TODO clean up.
+		//state_.build_team(side, "", teams_, level, *this
+		//	, units_, false);
+		team t;
+		side["side"] = i;
+		//side["no_leader"] = "yes";
+		i++;
+		t.build(side, map_);
+
+		teams_.push_back(t);
+		BOOST_FOREACH(const config &a_unit, side.child_range("unit")) {
+			map_location loc(a_unit, NULL);
+			units_.add(loc,
+					unit(a_unit, true, &state_) );
+		}
+	}
+
 }
 
 map_context::~map_context()
