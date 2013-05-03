@@ -51,7 +51,7 @@ public:
 	/**
 	 * Mouse move (not a drag). Never changes anything (other than temporary highlihts and similar)
 	 */
-	void move(editor_display& disp, const map_location& hex);
+	virtual void move(editor_display& disp, const map_location& hex);
 
 	/**
 	 * Unconditionally update the brush highlights for the current tool when hex is the center location
@@ -313,12 +313,19 @@ public:
 	editor_action* click_perform_left(editor_display& disp, const std::set<map_location>& hexes);
 
 	/**
+	 * Right click does nothing for now
+	 */
+	editor_action* click_right(editor_display& disp, int x, int y);
+
+
+	/**
 	 * Right click/drag deselects
 	 */
 	editor_action* click_perform_right(editor_display& disp, const std::set<map_location>& hexes);
 
 	virtual void set_mouse_overlay(editor_display& disp);
 
+	bool has_context_menu() const { return true; };
 	bool supports_brushes() { return true; }
 };
 

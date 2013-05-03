@@ -38,6 +38,8 @@ public:
 	{
 	}
 
+	void move(editor_display& disp, const map_location& hex);
+
 	/**
 	 * TODO
 	 */
@@ -79,6 +81,7 @@ public:
 	editor_action* drag_end_right(editor_display& disp, int x, int y);
 
 	virtual void set_mouse_overlay(editor_display& disp);
+	void set_unit_mouse_overlay(editor_display& disp, const unit_type& u);
 
 private:
 	bool click_;

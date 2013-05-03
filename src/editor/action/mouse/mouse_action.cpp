@@ -179,7 +179,7 @@ void mouse_action::set_terrain_mouse_overlay(editor_display& disp, const t_trans
 	SDL_Rect rcDestLeft = create_rect(offset, quarter_size, 0, 0);
 	sdl_blit ( image_fg, NULL, image, &rcDestLeft );
 
-	// Blit left side
+	// Blit right side
 	image_bg = scale_surface(image_bg, new_size, new_size);
 	SDL_Rect rcDestRight = create_rect(half_size, quarter_size, 0, 0);
 	sdl_blit ( image_bg, NULL, image, &rcDestRight );
@@ -327,9 +327,9 @@ editor_action* mouse_action_select::click_perform_left(
 }
 
 editor_action* mouse_action_select::click_perform_right(
-		editor_display& /*disp*/, const std::set<map_location>& hexes)
+		editor_display& /*disp*/, const std::set<map_location>& /*hexes*/)
 {
-	return new editor_action_chain(new editor_action_deselect(hexes));
+	return NULL;
 }
 
 void mouse_action_select::set_mouse_overlay(editor_display& disp)
@@ -372,6 +372,12 @@ editor_action* mouse_action_paste::click_right(editor_display& /*disp*/, int /*x
 {
 	return NULL;
 }
+
+editor_action* mouse_action_select::click_right(editor_display& /*disp*/, int /*x*/, int /*y*/)
+{
+	return NULL;
+}
+
 
 void mouse_action_paste::set_mouse_overlay(editor_display& disp)
 {
