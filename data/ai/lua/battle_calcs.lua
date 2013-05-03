@@ -92,8 +92,8 @@ function battle_calcs.strike_damage(attacker, defender, att_weapon, def_weapon, 
     -- unit can level up.  Side is added to avoid the problem of MP leaders sometimes having
     -- the same id when the game is started from the command-line
     -- Also need to add the weapons and lawful_bonus values for each unit
-    local att_lawful_bonus = wesnoth.get_time_of_day({ dst[1], dst[2], true}).lawful_bonus
-    local def_lawful_bonus = wesnoth.get_time_of_day({ defender.x, defender.y, true}).lawful_bonus
+    local att_lawful_bonus = wesnoth.get_time_of_day({ dst[1], dst[2], true }).lawful_bonus
+    local def_lawful_bonus = wesnoth.get_time_of_day({ defender.x, defender.y, true }).lawful_bonus
 
     local cind = 'SD-' .. attacker.id .. attacker.max_hitpoints .. attacker.side
     cind = cind .. 'x' .. defender.id .. defender.max_hitpoints .. defender.side
@@ -183,8 +183,8 @@ function battle_calcs.best_weapons(attacker, defender, dst, cache)
     -- unit can level up.  Side is added to avoid the problem of MP leaders sometimes having
     -- the same id when the game is started from the command-line
     -- Also need to add the weapons and lawful_bonus values for each unit
-    local att_lawful_bonus = wesnoth.get_time_of_day({ dst[1], dst[2], true}).lawful_bonus
-    local def_lawful_bonus = wesnoth.get_time_of_day({ defender.x, defender.y, true}).lawful_bonus
+    local att_lawful_bonus = wesnoth.get_time_of_day({ dst[1], dst[2], true }).lawful_bonus
+    local def_lawful_bonus = wesnoth.get_time_of_day({ defender.x, defender.y, true }).lawful_bonus
 
     local cind = 'BW-' .. attacker.id .. attacker.max_hitpoints .. attacker.side
     cind = cind .. 'x' .. defender.id .. defender.max_hitpoints .. defender.side
@@ -377,7 +377,7 @@ function battle_calcs.battle_outcome_coefficients(cfg, cache)
     for am,v1 in pairs(counts) do  -- attacker miss count
         for ah,v2 in pairs(v1) do  -- attacker hit count
             -- Set up the exponent coefficients for attacker hits/misses
-        local exp = { }  -- Array for an individual set of coefficients
+        local exp = {}  -- Array for an individual set of coefficients
             -- Only populate those indices that have exponents > 0
             if (am > 0) then exp.am = am end
         if (ah > 0) then exp.ah = ah end
@@ -402,7 +402,7 @@ function battle_calcs.battle_outcome_coefficients(cfg, cache)
             if (not coeffs_def[ah]) then coeffs_def[ah] = {} end
 
             -- If sum1 and sum2 are equal, that means all the defender probs added up to 1, or
-        -- multiple thereof, which means the can all be combine in the calculation
+            -- multiple thereof, which means the can all be combine in the calculation
             if (math.abs(sum1 - sum2) < 1e-9) then
                 exp.num = sum1
             table.insert(coeffs_def[ah], exp)
@@ -440,7 +440,7 @@ function battle_calcs.battle_outcome_coefficients(cfg, cache)
     for dm,v1 in pairs(counts) do  -- defender miss count
         for dh,v2 in pairs(v1) do  -- defender hit count
             -- Set up the exponent coefficients for attacker hits/misses
-            local exp = { }  -- Array for an individual set of coefficients
+            local exp = {}  -- Array for an individual set of coefficients
             -- Only populate those indices that have exponents > 0
             if (dm > 0) then exp.dm = dm end
             if (dh > 0) then exp.dh = dh end
@@ -450,7 +450,7 @@ function battle_calcs.battle_outcome_coefficients(cfg, cache)
             -- This will only happen is the coefficients add up to multiples of 1
             local sum1, sum2 = 0,0
             local hp1, hp2 = 0.6, 0.137
-        for am,v3 in pairs(v2) do  -- attacker miss count
+            for am,v3 in pairs(v2) do  -- attacker miss count
                 for ah,num in pairs(v3) do  -- attacker hit count
                     --print(am, ah, dm, dh, num)
                 sum1 = sum1 + num * hp1^ah * (1-hp1)^am
@@ -649,7 +649,7 @@ function battle_calcs.battle_outcome(attacker, defender, cfg, cache)
     -- cfg: optional input parameters
     --  - att_weapon/def_weapon: attacker/defender weapon number
     --      if not given, get "best" weapon (Note: both must be given, or they will both be determined)
-    --  - dst: { x, y }: the attack location; defaults to { attacker.x, attacker. y }
+    --  - dst: { x, y }: the attack location; defaults to { attacker.x, attacker.y }
     -- cache: to be passed on to other functions.  battle_outcome itself is not cached, too many factors enter
 
     cfg = cfg or {}
@@ -742,7 +742,7 @@ end
 
 function battle_calcs.simulate_combat_loc(attacker, dst, defender, weapon)
     -- Get simulate_combat results for unit 'attacker' attacking unit at 'defender'
-    -- when on terrain of same type as that at 'dst', which is of form {x,y}
+    -- when on terrain of same type as that at 'dst', which is of form { x, y }
     -- If 'weapon' is set (to number of attack), use that weapon (starting at 1), otherwise use best weapon
 
     local attacker_dst = wesnoth.copy_unit(attacker)
@@ -791,9 +791,9 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
     local xp_weight = cfg.xp_weight or 0.25
     local level_weight = cfg.level_weight or 1.0
     local defender_level_weight = cfg.defender_level_weight or 1.0
-    local distance_leader_weight = cfg.distance_leader_weight or 0.02
+    local distance_leader_weight = cfg.distance_leader_weight or 0.002
     local defense_weight = cfg.defense_weight or 0.5
-    local occupied_hex_penalty = cfg.occupied_hex_penalty or -0.01
+    local occupied_hex_penalty = cfg.occupied_hex_penalty or -0.001
     local own_value_weight = cfg.own_value_weight or 1.0
 
     -- Get att_stats, def_stats
@@ -839,7 +839,7 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
     --print('  value_fraction damage + CTD:', value_fraction)
 
     -- Being closer to leveling is good (this makes AI prefer units with lots of XP)
-    local xp_bonus = 1. - (attacker.max_experience - attacker.experience) / attacker.max_experience
+    local xp_bonus = attacker.experience / attacker.max_experience
     value_fraction = value_fraction + xp_bonus * xp_weight
     --print('  XP bonus:', xp_bonus, value_fraction)
 
@@ -889,6 +889,14 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
     local attacker_defense = - wesnoth.unit_defense(attacker, wesnoth.get_terrain(dst[1], dst[2])) / 100.
     attacker_defense = attacker_defense * defense_weight
     local attacker_rating_av = attacker_defense * wesnoth.unit_types[attacker.type].cost
+
+    -- And a small bonus for good terrain defense of the _defender_ on the _attack_ hex
+    -- This is in order to take good terrain away from defender on next move
+    -- but it really is an attacker rating
+    local defender_defense = - wesnoth.unit_defense(defender, wesnoth.get_terrain(dst[1], dst[2])) / 100.
+    defender_defense = defender_defense * defense_weight / 5.
+    local attacker_rating_av = defender_defense * wesnoth.unit_types[defender.type].cost
+
     --print('-> attacker rating for averaging:', attacker_rating_av)
 
     ------ Now (most of) the same for the defender ------
@@ -918,13 +926,13 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
         value_fraction = value_fraction * enemy_leader_weight
     end
 
-    -- And prefer to attack already damage enemies
+    -- And prefer to attack already damaged enemies
     local defender_starting_damage_fraction = (defender.max_hitpoints - defender.hitpoints) / defender.max_hitpoints
     value_fraction = value_fraction + defender_starting_damage_fraction * defender_starting_damage_weight
     --print('  defender_starting_damage_fraction:', defender_starting_damage_fraction, value_fraction)
 
     -- Being closer to leveling is good, we want to get rid of those enemies first
-    local xp_bonus = 1. - (defender.max_experience - defender.experience) / defender.max_experience
+    local xp_bonus = defender.experience / defender.max_experience
     value_fraction = value_fraction + xp_bonus * xp_weight
     --print('  defender XP bonus:', xp_bonus, value_fraction)
 
@@ -969,7 +977,7 @@ function battle_calcs.attack_combo_stats(tmp_attackers, tmp_dsts, defender, cach
     -- tmp_attackers: array of attacker units (this is done so that
     --   the units need not be found here, as likely doing it in the
     --   calling function is more efficient (because of repetition)
-    -- tmp_dsts: array of the hexes (format {x, y}) from which the attackers attack
+    -- tmp_dsts: array of the hexes (format { x, y }) from which the attackers attack
     --   must be in same order as 'attackers'
     -- defender: the unit being attacked
     -- cache: the cache table to be passed through to other battle_calcs functions
@@ -1240,9 +1248,12 @@ function battle_calcs.relative_damage_map(units, enemies, cache)
     -- units vs. enemies on the part of the map that the combined units
     -- can reach.  The damage is calculated as the sum of defender_rating
     -- from attack_rating(), and thus (roughly) in gold units.
+    -- Also returns the same maps for the own and enemy units only
+    -- (with the enemy_damage_map having positive sign, while in the
+    --  overall damage map it is subtracted)
 
     -- Get the attack maps for each unit in 'units' and 'enemies'
-    my_attack_maps, enemy_attack_maps = {}, {}
+    local my_attack_maps, enemy_attack_maps = {}, {}
     for i,u in ipairs(units) do
         my_attack_maps[i] = battle_calcs.get_attack_map_unit(u, cfg)
     end
@@ -1258,7 +1269,7 @@ function battle_calcs.relative_damage_map(units, enemies, cache)
         local max_rating, best_enemy = -9e99, {}
         for j,e in ipairs(enemies) do
             local rating, defender_rating, attacker_rating, attacker_rating_av =
-                battle_calcs.attack_rating(u, e, { u.x, u.y }, {}, cache)
+                battle_calcs.attack_rating(u, e, { u.x, u.y }, { enemy_leader_weight = 1 }, cache)
             --print('my', u.id, e.id, rating, defender_rating, attacker_rating, attacker_rating_av)
             local eff_rating = defender_rating
             if (eff_rating > max_rating) then
@@ -1275,7 +1286,7 @@ function battle_calcs.relative_damage_map(units, enemies, cache)
         local max_rating, best_unit = -9e99, {}
         for j,u in ipairs(units) do
             local rating, defender_rating, attacker_rating, attacker_rating_av =
-                battle_calcs.attack_rating(e, u, { e.x, e.y }, {}, cache)
+                battle_calcs.attack_rating(e, u, { e.x, e.y }, { enemy_leader_weight = 1 }, cache)
             --print('enemy', e.id, u.id, rating, defender_rating, attacker_rating, attacker_rating_av)
             local eff_rating = defender_rating
             if (eff_rating > max_rating) then
@@ -1288,20 +1299,327 @@ function battle_calcs.relative_damage_map(units, enemies, cache)
 
     -- The damage map is now the sum of these ratings for each unit that can attack a given hex,
     -- counting own-unit ratings as positive, enemy ratings as negative
-    local damage_map = LS.create()
+    local damage_map, own_damage_map, enemy_damage_map = LS.create(), LS.create(), LS.create()
     for i,u in ipairs(units) do
         my_attack_maps[i].units:iter(function(x, y, v)
+            own_damage_map:insert(x, y, (own_damage_map:get(x, y) or 0) + unit_ratings[i].rating)
             damage_map:insert(x, y, (damage_map:get(x, y) or 0) + unit_ratings[i].rating)
         end)
     end
     for i,e in ipairs(enemies) do
         enemy_attack_maps[i].units:iter(function(x, y, v)
+            enemy_damage_map:insert(x, y, (enemy_damage_map:get(x, y) or 0) + enemy_ratings[i].rating)
             damage_map:insert(x, y, (damage_map:get(x, y) or 0) - enemy_ratings[i].rating)
         end)
     end
     --AH.put_labels(damage_map)
 
-    return damage_map
+    return damage_map, own_damage_map, enemy_damage_map
+end
+
+function battle_calcs.best_defense_map(units, cfg)
+    -- Get a defense rating map of all hexes all units in 'units' can reach
+    -- For each hex, the value is the maximum of any of the units that can reach that hex
+    -- cfg: table with config parameters
+    --  max_moves: if set use max_moves for units (this setting is always used for units on other sides)
+
+    cfg = cfg or {}
+
+    local defense_map = LS.create()
+
+    for i,u in ipairs(units) do
+        -- Set max_moves according to the cfg value
+        local max_moves = cfg.max_moves
+        -- For unit on other than current side, only max_moves=true makes sense
+        if (u.side ~= wesnoth.current.side) then max_moves = true end
+        local old_moves = u.moves
+        if max_moves then u.moves = u.max_moves end
+        local reach = wesnoth.find_reach(u, cfg)
+        if max_moves then u.moves = old_moves end
+
+        for j,r in ipairs(reach) do
+            local defense = 100 - wesnoth.unit_defense(u, wesnoth.get_terrain(r[1], r[2]))
+
+            if (defense > (defense_map:get(r[1], r[2]) or -9e99)) then
+                defense_map:insert(r[1], r[2], defense)
+            end
+        end
+    end
+
+    return defense_map
+end
+
+function battle_calcs.get_attack_combos_subset(units, enemy, cfg)
+    -- Calculate combinations of attacks by 'units' on 'enemy'
+    -- This method does *not* produce all possible attack combinations, but is
+    -- meant to have a good chance to find either the best combination,
+    -- or something close to it, by only considering a subset of all possibilities.
+    -- It is also configurable to stop accumulating combinations when certain criteria are met.
+    --
+    -- The return value is an array of attack combinations, where each element is another
+    -- array of tables containing 'dst' and 'src' fields of the attacking units.  It can be
+    -- specified whether the order of the attacks matters or not (see below).
+    --
+    -- Note: This function is optimized for speed, not elegance
+    --
+    -- Note 2: the structure of the returned table is different from the (current) return value
+    -- of ai_helper.get_attack_combos(), since the order of attacks never matters for the latter.
+    -- TODO: consider making the two consistent (not sure yet whether that is advantageous)
+    --
+    -- cfg: Optional table of optional configuration parameters
+    --   - order_matters: if set, keep attack combos that use the same units on the same
+    --       hexes, but in different attack order (default: false)
+    --   - max_combos: stop adding attack combos if this number of combos has been reached
+    --       default: assemble all possible combinations
+    --   - max_time: stop adding attack combos if this much time (in seconds) has passed
+    --       default: assemble all possible combinations
+    --       note: this counts the time from the first call to add_attack(), not to
+    --         get_attack_combos_cfg(), so there's a bit of extra overhead in here.
+    --         This is done to prevent the return of no combos at all
+    --         Note 2: there is some overhead involved in reading the time from the system,
+    --           so don't use this unless it's needed
+    --   - skip_presort: by default, the units are presorted in order of the unit with
+    --       the highest rating first.  This has the advantage of likely finding the best
+    --       (or at least close to the best) attack combination earlier, but it add overhead,
+    --       so it's actually a disadvantage for small numbers of combinations.  skip_presort
+    --       specifies the number of units up to which the presorting is skipped.  Default: 5
+
+    cfg = cfg or {}
+    cfg.order_matters = cfg.order_matters or false
+    cfg.max_combos = cfg.max_combos or 9e99
+    cfg.max_time = cfg.max_time or false
+    cfg.skip_presort = cfg.skip_presort or 5
+
+    ----- begin add_attack() -----
+    -- Recursive local function adding another attack to the current combo
+    -- and adding the current combo to the overall attack_combos array
+    local function add_attack(attacks, reachable_hexes, n_reach, attack_combos, combos_str, current_combo, hexes_used, cfg)
+
+        local time_up = false
+        if cfg.max_time and (wesnoth.get_time_stamp() / 1000. - cfg.start_time >= cfg.max_time) then
+            time_up = true
+        end
+
+        -- Go through all the units
+        for i,a in ipairs(attacks) do  -- 'a' is array of all attacks for the unit
+
+            -- Then go through the individual attacks of the unit ...
+            for j,l in ipairs(a) do
+                -- But only if this hex is not used yet and
+                -- the cutoff criteria are not met
+                if (not hexes_used[l.dst]) and (not time_up) and (#attack_combos < cfg.max_combos) then
+
+                    -- Mark this hex as used by this unit
+                    hexes_used[l.dst] = a.src
+
+                    -- Set up a string uniquely identifying the unit/attack hex pairs
+                    -- for current_combo.  This is used to exclude pairs that already
+                    -- exist in a different order (if 'cfg.order_matters' is not set)
+                    -- For this, we also add the numerical value of the attack_hex to
+                    -- the 'hexes_used' table (in addition to the line above)
+                    local str = ''
+                    if (not cfg.order_matters) then
+                        hexes_used[reachable_hexes[l.dst]] = a.src
+                        for h = 1, n_reach do
+                            if hexes_used[h] then
+                                str = str .. hexes_used[h] .. '-'
+                            else
+                                str = str .. '0-'
+                            end
+                        end
+                    end
+
+                    -- 'combos_str' contains all the strings of previous combos
+                    -- (if 'cfg.order_matters' is not set)
+                    -- Only add this combo if it does not yet exist
+                    if (not combos_str[str]) then
+
+                        -- Add the string identifyer to the array
+                        if (not cfg.order_matters) then
+                            combos_str[str] = true
+                        end
+
+                        -- Add the attack to 'current_combo'
+                        table.insert(current_combo, { dst = l.dst, src = a.src })
+
+                        -- And *copy* the content of 'current_combo' into 'attack_combos'
+                        local n_combos = #attack_combos + 1
+                        attack_combos[n_combos] = {}
+                        for i,c in pairs(current_combo) do attack_combos[n_combos][i] = c end
+
+                        -- Finally, remove the current unit for 'attacks' for the call to the next recursion level
+                        table.remove(attacks, i)
+
+                        add_attack(attacks, reachable_hexes, n_reach, attack_combos, combos_str, current_combo, hexes_used, cfg)
+
+                        -- Reinsert the unit
+                        table.insert(attacks, i, a)
+
+                        -- And remove the last element (current attack) from 'current_combo'
+                        table.remove(current_combo)
+                    end
+
+                    -- And mark the hex as usable again
+                    if (not cfg.order_matters) then
+                        hexes_used[reachable_hexes[l.dst]] = nil
+                    end
+                    hexes_used[l.dst] = nil
+
+                    -- *** Important ***: We *only* consider one attack hex per unit, the
+                    -- first that is found in the array of attacks for the unit.  As they
+                    -- are sorted by terrain defense, we simply use the first in the table
+                    -- the unit can reach that is not occupied
+                    -- That's what the 'break' does here:
+                    break
+                end
+            end
+        end
+    end
+    ----- end add_attack() -----
+
+    -- For units on the current side, we need to make sure that
+    -- there isn't a unit of the same side in the way that cannot move any more
+    -- Set up an array of hexes blocked in such a way
+    -- For units on other sides we always assume that they can move away
+    local blocked_hexes = LS.create()
+    if units[1] and (units[1].side == wesnoth.current.side) then
+        for x, y in H.adjacent_tiles(enemy.x, enemy.y) do
+            local unit_in_way = wesnoth.get_unit(x,y)
+            if unit_in_way then
+                -- Units on the same side are blockers if they cannot move away
+                if (unit_in_way.side == wesnoth.current.side) then
+                    local reach = wesnoth.find_reach(unit_in_way)
+                    if (#reach <= 1) then
+                        blocked_hexes:insert(unit_in_way.x, unit_in_way.y)
+                    end
+                else  -- Units on other sides are always blockers
+                    blocked_hexes:insert(unit_in_way.x, unit_in_way.y)
+                end
+            end
+        end
+    end
+    --DBG.dbms(blocked_hexes)
+
+    -- For sides other than the current, we always use max_moves,
+    -- for the current side we always use current moves
+    local old_moves = {}
+    for i,u in ipairs(units) do
+        if (u.side ~= wesnoth.current.side) then
+            old_moves[i] = u.moves
+            u.moves = u.max_moves
+        end
+    end
+
+    -- Now set up an array containing the attack locations for each unit
+    local attacks = {}
+    -- We also need a numbered array of the possible attack hex coordinates
+    -- The order doesn't matter, as long as it is fixed
+    local reachable_hexes = {}
+    for i,u in ipairs(units) do
+
+        local locs = {}  -- attack locations for this unit
+
+        for x, y in H.adjacent_tiles(enemy.x, enemy.y) do
+
+            local loc = {}  -- attack location information for this unit for this hex
+
+            -- Make sure the hex is not occupied by unit that cannot move out of the way
+            if (not blocked_hexes:get(x, y) or ((x == u.x) and (y == u.y))) then
+
+                -- Check whether the unit can get to the hex
+                -- helper.distance_between() is much faster than wesnoth.find_path()
+                --> pre-filter using the former
+                local cost = H.distance_between(u.x, u.y, x, y)
+
+                -- If the distance is <= the unit's MP, then see if it can actually get there
+                -- This also means that only short paths have to be evaluated (in most situations)
+                if (cost <= u.moves) then
+                    local path  -- since cost is already defined outside this block
+                    path, cost = wesnoth.find_path(u, x, y)
+                end
+
+                -- If the unit can get to this hex
+                if (cost <= u.moves) then
+                    -- Store information about it in 'loc' and add this to 'locs'
+                    -- Want coordinates (dst) and terrain defense (for sorting)
+                    loc.dst = x * 1000 + y
+                    loc.hit_prob = wesnoth.unit_defense(u, wesnoth.get_terrain(x, y))
+                    table.insert(locs, loc)
+
+                    -- Also mark this hex as usable
+                    reachable_hexes[loc.dst] = true
+                end
+            end
+        end
+
+        -- Also add some top-level information for the unit
+        if locs[1] then
+            locs.src = u.x * 1000 + u.y  -- The current position of the unit
+            locs.unit_i = i  -- The position of the unit in the 'units' array
+
+            -- Now sort the possible attack locations for this unit by terrain defense
+            table.sort(locs, function(a, b) return a.hit_prob < b.hit_prob end)
+
+            -- Finally, add the attack locations for this unit to the 'attacks' array
+            table.insert(attacks, locs)
+        end
+
+    end
+    --DBG.dbms(attacks)
+
+    -- Reset moves for all units
+    for i,u in ipairs(units) do
+        if (u.side ~= wesnoth.current.side) then
+            u.moves = old_moves[i]
+        end
+    end
+
+    -- if the number of units that can attack is greater than cfg.skip_presort:
+    -- We also sort the attackers by their attack rating on their favorite hex
+    -- The motivation is that by starting with the strongest unit, we'll find the
+    -- best attack combo earlier, and it is more likely to find the best (or at
+    -- least a good combo) even when not all attack combinations are collected.
+    if (#attacks > cfg.skip_presort) then
+        for i,a in ipairs(attacks) do
+            local dst = a[1].dst
+            local x, y = math.floor(dst / 1000), dst % 1000
+            a.rating = battle_calcs.attack_rating(units[a.unit_i], enemy, { x, y })
+        end
+        table.sort(attacks, function(a,b) return a.rating > b.rating end)
+        --DBG.dbms(attacks)
+    end
+
+    -- To simplify and speed things up in the following, the field values
+    -- 'reachable_hexes' table needs to be consecutive integers
+    -- We also want a variable containing the number of elements in the array
+    -- (#reachable_hexes doesn't work because they keys are location indices)
+    local n_reach = 0
+    for k,hex in pairs(reachable_hexes) do
+        n_reach = n_reach + 1
+        reachable_hexes[k] = n_reach
+    end
+    --DBG.dbms(reachable_hexes)
+
+    -- If cfg.max_time is set, record the start time
+    -- For convenience, we store this in cfg
+    if cfg.max_time then
+        cfg.start_time = wesnoth.get_time_stamp() / 1000.
+    end
+
+
+    -- All this was just setting up the required information, now we call the
+    -- recursive function setting up the array of attackcombinations
+    local attack_combos = {}  -- This will contain the return value
+    -- Temporary arrays (but need to be persistent across the recursion levels)
+    local combos_str, current_combo, hexes_used  = {}, {}, {}
+
+    add_attack(attacks, reachable_hexes, n_reach, attack_combos, combos_str, current_combo, hexes_used, cfg)
+    --DBG.dbms(attack_combos)
+
+    -- Minor cleanup
+    cfg.start_time = nil
+
+    return attack_combos
 end
 
 return battle_calcs
