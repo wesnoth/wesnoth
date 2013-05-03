@@ -2560,6 +2560,10 @@ void menu_handler::send_chat_message(const std::string& message, bool allies_onl
 	config cfg;
 	cfg["id"] = preferences::login();
 	cfg["message"] = message;
+	const time_t time_ = time(NULL);
+	std::stringstream ss;
+	ss << time_;
+	cfg["time"] = ss.str();
 
 	const int side = is_observer() ? 0 : gui_->viewing_side();
 	if(!is_observer()) {
@@ -2577,7 +2581,7 @@ void menu_handler::send_chat_message(const std::string& message, bool allies_onl
 	}
 
 	recorder.speak(cfg);
-	add_chat_message(time(NULL), cfg["id"], side, message,
+	add_chat_message(time_, cfg["id"], side, message,
 			private_message ? events::chat_handler::MESSAGE_PRIVATE : events::chat_handler::MESSAGE_PUBLIC);
 
 }

@@ -117,6 +117,14 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				preferences::message_bell());
 	}
 
+	if (cfg.has_child("turn") && cfg.child("turn").has_child("command") &&
+		cfg.child("turn").child("command").has_child("speak")) {
+			config& msg = const_cast<config&>(cfg).child("turn").child("command").child("speak");
+			const time_t time_ = time(NULL);
+			std::stringstream ss;
+			ss << time_;
+			msg["time"] = ss.str();
+	}
 	if (const config &msg = cfg.child("whisper") /*&& is_observer()*/)
 	{
 		resources::screen->add_chat_message(time(NULL), "whisper: " + msg["sender"].str(), 0,

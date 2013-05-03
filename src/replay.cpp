@@ -149,6 +149,8 @@ chat_msg::chat_msg(const config &cfg)
 	} else {
 		color_ = team::get_side_highlight_pango(side-1);
 	}
+	std::stringstream ss(cfg["time"].str());
+	ss >> time_;
 	/*
 	} else if (side==1) {
 		color_ = "red";

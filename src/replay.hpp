@@ -37,12 +37,14 @@ public:
 	const std::string &text() const { return text_; }
 	const std::string &nick() const { return nick_; }
 	const std::string &color() const { return color_; }
+	const time_t &time() const { return time_; }
 	chat_msg(const config &cfg);
 	virtual ~chat_msg();
 private:
 	std::string color_;
 	std::string nick_;
 	std::string text_;
+	time_t time_;
 };
 
 class replay: public rand_rng::rng
