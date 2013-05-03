@@ -225,7 +225,7 @@ void editor_palette<Item>::adjust_size(const SDL_Rect& target)
 		static_cast<unsigned> (space_for_items / item_space_) *
 		item_width_;
 	nitems_ = std::min<int>(items_fitting, nmax_items_);
-	buttons_.resize(nitems_, gui::tristate_button(gui_.video(), "", this));
+	buttons_.resize(nitems_, gui::tristate_button(gui_.video(), this));
 	set_location(target);
 	set_dirty(true);
 }

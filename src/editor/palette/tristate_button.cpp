@@ -38,12 +38,11 @@ const int horizontal_padding = font::SIZE_SMALL;
 const int checkbox_horizontal_padding = font::SIZE_SMALL / 2;
 const int vertical_padding = font::SIZE_SMALL / 2;
 
-tristate_button::tristate_button(CVideo& video, const std::string& label,
+tristate_button::tristate_button(CVideo& video,
 		editor::common_palette* palette,
 		std::string button_image_name, SPACE_CONSUMPTION spacing,
 		const bool auto_join) :
 				widget(video, auto_join),
-				label_(label),
 				baseImage_(NULL), touchedBaseImage_(NULL), activeBaseImage_(NULL),
 				itemImage_(NULL),
 				pressedDownImage_(NULL), pressedUpImage_(NULL), pressedBothImage_(NULL),

@@ -36,7 +36,7 @@ public:
 
 	enum SPACE_CONSUMPTION { DEFAULT_SPACE, MINIMUM_SPACE };
 
-	tristate_button(CVideo& video, const std::string& label,
+	tristate_button(CVideo& video,
 			editor::common_palette* palette,
 			std::string button_image="",
 			SPACE_CONSUMPTION spacing=DEFAULT_SPACE,
