@@ -157,6 +157,7 @@ public:
 	SDL_Color xp_color() const;
 	/** Set to true for some scenario-specific units which should not be renamed */
 	bool unrenamable() const { return unrenamable_; }
+	void set_unrenamable(bool unrenamable) { unrenamable_ = unrenamable; }
 	int side() const { return side_; }
 	std::string side_id() const;
 	const std::string& team_color() const { return flag_rgb_; }
@@ -165,6 +166,7 @@ public:
 	fixed_t alpha() const { return alpha_; }
 
 	bool can_recruit() const { return canrecruit_; }
+	void set_can_recurit(bool canrecruit) { canrecruit_ = canrecruit; }
 	const std::vector<std::string>& recruits() const
 		{ return recruit_list_; }
 	void set_recruits(const std::vector<std::string>& recruits);

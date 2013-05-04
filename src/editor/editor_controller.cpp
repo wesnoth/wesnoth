@@ -17,6 +17,7 @@
 
 #include "asserts.hpp"
 #include "editor/action/action.hpp"
+#include "editor/action/action_unit.hpp"
 #include "editor_controller.hpp"
 
 #include "editor/palette/terrain_palettes.hpp"
@@ -25,11 +26,14 @@
 
 #include "editor_preferences.hpp"
 
+#include "gui/dialogs/rename_unit.hpp"
 #include "gui/dialogs/editor_settings.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
 #include "wml_exception.hpp"
+
+#include "dialogs.hpp"
 
 #include "../clipboard.hpp"
 #include "../game_preferences.hpp"
@@ -251,6 +255,20 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_HELP:
 		case HOTKEY_QUIT_GAME:
 			return true; //general hotkeys we can always do
+
+			// unit tool related
+		case HOTKEY_UNIT_DESCRIPTION:
+			return toolkit_->is_mouse_action_set(HOTKEY_EDITOR_TOOL_UNIT);
+		case HOTKEY_DELETE_UNIT:
+		case HOTKEY_RENAME_UNIT:
+		case HOTKEY_EDITOR_UNIT_TOGGLE_CANRECRUIT:
+		case HOTKEY_EDITOR_UNIT_TOGGLE_RENAMEABLE:
+		{
+			map_location loc = gui_->mouseover_hex();
+			const unit_map& units = context_manager_->get_map_context().get_units();
+			return (toolkit_->is_mouse_action_set(HOTKEY_EDITOR_TOOL_UNIT) &&
+					units.find(loc) != units.end());
+		}
 		case HOTKEY_UNDO:
 			return context_manager_->get_map_context().can_undo();
 		case HOTKEY_REDO:
@@ -300,12 +318,10 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_TOOL_VILLAGE:
 			return !context_manager_->get_map_context().get_teams().empty();
 
+		//TODO
+//		case HOTKEY_EDITOR_EXPORT_SELECTION_COORDS:
 		case HOTKEY_EDITOR_CUT:
 		case HOTKEY_EDITOR_COPY:
-
-			//TODO
-//		case HOTKEY_EDITOR_EXPORT_SELECTION_COORDS:
-
 		case HOTKEY_EDITOR_SELECTION_FILL:
 			return !context_manager_->get_map().selection().empty()
 					&& !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_PASTE);
@@ -356,6 +372,18 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 	using namespace hotkey;
 	switch (command) {
 
+	case HOTKEY_EDITOR_UNIT_TOGGLE_CANRECRUIT:
+	{
+		unit_map::const_unit_iterator un =
+				context_manager_->get_map_context().get_units().find(gui_->mouseover_hex());
+		return un->can_recruit() ? ACTION_ON : ACTION_OFF;
+	}
+	case HOTKEY_EDITOR_UNIT_TOGGLE_RENAMEABLE:
+	{
+		unit_map::const_unit_iterator un =
+				context_manager_->get_map_context().get_units().find(gui_->mouseover_hex());
+		return (!un->unrenamable()) ? ACTION_ON : ACTION_OFF;
+	}
 	//TODO remove hardcoded hotkey names
 	case HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS:
 		return context_manager_->is_active_transitions_hotkey("editor-auto-update-transitions")
@@ -375,7 +403,7 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 	case HOTKEY_EDITOR_BRUSH_NW_SE:
 		return toolkit_->is_active_brush("brush-nw-se") ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_EDITOR_BRUSH_SW_NE:
-		return toolkit_->is_active_brush("brush-se-nw") ? ACTION_ON : ACTION_OFF;
+		return toolkit_->is_active_brush("brush-sw-ne") ? ACTION_ON : ACTION_OFF;
 
 	case HOTKEY_ZOOM_DEFAULT:
 		return (gui_->get_zoom_factor() == 1.0) ? ACTION_ON : ACTION_OFF;
@@ -522,6 +550,29 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			toolkit_->hotkey_set_mouse_action(command);
 			return true;
 
+		case HOTKEY_EDITOR_UNIT_TOGGLE_RENAMEABLE:
+		{
+			map_location loc = gui_->mouseover_hex();
+			const unit_map::unit_iterator un = context_manager_->get_map_context().get_units().find(loc);
+			bool unrenamable = un->unrenamable();
+			un->set_unrenamable(!unrenamable);
+		}
+		return true;
+		case HOTKEY_EDITOR_UNIT_TOGGLE_CANRECRUIT:
+		{
+			map_location loc = gui_->mouseover_hex();
+			const unit_map::unit_iterator un = context_manager_->get_map_context().get_units().find(loc);
+			bool canrecruit = un->can_recruit();
+			un->set_can_recurit(!canrecruit);
+			un->set_standing();
+		}
+		return true;
+		case HOTKEY_DELETE_UNIT:
+		{
+			map_location loc = gui_->mouseover_hex();
+			perform_delete(new editor_action_unit_delete(loc));
+		}
+		return true;
 		case HOTKEY_EDITOR_PASTE: //paste is somewhat different as it might be "one action then revert to previous mode"
 			toolkit_->hotkey_set_mouse_action(command);
 			return true;
@@ -593,6 +644,8 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			context_manager_->perform_refresh(editor_action_shuffle_area(
 					context_manager_->get_map().selection()));
 			return true;
+
+		// map specific
 		case HOTKEY_EDITOR_CLOSE_MAP:
 			context_manager_->close_current_context();
 			return true;
@@ -604,10 +657,6 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			return true;
 		case HOTKEY_EDITOR_MAP_NEW:
 			context_manager_->new_map_dialog();
-			return true;
-		case HOTKEY_EDITOR_SIDE_NEW:
-			context_manager_->get_map_context().new_side();
-			gui_->init_flags();
 			return true;
 		case HOTKEY_EDITOR_MAP_SAVE:
 			save_map();
@@ -630,6 +679,13 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 		case HOTKEY_EDITOR_MAP_RESIZE:
 			context_manager_->resize_map_dialog();
 			return true;
+
+		// Side specific ones
+		case HOTKEY_EDITOR_SIDE_NEW:
+			context_manager_->get_map_context().new_side();
+			gui_->init_flags();
+			return true;
+
 		case HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS:
 			if (context_manager_->toggle_update_transitions())
 				return true;
@@ -643,6 +699,7 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 		case HOTKEY_EDITOR_REFRESH_IMAGE_CACHE:
 			refresh_image_cache();
 			return true;
+
 		case HOTKEY_EDITOR_DRAW_COORDINATES:
 			gui().set_draw_coordinates(!gui().get_draw_coordinates());
 			preferences::editor::set_draw_hex_coordinates(gui().get_draw_coordinates());
@@ -713,11 +770,40 @@ void editor_controller::toggle_grid()
 	gui_->invalidate_all();
 }
 
+void editor_controller::unit_description()
+{
+	map_location loc = gui_->mouseover_hex();
+	unit_map units = context_manager_->get_map_context().get_units();
+	const unit_map::const_unit_iterator un = units.find(loc);
+	if(un != units.end()) {
+		help::show_unit_help(*gui_, un->type_id(), false);
+	} else {
+		help::show_help(*gui_, "..units");
+	}
+}
+
+
 void editor_controller::copy_selection()
 {
 	if (!context_manager_->get_map().selection().empty()) {
 		context_manager_->get_clipboard() = map_fragment(context_manager_->get_map(), context_manager_->get_map().selection());
 		context_manager_->get_clipboard().center_by_mass();
+	}
+}
+
+void editor_controller::rename_unit()
+{
+	map_location loc = gui_->mouseover_hex();
+	unit_map& units = context_manager_->get_map_context().get_units();
+	const unit_map::unit_iterator& un = units.find(loc);
+	if(un != units.end()) {
+		std::string name = un->name();
+		if(gui2::trename_unit::execute(name, gui_->video())) {
+			//TODO we may not want a translated name here.
+			un->set_name(name);
+			//TODO
+			//gui_->invalidate_unit();
+		}
 	}
 }
 

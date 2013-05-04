@@ -114,7 +114,7 @@ editor_action* mouse_action_unit::drag_end_left(editor_display& disp, int x, int
 	return action;
 }
 
-
+/*
 editor_action* mouse_action_unit::click_right(editor_display& disp, int x, int y)
 {
 	map_location hex = disp.hex_clicked_on(x, y);
@@ -131,65 +131,66 @@ editor_action* mouse_action_unit::click_right(editor_display& disp, int x, int y
 	click_ = true;
 	return NULL;
 }
+*/
 
-editor_action* mouse_action_unit::drag_right(editor_display& disp, int x, int y, bool& /*partial*/, editor_action* /*last_undo*/)
-{
-	map_location hex = disp.hex_clicked_on(x, y);
-	if (previous_move_hex_ == hex)
-		return NULL;
+//editor_action* mouse_action_unit::drag_right(editor_display& disp, int x, int y, bool& /*partial*/, editor_action* /*last_undo*/)
+//{
+//	map_location hex = disp.hex_clicked_on(x, y);
+//	if (previous_move_hex_ == hex)
+//		return NULL;
+//
+//	click_ = (start_hex_ == hex);
+//	previous_move_hex_ = hex;
+//
+//	const unit_map& units = disp.get_units();
+//
+//	const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
+//	if (unit_it != units.end()) {
+//		for (map_location::DIRECTION new_direction = map_location::NORTH;
+//				new_direction <= map_location::NORTH_WEST;
+//				new_direction = map_location::DIRECTION(new_direction +1)){
+//			if (unit_it->get_location().get_direction(new_direction, 1) == hex) {
+//				return new editor_action_unit_facing(start_hex_, new_direction, old_direction_);
+//			}
+//		}
+//	}
+//
+//	return NULL;
+//}
 
-	click_ = (start_hex_ == hex);
-	previous_move_hex_ = hex;
+//editor_action* mouse_action_unit::up_right(editor_display& disp, int /*x*/, int /*y*/)
+//{
+//	if (!click_) return NULL;
+//	click_ = false;
+//
+//	const unit_map& units = disp.get_units();
+//	const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
+//	if (unit_it != units.end()) {
+//		return new editor_action_unit_delete(start_hex_);
+//	}
+//
+//	return NULL;
+//}
 
-	const unit_map& units = disp.get_units();
-
-	const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
-	if (unit_it != units.end()) {
-		for (map_location::DIRECTION new_direction = map_location::NORTH;
-				new_direction <= map_location::NORTH_WEST;
-				new_direction = map_location::DIRECTION(new_direction +1)){
-			if (unit_it->get_location().get_direction(new_direction, 1) == hex) {
-				return new editor_action_unit_facing(start_hex_, new_direction, old_direction_);
-			}
-		}
-	}
-
-	return NULL;
-}
-
-editor_action* mouse_action_unit::up_right(editor_display& disp, int /*x*/, int /*y*/)
-{
-	if (!click_) return NULL;
-	click_ = false;
-
-	const unit_map& units = disp.get_units();
-	const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
-	if (unit_it != units.end()) {
-		return new editor_action_unit_delete(start_hex_);
-	}
-
-	return NULL;
-}
-
-editor_action* mouse_action_unit::drag_end_right(editor_display& disp, int x, int y)
-{
-	if (click_) return NULL;
-
-	map_location hex = disp.hex_clicked_on(x, y);
-	if (!disp.get_map().on_board(hex))
-		return NULL;
-
-	if(new_direction_ != old_direction_) {
-
-	const unit_map& units = disp.get_units();
-	const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
-		if (unit_it != units.end()) {
-			return new editor_action_unit_facing(start_hex_, new_direction_, old_direction_);
-		}
-	}
-
-	return NULL;
-}
+//editor_action* mouse_action_unit::drag_end_right(editor_display& disp, int x, int y)
+//{
+//	if (click_) return NULL;
+//
+//	map_location hex = disp.hex_clicked_on(x, y);
+//	if (!disp.get_map().on_board(hex))
+//		return NULL;
+//
+//	if(new_direction_ != old_direction_) {
+//
+//	const unit_map& units = disp.get_units();
+//	const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
+//		if (unit_it != units.end()) {
+//			return new editor_action_unit_facing(start_hex_, new_direction_, old_direction_);
+//		}
+//	}
+//
+//	return NULL;
+//}
 
 
 void mouse_action_unit::set_mouse_overlay(editor_display& disp)

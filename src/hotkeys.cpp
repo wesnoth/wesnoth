@@ -83,8 +83,10 @@ const hotkey_command hotkey_list_[] = {
 	{ hotkey::HOTKEY_SCREENSHOT, "screenshot", N_("Screenshot"), false, hotkey::SCOPE_GENERAL, NULL },
 	{ hotkey::HOTKEY_MAP_SCREENSHOT, "mapscreenshot", N_("Map Screenshot"), false, hotkey::SCOPE_GENERAL, NULL },
 	{ hotkey::HOTKEY_ACCELERATED, "accelerated", N_("Accelerated"), false, hotkey::SCOPE_GAME, NULL },
-	{ hotkey::HOTKEY_UNIT_DESCRIPTION, "describeunit", N_("Unit Description"), false, hotkey::SCOPE_GAME, NULL },
-	{ hotkey::HOTKEY_RENAME_UNIT, "renameunit", N_("Rename Unit"), false, hotkey::SCOPE_GAME, NULL },
+	{ hotkey::HOTKEY_UNIT_DESCRIPTION, "describeunit", N_("Unit Description"), false, hotkey::SCOPE_GENERAL, NULL },
+	{ hotkey::HOTKEY_RENAME_UNIT, "renameunit", N_("Rename Unit"), false, hotkey::SCOPE_GENERAL, NULL },
+	{ hotkey::HOTKEY_DELETE_UNIT, "editor-deleteunit", N_("Delete Unit"), false, hotkey::SCOPE_GENERAL, NULL },
+
 	{ hotkey::HOTKEY_SAVE_GAME, "save", N_("Save Game"), false, hotkey::SCOPE_GAME, NULL },
 	{ hotkey::HOTKEY_SAVE_REPLAY, "savereplay", N_("Save Replay"), false, hotkey::SCOPE_GAME, NULL },
 	{ hotkey::HOTKEY_SAVE_MAP, "savemap", N_("Save Map"), false, hotkey::SCOPE_GAME, NULL },
@@ -170,6 +172,9 @@ const hotkey_command hotkey_list_[] = {
 	{ hotkey::HOTKEY_EDITOR_TOOL_ITEM, "editor-tool-item", N_("Item Tool"), false, hotkey::SCOPE_EDITOR, N_("Left mouse button sets a new item or moves it via drag and drop, right clears. Not implemented yet.") },
 	{ hotkey::HOTKEY_EDITOR_TOOL_SOUNDSOURCE, "editor-tool-soundsource", N_("Soundsource Tool"), false, hotkey::SCOPE_EDITOR, N_("Left mouse button sets or drags a sound source, right clears. Not implemented yet.") },
 	{ hotkey::HOTKEY_EDITOR_TOOL_VILLAGE, "editor-tool-village", N_("Village Tool"), false, hotkey::SCOPE_EDITOR, N_("Left mouse button sets the village ownership to the current side, right clears. Not implemented yet.") },
+
+	{ hotkey::HOTKEY_EDITOR_UNIT_TOGGLE_CANRECRUIT, "editor-toggle-canrecruit", N_("Canrecruit"), false, hotkey::SCOPE_EDITOR, N_("Toggle the recruit attribute of a unit.") },
+	{ hotkey::HOTKEY_EDITOR_UNIT_TOGGLE_RENAMEABLE, "editor-toggle-renameable", N_("Can be renamed"), false, hotkey::SCOPE_EDITOR, N_("Toggle the unit being renameable.") },
 
 
 	{ hotkey::HOTKEY_EDITOR_BRUSH_NEXT, "editor-brush-next", N_("Next Brush"), false, hotkey::SCOPE_EDITOR, NULL },

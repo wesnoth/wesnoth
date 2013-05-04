@@ -122,6 +122,9 @@ class editor_controller : public controller_base,
 		/** Grid toggle */
 		void toggle_grid();
 
+		void unit_description();
+		void rename_unit();
+
 		/** Copy the selection on the current map to the clipboard */
 		void copy_selection();
 

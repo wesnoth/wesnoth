@@ -38,6 +38,10 @@ public:
 	{
 	}
 
+	bool has_context_menu() const {
+		return true;
+	}
+
 	void move(editor_display& disp, const map_location& hex);
 
 	/**
@@ -58,27 +62,9 @@ public:
 	 */
 	editor_action* drag_end_left(editor_display& disp, int x, int y);
 
-	/**
-	 * TODO
-	 */
-	editor_action* click_right(editor_display& disp, int x, int y);
-
-	/**
-	 * Right click only erases the unit if there is one.
-	 * Do this on mouse up to avoid drag issue.
-	 */
-	editor_action* up_right(editor_display& disp, int x, int y);
-
-	/**
-	 *
-	 */
-	editor_action* drag_right(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
-
-	/**
-	 * Drag end replaces the unit when clicked left, or adjusts
-	 * the facing when clicked right.
-	 */
-	editor_action* drag_end_right(editor_display& disp, int x, int y);
+	editor_action* click_right(editor_display& /*disp*/, int /*x*/, int /*y*/) {
+		return NULL;
+	}
 
 	virtual void set_mouse_overlay(editor_display& disp);
 	void set_unit_mouse_overlay(editor_display& disp, const unit_type& u);
