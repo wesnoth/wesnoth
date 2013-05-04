@@ -78,7 +78,7 @@ public:
 		resources::teams = &context_manager_.get_map_context().get_teams();
 		context_manager_.reload_map();
 
-		//resources::state_of_game = &ec_.get_map().get_game_state();
+		resources::state_of_game = &context_manager_.get_map_context().get_game_state();
 		context_manager_.gui().init_flags();
 
 		current_labels->enable(false);
