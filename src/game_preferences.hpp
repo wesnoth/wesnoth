@@ -26,6 +26,8 @@ class unit_map;
 
 namespace preferences {
 
+class acquaintance;
+
 	struct manager
 	{
 		manager();
@@ -44,13 +46,12 @@ namespace preferences {
 
 	bool new_lobby();
 
-	const std::set<std::string> & get_friends();
-	const std::map<std::string, std::string> & get_ignores();
+	const std::map<std::string, acquaintance> & get_acquaintances();
+	std::map<std::string, std::string> get_acquaintances_nice(const std::string& filter);
 	bool add_friend(const std::string& nick);
 	bool add_ignore(const std::string& nick, const std::string& reason);
 	void add_completed_campaign(const std::string& campaign_id);
-	void remove_friend(const std::string& nick);
-	void remove_ignore(const std::string& nick);
+	void remove_acquaintance(const std::string& nick);
 	bool is_friend(const std::string& nick);
 	bool is_ignored(const std::string& nick);
 	bool is_campaign_completed(const std::string& campaign_id);
@@ -262,6 +263,45 @@ namespace preferences {
 	void encounter_recallable_units(std::vector<team>& teams);
 	// Add all terrains on the map as encountered terrains.
 	void encounter_map_terrain(gamemap& map);
+
+class acquaintance {
+public:
+
+	explicit acquaintance()
+	{
+	}
+
+	explicit acquaintance(const config& cfg)
+	{
+		load_from_config(cfg);
+	}
+
+	explicit acquaintance(const std::string &nick, const std::string status, const std::string notes):
+		nick_(nick), status_(status), notes_(notes)
+	{
+
+	}
+
+	void load_from_config(const config& cfg);
+
+	const std::string get_nick() const { return nick_; };
+	const std::string get_status() const { return status_; };
+	const std::string get_notes() const { return notes_; };
+
+	void save(config& cfg);
+
+protected:
+
+	// acquaintance's MP nick
+	std::string nick_;
+
+	// status (e.g., "friend", "ignore")
+	std::string status_;
+
+	// notes on the acquaintance
+	std::string notes_;
+
+};
 
 }
 

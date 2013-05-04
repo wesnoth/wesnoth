@@ -165,8 +165,7 @@ void tlobby_player_info::add_to_ignores_button_callback(twindow& w)
 
 void tlobby_player_info::remove_from_list_button_callback(twindow& w)
 {
-	preferences::remove_friend(info_.name);
-	preferences::remove_ignore(info_.name);
+	preferences::remove_acquaintance(info_.name);
 	info_.relation = user_info::NEUTRAL;
 	update_relation(w);
 }

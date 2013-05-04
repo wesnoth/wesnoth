@@ -46,11 +46,9 @@ std::set<t_translation::t_terrain> encountered_terrains_set;
 std::map<std::string, std::vector<std::string> > history_map;
 const unsigned max_history_saved = 50;
 
-std::set<std::string> friends;
-std::map<std::string, std::string> ignores; //maps from name to reason ignored
+std::map<std::string, preferences::acquaintance> acquaintances;
 
-bool friends_initialized = false;
-bool ignores_initialized = false;
+bool acquaintances_initialized = false;
 
 std::vector<std::string> mp_modifications;
 bool modifications_initialized = false;
@@ -187,82 +185,101 @@ void parse_admin_authentication(const std::string& sender, const std::string& me
 	}
 }
 
-static void initialize_friends() {
-	if(!friends_initialized) {
-		std::vector<std::string> names = utils::split(preferences::get("friends"));
-		std::set<std::string> tmp(names.begin(), names.end());
-		friends.swap(tmp);
-
-		friends_initialized = true;
+void load_acquaintances() {
+	if(!acquaintances_initialized) {
+		acquaintances.clear();
+		BOOST_FOREACH(const config &acfg, preferences::get_prefs()->child_range("acquaintance")) {
+			acquaintance ac = acquaintance(acfg);
+			acquaintances[ac.get_nick()] = ac;
+		}
 	}
 }
 
-const std::set<std::string> & get_friends() {
-	initialize_friends();
-	return friends;
-}
+void save_acquaintances()
+{
+	config *cfg = preferences::get_prefs();
+	cfg->clear_children("acquaintance");
 
-static void initialize_ignores() {
-	if(!ignores_initialized) {
-		std::map<std::string, std::string> tmp = utils::map_split(preferences::get("ignores"), ';', ' ');
-		ignores.swap(tmp);
-
-		ignores_initialized = true;
+	for(std::map<std::string, acquaintance>::iterator i = acquaintances.begin();
+			i != acquaintances.end(); ++i)
+	{
+		config& item = cfg->add_child("acquaintance");
+		i->second.save(item);
 	}
 }
 
-const std::map<std::string, std::string> & get_ignores() {
-	return ignores;
+const std::map<std::string, acquaintance> & get_acquaintances() {
+	load_acquaintances();
+	return acquaintances;
+}
+
+//returns acquaintances in the form nick => notes where the status = filter
+std::map<std::string, std::string> get_acquaintances_nice(const std::string& filter) {
+	load_acquaintances();
+	std::map<std::string, std::string> ac_nice;
+
+	for(std::map<std::string, acquaintance>::iterator i = acquaintances.begin(); i != acquaintances.end(); ++i)
+	{
+		if(i->second.get_status() == filter) {
+			ac_nice[i->second.get_nick()] = i->second.get_notes();
+		}
+	}
+
+	return ac_nice;
 }
 
 bool add_friend(const std::string& nick) {
 	if (!utils::isvalid_wildcard(nick)) return false;
-	friends.insert(nick);
-	preferences::set("friends", utils::join(friends));
+	acquaintances[nick] = preferences::acquaintance(nick, "friend", "");
+	save_acquaintances();
 	return true;
 }
 
 bool add_ignore(const std::string& nick, const std::string& reason) {
 	if (!utils::isvalid_wildcard(nick)) return false;
-	ignores[nick] = utils::replace(reason, ";", "");
-	preferences::set("ignores", utils::join_map(ignores, ';', ' '));
+	acquaintances[nick] = preferences::acquaintance(nick, "ignore", utils::replace(reason, ";", ""));
+	save_acquaintances();
 	return true;
 }
 
-void remove_friend(const std::string& nick) {
-	std::set<std::string>::iterator i = friends.find(nick);
-	if(i != friends.end()) {
-		friends.erase(i);
-		preferences::set("friends", utils::join(friends));
-	}
-}
+void remove_acquaintance(const std::string& nick) {
+	std::map<std::string, acquaintance>::iterator i = acquaintances.find(nick);
 
-void remove_ignore(const std::string& nick) {
-	std::map<std::string, std::string>::iterator i = ignores.find(nick);
-
-	//nick might include the reason, depending on how we're removing
-	if(i == ignores.end()) {
+	//nick might include the notes, depending on how we're removing
+	if(i == acquaintances.end()) {
 		size_t pos = nick.find_first_of(' ');
 
 		if(pos != std::string::npos) {
-			i = ignores.find(nick.substr(0, pos));
+			i = acquaintances.find(nick.substr(0, pos));
 		}
 	}
 
-	if(i != ignores.end()) {
-		ignores.erase(i);
-		preferences::set("ignores", utils::join_map(ignores, ';', ' '));
+	if(i != acquaintances.end()) {
+		acquaintances.erase(i);
+		save_acquaintances();
 	}
 }
 
 bool is_friend(const std::string& nick) {
-	initialize_friends();
-	return friends.find(nick) != friends.end();
+	load_acquaintances();
+	std::map<std::string, acquaintance>::iterator it = acquaintances.find(nick);
+
+	if(it == acquaintances.end()) {
+		return false;
+	} else {
+		return it->second.get_status() == "friend";
+	}
 }
 
 bool is_ignored(const std::string& nick) {
-	initialize_ignores();
-	return ignores.find(nick) != ignores.end();
+	load_acquaintances();
+	std::map<std::string, acquaintance>::iterator it = acquaintances.find(nick);
+
+	if(it == acquaintances.end()) {
+		return false;
+	} else {
+		return it->second.get_status() == "ignore";
+	}
 }
 
 void add_completed_campaign(const std::string& campaign_id) {
@@ -1029,6 +1046,20 @@ void encounter_map_terrain(gamemap& map){
 			};
 		}
 	}
+}
+
+void acquaintance::load_from_config(const config& cfg)
+{
+	nick_ = cfg["nick"].str();
+	status_ = cfg["status"].str();
+	notes_ = cfg["notes"].str();
+}
+
+void acquaintance::save(config& item)
+{
+	item["nick"] = nick_;
+	item["status"] = status_;
+	item["notes"] = notes_;
 }
 
 } // preferences namespace

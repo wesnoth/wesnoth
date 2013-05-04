@@ -310,15 +310,15 @@ std::map< std::string, std::string > map_split(std::string const &val, char majo
 	std::map< std::string, std::string > res;
 
 	for( std::vector< std::string >::iterator i = v.begin(); i != v.end(); ++i) {
-		size_t pos = (*i).find_first_of(minor);
+		size_t pos = i->find_first_of(minor);
 		std::string key, value;
 
 		if(pos == std::string::npos) {
 			key = (*i);
 			value = default_value;
 		} else {
-			key = (*i).substr(0, pos);
-			value = (*i).substr(pos + 1);
+			key = i->substr(0, pos);
+			value = i->substr(pos + 1);
 		}
 
 		res[key] = value;
