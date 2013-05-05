@@ -859,6 +859,7 @@ void editor_controller::display_redraw_callback(display& disp)
 {
 	set_button_state(disp);
 	toolkit_->adjust_size();
+	context_manager_->get_map_context().get_labels().recalculate_labels();
 }
 
 void editor_controller::undo()
