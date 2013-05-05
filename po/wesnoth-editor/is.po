@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-03-24 13:24+0100\n"
+"POT-Creation-Date: 2013-05-05 10:54+0200\n"
 "PO-Revision-Date: 2009-05-12 18:51-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: none\n"
@@ -20,28 +20,28 @@ msgstr ""
 "= 31 && n % 100 != 41 && n % 100 != 51 && n % 100 != 61 && n % 100 != 71 && "
 "n % 100 != 81 && n % 100 != 91);\n"
 
-#. [brush]
-#: data/core/editor/brushes.cfg:5
+#. [brush]: id=brush-1
+#: data/core/editor/brushes.cfg:6
 msgid "Single Hex"
 msgstr "Einn reitur"
 
-#. [brush]
-#: data/core/editor/brushes.cfg:15
+#. [brush]: id=brush-2
+#: data/core/editor/brushes.cfg:16
 msgid "Radius 1 Hex"
 msgstr "Radíus 1 reit"
 
-#. [brush]
-#: data/core/editor/brushes.cfg:25
+#. [brush]: id=brush-3
+#: data/core/editor/brushes.cfg:26
 msgid "Radius 2 Hex"
 msgstr "Radíus 2 reiti"
 
-#. [brush]
-#: data/core/editor/brushes.cfg:46
+#. [brush]: id=brush-nw-se
+#: data/core/editor/brushes.cfg:47
 msgid "Hex Line NW-SE"
 msgstr "Reitarlína NV-SA"
 
-#. [brush]
-#: data/core/editor/brushes.cfg:62
+#. [brush]: id=brush-sw-ne
+#: data/core/editor/brushes.cfg:63
 #, fuzzy
 #| msgid "Hex Line NW-SE"
 msgid "Hex Line SE-NW"
@@ -124,10 +124,7 @@ msgstr "sérstakt"
 
 #. [editor_tool_hint]: id=editor-tool-fill
 #. [editor_tool_hint]: id=editor-tool-paint
-#. [menu]: id=draw_button_editor
-#. [menu]: id=flood_button_editor
 #: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
-#: data/themes/editor.cfg:220 data/themes/editor.cfg:278
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
@@ -137,8 +134,7 @@ msgstr ""
 "afrita tegund jarðar undir músarbendlinum."
 
 #. [editor_tool_hint]: id=editor-tool-select
-#. [menu]: id=select_button_editor
-#: data/core/editor/tool-hints.cfg:19 data/themes/editor.cfg:290
+#: data/core/editor/tool-hints.cfg:19
 msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
@@ -147,8 +143,7 @@ msgstr ""
 "Shift fyrir galdrasprotaval reita með sömu jarðartegund."
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
-#. [menu]: id=start_position_button_editor
-#: data/core/editor/tool-hints.cfg:25 data/themes/editor.cfg:232
+#: data/core/editor/tool-hints.cfg:25
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
 "scroll to the starting position, alt+number sets respective starting "
@@ -167,45 +162,62 @@ msgstr ""
 "Smelltu til að líma, þysjaðu út fyrir frekari nákvæmni við límingu stærri "
 "svæða. Notastu við 'Breyta' valflokkinn til að vinna með klippiborðið."
 
-#. [menu]: id=menu-editor-file
-#: data/themes/editor.cfg:116
+#. [menu]: id=menu-editor-file, type=turbo
+#: data/themes/editor.cfg:70
 msgid "File"
 msgstr "Skrá"
 
-#. [menu]: id=menu-editor-edit
-#: data/themes/editor.cfg:130
-msgid "Edit"
-msgstr "Breyta"
-
 #. [menu]: id=menu-editor-map
-#: data/themes/editor.cfg:143
+#: data/themes/editor.cfg:96
 msgid "Map"
 msgstr "Kort"
 
 #. [menu]: id=menu-editor-window
-#: data/themes/editor.cfg:156
+#: data/themes/editor.cfg:106
 msgid "Window"
 msgstr "Gluggar"
 
-#. [menu]: id=menu-editor-terrain
-#: data/themes/editor.cfg:439
-msgid "Group"
+#. [menu]: id=menu-editor-areas
+#: data/themes/editor.cfg:116
+msgid "Areas"
+msgstr ""
+
+#. [menu]: id=menu-editor-side
+#: data/themes/editor.cfg:126
+msgid "Side"
 msgstr ""
 
 #. [label]: id=villages-icon
-#: data/themes/editor.cfg:463
+#: data/themes/editor.cfg:146
 msgid "villages"
 msgstr "þorp"
 
-#: src/editor/editor_controller.cpp:156
+#. [label]: id=units-icon
+#: data/themes/editor.cfg:163
+msgid "units"
+msgstr ""
+
+#. [label]: id=terrain-icon
+#: data/themes/editor.cfg:586
+msgid "terrain"
+msgstr ""
+
+#. [action]: id=flip_map_button_editor, type=checkbox
+#: data/themes/editor.cfg:646
+#, fuzzy
+#| msgid "Action not implemented"
+msgid "Not implemented yet."
+msgstr "Skipun ekki forrituð"
+
+#: src/editor/editor_controller.cpp:155
 msgid "Fatal error"
 msgstr "Alvarleg villa"
 
-#: src/editor/editor_controller.cpp:180
+#: src/editor/editor_controller.cpp:179
 msgid "Do you really want to quit?"
 msgstr "Ertu viss um að þú viljir hætta?"
 
-#: src/editor/editor_controller.cpp:182
+#: src/editor/editor_controller.cpp:181
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
@@ -213,7 +225,7 @@ msgstr ""
 "Ertu viss um að þú viljir hætta? Breytingar á kortinu síðan síðustu vistun "
 "munu glatast."
 
-#: src/editor/editor_controller.cpp:184
+#: src/editor/editor_controller.cpp:183
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -221,86 +233,92 @@ msgstr ""
 "Ertu viss um að þú viljir hætta? Eftirfarandi kort voru breytt og allar "
 "breytingar síðan síðustu vistum munu glatast."
 
-#: src/editor/editor_controller.cpp:187
+#: src/editor/editor_controller.cpp:186
 msgid "Quit"
 msgstr "Hætta"
 
-#: src/editor/editor_controller.cpp:198
+#: src/editor/editor_controller.cpp:197
 msgid "No editor time-of-day found."
 msgstr "Enginn tími dags fundinn."
 
-#: src/editor/map/context_manager.cpp:104
-#: src/editor/map/context_manager.cpp:196
+#: src/editor/map/context_manager.cpp:114
+#: src/editor/map/context_manager.cpp:206
 msgid "(New Map)"
 msgstr "(Nýtt kort)"
 
-#: src/editor/map/context_manager.cpp:165
+#: src/editor/map/context_manager.cpp:175
 msgid "Choose a Map to Open"
 msgstr "Veldu kort til að opna"
 
-#: src/editor/map/context_manager.cpp:239
+#: src/editor/map/context_manager.cpp:233
+#, fuzzy
+#| msgid "(New Map)"
+msgid "(New Side)"
+msgstr "(Nýtt kort)"
+
+#: src/editor/map/context_manager.cpp:249
 msgid "Choose a Mask to Apply"
 msgstr "Veldu skugga til setningar"
 
-#: src/editor/map/context_manager.cpp:246
+#: src/editor/map/context_manager.cpp:256
 msgid "Error loading mask"
 msgstr "Villa við hlöðun skugga"
 
-#: src/editor/map/context_manager.cpp:267
+#: src/editor/map/context_manager.cpp:277
 msgid "Choose Target Map"
 msgstr "Veldu miðkort"
 
-#: src/editor/map/context_manager.cpp:274
-#: src/editor/map/context_manager.cpp:635
+#: src/editor/map/context_manager.cpp:284
+#: src/editor/map/context_manager.cpp:645
 msgid "Error loading map"
 msgstr "Villa við hlöðun korts"
 
-#: src/editor/map/context_manager.cpp:392
+#: src/editor/map/context_manager.cpp:402
 msgid "Save the Map As"
 msgstr "Vista kort sem"
 
-#: src/editor/map/context_manager.cpp:395
+#: src/editor/map/context_manager.cpp:405
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Skráin er nú þegar til staðar. Viltu yfirskrifa hana?"
 
-#: src/editor/map/context_manager.cpp:429
+#: src/editor/map/context_manager.cpp:439
 msgid "No random map generators found."
 msgstr "Engar sjálfvirkar kortagerðarforrit fundust."
 
-#: src/editor/map/context_manager.cpp:442
-#: src/editor/map/context_manager.cpp:446
+#: src/editor/map/context_manager.cpp:452
+#: src/editor/map/context_manager.cpp:456
 msgid "Map creation failed."
 msgstr "Gerð korts mistókst."
 
-#: src/editor/map/context_manager.cpp:458
+#: src/editor/map/context_manager.cpp:468
 msgid "Unsaved Changes"
 msgstr "Óvistaðar breytingar"
 
-#: src/editor/map/context_manager.cpp:459
+#: src/editor/map/context_manager.cpp:469
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
 "Viltu eyða öllum breytingum sem hafa verið gerðar síðan síðustu vistun?"
 
-#: src/editor/map/context_manager.cpp:550
-#: src/editor/map/context_manager.cpp:591
+#: src/editor/map/context_manager.cpp:560
+#: src/editor/map/context_manager.cpp:601
 msgid "This map is already open."
 msgstr "Þetta kort er nú þegar opið."
 
-#: src/editor/map/context_manager.cpp:571
+#: src/editor/map/context_manager.cpp:581
 msgid "Map saved."
 msgstr "Kort vistað."
 
-#: src/editor/map/context_manager.cpp:614
+#: src/editor/map/context_manager.cpp:624
 msgid "Loaded embedded map data"
 msgstr "Hlóð fylgigögn korts"
 
-#: src/editor/map/context_manager.cpp:615
-#: src/editor/map/context_manager.cpp:629
+#: src/editor/map/context_manager.cpp:625
+#: src/editor/map/context_manager.cpp:639
 msgid "Map loaded from scenario"
 msgstr "Kort hlaðið úr atburðarás"
 
-#: src/editor/map/context_manager.cpp:625
+#: src/editor/map/context_manager.cpp:635
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -308,11 +326,11 @@ msgstr ""
 "Hlóð ávísað kort:\n"
 "$new"
 
-#: src/editor/map/editor_map.cpp:150
+#: src/editor/map/editor_map.cpp:149
 msgid "Player"
 msgstr "Spilari"
 
-#: src/editor/map/editor_map.cpp:257
+#: src/editor/map/editor_map.cpp:256
 msgid "The size of the target map is different from the current map"
 msgstr "Stærð miðkortsins er ekki sú sama og núverandi kort"
 
@@ -332,52 +350,51 @@ msgstr ""
 msgid "Empty map file"
 msgstr "Tómt kort"
 
-#: src/editor/map/map_context.cpp:353
+#: src/editor/map/map_context.cpp:328
 msgid "Could not save into scenario"
 msgstr "Gat ekki vistað yfir í atburðarás"
 
-#: src/editor/map/map_context.cpp:360
+#: src/editor/map/map_context.cpp:335
 msgid "Could not save the map: $msg"
 msgstr "Gat ekki vistað kortið: $msg"
 
-#: src/editor/palette/editor_palettes.cpp:48
+#: src/editor/palette/editor_palettes.cpp:56
+#: src/editor/palette/editor_palettes.cpp:99
 msgid "(Unknown Group)"
 msgstr ""
 
-#: src/editor/palette/editor_palettes.cpp:305
+#: src/editor/palette/editor_palettes.cpp:317
 msgid "(non-core)"
 msgstr ""
 
-#: src/editor/palette/editor_palettes.cpp:306
+#: src/editor/palette/editor_palettes.cpp:318
 msgid "Will not work in game without extra care."
 msgstr ""
 
-#: src/editor/palette/terrain_palettes.cpp:55
+#: src/editor/palette/terrain_palettes.cpp:54
 msgid "FG: "
 msgstr ""
 
-#: src/editor/palette/terrain_palettes.cpp:56
+#: src/editor/palette/terrain_palettes.cpp:55
 msgid "BG: "
 msgstr ""
 
-#: src/gui/dialogs/editor_set_starting_position.cpp:87
+#: src/gui/dialogs/editor_set_starting_position.cpp:86
 #, fuzzy
 #| msgid "(Player)^None"
 msgid "player^None"
 msgstr "Enginn"
 
-#: src/gui/dialogs/editor_set_starting_position.cpp:99
+#: src/gui/dialogs/editor_set_starting_position.cpp:98
 msgid "Player $player_number"
 msgstr ""
 
-#: src/gui/dialogs/editor_settings.cpp:166
+#: src/gui/dialogs/editor_settings.cpp:165
 msgid "Custom setting"
 msgstr "Sérstakar stillingar"
 
-#, fuzzy
-#~| msgid "Action not implemented"
-#~ msgid "Flip Map - Not implemented yet."
-#~ msgstr "Skipun ekki forrituð"
+#~ msgid "Edit"
+#~ msgstr "Breyta"
 
 #~ msgid "Quit Editor"
 #~ msgstr "Loka kortagerð"

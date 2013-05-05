@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ang@latin\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-03-24 13:24+0100\n"
+"POT-Creation-Date: 2013-05-05 10:54+0200\n"
 "PO-Revision-Date: 2012-05-24 12:01-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: Old English <http://wiki.wesnoth.org/OldEnglishTranslation>\n"
@@ -17,28 +17,28 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#. [brush]
-#: data/core/editor/brushes.cfg:5
+#. [brush]: id=brush-1
+#: data/core/editor/brushes.cfg:6
 msgid "Single Hex"
 msgstr ""
 
-#. [brush]
-#: data/core/editor/brushes.cfg:15
+#. [brush]: id=brush-2
+#: data/core/editor/brushes.cfg:16
 msgid "Radius 1 Hex"
 msgstr ""
 
-#. [brush]
-#: data/core/editor/brushes.cfg:25
+#. [brush]: id=brush-3
+#: data/core/editor/brushes.cfg:26
 msgid "Radius 2 Hex"
 msgstr ""
 
-#. [brush]
-#: data/core/editor/brushes.cfg:46
+#. [brush]: id=brush-nw-se
+#: data/core/editor/brushes.cfg:47
 msgid "Hex Line NW-SE"
 msgstr ""
 
-#. [brush]
-#: data/core/editor/brushes.cfg:62
+#. [brush]: id=brush-sw-ne
+#: data/core/editor/brushes.cfg:63
 msgid "Hex Line SE-NW"
 msgstr ""
 
@@ -119,26 +119,21 @@ msgstr ""
 
 #. [editor_tool_hint]: id=editor-tool-fill
 #. [editor_tool_hint]: id=editor-tool-paint
-#. [menu]: id=draw_button_editor
-#. [menu]: id=flood_button_editor
 #: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
-#: data/themes/editor.cfg:220 data/themes/editor.cfg:278
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
 
 #. [editor_tool_hint]: id=editor-tool-select
-#. [menu]: id=select_button_editor
-#: data/core/editor/tool-hints.cfg:19 data/themes/editor.cfg:290
+#: data/core/editor/tool-hints.cfg:19
 msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
 msgstr ""
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
-#. [menu]: id=start_position_button_editor
-#: data/core/editor/tool-hints.cfg:25 data/themes/editor.cfg:232
+#: data/core/editor/tool-hints.cfg:25
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
 "scroll to the starting position, alt+number sets respective starting "
@@ -152,145 +147,166 @@ msgid ""
 "edit menu to transform the clipboard (rotate, mirror)."
 msgstr ""
 
-#. [menu]: id=menu-editor-file
-#: data/themes/editor.cfg:116
+#. [menu]: id=menu-editor-file, type=turbo
+#: data/themes/editor.cfg:70
 msgid "File"
 msgstr ""
 
-#. [menu]: id=menu-editor-edit
-#: data/themes/editor.cfg:130
-msgid "Edit"
-msgstr "Adihtan"
-
 #. [menu]: id=menu-editor-map
-#: data/themes/editor.cfg:143
+#: data/themes/editor.cfg:96
 msgid "Map"
 msgstr "Landcarte"
 
 #. [menu]: id=menu-editor-window
-#: data/themes/editor.cfg:156
+#: data/themes/editor.cfg:106
 msgid "Window"
 msgstr ""
 
-#. [menu]: id=menu-editor-terrain
-#: data/themes/editor.cfg:439
-msgid "Group"
+#. [menu]: id=menu-editor-areas
+#: data/themes/editor.cfg:116
+msgid "Areas"
+msgstr ""
+
+#. [menu]: id=menu-editor-side
+#: data/themes/editor.cfg:126
+msgid "Side"
 msgstr ""
 
 #. [label]: id=villages-icon
-#: data/themes/editor.cfg:463
+#: data/themes/editor.cfg:146
 msgid "villages"
 msgstr "þorpas"
 
-#: src/editor/editor_controller.cpp:156
+#. [label]: id=units-icon
+#: data/themes/editor.cfg:163
+msgid "units"
+msgstr ""
+
+#. [label]: id=terrain-icon
+#: data/themes/editor.cfg:586
+msgid "terrain"
+msgstr ""
+
+#. [action]: id=flip_map_button_editor, type=checkbox
+#: data/themes/editor.cfg:646
+msgid "Not implemented yet."
+msgstr ""
+
+#: src/editor/editor_controller.cpp:155
 msgid "Fatal error"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:180
+#: src/editor/editor_controller.cpp:179
 msgid "Do you really want to quit?"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:182
+#: src/editor/editor_controller.cpp:181
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr ""
 
-#: src/editor/editor_controller.cpp:184
+#: src/editor/editor_controller.cpp:183
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:187
+#: src/editor/editor_controller.cpp:186
 msgid "Quit"
 msgstr "Læfan"
 
-#: src/editor/editor_controller.cpp:198
+#: src/editor/editor_controller.cpp:197
 msgid "No editor time-of-day found."
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:104
-#: src/editor/map/context_manager.cpp:196
+#: src/editor/map/context_manager.cpp:114
+#: src/editor/map/context_manager.cpp:206
 msgid "(New Map)"
 msgstr "(Niƿu Landcarte)"
 
-#: src/editor/map/context_manager.cpp:165
+#: src/editor/map/context_manager.cpp:175
 msgid "Choose a Map to Open"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:239
+#: src/editor/map/context_manager.cpp:233
+#, fuzzy
+#| msgid "(New Map)"
+msgid "(New Side)"
+msgstr "(Niƿu Landcarte)"
+
+#: src/editor/map/context_manager.cpp:249
 msgid "Choose a Mask to Apply"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:246
+#: src/editor/map/context_manager.cpp:256
 msgid "Error loading mask"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:267
+#: src/editor/map/context_manager.cpp:277
 msgid "Choose Target Map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:274
-#: src/editor/map/context_manager.cpp:635
+#: src/editor/map/context_manager.cpp:284
+#: src/editor/map/context_manager.cpp:645
 msgid "Error loading map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:392
+#: src/editor/map/context_manager.cpp:402
 msgid "Save the Map As"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:395
+#: src/editor/map/context_manager.cpp:405
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:429
+#: src/editor/map/context_manager.cpp:439
 msgid "No random map generators found."
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:442
-#: src/editor/map/context_manager.cpp:446
+#: src/editor/map/context_manager.cpp:452
+#: src/editor/map/context_manager.cpp:456
 msgid "Map creation failed."
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:458
+#: src/editor/map/context_manager.cpp:468
 msgid "Unsaved Changes"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:459
+#: src/editor/map/context_manager.cpp:469
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:550
-#: src/editor/map/context_manager.cpp:591
+#: src/editor/map/context_manager.cpp:560
+#: src/editor/map/context_manager.cpp:601
 msgid "This map is already open."
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:571
+#: src/editor/map/context_manager.cpp:581
 msgid "Map saved."
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:614
+#: src/editor/map/context_manager.cpp:624
 msgid "Loaded embedded map data"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:615
-#: src/editor/map/context_manager.cpp:629
+#: src/editor/map/context_manager.cpp:625
+#: src/editor/map/context_manager.cpp:639
 msgid "Map loaded from scenario"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:625
+#: src/editor/map/context_manager.cpp:635
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
 
-#: src/editor/map/editor_map.cpp:150
+#: src/editor/map/editor_map.cpp:149
 msgid "Player"
 msgstr ""
 
-#: src/editor/map/editor_map.cpp:257
+#: src/editor/map/editor_map.cpp:256
 msgid "The size of the target map is different from the current map"
 msgstr ""
 
@@ -308,45 +324,49 @@ msgstr ""
 msgid "Empty map file"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:353
+#: src/editor/map/map_context.cpp:328
 msgid "Could not save into scenario"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:360
+#: src/editor/map/map_context.cpp:335
 msgid "Could not save the map: $msg"
 msgstr ""
 
-#: src/editor/palette/editor_palettes.cpp:48
+#: src/editor/palette/editor_palettes.cpp:56
+#: src/editor/palette/editor_palettes.cpp:99
 msgid "(Unknown Group)"
 msgstr ""
 
-#: src/editor/palette/editor_palettes.cpp:305
+#: src/editor/palette/editor_palettes.cpp:317
 msgid "(non-core)"
 msgstr ""
 
-#: src/editor/palette/editor_palettes.cpp:306
+#: src/editor/palette/editor_palettes.cpp:318
 msgid "Will not work in game without extra care."
 msgstr ""
 
-#: src/editor/palette/terrain_palettes.cpp:55
+#: src/editor/palette/terrain_palettes.cpp:54
 msgid "FG: "
 msgstr "FG: "
 
-#: src/editor/palette/terrain_palettes.cpp:56
+#: src/editor/palette/terrain_palettes.cpp:55
 msgid "BG: "
 msgstr "BG: "
 
-#: src/gui/dialogs/editor_set_starting_position.cpp:87
+#: src/gui/dialogs/editor_set_starting_position.cpp:86
 msgid "player^None"
 msgstr ""
 
-#: src/gui/dialogs/editor_set_starting_position.cpp:99
+#: src/gui/dialogs/editor_set_starting_position.cpp:98
 msgid "Player $player_number"
 msgstr ""
 
-#: src/gui/dialogs/editor_settings.cpp:166
+#: src/gui/dialogs/editor_settings.cpp:165
 msgid "Custom setting"
 msgstr ""
+
+#~ msgid "Edit"
+#~ msgstr "Adihtan"
 
 #~ msgid "Quit Editor"
 #~ msgstr "Adihtend Læfan"
