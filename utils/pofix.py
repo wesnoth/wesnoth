@@ -285,6 +285,7 @@ stringfixes = {
 # conversion added in 1.9.0-svn
 ("A Small Favor -", "A Small Favor —"),
 ("running away - my horsemen", "running away — my horsemen"),
+("build by armies", "build my armies"),
 
 # Convert straight apostrophes/quotation marks
 # conversion added in 1.9.0-svn
