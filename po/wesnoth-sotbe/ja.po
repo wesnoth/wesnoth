@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.x-SVN\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-03-16 23:25+0100\n"
+"POT-Creation-Date: 2013-05-05 11:23+0200\n"
 "PO-Revision-Date: 2011-01-23 06:37+0900\n"
 "Last-Translator: clearpotion <clearpotion+fantasy@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -149,9 +149,9 @@ msgstr "Kapou'e の死"
 
 #. [side]: type=Orcish Leader, id=Kapou'e
 #. [side]
-#. [side]: type=Orcish Slayer, id=Rugh
 #. [side]: id=gruu_recall_enabling_hack_leader, type=Great Troll
 #. [side]: type=General, id=Howgarth III
+#. [side]: type=Orcish Slayer, id=Rugh
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:58
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:65
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:42
@@ -206,11 +206,11 @@ msgid "Alber"
 msgstr "Alber"
 
 # セリフではなさそうなのでとりあえず放ってある。
+#. [side]: type=General, id=Lanbec'h
 #. [side]: type=Lieutenant, id=Alber
 #. [side]: type=General, id=Slowhand
 #. [side]
 #. [side]: type=General, id=Harman
-#. [side]: type=General, id=Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:79
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:68
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:60
@@ -1780,20 +1780,20 @@ msgstr "オアシスに到着する"
 msgid "Ar-Dant"
 msgstr "Ar-Dant"
 
-#. [side]: type=Elvish Champion, id=Thelarion
-#. [side]: type=Dwarvish Steelclad, id=Darstang
-#. [side]: type=General, id=Earl Lanbec'h
-#. [side]
-#. [side]: type=Bandit, id=Sagmar
-#. [side]: type=General, id=Arthain
-#. [side]: type=Lieutenant, id=Hanak
 #. [side]: type=General, id=Telthys
+#. [side]: type=Elvish Champion, id=Thelarion
 #. [side]: type=General, id=Fredor
 #. [side]: type=General, id=Georan
 #. [side]: type=Grand Marshal, id=Earl Lanbec'h
+#. [side]: type=Orcish Warlord, id=Shan Taum
+#. [side]: type=Dwarvish Steelclad, id=Darstang
+#. [side]: type=General, id=Earl Lanbec'h
+#. [side]
 #. [side]: type=Assassin, type=Rogue, id=Ar-Dant
 #. [side]: type=Giant Scorpion
-#. [side]: type=Orcish Warlord, id=Shan Taum
+#. [side]: type=General, id=Arthain
+#. [side]: type=Lieutenant, id=Hanak
+#. [side]: type=Bandit, id=Sagmar
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:70
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:96
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:106
@@ -2346,8 +2346,8 @@ msgid "At last, here are the Mourned Hills! We can only hope for the best."
 msgstr ""
 "ついに、Mourned の丘に着いた！ 後は最善の結果になってくれるのを祈るのみだ。"
 
-#. [message]: speaker=Grüü
 #. [message]: role=cannonfodder
+#. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:118
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:280
 msgid "Why?"
@@ -2778,8 +2778,8 @@ msgid "It won’t be said that Elves were braver than us, everyone attack!"
 msgstr "エルフ族が我々よりも勇敢だったと言われる訳にはいかない、皆、攻撃だ！"
 
 # 右側のステータスに表示されるユニットの名前
-#. [side]: type=General, id=Earl Lanbec'h
 #. [side]: type=Grand Marshal, id=Earl Lanbec'h
+#. [side]: type=General, id=Earl Lanbec'h
 #. [unit]: type=General, id=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:663
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:122
@@ -4206,8 +4206,8 @@ msgstr "ただいま到着しました、閣下。"
 msgid "Ahhh, perfect, more reinforcements."
 msgstr "あああ、完璧だ、更なる援軍が来たか。"
 
-#. [unit]: type=General, id=Howgarth III
 #. [side]: type=General, id=Howgarth III
+#. [unit]: type=General, id=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:650
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:145
 msgid "Howgarth III"

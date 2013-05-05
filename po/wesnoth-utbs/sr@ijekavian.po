@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-utbs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-03-16 23:04+0100\n"
+"POT-Creation-Date: 2013-05-05 11:23+0200\n"
 "PO-Revision-Date: 2012-10-29 23:51+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -40,8 +40,8 @@ msgstr "ПУС"
 msgid "(Normal)"
 msgstr "(нормално)"
 
-#. [campaign]: id=Under_the_Burning_Suns
 #. [unit_type]: id=Desert Hunter, race=elf
+#. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:19
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Hunter.cfg:5
 msgid "Desert Hunter"
@@ -52,8 +52,8 @@ msgstr "пустињски ловац"
 msgid "(Challenging)"
 msgstr "(изазовно)"
 
-#. [campaign]: id=Under_the_Burning_Suns
 #. [unit_type]: id=Desert Sentinel, race=elf
+#. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:20
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Sentinel.cfg:4
 msgid "Desert Sentinel"
@@ -64,8 +64,8 @@ msgstr "пустињски стражар"
 msgid "(Nightmare)"
 msgstr "(језиво)"
 
-#. [campaign]: id=Under_the_Burning_Suns
 #. [unit_type]: id=Desert Prowler, race=elf
+#. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:21
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Prowler.cfg:4
 msgid "Desert Prowler"
@@ -442,8 +442,8 @@ msgstr "Села"
 msgid "Kaleh, Nym, help us!"
 msgstr "Калех, Ним, помозите!"
 
-#. [message]: speaker=Nym
 #. [message]: speaker=Kaleh
+#. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:366
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:548
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:781
@@ -1464,8 +1464,8 @@ msgid ""
 msgstr ""
 "Прекасно. А и само неки пијесак унутра. Не вриједи... Опа! Шта се догађа?!"
 
-#. [unit_type]: id=Dust Devil, race=monster
 #. [unit]: type=Dust Devil, id=Dust Devil
+#. [unit_type]: id=Dust Devil, race=monster
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:789
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Dust_Devil.cfg:4
 msgid "Dust Devil"
@@ -3545,9 +3545,9 @@ msgstr ""
 "уплив натјера довдје, не знам зашто ми се учини да би од тога могло испасти "
 "ишта добро."
 
-#. [unit]: type=Dark Assassin2, id=Cloaked Figure
 #. [unit]: type=Dark Assassin1, id=Cloaked Figure
 #. [unit]: type=Dark Assassin3, id=Cloaked Figure
+#. [unit]: type=Dark Assassin2, id=Cloaked Figure
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1264
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3312
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3466
@@ -3934,8 +3934,8 @@ msgstr "Пауци нису инсекти."
 msgid "Thanks for the clarification."
 msgstr "Баш ти хвала за то разјашњење."
 
-#. [unit]: type=Dwarvish Fighter, id=Wounded Dwarf
 #. [event]
+#. [unit]: type=Dwarvish Fighter, id=Wounded Dwarf
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:874
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:770
 msgid "Wounded Dwarf"
@@ -4138,9 +4138,9 @@ msgstr ""
 "Изгледа да наш посао још увијек није завршен. Врло добро, сакупите се, "
 "морамо кренути за Зургом."
 
+#. [then]
 #. [unit]: type=Dwarvish Pathfinder, id=Grimnir
 #. [event]
-#. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1273
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:346
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:2130
@@ -4939,8 +4939,6 @@ msgstr "Кад распоредите своје снаге на положај�
 msgid "Troll Brute"
 msgstr "трол-силеџија"
 
-#. [then]
-#. [event]
 #. [unit]: type=Troll, id=Troll Guard 1
 #. [unit]: type=Troll, id=Troll Guard 2
 #. [unit]: type=Troll Rocklobber, id=Troll Guard 3
@@ -4949,6 +4947,8 @@ msgstr "трол-силеџија"
 #. [unit]: type=Troll Whelp, id=Troll Guard 6
 #. [unit]: type=Troll Whelp, id=Troll Guard 7
 #. [unit]: type=Troll Whelp, id=Troll Guard 8
+#. [then]
+#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:598
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:601
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:605
@@ -4996,8 +4996,8 @@ msgstr "Уљези! Побијте их!"
 msgid "Tell us where your leader is hiding!"
 msgstr "Реци нам гдје се скрива ваш вођ!"
 
-#. [message]: speaker=Wounded Dwarf
 #. [message]: speaker=Kaleh
+#. [message]: speaker=Wounded Dwarf
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:784
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:587
 msgid "Never!"
@@ -5448,8 +5448,8 @@ msgstr ""
 "Нећу вам више пријечити пут. Нека вас Морадин благослови и пази на вас. Ја "
 "сада одлазим дворанама својих предака..."
 
-#. [event]: id=cryptguard}
 #. [event]
+#. [event]: id=cryptguard}
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:2347
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3415
 msgid "Crypt Guardian"
@@ -5533,8 +5533,8 @@ msgstr "У царству патуљака"
 #. [side]: id=Kaleh, type=Desert Fighter
 #. [side]: id=Melusand, type=Mermaid Diviner
 #. [side]: id=Great Leader Darmog, type=Great Troll
-#. [side]: id=King Thurongar, type=Dwarvish Lord
 #. [side]
+#. [side]: id=King Thurongar, type=Dwarvish Lord
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:46
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:94
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:36
@@ -5631,6 +5631,8 @@ msgstr ""
 msgid "Once you done moving into position, Zurg will destroy wall."
 msgstr "Када се размјестите на положаје, Зург ће обрушити зид."
 
+#. [then]
+#. [event]
 #. [unit]: type=Dwarvish Sentinel, id=Dwarf Guard 1
 #. [unit]: type=Dwarvish Sentinel, id=Dwarf Guard 2
 #. [unit]: type=Dwarvish Steelclad, id=Dwarf Guard 3
@@ -5641,8 +5643,6 @@ msgstr "Када се размјестите на положаје, Зург ћ�
 #. [unit]: type=Dwarvish Dragonguard, id=Dwarf Guard 8
 #. [unit]: type=Dwarvish Dragonguard, id=Dwarf Guard 9
 #. [unit]: type=Dwarvish Dragonguard, id=Dwarf Guard 10
-#. [then]
-#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:581
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:582
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:584
@@ -6424,8 +6424,8 @@ msgstr ""
 msgid "I’m afraid, Kaleh, that the time has come for our paths to separate."
 msgstr "Бојим се, Калеше, да је дошло вријеме да се наши путеви разиђу."
 
-#. [message]: speaker=Kaleh
 #. [message]: speaker=unit
+#. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:505
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:499
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3062
@@ -6983,8 +6983,8 @@ msgstr "Па, што се брже извучемо одавдје, срећни
 msgid "Wait, did you feel that?"
 msgstr "Чекај, осјетисте ли то?"
 
-#. [message]: type=Desert Fighter3, Desert Fighter4, Desert Fighter5, Desert Fighter6, Desert Fighter7, Desert Fighter8
 #. [message]: speaker=Nym
+#. [message]: type=Desert Fighter3, Desert Fighter4, Desert Fighter5, Desert Fighter6, Desert Fighter7, Desert Fighter8
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:927
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:772
 msgid "What?"
@@ -8700,8 +8700,8 @@ msgstr ""
 
 #. [side]
 #. [unit]: type=Divine Incarnation, id=Eloh
-#. [unit]: type=Divine Avatar, id=Eloh
 #. [event]
+#. [unit]: type=Divine Avatar, id=Eloh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4360
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:733
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1563
@@ -14960,8 +14960,8 @@ msgstr ""
 "јединицама првог нивоа у суседним пољима. Радије се упуштају у блиску борбу "
 "с непријатељем, али су увјежбани и у стрељачким вјештинама."
 
-#. [unit_type]: id=Desert Champion, race=elf
 #. [variation]
+#. [unit_type]: id=Desert Champion, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Champion.cfg:4
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:648
 msgid "Desert Champion"
@@ -15016,8 +15016,8 @@ msgstr "клопка"
 msgid "thorns"
 msgstr "трње"
 
-#. [unit_type]: id=Desert Fighter, race=elf
 #. [variation]
+#. [unit_type]: id=Desert Fighter, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Fighter.cfg:5
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:531
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:543
@@ -15096,8 +15096,8 @@ msgstr ""
 msgid "bolas"
 msgstr "боласи"
 
-#. [unit_type]: id=Nym Hunter, race=elf
 #. [female]
+#. [unit_type]: id=Nym Hunter, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Hunter.cfg:154
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Nym.cfg:132
 msgid "female^Desert Hunter"
@@ -15132,8 +15132,8 @@ msgstr "дуги лук"
 msgid "female^Desert Marksman"
 msgstr "пустињска оштроока"
 
-#. [variation]
 #. [unit_type]: id=Desert Marshal, race=elf
+#. [variation]
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Marshal.cfg:4
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:606
 msgid "Desert Marshal"
@@ -15251,8 +15251,8 @@ msgstr ""
 "непријатеља кад год ће то довести до веће предности. Боласима сапињу "
 "противника, а потом се смртоносно служе мачем."
 
-#. [unit_type]: id=Nym Sentinel, race=elf
 #. [female]
+#. [unit_type]: id=Nym Sentinel, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Sentinel.cfg:126
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Nym.cfg:143
 msgid "female^Desert Sentinel"
@@ -15563,9 +15563,9 @@ msgstr ""
 msgid "Central Body"
 msgstr "средишње тијело"
 
+#. [unit_type]: id=Pulsing Spire, race=monster
 #. [unit_type]: id=Crawling Horror, race=monster
 #. [unit_type]: id=Central Body2, race=monster
-#. [unit_type]: id=Pulsing Spire, race=monster
 #. [unit_type]: id=Central Body, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Alien_Body.cfg:47
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Alien_Body2.cfg:49
@@ -15808,8 +15808,8 @@ msgstr "муљогруда"
 msgid "Naga Guardian"
 msgstr "нага-чувар"
 
-#. [unit_type]: id=Naga Guardian, race=naga
 #. [unit_type]: id=Naga Warden, race=naga
+#. [unit_type]: id=Naga Guardian, race=naga
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Guardian.cfg:22
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Warden.cfg:21
 msgid ""
@@ -15921,11 +15921,11 @@ msgstr ""
 "бродским једрима. Производ оваквог заточеништва је поуздани слуга, коме се "
 "може повјерити сваки задатак који се његовом господару усхтије."
 
-#. [unit_type]: id=EShadow
-#. [unit_type]: id=ENightgaunt
 #. [unit_type]: id=ESpectre
-#. [unit_type]: id=EGhost
+#. [unit_type]: id=ENightgaunt
+#. [unit_type]: id=EShadow
 #. [unit_type]: id=EWraith
+#. [unit_type]: id=EGhost
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Ghost.cfg:18
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Nightgaunt.cfg:14
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Shadow.cfg:17

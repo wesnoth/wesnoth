@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-03-16 23:25+0100\n"
+"POT-Creation-Date: 2013-05-05 11:23+0200\n"
 "PO-Revision-Date: 2008-12-21 13:15+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -125,10 +125,10 @@ msgstr "Deoran"
 
 # I teksten igennem denne kampagne bruges både vagtforpost og forsvarspost som synonymer.
 #. [side]: type=Horseman Commander, id=Deoran
+#. [side]: id=Deoran
+#. [side]: type=Lieutenant, id=Plynry
 #. [side]: type=Troll Hero, id=Grek
 #. [side]
-#. [side]: type=Lieutenant, id=Plynry
-#. [side]: id=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:35
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:44
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:35
@@ -154,12 +154,12 @@ msgstr "Sydlig vagtforpost"
 msgid "Urza Mathin"
 msgstr "Urza Mathin"
 
+#. [side]: type=Bandit, id=Urza Mathin
+#. [side]: type=Outlaw, id=Urza Afalas
 #. [side]: type=Rogue, id=Urza Fastik
 #. [side]: type=Outlaw, id=Tharzo Kalain
-#. [side]: type=Outlaw, id=Urza Afalas
 #. [side]: type=Outlaw, id=Urza Nalmath
 #. [side]
-#. [side]: type=Bandit, id=Urza Mathin
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:57
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:66
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:103
@@ -1278,14 +1278,14 @@ msgstr "Tårernes dal"
 msgid "Mal A’kai"
 msgstr "Mal A'kai"
 
-#. [side]: type=Lich, id=Mal M'Brin
-#. [side]: type=Soulless, id=Groth
-#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer, id=Mal A'kai
-#. [side]: type=Outlaw, id=Jera Ilras
-#. [side]: type=Soulless, id=Gruth
 #. [side]: type=Ancient Lich, id=Mal M'Brin
 #. [side]: type=Lich, id=Mal Tera
 #. [side]
+#. [side]: type=Soulless, id=Gruth
+#. [side]: type=Lich, id=Mal M'Brin
+#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer, id=Mal A'kai
+#. [side]: type=Outlaw, id=Jera Ilras
+#. [side]: type=Soulless, id=Groth
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:74
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:117
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:91
@@ -1512,8 +1512,8 @@ msgstr "Du vil i det mindste ikke skabe yderlige problemer for os!"
 msgid "Mebrin! Are you there? We have come to seek your aid!"
 msgstr "Mebrin! Er du der? Vi er kommet for at bede om din hjælp!"
 
-#. [message]: speaker=Kramak
 #. [message]: speaker=narrator
+#. [message]: speaker=Kramak
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:548
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:559
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:376
@@ -1902,8 +1902,8 @@ msgstr "Du skal betale for din kidnapning af Mebrin! Hvis han er skadet..."
 msgid "Defeat Urza Afalas"
 msgstr "Besejr Urza Afalas"
 
-#. [message]: speaker=Urza Afalas
 #. [message]: speaker=unit
+#. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:665
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1120
 msgid "Now I pay for my crimes. But how many others will also suffer for them?"
@@ -2591,8 +2591,8 @@ msgstr "Men der var en mørk sky over Deoran og hans mænd..."
 msgid "Into the Depths"
 msgstr "Nedgang til dybet"
 
-#. [side]: type=Lich, id=Mal M'Brin
 #. [side]: type=Ancient Lich, id=Mal M'Brin
+#. [side]: type=Lich, id=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:49
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:54
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:54

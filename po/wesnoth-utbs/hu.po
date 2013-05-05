@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-utbs_1.4_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-03-16 23:25+0100\n"
+"POT-Creation-Date: 2013-05-05 11:23+0200\n"
 "PO-Revision-Date: 2013-03-10 22:48+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -39,8 +39,8 @@ msgstr "Atna"
 msgid "(Normal)"
 msgstr "(Normál)"
 
-#. [campaign]: id=Under_the_Burning_Suns
 #. [unit_type]: id=Desert Hunter, race=elf
+#. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:19
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Hunter.cfg:5
 msgid "Desert Hunter"
@@ -51,8 +51,8 @@ msgstr "Homoki vadász"
 msgid "(Challenging)"
 msgstr "(Kihívást jelentő)"
 
-#. [campaign]: id=Under_the_Burning_Suns
 #. [unit_type]: id=Desert Sentinel, race=elf
+#. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:20
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Sentinel.cfg:4
 msgid "Desert Sentinel"
@@ -63,8 +63,8 @@ msgstr "Sivatagi őrszem"
 msgid "(Nightmare)"
 msgstr "(Rémálom)"
 
-#. [campaign]: id=Under_the_Burning_Suns
 #. [unit_type]: id=Desert Prowler, race=elf
+#. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:21
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Prowler.cfg:4
 msgid "Desert Prowler"
@@ -430,8 +430,8 @@ msgstr "Seela"
 msgid "Kaleh, Nym, help us!"
 msgstr "Kaleh, Nym, segítsetek!"
 
-#. [message]: speaker=Nym
 #. [message]: speaker=Kaleh
+#. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:366
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:548
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:781
@@ -1434,8 +1434,8 @@ msgstr ""
 "Túl késő. Ráadásul csak homok van benne. Nem érte meg... Hopp! Mi a fene "
 "folyik itt?"
 
-#. [unit_type]: id=Dust Devil, race=monster
 #. [unit]: type=Dust Devil, id=Dust Devil
+#. [unit_type]: id=Dust Devil, race=monster
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:789
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Dust_Devil.cfg:4
 msgid "Dust Devil"
@@ -3508,9 +3508,9 @@ msgstr ""
 "itt. Valami azt sugallta, hogy ide kell jönnöm. Nem tudom, mi késztetett "
 "arra, hogy azt gondoljam, jól teszem."
 
-#. [unit]: type=Dark Assassin2, id=Cloaked Figure
 #. [unit]: type=Dark Assassin1, id=Cloaked Figure
 #. [unit]: type=Dark Assassin3, id=Cloaked Figure
+#. [unit]: type=Dark Assassin2, id=Cloaked Figure
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1264
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3312
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3466
@@ -3896,8 +3896,8 @@ msgstr "A pókok nem rovarok."
 msgid "Thanks for the clarification."
 msgstr "Köszönet a felvilágosításért."
 
-#. [unit]: type=Dwarvish Fighter, id=Wounded Dwarf
 #. [event]
+#. [unit]: type=Dwarvish Fighter, id=Wounded Dwarf
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:874
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:770
 msgid "Wounded Dwarf"
@@ -4102,9 +4102,9 @@ msgstr ""
 "Úgy hangzik, a munkánkat még nem fejeztük be. Nos jól van, gyerünk, "
 "követnünk kell Zurgot."
 
+#. [then]
 #. [unit]: type=Dwarvish Pathfinder, id=Grimnir
 #. [event]
-#. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1273
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:346
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:2130
@@ -4885,8 +4885,6 @@ msgstr ""
 msgid "Troll Brute"
 msgstr "Brutális troll"
 
-#. [then]
-#. [event]
 #. [unit]: type=Troll, id=Troll Guard 1
 #. [unit]: type=Troll, id=Troll Guard 2
 #. [unit]: type=Troll Rocklobber, id=Troll Guard 3
@@ -4895,6 +4893,8 @@ msgstr "Brutális troll"
 #. [unit]: type=Troll Whelp, id=Troll Guard 6
 #. [unit]: type=Troll Whelp, id=Troll Guard 7
 #. [unit]: type=Troll Whelp, id=Troll Guard 8
+#. [then]
+#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:598
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:601
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:605
@@ -4941,8 +4941,8 @@ msgstr "Behatolók! Öljétek meg őket!"
 msgid "Tell us where your leader is hiding!"
 msgstr "Áruld el nekünk, hol rejtőzik a vezéred!"
 
-#. [message]: speaker=Wounded Dwarf
 #. [message]: speaker=Kaleh
+#. [message]: speaker=Wounded Dwarf
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:784
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:587
 msgid "Never!"
@@ -5398,8 +5398,8 @@ msgstr ""
 "tudott. Nem akadályozom tovább az utatokat. Moradin áldjon titeket, és "
 "vigyázza utatokat! Én eltávozok őseim csarnokába..."
 
-#. [event]: id=cryptguard}
 #. [event]
+#. [event]: id=cryptguard}
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:2347
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3415
 msgid "Crypt Guardian"
@@ -5484,8 +5484,8 @@ msgstr "A törpök birodalmában"
 #. [side]: id=Kaleh, type=Desert Fighter
 #. [side]: id=Melusand, type=Mermaid Diviner
 #. [side]: id=Great Leader Darmog, type=Great Troll
-#. [side]: id=King Thurongar, type=Dwarvish Lord
 #. [side]
+#. [side]: id=King Thurongar, type=Dwarvish Lord
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:46
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:94
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:36
@@ -5584,6 +5584,8 @@ msgstr ""
 msgid "Once you done moving into position, Zurg will destroy wall."
 msgstr "Amint készen álltok, Zurg lerombolja a falat."
 
+#. [then]
+#. [event]
 #. [unit]: type=Dwarvish Sentinel, id=Dwarf Guard 1
 #. [unit]: type=Dwarvish Sentinel, id=Dwarf Guard 2
 #. [unit]: type=Dwarvish Steelclad, id=Dwarf Guard 3
@@ -5594,8 +5596,6 @@ msgstr "Amint készen álltok, Zurg lerombolja a falat."
 #. [unit]: type=Dwarvish Dragonguard, id=Dwarf Guard 8
 #. [unit]: type=Dwarvish Dragonguard, id=Dwarf Guard 9
 #. [unit]: type=Dwarvish Dragonguard, id=Dwarf Guard 10
-#. [then]
-#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:581
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:582
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:584
@@ -6379,8 +6379,8 @@ msgstr ""
 msgid "I’m afraid, Kaleh, that the time has come for our paths to separate."
 msgstr "Attól tartok Kaleh, eljött az idő, amikor elválnak az útjaink."
 
-#. [message]: speaker=Kaleh
 #. [message]: speaker=unit
+#. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:505
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:499
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3062
@@ -6941,8 +6941,8 @@ msgstr "Nos, minél hamarabb eltűnünk innen, annál boldogabb leszek."
 msgid "Wait, did you feel that?"
 msgstr "Várj, hallottad ezt?"
 
-#. [message]: type=Desert Fighter3, Desert Fighter4, Desert Fighter5, Desert Fighter6, Desert Fighter7, Desert Fighter8
 #. [message]: speaker=Nym
+#. [message]: type=Desert Fighter3, Desert Fighter4, Desert Fighter5, Desert Fighter6, Desert Fighter7, Desert Fighter8
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:927
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:772
 msgid "What?"
@@ -8656,8 +8656,8 @@ msgstr ""
 
 #. [side]
 #. [unit]: type=Divine Incarnation, id=Eloh
-#. [unit]: type=Divine Avatar, id=Eloh
 #. [event]
+#. [unit]: type=Divine Avatar, id=Eloh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4360
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:733
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1563
@@ -14938,8 +14938,8 @@ msgstr ""
 "mellettük állnak. Közelharcban és íjászatban egyaránt jól megállják a "
 "helyüket."
 
-#. [unit_type]: id=Desert Champion, race=elf
 #. [variation]
+#. [unit_type]: id=Desert Champion, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Champion.cfg:4
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:648
 msgid "Desert Champion"
@@ -14993,8 +14993,8 @@ msgstr "hálóvetés"
 msgid "thorns"
 msgstr "tövisek"
 
-#. [unit_type]: id=Desert Fighter, race=elf
 #. [variation]
+#. [unit_type]: id=Desert Fighter, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Fighter.cfg:5
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:531
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:543
@@ -15073,8 +15073,8 @@ msgstr ""
 msgid "bolas"
 msgstr "bola"
 
-#. [unit_type]: id=Nym Hunter, race=elf
 #. [female]
+#. [unit_type]: id=Nym Hunter, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Hunter.cfg:154
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Nym.cfg:132
 msgid "female^Desert Hunter"
@@ -15109,8 +15109,8 @@ msgstr "hosszúíj"
 msgid "female^Desert Marksman"
 msgstr "Sivatagi mesterlövésznő"
 
-#. [variation]
 #. [unit_type]: id=Desert Marshal, race=elf
+#. [variation]
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Marshal.cfg:4
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:606
 msgid "Desert Marshal"
@@ -15226,8 +15226,8 @@ msgstr ""
 "elkerülésében. Bolával támadják meg ellenfeleiket, s karddal adják meg a "
 "kegyelemdöfést."
 
-#. [unit_type]: id=Nym Sentinel, race=elf
 #. [female]
+#. [unit_type]: id=Nym Sentinel, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Sentinel.cfg:126
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Nym.cfg:143
 msgid "female^Desert Sentinel"
@@ -15545,9 +15545,9 @@ msgstr ""
 msgid "Central Body"
 msgstr "Központi egység"
 
+#. [unit_type]: id=Pulsing Spire, race=monster
 #. [unit_type]: id=Crawling Horror, race=monster
 #. [unit_type]: id=Central Body2, race=monster
-#. [unit_type]: id=Pulsing Spire, race=monster
 #. [unit_type]: id=Central Body, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Alien_Body.cfg:47
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Alien_Body2.cfg:49
@@ -15789,8 +15789,8 @@ msgstr "sárlabdacs"
 msgid "Naga Guardian"
 msgstr "Naga őr"
 
-#. [unit_type]: id=Naga Guardian, race=naga
 #. [unit_type]: id=Naga Warden, race=naga
+#. [unit_type]: id=Naga Guardian, race=naga
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Guardian.cfg:22
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Warden.cfg:21
 msgid ""
@@ -15899,11 +15899,11 @@ msgstr ""
 "vitorláját dagasztó szél. Kiszolgáltatott helyzetükből adódóan gazdáik "
 "tántoríthatatlan szolgái, mesterük utasításait vakon és azonnal teljesítik. "
 
-#. [unit_type]: id=EShadow
-#. [unit_type]: id=ENightgaunt
 #. [unit_type]: id=ESpectre
-#. [unit_type]: id=EGhost
+#. [unit_type]: id=ENightgaunt
+#. [unit_type]: id=EShadow
 #. [unit_type]: id=EWraith
+#. [unit_type]: id=EGhost
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Ghost.cfg:18
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Nightgaunt.cfg:14
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Shadow.cfg:17

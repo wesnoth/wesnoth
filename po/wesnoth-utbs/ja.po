@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-03-16 23:25+0100\n"
+"POT-Creation-Date: 2013-05-05 11:23+0200\n"
 "PO-Revision-Date: 2011-11-10 23:46+0900\n"
 "Last-Translator: 瀟湘夜雨\n"
 "Language-Team:  <wesnoth-ja-translate@lists.sourceforge.jp>\n"
@@ -38,8 +38,8 @@ msgstr "UtBS"
 msgid "(Normal)"
 msgstr "（普通）"
 
-#. [campaign]: id=Under_the_Burning_Suns
 #. [unit_type]: id=Desert Hunter, race=elf
+#. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:19
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Hunter.cfg:5
 msgid "Desert Hunter"
@@ -50,8 +50,8 @@ msgstr "砂漠のハンター"
 msgid "(Challenging)"
 msgstr "（挑戦的）"
 
-#. [campaign]: id=Under_the_Burning_Suns
 #. [unit_type]: id=Desert Sentinel, race=elf
+#. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:20
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Sentinel.cfg:4
 msgid "Desert Sentinel"
@@ -62,8 +62,8 @@ msgstr "砂漠の哨兵"
 msgid "(Nightmare)"
 msgstr "（悪夢）"
 
-#. [campaign]: id=Under_the_Burning_Suns
 #. [unit_type]: id=Desert Prowler, race=elf
+#. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:21
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Prowler.cfg:4
 msgid "Desert Prowler"
@@ -432,8 +432,8 @@ msgstr "Seela"
 msgid "Kaleh, Nym, help us!"
 msgstr "Kaleh、Nym、助けてくれ！"
 
-#. [message]: speaker=Nym
 #. [message]: speaker=Kaleh
+#. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:366
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:548
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:781
@@ -1445,8 +1445,8 @@ msgid ""
 msgstr ""
 "遅いわよ。あれ、中は砂だけだわ。ただのガラクタね……、うわっ！ 何これ？！"
 
-#. [unit_type]: id=Dust Devil, race=monster
 #. [unit]: type=Dust Devil, id=Dust Devil
+#. [unit_type]: id=Dust Devil, race=monster
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:789
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Dust_Devil.cfg:4
 msgid "Dust Devil"
@@ -3531,9 +3531,9 @@ msgstr ""
 "も、よくわからないときている。何か奇妙なものに誘われてここに来たいと思った"
 "が、何かしら良さそうと思わされた理由がわからない。"
 
-#. [unit]: type=Dark Assassin2, id=Cloaked Figure
 #. [unit]: type=Dark Assassin1, id=Cloaked Figure
 #. [unit]: type=Dark Assassin3, id=Cloaked Figure
+#. [unit]: type=Dark Assassin2, id=Cloaked Figure
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1264
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3312
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3466
@@ -3923,8 +3923,8 @@ msgstr "クモは昆虫じゃないわよ。"
 msgid "Thanks for the clarification."
 msgstr "訂正していただいて、どうもありがとう。"
 
-#. [unit]: type=Dwarvish Fighter, id=Wounded Dwarf
 #. [event]
+#. [unit]: type=Dwarvish Fighter, id=Wounded Dwarf
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:874
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:770
 msgid "Wounded Dwarf"
@@ -4130,9 +4130,9 @@ msgstr ""
 "どうやら我々の仕事はまだ終わっていないようだ。しかたがない、皆集合してくれ、"
 "Zurg の後を追わなければ。"
 
+#. [then]
 #. [unit]: type=Dwarvish Pathfinder, id=Grimnir
 #. [event]
-#. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1273
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:346
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:2130
@@ -4919,8 +4919,6 @@ msgstr "お前のとこの連中がみんな位置に付いたら発破をかけ
 msgid "Troll Brute"
 msgstr "野蛮なトロル"
 
-#. [then]
-#. [event]
 #. [unit]: type=Troll, id=Troll Guard 1
 #. [unit]: type=Troll, id=Troll Guard 2
 #. [unit]: type=Troll Rocklobber, id=Troll Guard 3
@@ -4929,6 +4927,8 @@ msgstr "野蛮なトロル"
 #. [unit]: type=Troll Whelp, id=Troll Guard 6
 #. [unit]: type=Troll Whelp, id=Troll Guard 7
 #. [unit]: type=Troll Whelp, id=Troll Guard 8
+#. [then]
+#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:598
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:601
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:605
@@ -4977,8 +4977,8 @@ msgid "Tell us where your leader is hiding!"
 msgstr "お前たちのリーダーどこにいるか言え！"
 
 # ２重引用：両方にあうように
-#. [message]: speaker=Wounded Dwarf
 #. [message]: speaker=Kaleh
+#. [message]: speaker=Wounded Dwarf
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:784
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:587
 msgid "Never!"
@@ -5427,8 +5427,8 @@ msgstr ""
 "くれた。俺はもうお前の行く手を阻んだりしない。お前に Moradin の祝福と加護があ"
 "らんことを。さあ、我が祖先たちの集う場所へ向かうとしよう……"
 
-#. [event]: id=cryptguard}
 #. [event]
+#. [event]: id=cryptguard}
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:2347
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3415
 msgid "Crypt Guardian"
@@ -5513,8 +5513,8 @@ msgstr "ドワーフの領域で"
 #. [side]: id=Kaleh, type=Desert Fighter
 #. [side]: id=Melusand, type=Mermaid Diviner
 #. [side]: id=Great Leader Darmog, type=Great Troll
-#. [side]: id=King Thurongar, type=Dwarvish Lord
 #. [side]
+#. [side]: id=King Thurongar, type=Dwarvish Lord
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:46
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:94
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:36
@@ -5610,6 +5610,8 @@ msgstr ""
 msgid "Once you done moving into position, Zurg will destroy wall."
 msgstr "お前たち位置につく終わったら Zurg 壁を壊す。"
 
+#. [then]
+#. [event]
 #. [unit]: type=Dwarvish Sentinel, id=Dwarf Guard 1
 #. [unit]: type=Dwarvish Sentinel, id=Dwarf Guard 2
 #. [unit]: type=Dwarvish Steelclad, id=Dwarf Guard 3
@@ -5620,8 +5622,6 @@ msgstr "お前たち位置につく終わったら Zurg 壁を壊す。"
 #. [unit]: type=Dwarvish Dragonguard, id=Dwarf Guard 8
 #. [unit]: type=Dwarvish Dragonguard, id=Dwarf Guard 9
 #. [unit]: type=Dwarvish Dragonguard, id=Dwarf Guard 10
-#. [then]
-#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:581
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:582
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:584
@@ -6401,8 +6401,8 @@ msgstr ""
 msgid "I’m afraid, Kaleh, that the time has come for our paths to separate."
 msgstr "申し訳ないけどKaleh、私たち、お別れする時が来たようだわ。"
 
-#. [message]: speaker=Kaleh
 #. [message]: speaker=unit
+#. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:505
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:499
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3062
@@ -6972,8 +6972,8 @@ msgstr "あーぁ、こんな所早く抜け出た方が、あたしは嬉しい
 msgid "Wait, did you feel that?"
 msgstr "お待ちなさい、今何か感じませんでしたか？"
 
-#. [message]: type=Desert Fighter3, Desert Fighter4, Desert Fighter5, Desert Fighter6, Desert Fighter7, Desert Fighter8
 #. [message]: speaker=Nym
+#. [message]: type=Desert Fighter3, Desert Fighter4, Desert Fighter5, Desert Fighter6, Desert Fighter7, Desert Fighter8
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:927
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:772
 msgid "What?"
@@ -8681,8 +8681,8 @@ msgstr ""
 
 #. [side]
 #. [unit]: type=Divine Incarnation, id=Eloh
-#. [unit]: type=Divine Avatar, id=Eloh
 #. [event]
+#. [unit]: type=Divine Avatar, id=Eloh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4360
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:733
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1563
@@ -14992,8 +14992,8 @@ msgstr ""
 "ニットに戦闘ボーナスを与えます。砂漠の指揮官は格闘戦を好みますが、弓も同じ位"
 "訓練されています。"
 
-#. [unit_type]: id=Desert Champion, race=elf
 #. [variation]
+#. [unit_type]: id=Desert Champion, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Champion.cfg:4
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:648
 msgid "Desert Champion"
@@ -15046,8 +15046,8 @@ msgstr "罠"
 msgid "thorns"
 msgstr "とげ"
 
-#. [unit_type]: id=Desert Fighter, race=elf
 #. [variation]
+#. [unit_type]: id=Desert Fighter, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Fighter.cfg:5
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:531
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:543
@@ -15123,8 +15123,8 @@ msgstr ""
 msgid "bolas"
 msgstr "ボーラー"
 
-#. [unit_type]: id=Nym Hunter, race=elf
 #. [female]
+#. [unit_type]: id=Nym Hunter, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Hunter.cfg:154
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Nym.cfg:132
 msgid "female^Desert Hunter"
@@ -15158,8 +15158,8 @@ msgstr "大弓"
 msgid "female^Desert Marksman"
 msgstr "砂漠の女狙撃兵"
 
-#. [variation]
 #. [unit_type]: id=Desert Marshal, race=elf
+#. [variation]
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Marshal.cfg:4
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:606
 msgid "Desert Marshal"
@@ -15273,8 +15273,8 @@ msgstr ""
 "います。ボーラで敵を束縛することができ、剣でもって致命傷を与える事もできま"
 "す。"
 
-#. [unit_type]: id=Nym Sentinel, race=elf
 #. [female]
+#. [unit_type]: id=Nym Sentinel, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Sentinel.cfg:126
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Nym.cfg:143
 msgid "female^Desert Sentinel"
@@ -15584,9 +15584,9 @@ msgstr ""
 msgid "Central Body"
 msgstr "中心部"
 
+#. [unit_type]: id=Pulsing Spire, race=monster
 #. [unit_type]: id=Crawling Horror, race=monster
 #. [unit_type]: id=Central Body2, race=monster
-#. [unit_type]: id=Pulsing Spire, race=monster
 #. [unit_type]: id=Central Body, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Alien_Body.cfg:47
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Alien_Body2.cfg:49
@@ -15828,8 +15828,8 @@ msgid "Naga Guardian"
 msgstr "ナーガの守護者"
 
 # %%
-#. [unit_type]: id=Naga Guardian, race=naga
 #. [unit_type]: id=Naga Warden, race=naga
+#. [unit_type]: id=Naga Guardian, race=naga
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Guardian.cfg:22
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Warden.cfg:21
 msgid ""
@@ -15941,11 +15941,11 @@ msgstr ""
 "しているとみなす務めは何でも行わせることができるようになります。"
 
 # %%
-#. [unit_type]: id=EShadow
-#. [unit_type]: id=ENightgaunt
 #. [unit_type]: id=ESpectre
-#. [unit_type]: id=EGhost
+#. [unit_type]: id=ENightgaunt
+#. [unit_type]: id=EShadow
 #. [unit_type]: id=EWraith
+#. [unit_type]: id=EGhost
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Ghost.cfg:18
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Nightgaunt.cfg:14
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Shadow.cfg:17
