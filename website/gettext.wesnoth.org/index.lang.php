@@ -209,7 +209,7 @@ foreach($stats as $stat){
 <?
 	if($official == 0){
 		$repo = ($version == 'master') ? 'master' : "$branch";
-		echo "<strong><a href='https://raw.github.com/wesnoth/wesnoth-old/$repo/po/$stat[4]/$lang.po'>" . $stat[4] . "</a></strong>";
+		echo "<strong><a href='https://raw.github.com/wesnoth/wesnoth-old/$repo/po/" . $stat[4]. "/$lang.po'>" . $stat[4] . "</a></strong>";
 	}else{
 		$packname = getpackage($stat[4]);
 		$repo = ($version == 'master') ? $wescamptrunkversion : $wescampbranchversion;
