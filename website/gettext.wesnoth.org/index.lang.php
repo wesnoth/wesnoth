@@ -30,7 +30,7 @@ sort($existing_extra_packs_b);
 $stats = array();
 
 if(!isset($_GET['version'])){
-        $version = 'trunk';
+        $version = 'master';
 }else{
 	$version = $_GET['version'];
 }
@@ -47,7 +47,7 @@ if($lang != "") {
 		if($i==0){
 			$packs = $existing_packs;
 		}else{
-			$packs = ($version == 'trunk') ? $existing_extra_packs_t : $existing_extra_packs_b;
+			$packs = ($version == 'master') ? $existing_extra_packs_t : $existing_extra_packs_b;
 		}
 		foreach($packs as $pack){
 			if($i==1) $pack = getdomain($pack);
@@ -120,10 +120,10 @@ $date = $filestat[9];
 <tr>
 <td align="left">
 Version:
-<? if($version=='trunk'){ ?>
+<? if($version=='master'){ ?>
 <strong>Development</strong> || <a href="?version=branch&amp;package=<?=$package?>&amp;lang=<?=$lang?>"><?=$branch?></a>
 <? }else{ ?>
-<a href="?version=trunk&amp;package=<?=$package?>&amp;lang=<?=$lang?>">Development</a>  || <strong><?=$branch?></strong>
+<a href="?version=master&amp;package=<?=$package?>&amp;lang=<?=$lang?>">Development</a>  || <strong><?=$branch?></strong>
 <? } ?>
 </td>
 </tr>
@@ -208,11 +208,11 @@ foreach($stats as $stat){
 <!-- FIXME-GIT: this will need to be updated -->
 <?
 	if($official == 0){
-		$repo = ($version == 'trunk') ? 'trunk' : "branches/$branch";
-		echo "<strong><a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/$repo/po/" . $stat[4]. "/" . $lang . ".po'>" . $stat[4] . "</a></strong>";
+		$repo = ($version == 'master') ? 'master' : "$branch";
+		echo "<strong><a href='https://raw.github.com/wesnoth/wesnoth-old/$repo/po/$stat[4]/$lang.po'>" . $stat[4] . "</a></strong>";
 	}else{
 		$packname = getpackage($stat[4]);
-		$repo = ($version == 'trunk') ? $wescamptrunkversion : $wescampbranchversion;
+		$repo = ($version == 'master') ? $wescamptrunkversion : $wescampbranchversion;
 		$reponame = "$packname-$repo";
 		echo "<strong><a href='https://raw.github.com/wescamp/$reponame/master/po/$lang.po'>" . $stat[4] ."</a></strong>";
 	}

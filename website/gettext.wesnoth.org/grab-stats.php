@@ -29,10 +29,10 @@ $packs = explode(" ", $packages);
 $extratpacks = explode(" ", $extratpackages);
 $extrabpacks = explode(" ", $extrabpackages);
 
-function grab_stats ($tob, $official, $packs) // trunk or branch, official (1) or extras (0), package array
+function grab_stats ($tob, $official, $packs) // master or branch, official (1) or extras (0), package array
 {
 	//these are defined in config.php
-	global $trunkbasedir;
+	global $masterbasedir;
 	global $branchbasedir;
 	global $extratbasedir;
 	global $extrabbasedir;
@@ -42,11 +42,11 @@ function grab_stats ($tob, $official, $packs) // trunk or branch, official (1) o
 		$stats = array();
 		if ($official)
 		{
-			$basedir = ($tob == "trunk") ? $trunkbasedir : $branchbasedir;
+			$basedir = ($tob == "master") ? $masterbasedir : $branchbasedir;
 			$po_dir = $basedir . "/po/" . $package . "/";
 			$domain = $package;
 		} else { // wescamp
-			$basedir = ($tob == "trunk") ? $extratbasedir : $extrabbasedir;
+			$basedir = ($tob == "master") ? $extratbasedir : $extrabbasedir;
 			$po_dir = $basedir . "/" . $package . "/po/";
 			$domain = getdomain($package);
 		}
@@ -79,9 +79,9 @@ function grab_stats ($tob, $official, $packs) // trunk or branch, official (1) o
 	}
 }
 
-echo "Getting stats for trunk\n";
-grab_stats("trunk", 1, $packs);
-grab_stats("trunk", 0, $extratpacks);
+echo "Getting stats for master\n";
+grab_stats("master", 1, $packs);
+grab_stats("master", 0, $extratpacks);
 
 echo "Getting stats for branch ($branch)\n";
 grab_stats("branch", 1, $packs);

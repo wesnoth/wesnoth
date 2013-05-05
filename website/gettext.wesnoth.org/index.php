@@ -39,7 +39,7 @@ if(!isset($_GET['package'])){
 if(!isset($_GET['version'])){
 // set the default starting point when calling gettext.wesnoth.org:
 // 'branch': show stats from the current stable branch
-// 'trunk':  show stats from trunk
+// 'master':  show stats from master
 	$version = 'branch';
 }else{
 	$version = $_GET['version'];
@@ -61,7 +61,7 @@ if($package=='alloff' || $package == 'allcore'){
 		if($version == 'branch') {
 			$statsfile = 'branchstats';
 		} else {
-			$statsfile = 'trunkstats';
+			$statsfile = 'masterstats';
 		}
 		if (!file_exists("stats/" . $pack . "/" . $statsfile)) {
 			continue;
@@ -89,13 +89,13 @@ if($package=='alloff' || $package == 'allcore'){
 		if($i==0){
 			$packs = $existing_packs;
 		}else{
-			$packs = ($version == 'trunk') ? $existing_extra_packs_t : $existing_extra_packs_b;
+			$packs = ($version == 'master') ? $existing_extra_packs_t : $existing_extra_packs_b;
 		}
 		foreach($packs as $pack){
 			if($version == 'branch') {
 				$statsfile = 'branchstats';
 			} else {
-				$statsfile = 'trunkstats';
+				$statsfile = 'masterstats';
 			}
 			if($i==1){
 				$pack = getdomain($pack);
@@ -123,7 +123,7 @@ if($package=='alloff' || $package == 'allcore'){
 		}
 	}
 }elseif($package=='allun'){
-	$packs = ($version == 'trunk') ? $existing_extra_packs_t : $existing_extra_packs_b;
+	$packs = ($version == 'master') ? $existing_extra_packs_t : $existing_extra_packs_b;
 	foreach($packs as $pack){
 		$pack = getdomain($pack);
 		$statsfile = $version . 'stats';
@@ -227,7 +227,7 @@ Order by:
 <td align="left">
 Version:
 <? if($version=='branch'){ ?>
-<a href="?version=trunk&amp;package=<?=$package?>">Development</a>  || <strong><?=$branch?></strong>
+<a href="?version=master&amp;package=<?=$package?>">Development</a>  || <strong><?=$branch?></strong>
 <? }else{ ?>
 <strong>Development</strong> || <a href="?version=branch&amp;package=<?=$package?>"><?=$branch?></a>
 <? } ?>
@@ -268,7 +268,7 @@ echo " || ";
 			$packs = $existing_packs;
 			echo "<br/>Official: ";
 		}else{
-			$packs = ($version == 'trunk') ? $existing_extra_packs_t : $existing_extra_packs_b;
+			$packs = ($version == 'master') ? $existing_extra_packs_t : $existing_extra_packs_b;
 			echo "<br/>Unofficial: ";
 		}
 		$first=true;
@@ -346,11 +346,11 @@ if ($package=='alloff' || $package=='allun' || $package=='all' || $package=='all
 }else{
         <!-- FIXME-GIT: this will need to be updated -->
 	if($official){
-		$repo = ($version == 'trunk') ? 'trunk' : "branches/$branch";
-		echo "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/$repo/po/" . $package . "/" . $lang . ".po'>" . $langs[$lang] . "</a> (" .$lang . ")";
+		$repo = ($version == 'master') ? 'master' : "$branch";
+		echo "<a href='https://raw.github.com/wesnoth/wesnoth-old/$repo/po/$package/$lang.po'>" . $langs[$lang] . "</a> (" .$lang . ")";
 	}else{
 		$packname = getpackage($package);
-		$repo = ($version == 'trunk') ? $wescamptrunkversion : $wescampbranchversion;
+		$repo = ($version == 'master') ? $wescamptrunkversion : $wescampbranchversion;
 		$reponame = "$packname-$repo";
 		echo "<a href='https://raw.github.com/wescamp/$reponame/master/po/$lang.po'>" . $langs[$lang] . "</a> ($lang)";
 	}
@@ -390,11 +390,11 @@ if ($package=='alloff' || $package=='allun' || $package=='all' || $package=='all
 	echo "<strong>Template catalog</strong>";
 }else{
 	if($official){
-		$repo = ($version == 'trunk') ? 'trunk' : "branches/$branch";
-		echo "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/$repo/po/" . $package . "/" . $package . ".pot?view=markup'>Template catalog</a>";
+		$repo = ($version == 'master') ? 'master' : "$branch";
+		echo "<a href='https://raw.github.com/wesnoth/wesnoth-old/$repo/po/$package/$package.pot'>Template catalog</a>";
 	}else{
 		$packname = getpackage($package);
-		$repo = ($version == 'trunk') ? $wescamptrunkversion : $wescampbranchversion;
+		$repo = ($version == 'master') ? $wescamptrunkversion : $wescampbranchversion;
 		$reponame = "$packname-$repo";
 		echo "<a href='https://raw.github.com/wescamp/$reponame/master/po/$package.pot'>Template catalog</a>";
 	}

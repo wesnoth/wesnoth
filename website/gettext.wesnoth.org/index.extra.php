@@ -271,11 +271,11 @@ if ($package=='alloff' || $package=='allun' || $package=='all' || $package=='all
 }else{
         <!-- FIXME-GIT: This will need to be updated -->
 	if($official){
-		$repo = ($version == 'trunk') ? 'trunk' : "branches/$branch";
-		echo "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/$repo/po/" . $package . "/" . $lang . ".po?view=markup'>" . $langs[$lang] . "</a> (" .$lang . ")";
+		$repo = ($version == 'master') ? 'master' : "$branch";
+		echo "<a href='https://raw.github.com/wesnoth/wesnoth-old/$repo/po/$package/$lang.po'>" . $langs[$lang] . "</a> (" .$lang . ")";
 	}else{
 		$packname = getpackage($package);
-		$repo = ($version == 'trunk') ? $wescamptrunkversion : $wescampbranchversion;
+		$repo = ($version == 'master') ? $wescamptrunkversion : $wescampbranchversion;
 		$reponame = "$packname-$repo";
 		echo "<a href='https://raw.github.com/wescamp/$reponame/master/po/$lang.po'>" . $langs[$lang] . "</a> ($lang)";
 	}
@@ -315,11 +315,11 @@ if ($package=='alloff' || $package=='allun' || $package=='all' || $package=='all
 	echo "<strong>Template catalog</strong>";
 }else{
 	if($official){
-		$repo = ($version == 'trunk') ? 'trunk' : "branches/$branch";
-		echo "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/$repo/po/" . $package . "/" . $package . ".pot?view=markup'>Template catalog</a>";
+		$repo = ($version == 'master') ? 'master' : "$branch";
+		echo "<a href='https://github.com/wesnoth/wesnoth-old/raw/$repo/po/$package/$package.pot'>Template catalog</a>";
 	}else{
 		$packname = getpackage($package);
-		$repo = ($version == 'trunk') ? $wescamptrunkversion : $wescampbranchversion;
+		$repo = ($version == 'master') ? $wescamptrunkversion : $wescampbranchversion;
 		$reponame = "$packname-$repo";
 		echo "<a href='https://raw.github.com/wescamp/$reponame/master/po/$package.pot'>Template catalog</a>";
 	}

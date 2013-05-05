@@ -13,11 +13,10 @@ $branch="1.10"; //version of current stable (folder name of the checkout folder)
 $wescampbranchversion="1.10";
 $wescamptrunkversion="1.12";
 
-//FIXME-GIT: this will need to be updated
-$trunkbasedir="/usr/src/svn-checkouts/trunk/";
-$branchbasedir="/usr/src/svn-checkouts/$branch/";
-$extratbasedir="/usr/src/svn-checkouts/wescamp-i18n/branch-$wescamptrunkversion/"; //trunk addon server
-$extrabbasedir="/usr/src/svn-checkouts/wescamp-i18n/branch-$wescampbranchversion/"; //branch addon server
+$masterbasedir="/sources/wesnoth/master/";
+$branchbasedir="/sources/wesnoth/$branch/";
+$extratbasedir="/sources/wesnoth/wescamp-i18n/branch-$wescamptrunkversion/"; //master addon server
+$extrabbasedir="/sources/wesnoth/wescamp-i18n/branch-$wescampbranchversion/"; //branch addon server
 
 //$packages = file_get_contents($basedir . "/po/DOMAINS");
 //$packages = substr($packages, 0, strlen($packages)-1);
@@ -28,9 +27,9 @@ $packages = "wesnoth wesnoth-lib wesnoth-editor wesnoth-help wesnoth-units wesno
 $ignore_langs = "sr@ijekavianlatin sr@latin sr@ijekavian";
 
 //get unofficial packages
-//trunk
+//master
 $packarray = array();
-if ($dir = opendir($extratbasedir)) { //trunk
+if ($dir = opendir($extratbasedir)) { //master
     // PHP manual says readdir returns false on failure and that false-evaluating non-booleans may be returned on successful execution.
     // Testing shows that readdir may return NULL on failure, causing infinite loops.
     // For our purposes, an empty string is equivalent to a failure anyway.

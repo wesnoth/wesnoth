@@ -1,22 +1,21 @@
 #!/bin/bash
-# FIXME-GIT: This needs to be updated to work with the git repo
-
-CHECKOUTPATH=/usr/src/checkouts/
+CHECKOUTPATH=/sources/wesnoth
 
 echo update started at `date` >> $HOME/g.w.o-updates.log
 
 #update the 1.10 checkout
 cd $CHECKOUTPATH/1.10/
 #svn cleanup
-svn -q up
+git pull -q
 
-#update the trunk checkout
-cd $CHECKOUTPATH/trunk/
+#update the master checkout
+cd $CHECKOUTPATH/master/
 #svn cleanup
-svn -q up
+git pull -q
 
 #update the wescamp checkout
-cd $CHECKOUTPATH/trunk/
+cd $CHECKOUTPATH/master/
+
 echo "starting wescamp.py for 1.10 at `date`" >> $HOME/g.w.o-updates.log
 ./data/tools/wesnoth/wescamp.py -scampaigns.wesnoth.org -p15002 -w$CHECKOUTPATH/wescamp-i18n/branch-1.10 -C >> $HOME/g.w.o-updates.log
 echo "wescamp.py 1.10 exited with exit code $? at `date`" >> $HOME/g.w.o-updates.log
