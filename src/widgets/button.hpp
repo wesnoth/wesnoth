@@ -71,7 +71,8 @@ private:
 	std::string label_;
 	surface image_, pressedImage_, activeImage_, pressedActiveImage_,
 		touchedImage_, disabledImage_, pressedDisabledImage_,
-		overlayImage_, overlayPressedImage_, overlayPressedDisabledImage_, overlayDisabledImage_;
+		overlayImage_, overlayPressedImage_, overlayPressedDisabledImage_, overlayDisabledImage_,
+		overlayActiveImage_;
 	SDL_Rect textRect_;
 
 	enum STATE { UNINIT, NORMAL, ACTIVE, PRESSED, PRESSED_ACTIVE, TOUCHED_NORMAL, TOUCHED_PRESSED };

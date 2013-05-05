@@ -45,7 +45,7 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 	: widget(video, auto_join), type_(type), label_(label),
 	  image_(NULL), pressedImage_(NULL), activeImage_(NULL), pressedActiveImage_(NULL),
 	  disabledImage_(NULL), pressedDisabledImage_(NULL),
-	  overlayImage_(NULL), overlayPressedImage_(NULL),
+	  overlayImage_(NULL), overlayPressedImage_(NULL), overlayActiveImage_(NULL),
 	  state_(NORMAL), pressed_(false),
 	  spacing_(spacing), base_height_(0), base_width_(0),
 	  button_image_name_(), button_overlay_image_name_(overlay_image)
@@ -107,6 +107,7 @@ void button::load_images() {
 	if (!button_overlay_image_name_.empty()) {
 		overlayImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + ".png"));
 		overlayPressedImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-pressed.png"));
+		overlayActiveImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-active.png"));
 		if (file_exists("images/" + button_overlay_image_name_ + size_postfix + "-pressed-disabled.png"))
 			overlayPressedDisabledImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-pressed-disabled.png"));
 		if (file_exists("images/" + button_overlay_image_name_ + "_30-disabled.png"))
@@ -338,6 +339,9 @@ void button::draw_contents()
 
 		if (!overlayPressedImage_.null()) {
 			switch (state_) {
+			case ACTIVE:
+				noverlay = make_neutral_surface(overlayActiveImage_);
+				break;
 			case PRESSED:
 			case PRESSED_ACTIVE:
 			case TOUCHED_NORMAL:
