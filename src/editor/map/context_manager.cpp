@@ -76,14 +76,17 @@ public:
 		context_manager_.gui().change_teams(&context_manager_.get_map_context().get_teams());
 
 		resources::teams = &context_manager_.get_map_context().get_teams();
-		context_manager_.reload_map();
 
 		resources::state_of_game = &context_manager_.get_map_context().get_game_state();
 		context_manager_.gui().init_flags();
 
+		context_manager_.reload_map();
+
 		current_labels->enable(false);
 		current_labels = &context_manager_.get_map_context().get_labels();
 		current_labels->enable(true);
+
+		refreshed_ = true;
 	}
 private:
 	context_manager& context_manager_;
