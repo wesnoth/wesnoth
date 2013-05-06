@@ -199,6 +199,15 @@ void tod_manager::replace_schedule(const config& time_cfg)
 	currentTime_ = 0;
 }
 
+std::vector<std::string> tod_manager::get_area_ids() const
+{
+	std::vector<std::string> areas;
+	BOOST_FOREACH(const area_time_of_day& area, areas_) {
+		areas.push_back(area.id);
+	}
+	return areas;
+}
+
 void tod_manager::add_time_area(const config& cfg)
 {
 	areas_.push_back(area_time_of_day());

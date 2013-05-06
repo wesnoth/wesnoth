@@ -67,6 +67,11 @@ class tod_manager : public savegame::savegame_config
 		void replace_schedule(const config& time_cfg);
 
 		/**
+		 * @returns the [time_area]s' ids.
+		 */
+		std::vector<std::string> get_area_ids() const;
+
+		/**
 		 * Adds a new local time area from config, making it follow its own
 		 * time-of-day sequence.
 		 *
