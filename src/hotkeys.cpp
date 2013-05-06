@@ -144,6 +144,8 @@ const hotkey_command hotkey_list_[] = {
 	{ hotkey::HOTKEY_EDITOR_QUIT_TO_DESKTOP, "editor-quit-to-desktop", N_("Quit to Desktop"), false, hotkey::SCOPE_EDITOR, NULL },
 	{ hotkey::HOTKEY_EDITOR_CLOSE_MAP, "editor-close-map", N_("Close Map"), false, hotkey::SCOPE_EDITOR, NULL },
 	{ hotkey::HOTKEY_EDITOR_SWITCH_MAP, "editor-switch-map", N_("Switch Map"), false, hotkey::SCOPE_EDITOR, NULL },
+	{ hotkey::HOTKEY_EDITOR_SWITCH_AREA, "editor-switch-area", N_("Switch Area"), false, hotkey::SCOPE_EDITOR, NULL },
+
 	{ hotkey::HOTKEY_EDITOR_SETTINGS, "editor-settings", N_("Editor Settings"), false, hotkey::SCOPE_EDITOR, NULL },
 	{ hotkey::HOTKEY_EDITOR_PARTIAL_UNDO, "editor-partial-undo", N_("Partial Undo"), false, hotkey::SCOPE_EDITOR, NULL },
 	{ hotkey::HOTKEY_EDITOR_MAP_NEW, "editor-map-new", N_("New Map"), false, hotkey::SCOPE_EDITOR, NULL },
@@ -154,7 +156,7 @@ const hotkey_command hotkey_list_[] = {
 	{ hotkey::HOTKEY_EDITOR_MAP_REVERT, "editor-map-revert", N_("Revert All Changes"), false, hotkey::SCOPE_EDITOR, NULL },
 	{ hotkey::HOTKEY_EDITOR_MAP_INFO, "editor-map-info", N_("Map Information"), false, hotkey::SCOPE_EDITOR, NULL },
 	{ hotkey::HOTKEY_EDITOR_SIDE_NEW, "editor-side-new", N_("Add New Side"), false, hotkey::SCOPE_EDITOR, NULL },
-	{ hotkey::HOTKEY_EDITOR_SIDE_SWITCH, "editor-side-switch", N_("Switch Side"), false, hotkey::SCOPE_EDITOR, NULL },
+	{ hotkey::HOTKEY_EDITOR_SIDE_SWITCH, "editor-switch-side", N_("Switch Side"), false, hotkey::SCOPE_EDITOR, NULL },
 	{ hotkey::HOTKEY_EDITOR_PALETTE_ITEM_SWAP, "editor-terrain-palette-swap", N_("Swap Foreground/Background Terrains"), false, hotkey::SCOPE_EDITOR, NULL },
 	{ hotkey::HOTKEY_EDITOR_PALETTE_GROUPS, "editor-palette-groups", N_("Change Palette Group"), false, hotkey::SCOPE_EDITOR, NULL },
 	{ hotkey::HOTKEY_EDITOR_PALETTE_UPSCROLL, "editor-palette-upscroll", N_("Scroll Palette Left"), false, hotkey::SCOPE_EDITOR, NULL },
@@ -217,6 +219,8 @@ const hotkey_command hotkey_list_[] = {
 	{ hotkey::HOTKEY_EDITOR_REFRESH_IMAGE_CACHE, "editor-refresh-image-cache", N_("Refresh Image Cache"), false, hotkey::SCOPE_EDITOR, NULL },
 	{ hotkey::HOTKEY_EDITOR_DRAW_COORDINATES, "editor-draw-coordinates", N_("Draw Hex Coordinates"), false, hotkey::SCOPE_EDITOR, NULL },
 	{ hotkey::HOTKEY_EDITOR_DRAW_TERRAIN_CODES, "editor-draw-terrain-codes", N_("Draw Terrain Codes"), false, hotkey::SCOPE_EDITOR, NULL },
+
+	{ hotkey::HOTKEY_EDITOR_AREA_DEFINE, "editor-define-area", N_("Define (Time) Area"), false, hotkey::SCOPE_EDITOR, NULL },
 
 	{ hotkey::HOTKEY_DELAY_SHROUD, "delayshroud", N_("Delay Shroud Updates"), false, hotkey::SCOPE_GAME, NULL },
 	{ hotkey::HOTKEY_UPDATE_SHROUD, "updateshroud", N_("Update Shroud Now"), false, hotkey::SCOPE_GAME, NULL },
