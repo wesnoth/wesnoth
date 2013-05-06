@@ -64,7 +64,7 @@ public:
 
 	bool show_everything() const { return !viewpoint_; }
 
-	const std::vector<team>& get_teams() {return *teams_;}
+	const std::vector<team>& get_teams() const {return *teams_;}
 
 	/** The playing team is the team whose turn it is. */
 	size_t playing_team() const { return activeTeam_; }
