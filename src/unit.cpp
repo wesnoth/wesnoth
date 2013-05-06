@@ -613,8 +613,6 @@ unit::~unit()
 {
 	clear_haloes();
 
-	delete anim_;
-
 	// Remove us from the status cache
 	std::vector<const unit *>::iterator itor =
 	std::find(units_with_cache.begin(), units_with_cache.end(), this);
@@ -854,8 +852,7 @@ void unit::advance_to(const config &old_cfg, const unit_type &u_type,
 	cfg_.clear_children("event");
 
 	refreshing_ = false;
-	delete anim_;
-	anim_ = NULL;
+        anim_.reset();
 }
 
 std::string unit::big_profile() const
@@ -1819,8 +1816,7 @@ void unit::start_animation(int start_time, const unit_animation *animation,
 	// everything except standing select and idle
 	bool accelerate = (state != STATE_FORGET && state != STATE_STANDING);
 	draw_bars_ =  with_bars;
-	delete anim_;
-	anim_ = new unit_animation(*animation);
+	anim_.reset(new unit_animation(*animation));
 	const int real_start_time = start_time == INT_MAX ? anim_->get_begin_time() : start_time;
 	anim_->start_animation(real_start_time, loc_, loc_.get_direction(facing_),
 		 text, text_color, accelerate);
