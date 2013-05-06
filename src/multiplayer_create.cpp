@@ -359,8 +359,8 @@ void create::process_event()
 	}
 
 	if(map_changed) {
-		generator_settings_.hide(generator_ == NULL);
-		regenerate_map_.hide(generator_ == NULL);
+		generator_settings_.enable(generator_ != NULL);
+		regenerate_map_.enable(generator_ != NULL);
 
 		const std::string& map_data = parameters_.scenario_data["map_data"];
 		parameters_.hash = parameters_.scenario_data.hash();
@@ -447,8 +447,8 @@ void create::hide_children(bool hide)
 	cancel_game_.hide(hide);
 	launch_game_.hide(hide);
 
-	regenerate_map_.hide(hide || generator_ == NULL);
-	generator_settings_.hide(hide || generator_ == NULL);
+	regenerate_map_.hide(hide);
+	generator_settings_.hide(hide);
 
 	filter_num_players_slider_.hide(hide);
 
