@@ -354,9 +354,7 @@ void button::draw_contents()
 			}
 		}
 
-		surface nimage   = make_neutral_surface(image);
-		//TODO avoid magic numbers
-		//SDL_Rect r = create_rect(1, 1, 0, 0);
+		surface nimage = make_neutral_surface(image);
 		blit_surface(noverlay, NULL, nimage, NULL);
 		image = nimage;
 	}
