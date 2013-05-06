@@ -22,6 +22,7 @@
 #include "gamestatus.hpp"
 
 #include <boost/utility.hpp>
+#include <boost/scoped_ptr.hpp>
 
 namespace editor {
 
@@ -69,7 +70,9 @@ public:
 
 	/** Adds a new side to the map */
 	void new_side() {
-    	teams_.push_back(team());
+		team t;
+		t.set_hidden(false);
+    	teams_.push_back(t);
     }
 
 	/** Get the team from the current map context object */
@@ -90,12 +93,16 @@ public:
 		return units_;
 	}
 
-	tod_manager& get_time_manager() {
-		return tod_manager_;
+	tod_manager* get_time_manager() {
+		return tod_manager_.get();
 	}
 
 	game_state& get_game_state() {
 		return state_;
+	}
+
+	int get_active_area() {
+		return active_area_;
 	}
 
 	/**
@@ -336,10 +343,12 @@ protected:
 
 private:
 
+	int active_area_;
+
 	map_labels labels_;
 	unit_map units_;
 	std::vector<team> teams_;
-	tod_manager tod_manager_;
+	boost::scoped_ptr<tod_manager> tod_manager_;
 	game_state state_;
 
 };

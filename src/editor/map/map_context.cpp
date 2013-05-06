@@ -51,10 +51,11 @@ map_context::map_context(const editor_map& map, const display& disp)
 	, needs_labels_reset_(false)
 	, changed_locations_()
 	, everything_changed_(false)
+	, active_area_(1)
 	, labels_(disp, NULL)
 	, units_()
 	, teams_()
-	, tod_manager_()
+	, tod_manager_(new tod_manager)
 	, state_()
 {
 }
@@ -73,10 +74,11 @@ map_context::map_context(const config& game_config, const std::string& filename,
 	, needs_labels_reset_(false)
 	, changed_locations_()
 	, everything_changed_(false)
+	, active_area_(0)
 	, labels_(disp, NULL)
 	, units_()
 	, teams_()
-	, tod_manager_()
+	, tod_manager_(NULL)
 	, state_()
 {
 	/*
@@ -139,6 +141,11 @@ map_context::map_context(const config& game_config, const std::string& filename,
 	read(level, *(preprocess_file(filename_ + ".cfg")));
 
 	labels_.read(level);
+
+	tod_manager_.reset(new tod_manager(level));
+	BOOST_FOREACH(const config &t, level.child_range("time_area")) {
+		tod_manager_->add_time_area(t);
+	}
 
 	resources::teams = &teams_;
 
@@ -265,7 +272,7 @@ bool map_context::save()
 {
 	std::string data = map_.write();
 
-	config wml_data;
+	config wml_data = tod_manager_->to_config();
 	labels_.write(wml_data);
 
 	//TODO think about saving the map to the wml file
