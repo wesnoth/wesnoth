@@ -115,6 +115,7 @@ class editor_controller : public controller_base,
 		void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu);
 
 		void show_help();
+		void status_table();
 
 		/** Show the preferences dialog */
 		void preferences();
@@ -218,12 +219,8 @@ class editor_controller : public controller_base,
 
 		boost::scoped_ptr<rand_rng::set_random_generator> rng_setter_;
 
-		unit_map units_;
-
 		/** The display object used and owned by the editor. */
 		boost::scoped_ptr<editor_display> gui_;
-
-		std::vector<team> teams_;
 
 		/** Pre-defined time of day lighting settings for the settings dialog */
 		std::vector<time_of_day> tods_;

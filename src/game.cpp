@@ -611,13 +611,13 @@ static int do_gameloop(int argc, char** argv)
 			about::show_about(game->disp());
 			continue;
 		} else if(res == gui2::ttitle_screen::SHOW_HELP) {
-			help::help_manager help_manager(&game->game_config(), NULL);
+			help::help_manager help_manager(&game->game_config());
 			help::show_help(game->disp());
 			continue;
 		} else if(res == gui2::ttitle_screen::GET_ADDONS) {
 			// NOTE: we need the help_manager to get access to the Add-ons
 			// section in the game help!
-			help::help_manager help_manager(&game->game_config(), NULL);
+			help::help_manager help_manager(&game->game_config());
 			if(manage_addons(game->disp())) {
 				game->reload_changed_game_config();
 			}

@@ -24,7 +24,7 @@ class gamemap;
 namespace help {
 
 struct help_manager {
-	help_manager(const config *game_config, gamemap *map);
+	help_manager(const config *game_config);
 	~help_manager();
 };
 

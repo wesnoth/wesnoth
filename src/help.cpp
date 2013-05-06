@@ -595,7 +595,6 @@ static std::string get_first_word(const std::string &s);
 
 namespace {
 	const config *game_cfg = NULL;
-	gamemap *map = NULL;
 	// The default toplevel.
 	help::section toplevel;
 	// All sections and topics not referenced from the default toplevel.
@@ -769,10 +768,10 @@ static void push_tab_pair(std::vector<std::pair<std::string, unsigned int> > &v,
 
 namespace help {
 
-help_manager::help_manager(const config *cfg, gamemap *_map)
+help_manager::help_manager(const config *cfg) //, gamemap *_map)
 {
 	game_cfg = cfg == NULL ? &dummy_cfg : cfg;
-	map = _map;
+//	map = _map;
 }
 
 void generate_contents()
@@ -841,7 +840,7 @@ void generate_contents()
 help_manager::~help_manager()
 {
 	game_cfg = NULL;
-	map = NULL;
+//	map = NULL;
 	toplevel.clear();
 	hidden_sections.clear();
     // These last numbers must be reset so that the content is regenreated.
@@ -1598,7 +1597,7 @@ public:
 		}
 		ss << generate_table(resistance_table);
 
-		if (map != NULL) {
+		if (resources::game_map != NULL) {
 			// Print the terrain modifier table of the unit.
 			ss << "\n\n<header>text='" << escape(_("Terrain Modifiers"))
 			   << "'</header>\n\n";
@@ -1625,7 +1624,7 @@ public:
 				const t_translation::t_terrain terrain = *terrain_it;
 				if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || terrain == t_translation::OFF_MAP_USER)
 					continue;
-				const terrain_type& info = map->get_terrain_info(terrain);
+				const terrain_type& info = resources::game_map->get_terrain_info(terrain);
 
 				if (info.union_type().size() == 1 && info.union_type()[0] == info.number() && info.is_nonnull()) {
 					std::vector<item> row;

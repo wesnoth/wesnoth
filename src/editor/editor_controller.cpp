@@ -41,6 +41,7 @@
 #include "../preferences_display.hpp"
 #include "../rng.hpp"
 #include "../sound.hpp"
+#include "../leader_scroll_dialog.hpp"
 
 #include "halo.hpp"
 
@@ -60,9 +61,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	, active_menu_(editor::MAP)
 	, rng_(NULL)
 	, rng_setter_(NULL)
-	, units_()
 	, gui_(new editor_display(NULL, video, NULL, NULL, get_theme(game_config, "editor"), config()))
-	, teams_()
 	, tods_()
 	, context_manager_(new context_manager(*gui_.get(), game_config_))
 	, toolkit_(NULL)
@@ -76,7 +75,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 {
 	init_gui();
 	toolkit_.reset(new editor_toolkit(*gui_.get(), key_, game_config_, *context_manager_.get()));
-	help_manager_.reset(new help::help_manager(&game_config, &(context_manager_->get_map_context().get_map())));
+	help_manager_.reset(new help::help_manager(&game_config));
 	context_manager_->switch_context(0);
 	init_tods(game_config);
 	init_music(game_config);
@@ -158,6 +157,10 @@ EXIT_STATUS editor_controller::main_loop()
 		e.show(gui());
 	}
 	return quit_mode_;
+}
+
+void editor_controller::status_table() {
+	gui::status_table(*gui_, 0);
 }
 
 void editor_controller::do_screenshot(const std::string& screenshot_filename /* = "map_screenshot.bmp" */)
@@ -256,6 +259,10 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_QUIT_GAME:
 			return true; //general hotkeys we can always do
 
+
+		case HOTKEY_STATUS_TABLE:
+			return true;
+
 			// unit tool related
 		case HOTKEY_UNIT_DESCRIPTION:
 			return toolkit_->is_mouse_action_set(HOTKEY_EDITOR_TOOL_UNIT);
@@ -301,6 +308,7 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 			return context_manager_->get_map_context().modified();
 		case HOTKEY_EDITOR_MAP_SAVE_ALL:
 		case HOTKEY_EDITOR_SWITCH_MAP:
+		case HOTKEY_EDITOR_SWITCH_AREA:
 		case HOTKEY_EDITOR_CLOSE_MAP:
 			return true;
 		case HOTKEY_EDITOR_MAP_REVERT:
@@ -320,6 +328,7 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 
 		//TODO
 //		case HOTKEY_EDITOR_EXPORT_SELECTION_COORDS:
+		case HOTKEY_EDITOR_AREA_DEFINE:
 		case HOTKEY_EDITOR_CUT:
 		case HOTKEY_EDITOR_COPY:
 		case HOTKEY_EDITOR_SELECTION_FILL:
@@ -436,6 +445,8 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 		case editor::PALETTE:
 			return ACTION_STATELESS;
 		case editor::AREA:
+			return index == context_manager_->get_map_context().get_active_area()
+					? ACTION_SELECTED : ACTION_DESELECTED;
 		case editor::SIDE:
 			return static_cast<size_t>(index) == gui_->playing_team()
 					? ACTION_SELECTED : ACTION_DESELECTED;
@@ -621,11 +632,9 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 		case HOTKEY_EDITOR_CUT:
 			cut_selection();
 			return true;
-		/* TODO
-		case HOTKEY_EDITOR_EXPORT_SELECTION_COORDS:
+		case HOTKEY_EDITOR_AREA_DEFINE:
 			export_selection_coords();
 			return true;
-		*/
 		case HOTKEY_EDITOR_SELECT_ALL:
 			if (!context_manager_->get_map().everything_selected()) {
 				context_manager_->perform_refresh(editor_action_select_all());
@@ -718,7 +727,6 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 void editor_controller::show_help()
 {
 	help::show_help(*gui_);
-	//menu_handler_.show_help();
 }
 
 void editor_controller::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu)
@@ -729,15 +737,14 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 		}
 	}
 
-	std::vector<std::string> items = items_arg;
-	std::vector<std::string>::iterator i = items.begin();
-	while(i != items.end()) {
+	std::vector<std::string> items;
+	std::vector<std::string>::const_iterator i = items_arg.begin();
+	while(i != items_arg.end()) {
 
 		hotkey::HOTKEY_COMMAND command = hotkey::get_id(*i);
-		if(!can_execute_command(command)
-				|| (context_menu && !in_context_menu(command))) {
-			i = items.erase(i);
-			continue;
+		if (!(!can_execute_command(command)
+				|| (context_menu && !in_context_menu(command)))) {
+			items.push_back(*i);
 		}
 		++i;
 	}
@@ -750,9 +757,13 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 		active_menu_ = editor::PALETTE;
 		toolkit_->get_palette_manager()->active_palette().expand_palette_groups_menu(items);
 	}
-	if (!items.empty() && items.front() == "editor-side-switch") {
+	if (!items.empty() && items.front() == "editor-switch-side") {
 		active_menu_ = editor::SIDE;
 		context_manager_->expand_sides_menu(items);
+	}
+	if (!items.empty() && items.front() == "editor-switch-area") {
+		active_menu_ = editor::AREA;
+		context_manager_->expand_areas_menu(items);
 	}
 
 	command_executor::show_menu(items, xloc, yloc, context_menu, gui());
@@ -813,7 +824,6 @@ void editor_controller::cut_selection()
 	context_manager_->perform_refresh(editor_action_paint_area(context_manager_->get_map().selection(), get_selected_bg_terrain()));
 }
 
-/* TODO
 void editor_controller::export_selection_coords()
 {
 	std::stringstream ssx, ssy;
@@ -830,8 +840,11 @@ void editor_controller::export_selection_coords()
 		ssx << "\n" << ssy.str() << "\n";
 		copy_to_clipboard(ssx.str(), false);
 	}
+
+	const std::set<map_location>& area = context_manager_->get_map().selection();
+	context_manager_->get_map_context().get_time_manager()->
+			add_time_area("an area", area, config());
 }
-*/
 
 void editor_controller::perform_delete(editor_action* action)
 {
