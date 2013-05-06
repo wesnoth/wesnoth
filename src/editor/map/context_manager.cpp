@@ -72,7 +72,7 @@ public:
 		resources::units = &context_manager_.get_map_context().get_units();
 
 		// TODO register the tod_manager with the gui?
-		resources::tod_manager = &context_manager_.get_map_context().get_time_manager();
+		resources::tod_manager = context_manager_.get_map_context().get_time_manager();
 		context_manager_.gui().change_teams(&context_manager_.get_map_context().get_teams());
 
 		resources::teams = &context_manager_.get_map_context().get_teams();
@@ -218,10 +218,38 @@ void context_manager::expand_open_maps_menu(std::vector<std::string>& items)
 	}
 }
 
+void context_manager::expand_areas_menu(std::vector<std::string>& items)
+{
+	if (!get_map_context().get_time_manager())
+		return;
+	for (unsigned int i = 0; i < items.size(); ++i) {
+		if (items[i] == "editor-switch-area") {
+			items.erase(items.begin() + i);
+			std::vector<std::string> area_entries;
+
+			std::vector<std::string> area_ids =
+					get_map_context().get_time_manager()->get_area_ids();
+
+			for (size_t mci = 0; mci < area_ids.size(); ++mci) {
+
+				const std::string& area = area_ids[mci];
+				std::stringstream label;
+				label << "[" << mci+1 << "] ";
+				label << (area.empty() ? _("(New Area)") : area);
+				area_entries.push_back(label.str());
+			}
+
+			items.insert(items.begin() + i,
+					area_entries.begin(), area_entries.end());
+			break;
+		}
+	}
+}
+
 void context_manager::expand_sides_menu(std::vector<std::string>& items)
 {
        for (unsigned int i = 0; i < items.size(); ++i) {
-               if (items[i] == "editor-side-switch") {
+               if (items[i] == "editor-switch-side") {
                        items.erase(items.begin() + i);
                        std::vector<std::string> contexts;
 
