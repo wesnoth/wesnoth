@@ -274,7 +274,16 @@ template size_t editor_palette<unit_type>::num_items();
 template<class Item>
 void editor_palette<Item>::draw_contents()
 {
-//	if (!force && !dirty()) return;
+	gui::button* palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
+	if (palette_menu_button) {
+
+		t_string& name = groups_[active_group_index()].name;
+		std::string& icon = groups_[active_group_index()].icon;
+
+		palette_menu_button->set_tooltip_string(name);
+		palette_menu_button->set_overlay(icon);
+	}
+
 	unsigned int y = palette_y_;
 	unsigned int x = palette_x_;
 	unsigned int starting = items_start_;
