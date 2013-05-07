@@ -471,6 +471,7 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 					unsigned i = static_cast<unsigned>(index);
 					if (i < context_manager_->size()) {
 						context_manager_->switch_context(index);
+						toolkit_->hotkey_set_mouse_action(HOTKEY_EDITOR_TOOL_PAINT);
 						return true;
 					}
 				}
