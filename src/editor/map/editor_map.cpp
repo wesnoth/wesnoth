@@ -167,6 +167,16 @@ bool editor_map::add_to_selection(const map_location& loc)
 	return on_board_with_border(loc) ? selection_.insert(loc).second : false;
 }
 
+bool editor_map::set_selection(const std::set<map_location>& area)
+{
+	clear_selection();
+	BOOST_FOREACH(const map_location& loc, area) {
+		if (!add_to_selection(loc))
+			return false;
+	}
+	return true;
+}
+
 bool editor_map::remove_from_selection(const map_location& loc)
 {
 	return selection_.erase(loc) != 0;

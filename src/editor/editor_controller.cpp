@@ -486,8 +486,8 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			//	toolkit_->get_palette_manager()->draw();
 				return true;
 			case AREA:
-				//TODO
-				return true;
+				//TODO store the selection for the state setting.
+				return context_manager_->get_map_context().select_area(index);
 			}
 			return true;
 

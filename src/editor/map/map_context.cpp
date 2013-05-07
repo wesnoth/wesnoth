@@ -177,6 +177,11 @@ map_context::~map_context()
 	clear_stack(redo_stack_);
 }
 
+bool map_context::select_area(int index)
+{
+	return map_.set_selection(tod_manager_->get_area_by_index(index));
+}
+
 void map_context::draw_terrain(const t_translation::t_terrain & terrain,
 	const map_location& loc, bool one_layer_only)
 {

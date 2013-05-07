@@ -139,6 +139,12 @@ public:
 	bool remove_from_selection(const map_location& loc);
 
 	/**
+	 * Select the given area.
+	 * @param area to select.
+	 */
+	bool set_selection(const std::set<map_location>& area);
+
+	/**
 	 * Return the selection set.
 	 */
 	const std::set<map_location>& selection() const { return selection_; }

@@ -59,6 +59,12 @@ public:
 	~map_context();
 
 	/**
+	 * Select the nth tod area.
+	 * @param index of the tod area to select.
+	 */
+	bool select_area(int index);
+
+	/**
 	 * Map accesor
 	 */
 	editor_map& get_map() { return map_; };

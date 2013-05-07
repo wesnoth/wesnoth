@@ -208,6 +208,11 @@ std::vector<std::string> tod_manager::get_area_ids() const
 	return areas;
 }
 
+const std::set<map_location>& tod_manager::get_area_by_index(int index) const
+{
+	return areas_[index].hexes;
+}
+
 void tod_manager::add_time_area(const config& cfg)
 {
 	areas_.push_back(area_time_of_day());
