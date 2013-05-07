@@ -487,7 +487,14 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 				return true;
 			case AREA:
 				//TODO store the selection for the state setting.
-				return context_manager_->get_map_context().select_area(index);
+				{
+					const std::set<map_location>& area =
+							context_manager_->get_map_context().get_time_manager()->get_area_by_index(index);
+					std::vector<map_location> locs(area.begin(), area.end());
+					context_manager_->get_map_context().select_area(index);
+					gui_->scroll_to_tiles(locs.begin(), locs.end());
+					return true;
+				}
 			}
 			return true;
 
