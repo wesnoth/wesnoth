@@ -107,7 +107,8 @@ void button::load_images() {
 	if (!button_overlay_image_name_.empty()) {
 		overlayImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + ".png"));
 		overlayPressedImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-pressed.png"));
-		overlayActiveImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-active.png"));
+		if (file_exists("images/" + button_overlay_image_name_ + size_postfix + "-active.png"))
+			overlayActiveImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-active.png"));
 		if (file_exists("images/" + button_overlay_image_name_ + size_postfix + "-pressed-disabled.png"))
 			overlayPressedDisabledImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-pressed-disabled.png"));
 		if (file_exists("images/" + button_overlay_image_name_ + "_30-disabled.png"))
@@ -340,7 +341,8 @@ void button::draw_contents()
 		if (!overlayPressedImage_.null()) {
 			switch (state_) {
 			case ACTIVE:
-				noverlay = make_neutral_surface(overlayActiveImage_);
+				if (!overlayActiveImage_.null())
+					noverlay = make_neutral_surface(overlayActiveImage_);
 				break;
 			case PRESSED:
 			case PRESSED_ACTIVE:
