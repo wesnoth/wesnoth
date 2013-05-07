@@ -104,13 +104,13 @@ void tristate_button::set_pressed(PRESSED_STATE new_pressed_state) {
 
 	switch (new_pressed_state) {
 		case LEFT:
-			new_state = PRESSED_LEFT;
+			new_state = (state_ == PRESSED_ACTIVE_LEFT) ? PRESSED_ACTIVE_LEFT : PRESSED_LEFT;
 			break;
 		case RIGHT:
-			new_state = PRESSED_RIGHT;
+			new_state = (state_ == PRESSED_ACTIVE_RIGHT) ? PRESSED_ACTIVE_RIGHT : PRESSED_RIGHT;
 			break;
 		case BOTH:
-			new_state = PRESSED_BOTH;
+			new_state = (state_ == PRESSED_ACTIVE_BOTH) ? PRESSED_ACTIVE_BOTH : PRESSED_BOTH;
 			break;
 		case NONE:
 			new_state = NORMAL;
