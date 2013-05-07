@@ -23,6 +23,8 @@ Version 1.11.2+dev:
      variables (bug #20385).
    * fix negative gold carried over (bug #20676)
    * Allow filtering on controller= in SSFs. Cannot be used in networked multiplayer.
+   * When controller in 'side' tag is ai, use 'no' as default value
+     for 'allow_player' attribute.
  * Miscellaneous and bug fixes
    * Switched to git version control. Hosting moved to SourceForge
    * Improved: Autorevision based revision numbers in CMake.
