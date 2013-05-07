@@ -104,7 +104,7 @@ return {
             local all_units = wesnoth.get_units{ side = wesnoth.current.side }
             local healees, units_MP = {}, {}
             for i,u in ipairs(all_units) do
-                -- Potential healees are units with MP that don't already have a healer (also without MP) next to them
+                -- Potential healees are units without MP that don't already have a healer (also without MP) next to them
                 -- Also, they cannot be on a village or regenerate
                 if (u.moves == 0) then
                     if (not wesnoth.match_unit(u, {ability = "regenerates"})) then
