@@ -274,6 +274,9 @@ template size_t editor_palette<unit_type>::num_items();
 template<class Item>
 void editor_palette<Item>::draw_contents()
 {
+	if (*active_mouse_action_)
+		(*active_mouse_action_)->set_mouse_overlay(gui_);
+
 	gui::button* palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
 	if (palette_menu_button) {
 
