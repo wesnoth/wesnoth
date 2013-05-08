@@ -117,7 +117,7 @@ public:
 	 */
 	common_palette& get_palette() { return palette_; }
 
-	/** Wether we need the brush bar, is used to grey it out.*/
+	/** Whether we need the brush bar, is used to grey it out.*/
 	virtual bool supports_brushes() { return false; }
 
 	/**
