@@ -219,8 +219,8 @@ void mouse_action_unit::set_unit_mouse_overlay(editor_display& disp, const unit_
 {
 
 	std::stringstream filename;
-		filename << u.image() << "~RC(" << u.flag_rgb() << '>'
-		    	 << team::get_side_color_index(disp.viewing_side()) << ')';
+	filename << u.image() << "~RC(" << u.flag_rgb() << '>'
+			<< team::get_side_color_index(disp.viewing_side()) << ')';
 
 	surface image(image::get_image(filename.str()));
 	Uint8 alpha = 196;
