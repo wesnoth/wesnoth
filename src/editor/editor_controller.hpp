@@ -124,6 +124,7 @@ class editor_controller : public controller_base,
 		void toggle_grid();
 
 		void unit_description();
+		void change_unit_id();
 		void rename_unit();
 
 		/** Copy the selection on the current map to the clipboard */

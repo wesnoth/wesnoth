@@ -26,7 +26,7 @@
 
 #include "editor_preferences.hpp"
 
-#include "gui/dialogs/rename_unit.hpp"
+#include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/editor_settings.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
@@ -268,8 +268,10 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 			return toolkit_->is_mouse_action_set(HOTKEY_EDITOR_TOOL_UNIT);
 		case HOTKEY_DELETE_UNIT:
 		case HOTKEY_RENAME_UNIT:
+		case HOTKEY_EDITOR_UNIT_CHANGE_ID:
 		case HOTKEY_EDITOR_UNIT_TOGGLE_CANRECRUIT:
 		case HOTKEY_EDITOR_UNIT_TOGGLE_RENAMEABLE:
+		case HOTKEY_EDITOR_UNIT_TOGGLE_LOYAL:
 		{
 			map_location loc = gui_->mouseover_hex();
 			const unit_map& units = context_manager_->get_map_context().get_units();
@@ -381,6 +383,13 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 	using namespace hotkey;
 	switch (command) {
 
+	case HOTKEY_EDITOR_UNIT_TOGGLE_LOYAL:
+	{
+		unit_map::const_unit_iterator un =
+				context_manager_->get_map_context().get_units().find(gui_->mouseover_hex());
+		return un->loyal() ? ACTION_ON : ACTION_OFF;
+
+	}
 	case HOTKEY_EDITOR_UNIT_TOGGLE_CANRECRUIT:
 	{
 		unit_map::const_unit_iterator un =
@@ -567,6 +576,10 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 		case HOTKEY_EDITOR_TOOL_UNIT:
 		case HOTKEY_EDITOR_TOOL_VILLAGE:
 			toolkit_->hotkey_set_mouse_action(command);
+			return true;
+
+		case HOTKEY_EDITOR_UNIT_CHANGE_ID:
+			change_unit_id();
 			return true;
 
 		case HOTKEY_EDITOR_UNIT_TOGGLE_RENAMEABLE:
@@ -810,14 +823,38 @@ void editor_controller::copy_selection()
 	}
 }
 
+void editor_controller::change_unit_id()
+{
+	map_location loc = gui_->mouseover_hex();
+	unit_map& units = context_manager_->get_map_context().get_units();
+	const unit_map::unit_iterator& un = units.find(loc);
+
+	const std::string title(N_("Change Unit ID"));
+	const std::string label(N_("ID:"));
+
+	if(un != units.end()) {
+		std::string id = un->id();
+		if(gui2::tedit_text::execute(title, label, id, gui_->video())) {
+			//TODO we may not want a translated name here.
+			un->set_id(id);
+			//TODO
+			//gui_->invalidate_unit();
+		}
+	}
+}
+
 void editor_controller::rename_unit()
 {
 	map_location loc = gui_->mouseover_hex();
 	unit_map& units = context_manager_->get_map_context().get_units();
 	const unit_map::unit_iterator& un = units.find(loc);
+
+	const std::string title(N_("Rename Unit"));
+	const std::string label(N_("Name:"));
+
 	if(un != units.end()) {
 		std::string name = un->name();
-		if(gui2::trename_unit::execute(name, gui_->video())) {
+		if(gui2::tedit_text::execute(title, label, name, gui_->video())) {
 			//TODO we may not want a translated name here.
 			un->set_name(name);
 			//TODO

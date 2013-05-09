@@ -113,6 +113,7 @@ public:
 	const unit_type& type() const { return *type_; }
 
 	/** id assigned by wml */
+	void set_id(const std::string& id) { id_ = id; }
 	const std::string& id() const { if (id_.empty()) return type_name(); else return id_; }
 	/** The unique internal ID of the unit */
 	size_t underlying_id() const { return underlying_id_; }

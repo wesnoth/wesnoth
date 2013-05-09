@@ -43,7 +43,7 @@
 #include "gui/dialogs/mp_change_control.hpp"
 #include "gui/dialogs/data_manage.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
-#include "gui/dialogs/rename_unit.hpp"
+#include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/unit_create.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
@@ -1003,8 +1003,10 @@ void menu_handler::rename_unit()
 		return;
 
 	std::string name = un->name();
+	const std::string title(N_("Rename Unit"));
+	const std::string label(N_("Name:"));
 
-	if(gui2::trename_unit::execute(name, gui_->video())) {
+	if(gui2::tedit_text::execute(title, label, name, gui_->video())) {
 		recorder.add_rename(name, un->get_location());
 		un->rename(name);
 		gui_->invalidate_unit();

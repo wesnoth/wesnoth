@@ -736,7 +736,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/mp_method_selection.cpp
 	gui/dialogs/network_transmission.cpp
 	gui/dialogs/popup.cpp
-	gui/dialogs/rename_unit.cpp
+	gui/dialogs/edit_text.cpp
 	gui/dialogs/simple_item_selector.cpp
 	gui/dialogs/title_screen.cpp
 	gui/dialogs/transient_message.cpp

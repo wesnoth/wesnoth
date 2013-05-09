@@ -14,7 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/dialogs/rename_unit.hpp"
+#include "gui/dialogs/edit_text.hpp"
 
 #include "gui/widgets/settings.hpp"
 
@@ -36,11 +36,13 @@ namespace gui2 {
  * @end{table}
  */
 
-REGISTER_DIALOG(rename_unit)
+REGISTER_DIALOG(edit_text)
 
-trename_unit::trename_unit(std::string& name)
+tedit_text::tedit_text(const std::string& title, const std::string& label, std::string& text)
 {
-	register_text("name", true, name, true);
+	register_label("title", true, title, true);
+	register_label("label", true, label, true);
+	register_text("text", true, text, true);
 }
 
 }

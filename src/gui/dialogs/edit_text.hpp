@@ -12,24 +12,26 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_RENAME_UNIT_INCLUDED
-#define GUI_DIALOGS_RENAME_UNIT_INCLUDED
+#ifndef GUI_DIALOGS_EDIT_TEXT_INCLUDED
+#define GUI_DIALOGS_EDIT_TEXT_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
 
 namespace gui2 {
 	
-class trename_unit : public tdialog
+class tedit_text : public tdialog
 {
 public:
 	/**
 	 * Constructor.
 	 *
-	 * @param name [in]  The initial value of the unit name.
-	 * @param name [out] The new unit name the user entered if the dialog
-	 *                   returns @ref twindow::OK, undefined otherise.
+	 * @param title [in]  The dialog's title.
+	 * @param label [in]  Label of the text field.
+	 * @param text  [in]  The initial value of the text field.
+	 * @param text  [out] The new unit name the user entered if the dialog
+	 *                    returns @ref twindow::OK, undefined otherwise.
 	 */
-	trename_unit(std::string& name);
+	tedit_text(const std::string& title, const std::string& label, std::string& text);
 
 	/**
 	 * Executes the dialog.
@@ -39,9 +41,9 @@ public:
 	 * @param name [out] The new unit name the user entered if this method
 	 *                   returns @a true, undefined otherwise.
 	 */
-	static bool execute(std::string& name, CVideo& video)
+	static bool execute(const std::string& title, const std::string& label, std::string& text, CVideo& video)
 	{
-		return trename_unit(name).show(video);
+		return tedit_text(title, label, text).show(video);
 	}
 
 private:
@@ -51,4 +53,4 @@ private:
 	
 }
 
-#endif /* ! GUI_DIALOGS_RENAME_UNIT_INCLUDED */
+#endif /* ! GUI_DIALOGS_EDIT_TEXT_INCLUDED */
