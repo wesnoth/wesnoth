@@ -99,6 +99,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	slider_income_(parent.video()),
 	label_gold_(parent.video(), "100", font::SIZE_SMALL, font::LOBBY_COLOR),
 	label_income_(parent.video(), _("Normal"), font::SIZE_SMALL, font::LOBBY_COLOR),
+	allow_player_(cfg["controller"] == "ai" && cfg["allow_player"].empty() ? false : cfg["allow_player"].to_bool(true)),
 	allow_changes_(cfg["allow_changes"].to_bool(true)),
 	enabled_(!parent_->params_.saved_game), changed_(false),
 	llm_(parent.era_sides_, enabled_ ? &combo_leader_ : NULL, enabled_ ? &combo_gender_ : NULL)
@@ -108,9 +109,6 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	if (cfg_["controller"] == "human_ai"
 			|| cfg_["controller"] == "network_ai")
 		cfg_["controller"] = "ai";
-
-	allow_player_ = (cfg_["controller"] == "ai" && cfg_["allow_player"].empty() ? false : cfg_["allow_player"].to_bool(true));
-
 	if(allow_player_ && enabled_) {
 		controller_ = parent_->default_controller_;
 	} else {
