@@ -161,6 +161,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
             cfg_hs.max_threats = cfg.max_threats
 
             cfg_hs.filter = H.get_child(cfg, "filter")
+            cfg_hs.filter_second = H.get_child(cfg, "filter_second")
         end
 
         -- Set up the CA add/delete parameters
