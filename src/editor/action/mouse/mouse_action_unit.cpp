@@ -46,6 +46,8 @@ void mouse_action_unit::move(editor_display& disp, const map_location& hex)
 		const unit_map::const_unit_iterator unit_it = units.find(hex);
 		if (unit_it != units.end()) {
 
+			disp.set_mouseover_hex_overlay(NULL);
+
 			SDL_Rect rect;
 			rect.x = disp.get_location_x(hex);
 			rect.y = disp.get_location_y(hex);
@@ -55,6 +57,9 @@ void mouse_action_unit::move(editor_display& disp, const map_location& hex)
 			str << unit_it->id() << "\n" << unit_it->name() << "\n" << unit_it->type_name();
 			tooltips::clear_tooltips();
 			tooltips::add_tooltip(rect, str.str());
+		}
+		else {
+			set_mouse_overlay(disp);
 		}
 	}
 }
