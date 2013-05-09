@@ -101,7 +101,10 @@ return {
                 formula = '$this_unit.moves = 0', { "and", cfg.filter }
             }
 
-            local all_units = wesnoth.get_units{ side = wesnoth.current.side }
+            local all_units = wesnoth.get_units{ side = wesnoth.current.side, 
+                {"and", cfg.filter_second}
+            }
+
             local healees, units_MP = {}, {}
             for i,u in ipairs(all_units) do
                 -- Potential healees are units without MP that don't already have a healer (also without MP) next to them
