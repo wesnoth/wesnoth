@@ -389,7 +389,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	mp_server_search_button_.set_help_string(_("Find and set path to MP server to host LAN games"));
 	friends_list_button_.set_help_string(_("View and edit your friends and ignores list"));
 	friends_back_button_.set_help_string(_("Back to the multiplayer options"));
-	friends_add_friend_button_.set_help_string(_("Add this username to your friends list"));
+	friends_add_friend_button_.set_help_string(_("Add this username to your friends list (add optional notes, e.g., 'player_name notes on friend')"));
 	friends_add_ignore_button_.set_help_string(_("Add this username to your ignores list (add optional reason, e.g., 'player_name reason ignored')"));
 	friends_remove_button_.set_help_string(_("Remove this username from your list"));
 
@@ -953,13 +953,22 @@ void preferences_dialog::process_event()
 			set_selection(MULTIPLAYER_TAB);
 
 		if (friends_add_friend_button_.pressed()) {
-			if (preferences::add_friend(friends_input_.text())) {
+			std::string notes = "";
+			std::string username = friends_input_.text();
+			size_t pos = username.find_first_of(' ');
+
+			if(pos != std::string::npos) {
+				notes = username.substr(pos + 1);
+				username = username.substr(0, pos);
+			}
+
+			if (preferences::add_friend(username, notes)) {
 				friends_input_.clear();
 				set_friends_menu();
 			} else {
 				gui2::show_transient_error_message(disp_.video(), _("Invalid username"));
-            }
-        }
+			}
+		}
 		if (friends_add_ignore_button_.pressed()) {
 			std::string reason = "";
 			std::string username = friends_input_.text();

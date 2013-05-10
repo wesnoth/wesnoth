@@ -151,7 +151,7 @@ void tlobby_player_info::update_relation(twindow& w)
 
 void tlobby_player_info::add_to_friends_button_callback(twindow& w)
 {
-	preferences::add_friend(info_.name);
+	preferences::add_friend(info_.name, "");
 	info_.relation = user_info::FRIEND;
 	update_relation(w);
 }

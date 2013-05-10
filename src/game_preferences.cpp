@@ -228,9 +228,9 @@ std::map<std::string, std::string> get_acquaintances_nice(const std::string& fil
 	return ac_nice;
 }
 
-bool add_friend(const std::string& nick) {
+bool add_friend(const std::string& nick, const std::string& notes) {
 	if (!utils::isvalid_wildcard(nick)) return false;
-	acquaintances[nick] = preferences::acquaintance(nick, "friend", "");
+	acquaintances[nick] = preferences::acquaintance(nick, "friend", notes);
 	save_acquaintances();
 	return true;
 }

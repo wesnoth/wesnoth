@@ -2410,7 +2410,7 @@ void chat_command_handler::do_ignore()
 {
 	if (get_arg(1).empty()) {
 		const std::map<std::string, std::string>& tmp = preferences::get_acquaintances_nice("ignore");
-		print(_("ignores list"), tmp.empty() ? _("(empty)") : utils::join_map(tmp, '\n', ':'));
+		print(_("ignores list"), tmp.empty() ? _("(empty)") : utils::join_map(tmp, ")\n", " (") + ")");
 	} else {
 		std::string reason = get_data(2);
 		utils::string_map symbols;
@@ -2429,17 +2429,17 @@ void chat_command_handler::do_friend()
 {
 	if (get_arg(1).empty()) {
 		const std::map<std::string, std::string>& tmp = preferences::get_acquaintances_nice("friend");
-		print(_("friends list"), tmp.empty() ? _("(empty)") : utils::join_map(tmp, '\n', ';'));
+		print(_("friends list"), tmp.empty() ? _("(empty)") : utils::join_map(tmp, ")\n", " (") + ")");
 	} else {
-		for(int i = 1;!get_arg(i).empty();i++){
-			utils::string_map symbols;
-			symbols["nick"] = get_arg(i);
-			if (preferences::add_friend(get_arg(i))) {
-				chat_handler_.user_relation_changed(get_arg(i));
-				print(_("friends list"),  VGETTEXT("Added to friends list: $nick", symbols));
-			} else {
-				command_failed(VGETTEXT("Invalid username: $nick", symbols));
-			}
+		std::string notes = get_data(2);
+		utils::string_map symbols;
+		symbols["nick"] = get_arg(1);
+
+		if (preferences::add_friend(get_arg(1), notes)) {
+			print(_("friends list"),  VGETTEXT("Added to friends list: $nick", symbols));
+			chat_handler_.user_relation_changed(get_arg(1));
+		} else {
+			command_failed(VGETTEXT("Invalid username: $nick", symbols));
 		}
 	}
 }
@@ -2461,11 +2461,11 @@ void chat_command_handler::do_display()
 	const std::map<std::string, std::string>& ignores = preferences::get_acquaintances_nice("ignore");
 
 	if (!friends.empty()) {
-		print(_("friends list"), utils::join_map(friends, '\n', ';'));
+		print(_("friends list"), utils::join_map(friends, ")\n", " (") + ")");
 	}
 
 	if (!ignores.empty()) {
-		print(_("ignores list"), utils::join_map(ignores, '\n', ';'));
+		print(_("ignores list"), utils::join_map(ignores, ")\n", " (") + ")");
 	}
 
 	if (friends.empty() && ignores.empty()) {

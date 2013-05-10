@@ -107,7 +107,7 @@ std::vector< std::string > split(std::string const &val, const char c, const int
 			++i1;
 	}
 	i2=i1;
-			
+
 	while (i2 != val.end()) {
 		if (*i2 == c) {
 			std::string new_val(i1, i2);
@@ -161,7 +161,7 @@ std::vector< std::string > square_parenthetical_split(std::string const &val,
 	j1=i1;
 
 	if (i1 == val.end()) return res;
-	
+
 	if (!separator) {
 		ERR_GENERAL << "Separator must be specified for square bracket split funtion.\n";
 		return res;
@@ -230,7 +230,7 @@ std::vector< std::string > square_parenthetical_split(std::string const &val,
 				}
 				size_square_exp = square_expansion.size();
 			}
-			
+
 			//combine square contents and rest of string for comma zone block
 			size_t j = 0;
 			size_t j_max = 0;
@@ -255,7 +255,7 @@ std::vector< std::string > square_parenthetical_split(std::string const &val,
 					res.push_back(new_val);
 				j++;
 			} while (j<j_max);
-			
+
 			if (i2 == val.end()) //escape loop
 				break;
 			++i2;
@@ -345,7 +345,7 @@ std::vector< std::string > parenthetical_split(std::string const &val,
 			++i1;
 	}
 	i2=i1;
-	
+
 	if(left.size()!=right.size()){
 		ERR_GENERAL << "Left and Right Parenthesis lists not same length\n";
 		return res;

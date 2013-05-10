@@ -48,7 +48,7 @@ class acquaintance;
 
 	const std::map<std::string, acquaintance> & get_acquaintances();
 	std::map<std::string, std::string> get_acquaintances_nice(const std::string& filter);
-	bool add_friend(const std::string& nick);
+	bool add_friend(const std::string& nick, const std::string& notes);
 	bool add_ignore(const std::string& nick, const std::string& reason);
 	void add_completed_campaign(const std::string& campaign_id);
 	void remove_acquaintance(const std::string& nick);
