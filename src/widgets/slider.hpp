@@ -27,7 +27,7 @@ namespace gui {
 class slider : public widget
 {
 public:
-	slider(CVideo &video);
+	slider(CVideo &video, const std::string& image = "buttons/slider");
 
 	void set_min(int value);
 	void set_max(int value);

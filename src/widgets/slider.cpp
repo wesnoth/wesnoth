@@ -25,19 +25,19 @@
 
 
 namespace {
-	const std::string slider_image   = "buttons/slider.png";
-	const std::string disabled_image = "buttons/slider-disabled.png";
-	const std::string pressed_image = "buttons/slider-pressed.png";
-	const std::string active_image   = "buttons/slider-active.png";
+	const std::string slider_image   = ".png";
+	const std::string disabled_image = "-disabled.png";
+	const std::string pressed_image  = "-pressed.png";
+	const std::string active_image   = "-active.png";
 }
 
 namespace gui {
 
-slider::slider(CVideo &video)
-	: widget(video), image_(image::get_image(slider_image)),
-	  pressedImage_(image::get_image(pressed_image)),
-	  activeImage_(image::get_image(active_image)),
-	  disabledImage_(image::get_image(disabled_image)),
+slider::slider(CVideo &video, const std::string& image)
+	: widget(video), image_(image::get_image(image + slider_image)),
+	  pressedImage_(image::get_image(image + pressed_image)),
+	  activeImage_(image::get_image(image + active_image)),
+	  disabledImage_(image::get_image(image + disabled_image)),
 	  min_(-100000), max_(100000), value_(0),
 	  increment_(1), value_change_(false), state_(NORMAL)
 {
