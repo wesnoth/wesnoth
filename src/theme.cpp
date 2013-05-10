@@ -499,6 +499,19 @@ theme::status_item::status_item(const config& cfg) :
 theme::panel::panel(const config& cfg) : object(cfg), image_(cfg["image"])
 {}
 
+theme::slider::slider() :
+		object(),
+		title_(),
+		tooltip_(),
+		image_(),
+		overlay_()
+{}
+theme::slider::slider(const config &cfg):
+	object(cfg),
+	title_(cfg["title"].str() + cfg["title_literal"].str()),
+	tooltip_(cfg["tooltip"]), image_(cfg["image"]), overlay_(cfg["overlay"])
+{}
+
 theme::menu::menu() :
 	object(),
 	context_(false),
@@ -693,6 +706,16 @@ void theme::add_object(const config& cfg)
 			DBG_DP << "done adding action...\n";
 	}
 
+	BOOST_FOREACH(const config &s, cfg.child_range("slider"))
+	{
+			slider new_slider(s);
+			DBG_DP << "adding slider\n";
+			set_object_location(new_slider, s["rect"], s["ref"]);
+			sliders_.push_back(new_slider);
+
+			DBG_DP << "done adding slider...\n";
+	}
+
 	if (const config &c = cfg.child("main_map_border")) {
 		border_ = tborder(c);
 	} else {
@@ -722,6 +745,12 @@ void theme::remove_object(std::string id){
 	for(std::vector<theme::action>::iterator a = actions_.begin(); a != actions_.end(); ++a) {
 		if (a->get_id() == id){
 			actions_.erase(a);
+			return;
+		}
+	}
+	for(std::vector<theme::slider>::iterator s = sliders_.begin(); s != sliders_.end(); ++s) {
+		if (s->get_id() == id){
+			sliders_.erase(s);
 			return;
 		}
 	}
@@ -851,20 +880,28 @@ const theme::menu *theme::get_menu_item(const std::string &key) const
 }
 
 
-theme::menu* theme::refresh_title(const std::string& id, const std::string& new_title){
-	theme::menu* res = NULL;
+theme::object* theme::refresh_title(const std::string& id, const std::string& new_title){
+
+	theme::object* res = NULL;
+
+	for (std::vector<theme::action>::iterator a = actions_.begin(); a != actions_.end(); ++a){
+		if (a->get_id() == id) {
+			res  = &(*a);
+			a->set_title(new_title);
+		}
+	}
 
 	for (std::vector<theme::menu>::iterator m = menus_.begin(); m != menus_.end(); ++m){
 		if (m->get_id() == id) {
 			res = &(*m);
-			res->set_title(new_title);
+			m->set_title(new_title);
 		}
 	}
 
 	return res;
 }
 
-theme::menu* theme::refresh_title2(const std::string& id, const std::string& title_tag){
+theme::object* theme::refresh_title2(const std::string& id, const std::string& title_tag){
 	std::string new_title;
 
 	const config &cfg = find_ref(id, cfg_, false);

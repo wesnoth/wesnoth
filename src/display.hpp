@@ -46,6 +46,7 @@ class arrow;
 #include "theme.hpp"
 #include "video.hpp"
 #include "widgets/button.hpp"
+#include "widgets/slider.hpp"
 
 #include <list>
 
@@ -350,6 +351,7 @@ public:
 	 */
 	gui::button* find_action_button(const std::string& id);
 	gui::button* find_menu_button(const std::string& id);
+	gui::slider* find_slider(const std::string& id);
 
 	gui::button::TYPE string_to_button_type(std::string type);
 	void create_buttons();
@@ -481,7 +483,7 @@ public:
 	 * otherwise the images might start to look odd
 	 * (hex_width() gets rounding errors).
 	 */
-	void set_zoom(int amount);
+	void set_zoom(int amount, bool absolute = false);
 
 	bool zoom_at_max() const;
 	bool zoom_at_min() const;
@@ -731,6 +733,7 @@ protected:
 	std::map<std::string, surface> reportSurfaces_;
 	std::map<std::string, config> reports_;
 	std::vector<gui::button> menu_buttons_, action_buttons_;
+	std::vector<gui::slider> sliders_;
 	std::set<map_location> invalidated_;
 	std::set<map_location> previous_invalidated_;
 	surface mouseover_hex_overlay_;
