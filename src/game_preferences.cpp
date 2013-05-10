@@ -237,7 +237,7 @@ bool add_friend(const std::string& nick) {
 
 bool add_ignore(const std::string& nick, const std::string& reason) {
 	if (!utils::isvalid_wildcard(nick)) return false;
-	acquaintances[nick] = preferences::acquaintance(nick, "ignore", utils::replace(reason, ";", ""));
+	acquaintances[nick] = preferences::acquaintance(nick, "ignore", reason);
 	save_acquaintances();
 	return true;
 }
