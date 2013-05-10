@@ -455,11 +455,10 @@ class GitHub(object):
         # Add commit hook
         baseurl = _GITHUB_API_BASE + _GITHUB_API_HOOKS
         url = baseurl.format(reponame)
-        requestdata = { "name" : "cia", "events" : ["push"], "active" : True,
+        requestdata = { "name" : "web", "events" : ["push"], "active" : True,
             "config" : {
-                "project" : "wescamp",
-                "module" : reponame,
-                "address" : "http://ai0867.net:8000/RPC2"
+                "url" : "http://ai0867.net:6660/wescamp",
+                "content_type" : "json"
             }
         }
         self._github_api_request(url, requestdata, authenticate=True)
