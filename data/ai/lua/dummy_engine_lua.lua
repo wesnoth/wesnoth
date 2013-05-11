@@ -2,7 +2,7 @@
 
 return {
 	get_ai = function(ai)		
-		local my_ai = { }
+		local my_ai = {}
 		local ai_stdlib = wesnoth.require('ai/lua/stdlib.lua')
 		ai_stdlib.init(ai, true)
 

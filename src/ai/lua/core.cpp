@@ -72,11 +72,23 @@ void lua_ai_context::get_persistent_data(config &cfg) const
 	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&aisKey)));
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_rawgeti(L, -1, num_);
-
+	
+	int engine_index = lua_gettop(L);
+	config data = config();
 	lua_getfield(L, -1, "data");
-	luaW_toconfig(L, -1, cfg);
-
+	luaW_toconfig(L, -1, data);
+	lua_settop(L, engine_index);
+	
+	config store = config();
+	lua_getfield(L, -1, "get_ai");
+	lua_pushvalue(L, -2);
+	lua_call(L, 1, 1);
+	lua_getfield(L, -1, "store");
+	luaW_toconfig(L, -1, store);
+	
 	lua_settop(L, top);
+	cfg.add_child("lua_store") = store;
+	cfg.add_child("lua_engine_data") = data;
 }
 
 void lua_ai_context::set_persistent_data(const config &cfg)
@@ -86,10 +98,20 @@ void lua_ai_context::set_persistent_data(const config &cfg)
 	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&aisKey)));
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_rawgeti(L, -1, num_);
-
-	luaW_pushconfig(L, cfg);
+	
+	int engine_index = lua_gettop(L);
+	config data = cfg.child("lua_engine_data");
+	luaW_pushconfig(L, data);
 	lua_setfield(L, -2, "data");
-
+	lua_settop(L, engine_index);
+	
+	config store = cfg.child("lua_store");
+	lua_getfield(L, -1, "get_ai");
+	lua_pushvalue(L, -2);
+	lua_call(L, 1, 1);
+	luaW_pushconfig(L, store);
+	lua_setfield(L, -2, "store");
+	
 	lua_settop(L, top);
 }
 static ai::engine_lua &get_engine(lua_State *L)

@@ -4,6 +4,9 @@ return {
 
 	init = function(ai, dbg)
 		
+		-- Initialize persistent storage table
+		ai.store = {}	
+	
 		-- Initialize the cache system for LuaAI context
 		local cache = wesnoth.require("ai/lua/cache.lua")
 		cache.init(ai)
