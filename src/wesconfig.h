@@ -23,7 +23,7 @@
 #ifdef VERSION
   #undef VERSION
 #endif
-#define VERSION "1.11.3"
+#define VERSION "1.11.3+svn"
 #ifndef PACKAGE
 #define PACKAGE "wesnoth"
 #endif
