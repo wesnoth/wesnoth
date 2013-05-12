@@ -224,7 +224,8 @@ class editor_controller : public controller_base,
 		boost::scoped_ptr<editor_display> gui_;
 
 		/** Pre-defined time of day lighting settings for the settings dialog */
-		std::vector<time_of_day> tods_;
+		typedef std::map<std::string, std::vector<time_of_day> > tods_map;
+		tods_map tods_;
 
 		/* managers */
 	public:

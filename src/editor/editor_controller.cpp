@@ -114,13 +114,33 @@ void editor_controller::init_gui()
 
 void editor_controller::init_tods(const config& game_config)
 {
-	const config &cfg = game_config.child("editor_times");
-	if (!cfg) {
-		ERR_ED << "No editor time-of-day defined\n";
-		return;
+	BOOST_FOREACH(const config &schedule, game_config.child_range("editor_times")) {
+
+		const std::string& schedule_id = schedule["id"];
+		if (schedule_id.empty()) {
+			ERR_ED << "Missing ID attribute in a TOD Schedule.\n";
+			continue;
+		}
+
+		tods_map::iterator times = tods_.find(schedule_id);
+		if (times == tods_.end()) {
+			std::pair<tods_map::iterator, bool> new_times =
+					tods_.insert(std::pair<std::string, std::vector<time_of_day> >
+			(schedule_id, std::vector<time_of_day>()));
+			times = new_times.first;
+		} else {
+			ERR_ED << "Duplicate TOD Schedule ids.\n";
+			continue;
+		}
+
+		BOOST_FOREACH(const config &time, schedule.child_range("time")) {
+			times->second.push_back(time_of_day(time));
+		}
+
 	}
-	BOOST_FOREACH(const config &i, cfg.child_range("time")) {
-		tods_.push_back(time_of_day(i));
+
+	if (tods_.empty()) {
+		ERR_ED << "No editor time-of-day defined\n";
 	}
 }
 
@@ -204,7 +224,7 @@ void editor_controller::editor_settings_dialog()
 	}
 
 	image::color_adjustment_resetter adjust_resetter;
-	if(!gui2::teditor_settings::execute(&(gui()), tods_, gui().video())) {
+	if(!gui2::teditor_settings::execute(&(gui()), tods_["default"], gui().video())) {
 		adjust_resetter.reset();
 	}
 	context_manager_->refresh_all();
