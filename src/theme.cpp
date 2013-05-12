@@ -634,6 +634,7 @@ bool theme::set_resolution(const SDL_Rect& screen)
 	status_.clear();
 	menus_.clear();
 	actions_.clear();
+	sliders_.clear();
 
 	add_object(*current);
 
