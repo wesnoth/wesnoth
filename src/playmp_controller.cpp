@@ -292,6 +292,7 @@ void playmp_controller::linger()
 	reset_countdown();
 
 	set_end_scenario_button();
+	set_button_state(*gui_);
 
 	if ( get_end_level_data_const().transient.reveal_map ) {
 		// Change the view of all players and observers

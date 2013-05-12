@@ -615,11 +615,18 @@ bool theme::set_resolution(const SDL_Rect& screen)
 		return false;
 	}
 
-	std::map<std::string,std::string> title_stash;
+	std::map<std::string,std::string> title_stash_menus;
 	std::vector<theme::menu>::iterator m;
 	for (m = menus_.begin(); m != menus_.end(); ++m) {
 		if (!m->title().empty() && !m->get_id().empty())
-			title_stash[m->get_id()] = m->title();
+			title_stash_menus[m->get_id()] = m->title();
+	}
+
+	std::map<std::string,std::string> title_stash_actions;
+	std::vector<theme::action>::iterator a;
+	for (a = actions_.begin(); a != actions_.end(); ++a) {
+		if (!a->title().empty() && !a->get_id().empty())
+			title_stash_actions[a->get_id()] = a->title();
 	}
 
 	panels_.clear();
@@ -631,8 +638,13 @@ bool theme::set_resolution(const SDL_Rect& screen)
 	add_object(*current);
 
 	for (m = menus_.begin(); m != menus_.end(); ++m) {
-		if (title_stash.find(m->get_id()) != title_stash.end())
-			m->set_title(title_stash[m->get_id()]);
+		if (title_stash_menus.find(m->get_id()) != title_stash_menus.end())
+			m->set_title(title_stash_menus[m->get_id()]);
+	}
+
+	for (a = actions_.begin(); a != actions_.end(); ++a) {
+		if (title_stash_actions.find(a->get_id()) != title_stash_actions.end())
+			a->set_title(title_stash_actions[a->get_id()]);
 	}
 
 	theme_reset_event_.notify_observers();
@@ -886,7 +898,7 @@ theme::object* theme::refresh_title(const std::string& id, const std::string& ne
 
 	for (std::vector<theme::action>::iterator a = actions_.begin(); a != actions_.end(); ++a){
 		if (a->get_id() == id) {
-			res  = &(*a);
+			res = &(*a);
 			a->set_title(new_title);
 		}
 	}
