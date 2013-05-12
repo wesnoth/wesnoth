@@ -49,7 +49,7 @@ public:
 	virtual bool has_context_menu() const;
 
 	/**
-	 * Mouse move (not a drag). Never changes anything (other than temporary highlihts and similar)
+	 * Mouse move (not a drag). Never changes anything (other than temporary highlights and similar)
 	 */
 	virtual void move(editor_display& disp, const map_location& hex);
 
@@ -59,7 +59,7 @@ public:
 	void update_brush_highlights(editor_display& disp, const map_location& hex);
 
 	/**
-	 * Locations that would be affected by a click, used by move to update highlights. Defauts to higlight the mouseover hex.
+	 * Locations that would be affected by a click, used by move to update highlights. Defaults to highlight the mouseover hex.
 	 * Maybe also used for actually performing the action in click() or drag().
 	 */
 	virtual std::set<map_location> affected_hexes(editor_display& disp, const map_location& hex);
