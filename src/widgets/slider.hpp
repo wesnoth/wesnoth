@@ -36,6 +36,7 @@ public:
 
 	int value() const;
 	int max_value() const;
+	int min_value() const { return min_; }
 
 	bool value_change();
 

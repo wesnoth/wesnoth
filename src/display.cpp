@@ -835,8 +835,12 @@ void display::create_buttons()
 		}
 
 		gui::slider* s_prev = find_slider(s.id());
-		//TODO also copy the other states.
-		if(s_prev) s.enable(s_prev->enabled());
+		if(s_prev) {
+			s.set_max(s_prev->max_value());
+			s.set_min(s_prev->min_value());
+			s.set_value(s_prev->value());
+			s.enable(s_prev->enabled());
+		}
 
 		slider_work.push_back(s);
 	}
