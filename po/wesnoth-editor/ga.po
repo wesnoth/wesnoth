@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ga\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-05 10:54+0200\n"
+"POT-Creation-Date: 2013-05-12 19:12+0200\n"
 "PO-Revision-Date: 2012-02-18 12:50-0800\n"
 "Last-Translator: Carson Callis aka Mountian_King <tree_rings@rocketmail."
 "com>\n"
@@ -123,6 +123,31 @@ msgstr "droichead"
 msgid "special"
 msgstr "speisialta"
 
+#. [editor_times]: id=old
+#: data/core/editor/time-of-day.cfg:5
+msgid "Old"
+msgstr ""
+
+#. [editor_times]: id=default
+#: data/core/editor/time-of-day.cfg:16
+msgid "Default"
+msgstr ""
+
+#. [editor_times]: id=underground
+#: data/core/editor/time-of-day.cfg:27
+msgid "Underground"
+msgstr ""
+
+#. [editor_times]: id=deep_underground
+#: data/core/editor/time-of-day.cfg:33
+msgid "Deep Underground"
+msgstr ""
+
+#. [editor_times]: id=after_the_fall
+#: data/core/editor/time-of-day.cfg:39
+msgid "After the Fall"
+msgstr ""
+
 #. [editor_tool_hint]: id=editor-tool-fill
 #. [editor_tool_hint]: id=editor-tool-paint
 #: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
@@ -179,131 +204,153 @@ msgid "Side"
 msgstr ""
 
 #. [label]: id=villages-icon
-#: data/themes/editor.cfg:146
+#: data/themes/editor.cfg:145
 msgid "villages"
 msgstr "bailte"
 
 #. [label]: id=units-icon
-#: data/themes/editor.cfg:163
+#: data/themes/editor.cfg:162
 msgid "units"
 msgstr ""
 
 #. [label]: id=terrain-icon
-#: data/themes/editor.cfg:586
+#: data/themes/editor.cfg:585
 msgid "terrain"
 msgstr ""
 
 #. [action]: id=flip_map_button_editor, type=checkbox
-#: data/themes/editor.cfg:646
+#: data/themes/editor.cfg:645
 msgid "Not implemented yet."
 msgstr ""
 
-#: src/editor/editor_controller.cpp:155
+#: src/editor/editor_controller.cpp:156
 msgid "Fatal error"
 msgstr "Erráid marfach"
 
-#: src/editor/editor_controller.cpp:179
+#: src/editor/editor_controller.cpp:184
 msgid "Do you really want to quit?"
 msgstr "An dteastaíonn uait scoir?"
 
-#: src/editor/editor_controller.cpp:181
+#: src/editor/editor_controller.cpp:186
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr ""
 
-#: src/editor/editor_controller.cpp:183
+#: src/editor/editor_controller.cpp:188
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:186
+#: src/editor/editor_controller.cpp:191
 msgid "Quit"
 msgstr "Dún"
 
-#: src/editor/editor_controller.cpp:197
+#: src/editor/editor_controller.cpp:202
 msgid "No editor time-of-day found."
 msgstr "Níor thángthas ar trath-an-lae eagarthóra."
 
-#: src/editor/map/context_manager.cpp:114
-#: src/editor/map/context_manager.cpp:206
+#: src/editor/editor_controller.cpp:834
+msgid "Change Unit ID"
+msgstr ""
+
+#: src/editor/editor_controller.cpp:835
+msgid "ID:"
+msgstr ""
+
+#: src/editor/editor_controller.cpp:854
+msgid "Rename Unit"
+msgstr ""
+
+#: src/editor/editor_controller.cpp:855
+msgid "Name:"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:117
+#: src/editor/map/context_manager.cpp:209
 msgid "(New Map)"
 msgstr "(Léarscáil Nua)"
 
-#: src/editor/map/context_manager.cpp:175
+#: src/editor/map/context_manager.cpp:178
 msgid "Choose a Map to Open"
 msgstr "Roghnaigh Léarscáil le hOscailt"
 
-#: src/editor/map/context_manager.cpp:233
+#: src/editor/map/context_manager.cpp:241
+#, fuzzy
+#| msgid "(New Map)"
+msgid "(New Area)"
+msgstr "(Léarscáil Nua)"
+
+#: src/editor/map/context_manager.cpp:264
 #, fuzzy
 #| msgid "(New Map)"
 msgid "(New Side)"
 msgstr "(Léarscáil Nua)"
 
-#: src/editor/map/context_manager.cpp:249
+#: src/editor/map/context_manager.cpp:280
 msgid "Choose a Mask to Apply"
 msgstr "Roghnaigh masc le chuir ar léarscáil"
 
-#: src/editor/map/context_manager.cpp:256
+#: src/editor/map/context_manager.cpp:287
 msgid "Error loading mask"
 msgstr "Earráid i lódáil an masc"
 
-#: src/editor/map/context_manager.cpp:277
+#: src/editor/map/context_manager.cpp:308
 msgid "Choose Target Map"
 msgstr "Roghnaigh léarscáil sprice"
 
-#: src/editor/map/context_manager.cpp:284
-#: src/editor/map/context_manager.cpp:645
+#: src/editor/map/context_manager.cpp:315
+#: src/editor/map/context_manager.cpp:676
 msgid "Error loading map"
 msgstr "Earraíd i lódáil an léarscáil"
 
-#: src/editor/map/context_manager.cpp:402
+#: src/editor/map/context_manager.cpp:433
 msgid "Save the Map As"
 msgstr "Cuir an Léarscáil i dtaisce Mar"
 
-#: src/editor/map/context_manager.cpp:405
+#: src/editor/map/context_manager.cpp:436
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "An comhad ann cheana féin . An dteastaíonn uait forscríobh?"
 
-#: src/editor/map/context_manager.cpp:439
+#: src/editor/map/context_manager.cpp:470
 msgid "No random map generators found."
 msgstr "Níor thángthas ar gineadóirí léarscáile randamach."
 
-#: src/editor/map/context_manager.cpp:452
-#: src/editor/map/context_manager.cpp:456
+#: src/editor/map/context_manager.cpp:483
+#: src/editor/map/context_manager.cpp:487
 msgid "Map creation failed."
 msgstr "Theip an cruthú léarscáile"
 
-#: src/editor/map/context_manager.cpp:468
+#: src/editor/map/context_manager.cpp:499
 msgid "Unsaved Changes"
 msgstr "Athruithe Neamhshábháilte"
 
-#: src/editor/map/context_manager.cpp:469
+#: src/editor/map/context_manager.cpp:500
 #, fuzzy
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr "An dteastaíonn uait"
 
-#: src/editor/map/context_manager.cpp:560
-#: src/editor/map/context_manager.cpp:601
+#: src/editor/map/context_manager.cpp:591
+#: src/editor/map/context_manager.cpp:632
 msgid "This map is already open."
 msgstr "Tá an léarscáil ar oscailt cheana féin."
 
-#: src/editor/map/context_manager.cpp:581
+#: src/editor/map/context_manager.cpp:612
 msgid "Map saved."
 msgstr "Léarscáil sábháilte."
 
-#: src/editor/map/context_manager.cpp:624
+#: src/editor/map/context_manager.cpp:655
 msgid "Loaded embedded map data"
 msgstr "Sábháladh sonraí léarscáile leabaithe"
 
-#: src/editor/map/context_manager.cpp:625
-#: src/editor/map/context_manager.cpp:639
+#: src/editor/map/context_manager.cpp:656
+#: src/editor/map/context_manager.cpp:670
 msgid "Map loaded from scenario"
 msgstr "Léarscáil lódáilte as misean"
 
-#: src/editor/map/context_manager.cpp:635
+#: src/editor/map/context_manager.cpp:666
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -315,29 +362,29 @@ msgstr ""
 msgid "Player"
 msgstr "Imreoir"
 
-#: src/editor/map/editor_map.cpp:256
+#: src/editor/map/editor_map.cpp:266
 msgid "The size of the target map is different from the current map"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:103
+#: src/editor/map/map_context.cpp:105
 msgid "File not found"
 msgstr "Níor thángthas ar an gcomhad sin."
 
-#: src/editor/map/map_context.cpp:117
+#: src/editor/map/map_context.cpp:119
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:133
+#: src/editor/map/map_context.cpp:135
 msgid "Empty map file"
 msgstr "Comhad léarscáile folamh"
 
-#: src/editor/map/map_context.cpp:328
+#: src/editor/map/map_context.cpp:340
 msgid "Could not save into scenario"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:335
+#: src/editor/map/map_context.cpp:347
 msgid "Could not save the map: $msg"
 msgstr ""
 
@@ -346,11 +393,11 @@ msgstr ""
 msgid "(Unknown Group)"
 msgstr ""
 
-#: src/editor/palette/editor_palettes.cpp:317
+#: src/editor/palette/editor_palettes.cpp:329
 msgid "(non-core)"
 msgstr "(neamh-croílár)"
 
-#: src/editor/palette/editor_palettes.cpp:318
+#: src/editor/palette/editor_palettes.cpp:330
 msgid "Will not work in game without extra care."
 msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-05 10:54+0200\n"
+"POT-Creation-Date: 2013-05-12 19:12+0200\n"
 "PO-Revision-Date: 2012-11-21 23:33+0100\n"
 "Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
 "Language-Team: Fòram na Gàidhlig http://www.foramnagaidhlig.net\n"
@@ -1308,7 +1308,7 @@ msgstr "Thoir tuilleadain air falbh"
 #. [button]: id=help
 #. [button]: id=show_help
 #: data/gui/default/window/addon_connect.cfg:188
-#: data/gui/default/window/title_screen.cfg:179 src/hotkeys.cpp:227
+#: data/gui/default/window/title_screen.cfg:179 src/hotkeys.cpp:234
 msgid "Help"
 msgstr "Cobhair"
 
@@ -1328,6 +1328,7 @@ msgstr "Dèan ceangal"
 #: data/gui/default/window/campaign_difficulty.cfg:192
 #: data/gui/default/window/data_manage.cfg:361
 #: data/gui/default/window/edit_label.cfg:154
+#: data/gui/default/window/edit_text.cfg:130
 #: data/gui/default/window/editor_edit_label.cfg:191
 #: data/gui/default/window/editor_generate_map.cfg:107
 #: data/gui/default/window/editor_new_map.cfg:125
@@ -1349,7 +1350,6 @@ msgstr "Dèan ceangal"
 #: data/gui/default/window/mp_method_selection.cfg:225
 #: data/gui/default/window/mp_server_list.cfg:231
 #: data/gui/default/window/network_transmission.cfg:114
-#: data/gui/default/window/rename_unit.cfg:133
 #: data/gui/default/window/simple_item_selector.cfg:158
 #: data/gui/default/window/unit_attack.cfg:210
 #: data/gui/default/window/unit_create.cfg:210
@@ -1533,6 +1533,7 @@ msgstr "Cluich iomairt"
 #: data/gui/default/window/data_manage.cfg:347
 #: data/gui/default/window/data_manage.cfg:348
 #: data/gui/default/window/edit_label.cfg:140
+#: data/gui/default/window/edit_text.cfg:116
 #: data/gui/default/window/editor_edit_label.cfg:177
 #: data/gui/default/window/editor_set_starting_position.cfg:162
 #: data/gui/default/window/editor_settings.cfg:252
@@ -1549,7 +1550,6 @@ msgstr "Cluich iomairt"
 #: data/gui/default/window/mp_depcheck_select_new.cfg:132
 #: data/gui/default/window/mp_login.cfg:246
 #: data/gui/default/window/mp_method_selection.cfg:211
-#: data/gui/default/window/rename_unit.cfg:119
 #: data/gui/default/window/simple_item_selector.cfg:145
 #: data/gui/default/window/unit_create.cfg:198
 #: data/gui/default/window/unit_create.cfg:199
@@ -1709,7 +1709,7 @@ msgstr "Gin"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:35 src/hotkeys.cpp:149
+#: data/gui/default/window/editor_new_map.cfg:35 src/hotkeys.cpp:151
 msgid "New Map"
 msgstr "Mapa ùr"
 
@@ -1734,7 +1734,7 @@ msgstr "Cruthaich geama"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:35 src/hotkeys.cpp:203
+#: data/gui/default/window/editor_resize_map.cfg:35 src/hotkeys.cpp:208
 msgid "Resize Map"
 msgstr "Ath-mheudaich mapa"
 
@@ -1789,7 +1789,7 @@ msgstr "Cò an cluicheadair a thòisicheas an-seo?"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_settings.cfg:35 src/hotkeys.cpp:147
+#: data/gui/default/window/editor_settings.cfg:35 src/hotkeys.cpp:149
 msgid "Editor Settings"
 msgstr "Roghainnean an deasaiche"
 
@@ -1846,7 +1846,6 @@ msgstr "Pasgan ùr"
 #: data/gui/default/window/game_save.cfg:72
 #: data/gui/default/window/game_save_message.cfg:93
 #: data/gui/default/window/game_save_oos.cfg:93
-#: data/gui/default/window/rename_unit.cfg:71
 msgid "Name:"
 msgstr "Ainm:"
 
@@ -1906,8 +1905,8 @@ msgstr "Lorgadh a’ ghnìomhaidh"
 #. [grid]
 #: data/gui/default/window/formula_debugger.cfg:234
 #: data/gui/default/window/lobby_main.cfg:660
-#: data/gui/default/window/title_screen.cfg:265 src/hotkeys.cpp:876
-#: src/hotkeys.cpp:1226
+#: data/gui/default/window/title_screen.cfg:265 src/hotkeys.cpp:883
+#: src/hotkeys.cpp:1233
 msgid "Quit"
 msgstr "Fàg an-seo"
 
@@ -2596,12 +2595,6 @@ msgstr "Seòladh"
 #: data/gui/default/window/mp_server_list.cfg:217
 msgid "Select"
 msgstr "Tagh"
-
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [label]: id=title
-#: data/gui/default/window/rename_unit.cfg:42 src/hotkeys.cpp:87
-msgid "Rename Unit"
-msgstr "Ath-ainmich aonad"
 
 #. [button]: id=help
 #: data/gui/default/window/title_screen.cfg:180
@@ -3451,7 +3444,7 @@ msgstr "Dì-stàlaich tuilleadain"
 
 #: src/gui/dialogs/addon_list.cpp:256
 #: src/gui/dialogs/network_transmission.cpp:54
-#: src/gui/dialogs/network_transmission.cpp:56 src/hotkeys.cpp:1183
+#: src/gui/dialogs/network_transmission.cpp:56 src/hotkeys.cpp:1190
 msgid "unit_byte^B"
 msgstr "B"
 
@@ -3763,7 +3756,7 @@ msgstr "Sùm bunaiteach"
 msgid "Toggle Full Screen"
 msgstr "Toglaich làn-sgrìn"
 
-#: src/hotkeys.cpp:83 src/hotkeys.cpp:1177
+#: src/hotkeys.cpp:83 src/hotkeys.cpp:1184
 msgid "Screenshot"
 msgstr "Glacadh-sgrìn"
 
@@ -3779,6 +3772,10 @@ msgstr "Luathaichte"
 msgid "Unit Description"
 msgstr "Tuairisgeul an aonaid"
 
+#: src/hotkeys.cpp:87
+msgid "Rename Unit"
+msgstr "Ath-ainmich aonad"
+
 #: src/hotkeys.cpp:88
 #, fuzzy
 #| msgid "Delete File"
@@ -3789,7 +3786,7 @@ msgstr "Sguab às dhan fhaidhle"
 msgid "Save Replay"
 msgstr "Sàbhail ath-chluiche"
 
-#: src/hotkeys.cpp:92 src/hotkeys.cpp:151
+#: src/hotkeys.cpp:92 src/hotkeys.cpp:153
 msgid "Save Map"
 msgstr "Sàbhail mapa"
 
@@ -3966,491 +3963,511 @@ msgstr "Dùin mapa"
 msgid "Switch Map"
 msgstr "Suids mapa"
 
-#: src/hotkeys.cpp:148
+#: src/hotkeys.cpp:147
+#, fuzzy
+#| msgid "Switch Map"
+msgid "Switch Area"
+msgstr "Suids mapa"
+
+#: src/hotkeys.cpp:150
 msgid "Partial Undo"
 msgstr "Uimhir dhe neo-dhèanamh"
 
-#: src/hotkeys.cpp:150
+#: src/hotkeys.cpp:152
 msgid "Load Map"
 msgstr "Luchdaich mapa"
 
-#: src/hotkeys.cpp:152
+#: src/hotkeys.cpp:154
 msgid "Save Map As"
 msgstr "Sàbhail mapa mar"
 
-#: src/hotkeys.cpp:153
+#: src/hotkeys.cpp:155
 msgid "Save All Maps"
 msgstr "Sàbhail a h-uile mapa"
 
-#: src/hotkeys.cpp:154
+#: src/hotkeys.cpp:156
 msgid "Revert All Changes"
 msgstr "Neo-dhèan a h-uile atharrachadh"
 
-#: src/hotkeys.cpp:155
+#: src/hotkeys.cpp:157
 msgid "Map Information"
 msgstr "Fiosrachadh mapa"
 
-#: src/hotkeys.cpp:156
+#: src/hotkeys.cpp:158
 #, fuzzy
 #| msgid "Next Side"
 msgid "Add New Side"
 msgstr "Ath thaobh"
 
-#: src/hotkeys.cpp:157
+#: src/hotkeys.cpp:159
 #, fuzzy
 #| msgid "Switch Map"
 msgid "Switch Side"
 msgstr "Suids mapa"
 
-#: src/hotkeys.cpp:158
+#: src/hotkeys.cpp:160
 msgid "Swap Foreground/Background Terrains"
 msgstr "Dèan suaip air cruth-tìre beulaibh/cùlaibh"
 
-#: src/hotkeys.cpp:159
+#: src/hotkeys.cpp:161
 msgid "Change Palette Group"
 msgstr ""
 
-#: src/hotkeys.cpp:160
+#: src/hotkeys.cpp:162
 msgid "Scroll Palette Left"
 msgstr ""
 
-#: src/hotkeys.cpp:161
+#: src/hotkeys.cpp:163
 msgid "Scroll Palette Right"
 msgstr ""
 
-#: src/hotkeys.cpp:164
+#: src/hotkeys.cpp:166
 msgid "Next Tool"
 msgstr "An t-ath inneal"
 
-#: src/hotkeys.cpp:166
+#: src/hotkeys.cpp:168
 msgid "Paint Tool"
 msgstr "Inneal peant"
 
-#: src/hotkeys.cpp:166 src/hotkeys.cpp:167
+#: src/hotkeys.cpp:168 src/hotkeys.cpp:169
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
 
-#: src/hotkeys.cpp:167
+#: src/hotkeys.cpp:169
 msgid "Fill Tool"
 msgstr "Inneal lìonaidh"
 
-#: src/hotkeys.cpp:168
+#: src/hotkeys.cpp:170
 msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
 msgstr ""
 
-#: src/hotkeys.cpp:168
+#: src/hotkeys.cpp:170
 msgid "Selection Tool"
 msgstr "Inneal taghaidh"
 
-#: src/hotkeys.cpp:169
+#: src/hotkeys.cpp:171
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
 
-#: src/hotkeys.cpp:169
+#: src/hotkeys.cpp:171
 #, fuzzy
 #| msgid "Set Starting Positions Tool"
 msgid "Starting Positions Tool"
 msgstr "Suidhich inneal nan àiteachan tòiseachaidh"
 
-#: src/hotkeys.cpp:170
+#: src/hotkeys.cpp:172
 #, fuzzy
 #| msgid "Fill Tool"
 msgid "Label Tool"
 msgstr "Inneal lìonaidh"
 
-#: src/hotkeys.cpp:170
+#: src/hotkeys.cpp:172
 msgid "Left mouse button sets or drags a label, right clears."
 msgstr ""
 
-#: src/hotkeys.cpp:171
+#: src/hotkeys.cpp:173
 msgid ""
 "Left mouse button sets a new unit or moves a unit via drag and drop, right "
 "clears. Not implemented yet."
 msgstr ""
 
-#: src/hotkeys.cpp:171
+#: src/hotkeys.cpp:173
 #, fuzzy
 #| msgid "Paint Tool"
 msgid "Unit Tool"
 msgstr "Inneal peant"
 
-#: src/hotkeys.cpp:172
+#: src/hotkeys.cpp:174
 #, fuzzy
 #| msgid "Next Tool"
 msgid "Item Tool"
 msgstr "An t-ath inneal"
 
-#: src/hotkeys.cpp:172
+#: src/hotkeys.cpp:174
 msgid ""
 "Left mouse button sets a new item or moves it via drag and drop, right "
 "clears. Not implemented yet."
 msgstr ""
 
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:175
 msgid ""
 "Left mouse button sets or drags a sound source, right clears. Not "
 "implemented yet."
 msgstr ""
 
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:175
 msgid "Soundsource Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:174
+#: src/hotkeys.cpp:176
 msgid ""
 "Left mouse button sets the village ownership to the current side, right "
 "clears. Not implemented yet."
 msgstr ""
 
-#: src/hotkeys.cpp:174
+#: src/hotkeys.cpp:176
 #, fuzzy
 #| msgid "Village gold"
 msgid "Village Tool"
 msgstr "Òr bhailtean"
 
-#: src/hotkeys.cpp:176
+#: src/hotkeys.cpp:178
 #, fuzzy
 #| msgid "Recruit"
 msgid "Canrecruit"
 msgstr "Trus"
 
-#: src/hotkeys.cpp:176
+#: src/hotkeys.cpp:178
 msgid "Toggle the recruit attribute of a unit."
 msgstr ""
 
-#: src/hotkeys.cpp:177
+#: src/hotkeys.cpp:179
 msgid "Can be renamed"
 msgstr ""
 
-#: src/hotkeys.cpp:177
+#: src/hotkeys.cpp:179
 msgid "Toggle the unit being renameable."
 msgstr ""
 
-#: src/hotkeys.cpp:180
-msgid "Next Brush"
-msgstr "Ath bhruis"
-
 #: src/hotkeys.cpp:181
-msgid "Default Brush"
-msgstr "Bruis bhunaiteach"
+#, fuzzy
+#| msgid "Change Control"
+msgid "Change Unit ID"
+msgstr "Atharraich smachd"
 
 #: src/hotkeys.cpp:182
-msgid "Single Tile"
-msgstr ""
-
-#: src/hotkeys.cpp:183
-msgid "Radius One"
-msgstr ""
-
-#: src/hotkeys.cpp:184
-msgid "Radius Two"
+msgid "Loyal"
 msgstr ""
 
 #: src/hotkeys.cpp:185
+msgid "Next Brush"
+msgstr "Ath bhruis"
+
+#: src/hotkeys.cpp:186
+msgid "Default Brush"
+msgstr "Bruis bhunaiteach"
+
+#: src/hotkeys.cpp:187
+msgid "Single Tile"
+msgstr ""
+
+#: src/hotkeys.cpp:188
+msgid "Radius One"
+msgstr ""
+
+#: src/hotkeys.cpp:189
+msgid "Radius Two"
+msgstr ""
+
+#: src/hotkeys.cpp:190
 msgid "Brush NW-SE"
 msgstr ""
 
-#: src/hotkeys.cpp:186
+#: src/hotkeys.cpp:191
 msgid "Brush SW-NE"
 msgstr ""
 
-#: src/hotkeys.cpp:187
+#: src/hotkeys.cpp:192
 msgid "Cut"
 msgstr "Gearr às"
 
-#: src/hotkeys.cpp:188
+#: src/hotkeys.cpp:193
 msgid "Copy"
 msgstr "Dèan lethbhreac"
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:194
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
 msgstr ""
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:194
 msgid "Paste"
 msgstr "Cuir ann"
 
-#: src/hotkeys.cpp:190
+#: src/hotkeys.cpp:195
 msgid "Export Selected Coordinates to System Clipboard"
 msgstr "Às-phortaich an càraid-àireimh a thagh thu dhan bhòrd-chliopaichean"
 
-#: src/hotkeys.cpp:191
+#: src/hotkeys.cpp:196
 msgid "Select All"
 msgstr "Tagh a h-uile"
 
-#: src/hotkeys.cpp:192
+#: src/hotkeys.cpp:197
 msgid "Select Inverse"
 msgstr "Taghadh contrarra"
 
-#: src/hotkeys.cpp:193
+#: src/hotkeys.cpp:198
 msgid "Select None"
 msgstr "Tagh gin dhiubh"
 
-#: src/hotkeys.cpp:194
+#: src/hotkeys.cpp:199
 msgid "Rotate Clipboard Clockwise"
 msgstr "Tionndaidh am bòrd-chliopaichean deiseal"
 
-#: src/hotkeys.cpp:195
+#: src/hotkeys.cpp:200
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr "Tionndaidh am bòrd-chliopaichean tuathail"
 
-#: src/hotkeys.cpp:196
+#: src/hotkeys.cpp:201
 msgid "Flip Clipboard Horizontally"
 msgstr "Flip am bòrd-chliopaichean gu còmhnard"
 
-#: src/hotkeys.cpp:197
+#: src/hotkeys.cpp:202
 msgid "Flip Clipboard Vertically"
 msgstr "Flip am bòrd-chliopaichean gu h-inghearach"
 
-#: src/hotkeys.cpp:198
+#: src/hotkeys.cpp:203
 msgid "Rotate Selection"
 msgstr "Tionndaidh an taghadh"
 
-#: src/hotkeys.cpp:199
+#: src/hotkeys.cpp:204
 msgid "Flip Selection"
 msgstr "Flip an taghadh"
 
-#: src/hotkeys.cpp:200
+#: src/hotkeys.cpp:205
 msgid "Fill Selection"
 msgstr "Lìon an taghadh"
 
-#: src/hotkeys.cpp:201
+#: src/hotkeys.cpp:206
 msgid "Generate Tiles In Selection"
 msgstr "Gin leacan san taghadh"
 
-#: src/hotkeys.cpp:202
+#: src/hotkeys.cpp:207
 msgid "Randomize Tiles In Selection"
 msgstr "Dèan leacan air thuaiream san taghadh"
 
-#: src/hotkeys.cpp:204
+#: src/hotkeys.cpp:209
 msgid "Rotate Map"
 msgstr "Tionndadh mapa"
 
-#: src/hotkeys.cpp:205
+#: src/hotkeys.cpp:210
 msgid "Generate Map"
 msgstr "Gin mapa"
 
-#: src/hotkeys.cpp:206
+#: src/hotkeys.cpp:211
 msgid "Apply a Mask"
 msgstr "Cuir masg an gnìomh"
 
-#: src/hotkeys.cpp:207
+#: src/hotkeys.cpp:212
 msgid "Create Mask"
 msgstr "Cruthaich masg"
 
-#: src/hotkeys.cpp:208
+#: src/hotkeys.cpp:213
 msgid "Refresh Display"
 msgstr "Ath-ùraich an taisbeanadh"
 
-#: src/hotkeys.cpp:209
+#: src/hotkeys.cpp:214
 msgid "Update Terrain Transitions"
 msgstr "Ùraich tar-mhùthaidhean crutha-thìre"
 
-#: src/hotkeys.cpp:211
+#: src/hotkeys.cpp:216
 #, fuzzy
 #| msgid "Update Terrain Transitions"
 msgid "Toggle Terrain Transition Update"
 msgstr "Ùraich tar-mhùthaidhean crutha-thìre"
 
-#: src/hotkeys.cpp:212
+#: src/hotkeys.cpp:217
 msgid "Auto-update Terrain Transitions"
 msgstr "Fèin-ùraich tar-mhùthaidhean crutha-thìre"
 
-#: src/hotkeys.cpp:214
+#: src/hotkeys.cpp:219
 #, fuzzy
 #| msgid "Auto-update Terrain Transitions"
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Fèin-ùraich tar-mhùthaidhean crutha-thìre"
 
-#: src/hotkeys.cpp:215
+#: src/hotkeys.cpp:220
 #, fuzzy
 #| msgid "Auto-update Terrain Transitions"
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "Fèin-ùraich tar-mhùthaidhean crutha-thìre"
 
-#: src/hotkeys.cpp:217
+#: src/hotkeys.cpp:222
 msgid "Refresh Image Cache"
 msgstr "Ath-ùraich tasgadan nan dealbh"
 
-#: src/hotkeys.cpp:218
+#: src/hotkeys.cpp:223
 msgid "Draw Hex Coordinates"
 msgstr "Tarraing càraidean-àireimh nan sia-cheàrnach"
 
-#: src/hotkeys.cpp:219
+#: src/hotkeys.cpp:224
 msgid "Draw Terrain Codes"
 msgstr "Tarraing còdaichean crutha-thìre"
 
-#: src/hotkeys.cpp:221
+#: src/hotkeys.cpp:226
+msgid "Define (Time) Area"
+msgstr ""
+
+#: src/hotkeys.cpp:228
 msgid "Delay Shroud Updates"
 msgstr "Cuir dàil air ùrachaidhean sgàile"
 
-#: src/hotkeys.cpp:222
+#: src/hotkeys.cpp:229
 msgid "Update Shroud Now"
 msgstr "Ùraich an sgàil an-dràsta"
 
-#: src/hotkeys.cpp:223
+#: src/hotkeys.cpp:230
 msgid "Continue Move"
 msgstr "Lean air an gluasad"
 
-#: src/hotkeys.cpp:224
+#: src/hotkeys.cpp:231
 msgid "Find Label or Unit"
 msgstr "Lorg leubail no aonad"
 
-#: src/hotkeys.cpp:225
+#: src/hotkeys.cpp:232
 msgid "Speak to Ally"
 msgstr "Bruidhinn ri caidreabhach"
 
-#: src/hotkeys.cpp:226
+#: src/hotkeys.cpp:233
 msgid "Speak to All"
 msgstr "Bruidhinn ris a h-uile"
 
-#: src/hotkeys.cpp:228
+#: src/hotkeys.cpp:235
 msgid "View Chat Log"
 msgstr "Faic loga a’ chabadaich"
 
-#: src/hotkeys.cpp:229
+#: src/hotkeys.cpp:236
 msgid "Change Language"
 msgstr "Atharraich an cànan"
 
-#: src/hotkeys.cpp:230
+#: src/hotkeys.cpp:237
 msgid "Enter User Command"
 msgstr "Cuir àithne cleachdaiche a-steach"
 
-#: src/hotkeys.cpp:231
+#: src/hotkeys.cpp:238
 msgid "Custom Command"
 msgstr "Àithne ghnàthaichte"
 
-#: src/hotkeys.cpp:232
+#: src/hotkeys.cpp:239
 msgid "Run Formula"
 msgstr "Ruith foirmle"
 
-#: src/hotkeys.cpp:233
+#: src/hotkeys.cpp:240
 msgid "Clear Messages"
 msgstr "Falamhaich teachdaireachdan"
 
-#: src/hotkeys.cpp:234
+#: src/hotkeys.cpp:241
 msgid "Refresh WML"
 msgstr "Ath-nuadhaich WML"
 
-#: src/hotkeys.cpp:235
+#: src/hotkeys.cpp:242
 msgid "Next Tip of the Day"
 msgstr "Ath ghliocas an latha"
 
-#: src/hotkeys.cpp:236
+#: src/hotkeys.cpp:243
 msgid "Previous Tip of the Day"
 msgstr "Gliocas an latha roimhe"
 
-#: src/hotkeys.cpp:237
+#: src/hotkeys.cpp:244
 msgid "Start Tutorial"
 msgstr "Tòisich oideachadh"
 
-#: src/hotkeys.cpp:238
+#: src/hotkeys.cpp:245
 msgid "Start Campaign"
 msgstr "Tòisich iomairt"
 
-#: src/hotkeys.cpp:239
+#: src/hotkeys.cpp:246
 msgid "Start Multiplayer Game"
 msgstr "Tòisich geama ioma-chluicheadair"
 
-#: src/hotkeys.cpp:240
+#: src/hotkeys.cpp:247
 msgid "Manage Add-ons"
 msgstr "Stiùirich na tuilleadain"
 
-#: src/hotkeys.cpp:241
+#: src/hotkeys.cpp:248
 msgid "Start Editor"
 msgstr "Tòisich an deasaiche"
 
-#: src/hotkeys.cpp:242
+#: src/hotkeys.cpp:249
 msgid "Show Credits"
 msgstr "Seall an cliù"
 
-#: src/hotkeys.cpp:243
+#: src/hotkeys.cpp:250
 msgid "Show Helptip"
 msgstr "Seall gliocas-cobharach"
 
-#: src/hotkeys.cpp:246
+#: src/hotkeys.cpp:253
 msgid "Unrecognized Command"
 msgstr ""
 
-#: src/hotkeys.cpp:379 src/hotkeys.cpp:382
+#: src/hotkeys.cpp:386 src/hotkeys.cpp:389
 msgid "Button"
 msgstr ""
 
-#: src/hotkeys.cpp:379
+#: src/hotkeys.cpp:386
 msgid "Mouse"
 msgstr ""
 
-#: src/hotkeys.cpp:382 src/hotkeys.cpp:418
+#: src/hotkeys.cpp:389 src/hotkeys.cpp:425
 msgid "Joystick"
 msgstr ""
 
-#: src/hotkeys.cpp:388
+#: src/hotkeys.cpp:395
 msgid "Centered"
 msgstr ""
 
-#: src/hotkeys.cpp:391
+#: src/hotkeys.cpp:398
 msgid "Up"
 msgstr ""
 
-#: src/hotkeys.cpp:394
+#: src/hotkeys.cpp:401
 #, fuzzy
 #| msgid "Height:"
 msgid "Right"
 msgstr "Àirde:"
 
-#: src/hotkeys.cpp:397
+#: src/hotkeys.cpp:404
 msgid "Down"
 msgstr ""
 
-#: src/hotkeys.cpp:400
+#: src/hotkeys.cpp:407
 msgid "Left"
 msgstr ""
 
-#: src/hotkeys.cpp:403
+#: src/hotkeys.cpp:410
 msgid "RightUp"
 msgstr ""
 
-#: src/hotkeys.cpp:406
+#: src/hotkeys.cpp:413
 msgid "RightDown"
 msgstr ""
 
-#: src/hotkeys.cpp:409
+#: src/hotkeys.cpp:416
 msgid "LeftUp"
 msgstr ""
 
-#: src/hotkeys.cpp:412
+#: src/hotkeys.cpp:419
 msgid "LeftDown"
 msgstr ""
 
-#: src/hotkeys.cpp:415
+#: src/hotkeys.cpp:422
 #, fuzzy
 #| msgid "Unknown era"
 msgid "Unknown"
 msgstr "Linn neo-aithnichte"
 
-#: src/hotkeys.cpp:418
+#: src/hotkeys.cpp:425
 #, fuzzy
 #| msgid "Hut"
 msgid "Hat"
 msgstr "Bothag"
 
-#: src/hotkeys.cpp:877 src/hotkeys.cpp:1227
+#: src/hotkeys.cpp:884 src/hotkeys.cpp:1234
 msgid "Do you really want to quit?"
 msgstr "A bheil thu cinnteach gu bheil thu airson fàgail?"
 
-#: src/hotkeys.cpp:1177
+#: src/hotkeys.cpp:1184
 msgid "Map-Screenshot"
 msgstr "Glacadh-sgrìn mapa"
 
-#: src/hotkeys.cpp:1184 src/hotkeys.cpp:1186
+#: src/hotkeys.cpp:1191 src/hotkeys.cpp:1193
 msgid "Screenshot done"
 msgstr "Glacadh-sgrìn dèanta"
 

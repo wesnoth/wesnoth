@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ang@latin\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-05 10:54+0200\n"
+"POT-Creation-Date: 2013-05-12 19:12+0200\n"
 "PO-Revision-Date: 2012-06-05 17:41-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: Old English <http://wiki.wesnoth.org/OldEnglishTranslation>\n"
@@ -1296,7 +1296,7 @@ msgstr ""
 #. [button]: id=help
 #. [button]: id=show_help
 #: data/gui/default/window/addon_connect.cfg:188
-#: data/gui/default/window/title_screen.cfg:179 src/hotkeys.cpp:227
+#: data/gui/default/window/title_screen.cfg:179 src/hotkeys.cpp:234
 msgid "Help"
 msgstr "Help"
 
@@ -1316,6 +1316,7 @@ msgstr ""
 #: data/gui/default/window/campaign_difficulty.cfg:192
 #: data/gui/default/window/data_manage.cfg:361
 #: data/gui/default/window/edit_label.cfg:154
+#: data/gui/default/window/edit_text.cfg:130
 #: data/gui/default/window/editor_edit_label.cfg:191
 #: data/gui/default/window/editor_generate_map.cfg:107
 #: data/gui/default/window/editor_new_map.cfg:125
@@ -1337,7 +1338,6 @@ msgstr ""
 #: data/gui/default/window/mp_method_selection.cfg:225
 #: data/gui/default/window/mp_server_list.cfg:231
 #: data/gui/default/window/network_transmission.cfg:114
-#: data/gui/default/window/rename_unit.cfg:133
 #: data/gui/default/window/simple_item_selector.cfg:158
 #: data/gui/default/window/unit_attack.cfg:210
 #: data/gui/default/window/unit_create.cfg:210
@@ -1515,6 +1515,7 @@ msgstr "Fyrde plegan"
 #: data/gui/default/window/data_manage.cfg:347
 #: data/gui/default/window/data_manage.cfg:348
 #: data/gui/default/window/edit_label.cfg:140
+#: data/gui/default/window/edit_text.cfg:116
 #: data/gui/default/window/editor_edit_label.cfg:177
 #: data/gui/default/window/editor_set_starting_position.cfg:162
 #: data/gui/default/window/editor_settings.cfg:252
@@ -1531,7 +1532,6 @@ msgstr "Fyrde plegan"
 #: data/gui/default/window/mp_depcheck_select_new.cfg:132
 #: data/gui/default/window/mp_login.cfg:246
 #: data/gui/default/window/mp_method_selection.cfg:211
-#: data/gui/default/window/rename_unit.cfg:119
 #: data/gui/default/window/simple_item_selector.cfg:145
 #: data/gui/default/window/unit_create.cfg:198
 #: data/gui/default/window/unit_create.cfg:199
@@ -1689,7 +1689,7 @@ msgstr "Cinnan"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:35 src/hotkeys.cpp:149
+#: data/gui/default/window/editor_new_map.cfg:35 src/hotkeys.cpp:151
 msgid "New Map"
 msgstr "Niƿu Landcarte"
 
@@ -1714,7 +1714,7 @@ msgstr "Gamen Macian"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:35 src/hotkeys.cpp:203
+#: data/gui/default/window/editor_resize_map.cfg:35 src/hotkeys.cpp:208
 msgid "Resize Map"
 msgstr ""
 
@@ -1765,7 +1765,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_settings.cfg:35 src/hotkeys.cpp:147
+#: data/gui/default/window/editor_settings.cfg:35 src/hotkeys.cpp:149
 msgid "Editor Settings"
 msgstr "Adihtendes Costas"
 
@@ -1822,7 +1822,6 @@ msgstr ""
 #: data/gui/default/window/game_save.cfg:72
 #: data/gui/default/window/game_save_message.cfg:93
 #: data/gui/default/window/game_save_oos.cfg:93
-#: data/gui/default/window/rename_unit.cfg:71
 msgid "Name:"
 msgstr "Nama:"
 
@@ -1882,8 +1881,8 @@ msgstr ""
 #. [grid]
 #: data/gui/default/window/formula_debugger.cfg:234
 #: data/gui/default/window/lobby_main.cfg:660
-#: data/gui/default/window/title_screen.cfg:265 src/hotkeys.cpp:876
-#: src/hotkeys.cpp:1226
+#: data/gui/default/window/title_screen.cfg:265 src/hotkeys.cpp:883
+#: src/hotkeys.cpp:1233
 msgid "Quit"
 msgstr "Læfan"
 
@@ -2554,12 +2553,6 @@ msgstr ""
 #: data/gui/default/window/mp_server_list.cfg:217
 msgid "Select"
 msgstr "Ceosan"
-
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [label]: id=title
-#: data/gui/default/window/rename_unit.cfg:42 src/hotkeys.cpp:87
-msgid "Rename Unit"
-msgstr "Ƿihte Eftnemnan"
 
 #. [button]: id=help
 #: data/gui/default/window/title_screen.cfg:180
@@ -3370,7 +3363,7 @@ msgstr "Æteacan Unonstellan"
 
 #: src/gui/dialogs/addon_list.cpp:256
 #: src/gui/dialogs/network_transmission.cpp:54
-#: src/gui/dialogs/network_transmission.cpp:56 src/hotkeys.cpp:1183
+#: src/gui/dialogs/network_transmission.cpp:56 src/hotkeys.cpp:1190
 msgid "unit_byte^B"
 msgstr ""
 
@@ -3667,7 +3660,7 @@ msgstr ""
 msgid "Toggle Full Screen"
 msgstr ""
 
-#: src/hotkeys.cpp:83 src/hotkeys.cpp:1177
+#: src/hotkeys.cpp:83 src/hotkeys.cpp:1184
 msgid "Screenshot"
 msgstr ""
 
@@ -3683,6 +3676,10 @@ msgstr ""
 msgid "Unit Description"
 msgstr ""
 
+#: src/hotkeys.cpp:87
+msgid "Rename Unit"
+msgstr "Ƿihte Eftnemnan"
+
 #: src/hotkeys.cpp:88
 #, fuzzy
 #| msgid "Next Unit"
@@ -3693,7 +3690,7 @@ msgstr "Niehst Ƿiht"
 msgid "Save Replay"
 msgstr ""
 
-#: src/hotkeys.cpp:92 src/hotkeys.cpp:151
+#: src/hotkeys.cpp:92 src/hotkeys.cpp:153
 msgid "Save Map"
 msgstr ""
 
@@ -3870,479 +3867,495 @@ msgstr "Landcartan Tynan"
 msgid "Switch Map"
 msgstr ""
 
-#: src/hotkeys.cpp:148
-msgid "Partial Undo"
+#: src/hotkeys.cpp:147
+msgid "Switch Area"
 msgstr ""
 
 #: src/hotkeys.cpp:150
-msgid "Load Map"
+msgid "Partial Undo"
 msgstr ""
 
 #: src/hotkeys.cpp:152
-msgid "Save Map As"
-msgstr ""
-
-#: src/hotkeys.cpp:153
-msgid "Save All Maps"
+msgid "Load Map"
 msgstr ""
 
 #: src/hotkeys.cpp:154
-msgid "Revert All Changes"
+msgid "Save Map As"
 msgstr ""
 
 #: src/hotkeys.cpp:155
-msgid "Map Information"
+msgid "Save All Maps"
 msgstr ""
 
 #: src/hotkeys.cpp:156
-msgid "Add New Side"
+msgid "Revert All Changes"
 msgstr ""
 
 #: src/hotkeys.cpp:157
-msgid "Switch Side"
+msgid "Map Information"
 msgstr ""
 
 #: src/hotkeys.cpp:158
-msgid "Swap Foreground/Background Terrains"
+msgid "Add New Side"
 msgstr ""
 
 #: src/hotkeys.cpp:159
-msgid "Change Palette Group"
+msgid "Switch Side"
 msgstr ""
 
 #: src/hotkeys.cpp:160
-msgid "Scroll Palette Left"
+msgid "Swap Foreground/Background Terrains"
 msgstr ""
 
 #: src/hotkeys.cpp:161
+msgid "Change Palette Group"
+msgstr ""
+
+#: src/hotkeys.cpp:162
+msgid "Scroll Palette Left"
+msgstr ""
+
+#: src/hotkeys.cpp:163
 msgid "Scroll Palette Right"
 msgstr ""
 
-#: src/hotkeys.cpp:164
+#: src/hotkeys.cpp:166
 msgid "Next Tool"
 msgstr "Niehst Tol"
 
-#: src/hotkeys.cpp:166
+#: src/hotkeys.cpp:168
 msgid "Paint Tool"
 msgstr "Metingtol"
 
-#: src/hotkeys.cpp:166 src/hotkeys.cpp:167
+#: src/hotkeys.cpp:168 src/hotkeys.cpp:169
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
 
-#: src/hotkeys.cpp:167
+#: src/hotkeys.cpp:169
 msgid "Fill Tool"
 msgstr "Fyllingtol"
 
-#: src/hotkeys.cpp:168
+#: src/hotkeys.cpp:170
 msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
 msgstr ""
 
-#: src/hotkeys.cpp:168
+#: src/hotkeys.cpp:170
 msgid "Selection Tool"
 msgstr "Ceosungtol"
 
-#: src/hotkeys.cpp:169
+#: src/hotkeys.cpp:171
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
 
-#: src/hotkeys.cpp:169
+#: src/hotkeys.cpp:171
 msgid "Starting Positions Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:170
+#: src/hotkeys.cpp:172
 #, fuzzy
 #| msgid "Fill Tool"
 msgid "Label Tool"
 msgstr "Fyllingtol"
 
-#: src/hotkeys.cpp:170
+#: src/hotkeys.cpp:172
 msgid "Left mouse button sets or drags a label, right clears."
 msgstr ""
 
-#: src/hotkeys.cpp:171
+#: src/hotkeys.cpp:173
 msgid ""
 "Left mouse button sets a new unit or moves a unit via drag and drop, right "
 "clears. Not implemented yet."
 msgstr ""
 
-#: src/hotkeys.cpp:171
+#: src/hotkeys.cpp:173
 #, fuzzy
 #| msgid "Paint Tool"
 msgid "Unit Tool"
 msgstr "Metingtol"
 
-#: src/hotkeys.cpp:172
+#: src/hotkeys.cpp:174
 #, fuzzy
 #| msgid "Next Tool"
 msgid "Item Tool"
 msgstr "Niehst Tol"
 
-#: src/hotkeys.cpp:172
+#: src/hotkeys.cpp:174
 msgid ""
 "Left mouse button sets a new item or moves it via drag and drop, right "
 "clears. Not implemented yet."
 msgstr ""
 
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:175
 msgid ""
 "Left mouse button sets or drags a sound source, right clears. Not "
 "implemented yet."
 msgstr ""
 
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:175
 msgid "Soundsource Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:174
+#: src/hotkeys.cpp:176
 msgid ""
 "Left mouse button sets the village ownership to the current side, right "
 "clears. Not implemented yet."
 msgstr ""
 
-#: src/hotkeys.cpp:174
+#: src/hotkeys.cpp:176
 #, fuzzy
 #| msgid "Village gold"
 msgid "Village Tool"
 msgstr "Þorpes gold"
 
-#: src/hotkeys.cpp:176
+#: src/hotkeys.cpp:178
 msgid "Canrecruit"
 msgstr ""
 
-#: src/hotkeys.cpp:176
+#: src/hotkeys.cpp:178
 msgid "Toggle the recruit attribute of a unit."
 msgstr ""
 
-#: src/hotkeys.cpp:177
+#: src/hotkeys.cpp:179
 msgid "Can be renamed"
 msgstr ""
 
-#: src/hotkeys.cpp:177
+#: src/hotkeys.cpp:179
 msgid "Toggle the unit being renameable."
 msgstr ""
 
-#: src/hotkeys.cpp:180
-msgid "Next Brush"
-msgstr ""
-
 #: src/hotkeys.cpp:181
-msgid "Default Brush"
+msgid "Change Unit ID"
 msgstr ""
 
 #: src/hotkeys.cpp:182
-msgid "Single Tile"
-msgstr ""
-
-#: src/hotkeys.cpp:183
-msgid "Radius One"
-msgstr ""
-
-#: src/hotkeys.cpp:184
-msgid "Radius Two"
+msgid "Loyal"
 msgstr ""
 
 #: src/hotkeys.cpp:185
-msgid "Brush NW-SE"
+msgid "Next Brush"
 msgstr ""
 
 #: src/hotkeys.cpp:186
-msgid "Brush SW-NE"
+msgid "Default Brush"
 msgstr ""
 
 #: src/hotkeys.cpp:187
+msgid "Single Tile"
+msgstr ""
+
+#: src/hotkeys.cpp:188
+msgid "Radius One"
+msgstr ""
+
+#: src/hotkeys.cpp:189
+msgid "Radius Two"
+msgstr ""
+
+#: src/hotkeys.cpp:190
+msgid "Brush NW-SE"
+msgstr ""
+
+#: src/hotkeys.cpp:191
+msgid "Brush SW-NE"
+msgstr ""
+
+#: src/hotkeys.cpp:192
 msgid "Cut"
 msgstr "Utsniðan"
 
-#: src/hotkeys.cpp:188
+#: src/hotkeys.cpp:193
 msgid "Copy"
 msgstr "Biƿritan"
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:194
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
 msgstr ""
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:194
 msgid "Paste"
 msgstr ""
 
-#: src/hotkeys.cpp:190
+#: src/hotkeys.cpp:195
 msgid "Export Selected Coordinates to System Clipboard"
 msgstr ""
 
-#: src/hotkeys.cpp:191
+#: src/hotkeys.cpp:196
 msgid "Select All"
 msgstr "Eall Ceosan"
 
-#: src/hotkeys.cpp:192
+#: src/hotkeys.cpp:197
 #, fuzzy
 msgid "Select Inverse"
 msgstr "Ceosunge Onhƿirfan"
 
-#: src/hotkeys.cpp:193
+#: src/hotkeys.cpp:198
 msgid "Select None"
 msgstr "Nane Ceosan"
 
-#: src/hotkeys.cpp:194
+#: src/hotkeys.cpp:199
 msgid "Rotate Clipboard Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:195
+#: src/hotkeys.cpp:200
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:196
+#: src/hotkeys.cpp:201
 msgid "Flip Clipboard Horizontally"
 msgstr ""
 
-#: src/hotkeys.cpp:197
+#: src/hotkeys.cpp:202
 msgid "Flip Clipboard Vertically"
 msgstr ""
 
-#: src/hotkeys.cpp:198
+#: src/hotkeys.cpp:203
 msgid "Rotate Selection"
 msgstr "Ceosunge Turnian"
 
-#: src/hotkeys.cpp:199
+#: src/hotkeys.cpp:204
 msgid "Flip Selection"
 msgstr ""
 
-#: src/hotkeys.cpp:200
+#: src/hotkeys.cpp:205
 msgid "Fill Selection"
 msgstr "Ceosunge Fyllan"
 
-#: src/hotkeys.cpp:201
+#: src/hotkeys.cpp:206
 #, fuzzy
 msgid "Generate Tiles In Selection"
 msgstr "Tigelan On Ceosunge Cinnan"
 
-#: src/hotkeys.cpp:202
+#: src/hotkeys.cpp:207
 msgid "Randomize Tiles In Selection"
 msgstr ""
 
-#: src/hotkeys.cpp:204
+#: src/hotkeys.cpp:209
 msgid "Rotate Map"
 msgstr "Landcartan Turnian"
 
-#: src/hotkeys.cpp:205
+#: src/hotkeys.cpp:210
 msgid "Generate Map"
 msgstr "Landcartan Cinnan"
 
-#: src/hotkeys.cpp:206
+#: src/hotkeys.cpp:211
 msgid "Apply a Mask"
 msgstr ""
 
-#: src/hotkeys.cpp:207
+#: src/hotkeys.cpp:212
 msgid "Create Mask"
 msgstr ""
 
-#: src/hotkeys.cpp:208
+#: src/hotkeys.cpp:213
 msgid "Refresh Display"
 msgstr ""
 
-#: src/hotkeys.cpp:209
+#: src/hotkeys.cpp:214
 msgid "Update Terrain Transitions"
 msgstr ""
 
-#: src/hotkeys.cpp:211
+#: src/hotkeys.cpp:216
 msgid "Toggle Terrain Transition Update"
 msgstr ""
 
-#: src/hotkeys.cpp:212
+#: src/hotkeys.cpp:217
 msgid "Auto-update Terrain Transitions"
 msgstr ""
 
-#: src/hotkeys.cpp:214
+#: src/hotkeys.cpp:219
 msgid "Auto-update Terrain Transitions: No"
 msgstr ""
 
-#: src/hotkeys.cpp:215
+#: src/hotkeys.cpp:220
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr ""
 
-#: src/hotkeys.cpp:217
+#: src/hotkeys.cpp:222
 msgid "Refresh Image Cache"
 msgstr ""
 
-#: src/hotkeys.cpp:218
+#: src/hotkeys.cpp:223
 msgid "Draw Hex Coordinates"
 msgstr ""
 
-#: src/hotkeys.cpp:219
+#: src/hotkeys.cpp:224
 msgid "Draw Terrain Codes"
 msgstr ""
 
-#: src/hotkeys.cpp:221
+#: src/hotkeys.cpp:226
+msgid "Define (Time) Area"
+msgstr ""
+
+#: src/hotkeys.cpp:228
 msgid "Delay Shroud Updates"
 msgstr ""
 
-#: src/hotkeys.cpp:222
+#: src/hotkeys.cpp:229
 msgid "Update Shroud Now"
 msgstr ""
 
-#: src/hotkeys.cpp:223
+#: src/hotkeys.cpp:230
 msgid "Continue Move"
 msgstr ""
 
-#: src/hotkeys.cpp:224
+#: src/hotkeys.cpp:231
 msgid "Find Label or Unit"
 msgstr ""
 
-#: src/hotkeys.cpp:225
+#: src/hotkeys.cpp:232
 msgid "Speak to Ally"
 msgstr ""
 
-#: src/hotkeys.cpp:226
+#: src/hotkeys.cpp:233
 msgid "Speak to All"
 msgstr "Sprecan Eallum"
 
-#: src/hotkeys.cpp:228
+#: src/hotkeys.cpp:235
 msgid "View Chat Log"
 msgstr ""
 
-#: src/hotkeys.cpp:229
+#: src/hotkeys.cpp:236
 msgid "Change Language"
 msgstr "Spræce Ƿendan"
 
-#: src/hotkeys.cpp:230
+#: src/hotkeys.cpp:237
 msgid "Enter User Command"
 msgstr ""
 
-#: src/hotkeys.cpp:231
+#: src/hotkeys.cpp:238
 msgid "Custom Command"
 msgstr ""
 
-#: src/hotkeys.cpp:232
+#: src/hotkeys.cpp:239
 msgid "Run Formula"
 msgstr ""
 
-#: src/hotkeys.cpp:233
+#: src/hotkeys.cpp:240
 msgid "Clear Messages"
 msgstr ""
 
-#: src/hotkeys.cpp:234
+#: src/hotkeys.cpp:241
 msgid "Refresh WML"
 msgstr ""
 
-#: src/hotkeys.cpp:235
+#: src/hotkeys.cpp:242
 msgid "Next Tip of the Day"
 msgstr ""
 
-#: src/hotkeys.cpp:236
+#: src/hotkeys.cpp:243
 msgid "Previous Tip of the Day"
 msgstr ""
 
-#: src/hotkeys.cpp:237
+#: src/hotkeys.cpp:244
 msgid "Start Tutorial"
 msgstr ""
 
-#: src/hotkeys.cpp:238
+#: src/hotkeys.cpp:245
 msgid "Start Campaign"
 msgstr "Fyrde Beginnan"
 
-#: src/hotkeys.cpp:239
+#: src/hotkeys.cpp:246
 msgid "Start Multiplayer Game"
 msgstr ""
 
-#: src/hotkeys.cpp:240
+#: src/hotkeys.cpp:247
 msgid "Manage Add-ons"
 msgstr ""
 
-#: src/hotkeys.cpp:241
+#: src/hotkeys.cpp:248
 msgid "Start Editor"
 msgstr "Adihtend Styrtan"
 
-#: src/hotkeys.cpp:242
+#: src/hotkeys.cpp:249
 msgid "Show Credits"
 msgstr ""
 
-#: src/hotkeys.cpp:243
+#: src/hotkeys.cpp:250
 msgid "Show Helptip"
 msgstr ""
 
-#: src/hotkeys.cpp:246
+#: src/hotkeys.cpp:253
 msgid "Unrecognized Command"
 msgstr ""
 
-#: src/hotkeys.cpp:379 src/hotkeys.cpp:382
+#: src/hotkeys.cpp:386 src/hotkeys.cpp:389
 msgid "Button"
 msgstr ""
 
-#: src/hotkeys.cpp:379
+#: src/hotkeys.cpp:386
 msgid "Mouse"
 msgstr ""
 
-#: src/hotkeys.cpp:382 src/hotkeys.cpp:418
+#: src/hotkeys.cpp:389 src/hotkeys.cpp:425
 msgid "Joystick"
 msgstr ""
 
-#: src/hotkeys.cpp:388
+#: src/hotkeys.cpp:395
 msgid "Centered"
 msgstr ""
 
-#: src/hotkeys.cpp:391
+#: src/hotkeys.cpp:398
 msgid "Up"
 msgstr ""
 
-#: src/hotkeys.cpp:394
+#: src/hotkeys.cpp:401
 #, fuzzy
 #| msgid "Height:"
 msgid "Right"
 msgstr "Hiehðu:"
 
-#: src/hotkeys.cpp:397
+#: src/hotkeys.cpp:404
 msgid "Down"
 msgstr ""
 
-#: src/hotkeys.cpp:400
+#: src/hotkeys.cpp:407
 msgid "Left"
 msgstr ""
 
-#: src/hotkeys.cpp:403
+#: src/hotkeys.cpp:410
 msgid "RightUp"
 msgstr ""
 
-#: src/hotkeys.cpp:406
+#: src/hotkeys.cpp:413
 msgid "RightDown"
 msgstr ""
 
-#: src/hotkeys.cpp:409
+#: src/hotkeys.cpp:416
 msgid "LeftUp"
 msgstr ""
 
-#: src/hotkeys.cpp:412
+#: src/hotkeys.cpp:419
 msgid "LeftDown"
 msgstr ""
 
-#: src/hotkeys.cpp:415
+#: src/hotkeys.cpp:422
 #, fuzzy
 #| msgid "Unknown era"
 msgid "Unknown"
 msgstr "Uncuþ ieldu"
 
-#: src/hotkeys.cpp:418
+#: src/hotkeys.cpp:425
 #, fuzzy
 #| msgid "Hut"
 msgid "Hat"
 msgstr "Hulc"
 
-#: src/hotkeys.cpp:877 src/hotkeys.cpp:1227
+#: src/hotkeys.cpp:884 src/hotkeys.cpp:1234
 msgid "Do you really want to quit?"
 msgstr ""
 
-#: src/hotkeys.cpp:1177
+#: src/hotkeys.cpp:1184
 msgid "Map-Screenshot"
 msgstr ""
 
-#: src/hotkeys.cpp:1184 src/hotkeys.cpp:1186
+#: src/hotkeys.cpp:1191 src/hotkeys.cpp:1193
 msgid "Screenshot done"
 msgstr ""
 
