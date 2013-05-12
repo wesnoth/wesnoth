@@ -1393,7 +1393,7 @@ std::vector<std::string> command_executor::get_menu_images(display& disp, const 
 		} else {
 			std::string desc = hotkey::get_description(item);
 			if (hk == HOTKEY_ENDTURN) {
-				const theme::menu *b = disp.get_theme().get_menu_item("button-endturn");
+				const theme::action *b = disp.get_theme().get_action_item("button-endturn");
 				if (b) {
 					desc = b->title();
 				}

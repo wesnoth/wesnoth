@@ -891,6 +891,13 @@ const theme::menu *theme::get_menu_item(const std::string &key) const
 	return NULL;
 }
 
+const theme::action *theme::get_action_item(const std::string &key) const
+{
+	BOOST_FOREACH(const theme::action &a, actions_) {
+		if (a.get_id() == key) return &a;
+	}
+	return NULL;
+}
 
 theme::object* theme::refresh_title(const std::string& id, const std::string& new_title){
 

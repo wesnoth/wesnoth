@@ -261,6 +261,7 @@ public:
 
 	const status_item* get_status_item(const std::string& item) const;
 	const menu *get_menu_item(const std::string &key) const;
+	const action* get_action_item(const std::string &key) const;
 
 	const SDL_Rect& main_map_location(const SDL_Rect& screen) const
 		{ return main_map_.location(screen); }
