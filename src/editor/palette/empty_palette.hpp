@@ -30,7 +30,7 @@ public:
 
 	empty_palette(display& gui) :
 		common_palette(gui),
-		gui_(gui), empty_() {};
+		/*gui_(gui),*/ empty_() {};
 
 	//event handling
 	virtual bool mouse_click() { return false;};
@@ -46,13 +46,12 @@ public:
 	//drawing
 	virtual void adjust_size(const SDL_Rect& /*target*/) {};
 	virtual void draw() {
-		//TODO
 		/*
-		gui::button* upscroll_button = gui_.find_button("upscroll-button-editor");
+		gui::button* upscroll_button = gui_.find_action_button("upscroll-button-editor");
 		upscroll_button->hide(true);
-		gui::button* downscroll_button = gui_.find_button("downscroll-button-editor");
+		gui::button* downscroll_button = gui_.find_action_button("downscroll-button-editor");
 		downscroll_button->hide(true);
-		gui::button* palette_menu_button = gui_.find_button("menu-editor-terrain");
+		gui::button* palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
 		palette_menu_button->hide(true);
 		*/
 	};
@@ -77,7 +76,7 @@ public:
 	virtual void swap() {};
 
 private:
-	display& gui_;
+	// display& gui_;
 	std::vector<item_group> empty_;
 };
 
