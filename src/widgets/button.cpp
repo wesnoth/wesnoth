@@ -97,7 +97,7 @@ void button::load_images() {
 	surface pressed_image(image::get_image(button_image_name_ + "-pressed.png"));
 	surface active_image(image::get_image(button_image_name_ + "-active.png"));
 	surface disabled_image;
-	if (file_exists("images/" + button_image_name_ + "-disabled.png"))
+	if (file_exists(game_config::path + "/images/" + button_image_name_ + "-disabled.png"))
 		disabled_image.assign((image::get_image(button_image_name_ + "-disabled.png")));
 	surface pressed_disabled_image, pressed_active_image, touched_image;
 
@@ -107,11 +107,11 @@ void button::load_images() {
 	if (!button_overlay_image_name_.empty()) {
 		overlayImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + ".png"));
 		overlayPressedImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-pressed.png"));
-		if (file_exists("images/" + button_overlay_image_name_ + size_postfix + "-active.png"))
+		if (file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-active.png"))
 			overlayActiveImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-active.png"));
-		if (file_exists("images/" + button_overlay_image_name_ + size_postfix + "-pressed-disabled.png"))
+		if (file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-pressed-disabled.png"))
 			overlayPressedDisabledImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-pressed-disabled.png"));
-		if (file_exists("images/" + button_overlay_image_name_ + "_30-disabled.png"))
+		if (file_exists(game_config::path + "/images/" + button_overlay_image_name_ + "_30-disabled.png"))
 			overlayDisabledImage_.assign(image::get_image(button_overlay_image_name_ + "_30-disabled.png"));
 		if (overlayDisabledImage_.null())
 				overlayDisabledImage_ = blend_surface(greyscale_image(overlayImage_),

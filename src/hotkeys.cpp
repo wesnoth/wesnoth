@@ -1254,7 +1254,7 @@ void command_executor::set_button_state(display& disp) {
 
 			hotkey::HOTKEY_COMMAND command_id = hotkey::get_id(command);
 			std::string tooltip = action.tooltip();
-			if (file_exists("images/icons/action/" + command + "_30.png" ))
+			if (file_exists(game_config::path + "/images/icons/action/" + command + "_30.png" ))
 				button->set_overlay("icons/action/" + command);
 			if (!tooltip.empty())
 				button->set_tooltip_string(tooltip);
@@ -1349,7 +1349,7 @@ std::string command_executor::get_menu_image(const std::string& command, int ind
 	const hotkey::HOTKEY_COMMAND hk = hotkey::get_id(command);
 	const hotkey::ACTION_STATE state = get_action_state(hk, index);
 
-	if (file_exists("images/" + base_image_name)) {
+	if (file_exists(game_config::path + "/images/" + base_image_name)) {
 		switch (state) {
 			case ACTION_ON:
 			case ACTION_SELECTED:
