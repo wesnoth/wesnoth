@@ -240,8 +240,8 @@ engine_lua::engine_lua( readonly_context &context, const config &cfg )
 {
 	name_ = "lua";
 	config data(cfg.child_or_empty("data"));
-	
-	if (lua_ai_context_ && !data.empty()) { // The context might be NULL if the config contains errors
+
+	if (lua_ai_context_) { // The context might be NULL if the config contains errors
 		lua_ai_context_->set_persistent_data(data);
 	}
 }
@@ -251,7 +251,7 @@ std::string engine_lua::get_engine_code(const config &cfg) const
 	if (cfg.has_attribute("code")) {
 		return cfg["code"].str();
 	}
-	// If there is no engine defined we create a dummy engine	
+	// If there is no engine defined we create a dummy engine
 	std::string code = "local ai = ... local m_ai = wesnoth.require(\"ai/lua/dummy_engine_lua.lua\") return m_ai.get_ai(ai)";
 	return code;
 }
@@ -368,11 +368,7 @@ config engine_lua::to_config() const
 	config cfg = engine::to_config();
 
 	cfg["id"] = get_id();
-	
-	// Some AI's have no engine code
-	if (!this->code_.empty()) {
-		cfg["code"] = this->code_;
-	}
+	cfg["code"] = this->code_;
 
 	if (lua_ai_context_) {
 		config data = config();
