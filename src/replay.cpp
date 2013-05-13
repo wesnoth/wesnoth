@@ -125,6 +125,22 @@ static void verify(const unit_map& units, const config& cfg) {
 	LOG_REPLAY << "verification passed\n";
 }
 
+static time_t get_time(const config &speak)
+{
+	time_t time;
+	if (!speak["time"].empty())
+	{
+		std::stringstream ss(speak["time"].str());
+		ss >> time;
+	}
+	else
+	{
+		//fallback in case sender uses wesnoth that doesn't send timestamps
+		time = ::time(NULL);
+	}
+	return time;
+}
+
 // FIXME: this one now has to be assigned with set_random_generator
 // from play_level or similar.  We should surely hunt direct
 // references to it from this very file and move it out of here.
@@ -149,6 +165,7 @@ chat_msg::chat_msg(const config &cfg)
 	} else {
 		color_ = team::get_side_highlight_pango(side-1);
 	}
+	time_ = get_time(cfg);
 	/*
 	} else if (side==1) {
 		color_ = "red";
@@ -937,7 +954,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			get_replay_source().add_chat_message_location();
 			if (!get_replay_source().is_skipping() || is_whisper) {
 				int side = child["side"];
-				resources::screen->add_chat_message(time(NULL), speaker_name, side, message,
+				resources::screen->add_chat_message(get_time(child), speaker_name, side, message,
 						(team_name.empty() ? events::chat_handler::MESSAGE_PUBLIC
 						: events::chat_handler::MESSAGE_PRIVATE),
 						preferences::message_bell());
