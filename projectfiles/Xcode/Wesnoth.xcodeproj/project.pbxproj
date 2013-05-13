@@ -20,6 +20,7 @@
 		4944F4191354FBCD0027E614 /* drawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F4181354FBCD0027E614 /* drawing.cpp */; };
 		4944F41B1354FBFF0027E614 /* teleport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F41A1354FBFF0027E614 /* teleport.cpp */; };
 		49478714172FF6F8002B7ABA /* tristate_button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49478712172FF6F8002B7ABA /* tristate_button.cpp */; };
+		497455CE174066A800E89E30 /* edit_text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 497455CC174066A800E89E30 /* edit_text.cpp */; };
 		49DA0D1E13550E1E000AFEBD /* mp_change_control.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49DA0D1D13550E1E000AFEBD /* mp_change_control.cpp */; };
 		49DA0D2E13550E9B000AFEBD /* iterator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49DA0D2B13550E9B000AFEBD /* iterator.cpp */; };
 		49DA0D2F13550E9B000AFEBD /* walker_grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49DA0D2C13550E9B000AFEBD /* walker_grid.cpp */; };
@@ -892,7 +893,6 @@
 		B5FCE9371104C2A50081F1DF /* toggle_panel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5FCE9091104C2A50081F1DF /* toggle_panel.cpp */; };
 		B5FCE9391104C2A50081F1DF /* vertical_scrollbar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5FCE90D1104C2A50081F1DF /* vertical_scrollbar.cpp */; };
 		B5FCE93A1104C2A50081F1DF /* window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5FCE90F1104C2A50081F1DF /* window.cpp */; };
-		F40C04851706613100B4DA68 /* rename_unit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40C04811706613100B4DA68 /* rename_unit.cpp */; };
 		F419A1F414E21246002F9ADC /* game_end_exceptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F419A1F314E21246002F9ADC /* game_end_exceptions.cpp */; };
 		F419A2C314F5BCFE002F9ADC /* info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F419A2C114F5BCFE002F9ADC /* info.cpp */; };
 		F419A31214F8868A002F9ADC /* manager_ui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F419A31014F8868A002F9ADC /* manager_ui.cpp */; };
@@ -1025,6 +1025,8 @@
 		4944F41A1354FBFF0027E614 /* teleport.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = teleport.cpp; sourceTree = "<group>"; };
 		49478712172FF6F8002B7ABA /* tristate_button.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tristate_button.cpp; sourceTree = "<group>"; };
 		49478713172FF6F8002B7ABA /* tristate_button.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tristate_button.hpp; sourceTree = "<group>"; };
+		497455CC174066A800E89E30 /* edit_text.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = edit_text.cpp; sourceTree = "<group>"; };
+		497455CD174066A800E89E30 /* edit_text.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = edit_text.hpp; sourceTree = "<group>"; };
 		49DA0D1D13550E1E000AFEBD /* mp_change_control.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp_change_control.cpp; sourceTree = "<group>"; };
 		49DA0D2B13550E9B000AFEBD /* iterator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = iterator.cpp; path = iterator/iterator.cpp; sourceTree = "<group>"; };
 		49DA0D2C13550E9B000AFEBD /* walker_grid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = walker_grid.cpp; path = iterator/walker_grid.cpp; sourceTree = "<group>"; };
@@ -1970,8 +1972,6 @@
 		B5FCE90E1104C2A50081F1DF /* vertical_scrollbar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = vertical_scrollbar.hpp; sourceTree = "<group>"; };
 		B5FCE90F1104C2A50081F1DF /* window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = window.cpp; sourceTree = "<group>"; };
 		B5FCE9101104C2A50081F1DF /* window.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = window.hpp; sourceTree = "<group>"; };
-		F40C04801706613100B4DA68 /* rename_unit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rename_unit.hpp; sourceTree = "<group>"; };
-		F40C04811706613100B4DA68 /* rename_unit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rename_unit.cpp; sourceTree = "<group>"; };
 		F40C04821706613100B4DA68 /* tip.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tip.hpp; sourceTree = "<group>"; };
 		F40C04831706613100B4DA68 /* popup.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = popup.hpp; sourceTree = "<group>"; };
 		F40C04841706613100B4DA68 /* mp_login.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mp_login.hpp; sourceTree = "<group>"; };
@@ -3314,8 +3314,8 @@
 		B5A9BCA20ECA805A002BE442 /* dialogs */ = {
 			isa = PBXGroup;
 			children = (
-				F40C04801706613100B4DA68 /* rename_unit.hpp */,
-				F40C04811706613100B4DA68 /* rename_unit.cpp */,
+				497455CC174066A800E89E30 /* edit_text.cpp */,
+				497455CD174066A800E89E30 /* edit_text.hpp */,
 				F40C04821706613100B4DA68 /* tip.hpp */,
 				F40C04831706613100B4DA68 /* popup.hpp */,
 				F40C04841706613100B4DA68 /* mp_login.hpp */,
@@ -4237,9 +4237,9 @@
 				F4D043DB16167BF6007566E8 /* mp_depcheck_confirm_change.cpp in Sources */,
 				F4D043DC16167BF6007566E8 /* mp_create_game_choose_mods.cpp in Sources */,
 				F468E6AD16DF872200A31A5A /* movetype.cpp in Sources */,
-				F40C04851706613100B4DA68 /* rename_unit.cpp in Sources */,
 				49478714172FF6F8002B7ABA /* tristate_button.cpp in Sources */,
 				49E84DC217384EF800A4F376 /* leader_scroll_dialog.cpp in Sources */,
+				497455CE174066A800E89E30 /* edit_text.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4843,7 +4843,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = Wesnoth;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.4u.sdk";
+				SDKROOT = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -4899,10 +4899,7 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
+				ARCHS = "$(NATIVE_ARCH)";
 				ENABLE_OPENMP_SUPPORT = NO;
 				FRAMEWORK_SEARCH_PATHS = ./lib;
 				GCC_DYNAMIC_NO_PIC = YES;
@@ -4931,7 +4928,7 @@
 					"-lbz2",
 				);
 				PREBINDING = NO;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.4u.sdk";
+				SDKROOT = "";
 			};
 			name = Release;
 		};
