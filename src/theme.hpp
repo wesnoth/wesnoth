@@ -208,9 +208,12 @@ public:
 
 		const std::string& overlay() const { return overlay_; }
 
+		bool black_line() const { return black_line_; }
+
 		void set_title(const std::string& new_title) { title_ = new_title; }
 	private:
 		std::string title_, tooltip_, image_, overlay_;
+		bool black_line_;
 	};
 
 	class menu : public object

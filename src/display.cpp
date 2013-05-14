@@ -818,7 +818,7 @@ void display::create_buttons()
 	DBG_DP << "creating sliders...\n";
 	const std::vector<theme::slider>& sliders = theme_.sliders();
 	for(std::vector<theme::slider>::const_iterator i = sliders.begin(); i != sliders.end(); ++i) {
-		gui::slider s(screen_, i->image());
+		gui::slider s(screen_, i->image(), i->black_line());
 		DBG_DP << "drawing button " << i->get_id() << "\n";
 		s.set_id(i->get_id());
 		const SDL_Rect& loc = i->location(screen_area());

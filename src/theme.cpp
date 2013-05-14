@@ -504,12 +504,14 @@ theme::slider::slider() :
 		title_(),
 		tooltip_(),
 		image_(),
-		overlay_()
+		overlay_(),
+		black_line_(false)
 {}
 theme::slider::slider(const config &cfg):
 	object(cfg),
 	title_(cfg["title"].str() + cfg["title_literal"].str()),
-	tooltip_(cfg["tooltip"]), image_(cfg["image"]), overlay_(cfg["overlay"])
+	tooltip_(cfg["tooltip"]), image_(cfg["image"]), overlay_(cfg["overlay"]),
+	black_line_(cfg["black_line"].to_bool(false))
 {}
 
 theme::menu::menu() :
