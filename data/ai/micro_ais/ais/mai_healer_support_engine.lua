@@ -139,6 +139,13 @@ return {
             }
             local enemy_attack_map = BC.get_attack_map(enemies)
             --AH.put_labels(enemy_attack_map.units)
+            
+            local avoid_locs = ai.get_avoid()
+            local avoid_map = LS.create()
+
+            for i,l in ipairs(avoid_locs) do
+                avoid_map:insert(l.x, l.y)
+            end
 
             -- Put units back out there
             for i,u in ipairs(units_MP) do wesnoth.put_unit(u.x, u.y, u) end
@@ -159,15 +166,17 @@ return {
 
                     -- Also, hex must be unoccupied by another unit, of course
                     local unit_in_way = wesnoth.get_unit(r[1], r[2])
-                    if (not unit_in_way) or ((unit_in_way.x == h.x) and (unit_in_way.y == h.y)) then
-                        for k,u in ipairs(healees) do
-                            if (H.distance_between(u.x, u.y, r[1], r[2]) == 1) then
-                                -- !!!!!!! These ratings have to be positive or the method doesn't work !!!!!!!!!
-                                rating = rating + u.max_hitpoints - u.hitpoints
-
-                                -- If injured_units_only = true then don't count units with full HP
-                                if (u.max_hitpoints - u.hitpoints > 0) or (not cfg.injured_units_only) then
-                                    rating = rating + 15 * (enemy_attack_map.units:get(u.x, u.y) or 0)
+                    if (not avoid_map:get(r[1], r[2])) then
+                        if (not unit_in_way) or ((unit_in_way.x == h.x) and (unit_in_way.y == h.y)) then
+                            for k,u in ipairs(healees) do
+                                if (H.distance_between(u.x, u.y, r[1], r[2]) == 1) then
+                                    -- !!!!!!! These ratings have to be positive or the method doesn't work !!!!!!!!!
+                                    rating = rating + u.max_hitpoints - u.hitpoints
+    
+                                    -- If injured_units_only = true then don't count units with full HP
+                                    if (u.max_hitpoints - u.hitpoints > 0) or (not cfg.injured_units_only) then
+                                        rating = rating + 15 * (enemy_attack_map.units:get(u.x, u.y) or 0)
+                                    end
                                 end
                             end
                         end
