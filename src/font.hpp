@@ -93,7 +93,7 @@ int line_width(const std::string& line, int font_size, int style=TTF_STYLE_NORMA
 SDL_Rect line_size(const std::string& line, int font_size, int style=TTF_STYLE_NORMAL);
 
 /**
- * If the text excedes the specified max width, end it with an ellipsis (...)
+ * If the text exceeds the specified max width, end it with an ellipsis (...)
  */
 std::string make_text_ellipsis(const std::string& text, int font_size, int max_width,
 	int style = TTF_STYLE_NORMAL);
