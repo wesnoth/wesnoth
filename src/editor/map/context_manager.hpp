@@ -121,6 +121,9 @@ public:
 	/** Menu expanding for the map's defined areas */
 	void expand_areas_menu(std::vector<std::string>& items);
 
+	/** Menu expanding for the map's defined areas */
+	void expand_time_menu(std::vector<std::string>& items);
+
 	/** Display a load map dialog and process user input. */
 	void load_map_dialog(bool force_same_context = false);
 
@@ -145,10 +148,10 @@ public:
 		return *map_contexts_[current_context_index_];
 	}
 
-private:
-
 	/** Set the default dir (where the filebrowser is pointing at when there is no map file opened) */
 	void set_default_dir(const std::string& str);
+
+private:
 
 	/**
 	 * Replace the current map context and refresh accordingly

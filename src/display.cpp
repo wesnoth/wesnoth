@@ -848,6 +848,9 @@ void display::create_buttons()
 	DBG_DP << "creating menu buttons...\n";
 	const std::vector<theme::menu>& buttons = theme_.menus();
 	for(std::vector<theme::menu>::const_iterator i = buttons.begin(); i != buttons.end(); ++i) {
+
+		if (!i->is_button()) continue;
+
 		gui::button b(screen_, i->title(), gui::button::TYPE_TURBO, i->image(),
 				gui::button::DEFAULT_SPACE, true, i->overlay());
 		DBG_DP << "drawing button " << i->get_id() << "\n";
@@ -1649,7 +1652,7 @@ const theme::menu* display::menu_pressed()
 				assert(false);
 				return NULL;
 			}
-			return &theme_.menus()[index];
+			return theme_.get_menu_item(i->id());
 		}
 	}
 

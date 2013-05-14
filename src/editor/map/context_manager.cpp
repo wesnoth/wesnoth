@@ -37,6 +37,8 @@
 
 #include "terrain_translation.hpp"
 
+#include "wml_separators.hpp"
+
 namespace {
 static std::vector<std::string> saved_windows_;
 }
@@ -269,6 +271,36 @@ void context_manager::expand_sides_menu(std::vector<std::string>& items)
                        break;
                }
        }
+}
+
+void context_manager::expand_time_menu(std::vector<std::string>& items)
+{
+	for (unsigned int i = 0; i < items.size(); ++i) {
+		if (items[i] == "editor-switch-time") {
+			items.erase(items.begin() + i);
+			std::vector<std::string> contexts;
+
+			tod_manager* tod_m = get_map_context().get_time_manager();
+
+			BOOST_FOREACH(const time_of_day& time, tod_m->times()) {
+
+				//for (size_t mci = 0; mci < tod_m->times().size(); ++mci) {
+				//const time_of_day& time = tod_m->times()[mci];
+
+				std::stringstream label;
+				//  label << "[" << mci+1 << "] ";
+				if (!time.image.empty())
+					label << IMAGE_PREFIX << time.image << IMG_TEXT_SEPARATOR;
+					//<< COLUMN_SEPARATOR;
+				label << time.name;
+				//label << (time.name.empty() ? _("(New Side)") : time.name);
+				contexts.push_back(label.str());
+			}
+
+			items.insert(items.begin() + i, contexts.begin(), contexts.end());
+			break;
+		}
+	}
 }
 
 void context_manager::apply_mask_dialog()

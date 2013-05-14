@@ -89,13 +89,6 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 
 	gui().redraw_everything();
     events::raise_draw_event();
-/*  TODO enable if you can say what the purpose of the code is.
-	if (default_tool_menu != NULL) {
-		const SDL_Rect& menu_loc = default_tool_menu->location(get_display().screen_area());
-		show_menu(default_tool_menu->items(),menu_loc.x+1,menu_loc.y + menu_loc.h + 1,false);
-		return;
-	}
-*/
 }
 
 void editor_controller::init_gui()
@@ -117,6 +110,7 @@ void editor_controller::init_tods(const config& game_config)
 	BOOST_FOREACH(const config &schedule, game_config.child_range("editor_times")) {
 
 		const std::string& schedule_id = schedule["id"];
+		const std::string& schedule_name = schedule["name"];
 		if (schedule_id.empty()) {
 			ERR_ED << "Missing ID attribute in a TOD Schedule.\n";
 			continue;
@@ -125,8 +119,8 @@ void editor_controller::init_tods(const config& game_config)
 		tods_map::iterator times = tods_.find(schedule_id);
 		if (times == tods_.end()) {
 			std::pair<tods_map::iterator, bool> new_times =
-					tods_.insert(std::pair<std::string, std::vector<time_of_day> >
-			(schedule_id, std::vector<time_of_day>()));
+					tods_.insert( std::pair<std::string, std::pair<std::string, std::vector<time_of_day> > >
+			(schedule_id, std::pair<std::string, std::vector<time_of_day> >(schedule_name, std::vector<time_of_day>())) );
 			times = new_times.first;
 		} else {
 			ERR_ED << "Duplicate TOD Schedule ids.\n";
@@ -134,7 +128,7 @@ void editor_controller::init_tods(const config& game_config)
 		}
 
 		BOOST_FOREACH(const config &time, schedule.child_range("time")) {
-			times->second.push_back(time_of_day(time));
+			times->second.second.push_back(time_of_day(time));
 		}
 
 	}
@@ -224,7 +218,7 @@ void editor_controller::editor_settings_dialog()
 	}
 
 	image::color_adjustment_resetter adjust_resetter;
-	if(!gui2::teditor_settings::execute(&(gui()), tods_["default"], gui().video())) {
+	if(!gui2::teditor_settings::execute(&(gui()), tods_["test"].second, gui().video())) {
 		adjust_resetter.reset();
 	}
 	context_manager_->refresh_all();
@@ -254,6 +248,8 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 					case editor::PALETTE:
 					case editor::AREA:
 					case editor::SIDE:
+					case editor::TIME:
+					case editor::SCHEDULE:
 						return true;
 				}
 			}
@@ -283,6 +279,7 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 
 
 		case HOTKEY_STATUS_TABLE:
+		case HOTKEY_EDITOR_SWITCH_TIME:
 			return true;
 
 			// unit tool related
@@ -350,8 +347,6 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_TOOL_VILLAGE:
 			return !context_manager_->get_map_context().get_teams().empty();
 
-		//TODO
-//		case HOTKEY_EDITOR_EXPORT_SELECTION_COORDS:
 		case HOTKEY_EDITOR_AREA_DEFINE:
 		case HOTKEY_EDITOR_CUT:
 		case HOTKEY_EDITOR_COPY:
@@ -481,6 +476,12 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 		case editor::SIDE:
 			return static_cast<size_t>(index) == gui_->playing_team()
 					? ACTION_SELECTED : ACTION_DESELECTED;
+		case editor::TIME:
+			return index ==	context_manager_->get_map_context().get_time_manager()->turn() -1
+					? ACTION_SELECTED : ACTION_DESELECTED;
+		case editor::SCHEDULE:
+			//TODO
+			return ACTION_STATELESS;
 		}
 		return ACTION_ON;
 		default:
@@ -513,8 +514,7 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			case SIDE:
 				gui_->set_team(index, true);
 				gui_->set_playing_team(index);
-				//TODO
-			//	toolkit_->get_palette_manager()->draw();
+				toolkit_->get_palette_manager()->draw_contents();
 				return true;
 			case AREA:
 				//TODO store the selection for the state setting.
@@ -524,6 +524,22 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 					std::vector<map_location> locs(area.begin(), area.end());
 					context_manager_->get_map_context().select_area(index);
 					gui_->scroll_to_tiles(locs.begin(), locs.end());
+					return true;
+				}
+			case TIME:
+				{
+					tod_manager* tod = context_manager_->get_map_context().get_time_manager();
+					tod->set_turn(index +1, true);
+					tod_color col = tod->times()[index].color;
+					image::set_color_adjustment(col.r, col.g, col.b);
+					return true;
+				}
+			case SCHEDULE:
+				{
+					tod_manager* tod = context_manager_->get_map_context().get_time_manager();
+					tods_map::iterator iter = tods_.begin();
+					std::advance(iter, index);
+					tod->replace_schedule(iter->second.second);
 					return true;
 				}
 			}
@@ -552,6 +568,8 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 //			int selected = 1; //toolkit_->get_palette_manager()->active_palette().get_selected;
 //			gui2::teditor_select_palette_group::execute(selected, blah_items, gui_->video());
 		}
+			return true;
+		case HOTKEY_EDITOR_SWITCH_TIME:
 			return true;
 		case HOTKEY_EDITOR_PALETTE_UPSCROLL:
 			toolkit_->get_palette_manager()->scroll_up();
@@ -782,11 +800,14 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 
 	std::vector<std::string> items;
 	std::vector<std::string>::const_iterator i = items_arg.begin();
-	while(i != items_arg.end()) {
+	while(i != items_arg.end())
+	{
 
 		hotkey::HOTKEY_COMMAND command = hotkey::get_id(*i);
-		if (!(!can_execute_command(command)
-				|| (context_menu && !in_context_menu(command)))) {
+
+		if ( ( can_execute_command(command) 
+			&& (!context_menu || in_context_menu(command)) )
+			|| command == hotkey::HOTKEY_NULL) {
 			items.push_back(*i);
 		}
 		++i;
@@ -795,7 +816,6 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 		active_menu_ = editor::MAP;
 		context_manager_->expand_open_maps_menu(items);
 	}
-	//TODO
 	if (!items.empty() && items.front() == "editor-palette-groups") {
 		active_menu_ = editor::PALETTE;
 		toolkit_->get_palette_manager()->active_palette().expand_palette_groups_menu(items);
@@ -807,6 +827,20 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 	if (!items.empty() && items.front() == "editor-switch-area") {
 		active_menu_ = editor::AREA;
 		context_manager_->expand_areas_menu(items);
+	}
+	if (!items.empty() && items.front() == "editor-switch-time") {
+		active_menu_ = editor::TIME;
+		context_manager_->expand_time_menu(items);
+	}
+	if (!items.empty() && items.front() == "editor-assign-schedule") {
+		active_menu_ = editor::SCHEDULE;
+
+		items.erase(items.begin());
+
+		for (tods_map::iterator iter = tods_.begin();
+				iter != tods_.end(); ++iter) 	{
+			items.push_back(iter->second.first);
+		}
 	}
 
 	command_executor::show_menu(items, xloc, yloc, context_menu, gui());
@@ -856,11 +890,8 @@ void editor_controller::change_unit_id()
 
 	if(un != units.end()) {
 		std::string id = un->id();
-		if(gui2::tedit_text::execute(title, label, id, gui_->video())) {
-			//TODO we may not want a translated name here.
+		if (gui2::tedit_text::execute(title, label, id, gui_->video())) {
 			un->set_id(id);
-			//TODO
-			//gui_->invalidate_unit();
 		}
 	}
 }
@@ -879,8 +910,6 @@ void editor_controller::rename_unit()
 		if(gui2::tedit_text::execute(title, label, name, gui_->video())) {
 			//TODO we may not want a translated name here.
 			un->set_name(name);
-			//TODO
-			//gui_->invalidate_unit();
 		}
 	}
 }

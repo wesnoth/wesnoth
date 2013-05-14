@@ -514,6 +514,7 @@ theme::slider::slider(const config &cfg):
 
 theme::menu::menu() :
 	object(),
+	button_(true),
 	context_(false),
 	title_(),
 	tooltip_(),
@@ -523,7 +524,9 @@ theme::menu::menu() :
 {}
 
 theme::menu::menu(const config &cfg):
-	object(cfg), context_(cfg["is_context_menu"].to_bool()),
+	object(cfg),
+	button_(cfg["button"].to_bool(true)),
+	context_(cfg["is_context_menu"].to_bool(false)),
 	title_(cfg["title"].str() + cfg["title_literal"].str()),
 	tooltip_(cfg["tooltip"]), image_(cfg["image"]), overlay_(cfg["overlay"]),
 	items_(utils::split(cfg["items"]))

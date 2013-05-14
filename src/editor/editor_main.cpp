@@ -38,8 +38,7 @@ EXIT_STATUS start(const config& game_conf, CVideo& video, const std::string& fil
 		editor_controller editor(game_conf, video);
 		if (!filename.empty()) {
 			if (is_directory(filename)) {
-//TODO
-				//editor.set_default_dir(filename);
+				editor.context_manager_->set_default_dir(filename);
 				editor.context_manager_->load_map_dialog(true);
 			} else {
 				editor.context_manager_->load_map(filename, false);

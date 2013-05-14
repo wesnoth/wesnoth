@@ -199,6 +199,19 @@ void tod_manager::replace_schedule(const config& time_cfg)
 	currentTime_ = 0;
 }
 
+void tod_manager::replace_schedule(const std::vector<time_of_day>& schedule)
+{
+	times_.clear();
+	BOOST_FOREACH(const time_of_day& time, schedule) {
+		config cfg;
+		time.write(cfg);
+		times_.push_back(time_of_day(cfg));
+	}
+	currentTime_ = 0;
+}
+
+
+
 std::vector<std::string> tod_manager::get_area_ids() const
 {
 	std::vector<std::string> areas;
@@ -309,7 +322,8 @@ void tod_manager::set_turn(const int num, const bool increase_limit_if_needed)
 		set_number_of_turns(new_turn);
 	}
 	turn_ = new_turn;
-	resources::gamedata->get_variable("turn_number") = new_turn;
+	if (resources::gamedata)
+		resources::gamedata->get_variable("turn_number") = new_turn;
 }
 
 void tod_manager::set_new_current_times(const int new_current_turn_number)

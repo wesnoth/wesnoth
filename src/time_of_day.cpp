@@ -68,8 +68,7 @@ void time_of_day::parse_times(const config& cfg, std::vector<time_of_day>& norma
 	if(normal_times.empty())
 	{
 		// Make sure we have at least default time
-		config dummy_cfg;
-		normal_times.push_back(time_of_day(dummy_cfg));
+		normal_times.push_back(time_of_day());
 	}
 }
 

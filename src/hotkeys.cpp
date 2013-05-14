@@ -162,6 +162,7 @@ const hotkey_command hotkey_list_[] = {
 	{ hotkey::HOTKEY_EDITOR_PALETTE_UPSCROLL, "editor-palette-upscroll", N_("Scroll Palette Left"), false, hotkey::SCOPE_EDITOR, NULL },
 	{ hotkey::HOTKEY_EDITOR_PALETTE_DOWNSCROLL, "editor-palette-downscroll", N_("Scroll Palette Right"), false, hotkey::SCOPE_EDITOR, NULL },
 
+	{ hotkey::HOTKEY_EDITOR_SWITCH_TIME, "editor-switch-time", N_("Switch Time of Day"), false, hotkey::SCOPE_EDITOR, NULL },
 
 	{ hotkey::HOTKEY_EDITOR_TOOL_NEXT, "editor-tool-next", N_("Next Tool"), false, hotkey::SCOPE_EDITOR, NULL },
 
@@ -1289,33 +1290,24 @@ void command_executor::set_button_state(display& disp) {
 void command_executor::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool /*context_menu*/, display& gui)
 {
 	std::vector<std::string> items = items_arg;
-	if (items.empty()) {
-		return;
-	}
-	//TODO this does not make sense anymore
-	if (can_execute_command(hotkey::get_id(items.front()), 0)) {
-		// If just one item is passed in, that means we should execute that item.
-		/*
-		if (!context_menu && items.size() == 1 && items_arg.size() == 1) {
-			hotkey::execute_command(gui,hotkey::get_id(items.front()), this);
-			set_button_state(gui);
-			return;
-		}
-		*/
+	if (items.empty()) return;
 
-		std::vector<std::string> menu = get_menu_images(gui, items);
+	std::vector<std::string> menu = get_menu_images(gui, items);
+	int res = 0;
+	{
+		gui::dialog mmenu = gui::dialog(gui,"","",
+				gui::MESSAGE, gui::dialog::hotkeys_style);
+		mmenu.set_menu(menu);
+		res = mmenu.show(xloc, yloc);
+	} // This will kill the dialog.
+	if (res < 0 || size_t(res) >= items.size()) return;
 
-		int res = 0;
-		{
-			gui::dialog mmenu = gui::dialog(gui,"","",
-			gui::MESSAGE, gui::dialog::hotkeys_style);
-			mmenu.set_menu(menu);
-			res = mmenu.show(xloc, yloc);
-		} // This will kill the dialog.
-		if (res < 0 || size_t(res) >= items.size()) {
-			return;
-		}
-
+	const theme::menu* submenu = gui.get_theme().get_menu_item(items[res]);
+	if (submenu) {
+		int y,x;
+		SDL_GetMouseState(&x,&y);
+		this->show_menu(submenu->items(), x, y, submenu->is_context(), gui);
+	} else {
 		const hotkey::HOTKEY_COMMAND cmd = hotkey::get_id(items[res]);
 		hotkey::execute_command(gui,cmd,this,res);
 		set_button_state(gui);
@@ -1341,13 +1333,18 @@ void command_executor::execute_action(const std::vector<std::string>& items_arg,
 	}
 }
 
-std::string command_executor::get_menu_image(const std::string& command, int index) const {
+std::string command_executor::get_menu_image(display& disp, const std::string& command, int index) const {
 
 	const std::string base_image_name = "icons/action/" + command + "_25.png";
 	const std::string pressed_image_name = "icons/action/" + command + "_25-pressed.png";
 
 	const hotkey::HOTKEY_COMMAND hk = hotkey::get_id(command);
 	const hotkey::ACTION_STATE state = get_action_state(hk, index);
+
+	const theme::menu* menu = disp.get_theme().get_menu_item(command);
+	if (menu)
+		return "buttons/fold-arrow.png";
+	//if (hk == hotkey::HOTKEY_NULL)
 
 	if (file_exists(game_config::path + "/images/" + base_image_name)) {
 		switch (state) {
@@ -1382,14 +1379,18 @@ std::vector<std::string> command_executor::get_menu_images(display& disp, const 
 
 		std::stringstream str;
 		//see if this menu item has an associated image
-		std::string img(get_menu_image(item, i));
+		std::string img(get_menu_image(disp, item, i));
 		if (img.empty() == false) {
 			has_image = true;
 			str << IMAGE_PREFIX << img << COLUMN_SEPARATOR;
 		}
 
 		if (hk == hotkey::HOTKEY_NULL) {
-			str << item.substr(0, item.find_last_not_of(' ') + 1) << COLUMN_SEPARATOR;
+			const theme::menu* menu = disp.get_theme().get_menu_item(item);
+			if (menu)
+				str << menu->title();
+			else
+				str << item.substr(0, item.find_last_not_of(' ') + 1) << COLUMN_SEPARATOR;
 		} else {
 			std::string desc = hotkey::get_description(item);
 			if (hk == HOTKEY_ENDTURN) {

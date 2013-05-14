@@ -221,6 +221,8 @@ public:
 
 		using object::location;
 
+		bool is_button() const { return button_; }
+
 		bool is_context() const  { return context_; }
 
 		const std::string& title() const { return title_; }
@@ -235,6 +237,7 @@ public:
 
 		void set_title(const std::string& new_title) { title_ = new_title; }
 	private:
+		bool button_;
 		bool context_;
 		std::string title_, tooltip_, image_, overlay_;
 		std::vector<std::string> items_;

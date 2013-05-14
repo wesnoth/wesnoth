@@ -65,6 +65,7 @@ class tod_manager : public savegame::savegame_config
 		 * Replace the time of day schedule
 		 */
 		void replace_schedule(const config& time_cfg);
+		void replace_schedule(const std::vector<time_of_day>& schedule);
 
 		/**
 		 * @returns the [time_area]s' ids.
