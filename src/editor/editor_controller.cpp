@@ -540,6 +540,9 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 					tods_map::iterator iter = tods_.begin();
 					std::advance(iter, index);
 					tod->replace_schedule(iter->second.second);
+					tod->set_turn(1, true);
+					tod_color col = tod->times()[0].color;
+					image::set_color_adjustment(col.r, col.g, col.b);
 					return true;
 				}
 			}
