@@ -1321,26 +1321,6 @@ static void draw_panel(CVideo& video, const theme::panel& panel, std::vector<gui
 		video.blit_surface(loc.x,loc.y,surf);
 		update_rect(loc);
 	}
-
-	//TODO this code seems to be no longer necessary, remove if this holds.
-//	static bool first_time = true;
-//	for(std::vector<gui::button>::iterator b = buttons.begin(); b != buttons.end(); ++b) {
-//		if(rects_overlap(b->location(),loc)) {
-//			b->set_dirty(true);
-//			if (first_time){
-//				/**
-//				 * @todo FixMe YogiHH:
-//				 * This is only made to have the buttons store their background
-//				 * information, otherwise the background will appear completely
-//				 * black. It would more straightforward to call bg_update, but
-//				 * that is not public and there seems to be no other way atm to
-//				 * call it. I will check if bg_update can be made public.
-//				 */
-//				b->hide(true);
-//				b->hide(false);
-//			}
-//		}
-//	}
 }
 
 static void draw_label(CVideo& video, surface target, const theme::label& label)
