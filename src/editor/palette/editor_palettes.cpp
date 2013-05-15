@@ -258,6 +258,9 @@ template<class Item>
 void editor_palette<Item>::swap()
 {
 	std::swap(selected_fg_item_, selected_bg_item_);
+	select_fg_item(selected_fg_item_);
+	select_bg_item(selected_bg_item_);
+	set_dirty();
 }
 template void editor_palette<t_translation::t_terrain>::swap();
 template void editor_palette<unit_type>::swap();

@@ -603,7 +603,6 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			return true;
 		case HOTKEY_EDITOR_PALETTE_ITEM_SWAP:
 			toolkit_->get_palette_manager()->active_palette().swap();
-			toolkit_->set_mouseover_overlay();
 			return true;
 		case HOTKEY_EDITOR_PARTIAL_UNDO:
 			if (dynamic_cast<const editor_action_chain*>(context_manager_->get_map_context().last_undo_action()) != NULL) {
