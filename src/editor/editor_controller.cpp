@@ -281,6 +281,8 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 			return context_manager_->get_map_context().get_units().size() != 0;
 
 		case HOTKEY_STATUS_TABLE:
+			return !context_manager_->get_map_context().get_teams().empty();
+
 		case HOTKEY_EDITOR_SWITCH_TIME:
 			return true;
 
