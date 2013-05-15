@@ -60,6 +60,8 @@ bool animate_unit_advancement(const map_location &loc, size_t choice, const bool
 
 void show_objectives(const config &level, const std::string &objectives);
 
+void show_unit_list(display& gui);
+
 /**
  * Allow user to select the game they want to load. Returns the name of the
  * save they want to load. Stores whether the user wants to show a replay of

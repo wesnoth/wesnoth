@@ -277,6 +277,8 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_QUIT_GAME:
 			return true; //general hotkeys we can always do
 
+		case hotkey::HOTKEY_UNIT_LIST:
+			return context_manager_->get_map_context().get_units().size() != 0;
 
 		case HOTKEY_STATUS_TABLE:
 		case HOTKEY_EDITOR_SWITCH_TIME:
@@ -915,6 +917,11 @@ void editor_controller::rename_unit()
 			un->set_name(name);
 		}
 	}
+}
+
+void editor_controller::unit_list()
+{
+	dialogs::show_unit_list(*gui_);
 }
 
 void editor_controller::cut_selection()

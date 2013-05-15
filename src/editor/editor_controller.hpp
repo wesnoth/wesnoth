@@ -134,6 +134,8 @@ class editor_controller : public controller_base,
 		void change_unit_id();
 		void rename_unit();
 
+		void unit_list();
+
 		/** Copy the selection on the current map to the clipboard */
 		void copy_selection();
 
