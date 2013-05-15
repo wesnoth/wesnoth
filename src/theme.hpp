@@ -175,7 +175,7 @@ public:
 
 		const std::string& title() const { return title_; }
 
-		const std::string& tooltip() const { return tooltip_; }
+		const std::string tooltip(size_t index) const;
 
 		const std::string& type() const { return type_; }
 
@@ -187,7 +187,7 @@ public:
 
 		void set_title(const std::string& new_title) { title_ = new_title; }
 	private:
-		bool context_;
+		bool context_, auto_tooltip_, tooltip_name_prepend_;
 		std::string title_, tooltip_, image_, overlay_,  type_;
 		std::vector<std::string> items_;
 	};

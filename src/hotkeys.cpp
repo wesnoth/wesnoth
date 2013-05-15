@@ -1251,19 +1251,20 @@ void command_executor::set_button_state(display& disp) {
 
 		gui::button* button = disp.find_action_button(action.get_id());
 		bool enabled = false;
+		int i = 0;
 		BOOST_FOREACH(const std::string& command, action.items()) {
 
 			hotkey::HOTKEY_COMMAND command_id = hotkey::get_id(command);
-			std::string tooltip = action.tooltip();
+			std::string tooltip = action.tooltip(i);
 			if (file_exists(game_config::path + "/images/icons/action/" + command + "_30.png" ))
 				button->set_overlay("icons/action/" + command);
 			if (!tooltip.empty())
 				button->set_tooltip_string(tooltip);
 
 			bool can_execute = can_execute_command(command_id);
+			i++;
 			if (!can_execute) continue;
 			enabled = true;
-
 
 			ACTION_STATE state = get_action_state(command_id, -1);
 			switch (state) {

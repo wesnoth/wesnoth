@@ -879,8 +879,8 @@ void display::create_buttons()
 		b.set_id(i->get_id());
 		const SDL_Rect& loc = i->location(screen_area());
 		b.set_location(loc.x,loc.y);
-		if (!i->tooltip().empty()){
-			b.set_tooltip_string(i->tooltip());
+		if (!i->tooltip(0).empty()){
+			b.set_tooltip_string(i->tooltip(0));
 		}
 		if(rects_overlap(b.location(),map_outside_area())) {
 			b.set_volatile(true);
