@@ -1216,7 +1216,7 @@ REPORT_GENERATOR(terrain_info)
 	std::ostringstream str;
 	config cfg;
 
-	if (map.is_castle(mouseover_hex)) {
+	if (map.is_keep(mouseover_hex)) {
 		add_image(cfg, "icons/terrain/terrain_type_keep.png", "");
 	}
 
