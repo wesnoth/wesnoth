@@ -763,13 +763,24 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			gui_->init_flags();
 			return true;
 
+		// Transitions
+		case HOTKEY_EDITOR_PARTIAL_UPDATE_TRANSITIONS:
+			context_manager_->set_update_trasitions_mode(2);
+			return true;
 		case HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS:
+			context_manager_->set_update_trasitions_mode(1);
+			return true;
+		case HOTKEY_EDITOR_NO_UPDATE_TRANSITIONS:
+			context_manager_->set_update_trasitions_mode(0);
+			return true;
+		case HOTKEY_EDITOR_TOGGLE_TRANSITIONS:
 			if (context_manager_->toggle_update_transitions())
 				return true;
 			// else intentionally fall through
 		case HOTKEY_EDITOR_UPDATE_TRANSITIONS:
 			context_manager_->refresh_all();
 			return true;
+		// Refresh
 		case HOTKEY_EDITOR_REFRESH:
 			context_manager_->reload_map();
 			return true;
