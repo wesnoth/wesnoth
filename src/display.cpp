@@ -1924,8 +1924,8 @@ void display::set_zoom(int amount, bool absolute)
 			zoom_slider->set_value(new_zoom);
 		}
 		SDL_Rect const &area = map_area();
-		xpos_ += (xpos_ + area.w / 2) * amount / zoom_;
-		ypos_ += (ypos_ + area.h / 2) * amount / zoom_;
+		xpos_ += (xpos_ + area.w / 2) * (absolute ? new_zoom - zoom_ : amount) / zoom_;
+		ypos_ += (ypos_ + area.h / 2) * (absolute ? new_zoom - zoom_ : amount) / zoom_;
 
 		zoom_ = new_zoom;
 		bounds_check_position();
