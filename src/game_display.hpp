@@ -99,7 +99,7 @@ public:
 	 * Add more paths to highlight.  Print numbers where they overlap.
 	 * Used only by Show Enemy Moves.
 	 */
-  void highlight_another_reach(const pathfind::paths &paths_list);
+	void highlight_another_reach(const pathfind::paths &paths_list);
 
 	/** Reset highlighting of paths. */
 	void unhighlight_reach();
@@ -109,7 +109,7 @@ public:
 	 * unit. If NULL, no route is displayed. @a route does not have to remain
 	 * valid after being set.
 	 */
-  void set_route(const pathfind::marked_route *route);
+	void set_route(const pathfind::marked_route *route);
 
 	/** Function to float a label above a tile */
 	void float_label(const map_location& loc, const std::string& text,
