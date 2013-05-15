@@ -134,8 +134,11 @@ static const unit *get_selected_unit()
 
 static config gray_inactive(const std::string &str)
 {
-	if (resources::screen->viewing_side() == resources::screen->playing_side())
-		return text_report(str);
+	if ( (resources::screen &&
+			(resources::screen->viewing_side() == resources::screen->playing_side()) )
+			|| !resources::screen )
+			return text_report(str);
+
 	return text_report(span_color(font::GRAY_COLOR) + str + naps);
 }
 
@@ -1131,7 +1134,7 @@ REPORT_GENERATOR(gold)
 REPORT_GENERATOR(villages)
 {
 	std::ostringstream str;
-	int viewing_side = resources::screen->viewing_side();
+	int viewing_side = display::get_singleton()->viewing_side();
 	const team &viewing_team = (*resources::teams)[viewing_side - 1];
 	team_data td = calculate_team_data(viewing_team, viewing_side);
 	str << td.villages << '/';
@@ -1150,7 +1153,7 @@ REPORT_GENERATOR(villages)
 
 REPORT_GENERATOR(num_units)
 {
-	return gray_inactive(str_cast(side_units(resources::screen->viewing_side())));
+	return gray_inactive(str_cast(side_units(display::get_singleton()->viewing_side())));
 }
 
 REPORT_GENERATOR(upkeep)

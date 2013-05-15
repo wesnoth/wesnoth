@@ -112,8 +112,15 @@ void editor_display::draw_sidebar()
 		text = str_cast(mouseoverHex_);
 		refresh_report("position", &element);
 	}
-	text = int(get_map().villages().size());
-	refresh_report("villages", &element);
+
+	if (teams_->empty()) {
+		text = int(get_map().villages().size());
+		refresh_report("villages", &element);
+	} else {
+		refresh_report("villages");
+		refresh_report("num_units");
+	}
+
 	text = toolbar_hint_;
 	refresh_report("editor_tool_hint", &element);
 
