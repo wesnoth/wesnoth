@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-12 19:12+0200\n"
+"POT-Creation-Date: 2013-05-15 18:53+0200\n"
 "PO-Revision-Date: 2009-06-15 15:03-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: none\n"
@@ -1410,7 +1410,7 @@ msgstr "Fjarlægja viðbót"
 #. [button]: id=help
 #. [button]: id=show_help
 #: data/gui/default/window/addon_connect.cfg:188
-#: data/gui/default/window/title_screen.cfg:179 src/hotkeys.cpp:234
+#: data/gui/default/window/title_screen.cfg:179 src/hotkeys.cpp:235
 msgid "Help"
 msgstr "Hjálp"
 
@@ -1844,7 +1844,7 @@ msgstr "Búa til leik"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:35 src/hotkeys.cpp:208
+#: data/gui/default/window/editor_resize_map.cfg:35 src/hotkeys.cpp:209
 msgid "Resize Map"
 msgstr "Endurstækka kort"
 
@@ -2027,8 +2027,8 @@ msgstr ""
 #. [grid]
 #: data/gui/default/window/formula_debugger.cfg:234
 #: data/gui/default/window/lobby_main.cfg:660
-#: data/gui/default/window/title_screen.cfg:265 src/hotkeys.cpp:883
-#: src/hotkeys.cpp:1233
+#: data/gui/default/window/title_screen.cfg:265 src/hotkeys.cpp:884
+#: src/hotkeys.cpp:1234
 msgid "Quit"
 msgstr "Hætta"
 
@@ -3591,7 +3591,7 @@ msgstr "Uppfæra viðbætur"
 
 #: src/gui/dialogs/addon_list.cpp:256
 #: src/gui/dialogs/network_transmission.cpp:54
-#: src/gui/dialogs/network_transmission.cpp:56 src/hotkeys.cpp:1190
+#: src/gui/dialogs/network_transmission.cpp:56 src/hotkeys.cpp:1191
 msgid "unit_byte^B"
 msgstr ""
 
@@ -3916,7 +3916,7 @@ msgstr "Sjálfgefið þys"
 msgid "Toggle Full Screen"
 msgstr "Setja á Fullan skjá"
 
-#: src/hotkeys.cpp:83 src/hotkeys.cpp:1184
+#: src/hotkeys.cpp:83 src/hotkeys.cpp:1185
 msgid "Screenshot"
 msgstr "Skjáskot"
 
@@ -4197,465 +4197,471 @@ msgstr ""
 msgid "Scroll Palette Right"
 msgstr ""
 
-#: src/hotkeys.cpp:166
+#: src/hotkeys.cpp:165
+#, fuzzy
+#| msgid "Switch Map"
+msgid "Switch Time of Day"
+msgstr "Skipta kort"
+
+#: src/hotkeys.cpp:167
 msgid "Next Tool"
 msgstr "Næsta verkfæri"
 
-#: src/hotkeys.cpp:168
+#: src/hotkeys.cpp:169
 msgid "Paint Tool"
 msgstr "Pensill"
 
-#: src/hotkeys.cpp:168 src/hotkeys.cpp:169
+#: src/hotkeys.cpp:169 src/hotkeys.cpp:170
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
 
-#: src/hotkeys.cpp:169
+#: src/hotkeys.cpp:170
 msgid "Fill Tool"
 msgstr "Málningarfata"
 
-#: src/hotkeys.cpp:170
+#: src/hotkeys.cpp:171
 msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
 msgstr ""
 
-#: src/hotkeys.cpp:170
+#: src/hotkeys.cpp:171
 msgid "Selection Tool"
 msgstr "Val"
 
-#: src/hotkeys.cpp:171
+#: src/hotkeys.cpp:172
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
 
-#: src/hotkeys.cpp:171
+#: src/hotkeys.cpp:172
 #, fuzzy
 #| msgid "Set Starting Positions Tool"
 msgid "Starting Positions Tool"
 msgstr "Setja byrjnunarstaði tól"
 
-#: src/hotkeys.cpp:172
+#: src/hotkeys.cpp:173
 #, fuzzy
 #| msgid "Fill Tool"
 msgid "Label Tool"
 msgstr "Málningarfata"
 
-#: src/hotkeys.cpp:172
+#: src/hotkeys.cpp:173
 msgid "Left mouse button sets or drags a label, right clears."
 msgstr ""
 
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:174
 msgid ""
 "Left mouse button sets a new unit or moves a unit via drag and drop, right "
 "clears. Not implemented yet."
 msgstr ""
 
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:174
 #, fuzzy
 #| msgid "Paint Tool"
 msgid "Unit Tool"
 msgstr "Pensill"
 
-#: src/hotkeys.cpp:174
+#: src/hotkeys.cpp:175
 #, fuzzy
 #| msgid "Next Tool"
 msgid "Item Tool"
 msgstr "Næsta verkfæri"
 
-#: src/hotkeys.cpp:174
+#: src/hotkeys.cpp:175
 msgid ""
 "Left mouse button sets a new item or moves it via drag and drop, right "
 "clears. Not implemented yet."
 msgstr ""
 
-#: src/hotkeys.cpp:175
+#: src/hotkeys.cpp:176
 msgid ""
 "Left mouse button sets or drags a sound source, right clears. Not "
 "implemented yet."
 msgstr ""
 
-#: src/hotkeys.cpp:175
+#: src/hotkeys.cpp:176
 msgid "Soundsource Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:176
+#: src/hotkeys.cpp:177
 msgid ""
 "Left mouse button sets the village ownership to the current side, right "
 "clears. Not implemented yet."
 msgstr ""
 
-#: src/hotkeys.cpp:176
+#: src/hotkeys.cpp:177
 #, fuzzy
 #| msgid "Village gold"
 msgid "Village Tool"
 msgstr "Þorp gull"
 
-#: src/hotkeys.cpp:178
+#: src/hotkeys.cpp:179
 #, fuzzy
 #| msgid "Recruit"
 msgid "Canrecruit"
 msgstr "Ráða"
 
-#: src/hotkeys.cpp:178
+#: src/hotkeys.cpp:179
 msgid "Toggle the recruit attribute of a unit."
 msgstr ""
 
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:180
 msgid "Can be renamed"
 msgstr ""
 
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:180
 msgid "Toggle the unit being renameable."
 msgstr ""
 
-#: src/hotkeys.cpp:181
+#: src/hotkeys.cpp:182
 #, fuzzy
 #| msgid "Change Hotkey"
 msgid "Change Unit ID"
 msgstr "Breyta flýtitakka"
 
-#: src/hotkeys.cpp:182
+#: src/hotkeys.cpp:183
 msgid "Loyal"
 msgstr ""
 
-#: src/hotkeys.cpp:185
+#: src/hotkeys.cpp:186
 msgid "Next Brush"
 msgstr "Næsta pensil"
 
-#: src/hotkeys.cpp:186
+#: src/hotkeys.cpp:187
 msgid "Default Brush"
 msgstr "Sjálfgefin pensil"
 
-#: src/hotkeys.cpp:187
+#: src/hotkeys.cpp:188
 msgid "Single Tile"
 msgstr ""
 
-#: src/hotkeys.cpp:188
+#: src/hotkeys.cpp:189
 msgid "Radius One"
 msgstr ""
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:190
 msgid "Radius Two"
 msgstr ""
 
-#: src/hotkeys.cpp:190
+#: src/hotkeys.cpp:191
 msgid "Brush NW-SE"
 msgstr ""
 
-#: src/hotkeys.cpp:191
+#: src/hotkeys.cpp:192
 msgid "Brush SW-NE"
 msgstr ""
 
-#: src/hotkeys.cpp:192
+#: src/hotkeys.cpp:193
 msgid "Cut"
 msgstr "Klippa"
 
-#: src/hotkeys.cpp:193
+#: src/hotkeys.cpp:194
 msgid "Copy"
 msgstr "Afrita"
 
-#: src/hotkeys.cpp:194
+#: src/hotkeys.cpp:195
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
 msgstr ""
 
-#: src/hotkeys.cpp:194
+#: src/hotkeys.cpp:195
 msgid "Paste"
 msgstr "Líma"
 
-#: src/hotkeys.cpp:195
+#: src/hotkeys.cpp:196
 msgid "Export Selected Coordinates to System Clipboard"
 msgstr "Afrita valin staðsetningu yfir á klippiborðið"
 
-#: src/hotkeys.cpp:196
+#: src/hotkeys.cpp:197
 msgid "Select All"
 msgstr "Velja allt"
 
-#: src/hotkeys.cpp:197
+#: src/hotkeys.cpp:198
 msgid "Select Inverse"
 msgstr "Velja öfugt"
 
-#: src/hotkeys.cpp:198
+#: src/hotkeys.cpp:199
 msgid "Select None"
 msgstr "Velja ekkert"
 
-#: src/hotkeys.cpp:199
+#: src/hotkeys.cpp:200
 msgid "Rotate Clipboard Clockwise"
 msgstr "Snúa klippiborð 270°"
 
-#: src/hotkeys.cpp:200
+#: src/hotkeys.cpp:201
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr "Snúa klippiborð 90°"
 
-#: src/hotkeys.cpp:201
+#: src/hotkeys.cpp:202
 msgid "Flip Clipboard Horizontally"
 msgstr "snúa réttsælis"
 
-#: src/hotkeys.cpp:202
+#: src/hotkeys.cpp:203
 msgid "Flip Clipboard Vertically"
 msgstr "snúa rangsælis"
 
-#: src/hotkeys.cpp:203
+#: src/hotkeys.cpp:204
 msgid "Rotate Selection"
 msgstr "Snúa við vali"
 
-#: src/hotkeys.cpp:204
+#: src/hotkeys.cpp:205
 msgid "Flip Selection"
 msgstr "Flippa val"
 
-#: src/hotkeys.cpp:205
+#: src/hotkeys.cpp:206
 msgid "Fill Selection"
 msgstr "Filla val"
 
-#: src/hotkeys.cpp:206
+#: src/hotkeys.cpp:207
 msgid "Generate Tiles In Selection"
 msgstr "Búa til reiti innan valins svæðis"
 
-#: src/hotkeys.cpp:207
+#: src/hotkeys.cpp:208
 msgid "Randomize Tiles In Selection"
 msgstr "Rugla reiti innan valins svæðis"
 
-#: src/hotkeys.cpp:209
+#: src/hotkeys.cpp:210
 msgid "Rotate Map"
 msgstr "Snúa við korti"
 
-#: src/hotkeys.cpp:210
+#: src/hotkeys.cpp:211
 msgid "Generate Map"
 msgstr "Sjálfvirk kortagerð"
 
-#: src/hotkeys.cpp:211
+#: src/hotkeys.cpp:212
 msgid "Apply a Mask"
 msgstr "Setja skugga"
 
-#: src/hotkeys.cpp:212
+#: src/hotkeys.cpp:213
 msgid "Create Mask"
 msgstr "Búa til skugga"
 
-#: src/hotkeys.cpp:213
+#: src/hotkeys.cpp:214
 msgid "Refresh Display"
 msgstr "Glæða skjá"
 
-#: src/hotkeys.cpp:214
+#: src/hotkeys.cpp:215
 msgid "Update Terrain Transitions"
 msgstr "Uppfæra hreyfingu jarðar"
 
-#: src/hotkeys.cpp:216
+#: src/hotkeys.cpp:217
 #, fuzzy
 #| msgid "Update Terrain Transitions"
 msgid "Toggle Terrain Transition Update"
 msgstr "Uppfæra hreyfingu jarðar"
 
-#: src/hotkeys.cpp:217
+#: src/hotkeys.cpp:218
 msgid "Auto-update Terrain Transitions"
-msgstr "Uppfæra sjálkrafa hreyfingu jarðar"
-
-#: src/hotkeys.cpp:219
-#, fuzzy
-#| msgid "Auto-update Terrain Transitions"
-msgid "Auto-update Terrain Transitions: No"
 msgstr "Uppfæra sjálkrafa hreyfingu jarðar"
 
 #: src/hotkeys.cpp:220
 #, fuzzy
 #| msgid "Auto-update Terrain Transitions"
+msgid "Auto-update Terrain Transitions: No"
+msgstr "Uppfæra sjálkrafa hreyfingu jarðar"
+
+#: src/hotkeys.cpp:221
+#, fuzzy
+#| msgid "Auto-update Terrain Transitions"
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "Uppfæra sjálkrafa hreyfingu jarðar"
 
-#: src/hotkeys.cpp:222
+#: src/hotkeys.cpp:223
 msgid "Refresh Image Cache"
 msgstr "Glæða flýtigögn mynda"
 
-#: src/hotkeys.cpp:223
+#: src/hotkeys.cpp:224
 msgid "Draw Hex Coordinates"
 msgstr "Teikna hnit reita"
 
-#: src/hotkeys.cpp:224
+#: src/hotkeys.cpp:225
 msgid "Draw Terrain Codes"
 msgstr "Teikna jarðkóða"
 
-#: src/hotkeys.cpp:226
+#: src/hotkeys.cpp:227
 msgid "Define (Time) Area"
 msgstr ""
 
-#: src/hotkeys.cpp:228
+#: src/hotkeys.cpp:229
 msgid "Delay Shroud Updates"
 msgstr "Seinka uppfærslu hylja"
 
-#: src/hotkeys.cpp:229
+#: src/hotkeys.cpp:230
 msgid "Update Shroud Now"
 msgstr "Uppfæra hyljar núna"
 
-#: src/hotkeys.cpp:230
+#: src/hotkeys.cpp:231
 msgid "Continue Move"
 msgstr "Halda hreyfingu áfram"
 
-#: src/hotkeys.cpp:231
+#: src/hotkeys.cpp:232
 msgid "Find Label or Unit"
 msgstr "Finna örnefni eða einingu"
 
-#: src/hotkeys.cpp:232
+#: src/hotkeys.cpp:233
 msgid "Speak to Ally"
 msgstr "Tala við vini"
 
-#: src/hotkeys.cpp:233
+#: src/hotkeys.cpp:234
 msgid "Speak to All"
 msgstr "Tala til allra"
 
-#: src/hotkeys.cpp:235
+#: src/hotkeys.cpp:236
 msgid "View Chat Log"
 msgstr "Skoða fyrrum spjall"
 
-#: src/hotkeys.cpp:236
+#: src/hotkeys.cpp:237
 #, fuzzy
 #| msgid "Change language"
 msgid "Change Language"
 msgstr "Breyta tungumáli"
 
-#: src/hotkeys.cpp:237
+#: src/hotkeys.cpp:238
 msgid "Enter User Command"
 msgstr "Sláðu inn notendaskipun"
 
-#: src/hotkeys.cpp:238
+#: src/hotkeys.cpp:239
 msgid "Custom Command"
 msgstr "Notendaskilgreind skipun"
 
-#: src/hotkeys.cpp:239
+#: src/hotkeys.cpp:240
 #, fuzzy
 #| msgid "Run AI formula"
 msgid "Run Formula"
 msgstr "Keyra gervigreindarformúlu"
 
-#: src/hotkeys.cpp:240
+#: src/hotkeys.cpp:241
 msgid "Clear Messages"
 msgstr "Hreinsa skilaboð"
 
-#: src/hotkeys.cpp:241
+#: src/hotkeys.cpp:242
 #, fuzzy
 msgid "Refresh WML"
 msgstr "Glæða skjá"
 
-#: src/hotkeys.cpp:242
+#: src/hotkeys.cpp:243
 msgid "Next Tip of the Day"
 msgstr ""
 
-#: src/hotkeys.cpp:243
+#: src/hotkeys.cpp:244
 #, fuzzy
 msgid "Previous Tip of the Day"
 msgstr "Fyrri eining"
 
-#: src/hotkeys.cpp:244
+#: src/hotkeys.cpp:245
 #, fuzzy
 msgid "Start Tutorial"
 msgstr "Sýnikennsla"
 
-#: src/hotkeys.cpp:245
+#: src/hotkeys.cpp:246
 #, fuzzy
 msgid "Start Campaign"
 msgstr "Herferð"
 
-#: src/hotkeys.cpp:246
+#: src/hotkeys.cpp:247
 #, fuzzy
 #| msgid "Multiplayer"
 msgid "Start Multiplayer Game"
 msgstr "Fjölspilun"
 
-#: src/hotkeys.cpp:247
+#: src/hotkeys.cpp:248
 #, fuzzy
 msgid "Manage Add-ons"
 msgstr "Uppfæra viðbætur"
 
-#: src/hotkeys.cpp:248
+#: src/hotkeys.cpp:249
 #, fuzzy
 msgid "Start Editor"
 msgstr "Kortagerð"
 
-#: src/hotkeys.cpp:249
+#: src/hotkeys.cpp:250
 #, fuzzy
 #| msgid "Credits"
 msgid "Show Credits"
 msgstr "Þakkarorð"
 
-#: src/hotkeys.cpp:250
+#: src/hotkeys.cpp:251
 #, fuzzy
 msgid "Show Helptip"
 msgstr "spilari"
 
-#: src/hotkeys.cpp:253
+#: src/hotkeys.cpp:254
 msgid "Unrecognized Command"
 msgstr ""
 
-#: src/hotkeys.cpp:386 src/hotkeys.cpp:389
+#: src/hotkeys.cpp:387 src/hotkeys.cpp:390
 msgid "Button"
 msgstr ""
 
-#: src/hotkeys.cpp:386
+#: src/hotkeys.cpp:387
 msgid "Mouse"
 msgstr ""
 
-#: src/hotkeys.cpp:389 src/hotkeys.cpp:425
+#: src/hotkeys.cpp:390 src/hotkeys.cpp:426
 msgid "Joystick"
 msgstr ""
 
-#: src/hotkeys.cpp:395
+#: src/hotkeys.cpp:396
 msgid "Centered"
 msgstr ""
 
-#: src/hotkeys.cpp:398
+#: src/hotkeys.cpp:399
 msgid "Up"
 msgstr ""
 
-#: src/hotkeys.cpp:401
+#: src/hotkeys.cpp:402
 #, fuzzy
 #| msgid "Height:"
 msgid "Right"
 msgstr "Lengd:"
 
-#: src/hotkeys.cpp:404
+#: src/hotkeys.cpp:405
 msgid "Down"
 msgstr ""
 
-#: src/hotkeys.cpp:407
+#: src/hotkeys.cpp:408
 msgid "Left"
 msgstr ""
 
-#: src/hotkeys.cpp:410
+#: src/hotkeys.cpp:411
 msgid "RightUp"
 msgstr ""
 
-#: src/hotkeys.cpp:413
+#: src/hotkeys.cpp:414
 msgid "RightDown"
 msgstr ""
 
-#: src/hotkeys.cpp:416
+#: src/hotkeys.cpp:417
 msgid "LeftUp"
 msgstr ""
 
-#: src/hotkeys.cpp:419
+#: src/hotkeys.cpp:420
 msgid "LeftDown"
 msgstr ""
 
-#: src/hotkeys.cpp:422
+#: src/hotkeys.cpp:423
 msgid "Unknown"
 msgstr ""
 
-#: src/hotkeys.cpp:425
+#: src/hotkeys.cpp:426
 #, fuzzy
 msgid "Hat"
 msgstr "Klippa"
 
-#: src/hotkeys.cpp:884 src/hotkeys.cpp:1234
+#: src/hotkeys.cpp:885 src/hotkeys.cpp:1235
 msgid "Do you really want to quit?"
 msgstr "Ertu viss um að þú viljir hætta?"
 
-#: src/hotkeys.cpp:1184
+#: src/hotkeys.cpp:1185
 msgid "Map-Screenshot"
 msgstr "Skjáskot korts"
 
-#: src/hotkeys.cpp:1191 src/hotkeys.cpp:1193
+#: src/hotkeys.cpp:1192 src/hotkeys.cpp:1194
 msgid "Screenshot done"
 msgstr "Skjáskot tekið"
 

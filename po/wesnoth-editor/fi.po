@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-12 19:12+0200\n"
+"POT-Creation-Date: 2013-05-15 18:53+0200\n"
 "PO-Revision-Date: 2012-01-15 15:29+0200\n"
 "Last-Translator: Jarkko Patteri <jarkkopatteri@gmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
@@ -121,9 +121,9 @@ msgstr "silta"
 msgid "special"
 msgstr "erikoinen"
 
-#. [editor_times]: id=old
+#. [editor_times]: id=test
 #: data/core/editor/time-of-day.cfg:5
-msgid "Old"
+msgid "Test"
 msgstr ""
 
 #. [editor_times]: id=default
@@ -142,7 +142,7 @@ msgid "Deep Underground"
 msgstr ""
 
 #. [editor_times]: id=after_the_fall
-#: data/core/editor/time-of-day.cfg:39
+#: data/core/editor/time-of-day.cfg:40
 msgid "After the Fall"
 msgstr ""
 
@@ -188,61 +188,73 @@ msgstr ""
 "peilaus)."
 
 #. [menu]: id=menu-editor-file, type=turbo
-#: data/themes/editor.cfg:70
+#: data/themes/editor.cfg:63
 msgid "File"
 msgstr "Tiedosto"
 
 #. [menu]: id=menu-editor-map
-#: data/themes/editor.cfg:96
+#: data/themes/editor.cfg:89
 msgid "Map"
 msgstr "Kartta"
 
+#. [menu]: id=menu-editor-transitions
+#: data/themes/editor.cfg:98
+#, fuzzy
+#| msgid "Delay transition updates"
+msgid "Transition update"
+msgstr "Viivytä siirtymisen päivityksiä"
+
 #. [menu]: id=menu-editor-window
-#: data/themes/editor.cfg:106
+#: data/themes/editor.cfg:105
 msgid "Window"
 msgstr "Ikkuna"
 
 #. [menu]: id=menu-editor-areas
-#: data/themes/editor.cfg:116
+#: data/themes/editor.cfg:115
 msgid "Areas"
 msgstr ""
 
 #. [menu]: id=menu-editor-side
-#: data/themes/editor.cfg:126
+#: data/themes/editor.cfg:125
 msgid "Side"
 msgstr ""
 
 #. [label]: id=villages-icon
-#: data/themes/editor.cfg:145
+#: data/themes/editor.cfg:144
 msgid "villages"
 msgstr "kylää"
 
 #. [label]: id=units-icon
-#: data/themes/editor.cfg:162
+#: data/themes/editor.cfg:161
 msgid "units"
 msgstr ""
 
+#. [menu]: id=menu-editor-schedule
+#: data/themes/editor.cfg:497
+msgid "Assign Time Schedule"
+msgstr ""
+
 #. [label]: id=terrain-icon
-#: data/themes/editor.cfg:585
+#: data/themes/editor.cfg:601
 msgid "terrain"
 msgstr ""
 
 #. [action]: id=flip_map_button_editor, type=checkbox
-#: data/themes/editor.cfg:645
+#: data/themes/editor.cfg:661
 #, fuzzy
 #| msgid "Action not implemented"
 msgid "Not implemented yet."
 msgstr "Toimintoa ei ole luotu."
 
-#: src/editor/editor_controller.cpp:156
+#: src/editor/editor_controller.cpp:170
 msgid "Fatal error"
 msgstr "Vakava virhe"
 
-#: src/editor/editor_controller.cpp:184
+#: src/editor/editor_controller.cpp:198
 msgid "Do you really want to quit?"
 msgstr "Haluatko todella lopettaa?"
 
-#: src/editor/editor_controller.cpp:186
+#: src/editor/editor_controller.cpp:200
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
@@ -250,7 +262,7 @@ msgstr ""
 "Haluatko todella lopettaa? Viime tallennuksen jälkeiset muutokset karttaan "
 "menetetään."
 
-#: src/editor/editor_controller.cpp:188
+#: src/editor/editor_controller.cpp:202
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -258,115 +270,115 @@ msgstr ""
 "Haluatko todella lopettaa? Seuraavia karttoja on muutettu ja kaikki viime "
 "tallennuksen jälkeiset muutokset menetetään:"
 
-#: src/editor/editor_controller.cpp:191
+#: src/editor/editor_controller.cpp:205
 msgid "Quit"
 msgstr "Lopeta"
 
-#: src/editor/editor_controller.cpp:202
+#: src/editor/editor_controller.cpp:216
 msgid "No editor time-of-day found."
 msgstr "Editorin vuorokaudenaikoja ei löytynyt."
 
-#: src/editor/editor_controller.cpp:834
+#: src/editor/editor_controller.cpp:906
 msgid "Change Unit ID"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:835
+#: src/editor/editor_controller.cpp:907
 msgid "ID:"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:854
+#: src/editor/editor_controller.cpp:923
 msgid "Rename Unit"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:855
+#: src/editor/editor_controller.cpp:924
 msgid "Name:"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:117
-#: src/editor/map/context_manager.cpp:209
+#: src/editor/map/context_manager.cpp:119
+#: src/editor/map/context_manager.cpp:211
 msgid "(New Map)"
 msgstr "(uusi kartta)"
 
-#: src/editor/map/context_manager.cpp:178
+#: src/editor/map/context_manager.cpp:180
 msgid "Choose a Map to Open"
 msgstr "Valitse avattava kartta"
 
-#: src/editor/map/context_manager.cpp:241
+#: src/editor/map/context_manager.cpp:243
 #, fuzzy
 #| msgid "(New Map)"
 msgid "(New Area)"
 msgstr "(uusi kartta)"
 
-#: src/editor/map/context_manager.cpp:264
+#: src/editor/map/context_manager.cpp:266
 #, fuzzy
 #| msgid "(New Map)"
 msgid "(New Side)"
 msgstr "(uusi kartta)"
 
-#: src/editor/map/context_manager.cpp:280
+#: src/editor/map/context_manager.cpp:312
 msgid "Choose a Mask to Apply"
 msgstr "Valitse käytettävä maski"
 
-#: src/editor/map/context_manager.cpp:287
+#: src/editor/map/context_manager.cpp:319
 msgid "Error loading mask"
 msgstr "Maskin lataus epäonnistui."
 
-#: src/editor/map/context_manager.cpp:308
+#: src/editor/map/context_manager.cpp:340
 msgid "Choose Target Map"
 msgstr "Valitse kohdekartta"
 
-#: src/editor/map/context_manager.cpp:315
-#: src/editor/map/context_manager.cpp:676
+#: src/editor/map/context_manager.cpp:347
+#: src/editor/map/context_manager.cpp:708
 msgid "Error loading map"
 msgstr "Kartan lataus epännistui."
 
-#: src/editor/map/context_manager.cpp:433
+#: src/editor/map/context_manager.cpp:465
 msgid "Save the Map As"
 msgstr "Tallenna kartta nimellä"
 
-#: src/editor/map/context_manager.cpp:436
+#: src/editor/map/context_manager.cpp:468
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Tiedosto on jo olemassa. Haluatko korvata sen?"
 
-#: src/editor/map/context_manager.cpp:470
+#: src/editor/map/context_manager.cpp:502
 msgid "No random map generators found."
 msgstr "Kartan satunnaisgeneraattoreita ei löydy."
 
-#: src/editor/map/context_manager.cpp:483
-#: src/editor/map/context_manager.cpp:487
+#: src/editor/map/context_manager.cpp:515
+#: src/editor/map/context_manager.cpp:519
 msgid "Map creation failed."
 msgstr "Kartan luonti epäonnistui."
 
-#: src/editor/map/context_manager.cpp:499
+#: src/editor/map/context_manager.cpp:531
 msgid "Unsaved Changes"
 msgstr "Tallentamattomat muutokset"
 
-#: src/editor/map/context_manager.cpp:500
+#: src/editor/map/context_manager.cpp:532
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
 "Haluatko hävittää kaikki viime tallennuksen jälkeen karttaan tekemäsi "
 "muutokset?"
 
-#: src/editor/map/context_manager.cpp:591
-#: src/editor/map/context_manager.cpp:632
+#: src/editor/map/context_manager.cpp:623
+#: src/editor/map/context_manager.cpp:664
 msgid "This map is already open."
 msgstr "Valittu kartta on jo avoinna."
 
-#: src/editor/map/context_manager.cpp:612
+#: src/editor/map/context_manager.cpp:644
 msgid "Map saved."
 msgstr "Kartta tallennettu."
 
-#: src/editor/map/context_manager.cpp:655
+#: src/editor/map/context_manager.cpp:687
 msgid "Loaded embedded map data"
 msgstr "Ladattu sisäinen karttadata."
 
-#: src/editor/map/context_manager.cpp:656
-#: src/editor/map/context_manager.cpp:670
+#: src/editor/map/context_manager.cpp:688
+#: src/editor/map/context_manager.cpp:702
 msgid "Map loaded from scenario"
 msgstr "Kartta skenaariosta ladattu"
 
-#: src/editor/map/context_manager.cpp:666
+#: src/editor/map/context_manager.cpp:698
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -526,9 +538,6 @@ msgstr "Muokattu asetus"
 
 #~ msgid "Flip map"
 #~ msgstr "Käännä kartta"
-
-#~ msgid "Delay transition updates"
-#~ msgstr "Viivytä siirtymisen päivityksiä"
 
 #~ msgid "Language"
 #~ msgstr "Kieli"

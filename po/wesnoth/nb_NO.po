@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.1.1\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-12 19:12+0200\n"
+"POT-Creation-Date: 2013-05-15 18:53+0200\n"
 "PO-Revision-Date: 2011-12-28 23:31+0100\n"
 "Last-Translator: Bjørn Håvard Stokke <bjoennungen@yahoo.no>\n"
 "Language-Team: None\n"
@@ -321,21 +321,21 @@ msgid "Idle AI"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6673
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6665
 msgid ""
 "Enemy unit weight: The (negative) weight given to each enemy unit that can "
 "reach a potential target location.  Default: 100"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6674
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6666
 msgid ""
 "My unit weight: The (positive) weight given to each of the AI's units that "
 "can reach a potential target location.  Default: 1"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6675
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6667
 msgid ""
 "Goal distance weight: The (negative) weight for each step the unit is away "
 "from its goal location.\n"
@@ -344,7 +344,7 @@ msgid ""
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6676
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6668
 msgid ""
 "Terrain defense weight: The (positive) weight of the terrain defense rating "
 "for a potential target location.\n"
@@ -353,19 +353,19 @@ msgid ""
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6677
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6669
 msgid ""
 "Bearing: Everything else being equal, move protected unit toward or away "
 "from enemy groups.  Default: toward"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6685
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6677
 msgid "Set AI parameters"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6691
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6683
 msgid ""
 "Click on 'Close' without changing anything to use defaults.\n"
 "All weights must be 0 or larger.  Invalid inputs are converted to default "
@@ -374,23 +374,23 @@ msgid ""
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6699
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6691
 #, fuzzy
 msgid "Enemy unit weight  (default: 100)"
 msgstr "Fiendtlig enhet i sikte!"
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6707
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6699
 msgid "My unit weight  (default: 1)"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6715
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6707
 msgid "Goal distance weight  (default: 3)"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6723
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6715
 msgid "Terrain defense weight  (default: 0.1)"
 msgstr ""
 
@@ -2824,7 +2824,7 @@ msgstr ""
 #. [lua]: set_status
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:311
-#: data/lua/wml-tags.lua:11446 src/actions/attack.cpp:800
+#: data/lua/wml-tags.lua:11447 src/actions/attack.cpp:800
 msgid "poisoned"
 msgstr "forgiftet"
 
@@ -4429,13 +4429,13 @@ msgid "Turns run out"
 msgstr "Runder: "
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:11977
+#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:11978
 #, fuzzy
 msgid "Early finish bonus."
 msgstr "Bonus for gjenværende runder: "
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:11979
+#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:11980
 #, fuzzy
 msgid "No early finish bonus."
 msgstr "Bonus for gjenværende runder: "
@@ -4451,7 +4451,7 @@ msgid "(early finish bonus)"
 msgstr "Bonus for gjenværende runder: "
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:11987
+#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:11988
 msgid "No gold carried over to the next scenario."
 msgstr "Intet av endelig gull tas med til neste scenario. "
 
@@ -5526,80 +5526,80 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11446 src/actions/attack.cpp:800
+#: data/lua/wml-tags.lua:11447 src/actions/attack.cpp:800
 msgid "female^poisoned"
 msgstr "forgiftet"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11448 src/actions/attack.cpp:805
+#: data/lua/wml-tags.lua:11449 src/actions/attack.cpp:805
 msgid "female^slowed"
 msgstr "saknet"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11448 src/actions/attack.cpp:805
+#: data/lua/wml-tags.lua:11449 src/actions/attack.cpp:805
 msgid "slowed"
 msgstr "forsinket"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11449 src/actions/attack.cpp:810
+#: data/lua/wml-tags.lua:11450 src/actions/attack.cpp:810
 #, fuzzy
 msgid "female^petrified"
 msgstr "forgiftet"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11449 src/actions/attack.cpp:810
+#: data/lua/wml-tags.lua:11450 src/actions/attack.cpp:810
 msgid "petrified"
 msgstr ""
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11450
+#: data/lua/wml-tags.lua:11451
 #, fuzzy
 #| msgid "female^undead"
 msgid "female^unhealable"
 msgstr "vandød"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11450
+#: data/lua/wml-tags.lua:11451
 msgid "unhealable"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:11913 src/multiplayer_connect.cpp:1855
+#: data/lua/wml/objectives.lua:11914 src/multiplayer_connect.cpp:1855
 msgid "Victory:"
 msgstr "Seier:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:11914
+#: data/lua/wml/objectives.lua:11915
 msgid "Defeat:"
 msgstr "Nederlag:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:11915
+#: data/lua/wml/objectives.lua:11916
 msgid "Gold carryover:"
 msgstr ""
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:11916
+#: data/lua/wml/objectives.lua:11917
 msgid "Notes:"
 msgstr ""
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:11934
+#: data/lua/wml/objectives.lua:11935
 msgid "(%d turns left)"
 msgstr ""
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:11936
+#: data/lua/wml/objectives.lua:11937
 msgid "(this turn left)"
 msgstr ""
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:11989
+#: data/lua/wml/objectives.lua:11990
 #, fuzzy
 #| msgid "No gold carried over to the next scenario."
 msgid "%d%% of gold carried over to the next scenario."
@@ -5607,15 +5607,15 @@ msgstr "Intet av endelig gull tas med til neste scenario. "
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
-#: data/scenario-test.cfg:857 src/dialogs.cpp:877 src/mp_depcheck.cpp:458
+#: data/scenario-test.cfg:857 src/dialogs.cpp:1008 src/mp_depcheck.cpp:458
 #: src/mp_options.cpp:227 src/multiplayer_create.cpp:101
 msgid "OK"
 msgstr "OK"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
-#: data/scenario-test.cfg:858 src/dialogs.cpp:878 src/dialogs.cpp:1319
-#: src/dialogs.cpp:1425 src/mp_options.cpp:232
+#: data/scenario-test.cfg:858 src/dialogs.cpp:1009 src/dialogs.cpp:1450
+#: src/dialogs.cpp:1556 src/mp_options.cpp:232
 #: src/multiplayer_connect.cpp:1073 src/multiplayer_create.cpp:100
 #: src/multiplayer_wait.cpp:179
 msgid "Cancel"
@@ -5655,7 +5655,7 @@ msgstr "Avslutt tur"
 #. [label]: id=selected-label-hp
 #: data/themes/default.cfg:205 data/themes/dfool.cfg:229
 #: data/themes/experimental.cfg:179 data/themes/widescreen.cfg:237
-#: data/themes/widescreen.cfg:257 src/menu_events.cpp:154 src/unit.cpp:2409
+#: data/themes/widescreen.cfg:257 src/dialogs.cpp:325 src/unit.cpp:2409
 #: src/unit.cpp:2609
 msgid "HP"
 msgstr "HP"
@@ -5665,7 +5665,7 @@ msgstr "HP"
 #. [label]: id=selected-label-xp
 #: data/themes/default.cfg:214 data/themes/dfool.cfg:239
 #: data/themes/experimental.cfg:188 data/themes/widescreen.cfg:246
-#: data/themes/widescreen.cfg:266 src/dialogs.cpp:368 src/menu_events.cpp:156
+#: data/themes/widescreen.cfg:266 src/dialogs.cpp:327 src/dialogs.cpp:499
 msgid "XP"
 msgstr "XP"
 
@@ -5730,7 +5730,7 @@ msgstr "MP"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=replay-label
-#: data/themes/macros.cfg:51 src/dialogs.cpp:731
+#: data/themes/macros.cfg:51 src/dialogs.cpp:862
 msgid "Replay"
 msgstr "Oppspill"
 
@@ -5796,7 +5796,7 @@ msgstr "Forråtnelsesbrygg"
 msgid "Skip animation"
 msgstr "Utelat animasjon"
 
-#: src/about.cpp:208 src/menu_events.cpp:263 src/menu_events.cpp:290
+#: src/about.cpp:208 src/dialogs.cpp:436 src/menu_events.cpp:166
 #: src/statistics_dialog.cpp:182
 msgid "Close"
 msgstr "Lukk"
@@ -6086,7 +6086,7 @@ msgid "Author"
 msgstr "Forfatter"
 
 #: src/addon/manager_ui.cpp:173 src/addon/manager_ui.cpp:513
-#: src/dialogs.cpp:366 src/dialogs.cpp:823 src/menu_events.cpp:151
+#: src/dialogs.cpp:322 src/dialogs.cpp:497 src/dialogs.cpp:954
 msgid "Name"
 msgstr "Navn"
 
@@ -6099,7 +6099,7 @@ msgid "Size"
 msgstr "Størrelse"
 
 #: src/addon/manager_ui.cpp:174 src/addon/manager_ui.cpp:528
-#: src/dialogs.cpp:365 src/menu_events.cpp:150 src/menu_events.cpp:1089
+#: src/dialogs.cpp:321 src/dialogs.cpp:496 src/menu_events.cpp:965
 msgid "Type"
 msgstr "Type"
 
@@ -6216,8 +6216,8 @@ msgstr "Det er ingen spilltillegg tilgjengelige for nedlastning."
 msgid "There are no add-ons matching the specified criteria on this server."
 msgstr "Det er ingen spilltillegg tilgjengelige for nedlastning."
 
-#: src/addon/manager_ui.cpp:701 src/dialogs.cpp:437 src/dialogs.cpp:848
-#: src/menu_events.cpp:1122
+#: src/addon/manager_ui.cpp:701 src/dialogs.cpp:568 src/dialogs.cpp:979
+#: src/menu_events.cpp:998
 #, fuzzy
 msgid "Filter: "
 msgstr "Egenskaper: "
@@ -6397,7 +6397,7 @@ msgstr "sårbar mot"
 msgid "Slowed"
 msgstr "forsinket"
 
-#: src/attack_prediction_display.cpp:253 src/reports.cpp:904
+#: src/attack_prediction_display.cpp:253 src/reports.cpp:907
 msgid "Total damage"
 msgstr "Totalskade"
 
@@ -6442,7 +6442,7 @@ msgstr "Men Mester, dette er en erfaren enhet av høy rang! "
 msgid "This unit is close to advancing a level. "
 msgstr "Men Mester, denne enheten er nær ved å gå opp et nivå! "
 
-#: src/dialogs.cpp:119 src/dialogs.cpp:441
+#: src/dialogs.cpp:119 src/dialogs.cpp:572
 msgid "Dismiss Unit"
 msgstr "Send bort enhet"
 
@@ -6454,113 +6454,133 @@ msgstr "Forfrem enhet"
 msgid "What should our victorious unit become?"
 msgstr "Hva skal enheten forfremmes til?"
 
-#: src/dialogs.cpp:320
-msgid "No objectives available"
-msgstr "Ingen mål tilgjengelig."
+#: src/dialogs.cpp:323
+msgid "Moves"
+msgstr "Flytt"
 
-#: src/dialogs.cpp:335
-msgid "Recruit"
-msgstr "Rekrutter"
+#: src/dialogs.cpp:324
+msgid "Status"
+msgstr "Status"
 
-#: src/dialogs.cpp:336 src/dialogs.cpp:425
-msgid "Select unit:"
-msgstr "Velg enhet:"
-
-#: src/dialogs.cpp:367 src/menu_events.cpp:155
+#: src/dialogs.cpp:326 src/dialogs.cpp:498
 msgid "Level^Lvl."
 msgstr "Grad"
 
-#: src/dialogs.cpp:369
+#: src/dialogs.cpp:328
+msgid "unit list^Traits"
+msgstr "Karaktertrekk"
+
+#: src/dialogs.cpp:428
+msgid "Unit List"
+msgstr "Enhetsliste"
+
+#: src/dialogs.cpp:434 src/menu_events.cpp:159
+msgid "Scroll To"
+msgstr "Rull til"
+
+#: src/dialogs.cpp:451
+msgid "No objectives available"
+msgstr "Ingen mål tilgjengelig."
+
+#: src/dialogs.cpp:466
+msgid "Recruit"
+msgstr "Rekrutter"
+
+#: src/dialogs.cpp:467 src/dialogs.cpp:556
+msgid "Select unit:"
+msgstr "Velg enhet:"
+
+#: src/dialogs.cpp:500
 msgid "Traits"
 msgstr "Karaktertrekk"
 
-#: src/dialogs.cpp:424
+#: src/dialogs.cpp:555
 msgid "Recall"
 msgstr "Tilbakekall"
 
-#: src/dialogs.cpp:678 src/savegame.cpp:306
+#: src/dialogs.cpp:809 src/savegame.cpp:306
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
-#: src/dialogs.cpp:678 src/savegame.cpp:306
+#: src/dialogs.cpp:809 src/savegame.cpp:306
 #, fuzzy
 #| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %d %I:%M %p %Y"
 msgstr "%a %b %d %H:%M %Y"
 
-#: src/dialogs.cpp:694
+#: src/dialogs.cpp:825
 msgid "#(Invalid)"
 msgstr "#(Ugyldig)"
 
-#: src/dialogs.cpp:712
+#: src/dialogs.cpp:843
 #, fuzzy
 msgid "Campaign: $campaign_name"
 msgstr "Felttogdesigner"
 
-#: src/dialogs.cpp:719
+#: src/dialogs.cpp:850
 msgid "Multiplayer"
 msgstr "Gruppespill"
 
-#: src/dialogs.cpp:721
+#: src/dialogs.cpp:852
 msgid "Tutorial"
 msgstr "Opplæring"
 
-#: src/dialogs.cpp:723
+#: src/dialogs.cpp:854
 #, fuzzy
 #| msgid "Remote scenario"
 msgid "Test scenario"
 msgstr "Scenario hos annen spiller"
 
-#: src/dialogs.cpp:733 src/savegame.cpp:1142
+#: src/dialogs.cpp:864 src/savegame.cpp:1142
 msgid "Turn"
 msgstr "Runde"
 
-#: src/dialogs.cpp:735
+#: src/dialogs.cpp:866
 #, fuzzy
 #| msgid "Scenario Start"
 msgid "Scenario start"
 msgstr "Scenariestart"
 
-#: src/dialogs.cpp:738
+#: src/dialogs.cpp:869
 msgid "Difficulty: "
 msgstr "Vanskelighetsgrad: "
 
-#: src/dialogs.cpp:740
+#: src/dialogs.cpp:871
 msgid "Version: "
 msgstr "Versjon: "
 
-#: src/dialogs.cpp:764 src/dialogs.cpp:790 src/savegame.cpp:336
+#: src/dialogs.cpp:895 src/dialogs.cpp:921 src/savegame.cpp:336
 #: src/savegame.cpp:362
 msgid "%b %d %y"
 msgstr "%b %d %y"
 
-#: src/dialogs.cpp:771 src/reports.cpp:1362 src/savegame.cpp:343
+#: src/dialogs.cpp:902 src/reports.cpp:1365 src/savegame.cpp:343
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/dialogs.cpp:774 src/reports.cpp:1362 src/savegame.cpp:346
+#: src/dialogs.cpp:905 src/reports.cpp:1365 src/savegame.cpp:346
 msgid "%I:%M %p"
 msgstr ""
 
-#: src/dialogs.cpp:779 src/savegame.cpp:351
+#: src/dialogs.cpp:910 src/savegame.cpp:351
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/dialogs.cpp:782 src/savegame.cpp:354
+#: src/dialogs.cpp:913 src/savegame.cpp:354
 #, fuzzy
 #| msgid "%A, %H:%M"
 msgid "%A, %I:%M %p"
 msgstr "%A, %H:%M"
 
-#: src/dialogs.cpp:786 src/savegame.cpp:358
+#: src/dialogs.cpp:917 src/savegame.cpp:358
 msgid "%b %d"
 msgstr "%b %d"
 
-#: src/dialogs.cpp:814
+#: src/dialogs.cpp:945
 msgid "No Saved Games"
 msgstr "Ingen lagrede spill"
 
-#: src/dialogs.cpp:815
+#: src/dialogs.cpp:946
 #, fuzzy
 msgid ""
 "There are no saved games to load.\n"
@@ -6570,66 +6590,66 @@ msgstr ""
 "Det finnes ingen lagrede spill å laste inn.\n"
 "(Spillene lagres automatisk når du gjør ferdig et scenario)"
 
-#: src/dialogs.cpp:823
+#: src/dialogs.cpp:954
 msgid "Date"
 msgstr "Dato"
 
-#: src/dialogs.cpp:840 src/multiplayer_create.cpp:125 src/savegame.cpp:685
+#: src/dialogs.cpp:971 src/multiplayer_create.cpp:125 src/savegame.cpp:685
 msgid "Load Game"
 msgstr "Last spill"
 
-#: src/dialogs.cpp:855
+#: src/dialogs.cpp:986
 #, fuzzy
 #| msgid "Difficulty"
 msgid "Change difficulty"
 msgstr "Vanskelighetsgrad"
 
-#: src/dialogs.cpp:858
+#: src/dialogs.cpp:989
 msgid "Change campaign difficulty before loading"
 msgstr ""
 
-#: src/dialogs.cpp:866
+#: src/dialogs.cpp:997
 msgid "Show replay"
 msgstr "Vis reprise"
 
-#: src/dialogs.cpp:868
+#: src/dialogs.cpp:999
 msgid "Play the embedded replay from the saved game if applicable"
 msgstr ""
 
-#: src/dialogs.cpp:872
+#: src/dialogs.cpp:1003
 #, fuzzy
 msgid "Cancel orders"
 msgstr "Avbryt"
 
-#: src/dialogs.cpp:874
+#: src/dialogs.cpp:1005
 msgid "Cancel any pending unit movements in the saved game"
 msgstr ""
 
-#: src/dialogs.cpp:881
+#: src/dialogs.cpp:1012
 msgid "Delete Save"
 msgstr "Slett lagringsfil"
 
-#: src/dialogs.cpp:939
+#: src/dialogs.cpp:1070
 msgid "Profile"
 msgstr "Profil"
 
-#: src/dialogs.cpp:1052
+#: src/dialogs.cpp:1183
 msgid "level"
 msgstr "grad"
 
-#: src/dialogs.cpp:1065
+#: src/dialogs.cpp:1196
 msgid "HP: "
 msgstr "HP: "
 
-#: src/dialogs.cpp:1068
+#: src/dialogs.cpp:1199
 msgid "XP: "
 msgstr "XP: "
 
-#: src/dialogs.cpp:1072
+#: src/dialogs.cpp:1203
 msgid "Moves: "
 msgstr "Flytt: "
 
-#: src/dialogs.cpp:1352
+#: src/dialogs.cpp:1483
 msgid "KB"
 msgstr "KB"
 
@@ -6823,7 +6843,7 @@ msgstr "Slutt"
 msgid "System default language"
 msgstr "Systemstyrt språkvalg"
 
-#: src/leader_list.cpp:141 src/menu_events.cpp:1112
+#: src/leader_list.cpp:141 src/menu_events.cpp:988
 #: src/multiplayer_connect.cpp:225 src/multiplayer_connect.cpp:269
 msgid "gender^Random"
 msgstr "Tilfeldig"
@@ -6846,54 +6866,54 @@ msgstr "Tilfeldig"
 msgid "?"
 msgstr "?"
 
-#: src/leader_scroll_dialog.cpp:45 src/menu_events.cpp:315
+#: src/leader_scroll_dialog.cpp:45 src/menu_events.cpp:191
 msgid "Leader"
 msgstr "Leder"
 
-#: src/leader_scroll_dialog.cpp:46 src/menu_events.cpp:316
+#: src/leader_scroll_dialog.cpp:46 src/menu_events.cpp:192
 #: src/multiplayer_connect.cpp:1059
 msgid "Team"
 msgstr "Lag"
 
-#: src/leader_scroll_dialog.cpp:47 src/menu_events.cpp:317
+#: src/leader_scroll_dialog.cpp:47 src/menu_events.cpp:193
 #: src/multiplayer_connect.cpp:1069
 msgid "Gold"
 msgstr "Gull"
 
-#: src/leader_scroll_dialog.cpp:48 src/menu_events.cpp:318
+#: src/leader_scroll_dialog.cpp:48 src/menu_events.cpp:194
 msgid "Villages"
 msgstr "Landsbyer"
 
-#: src/leader_scroll_dialog.cpp:49 src/menu_events.cpp:319
+#: src/leader_scroll_dialog.cpp:49 src/menu_events.cpp:195
 msgid "status^Units"
 msgstr "Enheter"
 
-#: src/leader_scroll_dialog.cpp:50 src/menu_events.cpp:320
+#: src/leader_scroll_dialog.cpp:50 src/menu_events.cpp:196
 msgid "Upkeep"
 msgstr "Utgifter"
 
-#: src/leader_scroll_dialog.cpp:51 src/menu_events.cpp:321
+#: src/leader_scroll_dialog.cpp:51 src/menu_events.cpp:197
 #: src/multiplayer_connect.cpp:1070 src/multiplayer_wait.cpp:520
 msgid "Income"
 msgstr "Inntekt"
 
-#: src/leader_scroll_dialog.cpp:163 src/menu_events.cpp:426
+#: src/leader_scroll_dialog.cpp:163 src/menu_events.cpp:302
 msgid "Current Status"
 msgstr "Nåværende status"
 
-#: src/leader_scroll_dialog.cpp:164 src/menu_events.cpp:427
+#: src/leader_scroll_dialog.cpp:164 src/menu_events.cpp:303
 msgid "More >"
 msgstr "Mer >"
 
-#: src/leader_scroll_dialog.cpp:184 src/menu_events.cpp:445
+#: src/leader_scroll_dialog.cpp:184 src/menu_events.cpp:321
 msgid "scenario settings^Leader"
 msgstr "Leder"
 
-#: src/leader_scroll_dialog.cpp:186 src/menu_events.cpp:447
+#: src/leader_scroll_dialog.cpp:186 src/menu_events.cpp:323
 msgid "scenario settings^Side"
 msgstr "Fraksjon"
 
-#: src/leader_scroll_dialog.cpp:187 src/menu_events.cpp:448
+#: src/leader_scroll_dialog.cpp:187 src/menu_events.cpp:324
 msgid ""
 "scenario settings^Start\n"
 "Gold"
@@ -6901,7 +6921,7 @@ msgstr ""
 "Start\n"
 "Gull"
 
-#: src/leader_scroll_dialog.cpp:188 src/menu_events.cpp:449
+#: src/leader_scroll_dialog.cpp:188 src/menu_events.cpp:325
 msgid ""
 "scenario settings^Base\n"
 "Income"
@@ -6909,7 +6929,7 @@ msgstr ""
 "Basis\n"
 "Inntekt"
 
-#: src/leader_scroll_dialog.cpp:189 src/menu_events.cpp:450
+#: src/leader_scroll_dialog.cpp:189 src/menu_events.cpp:326
 msgid ""
 "scenario settings^Gold Per\n"
 "Village"
@@ -6917,7 +6937,7 @@ msgstr ""
 "Gull per\n"
 "landsby"
 
-#: src/leader_scroll_dialog.cpp:190 src/menu_events.cpp:451
+#: src/leader_scroll_dialog.cpp:190 src/menu_events.cpp:327
 #, fuzzy
 #| msgid ""
 #| "scenario settings^Gold Per\n"
@@ -6929,29 +6949,29 @@ msgstr ""
 "Gull per\n"
 "landsby"
 
-#: src/leader_scroll_dialog.cpp:191 src/menu_events.cpp:452
+#: src/leader_scroll_dialog.cpp:191 src/menu_events.cpp:328
 msgid "scenario settings^Fog"
 msgstr "Dis"
 
-#: src/leader_scroll_dialog.cpp:192 src/menu_events.cpp:453
+#: src/leader_scroll_dialog.cpp:192 src/menu_events.cpp:329
 msgid "scenario settings^Shroud"
 msgstr "Klede"
 
 #: src/leader_scroll_dialog.cpp:246 src/leader_scroll_dialog.cpp:247
-#: src/menu_events.cpp:503 src/menu_events.cpp:504
+#: src/menu_events.cpp:379 src/menu_events.cpp:380
 msgid "no"
 msgstr "nei"
 
 #: src/leader_scroll_dialog.cpp:246 src/leader_scroll_dialog.cpp:247
-#: src/menu_events.cpp:503 src/menu_events.cpp:504
+#: src/menu_events.cpp:379 src/menu_events.cpp:380
 msgid "yes"
 msgstr "ja"
 
-#: src/leader_scroll_dialog.cpp:263 src/menu_events.cpp:520
+#: src/leader_scroll_dialog.cpp:263 src/menu_events.cpp:396
 msgid "Scenario Settings"
 msgstr "Scenarieinnstillinger"
 
-#: src/leader_scroll_dialog.cpp:266 src/menu_events.cpp:523
+#: src/leader_scroll_dialog.cpp:266 src/menu_events.cpp:399
 msgid " < Back"
 msgstr " < Tilbake"
 
@@ -7043,73 +7063,53 @@ msgstr ""
 msgid "Statistics"
 msgstr "Statistikk"
 
-#: src/menu_events.cpp:152
-msgid "Moves"
-msgstr "Flytt"
-
-#: src/menu_events.cpp:153
-msgid "Status"
-msgstr "Status"
-
-#: src/menu_events.cpp:157
-msgid "unit list^Traits"
-msgstr "Karaktertrekk"
-
-#: src/menu_events.cpp:255
-msgid "Unit List"
-msgstr "Enhetsliste"
-
-#: src/menu_events.cpp:261 src/menu_events.cpp:283
-msgid "Scroll To"
-msgstr "Rull til"
-
-#: src/menu_events.cpp:542
+#: src/menu_events.cpp:418
 msgid "Save the Map As"
 msgstr "Lagre kartet som"
 
-#: src/menu_events.cpp:546
+#: src/menu_events.cpp:422
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Lagret kart eksisterer allerede. Vil du overskrive det?"
 
-#: src/menu_events.cpp:558
+#: src/menu_events.cpp:434
 msgid "Map saved."
 msgstr ""
 
-#: src/menu_events.cpp:562
+#: src/menu_events.cpp:438
 msgid "Could not save the map: $msg"
 msgstr ""
 
-#: src/menu_events.cpp:634
+#: src/menu_events.cpp:510
 msgid "Message:"
 msgstr "Melding:"
 
-#: src/menu_events.cpp:635
+#: src/menu_events.cpp:511
 msgid "Send to allies only"
 msgstr "Send kun til allierte"
 
-#: src/menu_events.cpp:635
+#: src/menu_events.cpp:511
 msgid "Send to observers only"
 msgstr "Send kun til observatører"
 
-#: src/menu_events.cpp:702
+#: src/menu_events.cpp:578
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "unit^Gull"
 msgstr[1] "Gull"
 
-#: src/menu_events.cpp:709
+#: src/menu_events.cpp:585
 msgid "You have no units available to recruit."
 msgstr "Du har ingen enheter å rekruttere."
 
-#: src/menu_events.cpp:742
+#: src/menu_events.cpp:618
 msgid "You don’t have enough gold to recruit that unit"
 msgstr "Du har ikke nok gull til å rekruttere denne enheten."
 
-#: src/menu_events.cpp:774
+#: src/menu_events.cpp:650
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Du er blitt skilt fra soldatene dine og kan ikke kalle dem tilbake"
 
-#: src/menu_events.cpp:801
+#: src/menu_events.cpp:677
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -7117,171 +7117,171 @@ msgstr ""
 "Det finnes ingen tropper å tilbakekalle\n"
 "(Du må ha overlevende veteraner fra tidligere scenarier)."
 
-#: src/menu_events.cpp:807
+#: src/menu_events.cpp:683
 msgid "You currently can't recall at the highlighted location"
 msgstr ""
 
-#: src/menu_events.cpp:819
+#: src/menu_events.cpp:695
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] "Du må ha minst 1 gullstykke for å tilbakekalle en enhet"
 msgstr[1] "Du må ha minst $cost gullstykker for å tilbakekalle en enhet"
 
-#: src/menu_events.cpp:938
+#: src/menu_events.cpp:814
 #, fuzzy
 #| msgid "pause at end of turn"
 msgid "You cannot end your turn yet!"
 msgstr "pause ved slutten av turen"
 
-#: src/menu_events.cpp:952
+#: src/menu_events.cpp:828
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 "Du ennå ikke flyttet noen enheter. Er du sikker på at du vil avslutte turen?"
 
-#: src/menu_events.cpp:959 src/menu_events.cpp:966
+#: src/menu_events.cpp:835 src/menu_events.cpp:842
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "Noen enheter kan fremdeles flytte. Vil du likevel avslutte turen?"
 
-#: src/menu_events.cpp:1006
+#: src/menu_events.cpp:882
 msgid "Rename Unit"
 msgstr "Navngi enhet"
 
-#: src/menu_events.cpp:1007
+#: src/menu_events.cpp:883
 msgid "Name:"
 msgstr "Navn:"
 
-#: src/menu_events.cpp:1088
+#: src/menu_events.cpp:964
 msgid "Race"
 msgstr "Kappløp"
 
-#: src/menu_events.cpp:1109
+#: src/menu_events.cpp:985
 msgid "Create Unit (Debug!)"
 msgstr ""
 
-#: src/menu_events.cpp:1112 src/multiplayer_wait.cpp:131
+#: src/menu_events.cpp:988 src/multiplayer_wait.cpp:131
 msgid "Gender: "
 msgstr "Kjønn: "
 
-#: src/menu_events.cpp:1403
+#: src/menu_events.cpp:1279
 msgid "Search"
 msgstr "Søk"
 
-#: src/menu_events.cpp:1580
+#: src/menu_events.cpp:1456
 msgid "This command is currently unavailable."
 msgstr "Denne kommandoen er i øyeblikket ikke tilgjengelig."
 
-#: src/menu_events.cpp:1586
+#: src/menu_events.cpp:1462
 msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
 msgstr ""
 
-#: src/menu_events.cpp:1604
+#: src/menu_events.cpp:1480
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
 msgstr ""
 
-#: src/menu_events.cpp:1606
+#: src/menu_events.cpp:1482
 msgid "do not translate the 'all'^[all|<command>]"
 msgstr ""
 
-#: src/menu_events.cpp:1650
+#: src/menu_events.cpp:1526
 msgid "Error:"
 msgstr "Feil:"
 
-#: src/menu_events.cpp:1656
+#: src/menu_events.cpp:1532
 msgid "Missing argument $arg_id"
 msgstr ""
 
-#: src/menu_events.cpp:1704
+#: src/menu_events.cpp:1580
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
 msgstr ""
 
-#: src/menu_events.cpp:1704 src/menu_events.cpp:1705 src/menu_events.cpp:1728
+#: src/menu_events.cpp:1580 src/menu_events.cpp:1581 src/menu_events.cpp:1604
 msgid "help"
 msgstr "hjelp"
 
-#: src/menu_events.cpp:1705
+#: src/menu_events.cpp:1581
 msgid "Type $help_command <command> for more info."
 msgstr ""
 
-#: src/menu_events.cpp:1716
+#: src/menu_events.cpp:1592
 msgid " No help available."
 msgstr " Ingen hjelp tilgjengelig."
 
-#: src/menu_events.cpp:1721
+#: src/menu_events.cpp:1597
 msgid "Usage:"
 msgstr "Bruken:"
 
-#: src/menu_events.cpp:1726
+#: src/menu_events.cpp:1602
 msgid "aliases:"
 msgstr ""
 
-#: src/menu_events.cpp:1847
+#: src/menu_events.cpp:1723
 msgid "(A) — admin command"
 msgstr ""
 
-#: src/menu_events.cpp:1854 src/menu_events.cpp:2061
+#: src/menu_events.cpp:1730 src/menu_events.cpp:1937
 msgid "(admin only)"
 msgstr "(kun admin"
 
-#: src/menu_events.cpp:1874
+#: src/menu_events.cpp:1750
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
 msgstr ""
 
-#: src/menu_events.cpp:1878
+#: src/menu_events.cpp:1754
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
 msgstr ""
 
-#: src/menu_events.cpp:1879 src/menu_events.cpp:1882 src/menu_events.cpp:1884
-#: src/menu_events.cpp:1886 src/menu_events.cpp:1888 src/menu_events.cpp:1915
-#: src/menu_events.cpp:1917 src/menu_events.cpp:1919 src/menu_events.cpp:1933
+#: src/menu_events.cpp:1755 src/menu_events.cpp:1758 src/menu_events.cpp:1760
+#: src/menu_events.cpp:1762 src/menu_events.cpp:1764 src/menu_events.cpp:1791
+#: src/menu_events.cpp:1793 src/menu_events.cpp:1795 src/menu_events.cpp:1809
 msgid "<nickname>"
 msgstr ""
 
-#: src/menu_events.cpp:1881
+#: src/menu_events.cpp:1757
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
 
-#: src/menu_events.cpp:1884
+#: src/menu_events.cpp:1760
 msgid "Kick a player or observer."
 msgstr ""
 
-#: src/menu_events.cpp:1886
+#: src/menu_events.cpp:1762
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr ""
 
-#: src/menu_events.cpp:1888
+#: src/menu_events.cpp:1764
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
 
-#: src/menu_events.cpp:1890
+#: src/menu_events.cpp:1766
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr ""
 
-#: src/menu_events.cpp:1900
+#: src/menu_events.cpp:1776
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
 msgstr ""
 
-#: src/menu_events.cpp:1904
+#: src/menu_events.cpp:1780
 msgid "<message>"
 msgstr "<melding>"
 
-#: src/menu_events.cpp:1904
+#: src/menu_events.cpp:1780
 msgid "Send an emotion or personal action in chat."
 msgstr "Send et uttrykk eller en personlig handling i snakkevinduet"
 
-#: src/menu_events.cpp:1907
+#: src/menu_events.cpp:1783
 #, fuzzy
 #| msgid ""
 #| "Sends a private message. You can’t send messages to players that don’t "
@@ -7293,511 +7293,511 @@ msgstr ""
 "Sender en privat beskjed. Du kan ikke sende private beskjeder til spillere "
 "som ikke kontrollerer lag i det spillet du deltar i."
 
-#: src/menu_events.cpp:1909
+#: src/menu_events.cpp:1785
 #, fuzzy
 #| msgid "<message>"
 msgid "<nickname> <message>"
 msgstr "<melding>"
 
-#: src/menu_events.cpp:1913
+#: src/menu_events.cpp:1789
 msgid "<level> <domain>"
 msgstr ""
 
-#: src/menu_events.cpp:1913
+#: src/menu_events.cpp:1789
 msgid "Change the log level of a log domain."
 msgstr ""
 
-#: src/menu_events.cpp:1915
+#: src/menu_events.cpp:1791
 #, fuzzy
 #| msgid "Add a nick to your ignores list."
 msgid "Add a nickname to your ignores list."
 msgstr "Legg til en bruker på ignoreringslisten."
 
-#: src/menu_events.cpp:1917
+#: src/menu_events.cpp:1793
 #, fuzzy
 #| msgid "Add a nick to your friends list."
 msgid "Add a nickname to your friends list."
 msgstr "Legg til en bruker på vennelisten."
 
-#: src/menu_events.cpp:1919
+#: src/menu_events.cpp:1795
 #, fuzzy
 #| msgid "Remove a nick from your ignores or friends list."
 msgid "Remove a nickname from your ignores or friends list."
 msgstr "Fjern en spiller fra ignorerings- eller vennelisten."
 
-#: src/menu_events.cpp:1921
+#: src/menu_events.cpp:1797
 msgid "Show your ignores and friends list."
 msgstr "Vis listen over ignorerte brukere og venner."
 
-#: src/menu_events.cpp:1924
+#: src/menu_events.cpp:1800
 msgid "Display version information."
 msgstr "Vis versjonsinformasjon."
 
-#: src/menu_events.cpp:1926
+#: src/menu_events.cpp:1802
 msgid "<password> <email (optional)>"
 msgstr ""
 
-#: src/menu_events.cpp:1926
+#: src/menu_events.cpp:1802
 msgid "Register your nickname"
 msgstr ""
 
-#: src/menu_events.cpp:1928
+#: src/menu_events.cpp:1804
 msgid "Drop your nickname."
 msgstr ""
 
-#: src/menu_events.cpp:1930
+#: src/menu_events.cpp:1806
 msgid "Update details for your nickname. For possible details see '/details'."
 msgstr ""
 
-#: src/menu_events.cpp:1931
+#: src/menu_events.cpp:1807
 msgid "<detail> <value>"
 msgstr ""
 
-#: src/menu_events.cpp:1933
+#: src/menu_events.cpp:1809
 #, fuzzy
 #| msgid "Request information about a nick."
 msgid "Request information about a nickname."
 msgstr "Be om informasjon om et nick."
 
-#: src/menu_events.cpp:1935
+#: src/menu_events.cpp:1811
 msgid "Request a list of details you can set for your registered nickname."
 msgstr ""
 
-#: src/menu_events.cpp:1937 src/menu_events.cpp:1940 src/menu_events.cpp:1942
+#: src/menu_events.cpp:1813 src/menu_events.cpp:1816 src/menu_events.cpp:1818
 msgid "<room>"
 msgstr ""
 
-#: src/menu_events.cpp:1937
+#: src/menu_events.cpp:1813
 msgid "Join a room."
 msgstr "Bli med i et nettverksspill."
 
-#: src/menu_events.cpp:1940
+#: src/menu_events.cpp:1816
 msgid "Part a room."
 msgstr ""
 
-#: src/menu_events.cpp:1942
+#: src/menu_events.cpp:1818
 msgid "List room members."
 msgstr "Vi rommets medlemmer."
 
-#: src/menu_events.cpp:1944
+#: src/menu_events.cpp:1820
 msgid "List available rooms."
 msgstr ""
 
-#: src/menu_events.cpp:1946
+#: src/menu_events.cpp:1822
 msgid "<room> <msg>"
 msgstr ""
 
-#: src/menu_events.cpp:1946
+#: src/menu_events.cpp:1822
 msgid "Room message."
 msgstr ""
 
-#: src/menu_events.cpp:1948
+#: src/menu_events.cpp:1824
 msgid "<room> <type> [value]"
 msgstr ""
 
-#: src/menu_events.cpp:1948
+#: src/menu_events.cpp:1824
 msgid "Room query."
 msgstr ""
 
-#: src/menu_events.cpp:2053
+#: src/menu_events.cpp:1929
 msgid "(D) — debug only, (N) — network only, (A) — admin only"
 msgstr ""
 
-#: src/menu_events.cpp:2059
+#: src/menu_events.cpp:1935
 msgid "(debug command)"
 msgstr "(feilsøkingskommando"
 
-#: src/menu_events.cpp:2060
+#: src/menu_events.cpp:1936
 msgid "(network only)"
 msgstr "(kun nettverk)"
 
-#: src/menu_events.cpp:2085
+#: src/menu_events.cpp:1961
 msgid "Refresh gui."
 msgstr ""
 
-#: src/menu_events.cpp:2087
+#: src/menu_events.cpp:1963
 msgid "Switch a side to/from AI control."
 msgstr ""
 
-#: src/menu_events.cpp:2087
+#: src/menu_events.cpp:1963
 msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr ""
 
-#: src/menu_events.cpp:2090
+#: src/menu_events.cpp:1966
 msgid "<side> <nickname>"
 msgstr ""
 
-#: src/menu_events.cpp:2090
+#: src/menu_events.cpp:1966
 msgid "Assign control of a side to a different player or observer."
 msgstr ""
 
-#: src/menu_events.cpp:2092
+#: src/menu_events.cpp:1968
 msgid "Clear chat history."
 msgstr "Visk ut meldinger."
 
-#: src/menu_events.cpp:2094
+#: src/menu_events.cpp:1970
 msgid "Visualize the screen refresh procedure."
 msgstr ""
 
-#: src/menu_events.cpp:2096
+#: src/menu_events.cpp:1972
 msgid "Debug foreground terrain."
 msgstr ""
 
-#: src/menu_events.cpp:2098
+#: src/menu_events.cpp:1974
 msgid "Debug layers from terrain under the mouse."
 msgstr ""
 
-#: src/menu_events.cpp:2099
+#: src/menu_events.cpp:1975
 msgid "Show fps."
 msgstr "Vis fps."
 
-#: src/menu_events.cpp:2101
+#: src/menu_events.cpp:1977
 msgid "Save game."
 msgstr "Lagre spillet."
 
-#: src/menu_events.cpp:2103
+#: src/menu_events.cpp:1979
 msgid "Quit game."
 msgstr "Avslutt spillet."
 
-#: src/menu_events.cpp:2107
+#: src/menu_events.cpp:1983
 msgid "Save and quit."
 msgstr ""
 
-#: src/menu_events.cpp:2110
+#: src/menu_events.cpp:1986
 msgid "Ignore replay errors."
 msgstr ""
 
-#: src/menu_events.cpp:2112
+#: src/menu_events.cpp:1988
 msgid "Disable autosaves."
 msgstr ""
 
-#: src/menu_events.cpp:2114
+#: src/menu_events.cpp:1990
 msgid "<id>"
 msgstr ""
 
-#: src/menu_events.cpp:2114
+#: src/menu_events.cpp:1990
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr ""
 "Fortsett til neste scenario, eller scenario son er identifisert med 'id'"
 
-#: src/menu_events.cpp:2117
+#: src/menu_events.cpp:1993
 msgid "Choose next scenario"
 msgstr "Velg neste scenario"
 
-#: src/menu_events.cpp:2120
+#: src/menu_events.cpp:1996
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
 msgstr ""
 
-#: src/menu_events.cpp:2120
+#: src/menu_events.cpp:1996
 msgid "[turn]"
 msgstr ""
 
-#: src/menu_events.cpp:2122
+#: src/menu_events.cpp:1998
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
 msgstr ""
 
-#: src/menu_events.cpp:2122
+#: src/menu_events.cpp:1998
 msgid "[limit]"
 msgstr ""
 
-#: src/menu_events.cpp:2124
+#: src/menu_events.cpp:2000
 msgid "Turn debug mode on."
 msgstr "Skru på feilsøkingsmodus."
 
-#: src/menu_events.cpp:2126
+#: src/menu_events.cpp:2002
 msgid "Turn debug mode off."
 msgstr ""
 
-#: src/menu_events.cpp:2128 src/menu_events.cpp:2132
+#: src/menu_events.cpp:2004 src/menu_events.cpp:2008
 msgid "<command>[;<command>...]"
 msgstr ""
 
-#: src/menu_events.cpp:2128
+#: src/menu_events.cpp:2004
 msgid "Execute a Lua statement."
 msgstr ""
 
-#: src/menu_events.cpp:2130
+#: src/menu_events.cpp:2006
 msgid "Grant higher privileges to Lua scripts."
 msgstr ""
 
-#: src/menu_events.cpp:2132
+#: src/menu_events.cpp:2008
 msgid "Set the command used by the custom command hotkey"
 msgstr ""
 
-#: src/menu_events.cpp:2135
+#: src/menu_events.cpp:2011
 msgid "Invoke a dialog allowing changing control of MP sides."
 msgstr ""
 
-#: src/menu_events.cpp:2139
+#: src/menu_events.cpp:2015
 msgid "Launch the gamestate inspector"
 msgstr ""
 
-#: src/menu_events.cpp:2141
+#: src/menu_events.cpp:2017
 msgid "Manage persistence data"
 msgstr ""
 
-#: src/menu_events.cpp:2143
+#: src/menu_events.cpp:2019
 msgid "<name>[=<command>]"
 msgstr ""
 
-#: src/menu_events.cpp:2143
+#: src/menu_events.cpp:2019
 msgid "Set or show alias to a command"
 msgstr ""
 
-#: src/menu_events.cpp:2145
+#: src/menu_events.cpp:2021
 msgid "<var>=<value>"
 msgstr ""
 
-#: src/menu_events.cpp:2145
+#: src/menu_events.cpp:2021
 msgid "Set a scenario variable."
 msgstr ""
 
-#: src/menu_events.cpp:2147
+#: src/menu_events.cpp:2023
 msgid "<var>"
 msgstr ""
 
-#: src/menu_events.cpp:2147
+#: src/menu_events.cpp:2023
 msgid "Show a scenario variable."
 msgstr ""
 
-#: src/menu_events.cpp:2149
+#: src/menu_events.cpp:2025
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
 
-#: src/menu_events.cpp:2156
+#: src/menu_events.cpp:2032
 msgid "Discover all units in help."
 msgstr ""
 
-#: src/menu_events.cpp:2158
+#: src/menu_events.cpp:2034
 msgid "'Undiscover' all units in help."
 msgstr ""
 
-#: src/menu_events.cpp:2160
+#: src/menu_events.cpp:2036
 msgid "Create a unit."
 msgstr "Opprett en enhet"
 
-#: src/menu_events.cpp:2162
+#: src/menu_events.cpp:2038
 msgid "Toggle fog for the current player."
 msgstr "Bytt dis på gjeldende spiller."
 
-#: src/menu_events.cpp:2164
+#: src/menu_events.cpp:2040
 msgid "Toggle shroud for the current player."
 msgstr "Bytt kappe på gjelende spiller."
 
-#: src/menu_events.cpp:2166
+#: src/menu_events.cpp:2042
 msgid "Give gold to the current player."
 msgstr ""
 
-#: src/menu_events.cpp:2168
+#: src/menu_events.cpp:2044
 msgid "Fire a game event."
 msgstr ""
 
-#: src/menu_events.cpp:2171
+#: src/menu_events.cpp:2047
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr ""
 
-#: src/menu_events.cpp:2174
+#: src/menu_events.cpp:2050
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr ""
 
-#: src/menu_events.cpp:2177
+#: src/menu_events.cpp:2053
 msgid "Toggle planning mode."
 msgstr ""
 
-#: src/menu_events.cpp:2180
+#: src/menu_events.cpp:2056
 msgid "Access whiteboard options dialog."
 msgstr ""
 
-#: src/menu_events.cpp:2223
+#: src/menu_events.cpp:2099
 msgid "Unknown debug level: '$level'."
 msgstr ""
 
-#: src/menu_events.cpp:2225 src/menu_events.cpp:2234
+#: src/menu_events.cpp:2101 src/menu_events.cpp:2110
 msgid "error"
 msgstr "feil"
 
-#: src/menu_events.cpp:2232
+#: src/menu_events.cpp:2108
 msgid "Unknown debug domain: '$domain'."
 msgstr ""
 
-#: src/menu_events.cpp:2241
+#: src/menu_events.cpp:2117
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr ""
 
-#: src/menu_events.cpp:2312
+#: src/menu_events.cpp:2188
 msgid "whisper to $receiver"
 msgstr ""
 
-#: src/menu_events.cpp:2319 src/multiplayer_ui.cpp:550
+#: src/menu_events.cpp:2195 src/multiplayer_ui.cpp:550
 msgid "whisper: $sender"
 msgstr ""
 
-#: src/menu_events.cpp:2415 src/menu_events.cpp:2434
+#: src/menu_events.cpp:2291 src/menu_events.cpp:2310
 #: src/multiplayer_connect.cpp:666
 msgid "(empty)"
 msgstr "(tom)"
 
-#: src/menu_events.cpp:2415 src/menu_events.cpp:2421 src/menu_events.cpp:2471
+#: src/menu_events.cpp:2291 src/menu_events.cpp:2297 src/menu_events.cpp:2347
 msgid "ignores list"
 msgstr "Overselisten"
 
-#: src/menu_events.cpp:2421
+#: src/menu_events.cpp:2297
 msgid "Added to ignore list: $nick"
 msgstr "Lagt til på overselisten: $nick"
 
-#: src/menu_events.cpp:2424 src/menu_events.cpp:2443
+#: src/menu_events.cpp:2300 src/menu_events.cpp:2319
 msgid "Invalid username: $nick"
 msgstr "Ugyldig brukernavn: $nick"
 
-#: src/menu_events.cpp:2434 src/menu_events.cpp:2441 src/menu_events.cpp:2467
+#: src/menu_events.cpp:2310 src/menu_events.cpp:2317 src/menu_events.cpp:2343
 msgid "friends list"
 msgstr "vennelisten"
 
-#: src/menu_events.cpp:2441
+#: src/menu_events.cpp:2317
 msgid "Added to friends list: $nick"
 msgstr "Lagt til på vennslisten: $nick"
 
-#: src/menu_events.cpp:2457
+#: src/menu_events.cpp:2333
 msgid "Removed from list: $nick"
 msgstr "Fjernet fra liste: $nick"
 
-#: src/menu_events.cpp:2457 src/menu_events.cpp:2475
+#: src/menu_events.cpp:2333 src/menu_events.cpp:2351
 msgid "friends and ignores list"
 msgstr "venner og overse liste"
 
-#: src/menu_events.cpp:2475
+#: src/menu_events.cpp:2351
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:2480
+#: src/menu_events.cpp:2356
 msgid "version"
 msgstr "versjon"
 
-#: src/menu_events.cpp:2496
+#: src/menu_events.cpp:2372
 msgid "registering with password *** and no email address"
 msgstr ""
 
-#: src/menu_events.cpp:2500
+#: src/menu_events.cpp:2376
 msgid "registering with password *** and email address $email"
 msgstr ""
 
-#: src/menu_events.cpp:2503 src/menu_events.cpp:2514 src/menu_events.cpp:2532
-#: src/menu_events.cpp:2546
+#: src/menu_events.cpp:2379 src/menu_events.cpp:2390 src/menu_events.cpp:2408
+#: src/menu_events.cpp:2422
 msgid "nick registration"
 msgstr ""
 
-#: src/menu_events.cpp:2514
+#: src/menu_events.cpp:2390
 msgid "dropping your username"
 msgstr ""
 
-#: src/menu_events.cpp:2532
+#: src/menu_events.cpp:2408
 msgid "setting $var to $value"
 msgstr ""
 
-#: src/menu_events.cpp:2546
+#: src/menu_events.cpp:2422
 msgid "requesting information for user $nick"
 msgstr "ønsker informasjon av brukeren $nick"
 
-#: src/menu_events.cpp:2659
+#: src/menu_events.cpp:2539
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Kunne ikke finne merke eller enhet som inneholdt '$search'."
 
-#: src/menu_events.cpp:2698
+#: src/menu_events.cpp:2578
 msgid "Can't droid invalid side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2703
+#: src/menu_events.cpp:2583
 msgid "Can't droid networked side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2741
+#: src/menu_events.cpp:2621
 msgid "Can't change control of invalid side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2747
+#: src/menu_events.cpp:2627
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2861
+#: src/menu_events.cpp:2741
 #, fuzzy
 #| msgid "Players: "
 msgid "Layers"
 msgstr "Spillere: "
 
-#: src/menu_events.cpp:2935
+#: src/menu_events.cpp:2815
 msgid "Choose Scenario (Debug!)"
 msgstr ""
 
-#: src/menu_events.cpp:2981
+#: src/menu_events.cpp:2861
 msgid "Debug mode activated!"
 msgstr "Feilsøkmodus aktivert!"
 
-#: src/menu_events.cpp:2984
+#: src/menu_events.cpp:2864
 msgid "Debug mode not available in network games"
 msgstr ""
 
-#: src/menu_events.cpp:2989
+#: src/menu_events.cpp:2869
 msgid "Debug mode deactivated!"
 msgstr "Feilsøkmodus deaktivert"
 
-#: src/menu_events.cpp:3000
+#: src/menu_events.cpp:2880
 msgid "Unsafe Lua scripts."
 msgstr ""
 
-#: src/menu_events.cpp:3001
+#: src/menu_events.cpp:2881
 msgid ""
 "You are about to open a security breach in Wesnoth. Are you sure you want to "
 "continue? If you have downloaded add-ons, do not click 'ok'! They would "
 "instantly take over your computer. You have been warned."
 msgstr ""
 
-#: src/menu_events.cpp:3004
+#: src/menu_events.cpp:2884
 msgid "Unsafe mode enabled!"
 msgstr ""
 
-#: src/menu_events.cpp:3047
+#: src/menu_events.cpp:2927
 msgid "Variable not found"
 msgstr ""
 
-#: src/menu_events.cpp:3098
+#: src/menu_events.cpp:2978
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
 msgstr ""
 
-#: src/menu_events.cpp:3154
+#: src/menu_events.cpp:3034
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr ""
 
-#: src/menu_events.cpp:3165
+#: src/menu_events.cpp:3045
 msgid "Invalid unit type"
 msgstr "Ugyldig kodenavn"
 
-#: src/menu_events.cpp:3178
+#: src/menu_events.cpp:3058
 msgid "Invalid location"
 msgstr "Ugyldig plassering"
 
-#: src/menu_events.cpp:3213 src/playsingle_controller.cpp:221
+#: src/menu_events.cpp:3093 src/playsingle_controller.cpp:221
 #, fuzzy
 #| msgid "Debug mode activated!"
 msgid "Planning mode activated!"
 msgstr "Feilsøkmodus aktivert!"
 
-#: src/menu_events.cpp:3216 src/playsingle_controller.cpp:224
+#: src/menu_events.cpp:3096 src/playsingle_controller.cpp:224
 #, fuzzy
 #| msgid "Debug mode deactivated!"
 msgid "Planning mode deactivated!"
 msgstr "Feilsøkmodus deaktivert"
 
-#: src/menu_events.cpp:3229
+#: src/menu_events.cpp:3109
 msgid "ai"
 msgstr ""
 
-#: src/menu_events.cpp:3239 src/menu_events.cpp:3269
+#: src/menu_events.cpp:3119 src/menu_events.cpp:3149
 msgid "prompt^Command:"
 msgstr "Kommando:"
 
@@ -8060,7 +8060,7 @@ msgstr "Scenariet er ugyldig fordi det ikke har noen spillerplasser."
 msgid "Enter a name for the new player"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1156 src/reports.cpp:155 src/savegame.cpp:888
+#: src/multiplayer_connect.cpp:1156 src/reports.cpp:158 src/savegame.cpp:888
 msgid "Name: "
 msgstr "Navn:"
 
@@ -8744,55 +8744,55 @@ msgstr ""
 "Det har skjedd en frakobling fra nettverket, og spillet kan ikke fortsette. "
 "Vil du lagre spillet?"
 
-#: src/reports.cpp:175
+#: src/reports.cpp:178
 #, fuzzy
 #| msgid "Type"
 msgid "Type: "
 msgstr "Type"
 
-#: src/reports.cpp:195
+#: src/reports.cpp:198
 msgid "Race: "
 msgstr "Kappløp: "
 
-#: src/reports.cpp:237
+#: src/reports.cpp:240
 #, fuzzy
 #| msgid "Level"
 msgid "Level: "
 msgstr "Grad"
 
-#: src/reports.cpp:240
+#: src/reports.cpp:243
 #, fuzzy
 #| msgid "Advancements"
 msgid "No advancement"
 msgstr "Forfremmelser"
 
-#: src/reports.cpp:242
+#: src/reports.cpp:245
 #, fuzzy
 #| msgid "Advances to: "
 msgid "Advances to:"
 msgstr "Forfremmes til: "
 
-#: src/reports.cpp:281
+#: src/reports.cpp:284
 #, fuzzy
 #| msgid "Traits"
 msgid "Trait: "
 msgstr "Karaktertrekk"
 
-#: src/reports.cpp:304
+#: src/reports.cpp:307
 msgid "invisible: "
 msgstr "usynlig: "
 
-#: src/reports.cpp:305
+#: src/reports.cpp:308
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "Denne enheten er usynlig. Den kan ikke sees eller bli angrepet av fiendtlige "
 "enheter."
 
-#: src/reports.cpp:308
+#: src/reports.cpp:311
 msgid "slowed: "
 msgstr "forsinket: "
 
-#: src/reports.cpp:309
+#: src/reports.cpp:312
 #, fuzzy
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
@@ -8800,11 +8800,11 @@ msgid ""
 msgstr ""
 "Denne enheten er blitt forsinket. Den vil bare gi halv normal skade i angrep."
 
-#: src/reports.cpp:312
+#: src/reports.cpp:315
 msgid "poisoned: "
 msgstr "forgiftet: "
 
-#: src/reports.cpp:313
+#: src/reports.cpp:316
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the ‘cures’ "
@@ -8820,209 +8820,209 @@ msgstr ""
 "Enheter kan ikke dø av gift alene. Giften vil ikke redusere den til mindre "
 "enn 1 HP."
 
-#: src/reports.cpp:316
+#: src/reports.cpp:319
 msgid "petrified: "
 msgstr ""
 
-#: src/reports.cpp:317
+#: src/reports.cpp:320
 #, fuzzy
 msgid "This unit has been petrified. It may not move or attack."
 msgstr ""
 "Denne enheten er blitt forsteinet. Den kan ikke bevege seg eller kjempe."
 
-#: src/reports.cpp:340
+#: src/reports.cpp:343
 msgid "Alignment: "
 msgstr "Sinnelag: "
 
-#: src/reports.cpp:380
+#: src/reports.cpp:383
 #, fuzzy
 #| msgid "Abilities: "
 msgid "Ability: "
 msgstr "Egenskaper: "
 
-#: src/reports.cpp:382 src/reports.cpp:806
+#: src/reports.cpp:385 src/reports.cpp:809
 msgid " (inactive)"
 msgstr ""
 
-#: src/reports.cpp:435
+#: src/reports.cpp:438
 #, fuzzy
 msgid "Resistances: "
 msgstr "Motstander"
 
-#: src/reports.cpp:437
+#: src/reports.cpp:440
 msgid "(Att / Def)"
 msgstr ""
 
-#: src/reports.cpp:463
+#: src/reports.cpp:466
 msgid "Experience Modifier: "
 msgstr "Erfaringsskalering: "
 
-#: src/reports.cpp:514
+#: src/reports.cpp:517
 #, fuzzy
 #| msgid "Terrain"
 msgid "Terrain: "
 msgstr "Terreng"
 
-#: src/reports.cpp:531
+#: src/reports.cpp:534
 msgid "maximum^max."
 msgstr ""
 
-#: src/reports.cpp:531
+#: src/reports.cpp:534
 msgid "minimum^min."
 msgstr ""
 
-#: src/reports.cpp:536
+#: src/reports.cpp:539
 #, fuzzy
 #| msgid "Defense"
 msgid "Defense: "
 msgstr "Forsvar"
 
-#: src/reports.cpp:557
+#: src/reports.cpp:560
 #, fuzzy
 #| msgid "Version: "
 msgid "vision: "
 msgstr "Versjon: "
 
-#: src/reports.cpp:585
+#: src/reports.cpp:588
 #, fuzzy
 #| msgid "Movement Cost"
 msgid "Movement Costs:"
 msgstr "Forflytningskostnad"
 
-#: src/reports.cpp:676 src/reports.cpp:891 src/reports.cpp:903
+#: src/reports.cpp:679 src/reports.cpp:894 src/reports.cpp:906
 #, fuzzy
 #| msgid "weapon range: "
 msgid "Weapon: "
 msgstr "våpenrekkevidde: "
 
-#: src/reports.cpp:677 src/reports.cpp:892
+#: src/reports.cpp:680 src/reports.cpp:895
 #, fuzzy
 #| msgid "Damage"
 msgid "Damage: "
 msgstr "Skade"
 
-#: src/reports.cpp:681
+#: src/reports.cpp:684
 #, fuzzy
 #| msgid "Total damage"
 msgid "Base damage: "
 msgstr "Totalskade"
 
-#: src/reports.cpp:683 src/reports.cpp:717 src/reports.cpp:727
+#: src/reports.cpp:686 src/reports.cpp:720 src/reports.cpp:730
 #, fuzzy
 #| msgid "Weapon Specials"
 msgid "With specials: "
 msgstr "Spesielle våpen"
 
-#: src/reports.cpp:686
+#: src/reports.cpp:689
 #, fuzzy
 #| msgid "Time of day"
 msgid "Time of day: "
 msgstr "Tid på døgnet"
 
-#: src/reports.cpp:690
+#: src/reports.cpp:693
 #, fuzzy
 #| msgid "Leadership"
 msgid "Leadership: "
 msgstr "Lederbonus"
 
-#: src/reports.cpp:694
+#: src/reports.cpp:697
 #, fuzzy
 #| msgid "slowed: "
 msgid "Slowed: "
 msgstr "forsinket: "
 
-#: src/reports.cpp:698
+#: src/reports.cpp:701
 #, fuzzy
 #| msgid "Attacker"
 msgid "Attacks: "
 msgstr "Angriper"
 
-#: src/reports.cpp:702
+#: src/reports.cpp:705
 #, fuzzy
 #| msgid "Max HP bonus +"
 msgid "Max swarm bonus: "
 msgstr "Maks HP bonus +"
 
-#: src/reports.cpp:703 src/reports.cpp:722
+#: src/reports.cpp:706 src/reports.cpp:725
 #, fuzzy
 #| msgid "swarm"
 msgid "Swarm: "
 msgstr "sverm"
 
-#: src/reports.cpp:704 src/reports.cpp:715 src/reports.cpp:726
+#: src/reports.cpp:707 src/reports.cpp:718 src/reports.cpp:729
 msgid "Base attacks: "
 msgstr ""
 
-#: src/reports.cpp:710
+#: src/reports.cpp:713
 #, fuzzy
 #| msgid "Special"
 msgid "Specials: "
 msgstr "Spesial"
 
-#: src/reports.cpp:720
+#: src/reports.cpp:723
 msgid "Subject to swarm: "
 msgstr ""
 
-#: src/reports.cpp:739
+#: src/reports.cpp:742
 #, fuzzy
 #| msgid "weapon range: "
 msgid "Weapon range: "
 msgstr "våpenrekkevidde: "
 
-#: src/reports.cpp:740
+#: src/reports.cpp:743
 #, fuzzy
 #| msgid "damage type: "
 msgid "Damage type: "
 msgstr "skadetype: "
 
-#: src/reports.cpp:741
+#: src/reports.cpp:744
 #, fuzzy
 #| msgid "damage type: "
 msgid "Damage versus: "
 msgstr "skadetype: "
 
-#: src/reports.cpp:780
+#: src/reports.cpp:783
 #, fuzzy
 #| msgid "% accuracy"
 msgid "Accuracy:"
 msgstr "% nøyaktighet"
 
-#: src/reports.cpp:785
+#: src/reports.cpp:788
 msgid "Parry:"
 msgstr ""
 
-#: src/reports.cpp:804
+#: src/reports.cpp:807
 #, fuzzy
 #| msgid "Weapon Specials"
 msgid "Weapon special: "
 msgstr "Spesielle våpen"
 
-#: src/reports.cpp:875
+#: src/reports.cpp:878
 #, fuzzy
 msgid "None"
 msgstr "ingen"
 
-#: src/reports.cpp:1075
+#: src/reports.cpp:1078
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Lawful  units: "
 msgstr "Hederlige enheter: "
 
-#: src/reports.cpp:1077
+#: src/reports.cpp:1080
 msgid "Neutral units: "
 msgstr "Nøytrale enheter: "
 
-#: src/reports.cpp:1078
+#: src/reports.cpp:1081
 msgid "Chaotic units: "
 msgstr "Lyssky enheter: "
 
-#: src/reports.cpp:1080
+#: src/reports.cpp:1083
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Liminal units: "
 msgstr "Hederlige enheter: "
 
-#: src/reports.cpp:1321
+#: src/reports.cpp:1324
 msgid "Observers:"
 msgstr "Observatører:"
 

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-12 19:12+0200\n"
+"POT-Creation-Date: 2013-05-15 18:53+0200\n"
 "PO-Revision-Date: 2012-12-26 17:15+0100\n"
 "Last-Translator: Adrian Chaves Fernandez <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.org>\n"
@@ -1300,7 +1300,7 @@ msgstr "Eliminar complementos"
 #. [button]: id=help
 #. [button]: id=show_help
 #: data/gui/default/window/addon_connect.cfg:188
-#: data/gui/default/window/title_screen.cfg:179 src/hotkeys.cpp:234
+#: data/gui/default/window/title_screen.cfg:179 src/hotkeys.cpp:235
 msgid "Help"
 msgstr "Axuda"
 
@@ -1713,7 +1713,7 @@ msgstr "Crear"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:35 src/hotkeys.cpp:208
+#: data/gui/default/window/editor_resize_map.cfg:35 src/hotkeys.cpp:209
 msgid "Resize Map"
 msgstr "Cambiar as dimensións"
 
@@ -1886,8 +1886,8 @@ msgstr "Execución paso a paso"
 #. [grid]
 #: data/gui/default/window/formula_debugger.cfg:234
 #: data/gui/default/window/lobby_main.cfg:660
-#: data/gui/default/window/title_screen.cfg:265 src/hotkeys.cpp:883
-#: src/hotkeys.cpp:1233
+#: data/gui/default/window/title_screen.cfg:265 src/hotkeys.cpp:884
+#: src/hotkeys.cpp:1234
 msgid "Quit"
 msgstr "Saír"
 
@@ -3429,7 +3429,7 @@ msgstr "Todos os complementos"
 
 #: src/gui/dialogs/addon_list.cpp:256
 #: src/gui/dialogs/network_transmission.cpp:54
-#: src/gui/dialogs/network_transmission.cpp:56 src/hotkeys.cpp:1190
+#: src/gui/dialogs/network_transmission.cpp:56 src/hotkeys.cpp:1191
 msgid "unit_byte^B"
 msgstr "B"
 
@@ -3740,7 +3740,7 @@ msgstr "Distancia predeterminada"
 msgid "Toggle Full Screen"
 msgstr "Pór a pantalla completa"
 
-#: src/hotkeys.cpp:83 src/hotkeys.cpp:1184
+#: src/hotkeys.cpp:83 src/hotkeys.cpp:1185
 msgid "Screenshot"
 msgstr "Facer unha captura do xogo"
 
@@ -4003,438 +4003,444 @@ msgstr "Mover a paleta á esquerda"
 msgid "Scroll Palette Right"
 msgstr "Mover a paleta á dereita"
 
-#: src/hotkeys.cpp:166
+#: src/hotkeys.cpp:165
+#, fuzzy
+#| msgid "Switch Map"
+msgid "Switch Time of Day"
+msgstr "Cambiar de mapa"
+
+#: src/hotkeys.cpp:167
 msgid "Next Tool"
 msgstr "Seguinte ferramenta"
 
-#: src/hotkeys.cpp:168
+#: src/hotkeys.cpp:169
 msgid "Paint Tool"
 msgstr "Ferramenta de pintura"
 
-#: src/hotkeys.cpp:168 src/hotkeys.cpp:169
+#: src/hotkeys.cpp:169 src/hotkeys.cpp:170
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
 
-#: src/hotkeys.cpp:169
+#: src/hotkeys.cpp:170
 msgid "Fill Tool"
 msgstr "Ferramenta de recheo"
 
-#: src/hotkeys.cpp:170
+#: src/hotkeys.cpp:171
 msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
 msgstr ""
 
-#: src/hotkeys.cpp:170
+#: src/hotkeys.cpp:171
 msgid "Selection Tool"
 msgstr "Ferramenta de selección"
 
-#: src/hotkeys.cpp:171
+#: src/hotkeys.cpp:172
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
 
-#: src/hotkeys.cpp:171
+#: src/hotkeys.cpp:172
 msgid "Starting Positions Tool"
 msgstr "Ferramenta das posicións iniciais"
 
-#: src/hotkeys.cpp:172
+#: src/hotkeys.cpp:173
 msgid "Label Tool"
 msgstr "Ferramenta de etiquetas"
 
-#: src/hotkeys.cpp:172
+#: src/hotkeys.cpp:173
 msgid "Left mouse button sets or drags a label, right clears."
 msgstr ""
 
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:174
 msgid ""
 "Left mouse button sets a new unit or moves a unit via drag and drop, right "
 "clears. Not implemented yet."
 msgstr ""
 
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:174
 msgid "Unit Tool"
 msgstr "Ferramenta de unidades"
 
-#: src/hotkeys.cpp:174
+#: src/hotkeys.cpp:175
 #, fuzzy
 #| msgid "Next Tool"
 msgid "Item Tool"
 msgstr "Seguinte ferramenta"
 
-#: src/hotkeys.cpp:174
+#: src/hotkeys.cpp:175
 msgid ""
 "Left mouse button sets a new item or moves it via drag and drop, right "
 "clears. Not implemented yet."
 msgstr ""
 
-#: src/hotkeys.cpp:175
+#: src/hotkeys.cpp:176
 msgid ""
 "Left mouse button sets or drags a sound source, right clears. Not "
 "implemented yet."
 msgstr ""
 
-#: src/hotkeys.cpp:175
+#: src/hotkeys.cpp:176
 msgid "Soundsource Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:176
+#: src/hotkeys.cpp:177
 msgid ""
 "Left mouse button sets the village ownership to the current side, right "
 "clears. Not implemented yet."
 msgstr ""
 
-#: src/hotkeys.cpp:176
+#: src/hotkeys.cpp:177
 msgid "Village Tool"
 msgstr "Ferramenta de vilas"
 
-#: src/hotkeys.cpp:178
+#: src/hotkeys.cpp:179
 #, fuzzy
 #| msgid "Recruit"
 msgid "Canrecruit"
 msgstr "Recrutar"
 
-#: src/hotkeys.cpp:178
+#: src/hotkeys.cpp:179
 msgid "Toggle the recruit attribute of a unit."
 msgstr ""
 
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:180
 msgid "Can be renamed"
 msgstr ""
 
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:180
 msgid "Toggle the unit being renameable."
 msgstr ""
 
-#: src/hotkeys.cpp:181
+#: src/hotkeys.cpp:182
 #, fuzzy
 #| msgid "Change Control"
 msgid "Change Unit ID"
 msgstr "Cambiar o control"
 
-#: src/hotkeys.cpp:182
+#: src/hotkeys.cpp:183
 msgid "Loyal"
 msgstr ""
 
-#: src/hotkeys.cpp:185
+#: src/hotkeys.cpp:186
 msgid "Next Brush"
 msgstr "Seguinte brocha"
 
-#: src/hotkeys.cpp:186
+#: src/hotkeys.cpp:187
 msgid "Default Brush"
 msgstr "Brocha predeterminada"
 
-#: src/hotkeys.cpp:187
+#: src/hotkeys.cpp:188
 msgid "Single Tile"
 msgstr ""
 
-#: src/hotkeys.cpp:188
+#: src/hotkeys.cpp:189
 msgid "Radius One"
 msgstr ""
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:190
 msgid "Radius Two"
 msgstr ""
 
-#: src/hotkeys.cpp:190
+#: src/hotkeys.cpp:191
 msgid "Brush NW-SE"
 msgstr ""
 
-#: src/hotkeys.cpp:191
+#: src/hotkeys.cpp:192
 msgid "Brush SW-NE"
 msgstr ""
 
-#: src/hotkeys.cpp:192
+#: src/hotkeys.cpp:193
 msgid "Cut"
 msgstr "Cortar"
 
-#: src/hotkeys.cpp:193
+#: src/hotkeys.cpp:194
 msgid "Copy"
 msgstr "Copiar"
 
-#: src/hotkeys.cpp:194
+#: src/hotkeys.cpp:195
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
 msgstr ""
 
-#: src/hotkeys.cpp:194
+#: src/hotkeys.cpp:195
 msgid "Paste"
 msgstr "Pegar"
 
-#: src/hotkeys.cpp:195
+#: src/hotkeys.cpp:196
 msgid "Export Selected Coordinates to System Clipboard"
 msgstr "Exportar as coordenadas seleccionadas ao portarretallos do sistema"
 
-#: src/hotkeys.cpp:196
+#: src/hotkeys.cpp:197
 msgid "Select All"
 msgstr "Seleccionalo todo"
 
-#: src/hotkeys.cpp:197
+#: src/hotkeys.cpp:198
 msgid "Select Inverse"
 msgstr "Inverter a selección"
 
-#: src/hotkeys.cpp:198
+#: src/hotkeys.cpp:199
 msgid "Select None"
 msgstr "Non seleccionar nada"
 
-#: src/hotkeys.cpp:199
+#: src/hotkeys.cpp:200
 msgid "Rotate Clipboard Clockwise"
 msgstr "Rotar o que hai no portarretallos no sentido das agullas do reloxo"
 
-#: src/hotkeys.cpp:200
+#: src/hotkeys.cpp:201
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr ""
 "Rotar o que hai no portarretallos no sentido contrario ao das agullas do "
 "reloxo"
 
-#: src/hotkeys.cpp:201
+#: src/hotkeys.cpp:202
 msgid "Flip Clipboard Horizontally"
 msgstr "Voltear horizontalmente o que hai no portarretallos"
 
-#: src/hotkeys.cpp:202
+#: src/hotkeys.cpp:203
 msgid "Flip Clipboard Vertically"
 msgstr "Voltear verticalmente o que hai no portarretallos"
 
-#: src/hotkeys.cpp:203
+#: src/hotkeys.cpp:204
 msgid "Rotate Selection"
 msgstr "Rotar a selección"
 
-#: src/hotkeys.cpp:204
+#: src/hotkeys.cpp:205
 msgid "Flip Selection"
 msgstr "Voltear a selección"
 
-#: src/hotkeys.cpp:205
+#: src/hotkeys.cpp:206
 msgid "Fill Selection"
 msgstr "Encher a selección"
 
-#: src/hotkeys.cpp:206
+#: src/hotkeys.cpp:207
 msgid "Generate Tiles In Selection"
 msgstr "Xerar hexágonos na selección"
 
-#: src/hotkeys.cpp:207
+#: src/hotkeys.cpp:208
 msgid "Randomize Tiles In Selection"
 msgstr "Xerar ao chou os hexágonos da selección"
 
-#: src/hotkeys.cpp:209
+#: src/hotkeys.cpp:210
 msgid "Rotate Map"
 msgstr "Rotar o mapa"
 
-#: src/hotkeys.cpp:210
+#: src/hotkeys.cpp:211
 msgid "Generate Map"
 msgstr "Xerar un mapa"
 
-#: src/hotkeys.cpp:211
+#: src/hotkeys.cpp:212
 msgid "Apply a Mask"
 msgstr "Aplicar unha máscara"
 
-#: src/hotkeys.cpp:212
+#: src/hotkeys.cpp:213
 msgid "Create Mask"
 msgstr "Crear unha máscara"
 
-#: src/hotkeys.cpp:213
+#: src/hotkeys.cpp:214
 msgid "Refresh Display"
 msgstr "Actualizar a pantalla"
 
-#: src/hotkeys.cpp:214
+#: src/hotkeys.cpp:215
 msgid "Update Terrain Transitions"
 msgstr "Actualizar as transicións dos terreos"
 
-#: src/hotkeys.cpp:216
+#: src/hotkeys.cpp:217
 #, fuzzy
 #| msgid "Update Terrain Transitions"
 msgid "Toggle Terrain Transition Update"
 msgstr "Actualizar as transicións dos terreos"
 
-#: src/hotkeys.cpp:217
+#: src/hotkeys.cpp:218
 msgid "Auto-update Terrain Transitions"
 msgstr "Actualizar automaticamente as transicións dos terreos"
 
-#: src/hotkeys.cpp:219
+#: src/hotkeys.cpp:220
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Actualizar automaticamente as transicións dos terreos: non."
 
-#: src/hotkeys.cpp:220
+#: src/hotkeys.cpp:221
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "Actualizar automaticamente as transicións dos terreos: parcialmente."
 
-#: src/hotkeys.cpp:222
+#: src/hotkeys.cpp:223
 msgid "Refresh Image Cache"
 msgstr "Actualizar a caché das imaxes"
 
-#: src/hotkeys.cpp:223
+#: src/hotkeys.cpp:224
 msgid "Draw Hex Coordinates"
 msgstr "Amosar as coordenadas dos hexágonos"
 
-#: src/hotkeys.cpp:224
+#: src/hotkeys.cpp:225
 msgid "Draw Terrain Codes"
 msgstr "Amosar os códigos dos terreos"
 
-#: src/hotkeys.cpp:226
+#: src/hotkeys.cpp:227
 msgid "Define (Time) Area"
 msgstr ""
 
-#: src/hotkeys.cpp:228
+#: src/hotkeys.cpp:229
 msgid "Delay Shroud Updates"
 msgstr "Retardar as actualizacións do manto do descoñecido"
 
-#: src/hotkeys.cpp:229
+#: src/hotkeys.cpp:230
 msgid "Update Shroud Now"
 msgstr "Actualizar o manto do descoñecido"
 
-#: src/hotkeys.cpp:230
+#: src/hotkeys.cpp:231
 msgid "Continue Move"
 msgstr "Continuar o movemento"
 
-#: src/hotkeys.cpp:231
+#: src/hotkeys.cpp:232
 msgid "Find Label or Unit"
 msgstr "Buscar un elemento ou unidade"
 
-#: src/hotkeys.cpp:232
+#: src/hotkeys.cpp:233
 msgid "Speak to Ally"
 msgstr "Escribirlles unha mensaxe aos aliados"
 
-#: src/hotkeys.cpp:233
+#: src/hotkeys.cpp:234
 msgid "Speak to All"
 msgstr "Escribirlle unha mensaxe a todo o mundo"
 
-#: src/hotkeys.cpp:235
+#: src/hotkeys.cpp:236
 msgid "View Chat Log"
 msgstr "Ver o rexistro das conversas"
 
-#: src/hotkeys.cpp:236
+#: src/hotkeys.cpp:237
 msgid "Change Language"
 msgstr "Cambiar de lingua"
 
-#: src/hotkeys.cpp:237
+#: src/hotkeys.cpp:238
 msgid "Enter User Command"
 msgstr "Escribir unha orde"
 
-#: src/hotkeys.cpp:238
+#: src/hotkeys.cpp:239
 msgid "Custom Command"
 msgstr "Orde personalizada"
 
-#: src/hotkeys.cpp:239
+#: src/hotkeys.cpp:240
 msgid "Run Formula"
 msgstr "Executar o código Formula"
 
-#: src/hotkeys.cpp:240
+#: src/hotkeys.cpp:241
 msgid "Clear Messages"
 msgstr "Quitar as mensaxes"
 
-#: src/hotkeys.cpp:241
+#: src/hotkeys.cpp:242
 msgid "Refresh WML"
 msgstr "Actualizar o WML"
 
-#: src/hotkeys.cpp:242
+#: src/hotkeys.cpp:243
 msgid "Next Tip of the Day"
 msgstr "Seguinte consello"
 
-#: src/hotkeys.cpp:243
+#: src/hotkeys.cpp:244
 msgid "Previous Tip of the Day"
 msgstr "Consello anterior"
 
-#: src/hotkeys.cpp:244
+#: src/hotkeys.cpp:245
 msgid "Start Tutorial"
 msgstr "Comezar a aprendizaxe"
 
-#: src/hotkeys.cpp:245
+#: src/hotkeys.cpp:246
 msgid "Start Campaign"
 msgstr "Comezar unha partida individual"
 
-#: src/hotkeys.cpp:246
+#: src/hotkeys.cpp:247
 msgid "Start Multiplayer Game"
 msgstr "Comezar unha partida con varios xogadores"
 
-#: src/hotkeys.cpp:247
+#: src/hotkeys.cpp:248
 msgid "Manage Add-ons"
 msgstr "Xestionar os complementos"
 
-#: src/hotkeys.cpp:248
+#: src/hotkeys.cpp:249
 msgid "Start Editor"
 msgstr "Iniciar o editor de mapas"
 
-#: src/hotkeys.cpp:249
+#: src/hotkeys.cpp:250
 msgid "Show Credits"
 msgstr "Amosar a lista dos autores"
 
-#: src/hotkeys.cpp:250
+#: src/hotkeys.cpp:251
 msgid "Show Helptip"
 msgstr "Amosar a axuda"
 
-#: src/hotkeys.cpp:253
+#: src/hotkeys.cpp:254
 msgid "Unrecognized Command"
 msgstr ""
 
-#: src/hotkeys.cpp:386 src/hotkeys.cpp:389
+#: src/hotkeys.cpp:387 src/hotkeys.cpp:390
 msgid "Button"
 msgstr "Botón"
 
-#: src/hotkeys.cpp:386
+#: src/hotkeys.cpp:387
 msgid "Mouse"
 msgstr "Rato"
 
-#: src/hotkeys.cpp:389 src/hotkeys.cpp:425
+#: src/hotkeys.cpp:390 src/hotkeys.cpp:426
 msgid "Joystick"
 msgstr "Mando"
 
-#: src/hotkeys.cpp:395
+#: src/hotkeys.cpp:396
 msgid "Centered"
 msgstr "Centrado"
 
-#: src/hotkeys.cpp:398
+#: src/hotkeys.cpp:399
 msgid "Up"
 msgstr "Arriba"
 
-#: src/hotkeys.cpp:401
+#: src/hotkeys.cpp:402
 msgid "Right"
 msgstr "Dereita"
 
-#: src/hotkeys.cpp:404
+#: src/hotkeys.cpp:405
 msgid "Down"
 msgstr "Abaixo"
 
-#: src/hotkeys.cpp:407
+#: src/hotkeys.cpp:408
 msgid "Left"
 msgstr "Esquerda"
 
-#: src/hotkeys.cpp:410
+#: src/hotkeys.cpp:411
 msgid "RightUp"
 msgstr "Arriba á dereita"
 
-#: src/hotkeys.cpp:413
+#: src/hotkeys.cpp:414
 msgid "RightDown"
 msgstr "Abaixo á dereita"
 
-#: src/hotkeys.cpp:416
+#: src/hotkeys.cpp:417
 msgid "LeftUp"
 msgstr "Arriba á esquerda"
 
-#: src/hotkeys.cpp:419
+#: src/hotkeys.cpp:420
 msgid "LeftDown"
 msgstr "Abaixo á esquerda"
 
-#: src/hotkeys.cpp:422
+#: src/hotkeys.cpp:423
 msgid "Unknown"
 msgstr "Descoñecido"
 
 # http://en.wikipedia.org/wiki/Joystick#Hat_switch
-#: src/hotkeys.cpp:425
+#: src/hotkeys.cpp:426
 msgid "Hat"
 msgstr "Control da vista"
 
-#: src/hotkeys.cpp:884 src/hotkeys.cpp:1234
+#: src/hotkeys.cpp:885 src/hotkeys.cpp:1235
 msgid "Do you really want to quit?"
 msgstr "Seguro que quere saír?"
 
-#: src/hotkeys.cpp:1184
+#: src/hotkeys.cpp:1185
 msgid "Map-Screenshot"
 msgstr "Captura-do-mapa"
 
-#: src/hotkeys.cpp:1191 src/hotkeys.cpp:1193
+#: src/hotkeys.cpp:1192 src/hotkeys.cpp:1194
 msgid "Screenshot done"
 msgstr "Fíxose a captura"
 

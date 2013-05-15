@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-12 19:12+0200\n"
+"POT-Creation-Date: 2013-05-15 18:53+0200\n"
 "PO-Revision-Date: 2013-02-07 15:14+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -120,9 +120,9 @@ msgstr "橋"
 msgid "special"
 msgstr "特殊地形"
 
-#. [editor_times]: id=old
+#. [editor_times]: id=test
 #: data/core/editor/time-of-day.cfg:5
-msgid "Old"
+msgid "Test"
 msgstr ""
 
 #. [editor_times]: id=default
@@ -141,7 +141,7 @@ msgid "Deep Underground"
 msgstr ""
 
 #. [editor_times]: id=after_the_fall
-#: data/core/editor/time-of-day.cfg:39
+#: data/core/editor/time-of-day.cfg:40
 msgid "After the Fall"
 msgstr ""
 
@@ -181,179 +181,191 @@ msgid ""
 msgstr "點選貼上，貼上區域呈鏡面效果。"
 
 #. [menu]: id=menu-editor-file, type=turbo
-#: data/themes/editor.cfg:70
+#: data/themes/editor.cfg:63
 msgid "File"
 msgstr "檔案"
 
 #. [menu]: id=menu-editor-map
-#: data/themes/editor.cfg:96
+#: data/themes/editor.cfg:89
 msgid "Map"
 msgstr "地圖"
 
+#. [menu]: id=menu-editor-transitions
+#: data/themes/editor.cfg:98
+#, fuzzy
+#| msgid "Delay transition updates"
+msgid "Transition update"
+msgstr "延遲更新"
+
 #. [menu]: id=menu-editor-window
-#: data/themes/editor.cfg:106
+#: data/themes/editor.cfg:105
 msgid "Window"
 msgstr "視窗"
 
 #. [menu]: id=menu-editor-areas
-#: data/themes/editor.cfg:116
+#: data/themes/editor.cfg:115
 msgid "Areas"
 msgstr ""
 
 #. [menu]: id=menu-editor-side
-#: data/themes/editor.cfg:126
+#: data/themes/editor.cfg:125
 msgid "Side"
 msgstr ""
 
 #. [label]: id=villages-icon
-#: data/themes/editor.cfg:145
+#: data/themes/editor.cfg:144
 msgid "villages"
 msgstr "村莊"
 
 #. [label]: id=units-icon
-#: data/themes/editor.cfg:162
+#: data/themes/editor.cfg:161
 msgid "units"
 msgstr ""
 
+#. [menu]: id=menu-editor-schedule
+#: data/themes/editor.cfg:497
+msgid "Assign Time Schedule"
+msgstr ""
+
 #. [label]: id=terrain-icon
-#: data/themes/editor.cfg:585
+#: data/themes/editor.cfg:601
 msgid "terrain"
 msgstr ""
 
 #. [action]: id=flip_map_button_editor, type=checkbox
-#: data/themes/editor.cfg:645
+#: data/themes/editor.cfg:661
 #, fuzzy
 #| msgid "Action not implemented"
 msgid "Not implemented yet."
 msgstr "事件未執行"
 
-#: src/editor/editor_controller.cpp:156
+#: src/editor/editor_controller.cpp:170
 msgid "Fatal error"
 msgstr "嚴重錯誤"
 
-#: src/editor/editor_controller.cpp:184
+#: src/editor/editor_controller.cpp:198
 msgid "Do you really want to quit?"
 msgstr "您確定要退出嗎？"
 
-#: src/editor/editor_controller.cpp:186
+#: src/editor/editor_controller.cpp:200
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr "您確定要退出嗎？對地圖所作的更動將遺失。"
 
-#: src/editor/editor_controller.cpp:188
+#: src/editor/editor_controller.cpp:202
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr "您確定要退出嗎？以下地圖已修改，而對地圖所作的更動將遺失:"
 
-#: src/editor/editor_controller.cpp:191
+#: src/editor/editor_controller.cpp:205
 msgid "Quit"
 msgstr "離開"
 
-#: src/editor/editor_controller.cpp:202
+#: src/editor/editor_controller.cpp:216
 msgid "No editor time-of-day found."
 msgstr "沒有找到時間編輯器。"
 
-#: src/editor/editor_controller.cpp:834
+#: src/editor/editor_controller.cpp:906
 msgid "Change Unit ID"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:835
+#: src/editor/editor_controller.cpp:907
 msgid "ID:"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:854
+#: src/editor/editor_controller.cpp:923
 msgid "Rename Unit"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:855
+#: src/editor/editor_controller.cpp:924
 msgid "Name:"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:117
-#: src/editor/map/context_manager.cpp:209
+#: src/editor/map/context_manager.cpp:119
+#: src/editor/map/context_manager.cpp:211
 msgid "(New Map)"
 msgstr "（新地圖）"
 
-#: src/editor/map/context_manager.cpp:178
+#: src/editor/map/context_manager.cpp:180
 msgid "Choose a Map to Open"
 msgstr "選擇地圖載入"
 
-#: src/editor/map/context_manager.cpp:241
+#: src/editor/map/context_manager.cpp:243
 #, fuzzy
 #| msgid "(New Map)"
 msgid "(New Area)"
 msgstr "（新地圖）"
 
-#: src/editor/map/context_manager.cpp:264
+#: src/editor/map/context_manager.cpp:266
 #, fuzzy
 #| msgid "(New Map)"
 msgid "(New Side)"
 msgstr "（新地圖）"
 
-#: src/editor/map/context_manager.cpp:280
+#: src/editor/map/context_manager.cpp:312
 msgid "Choose a Mask to Apply"
 msgstr "選擇要套用的遮罩"
 
-#: src/editor/map/context_manager.cpp:287
+#: src/editor/map/context_manager.cpp:319
 msgid "Error loading mask"
 msgstr "讀取遮罩時錯誤"
 
-#: src/editor/map/context_manager.cpp:308
+#: src/editor/map/context_manager.cpp:340
 msgid "Choose Target Map"
 msgstr "選擇目標地圖"
 
-#: src/editor/map/context_manager.cpp:315
-#: src/editor/map/context_manager.cpp:676
+#: src/editor/map/context_manager.cpp:347
+#: src/editor/map/context_manager.cpp:708
 msgid "Error loading map"
 msgstr "讀取地圖錯誤"
 
-#: src/editor/map/context_manager.cpp:433
+#: src/editor/map/context_manager.cpp:465
 msgid "Save the Map As"
 msgstr "另存地圖"
 
-#: src/editor/map/context_manager.cpp:436
+#: src/editor/map/context_manager.cpp:468
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "地圖名稱已存在，確定要覆蓋？"
 
-#: src/editor/map/context_manager.cpp:470
+#: src/editor/map/context_manager.cpp:502
 msgid "No random map generators found."
 msgstr "沒有找到隨機地圖產生器？"
 
-#: src/editor/map/context_manager.cpp:483
-#: src/editor/map/context_manager.cpp:487
+#: src/editor/map/context_manager.cpp:515
+#: src/editor/map/context_manager.cpp:519
 msgid "Map creation failed."
 msgstr "創造地圖失敗。"
 
-#: src/editor/map/context_manager.cpp:499
+#: src/editor/map/context_manager.cpp:531
 msgid "Unsaved Changes"
 msgstr "未儲存的更動"
 
-#: src/editor/map/context_manager.cpp:500
+#: src/editor/map/context_manager.cpp:532
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr "您確定要放棄所有對地圖的更動？"
 
-#: src/editor/map/context_manager.cpp:591
-#: src/editor/map/context_manager.cpp:632
+#: src/editor/map/context_manager.cpp:623
+#: src/editor/map/context_manager.cpp:664
 msgid "This map is already open."
 msgstr "這個地圖已被開啟。"
 
-#: src/editor/map/context_manager.cpp:612
+#: src/editor/map/context_manager.cpp:644
 msgid "Map saved."
 msgstr "地圖已儲存。"
 
-#: src/editor/map/context_manager.cpp:655
+#: src/editor/map/context_manager.cpp:687
 msgid "Loaded embedded map data"
 msgstr "已讀取嵌入地圖的資料"
 
-#: src/editor/map/context_manager.cpp:656
-#: src/editor/map/context_manager.cpp:670
+#: src/editor/map/context_manager.cpp:688
+#: src/editor/map/context_manager.cpp:702
 msgid "Map loaded from scenario"
 msgstr "已從任務中讀取地圖"
 
-#: src/editor/map/context_manager.cpp:666
+#: src/editor/map/context_manager.cpp:698
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -504,9 +516,6 @@ msgstr "自選設定"
 
 #~ msgid "Flip map"
 #~ msgstr "翻轉地圖"
-
-#~ msgid "Delay transition updates"
-#~ msgstr "延遲更新"
 
 #~ msgid "Language"
 #~ msgstr "語言"

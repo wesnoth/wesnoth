@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-12 19:12+0200\n"
+"POT-Creation-Date: 2013-05-15 18:53+0200\n"
 "PO-Revision-Date: 2011-11-14 21:31+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -120,9 +120,9 @@ msgstr "다리 타일"
 msgid "special"
 msgstr "특수 타일"
 
-#. [editor_times]: id=old
+#. [editor_times]: id=test
 #: data/core/editor/time-of-day.cfg:5
-msgid "Old"
+msgid "Test"
 msgstr ""
 
 #. [editor_times]: id=default
@@ -141,7 +141,7 @@ msgid "Deep Underground"
 msgstr ""
 
 #. [editor_times]: id=after_the_fall
-#: data/core/editor/time-of-day.cfg:39
+#: data/core/editor/time-of-day.cfg:40
 msgid "After the Fall"
 msgstr ""
 
@@ -176,66 +176,76 @@ msgid ""
 msgstr ""
 
 #. [menu]: id=menu-editor-file, type=turbo
-#: data/themes/editor.cfg:70
+#: data/themes/editor.cfg:63
 msgid "File"
 msgstr "파일"
 
 #. [menu]: id=menu-editor-map
-#: data/themes/editor.cfg:96
+#: data/themes/editor.cfg:89
 msgid "Map"
 msgstr ""
 
+#. [menu]: id=menu-editor-transitions
+#: data/themes/editor.cfg:98
+msgid "Transition update"
+msgstr ""
+
 #. [menu]: id=menu-editor-window
-#: data/themes/editor.cfg:106
+#: data/themes/editor.cfg:105
 msgid "Window"
 msgstr "창"
 
 #. [menu]: id=menu-editor-areas
-#: data/themes/editor.cfg:116
+#: data/themes/editor.cfg:115
 msgid "Areas"
 msgstr ""
 
 #. [menu]: id=menu-editor-side
-#: data/themes/editor.cfg:126
+#: data/themes/editor.cfg:125
 msgid "Side"
 msgstr ""
 
 #. [label]: id=villages-icon
-#: data/themes/editor.cfg:145
+#: data/themes/editor.cfg:144
 msgid "villages"
 msgstr ""
 
 #. [label]: id=units-icon
-#: data/themes/editor.cfg:162
+#: data/themes/editor.cfg:161
 msgid "units"
 msgstr ""
 
+#. [menu]: id=menu-editor-schedule
+#: data/themes/editor.cfg:497
+msgid "Assign Time Schedule"
+msgstr ""
+
 #. [label]: id=terrain-icon
-#: data/themes/editor.cfg:585
+#: data/themes/editor.cfg:601
 msgid "terrain"
 msgstr ""
 
 #. [action]: id=flip_map_button_editor, type=checkbox
-#: data/themes/editor.cfg:645
+#: data/themes/editor.cfg:661
 msgid "Not implemented yet."
 msgstr ""
 
-#: src/editor/editor_controller.cpp:156
+#: src/editor/editor_controller.cpp:170
 msgid "Fatal error"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:184
+#: src/editor/editor_controller.cpp:198
 msgid "Do you really want to quit?"
 msgstr "정말로 종료하시겠습니까?"
 
-#: src/editor/editor_controller.cpp:186
+#: src/editor/editor_controller.cpp:200
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr ""
 "정말로 종료하시겠습니까? 마지막 저장 이후에 행한 맵 변경사항을 잃게 됩니다."
 
-#: src/editor/editor_controller.cpp:188
+#: src/editor/editor_controller.cpp:202
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -243,90 +253,90 @@ msgstr ""
 "정말로 종료하시겠습니까? 다음의 맵이 수정되어 있으며 종료하면 변경한 부분은 "
 "사라집니다:"
 
-#: src/editor/editor_controller.cpp:191
+#: src/editor/editor_controller.cpp:205
 msgid "Quit"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:202
+#: src/editor/editor_controller.cpp:216
 msgid "No editor time-of-day found."
 msgstr ""
 
-#: src/editor/editor_controller.cpp:834
+#: src/editor/editor_controller.cpp:906
 msgid "Change Unit ID"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:835
+#: src/editor/editor_controller.cpp:907
 msgid "ID:"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:854
+#: src/editor/editor_controller.cpp:923
 msgid "Rename Unit"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:855
+#: src/editor/editor_controller.cpp:924
 msgid "Name:"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:117
-#: src/editor/map/context_manager.cpp:209
+#: src/editor/map/context_manager.cpp:119
+#: src/editor/map/context_manager.cpp:211
 msgid "(New Map)"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:178
+#: src/editor/map/context_manager.cpp:180
 msgid "Choose a Map to Open"
 msgstr "불러올 맵을 선택하십시오"
 
-#: src/editor/map/context_manager.cpp:241
+#: src/editor/map/context_manager.cpp:243
 msgid "(New Area)"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:264
+#: src/editor/map/context_manager.cpp:266
 msgid "(New Side)"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:280
+#: src/editor/map/context_manager.cpp:312
 #, fuzzy
 #| msgid "Choose a Map to Open"
 msgid "Choose a Mask to Apply"
 msgstr "불러올 맵을 선택하십시오"
 
-#: src/editor/map/context_manager.cpp:287
+#: src/editor/map/context_manager.cpp:319
 msgid "Error loading mask"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:308
+#: src/editor/map/context_manager.cpp:340
 #, fuzzy
 #| msgid "Choose a Map to Open"
 msgid "Choose Target Map"
 msgstr "불러올 맵을 선택하십시오"
 
-#: src/editor/map/context_manager.cpp:315
-#: src/editor/map/context_manager.cpp:676
+#: src/editor/map/context_manager.cpp:347
+#: src/editor/map/context_manager.cpp:708
 msgid "Error loading map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:433
+#: src/editor/map/context_manager.cpp:465
 msgid "Save the Map As"
 msgstr "저장할 곳을 선택하십시오"
 
-#: src/editor/map/context_manager.cpp:436
+#: src/editor/map/context_manager.cpp:468
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "파일이 이미 존재합니다. 덮어 씌우시겠습니까?"
 
-#: src/editor/map/context_manager.cpp:470
+#: src/editor/map/context_manager.cpp:502
 msgid "No random map generators found."
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:483
-#: src/editor/map/context_manager.cpp:487
+#: src/editor/map/context_manager.cpp:515
+#: src/editor/map/context_manager.cpp:519
 msgid "Map creation failed."
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:499
+#: src/editor/map/context_manager.cpp:531
 msgid "Unsaved Changes"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:500
+#: src/editor/map/context_manager.cpp:532
 #, fuzzy
 #| msgid ""
 #| "Do you really want to quit? Changes in the map since the last save will "
@@ -336,25 +346,25 @@ msgid ""
 msgstr ""
 "정말로 종료하시겠습니까? 마지막 저장 이후에 행한 맵 변경사항을 잃게 됩니다."
 
-#: src/editor/map/context_manager.cpp:591
-#: src/editor/map/context_manager.cpp:632
+#: src/editor/map/context_manager.cpp:623
+#: src/editor/map/context_manager.cpp:664
 msgid "This map is already open."
 msgstr "해당 맵은 이미 열려 있습니다."
 
-#: src/editor/map/context_manager.cpp:612
+#: src/editor/map/context_manager.cpp:644
 msgid "Map saved."
 msgstr "맵이 저장되었습니다."
 
-#: src/editor/map/context_manager.cpp:655
+#: src/editor/map/context_manager.cpp:687
 msgid "Loaded embedded map data"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:656
-#: src/editor/map/context_manager.cpp:670
+#: src/editor/map/context_manager.cpp:688
+#: src/editor/map/context_manager.cpp:702
 msgid "Map loaded from scenario"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:666
+#: src/editor/map/context_manager.cpp:698
 msgid ""
 "Loaded referenced map file:\n"
 "$new"

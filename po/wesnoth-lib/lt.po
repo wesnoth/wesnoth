@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-12 19:12+0200\n"
+"POT-Creation-Date: 2013-05-15 18:53+0200\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -1291,7 +1291,7 @@ msgstr "Pašalinti priedus"
 #. [button]: id=help
 #. [button]: id=show_help
 #: data/gui/default/window/addon_connect.cfg:188
-#: data/gui/default/window/title_screen.cfg:179 src/hotkeys.cpp:234
+#: data/gui/default/window/title_screen.cfg:179 src/hotkeys.cpp:235
 msgid "Help"
 msgstr "Pagalba"
 
@@ -1702,7 +1702,7 @@ msgstr "Sukurti"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:35 src/hotkeys.cpp:208
+#: data/gui/default/window/editor_resize_map.cfg:35 src/hotkeys.cpp:209
 msgid "Resize Map"
 msgstr "Keisti žemėlapio dydį"
 
@@ -1869,8 +1869,8 @@ msgstr "Vykdymo pėdsakas"
 #. [grid]
 #: data/gui/default/window/formula_debugger.cfg:234
 #: data/gui/default/window/lobby_main.cfg:660
-#: data/gui/default/window/title_screen.cfg:265 src/hotkeys.cpp:883
-#: src/hotkeys.cpp:1233
+#: data/gui/default/window/title_screen.cfg:265 src/hotkeys.cpp:884
+#: src/hotkeys.cpp:1234
 msgid "Quit"
 msgstr "Išjungti"
 
@@ -3359,7 +3359,7 @@ msgstr "Visi priedai"
 
 #: src/gui/dialogs/addon_list.cpp:256
 #: src/gui/dialogs/network_transmission.cpp:54
-#: src/gui/dialogs/network_transmission.cpp:56 src/hotkeys.cpp:1190
+#: src/gui/dialogs/network_transmission.cpp:56 src/hotkeys.cpp:1191
 msgid "unit_byte^B"
 msgstr "B"
 
@@ -3652,7 +3652,7 @@ msgstr "Numatytas didinimas"
 msgid "Toggle Full Screen"
 msgstr "Perjungti visą ekraną"
 
-#: src/hotkeys.cpp:83 src/hotkeys.cpp:1184
+#: src/hotkeys.cpp:83 src/hotkeys.cpp:1185
 msgid "Screenshot"
 msgstr "Ekranvaizdis"
 
@@ -3911,441 +3911,447 @@ msgstr ""
 msgid "Scroll Palette Right"
 msgstr ""
 
-#: src/hotkeys.cpp:166
+#: src/hotkeys.cpp:165
+#, fuzzy
+#| msgid "Switch Map"
+msgid "Switch Time of Day"
+msgstr "Keisti žemėlapį"
+
+#: src/hotkeys.cpp:167
 msgid "Next Tool"
 msgstr "Kitas įrankis"
 
-#: src/hotkeys.cpp:168
+#: src/hotkeys.cpp:169
 msgid "Paint Tool"
 msgstr "Piešimo įrankis"
 
-#: src/hotkeys.cpp:168 src/hotkeys.cpp:169
+#: src/hotkeys.cpp:169 src/hotkeys.cpp:170
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
 
-#: src/hotkeys.cpp:169
+#: src/hotkeys.cpp:170
 msgid "Fill Tool"
 msgstr "Užpildymo įrankis"
 
-#: src/hotkeys.cpp:170
+#: src/hotkeys.cpp:171
 msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
 msgstr ""
 
-#: src/hotkeys.cpp:170
+#: src/hotkeys.cpp:171
 msgid "Selection Tool"
 msgstr "Žymėjimo įrankis"
 
-#: src/hotkeys.cpp:171
+#: src/hotkeys.cpp:172
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
 
-#: src/hotkeys.cpp:171
+#: src/hotkeys.cpp:172
 msgid "Starting Positions Tool"
 msgstr "Pradžios pozicijos nustatymo įrankis"
 
-#: src/hotkeys.cpp:172
+#: src/hotkeys.cpp:173
 #, fuzzy
 msgid "Label Tool"
 msgstr "Užpildymo įrankis"
 
-#: src/hotkeys.cpp:172
+#: src/hotkeys.cpp:173
 msgid "Left mouse button sets or drags a label, right clears."
 msgstr ""
 
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:174
 msgid ""
 "Left mouse button sets a new unit or moves a unit via drag and drop, right "
 "clears. Not implemented yet."
 msgstr ""
 
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:174
 #, fuzzy
 msgid "Unit Tool"
 msgstr "Piešimo įrankis"
 
-#: src/hotkeys.cpp:174
+#: src/hotkeys.cpp:175
 #, fuzzy
 #| msgid "Next Tool"
 msgid "Item Tool"
 msgstr "Kitas įrankis"
 
-#: src/hotkeys.cpp:174
+#: src/hotkeys.cpp:175
 msgid ""
 "Left mouse button sets a new item or moves it via drag and drop, right "
 "clears. Not implemented yet."
 msgstr ""
 
-#: src/hotkeys.cpp:175
+#: src/hotkeys.cpp:176
 msgid ""
 "Left mouse button sets or drags a sound source, right clears. Not "
 "implemented yet."
 msgstr ""
 
-#: src/hotkeys.cpp:175
+#: src/hotkeys.cpp:176
 msgid "Soundsource Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:176
+#: src/hotkeys.cpp:177
 msgid ""
 "Left mouse button sets the village ownership to the current side, right "
 "clears. Not implemented yet."
 msgstr ""
 
-#: src/hotkeys.cpp:176
+#: src/hotkeys.cpp:177
 #, fuzzy
 msgid "Village Tool"
 msgstr "Kaimo auksas"
 
-#: src/hotkeys.cpp:178
+#: src/hotkeys.cpp:179
 #, fuzzy
 #| msgid "Recruit"
 msgid "Canrecruit"
 msgstr "Samdyti"
 
-#: src/hotkeys.cpp:178
+#: src/hotkeys.cpp:179
 msgid "Toggle the recruit attribute of a unit."
 msgstr ""
 
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:180
 msgid "Can be renamed"
 msgstr ""
 
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:180
 msgid "Toggle the unit being renameable."
 msgstr ""
 
-#: src/hotkeys.cpp:181
+#: src/hotkeys.cpp:182
 #, fuzzy
 #| msgid "Change Control"
 msgid "Change Unit ID"
 msgstr "Pakeisti valdymą"
 
-#: src/hotkeys.cpp:182
+#: src/hotkeys.cpp:183
 msgid "Loyal"
 msgstr ""
 
-#: src/hotkeys.cpp:185
+#: src/hotkeys.cpp:186
 msgid "Next Brush"
 msgstr "Kitas teptukas"
 
-#: src/hotkeys.cpp:186
+#: src/hotkeys.cpp:187
 msgid "Default Brush"
 msgstr "Numatytas teptukas"
 
-#: src/hotkeys.cpp:187
+#: src/hotkeys.cpp:188
 msgid "Single Tile"
 msgstr ""
 
-#: src/hotkeys.cpp:188
+#: src/hotkeys.cpp:189
 msgid "Radius One"
 msgstr ""
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:190
 msgid "Radius Two"
 msgstr ""
 
-#: src/hotkeys.cpp:190
+#: src/hotkeys.cpp:191
 msgid "Brush NW-SE"
 msgstr ""
 
-#: src/hotkeys.cpp:191
+#: src/hotkeys.cpp:192
 msgid "Brush SW-NE"
 msgstr ""
 
-#: src/hotkeys.cpp:192
+#: src/hotkeys.cpp:193
 msgid "Cut"
 msgstr "Iškirpti"
 
-#: src/hotkeys.cpp:193
+#: src/hotkeys.cpp:194
 msgid "Copy"
 msgstr "Kopijuoti"
 
-#: src/hotkeys.cpp:194
+#: src/hotkeys.cpp:195
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
 msgstr ""
 
-#: src/hotkeys.cpp:194
+#: src/hotkeys.cpp:195
 msgid "Paste"
 msgstr "Padėti"
 
-#: src/hotkeys.cpp:195
+#: src/hotkeys.cpp:196
 msgid "Export Selected Coordinates to System Clipboard"
 msgstr ""
 
-#: src/hotkeys.cpp:196
+#: src/hotkeys.cpp:197
 msgid "Select All"
 msgstr "Pažymėti viską"
 
-#: src/hotkeys.cpp:197
+#: src/hotkeys.cpp:198
 msgid "Select Inverse"
 msgstr "Invertuoti pažymėjimą"
 
-#: src/hotkeys.cpp:198
+#: src/hotkeys.cpp:199
 msgid "Select None"
 msgstr "Nieko nežymėti"
 
-#: src/hotkeys.cpp:199
+#: src/hotkeys.cpp:200
 msgid "Rotate Clipboard Clockwise"
 msgstr "Pasukti iškarpinę pagal laikrodžio rodyklę"
 
-#: src/hotkeys.cpp:200
+#: src/hotkeys.cpp:201
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr "Pasukti iškarpinę prieš laikrodžio rodyklę"
 
-#: src/hotkeys.cpp:201
+#: src/hotkeys.cpp:202
 msgid "Flip Clipboard Horizontally"
 msgstr "Apsukti iškarpinę horizontaliai"
 
-#: src/hotkeys.cpp:202
+#: src/hotkeys.cpp:203
 msgid "Flip Clipboard Vertically"
 msgstr "Apsukti iškarpinę vertikaliai"
 
-#: src/hotkeys.cpp:203
+#: src/hotkeys.cpp:204
 msgid "Rotate Selection"
 msgstr "Sukti pažymėjimą"
 
-#: src/hotkeys.cpp:204
+#: src/hotkeys.cpp:205
 msgid "Flip Selection"
 msgstr "Apversti pažymėjimą"
 
-#: src/hotkeys.cpp:205
+#: src/hotkeys.cpp:206
 msgid "Fill Selection"
 msgstr "Užpildyti pažymėjimą"
 
-#: src/hotkeys.cpp:206
+#: src/hotkeys.cpp:207
 msgid "Generate Tiles In Selection"
 msgstr ""
 
-#: src/hotkeys.cpp:207
+#: src/hotkeys.cpp:208
 msgid "Randomize Tiles In Selection"
 msgstr ""
 
-#: src/hotkeys.cpp:209
+#: src/hotkeys.cpp:210
 msgid "Rotate Map"
 msgstr "Sukti žemėlapį"
 
-#: src/hotkeys.cpp:210
+#: src/hotkeys.cpp:211
 msgid "Generate Map"
 msgstr "Generuoti žemėlapį"
 
-#: src/hotkeys.cpp:211
+#: src/hotkeys.cpp:212
 msgid "Apply a Mask"
 msgstr "Pritaikyti kaukę"
 
-#: src/hotkeys.cpp:212
+#: src/hotkeys.cpp:213
 msgid "Create Mask"
 msgstr "Sukurti kaukę"
 
-#: src/hotkeys.cpp:213
+#: src/hotkeys.cpp:214
 msgid "Refresh Display"
 msgstr "Atnaujinti vaizdą"
 
-#: src/hotkeys.cpp:214
+#: src/hotkeys.cpp:215
 msgid "Update Terrain Transitions"
 msgstr "Atnaujinti vietovių perėjimus"
 
-#: src/hotkeys.cpp:216
+#: src/hotkeys.cpp:217
 #, fuzzy
 #| msgid "Update Terrain Transitions"
 msgid "Toggle Terrain Transition Update"
 msgstr "Atnaujinti vietovių perėjimus"
 
-#: src/hotkeys.cpp:217
+#: src/hotkeys.cpp:218
 msgid "Auto-update Terrain Transitions"
 msgstr "Automatiškai atnaujinti vietovių perėjimus"
 
-#: src/hotkeys.cpp:219
+#: src/hotkeys.cpp:220
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Automatiškai atnaujinti vietovių perėjimus: ne "
 
-#: src/hotkeys.cpp:220
+#: src/hotkeys.cpp:221
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "Automatiškai atnaujinti vietovių perėjimus: dalinai"
 
-#: src/hotkeys.cpp:222
+#: src/hotkeys.cpp:223
 msgid "Refresh Image Cache"
 msgstr "Atnaujinti paveikslėlių podėlį"
 
-#: src/hotkeys.cpp:223
+#: src/hotkeys.cpp:224
 msgid "Draw Hex Coordinates"
 msgstr "Rodyti langelių koordinates"
 
-#: src/hotkeys.cpp:224
+#: src/hotkeys.cpp:225
 msgid "Draw Terrain Codes"
 msgstr "Piešti vietovių kodus"
 
-#: src/hotkeys.cpp:226
+#: src/hotkeys.cpp:227
 msgid "Define (Time) Area"
 msgstr ""
 
-#: src/hotkeys.cpp:228
+#: src/hotkeys.cpp:229
 msgid "Delay Shroud Updates"
 msgstr "Atidėti uždangos atnaujinimą"
 
-#: src/hotkeys.cpp:229
+#: src/hotkeys.cpp:230
 msgid "Update Shroud Now"
 msgstr "Dabar atnaujinti uždangą"
 
-#: src/hotkeys.cpp:230
+#: src/hotkeys.cpp:231
 msgid "Continue Move"
 msgstr "Tęsti judėjimą"
 
-#: src/hotkeys.cpp:231
+#: src/hotkeys.cpp:232
 msgid "Find Label or Unit"
 msgstr "Rasti žymę arba dalinį"
 
-#: src/hotkeys.cpp:232
+#: src/hotkeys.cpp:233
 msgid "Speak to Ally"
 msgstr "Kalbėti draugui"
 
-#: src/hotkeys.cpp:233
+#: src/hotkeys.cpp:234
 msgid "Speak to All"
 msgstr "Kalbėti visiems"
 
-#: src/hotkeys.cpp:235
+#: src/hotkeys.cpp:236
 msgid "View Chat Log"
 msgstr "Žiūrėti pokalbių žurnalą"
 
-#: src/hotkeys.cpp:236
+#: src/hotkeys.cpp:237
 msgid "Change Language"
 msgstr "Keisti kalbą"
 
-#: src/hotkeys.cpp:237
+#: src/hotkeys.cpp:238
 msgid "Enter User Command"
 msgstr "Įveskite naudotojo komandą"
 
-#: src/hotkeys.cpp:238
+#: src/hotkeys.cpp:239
 msgid "Custom Command"
 msgstr "Pasirinkta komanda"
 
-#: src/hotkeys.cpp:239
+#: src/hotkeys.cpp:240
 msgid "Run Formula"
 msgstr "Paleisti formulę"
 
-#: src/hotkeys.cpp:240
+#: src/hotkeys.cpp:241
 msgid "Clear Messages"
 msgstr "Išvalyti žinutes"
 
-#: src/hotkeys.cpp:241
+#: src/hotkeys.cpp:242
 msgid "Refresh WML"
 msgstr "Atnaujinti WML"
 
-#: src/hotkeys.cpp:242
+#: src/hotkeys.cpp:243
 msgid "Next Tip of the Day"
 msgstr "Kitas dienos patarimas"
 
-#: src/hotkeys.cpp:243
+#: src/hotkeys.cpp:244
 msgid "Previous Tip of the Day"
 msgstr "Ankstesnis dienos patarimas"
 
-#: src/hotkeys.cpp:244
+#: src/hotkeys.cpp:245
 msgid "Start Tutorial"
 msgstr "Pradėti apmokymą"
 
-#: src/hotkeys.cpp:245
+#: src/hotkeys.cpp:246
 msgid "Start Campaign"
 msgstr "Pradėti kampaniją"
 
-#: src/hotkeys.cpp:246
+#: src/hotkeys.cpp:247
 msgid "Start Multiplayer Game"
 msgstr "Pradėti daugelio žaidėjų žaidimą"
 
-#: src/hotkeys.cpp:247
+#: src/hotkeys.cpp:248
 msgid "Manage Add-ons"
 msgstr "Tvarkyti priedus"
 
-#: src/hotkeys.cpp:248
+#: src/hotkeys.cpp:249
 msgid "Start Editor"
 msgstr "Paleisti redaktorių"
 
-#: src/hotkeys.cpp:249
+#: src/hotkeys.cpp:250
 msgid "Show Credits"
 msgstr "Rodyti autorius"
 
-#: src/hotkeys.cpp:250
+#: src/hotkeys.cpp:251
 #, fuzzy
 msgid "Show Helptip"
 msgstr "Rodyti autorius"
 
-#: src/hotkeys.cpp:253
+#: src/hotkeys.cpp:254
 msgid "Unrecognized Command"
 msgstr ""
 
-#: src/hotkeys.cpp:386 src/hotkeys.cpp:389
+#: src/hotkeys.cpp:387 src/hotkeys.cpp:390
 msgid "Button"
 msgstr ""
 
-#: src/hotkeys.cpp:386
+#: src/hotkeys.cpp:387
 msgid "Mouse"
 msgstr ""
 
-#: src/hotkeys.cpp:389 src/hotkeys.cpp:425
+#: src/hotkeys.cpp:390 src/hotkeys.cpp:426
 msgid "Joystick"
 msgstr ""
 
-#: src/hotkeys.cpp:395
+#: src/hotkeys.cpp:396
 msgid "Centered"
 msgstr ""
 
-#: src/hotkeys.cpp:398
+#: src/hotkeys.cpp:399
 msgid "Up"
 msgstr ""
 
-#: src/hotkeys.cpp:401
+#: src/hotkeys.cpp:402
 #, fuzzy
 msgid "Right"
 msgstr "Aukštis:"
 
-#: src/hotkeys.cpp:404
+#: src/hotkeys.cpp:405
 msgid "Down"
 msgstr ""
 
-#: src/hotkeys.cpp:407
+#: src/hotkeys.cpp:408
 msgid "Left"
 msgstr ""
 
-#: src/hotkeys.cpp:410
+#: src/hotkeys.cpp:411
 msgid "RightUp"
 msgstr ""
 
-#: src/hotkeys.cpp:413
+#: src/hotkeys.cpp:414
 msgid "RightDown"
 msgstr ""
 
-#: src/hotkeys.cpp:416
+#: src/hotkeys.cpp:417
 msgid "LeftUp"
 msgstr ""
 
-#: src/hotkeys.cpp:419
+#: src/hotkeys.cpp:420
 msgid "LeftDown"
 msgstr ""
 
-#: src/hotkeys.cpp:422
+#: src/hotkeys.cpp:423
 #, fuzzy
 msgid "Unknown"
 msgstr "Nežinoma era"
 
-#: src/hotkeys.cpp:425
+#: src/hotkeys.cpp:426
 msgid "Hat"
 msgstr ""
 
-#: src/hotkeys.cpp:884 src/hotkeys.cpp:1234
+#: src/hotkeys.cpp:885 src/hotkeys.cpp:1235
 msgid "Do you really want to quit?"
 msgstr "Ar tikrai norite išjungti?"
 
-#: src/hotkeys.cpp:1184
+#: src/hotkeys.cpp:1185
 msgid "Map-Screenshot"
 msgstr "Žemėlapio ekranvaizdis"
 
-#: src/hotkeys.cpp:1191 src/hotkeys.cpp:1193
+#: src/hotkeys.cpp:1192 src/hotkeys.cpp:1194
 msgid "Screenshot done"
 msgstr "Ekranvaizdis padarytas"
 
