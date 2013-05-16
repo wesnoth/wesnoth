@@ -392,7 +392,7 @@ return {
                 recruit_data.recruit = nil
             end
 
-            AH.done_eval_messages(start_time, ca_name)
+            --AH.done_eval_messages(start_time, ca_name)
             return score
         end
 
