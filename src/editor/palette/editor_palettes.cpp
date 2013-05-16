@@ -55,12 +55,14 @@ void editor_palette<Item>::expand_palette_groups_menu(std::vector<std::string>& 
 				if (groupname.empty()) {
 					groupname = _("(Unknown Group)");
 				}
-				std::string img = item_groups[mci].icon + "_30.png";
 				std::stringstream str;
-				//TODO
-				//std::string postfix = ".png"; //(toolkit_->active_group_index() == mci) ? "-pressed.png" : ".png";
-				//str << IMAGE_PREFIX << "buttons/" << img << postfix << COLUMN_SEPARATOR << groupname;
-				str << IMAGE_PREFIX << img << COLUMN_SEPARATOR << groupname;
+				str << IMAGE_PREFIX << item_groups[mci].icon;
+				if (mci == active_group_index()) {
+					str << "_30-pressed.png";
+				} else {
+					str << "_30.png";
+				}
+				str << COLUMN_SEPARATOR << groupname;
 				groups.push_back(str.str());
 			}
 			items.insert(items.begin() + i, groups.begin(), groups.end());
