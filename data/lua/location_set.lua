@@ -106,8 +106,32 @@ end
 
 function methods:of_pairs(t)
 	local values = self.values
+
 	for i,v in ipairs(t) do
-		values[index(v[1], v[2])] = true
+		local value_table = {}
+		if (v.x) and (v.y) then
+			for k,val in pairs(v) do
+				if (k ~= "x") and (k ~= "y") then
+					value_table[k] = val
+				end
+			end
+			if (next(value_table) ~= nil) then
+				values[index(v.x, v.y)] = value_table
+			else
+				values[index(v.x, v.y)] = true
+			end
+		else
+			for k,val in pairs(v) do
+				if (k ~= 1) and (k ~= 2) then
+					value_table[k] = val
+				end
+			end
+			if (next(value_table) ~= nil) then
+				values[index(v[1], v[2])] = value_table
+			else
+				values[index(v[1], v[2])] = true
+			end
+		end
 	end
 end
 
