@@ -140,12 +140,7 @@ return {
             local enemy_attack_map = BC.get_attack_map(enemies)
             --AH.put_labels(enemy_attack_map.units)
             
-            local avoid_locs = ai.get_avoid()
-            local avoid_map = LS.create()
-
-            for i,l in ipairs(avoid_locs) do
-                avoid_map:insert(l.x, l.y)
-            end
+            local avoid_map = LS.of_pairs(ai.get_avoid())
 
             -- Put units back out there
             for i,u in ipairs(units_MP) do wesnoth.put_unit(u.x, u.y, u) end
