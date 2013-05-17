@@ -55,31 +55,24 @@ void unit_palette::setup(const config& /*cfg*/)
 		config cfg;
 		cfg["id"] = i.second.id();
 		cfg["name"] = i.second.plural_name();
-		//TODO
-		std::string& tmp = group_map_[i.second.id()][0];
-		cfg["icon"] = item_map_.find(tmp)->second.image();
+		cfg["icon"] = "icons/unit-groups/race_" + i.second.id();
 		cfg["core"] = "yes";
 		groups_.push_back(item_group(cfg));
 	}
-
 
 	//TODO
 	//move "invalid" items to the end
 	//std::stable_partition(items.begin(), items.end(), is_valid_terrain);
 
-	// Set the default group
-
 	select_fg_item("Elvish Fighter");
 	select_bg_item("Elvish Archer");
 
+	// Set the default group
 	set_group("human");
 
 	if(active_group().empty()) {
 		ERR_ED << "No items found.\n";
 	}
-
-	//TODO
-//	update_report();
 }
 
 void unit_palette::draw_item(const unit_type& u, surface& image, std::stringstream& tooltip_text) {
