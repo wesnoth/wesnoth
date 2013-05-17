@@ -123,9 +123,6 @@ void editor_display::draw_sidebar()
 
 	text = toolbar_hint_;
 	refresh_report("editor_tool_hint", &element);
-
-	//TODO
-	//	refresh_report("terrain_image", &palette_report_);
 }
 
 
