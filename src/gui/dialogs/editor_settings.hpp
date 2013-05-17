@@ -50,7 +50,6 @@ private:
 	void do_next_tod(twindow& window);
 
 	void update_tod_display(twindow& window);
-	void update_tod_display_fast(twindow& window);
 
 	void slider_update_callback(twindow& window);
 
