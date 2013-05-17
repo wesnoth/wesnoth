@@ -83,6 +83,7 @@ public:
 	virtual size_t num_items() {return 0;};
 	virtual size_t start_num() {return 0;};
 	virtual void set_start_item(size_t /*index*/) {};
+	virtual bool supports_swap() { return false; }
 	virtual void swap() {};
 
 private:

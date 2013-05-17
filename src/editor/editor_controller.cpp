@@ -327,8 +327,9 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 			return toolkit_->get_mouse_action()->supports_brushes();
 
 		case HOTKEY_EDITOR_TOOL_NEXT:
-		case HOTKEY_EDITOR_PALETTE_ITEM_SWAP:
 			return true;
+		case HOTKEY_EDITOR_PALETTE_ITEM_SWAP:
+			return toolkit_->get_palette_manager()->active_palette().supports_swap();
 		case HOTKEY_EDITOR_MAP_SAVE:
 			return context_manager_->get_map_context().modified();
 		case HOTKEY_EDITOR_MAP_SAVE_ALL:

@@ -81,6 +81,8 @@ public:
 	virtual size_t num_items() = 0;
 	virtual size_t start_num() = 0;
 	virtual void set_start_item(size_t index) = 0;
+
+	virtual bool supports_swap() { return true; }
 	virtual void swap() = 0;
 
 };
