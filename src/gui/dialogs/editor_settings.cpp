@@ -151,6 +151,17 @@ void teditor_settings::update_tod_display(twindow& window)
 	window.set_dirty(true);
 }
 
+void teditor_settings::update_tod_display_fast(twindow& window)
+{
+    // This is simplified version of the update_tod_display function
+    // It doesn't include the hue shifting and window redraw
+	if(display_) {
+		display_->invalidate_all();
+		// redraw tiles
+		display_->draw();
+	}
+}
+
 void teditor_settings::slider_update_callback(twindow& window)
 {
 	if (custom_tod_auto_refresh_->get_value()) {
@@ -271,7 +282,7 @@ void teditor_settings::pre_show(CVideo& /*video*/, twindow& window)
 
 void teditor_settings::post_show(twindow& window)
 {
-    update_tod_display(window);
+    update_tod_display_fast(window);
 
 	can_update_display_ = false;
 }
