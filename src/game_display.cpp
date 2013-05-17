@@ -44,6 +44,9 @@ Growl_Delegate growl_obj;
 #include "tod_manager.hpp"
 #include "sound.hpp"
 #include "whiteboard/manager.hpp"
+#ifdef _WIN32
+#include "windows_tray_notification.hpp"
+#endif
 
 #include <boost/foreach.hpp>
 
@@ -973,13 +976,13 @@ static uint32_t send_dbus_notification(DBusConnection *connection, uint32_t repl
 }
 #endif
 
-#if defined(HAVE_LIBDBUS) || defined(HAVE_GROWL)
+#if defined(HAVE_LIBDBUS) || defined(HAVE_GROWL) || defined(_WIN32)
 void game_display::send_notification(const std::string& owner, const std::string& message)
 #else
 void game_display::send_notification(const std::string& /*owner*/, const std::string& /*message*/)
 #endif
 {
-#if defined(HAVE_LIBDBUS) || defined(HAVE_GROWL)
+#if defined(HAVE_LIBDBUS) || defined(HAVE_GROWL) || defined(_WIN32)
 	Uint8 app_state = SDL_GetAppState();
 
 	// Do not show notifications when the window is visible...
@@ -1037,6 +1040,21 @@ void game_display::send_notification(const std::string& /*owner*/, const std::st
 	CFRelease(cf_owner);
 	CFRelease(cf_message);
 	CFRelease(cf_note_name);
+#endif
+
+#ifdef _WIN32
+	std::string notification_title;
+	std::string notification_message;
+
+	if (owner == "Turn changed") {
+		notification_title = owner;
+		notification_message = message;
+	} else {
+		notification_title = "Chat message";
+		notification_message = owner + ": " + message;
+	}
+
+	windows_tray_notification::show(notification_title, notification_message);
 #endif
 }
 
