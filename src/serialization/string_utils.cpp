@@ -65,6 +65,16 @@ bool notspace(const char c)
 	return !portable_isspace(c);
 }
 
+std::string replace(std::string str, const std::string &src, const std::string &dst)
+{
+	std::string::size_type pos = 0;
+	while ( (pos = str.find(src, pos)) != std::string::npos ) {
+		str.replace( pos, src.size(), dst );
+		pos++;
+	}
+	return str;
+}
+
 std::string &strip(std::string &str)
 {
 	// If all the string contains is whitespace,
@@ -97,7 +107,7 @@ std::vector< std::string > split(std::string const &val, const char c, const int
 			++i1;
 	}
 	i2=i1;
-			
+
 	while (i2 != val.end()) {
 		if (*i2 == c) {
 			std::string new_val(i1, i2);
@@ -151,7 +161,7 @@ std::vector< std::string > square_parenthetical_split(std::string const &val,
 	j1=i1;
 
 	if (i1 == val.end()) return res;
-	
+
 	if (!separator) {
 		ERR_GENERAL << "Separator must be specified for square bracket split funtion.\n";
 		return res;
@@ -220,7 +230,7 @@ std::vector< std::string > square_parenthetical_split(std::string const &val,
 				}
 				size_square_exp = square_expansion.size();
 			}
-			
+
 			//combine square contents and rest of string for comma zone block
 			size_t j = 0;
 			size_t j_max = 0;
@@ -245,7 +255,7 @@ std::vector< std::string > square_parenthetical_split(std::string const &val,
 					res.push_back(new_val);
 				j++;
 			} while (j<j_max);
-			
+
 			if (i2 == val.end()) //escape loop
 				break;
 			++i2;
@@ -291,6 +301,32 @@ std::vector< std::string > square_parenthetical_split(std::string const &val,
 	return res;
 }
 
+std::map< std::string, std::string > map_split(std::string const &val, char major, char minor, int flags, std::string const default_value)
+{
+	//first split by major so that we get a vector with the key-value pairs
+	std::vector< std::string > v = split(val, major, flags);
+
+	//now split by minor to extract keys and values
+	std::map< std::string, std::string > res;
+
+	for( std::vector< std::string >::iterator i = v.begin(); i != v.end(); ++i) {
+		size_t pos = i->find_first_of(minor);
+		std::string key, value;
+
+		if(pos == std::string::npos) {
+			key = (*i);
+			value = default_value;
+		} else {
+			key = i->substr(0, pos);
+			value = i->substr(pos + 1);
+		}
+
+		res[key] = value;
+	}
+
+	return res;
+}
+
 std::vector< std::string > parenthetical_split(std::string const &val,
 		const char separator, std::string const &left,
 		std::string const &right,const int flags)
@@ -309,7 +345,7 @@ std::vector< std::string > parenthetical_split(std::string const &val,
 			++i1;
 	}
 	i2=i1;
-	
+
 	if(left.size()!=right.size()){
 		ERR_GENERAL << "Left and Right Parenthesis lists not same length\n";
 		return res;

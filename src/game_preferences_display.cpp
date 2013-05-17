@@ -389,8 +389,8 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	mp_server_search_button_.set_help_string(_("Find and set path to MP server to host LAN games"));
 	friends_list_button_.set_help_string(_("View and edit your friends and ignores list"));
 	friends_back_button_.set_help_string(_("Back to the multiplayer options"));
-	friends_add_friend_button_.set_help_string(_("Add this username to your friends list"));
-	friends_add_ignore_button_.set_help_string(_("Add this username to your ignores list"));
+	friends_add_friend_button_.set_help_string(_("Add this username to your friends list (add optional notes, e.g., 'player_name notes on friend')"));
+	friends_add_ignore_button_.set_help_string(_("Add this username to your ignores list (add optional reason, e.g., 'player_name reason ignored')"));
 	friends_remove_button_.set_help_string(_("Remove this username from your list"));
 
 	friends_input_.set_text("");
@@ -953,15 +953,33 @@ void preferences_dialog::process_event()
 			set_selection(MULTIPLAYER_TAB);
 
 		if (friends_add_friend_button_.pressed()) {
-			if (preferences::add_friend(friends_input_.text())) {
+			std::string notes = "";
+			std::string username = friends_input_.text();
+			size_t pos = username.find_first_of(' ');
+
+			if(pos != std::string::npos) {
+				notes = username.substr(pos + 1);
+				username = username.substr(0, pos);
+			}
+
+			if (preferences::add_friend(username, notes)) {
 				friends_input_.clear();
 				set_friends_menu();
 			} else {
 				gui2::show_transient_error_message(disp_.video(), _("Invalid username"));
-            }
-        }
+			}
+		}
 		if (friends_add_ignore_button_.pressed()) {
-			if (preferences::add_ignore(friends_input_.text())) {
+			std::string reason = "";
+			std::string username = friends_input_.text();
+			size_t pos = username.find_first_of(' ');
+
+			if(pos != std::string::npos) {
+				reason = username.substr(pos + 1);
+				username = username.substr(0, pos);
+			}
+
+			if (preferences::add_ignore(username, reason)) {
 				friends_input_.clear();
 				set_friends_menu();
 			} else {
@@ -975,8 +993,7 @@ void preferences_dialog::process_event()
 			}
 			if(!to_remove.empty()) {
 				/** @todo Better to remove from a specific relation. */
-				preferences::remove_friend(to_remove);
-				preferences::remove_ignore(to_remove);
+				preferences::remove_acquaintance(to_remove);
 				friends_input_.clear();
 				set_friends_menu();
             }
@@ -1093,25 +1110,31 @@ void preferences_dialog::sort_advanced_preferences()
 
 void preferences_dialog::set_friends_menu()
 {
-	const std::set<std::string>& friends = preferences::get_friends();
-	const std::set<std::string>& ignores = preferences::get_ignores();
+	const std::map<std::string, acquaintance>& acquaintances = preferences::get_acquaintances();
 
 	std::vector<std::string> friends_items;
 	std::vector<std::string> friends_names;
 	std::string const imgpre = IMAGE_PREFIX + std::string("misc/status-");
 
-	std::set<std::string>::const_iterator i;
-	for (i = friends.begin(); i != friends.end(); ++i)
+	for (std::map<std::string, acquaintance>::const_iterator i = acquaintances.begin(); i != acquaintances.end(); ++i)
 	{
-		friends_items.push_back(imgpre + "friend.png" + COLUMN_SEPARATOR
-				+ *i + COLUMN_SEPARATOR + _("friend"));
-		friends_names.push_back(*i);
-	}
-	for (i = ignores.begin(); i != ignores.end(); ++i)
-	{
-		friends_items.push_back(imgpre + "ignore.png" + COLUMN_SEPARATOR
-				+ *i + COLUMN_SEPARATOR + _("ignored"));
-		friends_names.push_back(*i);
+		std::string image = "friend.png";
+		std::string descriptor = _("friend");
+
+		if(i->second.get_status() == "ignore") {
+			image = "ignore.png";
+			descriptor = _("ignored");
+		}
+
+		std::string notes;
+
+		if(!i->second.get_notes().empty()) {
+			notes = " (" + i->second.get_notes() + ")";
+		}
+
+		friends_items.push_back(imgpre + image + COLUMN_SEPARATOR
+				+ i->second.get_nick() + notes + COLUMN_SEPARATOR + descriptor);
+		friends_names.push_back(i->first);
 	}
 	if (friends_items.empty()) {
 		friends_items.push_back(_("(empty list)"));
