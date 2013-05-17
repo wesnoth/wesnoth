@@ -119,6 +119,8 @@ void button::load_images() {
 		if (overlayPressedDisabledImage_.null())
 				overlayPressedDisabledImage_ = blend_surface(greyscale_image(overlayPressedImage_),
 						disabled_btn_adjust, disabled_btn_color);
+	} else {
+		overlayImage_.assign(NULL);
 	}
 
 	if (disabled_image == NULL) {
