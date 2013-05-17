@@ -230,6 +230,8 @@ void editor_palette<Item>::adjust_size(const SDL_Rect& target)
 	buttons_.resize(nitems_, gui::tristate_button(gui_.video(), this));
 	set_location(target);
 	set_dirty(true);
+	gui_.video().clear_help_string(help_handle_);
+	help_handle_ = gui_.video().set_help_string(get_help_string());
 }
 template void editor_palette<t_translation::t_terrain>::adjust_size(const SDL_Rect& target);
 template void editor_palette<unit_type>::adjust_size(const SDL_Rect& target);
