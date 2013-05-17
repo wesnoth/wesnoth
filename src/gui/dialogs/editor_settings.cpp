@@ -153,8 +153,8 @@ void teditor_settings::update_tod_display(twindow& window)
 
 void teditor_settings::update_tod_display_fast(twindow& window)
 {
-    // This is simplified version of the update_tod_display function
-    // It doesn't include the hue shifting and window redraw
+	// This is simplified version of the update_tod_display function
+	// It doesn't include the hue shifting and window redraw
 	if(display_) {
 		display_->invalidate_all();
 		// redraw tiles
@@ -282,7 +282,7 @@ void teditor_settings::pre_show(CVideo& /*video*/, twindow& window)
 
 void teditor_settings::post_show(twindow& window)
 {
-    update_tod_display_fast(window);
+	update_tod_display_fast(window);
 
 	can_update_display_ = false;
 }
