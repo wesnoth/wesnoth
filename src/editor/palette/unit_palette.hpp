@@ -35,6 +35,8 @@ public:
 
 	virtual void setup(const config& cfg);
 
+	virtual std::string get_help_string();
+
 private:
 	virtual const std::string& get_id(const unit_type& terrain);
 

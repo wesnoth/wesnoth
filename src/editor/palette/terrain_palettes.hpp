@@ -45,6 +45,8 @@ public:
 	const t_translation::t_terrain& selected_fg_item() const;
 	const t_translation::t_terrain& selected_bg_item() const;
 
+	virtual std::string get_help_string();
+
 private:
 
 	virtual void select_bg_item(const std::string& item_id);
@@ -54,7 +56,6 @@ private:
 
 	virtual void draw_item(const t_translation::t_terrain& terrain, surface& item_image, std::stringstream& tooltip_text);
 
-	virtual void update_report();
 };
 
 }

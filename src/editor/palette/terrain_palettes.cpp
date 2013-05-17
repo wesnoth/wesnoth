@@ -25,7 +25,6 @@
 #include <boost/foreach.hpp>
 
 namespace {
-	static std::string selected_terrain;
 	static t_translation::t_terrain fg_terrain;
 	static t_translation::t_terrain bg_terrain;
 }
@@ -48,36 +47,24 @@ static bool is_valid_terrain(const t_translation::t_terrain & c) {
 	return !(c == t_translation::VOID_TERRAIN || c == t_translation::FOGGED);
 }
 
-void terrain_palette::update_report()
-{
-	std::ostringstream msg;
-	msg << _("FG: ") << map().get_terrain_editor_string(selected_fg_item())	<< " | "
-		<< _("BG: ") << map().get_terrain_editor_string(selected_bg_item());
-	selected_terrain = msg.str();
-}
-
 void terrain_palette::select_bg_item(const std::string& item_id) {
+	bg_terrain = item_map_[item_id];
 	editor_palette<t_translation::t_terrain>::select_bg_item(item_id);
-	bg_terrain = editor_palette<t_translation::t_terrain>::selected_bg_item();
-	update_report();
 }
 
 void terrain_palette::select_fg_item(const std::string& item_id) {
+	fg_terrain = item_map_[item_id];
 	editor_palette<t_translation::t_terrain>::select_fg_item(item_id);
-	fg_terrain = editor_palette<t_translation::t_terrain>::selected_fg_item();
-	update_report();
 }
 
 void terrain_palette::select_bg_item(const t_translation::t_terrain& terrain) {
-	editor_palette<t_translation::t_terrain>::select_bg_item(get_id(terrain));
 	bg_terrain = terrain;
-	update_report();
+	editor_palette<t_translation::t_terrain>::select_bg_item(get_id(terrain));
 }
 
 void terrain_palette::select_fg_item(const t_translation::t_terrain& terrain) {
-	editor_palette<t_translation::t_terrain>::select_fg_item(get_id(terrain));
 	fg_terrain = terrain;
-	update_report();
+	editor_palette<t_translation::t_terrain>::select_fg_item(get_id(terrain));
 }
 
 
@@ -230,6 +217,14 @@ const std::string& terrain_palette::get_id(const t_translation::t_terrain& terra
 {
 	const terrain_type& t_info = map().get_terrain_info(terrain);
 	return t_info.id();
+}
+
+std::string terrain_palette::get_help_string()
+{
+	std::ostringstream msg;
+	msg << _("FG: ") << map().get_terrain_editor_string(selected_fg_item())	<< " | "
+		<< _("BG: ") << map().get_terrain_editor_string(selected_bg_item());
+	return msg.str();
 }
 
 

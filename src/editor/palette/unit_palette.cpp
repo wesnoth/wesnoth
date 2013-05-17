@@ -28,16 +28,9 @@
 
 namespace editor {
 
-//TODO
-/*
-void unit_palette::update_report()
-{
-//	std::ostringstream msg;
-//	msg << _("FG: ") << map().get_terrain_editor_string(selected_fg_item())
-//		<< '\n' << _("BG: ") << map().get_terrain_editor_string(selected_fg_item());
-//	selected_terrain = msg.str();
+std::string unit_palette::get_help_string() {
+	return selected_fg_item().type_name();
 }
-*/
 
 void unit_palette::setup(const config& /*cfg*/)
 {

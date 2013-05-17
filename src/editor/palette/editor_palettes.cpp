@@ -241,6 +241,8 @@ void editor_palette<Item>::select_fg_item(const std::string& item_id)
 		selected_fg_item_ = item_id;
 		set_dirty();
 	}
+	gui_.video().clear_help_string(help_handle_);
+	help_handle_ = gui_.video().set_help_string(get_help_string());
 }
 template void editor_palette<t_translation::t_terrain>::select_fg_item(const std::string& terrain_id);
 template void editor_palette<unit_type>::select_fg_item(const std::string& unit_id);
@@ -252,6 +254,8 @@ void editor_palette<Item>::select_bg_item(const std::string& item_id)
 		selected_bg_item_ = item_id;
 		set_dirty();
 	}
+	gui_.video().clear_help_string(help_handle_);
+	help_handle_ = gui_.video().set_help_string(get_help_string());
 }
 template void editor_palette<t_translation::t_terrain>::select_bg_item(const std::string& terrain_id);
 template void editor_palette<unit_type>::select_bg_item(const std::string& unit_id);
