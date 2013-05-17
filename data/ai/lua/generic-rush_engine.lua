@@ -98,10 +98,10 @@ return {
                 { "not", {
                     x = leader.x, y = leader.y, terrain = "K*^*,*^Kov",
                     radius = 3,
-                    { "filter_radius", { terrain = 'C*^*,K*^*,*^Kov,*^Cov' } }
+                    { "filter_radius", { terrain = 'C*,K*,C*^*,K*^*,*^K*,*^C*' } }
                 }}, -- That are not close and connected to a keep the leader is on
                 { "filter_adjacent_location", {
-                    terrain = 'C*^*,K*^*,*^Kov,*^Cov'
+                    terrain = 'C*,K*,C*^*,K*^*,*^K*,*^C*'
                 }} -- That are not one-hex keeps
             }
             if #keeps < 1 then
@@ -198,7 +198,7 @@ return {
                         x = "1-"..width, y = "1-"..height,
                         { "and", {
                             x = leader.x, y = leader.y, radius = 200,
-                            { "filter_radius", { terrain = 'C*^*,K*^*,*^Kov,*^Cov' } }
+                            { "filter_radius", { terrain = 'C*,K*,C*^*,K*^*,*^K*,*^C*' } }
                         }}
                     }
                     local should_wait = false
