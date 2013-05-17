@@ -52,8 +52,8 @@ void mouse_action_unit::move(editor_display& disp, const map_location& hex)
 			SDL_Rect rect;
 			rect.x = disp.get_location_x(hex);
 			rect.y = disp.get_location_y(hex);
-			rect.h = 80;
-			rect.w = 80;
+			rect.h = disp.hex_size();
+			rect.w = disp.hex_size();
 			std::stringstream str;
 			str << N_("ID: ")   << unit_it->id()   << "\n"
 				<< N_("Name: ") << unit_it->name() << "\n"
