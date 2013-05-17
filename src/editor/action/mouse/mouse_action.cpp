@@ -378,10 +378,23 @@ editor_action* mouse_action_select::click_right(editor_display& /*disp*/, int /*
 	return NULL;
 }
 
-
 void mouse_action_paste::set_mouse_overlay(editor_display& disp)
 {
-	disp.set_mouseover_hex_overlay(NULL); //TODO
+	surface image60 = image::get_image("icons/action/editor-paste_60.png");
+
+	//TODO avoid hardcoded hex field size
+	surface image = create_neutral_surface(72,72);
+
+	SDL_Rect r = create_rect(6, 6, 0, 0);
+	blit_surface(image60, NULL, image, &r);
+
+	Uint8 alpha = 196;
+	int size = image->w;
+	int zoom = static_cast<int>(size * disp.get_zoom_factor());
+
+	// Add the alpha factor and scale the image
+	image = scale_surface(adjust_surface_alpha(image, alpha), zoom, zoom);
+	disp.set_mouseover_hex_overlay(image);
 }
 
 std::set<map_location> mouse_action_fill::affected_hexes(
