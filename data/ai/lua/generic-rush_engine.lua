@@ -88,7 +88,7 @@ return {
 
             local width,height,border = wesnoth.get_map_size()
             local keeps = wesnoth.get_locations {
-                terrain = "K*^*,*^Kov", -- Keeps
+                terrain = 'K*,K*^*,*^K*', -- Keeps
                 x = '1-'..width,
                 y = '1-'..height,
                 { "not", { {"filter", {}} }}, -- That have no unit
@@ -96,7 +96,7 @@ return {
 	                { "filter_side", { { "enemy_of", {side = wesnoth.current.side} } } }
                 }} }}, -- That are not too close to an enemy leader
                 { "not", {
-                    x = leader.x, y = leader.y, terrain = "K*^*,*^Kov",
+                    x = leader.x, y = leader.y, terrain = 'K*,K*^*,*^K*',
                     radius = 3,
                     { "filter_radius", { terrain = 'C*,K*,C*^*,K*^*,*^K*,*^C*' } }
                 }}, -- That are not close and connected to a keep the leader is on
