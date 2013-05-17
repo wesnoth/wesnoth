@@ -490,7 +490,14 @@ editor_action* mouse_action_starting_position::click_right(editor_display& /*dis
 
 void mouse_action_starting_position::set_mouse_overlay(editor_display& disp)
 {
-	surface image = image::get_image("editor/tool-overlay-starting-position.png");
+	surface image60 = image::get_image("icons/action/editor-tool-starting-position_60.png");
+
+	//TODO avoid hardcoded hex field size
+	surface image = create_neutral_surface(72,72);
+
+	SDL_Rect r = create_rect(6, 6, 0, 0);
+	blit_surface(image60, NULL, image, &r);
+
 	Uint8 alpha = 196;
 	int size = image->w;
 	int zoom = static_cast<int>(size * disp.get_zoom_factor());

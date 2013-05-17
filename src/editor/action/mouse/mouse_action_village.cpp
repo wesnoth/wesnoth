@@ -39,10 +39,23 @@ editor_action* mouse_action_village::up_right(editor_display& disp, int x, int y
 	return new editor_action_village_delete(hex);
 }
 
-void mouse_action_village::set_mouse_overlay(editor_display& /*disp*/)
+void mouse_action_village::set_mouse_overlay(editor_display& disp)
 {
-	//TODO
-	//set_mouse_overlay_image(disp, "editor/tool-overlay-village.png");
+	surface image60 = image::get_image("icons/action/editor-tool-village_60.png");
+
+	//TODO avoid hardcoded hex field size
+	surface image = create_neutral_surface(72,72);
+
+	SDL_Rect r = create_rect(6, 6, 0, 0);
+	blit_surface(image60, NULL, image, &r);
+
+	Uint8 alpha = 196;
+	int size = image->w;
+	int zoom = static_cast<int>(size * disp.get_zoom_factor());
+
+	// Add the alpha factor and scale the image
+	image = scale_surface(adjust_surface_alpha(image, alpha), zoom, zoom);
+	disp.set_mouseover_hex_overlay(image);
 }
 
 
