@@ -568,13 +568,13 @@ const std::string theme::action::tooltip(size_t index) const {
 	if (auto_tooltip_ && tooltip_.empty() && items_.size() > index) {
 		result << hotkey::get_description(items_[index]);
 		if (!hotkey::get_names(items_[index]).empty())
-			result << N_("  hotkeys: ") << hotkey::get_names(items_[index]);
+			result << "\n" << N_("Hotkey(s): ") << hotkey::get_names(items_[index]);
 		result << "\n" << hotkey::get_tooltip(items_[index]);
 	} else if (tooltip_name_prepend_ && items_.size() == 1) {
-		result << hotkey::get_description(items_[index]); // << "  hotkeys: "
+		result << hotkey::get_description(items_[index]);
 		if (!hotkey::get_names(items_[index]).empty())
-			result << N_("  hotkeys: ") << hotkey::get_names(items_[index]);
-	    result << hotkey::get_names(items_[index]) << "\n" << tooltip_;
+			result << "\n" << N_("Hotkey(s): ") << hotkey::get_names(items_[index]);
+	    result << "\n" << tooltip_;
 	}
 
 	return result.str();
