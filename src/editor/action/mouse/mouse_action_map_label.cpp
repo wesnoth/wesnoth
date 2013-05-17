@@ -94,6 +94,7 @@ editor_action* mouse_action_map_label::up_right(editor_display& disp, int x, int
 {
 	map_location hex = disp.hex_clicked_on(x, y);
 
+	//TODO
 //	const terrain_label* clicked_label = disp.map().get_map_labels().get_label(hex);
 	//if (!clicked_label)
 	//	return NULL;
@@ -103,8 +104,14 @@ editor_action* mouse_action_map_label::up_right(editor_display& disp, int x, int
 
 void mouse_action_map_label::set_mouse_overlay(editor_display& disp)
 {
-	//TODO
-	surface image = image::get_image("editor/tool-overlay-label.png");
+	surface image60 = image::get_image("icons/action/editor-tool-label_60.png");
+
+	//TODO avoid hardcoded hex field size
+	surface image = create_neutral_surface(72,72);
+
+	SDL_Rect r = create_rect(6, 6, 0, 0);
+	blit_surface(image60, NULL, image, &r);
+
 	Uint8 alpha = 196;
 	int size = image->w;
 	int zoom = static_cast<int>(size * disp.get_zoom_factor());
