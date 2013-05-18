@@ -498,6 +498,9 @@ wesnoth_sources = Split("""
     widgets/scrollpane.cpp
     """)
 
+if env["PLATFORM"] == "win32":
+    wesnoth_sources.append("windows_tray_notification.cpp")
+
 wesnoth_sources.extend(client_env.Object("game_preferences_display.cpp", EXTRA_DEFINE = env["PLATFORM"] != "win32" and "WESNOTH_PREFIX='\"$prefix\"'" or None))
 wesnoth_sources.extend(client_env.Object("hotkey_preferences_display.cpp", EXTRA_DEFINE = env["PLATFORM"] != "win32" and "WESNOTH_PREFIX='\"$prefix\"'" or None))
 
