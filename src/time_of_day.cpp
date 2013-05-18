@@ -57,6 +57,7 @@ void time_of_day::write(config& cfg) const
 	cfg["name"] = name;
 	cfg["id"] = id;
 	cfg["mask"] = image_mask;
+	cfg["sound"] = sounds;
 }
 
 void time_of_day::parse_times(const config& cfg, std::vector<time_of_day>& normal_times)
