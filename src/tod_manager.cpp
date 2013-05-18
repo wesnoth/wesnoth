@@ -201,12 +201,7 @@ void tod_manager::replace_schedule(const config& time_cfg)
 
 void tod_manager::replace_schedule(const std::vector<time_of_day>& schedule)
 {
-	times_.clear();
-	BOOST_FOREACH(const time_of_day& time, schedule) {
-		config cfg;
-		time.write(cfg);
-		times_.push_back(time_of_day(cfg));
-	}
+	times_ = schedule;
 	currentTime_ = 0;
 }
 
