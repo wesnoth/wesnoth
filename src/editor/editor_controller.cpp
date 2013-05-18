@@ -557,14 +557,17 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 		case HOTKEY_ZOOM_IN:
 			gui_->set_zoom(zoom_amount);
 			context_manager_->get_map_context().get_labels().recalculate_labels();
+			toolkit_->get_mouse_action()->set_mouse_overlay(*gui_);
 			return true;
 		case HOTKEY_ZOOM_OUT:
 			gui_->set_zoom(-zoom_amount);
 			context_manager_->get_map_context().get_labels().recalculate_labels();
+			toolkit_->get_mouse_action()->set_mouse_overlay(*gui_);
 			return true;
 		case HOTKEY_ZOOM_DEFAULT:
 			gui_->set_default_zoom();
 			context_manager_->get_map_context().get_labels().recalculate_labels();
+			toolkit_->get_mouse_action()->set_mouse_overlay(*gui_);
 			return true;
 
 			//Palette
@@ -1087,6 +1090,7 @@ void editor_controller::left_mouse_up(int x, int y, const bool /*browse*/)
 	if (s && s->value_change()) {
 		gui_->set_zoom(s->value(), true);
 		context_manager_->get_map_context().get_labels().recalculate_labels();
+		toolkit_->get_mouse_action()->set_mouse_overlay(*gui_);
 		set_button_state(*gui_);
 	}
 	context_manager_->refresh_after_action();
