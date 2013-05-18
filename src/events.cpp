@@ -21,6 +21,9 @@
 #include "preferences_display.hpp"
 #include "sound.hpp"
 #include "video.hpp"
+#if defined _WIN32
+#include "windows_tray_notification.hpp"
+#endif
 
 #include "SDL.h"
 
@@ -358,6 +361,13 @@ void pump()
 			case SDL_SYSWMEVENT: {
 				//clipboard support for X11
 				handle_system_event(event);
+				break;
+			}
+#endif
+
+#if defined _WIN32
+			case SDL_SYSWMEVENT: {
+				windows_tray_notification::handle_system_event(event);
 				break;
 			}
 #endif

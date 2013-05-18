@@ -490,7 +490,7 @@ static int do_gameloop(int argc, char** argv)
 	loadscreen::start_stage("refresh addons");
 	refresh_addon_version_info_cache();
 
-#if defined(_X11) && !defined(__APPLE__)
+#if (defined(_X11) && !defined(__APPLE__)) || defined(_WIN32)
 	SDL_EventState(SDL_SYSWMEVENT, SDL_ENABLE);
 #endif
 
