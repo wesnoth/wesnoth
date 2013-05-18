@@ -185,7 +185,7 @@ void parse_admin_authentication(const std::string& sender, const std::string& me
 	}
 }
 
-void load_acquaintances() {
+static void load_acquaintances() {
 	if(!acquaintances_initialized) {
 		acquaintances.clear();
 		BOOST_FOREACH(const config &acfg, preferences::get_prefs()->child_range("acquaintance")) {
@@ -195,7 +195,7 @@ void load_acquaintances() {
 	}
 }
 
-void save_acquaintances()
+static void save_acquaintances()
 {
 	config *cfg = preferences::get_prefs();
 	cfg->clear_children("acquaintance");
