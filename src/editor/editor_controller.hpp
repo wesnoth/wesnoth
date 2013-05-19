@@ -115,13 +115,8 @@ class editor_controller : public controller_base,
 		/** command_executor override */
 		bool execute_command(hotkey::HOTKEY_COMMAND command, int index = -1);
 
-		/** command_executor override */
-		void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& /*gui*/) {
-			show_menu(items_arg, xloc, yloc, context_menu);
-		}
-
 		/** controller_base override */
-		void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu);
+		void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp);
 
 		void show_help();
 		void status_table();
