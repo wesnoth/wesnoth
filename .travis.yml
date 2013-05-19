@@ -13,4 +13,9 @@ branches:
 notifications:
     email: false
     irc:
-        - "chat.freenode.net#wesnoth-test"
+        channels:
+            - "chat.freenode.net#wesnoth-test"
+        template:
+            - "\x02%{repository}\x0f#\x0303%{build_number}\x0f (\x0307%{branch}\x0f - \x02%{commit}\x0f : \x0303%{author}\x0f): %{message}"
+            - "Change view : \x0305%{compare_url}\x0f"
+            - "Build details : \x0305%{build_url}\x0f"
