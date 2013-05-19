@@ -485,8 +485,15 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 			return index ==	context_manager_->get_map_context().get_time_manager()->turn() -1
 					? ACTION_SELECTED : ACTION_DESELECTED;
 		case editor::SCHEDULE:
+			{
+				tods_map::const_iterator it = tods_.begin();
+				std::advance(it, index);
+				const std::vector<time_of_day>& times1 = it->second.second;
+				const std::vector<time_of_day>& times2 = context_manager_->get_map_context().get_time_manager()->times();
+			return (times1 == times2) ? ACTION_SELECTED : ACTION_DESELECTED;
 			//TODO
-			return ACTION_STATELESS;
+			//return ACTION_STATELESS;
+			}
 		}
 		return ACTION_ON;
 		default:

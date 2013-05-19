@@ -58,6 +58,12 @@ struct time_of_day
 	/** Construct a time of day from config */
 	explicit time_of_day(const config& cfg);
 
+	bool operator==(const time_of_day& o) const {
+		return lawful_bonus == o.lawful_bonus && bonus_modified == o.bonus_modified
+				&& image == o.image && name == o.name && id == o.id
+				&& image_mask == o.image_mask && color == o.color && sounds == o.sounds;
+	}
+
 	void write(config& cfg) const;
 
 	/** The % bonus lawful units receive. Chaotics receive -lawful_bonus. */
