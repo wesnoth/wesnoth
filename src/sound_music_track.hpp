@@ -31,7 +31,7 @@ public:
 	music_track();
 	music_track(const config& node);
 	music_track(const std::string& v_name);
-	void write(config& parent_node, bool append);
+	void write(config& parent_node, bool append) const;
 
 	bool valid() const { return file_path_.empty() != true; }
 

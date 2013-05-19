@@ -79,7 +79,7 @@ void music_track::resolve()
 	LOG_AUDIO << "resolved music track '" << id_ << "' into '" << file_path_ << "'\n";
 }
 
-void music_track::write(config &parent_node, bool append)
+void music_track::write(config &parent_node, bool append) const
 {
 	config& m = parent_node.add_child("music");
 	m["name"] = id_;

@@ -57,6 +57,7 @@ map_context::map_context(const editor_map& map, const display& disp)
 	, teams_()
 	, tod_manager_(new tod_manager)
 	, state_()
+	, music_tracks_()
 {
 }
 
@@ -80,6 +81,7 @@ map_context::map_context(const config& game_config, const std::string& filename,
 	, teams_()
 	, tod_manager_(NULL)
 	, state_()
+	, music_tracks_()
 {
 	/*
 	 * Overview of situations possibly found in the file:
@@ -145,6 +147,10 @@ map_context::map_context(const config& game_config, const std::string& filename,
 	tod_manager_.reset(new tod_manager(level));
 	BOOST_FOREACH(const config &t, level.child_range("time_area")) {
 		tod_manager_->add_time_area(t);
+	}
+
+	BOOST_FOREACH(const config& music, level.child_range("music")) {
+		music_tracks_.insert(std::pair<std::string, sound::music_track>(music["name"], sound::music_track(music)));
 	}
 
 	resources::teams = &teams_;
@@ -279,6 +285,10 @@ bool map_context::save()
 
 	config wml_data = tod_manager_->to_config();
 	labels_.write(wml_data);
+
+	BOOST_FOREACH(const music_map::value_type& track, music_tracks_) {
+		track.second.write(wml_data, true);
+	}
 
 	//TODO think about saving the map to the wml file
 	//config& map = cfg.add_child("map");

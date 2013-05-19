@@ -74,6 +74,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	, help_manager_(NULL)
 	, do_quit_(false)
 	, quit_mode_(EXIT_ERROR)
+	, music_tracks_()
 {
 	init_gui();
 	toolkit_.reset(new editor_toolkit(*gui_.get(), key_, game_config_, *context_manager_.get()));
@@ -140,14 +141,18 @@ void editor_controller::init_tods(const config& game_config)
 
 void editor_controller::init_music(const config& game_config)
 {
-	const config &cfg = game_config.child("editor_music");
-	if (!cfg) {
+	if (!game_config.has_child("editor_music")) {
 		ERR_ED << "No editor music defined\n";
 		return;
 	}
-	BOOST_FOREACH(const config &i, cfg.child_range("music")) {
-		sound::play_music_config(i);
+
+	BOOST_FOREACH(const config& editor_music, game_config.child_range("editor_music")) {
+		BOOST_FOREACH(const config& music, editor_music.child_range("music")) {
+			music_tracks_.push_back(sound::music_track(music));
+			sound::play_music_config(music);
+		}
 	}
+
 	sound::commit_music_changes();
 }
 
@@ -250,6 +255,7 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 					case editor::SIDE:
 					case editor::TIME:
 					case editor::SCHEDULE:
+					case editor::MUSIC:
 						return true;
 				}
 			}
@@ -484,6 +490,9 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 		case editor::TIME:
 			return index ==	context_manager_->get_map_context().get_time_manager()->turn() -1
 					? ACTION_SELECTED : ACTION_DESELECTED;
+		case editor::MUSIC:
+			return context_manager_->get_map_context().is_in_playlist(music_tracks_[index].id())
+					? ACTION_ON : ACTION_OFF;
 		case editor::SCHEDULE:
 			{
 				tods_map::const_iterator it = tods_.begin();
@@ -544,6 +553,12 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 					tod->set_turn(index +1, true);
 					tod_color col = tod->times()[index].color;
 					image::set_color_adjustment(col.r, col.g, col.b);
+					return true;
+				}
+			case MUSIC:
+				{
+					sound::play_music_once(music_tracks_[index].id());
+					context_manager_->get_map_context().add_to_playlist(music_tracks_[index]);
 					return true;
 				}
 			case SCHEDULE:
@@ -859,6 +874,13 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 	if (!items.empty() && items.front() == "editor-switch-time") {
 		active_menu_ = editor::TIME;
 		context_manager_->expand_time_menu(items);
+	}
+	if (!items.empty() && items.front() == "editor-playlist") {
+		active_menu_ = editor::MUSIC;
+		items.erase(items.begin());
+		BOOST_FOREACH(const sound::music_track& track, music_tracks_) {
+			items.push_back(track.id());
+		}
 	}
 	if (!items.empty() && items.front() == "editor-assign-schedule") {
 		active_menu_ = editor::SCHEDULE;

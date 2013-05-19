@@ -16,10 +16,11 @@
 #define EDITOR_MAP_CONTEXT_HPP_INCLUDED
 
 #include "editor_map.hpp"
-#include "map_label.hpp"
-#include "unit_map.hpp"
-#include "tod_manager.hpp"
 #include "gamestatus.hpp"
+#include "map_label.hpp"
+#include "sound_music_track.hpp"
+#include "tod_manager.hpp"
+#include "unit_map.hpp"
 
 #include <boost/utility.hpp>
 #include <boost/scoped_ptr.hpp>
@@ -109,6 +110,17 @@ public:
 
 	int get_active_area() {
 		return active_area_;
+	}
+
+	bool is_in_playlist(std::string track_id) {
+		return music_tracks_.find(track_id) != music_tracks_.end();
+	}
+
+	void add_to_playlist(const sound::music_track& track) {
+
+		if (music_tracks_.find(track.id()) == music_tracks_.end())
+				music_tracks_.insert(std::pair<std::string, sound::music_track>(track.id(), track));
+		else music_tracks_.erase(track.id());
 	}
 
 	/**
@@ -356,6 +368,9 @@ private:
 	std::vector<team> teams_;
 	boost::scoped_ptr<tod_manager> tod_manager_;
 	game_state state_;
+
+	typedef std::map<std::string, sound::music_track> music_map;
+	music_map music_tracks_;
 
 };
 
