@@ -499,9 +499,7 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 				std::advance(it, index);
 				const std::vector<time_of_day>& times1 = it->second.second;
 				const std::vector<time_of_day>& times2 = context_manager_->get_map_context().get_time_manager()->times();
-			return (times1 == times2) ? ACTION_SELECTED : ACTION_DESELECTED;
-			//TODO
-			//return ACTION_STATELESS;
+				return (times1 == times2) ? ACTION_SELECTED : ACTION_DESELECTED;
 			}
 		}
 		return ACTION_ON;
