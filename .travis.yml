@@ -1,0 +1,14 @@
+language: cpp
+compiler:
+    - clang
+    - gcc
+script: scons
+# scons cxxtool=$CXX
+branches:
+    only:
+        - master
+        - 1.10
+notifications:
+    email: false
+    irc:
+        - "chat.freenode.net#wesnoth-test"
