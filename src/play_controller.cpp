@@ -1208,7 +1208,7 @@ void play_controller::expand_wml_commands(std::vector<std::string>& items)
 	}
 }
 
-void play_controller::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu)
+void play_controller::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
 {
 	std::vector<std::string> items = items_arg;
 	hotkey::HOTKEY_COMMAND command;
@@ -1244,7 +1244,7 @@ void play_controller::show_menu(const std::vector<std::string>& items_arg, int x
 	if(items.empty())
 		return;
 
-	command_executor::show_menu(items, xloc, yloc, context_menu, *gui_);
+	command_executor::show_menu(items, xloc, yloc, context_menu, disp);
 }
 
 bool play_controller::in_context_menu(hotkey::HOTKEY_COMMAND command) const
