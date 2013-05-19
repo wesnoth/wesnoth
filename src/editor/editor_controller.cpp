@@ -833,7 +833,7 @@ void editor_controller::show_help()
 	help::show_help(*gui_);
 }
 
-void editor_controller::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu)
+void editor_controller::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
 {
 	if (context_menu) {
 		if (!context_manager_->get_map().on_board_with_border(gui().hex_clicked_on(xloc, yloc))) {
@@ -893,7 +893,7 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 		}
 	}
 
-	command_executor::show_menu(items, xloc, yloc, context_menu, gui());
+	command_executor::show_menu(items, xloc, yloc, context_menu, disp);
 }
 
 void editor_controller::preferences()

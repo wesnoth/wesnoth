@@ -93,7 +93,7 @@ void controller_base::handle_event(const SDL_Event& event)
 	case SDL_MOUSEBUTTONUP:
 		get_mouse_handler_base().mouse_press(event.button, browse_);
 		if (get_mouse_handler_base().get_show_menu()){
-			show_menu(get_display().get_theme().context_menu()->items(),event.button.x,event.button.y,true);
+			show_menu(get_display().get_theme().context_menu()->items(),event.button.x,event.button.y,true, get_display());
 		}
 		break;
 	case SDL_ACTIVEEVENT:
@@ -199,7 +199,7 @@ void controller_base::play_slice(bool is_delay_enabled)
 	const theme::menu* const m = get_display().menu_pressed();
 	if(m != NULL) {
 		const SDL_Rect& menu_loc = m->location(get_display().screen_area());
-		show_menu(m->items(),menu_loc.x+1,menu_loc.y + menu_loc.h + 1,false);
+		show_menu(m->items(),menu_loc.x+1,menu_loc.y + menu_loc.h + 1,false, get_display());
 
 		return;
 	}
@@ -273,7 +273,7 @@ void controller_base::slice_end()
 	//no action by default
 }
 
-void controller_base::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu)
+void controller_base::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
 {
 	std::vector<std::string> items = items_arg;
 	hotkey::HOTKEY_COMMAND command;
@@ -289,7 +289,7 @@ void controller_base::show_menu(const std::vector<std::string>& items_arg, int x
 	}
 	if(items.empty())
 		return;
-	command_executor::show_menu(items, xloc, yloc, context_menu, get_display());
+	command_executor::show_menu(items, xloc, yloc, context_menu, disp);
 }
 
 void controller_base::execute_action(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu)
