@@ -339,7 +339,10 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_MAP_SAVE:
 			return context_manager_->get_map_context().modified();
 		case HOTKEY_EDITOR_MAP_SAVE_ALL:
-			//TODO
+			{
+				std::string dummy;
+				return context_manager_->modified_maps(dummy) > 1;
+			}
 		case HOTKEY_EDITOR_SWITCH_MAP:
 		case HOTKEY_EDITOR_SWITCH_AREA:
 		case HOTKEY_EDITOR_CLOSE_MAP:
@@ -548,6 +551,7 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 				}
 			case TIME:
 				{
+					//TODO mark the map as changed
 					tod_manager* tod = context_manager_->get_map_context().get_time_manager();
 					tod->set_turn(index +1, true);
 					tod_color col = tod->times()[index].color;
@@ -556,6 +560,7 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 				}
 			case MUSIC:
 				{
+					//TODO mark the map as changed
 					sound::play_music_once(music_tracks_[index].id());
 					context_manager_->get_map_context().add_to_playlist(music_tracks_[index]);
 					std::vector<std::string> items;
@@ -566,6 +571,7 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 				}
 			case SCHEDULE:
 				{
+					//TODO mark the map as changed
 					tod_manager* tod = context_manager_->get_map_context().get_time_manager();
 					tods_map::iterator iter = tods_.begin();
 					std::advance(iter, index);
