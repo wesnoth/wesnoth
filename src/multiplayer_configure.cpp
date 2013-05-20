@@ -475,37 +475,29 @@ void configure::layout_children(const SDL_Rect& rect)
 
 	ui::layout_children(rect);
 
-	std::pair<int,int> resolution = preferences::resolution();
-	const bool low_hres = resolution.first <= 840;
-	const bool low_vres = resolution.second < 768;
-
-	const int border_size = low_vres ? 4 : 6;
-	const int column_border_size = low_hres ? 8 : 10;
+	const int border_size = 6;
+	const int column_border_size = 10;
 
 	SDL_Rect ca = client_area();
 	int xpos = ca.x;
 	int ypos = ca.y;
-
-	const int minimap_width = !low_vres ? 200 : 100;
-	const int maps_menu_width = !low_hres ? 200 : 175;
+	const int first_column_width = (ca.w - ca.x) / 2 - column_border_size;
 
 	// Dialog title
-	ypos += low_vres ? 0 : title().height() + border_size;
+	ypos += title().height() + border_size;
 
 	// Name Entry
 	name_entry_label_.set_location(xpos, ypos);
 	name_entry_.set_location(xpos + name_entry_label_.width() + border_size, ypos);
-	if (low_vres) {
-		name_entry_.set_width(minimap_width + maps_menu_width + border_size - name_entry_label_.width());
-	} else {
-		name_entry_.set_width(ca.w - name_entry_label_.width() - border_size);
-	}
+	name_entry_.set_width(ca.w - name_entry_label_.width() - border_size);
 	ypos += std::max<int>(name_entry_.height(), name_entry_label_.height()) + border_size;
 
 	// Save ypos here (column top)
 	int ypos_columntop = ypos;
 
-	// First column: minimap & random map options
+	// First column: non-gameplay settings
+	int slider_width = first_column_width;
+	
 	if(!local_players_only_) {
 		password_button_.set_location(xpos, ypos);
 		ypos += password_button_.height() + border_size;
@@ -518,14 +510,38 @@ void configure::layout_children(const SDL_Rect& rect)
 	ypos += vision_combo_.height() + border_size;
 #endif
 
-	// Third column: big bunch of options
-	const bool two_sliders_per_row = low_vres;
+	countdown_game_.set_location(xpos, ypos);
+	ypos += countdown_game_.height() + border_size;
 
-	ypos = ypos_columntop - (low_vres ? name_entry_.height() + border_size : 0);
-	xpos += maps_menu_width + column_border_size;
+	countdown_init_time_label_.set_location(xpos, ypos);
+	ypos += countdown_init_time_label_.height() + border_size;
+	countdown_init_time_slider_.set_width(slider_width);
+	countdown_init_time_slider_.set_location(xpos, ypos);
+	ypos += countdown_init_time_slider_.height() + border_size;
 
-	int slider_width = two_sliders_per_row ? (ca.w - xpos)/2 : ca.w -xpos;
+	countdown_turn_bonus_label_.set_location(xpos, ypos);
+	ypos += countdown_turn_bonus_label_.height() + border_size;
+	countdown_turn_bonus_slider_.set_width(slider_width);
+	countdown_turn_bonus_slider_.set_location(xpos, ypos);
+	ypos += countdown_turn_bonus_slider_.height() + border_size;
 
+	countdown_reservoir_time_label_.set_location(xpos, ypos);
+	ypos += countdown_reservoir_time_label_.height() + border_size;
+	countdown_reservoir_time_slider_.set_width(slider_width);
+	countdown_reservoir_time_slider_.set_location(xpos, ypos);
+	ypos += countdown_reservoir_time_slider_.height() + border_size;
+	countdown_action_bonus_label_.set_location(xpos, ypos);
+	ypos += countdown_action_bonus_label_.height() + border_size;
+	countdown_action_bonus_slider_.set_width(slider_width);
+	countdown_action_bonus_slider_.set_location(xpos, ypos);
+	ypos += countdown_action_bonus_slider_.height() + 3 * border_size;
+
+	observers_game_.set_location(xpos, ypos);
+
+	// Second column: gameplay settings
+	xpos += first_column_width + column_border_size;
+	ypos = ypos_columntop;
+	
 	use_map_settings_.set_location(xpos, ypos);
 	fog_game_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
 	ypos += use_map_settings_.height() + border_size;
@@ -538,13 +554,7 @@ void configure::layout_children(const SDL_Rect& rect)
 	ypos += turns_label_.height() + border_size;
 	turns_slider_.set_width(slider_width);
 	turns_slider_.set_location(xpos, ypos);
-
-	if (two_sliders_per_row) {
-	  ypos -= turns_label_.height() + border_size;
-	  xpos += turns_slider_.width() + border_size;
-	} else {
-	  ypos += turns_slider_.height() + border_size;
-	}
+	ypos += turns_slider_.height() + border_size;
 
 	xp_modifier_label_.set_location(xpos, ypos);
 	ypos += xp_modifier_label_.height() + border_size;
@@ -552,56 +562,18 @@ void configure::layout_children(const SDL_Rect& rect)
 	xp_modifier_slider_.set_location(xpos, ypos);
 	ypos += xp_modifier_slider_.height() + border_size;
 
-	if (two_sliders_per_row) {
-	  xpos -= xp_modifier_slider_.width() + border_size;
-	}
-
 	village_support_label_.set_location(xpos, ypos);
 	ypos += village_support_label_.height() + border_size;
 	village_support_slider_.set_width(slider_width);
 	village_support_slider_.set_location(xpos, ypos);
-
-	if (two_sliders_per_row) {
-	  ypos -= village_support_label_.height() + border_size;
-	  xpos += village_support_slider_.width() + border_size;
-	} else {
-	  ypos += village_support_slider_.height() + border_size;
-	}
+	ypos += village_support_slider_.height() + border_size;
 
 	village_gold_label_.set_location(xpos, ypos);
 	ypos += village_gold_label_.height() + border_size;
 	village_gold_slider_.set_width(slider_width);
 	village_gold_slider_.set_location(xpos, ypos);
 	ypos += village_gold_slider_.height() + 3 * border_size;
-
-	if (two_sliders_per_row) {
-	  xpos -= village_gold_slider_.width() + border_size;
-	}
-
-	countdown_game_.set_location(xpos, ypos);
-	ypos += countdown_game_.height() + border_size;
-
-	countdown_init_time_label_.set_location(xpos, ypos);
-	countdown_turn_bonus_label_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
-	ypos += countdown_init_time_label_.height() + border_size;
-	countdown_init_time_slider_.set_width(((ca.w - xpos)/2)-5);
-	countdown_turn_bonus_slider_.set_width(((ca.w - xpos)/2)-5);
-	countdown_init_time_slider_.set_location(xpos, ypos);
-	countdown_turn_bonus_slider_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
-	ypos += countdown_init_time_slider_.height() + border_size;
-
-	countdown_reservoir_time_label_.set_location(xpos, ypos);
-	countdown_action_bonus_label_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
-	ypos += countdown_reservoir_time_label_.height() + border_size;
-	countdown_reservoir_time_slider_.set_width(((ca.w - xpos)/2)-5);
-	countdown_action_bonus_slider_.set_width(((ca.w - xpos)/2)-5);
-	countdown_reservoir_time_slider_.set_location(xpos, ypos);
-	countdown_action_bonus_slider_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
-	ypos += countdown_reservoir_time_slider_.height() + 3 * border_size;
-
 	shuffle_sides_.set_location(xpos, ypos);
-	observers_game_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
-	ypos += shuffle_sides_.height() + border_size;
 
 
 	// OK / Cancel buttons
