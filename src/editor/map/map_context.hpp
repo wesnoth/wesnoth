@@ -66,12 +66,12 @@ public:
 	bool select_area(int index);
 
 	/**
-	 * Map accesor
+	 * Map accessor
 	 */
 	editor_map& get_map() { return map_; };
 
 	/**
-	 * Map accesor - const version
+	 * Map accessor - const version
 	 */
 	const editor_map& get_map() const { return map_; }
 
