@@ -244,24 +244,24 @@ void context_manager::expand_areas_menu(std::vector<std::string>& items)
 
 void context_manager::expand_sides_menu(std::vector<std::string>& items)
 {
-       for (unsigned int i = 0; i < items.size(); ++i) {
-               if (items[i] == "editor-switch-side") {
-                       items.erase(items.begin() + i);
-                       std::vector<std::string> contexts;
+	for (unsigned int i = 0; i < items.size(); ++i) {
+		if (items[i] == "editor-switch-side") {
+			items.erase(items.begin() + i);
+			std::vector<std::string> contexts;
 
-                       for (size_t mci = 0; mci < get_map_context().get_teams().size(); ++mci) {
+			for (size_t mci = 0; mci < get_map_context().get_teams().size(); ++mci) {
 
-                    	   	   const team& t = get_map_context().get_teams()[mci];
-                               std::stringstream label;
-                               label << "[" << mci+1 << "] ";
-                               label << (t.name().empty() ? _("(New Side)") : t.name());
-                               contexts.push_back(label.str());
-                       }
+				const team& t = get_map_context().get_teams()[mci];
+				std::stringstream label;
+				label << "[" << mci+1 << "] ";
+				label << (t.name().empty() ? _("(New Side)") : t.name());
+				contexts.push_back(label.str());
+			}
 
-                       items.insert(items.begin() + i, contexts.begin(), contexts.end());
-                       break;
-               }
-       }
+			items.insert(items.begin() + i, contexts.begin(), contexts.end());
+			break;
+		}
+	}
 }
 
 void context_manager::expand_time_menu(std::vector<std::string>& items)
