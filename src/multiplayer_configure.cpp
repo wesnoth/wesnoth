@@ -73,6 +73,7 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	village_support_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
 	xp_modifier_slider_(disp.video()),
 	xp_modifier_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
+	generic_label_(disp.video(), "`~ " + std::string(_("Generic")), font::SIZE_PLUS, font::LOBBY_COLOR),
 	name_entry_label_(disp.video(), _("Name of game:"), font::SIZE_PLUS, font::LOBBY_COLOR),
 	num_players_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
 	map_size_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
@@ -88,6 +89,7 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	password_button_(disp.video(), _("Set Password...")),
 	vision_combo_(disp, std::vector<std::string>()),
 	name_entry_(disp.video(), 32),
+	options_pane_(disp.video()),
 	num_turns_(0),
 	parameters_(params),
 	options_manager_(cfg, disp.video(), preferences::options())
@@ -450,6 +452,7 @@ void configure::hide_children(bool hide)
 	xp_modifier_slider_.hide(hide);
 	xp_modifier_label_.hide(hide);
 
+	generic_label_.hide(hide);
 	name_entry_label_.hide(hide);
 	num_players_label_.hide(hide);
 	map_size_label_.hide(hide);
@@ -467,6 +470,8 @@ void configure::hide_children(bool hide)
 	password_button_.hide(hide);
 	vision_combo_.hide(hide);
 	name_entry_.hide(hide);
+
+	options_pane_.hide(hide);
 }
 
 void configure::layout_children(const SDL_Rect& rect)
@@ -497,20 +502,25 @@ void configure::layout_children(const SDL_Rect& rect)
 
 	// First column: non-gameplay settings
 	int slider_width = first_column_width;
-	
-	if(!local_players_only_) {
-		password_button_.set_location(xpos, ypos);
-		ypos += password_button_.height() + border_size;
-	} else {
-		password_button_.hide(true);
-	}
 
 #ifdef MP_VISION_OPTIONAL
 	vision_combo_.set_location(xpos, ypos);
 	ypos += vision_combo_.height() + border_size;
 #endif
 
+	ypos += 2*border_size;
+	observers_game_.set_location(xpos, ypos);
+	shuffle_sides_.set_location(ca.x + first_column_width/2, ypos);
+	ypos += shuffle_sides_.height() + border_size;
+
 	countdown_game_.set_location(xpos, ypos);
+
+	if(!local_players_only_) {
+		password_button_.set_location(ca.x + first_column_width/2, ypos);
+	} else {
+		password_button_.hide(true);
+	}
+
 	ypos += countdown_game_.height() + border_size;
 
 	countdown_init_time_label_.set_location(xpos, ypos);
@@ -534,47 +544,54 @@ void configure::layout_children(const SDL_Rect& rect)
 	ypos += countdown_action_bonus_label_.height() + border_size;
 	countdown_action_bonus_slider_.set_width(slider_width);
 	countdown_action_bonus_slider_.set_location(xpos, ypos);
-	ypos += countdown_action_bonus_slider_.height() + 3 * border_size;
-
-	observers_game_.set_location(xpos, ypos);
+	ypos += countdown_action_bonus_slider_.height() + border_size;
 
 	// Second column: gameplay settings
 	xpos += first_column_width + column_border_size;
 	ypos = ypos_columntop;
-	
-	use_map_settings_.set_location(xpos, ypos);
-	fog_game_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
+
+	options_pane_.set_location(xpos, ypos);
+	options_pane_.set_width(ca.w - (xpos - ca.x));
+	options_pane_.set_height(ca.h - (ypos - ca.y + launch_game_.height() + border_size));
+
+	slider_width = options_pane_.width() - 40;
+
+	xpos = 0;
+	ypos = 0;
+	options_pane_.add_widget(&generic_label_, xpos, ypos);
+	ypos += generic_label_.height() + border_size;
+
+	options_pane_.add_widget(&use_map_settings_, xpos, ypos);
+	options_pane_.add_widget(&fog_game_, xpos + (options_pane_.width() - xpos)/2 + 5, ypos);
 	ypos += use_map_settings_.height() + border_size;
 
-	random_start_time_.set_location(xpos, ypos);
-	shroud_game_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
+	options_pane_.add_widget(&random_start_time_, xpos, ypos);
+	options_pane_.add_widget(&shroud_game_, xpos + (options_pane_.width() - xpos)/2 + 5, ypos);
 	ypos += random_start_time_.height() + border_size;
 
-	turns_label_.set_location(xpos, ypos);
+	options_pane_.add_widget(&turns_label_, xpos, ypos);
 	ypos += turns_label_.height() + border_size;
 	turns_slider_.set_width(slider_width);
-	turns_slider_.set_location(xpos, ypos);
+	options_pane_.add_widget(&turns_slider_, xpos, ypos);
 	ypos += turns_slider_.height() + border_size;
 
-	xp_modifier_label_.set_location(xpos, ypos);
+	options_pane_.add_widget(&xp_modifier_label_, xpos, ypos);
 	ypos += xp_modifier_label_.height() + border_size;
 	xp_modifier_slider_.set_width(slider_width);
-	xp_modifier_slider_.set_location(xpos, ypos);
+	options_pane_.add_widget(&xp_modifier_slider_, xpos, ypos);
 	ypos += xp_modifier_slider_.height() + border_size;
 
-	village_support_label_.set_location(xpos, ypos);
+	options_pane_.add_widget(&village_support_label_, xpos, ypos);
 	ypos += village_support_label_.height() + border_size;
 	village_support_slider_.set_width(slider_width);
-	village_support_slider_.set_location(xpos, ypos);
+	options_pane_.add_widget(&village_support_slider_, xpos, ypos);
 	ypos += village_support_slider_.height() + border_size;
 
-	village_gold_label_.set_location(xpos, ypos);
+	options_pane_.add_widget(&village_gold_label_, xpos, ypos);
 	ypos += village_gold_label_.height() + border_size;
 	village_gold_slider_.set_width(slider_width);
-	village_gold_slider_.set_location(xpos, ypos);
+	options_pane_.add_widget(&village_gold_slider_, xpos, ypos);
 	ypos += village_gold_slider_.height() + 3 * border_size;
-	shuffle_sides_.set_location(xpos, ypos);
-
 
 	// OK / Cancel buttons
 	gui::button* left_button = &launch_game_;
@@ -589,9 +606,6 @@ void configure::layout_children(const SDL_Rect& rect)
 	                           ca.y + ca.h - right_button->height());
 	left_button->set_location(right_button->location().x - left_button->width() -
 	                          gui::ButtonHPadding, ca.y + ca.h - left_button->height());
-
-	options_.set_location(left_button->location().x - options_.width() -
-					gui::ButtonHPadding, ca.y + ca.h - options_.height());
 }
 
 } // namespace mp

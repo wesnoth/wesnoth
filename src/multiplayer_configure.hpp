@@ -20,6 +20,7 @@
 #include "mp_options.hpp"
 #include "multiplayer_ui.hpp"
 #include "widgets/slider.hpp"
+#include "widgets/scrollpane.hpp"
 #include "widgets/combo.hpp"
 #include "generators/mapgen.hpp"
 #include "tooltips.hpp"
@@ -65,6 +66,7 @@ private:
 	gui::slider xp_modifier_slider_;
 	gui::label xp_modifier_label_;
 
+	gui::label generic_label_;
 	gui::label name_entry_label_;
 	gui::label num_players_label_;
 	gui::label map_size_label_;
@@ -81,6 +83,8 @@ private:
 
 	gui::combo vision_combo_;
 	gui::textbox name_entry_;
+
+	gui::scrollpane options_pane_;
 
 	int num_turns_;
 	mp_game_settings parameters_;
