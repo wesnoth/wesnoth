@@ -253,7 +253,7 @@ public:
 
 	/**
 	 * Un-does a single step from a undo action chain. The action is separated
-	 * from the chain and it's undo (the redo) is added as a standalone action
+	 * from the chain and it's undo (the redo) is added as a stand-alone action
 	 * to the redo stack.
 	 * Precondition: the last undo action has to actually be an action chain.
 	 */
