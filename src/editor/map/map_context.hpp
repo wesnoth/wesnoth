@@ -208,9 +208,9 @@ public:
 	void set_map(const editor_map& map);
 
 	/**
-	 * Performs an action (thus modyfying the map). An appropriate undo action is added to
+	 * Performs an action (thus modifying the map). An appropriate undo action is added to
 	 * the undo stack. The redo stack is cleared. Note that this may throw, use caution
-	 * when calling this with a dereferennced pointer that you own (i.e. use a smart pointer).
+	 * when calling this with a dereferenced pointer that you own (i.e. use a smart pointer).
 	 */
 	void perform_action(const editor_action& action);
 
