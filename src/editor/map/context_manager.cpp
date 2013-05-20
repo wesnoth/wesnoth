@@ -169,33 +169,23 @@ void context_manager::set_default_dir(const std::string& str)
 
 void context_manager::load_map_dialog(bool force_same_context /* = false */)
 {
-	if (!preferences::editor::use_mdi() && !confirm_discard()) {
-		return;
-	}
-
 	std::string fn = directory_name(get_map_context().get_filename());
 	if (fn.empty()) {
 		fn = default_dir_;
 	}
 	int res = dialogs::show_file_chooser_dialog(gui_, fn, _("Choose a Map to Open"));
 	if (res == 0) {
-		load_map(fn, force_same_context
-				? false
-				: preferences::editor::use_mdi());
+		load_map(fn, !force_same_context);
 	}
 }
 
 void context_manager::new_map_dialog()
 {
-	if (!preferences::editor::use_mdi() && !confirm_discard()) {
-		return;
-	}
-
 	int w = get_map().w();
 	int h = get_map().h();
 	if(gui2::teditor_new_map::execute(w, h, gui_.video())) {
 		const t_translation::t_terrain fill = get_selected_bg_terrain();
-		new_map(w, h, fill, preferences::editor::use_mdi());
+		new_map(w, h, fill, true);
 	}
 }
 
