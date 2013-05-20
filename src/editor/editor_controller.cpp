@@ -339,6 +339,7 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_MAP_SAVE:
 			return context_manager_->get_map_context().modified();
 		case HOTKEY_EDITOR_MAP_SAVE_ALL:
+			//TODO
 		case HOTKEY_EDITOR_SWITCH_MAP:
 		case HOTKEY_EDITOR_SWITCH_AREA:
 		case HOTKEY_EDITOR_CLOSE_MAP:
@@ -557,6 +558,10 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 				{
 					sound::play_music_once(music_tracks_[index].id());
 					context_manager_->get_map_context().add_to_playlist(music_tracks_[index]);
+					std::vector<std::string> items;
+					items.push_back("editor-playlist");
+					gui::button* b = gui_->find_menu_button("menu-playlist");
+					show_menu(items, b->location().x +1, b->location().y + b->height() +1, false, *gui_);
 					return true;
 				}
 			case SCHEDULE:
