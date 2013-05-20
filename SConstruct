@@ -335,6 +335,7 @@ if env["prereqs"]:
         conf.CheckBoost("regex", require_version = "1.35.0") and \
         conf.CheckSDL("SDL_ttf", require_version = "2.0.8") and \
         conf.CheckSDL("SDL_mixer", require_version = '1.2.0') and \
+        conf.CheckLib("vorbisfile") and \
         conf.CheckSDL("SDL_image", require_version = '1.2.0') and \
         conf.CheckOgg() or Warning("Client prerequisites are not met. wesnoth, cutter and exploder cannot be built.")
 

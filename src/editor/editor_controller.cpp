@@ -882,7 +882,7 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 		active_menu_ = editor::MUSIC;
 		items.erase(items.begin());
 		BOOST_FOREACH(const sound::music_track& track, music_tracks_) {
-			items.push_back(track.id());
+			items.push_back(track.title().empty() ? track.id() : track.title());
 		}
 	}
 	if (!items.empty() && items.front() == "editor-assign-schedule") {
