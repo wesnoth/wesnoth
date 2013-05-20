@@ -165,7 +165,7 @@ public:
 	void set_needs_terrain_rebuild(bool value=true) { needs_terrain_rebuild_ = value; }
 
 	/**
-	 * Getter fo the labels reset flag. Set when the labels need to be refreshed.
+	 * Getter for the labels reset flag. Set when the labels need to be refreshed.
 	 */
 	bool needs_labels_reset() const { return needs_labels_reset_; }
 
