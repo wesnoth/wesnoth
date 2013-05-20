@@ -197,11 +197,12 @@ void context_manager::expand_open_maps_menu(std::vector<std::string>& items)
 			std::vector<std::string> contexts;
 			for (size_t mci = 0; mci < map_contexts_.size(); ++mci) {
 				std::string filename = map_contexts_[mci]->get_filename();
+				bool changed = map_contexts_[mci]->modified();
 				if (filename.empty()) {
 					filename = _("(New Map)");
 				}
 				std::string label = "[" + lexical_cast<std::string>(mci) + "] "
-					+ filename;
+					+ filename + (changed ? " [*]" : "");
 				if (map_contexts_[mci]->is_embedded()) {
 					label += " (E)";
 				}
