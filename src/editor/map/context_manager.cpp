@@ -465,7 +465,8 @@ void context_manager::save_map_as_dialog()
 		res = dialogs::show_file_chooser_dialog_save(gui_, input_name, _("Save the Map As"));
 		if (res == 0) {
 			if (file_exists(input_name)) {
-				const int res = gui2::show_message(gui_.video(), "", _("The file already exists. Do you want to overwrite it?"), gui2::tmessage::yes_no_buttons);
+				const int res = gui2::show_message(gui_.video(), "",
+						_("The file already exists. Do you want to overwrite it?"), gui2::tmessage::yes_no_buttons);
 				overwrite_res = gui2::twindow::CANCEL == res ? 1 : 0;
 			} else {
 				overwrite_res = 0;
