@@ -248,14 +248,14 @@ public:
 	/** Un-does the last action, and puts it in the redo stack for a possible redo */
 	void undo();
 
-	/** Re-does a previousle undid action, and puts it back in the undo stack. */
+	/** Re-does a previously undid action, and puts it back in the undo stack. */
 	void redo();
 
 	/**
 	 * Un-does a single step from a undo action chain. The action is separated
 	 * from the chain and it's undo (the redo) is added as a standalone action
 	 * to the redo stack.
-	 * Precodnition: the last undo action has to actually be an action chain.
+	 * Precondition: the last undo action has to actually be an action chain.
 	 */
 	void partial_undo();
 
