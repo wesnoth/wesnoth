@@ -20,6 +20,7 @@
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
+#include "vorbis/vorbisfile.h"
 
 static lg::log_domain log_audio("audio");
 #define ERR_AUDIO LOG_STREAM(err, log_audio)
@@ -41,6 +42,7 @@ music_track::music_track() :
 music_track::music_track(const config& node) :
 	id_(node["name"]),
 	file_path_(),
+	title_(),
 	ms_before_(node["ms_before"]),
 	ms_after_(node["ms_after"]),
 	once_(node["play_once"].to_bool()),
@@ -53,6 +55,7 @@ music_track::music_track(const config& node) :
 music_track::music_track(const std::string& v_name) :
 	id_(v_name),
 	file_path_(),
+	title_(),
 	ms_before_(0),
 	ms_after_(0),
 	once_(false),
@@ -76,6 +79,38 @@ void music_track::resolve()
 		return;
 	}
 
+	FILE* f;
+	f = fopen(file_path_.c_str(), "r");
+	if (f == NULL) {
+		ERR_AUDIO << "Error opening file '" << file_path_ << "'\n";
+		return;
+	}
+
+	OggVorbis_File vf;
+	if(ov_open(f, &vf, NULL, 0) < 0) {
+		ERR_AUDIO << "track does not appear to be an Ogg file '" << id_ << "'\n";
+		ov_clear(&vf);
+		return;
+	}
+
+	vorbis_comment* comments = ov_comment(&vf, -1);
+	char** user_comments = comments->user_comments;
+
+	bool found = false;
+	for (int i=0; i< comments->comments; i++) {
+		const std::string comment_string(user_comments[i]);
+		const std::vector<std::string> sowas = utils::split(comment_string, '=');
+
+		if (sowas[0] == "TITLE" || sowas[0] == "title") {
+			title_ = sowas[1];
+			found = true;
+		}
+	}
+	if (!found) {
+		ERR_AUDIO << "No title for music track '" << id_ << "'\n";
+	}
+
+	ov_clear(&vf);
 	LOG_AUDIO << "resolved music track '" << id_ << "' into '" << file_path_ << "'\n";
 }
 

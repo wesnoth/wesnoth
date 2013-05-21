@@ -29,14 +29,6 @@ namespace editor {
 		preferences::set("editor_auto_update_transitions", lexical_cast<std::string>(value));
 	}
 
-	bool use_mdi() {
-		return preferences::get("editor_use_mdi", true);
-	}
-
-	void set_use_mdi(bool value) {
-		preferences::set("editor_use_mdi", value);
-	}
-
 	std::string default_dir() {
 		return preferences::get("editor_default_dir");
 	}

@@ -1075,7 +1075,7 @@ static config time_of_day_at(const map_location& mouseover_hex)
 		liminal_color = "red";
 	}
 	tooltip << tod.name << '\n'
-		<< _("Lawful  units: ") << "<span foreground=\"" << lawful_color  << "\">"
+		<< _("Lawful units: ") << "<span foreground=\"" << lawful_color  << "\">"
 		<< utils::signed_percent(b)  << "</span>\n"
 		<< _("Neutral units: ") << utils::signed_percent(0)  << '\n'
 		<< _("Chaotic units: ") << "<span foreground=\"" << chaotic_color << "\">"

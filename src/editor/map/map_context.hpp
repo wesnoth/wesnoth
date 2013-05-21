@@ -66,12 +66,12 @@ public:
 	bool select_area(int index);
 
 	/**
-	 * Map accesor
+	 * Map accessor
 	 */
 	editor_map& get_map() { return map_; };
 
 	/**
-	 * Map accesor - const version
+	 * Map accessor - const version
 	 */
 	const editor_map& get_map() const { return map_; }
 
@@ -165,7 +165,7 @@ public:
 	void set_needs_terrain_rebuild(bool value=true) { needs_terrain_rebuild_ = value; }
 
 	/**
-	 * Getter fo the labels reset flag. Set when the labels need to be refreshed.
+	 * Getter for the labels reset flag. Set when the labels need to be refreshed.
 	 */
 	bool needs_labels_reset() const { return needs_labels_reset_; }
 
@@ -208,9 +208,9 @@ public:
 	void set_map(const editor_map& map);
 
 	/**
-	 * Performs an action (thus modyfying the map). An appropriate undo action is added to
+	 * Performs an action (thus modifying the map). An appropriate undo action is added to
 	 * the undo stack. The redo stack is cleared. Note that this may throw, use caution
-	 * when calling this with a dereferennced pointer that you own (i.e. use a smart pointer).
+	 * when calling this with a dereferenced pointer that you own (i.e. use a smart pointer).
 	 */
 	void perform_action(const editor_action& action);
 
@@ -248,14 +248,14 @@ public:
 	/** Un-does the last action, and puts it in the redo stack for a possible redo */
 	void undo();
 
-	/** Re-does a previousle undid action, and puts it back in the undo stack. */
+	/** Re-does a previously undid action, and puts it back in the undo stack. */
 	void redo();
 
 	/**
 	 * Un-does a single step from a undo action chain. The action is separated
-	 * from the chain and it's undo (the redo) is added as a standalone action
+	 * from the chain and it's undo (the redo) is added as a stand-alone action
 	 * to the redo stack.
-	 * Precodnition: the last undo action has to actually be an action chain.
+	 * Precondition: the last undo action has to actually be an action chain.
 	 */
 	void partial_undo();
 

@@ -169,33 +169,23 @@ void context_manager::set_default_dir(const std::string& str)
 
 void context_manager::load_map_dialog(bool force_same_context /* = false */)
 {
-	if (!preferences::editor::use_mdi() && !confirm_discard()) {
-		return;
-	}
-
 	std::string fn = directory_name(get_map_context().get_filename());
 	if (fn.empty()) {
 		fn = default_dir_;
 	}
 	int res = dialogs::show_file_chooser_dialog(gui_, fn, _("Choose a Map to Open"));
 	if (res == 0) {
-		load_map(fn, force_same_context
-				? false
-				: preferences::editor::use_mdi());
+		load_map(fn, !force_same_context);
 	}
 }
 
 void context_manager::new_map_dialog()
 {
-	if (!preferences::editor::use_mdi() && !confirm_discard()) {
-		return;
-	}
-
 	int w = get_map().w();
 	int h = get_map().h();
 	if(gui2::teditor_new_map::execute(w, h, gui_.video())) {
 		const t_translation::t_terrain fill = get_selected_bg_terrain();
-		new_map(w, h, fill, preferences::editor::use_mdi());
+		new_map(w, h, fill, true);
 	}
 }
 
@@ -207,11 +197,12 @@ void context_manager::expand_open_maps_menu(std::vector<std::string>& items)
 			std::vector<std::string> contexts;
 			for (size_t mci = 0; mci < map_contexts_.size(); ++mci) {
 				std::string filename = map_contexts_[mci]->get_filename();
+				bool changed = map_contexts_[mci]->modified();
 				if (filename.empty()) {
 					filename = _("(New Map)");
 				}
 				std::string label = "[" + lexical_cast<std::string>(mci) + "] "
-					+ filename;
+					+ filename + (changed ? " [*]" : "");
 				if (map_contexts_[mci]->is_embedded()) {
 					label += " (E)";
 				}
@@ -253,24 +244,24 @@ void context_manager::expand_areas_menu(std::vector<std::string>& items)
 
 void context_manager::expand_sides_menu(std::vector<std::string>& items)
 {
-       for (unsigned int i = 0; i < items.size(); ++i) {
-               if (items[i] == "editor-switch-side") {
-                       items.erase(items.begin() + i);
-                       std::vector<std::string> contexts;
+	for (unsigned int i = 0; i < items.size(); ++i) {
+		if (items[i] == "editor-switch-side") {
+			items.erase(items.begin() + i);
+			std::vector<std::string> contexts;
 
-                       for (size_t mci = 0; mci < get_map_context().get_teams().size(); ++mci) {
+			for (size_t mci = 0; mci < get_map_context().get_teams().size(); ++mci) {
 
-                    	   	   const team& t = get_map_context().get_teams()[mci];
-                               std::stringstream label;
-                               label << "[" << mci+1 << "] ";
-                               label << (t.name().empty() ? _("(New Side)") : t.name());
-                               contexts.push_back(label.str());
-                       }
+				const team& t = get_map_context().get_teams()[mci];
+				std::stringstream label;
+				label << "[" << mci+1 << "] ";
+				label << (t.name().empty() ? _("(New Side)") : t.name());
+				contexts.push_back(label.str());
+			}
 
-                       items.insert(items.begin() + i, contexts.begin(), contexts.end());
-                       break;
-               }
-       }
+			items.insert(items.begin() + i, contexts.begin(), contexts.end());
+			break;
+		}
+	}
 }
 
 void context_manager::expand_time_menu(std::vector<std::string>& items)
@@ -465,7 +456,8 @@ void context_manager::save_map_as_dialog()
 		res = dialogs::show_file_chooser_dialog_save(gui_, input_name, _("Save the Map As"));
 		if (res == 0) {
 			if (file_exists(input_name)) {
-				const int res = gui2::show_message(gui_.video(), "", _("The file already exists. Do you want to overwrite it?"), gui2::tmessage::yes_no_buttons);
+				const int res = gui2::show_message(gui_.video(), "",
+						_("The file already exists. Do you want to overwrite it?"), gui2::tmessage::yes_no_buttons);
 				overwrite_res = gui2::twindow::CANCEL == res ? 1 : 0;
 			} else {
 				overwrite_res = 0;

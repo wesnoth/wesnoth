@@ -43,6 +43,7 @@ public:
 
 	const std::string& file_path() const { return file_path_; }
 	const std::string& id() const { return id_; }
+	const std::string& title() const { return title_; }
 
 	void set_play_once(bool v) { once_ = v; }
 
@@ -51,6 +52,7 @@ private:
 
 	std::string id_;
 	std::string file_path_;
+	std::string title_;
 
 	int ms_before_, ms_after_;
 

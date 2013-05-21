@@ -339,6 +339,10 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_MAP_SAVE:
 			return context_manager_->get_map_context().modified();
 		case HOTKEY_EDITOR_MAP_SAVE_ALL:
+			{
+				std::string dummy;
+				return context_manager_->modified_maps(dummy) > 1;
+			}
 		case HOTKEY_EDITOR_SWITCH_MAP:
 		case HOTKEY_EDITOR_SWITCH_AREA:
 		case HOTKEY_EDITOR_CLOSE_MAP:
@@ -499,9 +503,7 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 				std::advance(it, index);
 				const std::vector<time_of_day>& times1 = it->second.second;
 				const std::vector<time_of_day>& times2 = context_manager_->get_map_context().get_time_manager()->times();
-			return (times1 == times2) ? ACTION_SELECTED : ACTION_DESELECTED;
-			//TODO
-			//return ACTION_STATELESS;
+				return (times1 == times2) ? ACTION_SELECTED : ACTION_DESELECTED;
 			}
 		}
 		return ACTION_ON;
@@ -549,6 +551,7 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 				}
 			case TIME:
 				{
+					//TODO mark the map as changed
 					tod_manager* tod = context_manager_->get_map_context().get_time_manager();
 					tod->set_turn(index +1, true);
 					tod_color col = tod->times()[index].color;
@@ -557,12 +560,18 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 				}
 			case MUSIC:
 				{
+					//TODO mark the map as changed
 					sound::play_music_once(music_tracks_[index].id());
 					context_manager_->get_map_context().add_to_playlist(music_tracks_[index]);
+					std::vector<std::string> items;
+					items.push_back("editor-playlist");
+					gui::button* b = gui_->find_menu_button("menu-playlist");
+					show_menu(items, b->location().x +1, b->location().y + b->height() +1, false, *gui_);
 					return true;
 				}
 			case SCHEDULE:
 				{
+					//TODO mark the map as changed
 					tod_manager* tod = context_manager_->get_map_context().get_time_manager();
 					tods_map::iterator iter = tods_.begin();
 					std::advance(iter, index);
@@ -879,7 +888,7 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 		active_menu_ = editor::MUSIC;
 		items.erase(items.begin());
 		BOOST_FOREACH(const sound::music_track& track, music_tracks_) {
-			items.push_back(track.id());
+			items.push_back(track.title().empty() ? track.id() : track.title());
 		}
 	}
 	if (!items.empty() && items.front() == "editor-assign-schedule") {

@@ -168,7 +168,7 @@ protected:
 	/** Check if a command can be executed. */
 	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command, int index=-1) const;
 	virtual bool execute_command(hotkey::HOTKEY_COMMAND command, int index=-1);
-	void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu);
+	void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp);
 
 	/**
 	 *  Determines whether the command should be in the context menu or not.
