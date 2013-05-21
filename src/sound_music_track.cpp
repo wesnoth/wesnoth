@@ -20,7 +20,9 @@
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
+#if !defined(_WIN32) && !defined(__APPLE__)
 #include "vorbis/vorbisfile.h"
+#endif
 
 static lg::log_domain log_audio("audio");
 #define ERR_AUDIO LOG_STREAM(err, log_audio)
@@ -79,6 +81,7 @@ void music_track::resolve()
 		return;
 	}
 
+#if !defined(_WIN32) && !defined(__APPLE__)
 	FILE* f;
 	f = fopen(file_path_.c_str(), "r");
 	if (f == NULL) {
@@ -111,6 +114,7 @@ void music_track::resolve()
 	}
 
 	ov_clear(&vf);
+#endif
 	LOG_AUDIO << "resolved music track '" << id_ << "' into '" << file_path_ << "'\n";
 }
 
