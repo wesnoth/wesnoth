@@ -447,13 +447,13 @@ void read_save_file(const std::string& name, config& cfg, std::string* error_log
 	}
 }
 
-bool save_game_exists(const std::string& name, bool compress_saves)
+bool save_game_exists(const std::string& name, bool compress_saves, bool bzip2_savegame_compression)
 {
 	std::string fname = name;
 	replace_space2underbar(fname);
 
 	if(compress_saves) {
-		fname += ".gz";
+		fname += preferences::bzip2_savegame_compression() ? ".bz2" : ".gz";
 	}
 
 	return file_exists(get_saves_dir() + "/" + fname);
@@ -883,7 +883,7 @@ int savegame::show_save_dialog(CVideo& video, const std::string& message, const 
 bool savegame::check_overwrite(CVideo& video)
 {
 	std::string filename = filename_;
-	if (save_game_exists(filename, compress_saves_)) {
+	if (save_game_exists(filename, compress_saves_, bzip2_savegame_compression_)) {
 		std::stringstream message;
 		message << _("Save already exists. Do you want to overwrite it?") << "\n" << _("Name: ") << filename;
 		int retval = gui2::show_message(video, _("Overwrite?"), message.str(), gui2::tmessage::yes_no_buttons);
