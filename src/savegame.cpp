@@ -453,7 +453,7 @@ bool save_game_exists(const std::string& name, bool compress_saves)
 	replace_space2underbar(fname);
 
 	if(compress_saves) {
-		fname += ".gz";
+		fname += preferences::bzip2_savegame_compression() ? ".bz2" : ".gz";
 	}
 
 	return file_exists(get_saves_dir() + "/" + fname);

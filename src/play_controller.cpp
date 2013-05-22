@@ -1134,7 +1134,7 @@ void play_controller::expand_autosaves(std::vector<std::string>& items)
 				std::string name = gamestate_.classification().label + "-" + _("Auto-Save") + lexical_cast<std::string>(turn);
 				if (savegame::save_game_exists(name, preferences::compress_saves())) {
 					if(preferences::compress_saves()) {
-						newsaves.push_back(name + ".gz");
+						newsaves.push_back(name + (preferences::bzip2_savegame_compression() ? ".bz2" : ".gz"));
 					} else {
 						newsaves.push_back(name);
 					}
@@ -1145,7 +1145,7 @@ void play_controller::expand_autosaves(std::vector<std::string>& items)
 			const std::string& start_name = gamestate_.classification().label;
 			if(savegame::save_game_exists(start_name, preferences::compress_saves())) {
 				if(preferences::compress_saves()) {
-					newsaves.push_back(start_name + ".gz");
+					newsaves.push_back(start_name + (preferences::bzip2_savegame_compression() ? ".bz2" : ".gz"));
 				} else {
 					newsaves.push_back(start_name);
 				}
