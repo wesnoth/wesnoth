@@ -64,7 +64,7 @@ std::vector<save_info> get_saves_list(const std::string* dir = NULL, const std::
 void read_save_file(const std::string& name, config& cfg, std::string* error_log);
 
 /** Returns true if there is already a savegame with that name. */
-bool save_game_exists(const std::string& name, bool compress_saves, bool bzip2_savegame_compression);
+bool save_game_exists(const std::string& name, bool compress_saves);
 
 /** Delete all autosaves of a certain scenario. */
 void clean_saves(const std::string& label);
@@ -224,8 +224,6 @@ private:
 	bool show_confirmation_; /** Determines if a confirmation of successful saving the game is shown. */
 
 	bool compress_saves_; /** Determines, if compression is used for the savegame file */
-	
-	bool bzip2_savegame_compression_; /** Determines, if bzip2 compression is used for the savegame file */
 };
 
 /** Class for "normal" midgame saves. The additional members are needed for creating the snapshot
