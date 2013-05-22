@@ -357,6 +357,7 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_TOOL_SELECT:
 		case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
 		case HOTKEY_EDITOR_TOOL_LABEL:
+		case HOTKEY_EDITOR_TOOL_ITEM:
 			return true;
 		case HOTKEY_EDITOR_TOOL_UNIT:
 		case HOTKEY_EDITOR_TOOL_VILLAGE:
@@ -473,6 +474,7 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 	case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
 	case HOTKEY_EDITOR_TOOL_UNIT:
 	case HOTKEY_EDITOR_TOOL_VILLAGE:
+	case HOTKEY_EDITOR_TOOL_ITEM:
 		return toolkit_->is_mouse_action_set(command) ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_EDITOR_DRAW_COORDINATES:
 		return gui_->get_draw_coordinates() ? ACTION_ON : ACTION_OFF;
@@ -656,6 +658,7 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 		case HOTKEY_EDITOR_TOOL_LABEL:
 		case HOTKEY_EDITOR_TOOL_UNIT:
 		case HOTKEY_EDITOR_TOOL_VILLAGE:
+		case HOTKEY_EDITOR_TOOL_ITEM:
 			toolkit_->hotkey_set_mouse_action(command);
 			return true;
 

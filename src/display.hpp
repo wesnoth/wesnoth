@@ -48,10 +48,13 @@ class arrow;
 #include "widgets/button.hpp"
 #include "widgets/slider.hpp"
 
+#include "overlay.hpp"
+
 #include <list>
 
 #include <boost/function.hpp>
 #include <boost/scoped_ptr.hpp>
+#include <map>
 
 class gamemap;
 
@@ -115,6 +118,21 @@ public:
 			const SDL_Color& col, fixed_t alpha);
 
 
+	/**
+	 * Functions to add and remove overlays from locations.
+	 *
+	 * An overlay is an image that is displayed on top of the tile.
+	 * One tile may have multiple overlays.
+	 */
+	void add_overlay(const map_location& loc, const std::string& image,
+		const std::string& halo="", const std::string& team_name="",
+		bool visible_under_fog = true);
+
+	/** remove_overlay will remove all overlays on a tile. */
+	void remove_overlay(const map_location& loc);
+
+	/** remove_single_overlay will remove a single overlay from a tile */
+	void remove_single_overlay(const map_location& loc, const std::string& toDelete);
 
 
 
@@ -978,6 +996,11 @@ public: //operations for the arrow framework
 	void update_arrow(arrow & a);
 
 private:
+
+	typedef std::multimap<map_location, overlay> overlay_map;
+
+	overlay_map overlays_;
+
 	/** Handle for the label which displays frames per second. */
 	int fps_handle_;
 	/** Count work done for the debug info displayed under fps */

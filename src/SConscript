@@ -225,10 +225,12 @@ wesnoth_sources = Split("""
     editor/action/action_unit.cpp
     editor/action/action_label.cpp
     editor/action/action_village.cpp
+    editor/action/action_item.cpp
     editor/action/mouse/mouse_action.cpp
     editor/action/mouse/mouse_action_map_label.cpp
     editor/action/mouse/mouse_action_unit.cpp
     editor/action/mouse/mouse_action_village.cpp
+    editor/action/mouse/mouse_action_item.cpp
     editor/map/editor_map.cpp
     editor/map/map_context.cpp
     editor/map/map_fragment.cpp
@@ -237,6 +239,7 @@ wesnoth_sources = Split("""
     editor/palette/terrain_palettes.cpp
     editor/palette/tristate_button.cpp
     editor/palette/unit_palette.cpp
+    editor/palette/item_palette.cpp
     editor/palette/palette_manager.cpp
     editor/editor_controller.cpp
     editor/editor_display.cpp

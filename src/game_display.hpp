@@ -222,21 +222,6 @@ public:
 			attack_indicator_src_.get_relative_dir(attack_indicator_dst_));
 	}
 
-	/**
-	 * Functions to add and remove overlays from locations.
-	 *
-	 * An overlay is an image that is displayed on top of the tile.
-	 * One tile may have multiple overlays.
-	 */
-	void add_overlay(const map_location& loc, const std::string& image,
-		const std::string& halo="", const std::string& team_name="",
-		bool visible_under_fog = true);
-
-	/** remove_overlay will remove all overlays on a tile. */
-	void remove_overlay(const map_location& loc);
-
-	/** remove_single_overlay will remove a single overlay from a tile */
-	void remove_single_overlay(const map_location& loc, const std::string& toDelete);
 
 	/**
 	 * Check the overlay_map for proper team-specific overlays to be
@@ -331,20 +316,20 @@ private:
 
 	map_location displayedUnitHex_;
 
-	struct overlay {
-		overlay(const std::string& img, const std::string& halo_img,
-		        int handle, const std::string& overlay_team_name, const bool fogged) : image(img), halo(halo_img),
-				team_name(overlay_team_name), halo_handle(handle) , visible_in_fog(fogged){}
-		std::string image;
-		std::string halo;
-		std::string team_name;
-		int halo_handle;
-		bool visible_in_fog;
-	};
+//	struct overlay {
+//		overlay(const std::string& img, const std::string& halo_img,
+//		        int handle, const std::string& overlay_team_name, const bool fogged) : image(img), halo(halo_img),
+//				team_name(overlay_team_name), halo_handle(handle) , visible_in_fog(fogged){}
+//		std::string image;
+//		std::string halo;
+//		std::string team_name;
+//		int halo_handle;
+//		bool visible_in_fog;
+//	};
 
-	typedef std::multimap<map_location,overlay> overlay_map;
+//	typedef std::multimap<map_location,overlay> overlay_map;
 
-	overlay_map overlays_;
+//	overlay_map overlays_;
 
 
 

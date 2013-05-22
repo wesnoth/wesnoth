@@ -172,7 +172,8 @@ private:
 protected:
 	std::map<std::string, std::vector<std::string> > group_map_;
 
-	std::map<std::string, Item> item_map_;
+	typedef std::map<std::string, Item> item_map;
+	item_map item_map_;
 	size_t nitems_, nmax_items_, items_start_;
     std::set<std::string> non_core_items_;
 

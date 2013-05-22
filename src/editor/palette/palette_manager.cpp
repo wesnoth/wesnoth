@@ -31,10 +31,12 @@ palette_manager::palette_manager(editor_display& gui, const config& cfg
 		  mouse_action_(active_mouse_action),
 		  terrain_palette_(new terrain_palette(gui, cfg, active_mouse_action)),
 		  unit_palette_(new unit_palette(gui, cfg, active_mouse_action)),
-		  empty_palette_(new empty_palette(gui))
+		  empty_palette_(new empty_palette(gui)),
+		  item_palette_(new item_palette(gui, cfg, active_mouse_action))
 {
 	unit_palette_->setup(cfg);
 	terrain_palette_->setup(cfg);
+	item_palette_->setup(cfg);
 }
 
 void palette_manager::set_group(size_t index)

@@ -21,6 +21,7 @@
 #include "sound_music_track.hpp"
 #include "tod_manager.hpp"
 #include "unit_map.hpp"
+#include "overlay.hpp"
 
 #include <boost/utility.hpp>
 #include <boost/scoped_ptr.hpp>
@@ -371,6 +372,9 @@ private:
 
 	typedef std::map<std::string, sound::music_track> music_map;
 	music_map music_tracks_;
+
+	typedef std::map<map_location, std::vector<overlay> > overlay_map;
+	overlay_map overlays_;
 
 };
 

@@ -70,7 +70,7 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 		tod_manager_(tod),
 		level_(level),
 		displayedUnitHex_(),
-		overlays_(),
+//		overlays_(),
 		sidebarScaling_(1.0),
 		first_turn_(true),
 		in_game_(false),
@@ -264,11 +264,11 @@ void game_display::draw_hex(const map_location& loc)
 {
 	const bool on_map = get_map().on_board(loc);
 	const bool is_shrouded = shrouded(loc);
-	const bool is_fogged = fogged(loc);
+//	const bool is_fogged = fogged(loc);
 	const int xpos = get_location_x(loc);
 	const int ypos = get_location_y(loc);
 
-	image::TYPE image_type = get_image_type(loc);
+//	image::TYPE image_type = get_image_type(loc);
 
 	display::draw_hex(loc);
 
@@ -283,19 +283,7 @@ void game_display::draw_hex(const map_location& loc)
 						   loc, xpos, ypos, image::get_image("misc/hover-hex-bottom.png", image::SCALED_TO_HEX));
 	}
 
-	if(!is_shrouded) {
-		typedef overlay_map::const_iterator Itor;
-		std::pair<Itor,Itor> overlays = overlays_.equal_range(loc);
-		for( ; overlays.first != overlays.second; ++overlays.first) {
-			if ((overlays.first->second.team_name == "" ||
-			overlays.first->second.team_name.find((*teams_)[playing_team()].team_name()) != std::string::npos)
-			&& !(is_fogged && !overlays.first->second.visible_in_fog))
-			{
-				drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos,
-					image::get_image(overlays.first->second.image,image_type));
-			}
-		}
-	}
+
 
 	// Draw reach_map information.
 	// We remove the reachability mask of the unit
@@ -775,60 +763,21 @@ void game_display::clear_attack_indicator()
 	set_attack_indicator(map_location::null_location, map_location::null_location);
 }
 
-void game_display::add_overlay(const map_location& loc, const std::string& img, const std::string& halo,const std::string& team_name, bool visible_under_fog)
-{
-	const int halo_handle = halo::add(get_location_x(loc) + hex_size() / 2,
-			get_location_y(loc) + hex_size() / 2, halo, loc);
 
-	const overlay item(img, halo, halo_handle, team_name, visible_under_fog);
-	overlays_.insert(overlay_map::value_type(loc,item));
-}
-
-void game_display::remove_overlay(const map_location& loc)
-{
-	typedef overlay_map::const_iterator Itor;
-	std::pair<Itor,Itor> itors = overlays_.equal_range(loc);
-	while(itors.first != itors.second) {
-		halo::remove(itors.first->second.halo_handle);
-		++itors.first;
-	}
-
-	overlays_.erase(loc);
-}
-
-void game_display::remove_single_overlay(const map_location& loc, const std::string& toDelete)
-{
-	//Iterate through the values with key of loc
-	typedef overlay_map::iterator Itor;
-	overlay_map::iterator iteratorCopy;
-	std::pair<Itor,Itor> itors = overlays_.equal_range(loc);
-	while(itors.first != itors.second) {
-		//If image or halo of overlay struct matches toDelete, remove the overlay
-		if(itors.first->second.image == toDelete || itors.first->second.halo == toDelete) {
-			iteratorCopy = itors.first;
-			++itors.first;
-			halo::remove(iteratorCopy->second.halo_handle);
-			overlays_.erase(iteratorCopy);
-		}
-		else {
-			++itors.first;
-		}
-	}
-}
 
 void game_display::parse_team_overlays()
 {
-	const team& curr_team = (*teams_)[playing_team()];
-	const team& prev_team = (*teams_)[playing_team()-1 < teams_->size() ? playing_team()-1 : teams_->size()-1];
-	BOOST_FOREACH(const game_display::overlay_map::value_type i, overlays_) {
-		const overlay& ov = i.second;
-		if (!ov.team_name.empty() &&
-			((ov.team_name.find(curr_team.team_name()) + 1) != 0) !=
-			((ov.team_name.find(prev_team.team_name()) + 1) != 0))
-		{
-			invalidate(i.first);
-		}
-	}
+//	const team& curr_team = (*teams_)[playing_team()];
+//	const team& prev_team = (*teams_)[playing_team()-1 < teams_->size() ? playing_team()-1 : teams_->size()-1];
+//	BOOST_FOREACH(const game_display::overlay_map::value_type i, overlays_) {
+//		const overlay& ov = i.second;
+//		if (!ov.team_name.empty() &&
+//			((ov.team_name.find(curr_team.team_name()) + 1) != 0) !=
+//			((ov.team_name.find(prev_team.team_name()) + 1) != 0))
+//		{
+//			invalidate(i.first);
+//		}
+//	}
 }
 
 std::string game_display::current_team_name() const
