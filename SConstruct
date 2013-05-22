@@ -282,14 +282,13 @@ if env["prereqs"]:
     conf.CheckLib("m")
     conf.CheckFunc("round")
 
-    def CheckAsio(conf, do_check):
+    def CheckANA(conf, do_check):
         if not do_check:
             return True
         if env["PLATFORM"] == 'win32':
             conf.env.Append(LIBS = ["libws2_32"])
         return conf.CheckBoost("system") and \
-            conf.CheckBoost("thread") and \
-            conf.CheckBoost("asio", header_only = True)
+            conf.CheckBoost("thread")
 
     if env['host'] in ['x86_64-nacl', 'i686-nacl']:
         # libppapi_cpp has a reverse dependency on the following function
@@ -320,13 +319,14 @@ if env["prereqs"]:
         conf.CheckBoost("smart_ptr", header_only = True) and \
         conf.CheckSDL(require_version = '1.2.7') and \
         conf.CheckSDL('SDL_net') and \
-        CheckAsio(conf, env["use_network_ana"]) or Warning("Base prerequisites are not met.")
+        CheckANA(conf, env["use_network_ana"]) or Warning("Base prerequisites are not met.")
 
     env = conf.Finish()
     client_env = env.Clone()
     conf = client_env.Configure(**configure_args)
     have_client_prereqs = have_server_prereqs and \
-        CheckAsio(conf, not env["use_network_ana"]) and \
+        conf.CheckBoost("system") and \
+        conf.CheckBoost("asio", header_only = True) and \
         conf.CheckPango("cairo") and \
         conf.CheckPKG("fontconfig") and \
         conf.CheckBoost("program_options", require_version="1.35.0") and \
