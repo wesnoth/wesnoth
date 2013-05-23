@@ -291,6 +291,11 @@ if env["prereqs"]:
         return conf.CheckBoost("system") and \
             conf.CheckBoost("thread")
 
+    def CheckAsio(conf):
+        return conf.CheckLib("pthread") and \
+        conf.CheckBoost("system") and \
+        conf.CheckBoost("asio", header_only = True)
+
     if env['host'] in ['x86_64-nacl', 'i686-nacl']:
         # libppapi_cpp has a reverse dependency on the following function
         env.Append(LINKFLAGS = ['-Wl,--undefined=_ZN2pp12CreateModuleEv'])
@@ -327,8 +332,7 @@ if env["prereqs"]:
     client_env = env.Clone()
     conf = client_env.Configure(**configure_args)
     have_client_prereqs = have_server_prereqs and \
-        conf.CheckBoost("system") and \
-        conf.CheckBoost("asio", header_only = True) and \
+        CheckAsio(conf) and \
         conf.CheckPango("cairo", require_version = "1.24.4") and \
         conf.CheckPKG("fontconfig") and \
         conf.CheckBoost("program_options", require_version="1.35.0") and \
