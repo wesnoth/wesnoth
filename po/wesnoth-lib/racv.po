@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-15 18:53+0200\n"
+"POT-Creation-Date: 2013-05-22 22:04-0400\n"
 "PO-Revision-Date: 2008-09-21 19:29+0100\n"
 "Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
 "Language-Team: none\n"
@@ -1431,7 +1431,7 @@ msgstr ""
 #: data/gui/default/window/editor_new_map.cfg:125
 #: data/gui/default/window/editor_resize_map.cfg:284
 #: data/gui/default/window/editor_set_starting_position.cfg:175
-#: data/gui/default/window/editor_settings.cfg:262
+#: data/gui/default/window/editor_settings.cfg:241
 #: data/gui/default/window/folder_create.cfg:134
 #: data/gui/default/window/game_load.cfg:477
 #: data/gui/default/window/game_save.cfg:135
@@ -1628,7 +1628,7 @@ msgstr "Ampliació inteligent"
 #: data/gui/default/window/edit_text.cfg:116
 #: data/gui/default/window/editor_edit_label.cfg:177
 #: data/gui/default/window/editor_set_starting_position.cfg:162
-#: data/gui/default/window/editor_settings.cfg:252
+#: data/gui/default/window/editor_settings.cfg:231
 #: data/gui/default/window/folder_create.cfg:120
 #: data/gui/default/window/game_load.cfg:463
 #: data/gui/default/window/game_load.cfg:464
@@ -1931,14 +1931,9 @@ msgstr "Freqüència:"
 msgid "Blue:"
 msgstr ""
 
-#. [toggle_button]: id=use_mdi
-#: data/gui/default/window/editor_settings.cfg:231
-msgid "Allow multiple maps to be open simultaneously"
-msgstr ""
-
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
-#: data/gui/default/window/editor_settings.cfg:272
+#: data/gui/default/window/editor_settings.cfg:251
 #: src/game_preferences_display.cpp:211
 msgid "Apply"
 msgstr "Aplicar"
@@ -2900,19 +2895,19 @@ msgstr "No ha segut possible borrar l'archiu."
 msgid "Creation of the directory failed."
 msgstr "Ha fallat la creació del directori"
 
-#: src/game_preferences.cpp:323
+#: src/game_preferences.cpp:349
 msgid "No server has been defined."
 msgstr "No s'ha definit cap servidor"
 
-#: src/game_preferences.cpp:403
+#: src/game_preferences.cpp:429
 msgid "player"
 msgstr "jugador"
 
-#: src/game_preferences.cpp:895
+#: src/game_preferences.cpp:921
 msgid "%H:%M"
 msgstr ""
 
-#: src/game_preferences.cpp:898
+#: src/game_preferences.cpp:924
 msgid "%I:%M %p"
 msgstr ""
 
@@ -3249,12 +3244,16 @@ msgid "Back to the multiplayer options"
 msgstr "Retornar a les opcions multijugador"
 
 #: src/game_preferences_display.cpp:392
-msgid "Add this username to your friends list"
-msgstr "Afegir est usuari a la teua llista d'amics"
+msgid ""
+"Add this username to your friends list (add optional notes, e.g., "
+"'player_name notes on friend')"
+msgstr ""
 
 #: src/game_preferences_display.cpp:393
-msgid "Add this username to your ignores list"
-msgstr "Afegir est usuari a la teua llista d'ignorats"
+msgid ""
+"Add this username to your ignores list (add optional reason, e.g., "
+"'player_name reason ignored')"
+msgstr ""
 
 #: src/game_preferences_display.cpp:394
 msgid "Remove this username from your list"
@@ -3326,67 +3325,67 @@ msgstr "infinit"
 msgid "Chat lines: "
 msgstr "Llínees de chat: "
 
-#: src/game_preferences_display.cpp:960 src/game_preferences_display.cpp:968
+#: src/game_preferences_display.cpp:969 src/game_preferences_display.cpp:986
 msgid "Invalid username"
 msgstr "Nom d'usuari invàlit"
 
-#: src/game_preferences_display.cpp:1071
+#: src/game_preferences_display.cpp:1088
 msgid "yes"
 msgstr "sí"
 
-#: src/game_preferences_display.cpp:1073
+#: src/game_preferences_display.cpp:1090
 msgid "no"
 msgstr "no"
 
-#: src/game_preferences_display.cpp:1107
+#: src/game_preferences_display.cpp:1122
 #, fuzzy
 msgid "friend"
 msgstr "Llista d'amics"
 
-#: src/game_preferences_display.cpp:1113
+#: src/game_preferences_display.cpp:1126
 msgid "ignored"
 msgstr ""
 
-#: src/game_preferences_display.cpp:1117
+#: src/game_preferences_display.cpp:1140
 msgid "(empty list)"
 msgstr "(llista buida)"
 
-#: src/game_preferences_display.cpp:1241
+#: src/game_preferences_display.cpp:1264
 #: src/hotkey_preferences_display.cpp:214
 msgid "Prefs section^General"
 msgstr "General"
 
-#: src/game_preferences_display.cpp:1242
+#: src/game_preferences_display.cpp:1265
 msgid "Prefs section^Display"
 msgstr "Visualisació"
 
-#: src/game_preferences_display.cpp:1243
+#: src/game_preferences_display.cpp:1266
 msgid "Prefs section^Sound"
 msgstr "Sò"
 
-#: src/game_preferences_display.cpp:1244
+#: src/game_preferences_display.cpp:1267
 msgid "Prefs section^Multiplayer"
 msgstr "Multijugador"
 
-#: src/game_preferences_display.cpp:1245
+#: src/game_preferences_display.cpp:1268
 msgid "Advanced section^Advanced"
 msgstr "Alvançat"
 
-#: src/game_preferences_display.cpp:1279
+#: src/game_preferences_display.cpp:1302
 msgid "Choose Theme"
 msgstr ""
 
-#: src/game_preferences_display.cpp:1294
+#: src/game_preferences_display.cpp:1317
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 "El canvi de tema es farà efectiu al tornar a carregar o en la pròxima "
 "partida."
 
-#: src/game_preferences_display.cpp:1298
+#: src/game_preferences_display.cpp:1321
 msgid "No known themes. Try changing from within an existing game."
 msgstr "No hi ha temes coneguts. Intenta canviar-los des d'un joc existent."
 
-#: src/game_preferences_display.cpp:1341
+#: src/game_preferences_display.cpp:1364
 msgid "Find $filename server binary to host networked games"
 msgstr ""
 
@@ -4155,7 +4154,7 @@ msgid "Switch Side"
 msgstr "Bando següent"
 
 #: src/hotkeys.cpp:160
-msgid "Swap Foreground/Background Terrains"
+msgid "Swap Foreground/Background Palette Item"
 msgstr ""
 
 #: src/hotkeys.cpp:161
@@ -4197,8 +4196,8 @@ msgstr ""
 
 #: src/hotkeys.cpp:171
 msgid ""
-"Left mouse button selects, right deselects. Hold Shift for magic-wand "
-"selection of tiles with same terrain."
+"Left mouse button selects or deselects, right brings up a context menu. Hold "
+"Shift for magic-wand selection of tiles with same terrain."
 msgstr ""
 
 #: src/hotkeys.cpp:171
@@ -4229,7 +4228,7 @@ msgstr ""
 #: src/hotkeys.cpp:174
 msgid ""
 "Left mouse button sets a new unit or moves a unit via drag and drop, right "
-"clears. Not implemented yet."
+"brings up a context menu. Needs a defined side."
 msgstr ""
 
 #: src/hotkeys.cpp:174
@@ -4261,7 +4260,7 @@ msgstr ""
 #: src/hotkeys.cpp:177
 msgid ""
 "Left mouse button sets the village ownership to the current side, right "
-"clears. Not implemented yet."
+"clears. Needs a defined side."
 msgstr ""
 
 #: src/hotkeys.cpp:177
@@ -4727,15 +4726,15 @@ msgstr ""
 "No ha segut possible canviar el modo de vídeo. La pantalla ha d'admetre una "
 "resolució de 1024x768x16 per a poder jugar a pantalla completa."
 
-#: src/preferences_display.cpp:326
+#: src/preferences_display.cpp:322
 msgid "There are no alternative video modes available"
 msgstr "No hi ha modos de vídeo alternatius disponibles"
 
-#: src/preferences_display.cpp:357
+#: src/preferences_display.cpp:353
 msgid " (widescreen)"
 msgstr ""
 
-#: src/preferences_display.cpp:361
+#: src/preferences_display.cpp:357
 msgid "Choose Resolution"
 msgstr "Triar la resolució"
 
@@ -4788,6 +4787,12 @@ msgid ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
+
+#~ msgid "Add this username to your friends list"
+#~ msgstr "Afegir est usuari a la teua llista d'amics"
+
+#~ msgid "Add this username to your ignores list"
+#~ msgstr "Afegir est usuari a la teua llista d'ignorats"
 
 #, fuzzy
 #~ msgid "Auto-update Terrain Transitions: Yes"

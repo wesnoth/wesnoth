@@ -14,7 +14,7 @@ return {
         -- how to set up an interactive parameter selection dialog
 
         local T = H.set_wml_tag_metatable {}
-        local _ = wesnoth.textdomain "wesnoth"
+        local _ = wesnoth.textdomain "wesnoth-ai"
 
         local tooltip_enemy_weight = _"Enemy unit weight: The (negative) weight given to each enemy unit that can reach a potential target location.  Default: 100"
         local tooltip_my_unit_weight = _"My unit weight: The (positive) weight given to each of the AI's units that can reach a potential target location.  Default: 1"

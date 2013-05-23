@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-15 18:53+0200\n"
+"POT-Creation-Date: 2013-05-22 22:04-0400\n"
 "PO-Revision-Date: 2012-07-03 00:45+0200\n"
 "Last-Translator: Aelonin <quianaaelonin@gmail.com>\n"
 "Language-Team: Spanish <http://wiki.wesnoth.org/SpanishTranslation>\n"
@@ -1337,7 +1337,7 @@ msgstr "Conectar"
 #: data/gui/default/window/editor_new_map.cfg:125
 #: data/gui/default/window/editor_resize_map.cfg:284
 #: data/gui/default/window/editor_set_starting_position.cfg:175
-#: data/gui/default/window/editor_settings.cfg:262
+#: data/gui/default/window/editor_settings.cfg:241
 #: data/gui/default/window/folder_create.cfg:134
 #: data/gui/default/window/game_load.cfg:477
 #: data/gui/default/window/game_save.cfg:135
@@ -1539,7 +1539,7 @@ msgstr "Jugar una campaña"
 #: data/gui/default/window/edit_text.cfg:116
 #: data/gui/default/window/editor_edit_label.cfg:177
 #: data/gui/default/window/editor_set_starting_position.cfg:162
-#: data/gui/default/window/editor_settings.cfg:252
+#: data/gui/default/window/editor_settings.cfg:231
 #: data/gui/default/window/folder_create.cfg:120
 #: data/gui/default/window/game_load.cfg:463
 #: data/gui/default/window/game_load.cfg:464
@@ -1826,14 +1826,9 @@ msgstr "Verde:"
 msgid "Blue:"
 msgstr "Azul:"
 
-#. [toggle_button]: id=use_mdi
-#: data/gui/default/window/editor_settings.cfg:231
-msgid "Allow multiple maps to be open simultaneously"
-msgstr "Permitir abrir varios mapas de forma simultánea"
-
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
-#: data/gui/default/window/editor_settings.cfg:272
+#: data/gui/default/window/editor_settings.cfg:251
 #: src/game_preferences_display.cpp:211
 msgid "Apply"
 msgstr "Aplicar"
@@ -2752,19 +2747,19 @@ msgstr "Se ha producido un error al tratar de borrar el archivo."
 msgid "Creation of the directory failed."
 msgstr "Se ha producido un error al crear el directorio."
 
-#: src/game_preferences.cpp:323
+#: src/game_preferences.cpp:349
 msgid "No server has been defined."
 msgstr "No se ha definido ningún servidor."
 
-#: src/game_preferences.cpp:403
+#: src/game_preferences.cpp:429
 msgid "player"
 msgstr "jugador"
 
-#: src/game_preferences.cpp:895
+#: src/game_preferences.cpp:921
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/game_preferences.cpp:898
+#: src/game_preferences.cpp:924
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
@@ -3104,12 +3099,16 @@ msgid "Back to the multiplayer options"
 msgstr "Volver a las opciones multijugador"
 
 #: src/game_preferences_display.cpp:392
-msgid "Add this username to your friends list"
-msgstr "Añadir a este usuario a la lista de amigos"
+msgid ""
+"Add this username to your friends list (add optional notes, e.g., "
+"'player_name notes on friend')"
+msgstr ""
 
 #: src/game_preferences_display.cpp:393
-msgid "Add this username to your ignores list"
-msgstr "Añadir a este usuario a la lista de ignorados"
+msgid ""
+"Add this username to your ignores list (add optional reason, e.g., "
+"'player_name reason ignored')"
+msgstr ""
 
 #: src/game_preferences_display.cpp:394
 msgid "Remove this username from your list"
@@ -3184,66 +3183,66 @@ msgstr "infinitos"
 msgid "Chat lines: "
 msgstr "Líneas de conversación: "
 
-#: src/game_preferences_display.cpp:960 src/game_preferences_display.cpp:968
+#: src/game_preferences_display.cpp:969 src/game_preferences_display.cpp:986
 msgid "Invalid username"
 msgstr "Nombre de usuario inválido"
 
-#: src/game_preferences_display.cpp:1071
+#: src/game_preferences_display.cpp:1088
 msgid "yes"
 msgstr "sí"
 
-#: src/game_preferences_display.cpp:1073
+#: src/game_preferences_display.cpp:1090
 msgid "no"
 msgstr "no"
 
-#: src/game_preferences_display.cpp:1107
+#: src/game_preferences_display.cpp:1122
 msgid "friend"
 msgstr "amigo"
 
-#: src/game_preferences_display.cpp:1113
+#: src/game_preferences_display.cpp:1126
 msgid "ignored"
 msgstr "ignorado"
 
-#: src/game_preferences_display.cpp:1117
+#: src/game_preferences_display.cpp:1140
 msgid "(empty list)"
 msgstr "(lista vacía)"
 
-#: src/game_preferences_display.cpp:1241
+#: src/game_preferences_display.cpp:1264
 #: src/hotkey_preferences_display.cpp:214
 msgid "Prefs section^General"
 msgstr "General"
 
-#: src/game_preferences_display.cpp:1242
+#: src/game_preferences_display.cpp:1265
 msgid "Prefs section^Display"
 msgstr "Vídeo"
 
-#: src/game_preferences_display.cpp:1243
+#: src/game_preferences_display.cpp:1266
 msgid "Prefs section^Sound"
 msgstr "Sonido"
 
-#: src/game_preferences_display.cpp:1244
+#: src/game_preferences_display.cpp:1267
 msgid "Prefs section^Multiplayer"
 msgstr "Multijugador"
 
-#: src/game_preferences_display.cpp:1245
+#: src/game_preferences_display.cpp:1268
 msgid "Advanced section^Advanced"
 msgstr "Avanzadas"
 
-#: src/game_preferences_display.cpp:1279
+#: src/game_preferences_display.cpp:1302
 msgid "Choose Theme"
 msgstr "Elegir tema"
 
-#: src/game_preferences_display.cpp:1294
+#: src/game_preferences_display.cpp:1317
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 "El nuevo tema tendrá efecto la próxima vez que se inicie o cargue una "
 "partida."
 
-#: src/game_preferences_display.cpp:1298
+#: src/game_preferences_display.cpp:1321
 msgid "No known themes. Try changing from within an existing game."
 msgstr "No hay temas conocidos. Intente cambiarlos desde un juego existente."
 
-#: src/game_preferences_display.cpp:1341
+#: src/game_preferences_display.cpp:1364
 msgid "Find $filename server binary to host networked games"
 msgstr ""
 "Encontrar el binario del servidor de $filename para alojar partidas en red"
@@ -4009,7 +4008,9 @@ msgid "Switch Side"
 msgstr "Cambiar mapa"
 
 #: src/hotkeys.cpp:160
-msgid "Swap Foreground/Background Terrains"
+#, fuzzy
+#| msgid "Swap Foreground/Background Terrains"
+msgid "Swap Foreground/Background Palette Item"
 msgstr "Intercambiar terrenos de primer y segundo plano."
 
 #: src/hotkeys.cpp:161
@@ -4050,8 +4051,8 @@ msgstr "Cubeta"
 
 #: src/hotkeys.cpp:171
 msgid ""
-"Left mouse button selects, right deselects. Hold Shift for magic-wand "
-"selection of tiles with same terrain."
+"Left mouse button selects or deselects, right brings up a context menu. Hold "
+"Shift for magic-wand selection of tiles with same terrain."
 msgstr ""
 
 #: src/hotkeys.cpp:171
@@ -4084,7 +4085,7 @@ msgstr ""
 #: src/hotkeys.cpp:174
 msgid ""
 "Left mouse button sets a new unit or moves a unit via drag and drop, right "
-"clears. Not implemented yet."
+"brings up a context menu. Needs a defined side."
 msgstr ""
 
 #: src/hotkeys.cpp:174
@@ -4118,7 +4119,7 @@ msgstr ""
 #: src/hotkeys.cpp:177
 msgid ""
 "Left mouse button sets the village ownership to the current side, right "
-"clears. Not implemented yet."
+"clears. Needs a defined side."
 msgstr ""
 
 #: src/hotkeys.cpp:177
@@ -4563,15 +4564,15 @@ msgstr ""
 "para poder funcionar en modo ventana. Su pantalla debe soportar una "
 "resolución de 1024x768x16 para jugar a pantalla completa."
 
-#: src/preferences_display.cpp:326
+#: src/preferences_display.cpp:322
 msgid "There are no alternative video modes available"
 msgstr "No tiene modos de vídeo alternativos disponibles"
 
-#: src/preferences_display.cpp:357
+#: src/preferences_display.cpp:353
 msgid " (widescreen)"
 msgstr " (panorámica)"
 
-#: src/preferences_display.cpp:361
+#: src/preferences_display.cpp:357
 msgid "Choose Resolution"
 msgstr "Seleccione resolución"
 
@@ -4630,6 +4631,15 @@ msgstr ""
 "El nombre del atributo «$deprecated_key|» ha cambiado a «$key|». La "
 "manutención para «$deprecated_key|» se quitará en la versión "
 "$removal_version."
+
+#~ msgid "Allow multiple maps to be open simultaneously"
+#~ msgstr "Permitir abrir varios mapas de forma simultánea"
+
+#~ msgid "Add this username to your friends list"
+#~ msgstr "Añadir a este usuario a la lista de amigos"
+
+#~ msgid "Add this username to your ignores list"
+#~ msgstr "Añadir a este usuario a la lista de ignorados"
 
 #, fuzzy
 #~| msgid "Auto-update Terrain Transitions"

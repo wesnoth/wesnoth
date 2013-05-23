@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-15 18:53+0200\n"
+"POT-Creation-Date: 2013-05-22 22:04-0400\n"
 "PO-Revision-Date: 2012-10-31 12:38+0200\n"
 "Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1318,7 +1318,7 @@ msgstr "Під'єднатись"
 #: data/gui/default/window/editor_new_map.cfg:125
 #: data/gui/default/window/editor_resize_map.cfg:284
 #: data/gui/default/window/editor_set_starting_position.cfg:175
-#: data/gui/default/window/editor_settings.cfg:262
+#: data/gui/default/window/editor_settings.cfg:241
 #: data/gui/default/window/folder_create.cfg:134
 #: data/gui/default/window/game_load.cfg:477
 #: data/gui/default/window/game_save.cfg:135
@@ -1508,7 +1508,7 @@ msgstr "Грати кампанію"
 #: data/gui/default/window/edit_text.cfg:116
 #: data/gui/default/window/editor_edit_label.cfg:177
 #: data/gui/default/window/editor_set_starting_position.cfg:162
-#: data/gui/default/window/editor_settings.cfg:252
+#: data/gui/default/window/editor_settings.cfg:231
 #: data/gui/default/window/folder_create.cfg:120
 #: data/gui/default/window/game_load.cfg:463
 #: data/gui/default/window/game_load.cfg:464
@@ -1787,14 +1787,9 @@ msgstr "Зелений:"
 msgid "Blue:"
 msgstr "Синій:"
 
-#. [toggle_button]: id=use_mdi
-#: data/gui/default/window/editor_settings.cfg:231
-msgid "Allow multiple maps to be open simultaneously"
-msgstr "Дозволити відкривати відразу декілька карт"
-
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
-#: data/gui/default/window/editor_settings.cfg:272
+#: data/gui/default/window/editor_settings.cfg:251
 #: src/game_preferences_display.cpp:211
 msgid "Apply"
 msgstr "Застосувати"
@@ -2701,19 +2696,19 @@ msgstr "Помилка видалення файлу."
 msgid "Creation of the directory failed."
 msgstr "Помилка створення каталогу."
 
-#: src/game_preferences.cpp:323
+#: src/game_preferences.cpp:349
 msgid "No server has been defined."
 msgstr "Сервер не визначено."
 
-#: src/game_preferences.cpp:403
+#: src/game_preferences.cpp:429
 msgid "player"
 msgstr "гравець"
 
-#: src/game_preferences.cpp:895
+#: src/game_preferences.cpp:921
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/game_preferences.cpp:898
+#: src/game_preferences.cpp:924
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
@@ -3041,12 +3036,16 @@ msgid "Back to the multiplayer options"
 msgstr "Назад до параметрів мультиплеєру"
 
 #: src/game_preferences_display.cpp:392
-msgid "Add this username to your friends list"
-msgstr "Додати гравця в список друзів"
+msgid ""
+"Add this username to your friends list (add optional notes, e.g., "
+"'player_name notes on friend')"
+msgstr ""
 
 #: src/game_preferences_display.cpp:393
-msgid "Add this username to your ignores list"
-msgstr "Додати гравця в список ігнорованих"
+msgid ""
+"Add this username to your ignores list (add optional reason, e.g., "
+"'player_name reason ignored')"
+msgstr ""
 
 #: src/game_preferences_display.cpp:394
 msgid "Remove this username from your list"
@@ -3120,64 +3119,64 @@ msgstr "необмежено"
 msgid "Chat lines: "
 msgstr "Рядки чату: "
 
-#: src/game_preferences_display.cpp:960 src/game_preferences_display.cpp:968
+#: src/game_preferences_display.cpp:969 src/game_preferences_display.cpp:986
 msgid "Invalid username"
 msgstr "Невірне ім'я користувача"
 
-#: src/game_preferences_display.cpp:1071
+#: src/game_preferences_display.cpp:1088
 msgid "yes"
 msgstr "так"
 
-#: src/game_preferences_display.cpp:1073
+#: src/game_preferences_display.cpp:1090
 msgid "no"
 msgstr "ні"
 
-#: src/game_preferences_display.cpp:1107
+#: src/game_preferences_display.cpp:1122
 msgid "friend"
 msgstr "друг"
 
-#: src/game_preferences_display.cpp:1113
+#: src/game_preferences_display.cpp:1126
 msgid "ignored"
 msgstr "ігнорується"
 
-#: src/game_preferences_display.cpp:1117
+#: src/game_preferences_display.cpp:1140
 msgid "(empty list)"
 msgstr "(порожній список)"
 
-#: src/game_preferences_display.cpp:1241
+#: src/game_preferences_display.cpp:1264
 #: src/hotkey_preferences_display.cpp:214
 msgid "Prefs section^General"
 msgstr "Загальні"
 
-#: src/game_preferences_display.cpp:1242
+#: src/game_preferences_display.cpp:1265
 msgid "Prefs section^Display"
 msgstr "Дисплей"
 
-#: src/game_preferences_display.cpp:1243
+#: src/game_preferences_display.cpp:1266
 msgid "Prefs section^Sound"
 msgstr "Звук"
 
-#: src/game_preferences_display.cpp:1244
+#: src/game_preferences_display.cpp:1267
 msgid "Prefs section^Multiplayer"
 msgstr "МУльтиплеєр"
 
-#: src/game_preferences_display.cpp:1245
+#: src/game_preferences_display.cpp:1268
 msgid "Advanced section^Advanced"
 msgstr "Додатково"
 
-#: src/game_preferences_display.cpp:1279
+#: src/game_preferences_display.cpp:1302
 msgid "Choose Theme"
 msgstr "Виберіть тему"
 
-#: src/game_preferences_display.cpp:1294
+#: src/game_preferences_display.cpp:1317
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Нова тема буде задіяна при наступній новій або завантаженій грі."
 
-#: src/game_preferences_display.cpp:1298
+#: src/game_preferences_display.cpp:1321
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Невідома тема. Спробуйте поміняти в існуючій грі."
 
-#: src/game_preferences_display.cpp:1341
+#: src/game_preferences_display.cpp:1364
 msgid "Find $filename server binary to host networked games"
 msgstr "Знайти сервер $filename, на якому будуть хоститься мережеві ігри"
 
@@ -3910,7 +3909,9 @@ msgid "Switch Side"
 msgstr "Змінити сторону"
 
 #: src/hotkeys.cpp:160
-msgid "Swap Foreground/Background Terrains"
+#, fuzzy
+#| msgid "Swap Foreground/Background Terrains"
+msgid "Swap Foreground/Background Palette Item"
 msgstr "Поміняти місцями основний і фоновий ландшафти"
 
 #: src/hotkeys.cpp:161
@@ -3951,8 +3952,8 @@ msgstr "Інструмент заповнення"
 
 #: src/hotkeys.cpp:171
 msgid ""
-"Left mouse button selects, right deselects. Hold Shift for magic-wand "
-"selection of tiles with same terrain."
+"Left mouse button selects or deselects, right brings up a context menu. Hold "
+"Shift for magic-wand selection of tiles with same terrain."
 msgstr ""
 
 #: src/hotkeys.cpp:171
@@ -3981,7 +3982,7 @@ msgstr ""
 #: src/hotkeys.cpp:174
 msgid ""
 "Left mouse button sets a new unit or moves a unit via drag and drop, right "
-"clears. Not implemented yet."
+"brings up a context menu. Needs a defined side."
 msgstr ""
 
 #: src/hotkeys.cpp:174
@@ -4013,7 +4014,7 @@ msgstr ""
 #: src/hotkeys.cpp:177
 msgid ""
 "Left mouse button sets the village ownership to the current side, right "
-"clears. Not implemented yet."
+"clears. Needs a defined side."
 msgstr ""
 
 #: src/hotkeys.cpp:177
@@ -4445,15 +4446,15 @@ msgstr ""
 "встановити 16 бітовий колір. Щоб запускати гру на увесь екран, ваш монітор "
 "повинен підтримувати розширення не менше 1024x768x16."
 
-#: src/preferences_display.cpp:326
+#: src/preferences_display.cpp:322
 msgid "There are no alternative video modes available"
 msgstr "Немає доступних альтернативних відеорежимів"
 
-#: src/preferences_display.cpp:357
+#: src/preferences_display.cpp:353
 msgid " (widescreen)"
 msgstr " (широкий екран)"
 
-#: src/preferences_display.cpp:361
+#: src/preferences_display.cpp:357
 msgid "Choose Resolution"
 msgstr "Виберіть розширення"
 
@@ -4505,6 +4506,15 @@ msgid ""
 msgstr ""
 "Клавіша '$deprecated_key' перейменована в '$key'. Вона буде видалена у "
 "версії $removal_version."
+
+#~ msgid "Allow multiple maps to be open simultaneously"
+#~ msgstr "Дозволити відкривати відразу декілька карт"
+
+#~ msgid "Add this username to your friends list"
+#~ msgstr "Додати гравця в список друзів"
+
+#~ msgid "Add this username to your ignores list"
+#~ msgstr "Додати гравця в список ігнорованих"
 
 #~ msgid "Auto-update Terrain Transitions: Yes"
 #~ msgstr "Автоматично оновлювати переходи плиток: Так"

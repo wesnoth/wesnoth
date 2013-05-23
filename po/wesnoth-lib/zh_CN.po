@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-15 18:53+0200\n"
+"POT-Creation-Date: 2013-05-22 22:04-0400\n"
 "PO-Revision-Date: 2012-04-04 18:51+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
@@ -1335,7 +1335,7 @@ msgstr "连接"
 #: data/gui/default/window/editor_new_map.cfg:125
 #: data/gui/default/window/editor_resize_map.cfg:284
 #: data/gui/default/window/editor_set_starting_position.cfg:175
-#: data/gui/default/window/editor_settings.cfg:262
+#: data/gui/default/window/editor_settings.cfg:241
 #: data/gui/default/window/folder_create.cfg:134
 #: data/gui/default/window/game_load.cfg:477
 #: data/gui/default/window/game_save.cfg:135
@@ -1538,7 +1538,7 @@ msgstr "开始战役"
 #: data/gui/default/window/edit_text.cfg:116
 #: data/gui/default/window/editor_edit_label.cfg:177
 #: data/gui/default/window/editor_set_starting_position.cfg:162
-#: data/gui/default/window/editor_settings.cfg:252
+#: data/gui/default/window/editor_settings.cfg:231
 #: data/gui/default/window/folder_create.cfg:120
 #: data/gui/default/window/game_load.cfg:463
 #: data/gui/default/window/game_load.cfg:464
@@ -1825,14 +1825,9 @@ msgstr "绿:"
 msgid "Blue:"
 msgstr "蓝:"
 
-#. [toggle_button]: id=use_mdi
-#: data/gui/default/window/editor_settings.cfg:231
-msgid "Allow multiple maps to be open simultaneously"
-msgstr "允许同时打开多张地图"
-
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
-#: data/gui/default/window/editor_settings.cfg:272
+#: data/gui/default/window/editor_settings.cfg:251
 #: src/game_preferences_display.cpp:211
 msgid "Apply"
 msgstr "应用"
@@ -2741,19 +2736,19 @@ msgstr "删除文件失败。"
 msgid "Creation of the directory failed."
 msgstr "建立目录失败。"
 
-#: src/game_preferences.cpp:323
+#: src/game_preferences.cpp:349
 msgid "No server has been defined."
 msgstr "服务器未定义。"
 
-#: src/game_preferences.cpp:403
+#: src/game_preferences.cpp:429
 msgid "player"
 msgstr "玩家"
 
-#: src/game_preferences.cpp:895
+#: src/game_preferences.cpp:921
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/game_preferences.cpp:898
+#: src/game_preferences.cpp:924
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
@@ -3085,12 +3080,16 @@ msgid "Back to the multiplayer options"
 msgstr "回到多人游戏选项"
 
 #: src/game_preferences_display.cpp:392
-msgid "Add this username to your friends list"
-msgstr "把这个用户名加入好友列表"
+msgid ""
+"Add this username to your friends list (add optional notes, e.g., "
+"'player_name notes on friend')"
+msgstr ""
 
 #: src/game_preferences_display.cpp:393
-msgid "Add this username to your ignores list"
-msgstr "把这个用户名加入忽略列表"
+msgid ""
+"Add this username to your ignores list (add optional reason, e.g., "
+"'player_name reason ignored')"
+msgstr ""
 
 #: src/game_preferences_display.cpp:394
 msgid "Remove this username from your list"
@@ -3162,64 +3161,64 @@ msgstr "无限"
 msgid "Chat lines: "
 msgstr "聊天记录行数："
 
-#: src/game_preferences_display.cpp:960 src/game_preferences_display.cpp:968
+#: src/game_preferences_display.cpp:969 src/game_preferences_display.cpp:986
 msgid "Invalid username"
 msgstr "用户名无效"
 
-#: src/game_preferences_display.cpp:1071
+#: src/game_preferences_display.cpp:1088
 msgid "yes"
 msgstr "是"
 
-#: src/game_preferences_display.cpp:1073
+#: src/game_preferences_display.cpp:1090
 msgid "no"
 msgstr "否"
 
-#: src/game_preferences_display.cpp:1107
+#: src/game_preferences_display.cpp:1122
 msgid "friend"
 msgstr "好友"
 
-#: src/game_preferences_display.cpp:1113
+#: src/game_preferences_display.cpp:1126
 msgid "ignored"
 msgstr "被忽略"
 
-#: src/game_preferences_display.cpp:1117
+#: src/game_preferences_display.cpp:1140
 msgid "(empty list)"
 msgstr "（空列表）"
 
-#: src/game_preferences_display.cpp:1241
+#: src/game_preferences_display.cpp:1264
 #: src/hotkey_preferences_display.cpp:214
 msgid "Prefs section^General"
 msgstr "常规"
 
-#: src/game_preferences_display.cpp:1242
+#: src/game_preferences_display.cpp:1265
 msgid "Prefs section^Display"
 msgstr "图像"
 
-#: src/game_preferences_display.cpp:1243
+#: src/game_preferences_display.cpp:1266
 msgid "Prefs section^Sound"
 msgstr "声音"
 
-#: src/game_preferences_display.cpp:1244
+#: src/game_preferences_display.cpp:1267
 msgid "Prefs section^Multiplayer"
 msgstr "多人游戏"
 
-#: src/game_preferences_display.cpp:1245
+#: src/game_preferences_display.cpp:1268
 msgid "Advanced section^Advanced"
 msgstr "高级"
 
-#: src/game_preferences_display.cpp:1279
+#: src/game_preferences_display.cpp:1302
 msgid "Choose Theme"
 msgstr "选择主题"
 
-#: src/game_preferences_display.cpp:1294
+#: src/game_preferences_display.cpp:1317
 msgid "New theme will take effect on next new or loaded game."
 msgstr "新主题在下一次新建或读取游戏时生效。"
 
-#: src/game_preferences_display.cpp:1298
+#: src/game_preferences_display.cpp:1321
 msgid "No known themes. Try changing from within an existing game."
 msgstr "当前无已知主题。请尝试在游戏时切换主题。"
 
-#: src/game_preferences_display.cpp:1341
+#: src/game_preferences_display.cpp:1364
 msgid "Find $filename server binary to host networked games"
 msgstr "查找$filename服务器可执行文件以便建立联网游戏"
 
@@ -3964,7 +3963,9 @@ msgid "Switch Side"
 msgstr "切换地图"
 
 #: src/hotkeys.cpp:160
-msgid "Swap Foreground/Background Terrains"
+#, fuzzy
+#| msgid "Swap Foreground/Background Terrains"
+msgid "Swap Foreground/Background Palette Item"
 msgstr "交换前景／背景地形"
 
 #: src/hotkeys.cpp:161
@@ -4005,8 +4006,8 @@ msgstr "填充工具"
 
 #: src/hotkeys.cpp:171
 msgid ""
-"Left mouse button selects, right deselects. Hold Shift for magic-wand "
-"selection of tiles with same terrain."
+"Left mouse button selects or deselects, right brings up a context menu. Hold "
+"Shift for magic-wand selection of tiles with same terrain."
 msgstr ""
 
 #: src/hotkeys.cpp:171
@@ -4039,7 +4040,7 @@ msgstr ""
 #: src/hotkeys.cpp:174
 msgid ""
 "Left mouse button sets a new unit or moves a unit via drag and drop, right "
-"clears. Not implemented yet."
+"brings up a context menu. Needs a defined side."
 msgstr ""
 
 #: src/hotkeys.cpp:174
@@ -4073,7 +4074,7 @@ msgstr ""
 #: src/hotkeys.cpp:177
 msgid ""
 "Left mouse button sets the village ownership to the current side, right "
-"clears. Not implemented yet."
+"clears. Needs a defined side."
 msgstr ""
 
 #: src/hotkeys.cpp:177
@@ -4517,15 +4518,15 @@ msgstr ""
 "无法改变视频模式。以窗口模式运行游戏需要将窗口管理器设为16位色，全屏模式需要"
 "您的显示设备支持1024x768分辨率和16位色。"
 
-#: src/preferences_display.cpp:326
+#: src/preferences_display.cpp:322
 msgid "There are no alternative video modes available"
 msgstr "没有其他可用的显示模式"
 
-#: src/preferences_display.cpp:357
+#: src/preferences_display.cpp:353
 msgid " (widescreen)"
 msgstr "（宽屏）"
 
-#: src/preferences_display.cpp:361
+#: src/preferences_display.cpp:357
 msgid "Choose Resolution"
 msgstr "选择分辨率"
 
@@ -4576,6 +4577,15 @@ msgid ""
 msgstr ""
 "主键“$deprecated_key”已被重命名为“$key”，对“$deprecated_key”的支持将在版本 "
 "$removal_version 中移除。"
+
+#~ msgid "Allow multiple maps to be open simultaneously"
+#~ msgstr "允许同时打开多张地图"
+
+#~ msgid "Add this username to your friends list"
+#~ msgstr "把这个用户名加入好友列表"
+
+#~ msgid "Add this username to your ignores list"
+#~ msgstr "把这个用户名加入忽略列表"
 
 #, fuzzy
 #~| msgid "Auto-update Terrain Transitions"
