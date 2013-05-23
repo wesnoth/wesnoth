@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth-editor 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-15 18:53+0200\n"
+"POT-Creation-Date: 2013-05-22 22:03-0400\n"
 "PO-Revision-Date: 2012-12-19 21:22-0000\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
@@ -143,8 +143,13 @@ msgstr ""
 msgid "Deep Underground"
 msgstr ""
 
+#. [editor_times]: id=24
+#: data/core/editor/time-of-day.cfg:39
+msgid "24 Hour Schedule"
+msgstr ""
+
 #. [editor_times]: id=after_the_fall
-#: data/core/editor/time-of-day.cfg:40
+#: data/core/editor/time-of-day.cfg:46
 msgid "After the Fall"
 msgstr ""
 
@@ -220,36 +225,58 @@ msgstr "viculi"
 msgid "units"
 msgstr ""
 
+#. [menu]: id=switch_time
+#: data/themes/editor.cfg:489
+msgid "Time Schedule Menu"
+msgstr ""
+
+#. [menu]: id=menu-playlist
+#: data/themes/editor.cfg:499
+msgid "Playlist"
+msgstr ""
+
 #. [menu]: id=menu-editor-schedule
-#: data/themes/editor.cfg:497
+#: data/themes/editor.cfg:505
 msgid "Assign Time Schedule"
 msgstr ""
 
 #. [label]: id=terrain-icon
-#: data/themes/editor.cfg:601
+#: data/themes/editor.cfg:609
 msgid "terrain"
 msgstr ""
 
 #. [action]: id=flip_map_button_editor, type=checkbox
-#: data/themes/editor.cfg:661
+#: data/themes/editor.cfg:669
 msgid "Not implemented yet."
 msgstr ""
 
-#: src/editor/editor_controller.cpp:170
+#: src/editor/action/mouse/mouse_action_unit.cpp:58
+msgid "ID: "
+msgstr ""
+
+#: src/editor/action/mouse/mouse_action_unit.cpp:59
+msgid "Name: "
+msgstr ""
+
+#: src/editor/action/mouse/mouse_action_unit.cpp:60
+msgid "Type: "
+msgstr ""
+
+#: src/editor/editor_controller.cpp:175
 msgid "Fatal error"
 msgstr "Error gravis"
 
-#: src/editor/editor_controller.cpp:198
+#: src/editor/editor_controller.cpp:203
 msgid "Do you really want to quit?"
 msgstr "Itane vis exire?"
 
-#: src/editor/editor_controller.cpp:200
+#: src/editor/editor_controller.cpp:205
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr "Itane vis exire? Omnes mutationes in charta post servatum delebuntur."
 
-#: src/editor/editor_controller.cpp:202
+#: src/editor/editor_controller.cpp:207
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -257,113 +284,113 @@ msgstr ""
 "Itane vis exire? Hae chartae mutatae sunt et omnes mutationes post "
 "servatumdelebuntur:"
 
-#: src/editor/editor_controller.cpp:205
+#: src/editor/editor_controller.cpp:210
 msgid "Quit"
 msgstr "Exire"
 
-#: src/editor/editor_controller.cpp:216
+#: src/editor/editor_controller.cpp:221
 msgid "No editor time-of-day found."
 msgstr "Hora pro chartographia non inventa est."
 
-#: src/editor/editor_controller.cpp:906
+#: src/editor/editor_controller.cpp:949
 msgid "Change Unit ID"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:907
+#: src/editor/editor_controller.cpp:950
 msgid "ID:"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:923
+#: src/editor/editor_controller.cpp:966
 msgid "Rename Unit"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:924
+#: src/editor/editor_controller.cpp:967
 msgid "Name:"
 msgstr ""
 
 #: src/editor/map/context_manager.cpp:119
-#: src/editor/map/context_manager.cpp:211
+#: src/editor/map/context_manager.cpp:202
 msgid "(New Map)"
 msgstr "(Charta Nova)"
 
-#: src/editor/map/context_manager.cpp:180
+#: src/editor/map/context_manager.cpp:176
 msgid "Choose a Map to Open"
 msgstr "Chartam Eligere ut Aperiatur"
 
-#: src/editor/map/context_manager.cpp:243
+#: src/editor/map/context_manager.cpp:234
 #, fuzzy
 #| msgid "(New Map)"
 msgid "(New Area)"
 msgstr "(Charta Nova)"
 
-#: src/editor/map/context_manager.cpp:266
+#: src/editor/map/context_manager.cpp:257
 #, fuzzy
 #| msgid "(New Map)"
 msgid "(New Side)"
 msgstr "(Charta Nova)"
 
-#: src/editor/map/context_manager.cpp:312
+#: src/editor/map/context_manager.cpp:303
 msgid "Choose a Mask to Apply"
 msgstr "Personam Eligere ut Aptetur"
 
-#: src/editor/map/context_manager.cpp:319
+#: src/editor/map/context_manager.cpp:310
 msgid "Error loading mask"
 msgstr "Error dum persona arcessitur"
 
-#: src/editor/map/context_manager.cpp:340
+#: src/editor/map/context_manager.cpp:331
 msgid "Choose Target Map"
 msgstr "Chartam Eligere"
 
-#: src/editor/map/context_manager.cpp:347
-#: src/editor/map/context_manager.cpp:708
+#: src/editor/map/context_manager.cpp:338
+#: src/editor/map/context_manager.cpp:700
 msgid "Error loading map"
 msgstr "Error dum charta arcessitur"
 
-#: src/editor/map/context_manager.cpp:465
+#: src/editor/map/context_manager.cpp:456
 msgid "Save the Map As"
 msgstr "Chartam Servare ut..."
 
-#: src/editor/map/context_manager.cpp:468
+#: src/editor/map/context_manager.cpp:460
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Fasciculus iam est. Visne eum superscribere?"
 
-#: src/editor/map/context_manager.cpp:502
+#: src/editor/map/context_manager.cpp:494
 msgid "No random map generators found."
 msgstr "Nollus generatores chartarum fortunae inventi sunt."
 
-#: src/editor/map/context_manager.cpp:515
-#: src/editor/map/context_manager.cpp:519
+#: src/editor/map/context_manager.cpp:507
+#: src/editor/map/context_manager.cpp:511
 msgid "Map creation failed."
 msgstr "Chartam creare male evenit."
 
-#: src/editor/map/context_manager.cpp:531
+#: src/editor/map/context_manager.cpp:523
 msgid "Unsaved Changes"
 msgstr "Mutationes Non Servatae"
 
-#: src/editor/map/context_manager.cpp:532
+#: src/editor/map/context_manager.cpp:524
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr "Itane vis omnes mutationes in charta post servatum delere?"
 
-#: src/editor/map/context_manager.cpp:623
-#: src/editor/map/context_manager.cpp:664
+#: src/editor/map/context_manager.cpp:615
+#: src/editor/map/context_manager.cpp:656
 msgid "This map is already open."
 msgstr "Charta iam aperta est."
 
-#: src/editor/map/context_manager.cpp:644
+#: src/editor/map/context_manager.cpp:636
 msgid "Map saved."
 msgstr "Charta servata est."
 
-#: src/editor/map/context_manager.cpp:687
+#: src/editor/map/context_manager.cpp:679
 msgid "Loaded embedded map data"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:688
-#: src/editor/map/context_manager.cpp:702
+#: src/editor/map/context_manager.cpp:680
+#: src/editor/map/context_manager.cpp:694
 msgid "Map loaded from scenario"
 msgstr "Charta ab scaenario arcessita"
 
-#: src/editor/map/context_manager.cpp:698
+#: src/editor/map/context_manager.cpp:690
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -379,11 +406,11 @@ msgstr "Lusor"
 msgid "The size of the target map is different from the current map"
 msgstr "Magnitudo chartae electae dissimilis chartae praesenti est"
 
-#: src/editor/map/map_context.cpp:105
+#: src/editor/map/map_context.cpp:107
 msgid "File not found"
 msgstr "Fasciculus non inventus est"
 
-#: src/editor/map/map_context.cpp:119
+#: src/editor/map/map_context.cpp:121
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -391,38 +418,38 @@ msgstr ""
 "Fasciculus chartae scaenarium esse videtur, sed numerus map_data fasciculum "
 "verum non indicat"
 
-#: src/editor/map/map_context.cpp:135
+#: src/editor/map/map_context.cpp:137
 msgid "Empty map file"
 msgstr "Fasciculus inanis chartae"
 
-#: src/editor/map/map_context.cpp:340
+#: src/editor/map/map_context.cpp:350
 msgid "Could not save into scenario"
 msgstr "Non potest ut ad scaenarium servetur"
 
-#: src/editor/map/map_context.cpp:347
+#: src/editor/map/map_context.cpp:357
 msgid "Could not save the map: $msg"
 msgstr "Non potest ut charta servetur: $msg"
 
 #: src/editor/palette/editor_palettes.cpp:56
-#: src/editor/palette/editor_palettes.cpp:99
+#: src/editor/palette/editor_palettes.cpp:101
 msgid "(Unknown Group)"
 msgstr "(Classis Ignota)"
 
-#: src/editor/palette/editor_palettes.cpp:329
+#: src/editor/palette/editor_palettes.cpp:340
 msgid "(non-core)"
 msgstr "(innucleum)"
 
-#: src/editor/palette/editor_palettes.cpp:330
+#: src/editor/palette/editor_palettes.cpp:341
 msgid "Will not work in game without extra care."
 msgstr "Hae sine cura singulare deerint."
 
 # Eminentia
-#: src/editor/palette/terrain_palettes.cpp:54
+#: src/editor/palette/terrain_palettes.cpp:225
 msgid "FG: "
 msgstr "EM: "
 
 # Abscedentia
-#: src/editor/palette/terrain_palettes.cpp:55
+#: src/editor/palette/terrain_palettes.cpp:226
 msgid "BG: "
 msgstr "AB: "
 
@@ -434,7 +461,7 @@ msgstr "Nemo"
 msgid "Player $player_number"
 msgstr "Lusor $player_number"
 
-#: src/gui/dialogs/editor_settings.cpp:165
+#: src/gui/dialogs/editor_settings.cpp:161
 msgid "Custom setting"
 msgstr "Electiones lusoris"
 
