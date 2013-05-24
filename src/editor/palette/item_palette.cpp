@@ -19,14 +19,9 @@
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "item_palette.hpp"
-
 #include "../../gettext.hpp"
 
-//#include "../../item_types.hpp"
-
 #include <boost/foreach.hpp>
-#include "config.h"
-
 #include <string>
 
 namespace editor {
