@@ -261,7 +261,7 @@ struct HandleReceiveDoc : public HandleDoc<Handler, ErrorHandler>
 	void operator()(const boost::system::error_code& error, std::size_t size)
 	{
 		if(check_error(error, this->socket)) {
-			error_handler(this->socket);
+			this->error_handler(this->socket);
 			return;
 		}
 		if(!this->buffer) {
@@ -278,7 +278,7 @@ struct HandleReceiveDoc : public HandleDoc<Handler, ErrorHandler>
 				async_send_error(this->socket, "Invalid WML received: " + e.message);
 				return;
 			}
-			handler(this->socket, this->doc);
+			this->handler(this->socket, this->doc);
 		}
 	}
 };
