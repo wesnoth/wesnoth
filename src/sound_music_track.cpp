@@ -82,10 +82,6 @@ void music_track::resolve()
 	}
 
 #if !defined(_WIN32) && !defined(__APPLE__)
-<<<<<<< HEAD
-=======
-
->>>>>>> Disabled (hopefully) the ogg tag reading on Win and Mac.
 	FILE* f;
 	f = fopen(file_path_.c_str(), "r");
 	if (f == NULL) {
@@ -118,13 +114,8 @@ void music_track::resolve()
 	}
 
 	ov_clear(&vf);
-<<<<<<< HEAD
-#endif
-=======
-
 #endif
 
->>>>>>> Disabled (hopefully) the ogg tag reading on Win and Mac.
 	LOG_AUDIO << "resolved music track '" << id_ << "' into '" << file_path_ << "'\n";
 }
 
