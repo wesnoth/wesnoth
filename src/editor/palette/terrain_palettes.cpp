@@ -78,16 +78,16 @@ void terrain_palette::setup(const config& cfg)
 
 	// Get the available groups and add them to the structure
 	std::set<std::string> group_names;
-	BOOST_FOREACH(const config &g, cfg.child_range("editor_group"))
+	BOOST_FOREACH(const config &group, cfg.child_range("editor_group"))
 	{
-		if (group_names.find(g["id"]) == group_names.end()) {
+		if (group_names.find(group["id"]) == group_names.end()) {
 
 			config cfg;
-			cfg["id"] = g["id"];
-			cfg["name"] = g["name"];
+			cfg["id"] = group["id"];
+			cfg["name"] = group["name"];
 
-			cfg["icon"] = "icons/terrain/terrain_" + g["icon"].str();
-			cfg["core"] = g["core"];
+			cfg["icon"] = "icons/terrain/terrain_" + group["icon"].str();
+			cfg["core"] = group["core"];
 			groups_.push_back(item_group(cfg));
 
 			group_names.insert(groups_.back().id);
