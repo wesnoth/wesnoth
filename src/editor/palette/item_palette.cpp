@@ -41,49 +41,21 @@ void item_palette::setup(const config& cfg)
 
 			item_map_.insert(std::pair<std::string, overlay>(item["id"], overlay(item)));
 			group_map_[group["id"]].push_back(item["id"]);
+			if (!group["core"].to_bool(false))
+				non_core_items_.insert(item["id"]);
 		}
 		nmax_items_ = std::max(nmax_items_, group_map_[group["id"]].size());
 	}
 
-//	BOOST_FOREACH(const item_type_data::item_type_map::value_type &i, item_types.types())
-//	{
-//		item_map_.insert(std::pair<std::string, item_type>(i.second.id(), i.second));
-//		group_map_[i.second.race_id()].push_back(i.second.id());
-//		nmax_items_ = std::max(nmax_items_, group_map_[i.second.race_id()].size());
-//		//TODO
-//		bool core = true;
-//		if (core) {
-//			// Add the item to the default group
-//			group_map_["all"].push_back(i.second.id());
-//			nmax_items_ = std::max(nmax_items_, group_map_["all"].size());
-//		} else {
-//			non_core_items_.insert(i.second.id());
-//		}
-//	}
-//
-//	BOOST_FOREACH(const race_map::value_type &i, item_types.races())
-//	{
-//		config cfg;
-//		cfg["id"] = i.second.id();
-//		cfg["name"] = i.second.plural_name();
-//		cfg["icon"] = "icons/item-groups/race_" + i.second.id();
-//		cfg["core"] = "yes";
-//		groups_.push_back(item_group(cfg));
-//	}
-//
-//	//TODO
-//	//move "invalid" items to the end
-//	//std::stable_partition(items.begin(), items.end(), is_valid_terrain);
-//
 	select_fg_item("anvil");
 	select_bg_item("altar");
-//
-//	// Set the default group
+
+	// Set the default group
 	set_group("items");
-//
-//	if(active_group().empty()) {
-//		ERR_ED << "No items found.\n";
-//	}
+
+	if(active_group().empty()) {
+		ERR_ED << "No items found.\n";
+	}
 }
 
 void item_palette::draw_item(const overlay& item, surface& image, std::stringstream& tooltip_text) {
@@ -91,8 +63,7 @@ void item_palette::draw_item(const overlay& item, surface& image, std::stringstr
 	surface screen = gui_.video().getSurface();
 
 	std::stringstream filename;
-	filename << item.image; // << "~RC(" << u.flag_rgb() << '>'
-	    	 // << team::get_side_color_index(gui_.viewing_side()) << ')';
+	filename << item.image;
 
 	image = surface(image::get_image(filename.str()));
 	if(image == NULL) {
