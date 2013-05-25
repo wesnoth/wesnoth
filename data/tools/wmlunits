@@ -21,6 +21,8 @@ import unit_tree.html_output as html_output
 import unit_tree.overview
 import unit_tree.wiki_output as wiki_output
 
+TIMEOUT = 5
+
 def copy_images():
     print("Recolorizing pictures.")
     image_collector.copy_and_color_images(options.output)
@@ -130,19 +132,24 @@ def list_contents():
                 options.data_dir,
                 options.transdir)
             #print("remote", local.wesnoth)
-            local.wesnoth.parser.parse_text(wml, defines)
-            q.put(local.wesnoth)
-        
+            try:
+                local.wesnoth.parser.parse_text(wml, defines)
+                q.put(("ok", local.wesnoth))
+            except Exception as e:
+                q.put(("e", e))
+
         q = multiprocessing.Queue()
         p = multiprocessing.Process(target = f, args = (options, wml, defines, q))
         p.start()
         try:
-            local.wesnoth = q.get(timeout = 5)
+            s, local.wesnoth = q.get(timeout = TIMEOUT)
         except Queue.Empty:
             p.terminate()
             raise
-        #print("local", local.wesnoth)
+        #print("local", s, local.wesnoth)
         p.join()
+        if s == "e":
+            raise local.wesnoth
     
     def get_version(addon):
         try:
@@ -222,9 +229,9 @@ def list_contents():
             sys.stdout.write("failed\n")
         except Queue.Empty as e:
             ef = open(logname, "w")
-            ef.write("<PARSE ERROR>\n")
-            ef.write(str(e))
-            ef.write("</PARSE ERROR>\n")
+            ef.write("<TIMEOUT ERROR>\n")
+            ef.write("Failed to parse the WML within " + str(TIMEOUT) + " seconds.")
+            ef.write("</TIMEOUT ERROR>\n")
             ef.close()
             sys.stdout.write("failed\n")
         finally:

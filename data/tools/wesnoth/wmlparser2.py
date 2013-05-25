@@ -21,11 +21,12 @@ class WMLError(Exception):
     Catch this exception to retrieve the first error message from
     the parser.
     """
-    def __init__(self, parser, message):
-        self.line = parser.parser_line
-        self.wml_line = parser.last_wml_line
-        self.message = message
-        self.preprocessed = parser.preprocessed
+    def __init__(self, parser = None, message = None):
+        if parser:
+            self.line = parser.parser_line
+            self.wml_line = parser.last_wml_line
+            self.message = message
+            self.preprocessed = parser.preprocessed
 
     def __str__(self):
         r = "WMLError:\n"
