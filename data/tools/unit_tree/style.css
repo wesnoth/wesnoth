@@ -299,7 +299,6 @@ div.unit-column-right {
 }
 
 table.overview {
-    margin: 1em;
     border-spacing: 0px;
     border: 1px solid #000000;
 }
@@ -325,8 +324,29 @@ table.overview a.error {
 div.overview {
     margin: 0 auto;
     background-color: #E7D9C0;
-    max-width: 66em;
+    max-width: 60em;
     width: auto;
     border-radius: 1em 1em 1em 1em;
     border: solid 1px white;
+    font-style: sans-serif;
+    padding: 1em;
+}
+
+div.portrait {
+    height: 200px;
+}
+
+div.portrait div {
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.25;
+}
+
+div.portrait img {
+    position: absolute;
+    height: 200px;
 }

@@ -186,6 +186,7 @@ class HTMLOutput:
         forest = self.forest = helpers.UnitForest()
         units_added = {}
         for uid, u in self.wesnoth.unit_lookup.items():
+            if u.hidden: continue
             if grouper.unitfilter(u):
                 forest.add_node(helpers.UnitNode(u))
                 units_added[uid] = u
@@ -416,6 +417,7 @@ class HTMLOutput:
                     self.target, r, r))
                 for uid in races[r]:
                     un = self.wesnoth.unit_lookup[uid]
+                    if un.hidden: continue
                     if "mainline" in un.campaigns: addon = "mainline"
                     else: addon = self.addon
                     link = "../../%s/%s/%s.html" % (addon, self.isocode, uid)
@@ -439,8 +441,8 @@ class HTMLOutput:
             col += 1
             write("<td>")
             labb = lang
-            underscore = labb.find("_")
-            if underscore > 0: labb = labb[:underscore]
+            #underscore = labb.find("_")
+            #if underscore > 0: labb = labb[:underscore]
             if self.addon == "mainline":
                 write(" <a title=\"%s\" href=\"../%s/%s\">%s</a><br/>\n" % (
                     languages[lang], lang, self.target,
@@ -491,7 +493,11 @@ class HTMLOutput:
                 "Warning: Missing image for unit %s(%s).\n" % (
                 u.get_text_val("id"), x.name))
             return None, None
-        picname = image_collector.add_image(self.addon, image)
+        icpic = image_collector.add_image_check(self.addon, image)
+        if not icpic.ipath:
+            error_message("Warning: No picture %s for unit %s.\n" %
+                (image, u.get_text_val("id")))
+        picname = icpic.id_name
         image = os.path.join(pics_location, picname)
         if portrait:
             picname = image_collector.add_image(self.addon, portrait,
@@ -751,6 +757,7 @@ class HTMLOutput:
             if not fportrait: fportrait = portrait
             write('<img src="%s" alt="(image)" />\n' % mimage)
             write('<img src="%s" alt="(image)" />\n' % fimage)
+            image = mimage
         else:
             image, portrait = self.pic(unit, unit)
             write('<img src="%s" alt="(image)" />\n' % image)
@@ -849,14 +856,14 @@ class HTMLOutput:
             if not icon:
                 icon = "attacks/%s.png" % aid
 
-            image = image_collector.add_image_check(self.addon,
+            image_add = image_collector.add_image_check(self.addon,
                 icon, no_tc = True)
-            if not image.ipath:
+            if not image_add.ipath:
                 error_message("Error: No attack icon '%s' found for '%s'.\n" % (
                     icon, uid))
                 icon = os.path.join(pics_location, "unit$elves-wood$shaman.png")
             else:
-                icon = os.path.join(pics_location, image.id_name)
+                icon = os.path.join(pics_location, image_add.id_name)
             write("<td><img src=\"%s\" alt=\"(image)\"/></td>" % icon)
 
             write("<td><b>%s</b>" % aname)
@@ -931,14 +938,22 @@ class HTMLOutput:
         write('</div>')
         write('<div class="unit-column-right">')
 
-        if portrait:
-            write('<div class="portrait">')
-            if female:
-                write('<img width="200" src="%s" alt="(portrait)" />\n' % portrait)
-                write('<img width="200" src="%s" alt="(portrait)" />\n' % fportrait)
+        for si in range(2):
+            if si and not female: break
+            if si:
+                sportrait = fportrait
+                simage = fimage
             else:
-                write('<img width="200" src="%s" alt="(portrait)" />\n' % portrait)
-            write('</div>\n')
+                simage = image
+                sportrait = portrait
+
+            style = "background-image: url(%s);" % simage
+
+            write('<div class="portrait">')
+            write('<div style="%s">&nbsp;</div>' % style)
+            if portrait:
+                write('<img src="%s" alt="(portrait)" />\n' % sportrait)
+            write('</div>')
 
         # Write info about movement costs and terrain defense.
         write("<h2>" + _("Terrain", "wesnoth-help") + "</h2>\n")
@@ -979,7 +994,13 @@ class HTMLOutput:
             not_from_race, d = find_attr("defense", tid)
 
             if d == "-": d = 100
-            try: d = "%d%%" % (100 - int(d))
+
+            try:
+                d = int(d)
+                # negative defense has something to do with best defense if
+                # there's multiple terrain types
+                if d < 0: d = -d
+                d = "%d%%" % (100 - d)
             except ValueError:
                 error_message("Warning: Invalid defense %s for %s.\n" % (
                     d, uid))
@@ -1065,6 +1086,7 @@ def generate_single_unit_reports(addon, isocode, wesnoth):
     html.analyze_units(grouper, True)
 
     for uid, unit in wesnoth.unit_lookup.items():
+        if unit.hidden: continue
         if "mainline" in unit.campaigns and addon != "mainline": continue
         filename = os.path.join(path, "%s.html" % uid)
 

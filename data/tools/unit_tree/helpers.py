@@ -81,9 +81,13 @@ class ImageCollector:
             return image
             
         def make_name(x):
-            if x.startswith(options.config_dir): x = x[len(options.config_dir):]
-            if x.startswith("data/core/"): x = x[len("data/core/"):]
-            if x.startswith("images/"): x = x[len("images/"):]
+            x = x.strip("./ ")
+            d = options.config_dir.strip("./ ")
+            if x.startswith(d): x = x[len(d):]
+            d = options.data_dir.strip("./ ")
+            if x.startswith(d): x = x[len(d):]
+            x = x.strip("./ ")
+            if x.startswith("data"): x = x[len("data"):]
             x = x.strip("./ ")
             y = ""
             for c in x:
@@ -264,19 +268,24 @@ class WesnothList:
         # Find all unit types.
         newunits = getall("unit_type") + getall("unit")
         for unit in newunits:
-            if unit.get_text_val("do_not_list", "no") == "no" and\
-               unit.get_text_val("hide_help", "no") in ["no", "false"]:
-                uid = unit.get_text_val("id")
-                unit.id = uid
-                if uid in self.unit_lookup:
-                    unit = self.unit_lookup[uid]
-                    # TODO: We might want to compare the two units
-                    # with the same id and if one is different try
-                    # to do something clever like rename it...
-                else:
-                    self.unit_lookup[uid] = unit
-                if not hasattr(unit, "campaigns"): unit.campaigns = []
-                unit.campaigns.append(campaign)
+            uid = unit.get_text_val("id")
+            unit.id = uid
+            
+            if unit.get_text_val("do_not_list", "no") != "no" or\
+               unit.get_text_val("hide_help", "no") not in ["no", "false"]:
+                    unit.hidden = True
+            else:
+                unit.hidden = False
+            
+            if uid in self.unit_lookup:
+                unit = self.unit_lookup[uid]
+                # TODO: We might want to compare the two units
+                # with the same id and if one is different try
+                # to do something clever like rename it...
+            else:
+                self.unit_lookup[uid] = unit
+            if not hasattr(unit, "campaigns"): unit.campaigns = []
+            unit.campaigns.append(campaign)
 
         # Find all races.
         newraces = getall("race")
