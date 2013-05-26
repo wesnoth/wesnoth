@@ -18,6 +18,7 @@
 #define UNIT_H_INCLUDED
 
 #include <boost/tuple/tuple.hpp>
+#include <boost/scoped_ptr.hpp>
 
 #include "formula_callable.hpp"
 #include "portrait.hpp"
@@ -245,8 +246,8 @@ public:
 
 	void set_idling();
 	void set_selecting();
-	unit_animation* get_animation() {  return anim_;};
-	const unit_animation* get_animation() const {  return anim_;};
+	unit_animation* get_animation() {  return anim_.get();};
+	const unit_animation* get_animation() const {  return anim_.get();};
 	void set_facing(map_location::DIRECTION dir);
 	map_location::DIRECTION facing() const { return facing_; }
 
@@ -492,7 +493,7 @@ private:
 	// Animations:
 	std::vector<unit_animation> animations_;
 
-	unit_animation *anim_;
+	boost::scoped_ptr<unit_animation> anim_;
 	int next_idling_;
 	int frame_begin_time_;
 
