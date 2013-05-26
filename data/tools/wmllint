@@ -2352,6 +2352,8 @@ if __name__ == '__main__':
                         elif revert:
                             print "wmllint: reverting %s" % backup
                             if not dryrun:
+                                if sys.platform == 'win32':
+                                    os.remove(fn)
                                 os.rename(backup, fn)
                 elif diffs:
                     # Display diffs
@@ -2373,6 +2375,8 @@ if __name__ == '__main__':
                         if changed:
                             print "wmllint: converting", fn
                             if not dryrun:
+                                if sys.platform == 'win32' and os.path.exists(backup):
+                                    os.remove(backup)
                                 os.rename(fn, backup)
                                 if fn.endswith(".gz"):
                                     ofp = gzip.open(fn, "w")
