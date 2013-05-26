@@ -648,10 +648,12 @@ set(wesnoth-main_SRC
 	controller_base.cpp
 	dialogs.cpp
 	editor/action/action.cpp
+	editor/action/action_item.cpp
 	editor/action/action_label.cpp
 	editor/action/action_unit.cpp
 	editor/action/action_village.cpp
 	editor/action/mouse/mouse_action.cpp
+	editor/action/mouse/mouse_action_item.cpp
 	editor/action/mouse/mouse_action_map_label.cpp
 	editor/action/mouse/mouse_action_unit.cpp
 	editor/action/mouse/mouse_action_village.cpp
@@ -662,6 +664,7 @@ set(wesnoth-main_SRC
 	editor/palette/tristate_button.cpp
 	editor/toolkit/brush.cpp
 	editor/palette/editor_palettes.cpp
+	editor/palette/item_palette.cpp
 	editor/palette/terrain_palettes.cpp
 	editor/palette/unit_palette.cpp
 	editor/editor_controller.cpp
