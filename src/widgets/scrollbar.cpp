@@ -34,6 +34,10 @@ namespace {
 	const std::string scrollbar_bottom_hl = "buttons/scrollbottom-active.png";
 	const std::string scrollbar_mid_hl = "buttons/scrollmid-active.png";
 
+	const std::string scrollbar_top_pressed = "buttons/scrolltop-pressed.png";
+	const std::string scrollbar_bottom_pressed = "buttons/scrollbottom-pressed.png";
+	const std::string scrollbar_mid_pressed = "buttons/scrollmid-pressed.png";
+
 	const std::string groove_top = "buttons/scrollgroove-top.png";
 	const std::string groove_mid = "buttons/scrollgroove-mid.png";
 	const std::string groove_bottom = "buttons/scrollgroove-bottom.png";
@@ -223,12 +227,34 @@ SDL_Rect scrollbar::grip_area() const
 
 void scrollbar::draw_contents()
 {
-	const surface mid_img(image::get_image(state_ != NORMAL ?
-					scrollbar_mid_hl : scrollbar_mid));
-	const surface bottom_img(image::get_image(state_ != NORMAL ?
-					scrollbar_bottom_hl : scrollbar_bottom));
-	const surface top_img(image::get_image(state_ != NORMAL ?
-					scrollbar_top_hl : scrollbar_top));
+	surface mid_img;
+	surface bottom_img;
+	surface top_img;
+
+	switch (state_) {
+
+	case NORMAL:
+		top_img.assign(image::get_image(scrollbar_top));
+		mid_img.assign(image::get_image(scrollbar_mid));
+		bottom_img.assign(image::get_image(scrollbar_bottom));
+		break;
+
+	case ACTIVE:
+		top_img.assign(image::get_image(scrollbar_top_hl));
+		mid_img.assign(image::get_image(scrollbar_mid_hl));
+		bottom_img.assign(image::get_image(scrollbar_bottom_hl));
+		break;
+
+	case DRAGGED:
+		top_img.assign(image::get_image(scrollbar_top_pressed));
+		mid_img.assign(image::get_image(scrollbar_mid_pressed));
+		bottom_img.assign(image::get_image(scrollbar_bottom_pressed));
+		break;
+
+	case UNINIT:
+	default:
+		break;
+	}
 
 	const surface top_grv(image::get_image(groove_top));
 	const surface mid_grv(image::get_image(groove_mid));
@@ -347,11 +373,12 @@ void scrollbar::handle_event(const SDL_Event& event)
 		break;
 	}
 
-	if ((new_state == NORMAL) ^ (state_ == NORMAL)) {
+
+	if (new_state != state_) {
 		set_dirty();
 		mid_scaled_.assign(NULL);
+		state_ = new_state;
 	}
-	state_ = new_state;
 }
 
 } // end namespace gui
