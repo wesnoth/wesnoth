@@ -50,8 +50,10 @@ scrollbar::scrollbar(CVideo &video)
 	: widget(video)
 	, mid_scaled_(NULL)
 	, groove_scaled_(NULL)
-	, uparrow_(video, "", button::TYPE_TURBO, "uparrow-button")
-	, downarrow_(video, "", button::TYPE_TURBO, "downarrow-button")
+	, uparrow_(video, "", button::TYPE_TURBO, "button_square/button_square_25"
+			, gui::button::DEFAULT_SPACE, true,"icons/arrows/arrows_ornate_up_25")
+	, downarrow_(video, "", button::TYPE_TURBO, "button_square/button_square_25"
+			, gui::button::DEFAULT_SPACE, true,"icons/arrows/arrows_ornate_down_25")
 	, state_(NORMAL)
 	, minimum_grip_height_(0)
 	, mousey_on_grip_(0)
@@ -87,6 +89,7 @@ void scrollbar::update_location(SDL_Rect const &rect)
 	r.h -= uh + dh;
 
 	widget::update_location(r);
+	//TODO comment or remove
 	//bg_register(r);
 }
 
