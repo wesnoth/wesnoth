@@ -16,6 +16,7 @@
 
 #include "config.hpp"
 #include "time_of_day.hpp"
+#include "gettext.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -39,7 +40,7 @@ time_of_day::time_of_day()
 : lawful_bonus(0)
 , bonus_modified(0)
 , image()
-, name("NULL_TOD")
+, name(N_("Stub Time of Day"))
 , id("nulltod")
 , image_mask()
 , color(0,0,0)
