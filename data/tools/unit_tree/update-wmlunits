@@ -1,6 +1,6 @@
 #!/bin/bash
 # script running on the wesnoth server to update units.wesnoth.org
-set -e
+set -e -u
 
 # set them in the environment
 # VERSION=1.10
