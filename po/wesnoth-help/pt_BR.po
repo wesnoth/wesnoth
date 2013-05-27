@@ -595,12 +595,6 @@ msgstr "Morogor"
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:40
 #, fuzzy
-#| msgid ""
-#| "Archipelago, located somewhere in the <ref>dst='great_ocean' text='Great "
-#| "ocean'</ref> west of the <ref>dst='green_isle' text='Green Isle'</ref> "
-#| "and east of the <ref>dst=old_continent text='Old Continent'</ref>.\n"
-#| "It is mostly inhabited by <ref>dst='..race_drake' text='drakes'</ref>.\n"
-#| "The central island of the archipelago is also called ‘Morogor’."
 msgid ""
 "Archipelago, located somewhere in the <ref>dst='great_ocean' text='Great "
 "Ocean'</ref> west of the <ref>dst='green_isle' text='Green Isle'</ref> and "
@@ -634,9 +628,6 @@ msgstr "Velho Continente"
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:52
 #, fuzzy
-#| msgid ""
-#| "Lies to the west of <ref>dst='morogor' text='Morogor'</ref> across the "
-#| "<ref>dst='Great Ocean' text='Great Ocean'</ref>."
 msgid ""
 "Lies to the west of <ref>dst='morogor' text='Morogor'</ref> across the "
 "<ref>dst='great_ocean' text='Great Ocean'</ref>."
@@ -673,9 +664,10 @@ msgid ""
 "rarely used in the era depicted by the main map. People normally just say "
 "“the world” or, poetically, “the wide green world”."
 msgstr ""
-"O nome do mundo (ou planeta) onde o reino de Wesnoth está localizado é "
-"\"Irdya\". Este termo, porém, é pouco utilizado. Normalmente, ele é chamado "
-"simplesmente de \"o mundo\" ou, poeticamente, o \"o sempre verde mundo\"."
+"O nome do mundo (ou planeta) onde o <ref>dst='kingdom_wesnoth' text='reino "
+"de Wesnoth'</ref> está localizado é \"Irdya\". Este termo, porém, é pouco "
+"utilizado. Normalmente, ele é chamado simplesmente de \"o mundo\" ou, "
+"poeticamente, o \"o sempre verde mundo\"."
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:69
@@ -1162,18 +1154,6 @@ msgstr "Recrutando e Convocando Unidades"
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:163
 #, fuzzy
-#| msgid ""
-#| "Each side begins with one leader in their keep. At the start of any "
-#| "battle, and at times during it, you will need to recruit <ref>dst='.."
-#| "units' text='units'</ref> into your army. To recruit, you must have your "
-#| "leader (for instance, Konrad in the <italic>text='Heir to the Throne'</"
-#| "italic> campaign) on the keep square of a <ref>dst='terrain_castle' "
-#| "text='castle'</ref>. Then you may recruit by either choosing "
-#| "<bold>text='Recruit'</bold> from the menu or right-clicking on a hex and "
-#| "selecting <bold>text='Recruit'</bold>. This brings up the recruit menu, "
-#| "which lists units available for recruitment, along with their gold cost. "
-#| "Click on a unit to see its statistics, then press the recruit button to "
-#| "recruit it."
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -1200,14 +1180,6 @@ msgstr ""
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:165
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "If you right-clicked on a castle hex and selected recruit, the new unit "
-#| "will appear in that square. Otherwise, it will appear in a free square "
-#| "near the keep. You may only recruit as many units as you have free hexes "
-#| "in your castle, and you cannot spend more gold than you actually have on "
-#| "recruiting."
 msgid ""
 "\n"
 "\n"
@@ -1942,8 +1914,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<b>Descansar</b>: Uma unidade que não se mova, ataque, ou seja atacada irá "
-"curar 2 pontos de vida (HP) no seu próximo turno."
+"<italic>text='Descansar'</italic>: Uma unidade que não se mova, ataque, ou "
+"seja atacada irá curar 2 pontos de vida (HP) no seu próximo turno."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:302
@@ -1953,8 +1925,8 @@ msgid ""
 "will heal 8HP."
 msgstr ""
 "\n"
-"<b>Vilas</b>: Uma unidade que começa o turno em uma vila curará 8 pontos de "
-"vida (HP)."
+"<italic>text='Vilas'</italic>: Uma unidade que começa o turno em uma vila "
+"curará 8 pontos de vida (HP)."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:303
@@ -1978,11 +1950,11 @@ msgid ""
 "from causing that unit damage."
 msgstr ""
 "\n"
-"<b>Medicando unidades</b>: Unidades com a habilidade <ref>dst='ability_heals "
-"+4' text='Medicar'</ref> podem tratar unidades aliadas que estejam "
-"adjacentes, normalmente recuperando <ref>dst='ability_heals +4' text='4HPs'</"
-"ref>  ou <ref>dst='ability_heals +8' text='8HPs'</ref> por turno, ou "
-"evitando que o Veneno cause dano."
+"<italic>text='Medicando unidades'</italic>: Unidades com a habilidade "
+"<ref>dst='ability_heals +4' text='Medicar'</ref> podem tratar unidades "
+"aliadas que estejam adjacentes, normalmente recuperando "
+"<ref>dst='ability_heals +4' text='4HPs'</ref>  ou <ref>dst='ability_heals "
+"+8' text='8HPs'</ref> por turno, ou evitando que o Veneno cause dano."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:305
@@ -1994,10 +1966,10 @@ msgid ""
 "well)."
 msgstr ""
 "\n"
-"<b>Curando unidades</b>: Unidades com a habilidade <ref>dst='ability_cures' "
-"text='Curar'</ref> removerão o efeito 'Veneno' de todas as unidades aliadas "
-"que estejam adjacentes (ao invéz de usar a habilidade 'medicar', caso possua "
-"ambas)."
+"<italic>text='Curando unidades'</italic>: Unidades com a habilidade "
+"<ref>dst='ability_cures' text='Curar'</ref> removerão o efeito 'Veneno' de "
+"todas as unidades aliadas que estejam adjacentes (ao invéz de usar a "
+"habilidade 'medicar', caso possua ambas)."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:307
@@ -2598,7 +2570,6 @@ msgstr ""
 #. [topic]: id=traits_aged
 #: data/core/help.cfg:476
 #, fuzzy
-#| msgid "trait^Undead"
 msgid "trait^Aged"
 msgstr "Mortos-Vivos"
 
@@ -2870,16 +2841,6 @@ msgstr "Castelo"
 #. [topic]: id=terrain_castle
 #: data/core/help.cfg:614
 #, fuzzy
-#| msgid ""
-#| "<italic>text='Castles'</italic> are any sort of permanent fortification. "
-#| "Nearly all units receive a considerable bonus to their defense by being "
-#| "stationed in a castle, and all units receive full movement in a castle. "
-#| "Stationing units in a castle represents its defensive capability. Without "
-#| "a unit in each wall hex, an enemy can simply sneak into the castle "
-#| "unchallenged, gaining the same defensive bonus as everyone inside.\n"
-#| "\n"
-#| "Most units have about 60% defense in a castle.\n"
-#| "\n"
 msgid ""
 "<italic>text='Castles'</italic> are any sort of permanent fortification. "
 "Nearly all units receive a considerable bonus to their defense by being "
@@ -3396,15 +3357,6 @@ msgstr ""
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:840
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "Change the controller for side (write here the number of the side) to "
-#| "username (write here the nick of the player or observer). You can check "
-#| "what side belongs to which player in the <bold>text='Scenario Settings'</"
-#| "bold> dialog (Press the <bold>text='More'</bold> button in the "
-#| "<bold>text='Status Table'</bold> (alt+s by default) to get there.). The "
-#| "host can change control of any side.\n"
-#| "\n"
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -5219,7 +5171,6 @@ msgstr "Monstro"
 #. [race]: id=monster
 #: data/core/units.cfg:221
 #, fuzzy
-#| msgid "race^Monster"
 msgid "race+female^Monster"
 msgstr "Monstro"
 
@@ -5247,7 +5198,6 @@ msgstr "Naga"
 #. [race]: id=naga
 #: data/core/units.cfg:231
 #, fuzzy
-#| msgid "race^Nagani"
 msgid "race^Nagini"
 msgstr "Nagani"
 
@@ -5502,7 +5452,6 @@ msgstr "Lobo"
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:311
 #, fuzzy
-#| msgid "race+female^Elf"
 msgid "race+female^Wolf"
 msgstr "Elfa"
 
