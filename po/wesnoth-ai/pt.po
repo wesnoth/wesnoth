@@ -1,5 +1,4 @@
-# #-#-#-#-#  wesnoth-ai.cpp.pot (PACKAGE VERSION)  #-#-#-#-#
-# Portuguese translations for PACKAGE package.
+#
 # Copyright (C) 2013 Wesnoth development team
 # This file is distributed under the same license as the PACKAGE package.
 # Automatically generated, 2013.
@@ -9,18 +8,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2013-05-22 21:54-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2013-05-26 21:41+0100\n"
+"Last-Translator: trewe <sjrs456@yahoo.fr>\n"
+"Language-Team: wesn-pt-trans <LL@li.org>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"#-#-#-#-#  wesnoth-ai.cpp.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth-ai.wml.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.4\n"
 
-#
 # File: data/ai/ais/ai_default_rca.cfg, line: 5
 # File: data/ai/ais/ai_default_rca.cfg, line: 5
 # File: data/ai/ais/ai_default_rca.cfg, line: 5
@@ -384,7 +381,7 @@ msgstr "Animais"
 #. [side]: id=Rutburt, type=Outlaw
 #: data/ai/micro_ais/scenarios/animals.cfg:40
 msgid "Rutburt"
-msgstr ""
+msgstr "Rutburt"
 
 # File: data/ai/micro_ais/scenarios/animals.cfg, line: 47
 # File: data/ai/micro_ais/scenarios/wolves.cfg, line: 26
@@ -812,53 +809,54 @@ msgstr "Estou farto disto."
 #. [test]: id=goto
 #: data/ai/micro_ais/scenarios/goto.cfg:5
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:83
+#, fuzzy
 msgid "Goto"
-msgstr ""
+msgstr "Objectivo"
 
 #. [side]: id=Vaddan, type=Outlaw
 #: data/ai/micro_ais/scenarios/goto.cfg:24
 msgid "Vaddan"
-msgstr ""
+msgstr "Vaddan"
 
 #. [side]: type=Poacher, id=leader3
 #: data/ai/micro_ais/scenarios/goto.cfg:59
 msgid "Woodsmen"
-msgstr ""
+msgstr "Florestais"
 
 #. [side]: type=Saurian Flanker, id=leader4
 #: data/ai/micro_ais/scenarios/goto.cfg:77
 msgid "Saurians"
-msgstr ""
+msgstr "Répteis"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/goto.cfg:132
 msgid "team_name^Animals"
-msgstr ""
+msgstr "Animais"
 
 #. [event]: id=guard1}, id=guard2}, (id,name=fort_commander,Aethubry)}
 #: data/ai/micro_ais/scenarios/goto.cfg:181
 msgid "General Minry"
-msgstr ""
+msgstr "General Minry"
 
 #. [event]: id=guard1}, id=guard2}, (id,name=fort_commander,Aethubry)}
 #: data/ai/micro_ais/scenarios/goto.cfg:182
 msgid "Lieutenant Gadoc"
-msgstr ""
+msgstr "Tenente Gadoc"
 
 #. [event]: id=guard1}, id=guard2}, (id,name=fort_commander,Aethubry)}
 #: data/ai/micro_ais/scenarios/goto.cfg:183
 msgid "Lieutenant Senvan"
-msgstr ""
+msgstr "Tenente Senvan"
 
 #. [event]: id=guard1}, id=guard2}, (id,name=fort_commander,Aethubry)}
 #: data/ai/micro_ais/scenarios/goto.cfg:184
 msgid "Sergeant Aethubry"
-msgstr ""
+msgstr "Sargento Aethubry"
 
 #. [set_menu_item]: id=m01_new_footpad
 #: data/ai/micro_ais/scenarios/goto.cfg:325
 msgid "Place Side 1 Footpad"
-msgstr ""
+msgstr "Coloca um proscrito da equipa 1"
 
 # File: data/ai/micro_ais/scenarios/swarm.cfg, line: 114
 # File: data/ai/micro_ais/scenarios/wolves.cfg, line: 154
@@ -901,7 +899,7 @@ msgstr ""
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/goto.cfg:411
 msgid "Death of Vaddan"
-msgstr ""
+msgstr "Morte de Vaddan"
 
 #. [message]: speaker=messenger1
 #: data/ai/micro_ais/scenarios/goto.cfg:426
@@ -953,7 +951,7 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/goto.cfg:508
 msgid "I told you so!"
-msgstr ""
+msgstr "Assim te tinha dito!"
 
 #. [message]: speaker=leader5
 #: data/ai/micro_ais/scenarios/goto.cfg:518
@@ -987,7 +985,7 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/goto.cfg:565
 msgid "Yes, sir."
-msgstr ""
+msgstr "Sim, senhor!"
 
 #. [message]: speaker=fort_commander
 #: data/ai/micro_ais/scenarios/goto.cfg:573
@@ -1218,18 +1216,18 @@ msgstr ""
 #. [unit]: type=Troll, id=zone1
 #: data/ai/micro_ais/scenarios/guardians.cfg:336
 msgid "Gate Keeper"
-msgstr ""
+msgstr "Guarda do Portão"
 
 #. [variables]
 #: data/ai/micro_ais/scenarios/guardians.cfg:342
 #: data/ai/micro_ais/scenarios/guardians.cfg:395
 msgid "Zone Guard"
-msgstr ""
+msgstr "Guardião Zonal"
 
 #. [unit]: type=Dwarvish Guardsman, id=zone2
 #: data/ai/micro_ais/scenarios/guardians.cfg:362
 msgid "Home Keeper"
-msgstr ""
+msgstr "Guarda Hospedado"
 
 #. [variables]
 #: data/ai/micro_ais/scenarios/guardians.cfg:368
@@ -1241,7 +1239,7 @@ msgstr ""
 #. [unit]: type=Naga Fighter, id=zone3
 #: data/ai/micro_ais/scenarios/guardians.cfg:392
 msgid "Water Guardian"
-msgstr ""
+msgstr "Guardião Marinho"
 
 # File: src/menu_events.cpp, line: 3418
 # File: src/menu_events.cpp, line: 3418
@@ -1397,7 +1395,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/guardians.cfg:502
 #: data/ai/micro_ais/scenarios/guardians.cfg:508
 msgid "Zone Guardian"
-msgstr ""
+msgstr "Guardião de Zona"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/guardians.cfg:508
@@ -1521,7 +1519,7 @@ msgstr ""
 #. [test]: id=lurkers
 #: data/ai/micro_ais/scenarios/lurkers.cfg:172
 msgid "Lurkers of the Swamp"
-msgstr ""
+msgstr "Bichos do Pântano"
 
 # File: data/ai/micro_ais/scenarios/lurkers.cfg, line: 191
 #. [side]: id=Pekzs, type=Saurian Soothsayer
@@ -2829,25 +2827,25 @@ msgstr ""
 #: data/ai/scenarios/scenario-lua-ai.cfg:154
 #: data/ai/scenarios/scenario-no_engine.cfg:154
 msgid "Kiressh"
-msgstr ""
+msgstr "Kiressh"
 
 #. [unit]: type=Orcish Archer
 #: data/ai/scenarios/scenario-lua-ai.cfg:160
 #: data/ai/scenarios/scenario-no_engine.cfg:160
 msgid "Bilbo"
-msgstr ""
+msgstr "Bilbo"
 
 #. [unit]: type=Walking Corpse
 #: data/ai/scenarios/scenario-lua-ai.cfg:165
 #: data/ai/scenarios/scenario-no_engine.cfg:165
 msgid "Sirené"
-msgstr ""
+msgstr "Sirené"
 
 #. [unit]: type=Wolf Rider
 #: data/ai/scenarios/scenario-lua-ai.cfg:171
 #: data/ai/scenarios/scenario-no_engine.cfg:171
 msgid "Rark"
-msgstr ""
+msgstr "Rark"
 
 #. [test]: id=lua_ai_no_engine
 #: data/ai/scenarios/scenario-no_engine.cfg:5
@@ -2923,4 +2921,4 @@ msgstr "Micro IA recrutamento"
 #. [ai]: id=goto
 #: data/core/macros/ai_micro_ais.cfg:208
 msgid "Goto Micro AI"
-msgstr ""
+msgstr "Micro IA Objectivo"
