@@ -1245,7 +1245,7 @@ void connect::start_game()
 			sides_[j_side].set_side_children(sides_[i_side].get_side_children());
 			sides_[i_side].set_side_children(tmp_side_children);
 
-			// This is needed otherwise fog bugs will apear
+			// This is needed otherwise fog bugs will appear
 			side tmp_side = sides_[j_side];
 			sides_[j_side] = sides_[i_side];
 			sides_[i_side] = tmp_side;
