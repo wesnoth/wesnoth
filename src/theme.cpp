@@ -545,6 +545,8 @@ theme::menu::menu(const config &cfg):
 theme::action::action() :
 	object(),
 	context_(false),
+	auto_tooltip_(false),
+	tooltip_name_prepend_(false),
 	title_(),
 	tooltip_(),
 	image_(),
