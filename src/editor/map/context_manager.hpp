@@ -147,6 +147,10 @@ public:
 	map_context& get_map_context() {
 		return *map_contexts_[current_context_index_];
 	}
+	/** Get the map from the current map context object - const version*/
+	const editor_map& get_map() const {
+		return get_map_context().get_map();
+	}
 
 	/** Set the default dir (where the filebrowser is pointing at when there is no map file opened) */
 	void set_default_dir(const std::string& str);
@@ -171,10 +175,6 @@ private:
 		return *map_contexts_[current_context_index_];
 	}
 
-	/** Get the map from the current map context object - const version*/
-	const editor_map& get_map() const {
-		return get_map_context().get_map();
-	}
 
 	/**
 	 * Add a map context. The controller assumes ownership.
