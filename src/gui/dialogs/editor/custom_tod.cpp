@@ -14,7 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
-#include "gui/dialogs/custom_tod.hpp"
+#include "gui/dialogs/editor/custom_tod.hpp"
 
 #include "dialogs.hpp"
 #include "filesystem.hpp"
