@@ -57,7 +57,9 @@ void mouse_action_unit::move(editor_display& disp, const map_location& hex)
 			std::stringstream str;
 			str << N_("ID: ")   << unit_it->id()   << "\n"
 				<< N_("Name: ") << unit_it->name() << "\n"
-				<< N_("Type: ") << unit_it->type_name();
+				<< N_("Type: ") << unit_it->type_name() << "\n"
+				<< N_("Level: ") << unit_it->level() << "\n"
+				<< N_("Cost: ") << unit_it->cost();
 			tooltips::clear_tooltips();
 			tooltips::add_tooltip(rect, str.str());
 		}
