@@ -436,7 +436,7 @@ endif(PREFERENCES_DIR)
 
 if(DEFAULT_PREFS_FILE)
 	add_definitions(-DDEFAULT_PREFS_PATH=\\\"${DEFAULT_PREFS_FILE}\\\")
-	
+
 	if(NOT DEFAULT_PREFS_FILE MATCHES "^/")
 		add_definitions(-DHAS_RELATIVE_DEFPREF)
 	endif(NOT DEFAULT_PREFS_FILE MATCHES "^/")
@@ -466,6 +466,7 @@ endif(ENABLE_TOOLS OR ENABLE_GAME OR ENABLE_TESTS)
 if(ENABLE_GAME OR ENABLE_TESTS)
 	find_package( SDL_mixer 1.2 REQUIRED )
 	find_package( SDL_ttf 2.0.8 REQUIRED )
+	find_package(VorbisFile REQUIRED)
 
 	if(NOT MSVC)
 		find_package( PkgConfig REQUIRED )
