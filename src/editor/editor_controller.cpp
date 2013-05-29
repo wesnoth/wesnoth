@@ -29,7 +29,7 @@
 #include "editor_preferences.hpp"
 
 #include "gui/dialogs/edit_text.hpp"
-#include "gui/dialogs/editor_settings.hpp"
+#include "gui/dialogs/editor/custom_tod.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
@@ -214,7 +214,7 @@ void editor_controller::quit_confirm(EXIT_STATUS mode)
 	}
 }
 
-void editor_controller::editor_settings_dialog()
+void editor_controller::custom_tods_dialog()
 {
 	if (tods_.empty()) {
 		gui2::show_error_message(gui().video(),
@@ -223,9 +223,23 @@ void editor_controller::editor_settings_dialog()
 	}
 
 	image::color_adjustment_resetter adjust_resetter;
-	if(!gui2::teditor_settings::execute(&(gui()), tods_["test"].second, gui().video())) {
+
+	std::vector<time_of_day> schedule = context_manager_->get_map_context().get_time_manager()->times();
+
+	if(!gui2::tcustom_tod::execute(&(gui()), schedule, gui().video())) {
 		adjust_resetter.reset();
+	} else {
+		// TODO save the new tod here
 	}
+
+	context_manager_->refresh_all();
+}
+
+void editor_controller::editor_settings_dialog_redraw_callback(int r, int g, int b)
+{
+	SCOPE_ED;
+	image::set_color_adjustment(r, g, b);
+	gui().redraw_everything();
 }
 
 bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int index) const
@@ -307,7 +321,7 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 			return context_manager_->get_map_context().can_undo();
 		case TITLE_SCREEN__RELOAD_WML:
 		case HOTKEY_EDITOR_QUIT_TO_DESKTOP:
-		case HOTKEY_EDITOR_SETTINGS:
+		case HOTKEY_EDITOR_CUSTOM_TODS:
 		case HOTKEY_EDITOR_MAP_NEW:
 		case HOTKEY_EDITOR_SIDE_NEW:
 		case HOTKEY_EDITOR_SIDE_SWITCH:
@@ -627,8 +641,8 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			do_quit_ = true;
 			quit_mode_ = EXIT_RELOAD_DATA;
 			return true;
-		case HOTKEY_EDITOR_SETTINGS:
-			editor_settings_dialog();
+		case HOTKEY_EDITOR_CUSTOM_TODS:
+			custom_tods_dialog();
 			return true;
 		case HOTKEY_EDITOR_PALETTE_ITEM_SWAP:
 			toolkit_->get_palette_manager()->active_palette().swap();

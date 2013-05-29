@@ -146,7 +146,7 @@ const hotkey_command hotkey_list_[] = {
 	{ hotkey::HOTKEY_EDITOR_SWITCH_MAP, "editor-switch-map", N_("Switch Map"), false, hotkey::SCOPE_EDITOR, NULL },
 	{ hotkey::HOTKEY_EDITOR_SWITCH_AREA, "editor-switch-area", N_("Switch Area"), false, hotkey::SCOPE_EDITOR, NULL },
 
-	{ hotkey::HOTKEY_EDITOR_SETTINGS, "editor-settings", N_("Editor Settings"), false, hotkey::SCOPE_EDITOR, NULL },
+	{ hotkey::HOTKEY_EDITOR_CUSTOM_TODS, "editor-custom-tods", N_("Custom Time of Day Creator"), false, hotkey::SCOPE_EDITOR, NULL },
 	{ hotkey::HOTKEY_EDITOR_PARTIAL_UNDO, "editor-partial-undo", N_("Partial Undo"), false, hotkey::SCOPE_EDITOR, NULL },
 	{ hotkey::HOTKEY_EDITOR_MAP_NEW, "editor-map-new", N_("New Map"), false, hotkey::SCOPE_EDITOR, NULL },
 	{ hotkey::HOTKEY_EDITOR_MAP_LOAD, "editor-map-load", N_("Load Map"), false, hotkey::SCOPE_EDITOR, NULL },

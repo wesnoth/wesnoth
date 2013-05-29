@@ -101,7 +101,7 @@ class editor_controller : public controller_base,
 		void quit_confirm(EXIT_STATUS status);
 
 		/** Display the settings dialog, used to control e.g. the lighting settings */
-		void editor_settings_dialog();
+		void custom_tods_dialog();
 
 		/** Save the map, open dialog if not named yet. */
 		void save_map() {context_manager_->save_map();};
