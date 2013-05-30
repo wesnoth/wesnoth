@@ -1,11 +1,17 @@
 Version 1.11.4+dev:
+ * AI:
+   * Recruiting in Micro and Experimental AIs: allow more terrain codes for castles/keeps 
  * Campaigns:
    * Legend of Wesmere:
      * Scenario 05: Elvish Horse Archers can now carry the treasure
      * Scenario 09: the player's loyal units stay in the recall list, instead of
        being stored and then unstored in scenario 14
+   * Under the Burning Suns:
+     * Scenario 8 (Out of the Frying Pan): Fix messenger AI (Lua errors and wrong goal)
  * Language and i18n:
    * Updated translations: Portuguese, Portuguese (Brazil)
+ * Lua API:
+   * location_set.of_pairs() now can take coordinates defined by x/y= keys as well
  * User interface:
    * Added notification support for Windows
    * Made it so that the "Back to Turn X" and "Back to Start" menu items work
