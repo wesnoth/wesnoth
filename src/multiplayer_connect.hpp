@@ -110,12 +110,6 @@ public:
 
 		void set_team(int team);
 
-		std::vector<std::string> get_children_to_swap();
-
-		std::map<std::string, config> get_side_children();
-
-		void set_side_children(std::map<std::string, config> children);
-
 		/**
 		 * Imports data from the network into this side, and updates the UI
 		 * accordingly.

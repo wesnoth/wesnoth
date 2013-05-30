@@ -814,39 +814,6 @@ void connect::side::set_team(int team)
 	team_ = team;
 }
 
-std::vector<std::string> connect::side::get_children_to_swap()
-{
-	std::vector<std::string> children;
-
-	children.push_back("village");
-	children.push_back("unit");
-	children.push_back("ai");
-
-	return children;
-}
-
-std::map<std::string, config> connect::side::get_side_children()
-{
-	std::map<std::string, config> children;
-
-	BOOST_FOREACH(const std::string& children_to_swap, get_children_to_swap())
-		BOOST_FOREACH(const config& child, cfg_.child_range(children_to_swap))
-			children.insert(std::pair<std::string, config>(children_to_swap, child));
-
-	return children;
-}
-
-void connect::side::set_side_children(std::map<std::string, config> children)
-{
-	BOOST_FOREACH(const std::string& children_to_remove, get_children_to_swap())
-		cfg_.clear_children(children_to_remove);
-
-	std::pair<std::string, config> child_map;
-
-	BOOST_FOREACH(child_map, children)
-		cfg_.add_child(child_map.first, child_map.second);
-}
-
 void connect::side::set_ready_for_start(bool ready_for_start)
 {
 	ready_for_start_ = ready_for_start;
@@ -1240,10 +1207,6 @@ void connect::start_game()
 			int tmp_team = sides_[j_side].get_team();
 			sides_[j_side].set_team(sides_[i_side].get_team());
 			sides_[i_side].set_team(tmp_team);
-
-			std::map<std::string, config> tmp_side_children = sides_[j_side].get_side_children();
-			sides_[j_side].set_side_children(sides_[i_side].get_side_children());
-			sides_[i_side].set_side_children(tmp_side_children);
 
 			// This is needed otherwise fog bugs will appear
 			side tmp_side = sides_[j_side];

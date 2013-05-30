@@ -26,6 +26,8 @@ Version 1.11.4+dev:
    * Added new aspect 'advancements' which with lua engine can handle a
      function return type of the form f(x, y) -> String. 'advancements'
      tells the AI to what unit a given unit should advance to.
+   * Fix "Shuffle sides" incorrect behaviour: children inside [side] were also
+     swapped.
 
 Version 1.11.4:
  * AI:
