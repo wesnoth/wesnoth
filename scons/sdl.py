@@ -103,7 +103,7 @@ def CheckPNG(context):
     int main(int argc, char **argv)
     {
             SDL_RWops *src;
-            char *testimage = "images/buttons/button-pressed.png";
+            char *testimage = "images/buttons/button_normal/button_H22-pressed.png";
 
             src = SDL_RWFromFile(testimage, "rb");
             if (src == NULL) {
