@@ -167,12 +167,12 @@ void teditor_resize_map::update_expand_direction(twindow& window)
 	}
 	for (int i = 0; i < static_cast<int>(expand_direction_); ++i) {
 		direction_buttons_[i]->set_value(false);
-		set_direction_icon(i, "center");
+		set_direction_icon(i, "none");
 	}
 	direction_buttons_[expand_direction_]->set_value(true);
 	for (int i = expand_direction_ + 1; i < 9; ++i) {
 		direction_buttons_[i]->set_value(false);
-		set_direction_icon(i, "center");
+		set_direction_icon(i, "none");
 	}
 
 	int xdiff = width_->get_widget_value(window) - old_width_ ;
