@@ -1068,7 +1068,7 @@ unit_preview_pane::details::details() :
 unit_preview_pane::unit_preview_pane(const gui::filter_textbox *filter, TYPE type, bool on_left_side) :
 	gui::preview_pane(display::get_singleton()->video()), index_(0),
 	details_button_(display::get_singleton()->video(), _("Profile"),
-				      gui::button::TYPE_PRESS,"lite_small", gui::button::MINIMUM_SPACE),
+				      gui::button::TYPE_PRESS,"menu_buttons/menu_button_small_H18", gui::button::MINIMUM_SPACE),
 				      filter_(filter), weapons_(type == SHOW_ALL), left_(on_left_side)
 {
 	unsigned w = font::relative_size(weapons_ ? 200 : 190);
