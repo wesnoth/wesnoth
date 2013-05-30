@@ -151,7 +151,7 @@ void teditor_resize_map::set_direction_icon(int index, std::string icon)
 {
 	if (index < 9) {
 		direction_buttons_[index]->set_icon_name(
-				"buttons/resize-direction-" + icon + ".png");
+				"icons/arrows/arrows_blank_" + icon + "_30.png");
 	}
 }
 
@@ -167,12 +167,12 @@ void teditor_resize_map::update_expand_direction(twindow& window)
 	}
 	for (int i = 0; i < static_cast<int>(expand_direction_); ++i) {
 		direction_buttons_[i]->set_value(false);
-		set_direction_icon(i, "none");
+		set_direction_icon(i, "center");
 	}
 	direction_buttons_[expand_direction_]->set_value(true);
 	for (int i = expand_direction_ + 1; i < 9; ++i) {
 		direction_buttons_[i]->set_value(false);
-		set_direction_icon(i, "none");
+		set_direction_icon(i, "center");
 	}
 
 	int xdiff = width_->get_widget_value(window) - old_width_ ;
@@ -191,8 +191,8 @@ void teditor_resize_map::update_expand_direction(twindow& window)
 		int top = resize_grid_xy_to_idx(x, y - 1);
 		int bottom = resize_grid_xy_to_idx(x, y + 1);
 		if (ydiff < 0) std::swap(top, bottom);
-		set_direction_icon(top, "top");
-		set_direction_icon(bottom, "bottom");
+		set_direction_icon(top, "up");
+		set_direction_icon(bottom, "down");
 	}
 	if (xdiff < 0 || ydiff < 0 || (xdiff > 0 && ydiff > 0)) {
 		int nw = resize_grid_xy_to_idx(x - 1, y - 1);
@@ -203,10 +203,10 @@ void teditor_resize_map::update_expand_direction(twindow& window)
 			std::swap(nw, se);
 			std::swap(ne, sw);
 		}
-		set_direction_icon(nw, "top-left");
-		set_direction_icon(ne, "top-right");
-		set_direction_icon(sw, "bottom-left");
-		set_direction_icon(se, "bottom-right");
+		set_direction_icon(nw, "topleft");
+		set_direction_icon(ne, "topright");
+		set_direction_icon(sw, "bottomleft");
+		set_direction_icon(se, "bottomright");
 	}
 }
 
