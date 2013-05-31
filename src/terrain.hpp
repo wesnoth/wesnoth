@@ -82,7 +82,7 @@ private:
 	std::string minimap_image_overlay_;
 
 	/**
-	 *  The image used in the editor pallete if not defined in WML it will be
+	 *  The image used in the editor palette if not defined in WML it will be
 	 *  initialized with the value of minimap_image_
 	 */
 	std::string editor_image_;
