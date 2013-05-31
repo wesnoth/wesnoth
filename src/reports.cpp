@@ -1101,6 +1101,86 @@ REPORT_GENERATOR(selected_time_of_day)
 	return time_of_day_at(selected_hex);
 }
 
+static config unit_box_at(const map_location& mouseover_hex)
+{
+	std::ostringstream tooltip;
+	time_of_day local_tod;
+	time_of_day global_tod = resources::tod_manager->get_time_of_day();
+	const team &viewing_team = (*resources::teams)[resources::screen->viewing_team()];
+	if (viewing_team.shrouded(mouseover_hex)) {
+		// Don't show time on shrouded tiles.
+		local_tod = global_tod;
+	} else if (viewing_team.fogged(mouseover_hex)) {
+		// Don't show illuminated time on fogged tiles.
+		local_tod = resources::tod_manager->get_time_of_day(mouseover_hex);
+	} else {
+		local_tod = resources::tod_manager->get_illuminated_time_of_day(mouseover_hex);
+	}
+
+	int bonus = local_tod.lawful_bonus;
+
+	std::string  lawful_color("white");
+	std::string chaotic_color("white");
+	std::string liminal_color("white");
+
+	if (bonus != 0) {
+		lawful_color  = (bonus > 0) ? "green" : "red";
+		chaotic_color = (bonus < 0) ? "green" : "red";
+		liminal_color = "red";
+	}
+	tooltip << local_tod.name << '\n'
+		<< _("Lawful units: ") << "<span foreground=\"" << lawful_color  << "\">"
+		<< utils::signed_percent(bonus)  << "</span>\n"
+		<< _("Neutral units: ") << utils::signed_percent(0)  << '\n'
+		<< _("Chaotic units: ") << "<span foreground=\"" << chaotic_color << "\">"
+		<< utils::signed_percent(-bonus) << "</span>\n"
+		<< _("Liminal units: ") << "<span foreground=\"" << liminal_color << "\">"
+		<< utils::signed_percent(-(abs(bonus))) << "</span>\n";
+
+	std::string local_tod_image = local_tod.image;
+	std::string global_tod_image = global_tod.image;
+	if (local_tod.bonus_modified > 0) tod_image += "~BRIGHTEN()";
+	else if (local_tod.bonus_modified < 0) tod_image += "~DARKEN()";
+	if (preferences::flip_time()) tod_image += "~FL(horiz)";
+
+	const gamemap &map = *resources::game_map;
+	t_translation::t_terrain terrain = map.get_terrain(mouseover_hex);
+
+	//if (terrain == t_translation::OFF_MAP_USER)
+	//	return report();
+
+	//if (map.is_keep(mouseover_hex)) {
+	//	add_image(cfg, "icons/terrain/terrain_type_keep.png", "");
+	//}
+
+	const t_translation::t_list& underlying_terrains = map.underlying_union_terrain(terrain);
+
+	std::string bg_terrain_image;
+
+	BOOST_FOREACH(const t_translation::t_terrain& underlying_terrain, underlying_terrains) {
+		const std::string& terrain_id = map.get_terrain_info(underlying_terrain).id();
+		bg_terrain_image = "~BLIT(unit_env/terrain/terrain-" + terrain_id + ".png)" + bg_terrain_image;
+	}
+
+	std::stringstream color;
+	color << local_tod.color;
+
+	bg_terrain_image = bg_terrain_image + "~CS(" + color.str() + ")";
+
+	const unit *u = get_visible_unit();
+	std::string unit_image;
+	if (u)
+		unit_image = "~BLIT(" + u->absolute_image() + u->image_mods() + ",35,22)";
+
+	return image_report(tod_image + bg_terrain_image + unit_image, tooltip.str(), "time_of_day");
+}
+REPORT_GENERATOR(unit_box)
+{
+	map_location mouseover_hex = resources::screen->mouseover_hex();
+	return unit_box_at(mouseover_hex);
+}
+
+
 REPORT_GENERATOR(turn)
 {
 	std::ostringstream str;
