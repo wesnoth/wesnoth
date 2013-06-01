@@ -146,7 +146,7 @@ private:
 	/** The dirty state of the canvas. */
 	bool is_dirty_;
 
-	void set_is_dirty(const bool is_dirty = true) { is_dirty_ = is_dirty; }
+	void set_is_dirty(const bool is_dirty) { is_dirty_ = is_dirty; }
 
 	/**
 	 * Parses a config object.
