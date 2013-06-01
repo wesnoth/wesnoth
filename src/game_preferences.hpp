@@ -297,13 +297,13 @@ public:
 
 protected:
 
-	// acquaintance's MP nick
+	/** acquaintance's MP nick */
 	std::string nick_;
 
-	// status (e.g., "friend", "ignore")
+	/**status (e.g., "friend", "ignore") */
 	std::string status_;
 
-	// notes on the acquaintance
+	/** notes on the acquaintance */
 	std::string notes_;
 
 };
