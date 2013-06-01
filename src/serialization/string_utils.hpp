@@ -64,7 +64,12 @@ std::vector< std::string > split(std::string const &val, const char c = ',', con
  *  c => d
  *  e => f
 */
-std::map< std::string, std::string > map_split(std::string const &val, char major = ',', char minor = ':', int flags = REMOVE_EMPTY | STRIP_SPACES, std::string const default_value = "");
+std::map< std::string, std::string > map_split(
+		  std::string const &val
+		, char major = ','
+		, char minor = ':'
+		, int flags = REMOVE_EMPTY | STRIP_SPACES
+		, std::string const& default_value = "");
 
 /**
  * Splits a string based either on a separator where text within parenthesis
