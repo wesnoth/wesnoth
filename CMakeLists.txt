@@ -280,6 +280,13 @@ check_compiler_has_flag(
 	"-Wno-mismatched-tags"
 )
 
+check_compiler_has_flag(
+	CXX_FLAGS_STRICT_COMPILATION
+	"-Wnull-conversion"
+	HAS_COMPILER_FLAG_WNULL_CONVERSION
+	"-Wno-null-conversion"
+)
+
 if(NOT CMAKE_COMPILER_IS_GNUCXX)
 	# Silences warnings about overloaded virtuals.
 	# (GCC doesn't complain Clang does.)
