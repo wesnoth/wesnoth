@@ -141,7 +141,7 @@ void tviewport::impl_draw_children(
 		widget_.draw_background(frame_buffer, x_offset, y_offset);
 		widget_.draw_children(frame_buffer, x_offset, y_offset);
 		widget_.draw_foreground(frame_buffer, x_offset, y_offset);
-		widget_.set_dirty(false);
+		widget_.set_is_dirty(false);
 	}
 }
 

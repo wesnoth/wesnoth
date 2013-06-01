@@ -1416,19 +1416,19 @@ tcanvas::tcanvas()
 	, h_(0)
 	, canvas_()
 	, variables_()
-	, dirty_(true)
+	, is_dirty_(true)
 {
 }
 
 void tcanvas::draw(const bool force)
 {
 	log_scope2(log_gui_draw, "Canvas: drawing.");
-	if(!dirty_ && !force) {
+	if(!is_dirty_ && !force) {
 		DBG_GUI_D << "Canvas: nothing to draw.\n";
 		return;
 	}
 
-	if(dirty_) {
+	if(is_dirty_) {
 		get_screen_size_variables(variables_);
 		variables_.add("width",variant(w_));
 		variables_.add("height",variant(h_));
@@ -1446,7 +1446,7 @@ void tcanvas::draw(const bool force)
 		(*itor)->draw(canvas_, variables_);
 	}
 
-	dirty_ = false;
+	is_dirty_ = false;
 }
 
 void tcanvas::blit(surface& surf, SDL_Rect rect)

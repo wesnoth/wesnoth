@@ -103,7 +103,7 @@ void ttoggle_button::update_canvas()
 		canvas.set_variable("icon", variant(icon_name_));
 	}
 
-	set_dirty(true);
+	set_is_dirty(true);
 }
 
 void ttoggle_button::set_value(const bool selected)
@@ -133,7 +133,7 @@ void ttoggle_button::set_state(const tstate state)
 {
 	if(state != state_) {
 		state_ = state;
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 }
 
@@ -183,7 +183,7 @@ void ttoggle_button::signal_handler_left_button_click(
 	}
 
 	if(callback_state_change_) {
-		callback_state_change_(this);
+		callback_state_change_(*this);
 	}
 	handled = true;
 }

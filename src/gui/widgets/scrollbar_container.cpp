@@ -1063,7 +1063,7 @@ void tscrollbar_container::scrollbar_moved()
 
 	content_grid_->set_origin(content_origin);
 	content_grid_->set_visible_rectangle(content_visible_area_);
-	content_grid_->set_dirty(true);
+	content_grid_->set_is_dirty(true);
 
 	// Update scrollbar.
 	set_scrollbar_button_status();

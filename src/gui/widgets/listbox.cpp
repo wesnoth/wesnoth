@@ -41,9 +41,9 @@ namespace {
 // in separate namespace to avoid name classes
 REGISTER_WIDGET3(tlistbox_definition, horizontal_listbox, _4)
 
-void callback_list_item_clicked(twidget* caller)
+void callback_list_item_clicked(twidget& caller)
 {
-	get_parent<tlistbox>(caller)->list_item_clicked(caller);
+	get_parent<tlistbox>(caller).list_item_clicked(caller);
 }
 
 } // namespace
@@ -142,11 +142,11 @@ void tlistbox::set_row_shown(const unsigned row, const bool shown)
 		window->invalidate_layout();
 	} else {
 		content_grid_->set_visible_rectangle(content_visible_area());
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 
 	if(selected_row != get_selected_row() && callback_value_changed_) {
-		callback_value_changed_(this);
+		callback_value_changed_(*this);
 	}
 }
 
@@ -176,11 +176,11 @@ void tlistbox::set_row_shown(const std::vector<bool>& shown)
 		window->invalidate_layout();
 	} else {
 		content_grid_->set_visible_rectangle(content_visible_area());
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 
 	if(selected_row != get_selected_row() && callback_value_changed_) {
-		callback_value_changed_(this);
+		callback_value_changed_(*this);
 	}
 }
 
@@ -213,9 +213,8 @@ int tlistbox::get_selected_row() const
 	return generator_->get_selected_item();
 }
 
-void tlistbox::list_item_clicked(twidget* caller)
+void tlistbox::list_item_clicked(twidget& caller)
 {
-	assert(caller);
 	assert(generator_);
 
 	/** @todo Hack to capture the keyboard focus. */
@@ -226,7 +225,7 @@ void tlistbox::list_item_clicked(twidget* caller)
 		if(generator_->item(i).has_widget(caller)) {
 			generator_->toggle_item(i);
 			if(callback_value_changed_) {
-				callback_value_changed_(this);
+				callback_value_changed_(*this);
 			}
 			return;
 		}
@@ -251,7 +250,7 @@ bool tlistbox::update_content_size()
 
 	if(content_resize_request(true)) {
 		content_grid_->set_visible_rectangle(content_visible_area());
-		set_dirty(true);
+		set_is_dirty(true);
 		return true;
 	}
 
@@ -306,7 +305,7 @@ void tlistbox::resize_content(
 		need_layout_ = true;
 		// If the content grows assume it "overwrites" the old content.
 		if(width_modification < 0 || height_modification < 0) {
-			set_dirty(true);
+			set_is_dirty(true);
 		}
 		DBG_GUI_L << LOG_HEADER << " succeeded.\n";
 	} else {
@@ -349,7 +348,7 @@ void tlistbox::handle_key_up_arrow(SDLMod modifier, bool& handled)
 		show_content_rect(rect);
 
 		if(callback_value_changed_) {
-			callback_value_changed_(this);
+			callback_value_changed_(*this);
 		}
 	} else {
 		// Inherited.
@@ -376,7 +375,7 @@ void tlistbox::handle_key_down_arrow(SDLMod modifier, bool& handled)
 		show_content_rect(rect);
 
 		if(callback_value_changed_) {
-			callback_value_changed_(this);
+			callback_value_changed_(*this);
 		}
 	} else {
 		// Inherited.
@@ -404,7 +403,7 @@ void tlistbox::handle_key_left_arrow(SDLMod modifier, bool& handled)
 		show_content_rect(rect);
 
 		if(callback_value_changed_) {
-			callback_value_changed_(this);
+			callback_value_changed_(*this);
 		}
 	} else {
 		tscrollbar_container::handle_key_left_arrow(modifier, handled);
@@ -431,7 +430,7 @@ void tlistbox::handle_key_right_arrow(SDLMod modifier, bool& handled)
 		show_content_rect(rect);
 
 		if(callback_value_changed_) {
-			callback_value_changed_(this);
+			callback_value_changed_(*this);
 		}
 	} else {
 		tscrollbar_container::handle_key_left_arrow(modifier, handled);
@@ -518,7 +517,7 @@ void tlistbox::layout_children(const bool force)
 		content_grid()->set_visible_rectangle(content_visible_area_);
 
 		need_layout_ = false;
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 }
 

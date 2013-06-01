@@ -78,11 +78,11 @@ static void inspect_ai(twindow& window, int side)
  * &my_dialog_class::inner_view_class::member_function>);
  */
 template <class D, class V, void (V::*fptr)(twindow&)>
-void dialog_view_callback(twidget* caller)
+void dialog_view_callback(twidget& caller)
 {
-        D* dialog = dynamic_cast<D*>(caller->dialog());
+        D* dialog = dynamic_cast<D*>(caller.dialog());
         assert(dialog);
-        twindow* window = dynamic_cast<twindow*>(caller->get_window());
+        twindow* window = dynamic_cast<twindow*>(caller.get_window());
         assert(window);
         (*(dialog->get_view()).*fptr)(*window);
 }

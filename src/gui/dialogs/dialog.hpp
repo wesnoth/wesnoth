@@ -196,8 +196,8 @@ protected:
 				= boost::function<bool ()>()
 			, const boost::function<void (const bool)>& callback_save_value
 				= boost::function<void (const bool)>()
-			, const boost::function<void (twidget*)>& callback_change
-				= boost::function<void (twidget*)>());
+			, const boost::function<void (twidget&)>& callback_change
+				= boost::function<void (twidget&)>());
 
 	/**
 	 * Creates a new boolean field.
@@ -217,8 +217,8 @@ protected:
 	tfield_bool* register_bool(const std::string& id
 			, const bool mandatory
 			, bool& linked_variable
-			, const boost::function<void (twidget*)>& callback_change
-				= boost::function<void (twidget*)>());
+			, const boost::function<void (twidget&)>& callback_change
+				= boost::function<void (twidget&)>());
 
 	/**
 	 * Creates a new integer field.

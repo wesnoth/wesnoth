@@ -816,7 +816,7 @@ void twindow::draw()
 				for(std::vector<twidget*>::iterator citor = itor;
 						citor != item.end(); ++citor) {
 
-					(**citor).set_dirty(false);
+					(**citor).set_is_dirty(false);
 				}
 
 				item.erase(itor, item.end());
@@ -858,7 +858,7 @@ void twindow::draw()
 					ritor != item.rend(); ++ritor) {
 
 				(**ritor).draw_foreground(frame_buffer, 0, 0);
-				(**ritor).set_dirty(false);
+				(**ritor).set_is_dirty(false);
 			}
 		} else {
 			// Background.
@@ -878,7 +878,7 @@ void twindow::draw()
 					ritor != item.rend(); ++ritor) {
 
 				(**ritor).draw_foreground(frame_buffer);
-				(**ritor).set_dirty(false);
+				(**ritor).set_is_dirty(false);
 			}
 		}
 

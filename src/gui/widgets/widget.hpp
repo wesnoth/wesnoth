@@ -685,8 +685,8 @@ public:
 
 	/*** *** *** *** *** *** Setters and getters. *** *** *** *** *** ***/
 
-	void set_dirty(const bool dirty);
-	bool get_dirty() const;
+	void set_is_dirty(const bool is_dirty);
+	bool get_is_dirty() const;
 
 	void set_visible(const tvisible::scoped_enum visible);
 	tvisible::scoped_enum get_visible() const;
@@ -714,7 +714,7 @@ private:
 	 * @ref child_populate_dirty_list to find al dirty widgets, so the widget
 	 * doesn't need to inform its parent regarding it being marked dirty.
 	 */
-	bool dirty_;
+	bool is_dirty_;
 
 	/** Field for the status of the visibility. */
 	tvisible::scoped_enum visible_;
@@ -815,7 +815,7 @@ public:
 	 *
 	 * @returns                   Whether or not the @p widget was found.
 	 */
-	virtual bool has_widget(const twidget* widget) const;
+	virtual bool has_widget(const twidget& widget) const;
 
 private:
 

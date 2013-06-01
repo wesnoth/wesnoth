@@ -370,7 +370,7 @@ void tpane::signal_handler_request_placement(
 	twidget* widget = dynamic_cast<twidget*>(&dispatcher);
 	if(widget) {
 		FOREACH(AUTO& item, items_) {
-			if(item.grid->has_widget(widget)) {
+			if(item.grid->has_widget(*widget)) {
 				if(item.grid->get_visible() != twidget::tvisible::invisible) {
 
 					/*

@@ -152,14 +152,14 @@ void tscrollbar_::update_canvas() {
 		tmp.set_variable("positioner_offset", variant(positioner_offset_));
 		tmp.set_variable("positioner_length", variant(positioner_length_));
 	}
-	set_dirty(true);
+	set_is_dirty(true);
 }
 
 void tscrollbar_::set_state(const tstate state)
 {
 	if(state != state_) {
 		state_ = state;
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 }
 

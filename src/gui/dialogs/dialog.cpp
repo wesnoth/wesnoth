@@ -75,7 +75,7 @@ tfield_bool* tdialog::register_bool(
 		, const bool mandatory
 		, const boost::function<bool ()>& callback_load_value
 		, const boost::function<void (const bool)>& callback_save_value
-		, const boost::function<void (twidget*)>& callback_change)
+		, const boost::function<void (twidget&)>& callback_change)
 {
 	tfield_bool* field =  new tfield_bool(
 			  id
@@ -91,7 +91,7 @@ tfield_bool* tdialog::register_bool(
 tfield_bool* tdialog::register_bool(const std::string& id
 		, const bool mandatory
 		, bool& linked_variable
-		, const boost::function<void (twidget*)>& callback_change)
+		, const boost::function<void (twidget&)>& callback_change)
 {
 	tfield_bool* field =  new tfield_bool(
 			  id

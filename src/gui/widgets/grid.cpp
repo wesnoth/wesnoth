@@ -626,7 +626,7 @@ const twidget* tgrid::find(const std::string& id,
 			*this, id, must_be_active);
 }
 
-bool tgrid::has_widget(const twidget* widget) const
+bool tgrid::has_widget(const twidget& widget) const
 {
 	if(twidget::has_widget(widget)) {
 		return true;
@@ -939,7 +939,7 @@ void tgrid::impl_draw_children(surface& frame_buffer)
 	SDL_PumpEvents();
 
 	assert(get_visible() == twidget::tvisible::visible);
-	set_dirty(false);
+	set_is_dirty(false);
 
 	FOREACH(AUTO& child, children_) {
 
@@ -957,7 +957,7 @@ void tgrid::impl_draw_children(surface& frame_buffer)
 		widget->draw_background(frame_buffer);
 		widget->draw_children(frame_buffer);
 		widget->draw_foreground(frame_buffer);
-		widget->set_dirty(false);
+		widget->set_is_dirty(false);
 	}
 }
 
@@ -978,7 +978,7 @@ void tgrid::impl_draw_children(
 	SDL_PumpEvents();
 
 	assert(get_visible() == twidget::tvisible::visible);
-	set_dirty(false);
+	set_is_dirty(false);
 
 	FOREACH(AUTO& child, children_) {
 
@@ -996,7 +996,7 @@ void tgrid::impl_draw_children(
 		widget->draw_background(frame_buffer, x_offset, y_offset);
 		widget->draw_children(frame_buffer, x_offset, y_offset);
 		widget->draw_foreground(frame_buffer, x_offset, y_offset);
-		widget->set_dirty(false);
+		widget->set_is_dirty(false);
 	}
 }
 

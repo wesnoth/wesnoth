@@ -82,7 +82,7 @@ public:
 	{
 		assert(row < row_grow_factor_.size());
 		row_grow_factor_[row] = factor;
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 
 	/**
@@ -97,7 +97,7 @@ public:
 	{
 		assert(column< col_grow_factor_.size());
 		col_grow_factor_[column] = factor;
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 
 	/***** ***** ***** ***** CHILD MANIPULATION ***** ***** ***** *****/
@@ -269,7 +269,7 @@ public:
 			, const bool must_be_active) const OVERRIDE;
 
 	/** See @ref twidget::has_widget. */
-	virtual bool has_widget(const twidget* widget) const OVERRIDE;
+	virtual bool has_widget(const twidget& widget) const OVERRIDE;
 
 	/** See @ref twidget::disable_click_dismiss. */
 	bool disable_click_dismiss() const OVERRIDE;

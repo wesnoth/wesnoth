@@ -30,17 +30,18 @@ namespace gui2 {
  *
  * @returns                       The parent widget.
  */
-template<class T> T* get_parent(twidget* widget)
+template<class T> T& get_parent(twidget& widget)
 {
 	T* result;
+	twidget* w = &widget;
 	do {
-		widget = widget->parent();
-		result = dynamic_cast<T*>(widget);
+		w = w->parent();
+		result = dynamic_cast<T*>(w);
 
-	} while (widget && !result);
+	} while (w && !result);
 
 	assert(result);
-	return result;
+	return *result;
 }
 
 /**

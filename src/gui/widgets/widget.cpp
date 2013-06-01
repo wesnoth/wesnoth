@@ -35,7 +35,7 @@ twidget::twidget()
 	, last_best_size_(tpoint(0,0))
 #endif
 	, linked_group_()
-	, dirty_(true)
+	, is_dirty_(true)
 	, visible_(tvisible::visible)
 	, redraw_action_(tredraw_action::full)
 	, clipping_rectangle_()
@@ -59,7 +59,7 @@ twidget::twidget(const tbuilder_widget& builder)
 	, last_best_size_(tpoint(0,0))
 #endif
 	, linked_group_(builder.linked_group)
-	, dirty_(true)
+	, is_dirty_(true)
 	, visible_(tvisible::visible)
 	, redraw_action_(tredraw_action::full)
 	, clipping_rectangle_()
@@ -220,7 +220,7 @@ void twidget::set_size(const tpoint& size)
 	width_ = size.x;
 	height_ = size.y;
 
-	set_dirty(true);
+	set_is_dirty(true);
 }
 
 void twidget::place(const tpoint& origin, const tpoint& size)
@@ -245,7 +245,7 @@ void twidget::place(const tpoint& origin, const tpoint& size)
 			<< ".\n";
 #endif
 
-	set_dirty(true);
+	set_is_dirty(true);
 }
 
 void twidget::move(const int x_offset, const int y_offset)
@@ -430,7 +430,7 @@ void twidget::populate_dirty_list(twindow& caller,
 	}
 
 	call_stack.push_back(this);
-	if(dirty_) {
+	if(is_dirty_) {
 		caller.add_to_dirty_list(call_stack);
 	} else {
 		// virtual function which only does something for container items.
@@ -465,14 +465,14 @@ void twidget::set_visible_rectangle(const SDL_Rect& rectangle)
 	}
 }
 
-void twidget::set_dirty(const bool dirty)
+void twidget::set_is_dirty(const bool is_dirty)
 {
-	dirty_ = dirty;
+	is_dirty_ = is_dirty;
 }
 
-bool twidget::get_dirty() const
+bool twidget::get_is_dirty() const
 {
-	return dirty_;
+	return is_dirty_;
 }
 
 void twidget::set_visible(const tvisible::scoped_enum visible)
@@ -497,7 +497,7 @@ void twidget::set_visible(const tvisible::scoped_enum visible)
 			}
 		}
 	} else {
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 }
 
@@ -618,9 +618,9 @@ const twidget* twidget::find(
 	return id_ == id ? this : NULL;
 }
 
-bool twidget::has_widget(const twidget* widget) const
+bool twidget::has_widget(const twidget& widget) const
 {
-	return widget == this;
+	return &widget == this;
 }
 
 bool twidget::is_at(const tpoint& coordinate) const

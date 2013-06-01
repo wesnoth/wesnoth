@@ -54,7 +54,7 @@ public:
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_map_data(const std::string& map_data)
-		{ if(map_data != map_data_) { map_data_ = map_data; set_dirty(true); } }
+		{ if(map_data != map_data_) { map_data_ = map_data; set_is_dirty(true); } }
 
 	std::string get_map_data() const { return map_data_; }
 

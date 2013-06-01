@@ -82,7 +82,7 @@ void ttext_::set_maximum_length(const size_t maximum_length)
 			selection_length_ = maximum_length - selection_start_;
 		}
 		update_canvas();
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 }
 
@@ -95,7 +95,7 @@ void ttext_::set_value(const std::string& text)
 		selection_start_ = text_.get_length();
 		selection_length_ = 0;
 		update_canvas();
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 }
 
@@ -114,7 +114,7 @@ void ttext_::set_cursor(const size_t offset, const bool select)
 		copy_selection(true);
 #endif
 		update_canvas();
-		set_dirty(true);
+		set_is_dirty(true);
 
 	} else {
 		assert(offset <= text_.get_length());
@@ -122,7 +122,7 @@ void ttext_::set_cursor(const size_t offset, const bool select)
 		selection_length_ = 0;
 
 		update_canvas();
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 }
 
@@ -135,7 +135,7 @@ void ttext_::insert_char(const Uint16 unicode)
 		// Update status
 		set_cursor(selection_start_ + 1, false);
 		update_canvas();
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 }
 
@@ -172,7 +172,7 @@ void ttext_::paste_selection(const bool mouse)
 	selection_start_ += text_.insert_text(selection_start_, text);
 
 	update_canvas();
-	set_dirty(true);
+	set_is_dirty(true);
 	fire(event::NOTIFY_MODIFIED, *this, NULL);
 }
 
@@ -180,7 +180,7 @@ void  ttext_::set_selection_start(const size_t selection_start)
 {
 	if(selection_start != selection_start_) {
 		selection_start_ = selection_start;
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 }
 
@@ -188,7 +188,7 @@ void ttext_::set_selection_length(const int selection_length)
 {
 	if(selection_length != selection_length_) {
 		selection_length_ = selection_length;
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 }
 
@@ -196,7 +196,7 @@ void ttext_::set_state(const tstate state)
 {
 	if(state != state_) {
 		state_ = state;
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 }
 
