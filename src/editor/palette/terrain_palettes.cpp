@@ -184,7 +184,7 @@ void terrain_palette::draw_item(const t_translation::t_terrain& terrain,
 	}
 
 	const std::string filename = "terrain/" + map().get_terrain_info(terrain).editor_image() + ".png";
-	image = surface(image::get_image(filename));
+	image = image::get_image(filename);
 	if(image == NULL) {
 		tooltip_text << "IMAGE NOT FOUND\n";
 		ERR_ED << "image for terrain: '" << filename << "' not found\n";
