@@ -41,9 +41,9 @@ namespace {
 // in separate namespace to avoid name classes
 REGISTER_WIDGET3(tlistbox_definition, horizontal_listbox, _4)
 
-void callback_list_item_clicked(twidget* caller)
+void callback_list_item_clicked(twidget& caller)
 {
-	get_parent<tlistbox>(caller)->list_item_clicked(caller);
+	get_parent<tlistbox>(&caller)->list_item_clicked(caller);
 }
 
 } // namespace
@@ -146,7 +146,7 @@ void tlistbox::set_row_shown(const unsigned row, const bool shown)
 	}
 
 	if(selected_row != get_selected_row() && callback_value_changed_) {
-		callback_value_changed_(this);
+		callback_value_changed_(*this);
 	}
 }
 
@@ -180,7 +180,7 @@ void tlistbox::set_row_shown(const std::vector<bool>& shown)
 	}
 
 	if(selected_row != get_selected_row() && callback_value_changed_) {
-		callback_value_changed_(this);
+		callback_value_changed_(*this);
 	}
 }
 
@@ -213,9 +213,8 @@ int tlistbox::get_selected_row() const
 	return generator_->get_selected_item();
 }
 
-void tlistbox::list_item_clicked(twidget* caller)
+void tlistbox::list_item_clicked(twidget& caller)
 {
-	assert(caller);
 	assert(generator_);
 
 	/** @todo Hack to capture the keyboard focus. */
@@ -223,10 +222,10 @@ void tlistbox::list_item_clicked(twidget* caller)
 
 	for(size_t i = 0; i < generator_->get_item_count(); ++i) {
 
-		if(generator_->item(i).has_widget(*caller)) {
+		if(generator_->item(i).has_widget(caller)) {
 			generator_->toggle_item(i);
 			if(callback_value_changed_) {
-				callback_value_changed_(this);
+				callback_value_changed_(*this);
 			}
 			return;
 		}
@@ -349,7 +348,7 @@ void tlistbox::handle_key_up_arrow(SDLMod modifier, bool& handled)
 		show_content_rect(rect);
 
 		if(callback_value_changed_) {
-			callback_value_changed_(this);
+			callback_value_changed_(*this);
 		}
 	} else {
 		// Inherited.
@@ -376,7 +375,7 @@ void tlistbox::handle_key_down_arrow(SDLMod modifier, bool& handled)
 		show_content_rect(rect);
 
 		if(callback_value_changed_) {
-			callback_value_changed_(this);
+			callback_value_changed_(*this);
 		}
 	} else {
 		// Inherited.
@@ -404,7 +403,7 @@ void tlistbox::handle_key_left_arrow(SDLMod modifier, bool& handled)
 		show_content_rect(rect);
 
 		if(callback_value_changed_) {
-			callback_value_changed_(this);
+			callback_value_changed_(*this);
 		}
 	} else {
 		tscrollbar_container::handle_key_left_arrow(modifier, handled);
@@ -431,7 +430,7 @@ void tlistbox::handle_key_right_arrow(SDLMod modifier, bool& handled)
 		show_content_rect(rect);
 
 		if(callback_value_changed_) {
-			callback_value_changed_(this);
+			callback_value_changed_(*this);
 		}
 	} else {
 		tscrollbar_container::handle_key_left_arrow(modifier, handled);

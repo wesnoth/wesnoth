@@ -3063,12 +3063,12 @@ static int intf_get_dialog_value(lua_State *L)
 }
 
 namespace { // helpers of intf_set_dialog_callback()
-	void dialog_callback(gui2::twidget *w)
+	void dialog_callback(gui2::twidget& w)
 	{
 		int cb;
 		{
 			scoped_dialog::callback_map &m = scoped_dialog::current->callbacks;
-			scoped_dialog::callback_map::const_iterator i = m.find(w);
+			scoped_dialog::callback_map::const_iterator i = m.find(&w);
 			if (i == m.end()) return;
 			cb = i->second;
 		}
@@ -3086,7 +3086,8 @@ namespace { // helpers of intf_set_dialog_callback()
 	{
 		void forward(gui2::twidget* widget)
 		{
-			dialog_callback(widget);
+			assert(widget);
+			dialog_callback(*widget);
 		}
 	};
 }//unnamed namespace for helpers of intf_set_dialog_callback()

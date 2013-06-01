@@ -258,7 +258,7 @@ void ttoggle_panel::signal_handler_pre_left_button_click(
 
 	set_value(true);
 	if(callback_state_change_) {
-		callback_state_change_(this);
+		callback_state_change_(*this);
 	}
 }
 
@@ -276,7 +276,7 @@ void ttoggle_panel::signal_handler_left_button_click(
 	}
 
 	if(callback_state_change_) {
-		callback_state_change_(this);
+		callback_state_change_(*this);
 	}
 	handled = true;
 }
@@ -294,7 +294,7 @@ void ttoggle_panel::signal_handler_left_button_double_click(
 	}
 
 	if (callback_mouse_left_double_click_) {
-		callback_mouse_left_double_click_(this);
+		callback_mouse_left_double_click_(*this);
 	}
 	handled = true;
 }

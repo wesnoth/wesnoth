@@ -183,7 +183,7 @@ void ttoggle_button::signal_handler_left_button_click(
 	}
 
 	if(callback_state_change_) {
-		callback_state_change_(this);
+		callback_state_change_(*this);
 	}
 	handled = true;
 }

@@ -512,7 +512,7 @@ struct tselect
 	 */
 	void init(tgrid* grid
 			, const std::map<std::string /* widget id */, string_map>& data
-			, const boost::function<void (twidget*)>& callback);
+			, const boost::function<void (twidget&)>& callback);
 
 };
 
@@ -539,7 +539,7 @@ struct tshow
 	 */
 	void init(tgrid* grid
 			, const std::map<std::string /* widget id */, string_map>& data
-			, const boost::function<void (twidget*)>& callback);
+			, const boost::function<void (twidget&)>& callback);
 };
 
 } // namespace select_action
@@ -714,7 +714,7 @@ public:
 	tgrid& create_item(const int index,
 			tbuilder_grid_const_ptr list_builder,
 			const string_map& item_data,
-			const boost::function<void (twidget*)>& callback)
+			const boost::function<void (twidget&)>& callback)
 	{
 		std::map<std::string, string_map> data;
 
@@ -727,7 +727,7 @@ public:
 			tbuilder_grid_const_ptr list_builder,
 			const std::map<std::string /* widget id */,
 			string_map>& item_data,
-			const boost::function<void (twidget*)>& callback)
+			const boost::function<void (twidget&)>& callback)
 	{
 		assert(list_builder);
 		assert(index == -1 || static_cast<unsigned>(index) < items_.size());
@@ -754,7 +754,7 @@ public:
 			tbuilder_grid_const_ptr list_builder,
 			const std::vector<std::map<std::string /*widget id*/,
 			string_map> >& data,
-			const boost::function<void (twidget*)>& callback)
+			const boost::function<void (twidget&)>& callback)
 	{
 		impl_create_items(index, list_builder, data, callback);
 	}
@@ -763,7 +763,7 @@ public:
 	virtual void create_items(const int index,
 			tbuilder_grid_const_ptr list_builder,
 			const std::vector<string_map>& data,
-			const boost::function<void (twidget*)>& callback)
+			const boost::function<void (twidget&)>& callback)
 	{
 		impl_create_items(index, list_builder, data, callback);
 	}
@@ -1016,7 +1016,7 @@ private:
 	void impl_create_items(const int index,
 			tbuilder_grid_const_ptr list_builder,
 			const std::vector<T>& data,
-			const boost::function<void (twidget*)>& callback)
+			const boost::function<void (twidget&)>& callback)
 	{
 		int i = index;
 		FOREACH(const AUTO& item_data, data) {
@@ -1041,7 +1041,7 @@ private:
 	 */
 	void init(tgrid* grid,
 			const std::map<std::string /* widget id */, string_map>& data,
-			const boost::function<void (twidget*)>& callback)
+			const boost::function<void (twidget&)>& callback)
 	{
 		assert(grid);
 		grid->set_parent(this);

@@ -171,7 +171,7 @@ public:
 	int get_selected_row() const;
 
 	/** Function to call after the user clicked on a row. */
-	void list_item_clicked(twidget* caller);
+	void list_item_clicked(twidget& caller);
 
 	/** See @ref tcontainer_::set_self_active. */
 	virtual void set_self_active(const bool active) OVERRIDE;
@@ -207,7 +207,7 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_callback_value_change(const boost::function<void (twidget*)>& callback)
+	void set_callback_value_change(const boost::function<void (twidget&)>& callback)
 		{ callback_value_changed_ = callback; }
 
 	void set_list_builder(tbuilder_grid_ptr list_builder)
@@ -276,7 +276,7 @@ private:
 	 * there might be too many calls. That might happen if an arrow up didn't
 	 * change the selected item.
 	 */
-	boost::function<void (twidget*)> callback_value_changed_;
+	boost::function<void (twidget&)> callback_value_changed_;
 
 	bool need_layout_;
 

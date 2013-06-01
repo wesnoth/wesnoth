@@ -104,7 +104,7 @@ void tsub_player_list::init(gui2::twindow &w, const std::string &id)
 
 }
 
-void tsub_player_list::show_toggle_callback(gui2::twidget* /*widget*/)
+void tsub_player_list::show_toggle_callback(gui2::twidget& /*widget*/)
 {
 	if (show_toggle->get_value()) {
 		list->set_visible(twidget::tvisible::invisible);
@@ -1721,7 +1721,7 @@ void tlobby_main::game_filter_keypress_callback(const SDLKey key)
 	}
 }
 
-void tlobby_main::game_filter_change_callback(gui2::twidget* /*widget*/)
+void tlobby_main::game_filter_change_callback(gui2::twidget& /*widget*/)
 {
 	game_filter_reload();
 	update_gamelist_filter();
@@ -1732,7 +1732,7 @@ void tlobby_main::gamelist_change_callback(gui2::twindow &/*window*/)
 	update_selected_game();
 }
 
-void tlobby_main::player_filter_callback(gui2::twidget* /*widget*/)
+void tlobby_main::player_filter_callback(gui2::twidget& /*widget*/)
 {
 	player_list_.update_sort_icons();
 	preferences::set_playerlist_sort_relation(player_list_.sort_by_relation->get_value());
@@ -1776,11 +1776,10 @@ void tlobby_main::user_dialog_callback(user_info* info)
 	network::send_data(config("refresh_lobby"), 0);
 }
 
-void tlobby_main::skip_replay_changed_callback(twidget* w)
+void tlobby_main::skip_replay_changed_callback(twidget& w)
 {
-	ttoggle_button* tb = dynamic_cast<ttoggle_button*>(w);
-	assert(tb);
-	preferences::set_skip_mp_replay(tb->get_value());
+	ttoggle_button& tb = dynamic_cast<ttoggle_button&>(w);
+	preferences::set_skip_mp_replay(tb.get_value());
 }
 
 } // namespace gui2

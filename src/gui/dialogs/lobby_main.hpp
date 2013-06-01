@@ -55,7 +55,7 @@ struct tplayer_list;
 struct tsub_player_list
 {
 	void init(twindow& w, const std::string& id);
-	void show_toggle_callback(twidget* widget);
+	void show_toggle_callback(twidget& widget);
 	void auto_hide();
 	tlabel* label;
 	tlabel* count;
@@ -312,17 +312,17 @@ private:
 
 	void game_filter_reload();
 
-	void game_filter_change_callback(twidget* widget);
+	void game_filter_change_callback(twidget& widget);
 
 	void game_filter_keypress_callback(const SDLKey key);
 
 	void gamelist_change_callback(twindow& window);
 
-	void player_filter_callback(twidget* widget);
+	void player_filter_callback(twidget& widget);
 
 	void user_dialog_callback(user_info* info);
 
-	void skip_replay_changed_callback(twidget* w);
+	void skip_replay_changed_callback(twidget& w);
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
