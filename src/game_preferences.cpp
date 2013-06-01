@@ -260,9 +260,11 @@ void remove_acquaintance(const std::string& nick) {
 	}
 }
 
-bool is_friend(const std::string& nick) {
+bool is_friend(const std::string& nick)
+{
 	load_acquaintances();
-	std::map<std::string, acquaintance>::iterator it = acquaintances.find(nick);
+	const std::map<std::string, acquaintance
+			>::const_iterator it = acquaintances.find(nick);
 
 	if(it == acquaintances.end()) {
 		return false;
@@ -271,9 +273,11 @@ bool is_friend(const std::string& nick) {
 	}
 }
 
-bool is_ignored(const std::string& nick) {
+bool is_ignored(const std::string& nick)
+{
 	load_acquaintances();
-	std::map<std::string, acquaintance>::iterator it = acquaintances.find(nick);
+	const std::map<std::string, acquaintance
+			>::const_iterator it = acquaintances.find(nick);
 
 	if(it == acquaintances.end()) {
 		return false;
