@@ -83,7 +83,7 @@ void unit_palette::draw_item(const unit_type& u, surface& image, std::stringstre
 	filename << u.image() << "~RC(" << u.flag_rgb() << '>'
 	    	 << team::get_side_color_index(gui_.viewing_side()) << ')';
 
-	image = surface(image::get_image(filename.str()));
+	image = image::get_image(filename.str());
 	if(image == NULL) {
 		tooltip_text << "IMAGE NOT FOUND\n";
 		ERR_ED << "image for unit type: '" << filename.str() << "' not found\n";
