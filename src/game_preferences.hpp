@@ -267,7 +267,7 @@ class acquaintance;
 class acquaintance {
 public:
 
-	explicit acquaintance()
+	acquaintance()
 	{
 	}
 
@@ -276,7 +276,7 @@ public:
 		load_from_config(cfg);
 	}
 
-	explicit acquaintance(const std::string &nick, const std::string status, const std::string notes):
+	acquaintance(const std::string &nick, const std::string status, const std::string notes):
 		nick_(nick), status_(status), notes_(notes)
 	{
 
