@@ -32,8 +32,6 @@ public:
 		: mouse_action(palette, key)
 		, click_(false)
 		, start_hex_()
-		, old_direction_(map_location::NORTH)
-		, new_direction_(map_location::NORTH)
 		, unit_palette_(palette)
 	{
 	}
@@ -73,8 +71,6 @@ private:
 	bool click_;
 
 	map_location start_hex_;
-	map_location::DIRECTION old_direction_;
-	map_location::DIRECTION new_direction_;
 	unit_palette& unit_palette_;
 };
 
