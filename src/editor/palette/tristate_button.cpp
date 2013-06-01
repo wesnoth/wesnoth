@@ -40,7 +40,7 @@ const int vertical_padding = font::SIZE_SMALL / 2;
 
 tristate_button::tristate_button(CVideo& video,
 		editor::common_palette* palette,
-		std::string button_image_name, SPACE_CONSUMPTION spacing,
+		std::string button_image_name,
 		const bool auto_join) :
 				widget(video, auto_join),
 				baseImage_(NULL), touchedBaseImage_(NULL), activeBaseImage_(NULL),
@@ -49,7 +49,7 @@ tristate_button::tristate_button(CVideo& video,
 				pressedBothActiveImage_(NULL), pressedDownActiveImage_(NULL), pressedUpActiveImage_(NULL),
 				touchedDownImage_(NULL), touchedUpImage_(NULL), touchedBothImage_(NULL),
 				state_(NORMAL), pressed_(false),
-				spacing_(spacing), base_height_(0), base_width_(0),
+				base_height_(0), base_width_(0),
 				palette_(palette), item_id_()
 {
 
