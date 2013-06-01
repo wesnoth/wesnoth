@@ -618,9 +618,9 @@ const twidget* twidget::find(
 	return id_ == id ? this : NULL;
 }
 
-bool twidget::has_widget(const twidget* widget) const
+bool twidget::has_widget(const twidget& widget) const
 {
-	return widget == this;
+	return &widget == this;
 }
 
 bool twidget::is_at(const tpoint& coordinate) const

@@ -269,7 +269,7 @@ public:
 			, const bool must_be_active) const OVERRIDE;
 
 	/** See @ref twidget::has_widget. */
-	virtual bool has_widget(const twidget* widget) const OVERRIDE;
+	virtual bool has_widget(const twidget& widget) const OVERRIDE;
 
 	/** See @ref twidget::disable_click_dismiss. */
 	bool disable_click_dismiss() const OVERRIDE;

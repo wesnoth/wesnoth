@@ -98,7 +98,7 @@ public:
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/** See @ref twidget::has_widget. */
-	virtual bool has_widget(const twidget* widget) const OVERRIDE;
+	virtual bool has_widget(const twidget& widget) const OVERRIDE;
 
 	/** See @ref twidget::set_origin. */
 	virtual void set_origin(const tpoint& origin) OVERRIDE;

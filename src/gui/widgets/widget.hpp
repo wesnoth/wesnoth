@@ -815,7 +815,7 @@ public:
 	 *
 	 * @returns                   Whether or not the @p widget was found.
 	 */
-	virtual bool has_widget(const twidget* widget) const;
+	virtual bool has_widget(const twidget& widget) const;
 
 private:
 

@@ -223,7 +223,7 @@ void tlistbox::list_item_clicked(twidget* caller)
 
 	for(size_t i = 0; i < generator_->get_item_count(); ++i) {
 
-		if(generator_->item(i).has_widget(caller)) {
+		if(generator_->item(i).has_widget(*caller)) {
 			generator_->toggle_item(i);
 			if(callback_value_changed_) {
 				callback_value_changed_(this);

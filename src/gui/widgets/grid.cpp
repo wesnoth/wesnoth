@@ -626,7 +626,7 @@ const twidget* tgrid::find(const std::string& id,
 			*this, id, must_be_active);
 }
 
-bool tgrid::has_widget(const twidget* widget) const
+bool tgrid::has_widget(const twidget& widget) const
 {
 	if(twidget::has_widget(widget)) {
 		return true;

@@ -82,7 +82,7 @@ void tcontainer_::place(const tpoint& origin, const tpoint& size)
 	grid_.place(client_position, client_size);
 }
 
-bool tcontainer_::has_widget(const twidget* widget) const
+bool tcontainer_::has_widget(const twidget& widget) const
 {
 	return twidget::has_widget(widget) || grid_.has_widget(widget);
 }
