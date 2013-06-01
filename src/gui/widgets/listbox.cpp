@@ -43,7 +43,7 @@ REGISTER_WIDGET3(tlistbox_definition, horizontal_listbox, _4)
 
 void callback_list_item_clicked(twidget& caller)
 {
-	get_parent<tlistbox>(&caller)->list_item_clicked(caller);
+	get_parent<tlistbox>(caller).list_item_clicked(caller);
 }
 
 } // namespace
