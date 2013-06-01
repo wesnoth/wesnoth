@@ -295,7 +295,7 @@ public:
 
 	void save(config& cfg);
 
-protected:
+private:
 
 	/** acquaintance's MP nick */
 	std::string nick_;
