@@ -103,10 +103,10 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_width(const unsigned width) { w_ = width; set_dirty(true); }
+	void set_width(const unsigned width) { w_ = width; set_is_dirty(true); }
 	unsigned get_width() const { return w_; }
 
-	void set_height(const unsigned height) { h_ = height; set_dirty(true); }
+	void set_height(const unsigned height) { h_ = height; set_is_dirty(true); }
 	unsigned get_height() const { return h_; }
 
 	surface& surf() { return canvas_; }
@@ -114,7 +114,7 @@ public:
 	void set_variable(const std::string& key, const variant& value)
 	{
 		variables_.add(key, value);
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 
 private:
@@ -144,9 +144,9 @@ private:
 	game_logic::map_formula_callable variables_;
 
 	/** The dirty state of the canvas. */
-	bool dirty_;
+	bool is_dirty_;
 
-	void set_dirty(const bool dirty = true) { dirty_ = dirty; }
+	void set_is_dirty(const bool is_dirty = true) { is_dirty_ = is_dirty; }
 
 	/**
 	 * Parses a config object.
