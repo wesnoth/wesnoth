@@ -65,7 +65,7 @@ void item_palette::draw_item(const overlay& item, surface& image, std::stringstr
 	std::stringstream filename;
 	filename << item.image;
 
-	image = surface(image::get_image(filename.str()));
+	image = image::get_image(filename.str());
 	if(image == NULL) {
 		tooltip_text << "IMAGE NOT FOUND\n";
 		ERR_ED << "image for item type: '" << filename.str() << "' not found\n";
