@@ -33,9 +33,8 @@ static std::string get_persist_cfg_name(const std::string &name_space) {
 	return (get_dir(get_user_data_dir() + "/persist/") + name_space + ".cfg");
 }
 
-void persist_file_context::load() {
-	std::string cfg_dir = get_dir(get_user_data_dir() + "/persist");
-
+void persist_file_context::load()
+{
 	std::string cfg_name = get_persist_cfg_name(namespace_.root_);
 	if (file_exists(cfg_name) && !is_directory(cfg_name)) {
 		scoped_istream file_stream = istream_file(cfg_name);
