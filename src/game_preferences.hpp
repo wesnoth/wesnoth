@@ -276,8 +276,13 @@ public:
 		load_from_config(cfg);
 	}
 
-	acquaintance(const std::string &nick, const std::string status, const std::string notes):
-		nick_(nick), status_(status), notes_(notes)
+	acquaintance(
+			  const std::string& nick
+			, const std::string& status
+			, const std::string& notes)
+		: nick_(nick)
+		, status_(status)
+		, notes_(notes)
 	{
 
 	}
