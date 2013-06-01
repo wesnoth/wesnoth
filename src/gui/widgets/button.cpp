@@ -73,7 +73,7 @@ void tbutton::set_state(const tstate state)
 {
 	if(state != state_) {
 		state_ = state;
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 }
 

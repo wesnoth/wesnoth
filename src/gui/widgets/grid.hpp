@@ -82,7 +82,7 @@ public:
 	{
 		assert(row < row_grow_factor_.size());
 		row_grow_factor_[row] = factor;
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 
 	/**
@@ -97,7 +97,7 @@ public:
 	{
 		assert(column< col_grow_factor_.size());
 		col_grow_factor_[column] = factor;
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 
 	/***** ***** ***** ***** CHILD MANIPULATION ***** ***** ***** *****/

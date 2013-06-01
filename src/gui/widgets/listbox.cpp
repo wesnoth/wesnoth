@@ -142,7 +142,7 @@ void tlistbox::set_row_shown(const unsigned row, const bool shown)
 		window->invalidate_layout();
 	} else {
 		content_grid_->set_visible_rectangle(content_visible_area());
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 
 	if(selected_row != get_selected_row() && callback_value_changed_) {
@@ -176,7 +176,7 @@ void tlistbox::set_row_shown(const std::vector<bool>& shown)
 		window->invalidate_layout();
 	} else {
 		content_grid_->set_visible_rectangle(content_visible_area());
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 
 	if(selected_row != get_selected_row() && callback_value_changed_) {
@@ -250,7 +250,7 @@ bool tlistbox::update_content_size()
 
 	if(content_resize_request(true)) {
 		content_grid_->set_visible_rectangle(content_visible_area());
-		set_dirty(true);
+		set_is_dirty(true);
 		return true;
 	}
 
@@ -305,7 +305,7 @@ void tlistbox::resize_content(
 		need_layout_ = true;
 		// If the content grows assume it "overwrites" the old content.
 		if(width_modification < 0 || height_modification < 0) {
-			set_dirty(true);
+			set_is_dirty(true);
 		}
 		DBG_GUI_L << LOG_HEADER << " succeeded.\n";
 	} else {
@@ -517,7 +517,7 @@ void tlistbox::layout_children(const bool force)
 		content_grid()->set_visible_rectangle(content_visible_area_);
 
 		need_layout_ = false;
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 }
 

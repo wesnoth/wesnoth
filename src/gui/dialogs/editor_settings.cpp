@@ -144,7 +144,7 @@ void teditor_settings::update_tod_display(twindow& window)
 	}
 
 	// Redraw this window again.
-	window.set_dirty(true);
+	window.set_is_dirty(true);
 }
 
 void teditor_settings::slider_update_callback(twindow& window)

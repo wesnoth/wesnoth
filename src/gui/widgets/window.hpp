@@ -410,7 +410,7 @@ public:
 	void set_variable(const std::string& key, const variant& value)
 	{
 		variables_.add(key, value);
-		set_dirty(true);
+		set_is_dirty(true);
 	}
 
 private:

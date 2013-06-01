@@ -199,7 +199,7 @@ void tcontainer_::set_active(const bool active)
 		return;
 	}
 
-	set_dirty(true);
+	set_is_dirty(true);
 
 	set_self_active(active);
 }

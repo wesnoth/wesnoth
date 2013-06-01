@@ -150,7 +150,7 @@ static void animate_logo(
 	 * this possible problem. Of course this is expensive but the logo is
 	 * animated once so the cost is only once.
 	 */
-	window.set_dirty(true);
+	window.set_is_dirty(true);
 
 	if(percentage == 100) {
 		remove_timer(timer_id);

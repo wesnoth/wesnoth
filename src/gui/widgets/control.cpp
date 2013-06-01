@@ -347,7 +347,7 @@ void tcontrol::set_label(const t_string& label)
 	label_ = label;
 	set_layout_size(tpoint(0, 0));
 	update_canvas();
-	set_dirty(true);
+	set_is_dirty(true);
 }
 
 void tcontrol::set_use_markup(bool use_markup)
@@ -358,7 +358,7 @@ void tcontrol::set_use_markup(bool use_markup)
 
 	use_markup_ = use_markup;
 	update_canvas();
-	set_dirty(true);
+	set_is_dirty(true);
 }
 
 void tcontrol::set_text_alignment(const PangoAlignment text_alignment)
@@ -369,7 +369,7 @@ void tcontrol::set_text_alignment(const PangoAlignment text_alignment)
 
 	text_alignment_ = text_alignment;
 	update_canvas();
-	set_dirty(true);
+	set_is_dirty(true);
 }
 
 void tcontrol::update_canvas()

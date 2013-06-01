@@ -178,7 +178,7 @@ void ttoggle_panel::set_state(const tstate state)
 	}
 
 	state_ = state;
-	set_dirty(true);
+	set_is_dirty(true);
 
 	boost::intrusive_ptr<const ttoggle_panel_definition::tresolution> conf =
 		boost::dynamic_pointer_cast<const ttoggle_panel_definition::tresolution>(config());
