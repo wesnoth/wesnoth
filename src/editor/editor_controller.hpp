@@ -179,14 +179,6 @@ class editor_controller : public controller_base,
 		 */
 		void perform_refresh_delete(editor_action* action, bool drag_part = false);
 
-
-
-		/**
-		 * Callback for the editor settings dialog to allow on-the-fly
-		 * updating of the lighting display on the game map behind the dialog
-		 */
-		void editor_settings_dialog_redraw_callback(int r, int g, int b);
-
 	private:
 
 		/** init the display object and general set-up */

@@ -229,13 +229,6 @@ void editor_controller::editor_settings_dialog()
 	context_manager_->refresh_all();
 }
 
-void editor_controller::editor_settings_dialog_redraw_callback(int r, int g, int b)
-{
-	SCOPE_ED;
-	image::set_color_adjustment(r, g, b);
-	gui().redraw_everything();
-}
-
 bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int index) const
 {
 	using namespace hotkey; //reduce hotkey:: clutter
