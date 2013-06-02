@@ -337,6 +337,11 @@ void carryover_info::transfer_all_to(config& side_cfg){
 			return;
 		}
 	}
+
+	//if no carryover was found for this side, check if starting gold is defined
+	if(!side_cfg.has_attribute("gold") || side_cfg["gold"].empty()){
+		side_cfg["gold"] = default_gold_qty;
+	}
 }
 
 void carryover_info::transfer_from(game_data& gamedata){
@@ -535,10 +540,6 @@ protected:
 		log_step("gold");
 
 		gold_info_ngold_ = side_cfg_["gold"];
-
-		if(gold_info_ngold_ == 0){
-			gold_info_ngold_ = default_gold_qty;
-		}
 
 		DBG_NG_TC << "set gold to '" << gold_info_ngold_ << "'\n";
 		//DBG_NG_TC << "set gold add flag to '" << gold_info_add_ << "'\n";
