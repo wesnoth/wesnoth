@@ -226,7 +226,6 @@ void editor_controller::editor_settings_dialog()
 	if(!gui2::teditor_settings::execute(&(gui()), tods_["test"].second, gui().video())) {
 		adjust_resetter.reset();
 	}
-	context_manager_->refresh_all();
 }
 
 bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int index) const
