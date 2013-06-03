@@ -477,7 +477,7 @@ if(ENABLE_GAME OR ENABLE_TESTS)
 
 	if(NOT MSVC)
 		find_package( PkgConfig REQUIRED )
-		pkg_check_modules( PANGOCAIRO REQUIRED pangocairo>=1.24.4 )
+		pkg_check_modules( PANGOCAIRO REQUIRED pangocairo>=1.21.3 )
 		pkg_check_modules( FONTCONFIG REQUIRED fontconfig>=2.4.1 )
         pkg_check_modules( SYSTEMD systemd )
 	endif(NOT MSVC)
