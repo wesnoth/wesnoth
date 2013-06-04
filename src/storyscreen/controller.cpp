@@ -129,9 +129,9 @@ STORY_RESULT controller::show(START_POSITION startpos)
 		return NEXT;
 	}
 
-	gui::button back_button (disp_.video(), "", gui::button::TYPE_PRESS, "button_normal/button_small_copper_H22"
+	gui::button back_button (disp_.video(), "", gui::button::TYPE_PRESS, "button_normal/button_small_H22"
 		, gui::button::DEFAULT_SPACE, true, "icons/arrows/long_arrow_ornate_left");
-	gui::button next_button (disp_.video(), "", gui::button::TYPE_PRESS, "button_normal/button_small_copper_H22"
+	gui::button next_button (disp_.video(), "", gui::button::TYPE_PRESS, "button_normal/button_small_H22"
 		, gui::button::DEFAULT_SPACE, true, "icons/arrows/long_arrow_ornate_right");
 	gui::button play_button (disp_.video(), _("Skip"));
 
