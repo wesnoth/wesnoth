@@ -270,31 +270,19 @@ void tcustom_tod::pre_show(CVideo& /*video*/, twindow& window)
 	tbutton& image_button = find_widget<tbutton>(
 			&window, "image_button", false);
 	connect_signal_mouse_left_click(image_button, boost::bind(
-#ifdef _WIN32
-			  &tcustom_tod::select_file, this, get_selected_tod().image, "data\core\images\misc", "image"
-#else
 			  &tcustom_tod::select_file, this, get_selected_tod().image, "data/core/images/misc", "image"
-#endif
 			, boost::ref(window)));
 
 	tbutton& mask_button = find_widget<tbutton>(
 			&window, "mask_button", false);;
 	connect_signal_mouse_left_click(mask_button, boost::bind(
-#ifdef _WIN32
-			  &tcustom_tod::select_file, this, get_selected_tod().image_mask, "data\core\images", "mask"
-#else
 			  &tcustom_tod::select_file, this, get_selected_tod().image_mask, "data/core/images", "mask"
-#endif
 			, boost::ref(window)));
 			
 	tbutton& sound_button = find_widget<tbutton>(
 			&window, "sound_button", false);
 	connect_signal_mouse_left_click(sound_button, boost::bind(
-#ifdef _WIN32
-			  &tcustom_tod::select_file, this, get_selected_tod().sounds, "data\core\sounds\ambient", "sound"
-#else
 			  &tcustom_tod::select_file, this, get_selected_tod().sounds, "data/core/sounds/ambient", "sound"
-#endif
 			, boost::ref(window)));
 			
 	tbutton& next_tod_button = find_widget<tbutton>(
