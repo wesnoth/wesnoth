@@ -81,7 +81,12 @@ std::string escape_text(const std::string& text)
 }
 
 ttext::ttext() :
+#if PANGO_VERSION_CHECK(1,22,0)
 	context_(pango_font_map_create_context(pango_cairo_font_map_get_default())),
+#else
+	context_(pango_cairo_font_map_create_context((
+		reinterpret_cast<PangoCairoFontMap*>(pango_cairo_font_map_get_default())))),
+#endif
 	layout_(pango_layout_new(context_)),
 	rect_(),
 	surface_(),

@@ -20,16 +20,17 @@ Version 1.11.4+dev:
    * Added notification support for Windows
    * Made it so that the "Back to Turn X" and "Back to Start" menu items work
      with .bz2 saves
- * Miscellaneous and bug fixes
-   * Added a new playlist FULL_MUSIC_PLAYLIST, which contains all Wesnoth tracks
-     in alphabetical order
-   * Added -Wno-null-conversion to the CMake pedantic flags.
  * WML engine:
    * Added new aspect 'advancements' which with lua engine can handle a
      function return type of the form f(x, y) -> String. 'advancements'
      tells the AI to what unit a given unit should advance to.
    * Fix "Shuffle sides" incorrect behaviour: children inside [side] were also
      swapped.
+ * Miscellaneous and bug fixes
+   * Added a new playlist FULL_MUSIC_PLAYLIST, which contains all Wesnoth tracks
+     in alphabetical order
+   * Added -Wno-null-conversion to the CMake pedantic flags.
+   * Changed: Decreased the pango cairo dependency to version 1.21.3.
 
 Version 1.11.4:
  * AI:
