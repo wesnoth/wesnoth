@@ -1847,7 +1847,33 @@ void display::draw_minimap_units()
 		}
 
 		int side = u->side();
-		const SDL_Color col = team::get_minimap_color(side);
+		//bool new_encoding = true;
+		SDL_Color col = team::get_minimap_color(side);
+
+		if ((*teams_)[currentTeam_].is_enemy(side)) {
+			col = team::get_minimap_color(5);
+		} else {
+
+			if (currentTeam_ +1 == (unsigned)side) {
+
+				//movement_left() == total_movement()
+
+				if (u->movement_left() == u->total_movement()) {
+					col = team::get_minimap_color(3);
+				} else {
+
+					if (u->movement_left() == 0) {
+						col = team::get_minimap_color(1);
+					} else {
+						col = team::get_minimap_color(7);
+					}
+				}
+
+			} else {
+				col = team::get_minimap_color(2);
+			}
+		}
+
 		const Uint32 mapped_col = SDL_MapRGB(video().getSurface()->format,col.r,col.g,col.b);
 
 		double u_x = u->get_location().x * xscaling;
