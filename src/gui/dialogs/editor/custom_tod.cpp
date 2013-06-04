@@ -204,9 +204,6 @@ void tcustom_tod::update_tod_display(twindow& window)
 		// redraw tiles
 		display_->draw();
 	}
-
-	// Redraw this window again.
-	window.set_dirty(true);
 }
 
 void tcustom_tod::update_lawful_bonus(twindow& window)
