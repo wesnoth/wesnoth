@@ -14,6 +14,8 @@ Version 1.11.4+dev:
    * Updated translations: Portuguese, Portuguese (Brazil)
  * Lua API:
    * location_set.of_pairs() now can take coordinates defined by x/y= keys as well
+   * Fixed the x1,y1 variables in enter/exit_hex events handled via
+     wesnoth.game_events.on_event.
  * User interface:
    * Added notification support for Windows
    * Made it so that the "Back to Turn X" and "Back to Start" menu items work
