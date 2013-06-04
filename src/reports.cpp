@@ -1137,11 +1137,11 @@ static config unit_box_at(const map_location& mouseover_hex)
 		<< _("Liminal units: ") << "<span foreground=\"" << liminal_color << "\">"
 		<< utils::signed_percent(-(abs(bonus))) << "</span>\n";
 
-	std::string local_tod_image = local_tod.image;
-	std::string global_tod_image = global_tod.image;
-	if (local_tod.bonus_modified > 0) tod_image += "~BRIGHTEN()";
-	else if (local_tod.bonus_modified < 0) tod_image += "~DARKEN()";
-	if (preferences::flip_time()) tod_image += "~FL(horiz)";
+	std::string local_tod_image  = "themes/classic/" + local_tod.image;
+	std::string global_tod_image = "themes/classic/" + global_tod.image;
+	if (local_tod.bonus_modified > 0) local_tod_image += "~BRIGHTEN()";
+	else if (local_tod.bonus_modified < 0) local_tod_image += "~DARKEN()";
+	if (preferences::flip_time()) local_tod_image += "~FL(horiz)";
 
 	const gamemap &map = *resources::game_map;
 	t_translation::t_terrain terrain = map.get_terrain(mouseover_hex);
@@ -1171,6 +1171,8 @@ static config unit_box_at(const map_location& mouseover_hex)
 	std::string unit_image;
 	if (u)
 		unit_image = "~BLIT(" + u->absolute_image() + u->image_mods() + ",35,22)";
+
+	std::string tod_image = global_tod_image + "~BLIT(" + local_tod_image  + ")";
 
 	return image_report(tod_image + bg_terrain_image + unit_image, tooltip.str(), "time_of_day");
 }
