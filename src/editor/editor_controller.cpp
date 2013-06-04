@@ -141,19 +141,16 @@ void editor_controller::init_tods(const config& game_config)
 
 void editor_controller::init_music(const config& game_config)
 {
-	if (!game_config.has_child("editor_music")) {
+	const std::string tag_name = "editor_music";
+	if (!game_config.has_child(tag_name))
 		ERR_ED << "No editor music defined\n";
-		return;
-	}
-
-	BOOST_FOREACH(const config& editor_music, game_config.child_range("editor_music")) {
-		BOOST_FOREACH(const config& music, editor_music.child_range("music")) {
-			music_tracks_.push_back(sound::music_track(music));
-			sound::play_music_config(music);
+	else {
+		BOOST_FOREACH(const config& editor_music, game_config.child_range(tag_name)) {
+			BOOST_FOREACH(const config& music, editor_music.child_range("music")) {
+				music_tracks_.push_back(sound::music_track(music));
+			}
 		}
 	}
-
-	sound::commit_music_changes();
 }
 
 editor_controller::~editor_controller()
