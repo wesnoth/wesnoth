@@ -17,13 +17,12 @@
 #include "game_controller_abstract.hpp"
 
 #include "commandline_options.hpp"
-#include "config_cache.hpp"
-#include "filesystem.hpp"
 #include "gamestatus.hpp"
-#include "game_config.hpp"
+#include "game_config_manager.hpp"
 #include "game_display.hpp"
 #include "game_preferences.hpp"
 #include "hotkeys.hpp"
+#include "resources.hpp"
 #include "sound.hpp"
 #include "thread.hpp"
 
@@ -77,15 +76,13 @@ public:
 	editor::EXIT_STATUS start_editor() { return start_editor(""); }
 
 	void start_wesnothd();
-	const config& game_config() const { return game_config_; }
+	const config& game_config() const { return resources::config_manager->game_config(); }
 
 private:
 	game_controller(const game_controller&);
 	void operator=(const game_controller&);
 
 	bool init_config(const bool force);
-	void load_game_cfg(const bool force=false);
-	void set_unit_data();
 
 	void mark_completed_campaigns(std::vector<config>& campaigns);
 
@@ -102,14 +99,10 @@ private:
 	const hotkey::manager hotkey_manager_;
 	sound::music_thinker music_thinker_;
 	resize_monitor resize_monitor_;
-	binary_paths_manager paths_manager_;
 
 	std::string test_scenario_;
 
 	std::string screenshot_map_, screenshot_filename_;
-
-	config game_config_;
-	preproc_map old_defines_map_;
 
 	/// Stateful class taking over scenario-switching capabilities from the current game_controller and playsingle_controller. Currently only available when --new-syntax command line option is enabled.
 	game_state state_;
@@ -119,8 +112,6 @@ private:
 	jump_to_campaign_info jump_to_campaign_;
 
 	bool jump_to_editor_;
-
-	game_config::config_cache& cache_;
 };
 
 #endif

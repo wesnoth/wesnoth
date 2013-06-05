@@ -18,6 +18,7 @@
 #include "addon/manager.hpp"
 #include "addon/manager_ui.hpp"
 #include "commandline_options.hpp"
+#include "game_config_manager.hpp"
 #include "game_controller.hpp"
 #include "game_controller_new.hpp"
 #include "gui/dialogs/title_screen.hpp"
@@ -472,6 +473,8 @@ static int do_gameloop(int argc, char** argv)
 	loadscreen::start_stage("init gui");
 	gui2::init();
 	const gui2::event::tmanager gui_event_manager;
+
+	game_config_manager config_manager(cmdline_opts, game->disp());
 
 	loadscreen::start_stage("load config");
 	res = game->init_config();

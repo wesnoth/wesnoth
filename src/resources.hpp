@@ -17,6 +17,7 @@
 
 #include <vector>
 
+class game_config_manager;
 class game_display;
 class gamemap;
 class game_state;
@@ -38,6 +39,7 @@ namespace wb { class manager; } //whiteboard manager
 
 namespace resources
 {
+	extern game_config_manager  *config_manager;
 	extern play_controller      *controller;
 	extern game_data            *gamedata;
 	extern gamemap              *game_map;
