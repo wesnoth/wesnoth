@@ -48,7 +48,7 @@ return {
             if (not locs[1]) then return 0 end
 
             -- Find the goto units
-            local units = wesnoth.get_units { side = wesnoth.current.side, canrecruit = "no",
+            local units = wesnoth.get_units { side = wesnoth.current.side,
                 { "and", cfg.filter }, formula = '$this_unit.moves > 0'
             }
 
