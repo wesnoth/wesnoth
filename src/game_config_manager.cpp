@@ -54,9 +54,24 @@ game_config_manager::~game_config_manager()
 	resources::config_manager = NULL;
 }
 
+void game_config_manager::add_define(const std::string name, const bool add)
+{
+	defines_.push_back(std::make_pair(name, add));
+}
+
+void game_config_manager::add_cache_define(const std::string name)
+{
+	cache_.add_define(name);
+}
+
+void game_config_manager::clear_cache_defines()
+{
+	cache_.clear_defines();
+}
+
 bool game_config_manager::init_config(const bool force, const bool jump_to_editor)
 {
-	load_game_cfg(force);
+	load_game_cfg(true, force);
 
 	// make sure that multiplayer mode is set if command line parameter is selected
 	if (cmdline_opts_.multiplayer)
@@ -86,8 +101,11 @@ bool game_config_manager::init_config(const bool force, const bool jump_to_edito
 	return true;
 }
 
-void game_config_manager::load_game_cfg(const bool force)
+void game_config_manager::load_game_cfg(const bool clear_cache_defines, const bool force)
 {
+	if (clear_cache_defines)
+		cache_.clear_defines();
+
 	// scoped defines
 	typedef boost::shared_ptr<game_config::scoped_preproc_define> define_ptr;
 	std::deque<define_ptr> defines;
@@ -266,14 +284,4 @@ void game_config_manager::reload_changed_game_config(const bool jump_to_editor)
 	old_defines_map_.clear();
 	clear_binary_paths_cache();
 	init_config(true, jump_to_editor);
-}
-
-void game_config_manager::add_define(const std::string name, const bool add)
-{
-	defines_.push_back(std::make_pair(name, add));
-}
-
-void game_config_manager::add_cache_define(const std::string name)
-{
-	cache_.add_define(name);
 }

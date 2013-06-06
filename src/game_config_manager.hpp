@@ -34,12 +34,13 @@ public:
 	void add_define(const std::string name, const bool add = true);
 	void add_cache_define(const std::string name);
 
+	void clear_cache_defines();
+
 	bool init_config(const bool force = false, const bool jump_to_editor = false);
-	void load_game_cfg(const bool force = false);
+	void load_game_cfg(const bool clear_cache_defines = true, const bool force = false);
 	void reload_changed_game_config(const bool jump_to_editor = false);
 
 protected:
-	game_config::config_cache& cache() { return cache_; }
 	binary_paths_manager& bin_paths_manager() { return paths_manager_; }
 
 private:

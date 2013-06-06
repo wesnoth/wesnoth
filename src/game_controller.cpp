@@ -276,8 +276,6 @@ game_controller::game_controller(const commandline_options& cmdline_opts, const 
 
 bool game_controller::init_config(const bool force)
 {
-	resources::config_manager->cache().clear_defines();
-
 	return resources::config_manager->init_config(force, jump_to_editor_);
 }
 
@@ -298,7 +296,7 @@ bool game_controller::play_test()
 	state_.classification().campaign_define = "TEST";
 	resources::config_manager->add_cache_define("TEST");
 
-	resources::config_manager->load_game_cfg();
+	resources::config_manager->load_game_cfg(false);
 
 	resources::config_manager->bin_paths_manager().set_paths(game_config());
 
@@ -317,7 +315,6 @@ bool game_controller::play_screenshot_mode()
 		return true;
 	}
 
-	resources::config_manager->cache().clear_defines();
 	resources::config_manager->add_define("EDITOR");
 	resources::config_manager->load_game_cfg();
 	const binary_paths_manager bin_paths_manager(game_config());
@@ -339,8 +336,6 @@ bool game_controller::load_game()
 	try {
 		load.load_game(game::load_game_exception::game, game::load_game_exception::show_replay, game::load_game_exception::cancel_orders, game::load_game_exception::select_difficulty, game::load_game_exception::difficulty);
 
-		resources::config_manager->cache().clear_defines();
-
 		resources::config_manager->add_define(load.get_difficulty());
 		resources::config_manager->add_define(state_.classification().campaign_define, !state_.classification().campaign_define.empty());
 		resources::config_manager->add_define("MULTIPLAYER", state_.classification().campaign_define.empty() && (state_.classification().campaign_type == "multiplayer"));
@@ -353,7 +348,6 @@ bool game_controller::load_game()
 		try {
 			resources::config_manager->load_game_cfg();
 		} catch(config::error&) {
-			resources::config_manager->cache().clear_defines();
 			resources::config_manager->load_game_cfg();
 			return false;
 		}
@@ -452,7 +446,7 @@ void game_controller::set_tutorial()
 	state_.classification().campaign_type = "tutorial";
 	state_.carryover_sides_start["next_scenario"] = "tutorial";
 	state_.classification().campaign_define = "TUTORIAL";
-	resources::config_manager->cache().clear_defines();
+	resources::config_manager->clear_cache_defines();
 	resources::config_manager->add_define("TUTORIAL");
 }
 
@@ -577,11 +571,11 @@ bool game_controller::new_campaign()
 		}
 
 		state_.carryover_sides_start["difficulty"] = difficulties[difficulty];
-		resources::config_manager->cache().clear_defines();
+		resources::config_manager->clear_cache_defines();
 		resources::config_manager->add_define(difficulties[difficulty]);
 	} else {
 		//clear even when there is no difficulty
-		resources::config_manager->cache().clear_defines();
+		resources::config_manager->clear_cache_defines();
 	}
 
 	state_.classification().campaign_define = campaign["define"].str();
@@ -734,7 +728,6 @@ bool game_controller::play_multiplayer()
 		}
 
 		/* do */ {
-			resources::config_manager->cache().clear_defines();
 			resources::config_manager->add_define(state_.classification().campaign_define);
 			resources::config_manager->load_game_cfg();
 			events::discard_input(); // prevent the "keylogger" effect
@@ -810,7 +803,6 @@ bool game_controller::play_multiplayer_commandline()
 	state_.classification().campaign_type = "multiplayer";
 	state_.classification().campaign_define = "MULTIPLAYER";
 
-	resources::config_manager->cache().clear_defines();
 	resources::config_manager->add_define(state_.classification().campaign_define);
 	resources::config_manager->load_game_cfg();
 	events::discard_input(); // prevent the "keylogger" effect
@@ -862,9 +854,8 @@ void game_controller::launch_game(RELOAD_GAME_DATA reload)
 			resources::config_manager->add_define(*i);
 		}
 		try {
-			resources::config_manager->load_game_cfg();
+			resources::config_manager->load_game_cfg(false);
 		} catch(config::error&) {
-			resources::config_manager->cache().clear_defines();
 			resources::config_manager->load_game_cfg();
 			return;
 		}
@@ -910,7 +901,6 @@ void game_controller::play_replay()
 editor::EXIT_STATUS game_controller::start_editor(const std::string& filename)
 {
 	while(true){
-		resources::config_manager->cache().clear_defines();
 		resources::config_manager->add_define("EDITOR");
 		resources::config_manager->load_game_cfg();
 		const binary_paths_manager bin_paths_manager(game_config());
