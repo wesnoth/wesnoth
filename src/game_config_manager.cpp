@@ -71,7 +71,7 @@ void game_config_manager::clear_cache_defines()
 
 bool game_config_manager::init_config(const bool force, const bool jump_to_editor)
 {
-	load_game_cfg(true, force);
+	load_game_cfg(true, true, force);
 
 	// make sure that multiplayer mode is set if command line parameter is selected
 	if (cmdline_opts_.multiplayer)
@@ -93,7 +93,6 @@ bool game_config_manager::init_config(const bool force, const bool jump_to_edito
 	hotkey::set_scope_active(hotkey::SCOPE_GAME);
 
 	hotkey::load_hotkeys(game_config(), true);
-	paths_manager_.set_paths(game_config());
 	::init_textdomains(game_config());
 	about::set_about(game_config());
 	ai::configuration::init(game_config());
@@ -101,7 +100,7 @@ bool game_config_manager::init_config(const bool force, const bool jump_to_edito
 	return true;
 }
 
-void game_config_manager::load_game_cfg(const bool clear_cache_defines, const bool force)
+void game_config_manager::load_game_cfg(const bool set_bin_paths, const bool clear_cache_defines, const bool force)
 {
 	if (clear_cache_defines)
 		cache_.clear_defines();
@@ -272,6 +271,10 @@ void game_config_manager::load_game_cfg(const bool clear_cache_defines, const bo
 			e.message + _("' (The game will now exit)"));
 		throw;
 	}
+
+	// set binary paths
+	if (set_bin_paths)
+		paths_manager_.set_paths(game_config());
 }
 
 void game_config_manager::reload_changed_game_config(const bool jump_to_editor)

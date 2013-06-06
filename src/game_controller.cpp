@@ -296,9 +296,7 @@ bool game_controller::play_test()
 	state_.classification().campaign_define = "TEST";
 	resources::config_manager->add_cache_define("TEST");
 
-	resources::config_manager->load_game_cfg(false);
-
-	resources::config_manager->bin_paths_manager().set_paths(game_config());
+	resources::config_manager->load_game_cfg(true, false);
 
 	try {
 		play_game(disp(),state_,game_config());
@@ -316,7 +314,7 @@ bool game_controller::play_screenshot_mode()
 	}
 
 	resources::config_manager->add_define("EDITOR");
-	resources::config_manager->load_game_cfg();
+	resources::config_manager->load_game_cfg(false, true);
 	const binary_paths_manager bin_paths_manager(game_config());
 	::init_textdomains(game_config());
 
@@ -346,13 +344,12 @@ bool game_controller::load_game()
 		}
 
 		try {
-			resources::config_manager->load_game_cfg();
+			resources::config_manager->load_game_cfg(true, true);
 		} catch(config::error&) {
-			resources::config_manager->load_game_cfg();
+			resources::config_manager->load_game_cfg(false, true);
 			return false;
 		}
 
-		resources::config_manager->bin_paths_manager().set_paths(game_config());
 		load.set_gamestate();
 
 	} catch(load_game_cancelled_exception&) {
@@ -729,11 +726,9 @@ bool game_controller::play_multiplayer()
 
 		/* do */ {
 			resources::config_manager->add_define(state_.classification().campaign_define);
-			resources::config_manager->load_game_cfg();
+			resources::config_manager->load_game_cfg(true, true);
 			events::discard_input(); // prevent the "keylogger" effect
 			cursor::set(cursor::NORMAL);
-			// update binary paths
-			resources::config_manager->bin_paths_manager().set_paths(game_config());
 			clear_binary_paths_cache();
 		}
 
@@ -804,11 +799,9 @@ bool game_controller::play_multiplayer_commandline()
 	state_.classification().campaign_define = "MULTIPLAYER";
 
 	resources::config_manager->add_define(state_.classification().campaign_define);
-	resources::config_manager->load_game_cfg();
+	resources::config_manager->load_game_cfg(true, true);
 	events::discard_input(); // prevent the "keylogger" effect
 	cursor::set(cursor::NORMAL);
-	// update binary paths
-	resources::config_manager->bin_paths_manager().set_paths(game_config());
 	clear_binary_paths_cache();
 
 	config game_data;
@@ -854,9 +847,9 @@ void game_controller::launch_game(RELOAD_GAME_DATA reload)
 			resources::config_manager->add_define(*i);
 		}
 		try {
-			resources::config_manager->load_game_cfg(false);
+			resources::config_manager->load_game_cfg(false, false);
 		} catch(config::error&) {
-			resources::config_manager->load_game_cfg();
+			resources::config_manager->load_game_cfg(false, true);
 			return;
 		}
 	}
@@ -902,7 +895,7 @@ editor::EXIT_STATUS game_controller::start_editor(const std::string& filename)
 {
 	while(true){
 		resources::config_manager->add_define("EDITOR");
-		resources::config_manager->load_game_cfg();
+		resources::config_manager->load_game_cfg(false, true);
 		const binary_paths_manager bin_paths_manager(game_config());
 		::init_textdomains(game_config());
 

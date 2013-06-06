@@ -23,7 +23,6 @@ class config;
 
 class game_config_manager
 {
-friend class game_controller;
 
 public:
 	game_config_manager(const commandline_options& cmdline_opts, game_display& disp);
@@ -37,11 +36,8 @@ public:
 	void clear_cache_defines();
 
 	bool init_config(const bool force = false, const bool jump_to_editor = false);
-	void load_game_cfg(const bool clear_cache_defines = true, const bool force = false);
+	void load_game_cfg(const bool set_bin_paths, const bool clear_cache_defines, const bool force = false);
 	void reload_changed_game_config(const bool jump_to_editor = false);
-
-protected:
-	binary_paths_manager& bin_paths_manager() { return paths_manager_; }
 
 private:
 	game_config_manager(const game_config_manager&);
