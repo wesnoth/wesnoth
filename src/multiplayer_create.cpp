@@ -495,7 +495,7 @@ void create::layout_children(const SDL_Rect& rect)
 	// because it makes no difference for most languages, and where it does, I
 	// guess we'd prefer having the buttons less neatly aligned to having a
 	// potentially giant minimap.
-	const int minimap_width = 222;
+	const int minimap_width = ca.h < 500 ? 111 : 222;
 	const int menu_width = (ca.w - 3*column_border_size - minimap_width)/3;
 	const int eras_menu_height = (ca.h / 2 - era_label_.height() - 2*border_size - cancel_game_.height());
 
@@ -515,10 +515,9 @@ void create::layout_children(const SDL_Rect& rect)
 	map_size_label_.set_location(xpos, ypos);
 	ypos += map_size_label_.height() + 2 * border_size;
 
-	description_.set_location(xpos, ypos);
-	description_.set_measurements(minimap_width + border_size + menu_width, ca.h + ca.y - ypos - border_size - cancel_game_.height());
-	description_.set_wrap(true);
-	ypos += description_.height() + border_size;
+	const int ypos1 = ypos;
+	const int xpos1 = xpos;
+	// The description box is set later
 
 	// Second column: filtering options
 	ypos = ypos_columntop;
@@ -542,6 +541,12 @@ void create::layout_children(const SDL_Rect& rect)
 	ypos += regenerate_map_.height() + border_size;
 	generator_settings_.set_location(xpos, ypos);
 	ypos += generator_settings_.height() + 2 * border_size;
+
+	// And now the description box
+	description_.set_location(xpos1, std::max(ypos,ypos1));
+	description_.set_measurements(minimap_width + border_size + menu_width, ca.h + ca.y - std::max(ypos,ypos1) - border_size);
+	description_.set_wrap(true);
+	ypos += description_.height() + border_size;
 
 	//Third column: maps menu
 	ypos = ypos_columntop;
