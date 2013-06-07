@@ -23,24 +23,32 @@ class config;
 
 class game_config_manager
 {
-
 public:
-	game_config_manager(const commandline_options& cmdline_opts, game_display& disp);
+	game_config_manager(const commandline_options& cmdline_opts,
+	                    game_display& disp);
 	~game_config_manager();
+
+	enum SET_BINARY_PATHS { SET_PATHS, NO_SET_PATHS };
+	enum CLEAR_CACHE_DEFINES { CLEAR_CACHE, NO_CLEAR_CACHE };
+	enum FORCE_RELOAD_CONFIG { FORCE_RELOAD, NO_FORCE_RELOAD };
 
 	const config& game_config() const { return game_config_; }
 
-	void add_define(const std::string name, const bool add = true);
-	void add_cache_define(const std::string name);
+	void add_define(const std::string& name, const bool add = true);
+	void add_cache_define(const std::string& name);
 
 	void clear_cache_defines();
 
-	bool init_config(const bool force = false, const bool jump_to_editor = false);
-	void load_game_cfg(const bool set_bin_paths, const bool clear_cache_defines, const bool force = false);
+	bool init_config(FORCE_RELOAD_CONFIG force_reload,
+	                 const bool jump_to_editor = false);
+	void load_game_cfg(SET_BINARY_PATHS set_paths,
+	                   CLEAR_CACHE_DEFINES clear_cache,
+	                   FORCE_RELOAD_CONFIG force_reload);
 	void reload_changed_game_config(const bool jump_to_editor = false);
 
 private:
 	game_config_manager(const game_config_manager&);
+	void operator=(const game_config_manager&);
 
 	const commandline_options& cmdline_opts_;
 	game_display& disp_;

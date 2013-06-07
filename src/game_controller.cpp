@@ -274,9 +274,11 @@ game_controller::game_controller(const commandline_options& cmdline_opts, const 
 	}
 }
 
-bool game_controller::init_config(const bool force)
+bool game_controller::init_config(
+    game_config_manager::FORCE_RELOAD_CONFIG force_reload)
 {
-	return resources::config_manager->init_config(force, jump_to_editor_);
+	return resources::config_manager->
+	    init_config(force_reload, jump_to_editor_);
 }
 
 bool game_controller::play_test()
@@ -296,7 +298,10 @@ bool game_controller::play_test()
 	state_.classification().campaign_define = "TEST";
 	resources::config_manager->add_cache_define("TEST");
 
-	resources::config_manager->load_game_cfg(true, false);
+	resources::config_manager->load_game_cfg(
+	    game_config_manager::SET_PATHS,
+	    game_config_manager::NO_CLEAR_CACHE,
+	    game_config_manager::NO_FORCE_RELOAD);
 
 	try {
 		play_game(disp(),state_,game_config());
@@ -314,7 +319,10 @@ bool game_controller::play_screenshot_mode()
 	}
 
 	resources::config_manager->add_define("EDITOR");
-	resources::config_manager->load_game_cfg(false, true);
+	resources::config_manager->load_game_cfg(
+	    game_config_manager::NO_SET_PATHS,
+	    game_config_manager::CLEAR_CACHE,
+	    game_config_manager::NO_FORCE_RELOAD);
 	const binary_paths_manager bin_paths_manager(game_config());
 	::init_textdomains(game_config());
 
@@ -338,15 +346,21 @@ bool game_controller::load_game()
 		resources::config_manager->add_define(state_.classification().campaign_define, !state_.classification().campaign_define.empty());
 		resources::config_manager->add_define("MULTIPLAYER", state_.classification().campaign_define.empty() && (state_.classification().campaign_type == "multiplayer"));
 
-		for(std::vector<std::string>::const_iterator i = state_.classification().campaign_xtra_defines.begin();
-			i != state_.classification().campaign_xtra_defines.end(); ++i) {
-			resources::config_manager->add_define(*i);
+		BOOST_FOREACH(const std::string& xtra_def,
+		              state_.classification().campaign_xtra_defines) {
+			resources::config_manager->add_define(xtra_def);
 		}
 
 		try {
-			resources::config_manager->load_game_cfg(true, true);
+			resources::config_manager->load_game_cfg(
+				game_config_manager::SET_PATHS,
+				game_config_manager::CLEAR_CACHE,
+				game_config_manager::NO_FORCE_RELOAD);
 		} catch(config::error&) {
-			resources::config_manager->load_game_cfg(false, true);
+			resources::config_manager->load_game_cfg(
+				game_config_manager::NO_SET_PATHS,
+				game_config_manager::CLEAR_CACHE,
+				game_config_manager::NO_FORCE_RELOAD);
 			return false;
 		}
 
@@ -726,7 +740,10 @@ bool game_controller::play_multiplayer()
 
 		/* do */ {
 			resources::config_manager->add_define(state_.classification().campaign_define);
-			resources::config_manager->load_game_cfg(true, true);
+			resources::config_manager->load_game_cfg(
+				game_config_manager::SET_PATHS,
+				game_config_manager::CLEAR_CACHE,
+				game_config_manager::NO_FORCE_RELOAD);
 			events::discard_input(); // prevent the "keylogger" effect
 			cursor::set(cursor::NORMAL);
 			clear_binary_paths_cache();
@@ -799,7 +816,10 @@ bool game_controller::play_multiplayer_commandline()
 	state_.classification().campaign_define = "MULTIPLAYER";
 
 	resources::config_manager->add_define(state_.classification().campaign_define);
-	resources::config_manager->load_game_cfg(true, true);
+	resources::config_manager->load_game_cfg(
+		game_config_manager::SET_PATHS,
+		game_config_manager::CLEAR_CACHE,
+		game_config_manager::NO_FORCE_RELOAD);
 	events::discard_input(); // prevent the "keylogger" effect
 	cursor::set(cursor::NORMAL);
 	clear_binary_paths_cache();
@@ -842,14 +862,20 @@ void game_controller::launch_game(RELOAD_GAME_DATA reload)
 	if(reload == RELOAD_DATA) {
 		resources::config_manager->add_define(state_.classification().campaign_define, state_.classification().campaign_define.empty() == false);
 
-		for(std::vector<std::string>::const_iterator i = state_.classification().campaign_xtra_defines.begin();
-			i != state_.classification().campaign_xtra_defines.end(); ++i) {
-			resources::config_manager->add_define(*i);
+		BOOST_FOREACH(const std::string& xtra_def,
+		              state_.classification().campaign_xtra_defines) {
+			resources::config_manager->add_define(xtra_def);
 		}
 		try {
-			resources::config_manager->load_game_cfg(false, false);
+			resources::config_manager->load_game_cfg(
+				game_config_manager::NO_SET_PATHS,
+				game_config_manager::NO_CLEAR_CACHE,
+				game_config_manager::NO_FORCE_RELOAD);
 		} catch(config::error&) {
-			resources::config_manager->load_game_cfg(false, true);
+			resources::config_manager->load_game_cfg(
+				game_config_manager::NO_SET_PATHS,
+				game_config_manager::CLEAR_CACHE,
+				game_config_manager::NO_FORCE_RELOAD);
 			return;
 		}
 	}
@@ -895,7 +921,10 @@ editor::EXIT_STATUS game_controller::start_editor(const std::string& filename)
 {
 	while(true){
 		resources::config_manager->add_define("EDITOR");
-		resources::config_manager->load_game_cfg(false, true);
+		resources::config_manager->load_game_cfg(
+			game_config_manager::NO_SET_PATHS,
+			game_config_manager::CLEAR_CACHE,
+			game_config_manager::NO_FORCE_RELOAD);
 		const binary_paths_manager bin_paths_manager(game_config());
 		::init_textdomains(game_config());
 

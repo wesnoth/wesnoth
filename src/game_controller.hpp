@@ -47,7 +47,8 @@ public:
 	game_controller(const commandline_options& cmdline_opts, const char* appname);
 	~game_controller();
 
-	bool init_config() { return init_config(false); }
+	bool init_config() {
+	    return init_config(game_config_manager::NO_FORCE_RELOAD); }
 	bool play_test();
 	bool play_screenshot_mode();
 
@@ -82,7 +83,7 @@ private:
 	game_controller(const game_controller&);
 	void operator=(const game_controller&);
 
-	bool init_config(const bool force);
+	bool init_config(game_config_manager::FORCE_RELOAD_CONFIG force_reload);
 
 	void mark_completed_campaigns(std::vector<config>& campaigns);
 
