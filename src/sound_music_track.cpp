@@ -70,14 +70,14 @@ music_track::music_track(const std::string& v_name) :
 void music_track::resolve()
 {
 	if (id_.empty()) {
-		ERR_AUDIO << "empty track filename specified\n";
+		LOG_AUDIO << "empty track filename specified for track identification\n";
 		return;
 	}
 
 	file_path_ = get_binary_file_location("music", id_);
 
 	if (file_path_.empty()) {
-		ERR_AUDIO << "could not find track '" << id_ << "'\n";
+		LOG_AUDIO << "could not find track '" << id_ << "' for track identification\n";
 		return;
 	}
 
@@ -85,13 +85,13 @@ void music_track::resolve()
 	FILE* f;
 	f = fopen(file_path_.c_str(), "r");
 	if (f == NULL) {
-		ERR_AUDIO << "Error opening file '" << file_path_ << "'\n";
+		LOG_AUDIO << "Error opening file '" << file_path_ << "' for track identification\n";
 		return;
 	}
 
 	OggVorbis_File vf;
 	if(ov_open(f, &vf, NULL, 0) < 0) {
-		ERR_AUDIO << "track does not appear to be an Ogg file '" << id_ << "'\n";
+		LOG_AUDIO << "track does not appear to be an Ogg file '" << id_ << "', cannot be identified\n";
 		ov_clear(&vf);
 		return;
 	}
@@ -110,7 +110,7 @@ void music_track::resolve()
 		}
 	}
 	if (!found) {
-		ERR_AUDIO << "No title for music track '" << id_ << "'\n";
+		LOG_AUDIO << "No title for music track '" << id_ << "'\n";
 	}
 
 	ov_clear(&vf);
