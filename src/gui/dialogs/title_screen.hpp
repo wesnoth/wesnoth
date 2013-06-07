@@ -47,6 +47,7 @@ public:
 	enum tresult {
 			  TUTORIAL = 1        /**< Start special campaign 'tutorial' */
 			, NEW_CAMPAIGN        /**< Let user select a campaign to play */
+			, DOWNLOAD_CAMPAIGN
 			, MULTIPLAYER         /**<
 			                       * Play single scenario against humans or AI
 			                       */
