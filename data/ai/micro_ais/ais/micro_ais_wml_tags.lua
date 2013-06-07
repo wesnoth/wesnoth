@@ -168,7 +168,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
         local CA_parms = {
             {
                 id = 'initialize_healer_support', eval_name = 'initialize_healer_support_eval', exec_name = 'initialize_healer_support_exec',
-                max_score = 999990, cfg_table = {}
+                max_score = 999990, cfg_table = cfg_hs
             },
             {
                 id = 'healer_support', eval_name = 'healer_support_eval', exec_name = 'healer_support_exec',

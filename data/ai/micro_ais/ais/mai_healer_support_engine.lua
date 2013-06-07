@@ -22,7 +22,7 @@ return {
             return score
         end
 
-        function healer_support:initialize_healer_support_exec()
+        function healer_support:initialize_healer_support_exec(cfg)
             --print(' Initializing healer_support at beginning of Turn ' .. wesnoth.current.turn)
 
             -- First, modify the attacks aspect to exclude healers
@@ -39,10 +39,12 @@ return {
                 action = "add",
                 path = "aspect[attacks].facet",
                 { "facet", {
-                   name = "ai_default_rca::aspect_attacks",
-                   id = "no_healers_attack",
-                   invalidate_on_gamestate_change = "yes",
-                   { "filter_own", { { "not", { ability = "healing" } } } }
+                    name = "ai_default_rca::aspect_attacks",
+                    id = "no_healers_attack",
+                    invalidate_on_gamestate_change = "yes",
+                    { "filter_own", {
+                       { "not", { ability = "healing", { "and", cfg.filter } } }
+                    } }
                 } }
             }
 
@@ -101,7 +103,7 @@ return {
                 formula = '$this_unit.moves = 0', { "and", cfg.filter }
             }
 
-            local all_units = wesnoth.get_units{ side = wesnoth.current.side, 
+            local all_units = wesnoth.get_units{ side = wesnoth.current.side,
                 {"and", cfg.filter_second}
             }
 
@@ -139,7 +141,7 @@ return {
             }
             local enemy_attack_map = BC.get_attack_map(enemies)
             --AH.put_labels(enemy_attack_map.units)
-            
+
             local avoid_map = LS.of_pairs(ai.get_avoid())
 
             -- Put units back out there
@@ -167,7 +169,7 @@ return {
                                 if (H.distance_between(u.x, u.y, r[1], r[2]) == 1) then
                                     -- !!!!!!! These ratings have to be positive or the method doesn't work !!!!!!!!!
                                     rating = rating + u.max_hitpoints - u.hitpoints
-    
+
                                     -- If injured_units_only = true then don't count units with full HP
                                     if (u.max_hitpoints - u.hitpoints > 0) or (not cfg.injured_units_only) then
                                         rating = rating + 15 * (enemy_attack_map.units:get(u.x, u.y) or 0)
