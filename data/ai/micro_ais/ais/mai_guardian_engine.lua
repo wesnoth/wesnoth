@@ -231,14 +231,24 @@ return {
             -- If no enemy around or within the zone, move toward "random" position which are mainy the borders
             else
                 --print "Move toward newpos"
-                local width, height = wesnoth.get_map_size()
-                local locs = wesnoth.get_locations {
-                    x = '1-' .. width,
-                    y = '1-' .. height,
-                    { "and", cfg.filter_location }
-                }
-                local newpos = math.random(#locs)
-                local nh = AH.next_hop(unit, locs[newpos][1], locs[newpos][2])
+                local newpos
+                -- If cfg.station_x/y are given, move toward that location
+                if cfg.station_x and cfg.station_y then
+                    newpos = { cfg.station_x, cfg.station_y }
+                -- Otherwise choose one randomly from those given in filter_location
+                else
+                    local width, height = wesnoth.get_map_size()
+                    local locs = wesnoth.get_locations {
+                        x = '1-' .. width,
+                        y = '1-' .. height,
+                        { "and", cfg.filter_location }
+                    }
+                    local newind = math.random(#locs)
+                    newpos = {locs[newind][1], locs[newind][2]}
+                end
+
+                -- Next hop toward that position
+                local nh = AH.next_hop(unit, newpos[1], newpos[2])
                 if nh then
                     AH.movefull_stopunit(ai, unit, nh)
                 end
