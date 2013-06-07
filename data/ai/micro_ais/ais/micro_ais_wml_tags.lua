@@ -147,7 +147,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
     if (not cfg.action) then H.wml_error("[micro_ai] missing required action= key") end
 
     if (cfg.action ~= 'add') and (cfg.action ~= 'delete') and (cfg.action ~= 'change') then
-        H.wml_error("[micro_ai] invalid value for action=.  Allowed values: add, delete or change")
+        H.wml_error("[micro_ai] invalid value for action=. Allowed values: add, delete or change")
     end
 
     --------- Healer Support Micro AI - side-wide AI ------------------------------------

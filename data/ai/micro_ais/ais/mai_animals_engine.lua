@@ -182,7 +182,7 @@ return {
                     unit.variables.hunting_status = nil
                     unit.variables.resting_until = nil
                     if cfg.show_messages then
-                        W.message { speaker = unit.id, message = 'I am done resting.  It is time to go hunting again next turn.' }
+                        W.message { speaker = unit.id, message = 'I am done resting. It is time to go hunting again next turn.' }
                     end
                 end
                 return
@@ -362,8 +362,8 @@ return {
             local unit_type = cfg.type or "Wolf"
             local pack_size = cfg.pack_size or 3
 
-            -- Assign the pack numbers to each wolf.  Keeps numbers of existing packs
-            -- (unless pack size is down to one).  Pack number is stored in wolf unit variables
+            -- Assign the pack numbers to each wolf. Keeps numbers of existing packs
+            -- (unless pack size is down to one). Pack number is stored in wolf unit variables
             -- Also returns a table with the packs (locations and id's of each wolf in a pack)
             local wolves = wesnoth.get_units { side = wesnoth.current.side, type = unit_type }
             --print('#wolves:', #wolves)
@@ -783,7 +783,7 @@ return {
                         return -H.distance_between(x, y, cg[1], cg[2])
                     end)
                     -- We could move this wolf right here, but for convenience all the actual moves are
-                    -- grouped together below.  Speed wise that should not really make a difference, but could be optimized
+                    -- grouped together below. Speed wise that should not really make a difference, but could be optimized
                 end
                 --print('goto_hex', goto_hex[1], goto_hex[2])
                 --AH.put_labels(reach_map)

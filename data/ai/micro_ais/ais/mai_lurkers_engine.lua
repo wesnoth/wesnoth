@@ -88,7 +88,7 @@ return {
 
                 -- get one of the reachable wander terrain hexes randomly
                 local rand = AH.random(1, reachable_wander_terrain:size())
-                --print("  reach_wander no allies: " .. reachable_wander_terrain:size() .. "  rand #: " ..  rand)
+                --print("  reach_wander no allies: " .. reachable_wander_terrain:size() .. "  rand #: " .. rand)
                 local dst = reachable_wander_terrain:to_stable_pairs()
                 if dst[1] then
                     dst = dst[rand]

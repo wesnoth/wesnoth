@@ -16,11 +16,11 @@ return {
         local T = H.set_wml_tag_metatable {}
         local _ = wesnoth.textdomain "wesnoth-ai"
 
-        local tooltip_enemy_weight = _"Enemy unit weight: The (negative) weight given to each enemy unit that can reach a potential target location.  Default: 100"
-        local tooltip_my_unit_weight = _"My unit weight: The (positive) weight given to each of the AI's units that can reach a potential target location.  Default: 1"
+        local tooltip_enemy_weight = _"Enemy unit weight: The (negative) weight given to each enemy unit that can reach a potential target location. Default: 100"
+        local tooltip_my_unit_weight = _"My unit weight: The (positive) weight given to each of the AI's units that can reach a potential target location. Default: 1"
         local tooltip_distance_weight = _"Goal distance weight: The (negative) weight for each step the unit is away from its goal location.\nDefault: 3 -- thus, by default, being a step closer to the goal is as important as being in reach of 3 of AI's units."
         local tooltip_terrain_weight = _"Terrain defense weight: The (positive) weight of the terrain defense rating for a potential target location.\nDefault: 0.1 -- thus, by default, a difference of 30 in terrain defense rating is as important as being a step closer to the goal."
-        local tooltip_bearing = _"Bearing: Everything else being equal, move protected unit toward or away from enemy groups.  Default: toward"
+        local tooltip_bearing = _"Bearing: Everything else being equal, move protected unit toward or away from enemy groups. Default: toward"
 
         protect_unit.dialog = {
             T.tooltip { id = "tooltip_large" },
@@ -34,7 +34,7 @@ return {
 
                 T.row {
                     T.column { horizontal_alignment = "left", border = "all", border_size = 5,
-                        T.label { label = _"Click on 'Close' without changing anything to use defaults.\nAll weights must be 0 or larger.  Invalid inputs are converted to default values.\nTooltips enabled for all parameters." }
+                        T.label { label = _"Click on 'Close' without changing anything to use defaults.\nAll weights must be 0 or larger. Invalid inputs are converted to default values.\nTooltips enabled for all parameters." }
                     }
                 },
 
@@ -165,7 +165,7 @@ return {
             -- If AI parameters are not set, bring up the dialog
             -- For demo scenario only, delete for real use
             --if (not self.data.enemy_weight) then
-            --    W.message { speaker = "narrator", image = "wesnoth-icon.png", message = "Before we get going, you can set some of the AI parameters.  If you want to work with the default values, just click on 'Close' in the following dialog." }
+            --    W.message { speaker = "narrator", image = "wesnoth-icon.png", message = "Before we get going, you can set some of the AI parameters. If you want to work with the default values, just click on 'Close' in the following dialog." }
 
             --    local r = wesnoth.show_dialog(self.dialog, self.preshow, self.postshow)
 
@@ -281,7 +281,7 @@ return {
                 rating = rating - GDM.values[ind] * distance_weight
                 -- Note: rating will usually be negative, but that's ok (the least negative hex wins)
 
-                -- Terrain rating.  Difference of 30 in defense should be worth ~1 step toward goal
+                -- Terrain rating. Difference of 30 in defense should be worth ~1 step toward goal
                 rating = rating + TDM.values[ind] * terrain_weight
 
                 -- Tie breaker: closer to or farther from enemy
