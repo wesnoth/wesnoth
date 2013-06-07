@@ -287,10 +287,6 @@ void configure::process_event()
 		}
 	}
 
-	if(options_.pressed()) {
-		options_manager_.show_dialog();
-	}
-
 	if(password_button_.pressed()) {
 		gui2::tmp_create_game_set_password::execute(
 				  parameters_.password
