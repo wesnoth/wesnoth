@@ -58,7 +58,8 @@ game_config_manager::~game_config_manager()
 	resources::config_manager = NULL;
 }
 
-void game_config_manager::add_define(const std::string& name, const bool add)
+void game_config_manager::add_scoped_define(const std::string& name,
+                                            const bool add)
 {
 	defines_.push_back(std::make_pair(name, add));
 }
@@ -76,8 +77,6 @@ void game_config_manager::clear_cache_defines()
 bool game_config_manager::init_config(FORCE_RELOAD_CONFIG force_reload,
                                       const bool jump_to_editor)
 {
-	load_game_cfg(SET_PATHS, CLEAR_CACHE, force_reload);
-
 	// Make sure that multiplayer mode is set
 	// if command line parameter is selected.
 	if (cmdline_opts_.multiplayer) {
@@ -95,6 +94,8 @@ bool game_config_manager::init_config(FORCE_RELOAD_CONFIG force_reload,
 	if (!cmdline_opts_.multiplayer && !cmdline_opts_.test && !jump_to_editor) {
 		cache_.add_define("TITLE_SCREEN");
 	}
+
+	load_game_cfg(SET_PATHS, CLEAR_CACHE, force_reload);
 
 	game_config::load_config(game_config_.child("game_config"));
 

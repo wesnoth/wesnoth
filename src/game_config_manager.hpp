@@ -34,7 +34,7 @@ public:
 
 	const config& game_config() const { return game_config_; }
 
-	void add_define(const std::string& name, const bool add = true);
+	void add_scoped_define(const std::string& name, const bool add = true);
 	void add_cache_define(const std::string& name);
 
 	void clear_cache_defines();
