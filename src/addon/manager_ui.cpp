@@ -232,7 +232,7 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 		config archive;
 
 		if(!(
-			client.download_addon(archive, addon.id, addon.title) &&
+			client.download_addon(archive, addon.id, addon.title, !is_addon_installed(addon.id)) &&
 			client.install_addon(archive, addon)
 		)) {
 			const std::string& server_error = client.get_last_server_error();
@@ -805,7 +805,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		config archive;
 
 		if(!(
-			client.download_addon(archive, addon.id, addon.title) &&
+			client.download_addon(archive, addon.id, addon.title, !is_addon_installed(addon.id)) &&
 			client.install_addon(archive, addon)
 		)) {
 			failed_titles.push_back(addon.title);

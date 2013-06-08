@@ -1,4 +1,7 @@
 Version 1.11.4+dev:
+ * Add-ons client:
+   * Do not bump the download count for add-ons that are currently installed
+     and are being reinstalled or upgraded
  * AI:
    * Recruiting in Micro and Experimental AIs: allow more terrain codes for castles/keeps 
    * Improved/Added: Command 'lua wesnoth.debug_ai([side]).ai' will now give access to the
