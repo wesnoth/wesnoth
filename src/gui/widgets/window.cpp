@@ -648,13 +648,13 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 
 			if(!mouse_button_state_initialised) {
 				/*
-				 * The state must be initialise when showing the dialogue.
-				 * However when initialised before this point there were random
+				 * The state must be initialize when showing the dialogue.
+				 * However when initialized before this point there were random
 				 * errors. This only happened when the 'click' was done fast; a
 				 * slower click worked properly.
 				 *
 				 * So it seems the events need to be processed before SDL can
-				 * return the proper button state. When initialising here all
+				 * return the proper button state. When initializing here all
 				 * works fine.
 				 */
 				mouse_button_state_ = SDL_GetMouseState(NULL, NULL);
