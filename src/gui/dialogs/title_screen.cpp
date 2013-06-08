@@ -240,12 +240,6 @@ void ttitle_screen::post_build(CVideo& video, twindow& window)
 					, boost::ref(window)
 					, TUTORIAL));
 
-	window.register_hotkey(hotkey::TITLE_SCREEN__TUTORIAL
-				, boost::bind(
-					  &hotkey
-					, boost::ref(window)
-					, TUTORIAL));
-
 	window.register_hotkey(hotkey::TITLE_SCREEN__CAMPAIGN
 				, boost::bind(
 					  &hotkey
