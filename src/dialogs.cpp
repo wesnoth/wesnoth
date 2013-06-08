@@ -92,8 +92,6 @@ private:
 
 gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_selection)
 {
-	const std::vector<std::pair<int, int> >& param = std::vector<std::pair<int, int> >();
-	param.back();
 	const size_t index = size_t(filter_.get_index(menu_selection));
 	if(index < units_.size()) {
 		const unit &u = *(units_[index]);
