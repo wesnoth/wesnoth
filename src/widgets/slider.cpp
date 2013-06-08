@@ -26,7 +26,7 @@
 
 namespace {
 	const std::string slider_image   = ".png";
-	const std::string disabled_image = "-disabled.png";
+	const std::string disabled_image = ".png~GS()";
 	const std::string pressed_image  = "-pressed.png";
 	const std::string active_image   = "-active.png";
 }
