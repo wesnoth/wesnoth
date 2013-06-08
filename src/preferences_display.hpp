@@ -38,7 +38,7 @@ namespace preferences {
 	 * Detect a good resolution.
 	 *
 	 * @param video               The video 'holding' the framebuffer.
-	 * @param resolution          Any good resultion is returned through this reference.
+	 * @param resolution          Any good resolution is returned through this reference.
 	 * @param bpp                 A reference through which the best bpp is returned.
 	 * @param video_flags         A reference through which the video flags for setting the video mode are returned.
 	 *
