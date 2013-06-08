@@ -143,7 +143,7 @@ void button::load_images() {
 		if (pressed_active_image.null())
 			pressed_active_image.assign(pressed_image);
 
-		pressed_disabled_image.assign(image::get_image(button_image_name_ + "pressed.png~GS()"));
+		pressed_disabled_image.assign(image::get_image(button_image_name_ + "-pressed.png~GS()"));
 		if (pressed_disabled_image.null())
 			pressed_disabled_image = blend_surface(greyscale_image(pressed_image),
 					disabled_btn_adjust, disabled_btn_color);
