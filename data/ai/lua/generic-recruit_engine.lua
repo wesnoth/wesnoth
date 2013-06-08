@@ -122,15 +122,24 @@ return {
                         end
 
                         -- Handle marksman and magical
-                        -- TODO: Make this work properly for UMC chance_to_hit (does not account for all keys)
                         mod = H.get_child(special, 'chance_to_hit')
                         if mod then
-                            if mod.cumulative then
-                                if mod.value > defense then
+                            if mod.value then
+                                if mod.cumulative then
+                                    if mod.value > defense then
+                                        defense = mod.value
+                                    end
+                                else
                                     defense = mod.value
                                 end
-                            else
-                                defense = mod.value
+                            elseif mod.add then
+                                defense = defense + mod.add
+                            elseif mod.sub then
+                                defense = defense - mod.sub
+                            elseif mod.multiply then
+                                defense = defense * mod.multiply
+                            elseif mod.divide then
+                                defense = defense / mod.divide
                             end
                         end
 
