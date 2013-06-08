@@ -375,7 +375,7 @@ static int process_command_args(const commandline_options& cmdline_opts) {
 		return 0;
 	}
 
-	// Options changing their behavior dependant on some others should be checked below.
+	// Options changing their behavior dependent on some others should be checked below.
 
 	if ( cmdline_opts.preprocess ) {
 		handle_preprocess_command(cmdline_opts);
