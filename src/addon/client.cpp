@@ -182,12 +182,15 @@ bool addons_client::delete_remote_addon(const std::string& id, std::string& resp
 	return !this->update_last_error(response_buf);
 }
 
-bool addons_client::download_addon(config& archive_cfg, const std::string& id, const std::string& title)
+bool addons_client::download_addon(config& archive_cfg, const std::string& id, const std::string& title, bool increase_downloads)
 {
 	archive_cfg.clear();
 
 	config request_buf;
-	request_buf.add_child("request_campaign")["name"] = id;
+	config& request_body = request_buf.add_child("request_campaign");
+
+	request_body["name"] = id;
+	request_body["increase_downloads"] = increase_downloads;
 
 	utils::string_map i18n_symbols;
 	i18n_symbols["addon_title"] = title;

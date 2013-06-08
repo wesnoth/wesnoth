@@ -78,8 +78,10 @@ public:
 	 * @param id          Add-on id.
 	 * @param title       Add-on title, used for status display.
 	 * @param archive_cfg Config object to hold the downloaded add-on archive data.
+	 * @param increase_downloads Whether to request the server to increase the add-on's
+	 *                           download count or not (e.g. when upgrading).
 	 */
-	bool download_addon(config& archive_cfg, const std::string& id, const std::string& title);
+	bool download_addon(config& archive_cfg, const std::string& id, const std::string& title, bool increase_downloads = true);
 
 	/**
 	 * Installs the specified add-on using an archive received from the server.
