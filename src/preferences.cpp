@@ -674,6 +674,16 @@ bool animate_map()
 	return preferences::get("animate_map", true);
 }
 
+bool minimap_movement_coding()
+{
+	return preferences::get("minimap_movement_coding", false);
+}
+
+void toggle_minimap_color_coding()
+{
+	set("minimap_movement_coding", !minimap_movement_coding());
+}
+
 void set_animate_map(bool value)
 {
 	set("animate_map", value);

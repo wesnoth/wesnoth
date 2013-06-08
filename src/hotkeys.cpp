@@ -182,6 +182,7 @@ const hotkey_command hotkey_list_[] = {
 	{ hotkey::HOTKEY_EDITOR_UNIT_CHANGE_ID, "editor-change-unitid", N_("Change Unit ID"), false, hotkey::SCOPE_EDITOR, NULL },
 	{ hotkey::HOTKEY_EDITOR_UNIT_TOGGLE_LOYAL, "editor-unit-toggle-loyal", N_("Loyal"), false, hotkey::SCOPE_EDITOR, NULL },
 
+	{ hotkey::HOTKEY_MINIMAP_COLOR_CODING, "minimap-color-coding", N_("Toggle Minimap color coding"), false, hotkey::SCOPE_GENERAL, NULL },
 
 	{ hotkey::HOTKEY_EDITOR_BRUSH_NEXT, "editor-brush-next", N_("Next Brush"), false, hotkey::SCOPE_EDITOR, NULL },
 	{ hotkey::HOTKEY_EDITOR_BRUSH_DEFAULT, "editor-brush-default", N_("Default Brush"), false, hotkey::SCOPE_EDITOR, NULL },
@@ -1163,6 +1164,10 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 		}
 	}
 	switch (command) {
+		case HOTKEY_MINIMAP_COLOR_CODING:
+			preferences::toggle_minimap_color_coding();
+			disp.redraw_minimap();
+			break;
 		case HOTKEY_ZOOM_IN:
 			disp.set_zoom(zoom_amount);
 			break;

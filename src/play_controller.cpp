@@ -868,6 +868,7 @@ bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int in
 	case hotkey::HOTKEY_CLEAR_MSG:
 	case hotkey::HOTKEY_LEFT_MOUSE_CLICK:
 	case hotkey::HOTKEY_RIGHT_MOUSE_CLICK:
+	case hotkey::HOTKEY_MINIMAP_COLOR_CODING:
 		return true;
 
 	// Commands that have some preconditions:

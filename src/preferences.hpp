@@ -172,6 +172,9 @@ namespace preferences {
 	bool animate_map();
 	void set_animate_map(bool value);
 
+	bool minimap_movement_coding();
+	void toggle_minimap_color_coding();
+
 	bool show_standing_animations();
 	void set_show_standing_animations(bool value);
 
