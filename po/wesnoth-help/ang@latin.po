@@ -8,14 +8,15 @@ msgstr ""
 "Project-Id-Version: ang@latin\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2013-05-05 11:23+0200\n"
-"PO-Revision-Date: 2012-05-27 04:15-0500\n"
+"PO-Revision-Date: 2013-05-28 16:41-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: Old English <http://wiki.wesnoth.org/OldEnglishTranslation>\n"
 "Language: ang@latin\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.5\n"
 
 #. [time]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:523
@@ -1217,7 +1218,7 @@ msgstr ""
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:218
 msgid "Shroud and Fog of War"
-msgstr "Deorcness and Ƿiges Mist"
+msgstr "Heolstor and Ƿiges Mist"
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:221
@@ -4022,35 +4023,11 @@ msgid ""
 "in the tales and nightmares of its denizens, as well."
 msgstr ""
 
-# Weak masculine noun
-# -
-# Sanskrit loanword
-# ------
-# Declension:
-# -
-# Singular / plural
-# -
-# Nominative: naga / nagan
-# Accusative: nagan / nagan
-# Genetive: nagan / nagena
-# Dative: nagan / nagum
-# -------
-# TODO: decide how to transliterate "nagena" to the fuþorc.
 #. [race]: id=naga
 #: data/core/units.cfg:230
 msgid "race^Naga"
 msgstr "Naga"
 
-# Loanword from Sanskrit.
-# -
-# I'm analyzing the "-ini" as though it were a relative of "-en"/"-in" for the sake of declension. Although this is probably wrong, that's probably what they would have done back then. Also, translation is an art — not a science.
-# -------------
-# Declension (singular / plural):
-# -
-# Nominative: nagini / naginna
-# Accusative: naginne / naginna
-# Genetive: naginne / naginna
-# Dative: naginne / naginnum
 #. [race]: id=naga
 #: data/core/units.cfg:231
 msgid "race^Nagini"
@@ -4475,6 +4452,33 @@ msgstr ""
 #: src/help.cpp:3217
 msgid "Parse error when parsing help text: "
 msgstr ""
+
+#~ msgid "Add-ons"
+#~ msgstr "Æteacan"
+
+#, fuzzy
+#~| msgid "<header>text='Units of this race'</header>"
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Campaigns and Scenarios'</header>"
+#~ msgstr "<header>text='Þisses cynnes ƿihta'</header>"
+
+#, fuzzy
+#~| msgid "<header>text='Units of this race'</header>"
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Multiplayer Eras and Factions'</header>"
+#~ msgstr "<header>text='Þisses cynnes ƿihta'</header>"
+
+#, fuzzy
+#~| msgid "<header>text='Units of this race'</header>"
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='Creator Resources'</header>"
+#~ msgstr "<header>text='Þisses cynnes ƿihta'</header>"
 
 #~ msgid "race+plural^Khalifate"
 #~ msgstr "Califdom"
