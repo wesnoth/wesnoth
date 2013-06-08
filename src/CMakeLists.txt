@@ -3,40 +3,40 @@ if(MSVC)
 	# This seems to break on some Linux systems in combination with strict
 	# compilation, so disabled for now. The problem occurred on Gentoo with
 	# boost 1.37. Debian with boost 1.34, 1.35 and 1.38 works properly.
-	include_directories( ${Boost_INCLUDE_DIR} )
+	include_directories(SYSTEM ${Boost_INCLUDE_DIR} )
 
 	#additional MSVC includes
-	include_directories( ${PANGO_INCLUDE_DIR} )
-	include_directories( ${CAIRO_INCLUDE_DIR} )
-	include_directories( ${GLIB_INCLUDE_DIR} )
-	include_directories( ${GLIBCONFIG_INCLUDE_PATH} )
+	include_directories(SYSTEM ${PANGO_INCLUDE_DIR} )
+	include_directories(SYSTEM ${CAIRO_INCLUDE_DIR} )
+	include_directories(SYSTEM ${GLIB_INCLUDE_DIR} )
+	include_directories(SYSTEM ${GLIBCONFIG_INCLUDE_PATH} )
 else(MSVC)
-	include_directories( ${FONTCONFIG_INCLUDE_DIRS} )
+	include_directories(SYSTEM ${FONTCONFIG_INCLUDE_DIRS} )
 endif(MSVC)
 
 
-include_directories( ${SDL_INCLUDE_DIR} )
-include_directories( ${PANGOCAIRO_INCLUDE_DIRS} )
-include_directories( ${GETTEXT_INCLUDE_DIR} )
-include_directories( ${LIBDBUS_INCLUDE_DIRS} )
-include_directories( ${LIBINTL_INCLUDE_DIR} )
-include_directories( ${VORBISFILE_INCLUDE_DIR} )
+include_directories(SYSTEM ${SDL_INCLUDE_DIR} )
+include_directories(SYSTEM ${PANGOCAIRO_INCLUDE_DIRS} )
+include_directories(SYSTEM ${GETTEXT_INCLUDE_DIR} )
+include_directories(SYSTEM ${LIBDBUS_INCLUDE_DIRS} )
+include_directories(SYSTEM ${LIBINTL_INCLUDE_DIR} )
+include_directories(SYSTEM ${VORBISFILE_INCLUDE_DIR} )
 
 #optional dependencies
 if(SDLIMAGE_INCLUDE_DIR)
-	include_directories( ${SDLIMAGE_INCLUDE_DIR} )
+	include_directories(SYSTEM ${SDLIMAGE_INCLUDE_DIR} )
 endif()
 if(SDLMIXER_INCLUDE_DIR)
-	include_directories( ${SDLMIXER_INCLUDE_DIR} )
+	include_directories(SYSTEM ${SDLMIXER_INCLUDE_DIR} )
 endif()
 if(SDLNET_INCLUDE_DIR)
-	include_directories( ${SDLNET_INCLUDE_DIR} )
+	include_directories(SYSTEM ${SDLNET_INCLUDE_DIR} )
 endif()
 if(SDLTTF_INCLUDE_DIR)
-	include_directories( ${SDLTTF_INCLUDE_DIR} )
+	include_directories(SYSTEM ${SDLTTF_INCLUDE_DIR} )
 endif()
 if(ZLIB_INCLUDE_DIR)
-	include_directories( ${ZLIB_INCLUDE_DIR} )
+	include_directories(SYSTEM ${ZLIB_INCLUDE_DIR} )
 endif()
 
 set(network_implementation_files network.cpp network_worker.cpp)
@@ -126,12 +126,12 @@ set(tools-external-libs
 )
 
 if(ENABLE_FRIBIDI AND FRIBIDI_LIBRARIES)
-	include_directories( ${FRIBIDI_INCLUDE_DIR} )
+	include_directories(SYSTEM ${FRIBIDI_INCLUDE_DIR} )
 	set(game-external-libs ${game-external-libs} ${FRIBIDI_LIBRARIES})
 endif(ENABLE_FRIBIDI AND FRIBIDI_LIBRARIES)
 
 if(X11_FOUND)
-	include_directories( ${X11_INCLUDE_DIR} )
+	include_directories(SYSTEM ${X11_INCLUDE_DIR} )
 	set(game-external-libs ${game-external-libs} ${X11_LIBRARIES})
 endif(X11_FOUND)
 
