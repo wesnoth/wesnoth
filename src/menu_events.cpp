@@ -2290,11 +2290,10 @@ void chat_command_handler::do_ignore()
 		const std::map<std::string, std::string>& tmp = preferences::get_acquaintances_nice("ignore");
 		print(_("ignores list"), tmp.empty() ? _("(empty)") : utils::join_map(tmp, ")\n", " (") + ")");
 	} else {
-		std::string reason = get_data(2);
 		utils::string_map symbols;
 		symbols["nick"] = get_arg(1);
 
-		if (preferences::add_ignore(get_arg(1), reason)) {
+		if (preferences::add_ignore(get_arg(1), get_data(2))) {
 			print(_("ignores list"),  VGETTEXT("Added to ignore list: $nick", symbols));
 			chat_handler_.user_relation_changed(get_arg(1));
 		} else {
@@ -2309,11 +2308,10 @@ void chat_command_handler::do_friend()
 		const std::map<std::string, std::string>& tmp = preferences::get_acquaintances_nice("friend");
 		print(_("friends list"), tmp.empty() ? _("(empty)") : utils::join_map(tmp, ")\n", " (") + ")");
 	} else {
-		std::string notes = get_data(2);
 		utils::string_map symbols;
 		symbols["nick"] = get_arg(1);
 
-		if (preferences::add_friend(get_arg(1), notes)) {
+		if (preferences::add_friend(get_arg(1), get_data(2))) {
 			print(_("friends list"),  VGETTEXT("Added to friends list: $nick", symbols));
 			chat_handler_.user_relation_changed(get_arg(1));
 		} else {

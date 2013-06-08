@@ -301,7 +301,12 @@ std::vector< std::string > square_parenthetical_split(std::string const &val,
 	return res;
 }
 
-std::map< std::string, std::string > map_split(std::string const &val, char major, char minor, int flags, std::string const default_value)
+std::map< std::string, std::string > map_split(
+		  std::string const &val
+		, char major
+		, char minor
+		, int flags
+		, std::string const& default_value)
 {
 	//first split by major so that we get a vector with the key-value pairs
 	std::vector< std::string > v = split(val, major, flags);

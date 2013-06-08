@@ -267,7 +267,7 @@ class acquaintance;
 class acquaintance {
 public:
 
-	explicit acquaintance()
+	acquaintance()
 	{
 	}
 
@@ -276,29 +276,34 @@ public:
 		load_from_config(cfg);
 	}
 
-	explicit acquaintance(const std::string &nick, const std::string status, const std::string notes):
-		nick_(nick), status_(status), notes_(notes)
+	acquaintance(
+			  const std::string& nick
+			, const std::string& status
+			, const std::string& notes)
+		: nick_(nick)
+		, status_(status)
+		, notes_(notes)
 	{
 
 	}
 
 	void load_from_config(const config& cfg);
 
-	const std::string get_nick() const { return nick_; };
-	const std::string get_status() const { return status_; };
-	const std::string get_notes() const { return notes_; };
+	const std::string& get_nick() const { return nick_; };
+	const std::string& get_status() const { return status_; };
+	const std::string& get_notes() const { return notes_; };
 
 	void save(config& cfg);
 
-protected:
+private:
 
-	// acquaintance's MP nick
+	/** acquaintance's MP nick */
 	std::string nick_;
 
-	// status (e.g., "friend", "ignore")
+	/**status (e.g., "friend", "ignore") */
 	std::string status_;
 
-	// notes on the acquaintance
+	/** notes on the acquaintance */
 	std::string notes_;
 
 };

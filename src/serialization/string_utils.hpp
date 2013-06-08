@@ -64,7 +64,12 @@ std::vector< std::string > split(std::string const &val, const char c = ',', con
  *  c => d
  *  e => f
 */
-std::map< std::string, std::string > map_split(std::string const &val, char major = ',', char minor = ':', int flags = REMOVE_EMPTY | STRIP_SPACES, std::string const default_value = "");
+std::map< std::string, std::string > map_split(
+		  std::string const &val
+		, char major = ','
+		, char minor = ':'
+		, int flags = REMOVE_EMPTY | STRIP_SPACES
+		, std::string const& default_value = "");
 
 /**
  * Splits a string based either on a separator where text within parenthesis
@@ -136,7 +141,10 @@ std::string join(T const &v, const std::string& s = ",")
 }
 
 template <typename T>
-std::string join_map(T const &v, std::string major = ",", std::string minor = ":")
+std::string join_map(
+		  const T& v
+		, const std::string& major = ","
+		, const std::string& minor = ":")
 {
         std::stringstream str;
         for(typename T::const_iterator i = v.begin(); i != v.end(); ++i) {
