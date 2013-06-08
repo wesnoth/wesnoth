@@ -150,7 +150,7 @@ public:
 	 * @param auto_close_time     The time in ms after which the dialog will
 	 *                            automatically close, if 0 it doesn't close.
 	 *                            @note the timeout is a minimum time and
-	 *                            there's no quarantee about how fast it closes
+	 *                            there's no guarantee about how fast it closes
 	 *                            after the minimum.
 	 *
 	 * @returns                   Whether the final retval_ == twindow::OK
@@ -272,8 +272,8 @@ protected:
 	 * there this sets the filename. (The @p use_markup makes no sense in an
 	 * image but that's a detail.)
 	 *
-	 * @note In general it's prefered a widget sets its markup flag in WML, but
-	 * some generice windows (like messages) may need different versions
+	 * @note In general it's preferred a widget sets its markup flag in WML, but
+	 * some generic windows (like messages) may need different versions
 	 * depending on where used.
 	 *
 	 * @param id                  Id of the widget, same value as in WML.
