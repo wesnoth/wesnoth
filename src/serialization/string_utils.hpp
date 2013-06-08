@@ -141,7 +141,10 @@ std::string join(T const &v, const std::string& s = ",")
 }
 
 template <typename T>
-std::string join_map(T const &v, std::string major = ",", std::string minor = ":")
+std::string join_map(
+		  const T& v
+		, const std::string& major = ","
+		, const std::string& minor = ":")
 {
         std::stringstream str;
         for(typename T::const_iterator i = v.begin(); i != v.end(); ++i) {
