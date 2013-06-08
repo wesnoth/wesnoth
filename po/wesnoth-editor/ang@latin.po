@@ -7,15 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ang@latin\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-22 22:03-0400\n"
-"PO-Revision-Date: 2012-05-24 12:01-0500\n"
+"POT-Creation-Date: 2013-05-22 22:09-0400\n"
+"PO-Revision-Date: 2013-05-28 18:24-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: Old English <http://wiki.wesnoth.org/OldEnglishTranslation>\n"
 "Language: ang@latin\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.5\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -75,7 +76,7 @@ msgstr "ƿeald"
 #. [editor_group]: id=fall
 #: data/core/editor/terrain-groups.cfg:52
 msgid "fall"
-msgstr ""
+msgstr "hærfest"
 
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:59
@@ -84,6 +85,7 @@ msgstr "gefroren"
 
 #. [editor_group]: id=rough
 #: data/core/editor/terrain-groups.cfg:66
+#, fuzzy
 msgid "rough"
 msgstr "ruh"
 
@@ -194,8 +196,9 @@ msgstr ""
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor.cfg:105
+#, fuzzy
 msgid "Window"
-msgstr ""
+msgstr "Eagþyrl"
 
 #. [menu]: id=menu-editor-areas
 #: data/themes/editor.cfg:115
@@ -215,7 +218,7 @@ msgstr "þorpas"
 #. [label]: id=units-icon
 #: data/themes/editor.cfg:161
 msgid "units"
-msgstr ""
+msgstr "ƿihta"
 
 #. [menu]: id=switch_time
 #: data/themes/editor.cfg:489
@@ -248,7 +251,7 @@ msgstr ""
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:59
 msgid "Name: "
-msgstr ""
+msgstr "Nama: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:60
 msgid "Type: "
@@ -292,11 +295,11 @@ msgstr ""
 
 #: src/editor/editor_controller.cpp:966
 msgid "Rename Unit"
-msgstr ""
+msgstr "Ƿihte Eftnemnan"
 
 #: src/editor/editor_controller.cpp:967
 msgid "Name:"
-msgstr ""
+msgstr "Nama:"
 
 #: src/editor/map/context_manager.cpp:119
 #: src/editor/map/context_manager.cpp:202
@@ -308,16 +311,12 @@ msgid "Choose a Map to Open"
 msgstr ""
 
 #: src/editor/map/context_manager.cpp:234
-#, fuzzy
-#| msgid "(New Map)"
 msgid "(New Area)"
-msgstr "(Niƿu Landcarte)"
+msgstr ""
 
 #: src/editor/map/context_manager.cpp:257
-#, fuzzy
-#| msgid "(New Map)"
 msgid "(New Side)"
-msgstr "(Niƿu Landcarte)"
+msgstr ""
 
 #: src/editor/map/context_manager.cpp:303
 msgid "Choose a Mask to Apply"
@@ -388,7 +387,7 @@ msgstr ""
 
 #: src/editor/map/editor_map.cpp:149
 msgid "Player"
-msgstr ""
+msgstr "Plegere"
 
 #: src/editor/map/editor_map.cpp:266
 msgid "The size of the target map is different from the current map"
@@ -438,8 +437,9 @@ msgid "BG: "
 msgstr "BG: "
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:86
+#, fuzzy
 msgid "player^None"
-msgstr ""
+msgstr "Nanne"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:98
 msgid "Player $player_number"

@@ -8,15 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ang@latin\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-22 22:02-0400\n"
-"PO-Revision-Date: 2012-08-15 12:46-0500\n"
+"POT-Creation-Date: 2013-05-22 22:08-0400\n"
+"PO-Revision-Date: 2013-05-28 17:39-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: Old English <http://wiki.wesnoth.org/OldEnglishTranslation>\n"
 "Language: ang@latin\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.5\n"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:4
@@ -333,21 +334,21 @@ msgstr "Affricanisc Geþeodnes"
 
 #. [about]
 #: data/core/about.cfg:1337
+#, fuzzy
 msgid "Arabic Translation"
 msgstr "Arabisc Geþeodnes"
 
+# Espreon sayeth: from "Ƿascan", 'Gascons'
 #. [about]
 #: data/core/about.cfg:1344
-#, fuzzy
 msgid "Basque Translation"
 msgstr "Ƿascisc Geþeodnes"
 
-# Espreon asketh: "Or should I be using 'Pulgarisc'? 'Bulgarisc' is valid, but..."
+# Espreon sayeth: I'm using "Pulgarisc" rather than "Bulgarisc" since we have "Pulgare".
 #. [about]
 #: data/core/about.cfg:1357
-#, fuzzy
 msgid "Bulgarian Translation"
-msgstr "Bulgarisc Geþeodnes"
+msgstr "Pulgarisc Geþeodnes"
 
 #. [about]
 #: data/core/about.cfg:1376
@@ -359,13 +360,16 @@ msgstr ""
 msgid "Chinese Translation"
 msgstr "Cinisc Geþeodnes"
 
+# NOTE: Meh to the translation of the "(Taiwan)" part.
 #. [about]
 #: data/core/about.cfg:1488
+#, fuzzy
 msgid "Chinese (Taiwan) Translation"
 msgstr "Cinisc (Taiƿan) Geþeodnes"
 
 #. [about]
 #: data/core/about.cfg:1501
+#, fuzzy
 msgid "Croatian Translation"
 msgstr "Croatisc Geþeodnes"
 
@@ -384,6 +388,7 @@ msgstr "Denisc Geþeodnes"
 msgid "Dutch Translation"
 msgstr "Niðerlendisc Geþeodnes"
 
+# NOTE: meh...
 #. [about]
 #: data/core/about.cfg:1666
 #, fuzzy
@@ -445,7 +450,7 @@ msgstr "Creacisc Geþeodnes"
 #. [about]
 #: data/core/about.cfg:2111
 msgid "Hebrew Translation"
-msgstr ""
+msgstr "Hebreisc Geþeodnes"
 
 #. [about]
 #: data/core/about.cfg:2124
@@ -489,11 +494,13 @@ msgstr "Lædenu Geþeodnes"
 
 #. [about]
 #: data/core/about.cfg:2374
+#, fuzzy
 msgid "Latvian Translation"
 msgstr "Lettisc Geþeodnes"
 
 #. [about]
 #: data/core/about.cfg:2385
+#, fuzzy
 msgid "Lithuanian Translation"
 msgstr "Liþþuanisc Geþeodnes"
 
@@ -524,16 +531,20 @@ msgstr "Polisc Geþeodnes"
 
 #. [about]
 #: data/core/about.cfg:2510
+#, fuzzy
 msgid "Portuguese Translation"
 msgstr "Portuglisc Geþeodnes"
 
+# NOTE: meh to the translation of the "(Brazil)" part
 #. [about]
 #: data/core/about.cfg:2524
+#, fuzzy
 msgid "Portuguese (Brazil) Translation"
 msgstr "Portuglisc (Brasil) Geþeodnes"
 
 #. [about]
 #: data/core/about.cfg:2578
+#, fuzzy
 msgid "Romanian Translation"
 msgstr "Rumænisc Geþeodnes"
 
@@ -542,12 +553,13 @@ msgstr "Rumænisc Geþeodnes"
 msgid "Russian Translation"
 msgstr "Russic Geþeodnes"
 
+# Espreon sayeth: I added "Heah" to contrast with Scots, which I guess I'd call "Niðerscyttisc".
 #. [about]
 #: data/core/about.cfg:2675
 #, fuzzy
 #| msgid "Polish Translation"
 msgid "Scottish Gaelic Translation"
-msgstr "Polisc Geþeodnes"
+msgstr "Heahscyttisc Geþeodnes"
 
 #. [about]
 #: data/core/about.cfg:2684
@@ -571,20 +583,19 @@ msgstr "Speonisc Geþeodnes"
 
 #. [about]
 #: data/core/about.cfg:2832
+#, fuzzy
 msgid "Swedish Translation"
 msgstr "Sƿeonisc Geþeodnes"
 
 #. [about]
 #: data/core/about.cfg:2873
 msgid "Turkish Translation"
-msgstr "Turkisc Geþeodnes"
+msgstr "Turcisc Geþeodnes"
 
 #. [about]
 #: data/core/about.cfg:2895
-#, fuzzy
-#| msgid "Romanian Translation"
 msgid "Ukrainian Translation"
-msgstr "Rumænisc Geþeodnes"
+msgstr ""
 
 #. [about]
 #: data/core/about.cfg:2908
@@ -1857,6 +1868,7 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:13
+#, fuzzy
 msgid "<i>― King Konrad, 536YW</i>"
 msgstr "<i>― Konrad Cyning, 536ǷG</i>"
 
@@ -1902,6 +1914,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:29 data/hardwired/tips.cfg:105
 #: data/hardwired/tips.cfg:213 data/hardwired/tips.cfg:225
+#, fuzzy
 msgid "<i>― High Lord Kalenz, 470YW</i>"
 msgstr "<i>― Kalenz Heah Hlaford, 470ǷG</i>"
 
@@ -2119,6 +2132,7 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:117
+#, fuzzy
 msgid "<i>― Meneldur, 123YW</i>"
 msgstr "<i>― Meneldur, 123ǷG</i>"
 
@@ -2263,6 +2277,7 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:185
+#, fuzzy
 msgid "<i>― Queen Li’sar, 528YW</i>"
 msgstr "<i>― Li’sar Cyninge, 528ǷG</i>"
 
@@ -2343,6 +2358,7 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:221 data/hardwired/tips.cfg:233
+#, fuzzy
 msgid "<i>― Lord Hamel of Knalga</i>"
 msgstr "<i>― Knalgan Hamel Hlaford</i>"
 
@@ -2391,13 +2407,13 @@ msgstr "geætredu"
 #. [lua]: set_status
 #: data/lua/wml-tags.lua:1118 src/actions/attack.cpp:805
 msgid "female^slowed"
-msgstr "geforslæƿedu"
+msgstr "forslæƿedu"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml-tags.lua:1118 src/actions/attack.cpp:805
 msgid "slowed"
-msgstr "geforslæƿed"
+msgstr "forslæƿed"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
@@ -2481,7 +2497,7 @@ msgstr "oferfeorfeoht"
 # TODO: perhaps reconsider this translation
 #: data/scenario-test.cfg:3671
 msgid "electrical"
-msgstr "gastfyr"
+msgstr "gastfyrlic"
 
 #. [menu]: id=menu-main
 #: data/themes/default.cfg:105 data/themes/dfool.cfg:131
@@ -2603,8 +2619,9 @@ msgstr ""
 
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/macros.cfg:80
+#, fuzzy
 msgid "Stop"
-msgstr "Stoppian"
+msgstr "Oþstillan"
 
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/macros.cfg:81
@@ -2706,10 +2723,8 @@ msgid "cured"
 msgstr ""
 
 #: src/actions/heal.cpp:256
-#, fuzzy
-#| msgid "female^slowed"
 msgid "female^cured"
-msgstr "geforslæƿedu"
+msgstr ""
 
 #: src/actions/move.cpp:965
 msgid "Ambushed!"
@@ -2783,10 +2798,8 @@ msgid ""
 msgstr ""
 
 #: src/addon/client.cpp:300 src/addon/manager_ui.cpp:682
-#, fuzzy
-#| msgid "Add-on Installed"
 msgid "Add-ons Manager"
-msgstr "Æteacan Geonsteald"
+msgstr ""
 
 #: src/addon/info.cpp:148
 msgid "addon_type^Campaign"
@@ -2817,10 +2830,8 @@ msgid "addon_type^MP campaign"
 msgstr ""
 
 #: src/addon/info.cpp:162
-#, fuzzy
-#| msgid "addon_type^Campaign"
 msgid "addon_type^MP modification"
-msgstr "Fyrd"
+msgstr ""
 
 #: src/addon/info.cpp:164
 msgid "addon_type^Resources"
@@ -2839,20 +2850,16 @@ msgid "unit_byte^B"
 msgstr ""
 
 #: src/addon/manager_ui.cpp:97
-#, fuzzy
-#| msgid "Add-on Installed"
 msgid "addon_state^Not installed"
-msgstr "Æteacan Geonsteald"
+msgstr ""
 
 #: src/addon/manager_ui.cpp:97
 msgid "addon_state^Published, not installed"
 msgstr ""
 
 #: src/addon/manager_ui.cpp:104
-#, fuzzy
-#| msgid "Add-on Installed"
 msgid "addon_state^Installed"
-msgstr "Æteacan Geonsteald"
+msgstr "Onsteald"
 
 #: src/addon/manager_ui.cpp:104
 msgid "addon_state^Published"
@@ -2915,7 +2922,7 @@ msgstr ""
 
 #: src/addon/manager_ui.cpp:174 src/addon/manager_ui.cpp:519
 msgid "Size"
-msgstr "Grietu"
+msgstr "Micelnes"
 
 #: src/addon/manager_ui.cpp:174 src/addon/manager_ui.cpp:528
 #: src/dialogs.cpp:321 src/dialogs.cpp:496 src/menu_events.cpp:965
@@ -3037,17 +3044,16 @@ msgstr ""
 
 #: src/addon/manager_ui.cpp:723
 msgid "filter^Options"
-msgstr ""
-
-#: src/addon/manager_ui.cpp:829
-msgid "Add-on Installed"
-msgstr "Æteacan Geonsteald"
+msgstr "Costas"
 
 #: src/addon/manager_ui.cpp:829
 #, fuzzy
-#| msgid "Add-on Installed"
+msgid "Add-on Installed"
+msgstr "Æteacan Onsteald"
+
+#: src/addon/manager_ui.cpp:829
 msgid "Add-on Updated"
-msgstr "Æteacan Geonsteald"
+msgstr ""
 
 #: src/addon/manager_ui.cpp:830
 msgid "The add-on '$addon_title|' has been successfully installed."
@@ -3061,13 +3067,11 @@ msgstr ""
 #, fuzzy
 #| msgid "Add-on Installed"
 msgid "Add-ons Installed"
-msgstr "Æteacan Geonsteald"
+msgstr "Æteacan Onsteald"
 
 #: src/addon/manager_ui.cpp:835
-#, fuzzy
-#| msgid "Add-on Installed"
 msgid "Add-ons Updated"
-msgstr "Æteacan Geonsteald"
+msgstr ""
 
 #: src/addon/manager_ui.cpp:836
 msgid "All add-ons installed successfully."
@@ -3182,7 +3186,7 @@ msgstr ""
 
 #: src/attack_prediction_display.cpp:248
 msgid "Slowed"
-msgstr "Geforslæƿed"
+msgstr "Forslæƿed"
 
 #: src/attack_prediction_display.cpp:253 src/reports.cpp:907
 msgid "Total damage"
@@ -3268,7 +3272,6 @@ msgid "Recruit"
 msgstr ""
 
 #: src/dialogs.cpp:467 src/dialogs.cpp:556
-#, fuzzy
 msgid "Select unit:"
 msgstr "Ƿihte ceosan:"
 
@@ -3369,10 +3372,8 @@ msgid "Load Game"
 msgstr ""
 
 #: src/dialogs.cpp:986
-#, fuzzy
-#| msgid "Difficulty: "
 msgid "Change difficulty"
-msgstr "Earfoðnes: "
+msgstr "Earfoðnesse ƿendan"
 
 #: src/dialogs.cpp:989
 msgid "Change campaign difficulty before loading"
@@ -3403,7 +3404,6 @@ msgid "Profile"
 msgstr ""
 
 #: src/dialogs.cpp:1183
-#, fuzzy
 msgid "level"
 msgstr "mæþ"
 
@@ -3555,7 +3555,7 @@ msgstr "Mist"
 #: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_create.cpp:96
 #: src/multiplayer_lobby.cpp:605 src/multiplayer_lobby.cpp:611
 msgid "Shroud"
-msgstr "Deorcness"
+msgstr "Heolstor"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:314 src/multiplayer_lobby.cpp:615
 #, fuzzy
@@ -3563,6 +3563,7 @@ msgid "none"
 msgstr "nan"
 
 #: src/gui/dialogs/lobby_player_info.cpp:98
+#, fuzzy
 msgid "In game:"
 msgstr "On gamene:"
 
@@ -3608,6 +3609,7 @@ msgstr ""
 
 #: src/leader_list.cpp:141 src/menu_events.cpp:988
 #: src/multiplayer_connect.cpp:225 src/multiplayer_connect.cpp:269
+#, fuzzy
 msgid "gender^Random"
 msgstr "Gelimplicu"
 
@@ -3696,12 +3698,10 @@ msgid ""
 msgstr ""
 
 #: src/leader_scroll_dialog.cpp:190 src/menu_events.cpp:327
-#, fuzzy
-#| msgid "scenario settings^Fog"
 msgid ""
 "scenario settings^Support Per\n"
 "Village"
-msgstr "Mist"
+msgstr ""
 
 #: src/leader_scroll_dialog.cpp:191 src/menu_events.cpp:328
 msgid "scenario settings^Fog"
@@ -3709,7 +3709,7 @@ msgstr "Mist"
 
 #: src/leader_scroll_dialog.cpp:192 src/menu_events.cpp:329
 msgid "scenario settings^Shroud"
-msgstr "Deorcness"
+msgstr "Heolstor"
 
 #: src/leader_scroll_dialog.cpp:246 src/leader_scroll_dialog.cpp:247
 #: src/menu_events.cpp:379 src/menu_events.cpp:380
@@ -3774,8 +3774,9 @@ msgid "Initializing teams"
 msgstr ""
 
 #: src/loadscreen.cpp:235
+#, fuzzy
 msgid "Loading units"
-msgstr ""
+msgstr "Hladende ƿihta"
 
 #: src/loadscreen.cpp:236 src/loadscreen.cpp:238
 msgid "Initializing display"
@@ -3883,8 +3884,6 @@ msgid "Rename Unit"
 msgstr "Ƿihte Eftnemnan"
 
 #: src/menu_events.cpp:883
-#, fuzzy
-#| msgid "Name: "
 msgid "Name:"
 msgstr "Nama: "
 
@@ -4085,6 +4084,7 @@ msgid "Request a list of details you can set for your registered nickname."
 msgstr ""
 
 #: src/menu_events.cpp:1813 src/menu_events.cpp:1816 src/menu_events.cpp:1818
+#, fuzzy
 msgid "<room>"
 msgstr "<rum>"
 
@@ -4298,7 +4298,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2036
 msgid "Create a unit."
-msgstr ""
+msgstr "Ƿihte gesceppan."
 
 #: src/menu_events.cpp:2038
 msgid "Toggle fog for the current player."
@@ -4350,11 +4350,11 @@ msgstr ""
 
 #: src/menu_events.cpp:2188
 msgid "whisper to $receiver"
-msgstr "hƿisprian to $receiver"
+msgstr "hƿisprung to $receiver"
 
 #: src/menu_events.cpp:2195 src/multiplayer_ui.cpp:550
 msgid "whisper: $sender"
-msgstr ""
+msgstr "hƿisprung: $sender"
 
 #: src/menu_events.cpp:2291 src/menu_events.cpp:2310
 #: src/multiplayer_connect.cpp:666
@@ -4548,10 +4548,8 @@ msgid "Era can't be activated. Some dependencies are missing: "
 msgstr ""
 
 #: src/mp_depcheck.cpp:609 src/mp_depcheck.cpp:700
-#, fuzzy
-#| msgid "No eras found."
 msgid "No compatible scenarios found."
-msgstr "Nana ielda gefunden."
+msgstr ""
 
 #: src/mp_depcheck.cpp:638
 msgid ""
@@ -4792,6 +4790,7 @@ msgid "Waiting for players to choose factions..."
 msgstr ""
 
 #: src/multiplayer_create.cpp:57 src/multiplayer_lobby.cpp:783
+#, fuzzy
 msgid "Create Game"
 msgstr "Gamen Macian"
 
@@ -4800,6 +4799,7 @@ msgid "Time limit"
 msgstr ""
 
 #: src/multiplayer_create.cpp:88
+#, fuzzy
 msgid "Name of game:"
 msgstr "Gamenes nama:"
 
@@ -4936,6 +4936,7 @@ msgid "No eras found"
 msgstr "Nana ielda gefunden"
 
 #: src/multiplayer_create.cpp:296
+#, fuzzy
 msgid "$login|’s game"
 msgstr "$login|es gamen"
 
@@ -4983,14 +4984,13 @@ msgid "Action bonus: "
 msgstr ""
 
 #: src/multiplayer_create.cpp:508
+#, fuzzy
 msgid "Village gold: "
 msgstr "Þorpes gold:"
 
 #: src/multiplayer_create.cpp:514
-#, fuzzy
-#| msgid "Village gold: "
 msgid "Village support: "
-msgstr "Þorpes gold:"
+msgstr ""
 
 #: src/multiplayer_create.cpp:520
 msgid "Experience modifier: "
@@ -5002,7 +5002,7 @@ msgstr ""
 
 #: src/multiplayer_create.cpp:664
 msgid "Size: "
-msgstr "Grietu: "
+msgstr "Micelnes: "
 
 #: src/multiplayer_lobby.cpp:125
 msgid "--no games open--"
@@ -5057,6 +5057,7 @@ msgid "Vacant slots"
 msgstr ""
 
 #: src/multiplayer_lobby.cpp:790
+#, fuzzy
 msgid "Friends in game"
 msgstr "Friend on gamene"
 
@@ -5416,7 +5417,7 @@ msgstr ""
 
 #: src/reports.cpp:311
 msgid "slowed: "
-msgstr "geforslæƿed: "
+msgstr "forslæƿed: "
 
 #: src/reports.cpp:312
 msgid ""
@@ -5439,7 +5440,6 @@ msgid ""
 msgstr ""
 
 #: src/reports.cpp:319
-#, fuzzy
 msgid "petrified: "
 msgstr "forstanod: "
 
@@ -5521,7 +5521,7 @@ msgstr "Ladscipe: "
 
 #: src/reports.cpp:697
 msgid "Slowed: "
-msgstr "Geforslæƿed: "
+msgstr "Forslæƿed: "
 
 #: src/reports.cpp:701
 msgid "Attacks: "
@@ -5576,8 +5576,6 @@ msgid "None"
 msgstr ""
 
 #: src/reports.cpp:1078
-#, fuzzy
-#| msgid "Lawful units: "
 msgid "Lawful units: "
 msgstr "Dæglica ƿihta: "
 
@@ -5819,20 +5817,17 @@ msgid "Details"
 msgstr ""
 
 #: src/statistics_dialog.cpp:169
-#, fuzzy
-#| msgid "End Scenario"
 msgid "Select Scenario"
-msgstr "Capitol Endian"
+msgstr "Capitol Ceosan"
 
+# TODO: review this translation later
 #: src/statistics_dialog.cpp:225 src/statistics_dialog.cpp:303
 msgid "Campaign"
-msgstr ""
+msgstr "Fyrd"
 
 #: src/statistics_dialog.cpp:225 src/statistics_dialog.cpp:303
-#, fuzzy
-#| msgid "End Scenario"
 msgid "Scenario"
-msgstr "Capitol Endian"
+msgstr "Capitol"
 
 #: src/statistics_dialog.cpp:283
 msgid "Damage"
@@ -5984,61 +5979,3 @@ msgstr ""
 #: src/whiteboard/manager.cpp:1114
 msgid "Whiteboard Options"
 msgstr ""
-
-#, fuzzy
-#~ msgid "Move Konrad here"
-#~ msgstr "Lædere her ƿegan"
-
-#, fuzzy
-#~| msgid "help"
-#~ msgid "Whelps"
-#~ msgstr "help"
-
-#, fuzzy
-#~| msgid "End Scenario"
-#~ msgid "End scenario"
-#~ msgstr "Capitol Endian"
-
-#, fuzzy
-#~| msgid "Notes:"
-#~ msgid "Notes"
-#~ msgstr "Geƿritu:"
-
-#, fuzzy
-#~ msgid "AI moves Messenger here"
-#~ msgstr "Lædere her ƿegan"
-
-#, fuzzy
-#~ msgid "Move Rossauba here"
-#~ msgstr "Lædere her ƿegan"
-
-#, fuzzy
-#~| msgid "Swarm: "
-#~ msgid "Swarm"
-#~ msgstr "Sƿearm: "
-
-#, fuzzy
-#~| msgid "End Scenario"
-#~ msgid "Select another ai"
-#~ msgstr "Capitol Endian"
-
-#, fuzzy
-#~| msgid "female^slowed"
-#~ msgid "female^invisible"
-#~ msgstr "geforslæƿedu"
-
-#, fuzzy
-#~| msgid "Choose weapon:"
-#~ msgid "Choose a Map to Open"
-#~ msgstr "Ƿæpen ceosan:"
-
-#, fuzzy
-#~| msgid "Choose weapon:"
-#~ msgid "Choose Target Map"
-#~ msgstr "Ƿæpen ceosan:"
-
-#~ msgid "Sending add-on"
-#~ msgstr "Sendende æteacan"
-
-#~ msgid "Get add-ons"
-#~ msgstr "Æteacan gietan"

@@ -8,15 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ang@latin\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-22 22:04-0400\n"
-"PO-Revision-Date: 2012-06-05 17:41-0500\n"
+"POT-Creation-Date: 2013-05-22 22:10-0400\n"
+"PO-Revision-Date: 2013-05-28 16:39-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: Old English <http://wiki.wesnoth.org/OldEnglishTranslation>\n"
 "Language: ang@latin\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.5\n"
 
 #. [terrain_type]: id=deep_water
 #. [terrain_type]: id=deep_water_gray
@@ -261,10 +262,8 @@ msgstr "Ƿindmylen"
 
 #. [terrain_type]: id=campfire
 #: data/core/terrain.cfg:409
-#, fuzzy
-#| msgid "Campaign"
 msgid "Campfire"
-msgstr "Fyrd"
+msgstr ""
 
 #. [terrain_type]: id=fence
 #: data/core/terrain.cfg:418
@@ -332,24 +331,18 @@ msgstr ""
 
 #. [terrain_type]: id=rainforest
 #: data/core/terrain.cfg:497
-#, fuzzy
-#| msgid "Pine Forest"
 msgid "Rainforest"
-msgstr "Pinƿeald"
+msgstr "Regnƿeald"
 
 #. [terrain_type]: id=palm_desert_forest
 #: data/core/terrain.cfg:509
-#, fuzzy
-#| msgid "Pine Forest"
 msgid "Palm Forest"
-msgstr "Pinƿeald"
+msgstr "Palmƿeald"
 
 #. [terrain_type]: id=palm_forest
 #: data/core/terrain.cfg:521
-#, fuzzy
-#| msgid "Pine Forest"
 msgid "Dense Palm Forest"
-msgstr "Pinƿeald"
+msgstr "Þicce Palmƿeald"
 
 #. [terrain_type]: id=savanna_forest
 #: data/core/terrain.cfg:533
@@ -540,9 +533,9 @@ msgstr ""
 #. [terrain_type]: id=forest_palm_hills
 #: data/core/terrain.cfg:878
 #, fuzzy
-#| msgid "Pine Forest"
+#| msgid "Palm Forest"
 msgid "Dense Palm Forested Hills"
-msgstr "Pinƿeald"
+msgstr "Þicce Palmƿeald"
 
 #. [terrain_type]: id=savanna_hills
 #: data/core/terrain.cfg:889
@@ -1181,10 +1174,8 @@ msgstr ""
 #. [terrain_type]: id=hangingbridgediag2
 #: data/core/terrain.cfg:2159 data/core/terrain.cfg:2170
 #: data/core/terrain.cfg:2181
-#, fuzzy
-#| msgid "Rotting Bridge"
 msgid "Hanging Bridge"
-msgstr "Rotiendu Brycg"
+msgstr ""
 
 #. [terrain_type]: id=stonechasmbridge
 #. [terrain_type]: id=stonechasmbridgediag1
@@ -1218,7 +1209,7 @@ msgstr ""
 #. [toggle_button]: id=shroud
 #: data/core/terrain.cfg:2282 data/gui/default/window/mp_create_game.cfg:479
 msgid "Shroud"
-msgstr "Deorcness"
+msgstr "Heolstor"
 
 #. [terrain_type]: id=fog
 #: data/core/terrain.cfg:2291
@@ -1369,7 +1360,7 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/addon_description.cfg:212
 msgid "Size:"
-msgstr "Grietu:"
+msgstr "Micelnes:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:243
@@ -1399,7 +1390,7 @@ msgstr "Nana"
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:34
 msgid "addons_of_type^Campaigns"
-msgstr ""
+msgstr "Fyrde"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:35
@@ -1463,17 +1454,13 @@ msgstr ""
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:205
-#, fuzzy
-#| msgid "Translations:"
 msgid "Installation status:"
-msgstr "Geþeodnessa:"
+msgstr ""
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:248
-#, fuzzy
-#| msgid "Add-ons"
 msgid "Add-on types:"
-msgstr "Æteacan"
+msgstr ""
 
 #. [button]: id=toggle_all_displayed_types
 #: data/gui/default/window/addon_filter_options.cfg:261
@@ -1667,6 +1654,7 @@ msgstr ""
 
 #. [label]
 #: data/gui/default/window/editor_generate_map.cfg:35
+#, fuzzy
 msgid "Generate Random Map"
 msgstr "Gelimplicu Landcartan Cinnan"
 
@@ -1707,10 +1695,8 @@ msgstr "Hiehðu:"
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_new_map.cfg:115
-#, fuzzy
-#| msgid "Create Game"
 msgid "Create"
-msgstr "Gamen Macian"
+msgstr "Macian"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -1756,7 +1742,7 @@ msgstr ""
 #. [label]: id=title
 #: data/gui/default/window/editor_set_starting_position.cfg:50
 msgid "Choose Player"
-msgstr ""
+msgstr "Plegere Ceosan"
 
 #. [label]: id=message
 #: data/gui/default/window/editor_set_starting_position.cfg:70
@@ -1930,8 +1916,9 @@ msgstr "Nese"
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_load.cfg:50
 #: src/gui/dialogs/mp_create_game.cpp:99 src/hotkeys.cpp:93
+#, fuzzy
 msgid "Load Game"
-msgstr ""
+msgstr "Gamen Hladan"
 
 #. [button]: id=delete
 #: data/gui/default/window/game_load.cfg:364
@@ -1941,10 +1928,8 @@ msgstr ""
 
 #. [toggle_button]: id=change_difficulty
 #: data/gui/default/window/game_load.cfg:383
-#, fuzzy
-#| msgid "Difficulty"
 msgid "Change difficulty"
-msgstr "Earfoðnes"
+msgstr "Earfoðnesse ƿendan"
 
 #. [toggle_button]: id=change_difficulty
 #: data/gui/default/window/game_load.cfg:384
@@ -1987,6 +1972,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit_game
 #: data/gui/default/window/game_save_oos.cfg:162 src/hotkeys.cpp:112
+#, fuzzy
 msgid "Quit Game"
 msgstr "Gamen Læfan"
 
@@ -2036,6 +2022,7 @@ msgstr "Ceos þine forborenan spræce:"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:109
+#, fuzzy
 msgid "Games"
 msgstr "Gamen"
 
@@ -2110,10 +2097,11 @@ msgstr ""
 #. [toggle_button]: id=player_list_sort_name
 #: data/gui/default/window/lobby_main.cfg:321
 msgid "Alphabetically"
-msgstr ""
+msgstr "Stæfroflice"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:337
+#, fuzzy
 msgid "Selected game"
 msgstr "Gecoren gamen"
 
@@ -2129,6 +2117,7 @@ msgstr ""
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:340
+#, fuzzy
 msgid "Other games"
 msgstr "Oðru gamen"
 
@@ -2197,6 +2186,7 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:686
 #: data/gui/default/window/mp_create_game.cfg:41
+#, fuzzy
 msgid "Create Game"
 msgstr "Gamen Macian"
 
@@ -2349,13 +2339,14 @@ msgstr ""
 #. [text_box]: id=game_name
 #: data/gui/default/window/mp_create_game.cfg:70
 #: data/gui/default/window/mp_create_game.cfg:85
+#, fuzzy
 msgid "Name of game:"
 msgstr "Gamenes nama:"
 
 #. [label]: id=map_players
 #: data/gui/default/window/mp_create_game.cfg:148
 msgid "Players: "
-msgstr ""
+msgstr "Plegeras: "
 
 #. [label]: id=map_size
 #: data/gui/default/window/mp_create_game.cfg:167
@@ -2396,6 +2387,7 @@ msgstr ""
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:380
+#, fuzzy
 msgid "Village gold"
 msgstr "Þorpes gold"
 
@@ -2596,7 +2588,7 @@ msgstr ""
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:259
 msgid "Load"
-msgstr ""
+msgstr "Hladan"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:259
@@ -2707,7 +2699,7 @@ msgstr ""
 
 #: src/game_preferences.cpp:429
 msgid "player"
-msgstr ""
+msgstr "plegere"
 
 #: src/game_preferences.cpp:921
 msgid "%H:%M"
@@ -3355,10 +3347,8 @@ msgid "addons_view^Installed"
 msgstr ""
 
 #: src/gui/dialogs/addon/filter_options.cpp:187
-#, fuzzy
-#| msgid "Uninstall Add-ons"
 msgid "addons_view^All Add-ons"
-msgstr "Æteacan Unonstellan"
+msgstr "Ealle Æteacan"
 
 #: src/gui/dialogs/addon_list.cpp:256
 #: src/gui/dialogs/network_transmission.cpp:54
@@ -3400,7 +3390,7 @@ msgstr ""
 
 #: src/gui/dialogs/lobby_main.cpp:229
 msgid "whisper to $receiver"
-msgstr "hƿisprian to $receiver"
+msgstr "hƿisprung to $receiver"
 
 #: src/gui/dialogs/lobby_main.cpp:662
 msgid "Games: showing $num_shown out of $num_total"
@@ -3454,8 +3444,9 @@ msgid "Side $side"
 msgstr ""
 
 #: src/gui/dialogs/mp_create_game.cpp:100
+#, fuzzy
 msgid "Load Game..."
-msgstr ""
+msgstr "Gamen Hladan..."
 
 #: src/gui/dialogs/mp_depcheck_confirm_change.cpp:64
 msgid "$requester requires the following modifications to be enabled:"
@@ -3534,26 +3525,20 @@ msgid "Hotkey Settings"
 msgstr ""
 
 #: src/hotkey_preferences_display.cpp:169
-#, fuzzy
-#| msgid "Select All"
 msgid "Defaults"
-msgstr "Eall Ceosan"
+msgstr ""
 
 #: src/hotkey_preferences_display.cpp:172
 msgid "Reset all bindings to the default values"
 msgstr ""
 
 #: src/hotkey_preferences_display.cpp:216
-#, fuzzy
-#| msgid "Prefs section^Sound"
 msgid "Prefs section^Game"
-msgstr "Sƿeg"
+msgstr "Gamen"
 
 #: src/hotkey_preferences_display.cpp:218
-#, fuzzy
-#| msgid "Prefs section^Sound"
 msgid "Prefs section^Editor"
-msgstr "Sƿeg"
+msgstr "Adihtend"
 
 #: src/hotkey_preferences_display.cpp:245
 msgid "Add Hotkey"
@@ -3640,8 +3625,9 @@ msgid "Undo"
 msgstr ""
 
 #: src/hotkeys.cpp:78
+#, fuzzy
 msgid "Redo"
-msgstr ""
+msgstr "Geedniƿian"
 
 #: src/hotkeys.cpp:79
 msgid "Zoom In"
@@ -3758,10 +3744,8 @@ msgid "Continue Network Game"
 msgstr ""
 
 #: src/hotkeys.cpp:113
-#, fuzzy
-#| msgid "Start Editor"
 msgid "Quit Editor"
-msgstr "Adihtend Styrtan"
+msgstr "Adihtend Læfan"
 
 #: src/hotkeys.cpp:114
 msgid "Set Team Label"
@@ -3876,7 +3860,7 @@ msgstr ""
 
 #: src/hotkeys.cpp:152
 msgid "Load Map"
-msgstr ""
+msgstr "Landcartan Hladan"
 
 #: src/hotkeys.cpp:154
 msgid "Save Map As"
@@ -3962,10 +3946,8 @@ msgid "Starting Positions Tool"
 msgstr ""
 
 #: src/hotkeys.cpp:173
-#, fuzzy
-#| msgid "Fill Tool"
 msgid "Label Tool"
-msgstr "Fyllingtol"
+msgstr ""
 
 #: src/hotkeys.cpp:173
 msgid "Left mouse button sets or drags a label, right clears."
@@ -3977,11 +3959,11 @@ msgid ""
 "brings up a context menu. Needs a defined side."
 msgstr ""
 
+# Meh... we should probably translate this to something that means 'unit placement tool'.
 #: src/hotkeys.cpp:174
 #, fuzzy
-#| msgid "Paint Tool"
 msgid "Unit Tool"
-msgstr "Metingtol"
+msgstr "Ƿihttol"
 
 #: src/hotkeys.cpp:175
 #, fuzzy
@@ -4011,11 +3993,11 @@ msgid ""
 "clears. Needs a defined side."
 msgstr ""
 
+# We should probably translate this to something that means 'village placement tool'.
 #: src/hotkeys.cpp:177
 #, fuzzy
-#| msgid "Village gold"
 msgid "Village Tool"
-msgstr "Þorpes gold"
+msgstr "Þorptol"
 
 #: src/hotkeys.cpp:179
 msgid "Canrecruit"
@@ -4094,6 +4076,7 @@ msgstr ""
 msgid "Select All"
 msgstr "Eall Ceosan"
 
+# Espreon sayeth: this is really being translated as 'invert selection'; it's effectively the same thing, but meh.
 #: src/hotkeys.cpp:198
 #, fuzzy
 msgid "Select Inverse"
@@ -4273,6 +4256,7 @@ msgid "Manage Add-ons"
 msgstr ""
 
 #: src/hotkeys.cpp:249
+#, fuzzy
 msgid "Start Editor"
 msgstr "Adihtend Styrtan"
 
@@ -4294,11 +4278,11 @@ msgstr ""
 
 #: src/hotkeys.cpp:387
 msgid "Mouse"
-msgstr ""
+msgstr "Mus"
 
 #: src/hotkeys.cpp:390 src/hotkeys.cpp:426
 msgid "Joystick"
-msgstr ""
+msgstr "Ƿynnsticca"
 
 #: src/hotkeys.cpp:396
 msgid "Centered"
@@ -4345,10 +4329,8 @@ msgid "Unknown"
 msgstr "Uncuþ ieldu"
 
 #: src/hotkeys.cpp:426
-#, fuzzy
-#| msgid "Hut"
 msgid "Hat"
-msgstr "Hulc"
+msgstr ""
 
 #: src/hotkeys.cpp:885 src/hotkeys.cpp:1235
 msgid "Do you really want to quit?"
@@ -4382,7 +4364,7 @@ msgstr "Landcartcinnend"
 
 #: src/mapgen_dialog.cpp:120
 msgid "Players:"
-msgstr ""
+msgstr "Plegeras:"
 
 #: src/mapgen_dialog.cpp:123
 msgid "Number of hills:"
