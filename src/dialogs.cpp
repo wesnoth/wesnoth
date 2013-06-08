@@ -121,7 +121,7 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 			}
 		}
 		// Remove the item from filter_textbox memory
-		filter_.delete_item(index);
+		filter_.delete_item(menu_selection);
 		//add dismissal to the undo stack
 		resources::undo_stack->add_dismissal(u);
 
