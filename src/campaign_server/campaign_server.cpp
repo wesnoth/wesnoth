@@ -383,8 +383,13 @@ namespace {
 						} else {
 							std::cerr << " size: " << (file_size(campaign["filename"])/1024) << "KiB\n";
 							network::send_file(campaign["filename"], sock);
-							int downloads = campaign["downloads"].to_int() + 1;
-							campaign["downloads"] = downloads;
+							// Clients doing upgrades or some other specific thing shouldn't bump
+							// the downloads count. Default to true for compatibility with old
+							// clients that won't tell us what they are trying to do.
+							if(req["increase_downloads"].to_bool(true)) {
+								int downloads = campaign["downloads"].to_int() + 1;
+								campaign["downloads"] = downloads;
+							}
 						}
 
 					}
