@@ -1854,7 +1854,7 @@ void display::draw_minimap_units()
 			col = team::get_minimap_color(5);
 		} else {
 
-			if (currentTeam_ +1 == (unsigned)side) {
+			if (currentTeam_ +1 == static_cast<unsigned>(side)) {
 
 				//movement_left() == total_movement()
 
