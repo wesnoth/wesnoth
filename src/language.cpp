@@ -233,7 +233,7 @@ bool load_strings(bool complain)
 		}
 		DBG_G << "[/language]\n";
 	}
-	DBG_G << "done";
+	DBG_G << "done\n";
 
 	return true;
 }
