@@ -953,7 +953,7 @@ void preferences_dialog::process_event()
 			set_selection(MULTIPLAYER_TAB);
 
 		if (friends_add_friend_button_.pressed()) {
-			std::string notes = "";
+			std::string notes;
 			std::string username = friends_input_.text();
 			size_t pos = username.find_first_of(' ');
 
@@ -970,7 +970,7 @@ void preferences_dialog::process_event()
 			}
 		}
 		if (friends_add_ignore_button_.pressed()) {
-			std::string reason = "";
+			std::string reason;
 			std::string username = friends_input_.text();
 			size_t pos = username.find_first_of(' ');
 
