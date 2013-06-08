@@ -127,7 +127,7 @@ image::bool_cache in_hex_info_;
 // cache storing if this is an empty hex
 image::bool_cache is_empty_hex_;
 
-// caches storing the diffrent lighted cases for each image
+// caches storing the different lighted cases for each image
 image::lit_cache lit_images_,
 		lit_scaled_images_;
 // caches storing each lightmap generated
@@ -499,7 +499,7 @@ light_string get_light_string(int op, int r, int g, int b){
 static surface apply_light(surface surf, const light_string& ls){
 	// atomic lightmap operation are handled directly (important to end recursion)
 	if(ls.size() == 4){
-		//if no lightmap (first char = -1) then we need the inital value
+		//if no lightmap (first char = -1) then we need the initial value
 		//(before the halving done for lightmap)
 		int m = ls[0] == -1 ? 2 : 1;
 		return adjust_surface_color(surf, ls[1]*m, ls[2]*m, ls[3]*m);
