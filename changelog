@@ -25,6 +25,13 @@ Version 1.11.4+dev:
    * Made it so that the "Back to Turn X" and "Back to Start" menu items work
      with .bz2 saves
    * Removed Dfool and Experimental themes
+   * Major visual overhaul:
+     * Most UI elements have new images
+     * Button sizes have been standarized; regular buttons are 108x22 (H22), menu
+       buttons are 100x20 (H20), square buttons are either 25x25 or 30x30 depending
+       on purpose.
+     * Regular and menu buttons are now in subdirectories of images/buttons/
+     * Button icon overlays are now in images/icons/
  * WML engine:
    * Added new aspect 'advancements' which with lua engine can handle a
      function return type of the form f(x, y) -> String. 'advancements'
