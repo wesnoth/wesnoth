@@ -244,7 +244,7 @@ void statistics_dialog::display_stats(bool campaign)
 		unit_count_[1] = n;
 		str << _("Recalls") << COLUMN_SEPARATOR << n
 		    << COLUMN_SEPARATOR
-		    << COLUMN_SEPARATOR << IMAGE_PREFIX << "themes/gold-t.png"
+		    << COLUMN_SEPARATOR << IMAGE_PREFIX << "themes/gold.png"
 		    << COLUMN_SEPARATOR << cost;
 		items.push_back(str.str());
 	}
