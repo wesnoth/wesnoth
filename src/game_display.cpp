@@ -277,10 +277,15 @@ void game_display::draw_hex(const map_location& loc)
 		if( get_visible_unit(loc, (*teams_)[viewing_team()] ) != NULL ) {
 			hex_top_layer = LAYER_MOUSEOVER_TOP;
 		}
-		drawing_buffer_add( hex_top_layer,
-						   loc, xpos, ypos, image::get_image("misc/hover-hex-top.png", image::SCALED_TO_HEX));
-		drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM,
-						   loc, xpos, ypos, image::get_image("misc/hover-hex-bottom.png", image::SCALED_TO_HEX));
+		if(loc == attack_indicator_dst_) {
+			drawing_buffer_add( hex_top_layer,
+				loc, xpos, ypos, image::get_image("misc/hover-hex-enemy.png", image::SCALED_TO_HEX));
+		} else {
+			drawing_buffer_add( hex_top_layer,
+				loc, xpos, ypos, image::get_image("misc/hover-hex-top.png", image::SCALED_TO_HEX));
+			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM,
+			    loc, xpos, ypos, image::get_image("misc/hover-hex-bottom.png", image::SCALED_TO_HEX));
+		}
 	}
 
 
