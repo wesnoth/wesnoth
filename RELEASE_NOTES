@@ -19,8 +19,18 @@ The library "vorbisfile" is a new dependency to build Wesnoth.
 It is used to display track titles in the editor's playlist manager.
 [/section]
 
-[section="A Change"]
-Text
+[section="New images for widgets"]
+All widgets now have new images, working on a new overlay-based system
+Only the base button images are provided and have any necessary images overlaid on top of them at runtime.
+Button sizes have been standardized.
+Regular buttons will now be 108x22 (H22) in size.
+Menu buttons will now be 100x20 (H20) in size with a copper border.
+Square buttons will be either 25x25 or 30x30, depending on usecase.
+Button locations have been changed and standardized.
+Regular buttons are now in images/buttons/button_normal. This is the location of the new images for the regular button.
+Menu buttons are now in images/buttons/button_menu. This is the location of the new images for the lite button.
+All icons for overlays are in images/icons.
+Dialogs and certain other widgets also have new backgrounds, provided in images/dialogs.
 [/section]
 
 [section="Another Change"]
