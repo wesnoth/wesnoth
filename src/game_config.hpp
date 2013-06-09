@@ -76,11 +76,12 @@ namespace game_config
 	extern std::string game_title,
             game_title_background,
 			// orbs and hp/xp bar
-			moved_orb,
-			unmoved_orb,
-			partmoved_orb,
-			enemy_orb,
-			ally_orb,
+            orb,
+			unmoved_orb_color,
+			partmoved_orb_color,
+			enemy_orb_color,
+			ally_orb_color,
+			moved_orb_color,
 			energy,
 			// flags
 			flag,

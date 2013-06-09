@@ -74,11 +74,12 @@ namespace game_config
 	std::string game_title,
             game_title_background,
 			// orbs and hp/xp bar
-			moved_orb,
-			unmoved_orb,
-			partmoved_orb,
-			enemy_orb,
-			ally_orb,
+            orb,
+            moved_orb_color,
+            unmoved_orb_color,
+            partmoved_orb_color,
+            enemy_orb_color,
+            ally_orb_color,
 			energy,
 			// flags
 			flag,
@@ -203,11 +204,12 @@ namespace game_config
 			game_title = i["game_title"].str();
             game_title_background = i["game_title_background"].str();
 
-			moved_orb = i["moved_orb"].str();
-			unmoved_orb = i["unmoved_orb"].str();
-			partmoved_orb = i["partmoved_orb"].str();
-			enemy_orb = i["enemy_orb"].str();
-			ally_orb = i["ally_orb"].str();
+            orb = i["orb"].str();
+            moved_orb_color = i["moved_orb_color"].str();
+            unmoved_orb_color = i["unmoved_orb_color"].str();
+            partmoved_orb_color = i["partmoved_orb_color"].str();
+            enemy_orb_color = i["enemy_orb_color"].str();
+            ally_orb_color = i["ally_orb_color"].str();
 			energy = i["energy"].str();
 
 			flag = i["flag"].str();

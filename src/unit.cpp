@@ -1991,11 +1991,16 @@ void unit::redraw_unit()
 	}
 	if(draw_bars) {
 		const image::locator* orb_img = NULL;
-		static const image::locator enemy_orb(game_config::images::enemy_orb);
-		static const image::locator ally_orb(game_config::images::ally_orb);
-		static const image::locator moved_orb(game_config::images::moved_orb);
-		static const image::locator unmoved_orb(game_config::images::unmoved_orb);
-		static const image::locator partmoved_orb(game_config::images::partmoved_orb);
+		static const image::locator partmoved_orb(game_config::images::orb + "~RC(magenta>" +
+						game_config::images::partmoved_orb_color + ")"  );
+		static const image::locator moved_orb(game_config::images::orb + "~RC(magenta>" +
+						game_config::images::moved_orb_color + ")"  );
+		static const image::locator ally_orb(game_config::images::orb + "~RC(magenta>" +
+				game_config::images::ally_orb_color + ")"  );
+		static const image::locator enemy_orb(game_config::images::orb + "~RC(magenta>" +
+				game_config::images::enemy_orb_color + ")"  );
+		static const image::locator unmoved_orb(game_config::images::orb + "~RC(magenta>" +
+					game_config::images::unmoved_orb_color + ")"  );
 
 		const std::string* energy_file = &game_config::images::energy;
 
