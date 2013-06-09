@@ -103,6 +103,7 @@ const hotkey_command hotkey_list_[] = {
 	{ hotkey::HOTKEY_SPEAK, "speak", N_("Speak"), false, hotkey::SCOPE_GAME, NULL },
 	{ hotkey::HOTKEY_CREATE_UNIT, "createunit", N_("Create Unit (Debug!)"), false, hotkey::SCOPE_GAME, NULL },
 	{ hotkey::HOTKEY_CHANGE_SIDE, "changeside", N_("Change Side (Debug!)"), false, hotkey::SCOPE_GAME, NULL },
+	{ hotkey::HOTKEY_KILL_UNIT, "killunit", N_("Kill Unit (Debug!)"), false, hotkey::SCOPE_GAME, NULL },
 	{ hotkey::HOTKEY_PREFERENCES, "preferences", N_("Preferences"), false, hotkey::SCOPE_GENERAL, NULL },
 	{ hotkey::HOTKEY_OBJECTIVES, "objectives", N_("Scenario Objectives"), false, hotkey::SCOPE_GAME, NULL },
 	{ hotkey::HOTKEY_UNIT_LIST, "unitlist", N_("Unit List"), false, hotkey::SCOPE_GENERAL, NULL },
@@ -1025,6 +1026,9 @@ bool command_executor::execute_command(HOTKEY_COMMAND command, int /*index*/)
 			break;
 		case HOTKEY_CHANGE_SIDE:
 			change_side();
+			break;
+		case HOTKEY_KILL_UNIT:
+			kill_unit();
 			break;
 		case HOTKEY_PREFERENCES:
 			preferences();

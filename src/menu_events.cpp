@@ -1069,6 +1069,23 @@ void menu_handler::change_side(mouse_handler& mousehandler)
 	}
 }
 
+void menu_handler::kill_unit(mouse_handler& mousehandler)
+{
+	const map_location& loc = mousehandler.get_last_hex();
+	const unit_map::iterator i = units_.find(loc);
+	if(i != units_.end()) {
+		const int dying_side = i->side();
+		game_events::fire("last breath", loc, loc);
+		if (i.valid()) {
+			unit_display::unit_die(loc, *i);
+		}
+		resources::screen->redraw_minimap();
+		game_events::fire("die", loc, loc);
+		resources::units->erase(i);
+		actions::recalculate_fog(dying_side);
+	}
+}
+
 void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 {
 	const map_location& loc = mousehandler.get_last_hex();

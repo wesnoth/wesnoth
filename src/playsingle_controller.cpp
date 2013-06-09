@@ -172,6 +172,10 @@ void playsingle_controller::change_side(){
 	menu_handler_.change_side(mouse_handler_);
 }
 
+void playsingle_controller::kill_unit(){
+	menu_handler_.kill_unit(mouse_handler_);
+}
+
 void playsingle_controller::label_terrain(bool team_only){
 	menu_handler_.label_terrain(mouse_handler_, team_only);
 }
@@ -942,6 +946,7 @@ bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, 
 		// Commands we can only do if in debug mode
 		case hotkey::HOTKEY_CREATE_UNIT:
 		case hotkey::HOTKEY_CHANGE_SIDE:
+		case hotkey::HOTKEY_KILL_UNIT:
 			return !events::commands_disabled && game_config::debug && map_.on_board(mouse_handler_.get_last_hex());
 
 		case hotkey::HOTKEY_CLEAR_LABELS:
