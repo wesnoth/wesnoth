@@ -606,7 +606,6 @@
 		B597C5C30FACD6CA00CE81F5 /* language_selection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BCBF0ECA805A002BE442 /* language_selection.cpp */; };
 		B597C5C40FACD6CA00CE81F5 /* md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999F00EC62181008DD061 /* md5.cpp */; };
 		B597C5C60FACD6CA00CE81F5 /* dialogs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A9B0EC62181008DD061 /* dialogs.cpp */; };
-		B597C5C80FACD6CA00CE81F5 /* editor_settings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BCBA0ECA805A002BE442 /* editor_settings.cpp */; };
 		B597C5CB0FACD6CA00CE81F5 /* container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BCEE0ECA805A002BE442 /* container.cpp */; };
 		B597C5CC0FACD6CA00CE81F5 /* display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A990EC62181008DD061 /* display.cpp */; };
 		B597C5CD0FACD6CA00CE81F5 /* controller_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599AA00EC62181008DD061 /* controller_base.cpp */; };
@@ -766,7 +765,6 @@
 		B5A9BD340ECA805A002BE442 /* editor_generate_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BCB40ECA805A002BE442 /* editor_generate_map.cpp */; };
 		B5A9BD350ECA805A002BE442 /* editor_new_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BCB60ECA805A002BE442 /* editor_new_map.cpp */; };
 		B5A9BD360ECA805A002BE442 /* editor_resize_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BCB80ECA805A002BE442 /* editor_resize_map.cpp */; };
-		B5A9BD370ECA805A002BE442 /* editor_settings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BCBA0ECA805A002BE442 /* editor_settings.cpp */; };
 		B5A9BD380ECA805A002BE442 /* language_selection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BCBF0ECA805A002BE442 /* language_selection.cpp */; };
 		B5A9BD390ECA805A002BE442 /* message.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BCC10ECA805A002BE442 /* message.cpp */; };
 		B5A9BD3A0ECA805A002BE442 /* mp_connect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BCC30ECA805A002BE442 /* mp_connect.cpp */; };
@@ -1830,8 +1828,6 @@
 		B5A9BCB70ECA805A002BE442 /* editor_new_map.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = editor_new_map.hpp; sourceTree = "<group>"; };
 		B5A9BCB80ECA805A002BE442 /* editor_resize_map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = editor_resize_map.cpp; sourceTree = "<group>"; };
 		B5A9BCB90ECA805A002BE442 /* editor_resize_map.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = editor_resize_map.hpp; sourceTree = "<group>"; };
-		B5A9BCBA0ECA805A002BE442 /* editor_settings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = editor_settings.cpp; sourceTree = "<group>"; };
-		B5A9BCBB0ECA805A002BE442 /* editor_settings.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = editor_settings.hpp; sourceTree = "<group>"; };
 		B5A9BCBC0ECA805A002BE442 /* field-fwd.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "field-fwd.hpp"; sourceTree = "<group>"; };
 		B5A9BCBD0ECA805A002BE442 /* field.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = field.hpp; sourceTree = "<group>"; };
 		B5A9BCBE0ECA805A002BE442 /* helper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = helper.hpp; sourceTree = "<group>"; };
@@ -3412,8 +3408,6 @@
 				B5A9BCB70ECA805A002BE442 /* editor_new_map.hpp */,
 				B5A9BCB80ECA805A002BE442 /* editor_resize_map.cpp */,
 				B5A9BCB90ECA805A002BE442 /* editor_resize_map.hpp */,
-				B5A9BCBA0ECA805A002BE442 /* editor_settings.cpp */,
-				B5A9BCBB0ECA805A002BE442 /* editor_settings.hpp */,
 				B5A9BCBC0ECA805A002BE442 /* field-fwd.hpp */,
 				B5A9BCBD0ECA805A002BE442 /* field.hpp */,
 				B5A9BCBE0ECA805A002BE442 /* helper.hpp */,
@@ -3948,7 +3942,6 @@
 				B5A9BD340ECA805A002BE442 /* editor_generate_map.cpp in Sources */,
 				B5A9BD350ECA805A002BE442 /* editor_new_map.cpp in Sources */,
 				B5A9BD360ECA805A002BE442 /* editor_resize_map.cpp in Sources */,
-				B5A9BD370ECA805A002BE442 /* editor_settings.cpp in Sources */,
 				B5A9BD380ECA805A002BE442 /* language_selection.cpp in Sources */,
 				B5A9BD390ECA805A002BE442 /* message.cpp in Sources */,
 				B5A9BD3A0ECA805A002BE442 /* mp_connect.cpp in Sources */,
@@ -4414,7 +4407,6 @@
 				B597C5C30FACD6CA00CE81F5 /* language_selection.cpp in Sources */,
 				B597C5C40FACD6CA00CE81F5 /* md5.cpp in Sources */,
 				B597C5C60FACD6CA00CE81F5 /* dialogs.cpp in Sources */,
-				B597C5C80FACD6CA00CE81F5 /* editor_settings.cpp in Sources */,
 				B597C5CB0FACD6CA00CE81F5 /* container.cpp in Sources */,
 				B597C5CC0FACD6CA00CE81F5 /* display.cpp in Sources */,
 				B597C5CD0FACD6CA00CE81F5 /* controller_base.cpp in Sources */,
