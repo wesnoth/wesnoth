@@ -717,7 +717,6 @@ set(wesnoth-main_SRC
 	gui/dialogs/editor_new_map.cpp
 	gui/dialogs/editor_resize_map.cpp
 	gui/dialogs/editor_set_starting_position.cpp
-	gui/dialogs/editor_settings.cpp
 	gui/dialogs/folder_create.cpp
 	gui/dialogs/formula_debugger.cpp
 	gui/dialogs/game_delete.cpp
