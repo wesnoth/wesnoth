@@ -36,7 +36,6 @@
 #include "gui/dialogs/editor_new_map.hpp"
 #include "gui/dialogs/editor_resize_map.hpp"
 #include "gui/dialogs/editor_set_starting_position.hpp"
-#include "gui/dialogs/editor_settings.hpp"
 #include "gui/dialogs/folder_create.hpp"
 #include "gui/dialogs/formula_debugger.hpp"
 #include "gui/dialogs/game_delete.hpp"
@@ -365,7 +364,6 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::teditor_new_map>();
 	test<gui2::teditor_resize_map>();
 	test<gui2::teditor_set_starting_position>();
-	test<gui2::teditor_settings>();
 	test<gui2::tfolder_create>();
 	test<gui2::tformula_debugger>();
 	test<gui2::tgame_delete>();
@@ -715,22 +713,6 @@ struct twrapper<gui2::teditor_resize_map>
 				, height
 				, expand_direction
 				, copy);
-	}
-};
-
-template<>
-struct twrapper<gui2::teditor_settings>
-{
-	static gui2::teditor_settings* create()
-	{
-		const config &cfg = main_config.child("editor_times");
-		BOOST_REQUIRE_MESSAGE(cfg, "No editor time-of-day defined");
-
-		std::vector<time_of_day> tods;
-		BOOST_FOREACH(const config &i, cfg.child_range("time")) {
-			tods.push_back(time_of_day(i));
-		}
-		return new gui2::teditor_settings(NULL, tods);
 	}
 };
 
