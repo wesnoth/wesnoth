@@ -89,9 +89,9 @@ A poisoned unit cannot be cured of its poison by a healer, and must seek the car
  */
 
 
-namespace unit_abilities {
+namespace {
 
-static bool affects_side(const config& cfg, const std::vector<team>& teams, size_t side, size_t other_side)
+bool affects_side(const config& cfg, const std::vector<team>& teams, size_t side, size_t other_side)
 {
 	if (side == other_side)
 		return cfg["affect_allies"].to_bool(true);
@@ -126,7 +126,7 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 		if (!adj_abilities)
 			continue;
 		BOOST_FOREACH(const config &j, adj_abilities.child_range(tag_name)) {
-			if (unit_abilities::affects_side(j, teams_manager::get_teams(), side(), it->side()) &&
+			if (affects_side(j, teams_manager::get_teams(), side(), it->side()) &&
 			    it->ability_active(tag_name, j, adjacent[i]) &&
 			    ability_affects_adjacent(tag_name,  j, i, loc))
 				return true;
@@ -160,7 +160,7 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 		if (!adj_abilities)
 			continue;
 		BOOST_FOREACH(const config &j, adj_abilities.child_range(tag_name)) {
-			if (unit_abilities::affects_side(j, teams_manager::get_teams(), side(), it->side()) &&
+			if (affects_side(j, teams_manager::get_teams(), side(), it->side()) &&
 			    it->ability_active(tag_name, j, adjacent[i]) &&
 			    ability_affects_adjacent(tag_name, j, i, loc))
 				res.push_back(unit_ability(&j, adjacent[i]));
