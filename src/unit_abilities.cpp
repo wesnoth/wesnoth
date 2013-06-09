@@ -122,6 +122,13 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 		const unit_map::const_iterator it = units.find(adjacent[i]);
 		if (it == units.end() || it->incapacitated())
 			continue;
+		// Abilities may be tested at locations other than the unit's current
+		// location. This is intentional to allow for less messing with the unit
+		// map during calculations, particularly with regards to movement.
+		// Thus, we need to make sure the adjacent unit (*it) is not actually
+		// ourself.
+		if ( &*it == this )
+			continue;
 		const config &adj_abilities = it->cfg_.child("abilities");
 		if (!adj_abilities)
 			continue;
@@ -155,6 +162,13 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 	for(int i = 0; i != 6; ++i) {
 		const unit_map::const_iterator it = units.find(adjacent[i]);
 		if (it == units.end() || it->incapacitated())
+			continue;
+		// Abilities may be tested at locations other than the unit's current
+		// location. This is intentional to allow for less messing with the unit
+		// map during calculations, particularly with regards to movement.
+		// Thus, we need to make sure the adjacent unit (*it) is not actually
+		// ourself.
+		if ( &*it == this )
 			continue;
 		const config &adj_abilities = it->cfg_.child("abilities");
 		if (!adj_abilities)
