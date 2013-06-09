@@ -242,7 +242,7 @@ const std::string& tgui_definition::read(const config& cfg)
  *                                   update. $
  *     Campaign_selection &           Shows the list of campaigns, to select one
  *                                   to play. $
- *     Language_selection &           The dialog to select the primairy language. $
+ *     Language_selection &           The dialog to select the primary language. $
  *     WML_message_left &             The ingame message dialog with a portrait
  *                                   on the left side. (Used for the WML messages.) $
  *     WML_message_right &            The ingame message dialog with a portrait
@@ -263,7 +263,7 @@ const std::string& tgui_definition::read(const config& cfg)
  *     Editor_new_map &               Creates a new map in the editor. $
  *     Editor_generate_map &          Generates a random map in the editor. $
  *     Editor_resize_map &            Resizes a map in the editor. $
- *     Editor_settings &              The settings specific for the editor. $
+ *     Editor_custom_tod &            Creates new ToD schedules for the editor. $
  * @end{table}
  * @end{tag}{name=gui}
  * @end{parent}{name="/"}
