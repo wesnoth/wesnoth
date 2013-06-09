@@ -1453,6 +1453,11 @@ surface cut_surface(const surface &surf, SDL_Rect const &r)
 
 	surface res = create_compatible_surface(surf, r.w, r.h);
 
+	if(res == NULL) {
+		std::cerr << "Could not create a new surface in cut_surface()\n";
+		return NULL;
+	}
+
 	size_t sbpp = surf->format->BytesPerPixel;
 	size_t spitch = surf->pitch;
 	size_t rbpp = res->format->BytesPerPixel;
