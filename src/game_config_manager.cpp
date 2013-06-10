@@ -36,9 +36,11 @@ static lg::log_domain log_config("config");
 
 game_config_manager::game_config_manager(
 		const commandline_options& cmdline_opts,
-		game_display& display) :
+		game_display& display,
+		const bool jump_to_editor) :
 	cmdline_opts_(cmdline_opts),
 	disp_(display),
+	jump_to_editor_(jump_to_editor),
 	game_config_(),
 	old_defines_map_(),
 	paths_manager_(),
@@ -57,8 +59,7 @@ game_config_manager::~game_config_manager()
 	resources::config_manager = NULL;
 }
 
-bool game_config_manager::init_config(FORCE_RELOAD_CONFIG force_reload,
-                                      const bool jump_to_editor)
+bool game_config_manager::init_config(FORCE_RELOAD_CONFIG force_reload)
 {
 	// Make sure that multiplayer mode is set
 	// if command line parameter is selected.
@@ -70,11 +71,11 @@ bool game_config_manager::init_config(FORCE_RELOAD_CONFIG force_reload,
 		game_config::scoped_preproc_define test("TEST");
 	}
 
-	if (jump_to_editor) {
+	if (jump_to_editor_) {
 		game_config::scoped_preproc_define editor("EDITOR");
 	}
 
-	if (!cmdline_opts_.multiplayer && !cmdline_opts_.test && !jump_to_editor) {
+	if (!cmdline_opts_.multiplayer && !cmdline_opts_.test && !jump_to_editor_) {
 		game_config::scoped_preproc_define title_screen("TITLE_SCREEN");
 	}
 
@@ -264,7 +265,7 @@ void game_config_manager::load_game_cfg(
 		paths_manager_.set_paths(game_config());
 }
 
-void game_config_manager::reload_changed_game_config(const bool jump_to_editor)
+void game_config_manager::reload_changed_game_config()
 {
 	// Rebuild addon version info cache.
 	refresh_addon_version_info_cache();
@@ -273,5 +274,5 @@ void game_config_manager::reload_changed_game_config(const bool jump_to_editor)
 	cache_.recheck_filetree_checksum();
 	old_defines_map_.clear();
 	clear_binary_paths_cache();
-	init_config(FORCE_RELOAD, jump_to_editor);
+	init_config(FORCE_RELOAD);
 }

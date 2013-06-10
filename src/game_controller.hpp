@@ -47,12 +47,8 @@ public:
 	game_controller(const commandline_options& cmdline_opts, const char* appname);
 	~game_controller();
 
-	bool init_config() {
-	    return init_config(game_config_manager::NO_FORCE_RELOAD); }
 	bool play_test();
 	bool play_screenshot_mode();
-
-	void reload_changed_game_config();
 
 	bool is_loading() const;
 	void clear_loaded_game() { game::load_game_exception::game.clear(); }
@@ -64,6 +60,8 @@ public:
 	bool goto_campaign();
 	bool goto_multiplayer();
 	bool goto_editor();
+
+	bool jump_to_editor() const { return jump_to_editor_; }
 
 	bool play_multiplayer();
 	bool play_multiplayer_commandline();
@@ -77,13 +75,9 @@ public:
 	editor::EXIT_STATUS start_editor() { return start_editor(""); }
 
 	void start_wesnothd();
-	const config& game_config() const { return resources::config_manager->game_config(); }
-
 private:
 	game_controller(const game_controller&);
 	void operator=(const game_controller&);
-
-	bool init_config(game_config_manager::FORCE_RELOAD_CONFIG force_reload);
 
 	void mark_completed_campaigns(std::vector<config>& campaigns);
 

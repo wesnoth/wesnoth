@@ -25,7 +25,8 @@ class game_config_manager
 {
 public:
 	game_config_manager(const commandline_options& cmdline_opts,
-	                    game_display& disp);
+	                    game_display& disp,
+						const bool jump_to_editor);
 	~game_config_manager();
 
 	enum SET_BINARY_PATHS { SET_PATHS, NO_SET_PATHS };
@@ -33,11 +34,10 @@ public:
 
 	const config& game_config() const { return game_config_; }
 
-	bool init_config(FORCE_RELOAD_CONFIG force_reload,
-	                 const bool jump_to_editor = false);
+	bool init_config(FORCE_RELOAD_CONFIG force_reload);
 	void load_game_cfg(SET_BINARY_PATHS set_paths,
 	                   FORCE_RELOAD_CONFIG force_reload);
-	void reload_changed_game_config(const bool jump_to_editor = false);
+	void reload_changed_game_config();
 
 private:
 	game_config_manager(const game_config_manager&);
@@ -45,6 +45,7 @@ private:
 
 	const commandline_options& cmdline_opts_;
 	game_display& disp_;
+	const bool jump_to_editor_;
 
 	config game_config_;
 

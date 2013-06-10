@@ -474,10 +474,11 @@ static int do_gameloop(int argc, char** argv)
 	gui2::init();
 	const gui2::event::tmanager gui_event_manager;
 
-	game_config_manager config_manager(cmdline_opts, game->disp());
+	game_config_manager config_manager(cmdline_opts, game->disp(),
+	    game->jump_to_editor());
 
 	loadscreen::start_stage("load config");
-	res = game->init_config();
+	res = config_manager.init_config(game_config_manager::NO_FORCE_RELOAD);
 	if(res == false) {
 		std::cerr << "could not initialize game config\n";
 		return 1;
@@ -512,7 +513,8 @@ static int do_gameloop(int argc, char** argv)
 		statistics::fresh_stats();
 
         if (!game->is_loading()) {
-			const config &cfg = game->game_config().child("titlescreen_music");
+			const config &cfg =
+			    config_manager.game_config().child("titlescreen_music");
 			if (cfg) {
 	            sound::play_music_repeatedly(game_config::title_music);
 				BOOST_FOREACH(const config &i, cfg.child_range("music")) {
@@ -614,20 +616,20 @@ static int do_gameloop(int argc, char** argv)
 			about::show_about(game->disp());
 			continue;
 		} else if(res == gui2::ttitle_screen::SHOW_HELP) {
-			help::help_manager help_manager(&game->game_config());
+			help::help_manager help_manager(&config_manager.game_config());
 			help::show_help(game->disp());
 			continue;
 		} else if(res == gui2::ttitle_screen::GET_ADDONS) {
 			// NOTE: we need the help_manager to get access to the Add-ons
 			// section in the game help!
-			help::help_manager help_manager(&game->game_config());
+			help::help_manager help_manager(&config_manager.game_config());
 			if(manage_addons(game->disp())) {
-				game->reload_changed_game_config();
+				config_manager.reload_changed_game_config();
 			}
 			continue;
 		} else if(res == gui2::ttitle_screen::RELOAD_GAME_DATA) {
 			loadscreen::global_loadscreen_manager loadscreen(game->disp().video());
-			game->reload_changed_game_config();
+			config_manager.reload_changed_game_config();
 			image::flush_cache();
 			continue;
 		} else if(res == gui2::ttitle_screen::START_MAP_EDITOR) {

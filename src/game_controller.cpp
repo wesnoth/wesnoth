@@ -274,13 +274,6 @@ game_controller::game_controller(const commandline_options& cmdline_opts, const 
 	}
 }
 
-bool game_controller::init_config(
-    game_config_manager::FORCE_RELOAD_CONFIG force_reload)
-{
-	return resources::config_manager->
-	    init_config(force_reload, jump_to_editor_);
-}
-
 bool game_controller::play_test()
 {
 	static bool first_time = true;
@@ -303,7 +296,7 @@ bool game_controller::play_test()
 	    game_config_manager::NO_FORCE_RELOAD);
 
 	try {
-		play_game(disp(),state_,game_config());
+		play_game(disp(),state_,resources::config_manager->game_config());
 	} catch (game::load_game_exception &) {
 		return true;
 	}
@@ -321,10 +314,12 @@ bool game_controller::play_screenshot_mode()
 	resources::config_manager->load_game_cfg(
 	    game_config_manager::NO_SET_PATHS,
 	    game_config_manager::NO_FORCE_RELOAD);
-	const binary_paths_manager bin_paths_manager(game_config());
-	::init_textdomains(game_config());
+	const binary_paths_manager
+	    bin_paths_manager(resources::config_manager->game_config());
+	::init_textdomains(resources::config_manager->game_config());
 
-	editor::start(game_config(), video_, screenshot_map_, true, screenshot_filename_);
+	editor::start(resources::config_manager->game_config(), video_,
+	    screenshot_map_, true, screenshot_filename_);
 	return false;
 }
 
@@ -335,7 +330,8 @@ bool game_controller::is_loading() const
 
 bool game_controller::load_game()
 {
-	savegame::loadgame load(disp(), game_config(), state_);
+	savegame::loadgame load(disp(), resources::config_manager->game_config(),
+	    state_);
 
 	try {
 		load.load_game(game::load_game_exception::game, game::load_game_exception::show_replay, game::load_game_exception::cancel_orders, game::load_game_exception::select_difficulty, game::load_game_exception::difficulty);
@@ -476,7 +472,8 @@ bool game_controller::new_campaign()
 	state_ = game_state();
 	state_.classification().campaign_type = "scenario";
 
-	const config::const_child_itors &ci = game_config().child_range("campaign");
+	const config::const_child_itors &ci =
+	    resources::config_manager->game_config().child_range("campaign");
 	std::vector<config> campaigns(ci.first, ci.second);
 	mark_completed_campaigns(campaigns);
 	std::stable_sort(campaigns.begin(),campaigns.end(),less_campaigns_rank);
@@ -639,11 +636,6 @@ bool game_controller::goto_editor()
 	return true;
 }
 
-void game_controller::reload_changed_game_config()
-{
-	resources::config_manager->reload_changed_game_config(jump_to_editor_);
-}
-
 void game_controller::start_wesnothd()
 {
 	const std::string wesnothd_program =
@@ -752,7 +744,8 @@ bool game_controller::play_multiplayer()
 
 			const mp::controller cntr = mp::CNTR_LOCAL;
 
-			mp::start_local_game(disp(), game_config(), cntr);
+			mp::start_local_game(disp(),
+			    resources::config_manager->game_config(), cntr);
 
 		} else if((res >= 0 && res <= 2) || res == 4) {
 			std::string host;
@@ -764,7 +757,8 @@ bool game_controller::play_multiplayer()
 				host = multiplayer_server_;
 				multiplayer_server_ = "";
 			}
-			mp::start_client(disp(), game_config(), host);
+			mp::start_client(disp(), resources::config_manager->game_config(),
+			    host);
 		}
 
 	} catch(game::mp_server_error& e) {
@@ -825,7 +819,8 @@ bool game_controller::play_multiplayer_commandline()
 	config game_data;
 	const mp::controller cntr = mp::CNTR_LOCAL;
 
-	mp::start_local_game_commandline(disp(), game_config(), cntr, cmdline_opts_);
+	mp::start_local_game_commandline(disp(),
+	    resources::config_manager->game_config(), cntr, cmdline_opts_);
 
 	return false;
 }
@@ -848,7 +843,8 @@ bool game_controller::change_language()
 void game_controller::show_preferences()
 {
 	const preferences::display_manager disp_manager(&disp());
-	preferences::show_preferences_dialog(disp(),game_config());
+	preferences::show_preferences_dialog(disp(),
+	    resources::config_manager->game_config());
 
 	disp().redraw_everything();
 }
@@ -889,10 +885,12 @@ void game_controller::launch_game(RELOAD_GAME_DATA reload)
 		}
 	}
 
-	const binary_paths_manager bin_paths_manager(game_config());
+	const binary_paths_manager
+	    bin_paths_manager(resources::config_manager->game_config());
 
 	try {
-		const LEVEL_RESULT result = play_game(disp(),state_,game_config());
+		const LEVEL_RESULT result = play_game(disp(),state_,
+		    resources::config_manager->game_config());
 		// don't show The End for multiplayer scenario
 		// change this if MP campaigns are implemented
 		if(result == VICTORY && (state_.classification().campaign_type.empty() || state_.classification().campaign_type != "multiplayer")) {
@@ -913,10 +911,12 @@ void game_controller::launch_game(RELOAD_GAME_DATA reload)
 
 void game_controller::play_replay()
 {
-	const binary_paths_manager bin_paths_manager(game_config());
+	const binary_paths_manager
+	    bin_paths_manager(resources::config_manager->game_config());
 
 	try {
-		::play_replay(disp(),state_,game_config(),video_);
+		::play_replay(disp(),state_,resources::config_manager->game_config(),
+		    video_);
 
 		clear_loaded_game();
 	} catch (game::load_game_exception &) {
@@ -933,15 +933,17 @@ editor::EXIT_STATUS game_controller::start_editor(const std::string& filename)
 		resources::config_manager->load_game_cfg(
 			game_config_manager::NO_SET_PATHS,
 			game_config_manager::NO_FORCE_RELOAD);
-		const binary_paths_manager bin_paths_manager(game_config());
-		::init_textdomains(game_config());
+		const binary_paths_manager
+		    bin_paths_manager(resources::config_manager->game_config());
+		::init_textdomains(resources::config_manager->game_config());
 
-		editor::EXIT_STATUS res = editor::start(game_config(), video_, filename);
+		editor::EXIT_STATUS res = editor::start(
+		    resources::config_manager->game_config(), video_, filename);
 
 		if(res != editor::EXIT_RELOAD_DATA)
 			return res;
 
-		reload_changed_game_config();
+		resources::config_manager->reload_changed_game_config();
 		image::flush_cache();
 	}
 	return editor::EXIT_ERROR; // not supposed to happen

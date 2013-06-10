@@ -31,13 +31,10 @@ public:
 	game_display& disp();
 
 	bool init_video();
-	virtual bool init_config() = 0;
 	bool init_language();
 	bool init_joystick();
 	virtual bool play_test() = 0;
 	virtual bool play_screenshot_mode() = 0;
-
-	virtual void reload_changed_game_config() = 0;
 
 	virtual bool is_loading() const = 0;
 	virtual void clear_loaded_game() = 0;
@@ -50,6 +47,8 @@ public:
 	virtual bool goto_multiplayer() = 0;
 	virtual bool goto_editor() = 0;
 
+	virtual bool jump_to_editor() const = 0;
+
 	virtual bool play_multiplayer() = 0;
 	virtual bool play_multiplayer_commandline() = 0;
 	virtual bool change_language() = 0;
@@ -61,8 +60,6 @@ public:
 	virtual void play_replay() = 0;
 
 	virtual editor::EXIT_STATUS start_editor() = 0;
-
-	virtual const config& game_config() const = 0;
 protected:
 	const commandline_options& cmdline_opts_;
 

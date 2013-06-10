@@ -41,6 +41,8 @@ public:
 	bool goto_multiplayer();
 	bool goto_editor();
 
+	bool jump_to_editor() const;
+
 	bool play_multiplayer();
 	bool play_multiplayer_commandline();
 	bool change_language();

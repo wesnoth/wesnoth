@@ -93,6 +93,11 @@ bool game_controller_new::goto_editor()
 	return true;
 }
 
+bool game_controller_new::jump_to_editor() const
+{
+	return true;
+}
+
 bool game_controller_new::play_multiplayer()
 {
 	return true;
