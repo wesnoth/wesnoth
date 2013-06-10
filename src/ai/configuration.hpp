@@ -65,6 +65,7 @@ public:
 	 */
 	static void init(const config &game_config);
 	static void add_era_ai_from_config(const config &game_config);
+	static void add_mod_ai_from_config(config::const_child_itors configs);
 
 
 	/**
@@ -153,6 +154,7 @@ private:
 	typedef std::map<std::string, description> description_map;
 	static description_map ai_configurations_;
 	static description_map era_ai_configurations_;
+	static description_map mod_ai_configurations_;
 	static config default_config_;
 
 };

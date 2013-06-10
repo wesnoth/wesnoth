@@ -1628,6 +1628,7 @@ void connect::lists_init()
 	// AI algorithms
 	const config &era = level_.child("era");
 	ai::configuration::add_era_ai_from_config(era);
+	ai::configuration::add_mod_ai_from_config(level_.child_range("modification"));
 	ai_algorithms_ = ai::configuration::get_available_ais();
 
 	// Factions
