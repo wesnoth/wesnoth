@@ -40,7 +40,6 @@ game_config_manager::game_config_manager(
 	cmdline_opts_(cmdline_opts),
 	disp_(display),
 	game_config_(),
-	defines_(),
 	old_defines_map_(),
 	paths_manager_(),
 	cache_(game_config::config_cache::instance())
@@ -58,44 +57,28 @@ game_config_manager::~game_config_manager()
 	resources::config_manager = NULL;
 }
 
-void game_config_manager::add_scoped_define(const std::string& name,
-                                            const bool add)
-{
-	defines_.push_back(std::make_pair(name, add));
-}
-
-void game_config_manager::add_cache_define(const std::string& name)
-{
-	cache_.add_define(name);
-}
-
-void game_config_manager::clear_cache_defines()
-{
-	cache_.clear_defines();
-}
-
 bool game_config_manager::init_config(FORCE_RELOAD_CONFIG force_reload,
                                       const bool jump_to_editor)
 {
 	// Make sure that multiplayer mode is set
 	// if command line parameter is selected.
 	if (cmdline_opts_.multiplayer) {
-		cache_.add_define("MULTIPLAYER");
+		game_config::scoped_preproc_define multiplayer("MULTIPLAYER");
 	}
 
 	if (cmdline_opts_.test) {
-		cache_.add_define("TEST");
+		game_config::scoped_preproc_define test("TEST");
 	}
 
 	if (jump_to_editor) {
-		cache_.add_define("EDITOR");
+		game_config::scoped_preproc_define editor("EDITOR");
 	}
 
 	if (!cmdline_opts_.multiplayer && !cmdline_opts_.test && !jump_to_editor) {
-		cache_.add_define("TITLE_SCREEN");
+		game_config::scoped_preproc_define title_screen("TITLE_SCREEN");
 	}
 
-	load_game_cfg(SET_PATHS, CLEAR_CACHE, force_reload);
+	load_game_cfg(SET_PATHS, force_reload);
 
 	game_config::load_config(game_config_.child("game_config"));
 
@@ -113,30 +96,13 @@ bool game_config_manager::init_config(FORCE_RELOAD_CONFIG force_reload,
 
 void game_config_manager::load_game_cfg(
     SET_BINARY_PATHS set_paths,
-    CLEAR_CACHE_DEFINES clear_cache,
     FORCE_RELOAD_CONFIG force_reload)
 {
-	if (clear_cache == CLEAR_CACHE)
-		cache_.clear_defines();
-
-	typedef boost::shared_ptr<game_config::scoped_preproc_define> define_ptr;
-	std::deque<define_ptr> defines;
-
-	typedef std::pair<std::string, bool> def_pair;
-	BOOST_FOREACH(const def_pair& define, defines_) {
-		define_ptr newdefine
-		    (new game_config::scoped_preproc_define(define.first,
-			                                        define.second));
-		defines.push_back(newdefine);
-	}
-
-	defines_.clear();
-
 	// Make sure that 'debug mode' symbol is set
 	// if command line parameter is selected
 	// also if we're in multiplayer and actual debug mode is disabled.
 	if (game_config::debug || game_config::mp_debug) {
-		cache_.add_define("DEBUG_MODE");
+		game_config::scoped_preproc_define debug_mode("DEBUG_MODE");
 	}
 
 	if (!game_config_.empty() &&

@@ -29,20 +29,13 @@ public:
 	~game_config_manager();
 
 	enum SET_BINARY_PATHS { SET_PATHS, NO_SET_PATHS };
-	enum CLEAR_CACHE_DEFINES { CLEAR_CACHE, NO_CLEAR_CACHE };
 	enum FORCE_RELOAD_CONFIG { FORCE_RELOAD, NO_FORCE_RELOAD };
 
 	const config& game_config() const { return game_config_; }
 
-	void add_scoped_define(const std::string& name, const bool add = true);
-	void add_cache_define(const std::string& name);
-
-	void clear_cache_defines();
-
 	bool init_config(FORCE_RELOAD_CONFIG force_reload,
 	                 const bool jump_to_editor = false);
 	void load_game_cfg(SET_BINARY_PATHS set_paths,
-	                   CLEAR_CACHE_DEFINES clear_cache,
 	                   FORCE_RELOAD_CONFIG force_reload);
 	void reload_changed_game_config(const bool jump_to_editor = false);
 
@@ -55,7 +48,6 @@ private:
 
 	config game_config_;
 
-	std::vector<std::pair<std::string, bool> > defines_;
 	preproc_map old_defines_map_;
 
 	binary_paths_manager paths_manager_;

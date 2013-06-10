@@ -296,11 +296,10 @@ bool game_controller::play_test()
 	state_.classification().campaign_type = "test";
 	state_.carryover_sides_start["next_scenario"] = test_scenario_;
 	state_.classification().campaign_define = "TEST";
-	resources::config_manager->add_cache_define("TEST");
+	game_config::scoped_preproc_define test("TEST");
 
 	resources::config_manager->load_game_cfg(
 	    game_config_manager::SET_PATHS,
-	    game_config_manager::NO_CLEAR_CACHE,
 	    game_config_manager::NO_FORCE_RELOAD);
 
 	try {
@@ -318,10 +317,9 @@ bool game_controller::play_screenshot_mode()
 		return true;
 	}
 
-	resources::config_manager->add_cache_define("EDITOR");
+	game_config::scoped_preproc_define editor("EDITOR");
 	resources::config_manager->load_game_cfg(
 	    game_config_manager::NO_SET_PATHS,
-	    game_config_manager::CLEAR_CACHE,
 	    game_config_manager::NO_FORCE_RELOAD);
 	const binary_paths_manager bin_paths_manager(game_config());
 	::init_textdomains(game_config());
@@ -342,29 +340,31 @@ bool game_controller::load_game()
 	try {
 		load.load_game(game::load_game_exception::game, game::load_game_exception::show_replay, game::load_game_exception::cancel_orders, game::load_game_exception::select_difficulty, game::load_game_exception::difficulty);
 
-		resources::config_manager->add_scoped_define(load.get_difficulty());
-		resources::config_manager->add_scoped_define(
+		game_config::scoped_preproc_define difficulty(load.get_difficulty());
+		game_config::scoped_preproc_define campaign(
 		    state_.classification().campaign_define,
 		    !state_.classification().campaign_define.empty());
-		resources::config_manager->add_scoped_define(
+		game_config::scoped_preproc_define multiplayer(
 		    "MULTIPLAYER",
 		    state_.classification().campaign_define.empty() &&
 		        (state_.classification().campaign_type == "multiplayer"));
 
-		BOOST_FOREACH(const std::string& xtra_def,
-		              state_.classification().campaign_xtra_defines) {
-			resources::config_manager->add_scoped_define(xtra_def);
+		typedef boost::shared_ptr<game_config::scoped_preproc_define> define;
+		std::deque<define> extra_defines;
+		BOOST_FOREACH(const std::string& extra_define,
+		        state_.classification().campaign_xtra_defines) {
+			define new_define
+			    (new game_config::scoped_preproc_define(extra_define));
+			extra_defines.push_back(new_define);
 		}
 
 		try {
 			resources::config_manager->load_game_cfg(
 				game_config_manager::SET_PATHS,
-				game_config_manager::CLEAR_CACHE,
 				game_config_manager::NO_FORCE_RELOAD);
 		} catch(config::error&) {
 			resources::config_manager->load_game_cfg(
 				game_config_manager::NO_SET_PATHS,
-				game_config_manager::CLEAR_CACHE,
 				game_config_manager::NO_FORCE_RELOAD);
 			return false;
 		}
@@ -462,8 +462,6 @@ void game_controller::set_tutorial()
 	state_.classification().campaign_type = "tutorial";
 	state_.carryover_sides_start["next_scenario"] = "tutorial";
 	state_.classification().campaign_define = "TUTORIAL";
-	resources::config_manager->clear_cache_defines();
-	resources::config_manager->add_cache_define("TUTORIAL");
 }
 
 void game_controller::mark_completed_campaigns(std::vector<config> &campaigns)
@@ -587,11 +585,6 @@ bool game_controller::new_campaign()
 		}
 
 		state_.carryover_sides_start["difficulty"] = difficulties[difficulty];
-		resources::config_manager->clear_cache_defines();
-		resources::config_manager->add_cache_define(difficulties[difficulty]);
-	} else {
-		//clear even when there is no difficulty
-		resources::config_manager->clear_cache_defines();
 	}
 
 	state_.classification().campaign_define = campaign["define"].str();
@@ -744,11 +737,10 @@ bool game_controller::play_multiplayer()
 		}
 
 		/* do */ {
-			resources::config_manager->add_scoped_define(
+			game_config::scoped_preproc_define campaign(
 			    state_.classification().campaign_define);
 			resources::config_manager->load_game_cfg(
 				game_config_manager::SET_PATHS,
-				game_config_manager::CLEAR_CACHE,
 				game_config_manager::NO_FORCE_RELOAD);
 			events::discard_input(); // prevent the "keylogger" effect
 			cursor::set(cursor::NORMAL);
@@ -821,11 +813,10 @@ bool game_controller::play_multiplayer_commandline()
 	state_.classification().campaign_type = "multiplayer";
 	state_.classification().campaign_define = "MULTIPLAYER";
 
-	resources::config_manager->add_scoped_define(
+	game_config::scoped_preproc_define campaign(
 	    state_.classification().campaign_define);
 	resources::config_manager->load_game_cfg(
 		game_config_manager::SET_PATHS,
-		game_config_manager::CLEAR_CACHE,
 		game_config_manager::NO_FORCE_RELOAD);
 	events::discard_input(); // prevent the "keylogger" effect
 	cursor::set(cursor::NORMAL);
@@ -867,23 +858,32 @@ void game_controller::launch_game(RELOAD_GAME_DATA reload)
 	loadscreen::global_loadscreen_manager loadscreen_manager(disp().video());
 	loadscreen::start_stage("load data");
 	if(reload == RELOAD_DATA) {
-		resources::config_manager->add_scoped_define(
+		game_config::scoped_preproc_define campaign(
 		    state_.classification().campaign_define,
 		    state_.classification().campaign_define.empty() == false);
 
-		BOOST_FOREACH(const std::string& xtra_def,
-		              state_.classification().campaign_xtra_defines) {
-			resources::config_manager->add_scoped_define(xtra_def);
+		// NORMAL is default difficulty and will be used
+		// even if game config didn't specify difficulty at all.
+		game_config::scoped_preproc_define difficulty(
+			state_.carryover_sides_start["difficulty"],
+			state_.carryover_sides_start["difficulty"].empty() == false);
+
+		typedef boost::shared_ptr<game_config::scoped_preproc_define> define;
+		std::deque<define> extra_defines;
+		BOOST_FOREACH(const std::string& extra_define,
+		        state_.classification().campaign_xtra_defines) {
+			define new_define
+			    (new game_config::scoped_preproc_define(extra_define));
+			extra_defines.push_back(new_define);
 		}
+
 		try {
 			resources::config_manager->load_game_cfg(
 				game_config_manager::NO_SET_PATHS,
-				game_config_manager::NO_CLEAR_CACHE,
 				game_config_manager::NO_FORCE_RELOAD);
 		} catch(config::error&) {
 			resources::config_manager->load_game_cfg(
 				game_config_manager::NO_SET_PATHS,
-				game_config_manager::CLEAR_CACHE,
 				game_config_manager::NO_FORCE_RELOAD);
 			return;
 		}
@@ -929,10 +929,9 @@ void game_controller::play_replay()
 editor::EXIT_STATUS game_controller::start_editor(const std::string& filename)
 {
 	while(true){
-		resources::config_manager->add_cache_define("EDITOR");
+		game_config::scoped_preproc_define editor("EDITOR");
 		resources::config_manager->load_game_cfg(
 			game_config_manager::NO_SET_PATHS,
-			game_config_manager::CLEAR_CACHE,
 			game_config_manager::NO_FORCE_RELOAD);
 		const binary_paths_manager bin_paths_manager(game_config());
 		::init_textdomains(game_config());
