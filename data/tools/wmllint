@@ -1487,6 +1487,31 @@ def hack_syntax(filename, lines):
     # array of strings in lines.  Modify lines in place as needed;
     # changes will be detected by the caller.
     #
+    # Deal with a few Windows-specific problems for the sake of cross-
+    # platform harmony. First, the use of backslashes in file paths.
+    for i in range(len(lines)):
+        if "no-syntax-rewrite" in lines[i]:
+            break
+        if lines[i].lstrip().startswith("#"):
+            pass
+        # Looking out for "#" used for color markup
+        precomment = re.split(r'\s#', lines[i], 1)[0]
+        comment = lines[i][len(precomment):]
+        if '\\' in precomment:
+            while re.search(r'(?<!\\)\\(?!\\)[^ ={}"]+\.(png|ogg|wav|gif|jpe?g|map|mask|cfg)\b', precomment, flags=re.IGNORECASE):
+                backslash = re.search(r'([^ ={}"]*(?<!\\)\\(?!\\)[^ ={}"]+\.)(png|ogg|wav|gif|jpe?g|map|mask|cfg)(?=\b)', precomment, flags=re.IGNORECASE)
+                fronted = backslash.group(1).replace("\\","/") + backslash.group(2)
+                precomment = precomment[:backslash.start()] + fronted + precomment[backslash.end():]
+                print '"%s", line %d: %s -> %s -- please use frontslash (/) for cross-platform compatibility' \
+                      % (filename, i+1, backslash.group(), fronted)
+        # Then get rid of the 'userdata/' headache.
+        if 'userdata/' in precomment:
+            while re.search(r'user(data/)?data/[ac]', precomment):
+                userdata = re.search(r'(?:\.\./)?user(?:data/)?(data/[ac][^/]*/?)', precomment)
+                precomment = precomment[:userdata.start()] + userdata.group(1) + precomment[userdata.end():]
+                print '"%s", line %d: %s -> %s -- DO NOT PREFIX PATHS WITH "userdata/"' \
+                      % (filename, i+1, userdata.group(), userdata.group(1))
+        lines[i] = precomment + comment
     # Ensure that every attack has a translatable description.
     for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
@@ -1545,7 +1570,7 @@ def hack_syntax(filename, lines):
     for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
             break
-        if lines[i].startswith("#"):
+        if lines[i].lstrip().startswith("#"):
             pass
         elif "{DOT_CENTERED" in lines[i]:
             lines[i] = lines[i].replace("DOT_CENTERED", "NEW_JOURNEY")
@@ -1589,7 +1614,7 @@ def hack_syntax(filename, lines):
     for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
             break
-        if lines[i].startswith("#"):
+        if lines[i].lstrip().startswith("#"):
             pass
         # RC -> PAL
         elif "RC" in lines[i]:
@@ -1599,7 +1624,7 @@ def hack_syntax(filename, lines):
     for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
             break
-        if lines[i].startswith("#"):
+        if lines[i].lstrip().startswith("#"):
             pass
         # Ugh...relies on code having been wmlindented
         lines[i] = re.sub(r"^\[terrain\]", "[terrain_type]", lines[i])
@@ -1615,7 +1640,7 @@ def hack_syntax(filename, lines):
     for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
             break
-        if lines[i].startswith("#"):
+        if lines[i].lstrip().startswith("#"):
             pass
         if "[set_variable]" in lines[i]:
             in_set_variable = True
@@ -1629,7 +1654,7 @@ def hack_syntax(filename, lines):
     for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
             break
-        if lines[i].startswith("#"):
+        if lines[i].lstrip().startswith("#"):
             pass
         # The trouble with this transformation is that it's only right for UMC;
         # it clobbers mainline.
