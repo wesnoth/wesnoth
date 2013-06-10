@@ -97,35 +97,32 @@ void button::load_images() {
 	surface pressed_image(image::get_image(button_image_name_ + "-pressed.png"));
 	surface active_image(image::get_image(button_image_name_ + "-active.png"));
 	surface disabled_image;
-	if (file_exists(game_config::path + "/images/" + button_image_name_ + ".png~GS()"))
-		disabled_image.assign((image::get_image(button_image_name_ + ".png~GS()")));
+	if (file_exists(game_config::path + "/images/" + button_image_name_ + "-disabled.png"))
+		disabled_image.assign((image::get_image(button_image_name_ + "-disabled.png")));
 	surface pressed_disabled_image, pressed_active_image, touched_image;
-
-	static const Uint32 disabled_btn_color = 0xAAAAAA;
-	static const double disabled_btn_adjust = 0.18;
 
 	if (!button_overlay_image_name_.empty()) {
 		overlayImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + ".png"));
 		overlayPressedImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-pressed.png"));
+
 		if (file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-active.png"))
 			overlayActiveImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-active.png"));
-		if (file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-pressed.png~GS()"))
-			overlayPressedDisabledImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-pressed.png~GS()"));
-		if (file_exists(game_config::path + "/images/" + button_overlay_image_name_ + "_30.png~GS()"))
-			overlayDisabledImage_.assign(image::get_image(button_overlay_image_name_ + "_30.png~GS()"));
+
+		if (file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-disabled.png"))
+			overlayDisabledImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-disabled.png"));
 		if (overlayDisabledImage_.null())
-				overlayDisabledImage_ = blend_surface(greyscale_image(overlayImage_),
-						disabled_btn_adjust, disabled_btn_color);
+			overlayDisabledImage_ = image::get_image(button_overlay_image_name_ + size_postfix + ".png~GS()");
+
+		if (file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-disabled-pressed.png"))
+			overlayPressedDisabledImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-disabled-pressed.png"));
 		if (overlayPressedDisabledImage_.null())
-				overlayPressedDisabledImage_ = blend_surface(greyscale_image(overlayPressedImage_),
-						disabled_btn_adjust, disabled_btn_color);
+			overlayPressedDisabledImage_ = image::get_image(button_overlay_image_name_ + size_postfix + "-pressed.png~GS()");
 	} else {
 		overlayImage_.assign(NULL);
 	}
 
 	if (disabled_image == NULL) {
-		disabled_image = blend_surface(greyscale_image(button_image),
-				disabled_btn_adjust, disabled_btn_color);
+		disabled_image = image::get_image(button_image_name_ + ".png~GS()");
 	}
 
 	if (pressed_image.null())
@@ -143,10 +140,10 @@ void button::load_images() {
 		if (pressed_active_image.null())
 			pressed_active_image.assign(pressed_image);
 
-		pressed_disabled_image.assign(image::get_image(button_image_name_ + "-pressed.png~GS()"));
+		if (file_exists(game_config::path + "/images/" + button_image_name_ + size_postfix + "-disabled-pressed.png"))
+			pressed_disabled_image.assign(image::get_image(button_image_name_ + "-disabled-pressed.png"));
 		if (pressed_disabled_image.null())
-			pressed_disabled_image = blend_surface(greyscale_image(pressed_image),
-					disabled_btn_adjust, disabled_btn_color);
+			pressed_disabled_image = image::get_image(button_image_name_ + "-pressed.png~GS()");
 	}
 
 	if (button_image.null()) {
