@@ -35,8 +35,7 @@ public:
 	const config& game_config() const { return game_config_; }
 
 	bool init_config(FORCE_RELOAD_CONFIG force_reload);
-	void load_game_cfg(SET_BINARY_PATHS set_paths,
-	                   FORCE_RELOAD_CONFIG force_reload);
+	void load_game_cfg(FORCE_RELOAD_CONFIG force_reload);
 	void reload_changed_game_config();
 
 private:

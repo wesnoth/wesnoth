@@ -79,7 +79,9 @@ bool game_config_manager::init_config(FORCE_RELOAD_CONFIG force_reload)
 		game_config::scoped_preproc_define title_screen("TITLE_SCREEN");
 	}
 
-	load_game_cfg(SET_PATHS, force_reload);
+	load_game_cfg(force_reload);
+
+	paths_manager_.set_paths(game_config());
 
 	game_config::load_config(game_config_.child("game_config"));
 
@@ -95,9 +97,7 @@ bool game_config_manager::init_config(FORCE_RELOAD_CONFIG force_reload)
 	return true;
 }
 
-void game_config_manager::load_game_cfg(
-    SET_BINARY_PATHS set_paths,
-    FORCE_RELOAD_CONFIG force_reload)
+void game_config_manager::load_game_cfg(FORCE_RELOAD_CONFIG force_reload)
 {
 	// Make sure that 'debug mode' symbol is set
 	// if command line parameter is selected
@@ -260,9 +260,6 @@ void game_config_manager::load_game_cfg(
 			e.message + _("' (The game will now exit)"));
 		throw;
 	}
-
-	if (set_paths == SET_PATHS)
-		paths_manager_.set_paths(game_config());
 }
 
 void game_config_manager::reload_changed_game_config()
