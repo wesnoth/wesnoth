@@ -25,8 +25,9 @@ except:
 SConsignFile("build/sconsign.dblite")
 
 # Warn user of current set of build options.
-if os.path.exists('.scons-option-cache'):
-    optfile = file('.scons-option-cache')
+AddOption('--option-cache', dest='option_cache', nargs=1, type = 'string', action = 'store', metavar = 'FILE', help='file with cached construction variables', default = '.scons-option-cache')
+if os.path.exists(GetOption("option_cache")):
+    optfile = file(GetOption("option_cache"))
     print "Saved options:", optfile.read().replace("\n", ", ")[:-2]
     optfile.close()
 
@@ -34,7 +35,7 @@ if os.path.exists('.scons-option-cache'):
 # Build-control options
 #
 
-opts = Options('.scons-option-cache')
+opts = Options(GetOption("option_cache"))
 
 def OptionalPath(key, val, env):
     if val:
@@ -105,7 +106,7 @@ toolpath = ["scons"] + map(lambda x : x.abspath + "/scons", Dir(".").repositorie
 sys.path = toolpath + sys.path
 env = Environment(tools=["tar", "gettext", "install", "python_devel", "scanreplace"], options = opts, toolpath = toolpath)
 
-opts.Save('.scons-option-cache', env)
+opts.Save(GetOption("option_cache"), env)
 
 # Make sure the user's environment is always available
 env['ENV']['PATH'] = os.environ["PATH"]
@@ -180,8 +181,8 @@ You can make the following special build targets:
 Files made by targets marked with '(*)' are cleaned by 'scons -c all'
 
 Options are cached in a file named .scons-option-cache and persist to later
-invocations.  The file is editable.  Delete it to start fresh.  Current option
-values can be listed with 'scons -h'.
+invocations.  The file is editable.  Delete it to start fresh. You can also use a different file by
+specifying --option-cache=FILE command line argument. Current option values can be listed with 'scons -h'.
 
 If you set CXXFLAGS and/or LDFLAGS in the environment, the values will
 be appended to the appropriate variables within scons.
