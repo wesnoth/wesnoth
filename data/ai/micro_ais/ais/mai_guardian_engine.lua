@@ -125,7 +125,13 @@ return {
             local unit = wesnoth.get_units { id = cfg.id }[1]
             --print("Exec guardian move",unit.id)
 
-            local nh = AH.next_hop(unit, cfg.return_x, cfg.return_y)
+            -- In case the return hex is occupied:
+            local x, y = cfg.return_x, cfg.return_y
+            if (unit.x ~= x) or (unit.y ~= y) then
+                x, y = wesnoth.find_vacant_tile(x, y, unit)
+            end
+
+            local nh = AH.next_hop(unit, x, y)
             if unit.moves~=0 then
                 AH.movefull_stopunit(ai, unit, nh)
             end
