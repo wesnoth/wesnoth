@@ -379,6 +379,10 @@ void thandler::handle_event(const SDL_Event& event)
 			handle_system_event(event);
 			break;
 		}
+#elif defined _WIN32
+		case SDL_SYSWMEVENT:
+			/* DO NOTHING */
+			break;
 #endif
 
 		case SDL_ACTIVEEVENT:
