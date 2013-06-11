@@ -359,8 +359,6 @@ bool game_controller::load_game()
 			resources::config_manager->load_game_cfg(
 				game_config_manager::NO_FORCE_RELOAD);
 		} catch(config::error&) {
-			resources::config_manager->load_game_cfg(
-				game_config_manager::NO_FORCE_RELOAD);
 			return false;
 		}
 
@@ -878,8 +876,6 @@ void game_controller::launch_game(RELOAD_GAME_DATA reload)
 			resources::config_manager->load_game_cfg(
 				game_config_manager::NO_FORCE_RELOAD);
 		} catch(config::error&) {
-			resources::config_manager->load_game_cfg(
-				game_config_manager::NO_FORCE_RELOAD);
 			return;
 		}
 	}

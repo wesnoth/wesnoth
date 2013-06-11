@@ -55,4 +55,28 @@ private:
 	game_config::config_cache& cache_;
 };
 
+// Helper class to save game_config_manager's
+// state in case of failed load_game_cfg().
+class game_config_manager_state
+{
+public:
+	game_config_manager_state(config* game_config,
+	    preproc_map* old_defines_map);
+	~game_config_manager_state();
+
+	void set_status_success();
+
+private:
+	game_config_manager_state(const game_config_manager& config_manager);
+	void operator=(const game_config_manager&);
+
+	bool status_success_;
+
+	const config game_config_original_;
+	config* const game_config_;
+
+	const preproc_map old_defines_map_original_;
+	preproc_map* const old_defines_map_;
+};
+
 #endif

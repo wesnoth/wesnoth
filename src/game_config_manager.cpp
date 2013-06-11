@@ -99,6 +99,8 @@ bool game_config_manager::init_config(FORCE_RELOAD_CONFIG force_reload)
 
 void game_config_manager::load_game_cfg(FORCE_RELOAD_CONFIG force_reload)
 {
+	game_config_manager_state manager_state(&game_config_, &old_defines_map_);
+
 	// Make sure that 'debug mode' symbol is set
 	// if command line parameter is selected
 	// also if we're in multiplayer and actual debug mode is disabled.
@@ -108,8 +110,10 @@ void game_config_manager::load_game_cfg(FORCE_RELOAD_CONFIG force_reload)
 
 	if (!game_config_.empty() &&
 	    (force_reload == NO_FORCE_RELOAD)
-	    && old_defines_map_ == cache_.get_preproc_map())
+	    && old_defines_map_ == cache_.get_preproc_map()) {
+		manager_state.set_status_success();
 		return; // Game_config already holds requested config in memory.
+	}
 	old_defines_map_ = cache_.get_preproc_map();
 	loadscreen::global_loadscreen_manager loadscreen_manager(disp_.video());
 	cursor::setter cur(cursor::WAIT);
@@ -260,6 +264,8 @@ void game_config_manager::load_game_cfg(FORCE_RELOAD_CONFIG force_reload)
 			e.message + _("' (The game will now exit)"));
 		throw;
 	}
+
+	manager_state.set_status_success();
 }
 
 void game_config_manager::reload_changed_game_config()
@@ -272,4 +278,28 @@ void game_config_manager::reload_changed_game_config()
 	old_defines_map_.clear();
 	clear_binary_paths_cache();
 	init_config(FORCE_RELOAD);
+}
+
+game_config_manager_state::game_config_manager_state(config* game_config,
+        preproc_map* old_defines_map) :
+	status_success_(false),
+	game_config_original_(*game_config),
+	game_config_(game_config),
+	old_defines_map_original_(*old_defines_map),
+	old_defines_map_(old_defines_map)
+{
+}
+
+game_config_manager_state::~game_config_manager_state()
+{
+	// Revert back to original state.
+	if(!status_success_) {
+		*game_config_ = game_config_original_;
+		*old_defines_map_ = old_defines_map_original_;
+	}
+}
+
+void game_config_manager_state::set_status_success()
+{
+	status_success_ = true;
 }
