@@ -296,9 +296,6 @@ bool game_controller::play_test()
 			game_config_manager::NO_FORCE_RELOAD);
 	}
 
-	const binary_paths_manager
-	    bin_paths_manager(resources::config_manager->game_config());
-
 	try {
 		play_game(disp(),state_,resources::config_manager->game_config());
 	} catch (game::load_game_exception &) {
@@ -320,8 +317,6 @@ bool game_controller::play_screenshot_mode()
 			game_config_manager::NO_FORCE_RELOAD);
 	}
 
-	const binary_paths_manager
-	    bin_paths_manager(resources::config_manager->game_config());
 	::init_textdomains(resources::config_manager->game_config());
 
 	editor::start(resources::config_manager->game_config(), video_,
@@ -741,9 +736,6 @@ bool game_controller::play_multiplayer()
 		events::discard_input(); // prevent the "keylogger" effect
 		cursor::set(cursor::NORMAL);
 
-		const binary_paths_manager
-			bin_paths_manager(resources::config_manager->game_config());
-
 		if(res == 3) {
 			config game_data;
 
@@ -822,9 +814,6 @@ bool game_controller::play_multiplayer_commandline()
 	events::discard_input(); // prevent the "keylogger" effect
 	cursor::set(cursor::NORMAL);
 
-	const binary_paths_manager
-		bin_paths_manager(resources::config_manager->game_config());
-
 	config game_data;
 	const mp::controller cntr = mp::CNTR_LOCAL;
 
@@ -890,9 +879,6 @@ void game_controller::launch_game(RELOAD_GAME_DATA reload)
 		}
 	}
 
-	const binary_paths_manager
-	    bin_paths_manager(resources::config_manager->game_config());
-
 	try {
 		const LEVEL_RESULT result = play_game(disp(),state_,
 		    resources::config_manager->game_config());
@@ -916,9 +902,6 @@ void game_controller::launch_game(RELOAD_GAME_DATA reload)
 
 void game_controller::play_replay()
 {
-	const binary_paths_manager
-	    bin_paths_manager(resources::config_manager->game_config());
-
 	try {
 		::play_replay(disp(),state_,resources::config_manager->game_config(),
 		    video_);
@@ -940,8 +923,6 @@ editor::EXIT_STATUS game_controller::start_editor(const std::string& filename)
 				game_config_manager::NO_FORCE_RELOAD);
 		}
 
-		const binary_paths_manager
-		    bin_paths_manager(resources::config_manager->game_config());
 		::init_textdomains(resources::config_manager->game_config());
 
 		editor::EXIT_STATUS res = editor::start(

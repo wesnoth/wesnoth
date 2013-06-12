@@ -71,8 +71,6 @@ bool game_config_manager::init_config(FORCE_RELOAD_CONFIG force_reload)
 
 	load_game_cfg(force_reload);
 
-	paths_manager_.set_paths(game_config());
-
 	game_config::load_config(game_config_.child("game_config"));
 
 	hotkey::deactivate_all_scopes();
@@ -255,6 +253,9 @@ void game_config_manager::load_game_cfg(FORCE_RELOAD_CONFIG force_reload)
 	}
 
 	manager_state.set_status_success();
+
+	// Set new binary paths.
+	paths_manager_.set_paths(game_config());
 }
 
 void game_config_manager::reload_changed_game_config()

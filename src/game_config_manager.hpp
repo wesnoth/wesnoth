@@ -29,7 +29,6 @@ public:
 						const bool jump_to_editor);
 	~game_config_manager();
 
-	enum SET_BINARY_PATHS { SET_PATHS, NO_SET_PATHS };
 	enum FORCE_RELOAD_CONFIG { FORCE_RELOAD, NO_FORCE_RELOAD };
 
 	const config& game_config() const { return game_config_; }
