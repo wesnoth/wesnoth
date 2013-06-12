@@ -26,7 +26,7 @@
 namespace gui {
 
 	//static initializations
-menu::imgsel_style menu::bluebg_style("misc/selection2", true,
+menu::imgsel_style menu::bluebg_style("dialogs/selection", true,
 										   0x000000, 0x000000, 0x333333,
 										   0.35, 0.0, 0.3);
 menu::style menu::simple_style;

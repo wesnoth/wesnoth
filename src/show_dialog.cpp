@@ -41,7 +41,7 @@ const int ButtonVPadding = 10;
 //note: style names are directly related to the panel image file names
 const dialog_frame::style dialog_frame::default_style("opaque", 0);
 const dialog_frame::style dialog_frame::message_style("translucent65", 3);
-const dialog_frame::style dialog_frame::preview_style("../misc/selection", 0);
+const dialog_frame::style dialog_frame::preview_style("../dialogs/selection", 0);
 const dialog_frame::style dialog_frame::titlescreen_style("translucent54", 1);
 
 const int dialog_frame::title_border_w = 10;

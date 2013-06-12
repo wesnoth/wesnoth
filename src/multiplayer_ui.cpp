@@ -52,7 +52,7 @@ namespace {
 
 	class user_menu_style : public gui::menu::imgsel_style {
 	public:
-		user_menu_style() : gui::menu::imgsel_style("misc/selection", false,
+		user_menu_style() : gui::menu::imgsel_style("dialogs/selection", false,
 										   0x000000, 0x4a4440, 0x999999,
 										   0.0, 0.2, 0.2),
 										   item_size_(empty_rect)
