@@ -61,23 +61,13 @@ game_config_manager::~game_config_manager()
 
 bool game_config_manager::init_config(FORCE_RELOAD_CONFIG force_reload)
 {
-	// Make sure that multiplayer mode is set
-	// if command line parameter is selected.
-	if (cmdline_opts_.multiplayer) {
-		game_config::scoped_preproc_define multiplayer("MULTIPLAYER");
-	}
-
-	if (cmdline_opts_.test) {
-		game_config::scoped_preproc_define test("TEST");
-	}
-
-	if (jump_to_editor_) {
-		game_config::scoped_preproc_define editor("EDITOR");
-	}
-
-	if (!cmdline_opts_.multiplayer && !cmdline_opts_.test && !jump_to_editor_) {
-		game_config::scoped_preproc_define title_screen("TITLE_SCREEN");
-	}
+	// Add preproc defines according to the command line arguments.
+	game_config::scoped_preproc_define multiplayer("MULTIPLAYER",
+	    cmdline_opts_.multiplayer);
+	game_config::scoped_preproc_define test("TEST", cmdline_opts_.test);
+	game_config::scoped_preproc_define editor("EDITOR", jump_to_editor_);
+	game_config::scoped_preproc_define title_screen("TITLE_SCREEN",
+	    !cmdline_opts_.multiplayer && !cmdline_opts_.test && !jump_to_editor_);
 
 	load_game_cfg(force_reload);
 
@@ -104,9 +94,8 @@ void game_config_manager::load_game_cfg(FORCE_RELOAD_CONFIG force_reload)
 	// Make sure that 'debug mode' symbol is set
 	// if command line parameter is selected
 	// also if we're in multiplayer and actual debug mode is disabled.
-	if (game_config::debug || game_config::mp_debug) {
-		game_config::scoped_preproc_define debug_mode("DEBUG_MODE");
-	}
+	game_config::scoped_preproc_define debug_mode("DEBUG_MODE",
+	    game_config::debug || game_config::mp_debug);
 
 	if (!game_config_.empty() &&
 	    (force_reload == NO_FORCE_RELOAD)
