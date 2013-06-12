@@ -687,6 +687,10 @@ LIBS="$LIBS $SDL_LIBS"
 # so recommend using fink sdl packages as a workaround
 
 ac_link="$LDPREFIX $ac_link"
+
+if test "x$game" = "xyes"
+then
+
 AC_CHECK_LIB([SDL_image],
 	     [IMG_Load],
 	     [if test -n "$LDPREFIX" -a -r `$SDL_CONFIG --prefix`/lib/libSDL_image.la
@@ -704,6 +708,9 @@ else SDL_MIXER_LIBS=-lSDL_mixer
 fi],
 	     [AC_MSG_ERROR([*** SDL_mixer lib not found! Get SDL_mixer from
 http://www.libsdl.org/projects/SDL_mixer/index.html])])
+
+fi
+# test "x$game" = "xyes"
 
 AC_CHECK_LIB([SDL_net],
 	     [SDLNet_Init],
@@ -725,6 +732,9 @@ AC_SUBST([SDL_NET_LIBS])
 # config script of SDL_ttf, modified for CPPFLAGS
 
 dnl Get the cflags and libraries from the freetype-config script
+
+if test "x$game" = "xyes"
+then
 
 AC_ARG_WITH([freetype-prefix],
             AS_HELP_STRING([--with-freetype-prefix=PFX], [Prefix where FREETYPE is installed (optional)]),
@@ -759,6 +769,9 @@ else
     FREETYPE_LIBS=`$FREETYPE_CONFIG $freetypeconf_args --libs`
 fi
 
+fi
+# test "x$game" = "xyes"
+
 AC_SUBST([FREETYPE_LIBS])
 
 #######################################################################
@@ -782,6 +795,9 @@ AC_CHECK_HEADER([SDL.h],
 		[AC_MSG_ERROR([*** SDL include files not found!
 You should install SDL development package.])])
 
+if test "x$game" = "xyes"
+then
+
 AC_CHECK_HEADER([SDL_image.h],
 		[],
 		[AC_MSG_ERROR([*** SDL_image include files not found!
@@ -791,6 +807,9 @@ AC_CHECK_HEADER([SDL_mixer.h],
 		[],
 		[AC_MSG_ERROR([*** SDL_mixer include files not found!
 You should install development package.])])
+
+fi
+# test "x$game" = "xyes"
 
 AC_CHECK_HEADER([SDL_net.h],
 		[],
@@ -826,6 +845,9 @@ AC_CHECK_FUNCS([floor socket strtoul])
 #######################################################################
 # Check for PNG support in SDL_image                                  #
 #######################################################################
+
+if test "x$game" = "xyes"
+then
 
 AC_LANG([C])
 AC_MSG_CHECKING([for PNG support in SDL_image])
@@ -864,10 +886,15 @@ CPPFLAGS=$OLD_CPPFLAGS
 CFLAGS=$OLD_CFLAGS
 LIBS=$OLD_LIBS
 
+fi
+# test "x$game" = "xyes"
 
 #######################################################################
 # Check for OGG support in SDL_mixer                                  #
 #######################################################################
+
+if test "x$game" = "xyes"
+then
 
 if test "x$lite" = "xno"; then
     if test -e "data/core/music/main_menu.ogg" ; then
@@ -907,6 +934,9 @@ if test "x$lite" = "xno"; then
         LIBS=$OLD_LIBS
     fi
 fi
+
+fi
+# test "x$game" = "xyes"
 
 #######################################################################
 # Check for boost iostreams                                           #
