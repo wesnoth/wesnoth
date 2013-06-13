@@ -20,7 +20,6 @@
 #include "commandline_options.hpp"
 #include "game_config_manager.hpp"
 #include "game_controller.hpp"
-#include "game_controller_new.hpp"
 #include "gui/dialogs/title_screen.hpp"
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
@@ -426,11 +425,8 @@ static int do_gameloop(int argc, char** argv)
 	//ensure recorder has an actually random seed instead of what it got during
 	//static initialization (before any srand() call)
 	recorder.set_seed(rand());
-	boost::shared_ptr<game_controller_abstract> game;
-	if (game_config::new_syntax)
-		game = boost::shared_ptr<game_controller_abstract>(new game_controller_new(cmdline_opts));
-	else
-		game = boost::shared_ptr<game_controller_abstract>(new game_controller(cmdline_opts,argv[0]));
+	boost::scoped_ptr<game_controller> game(
+		new game_controller(cmdline_opts,argv[0]));
 	const int start_ticks = SDL_GetTicks();
 
 	init_locale();
@@ -579,7 +575,8 @@ static int do_gameloop(int argc, char** argv)
 			res = static_cast<gui2::ttitle_screen::tresult>(dlg.get_retval());
 		}
 
-		game_controller_abstract::RELOAD_GAME_DATA should_reload = game_controller_abstract::RELOAD_DATA;
+		game_controller::RELOAD_GAME_DATA should_reload =
+			game_controller::RELOAD_DATA;
 
 		if(res == gui2::ttitle_screen::QUIT_GAME) {
 			LOG_GENERAL << "quitting game...\n";
@@ -590,7 +587,7 @@ static int do_gameloop(int argc, char** argv)
 				res = gui2::ttitle_screen::NOTHING;
 				continue;
 			}
-			should_reload = game_controller_abstract::NO_RELOAD_DATA;
+			should_reload = game_controller::NO_RELOAD_DATA;
 		} else if(res == gui2::ttitle_screen::TUTORIAL) {
 			game->set_tutorial();
 		} else if(res == gui2::ttitle_screen::NEW_CAMPAIGN) {

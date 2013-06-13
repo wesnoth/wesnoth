@@ -14,9 +14,8 @@
 #ifndef GAME_CONTROLLER_H_INCLUDED
 #define GAME_CONTROLLER_H_INCLUDED
 
-#include "game_controller_abstract.hpp"
-
 #include "commandline_options.hpp"
+#include "editor/editor_main.hpp"
 #include "gamestatus.hpp"
 #include "game_config_manager.hpp"
 #include "game_display.hpp"
@@ -41,11 +40,17 @@ public:
 	std::string campaign_id_,scenario_id_;
 };
 
-class game_controller : public game_controller_abstract
+class game_controller
 {
 public:
 	game_controller(const commandline_options& cmdline_opts, const char* appname);
 	~game_controller();
+
+	game_display& disp();
+
+	bool init_video();
+	bool init_language();
+	bool init_joystick();
 
 	bool play_test();
 	bool play_screenshot_mode();
@@ -69,6 +74,7 @@ public:
 
 	void show_preferences();
 
+	enum RELOAD_GAME_DATA { RELOAD_DATA, NO_RELOAD_DATA };
 	void launch_game(RELOAD_GAME_DATA reload=RELOAD_DATA);
 	void play_replay();
 
@@ -82,6 +88,10 @@ private:
 	void mark_completed_campaigns(std::vector<config>& campaigns);
 
 	editor::EXIT_STATUS start_editor(const std::string& filename);
+
+	const commandline_options& cmdline_opts_;
+	util::scoped_ptr<game_display> disp_;
+	CVideo video_;
 
 	//this should get destroyed *after* the video, since we want
 	//to clean up threads after the display disappears.
@@ -99,7 +109,6 @@ private:
 
 	std::string screenshot_map_, screenshot_filename_;
 
-	/// Stateful class taking over scenario-switching capabilities from the current game_controller and playsingle_controller. Currently only available when --new-syntax command line option is enabled.
 	game_state state_;
 
 	std::string multiplayer_server_;

@@ -686,8 +686,6 @@ set(wesnoth-main_SRC
 	formula_tokenizer.cpp
 	game_config_manager.cpp
 	game_controller.cpp
-	game_controller_abstract.cpp
-	game_controller_new.cpp
 	game_display.cpp
 	game_errors.cpp
 	game_events.cpp
