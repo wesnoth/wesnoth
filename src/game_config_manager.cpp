@@ -127,124 +127,22 @@ void game_config_manager::load_game_cfg(FORCE_RELOAD_CONFIG force_reload)
 		config core_terrain_rules;
 		core_terrain_rules.splice_children(game_config_, "terrain_graphics");
 
-		// Load usermade add-ons.
-		const std::string user_campaign_dir = get_addon_campaigns_dir();
-		std::vector< std::string > error_addons;
-		// Scan addon directories.
-		std::vector<std::string> user_dirs;
-		// Scan for standalone files.
-		std::vector<std::string> user_files;
-
-		// The addons that we'll actually load.
-		std::vector<std::string> addons_to_load;
-
-		get_files_in_dir(user_campaign_dir,&user_files,&user_dirs,
-		                 ENTIRE_FILE_PATH);
-		std::stringstream user_error_log;
-
-		// Append the $user_campaign_dir/*.cfg files to addons_to_load.
-		BOOST_FOREACH(const std::string& uc, user_files) {
-			const std::string file = uc;
-			const int size_minus_extension = file.size() - 4;
-			if(file.substr(size_minus_extension, file.size()) == ".cfg") {
-				bool ok = true;
-				// Allowing it if the dir doesn't exist,
-				// for the single-file add-on.
-				if(file_exists(file.substr(0, size_minus_extension))) {
-					// Unfortunately, we create the dir plus
-					// _info.cfg ourselves on download.
-					std::vector<std::string> dirs, files;
-					get_files_in_dir(file.substr(0, size_minus_extension),
-					                 &files, &dirs);
-					if(dirs.size() > 0)
-						ok = false;
-					if(files.size() > 1)
-						ok = false;
-					if(files.size() == 1 && files[0] != "_info.cfg")
-						ok = false;
-				}
-				if(!ok) {
-					const int userdata_loc = file.find("data/add-ons") + 5;
-					ERR_CONFIG << "error reading usermade add-on '"
-					           << file << "'\n";
-					error_addons.push_back(file);
-					user_error_log << "The format '~" << file.substr(userdata_loc) << "' is only for single-file add-ons, use '~" << file.substr(userdata_loc, size_minus_extension - userdata_loc) << "/_main.cfg' instead.\n";
-				} else
-					addons_to_load.push_back(file);
-			}
-		}
-
-		// Append the $user_campaign_dir/*/_main.cfg files to addons_to_load.
-		BOOST_FOREACH(const std::string& uc, user_dirs) {
-			const std::string main_cfg = uc + "/_main.cfg";
-			if (file_exists(main_cfg))
-				addons_to_load.push_back(main_cfg);
-		}
-
-		// Load the addons.
-		BOOST_FOREACH(const std::string& uc, addons_to_load) {
-			const std::string toplevel = uc;
-			try {
-				config umc_cfg;
-				cache_.get_config(toplevel, umc_cfg);
-
-				game_config_.append(umc_cfg);
-			} catch(config::error& err) {
-				ERR_CONFIG << "error reading usermade add-on '" << uc << "'\n";
-				error_addons.push_back(uc);
-				user_error_log << err.message << "\n";
-			} catch(preproc_config::error& err) {
-				ERR_CONFIG << "error reading usermade add-on '" << uc << "'\n";
-				error_addons.push_back(uc);
-				user_error_log << err.message << "\n";
-			} catch(io_exception&) {
-				ERR_CONFIG << "error reading usermade add-on '" << uc << "'\n";
-				error_addons.push_back(uc);
-			}
-		}
-		if(error_addons.empty() == false) {
-			std::stringstream msg;
-			msg << _n("The following add-on had errors and could not be loaded:",
-					"The following add-ons had errors and could not be loaded:",
-					error_addons.size());
-			BOOST_FOREACH(const std::string& error_addon, error_addons) {
-				msg << "\n" << error_addon;
-			}
-
-			msg << '\n' << _("ERROR DETAILS:") << '\n' << user_error_log.str();
-
-			gui2::show_error_message(disp_.video(),msg.str());
-		}
+		load_addons_cfg();
 
 		// Extract the Lua scripts at toplevel.
 		extract_preload_scripts(game_config_);
 		game_config_.clear_children("lua");
 
-		config colorsys_info;
-		colorsys_info.splice_children(game_config_, "color_range");
-		colorsys_info.splice_children(game_config_, "color_palette");
-
-		game_config_.merge_children("units");
+		// Put the gfx rules back to game config.
 		game_config_.splice_children(core_terrain_rules, "terrain_graphics");
 
-		config& hashes = game_config_.add_child("multiplayer_hashes");
-		BOOST_FOREACH(const config &ch, game_config_.child_range("multiplayer")) {
-			hashes[ch["id"]] = ch.hash();
-		}
-
-		game_config::add_color_info(colorsys_info);
-
-		loadscreen::start_stage("load unit types");
-		if (config &units = game_config_.child("units")) {
-			unit_types.set_config(units);
-		}
+		set_multiplayer_hashes();
+		set_color_info();
+		set_unit_data();
 
 		terrain_builder::set_terrain_rules_cfg(game_config());
-
 		::init_strings(game_config());
-
 		theme::set_known_themes(&game_config());
-
 	} catch(game::error& e) {
 		ERR_CONFIG << "Error loading game configuration files\n";
 		gui2::show_error_message(disp_.video(), _("Error loading game configuration files: '") +
@@ -256,6 +154,123 @@ void game_config_manager::load_game_cfg(FORCE_RELOAD_CONFIG force_reload)
 
 	// Set new binary paths.
 	paths_manager_.set_paths(game_config());
+}
+
+void game_config_manager::load_addons_cfg()
+{
+	// Load usermade add-ons.
+	const std::string user_campaign_dir = get_addon_campaigns_dir();
+	std::vector< std::string > error_addons;
+	// Scan addon directories.
+	std::vector<std::string> user_dirs;
+	// Scan for standalone files.
+	std::vector<std::string> user_files;
+
+	// The addons that we'll actually load.
+	std::vector<std::string> addons_to_load;
+
+	get_files_in_dir(user_campaign_dir,&user_files,&user_dirs,
+					 ENTIRE_FILE_PATH);
+	std::stringstream user_error_log;
+
+	// Append the $user_campaign_dir/*.cfg files to addons_to_load.
+	BOOST_FOREACH(const std::string& uc, user_files) {
+		const std::string file = uc;
+		const int size_minus_extension = file.size() - 4;
+		if(file.substr(size_minus_extension, file.size()) == ".cfg") {
+			bool ok = true;
+			// Allowing it if the dir doesn't exist,
+			// for the single-file add-on.
+			if(file_exists(file.substr(0, size_minus_extension))) {
+				// Unfortunately, we create the dir plus
+				// _info.cfg ourselves on download.
+				std::vector<std::string> dirs, files;
+				get_files_in_dir(file.substr(0, size_minus_extension),
+								 &files, &dirs);
+				if(dirs.size() > 0)
+					ok = false;
+				if(files.size() > 1)
+					ok = false;
+				if(files.size() == 1 && files[0] != "_info.cfg")
+					ok = false;
+			}
+			if(!ok) {
+				const int userdata_loc = file.find("data/add-ons") + 5;
+				ERR_CONFIG << "error reading usermade add-on '"
+						   << file << "'\n";
+				error_addons.push_back(file);
+				user_error_log << "The format '~" << file.substr(userdata_loc) << "' is only for single-file add-ons, use '~" << file.substr(userdata_loc, size_minus_extension - userdata_loc) << "/_main.cfg' instead.\n";
+			} else
+				addons_to_load.push_back(file);
+		}
+	}
+
+	// Append the $user_campaign_dir/*/_main.cfg files to addons_to_load.
+	BOOST_FOREACH(const std::string& uc, user_dirs) {
+		const std::string main_cfg = uc + "/_main.cfg";
+		if (file_exists(main_cfg))
+			addons_to_load.push_back(main_cfg);
+	}
+
+	// Load the addons.
+	BOOST_FOREACH(const std::string& uc, addons_to_load) {
+		const std::string toplevel = uc;
+		try {
+			config umc_cfg;
+			cache_.get_config(toplevel, umc_cfg);
+
+			game_config_.append(umc_cfg);
+		} catch(config::error& err) {
+			ERR_CONFIG << "error reading usermade add-on '" << uc << "'\n";
+			error_addons.push_back(uc);
+			user_error_log << err.message << "\n";
+		} catch(preproc_config::error& err) {
+			ERR_CONFIG << "error reading usermade add-on '" << uc << "'\n";
+			error_addons.push_back(uc);
+			user_error_log << err.message << "\n";
+		} catch(io_exception&) {
+			ERR_CONFIG << "error reading usermade add-on '" << uc << "'\n";
+			error_addons.push_back(uc);
+		}
+	}
+	if(error_addons.empty() == false) {
+		std::stringstream msg;
+		msg << _n("The following add-on had errors and could not be loaded:",
+				"The following add-ons had errors and could not be loaded:",
+				error_addons.size());
+		BOOST_FOREACH(const std::string& error_addon, error_addons) {
+			msg << "\n" << error_addon;
+		}
+
+		msg << '\n' << _("ERROR DETAILS:") << '\n' << user_error_log.str();
+
+		gui2::show_error_message(disp_.video(),msg.str());
+	}
+}
+
+void game_config_manager::set_multiplayer_hashes()
+{
+	config& hashes = game_config_.add_child("multiplayer_hashes");
+	BOOST_FOREACH(const config &ch, game_config_.child_range("multiplayer")) {
+		hashes[ch["id"]] = ch.hash();
+	}
+}
+
+void game_config_manager::set_color_info()
+{
+	config colorsys_info;
+	colorsys_info.splice_children(game_config_, "color_range");
+	colorsys_info.splice_children(game_config_, "color_palette");
+	game_config::add_color_info(colorsys_info);
+}
+
+void game_config_manager::set_unit_data()
+{
+	game_config_.merge_children("units");
+	loadscreen::start_stage("load unit types");
+	if (config &units = game_config_.child("units")) {
+		unit_types.set_config(units);
+	}
 }
 
 void game_config_manager::reload_changed_game_config()

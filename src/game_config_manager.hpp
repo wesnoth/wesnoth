@@ -41,6 +41,12 @@ private:
 	game_config_manager(const game_config_manager&);
 	void operator=(const game_config_manager&);
 
+	// load_game_cfg() helper functions.
+	void load_addons_cfg();
+	void set_multiplayer_hashes();
+	void set_color_info();
+	void set_unit_data();
+
 	const commandline_options& cmdline_opts_;
 	game_display& disp_;
 	const bool jump_to_editor_;
