@@ -464,8 +464,7 @@ bool game_controller::load_game()
 
 		try {
 			resources::config_manager->
-				load_game_config_for_game(state_.classification(),
-					load.get_difficulty());
+				load_game_config_for_game(state_.classification());
 		} catch(config::error&) {
 			return false;
 		}
@@ -687,6 +686,7 @@ bool game_controller::new_campaign()
 		}
 
 		state_.carryover_sides_start["difficulty"] = difficulties[difficulty];
+		state_.classification().difficulty = difficulties[difficulty];
 	}
 
 	state_.classification().campaign_define = campaign["define"].str();
@@ -953,8 +953,7 @@ void game_controller::launch_game(RELOAD_GAME_DATA reload)
 	if(reload == RELOAD_DATA) {
 		try {
 			resources::config_manager->
-				load_game_config_for_game(state_.classification(),
-					state_.carryover_sides_start["difficulty"]);
+				load_game_config_for_game(state_.classification());
 		} catch(config::error&) {
 			return;
 		}

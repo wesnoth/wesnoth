@@ -904,7 +904,8 @@ game_classification::game_classification():
 	completion(),
 	end_credits(true),
 	end_text(),
-	end_text_duration()
+	end_text_duration(),
+	difficulty(DEFAULT_DIFFICULTY)
 	{}
 
 game_classification::game_classification(const config& cfg):
@@ -921,7 +922,8 @@ game_classification::game_classification(const config& cfg):
 	completion(cfg["completion"]),
 	end_credits(cfg["end_credits"].to_bool(true)),
 	end_text(cfg["end_text"]),
-	end_text_duration(cfg["end_text_duration"])
+	end_text_duration(cfg["end_text_duration"]),
+	difficulty(cfg["difficulty"])
 	{}
 
 game_classification::game_classification(const game_classification& gc):
@@ -938,7 +940,8 @@ game_classification::game_classification(const game_classification& gc):
 	completion(gc.completion),
 	end_credits(gc.end_credits),
 	end_text(gc.end_text),
-	end_text_duration(gc.end_text_duration)
+	end_text_duration(gc.end_text_duration),
+	difficulty(gc.difficulty)
 {
 }
 
@@ -959,6 +962,7 @@ config game_classification::to_config() const
 	cfg["end_credits"] = end_credits;
 	cfg["end_text"] = end_text;
 	cfg["end_text_duration"] = str_cast<unsigned int>(end_text_duration);
+	cfg["difficulty"] = difficulty;
 
 	return cfg;
 }
@@ -1238,6 +1242,8 @@ void game_state::write_snapshot(config& cfg, game_display* gui) const
 	cfg["end_credits"] = classification_.end_credits;
 	cfg["end_text"] = classification_.end_text;
 	cfg["end_text_duration"] = str_cast<unsigned int>(classification_.end_text_duration);
+
+	cfg["difficulty"] = classification_.difficulty;
 
 	if(resources::gamedata != NULL){
 		resources::gamedata->write_snapshot(cfg);

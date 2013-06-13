@@ -303,11 +303,10 @@ void game_config_manager::load_game_config_for_editor()
 }
 
 void game_config_manager::load_game_config_for_game(
-	const game_classification& classification,
-	const std::string& game_difficulty)
+	const game_classification& classification)
 {
-	game_config::scoped_preproc_define difficulty(game_difficulty,
-		!game_difficulty.empty());
+	game_config::scoped_preproc_define difficulty(classification.difficulty,
+		!classification.difficulty.empty());
 	game_config::scoped_preproc_define campaign(classification.campaign_define,
 		!classification.campaign_define.empty());
 	game_config::scoped_preproc_define multiplayer("MULTIPLAYER",

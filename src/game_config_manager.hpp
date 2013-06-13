@@ -37,8 +37,7 @@ public:
 	void reload_changed_game_config();
 
 	void load_game_config_for_editor();
-	void load_game_config_for_game(const game_classification& classification,
-		const std::string& game_difficulty = "");
+	void load_game_config_for_game(const game_classification& classification);
 
 private:
 	game_config_manager(const game_config_manager&);
