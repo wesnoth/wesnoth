@@ -25,8 +25,7 @@ class game_config_manager
 {
 public:
 	game_config_manager(const commandline_options& cmdline_opts,
-	                    game_display& disp,
-						const bool jump_to_editor);
+		game_display& disp,	const bool jump_to_editor);
 	~game_config_manager();
 
 	enum FORCE_RELOAD_CONFIG { FORCE_RELOAD, NO_FORCE_RELOAD };
@@ -66,7 +65,7 @@ class game_config_manager_state
 {
 public:
 	game_config_manager_state(config* game_config,
-	    preproc_map* old_defines_map);
+		preproc_map* old_defines_map);
 	~game_config_manager_state();
 
 	void set_status_success();

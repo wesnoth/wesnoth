@@ -48,10 +48,12 @@ game_config_manager::game_config_manager(
 {
 	resources::config_manager = this;
 
-	if (cmdline_opts_.nocache)
+	if(cmdline_opts_.nocache) {
 		cache_.set_use_cache(false);
-	if (cmdline_opts_.validcache)
+	}
+	if(cmdline_opts_.validcache) {
 		cache_.set_force_valid_cache(true);
+	}
 }
 
 game_config_manager::~game_config_manager()
@@ -63,11 +65,11 @@ bool game_config_manager::init_config(FORCE_RELOAD_CONFIG force_reload)
 {
 	// Add preproc defines according to the command line arguments.
 	game_config::scoped_preproc_define multiplayer("MULTIPLAYER",
-	    cmdline_opts_.multiplayer);
+		cmdline_opts_.multiplayer);
 	game_config::scoped_preproc_define test("TEST", cmdline_opts_.test);
 	game_config::scoped_preproc_define editor("EDITOR", jump_to_editor_);
 	game_config::scoped_preproc_define title_screen("TITLE_SCREEN",
-	    !cmdline_opts_.multiplayer && !cmdline_opts_.test && !jump_to_editor_);
+		!cmdline_opts_.multiplayer && !cmdline_opts_.test && !jump_to_editor_);
 
 	load_game_cfg(force_reload);
 
@@ -95,15 +97,18 @@ void game_config_manager::load_game_cfg(FORCE_RELOAD_CONFIG force_reload)
 	game_config::scoped_preproc_define debug_mode("DEBUG_MODE",
 	    game_config::debug || game_config::mp_debug);
 
-	if (!game_config_.empty() &&
-	    (force_reload == NO_FORCE_RELOAD)
-	    && old_defines_map_ == cache_.get_preproc_map()) {
+	// Game_config already holds requested config in memory.
+	if(!game_config_.empty() &&
+		(force_reload == NO_FORCE_RELOAD)
+		&& old_defines_map_ == cache_.get_preproc_map()) {
 		manager_state.set_status_success();
-		return; // Game_config already holds requested config in memory.
+		return;
 	}
+
 	old_defines_map_ = cache_.get_preproc_map();
 	loadscreen::global_loadscreen_manager loadscreen_manager(disp_.video());
 	cursor::setter cur(cursor::WAIT);
+
 	// The loadscreen will erase the titlescreen.
 	// NOTE: even without loadscreen, needed after MP lobby.
 	try {
@@ -145,7 +150,8 @@ void game_config_manager::load_game_cfg(FORCE_RELOAD_CONFIG force_reload)
 		theme::set_known_themes(&game_config());
 	} catch(game::error& e) {
 		ERR_CONFIG << "Error loading game configuration files\n";
-		gui2::show_error_message(disp_.video(), _("Error loading game configuration files: '") +
+		gui2::show_error_message(disp_.video(),
+			_("Error loading game configuration files: '") +
 			e.message + _("' (The game will now exit)"));
 		throw;
 	}
@@ -158,19 +164,15 @@ void game_config_manager::load_game_cfg(FORCE_RELOAD_CONFIG force_reload)
 
 void game_config_manager::load_addons_cfg()
 {
-	// Load usermade add-ons.
 	const std::string user_campaign_dir = get_addon_campaigns_dir();
-	std::vector< std::string > error_addons;
-	// Scan addon directories.
-	std::vector<std::string> user_dirs;
-	// Scan for standalone files.
-	std::vector<std::string> user_files;
 
-	// The addons that we'll actually load.
+	std::vector<std::string> error_addons;
+	std::vector<std::string> user_dirs;
+	std::vector<std::string> user_files;
 	std::vector<std::string> addons_to_load;
 
-	get_files_in_dir(user_campaign_dir,&user_files,&user_dirs,
-					 ENTIRE_FILE_PATH);
+	get_files_in_dir(user_campaign_dir, &user_files, &user_dirs,
+		ENTIRE_FILE_PATH);
 	std::stringstream user_error_log;
 
 	// Append the $user_campaign_dir/*.cfg files to addons_to_load.
@@ -186,30 +188,40 @@ void game_config_manager::load_addons_cfg()
 				// _info.cfg ourselves on download.
 				std::vector<std::string> dirs, files;
 				get_files_in_dir(file.substr(0, size_minus_extension),
-								 &files, &dirs);
-				if(dirs.size() > 0)
+					&files, &dirs);
+				if(dirs.size() > 0) {
 					ok = false;
-				if(files.size() > 1)
+				}
+				if(files.size() > 1) {
 					ok = false;
-				if(files.size() == 1 && files[0] != "_info.cfg")
+				}
+				if(files.size() == 1 && files[0] != "_info.cfg") {
 					ok = false;
+				}
 			}
 			if(!ok) {
 				const int userdata_loc = file.find("data/add-ons") + 5;
 				ERR_CONFIG << "error reading usermade add-on '"
-						   << file << "'\n";
+					<< file << "'\n";
 				error_addons.push_back(file);
-				user_error_log << "The format '~" << file.substr(userdata_loc) << "' is only for single-file add-ons, use '~" << file.substr(userdata_loc, size_minus_extension - userdata_loc) << "/_main.cfg' instead.\n";
-			} else
+				user_error_log << "The format '~" << file.substr(userdata_loc)
+					<< "' is only for single-file add-ons, use '~"
+					<< file.substr(userdata_loc,
+						size_minus_extension - userdata_loc)
+					<< "/_main.cfg' instead.\n";
+			}
+			else {
 				addons_to_load.push_back(file);
+			}
 		}
 	}
 
 	// Append the $user_campaign_dir/*/_main.cfg files to addons_to_load.
 	BOOST_FOREACH(const std::string& uc, user_dirs) {
 		const std::string main_cfg = uc + "/_main.cfg";
-		if (file_exists(main_cfg))
+		if(file_exists(main_cfg)) {
 			addons_to_load.push_back(main_cfg);
+		}
 	}
 
 	// Load the addons.
@@ -218,7 +230,6 @@ void game_config_manager::load_addons_cfg()
 		try {
 			config umc_cfg;
 			cache_.get_config(toplevel, umc_cfg);
-
 			game_config_.append(umc_cfg);
 		} catch(config::error& err) {
 			ERR_CONFIG << "error reading usermade add-on '" << uc << "'\n";
@@ -236,7 +247,7 @@ void game_config_manager::load_addons_cfg()
 	if(error_addons.empty() == false) {
 		std::stringstream msg;
 		msg << _n("The following add-on had errors and could not be loaded:",
-				"The following add-ons had errors and could not be loaded:",
+			"The following add-ons had errors and could not be loaded:",
 				error_addons.size());
 		BOOST_FOREACH(const std::string& error_addon, error_addons) {
 			msg << "\n" << error_addon;
@@ -268,7 +279,7 @@ void game_config_manager::set_unit_data()
 {
 	game_config_.merge_children("units");
 	loadscreen::start_stage("load unit types");
-	if (config &units = game_config_.child("units")) {
+	if(config &units = game_config_.child("units")) {
 		unit_types.set_config(units);
 	}
 }
@@ -286,7 +297,7 @@ void game_config_manager::reload_changed_game_config()
 }
 
 game_config_manager_state::game_config_manager_state(config* game_config,
-        preproc_map* old_defines_map) :
+		preproc_map* old_defines_map) :
 	status_success_(false),
 	game_config_original_(*game_config),
 	game_config_(game_config),
