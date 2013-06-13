@@ -471,7 +471,7 @@ static int do_gameloop(int argc, char** argv)
 	    game->jump_to_editor());
 
 	loadscreen::start_stage("load config");
-	res = config_manager.init_config(game_config_manager::NO_FORCE_RELOAD);
+	res = config_manager.init_game_config(game_config_manager::NO_FORCE_RELOAD);
 	if(res == false) {
 		std::cerr << "could not initialize game config\n";
 		return 1;

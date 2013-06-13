@@ -16,6 +16,7 @@
 
 #include "commandline_options.hpp"
 #include "config_cache.hpp"
+#include "gamestatus.hpp"
 #include "game_display.hpp"
 #include "filesystem.hpp"
 
@@ -32,15 +33,20 @@ public:
 
 	const config& game_config() const { return game_config_; }
 
-	bool init_config(FORCE_RELOAD_CONFIG force_reload);
-	void load_game_cfg(FORCE_RELOAD_CONFIG force_reload);
+	bool init_game_config(FORCE_RELOAD_CONFIG force_reload);
 	void reload_changed_game_config();
+
+	void load_game_config_for_editor();
+	void load_game_config_for_game(const game_classification& classification,
+		const std::string& game_difficulty = "");
 
 private:
 	game_config_manager(const game_config_manager&);
 	void operator=(const game_config_manager&);
 
-	// load_game_cfg() helper functions.
+	void load_game_config(FORCE_RELOAD_CONFIG force_reload);
+
+	// load_game_config() helper functions.
 	void load_addons_cfg();
 	void set_multiplayer_hashes();
 	void set_color_info();
@@ -60,7 +66,7 @@ private:
 };
 
 // Helper class to save game_config_manager's
-// state in case of failed load_game_cfg().
+// state in case of failed load_game_config().
 class game_config_manager_state
 {
 public:

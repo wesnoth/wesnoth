@@ -61,7 +61,7 @@ game_config_manager::~game_config_manager()
 	resources::config_manager = NULL;
 }
 
-bool game_config_manager::init_config(FORCE_RELOAD_CONFIG force_reload)
+bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 {
 	// Add preproc defines according to the command line arguments.
 	game_config::scoped_preproc_define multiplayer("MULTIPLAYER",
@@ -71,7 +71,7 @@ bool game_config_manager::init_config(FORCE_RELOAD_CONFIG force_reload)
 	game_config::scoped_preproc_define title_screen("TITLE_SCREEN",
 		!cmdline_opts_.multiplayer && !cmdline_opts_.test && !jump_to_editor_);
 
-	load_game_cfg(force_reload);
+	load_game_config(force_reload);
 
 	game_config::load_config(game_config_.child("game_config"));
 
@@ -87,7 +87,7 @@ bool game_config_manager::init_config(FORCE_RELOAD_CONFIG force_reload)
 	return true;
 }
 
-void game_config_manager::load_game_cfg(FORCE_RELOAD_CONFIG force_reload)
+void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload)
 {
 	game_config_manager_state manager_state(&game_config_, &old_defines_map_);
 
@@ -293,7 +293,37 @@ void game_config_manager::reload_changed_game_config()
 	cache_.recheck_filetree_checksum();
 	old_defines_map_.clear();
 	clear_binary_paths_cache();
-	init_config(FORCE_RELOAD);
+	init_game_config(FORCE_RELOAD);
+}
+
+void game_config_manager::load_game_config_for_editor()
+{
+	game_config::scoped_preproc_define editor("EDITOR");
+	load_game_config(NO_FORCE_RELOAD);
+}
+
+void game_config_manager::load_game_config_for_game(
+	const game_classification& classification,
+	const std::string& game_difficulty)
+{
+	game_config::scoped_preproc_define difficulty(game_difficulty,
+		!game_difficulty.empty());
+	game_config::scoped_preproc_define campaign(classification.campaign_define,
+		!classification.campaign_define.empty());
+	game_config::scoped_preproc_define multiplayer("MULTIPLAYER",
+		classification.campaign_define.empty() &&
+		classification.campaign_type == "multiplayer");
+
+	typedef boost::shared_ptr<game_config::scoped_preproc_define> define;
+	std::deque<define> extra_defines;
+	BOOST_FOREACH(const std::string& extra_define,
+		classification.campaign_xtra_defines) {
+		define new_define
+			(new game_config::scoped_preproc_define(extra_define));
+		extra_defines.push_back(new_define);
+	}
+
+	load_game_config(NO_FORCE_RELOAD);
 }
 
 game_config_manager_state::game_config_manager_state(config* game_config,

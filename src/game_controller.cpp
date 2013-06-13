@@ -421,11 +421,8 @@ bool game_controller::play_test()
 	state_.carryover_sides_start["next_scenario"] = test_scenario_;
 	state_.classification().campaign_define = "TEST";
 
-	{
-		game_config::scoped_preproc_define test("TEST");
-		resources::config_manager->load_game_cfg(
-			game_config_manager::NO_FORCE_RELOAD);
-	}
+	resources::config_manager->
+		load_game_config_for_game(state_.classification());
 
 	try {
 		play_game(disp(),state_,resources::config_manager->game_config());
@@ -442,11 +439,7 @@ bool game_controller::play_screenshot_mode()
 		return true;
 	}
 
-	{
-		game_config::scoped_preproc_define editor("EDITOR");
-		resources::config_manager->load_game_cfg(
-			game_config_manager::NO_FORCE_RELOAD);
-	}
+	resources::config_manager->load_game_config_for_editor();
 
 	::init_textdomains(resources::config_manager->game_config());
 
@@ -470,26 +463,9 @@ bool game_controller::load_game()
 
 
 		try {
-			game_config::scoped_preproc_define difficulty(load.get_difficulty());
-			game_config::scoped_preproc_define campaign(
-				state_.classification().campaign_define,
-				!state_.classification().campaign_define.empty());
-			game_config::scoped_preproc_define multiplayer(
-				"MULTIPLAYER",
-				state_.classification().campaign_define.empty() &&
-					(state_.classification().campaign_type == "multiplayer"));
-
-			typedef boost::shared_ptr<game_config::scoped_preproc_define> define;
-			std::deque<define> extra_defines;
-			BOOST_FOREACH(const std::string& extra_define,
-					state_.classification().campaign_xtra_defines) {
-				define new_define
-					(new game_config::scoped_preproc_define(extra_define));
-				extra_defines.push_back(new_define);
-			}
-
-			resources::config_manager->load_game_cfg(
-				game_config_manager::NO_FORCE_RELOAD);
+			resources::config_manager->
+				load_game_config_for_game(state_.classification(),
+					load.get_difficulty());
 		} catch(config::error&) {
 			return false;
 		}
@@ -857,12 +833,8 @@ bool game_controller::play_multiplayer()
 
 		}
 
-		{
-			game_config::scoped_preproc_define campaign(
-			    state_.classification().campaign_define);
-			resources::config_manager->load_game_cfg(
-				game_config_manager::NO_FORCE_RELOAD);
-		}
+		resources::config_manager->
+			load_game_config_for_game(state_.classification());
 
 		events::discard_input(); // prevent the "keylogger" effect
 		cursor::set(cursor::NORMAL);
@@ -935,12 +907,8 @@ bool game_controller::play_multiplayer_commandline()
 	state_.classification().campaign_type = "multiplayer";
 	state_.classification().campaign_define = "MULTIPLAYER";
 
-	{
-		game_config::scoped_preproc_define campaign(
-			state_.classification().campaign_define);
-		resources::config_manager->load_game_cfg(
-			game_config_manager::NO_FORCE_RELOAD);
-	}
+	resources::config_manager->
+		load_game_config_for_game(state_.classification());
 
 	events::discard_input(); // prevent the "keylogger" effect
 	cursor::set(cursor::NORMAL);
@@ -984,27 +952,9 @@ void game_controller::launch_game(RELOAD_GAME_DATA reload)
 	loadscreen::start_stage("load data");
 	if(reload == RELOAD_DATA) {
 		try {
-			game_config::scoped_preproc_define campaign(
-				state_.classification().campaign_define,
-				state_.classification().campaign_define.empty() == false);
-
-			// NORMAL is default difficulty and will be used
-			// even if game config didn't specify difficulty at all.
-			game_config::scoped_preproc_define difficulty(
-				state_.carryover_sides_start["difficulty"],
-				state_.carryover_sides_start["difficulty"].empty() == false);
-
-			typedef boost::shared_ptr<game_config::scoped_preproc_define> define;
-			std::deque<define> extra_defines;
-			BOOST_FOREACH(const std::string& extra_define,
-					state_.classification().campaign_xtra_defines) {
-				define new_define
-					(new game_config::scoped_preproc_define(extra_define));
-				extra_defines.push_back(new_define);
-			}
-
-			resources::config_manager->load_game_cfg(
-				game_config_manager::NO_FORCE_RELOAD);
+			resources::config_manager->
+				load_game_config_for_game(state_.classification(),
+					state_.carryover_sides_start["difficulty"]);
 		} catch(config::error&) {
 			return;
 		}
@@ -1048,11 +998,7 @@ void game_controller::play_replay()
 editor::EXIT_STATUS game_controller::start_editor(const std::string& filename)
 {
 	while(true){
-		{
-			game_config::scoped_preproc_define editor("EDITOR");
-			resources::config_manager->load_game_cfg(
-				game_config_manager::NO_FORCE_RELOAD);
-		}
+		resources::config_manager->load_game_config_for_editor();
 
 		::init_textdomains(resources::config_manager->game_config());
 
