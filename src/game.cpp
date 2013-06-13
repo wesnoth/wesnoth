@@ -353,9 +353,6 @@ static int process_command_args(const commandline_options& cmdline_opts) {
 		std::cout << lg::list_logdomains(*cmdline_opts.logdomains);
 		return 0;
 	}
-	if(cmdline_opts.new_syntax) {
-		game_config::new_syntax = true;
-	}
 	if(cmdline_opts.path) {
 		std::cout <<  game_config::path << "\n";
 		return 0;

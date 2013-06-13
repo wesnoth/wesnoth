@@ -58,7 +58,9 @@ namespace game_config
 	const std::string revision = VERSION;
 #endif
 	std::string wesnoth_program_dir;
-	bool debug = false, debug_lua = false, editor = false, ignore_replay_errors = false, mp_debug = false, exit_at_end = false, new_syntax = false, no_delay = false, disable_autosave = false;
+	bool debug = false, debug_lua = false, editor = false,
+		ignore_replay_errors = false, mp_debug = false, exit_at_end = false,
+		no_delay = false, disable_autosave = false;
 
 	int cache_compression_level = 6;
 

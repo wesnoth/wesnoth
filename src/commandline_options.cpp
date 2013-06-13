@@ -86,7 +86,6 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	nomusic(false),
 	nosound(false),
 	new_storyscreens(false),
-	new_syntax(false),
 	new_widgets(false),
 	path(false),
 	preprocess(false),
@@ -142,8 +141,6 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("help,h", "prints this message and exits.")
 		("language,L", po::value<std::string>(), "uses language <arg> (symbol) this session. Example: --language ang_GB@latin")
 		("load,l", po::value<std::string>(), "loads the save <arg> from the standard save game directory. When launching the map editor via -e, the map <arg> is loaded, relative to the current directory. If it is a directory, the editor will start with a load map dialog opened there.")
-		//disabled until this project continues
-		//("new-syntax", "enables the new campaign syntax parsing.")
 		("nocache", "disables caching of game data.")
 		("nodelay", "runs the game without any delays.")
 		("nomusic", "runs the game without music.")
@@ -314,8 +311,6 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		multiplayer = true;
 	if (vm.count("new-storyscreens"))
 		new_storyscreens = true;
-	if (vm.count("new-syntax"))
-		new_syntax = true;
 	if (vm.count("new-widgets"))
 		new_widgets = true;
 	if (vm.count("nocache"))

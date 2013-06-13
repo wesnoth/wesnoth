@@ -119,8 +119,6 @@ public:
 	bool nosound;
 	/// True if --new-storyscreens was given on the command line. Hidden option to help testing the work-in-progress new storyscreen code.
 	bool new_storyscreens;
-	/// True if --new-syntax was given on the command line. Does magic.
-	bool new_syntax;
 	/// True if --new-widgets was given on the command line. Hidden option to enable the new widget toolkit.
 	bool new_widgets;
 	/// True if --path was given on the command line. Prints the path to data directory and exits.
