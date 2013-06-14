@@ -88,7 +88,7 @@ bool fuh::login(const std::string& name, const std::string& password, const std:
 
 std::string fuh::create_pepper(const std::string& name) {
 
-	// Some doulbe security, this should never be neeeded
+	// Some double security, this should never be needed
 	if(!(user_exists(name))) {
 		return "";
 	}
