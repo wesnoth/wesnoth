@@ -775,7 +775,7 @@ function wml_actions.harm_unit(cfg)
 	-- #textdomain wesnoth
 	local harmer
 
-	local function bool( value ) -- helper for animate fields
+	local function toboolean( value ) -- helper for animate fields
 +               -- units will be animated upon leveling or killing, even
 +               -- with special attacker and defender values
 		if value then return true
@@ -919,7 +919,7 @@ function wml_actions.harm_unit(cfg)
 			end
 
 			if kill ~= false and unit_to_harm.hitpoints <= 0 then
-				wml_actions.kill({ id = unit_to_harm.id, animate = bool( animate ), fire_event = fire_event })
+				wml_actions.kill({ id = unit_to_harm.id, animate = toboolean( animate ), fire_event = fire_event })
 			end
 
 			if animate then
