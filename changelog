@@ -55,6 +55,7 @@ Version 1.11.4+dev:
      protect_leader=, protect_leader_radius=
    * Fixed bug #20836: advancing units can fire events in [harm_unit] if fire_event=yes
    * Advancing units can be animated by [harm_unit] if animate=yes
+   * Added deprecation message to aspect [goal] when using "name=protect_my_unit".
  * Miscellaneous and bug fixes
    * Fixed minor issue with Drake Clasher animations
    * Added a new playlist FULL_MUSIC_PLAYLIST, which contains all Wesnoth tracks

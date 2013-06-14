@@ -18,6 +18,7 @@
  */
 
 #include "goal.hpp"
+#include "wml_exception.hpp"
 #include "../lua/core.hpp"
 #include "../manager.hpp"
 #include "../../log.hpp"
@@ -295,6 +296,9 @@ protect_goal::protect_goal(readonly_context &context, const config &cfg, bool pr
 	, radius_(20) //this default radius is taken from old code
 	, value_(1.0) //this default value taken from old code
 {
+	if(protect_only_own_unit_) {
+		lg::wml_error << deprecate_wml_key_warning("protect_my_unit", "1.13.0") << "\n";
+	}
 }
 
 lua_goal::lua_goal(readonly_context &context, const config &cfg)
