@@ -937,6 +937,7 @@ function wml_actions.harm_unit(cfg)
 				wml_actions.unstore_unit { variable = "Lua_store_unit",
 								find_vacant = false,
 								advance = true,
+								animate = toboolean( animate ),
 								fire_event = fire_event }
 				wesnoth.set_variable ( "Lua_store_unit", nil )
 			end
@@ -947,6 +948,7 @@ function wml_actions.harm_unit(cfg)
 				wml_actions.unstore_unit { variable = "Lua_store_unit",
 								find_vacant = false,
 								advance = true,
+								animate = toboolean( animate ),
 								fire_event = fire_event }
 				wesnoth.set_variable ( "Lua_store_unit", nil )
 			end
