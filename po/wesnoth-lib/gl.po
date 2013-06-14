@@ -9,14 +9,14 @@
 # Fran Diéguez <fran dot dieguez at glug dot es>, 2008.
 # Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2010.
 # Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail.com>, 2010, 2011.
-# Adrian Chaves Fernandez (Gallaecio) <adriyetichaves@gmail.com>, 2011, 2012.
+# Adrian Chaves Fernandez (Gallaecio) <adriyetichaves@gmail.com>, 2011, 2012, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2013-05-22 22:04-0400\n"
-"PO-Revision-Date: 2012-12-26 17:15+0100\n"
-"Last-Translator: Adrian Chaves Fernandez <adriyetichaves@gmail.com>\n"
+"PO-Revision-Date: 2013-06-14 21:24+0200\n"
+"Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.org>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
@@ -1477,10 +1477,9 @@ msgstr "Tipos de complementos:"
 
 #. [button]: id=toggle_all_displayed_types
 #: data/gui/default/window/addon_filter_options.cfg:261
-#, fuzzy
 #| msgid "Toggle Ellipses"
 msgid "Toggle All"
-msgstr "Activar as elipses"
+msgstr "Conmutar todo"
 
 #. [label]
 #: data/gui/default/window/addon_uninstall_list.cfg:51
@@ -2019,11 +2018,10 @@ msgstr "Tipo"
 #. [label]: id=name
 #: data/gui/default/window/gamestate_inspector.cfg:164
 msgid "Items"
-msgstr ""
+msgstr "Elementos"
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:223
-#, fuzzy
 #| msgid "Content"
 msgid "Contents"
 msgstr "Contido"
@@ -3093,12 +3091,16 @@ msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
 "'player_name notes on friend')"
 msgstr ""
+"Engadir este nome de usuario á lista de amigos (opcionalmente, engade unha "
+"nota, como «notas sobre o amigo»)."
 
 #: src/game_preferences_display.cpp:393
 msgid ""
 "Add this username to your ignores list (add optional reason, e.g., "
 "'player_name reason ignored')"
 msgstr ""
+"Engadir este nome de usuario á lista de ignorados (opcionalmente, engade un "
+"motivo, como «ignorado por isto»)."
 
 #: src/game_preferences_display.cpp:394
 msgid "Remove this username from your list"
@@ -3612,10 +3614,9 @@ msgid "Hotkey Settings"
 msgstr "Configuración dos atallos"
 
 #: src/hotkey_preferences_display.cpp:169
-#, fuzzy
 #| msgid "Default"
 msgid "Defaults"
-msgstr "Predeterminado"
+msgstr "Valores predeterminados"
 
 #: src/hotkey_preferences_display.cpp:172
 msgid "Reset all bindings to the default values"
@@ -3760,10 +3761,9 @@ msgid "Rename Unit"
 msgstr "Cambiarlle o nome á unidade"
 
 #: src/hotkeys.cpp:88
-#, fuzzy
 #| msgid "Delete File"
 msgid "Delete Unit"
-msgstr "Eliminar o ficheiro"
+msgstr "Eliminar a unidade"
 
 #: src/hotkeys.cpp:91
 msgid "Save Replay"
@@ -3946,10 +3946,9 @@ msgid "Switch Map"
 msgstr "Cambiar de mapa"
 
 #: src/hotkeys.cpp:147
-#, fuzzy
 #| msgid "Switch Map"
 msgid "Switch Area"
-msgstr "Cambiar de mapa"
+msgstr "Cambiar de zona"
 
 #: src/hotkeys.cpp:150
 msgid "Partial Undo"
@@ -3987,10 +3986,9 @@ msgid "Switch Side"
 msgstr "Cambiar de bando"
 
 #: src/hotkeys.cpp:160
-#, fuzzy
 #| msgid "Swap Foreground/Background Terrains"
 msgid "Swap Foreground/Background Palette Item"
-msgstr "Intercambiar os terreos en primeiro e segundo plano"
+msgstr "Intercambiar os elementos da paleta en primeiro e segundo plano"
 
 #: src/hotkeys.cpp:161
 msgid "Change Palette Group"
@@ -4005,10 +4003,9 @@ msgid "Scroll Palette Right"
 msgstr "Mover a paleta á dereita"
 
 #: src/hotkeys.cpp:165
-#, fuzzy
 #| msgid "Switch Map"
 msgid "Switch Time of Day"
-msgstr "Cambiar de mapa"
+msgstr "Cambiar o momento do día"
 
 #: src/hotkeys.cpp:167
 msgid "Next Tool"
@@ -4023,6 +4020,10 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
+"Use os botóns esquerdo ou dereito do rato para pintar o terreo en primeiro "
+"ou segundo plano. Mantén premida a tecla «Maiús» para pintar só a capa base. "
+"Premendo «Ctrl» e un dos botóns podes copiar o terreo que estea baixo o "
+"punteiro."
 
 #: src/hotkeys.cpp:170
 msgid "Fill Tool"
@@ -4033,6 +4034,9 @@ msgid ""
 "Left mouse button selects or deselects, right brings up a context menu. Hold "
 "Shift for magic-wand selection of tiles with same terrain."
 msgstr ""
+"O botón principal selecciona ou cancela a selección, o secundario abre un "
+"menú de contexto. Mantén premida a tecla «Maiús» para seleccionar mediante a "
+"vara máxica hexágonos co mesmo tipo de terreo."
 
 #: src/hotkeys.cpp:171
 msgid "Selection Tool"
@@ -4044,6 +4048,10 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
+"O botón principal amosa a selección do usuario, mentres que o secundario"
+"a quita. As teclas numéricas van á posición inicial, premer «Alt» xunto cun "
+"número establece a respectiva posición inicial baixo o punteiro, «Supr» "
+"bórraa."
 
 #: src/hotkeys.cpp:172
 msgid "Starting Positions Tool"
@@ -4056,76 +4064,83 @@ msgstr "Ferramenta de etiquetas"
 #: src/hotkeys.cpp:173
 msgid "Left mouse button sets or drags a label, right clears."
 msgstr ""
+"O botón principal establece ou arrastra a etiqueta, o secundario elimínaa."
 
 #: src/hotkeys.cpp:174
 msgid ""
 "Left mouse button sets a new unit or moves a unit via drag and drop, right "
 "brings up a context menu. Needs a defined side."
 msgstr ""
+"O botón principal establece unha nova unidade ou move unha existente "
+"—arrastrar e soltar—, o secundario abre un menú de contexto. É necesario ter "
+"un bando definido."
 
 #: src/hotkeys.cpp:174
 msgid "Unit Tool"
 msgstr "Ferramenta de unidades"
 
 #: src/hotkeys.cpp:175
-#, fuzzy
 #| msgid "Next Tool"
 msgid "Item Tool"
-msgstr "Seguinte ferramenta"
+msgstr "Ferramenta de elementos"
 
 #: src/hotkeys.cpp:175
 msgid ""
 "Left mouse button sets a new item or moves it via drag and drop, right "
 "clears. Not implemented yet."
 msgstr ""
+"O botón principal establece un novo elemento ou move un existente —arrastrar "
+"e soltar—, o botón secundario sóltao. Aínda non funciona."
 
 #: src/hotkeys.cpp:176
 msgid ""
 "Left mouse button sets or drags a sound source, right clears. Not "
 "implemented yet."
 msgstr ""
+"O botón principal establece ou arrastra a fonte do son, o secundario "
+"elimínaa. Aínda non funciona."
 
 #: src/hotkeys.cpp:176
 msgid "Soundsource Tool"
-msgstr ""
+msgstr "Ferramenta de orixe de son"
 
 #: src/hotkeys.cpp:177
 msgid ""
 "Left mouse button sets the village ownership to the current side, right "
 "clears. Needs a defined side."
 msgstr ""
+"O botón principal establece a propiedade da vila ao bando actual, o "
+"secundario quita a propiedade. É necesario ter un bando definido."
 
 #: src/hotkeys.cpp:177
 msgid "Village Tool"
 msgstr "Ferramenta de vilas"
 
 #: src/hotkeys.cpp:179
-#, fuzzy
 #| msgid "Recruit"
 msgid "Canrecruit"
-msgstr "Recrutar"
+msgstr "Pode recrutar"
 
 #: src/hotkeys.cpp:179
 msgid "Toggle the recruit attribute of a unit."
-msgstr ""
+msgstr "Conmuta o atributo de recrutar dunha unidade."
 
 #: src/hotkeys.cpp:180
 msgid "Can be renamed"
-msgstr ""
+msgstr "Pode renomearse"
 
 #: src/hotkeys.cpp:180
 msgid "Toggle the unit being renameable."
-msgstr ""
+msgstr "Conmuta a posibilidade de renomear a unidade."
 
 #: src/hotkeys.cpp:182
-#, fuzzy
 #| msgid "Change Control"
 msgid "Change Unit ID"
-msgstr "Cambiar o control"
+msgstr "Cambiar o identificador da unidade"
 
 #: src/hotkeys.cpp:183
 msgid "Loyal"
-msgstr ""
+msgstr "Leal"
 
 #: src/hotkeys.cpp:186
 msgid "Next Brush"
@@ -4137,23 +4152,23 @@ msgstr "Brocha predeterminada"
 
 #: src/hotkeys.cpp:188
 msgid "Single Tile"
-msgstr ""
+msgstr "Un hexágono"
 
 #: src/hotkeys.cpp:189
 msgid "Radius One"
-msgstr ""
+msgstr "Raio 1"
 
 #: src/hotkeys.cpp:190
 msgid "Radius Two"
-msgstr ""
+msgstr "Raio 2"
 
 #: src/hotkeys.cpp:191
 msgid "Brush NW-SE"
-msgstr ""
+msgstr "Pincel NO-SL"
 
 #: src/hotkeys.cpp:192
 msgid "Brush SW-NE"
-msgstr ""
+msgstr "Pincel SO-NL"
 
 #: src/hotkeys.cpp:193
 msgid "Cut"
@@ -4167,6 +4182,8 @@ msgstr "Copiar"
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
 msgstr ""
+"O botón principal pega o contido do portapapeis, o secundario mostra un menú "
+"de contexto."
 
 #: src/hotkeys.cpp:195
 msgid "Paste"
@@ -4251,10 +4268,9 @@ msgid "Update Terrain Transitions"
 msgstr "Actualizar as transicións dos terreos"
 
 #: src/hotkeys.cpp:217
-#, fuzzy
 #| msgid "Update Terrain Transitions"
 msgid "Toggle Terrain Transition Update"
-msgstr "Actualizar as transicións dos terreos"
+msgstr "Conmutar a actualización das transicións dos terreos"
 
 #: src/hotkeys.cpp:218
 msgid "Auto-update Terrain Transitions"
@@ -4282,7 +4298,7 @@ msgstr "Amosar os códigos dos terreos"
 
 #: src/hotkeys.cpp:227
 msgid "Define (Time) Area"
-msgstr ""
+msgstr "Definir a zona (temporal)"
 
 #: src/hotkeys.cpp:229
 msgid "Delay Shroud Updates"
@@ -4374,7 +4390,7 @@ msgstr "Amosar a axuda"
 
 #: src/hotkeys.cpp:254
 msgid "Unrecognized Command"
-msgstr ""
+msgstr "Orde descoñecida"
 
 #: src/hotkeys.cpp:387 src/hotkeys.cpp:390
 msgid "Button"
