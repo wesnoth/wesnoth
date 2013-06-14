@@ -2,22 +2,25 @@
 # Galician translations for PACKAGE package.
 # Copyright (C) 2013 Wesnoth development team
 # This file is distributed under the same license as the PACKAGE package.
-# Automatically generated, 2013.
 #
+# Automatically generated, 2013.
+# Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2013.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2013-05-22 21:54-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2013-06-14 21:33+0200\n"
+"Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
+"Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  wesnoth-ai.cpp.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  wesnoth-ai.wml.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 1.5\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:5
@@ -33,24 +36,24 @@ msgstr "IA experimental"
 #. [ai]: id=testing_ai_recruitment
 #: data/ai/dev/akihara_recruitment.cfg:6 data/ai/dev/testing_recruiting.cfg:5
 msgid "Experimental Recruitment AI"
-msgstr ""
+msgstr "IA de recrutamento experimental"
 
 #. [ai]: id=formula_ai # id is needed to uniquely identify a MP AI, it is not needed in the scenario AI
 #: data/ai/dev/formula_ai.cfg:4
 msgid "Formula AI dev"
-msgstr ""
+msgstr "IA de Formula en desenvolvemento"
 
 #. [ai]: id=default_ai_poisoning
 #: data/ai/dev/formula_ai_poisoning.cfg:5
 msgid "Default AI with poisoning formula"
-msgstr ""
+msgstr "IA predeterminada con fórmula de envelenamento"
 
 #. [ai]: id=ai_idle
 #. [side]: id=leader3, type=Mage of Light
 #: data/ai/dev/idle_ai.cfg:4
 #: data/ai/scenarios/scenario-test_move_to_targets.cfg:60
 msgid "Idle AI"
-msgstr ""
+msgstr "IA inactiva"
 
 #. [lua]: init
 #: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6960
@@ -58,6 +61,9 @@ msgid ""
 "Enemy unit weight: The (negative) weight given to each enemy unit that can "
 "reach a potential target location.  Default: 100"
 msgstr ""
+"Importancia da unidade inimiga: a importancia (negativa) que se lle dá a cada "
+"unha das unidades inimigas que pode ir a un lugar determinado. O valor "
+"predeterminado é 100."
 
 #. [lua]: init
 #: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6961
@@ -65,6 +71,9 @@ msgid ""
 "My unit weight: The (positive) weight given to each of the AI's units that "
 "can reach a potential target location.  Default: 1"
 msgstr ""
+"Importancia da unidade propia: a importancia (positiva) que se lle dá a cada "
+"unha das unidades da IA que pode ir a un lugar determinado. O valor "
+"predeterminado é 1."
 
 #. [lua]: init
 #: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6962
@@ -74,6 +83,11 @@ msgid ""
 "Default: 3 -- thus, by default, being a step closer to the goal is as "
 "important as being in reach of 3 of AI's units."
 msgstr ""
+"Importancia da distancia ao obxectivo: a importancia (negativa) de cada un "
+"dos pasos que separan a unidade do lugar onde vai ir.\n"
+"O valor predeterminado é 3, o que significa que, de maneira predeterminada, "
+"estar un paso máis preto do obxectivo é tan importante como estar a tiro de 3 "
+"unidades da IA."
 
 #. [lua]: init
 #: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6963
@@ -83,6 +97,11 @@ msgid ""
 "Default: 0.1 -- thus, by default, a difference of 30 in terrain defense "
 "rating is as important as being a step closer to the goal."
 msgstr ""
+"Importancia da defensa do terreo: a importancia (positiva) do nivel de "
+"defensa no terreo dun posíbel lugar de destino.\n"
+"O valor predeterminado é «0,1», o que significa que unha diferencia de 30 no "
+"nivel de defensa no terreo é tan importante como estar un paso máis preto do "
+"obxectivo."
 
 #. [lua]: init
 #: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6964
@@ -90,11 +109,14 @@ msgid ""
 "Bearing: Everything else being equal, move protected unit toward or away "
 "from enemy groups.  Default: toward"
 msgstr ""
+"Desempate: en caso de que o resto dos cálculos resulten nunha igualdade, "
+"mover a unidade protexida cara o grupo de inimigos, ou na dirección oposta. "
+"De maneira predeterminada, o movemento é cara o grupo de inimigos."
 
 #. [lua]: init
 #: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6972
 msgid "Set AI parameters"
-msgstr ""
+msgstr "Definir os parámetros da IA"
 
 #. [lua]: init
 #: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6978
@@ -104,38 +126,42 @@ msgid ""
 "values.\n"
 "Tooltips enabled for all parameters."
 msgstr ""
+"Preme «Pechar» sen cambiar nada para empregar os valores predeterminados.\n"
+"Todos os niveis de importancia deben ser 0 ou un valor máis alto. En caso de "
+"definir valores incorrectos, empregaranse os valores predeterminados.\n"
+"Presentaranse mensaxes de axuda para todos os parámetros."
 
 #. [lua]: init
 #: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6986
 msgid "Enemy unit weight  (default: 100)"
-msgstr ""
+msgstr "Importancia da unidade inimiga (predeterminada: 100)"
 
 #. [lua]: init
 #: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6994
 msgid "My unit weight  (default: 1)"
-msgstr ""
+msgstr "Importancia da unidade propia (predeterminada: 1)"
 
 #. [lua]: init
 #: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:7002
 msgid "Goal distance weight  (default: 3)"
-msgstr ""
+msgstr "Importancia da distancia ao obxectivo (predeterminada: 3)"
 
 #. [lua]: init
 #: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:7010
 msgid "Terrain defense weight  (default: 0.1)"
-msgstr ""
+msgstr "Importancia da defensa no terreo (predeterminada: 0.1)"
 
 #. [test]: id=The_Elves_Besieged
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:5
 msgid "The Elves Besieged"
-msgstr ""
+msgstr "O asedio aos elfos"
 
 #. [side]: type=Spearman, id=Konrad
 #. [unit]: type=Spearman, id=Konrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:34
 #: data/ai/micro_ais/scenarios/patrols.cfg:94
 msgid "Konrad"
-msgstr ""
+msgstr "Conrad"
 
 #. [side]: type=Elvish Champion, id=Galdrad
 #. [side]: type=Elvish Shyde, id=Chantal
@@ -144,17 +170,17 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:156
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:176
 msgid "Rebels"
-msgstr ""
+msgstr "Rebeldes"
 
 #. [unit]: id=Delfador, type=Elder Mage
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:49
 msgid "Delfador"
-msgstr ""
+msgstr "Delfador"
 
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:90
 msgid "Urug-Telfar"
-msgstr ""
+msgstr "Urug-Telfar"
 
 #. [side]: id=Vanak, type=Orcish Ruler
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
@@ -165,39 +191,39 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:134
 #: data/ai/micro_ais/scenarios/messenger-escort.cfg:23
 msgid "Orcs"
-msgstr ""
+msgstr "Orcos"
 
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:109
 msgid "Knafa-Tan"
-msgstr ""
+msgstr "Knafa-Tan"
 
 #. [side]: type=Orcish Warlord, id=Maga-Knafa
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:127
 msgid "Maga-Knafa"
-msgstr ""
+msgstr "Maga-Knafa"
 
 #. [side]: type=Elvish Champion, id=Galdrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:146
 msgid "Galdrad"
-msgstr ""
+msgstr "Galdrad"
 
 #. [side]: type=Elvish Shyde, id=Chantal
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:163
 msgid "Chantal"
-msgstr ""
+msgstr "Chantal"
 
 #. [message]: speaker=Konrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:213
 msgid ""
 "Master Delfador! Look, there are orcs coming from all directions! What shall "
 "we do?"
-msgstr ""
+msgstr "Mestre, mire, orcos! E están por todas partes. Que imos facer?"
 
 #. [message]: speaker=Delfador
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:217
 msgid "There are too many to fight, far too many. We must escape!"
-msgstr ""
+msgstr "Son demasiados para enfrontarmos a eles, demasiados. Debemos fuxir."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:220
@@ -208,16 +234,21 @@ msgid ""
 "keeping both Konrad and Delfador alive. The same AI as in scenario \"Protect "
 "Unit"
 msgstr ""
+"Isto é unha reconstrución do escenario «O asedio aos elfos» da campaña «O "
+"herdeiro ao trono». Nesta reconstrución, a intelixencia artificial xoga do "
+"lado de Conrad. O obxectivo consiste en levar a Conrad ata o sinal do "
+"noroeste, e evitar a morte tanto de Conrad como de Delfador. A intelixencia "
+"artificial é a mesma de a do escenario «Protexer a unidade»."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:226
 msgid "Move Konrad here"
-msgstr ""
+msgstr "Leva a Conrad aquí."
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:242
 msgid "Very well, we have made it this far! But where do we go next?"
-msgstr ""
+msgstr "Moi ben, chegamos ata aquí. Pero onde imos agora?"
 
 #. [message]: speaker=Delfador
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:246
@@ -225,42 +256,45 @@ msgid ""
 "In HttT, we would travel north now, and try to make it to the Isle of "
 "Alduin. But for this demo campaign, we'll call it good here."
 msgstr ""
+"En «O herdeiro ao trono», este sería o momento de viaxar ao norte, e intentar "
+"chegar á illa de Alduin. Pero para esta campaña de demostración, con isto "
+"basta."
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:271
 msgid "I... I don’t think I can make it anymore."
-msgstr ""
+msgstr "Cre… Creo que non podo máis."
 
 #. [message]: speaker=Delfador
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:275
 msgid "Prince... you must keep fighting! Nooooooo!"
-msgstr ""
+msgstr "Príncipe… tes que continuar loitando! Non!"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:279
 msgid "It is over. I am doomed..."
-msgstr ""
+msgstr "Acabouse, estou condenado…"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:293
 msgid "I have... have failed in my duty to protect the prince! I am defeated."
-msgstr ""
+msgstr "No… Non cumprín co meu deber de protexer ao príncipe! Derrotáronme."
 
 #. [message]: speaker=Konrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:297
 msgid "Don’t die, Delfador! Please, you have to stay alive!"
-msgstr ""
+msgstr "Non morras, Delfador! Necesítote!"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:301
 msgid "Ugh!"
-msgstr ""
+msgstr "Agh!"
 
 #. [message]: speaker=Delfador
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:312
 msgid ""
 "Oh, no! We have run out of time, they have arrived with reinforcements..."
-msgstr ""
+msgstr "Non! Chegaron os seus reforzos, é demasiado tarde…"
 
 #: data/ai/micro_ais/scenarios/animals.cfg:4
 msgid ""
@@ -286,6 +320,30 @@ msgid ""
 "Wolves Multipack AI (used in a different scenario), this Wolves AI combines "
 "all wolves of the side in the same pack."
 msgstr ""
+"<u>Xeral</u>: estas intelixencias artificiais están deseñadas para simular "
+"(ata certo punto) como se comportan estes animais na vida real. Isto inclúe o "
+"feito de que se trata de animais, o que significa que non son especialmente "
+"intelixentes. Por exemplo, os lobos adoitan cazar en grupo, pero distráense "
+"facilmente cando se lles pon a tiro unha presa. Os lobos ademais son bos no "
+"que se refire a rodear a unha gacela, pero tampouco son extraordinarios neste "
+"aspecto. Isto fíxose en gran medida de maneira intencional.\n"
+"\n"
+"Os <u>osos (equivalentes aos «devoradores»), arañas e homes das neves</u> "
+"adícanse principalmente a rondar as súas respectivas zonas nos escenarios. "
+"Non se meten os uns cos outros (nin cos cans), pero si que se atacan entre "
+"eles cando non ven outra saída. Aos animais máis débiles, como as gacelas, si "
+"que os atacan.\n"
+"\n"
+"Os <u>lobos</u> cazan en grupo. Van a pola gacela máis próxima (mentres esta "
+"non saia do bosque) e intentan acantoala (non sempre con éxito), pero "
+"distráense facilmente cando outra presa se lles pon a tiro. Os lobos intentan "
+"evitar achegarse a osos, arañas, cans ou homes das neves, salvo que teñan "
+"pensado atacar. Se lles deixas moverse tempo dabondo, aprenderán que non "
+"cómpre atacar aos xabarís. Cando non quedan gacelas, rondan o escenario de "
+"xeito aleatorio. Téñase en conta que, a diferencia do paquete de "
+"intelixencias artificiais para lobos (que se usa noutro escenario), esta "
+"intelixencia artificial de lobos combina todos os lobos dun mesmo bando no "
+"mesmo grupo."
 
 #: data/ai/micro_ais/scenarios/animals.cfg:12
 msgid ""
@@ -322,13 +380,45 @@ msgid ""
 "threat to each other and leave each other alone, demonstrating the enormous "
 "self control of a well trained sheep dog."
 msgstr ""
+"Cada <u>gacela (equivalentes aos «morcegos vampiros»)</u> móvese de maneira "
+"aleatoria polos hexágonos de bosque. Canto un inimigo se lle pon a tiro, a "
+"gacela fuxe o máis lonxe que pode.\n"
+"\n"
+"Os <u>xabarís (equivalentes aos «ogros»)</u> teñen o mesmo comportamento "
+"salvo cando hai un inimigo preto dun dos seus bacoriños; neste caso, o "
+"xabaril desata toda a súa furia sobre o inimigo.\n"
+"\n"
+"Os <u>bacoriños (equivalentes aos «ogros xoves»)</u> limítanse a seguir ao "
+"xabaril adulto máis próximo, salvo cando non quedan xabarís, en cuxo caso se "
+"comportan do mesmo xeito que as gacelas.\n"
+"\n"
+"Os <u>coellos (equivalentes ás «ratas»)</u> tamén se moven de xeito "
+"aleatorio, pero ademais métense nos seus tobos (equivalentes a «fardos», se "
+"hai algún a tiro) cando se lles achega un inimigo. Ao comezo da seguinte "
+"rolda, se é seguro, reaparecen.\n"
+"\n"
+"Os <u>cans pastores (equivalentes aos «bandoleiros»)</u> procuran manter a "
+"salvo o rabaño. Iso implica asegurarse de que o rabaño queda dentro dunha "
+"zona delimitada polos cans, e poñerse entre o rabaño e os inimigos cando "
+"estes últimos se aproximan. Pode que teñas que deixar o escenario xogarse un "
+"bo anaco para conseguir ver unha interacción interesante entre un can e un "
+"lobo. Cando non necesitan moverse para guiar as ovellas ou protexelas, os "
+"cans avanzan de maneira aleatoria, mantendo o rumbo.\n"
+"\n"
+"O <u>rabaño (equivalentes aos «cachorros de troll»)</u> móvese de maneira "
+"aleatoria salvo cando ten un can pastor preto del, en cuxo caso se afasta do "
+"can. Os cans aprovéitanse disto, e sitúanse arredor do rabaño, na medida do "
+"posíbel. Ademais, o rabaño fuxe dos inimigos que se lle achegan. O rabaño, os "
+"cans e mailas criaturas do bosque (gacelas, xabarís e coellos) aprenderon que "
+"non supoñen unha ameaza os uns para os outros, e non se atacan entre eles, o "
+"que demostra o gran poder de autocontrol dos cans pastores."
 
 #. [event]
 #. [test]: id=animals
 #: data/ai/micro_ais/scenarios/animals.cfg:27
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:44
 msgid "Animals"
-msgstr ""
+msgstr "Animais"
 
 #. [side]: id=Rutburt, type=Outlaw
 #: data/ai/micro_ais/scenarios/animals.cfg:40
@@ -345,27 +435,27 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/goto.cfg:115
 #: data/ai/micro_ais/scenarios/wolves.cfg:26
 msgid "Humans"
-msgstr ""
+msgstr "Humanos"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:61
 msgid "Forest Creatures"
-msgstr ""
+msgstr "Criaturas do bosque"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:76
 msgid "Ghasts"
-msgstr ""
+msgstr "Devoradores"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:91
 msgid "Spiders"
-msgstr ""
+msgstr "Arañas"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:106
 msgid "Yetis"
-msgstr ""
+msgstr "Homes das neves"
 
 #. [event]
 #. [side]
@@ -374,12 +464,12 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:47
 #: data/ai/micro_ais/scenarios/wolves.cfg:5
 msgid "Wolves"
-msgstr ""
+msgstr "Lobos"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:136
 msgid "Whelps"
-msgstr ""
+msgstr "Cachorros"
 
 #. [set_menu_item]: id=m01_end_animals
 #. [set_menu_item]: id=m01_end_swarm
@@ -403,7 +493,7 @@ msgstr "Rematar escenario"
 #: data/ai/micro_ais/scenarios/wolves.cfg:102
 #: data/ai/micro_ais/scenarios/wolves.cfg:260
 msgid "Well, that was that."
-msgstr ""
+msgstr "Pois nada, xa está."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/animals.cfg:349
@@ -415,6 +505,15 @@ msgid ""
 "get the \"full experience\" with the original animal unit types, check out "
 "the 'Animals' scenario in the 'AI Modification Demos' add-on."
 msgstr ""
+"<span color='#A00000'>Nota importante:</span> as micro intelixencias "
+"artificiais deste escenario escribíronse para unha serie de tipos de unidade "
+"animais que non existen na distribución oficial de A batalla polo Noroeste, "
+"como osos, rabaños ou cans pastores. Neste escenario de probas, esas unidades "
+"substituíronse por unidades “equivalentes” que si forman parte da "
+"distribución oficial. Se queres a “experiencia completa” cos tipos de unidade "
+"animais orixinais, bótalle unha ollada ao escenario «Animais» do complemento "
+"«AI Modification Demos» (demostracións de modificación das intelixencias "
+"artificiais)."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/animals.cfg:351
@@ -423,6 +522,11 @@ msgid ""
 "for watching only. The animal AIs behave as follows:\n"
 "\n"
 msgstr ""
+"Este é un pequeno e divertido escenario cun fato de intelixencias artificiais "
+"de animais. O escenario está pensado simplemente para contemplalo, para "
+"observación. As intelixencias artificiais dos animais compórtanse do seguinte "
+"xeito:\n"
+"\n"
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/animals.cfg:358
@@ -430,7 +534,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/protect-unit.cfg:136
 #: data/ai/micro_ais/scenarios/wolves.cfg:199
 msgid "Question for the Player"
-msgstr ""
+msgstr "Pregunta para o xogador"
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/animals.cfg:361
@@ -2622,3 +2726,4 @@ msgstr ""
 #: data/core/macros/ai_micro_ais.cfg:208
 msgid "Goto Micro AI"
 msgstr ""
+
