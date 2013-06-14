@@ -776,8 +776,8 @@ function wml_actions.harm_unit(cfg)
 	local harmer
 
 	local function toboolean( value ) -- helper for animate fields
-+               -- units will be animated upon leveling or killing, even
-+               -- with special attacker and defender values
+		-- units will be animated upon leveling or killing, even
+		-- with special attacker and defender values
 		if value then return true
 		else return false end
 	end
