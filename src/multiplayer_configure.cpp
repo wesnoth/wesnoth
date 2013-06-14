@@ -91,8 +91,7 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	name_entry_(disp.video(), 32),
 	options_pane_(disp.video()),
 	num_turns_(0),
-	parameters_(params),
-	options_manager_(cfg, disp.video(), preferences::options())
+	parameters_(params)
 {
 	// Build the list of scenarios to play
 
@@ -172,11 +171,6 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	vision_types.push_back(_("Share None"));
 	vision_combo_.set_items(vision_types);
 	vision_combo_.set_selected(0);
-
-	// Options
-	options_manager_.set_modifications(params.active_mods);
-	options_manager_.set_era(params.mp_era);
-	options_manager_.set_scenario(params.mp_scenario);
 
 
 	utils::string_map i18n_symbols;
@@ -261,7 +255,6 @@ mp_game_settings& configure::get_parameters()
 	parameters_.shuffle_sides = shuffle_sides_.checked();
 	parameters_.share_view = vision_combo_.selected() == 0;
 	parameters_.share_maps = vision_combo_.selected() == 1;
-	parameters_.options = options_manager_.get_values();
 
 	return parameters_;
 }

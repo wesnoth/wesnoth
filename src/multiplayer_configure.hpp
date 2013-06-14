@@ -17,7 +17,6 @@
 
 #include "mp_depcheck.hpp"
 #include "mp_game_settings.hpp"
-#include "mp_options.hpp"
 #include "multiplayer_ui.hpp"
 #include "widgets/slider.hpp"
 #include "widgets/scrollpane.hpp"
@@ -88,8 +87,6 @@ private:
 
 	int num_turns_;
 	mp_game_settings parameters_;
-
-	options::manager options_manager_;
 };
 
 } // end namespace mp

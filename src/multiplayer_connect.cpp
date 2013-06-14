@@ -35,7 +35,6 @@
 #include "formula_string_utils.hpp"
 #include "tod_manager.hpp"
 #include "wml_exception.hpp"
-#include "mp_options.hpp"
 
 #include <boost/bind.hpp>
 #include <boost/foreach.hpp>
@@ -1737,8 +1736,9 @@ void connect::load_game()
 		level_.add_child("multiplayer", params_.to_config());
 
 		// Convert options to events
-		level_.add_child_at("event", mp::options::to_event(params_.options
-				.find_child("multiplayer", "id", params_.mp_scenario)), 0);
+		//FIXME
+// 		level_.add_child_at("event", mp::options::to_event(params_.options
+// 				.find_child("multiplayer", "id", params_.mp_scenario)), 0);
 
 		params_.hash = level_.hash();
 		level_["next_underlying_unit_id"] = 0;
@@ -1788,22 +1788,24 @@ void connect::load_game()
 		BOOST_FOREACH(const config &e, era_cfg.child_range("multiplayer_side")) {
 			era_sides_.push_back(&e);
 		}
-		config& cfg = level_.add_child("era", era_cfg);
+		/*config& cfg =*/ level_.add_child("era", era_cfg);
 
 		// Convert options to event
-		cfg.add_child_at("event", mp::options::to_event
-				(params_.options.find_child("era", "id", era)), 0);
+		//FIXME
+// 		cfg.add_child_at("event", mp::options::to_event
+// 				(params_.options.find_child("era", "id", era)), 0);
 	}
 
 	// Add modifications
 	const std::vector<std::string>& mods = params_.active_mods;
 	for (unsigned i = 0; i<mods.size(); i++) {
-		config& cfg = level_.add_child("modification",
+		/*config& cfg = */level_.add_child("modification",
 					game_config().find_child("modification", "id", mods[i]));
 
 		// Convert options to event
-		cfg.add_child_at("event", mp::options::to_event
-				(params_.options.find_child("modification", "id", mods[i])), 0);
+		//FIXME
+// 		cfg.add_child_at("event", mp::options::to_event
+// 				(params_.options.find_child("modification", "id", mods[i])), 0);
 	}
 
 	gold_title_label_.hide(params_.saved_game);

@@ -19,7 +19,6 @@
 
 #include "mp_depcheck.hpp"
 #include "mp_game_settings.hpp"
-#include "mp_options.hpp"
 #include "multiplayer_ui.hpp"
 #include "widgets/slider.hpp"
 #include "widgets/combo.hpp"
