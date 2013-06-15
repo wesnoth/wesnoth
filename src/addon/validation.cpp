@@ -27,12 +27,30 @@ namespace {
 		"map_pack", "era", "faction", "mod_mp", /*"gui", */ "media", "other",
 		""
 	};
+
+	struct addon_name_char_illegal
+	{
+		/**
+		 * Returns whether the given add-on name char is not whitelisted.
+		 */
+		inline bool operator()(char c)
+		{
+			switch(c)
+			{
+				case '-':		// hyphen-minus
+				case '_':		// low line
+					return false;
+				default:
+					return !isalnum(c);
+			}
+		}
+	};
 }
 
 bool addon_name_legal(const std::string& name)
 {
 	if(name.empty() || name == "." ||
-	   name.find_first_of("/:\\~") != std::string::npos ||
+	   std::find_if(name.begin(), name.end(), addon_name_char_illegal()) != name.end() ||
 	   name.find("..") != std::string::npos) {
 		return false;
 	} else {
