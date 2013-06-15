@@ -278,21 +278,26 @@ void game_display::draw_hex(const map_location& loc)
 		if( u != NULL ) {
 			hex_top_layer = LAYER_MOUSEOVER_TOP;
 		}
-		if(u != NULL && (*teams_)[currentTeam_].is_enemy(u->side())) {
+		if(u == NULL) {
 			drawing_buffer_add( hex_top_layer,
-				loc, xpos, ypos, image::get_image("misc/hover-hex-enemy-top.png", image::SCALED_TO_HEX));
+				loc, xpos, ypos, image::get_image("misc/hover-hex-top.png~RC(magenta>gold)", image::SCALED_TO_HEX));
 			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM,
-				loc, xpos, ypos, image::get_image("misc/hover-hex-enemy-bottom.png", image::SCALED_TO_HEX));
-		} else if(u != NULL && (*teams_)[currentTeam_].side() == u->side()) {
+				loc, xpos, ypos, image::get_image("misc/hover-hex-bottom.png~RC(magenta>gold)", image::SCALED_TO_HEX));
+		} else if((*teams_)[currentTeam_].is_enemy(u->side())) {
 			drawing_buffer_add( hex_top_layer,
-				loc, xpos, ypos, image::get_image("misc/hover-hex-yours-top.png", image::SCALED_TO_HEX));
+				loc, xpos, ypos, image::get_image("misc/hover-hex-enemy-top.png~RC(magenta>red)", image::SCALED_TO_HEX));
 			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM,
-				loc, xpos, ypos, image::get_image("misc/hover-hex-yours-bottom.png", image::SCALED_TO_HEX));
+				loc, xpos, ypos, image::get_image("misc/hover-hex-enemy-bottom.png~RC(magenta>red)", image::SCALED_TO_HEX));
+		} else if((*teams_)[currentTeam_].side() == u->side()) {
+			drawing_buffer_add( hex_top_layer,
+				loc, xpos, ypos, image::get_image("misc/hover-hex-top.png~RC(magenta>green)", image::SCALED_TO_HEX));
+			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM,
+				loc, xpos, ypos, image::get_image("misc/hover-hex-bottom.png~RC(magenta>green)", image::SCALED_TO_HEX));
 		} else {
 			drawing_buffer_add( hex_top_layer,
-				loc, xpos, ypos, image::get_image("misc/hover-hex-top.png", image::SCALED_TO_HEX));
+				loc, xpos, ypos, image::get_image("misc/hover-hex-top.png~RC(magenta>lightblue)", image::SCALED_TO_HEX));
 			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM,
-				loc, xpos, ypos, image::get_image("misc/hover-hex-bottom.png", image::SCALED_TO_HEX));
+				loc, xpos, ypos, image::get_image("misc/hover-hex-bottom.png~RC(magenta>lightblue)", image::SCALED_TO_HEX));
 		}
 	}
 
