@@ -686,7 +686,7 @@ game_display::fake_unit & game_display::fake_unit::operator=(unit const & a)
 	if ( this != &a ) {
 		game_display * display = my_display_;
 
-		// Use the copy constructor to make sure we are coherant.
+		// Use the copy constructor to make sure we are coherent.
 		// (Methodology copied from unit::operator=)
 		this->~fake_unit();
 		new (this) fake_unit(a);
@@ -703,13 +703,13 @@ game_display::fake_unit & game_display::fake_unit::operator=(unit const & a)
 game_display::fake_unit::~fake_unit()
 {
 	// The fake_unit class exists for this one line, which removes the
-	// fake_unit from the display's fake_units_ deque in the event of an
+	// fake_unit from the display's fake_units_ dequeue in the event of an
 	// exception.
 	if(my_display_){remove_from_game_display();}
 }
 
 /**
- * Place @a this on @a display's fake_units_ deque.
+ * Place @a this on @a display's fake_units_ dequeue.
  * This will be added at the end (drawn last, over all other units).
  * Duplicate additions are not allowed.
  */
