@@ -824,7 +824,7 @@ public:
 		                            * Unit bars and overlays are drawn on this
 		                            * layer (for testing here).
 		                            */
-		LAYER_MOVE_INFO,           /**< Movement info (defense%, ect...). */
+		LAYER_MOVE_INFO,           /**< Movement info (defense%, etc...). */
 		LAYER_LINGER_OVERLAY,      /**< The overlay used for the linger mode. */
 		LAYER_BORDER,              /**< The border of the map. */
 
@@ -936,7 +936,7 @@ protected:
 		std::vector<surface> surf_;  /**< surface(s) to render. */
 		SDL_Rect clip_;              /**<
 		                              * The clipping area of the source if
-		                              * ommitted the entire source is used.
+		                              * omitted the entire source is used.
 		                              */
 		drawing_buffer_key key_;
 	};

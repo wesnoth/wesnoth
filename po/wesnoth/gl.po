@@ -8,14 +8,14 @@
 # Leandro Regueiro <leandro.regueiro@gmail.com>, 2007-2009.
 # Jacobo Abel Fernández García <xakobe_gz@hotmail.com>, 2007.
 # Fran Diéguez <fran dot dieguez at glug dot es>, 2008.
-# Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2009-2012.
+# Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2009-2012, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2013-05-22 22:02-0400\n"
-"PO-Revision-Date: 2012-12-29 07:37+0100\n"
-"Last-Translator: Adrian Chaves Fernandez <adriyetichaves@gmail.com>\n"
+"PO-Revision-Date: 2013-06-15 10:54+0200\n"
+"Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
@@ -174,13 +174,13 @@ msgstr "Comprimir as partidas gardadas con BZip2."
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:171
 msgid "Experimental multiplayer lobby"
-msgstr ""
+msgstr "Sala de espera para varios xogadores experimental"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:172
 msgid ""
 "Replace the classic multiplayer lobby with a newer, experimental interface"
-msgstr ""
+msgstr "Substituír a sala de espera clásica cunha nova interface experimental."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:180
@@ -3370,7 +3370,6 @@ msgid "You don’t have a leader to recall with."
 msgstr "Non tes un líder co que reincorporar."
 
 #: src/actions/create.cpp:607
-#, fuzzy
 #| msgid "None of your leaders is able to recall that unit."
 msgid "None of your leaders are able to recall that unit."
 msgstr "Ningún dos teus líderes pode reincorporar esa unidade."
@@ -3385,14 +3384,13 @@ msgstr "Non quedan hexágonos baleiros no castelo para reincorporar a unidade."
 
 #: src/actions/create.cpp:625 src/actions/create.cpp:761
 msgid "An unrecognized error has occurred."
-msgstr ""
+msgstr "Produciuse un erro descoñecido."
 
 #: src/actions/create.cpp:739
 msgid "You don’t have a leader to recruit with."
 msgstr "Non tes un líder co que recrutar."
 
 #: src/actions/create.cpp:743
-#, fuzzy
 #| msgid "None of your leaders is able to recall that unit."
 msgid "None of your leaders are able to recruit that unit."
 msgstr "Ningún dos teus líderes pode reincorporar esa unidade."
@@ -3407,11 +3405,11 @@ msgstr "Non quedan hexágonos baleiros no castelo para recrutar a unidade."
 
 #: src/actions/heal.cpp:256
 msgid "cured"
-msgstr "curado"
+msgstr "Curado"
 
 #: src/actions/heal.cpp:256
 msgid "female^cured"
-msgstr "curada"
+msgstr "Curada"
 
 #: src/actions/move.cpp:965
 msgid "Ambushed!"
@@ -4633,10 +4631,9 @@ msgid "Rename Unit"
 msgstr "Cambiar o nome"
 
 #: src/menu_events.cpp:883
-#, fuzzy
 #| msgid "Name: "
 msgid "Name:"
-msgstr "Nome: "
+msgstr "Nome:"
 
 #: src/menu_events.cpp:964
 msgid "Race"
@@ -5369,10 +5366,9 @@ msgstr ""
 "de configuración."
 
 #: src/mp_options.cpp:222
-#, fuzzy
 #| msgid "Default AI"
 msgid "Defaults"
-msgstr "IA Predeterminada"
+msgstr "Valores predeterminados"
 
 # Mensaxe que aparece ao intentar conectarse a un servidor. Véxase «Varios xogadores → Conectarse ao servidor oficial».
 #: src/multiplayer.cpp:151 src/multiplayer.cpp:194
@@ -6122,10 +6118,9 @@ msgstr ""
 "Queres gardar un rexistro dos erros da partida?"
 
 #: src/playsingle_controller.cpp:222
-#, fuzzy
 #| msgid "(press $hotkey to keep moving)"
 msgid "(press $hotkey to deactivate)"
-msgstr "(preme $hotkey para continuar o desprazamento)"
+msgstr "(preme $hotkey para desactivar)"
 
 #: src/playsingle_controller.cpp:268
 msgid "Remaining gold: "
@@ -6358,16 +6353,14 @@ msgid "Defense: "
 msgstr "Defensa: "
 
 #: src/reports.cpp:560
-#, fuzzy
 #| msgid "Version: "
 msgid "vision: "
-msgstr "Versión: "
+msgstr "visión: "
 
 #: src/reports.cpp:588
-#, fuzzy
 #| msgid "Movement Cost"
 msgid "Movement Costs:"
-msgstr "Custo de movemento"
+msgstr "Custo de movemento:"
 
 #: src/reports.cpp:679 src/reports.cpp:894 src/reports.cpp:906
 msgid "Weapon: "
@@ -6451,7 +6444,6 @@ msgid "None"
 msgstr "ningún"
 
 #: src/reports.cpp:1078
-#, fuzzy
 #| msgid "Lawful units: "
 msgid "Lawful units: "
 msgstr "Unidades legais: "
@@ -6767,7 +6759,7 @@ msgstr "border_size debe estar entre 0.0 e 0.5."
 
 #: src/theme.cpp:571 src/theme.cpp:576
 msgid "Hotkey(s): "
-msgstr ""
+msgstr "Teclas rápidas: "
 
 #: src/unit.cpp:2368 src/unit.cpp:2598 src/unit.cpp:2679
 msgid " and "

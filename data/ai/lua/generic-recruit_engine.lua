@@ -113,7 +113,7 @@ return {
                 for attack in H.child_range(wesnoth.unit_types[attacker.type].__cfg, "attack") do
                     local defense = defender_defense
                     local poison = false
-                    local damage_multiplier = 1
+                    local damage_multiplier,damage_add,damage_value = 1, 0
 
                     for special in H.child_range(attack, 'specials') do
                         local mod
@@ -146,12 +146,28 @@ return {
                         -- Handle backstab, charge
                         mod = H.get_child(special, 'damage')
                         if mod and mod.active_on ~= "defense" then
+                            if mod.value then
+                                if mod.cumulative then
+                                    if mod.value > attack.damage then
+                                        damage_value = mod.value
+                                    end
+                                else
+                                    damage_value = mod.value
+                                end
+                            elseif mod.add then
+                                damage_add = mod.add
+                            elseif mod.sub then
+                                damage_add = - mod.sub
+                            elseif mod.multiply then
+                                damage_multiplier = mod.multiply
+                            elseif mod.divide then
+                                damage_multiplier = 1. / mod.divide
+                            end
                             if mod.backstab then
                                 -- Assume backstab happens on only 1/2 of attacks
                                 -- TODO: find out what actual probability of getting to backstab is
-                                damage_multiplier = damage_multiplier*(mod.multiply*0.5 + 0.5)
-                            else
-                                damage_multiplier = damage_multiplier*mod.multiply
+                                damage_multiplier = damage_multiplier * 0.5 + 0.5
+                                damage_add = damage_add * 0.5
                             end
                         end
                     end
@@ -179,7 +195,8 @@ return {
                             resistance = 50
                         end
                     end
-                    local base_damage = attack.damage*resistance*damage_multiplier
+                    local base_damage = (attack.damage * damage_multiplier + damage_add) * resistance
+                    if damage_value then base_damage = damage_value * resistance end
                     if (resistance > 100) then
                         base_damage = base_damage-1
                     end
@@ -270,7 +287,7 @@ return {
             function sum_gold_for_sides(side_filter)
                 -- sum positive amounts of gold for a set of sides
                 -- positive only because it is used to estimate the number of enemy units that could appear
-                -- and negative numbers should't subtract from the number of units on the map
+                -- and negative numbers shouldn't subtract from the number of units on the map
                 local gold = 0
                 local sides = wesnoth.get_sides(side_filter)
                 for i,s in ipairs(sides) do
@@ -553,11 +570,6 @@ return {
             -- Find the best recruit hex
             -- First choice: a hex that can reach an unowned village
             -- Second choice: a hex close to the enemy
-            local enemy_leaders = AH.get_live_units { canrecruit = 'yes',
-	            { "filter_side", { { "enemy_of", {side = wesnoth.current.side} } } }
-            }
-            local closest_enemy_distance, closest_enemy_location = AH.get_closest_enemy()
-
             get_current_castle(leader, data)
 
             local best_hex, village = get_village_target(leader, data)
@@ -566,7 +578,14 @@ return {
                 table.insert(data.castle.assigned_villages_y, village[2])
             else
                 -- no available village, look for hex closest to enemy leader
+                -- and also the closest enemy
                 local max_rating = -1
+
+                local enemy_leaders = AH.get_live_units { canrecruit = 'yes',
+                    { "filter_side", { { "enemy_of", {side = wesnoth.current.side} } } }
+                }
+                local closest_enemy_distance, closest_enemy_location = AH.get_closest_enemy()
+
                 for i,c in ipairs(data.castle.locs) do
                     local rating = 0
                     local unit = wesnoth.get_unit(c[1], c[2])
@@ -660,7 +679,7 @@ return {
                 end
                 -- divide the lawful bonus by eta before running it through the function because the function converts from 0 centered to 1 centered
 
-                local lawful_bonus = 1
+                local lawful_bonus = 0
                 local eta_turn = wesnoth.current.turn + eta
                 if eta_turn <= wesnoth.game_config.last_turn then
                     lawful_bonus = wesnoth.get_time_of_day(wesnoth.current.turn + eta).lawful_bonus / eta^2

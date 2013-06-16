@@ -3,10 +3,16 @@ Version 1.11.4+dev:
    * Do not bump the download count for add-ons that are currently installed
      and are being reinstalled or upgraded
  * AI:
+   * New macro EXPERIMENTAL_AI for using Experimental AI in both SP scenarios and MP maps
    * Recruiting in Micro and Experimental AIs: allow more terrain codes for castles/keeps 
    * Improved/Added: Command 'lua wesnoth.debug_ai([side]).ai' will now give access to the
      ai-table of [side].
    * Improved AI behavior when using goto_x / goto_y in WML
+   * Micro AIs:
+     * Zone Guardian: Add optional station_x,station_y= keys
+     * Goto: don't exclude leader by default
+     * Minor bug fixes in Return Guardian and Healer Support MAIs
+   * Experimental AI: fix bugs that disabled recruiting for some UMC weapon specials
  * Campaigns:
    * All:
      * replaced deprecated aspects with [goal] aspect
@@ -17,7 +23,7 @@ Version 1.11.4+dev:
    * Under the Burning Suns:
      * Scenario 8 (Out of the Frying Pan): Fix messenger AI (Lua errors and wrong goal)
  * Language and i18n:
-   * Updated translations: Old English, Portuguese, Portuguese (Brazil)
+   * Updated translations: Galician, Old English, Portuguese, Portuguese (Brazil)
  * Lua API:
    * location_set.of_pairs() now can take coordinates defined by x/y= keys as well
    * Fixed the x1,y1 variables in enter/exit_hex events handled via
