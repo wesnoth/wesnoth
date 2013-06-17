@@ -1307,7 +1307,9 @@ REPORT_GENERATOR(terrain_info)
 
 		const std::string& terrain_id = map.get_terrain_info(underlying_terrain).id();
 		str << terrain_id;
-		add_image(cfg, "icons/terrain/terrain_type_" + terrain_id + ".png", str.str());
+		const std::string tc_base = "images/buttons/icon-base-16.png";
+		const std::string terrain_image = "icons/terrain/terrain_type_" + terrain_id + ".png";
+		add_image(cfg, tc_base + "~RC(magenta>" + terrain_id + ")~BLIT(" + terrain_image + ")", str.str());
 	}
 	return cfg;
 }
