@@ -1488,24 +1488,10 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 		for (i = vis_filt.begin(); i != i_end; ++i) {
 			bool visible = (*i)["visible"].to_bool(true);
 			std::set<int> viewers;
-			if (i->has_attribute("viewing_side")) {
-				ERR_NG << "[filter_vision]viewing_side= is deprecated, use side=\n";
-				const int max_side = static_cast<int>(teams_manager::get_teams().size());
-				std::vector<std::pair<int,int> > ranges = utils::parse_ranges((*i)["viewing_side"]);
-				std::vector<std::pair<int,int> >::const_iterator range, range_end = ranges.end();
-				for (range = ranges.begin(); range != range_end; ++range) {
-					for (int i=range->first; i<=range->second; ++i) {
-						if ( 0 < i  &&  i <= max_side ) {
-							viewers.insert(i);
-						}
-					}
-				}
-			} else {
-				// Use standard side filter
-				side_filter ssf(*i);
-				std::vector<int> sides = ssf.get_teams();
-				viewers.insert(sides.begin(), sides.end());
-			}
+			// Use standard side filter
+			side_filter ssf(*i);
+			std::vector<int> sides = ssf.get_teams();
+			viewers.insert(sides.begin(), sides.end());
 			if (viewers.empty()) {
 				return false;
 			}
