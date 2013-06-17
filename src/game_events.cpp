@@ -986,6 +986,7 @@ WML_HANDLER_FUNCTION(modify_ai, /*event_info*/, cfg)
 	const vconfig& filter_side = cfg.child("filter_side");
 	std::vector<int> sides;
 	if(!filter_side.null()) {
+		// TODO: since 1.11.0-dev it seems
 		WRN_NG << "[modify_ai][filter_side] is deprecated, use only an inline SSF\n";
 		if(!cfg["side"].str().empty()) {
 			ERR_NG << "duplicate side information in [modify_ai]\n";
