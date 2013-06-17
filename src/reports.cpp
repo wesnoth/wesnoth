@@ -1307,6 +1307,14 @@ REPORT_GENERATOR(terrain_info)
 
 	bool high_res = false;
 
+	if (display::get_singleton()->shrouded(mouseover_hex)) {
+		blit_tced_icon(cfg, "shroud", high_res);
+		return cfg;
+	}
+	if (display::get_singleton()->fogged(mouseover_hex)) {
+		blit_tced_icon(cfg, "fog", high_res);
+	}
+
 	if (map.is_keep(mouseover_hex)) {
 		blit_tced_icon(cfg, "keep", high_res);
 	}
