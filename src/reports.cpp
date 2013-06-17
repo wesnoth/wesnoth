@@ -1298,8 +1298,13 @@ REPORT_GENERATOR(terrain_info)
 	std::ostringstream str;
 	config cfg;
 
+	bool high_res = false;
+	const std::string tc_base = high_res ? "images/buttons/icon-base-32.png" : "images/buttons/icon-base-16.png";
+
 	if (map.is_keep(mouseover_hex)) {
-		add_image(cfg, "icons/terrain/terrain_type_keep.png", "");
+		const std::string terrain_id = "keep";
+		const std::string terrain_image = "icons/terrain/terrain_type_" + terrain_id + (high_res ? "_30.png" : ".png");
+		add_image(cfg, tc_base + "~RC(magenta>" + terrain_id + ")~BLIT(" + terrain_image + ")", "");
 	}
 
 	const t_translation::t_list& underlying_terrains = map.underlying_union_terrain(terrain);
@@ -1307,8 +1312,6 @@ REPORT_GENERATOR(terrain_info)
 
 		const std::string& terrain_id = map.get_terrain_info(underlying_terrain).id();
 		str << terrain_id;
-		bool high_res = false;
-		const std::string tc_base = high_res ? "images/buttons/icon-base-32.png" : "images/buttons/icon-base-16.png";
 		const std::string terrain_image = "icons/terrain/terrain_type_" + terrain_id + (high_res ? "_30.png" : ".png");
 		add_image(cfg, tc_base + "~RC(magenta>" + terrain_id + ")~BLIT(" + terrain_image + ")", str.str());
 	}
