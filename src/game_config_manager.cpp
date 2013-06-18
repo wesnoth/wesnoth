@@ -105,7 +105,6 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload)
 		return;
 	}
 
-	old_defines_map_ = cache_.get_preproc_map();
 	loadscreen::global_loadscreen_manager loadscreen_manager(disp_.video());
 	cursor::setter cur(cursor::WAIT);
 
@@ -155,6 +154,8 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload)
 			e.message + _("' (The game will now exit)"));
 		throw;
 	}
+
+	old_defines_map_ = cache_.get_preproc_map();
 
 	manager_state.set_status_success();
 
@@ -322,7 +323,23 @@ void game_config_manager::load_game_config_for_game(
 		extra_defines.push_back(new_define);
 	}
 
-	load_game_config(NO_FORCE_RELOAD);
+	try{
+		load_game_config(NO_FORCE_RELOAD);
+	}
+	catch(game::error& e) {
+		cache_.clear_defines();
+
+		std::deque<define> previous_defines;
+		BOOST_FOREACH(const preproc_map::value_type& preproc, old_defines_map_) {
+			define new_define
+				(new game_config::scoped_preproc_define(preproc.first));
+			previous_defines.push_back(new_define);
+		}
+
+		load_game_config(NO_FORCE_RELOAD);
+
+		throw;
+	}
 }
 
 game_config_manager_state::game_config_manager_state(config* game_config,
