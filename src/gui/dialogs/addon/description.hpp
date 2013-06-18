@@ -30,10 +30,15 @@ public:
 	 * Constructor.
 	 *
 	 * @param addon               The information about the addon to show.
+	 * @param state               Local installation status for the add-on.
 	 */
 	taddon_description(const addon_info& addon, const addon_tracking_info& state);
 
-	/** The display function see @ref tdialog for more information. */
+	/**
+	 * The display function.
+	 *
+	 * See @ref tdialog for more information.
+	 */
 	static void display(const addon_info& addon, const addon_tracking_info& state, CVideo& video)
 	{
 		taddon_description(addon, state).show(video);

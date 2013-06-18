@@ -22,13 +22,22 @@ BOOST_AUTO_TEST_SUITE( addons )
 
 BOOST_AUTO_TEST_CASE( validation )
 {
-	BOOST_CHECK( !addon_name_legal("") );
-	BOOST_CHECK( !addon_name_legal(".") );
-	BOOST_CHECK( !addon_name_legal("invalid/slash") );
-	BOOST_CHECK( !addon_name_legal("invalid\\backslash") );
-	BOOST_CHECK( !addon_name_legal("invalid:colon") );
-	BOOST_CHECK( !addon_name_legal("invalid~tilde") );
-	BOOST_CHECK( !addon_name_legal("invalid/../parent") );
+	BOOST_CHECK( !addon_filename_legal("") );
+	BOOST_CHECK( !addon_filename_legal(".") );
+	BOOST_CHECK( !addon_filename_legal("invalid/slash") );
+	BOOST_CHECK( !addon_filename_legal("invalid\\backslash") );
+	BOOST_CHECK( !addon_filename_legal("invalid:colon") );
+	BOOST_CHECK( !addon_filename_legal("invalid~tilde") );
+	BOOST_CHECK( !addon_filename_legal("invalid/../parent") );
+
+	BOOST_CHECK( addon_name_legal("-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz") );
+
+	BOOST_CHECK( !addon_name_legal("invalid\nnewline") );
+	BOOST_CHECK( !addon_name_legal("invalid\x0A""explicitLF") );
+	BOOST_CHECK( !addon_name_legal("invalid\x0D\x0A""explicitCRLF") );
+	BOOST_CHECK( !addon_name_legal("invalid\x0D""explicitCR") );
+	BOOST_CHECK( !addon_name_legal("invalid`grave accent`") );
+	BOOST_CHECK( !addon_name_legal("invalid$dollarsign$") );
 }
 
 BOOST_AUTO_TEST_SUITE_END()
