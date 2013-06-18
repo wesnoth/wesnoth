@@ -30,6 +30,7 @@ public:
 	 * Constructor.
 	 *
 	 * @param addon               The information about the addon to show.
+	 * @param state               Local installation status for the add-on.
 	 */
 	taddon_description(const addon_info& addon, const addon_tracking_info& state);
 
