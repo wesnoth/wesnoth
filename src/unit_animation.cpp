@@ -821,7 +821,7 @@ void unit_animation::update_last_draw_time()
 int unit_animation::get_end_time() const
 {
 	int result = unit_anim_.get_end_time();
-	std::map<std::string,particule>::const_iterator anim_itor =sub_anims_.end();
+	std::map<std::string,particule>::const_iterator anim_itor =sub_anims_.begin();
 	for( /*null*/; anim_itor != sub_anims_.end() ; ++anim_itor) {
 		result= std::max<int>(result,anim_itor->second.get_end_time());
 	}
