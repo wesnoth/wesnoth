@@ -416,7 +416,7 @@ namespace {
 						if (!data) {
 							LOG_CS << "Upload aborted - no add-on data.\n";
 							network::send_data(construct_error("Add-on rejected: No add-on data was supplied."), sock);
-						} else if (!addon_name_legal(upload["name"])) {
+						} else if (!addon_filename_legal(upload["name"])) {
 							LOG_CS << "Upload aborted - invalid add-on name.\n";
 							network::send_data(construct_error("Add-on rejected: The name of the add-on is invalid."), sock);
 						} else if (is_text_markup_char(upload["name"].str()[0])) {

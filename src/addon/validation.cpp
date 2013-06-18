@@ -29,7 +29,7 @@ namespace {
 	};
 }
 
-bool addon_name_legal(const std::string& name)
+bool addon_filename_legal(const std::string& name)
 {
 	if(name.empty() || name == "." ||
 	   name.find_first_of("/:\\~") != std::string::npos ||
@@ -43,10 +43,10 @@ bool addon_name_legal(const std::string& name)
 bool check_names_legal(const config& dir)
 {
 	BOOST_FOREACH(const config &path, dir.child_range("file")) {
-		if (!addon_name_legal(path["name"])) return false;
+		if (!addon_filename_legal(path["name"])) return false;
 	}
 	BOOST_FOREACH(const config &path, dir.child_range("dir")) {
-		if (!addon_name_legal(path["name"])) return false;
+		if (!addon_filename_legal(path["name"])) return false;
 		if (!check_names_legal(path)) return false;
 	}
 	return true;

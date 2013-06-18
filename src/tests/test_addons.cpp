@@ -22,13 +22,13 @@ BOOST_AUTO_TEST_SUITE( addons )
 
 BOOST_AUTO_TEST_CASE( validation )
 {
-	BOOST_CHECK( !addon_name_legal("") );
-	BOOST_CHECK( !addon_name_legal(".") );
-	BOOST_CHECK( !addon_name_legal("invalid/slash") );
-	BOOST_CHECK( !addon_name_legal("invalid\\backslash") );
-	BOOST_CHECK( !addon_name_legal("invalid:colon") );
-	BOOST_CHECK( !addon_name_legal("invalid~tilde") );
-	BOOST_CHECK( !addon_name_legal("invalid/../parent") );
+	BOOST_CHECK( !addon_filename_legal("") );
+	BOOST_CHECK( !addon_filename_legal(".") );
+	BOOST_CHECK( !addon_filename_legal("invalid/slash") );
+	BOOST_CHECK( !addon_filename_legal("invalid\\backslash") );
+	BOOST_CHECK( !addon_filename_legal("invalid:colon") );
+	BOOST_CHECK( !addon_filename_legal("invalid~tilde") );
+	BOOST_CHECK( !addon_filename_legal("invalid/../parent") );
 }
 
 BOOST_AUTO_TEST_SUITE_END()
