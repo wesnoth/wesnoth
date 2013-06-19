@@ -321,7 +321,7 @@ void game_config_manager::load_game_config_for_game(
 	try{
 		load_game_config(NO_FORCE_RELOAD);
 	}
-	catch(game::error& e) {
+	catch(game::error&) {
 		cache_.clear_defines();
 
 		std::deque<define> previous_defines;
