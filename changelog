@@ -24,6 +24,10 @@ Version 1.11.4+dev:
        being stored and then unstored in scenario 14
    * Under the Burning Suns:
      * Scenario 8 (Out of the Frying Pan): Fix messenger AI (Lua errors and wrong goal)
+ * Engine:
+   * Made game config loading more modular by extracting appropriate
+     functionality from game controller and adding it to a new class.
+     Wrapper functions for editor's and game's config loading were added.
  * Language and i18n:
    * Updated translations: Galician, Old English, Portuguese, Portuguese (Brazil)
  * Lua API:
@@ -67,6 +71,8 @@ Version 1.11.4+dev:
    * Changed: Mark system headers as system headers in CMake.
    * Fixed the recall list sometimes getting confused when dismissing a recall.
    * Prevent unchecked memory access in cut_surface()
+   * Remove game controllers: new and abstract. Were never properly implemented.
+   * Remove --new-syntax command line option. Was never properly implemented.
 
 Version 1.11.4:
  * AI:
