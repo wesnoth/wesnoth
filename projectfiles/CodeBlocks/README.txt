@@ -1,17 +1,15 @@
 README.txt
 
-(FIXME-GIT: These directions are slightly broken following the git
-transition and will need to be updated.)
-
 Compiling wesnoth on windows using CodeBlocks 10.05
 (June 2011, development version 1.9.6+svn r49843,
 earlier source versions untested)
 updated: r50891, 2011-08-23
+updated: 19.06.2013, untested
 
 (Whenever you enter directories or names, you should do it
 by using the "..." button to the right of the field.)
 1. Get the source by downloading from from http://www.wesnoth.org/
-or by using svn (if you know how to). The folder where you put the
+or by using git (if you know how to). The folder where you put the
 source is referred to as wesnoth_root/ in this README.
 2. Install CodeBlocks http://www.codeblocks.org/
 MinGw is not needed. CodeBlocks' installation folder is referred to as
@@ -22,6 +20,7 @@ Note that the projectfiles in wesnoth_root/projectfiles/CodeBlocks/
 may contain the setting to compile with OpenMP so you should make sure
 that this option is enabled while installing the compiler, there is a checkbox
 for this in the installer. (Or simply make a "all packages" installation.)
+The newest version of tdm-gcc won't work, you need the mentioned one.
 4. In CodeBlocks, open
 wesnoth_root/projectfiles/CodeBlocks/wesnoth.workspace
 5. In CodeBlocks, goto (menu bar)>settings>compiler and debugger
@@ -35,6 +34,12 @@ Into the field "linker for static libs", enter "ar.exe".
 http://www.mediafire.com/?qbibb8p3stb08w7 and extract
 this archive so that you have directories codeblocks_root/include_tdm_gcc
 and codeblocks_root/lib_tdm_gcc
+Newer package versions can be downloaded from
+http://sourceforge.net/projects/wesnoth/files/unofficial/Windows%20Compile%20Stuff/
+They contain the usual needed headers/libs (.a files)/dlls combination; the exact directory
+names may be different, so you need to adapt your settings in CodeBlocks which
+reference them. Since dependencies may be added to wesnoth, older packages
+may no longer work after some spot.
 7. In CodeBlocks, goto (menu bar)>settings>compiler and debugger
 >global compiler settings> (tab) search directories> (tab) compiler>Add.
 Enter codeblocks_root/include_tdm_gcc.
