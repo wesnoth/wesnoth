@@ -249,14 +249,7 @@ void create::process_event()
 	}
 
 	if(launch_game_.pressed() || maps_menu_.double_clicked()) {
-		// check if the map is valid
-		const std::string& map_data = parameters_.scenario_data["map_data"];
-		util::unique_ptr<gamemap> map;
-		try {
-			map.reset(new gamemap(game_config(), map_data));
-		} catch(incorrect_map_format_error&) {
-		} catch(twml_exception&) {}
-
+		boost::shared_ptr<gamemap> map = get_map();
 		if (map.get() == NULL) {
 			gui2::show_transient_message(disp_.video(), "", _("The map is invalid."));
 		} else {
@@ -362,19 +355,9 @@ void create::process_event()
 		generator_settings_.enable(generator_ != NULL);
 		regenerate_map_.enable(generator_ != NULL);
 
-		const std::string& map_data = parameters_.scenario_data["map_data"];
 		parameters_.hash = parameters_.scenario_data.hash();
-		util::unique_ptr<gamemap> map;
-		try {
-			map.reset(new gamemap(game_config(), map_data));
-		} catch(incorrect_map_format_error& e) {
-			ERR_CF << "map could not be loaded: " << e.message << '\n';
 
-			tooltips::clear_tooltips(minimap_rect_);
-			tooltips::add_tooltip(minimap_rect_,e.message);
-		} catch(twml_exception& e) {
-			ERR_CF << "map could not be loaded: " << e.dev_message << '\n';
-		}
+		boost::shared_ptr<gamemap> map = get_map();
 
 		launch_game_.enable(map.get() != NULL);
 
@@ -460,20 +443,14 @@ void create::hide_children(bool hide)
 	} else {
 		minimap_restorer_.assign(new surface_restorer(&video(), minimap_rect_));
 
-		const std::string& map_data = parameters_.scenario_data["map_data"];
-
-		try {
-			gamemap map(game_config(), map_data);
-
-			const surface mini(image::getMinimap(minimap_rect_.w,minimap_rect_.h,map,0));
+		boost::shared_ptr<gamemap> map = get_map();
+		if(map.get() != NULL) {
+			const surface mini(image::getMinimap(minimap_rect_.w,
+				minimap_rect_.h, *map, 0));
 			SDL_Color back_color = {0,0,0,255};
-			draw_centered_on_background(mini, minimap_rect_, back_color, video().getSurface());
-		} catch(incorrect_map_format_error& e) {
-			ERR_CF << "map could not be loaded: " << e.message << "\n";
-		} catch(twml_exception& e) {
-			ERR_CF <<  "map could not be loaded: " << e.dev_message << '\n';
+			draw_centered_on_background(mini, minimap_rect_, back_color,
+				video().getSurface());
 		}
-
 	}
 }
 
@@ -599,6 +576,25 @@ void create::layout_children(const SDL_Rect& rect)
 	                           ca.y + ca.h - right_button->height());
 	left_button->set_location(right_button->location().x - left_button->width() -
 	                          gui::ButtonHPadding, ca.y + ca.h - left_button->height());
+}
+
+boost::shared_ptr<gamemap> create::get_map()
+{
+	const std::string& map_data = parameters_.scenario_data["map_data"];
+
+	boost::shared_ptr<gamemap> map;
+	try {
+		map.reset(new gamemap(game_config(), map_data));
+	} catch(incorrect_map_format_error& e) {
+		ERR_CF << "map could not be loaded: " << e.message << '\n';
+
+		tooltips::clear_tooltips(minimap_rect_);
+		tooltips::add_tooltip(minimap_rect_,e.message);
+	} catch(twml_exception& e) {
+		ERR_CF << "map could not be loaded: " << e.dev_message << '\n';
+	}
+
+	return map;
 }
 
 void create::synchronize_selections()

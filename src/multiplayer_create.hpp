@@ -41,6 +41,7 @@ protected:
 	virtual void hide_children(bool hide=true);
 
 private:
+	boost::shared_ptr<gamemap> get_map();
 
 	void synchronize_selections();
 
