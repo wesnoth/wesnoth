@@ -1695,6 +1695,21 @@ def hack_syntax(filename, lines):
             lines[i] = lines[i].replace("{~campaigns/", "{~add-ons/")
             lines[i] = lines[i].replace("{~/campaigns/", "{~add-ons/")
             lines[i] = lines[i].replace("{@campaigns/", "{~add-ons/")
+            # Convert UMC to data/add-ons without clobbering mainline. Each path
+            # is checked against a list of mainline campaigns. UMC paths are
+            # updated to "data/add-ons/"; mainline path strings are unaltered.
+            x = 0
+            for dc in re.finditer(r"data/campaigns/(\w[\w'&+-]*)", lines[i]):
+                if dc.group(1) in mainline:
+                    continue
+                # Because start() and end() are based on the original position
+                # of each iteration, while each replacement shortens the line
+                # by two characters, we must subtract an increment that grows
+                # with each substitution.
+                lines[i] = lines[i][:dc.start()-x] + 'data/add-ons/' + dc.group(1) + lines[i][dc.end()-x:]
+                x = x+2
+                print '"%s", line %d: data/campaigns/%s -> data/add-ons/%s'\
+                      %(filename, i+1, dc.group(1), dc.group(1))
         elif "@add-ons/" in lines[i]:
             lines[i] = lines[i].replace("{@add-ons/", "{~add-ons/")
     # More syntax transformations would go here.
