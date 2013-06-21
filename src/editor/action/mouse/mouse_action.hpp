@@ -286,48 +286,7 @@ protected:
 
 };
 
-/**
- * Select (and deselect) action, by brush or "magic wand" (via keyboard modifier)
- */
-class mouse_action_select : public brush_drag_mouse_action
-{
-public:
-	mouse_action_select(const brush* const * const brush, const CKey& key, empty_palette& palette)
-	: brush_drag_mouse_action(palette, brush, key)
-	{
-	}
 
-	/**
-	 * Overridden to allow special behavior based on modifier keys
-	 */
-	std::set<map_location> affected_hexes(editor_display& disp, const map_location& hex);
-
-	/**
-	 * Force a fake "move" event to update brush overlay on key event
-	 */
-	editor_action* key_event(editor_display& disp, const SDL_Event& e);
-
-	/**
-	 * Left click/drag selects
-	 */
-	editor_action* click_perform_left(editor_display& disp, const std::set<map_location>& hexes);
-
-	/**
-	 * Right click does nothing for now
-	 */
-	editor_action* click_right(editor_display& disp, int x, int y);
-
-
-	/**
-	 * Right click/drag deselects
-	 */
-	editor_action* click_perform_right(editor_display& disp, const std::set<map_location>& hexes);
-
-	virtual void set_mouse_overlay(editor_display& disp);
-
-	bool has_context_menu() const { return true; };
-	bool supports_brushes() { return true; }
-};
 
 /**
  * Paste action. No dragging capabilities.

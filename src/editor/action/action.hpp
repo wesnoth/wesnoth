@@ -296,67 +296,6 @@ class editor_action_starting_position : public editor_action_location
 };
 
 
-/**
- * Select the given locations
- */
-class editor_action_select : public editor_action_area
-{
-	public:
-		editor_action_select(const std::set<map_location>& area)
-		: editor_action_area(area)
-		{
-		}
-		editor_action_select* clone() const;
-		void extend(const editor_map& map, const std::set<map_location>& locs);
-		editor_action* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "select"; }
-};
-
-/**
- * Select the entire map
- */
-class editor_action_select_all : public editor_action
-{
-	public:
-		editor_action_select_all()
-		{
-		}
-		editor_action_select_all* clone() const;
-		editor_action_select* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "select_all"; }
-};
-
-/**
- * Clear selection
- */
-class editor_action_select_none : public editor_action
-{
-	public:
-		editor_action_select_none()
-		{
-		}
-		editor_action_select_none* clone() const;
-		editor_action_select* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "select_none"; }
-};
-
-/**
- * Invert the selection
- */
-class editor_action_select_inverse : public editor_action
-{
-	public:
-		editor_action_select_inverse()
-		{
-		}
-		editor_action_select_inverse* clone() const;
-		editor_action_select_inverse* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "select_inverse"; }
-};
 
 /**
  * Resize the map. The offsets specify, indirectly, the direction of expanding/shrinking,

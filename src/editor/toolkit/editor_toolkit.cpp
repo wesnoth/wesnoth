@@ -20,6 +20,7 @@
 #include "editor/action/mouse/mouse_action_unit.hpp"
 #include "editor/action/mouse/mouse_action_village.hpp"
 #include "editor/action/mouse/mouse_action_item.hpp"
+#include "editor/action/mouse/mouse_action_select.hpp"
 
 #include <boost/foreach.hpp>
 

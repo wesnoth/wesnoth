@@ -20,6 +20,7 @@
 #include "asserts.hpp"
 #include "editor/action/action.hpp"
 #include "editor/action/action_unit.hpp"
+#include "editor/action/action_select.hpp"
 #include "editor_controller.hpp"
 
 #include "editor/palette/terrain_palettes.hpp"
