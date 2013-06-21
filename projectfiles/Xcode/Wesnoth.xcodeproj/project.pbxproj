@@ -62,6 +62,8 @@
 		62973FDE15C2EA7800D18140 /* action_village.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62973FDC15C2EA7800D18140 /* action_village.cpp */; };
 		62973FE215C2EAF300D18140 /* mouse_action_village.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62973FE015C2EAF300D18140 /* mouse_action_village.cpp */; };
 		62CC8E4C1771E7E100C16B75 /* game_config_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62CC8E4A1771E7E000C16B75 /* game_config_manager.cpp */; };
+		62CC8E501774C4E800C16B75 /* action_select.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62CC8E4E1774C4E800C16B75 /* action_select.cpp */; };
+		62CC8E531774C4F800C16B75 /* mouse_action_select.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62CC8E511774C4F800C16B75 /* mouse_action_select.cpp */; };
 		62D24F2D1519982500350848 /* brush.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F271519982500350848 /* brush.cpp */; };
 		62D24F2F1519982500350848 /* editor_toolkit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F2B1519982500350848 /* editor_toolkit.cpp */; };
 		62D24F321519987400350848 /* context_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F311519987400350848 /* context_manager.cpp */; };
@@ -1120,6 +1122,10 @@
 		62973FE115C2EAF300D18140 /* mouse_action_village.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mouse_action_village.hpp; sourceTree = "<group>"; };
 		62CC8E4A1771E7E000C16B75 /* game_config_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_config_manager.cpp; sourceTree = "<group>"; };
 		62CC8E4B1771E7E100C16B75 /* game_config_manager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game_config_manager.hpp; sourceTree = "<group>"; };
+		62CC8E4E1774C4E800C16B75 /* action_select.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = action_select.cpp; sourceTree = "<group>"; };
+		62CC8E4F1774C4E800C16B75 /* action_select.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = action_select.hpp; sourceTree = "<group>"; };
+		62CC8E511774C4F800C16B75 /* mouse_action_select.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mouse_action_select.cpp; sourceTree = "<group>"; };
+		62CC8E521774C4F800C16B75 /* mouse_action_select.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mouse_action_select.hpp; sourceTree = "<group>"; };
 		62D24F271519982500350848 /* brush.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = brush.cpp; sourceTree = "<group>"; };
 		62D24F281519982500350848 /* brush.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = brush.hpp; sourceTree = "<group>"; };
 		62D24F2B1519982500350848 /* editor_toolkit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = editor_toolkit.cpp; sourceTree = "<group>"; };
@@ -2635,6 +2641,8 @@
 		6295C3A6150FC95C0077D8C5 /* action */ = {
 			isa = PBXGroup;
 			children = (
+				62CC8E4E1774C4E800C16B75 /* action_select.cpp */,
+				62CC8E4F1774C4E800C16B75 /* action_select.hpp */,
 				62114CC01750B97F00CA42C7 /* action_item.cpp */,
 				62114CC11750B97F00CA42C7 /* action_item.hpp */,
 				6295C3A7150FC95C0077D8C5 /* action.cpp */,
@@ -2654,6 +2662,8 @@
 		6295C3AE150FC95C0077D8C5 /* mouse */ = {
 			isa = PBXGroup;
 			children = (
+				62CC8E511774C4F800C16B75 /* mouse_action_select.cpp */,
+				62CC8E521774C4F800C16B75 /* mouse_action_select.hpp */,
 				62114CC41750B99800CA42C7 /* mouse_action_item.cpp */,
 				62114CC51750B99800CA42C7 /* mouse_action_item.hpp */,
 				6295C3AF150FC95C0077D8C5 /* mouse_action.cpp */,
@@ -4249,6 +4259,8 @@
 				627F1EDB175AF35C000042E0 /* unit_advancements_aspect.cpp in Sources */,
 				49B4B8AB175E9F1300DB8C9B /* custom_tod.cpp in Sources */,
 				62CC8E4C1771E7E100C16B75 /* game_config_manager.cpp in Sources */,
+				62CC8E501774C4E800C16B75 /* action_select.cpp in Sources */,
+				62CC8E531774C4F800C16B75 /* mouse_action_select.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
