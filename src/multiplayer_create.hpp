@@ -50,6 +50,7 @@ private:
 		GENERATED_MAP
 	};
 	bool set_level_data(SET_LEVEL set_level, const int select);
+	void set_level_sides(const int map_positions);
 
 	void synchronize_selections();
 

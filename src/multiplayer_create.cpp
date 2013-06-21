@@ -338,15 +338,9 @@ void create::process_event()
 
 		// If there are less sides in the configuration than there are
 		// starting positions, then generate the additional sides
-		const int map_positions = map.get() != NULL ? map->num_valid_starting_positions() : 0;
-
-		for (int pos = parameters_.scenario_data.child_count("side"); pos < map_positions; ++pos) {
-			config& side = parameters_.scenario_data.add_child("side");
-			side["side"] = pos + 1;
-			side["team_name"] = pos + 1;
-			side["canrecruit"] = true;
-			side["controller"] = "human";
-		}
+		const int map_positions = map.get() != NULL ?
+			map->num_valid_starting_positions() : 0;
+		set_level_sides(map_positions);
 
 		if(map.get() != NULL) {
 			const surface mini(image::getMinimap(minimap_rect_.w,minimap_rect_.h,*map,0));
@@ -632,6 +626,18 @@ bool create::set_level_data(SET_LEVEL set_level, const int select)
 	} // end switch
 
 	return true;
+}
+
+void create::set_level_sides(const int map_positions)
+{
+	for (int pos = parameters_.scenario_data.child_count("side");
+		pos < map_positions; ++pos) {
+		config& side = parameters_.scenario_data.add_child("side");
+		side["side"] = pos + 1;
+		side["team_name"] = pos + 1;
+		side["canrecruit"] = true;
+		side["controller"] = "human";
+	}
 }
 
 void create::synchronize_selections()
