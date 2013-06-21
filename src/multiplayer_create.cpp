@@ -282,51 +282,29 @@ void create::process_event()
 		tooltips::clear_tooltips(minimap_rect_);
 
 		const size_t select = size_t(maps_menu_.selection());
-
 		if(select > 0 && select <= user_maps_.size()) {
-			parameters_.saved_game = false;
-			if (const config &generic_multiplayer = game_config().child("generic_multiplayer")) {
-				parameters_.scenario_data = generic_multiplayer;
-				parameters_.scenario_data["map_data"] = read_map(user_maps_[select-1]);
-			}
-
-		} else if(select > user_maps_.size() && select <= maps_menu_.number_of_items()-1) {
-			parameters_.saved_game = false;
-			size_t index = select - user_maps_.size() - 1;
-			assert(index < map_index_.size());
-			index = map_index_[index];
-
-			config::const_child_itors levels = game_config().child_range("multiplayer");
-			for (; index > 0; --index) {
-				if (levels.first == levels.second) break;
-				++levels.first;
-			}
-
-			if (levels.first != levels.second)
-			{
-				const config &level = *levels.first;
-				parameters_.scenario_data = level;
-				std::string map_data = level["map_data"];
-
-				if (map_data.empty() && !level["map"].empty()) {
-					map_data = read_map(level["map"]);
-				}
-
+			set_level_data(GENERIC_MULTIPLAYER, select);
+		} else if(select > user_maps_.size() &&
+			select <= maps_menu_.number_of_items()-1) {
+			if (set_level_data(MULTIPLAYER, select)) {
 				// If the map should be randomly generated.
-				if (!level["map_generation"].empty()) {
-					generator_.assign(create_map_generator(level["map_generation"], level.child("generator")));
+				if (!parameters_.scenario_data["map_generation"].empty()) {
+					generator_.assign(create_map_generator(
+						parameters_.scenario_data["map_generation"],
+						parameters_.scenario_data.child("generator")));
 				}
 
-				if (!level["description"].empty()) {
-					tooltips::add_tooltip(minimap_rect_, level["description"], "", false);
+				if (!parameters_.scenario_data["description"].empty()) {
+					tooltips::add_tooltip(minimap_rect_,
+						parameters_.scenario_data["description"], "", false);
 				}
 			}
 		} else {
-			parameters_.scenario_data.clear();
-			parameters_.saved_game = true;
+			set_level_data(SAVED_GAME, select);
 
-			if (minimap_restorer_ != NULL)
+			if (minimap_restorer_ != NULL) {
 				minimap_restorer_->restore();
+			}
 		}
 	}
 
@@ -337,18 +315,15 @@ void create::process_event()
 
 	if(generator_ != NULL && (map_changed || regenerate_map_.pressed())) {
 		const cursor::setter cursor_setter(cursor::WAIT);
-
-		// Generate the random map
 		cursor::setter cur(cursor::WAIT);
-		parameters_.scenario_data = generator_->create_scenario(std::vector<std::string>());
-		map_changed = true;
+
+		set_level_data(GENERATED_MAP, 0);
 
 		if (!parameters_.scenario_data["error_message"].empty())
-			gui2::show_message(disp().video(), "map generation error", parameters_.scenario_data["error_message"]);
+			gui2::show_message(disp().video(), "map generation error",
+				parameters_.scenario_data["error_message"]);
 
-		// Set the scenario to have placing of sides
-		// based on the terrain they prefer
-		parameters_.scenario_data["modify_placing"] = "true";
+		map_changed = true;
 	}
 
 	if(map_changed) {
@@ -595,6 +570,68 @@ boost::shared_ptr<gamemap> create::get_map()
 	}
 
 	return map;
+}
+
+bool create::set_level_data(SET_LEVEL set_level, const int select)
+{
+	switch (set_level) {
+	case GENERIC_MULTIPLAYER: {
+		parameters_.saved_game = false;
+		if (const config &generic_multiplayer =
+			game_config().child("generic_multiplayer")) {
+			parameters_.scenario_data = generic_multiplayer;
+			parameters_.scenario_data["map_data"] =
+				read_map(user_maps_[select-1]);
+		}
+
+	break;
+	}
+	case MULTIPLAYER: {
+		parameters_.saved_game = false;
+		size_t index = select - user_maps_.size() - 1;
+		assert(index < map_index_.size());
+		index = map_index_[index];
+
+		config::const_child_itors levels =
+			game_config().child_range("multiplayer");
+		for (; index > 0; --index) {
+			if (levels.first == levels.second) break;
+			++levels.first;
+		}
+
+		if (levels.first != levels.second)
+		{
+			const config &level = *levels.first;
+			parameters_.scenario_data = level;
+			std::string map_data = level["map_data"];
+
+			if (map_data.empty() && !level["map"].empty()) {
+				map_data = read_map(level["map"]);
+			}
+		} else {
+			return false;
+		}
+		break;
+	}
+	case SAVED_GAME: {
+		parameters_.scenario_data.clear();
+		parameters_.saved_game = true;
+
+		break;
+	}
+	case GENERATED_MAP: {
+		parameters_.scenario_data =
+			generator_->create_scenario(std::vector<std::string>());
+
+		// Set the scenario to have placing of sides
+		// based on the terrain they prefer
+		parameters_.scenario_data["modify_placing"] = "true";
+
+		break;
+	}
+	} // end switch
+
+	return true;
 }
 
 void create::synchronize_selections()

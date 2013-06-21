@@ -43,6 +43,14 @@ protected:
 private:
 	boost::shared_ptr<gamemap> get_map();
 
+	enum SET_LEVEL {
+		GENERIC_MULTIPLAYER,
+		MULTIPLAYER,
+		SAVED_GAME,
+		GENERATED_MAP
+	};
+	bool set_level_data(SET_LEVEL set_level, const int select);
+
 	void synchronize_selections();
 
 	bool local_players_only_;
