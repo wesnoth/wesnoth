@@ -501,7 +501,7 @@ public:
 	 * otherwise the images might start to look odd
 	 * (hex_width() gets rounding errors).
 	 */
-	void set_zoom(int amount, bool absolute = false);
+	bool set_zoom(int amount, bool absolute = false);
 
 	bool zoom_at_max() const;
 	bool zoom_at_min() const;

@@ -1125,10 +1125,11 @@ void editor_controller::left_mouse_up(int x, int y, const bool /*browse*/)
 	toolkit_->set_mouseover_overlay();
 	gui::slider* s = gui_->find_slider("map-zoom-slider");
 	if (s && s->value_change()) {
-		gui_->set_zoom(s->value(), true);
-		context_manager_->get_map_context().get_labels().recalculate_labels();
-		toolkit_->get_mouse_action()->set_mouse_overlay(*gui_);
-		set_button_state(*gui_);
+		if (gui_->set_zoom(s->value(), true)) {
+			context_manager_->get_map_context().get_labels().recalculate_labels();
+			toolkit_->get_mouse_action()->set_mouse_overlay(*gui_);
+			set_button_state(*gui_);
+		}
 	}
 	context_manager_->refresh_after_action();
 }

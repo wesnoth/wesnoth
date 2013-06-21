@@ -1978,7 +1978,7 @@ bool display::zoom_at_min() const
 	return zoom_ == MinZoom;
 }
 
-void display::set_zoom(int amount, bool absolute)
+bool display::set_zoom(int amount, bool absolute)
 {
 	int new_zoom = zoom_ + amount;
 	if (absolute)
@@ -2012,6 +2012,9 @@ void display::set_zoom(int amount, bool absolute)
 		// Forces a redraw after zooming.
 		// This prevents some graphic glitches from occurring.
 		draw();
+		return true;
+	} else {
+		return false;
 	}
 }
 
