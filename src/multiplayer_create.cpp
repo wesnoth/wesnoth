@@ -243,15 +243,16 @@ void create::process_event()
 	SDL_GetMouseState(&mousex,&mousey);
 	tooltips::process(mousex, mousey);
 
-	if(cancel_game_.pressed()) {
+	if (cancel_game_.pressed()) {
 		set_result(QUIT);
 		return;
 	}
 
-	if(launch_game_.pressed() || maps_menu_.double_clicked()) {
+	if (launch_game_.pressed() || maps_menu_.double_clicked()) {
 		boost::shared_ptr<gamemap> map = get_map();
 		if (map.get() == NULL) {
-			gui2::show_transient_message(disp_.video(), "", _("The map is invalid."));
+			gui2::show_transient_message(disp_.video(), "",
+				_("The map is invalid."));
 		} else {
 			set_result(CREATE);
 			return;
@@ -282,10 +283,10 @@ void create::process_event()
 		tooltips::clear_tooltips(minimap_rect_);
 
 		const size_t select = size_t(maps_menu_.selection());
-		if(select > 0 && select <= user_maps_.size()) {
+		if (select > 0 && select <= user_maps_.size()) {
 			set_level_data(GENERIC_MULTIPLAYER, select);
 		} else if(select > user_maps_.size() &&
-			select <= maps_menu_.number_of_items()-1) {
+			select <= maps_menu_.number_of_items() - 1) {
 			if (set_level_data(MULTIPLAYER, select)) {
 				// If the map should be randomly generated.
 				if (!parameters_.scenario_data["map_generation"].empty()) {
@@ -308,7 +309,8 @@ void create::process_event()
 		}
 	}
 
-	if(generator_ != NULL && generator_->allow_user_config() && generator_settings_.pressed()) {
+	if(generator_ != NULL && generator_->allow_user_config() &&
+		generator_settings_.pressed()) {
 		generator_->user_config(disp_);
 		map_changed = true;
 	}
@@ -327,13 +329,12 @@ void create::process_event()
 	}
 
 	if(map_changed) {
-		generator_settings_.enable(generator_ != NULL);
-		regenerate_map_.enable(generator_ != NULL);
-
 		parameters_.hash = parameters_.scenario_data.hash();
 
 		boost::shared_ptr<gamemap> map = get_map();
 
+		generator_settings_.enable(generator_ != NULL);
+		regenerate_map_.enable(generator_ != NULL);
 		launch_game_.enable(map.get() != NULL);
 
 		// If there are less sides in the configuration than there are
@@ -342,20 +343,20 @@ void create::process_event()
 			map->num_valid_starting_positions() : 0;
 		set_level_sides(map_positions);
 
-		if(map.get() != NULL) {
-			draw_map(*map);
-		}
-
-		int nsides = 0;
-		BOOST_FOREACH(const config &k, parameters_.scenario_data.child_range("side")) {
-			if (k["allow_player"].to_bool(true)) ++nsides;
-		}
-
 		std::stringstream players;
 		std::stringstream map_size;
 		if(map.get() != NULL) {
+			draw_map(*map);
+
+			int nsides = 0;
+			BOOST_FOREACH(const config &k,
+				parameters_.scenario_data.child_range("side")) {
+				if (k["allow_player"].to_bool(true)) ++nsides;
+			}
+
 			players << _("Players: ") << nsides;
-			map_size << _("Size: ") << map.get()->w() << utils::unicode_multiplication_sign << map.get()->h();
+			map_size << _("Size: ") << map.get()->w() <<
+				utils::unicode_multiplication_sign << map.get()->h();
 		} else {
 			players << _("Error");
 			map_size << "";
