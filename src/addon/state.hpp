@@ -56,6 +56,8 @@ struct addon_tracking_info
 	version_info installed_version;
 };
 
+typedef std::map<std::string, addon_tracking_info> addons_tracking_list;
+
 /**
  * Get information about an add-on comparing its local state with the add-ons server entry.
  *

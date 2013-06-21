@@ -344,11 +344,11 @@ class description_display_action : public gui::dialog_button_action
 	display& disp_;
 	std::vector<std::string> display_ids_;
 	addons_list addons_;
-	std::map<std::string, addon_tracking_info> tracking_;
+	addons_tracking_list tracking_;
 	gui::filter_textbox* filter_;
 
 public:
-	description_display_action(display& disp, const std::vector<std::string>& display_ids, const addons_list& addons, const std::map<std::string, addon_tracking_info>& tracking, gui::filter_textbox* filter)
+	description_display_action(display& disp, const std::vector<std::string>& display_ids, const addons_list& addons, const addons_tracking_list& tracking, gui::filter_textbox* filter)
 		: disp_(disp) , display_ids_(display_ids), addons_(addons), tracking_(tracking), filter_(filter)
 	{}
 
@@ -495,7 +495,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 	std::vector<std::string> can_delete_ids;
 
 	// Status tracking information about add-ons.
-	std::map<std::string, addon_tracking_info> tracking;
+	addons_tracking_list tracking;
 
 	// UI markup.
 	const std::string sep(1, COLUMN_SEPARATOR);
