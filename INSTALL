@@ -92,7 +92,8 @@ So, for example, this builds the game and the server:
 
     scons
 
-This installs binaries that were built before:
+This installs binaries that were built before (use su or sudo if required
+to write files into the installation prefix):
 
     scons install
 
@@ -245,13 +246,15 @@ To build wesnoth out of source:
  $ mkdir build && cd build
  $ cmake ..
  $ make
- $ make install
 
 To build wesnoth in the source directory:
 
  $ cmake .
  $ make
- $ make install
+
+To install wesnoth after building (as root using su or sudo if necessary):
+
+ # make install
 
 To change build options, you can either pass the options on the commandline:
 
