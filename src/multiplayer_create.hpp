@@ -42,6 +42,7 @@ protected:
 
 private:
 	boost::shared_ptr<gamemap> get_map();
+	void draw_map(const gamemap& map);
 
 	enum SET_LEVEL {
 		GENERIC_MULTIPLAYER,

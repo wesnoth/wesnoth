@@ -343,9 +343,7 @@ void create::process_event()
 		set_level_sides(map_positions);
 
 		if(map.get() != NULL) {
-			const surface mini(image::getMinimap(minimap_rect_.w,minimap_rect_.h,*map,0));
-			SDL_Color back_color = {0,0,0,255};
-			draw_centered_on_background(mini, minimap_rect_, back_color, video().getSurface());
+			draw_map(*map);
 		}
 
 		int nsides = 0;
@@ -414,11 +412,7 @@ void create::hide_children(bool hide)
 
 		boost::shared_ptr<gamemap> map = get_map();
 		if(map.get() != NULL) {
-			const surface mini(image::getMinimap(minimap_rect_.w,
-				minimap_rect_.h, *map, 0));
-			SDL_Color back_color = {0,0,0,255};
-			draw_centered_on_background(mini, minimap_rect_, back_color,
-				video().getSurface());
+			draw_map(*map);
 		}
 	}
 }
@@ -564,6 +558,13 @@ boost::shared_ptr<gamemap> create::get_map()
 	}
 
 	return map;
+}
+
+void create::draw_map(const gamemap& map)
+{
+	const surface mini(image::getMinimap(minimap_rect_.w,minimap_rect_.h,map,0));
+	SDL_Color back_color = {0,0,0,255};
+	draw_centered_on_background(mini, minimap_rect_, back_color, video().getSurface());
 }
 
 bool create::set_level_data(SET_LEVEL set_level, const int select)
