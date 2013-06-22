@@ -868,6 +868,129 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 	unit_map::iterator & new_unit_itor = add_result.first;
 	map_location current_loc = recruit_location;
 
+
+
+	// Find closest enemy and turn towards it (level 2s count more than level 1s, etc.)
+	const gamemap *map = resources::game_map;
+	const unit_map & units = *resources::units;
+	unit_map::const_iterator unit_itor;
+	map_location min_loc;
+	size_t min_dist = 0;
+	bool found_enemy = false;
+	const int x = current_loc.x;
+	const int y = current_loc.y;
+	const int w = map->w();
+	const int h = map->h();
+	
+	for ( unit_itor = units.begin(); unit_itor != units.end(); ++unit_itor ) {
+		if ((*resources::teams)[unit_itor->side()-1].is_enemy(new_unit.side()) &&
+			unit_itor->is_visible_to_team((*resources::teams)[new_unit.side()-1], false)) {
+			
+			size_t dist = distance_between(unit_itor->get_location(),current_loc) - unit_itor->level();
+			if (!found_enemy || dist < min_dist) {
+				found_enemy=true;
+				min_dist = dist;
+				min_loc = unit_itor->get_location();
+			}
+		}
+	}
+	if (found_enemy) {
+		int dx = min_loc.x - current_loc.x;
+		int dy = min_loc.y - current_loc.y;
+		if (min_loc.x%2==0 && current_loc.x%2==1) dy--;
+		
+		int dist = abs(dx); // Distance from north-south line
+		int dist_horiz = abs(dy);   // Distance from east-west line
+		int dist_diag_SW_NW = abs(dy - (dx-1)/2); // Distance from diagonal line SW-NW
+		int dist_diag_SE_NE = abs(dy + (dx)/2);   // Distance from diagonal line SE-NE
+		if (dy > 0) new_unit_itor->set_facing(map_location::SOUTH);
+		else        new_unit_itor->set_facing(map_location::NORTH);
+		
+		if (min_dist > 3 && dist_horiz < dist) {
+			if (y < h/2) {
+				if (x < w/2) new_unit_itor->set_facing(map_location::SOUTH_EAST);
+				else         new_unit_itor->set_facing(map_location::SOUTH_WEST);
+			}
+			else {
+				if (x < w/2) new_unit_itor->set_facing(map_location::NORTH_EAST);
+				else         new_unit_itor->set_facing(map_location::NORTH_WEST);
+			}
+			dist = dist_horiz;
+		}
+		
+		if (dist_diag_SW_NW < dist) {
+			if (dx>0) new_unit_itor->set_facing(map_location::SOUTH_EAST);
+			else      new_unit_itor->set_facing(map_location::NORTH_WEST);
+			dist = dist_diag_SW_NW;
+		} 
+		if (dist_diag_SE_NE < dist) {
+			if (dx>0) new_unit_itor->set_facing(map_location::NORTH_EAST);
+			else      new_unit_itor->set_facing(map_location::SOUTH_WEST);
+			dist = dist_diag_SE_NE;
+		}
+	}
+	else { // Otherwise set initial facing direction based on location coordinates
+		std::vector<map_location::DIRECTION> facing_dir;
+
+		const int x1 = round( ((float)   w)/5 );
+		const int x2 = round( ((float) 2*w)/5 );
+		const int x3 = round( ((float) 3*w)/5 );
+		const int x4 = round( ((float) 4*w)/5 );
+
+		const int y1 = round( ((float)   h)/3 );
+		const int y2 = round( ((float) 2*h)/3 );
+		
+		// If in middle face any which way, border units face inwards
+		if (y < y2) {
+			if (x < x1) {
+				facing_dir.push_back (map_location::SOUTH_EAST);
+			}
+			else if (x < x2) {
+				facing_dir.push_back (map_location::SOUTH_EAST);
+				facing_dir.push_back (map_location::SOUTH);
+			}
+			else if (x < x3) {
+				facing_dir.push_back (map_location::SOUTH);
+			}
+			else if (x < x4) {
+				facing_dir.push_back (map_location::SOUTH);
+				facing_dir.push_back (map_location::SOUTH_WEST);
+			}
+			else {
+				facing_dir.push_back (map_location::SOUTH_WEST);
+			}
+		}
+		if (y >= y1) {
+			if (x < x1) {
+				facing_dir.push_back (map_location::SOUTH_EAST);
+			}
+			else if (x < x2) {
+				facing_dir.push_back (map_location::SOUTH_EAST);
+				facing_dir.push_back (map_location::SOUTH);
+			}
+			else if (x < x3) {
+				facing_dir.push_back (map_location::SOUTH);
+			}
+			else if (x < x4) {
+				facing_dir.push_back (map_location::SOUTH);
+				facing_dir.push_back (map_location::SOUTH_WEST);
+			}
+			else {
+				facing_dir.push_back (map_location::SOUTH_WEST);
+			}
+		}
+		if (y >= y1 && y < y2) {
+			if (x >= x2 && x < x3) {
+				facing_dir.push_back (map_location::SOUTH_EAST);
+				facing_dir.push_back (map_location::NORTH_EAST);
+				facing_dir.push_back (map_location::SOUTH_WEST);
+				facing_dir.push_back (map_location::NORTH_WEST);
+			}
+		}
+		new_unit_itor->set_facing(facing_dir[rand() % (facing_dir.size())]);
+	}
+
+
 	// Do some bookkeeping.
 	recruit_checksums(new_unit, wml_triggered);
 	resources::whiteboard->on_gamestate_change();
