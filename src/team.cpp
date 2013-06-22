@@ -148,9 +148,7 @@ void team::team_info::read(const config &cfg)
 	}
 
 	std::vector<std::string> recruits = utils::split(cfg["recruit"]);
-	for(std::vector<std::string>::const_iterator i = recruits.begin(); i != recruits.end(); ++i) {
-		can_recruit.insert(*i);
-	}
+	can_recruit.insert(recruits.begin(), recruits.end());
 
 	// at the start of a scenario "start_gold" is not set, we need to take the
 	// value from the gold setting (or fall back to the gold default)
