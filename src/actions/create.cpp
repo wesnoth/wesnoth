@@ -962,21 +962,21 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 		}
 		if (y >= y1) {
 			if (x < x1) {
-				facing_dir.push_back (map_location::SOUTH_EAST);
+				facing_dir.push_back (map_location::NORTH_EAST);
 			}
 			else if (x < x2) {
-				facing_dir.push_back (map_location::SOUTH_EAST);
-				facing_dir.push_back (map_location::SOUTH);
+				facing_dir.push_back (map_location::NORTH_EAST);
+				facing_dir.push_back (map_location::NORTH);
 			}
 			else if (x < x3) {
-				facing_dir.push_back (map_location::SOUTH);
+				facing_dir.push_back (map_location::NORTH);
 			}
 			else if (x < x4) {
-				facing_dir.push_back (map_location::SOUTH);
-				facing_dir.push_back (map_location::SOUTH_WEST);
+				facing_dir.push_back (map_location::NORTH);
+				facing_dir.push_back (map_location::NORTH_WEST);
 			}
 			else {
-				facing_dir.push_back (map_location::SOUTH_WEST);
+				facing_dir.push_back (map_location::NORTH_WEST);
 			}
 		}
 		if (y >= y1 && y < y2) {
