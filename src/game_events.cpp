@@ -1038,11 +1038,7 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 		}
 		// Modify recruit list (override)
 		if (!recruit_str.empty()) {
-			std::vector<std::string> recruit = utils::split(recruit_str);
-			if (recruit.size() == 1 && recruit.back() == "")
-				recruit.clear();
-
-			teams[team_index].set_recruits(std::set<std::string>(recruit.begin(),recruit.end()));
+			teams[team_index].set_recruits(utils::set_split(recruit_str));
 		}
 		// Modify income
 		config::attribute_value income = cfg["income"];

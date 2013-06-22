@@ -18,6 +18,7 @@
 
 #include <algorithm>
 #include <map>
+#include <set>
 #include <sstream>
 #include <string>
 #include <vector>
@@ -52,7 +53,15 @@ enum { REMOVE_EMPTY = 0x01,	/**< REMOVE_EMPTY : remove empty elements. */
 	  STRIP_SPACES  = 0x02	/**< STRIP_SPACES : strips leading and trailing blank spaces. */
 };
 
+/// Splits a (comma-)separated string into a vector of pieces.
 std::vector< std::string > split(std::string const &val, const char c = ',', const int flags = REMOVE_EMPTY | STRIP_SPACES);
+/// Splits a (comma-)separated string into a set of pieces.
+/// See split() for the meanings of the parameters.
+inline std::set< std::string > set_split(std::string const &val, const char c = ',', const int flags = REMOVE_EMPTY | STRIP_SPACES)
+{
+	std::vector< std::string > vec_split = split(val, c, flags);
+	return std::set< std::string >(vec_split.begin(), vec_split.end());
+}
 
 /**
  * Splits a string based on two separators into a map.

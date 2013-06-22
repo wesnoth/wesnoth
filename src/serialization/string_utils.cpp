@@ -96,6 +96,15 @@ std::string &strip_end(std::string &str)
 	return str;
 }
 
+/**
+ * Splits a (comma-)separated string into a vector of pieces.
+ * @param[in]  val    A (comma-)separated string.
+ * @param[in]  c      The separator character (usually a comma).
+ * @param[in]  flags  Flags controlling how the split is done.
+ *                    This is a bit field with two settings (both on by default):
+ *                    REMOVE_EMPTY causes empty pieces to be skipped/removed.
+ *                    STRIP_SPACES causes the leading and trailing spaces of each piece to be ignored/stripped.
+ */
 std::vector< std::string > split(std::string const &val, const char c, const int flags)
 {
 	std::vector< std::string > res;
