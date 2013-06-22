@@ -322,7 +322,7 @@ bool shroud_clearer::clear_loc(team &tm, const map_location &loc,
  * @param enemy_count      Incremented for each enemy uncovered (excluding known_units).
  * @param friend_count     Incremented for each friend uncovered (excluding known_units).
  * @param spectator        Will be told of uncovered units (excluding known_units).
- * @param instant          If true, then drawing delays (used to make animations look better) are suppressed.
+ * @param instant          If false, then drawing delays (used to make movement look better) are allowed.
  *
  * @return whether or not information was uncovered (i.e. returns true if any
  *         locations in visual range were fogged/shrouded under shared vision/maps).
@@ -393,7 +393,7 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, team &view_team,
  * @param enemy_count      Incremented for each enemy uncovered (excluding known_units).
  * @param friend_count     Incremented for each friend uncovered (excluding known_units).
  * @param spectator        Will be told of uncovered units (excluding known_units).
- * @param instant          If true, then drawing delays (used to make animations look better) are suppressed.
+ * @param instant          If false, then drawing delays (used to make movement look better) are allowed.
  *
  * @return whether or not information was uncovered (i.e. returns true if any
  *         locations in visual range were fogged/shrouded under shared vision/maps).
@@ -422,7 +422,7 @@ bool shroud_clearer::clear_unit(const map_location &view_loc,
  * This should only be called if delayed shroud updates is off.
  * It is wasteful to call this if view_team uses neither fog nor shroud.
  *
- * @param instant          If true, then drawing delays (used to make animations look better) are suppressed.
+ * @param instant          If false, then drawing delays (used to make movement look better) are allowed.
  *
  * @return whether or not information was uncovered (i.e. returns true if any
  *         locations in visual range were fogged/shrouded under shared vision/maps).
@@ -452,8 +452,8 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, team &view_team,
  * for the caller to check these.)
  * In addition, if @a invalidate is left as true, invalidate_after_clear()
  * will be called.
- * Setting @a instant to true suppresses some drawing delays that are used to
- * make animations look better.
+ * Setting @a instant to false allows some drawing delays that are used to
+ * make movement look better.
  *
  * @return whether or not information was uncovered (i.e. returns true if any
  *         locations in visual range were fogged/shrouded under shared vision/maps).
@@ -728,8 +728,7 @@ void recalculate_fog(int side)
 	BOOST_FOREACH(const unit &u, *resources::units)
 	{
 		if ( u.side() == side )
-			clearer.clear_unit(u.get_location(), u, tm, &visible_locs, NULL,
-			                   NULL, NULL, true);
+			clearer.clear_unit(u.get_location(), u, tm, &visible_locs);
 	}
 	// Update the screen.
 	clearer.invalidate_after_clear();
@@ -765,7 +764,7 @@ bool clear_shroud(int side, bool reset_fog, bool fire_events)
 	BOOST_FOREACH(const unit &u, *resources::units)
 	{
 		if ( u.side() == side )
-			result |= clearer.clear_unit(u.get_location(), u, tm, true);
+			result |= clearer.clear_unit(u.get_location(), u, tm);
 	}
 	// Update the screen.
 	if ( result )
