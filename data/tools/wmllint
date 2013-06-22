@@ -60,7 +60,7 @@
 #
 # You can also prevent description insertions with "wmllint: no-icon".
 #
-# You can force otherwise undeclared characters to be recogized with
+# You can force otherwise undeclared characters to be recognized with
 # a magic comment containing the string "wmllint: recognize".
 # The rest of the line is stripped and treated as the name of a character
 # who should be recognized in descriptions.  This will be useful,
@@ -82,7 +82,7 @@
 # You can prevent filename conversions with a comment containing
 # "wmllint: noconvert" on the same line as the filename.
 #
-# You can suppress complaints about files without an initial textdoman line
+# You can suppress complaints about files without an initial textdomain line
 # by embedding the magic comment "# wmllint: no translatables" in the file.
 # of course, it's a good idea to be sure this assertion is actually true.
 #
@@ -108,7 +108,7 @@
 # A magic comment of the form "wmllint: general spellings word1
 # word2..."  will declare the tokens word1, word2, etc. to be
 # acceptable spellings for anywhere in the Wesnoth tree that the
-# spellchecker should rever flag.  If the keyword "general" is
+# spellchecker should never flag.  If the keyword "general" is
 # replaced by "local", the spelling exceptions apply only in the
 # current file. If the keyword "general" is replaced by "directory",
 # the spelling exceptions apply to all files below the parent
@@ -496,9 +496,9 @@ linechanges = (
         ("portraits/nagas/fighter+female.png", "portraits/nagas/fighter.png"),
         # Changes after 1.8rc1
         ("portraits/orcs/warlord.png", "portraits/orcs/transparent/warlord.png"),
-        ("portraits/orcs/warlord2.png","portraits/orcs/transparent/warlord.png"),
+        #("portraits/orcs/warlord2.png","portraits/orcs/transparent/warlord.png"), // see 1.11.5
         ("portraits/orcs/warlord3.png","portraits/orcs/transparent/grunt-2.png"),
-        ("portraits/orcs/warlord4.png","portraits/orcs/transparent/grunt-2.png"),
+        #("portraits/orcs/warlord4.png","portraits/orcs/transparent/grunt-2.png"), // see 1.11.5
         ("portraits/orcs/warlord5.png","portraits/orcs/transparent/grunt-3.png"),
         # Changes just before 1.9.0
         ("flat/grass-r8", "flat/grass6"),
@@ -522,7 +522,10 @@ linechanges = (
         ("[/removeitem]", "[/remove_item]"),
         # Changes just before 1.11.0
         ("viewing_side", "side"),
-        ("duration=level", "duration=scenario") # Note: this may be removed after 1.11.2, so an actual duration=level can be implemented
+        ("duration=level", "duration=scenario"), # Note: this may be removed after 1.11.2, so an actual duration=level can be implemented
+        # Changed before 1.11.5 to incorporate 1.9.0 portraits
+        ("portraits/orcs/warlord2.png","portraits/orcs/transparent/grunt-5.png"),
+        ("portraits/orcs/warlord4.png","portraits/orcs/transparent/grunt-6.png"),
         )
 
 def validate_on_pop(tagstack, closer, filename, lineno):
@@ -533,7 +536,7 @@ def validate_on_pop(tagstack, closer, filename, lineno):
         print '"%s", line %d: closing %s I see %s with %s' % (filename, lineno, closer, tag, attributes)
     # Detect a malformation that will cause the game to barf while attempting
     # to deserialize an empty unit.  The final "and attributes" is a blatant
-    # hack; some compaigns like to generate entire side declarations with
+    # hack; some campaigns like to generate entire side declarations with
     # macros.
     if "scenario" in ancestors and closer == "side" and "type" not in attributes and ("no_leader" not in attributes or attributes["no_leader"] != "yes") and "multiplayer" not in ancestors and attributes:
         print '"%s", line %d: [side] without type attribute' % (filename, lineno)
@@ -766,7 +769,7 @@ pango_conversions = (("~", "<b>", "</b>"),
                      )
 
 def pangostrip(message):
-    "Strip Pango margup out of a string."
+    "Strip Pango markup out of a string."
     # This is all known Pango convenience tags
     for tag in ("b", "big", "i", "s", "sub", "sup", "small", "tt", "u"):
         message = message.replace("<%s>" % tag, "").replace("</%s>" % tag, "")
@@ -1033,7 +1036,8 @@ def global_sanity_check(filename, lines):
                     (key, prefix, value, comment) = fields
                     if key in ("id", "speaker"):
                         if deathcheck and ((value == filter_subject) or (value == "unit")):
-                            print '"%s", line %d: %s speaks in his/her death event' % (filename, nav.lineno+1, value)
+                            print '"%s", line %d: %s speaks in his/her "die" event rather than "last breath"' \
+                                  % (filename, nav.lineno+1, value)
     # Collect information on defined movement types and races
     for nav in WmllintIterator(lines, filename):
         above = nav.ancestors()
@@ -1416,7 +1420,7 @@ def consistency_check():
                               (filename, rl, rtype)
                         continue
                 if not base in usage:
-                    print '"%s", line %d: %s has unkown base %s' % \
+                    print '"%s", line %d: %s has unknown base %s' % \
                               (filename, rl, rtype, base)
                 else:
                     utype = usage[base]
@@ -1431,7 +1435,7 @@ def consistency_check():
                             if pdifficulty is not None:
                                 pshow = ' ' + pdifficulty
                             print '"%s", line %d: %s%s (%s) doesn\'t match the%s recruitment pattern (%s) for its side' % (filename, rl, rshow, rtype, utype, pshow, ", ".join(recruit_pattern))
-            # We have a list of all the usage types recruited at this sifficulty
+            # We have a list of all the usage types recruited at this difficulty
             # in utypes.  Use it to check the matching pattern, if any. Suppress
             # this check if the recruit line is a macroexpansion.
             if recruit and not recruit[0].startswith("{"):
@@ -1965,7 +1969,7 @@ def translator(filename, mapxforms, textxform):
         print '"%s", line %d: tag stack nonempty (%s) at end of file.' % (filename, lineno, tagstack)
     tagstack = []
     if iswml(filename):
-        # Perform checks that are purel local.  This is an
+        # Perform checks that are purely local.  This is an
         # optimization hack to reduce parsing overhead.
         for nav in WmllintIterator(newdata, filename):
             try:
@@ -2086,7 +2090,7 @@ def inner_spellcheck(nav, value, spelldict):
         lowered = string_strip(lowered)
         if lowered and spelldict.check(lowered):
             continue
-        # No match? Strip posessive suffixes and try again.
+        # No match? Strip possessive suffixes and try again.
         elif lowered.endswith("'s") and spelldict.check(lowered[:-2]):
             continue
         # Hyphenated compounds need all their parts good
