@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-22 22:02-0400\n"
-"PO-Revision-Date: 2013-01-02 20:15-0000\n"
+"POT-Creation-Date: 2013-05-22 22:08-0400\n"
+"PO-Revision-Date: 2013-06-22 22:08-0000\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
 "Language: la\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.5.5\n"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:4
@@ -167,7 +167,7 @@ msgstr "Servatos bzip2 utendo breviare"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:171
 msgid "Experimental multiplayer lobby"
-msgstr ""
+msgstr "Atrium lusoribus pluribus experimentale"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:172
@@ -2147,7 +2147,7 @@ msgstr "impulsum"
 #. [language]
 #: data/english.cfg:50
 msgid "fire"
-msgstr "ignis"
+msgstr "igneum"
 
 #. [language]
 #: data/english.cfg:51
@@ -3103,7 +3103,7 @@ msgstr "Consistere"
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/macros.cfg:81
 msgid "pause at end of turn"
-msgstr "morari finem vicis"
+msgstr "morari in fine vicis"
 
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/macros.cfg:94
@@ -3355,19 +3355,19 @@ msgstr "Edita"
 
 #: src/addon/manager_ui.cpp:107
 msgid "addon_state^Installed, upgradable"
-msgstr ""
+msgstr "Imposita, auctabilis"
 
 #: src/addon/manager_ui.cpp:107
 msgid "addon_state^Published, upgradable"
-msgstr ""
+msgstr "Edita, auctabilis"
 
 #: src/addon/manager_ui.cpp:110
 msgid "addon_state^Installed, outdated on server"
-msgstr ""
+msgstr "Imposita, antiqua"
 
 #: src/addon/manager_ui.cpp:110
 msgid "addon_state^Published, outdated on server"
-msgstr ""
+msgstr "Edita, antiqua"
 
 #: src/addon/manager_ui.cpp:113
 msgid "addon_state^Installed, broken"
@@ -3782,7 +3782,7 @@ msgstr "Nullum propositum ad manum"
 
 #: src/dialogs.cpp:466
 msgid "Recruit"
-msgstr "Adlegere"
+msgstr "Conscribere"
 
 #: src/dialogs.cpp:467 src/dialogs.cpp:556
 msgid "Select unit:"
@@ -4188,7 +4188,7 @@ msgstr "Status Praesens"
 
 #: src/leader_scroll_dialog.cpp:164 src/menu_events.cpp:303
 msgid "More >"
-msgstr "Plus >"
+msgstr "Amplius >"
 
 #: src/leader_scroll_dialog.cpp:184 src/menu_events.cpp:321
 msgid "scenario settings^Leader"
@@ -4484,7 +4484,7 @@ msgstr ""
 
 #: src/menu_events.cpp:1592
 msgid " No help available."
-msgstr " Nullum auxilium ad manum"
+msgstr " Nullum auxilium ad manum."
 
 #: src/menu_events.cpp:1597
 msgid "Usage:"
@@ -4741,7 +4741,7 @@ msgstr ""
 
 #: src/menu_events.cpp:1990
 msgid "<id>"
-msgstr ""
+msgstr "<id>"
 
 #: src/menu_events.cpp:1990
 #, fuzzy
@@ -4956,7 +4956,7 @@ msgstr ""
 #: src/menu_events.cpp:2378 src/menu_events.cpp:2389 src/menu_events.cpp:2407
 #: src/menu_events.cpp:2421
 msgid "nick registration"
-msgstr ""
+msgstr "nomen dare"
 
 #: src/menu_events.cpp:2389
 msgid "dropping your username"
@@ -5001,18 +5001,16 @@ msgid "Choose Scenario (Debug!)"
 msgstr "Scaenarium Eligere (Emendare!)"
 
 #: src/menu_events.cpp:2860
-#, fuzzy
 msgid "Debug mode activated!"
-msgstr "Imperia Vulgaria"
+msgstr "Modus cimicandi apertus!"
 
 #: src/menu_events.cpp:2863
 msgid "Debug mode not available in network games"
 msgstr ""
 
 #: src/menu_events.cpp:2868
-#, fuzzy
 msgid "Debug mode deactivated!"
-msgstr "Imperia Vulgaria"
+msgstr "Modus cimicandi clausus!"
 
 #: src/menu_events.cpp:2879
 msgid "Unsafe Lua scripts."
@@ -5027,7 +5025,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2883
 msgid "Unsafe mode enabled!"
-msgstr ""
+msgstr "Modus periculosus aperta!"
 
 #: src/menu_events.cpp:2926
 msgid "Variable not found"
@@ -5052,14 +5050,12 @@ msgid "Invalid location"
 msgstr "Locus Irritus"
 
 #: src/menu_events.cpp:3092 src/playsingle_controller.cpp:221
-#, fuzzy
 msgid "Planning mode activated!"
-msgstr "Imperia Vulgaria"
+msgstr "Modus parandi apertus!"
 
 #: src/menu_events.cpp:3095 src/playsingle_controller.cpp:224
-#, fuzzy
 msgid "Planning mode deactivated!"
-msgstr "Imperia Vulgaria"
+msgstr "Modus parandi clausus!"
 
 #: src/menu_events.cpp:3108
 msgid "ai"
@@ -5094,19 +5090,16 @@ msgid "Scenario can't be activated. Some dependencies are missing: "
 msgstr ""
 
 #: src/mp_depcheck.cpp:540 src/mp_depcheck.cpp:663
-#, fuzzy
-#| msgid "No eras found."
 msgid "No compatible eras found."
-msgstr "Nullae aetates inventae."
+msgstr "Nullae aetates idoneae inventae."
 
 #: src/mp_depcheck.cpp:556
 msgid "Era can't be activated. Some dependencies are missing: "
 msgstr ""
 
 #: src/mp_depcheck.cpp:609 src/mp_depcheck.cpp:700
-#, fuzzy
 msgid "No compatible scenarios found."
-msgstr "Partes pro pluribus lusoribus non inventae"
+msgstr "Nulla scaenaria idonea inventae."
 
 #: src/mp_depcheck.cpp:638
 msgid ""
@@ -5121,9 +5114,8 @@ msgid ""
 msgstr ""
 
 #: src/mp_options.cpp:222
-#, fuzzy
 msgid "Defaults"
-msgstr "IA Solita"
+msgstr "Solita"
 
 #: src/multiplayer.cpp:151 src/multiplayer.cpp:194
 msgid "Connecting to Server..."
@@ -5346,14 +5338,12 @@ msgid "Defeat enemy leader(s)"
 msgstr "Ducem(es) hostis vincere "
 
 #: src/multiplayer_connect.cpp:1962
-#, fuzzy
 msgid "Waiting for players to join..."
-msgstr "Exspecto ut lusores coniugerint..."
+msgstr "Lusores ut coniungant exspectare..."
 
 #: src/multiplayer_connect.cpp:1963
-#, fuzzy
 msgid "Waiting for players to choose factions..."
-msgstr "Exspecto ut lusores coniugerint..."
+msgstr "Lusores ut factionem legant exspectare..."
 
 #: src/multiplayer_create.cpp:57 src/multiplayer_lobby.cpp:783
 msgid "Create Game"
@@ -6082,15 +6072,12 @@ msgid "Defense: "
 msgstr "Defensio: "
 
 #: src/reports.cpp:560
-#, fuzzy
-#| msgid "Version: "
 msgid "vision: "
-msgstr "Versio: "
+msgstr "visio: "
 
 #: src/reports.cpp:588
-#, fuzzy
 msgid "Movement Costs:"
-msgstr "Pretium Motus"
+msgstr "Pretium Motus:"
 
 #: src/reports.cpp:679 src/reports.cpp:894 src/reports.cpp:906
 msgid "Weapon: "
@@ -6174,9 +6161,10 @@ msgstr "Praecipuum teli: "
 msgid "None"
 msgstr "Nullum"
 
+# note: english has double whitespace
 #: src/reports.cpp:1078
 #, fuzzy
-#| msgid "Lawful units: "
+#| msgid "Lawful  units: "
 msgid "Lawful units: "
 msgstr "Actores diurni: "
 
@@ -6608,209 +6596,644 @@ msgstr "Electiones Tabulae Commentationum"
 #~ msgid "Multiplayer_AI^Experimental AI"
 #~ msgstr "IA Experimentalis"
 
-#, fuzzy
+#~ msgid "Idle AI"
+#~ msgstr "IA Otiosa"
+
 #~| msgid "Enemy unit sighted!"
 #~| msgid_plural "$enemies enemy units sighted!"
 #~ msgid "Enemy unit weight  (default: 100)"
-#~ msgstr "Unus de hostibus visus!"
+#~ msgstr "Pondus hostis (solitum: C)"
+
+#~ msgid "My unit weight  (default: 1)"
+#~ msgstr "Pondus actoris mei  (solitum: I)"
+
+#~ msgid "The Elves Besieged"
+#~ msgstr "Obsessi Dryadales"
+
+#~ msgid "Konrad"
+#~ msgstr "Conradus"
+
+#~ msgid "Rebels"
+#~ msgstr "Rebelles"
+
+#~ msgid "Delfador"
+#~ msgstr "Delfador"
+
+#~ msgid "Urug-Telfar"
+#~ msgstr "Urug Telfar"
 
 #~ msgid "Orcs"
 #~ msgstr "Orci"
 
-#, fuzzy
+#~ msgid "Knafa-Tan"
+#~ msgstr "Gnafa-Tan"
+
+#~ msgid "Maga-Knafa"
+#~ msgstr "Maga Gnafa"
+
+#~ msgid "Galdrad"
+#~ msgstr "Galdradis"
+
+#~ msgid "Chantal"
+#~ msgstr "Chantala"
+
+#~ msgid ""
+#~ "Master Delfador! Look, there are orcs coming from all directions! What "
+#~ "shall we do?"
+#~ msgstr "Delfador domine! Ecce, orces undique adveniunt! Quid faciemus?"
+
+#~ msgid "There are too many to fight, far too many. We must escape!"
+#~ msgstr "Nimis multi pro pugnanti, valde nimis sunt. Debemus effugere!"
+
 #~| msgid "Move leader here"
 #~ msgid "Move Konrad here"
-#~ msgstr "Ducem huc movere"
+#~ msgstr "Conradum huc movere"
 
-#, fuzzy
+#~ msgid "Very well, we have made it this far! But where do we go next?"
+#~ msgstr "Fiat, adhuc ivimus! Sed quo deinde eamus?"
+
+#~ msgid "I... I don’t think I can make it anymore."
+#~ msgstr "Non... non puto me iam superesse."
+
+#~ msgid "Prince... you must keep fighting! Nooooooo!"
+#~ msgstr "Regule... opus est certamine pergere! Hauuuuu!"
+
+#~ msgid "It is over. I am doomed..."
+#~ msgstr "Finit. ruor..."
+
+#~ msgid ""
+#~ "I have... have failed in my duty to protect the prince! I am defeated."
+#~ msgstr "Defui... defui officio praesidii reguli! Victus sum."
+
+#~ msgid "Don’t die, Delfador! Please, you have to stay alive!"
+#~ msgstr "Noli mori, Delfador! Amabo, necesse est vivere!"
+
+#~ msgid "Ugh!"
+#~ msgstr "Heu!"
+
+#~ msgid ""
+#~ "Oh, no! We have run out of time, they have arrived with reinforcements..."
+#~ msgstr "Vae nobis! Tempus exit et cum copiis novis rediti sunt..."
+
+#~ msgid "Animals"
+#~ msgstr "Animales"
+
 #~| msgid "race^Humans"
 #~ msgid "Humans"
 #~ msgstr "Homines"
 
-#, fuzzy
+#~ msgid "Forest Creatures"
+#~ msgstr "Animales Silvestres"
+
+#~ msgid "Ghasts"
+#~ msgstr "Abominamenta"
+
+#~ msgid "Spiders"
+#~ msgstr "Araneae"
+
+#~ msgid "Yetis"
+#~ msgstr "Simii Nivis"
+
 #~| msgid "Elves"
 #~ msgid "Wolves"
-#~ msgstr "Dryades"
+#~ msgstr "Lupi"
 
-#, fuzzy
 #~| msgid "help"
 #~ msgid "Whelps"
-#~ msgstr "auxilium"
+#~ msgstr "Catuli"
 
-#, fuzzy
 #~ msgid "End scenario"
-#~ msgstr "Missio remota"
+#~ msgstr "Scaenarium finire"
+
+#~ msgid "Question for the Player"
+#~ msgstr "Quaestio Lusoris"
+
+#~ msgid "Death of Rutburt"
+#~ msgstr "Mors Rutburti"
+
+#~ msgid "Bottleneck Defense"
+#~ msgstr "Defensio in Angustiis"
+
+#~ msgid "Big Bad Orc"
+#~ msgstr "Magnus Orx Malus"
 
 #, fuzzy
 #~| msgid "Save the Map As"
 #~ msgid "Take the pass"
 #~ msgstr "Chartam Servare Ut..."
 
-#, fuzzy
+#~ msgid "Defeat all humans"
+#~ msgstr "Omnes humanos vincere"
+
+#~ msgid "Death of Big Bad Orc"
+#~ msgstr "Mors Magni Orcis Mali"
+
+#~ msgid "Only one orc remains"
+#~ msgstr "Tantum unus orx manet"
+
+#~ msgid "Dragon"
+#~ msgstr "Draco"
+
+#~ msgid "Rowck"
+#~ msgstr "Raux"
+
+#~ msgid "Dreadful Bat"
+#~ msgstr "Vespertilio Terribilis"
+
+#~ msgid "Rowck's Home"
+#~ msgstr "Domus Raucis"
+
 #~| msgid "Defeat"
 #~ msgid "Defeat Rowck"
-#~ msgstr "Clades"
+#~ msgstr "Raucem vincere"
 
-#, fuzzy
+#~ msgid "Move the lead bat to the signpost"
+#~ msgstr "Vespertilionem ducem ad signum movere"
+
 #~| msgid "Defeat enemy leader"
 #~ msgid "Death of the bat leader"
-#~ msgstr "Ducem hostis vincere "
+#~ msgstr "Mors ducis vespertilionum"
 
-#, fuzzy
-#~| msgid "race^Saurians"
-#~ msgid "Saurians"
-#~ msgstr "Lacertae"
+#~ msgid "Guardians"
+#~ msgstr "Custodes"
 
-#, fuzzy
-#~ msgid "General Minry"
-#~ msgstr "Imperia Vulgaria"
+#~ msgid "Kraa"
+#~ msgstr "Kra"
 
-#, fuzzy
-#~| msgid "race^Gryphon"
-#~ msgid "Place Side 1 Footpad"
-#~ msgstr "Gryps"
-
-#, fuzzy
 #~| msgid "race^Gryphons"
 #~ msgid "Gryphons"
 #~ msgstr "Grypes"
 
-#, fuzzy
+#~ msgid "Another Bad Orc"
+#~ msgstr "Alius Orx Malus"
+
+#~ msgid "Guardian 1"
+#~ msgstr "Primus Custos"
+
+#~ msgid "ai_special=guardian"
+#~ msgstr "ai_special=guardian"
+
+#~ msgid "Guardian 2"
+#~ msgstr "Secundus Custos"
+
+# ignavus is now a substantive, hahaha.
 #~| msgid "Forward >"
 #~ msgid "Coward 1"
-#~ msgstr "Secundus >"
+#~ msgstr "Primus Ignavus"
 
-#, fuzzy
 #~| msgid "Forward >"
 #~ msgid "coward r=5"
-#~ msgstr "Secundus >"
+#~ msgstr "coward r=5"
 
-#, fuzzy
 #~| msgid "Forward >"
 #~ msgid "Coward 2"
-#~ msgstr "Secundus >"
+#~ msgstr "Secundus Ignavus"
 
-#, fuzzy
+#~ msgid ""
+#~ "coward r=5\n"
+#~ "    s=24 5"
+#~ msgstr ""
+#~ "coward r=5\n"
+#~ "    s=24 5"
+
 #~| msgid "Forward >"
 #~ msgid "Coward 3"
-#~ msgstr "Secundus >"
+#~ msgstr "Tertius Ignavus"
 
-#, fuzzy
+#~ msgid ""
+#~ "   coward r=5\n"
+#~ " s=24,5 a=24,15"
+#~ msgstr ""
+#~ "   coward r=5\n"
+#~ " s=24,5 a=24,15"
+
 #~| msgid "Forward >"
 #~ msgid "Coward 4"
-#~ msgstr "Secundus >"
+#~ msgstr "Quartus Ignavus"
 
-#, fuzzy
+#~ msgid ""
+#~ "coward r=5\n"
+#~ "    s=32,--"
+#~ msgstr ""
+#~ "coward r=5\n"
+#~ "    s=32,--"
+
+#~ msgid "Return Guardian 1"
+#~ msgstr "Custos Rediturus I"
+
+#~ msgid "return 20,2"
+#~ msgstr "return 20,2"
+
+#~ msgid "Return Guardian 2"
+#~ msgstr "Custos Rediturus II"
+
+#~ msgid "return 21,9"
+#~ msgstr "return 21,9"
+
+#~ msgid "Home Guard 1"
+#~ msgstr "Custos Domus I"
+
+#~ msgid "home 19,2"
+#~ msgstr "home 19,2"
+
+#~ msgid "Home Guard 2"
+#~ msgstr "Custos Domus II"
+
+#~ msgid "home 21,10"
+#~ msgstr "home 21,10"
+
+#~ msgid "Stationed Guardian 1"
+#~ msgstr "Custos Locatus I"
+
+#~ msgid ""
+#~ " stationed r=4\n"
+#~ "s=2,14 g=3,13"
+#~ msgstr ""
+#~ " stationed r=4\n"
+#~ "s=2,14 g=3,13"
+
+#~ msgid "Stationed Guardian 2"
+#~ msgstr "Custos Locatus II"
+
+#~ msgid ""
+#~ " stationed r=4\n"
+#~ "s=4,14 g=7,13"
+#~ msgstr ""
+#~ " stationed r=4\n"
+#~ "s=4,14 g=7,13"
+
 #~| msgid "Invalid location"
 #~ msgid "Guarded Location"
-#~ msgstr "Locus Irritus"
+#~ msgstr "Locus Custoditus"
 
-#, fuzzy
 #~| msgid "Faction"
 #~ msgid "Station 1"
-#~ msgstr "Factio"
+#~ msgstr "Prima Statio"
 
-#, fuzzy
 #~| msgid "Faction"
 #~ msgid "Station 2"
-#~ msgstr "Factio"
+#~ msgstr "Secunda Statio"
 
-#, fuzzy
+#~ msgid "Standard WML Guardian"
+#~ msgstr "Custos VML Solitus"
+
+#~ msgid "Return Guardian"
+#~ msgstr "Custos Rediturus"
+
+#~ msgid "Home Guard"
+#~ msgstr "Custos Domus"
+
+#~ msgid "Stationed Guardian"
+#~ msgstr "Custos Locatus"
+
 #~| msgid "Forward >"
 #~ msgid "Coward"
-#~ msgstr "Secundus >"
+#~ msgstr "Ignavus"
 
-#, fuzzy
+#~ msgid "Kraahhh!!!!"
+#~ msgstr "Kraahhh!!!!"
+
 #~ msgid "Defeat all enemy units"
-#~ msgstr ""
-#~ "Victoria:\n"
-#~ "@Ducem ducesve hostium vincere"
+#~ msgstr "Omnes hoses vincere"
 
-#, fuzzy
+#~ msgid "Move Kraa to the signpost"
+#~ msgstr "Kram ad signum movere"
+
+#~ msgid "Death of Kraa"
+#~ msgstr "Mors Krae"
+
 #~ msgid "Healer Support"
-#~ msgstr "ianuae magicae"
+#~ msgstr "Auxilium Sanatorum"
 
-#, fuzzy
+#~ msgid "Rebels 1"
+#~ msgstr "Primi Rebelles"
+
+#~ msgid "Rebels 2"
+#~ msgstr "Secundi Rebelles"
+
+#~ msgid "Lurkers of the Swamp"
+#~ msgstr "Repentes in Paludine"
+
+#~ msgid "Pekzs"
+#~ msgstr "Pekzs"
+
+#~ msgid "Micro AI Lurkers (saurians, stationary)"
+#~ msgstr "Repentes IA (lacertae ambulatoriae)"
+
+#~ msgid "Micro AI Lurkers (saurians, wanderers)"
+#~ msgstr "Repentes IA (lacertae sedentariae)"
+
+#~ msgid "Micro AI Lurkers (nagas)"
+#~ msgstr "Repentes IA (hydrades)"
+
+#~ msgid "WML Lurkers (saurians)"
+#~ msgstr "Repentes VML (lacertae)"
+
+#~ msgid "Place a Side 2 lurker"
+#~ msgstr "Repentem secundae manus creare"
+
+#~ msgid "Place a Side 3 lurker"
+#~ msgstr "Repentem tertiae manus creare"
+
+#~ msgid "Place a Side 4 lurker"
+#~ msgstr "Repentem quartae manus creare"
+
+#~ msgid "Place a Side 5 lurker"
+#~ msgstr "Repentem quintae manus creare"
+
+#~ msgid "Place a Side 6 lurker"
+#~ msgstr "Repentem sextae manus creare"
+
 #~| msgid "Notes:"
 #~ msgid "Notes"
-#~ msgstr "Addenda:"
+#~ msgstr "Addenda"
 
-#, fuzzy
 #~| msgid "Clear all orders"
 #~ msgid "Defeat all lurkers"
-#~ msgstr "Omnia mandata delere"
+#~ msgstr "Omnes repentes vincere"
 
-#, fuzzy
+#~ msgid "Move Pekzs to the signpost"
+#~ msgstr "Pekzs ad signum movere"
+
+#~ msgid "Death of Pekzs"
+#~ msgstr "Mors Pekzs"
+
+#~ msgid "Messenger Escort"
+#~ msgstr "Custos Nuntii"
+
+#~ msgid "Vanak"
+#~ msgstr "Vanacus"
+
 #~| msgid "Message:"
 #~ msgid "Messenger"
-#~ msgstr "Nuntium: "
+#~ msgstr "Nuntius"
 
-#, fuzzy
+#~ msgid "Messanger Waypoint 1"
+#~ msgstr "Prima statio nuntii"
+
+#~ msgid "Messenger Waypoint 2"
+#~ msgstr "Secunda statio nuntii"
+
+#~ msgid "Messenger Waypoint 3"
+#~ msgstr "Tertia statio nuntii"
+
 #~| msgid "Move leader here"
 #~ msgid "AI moves Messenger here"
-#~ msgstr "Ducem huc movere"
+#~ msgstr "IA nuntium huc movere"
 
-#, fuzzy
 #~| msgid "Defeat enemy leader"
 #~ msgid "Defeat the messenger"
-#~ msgstr "Ducem hostis vincere "
+#~ msgstr "Nuntium vincere "
 
-#, fuzzy
+#~ msgid "Messenger gets to the signpost"
+#~ msgstr "Nuntius signum attingere"
+
+#~ msgid "Death of Vanak"
+#~ msgstr "Mors Vanaci"
+
+#~ msgid "Patrols"
+#~ msgstr "Circitores"
+
+#~ msgid "Gertburt"
+#~ msgstr "Gertburtus"
+
+#~ msgid "Bandits"
+#~ msgstr "Latrones"
+
+#~ msgid "Urudin"
+#~ msgstr "Urudinus"
+
+#~ msgid "Konrad Waypoint 1"
+#~ msgstr "Prima statio Conradi"
+
+#~ msgid "Konrad Waypoint 2"
+#~ msgstr "Secunda statio Conradi"
+
+#~ msgid "Konrad Final Waypoint"
+#~ msgstr "Ultima statio Conradi"
+
+#~ msgid "Patrol Waypoint 1"
+#~ msgstr "Prima statio circitorum"
+
+#~ msgid "Patrol Waypoint 2"
+#~ msgstr "Secunda statio circitorum"
+
+#~ msgid "Patrol Waypoint 3"
+#~ msgstr "Tertia statio circitorum"
+
+#~ msgid "Patrol Waypoint 4"
+#~ msgstr "Quarta statio circitorum"
+
+#~ msgid "Urudin retreats here"
+#~ msgstr "Urudinus pedem huc referre"
+
+#~ msgid "Move Gertburt to the signpost"
+#~ msgstr "Gertburtum ad signum movere"
+
+#~ msgid "Death of Gertburt"
+#~ msgstr "Mors Gertburti"
+
+#~ msgid "Let's go home, chaps."
+#~ msgstr "Domum eamus, viri."
+
+#~ msgid "Protect Unit"
+#~ msgstr "Actorem Tueri"
+
 #~| msgid "Language"
 #~ msgid "Langzhar"
-#~ msgstr "Lingua"
+#~ msgstr "Langizar"
 
-#, fuzzy
+#~ msgid "Koorzhar"
+#~ msgstr "Corzar"
+
 #~| msgid "Move leader here"
 #~ msgid "Move Rossauba here"
-#~ msgstr "Ducem huc movere"
+#~ msgstr "Rossaubam huc movere"
 
-#, fuzzy
+#~ msgid "Rossauba makes it to the signpost"
+#~ msgstr "Rossauba signun attingere"
+
+#~ msgid "Death of Rossauba"
+#~ msgstr "Mors Rossaubae"
+
+#~ msgid "Death of Langzhar"
+#~ msgstr "Mors Langizaris"
+
+#~ msgid "Get rid of that traitor wizard Rossauba"
+#~ msgstr "Istum proditorem magum Rossaubam perficere"
+
+#~ msgid "Defeat Rossauba"
+#~ msgstr "Rossaubam vincere"
+
+#~ msgid "Death of Koorzhar"
+#~ msgstr "Mors Corzaris"
+
 #~| msgid "Take it"
 #~ msgid "I made it"
-#~ msgstr "Capere"
+#~ msgstr "Adveni"
 
-#, fuzzy
 #~| msgid "Recruit"
 #~ msgid "Recruiting"
-#~ msgstr "Adlegere"
+#~ msgstr "Conscribere"
 
-#, fuzzy
+#~ msgid "Micro AI Tests"
+#~ msgstr "Probationes AI Parva"
+
+#~ msgid "Grnk the Frail"
+#~ msgstr "Debilis Grncus"
+
+#~ msgid "Grnk"
+#~ msgstr "Grnk"
+
 #~ msgid "Swarm"
-#~ msgstr "examen"
+#~ msgstr "Examen"
 
-#, fuzzy
+#~ msgid "Lurkers"
+#~ msgstr "Repentes"
+
+#~ msgid "HttT: The Elves Besieged"
+#~ msgstr "HR: Obsessi Dryadales"
+
+#~ msgid "Bottleneck"
+#~ msgstr "Pugnae in Angustiis"
+
+#~ msgid "Healers"
+#~ msgstr "Sanatores"
+
+#~ msgid "Bottleneck Defense Micro AI demo"
+#~ msgstr "Exemplum defensionis in angustiis Parvae IA"
+
+#~ msgid "Bottleneck Defense Micro AI Demo"
+#~ msgstr "Exemplum Defensionis in Angustiis Parvae IA"
+
+#~ msgid "Guardian Micro AI demo"
+#~ msgstr "Exemplum custoditum Parvae IA"
+
+#~ msgid "Patrol Micro AI demo"
+#~ msgstr "Exemplum circitorum Parvae IA"
+
+#~ msgid "Protect Unit Micro AI demo"
+#~ msgstr "Exemplum actorem tuendi Parvae IA"
+
+#~ msgid "Protect Unit Micro AI Demo"
+#~ msgstr "Exemplum Actorem Tuendi Parvae IA"
+
+#~ msgid "HttT: The Elves Besieged Micro AI demo"
+#~ msgstr "HR: Obsessi Dryadales; exemplum Parvae IA "
+
+#~ msgid "Messenger Escort Micro AI demo"
+#~ msgstr "Exemplum custodis nuntii Parvae IA"
+
+#~ msgid "Animals Micro AI demo"
+#~ msgstr "Exemplum animalium Parvae IA"
+
+#~ msgid "Wolves Micro AI demo"
+#~ msgstr "Exemplum luporum Parvae IA"
+
+#~ msgid "Swarm Micro AI demo"
+#~ msgstr "Exemplum examinis Parvae IA"
+
+#~ msgid "Dragon Micro AI demo"
+#~ msgstr "Exemplum draconis Parvae IA"
+
+#~ msgid "Move Grnk to one of the signposts"
+#~ msgstr "Grncum ad unum signum movere"
+
 #~| msgid "race^Bats"
 #~ msgid "Bats"
 #~ msgstr "Vespertiliones"
 
-#, fuzzy
 #~| msgid "race^Gryphon"
 #~ msgid "Place Side 1 Gryphon"
-#~ msgstr "Gryps"
+#~ msgstr "Grypem primae manus creare"
 
-#, fuzzy
+#~ msgid "Place Side 2 Bat"
+#~ msgstr "Vespertilionem secundae manus creare"
+
+#~ msgid "Kill Unit under Cursor"
+#~ msgstr "Actorem sub Cursore Interficere"
+
+#~ msgid "Defeat all bats"
+#~ msgstr "Omnes vespertiliones vincere"
+
+#~ msgid "Death of all gryphons"
+#~ msgstr "Mors omnium grypum"
+
 #~| msgid "race^Wolves"
 #~ msgid "More Wolves"
-#~ msgstr "Lupi"
+#~ msgstr "Plures Lupi"
 
-#, fuzzy
+#~ msgid "Place Side 1 Peasant"
+#~ msgstr "Rusticum primae manus creare"
+
+#~ msgid "Place Side 2 Wolf"
+#~ msgstr "Lupum secundae manus creare"
+
+#~ msgid "Place Side 3 Wolf"
+#~ msgstr "Lupum tertiae manus creare"
+
+#~ msgid "Small ai arena"
+#~ msgstr "Parva harena IA"
+
+#~ msgid "Repeat last test"
+#~ msgstr "Probationem iterare"
+
 #~| msgid "Select Scenario"
 #~ msgid "Select another ai"
-#~ msgstr "Scaenarium Eligere"
+#~ msgstr "Ai aliam legere"
+
+#~ msgid "Select another test"
+#~ msgstr "Probationem aliam legere"
 
 #, fuzzy
 #~ msgid "AI Developer"
 #~ msgstr "+  Implementor Princeps"
 
-#, fuzzy
+#~ msgid "North"
+#~ msgstr "Septentrio"
+
+#~ msgid "South"
+#~ msgstr "Auster"
+
 #~| msgid "Invalid location"
 #~ msgid "AI Location:"
-#~ msgstr "Locus Irritus"
+#~ msgstr "Locus AI:"
 
-#, fuzzy
+#~ msgid "Patrol waypoint 1"
+#~ msgstr "Prima statio circitorum"
+
+#~ msgid "Patrol waypoint 2"
+#~ msgstr "Secunda statio circitorum"
+
 #~ msgid "first"
-#~ msgstr "ictus primus"
+#~ msgstr "primus"
+
+#~ msgid "second"
+#~ msgstr "secundus"
+
+#~ msgid "third"
+#~ msgstr "tertius"
+
+#~ msgid "Bottleneck Defense Micro AI"
+#~ msgstr "Parva IA Defensionis in Angustiis"
+
+#~ msgid "Messenger Escort Micro AI"
+#~ msgstr "Parva IA Custodis Nuntii"
+
+#~ msgid "Animals Micro AI"
+#~ msgstr "Parva IA Animalium"
+
+#~ msgid "Guardian Micro AI"
+#~ msgstr "Parva IA Custodis"
+
+#~ msgid "Patrol Micro AI"
+#~ msgstr "Parva IA Circitorum"
+
+#~ msgid "Lurkers Micro AI"
+#~ msgstr "Parva IA Repentium"
+
+#~ msgid "Recruiting Micro AI"
+#~ msgstr "Parva IA Conscribendi"
 
 #~ msgid "Restore defaults"
 #~ msgstr "Solita resituere"
@@ -7362,6 +7785,9 @@ msgstr "Electiones Tabulae Commentationum"
 
 #~ msgid "race+female^Saurian"
 #~ msgstr "Lacerta"
+
+#~ msgid "race^Saurians"
+#~ msgstr "Lacertae"
 
 #~ msgid "race^Mechanical"
 #~ msgstr "Machinatio"
@@ -9147,6 +9573,10 @@ msgstr "Electiones Tabulae Commentationum"
 
 #~ msgid "Impassable"
 #~ msgstr "Impervius"
+
+#, fuzzy
+#~ msgid "General commands"
+#~ msgstr "Imperia Vulgaria"
 
 #, fuzzy
 #~ msgid ""

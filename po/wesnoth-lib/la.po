@@ -12,15 +12,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-22 22:04-0400\n"
-"PO-Revision-Date: 2012-12-19 21:21-0000\n"
+"POT-Creation-Date: 2013-05-22 22:10-0400\n"
+"PO-Revision-Date: 2013-06-20 22:38-0000\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
 "Language: la\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.5.5\n"
 
 #. [terrain_type]: id=deep_water
 #. [terrain_type]: id=deep_water_gray
@@ -611,7 +611,7 @@ msgstr "Caverna Saxosa"
 #: data/core/terrain.cfg:999 data/core/terrain.cfg:1011
 #: data/core/terrain.cfg:1023
 msgid "Mine Rail"
-msgstr "Lamina Cuniculi"
+msgstr "Lamina Fodinae"
 
 #. [terrain_type]: id=abyss
 #. [terrain_type]: id=canyon
@@ -1462,10 +1462,8 @@ msgstr "Species Appendicum:"
 
 #. [button]: id=toggle_all_displayed_types
 #: data/gui/default/window/addon_filter_options.cfg:261
-#, fuzzy
-#| msgid "Toggle Ellipses"
 msgid "Toggle All"
-msgstr "Circulos Variare"
+msgstr "Omnes Variare"
 
 #. [label]
 #: data/gui/default/window/addon_uninstall_list.cfg:51
@@ -2848,7 +2846,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:210
 msgid "Custom"
-msgstr ""
+msgstr "Propria"
 
 #: src/game_preferences_display.cpp:212
 msgid "Show unit idle animations"
@@ -3049,7 +3047,7 @@ msgstr "Hoc nomen a tabula amovere"
 
 #: src/game_preferences_display.cpp:397
 msgid "Insert a username"
-msgstr "Ascribe nominem"
+msgstr "Nomen scribere"
 
 #: src/game_preferences_display.cpp:400
 #, fuzzy
@@ -3254,7 +3252,7 @@ msgstr ""
 #: src/gui/auxiliary/window_builder/listbox.cpp:60
 #: src/gui/auxiliary/window_builder/scrollbar_panel.cpp:41
 msgid "No list defined."
-msgstr "Nulla tabula ostensa"
+msgstr "Nulla tabula ostensa."
 
 #: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:50
 #: src/gui/auxiliary/window_builder/listbox.cpp:64
@@ -3282,7 +3280,7 @@ msgstr ""
 
 #: src/gui/auxiliary/window_builder/stacked_widget.cpp:36
 msgid "No stack defined."
-msgstr "Nullus acervus ostensus"
+msgstr "Nullus acervus ostensus."
 
 #: src/gui/auxiliary/window_builder/tree_view.cpp:45
 msgid "No nodes defined for a tree view."
@@ -3323,11 +3321,11 @@ msgstr "Edita, versionem localem non sequens"
 
 #: src/gui/dialogs/addon/description.cpp:76
 msgid "addon_state^Installed ($local_version|), upgradable"
-msgstr ""
+msgstr "Imposita, ($local_version|), auctabilis"
 
 #: src/gui/dialogs/addon/description.cpp:77
 msgid "addon_state^Published ($local_version| installed), upgradable"
-msgstr ""
+msgstr "Edita ($local_version| imposita), auctabilis"
 
 #: src/gui/dialogs/addon/description.cpp:86
 msgid "addon_state^Installed ($local_version|), outdated on server"
@@ -3351,11 +3349,12 @@ msgstr "Ignota"
 
 #: src/gui/dialogs/addon/filter_options.cpp:181
 msgid "addons_view^Not Installed"
-msgstr "Non impositae"
+msgstr "Non Impositae"
 
+# neologism
 #: src/gui/dialogs/addon/filter_options.cpp:183
 msgid "addons_view^Upgradable"
-msgstr ""
+msgstr "Auctabilis"
 
 #: src/gui/dialogs/addon/filter_options.cpp:185
 msgid "addons_view^Installed"
@@ -3540,10 +3539,8 @@ msgid "Hotkey Settings"
 msgstr "Impostationes Clavium Notarum"
 
 #: src/hotkey_preferences_display.cpp:169
-#, fuzzy
-#| msgid "Default"
 msgid "Defaults"
-msgstr "Naturale"
+msgstr "Solita"
 
 #: src/hotkey_preferences_display.cpp:172
 msgid "Reset all bindings to the default values"
@@ -3933,9 +3930,9 @@ msgstr ""
 
 #: src/hotkeys.cpp:165
 #, fuzzy
-#| msgid "Switch Map"
+#| msgid "Switch Side"
 msgid "Switch Time of Day"
-msgstr "Chartam Permutare"
+msgstr "Manum Permutare"
 
 #: src/hotkeys.cpp:167
 msgid "Next Tool"
@@ -4253,9 +4250,8 @@ msgid "Enter User Command"
 msgstr "Imperium utentis dare"
 
 #: src/hotkeys.cpp:239
-#, fuzzy
 msgid "Custom Command"
-msgstr "Imperium utentis dare"
+msgstr "Mandatum Proprium"
 
 #: src/hotkeys.cpp:240
 msgid "Run Formula"
@@ -4291,9 +4287,8 @@ msgid "Start Multiplayer Game"
 msgstr "Ludum cum Pluribus Lusoribus Incipere"
 
 #: src/hotkeys.cpp:248
-#, fuzzy
 msgid "Manage Add-ons"
-msgstr "Appendices Novare"
+msgstr "Appendices Regere"
 
 #: src/hotkeys.cpp:249
 msgid "Start Editor"
@@ -4520,6 +4515,12 @@ msgid ""
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
 
+#~ msgid "Types"
+#~ msgstr "Species"
+
+#~ msgid "Variable"
+#~ msgstr "Variabile"
+
 #~ msgid "Add this username to your friends list"
 #~ msgstr "Hoc nomen tabulae amicorum addere"
 
@@ -4528,12 +4529,6 @@ msgstr ""
 
 #~ msgid "Auto-update Terrain Transitions: Yes"
 #~ msgstr "Transitiones Terrarum Sua Sponte Novare: Sane"
-
-#~ msgid "Types"
-#~ msgstr "Species"
-
-#~ msgid "Variable"
-#~ msgstr "Variabile"
 
 #~ msgid "Use new lobby interface"
 #~ msgstr "Faciei atrii novi uti "
