@@ -13,9 +13,10 @@ return {
             -- whether the goal has already been reached, in
             -- which case we do not do anything
             if cfg.release_all_units_at_goal then
-                local str = cfg.ca_id .. '-release-all'
-                if self.data[str] then
-                    return 0
+                for rel in H.child_range(self.data, "goto_release_all") do
+                    if (rel.id == cfg.ca_id) then
+                        return 0
+                    end
                 end
             end
 
@@ -33,11 +34,11 @@ return {
             -- If 'unique_goals' is set, check whether there are locations left to go to
             if cfg.unique_goals then
                 -- First, some cleanup of previous turn data
-                local str = 'goals_taken-' .. (wesnoth.current.turn - 1)
+                local str = 'goals_taken_' .. (wesnoth.current.turn - 1)
                 self.data[str] = nil
 
                 -- Now on to the current turn
-                local str = 'goals_taken-' .. wesnoth.current.turn
+                local str = 'goals_taken_' .. wesnoth.current.turn
                 for i = #locs,1,-1 do
                     if self.data[str] and self.data[str]:get(locs[i][1], locs[i][2]) then
                         table.remove(locs, i)
@@ -54,10 +55,12 @@ return {
 
             -- Exclude released units
             if cfg.release_unit_at_goal then
-                for i=#units,1,-1 do
-                    local str = cfg.ca_id .. '-release-' .. units[i].id
-                    if self.data[str] then
-                        table.remove(units, i)
+                for i_unit=#units,1,-1 do
+                    for rel in H.child_range(self.data, "goto_release_unit") do
+                        if (rel.id == cfg.ca_id .. '_' .. units[i_unit].id) then
+                           table.remove(units, i_unit)
+                           break
+                        end
                     end
                 end
             end
@@ -119,7 +122,7 @@ return {
 
             -- If 'unique_goals' is set, mark this location as being taken
             if cfg.unique_goals then
-                local str = 'goals_taken-' .. wesnoth.current.turn
+                local str = 'goals_taken_' .. wesnoth.current.turn
                 if (not self.data[str]) then self.data[str] = LS.create() end
                 self.data[str]:insert(closest_hex[1], closest_hex[2])
             end
@@ -138,17 +141,17 @@ return {
                 end
 
                 -- If a unit was found, mark either it or all units as released
+                -- Needs to be stored persistently in self.data meaning:
+                -- 1. Needs to be in WML table format
+                -- 2. Keys cannot contain certain characters -> everything potentially user-defined needs to be in values
                 if unit_at_goal then
                     if cfg.release_unit_at_goal then
-                        local str = cfg.ca_id .. '-release-' .. best_unit.id
-                        --print("Made it to goal: ", best_unit.id, str)
-                        self.data[str] = true
+                        table.insert(self.data, { "goto_release_unit" , { id = cfg.ca_id .. '_' .. best_unit.id } } )
                     end
 
                     if cfg.release_all_units_at_goal then
-                        local str = cfg.ca_id .. '-release-all'
                         --print("Releasing all units")
-                        self.data[str] = true
+                        table.insert(self.data, { "goto_release_all", { id = cfg.ca_id } } )
                     end
                 end
             end
