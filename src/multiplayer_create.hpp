@@ -27,6 +27,25 @@
 
 namespace mp {
 
+struct mp_level
+{
+public:
+	mp_level();
+
+	void reset();
+
+	void set_scenario();
+	void set_campaign();
+
+	enum TYPE { SCENARIO, CAMPAIGN };
+	TYPE get_type() const;
+
+	std::string map_data;
+
+private:
+	TYPE type;
+};
+
 class create : public mp::ui
 {
 public:
@@ -41,8 +60,8 @@ protected:
 	virtual void hide_children(bool hide=true);
 
 private:
-	boost::shared_ptr<gamemap> get_map();
-	void draw_map(const gamemap& map);
+	void get_level_image();
+	void draw_level_image();
 
 	enum SET_LEVEL {
 		GENERIC_MULTIPLAYER,
@@ -103,12 +122,16 @@ private:
 	gui::textbox description_;
 	gui::textbox filter_name_;
 
-	util::scoped_ptr<surface_restorer> minimap_restorer_;
-	SDL_Rect minimap_rect_;
+	util::scoped_ptr<surface_restorer> image_restorer_;
+	SDL_Rect image_rect_;
+
+	boost::scoped_ptr<gamemap> map_;
 
 	util::scoped_ptr<map_generator> generator_;
 
 	mp_game_settings parameters_;
+
+	mp_level mp_level_;
 
 	depcheck::manager dependency_manager_;
 };

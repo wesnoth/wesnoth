@@ -53,6 +53,36 @@ const SDL_Rect null_rect = {0, 0, 0, 0};
 
 namespace mp {
 
+mp_level::mp_level() :
+	map_data(),
+	type(SCENARIO)
+{
+}
+
+void mp_level::reset()
+{
+	map_data = "";
+}
+
+void mp_level::set_scenario()
+{
+	reset();
+
+	type = SCENARIO;
+}
+
+void mp_level::set_campaign()
+{
+	reset();
+
+	type = CAMPAIGN;
+}
+
+mp_level::TYPE mp_level::get_type() const
+{
+	return type;
+}
+
 create::create(game_display& disp, const config &cfg, chat& c, config& gamelist, bool local_players_only) :
 	ui(disp, _("Create Game"), cfg, c, gamelist),
 
@@ -89,10 +119,12 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	filter_num_players_slider_(disp.video()),
 	description_(disp.video(), 100, "", false),
 	filter_name_(disp.video(), 100, "", true),
-	minimap_restorer_(NULL),
-	minimap_rect_(null_rect),
+	image_restorer_(NULL),
+	image_rect_(null_rect),
+	map_(),
 	generator_(NULL),
 	parameters_(),
+	mp_level_(),
 	dependency_manager_(cfg, disp.video())
 {
 	filter_num_players_slider_.set_min(0);
@@ -199,6 +231,8 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	i18n_symbols["login"] = preferences::login();
 
 	gamelist_updated();
+
+	get_level_image();
 }
 
 create::~create()
@@ -249,14 +283,23 @@ void create::process_event()
 	}
 
 	if (launch_game_.pressed() || maps_menu_.double_clicked()) {
-		boost::shared_ptr<gamemap> map = get_map();
-		if (map.get() == NULL) {
-			gui2::show_transient_message(disp_.video(), "",
-				_("The map is invalid."));
-		} else {
-			set_result(CREATE);
-			return;
+		switch (mp_level_.get_type()) {
+		case mp_level::SCENARIO: {
+			if (map_.get() == NULL) {
+				gui2::show_transient_message(disp_.video(), "",
+					_("The map is invalid."));
+			} else {
+				set_result(CREATE);
+				return;
+			}
+
+			break;
 		}
+		case mp_level::CAMPAIGN: {
+			break;
+		}
+		} // end switch
+
 	}
 
 	bool era_changed = era_selection_ != eras_menu_.selection();
@@ -280,33 +323,42 @@ void create::process_event()
 	if(map_changed) {
 		generator_.assign(NULL);
 
-		tooltips::clear_tooltips(minimap_rect_);
+		tooltips::clear_tooltips(image_rect_);
 
 		const size_t select = size_t(maps_menu_.selection());
-		if (select > 0 && select <= user_maps_.size()) {
-			set_level_data(GENERIC_MULTIPLAYER, select);
-		} else if(select > user_maps_.size() &&
-			select <= maps_menu_.number_of_items() - 1) {
-			if (set_level_data(MULTIPLAYER, select)) {
-				// If the map should be randomly generated.
-				if (!parameters_.scenario_data["map_generation"].empty()) {
-					generator_.assign(create_map_generator(
-						parameters_.scenario_data["map_generation"],
-						parameters_.scenario_data.child("generator")));
-				}
 
-				if (!parameters_.scenario_data["description"].empty()) {
-					tooltips::add_tooltip(minimap_rect_,
-						parameters_.scenario_data["description"], "", false);
+		switch (mp_level_.get_type()) {
+		case mp_level::SCENARIO: {
+			if (select > 0 && select <= user_maps_.size()) {
+				set_level_data(GENERIC_MULTIPLAYER, select);
+			} else if(select > user_maps_.size() &&
+				select <= maps_menu_.number_of_items() - 1) {
+				if (set_level_data(MULTIPLAYER, select)) {
+					// If the map should be randomly generated.
+					if (!parameters_.scenario_data["map_generation"].empty()) {
+						generator_.assign(create_map_generator(
+							parameters_.scenario_data["map_generation"],
+							parameters_.scenario_data.child("generator")));
+					}
+
+					if (!parameters_.scenario_data["description"].empty()) {
+						tooltips::add_tooltip(image_rect_,
+							parameters_.scenario_data["description"], "", false);
+					}
+				}
+			} else {
+				set_level_data(SAVED_GAME, select);
+
+				if (image_restorer_ != NULL) {
+					image_restorer_->restore();
 				}
 			}
-		} else {
-			set_level_data(SAVED_GAME, select);
-
-			if (minimap_restorer_ != NULL) {
-				minimap_restorer_->restore();
-			}
+			break;
 		}
+		case mp_level::CAMPAIGN: {
+			break;
+		}
+		} // end switch
 	}
 
 	if(generator_ != NULL && generator_->allow_user_config() &&
@@ -331,38 +383,52 @@ void create::process_event()
 	if(map_changed) {
 		parameters_.hash = parameters_.scenario_data.hash();
 
-		boost::shared_ptr<gamemap> map = get_map();
-
-		generator_settings_.enable(generator_ != NULL);
-		regenerate_map_.enable(generator_ != NULL);
-		launch_game_.enable(map.get() != NULL);
-
-		// If there are less sides in the configuration than there are
-		// starting positions, then generate the additional sides
-		const int map_positions = map.get() != NULL ?
-			map->num_valid_starting_positions() : 0;
-		set_level_sides(map_positions);
+		bool enable_launch_game = false;
 
 		std::stringstream players;
 		std::stringstream map_size;
-		if(map.get() != NULL) {
-			draw_map(*map);
 
-			int nsides = 0;
-			BOOST_FOREACH(const config &k,
-				parameters_.scenario_data.child_range("side")) {
-				if (k["allow_player"].to_bool(true)) ++nsides;
+		get_level_image();
+		draw_level_image();
+
+		switch (mp_level_.get_type()) {
+		case mp_level::SCENARIO: {
+			// If there are less sides in the configuration than there are
+			// starting positions, then generate the additional sides
+			const int map_positions = map_.get() != NULL ?
+				map_->num_valid_starting_positions() : 0;
+			set_level_sides(map_positions);
+
+			if(map_.get() != NULL) {
+				int nsides = 0;
+				BOOST_FOREACH(const config &k,
+					parameters_.scenario_data.child_range("side")) {
+					if (k["allow_player"].to_bool(true)) ++nsides;
+				}
+
+				players << _("Players: ") << nsides;
+				map_size << _("Size: ") << map_.get()->w() <<
+					utils::unicode_multiplication_sign << map_.get()->h();
+			} else {
+				players << _("Error");
+				map_size << "";
 			}
 
-			players << _("Players: ") << nsides;
-			map_size << _("Size: ") << map.get()->w() <<
-				utils::unicode_multiplication_sign << map.get()->h();
-		} else {
-			players << _("Error");
-			map_size << "";
+			enable_launch_game = (map_.get() != NULL);
+
+			break;
 		}
+		case mp_level::CAMPAIGN: {
+			break;
+		}
+		} // end switch
+
 		map_size_label_.set_text(map_size.str());
 		num_players_label_.set_text(players.str());
+
+		launch_game_.enable(enable_launch_game);
+		generator_settings_.enable(generator_ != NULL);
+		regenerate_map_.enable(generator_ != NULL);
 	}
 
 	bool mod_selection_changed = mod_selection_ != mods_menu_.selection();
@@ -407,14 +473,11 @@ void create::hide_children(bool hide)
 	filter_name_.hide(hide);
 
 	if (hide) {
-		minimap_restorer_.assign(NULL);
+		image_restorer_.assign(NULL);
 	} else {
-		minimap_restorer_.assign(new surface_restorer(&video(), minimap_rect_));
+		image_restorer_.assign(new surface_restorer(&video(), image_rect_));
 
-		boost::shared_ptr<gamemap> map = get_map();
-		if(map.get() != NULL) {
-			draw_map(*map);
-		}
+		draw_level_image();
 	}
 }
 
@@ -447,7 +510,7 @@ void create::layout_children(const SDL_Rect& rect)
 	int ypos_columntop = ypos;
 
 	// First column: minimap & random map options
-	minimap_rect_ = create_rect(xpos, ypos, minimap_width, minimap_width);
+	image_rect_ = create_rect(xpos, ypos, minimap_width, minimap_width);
 	ypos += minimap_width + border_size;
 
 	num_players_label_.set_location(xpos, ypos);
@@ -542,30 +605,54 @@ void create::layout_children(const SDL_Rect& rect)
 	                          gui::ButtonHPadding, ca.y + ca.h - left_button->height());
 }
 
-boost::shared_ptr<gamemap> create::get_map()
+void create::get_level_image()
 {
-	const std::string& map_data = parameters_.scenario_data["map_data"];
+	switch (mp_level_.get_type()) {
+	case mp_level::SCENARIO: {
+		const std::string& map_data = parameters_.scenario_data["map_data"];
 
-	boost::shared_ptr<gamemap> map;
-	try {
-		map.reset(new gamemap(game_config(), map_data));
-	} catch(incorrect_map_format_error& e) {
-		ERR_CF << "map could not be loaded: " << e.message << '\n';
+		if ((mp_level_.map_data != map_data) || (mp_level_.map_data == "")) {
+			try {
+				map_.reset(new gamemap(game_config(), map_data));
+			} catch(incorrect_map_format_error& e) {
+				ERR_CF << "map could not be loaded: " << e.message << '\n';
 
-		tooltips::clear_tooltips(minimap_rect_);
-		tooltips::add_tooltip(minimap_rect_,e.message);
-	} catch(twml_exception& e) {
-		ERR_CF << "map could not be loaded: " << e.dev_message << '\n';
+				tooltips::clear_tooltips(image_rect_);
+				tooltips::add_tooltip(image_rect_,e.message);
+			} catch(twml_exception& e) {
+				ERR_CF << "map could not be loaded: " << e.dev_message << '\n';
+			}
+
+			mp_level_.map_data = map_data;
+		}
+		break;
 	}
-
-	return map;
+	case mp_level::CAMPAIGN: {
+		break;
+	}
+	} // end switch
 }
 
-void create::draw_map(const gamemap& map)
+void create::draw_level_image()
 {
-	const surface mini(image::getMinimap(minimap_rect_.w,minimap_rect_.h,map,0));
+	boost::scoped_ptr<surface> image;
+
+	switch (mp_level_.get_type()) {
+	case mp_level::SCENARIO: {
+
+		if (map_.get() != NULL) {
+			image.reset(new surface(image::getMinimap(image_rect_.w,
+				image_rect_.h, *map_, 0)));
+		}
+		break;
+	}
+	case mp_level::CAMPAIGN: {
+		break;
+	}
+	} // end switch
+
 	SDL_Color back_color = {0,0,0,255};
-	draw_centered_on_background(mini, minimap_rect_, back_color, video().getSurface());
+	draw_centered_on_background(*image, image_rect_, back_color, video().getSurface());
 }
 
 bool create::set_level_data(SET_LEVEL set_level, const int select)
