@@ -206,6 +206,8 @@ public:
 		};
 		friend std::ostream& operator<<(std::ostream &os, const yes_no &v);
 
+		/// Visitor for checking equality.
+		class equality_visitor;
 		/// Visitor for converting a variant to a string.
 		class string_visitor;
 

@@ -358,14 +358,32 @@ bool config::attribute_value::empty() const
 }
 
 
+/// Visitor handling equality checks.
+class config::attribute_value::equality_visitor
+	: public boost::static_visitor<bool>
+{
+public:
+	// Most generic: not equal.
+	template <typename T, typename U>
+	bool operator()(const T &, const U &) const { return false; }
+
+	// Same types are comparable and might be equal.
+	template <typename T>
+	bool operator()(const T & lhs, const T & rhs) const { return lhs == rhs; }
+
+	// Boolean values can be compared.
+	bool operator()(const true_false & lhs, const yes_no & rhs) const { return bool(lhs) == bool(rhs); }
+	bool operator()(const yes_no & lhs, const true_false & rhs) const { return bool(lhs) == bool(rhs); }
+};
+
 /**
  * Checks for equality of the attribute values when viewed as strings.
- * One exception: blanks only equal other blanks, even though their string
- * representation is "".
+ * Exception: Boolean synonyms can be equal ("yes" == "true").
+ * Note: Blanks have no string representation, so do not equal "" (an empty string).
  */
 bool config::attribute_value::operator==(const config::attribute_value &other) const
 {
-	return value_ == other.value_;
+	return boost::apply_visitor(equality_visitor(), value_, other.value_);
 }
 
 std::ostream &operator<<(std::ostream &os, const config::attribute_value &v)
