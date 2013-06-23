@@ -228,22 +228,12 @@ void carryover::transfer_all_recalls_to(config& side_cfg){
 }
 
 std::string carryover::get_recruits(bool erase){
-	std::stringstream can_recruit;
-	for(std::set<std::string>::iterator i = previous_recruits_.begin()
-			; i != previous_recruits_.end()
-			; ){
-		can_recruit << *i << ",";
-		if(erase){
-			previous_recruits_.erase(i++);
-		} else {
-			++i;
-		}
-	}
-	std::string can_recruit_str = can_recruit.str();
-	// Remove the trailing comma
-	if(can_recruit_str.empty() == false) {
-		can_recruit_str.resize(can_recruit_str.size()-1);
-	}
+	// Join the previous recruits into a string.
+	std::string can_recruit_str = utils::join(previous_recruits_);
+	if ( erase )
+		// Clear the previous recruits.
+		previous_recruits_.clear();
+
 	return can_recruit_str;
 }
 
