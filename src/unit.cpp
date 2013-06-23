@@ -2639,7 +2639,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 			}
 		}
 		if ( set_poisoned )
-			// An effect explictly set the poisoned state, and this
+			// An effect explicitly set the poisoned state, and this
 			// should override the unit being immune to poison.
 			set_state(STATE_POISONED, true);
 	}
