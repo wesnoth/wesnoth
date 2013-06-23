@@ -1933,7 +1933,8 @@ void unit::redraw_unit()
 	surface ellipse_front(NULL);
 	surface ellipse_back(NULL);
 	int ellipse_floating = 0;
-	if(draw_bars && preferences::show_side_colors()) {
+	// Always show the ellipse for selected units
+	if(draw_bars && (preferences::show_side_colors() || disp.selected_hex() == loc_)) {
 		if(adjusted_params.submerge > 0.0) {
 			// The division by 2 seems to have no real meaning,
 			// It just works fine with the current center of ellipse
