@@ -131,8 +131,8 @@ private:
 /**
  * Use this logger to send errors due to deprecated WML.
  * The preferred format is:
- * xxx is deprecated, support will be removed in version X. or
- * xxx is deprecated, support has been removed in version X.
+ * xxx is deprecated; support will be removed in version X. or
+ * xxx is deprecated; support has been removed in version X.
  *
  * After every wml-event the errors are shown to the user,
  * so they can inform the campaign maintainer.
