@@ -9,15 +9,14 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2013-05-22 21:54-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2013-06-23 01:15-0000\n"
+"Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: la\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"#-#-#-#-#  wesnoth-ai.cpp.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth-ai.wml.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"X-Generator: Poedit 1.5.5\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:5
@@ -34,7 +33,7 @@ msgstr "IA Experimentalis"
 #. [ai]: id=testing_ai_recruitment
 #: data/ai/dev/akihara_recruitment.cfg:6 data/ai/dev/testing_recruiting.cfg:5
 msgid "Experimental Recruitment AI"
-msgstr ""
+msgstr "IA Conscribeni Experimentalis"
 
 #. [ai]: id=formula_ai # id is needed to uniquely identify a MP AI, it is not needed in the scenario AI
 #: data/ai/dev/formula_ai.cfg:4
@@ -51,7 +50,7 @@ msgstr ""
 #: data/ai/dev/idle_ai.cfg:4
 #: data/ai/scenarios/scenario-test_move_to_targets.cfg:60
 msgid "Idle AI"
-msgstr ""
+msgstr "IA Otiosa"
 
 #. [lua]: init
 #: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6960
@@ -109,12 +108,12 @@ msgstr ""
 #. [lua]: init
 #: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6986
 msgid "Enemy unit weight  (default: 100)"
-msgstr ""
+msgstr "Pondus hostis (solitum: C)"
 
 #. [lua]: init
 #: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6994
 msgid "My unit weight  (default: 1)"
-msgstr ""
+msgstr "Pondus actoris mei  (solitum: I)"
 
 #. [lua]: init
 #: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:7002
@@ -129,14 +128,14 @@ msgstr ""
 #. [test]: id=The_Elves_Besieged
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:5
 msgid "The Elves Besieged"
-msgstr ""
+msgstr "Obsessi Dryadales"
 
 #. [side]: type=Spearman, id=Konrad
 #. [unit]: type=Spearman, id=Konrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:34
 #: data/ai/micro_ais/scenarios/patrols.cfg:94
 msgid "Konrad"
-msgstr ""
+msgstr "Conradus"
 
 #. [side]: type=Elvish Champion, id=Galdrad
 #. [side]: type=Elvish Shyde, id=Chantal
@@ -145,17 +144,17 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:156
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:176
 msgid "Rebels"
-msgstr ""
+msgstr "Rebelles"
 
 #. [unit]: id=Delfador, type=Elder Mage
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:49
 msgid "Delfador"
-msgstr ""
+msgstr "Delfador"
 
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:90
 msgid "Urug-Telfar"
-msgstr ""
+msgstr "Urug Telfar"
 
 #. [side]: id=Vanak, type=Orcish Ruler
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
@@ -171,34 +170,34 @@ msgstr "Orci"
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:109
 msgid "Knafa-Tan"
-msgstr ""
+msgstr "Gnafa-Tan"
 
 #. [side]: type=Orcish Warlord, id=Maga-Knafa
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:127
 msgid "Maga-Knafa"
-msgstr ""
+msgstr "Maga Gnafa"
 
 #. [side]: type=Elvish Champion, id=Galdrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:146
 msgid "Galdrad"
-msgstr ""
+msgstr "Galdradis"
 
 #. [side]: type=Elvish Shyde, id=Chantal
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:163
 msgid "Chantal"
-msgstr ""
+msgstr "Chantala"
 
 #. [message]: speaker=Konrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:213
 msgid ""
 "Master Delfador! Look, there are orcs coming from all directions! What shall "
 "we do?"
-msgstr ""
+msgstr "Delfador domine! Ecce, orces undique adveniunt! Quid faciemus?"
 
 #. [message]: speaker=Delfador
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:217
 msgid "There are too many to fight, far too many. We must escape!"
-msgstr ""
+msgstr "Nimis multi pro pugnanti, valde nimis sunt. Debemus effugere!"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:220
@@ -213,12 +212,12 @@ msgstr ""
 #. [event]
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:226
 msgid "Move Konrad here"
-msgstr ""
+msgstr "Conradum huc movere"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:242
 msgid "Very well, we have made it this far! But where do we go next?"
-msgstr ""
+msgstr "Fiat, adhuc ivimus! Sed quo deinde eamus?"
 
 #. [message]: speaker=Delfador
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:246
@@ -230,38 +229,38 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:271
 msgid "I... I don’t think I can make it anymore."
-msgstr ""
+msgstr "Non... non puto me iam superesse."
 
 #. [message]: speaker=Delfador
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:275
 msgid "Prince... you must keep fighting! Nooooooo!"
-msgstr ""
+msgstr "Regule... opus est certamine pergere! Hauuuuu!"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:279
 msgid "It is over. I am doomed..."
-msgstr ""
+msgstr "Finit. ruor..."
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:293
 msgid "I have... have failed in my duty to protect the prince! I am defeated."
-msgstr ""
+msgstr "Defui... defui officio praesidii reguli! Victus sum."
 
 #. [message]: speaker=Konrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:297
 msgid "Don’t die, Delfador! Please, you have to stay alive!"
-msgstr ""
+msgstr "Noli mori, Delfador! Amabo, necesse est vivere!"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:301
 msgid "Ugh!"
-msgstr ""
+msgstr "Heu!"
 
 #. [message]: speaker=Delfador
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:312
 msgid ""
 "Oh, no! We have run out of time, they have arrived with reinforcements..."
-msgstr ""
+msgstr "Vae nobis! Tempus exit et cum copiis novis rediti sunt..."
 
 #: data/ai/micro_ais/scenarios/animals.cfg:4
 msgid ""
@@ -329,12 +328,12 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/animals.cfg:27
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:44
 msgid "Animals"
-msgstr ""
+msgstr "Animales"
 
 #. [side]: id=Rutburt, type=Outlaw
 #: data/ai/micro_ais/scenarios/animals.cfg:40
 msgid "Rutburt"
-msgstr ""
+msgstr "Rutburtus"
 
 #. [side]: id=Rutburt, type=Outlaw
 #. [side]: type=General, id=leader2
@@ -346,27 +345,27 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/goto.cfg:115
 #: data/ai/micro_ais/scenarios/wolves.cfg:26
 msgid "Humans"
-msgstr ""
+msgstr "Homines"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:61
 msgid "Forest Creatures"
-msgstr ""
+msgstr "Animales Silvestres"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:76
 msgid "Ghasts"
-msgstr ""
+msgstr "Abominamenta"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:91
 msgid "Spiders"
-msgstr ""
+msgstr "Araneae"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:106
 msgid "Yetis"
-msgstr ""
+msgstr "Simii Nivis"
 
 #. [event]
 #. [side]
@@ -375,12 +374,12 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:47
 #: data/ai/micro_ais/scenarios/wolves.cfg:5
 msgid "Wolves"
-msgstr ""
+msgstr "Lupi"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:136
 msgid "Whelps"
-msgstr ""
+msgstr "Catuli"
 
 #. [set_menu_item]: id=m01_end_animals
 #. [set_menu_item]: id=m01_end_swarm
@@ -391,7 +390,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/swarm.cfg:67
 #: data/ai/micro_ais/scenarios/wolves.cfg:96
 msgid "End scenario"
-msgstr ""
+msgstr "Scaenarium finire"
 
 #. [command]
 #. [then]
@@ -431,7 +430,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/protect-unit.cfg:136
 #: data/ai/micro_ais/scenarios/wolves.cfg:199
 msgid "Question for the Player"
-msgstr ""
+msgstr "Quaestio Lusoris"
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/animals.cfg:361
@@ -480,7 +479,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/animals.cfg:393
 #: data/ai/micro_ais/scenarios/wolves.cfg:238
 msgid "Death of Rutburt"
-msgstr ""
+msgstr "Mors Rutburti"
 
 #. [note]
 #: data/ai/micro_ais/scenarios/animals.cfg:397
@@ -501,12 +500,12 @@ msgstr ""
 #. [test]: id=bottleneck-defense
 #: data/ai/micro_ais/scenarios/bottleneck-defense.cfg:5
 msgid "Bottleneck Defense"
-msgstr ""
+msgstr "Defensio in Angustiis"
 
 #. [side]: type=Orcish Leader, id=Big Bad Orc
 #: data/ai/micro_ais/scenarios/bottleneck-defense.cfg:38
 msgid "Big Bad Orc"
-msgstr ""
+msgstr "Magnus Orx Malus"
 
 #. [event]: (id=Big Bad Orc) profile profile}
 #: data/ai/micro_ais/scenarios/bottleneck-defense.cfg:85
@@ -563,17 +562,17 @@ msgstr ""
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/bottleneck-defense.cfg:117
 msgid "Defeat all humans"
-msgstr ""
+msgstr "Omnes humanos vincere"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/bottleneck-defense.cfg:121
 msgid "Death of Big Bad Orc"
-msgstr ""
+msgstr "Mors Magni Orcis Mali"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/bottleneck-defense.cfg:125
 msgid "Only one orc remains"
-msgstr ""
+msgstr "Tantum unus orx manet"
 
 #. [then]
 #: data/ai/micro_ais/scenarios/bottleneck-defense.cfg:150
@@ -586,17 +585,17 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/dragon.cfg:5
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:53
 msgid "Dragon"
-msgstr ""
+msgstr "Draco"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/dragon.cfg:20
 msgid "team_name^Rowck"
-msgstr ""
+msgstr "Raux"
 
 #. [side]: type=Dread Bat, id=Dreadful Bat
 #: data/ai/micro_ais/scenarios/dragon.cfg:33
 msgid "Dreadful Bat"
-msgstr ""
+msgstr "Vespertilio Terribilis"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/dragon.cfg:48
@@ -609,12 +608,12 @@ msgstr "Scaenarium Finire"
 #. [event]
 #: data/ai/micro_ais/scenarios/dragon.cfg:51
 msgid "Rowck's Home"
-msgstr ""
+msgstr "Domus Raucis"
 
 #. [unit]: id=Rowck, type=Fire Dragon
 #: data/ai/micro_ais/scenarios/dragon.cfg:55
 msgid "Rowck"
-msgstr ""
+msgstr "Raux"
 
 #. [event]: (id=Dreadful Bat) profile profile}
 #: data/ai/micro_ais/scenarios/dragon.cfg:84
@@ -652,17 +651,17 @@ msgstr ""
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/dragon.cfg:101
 msgid "Defeat Rowck"
-msgstr ""
+msgstr "Raucem vincere"
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/dragon.cfg:105
 msgid "Move the lead bat to the signpost"
-msgstr ""
+msgstr "Vespertilionem ducem ad signum movere"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/dragon.cfg:109
 msgid "Death of the bat leader"
-msgstr ""
+msgstr "Mors ducis vespertilionum"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/dragon.cfg:142
@@ -679,47 +678,47 @@ msgstr ""
 #. [side]: id=Vaddan, type=Outlaw
 #: data/ai/micro_ais/scenarios/goto.cfg:24
 msgid "Vaddan"
-msgstr ""
+msgstr "Vaddanus"
 
 #. [side]: type=Poacher, id=leader3
 #: data/ai/micro_ais/scenarios/goto.cfg:59
 msgid "Woodsmen"
-msgstr ""
+msgstr "Lignatores"
 
 #. [side]: type=Saurian Flanker, id=leader4
 #: data/ai/micro_ais/scenarios/goto.cfg:77
 msgid "Saurians"
-msgstr ""
+msgstr "Lacertae"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/goto.cfg:132
 msgid "team_name^Animals"
-msgstr ""
+msgstr "Animales"
 
 #. [event]: id=guard1}, id=guard2}, (id,name=fort_commander,Aethubry)}
 #: data/ai/micro_ais/scenarios/goto.cfg:181
 msgid "General Minry"
-msgstr ""
+msgstr "Legatus Minirius"
 
 #. [event]: id=guard1}, id=guard2}, (id,name=fort_commander,Aethubry)}
 #: data/ai/micro_ais/scenarios/goto.cfg:182
 msgid "Lieutenant Gadoc"
-msgstr ""
+msgstr "Optio Gadocus"
 
 #. [event]: id=guard1}, id=guard2}, (id,name=fort_commander,Aethubry)}
 #: data/ai/micro_ais/scenarios/goto.cfg:183
 msgid "Lieutenant Senvan"
-msgstr ""
+msgstr "Optio Senuanus"
 
 #. [event]: id=guard1}, id=guard2}, (id,name=fort_commander,Aethubry)}
 #: data/ai/micro_ais/scenarios/goto.cfg:184
 msgid "Sergeant Aethubry"
-msgstr ""
+msgstr "Centurio Aethibrius"
 
 #. [set_menu_item]: id=m01_new_footpad
 #: data/ai/micro_ais/scenarios/goto.cfg:325
 msgid "Place Side 1 Footpad"
-msgstr ""
+msgstr "Grassatorem primae manus creare"
 
 #. [set_menu_item]: id=m02_kill_unit
 #. [set_menu_item]: id=m05_kill_unit
@@ -727,7 +726,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/swarm.cfg:114
 #: data/ai/micro_ais/scenarios/wolves.cfg:154
 msgid "Kill Unit under Cursor"
-msgstr ""
+msgstr "Actorem sub Cursore Interficere"
 
 #. [set_menu_item]: id=m03_null_control
 #: data/ai/micro_ais/scenarios/goto.cfg:349
@@ -760,7 +759,7 @@ msgstr ""
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/goto.cfg:411
 msgid "Death of Vaddan"
-msgstr ""
+msgstr "Mors Vaddani"
 
 #. [message]: speaker=messenger1
 #: data/ai/micro_ais/scenarios/goto.cfg:426
@@ -909,55 +908,56 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/guardians.cfg:17
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:56
 msgid "Guardians"
-msgstr ""
+msgstr "Custodes"
 
 #. [side]: id=Kraa, type=Gryphon
 #: data/ai/micro_ais/scenarios/guardians.cfg:30
 #: data/ai/micro_ais/scenarios/swarm.cfg:18
 msgid "Kraa"
-msgstr ""
+msgstr "Kra"
 
 #. [side]: id=Kraa, type=Gryphon
 #: data/ai/micro_ais/scenarios/guardians.cfg:36
 #: data/ai/micro_ais/scenarios/swarm.cfg:26
 msgid "Gryphons"
-msgstr ""
+msgstr "Grypes"
 
 #. [side]: type=Orcish Leader, id=Another Bad Orc
 #: data/ai/micro_ais/scenarios/guardians.cfg:48
 msgid "Another Bad Orc"
-msgstr ""
+msgstr "Alius Orx Malus"
 
 #. [unit]: type=Dwarvish Guardsman, id=guardian1
 #: data/ai/micro_ais/scenarios/guardians.cfg:95
 msgid "Guardian 1"
-msgstr ""
+msgstr "Primus Custos"
 
 #. [variables]
 #: data/ai/micro_ais/scenarios/guardians.cfg:99
 #: data/ai/micro_ais/scenarios/guardians.cfg:110
 msgid "ai_special=guardian"
-msgstr ""
+msgstr "ai_special=guardian"
 
 #. [unit]: type=Dwarvish Guardsman, id=guardian2
 #: data/ai/micro_ais/scenarios/guardians.cfg:106
 msgid "Guardian 2"
-msgstr ""
+msgstr "Secundus Custos"
 
+# ignavus is now a substantive, hahaha.
 #. [unit]: type=Giant Rat, id=coward1
 #: data/ai/micro_ais/scenarios/guardians.cfg:119
 msgid "Coward 1"
-msgstr ""
+msgstr "Primus Ignavus"
 
 #. [variables]
 #: data/ai/micro_ais/scenarios/guardians.cfg:125
 msgid "coward r=5"
-msgstr ""
+msgstr "coward r=5"
 
 #. [unit]: type=Giant Rat, id=coward2
 #: data/ai/micro_ais/scenarios/guardians.cfg:142
 msgid "Coward 2"
-msgstr ""
+msgstr "Secundus Ignavus"
 
 #. [variables]
 #: data/ai/micro_ais/scenarios/guardians.cfg:148
@@ -965,11 +965,13 @@ msgid ""
 "coward r=5\n"
 "    s=24 5"
 msgstr ""
+"coward r=5\n"
+"    s=24 5"
 
 #. [unit]: type=Giant Rat, id=coward3
 #: data/ai/micro_ais/scenarios/guardians.cfg:167
 msgid "Coward 3"
-msgstr ""
+msgstr "Tertius Ignavus"
 
 #. [variables]
 #: data/ai/micro_ais/scenarios/guardians.cfg:173
@@ -977,11 +979,13 @@ msgid ""
 "   coward r=5\n"
 " s=24,5 a=24,15"
 msgstr ""
+"   coward r=5\n"
+" s=24,5 a=24,15"
 
 #. [unit]: type=Giant Rat, id=coward4
 #: data/ai/micro_ais/scenarios/guardians.cfg:193
 msgid "Coward 4"
-msgstr ""
+msgstr "Quartus Ignavus"
 
 #. [variables]
 #: data/ai/micro_ais/scenarios/guardians.cfg:199
@@ -989,6 +993,8 @@ msgid ""
 "coward r=5\n"
 "    s=32,--"
 msgstr ""
+"coward r=5\n"
+"    s=32,--"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/guardians.cfg:214
@@ -998,47 +1004,47 @@ msgstr ""
 #. [unit]: type=Troll, id=return1
 #: data/ai/micro_ais/scenarios/guardians.cfg:223
 msgid "Return Guardian 1"
-msgstr ""
+msgstr "Custos Rediturus I"
 
 #. [variables]
 #: data/ai/micro_ais/scenarios/guardians.cfg:226
 msgid "return 20,2"
-msgstr ""
+msgstr "return 20,2"
 
 #. [unit]: type=Troll Whelp, id=return2
 #: data/ai/micro_ais/scenarios/guardians.cfg:243
 msgid "Return Guardian 2"
-msgstr ""
+msgstr "Custos Rediturus II"
 
 #. [variables]
 #: data/ai/micro_ais/scenarios/guardians.cfg:246
 msgid "return 21,9"
-msgstr ""
+msgstr "return 21,9"
 
 #. [unit]: type=Troll Whelp, id=home1
 #: data/ai/micro_ais/scenarios/guardians.cfg:264
 msgid "Home Guard 1"
-msgstr ""
+msgstr "Custos Domus I"
 
 #. [variables]
 #: data/ai/micro_ais/scenarios/guardians.cfg:267
 msgid "home 19,2"
-msgstr ""
+msgstr "home 19,2"
 
 #. [unit]: type=Troll, id=home 2
 #: data/ai/micro_ais/scenarios/guardians.cfg:276
 msgid "Home Guard 2"
-msgstr ""
+msgstr "Custos Domus II"
 
 #. [variables]
 #: data/ai/micro_ais/scenarios/guardians.cfg:279
 msgid "home 21,10"
-msgstr ""
+msgstr "home 21,10"
 
 #. [unit]: type=Skeleton Archer, id=stationed1
 #: data/ai/micro_ais/scenarios/guardians.cfg:289
 msgid "Stationed Guardian 1"
-msgstr ""
+msgstr "Custos Locatus I"
 
 #. [variables]
 #: data/ai/micro_ais/scenarios/guardians.cfg:292
@@ -1046,11 +1052,13 @@ msgid ""
 " stationed r=4\n"
 "s=2,14 g=3,13"
 msgstr ""
+" stationed r=4\n"
+"s=2,14 g=3,13"
 
 #. [unit]: type=Skeleton, id=stationed2
 #: data/ai/micro_ais/scenarios/guardians.cfg:312
 msgid "Stationed Guardian 2"
-msgstr ""
+msgstr "Custos Locatus II"
 
 #. [variables]
 #: data/ai/micro_ais/scenarios/guardians.cfg:315
@@ -1058,22 +1066,24 @@ msgid ""
 " stationed r=4\n"
 "s=4,14 g=7,13"
 msgstr ""
+" stationed r=4\n"
+"s=4,14 g=7,13"
 
 #. [unit]: type=Troll, id=zone1
 #: data/ai/micro_ais/scenarios/guardians.cfg:336
 msgid "Gate Keeper"
-msgstr ""
+msgstr "Custos Portae"
 
 #. [variables]
 #: data/ai/micro_ais/scenarios/guardians.cfg:342
 #: data/ai/micro_ais/scenarios/guardians.cfg:395
 msgid "Zone Guard"
-msgstr ""
+msgstr "Custos Loci"
 
 #. [unit]: type=Dwarvish Guardsman, id=zone2
 #: data/ai/micro_ais/scenarios/guardians.cfg:362
 msgid "Home Keeper"
-msgstr ""
+msgstr "Vigil Domus"
 
 #. [variables]
 #: data/ai/micro_ais/scenarios/guardians.cfg:368
@@ -1081,33 +1091,35 @@ msgid ""
 "Zone Guard with\n"
 "separate attack Zone"
 msgstr ""
+"Custos Spatii cum\n"
+"spatio impetus suo"
 
 #. [unit]: type=Naga Fighter, id=zone3
 #: data/ai/micro_ais/scenarios/guardians.cfg:392
 msgid "Water Guardian"
-msgstr ""
+msgstr "Custos Aquae"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/guardians.cfg:411
 msgid "Guarded Location"
-msgstr ""
+msgstr "Locus Custoditus"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/guardians.cfg:412
 msgid "Station 1"
-msgstr ""
+msgstr "Prima Statio"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/guardians.cfg:413
 msgid "Station 2"
-msgstr ""
+msgstr "Secunda Statio"
 
 #. [command]
 #. [set_menu_item]: id=m01_guardian
 #: data/ai/micro_ais/scenarios/guardians.cfg:431
 #: data/ai/micro_ais/scenarios/guardians.cfg:437
 msgid "Standard WML Guardian"
-msgstr ""
+msgstr "Custos VML Solitus"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/guardians.cfg:437
@@ -1122,7 +1134,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/guardians.cfg:442
 #: data/ai/micro_ais/scenarios/guardians.cfg:448
 msgid "Return Guardian"
-msgstr ""
+msgstr "Custos Rediturus"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/guardians.cfg:448
@@ -1144,7 +1156,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/guardians.cfg:458
 #: data/ai/micro_ais/scenarios/guardians.cfg:464
 msgid "Home Guard"
-msgstr ""
+msgstr "Custos Domus"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/guardians.cfg:464
@@ -1169,7 +1181,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/guardians.cfg:470
 #: data/ai/micro_ais/scenarios/guardians.cfg:476
 msgid "Stationed Guardian"
-msgstr ""
+msgstr "Custos Locatus"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/guardians.cfg:476
@@ -1195,7 +1207,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/guardians.cfg:487
 #: data/ai/micro_ais/scenarios/guardians.cfg:493
 msgid "Coward"
-msgstr ""
+msgstr "Ignavus"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/guardians.cfg:493
@@ -1221,7 +1233,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/guardians.cfg:502
 #: data/ai/micro_ais/scenarios/guardians.cfg:508
 msgid "Zone Guardian"
-msgstr ""
+msgstr "Custos Loci"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/guardians.cfg:508
@@ -1239,7 +1251,7 @@ msgstr ""
 #. [event]: id=Kraa profile profile}
 #: data/ai/micro_ais/scenarios/guardians.cfg:519
 msgid "Kraahhh!!!!"
-msgstr ""
+msgstr "Kraahhh!!!!"
 
 #. [event]: id=Kraa profile profile}
 #: data/ai/micro_ais/scenarios/guardians.cfg:522
@@ -1266,17 +1278,17 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/guardians.cfg:533
 #: data/ai/micro_ais/scenarios/patrols.cfg:211
 msgid "Defeat all enemy units"
-msgstr ""
+msgstr "Omnes hoses vincere"
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/guardians.cfg:537
 msgid "Move Kraa to the signpost"
-msgstr ""
+msgstr "Kram ad signum movere"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/guardians.cfg:541
 msgid "Death of Kraa"
-msgstr ""
+msgstr "Mors Krae"
 
 #. [note]
 #: data/ai/micro_ais/scenarios/guardians.cfg:545
@@ -1293,17 +1305,17 @@ msgstr ""
 #. [test]: id=healer_support
 #: data/ai/micro_ais/scenarios/healer_support.cfg:5
 msgid "Healer Support"
-msgstr ""
+msgstr "Auxilium Sanatorum"
 
 #. [side]: id=Rebels1, type=Elvish Ranger
 #: data/ai/micro_ais/scenarios/healer_support.cfg:21
 msgid "Rebels 1"
-msgstr ""
+msgstr "Primi Rebelles"
 
 #. [side]: id=Rebels2, type=Elvish Marksman
 #: data/ai/micro_ais/scenarios/healer_support.cfg:37
 msgid "Rebels 2"
-msgstr ""
+msgstr "Secundi Rebelles"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/healer_support.cfg:83
@@ -1333,37 +1345,37 @@ msgstr ""
 #. [test]: id=lurkers
 #: data/ai/micro_ais/scenarios/lurkers.cfg:172
 msgid "Lurkers of the Swamp"
-msgstr ""
+msgstr "Repentes in Paludine"
 
 #. [side]: id=Pekzs, type=Saurian Soothsayer
 #: data/ai/micro_ais/scenarios/lurkers.cfg:185
 msgid "Pekzs"
-msgstr ""
+msgstr "Pekzs"
 
 #. [side]: id=Pekzs, type=Saurian Soothsayer
 #: data/ai/micro_ais/scenarios/lurkers.cfg:191
 msgid "team_name^Pekzs"
-msgstr ""
+msgstr "Pekzs"
 
 #. [side]: type=Saurian Oracle
 #: data/ai/micro_ais/scenarios/lurkers.cfg:207
 msgid "Micro AI Lurkers (saurians, stationary)"
-msgstr ""
+msgstr "Repentes IA (lacertae ambulatoriae)"
 
 #. [side]: type=Saurian Oracle
 #: data/ai/micro_ais/scenarios/lurkers.cfg:224
 msgid "Micro AI Lurkers (saurians, wanderers)"
-msgstr ""
+msgstr "Repentes IA (lacertae sedentariae)"
 
 #. [side]: type=Naga Warrior
 #: data/ai/micro_ais/scenarios/lurkers.cfg:241
 msgid "Micro AI Lurkers (nagas)"
-msgstr ""
+msgstr "Repentes IA (hydrades)"
 
 #. [side]: type=Saurian Oracle
 #: data/ai/micro_ais/scenarios/lurkers.cfg:258
 msgid "WML Lurkers (saurians)"
-msgstr ""
+msgstr "Repentes VML (lacertae)"
 
 #. [side]: type=Saurian Oracle
 #: data/ai/micro_ais/scenarios/lurkers.cfg:274
@@ -1373,27 +1385,27 @@ msgstr ""
 #. [set_menu_item]: id=m01_menu_lurker2
 #: data/ai/micro_ais/scenarios/lurkers.cfg:373
 msgid "Place a Side 2 lurker"
-msgstr ""
+msgstr "Repentem secundae manus creare"
 
 #. [set_menu_item]: id=m01_menu_lurker3
 #: data/ai/micro_ais/scenarios/lurkers.cfg:385
 msgid "Place a Side 3 lurker"
-msgstr ""
+msgstr "Repentem tertiae manus creare"
 
 #. [set_menu_item]: id=m01_menu_lurker4
 #: data/ai/micro_ais/scenarios/lurkers.cfg:397
 msgid "Place a Side 4 lurker"
-msgstr ""
+msgstr "Repentem quartae manus creare"
 
 #. [set_menu_item]: id=m01_menu_lurker5
 #: data/ai/micro_ais/scenarios/lurkers.cfg:409
 msgid "Place a Side 5 lurker"
-msgstr ""
+msgstr "Repentem quintae manus creare"
 
 #. [set_menu_item]: id=m01_menu_lurker6
 #: data/ai/micro_ais/scenarios/lurkers.cfg:421
 msgid "Place a Side 6 lurker"
-msgstr ""
+msgstr "Repentem sextae manus creare"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/lurkers.cfg:436
@@ -1434,7 +1446,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/messenger-escort.cfg:140
 #: data/ai/micro_ais/scenarios/patrols.cfg:195
 msgid "Notes"
-msgstr ""
+msgstr "Addenda"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/lurkers.cfg:451
@@ -1458,17 +1470,17 @@ msgstr ""
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/lurkers.cfg:462
 msgid "Defeat all lurkers"
-msgstr ""
+msgstr "Omnes repentes vincere"
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/lurkers.cfg:466
 msgid "Move Pekzs to the signpost"
-msgstr ""
+msgstr "Pekzs ad signum movere"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/lurkers.cfg:470
 msgid "Death of Pekzs"
-msgstr ""
+msgstr "Mors Pekzs"
 
 #. [note]
 #: data/ai/micro_ais/scenarios/lurkers.cfg:474
@@ -1485,12 +1497,12 @@ msgstr ""
 #. [test]: id=messenger-escort
 #: data/ai/micro_ais/scenarios/messenger-escort.cfg:5
 msgid "Messenger Escort"
-msgstr ""
+msgstr "Custos Nuntii"
 
 #. [side]: id=Vanak, type=Orcish Ruler
 #: data/ai/micro_ais/scenarios/messenger-escort.cfg:17
 msgid "Vanak"
-msgstr ""
+msgstr "Vanacus"
 
 #. [event]
 #. [side]
@@ -1499,27 +1511,27 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/messenger-escort.cfg:72
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:71
 msgid "Messenger"
-msgstr ""
+msgstr "Nuntius"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/messenger-escort.cfg:122
 msgid "Messanger Waypoint 1"
-msgstr ""
+msgstr "Prima statio nuntii"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/messenger-escort.cfg:124
 msgid "Messenger Waypoint 2"
-msgstr ""
+msgstr "Secunda statio nuntii"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/messenger-escort.cfg:126
 msgid "Messenger Waypoint 3"
-msgstr ""
+msgstr "Tertia statio nuntii"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/messenger-escort.cfg:129
 msgid "AI moves Messenger here"
-msgstr ""
+msgstr "IA nuntium huc movere"
 
 #. [event]: id=Vanak profile profile}
 #: data/ai/micro_ais/scenarios/messenger-escort.cfg:138
@@ -1552,17 +1564,17 @@ msgstr ""
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/messenger-escort.cfg:152
 msgid "Defeat the messenger"
-msgstr ""
+msgstr "Nuntium vincere "
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/messenger-escort.cfg:156
 msgid "Messenger gets to the signpost"
-msgstr ""
+msgstr "Nuntius signum attingere"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/messenger-escort.cfg:160
 msgid "Death of Vanak"
-msgstr ""
+msgstr "Mors Vanaci"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/messenger-escort.cfg:174
@@ -1579,72 +1591,72 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/patrols.cfg:5
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:74
 msgid "Patrols"
-msgstr ""
+msgstr "Circitores"
 
 #. [side]: id=Gertburt, type=Outlaw
 #: data/ai/micro_ais/scenarios/patrols.cfg:18
 msgid "Gertburt"
-msgstr ""
+msgstr "Gertburtus"
 
 #. [side]: id=Gertburt, type=Outlaw
 #: data/ai/micro_ais/scenarios/patrols.cfg:26
 msgid "Bandits"
-msgstr ""
+msgstr "Latrones"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/patrols.cfg:40
 msgid "team_name^Konrad"
-msgstr ""
+msgstr "Conradus"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/patrols.cfg:56
 msgid "team_name^Urudin"
-msgstr ""
+msgstr "Urudinus"
 
 #. [unit]: type=Orcish Slayer, id=Urudin
 #: data/ai/micro_ais/scenarios/patrols.cfg:116
 msgid "Urudin"
-msgstr ""
+msgstr "Urudinus"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:159
 msgid "Konrad Waypoint 1"
-msgstr ""
+msgstr "Prima statio Conradi"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:161
 msgid "Konrad Waypoint 2"
-msgstr ""
+msgstr "Secunda statio Conradi"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:163
 msgid "Konrad Final Waypoint"
-msgstr ""
+msgstr "Ultima statio Conradi"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:166
 msgid "Patrol Waypoint 1"
-msgstr ""
+msgstr "Prima statio circitorum"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:168
 msgid "Patrol Waypoint 2"
-msgstr ""
+msgstr "Secunda statio circitorum"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:170
 msgid "Patrol Waypoint 3"
-msgstr ""
+msgstr "Tertia statio circitorum"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:172
 msgid "Patrol Waypoint 4"
-msgstr ""
+msgstr "Quarta statio circitorum"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:175
 msgid "Urudin retreats here"
-msgstr ""
+msgstr "Urudinus pedem huc referre"
 
 #. [event]: id=Konrad profile profile}
 #: data/ai/micro_ais/scenarios/patrols.cfg:183
@@ -1707,12 +1719,12 @@ msgstr ""
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/patrols.cfg:215
 msgid "Move Gertburt to the signpost"
-msgstr ""
+msgstr "Gertburtum ad signum movere"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/patrols.cfg:219
 msgid "Death of Gertburt"
-msgstr ""
+msgstr "Mors Gertburti"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:234
@@ -1724,43 +1736,43 @@ msgstr ""
 #. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:275
 msgid "Let's go home, chaps."
-msgstr ""
+msgstr "Domum eamus, viri."
 
 #. [event]
 #. [test]: id=protect-unit
 #: data/ai/micro_ais/scenarios/protect-unit.cfg:5
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:62
 msgid "Protect Unit"
-msgstr ""
+msgstr "Actorem Tueri"
 
 #. [side]: id=Langzhar, type=Lieutenant
 #: data/ai/micro_ais/scenarios/protect-unit.cfg:17
 #: data/ai/micro_ais/scenarios/recruiting.cfg:17
 msgid "Langzhar"
-msgstr ""
+msgstr "Langizar"
 
 #. [side]: id=Langzhar, type=Lieutenant
 #: data/ai/micro_ais/scenarios/protect-unit.cfg:23
 #: data/ai/micro_ais/scenarios/recruiting.cfg:23
 msgid "team_name^Langzhar"
-msgstr ""
+msgstr "Langizar"
 
 #. [side]: id=Koorzhar, type=Lieutenant
 #: data/ai/micro_ais/scenarios/protect-unit.cfg:34
 #: data/ai/micro_ais/scenarios/recruiting.cfg:34
 msgid "Koorzhar"
-msgstr ""
+msgstr "Corzar"
 
 #. [side]: id=Koorzhar, type=Lieutenant
 #: data/ai/micro_ais/scenarios/protect-unit.cfg:40
 #: data/ai/micro_ais/scenarios/recruiting.cfg:40
 msgid "team_name^Koorzhar"
-msgstr ""
+msgstr "Corzar"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/protect-unit.cfg:121
 msgid "Move Rossauba here"
-msgstr ""
+msgstr "Rossaubam huc movere"
 
 #. [event]: id=Koorzhar profile profile}
 #: data/ai/micro_ais/scenarios/protect-unit.cfg:128
@@ -1831,32 +1843,32 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/protect-unit.cfg:170
 #: data/ai/micro_ais/scenarios/protect-unit.cfg:190
 msgid "Rossauba makes it to the signpost"
-msgstr ""
+msgstr "Rossauba signun attingere"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/protect-unit.cfg:174
 msgid "Death of Rossauba"
-msgstr ""
+msgstr "Mors Rossaubae"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/protect-unit.cfg:178
 msgid "Death of Langzhar"
-msgstr ""
+msgstr "Mors Langizaris"
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/protect-unit.cfg:184
 msgid "Get rid of that traitor wizard Rossauba"
-msgstr ""
+msgstr "Istum proditorem magum Rossaubam perficere"
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/protect-unit.cfg:186
 msgid "Defeat Rossauba"
-msgstr ""
+msgstr "Rossaubam vincere"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/protect-unit.cfg:194
 msgid "Death of Koorzhar"
-msgstr ""
+msgstr "Mors Corzaris"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/protect-unit.cfg:217
@@ -1866,14 +1878,14 @@ msgstr ""
 #. [event]
 #: data/ai/micro_ais/scenarios/protect-unit.cfg:231
 msgid "I made it"
-msgstr ""
+msgstr "Adveni"
 
 #. [event]
 #. [test]: id=recruiting
 #: data/ai/micro_ais/scenarios/recruiting.cfg:5
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:77
 msgid "Recruiting"
-msgstr ""
+msgstr "Conscribere"
 
 #. [event]: id=Koorzhar profile profile}
 #: data/ai/micro_ais/scenarios/recruiting.cfg:79
@@ -1909,54 +1921,54 @@ msgstr ""
 #. [test]: id=micro_ai_test
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:5
 msgid "Micro AI Tests"
-msgstr ""
+msgstr "Probationes AI Parva"
 
 #. [side]: id=Grnk, type=Goblin Spearman
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:18
 msgid "Grnk the Frail"
-msgstr ""
+msgstr "Debilis Grncus"
 
 #. [side]: id=Grnk, type=Goblin Spearman
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:26
 msgid "team_name^Grnk"
-msgstr ""
+msgstr "Grncus"
 
 #. [event]
 #. [test]: id=swarm
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:50
 #: data/ai/micro_ais/scenarios/swarm.cfg:5
 msgid "Swarm"
-msgstr ""
+msgstr "Examen"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:59
 msgid "Lurkers"
-msgstr ""
+msgstr "Repentes"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:65
 msgid "HttT: The Elves Besieged"
-msgstr ""
+msgstr "HR: Obsessi Dryadales"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:68
 msgid "Bottleneck"
-msgstr ""
+msgstr "Pugnae in Angustiis"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:80
 msgid "Healers"
-msgstr ""
+msgstr "Sanatores"
 
 #. [set_menu_item]: id=m01_menu_bottleneck_defense
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:90
 msgid "Bottleneck Defense Micro AI demo"
-msgstr ""
+msgstr "Exemplum defensionis in angustiis Parvae IA"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:99
 msgid "Bottleneck Defense Micro AI Demo"
-msgstr ""
+msgstr "Exemplum Defensionis in Angustiis Parvae IA"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:99
@@ -1988,7 +2000,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:120
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:129
 msgid "Guardian Micro AI demo"
-msgstr ""
+msgstr "Exemplum custoditum Parvae IA"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:129
@@ -2003,7 +2015,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:135
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:144
 msgid "Patrol Micro AI demo"
-msgstr ""
+msgstr "Exemplum circitorum Parvae IA"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:144
@@ -2027,12 +2039,12 @@ msgstr ""
 #. [set_menu_item]: id=m06_protect
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:165
 msgid "Protect Unit Micro AI demo"
-msgstr ""
+msgstr "Exemplum actorem tuendi Parvae IA"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:174
 msgid "Protect Unit Micro AI Demo"
-msgstr ""
+msgstr "Exemplum Actorem Tuendi Parvae IA"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:174
@@ -2049,7 +2061,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:180
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:189
 msgid "HttT: The Elves Besieged Micro AI demo"
-msgstr ""
+msgstr "HR: Obsessi Dryadales; exemplum Parvae IA "
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:189
@@ -2064,7 +2076,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:195
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:204
 msgid "Messenger Escort Micro AI demo"
-msgstr ""
+msgstr "Exemplum custodis nuntii Parvae IA"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:204
@@ -2079,7 +2091,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:210
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:219
 msgid "Animals Micro AI demo"
-msgstr ""
+msgstr "Exemplum animalium Parvae IA"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:219
@@ -2095,7 +2107,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:225
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:234
 msgid "Wolves Micro AI demo"
-msgstr ""
+msgstr "Exemplum luporum Parvae IA"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:234
@@ -2109,7 +2121,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:240
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:249
 msgid "Swarm Micro AI demo"
-msgstr ""
+msgstr "Exemplum examinis Parvae IA"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:249
@@ -2121,7 +2133,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:255
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:264
 msgid "Dragon Micro AI demo"
-msgstr ""
+msgstr "Exemplum draconis Parvae IA"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:264
@@ -2132,12 +2144,12 @@ msgstr ""
 #. [set_menu_item]: id=m12_healer_support
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:270
 msgid "Healer support Micro AI demo"
-msgstr ""
+msgstr "Exemplum aanatorum Parvae IA"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:279
 msgid "Healer Support Micro AI demo"
-msgstr ""
+msgstr "Exemplum Sanatorum Parvae IA"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:279
@@ -2176,7 +2188,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:310
 msgid "Move Grnk to one of the signposts"
-msgstr ""
+msgstr "Grncum ad unum signum movere"
 
 #. [note]
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:314
@@ -2186,17 +2198,17 @@ msgstr ""
 #. [side]
 #: data/ai/micro_ais/scenarios/swarm.cfg:40
 msgid "Bats"
-msgstr ""
+msgstr "Vespertiliones"
 
 #. [set_menu_item]: id=m02_new_gryphon
 #: data/ai/micro_ais/scenarios/swarm.cfg:92
 msgid "Place Side 1 Gryphon"
-msgstr ""
+msgstr "Grypem primae manus creare"
 
 #. [set_menu_item]: id=m03_new_bat
 #: data/ai/micro_ais/scenarios/swarm.cfg:103
 msgid "Place Side 2 Bat"
-msgstr ""
+msgstr "Vespertilionem secundae manus creare"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/swarm.cfg:139
@@ -2230,37 +2242,37 @@ msgstr ""
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/swarm.cfg:150
 msgid "Defeat all bats"
-msgstr ""
+msgstr "Omnes vespertiliones vincere"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/swarm.cfg:158
 msgid "Death of all gryphons"
-msgstr ""
+msgstr "Mors omnium grypum"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/wolves.cfg:40
 msgid "team_name^Wolves"
-msgstr ""
+msgstr "Lupi"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/wolves.cfg:55
 msgid "More Wolves"
-msgstr ""
+msgstr "Plures Lupi"
 
 #. [set_menu_item]: id=m02_new_peasant
 #: data/ai/micro_ais/scenarios/wolves.cfg:121
 msgid "Place Side 1 Peasant"
-msgstr ""
+msgstr "Rusticum primae manus creare"
 
 #. [set_menu_item]: id=m03_new_wolf2
 #: data/ai/micro_ais/scenarios/wolves.cfg:132
 msgid "Place Side 2 Wolf"
-msgstr ""
+msgstr "Lupum secundae manus creare"
 
 #. [set_menu_item]: id=m04_new_wolf3
 #: data/ai/micro_ais/scenarios/wolves.cfg:143
 msgid "Place Side 3 Wolf"
-msgstr ""
+msgstr "Lupum tertiae manus creare"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/wolves.cfg:191
@@ -2374,27 +2386,27 @@ msgstr ""
 #. [test]: id=ai_arena_small
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:6
 msgid "AI Arena - small"
-msgstr ""
+msgstr "Harena IA - parva"
 
 #. [test]: id=ai_arena_small
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:7
 msgid "Small ai arena"
-msgstr ""
+msgstr "Parva harena IA"
 
 #. [set_menu_item]: id=repeat_test
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:64
 msgid "Repeat last test"
-msgstr ""
+msgstr "Probationem iterare"
 
 #. [set_menu_item]: id=select_another_ai
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:80
 msgid "Select another ai"
-msgstr ""
+msgstr "Ai aliam legere"
 
 #. [set_menu_item]: id=select_test
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:90
 msgid "Select another test"
-msgstr ""
+msgstr "Probationem aliam legere"
 
 #. [side]: id=leader1, type=Lich
 #. [side]: type=Nightgaunt
@@ -2418,17 +2430,17 @@ msgstr ""
 #. [side]: id=chall-ai, type=White Mage
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:124
 msgid "North"
-msgstr ""
+msgstr "Septentrio"
 
 #. [side]: id=champ-ai, type=Dark Adept
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:131
 msgid "Champion AI"
-msgstr ""
+msgstr "IA Vicens"
 
 #. [side]: id=champ-ai, type=Dark Adept
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:136
 msgid "South"
-msgstr ""
+msgstr "Auster"
 
 #. [message]: speaker=narrator
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:175
@@ -2470,7 +2482,7 @@ msgstr ""
 #. [text_input]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:214
 msgid "AI Location:"
-msgstr ""
+msgstr "Locus AI:"
 
 #. [option]: speaker=narrator
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:221
@@ -2491,13 +2503,13 @@ msgstr ""
 #: data/ai/scenarios/scenario-lua-ai.cfg:44
 #: data/ai/scenarios/scenario-no_engine.cfg:44
 msgid "Patrol waypoint 1"
-msgstr ""
+msgstr "Prima statio circitorum"
 
 #. [label]
 #: data/ai/scenarios/scenario-lua-ai.cfg:49
 #: data/ai/scenarios/scenario-no_engine.cfg:49
 msgid "Patrol waypoint 2"
-msgstr ""
+msgstr "Secunda statio circitorum"
 
 #. [label]
 #: data/ai/scenarios/scenario-lua-ai.cfg:54
@@ -2509,49 +2521,49 @@ msgstr ""
 #: data/ai/scenarios/scenario-lua-ai.cfg:59
 #: data/ai/scenarios/scenario-no_engine.cfg:59
 msgid "first"
-msgstr ""
+msgstr "primus"
 
 #. [label]
 #: data/ai/scenarios/scenario-lua-ai.cfg:64
 #: data/ai/scenarios/scenario-no_engine.cfg:64
 msgid "second"
-msgstr ""
+msgstr "secundus"
 
 #. [label]
 #: data/ai/scenarios/scenario-lua-ai.cfg:69
 #: data/ai/scenarios/scenario-no_engine.cfg:69
 msgid "third"
-msgstr ""
+msgstr "tertius"
 
 #. [label]
 #: data/ai/scenarios/scenario-lua-ai.cfg:74
 #: data/ai/scenarios/scenario-no_engine.cfg:74
 msgid "Location guarded (range = 3)"
-msgstr ""
+msgstr "Locum custoditum (iactus = III)"
 
 #. [unit]: type=Skeletal Dragon, id=Kiressh
 #: data/ai/scenarios/scenario-lua-ai.cfg:154
 #: data/ai/scenarios/scenario-no_engine.cfg:154
 msgid "Kiressh"
-msgstr ""
+msgstr "Ciressus"
 
 #. [unit]: type=Orcish Archer
 #: data/ai/scenarios/scenario-lua-ai.cfg:160
 #: data/ai/scenarios/scenario-no_engine.cfg:160
 msgid "Bilbo"
-msgstr ""
+msgstr "Bilbo"
 
 #. [unit]: type=Walking Corpse
 #: data/ai/scenarios/scenario-lua-ai.cfg:165
 #: data/ai/scenarios/scenario-no_engine.cfg:165
 msgid "Sirené"
-msgstr ""
+msgstr "Sirena"
 
 #. [unit]: type=Wolf Rider
 #: data/ai/scenarios/scenario-lua-ai.cfg:171
 #: data/ai/scenarios/scenario-no_engine.cfg:171
 msgid "Rark"
-msgstr ""
+msgstr "Rarcus"
 
 #. [test]: id=lua_ai_no_engine
 #: data/ai/scenarios/scenario-no_engine.cfg:5
@@ -2576,47 +2588,47 @@ msgstr ""
 #. [ai]: id=healer_support
 #: data/core/macros/ai_micro_ais.cfg:28
 msgid "Healer Support Micro AI"
-msgstr ""
+msgstr "Parva IA Sanatorum"
 
 #. [ai]: id=bottleneck_defense
 #: data/core/macros/ai_micro_ais.cfg:48
 msgid "Bottleneck Defense Micro AI"
-msgstr ""
+msgstr "Parva IA Defensionis in Angustiis"
 
 #. [ai]: id=messenger_escort
 #: data/core/macros/ai_micro_ais.cfg:68
 msgid "Messenger Escort Micro AI"
-msgstr ""
+msgstr "Parva IA Custodis Nuntii"
 
 #. [ai]: id=animals
 #: data/core/macros/ai_micro_ais.cfg:88
 msgid "Animals Micro AI"
-msgstr ""
+msgstr "Parva IA Animalium"
 
 #. [ai]: id=guardian
 #: data/core/macros/ai_micro_ais.cfg:108
 msgid "Guardian Micro AI"
-msgstr ""
+msgstr "Parva IA Custodis"
 
 #. [ai]: id=protect_unit
 #: data/core/macros/ai_micro_ais.cfg:128
 msgid "Protect Unit Micro AI"
-msgstr ""
+msgstr "Parva IA Actorem Tuendi"
 
 #. [ai]: id=patrol
 #: data/core/macros/ai_micro_ais.cfg:148
 msgid "Patrol Micro AI"
-msgstr ""
+msgstr "Parva IA Circitorum"
 
 #. [ai]: id=lurkers
 #: data/core/macros/ai_micro_ais.cfg:168
 msgid "Lurkers Micro AI"
-msgstr ""
+msgstr "Parva IA Repentium"
 
 #. [ai]: id=recruiting
 #: data/core/macros/ai_micro_ais.cfg:188
 msgid "Recruiting Micro AI"
-msgstr ""
+msgstr "Parva IA Conscribendi"
 
 #. [ai]: id=goto
 #: data/core/macros/ai_micro_ais.cfg:208

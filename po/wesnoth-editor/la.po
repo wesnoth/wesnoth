@@ -14,14 +14,14 @@ msgstr ""
 "Project-Id-Version: Wesnoth-editor 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2013-05-22 22:09-0400\n"
-"PO-Revision-Date: 2012-12-19 21:22-0000\n"
+"PO-Revision-Date: 2013-06-23 02:19-0000\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
 "Language: la\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.5.5\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -126,22 +126,22 @@ msgstr "insolita"
 #. [editor_times]: id=test
 #: data/core/editor/time-of-day.cfg:5
 msgid "Test"
-msgstr ""
+msgstr "Probatio"
 
 #. [editor_times]: id=default
 #: data/core/editor/time-of-day.cfg:16
 msgid "Default"
-msgstr ""
+msgstr "Solita"
 
 #. [editor_times]: id=underground
 #: data/core/editor/time-of-day.cfg:27
 msgid "Underground"
-msgstr ""
+msgstr "Sub Terra"
 
 #. [editor_times]: id=deep_underground
 #: data/core/editor/time-of-day.cfg:33
 msgid "Deep Underground"
-msgstr ""
+msgstr "Penitus Sub Terra"
 
 #. [editor_times]: id=24
 #: data/core/editor/time-of-day.cfg:39
@@ -151,7 +151,7 @@ msgstr ""
 #. [editor_times]: id=after_the_fall
 #: data/core/editor/time-of-day.cfg:46
 msgid "After the Fall"
-msgstr ""
+msgstr "Post Calamitatem"
 
 #. [editor_tool_hint]: id=editor-tool-fill
 #. [editor_tool_hint]: id=editor-tool-paint
@@ -208,12 +208,12 @@ msgstr "Fenestra"
 #. [menu]: id=menu-editor-areas
 #: data/themes/editor.cfg:115
 msgid "Areas"
-msgstr ""
+msgstr "Harenae"
 
 #. [menu]: id=menu-editor-side
 #: data/themes/editor.cfg:125
 msgid "Side"
-msgstr ""
+msgstr "Manus"
 
 #. [label]: id=villages-icon
 #: data/themes/editor.cfg:144
@@ -223,7 +223,7 @@ msgstr "viculi"
 #. [label]: id=units-icon
 #: data/themes/editor.cfg:161
 msgid "units"
-msgstr ""
+msgstr "actores"
 
 #. [menu]: id=switch_time
 #: data/themes/editor.cfg:489
@@ -243,7 +243,7 @@ msgstr ""
 #. [label]: id=terrain-icon
 #: data/themes/editor.cfg:609
 msgid "terrain"
-msgstr ""
+msgstr "terra"
 
 #. [action]: id=flip_map_button_editor, type=checkbox
 #: data/themes/editor.cfg:669
@@ -256,11 +256,11 @@ msgstr ""
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:59
 msgid "Name: "
-msgstr ""
+msgstr "Nomen: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:60
 msgid "Type: "
-msgstr ""
+msgstr "Genus: "
 
 #: src/editor/editor_controller.cpp:175
 msgid "Fatal error"
@@ -302,11 +302,11 @@ msgstr ""
 
 #: src/editor/editor_controller.cpp:966
 msgid "Rename Unit"
-msgstr ""
+msgstr "Nomen Novum Dare"
 
 #: src/editor/editor_controller.cpp:967
 msgid "Name:"
-msgstr ""
+msgstr "Nomen:"
 
 #: src/editor/map/context_manager.cpp:119
 #: src/editor/map/context_manager.cpp:202
@@ -318,16 +318,12 @@ msgid "Choose a Map to Open"
 msgstr "Chartam Eligere ut Aperiatur"
 
 #: src/editor/map/context_manager.cpp:234
-#, fuzzy
-#| msgid "(New Map)"
 msgid "(New Area)"
-msgstr "(Charta Nova)"
+msgstr "(Nova Harena)"
 
 #: src/editor/map/context_manager.cpp:257
-#, fuzzy
-#| msgid "(New Map)"
 msgid "(New Side)"
-msgstr "(Charta Nova)"
+msgstr "(Nova Manus)"
 
 #: src/editor/map/context_manager.cpp:303
 msgid "Choose a Mask to Apply"
@@ -464,100 +460,3 @@ msgstr "Lusor $player_number"
 #: src/gui/dialogs/editor_settings.cpp:161
 msgid "Custom setting"
 msgstr "Electiones lusoris"
-
-#~ msgid "Edit"
-#~ msgstr "Mutare"
-
-#~ msgid "Group"
-#~ msgstr "Classis"
-
-#~ msgid "Quit Editor"
-#~ msgstr "Chartographiam Exire"
-
-#~ msgid "Undo"
-#~ msgstr "Recantare"
-
-#~ msgid "Can’t Undo"
-#~ msgstr "Nequit Reddere"
-
-#~ msgid "Redo"
-#~ msgstr "Reponere"
-
-#~ msgid "Can’t Redo"
-#~ msgstr "Nequit Reponere"
-
-#~| msgid "Empty map file"
-#~ msgid "Empty file"
-#~ msgstr "Fasciculus inanis chartae"
-
-#~ msgid "Choose player"
-#~ msgstr "Lusorem eligere"
-
-#, fuzzy
-#~ msgid "FG"
-#~ msgstr "stratum eminens"
-
-#, fuzzy
-#~ msgid "BG"
-#~ msgstr "stratum recessum"
-
-#~ msgid "Settings"
-#~ msgstr "Impostationes"
-
-#~ msgid "Draw tiles"
-#~ msgstr "Hexagones scribere"
-
-#~ msgid "Fill"
-#~ msgstr "Implere"
-
-#~ msgid "Set player's starting position"
-#~ msgstr "Locus initialis lusoris statuere"
-
-#~ msgid "Zoom in"
-#~ msgstr "Magnificare"
-
-#~ msgid "Zoom out"
-#~ msgstr "Parvificare"
-
-#~ msgid "Zoom to default view"
-#~ msgstr "Ad magnitudinem solitam"
-
-#~ msgid "Toggle grid"
-#~ msgstr "Rete ponere/tollere"
-
-#~ msgid "Resize the map"
-#~ msgstr "Magnitudinem chartae mutare"
-
-#~ msgid "Flip map"
-#~ msgstr "Chartam repercutere"
-
-#~ msgid "Language"
-#~ msgstr "Lingua"
-
-#~ msgid "Choose your preferred language:"
-#~ msgstr "Linguam antepositam elige: "
-
-#~ msgid "Battle for Wesnoth Map Editor"
-#~ msgstr "Recensor Chartarum Proelii pro Occidiseptentrione"
-
-#~ msgid "Which Player?"
-#~ msgstr "Qualis lusor?"
-
-#~ msgid "Which player should start here?"
-#~ msgstr "Qualis lusor hic incipere debet?"
-
-#~ msgid ""
-#~ "Warning: Illegal characters found in the map name. Please save under a "
-#~ "different name."
-#~ msgstr ""
-#~ "Monitio: Litterae illicitae in nomine chartae inveniuntur. Necesse est "
-#~ "salvare sub nomen aliud."
-
-#~ msgid "The file does not contain a valid map."
-#~ msgstr "Archivum chartam validam non continet."
-
-#~ msgid "Do you want to save the map before quitting?"
-#~ msgstr "Visne chartam servarve priusquam reliqueris?"
-
-#~ msgid "Error: Illegal character in filename."
-#~ msgstr "Mendum: Littera illicita in nomini pligae."
