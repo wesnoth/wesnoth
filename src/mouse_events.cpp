@@ -584,7 +584,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 			}
 		}
 		return false;
-	} else {
+	} else if(!commands_disabled) {
 		// we select a (maybe empty) hex
 		// we block selection during attack+move (because motion is blocked)
 		select_hex(hex, browse);
