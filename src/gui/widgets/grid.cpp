@@ -321,7 +321,7 @@ void tgrid::request_reduce_height(const unsigned maximum_height)
 		 * @todo Improve this code.
 		 *
 		 * Now we try every item to be reduced, maybe items need a flag whether
-		 * or not to try to reduce and also eveluate whether the force
+		 * or not to try to reduce and also evaluate whether the force
 		 * reduction is still needed.
 		 */
 		if(too_high - reduced >=  row_height_[row]) {
@@ -1218,7 +1218,7 @@ void set_single_child(tgrid& grid, twidget* widget)
  * = Praxis =
  *
  * This is the code needed to create the skeleton for the structure the extra
- * flags are ommitted.
+ * flags are omitted.
  *
  *  	[grid]
  *  		[row]

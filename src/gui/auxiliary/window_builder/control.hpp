@@ -34,7 +34,7 @@ public:
 
 	twidget* build(const treplacements& replacements) const;
 
-	/** @deprecated The control can initalise itself. */
+	/** @deprecated The control can initialize itself. */
 	void init_control(tcontrol* control) const;
 
 	/** Parameters for the control. */

@@ -50,7 +50,7 @@ bool tdialog::show(CVideo& video, const unsigned auto_close_time)
 	retval_ = window->show(restore_, auto_close_time);
 
 	/*
-	 * It can happen that when two clicks follow eachother fast that the event
+	 * It can happen that when two clicks follow each other fast that the event
 	 * handling code in events.cpp generates a DOUBLE_CLICK_EVENT. For some
 	 * reason it can happen that this event gets pushed in the queue when the
 	 * window is shown, but processed after the window is closed. This causes

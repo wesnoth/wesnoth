@@ -23,7 +23,7 @@
 
 class config;
 
-/** This class represenst a single stored chat message */
+/** This class represents a single stored chat message */
 struct chat_message
 {
 	/** Create a chat message */

@@ -65,7 +65,7 @@ public:
 			, EXPAND_DIRECTION& expand_direction
 			, bool& copy_edge_terrain);
 
-	/** The excute function see @ref tdialog for more information. */
+	/** The execute function see @ref tdialog for more information. */
 	static bool execute(
 			  int& width
 			, int& height

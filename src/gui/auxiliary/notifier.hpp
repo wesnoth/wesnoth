@@ -71,7 +71,7 @@ public:
 	}
 
 	/**
-	 * Disonnects a callback.
+	 * Disconnects a callback.
 	 *
 	 * @param notifiee               The notifiee controlling the lifetime of
 	 *                               the callback. Uses since its address is an

@@ -41,7 +41,7 @@ class titerator
 public:
 
 	/**
-	 * Contstructor.
+	 * Constructor.
 	 *
 	 * @param root                The widget where to start the iteration.
 	 */

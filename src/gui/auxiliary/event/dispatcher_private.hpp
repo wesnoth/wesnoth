@@ -138,7 +138,7 @@ struct tdispatcher_implementation
 		 * It tests for both the event and the event_type send in the
 		 * constructor.
 		 *
-		 * @tparam T              A key from an event set used to instanciate
+		 * @tparam T              A key from an event set used to instantiate
 		 *                        the proper @p event_signal function.
 		* @param event           The event to get the signal for.
 		 *

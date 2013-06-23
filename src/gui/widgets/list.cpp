@@ -287,7 +287,7 @@ void tlist::place(const tpoint& origin, const tpoint& size)
 	/**
 	 * @todo Work-around to set the selected item visible again.
 	 *
-	 * At the moment the listes and dialogs in general are resized a lot as
+	 * At the moment the lists and dialogs in general are resized a lot as
 	 * work-around for sizing. So this function makes the selected item in view
 	 * again. It doesn't work great in all cases but the proper fix is to avoid
 	 * resizing dialogs a lot. Need more work later on.

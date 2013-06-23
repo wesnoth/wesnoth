@@ -248,7 +248,7 @@ public:
 	 * * The buttons internal click handler is invoked and sets the handled
 	 *   flag
 	 * * The callback installed by the user is in the same queue and gets
-	 *   exectuted afterwards.
+	 *   executed afterwards.
 	 *
 	 * A toggle button may or may not be toggled:
 	 * * The user inserts a callback, that validates whether the action is
@@ -276,10 +276,10 @@ public:
 	 * widget->connect_signal<EVENT_ID>(
 	 * boost::bind(&tmy_dialog::my_member, this));
 	 * This allows simply adding a member of a dialog to be used as a callback
-	 * for widget without a lot of magic. Note most widgets probaly will get a
+	 * for widget without a lot of magic. Note most widgets probably will get a
 	 * callback like
 	 * connect_signal_mouse_left_click(const tsignal_function& callback)
-	 * which hides this function for the avarage use.
+	 * which hides this function for the average use.
 	 *
 	 * @tparam E                     The event the callback needs to react to.
 	 * @param signal                 The callback function.
@@ -472,10 +472,10 @@ public:
 	/**
 	 * The behavior of the mouse events.
 	 *
-	 * Normally for mouse events there's first cheched whether a dispatcher has
+	 * Normally for mouse events there's first checked whether a dispatcher has
 	 * captured the mouse if so it gets the event.
 	 * If not the dispatcher is searched from the back to the front in the
-	 * layers and it's behavious is checked.
+	 * layers and its behavior is checked.
 	 * * none The event is never send to the layer and goes on the the next
 	 *   layer. This is used for tooltips who might cover a button but a click
 	 *   on the tooltips should still click the button.

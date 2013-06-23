@@ -171,7 +171,7 @@ void tunit_create::gender_toggle_callback(twindow& window)
 	ttoggle_button& female_toggle = find_widget<ttoggle_button>(
 			&window, "female_toggle", false);
 
-	// Ye olde ugly hack for the lack of radio buttons.
+	// TODO Ye olde ugly hack for the lack of radio buttons.
 
 	if(gender_ == unit_race::MALE) {
 		gender_ = female_toggle.get_value() ? unit_race::FEMALE : unit_race::MALE;

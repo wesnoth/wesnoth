@@ -59,11 +59,11 @@ public:
 	 *                            upon.
 	 * @param allow_interaction   Does the dialog allow interaction?
 	 *                            * true a non modal window is shown
-	 *                            * false a tooltip windw is shown
+	 *                            * false a tooltip window is shown
 	 * @param auto_close_time     The time in ms after which the dialog will
 	 *                            automatically close, if 0 it doesn't close.
 	 *                            @note the timeout is a minimum time and
-	 *                            there's no quarantee about how fast it closes
+	 *                            there's no guarantee about how fast it closes
 	 *                            after the minimum.
 	 */
 	void show(CVideo& video

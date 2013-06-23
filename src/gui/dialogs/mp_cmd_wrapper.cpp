@@ -119,7 +119,7 @@ void tmp_cmd_wrapper::pre_show(CVideo& /*video*/, twindow& window)
 
 	/**
 	 * @todo Not really happy with the retval code in general. Need to give it
-	 * some more thought. Therefore seperated the set_retval from the
+	 * some more thought. Therefore separated the set_retval from the
 	 * set_active code.
 	 */
 	if(tbutton* b = find_widget<tbutton>(&window, "add_friend", false, false)) {

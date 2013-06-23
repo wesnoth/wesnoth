@@ -40,7 +40,7 @@ namespace gui2 {
  *         This text contains the name of the server to connect to. $
  *
  * show_help & & button & m &
- *         Thus button shows the in-game help about add-ons maangement when triggered. $
+ *         Thus button shows the in-game help about add-ons management when triggered. $
  *
  * & 2 & button & o &
  *         This button closes the dialog to display a dialog for removing installed add-ons. $

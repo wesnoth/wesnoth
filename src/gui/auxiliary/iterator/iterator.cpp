@@ -115,7 +115,7 @@ namespace iterator {
  *
  * When the iterator is created the iterator tries to go down all the child
  * widgets to get at the bottom level. That widget will be visited first. Then
- * it will first visit all sibblings before going up the the next layer.
+ * it will first visit all siblings before going up the the next layer.
  *
  * @todo Write the entire visiting algorithm.
  *

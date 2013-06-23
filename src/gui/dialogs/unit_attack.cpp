@@ -48,7 +48,7 @@ namespace gui2 {
  * defender_name     & & control & o & Shows the name of the defending unit. $
  *
  *
- * weapon_list       & & listbox & m & The list with weapons to choos from. $
+ * weapon_list       & & listbox & m & The list with weapons to choose from. $
  * -attacker_weapon  & & control & o & The weapon for the attacker to use. $
  * -defender_weapon  & & control & o & The weapon for the defender to use. $
  *

@@ -36,7 +36,7 @@ struct tbuilder_instance
 	 * Holds a copy of the cfg parameter in the constructor.
 	 *
 	 * This is used when instantiating a spacer, it can still use the
-	 * parameters orginally sent.
+	 * parameters originally sent.
 	 */
 	config configuration;
 };

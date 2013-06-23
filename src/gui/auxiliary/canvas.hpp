@@ -15,7 +15,7 @@
 /**
  * @file
  * This file contains the canvas object which is the part where the widgets
- * draw (tempory) images on.
+ * draw (temporally) images on.
  */
 
 #ifndef GUI_AUXILIARY_CANVAS_HPP_INCLUDED

@@ -918,7 +918,7 @@ public:
 	 *
 	 * @param cfg                 The config object to define the image see
 	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Image
-	 *                            for more infomation.
+	 *                            for more information.
 	 */
 	explicit timage(const config& cfg);
 

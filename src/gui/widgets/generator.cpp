@@ -395,7 +395,7 @@ void tvertical_list::set_visible_rectangle(const SDL_Rect& rectangle)
 {
 	/*
 	 * Note for most implementations this function could work only for the
-	 * tindependent class it probably fails. Evalute to make a generic
+	 * tindependent class it probably fails. Evaluate to make a generic
 	 * function in the tgenerator template class and call it from the wanted
 	 * placement functions.
 	 */

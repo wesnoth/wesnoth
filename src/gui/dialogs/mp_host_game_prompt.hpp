@@ -27,7 +27,7 @@ public:
 
 	tmp_host_game_prompt();
 
-	/** The excute function see @ref tdialog for more information. */
+	/** The execute function see @ref tdialog for more information. */
 	static bool execute(CVideo& video)
 	{
 		return tmp_host_game_prompt().show(video);

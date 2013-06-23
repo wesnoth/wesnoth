@@ -407,7 +407,7 @@ struct tmatrix
 };
 
 /**
- * Places the items independent of eachother.
+ * Places the items independent of each other.
  *
  * This is mainly meant for when only one item is shown at the same time.
  *

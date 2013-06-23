@@ -120,7 +120,7 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 			options.add_row(data);
 		}
 
-		// Avoid negetive and 0 since item 0 is already selected.
+		// Avoid negative and 0 since item 0 is already selected.
 		if(*chosen_option_ > 0
 				&& static_cast<size_t>(*chosen_option_)
 				< option_list_.size()) {
