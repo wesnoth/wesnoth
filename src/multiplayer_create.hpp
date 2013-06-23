@@ -17,6 +17,7 @@
 #ifndef MULTIPLAYER_CREATE_HPP_INCLUDED
 #define MULTIPLAYER_CREATE_HPP_INCLUDED
 
+#include "gamestatus.hpp"
 #include "mp_depcheck.hpp"
 #include "mp_game_settings.hpp"
 #include "multiplayer_ui.hpp"
@@ -41,6 +42,7 @@ public:
 	TYPE get_type() const;
 
 	std::string map_data;
+	std::string first_scenario;
 
 private:
 	TYPE type;
@@ -71,6 +73,8 @@ private:
 	};
 	bool set_level_data(SET_LEVEL set_level, const int select);
 	void set_level_sides(const int map_positions);
+
+	bool new_campaign();
 
 	void synchronize_selections();
 
@@ -117,6 +121,8 @@ private:
 	gui::button show_scenarios_;
 	gui::button show_campaigns_;
 
+	gui::button launch_campaigns_;
+
 	gui::slider filter_num_players_slider_;
 
 	gui::textbox description_;
@@ -132,6 +138,7 @@ private:
 	mp_game_settings parameters_;
 
 	mp_level mp_level_;
+	game_state state_;
 
 	depcheck::manager dependency_manager_;
 };

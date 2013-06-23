@@ -20,6 +20,7 @@
 #include "global.hpp"
 
 #include "gettext.hpp"
+#include "game_config_manager.hpp"
 #include "game_display.hpp"
 #include "game_preferences.hpp"
 #include "construct_dialog.hpp"
@@ -28,9 +29,12 @@
 #include "map_exception.hpp"
 #include "generators/map_create.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/campaign_difficulty.hpp"
+#include "gui/dialogs/campaign_selection.hpp"
 #include "gui/dialogs/mp_create_game_choose_mods.hpp"
 #include "gui/dialogs/mp_create_game_set_password.hpp"
 #include "gui/dialogs/transient_message.hpp"
+#include "gui/widgets/window.hpp"
 #include "minimap.hpp"
 #include "multiplayer_create.hpp"
 #include "filesystem.hpp"
@@ -55,6 +59,7 @@ namespace mp {
 
 mp_level::mp_level() :
 	map_data(),
+	first_scenario(),
 	type(SCENARIO)
 {
 }
@@ -62,6 +67,7 @@ mp_level::mp_level() :
 void mp_level::reset()
 {
 	map_data = "";
+	first_scenario = "";
 }
 
 void mp_level::set_scenario()
@@ -116,6 +122,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	generator_settings_(disp.video(), _("Settings...")),
 	show_scenarios_(disp.video(), _("Show scenarios"), gui::button::TYPE_CHECK),
 	show_campaigns_(disp.video(), _("Show campaigns"), gui::button::TYPE_CHECK),
+	launch_campaigns_(disp.video(), ("Campaigns")),
 	filter_num_players_slider_(disp.video()),
 	description_(disp.video(), 100, "", false),
 	filter_name_(disp.video(), 100, "", true),
@@ -125,6 +132,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	generator_(NULL),
 	parameters_(),
 	mp_level_(),
+	state_(),
 	dependency_manager_(cfg, disp.video())
 {
 	filter_num_players_slider_.set_min(0);
@@ -302,6 +310,27 @@ void create::process_event()
 
 	}
 
+	if (launch_campaigns_.pressed()) {
+		mp_level_.set_campaign();
+
+		if (new_campaign()) {
+			game_config::scoped_preproc_define multiplayer("MULTIPLAYER");
+			resources::config_manager->
+				load_game_config_for_game(state_.classification());
+
+			parameters_.saved_game = false;
+
+			const config& level = game_config().find_child("scenario", "id",
+				mp_level_.first_scenario);
+			parameters_.scenario_data = level;
+
+			set_result(CREATE);
+			return;
+		}
+
+		mp_level_.set_scenario();
+	}
+
 	bool era_changed = era_selection_ != eras_menu_.selection();
 	era_selection_ = eras_menu_.selection();
 
@@ -464,6 +493,8 @@ void create::hide_children(bool hide)
 	cancel_game_.hide(hide);
 	launch_game_.hide(hide);
 
+	launch_campaigns_.hide(hide);
+
 	regenerate_map_.hide(hide);
 	generator_settings_.hide(hide);
 
@@ -555,6 +586,8 @@ void create::layout_children(const SDL_Rect& rect)
 	//Third column: maps menu
 	ypos = ypos_columntop;
 	xpos += menu_width + column_border_size;
+	launch_campaigns_.set_location(xpos, ypos);
+	ypos += launch_campaigns_.height() + 2*border_size;
 	map_label_.set_location(xpos, ypos);
 	ypos += map_label_.height() + border_size;
 
@@ -727,6 +760,71 @@ void create::set_level_sides(const int map_positions)
 		side["canrecruit"] = true;
 		side["controller"] = "human";
 	}
+}
+
+bool create::new_campaign()
+{
+	state_ = game_state();
+	state_.classification().campaign_type = "multiplayer";
+
+	const config::const_child_itors &ci =
+		game_config().child_range("campaign");
+	std::vector<config> campaigns(ci.first, ci.second);
+
+	if(campaigns.begin() == campaigns.end()) {
+	  gui2::show_error_message(disp().video(),
+				  _("No campaigns are available.\n"));
+		return false;
+	}
+
+	int campaign_num = -1;
+	{
+		gui2::tcampaign_selection dlg(campaigns);
+
+		try {
+			dlg.show(disp().video());
+		} catch(twml_exception& e) {
+			e.show(disp());
+			return false;
+		}
+
+		if(dlg.get_retval() != gui2::twindow::OK) {
+			return false;
+		}
+
+		campaign_num = dlg.get_choice();
+	}
+
+	const config &campaign = campaigns[campaign_num];
+	const std::string difficulty_descriptions = campaign["difficulty_descriptions"];
+	std::vector<std::string> difficulty_options = utils::split(difficulty_descriptions, ';');
+	const std::vector<std::string> difficulties = utils::split(campaign["difficulties"]);
+
+	if(difficulties.empty() == false) {
+		int difficulty = 0;
+		if(difficulty_options.size() != difficulties.size()) {
+			difficulty_options.resize(difficulties.size());
+			std::copy(difficulties.begin(),difficulties.end(),difficulty_options.begin());
+		}
+
+		gui2::tcampaign_difficulty dlg(difficulty_options);
+		dlg.show(disp().video());
+
+		if(dlg.selected_index() == -1) {
+			// canceled difficulty dialog, relaunch the campaign selection dialog
+			return new_campaign();
+		}
+		difficulty = dlg.selected_index();
+
+		state_.classification().difficulty = difficulties[difficulty];
+	}
+
+	state_.classification().campaign_define = campaign["define"].str();
+	state_.classification().campaign_xtra_defines = utils::split(campaign["extra_defines"]);
+
+	mp_level_.first_scenario = campaign["first_scenario"].str();
+
+	return true;
 }
 
 void create::synchronize_selections()
