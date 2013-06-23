@@ -251,7 +251,7 @@ std::string get_independent_image_path(const std::string &filename);
  * Returns the appropriate invocation for a Wesnoth-related binary, assuming
  * that it is located in the same directory as the running wesnoth binary.
  * This is just a string-transformation based on argv[0], so the returned
- * program is not guaranteed to actaully exist.  '-debug' variants are handled
+ * program is not guaranteed to actually exist.  '-debug' variants are handled
  * correctly.
  */
 std::string get_program_invocation(const std::string &program_name);

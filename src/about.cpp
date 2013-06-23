@@ -231,7 +231,7 @@ void show_about(display &disp, const std::string &campaign)
 
 	int startline = 0;
 
-	//TODO: use values proportionnal to screen ?
+	//TODO: use values proportional to screen ?
 	// distance from top of map image to top of scrolling text
 	const int top_margin = 60;
 	// distance from bottom of scrolling text to bottom of map image
@@ -270,7 +270,7 @@ void show_about(display &disp, const std::string &campaign)
 	int image_count = 0;
 	int scroll_speed = 4;	// scroll_speed*50 = speed of scroll in pixel per second
 
-	// initialy redraw all
+	// Initially redraw all
 	bool redraw_mapimage = true;
 	int max_text_width = text_rect.w;
 

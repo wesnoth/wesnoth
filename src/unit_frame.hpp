@@ -152,7 +152,7 @@ class frame_builder {
 };
 /**
  * keep most parameters in a separate class to simplify handling of large
- * number of parameters hanling is common for frame level and animation level
+ * number of parameters handling is common for frame level and animation level
  */
 class frame_parsed_parameters {
 	public:

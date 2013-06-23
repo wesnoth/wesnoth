@@ -152,7 +152,7 @@ namespace t_translation {
 	 *@endverbatim
 	 *				The underscore is intended for internal use.
 	 *				Other letters and characters are not validated but
-	 *				users of these letters can get nasty surprices.
+	 *				users of these letters can get nasty surprises.
 	 *				The * is used as wildcard in some cases.
 	 *				The terrain code can be two groups separated by a caret,
 	 *				the first group is the base terrain,
@@ -214,7 +214,7 @@ namespace t_translation {
 	 *					  readability it's allowed to pad strings with either spaces
 	 *					  or tab, however the tab is deprecated.
 	 *					* A terrain string contains either a terrain or a terrain and
-	 *					  starting loction. The following format is used
+	 *					  starting location. The following format is used
 	 *					  [S ]T
 	 *					  S = starting location a positive non-zero number
 	 *					  T = terrain code (see read_terrain_code)

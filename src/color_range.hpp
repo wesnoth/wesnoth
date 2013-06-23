@@ -45,7 +45,7 @@ bool string2rgb(const std::string& s, std::vector<Uint32>& result);
  *      (default: white)
  *   3) The minimum shadow shade of a unit's team-color portions
  *      (default: black)
- *   4) A plain high-contrast color, used for the markers on the mini-ma
+ *   4) A plain high-contrast color, used for the markers on the mini-map
  *      (default: same as the provided average shade, or gray #808080)
  *
  * The first three reference colors are used for converting a source palette

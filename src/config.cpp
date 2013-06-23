@@ -135,7 +135,7 @@ config::attribute_value &config::attribute_value::operator=(long long v)
 		// We can store this as an int.
 		return *this = static_cast<int>(v);
 
-	// Getting to this point should be rare. (Currently, geting here means
+	// Getting to this point should be rare. (Currently, getting here means
 	// something like there was so much draining in a campaign that the
 	// total damage taken is not only negative, but so negative that an
 	// int cannot hold the value.) So rare that it is not worth precise
@@ -178,8 +178,8 @@ config::attribute_value &config::attribute_value::operator=(double v)
 namespace {
 	/**
 	 * Attempts to convert @a source to the template type.
-	 * This is to avoid "overzealous reinterpretation of certain WML strings as
-	 * numeric tpyes" (c.f. bug #19201).
+	 * This is to avoid "overzealous reinterpretations of certain WML strings as
+	 * numeric types" (c.f. bug #19201).
 	 * @returns true if the conversion was successful and the source string
 	 *          can be reobtained by streaming the result.
 	 */
@@ -959,7 +959,7 @@ void config::clear()
 				}
 			} else {
 				//reached end of child map for this element - all child nodes
-				//have beed deleted, so it's safe to clear the map, delete the
+				//have been deleted, so it's safe to clear the map, delete the
 				//node and move up one level
 				state.c->children.clear();
 				if (state.c != this) delete state.c;

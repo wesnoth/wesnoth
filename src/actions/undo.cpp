@@ -424,7 +424,7 @@ void undo_list::add_recruit(const unit& u, const map_location& loc,
 /**
  * Adds a shroud update to the undo stack.
  * This is called from within commit_vision(), so there should be no need
- * for this to be publically visible.
+ * for this to be publicly visible.
  */
 void undo_list::add_update_shroud()
 {
@@ -661,7 +661,7 @@ bool undo_list::recruit_action::undo(int side, undo_list & /*undos*/)
 	current_team.set_action_bonus_count(current_team.action_bonus_count() - 1);
 
 	// invalidate before erasing allow us
-	// to also do the ovelerlapped hexes
+	// to also do the overlapped hexes
 	gui.invalidate(recruit_loc);
 	units.erase(recruit_loc);
 	return true;

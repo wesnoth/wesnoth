@@ -135,7 +135,7 @@ static int move_unit_between(const map_location& a, const map_location& b,
 	int target_time = animator.get_animation_time_potential();
 		// target_time must be short to avoid jumpy move
 		// std::cout << "target time: " << target_time << "\n";
-	// we round it to the next multile of 200
+	// we round it to the next multiple of 200
 	target_time += 200;
 	target_time -= target_time%200;
 

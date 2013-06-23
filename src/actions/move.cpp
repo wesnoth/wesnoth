@@ -294,7 +294,7 @@ namespace { // Private helpers for move_unit()
 		const map_location::DIRECTION orig_dir_;
 		const map_location goto_;
 
-		// This data tracks the current state as the move is in proress.
+		// This data tracks the current state as the move is in progress.
 		int current_side_;
 		team * current_team_;	// Will default to the original team if the moving unit becomes invalid.
 		bool current_uses_fog_;
@@ -1077,7 +1077,7 @@ namespace { // Private helpers for move_unit()
 
 		// Sighted units feedback?
 		if ( playing_team_is_viewing  &&  (enemy_count_ != 0 || friend_count_ != 0) ) {
-			// Create the message to display (depends on whether firends,
+			// Create the message to display (depends on whether friends,
 			// enemies, or both were sighted, and on how many of each).
 			utils::string_map symbols;
 			symbols["enemies"] = lexical_cast<std::string>(enemy_count_);
@@ -1135,8 +1135,8 @@ namespace { // Private helpers for move_unit()
  * instruction. (The unit itself is whatever unit is at the beginning of the
  * supplied path.)
  *
- * @param[in]  steps                The route to be travelled. The unit to be moved is at the beginning of this route.
- * @param[out] move_recorder        Will be given the route actually travelled (which might be shorter than the route specified) so it can be stored in the replay.
+ * @param[in]  steps                The route to be traveled. The unit to be moved is at the beginning of this route.
+ * @param[out] move_recorder        Will be given the route actually traveled (which might be shorter than the route specified) so it can be stored in the replay.
  * @param      undo_stack           If supplied, then either this movement will be added to the stack or the stack will be cleared.
  * @param[in]  continued_move       If set to true, this is a continuation of an earlier move (movement is not interrupted should units be spotted).
  * @param[in]  show_move            Controls whether or not the movement is animated for the player.

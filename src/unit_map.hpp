@@ -37,12 +37,12 @@ class unit;
 
  @note The unit_map is implemented as 2 unordered maps storing iterators from a list of reference counted pointers to units.
  The unordered maps provide O(1) find times.  The list allows arbitrary ordering of units (not yet implemented).
- The reference counting is what guarrantees the persistent iterators.
+ The reference counting is what guarantees the persistent iterators.
  Storing an iterator prevents only that dead unit's list location from being recovered.
 
 @note Prefered usages for tight loops follows.
 Use the std::pair<iterator, bool> format which checks the preconditions and returns
-false in the bool to indicate failure with no change to the unit_map.  true indicates sucess and the new iterator is in first.
+false in the bool to indicate failure with no change to the unit_map.  true indicates success and the new iterator is in first.
 Storing the result iterator prevents the old iterator from entering the fallback recovery code.
 This is faster than the old methodology of find to check if empty, insert and then find to check for success.
 It is the same method as std::map uses, the C++ way.
@@ -82,7 +82,7 @@ if(try_add.second){i = try_add.first;}
  *       iterated upon may be skipped or visited twice.
  * @note Iterators prevent ghost units from being collected. So they should
  *       never be stored into data structures, as it will cause slowdowns!
- @note By popular demand iterators are effectively permanant.  They are handles and not iterators.
+ @note By popular demand iterators are effectively permanent.  They are handles and not iterators.
   Any access might cause a full lookup.  Keeping iterators around holds onto memory.
  */
 class unit_map {

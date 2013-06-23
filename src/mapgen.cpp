@@ -358,7 +358,7 @@ static std::string output_map(const terrain_map& terrain,
 namespace {
 
 /**
- * Calculates the cost of building a road over terrain.  For use in the
+ * Calculates the cost of building a road over terrain. For use in the
  * a_star_search algorithm.
  */
 struct road_path_calculator : pathfind::cost_calculator

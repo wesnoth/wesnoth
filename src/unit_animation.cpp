@@ -924,7 +924,7 @@ bool unit_animation::invalidate(frame_parameters& value)
 			}
 		} else {
 			// off screen animations only invalidate their own hex, no propagation,
-			// but we stil need this to play sounds
+			// but we still need this to play sounds
 			overlaped_hex_.insert(src_);
 		}
 

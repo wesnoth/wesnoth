@@ -184,7 +184,7 @@ public:
 		/// Removes @a this from the fake_units_ list if necessary.
 		~fake_unit();
 
-		/// Place @a this on @a display's fake_units_ deque.
+		/// Place @a this on @a display's fake_units_ dequeue.
 		void place_on_game_display(game_display * d);
 		/// Removes @a this from whatever fake_units_ list it is on (if any).
 		int remove_from_game_display();
@@ -198,7 +198,7 @@ public:
 
 private:
 	/** Temporarily place a unit on map (moving: can overlap others).
-	 *  The temp unit is added at the end of the temporary unit deque,
+	 *  The temp unit is added at the end of the temporary unit dequeue,
 	 *  and therefore gets drawn last, over other units and temp units.
 	 *  Adding the same unit twice isn't allowed.
 	 */

@@ -38,9 +38,9 @@ public:
 	boost::optional<std::string> bzip2;
 	/// Non-empty if --campaign was given on the command line. ID of the campaign we want to start.
 	boost::optional<std::string> campaign;
-	/// Non-empty if --campaign-difficulty was given on the command line. Numerical difficulty of the campaign to be played. Dependant on --campaign.
+	/// Non-empty if --campaign-difficulty was given on the command line. Numerical difficulty of the campaign to be played. Dependent on --campaign.
 	boost::optional<int> campaign_difficulty;
-	/// Non-empty if --campaign-scenario was given on the command line. Chooses starting scenario in the campaign to be played. Dependant on --campaign.
+	/// Non-empty if --campaign-scenario was given on the command line. Chooses starting scenario in the campaign to be played. Dependent on --campaign.
 	boost::optional<std::string> campaign_scenario;
 	/// True if --clock was given on the command line. Enables
 	bool clock;
@@ -83,27 +83,27 @@ public:
 	boost::optional<std::string> logdomains;
 	/// True if --multiplayer was given on the command line. Goes directly into multiplayer mode.
 	bool multiplayer;
-	/// Non-empty if --ai-config was given on the command line. Vector of pairs (side number, value). Dependant on --multiplayer.
+	/// Non-empty if --ai-config was given on the command line. Vector of pairs (side number, value). Dependent on --multiplayer.
 	boost::optional<std::vector<boost::tuple<unsigned int, std::string> > > multiplayer_ai_config;
-	/// Non-empty if --algorithm was given on the command line. Vector of pairs (side number, value). Dependant on --multiplayer.
+	/// Non-empty if --algorithm was given on the command line. Vector of pairs (side number, value). Dependent on --multiplayer.
 	boost::optional<std::vector<boost::tuple<unsigned int, std::string> > > multiplayer_algorithm;
-	/// Non-empty if --controller was given on the command line. Vector of pairs (side number, controller). Dependant on --multiplayer.
+	/// Non-empty if --controller was given on the command line. Vector of pairs (side number, controller). Dependent on --multiplayer.
 	boost::optional<std::vector<boost::tuple<unsigned int, std::string> > > multiplayer_controller;
-	/// Non-empty if --era was given on the command line. Dependant on --multiplayer.
+	/// Non-empty if --era was given on the command line. Dependent on --multiplayer.
 	boost::optional<std::string> multiplayer_era;
-	/// True if --exit-at-and was given on the command line. Dependant on --multiplayer.
+	/// True if --exit-at-and was given on the command line. Dependent on --multiplayer.
 	bool multiplayer_exit_at_end;
 	/// True if --ignore-map-settings was given at the command line.  Do not use map settings.
 	bool multiplayer_ignore_map_settings;
-	/// Non-empty if --label was given on the command line. Dependant on --multiplayer.
+	/// Non-empty if --label was given on the command line. Dependent on --multiplayer.
 	boost::optional<std::string> multiplayer_label;
-	/// Non-empty if --parm was given on the command line. Vector of pairs (side number, parm name, parm value). Dependant on --multiplayer.
+	/// Non-empty if --parm was given on the command line. Vector of pairs (side number, parm name, parm value). Dependent on --multiplayer.
 	boost::optional<std::vector<boost::tuple<unsigned int, std::string, std::string> > > multiplayer_parm;
-	/// Non-empty if --scenario was given on the command line. Dependant on --multiplayer.
+	/// Non-empty if --scenario was given on the command line. Dependent on --multiplayer.
 	boost::optional<std::string> multiplayer_scenario;
-	/// Non-empty if --side was given on the command line. Vector of pairs (side number, faction id). Dependant on --multiplayer.
+	/// Non-empty if --side was given on the command line. Vector of pairs (side number, faction id). Dependent on --multiplayer.
 	boost::optional<std::vector<boost::tuple<unsigned int, std::string> > > multiplayer_side;
-	/// Non-empty if --turns was given on the command line. Dependant on --multiplayer.
+	/// Non-empty if --turns was given on the command line. Dependent on --multiplayer.
 	boost::optional<std::string> multiplayer_turns;
 	/// Max FPS specified by --max-fps option.
 	boost::optional<int> max_fps;

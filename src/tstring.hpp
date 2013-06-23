@@ -95,7 +95,7 @@ public:
 	const std::string& str() const;
 	const char* c_str() const                        { return str().c_str(); }
 	bool translatable() const						 { return translatable_; }
-	// Warning: value() may contain platform dependant prefix bytes !
+	// Warning: value() may contain platform dependent prefix bytes !
 	// Consider base_str() for a more reliable untranslated string
 	const std::string& value() const                 { return value_; }
 	std::string base_str() const;

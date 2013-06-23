@@ -867,7 +867,7 @@ REGISTER_MOD_PARSER(O, args)
 }
 
 //
-// ~R(), ~G() and ~B() are the children of ~CS(). Merely syntatic sugar.
+// ~R(), ~G() and ~B() are the children of ~CS(). Merely syntactic sugar.
 // Hence they are at the end of the evaluation.
 //
 // Red component color-shift

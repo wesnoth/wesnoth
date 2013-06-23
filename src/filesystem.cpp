@@ -1178,7 +1178,7 @@ std::string get_wml_location(const std::string &filename, const std::string &cur
 	else if (filename.size() >= 2 && filename[0] == '.' && filename[1] == '/')
 	{
 		// If the filename begins with a "./", look in the same directory
-		// as the file currrently being preprocessed.
+		// as the file currently being preprocessed.
 		result = current_dir + filename.substr(2);
 	}
 	else if (!game_config::path.empty())

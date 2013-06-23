@@ -993,7 +993,7 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sel
 	gui::dialog_button* change_difficulty_option = NULL;
 
 	if(select_difficulty != NULL) {
-		// implmentation of gui::dialog::add_option, needed for storing a pointer to the option-box
+		// implementation of gui::dialog::add_option, needed for storing a pointer to the option-box
 		change_difficulty_option = new gui::dialog_button(disp.video(), _("Change difficulty"), gui::button::TYPE_CHECK);
 		change_difficulty_option->set_check(false);
 

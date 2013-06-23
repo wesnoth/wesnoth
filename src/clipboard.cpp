@@ -190,7 +190,7 @@ public:
  This means we are forced to use CurrentTime in many spots and
  are unable to perform many safety checks.
  Hence, the code below is not compliant to the ICCCM, and
- may ocassionally suffer from race conditions if an X client
+ may occasionally suffer from race conditions if an X client
  is connected to the server over a slow/high-latency link.
  This implementation is also very minimal.
  The text is assumed to be reasonably small, as INCR transactions

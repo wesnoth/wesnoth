@@ -571,7 +571,7 @@ void unit_frame::redraw(const int frame_time,bool first_time,const map_location 
 
 	int d2 = display::get_singleton()->hex_size() / 2;
 	if(first_time ) {
-		// stuff sthat should be done only once per frame
+		// stuff that should be done only once per frame
 		if(!current_data.sound.empty()  ) {
 			sound::play_sound(current_data.sound);
 		}
@@ -761,7 +761,7 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time,const 
 			const SDL_Rect r = create_rect(my_x, my_y, w, h);
 			// check if our underlying hexes are invalidated
 			// if we need to update ourselves because we changed, invalidate our hexes
-			// and return whether or not our hexs was invalidated
+			// and return whether or not our hexes was invalidated
 			// invalidate ourself to be called at redraw time
 			result.insert(src);
 			display::rect_of_hexes underlying_hex = disp->hexes_under_rect(r);

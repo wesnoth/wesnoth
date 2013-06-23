@@ -117,7 +117,7 @@ std::string span_color(const SDL_Color &color);
 /**
  * Wrap text.
  *
- * - If the text exceedes the specified max width, wrap it on a word basis.
+ * - If the text exceeds the specified max width, wrap it on a word basis.
  * - If this is not possible, e.g. the word is too big to fit, wrap it on a
  * - char basis.
  */
@@ -128,7 +128,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size,
  * Draw text on the screen, fit text to maximum width, no markup, no tooltips.
  *
  * This method makes sure that the text fits within a given maximum width.
- * If a line exceedes this width, it will be wrapped
+ * If a line exceeds this width, it will be wrapped
  * on a word basis if possible, otherwise on a char basis.
  * This method is otherwise similar to the draw_text method,
  * but it doesn't support special markup or tooltips.

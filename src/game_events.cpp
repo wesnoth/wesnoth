@@ -226,7 +226,7 @@ static void fill_wml_messages_map(std::map<std::string, int>& msg_map, std::stri
 }
 
 /**
- * Shows a summary of the errors encountered in WML thusfar,
+ * Shows a summary of the errors encountered in WML so far,
  * to avoid a lot of the same messages to be shown.
  * Identical messages are shown once, with (between braces)
  * the number of times that message was encountered.
@@ -289,7 +289,7 @@ typedef std::map<std::string, wml_handler_function> static_wml_action_map;
 static static_wml_action_map static_wml_actions;
 
 /**
- * WML_HANDLER_FUNCTION macro handles auto registeration for wml handlers
+ * WML_HANDLER_FUNCTION macro handles auto registration for wml handlers
  *
  * @param pname wml tag name
  * @param pei the variable name of game_events::queued_event object inside function
@@ -1716,7 +1716,7 @@ WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 	const bool has_any_types = !types.empty();
 	std::vector<std::string>::iterator ti = types.begin(),
 		ti_end = types.end();
-	// loop to give precendence based on type order
+	// loop to give precedence based on type order
 	do {
 		if (has_any_types) {
 			item["type"] = *ti;
@@ -1741,7 +1741,7 @@ WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 				player_ids.insert((resources::teams->begin() + (side_num - 1))->save_id());
 			}
 		}
-		// loop to give precendence based on type order
+		// loop to give precedence based on type order
 		std::vector<std::string>::iterator ti = types.begin();
 		do {
 			if (has_any_types) {

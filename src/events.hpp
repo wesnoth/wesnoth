@@ -99,7 +99,7 @@ private:
 };
 
 class pump_monitor {
-//pump_monitors receive notifcation after an events::pump() occurs
+//pump_monitors receive notification after an events::pump() occurs
 public:
 	pump_monitor();
 	virtual ~pump_monitor();

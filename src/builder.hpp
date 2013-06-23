@@ -277,7 +277,7 @@ public:
 	 */
 	struct tile
 	{
-		/** Contructor for the tile() structure */
+		/** Constructor for the tile() structure */
 		tile();
 
 		struct rule_image_rand;
