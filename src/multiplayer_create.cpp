@@ -314,7 +314,6 @@ void create::process_event()
 		mp_level_.set_campaign();
 
 		if (new_campaign()) {
-			game_config::scoped_preproc_define multiplayer("MULTIPLAYER");
 			resources::config_manager->
 				load_game_config_for_game(state_.classification());
 

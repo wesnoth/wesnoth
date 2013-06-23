@@ -778,7 +778,6 @@ bool game_controller::play_multiplayer()
 
 	state_ = game_state();
 	state_.classification().campaign_type = "multiplayer";
-	state_.classification().campaign_define = "MULTIPLAYER";
 
 	//Print Gui only if the user hasn't specified any server
 	if( multiplayer_server_.empty() ){
@@ -905,7 +904,6 @@ bool game_controller::play_multiplayer_commandline()
 	// These are all the relevant lines taken literally from play_multiplayer() above
 	state_ = game_state();
 	state_.classification().campaign_type = "multiplayer";
-	state_.classification().campaign_define = "MULTIPLAYER";
 
 	resources::config_manager->
 		load_game_config_for_game(state_.classification());

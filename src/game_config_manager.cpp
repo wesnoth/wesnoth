@@ -306,7 +306,6 @@ void game_config_manager::load_game_config_for_game(
 	game_config::scoped_preproc_define campaign(classification.campaign_define,
 		!classification.campaign_define.empty());
 	game_config::scoped_preproc_define multiplayer("MULTIPLAYER",
-		classification.campaign_define.empty() &&
 		classification.campaign_type == "multiplayer");
 
 	typedef boost::shared_ptr<game_config::scoped_preproc_define> define;
