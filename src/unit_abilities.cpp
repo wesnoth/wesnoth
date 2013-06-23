@@ -227,34 +227,6 @@ namespace {
 		                     gender == unit_race::MALE ? male_key : female_key,
 		                     default_key);
 	}
-
-	/**
-	 * Strips the name of an ability/special from the description.
-	 * This is legacy support, introduced for version 1.11.1.
-	 * Can (should) be removed post-1.12.
-	 */
-	t_string legacy_description(const t_string & description)
-	{
-		// The legacy format is name + ':' + newline + description.
-		// We identify this by the colon.
-		std::string revision = description.str();
-		const size_t colon_pos = revision.find(':');
-		if ( colon_pos != std::string::npos )
-			// Make sure this colon ends the first line.
-			if ( revision.find('\n') == colon_pos + 1 ) {
-				//@deprecated Format changed for 1.11.1.
-				// Not logging this here because it would spam the screen,
-				// and these will have been caught when the help was generated.
-				//lg::wml_error << "Descriptions should no longer include the name as the first line.\n";
-
-				// Remove the first line.
-				revision.erase(0, colon_pos + 2);
-				return t_string(revision);
-			}
-
-		// No adaptation needed.
-		return description;
-	}
 }
 
 /**
@@ -286,7 +258,7 @@ std::vector<boost::tuple<t_string,t_string,t_string> > unit::ability_tooltips(st
 				res.push_back(boost::make_tuple(
 						ab.cfg["name"].t_str(),
 						name,
-						legacy_description(ab.cfg["description"].t_str()) ));
+						legacy::ability_description(ab.cfg["description"].t_str()) ));
 				if ( active_list )
 					active_list->push_back(true);
 			}
@@ -304,7 +276,7 @@ std::vector<boost::tuple<t_string,t_string,t_string> > unit::ability_tooltips(st
 				res.push_back(boost::make_tuple(
 						default_value(ab.cfg, "name_inactive", "name").t_str(),
 						name,
-						legacy_description(default_value(ab.cfg, "description_inactive", "description").t_str()) ));
+						legacy::ability_description(default_value(ab.cfg, "description_inactive", "description").t_str()) ));
 				active_list->push_back(false);
 			}
 		}
@@ -623,7 +595,7 @@ std::vector<std::pair<t_string, t_string> > attack_type::special_tooltips(
 		if ( !active_list || special_active(sp.cfg, AFFECT_EITHER) ) {
 			const t_string &name = sp.cfg["name"];
 			if (!name.empty()) {
-				res.push_back(std::make_pair(name, legacy_description(sp.cfg["description"].t_str()) ));
+				res.push_back(std::make_pair(name, legacy::ability_description(sp.cfg["description"].t_str()) ));
 				if ( active_list )
 					active_list->push_back(true);
 			}
@@ -631,7 +603,7 @@ std::vector<std::pair<t_string, t_string> > attack_type::special_tooltips(
 			t_string const &name = default_value(sp.cfg, "name_inactive", "name").t_str();
 			if (!name.empty()) {
 				res.push_back(std::make_pair(
-					name, legacy_description(default_value(sp.cfg, "description_inactive", "description").t_str()) ));
+					name, legacy::ability_description(default_value(sp.cfg, "description_inactive", "description").t_str()) ));
 				active_list->push_back(false);
 			}
 		}

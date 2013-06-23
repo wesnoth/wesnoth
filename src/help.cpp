@@ -1154,34 +1154,6 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 }
 
 
-namespace {
-	/**
-	 * Strips the name of an ability/special from the description.
-	 * This is legacy support, introduced for version 1.11.1.
-	 * Can (should) be removed post-1.12.
-	 */
-	t_string legacy_description(const t_string & description)
-	{
-		// The legacy format is name + ':' + newline + description.
-		// We identify this by the colon.
-		std::string revision = description.str();
-		const size_t colon_pos = revision.find(':');
-		if ( colon_pos != std::string::npos )
-			// Make sure this colon ends the first line.
-			if ( revision.find('\n') == colon_pos + 1 ) {
-				//@deprecated Format changed for 1.11.1.
-				lg::wml_error << "Descriptions should no longer include the name as the first line.\n";
-
-				// Remove the first line.
-				revision.erase(0, colon_pos + 2);
-				return t_string(revision);
-			}
-
-		// No adaptation needed.
-		return description;
-	}
-}
-
 std::vector<topic> generate_ability_topics(const bool sort_generated)
 {
 	std::vector<topic> topics;
@@ -1210,7 +1182,7 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 				for(size_t j=0; j < abil_vec.size(); ++j) {
 					t_string const& abil_name = abil_vec[j];
 					std::string const abil_desc =
-						j >= desc_vec.size() ? "" : legacy_description(desc_vec[j]).str();
+						j >= desc_vec.size() ? "" : desc_vec[j].str();
 
 					ability_description.insert(std::make_pair(abil_name, abil_desc));
 
