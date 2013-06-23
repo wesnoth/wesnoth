@@ -1,11 +1,11 @@
-# Copyright (C) Wesnoth development team, 2007-2012.
+# Copyright (C) Wesnoth development team, 2007-2013.
 # Translators:
-#  Andrius Štikonas <stikonas@gmail.com>, 2007-2012.
+#  Andrius Štikonas <stikonas@gmail.com>, 2007-2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-22 22:04-0400\n"
+"POT-Creation-Date: 2013-05-22 22:10-0400\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -2006,7 +2006,6 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:223
 #, fuzzy
-#| msgid "Content"
 msgid "Contents"
 msgstr "Turinys"
 
@@ -3400,7 +3399,7 @@ msgstr ""
 
 #: src/gui/dialogs/lobby_main.cpp:662
 msgid "Games: showing $num_shown out of $num_total"
-msgstr ""
+msgstr "Žaidimai: rodoma $num_shown iš $num_total"
 
 #: src/gui/dialogs/lobby_main.cpp:705
 msgid "Observers allowed"
@@ -3673,7 +3672,6 @@ msgstr "Pervadinti dalinį"
 
 #: src/hotkeys.cpp:88
 #, fuzzy
-#| msgid "Delete File"
 msgid "Delete Unit"
 msgstr "Trinti failą"
 
@@ -3858,7 +3856,6 @@ msgstr "Keisti žemėlapį"
 
 #: src/hotkeys.cpp:147
 #, fuzzy
-#| msgid "Switch Map"
 msgid "Switch Area"
 msgstr "Keisti žemėlapį"
 
@@ -3896,7 +3893,6 @@ msgstr "Keisti pusę"
 
 #: src/hotkeys.cpp:160
 #, fuzzy
-#| msgid "Swap Foreground/Background Terrains"
 msgid "Swap Foreground/Background Palette Item"
 msgstr "Sukeisti priekinio plano ir fono vietoves"
 
@@ -3914,7 +3910,6 @@ msgstr ""
 
 #: src/hotkeys.cpp:165
 #, fuzzy
-#| msgid "Switch Map"
 msgid "Switch Time of Day"
 msgstr "Keisti žemėlapį"
 
@@ -3979,7 +3974,6 @@ msgstr "Piešimo įrankis"
 
 #: src/hotkeys.cpp:175
 #, fuzzy
-#| msgid "Next Tool"
 msgid "Item Tool"
 msgstr "Kitas įrankis"
 
@@ -4012,7 +4006,6 @@ msgstr "Kaimo auksas"
 
 #: src/hotkeys.cpp:179
 #, fuzzy
-#| msgid "Recruit"
 msgid "Canrecruit"
 msgstr "Samdyti"
 
@@ -4030,7 +4023,6 @@ msgstr ""
 
 #: src/hotkeys.cpp:182
 #, fuzzy
-#| msgid "Change Control"
 msgid "Change Unit ID"
 msgstr "Pakeisti valdymą"
 
@@ -4085,7 +4077,7 @@ msgstr "Padėti"
 
 #: src/hotkeys.cpp:196
 msgid "Export Selected Coordinates to System Clipboard"
-msgstr ""
+msgstr "Eksportuoti pažymėtas koordinates į sistemos iškarpinę"
 
 #: src/hotkeys.cpp:197
 msgid "Select All"
@@ -4161,7 +4153,6 @@ msgstr "Atnaujinti vietovių perėjimus"
 
 #: src/hotkeys.cpp:217
 #, fuzzy
-#| msgid "Update Terrain Transitions"
 msgid "Toggle Terrain Transition Update"
 msgstr "Atnaujinti vietovių perėjimus"
 
@@ -4492,28 +4483,3 @@ msgid ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
-
-#~ msgid "Add this username to your friends list"
-#~ msgstr "Pridėti šį naudotojo vardą prie jūsų draugų sąrašo"
-
-#~ msgid "Add this username to your ignores list"
-#~ msgstr "Pridėti šį naudotojo vardą prie jūsų ignoruojamų sąrašo"
-
-#~ msgid "Auto-update Terrain Transitions: Yes"
-#~ msgstr "Automatiškai atnaujinti vietovių perėjimus: taip"
-
-#~ msgid "Types"
-#~ msgstr "Tipai"
-
-#~ msgid "Variable"
-#~ msgstr "Kintamasis"
-
-#~ msgid "Use new lobby interface"
-#~ msgstr "Naudoti naują vestibiulio sąsają"
-
-#~ msgid "Use New Lobby Interface"
-#~ msgstr "Naudoti naują vestibiulio sąsają"
-
-#, fuzzy
-#~ msgid "Reset Defaults"
-#~ msgstr "Numatyta"

@@ -15,6 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
+"X-Generator: Poedit 1.5.5\n"
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:39
 msgid ""
@@ -1800,8 +1801,8 @@ msgid ""
 "We will miss $deadguy.name| because he had $deadguy.experience experience "
 "points. He would have advanced to second level soon."
 msgstr ""
-"Pasiilgsime $deadguy.name|, nes jis turėjo $deadguy.experience patirties "
-"taškų. Jau greitai būtų pasiekęs antrą lygį."
+"$deadguy.name| bus minimas geru žodžiu, nes jis turėjo $deadguy.experience "
+"patirties taškų. Jau greitai būtų pasiekęs antrą lygį."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1432
@@ -1809,9 +1810,10 @@ msgid ""
 "We will miss $deadguy.name| because she had $deadguy.experience experience "
 "points. She would have advanced to second level soon."
 msgstr ""
-"Pasiilgsime $deadguy.name|, nes ji turėjo $deadguy.experience patirties "
-"taškų. Jau greitai būtų pasiekusi antrą lygį."
+"$deadguy.name| bus minima geru žodžiu, nes ji turėjo $deadguy.experience "
+"patirties taškų. Jau greitai būtų pasiekusi antrą lygį."
 
+# ignore-interpolations: $deadguy.name
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1449
 msgid ""
@@ -1821,6 +1823,7 @@ msgstr ""
 "Pasiilgsime tavęs, bet tai bent jau ne kurio nors iš mūsų patyrusių karių "
 "mirtis!"
 
+# ignore-interpolations: $deadguy.name
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1452
 msgid ""

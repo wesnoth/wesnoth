@@ -15,6 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
+"X-Generator: Poedit 1.5.5\n"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:11
@@ -102,17 +103,16 @@ msgstr "Grafikos kūrimas"
 #. [scenario]: id=01_The_Outpost
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:4
 msgid "The Outpost"
-msgstr ""
+msgstr "Įtvirtinimas"
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:17
-#, fuzzy
 msgid ""
 "It was the thirteenth year of Konrad II’s reign when the strange occurrences "
 "in the Estmark Hills on the eastern border of Wesnoth began."
 msgstr ""
-"Ėjo tryliktieji Konrado II valdymo metai ir Estmarko kalvose Vesnoto rytuose "
-"ėmė dėtis keisti dalykai."
+"Ėjo tryliktieji Konrado II valdymo metai, kai Estmarko kalvose Vesnoto "
+"rytuose ėmė dėtis keisti dalykai."
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:21
@@ -352,7 +352,7 @@ msgstr "Mal-Uldharas"
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:184
 msgid "Defend the outpost"
-msgstr ""
+msgstr "Apginkite įtvirtinimą"
 
 #. [objective]: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:188
@@ -423,7 +423,7 @@ msgstr ""
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:229
 msgid "Men, to arms!"
-msgstr ""
+msgstr "Vyrai, prie ginklų!"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:240
@@ -467,9 +467,8 @@ msgstr ""
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:300
-#, fuzzy
 msgid "What?! We must hold the outpost! And where did Dacyn go?!"
-msgstr "Ką?! Vyrai, prie ginklų! Ir kur prapuolė Deisynas?"
+msgstr "Ką?! Turime apginti įtvirtinimą! Ir kur prapuolė Deisynas?!"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:333
@@ -552,9 +551,8 @@ msgstr "Mal-Bakralas"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:92
-#, fuzzy
 msgid "Move Gweddry to the tunnel exit"
-msgstr "Gveddris pasiekia tunelio pabaigą"
+msgstr "Nuveskite Gveddrį iki tunelio pabaigos"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:121
@@ -593,10 +591,9 @@ msgstr "Kas čia eina?"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:180
-#, fuzzy
 msgid ""
 "We are soldiers of the king of Wesnoth. Will you help us fight these trolls?"
-msgstr "Esame Vesnoto karaliaus kariai. Ar padėsite pasprukti nuo šių trolių?"
+msgstr "Esame Vesnoto karaliaus kariai. Ar padėsite nugalėti šiuos trolius?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:184
@@ -705,14 +702,14 @@ msgstr ""
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:338
-#, fuzzy
 msgid ""
 "They follow us... we must get out of this tunnel. It looks like it is "
 "leading east. That is unfortunate, for it will take us beyond the borders of "
 "Wesnoth. But it is our only option."
 msgstr ""
 "Jie mus seka... Reikia ištrūkti iš tunelio. Regis, jis veda į rytus. "
-"Negerai, nes taip tik tolstame nuo Veldyno. Bet kito pasirinkimo neturime."
+"Negerai, nes taip tik nukeliausime už Wesnoto sienų. Bet kito pasirinkimo "
+"neturime."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:351
@@ -752,16 +749,14 @@ msgstr "Pabėgome iš tų tamsių tunelių! Bet kur dabar esame?"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:159
-#, fuzzy
 msgid ""
 "We are in the middle of the eastern mountains, in a mountain pass leading "
 "east and west. We need to head north, but we cannot go through the "
 "mountains... we must go east, or west, and hope we can get around them."
 msgstr ""
 "Mes vidury rytinių kalnų, perėjoje, vedančioje iš rytų į vakarus. Reikia "
-"keliauti šiaurėn ir susitikti su Ovaeku, bet negalime eiti tiesiai per "
-"kalnus... Reikia eiti arba į rytus, arba į vakarus ir tikėtis, kad pavyks "
-"apeiti."
+"keliauti šiaurėn, bet negalime eiti tiesiai per kalnus... Reikia eiti arba į "
+"rytus, arba į vakarus ir tikėtis, kad pavyks apeiti."
 
 #. [message]: speaker=Mal-Kallat
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:163
@@ -789,23 +784,21 @@ msgstr "Tuomet tai bus tavo bėda."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:179
-#, fuzzy
 msgid ""
 "These undead are toying with us! This adept is weak — we may be able to take "
 "his fort."
 msgstr ""
 "Tie nemirėliai su mumis žaidžia! Šitas naujokas silpnas – gal pavyks "
-"užgrobti jo pilį."
+"užgrobti jo fortą."
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:183
-#, fuzzy
 msgid ""
 "A good idea. Then, we must kill either of the dark sorcerers. I would prefer "
 "to attack the western one, so we can return to Wesnoth."
 msgstr ""
 "Gera mintis. Tada reikia užmušti kurį nors kerėtoją. Rinkčiausi pulti "
-"vakarinį, kad būtume arčiau Vesnoto."
+"vakarinį, kad galėtume grįžti į Vesnotą."
 
 #. [message]: speaker=Mal-Skraat
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:194
@@ -863,14 +856,13 @@ msgstr "Sveikinimai, keliautojai! Sveiki atvykę į mano karalystę."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:122
-#, fuzzy
 msgid ""
 "Would it be possible for us to rest in your lands for a while? We have been "
 "pursued by fell undead, although they did not dare follow us into the "
 "forest... yet."
 msgstr ""
 "Ar galima būtų mums šiek tiek pailsėti tavo žemėse? Mus persekioja nelabieji "
-"nemirėliai, nors jie ir pabijojo įžengti į mišką... Kol kas."
+"nemirėliai, nors jie ir pabijojo sekti mus į mišką... Kol kas."
 
 #. [message]: speaker=Volas
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:126
@@ -879,16 +871,14 @@ msgstr "Žinoma."
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:130
-#, fuzzy
 msgid ""
 "Good. Now, you should be warned: this undead warlord is very powerful. If "
 "you choose to fight, even if you are victorious, few will survive. I invite "
 "you to join us, and head north."
 msgstr ""
-"Gerai. Turiu tave perspėti. Šitas nemirėlių vadas labai galingas. Jeigu "
+"Gerai. Turiu tave perspėti: šitas nemirėlių vadas labai galingas. Jeigu "
 "stosi su juo į kovą, mažai kas išgyvens, net jei laimėsi. Kviečiu jus "
-"prisijungti prie mūsų ir keliauti į šiaurę. Galbūt pavyks pasprukti iš "
-"teritorijos, kurią jis siekia užkariauti."
+"prisijungti prie mūsų ir keliauti į šiaurę."
 
 #. [message]: speaker=Volas
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:134
@@ -937,13 +927,12 @@ msgstr "Kas? Orkai! Iš kur jie atsirado?"
 
 #. [message]: speaker=Volas
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:168
-#, fuzzy
 msgid ""
 "I know not. But they have made camp on the northern path. You will have to "
 "fight them to move on."
 msgstr ""
-"Šito nežinau. Bet jie tiesiai ant kelio į šiaurę. Teks su jais kautis, jei "
-"norite išvykti."
+"Šito nežinau. Bet jie įkūrė stovyklą ant kelio į šiaurę. Teks su jais "
+"kautis, jei norite išvykti."
 
 #. [message]: speaker=Gruga-Har
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:172
@@ -984,7 +973,6 @@ msgstr "Cha cha cha! Nagfa užmuš elfus!"
 
 #. [message]: speaker=Nafga
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:235
-#, fuzzy
 msgid ""
 "No! This is the first time I have failed a mission, and it will be my last!"
 msgstr "Ne! Aš pirmą kartą neįvykdau užduoties... Ir paskutinį!"
@@ -1005,9 +993,8 @@ msgstr "Tu mane apvylei, Vesnotieti..."
 
 #. [message]: speaker=Volas
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:269
-#, fuzzy
 msgid "We have defeated the orcs! Now you can rest before your journey."
-msgstr "Nugalėjome orkus! Dabar galime pasiilsėti ir išvykti."
+msgstr "Nugalėjome orkus! Dabar gali pailsėti prieš kelionę."
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:273
@@ -1020,9 +1007,8 @@ msgstr ""
 
 #. [message]: speaker=Volas
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:277
-#, fuzzy
 msgid "Very well. I will send guides to lead you north to your allies."
-msgstr "Gerai. Pasiųsiu vedlius, kad nuvestų jus pas jūsiškius."
+msgstr "Gerai. Pasiųsiu vedlius, kad nuvestų jus į šiaurę pas jūsiškius."
 
 #. [scenario]: id=04b_The_Undead_Border_Patrol
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:4
@@ -1042,24 +1028,21 @@ msgstr "Nugalėkite bet kurį iš priešų vadų"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:119
-#, fuzzy
 msgid ""
 "Now that we are free of the mountain range the path northwards is clear. Let "
 "us go north and try to reach Owaec at the outpost."
 msgstr ""
-"Ištrūkome iš kalnų, kelias šiaurėn laisvas. Keliaukime į šiaurę pas Ovaeką į "
-"jo stovyklą."
+"Ištrūkome iš kalnų, kelias šiaurėn dabar laisvas. Keliaukime į šiaurę pas "
+"Ovaeką į jo stovyklą."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:123
-#, fuzzy
 msgid ""
 "Wait. I am not sure that is the best option. If we go east now, we may be "
 "able to find the lich who attacked us and destroy him. He must be nearby."
 msgstr ""
 "Palauk. Nesu tikras, ar taip bus geriausia. Jei dabar pasuksime į rytus, gal "
-"rasime ličą Mal-Ravanalą, tą, kuris mus puolė, ir sunaikinsime jį, kol vėl "
-"neužpuolė Vesnoto. Įtariu, kad mums ištrūkus, jis grįžo į rytus mūsų ieškoti."
+"rasime ličą, kuris mus puolė, ir sunaikinsime jį. Jis turėtų būti netoliese."
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:128
@@ -1085,9 +1068,8 @@ msgstr "Dabar aš niekada nebebūsiu paaukštintas!"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:151
-#, fuzzy
 msgid "Come, let us return to Wesnoth and head for the Northern Outpost."
-msgstr "Eime, grįžkime į Vesnotą ir pagelbėkime šiaurinei tvirtovei."
+msgstr "Eime, grįžkime į Vesnotą ir judėkime šiaurinės tvirtovės link."
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:168
@@ -1109,9 +1091,8 @@ msgstr "Noriu sunaikinti blogį prieš jam paplintant. Eime į rytus!"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:178
-#, fuzzy
 msgid "I cannot say this is a good decision, but I will follow you."
-msgstr "Nepasakyčiau, kad tai geras sprendimas, bet aš eisiu kartu."
+msgstr "Nepasakyčiau, kad tai geras sprendimas, bet eisiu kartu."
 
 #. [message]: speaker=Mal-Skraat
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:182
@@ -1120,11 +1101,8 @@ msgstr "Nee!! Aš nebūsiu paaukštintas, jei jie pabėgs!"
 
 #. [option]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:193
-#, fuzzy
 msgid "You are right. It is foolish to go onward — we will turn back."
-msgstr ""
-"Tu teisus. Kvaila eiti toliau. Turime nugalėti Mal-Skraatą ir pasukti atgal "
-"Šiaurinės tvirtovės link."
+msgstr "Tu teisus. Kvaila eiti toliau — pasuksime atgal."
 
 #. [message]: speaker=Mal-Skraat
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:197
@@ -1133,12 +1111,12 @@ msgstr "Gerai! Jei nugalėsiu juos, galiu tapti liču!"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:213
-#, fuzzy
 msgid ""
 "We failed to defeat either enemy! Now more undead will come and we will be "
 "overwhelmed!"
 msgstr ""
-"Mums nepavyko nugalėti nė vieno priešo! Dabar jų ateis daugiau ir mums galas!"
+"Mums nepavyko nugalėti nė vieno priešo! Dabar ateis daugiau nemirėlių ir "
+"mums galas!"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:222
@@ -1180,9 +1158,8 @@ msgstr "Rava-Krodazas"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:144
-#, fuzzy
 msgid "Escape by defeating one of the dark sorcerers"
-msgstr "Pabėkite iš sostinės nužudydami vieną iš dviejų tamsos burtininkų"
+msgstr "Pabėkite, nugalėdami vieną iš tamsos burtininkų"
 
 #. [unit]: type=Paladin, id=Terraent
 #: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:211
@@ -1200,26 +1177,23 @@ msgstr ""
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:246
-#, fuzzy
 msgid ""
 "Yes, but look! The undead forces are closing in behind us. As I said before "
 "we cannot kill Mal-Ravanal. It was foolish to come this far; we must turn "
 "back!"
 msgstr ""
 "Taip, bet pažvelk! Nemirėlių pajėgos baigia mus apsupti. Kaip ir sakiau, "
-"negalime nugalėti Mal-Ravanalo. Kvaila buvo eiti taip toli, reikia skubiai "
+"negalime nugalėti Mal-Ravanalo. Kvaila buvo eiti taip toli; reikia skubiai "
 "trauktis!"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:251
-#, fuzzy
 msgid ""
 "Perhaps. To retreat, we must kill one of these dark sorcerers that follow "
 "us. But, perhaps we can kill this Mal-Ravanal. I might wish to try."
 msgstr ""
 "Galbūt. Norint pabėgti, teks nugalėti vieną iš tų mus persekiojančių "
-"tamsiųjų kerėtojų. Bet gal visgi įveiksime Mal-Ravanalą. Norėčiau bent "
-"pabandyti."
+"tamsiųjų kerėtojų. Bet gal įveiksime Mal-Ravanalą. Norėčiau pabandyti."
 
 #. [message]: speaker=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:256
@@ -1337,7 +1311,7 @@ msgstr ""
 #. [scenario]: id=05_Northern_Outpost
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:4
 msgid "Northern Outpost"
-msgstr ""
+msgstr "Šiaurinis įtvirtinimas"
 
 #. [side]: type=Mounted Fighter, id=Owaec
 #. [unit]: id=Owaec, type=$stored_Owaec.type
@@ -1375,9 +1349,8 @@ msgstr "Blogis"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:103
-#, fuzzy
 msgid "Find the outlaw leader and defeat him"
-msgstr "Suraskite kaime nusikaltėlių vadą ir užmuškite jį"
+msgstr "Suraskite nusikaltėlių vadą ir nugalėkite jį"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:107
@@ -1418,15 +1391,14 @@ msgstr ""
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:153
-#, fuzzy
 msgid ""
 "Indeed, they do. And do not think you will be able to defeat them. They are "
 "too powerful. We are heading for the Northlands, where I hope to find a "
 "means to stop this invasion. Will you join us?"
 msgstr ""
 "Išties. Ir negalvok, kad galėsi juos nugalėti, jie per daug galingi. Mes "
-"skubame į šiaurines žemes, kur turime vilties nuo jų atsiplėšti. Ar "
-"prisijungsi?"
+"skubame į šiaurines žemes, kur tikiuosi rasime būdų sustabdyti šį "
+"įsiveržimą. Ar prisijungsi?"
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:157
@@ -1447,27 +1419,26 @@ msgstr ""
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:165
-#, fuzzy
 msgid ""
 "If the situation is as dire as you’ve described, I must... but we have no "
 "way to remove these bandits."
-msgstr "Na, tu sakai, tu žinai... Bet aš nežinau kaip atsikratyti tų banditų."
+msgstr ""
+"Jei padėtis tokia baisi, kaip aprašei, aš privalau... Bet nėra kaip "
+"atsikratyti tų banditų."
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:169
-#, fuzzy
 msgid ""
 "I think I may be able to help. Gweddry, I believe I can cast a spell that "
 "will reveal the bandits when our troops enter a village. However, this magic "
 "will require my full attention; I won’t be able to help you in battle."
 msgstr ""
-"Manau, galėsiu tau padėti. Aš magas. Manau, galiu sukurpti tokius burtus, "
-"kurie išduotų banditus, kai įeisi į kaimą. Bet mūšyje iš manęs pagalbos "
-"nebus."
+"Manau, galėsiu padėti. Gveddri, manau galiu sukurpti tokius burtus, kurie "
+"išduotų banditus, kai mūsų kariai įeis į kaimą. Bet šie burtai reikalauja iš "
+"manęs pilno susikaupimo. Negalėsiu padėti jums mūšyje."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:173
-#, fuzzy
 msgid ""
 "That sounds good; it is time to drive out some bandits. Dacyn, cast your "
 "spell!"
@@ -1482,9 +1453,8 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:181
-#, fuzzy
 msgid "You may now recruit horsemen!"
-msgstr "Jūs dabar galite samdyti žmogėdras!"
+msgstr "Dabar galite samdyti raitelius!"
 
 #. [message]: speaker=Lanar-Skal
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:186
@@ -1519,9 +1489,8 @@ msgstr ""
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:457
-#, fuzzy
 msgid "That’s the bandit leader! Kill him!"
-msgstr "Tai banditų vadas! Užmušk jį ir būsime įvykdę savo pareigą!"
+msgstr "Tai banditų vadas! Užmušk jį!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:497
@@ -1763,9 +1732,8 @@ msgstr "Drogas"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:356
-#, fuzzy
 msgid "You may now recruit young ogres!"
-msgstr "Jūs dabar galite samdyti žmogėdras!"
+msgstr "Dabar galite samdyti žmogėdras!"
 
 #. [scenario]: id=07b_Undead_Crossing
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:4
@@ -2249,9 +2217,8 @@ msgstr ""
 
 #. [message]: speaker=King Dra-Nak
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:340
-#, fuzzy
 msgid "Kill them!"
-msgstr "Užmuškite juos."
+msgstr "Užmuškite juos!"
 
 #. [message]
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:513
@@ -2433,9 +2400,8 @@ msgstr ""
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:360
-#, fuzzy
 msgid "How do you propose to do that?"
-msgstr "Taigi ką tu siūlai?"
+msgstr "Kaip siūlai tą padaryti?"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:365
@@ -2519,9 +2485,8 @@ msgstr ""
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:437
-#, fuzzy
 msgid "What was that?!"
-msgstr "Kas tai per garsas?!"
+msgstr "Kas čia buvo?!"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:441
@@ -2577,7 +2542,7 @@ msgstr "Konradas II"
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:131
 msgid "Move Gweddry to Weldyn castle"
-msgstr ""
+msgstr "Nuveskite Gveddrį į Veldyno pilį"
 
 #. [objective]: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:147
@@ -2608,12 +2573,12 @@ msgstr ""
 #. [message]: speaker=Konrad II
 #: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:236
 msgid "Come, into the castle."
-msgstr ""
+msgstr "Eime į pilį."
 
 #. [message]: speaker=Konrad II
 #: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:252
 msgid "Weldyn has been captured, and Wesnoth is no more..."
-msgstr ""
+msgstr "Veldynas užgrobtas, Vesnoto daugiau nebėra..."
 
 #. [scenario]: id=15_The_Council
 #: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:4
@@ -2826,7 +2791,7 @@ msgstr "Mal-Uknalus"
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:162
 msgid "Survive the long night"
-msgstr ""
+msgstr "Išgyvenkite ilgąją naktį"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:233
@@ -2855,15 +2820,13 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:256
-#, fuzzy
 msgid "I have died, and with me gone the kingdom is lost."
-msgstr "Aš miriau, ir be manęs miestas kris."
+msgstr "Aš miriau, ir be manęs karalystė prarasta."
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:268
-#, fuzzy
 msgid "Look, the sun has finally risen, and the undead are retreating."
-msgstr "Žiūrėkite, saulė patekėjo ir nemirėliai atsitraukia."
+msgstr "Žiūrėkite, saulė pagaliau patekėjo ir nemirėliai atsitraukia."
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:281
@@ -2880,17 +2843,17 @@ msgstr ""
 #. [message]: speaker=Konrad
 #: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:299
 msgid "Gweddry, have you made a decision regarding our course of action?"
-msgstr ""
+msgstr "Gveddri, ar nusprendei dėl tolimesnių veiksmų?"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:304
 msgid "I have. I think we should..."
-msgstr ""
+msgstr "Nusprendžiau. Manau, kad turime..."
 
 #. [option]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:306
 msgid "challenge Mal-Ravanal to a duel."
-msgstr ""
+msgstr "iškviesti Mal-Ravanalą į dvikovą."
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:310
@@ -2915,9 +2878,8 @@ msgstr "Dvikova"
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:65
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:165
-#, fuzzy
 msgid "Defeat Mal-Ravanal while Dacyn is nearby"
-msgstr "Nugalėkite Mal-Ravanalą"
+msgstr "Nugalėkite Mal-Ravanalą, kol Deisynas netoliese."
 
 #. [message]: speaker=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:96
@@ -2929,7 +2891,7 @@ msgstr ""
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:100
 msgid "Indeed, it is time to end this."
-msgstr ""
+msgstr "Iš tiesų, laikas tai pabaigti."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:106
@@ -2956,13 +2918,12 @@ msgstr ""
 
 #. [message]: speaker=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:260
-#, fuzzy
 msgid ""
 "Stop talking and fight! The rules say nothing about bringing up warriors "
 "that were already here."
 msgstr ""
-"Nustok kalbėjęs ir kaukis! Taisyklės nedraudžia man atsivesti karių, kurie "
-"jau čia buvo."
+"Nustok kalbėjęs ir kaukis! Taisyklės nieko nesako apie čia jau buvusių karių "
+"prikėlimą."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:271
@@ -3077,13 +3038,12 @@ msgstr ""
 #. [message]: speaker=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:313
 msgid "I shall destroy you personally!"
-msgstr ""
+msgstr "Sunaikinsiu tave asmeniškai!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:382
-#, fuzzy
 msgid "Kill them all!"
-msgstr "Užmuškite juos."
+msgstr "Užmuškite juos visus!"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:386
@@ -3095,7 +3055,7 @@ msgstr ""
 #. [message]: speaker=Konrad
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:401
 msgid "The Kingdom of Wesnoth dies with me!"
-msgstr ""
+msgstr "Vesnoto karalystė miršta kartu su manimi!"
 
 #. [scenario]: id=18_Epilogue
 #: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:4
@@ -3247,7 +3207,7 @@ msgstr ""
 #. [message]: speaker=Konrad II
 #: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:249
 msgid "Kneel, Gweddry."
-msgstr ""
+msgstr "Klaupkis, Gveddri."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:255
@@ -3411,17 +3371,17 @@ msgstr ""
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/utils/final_battle.cfg:16
 msgid "Your evil will darken the earth no longer!"
-msgstr ""
+msgstr "Tavo blogis daugiau nebetemdys žemės!"
 
 #. [message]: speaker=Terraent
 #: data/campaigns/Eastern_Invasion/utils/final_battle.cfg:31
 msgid "I shall avenge the death of my comrades!"
-msgstr ""
+msgstr "Atkeršysiu už savo bendražygių mirtį!"
 
 #. [message]: speaker=Engineer
 #: data/campaigns/Eastern_Invasion/utils/final_battle.cfg:46
 msgid "I’m gonna blow you up!"
-msgstr ""
+msgstr "Aš tave susprogdinsiu!"
 
 #. [message]: speaker=Grug
 #: data/campaigns/Eastern_Invasion/utils/final_battle.cfg:61
@@ -3436,7 +3396,7 @@ msgstr ""
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/utils/final_battle.cfg:91
 msgid "This is for Wesnoth!"
-msgstr ""
+msgstr "Tai už Vesnotą!"
 
 #. [message]: speaker=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/utils/final_battle.cfg:104

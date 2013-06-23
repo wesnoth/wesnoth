@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-22 22:03-0400\n"
+"POT-Creation-Date: 2013-05-22 22:09-0400\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -75,7 +75,7 @@ msgstr "miškas"
 #. [editor_group]: id=fall
 #: data/core/editor/terrain-groups.cfg:52
 msgid "fall"
-msgstr ""
+msgstr "rudens"
 
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:59
@@ -320,31 +320,29 @@ msgstr "(Naujas žemėlapis)"
 
 #: src/editor/map/context_manager.cpp:176
 msgid "Choose a Map to Open"
-msgstr ""
+msgstr "Pasirinkite atveriamą žemėlapį"
 
 #: src/editor/map/context_manager.cpp:234
 #, fuzzy
-#| msgid "(New Map)"
 msgid "(New Area)"
 msgstr "(Naujas žemėlapis)"
 
 #: src/editor/map/context_manager.cpp:257
 #, fuzzy
-#| msgid "(New Map)"
 msgid "(New Side)"
 msgstr "(Naujas žemėlapis)"
 
 #: src/editor/map/context_manager.cpp:303
 msgid "Choose a Mask to Apply"
-msgstr ""
+msgstr "Pasirinkite pritaikoma kaukę"
 
 #: src/editor/map/context_manager.cpp:310
 msgid "Error loading mask"
-msgstr ""
+msgstr "Klaida, įkeliant kaukę"
 
 #: src/editor/map/context_manager.cpp:331
 msgid "Choose Target Map"
-msgstr ""
+msgstr "Pasirinkite žemėlapį"
 
 #: src/editor/map/context_manager.cpp:338
 #: src/editor/map/context_manager.cpp:700
@@ -357,16 +355,16 @@ msgstr "Išsaugoti žemėlapį kaip"
 
 #: src/editor/map/context_manager.cpp:460
 msgid "The file already exists. Do you want to overwrite it?"
-msgstr ""
+msgstr "Failas jau egzistuoja. Ar norite jį perrašyti?"
 
 #: src/editor/map/context_manager.cpp:494
 msgid "No random map generators found."
-msgstr ""
+msgstr "Nerasta atsitiktinių žemėlapių generatorių."
 
 #: src/editor/map/context_manager.cpp:507
 #: src/editor/map/context_manager.cpp:511
 msgid "Map creation failed."
-msgstr ""
+msgstr "Žemėlapio kūrimas nepavyko."
 
 #: src/editor/map/context_manager.cpp:523
 msgid "Unsaved Changes"
@@ -390,18 +388,20 @@ msgstr "Žemėlapis išsaugotas."
 
 #: src/editor/map/context_manager.cpp:679
 msgid "Loaded embedded map data"
-msgstr ""
+msgstr "Įkeliami įdėto žemėlapio duomenys"
 
 #: src/editor/map/context_manager.cpp:680
 #: src/editor/map/context_manager.cpp:694
 msgid "Map loaded from scenario"
-msgstr ""
+msgstr "Žemėlapis įkeltas iš scenarijaus"
 
 #: src/editor/map/context_manager.cpp:690
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
+"Įkeltas nurodytas žemėlapio failas:\n"
+"$new"
 
 #: src/editor/map/editor_map.cpp:149
 msgid "Player"
@@ -467,9 +467,3 @@ msgstr "Žaidėjas $player_number"
 #: src/gui/dialogs/editor_settings.cpp:161
 msgid "Custom setting"
 msgstr "Savas nustatymas"
-
-#~ msgid "Edit"
-#~ msgstr "Keisti"
-
-#~ msgid "Group"
-#~ msgstr "Grupė"

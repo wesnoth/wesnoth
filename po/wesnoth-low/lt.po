@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-22 22:04-0400\n"
+"POT-Creation-Date: 2013-05-22 22:10-0400\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -15,6 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
+"X-Generator: Poedit 1.5.5\n"
 
 #. [campaign]: id=LOW
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:86
@@ -4987,11 +4988,13 @@ msgstr ""
 "Tik Landaras turi valios padaryti tai, kas turi būti padaryta, kad elfai "
 "būtų išgelbėti!"
 
+# ignore-interpolations: $unit.name
 #. [message]: role=betrayer
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:171
 msgid "Hold, $unit.name|! Now we fight for Landar!"
 msgstr "Stok! Dabar mes kaunamės už Landarą!"
 
+# ignore-interpolations: $unit.name
 #. [message]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:193
 msgid "Hold your hand, $unit.name|! $second_unit.name| is on our side!"
@@ -5209,22 +5212,26 @@ msgstr ""
 msgid "No! It all ends here!"
 msgstr "Ne! Viskas čia baigiasi!"
 
+# ignore-interpolations: $unit.name
 #. [message]: speaker=second_unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/23_End_of_War.cfg:151
 msgid ""
 "Forgive me $unit.name|. I will sing your name in praise under the stars!"
 msgstr "Atleisk man. Tavo vardą garbindamas dainuosiu po žvaigždėmis!"
 
+# ignore-interpolations: $second_unit.name
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/23_End_of_War.cfg:155
 msgid "We must all pass, $second_unit.name|. Make your song beautiful..."
 msgstr "Visiems tenka išeiti. Tebūnie tavo daina graži..."
 
+# ignore-interpolations: $unit.name
 #. [message]: speaker=second_unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/23_End_of_War.cfg:173
 msgid "Forgive me, $unit.name|, this victory brings me no joy."
 msgstr "Atleisk man, ši pergalė neatneša man džiaugsmo."
 
+# ignore-interpolations: $second_unit.name
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/23_End_of_War.cfg:177
 msgid "Remember me to the trees, $second_unit.name|."
@@ -5422,11 +5429,6 @@ msgstr "gydo Kalenzą +4"
 
 #. [heals]: id=heals_kalenz
 #: data/campaigns/Legend_of_Wesmere/utils/abilities.cfg:36
-#, fuzzy
-#| msgid ""
-#| "If a shyde has developed a special bond to a person her healing abilities "
-#| "increase for him.  This allows Cleodil to give Kalenz extra points of "
-#| "healing at the beginning of your turn."
 msgid ""
 "If a shyde has developed a special bond to a person her healing abilities "
 "increase for him. This allows Cleodil to give Kalenz extra points of healing "
@@ -5512,6 +5514,7 @@ msgstr "Negaliu su orkais kautis vienas! Viskas baigta!"
 msgid "I grieve that I have failed you, my lord Kalenz..."
 msgstr "Man skauda širdį, kad tave nuvyliau, valdove Kalenzai..."
 
+# ignore-interpolations: $unit.name
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:124
 msgid "Farewell $unit.name. Your loyal service won’t be forgotten."
@@ -5521,10 +5524,3 @@ msgstr "Lik sveikas. Tavo ištikima tarnyba nebus užmiršta."
 #: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:135
 msgid "Oh, no! We are too late..."
 msgstr "O, ne! Pavėlavome..."
-
-#~ msgid ""
-#~ "Chapter three\n"
-#~ "Part one"
-#~ msgstr ""
-#~ "Trečias skyrius\n"
-#~ "Pirmoji dalis"

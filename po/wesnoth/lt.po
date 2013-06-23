@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-22 22:02-0400\n"
+"POT-Creation-Date: 2013-05-22 22:08-0400\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -101,17 +101,17 @@ msgstr "Uždrausti pranešimus"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:106
 msgid "Reverse time graphics"
-msgstr ""
+msgstr "Apsukti laiko grafiką"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:107
 msgid "Choose whether the sun moves left-to-right or right-to-left"
-msgstr ""
+msgstr "Pasirinkite, ar saulė juda iš kairės į dešinę, ar iš dešinės į kairę"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:114
 msgid "Follow unit actions"
-msgstr ""
+msgstr "Sekti karių veiksmus"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:115
@@ -544,9 +544,8 @@ msgstr "Rusų vertimas"
 
 #. [about]
 #: data/core/about.cfg:2675
-#, fuzzy
 msgid "Scottish Gaelic Translation"
-msgstr "Galisų vertimas"
+msgstr "Škotų gėlų vertimas"
 
 #. [about]
 #: data/core/about.cfg:2684
@@ -3371,9 +3370,8 @@ msgid ""
 msgstr "Priedo failo arba aplanko vardas neteisingas ir negali būti įdiegtas."
 
 #: src/addon/client.cpp:300 src/addon/manager_ui.cpp:682
-#, fuzzy
 msgid "Add-ons Manager"
-msgstr "Priedas įdiegtas"
+msgstr "Priedas tvarkyklė"
 
 #: src/addon/info.cpp:148
 msgid "addon_type^Campaign"
@@ -3482,9 +3480,8 @@ msgstr[2] "Pažymėtas priedas turi šias priklausomybes. Ar norite jas įdiegti
 msgstr[3] "Pažymėtas priedas turi šias priklausomybes. Ar norite jas įdiegti?"
 
 #: src/addon/manager_ui.cpp:157
-#, fuzzy
 msgid "Broken Dependencies"
-msgstr "Įdiegti priklausomybes"
+msgstr "Sugadintos priklausomybės"
 
 #: src/addon/manager_ui.cpp:173 src/addon/manager_ui.cpp:519
 msgid "Author"
@@ -3509,7 +3506,6 @@ msgid "Type"
 msgstr "Tipas"
 
 #: src/addon/manager_ui.cpp:204
-#, fuzzy
 msgid "Install Dependencies"
 msgstr "Įdiegti priklausomybes"
 
@@ -4506,12 +4502,12 @@ msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "Kai kurie daliniai dar gali judėti. Ar tikrai norite baigti ėjimą?"
 
 #: src/menu_events.cpp:882
+#, fuzzy
 msgid "Rename Unit"
-msgstr "Pervadinti dalinį"
+msgstr "Patobulinti dalinį"
 
 #: src/menu_events.cpp:883
 #, fuzzy
-#| msgid "Name: "
 msgid "Name:"
 msgstr "Vardas: "
 
@@ -5958,7 +5954,6 @@ msgstr ""
 
 #: src/playsingle_controller.cpp:222
 #, fuzzy
-#| msgid "(press $hotkey to keep moving)"
 msgid "(press $hotkey to deactivate)"
 msgstr "(paspauskite $hotkey ėjimo tęsimui)"
 
@@ -6717,215 +6712,3 @@ msgstr "Slėpti žaidėjo $player planus"
 #: src/whiteboard/manager.cpp:1114
 msgid "Whiteboard Options"
 msgstr ""
-
-#, fuzzy
-#~ msgid "Multiplayer_AI^Default AI (RCA)"
-#~ msgstr "RCA DI"
-
-#, fuzzy
-#~ msgid "Multiplayer_AI^Experimental AI"
-#~ msgstr "RCA DI"
-
-#~ msgid "Set AI parameters"
-#~ msgstr "Nustatyti DI parameterus"
-
-#, fuzzy
-#~ msgid "Enemy unit weight  (default: 100)"
-#~ msgstr "Pastebėtas priešiškas dalinys"
-
-#~ msgid "The Elves Besieged"
-#~ msgstr "Elfai apsupti"
-
-#~ msgid "Konrad"
-#~ msgstr "Konradas"
-
-#~ msgid "Rebels"
-#~ msgstr "Sukilėliai"
-
-#~ msgid "Delfador"
-#~ msgstr "Delfadoras"
-
-#~ msgid "Urug-Telfar"
-#~ msgstr "Urug-Telfaras"
-
-#~ msgid "Orcs"
-#~ msgstr "Orkai"
-
-#~ msgid "Knafa-Tan"
-#~ msgstr "Knafa-Tanas"
-
-#~ msgid "Maga-Knafa"
-#~ msgstr "Maga-Knafas"
-
-#~ msgid "Galdrad"
-#~ msgstr "Galdradas"
-
-#~ msgid "Chantal"
-#~ msgstr "Čantal"
-
-#, fuzzy
-#~ msgid "Move Konrad here"
-#~ msgstr "Atveskite vadą čia"
-
-#~ msgid "Animals"
-#~ msgstr "Gyvūnai"
-
-#~ msgid "Humans"
-#~ msgstr "Žmonės"
-
-#~ msgid "Forest Creatures"
-#~ msgstr "Miško būtybės"
-
-#~ msgid "Spiders"
-#~ msgstr "Vorai"
-
-#~ msgid "Wolves"
-#~ msgstr "Vilkai"
-
-#, fuzzy
-#~ msgid "Whelps"
-#~ msgstr "pagalba"
-
-#, fuzzy
-#~ msgid "End scenario"
-#~ msgstr "Baigti scenarijų"
-
-#~ msgid "Question for the Player"
-#~ msgstr "Klausimas žaidėjui"
-
-#~ msgid "Death of Rutburt"
-#~ msgstr "Rutburto mirtis"
-
-#~ msgid "Big Bad Orc"
-#~ msgstr "Didelis blogas orkas"
-
-#, fuzzy
-#~ msgid "Take the pass"
-#~ msgstr "Išsaugoti žemėlapį kaip"
-
-#~ msgid "Defeat all humans"
-#~ msgstr "Nugalėkite visus žmones"
-
-#~ msgid "Death of Big Bad Orc"
-#~ msgstr "Didelio blogo orko mirtis"
-
-#~ msgid "Dragon"
-#~ msgstr "Drakonas"
-
-#, fuzzy
-#~ msgid "Defeat Rowck"
-#~ msgstr "Pralaimėjimas"
-
-#, fuzzy
-#~| msgid "Death of Vanak"
-#~ msgid "Death of Vaddan"
-#~ msgstr "Vanako mirtis"
-
-#~ msgid "Gryphons"
-#~ msgstr "Grifai"
-
-#~ msgid "Another Bad Orc"
-#~ msgstr "Kitas blogas orkas"
-
-#~ msgid "Coward 1"
-#~ msgstr "c1"
-
-#~ msgid "Coward 2"
-#~ msgstr "Bailys 2"
-
-#~ msgid "Coward 3"
-#~ msgstr "Bailys 3"
-
-#~ msgid "Coward 4"
-#~ msgstr "Bailys 4"
-
-#, fuzzy
-#~ msgid "Guarded Location"
-#~ msgstr "Netinkama vietovė"
-
-#, fuzzy
-#~ msgid "Station 1"
-#~ msgstr "Frakcija"
-
-#, fuzzy
-#~ msgid "Station 2"
-#~ msgstr "Frakcija"
-
-#~ msgid "Coward"
-#~ msgstr "Bailys"
-
-#, fuzzy
-#~ msgid "Defeat all enemy units"
-#~ msgstr "Nugalėkite priešų vadus"
-
-#, fuzzy
-#~ msgid "Notes"
-#~ msgstr "Pastabos:"
-
-#, fuzzy
-#~ msgid "Defeat all lurkers"
-#~ msgstr "Atšaukti visus nurodymus"
-
-#~ msgid "Vanak"
-#~ msgstr "Vanakas"
-
-#, fuzzy
-#~ msgid "Messenger"
-#~ msgstr "Pranešimas:"
-
-#, fuzzy
-#~ msgid "AI moves Messenger here"
-#~ msgstr "Atveskite vadą čia"
-
-#~ msgid "Death of Vanak"
-#~ msgstr "Vanako mirtis"
-
-#~ msgid "Bandits"
-#~ msgstr "Banditai"
-
-#~ msgid "Death of Gertburt"
-#~ msgstr "Gertburto mirtis"
-
-#, fuzzy
-#~ msgid "Move Rossauba here"
-#~ msgstr "Atveskite vadą čia"
-
-#, fuzzy
-#~ msgid "Recruiting"
-#~ msgstr "Samdyti"
-
-#, fuzzy
-#~ msgid "Swarm"
-#~ msgstr "Pulkas:"
-
-#~ msgid "Bats"
-#~ msgstr "Šikšnosparniai"
-
-#~ msgid "Defeat all bats"
-#~ msgstr "Nugalėkite visus šikšnosparnius"
-
-#~ msgid "Death of all gryphons"
-#~ msgstr "Visų grifų mirtis"
-
-#~ msgid "More Wolves"
-#~ msgstr "Daugiau vilkų"
-
-#, fuzzy
-#~ msgid "Select another ai"
-#~ msgstr "Testinis scenarijus"
-
-#~ msgid "North"
-#~ msgstr "Šiaurė"
-
-#~ msgid "South"
-#~ msgstr "Pietūs"
-
-#, fuzzy
-#~ msgid "AI Location:"
-#~ msgstr "Netinkama vietovė"
-
-#~ msgid "Restore defaults"
-#~ msgstr "Atkurti numatytas reikšmes"
-
-#~ msgid "Unknown unit type '$type|' while generating traits"
-#~ msgstr "Generuojant bruožus nežinomas dalinio tipas „$type|“"
