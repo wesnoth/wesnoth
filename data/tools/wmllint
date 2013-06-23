@@ -702,6 +702,27 @@ translatables = re.compile( \
                "^type_.[a-z]*$|" \
                "^range_[a-z]*$")
 
+# This is a list of mainline campaigns, used to convert UMC from
+# "data/campaigns" to "data/add-ons" while not clobbering mainline.
+mainline = ("An_Orcish_Incursion",
+            "Dead_Water",
+            "Delfadors_Memoirs",
+            "Descent_Into_Darkness",
+            "Eastern_Invasion",
+            "Heir_To_The_Throne",
+            "Legend_of_Wesmere",
+            "Liberty",
+            "Northern_Rebirth",
+            "Sceptre_of_Fire",
+            "Son_Of_The_Black_Eye",
+            "The_Hammer_of_Thursagan",
+            "The_Rise_Of_Wesnoth",
+            "The_South_Guard",
+            "tutorial",
+            "Two_Brothers",
+            "Under_the_Burning_Suns",
+            )
+
 spellcheck_these = (\
     "cannot_use_message=",
     "caption=",
@@ -1676,7 +1697,23 @@ def hack_syntax(filename, lines):
         # This is done on every line
         if "campaigns/" in lines[i]:
             lines[i] = lines[i].replace("{~campaigns/", "{~add-ons/")
+            lines[i] = lines[i].replace("{~/campaigns/", "{~add-ons/")
             lines[i] = lines[i].replace("{@campaigns/", "{~add-ons/")
+            # Convert UMC to data/add-ons without clobbering mainline. Each path
+            # is checked against a list of mainline campaigns. UMC paths are
+            # updated to "data/add-ons/"; mainline path strings are unaltered.
+            x = 0
+            for dc in re.finditer(r"data/campaigns/(\w[\w'&+-]*)", lines[i]):
+                if dc.group(1) in mainline:
+                    continue
+                # Because start() and end() are based on the original position
+                # of each iteration, while each replacement shortens the line
+                # by two characters, we must subtract an increment that grows
+                # with each substitution.
+                lines[i] = lines[i][:dc.start()-x] + 'data/add-ons/' + dc.group(1) + lines[i][dc.end()-x:]
+                x = x+2
+                print '"%s", line %d: data/campaigns/%s -> data/add-ons/%s'\
+                      %(filename, i+1, dc.group(1), dc.group(1))
         elif "@add-ons/" in lines[i]:
             lines[i] = lines[i].replace("{@add-ons/", "{~add-ons/")
     # More syntax transformations would go here.
