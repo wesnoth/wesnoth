@@ -20,14 +20,13 @@
 #ifndef UNIT_DISPLAY_HPP_INCLUDED
 #define UNIT_DISPLAY_HPP_INCLUDED
 
-#include "unit_animation.hpp"
-#include "unit_map.hpp"
-#include "gamestatus.hpp"
 #include "game_display.hpp"
+#include "map_location.hpp"
+#include "unit_animation.hpp"
 
 class attack_type;
-class team;
 class unit;
+class vconfig;
 
 /**
  *  Contains a number of free functions which display units

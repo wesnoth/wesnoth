@@ -30,9 +30,10 @@
 #include "playcampaign.hpp"
 #include "preferences_display.hpp"
 #include "replay.hpp"
-#include "statistics.hpp"
+#include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/validator.hpp"
+#include "statistics.hpp"
 #include "version.hpp"
 #include "wml_exception.hpp"
 

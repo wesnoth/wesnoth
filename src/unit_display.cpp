@@ -23,6 +23,7 @@
 #include "mouse_events.hpp"
 #include "resources.hpp"
 #include "terrain_filter.hpp"
+#include "unit_map.hpp"
 
 #include <boost/foreach.hpp>
 

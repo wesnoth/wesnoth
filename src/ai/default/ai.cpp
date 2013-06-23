@@ -26,6 +26,7 @@
 #include "../../array.hpp"
 #include "../../dialogs.hpp"
 #include "../../game_events.hpp"
+#include "../../gamestatus.hpp"
 #include "../../log.hpp"
 #include "../../mouse_handler_base.hpp"
 #include "../../resources.hpp"

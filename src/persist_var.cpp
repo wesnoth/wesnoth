@@ -26,6 +26,8 @@
 #include "resources.hpp"
 #include "team.hpp"
 #include "util.hpp"
+#include "variable.hpp"
+
 
 struct persist_choice: mp_sync::user_choice {
 	const persist_context &ctx;

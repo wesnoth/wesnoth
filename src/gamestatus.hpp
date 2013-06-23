@@ -17,20 +17,24 @@
 #ifndef GAME_STATUS_HPP_INCLUDED
 #define GAME_STATUS_HPP_INCLUDED
 
+#include "config.hpp"
+#include "game_end_exceptions.hpp"
+#include "map_location.hpp"
 #include "mp_game_settings.hpp"
 #include "random.hpp"
 #include "simple_rng.hpp"
-#include "map_location.hpp"
-#include "variable.hpp"
-#include "serialization/binary_or_text.hpp"
+#include "tstring.hpp"
 #include "boost/shared_ptr.hpp"
-#include "game_end_exceptions.hpp"
-#include "unit.hpp"
 
-class config;
+class config_writer;
+class game_display;
+class gamemap;
 class scoped_wml_variable;
 class team;
-class gamemap;
+class unit_map;
+
+// Defined later in this header:
+class game_data;
 
 void convert_old_saves(config& cfg);
 
