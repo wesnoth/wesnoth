@@ -631,7 +631,7 @@ unit::~unit()
  */
 unit& unit::operator=(const unit& u)
 {
-	// Use copy constructor to make sure we are coherant
+	// Use copy constructor to make sure we are coherent
 	if (this != &u) {
 		this->~unit();
 		new (this) unit(u) ;
