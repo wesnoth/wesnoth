@@ -49,7 +49,7 @@ twidget* tbuilder_tree_view::build() const
 {
 	/*
 	 *  TODO see how much we can move in the constructor instead of
-	 *  builing in several steps.
+	 *  building in several steps.
 	 */
 	ttree_view *widget = new ttree_view(nodes);
 

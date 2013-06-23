@@ -611,7 +611,7 @@ template<
 #define LOG_HEADER "distributor mouse motion [" << owner_.id() << "]: "
 
 /**
- * @todo Test wehether the state is properly tracked when an input blocker is
+ * @todo Test whether the state is properly tracked when an input blocker is
  * used.
  */
 tdistributor::tdistributor(twidget& owner

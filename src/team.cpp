@@ -137,7 +137,7 @@ void team::team_info::read(const config &cfg)
 		color = cfg["side"].str();
 	}
 
-	// If arel starting new scenario overide settings from [ai] tags
+	// If arel starting new scenario override settings from [ai] tags
 	if (!user_team_name.translatable())
 		user_team_name = t_string::from_serialized(user_team_name);
 

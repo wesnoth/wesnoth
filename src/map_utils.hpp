@@ -37,7 +37,7 @@ const V& map_get_value_default(const std::map<K,V>& m, const K& key, const V& va
  *
  * @note Didn't use template<class K, class V> since that has a problem when
  * deducting the type when the key is a std::string and the type send is a
- * charater string, e.g. "foo". Letting the map deduct the K and V types works.
+ * character string, e.g. "foo". Letting the map deduct the K and V types works.
  *
  * @throw std::out_of_range       When the key is not in the map.
  *

@@ -31,7 +31,7 @@ public:
 	 */
 	tfolder_create(std::string& folder_name);
 
-	/** The excute function; see @ref tdialog for more information. */
+	/** The execute function; see @ref tdialog for more information. */
 	static bool execute(std::string& folder_name, CVideo& video)
 	{
 		return tfolder_create(folder_name).show(video);

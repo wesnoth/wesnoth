@@ -94,7 +94,7 @@ public:
 	/**
 	 * See @ref twidget::disable_click_dismiss.
 	 *
-	 * The default behavious is that a widget blocks easy close, if not it
+	 * The default behavior is that a widget blocks easy close, if not it
 	 * should override this function.
 	 */
 	bool disable_click_dismiss() const OVERRIDE;
@@ -333,7 +333,7 @@ private:
 	 * Contains the pointer to the configuration.
 	 *
 	 * Every control has a definition of how it should look, this contains a
-	 * pointer to the definition. The definition is resolution dependant, where
+	 * pointer to the definition. The definition is resolution dependent, where
 	 * the resolution is the size of the Wesnoth application window. Depending
 	 * on the resolution widgets can look different, use different fonts.
 	 * Windows can use extra scrollbars use abbreviations as text etc.
@@ -341,7 +341,7 @@ private:
 	tresolution_definition_ptr config_;
 
 	/**
-	 * Load class dependant config settings.
+	 * Load class dependent config settings.
 	 *
 	 * load_config will call this method after loading the config, by default it
 	 * does nothing but classes can override it to implement custom behavior.
@@ -397,7 +397,7 @@ private:
 	 * Initializes the control.
 	 *
 	 * Not everything can be code in the constructor since virtual functions
-	 * can't be used. So after contruction this function needs to be called and
+	 * can't be used. So after construction this function needs to be called and
 	 * only once, this happens when set_definition is called.
 	 */
 	virtual void init() {}

@@ -599,7 +599,7 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
 }
 
 /**
- * Returns a vector of names and decriptions for the specials of *this.
+ * Returns a vector of names and descriptions for the specials of *this.
  * Each std::pair in the vector has first = name and second = description.
  *
  * This uses either the active or inactive name/description for each special,

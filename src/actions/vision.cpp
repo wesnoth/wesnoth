@@ -172,7 +172,7 @@ shroud_clearer::shroud_clearer() : jamming_(), sightings_(), view_team_(NULL)
 
 /**
  * Destructor.
- * The purpose of explictly defining this is so we can log an error if the
+ * The purpose of explicitly defining this is so we can log an error if the
  * sighted events were neither fired nor explicitly ignored.
  */
 shroud_clearer::~shroud_clearer()
@@ -405,7 +405,7 @@ bool shroud_clearer::clear_unit(const map_location &view_loc,
                                 move_unit_spectator * spectator, bool instant)
 {
 	// This is just a translation to the more general interface. It is
-	// mot inlined so that vision.hpp does not have to include unit.hpp.
+	// not inlined so that vision.hpp does not have to include unit.hpp.
 	return clear_unit(view_loc, view_team, viewer.underlying_id(),
 	                  viewer.vision(), viewer.get_state(unit::STATE_SLOWED),
 	                  viewer.movement_type().get_vision(), viewer.get_location(),

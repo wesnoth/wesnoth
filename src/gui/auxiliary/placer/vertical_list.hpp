@@ -59,7 +59,7 @@ public:
 private:
 
 	/**
-	 * The maximum number of colums to use.
+	 * The maximum number of columns to use.
 	 *
 	 * This value is determined by the @p parallel_items parameter of
 	 * @ref tplacer_::build).

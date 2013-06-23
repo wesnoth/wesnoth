@@ -1084,7 +1084,7 @@ unit_type_data::unit_type_data() :
 
 namespace { // Helpers for set_config()
 	/**
-	 * Spits out an error message and throws a config::eror.
+	 * Spits out an error message and throws a config::error.
 	 * Called when apply_base_unit() detects a cycle.
 	 * (This exists merely to take the error message out of that function.)
 	 */
@@ -1168,7 +1168,7 @@ namespace { // Helpers for set_config()
 	}
 
 	/**
-	 * Processes [variation] tags of @a ut_cfg, handling inheritence and
+	 * Processes [variation] tags of @a ut_cfg, handling inheritance and
 	 * child clearing.
 	 */
 	void handle_variations(config & ut_cfg)

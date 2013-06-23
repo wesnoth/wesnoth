@@ -843,7 +843,7 @@ help_manager::~help_manager()
 //	map = NULL;
 	toplevel.clear();
 	hidden_sections.clear();
-    // These last numbers must be reset so that the content is regenreated.
+    // These last numbers must be reset so that the content is regenerated.
     // Upon next start.
 	last_num_encountered_units = -1;
 	last_num_encountered_terrains = -1;
@@ -1466,7 +1466,7 @@ public:
 			ss << "\n";
 		}
 
-		// Print the extra AMLA upgrage abilities, cross-reference them
+		// Print the extra AMLA upgrade abilities, cross-reference them
 		// to their respective topics.
 		if (!type_.adv_abilities().empty()) {
 			ss << _("Ability Upgrades: ");
@@ -2194,7 +2194,7 @@ int help_menu::process()
 			int x = mousex - menu::location().x;
 
 			const std::string icon_img = expanded(*sec) ? open_section_img : closed_section_img;
-			// we remove the right tickness (ne present bewteen icon and text)
+			// we remove the right thickness (ne present between icon and text)
 			int text_start = style_->item_size(indented_icon(icon_img, sec->level)).w - style_->get_thickness();
 
 			// NOTE: if you want to forbid click to the left of the icon
@@ -2406,7 +2406,7 @@ void help_text_area::handle_ref_cfg(const config &cfg)
 		// terrains. This will lead to the unit page generator creating
 		// invalid references.
 		//
-		// Disabling this is a kludgy workaround until the
+		// Disabling this is a kludgey workaround until the
 		// encountered_terrains system is fixed
 		//
 		// -- Ayin apr 8 2005

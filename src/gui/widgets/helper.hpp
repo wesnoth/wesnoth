@@ -146,7 +146,7 @@ std::string debug_truncate(const std::string& text);
 /**
  * Helper for function wrappers.
  *
- * For boost bind the a function sometimes needs to return a value althought
+ * For boost bind the a function sometimes needs to return a value although
  * the function called doesn't return one. This wrapper function can return a
  * fixed result for a certain functor.
  *

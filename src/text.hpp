@@ -33,7 +33,7 @@ namespace gui2 {
 namespace font {
 
 /**
- * Escapses the markup characters in a text.
+ * Escapes the markup characters in a text.
  *
  * The markups escaped are the ones used in the pango markup. The special
  * characters are @code <>'"&@endcode. They escaping is the same as for HTML.
@@ -260,7 +260,7 @@ private:
 	/** The way too long text is shown depends on this mode. */
 	PangoEllipsizeMode ellipse_mode_;
 
-	/** The alinment of the text. */
+	/** The alignment of the text. */
 	PangoAlignment alignment_;
 
 	/** The maximum length of the text. */

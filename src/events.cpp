@@ -473,7 +473,7 @@ int pump_info::ticks(unsigned *refresh_counter, unsigned refresh_rate) {
 
 #if SDL_VERSION_ATLEAST(2,0,0)
 
-/* The contanstants for the minimum and maximum are picked from the headers. */
+/* The constants for the minimum and maximum are picked from the headers. */
 #define INPUT_MIN 0x200
 #define INPUT_MAX 0x8FF
 

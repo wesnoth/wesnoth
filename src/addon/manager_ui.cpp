@@ -591,7 +591,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		filter_options.push_back(row);
 
 		// Now we enter information for list row display.
-		// Three fields are truncated to accomodate for GUI1's limitations.
+		// Three fields are truncated to accommodate for GUI1's limitations.
 
 		utils::ellipsis_truncate(display_author, 14);
 

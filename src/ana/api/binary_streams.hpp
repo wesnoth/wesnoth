@@ -45,7 +45,7 @@
 namespace ana
 {
     /**
-     * Module for object serialization and Marshalling.
+     * Module for object serialization and Marshaling.
      */
     namespace serializer
     {

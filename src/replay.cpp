@@ -308,7 +308,7 @@ void replay::add_movement(const std::vector<map_location>& steps)
 
 /**
  * Modifies the most recently recorded move to indicate that it
- * stopped early (due to unforseen circumstances, such as an ambush).
+ * stopped early (due to unforeseen circumstances, such as an ambush).
  * This will be ineffective if @a early_stop is not in the recorded path.
  */
 void replay::limit_movement(const map_location& early_stop)

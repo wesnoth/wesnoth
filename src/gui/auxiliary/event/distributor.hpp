@@ -20,9 +20,9 @@
  * Contains the event distributor.
  *
  * The event distributor exists of several classes which are combined in one
- * templated tdistributor class. The classes are closly tight together.
+ * templated tdistributor class. The classes are closely tight together.
  *
- * All classes have direct access to eachothers members since they should act
+ * All classes have direct access to each others members since they should act
  * as one. (Since the buttons are a templated subclass it's not possible to use
  * private subclasses.)
  *
@@ -31,7 +31,7 @@
  *
  * The tmouse_button classes are templated classes per mouse button, the
  * template parameters are used to make the difference between the mouse
- * buttons. Althought it's easily possible to add more mouse buttons in the
+ * buttons. Although it's easily possible to add more mouse buttons in the
  * code several places only expect a left, middle and right button.
  *
  * tdistributor is the main class to be used in the user code. This class
@@ -279,7 +279,7 @@ public:
 	void keyboard_add_to_chain(twidget* widget);
 
 	/**
-	 * Remove the widget from the keyborad chain.
+	 * Remove the widget from the keyboard chain.
 	 *
 	 * @param widget              The widget to be removed from the chain.
 	 */
@@ -310,7 +310,7 @@ private:
 	/**
 	 * Fall back keyboard focus_ items.
 	 *
-	 * When the focussed widget didn't handle the keyboard event (or no handler
+	 * When the focused widget didn't handle the keyboard event (or no handler
 	 * for the keyboard focus_) it is send all widgets in this vector. The order
 	 * is from rbegin() to rend().  If the keyboard_focus_ is in the vector it
 	 * won't get the event twice. The first item added to the vector should be

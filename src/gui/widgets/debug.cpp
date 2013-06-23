@@ -50,7 +50,7 @@ std::string get_child_id(
 		const std::string& parent_id, const unsigned row, const unsigned col)
 {
 	// Originally used this formatter function but it managed to return empty
-	// trings. No idea why so switched to using the good old lexical_cast
+	// strings. No idea why so switched to using the good old lexical_cast
 	// instead.
 //	return (formatter() << parent_id << "_C_" << row << '_' << col).c_str();
 	std::string result = parent_id + "_C_"
@@ -123,7 +123,7 @@ void tdebug_layout_graph::set_level(const std::string& level)
 	FOREACH(const AUTO& param, params) {
 		if(param == "all") {
 			level_ = ALL;
-			// No need to look further eventhought invalid items are now
+			// No need to look further eventhough invalid items are now
 			// ignored.
 			return;
 		} else if(param == "size") {
@@ -131,7 +131,7 @@ void tdebug_layout_graph::set_level(const std::string& level)
 		} else if(param == "state") {
 			level_ |= STATE_INFO;
 		} else {
-			// loging might not be up yet.
+			// logging might not be up yet.
 			std::cerr << "Unknown level '" << param << "' is ignored.\n";
 		}
 	}
@@ -150,7 +150,7 @@ void tdebug_layout_graph::set_domain(const std::string& domain)
 	FOREACH(const AUTO& param, params) {
 		if(param == "all") {
 			domain_ = ALL;
-			// No need to look further eventhought invalid items are now
+			// No need to look further eventhough invalid items are now
 			// ignored.
 			return;
 		} else if(param == "show") {
@@ -158,7 +158,7 @@ void tdebug_layout_graph::set_domain(const std::string& domain)
 		} else if(param == "layout") {
 			domain_ |= LAYOUT;
 		} else {
-			// loging might not be up yet.
+			// logging might not be up yet.
 			std::cerr << "Unknown domain '" << param << "' is ignored.\n";
 		}
 	}

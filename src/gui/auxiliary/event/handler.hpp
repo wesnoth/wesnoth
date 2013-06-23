@@ -64,18 +64,18 @@ enum tevent {
 	, SDL_LEFT_BUTTON_DOWN        /**< A SDL left mouse button down event. */
 	, SDL_LEFT_BUTTON_UP          /**< A SDL left mouse button up event. */
 	, LEFT_BUTTON_DOWN            /**<
-	                               * A left mouse button down event for a wiget.
+	                               * A left mouse button down event for a widget.
 	                               */
 	, LEFT_BUTTON_UP              /**<
-	                               * A left mouse button up event for a wiget.
+	                               * A left mouse button up event for a widget.
 	                               */
 	, LEFT_BUTTON_CLICK           /**<
 	                               * A left mouse button click event for a
-	                               * wiget.
+	                               * widget.
 	                               */
 	, LEFT_BUTTON_DOUBLE_CLICK    /**<
 	                               * A left mouse button double click event for
-	                               * a wiget.
+	                               * a widget.
 	                               */
 	, SDL_MIDDLE_BUTTON_DOWN      /**< A SDL middle mouse button down event. */
 	, SDL_MIDDLE_BUTTON_UP        /**< A SDL middle mouse button up event. */
@@ -140,7 +140,7 @@ enum tevent {
 	, REQUEST_PLACEMENT           /**<
 	                               * Request for somebody to place the widget.
 	                               * This may also cause updating of more
-	                               * layoyt parts.
+	                               * layout parts.
 	                               */
 };
 
@@ -153,7 +153,7 @@ enum tevent {
  *
  * This version is for callbacks without extra parameters.
  * NOTE some mouse functions like MOUSE_ENTER don't send the mouse coordinates
- * to the callback function so they are also in this catagory.
+ * to the callback function so they are also in this category.
  */
 typedef
 		boost::mpl::set<
@@ -217,7 +217,7 @@ typedef
  * Helper for catching use error of tdispatcher::connect_signal.
  *
  * This version is for callbacks with a sender aka notification messages. Like the
- * onces in tset_event it has no extra parameters, but this version is only
+ * ones in tset_event it has no extra parameters, but this version is only
  * send to the target and not using the pre and post queue.
  */
 typedef

@@ -124,7 +124,7 @@ public:
 	 * Returns the selected item.
 	 *
 	 * If a list has multiple selected items it looks whether it knows the last
-	 * item acutally selected, if that item is selected that one is chosen.
+	 * item actually selected, if that item is selected that one is chosen.
 	 * Else is goes through all selected items and returns the first one
 	 * selected.
 	 *

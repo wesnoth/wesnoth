@@ -27,10 +27,10 @@ struct tpoint
 		y(y_)
 		{}
 
-	/** x coodinate. */
+	/** x coordinate. */
 	int x;
 
-	/** y coodinate. */
+	/** y coordinate. */
 	int y;
 
 	bool operator==(const tpoint& point) const { return x == point.x && y == point.y; }

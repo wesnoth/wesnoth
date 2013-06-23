@@ -137,7 +137,7 @@ struct tlexical_cast
  * Specialized conversion class.
  *
  * Specialized for returning strings from an integral type or a pointer to an
- * intergral type.
+ * integral type.
  */
 template <typename From>
 struct tlexical_cast<

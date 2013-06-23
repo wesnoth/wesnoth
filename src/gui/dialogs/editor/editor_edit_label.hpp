@@ -28,15 +28,15 @@ public:
 	 *
 	 * @param[in] text            The initial value of the label.
 	 * @param[out] text           The label text the user entered if the dialog
-	 *                            returns @ref twindow::OK undefined otherise.
+	 *                            returns @ref twindow::OK undefined otherwise.
 	 * @param[in] team_only       The initial value of the team only toggle.
 	 * @param[out] team_only      The final value of the team only toggle if the
 	 *                            dialog returns @ref twindow::OK undefined
-	 *                            otherise.
+	 *                            otherwise.
 	 */
 	teditor_edit_label(std::string& text, bool& immutable, bool& visible_fog, bool& visible_shroud);
 
-	/** The excute function see @ref tdialog for more information. */
+	/** The execute function see @ref tdialog for more information. */
 	static bool execute(std::string& text, bool& immutable, bool& visible_fog, bool& visible_shroud, CVideo& video)
 	{
 		return teditor_edit_label(text, immutable, visible_fog, visible_shroud).show(video);

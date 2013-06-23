@@ -233,7 +233,7 @@ private:
 
 	/**
 	 * @todo A listbox must have the following config parameters in the
-	 * instanciation:
+	 * instantiation:
 	 * - fixed row height?
 	 * - fixed column width?
 	 * and if so the following ways to set them

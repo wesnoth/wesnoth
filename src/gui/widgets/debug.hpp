@@ -32,7 +32,7 @@ class twindow;
  *
  * The class will generate .dot files in the location where wesnoth is running
  * (so needs write access there). These files can be converted to images
- * containing the graphs. This is used for debugging the widget libary and its
+ * containing the graphs. This is used for debugging the widget library and its
  * sizing algorithm.
  *
  * This class needs to be friends with a lot of classes so it can view the

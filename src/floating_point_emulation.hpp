@@ -53,7 +53,7 @@
  * FLOATING_POINT_EMULATION_TRACER_ENABLE
  * This macro allows to place trace markers in the code. When using the markers
  * it's possible to gather statistics regarding the code paths being executed.
- * This can be used to analyse execution and add branch prediction markers.
+ * This can be used to analyze execution and add branch prediction markers.
  */
 
 #ifndef FLOATING_POINT_EMULATION_HPP_INCLUDED
@@ -351,9 +351,9 @@ struct tidiv<T, 8>
 };
 
 /**
- * An optimised version of the division operator.
+ * An optimized version of the division operator.
  *
- * This version is optimised to maintain the highest numeric stability when
+ * This version is optimized to maintain the highest numeric stability when
  * dividing.
  *
  * As documented at operator/():
@@ -401,7 +401,7 @@ struct tidiv<T, 8>
  * * divide.
  * * shift the result up by the required number of bits.
  *
- * The code has some other optimisations as well. On a 2-complement system
+ * The code has some other optimizations as well. On a 2-complement system
  * there are additional tests required for negative and positive values, to
  * remove these branches, the code uses a temporary value which contains the
  * positive value.
@@ -737,7 +737,7 @@ public:
 		value_ *= rhs.value_;
 
 		/*
-		 * There is no need to check the range at this point. The specialised
+		 * There is no need to check the range at this point. The specialized
 		 * version makes a short trip to 64-bit value, so overflowing is not
 		 * possible.
 		 */
@@ -790,7 +790,7 @@ public:
 	 * ---- = --------- = ---- = result
 	 *  RHS    rhs * sf    rhs
 	 *
-	 * Thus in order to get RESULT there needs to be mulitplied by sf:
+	 * Thus in order to get RESULT there needs to be multiplied by sf:
 	 *
 	 *          THIS
 	 * RESULT = ---- * sf
@@ -975,7 +975,7 @@ operator!=(const double lhs, const tfloat<T, S> rhs)
 /**
  * Multiply
  *
- * Specialised for the Sint32 with a shift of 8.
+ * Specialized for the Sint32 with a shift of 8.
  *
  * Instead of figuring out the optimal shift before multiplying simply multiply
  * as a 64-bit value and then perform the shift. This is rather cheap on the

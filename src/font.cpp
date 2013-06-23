@@ -128,7 +128,7 @@ struct char_block_map
 	}
 	/**
 	 * Compresses map by merging consecutive ranges with the same font, even
-	 * if there is some unassociated ranges inbetween.
+	 * if there is some unassociated ranges in-between.
 	 */
 	void compress()
 	{
@@ -970,7 +970,7 @@ surface floating_label::create_surface()
 
 		// combine foreground text with its background
 		if(bgalpha_ != 0) {
-			// background is a dark tootlip box
+			// background is a dark tooltip box
 			surface background = create_neutral_surface(foreground->w + border_*2, foreground->h + border_*2);
 
 			if (background == NULL) {

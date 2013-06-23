@@ -612,7 +612,7 @@ void tlobby_main::update_gamelist_diff()
 				return;
 			}
 			if (game.display_status == game_info::UPDATED) {
-				LOG_LB << "Modyfying game in listbox " << game.id << " (row " << list_i << ")\n";
+				LOG_LB << "Modifying game in listbox " << game.id << " (row " << list_i << ")\n";
 				tgrid* grid = gamelistbox_->get_row_grid(list_i);
 				modify_grid_with_data(grid, make_game_row_data(game));
 				adjust_game_row_contents(game, list_i, grid);
@@ -1755,7 +1755,7 @@ void tlobby_main::user_dialog_callback(user_info* info)
 	selected_game_id_ = info->game_id;
 	//the commented out code below should be enough, but that'd delete the
 	//playerlist and the widget calling this callback, so instead the game
-	//will be selected on the netxt gamelist update.
+	//will be selected on the next gamelist update.
 	/*
 	if (info->game_id != 0) {
 		for (unsigned i = 0; i < lobby_info_.games_filtered().size(); ++i) {

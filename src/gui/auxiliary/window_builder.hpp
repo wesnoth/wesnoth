@@ -108,7 +108,7 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg);
  * Mainly used as functor for @ref register_builder_widget.
  *
  * @param cfg                     The config with the information to
- *                                instanciate the widget.
+ *                                Instantiate the widget.
  *
  * @returns                       A generic widget builder pointer.
  */

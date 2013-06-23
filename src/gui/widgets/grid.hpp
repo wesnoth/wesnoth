@@ -23,7 +23,7 @@ namespace gui2 {
  * Base container class.
  *
  * This class holds a number of widgets and their wanted layout parameters. It
- * also layouts the items in the grid and hanldes their drawing.
+ * also layouts the items in the grid and handles their drawing.
  */
 class tgrid
 	: public twidget
@@ -62,7 +62,7 @@ public:
 	/***** ***** ***** ***** ROW COLUMN MANIPULATION ***** ***** ***** *****/
 
 	/**
-	 * Addes a row to end of the grid.
+	 * Adds a row to end of the grid.
 	 *
 	 * @param count               Number of rows to add, should be > 0.
 	 *
@@ -121,7 +121,7 @@ public:
 		const unsigned col, const unsigned flags, const unsigned border_size);
 
 	/**
-	 * Exchangs a child in the grid.
+	 * Exchanges a child in the grid.
 	 *
 	 * It replaced the child with a certain id with the new widget but doesn't
 	 * touch the other settings of the child.
@@ -304,7 +304,7 @@ private:
 			border_size_(0),
 			widget_(NULL)
 
-			// Fixme make a class wo we can store some properties in the cache
+			// Fixme make a class where we can store some properties in the cache
 			// regarding size etc.
 			{}
 

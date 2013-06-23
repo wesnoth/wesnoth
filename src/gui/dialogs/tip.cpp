@@ -130,7 +130,7 @@ static ttip& tip()
 {
 	/*
 	 * Allocating a static tip object causes a segmentation fault when Wesnoth
-	 * termines. So instead create an object on the heap and never free it.
+	 * terminates. So instead create an object on the heap and never free it.
 	 */
 	static ttip *t = new ttip();
 	return *t;

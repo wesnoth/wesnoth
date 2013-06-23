@@ -277,7 +277,7 @@ bool is_cjk_char(const wchar_t c)
 
 	//FIXME add range from Japanese-specific and Korean-specific section if you know the characters are used today.
 
-	if (ch < 0x2e80) return false; // shorcut for common non-CJK
+	if (ch < 0x2e80) return false; // shortcut for common non-CJK
 
 	return
 		//Han Ideographs: all except Supplement

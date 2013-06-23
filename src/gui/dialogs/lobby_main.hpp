@@ -283,7 +283,7 @@ private:
 	/**
 	 * Assemble and send a game join request. Ask for password if the game
 	 * requires one.
-	 * @return true iif the request was actually sent, false if not for some
+	 * @return true iff the request was actually sent, false if not for some
 	 *         reason like user canceled the password dialog or idx was invalid.
 	 */
 	bool do_game_join(int idx, bool observe);

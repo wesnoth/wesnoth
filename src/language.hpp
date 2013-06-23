@@ -86,7 +86,7 @@ const language_def& get_locale();
 /** Initializes the list of textdomains from a configuration object */
 void init_textdomains(const config& cfg);
 
-/** Initializes certain english strings */
+/** Initializes certain English strings */
 bool init_strings(const config& cfg);
 
 bool load_language_list();

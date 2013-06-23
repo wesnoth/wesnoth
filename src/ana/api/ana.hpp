@@ -77,7 +77,7 @@
 
 /** @namespace ana
  *
- * Namespace for project ana, the entire API is under this namespce.
+ * Namespace for project ana, the entire API is under this namespace.
  */
 namespace ana
 {
@@ -353,7 +353,7 @@ namespace ana
         /**
          * Send a buffer to every connected client.
          *
-         * @param buffer : Buffer to be sent. Should be constucted with the buffer function.
+         * @param buffer : Buffer to be sent. Should be constructed with the buffer function.
          * @param handler : Handler of events resulting from this operation. It will be called
          *                  with _each_ event, meaning that it will be called exactly once
          *                  for every connected client.
@@ -377,7 +377,7 @@ namespace ana
         /**
          * Send a buffer to every connected client that satisfies a given condition/property.
          *
-         * @param buffer : Buffer to be sent. Should be constucted with the buffer function.
+         * @param buffer : Buffer to be sent. Should be constructed with the buffer function.
          * @param handler : Handler of events resulting from this operation. It will be called
          *                  exactly once for every client that holds the property.
          * @param send_type : Optional, type of the send operation. Defaults to COPY_BUFFER.
@@ -402,7 +402,7 @@ namespace ana
          * Send a buffer to every connected client except one.
          * Equals a send_all if the client doesn't exist.
          *
-         * @param buffer : Buffer to be sent. Should be constucted with the buffer function.
+         * @param buffer : Buffer to be sent. Should be constructed with the buffer function.
          * @param handler : Handler of a possible event resulting from this operation.
          * @param send_type : Optional, type of the send operation. Defaults to COPY_BUFFER.
          *
@@ -424,7 +424,7 @@ namespace ana
          * Send a buffer to a connected client with a given net_id.
          * Does nothing if no such client exists.
          *
-         * @param buffer : Buffer to be sent. Should be constucted with the buffer function.
+         * @param buffer : Buffer to be sent. Should be constructed with the buffer function.
          * @param handler : Handler of a possible event resulting from this operation.
          * @param send_type : Optional, type of the send operation. Defaults to COPY_BUFFER.
          *

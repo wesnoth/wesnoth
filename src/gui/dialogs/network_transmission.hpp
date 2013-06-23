@@ -72,7 +72,7 @@ private:
 	/**
 	 * The subtitle for the dialog.
 	 *
-	 * This field commenly shows the action in progress eg connecting,
+	 * This field commonly shows the action in progress eg connecting,
 	 * uploading, downloading etc..
 	 */
 	std::string subtitle_;

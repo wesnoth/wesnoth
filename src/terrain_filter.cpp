@@ -86,7 +86,7 @@ terrain_filter::terrain_filter(const terrain_filter& other) :
 
 terrain_filter& terrain_filter::operator=(const terrain_filter& other)
 {
-	// Use copy constructor to make sure we are coherant
+	// Use copy constructor to make sure we are coherent
 	if (this != &other) {
 		this->~terrain_filter();
 		new (this) terrain_filter(other) ;

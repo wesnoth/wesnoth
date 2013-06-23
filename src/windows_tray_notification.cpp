@@ -52,7 +52,7 @@ void windows_tray_notification::handle_system_event(const SDL_Event& event)
 
 bool windows_tray_notification::create_tray_icon()
 {
-	// getting hanlde to a 32x32 icon, contained in "WESNOTH_ICON" icon group of wesnoth.exe resources
+	// getting handle to a 32x32 icon, contained in "WESNOTH_ICON" icon group of wesnoth.exe resources
 	const HMODULE wesnoth_exe = GetModuleHandle(NULL);
 	if (wesnoth_exe == NULL) {
 		return false;

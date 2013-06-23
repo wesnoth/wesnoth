@@ -134,7 +134,7 @@ class unit_animation
 		std::vector<int> value2_;
 		std::map<std::string,particule> sub_anims_;
 		particule unit_anim_;
-		/* these are drawing parameters, but for efficiancy reason they are in the anim and not in the particle */
+		/* these are drawing parameters, but for efficiency reason they are in the anim and not in the particle */
 		map_location src_;
 		map_location dst_;
 		// optimization

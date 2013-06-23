@@ -44,7 +44,7 @@ private:
 
 	/**
 	 * All fields are also in the normal field vector, but they need to be
-	 * manually controled as well so add the pointers here as well.
+	 * manually controlled as well so add the pointers here as well.
 	 */
 
 	tfield_bool

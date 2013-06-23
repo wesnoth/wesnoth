@@ -27,15 +27,15 @@ public:
 	 *
 	 * @param label [in]          The initial value of the label.
 	 * @param label [out]         The label text the user entered if the dialog
-	 *                            returns @ref twindow::OK undefined otherise.
+	 *                            returns @ref twindow::OK undefined otherwise.
 	 * @param team_only [in]      The initial value of the team only toggle.
 	 * @param team_only [out]     The final value of the team only toggle if the
 	 *                            dialog returns @ref twindow::OK undefined
-	 *                            otherise.
+	 *                            otherwise.
 	 */
 	tedit_label(std::string& label, bool& team_only);
 
-	/** The excute function see @ref tdialog for more information. */
+	/** The execute function see @ref tdialog for more information. */
 	static bool execute(std::string& label, bool& team_only, CVideo& video)
 	{
 		return tedit_label(label, team_only).show(video);

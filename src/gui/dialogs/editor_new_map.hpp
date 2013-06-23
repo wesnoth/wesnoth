@@ -35,7 +35,7 @@ public:
 	 */
 	teditor_new_map(int& width, int& height);
 
-	/** The excute function see @ref tdialog for more information. */
+	/** The execute function see @ref tdialog for more information. */
 	static bool execute(int& width, int& height, CVideo& video)
 	{
 		return teditor_new_map(width, height).show(video);

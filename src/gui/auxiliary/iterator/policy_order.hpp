@@ -190,7 +190,7 @@ public:
 			return *tvisit_child::get(*root_);
 		}
 		ERR_GUI_I << "The iterator ended in an unknown "
-				"state while deferring iteself.\n";
+				"state while deferring itself.\n";
 		throw tlogic_error("Tried to defer an invalid iterator.");
 	}
 

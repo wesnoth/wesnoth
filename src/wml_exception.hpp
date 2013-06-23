@@ -145,7 +145,7 @@ private:
  *                                It may contain parent sections to make it
  *                                easier to find the wanted sections. They are
  *                                listed like [parent][child][section].
- * @param key                     The ommitted key.
+ * @param key                     The omitted key.
  * @param primary_key             The primary key of the section.
  * @param primary_value           The value of the primary key (mandatory if
  *                                primary key isn't empty).

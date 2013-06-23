@@ -71,7 +71,7 @@ asio_server::~asio_server()
         thread_it = io_threads_.erase( thread_it );
     }
 
-    /* Since the asio_client_proxy destuctor removes the client from client_proxies_
+    /* Since the asio_client_proxy destructor removes the client from client_proxies_
        I'll just delete every proxy from a different list. */
     std::list<client_proxy*> copy( client_proxies_ );
 

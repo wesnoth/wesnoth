@@ -1038,7 +1038,7 @@ combatant::combat_slice::combat_slice(const std::vector<double> src_summary[2],
 
 
 /**
- * Creates a slice from the sumaries, and associates a number of strikes.
+ * Creates a slice from the summaries, and associates a number of strikes.
  * This version of the constructor creates a slice consisting of everything.
  */
 combatant::combat_slice::combat_slice(const std::vector<double> src_summary[2],
@@ -1158,7 +1158,7 @@ void forced_levelup(std::vector<double> &hp_dist)
 void conditional_levelup(std::vector<double> &hp_dist, double kill_prob)
 {
 	/* If we kill, we will level up. So then the damage we had becomes
-	   less probable since it's now conditional on us not levelling up.
+	   less probable since it's now conditional on us not leveling up.
 	   This doesn't apply to the probability of us dying, of course. */
 	double scalefactor = 0;
 	const double chance_to_survive = 1 - hp_dist.front();

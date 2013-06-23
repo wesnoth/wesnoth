@@ -259,7 +259,7 @@ class acquaintance;
 	// that information about them are displayed to the user in the help
 	// system.
 	void encounter_start_units(unit_map& units);
-	// Add all units that are recallable as encountred units.
+	// Add all units that are recallable as encountered units.
 	void encounter_recallable_units(std::vector<team>& teams);
 	// Add all terrains on the map as encountered terrains.
 	void encounter_map_terrain(gamemap& map);

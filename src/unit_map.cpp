@@ -183,7 +183,7 @@ std::pair<unit_map::unit_iterator, bool> unit_map::insert(unit *p) {
 					ERR_NG << "\n\nPlease Report this error to https://gna.org/bugs/index.php?18591 "
 						"\nIn addition to the standard details of operating system and wesnoth version "
 						"and how it happened, please answer the following questions "
-						"\n 1. Were you playing mutli-player?"
+						"\n 1. Were you playing multi-player?"
 						"\n 2. Did you start/restart/reload the game/scenario?"
 						"\nThank you for your help in fixing this bug.\n";
 				}
