@@ -33,6 +33,7 @@
 Growl_Delegate growl_obj;
 #endif
 
+#include "cursor.hpp"
 #include "game_preferences.hpp"
 #include "halo.hpp"
 #include "log.hpp"
@@ -271,6 +272,11 @@ void game_display::draw_hex(const map_location& loc)
 //	image::TYPE image_type = get_image_type(loc);
 
 	display::draw_hex(loc);
+
+	if(cursor::get() == cursor::WAIT) {
+		// Interaction is disabled, so we don't need anything else
+		return;
+	}
 
 	if(on_map && loc == mouseoverHex_) {
 		tdrawing_layer hex_top_layer = LAYER_MOUSEOVER_BOTTOM;
