@@ -40,6 +40,7 @@ src/ai/gamestate_observer.cpp
 src/ai/interface.cpp
 src/ai/lua/core.cpp
 src/ai/lua/lua_object.cpp
+src/ai/lua/unit_advancements_aspect.cpp
 src/ai/manager.cpp
 src/ai/registry.cpp
 src/ai/testing/aspect_attacks.cpp
@@ -77,6 +78,7 @@ src/controller_base.cpp
 src/cursor.cpp
 src/dialogs.cpp
 src/display.cpp
+src/editor/action/mouse/mouse_action_select.cpp
 src/editor/action/mouse/mouse_action_village.cpp
 src/editor/editor_preferences.cpp
 src/editor/toolkit/editor_toolkit.cpp
@@ -90,9 +92,8 @@ src/formula_function.cpp
 src/formula_string_utils.cpp
 src/formula_tokenizer.cpp
 src/game_config.cpp
-src/game_controller_abstract.cpp
+src/game_config_manager.cpp
 src/game_controller.cpp
-src/game_controller_new.cpp
 src/game.cpp
 src/game_display.cpp
 src/game_end_exceptions.cpp

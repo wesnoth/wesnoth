@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-22 22:04-0400\n"
+"POT-Creation-Date: 2013-06-23 10:20+0200\n"
 "PO-Revision-Date: 2012-04-01 16:53+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -1308,7 +1308,7 @@ msgstr "Уклони додатке"
 #. [button]: id=help
 #. [button]: id=show_help
 #: data/gui/default/window/addon_connect.cfg:188
-#: data/gui/default/window/title_screen.cfg:179 src/hotkeys.cpp:235
+#: data/gui/default/window/title_screen.cfg:179 src/hotkeys.cpp:237
 msgid "Help"
 msgstr "Помоћ"
 
@@ -1326,6 +1326,7 @@ msgstr "Повежи се"
 #: data/gui/default/window/addon_uninstall_list.cfg:174
 #: data/gui/default/window/campaign_dialog.cfg:439
 #: data/gui/default/window/campaign_difficulty.cfg:192
+#: data/gui/default/window/custom_tod.cfg:397
 #: data/gui/default/window/data_manage.cfg:361
 #: data/gui/default/window/edit_label.cfg:154
 #: data/gui/default/window/edit_text.cfg:130
@@ -1334,7 +1335,6 @@ msgstr "Повежи се"
 #: data/gui/default/window/editor_new_map.cfg:125
 #: data/gui/default/window/editor_resize_map.cfg:284
 #: data/gui/default/window/editor_set_starting_position.cfg:175
-#: data/gui/default/window/editor_settings.cfg:241
 #: data/gui/default/window/folder_create.cfg:134
 #: data/gui/default/window/game_load.cfg:477
 #: data/gui/default/window/game_save.cfg:135
@@ -1530,15 +1530,16 @@ msgstr "Играње похода"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
+#. [button]: id=save
 #: data/gui/default/window/campaign_dialog.cfg:425
 #: data/gui/default/window/campaign_difficulty.cfg:179
+#: data/gui/default/window/custom_tod.cfg:387
 #: data/gui/default/window/data_manage.cfg:347
 #: data/gui/default/window/data_manage.cfg:348
 #: data/gui/default/window/edit_label.cfg:140
 #: data/gui/default/window/edit_text.cfg:116
 #: data/gui/default/window/editor_edit_label.cfg:177
 #: data/gui/default/window/editor_set_starting_position.cfg:162
-#: data/gui/default/window/editor_settings.cfg:231
 #: data/gui/default/window/folder_create.cfg:120
 #: data/gui/default/window/game_load.cfg:463
 #: data/gui/default/window/game_load.cfg:464
@@ -1589,7 +1590,9 @@ msgstr "Последње"
 
 #. [button]: id=previous_page
 #. [button]: id=previous_tip
+#. [button]: id=previous_tod
 #: data/gui/default/window/chat_log.cfg:79
+#: data/gui/default/window/custom_tod.cfg:326
 #: data/gui/default/window/title_screen.cfg:195
 msgid "Previous"
 msgstr "Претходно"
@@ -1598,11 +1601,91 @@ msgstr "Претходно"
 #. [button]: id=next_tip
 #. [button]: id=next_tod
 #: data/gui/default/window/chat_log.cfg:89
-#: data/gui/default/window/editor_settings.cfg:79
-#: data/gui/default/window/editor_settings.cfg:80
+#: data/gui/default/window/custom_tod.cfg:349
 #: data/gui/default/window/title_screen.cfg:210
 msgid "Next"
 msgstr "Сљедеће"
+
+#. [label]
+#: data/gui/default/window/custom_tod.cfg:45
+msgid "Custom Time of Day Schedule"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/custom_tod.cfg:67
+#: data/gui/default/window/folder_create.cfg:72
+#: data/gui/default/window/game_save.cfg:72
+#: data/gui/default/window/game_save_message.cfg:93
+#: data/gui/default/window/game_save_oos.cfg:93
+msgid "Name:"
+msgstr "Име:"
+
+#. [label]
+#: data/gui/default/window/custom_tod.cfg:100
+msgid "ID:"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/custom_tod.cfg:133
+msgid "Metadata:"
+msgstr ""
+
+#. [button]: id=image_button
+#: data/gui/default/window/custom_tod.cfg:147
+msgid "Image"
+msgstr ""
+
+#. [button]: id=mask_button
+#: data/gui/default/window/custom_tod.cfg:157
+msgid "Mask"
+msgstr ""
+
+#. [button]: id=sound_button
+#: data/gui/default/window/custom_tod.cfg:167
+msgid "Sound"
+msgstr ""
+
+#. [label]: id=current_sound
+#: data/gui/default/window/custom_tod.cfg:180
+msgid "long size text"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/custom_tod.cfg:201
+msgid "Lawful Bonus:"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/custom_tod.cfg:228
+msgid "Red:"
+msgstr "црвена:"
+
+#. [label]
+#: data/gui/default/window/custom_tod.cfg:255
+msgid "Green:"
+msgstr "зелена:"
+
+#. [label]
+#: data/gui/default/window/custom_tod.cfg:282
+msgid "Blue:"
+msgstr "плава:"
+
+#. [label]: id=tod_number
+#: data/gui/default/window/custom_tod.cfg:337
+msgid "100/100"
+msgstr ""
+
+#. [button]: id=new
+#: data/gui/default/window/custom_tod.cfg:359
+msgid "New ToD"
+msgstr ""
+
+#. [button]: id=delete
+#: data/gui/default/window/custom_tod.cfg:369
+#, fuzzy
+#| msgid "Delete"
+msgid "Delete ToD"
+msgstr "Обриши"
 
 # >> @title:window
 #. [label]: id=lblTitle
@@ -1713,7 +1796,7 @@ msgstr "Створи"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:35 src/hotkeys.cpp:151
+#: data/gui/default/window/editor_new_map.cfg:35 src/hotkeys.cpp:152
 msgid "New Map"
 msgstr "Нова мапа"
 
@@ -1738,7 +1821,7 @@ msgstr "Направи партију"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:35 src/hotkeys.cpp:209
+#: data/gui/default/window/editor_resize_map.cfg:35 src/hotkeys.cpp:211
 msgid "Resize Map"
 msgstr "Промијени величину мапе"
 
@@ -1793,61 +1876,10 @@ msgid "Which player should start here?"
 msgstr "Који играч почиње одавде?"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [label]
-#: data/gui/default/window/editor_settings.cfg:35 src/hotkeys.cpp:149
-msgid "Editor Settings"
-msgstr "Поставке уређивача"
-
-#. [label]
-#: data/gui/default/window/editor_settings.cfg:53
-msgid "Time of day lighting preset:"
-msgstr "Предефинисан освјетљај за доба дана:"
-
-#. [toggle_button]: id=custom_tod_toggle
-#: data/gui/default/window/editor_settings.cfg:104
-msgid "Custom lighting settings"
-msgstr "Поставке посебног освјетљаја"
-
-#. [toggle_button]: id=custom_tod_auto_refresh
-#: data/gui/default/window/editor_settings.cfg:114
-msgid "Automatically update map view"
-msgstr "Аутоматски ажурирај приказ мапе"
-
-#. [label]
-#: data/gui/default/window/editor_settings.cfg:135
-msgid "Red:"
-msgstr "црвена:"
-
-#. [label]
-#: data/gui/default/window/editor_settings.cfg:161
-msgid "Green:"
-msgstr "зелена:"
-
-#. [label]
-#: data/gui/default/window/editor_settings.cfg:187
-msgid "Blue:"
-msgstr "плава:"
-
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=apply
-#: data/gui/default/window/editor_settings.cfg:251
-#: src/game_preferences_display.cpp:211
-msgid "Apply"
-msgstr "Примијени"
-
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/default/window/folder_create.cfg:43 src/filechooser.cpp:81
 msgid "New Folder"
 msgstr "Нова фасцикла"
-
-#. [label]
-#: data/gui/default/window/folder_create.cfg:72
-#: data/gui/default/window/game_save.cfg:72
-#: data/gui/default/window/game_save_message.cfg:93
-#: data/gui/default/window/game_save_oos.cfg:93
-msgid "Name:"
-msgstr "Име:"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:36
@@ -1905,8 +1937,8 @@ msgstr "Траг извршавања"
 #. [grid]
 #: data/gui/default/window/formula_debugger.cfg:234
 #: data/gui/default/window/lobby_main.cfg:660
-#: data/gui/default/window/title_screen.cfg:265 src/hotkeys.cpp:884
-#: src/hotkeys.cpp:1234
+#: data/gui/default/window/title_screen.cfg:265 src/hotkeys.cpp:886
+#: src/hotkeys.cpp:1243
 msgid "Quit"
 msgstr "Напусти"
 
@@ -2017,7 +2049,7 @@ msgstr "Игнориши све"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit_game
-#: data/gui/default/window/game_save_oos.cfg:162 src/hotkeys.cpp:112
+#: data/gui/default/window/game_save_oos.cfg:162 src/hotkeys.cpp:113
 msgid "Quit Game"
 msgstr "Напусти игру"
 
@@ -2217,7 +2249,7 @@ msgstr "Пошаљи"
 #. [grid]
 #: data/gui/default/window/lobby_main.cfg:666
 #: data/gui/default/window/title_screen.cfg:263
-#: src/game_preferences_display.cpp:63 src/hotkeys.cpp:106
+#: src/game_preferences_display.cpp:63 src/hotkeys.cpp:107
 msgid "Preferences"
 msgstr "Поставке"
 
@@ -2743,21 +2775,21 @@ msgstr "Брисање датотеке није успјело."
 msgid "Creation of the directory failed."
 msgstr "Стварање директоријума није успјело."
 
-#: src/game_preferences.cpp:349
+#: src/game_preferences.cpp:353
 msgid "No server has been defined."
 msgstr "Сервер није задат."
 
-#: src/game_preferences.cpp:429
+#: src/game_preferences.cpp:433
 msgid "player"
 msgstr "играч"
 
 # >> strftime() format
-#: src/game_preferences.cpp:921
+#: src/game_preferences.cpp:925
 msgid "%H:%M"
 msgstr "%k.%M"
 
 # >> strftime() format
-#: src/game_preferences.cpp:924
+#: src/game_preferences.cpp:928
 msgid "%I:%M %p"
 msgstr "%l.%M %p"
 
@@ -2915,6 +2947,10 @@ msgstr "Звуци корисничког сучеља"
 #: src/game_preferences_display.cpp:210
 msgid "Custom"
 msgstr "Посебно"
+
+#: src/game_preferences_display.cpp:211
+msgid "Apply"
+msgstr "Примијени"
 
 # кућица
 #: src/game_preferences_display.cpp:212
@@ -3430,7 +3466,7 @@ msgstr "Деинсталирање додатака"
 
 #: src/gui/dialogs/addon_list.cpp:256
 #: src/gui/dialogs/network_transmission.cpp:54
-#: src/gui/dialogs/network_transmission.cpp:56 src/hotkeys.cpp:1191
+#: src/gui/dialogs/network_transmission.cpp:56 src/hotkeys.cpp:1200
 msgid "unit_byte^B"
 msgstr "B"
 
@@ -3552,11 +3588,11 @@ msgid ""
 "Please select a compatible one."
 msgstr ""
 
-#: src/gui/dialogs/title_screen.cpp:297
+#: src/gui/dialogs/title_screen.cpp:291
 msgid "Version "
 msgstr "Издање "
 
-#: src/gui/dialogs/title_screen.cpp:300
+#: src/gui/dialogs/title_screen.cpp:294
 msgid "Version"
 msgstr "издање"
 
@@ -3587,7 +3623,7 @@ msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Клику отпуштања треба дугме „click_dismiss“ или „ok“."
 
 #: src/gui/widgets/window.cpp:1060 src/gui/widgets/window.cpp:1100
-#: src/tests/gui/test_gui2.cpp:432
+#: src/tests/gui/test_gui2.cpp:430
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Не могу да прикажем дијалог који не стаје на екран."
 
@@ -3744,7 +3780,7 @@ msgstr "Преко цијелог екрана"
 # >! contexts
 # >> Take screenshot
 # >> Base for screenshot file names
-#: src/hotkeys.cpp:83 src/hotkeys.cpp:1185
+#: src/hotkeys.cpp:83 src/hotkeys.cpp:1194
 msgid "Screenshot"
 msgstr "Снимак екрана"
 
@@ -3774,7 +3810,7 @@ msgstr "Обриши датотеку"
 msgid "Save Replay"
 msgstr "Сачувај снимак"
 
-#: src/hotkeys.cpp:92 src/hotkeys.cpp:153
+#: src/hotkeys.cpp:92 src/hotkeys.cpp:154
 msgid "Save Map"
 msgstr "Сачувај мапу"
 
@@ -3822,649 +3858,663 @@ msgstr "Причај"
 msgid "Change Side (Debug!)"
 msgstr "Промијени страну (испр.!)"
 
-#: src/hotkeys.cpp:107
+#: src/hotkeys.cpp:106
+#, fuzzy
+#| msgid "Create Unit (Debug!)"
+msgid "Kill Unit (Debug!)"
+msgstr "Направи јединицу (испр.!)"
+
+#: src/hotkeys.cpp:108
 msgid "Scenario Objectives"
 msgstr "Циљеви сценарија"
 
-#: src/hotkeys.cpp:108
+#: src/hotkeys.cpp:109
 msgid "Unit List"
 msgstr "Списак јединица"
 
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:110
 msgid "Statistics"
 msgstr "Статистика"
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:111
 msgid "Pause Network Game"
 msgstr "Паузирај мрежну партију"
 
-#: src/hotkeys.cpp:111
+#: src/hotkeys.cpp:112
 msgid "Continue Network Game"
 msgstr "Настави мрежну партију"
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:114
 #, fuzzy
 #| msgid "Start Editor"
 msgid "Quit Editor"
 msgstr "Покрени уређивач"
 
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:115
 msgid "Set Team Label"
 msgstr "Етикетирај тим"
 
-#: src/hotkeys.cpp:115
+#: src/hotkeys.cpp:116
 msgid "Set Label"
 msgstr "Етикетирај"
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:117
 msgid "Clear Labels"
 msgstr "Уклони етикете"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:118
 msgid "Show Enemy Moves"
 msgstr "Противнички покрети"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:119
 msgid "Best Possible Enemy Moves"
 msgstr "Најбољи противнички покрети"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:120
 msgid "Play Replay"
 msgstr "Пусти снимак"
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:121
 msgid "Reset Replay"
 msgstr "Ресетуј снимак"
 
-#: src/hotkeys.cpp:121
+#: src/hotkeys.cpp:122
 msgid "Stop Replay"
 msgstr "Заустави снимак"
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:123
 msgid "Next Turn"
 msgstr "Сљедећи потез"
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:124
 msgid "Next Side"
 msgstr "Сљедећа страна"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:125
 msgid "Full Map"
 msgstr "Цијела мапа"
 
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:126
 msgid "Each Team"
 msgstr "Сваки тим"
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:127
 msgid "Team 1"
 msgstr "Тим 1"
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:128
 msgid "Skip Animation"
 msgstr "Прескочи анимацију"
 
 #. TRANSLATORS: whiteboard menu entry: toggle planning mode
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:131
 msgid "whiteboard^Planning Mode"
 msgstr "Режим планирања"
 
 #. TRANSLATORS: whiteboard menu entry: execute planned action
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:133
 msgid "whiteboard^Execute Action"
 msgstr "Изврши радњу"
 
 #. TRANSLATORS: whiteboard menu entry: execute all planned actions
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:135
 msgid "whiteboard^Execute All Actions"
 msgstr "Изврши све радње"
 
 #. TRANSLATORS: whiteboard menu entry: delete planned action
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:137
 msgid "whiteboard^Delete Action"
 msgstr "Обриши радњу"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action up queue
-#: src/hotkeys.cpp:138
+#: src/hotkeys.cpp:139
 msgid "whiteboard^Move Action Up"
 msgstr "Помери радњу нагоре"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action down queue
-#: src/hotkeys.cpp:140
+#: src/hotkeys.cpp:141
 msgid "whiteboard^Move Action Down"
 msgstr "Помери радњу надоле"
 
 #. TRANSLATORS: whiteboard menu entry: plan as though the chosen unit were dead
-#: src/hotkeys.cpp:142
+#: src/hotkeys.cpp:143
 msgid "whiteboard^Suppose Dead"
 msgstr "Претпостави мртвом"
 
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:145
 msgid "Quit to Desktop"
 msgstr "Изађи на површ"
 
-#: src/hotkeys.cpp:145
+#: src/hotkeys.cpp:146
 msgid "Close Map"
 msgstr "Затвори мапу"
 
-#: src/hotkeys.cpp:146
+#: src/hotkeys.cpp:147
 msgid "Switch Map"
 msgstr "Пребаци мапу"
 
-#: src/hotkeys.cpp:147
+#: src/hotkeys.cpp:148
 #, fuzzy
 #| msgid "Switch Map"
 msgid "Switch Area"
 msgstr "Пребаци мапу"
 
 #: src/hotkeys.cpp:150
+msgid "Custom Time of Day Creator"
+msgstr ""
+
+#: src/hotkeys.cpp:151
 msgid "Partial Undo"
 msgstr "Делимично опозови"
 
-#: src/hotkeys.cpp:152
+#: src/hotkeys.cpp:153
 msgid "Load Map"
 msgstr "Учитај мапу"
 
-#: src/hotkeys.cpp:154
+#: src/hotkeys.cpp:155
 msgid "Save Map As"
 msgstr "Сачувај мапу као"
 
-#: src/hotkeys.cpp:155
+#: src/hotkeys.cpp:156
 msgid "Save All Maps"
 msgstr "Сачувај све мапе"
 
-#: src/hotkeys.cpp:156
+#: src/hotkeys.cpp:157
 msgid "Revert All Changes"
 msgstr "Врати све измјене"
 
-#: src/hotkeys.cpp:157
+#: src/hotkeys.cpp:158
 msgid "Map Information"
 msgstr "Подаци о мапи"
 
-#: src/hotkeys.cpp:158
+#: src/hotkeys.cpp:159
 #, fuzzy
 #| msgid "Next Side"
 msgid "Add New Side"
 msgstr "Сљедећа страна"
 
-#: src/hotkeys.cpp:159
+#: src/hotkeys.cpp:160
 #, fuzzy
 #| msgid "Switch Map"
 msgid "Switch Side"
 msgstr "Пребаци мапу"
 
-#: src/hotkeys.cpp:160
+#: src/hotkeys.cpp:161
 #, fuzzy
 #| msgid "Swap Foreground/Background Terrains"
 msgid "Swap Foreground/Background Palette Item"
 msgstr "Размијени терен спреда и позадине"
 
-#: src/hotkeys.cpp:161
+#: src/hotkeys.cpp:162
 msgid "Change Palette Group"
 msgstr ""
 
-#: src/hotkeys.cpp:162
+#: src/hotkeys.cpp:163
 msgid "Scroll Palette Left"
 msgstr ""
 
-#: src/hotkeys.cpp:163
+#: src/hotkeys.cpp:164
 msgid "Scroll Palette Right"
 msgstr ""
 
-#: src/hotkeys.cpp:165
+#: src/hotkeys.cpp:166
 #, fuzzy
 #| msgid "Switch Map"
 msgid "Switch Time of Day"
 msgstr "Пребаци мапу"
 
-#: src/hotkeys.cpp:167
+#: src/hotkeys.cpp:168
 msgid "Next Tool"
 msgstr "Сљедећа алатка"
 
-#: src/hotkeys.cpp:169
+#: src/hotkeys.cpp:170
 msgid "Paint Tool"
 msgstr "Алатка сликања"
 
-#: src/hotkeys.cpp:169 src/hotkeys.cpp:170
+#: src/hotkeys.cpp:170 src/hotkeys.cpp:171
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
 
-#: src/hotkeys.cpp:170
+#: src/hotkeys.cpp:171
 msgid "Fill Tool"
 msgstr "Алатка испуне"
 
-#: src/hotkeys.cpp:171
+#: src/hotkeys.cpp:172
 msgid ""
 "Left mouse button selects or deselects, right brings up a context menu. Hold "
 "Shift for magic-wand selection of tiles with same terrain."
 msgstr ""
 
-#: src/hotkeys.cpp:171
+#: src/hotkeys.cpp:172
 msgid "Selection Tool"
 msgstr "Алатка избора"
 
-#: src/hotkeys.cpp:172
+#: src/hotkeys.cpp:173
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
 
-#: src/hotkeys.cpp:172
+#: src/hotkeys.cpp:173
 #, fuzzy
 #| msgid "Set Starting Positions Tool"
 msgid "Starting Positions Tool"
 msgstr "Алатка задавања почетних положаја"
 
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:174
 #, fuzzy
 #| msgid "Fill Tool"
 msgid "Label Tool"
 msgstr "Алатка испуне"
 
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:174
 msgid "Left mouse button sets or drags a label, right clears."
 msgstr ""
 
-#: src/hotkeys.cpp:174
+#: src/hotkeys.cpp:175
 msgid ""
 "Left mouse button sets a new unit or moves a unit via drag and drop, right "
 "brings up a context menu. Needs a defined side."
 msgstr ""
 
-#: src/hotkeys.cpp:174
+#: src/hotkeys.cpp:175
 #, fuzzy
 #| msgid "Paint Tool"
 msgid "Unit Tool"
 msgstr "Алатка сликања"
 
-#: src/hotkeys.cpp:175
+#: src/hotkeys.cpp:176
 #, fuzzy
 #| msgid "Next Tool"
 msgid "Item Tool"
 msgstr "Сљедећа алатка"
 
-#: src/hotkeys.cpp:175
+#: src/hotkeys.cpp:176
 msgid ""
 "Left mouse button sets a new item or moves it via drag and drop, right "
 "clears. Not implemented yet."
 msgstr ""
 
-#: src/hotkeys.cpp:176
+#: src/hotkeys.cpp:177
 msgid ""
 "Left mouse button sets or drags a sound source, right clears. Not "
 "implemented yet."
 msgstr ""
 
-#: src/hotkeys.cpp:176
+#: src/hotkeys.cpp:177
 msgid "Soundsource Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:177
+#: src/hotkeys.cpp:178
 msgid ""
 "Left mouse button sets the village ownership to the current side, right "
 "clears. Needs a defined side."
 msgstr ""
 
-#: src/hotkeys.cpp:177
+#: src/hotkeys.cpp:178
 #, fuzzy
 #| msgid "Village gold"
 msgid "Village Tool"
 msgstr "Злата по селу"
 
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:180
 #, fuzzy
 #| msgid "Recruit"
 msgid "Canrecruit"
 msgstr "Унајми"
 
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:180
 msgid "Toggle the recruit attribute of a unit."
 msgstr ""
 
-#: src/hotkeys.cpp:180
+#: src/hotkeys.cpp:181
 msgid "Can be renamed"
 msgstr ""
 
-#: src/hotkeys.cpp:180
+#: src/hotkeys.cpp:181
 msgid "Toggle the unit being renameable."
 msgstr ""
 
-#: src/hotkeys.cpp:182
+#: src/hotkeys.cpp:183
 #, fuzzy
 #| msgid "Change Control"
 msgid "Change Unit ID"
 msgstr "Промијени управљање"
 
-#: src/hotkeys.cpp:183
+#: src/hotkeys.cpp:184
 msgid "Loyal"
 msgstr ""
 
 #: src/hotkeys.cpp:186
+msgid "Toggle Minimap color coding"
+msgstr ""
+
+#: src/hotkeys.cpp:188
 msgid "Next Brush"
 msgstr "Сљедећа четкица"
 
-#: src/hotkeys.cpp:187
+#: src/hotkeys.cpp:189
 msgid "Default Brush"
 msgstr "Подразумијевана четкица"
 
-#: src/hotkeys.cpp:188
+#: src/hotkeys.cpp:190
 msgid "Single Tile"
 msgstr ""
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:191
 msgid "Radius One"
 msgstr ""
 
-#: src/hotkeys.cpp:190
+#: src/hotkeys.cpp:192
 msgid "Radius Two"
 msgstr ""
 
-#: src/hotkeys.cpp:191
+#: src/hotkeys.cpp:193
 msgid "Brush NW-SE"
 msgstr ""
 
-#: src/hotkeys.cpp:192
+#: src/hotkeys.cpp:194
 msgid "Brush SW-NE"
 msgstr ""
 
-#: src/hotkeys.cpp:193
+#: src/hotkeys.cpp:195
 msgid "Cut"
 msgstr "Исеци"
 
-#: src/hotkeys.cpp:194
+#: src/hotkeys.cpp:196
 msgid "Copy"
 msgstr "Умножи"
 
-#: src/hotkeys.cpp:195
+#: src/hotkeys.cpp:197
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
 msgstr ""
 
-#: src/hotkeys.cpp:195
+#: src/hotkeys.cpp:197
 msgid "Paste"
 msgstr "Налијепи"
 
-#: src/hotkeys.cpp:196
+#: src/hotkeys.cpp:198
 msgid "Export Selected Coordinates to System Clipboard"
 msgstr "Извези изабране координате у системску оставу"
 
-#: src/hotkeys.cpp:197
+#: src/hotkeys.cpp:199
 msgid "Select All"
 msgstr "Изабери све"
 
-#: src/hotkeys.cpp:198
+#: src/hotkeys.cpp:200
 msgid "Select Inverse"
 msgstr "Обрни избор"
 
-#: src/hotkeys.cpp:199
+#: src/hotkeys.cpp:201
 msgid "Select None"
 msgstr "Поништи избор"
 
-#: src/hotkeys.cpp:200
+#: src/hotkeys.cpp:202
 msgid "Rotate Clipboard Clockwise"
 msgstr "Заокрени оставу у смјеру казаљке"
 
-#: src/hotkeys.cpp:201
+#: src/hotkeys.cpp:203
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr "Заокрени оставу супротно смјеру казаљке"
 
-#: src/hotkeys.cpp:202
+#: src/hotkeys.cpp:204
 msgid "Flip Clipboard Horizontally"
 msgstr "Преврни оставу водоравно"
 
-#: src/hotkeys.cpp:203
+#: src/hotkeys.cpp:205
 msgid "Flip Clipboard Vertically"
 msgstr "Преврни оставу усправно"
 
-#: src/hotkeys.cpp:204
+#: src/hotkeys.cpp:206
 msgid "Rotate Selection"
 msgstr "Заокрени избор"
 
-#: src/hotkeys.cpp:205
+#: src/hotkeys.cpp:207
 msgid "Flip Selection"
 msgstr "Преврни избор"
 
-#: src/hotkeys.cpp:206
+#: src/hotkeys.cpp:208
 msgid "Fill Selection"
 msgstr "Испуни избор"
 
-#: src/hotkeys.cpp:207
+#: src/hotkeys.cpp:209
 msgid "Generate Tiles In Selection"
 msgstr "Створи плочице у избору"
 
-#: src/hotkeys.cpp:208
+#: src/hotkeys.cpp:210
 msgid "Randomize Tiles In Selection"
 msgstr "Насумично плочице у избору"
 
-#: src/hotkeys.cpp:210
+#: src/hotkeys.cpp:212
 msgid "Rotate Map"
 msgstr "Заокрени мапу"
 
-#: src/hotkeys.cpp:211
+#: src/hotkeys.cpp:213
 msgid "Generate Map"
 msgstr "Створи мапу"
 
-#: src/hotkeys.cpp:212
+#: src/hotkeys.cpp:214
 msgid "Apply a Mask"
 msgstr "Примијени маску"
 
-#: src/hotkeys.cpp:213
+#: src/hotkeys.cpp:215
 msgid "Create Mask"
 msgstr "Створи маску"
 
-#: src/hotkeys.cpp:214
+#: src/hotkeys.cpp:216
 msgid "Refresh Display"
 msgstr "Освјежи приказ"
 
-#: src/hotkeys.cpp:215
+#: src/hotkeys.cpp:217
 msgid "Update Terrain Transitions"
 msgstr "Ажурирај прелазе терена"
 
-#: src/hotkeys.cpp:217
+#: src/hotkeys.cpp:219
 #, fuzzy
 #| msgid "Update Terrain Transitions"
 msgid "Toggle Terrain Transition Update"
 msgstr "Ажурирај прелазе терена"
 
-#: src/hotkeys.cpp:218
+#: src/hotkeys.cpp:220
 msgid "Auto-update Terrain Transitions"
 msgstr "Самоажурирај прелазе терена"
 
-#: src/hotkeys.cpp:220
+#: src/hotkeys.cpp:222
 #, fuzzy
 #| msgid "Auto-update Terrain Transitions"
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Самоажурирај прелазе терена"
 
-#: src/hotkeys.cpp:221
+#: src/hotkeys.cpp:223
 #, fuzzy
 #| msgid "Auto-update Terrain Transitions"
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "Самоажурирај прелазе терена"
 
-#: src/hotkeys.cpp:223
+#: src/hotkeys.cpp:225
 msgid "Refresh Image Cache"
 msgstr "Освјежи кеш слика"
 
-#: src/hotkeys.cpp:224
+#: src/hotkeys.cpp:226
 msgid "Draw Hex Coordinates"
 msgstr "Цртај координате поља"
 
-#: src/hotkeys.cpp:225
+#: src/hotkeys.cpp:227
 msgid "Draw Terrain Codes"
 msgstr "Цртај теренске кодове"
 
-#: src/hotkeys.cpp:227
+#: src/hotkeys.cpp:229
 msgid "Define (Time) Area"
 msgstr ""
 
-#: src/hotkeys.cpp:229
+#: src/hotkeys.cpp:231
 msgid "Delay Shroud Updates"
 msgstr "Застој ажурирања покрова"
 
-#: src/hotkeys.cpp:230
+#: src/hotkeys.cpp:232
 msgid "Update Shroud Now"
 msgstr "Ажурирај покров сада"
 
-#: src/hotkeys.cpp:231
+#: src/hotkeys.cpp:233
 msgid "Continue Move"
 msgstr "Настави потез"
 
-#: src/hotkeys.cpp:232
+#: src/hotkeys.cpp:234
 msgid "Find Label or Unit"
 msgstr "Нађи етикету или јединицу"
 
-#: src/hotkeys.cpp:233
+#: src/hotkeys.cpp:235
 msgid "Speak to Ally"
 msgstr "Причај савезнику"
 
-#: src/hotkeys.cpp:234
+#: src/hotkeys.cpp:236
 msgid "Speak to All"
 msgstr "Причај свима"
 
-#: src/hotkeys.cpp:236
+#: src/hotkeys.cpp:238
 msgid "View Chat Log"
 msgstr "Прикажи дневник ћаскања"
 
-#: src/hotkeys.cpp:237
+#: src/hotkeys.cpp:239
 msgid "Change Language"
 msgstr "Промијени језик"
 
-#: src/hotkeys.cpp:238
+#: src/hotkeys.cpp:240
 msgid "Enter User Command"
 msgstr "Корисничка наредба"
 
-#: src/hotkeys.cpp:239
+#: src/hotkeys.cpp:241
 msgid "Custom Command"
 msgstr "Посебна наредба"
 
-#: src/hotkeys.cpp:240
+#: src/hotkeys.cpp:242
 msgid "Run Formula"
 msgstr "Изврши формулу"
 
-#: src/hotkeys.cpp:241
+#: src/hotkeys.cpp:243
 msgid "Clear Messages"
 msgstr "Очисти поруке"
 
-#: src/hotkeys.cpp:242
+#: src/hotkeys.cpp:244
 msgid "Refresh WML"
 msgstr "Освјежи ВМЛ"
 
-#: src/hotkeys.cpp:243
+#: src/hotkeys.cpp:245
 msgid "Next Tip of the Day"
 msgstr "Сљедећи савет дана"
 
-#: src/hotkeys.cpp:244
+#: src/hotkeys.cpp:246
 msgid "Previous Tip of the Day"
 msgstr "Претходни савет дана"
 
-#: src/hotkeys.cpp:245
+#: src/hotkeys.cpp:247
 msgid "Start Tutorial"
 msgstr "Покрени подучавање"
 
-#: src/hotkeys.cpp:246
+#: src/hotkeys.cpp:248
 msgid "Start Campaign"
 msgstr "Покрени поход"
 
-#: src/hotkeys.cpp:247
+#: src/hotkeys.cpp:249
 msgid "Start Multiplayer Game"
 msgstr "Покрени вишеиграчку партију"
 
-#: src/hotkeys.cpp:248
+#: src/hotkeys.cpp:250
 msgid "Manage Add-ons"
 msgstr "Управљај додацима"
 
-#: src/hotkeys.cpp:249
+#: src/hotkeys.cpp:251
 msgid "Start Editor"
 msgstr "Покрени уређивач"
 
-#: src/hotkeys.cpp:250
+#: src/hotkeys.cpp:252
 msgid "Show Credits"
 msgstr "Прикажи заслуге"
 
-#: src/hotkeys.cpp:251
+#: src/hotkeys.cpp:253
 msgid "Show Helptip"
 msgstr "Прикажи текст помоћи"
 
-#: src/hotkeys.cpp:254
+#: src/hotkeys.cpp:256
 msgid "Unrecognized Command"
 msgstr ""
 
-#: src/hotkeys.cpp:387 src/hotkeys.cpp:390
+#: src/hotkeys.cpp:389 src/hotkeys.cpp:392
 msgid "Button"
 msgstr ""
 
-#: src/hotkeys.cpp:387
+#: src/hotkeys.cpp:389
 msgid "Mouse"
 msgstr ""
 
-#: src/hotkeys.cpp:390 src/hotkeys.cpp:426
+#: src/hotkeys.cpp:392 src/hotkeys.cpp:428
 msgid "Joystick"
 msgstr ""
 
-#: src/hotkeys.cpp:396
+#: src/hotkeys.cpp:398
 msgid "Centered"
 msgstr ""
 
-#: src/hotkeys.cpp:399
+#: src/hotkeys.cpp:401
 msgid "Up"
 msgstr ""
 
-#: src/hotkeys.cpp:402
+#: src/hotkeys.cpp:404
 #, fuzzy
 #| msgid "Height:"
 msgid "Right"
 msgstr "Висина:"
 
-#: src/hotkeys.cpp:405
+#: src/hotkeys.cpp:407
 msgid "Down"
 msgstr ""
 
-#: src/hotkeys.cpp:408
+#: src/hotkeys.cpp:410
 msgid "Left"
 msgstr ""
 
-#: src/hotkeys.cpp:411
+#: src/hotkeys.cpp:413
 msgid "RightUp"
 msgstr ""
 
-#: src/hotkeys.cpp:414
+#: src/hotkeys.cpp:416
 msgid "RightDown"
 msgstr ""
 
-#: src/hotkeys.cpp:417
+#: src/hotkeys.cpp:419
 msgid "LeftUp"
 msgstr ""
 
-#: src/hotkeys.cpp:420
+#: src/hotkeys.cpp:422
 msgid "LeftDown"
 msgstr ""
 
-#: src/hotkeys.cpp:423
+#: src/hotkeys.cpp:425
 #, fuzzy
 #| msgid "Unknown era"
 msgid "Unknown"
 msgstr "Непозната епоха"
 
-#: src/hotkeys.cpp:426
+#: src/hotkeys.cpp:428
 #, fuzzy
 #| msgid "Hut"
 msgid "Hat"
 msgstr "кућица"
 
-#: src/hotkeys.cpp:885 src/hotkeys.cpp:1235
+#: src/hotkeys.cpp:887 src/hotkeys.cpp:1244
 msgid "Do you really want to quit?"
 msgstr "Стварно би да отиђеш?"
 
 # >> Base for map screenshot file names
-#: src/hotkeys.cpp:1185
+#: src/hotkeys.cpp:1194
 msgid "Map-Screenshot"
 msgstr "снимак-с-мапом"
 
-#: src/hotkeys.cpp:1192 src/hotkeys.cpp:1194
+#: src/hotkeys.cpp:1201 src/hotkeys.cpp:1203
 msgid "Screenshot done"
 msgstr "Снимање завршено"
 
@@ -4570,7 +4620,7 @@ msgid ""
 "affected terrain is :"
 msgstr "Нађен терен са ниском дужом од четири знака. Терен на који ово утиче:"
 
-#: src/text.cpp:734
+#: src/text.cpp:739
 msgid "The text contains invalid markup: "
 msgstr "Текст садржи лоше обележавање: "
 
@@ -4613,6 +4663,18 @@ msgid ""
 msgstr ""
 "Кључ ‘$deprecated_key’ је преименован у ‘$key’. Подршка за ‘$deprecated_key’ "
 "биће уклоњена у издању $removal_version."
+
+#~ msgid "Editor Settings"
+#~ msgstr "Поставке уређивача"
+
+#~ msgid "Time of day lighting preset:"
+#~ msgstr "Предефинисан освјетљај за доба дана:"
+
+#~ msgid "Custom lighting settings"
+#~ msgstr "Поставке посебног освјетљаја"
+
+#~ msgid "Automatically update map view"
+#~ msgstr "Аутоматски ажурирај приказ мапе"
 
 #~ msgid "Allow multiple maps to be open simultaneously"
 #~ msgstr "Дозволи истовремено отварање више мапа"

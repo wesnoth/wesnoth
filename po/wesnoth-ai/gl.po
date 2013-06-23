@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-22 21:54-0400\n"
+"POT-Creation-Date: 2013-06-23 10:20+0200\n"
 "PO-Revision-Date: 2013-06-14 21:33+0200\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -28,7 +28,7 @@ msgid "Multiplayer_AI^Default AI (RCA)"
 msgstr "IA predeterminada (RCA)"
 
 #. [ai]: id=experimental_ai
-#: data/ai/ais/ai_generic-rush.cfg:7
+#: data/ai/ais/ai_generic-rush.cfg:5
 msgid "Multiplayer_AI^Experimental AI"
 msgstr "IA experimental"
 
@@ -56,27 +56,35 @@ msgid "Idle AI"
 msgstr "IA inactiva"
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6960
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4380
+#, fuzzy
+#| msgid ""
+#| "Enemy unit weight: The (negative) weight given to each enemy unit that "
+#| "can reach a potential target location.  Default: 100"
 msgid ""
 "Enemy unit weight: The (negative) weight given to each enemy unit that can "
-"reach a potential target location.  Default: 100"
+"reach a potential target location. Default: 100"
 msgstr ""
-"Importancia da unidade inimiga: a importancia (negativa) que se lle dá a cada "
-"unha das unidades inimigas que pode ir a un lugar determinado. O valor "
+"Importancia da unidade inimiga: a importancia (negativa) que se lle dá a "
+"cada unha das unidades inimigas que pode ir a un lugar determinado. O valor "
 "predeterminado é 100."
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6961
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4381
+#, fuzzy
+#| msgid ""
+#| "My unit weight: The (positive) weight given to each of the AI's units "
+#| "that can reach a potential target location.  Default: 1"
 msgid ""
 "My unit weight: The (positive) weight given to each of the AI's units that "
-"can reach a potential target location.  Default: 1"
+"can reach a potential target location. Default: 1"
 msgstr ""
 "Importancia da unidade propia: a importancia (positiva) que se lle dá a cada "
 "unha das unidades da IA que pode ir a un lugar determinado. O valor "
 "predeterminado é 1."
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6962
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4382
 msgid ""
 "Goal distance weight: The (negative) weight for each step the unit is away "
 "from its goal location.\n"
@@ -86,11 +94,11 @@ msgstr ""
 "Importancia da distancia ao obxectivo: a importancia (negativa) de cada un "
 "dos pasos que separan a unidade do lugar onde vai ir.\n"
 "O valor predeterminado é 3, o que significa que, de maneira predeterminada, "
-"estar un paso máis preto do obxectivo é tan importante como estar a tiro de 3 "
-"unidades da IA."
+"estar un paso máis preto do obxectivo é tan importante como estar a tiro de "
+"3 unidades da IA."
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6963
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4383
 msgid ""
 "Terrain defense weight: The (positive) weight of the terrain defense rating "
 "for a potential target location.\n"
@@ -104,25 +112,35 @@ msgstr ""
 "obxectivo."
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6964
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4384
+#, fuzzy
+#| msgid ""
+#| "Bearing: Everything else being equal, move protected unit toward or away "
+#| "from enemy groups.  Default: toward"
 msgid ""
 "Bearing: Everything else being equal, move protected unit toward or away "
-"from enemy groups.  Default: toward"
+"from enemy groups. Default: toward"
 msgstr ""
 "Desempate: en caso de que o resto dos cálculos resulten nunha igualdade, "
 "mover a unidade protexida cara o grupo de inimigos, ou na dirección oposta. "
 "De maneira predeterminada, o movemento é cara o grupo de inimigos."
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6972
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4392
 msgid "Set AI parameters"
 msgstr "Definir os parámetros da IA"
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6978
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4398
+#, fuzzy
+#| msgid ""
+#| "Click on 'Close' without changing anything to use defaults.\n"
+#| "All weights must be 0 or larger.  Invalid inputs are converted to default "
+#| "values.\n"
+#| "Tooltips enabled for all parameters."
 msgid ""
 "Click on 'Close' without changing anything to use defaults.\n"
-"All weights must be 0 or larger.  Invalid inputs are converted to default "
+"All weights must be 0 or larger. Invalid inputs are converted to default "
 "values.\n"
 "Tooltips enabled for all parameters."
 msgstr ""
@@ -132,22 +150,22 @@ msgstr ""
 "Presentaranse mensaxes de axuda para todos os parámetros."
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6986
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4406
 msgid "Enemy unit weight  (default: 100)"
 msgstr "Importancia da unidade inimiga (predeterminada: 100)"
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6994
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4414
 msgid "My unit weight  (default: 1)"
 msgstr "Importancia da unidade propia (predeterminada: 1)"
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:7002
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4422
 msgid "Goal distance weight  (default: 3)"
 msgstr "Importancia da distancia ao obxectivo (predeterminada: 3)"
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:7010
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4430
 msgid "Terrain defense weight  (default: 0.1)"
 msgstr "Importancia da defensa no terreo (predeterminada: 0.1)"
 
@@ -256,9 +274,9 @@ msgid ""
 "In HttT, we would travel north now, and try to make it to the Isle of "
 "Alduin. But for this demo campaign, we'll call it good here."
 msgstr ""
-"En «O herdeiro ao trono», este sería o momento de viaxar ao norte, e intentar "
-"chegar á illa de Alduin. Pero para esta campaña de demostración, con isto "
-"basta."
+"En «O herdeiro ao trono», este sería o momento de viaxar ao norte, e "
+"intentar chegar á illa de Alduin. Pero para esta campaña de demostración, "
+"con isto basta."
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:271
@@ -297,8 +315,32 @@ msgid ""
 msgstr "Non! Chegaron os seus reforzos, é demasiado tarde…"
 
 #: data/ai/micro_ais/scenarios/animals.cfg:4
+#, fuzzy
+#| msgid ""
+#| "<u>General</u>: These AI's are set up to simulate (to some extent) how "
+#| "these animals behave in real life. This includes that they are animals, "
+#| "meaning that they are not super smart. As an example, the wolves "
+#| "generally hunt in a pack, but are easily distracted by prey coming into "
+#| "range. They are also decent, but not great at cornering deer. For the "
+#| "most part, this is intentional.\n"
+#| "\n"
+#| "<u>Bears (replaced by Ghasts), Spiders and Yetis</u> mostly just wander "
+#| "in their respective parts of the map. They stay out of each other's way "
+#| "(and out of the way of the dogs), but do attack each other if cornered. "
+#| "They attack the other, weaker animals (deer etc.) if those are within "
+#| "range.\n"
+#| "\n"
+#| "<u>Wolves</u> hunt in a pack. They actively go after the closest deer (as "
+#| "long as it stays in the forest) and try to corner it (not always super "
+#| "successfully), but are easily distracted by other prey coming into range. "
+#| "The wolves try to avoid getting into the range of bears, spiders, dogs "
+#| "and the yeti, except when they are going in for an attack. If you let "
+#| "them move for long enough, they will also learn that it is not healthy to "
+#| "attack the tusklets. When no deer is left, they wander randomly. Note "
+#| "that, unlike the Wolves Multipack AI (used in a different scenario), this "
+#| "Wolves AI combines all wolves of the side in the same pack."
 msgid ""
-"<u>General</u>: These AI's are set up to simulate (to some extent) how these "
+"<u>General</u>: These AIs are set up to simulate (to some extent) how these "
 "animals behave in real life. This includes that they are animals, meaning "
 "that they are not super smart. As an example, the wolves generally hunt in a "
 "pack, but are easily distracted by prey coming into range. They are also "
@@ -321,26 +363,27 @@ msgid ""
 "all wolves of the side in the same pack."
 msgstr ""
 "<u>Xeral</u>: estas intelixencias artificiais están deseñadas para simular "
-"(ata certo punto) como se comportan estes animais na vida real. Isto inclúe o "
-"feito de que se trata de animais, o que significa que non son especialmente "
-"intelixentes. Por exemplo, os lobos adoitan cazar en grupo, pero distráense "
-"facilmente cando se lles pon a tiro unha presa. Os lobos ademais son bos no "
-"que se refire a rodear a unha gacela, pero tampouco son extraordinarios neste "
-"aspecto. Isto fíxose en gran medida de maneira intencional.\n"
+"(ata certo punto) como se comportan estes animais na vida real. Isto inclúe "
+"o feito de que se trata de animais, o que significa que non son "
+"especialmente intelixentes. Por exemplo, os lobos adoitan cazar en grupo, "
+"pero distráense facilmente cando se lles pon a tiro unha presa. Os lobos "
+"ademais son bos no que se refire a rodear a unha gacela, pero tampouco son "
+"extraordinarios neste aspecto. Isto fíxose en gran medida de maneira "
+"intencional.\n"
 "\n"
 "Os <u>osos (equivalentes aos «devoradores»), arañas e homes das neves</u> "
 "adícanse principalmente a rondar as súas respectivas zonas nos escenarios. "
 "Non se meten os uns cos outros (nin cos cans), pero si que se atacan entre "
-"eles cando non ven outra saída. Aos animais máis débiles, como as gacelas, si "
-"que os atacan.\n"
+"eles cando non ven outra saída. Aos animais máis débiles, como as gacelas, "
+"si que os atacan.\n"
 "\n"
 "Os <u>lobos</u> cazan en grupo. Van a pola gacela máis próxima (mentres esta "
 "non saia do bosque) e intentan acantoala (non sempre con éxito), pero "
-"distráense facilmente cando outra presa se lles pon a tiro. Os lobos intentan "
-"evitar achegarse a osos, arañas, cans ou homes das neves, salvo que teñan "
-"pensado atacar. Se lles deixas moverse tempo dabondo, aprenderán que non "
-"cómpre atacar aos xabarís. Cando non quedan gacelas, rondan o escenario de "
-"xeito aleatorio. Téñase en conta que, a diferencia do paquete de "
+"distráense facilmente cando outra presa se lles pon a tiro. Os lobos "
+"intentan evitar achegarse a osos, arañas, cans ou homes das neves, salvo que "
+"teñan pensado atacar. Se lles deixas moverse tempo dabondo, aprenderán que "
+"non cómpre atacar aos xabarís. Cando non quedan gacelas, rondan o escenario "
+"de xeito aleatorio. Téñase en conta que, a diferencia do paquete de "
 "intelixencias artificiais para lobos (que se usa noutro escenario), esta "
 "intelixencia artificial de lobos combina todos os lobos dun mesmo bando no "
 "mesmo grupo."
@@ -408,10 +451,10 @@ msgstr ""
 "O <u>rabaño (equivalentes aos «cachorros de troll»)</u> móvese de maneira "
 "aleatoria salvo cando ten un can pastor preto del, en cuxo caso se afasta do "
 "can. Os cans aprovéitanse disto, e sitúanse arredor do rabaño, na medida do "
-"posíbel. Ademais, o rabaño fuxe dos inimigos que se lle achegan. O rabaño, os "
-"cans e mailas criaturas do bosque (gacelas, xabarís e coellos) aprenderon que "
-"non supoñen unha ameaza os uns para os outros, e non se atacan entre eles, o "
-"que demostra o gran poder de autocontrol dos cans pastores."
+"posíbel. Ademais, o rabaño fuxe dos inimigos que se lle achegan. O rabaño, "
+"os cans e mailas criaturas do bosque (gacelas, xabarís e coellos) aprenderon "
+"que non supoñen unha ameaza os uns para os outros, e non se atacan entre "
+"eles, o que demostra o gran poder de autocontrol dos cans pastores."
 
 #. [event]
 #. [test]: id=animals
@@ -471,16 +514,22 @@ msgstr "Lobos"
 msgid "Whelps"
 msgstr "Cachorros"
 
+# Optimizado para a interface.
+#. [event]
 #. [set_menu_item]: id=m01_end_animals
 #. [set_menu_item]: id=m01_end_swarm
 #. [set_menu_item]: id=m01_end_wolves
 #. [set_menu_item]: id=m04_end_animals
 #: data/ai/micro_ais/scenarios/animals.cfg:214
+#: data/ai/micro_ais/scenarios/dragon.cfg:48
 #: data/ai/micro_ais/scenarios/goto.cfg:365
+#: data/ai/micro_ais/scenarios/guardians.cfg:84
+#: data/ai/micro_ais/scenarios/lurkers.cfg:368
+#: data/ai/micro_ais/scenarios/patrols.cfg:156
 #: data/ai/micro_ais/scenarios/swarm.cfg:67
 #: data/ai/micro_ais/scenarios/wolves.cfg:96
-msgid "End scenario"
-msgstr "Rematar escenario"
+msgid "End Scenario"
+msgstr "Finalizar"
 
 #. [command]
 #. [then]
@@ -508,12 +557,12 @@ msgstr ""
 "<span color='#A00000'>Nota importante:</span> as micro intelixencias "
 "artificiais deste escenario escribíronse para unha serie de tipos de unidade "
 "animais que non existen na distribución oficial de A batalla polo Noroeste, "
-"como osos, rabaños ou cans pastores. Neste escenario de probas, esas unidades "
-"substituíronse por unidades “equivalentes” que si forman parte da "
-"distribución oficial. Se queres a “experiencia completa” cos tipos de unidade "
-"animais orixinais, bótalle unha ollada ao escenario «Animais» do complemento "
-"«AI Modification Demos» (demostracións de modificación das intelixencias "
-"artificiais)."
+"como osos, rabaños ou cans pastores. Neste escenario de probas, esas "
+"unidades substituíronse por unidades “equivalentes” que si forman parte da "
+"distribución oficial. Se queres a “experiencia completa” cos tipos de "
+"unidade animais orixinais, bótalle unha ollada ao escenario «Animais» do "
+"complemento «AI Modification Demos» (demostracións de modificación das "
+"intelixencias artificiais)."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/animals.cfg:351
@@ -522,10 +571,10 @@ msgid ""
 "for watching only. The animal AIs behave as follows:\n"
 "\n"
 msgstr ""
-"Este é un pequeno e divertido escenario cun fato de intelixencias artificiais "
-"de animais. O escenario está pensado simplemente para contemplalo, para "
-"observación. As intelixencias artificiais dos animais compórtanse do seguinte "
-"xeito:\n"
+"Este é un pequeno e divertido escenario cun fato de intelixencias "
+"artificiais de animais. O escenario está pensado simplemente para "
+"contemplalo, para observación. As intelixencias artificiais dos animais "
+"compórtanse do seguinte xeito:\n"
 "\n"
 
 #. [message]: speaker=narrator
@@ -620,7 +669,7 @@ msgstr ""
 #. [event]: id=Kraa profile profile}
 #. [event]: id=Vanak profile profile}
 #: data/ai/micro_ais/scenarios/bottleneck-defense.cfg:87
-#: data/ai/micro_ais/scenarios/guardians.cfg:520
+#: data/ai/micro_ais/scenarios/guardians.cfg:521
 #: data/ai/micro_ais/scenarios/messenger-escort.cfg:136
 msgid "They there!  We them get!"
 msgstr ""
@@ -650,7 +699,7 @@ msgstr ""
 
 #. [option]: speaker=narrator
 #: data/ai/micro_ais/scenarios/bottleneck-defense.cfg:101
-msgid "<span font='16'>I'll watch the two AI's fight it out.</span>"
+msgid "<span font='16'>I'll watch the two AIs fight it out.</span>"
 msgstr ""
 
 #. [option]: speaker=narrator
@@ -700,15 +749,6 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/dragon.cfg:33
 msgid "Dreadful Bat"
 msgstr ""
-
-# Optimizado para a interface.
-#. [event]
-#: data/ai/micro_ais/scenarios/dragon.cfg:48
-#: data/ai/micro_ais/scenarios/guardians.cfg:84
-#: data/ai/micro_ais/scenarios/lurkers.cfg:368
-#: data/ai/micro_ais/scenarios/patrols.cfg:156
-msgid "End Scenario"
-msgstr "Finalizar"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/dragon.cfg:51
@@ -841,19 +881,19 @@ msgstr ""
 #. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:396
 msgid ""
-"This scenario demonstrates a variety of different uses of the Goto Micro "
-"AI.  All AI sides are controlled by this MAI in one way or another (except "
-"for the saurians, which are run by the Lurkers Micro AI).  Messages will be "
+"This scenario demonstrates a variety of different uses of the Goto Micro AI. "
+"All AI sides are controlled by this MAI in one way or another (except for "
+"the saurians, which are run by the Lurkers Micro AI). Messages will be "
 "displayed throughout the scenario to point out what the units are doing.\n"
 "\n"
-"The player controls Side 1.  There are right-click context menu options for "
-"adding Side 1 units to the map and for taking them off again.  This is "
-"useful mostly for testing how the Side 3 guardians react.\n"
+"The player controls Side 1. There are right-click context menu options for "
+"adding Side 1 units to the map and for taking them off again. This is useful "
+"mostly for testing how the Side 3 guardians react.\n"
 "\n"
-"Note: The Goto AI is coded as a Micro AI.  A Micro AI can be added and "
+"Note: The Goto AI is coded as a Micro AI. A Micro AI can be added and "
 "adapted to the need of a scenario easily using only WML and the [micro_ai] "
-"tag.  Check out the <span color='#00A000'>Micro AI wiki page</span> at "
-"http://wiki.wesnoth.org/Micro_AIs for more information."
+"tag. Check out the <span color='#00A000'>Micro AI wiki page</span> at http://"
+"wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
 
 #. [objectives]
@@ -1192,29 +1232,29 @@ msgid "Water Guardian"
 msgstr ""
 
 #. [event]
-#: data/ai/micro_ais/scenarios/guardians.cfg:411
+#: data/ai/micro_ais/scenarios/guardians.cfg:412
 msgid "Guarded Location"
 msgstr ""
 
 #. [event]
-#: data/ai/micro_ais/scenarios/guardians.cfg:412
+#: data/ai/micro_ais/scenarios/guardians.cfg:413
 msgid "Station 1"
 msgstr ""
 
 #. [event]
-#: data/ai/micro_ais/scenarios/guardians.cfg:413
+#: data/ai/micro_ais/scenarios/guardians.cfg:414
 msgid "Station 2"
 msgstr ""
 
 #. [command]
 #. [set_menu_item]: id=m01_guardian
-#: data/ai/micro_ais/scenarios/guardians.cfg:431
-#: data/ai/micro_ais/scenarios/guardians.cfg:437
+#: data/ai/micro_ais/scenarios/guardians.cfg:432
+#: data/ai/micro_ais/scenarios/guardians.cfg:438
 msgid "Standard WML Guardian"
 msgstr ""
 
 #. [command]
-#: data/ai/micro_ais/scenarios/guardians.cfg:437
+#: data/ai/micro_ais/scenarios/guardians.cfg:438
 msgid ""
 "This is the built-in WML guardian coded using 'ai_special=guardian'. These "
 "guardians attack if there is an enemy within their movement range, otherwise "
@@ -1223,13 +1263,13 @@ msgstr ""
 
 #. [command]
 #. [set_menu_item]: id=m02_return
-#: data/ai/micro_ais/scenarios/guardians.cfg:442
-#: data/ai/micro_ais/scenarios/guardians.cfg:448
+#: data/ai/micro_ais/scenarios/guardians.cfg:443
+#: data/ai/micro_ais/scenarios/guardians.cfg:449
 msgid "Return Guardian"
 msgstr ""
 
 #. [command]
-#: data/ai/micro_ais/scenarios/guardians.cfg:448
+#: data/ai/micro_ais/scenarios/guardians.cfg:449
 msgid ""
 "A 'return guardian' is a variation of the standard Wesnoth guardian. It has "
 "an assigned guard position (GP) to which it returns after attacks on "
@@ -1245,13 +1285,13 @@ msgstr ""
 
 #. [command]
 #. [set_menu_item]: id=m03_home
-#: data/ai/micro_ais/scenarios/guardians.cfg:458
-#: data/ai/micro_ais/scenarios/guardians.cfg:464
+#: data/ai/micro_ais/scenarios/guardians.cfg:459
+#: data/ai/micro_ais/scenarios/guardians.cfg:465
 msgid "Home Guard"
 msgstr ""
 
 #. [command]
-#: data/ai/micro_ais/scenarios/guardians.cfg:464
+#: data/ai/micro_ais/scenarios/guardians.cfg:465
 msgid ""
 "A 'home guard' is a variant on the 'guardian' AI special. With this variant, "
 "the unit has an assigned 'home' location, and will return there if not "
@@ -1270,13 +1310,13 @@ msgstr ""
 
 #. [command]
 #. [set_menu_item]: id=m04_stationed
-#: data/ai/micro_ais/scenarios/guardians.cfg:470
-#: data/ai/micro_ais/scenarios/guardians.cfg:476
+#: data/ai/micro_ais/scenarios/guardians.cfg:471
+#: data/ai/micro_ais/scenarios/guardians.cfg:477
 msgid "Stationed Guardian"
 msgstr ""
 
 #. [command]
-#: data/ai/micro_ais/scenarios/guardians.cfg:476
+#: data/ai/micro_ais/scenarios/guardians.cfg:477
 msgid ""
 "A 'stationed guardian' is another variation of the standard Wesnoth guardian "
 "with a somewhat more complex behavior than that of the 'return guardian'. "
@@ -1296,13 +1336,13 @@ msgstr ""
 
 #. [command]
 #. [set_menu_item]: id=m05_coward
-#: data/ai/micro_ais/scenarios/guardians.cfg:487
-#: data/ai/micro_ais/scenarios/guardians.cfg:493
+#: data/ai/micro_ais/scenarios/guardians.cfg:488
+#: data/ai/micro_ais/scenarios/guardians.cfg:494
 msgid "Coward"
 msgstr ""
 
 #. [command]
-#: data/ai/micro_ais/scenarios/guardians.cfg:493
+#: data/ai/micro_ais/scenarios/guardians.cfg:494
 msgid ""
 "Cowards are units that, like guardians, sit around doing nothing until an "
 "enemy comes into range. Unlike guardians, however, they run away once "
@@ -1322,13 +1362,13 @@ msgstr ""
 
 #. [command]
 #. [set_menu_item]: id=m06_zone
-#: data/ai/micro_ais/scenarios/guardians.cfg:502
-#: data/ai/micro_ais/scenarios/guardians.cfg:508
+#: data/ai/micro_ais/scenarios/guardians.cfg:503
+#: data/ai/micro_ais/scenarios/guardians.cfg:509
 msgid "Zone Guardian"
 msgstr ""
 
 #. [command]
-#: data/ai/micro_ais/scenarios/guardians.cfg:508
+#: data/ai/micro_ais/scenarios/guardians.cfg:509
 msgid ""
 "A zone guardian is a unit that, as the name says, guards a zone. It moves "
 "randomly inside this zone until an enemy enters it (or a separately defined "
@@ -1341,12 +1381,12 @@ msgid ""
 msgstr ""
 
 #. [event]: id=Kraa profile profile}
-#: data/ai/micro_ais/scenarios/guardians.cfg:519
+#: data/ai/micro_ais/scenarios/guardians.cfg:520
 msgid "Kraahhh!!!!"
 msgstr ""
 
 #. [event]: id=Kraa profile profile}
-#: data/ai/micro_ais/scenarios/guardians.cfg:522
+#: data/ai/micro_ais/scenarios/guardians.cfg:523
 msgid ""
 "Gryphons of the High Plains, look at all these enemies. They don't behave "
 "normally. Most of them don't move at all unless we get close. Let's check "
@@ -1362,34 +1402,34 @@ msgid ""
 msgstr ""
 
 #. [objectives]
-#: data/ai/micro_ais/scenarios/guardians.cfg:531
+#: data/ai/micro_ais/scenarios/guardians.cfg:532
 msgid "Move the Gryphons around to explore how the guardians react"
 msgstr ""
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/guardians.cfg:533
+#: data/ai/micro_ais/scenarios/guardians.cfg:534
 #: data/ai/micro_ais/scenarios/patrols.cfg:211
 msgid "Defeat all enemy units"
 msgstr ""
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/guardians.cfg:537
+#: data/ai/micro_ais/scenarios/guardians.cfg:538
 msgid "Move Kraa to the signpost"
 msgstr ""
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/guardians.cfg:541
+#: data/ai/micro_ais/scenarios/guardians.cfg:542
 msgid "Death of Kraa"
 msgstr ""
 
 #. [note]
-#: data/ai/micro_ais/scenarios/guardians.cfg:545
+#: data/ai/micro_ais/scenarios/guardians.cfg:546
 msgid ""
 "Check out the right-click menu options for information on each guardian type"
 msgstr ""
 
 #. [event]
-#: data/ai/micro_ais/scenarios/guardians.cfg:600
+#: data/ai/micro_ais/scenarios/guardians.cfg:601
 msgid ""
 "Gryphons of the High Plains, it is time to return to said plains. Follow me."
 msgstr ""
@@ -1412,20 +1452,20 @@ msgstr ""
 #. [event]
 #: data/ai/micro_ais/scenarios/healer_support.cfg:83
 msgid ""
-"In this scenario, we demonstrate the use of the Healer Support Micro AI.  "
+"In this scenario, we demonstrate the use of the Healer Support Micro AI. "
 "This AI configures the healers of a side to stay behind the battle lines and "
 "heal injured and/or threatened units rather than participate in the attacks "
-"under all circumstances.  It includes several configurable options (which "
-"are set differently for the two sides in this scenario) that determine how "
+"under all circumstances. It includes several configurable options (which are "
+"set differently for the two sides in this scenario) that determine how "
 "aggressive/careful the healers are, whether they also attack, how much risk "
 "they are willing to take, etc.\n"
 "\n"
-"For clarity, each healer announces her upcoming support move.  If you don't "
+"For clarity, each healer announces her upcoming support move. If you don't "
 "want to see that each time, just hit 'esc' when it happens the first time.\n"
 "\n"
-"Note: The Healer Support AI is coded as a Micro AI.  A Micro AI can be added "
+"Note: The Healer Support AI is coded as a Micro AI. A Micro AI can be added "
 "and adapted to the need of a scenario easily using only WML and the "
-"[micro_ai] tag.  Check out the <span color='#00A000'>Micro AI wiki page</"
+"[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
 
@@ -1898,7 +1938,7 @@ msgid ""
 "instructed to protect the wizard Rossauba, while moving him safely to the "
 "signpost. On the other side, Koorzhar's units (in the west) will primarily "
 "attack Rossauba, even if a better target is available. Do you want to play "
-"either of the sides or let the AI's battle it out among themselves?\n"
+"either of the sides or let the AIs battle it out among themselves?\n"
 "\n"
 "Note: The Protect Unit AI is coded as a Micro AI. A Micro AI can be added "
 "and adapted to the need of a scenario easily using only WML and the "
@@ -1908,7 +1948,7 @@ msgstr ""
 
 #. [option]: speaker=narrator
 #: data/ai/micro_ais/scenarios/protect-unit.cfg:144
-msgid "<span font='16'>I'll watch the two AI's fight it out</span>"
+msgid "<span font='16'>I'll watch the two AIs fight it out</span>"
 msgstr ""
 
 #. [option]: speaker=narrator
@@ -2727,3 +2767,5 @@ msgstr ""
 msgid "Goto Micro AI"
 msgstr ""
 
+#~ msgid "End scenario"
+#~ msgstr "Rematar escenario"

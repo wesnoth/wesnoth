@@ -22,7 +22,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-12 19:12+0200\n"
+"POT-Creation-Date: 2013-06-23 10:20+0200\n"
 "PO-Revision-Date: 2012-07-02 19:21+0200\n"
 "Last-Translator: Aelonin <quianaaelonin@gmail.com>\n"
 "Language-Team: Spanish <http://wiki.wesnoth.org/SpanishTranslation>\n"
@@ -35,7 +35,7 @@ msgstr ""
 
 #. [time]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:529
-#: data/core/macros/schedules.cfg:78
+#: data/core/macros/schedules.cfg:99
 msgid "Underground"
 msgstr "Bajo tierra"
 
@@ -2255,7 +2255,7 @@ msgstr ""
 #. [time]: id=dawn_hour
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:281 data/core/macros/schedules.cfg:6
-#: data/core/macros/schedules.cfg:246
+#: data/core/macros/schedules.cfg:285
 msgid "Dawn"
 msgstr "Amanecer"
 
@@ -2267,27 +2267,27 @@ msgstr "Mañana"
 
 #. [time]: id=afternoon
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:283 data/core/macros/schedules.cfg:26
+#: data/core/help.cfg:283 data/core/macros/schedules.cfg:35
 msgid "Afternoon"
 msgstr "Tarde"
 
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:284 data/core/macros/schedules.cfg:35
-#: data/core/macros/schedules.cfg:358
+#: data/core/help.cfg:284 data/core/macros/schedules.cfg:44
+#: data/core/macros/schedules.cfg:397
 msgid "Dusk"
 msgstr "Ocaso"
 
 #. [time]: id=first_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:285 data/core/macros/schedules.cfg:46
+#: data/core/help.cfg:285 data/core/macros/schedules.cfg:55
 msgid "First Watch"
 msgstr "Anochecer"
 
 #. [time]: id=second_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:286 data/core/macros/schedules.cfg:58
+#: data/core/help.cfg:286 data/core/macros/schedules.cfg:79
 msgid "Second Watch"
 msgstr "Noche cerrada"
 
@@ -4902,123 +4902,125 @@ msgstr ""
 msgid "Max HP bonus +3, Max XP +20%"
 msgstr "Máxima bonificación en PV +3, Máximos XP +20%"
 
+#. [time]: id=midday
+#. [time]: id=midday_hour
+#: data/core/macros/schedules.cfg:26 data/core/macros/schedules.cfg:332
+msgid "Midday"
+msgstr "Mediodía"
+
+#. [time]: id=midnight
+#. [time]: id=midnight_hour
+#: data/core/macros/schedules.cfg:67 data/core/macros/schedules.cfg:201
+msgid "Midnight"
+msgstr "Medianoche"
+
 #. [time]: id=indoors
-#: data/core/macros/schedules.cfg:70
+#: data/core/macros/schedules.cfg:91
 msgid "Indoors"
 msgstr "Interior"
 
 #. [time]: id=deep_underground
-#: data/core/macros/schedules.cfg:90
+#: data/core/macros/schedules.cfg:111
 msgid "Deep Underground"
 msgstr "Profundidades terrestres"
 
-#. [time]: id=midnight_hour
-#: data/core/macros/schedules.cfg:162
-msgid "Midnight"
-msgstr "Medianoche"
-
 #. [time]: id=second_watch_hour1
-#: data/core/macros/schedules.cfg:174
+#: data/core/macros/schedules.cfg:213
 msgid "Second Watch — First Hour"
 msgstr "Noche cerrada — Hora primera"
 
 #. [time]: id=second_watch_hour2
-#: data/core/macros/schedules.cfg:186
+#: data/core/macros/schedules.cfg:225
 msgid "Second Watch — Second Hour"
 msgstr "Noche cerrada — Hora segunda"
 
 #. [time]: id=second_watch_hour3
-#: data/core/macros/schedules.cfg:198
+#: data/core/macros/schedules.cfg:237
 msgid "Second Watch — Third Hour"
 msgstr "Noche cerrada — Hora tercera"
 
 #. [time]: id=second_watch_hour4
-#: data/core/macros/schedules.cfg:210
+#: data/core/macros/schedules.cfg:249
 msgid "Second Watch — Fourth Hour"
 msgstr "Noche cerrada — Hora cuarta"
 
 #. [time]: id=second_watch_hour5
-#: data/core/macros/schedules.cfg:222
+#: data/core/macros/schedules.cfg:261
 msgid "Second Watch — Fifth Hour"
 msgstr "Noche cerrada — Hora quinta"
 
 #. [time]: id=second_watch_hour6
-#: data/core/macros/schedules.cfg:234
+#: data/core/macros/schedules.cfg:273
 msgid "Second Watch — Sixth Hour"
 msgstr "Noche cerrada — Hora sexta"
 
 #. [time]: id=morning_hour1
-#: data/core/macros/schedules.cfg:257
+#: data/core/macros/schedules.cfg:296
 msgid "Morning — First Hour"
 msgstr "Mañana — Hora primera"
 
 #. [time]: id=morning_hour2
-#: data/core/macros/schedules.cfg:266
+#: data/core/macros/schedules.cfg:305
 msgid "Morning — Second Hour"
 msgstr "Mañana — Hora segunda"
 
 #. [time]: id=morning_hour3
-#: data/core/macros/schedules.cfg:275
+#: data/core/macros/schedules.cfg:314
 msgid "Morning — Third Hour"
 msgstr "Mañana — Hora tercera"
 
 #. [time]: id=morning_hour4
-#: data/core/macros/schedules.cfg:284
+#: data/core/macros/schedules.cfg:323
 msgid "Morning — Fourth Hour"
 msgstr "Mañana — Hora cuarta"
 
-#. [time]: id=midday_hour
-#: data/core/macros/schedules.cfg:293
-msgid "Midday"
-msgstr "Mediodía"
-
 #. [time]: id=afternoon_hour1
-#: data/core/macros/schedules.cfg:302
+#: data/core/macros/schedules.cfg:341
 msgid "Afternoon — First Hour"
 msgstr "Tarde — Hora primera"
 
 #. [time]: id=afternoon_hour2
-#: data/core/macros/schedules.cfg:311
+#: data/core/macros/schedules.cfg:350
 msgid "Afternoon — Second Hour"
 msgstr "Tarde — Hora segunda"
 
 #. [time]: id=afternoon_hour3
-#: data/core/macros/schedules.cfg:320
+#: data/core/macros/schedules.cfg:359
 msgid "Afternoon — Third Hour"
 msgstr "Tarde — Hora tercera"
 
 #. [time]: id=afternoon_hour4
-#: data/core/macros/schedules.cfg:329
+#: data/core/macros/schedules.cfg:368
 msgid "Afternoon — Fourth Hour"
 msgstr "Tarde — Hora cuarta"
 
 #. [time]: id=afternoon_hour5
-#: data/core/macros/schedules.cfg:338
+#: data/core/macros/schedules.cfg:377
 msgid "Afternoon — Fifth Hour"
 msgstr "Tarde — Hora quinta"
 
 #. [time]: id=afternoon_hour6
-#: data/core/macros/schedules.cfg:347
+#: data/core/macros/schedules.cfg:386
 msgid "Afternoon — Sixth Hour"
 msgstr "Tarde — Hora sexta"
 
 #. [time]: id=first_watch_hour1
-#: data/core/macros/schedules.cfg:369
+#: data/core/macros/schedules.cfg:408
 msgid "First Watch — First Hour"
 msgstr "Anochecer — Hora primera"
 
 #. [time]: id=first_watch_hour2
-#: data/core/macros/schedules.cfg:381
+#: data/core/macros/schedules.cfg:420
 msgid "First Watch — Second Hour"
 msgstr "Anochecer — Hora segunda"
 
 #. [time]: id=first_watch_hour3
-#: data/core/macros/schedules.cfg:393
+#: data/core/macros/schedules.cfg:432
 msgid "First Watch — Third Hour"
 msgstr "Anochecer — Hora tercera"
 
 #. [time]: id=first_watch_hour4
-#: data/core/macros/schedules.cfg:405
+#: data/core/macros/schedules.cfg:444
 msgid "First Watch — Fourth Hour"
 msgstr "Anochecer — Hora cuarta"
 

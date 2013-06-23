@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-22 22:03-0400\n"
+"POT-Creation-Date: 2013-06-23 10:20+0200\n"
 "PO-Revision-Date: 2011-12-14 21:17+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
@@ -132,23 +132,38 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
+#. [editor_times]: id=summer
+#: data/core/editor/time-of-day.cfg:22
+msgid "Summer"
+msgstr ""
+
+#. [editor_times]: id=winter
+#: data/core/editor/time-of-day.cfg:28
+msgid "Winter"
+msgstr ""
+
 #. [editor_times]: id=underground
-#: data/core/editor/time-of-day.cfg:27
+#: data/core/editor/time-of-day.cfg:34
 msgid "Underground"
 msgstr ""
 
 #. [editor_times]: id=deep_underground
-#: data/core/editor/time-of-day.cfg:33
+#: data/core/editor/time-of-day.cfg:40
 msgid "Deep Underground"
 msgstr ""
 
+#. [editor_times]: id=indoors
+#: data/core/editor/time-of-day.cfg:46
+msgid "Indoors"
+msgstr ""
+
 #. [editor_times]: id=24
-#: data/core/editor/time-of-day.cfg:39
+#: data/core/editor/time-of-day.cfg:52
 msgid "24 Hour Schedule"
 msgstr ""
 
 #. [editor_times]: id=after_the_fall
-#: data/core/editor/time-of-day.cfg:46
+#: data/core/editor/time-of-day.cfg:59
 msgid "After the Fall"
 msgstr ""
 
@@ -202,7 +217,7 @@ msgstr "地图"
 
 #. [menu]: id=menu-editor-transitions
 #: data/themes/editor.cfg:98
-msgid "Transition update"
+msgid "Transition Update"
 msgstr ""
 
 #. [menu]: id=menu-editor-window
@@ -231,27 +246,27 @@ msgid "units"
 msgstr ""
 
 #. [menu]: id=switch_time
-#: data/themes/editor.cfg:489
+#: data/themes/editor.cfg:500
 msgid "Time Schedule Menu"
 msgstr ""
 
 #. [menu]: id=menu-playlist
-#: data/themes/editor.cfg:499
+#: data/themes/editor.cfg:510
 msgid "Playlist"
 msgstr ""
 
 #. [menu]: id=menu-editor-schedule
-#: data/themes/editor.cfg:505
+#: data/themes/editor.cfg:516
 msgid "Assign Time Schedule"
 msgstr ""
 
 #. [label]: id=terrain-icon
-#: data/themes/editor.cfg:609
+#: data/themes/editor.cfg:610
 msgid "terrain"
 msgstr ""
 
 #. [action]: id=flip_map_button_editor, type=checkbox
-#: data/themes/editor.cfg:669
+#: data/themes/editor.cfg:689
 msgid "Not implemented yet."
 msgstr ""
 
@@ -267,32 +282,40 @@ msgstr ""
 msgid "Type: "
 msgstr ""
 
-#: src/editor/editor_controller.cpp:175
+#: src/editor/action/mouse/mouse_action_unit.cpp:61
+msgid "Level: "
+msgstr ""
+
+#: src/editor/action/mouse/mouse_action_unit.cpp:62
+msgid "Cost: "
+msgstr ""
+
+#: src/editor/editor_controller.cpp:173
 msgid "Fatal error"
 msgstr "严重错误"
 
-#: src/editor/editor_controller.cpp:203
+#: src/editor/editor_controller.cpp:201
 msgid "Do you really want to quit?"
 msgstr "您真的想退出吗？"
 
-#: src/editor/editor_controller.cpp:205
+#: src/editor/editor_controller.cpp:203
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr "您真的想退出吗？上次保存之后对地图所作的修改将会全部丢失。"
 
-#: src/editor/editor_controller.cpp:207
+#: src/editor/editor_controller.cpp:205
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
 "您真的想退出吗？以下地图已经被修改，上次保存之后所作的修改将会全部丢失："
 
-#: src/editor/editor_controller.cpp:210
+#: src/editor/editor_controller.cpp:208
 msgid "Quit"
 msgstr "退出"
 
-#: src/editor/editor_controller.cpp:221
+#: src/editor/editor_controller.cpp:219
 msgid "No editor time-of-day found."
 msgstr "没有找到编辑器的时段设置。"
 
@@ -433,16 +456,16 @@ msgstr "无法保存到场景"
 msgid "Could not save the map: $msg"
 msgstr "无法保存地图：$msg"
 
-#: src/editor/palette/editor_palettes.cpp:56
-#: src/editor/palette/editor_palettes.cpp:101
+#: src/editor/palette/editor_palettes.cpp:58
+#: src/editor/palette/editor_palettes.cpp:105
 msgid "(Unknown Group)"
 msgstr ""
 
-#: src/editor/palette/editor_palettes.cpp:340
+#: src/editor/palette/editor_palettes.cpp:356
 msgid "(non-core)"
 msgstr "（非核心）"
 
-#: src/editor/palette/editor_palettes.cpp:341
+#: src/editor/palette/editor_palettes.cpp:357
 msgid "Will not work in game without extra care."
 msgstr "除非特别注意，否则不会正常工作。"
 
@@ -454,6 +477,10 @@ msgstr "前景地形："
 msgid "BG: "
 msgstr "背景地形："
 
+#: src/gui/dialogs/editor/custom_tod.cpp:123
+msgid "Choose file"
+msgstr ""
+
 #: src/gui/dialogs/editor_set_starting_position.cpp:86
 msgid "player^None"
 msgstr "无"
@@ -462,9 +489,8 @@ msgstr "无"
 msgid "Player $player_number"
 msgstr "玩家 $player_number"
 
-#: src/gui/dialogs/editor_settings.cpp:161
-msgid "Custom setting"
-msgstr "自定义设置"
+#~ msgid "Custom setting"
+#~ msgstr "自定义设置"
 
 #~ msgid "Edit"
 #~ msgstr "编辑"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-22 22:03-0400\n"
+"POT-Creation-Date: 2013-06-23 10:20+0200\n"
 "PO-Revision-Date: 2013-02-07 15:14+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -130,23 +130,38 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
+#. [editor_times]: id=summer
+#: data/core/editor/time-of-day.cfg:22
+msgid "Summer"
+msgstr ""
+
+#. [editor_times]: id=winter
+#: data/core/editor/time-of-day.cfg:28
+msgid "Winter"
+msgstr ""
+
 #. [editor_times]: id=underground
-#: data/core/editor/time-of-day.cfg:27
+#: data/core/editor/time-of-day.cfg:34
 msgid "Underground"
 msgstr ""
 
 #. [editor_times]: id=deep_underground
-#: data/core/editor/time-of-day.cfg:33
+#: data/core/editor/time-of-day.cfg:40
 msgid "Deep Underground"
 msgstr ""
 
+#. [editor_times]: id=indoors
+#: data/core/editor/time-of-day.cfg:46
+msgid "Indoors"
+msgstr ""
+
 #. [editor_times]: id=24
-#: data/core/editor/time-of-day.cfg:39
+#: data/core/editor/time-of-day.cfg:52
 msgid "24 Hour Schedule"
 msgstr ""
 
 #. [editor_times]: id=after_the_fall
-#: data/core/editor/time-of-day.cfg:46
+#: data/core/editor/time-of-day.cfg:59
 msgid "After the Fall"
 msgstr ""
 
@@ -199,7 +214,7 @@ msgstr "地圖"
 #: data/themes/editor.cfg:98
 #, fuzzy
 #| msgid "Delay transition updates"
-msgid "Transition update"
+msgid "Transition Update"
 msgstr "延遲更新"
 
 #. [menu]: id=menu-editor-window
@@ -228,27 +243,27 @@ msgid "units"
 msgstr ""
 
 #. [menu]: id=switch_time
-#: data/themes/editor.cfg:489
+#: data/themes/editor.cfg:500
 msgid "Time Schedule Menu"
 msgstr ""
 
 #. [menu]: id=menu-playlist
-#: data/themes/editor.cfg:499
+#: data/themes/editor.cfg:510
 msgid "Playlist"
 msgstr ""
 
 #. [menu]: id=menu-editor-schedule
-#: data/themes/editor.cfg:505
+#: data/themes/editor.cfg:516
 msgid "Assign Time Schedule"
 msgstr ""
 
 #. [label]: id=terrain-icon
-#: data/themes/editor.cfg:609
+#: data/themes/editor.cfg:610
 msgid "terrain"
 msgstr ""
 
 #. [action]: id=flip_map_button_editor, type=checkbox
-#: data/themes/editor.cfg:669
+#: data/themes/editor.cfg:689
 #, fuzzy
 #| msgid "Action not implemented"
 msgid "Not implemented yet."
@@ -266,31 +281,39 @@ msgstr ""
 msgid "Type: "
 msgstr ""
 
-#: src/editor/editor_controller.cpp:175
+#: src/editor/action/mouse/mouse_action_unit.cpp:61
+msgid "Level: "
+msgstr ""
+
+#: src/editor/action/mouse/mouse_action_unit.cpp:62
+msgid "Cost: "
+msgstr ""
+
+#: src/editor/editor_controller.cpp:173
 msgid "Fatal error"
 msgstr "嚴重錯誤"
 
-#: src/editor/editor_controller.cpp:203
+#: src/editor/editor_controller.cpp:201
 msgid "Do you really want to quit?"
 msgstr "您確定要退出嗎？"
 
-#: src/editor/editor_controller.cpp:205
+#: src/editor/editor_controller.cpp:203
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr "您確定要退出嗎？對地圖所作的更動將遺失。"
 
-#: src/editor/editor_controller.cpp:207
+#: src/editor/editor_controller.cpp:205
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr "您確定要退出嗎？以下地圖已修改，而對地圖所作的更動將遺失:"
 
-#: src/editor/editor_controller.cpp:210
+#: src/editor/editor_controller.cpp:208
 msgid "Quit"
 msgstr "離開"
 
-#: src/editor/editor_controller.cpp:221
+#: src/editor/editor_controller.cpp:219
 msgid "No editor time-of-day found."
 msgstr "沒有找到時間編輯器。"
 
@@ -430,16 +453,16 @@ msgstr "無法儲存地圖"
 msgid "Could not save the map: $msg"
 msgstr "無法儲存地圖： $msg"
 
-#: src/editor/palette/editor_palettes.cpp:56
-#: src/editor/palette/editor_palettes.cpp:101
+#: src/editor/palette/editor_palettes.cpp:58
+#: src/editor/palette/editor_palettes.cpp:105
 msgid "(Unknown Group)"
 msgstr ""
 
-#: src/editor/palette/editor_palettes.cpp:340
+#: src/editor/palette/editor_palettes.cpp:356
 msgid "(non-core)"
 msgstr "（非核心）"
 
-#: src/editor/palette/editor_palettes.cpp:341
+#: src/editor/palette/editor_palettes.cpp:357
 msgid "Will not work in game without extra care."
 msgstr "如果不特別注意，在遊戲中就不會正常運作。"
 
@@ -451,6 +474,12 @@ msgstr "前景地形"
 msgid "BG: "
 msgstr "背景地形"
 
+#: src/gui/dialogs/editor/custom_tod.cpp:123
+#, fuzzy
+#| msgid "Choose player"
+msgid "Choose file"
+msgstr "選擇玩家"
+
 #: src/gui/dialogs/editor_set_starting_position.cpp:86
 msgid "player^None"
 msgstr "無"
@@ -459,9 +488,8 @@ msgstr "無"
 msgid "Player $player_number"
 msgstr "玩家 $player_number"
 
-#: src/gui/dialogs/editor_settings.cpp:161
-msgid "Custom setting"
-msgstr "自選設定"
+#~ msgid "Custom setting"
+#~ msgstr "自選設定"
 
 #~ msgid "Edit"
 #~ msgstr "編輯"
@@ -489,9 +517,6 @@ msgstr "自選設定"
 
 #~ msgid "Auto-update Terrain Transitions: No"
 #~ msgstr "自動更新地形轉換：否"
-
-#~ msgid "Choose player"
-#~ msgstr "選擇玩家"
 
 #~ msgid ""
 #~ "Which player should start here? You can use alt and a number key to set "

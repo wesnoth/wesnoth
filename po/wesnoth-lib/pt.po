@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-22 22:10-0400\n"
+"POT-Creation-Date: 2013-06-23 10:20+0200\n"
 "PO-Revision-Date: 2013-05-26 21:36+0100\n"
 "Last-Translator: trewe <sjrs456@yahoo.fr>\n"
 "Language-Team: wesn-pt-trans\n"
@@ -2965,7 +2965,7 @@ msgstr "Eliminar Extras"
 #. [button]: id=help
 #. [button]: id=show_help
 #: data/gui/default/window/addon_connect.cfg:188
-#: data/gui/default/window/title_screen.cfg:179 src/hotkeys.cpp:235
+#: data/gui/default/window/title_screen.cfg:179 src/hotkeys.cpp:237
 msgid "Help"
 msgstr "Ajuda"
 
@@ -3140,6 +3140,7 @@ msgstr "Ligar"
 #: data/gui/default/window/addon_uninstall_list.cfg:174
 #: data/gui/default/window/campaign_dialog.cfg:439
 #: data/gui/default/window/campaign_difficulty.cfg:192
+#: data/gui/default/window/custom_tod.cfg:397
 #: data/gui/default/window/data_manage.cfg:361
 #: data/gui/default/window/edit_label.cfg:154
 #: data/gui/default/window/edit_text.cfg:130
@@ -3148,7 +3149,6 @@ msgstr "Ligar"
 #: data/gui/default/window/editor_new_map.cfg:125
 #: data/gui/default/window/editor_resize_map.cfg:284
 #: data/gui/default/window/editor_set_starting_position.cfg:175
-#: data/gui/default/window/editor_settings.cfg:241
 #: data/gui/default/window/folder_create.cfg:134
 #: data/gui/default/window/game_load.cfg:477
 #: data/gui/default/window/game_save.cfg:135
@@ -3611,15 +3611,16 @@ msgstr "Jogar uma Campanha"
 # File: src/gui/dialogs/message.cpp, line: 169
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
+#. [button]: id=save
 #: data/gui/default/window/campaign_dialog.cfg:425
 #: data/gui/default/window/campaign_difficulty.cfg:179
+#: data/gui/default/window/custom_tod.cfg:387
 #: data/gui/default/window/data_manage.cfg:347
 #: data/gui/default/window/data_manage.cfg:348
 #: data/gui/default/window/edit_label.cfg:140
 #: data/gui/default/window/edit_text.cfg:116
 #: data/gui/default/window/editor_edit_label.cfg:177
 #: data/gui/default/window/editor_set_starting_position.cfg:162
-#: data/gui/default/window/editor_settings.cfg:231
 #: data/gui/default/window/folder_create.cfg:120
 #: data/gui/default/window/game_load.cfg:463
 #: data/gui/default/window/game_load.cfg:464
@@ -3704,7 +3705,9 @@ msgstr "Último"
 # File: data/gui/default/window/title_screen.cfg, line: 195
 #. [button]: id=previous_page
 #. [button]: id=previous_tip
+#. [button]: id=previous_tod
 #: data/gui/default/window/chat_log.cfg:79
+#: data/gui/default/window/custom_tod.cfg:326
 #: data/gui/default/window/title_screen.cfg:195
 msgid "Previous"
 msgstr "Anterior"
@@ -3730,11 +3733,132 @@ msgstr "Anterior"
 #. [button]: id=next_tip
 #. [button]: id=next_tod
 #: data/gui/default/window/chat_log.cfg:89
-#: data/gui/default/window/editor_settings.cfg:79
-#: data/gui/default/window/editor_settings.cfg:80
+#: data/gui/default/window/custom_tod.cfg:349
 #: data/gui/default/window/title_screen.cfg:210
 msgid "Next"
 msgstr "Próximo"
+
+#. [label]
+#: data/gui/default/window/custom_tod.cfg:45
+msgid "Custom Time of Day Schedule"
+msgstr ""
+
+#
+# File: data/gui/default/window/folder_create.cfg, line: 72
+# File: data/gui/default/window/game_save.cfg, line: 72
+# File: data/gui/default/window/game_save_message.cfg, line: 93
+# File: data/gui/default/window/game_save_oos.cfg, line: 93
+# File: data/gui/default/window/folder_create.cfg, line: 72
+# File: data/gui/default/window/game_save.cfg, line: 72
+# File: data/gui/default/window/game_save_message.cfg, line: 93
+# File: data/gui/default/window/game_save_oos.cfg, line: 93
+# File: data/gui/default/window/folder_create.cfg, line: 72
+# File: data/gui/default/window/game_save.cfg, line: 72
+# File: data/gui/default/window/game_save_message.cfg, line: 93
+# File: data/gui/default/window/game_save_oos.cfg, line: 93
+# File: data/gui/default/window/folder_create.cfg, line: 72
+# File: data/gui/default/window/game_save.cfg, line: 72
+# File: data/gui/default/window/game_save_message.cfg, line: 93
+# File: data/gui/default/window/game_save_oos.cfg, line: 93
+#. [label]
+#: data/gui/default/window/custom_tod.cfg:67
+#: data/gui/default/window/folder_create.cfg:72
+#: data/gui/default/window/game_save.cfg:72
+#: data/gui/default/window/game_save_message.cfg:93
+#: data/gui/default/window/game_save_oos.cfg:93
+msgid "Name:"
+msgstr "Nome:"
+
+#. [label]
+#: data/gui/default/window/custom_tod.cfg:100
+msgid "ID:"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/custom_tod.cfg:133
+msgid "Metadata:"
+msgstr ""
+
+#. [button]: id=image_button
+#: data/gui/default/window/custom_tod.cfg:147
+msgid "Image"
+msgstr ""
+
+#. [button]: id=mask_button
+#: data/gui/default/window/custom_tod.cfg:157
+msgid "Mask"
+msgstr ""
+
+#. [button]: id=sound_button
+#: data/gui/default/window/custom_tod.cfg:167
+msgid "Sound"
+msgstr ""
+
+#. [label]: id=current_sound
+#: data/gui/default/window/custom_tod.cfg:180
+msgid "long size text"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/custom_tod.cfg:201
+msgid "Lawful Bonus:"
+msgstr ""
+
+#
+# File: data/gui/default/window/editor_settings.cfg, line: 135
+# File: data/gui/default/window/editor_settings.cfg, line: 135
+# File: data/gui/default/window/editor_settings.cfg, line: 135
+# File: data/gui/default/window/editor_settings.cfg, line: 135
+#. [label]
+#: data/gui/default/window/custom_tod.cfg:228
+msgid "Red:"
+msgstr "Vermelho:"
+
+#
+# File: data/gui/default/window/editor_settings.cfg, line: 161
+# File: data/gui/default/window/editor_settings.cfg, line: 161
+# File: data/gui/default/window/editor_settings.cfg, line: 161
+# File: data/gui/default/window/editor_settings.cfg, line: 161
+#. [label]
+#: data/gui/default/window/custom_tod.cfg:255
+msgid "Green:"
+msgstr "Verde:"
+
+#
+# File: data/gui/default/window/editor_settings.cfg, line: 187
+# File: data/gui/default/window/editor_settings.cfg, line: 187
+# File: data/gui/default/window/editor_settings.cfg, line: 187
+# File: data/gui/default/window/editor_settings.cfg, line: 187
+#. [label]
+#: data/gui/default/window/custom_tod.cfg:282
+msgid "Blue:"
+msgstr "Azul:"
+
+#. [label]: id=tod_number
+#: data/gui/default/window/custom_tod.cfg:337
+msgid "100/100"
+msgstr ""
+
+#. [button]: id=new
+#: data/gui/default/window/custom_tod.cfg:359
+msgid "New ToD"
+msgstr ""
+
+#
+# File: data/gui/default/window/game_load.cfg, line: 364
+# File: data/gui/default/window/game_load.cfg, line: 365
+# File: data/gui/default/window/game_load.cfg, line: 364
+# File: data/gui/default/window/game_load.cfg, line: 365
+# File: data/gui/default/window/game_load.cfg, line: 364
+# File: data/gui/default/window/game_load.cfg, line: 365
+# File: data/gui/default/window/game_load.cfg, line: 364
+# File: data/gui/default/window/game_load.cfg, line: 365
+#. [button]: id=delete
+#: data/gui/default/window/custom_tod.cfg:369
+#, fuzzy
+#| msgid "Delete"
+msgid "Delete ToD"
+msgstr "Eliminar"
 
 #
 # File: data/gui/default/window/data_manage.cfg, line: 50
@@ -3988,7 +4112,7 @@ msgstr "Gerar"
 # File: src/hotkeys.cpp, line: 151
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:35 src/hotkeys.cpp:151
+#: data/gui/default/window/editor_new_map.cfg:35 src/hotkeys.cpp:152
 msgid "New Map"
 msgstr "Novo Mapa"
 
@@ -4043,7 +4167,7 @@ msgstr "Criar"
 # File: src/hotkeys.cpp, line: 209
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:35 src/hotkeys.cpp:209
+#: data/gui/default/window/editor_resize_map.cfg:35 src/hotkeys.cpp:211
 msgid "Resize Map"
 msgstr "Redimensionar Mapa"
 
@@ -4138,97 +4262,6 @@ msgid "Which player should start here?"
 msgstr "Que jogador deve começar aqui?"
 
 #
-# File: data/gui/default/window/editor_settings.cfg, line: 35
-# File: src/hotkeys.cpp, line: 145
-# File: data/gui/default/window/editor_settings.cfg, line: 35
-# File: src/hotkeys.cpp, line: 149
-# File: data/gui/default/window/editor_settings.cfg, line: 35
-# File: src/hotkeys.cpp, line: 149
-# File: data/gui/default/window/editor_settings.cfg, line: 35
-# File: src/hotkeys.cpp, line: 149
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [label]
-#: data/gui/default/window/editor_settings.cfg:35 src/hotkeys.cpp:149
-msgid "Editor Settings"
-msgstr "Definições do Editor"
-
-#
-# File: data/gui/default/window/editor_settings.cfg, line: 53
-# File: data/gui/default/window/editor_settings.cfg, line: 53
-# File: data/gui/default/window/editor_settings.cfg, line: 53
-# File: data/gui/default/window/editor_settings.cfg, line: 53
-#. [label]
-#: data/gui/default/window/editor_settings.cfg:53
-msgid "Time of day lighting preset:"
-msgstr "Definição do Tempo de dia"
-
-#
-# File: data/gui/default/window/editor_settings.cfg, line: 104
-# File: data/gui/default/window/editor_settings.cfg, line: 104
-# File: data/gui/default/window/editor_settings.cfg, line: 104
-# File: data/gui/default/window/editor_settings.cfg, line: 104
-#. [toggle_button]: id=custom_tod_toggle
-#: data/gui/default/window/editor_settings.cfg:104
-msgid "Custom lighting settings"
-msgstr "Configurações personalizadas de iluminação"
-
-#
-# File: data/gui/default/window/editor_settings.cfg, line: 114
-# File: data/gui/default/window/editor_settings.cfg, line: 114
-# File: data/gui/default/window/editor_settings.cfg, line: 114
-# File: data/gui/default/window/editor_settings.cfg, line: 114
-#. [toggle_button]: id=custom_tod_auto_refresh
-#: data/gui/default/window/editor_settings.cfg:114
-msgid "Automatically update map view"
-msgstr "Actualizar visualização do mapa automaticamente"
-
-#
-# File: data/gui/default/window/editor_settings.cfg, line: 135
-# File: data/gui/default/window/editor_settings.cfg, line: 135
-# File: data/gui/default/window/editor_settings.cfg, line: 135
-# File: data/gui/default/window/editor_settings.cfg, line: 135
-#. [label]
-#: data/gui/default/window/editor_settings.cfg:135
-msgid "Red:"
-msgstr "Vermelho:"
-
-#
-# File: data/gui/default/window/editor_settings.cfg, line: 161
-# File: data/gui/default/window/editor_settings.cfg, line: 161
-# File: data/gui/default/window/editor_settings.cfg, line: 161
-# File: data/gui/default/window/editor_settings.cfg, line: 161
-#. [label]
-#: data/gui/default/window/editor_settings.cfg:161
-msgid "Green:"
-msgstr "Verde:"
-
-#
-# File: data/gui/default/window/editor_settings.cfg, line: 187
-# File: data/gui/default/window/editor_settings.cfg, line: 187
-# File: data/gui/default/window/editor_settings.cfg, line: 187
-# File: data/gui/default/window/editor_settings.cfg, line: 187
-#. [label]
-#: data/gui/default/window/editor_settings.cfg:187
-msgid "Blue:"
-msgstr "Azul:"
-
-#
-# File: data/gui/default/window/editor_settings.cfg, line: 272
-# File: src/game_preferences_display.cpp, line: 212
-# File: data/gui/default/window/editor_settings.cfg, line: 272
-# File: src/game_preferences_display.cpp, line: 211
-# File: data/gui/default/window/editor_settings.cfg, line: 251
-# File: src/game_preferences_display.cpp, line: 211
-# File: data/gui/default/window/editor_settings.cfg, line: 251
-# File: src/game_preferences_display.cpp, line: 211
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=apply
-#: data/gui/default/window/editor_settings.cfg:251
-#: src/game_preferences_display.cpp:211
-msgid "Apply"
-msgstr "Aplicar"
-
-#
 # File: data/gui/default/window/folder_create.cfg, line: 43
 # File: src/filechooser.cpp, line: 82
 # File: data/gui/default/window/folder_create.cfg, line: 43
@@ -4242,31 +4275,6 @@ msgstr "Aplicar"
 #: data/gui/default/window/folder_create.cfg:43 src/filechooser.cpp:81
 msgid "New Folder"
 msgstr "Nova Pasta"
-
-#
-# File: data/gui/default/window/folder_create.cfg, line: 72
-# File: data/gui/default/window/game_save.cfg, line: 72
-# File: data/gui/default/window/game_save_message.cfg, line: 93
-# File: data/gui/default/window/game_save_oos.cfg, line: 93
-# File: data/gui/default/window/folder_create.cfg, line: 72
-# File: data/gui/default/window/game_save.cfg, line: 72
-# File: data/gui/default/window/game_save_message.cfg, line: 93
-# File: data/gui/default/window/game_save_oos.cfg, line: 93
-# File: data/gui/default/window/folder_create.cfg, line: 72
-# File: data/gui/default/window/game_save.cfg, line: 72
-# File: data/gui/default/window/game_save_message.cfg, line: 93
-# File: data/gui/default/window/game_save_oos.cfg, line: 93
-# File: data/gui/default/window/folder_create.cfg, line: 72
-# File: data/gui/default/window/game_save.cfg, line: 72
-# File: data/gui/default/window/game_save_message.cfg, line: 93
-# File: data/gui/default/window/game_save_oos.cfg, line: 93
-#. [label]
-#: data/gui/default/window/folder_create.cfg:72
-#: data/gui/default/window/game_save.cfg:72
-#: data/gui/default/window/game_save_message.cfg:93
-#: data/gui/default/window/game_save_oos.cfg:93
-msgid "Name:"
-msgstr "Nome:"
 
 #
 # File: data/gui/default/window/formula_debugger.cfg, line: 36
@@ -4396,8 +4404,8 @@ msgstr "Rota da execução"
 #. [grid]
 #: data/gui/default/window/formula_debugger.cfg:234
 #: data/gui/default/window/lobby_main.cfg:660
-#: data/gui/default/window/title_screen.cfg:265 src/hotkeys.cpp:884
-#: src/hotkeys.cpp:1234
+#: data/gui/default/window/title_screen.cfg:265 src/hotkeys.cpp:886
+#: src/hotkeys.cpp:1243
 msgid "Quit"
 msgstr "Sair"
 
@@ -4688,7 +4696,7 @@ msgstr "ignorar Todos"
 # File: src/hotkeys.cpp, line: 112
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit_game
-#: data/gui/default/window/game_save_oos.cfg:162 src/hotkeys.cpp:112
+#: data/gui/default/window/game_save_oos.cfg:162 src/hotkeys.cpp:113
 msgid "Quit Game"
 msgstr "Sair do Jogo"
 
@@ -5105,7 +5113,7 @@ msgstr "Enviar"
 #. [grid]
 #: data/gui/default/window/lobby_main.cfg:666
 #: data/gui/default/window/title_screen.cfg:263
-#: src/game_preferences_display.cpp:63 src/hotkeys.cpp:106
+#: src/game_preferences_display.cpp:63 src/hotkeys.cpp:107
 msgid "Preferences"
 msgstr "Preferências"
 
@@ -6168,7 +6176,7 @@ msgstr "Não foi possível criar o arquivo."
 # File: src/game_preferences.cpp, line: 323
 # File: src/game_preferences.cpp, line: 349
 # File: src/game_preferences.cpp, line: 349
-#: src/game_preferences.cpp:349
+#: src/game_preferences.cpp:353
 msgid "No server has been defined."
 msgstr "Nenhum servidor fora definido."
 
@@ -6177,7 +6185,7 @@ msgstr "Nenhum servidor fora definido."
 # File: src/game_preferences.cpp, line: 403
 # File: src/game_preferences.cpp, line: 429
 # File: src/game_preferences.cpp, line: 429
-#: src/game_preferences.cpp:429
+#: src/game_preferences.cpp:433
 msgid "player"
 msgstr "jogador"
 
@@ -6186,7 +6194,7 @@ msgstr "jogador"
 # File: src/game_preferences.cpp, line: 895
 # File: src/game_preferences.cpp, line: 921
 # File: src/game_preferences.cpp, line: 921
-#: src/game_preferences.cpp:921
+#: src/game_preferences.cpp:925
 msgid "%H:%M"
 msgstr "%H:%M"
 
@@ -6195,7 +6203,7 @@ msgstr "%H:%M"
 # File: src/game_preferences.cpp, line: 898
 # File: src/game_preferences.cpp, line: 924
 # File: src/game_preferences.cpp, line: 924
-#: src/game_preferences.cpp:924
+#: src/game_preferences.cpp:928
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
@@ -6528,6 +6536,19 @@ msgstr "Sons de Interface do Usuário"
 #: src/game_preferences_display.cpp:210
 msgid "Custom"
 msgstr "Próprio"
+
+#
+# File: data/gui/default/window/editor_settings.cfg, line: 272
+# File: src/game_preferences_display.cpp, line: 212
+# File: data/gui/default/window/editor_settings.cfg, line: 272
+# File: src/game_preferences_display.cpp, line: 211
+# File: data/gui/default/window/editor_settings.cfg, line: 251
+# File: src/game_preferences_display.cpp, line: 211
+# File: data/gui/default/window/editor_settings.cfg, line: 251
+# File: src/game_preferences_display.cpp, line: 211
+#: src/game_preferences_display.cpp:211
+msgid "Apply"
+msgstr "Aplicar"
 
 #
 # File: src/game_preferences_display.cpp, line: 213
@@ -7750,7 +7771,7 @@ msgstr "Todos os Extras"
 # File: src/hotkeys.cpp, line: 1191
 #: src/gui/dialogs/addon_list.cpp:256
 #: src/gui/dialogs/network_transmission.cpp:54
-#: src/gui/dialogs/network_transmission.cpp:56 src/hotkeys.cpp:1191
+#: src/gui/dialogs/network_transmission.cpp:56 src/hotkeys.cpp:1200
 msgid "unit_byte^B"
 msgstr "B"
 
@@ -8022,7 +8043,7 @@ msgstr ""
 # File: src/gui/dialogs/title_screen.cpp, line: 297
 # File: src/gui/dialogs/title_screen.cpp, line: 297
 # File: src/gui/dialogs/title_screen.cpp, line: 297
-#: src/gui/dialogs/title_screen.cpp:297
+#: src/gui/dialogs/title_screen.cpp:291
 msgid "Version "
 msgstr "Versão "
 
@@ -8031,7 +8052,7 @@ msgstr "Versão "
 # File: src/gui/dialogs/title_screen.cpp, line: 300
 # File: src/gui/dialogs/title_screen.cpp, line: 300
 # File: src/gui/dialogs/title_screen.cpp, line: 300
-#: src/gui/dialogs/title_screen.cpp:300
+#: src/gui/dialogs/title_screen.cpp:294
 msgid "Version"
 msgstr "Versão"
 
@@ -8105,7 +8126,7 @@ msgstr "Demitir precisa dum botão de “Demitir” ou “Confirmar”."
 # File: src/gui/widgets/window.cpp, line: 1100
 # File: src/tests/gui/test_gui2.cpp, line: 432
 #: src/gui/widgets/window.cpp:1060 src/gui/widgets/window.cpp:1100
-#: src/tests/gui/test_gui2.cpp:432
+#: src/tests/gui/test_gui2.cpp:430
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Falha na mostra de um diálogo, que não cabe no monitor."
 
@@ -8414,7 +8435,7 @@ msgstr "Alternar Ecrã Cheio?"
 # File: src/hotkeys.cpp, line: 1185
 # File: src/hotkeys.cpp, line: 83
 # File: src/hotkeys.cpp, line: 1185
-#: src/hotkeys.cpp:83 src/hotkeys.cpp:1185
+#: src/hotkeys.cpp:83 src/hotkeys.cpp:1194
 msgid "Screenshot"
 msgstr "Fotografia"
 
@@ -8481,7 +8502,7 @@ msgstr "Guardar uma Revisão"
 # File: src/hotkeys.cpp, line: 153
 # File: src/hotkeys.cpp, line: 92
 # File: src/hotkeys.cpp, line: 153
-#: src/hotkeys.cpp:92 src/hotkeys.cpp:153
+#: src/hotkeys.cpp:92 src/hotkeys.cpp:154
 msgid "Save Map"
 msgstr "Gravar Mapa"
 
@@ -8585,11 +8606,26 @@ msgid "Change Side (Debug!)"
 msgstr "Mudar de Equipa (Modo de Depuração!)"
 
 #
+# File: data/gui/default/window/unit_create.cfg, line: 45
+# File: src/hotkeys.cpp, line: 102
+# File: data/gui/default/window/unit_create.cfg, line: 45
+# File: src/hotkeys.cpp, line: 104
+# File: data/gui/default/window/unit_create.cfg, line: 45
+# File: src/hotkeys.cpp, line: 104
+# File: data/gui/default/window/unit_create.cfg, line: 45
+# File: src/hotkeys.cpp, line: 104
+#: src/hotkeys.cpp:106
+#, fuzzy
+#| msgid "Create Unit (Debug!)"
+msgid "Kill Unit (Debug!)"
+msgstr "Criar Unidade (Modo de Depuração!)"
+
+#
 # File: src/hotkeys.cpp, line: 105
 # File: src/hotkeys.cpp, line: 107
 # File: src/hotkeys.cpp, line: 107
 # File: src/hotkeys.cpp, line: 107
-#: src/hotkeys.cpp:107
+#: src/hotkeys.cpp:108
 msgid "Scenario Objectives"
 msgstr "Objectivos do Cenário"
 
@@ -8598,7 +8634,7 @@ msgstr "Objectivos do Cenário"
 # File: src/hotkeys.cpp, line: 108
 # File: src/hotkeys.cpp, line: 108
 # File: src/hotkeys.cpp, line: 108
-#: src/hotkeys.cpp:108
+#: src/hotkeys.cpp:109
 msgid "Unit List"
 msgstr "Lista de Unidades"
 
@@ -8607,7 +8643,7 @@ msgstr "Lista de Unidades"
 # File: src/hotkeys.cpp, line: 109
 # File: src/hotkeys.cpp, line: 109
 # File: src/hotkeys.cpp, line: 109
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:110
 msgid "Statistics"
 msgstr "Estatísticas"
 
@@ -8616,7 +8652,7 @@ msgstr "Estatísticas"
 # File: src/hotkeys.cpp, line: 110
 # File: src/hotkeys.cpp, line: 110
 # File: src/hotkeys.cpp, line: 110
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:111
 msgid "Pause Network Game"
 msgstr "Pausar jogo em rede"
 
@@ -8625,7 +8661,7 @@ msgstr "Pausar jogo em rede"
 # File: src/hotkeys.cpp, line: 111
 # File: src/hotkeys.cpp, line: 111
 # File: src/hotkeys.cpp, line: 111
-#: src/hotkeys.cpp:111
+#: src/hotkeys.cpp:112
 msgid "Continue Network Game"
 msgstr "Continuar jogo em rede"
 
@@ -8634,7 +8670,7 @@ msgstr "Continuar jogo em rede"
 # File: src/hotkeys.cpp, line: 113
 # File: src/hotkeys.cpp, line: 113
 # File: src/hotkeys.cpp, line: 113
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:114
 msgid "Quit Editor"
 msgstr "Sair do Editor"
 
@@ -8643,7 +8679,7 @@ msgstr "Sair do Editor"
 # File: src/hotkeys.cpp, line: 114
 # File: src/hotkeys.cpp, line: 114
 # File: src/hotkeys.cpp, line: 114
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:115
 msgid "Set Team Label"
 msgstr "Definir legenda da equipa"
 
@@ -8652,7 +8688,7 @@ msgstr "Definir legenda da equipa"
 # File: src/hotkeys.cpp, line: 115
 # File: src/hotkeys.cpp, line: 115
 # File: src/hotkeys.cpp, line: 115
-#: src/hotkeys.cpp:115
+#: src/hotkeys.cpp:116
 msgid "Set Label"
 msgstr "Definir Legenda"
 
@@ -8661,7 +8697,7 @@ msgstr "Definir Legenda"
 # File: src/hotkeys.cpp, line: 116
 # File: src/hotkeys.cpp, line: 116
 # File: src/hotkeys.cpp, line: 116
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:117
 msgid "Clear Labels"
 msgstr "Limpar legendas"
 
@@ -8670,7 +8706,7 @@ msgstr "Limpar legendas"
 # File: src/hotkeys.cpp, line: 117
 # File: src/hotkeys.cpp, line: 117
 # File: src/hotkeys.cpp, line: 117
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:118
 msgid "Show Enemy Moves"
 msgstr "Mostrar Movimentos Inimigos"
 
@@ -8679,7 +8715,7 @@ msgstr "Mostrar Movimentos Inimigos"
 # File: src/hotkeys.cpp, line: 118
 # File: src/hotkeys.cpp, line: 118
 # File: src/hotkeys.cpp, line: 118
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:119
 msgid "Best Possible Enemy Moves"
 msgstr "Melhores Movimentos Inimigos Possíveis"
 
@@ -8688,7 +8724,7 @@ msgstr "Melhores Movimentos Inimigos Possíveis"
 # File: src/hotkeys.cpp, line: 119
 # File: src/hotkeys.cpp, line: 119
 # File: src/hotkeys.cpp, line: 119
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:120
 msgid "Play Replay"
 msgstr "Ver uma Revisão"
 
@@ -8697,7 +8733,7 @@ msgstr "Ver uma Revisão"
 # File: src/hotkeys.cpp, line: 120
 # File: src/hotkeys.cpp, line: 120
 # File: src/hotkeys.cpp, line: 120
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:121
 msgid "Reset Replay"
 msgstr "Repor uma Revisão"
 
@@ -8706,7 +8742,7 @@ msgstr "Repor uma Revisão"
 # File: src/hotkeys.cpp, line: 121
 # File: src/hotkeys.cpp, line: 121
 # File: src/hotkeys.cpp, line: 121
-#: src/hotkeys.cpp:121
+#: src/hotkeys.cpp:122
 msgid "Stop Replay"
 msgstr "Parar uma Revisão"
 
@@ -8715,7 +8751,7 @@ msgstr "Parar uma Revisão"
 # File: src/hotkeys.cpp, line: 122
 # File: src/hotkeys.cpp, line: 122
 # File: src/hotkeys.cpp, line: 122
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:123
 msgid "Next Turn"
 msgstr "Próximo Turno"
 
@@ -8724,7 +8760,7 @@ msgstr "Próximo Turno"
 # File: src/hotkeys.cpp, line: 123
 # File: src/hotkeys.cpp, line: 123
 # File: src/hotkeys.cpp, line: 123
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:124
 msgid "Next Side"
 msgstr "Próxima equipa"
 
@@ -8733,7 +8769,7 @@ msgstr "Próxima equipa"
 # File: src/hotkeys.cpp, line: 124
 # File: src/hotkeys.cpp, line: 124
 # File: src/hotkeys.cpp, line: 124
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:125
 msgid "Full Map"
 msgstr "Mapa Completo"
 
@@ -8742,7 +8778,7 @@ msgstr "Mapa Completo"
 # File: src/hotkeys.cpp, line: 125
 # File: src/hotkeys.cpp, line: 125
 # File: src/hotkeys.cpp, line: 125
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:126
 msgid "Each Team"
 msgstr "Cada equipa"
 
@@ -8751,7 +8787,7 @@ msgstr "Cada equipa"
 # File: src/hotkeys.cpp, line: 126
 # File: src/hotkeys.cpp, line: 126
 # File: src/hotkeys.cpp, line: 126
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:127
 msgid "Team 1"
 msgstr "Equipa 1"
 
@@ -8760,7 +8796,7 @@ msgstr "Equipa 1"
 # File: src/hotkeys.cpp, line: 127
 # File: src/hotkeys.cpp, line: 127
 # File: src/hotkeys.cpp, line: 127
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:128
 msgid "Skip Animation"
 msgstr "Saltar animação"
 
@@ -8770,7 +8806,7 @@ msgstr "Saltar animação"
 # File: src/hotkeys.cpp, line: 130
 # File: src/hotkeys.cpp, line: 130
 #. TRANSLATORS: whiteboard menu entry: toggle planning mode
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:131
 msgid "whiteboard^Planning Mode"
 msgstr "O Modo de Planificação"
 
@@ -8780,7 +8816,7 @@ msgstr "O Modo de Planificação"
 # File: src/hotkeys.cpp, line: 132
 # File: src/hotkeys.cpp, line: 132
 #. TRANSLATORS: whiteboard menu entry: execute planned action
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:133
 msgid "whiteboard^Execute Action"
 msgstr "Executa Acções"
 
@@ -8790,7 +8826,7 @@ msgstr "Executa Acções"
 # File: src/hotkeys.cpp, line: 134
 # File: src/hotkeys.cpp, line: 134
 #. TRANSLATORS: whiteboard menu entry: execute all planned actions
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:135
 msgid "whiteboard^Execute All Actions"
 msgstr "Executa todas as acções"
 
@@ -8800,7 +8836,7 @@ msgstr "Executa todas as acções"
 # File: src/hotkeys.cpp, line: 136
 # File: src/hotkeys.cpp, line: 136
 #. TRANSLATORS: whiteboard menu entry: delete planned action
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:137
 msgid "whiteboard^Delete Action"
 msgstr "Apagar Acção"
 
@@ -8810,7 +8846,7 @@ msgstr "Apagar Acção"
 # File: src/hotkeys.cpp, line: 138
 # File: src/hotkeys.cpp, line: 138
 #. TRANSLATORS: whiteboard menu entry: move planned action up queue
-#: src/hotkeys.cpp:138
+#: src/hotkeys.cpp:139
 msgid "whiteboard^Move Action Up"
 msgstr "Mova acção para a frente na fila"
 
@@ -8820,7 +8856,7 @@ msgstr "Mova acção para a frente na fila"
 # File: src/hotkeys.cpp, line: 140
 # File: src/hotkeys.cpp, line: 140
 #. TRANSLATORS: whiteboard menu entry: move planned action down queue
-#: src/hotkeys.cpp:140
+#: src/hotkeys.cpp:141
 msgid "whiteboard^Move Action Down"
 msgstr "Mova acção para trás na fila"
 
@@ -8830,7 +8866,7 @@ msgstr "Mova acção para trás na fila"
 # File: src/hotkeys.cpp, line: 142
 # File: src/hotkeys.cpp, line: 142
 #. TRANSLATORS: whiteboard menu entry: plan as though the chosen unit were dead
-#: src/hotkeys.cpp:142
+#: src/hotkeys.cpp:143
 msgid "whiteboard^Suppose Dead"
 msgstr "Supõe morto"
 
@@ -8839,7 +8875,7 @@ msgstr "Supõe morto"
 # File: src/hotkeys.cpp, line: 144
 # File: src/hotkeys.cpp, line: 144
 # File: src/hotkeys.cpp, line: 144
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:145
 msgid "Quit to Desktop"
 msgstr "Sair Completamente"
 
@@ -8848,7 +8884,7 @@ msgstr "Sair Completamente"
 # File: src/hotkeys.cpp, line: 145
 # File: src/hotkeys.cpp, line: 145
 # File: src/hotkeys.cpp, line: 145
-#: src/hotkeys.cpp:145
+#: src/hotkeys.cpp:146
 msgid "Close Map"
 msgstr "Fechar Mapa"
 
@@ -8857,7 +8893,7 @@ msgstr "Fechar Mapa"
 # File: src/hotkeys.cpp, line: 146
 # File: src/hotkeys.cpp, line: 146
 # File: src/hotkeys.cpp, line: 146
-#: src/hotkeys.cpp:146
+#: src/hotkeys.cpp:147
 msgid "Switch Map"
 msgstr "Trocar Mapa"
 
@@ -8866,16 +8902,20 @@ msgstr "Trocar Mapa"
 # File: src/hotkeys.cpp, line: 147
 # File: src/hotkeys.cpp, line: 147
 # File: src/hotkeys.cpp, line: 147
-#: src/hotkeys.cpp:147
+#: src/hotkeys.cpp:148
 msgid "Switch Area"
 msgstr "Trocar de Área"
+
+#: src/hotkeys.cpp:150
+msgid "Custom Time of Day Creator"
+msgstr ""
 
 #
 # File: src/hotkeys.cpp, line: 146
 # File: src/hotkeys.cpp, line: 150
 # File: src/hotkeys.cpp, line: 150
 # File: src/hotkeys.cpp, line: 150
-#: src/hotkeys.cpp:150
+#: src/hotkeys.cpp:151
 msgid "Partial Undo"
 msgstr "Desfazer parcialmente"
 
@@ -8884,7 +8924,7 @@ msgstr "Desfazer parcialmente"
 # File: src/hotkeys.cpp, line: 152
 # File: src/hotkeys.cpp, line: 152
 # File: src/hotkeys.cpp, line: 152
-#: src/hotkeys.cpp:152
+#: src/hotkeys.cpp:153
 msgid "Load Map"
 msgstr "Carregar Mapa"
 
@@ -8893,7 +8933,7 @@ msgstr "Carregar Mapa"
 # File: src/hotkeys.cpp, line: 154
 # File: src/hotkeys.cpp, line: 154
 # File: src/hotkeys.cpp, line: 154
-#: src/hotkeys.cpp:154
+#: src/hotkeys.cpp:155
 msgid "Save Map As"
 msgstr "Gravar Mapa como"
 
@@ -8902,7 +8942,7 @@ msgstr "Gravar Mapa como"
 # File: src/hotkeys.cpp, line: 155
 # File: src/hotkeys.cpp, line: 155
 # File: src/hotkeys.cpp, line: 155
-#: src/hotkeys.cpp:155
+#: src/hotkeys.cpp:156
 msgid "Save All Maps"
 msgstr "Gravar todos os Mapas"
 
@@ -8911,7 +8951,7 @@ msgstr "Gravar todos os Mapas"
 # File: src/hotkeys.cpp, line: 156
 # File: src/hotkeys.cpp, line: 156
 # File: src/hotkeys.cpp, line: 156
-#: src/hotkeys.cpp:156
+#: src/hotkeys.cpp:157
 msgid "Revert All Changes"
 msgstr "Reverter todas as mudanças"
 
@@ -8920,7 +8960,7 @@ msgstr "Reverter todas as mudanças"
 # File: src/hotkeys.cpp, line: 157
 # File: src/hotkeys.cpp, line: 157
 # File: src/hotkeys.cpp, line: 157
-#: src/hotkeys.cpp:157
+#: src/hotkeys.cpp:158
 msgid "Map Information"
 msgstr "Informação do Mapa"
 
@@ -8929,7 +8969,7 @@ msgstr "Informação do Mapa"
 # File: src/hotkeys.cpp, line: 158
 # File: src/hotkeys.cpp, line: 158
 # File: src/hotkeys.cpp, line: 158
-#: src/hotkeys.cpp:158
+#: src/hotkeys.cpp:159
 msgid "Add New Side"
 msgstr "Adicionar nova equipa"
 
@@ -8938,7 +8978,7 @@ msgstr "Adicionar nova equipa"
 # File: src/hotkeys.cpp, line: 159
 # File: src/hotkeys.cpp, line: 159
 # File: src/hotkeys.cpp, line: 159
-#: src/hotkeys.cpp:159
+#: src/hotkeys.cpp:160
 msgid "Switch Side"
 msgstr "Alternar Equipa"
 
@@ -8946,7 +8986,7 @@ msgstr "Alternar Equipa"
 # File: src/hotkeys.cpp, line: 160
 # File: src/hotkeys.cpp, line: 160
 # File: src/hotkeys.cpp, line: 160
-#: src/hotkeys.cpp:160
+#: src/hotkeys.cpp:161
 msgid "Swap Foreground/Background Palette Item"
 msgstr "Trocar terreno de fundo e sobreposto"
 
@@ -8955,7 +8995,7 @@ msgstr "Trocar terreno de fundo e sobreposto"
 # File: src/hotkeys.cpp, line: 161
 # File: src/hotkeys.cpp, line: 161
 # File: src/hotkeys.cpp, line: 161
-#: src/hotkeys.cpp:161
+#: src/hotkeys.cpp:162
 msgid "Change Palette Group"
 msgstr "Mudar Grupo de Desenho"
 
@@ -8964,7 +9004,7 @@ msgstr "Mudar Grupo de Desenho"
 # File: src/hotkeys.cpp, line: 162
 # File: src/hotkeys.cpp, line: 162
 # File: src/hotkeys.cpp, line: 162
-#: src/hotkeys.cpp:162
+#: src/hotkeys.cpp:163
 msgid "Scroll Palette Left"
 msgstr "Rolar para a esquerda"
 
@@ -8973,7 +9013,7 @@ msgstr "Rolar para a esquerda"
 # File: src/hotkeys.cpp, line: 163
 # File: src/hotkeys.cpp, line: 163
 # File: src/hotkeys.cpp, line: 163
-#: src/hotkeys.cpp:163
+#: src/hotkeys.cpp:164
 msgid "Scroll Palette Right"
 msgstr "Rolar para a direita"
 
@@ -8982,7 +9022,7 @@ msgstr "Rolar para a direita"
 # File: src/hotkeys.cpp, line: 165
 # File: src/hotkeys.cpp, line: 165
 # File: src/hotkeys.cpp, line: 165
-#: src/hotkeys.cpp:165
+#: src/hotkeys.cpp:166
 msgid "Switch Time of Day"
 msgstr "Trocar Tempo de Dia"
 
@@ -8991,7 +9031,7 @@ msgstr "Trocar Tempo de Dia"
 # File: src/hotkeys.cpp, line: 167
 # File: src/hotkeys.cpp, line: 167
 # File: src/hotkeys.cpp, line: 167
-#: src/hotkeys.cpp:167
+#: src/hotkeys.cpp:168
 msgid "Next Tool"
 msgstr "Próxima ferramenta"
 
@@ -9000,7 +9040,7 @@ msgstr "Próxima ferramenta"
 # File: src/hotkeys.cpp, line: 169
 # File: src/hotkeys.cpp, line: 169
 # File: src/hotkeys.cpp, line: 169
-#: src/hotkeys.cpp:169
+#: src/hotkeys.cpp:170
 msgid "Paint Tool"
 msgstr "Ferramenta de desenho"
 
@@ -9011,7 +9051,7 @@ msgstr "Ferramenta de desenho"
 # File: src/hotkeys.cpp, line: 170
 # File: src/hotkeys.cpp, line: 169
 # File: src/hotkeys.cpp, line: 170
-#: src/hotkeys.cpp:169 src/hotkeys.cpp:170
+#: src/hotkeys.cpp:170 src/hotkeys.cpp:171
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
@@ -9022,14 +9062,14 @@ msgstr ""
 # File: src/hotkeys.cpp, line: 170
 # File: src/hotkeys.cpp, line: 170
 # File: src/hotkeys.cpp, line: 170
-#: src/hotkeys.cpp:170
+#: src/hotkeys.cpp:171
 msgid "Fill Tool"
 msgstr "Ferramenta de encher"
 
 #
 # File: src/hotkeys.cpp, line: 171
 # File: src/hotkeys.cpp, line: 171
-#: src/hotkeys.cpp:171
+#: src/hotkeys.cpp:172
 msgid ""
 "Left mouse button selects or deselects, right brings up a context menu. Hold "
 "Shift for magic-wand selection of tiles with same terrain."
@@ -9040,7 +9080,7 @@ msgstr ""
 # File: src/hotkeys.cpp, line: 171
 # File: src/hotkeys.cpp, line: 171
 # File: src/hotkeys.cpp, line: 171
-#: src/hotkeys.cpp:171
+#: src/hotkeys.cpp:172
 msgid "Selection Tool"
 msgstr "Ferramenta de selecção"
 
@@ -9048,7 +9088,7 @@ msgstr "Ferramenta de selecção"
 # File: src/hotkeys.cpp, line: 172
 # File: src/hotkeys.cpp, line: 172
 # File: src/hotkeys.cpp, line: 172
-#: src/hotkeys.cpp:172
+#: src/hotkeys.cpp:173
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
 "scroll to the starting position, alt+number sets respective starting "
@@ -9060,7 +9100,7 @@ msgstr ""
 # File: src/hotkeys.cpp, line: 172
 # File: src/hotkeys.cpp, line: 172
 # File: src/hotkeys.cpp, line: 172
-#: src/hotkeys.cpp:172
+#: src/hotkeys.cpp:173
 msgid "Starting Positions Tool"
 msgstr "Ferramenta de definição de posições iniciais"
 
@@ -9069,21 +9109,21 @@ msgstr "Ferramenta de definição de posições iniciais"
 # File: src/hotkeys.cpp, line: 173
 # File: src/hotkeys.cpp, line: 173
 # File: src/hotkeys.cpp, line: 173
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:174
 msgid "Label Tool"
 msgstr "Ferramenta de legendas"
 
 # File: src/hotkeys.cpp, line: 173
 # File: src/hotkeys.cpp, line: 173
 # File: src/hotkeys.cpp, line: 173
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:174
 msgid "Left mouse button sets or drags a label, right clears."
 msgstr ""
 
 # File: src/hotkeys.cpp, line: 195
 # File: src/hotkeys.cpp, line: 174
 # File: src/hotkeys.cpp, line: 174
-#: src/hotkeys.cpp:174
+#: src/hotkeys.cpp:175
 msgid ""
 "Left mouse button sets a new unit or moves a unit via drag and drop, right "
 "brings up a context menu. Needs a defined side."
@@ -9096,7 +9136,7 @@ msgstr ""
 # File: src/hotkeys.cpp, line: 174
 # File: src/hotkeys.cpp, line: 174
 # File: src/hotkeys.cpp, line: 174
-#: src/hotkeys.cpp:174
+#: src/hotkeys.cpp:175
 msgid "Unit Tool"
 msgstr "Ferramenta de unidades"
 
@@ -9105,14 +9145,14 @@ msgstr "Ferramenta de unidades"
 # File: src/hotkeys.cpp, line: 175
 # File: src/hotkeys.cpp, line: 175
 # File: src/hotkeys.cpp, line: 175
-#: src/hotkeys.cpp:175
+#: src/hotkeys.cpp:176
 msgid "Item Tool"
 msgstr "Ferramenta Item"
 
 # File: src/hotkeys.cpp, line: 175
 # File: src/hotkeys.cpp, line: 175
 # File: src/hotkeys.cpp, line: 175
-#: src/hotkeys.cpp:175
+#: src/hotkeys.cpp:176
 msgid ""
 "Left mouse button sets a new item or moves it via drag and drop, right "
 "clears. Not implemented yet."
@@ -9121,7 +9161,7 @@ msgstr ""
 # File: src/hotkeys.cpp, line: 176
 # File: src/hotkeys.cpp, line: 176
 # File: src/hotkeys.cpp, line: 176
-#: src/hotkeys.cpp:176
+#: src/hotkeys.cpp:177
 msgid ""
 "Left mouse button sets or drags a sound source, right clears. Not "
 "implemented yet."
@@ -9130,14 +9170,14 @@ msgstr ""
 # File: src/hotkeys.cpp, line: 176
 # File: src/hotkeys.cpp, line: 176
 # File: src/hotkeys.cpp, line: 176
-#: src/hotkeys.cpp:176
+#: src/hotkeys.cpp:177
 msgid "Soundsource Tool"
 msgstr ""
 
 # File: src/hotkeys.cpp, line: 177
 # File: src/hotkeys.cpp, line: 177
 # File: src/hotkeys.cpp, line: 177
-#: src/hotkeys.cpp:177
+#: src/hotkeys.cpp:178
 msgid ""
 "Left mouse button sets the village ownership to the current side, right "
 "clears. Needs a defined side."
@@ -9150,7 +9190,7 @@ msgstr ""
 # File: src/hotkeys.cpp, line: 177
 # File: src/hotkeys.cpp, line: 177
 # File: src/hotkeys.cpp, line: 177
-#: src/hotkeys.cpp:177
+#: src/hotkeys.cpp:178
 msgid "Village Tool"
 msgstr "Ferramenta de aldeia"
 
@@ -9159,7 +9199,7 @@ msgstr "Ferramenta de aldeia"
 # File: src/hotkeys.cpp, line: 179
 # File: src/hotkeys.cpp, line: 179
 # File: src/hotkeys.cpp, line: 179
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:180
 msgid "Canrecruit"
 msgstr "Pode recrutar"
 
@@ -9167,7 +9207,7 @@ msgstr "Pode recrutar"
 # File: src/hotkeys.cpp, line: 179
 # File: src/hotkeys.cpp, line: 179
 # File: src/hotkeys.cpp, line: 179
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:180
 msgid "Toggle the recruit attribute of a unit."
 msgstr "Permite mudar se a unidade pode recrutar"
 
@@ -9175,7 +9215,7 @@ msgstr "Permite mudar se a unidade pode recrutar"
 # File: src/hotkeys.cpp, line: 180
 # File: src/hotkeys.cpp, line: 180
 # File: src/hotkeys.cpp, line: 180
-#: src/hotkeys.cpp:180
+#: src/hotkeys.cpp:181
 msgid "Can be renamed"
 msgstr "Pode ser renomeado"
 
@@ -9183,7 +9223,7 @@ msgstr "Pode ser renomeado"
 # File: src/hotkeys.cpp, line: 180
 # File: src/hotkeys.cpp, line: 180
 # File: src/hotkeys.cpp, line: 180
-#: src/hotkeys.cpp:180
+#: src/hotkeys.cpp:181
 msgid "Toggle the unit being renameable."
 msgstr "Permite que a unidade seja renomeada"
 
@@ -9192,7 +9232,7 @@ msgstr "Permite que a unidade seja renomeada"
 # File: src/hotkeys.cpp, line: 182
 # File: src/hotkeys.cpp, line: 182
 # File: src/hotkeys.cpp, line: 182
-#: src/hotkeys.cpp:182
+#: src/hotkeys.cpp:183
 msgid "Change Unit ID"
 msgstr "Mudar ID da unidade"
 
@@ -9200,16 +9240,20 @@ msgstr "Mudar ID da unidade"
 # File: src/hotkeys.cpp, line: 183
 # File: src/hotkeys.cpp, line: 183
 # File: src/hotkeys.cpp, line: 183
-#: src/hotkeys.cpp:183
+#: src/hotkeys.cpp:184
 msgid "Loyal"
 msgstr "Leal"
+
+#: src/hotkeys.cpp:186
+msgid "Toggle Minimap color coding"
+msgstr ""
 
 #
 # File: src/hotkeys.cpp, line: 168
 # File: src/hotkeys.cpp, line: 186
 # File: src/hotkeys.cpp, line: 186
 # File: src/hotkeys.cpp, line: 186
-#: src/hotkeys.cpp:186
+#: src/hotkeys.cpp:188
 msgid "Next Brush"
 msgstr "Próximo desenho"
 
@@ -9218,7 +9262,7 @@ msgstr "Próximo desenho"
 # File: src/hotkeys.cpp, line: 187
 # File: src/hotkeys.cpp, line: 187
 # File: src/hotkeys.cpp, line: 187
-#: src/hotkeys.cpp:187
+#: src/hotkeys.cpp:189
 msgid "Default Brush"
 msgstr "Desenho por defeito"
 
@@ -9226,7 +9270,7 @@ msgstr "Desenho por defeito"
 # File: src/hotkeys.cpp, line: 188
 # File: src/hotkeys.cpp, line: 188
 # File: src/hotkeys.cpp, line: 188
-#: src/hotkeys.cpp:188
+#: src/hotkeys.cpp:190
 msgid "Single Tile"
 msgstr "Hexágono Único"
 
@@ -9234,7 +9278,7 @@ msgstr "Hexágono Único"
 # File: src/hotkeys.cpp, line: 189
 # File: src/hotkeys.cpp, line: 189
 # File: src/hotkeys.cpp, line: 189
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:191
 msgid "Radius One"
 msgstr "De rádio um"
 
@@ -9242,7 +9286,7 @@ msgstr "De rádio um"
 # File: src/hotkeys.cpp, line: 190
 # File: src/hotkeys.cpp, line: 190
 # File: src/hotkeys.cpp, line: 190
-#: src/hotkeys.cpp:190
+#: src/hotkeys.cpp:192
 msgid "Radius Two"
 msgstr "De rádio dois"
 
@@ -9250,7 +9294,7 @@ msgstr "De rádio dois"
 # File: src/hotkeys.cpp, line: 191
 # File: src/hotkeys.cpp, line: 191
 # File: src/hotkeys.cpp, line: 191
-#: src/hotkeys.cpp:191
+#: src/hotkeys.cpp:193
 msgid "Brush NW-SE"
 msgstr "Linha Noroeste-Sudeste"
 
@@ -9258,7 +9302,7 @@ msgstr "Linha Noroeste-Sudeste"
 # File: src/hotkeys.cpp, line: 192
 # File: src/hotkeys.cpp, line: 192
 # File: src/hotkeys.cpp, line: 192
-#: src/hotkeys.cpp:192
+#: src/hotkeys.cpp:194
 msgid "Brush SW-NE"
 msgstr "Linha Sudoeste-Nordeste"
 
@@ -9267,7 +9311,7 @@ msgstr "Linha Sudoeste-Nordeste"
 # File: src/hotkeys.cpp, line: 193
 # File: src/hotkeys.cpp, line: 193
 # File: src/hotkeys.cpp, line: 193
-#: src/hotkeys.cpp:193
+#: src/hotkeys.cpp:195
 msgid "Cut"
 msgstr "Cortar"
 
@@ -9276,7 +9320,7 @@ msgstr "Cortar"
 # File: src/hotkeys.cpp, line: 194
 # File: src/hotkeys.cpp, line: 194
 # File: src/hotkeys.cpp, line: 194
-#: src/hotkeys.cpp:194
+#: src/hotkeys.cpp:196
 msgid "Copy"
 msgstr "Copiar"
 
@@ -9284,7 +9328,7 @@ msgstr "Copiar"
 # File: src/hotkeys.cpp, line: 195
 # File: src/hotkeys.cpp, line: 195
 # File: src/hotkeys.cpp, line: 195
-#: src/hotkeys.cpp:195
+#: src/hotkeys.cpp:197
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
 msgstr ""
@@ -9296,7 +9340,7 @@ msgstr ""
 # File: src/hotkeys.cpp, line: 195
 # File: src/hotkeys.cpp, line: 195
 # File: src/hotkeys.cpp, line: 195
-#: src/hotkeys.cpp:195
+#: src/hotkeys.cpp:197
 msgid "Paste"
 msgstr "Colar"
 
@@ -9305,7 +9349,7 @@ msgstr "Colar"
 # File: src/hotkeys.cpp, line: 196
 # File: src/hotkeys.cpp, line: 196
 # File: src/hotkeys.cpp, line: 196
-#: src/hotkeys.cpp:196
+#: src/hotkeys.cpp:198
 msgid "Export Selected Coordinates to System Clipboard"
 msgstr "Exportar coordenadas seleccionadas para a área de transferência"
 
@@ -9314,7 +9358,7 @@ msgstr "Exportar coordenadas seleccionadas para a área de transferência"
 # File: src/hotkeys.cpp, line: 197
 # File: src/hotkeys.cpp, line: 197
 # File: src/hotkeys.cpp, line: 197
-#: src/hotkeys.cpp:197
+#: src/hotkeys.cpp:199
 msgid "Select All"
 msgstr "Seleccionar Todos"
 
@@ -9323,7 +9367,7 @@ msgstr "Seleccionar Todos"
 # File: src/hotkeys.cpp, line: 198
 # File: src/hotkeys.cpp, line: 198
 # File: src/hotkeys.cpp, line: 198
-#: src/hotkeys.cpp:198
+#: src/hotkeys.cpp:200
 msgid "Select Inverse"
 msgstr "Seleccionar o inverso"
 
@@ -9332,7 +9376,7 @@ msgstr "Seleccionar o inverso"
 # File: src/hotkeys.cpp, line: 199
 # File: src/hotkeys.cpp, line: 199
 # File: src/hotkeys.cpp, line: 199
-#: src/hotkeys.cpp:199
+#: src/hotkeys.cpp:201
 msgid "Select None"
 msgstr "Seleccionar Nada"
 
@@ -9341,7 +9385,7 @@ msgstr "Seleccionar Nada"
 # File: src/hotkeys.cpp, line: 200
 # File: src/hotkeys.cpp, line: 200
 # File: src/hotkeys.cpp, line: 200
-#: src/hotkeys.cpp:200
+#: src/hotkeys.cpp:202
 msgid "Rotate Clipboard Clockwise"
 msgstr "Rodar Selecção no sentido do relógio"
 
@@ -9350,7 +9394,7 @@ msgstr "Rodar Selecção no sentido do relógio"
 # File: src/hotkeys.cpp, line: 201
 # File: src/hotkeys.cpp, line: 201
 # File: src/hotkeys.cpp, line: 201
-#: src/hotkeys.cpp:201
+#: src/hotkeys.cpp:203
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr "Rodar Selecção contra o sentido do relógio"
 
@@ -9359,7 +9403,7 @@ msgstr "Rodar Selecção contra o sentido do relógio"
 # File: src/hotkeys.cpp, line: 202
 # File: src/hotkeys.cpp, line: 202
 # File: src/hotkeys.cpp, line: 202
-#: src/hotkeys.cpp:202
+#: src/hotkeys.cpp:204
 msgid "Flip Clipboard Horizontally"
 msgstr "Espelhar Selecção Horizontalmente"
 
@@ -9368,7 +9412,7 @@ msgstr "Espelhar Selecção Horizontalmente"
 # File: src/hotkeys.cpp, line: 203
 # File: src/hotkeys.cpp, line: 203
 # File: src/hotkeys.cpp, line: 203
-#: src/hotkeys.cpp:203
+#: src/hotkeys.cpp:205
 msgid "Flip Clipboard Vertically"
 msgstr "Espelhar Selecção Verticalmente"
 
@@ -9377,7 +9421,7 @@ msgstr "Espelhar Selecção Verticalmente"
 # File: src/hotkeys.cpp, line: 204
 # File: src/hotkeys.cpp, line: 204
 # File: src/hotkeys.cpp, line: 204
-#: src/hotkeys.cpp:204
+#: src/hotkeys.cpp:206
 msgid "Rotate Selection"
 msgstr "Rodar Selecção"
 
@@ -9386,7 +9430,7 @@ msgstr "Rodar Selecção"
 # File: src/hotkeys.cpp, line: 205
 # File: src/hotkeys.cpp, line: 205
 # File: src/hotkeys.cpp, line: 205
-#: src/hotkeys.cpp:205
+#: src/hotkeys.cpp:207
 msgid "Flip Selection"
 msgstr "Inverter selecção"
 
@@ -9395,7 +9439,7 @@ msgstr "Inverter selecção"
 # File: src/hotkeys.cpp, line: 206
 # File: src/hotkeys.cpp, line: 206
 # File: src/hotkeys.cpp, line: 206
-#: src/hotkeys.cpp:206
+#: src/hotkeys.cpp:208
 msgid "Fill Selection"
 msgstr "Preencher Selecção"
 
@@ -9404,7 +9448,7 @@ msgstr "Preencher Selecção"
 # File: src/hotkeys.cpp, line: 207
 # File: src/hotkeys.cpp, line: 207
 # File: src/hotkeys.cpp, line: 207
-#: src/hotkeys.cpp:207
+#: src/hotkeys.cpp:209
 msgid "Generate Tiles In Selection"
 msgstr "Gerar terreno na selecção"
 
@@ -9413,7 +9457,7 @@ msgstr "Gerar terreno na selecção"
 # File: src/hotkeys.cpp, line: 208
 # File: src/hotkeys.cpp, line: 208
 # File: src/hotkeys.cpp, line: 208
-#: src/hotkeys.cpp:208
+#: src/hotkeys.cpp:210
 msgid "Randomize Tiles In Selection"
 msgstr "Terreno na selecção aleatório"
 
@@ -9422,7 +9466,7 @@ msgstr "Terreno na selecção aleatório"
 # File: src/hotkeys.cpp, line: 210
 # File: src/hotkeys.cpp, line: 210
 # File: src/hotkeys.cpp, line: 210
-#: src/hotkeys.cpp:210
+#: src/hotkeys.cpp:212
 msgid "Rotate Map"
 msgstr "Rodar Mapa"
 
@@ -9431,7 +9475,7 @@ msgstr "Rodar Mapa"
 # File: src/hotkeys.cpp, line: 211
 # File: src/hotkeys.cpp, line: 211
 # File: src/hotkeys.cpp, line: 211
-#: src/hotkeys.cpp:211
+#: src/hotkeys.cpp:213
 msgid "Generate Map"
 msgstr "Gerar Mapa"
 
@@ -9440,7 +9484,7 @@ msgstr "Gerar Mapa"
 # File: src/hotkeys.cpp, line: 212
 # File: src/hotkeys.cpp, line: 212
 # File: src/hotkeys.cpp, line: 212
-#: src/hotkeys.cpp:212
+#: src/hotkeys.cpp:214
 msgid "Apply a Mask"
 msgstr "Aplicar máscara"
 
@@ -9449,7 +9493,7 @@ msgstr "Aplicar máscara"
 # File: src/hotkeys.cpp, line: 213
 # File: src/hotkeys.cpp, line: 213
 # File: src/hotkeys.cpp, line: 213
-#: src/hotkeys.cpp:213
+#: src/hotkeys.cpp:215
 msgid "Create Mask"
 msgstr "Criar Máscara"
 
@@ -9458,7 +9502,7 @@ msgstr "Criar Máscara"
 # File: src/hotkeys.cpp, line: 214
 # File: src/hotkeys.cpp, line: 214
 # File: src/hotkeys.cpp, line: 214
-#: src/hotkeys.cpp:214
+#: src/hotkeys.cpp:216
 msgid "Refresh Display"
 msgstr "Actualizar Ecrã"
 
@@ -9467,7 +9511,7 @@ msgstr "Actualizar Ecrã"
 # File: src/hotkeys.cpp, line: 215
 # File: src/hotkeys.cpp, line: 215
 # File: src/hotkeys.cpp, line: 215
-#: src/hotkeys.cpp:215
+#: src/hotkeys.cpp:217
 msgid "Update Terrain Transitions"
 msgstr "Actualizar transições de terreno"
 
@@ -9476,7 +9520,7 @@ msgstr "Actualizar transições de terreno"
 # File: src/hotkeys.cpp, line: 217
 # File: src/hotkeys.cpp, line: 217
 # File: src/hotkeys.cpp, line: 217
-#: src/hotkeys.cpp:217
+#: src/hotkeys.cpp:219
 msgid "Toggle Terrain Transition Update"
 msgstr "Ligar actualização das transições de terreno"
 
@@ -9485,7 +9529,7 @@ msgstr "Ligar actualização das transições de terreno"
 # File: src/hotkeys.cpp, line: 218
 # File: src/hotkeys.cpp, line: 218
 # File: src/hotkeys.cpp, line: 218
-#: src/hotkeys.cpp:218
+#: src/hotkeys.cpp:220
 msgid "Auto-update Terrain Transitions"
 msgstr "Auto-actualizar transições de terreno"
 
@@ -9494,7 +9538,7 @@ msgstr "Auto-actualizar transições de terreno"
 # File: src/hotkeys.cpp, line: 220
 # File: src/hotkeys.cpp, line: 220
 # File: src/hotkeys.cpp, line: 220
-#: src/hotkeys.cpp:220
+#: src/hotkeys.cpp:222
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Auto-actualizar transições de terreno: Não"
 
@@ -9503,7 +9547,7 @@ msgstr "Auto-actualizar transições de terreno: Não"
 # File: src/hotkeys.cpp, line: 221
 # File: src/hotkeys.cpp, line: 221
 # File: src/hotkeys.cpp, line: 221
-#: src/hotkeys.cpp:221
+#: src/hotkeys.cpp:223
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "Auto-actualizar transições de terreno: Parcial"
 
@@ -9512,7 +9556,7 @@ msgstr "Auto-actualizar transições de terreno: Parcial"
 # File: src/hotkeys.cpp, line: 223
 # File: src/hotkeys.cpp, line: 223
 # File: src/hotkeys.cpp, line: 223
-#: src/hotkeys.cpp:223
+#: src/hotkeys.cpp:225
 msgid "Refresh Image Cache"
 msgstr "Actualizar a Cache de Imagens"
 
@@ -9521,7 +9565,7 @@ msgstr "Actualizar a Cache de Imagens"
 # File: src/hotkeys.cpp, line: 224
 # File: src/hotkeys.cpp, line: 224
 # File: src/hotkeys.cpp, line: 224
-#: src/hotkeys.cpp:224
+#: src/hotkeys.cpp:226
 msgid "Draw Hex Coordinates"
 msgstr "Desenhar coordenadas dos hexágonos"
 
@@ -9530,7 +9574,7 @@ msgstr "Desenhar coordenadas dos hexágonos"
 # File: src/hotkeys.cpp, line: 225
 # File: src/hotkeys.cpp, line: 225
 # File: src/hotkeys.cpp, line: 225
-#: src/hotkeys.cpp:225
+#: src/hotkeys.cpp:227
 msgid "Draw Terrain Codes"
 msgstr "Desenhar código do Terreno"
 
@@ -9538,7 +9582,7 @@ msgstr "Desenhar código do Terreno"
 # File: src/hotkeys.cpp, line: 227
 # File: src/hotkeys.cpp, line: 227
 # File: src/hotkeys.cpp, line: 227
-#: src/hotkeys.cpp:227
+#: src/hotkeys.cpp:229
 msgid "Define (Time) Area"
 msgstr "Definir Área (Tempo)"
 
@@ -9547,7 +9591,7 @@ msgstr "Definir Área (Tempo)"
 # File: src/hotkeys.cpp, line: 229
 # File: src/hotkeys.cpp, line: 229
 # File: src/hotkeys.cpp, line: 229
-#: src/hotkeys.cpp:229
+#: src/hotkeys.cpp:231
 msgid "Delay Shroud Updates"
 msgstr "Adiar Actualizações da Sombra"
 
@@ -9556,7 +9600,7 @@ msgstr "Adiar Actualizações da Sombra"
 # File: src/hotkeys.cpp, line: 230
 # File: src/hotkeys.cpp, line: 230
 # File: src/hotkeys.cpp, line: 230
-#: src/hotkeys.cpp:230
+#: src/hotkeys.cpp:232
 msgid "Update Shroud Now"
 msgstr "Actualizar a Sombra Agora"
 
@@ -9565,7 +9609,7 @@ msgstr "Actualizar a Sombra Agora"
 # File: src/hotkeys.cpp, line: 231
 # File: src/hotkeys.cpp, line: 231
 # File: src/hotkeys.cpp, line: 231
-#: src/hotkeys.cpp:231
+#: src/hotkeys.cpp:233
 msgid "Continue Move"
 msgstr "Continuar Movimento"
 
@@ -9574,7 +9618,7 @@ msgstr "Continuar Movimento"
 # File: src/hotkeys.cpp, line: 232
 # File: src/hotkeys.cpp, line: 232
 # File: src/hotkeys.cpp, line: 232
-#: src/hotkeys.cpp:232
+#: src/hotkeys.cpp:234
 msgid "Find Label or Unit"
 msgstr "Procurar Etiqueta ou Unidade"
 
@@ -9583,7 +9627,7 @@ msgstr "Procurar Etiqueta ou Unidade"
 # File: src/hotkeys.cpp, line: 233
 # File: src/hotkeys.cpp, line: 233
 # File: src/hotkeys.cpp, line: 233
-#: src/hotkeys.cpp:233
+#: src/hotkeys.cpp:235
 msgid "Speak to Ally"
 msgstr "Falar com um Aliado"
 
@@ -9592,7 +9636,7 @@ msgstr "Falar com um Aliado"
 # File: src/hotkeys.cpp, line: 234
 # File: src/hotkeys.cpp, line: 234
 # File: src/hotkeys.cpp, line: 234
-#: src/hotkeys.cpp:234
+#: src/hotkeys.cpp:236
 msgid "Speak to All"
 msgstr "Falar com Todos"
 
@@ -9601,7 +9645,7 @@ msgstr "Falar com Todos"
 # File: src/hotkeys.cpp, line: 236
 # File: src/hotkeys.cpp, line: 236
 # File: src/hotkeys.cpp, line: 236
-#: src/hotkeys.cpp:236
+#: src/hotkeys.cpp:238
 msgid "View Chat Log"
 msgstr "Ver Registo da Conversa"
 
@@ -9610,7 +9654,7 @@ msgstr "Ver Registo da Conversa"
 # File: src/hotkeys.cpp, line: 237
 # File: src/hotkeys.cpp, line: 237
 # File: src/hotkeys.cpp, line: 237
-#: src/hotkeys.cpp:237
+#: src/hotkeys.cpp:239
 msgid "Change Language"
 msgstr "Modificar o Idioma"
 
@@ -9619,7 +9663,7 @@ msgstr "Modificar o Idioma"
 # File: src/hotkeys.cpp, line: 238
 # File: src/hotkeys.cpp, line: 238
 # File: src/hotkeys.cpp, line: 238
-#: src/hotkeys.cpp:238
+#: src/hotkeys.cpp:240
 msgid "Enter User Command"
 msgstr "Introduzir comando"
 
@@ -9628,7 +9672,7 @@ msgstr "Introduzir comando"
 # File: src/hotkeys.cpp, line: 239
 # File: src/hotkeys.cpp, line: 239
 # File: src/hotkeys.cpp, line: 239
-#: src/hotkeys.cpp:239
+#: src/hotkeys.cpp:241
 msgid "Custom Command"
 msgstr "Comando Próprio"
 
@@ -9637,7 +9681,7 @@ msgstr "Comando Próprio"
 # File: src/hotkeys.cpp, line: 240
 # File: src/hotkeys.cpp, line: 240
 # File: src/hotkeys.cpp, line: 240
-#: src/hotkeys.cpp:240
+#: src/hotkeys.cpp:242
 msgid "Run Formula"
 msgstr "Executar Fórmula"
 
@@ -9646,7 +9690,7 @@ msgstr "Executar Fórmula"
 # File: src/hotkeys.cpp, line: 241
 # File: src/hotkeys.cpp, line: 241
 # File: src/hotkeys.cpp, line: 241
-#: src/hotkeys.cpp:241
+#: src/hotkeys.cpp:243
 msgid "Clear Messages"
 msgstr "Apagar mensagens"
 
@@ -9655,7 +9699,7 @@ msgstr "Apagar mensagens"
 # File: src/hotkeys.cpp, line: 242
 # File: src/hotkeys.cpp, line: 242
 # File: src/hotkeys.cpp, line: 242
-#: src/hotkeys.cpp:242
+#: src/hotkeys.cpp:244
 msgid "Refresh WML"
 msgstr "Actualizar WML"
 
@@ -9664,7 +9708,7 @@ msgstr "Actualizar WML"
 # File: src/hotkeys.cpp, line: 243
 # File: src/hotkeys.cpp, line: 243
 # File: src/hotkeys.cpp, line: 243
-#: src/hotkeys.cpp:243
+#: src/hotkeys.cpp:245
 msgid "Next Tip of the Day"
 msgstr "Próxima dica do dia"
 
@@ -9673,7 +9717,7 @@ msgstr "Próxima dica do dia"
 # File: src/hotkeys.cpp, line: 244
 # File: src/hotkeys.cpp, line: 244
 # File: src/hotkeys.cpp, line: 244
-#: src/hotkeys.cpp:244
+#: src/hotkeys.cpp:246
 msgid "Previous Tip of the Day"
 msgstr "Anterior dica do dia"
 
@@ -9682,7 +9726,7 @@ msgstr "Anterior dica do dia"
 # File: src/hotkeys.cpp, line: 245
 # File: src/hotkeys.cpp, line: 245
 # File: src/hotkeys.cpp, line: 245
-#: src/hotkeys.cpp:245
+#: src/hotkeys.cpp:247
 msgid "Start Tutorial"
 msgstr "Iniciar o Tutorial"
 
@@ -9691,7 +9735,7 @@ msgstr "Iniciar o Tutorial"
 # File: src/hotkeys.cpp, line: 246
 # File: src/hotkeys.cpp, line: 246
 # File: src/hotkeys.cpp, line: 246
-#: src/hotkeys.cpp:246
+#: src/hotkeys.cpp:248
 msgid "Start Campaign"
 msgstr "Começar uma Campanha"
 
@@ -9700,7 +9744,7 @@ msgstr "Começar uma Campanha"
 # File: src/hotkeys.cpp, line: 247
 # File: src/hotkeys.cpp, line: 247
 # File: src/hotkeys.cpp, line: 247
-#: src/hotkeys.cpp:247
+#: src/hotkeys.cpp:249
 msgid "Start Multiplayer Game"
 msgstr "Começar um jogo em rede"
 
@@ -9709,7 +9753,7 @@ msgstr "Começar um jogo em rede"
 # File: src/hotkeys.cpp, line: 248
 # File: src/hotkeys.cpp, line: 248
 # File: src/hotkeys.cpp, line: 248
-#: src/hotkeys.cpp:248
+#: src/hotkeys.cpp:250
 msgid "Manage Add-ons"
 msgstr "Actualizar Extras"
 
@@ -9718,7 +9762,7 @@ msgstr "Actualizar Extras"
 # File: src/hotkeys.cpp, line: 249
 # File: src/hotkeys.cpp, line: 249
 # File: src/hotkeys.cpp, line: 249
-#: src/hotkeys.cpp:249
+#: src/hotkeys.cpp:251
 msgid "Start Editor"
 msgstr "Iniciar o editor de mapa"
 
@@ -9727,7 +9771,7 @@ msgstr "Iniciar o editor de mapa"
 # File: src/hotkeys.cpp, line: 250
 # File: src/hotkeys.cpp, line: 250
 # File: src/hotkeys.cpp, line: 250
-#: src/hotkeys.cpp:250
+#: src/hotkeys.cpp:252
 msgid "Show Credits"
 msgstr "Mostra os créditos"
 
@@ -9736,7 +9780,7 @@ msgstr "Mostra os créditos"
 # File: src/hotkeys.cpp, line: 251
 # File: src/hotkeys.cpp, line: 251
 # File: src/hotkeys.cpp, line: 251
-#: src/hotkeys.cpp:251
+#: src/hotkeys.cpp:253
 msgid "Show Helptip"
 msgstr "Mostra as dicas"
 
@@ -9744,7 +9788,7 @@ msgstr "Mostra as dicas"
 # File: src/hotkeys.cpp, line: 254
 # File: src/hotkeys.cpp, line: 254
 # File: src/hotkeys.cpp, line: 254
-#: src/hotkeys.cpp:254
+#: src/hotkeys.cpp:256
 msgid "Unrecognized Command"
 msgstr "Comando não reconhecido"
 
@@ -9757,7 +9801,7 @@ msgstr "Comando não reconhecido"
 # File: src/hotkeys.cpp, line: 390
 # File: src/hotkeys.cpp, line: 387
 # File: src/hotkeys.cpp, line: 390
-#: src/hotkeys.cpp:387 src/hotkeys.cpp:390
+#: src/hotkeys.cpp:389 src/hotkeys.cpp:392
 msgid "Button"
 msgstr "Botão"
 
@@ -9766,7 +9810,7 @@ msgstr "Botão"
 # File: src/hotkeys.cpp, line: 387
 # File: src/hotkeys.cpp, line: 387
 # File: src/hotkeys.cpp, line: 387
-#: src/hotkeys.cpp:387
+#: src/hotkeys.cpp:389
 msgid "Mouse"
 msgstr "Rato"
 
@@ -9779,7 +9823,7 @@ msgstr "Rato"
 # File: src/hotkeys.cpp, line: 426
 # File: src/hotkeys.cpp, line: 390
 # File: src/hotkeys.cpp, line: 426
-#: src/hotkeys.cpp:390 src/hotkeys.cpp:426
+#: src/hotkeys.cpp:392 src/hotkeys.cpp:428
 msgid "Joystick"
 msgstr "Suporte a Controlo Joystick"
 
@@ -9788,7 +9832,7 @@ msgstr "Suporte a Controlo Joystick"
 # File: src/hotkeys.cpp, line: 396
 # File: src/hotkeys.cpp, line: 396
 # File: src/hotkeys.cpp, line: 396
-#: src/hotkeys.cpp:396
+#: src/hotkeys.cpp:398
 msgid "Centered"
 msgstr "Centrado"
 
@@ -9797,7 +9841,7 @@ msgstr "Centrado"
 # File: src/hotkeys.cpp, line: 399
 # File: src/hotkeys.cpp, line: 399
 # File: src/hotkeys.cpp, line: 399
-#: src/hotkeys.cpp:399
+#: src/hotkeys.cpp:401
 msgid "Up"
 msgstr "Acima"
 
@@ -9806,7 +9850,7 @@ msgstr "Acima"
 # File: src/hotkeys.cpp, line: 402
 # File: src/hotkeys.cpp, line: 402
 # File: src/hotkeys.cpp, line: 402
-#: src/hotkeys.cpp:402
+#: src/hotkeys.cpp:404
 msgid "Right"
 msgstr "Direito"
 
@@ -9815,7 +9859,7 @@ msgstr "Direito"
 # File: src/hotkeys.cpp, line: 405
 # File: src/hotkeys.cpp, line: 405
 # File: src/hotkeys.cpp, line: 405
-#: src/hotkeys.cpp:405
+#: src/hotkeys.cpp:407
 msgid "Down"
 msgstr "Abaixo"
 
@@ -9824,7 +9868,7 @@ msgstr "Abaixo"
 # File: src/hotkeys.cpp, line: 408
 # File: src/hotkeys.cpp, line: 408
 # File: src/hotkeys.cpp, line: 408
-#: src/hotkeys.cpp:408
+#: src/hotkeys.cpp:410
 msgid "Left"
 msgstr "Esquerda"
 
@@ -9833,7 +9877,7 @@ msgstr "Esquerda"
 # File: src/hotkeys.cpp, line: 411
 # File: src/hotkeys.cpp, line: 411
 # File: src/hotkeys.cpp, line: 411
-#: src/hotkeys.cpp:411
+#: src/hotkeys.cpp:413
 msgid "RightUp"
 msgstr "Direito Acima"
 
@@ -9842,7 +9886,7 @@ msgstr "Direito Acima"
 # File: src/hotkeys.cpp, line: 414
 # File: src/hotkeys.cpp, line: 414
 # File: src/hotkeys.cpp, line: 414
-#: src/hotkeys.cpp:414
+#: src/hotkeys.cpp:416
 msgid "RightDown"
 msgstr "Direito Abaixo"
 
@@ -9851,7 +9895,7 @@ msgstr "Direito Abaixo"
 # File: src/hotkeys.cpp, line: 417
 # File: src/hotkeys.cpp, line: 417
 # File: src/hotkeys.cpp, line: 417
-#: src/hotkeys.cpp:417
+#: src/hotkeys.cpp:419
 msgid "LeftUp"
 msgstr "Esquerda Acima"
 
@@ -9860,7 +9904,7 @@ msgstr "Esquerda Acima"
 # File: src/hotkeys.cpp, line: 420
 # File: src/hotkeys.cpp, line: 420
 # File: src/hotkeys.cpp, line: 420
-#: src/hotkeys.cpp:420
+#: src/hotkeys.cpp:422
 msgid "LeftDown"
 msgstr "Esquerda Abaixo"
 
@@ -9869,7 +9913,7 @@ msgstr "Esquerda Abaixo"
 # File: src/hotkeys.cpp, line: 423
 # File: src/hotkeys.cpp, line: 423
 # File: src/hotkeys.cpp, line: 423
-#: src/hotkeys.cpp:423
+#: src/hotkeys.cpp:425
 msgid "Unknown"
 msgstr "Desconhecido"
 
@@ -9881,7 +9925,7 @@ msgstr "Desconhecido"
 # File: src/hotkeys.cpp, line: 426
 # File: src/hotkeys.cpp, line: 426
 # File: src/hotkeys.cpp, line: 426
-#: src/hotkeys.cpp:426
+#: src/hotkeys.cpp:428
 msgid "Hat"
 msgstr "Choupana"
 
@@ -9894,7 +9938,7 @@ msgstr "Choupana"
 # File: src/hotkeys.cpp, line: 1235
 # File: src/hotkeys.cpp, line: 885
 # File: src/hotkeys.cpp, line: 1235
-#: src/hotkeys.cpp:885 src/hotkeys.cpp:1235
+#: src/hotkeys.cpp:887 src/hotkeys.cpp:1244
 msgid "Do you really want to quit?"
 msgstr "Tens a certeza de que queres sair?"
 
@@ -9903,7 +9947,7 @@ msgstr "Tens a certeza de que queres sair?"
 # File: src/hotkeys.cpp, line: 1185
 # File: src/hotkeys.cpp, line: 1185
 # File: src/hotkeys.cpp, line: 1185
-#: src/hotkeys.cpp:1185
+#: src/hotkeys.cpp:1194
 msgid "Map-Screenshot"
 msgstr "Capturar Mapa"
 
@@ -9916,7 +9960,7 @@ msgstr "Capturar Mapa"
 # File: src/hotkeys.cpp, line: 1194
 # File: src/hotkeys.cpp, line: 1192
 # File: src/hotkeys.cpp, line: 1194
-#: src/hotkeys.cpp:1192 src/hotkeys.cpp:1194
+#: src/hotkeys.cpp:1201 src/hotkeys.cpp:1203
 msgid "Screenshot done"
 msgstr "Fotografia do ecrã tirada"
 
@@ -10130,7 +10174,7 @@ msgstr ""
 # File: src/text.cpp, line: 734
 # File: src/text.cpp, line: 734
 # File: src/text.cpp, line: 734
-#: src/text.cpp:734
+#: src/text.cpp:739
 msgid "The text contains invalid markup: "
 msgstr "O texto contem código inválido: "
 
@@ -10203,3 +10247,39 @@ msgid ""
 msgstr ""
 "A chave '$deprecated_key' foi renomeada para '$key'. Suporte para "
 "'$deprecated_key' será removido na versão $removal_version."
+
+#
+# File: data/gui/default/window/editor_settings.cfg, line: 35
+# File: src/hotkeys.cpp, line: 145
+# File: data/gui/default/window/editor_settings.cfg, line: 35
+# File: src/hotkeys.cpp, line: 149
+# File: data/gui/default/window/editor_settings.cfg, line: 35
+# File: src/hotkeys.cpp, line: 149
+# File: data/gui/default/window/editor_settings.cfg, line: 35
+# File: src/hotkeys.cpp, line: 149
+#~ msgid "Editor Settings"
+#~ msgstr "Definições do Editor"
+
+#
+# File: data/gui/default/window/editor_settings.cfg, line: 53
+# File: data/gui/default/window/editor_settings.cfg, line: 53
+# File: data/gui/default/window/editor_settings.cfg, line: 53
+# File: data/gui/default/window/editor_settings.cfg, line: 53
+#~ msgid "Time of day lighting preset:"
+#~ msgstr "Definição do Tempo de dia"
+
+#
+# File: data/gui/default/window/editor_settings.cfg, line: 104
+# File: data/gui/default/window/editor_settings.cfg, line: 104
+# File: data/gui/default/window/editor_settings.cfg, line: 104
+# File: data/gui/default/window/editor_settings.cfg, line: 104
+#~ msgid "Custom lighting settings"
+#~ msgstr "Configurações personalizadas de iluminação"
+
+#
+# File: data/gui/default/window/editor_settings.cfg, line: 114
+# File: data/gui/default/window/editor_settings.cfg, line: 114
+# File: data/gui/default/window/editor_settings.cfg, line: 114
+# File: data/gui/default/window/editor_settings.cfg, line: 114
+#~ msgid "Automatically update map view"
+#~ msgstr "Actualizar visualização do mapa automaticamente"

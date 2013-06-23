@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-22 21:54-0400\n"
+"POT-Creation-Date: 2013-06-23 10:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,7 @@ msgid "Multiplayer_AI^Default AI (RCA)"
 msgstr ""
 
 #. [ai]: id=experimental_ai
-#: data/ai/ais/ai_generic-rush.cfg:7
+#: data/ai/ais/ai_generic-rush.cfg:5
 msgid "Multiplayer_AI^Experimental AI"
 msgstr ""
 
@@ -54,21 +54,21 @@ msgid "Idle AI"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6960
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4380
 msgid ""
 "Enemy unit weight: The (negative) weight given to each enemy unit that can "
-"reach a potential target location.  Default: 100"
+"reach a potential target location. Default: 100"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6961
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4381
 msgid ""
 "My unit weight: The (positive) weight given to each of the AI's units that "
-"can reach a potential target location.  Default: 1"
+"can reach a potential target location. Default: 1"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6962
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4382
 msgid ""
 "Goal distance weight: The (negative) weight for each step the unit is away "
 "from its goal location.\n"
@@ -77,7 +77,7 @@ msgid ""
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6963
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4383
 msgid ""
 "Terrain defense weight: The (positive) weight of the terrain defense rating "
 "for a potential target location.\n"
@@ -86,43 +86,43 @@ msgid ""
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6964
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4384
 msgid ""
 "Bearing: Everything else being equal, move protected unit toward or away "
-"from enemy groups.  Default: toward"
+"from enemy groups. Default: toward"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6972
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4392
 msgid "Set AI parameters"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6978
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4398
 msgid ""
 "Click on 'Close' without changing anything to use defaults.\n"
-"All weights must be 0 or larger.  Invalid inputs are converted to default "
+"All weights must be 0 or larger. Invalid inputs are converted to default "
 "values.\n"
 "Tooltips enabled for all parameters."
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6986
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4406
 msgid "Enemy unit weight  (default: 100)"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6994
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4414
 msgid "My unit weight  (default: 1)"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:7002
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4422
 msgid "Goal distance weight  (default: 3)"
 msgstr ""
 
 #. [lua]: init
-#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:7010
+#: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:4430
 msgid "Terrain defense weight  (default: 0.1)"
 msgstr ""
 
@@ -265,7 +265,7 @@ msgstr ""
 
 #: data/ai/micro_ais/scenarios/animals.cfg:4
 msgid ""
-"<u>General</u>: These AI's are set up to simulate (to some extent) how these "
+"<u>General</u>: These AIs are set up to simulate (to some extent) how these "
 "animals behave in real life. This includes that they are animals, meaning "
 "that they are not super smart. As an example, the wolves generally hunt in a "
 "pack, but are easily distracted by prey coming into range. They are also "
@@ -382,16 +382,21 @@ msgstr ""
 msgid "Whelps"
 msgstr ""
 
+#. [event]
 #. [set_menu_item]: id=m01_end_animals
 #. [set_menu_item]: id=m01_end_swarm
 #. [set_menu_item]: id=m01_end_wolves
 #. [set_menu_item]: id=m04_end_animals
 #: data/ai/micro_ais/scenarios/animals.cfg:214
+#: data/ai/micro_ais/scenarios/dragon.cfg:48
 #: data/ai/micro_ais/scenarios/goto.cfg:365
+#: data/ai/micro_ais/scenarios/guardians.cfg:84
+#: data/ai/micro_ais/scenarios/lurkers.cfg:368
+#: data/ai/micro_ais/scenarios/patrols.cfg:156
 #: data/ai/micro_ais/scenarios/swarm.cfg:67
 #: data/ai/micro_ais/scenarios/wolves.cfg:96
-msgid "End scenario"
-msgstr ""
+msgid "End Scenario"
+msgstr "Szenario beenden"
 
 #. [command]
 #. [then]
@@ -517,7 +522,7 @@ msgstr ""
 #. [event]: id=Kraa profile profile}
 #. [event]: id=Vanak profile profile}
 #: data/ai/micro_ais/scenarios/bottleneck-defense.cfg:87
-#: data/ai/micro_ais/scenarios/guardians.cfg:520
+#: data/ai/micro_ais/scenarios/guardians.cfg:521
 #: data/ai/micro_ais/scenarios/messenger-escort.cfg:136
 msgid "They there!  We them get!"
 msgstr ""
@@ -547,7 +552,7 @@ msgstr ""
 
 #. [option]: speaker=narrator
 #: data/ai/micro_ais/scenarios/bottleneck-defense.cfg:101
-msgid "<span font='16'>I'll watch the two AI's fight it out.</span>"
+msgid "<span font='16'>I'll watch the two AIs fight it out.</span>"
 msgstr ""
 
 #. [option]: speaker=narrator
@@ -597,14 +602,6 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/dragon.cfg:33
 msgid "Dreadful Bat"
 msgstr ""
-
-#. [event]
-#: data/ai/micro_ais/scenarios/dragon.cfg:48
-#: data/ai/micro_ais/scenarios/guardians.cfg:84
-#: data/ai/micro_ais/scenarios/lurkers.cfg:368
-#: data/ai/micro_ais/scenarios/patrols.cfg:156
-msgid "End Scenario"
-msgstr "Szenario beenden"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/dragon.cfg:51
@@ -737,19 +734,19 @@ msgstr ""
 #. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:396
 msgid ""
-"This scenario demonstrates a variety of different uses of the Goto Micro "
-"AI.  All AI sides are controlled by this MAI in one way or another (except "
-"for the saurians, which are run by the Lurkers Micro AI).  Messages will be "
+"This scenario demonstrates a variety of different uses of the Goto Micro AI. "
+"All AI sides are controlled by this MAI in one way or another (except for "
+"the saurians, which are run by the Lurkers Micro AI). Messages will be "
 "displayed throughout the scenario to point out what the units are doing.\n"
 "\n"
-"The player controls Side 1.  There are right-click context menu options for "
-"adding Side 1 units to the map and for taking them off again.  This is "
-"useful mostly for testing how the Side 3 guardians react.\n"
+"The player controls Side 1. There are right-click context menu options for "
+"adding Side 1 units to the map and for taking them off again. This is useful "
+"mostly for testing how the Side 3 guardians react.\n"
 "\n"
-"Note: The Goto AI is coded as a Micro AI.  A Micro AI can be added and "
+"Note: The Goto AI is coded as a Micro AI. A Micro AI can be added and "
 "adapted to the need of a scenario easily using only WML and the [micro_ai] "
-"tag.  Check out the <span color='#00A000'>Micro AI wiki page</span> at "
-"http://wiki.wesnoth.org/Micro_AIs for more information."
+"tag. Check out the <span color='#00A000'>Micro AI wiki page</span> at http://"
+"wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
 
 #. [objectives]
@@ -1088,29 +1085,29 @@ msgid "Water Guardian"
 msgstr ""
 
 #. [event]
-#: data/ai/micro_ais/scenarios/guardians.cfg:411
+#: data/ai/micro_ais/scenarios/guardians.cfg:412
 msgid "Guarded Location"
 msgstr ""
 
 #. [event]
-#: data/ai/micro_ais/scenarios/guardians.cfg:412
+#: data/ai/micro_ais/scenarios/guardians.cfg:413
 msgid "Station 1"
 msgstr ""
 
 #. [event]
-#: data/ai/micro_ais/scenarios/guardians.cfg:413
+#: data/ai/micro_ais/scenarios/guardians.cfg:414
 msgid "Station 2"
 msgstr ""
 
 #. [command]
 #. [set_menu_item]: id=m01_guardian
-#: data/ai/micro_ais/scenarios/guardians.cfg:431
-#: data/ai/micro_ais/scenarios/guardians.cfg:437
+#: data/ai/micro_ais/scenarios/guardians.cfg:432
+#: data/ai/micro_ais/scenarios/guardians.cfg:438
 msgid "Standard WML Guardian"
 msgstr ""
 
 #. [command]
-#: data/ai/micro_ais/scenarios/guardians.cfg:437
+#: data/ai/micro_ais/scenarios/guardians.cfg:438
 msgid ""
 "This is the built-in WML guardian coded using 'ai_special=guardian'. These "
 "guardians attack if there is an enemy within their movement range, otherwise "
@@ -1119,13 +1116,13 @@ msgstr ""
 
 #. [command]
 #. [set_menu_item]: id=m02_return
-#: data/ai/micro_ais/scenarios/guardians.cfg:442
-#: data/ai/micro_ais/scenarios/guardians.cfg:448
+#: data/ai/micro_ais/scenarios/guardians.cfg:443
+#: data/ai/micro_ais/scenarios/guardians.cfg:449
 msgid "Return Guardian"
 msgstr ""
 
 #. [command]
-#: data/ai/micro_ais/scenarios/guardians.cfg:448
+#: data/ai/micro_ais/scenarios/guardians.cfg:449
 msgid ""
 "A 'return guardian' is a variation of the standard Wesnoth guardian. It has "
 "an assigned guard position (GP) to which it returns after attacks on "
@@ -1141,13 +1138,13 @@ msgstr ""
 
 #. [command]
 #. [set_menu_item]: id=m03_home
-#: data/ai/micro_ais/scenarios/guardians.cfg:458
-#: data/ai/micro_ais/scenarios/guardians.cfg:464
+#: data/ai/micro_ais/scenarios/guardians.cfg:459
+#: data/ai/micro_ais/scenarios/guardians.cfg:465
 msgid "Home Guard"
 msgstr ""
 
 #. [command]
-#: data/ai/micro_ais/scenarios/guardians.cfg:464
+#: data/ai/micro_ais/scenarios/guardians.cfg:465
 msgid ""
 "A 'home guard' is a variant on the 'guardian' AI special. With this variant, "
 "the unit has an assigned 'home' location, and will return there if not "
@@ -1166,13 +1163,13 @@ msgstr ""
 
 #. [command]
 #. [set_menu_item]: id=m04_stationed
-#: data/ai/micro_ais/scenarios/guardians.cfg:470
-#: data/ai/micro_ais/scenarios/guardians.cfg:476
+#: data/ai/micro_ais/scenarios/guardians.cfg:471
+#: data/ai/micro_ais/scenarios/guardians.cfg:477
 msgid "Stationed Guardian"
 msgstr ""
 
 #. [command]
-#: data/ai/micro_ais/scenarios/guardians.cfg:476
+#: data/ai/micro_ais/scenarios/guardians.cfg:477
 msgid ""
 "A 'stationed guardian' is another variation of the standard Wesnoth guardian "
 "with a somewhat more complex behavior than that of the 'return guardian'. "
@@ -1192,13 +1189,13 @@ msgstr ""
 
 #. [command]
 #. [set_menu_item]: id=m05_coward
-#: data/ai/micro_ais/scenarios/guardians.cfg:487
-#: data/ai/micro_ais/scenarios/guardians.cfg:493
+#: data/ai/micro_ais/scenarios/guardians.cfg:488
+#: data/ai/micro_ais/scenarios/guardians.cfg:494
 msgid "Coward"
 msgstr ""
 
 #. [command]
-#: data/ai/micro_ais/scenarios/guardians.cfg:493
+#: data/ai/micro_ais/scenarios/guardians.cfg:494
 msgid ""
 "Cowards are units that, like guardians, sit around doing nothing until an "
 "enemy comes into range. Unlike guardians, however, they run away once "
@@ -1218,13 +1215,13 @@ msgstr ""
 
 #. [command]
 #. [set_menu_item]: id=m06_zone
-#: data/ai/micro_ais/scenarios/guardians.cfg:502
-#: data/ai/micro_ais/scenarios/guardians.cfg:508
+#: data/ai/micro_ais/scenarios/guardians.cfg:503
+#: data/ai/micro_ais/scenarios/guardians.cfg:509
 msgid "Zone Guardian"
 msgstr ""
 
 #. [command]
-#: data/ai/micro_ais/scenarios/guardians.cfg:508
+#: data/ai/micro_ais/scenarios/guardians.cfg:509
 msgid ""
 "A zone guardian is a unit that, as the name says, guards a zone. It moves "
 "randomly inside this zone until an enemy enters it (or a separately defined "
@@ -1237,12 +1234,12 @@ msgid ""
 msgstr ""
 
 #. [event]: id=Kraa profile profile}
-#: data/ai/micro_ais/scenarios/guardians.cfg:519
+#: data/ai/micro_ais/scenarios/guardians.cfg:520
 msgid "Kraahhh!!!!"
 msgstr ""
 
 #. [event]: id=Kraa profile profile}
-#: data/ai/micro_ais/scenarios/guardians.cfg:522
+#: data/ai/micro_ais/scenarios/guardians.cfg:523
 msgid ""
 "Gryphons of the High Plains, look at all these enemies. They don't behave "
 "normally. Most of them don't move at all unless we get close. Let's check "
@@ -1258,34 +1255,34 @@ msgid ""
 msgstr ""
 
 #. [objectives]
-#: data/ai/micro_ais/scenarios/guardians.cfg:531
+#: data/ai/micro_ais/scenarios/guardians.cfg:532
 msgid "Move the Gryphons around to explore how the guardians react"
 msgstr ""
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/guardians.cfg:533
+#: data/ai/micro_ais/scenarios/guardians.cfg:534
 #: data/ai/micro_ais/scenarios/patrols.cfg:211
 msgid "Defeat all enemy units"
 msgstr ""
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/guardians.cfg:537
+#: data/ai/micro_ais/scenarios/guardians.cfg:538
 msgid "Move Kraa to the signpost"
 msgstr ""
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/guardians.cfg:541
+#: data/ai/micro_ais/scenarios/guardians.cfg:542
 msgid "Death of Kraa"
 msgstr ""
 
 #. [note]
-#: data/ai/micro_ais/scenarios/guardians.cfg:545
+#: data/ai/micro_ais/scenarios/guardians.cfg:546
 msgid ""
 "Check out the right-click menu options for information on each guardian type"
 msgstr ""
 
 #. [event]
-#: data/ai/micro_ais/scenarios/guardians.cfg:600
+#: data/ai/micro_ais/scenarios/guardians.cfg:601
 msgid ""
 "Gryphons of the High Plains, it is time to return to said plains. Follow me."
 msgstr ""
@@ -1308,20 +1305,20 @@ msgstr ""
 #. [event]
 #: data/ai/micro_ais/scenarios/healer_support.cfg:83
 msgid ""
-"In this scenario, we demonstrate the use of the Healer Support Micro AI.  "
+"In this scenario, we demonstrate the use of the Healer Support Micro AI. "
 "This AI configures the healers of a side to stay behind the battle lines and "
 "heal injured and/or threatened units rather than participate in the attacks "
-"under all circumstances.  It includes several configurable options (which "
-"are set differently for the two sides in this scenario) that determine how "
+"under all circumstances. It includes several configurable options (which are "
+"set differently for the two sides in this scenario) that determine how "
 "aggressive/careful the healers are, whether they also attack, how much risk "
 "they are willing to take, etc.\n"
 "\n"
-"For clarity, each healer announces her upcoming support move.  If you don't "
+"For clarity, each healer announces her upcoming support move. If you don't "
 "want to see that each time, just hit 'esc' when it happens the first time.\n"
 "\n"
-"Note: The Healer Support AI is coded as a Micro AI.  A Micro AI can be added "
+"Note: The Healer Support AI is coded as a Micro AI. A Micro AI can be added "
 "and adapted to the need of a scenario easily using only WML and the "
-"[micro_ai] tag.  Check out the <span color='#00A000'>Micro AI wiki page</"
+"[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
 
@@ -1794,7 +1791,7 @@ msgid ""
 "instructed to protect the wizard Rossauba, while moving him safely to the "
 "signpost. On the other side, Koorzhar's units (in the west) will primarily "
 "attack Rossauba, even if a better target is available. Do you want to play "
-"either of the sides or let the AI's battle it out among themselves?\n"
+"either of the sides or let the AIs battle it out among themselves?\n"
 "\n"
 "Note: The Protect Unit AI is coded as a Micro AI. A Micro AI can be added "
 "and adapted to the need of a scenario easily using only WML and the "
@@ -1804,7 +1801,7 @@ msgstr ""
 
 #. [option]: speaker=narrator
 #: data/ai/micro_ais/scenarios/protect-unit.cfg:144
-msgid "<span font='16'>I'll watch the two AI's fight it out</span>"
+msgid "<span font='16'>I'll watch the two AIs fight it out</span>"
 msgstr ""
 
 #. [option]: speaker=narrator

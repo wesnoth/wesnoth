@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-22 22:09-0400\n"
+"POT-Creation-Date: 2013-06-23 10:20+0200\n"
 "PO-Revision-Date: 2011-02-05 22:45-0300\n"
 "Last-Translator: Diego Inácio Goergen <thegoergen@gmail.com>\n"
 "Language-Team: Portuguese/Brazil\n"
@@ -217,12 +217,22 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
+#. [editor_times]: id=summer
+#: data/core/editor/time-of-day.cfg:22
+msgid "Summer"
+msgstr ""
+
+#. [editor_times]: id=winter
+#: data/core/editor/time-of-day.cfg:28
+msgid "Winter"
+msgstr ""
+
 #
 # File: data/core/editor/time-of-day.cfg, line: 27
 # File: data/core/editor/time-of-day.cfg, line: 27
 # File: data/core/editor/time-of-day.cfg, line: 27
 #. [editor_times]: id=underground
-#: data/core/editor/time-of-day.cfg:27
+#: data/core/editor/time-of-day.cfg:34
 msgid "Underground"
 msgstr ""
 
@@ -231,15 +241,20 @@ msgstr ""
 # File: data/core/editor/time-of-day.cfg, line: 33
 # File: data/core/editor/time-of-day.cfg, line: 33
 #. [editor_times]: id=deep_underground
-#: data/core/editor/time-of-day.cfg:33
+#: data/core/editor/time-of-day.cfg:40
 msgid "Deep Underground"
+msgstr ""
+
+#. [editor_times]: id=indoors
+#: data/core/editor/time-of-day.cfg:46
+msgid "Indoors"
 msgstr ""
 
 #
 # File: data/core/editor/time-of-day.cfg, line: 39
 # File: data/core/editor/time-of-day.cfg, line: 39
 #. [editor_times]: id=24
-#: data/core/editor/time-of-day.cfg:39
+#: data/core/editor/time-of-day.cfg:52
 msgid "24 Hour Schedule"
 msgstr ""
 
@@ -248,7 +263,7 @@ msgstr ""
 # File: data/core/editor/time-of-day.cfg, line: 46
 # File: data/core/editor/time-of-day.cfg, line: 46
 #. [editor_times]: id=after_the_fall
-#: data/core/editor/time-of-day.cfg:46
+#: data/core/editor/time-of-day.cfg:59
 msgid "After the Fall"
 msgstr ""
 
@@ -329,13 +344,9 @@ msgstr "Arquivo"
 msgid "Map"
 msgstr "Mapa"
 
-#
-# File: data/themes/editor.cfg, line: 98
-# File: data/themes/editor.cfg, line: 98
-# File: data/themes/editor.cfg, line: 98
 #. [menu]: id=menu-editor-transitions
 #: data/themes/editor.cfg:98
-msgid "Transition update"
+msgid "Transition Update"
 msgstr ""
 
 #
@@ -387,7 +398,7 @@ msgstr ""
 # File: data/themes/editor.cfg, line: 489
 # File: data/themes/editor.cfg, line: 489
 #. [menu]: id=switch_time
-#: data/themes/editor.cfg:489
+#: data/themes/editor.cfg:500
 msgid "Time Schedule Menu"
 msgstr ""
 
@@ -395,7 +406,7 @@ msgstr ""
 # File: data/themes/editor.cfg, line: 499
 # File: data/themes/editor.cfg, line: 499
 #. [menu]: id=menu-playlist
-#: data/themes/editor.cfg:499
+#: data/themes/editor.cfg:510
 msgid "Playlist"
 msgstr ""
 
@@ -404,7 +415,7 @@ msgstr ""
 # File: data/themes/editor.cfg, line: 505
 # File: data/themes/editor.cfg, line: 505
 #. [menu]: id=menu-editor-schedule
-#: data/themes/editor.cfg:505
+#: data/themes/editor.cfg:516
 msgid "Assign Time Schedule"
 msgstr ""
 
@@ -413,7 +424,7 @@ msgstr ""
 # File: data/themes/editor.cfg, line: 609
 # File: data/themes/editor.cfg, line: 609
 #. [label]: id=terrain-icon
-#: data/themes/editor.cfg:609
+#: data/themes/editor.cfg:610
 msgid "terrain"
 msgstr ""
 
@@ -422,7 +433,7 @@ msgstr ""
 # File: data/themes/editor.cfg, line: 669
 # File: data/themes/editor.cfg, line: 669
 #. [action]: id=flip_map_button_editor, type=checkbox
-#: data/themes/editor.cfg:669
+#: data/themes/editor.cfg:689
 #, fuzzy
 msgid "Not implemented yet."
 msgstr "Ação não implementada"
@@ -448,11 +459,19 @@ msgstr ""
 msgid "Type: "
 msgstr ""
 
+#: src/editor/action/mouse/mouse_action_unit.cpp:61
+msgid "Level: "
+msgstr ""
+
+#: src/editor/action/mouse/mouse_action_unit.cpp:62
+msgid "Cost: "
+msgstr ""
+
 #
 # File: src/editor/editor_controller.cpp, line: 170
 # File: src/editor/editor_controller.cpp, line: 175
 # File: src/editor/editor_controller.cpp, line: 175
-#: src/editor/editor_controller.cpp:175
+#: src/editor/editor_controller.cpp:173
 msgid "Fatal error"
 msgstr "Erro fatal"
 
@@ -460,7 +479,7 @@ msgstr "Erro fatal"
 # File: src/editor/editor_controller.cpp, line: 198
 # File: src/editor/editor_controller.cpp, line: 203
 # File: src/editor/editor_controller.cpp, line: 203
-#: src/editor/editor_controller.cpp:203
+#: src/editor/editor_controller.cpp:201
 msgid "Do you really want to quit?"
 msgstr "Você realmente deseja sair?"
 
@@ -468,7 +487,7 @@ msgstr "Você realmente deseja sair?"
 # File: src/editor/editor_controller.cpp, line: 200
 # File: src/editor/editor_controller.cpp, line: 205
 # File: src/editor/editor_controller.cpp, line: 205
-#: src/editor/editor_controller.cpp:205
+#: src/editor/editor_controller.cpp:203
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
@@ -480,7 +499,7 @@ msgstr ""
 # File: src/editor/editor_controller.cpp, line: 202
 # File: src/editor/editor_controller.cpp, line: 207
 # File: src/editor/editor_controller.cpp, line: 207
-#: src/editor/editor_controller.cpp:207
+#: src/editor/editor_controller.cpp:205
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -492,7 +511,7 @@ msgstr ""
 # File: src/editor/editor_controller.cpp, line: 205
 # File: src/editor/editor_controller.cpp, line: 210
 # File: src/editor/editor_controller.cpp, line: 210
-#: src/editor/editor_controller.cpp:210
+#: src/editor/editor_controller.cpp:208
 msgid "Quit"
 msgstr "Sair"
 
@@ -500,7 +519,7 @@ msgstr "Sair"
 # File: src/editor/editor_controller.cpp, line: 216
 # File: src/editor/editor_controller.cpp, line: 221
 # File: src/editor/editor_controller.cpp, line: 221
-#: src/editor/editor_controller.cpp:221
+#: src/editor/editor_controller.cpp:219
 msgid "No editor time-of-day found."
 msgstr "Nenhum editor tempo-do-dia encontrado."
 
@@ -784,8 +803,8 @@ msgstr "Não foi possível salvar o mapa: $msg"
 # File: src/editor/palette/editor_palettes.cpp, line: 101
 # File: src/editor/palette/editor_palettes.cpp, line: 56
 # File: src/editor/palette/editor_palettes.cpp, line: 101
-#: src/editor/palette/editor_palettes.cpp:56
-#: src/editor/palette/editor_palettes.cpp:101
+#: src/editor/palette/editor_palettes.cpp:58
+#: src/editor/palette/editor_palettes.cpp:105
 msgid "(Unknown Group)"
 msgstr ""
 
@@ -793,7 +812,7 @@ msgstr ""
 # File: src/editor/palette/editor_palettes.cpp, line: 329
 # File: src/editor/palette/editor_palettes.cpp, line: 340
 # File: src/editor/palette/editor_palettes.cpp, line: 340
-#: src/editor/palette/editor_palettes.cpp:340
+#: src/editor/palette/editor_palettes.cpp:356
 msgid "(non-core)"
 msgstr "(não-central)"
 
@@ -801,7 +820,7 @@ msgstr "(não-central)"
 # File: src/editor/palette/editor_palettes.cpp, line: 330
 # File: src/editor/palette/editor_palettes.cpp, line: 341
 # File: src/editor/palette/editor_palettes.cpp, line: 341
-#: src/editor/palette/editor_palettes.cpp:341
+#: src/editor/palette/editor_palettes.cpp:357
 msgid "Will not work in game without extra care."
 msgstr "Não vai trabalhar no jogo sem cuidado extra."
 
@@ -822,6 +841,10 @@ msgstr "FG: "
 #: src/editor/palette/terrain_palettes.cpp:226
 msgid "BG: "
 msgstr "BG: "
+
+#: src/gui/dialogs/editor/custom_tod.cpp:123
+msgid "Choose file"
+msgstr ""
 
 #
 # File: src/gui/dialogs/editor_set_starting_position.cpp, line: 86
@@ -844,6 +867,5 @@ msgstr ""
 # File: src/gui/dialogs/editor_settings.cpp, line: 165
 # File: src/gui/dialogs/editor_settings.cpp, line: 161
 # File: src/gui/dialogs/editor_settings.cpp, line: 161
-#: src/gui/dialogs/editor_settings.cpp:161
-msgid "Custom setting"
-msgstr "Configuração customizada"
+#~ msgid "Custom setting"
+#~ msgstr "Configuração customizada"
