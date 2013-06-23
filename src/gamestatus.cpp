@@ -173,7 +173,7 @@ carryover::carryover(const config& side)
 		, save_id_(side["save_id"])
 {
 	BOOST_FOREACH(const config& u, side.child_range("unit")){
-		recall_list_.push_back(unit(u));
+		recall_list_.push_back(u);
 	}
 }
 
@@ -184,9 +184,14 @@ carryover::carryover(const team& t, const int gold, const bool add)
 		, gold_(gold)
 		, name_(t.name())
 		, previous_recruits_(t.recruits())
-		, recall_list_(t.recall_list())
+		, recall_list_()
 		, save_id_(t.save_id())
-		{}
+{
+	BOOST_FOREACH(const unit& u, t.recall_list()) {
+		recall_list_.push_back(config());
+		u.write(recall_list_.back());
+	}
+}
 
 static const int default_gold_qty = 100;
 
@@ -216,9 +221,8 @@ void carryover::transfer_all_recruits_to(config& side_cfg){
 }
 
 void carryover::transfer_all_recalls_to(config& side_cfg){
-	BOOST_FOREACH(unit& u, recall_list_){
-		config& new_unit = side_cfg.add_child("unit");
-		u.write(new_unit);
+	BOOST_FOREACH(const config & u_cfg, recall_list_) {
+		side_cfg.add_child("unit", u_cfg);
 	}
 	recall_list_.clear();
 }
@@ -250,7 +254,10 @@ void carryover::update_carryover(const team& t, const int gold, const bool add){
 	current_player_ = t.current_player();
 	name_ = t.name();
 	previous_recruits_.insert(t.recruits().begin(), t.recruits().end());
-	recall_list_.insert(recall_list_.end(), t.recall_list().begin(), t.recall_list().end());
+	BOOST_FOREACH(const unit& u, t.recall_list()) {
+		recall_list_.push_back(config());
+		u.write(recall_list_.back());
+	}
 }
 
 void carryover::initialize_team(config& side_cfg){
@@ -260,8 +267,8 @@ void carryover::initialize_team(config& side_cfg){
 const std::string carryover::to_string(){
 	std::string side = "";
 	side.append("Side " + save_id_ + ": gold " + str_cast<int>(gold_) + " recruits " + get_recruits(false) + " units ");
-	BOOST_FOREACH(const unit& u, recall_list_){
-		side.append(u.name() + ", ");
+	BOOST_FOREACH(const config & u_cfg, recall_list_) {
+		side.append(u_cfg["name"] + ", ");
 	}
 	return side;
 }
@@ -275,10 +282,8 @@ void carryover::to_config(config& cfg){
 	side["current_player"] = current_player_;
 	side["name"] = name_;
 	side["previous_recruits"] = get_recruits(false);
-	BOOST_FOREACH(unit& u, recall_list_){
-		config& unit_cfg = side.add_child("unit");
-		u.write(unit_cfg);
-	}
+	BOOST_FOREACH(const config & u_cfg, recall_list_)
+		side.add_child("unit", u_cfg);
 }
 
 carryover_info::carryover_info(const config& cfg)

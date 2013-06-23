@@ -27,6 +27,7 @@
 #include "game_end_exceptions.hpp"
 #include "unit.hpp"
 
+class config;
 class scoped_wml_variable;
 class team;
 class gamemap;
@@ -95,7 +96,6 @@ public:
 	void transfer_all_gold_to(config& side_cfg);
 	void transfer_all_recruits_to(config& side_cfg);
 	void transfer_all_recalls_to(config& side_cfg);
-	//std::vector<unit>& get_recall_list() { return recall_list_; };
 	void update_carryover(const team& t, const int gold, const bool add);
 	void initialize_team(config& side_cfg);
 	const std::string to_string();
@@ -107,7 +107,10 @@ private:
 	int gold_;
 	std::string name_;
 	std::set<std::string> previous_recruits_;
-	std::vector<unit> recall_list_;
+	// NOTE: we store configs instead of units because units often assume or
+	//       assert that various resources:: are available, which is not the
+	//       case between scenarios.
+	std::vector<config> recall_list_;
 	std::string save_id_;
 
 	std::string get_recruits(bool erase=false);
