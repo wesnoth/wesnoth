@@ -173,7 +173,7 @@ void set_about(const config &cfg)
  */
 void show_about(display &disp, const std::string &campaign)
 {
-	cursor::set(cursor::WAIT);
+	boost::scoped_ptr<cursor::setter> cur(new cursor::setter(cursor::WAIT));
 	CVideo &video = disp.video();
 	surface screen = video.getSurface();
 	if (screen == NULL) return;
@@ -183,7 +183,7 @@ void show_about(display &disp, const std::string &campaign)
 
 	const surface_restorer restorer(&video, screen_rect);
 
-	cursor::set(cursor::NORMAL);
+	cur.reset();
 
 	std::vector<std::string> image_list;
 	if(campaign.size() && !images[campaign].empty()){
