@@ -42,6 +42,7 @@ public:
 	TYPE get_type() const;
 
 	std::string map_data;
+	std::string image_label;
 	config campaign;
 
 private:

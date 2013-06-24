@@ -59,6 +59,7 @@ namespace mp {
 
 mp_level::mp_level() :
 	map_data(),
+	image_label(),
 	campaign(),
 	type(SCENARIO)
 {
@@ -67,6 +68,7 @@ mp_level::mp_level() :
 void mp_level::reset()
 {
 	map_data = "";
+	image_label = "";
 	campaign.clear();
 }
 
@@ -343,6 +345,11 @@ void create::process_event()
 		case mp_level::CAMPAIGN: {
 			set_level_data(CAMPAIGN, select);
 
+			if (!mp_level_.campaign["description"].empty()) {
+				tooltips::add_tooltip(image_rect_,
+					mp_level_.campaign["description"], "", false);
+			}
+
 			break;
 		}
 		} // end switch
@@ -370,7 +377,7 @@ void create::process_event()
 	if(map_changed) {
 		parameters_.hash = parameters_.scenario_data.hash();
 
-		bool enable_launch_game = false;
+		bool enable_launch_game = true;
 
 		std::stringstream players;
 		std::stringstream map_size;
@@ -406,7 +413,8 @@ void create::process_event()
 			break;
 		}
 		case mp_level::CAMPAIGN: {
-			enable_launch_game = true;
+			//TODO: add a way to determine
+			// the information about number of players for mp campaigns.
 
 			break;
 		}
@@ -621,6 +629,8 @@ void create::get_level_image()
 		break;
 	}
 	case mp_level::CAMPAIGN: {
+		mp_level_.image_label = mp_level_.campaign["image"].str();
+
 		break;
 	}
 	} // end switch
@@ -640,12 +650,18 @@ void create::draw_level_image()
 		break;
 	}
 	case mp_level::CAMPAIGN: {
+		surface campaign_image(
+			image::get_image(image::locator(mp_level_.image_label)));
+
+		image.reset(new surface(scale_surface(campaign_image, image_rect_.w,
+			image_rect_.h)));
+
 		break;
 	}
 	} // end switch
 
 	SDL_Color back_color = {0,0,0,255};
-	//draw_centered_on_background(*image, image_rect_, back_color, video().getSurface());
+	draw_centered_on_background(*image, image_rect_, back_color, video().getSurface());
 }
 
 bool create::set_level_data(SET_LEVEL set_level, const int select)
