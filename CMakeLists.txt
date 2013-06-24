@@ -44,6 +44,7 @@ endif(NOT MSVC)
 if(MSVC)
 	add_definitions(-D_SCL_SECURE_NO_WARNINGS)
 	add_definitions(-D_CRT_SECURE_NO_WARNINGS)
+	add_definitions(-DNOMINMAX)
 endif(MSVC)
 
 #check for some compiler/arch specific things and export defines accordingly...
