@@ -2717,6 +2717,7 @@ unit_map::iterator handle_speaker(
 		LOG_NG << "set speaker to '" << speaker->name() << "'\n";
 		const map_location &spl = speaker->get_location();
 		screen.highlight_hex(spl);
+		screen.select_hex(spl);
 		if(scroll) {
 			LOG_DP << "scrolling to speaker..\n";
 			const int offset_from_center = std::max<int>(0, spl.y - 1);
