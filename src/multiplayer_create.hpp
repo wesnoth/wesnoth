@@ -76,7 +76,7 @@ private:
 
 	bool new_campaign();
 
-	void set_levels_menu();
+	void set_levels_menu(const bool init_dep_check = false);
 	void synchronize_selections();
 
 	bool local_players_only_;
@@ -123,6 +123,7 @@ private:
 	gui::button show_campaigns_;
 
 	gui::button launch_campaigns_;
+	gui::button switch_levels_menu_;
 
 	gui::slider filter_num_players_slider_;
 

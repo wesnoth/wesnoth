@@ -123,6 +123,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	show_scenarios_(disp.video(), _("Show scenarios"), gui::button::TYPE_CHECK),
 	show_campaigns_(disp.video(), _("Show campaigns"), gui::button::TYPE_CHECK),
 	launch_campaigns_(disp.video(), ("Campaigns")),
+	switch_levels_menu_(disp.video(), _("Switch to campaigns")),
 	filter_num_players_slider_(disp.video()),
 	description_(disp.video(), 100, "", false),
 	filter_name_(disp.video(), 100, "", true),
@@ -143,7 +144,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 
 	DBG_MP << "constructing multiplayer create dialog" << std::endl;
 
-	set_levels_menu();
+	set_levels_menu(true);
 	maps_menu_.set_numeric_keypress_selection(false);
 
 	// The possible eras to play
@@ -273,6 +274,27 @@ void create::process_event()
 		}
 
 		mp_level_.set_scenario();
+	}
+
+	if (switch_levels_menu_.pressed()) {
+		switch (mp_level_.get_type()) {
+		case mp_level::SCENARIO: {
+			mp_level_.set_campaign();
+
+			switch_levels_menu_.set_label(_("Switch to maps"));
+
+			break;
+		}
+		case mp_level::CAMPAIGN: {
+			mp_level_.set_scenario();
+
+			switch_levels_menu_.set_label(_("Switch to campaigns"));
+
+			break;
+		}
+		} // end switch
+
+		set_levels_menu();
 	}
 
 	bool era_changed = era_selection_ != eras_menu_.selection();
@@ -438,6 +460,7 @@ void create::hide_children(bool hide)
 	launch_game_.hide(hide);
 
 	launch_campaigns_.hide(hide);
+	switch_levels_menu_.hide(hide);
 
 	regenerate_map_.hide(hide);
 	generator_settings_.hide(hide);
@@ -532,6 +555,8 @@ void create::layout_children(const SDL_Rect& rect)
 	xpos += menu_width + column_border_size;
 	launch_campaigns_.set_location(xpos, ypos);
 	ypos += launch_campaigns_.height() + 2*border_size;
+	switch_levels_menu_.set_location(xpos, ypos);
+	ypos += switch_levels_menu_.height() + 2*border_size;
 	map_label_.set_location(xpos, ypos);
 	ypos += map_label_.height() + border_size;
 
@@ -629,7 +654,7 @@ void create::draw_level_image()
 	} // end switch
 
 	SDL_Color back_color = {0,0,0,255};
-	draw_centered_on_background(*image, image_rect_, back_color, video().getSurface());
+	//draw_centered_on_background(*image, image_rect_, back_color, video().getSurface());
 }
 
 bool create::set_level_data(SET_LEVEL set_level, const int select)
@@ -787,57 +812,83 @@ void create::synchronize_selections()
 	parameters_.active_mods = dependency_manager_.get_modifications();
 }
 
-void create::set_levels_menu()
+void create::set_levels_menu(const bool init_dep_check)
 {
-	// Add the 'load game' option
+	map_options_.clear();
+	map_descriptions_.clear();
+	map_index_.clear();
+	user_maps_.clear();
+
 	std::string markup_txt = "`~";
 	std::string help_sep = " ";
 	help_sep[0] = HELP_STRING_SEPARATOR;
-	std::string menu_help_str = help_sep + _("Load Game");
-	map_options_.push_back(markup_txt + _("Load Game...") + menu_help_str);
-	map_descriptions_.push_back(_("Continue a saved game"));
+	std::string menu_help_str;
 
-	// Treat the Load game option as a scenario
-	config load_game_info;
-	load_game_info["id"] = "multiplayer_load_game";
-	load_game_info["name"] = "Load Game";
-	dependency_manager_.insert_element(depcheck::SCENARIO, load_game_info, 0);
+	switch (mp_level_.get_type()) {
+	case mp_level::SCENARIO: {
+		// Add the 'load game' option
+		menu_help_str = help_sep + _("Load Game");
+		map_options_.push_back(markup_txt + _("Load Game...") + menu_help_str);
+		map_descriptions_.push_back(_("Continue a saved game"));
 
+		if (init_dep_check) {
+			// Treat the Load game option as a scenario
+			config load_game_info;
+			load_game_info["id"] = "multiplayer_load_game";
+			load_game_info["name"] = "Load Game";
+			dependency_manager_.insert_element(depcheck::SCENARIO, load_game_info, 0);
+		}
 
-	// User maps
-	get_files_in_dir(get_user_data_dir() + "/editor/maps",&user_maps_,NULL,FILE_NAME_ONLY);
+		// User maps
+		get_files_in_dir(get_user_data_dir() + "/editor/maps",&user_maps_,NULL,FILE_NAME_ONLY);
+		size_t i = 0;
+		for(i = 0; i < user_maps_.size(); i++)
+		{
+			menu_help_str = help_sep + user_maps_[i];
+			map_options_.push_back(user_maps_[i] + menu_help_str);
+			map_descriptions_.push_back(_("User made map"));
 
-	size_t i = 0;
-	for(i = 0; i < user_maps_.size(); i++)
-	{
-		menu_help_str = help_sep + user_maps_[i];
-		map_options_.push_back(user_maps_[i] + menu_help_str);
-		map_descriptions_.push_back(_("User made map"));
+			if (init_dep_check) {
+				// Since user maps are treated as scenarios,
+				// some dependency info is required
+				config depinfo;
+				depinfo["id"] = user_maps_[i];
+				depinfo["name"] = user_maps_[i];
+				dependency_manager_.insert_element(depcheck::SCENARIO, depinfo, i+1);
+			}
+		}
 
-		// Since user maps are treated as scenarios,
-		// some dependency info is required
-		config depinfo;
-
-		depinfo["id"] = user_maps_[i];
-		depinfo["name"] = user_maps_[i];
-
-		dependency_manager_.insert_element(depcheck::SCENARIO, depinfo, i+1);
+		// Standard maps
+		i = 0;
+		BOOST_FOREACH(const config &j, game_config().child_range("multiplayer"))
+		{
+			if (j["allow_new_game"].to_bool(true))
+			{
+				std::string name = j["name"];
+				menu_help_str = help_sep + name;
+				map_options_.push_back(name + menu_help_str);
+				map_descriptions_.push_back(j["description"]);
+				map_index_.push_back(i);
+			}
+			++i;
+		}
+		break;
 	}
-
-	// Standard maps
-	i = 0;
-	BOOST_FOREACH(const config &j, game_config().child_range("multiplayer"))
-	{
-		if (j["allow_new_game"].to_bool(true))
+	case mp_level::CAMPAIGN: {
+		// Campaigns
+		size_t i = 0;
+		BOOST_FOREACH(const config &j, game_config().child_range("campaign"))
 		{
 			std::string name = j["name"];
 			menu_help_str = help_sep + name;
 			map_options_.push_back(name + menu_help_str);
 			map_descriptions_.push_back(j["description"]);
 			map_index_.push_back(i);
+			++i;
 		}
-		++i;
+		break;
 	}
+	} // end switch
 
 	// Create the scenarios menu
 	maps_menu_.set_items(map_options_);
