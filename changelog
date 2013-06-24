@@ -78,6 +78,9 @@ Version 1.11.4+dev:
    * Prevent unchecked memory access in cut_surface()
    * Remove game controllers: new and abstract. Were never properly implemented.
    * Remove --new-syntax command line option. Was never properly implemented.
+   * Several wmllint additions: remove backslashes and userdata/ from paths, convert
+     data/campaigns/ to data/add-ons/, give more detailed message for color spec to
+     Pango fix-up, delete files on Windows before rename.
 
 Version 1.11.4:
  * AI:
