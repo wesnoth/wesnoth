@@ -122,8 +122,6 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	cancel_game_(disp.video(), _("Cancel")),
 	regenerate_map_(disp.video(), _("Regenerate")),
 	generator_settings_(disp.video(), _("Settings...")),
-	show_scenarios_(disp.video(), _("Show scenarios"), gui::button::TYPE_CHECK),
-	show_campaigns_(disp.video(), _("Show campaigns"), gui::button::TYPE_CHECK),
 	switch_levels_menu_(disp.video(), _("Switch to campaigns")),
 	filter_num_players_slider_(disp.video()),
 	description_(disp.video(), 100, "", false),
@@ -455,9 +453,6 @@ void create::hide_children(bool hide)
 	mod_label_.hide(hide);
 	num_players_label_.hide(hide);
 
-	show_campaigns_.hide(hide);
-	show_scenarios_.hide(hide);
-
 	cancel_game_.hide(hide);
 	launch_game_.hide(hide);
 
@@ -534,10 +529,6 @@ void create::layout_children(const SDL_Rect& rect)
 	filter_num_players_slider_.set_location(xpos, ypos);
 	filter_num_players_slider_.set_width(menu_width);
 	ypos += filter_num_players_slider_.height() + border_size;
-	show_scenarios_.set_location(xpos, ypos);
-	ypos += show_scenarios_.height() + border_size;
-	show_campaigns_.set_location(xpos, ypos);
-	ypos += show_campaigns_.height() + 2*border_size;
 	map_generator_label_.set_location(xpos, ypos);
 	ypos += map_generator_label_.height() + border_size;
 	regenerate_map_.set_location(xpos, ypos);
