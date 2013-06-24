@@ -42,7 +42,7 @@ public:
 	TYPE get_type() const;
 
 	std::string map_data;
-	std::string first_scenario;
+	config campaign;
 
 private:
 	TYPE type;
@@ -69,7 +69,8 @@ private:
 		GENERIC_MULTIPLAYER,
 		MULTIPLAYER,
 		SAVED_GAME,
-		GENERATED_MAP
+		GENERATED_MAP,
+		CAMPAIGN
 	};
 	bool set_level_data(SET_LEVEL set_level, const int select);
 	void set_level_sides(const int map_positions);
@@ -122,7 +123,6 @@ private:
 	gui::button show_scenarios_;
 	gui::button show_campaigns_;
 
-	gui::button launch_campaigns_;
 	gui::button switch_levels_menu_;
 
 	gui::slider filter_num_players_slider_;

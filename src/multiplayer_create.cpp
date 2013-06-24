@@ -59,7 +59,7 @@ namespace mp {
 
 mp_level::mp_level() :
 	map_data(),
-	first_scenario(),
+	campaign(),
 	type(SCENARIO)
 {
 }
@@ -67,7 +67,7 @@ mp_level::mp_level() :
 void mp_level::reset()
 {
 	map_data = "";
-	first_scenario = "";
+	campaign.clear();
 }
 
 void mp_level::set_scenario()
@@ -122,7 +122,6 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	generator_settings_(disp.video(), _("Settings...")),
 	show_scenarios_(disp.video(), _("Show scenarios"), gui::button::TYPE_CHECK),
 	show_campaigns_(disp.video(), _("Show campaigns"), gui::button::TYPE_CHECK),
-	launch_campaigns_(disp.video(), ("Campaigns")),
 	switch_levels_menu_(disp.video(), _("Switch to campaigns")),
 	filter_num_players_slider_(disp.video()),
 	description_(disp.video(), 100, "", false),
@@ -250,30 +249,21 @@ void create::process_event()
 			break;
 		}
 		case mp_level::CAMPAIGN: {
+			if (new_campaign()) {
+				resources::config_manager->
+					load_game_config_for_game(state_.classification());
+
+				const config& level = game_config().find_child("scenario", "id",
+					mp_level_.campaign["first_scenario"]);
+				parameters_.scenario_data = level;
+
+				set_result(CREATE);
+				return;
+			}
+
 			break;
 		}
 		} // end switch
-
-	}
-
-	if (launch_campaigns_.pressed()) {
-		mp_level_.set_campaign();
-
-		if (new_campaign()) {
-			resources::config_manager->
-				load_game_config_for_game(state_.classification());
-
-			parameters_.saved_game = false;
-
-			const config& level = game_config().find_child("scenario", "id",
-				mp_level_.first_scenario);
-			parameters_.scenario_data = level;
-
-			set_result(CREATE);
-			return;
-		}
-
-		mp_level_.set_scenario();
 	}
 
 	if (switch_levels_menu_.pressed()) {
@@ -351,6 +341,8 @@ void create::process_event()
 			break;
 		}
 		case mp_level::CAMPAIGN: {
+			set_level_data(CAMPAIGN, select);
+
 			break;
 		}
 		} // end switch
@@ -414,6 +406,8 @@ void create::process_event()
 			break;
 		}
 		case mp_level::CAMPAIGN: {
+			enable_launch_game = true;
+
 			break;
 		}
 		} // end switch
@@ -459,7 +453,6 @@ void create::hide_children(bool hide)
 	cancel_game_.hide(hide);
 	launch_game_.hide(hide);
 
-	launch_campaigns_.hide(hide);
 	switch_levels_menu_.hide(hide);
 
 	regenerate_map_.hide(hide);
@@ -553,8 +546,6 @@ void create::layout_children(const SDL_Rect& rect)
 	//Third column: maps menu
 	ypos = ypos_columntop;
 	xpos += menu_width + column_border_size;
-	launch_campaigns_.set_location(xpos, ypos);
-	ypos += launch_campaigns_.height() + 2*border_size;
 	switch_levels_menu_.set_location(xpos, ypos);
 	ypos += switch_levels_menu_.height() + 2*border_size;
 	map_label_.set_location(xpos, ypos);
@@ -714,6 +705,28 @@ bool create::set_level_data(SET_LEVEL set_level, const int select)
 
 		break;
 	}
+	case CAMPAIGN: {
+		parameters_.saved_game = false;
+
+		size_t index = select;
+		assert(index < map_index_.size());
+		index = map_index_[index];
+
+		config::const_child_itors levels =
+			game_config().child_range("campaign");
+		for (; index > 0; --index) {
+			if (levels.first == levels.second) break;
+			++levels.first;
+		}
+
+		if (levels.first != levels.second)
+		{
+			const config &level = *levels.first;
+			mp_level_.campaign = level;
+		}
+
+		break;
+	}
 	} // end switch
 
 	return true;
@@ -736,38 +749,12 @@ bool create::new_campaign()
 	state_ = game_state();
 	state_.classification().campaign_type = "multiplayer";
 
-	const config::const_child_itors &ci =
-		game_config().child_range("campaign");
-	std::vector<config> campaigns(ci.first, ci.second);
-
-	if(campaigns.begin() == campaigns.end()) {
-	  gui2::show_error_message(disp().video(),
-				  _("No campaigns are available.\n"));
-		return false;
-	}
-
-	int campaign_num = -1;
-	{
-		gui2::tcampaign_selection dlg(campaigns);
-
-		try {
-			dlg.show(disp().video());
-		} catch(twml_exception& e) {
-			e.show(disp());
-			return false;
-		}
-
-		if(dlg.get_retval() != gui2::twindow::OK) {
-			return false;
-		}
-
-		campaign_num = dlg.get_choice();
-	}
-
-	const config &campaign = campaigns[campaign_num];
-	const std::string difficulty_descriptions = campaign["difficulty_descriptions"];
-	std::vector<std::string> difficulty_options = utils::split(difficulty_descriptions, ';');
-	const std::vector<std::string> difficulties = utils::split(campaign["difficulties"]);
+	const std::string difficulty_descriptions =
+		mp_level_.campaign["difficulty_descriptions"];
+	std::vector<std::string> difficulty_options =
+		utils::split(difficulty_descriptions, ';');
+	const std::vector<std::string> difficulties =
+		utils::split(mp_level_.campaign["difficulties"]);
 
 	if(difficulties.empty() == false) {
 		int difficulty = 0;
@@ -780,18 +767,17 @@ bool create::new_campaign()
 		dlg.show(disp().video());
 
 		if(dlg.selected_index() == -1) {
-			// canceled difficulty dialog, relaunch the campaign selection dialog
-			return new_campaign();
+			return false;
 		}
 		difficulty = dlg.selected_index();
 
 		state_.classification().difficulty = difficulties[difficulty];
 	}
 
-	state_.classification().campaign_define = campaign["define"].str();
-	state_.classification().campaign_xtra_defines = utils::split(campaign["extra_defines"]);
-
-	mp_level_.first_scenario = campaign["first_scenario"].str();
+	state_.classification().campaign_define =
+		mp_level_.campaign["define"].str();
+	state_.classification().campaign_xtra_defines =
+		utils::split(mp_level_.campaign["extra_defines"]);
 
 	return true;
 }
