@@ -890,6 +890,14 @@ set(libwesnoth-game_STAT_SRC
 	wml_exception.cpp
 )
 
+# On windows only, this file needs to be linked, as its header is included #ifdef win32.
+if(MSVC)
+	set(libwesnoth-game_STAT_SRC
+		${libwesnoth-game_STAT_SRC}
+		windows_tray_notification.cpp
+	)
+endif(MSVC)
+
 if(ENABLE_GAME AND ENABLE_TESTS)
 	set(libwesnoth-game_STAT_SRC
 		${libwesnoth-game_STAT_SRC}
