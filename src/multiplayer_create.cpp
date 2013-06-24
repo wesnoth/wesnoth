@@ -97,24 +97,24 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	local_players_only_(local_players_only),
 	tooltip_manager_(disp.video()),
 	era_selection_(-1),
-	map_selection_(-1),
+	level_selection_(-1),
 	mod_selection_(-1),
 	user_maps_(),
 	era_options_(),
-	map_options_(),
+	level_options_(),
 	mod_options_(),
 	era_descriptions_(),
-	map_descriptions_(),
+	level_descriptions_(),
 	mod_descriptions_(),
-	map_index_(),
+	level_index_(),
 	eras_menu_(disp.video(), std::vector<std::string>()),
-	maps_menu_(disp.video(), std::vector<std::string>()),
+	levels_menu_(disp.video(), std::vector<std::string>()),
 	mods_menu_(disp.video(), std::vector<std::string>()),
 	filter_name_label_(disp.video(), _("Filter:"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	filter_num_players_label_(disp.video(), _("Number of players: any"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	map_generator_label_(disp.video(), _("Random map options:"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	era_label_(disp.video(), _("Era:"), font::SIZE_SMALL, font::LOBBY_COLOR),
-	map_label_(disp.video(), _("Map to play:"), font::SIZE_SMALL, font::LOBBY_COLOR),
+	level_label_(disp.video(), _("Map to play:"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	mod_label_(disp.video(), _("Modifications:"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	map_size_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
 	num_players_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
@@ -144,7 +144,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	DBG_MP << "constructing multiplayer create dialog" << std::endl;
 
 	set_levels_menu(true);
-	maps_menu_.set_numeric_keypress_selection(false);
+	levels_menu_.set_numeric_keypress_selection(false);
 
 	// The possible eras to play
 	BOOST_FOREACH(const config &er, cfg.child_range("era")) {
@@ -235,7 +235,7 @@ void create::process_event()
 		return;
 	}
 
-	if (launch_game_.pressed() || maps_menu_.double_clicked()) {
+	if (launch_game_.pressed() || levels_menu_.double_clicked()) {
 		switch (mp_level_.get_type()) {
 		case mp_level::SCENARIO: {
 			if (map_.get() == NULL) {
@@ -296,28 +296,28 @@ void create::process_event()
 		synchronize_selections();
 	}
 
-	bool map_changed = map_selection_ != maps_menu_.selection();
-	map_selection_ = maps_menu_.selection();
+	bool level_changed = level_selection_ != levels_menu_.selection();
+	level_selection_ = levels_menu_.selection();
 
-	if (map_changed) {
-		description_.set_text(map_descriptions_[map_selection_]);
-		dependency_manager_.try_scenario_by_index(map_selection_);
+	if (level_changed) {
+		description_.set_text(level_descriptions_[level_selection_]);
+		dependency_manager_.try_scenario_by_index(level_selection_);
 		synchronize_selections();
 	}
 
-	if(map_changed) {
+	if(level_changed) {
 		generator_.assign(NULL);
 
 		tooltips::clear_tooltips(image_rect_);
 
-		const size_t select = size_t(maps_menu_.selection());
+		const size_t select = size_t(levels_menu_.selection());
 
 		switch (mp_level_.get_type()) {
 		case mp_level::SCENARIO: {
 			if (select > 0 && select <= user_maps_.size()) {
 				set_level_data(GENERIC_MULTIPLAYER, select);
 			} else if(select > user_maps_.size() &&
-				select <= maps_menu_.number_of_items() - 1) {
+				select <= levels_menu_.number_of_items() - 1) {
 				if (set_level_data(MULTIPLAYER, select)) {
 					// If the map should be randomly generated.
 					if (!parameters_.scenario_data["map_generation"].empty()) {
@@ -356,10 +356,10 @@ void create::process_event()
 	if(generator_ != NULL && generator_->allow_user_config() &&
 		generator_settings_.pressed()) {
 		generator_->user_config(disp_);
-		map_changed = true;
+		level_changed = true;
 	}
 
-	if(generator_ != NULL && (map_changed || regenerate_map_.pressed())) {
+	if(generator_ != NULL && (level_changed || regenerate_map_.pressed())) {
 		const cursor::setter cursor_setter(cursor::WAIT);
 		cursor::setter cur(cursor::WAIT);
 
@@ -369,10 +369,10 @@ void create::process_event()
 			gui2::show_message(disp().video(), "map generation error",
 				parameters_.scenario_data["error_message"]);
 
-		map_changed = true;
+		level_changed = true;
 	}
 
-	if(map_changed) {
+	if(level_changed) {
 		parameters_.hash = parameters_.scenario_data.hash();
 
 		bool enable_launch_game = true;
@@ -441,7 +441,7 @@ void create::hide_children(bool hide)
 	ui::hide_children(hide);
 
 	eras_menu_.hide(hide),
-	maps_menu_.hide(hide);
+	levels_menu_.hide(hide);
 	mods_menu_.hide(hide);
 
 	filter_name_.hide(hide);
@@ -449,7 +449,7 @@ void create::hide_children(bool hide)
 	map_generator_label_.hide(hide);
 	map_size_label_.hide(hide);
 	era_label_.hide(hide);
-	map_label_.hide(hide);
+	level_label_.hide(hide);
 	mod_label_.hide(hide);
 	num_players_label_.hide(hide);
 
@@ -492,9 +492,9 @@ void create::layout_children(const SDL_Rect& rect)
 	// Instead of binding this value to the actual button widths, I chose this
 	// because it makes no difference for most languages, and where it does, I
 	// guess we'd prefer having the buttons less neatly aligned to having a
-	// potentially giant minimap.
-	const int minimap_width = ca.h < 500 ? 111 : 222;
-	const int menu_width = (ca.w - 3*column_border_size - minimap_width)/3;
+	// potentially giant image.
+	const int image_width = ca.h < 500 ? 111 : 222;
+	const int menu_width = (ca.w - 3*column_border_size - image_width)/3;
 	const int eras_menu_height = (ca.h / 2 - era_label_.height() - 2*border_size - cancel_game_.height());
 
 	// Dialog title
@@ -503,9 +503,9 @@ void create::layout_children(const SDL_Rect& rect)
 	// Save ypos here (column top)
 	int ypos_columntop = ypos;
 
-	// First column: minimap & random map options
-	image_rect_ = create_rect(xpos, ypos, minimap_width, minimap_width);
-	ypos += minimap_width + border_size;
+	// First column: image & random map options
+	image_rect_ = create_rect(xpos, ypos, image_width, image_width);
+	ypos += image_width + border_size;
 
 	num_players_label_.set_location(xpos, ypos);
 	ypos += num_players_label_.height() + border_size;
@@ -519,7 +519,7 @@ void create::layout_children(const SDL_Rect& rect)
 
 	// Second column: filtering options
 	ypos = ypos_columntop;
-	xpos += minimap_width + column_border_size;
+	xpos += image_width + column_border_size;
 	filter_name_label_.set_location(xpos, ypos);
 	filter_name_.set_location(xpos + filter_name_label_.width() + border_size, ypos);
 	filter_name_.set_measurements(menu_width - border_size - filter_name_label_.width(), filter_name_label_.height());
@@ -538,7 +538,7 @@ void create::layout_children(const SDL_Rect& rect)
 
 	// And now the description box
 	description_.set_location(xpos1, std::max(ypos,ypos1));
-	description_.set_measurements(minimap_width + border_size + menu_width, ca.h + ca.y - std::max(ypos,ypos1) - border_size);
+	description_.set_measurements(image_width + border_size + menu_width, ca.h + ca.y - std::max(ypos,ypos1) - border_size);
 	description_.set_wrap(true);
 	ypos += description_.height() + border_size;
 
@@ -548,16 +548,16 @@ void create::layout_children(const SDL_Rect& rect)
 	const int x_offset = (menu_width - switch_levels_menu_.width()) / 2;
 	switch_levels_menu_.set_location(xpos + x_offset, ypos);
 	ypos += switch_levels_menu_.height() + 2 * border_size;
-	map_label_.set_location(xpos, ypos);
-	ypos += map_label_.height() + border_size;
+	level_label_.set_location(xpos, ypos);
+	ypos += level_label_.height() + border_size;
 
-	maps_menu_.set_max_width(menu_width);
-	maps_menu_.set_max_height(ca.h + ca.y - ypos);
-	maps_menu_.set_location(xpos, ypos);
+	levels_menu_.set_max_width(menu_width);
+	levels_menu_.set_max_height(ca.h + ca.y - ypos);
+	levels_menu_.set_location(xpos, ypos);
 	// Menu dimensions are only updated when items are set. So do this now.
-	int mapsel_save = maps_menu_.selection();
-	maps_menu_.set_items(map_options_);
-	maps_menu_.move_selection(mapsel_save);
+	int levelsel = levels_menu_.selection();
+	levels_menu_.set_items(level_options_);
+	levels_menu_.move_selection(levelsel);
 
 
 	//Fourth column: eras & mods menu
@@ -673,8 +673,8 @@ bool create::set_level_data(SET_LEVEL set_level, const int select)
 	case MULTIPLAYER: {
 		parameters_.saved_game = false;
 		size_t index = select - user_maps_.size() - 1;
-		assert(index < map_index_.size());
-		index = map_index_[index];
+		assert(index < level_index_.size());
+		index = level_index_[index];
 
 		config::const_child_itors levels =
 			game_config().child_range("multiplayer");
@@ -717,8 +717,8 @@ bool create::set_level_data(SET_LEVEL set_level, const int select)
 		parameters_.saved_game = false;
 
 		size_t index = select;
-		assert(index < map_index_.size());
-		index = map_index_[index];
+		assert(index < level_index_.size());
+		index = level_index_[index];
 
 		config::const_child_itors levels =
 			game_config().child_range("campaign");
@@ -798,8 +798,8 @@ void create::synchronize_selections()
 		process_event();
 	}
 
-	if (map_selection_ != dependency_manager_.get_scenario_index()) {
-		maps_menu_.move_selection(dependency_manager_.get_scenario_index());
+	if (level_selection_ != dependency_manager_.get_scenario_index()) {
+		levels_menu_.move_selection(dependency_manager_.get_scenario_index());
 		process_event();
 	}
 
@@ -808,9 +808,9 @@ void create::synchronize_selections()
 
 void create::set_levels_menu(const bool init_dep_check)
 {
-	map_options_.clear();
-	map_descriptions_.clear();
-	map_index_.clear();
+	level_options_.clear();
+	level_descriptions_.clear();
+	level_index_.clear();
 	user_maps_.clear();
 
 	std::string markup_txt = "`~";
@@ -822,8 +822,8 @@ void create::set_levels_menu(const bool init_dep_check)
 	case mp_level::SCENARIO: {
 		// Add the 'load game' option
 		menu_help_str = help_sep + _("Load Game");
-		map_options_.push_back(markup_txt + _("Load Game...") + menu_help_str);
-		map_descriptions_.push_back(_("Continue a saved game"));
+		level_options_.push_back(markup_txt + _("Load Game...") + menu_help_str);
+		level_descriptions_.push_back(_("Continue a saved game"));
 
 		if (init_dep_check) {
 			// Treat the Load game option as a scenario
@@ -839,8 +839,8 @@ void create::set_levels_menu(const bool init_dep_check)
 		for(i = 0; i < user_maps_.size(); i++)
 		{
 			menu_help_str = help_sep + user_maps_[i];
-			map_options_.push_back(user_maps_[i] + menu_help_str);
-			map_descriptions_.push_back(_("User made map"));
+			level_options_.push_back(user_maps_[i] + menu_help_str);
+			level_descriptions_.push_back(_("User made map"));
 
 			if (init_dep_check) {
 				// Since user maps are treated as scenarios,
@@ -860,9 +860,9 @@ void create::set_levels_menu(const bool init_dep_check)
 			{
 				std::string name = j["name"];
 				menu_help_str = help_sep + name;
-				map_options_.push_back(name + menu_help_str);
-				map_descriptions_.push_back(j["description"]);
-				map_index_.push_back(i);
+				level_options_.push_back(name + menu_help_str);
+				level_descriptions_.push_back(j["description"]);
+				level_index_.push_back(i);
 			}
 			++i;
 		}
@@ -875,9 +875,9 @@ void create::set_levels_menu(const bool init_dep_check)
 		{
 			std::string name = j["name"];
 			menu_help_str = help_sep + name;
-			map_options_.push_back(name + menu_help_str);
-			map_descriptions_.push_back(j["description"]);
-			map_index_.push_back(i);
+			level_options_.push_back(name + menu_help_str);
+			level_descriptions_.push_back(j["description"]);
+			level_index_.push_back(i);
 			++i;
 		}
 		break;
@@ -885,9 +885,9 @@ void create::set_levels_menu(const bool init_dep_check)
 	} // end switch
 
 	// Create the scenarios menu
-	maps_menu_.set_items(map_options_);
-	if (size_t(preferences::map()) < map_options_.size()) {
-		maps_menu_.move_selection(preferences::map());
+	levels_menu_.set_items(level_options_);
+	if (size_t(preferences::map()) < level_options_.size()) {
+		levels_menu_.move_selection(preferences::map());
 		dependency_manager_.try_scenario_by_index(preferences::map(), true);
 	}
 }

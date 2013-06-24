@@ -85,33 +85,33 @@ private:
 
 	tooltips::manager tooltip_manager_;
 	int era_selection_;
-	int map_selection_;
+	int level_selection_;
 	int mod_selection_;
 
 
 	std::vector<std::string> user_maps_;
 	std::vector<std::string> era_options_;
-	std::vector<std::string> map_options_;
+	std::vector<std::string> level_options_;
 	std::vector<std::string> mod_options_;
 	std::vector<std::string> era_descriptions_;
-	std::vector<std::string> map_descriptions_;
+	std::vector<std::string> level_descriptions_;
 	std::vector<std::string> mod_descriptions_;
 
 	/**
 	 * Due to maps not available the index of the selected map and mp scenarios
 	 * is not 1:1 so we use a lookup table.
 	 */
-	std::vector<size_t> map_index_;
+	std::vector<size_t> level_index_;
 
 	gui::menu eras_menu_;
-	gui::menu maps_menu_;
+	gui::menu levels_menu_;
 	gui::menu mods_menu_;
 
 	gui::label filter_name_label_;
 	gui::label filter_num_players_label_;
 	gui::label map_generator_label_;
 	gui::label era_label_;
-	gui::label map_label_;
+	gui::label level_label_;
 	gui::label mod_label_;
 	gui::label map_size_label_;
 	gui::label num_players_label_;
