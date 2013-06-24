@@ -31,10 +31,14 @@ Regular buttons are now in images/buttons/button_normal. This is the location of
 Menu buttons are now in images/buttons/button_menu. This is the location of the new images for the lite button.
 All icons for overlays are in images/icons.
 Dialogs and certain other widgets also have new backgrounds, provided in images/dialogs.
+Some icons, such as the terrain types, are now overlaid on a team-colorable base provided in images/buttons. New team color ranges have been introduced for this purpose.
 [/section]
 
-[section="Another Change"]
-Text
+[section="UI revamp in progress"]
+The  UI facelift that was introduced for the editor in 1.11.4 is being extended to the game UI. In addition to widget images, unit status icons such as the leader crowns and movement orbs are progressively getting new artwork.
+If you are curious about the upcoming changes, you can get a preview of them in the still-experimental "UnitBox" theme. It introduces a new Time of Day display that will incorporate the unit sprite overview and terrain type information in the future.
+Along with this new theme, changes will also be made to the unit profile display.
+Note that everything in there is still placeholder artwork and that the theme isn't ready for use, though.
 [/section]
 
 [section="Yet another Change"]
@@ -45,6 +49,6 @@ Text
 KNOWN BUGS
 ==========
 
-[list][*] Text for entry1.
+[list][*] Unit status icons glitch: the new leader/hero crowns and movement orb overlap the north-west neighboring hex, which creates a refresh problem when that hex is refreshed by a cursor action or tile animation.
 [*] Text for entry2.
 [/list]

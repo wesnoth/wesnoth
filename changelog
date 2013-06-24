@@ -34,6 +34,11 @@ Version 1.11.4+dev:
      Wrapper functions for editor's and game's config loading were added.
  * Graphics
    * New scorpion baseframe (replaces old image set)
+   * New skeletal dragon baseframe (replaces old image set)
+   * New cavalryman line baseframes (replaces old image set)
+   * New elven cavalry units baseframes (replaces old image set)
+   * New paladin, knight, grand-knight, lancer baseframes (replaces old image set)
+   * New giant mudcrawler baseframe and animations (replaces old image set)
  * Language and i18n:
    * Updated translations: French, Galician, Latin, Lithuanian, Old English,
      Portuguese, Portuguese (Brazil)
@@ -53,6 +58,9 @@ Version 1.11.4+dev:
        on purpose.
      * Regular and menu buttons are now in subdirectories of images/buttons/
      * Button icon overlays are now in images/icons/
+     * Icons can now be overlaid on a team-colorable base provided in images/buttons.
+     * New team color ranges have been introduced for this purpose.
+[/section]
    * Added possibility to kill unit under cursor with context menu in debug mode.
  * WML engine:
    * Added new aspect 'advancements' which with lua engine can handle a
