@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-help\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-06-23 10:20+0200\n"
+"POT-Creation-Date: 2013-06-24 15:23+0200\n"
 "PO-Revision-Date: 2012-04-01 16:53+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -1236,7 +1236,7 @@ msgstr "Svojstva oružja"
 
 #. #-#-#-#-#  wesnoth-help.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=factions_section
-#: data/core/help.cfg:56 src/help.cpp:1307 src/help.cpp:1309
+#: data/core/help.cfg:56 src/help.cpp:1279 src/help.cpp:1281
 msgid "Factions"
 msgstr "Frakcije"
 
@@ -6219,188 +6219,188 @@ msgstr "Pomoć"
 msgid "<header>text='Units having this special attack'</header>"
 msgstr "<header>text='Jedinice s ovim posebnim napadom'</header>"
 
-#: src/help.cpp:1236
+#: src/help.cpp:1208
 msgid "<header>text='Units having this ability'</header>"
 msgstr "<header>text='Jedinice s ovom sposobnošću'</header>"
 
-#: src/help.cpp:1269
+#: src/help.cpp:1241
 msgid "Leaders:"
 msgstr "vođ:"
 
-#: src/help.cpp:1278
+#: src/help.cpp:1250
 msgid "Recruits:"
 msgstr "regruti:"
 
-#: src/help.cpp:1292
+#: src/help.cpp:1264
 msgid "Era:"
 msgstr "epoha:"
 
-#: src/help.cpp:1300
+#: src/help.cpp:1272
 msgid "Factions:"
 msgstr "frakcije:"
 
-#: src/help.cpp:1310
+#: src/help.cpp:1282
 msgid "Factions are only used in multiplayer"
 msgstr "Frakcije se koriste samo u višeigranju"
 
-#: src/help.cpp:1354
+#: src/help.cpp:1326
 msgid "level"
 msgstr "nivo"
 
-#: src/help.cpp:1387
+#: src/help.cpp:1359
 msgid "Advances from: "
 msgstr "napreduje iz: "
 
-#: src/help.cpp:1389
+#: src/help.cpp:1361
 msgid "Advances to: "
 msgstr "može postati: "
 
-#: src/help.cpp:1412
+#: src/help.cpp:1384
 msgid "Base unit: "
 msgstr ""
 
-#: src/help.cpp:1422
+#: src/help.cpp:1394
 #, fuzzy
 #| msgid "Factions:"
 msgid "Variations: "
 msgstr "frakcije:"
 
-#: src/help.cpp:1446 src/help.cpp:1818 src/help.cpp:1891
+#: src/help.cpp:1418 src/help.cpp:1790 src/help.cpp:1863
 msgid "race^Miscellaneous"
 msgstr "razni"
 
-#: src/help.cpp:1448
+#: src/help.cpp:1420
 msgid "Race: "
 msgstr "rasa: "
 
-#: src/help.cpp:1455
+#: src/help.cpp:1427
 msgid "Abilities: "
 msgstr "sposobnosti: "
 
 # well-spelled: спос
-#: src/help.cpp:1472
+#: src/help.cpp:1444
 msgid "Ability Upgrades: "
 msgstr "dogradnje spos.: "
 
-#: src/help.cpp:1488
+#: src/help.cpp:1460
 msgid "HP: "
 msgstr "UP: "
 
-#: src/help.cpp:1489
+#: src/help.cpp:1461
 msgid "Moves: "
 msgstr "kretanje: "
 
-#: src/help.cpp:1491
+#: src/help.cpp:1463
 msgid "Vision: "
 msgstr ""
 
-#: src/help.cpp:1493
+#: src/help.cpp:1465
 msgid "Jamming: "
 msgstr ""
 
-#: src/help.cpp:1494
+#: src/help.cpp:1466
 msgid "Cost: "
 msgstr "košta: "
 
-#: src/help.cpp:1495
+#: src/help.cpp:1467
 msgid "Alignment: "
 msgstr "poredak: "
 
-#: src/help.cpp:1501
+#: src/help.cpp:1473
 msgid "Required XP: "
 msgstr "traži IP: "
 
 # >> Title to table of attacks.
-#: src/help.cpp:1510
+#: src/help.cpp:1482
 msgid "unit help^Attacks"
 msgstr "Napadi"
 
-#: src/help.cpp:1517
+#: src/help.cpp:1489
 msgid "unit help^Name"
 msgstr "naziv"
 
-#: src/help.cpp:1518
+#: src/help.cpp:1490
 msgid "Type"
 msgstr "tip"
 
-#: src/help.cpp:1519
+#: src/help.cpp:1491
 msgid "Strikes"
 msgstr "udari"
 
-#: src/help.cpp:1520
+#: src/help.cpp:1492
 msgid "Range"
 msgstr "domet"
 
-#: src/help.cpp:1521
+#: src/help.cpp:1493
 msgid "Special"
 msgstr "posebno"
 
 # >> Title to table of resistances.
-#: src/help.cpp:1567
+#: src/help.cpp:1539
 msgid "Resistances"
 msgstr "Otpornosti"
 
-#: src/help.cpp:1571
+#: src/help.cpp:1543
 msgid "Attack Type"
 msgstr "tip napada"
 
-#: src/help.cpp:1572
+#: src/help.cpp:1544
 msgid "Resistance"
 msgstr "otpornost"
 
-#: src/help.cpp:1602
+#: src/help.cpp:1574
 msgid "Terrain Modifiers"
 msgstr "terenski modifikatori"
 
-#: src/help.cpp:1606
+#: src/help.cpp:1578
 msgid "Terrain"
 msgstr "teren"
 
-#: src/help.cpp:1607
+#: src/help.cpp:1579
 msgid "Defense"
 msgstr "odbrana"
 
-#: src/help.cpp:1608
+#: src/help.cpp:1580
 msgid "Movement Cost"
 msgstr "trošak kretanja"
 
-#: src/help.cpp:1612
+#: src/help.cpp:1584
 msgid "Vision Cost"
 msgstr ""
 
-#: src/help.cpp:1615
+#: src/help.cpp:1587
 msgid "Jamming Cost"
 msgstr ""
 
-#: src/help.cpp:1897
+#: src/help.cpp:1869
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Jedinice ove rase'</header>"
 
-#: src/help.cpp:2809
+#: src/help.cpp:2781
 msgid " < Back"
 msgstr " < Nazad"
 
-#: src/help.cpp:2810
+#: src/help.cpp:2782
 msgid "Forward >"
 msgstr "Napred >"
 
-#: src/help.cpp:2918
+#: src/help.cpp:2890
 msgid "Reference to unknown topic: "
 msgstr "Uput na nepoznatu temu: "
 
-#: src/help.cpp:3174
+#: src/help.cpp:3146
 msgid "corrupted original file"
 msgstr "iskvarena izvorna datoteka"
 
-#: src/help.cpp:3273
+#: src/help.cpp:3245
 msgid "Close"
 msgstr "Zatvori"
 
-#: src/help.cpp:3276
+#: src/help.cpp:3248
 msgid "The Battle for Wesnoth Help"
 msgstr "Pomoć „Boja za Vesnot“"
 
-#: src/help.cpp:3332
+#: src/help.cpp:3304
 msgid "Parse error when parsing help text: "
 msgstr "Greška pri raščlanjivanju teksta pomoći: "
 
