@@ -545,13 +545,14 @@ void create::layout_children(const SDL_Rect& rect)
 	//Third column: maps menu
 	ypos = ypos_columntop;
 	xpos += menu_width + column_border_size;
-	switch_levels_menu_.set_location(xpos, ypos);
-	ypos += switch_levels_menu_.height() + 2*border_size;
+	const int x_offset = (menu_width - switch_levels_menu_.width()) / 2;
+	switch_levels_menu_.set_location(xpos + x_offset, ypos);
+	ypos += switch_levels_menu_.height() + 2 * border_size;
 	map_label_.set_location(xpos, ypos);
 	ypos += map_label_.height() + border_size;
 
 	maps_menu_.set_max_width(menu_width);
-	maps_menu_.set_max_height(ca.h + ca.y - ypos - cancel_game_.height());
+	maps_menu_.set_max_height(ca.h + ca.y - ypos);
 	maps_menu_.set_location(xpos, ypos);
 	// Menu dimensions are only updated when items are set. So do this now.
 	int mapsel_save = maps_menu_.selection();
