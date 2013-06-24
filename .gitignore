@@ -57,5 +57,16 @@ locales
 .kdev4
 !po/wesnoth*
 !po/wesnoth*/wesnoth*.pot
+#cmake/Linux/CodeBlocks:
 Project.cbp
 Project.layout
+#cmake/win32/MSVC:
+ALL_BUILD.vcproj
+INSTALL.vcproj
+PACKAGE.vcproj
+Project.sln
+ZERO_CHECK.vcproj
+uninstall.vcproj
+Project.ncb
+Project.suo
+*.vcproj.*.user
