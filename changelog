@@ -2,6 +2,10 @@ Version 1.11.4+dev:
  * Add-ons client:
    * Do not bump the download count for add-ons that are currently installed
      and are being reinstalled or upgraded
+ * Add-ons server:
+   * Restricted names (not titles) for newly uploaded add-ons to ASCII hyphens,
+     underlines, and alphanumerical characters. Previously uploaded add-ons
+     are exempt from this change.
  * AI:
    * New macro EXPERIMENTAL_AI for using Experimental AI in both SP scenarios and MP maps
    * Recruiting in Micro and Experimental AIs: allow more terrain codes for castles/keeps 
