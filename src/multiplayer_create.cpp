@@ -114,7 +114,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	filter_num_players_label_(disp.video(), _("Number of players: any"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	map_generator_label_(disp.video(), _("Random map options:"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	era_label_(disp.video(), _("Era:"), font::SIZE_SMALL, font::LOBBY_COLOR),
-	level_label_(disp.video(), _("Map to play:"), font::SIZE_SMALL, font::LOBBY_COLOR),
+	level_label_(disp.video(), _("Maps to play:"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	mod_label_(disp.video(), _("Modifications:"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	map_size_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
 	num_players_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
@@ -272,6 +272,7 @@ void create::process_event()
 			mp_level_.set_campaign();
 
 			switch_levels_menu_.set_label(_("Switch to maps"));
+			level_label_.set_text(_("Campaigns to play:"));
 
 			break;
 		}
@@ -279,6 +280,7 @@ void create::process_event()
 			mp_level_.set_scenario();
 
 			switch_levels_menu_.set_label(_("Switch to campaigns"));
+			level_label_.set_text(_("Maps to play:"));
 
 			break;
 		}
