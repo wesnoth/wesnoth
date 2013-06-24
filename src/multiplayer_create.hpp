@@ -76,6 +76,7 @@ private:
 
 	bool new_campaign();
 
+	void set_levels_menu();
 	void synchronize_selections();
 
 	bool local_players_only_;

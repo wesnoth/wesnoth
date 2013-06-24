@@ -143,62 +143,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 
 	DBG_MP << "constructing multiplayer create dialog" << std::endl;
 
-	// Add the 'load game' option
-	std::string markup_txt = "`~";
-	std::string help_sep = " ";
-	help_sep[0] = HELP_STRING_SEPARATOR;
-	std::string menu_help_str = help_sep + _("Load Game");
-	map_options_.push_back(markup_txt + _("Load Game...") + menu_help_str);
-	map_descriptions_.push_back(_("Continue a saved game"));
-
-	// Treat the Load game option as a scenario
-	config load_game_info;
-	load_game_info["id"] = "multiplayer_load_game";
-	load_game_info["name"] = "Load Game";
-	dependency_manager_.insert_element(depcheck::SCENARIO, load_game_info, 0);
-
-
-	// User maps
-	get_files_in_dir(get_user_data_dir() + "/editor/maps",&user_maps_,NULL,FILE_NAME_ONLY);
-
-	size_t i = 0;
-	for(i = 0; i < user_maps_.size(); i++)
-	{
-		menu_help_str = help_sep + user_maps_[i];
-		map_options_.push_back(user_maps_[i] + menu_help_str);
-		map_descriptions_.push_back(_("User made map"));
-
-		// Since user maps are treated as scenarios,
-		// some dependency info is required
-		config depinfo;
-
-		depinfo["id"] = user_maps_[i];
-		depinfo["name"] = user_maps_[i];
-
-		dependency_manager_.insert_element(depcheck::SCENARIO, depinfo, i+1);
-	}
-
-	// Standard maps
-	i = 0;
-	BOOST_FOREACH(const config &j, cfg.child_range("multiplayer"))
-	{
-		if (j["allow_new_game"].to_bool(true))
-		{
-			std::string name = j["name"];
-			menu_help_str = help_sep + name;
-			map_options_.push_back(name + menu_help_str);
-			map_descriptions_.push_back(j["description"]);
-			map_index_.push_back(i);
-		}
-		++i;
-	}
-
-	// Create the scenarios menu
-	maps_menu_.set_items(map_options_);
-	if (size_t(preferences::map()) < map_options_.size()) {
-		maps_menu_.move_selection(preferences::map());
-		dependency_manager_.try_scenario_by_index(preferences::map(), true);
-	}
+	set_levels_menu();
 	maps_menu_.set_numeric_keypress_selection(false);
 
 	// The possible eras to play
@@ -840,6 +785,66 @@ void create::synchronize_selections()
 	}
 
 	parameters_.active_mods = dependency_manager_.get_modifications();
+}
+
+void create::set_levels_menu()
+{
+	// Add the 'load game' option
+	std::string markup_txt = "`~";
+	std::string help_sep = " ";
+	help_sep[0] = HELP_STRING_SEPARATOR;
+	std::string menu_help_str = help_sep + _("Load Game");
+	map_options_.push_back(markup_txt + _("Load Game...") + menu_help_str);
+	map_descriptions_.push_back(_("Continue a saved game"));
+
+	// Treat the Load game option as a scenario
+	config load_game_info;
+	load_game_info["id"] = "multiplayer_load_game";
+	load_game_info["name"] = "Load Game";
+	dependency_manager_.insert_element(depcheck::SCENARIO, load_game_info, 0);
+
+
+	// User maps
+	get_files_in_dir(get_user_data_dir() + "/editor/maps",&user_maps_,NULL,FILE_NAME_ONLY);
+
+	size_t i = 0;
+	for(i = 0; i < user_maps_.size(); i++)
+	{
+		menu_help_str = help_sep + user_maps_[i];
+		map_options_.push_back(user_maps_[i] + menu_help_str);
+		map_descriptions_.push_back(_("User made map"));
+
+		// Since user maps are treated as scenarios,
+		// some dependency info is required
+		config depinfo;
+
+		depinfo["id"] = user_maps_[i];
+		depinfo["name"] = user_maps_[i];
+
+		dependency_manager_.insert_element(depcheck::SCENARIO, depinfo, i+1);
+	}
+
+	// Standard maps
+	i = 0;
+	BOOST_FOREACH(const config &j, game_config().child_range("multiplayer"))
+	{
+		if (j["allow_new_game"].to_bool(true))
+		{
+			std::string name = j["name"];
+			menu_help_str = help_sep + name;
+			map_options_.push_back(name + menu_help_str);
+			map_descriptions_.push_back(j["description"]);
+			map_index_.push_back(i);
+		}
+		++i;
+	}
+
+	// Create the scenarios menu
+	maps_menu_.set_items(map_options_);
+	if (size_t(preferences::map()) < map_options_.size()) {
+		maps_menu_.move_selection(preferences::map());
+		dependency_manager_.try_scenario_by_index(preferences::map(), true);
+	}
 }
 
 } // namespace mp
