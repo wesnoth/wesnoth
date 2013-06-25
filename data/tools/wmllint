@@ -797,7 +797,7 @@ def pangoize(message, filename, line):
                 if message[here:here+4] != "&gt;":
                     message = message[:here] + "&gt;" + message[here+1:]
             else:
-                print '"%s", line %d: < or > in pango string requires manual fix.' % (filename, line, oldstyle)
+                print '"%s", line %d: < or > in pango string requires manual fix.' % (filename, line)
     return message
 
 class WmllintIterator(WmlIterator):
