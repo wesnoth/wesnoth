@@ -527,9 +527,11 @@ static void enter_create_mode(game_display& disp, const config& game_config, mp:
 	DBG_MP << "entering create mode" << std::endl;
 
 	bool configure_canceled;
+	bool connect_canceled;
 
 	do {
 		configure_canceled = false;
+		connect_canceled = false;
 
 		if (gui2::new_widgets) {
 
@@ -554,6 +556,11 @@ static void enter_create_mode(game_display& disp, const config& game_config, mp:
 			case mp::ui::CREATE:
 				configure_canceled = !enter_configure_mode(disp, game_config, chat, gamelist, params, default_controller, local_players_only);
 				break;
+			case mp::ui::LOAD_GAME:
+				connect_canceled = !enter_connect_mode(disp, game_config, chat,
+					gamelist, params, 0, default_controller,
+					local_players_only);
+				break;
 			case mp::ui::QUIT:
 			default:
 				//update lobby content
@@ -561,7 +568,7 @@ static void enter_create_mode(game_display& disp, const config& game_config, mp:
 				break;
 			}
 		}
-	} while(configure_canceled);
+	} while(configure_canceled || connect_canceled);
 }
 
 static bool enter_configure_mode(game_display& disp, const config& game_config,

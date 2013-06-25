@@ -292,12 +292,8 @@ void create::process_event()
 
 	if (load_game_.pressed()) {
 		set_level_data(SAVED_GAME, 0);
+		set_result(LOAD_GAME);
 
-		if (image_restorer_ != NULL) {
-			image_restorer_->restore();
-		}
-
-		set_result(CREATE);
 		return;
 	}
 

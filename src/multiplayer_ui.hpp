@@ -75,7 +75,8 @@ private:
 class ui : public gui::widget, private events::chat_handler, private font::floating_label_context
 {
 public:
-	enum result { CONTINUE, JOIN, OBSERVE, CREATE, PREFERENCES, PLAY, QUIT };
+	enum result { CONTINUE, JOIN, OBSERVE, CREATE, LOAD_GAME, PREFERENCES,
+		PLAY, QUIT };
 
 	ui(game_display& d, const std::string& title,
 			const config& cfg, chat& c, config& gamelist);
