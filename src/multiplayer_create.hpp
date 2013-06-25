@@ -120,7 +120,7 @@ private:
 	gui::button cancel_game_;
 	gui::button regenerate_map_;
 	gui::button generator_settings_;
-
+	gui::button load_game_;
 	gui::button switch_levels_menu_;
 
 	gui::slider filter_num_players_slider_;

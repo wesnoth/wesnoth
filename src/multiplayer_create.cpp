@@ -122,6 +122,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	cancel_game_(disp.video(), _("Cancel")),
 	regenerate_map_(disp.video(), _("Regenerate")),
 	generator_settings_(disp.video(), _("Settings...")),
+	load_game_(disp.video(), _("Load game...")),
 	switch_levels_menu_(disp.video(), _("Switch to campaigns")),
 	filter_num_players_slider_(disp.video()),
 	description_(disp.video(), 100, "", false),
@@ -289,6 +290,17 @@ void create::process_event()
 		set_levels_menu();
 	}
 
+	if (load_game_.pressed()) {
+		set_level_data(SAVED_GAME, 0);
+
+		if (image_restorer_ != NULL) {
+			image_restorer_->restore();
+		}
+
+		set_result(CREATE);
+		return;
+	}
+
 	bool era_changed = era_selection_ != eras_menu_.selection();
 	era_selection_ = eras_menu_.selection();
 
@@ -316,10 +328,9 @@ void create::process_event()
 
 		switch (mp_level_.get_type()) {
 		case mp_level::SCENARIO: {
-			if (select > 0 && select <= user_maps_.size()) {
+			if (select < user_maps_.size()) {
 				set_level_data(GENERIC_MULTIPLAYER, select);
-			} else if(select > user_maps_.size() &&
-				select <= levels_menu_.number_of_items() - 1) {
+			} else if(select >= user_maps_.size()) {
 				if (set_level_data(MULTIPLAYER, select)) {
 					// If the map should be randomly generated.
 					if (!parameters_.scenario_data["map_generation"].empty()) {
@@ -332,12 +343,6 @@ void create::process_event()
 						tooltips::add_tooltip(image_rect_,
 							parameters_.scenario_data["description"], "", false);
 					}
-				}
-			} else {
-				set_level_data(SAVED_GAME, select);
-
-				if (image_restorer_ != NULL) {
-					image_restorer_->restore();
 				}
 			}
 			break;
@@ -458,6 +463,7 @@ void create::hide_children(bool hide)
 	cancel_game_.hide(hide);
 	launch_game_.hide(hide);
 
+	load_game_.hide(hide);
 	switch_levels_menu_.hide(hide);
 
 	regenerate_map_.hide(hide);
@@ -536,7 +542,8 @@ void create::layout_children(const SDL_Rect& rect)
 	regenerate_map_.set_location(xpos, ypos);
 	ypos += regenerate_map_.height() + border_size;
 	generator_settings_.set_location(xpos, ypos);
-	ypos += generator_settings_.height() + 2 * border_size;
+	ypos += generator_settings_.height() + 4 * border_size;
+	load_game_.set_location(xpos, ypos);
 
 	// And now the description box
 	description_.set_location(xpos1, std::max(ypos,ypos1));
@@ -667,14 +674,14 @@ bool create::set_level_data(SET_LEVEL set_level, const int select)
 			game_config().child("generic_multiplayer")) {
 			parameters_.scenario_data = generic_multiplayer;
 			parameters_.scenario_data["map_data"] =
-				read_map(user_maps_[select-1]);
+				read_map(user_maps_[select]);
 		}
 
 	break;
 	}
 	case MULTIPLAYER: {
 		parameters_.saved_game = false;
-		size_t index = select - user_maps_.size() - 1;
+		size_t index = select - user_maps_.size();
 		assert(index < level_index_.size());
 		index = level_index_[index];
 
@@ -822,19 +829,6 @@ void create::set_levels_menu(const bool init_dep_check)
 
 	switch (mp_level_.get_type()) {
 	case mp_level::SCENARIO: {
-		// Add the 'load game' option
-		menu_help_str = help_sep + _("Load Game");
-		level_options_.push_back(markup_txt + _("Load Game...") + menu_help_str);
-		level_descriptions_.push_back(_("Continue a saved game"));
-
-		if (init_dep_check) {
-			// Treat the Load game option as a scenario
-			config load_game_info;
-			load_game_info["id"] = "multiplayer_load_game";
-			load_game_info["name"] = "Load Game";
-			dependency_manager_.insert_element(depcheck::SCENARIO, load_game_info, 0);
-		}
-
 		// User maps
 		get_files_in_dir(get_user_data_dir() + "/editor/maps",&user_maps_,NULL,FILE_NAME_ONLY);
 		size_t i = 0;
@@ -850,7 +844,7 @@ void create::set_levels_menu(const bool init_dep_check)
 				config depinfo;
 				depinfo["id"] = user_maps_[i];
 				depinfo["name"] = user_maps_[i];
-				dependency_manager_.insert_element(depcheck::SCENARIO, depinfo, i+1);
+				dependency_manager_.insert_element(depcheck::SCENARIO, depinfo, i);
 			}
 		}
 
