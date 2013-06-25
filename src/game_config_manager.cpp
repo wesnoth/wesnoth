@@ -130,6 +130,21 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload)
 
 		load_addons_cfg();
 
+		// [scenario] tags should become [multiplayer] tags
+		// if multiplayer game is being loaded.
+		preproc_map defines_map = cache_.get_preproc_map();
+		if (defines_map.find("MULTIPLAYER") != defines_map.end()) {
+			const config::const_child_itors &ci =
+				game_config().child_range("scenario");
+			std::vector<config> scenarios(ci.first, ci.second);
+
+			game_config_.clear_children("scenario");
+
+			BOOST_FOREACH(const config& cfg, scenarios) {
+				game_config_.add_child("multiplayer", cfg);
+			}
+		}
+
 		// Extract the Lua scripts at toplevel.
 		extract_preload_scripts(game_config_);
 		game_config_.clear_children("lua");

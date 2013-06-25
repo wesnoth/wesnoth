@@ -254,8 +254,8 @@ void create::process_event()
 				resources::config_manager->
 					load_game_config_for_game(state_.classification());
 
-				const config& level = game_config().find_child("scenario", "id",
-					mp_level_.campaign["first_scenario"]);
+				const config& level = game_config().find_child("multiplayer",
+					"id", mp_level_.campaign["first_scenario"]);
 				parameters_.scenario_data = level;
 
 				set_result(CREATE);
