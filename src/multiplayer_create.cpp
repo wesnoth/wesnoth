@@ -288,6 +288,7 @@ void create::process_event()
 		} // end switch
 
 		set_levels_menu();
+		level_selection_ = -1;
 	}
 
 	if (load_game_.pressed()) {
