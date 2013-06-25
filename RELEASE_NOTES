@@ -14,42 +14,19 @@ The release team should empty this file after each release.
 CHANGES
 =======
 
-[section="New dependency on vorbisfile"]
-The library "vorbisfile" is a new dependency to build Wesnoth.
-It is used to display track titles in the editor's playlist manager.
+[section="Another Change"]
 [/section]
 
-[section="New images for widgets"]
-All widgets now have new images, working on a new overlay-based system
-Only the base button images are provided and have any necessary images overlaid on top of them at runtime.
-Button sizes have been standardized.
-Regular buttons will now be 108x22 (H22) in size.
-Menu buttons will now be 100x20 (H20) in size with a copper border.
-Square buttons will be either 25x25 or 30x30, depending on usecase.
-Button locations have been changed and standardized.
-Regular buttons are now in images/buttons/button_normal. This is the location of the new images for the regular button.
-Menu buttons are now in images/buttons/button_menu. This is the location of the new images for the lite button.
-All icons for overlays are in images/icons.
-Dialogs and certain other widgets also have new backgrounds, provided in images/dialogs.
-Some icons, such as the terrain types, are now overlaid on a team-colorable base provided in images/buttons. New team color ranges have been introduced for this purpose.
+[section="Another Change"]
 [/section]
 
-[section="UI revamp in progress"]
-The  UI facelift that was introduced for the editor in 1.11.4 is being extended to the game UI. In addition to widget images, unit status icons such as the leader crowns and movement orbs are progressively getting new artwork.
-If you are curious about the upcoming changes, you can get a preview of them in the still-experimental "UnitBox" theme. It introduces a new Time of Day display that will incorporate the unit sprite overview and terrain type information in the future.
-Along with this new theme, changes will also be made to the unit profile display.
-Note that everything in there is still placeholder artwork and that the theme isn't ready for use, though.
-[/section]
-
-[section="Yet another Change"]
-Text
+[section="Another Change"]
 [/section]
 
 ==========
 KNOWN BUGS
 ==========
 
-[list][*] Unit status icons glitch: the new leader/hero crowns and movement orb overlap the north-west neighboring hex, which results in an undesired crop when that hex is refreshed by a cursor action or tile animation.
-[*] Missing artwork for the "no zone of control" ellipses of leaders and heros causes display errors in Northern Rebirth and other scenarios where the ellipses are used.
-[*] Resizing the map editor window causes sidebar redraw glitches.
+[list][*] Text for entry1.
+[*] Text for entry2.
 [/list]
