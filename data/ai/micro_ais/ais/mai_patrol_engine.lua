@@ -1,12 +1,12 @@
 return {
     init = function(ai)
 
-        local patrol = {}
+        local engine = {}
 
         local H = wesnoth.require "lua/helper.lua"
         local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
-        function patrol:patrol_eval(cfg)
+        function engine:mai_patrol_eval(cfg)
             local patrol = wesnoth.get_units({ id = cfg.id })[1]
 
             -- Don't need to check if unit exists as this is a sticky CA
@@ -14,7 +14,7 @@ return {
             return 0
         end
 
-        function patrol:patrol_exec(cfg)
+        function engine:mai_patrol_exec(cfg)
             local patrol = wesnoth.get_units( { id = cfg.id } )[1]
             cfg.waypoint_x = AH.split(cfg.waypoint_x, ",")
             cfg.waypoint_y = AH.split(cfg.waypoint_y, ",")
@@ -141,6 +141,6 @@ return {
             if patrol and patrol.valid then ai.stopunit_all(patrol) end
         end
 
-        return patrol
+        return engine
     end
 }

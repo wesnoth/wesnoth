@@ -717,7 +717,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
         local unit = wesnoth.get_units { id=cfg_p.id }[1]
         local CA_parms = {
             {
-                id = "patrol_unit_" .. cfg_p.id, eval_name = 'patrol_eval', exec_name = 'patrol_exec',
+                id = "patrol_unit_" .. cfg_p.id, eval_name = 'mai_patrol_eval', exec_name = 'mai_patrol_exec',
                 max_score = 300000, sticky = true, unit_x = unit.x, unit_y = unit.y, cfg_table = cfg_p
             },
         }
