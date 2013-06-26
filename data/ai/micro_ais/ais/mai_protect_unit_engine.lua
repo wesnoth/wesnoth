@@ -1,7 +1,7 @@
 return {
     init = function(ai)
 
-        local protect_unit = {}
+        local engine = {}
 
         local H = wesnoth.require "lua/helper.lua"
         local W = H.set_wml_action_metatable {}
@@ -22,7 +22,7 @@ return {
         local tooltip_terrain_weight = _"Terrain defense weight: The (positive) weight of the terrain defense rating for a potential target location.\nDefault: 0.1 -- thus, by default, a difference of 30 in terrain defense rating is as important as being a step closer to the goal."
         local tooltip_bearing = _"Bearing: Everything else being equal, move protected unit toward or away from enemy groups. Default: toward"
 
-        protect_unit.dialog = {
+        engine.mai_protect_unit_dialog = {
             T.tooltip { id = "tooltip_large" },
             T.helptip { id = "tooltip_large" },
             T.grid {
@@ -96,43 +96,43 @@ return {
             click_dismiss = true
         }
 
-        function protect_unit.preshow()
+        function engine.mai_protect_unit_preshow()
 
-            wesnoth.set_dialog_value(protect_unit.data.enemy_weight or 100., "enemy_weight")
-            wesnoth.set_dialog_value(protect_unit.data.my_unit_weight or 1., "my_unit_weight")
-            wesnoth.set_dialog_value(protect_unit.data.distance_weight or 3., "distance_weight")
-            wesnoth.set_dialog_value(protect_unit.data.my_unit_weight or 0.1, "terrain_weight")
+            wesnoth.set_dialog_value(engine.data.enemy_weight or 100., "enemy_weight")
+            wesnoth.set_dialog_value(engine.data.my_unit_weight or 1., "my_unit_weight")
+            wesnoth.set_dialog_value(engine.data.distance_weight or 3., "distance_weight")
+            wesnoth.set_dialog_value(engine.data.my_unit_weight or 0.1, "terrain_weight")
 
-            local tmp_bear = protect_unit.data.bearing or 1
+            local tmp_bear = engine.data.bearing or 1
             if (tmp_bear ~= 1) then tmp_bear = 2 end  -- -1 in code, but Option #2 in widget
             wesnoth.set_dialog_value (tmp_bear, "bearing")
         end
 
-        function protect_unit.postshow()
+        function engine.mai_protect_unit_postshow()
             local tmp = tonumber(wesnoth.get_dialog_value("enemy_weight")) or -1
             if (tmp < 0) then tmp = 100 end
-            protect_unit.data.enemy_weight = tmp
+            engine.data.enemy_weight = tmp
 
             local tmp = tonumber(wesnoth.get_dialog_value("my_unit_weight")) or -1
             if (tmp < 0) then tmp = 1 end
-            protect_unit.data.my_unit_weight = tmp
+            engine.data.my_unit_weight = tmp
 
             local tmp = tonumber(wesnoth.get_dialog_value("distance_weight")) or -1
             if (tmp < 0) then tmp = 3 end
-            protect_unit.data.distance_weight = tmp
+            engine.data.distance_weight = tmp
 
             local tmp = tonumber(wesnoth.get_dialog_value("terrain_weight")) or -1
             if (tmp < 0) then tmp = 0.1 end
-            protect_unit.data.terrain_weight = tmp
+            engine.data.terrain_weight = tmp
 
             local tmp = tonumber(wesnoth.get_dialog_value("bearing")) or 1
             if (tmp ~= 1) then tmp = -1 end  -- -1 in code, but Option #2 in widget
-            protect_unit.data.bearing = tmp
+            engine.data.bearing = tmp
         end
 
         --------- The actual AI functions -----------
 
-        function protect_unit:finish_eval(cfg)
+        function engine:mai_protect_unit_finish_eval(cfg)
             -- If a unit can make it to the goal, this is the first thing that happens
             for i,id in ipairs(cfg.id) do
                 local unit = wesnoth.get_units{ id = id, formula = '$this_unit.moves > 0' }[1]
@@ -148,13 +148,13 @@ return {
             return 0
         end
 
-        function protect_unit:finish_exec(...)
+        function engine:mai_protect_unit_finish_exec(...)
             AH.movefull_stopunit(ai, self.data.unit, self.data.goal)
             self.data.unit = nil
             self.data.goal = nil
         end
 
-        function protect_unit:move_eval(cfg)
+        function engine:mai_protect_unit_move_eval(cfg)
             -- Always 94000 if one of the units can still move
             local units = {}
             for i,id in ipairs(cfg.id) do
@@ -181,7 +181,7 @@ return {
             end
         end
 
-        function protect_unit:move_exec(cfg)
+        function engine:mai_protect_unit_move_exec(cfg)
             -- Find and execute best (safest) move toward goal
             local units = {}
             for i,id in ipairs(cfg.id) do
@@ -300,7 +300,7 @@ return {
             AH.movefull_stopunit(ai, unit, AH.get_LS_xy(best_hex))
         end
 
-        function protect_unit:attack_eval(cfg)
+        function engine:mai_protect_unit_attack_eval(cfg)
             -- Find possible attacks for the units
             -- This is set up very conservatively
             -- If unit can die in the worst case, it is not done, even if _really_ unlikely
@@ -419,7 +419,7 @@ return {
             end
         end
 
-        function protect_unit:attack_exec()
+        function engine:mai_protect_unit_attack_exec()
             local attacker = wesnoth.get_unit(self.data.best_attack.src.x, self.data.best_attack.src.y)
             local defender = wesnoth.get_unit(self.data.best_attack.target.x, self.data.best_attack.target.y)
             --W.message {speaker=attacker.id, message="Attacking" }
@@ -429,6 +429,6 @@ return {
             self.data.best_attack = nil
         end
 
-        return protect_unit
+        return engine
     end
 }

@@ -359,15 +359,15 @@ function wesnoth.wml_actions.micro_ai(cfg)
 
         local CA_parms = {
             {
-                id = 'finish', eval_name = 'finish_eval', exec_name = 'finish_exec',
+                id = 'finish', eval_name = 'mai_protect_unit_finish_eval', exec_name = 'mai_protect_unit_finish_exec',
                 max_score = 300000, cfg_table = cfg_pu
             },
             {
-                id = 'attack', eval_name = 'attack_eval', exec_name = 'attack_exec',
+                id = 'attack', eval_name = 'mai_protect_unit_attack_eval', exec_name = 'mai_protect_unit_attack_exec',
                 max_score = 95000, cfg_table = cfg_pu
             },
             {
-                id = 'move', eval_name = 'move_eval', exec_name = 'move_exec',
+                id = 'move', eval_name = 'mai_protect_unit_move_eval', exec_name = 'mai_protect_unit_move_exec',
                 max_score = 94000, cfg_table = cfg_pu
             }
         }
