@@ -1,6 +1,6 @@
 return {
     init = function(ai)
-        local animals = {}
+        local engine = {}
 
         local H = wesnoth.require "lua/helper.lua"
         local W = H.set_wml_action_metatable {}
@@ -9,7 +9,7 @@ return {
         local LS = wesnoth.require "lua/location_set.lua"
 
         ----- Beginning of Hunter AI -----
-        function animals:attack_weakest_adj_enemy(unit)
+        function engine:mai_animals_attack_weakest_adj_enemy(unit)
             -- Attack the enemy with the fewest hitpoints adjacent to 'unit', if there is one
             -- Returns status of the attack:
             --   'attacked': if a unit was attacked
@@ -43,7 +43,7 @@ return {
             return 'no_attack'
         end
 
-        function animals:hunter_unit_eval(cfg)
+        function engine:mai_animals_hunter_unit_eval(cfg)
             local unit = wesnoth.get_units { side = wesnoth.current.side, id = cfg.id,
                 formula = '$this_unit.moves > 0'
             }[1]
@@ -53,7 +53,7 @@ return {
         end
 
         -- cfg parameters: id, hunting_ground, home_x, home_y, rest_turns, show_messages
-        function animals:hunter_unit_exec(cfg)
+        function engine:mai_animals_hunter_unit_exec(cfg)
             -- Unit with the given ID goes on a hunt, doing a random wander in area given by
             -- hunting_ground, then retreats to
             -- position given by 'home_x,home_y' for 'rest_turns' turns, or until fully healed
@@ -116,7 +116,7 @@ return {
                 end
 
                 -- Finally, if the unit ended up next to enemies, attack the weakest of those
-                local attack_status = self:attack_weakest_adj_enemy(unit)
+                local attack_status = self:mai_animals_attack_weakest_adj_enemy(unit)
 
                 -- If the enemy was killed, hunter returns home
                 if unit.valid and (attack_status == 'killed') then
@@ -154,7 +154,7 @@ return {
                 end
 
                 -- We also attack the weakest adjacent enemy, if still possible
-                self:attack_weakest_adj_enemy(unit)
+                self:mai_animals_attack_weakest_adj_enemy(unit)
 
                 -- If the unit got home, start the resting counter
                 if unit.valid and (unit.x == cfg.home_x) and (unit.y == cfg.home_y) then
@@ -175,7 +175,7 @@ return {
                 ai.stopunit_moves(unit)
 
                 -- However, we do also attack the weakest adjacent enemy, if still possible
-                self:attack_weakest_adj_enemy(unit)
+                self:mai_animals_attack_weakest_adj_enemy(unit)
 
                 -- If this is the last turn of resting, we also remove the status and turn variable
                 if unit.valid and (unit.hitpoints >= unit.max_hitpoints) and (unit.variables.resting_until <= wesnoth.current.turn) then
@@ -193,7 +193,7 @@ return {
         end
 
         ----- Beginning of Wolves AI -----
-        function animals:wolves_eval(cfg)
+        function engine:mai_animals_wolves_eval(cfg)
             local wolves = wesnoth.get_units { side = wesnoth.current.side,
                 formula = '$this_unit.moves > 0', { "and", cfg.filter }
             }
@@ -209,7 +209,7 @@ return {
             end
         end
 
-        function animals:wolves_exec(cfg)
+        function engine:mai_animals_wolves_exec(cfg)
             local wolves = wesnoth.get_units { side = wesnoth.current.side,
                 formula = '$this_unit.moves > 0', { "and", cfg.filter }
             }
@@ -292,7 +292,7 @@ return {
             end
         end
 
-        function animals:wolves_wander_eval(cfg)
+        function engine:mai_animals_wolves_wander_eval(cfg)
             -- When there's no prey left, the wolves wander and regroup
             local wolves = wesnoth.get_units { side = wesnoth.current.side,
                 formula = '$this_unit.moves > 0', { "and", cfg.filter }
@@ -305,7 +305,7 @@ return {
             end
         end
 
-        function animals:wolves_wander_exec(cfg)
+        function engine:mai_animals_wolves_wander_exec(cfg)
             local wolves = wesnoth.get_units { side = wesnoth.current.side,
                 formula = '$this_unit.moves > 0', { "and", cfg.filter }
             }
@@ -351,14 +351,14 @@ return {
         end
 
         ----- Beginning of Wolves Multipack AI -----
-        function animals:color_label(x, y, text)
+        function engine:mai_animals_color_label(x, y, text)
             -- For displaying the wolf pack number in color underneath each wolf
             -- only using gray for the time being
             text = "<span color='#c0c0c0'>" .. text .. "</span>"
             W.label{ x = x, y = y, text = text }
         end
 
-        function animals:assign_packs(cfg)
+        function engine:mai_animals_assign_packs(cfg)
             local unit_type = cfg.type or "Wolf"
             local pack_size = cfg.pack_size or 3
 
@@ -478,7 +478,7 @@ return {
             if cfg.show_pack_number then
                 for k,p in pairs(packs) do
                     for i,loc in ipairs(p) do
-                        self:color_label(loc.x, loc.y, k)
+                        self:mai_animals_color_label(loc.x, loc.y, k)
                     end
                 end
             end
@@ -486,7 +486,7 @@ return {
             return packs
         end
 
-        function animals:wolves_multipacks_attack_eval(cfg)
+        function engine:mai_animals_wolves_multipacks_attack_eval(cfg)
             local unit_type = cfg.type or "Wolf"
 
             -- If wolves have attacks left, call this CA
@@ -498,9 +498,9 @@ return {
             return 0
         end
 
-        function animals:wolves_multipacks_attack_exec(cfg)
+        function engine:mai_animals_wolves_multipacks_attack_exec(cfg)
             -- First get all the packs
-            local packs = self:assign_packs(cfg)
+            local packs = self:mai_animals_assign_packs(cfg)
 
             -- Attacks are dealt with on a pack by pack basis
             -- and I want all wolves in a pack to move first, before going on to the next pack
@@ -612,7 +612,7 @@ return {
                             AH.movefull_stopunit(ai, attacker, best_attack.dst.x, best_attack.dst.y)
                         end
                         if cfg.show_pack_number then
-                            self:color_label(attacker.x, attacker.y, pack_number)
+                            self:mai_animals_color_label(attacker.x, attacker.y, pack_number)
                         end
 
                         local a_x, a_y, d_x, d_y = attacker.x, attacker.y, defender.x, defender.y
@@ -663,7 +663,7 @@ return {
                             end
                             AH.movefull_stopunit(ai, w, best_hex)
                             if cfg.show_pack_number then
-                                self:color_label(w.x, w.y, pack_number)
+                                self:mai_animals_color_label(w.x, w.y, pack_number)
                             end
                         end
                     end
@@ -673,7 +673,7 @@ return {
 
         end
 
-        function animals:wolves_multipacks_wander_eval(cfg)
+        function engine:mai_animals_wolves_multipacks_wander_eval(cfg)
             local unit_type = cfg.type or "Wolf"
 
             -- When there's nothing to attack, the wolves wander and regroup into their packs
@@ -684,9 +684,9 @@ return {
             return 0
         end
 
-        function animals:wolves_multipacks_wander_exec(cfg)
+        function engine:mai_animals_wolves_multipacks_wander_exec(cfg)
             -- First get all the packs
-            local packs = self:assign_packs(cfg)
+            local packs = self:mai_animals_assign_packs(cfg)
 
             for k,pack in pairs(packs) do
                 -- If any of the wolves has a goal set, this is used for the entire pack
@@ -801,14 +801,14 @@ return {
                     end
                     AH.movefull_stopunit(ai, w, best_hex)
                     if cfg.show_pack_number then
-                        self:color_label(w.x, w.y, k)
+                        self:mai_animals_color_label(w.x, w.y, k)
                     end
                 end
             end
         end
 
         ----- Beginning of Big Animals AI -----
-        function animals:big_eval(cfg)
+        function engine:mai_animals_big_eval(cfg)
             local units = wesnoth.get_units {
                 side = wesnoth.current.side,
                 { "and" , cfg.filter },
@@ -819,7 +819,7 @@ return {
             return 0
         end
 
-        function animals:big_exec(cfg)
+        function engine:mai_animals_big_exec(cfg)
             -- Big animals just move toward goal that gets set occasionally
             -- Avoid the other big animals (bears, yetis, spiders) and the dogs, otherwise attack whatever is in their range
             -- The only difference in behavior is the area in which the units move
@@ -917,7 +917,7 @@ return {
         end
 
         ----- Beginning of Swarm AI -----
-        function animals:scatter_swarm_eval(cfg)
+        function engine:mai_animals_scatter_swarm_eval(cfg)
             local scatter_distance = cfg.scatter_distance or 3
 
             -- Any enemy within "scatter_distance" hexes of a unit will cause swarm to scatter
@@ -938,7 +938,7 @@ return {
             return 0
         end
 
-        function animals:scatter_swarm_exec(cfg)
+        function engine:mai_animals_scatter_swarm_exec(cfg)
             local scatter_distance = cfg.scatter_distance or 3
             local vision_distance = cfg.vision_distance or 12
 
@@ -979,7 +979,7 @@ return {
             end
         end
 
-        function animals:move_swarm_eval(cfg)
+        function engine:mai_animals_move_swarm_eval(cfg)
             local units = wesnoth.get_units { side = wesnoth.current.side }
             for i,u in ipairs(units) do
                 if (u.moves > 0) then return 290000 end
@@ -988,7 +988,7 @@ return {
             return 0
         end
 
-        function animals:move_swarm_exec(cfg)
+        function engine:mai_animals_move_swarm_exec(cfg)
             local enemy_distance = cfg.enemy_distance or 5
             local vision_distance = cfg.vision_distance or 12
 
@@ -1051,7 +1051,7 @@ return {
 
         ----- Beginning of Herding Animals AI -----
         -- We'll keep a lot of things denoted as sheep/dogs, because herder/herded is too similar
-        function animals:herding_area(cfg)
+        function engine:mai_animals_herding_area(cfg)
             -- Find the area that the sheep can occupy
             -- First, find all contiguous hexes around center hex that are inside herding_perimeter
             local herding_area = LS.of_pairs(wesnoth.get_locations {
@@ -1070,7 +1070,7 @@ return {
             return herding_area
         end
 
-        function animals:herding_attack_close_enemy_eval(cfg)
+        function engine:mai_animals_herding_attack_close_enemy_eval(cfg)
             -- Any enemy within attention_distance (default = 8) hexes of a sheep will get the dogs' attention
             -- with enemies within attack_distance (default: 4) being attacked
             local enemies = wesnoth.get_units {
@@ -1089,7 +1089,7 @@ return {
             return 0
         end
 
-        function animals:herding_attack_close_enemy_exec(cfg)
+        function engine:mai_animals_herding_attack_close_enemy_exec(cfg)
             local dogs = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter},
                 formula = '$this_unit.moves > 0' }
             local sheep = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter_second} }
@@ -1192,7 +1192,7 @@ return {
             AH.movefull_stopunit(ai, best_dog, best_hex)
         end
 
-        function animals:sheep_runs_enemy_eval(cfg)
+        function engine:mai_animals_sheep_runs_enemy_eval(cfg)
             -- Sheep runs from any enemy within attention_distance hexes (after the dogs have moved in)
             local sheep = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter_second},
                 formula = '$this_unit.moves > 0',
@@ -1209,7 +1209,7 @@ return {
             return 0
         end
 
-        function animals:sheep_runs_enemy_exec(cfg)
+        function engine:mai_animals_sheep_runs_enemy_exec(cfg)
             local sheep = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter_second},
                 formula = '$this_unit.moves > 0',
                 { "filter_location",
@@ -1240,7 +1240,7 @@ return {
             AH.movefull_stopunit(ai, sheep, best_hex)
         end
 
-        function animals:sheep_runs_dog_eval(cfg)
+        function engine:mai_animals_sheep_runs_dog_eval(cfg)
             -- Any sheep with moves left next to a dog runs aways
             local sheep = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter_second},
                 formula = '$this_unit.moves > 0',
@@ -1251,7 +1251,7 @@ return {
             return 0
         end
 
-        function animals:sheep_runs_dog_exec(cfg)
+        function engine:mai_animals_sheep_runs_dog_exec(cfg)
             -- simply get the first sheep
             local sheep = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter_second},
                 formula = '$this_unit.moves > 0',
@@ -1275,7 +1275,7 @@ return {
             AH.movefull_stopunit(ai, sheep, best_hex)
         end
 
-        function animals:herd_sheep_eval(cfg)
+        function engine:mai_animals_herd_sheep_eval(cfg)
             -- If dogs have moves left, and there is a sheep with moves left outside the
             -- herding area, chase it back
             -- We'll do a bunch of nested if's, to speed things up
@@ -1285,7 +1285,7 @@ return {
                     { "not", { { "filter_adjacent", { side = wesnoth.current.side, {"and", cfg.filter} } } } }
                 }
                 if sheep[1] then
-                    local herding_area = self:herding_area(cfg)
+                    local herding_area = self:mai_animals_herding_area(cfg)
                     for i,s in ipairs(sheep) do
                         -- If a sheep is found outside the herding area, we want to chase it back
                         if (not herding_area:get(s.x, s.y)) then return 280000 end
@@ -1297,12 +1297,12 @@ return {
             return 0
         end
 
-        function animals:herd_sheep_exec(cfg)
+        function engine:mai_animals_herd_sheep_exec(cfg)
             local dogs = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter}, formula = '$this_unit.moves > 0' }
             local sheep = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter_second},
                 { "not", { { "filter_adjacent", { side = wesnoth.current.side, {"and", cfg.filter} } } } }
             }
-            local herding_area = self:herding_area(cfg)
+            local herding_area = self:mai_animals_herding_area(cfg)
             local sheep_to_herd = {}
             for i,s in ipairs(sheep) do
                 -- If a sheep is found outside the herding area, we want to chase it back
@@ -1360,14 +1360,14 @@ return {
             end
         end
 
-        function animals:sheep_move_eval(cfg)
+        function engine:mai_animals_sheep_move_eval(cfg)
            -- If nothing else is to be done, the sheep do a random move
             local sheep = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter_second}, formula = '$this_unit.moves > 0' }
             if sheep[1] then return 270000 end
             return 0
         end
 
-        function animals:sheep_move_exec(cfg)
+        function engine:mai_animals_sheep_move_exec(cfg)
             -- We simply move the first sheep first
             local sheep = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter_second}, formula = '$this_unit.moves > 0' }[1]
 
@@ -1392,7 +1392,7 @@ return {
 
             -- If this move remains within herding area or dogs have no moves left, or sheep doesn't move
             -- make it a full move, otherwise partial move
-            local herding_area = self:herding_area(cfg)
+            local herding_area = self:mai_animals_herding_area(cfg)
             local dogs = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter}, formula = '$this_unit.moves > 0' }
             if herding_area:get(x, y) or (not dogs[1]) or ((x == sheep.x) and (y == sheep.y)) then
                 AH.movefull_stopunit(ai, sheep, x, y)
@@ -1401,7 +1401,7 @@ return {
             end
         end
 
-        function animals:dog_move_eval(cfg)
+        function engine:mai_animals_dog_move_eval(cfg)
             -- As a final step, any dog not adjacent to a sheep moves within herding_perimeter
             local dogs = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter},
                 formula = '$this_unit.moves > 0',
@@ -1411,7 +1411,7 @@ return {
             return 0
         end
 
-        function animals:dog_move_exec(cfg)
+        function engine:mai_animals_dog_move_exec(cfg)
             -- We simply move the first dog first
             local dog = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter},
                 formula = '$this_unit.moves > 0',
@@ -1449,7 +1449,7 @@ return {
         ----- Beginning of Forest Animals AI -----
         -- While all these CAs have been generalized to be usable with different types of
         -- units, we keep their original names in order to indicate their kind of behavior
-        function animals:new_rabbit_eval(cfg)
+        function engine:mai_animals_new_rabbit_eval(cfg)
             -- Put new rabbits out the if there are fewer than cfg.rabbit_number
             -- but only if cfg.rabbit_type is set, otherwise do nothing
             -- If this gets executed, we'll let the CA black-list itself
@@ -1458,7 +1458,7 @@ return {
             return 310000
         end
 
-        function animals:new_rabbit_exec(cfg)
+        function engine:mai_animals_new_rabbit_exec(cfg)
             local number = cfg.rabbit_number or 6
             local rabbit_enemy_distance = cfg.rabbit_enemy_distance or 3
 
@@ -1513,7 +1513,7 @@ return {
             end
         end
 
-        function animals:tusker_attack_eval(cfg)
+        function engine:mai_animals_tusker_attack_eval(cfg)
             -- Check whether there is an enemy next to a tusklet and attack it ("protective parents" AI)
 
             -- Both cfg.tusker_type and cfg.tusklet_type need to be set for this to kick in
@@ -1533,7 +1533,7 @@ return {
             end
         end
 
-        function animals:tusker_attack_exec(cfg)
+        function engine:mai_animals_tusker_attack_exec(cfg)
             local tuskers = wesnoth.get_units { side = wesnoth.current.side, type = cfg.tusker_type, formula = '$this_unit.moves > 0' }
             local adj_enemies = wesnoth.get_units {
                 { "filter_side", {{"enemy_of", {side = wesnoth.current.side} }} },
@@ -1578,7 +1578,7 @@ return {
             end
         end
 
-        function animals:forest_animals_move_eval(cfg)
+        function engine:mai_animals_forest_move_eval(cfg)
             local deer_type = cfg.deer_type or "no_unit_of_this_type"
             local rabbit_type = cfg.rabbit_type or "no_unit_of_this_type"
             local tusker_type = cfg.tusker_type or "no_unit_of_this_type"
@@ -1596,7 +1596,7 @@ return {
             return 0
         end
 
-        function animals:forest_animals_move_exec(cfg)
+        function engine:mai_animals_forest_move_exec(cfg)
             local deer_type = cfg.deer_type or "no_unit_of_this_type"
             local rabbit_type = cfg.rabbit_type or "no_unit_of_this_type"
             local tusker_type = cfg.tusker_type or "no_unit_of_this_type"
@@ -1739,7 +1739,7 @@ return {
             end
         end
 
-        function animals:tusklet_eval(cfg)
+        function engine:mai_animals_tusklet_eval(cfg)
             -- Tusklets will simply move toward the closest tusker, without regard for anything else
             -- Except if no tuskers are left, in which case the previous CA takes over and does a random move
 
@@ -1756,7 +1756,7 @@ return {
             end
         end
 
-        function animals:tusklet_exec(cfg)
+        function engine:mai_animals_tusklet_exec(cfg)
             local tusklets = wesnoth.get_units { side = wesnoth.current.side, type = cfg.tusklet_type, formula = '$this_unit.moves > 0' }
             local tuskers = wesnoth.get_units { side = wesnoth.current.side, type = cfg.tusker_type }
             --print('#tusklets, #tuskers', #tusklets, #tuskers)
@@ -1784,6 +1784,6 @@ return {
             end
         end
 
-        return animals
+        return engine
     end
 }

@@ -558,7 +558,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
         if (cfg_animals.animal_type == 'big_animals') then
             CA_parms = {
                 {
-                    id = "big_animal", eval_name = 'big_eval', exec_name = 'big_exec',
+                    id = "big_animal", eval_name = 'mai_animals_big_eval', exec_name = 'mai_animals_big_exec',
                     max_score = 300000, cfg_table = cfg_animals
                 }
             }
@@ -567,11 +567,11 @@ function wesnoth.wml_actions.micro_ai(cfg)
         if (cfg_animals.animal_type == 'wolves') then
             CA_parms = {
                 {
-                    id = "wolves", eval_name = 'wolves_eval', exec_name = 'wolves_exec',
+                    id = "wolves", eval_name = 'mai_animals_wolves_eval', exec_name = 'mai_animals_wolves_exec',
                     max_score = 95000, cfg_table = cfg_animals
                 },
                 {
-                    id = "wolves_wander", eval_name = 'wolves_wander_eval', exec_name = 'wolves_wander_exec',
+                    id = "wolves_wander", eval_name = 'mai_animals_wolves_wander_eval', exec_name = 'mai_animals_wolves_wander_exec',
                     max_score = 90000, cfg_table = cfg_animals
                 }
             }
@@ -601,27 +601,27 @@ function wesnoth.wml_actions.micro_ai(cfg)
         if (cfg_animals.animal_type == 'herding') then
             CA_parms = {
                 {
-                    id = "close_enemy", eval_name = 'herding_attack_close_enemy_eval', exec_name = 'herding_attack_close_enemy_exec',
+                    id = "close_enemy", eval_name = 'mai_animals_herding_attack_close_enemy_eval', exec_name = 'mai_animals_herding_attack_close_enemy_exec',
                     max_score = 300000, cfg_table = cfg_animals
                 },
                 {
-                    id = "sheep_runs_enemy", eval_name = 'sheep_runs_enemy_eval', exec_name = 'sheep_runs_enemy_exec',
+                    id = "sheep_runs_enemy", eval_name = 'mai_animals_sheep_runs_enemy_eval', exec_name = 'mai_animals_sheep_runs_enemy_exec',
                     max_score = 295000, cfg_table = cfg_animals
                 },
                 {
-                    id = "sheep_runs_dog", eval_name = 'sheep_runs_dog_eval', exec_name = 'sheep_runs_dog_exec',
+                    id = "sheep_runs_dog", eval_name = 'mai_animals_sheep_runs_dog_eval', exec_name = 'mai_animals_sheep_runs_dog_exec',
                     max_score = 290000, cfg_table = cfg_animals
                 },
                 {
-                    id = "herd_sheep", eval_name = 'herd_sheep_eval', exec_name = 'herd_sheep_exec',
+                    id = "herd_sheep", eval_name = 'mai_animals_herd_sheep_eval', exec_name = 'mai_animals_herd_sheep_exec',
                     max_score = 280000, cfg_table = cfg_animals
                 },
                 {
-                    id = "sheep_move", eval_name = 'sheep_move_eval', exec_name = 'sheep_move_exec',
+                    id = "sheep_move", eval_name = 'mai_animals_sheep_move_eval', exec_name = 'mai_animals_sheep_move_exec',
                     max_score = 270000, cfg_table = cfg_animals
                 },
                 {
-                    id = "dog_move", eval_name = 'dog_move_eval', exec_name = 'dog_move_exec',
+                    id = "dog_move", eval_name = 'mai_animals_dog_move_eval', exec_name = 'mai_animals_dog_move_exec',
                     max_score = 260000, cfg_table = cfg_animals
                 }
             }
@@ -630,19 +630,19 @@ function wesnoth.wml_actions.micro_ai(cfg)
         if (cfg_animals.animal_type == 'forest_animals') then
             CA_parms = {
                 {
-                    id = "new_rabbit", eval_name = 'new_rabbit_eval', exec_name = 'new_rabbit_exec',
+                    id = "new_rabbit", eval_name = 'mai_animals_new_rabbit_eval', exec_name = 'mai_animals_new_rabbit_exec',
                     max_score = 310000, cfg_table = cfg_animals
                 },
                 {
-                    id = "tusker_attack", eval_name = 'tusker_attack_eval', exec_name = 'tusker_attack_exec',
+                    id = "tusker_attack", eval_name = 'mai_animals_tusker_attack_eval', exec_name = 'mai_animals_tusker_attack_exec',
                     max_score = 300000, cfg_table = cfg_animals
                 },
                 {
-                    id = "move", eval_name = 'forest_animals_move_eval', exec_name = 'forest_animals_move_exec',
+                    id = "move", eval_name = 'mai_animals_forest_move_eval', exec_name = 'mai_animals_forest_move_exec',
                     max_score = 290000, cfg_table = cfg_animals
                 },
                 {
-                    id = "tusklet", eval_name = 'tusklet_eval', exec_name = 'tusklet_exec',
+                    id = "tusklet", eval_name = 'mai_animals_tusklet_eval', exec_name = 'mai_animals_tusklet_exec',
                     max_score = 280000, cfg_table = cfg_animals
                 }
             }
@@ -651,11 +651,11 @@ function wesnoth.wml_actions.micro_ai(cfg)
         if (cfg_animals.animal_type == 'swarm') then
             CA_parms = {
                 {
-                    id = "scatter_swarm", eval_name = 'scatter_swarm_eval', exec_name = 'scatter_swarm_exec',
+                    id = "scatter_swarm", eval_name = 'mai_animals_scatter_swarm_eval', exec_name = 'mai_animals_scatter_swarm_exec',
                     max_score = 300000, cfg_table = cfg_animals
                 },
                 {
-                    id = "move_swarm", eval_name = 'move_swarm_eval', exec_name = 'move_swarm_exec',
+                    id = "move_swarm", eval_name = 'mai_animals_move_swarm_eval', exec_name = 'mai_animals_move_swarm_exec',
                     max_score = 290000, cfg_table = cfg_animals
                 }
             }
@@ -664,11 +664,11 @@ function wesnoth.wml_actions.micro_ai(cfg)
         if (cfg_animals.animal_type == 'wolves_multipacks') then
             CA_parms = {
                 {
-                    id = "wolves_multipacks_attack", eval_name = 'wolves_multipacks_attack_eval', exec_name = 'wolves_multipacks_attack_exec',
+                    id = "wolves_multipacks_attack", eval_name = 'mai_animals_wolves_multipacks_attack_eval', exec_name = 'mai_animals_wolves_multipacks_attack_exec',
                     max_score = 300000, cfg_table = cfg_animals
                 },
                 {
-                    id = "wolves_multipacks_wander_eval", eval_name = 'wolves_multipacks_wander_eval', exec_name = 'wolves_multipacks_wander_exec',
+                    id = "wolves_multipacks_wander_eval", eval_name = 'mai_animals_wolves_multipacks_wander_eval', exec_name = 'mai_animals_wolves_multipacks_wander_exec',
                     max_score = 290000, cfg_table = cfg_animals
                 }
             }
@@ -678,7 +678,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
             local unit = wesnoth.get_units { id=cfg_animals.id }[1]
             CA_parms = {
                 {
-                    id = "hunter_unit_" .. cfg_animals.id, eval_name = 'hunter_unit_eval', exec_name = 'hunter_unit_exec',
+                    id = "hunter_unit_" .. cfg_animals.id, eval_name = 'mai_animals_hunter_unit_eval', exec_name = 'mai_animals_hunter_unit_exec',
                     max_score = 300000, sticky = true, unit_x = unit.x, unit_y = unit.y, cfg_table = cfg_animals
                 }
             }
