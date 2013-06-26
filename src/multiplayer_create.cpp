@@ -30,7 +30,6 @@
 #include "generators/map_create.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
-#include "gui/dialogs/campaign_selection.hpp"
 #include "gui/dialogs/mp_create_game_choose_mods.hpp"
 #include "gui/dialogs/mp_create_game_set_password.hpp"
 #include "gui/dialogs/transient_message.hpp"
@@ -57,56 +56,18 @@ const SDL_Rect null_rect = {0, 0, 0, 0};
 
 namespace mp {
 
-mp_level::mp_level() :
-	map_data(),
-	image_label(),
-	campaign(),
-	type(SCENARIO)
-{
-}
-
-void mp_level::reset()
-{
-	map_data = "";
-	image_label = "";
-	campaign.clear();
-}
-
-void mp_level::set_scenario()
-{
-	reset();
-
-	type = SCENARIO;
-}
-
-void mp_level::set_campaign()
-{
-	reset();
-
-	type = CAMPAIGN;
-}
-
-mp_level::TYPE mp_level::get_type() const
-{
-	return type;
-}
-
 create::create(game_display& disp, const config &cfg, chat& c, config& gamelist, bool local_players_only) :
 	ui(disp, _("Create Game"), cfg, c, gamelist),
 
 	local_players_only_(local_players_only),
 	tooltip_manager_(disp.video()),
 	era_selection_(-1),
-	level_selection_(-1),
 	mod_selection_(-1),
-	user_maps_(),
+	level_selection_(-1),
 	era_options_(),
-	level_options_(),
 	mod_options_(),
 	era_descriptions_(),
-	level_descriptions_(),
 	mod_descriptions_(),
-	level_index_(),
 	eras_menu_(disp.video(), std::vector<std::string>()),
 	levels_menu_(disp.video(), std::vector<std::string>()),
 	mods_menu_(disp.video(), std::vector<std::string>()),
@@ -129,23 +90,27 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	filter_name_(disp.video(), 100, "", true),
 	image_restorer_(NULL),
 	image_rect_(null_rect),
-	map_(),
-	generator_(NULL),
 	parameters_(),
-	mp_level_(),
-	state_(),
-	dependency_manager_(cfg, disp.video())
+	dependency_manager_(cfg, disp.video()),
+	engine_(level::USER_MAP, parameters_, dependency_manager_)
 {
 	filter_num_players_slider_.set_min(0);
 	filter_num_players_slider_.set_max(9);
 	filter_num_players_slider_.set_increment(1);
 
-	// Build the list of scenarios to play
-
 	DBG_MP << "constructing multiplayer create dialog" << std::endl;
 
-	set_levels_menu(true);
+	const std::vector<std::string>& names = levels_menu_item_names();
+
+	levels_menu_.set_items(names);
 	levels_menu_.set_numeric_keypress_selection(false);
+
+	if (size_t(preferences::map()) < names.size()) {
+		levels_menu_.move_selection(preferences::map());
+		dependency_manager_.try_scenario_by_index(preferences::map(), true);
+	}
+
+	sync_current_level_with_engine();
 
 	// The possible eras to play
 	BOOST_FOREACH(const config &er, cfg.child_range("era")) {
@@ -185,8 +150,6 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	i18n_symbols["login"] = preferences::login();
 
 	gamelist_updated();
-
-	get_level_image();
 }
 
 create::~create()
@@ -237,62 +200,48 @@ void create::process_event()
 	}
 
 	if (launch_game_.pressed() || levels_menu_.double_clicked()) {
-		switch (mp_level_.get_type()) {
-		case mp_level::SCENARIO: {
-			if (map_.get() == NULL) {
-				gui2::show_transient_message(disp_.video(), "",
-					_("The map is invalid."));
-			} else {
-				set_result(CREATE);
-				return;
+		if (engine_.current_level().can_launch_game()) {
+			if (engine_.current_level_type() == level::CAMPAIGN) {
+				std::string difficulty = select_campaign_difficulty();
+				if (difficulty == "CANCEL") {
+					return;
+				}
+
+				engine_.prepare_for_campaign(difficulty);
 			}
 
-			break;
+			engine_.prepare_for_new_level();
+
+			set_result(CREATE);
+			return;
+		} else {
+			gui2::show_transient_message(disp_.video(), "",
+				_("The level is invalid."));
 		}
-		case mp_level::CAMPAIGN: {
-			if (new_campaign()) {
-				resources::config_manager->
-					load_game_config_for_game(state_.classification());
-
-				const config& level = game_config().find_child("multiplayer",
-					"id", mp_level_.campaign["first_scenario"]);
-				parameters_.scenario_data = level;
-
-				set_result(CREATE);
-				return;
-			}
-
-			break;
-		}
-		} // end switch
 	}
 
 	if (switch_levels_menu_.pressed()) {
-		switch (mp_level_.get_type()) {
-		case mp_level::SCENARIO: {
-			mp_level_.set_campaign();
-
-			switch_levels_menu_.set_label(_("Switch to maps"));
-			level_label_.set_text(_("Campaigns to play:"));
-
-			break;
-		}
-		case mp_level::CAMPAIGN: {
-			mp_level_.set_scenario();
-
+		if (engine_.current_level_type() == level::CAMPAIGN) {
 			switch_levels_menu_.set_label(_("Switch to campaigns"));
 			level_label_.set_text(_("Maps to play:"));
 
-			break;
-		}
-		} // end switch
+			engine_.set_current_level_type(level::USER_MAP);
+			sync_current_level_with_engine();
+		} else {
+			switch_levels_menu_.set_label(_("Switch to maps"));
+			level_label_.set_text(_("Campaigns to play:"));
 
-		set_levels_menu();
+			engine_.set_current_level_type(level::CAMPAIGN);
+			sync_current_level_with_engine();
+		}
+
+		levels_menu_.set_items(levels_menu_item_names());
 		level_selection_ = -1;
 	}
 
 	if (load_game_.pressed()) {
-		set_level_data(SAVED_GAME, 0);
+		engine_.prepare_for_saved_game();
+
 		set_result(LOAD_GAME);
 
 		return;
@@ -311,63 +260,36 @@ void create::process_event()
 	level_selection_ = levels_menu_.selection();
 
 	if (level_changed) {
-		description_.set_text(level_descriptions_[level_selection_]);
-		dependency_manager_.try_scenario_by_index(level_selection_);
+		sync_current_level_with_engine();
+
+		description_.set_text(engine_.current_level().description());
+		dependency_manager_.try_scenario_by_index(levels_menu_.selection());
 		synchronize_selections();
 	}
 
 	if(level_changed) {
-		generator_.assign(NULL);
-
 		tooltips::clear_tooltips(image_rect_);
 
-		const size_t select = size_t(levels_menu_.selection());
+		engine_.init_current_level_data();
 
-		switch (mp_level_.get_type()) {
-		case mp_level::SCENARIO: {
-			if (select < user_maps_.size()) {
-				set_level_data(GENERIC_MULTIPLAYER, select);
-			} else if(select >= user_maps_.size()) {
-				if (set_level_data(MULTIPLAYER, select)) {
-					// If the map should be randomly generated.
-					if (!parameters_.scenario_data["map_generation"].empty()) {
-						generator_.assign(create_map_generator(
-							parameters_.scenario_data["map_generation"],
-							parameters_.scenario_data.child("generator")));
-					}
-
-					if (!parameters_.scenario_data["description"].empty()) {
-						tooltips::add_tooltip(image_rect_,
-							parameters_.scenario_data["description"], "", false);
-					}
-				}
-			}
-			break;
+		if (!engine_.current_level().description().empty()) {
+			tooltips::add_tooltip(image_rect_,
+				engine_.current_level().description(), "", false);
 		}
-		case mp_level::CAMPAIGN: {
-			set_level_data(CAMPAIGN, select);
-
-			if (!mp_level_.campaign["description"].empty()) {
-				tooltips::add_tooltip(image_rect_,
-					mp_level_.campaign["description"], "", false);
-			}
-
-			break;
-		}
-		} // end switch
 	}
 
-	if(generator_ != NULL && generator_->allow_user_config() &&
-		generator_settings_.pressed()) {
-		generator_->user_config(disp_);
+	if (engine_.generator_assigned() && generator_settings_.pressed()) {
+		engine_.generator_user_config(disp_);
+
 		level_changed = true;
 	}
 
-	if(generator_ != NULL && (level_changed || regenerate_map_.pressed())) {
+	if(engine_.generator_assigned() &&
+		(level_changed || regenerate_map_.pressed())) {
 		const cursor::setter cursor_setter(cursor::WAIT);
 		cursor::setter cur(cursor::WAIT);
 
-		set_level_data(GENERATED_MAP, 0);
+		engine_.init_generated_level_data();
 
 		if (!parameters_.scenario_data["error_message"].empty())
 			gui2::show_message(disp().video(), "map generation error",
@@ -379,42 +301,25 @@ void create::process_event()
 	if(level_changed) {
 		parameters_.hash = parameters_.scenario_data.hash();
 
-		bool enable_launch_game = true;
-
 		std::stringstream players;
 		std::stringstream map_size;
 
-		get_level_image();
+		engine_.current_level().set_metadata();
+
 		draw_level_image();
 
-		switch (mp_level_.get_type()) {
-		case mp_level::SCENARIO: {
-			// If there are less sides in the configuration than there are
-			// starting positions, then generate the additional sides
-			const int map_positions = map_.get() != NULL ?
-				map_->num_valid_starting_positions() : 0;
-			set_level_sides(map_positions);
+		switch (engine_.current_level_type()) {
+		case level::SCENARIO:
+		case level::USER_MAP: {
+			scenario* current_scenario =
+				dynamic_cast<scenario*>(&engine_.current_level());
 
-			if(map_.get() != NULL) {
-				int nsides = 0;
-				BOOST_FOREACH(const config &k,
-					parameters_.scenario_data.child_range("side")) {
-					if (k["allow_player"].to_bool(true)) ++nsides;
-				}
-
-				players << _("Players: ") << nsides;
-				map_size << _("Size: ") << map_.get()->w() <<
-					utils::unicode_multiplication_sign << map_.get()->h();
-			} else {
-				players << _("Error");
-				map_size << "";
-			}
-
-			enable_launch_game = (map_.get() != NULL);
+			players << _("Players: ") << current_scenario->num_players();
+			map_size << _("Size: ") << current_scenario->map_size();
 
 			break;
 		}
-		case mp_level::CAMPAIGN: {
+		case level::CAMPAIGN: {
 			//TODO: add a way to determine
 			// the information about number of players for mp campaigns.
 
@@ -425,9 +330,9 @@ void create::process_event()
 		map_size_label_.set_text(map_size.str());
 		num_players_label_.set_text(players.str());
 
-		launch_game_.enable(enable_launch_game);
-		generator_settings_.enable(generator_ != NULL);
-		regenerate_map_.enable(generator_ != NULL);
+		launch_game_.enable(engine_.current_level().can_launch_game());
+		generator_settings_.enable(engine_.generator_assigned());
+		regenerate_map_.enable(engine_.generator_assigned());
 	}
 
 	bool mod_selection_changed = mod_selection_ != mods_menu_.selection();
@@ -436,6 +341,101 @@ void create::process_event()
 	if (mod_selection_changed) {
 		description_.set_text(mod_descriptions_[mod_selection_]);
 	}
+}
+
+void create::sync_current_level_with_engine()
+{
+	if (engine_.current_level_type() == level::CAMPAIGN) {
+		engine_.set_current_level_index(levels_menu_.selection());
+	} else if ((size_t)levels_menu_.selection() < engine_.user_maps_count()) {
+			engine_.set_current_level_type(level::USER_MAP);
+			engine_.set_current_level_index(levels_menu_.selection());
+	} else {
+		engine_.set_current_level_type(level::SCENARIO);
+		engine_.set_current_level_index(levels_menu_.selection()
+			- engine_.user_maps_count());
+	}
+}
+
+void create::synchronize_selections()
+{
+	DBG_MP << "Synchronizing with the dependency manager" << std::endl;
+	if (era_selection_ != dependency_manager_.get_era_index()) {
+		eras_menu_.move_selection(dependency_manager_.get_era_index());
+		process_event();
+	}
+
+	if (level_selection_ !=	dependency_manager_.get_scenario_index()) {
+		levels_menu_.move_selection(dependency_manager_.get_scenario_index());
+		process_event();
+	}
+
+	parameters_.active_mods = dependency_manager_.get_modifications();
+}
+
+std::vector<std::string> create::levels_menu_item_names() const
+{
+	switch (engine_.current_level_type()) {
+	case level::SCENARIO:
+	case level::USER_MAP: {
+		const std::vector<std::string>& scenarios =
+			engine_.levels_menu_item_names(level::SCENARIO);
+		const std::vector<std::string>& user_maps =
+			engine_.levels_menu_item_names(level::USER_MAP);
+
+		std::vector<std::string> names;
+		names.reserve(scenarios.size() + user_maps.size());
+		names.insert(names.end(), user_maps.begin(), user_maps.end());
+		names.insert(names.end(), scenarios.begin(), scenarios.end());
+
+		return names;
+	}
+	case level::CAMPAIGN:
+	default: {
+		return engine_.levels_menu_item_names(level::CAMPAIGN);
+	}
+	} // end switch
+}
+
+void create::draw_level_image() const
+{
+	boost::scoped_ptr<surface> image(
+		engine_.current_level().create_image_surface(image_rect_));
+
+	SDL_Color back_color = {0,0,0,255};
+	draw_centered_on_background(*image, image_rect_, back_color,
+		video().getSurface());
+}
+
+std::string create::select_campaign_difficulty()
+{
+	const std::string difficulty_descriptions =
+		engine_.current_level().data()["difficulty_descriptions"];
+	std::vector<std::string> difficulty_options =
+		utils::split(difficulty_descriptions, ';');
+	const std::vector<std::string> difficulties =
+		utils::split(engine_.current_level().data()["difficulties"]);
+
+	if(difficulties.empty() == false) {
+		int difficulty = 0;
+		if(difficulty_options.size() != difficulties.size()) {
+			difficulty_options.resize(difficulties.size());
+			std::copy(difficulties.begin(), difficulties.end(),
+				difficulty_options.begin());
+		}
+
+		gui2::tcampaign_difficulty dlg(difficulty_options);
+		dlg.show(disp().video());
+
+		if(dlg.selected_index() == -1) {
+			return "CANCEL";
+		}
+		difficulty = dlg.selected_index();
+
+		return difficulties[difficulty];
+	}
+
+	return "";
 }
 
 void create::hide_children(bool hide)
@@ -476,6 +476,7 @@ void create::hide_children(bool hide)
 	} else {
 		image_restorer_.assign(new surface_restorer(&video(), image_rect_));
 
+		engine_.current_level().set_metadata();
 		draw_level_image();
 	}
 }
@@ -562,9 +563,8 @@ void create::layout_children(const SDL_Rect& rect)
 	levels_menu_.set_location(xpos, ypos);
 	// Menu dimensions are only updated when items are set. So do this now.
 	int levelsel = levels_menu_.selection();
-	levels_menu_.set_items(level_options_);
+	levels_menu_.set_items(levels_menu_item_names());
 	levels_menu_.move_selection(levelsel);
-
 
 	//Fourth column: eras & mods menu
 	ypos = ypos_columntop;
@@ -602,287 +602,6 @@ void create::layout_children(const SDL_Rect& rect)
 	                           ca.y + ca.h - right_button->height());
 	left_button->set_location(right_button->location().x - left_button->width() -
 	                          gui::ButtonHPadding, ca.y + ca.h - left_button->height());
-}
-
-void create::get_level_image()
-{
-	switch (mp_level_.get_type()) {
-	case mp_level::SCENARIO: {
-		const std::string& map_data = parameters_.scenario_data["map_data"];
-
-		if ((mp_level_.map_data != map_data) || (mp_level_.map_data == "")) {
-			try {
-				map_.reset(new gamemap(game_config(), map_data));
-			} catch(incorrect_map_format_error& e) {
-				ERR_CF << "map could not be loaded: " << e.message << '\n';
-
-				tooltips::clear_tooltips(image_rect_);
-				tooltips::add_tooltip(image_rect_,e.message);
-			} catch(twml_exception& e) {
-				ERR_CF << "map could not be loaded: " << e.dev_message << '\n';
-			}
-
-			mp_level_.map_data = map_data;
-		}
-		break;
-	}
-	case mp_level::CAMPAIGN: {
-		mp_level_.image_label = mp_level_.campaign["image"].str();
-
-		break;
-	}
-	} // end switch
-}
-
-void create::draw_level_image()
-{
-	boost::scoped_ptr<surface> image;
-
-	switch (mp_level_.get_type()) {
-	case mp_level::SCENARIO: {
-
-		if (map_.get() != NULL) {
-			image.reset(new surface(image::getMinimap(image_rect_.w,
-				image_rect_.h, *map_, 0)));
-		}
-		break;
-	}
-	case mp_level::CAMPAIGN: {
-		surface campaign_image(
-			image::get_image(image::locator(mp_level_.image_label)));
-
-		image.reset(new surface(scale_surface(campaign_image, image_rect_.w,
-			image_rect_.h)));
-
-		break;
-	}
-	} // end switch
-
-	SDL_Color back_color = {0,0,0,255};
-	draw_centered_on_background(*image, image_rect_, back_color, video().getSurface());
-}
-
-bool create::set_level_data(SET_LEVEL set_level, const int select)
-{
-	switch (set_level) {
-	case GENERIC_MULTIPLAYER: {
-		parameters_.saved_game = false;
-		if (const config &generic_multiplayer =
-			game_config().child("generic_multiplayer")) {
-			parameters_.scenario_data = generic_multiplayer;
-			parameters_.scenario_data["map_data"] =
-				read_map(user_maps_[select]);
-		}
-
-	break;
-	}
-	case MULTIPLAYER: {
-		parameters_.saved_game = false;
-		size_t index = select - user_maps_.size();
-		assert(index < level_index_.size());
-		index = level_index_[index];
-
-		config::const_child_itors levels =
-			game_config().child_range("multiplayer");
-		for (; index > 0; --index) {
-			if (levels.first == levels.second) break;
-			++levels.first;
-		}
-
-		if (levels.first != levels.second)
-		{
-			const config &level = *levels.first;
-			parameters_.scenario_data = level;
-			std::string map_data = level["map_data"];
-
-			if (map_data.empty() && !level["map"].empty()) {
-				map_data = read_map(level["map"]);
-			}
-		} else {
-			return false;
-		}
-		break;
-	}
-	case SAVED_GAME: {
-		parameters_.scenario_data.clear();
-		parameters_.saved_game = true;
-
-		break;
-	}
-	case GENERATED_MAP: {
-		parameters_.scenario_data =
-			generator_->create_scenario(std::vector<std::string>());
-
-		// Set the scenario to have placing of sides
-		// based on the terrain they prefer
-		parameters_.scenario_data["modify_placing"] = "true";
-
-		break;
-	}
-	case CAMPAIGN: {
-		parameters_.saved_game = false;
-
-		size_t index = select;
-		assert(index < level_index_.size());
-		index = level_index_[index];
-
-		config::const_child_itors levels =
-			game_config().child_range("campaign");
-		for (; index > 0; --index) {
-			if (levels.first == levels.second) break;
-			++levels.first;
-		}
-
-		if (levels.first != levels.second)
-		{
-			const config &level = *levels.first;
-			mp_level_.campaign = level;
-		}
-
-		break;
-	}
-	} // end switch
-
-	return true;
-}
-
-void create::set_level_sides(const int map_positions)
-{
-	for (int pos = parameters_.scenario_data.child_count("side");
-		pos < map_positions; ++pos) {
-		config& side = parameters_.scenario_data.add_child("side");
-		side["side"] = pos + 1;
-		side["team_name"] = pos + 1;
-		side["canrecruit"] = true;
-		side["controller"] = "human";
-	}
-}
-
-bool create::new_campaign()
-{
-	state_ = game_state();
-	state_.classification().campaign_type = "multiplayer";
-
-	const std::string difficulty_descriptions =
-		mp_level_.campaign["difficulty_descriptions"];
-	std::vector<std::string> difficulty_options =
-		utils::split(difficulty_descriptions, ';');
-	const std::vector<std::string> difficulties =
-		utils::split(mp_level_.campaign["difficulties"]);
-
-	if(difficulties.empty() == false) {
-		int difficulty = 0;
-		if(difficulty_options.size() != difficulties.size()) {
-			difficulty_options.resize(difficulties.size());
-			std::copy(difficulties.begin(),difficulties.end(),difficulty_options.begin());
-		}
-
-		gui2::tcampaign_difficulty dlg(difficulty_options);
-		dlg.show(disp().video());
-
-		if(dlg.selected_index() == -1) {
-			return false;
-		}
-		difficulty = dlg.selected_index();
-
-		state_.classification().difficulty = difficulties[difficulty];
-	}
-
-	state_.classification().campaign_define =
-		mp_level_.campaign["define"].str();
-	state_.classification().campaign_xtra_defines =
-		utils::split(mp_level_.campaign["extra_defines"]);
-
-	return true;
-}
-
-void create::synchronize_selections()
-{
-	DBG_MP << "Synchronizing with the dependency manager" << std::endl;
-	if (era_selection_ != dependency_manager_.get_era_index()) {
-		eras_menu_.move_selection(dependency_manager_.get_era_index());
-		process_event();
-	}
-
-	if (level_selection_ != dependency_manager_.get_scenario_index()) {
-		levels_menu_.move_selection(dependency_manager_.get_scenario_index());
-		process_event();
-	}
-
-	parameters_.active_mods = dependency_manager_.get_modifications();
-}
-
-void create::set_levels_menu(const bool init_dep_check)
-{
-	level_options_.clear();
-	level_descriptions_.clear();
-	level_index_.clear();
-	user_maps_.clear();
-
-	std::string markup_txt = "`~";
-	std::string help_sep = " ";
-	help_sep[0] = HELP_STRING_SEPARATOR;
-	std::string menu_help_str;
-
-	switch (mp_level_.get_type()) {
-	case mp_level::SCENARIO: {
-		// User maps
-		get_files_in_dir(get_user_data_dir() + "/editor/maps",&user_maps_,NULL,FILE_NAME_ONLY);
-		size_t i = 0;
-		for(i = 0; i < user_maps_.size(); i++)
-		{
-			menu_help_str = help_sep + user_maps_[i];
-			level_options_.push_back(user_maps_[i] + menu_help_str);
-			level_descriptions_.push_back(_("User made map"));
-
-			if (init_dep_check) {
-				// Since user maps are treated as scenarios,
-				// some dependency info is required
-				config depinfo;
-				depinfo["id"] = user_maps_[i];
-				depinfo["name"] = user_maps_[i];
-				dependency_manager_.insert_element(depcheck::SCENARIO, depinfo, i);
-			}
-		}
-
-		// Standard maps
-		i = 0;
-		BOOST_FOREACH(const config &j, game_config().child_range("multiplayer"))
-		{
-			if (j["allow_new_game"].to_bool(true))
-			{
-				std::string name = j["name"];
-				menu_help_str = help_sep + name;
-				level_options_.push_back(name + menu_help_str);
-				level_descriptions_.push_back(j["description"]);
-				level_index_.push_back(i);
-			}
-			++i;
-		}
-		break;
-	}
-	case mp_level::CAMPAIGN: {
-		// Campaigns
-		size_t i = 0;
-		BOOST_FOREACH(const config &j, game_config().child_range("campaign"))
-		{
-			std::string name = j["name"];
-			menu_help_str = help_sep + name;
-			level_options_.push_back(name + menu_help_str);
-			level_descriptions_.push_back(j["description"]);
-			level_index_.push_back(i);
-			++i;
-		}
-		break;
-	}
-	} // end switch
-
-	// Create the scenarios menu
-	levels_menu_.set_items(level_options_);
-	if (size_t(preferences::map()) < level_options_.size()) {
-		levels_menu_.move_selection(preferences::map());
-		dependency_manager_.try_scenario_by_index(preferences::map(), true);
-	}
 }
 
 } // namespace mp

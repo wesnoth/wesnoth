@@ -17,9 +17,9 @@
 #ifndef MULTIPLAYER_CREATE_HPP_INCLUDED
 #define MULTIPLAYER_CREATE_HPP_INCLUDED
 
-#include "gamestatus.hpp"
 #include "mp_depcheck.hpp"
 #include "mp_game_settings.hpp"
+#include "multiplayer_create_engine.hpp"
 #include "multiplayer_ui.hpp"
 #include "widgets/slider.hpp"
 #include "widgets/combo.hpp"
@@ -27,27 +27,6 @@
 #include "tooltips.hpp"
 
 namespace mp {
-
-struct mp_level
-{
-public:
-	mp_level();
-
-	void reset();
-
-	void set_scenario();
-	void set_campaign();
-
-	enum TYPE { SCENARIO, CAMPAIGN };
-	TYPE get_type() const;
-
-	std::string map_data;
-	std::string image_label;
-	config campaign;
-
-private:
-	TYPE type;
-};
 
 class create : public mp::ui
 {
@@ -63,45 +42,27 @@ protected:
 	virtual void hide_children(bool hide=true);
 
 private:
-	void get_level_image();
-	void draw_level_image();
+	void sync_current_level_with_engine();
 
-	enum SET_LEVEL {
-		GENERIC_MULTIPLAYER,
-		MULTIPLAYER,
-		SAVED_GAME,
-		GENERATED_MAP,
-		CAMPAIGN
-	};
-	bool set_level_data(SET_LEVEL set_level, const int select);
-	void set_level_sides(const int map_positions);
-
-	bool new_campaign();
-
-	void set_levels_menu(const bool init_dep_check = false);
 	void synchronize_selections();
+
+	std::vector<std::string> levels_menu_item_names() const;
+
+	void draw_level_image() const;
+
+	std::string select_campaign_difficulty();
 
 	bool local_players_only_;
 
 	tooltips::manager tooltip_manager_;
 	int era_selection_;
-	int level_selection_;
 	int mod_selection_;
+	int level_selection_;
 
-
-	std::vector<std::string> user_maps_;
 	std::vector<std::string> era_options_;
-	std::vector<std::string> level_options_;
 	std::vector<std::string> mod_options_;
 	std::vector<std::string> era_descriptions_;
-	std::vector<std::string> level_descriptions_;
 	std::vector<std::string> mod_descriptions_;
-
-	/**
-	 * Due to maps not available the index of the selected map and mp scenarios
-	 * is not 1:1 so we use a lookup table.
-	 */
-	std::vector<size_t> level_index_;
 
 	gui::menu eras_menu_;
 	gui::menu levels_menu_;
@@ -131,16 +92,11 @@ private:
 	util::scoped_ptr<surface_restorer> image_restorer_;
 	SDL_Rect image_rect_;
 
-	boost::scoped_ptr<gamemap> map_;
-
-	util::scoped_ptr<map_generator> generator_;
-
 	mp_game_settings parameters_;
 
-	mp_level mp_level_;
-	game_state state_;
-
 	depcheck::manager dependency_manager_;
+
+	create_engine engine_;
 };
 
 } // end namespace mp
