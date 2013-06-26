@@ -715,6 +715,9 @@ Version 1.11.0:
    * Added [effect] apply_to=halo
    * Converted [store_villages] from C++ to Lua
    * Introduced [unstore_unit]animate=yes|no (def. yes) parameter
+   * Made the display of ability and weapon special descriptions smarter, so
+     those descriptions no longer require (and should no longer have) the name
+     of the ability/special as the first line of the description.
  * Miscellaneous and bug fixes:
    * Fix wrong preferences path suffix (1.1 instead of 1.10) on Linux and other
      platforms using XDG layout (no compiled-in preferences path override,
