@@ -91,7 +91,7 @@ void connection<Protocol>::on_read_complete(const boost::system::error_code& e,
 {
   if (!e)
   {
-    typename protocol_type::reply_type reply = protocol.analyze(buffer);
+    typename protocol_type::reply_type reply = protocol.handle_request(buffer.data());
     boost::asio::async_write(socket, reply.to_buffers(),
       boost::bind(&connection::on_write_complete, this->shared_from_this(),
       boost::asio::placeholders::error));

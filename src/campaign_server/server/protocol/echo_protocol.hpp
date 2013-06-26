@@ -40,9 +40,9 @@ public:
    };
    typedef reply reply_type;
 
-   reply_type analyze(std::array<char, 8192>& request)
+   reply_type handle_request(std::string& request)
    {
-      return reply(std::string(request.data()));
+      return reply_type(request);
    }
 };
 
