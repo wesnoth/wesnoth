@@ -1758,8 +1758,9 @@ def translator(filename, mapxforms, textxform):
         # refer to map files which will be checked separately.
         if map_only or (("map_data=" in line or "mask=" in line)
                         and line.count('"') in (1, 2)
+                        and line.count('""') == 0
                         and line.count("{") == 0
-                        and  line.count("}") == 0
+                        and line.count("}") == 0
                         and not within('time')):
             outmap = []
             add_border = True
