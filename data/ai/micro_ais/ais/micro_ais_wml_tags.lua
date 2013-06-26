@@ -300,7 +300,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
 
         local CA_parms = {
             {
-                id = 'lurker_moves_lua', eval_name = 'lurker_attack_eval', exec_name = 'lurker_attack_exec',
+                id = 'lurker_moves_lua', eval_name = 'mai_lurkers_attack_eval', exec_name = 'mai_lurkers_attack_exec',
                 max_score = 100010, cfg_table = cfg_lurk
             },
         }
