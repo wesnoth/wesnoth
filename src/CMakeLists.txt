@@ -1010,11 +1010,11 @@ endif(ENABLE_SERVER)
 if(ENABLE_CAMPAIGN_SERVER)
 
 set(campaignd_SRC
-	network_worker.cpp # NEEDED when compiling with ANA support
-	addon/validation.cpp
 	campaign_server/campaign_server.cpp
-	server/input_stream.cpp
+	campaign_server/server/server_options.cpp
 	${network_implementation_files}
+	addon/validation.cpp
+	server/input_stream.cpp
 	loadscreen_empty.cpp
 )
 
@@ -1022,10 +1022,18 @@ add_executable(campaignd ${campaignd_SRC})
 target_link_libraries(campaignd
 	wesnoth-core
 	${server-external-libs}
-	${SDLNET_LIBRARY} 				# NEEDED with ANA
+	${Boost_THREAD_LIBRARY}
+  ${Boost_SYSTEM_LIBRARY}
 	${LIBINTL_LIBRARIES}
 	)
 set_target_properties(campaignd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}campaignd${BINARY_SUFFIX})
+
+if(CMAKE_COMPILER_IS_GNUCXX)
+	set_target_properties(campaignd
+		PROPERTIES COMPILE_FLAGS
+		"-std=c++11 -pthread"
+	)
+endif(CMAKE_COMPILER_IS_GNUCXX)
 
 install(TARGETS campaignd DESTINATION ${BINDIR})
 
