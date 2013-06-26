@@ -3,25 +3,25 @@ return {
 
         local AH = wesnoth.require("ai/lua/ai_helper.lua")
 
-        local recruit_cas = {}
+        local engine = {}
         local internal_recruit_cas = {}
         local internal_params = {}
         -- The following external engine creates the CA functions recruit_rushers_eval and recruit_rushers_exec
         -- It also exposes find_best_recruit and find_best_recruit_hex for use by other recruit engines
         wesnoth.require("ai/lua/generic-recruit_engine.lua").init(ai, internal_recruit_cas, internal_params)
 
-        function recruit_cas:rusher_recruit_eval(cfg)
+        function engine:mai_rusher_recruit_eval(cfg)
             internal_params.randomness = cfg.randomness
             return internal_recruit_cas:recruit_rushers_eval()
         end
 
-        function recruit_cas:rusher_recruit_exec(cfg)
+        function engine:mai_rusher_recruit_exec(cfg)
             return internal_recruit_cas:recruit_rushers_exec()
         end
 
         local recruit
 
-        function recruit_cas:random_recruit_eval(cfg)
+        function engine:mai_random_recruit_eval(cfg)
             -- Random recruiting from all the units the side has
 
             -- Check if leader is on keep
@@ -117,13 +117,13 @@ return {
             return 180000
         end
 
-        function recruit_cas:random_recruit_exec()
+        function engine:mai_random_recruit_exec()
             -- Let this function blacklist itself if the chosen recruit is too expensive
             if wesnoth.unit_types[recruit].cost <= wesnoth.sides[wesnoth.current.side].gold then
                 ai.recruit(recruit)
             end
         end
 
-        return recruit_cas
+        return engine
     end
 }
