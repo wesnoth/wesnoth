@@ -1,7 +1,7 @@
 return {
     init = function(ai)
 
-        local messenger_escort = {}
+        local engine = {}
         -- Moves a messenger toward goal coordinates while protecting him and
         -- clearing his way with other units, if necessary
 
@@ -9,7 +9,7 @@ return {
         local AH = wesnoth.require "ai/lua/ai_helper.lua"
         local LS = wesnoth.require "lua/location_set.lua"
 
-        function messenger_escort:find_enemies_in_way(unit, goal_x, goal_y)
+        function engine:mai_messenger_find_enemies_in_way(unit, goal_x, goal_y)
             -- Returns the first unit on or next to the path of the messenger
             -- unit: proxy table for the messenger unit
             -- goal_x, goal_y: coordinates of the goal toward which the messenger moves
@@ -56,14 +56,14 @@ return {
             return
         end
 
-        function messenger_escort:find_clearing_attack(unit, goal_x, goal_y)
+        function engine:mai_messenger_find_clearing_attack(unit, goal_x, goal_y)
             -- Check if an enemy is in the way of the messenger
             -- If so, find attack that would "clear" that enemy out of the way
             -- unit: proxy table for the messenger unit
             -- goal_x, goal_y: coordinates of the goal toward which the messenger moves
             -- Returns proxy table containing the attack, or nil if none was found
 
-            local enemy_in_way = self:find_enemies_in_way(unit, goal_x, goal_y)
+            local enemy_in_way = self:mai_messenger_find_enemies_in_way(unit, goal_x, goal_y)
             -- If none found, don't attack, just move
             if not enemy_in_way then return end
 
@@ -127,7 +127,7 @@ return {
 
         -----------------------
 
-        function messenger_escort:attack_eval(cfg)
+        function engine:mai_messenger_attack_eval(cfg)
             -- Attack units in the path of the messenger
             -- id: id of the messenger unit
             -- goal_x, goal_y: coordinates of the goal toward which the messenger moves
@@ -156,7 +156,7 @@ return {
             end
 
             -- See if there's an enemy in the way that should be attacked
-            local attack = self:find_clearing_attack(messenger,
+            local attack = self:mai_messenger_find_clearing_attack(messenger,
                 waypoints[self.data.next_waypoint][1], waypoints[self.data.next_waypoint][2]
             )
 
@@ -168,7 +168,7 @@ return {
             return 0
         end
 
-        function messenger_escort:attack_exec()
+        function engine:mai_messenger_attack_exec()
             local attacker = wesnoth.get_unit(self.data.best_attack.src.x, self.data.best_attack.src.y)
             local defender = wesnoth.get_unit(self.data.best_attack.target.x, self.data.best_attack.target.y)
 
@@ -179,7 +179,7 @@ return {
 
         -----------------------
 
-        function messenger_escort:messenger_move_eval(cfg)
+        function engine:mai_messenger_move_eval(cfg)
             -- Move the messenger (unit with passed id) toward goal, attack adjacent unit if possible
             -- without retaliation or little expected damage with high chance of killing the enemy
 
@@ -189,7 +189,7 @@ return {
             return 0
         end
 
-        function messenger_escort:messenger_move_exec(cfg)
+        function engine:mai_messenger_move_exec(cfg)
             local messenger = wesnoth.get_units{ id = cfg.id, formula = '$this_unit.moves > 0' }[1]
 
             -- Set up the waypoints
@@ -307,7 +307,7 @@ return {
 
         -----------------------
 
-        function messenger_escort:other_move_eval(cfg)
+        function engine:mai_messenger_other_move_eval(cfg)
             -- Move other units close to messenger, and in between messenger and enemies
             -- The messenger has moved at this time, so we don't need to exclude him
             -- But we check that he exist (not for this scenario, but for others)
@@ -320,7 +320,7 @@ return {
             return 0
         end
 
-        function messenger_escort:other_move_exec(cfg)
+        function engine:mai_messenger_other_move_exec(cfg)
             local messenger = wesnoth.get_units{ id = cfg.id }[1]
             local my_units = wesnoth.get_units{ side = wesnoth.current.side, formula = '$this_unit.moves > 0' }
 
@@ -360,6 +360,6 @@ return {
             AH.movefull_stopunit(ai, next_unit, best_hex)
         end
 
-        return messenger_escort
+        return engine
     end
 }
