@@ -1,6 +1,6 @@
 return {
-    init = function(ai)
-        local engine = {}
+    init = function(ai, existing_engine)
+        local engine = existing_engine or {}
 
         local H = wesnoth.require "lua/helper.lua"
         local W = H.set_wml_action_metatable {}

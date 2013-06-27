@@ -1,7 +1,7 @@
 return {
-    init = function(ai)
+    init = function(ai, existing_engine)
 
-        local engine = {}
+        local engine = existing_engine or {}
         -- Moves a messenger toward goal coordinates while protecting him and
         -- clearing his way with other units, if necessary
 

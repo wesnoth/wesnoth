@@ -1,7 +1,7 @@
 return {
-    init = function(ai)
+    init = function(ai, existing_engine)
 
-        local engine = {}
+        local engine = existing_engine or {}
 
         local LS = wesnoth.require "lua/location_set.lua"
         local AH = wesnoth.require "ai/lua/ai_helper.lua"

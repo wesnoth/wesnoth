@@ -1,9 +1,9 @@
 return {
-    init = function(ai)
+    init = function(ai, existing_engine)
 
         local AH = wesnoth.require("ai/lua/ai_helper.lua")
 
-        local engine = {}
+        local engine = existing_engine or {}
         local internal_recruit_cas = {}
         local internal_params = {}
         -- The following external engine creates the CA functions recruit_rushers_eval and recruit_rushers_exec
