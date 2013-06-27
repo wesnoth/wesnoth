@@ -218,11 +218,11 @@ function wesnoth.wml_actions.micro_ai(cfg)
         -- Set up the CA add/delete parameters
         local CA_parms = {
             {
-                id = 'bottleneck_move', eval_name = 'bottleneck_move_eval', exec_name = 'bottleneck_move_exec',
+                id = 'bottleneck_move', eval_name = 'mai_bottleneck_move_eval', exec_name = 'mai_bottleneck_move_exec',
                 max_score = 300000, cfg_table = cfg_bd
             },
             {
-                id = 'bottleneck_attack', eval_name = 'bottleneck_attack_eval', exec_name = 'bottleneck_attack_exec',
+                id = 'bottleneck_attack', eval_name = 'mai_bottleneck_attack_eval', exec_name = 'mai_bottleneck_attack_exec',
                 max_score = 290000, cfg_table = {}
             }
         }

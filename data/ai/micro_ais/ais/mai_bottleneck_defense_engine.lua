@@ -1,7 +1,7 @@
 return {
     init = function(ai)
 
-        local bottleneck_defense = {}
+        local engine = {}
 
         local H = wesnoth.require "lua/helper.lua"
         local W = H.set_wml_action_metatable {}
@@ -9,7 +9,7 @@ return {
         local AH = wesnoth.require "ai/lua/ai_helper.lua"
         local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 
-        function bottleneck_defense:is_my_territory(map, enemy_map)
+        function engine:mai_bottleneck_is_my_territory(map, enemy_map)
             -- Create map that contains 'true' for all hexes that are
             -- on the AI's side of the map
 
@@ -69,7 +69,7 @@ return {
             return territory_map
         end
 
-        function bottleneck_defense:triple_from_keys(key_x, key_y, max_value)
+        function engine:mai_bottleneck_triple_from_keys(key_x, key_y, max_value)
             -- Turn 'key_x= key_y=' comma-separated lists into a location set
             local coords = {}
             for x in string.gmatch(key_x, "%d+") do
@@ -85,7 +85,7 @@ return {
             return AH.LS_of_triples(coords)
         end
 
-        function bottleneck_defense:create_positioning_map(max_value)
+        function engine:mai_bottleneck_create_positioning_map(max_value)
             -- Create the positioning maps for the healers and leaders, if not given by WML keys
             -- Max_value: the rating value for the first hex in the set
 
@@ -119,7 +119,7 @@ return {
             return map
         end
 
-        function bottleneck_defense:get_rating(unit, x, y, has_leadership, is_healer)
+        function engine:mai_bottleneck_get_rating(unit, x, y, has_leadership, is_healer)
             -- Calculate rating of a unit at the given coordinates
             -- Don't want to extract is_healer and has_leadership inside this function, as it is very slow
             -- thus they are provided as parameters from the calling function
@@ -181,7 +181,7 @@ return {
             return rating
         end
 
-        function bottleneck_defense:move_out_of_way(unit)
+        function engine:mai_bottleneck_move_out_of_way(unit)
             -- Find the best move out of the way for a unit
             -- and choose the shortest possible move
             -- Returns nil if no move was found
@@ -215,7 +215,7 @@ return {
            if best_reach > -1 then return best_hex end
         end
 
-        function bottleneck_defense:bottleneck_move_eval(cfg)
+        function engine:mai_bottleneck_move_eval(cfg)
             -- Check whether the side leader should be included or not
             if cfg.active_side_leader and (not self.data.side_leader_activated) then
                 local can_still_recruit = false  -- enough gold left for another recruit?
@@ -248,7 +248,7 @@ return {
 
             -- Set up the arrays that tell the AI where to defend the bottleneck
             -- Get the x and y coordinates (this assumes that cfg.x and cfg.y have the same length)
-            self.data.def_map = self:triple_from_keys(cfg.x, cfg.y, 10000)
+            self.data.def_map = self:mai_bottleneck_triple_from_keys(cfg.x, cfg.y, 10000)
             --AH.put_labels(self.data.def_map)
             --W.message {speaker="narrator", message="Defense map" }
 
@@ -257,8 +257,8 @@ return {
             -- However, after a reload, self.data.is_my_territory is an empty string
             --  -> need to recalculate in that case also  (the reason is that is_my_territory is not a WML table)
             if (not self.data.is_my_territory) or (type(self.data.is_my_territory) == 'string') then
-                local enemy_map = self:triple_from_keys(cfg.enemy_x, cfg.enemy_y, 10000)
-                self.data.is_my_territory = self:is_my_territory(self.data.def_map, enemy_map)
+                local enemy_map = self:mai_bottleneck_triple_from_keys(cfg.enemy_x, cfg.enemy_y, 10000)
+                self.data.is_my_territory = self:mai_bottleneck_is_my_territory(self.data.def_map, enemy_map)
             end
             --AH.put_labels(self.data.is_my_territory)
             --W.message {speaker="narrator", message="Territory map" }
@@ -266,10 +266,10 @@ return {
             -- Setting up healer positioning map
             if cfg.healer_x and cfg.healer_y then
                 -- If healer_x,healer_y are given, extract locs from there
-                self.data.healer_map = self:triple_from_keys(cfg.healer_x, cfg.healer_y, 5000)
+                self.data.healer_map = self:mai_bottleneck_triple_from_keys(cfg.healer_x, cfg.healer_y, 5000)
             else
                 -- Otherwise create the map here
-                self.data.healer_map = self:create_positioning_map(5000)
+                self.data.healer_map = self:mai_bottleneck_create_positioning_map(5000)
             end
             -- Use def_map values for any healer hexes that are defined in def_map as well
             self.data.healer_map:inter_merge(self.data.def_map,
@@ -283,10 +283,10 @@ return {
             -- If leadership_x, leadership_y are not given, we create the leadership positioning array
             if cfg.leadership_x and cfg.leadership_y then
                 -- If leadership_x,leadership_y are given, extract locs from there
-                self.data.leadership_map = self:triple_from_keys(cfg.leadership_x, cfg.leadership_y, 4000)
+                self.data.leadership_map = self:mai_bottleneck_triple_from_keys(cfg.leadership_x, cfg.leadership_y, 4000)
             else
                 -- Otherwise create the map here
-                self.data.leadership_map = self:create_positioning_map(4000)
+                self.data.leadership_map = self:mai_bottleneck_create_positioning_map(4000)
             end
             -- Use def_map values for any leadership hexes that are defined in def_map as well
             self.data.leadership_map:inter_merge(self.data.def_map,
@@ -331,13 +331,13 @@ return {
                 local is_healer = (u.__cfg.usage == "healer")
                 local has_leadership = AH.has_ability(u, "leadership")
 
-                local rating = self:get_rating(u, u.x, u.y, has_leadership, is_healer)
+                local rating = self:mai_bottleneck_get_rating(u, u.x, u.y, has_leadership, is_healer)
                 occ_hexes:insert(u.x, u.y, rating)
 
                 -- A unit that cannot move any more, (or at least cannot move out of the way)
                 -- must be considered to have a very high rating (it's in the best position
                 -- it can possibly achieve)
-                local best_move_away = self:move_out_of_way(u)
+                local best_move_away = self:mai_bottleneck_move_out_of_way(u)
                 if (not best_move_away) then occ_hexes:insert(u.x, u.y, 20000) end
             end
             --AH.put_labels(occ_hexes)
@@ -372,13 +372,13 @@ return {
                 local is_healer = (u.__cfg.usage == "healer")
                 local has_leadership = AH.has_ability(u, "leadership")
 
-                local current_rating = self:get_rating(u, u.x, u.y, has_leadership, is_healer)
+                local current_rating = self:mai_bottleneck_get_rating(u, u.x, u.y, has_leadership, is_healer)
                 --print("Finding move for:",u.id, u.x, u.y, current_rating)
 
                 -- Find the best move for all hexes the unit can reach ...
                 local reach = wesnoth.find_reach(u)
                 for i,r in ipairs(reach) do
-                    local rating = self:get_rating(u, r[1], r[2], has_leadership, is_healer)
+                    local rating = self:mai_bottleneck_get_rating(u, r[1], r[2], has_leadership, is_healer)
                     --print(" ->",r[1],r[2],rating,occ_hexes:get(r[1], r[2]))
                     --reach_map:insert(r[1], r[2], rating)
 
@@ -434,7 +434,7 @@ return {
                                 -- Very small penalty if there's a unit in the way
                                 -- We also need to check whether this unit can actually move out of the way
                                 if a.unit_in_way then
-                                    local moow = self:move_out_of_way(a.unit_in_way)
+                                    local moow = self:mai_bottleneck_move_out_of_way(a.unit_in_way)
                                     if moow then
                                         lu_rating = lu_rating - 0.001
                                     else
@@ -467,7 +467,7 @@ return {
                 { "not", { id = best_unit.id } }
             }[1]
             if unit_in_way then
-                best_hex = self:move_out_of_way(unit_in_way)
+                best_hex = self:mai_bottleneck_move_out_of_way(unit_in_way)
                 best_unit = unit_in_way
                 --print("Moving out of way:", best_unit.id, best_hex[1], best_hex[2])
 
@@ -490,7 +490,7 @@ return {
             return 300000
         end
 
-        function bottleneck_defense:bottleneck_move_exec()
+        function engine:mai_bottleneck_move_exec()
 
             if self.data.bottleneck_moves_done then
                 local units = {}
@@ -530,7 +530,7 @@ return {
             self.data.def_map, self.data.healer_map, self.data.leadership_map, self.data.healing_map = nil, nil, nil, nil
         end
 
-        function bottleneck_defense:bottleneck_attack_eval()
+        function engine:mai_bottleneck_attack_eval()
 
             -- All units with attacks_left and enemies next to them
             -- This will be much easier once the 'attacks' variable is implemented
@@ -596,7 +596,7 @@ return {
             return 290000
         end
 
-        function bottleneck_defense:bottleneck_attack_exec()
+        function engine:mai_bottleneck_attack_exec()
 
             if self.data.bottleneck_attacks_done then
                 local units = wesnoth.get_units { side = wesnoth.current.side, formula = '$this_unit.attacks_left > 0' }
@@ -613,6 +613,6 @@ return {
             self.data.bottleneck_attacks_done = nil
         end
 
-        return bottleneck_defense
+        return engine
     end
 }
