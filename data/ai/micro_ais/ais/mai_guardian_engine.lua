@@ -262,8 +262,15 @@ return {
                     end
 
                     local locs = locs_map:to_pairs()
-                    local newind = math.random(#locs)
-                    newpos = {locs[newind][1], locs[newind][2]}
+
+                    -- If possible locations were found, move unit toward a random one,
+                    -- otherwise the unit stays where it is
+                    if (#locs > 0) then
+                        local newind = math.random(#locs)
+                        newpos = { locs[newind][1], locs[newind][2] }
+                    else
+                        newpos = { unit.x, unit.y }
+                    end
                 end
 
                 -- Next hop toward that position
