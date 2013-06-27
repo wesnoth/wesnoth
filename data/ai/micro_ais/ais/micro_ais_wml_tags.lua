@@ -417,19 +417,23 @@ function wesnoth.wml_actions.micro_ai(cfg)
 
         -- Set up the cfg array
         local cfg_guardian = { guardian_type = guardian_type }
-        local required_keys, optional_keys = {}, {}
+        local required_keys, optional_keys, guardian_CA_name = {}, {}, {}
 
         required_keys["stationed_guardian"] = { "id", "distance", "station_x", "station_y", "guard_x", "guard_y" }
         optional_keys["stationed_guardian"] = {}
+        guardian_CA_name["stationed_guardian"] = "mai_guardian_stationed"
 
         required_keys["zone_guardian"] = { "id", "filter_location" }
         optional_keys["zone_guardian"] = { "filter_location_enemy", "station_x", "station_y" }
+        guardian_CA_name["zone_guardian"] = "mai_guardian_zone"
 
         required_keys["coward"] = { "id", "distance" }
         optional_keys["coward"] = { "seek_x", "seek_y","avoid_x","avoid_y" }
+        guardian_CA_name["coward"] = "mai_guardian_coward"
 
         required_keys["return_guardian"] = { "id", "return_x", "return_y" }
         optional_keys["return_guardian"] = {}
+        guardian_CA_name["return_guardian"] = "mai_guardian_return"
 
         if (cfg.action~='delete') then
             --Check that we know about this type of guardian
@@ -471,7 +475,9 @@ function wesnoth.wml_actions.micro_ai(cfg)
 
         local CA_parms = {
             {
-                id = guardian_type .. '_' .. cfg.id, eval_name = guardian_type .. '_eval', exec_name = guardian_type .. '_exec',
+                id = guardian_type .. '_' .. cfg.id,
+                eval_name = guardian_CA_name[guardian_type] .. '_eval',
+                exec_name = guardian_CA_name[guardian_type] .. '_exec',
                 max_score = max_scores[guardian_type], sticky = true, unit_x = unit.x, unit_y = unit.y, cfg_table = cfg_guardian
             },
         }

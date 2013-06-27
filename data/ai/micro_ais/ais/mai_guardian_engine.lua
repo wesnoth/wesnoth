@@ -1,13 +1,13 @@
 return {
     init = function(ai)
 
-        local guardians = {}
+        local engine = {}
 
         local H = wesnoth.require "lua/helper.lua"
         local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
         ----- The coward guardian AI -----
-        function guardians:coward_eval(cfg)
+        function engine:mai_guardian_coward_eval(cfg)
             local unit = wesnoth.get_units{ id = cfg.id }[1]
 
             -- Don't need to check if unit exists as this is a sticky CA
@@ -19,7 +19,7 @@ return {
         end
 
         -- cfg parameters: id, distance, seek_x, seek_y, avoid_x, avoid_y
-        function guardians:coward_exec(cfg)
+        function engine:mai_guardian_coward_exec(cfg)
             --print("Coward exec " .. cfg.id)
             local unit = wesnoth.get_units{ id = cfg.id }[1]
             local reach = wesnoth.find_reach(unit)
@@ -110,7 +110,7 @@ return {
 
 
         ----- The return guardian AI -----
-        function guardians:return_guardian_eval(cfg)
+        function engine:mai_guardian_return_eval(cfg)
             local unit = wesnoth.get_units { id = cfg.id }[1]
 
             -- Don't need to check if unit exists as this is a sticky CA
@@ -121,7 +121,7 @@ return {
             end
         end
 
-        function guardians:return_guardian_exec(cfg)
+        function engine:mai_guardian_return_exec(cfg)
             local unit = wesnoth.get_units { id = cfg.id }[1]
             --print("Exec guardian move",unit.id)
 
@@ -146,7 +146,7 @@ return {
         -- it "detects" an enemy in filter_location_enemy (if specified) or in the filter_location (otherwise).
         -- It then attacks this enemy until it goes out of the "attack zone"
 
-        function guardians:zone_guardian_eval(cfg)
+        function engine:mai_guardian_zone_eval(cfg)
             local unit = wesnoth.get_units { id = cfg.id }[1]
 
             -- Don't need to check if unit exists as this is a sticky CA
@@ -156,7 +156,7 @@ return {
         end
 
         --Check if an enemy is detected in filter_location_enemy (or filter_location) and attack it or start the "move" randomly function
-        function guardians:zone_guardian_exec(cfg)
+        function engine:mai_guardian_zone_exec(cfg)
             local unit = wesnoth.get_units { id = cfg.id }[1]
             local reach = wesnoth.find_reach(unit)
             local zone_enemy = cfg.filter_location_enemy or cfg.filter_location
@@ -268,7 +268,7 @@ return {
 
 
         ----- The stationed guardian AI -----
-        function guardians:stationed_guardian_eval(cfg)
+        function engine:mai_guardian_stationed_eval(cfg)
             local unit = wesnoth.get_units { id = cfg.id }[1]
 
             -- Don't need to check if unit exists as this is a sticky CA
@@ -280,7 +280,7 @@ return {
         end
 
         -- cfg parameters: id, distance, s_x, s_y, g_x, g_y
-        function guardians:stationed_guardian_exec(cfg)
+        function engine:mai_guardian_stationed_exec(cfg)
             -- (s_x,s_y): coordinates where unit is stationed; tries to move here if there is nobody to attack
             -- (g_x,g_y): location that the unit guards
 
@@ -382,6 +382,6 @@ return {
             -- If there are attacks left and unit ended up next to an enemy, we'll leave this to RCA AI
         end
 
-        return guardians
+        return engine
     end
 }
