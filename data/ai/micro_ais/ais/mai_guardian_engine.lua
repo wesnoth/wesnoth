@@ -11,8 +11,8 @@ return {
         function engine:mai_guardian_coward_eval(cfg)
             local unit = wesnoth.get_units{ id = cfg.id }[1]
 
-            -- Don't need to check if unit exists as this is a sticky CA
-            if unit.moves > 0 then
+            -- Check if unit exists as sticky BCAs are not always removed successfully
+            if unit and (unit.moves > 0) then
                 return 300000
             else
                 return 0
@@ -114,12 +114,15 @@ return {
         function engine:mai_guardian_return_eval(cfg)
             local unit = wesnoth.get_units { id = cfg.id }[1]
 
-            -- Don't need to check if unit exists as this is a sticky CA
-            if (unit.x ~= cfg.return_x) or (unit.y ~= cfg.return_y) then
-                return 100010
-            else
-                return 99990
+            -- Check if unit exists as sticky BCAs are not always removed successfully
+            if unit then
+                if ((unit.x ~= cfg.return_x) or (unit.y ~= cfg.return_y)) then
+                    return 100010
+                else
+                    return 99990
+                end
             end
+            return 0
         end
 
         function engine:mai_guardian_return_exec(cfg)
@@ -150,8 +153,8 @@ return {
         function engine:mai_guardian_zone_eval(cfg)
             local unit = wesnoth.get_units { id = cfg.id }[1]
 
-            -- Don't need to check if unit exists as this is a sticky CA
-            if (unit.moves > 0) then
+            -- Check if unit exists as sticky BCAs are not always removed successfully
+            if unit and (unit.moves > 0) then
                 return 100010
 			end
         end
@@ -291,8 +294,8 @@ return {
         function engine:mai_guardian_stationed_eval(cfg)
             local unit = wesnoth.get_units { id = cfg.id }[1]
 
-            -- Don't need to check if unit exists as this is a sticky CA
-            if (unit.moves > 0) then
+            -- Check if unit exists as sticky BCAs are not always removed successfully
+            if unit and (unit.moves > 0) then
                 return 100010
             else
                 return 0

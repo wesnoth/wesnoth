@@ -9,8 +9,8 @@ return {
         function engine:mai_patrol_eval(cfg)
             local patrol = wesnoth.get_units({ id = cfg.id })[1]
 
-            -- Don't need to check if unit exists as this is a sticky CA
-            if (patrol.moves > 0) then return 300000 end
+            -- Check if unit exists as sticky BCAs are not always removed successfully
+            if patrol and (patrol.moves > 0) then return 300000 end
             return 0
         end
 
