@@ -20,7 +20,7 @@
 #include <stdexcept>
 #include <boost/lexical_cast.hpp>
 
-class product_not_found : public logic_error
+class product_not_found : public std::logic_error
 {
 public:
    template <class Identifier>
@@ -48,15 +48,15 @@ private:
 public:
    void register_product(identifier_type&& id, product_ptr&& product)
    {
-      actions.insert(std::move(id), std::move(product));
+      products.emplace(std::move(id), std::move(product));
    }
 
    product_ptr make_product(const identifier_type& id)
    {
-      id_to_product_map::const_iterator product = products.find(id);
+      typename id_to_product_map::const_iterator product = products.find(id);
       if(product == products.end())
          throw product_not_found(id);
-      return std::unique_ptr(new product_type(product->second));
+      return std::unique_ptr<product_type>(new product_type(product->second));
    }
 };
 

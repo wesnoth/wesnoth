@@ -40,6 +40,11 @@ public:
    , binary_data(std::move(binary_data))
    {}
 
+   network_data(network_data&& data)
+   : metadata(std::move(data.metadata))
+   , binary_data(std::move(data.binary_data))
+   {}
+
    network_data() = default;
 
    const metadata_type& get_metadata() const

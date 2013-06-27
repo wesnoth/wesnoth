@@ -1013,6 +1013,8 @@ set(campaignd_SRC
 	campaign_server/campaign_server.cpp
 	campaign_server/server/server_options.cpp
 	${network_implementation_files}
+	serialization/parser.cpp
+	config.cpp
 	addon/validation.cpp
 	server/input_stream.cpp
 	loadscreen_empty.cpp
@@ -1028,12 +1030,12 @@ target_link_libraries(campaignd
 	)
 set_target_properties(campaignd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}campaignd${BINARY_SUFFIX})
 
-if(CMAKE_COMPILER_IS_GNUCXX)
+if(CMAKE_COMPILER_IS_GNUCXX OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
 	set_target_properties(campaignd
 		PROPERTIES COMPILE_FLAGS
 		"-std=c++11 -pthread"
 	)
-endif(CMAKE_COMPILER_IS_GNUCXX)
+endif()
 
 install(TARGETS campaignd DESTINATION ${BINDIR})
 

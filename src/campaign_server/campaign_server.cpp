@@ -17,7 +17,7 @@
 
 #include "campaign_server/server/server_options.hpp"
 #include "campaign_server/server/single_threaded/server.hpp"
-#include "campaign_server/server/protocol/echo_protocol.hpp"
+#include "campaign_server/server/protocol/wml/wml_protocol.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -29,9 +29,9 @@ int main(int argc, char *argv[])
       config cfg = options.build_config();
       std::cout << "Configuration requested:\n" << cfg;
 
-      echo_protocol protocol;
-      server<echo_protocol> echo_server(cfg, protocol);
-      echo_server.run();
+      wml_protocol protocol;
+      server<wml_protocol> addon_server(cfg, protocol);
+      addon_server.run();
     }
   }
   catch(std::exception &e)
