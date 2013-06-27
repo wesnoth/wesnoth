@@ -836,7 +836,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
         -- Set up the CA add/delete parameters
         local CA_parms = {
             {  -- Note: do not define max_score
-                id = ca_id, eval_name = 'goto_eval', exec_name = 'goto_exec',
+                id = ca_id, eval_name = 'mai_goto_eval', exec_name = 'mai_goto_exec',
                 cfg_table = cfg_go,
                 pass_ca_id = true
             }

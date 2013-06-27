@@ -1,13 +1,13 @@
 return {
     init = function(ai)
 
-        local goto_engine = {}
+        local engine = {}
 
         local H = wesnoth.require "lua/helper.lua"
         local AH = wesnoth.require "ai/lua/ai_helper.lua"
         local LS = wesnoth.require "lua/location_set.lua"
 
-        function goto_engine:goto_eval(cfg)
+        function engine:mai_goto_eval(cfg)
 
             -- If cfg.release_all_units_at_goal is set, check
             -- whether the goal has already been reached, in
@@ -72,7 +72,7 @@ return {
             return cfg.ca_score or 210000
         end
 
-        function goto_engine:goto_exec(cfg)
+        function engine:mai_goto_exec(cfg)
             local units, locs = self.data.units, self.data.locs  -- simply for convenience
 
             local closest_hex, best_unit, max_rating = {}, {}, -9e99
@@ -160,6 +160,6 @@ return {
             self.data.units, self.data.locs = nil, nil
         end
 
-        return goto_engine
+        return engine
     end
 }
