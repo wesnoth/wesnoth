@@ -5,6 +5,7 @@ return {
 
         local H = wesnoth.require "lua/helper.lua"
         local AH = wesnoth.require "ai/lua/ai_helper.lua"
+        local LS = wesnoth.require "lua/location_set.lua"
 
         ----- The coward guardian AI -----
         function engine:mai_guardian_coward_eval(cfg)
@@ -244,11 +245,23 @@ return {
                 -- Otherwise choose one randomly from those given in filter_location
                 else
                     local width, height = wesnoth.get_map_size()
-                    local locs = wesnoth.get_locations {
+                    local locs_map = LS.of_pairs(wesnoth.get_locations {
                         x = '1-' .. width,
                         y = '1-' .. height,
                         { "and", cfg.filter_location }
-                    }
+                    })
+
+                    -- Check out which of those hexes the unit can reach
+                    local reach_map = LS.of_pairs(wesnoth.find_reach(unit))
+                    reach_map:inter(locs_map)
+
+                    -- If it can reach some hexes, use only reachable locations,
+                    -- otherwise move toward any (random) one from the entire set
+                    if (reach_map:size() > 0) then
+                        locs_map = reach_map
+                    end
+
+                    local locs = locs_map:to_pairs()
                     local newind = math.random(#locs)
                     newpos = {locs[newind][1], locs[newind][2]}
                 end
