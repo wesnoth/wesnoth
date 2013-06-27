@@ -167,11 +167,11 @@ function wesnoth.wml_actions.micro_ai(cfg)
         -- Set up the CA add/delete parameters
         local CA_parms = {
             {
-                id = 'initialize_healer_support', eval_name = 'initialize_healer_support_eval', exec_name = 'initialize_healer_support_exec',
+                id = 'initialize_healer_support', eval_name = 'mai_healer_initialize_eval', exec_name = 'mai_healer_initialize_exec',
                 max_score = 999990, cfg_table = cfg_hs
             },
             {
-                id = 'healer_support', eval_name = 'healer_support_eval', exec_name = 'healer_support_exec',
+                id = 'healer_support', eval_name = 'mai_healer_move_eval', exec_name = 'mai_healer_move_exec',
                 max_score = 105000, cfg_table = cfg_hs
             },
         }
@@ -181,7 +181,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
         if (cfg.action == 'delete') or (tonumber(cfg.aggression) ~= 0) then
             table.insert(CA_parms,
                 {
-                    id = 'healers_can_attack', eval_name = 'healers_can_attack_eval', exec_name = 'healers_can_attack_exec',
+                    id = 'healers_can_attack', eval_name = 'mai_healer_may_attack_eval', exec_name = 'mai_healer_may_attack_exec',
                     max_score = 99990, cfg_table = {}
                 }
             )
