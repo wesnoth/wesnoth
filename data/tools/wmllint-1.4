@@ -1174,7 +1174,7 @@ def hack_syntax(filename, lines):
         if female_attacks:
             female_end = -1
             for i in range(len(lines)):
-                if lines[i].endswith("[/female]\n"):
+                if lines[i].rstrip().endswith("[/female]"):
                     female_end = i
                     break
             assert female_end != -1
@@ -1187,7 +1187,7 @@ def hack_syntax(filename, lines):
             for i in range(len(lines)):
                 # Male attacks go either before the [female] tag or just
                 # before the closing [/unit]
-                if lines[i].endswith("[/unit]\n") or lines[i].endswith("[female]\n"):
+                if lines[i].rstrip().endswith("[/unit]") or lines[i].rstrip().endswith("[female]"):
                     male_end = i
                     break
             assert male_end != -1
