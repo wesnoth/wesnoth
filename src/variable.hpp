@@ -69,7 +69,7 @@ public:
 	 * because vconfig is often used as a drop-in replacement for config, and
 	 * this const will properly warn you if you try to assign vcfg["key"]=val;
 	 *
-	 * Note: The following construction is unsave:
+	 * Note: The following construction is unsafe:
 	 * const std::string& temp = vcfg["foo"];
 	 * This bind temp to a member of a temporary t_string. The lifetime of the
 	 * temporary is not extended by this reference binding and the temporary's
