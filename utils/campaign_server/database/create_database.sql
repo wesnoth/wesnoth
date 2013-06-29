@@ -39,7 +39,7 @@ CREATE TABLE AddonType (
 
 CREATE TABLE Author (
   id smallint NOT NULL AUTO_INCREMENT,
-  name varchar(100) NOT NULL,
+  name varchar(100) NOT NULL UNIQUE,
   CONSTRAINT pk_Author PRIMARY KEY (id)
 );
 
@@ -103,7 +103,7 @@ CREATE TABLE Dependencies (
     
 CREATE TABLE Language (
   value smallint NOT NULL AUTO_INCREMENT,
-  name varchar(50) NOT NULL,
+  name varchar(50) NOT NULL UNIQUE,
   CONSTRAINT pk_Language PRIMARY KEY (value)
 );
 

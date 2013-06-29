@@ -27,9 +27,10 @@ public:
    {
       std::string request_data;
    public:
-      reply(const std::string& request_data)
-      : request_data(request_data)
-      {}
+      reply(std::iostream& raw_data_stream)
+      {
+         raw_data_stream >> request_data;
+      }
 
       std::vector<boost::asio::const_buffer> to_buffers() const
       {
@@ -40,9 +41,9 @@ public:
    };
    typedef reply reply_type;
 
-   reply_type handle_request(std::string& request)
+   reply_type handle_request(std::iostream& raw_request_stream) const
    {
-      return reply_type(request);
+      return reply_type(raw_request_stream);
    }
 };
 

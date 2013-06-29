@@ -1009,11 +1009,19 @@ endif(ENABLE_SERVER)
 
 if(ENABLE_CAMPAIGN_SERVER)
 
+set(wesnoth-schema_validator-dependencies_SRC
+	${wesnoth-schema_validator_SRC}
+	config_cache.cpp
+	lua_jailbreak_exception.cpp
+	sha1.cpp
+)
+
 set(campaignd_SRC
 	campaign_server/campaign_server.cpp
 	campaign_server/server/server_options.cpp
 	${network_implementation_files}
-	serialization/parser.cpp
+	${wesnoth-schema_validator-dependencies_SRC}
+	serialization/one_hierarchy_validator.cpp
 	config.cpp
 	addon/validation.cpp
 	server/input_stream.cpp
@@ -1023,11 +1031,13 @@ set(campaignd_SRC
 add_executable(campaignd ${campaignd_SRC})
 target_link_libraries(campaignd
 	wesnoth-core
+	wesnoth-schema_validator
 	${server-external-libs}
 	${Boost_THREAD_LIBRARY}
   ${Boost_SYSTEM_LIBRARY}
 	${LIBINTL_LIBRARIES}
 	)
+	
 set_target_properties(campaignd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}campaignd${BINARY_SUFFIX})
 
 if(CMAKE_COMPILER_IS_GNUCXX OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")

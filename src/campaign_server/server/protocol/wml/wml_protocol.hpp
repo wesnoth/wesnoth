@@ -17,10 +17,11 @@
 
 #include <string>
 #include <vector>
-#include <sstream>
+#include <istream>
 #include <boost/asio.hpp>
 
 #include "serialization/parser.hpp"
+#include "serialization/one_hierarchy_validator.hpp"
 
 #include "campaign_server/generic_factory.hpp"
 #include "campaign_server/generic_action.hpp"
@@ -51,10 +52,12 @@ class wml_request
 private:
    network_data data;
 public:
-   wml_request(const std::string& raw_data)
+   wml_request(std::iostream& raw_data_stream)
    {
-      std::istringstream data_stream(raw_data);
-      read(data.get_metadata(), data_stream);
+      using namespace schema_validation;
+      std::unique_ptr<one_hierarchy_validator> validator(new one_hierarchy_validator("test.cfg"));
+      read(data.get_metadata(), raw_data_stream, validator.get());
+      std::cout << "wml_request\n";
    }
 
    network_data& get_data() { return data; }
@@ -83,9 +86,9 @@ public:
       action_factory.register_product("umc_download_request", std::unique_ptr<wml_action>(new umc_download_action()));
    }
 
-   reply_type handle_request(const std::string& raw_request)
+   reply_type handle_request(std::iostream& raw_request_stream) const
    {
-      wml_request request(raw_request);
+      wml_request request(raw_request_stream);
 
       return reply_type(std::move(request.get_data()));
    }
