@@ -24,6 +24,11 @@ public:
    {
       return wml_reply(std::move(request.get_data()));
    }
+
+   virtual std::unique_ptr<basic_wml_action> clone() const
+   {
+      return std::unique_ptr<basic_wml_action>(new request_license_action(*this));
+   }
 };
 
 #endif // CAMPAIGN_SERVER_REQUEST_LICENSE_ACTION_HPP

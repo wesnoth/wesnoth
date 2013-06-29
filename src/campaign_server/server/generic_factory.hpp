@@ -51,12 +51,12 @@ public:
       products.emplace(std::move(id), std::move(product));
    }
 
-   product_ptr make_product(const identifier_type& id)
+   product_ptr make_product(const identifier_type& id) const
    {
       typename id_to_product_map::const_iterator product = products.find(id);
       if(product == products.end())
          throw product_not_found(id);
-      return std::unique_ptr<product_type>(new product_type(product->second));
+      return product->second->clone();
    }
 };
 

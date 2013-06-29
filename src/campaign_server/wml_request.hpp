@@ -17,6 +17,7 @@
 
 #include <memory>
 #include <istream>
+#include <string>
 
 #include "campaign_server/network_data.hpp"
 #include "serialization/one_hierarchy_validator.hpp"
@@ -30,12 +31,20 @@ public:
    wml_request(std::istream& raw_data_stream)
    {
       using namespace schema_validation;
-      std::unique_ptr<one_hierarchy_validator> validator(new one_hierarchy_validator("test.cfg"));
+      std::unique_ptr<one_hierarchy_validator> validator(new one_hierarchy_validator("request_license.cfg"));
       read(data.get_metadata(), raw_data_stream, validator.get());
       std::cout << "[Info] Request read:\n" << data.get_metadata();
    }
 
    network_data& get_data() { return data; }
+
+   std::string name() const
+   {
+      auto iter = data.get_metadata().ordered_begin();
+      if(iter == data.get_metadata().ordered_end())
+        return "";
+      return iter->key;
+   }
 };
 
 

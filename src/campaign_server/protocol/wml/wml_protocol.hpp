@@ -39,7 +39,8 @@ public:
    void handle_request(std::iostream& raw_request_stream) const
    {
       wml_request request(raw_request_stream);
-      wml_reply reply(std::move(request.get_data()));
+      std::unique_ptr<basic_wml_action> action = action_factory.make_product(request.name());
+      wml_reply reply = action->execute(request);
       reply.send(raw_request_stream);
    }
 };

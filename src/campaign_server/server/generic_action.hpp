@@ -15,14 +15,17 @@
 #ifndef SERVER_GENERIC_ACTION_HPP
 #define SERVER_GENERIC_ACTION_HPP
 
+#include <memory>
 
 template <class ReturnType, class... Args>
 class generic_action
 {
 public:
+   typedef generic_action<ReturnType, Args...> this_type;
    typedef ReturnType return_type;
 
    virtual return_type execute(Args... args) = 0;
+   virtual std::unique_ptr<this_type> clone() const = 0;
 };
 
 #endif // SERVER_GENERIC_ACTION_HPP
