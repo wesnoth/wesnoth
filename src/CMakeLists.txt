@@ -1024,7 +1024,6 @@ set(campaignd_SRC
 	serialization/one_hierarchy_validator.cpp
 	config.cpp
 	addon/validation.cpp
-	server/input_stream.cpp
 	loadscreen_empty.cpp
 )
 

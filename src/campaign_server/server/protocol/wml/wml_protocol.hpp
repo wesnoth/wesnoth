@@ -37,7 +37,7 @@ public:
    : data(std::move(data))
    {}
 
-   void send(std::iostream& raw_data_stream) const
+   void send(std::ostream& raw_data_stream) const
    {
       write(raw_data_stream, data.get_metadata());
    }
@@ -48,7 +48,7 @@ class wml_request
 private:
    network_data data;
 public:
-   wml_request(std::iostream& raw_data_stream)
+   wml_request(std::istream& raw_data_stream)
    {
       using namespace schema_validation;
       std::unique_ptr<one_hierarchy_validator> validator(new one_hierarchy_validator("test.cfg"));

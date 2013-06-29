@@ -47,7 +47,7 @@ public:
 private:
   boost::asio::io_service& io_service;
   protocol_type& protocol;
-  boost::asio::ip::tcp::iostream data_stream;
+  tcp_iostream data_stream;
 
 public:
   // Construct a connection with the given io_service.

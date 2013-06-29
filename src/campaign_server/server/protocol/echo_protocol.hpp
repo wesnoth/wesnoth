@@ -32,11 +32,9 @@ public:
          raw_data_stream >> request_data;
       }
 
-      std::vector<boost::asio::const_buffer> to_buffers() const
+      void send(std::ostream& raw_data_stream) const
       {
-         std::vector<boost::asio::const_buffer> buffers;
-         buffers.push_back(boost::asio::buffer(request_data));
-         return buffers;
+         raw_data_stream << request_data;
       }
    };
    typedef reply reply_type;
