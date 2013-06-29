@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-#ifndef SERVER_NETWORK_DATA_HPP
-#define SERVER_NETWORK_DATA_HPP
+#ifndef CAMPAIGN_SERVER_NETWORK_DATA_HPP
+#define CAMPAIGN_SERVER_NETWORK_DATA_HPP
 
 #include <string>
 #include <array>
@@ -65,4 +65,4 @@ public:
    }  
 };
 
-#endif // SERVER_NETWORK_DATA_HPP
+#endif // CAMPAIGN_SERVER_NETWORK_DATA_HPP

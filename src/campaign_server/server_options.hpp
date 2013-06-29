@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+#ifndef CAMPAIGN_SERVER_OPTIONS_HPP
+#define CAMPAIGN_SERVER_OPTIONS_HPP
+
 #include <string>
 #include <fstream>
 
@@ -73,3 +76,4 @@ class server_options
     static const int DEFAULT_THREADS;
 };
 
+#endif //CAMPAIGN_SERVER_OPTIONS_HPP

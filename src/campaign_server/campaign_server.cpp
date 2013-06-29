@@ -15,9 +15,9 @@
 #include <stdexcept>
 #include "config.hpp"
 
-#include "campaign_server/server/server_options.hpp"
+#include "campaign_server/server_options.hpp"
 #include "campaign_server/server/single_threaded/server.hpp"
-#include "campaign_server/server/protocol/wml/wml_protocol.hpp"
+#include "campaign_server/protocol/wml/wml_protocol.hpp"
 
 int main(int argc, char *argv[])
 {

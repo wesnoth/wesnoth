@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-#ifndef GENERIC_FACTORY_HPP
-#define GENERIC_FACTORY_HPP
+#ifndef SERVER_GENERIC_FACTORY_HPP
+#define SERVER_GENERIC_FACTORY_HPP
 
 #include <string>
 #include <memory>
@@ -60,4 +60,4 @@ public:
    }
 };
 
-#endif // SERVER_ACTION_FACTORY_HPP
+#endif // SERVER_GENERIC_FACTORY_HPP
