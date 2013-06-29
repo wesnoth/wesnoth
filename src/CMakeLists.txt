@@ -1019,9 +1019,9 @@ set(wesnoth-schema_validator-dependencies_SRC
 set(campaignd_SRC
 	campaign_server/campaign_server.cpp
 	campaign_server/server/server_options.cpp
+	serialization/one_hierarchy_validator.cpp
 	${network_implementation_files}
 	${wesnoth-schema_validator-dependencies_SRC}
-	serialization/one_hierarchy_validator.cpp
 	config.cpp
 	addon/validation.cpp
 	loadscreen_empty.cpp

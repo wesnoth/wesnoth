@@ -545,6 +545,7 @@ client_env.WesnothProgram("wesnoth", wesnoth_objects, have_client_prereqs)
 
 campaignd_sources = Split("""
     campaign_server/server/server_options.cpp
+    serialization/one_hierarchy_validator.cpp
     """)
 
 if env["PLATFORM"] == "win32": env["fifodir"] = ""
