@@ -131,7 +131,7 @@ void parser::operator()()
 			break;
 		}
 		loadscreen::increment_progress();
-	} while (tok_->current_token().type != token::END);
+	} while (tok_->current_token().type != token::END && (!validator_ || !validator_->is_over(cfg_)));
 
 	// The main element should be there. If it is not, this is a parser error.
 	assert(!elements.empty());

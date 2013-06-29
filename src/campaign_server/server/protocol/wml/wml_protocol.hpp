@@ -37,13 +37,9 @@ public:
    : data(std::move(data))
    {}
 
-   std::vector<boost::asio::const_buffer> to_buffers() const
+   void send(std::iostream& raw_data_stream) const
    {
-      std::vector<boost::asio::const_buffer> buffers;
-      std::ostringstream data_stream;
-      write(data_stream, data.get_metadata());
-      buffers.push_back(boost::asio::buffer(data_stream.str()));
-      return buffers;
+      write(raw_data_stream, data.get_metadata());
    }
 };
 
@@ -57,7 +53,7 @@ public:
       using namespace schema_validation;
       std::unique_ptr<one_hierarchy_validator> validator(new one_hierarchy_validator("test.cfg"));
       read(data.get_metadata(), raw_data_stream, validator.get());
-      std::cout << "wml_request\n";
+      std::cout << "[Info] Request read:\n" << data.get_metadata();
    }
 
    network_data& get_data() { return data; }
@@ -86,11 +82,11 @@ public:
       action_factory.register_product("umc_download_request", std::unique_ptr<wml_action>(new umc_download_action()));
    }
 
-   reply_type handle_request(std::iostream& raw_request_stream) const
+   void handle_request(std::iostream& raw_request_stream) const
    {
       wml_request request(raw_request_stream);
-
-      return reply_type(std::move(request.get_data()));
+      wml_reply reply(std::move(request.get_data()));
+      reply.send(raw_request_stream);
    }
 };
 
