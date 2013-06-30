@@ -65,7 +65,6 @@ public:
 	void unit_description();
 	void rename_unit();
 	void create_unit(mouse_handler& mousehandler);
-	void create_unit_2(mouse_handler& mousehandler); // TODO: replace create_unit when complete
 	void change_side(mouse_handler& mousehandler);
 	void kill_unit(mouse_handler& mousehandler);
 	void label_terrain(mouse_handler& mousehandler, bool team_only);
