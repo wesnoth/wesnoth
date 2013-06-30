@@ -1046,8 +1046,16 @@ namespace { // Helpers for create_unit()
 		gui.invalidate_unit();
 		unit_display::unit_recruited(loc);
 
+		// Village capture?
 		if ( map.is_village(loc) )
 			actions::get_village(loc, created.side());
+
+		// Update fog/shroud.
+		actions::shroud_clearer clearer;
+		clearer.clear_unit(loc, created);
+		clearer.fire_events();
+		if ( add_result.first.valid() ) // In case sighted events messed with the unit.
+			actions::actor_sighted(*add_result.first);
 	}
 
 }// Anonymous namespace
