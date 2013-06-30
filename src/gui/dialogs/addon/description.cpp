@@ -34,6 +34,34 @@ namespace {
 		return "";
 	}
 
+	std::string colorify_addon_state_string(const std::string& str, const addon_tracking_info& state)
+	{
+		std::string colorname = "";
+
+		switch(state.state) {
+		case ADDON_NONE:
+			return str;
+		case ADDON_INSTALLED:
+		case ADDON_NOT_TRACKED:
+			colorname = "green";
+			break;
+		case ADDON_INSTALLED_UPGRADABLE:
+			colorname = "yellow";
+			break;
+		case ADDON_INSTALLED_OUTDATED:
+			colorname = "orange";
+			break;
+		case ADDON_INSTALLED_BROKEN:
+			colorname = "red";
+			break;
+		default:
+			colorname = "gray";
+			break;
+		}
+
+		return "<span color='" + colorname + "'>" + str + "</span>";
+	}
+
 	std::string describe_addon_state_info(const addon_tracking_info& state)
 	{
 		std::string s;
@@ -44,67 +72,55 @@ namespace {
 		switch(state.state) {
 		case ADDON_NONE:
 			if(!state.can_publish) {
-				s += _("addon_state^Not installed");
+				s = _("addon_state^Not installed");
 			} else {
-				s += _("addon_state^Published, not installed");
+				s = _("addon_state^Published, not installed");
 			}
 			break;
 		case ADDON_INSTALLED:
-			s += "<span color='green'>";
 			if(!state.can_publish) {
-				s += _("addon_state^Installed");
+				s = _("addon_state^Installed");
 			} else {
-				s += _("addon_state^Published");
+				s = _("addon_state^Published");
 			}
-			s += "</span>";
 			break;
 		case ADDON_NOT_TRACKED:
-			s += "<span color='green'>";
 			if(!state.can_publish) {
-				s += _("addon_state^Installed, not tracking local version");
+				s = _("addon_state^Installed, not tracking local version");
 			} else {
 				// Published add-ons often don't have local status information,
 				// hence untracked. This should be considered normal.
-				s += _("addon_state^Published, not tracking local version");
+				s = _("addon_state^Published, not tracking local version");
 			}
-			s += "</span>";
 			break;
 		case ADDON_INSTALLED_UPGRADABLE:
-			s += "<span color='yellow'>";
 			{
 				const char* const vstr = !state.can_publish
 					? _("addon_state^Installed ($local_version|), upgradable")
 					: _("addon_state^Published ($local_version| installed), upgradable");
-				s += utils::interpolate_variables_into_string(vstr, &i18n_symbols);
+				s = utils::interpolate_variables_into_string(vstr, &i18n_symbols);
 			}
-			s += "</span>";
 			break;
 		case ADDON_INSTALLED_OUTDATED:
-			s += "<span color='orange'>";
 			{
 				const char* const vstr = !state.can_publish
 					? _("addon_state^Installed ($local_version|), outdated on server")
 					: _("addon_state^Published ($local_version| installed), outdated on server");
-				s += utils::interpolate_variables_into_string(vstr, &i18n_symbols);
+				s = utils::interpolate_variables_into_string(vstr, &i18n_symbols);
 			}
-			s += "</span>";
 			break;
 		case ADDON_INSTALLED_BROKEN:
-			s += "<span color='red'>";
 			if(!state.can_publish) {
-				s += _("addon_state^Installed, broken");
+				s = _("addon_state^Installed, broken");
 			} else {
-				s += _("addon_state^Published, broken");
+				s = _("addon_state^Published, broken");
 			}
-			s += "</span>";
 			break;
 		default:
-			s += "<span color='gray'>";
-			s += _("addon_state^Unknown");
-			s += "</span>";
+			s = _("addon_state^Unknown");
 		}
 
-		return s;
+		return colorify_addon_state_string(s, state);
 	}
 }
 
