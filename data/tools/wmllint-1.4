@@ -1523,6 +1523,18 @@ start_time=-150
             in_terrain = False
         if in_terrain:
             lines[i] = lines[i].replace("letter", "terrain")
+    # Upgrade old UNIT macro to 1.4's LOYAL_UNIT
+    for i in range(len(lines)):
+        if "no-syntax-rewrite" in lines[i]:
+            break
+        if '{UNIT ' in lines[i]:
+            old = lines[i].strip()
+            (new, num) = re.subn(r'{UNIT +(\([^)]*\)|"[^"]*"|[^(" ][^ ]*) +(\([^)]*\)|"[^"]*"|[^(" ][^ ]*) +(\([^)]*\)|_? *"[^"]*"|_? *[^(" ][^ ]*) +([0-9]+) +([0-9]+|[^ ]*\$[^ ]*x[^ ]*|\(?{[A-Z0-9_]*X[A-Z0-9_]*}\)?) +([0-9]+|[^ ]*\$[^ ]*y[^ ]*|\(?{[A-Z0-9_]*Y[A-Z0-9_]*}\)?)}', r'{LOYAL_UNIT \4 \1 \5 \6 \2 \3}', lines[i])
+            if num > 0:
+                lines[i] = new
+                print '"%s", line %d: %s -> %s' % (filename, i+1, old, new.strip())
+            if num == 0:
+                print '"%s", line %d: UNIT macro not converted to LOYAL_UNIT (%s)' % (filename, i+1, old)
     # More syntax transformations would go here.
     return (lines, modcount)
 
