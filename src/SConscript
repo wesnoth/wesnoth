@@ -40,6 +40,7 @@ libschema_sources = Split("""
     sha1.cpp
     tools/schema/tag.cpp
     """)
+# hack: this prevents libschema from conflicting with liblua
 libschema_sources.extend(env.Object("lua_jailbreak_schema", "lua_jailbreak_exception.cpp"))
 
 libwesnoth_core_sources.extend(env.Object("network_worker.cpp", EXTRA_DEFINE = env['raw_sockets'] and "NETWORK_USE_RAW_SOCKETS" or None))
