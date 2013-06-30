@@ -21,10 +21,9 @@
 #ifndef SERVER_SINGLE_THREAD_SERVER_HPP
 #define SERVER_SINGLE_THREAD_SERVER_HPP
 
-#include <memory>
-
 #include <boost/asio.hpp>
 #include <boost/noncopyable.hpp>
+#include <boost/make_shared.hpp>
 #include "campaign_server/server/connection.hpp"
 
 template <class Protocol>
@@ -34,7 +33,7 @@ class server : boost::noncopyable
     typedef Protocol protocol_type;
   private:
     typedef connection<protocol_type> connection_type;
-    typedef std::shared_ptr<connection_type> connection_ptr;
+    typedef boost::shared_ptr<connection_type> connection_ptr;
 
     boost::asio::io_service io_service;
     boost::asio::ip::tcp::acceptor acceptor;
@@ -97,7 +96,7 @@ void server<Protocol>::run()
 template <class Protocol>
 void server<Protocol>::start_accept()
 {
-  new_connection = std::make_shared<connection_type>(io_service, protocol);
+  new_connection.reset(new connection_type(io_service, protocol));
   acceptor.async_accept(new_connection->get_socket(),  
     boost::bind(&server::handle_accept, this, boost::asio::placeholders::error)
   );

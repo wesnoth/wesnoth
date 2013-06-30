@@ -41,14 +41,14 @@ class generic_factory
 public:
    typedef Product product_type;
    typedef Identifier identifier_type;
-   typedef std::unique_ptr<product_type> product_ptr;
+   typedef boost::shared_ptr<product_type> product_ptr;
 private:
    typedef std::map<identifier_type, product_ptr> id_to_product_map;
    id_to_product_map products;
 public:
-   void register_product(identifier_type&& id, product_ptr&& product)
+   void register_product(const identifier_type& id, const product_ptr& product)
    {
-      products.emplace(std::move(id), std::move(product));
+      products.insert(std::make_pair(id, product));
    }
 
    product_ptr make_product(const identifier_type& id) const

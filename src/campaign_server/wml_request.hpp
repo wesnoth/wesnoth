@@ -15,9 +15,10 @@
 #ifndef CAMPAIGN_SERVER_WML_REQUEST_HPP
 #define CAMPAIGN_SERVER_WML_REQUEST_HPP
 
-#include <memory>
 #include <istream>
 #include <string>
+
+#include <boost/shared_ptr.hpp>
 
 #include "campaign_server/network_data.hpp"
 #include "serialization/one_hierarchy_validator.hpp"
@@ -31,7 +32,7 @@ public:
    wml_request(std::istream& raw_data_stream)
    {
       using namespace schema_validation;
-      std::unique_ptr<one_hierarchy_validator> validator(new one_hierarchy_validator("request_license.cfg"));
+      boost::shared_ptr<one_hierarchy_validator> validator(new one_hierarchy_validator("request_license.cfg"));
       read(data.get_metadata(), raw_data_stream, validator.get());
       std::cout << "[Info] Request read:\n" << data.get_metadata();
    }
@@ -40,7 +41,7 @@ public:
 
    std::string name() const
    {
-      auto iter = data.get_metadata().ordered_begin();
+      config::all_children_iterator iter = data.get_metadata().ordered_begin();
       if(iter == data.get_metadata().ordered_end())
         return "";
       return iter->key;

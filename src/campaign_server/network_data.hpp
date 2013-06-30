@@ -16,7 +16,6 @@
 #define CAMPAIGN_SERVER_NETWORK_DATA_HPP
 
 #include <string>
-#include <array>
 #include <vector>
 #include <boost/asio.hpp>
 
@@ -32,20 +31,17 @@ protected:
    binary_data_type binary_data;
 
 public:
-   network_data(const network_data&) = delete;
-   network_data& operator=(const network_data&) = delete;
-
-   network_data(metadata_type&& metadata, binary_data_type&& binary_data)
-   : metadata(std::move(metadata))
-   , binary_data(std::move(binary_data))
+   network_data(const metadata_type& metadata, const binary_data_type& binary_data)
+   : metadata(metadata)
+   , binary_data(binary_data)
    {}
 
-   network_data(network_data&& data)
-   : metadata(std::move(data.metadata))
-   , binary_data(std::move(data.binary_data))
+   network_data(const network_data& data)
+   : metadata(data.metadata)
+   , binary_data(data.binary_data)
    {}
 
-   network_data() = default;
+   network_data(){}
 
    const metadata_type& get_metadata() const
    {

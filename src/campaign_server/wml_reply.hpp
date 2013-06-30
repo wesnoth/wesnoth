@@ -26,9 +26,9 @@ class wml_reply
 private:
    network_data data;
 public:
-   wml_reply() = default;
-   wml_reply(network_data&& data)
-   : data(std::move(data))
+   wml_reply(){}
+   wml_reply(const network_data& data)
+   : data(data)
    {}
 
    void send(std::ostream& raw_data_stream) const

@@ -15,6 +15,7 @@
 #ifndef CAMPAIGN_SERVER_REQUEST_LICENSE_ACTION_HPP
 #define CAMPAIGN_SERVER_REQUEST_LICENSE_ACTION_HPP
 
+#include <boost/shared_ptr.hpp>
 #include "campaign_server/actions/basic_wml_action.hpp"
 
 class request_license_action : public basic_wml_action
@@ -22,12 +23,12 @@ class request_license_action : public basic_wml_action
 public:
    virtual wml_reply execute(wml_request& request)
    {
-      return wml_reply(std::move(request.get_data()));
+      return wml_reply(request.get_data());
    }
 
-   virtual std::unique_ptr<basic_wml_action> clone() const
+   virtual boost::shared_ptr<basic_wml_action> clone() const
    {
-      return std::unique_ptr<basic_wml_action>(new request_license_action(*this));
+      return boost::shared_ptr<basic_wml_action>(new request_license_action(*this));
    }
 };
 

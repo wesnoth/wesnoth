@@ -19,6 +19,7 @@
 #include <vector>
 #include <istream>
 #include <boost/asio.hpp>
+#include <boost/shared_ptr.hpp>
 
 #include "campaign_server/server/generic_factory.hpp"
 #include "campaign_server/actions/request_license_action.hpp"
@@ -33,13 +34,13 @@ private:
 public:
    wml_protocol()
    {
-      action_factory.register_product("request_license", std::unique_ptr<basic_wml_action>(new request_license_action()));
+      action_factory.register_product("request_license", boost::make_shared<request_license_action>());
    }
 
    void handle_request(std::iostream& raw_request_stream) const
    {
       wml_request request(raw_request_stream);
-      std::unique_ptr<basic_wml_action> action = action_factory.make_product(request.name());
+      boost::shared_ptr<basic_wml_action> action = action_factory.make_product(request.name());
       wml_reply reply = action->execute(request);
       reply.send(raw_request_stream);
    }

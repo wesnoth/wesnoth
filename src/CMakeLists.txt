@@ -1042,7 +1042,7 @@ set_target_properties(campaignd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}campaignd
 if(CMAKE_COMPILER_IS_GNUCXX OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
 	set_target_properties(campaignd
 		PROPERTIES COMPILE_FLAGS
-		"-std=c++11 -pthread"
+		"-pthread"
 	)
 endif()
 
