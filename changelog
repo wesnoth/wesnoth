@@ -232,6 +232,7 @@ Version 1.11.2:
      [effect]apply_to=type or [effect]apply_to=variation.
    * Fixed bug #20401: [remove_unit_overlay] did not work when the image used an
      image path function that took multiple parameters.
+   * Refactored [base_unit] to be more robust in oddball cases.
    * Improved support for setting id= within a [variation].
    * Added support for square bracket expansion in animation strings I.E
      halo="pic[1-2,5]:[10,20,30]" expands to halo="pic1:10,pic2:20,pic5:30"
