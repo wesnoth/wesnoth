@@ -28,11 +28,46 @@ class wml_request
 {
 private:
    network_data data;
+
+   void check_stream_state(std::istream& raw_data_stream, std::string error_msg)
+   {
+      if(!raw_data_stream.good())
+      {
+         throw std::runtime_error(error_msg);
+      }
+   }
+
+   std::string peek_name(std::istream& raw_data_stream)
+   {
+      // Try to read the first tag which is the name of the packet.
+      std::string error_msg("Invalid packet. The request name could not have been read.");
+      char first_bracket;
+      raw_data_stream >> first_bracket;
+      check_stream_state(raw_data_stream, error_msg);
+      if(first_bracket != '[')
+         throw std::runtime_error(error_msg);
+      std::string request_name;
+      getline(raw_data_stream, request_name, ']');
+      check_stream_state(raw_data_stream, error_msg);
+
+      // Put back name in the stream. So the parsing of the config will be ok.
+      raw_data_stream.putback(']');
+      std::string::const_reverse_iterator b = request_name.rbegin();
+      std::string::const_reverse_iterator e = request_name.rend();
+      for(; b != e; ++b)
+         raw_data_stream.putback(*b);
+      raw_data_stream.putback(first_bracket);
+
+      return request_name;
+   }
+
 public:
+   wml_request(){}
    wml_request(std::istream& raw_data_stream)
    {
       using namespace schema_validation;
-      boost::shared_ptr<one_hierarchy_validator> validator(new one_hierarchy_validator("request_license.cfg"));
+      std::string request_name = peek_name(raw_data_stream);
+      boost::shared_ptr<one_hierarchy_validator> validator(new one_hierarchy_validator("../data/campaign_server/protocol_schema/"+request_name+".cfg"));
       read(data.get_metadata(), raw_data_stream, validator.get());
       std::cout << "[Info] Request read:\n" << data.get_metadata();
    }
