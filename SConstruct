@@ -329,6 +329,11 @@ if env["prereqs"]:
         conf.CheckSDL('SDL_net') and \
         CheckANA(conf, env["use_network_ana"]) or Warning("Base prerequisites are not met.")
 
+    have_campaignd_prereqs = have_server_prereqs and \
+        CheckAsio(conf) and \
+        conf.CheckBoost("program_options", require_version="1.35.0") and \
+        conf.CheckBoost("regex", require_version = "1.35.0") or Warning("Campaignd prerequisites are not met. campaignd cannot be built.")
+
     env = conf.Finish()
     client_env = env.Clone()
     conf = client_env.Configure(**configure_args)
@@ -455,7 +460,7 @@ try:
 except:
     pass
 
-Export(Split("env client_env test_env have_client_prereqs have_server_prereqs have_test_prereqs"))
+Export(Split("env client_env test_env have_campaignd_prereqs have_client_prereqs have_server_prereqs have_test_prereqs"))
 SConscript(dirs = Split("po doc packaging/windows packaging/systemd"))
 
 binaries = Split("wesnoth wesnothd cutter exploder campaignd test")

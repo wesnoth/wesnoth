@@ -29,12 +29,19 @@ libwesnoth_core_sources = Split("""
     serialization/binary_or_text.cpp
     serialization/parser.cpp
     serialization/preprocessor.cpp
-    serialization/schema_validator.cpp
     serialization/string_utils.cpp
     serialization/tokenizer.cpp
+    """)
+
+libschema_sources = Split("""
+    config_cache.cpp
+    serialization/schema_validator.cpp
     serialization/validator.cpp
+    sha1.cpp
     tools/schema/tag.cpp
     """)
+# hack: this prevents libschema from conflicting with liblua
+libschema_sources.extend(env.Object("lua_jailbreak_schema", "lua_jailbreak_exception.cpp"))
 
 libwesnoth_core_sources.extend(env.Object("network_worker.cpp", EXTRA_DEFINE = env['raw_sockets'] and "NETWORK_USE_RAW_SOCKETS" or None))
 
@@ -74,6 +81,7 @@ libwesnoth_core_sources.extend([
     ])
 
 libwesnoth_core = [env.Library("wesnoth_core", libwesnoth_core_sources), ana]
+libschema = [env.Library("schema", libschema_sources)]
 
 libwesnoth_sources = Split("""
     arrow.cpp
@@ -219,7 +227,6 @@ wesnoth_sources = Split("""
     attack_prediction_display.cpp
     callable_objects.cpp
     commandline_options.cpp
-    config_cache.cpp
     controller_base.cpp
     dialogs.cpp
     editor/action/action.cpp
@@ -464,7 +471,6 @@ wesnoth_sources = Split("""
     scripting/debug_lua.cpp
     scripting/lua.cpp
     settings.cpp
-    sha1.cpp
     side_filter.cpp
     statistics.cpp
     statistics_dialog.cpp
@@ -538,7 +544,7 @@ for env in [test_env, client_env, env]:
     env.AddMethod(WesnothProgram)
 
 wesnoth_objects = ["game.cpp", libwesnoth_extras, libwesnoth_core, libwesnoth_sdl,
-                   libwesnoth, env["wesnoth_res"]]
+                   libwesnoth, libschema, env["wesnoth_res"]]
 if env["host"] in ["x86_64-nacl", "i686-nacl"]:
     wesnoth_objects += [SConscript("nacl/SConscript")]
 client_env.WesnothProgram("wesnoth", wesnoth_objects, have_client_prereqs)
@@ -551,7 +557,7 @@ campaignd_sources = Split("""
 if env["PLATFORM"] == "win32": env["fifodir"] = ""
 campaignd_sources.extend(env.Object("campaign_server/campaign_server.cpp", EXTRA_DEFINE = env['fifodir'] and "FIFODIR='\"$fifodir\"'" or None))
 
-env.WesnothProgram("campaignd", campaignd_sources + [libwesnoth_core, libwesnothd, libcampaignd], have_server_prereqs)
+env.WesnothProgram("campaignd", campaignd_sources + [libwesnoth_core, libwesnothd, libcampaignd, libschema], have_campaignd_prereqs)
 
 wesnothd_sources = Split("""
     server/ban.cpp
