@@ -1008,7 +1008,7 @@ def hack_syntax(filename, lines):
     unit_image = None
     unit_sound = None
     get_hit_sound = None
-    has_defense_anim = False
+    has_defense_anim = None
     has_special_notes = False
     for i in range(len(lines)):
         if "[unit]" in lines[i]:
@@ -1017,7 +1017,7 @@ def hack_syntax(filename, lines):
         elif "[/unit]" in lines[i]:
             if unit_id and get_hit_sound:
                 if has_defense_anim:
-                    print 'wmllint: "%s", line %d: unit%s has both deprecated get_hit_sound key and a DEFENSE_ANIM'%(filename, get_hit_sound+1, unit_id)
+                    print 'wmllint: "%s", lines %d, %d: unit%s has both deprecated get_hit_sound key and a DEFENSE_ANIM'%(filename, get_hit_sound+1, has_defense_anim+1, unit_id)
                 else:
                     new_anim = "{DEFENSE_ANIM %s %s %s}" % \
                                (unit_image, unit_image, unit_sound)
@@ -1031,11 +1031,11 @@ def hack_syntax(filename, lines):
             unit_image = None
             unit_sound = None
             get_hit_sound = None
-            has_defense_anim = False
+            has_defense_anim = None
             has_special_notes = False
         if in_unit:
-            if "{DEFENSE_ANIM" in lines[i]:
-                has_defense_anim = True
+            if "{DEFENSE_ANIM" in lines[i] and not has_defense_anim:
+                has_defense_anim = i
             else:
                 fields = parse_attribute(lines[i])
                 if fields is None:
