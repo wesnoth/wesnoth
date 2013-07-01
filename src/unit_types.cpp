@@ -1215,23 +1215,32 @@ void unit_type_data::set_config(config &cfg)
 		loadscreen::increment_progress();
 	}
 
+	// Apply base units.
+	BOOST_FOREACH(config &ut, cfg.child_range("unit_type"))
+	{
+		if ( ut.has_child("base_unit") ) {
+			// Derived units must specify a new id.
+			// (An error message will be emitted later if id is empty.)
+			const std::string id = ut["id"];
+			if ( !id.empty() ) {
+				std::vector<std::string> base_tree(1, id);
+				apply_base_unit(ut, cfg, base_tree);
+				loadscreen::increment_progress();
+			}
+		}
+	}
+
+	// Handle inheritance and recording of unit types.
 	BOOST_FOREACH(config &ut, cfg.child_range("unit_type"))
 	{
 		std::string id = ut["id"];
+		// Every type is required to have an id.
 		if ( id.empty() ) {
 			ERR_CF << "[unit_type] with empty id=, ignoring:\n" << ut.debug();
-		} else {
-			std::vector<std::string> base_tree(1, id);
-			apply_base_unit(ut, cfg, base_tree);
-
-			if ( insert(std::make_pair(id, unit_type(ut))).second ) {
-				LOG_CONFIG << "added " << id << " to unit_type list (unit_type_data.unit_types)\n";
-			} else {
-				ERR_CF << "Multiple [unit_type]s with id=" << id << " encountered.\n";
-			}
+			continue;
 		}
 
-		// Handle genders and variations.
+		// Complete the gender-specific children of the config.
 		if ( config &male_cfg = ut.child("male") ) {
 			fill_unit_sub_type(male_cfg, ut, true);
 			handle_variations(male_cfg);
@@ -1240,14 +1249,24 @@ void unit_type_data::set_config(config &cfg)
 			fill_unit_sub_type(female_cfg, ut, true);
 			handle_variations(female_cfg);
 		}
+
+		// Complete the variation-defining children of the config.
 		handle_variations(ut);
+
+		// Record this unit type.
+		if ( insert(std::make_pair(id, unit_type(ut))).second ) {
+			LOG_CONFIG << "added " << id << " to unit_type list (unit_type_data.unit_types)\n";
+		} else {
+			ERR_CF << "Multiple [unit_type]s with id=" << id << " encountered.\n";
+		}
 
 		loadscreen::increment_progress();
 	}
-	// Now build all the types that were inserted above. (This was not done within
-	// the loop for performance.)
+
+	// Build all unit types. (This was not done within the loop for performance.)
 	build_all(unit_type::CREATED);
 
+	// Suppress some unit types (presumably used as base units) from the help.
 	if (const config &hide_help = cfg.child("hide_help")) {
 		hide_help_all_ = hide_help["all"].to_bool();
 		read_hide_help(hide_help);
