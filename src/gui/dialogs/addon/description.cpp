@@ -148,7 +148,9 @@ namespace {
 		const addon_info& addon = const_at(addon_id, addons_list);
 		std::string str;
 
-		FOREACH(const AUTO& dep_id, addon.depends) {
+		const std::set<std::string>& deps = addon.resolve_dependencies(addons_list);
+
+		FOREACH(const AUTO& dep_id, deps) {
 			addon_info dep;
 			addon_tracking_info depstate;
 
