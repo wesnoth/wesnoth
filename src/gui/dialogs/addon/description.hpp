@@ -29,19 +29,21 @@ public:
 	/**
 	 * Constructor.
 	 *
-	 * @param addon               The information about the addon to show.
-	 * @param state               Local installation status for the add-on.
+	 * @param addon_id            The requested add-on's id.
+	 * @param addons_list         Complete list of add-ons including the requested add-on
+	 *                            and its dependencies.
+	 * @param state               Local installation status of the add-ons in @a addons_list.
 	 */
-	taddon_description(const addon_info& addon, const addon_tracking_info& state);
+	taddon_description(const std::string& addon_id, const addons_list& addons_list, const addons_tracking_list& addon_states);
 
 	/**
 	 * The display function.
 	 *
 	 * See @ref tdialog for more information.
 	 */
-	static void display(const addon_info& addon, const addon_tracking_info& state, CVideo& video)
+	static void display(const std::string& addon_id, const addons_list& addons_list, const addons_tracking_list& addon_states, CVideo& video)
 	{
-		taddon_description(addon, state).show(video);
+		taddon_description(addon_id, addons_list, addon_states).show(video);
 	}
 
 private:

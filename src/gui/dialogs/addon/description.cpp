@@ -122,6 +122,60 @@ namespace {
 
 		return colorify_addon_state_string(s, state);
 	}
+
+	/**
+	 * Retrieves an element from the given associative container or dies in some way.
+	 *
+	 * It fails an @a assert() check or throws an exception if the requested element
+	 * does not exist.
+	 *
+	 * @return An element from the container that is guranteed to have existed before
+	 *         running this function.
+	 */
+	template<typename MapT>
+	typename MapT::mapped_type const& const_at(typename MapT::key_type const& key, MapT const& map)
+	{
+		typename MapT::const_iterator it = map.find(key);
+		if(it == map.end()) {
+			assert(it != map.end());
+			throw std::out_of_range("const_at()"); // Shouldn't get here without disabling assert()
+		}
+		return it->second;
+	}
+
+	std::string make_display_dependencies(const std::string& addon_id, const addons_list& addons_list, const addons_tracking_list& addon_states)
+	{
+		const addon_info& addon = const_at(addon_id, addons_list);
+		std::string str;
+
+		FOREACH(const AUTO& dep_id, addon.depends) {
+			addon_info dep;
+			addon_tracking_info depstate;
+
+			addons_list::const_iterator ali = addons_list.find(dep_id);
+			addons_tracking_list::const_iterator tli = addon_states.find(dep_id);
+
+			if(ali == addons_list.end()) {
+				dep.id = dep_id; // Build dummy addon_info.
+			} else {
+				dep = ali->second;
+			}
+
+			if(tli == addon_states.end()) {
+				depstate = get_addon_tracking_info(dep);
+			} else {
+				depstate = tli->second;
+			}
+
+			if(!str.empty()) {
+				str += ", ";
+			}
+
+			str += colorify_addon_state_string(dep.display_title(), depstate);
+		}
+
+		return str;
+	}
 }
 
 namespace gui2 {
@@ -176,8 +230,11 @@ namespace gui2 {
 
 REGISTER_DIALOG(addon_description)
 
-taddon_description::taddon_description(const addon_info& addon, const addon_tracking_info& state)
+taddon_description::taddon_description(const std::string& addon_id, const addons_list& addons_list, const addons_tracking_list& addon_states)
 {
+	const addon_info& addon = const_at(addon_id, addons_list);
+	const addon_tracking_info& state = const_at(addon_id, addon_states);
+
 	register_label("image", true, addon.display_icon());
 	register_label("title", true, addon.title);
 	register_label("version", true, addon.version);
@@ -188,6 +245,9 @@ taddon_description::taddon_description(const addon_info& addon, const addon_trac
 	register_label("downloads", true, str_cast(addon.downloads));
 	if(!addon.description.empty()) {
 		register_label("description", true, addon.description);
+	}
+	if(!addon.depends.empty()) {
+		register_label("dependencies", true, make_display_dependencies(addon_id, addons_list, addon_states), true);
 	}
 
 	std::string languages;

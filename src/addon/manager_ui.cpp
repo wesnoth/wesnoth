@@ -363,7 +363,7 @@ public:
 		if(choice < display_ids_.size()) {
 			const std::string& id = display_ids_[choice];
 			assert(tracking_.find(id) != tracking_.end());
-			gui2::taddon_description::display(addons_[id], tracking_[id], disp_.video());
+			gui2::taddon_description::display(id, addons_, tracking_, disp_.video());
 		}
 
 		return gui::CONTINUE_DIALOG;
