@@ -1484,7 +1484,7 @@ def hack_syntax(filename, lines):
             if len(linenos) > 1:
                 print >>sys.stderr, 'warning: duplicated attack %s at:' % key
                 for dup in linenos:
-                    print '"%s", %d: %s' % (filename, dup, key)
+                    print >>sys.stderr, '"%s", %d: %s' % (filename, dup, key)
     # Lift obsolete image_short and image_long tags
     expanded = """\
 [attack_anim]
