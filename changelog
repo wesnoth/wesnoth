@@ -1,7 +1,9 @@
-Version 1.4.7+svn:
+Version 1.4.7+dev:
  * campaigns:
    * Descent into Darkness:
      * Removed the custom python AI used in 'A Haunting in Winter'
+   * The Hammer of Thursagan:
+     * fixed "time over" event so dialog displays in 'High Pass'
  * language and i18n:
    * updated translations: French, Italian, Japanese
  * multiplayer:
@@ -14,8 +16,12 @@ Version 1.4.7+svn:
    * Fixed bug #12896: Map generator does not sync between clients when
      advancing in MP campaigns
    * Removed support for PythonAI to handle CVE-2009-0367
-   * Fixed wmllint, wmlscope and wmlindent not working correctly on Windows if a
-     command line argument ends with a backslash
+   * Backported fix for wmllint, wmlscope and wmlindent not working correctly
+     on Windows if a command line argument ends with a backslash
+   * wmllint: update paths from "portraits/core/" to "portraits/", clean up
+     get_hit_sound messages, fix endswith()s that presumed unit files use UNIX
+     newlines, backport fix for Windows files refusing to be overwritten by
+     a rename, fix second half of "duplicated attack" warning printing to stdout
 
 Version 1.4.7:
  * campaigns:
