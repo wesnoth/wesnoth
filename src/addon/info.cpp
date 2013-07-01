@@ -46,12 +46,10 @@ namespace {
 
 		BOOST_FOREACH(const std::string& dep, base_deps) {
 			if(base_id == dep) {
-				// TODO: make it possible to report this to the UI so it can be fixed by the add-on maintainer
-				ERR_AC << dep << " depends upon itself; breaking circular dependency\n";
+				LOG_AC << dep << " depends upon itself; breaking circular dependency\n";
 				continue;
 			} else if(dest.find(dep) != dest.end()) {
-				// TODO: make it possible to report this to the UI so it can be fixed by the add-on maintainer
-				ERR_AC << dep << " already in dependency tree; breaking circular dependency\n";
+				LOG_AC << dep << " already in dependency tree; breaking circular dependency\n";
 				continue;
 			}
 
@@ -175,8 +173,7 @@ std::set<std::string> addon_info::resolve_dependencies(const addons_list& addons
 	resolve_deps_recursive(addons, this->id, deps);
 
 	if(deps.find(this->id) != deps.end()) {
-		// TODO: make it possible to report this to the UI so it can be fixed by the add-on maintainer
-		ERR_AC << this->id << " depends upon itself; breaking circular dependency\n";
+		LOG_AC << this->id << " depends upon itself; breaking circular dependency\n";
 		deps.erase(this->id);
 	}
 
