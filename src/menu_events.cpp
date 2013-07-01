@@ -1066,6 +1066,9 @@ namespace { // Helpers for create_unit()
  */
 void menu_handler::create_unit(mouse_handler& mousehandler)
 {
+	// Save the current mouse location before popping up the choice menu (which
+	// gives time for the mouse to move, changing the location).
+	const map_location destination = mousehandler.get_last_hex();
 	assert(gui_ != NULL);
 
 	// Let the user select the kind of unit to create.
@@ -1073,7 +1076,7 @@ void menu_handler::create_unit(mouse_handler& mousehandler)
 	                                                choose_unit(*gui_);
 	if ( selection.first != NULL )
 		// Make it so.
-		create_and_place(*gui_, map_, units_, mousehandler.get_last_hex(),
+		create_and_place(*gui_, map_, units_, destination,
 		                 *selection.first, selection.second);
 }
 
