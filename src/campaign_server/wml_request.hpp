@@ -63,11 +63,12 @@ private:
 
 public:
    wml_request(){}
-   wml_request(std::istream& raw_data_stream)
+   wml_request(std::istream& raw_data_stream, const config& server_conf)
    {
       using namespace schema_validation;
       std::string request_name = peek_name(raw_data_stream);
-      boost::shared_ptr<one_hierarchy_validator> validator(new one_hierarchy_validator("../data/campaign_server/protocol_schema/"+request_name+".cfg"));
+      std::string validator_file = std::string(server_conf["data_dir"]) + "campaign_server/protocol_schema/"+request_name+".cfg";
+      boost::shared_ptr<one_hierarchy_validator> validator(new one_hierarchy_validator(validator_file));
       read(data.get_metadata(), raw_data_stream, validator.get());
       std::cout << "[Info] Request read:\n" << data.get_metadata();
    }

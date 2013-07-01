@@ -29,17 +29,19 @@
 class wml_protocol
 {
 private:
+   const config& server_config;
    generic_factory<basic_wml_action> action_factory;
 
 public:
-   wml_protocol()
+   wml_protocol(const config& server_config)
+   : server_config(server_config)
    {
       action_factory.register_product("request_license", boost::make_shared<request_license_action>());
    }
 
    void handle_request(std::iostream& raw_request_stream) const
    {
-      wml_request request(raw_request_stream);
+      wml_request request(raw_request_stream, server_config);
       boost::shared_ptr<basic_wml_action> action = action_factory.make_product(request.name());
       wml_reply reply = action->execute(request);
       reply.send(raw_request_stream);

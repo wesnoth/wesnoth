@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
       config cfg = options.build_config();
       std::cout << "Configuration requested:\n" << cfg;
 
-      wml_protocol protocol;
+      wml_protocol protocol(cfg);
       server<wml_protocol> addon_server(cfg, protocol);
       addon_server.run();
     }
