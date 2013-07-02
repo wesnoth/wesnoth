@@ -64,9 +64,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	era_selection_(-1),
 	mod_selection_(-1),
 	level_selection_(-1),
-	era_options_(),
 	mod_options_(),
-	era_descriptions_(),
 	mod_descriptions_(),
 	eras_menu_(disp.video(), std::vector<std::string>()),
 	levels_menu_(disp.video(), std::vector<std::string>()),
@@ -100,30 +98,26 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 
 	DBG_MP << "constructing multiplayer create dialog" << std::endl;
 
-	const std::vector<std::string>& names = levels_menu_item_names();
+	const std::vector<std::string>& level_names = levels_menu_item_names();
 
-	levels_menu_.set_items(names);
+	levels_menu_.set_items(level_names);
 	levels_menu_.set_numeric_keypress_selection(false);
 
-	if (size_t(preferences::map()) < names.size()) {
+	if (size_t(preferences::map()) < level_names.size()) {
 		levels_menu_.move_selection(preferences::map());
 		dependency_manager_.try_scenario_by_index(preferences::map(), true);
 	}
 
 	sync_current_level_with_engine();
 
-	// The possible eras to play
-	BOOST_FOREACH(const config &er, cfg.child_range("era")) {
-		era_options_.push_back(er["name"]);
-		era_descriptions_.push_back(er["description"]);
-	}
-	if(era_options_.empty()) {
+	const std::vector<std::string>& era_names = engine_.eras_menu_item_names();
+	if(era_names.empty()) {
 		gui2::show_transient_message(disp.video(), "", _("No eras found."));
 		throw config::error(_("No eras found"));
 	}
-	eras_menu_.set_items(era_options_);
+	eras_menu_.set_items(era_names);
 
-	if (size_t(preferences::era()) < era_options_.size()) {
+	if (size_t(preferences::era()) < era_names.size()) {
 		eras_menu_.move_selection(preferences::era());
 	} else {
 		eras_menu_.move_selection(0);
@@ -172,18 +166,7 @@ mp_game_settings& create::get_parameters()
 {
 	DBG_MP << "getting parameter values from widgets" << std::endl;
 
-	// Updates the values in the "parameters_" member to match
-	// the values selected by the user with the widgets:
-
-	config::const_child_itors era_list = game_config().child_range("era");
-	for (int num = eras_menu_.selection(); num > 0; --num) {
-		if (era_list.first == era_list.second) {
-			throw config::error(_("Invalid era selected"));
-		}
-		++era_list.first;
-	}
-
-	parameters_.mp_era = (*era_list.first)["id"].str();
+	parameters_.mp_era = engine_.current_era_id();
 
 	return parameters_;
 }
@@ -251,7 +234,9 @@ void create::process_event()
 	era_selection_ = eras_menu_.selection();
 
 	if (era_changed) {
-		description_.set_text(era_descriptions_[era_selection_]);
+		engine_.set_current_era_index(era_selection_);
+
+		description_.set_text(engine_.current_era_description());
 		dependency_manager_.try_era_by_index(era_selection_);
 		synchronize_selections();
 	}
@@ -576,7 +561,7 @@ void create::layout_children(const SDL_Rect& rect)
 	eras_menu_.set_location(xpos, ypos);
 	// Menu dimensions are only updated when items are set. So do this now.
 	int erasel_save = eras_menu_.selection();
-	eras_menu_.set_items(era_options_);
+	eras_menu_.set_items(engine_.eras_menu_item_names());
 	eras_menu_.move_selection(erasel_save);
 	ypos += eras_menu_height;
 	mod_label_.set_location(xpos, ypos);

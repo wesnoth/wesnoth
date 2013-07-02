@@ -200,16 +200,19 @@ create_engine::create_engine(level::TYPE current_level_type,
 	dependency_manager_(dependency_manager),
 	current_level_type_(current_level_type),
 	current_level_index_(0),
+	current_era_index_(0),
 	scenarios_(),
 	user_maps_(),
 	campaigns_(),
 	user_map_names_(),
+	eras_(),
 	generator_(NULL)
 {
 	get_files_in_dir(get_user_data_dir() + "/editor/maps", &user_map_names_,
 		NULL, FILE_NAME_ONLY);
 
 	init_all_levels();
+	init_all_eras();
 
 	parameters_.saved_game = false;
 }
@@ -334,6 +337,17 @@ std::vector<std::string> create_engine::levels_menu_item_names(
 	return menu_names;
 }
 
+std::vector<std::string> create_engine::eras_menu_item_names() const
+{
+	std::vector<std::string> names;
+
+	BOOST_FOREACH(era_pair era, eras_) {
+		names.push_back(era.first);
+	}
+
+	return names;
+}
+
 level& create_engine::current_level() const
 {
 	switch (current_level_type_) {
@@ -350,6 +364,25 @@ level& create_engine::current_level() const
 	} // end switch
 }
 
+std::string create_engine::current_era_description() const
+{
+	return eras_[current_era_index_].second;
+}
+
+std::string create_engine::current_era_id() const
+{
+	config::const_child_itors era_list = resources::config_manager->
+		game_config().child_range("era");
+	for (int num = current_era_index_; num > 0; --num) {
+		if (era_list.first == era_list.second) {
+			throw config::error(_("Invalid era selected"));
+		}
+		++era_list.first;
+	}
+
+	return (*era_list.first)["id"].str();
+}
+
 void create_engine::set_current_level_type(const level::TYPE type)
 {
 	current_level_type_ = type;
@@ -363,6 +396,11 @@ level::TYPE create_engine::current_level_type() const
 void create_engine::set_current_level_index(const size_t index)
 {
 	current_level_index_ = index;
+}
+
+void create_engine::set_current_era_index(const size_t index)
+{
+	current_era_index_ = index;
 }
 
 size_t create_engine::current_level_index() const
@@ -422,6 +460,14 @@ void create_engine::init_all_levels()
 
 		campaign_ptr new_campaign(new campaign(data));
 		campaigns_.push_back(new_campaign);
+	}
+}
+
+void create_engine::init_all_eras()
+{
+	BOOST_FOREACH(const config &era,
+		resources::config_manager->game_config().child_range("era")) {
+		eras_.push_back(std::make_pair(era["name"], era["description"]));
 	}
 }
 
