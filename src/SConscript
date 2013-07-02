@@ -150,10 +150,10 @@ libwesnothd_sources = Split("""
     """)
 libwesnothd = env.Library("wesnothd", libwesnothd_sources)
 
-libcampaignd_sources = Split("""
+libumcd_sources = Split("""
     addon/validation.cpp
     """)
-libcampaignd = env.Library("campaignd", libcampaignd_sources, OBJPREFIX = "campaignd_")
+libumcd = env.Library("umcd", libumcd_sources, OBJPREFIX = "umcd_")
 
 libwesnoth_sdl_sources = Split("""
     sdl_utils.cpp
@@ -549,15 +549,15 @@ if env["host"] in ["x86_64-nacl", "i686-nacl"]:
     wesnoth_objects += [SConscript("nacl/SConscript")]
 client_env.WesnothProgram("wesnoth", wesnoth_objects, have_client_prereqs)
 
-campaignd_sources = Split("""
+umcd_sources = Split("""
     umcd/server_options.cpp
     serialization/one_hierarchy_validator.cpp
     """)
 
 if env["PLATFORM"] == "win32": env["fifodir"] = ""
-campaignd_sources.extend(env.Object("umcd/umcd.cpp", EXTRA_DEFINE = env['fifodir'] and "FIFODIR='\"$fifodir\"'" or None))
+umcd_sources.extend(env.Object("umcd/umcd.cpp", EXTRA_DEFINE = env['fifodir'] and "FIFODIR='\"$fifodir\"'" or None))
 
-env.WesnothProgram("campaignd", campaignd_sources + [libwesnoth_core, libwesnothd, libcampaignd, libschema], have_campaignd_prereqs)
+env.WesnothProgram("umcd", umcd_sources + [libwesnoth_core, libwesnothd, libumcd, libschema], have_umcd_prereqs)
 
 wesnothd_sources = Split("""
     server/ban.cpp

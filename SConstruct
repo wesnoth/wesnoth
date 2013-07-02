@@ -46,7 +46,7 @@ def OptionalPath(key, val, env):
 
 opts.AddVariables(
     ListVariable('default_targets', 'Targets that will be built if no target is specified in command line.',
-        "wesnoth,wesnothd", Split("wesnoth wesnothd campaignd cutter exploder test")),
+        "wesnoth,wesnothd", Split("wesnoth wesnothd umcd cutter exploder test")),
     EnumVariable('build', 'Build variant: debug, release profile or base (no subdirectory)', "release", ["release", "debug", "glibcxx_debug", "profile","base"]),
     PathVariable('build_dir', 'Build all intermediate files(objects, test programs, etc) under this dir', "build", PathVariable.PathAccept),
     ('extra_flags_config', 'Extra compiler and linker flags to use for configuration and all builds', ""),
@@ -168,16 +168,16 @@ Important switches include:
 With no arguments, the recipe builds wesnoth and wesnothd.  Available
 build targets include the individual binaries:
 
-    wesnoth wesnothd campaignd exploder cutter test
+    wesnoth wesnothd umcd exploder cutter test
 
 You can make the following special build targets:
 
-    all = wesnoth exploder cutter wesnothd campaignd (*).
+    all = wesnoth exploder cutter wesnothd umcd (*).
     TAGS = build tags for Emacs (*).
     wesnoth-deps.png = project dependency graph
     install = install all executables that currently exist, and any data needed
     install-wesnothd = install the Wesnoth multiplayer server.
-    install-campaignd = install the Wesnoth campaign server.
+    install-umcd = install the Wesnoth User Made Content Daemon (UMCD).
     install-cutter = install the castle cutter
     install-exploder = install the castle exploder
     install-pytools = install all Python tools and modules
@@ -329,10 +329,10 @@ if env["prereqs"]:
         conf.CheckSDL('SDL_net') and \
         CheckANA(conf, env["use_network_ana"]) or Warning("Base prerequisites are not met.")
 
-    have_campaignd_prereqs = have_server_prereqs and \
+    have_umcd_prereqs = have_server_prereqs and \
         CheckAsio(conf) and \
         conf.CheckBoost("program_options", require_version="1.35.0") and \
-        conf.CheckBoost("regex", require_version = "1.35.0") or Warning("Campaignd prerequisites are not met. campaignd cannot be built.")
+        conf.CheckBoost("regex", require_version = "1.35.0") or Warning("UMCD prerequisites are not met. umcd cannot be built.")
 
     env = conf.Finish()
     client_env = env.Clone()
@@ -460,10 +460,10 @@ try:
 except:
     pass
 
-Export(Split("env client_env test_env have_campaignd_prereqs have_client_prereqs have_server_prereqs have_test_prereqs"))
+Export(Split("env client_env test_env have_umcd_prereqs have_client_prereqs have_server_prereqs have_test_prereqs"))
 SConscript(dirs = Split("po doc packaging/windows packaging/systemd"))
 
-binaries = Split("wesnoth wesnothd cutter exploder campaignd test")
+binaries = Split("wesnoth wesnothd cutter exploder umcd test")
 builds = {
     "base"          : dict(CCFLAGS   = "$OPT_FLAGS"),    # Don't build in subdirectory
     "debug"         : dict(CCFLAGS   = Split("$DEBUG_FLAGS")),
@@ -576,8 +576,8 @@ if env["systemd"]:
     env.InstallData("prefix", "wesnothd", "#packaging/systemd/wesnothd.service", "lib/systemd/system")
     env.InstallData("prefix", "wesnothd", "#packaging/systemd/wesnothd.conf", "lib/tmpfiles.d")
 
-# Wesnoth campaign server
-env.InstallBinary(campaignd)
+# Wesnoth User Made Content Daemon (UMCD).
+env.InstallBinary(umcd)
 
 # And the artists' tools
 env.InstallBinary(cutter)
@@ -586,7 +586,7 @@ env.InstallBinary(exploder)
 # Compute things for default install based on which targets have been created.
 install = env.Alias('install', [])
 for installable in ('wesnoth',
-                    'wesnothd', 'campaignd',
+                    'wesnothd', 'umcd',
                     'exploder', 'cutter'):
     if os.path.exists(installable + build_suffix) or installable in COMMAND_LINE_TARGETS or "all" in COMMAND_LINE_TARGETS:
         env.Alias('install', env.Alias('install-'+installable))
