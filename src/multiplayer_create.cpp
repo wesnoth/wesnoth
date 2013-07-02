@@ -86,9 +86,8 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	filter_name_(disp.video(), 100, "", true),
 	image_restorer_(NULL),
 	image_rect_(null_rect),
-	parameters_(),
 	dependency_manager_(cfg, disp.video()),
-	engine_(level::USER_MAP, parameters_, dependency_manager_)
+	engine_(level::USER_MAP, dependency_manager_)
 {
 	filter_num_players_slider_.set_min(0);
 	filter_num_players_slider_.set_max(9);
@@ -126,14 +125,6 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 
 	mods_menu_.set_items(engine_.extras_menu_item_names(create_engine::MOD));
 
-	BOOST_FOREACH (const std::string& str, preferences::modifications()) {
-		if (cfg.find_child("modification", "id", str))
-			parameters_.active_mods.push_back(str);
-	}
-
-	dependency_manager_.try_modifications(parameters_.active_mods, true);
-
-
 	utils::string_map i18n_symbols;
 	i18n_symbols["login"] = preferences::login();
 
@@ -158,11 +149,7 @@ create::~create()
 
 mp_game_settings& create::get_parameters()
 {
-	DBG_MP << "getting parameter values from widgets" << std::endl;
-
-	parameters_.mp_era = engine_.current_era_id();
-
-	return parameters_;
+	return engine_.get_parameters();
 }
 
 void create::process_event()
@@ -271,16 +258,14 @@ void create::process_event()
 
 		engine_.init_generated_level_data();
 
-		if (!parameters_.scenario_data["error_message"].empty())
+		if (!engine_.current_level().data()["error_message"].empty())
 			gui2::show_message(disp().video(), "map generation error",
-				parameters_.scenario_data["error_message"]);
+				engine_.current_level().data()["error_message"]);
 
 		level_changed = true;
 	}
 
 	if(level_changed) {
-		parameters_.hash = parameters_.scenario_data.hash();
-
 		std::stringstream players;
 		std::stringstream map_size;
 
@@ -353,7 +338,8 @@ void create::synchronize_selections()
 		process_event();
 	}
 
-	parameters_.active_mods = dependency_manager_.get_modifications();
+	//TODO: move to the engine
+	//parameters_.active_mods = dependency_manager_.get_modifications();
 }
 
 std::vector<std::string> create::levels_menu_item_names() const

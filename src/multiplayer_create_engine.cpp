@@ -14,6 +14,7 @@
 #include "multiplayer_create_engine.hpp"
 
 #include "game_config_manager.hpp"
+#include "game_preferences.hpp"
 #include "filesystem.hpp"
 #include "formula_string_utils.hpp"
 #include "log.hpp"
@@ -195,8 +196,7 @@ void campaign::set_metadata()
 }
 
 create_engine::create_engine(level::TYPE current_level_type,
-	mp_game_settings& parameters, depcheck::manager& dependency_manager) :
-	parameters_(parameters),
+	depcheck::manager& dependency_manager) :
 	dependency_manager_(dependency_manager),
 	current_level_type_(current_level_type),
 	current_level_index_(0),
@@ -208,6 +208,7 @@ create_engine::create_engine(level::TYPE current_level_type,
 	user_map_names_(),
 	eras_(),
 	mods_(),
+	parameters_(),
 	generator_(NULL)
 {
 	get_files_in_dir(get_user_data_dir() + "/editor/maps", &user_map_names_,
@@ -218,6 +219,14 @@ create_engine::create_engine(level::TYPE current_level_type,
 	init_extras(MOD);
 
 	parameters_.saved_game = false;
+
+	BOOST_FOREACH (const std::string& str, preferences::modifications()) {
+		if (resources::config_manager->
+				game_config().find_child("modification", "id", str))
+			parameters_.active_mods.push_back(str);
+	}
+
+	dependency_manager_.try_modifications(parameters_.active_mods, true);
 }
 
 create_engine::~create_engine()
@@ -278,6 +287,7 @@ void create_engine::init_generated_level_data()
 void create_engine::prepare_for_new_level()
 {
 	parameters_.scenario_data = current_level().data();
+	parameters_.hash = parameters_.scenario_data.hash();
 }
 
 void create_engine::prepare_for_campaign(const std::string& difficulty)
@@ -381,20 +391,6 @@ std::string create_engine::current_extra_description(const MP_EXTRA extra_type) 
 	return extras[index].second;
 }
 
-std::string create_engine::current_era_id() const
-{
-	config::const_child_itors era_list = resources::config_manager->
-		game_config().child_range("era");
-	for (int num = current_era_index_; num > 0; --num) {
-		if (era_list.first == era_list.second) {
-			throw config::error(_("Invalid era selected"));
-		}
-		++era_list.first;
-	}
-
-	return (*era_list.first)["id"].str();
-}
-
 void create_engine::set_current_level_type(const level::TYPE type)
 {
 	current_level_type_ = type;
@@ -433,6 +429,24 @@ bool create_engine::generator_assigned() const
 void create_engine::generator_user_config(display& disp)
 {
 	generator_->user_config(disp);
+}
+
+mp_game_settings& create_engine::get_parameters()
+{
+	DBG_MP << "getting parameter values from widgets" << std::endl;
+
+	config::const_child_itors era_list = resources::config_manager->
+		game_config().child_range("era");
+	for (int num = current_era_index_; num > 0; --num) {
+		if (era_list.first == era_list.second) {
+			throw config::error(_("Invalid era selected"));
+		}
+		++era_list.first;
+	}
+
+	parameters_.mp_era = (*era_list.first)["id"].str();
+
+	return parameters_;
 }
 
 void create_engine::init_all_levels()

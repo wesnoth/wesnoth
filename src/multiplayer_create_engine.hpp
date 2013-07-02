@@ -117,7 +117,7 @@ private:
 class create_engine
 {
 public:
-	create_engine(level::TYPE current_level_type, mp_game_settings& parameters,
+	create_engine(level::TYPE current_level_type,
 		depcheck::manager& dependency_manager);
 	~create_engine();
 
@@ -145,7 +145,6 @@ public:
 	level& current_level() const;
 
 	std::string current_extra_description(const MP_EXTRA extra_type) const;
-	std::string current_era_id() const;
 
 	void set_current_level_type(const level::TYPE);
 	level::TYPE current_level_type() const;
@@ -158,6 +157,8 @@ public:
 
 	bool generator_assigned() const;
 	void generator_user_config(display& disp);
+
+	mp_game_settings& get_parameters();
 
 private:
 	create_engine(const create_engine&);
@@ -173,7 +174,6 @@ private:
 
 	config const* find_selected_level(const std::string& level_type);
 
-	mp_game_settings& parameters_;
 	depcheck::manager& dependency_manager_;
 
 	level::TYPE current_level_type_;
@@ -190,6 +190,8 @@ private:
 
 	std::vector<extras_metadata> eras_;
 	std::vector<extras_metadata> mods_;
+
+	mp_game_settings parameters_;
 
 	util::scoped_ptr<map_generator> generator_;
 };

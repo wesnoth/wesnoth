@@ -18,7 +18,6 @@
 #define MULTIPLAYER_CREATE_HPP_INCLUDED
 
 #include "mp_depcheck.hpp"
-#include "mp_game_settings.hpp"
 #include "multiplayer_create_engine.hpp"
 #include "multiplayer_ui.hpp"
 #include "widgets/slider.hpp"
@@ -86,8 +85,6 @@ private:
 
 	util::scoped_ptr<surface_restorer> image_restorer_;
 	SDL_Rect image_rect_;
-
-	mp_game_settings parameters_;
 
 	depcheck::manager dependency_manager_;
 
