@@ -143,7 +143,7 @@ if(MSVC)
 	SOURCE_GROUP("src ai dfool" REGULAR_EXPRESSION "ai/dfool/.*")
 	SOURCE_GROUP("src ai formula" REGULAR_EXPRESSION "ai/formula/.*")
 	SOURCE_GROUP("src ai testing" REGULAR_EXPRESSION "ai/testing/.*")
-	SOURCE_GROUP("src campaign_server" REGULAR_EXPRESSION "campaign_server/.*")
+	SOURCE_GROUP("src umcd" REGULAR_EXPRESSION "umcd/.*")
 	SOURCE_GROUP("src editor" REGULAR_EXPRESSION "editor/.*")
 	SOURCE_GROUP("src editor action" REGULAR_EXPRESSION "editor/action/.*")
 	SOURCE_GROUP("src editor action mouse" REGULAR_EXPRESSION "editor/action/mouse/.*")
@@ -1005,9 +1005,9 @@ install(TARGETS wesnothd DESTINATION ${BINDIR})
 
 endif(ENABLE_SERVER)
 
-########### Campaign Server ###############
+########### User made content daemon ###############
 
-if(ENABLE_CAMPAIGN_SERVER)
+if(ENABLE_UMCD)
 
 set(wesnoth-schema_validator-dependencies_SRC
 	${wesnoth-schema_validator_SRC}
@@ -1016,8 +1016,8 @@ set(wesnoth-schema_validator-dependencies_SRC
 	sha1.cpp
 )
 
-set(campaignd_SRC
-	umcd/campaign_server.cpp
+set(umcd_SRC
+	umcd/umcd.cpp
 	umcd/server_options.cpp
 	serialization/one_hierarchy_validator.cpp
 	${network_implementation_files}
@@ -1027,8 +1027,8 @@ set(campaignd_SRC
 	loadscreen_empty.cpp
 )
 
-add_executable(campaignd ${campaignd_SRC})
-target_link_libraries(campaignd
+add_executable(umcd ${umcd_SRC})
+target_link_libraries(umcd
 	wesnoth-core
 	wesnoth-schema_validator
 	${server-external-libs}
@@ -1037,18 +1037,18 @@ target_link_libraries(campaignd
 	${LIBINTL_LIBRARIES}
 	)
 	
-set_target_properties(campaignd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}campaignd${BINARY_SUFFIX})
+set_target_properties(umcd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}umcd${BINARY_SUFFIX})
 
 if(CMAKE_COMPILER_IS_GNUCXX OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
-	set_target_properties(campaignd
+	set_target_properties(umcd
 		PROPERTIES COMPILE_FLAGS
 		"-pthread"
 	)
 endif()
 
-install(TARGETS campaignd DESTINATION ${BINDIR})
+install(TARGETS umcd DESTINATION ${BINDIR})
 
-endif(ENABLE_CAMPAIGN_SERVER)
+endif(ENABLE_UMCD)
 
 ########### Castle building helpers ###############
 

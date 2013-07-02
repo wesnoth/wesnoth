@@ -75,7 +75,7 @@ set(FIFO_DIR "/var/run/wesnothd" CACHE STRING "Directory for the wesnothd fifo s
 
 #build options
 option(ENABLE_GAME "Enable compilation of the game" ON)
-option(ENABLE_CAMPAIGN_SERVER "Enable compilation of campaign server")
+option(ENABLE_UMCD "Enable compilation of the User Made Content Daemon (UMCD)")
 option(ENABLE_SERVER "Enable compilation of server" ON)
 option(ENABLE_TOOLS "Enable building and installation of tools for artists and WML maintainers")
 option(ENABLE_TESTS "Build unit tests")
@@ -487,9 +487,9 @@ if(ENABLE_GAME OR ENABLE_TESTS)
 	endif(NOT MSVC)
 
 endif(ENABLE_GAME OR ENABLE_TESTS)
-if(ENABLE_GAME OR ENABLE_SERVER OR ENABLE_CAMPAIGN_SERVER OR ENABLE_TESTS)
+if(ENABLE_GAME OR ENABLE_SERVER OR ENABLE_UMCD OR ENABLE_TESTS)
 	find_package( SDL_net REQUIRED )
-endif(ENABLE_GAME OR ENABLE_SERVER OR ENABLE_CAMPAIGN_SERVER OR ENABLE_TESTS)
+endif(ENABLE_GAME OR ENABLE_SERVER OR ENABLE_UMCD OR ENABLE_TESTS)
 if(ENABLE_TOOLS)
 	find_package( ZLIB REQUIRED )
 	find_package( PNG REQUIRED )

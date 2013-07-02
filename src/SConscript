@@ -555,7 +555,7 @@ campaignd_sources = Split("""
     """)
 
 if env["PLATFORM"] == "win32": env["fifodir"] = ""
-campaignd_sources.extend(env.Object("umcd/campaign_server.cpp", EXTRA_DEFINE = env['fifodir'] and "FIFODIR='\"$fifodir\"'" or None))
+campaignd_sources.extend(env.Object("umcd/umcd.cpp", EXTRA_DEFINE = env['fifodir'] and "FIFODIR='\"$fifodir\"'" or None))
 
 env.WesnothProgram("campaignd", campaignd_sources + [libwesnoth_core, libwesnothd, libcampaignd, libschema], have_campaignd_prereqs)
 
