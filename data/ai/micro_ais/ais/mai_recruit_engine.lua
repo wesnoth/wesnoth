@@ -52,7 +52,7 @@ return {
             if no_space then return 0 end
 
             -- Set up the probability array
-            local probability, prob_sum  = {}, 0
+            local prob, prob_sum  = {}, 0
 
             -- Go through all the types listed in [probability] tags (which can be comma-separated lists)
             for i,tmp in ipairs(cfg.type) do
@@ -61,8 +61,8 @@ return {
                     -- If this type is in the recruit list, add it
                     for k,r in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
                         if (r == t) then
-                            probability[t] = { value = cfg.probability[i] }
-                            prob_sum = prob_sum + cfg.probability[i]
+                            prob[t] = { value = cfg.prob[i] }
+                            prob_sum = prob_sum + cfg.prob[i]
                             break
                         end
                     end
@@ -71,19 +71,19 @@ return {
 
             -- Now we add in all the unit types not listed in [probability] tags
             for i,r in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
-                if (not probability[r]) then
-                    probability[r] = { value = 1 }
+                if (not prob[r]) then
+                    prob[r] = { value = 1 }
                     prob_sum =prob_sum + 1
                 end
             end
 
             -- Now eliminate all those that are too expensive (unless cfg.skip_low_gold_recruiting is set)
             if cfg.skip_low_gold_recruiting then
-                for typ,prob in pairs(probability) do
+                for typ,pr in pairs(prob) do
                     if (wesnoth.unit_types[typ].cost > wesnoth.sides[wesnoth.current.side].gold) then
                         --print('Eliminating:', typ)
-                        prob_sum = prob_sum - prob.value
-                        probability[typ] = nil
+                        prob_sum = prob_sum - pr.value
+                        prob[typ] = nil
                     end
                 end
             end
@@ -91,10 +91,10 @@ return {
             -- Now set up the min/max values for each type
             -- This needs to be done manually as the order of pairs() is not guaranteed
             local cum_prob, n_recruits = 0, 0
-            for typ,prob in pairs(probability) do
-                probability[typ].p_i = cum_prob
-                cum_prob = cum_prob + prob.value / prob_sum * 1e6
-                probability[typ].p_f = cum_prob
+            for typ,pr in pairs(prob) do
+                prob[typ].p_i = cum_prob
+                cum_prob = cum_prob + pr.value / prob_sum * 1e6
+                prob[typ].p_f = cum_prob
                 n_recruits = n_recruits + 1
             end
 
@@ -104,8 +104,8 @@ return {
             -- chosen -> no cheaper recruits will be selected in subsequent calls
             if (n_recruits > 0) then
                 local rand_prob = AH.random(1e6)
-                for typ,prob in pairs(probability) do
-                    if (prob.p_i <= rand_prob) and (rand_prob < prob.p_f) then
+                for typ,pr in pairs(prob) do
+                    if (pr.p_i <= rand_prob) and (rand_prob < pr.p_f) then
                         recruit = typ
                         break
                     end
