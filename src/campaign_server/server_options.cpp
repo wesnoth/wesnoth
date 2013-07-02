@@ -39,7 +39,7 @@ void server_options::build_options_desc()
   std::string cfg_help_msg("The config file in which we read the server configuration.");
   std::string port_help_msg("The TCP/IP port to listen to for incoming requests.");
   std::string threads_help_msg("The number of working threads to start. A value of 0 means start as many threads as there are detected hardware cores.");
-  std::string data_directory_help_msg("The data directory, it should be located at the root of the Wesnoth sources (wesnoth-src/data/).");
+  std::string wesnoth_directory_help_msg("The wesnoth directory.");
 
   // Generic options.
   po::options_description generic("General options");
@@ -59,7 +59,7 @@ void server_options::build_options_desc()
   cmdline.add_options()
     ("port,p", po::value<std::string>(&port)->default_value(DEFAULT_PORT), port_help_msg.c_str())
     ("threads,t", po::value<int>(&threads)->default_value(DEFAULT_THREADS), threads_help_msg.c_str())
-    ("data_dir,d", po::value<std::string>(&data_directory)->required(), data_directory_help_msg.c_str())
+    ("wesnoth_dir,d", po::value<std::string>(&wesnoth_directory)->required(), wesnoth_directory_help_msg.c_str())
   ;
 
   options_desc.add(generic).add(file_options).add(cmdline);
@@ -101,8 +101,8 @@ config server_options::build_config()
   config server_cfg;
   server_cfg["threads"] = threads;
   server_cfg["port"] = port;
-  std::string::const_reverse_iterator it = data_directory.rbegin();
-  server_cfg["data_dir"] = data_directory + ((*it == '/') ? "":"/");
+  std::string::const_reverse_iterator it = wesnoth_directory.rbegin();
+  server_cfg["wesnoth_dir"] = wesnoth_directory + ((*it == '/') ? "":"/");
   return server_cfg;
 }
 

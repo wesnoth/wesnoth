@@ -37,7 +37,7 @@ class server_options
     po::variables_map vm;
 
     std::string port;
-    std::string data_directory;
+    std::string wesnoth_directory;
     int threads;
     std::string config_file_name;
 
