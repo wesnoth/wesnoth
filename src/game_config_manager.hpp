@@ -43,7 +43,8 @@ private:
 	game_config_manager(const game_config_manager&);
 	void operator=(const game_config_manager&);
 
-	void load_game_config(FORCE_RELOAD_CONFIG force_reload);
+	void load_game_config(FORCE_RELOAD_CONFIG force_reload,
+		game_classification const* classification = NULL);
 
 	// load_game_config() helper functions.
 	void load_addons_cfg();

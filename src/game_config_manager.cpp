@@ -87,7 +87,8 @@ bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 	return true;
 }
 
-void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload)
+void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
+	game_classification const* classification)
 {
 	// Make sure that 'debug mode' symbol is set
 	// if command line parameter is selected
@@ -131,17 +132,19 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload)
 		load_addons_cfg();
 
 		// [scenario] tags should become [multiplayer] tags
-		// if multiplayer game is being loaded.
-		preproc_map defines_map = cache_.get_preproc_map();
-		if (defines_map.find("MULTIPLAYER") != defines_map.end()) {
-			const config::const_child_itors &ci =
-				game_config().child_range("scenario");
-			std::vector<config> scenarios(ci.first, ci.second);
+		// if multiplayer campaign is being loaded.
+		if (classification != NULL) {
+			if (classification->campaign_type == "multiplayer" &&
+				!classification->campaign_define.empty()) {
+				const config::const_child_itors &ci =
+					game_config().child_range("scenario");
+				std::vector<config> scenarios(ci.first, ci.second);
 
-			game_config_.clear_children("scenario");
+				game_config_.clear_children("scenario");
 
-			BOOST_FOREACH(const config& cfg, scenarios) {
-				game_config_.add_child("multiplayer", cfg);
+				BOOST_FOREACH(const config& cfg, scenarios) {
+					game_config_.add_child("multiplayer", cfg);
+				}
 			}
 		}
 
@@ -333,7 +336,7 @@ void game_config_manager::load_game_config_for_game(
 	}
 
 	try{
-		load_game_config(NO_FORCE_RELOAD);
+		load_game_config(NO_FORCE_RELOAD, &classification);
 	}
 	catch(game::error&) {
 		cache_.clear_defines();
