@@ -39,8 +39,8 @@
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 
-static lg::log_domain log_mp_create("mp/create");
-#define DBG_MP LOG_STREAM(debug, log_mp_create)
+static lg::log_domain log_mp_configure("mp/configure");
+#define DBG_MP LOG_STREAM(debug, log_mp_configure)
 
 namespace {
 const SDL_Rect null_rect = {0, 0, 0, 0};

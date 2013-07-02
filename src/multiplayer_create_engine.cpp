@@ -31,8 +31,8 @@
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 
-static lg::log_domain log_mp_create("mp/create");
-#define DBG_MP LOG_STREAM(debug, log_mp_create)
+static lg::log_domain log_mp_create_engine("mp/create/engine");
+#define DBG_MP LOG_STREAM(debug, log_mp_create_engine)
 
 namespace mp {
 
@@ -212,6 +212,8 @@ create_engine::create_engine(level::TYPE current_level_type,
 	dependency_manager_(resources::config_manager->game_config(), disp.video()),
 	generator_(NULL)
 {
+	DBG_MP << "restoring game config\n";
+
 	// Restore game config for multiplayer.
 	game_state state = game_state();
 	state.classification().campaign_type = "multiplayer";
@@ -220,6 +222,8 @@ create_engine::create_engine(level::TYPE current_level_type,
 
 	get_files_in_dir(get_user_data_dir() + "/editor/maps", &user_map_names_,
 		NULL, FILE_NAME_ONLY);
+
+	DBG_MP << "initializing all levels, eras and mods\n";
 
 	init_all_levels();
 	init_extras(ERA);
@@ -242,6 +246,8 @@ create_engine::~create_engine()
 
 void create_engine::init_current_level_data()
 {
+	DBG_MP << "initializing current level data\n";
+
 	generator_.assign(NULL);
 
 	config const* level = NULL;
@@ -279,6 +285,8 @@ void create_engine::init_current_level_data()
 
 void create_engine::init_generated_level_data()
 {
+	DBG_MP << "initializing generated level data\n";
+
 	config data = generator_->create_scenario(std::vector<std::string>());
 
 	// Set the scenario to have placing of sides
@@ -293,12 +301,16 @@ void create_engine::init_generated_level_data()
 
 void create_engine::prepare_for_new_level()
 {
+	DBG_MP << "preparing mp_game_settings for new level\n";
+
 	parameters_.scenario_data = current_level().data();
 	parameters_.hash = parameters_.scenario_data.hash();
 }
 
 void create_engine::prepare_for_campaign(const std::string& difficulty)
 {
+	DBG_MP << "preparing data for campaign by reloading game config\n";
+
 	game_state state = game_state();
 	state.classification().campaign_type = "multiplayer";
 
@@ -321,6 +333,8 @@ void create_engine::prepare_for_campaign(const std::string& difficulty)
 
 void create_engine::prepare_for_saved_game()
 {
+	DBG_MP << "preparing mp_game_settings for saved game\n";
+
 	parameters_.saved_game = true;
 	parameters_.scenario_data.clear();
 }
@@ -460,7 +474,7 @@ void create_engine::init_active_mods()
 
 mp_game_settings& create_engine::get_parameters()
 {
-	DBG_MP << "getting parameter values from widgets" << std::endl;
+	DBG_MP << "getting parameter values" << std::endl;
 
 	config::const_child_itors era_list = resources::config_manager->
 		game_config().child_range("era");
