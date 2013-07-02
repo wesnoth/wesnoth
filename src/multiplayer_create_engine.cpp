@@ -212,6 +212,12 @@ create_engine::create_engine(level::TYPE current_level_type,
 	dependency_manager_(resources::config_manager->game_config(), disp.video()),
 	generator_(NULL)
 {
+	// Restore game config for multiplayer.
+	game_state state = game_state();
+	state.classification().campaign_type = "multiplayer";
+	resources::config_manager->
+		load_game_config_for_game(state.classification());
+
 	get_files_in_dir(get_user_data_dir() + "/editor/maps", &user_map_names_,
 		NULL, FILE_NAME_ONLY);
 
