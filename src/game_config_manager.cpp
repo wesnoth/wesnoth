@@ -131,18 +131,25 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 
 		load_addons_cfg();
 
-		// [scenario] tags should become [multiplayer] tags
-		// if multiplayer campaign is being loaded.
+		// If multiplayer campaign is being loaded, [scenario] tags should
+		// become [multiplayer] tags and campaign's id should be added to them
+		// to allow to recognize which scenarios belongs to a loaded campaign.
 		if (classification != NULL) {
 			if (classification->campaign_type == "multiplayer" &&
 				!classification->campaign_define.empty()) {
+
+				const config& campaign = game_config().find_child("campaign",
+					"define", classification->campaign_define);
+				const std::string& campaign_id = campaign["id"];
+
 				const config::const_child_itors &ci =
 					game_config().child_range("scenario");
 				std::vector<config> scenarios(ci.first, ci.second);
 
 				game_config_.clear_children("scenario");
 
-				BOOST_FOREACH(const config& cfg, scenarios) {
+				BOOST_FOREACH(config& cfg, scenarios) {
+					cfg["campaign_id"] = campaign_id;
 					game_config_.add_child("multiplayer", cfg);
 				}
 			}
