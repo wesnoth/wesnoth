@@ -12,11 +12,11 @@
    See the COPYING file for more details.
 */
 
-#ifndef CAMPAIGN_SERVER_REQUEST_LICENSE_ACTION_HPP
-#define CAMPAIGN_SERVER_REQUEST_LICENSE_ACTION_HPP
+#ifndef UMCD_REQUEST_LICENSE_ACTION_HPP
+#define UMCD_REQUEST_LICENSE_ACTION_HPP
 
 #include <boost/shared_ptr.hpp>
-#include "campaign_server/actions/basic_wml_action.hpp"
+#include "umcd/actions/basic_wml_action.hpp"
 
 class request_license_action : public basic_wml_action
 {
@@ -32,4 +32,4 @@ public:
    }
 };
 
-#endif // CAMPAIGN_SERVER_REQUEST_LICENSE_ACTION_HPP
+#endif // UMCD_REQUEST_LICENSE_ACTION_HPP

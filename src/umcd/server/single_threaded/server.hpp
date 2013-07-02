@@ -24,7 +24,7 @@
 #include <boost/asio.hpp>
 #include <boost/noncopyable.hpp>
 #include <boost/make_shared.hpp>
-#include "campaign_server/server/connection.hpp"
+#include "umcd/server/connection.hpp"
 
 template <class Protocol>
 class server : boost::noncopyable

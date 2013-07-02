@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-#ifndef CAMPAIGN_SERVER_PROTOCOL_ECHO_HPP
-#define CAMPAIGN_SERVER_PROTOCOL_ECHO_HPP
+#ifndef UMCD_PROTOCOL_ECHO_HPP
+#define UMCD_PROTOCOL_ECHO_HPP
 
 #include <string>
 #include <array>
@@ -45,4 +45,4 @@ public:
    }
 };
 
-#endif // CAMPAIGN_SERVER_PROTOCOL_ECHO_HPP
+#endif // UMCD_PROTOCOL_ECHO_HPP

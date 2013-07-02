@@ -12,13 +12,30 @@
    See the COPYING file for more details.
 */
 
-#ifndef CAMPAIGN_SERVER_BASIC_WML_ACTION_HPP
-#define CAMPAIGN_SERVER_BASIC_WML_ACTION_HPP
+#ifndef UMCD_WML_REPLY_HPP
+#define UMCD_WML_REPLY_HPP
 
-#include "campaign_server/server/generic_action.hpp"
-#include "campaign_server/wml_reply.hpp"
-#include "campaign_server/wml_request.hpp"
+#include <memory>
+#include <ostream>
 
-typedef generic_action<wml_reply, wml_request&> basic_wml_action;
+#include "umcd/network_data.hpp"
+#include "serialization/parser.hpp"
 
-#endif // CAMPAIGN_SERVER_BASIC_WML_ACTION_HPP
+class wml_reply
+{
+private:
+   network_data data;
+public:
+   wml_reply(){}
+   wml_reply(const network_data& data)
+   : data(data)
+   {}
+
+   void send(std::ostream& raw_data_stream) const
+   {
+      write(raw_data_stream, data.get_metadata());
+   }
+};
+
+
+#endif // UMCD_WML_REPLY_HPP

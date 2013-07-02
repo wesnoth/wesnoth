@@ -12,15 +12,15 @@
    See the COPYING file for more details.
 */
 
-#ifndef CAMPAIGN_SERVER_WML_REQUEST_HPP
-#define CAMPAIGN_SERVER_WML_REQUEST_HPP
+#ifndef UMCD_WML_REQUEST_HPP
+#define UMCD_WML_REQUEST_HPP
 
 #include <istream>
 #include <string>
 
 #include <boost/shared_ptr.hpp>
 
-#include "campaign_server/network_data.hpp"
+#include "umcd/network_data.hpp"
 #include "serialization/one_hierarchy_validator.hpp"
 #include "serialization/parser.hpp"
 
@@ -67,7 +67,7 @@ public:
    {
       using namespace schema_validation;
       std::string request_name = peek_name(raw_data_stream);
-      std::string validator_file = std::string(server_conf["wesnoth_dir"]) + "data/campaign_server/protocol_schema/"+request_name+".cfg";
+      std::string validator_file = std::string(server_conf["wesnoth_dir"]) + "data/umcd/protocol_schema/"+request_name+".cfg";
       boost::shared_ptr<one_hierarchy_validator> validator(new one_hierarchy_validator(validator_file));
       read(data.get_metadata(), raw_data_stream, validator.get());
       std::cout << "[Info] Request read:\n" << data.get_metadata();
@@ -85,4 +85,4 @@ public:
 };
 
 
-#endif // CAMPAIGN_SERVER_WML_REQUEST_HPP
+#endif // UMCD_WML_REQUEST_HPP

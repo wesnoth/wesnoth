@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-#ifndef CAMPAIGN_SERVER_NETWORK_DATA_HPP
-#define CAMPAIGN_SERVER_NETWORK_DATA_HPP
+#ifndef UMCD_NETWORK_DATA_HPP
+#define UMCD_NETWORK_DATA_HPP
 
 #include <string>
 #include <vector>
@@ -61,4 +61,4 @@ public:
    }  
 };
 
-#endif // CAMPAIGN_SERVER_NETWORK_DATA_HPP
+#endif // UMCD_NETWORK_DATA_HPP

@@ -550,12 +550,12 @@ if env["host"] in ["x86_64-nacl", "i686-nacl"]:
 client_env.WesnothProgram("wesnoth", wesnoth_objects, have_client_prereqs)
 
 campaignd_sources = Split("""
-    campaign_server/server_options.cpp
+    umcd/server_options.cpp
     serialization/one_hierarchy_validator.cpp
     """)
 
 if env["PLATFORM"] == "win32": env["fifodir"] = ""
-campaignd_sources.extend(env.Object("campaign_server/campaign_server.cpp", EXTRA_DEFINE = env['fifodir'] and "FIFODIR='\"$fifodir\"'" or None))
+campaignd_sources.extend(env.Object("umcd/campaign_server.cpp", EXTRA_DEFINE = env['fifodir'] and "FIFODIR='\"$fifodir\"'" or None))
 
 env.WesnothProgram("campaignd", campaignd_sources + [libwesnoth_core, libwesnothd, libcampaignd, libschema], have_campaignd_prereqs)
 

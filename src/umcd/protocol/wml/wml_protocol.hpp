@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-#ifndef CAMPAIGN_SERVER_WML_PROTOCOL_HPP
-#define CAMPAIGN_SERVER_WML_PROTOCOL_HPP
+#ifndef UMCD_WML_PROTOCOL_HPP
+#define UMCD_WML_PROTOCOL_HPP
 
 #include <string>
 #include <vector>
@@ -21,10 +21,10 @@
 #include <boost/asio.hpp>
 #include <boost/shared_ptr.hpp>
 
-#include "campaign_server/server/generic_factory.hpp"
-#include "campaign_server/actions/request_license_action.hpp"
-#include "campaign_server/wml_reply.hpp"
-#include "campaign_server/wml_request.hpp"
+#include "umcd/server/generic_factory.hpp"
+#include "umcd/actions/request_license_action.hpp"
+#include "umcd/wml_reply.hpp"
+#include "umcd/wml_request.hpp"
 
 class wml_protocol
 {
@@ -48,4 +48,4 @@ public:
    }
 };
 
-#endif // CAMPAIGN_SERVER_WML_PROTOCOL_HPP
+#endif // UMCD_WML_PROTOCOL_HPP

@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "campaign_server/server_options.hpp"
+#include "umcd/server_options.hpp"
 
 const std::string server_options::DEFAULT_PORT = "12523";
 const int server_options::DEFAULT_THREADS = 0;
