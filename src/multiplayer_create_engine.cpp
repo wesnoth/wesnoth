@@ -263,6 +263,9 @@ void create_engine::init_generated_level_data()
 	// based on the terrain they prefer
 	data["modify_placing"] = "true";
 
+	const std::string& description = current_level().data()["description"];
+	data["description"] = description;
+
 	current_level().set_data(data);
 }
 
