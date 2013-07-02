@@ -28,6 +28,7 @@ class wml_request
 {
 private:
    network_data data;
+   const config& server_conf;
 
    void check_stream_state(std::istream& raw_data_stream, std::string error_msg)
    {
@@ -62,18 +63,21 @@ private:
    }
 
 public:
-   wml_request(){}
+   //wml_request(){}
    wml_request(std::istream& raw_data_stream, const config& server_conf)
+   : server_conf(server_conf)
    {
       using namespace schema_validation;
       std::string request_name = peek_name(raw_data_stream);
-      std::string validator_file = std::string(server_conf["wesnoth_dir"]) + "data/umcd/protocol_schema/"+request_name+".cfg";
+      std::string validator_file = server_conf["wesnoth_dir"].str() + "data/umcd/protocol_schema/"+request_name+".cfg";
       boost::shared_ptr<one_hierarchy_validator> validator(new one_hierarchy_validator(validator_file));
       read(data.get_metadata(), raw_data_stream, validator.get());
       std::cout << "[Info] Request read:\n" << data.get_metadata();
    }
 
    network_data& get_data() { return data; }
+
+   const config& get_conf() const { return server_conf; }
 
    std::string name() const
    {

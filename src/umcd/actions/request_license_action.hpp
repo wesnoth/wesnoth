@@ -16,14 +16,19 @@
 #define UMCD_REQUEST_LICENSE_ACTION_HPP
 
 #include <boost/shared_ptr.hpp>
+#include "filesystem.hpp"
 #include "umcd/actions/basic_wml_action.hpp"
+
 
 class request_license_action : public basic_wml_action
 {
 public:
    virtual wml_reply execute(wml_request& request)
    {
-      return wml_reply(request.get_data());
+      std::cout << "executing request_license_action" << std::endl;
+      config reply("request_license");
+      reply.child("request_license")["text"] = read_file(request.get_conf()["wesnoth_dir"].str() + "COPYING");
+      return wml_reply(network_data(reply, ""));
    }
 
    virtual boost::shared_ptr<basic_wml_action> clone() const
