@@ -126,7 +126,7 @@ public:
 	typedef boost::shared_ptr<user_map> user_map_ptr;
 	typedef boost::shared_ptr<campaign> campaign_ptr;
 
-	typedef std::pair<std::string, std::string> era_pair;
+	typedef std::pair<std::string, std::string> era_mod_metadata;
 
 	void init_current_level_data();
 	void init_generated_level_data();
@@ -139,9 +139,13 @@ public:
 		levels_menu_item_names(const level::TYPE type) const;
 
 	std::vector<std::string> eras_menu_item_names() const;
+	std::vector<std::string> mods_menu_item_names() const;
 
 	level& current_level() const;
+
 	std::string current_era_description() const;
+	std::string current_mod_description() const;
+
 	std::string current_era_id() const;
 
 	void set_current_level_type(const level::TYPE);
@@ -149,6 +153,7 @@ public:
 
 	void set_current_level_index(const size_t index);
 	void set_current_era_index(const size_t index);
+	void set_current_mod_index(const size_t index);
 	size_t current_level_index() const;
 
 	size_t user_maps_count() const;
@@ -162,6 +167,7 @@ private:
 
 	void init_all_levels();
 	void init_all_eras();
+	void init_all_mods();
 
 	config const* find_selected_level(const std::string& level_type);
 
@@ -171,6 +177,7 @@ private:
 	level::TYPE current_level_type_;
 	size_t current_level_index_;
 	size_t current_era_index_;
+	size_t current_mod_index_;
 
 	std::vector<scenario_ptr> scenarios_;
 	std::vector<user_map_ptr> user_maps_;
@@ -178,7 +185,8 @@ private:
 
 	std::vector<std::string> user_map_names_;
 
-	std::vector<era_pair> eras_;
+	std::vector<era_mod_metadata> eras_;
+	std::vector<era_mod_metadata> mods_;
 
 	util::scoped_ptr<map_generator> generator_;
 };

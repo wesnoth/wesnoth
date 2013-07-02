@@ -64,8 +64,6 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	era_selection_(-1),
 	mod_selection_(-1),
 	level_selection_(-1),
-	mod_options_(),
-	mod_descriptions_(),
 	eras_menu_(disp.video(), std::vector<std::string>()),
 	levels_menu_(disp.video(), std::vector<std::string>()),
 	mods_menu_(disp.video(), std::vector<std::string>()),
@@ -125,12 +123,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 
 	dependency_manager_.try_era_by_index(era_selection_, true);
 
-	// Available modifications
-	BOOST_FOREACH (const config& mod, cfg.child_range("modification")) {
-		mod_options_.push_back(mod["name"]);
-		mod_descriptions_.push_back(mod["description"]);
-	}
-	mods_menu_.set_items(mod_options_);
+	mods_menu_.set_items(engine_.mods_menu_item_names());
 
 	BOOST_FOREACH (const std::string& str, preferences::modifications()) {
 		if (cfg.find_child("modification", "id", str))
@@ -324,7 +317,9 @@ void create::process_event()
 	mod_selection_ = mods_menu_.selection();
 
 	if (mod_selection_changed) {
-		description_.set_text(mod_descriptions_[mod_selection_]);
+		engine_.set_current_mod_index(mod_selection_);
+
+		description_.set_text(engine_.current_mod_description());
 	}
 }
 
@@ -571,7 +566,7 @@ void create::layout_children(const SDL_Rect& rect)
 	mods_menu_.set_location(xpos, ypos);
 	// Menu dimensions are only updated when items are set. So do this now.
 	int modsel_save = mods_menu_.selection();
-	mods_menu_.set_items(mod_options_);
+	mods_menu_.set_items(engine_.mods_menu_item_names());
 	mods_menu_.move_selection(modsel_save);
 
 	// OK / Cancel buttons

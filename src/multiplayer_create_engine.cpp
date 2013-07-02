@@ -201,11 +201,13 @@ create_engine::create_engine(level::TYPE current_level_type,
 	current_level_type_(current_level_type),
 	current_level_index_(0),
 	current_era_index_(0),
+	current_mod_index_(0),
 	scenarios_(),
 	user_maps_(),
 	campaigns_(),
 	user_map_names_(),
 	eras_(),
+	mods_(),
 	generator_(NULL)
 {
 	get_files_in_dir(get_user_data_dir() + "/editor/maps", &user_map_names_,
@@ -213,6 +215,7 @@ create_engine::create_engine(level::TYPE current_level_type,
 
 	init_all_levels();
 	init_all_eras();
+	init_all_mods();
 
 	parameters_.saved_game = false;
 }
@@ -341,8 +344,19 @@ std::vector<std::string> create_engine::eras_menu_item_names() const
 {
 	std::vector<std::string> names;
 
-	BOOST_FOREACH(era_pair era, eras_) {
+	BOOST_FOREACH(era_mod_metadata era, eras_) {
 		names.push_back(era.first);
+	}
+
+	return names;
+}
+
+std::vector<std::string> create_engine::mods_menu_item_names() const
+{
+	std::vector<std::string> names;
+
+	BOOST_FOREACH(era_mod_metadata mod, mods_) {
+		names.push_back(mod.first);
 	}
 
 	return names;
@@ -367,6 +381,11 @@ level& create_engine::current_level() const
 std::string create_engine::current_era_description() const
 {
 	return eras_[current_era_index_].second;
+}
+
+std::string create_engine::current_mod_description() const
+{
+	return mods_[current_mod_index_].second;
 }
 
 std::string create_engine::current_era_id() const
@@ -401,6 +420,11 @@ void create_engine::set_current_level_index(const size_t index)
 void create_engine::set_current_era_index(const size_t index)
 {
 	current_era_index_ = index;
+}
+
+void create_engine::set_current_mod_index(const size_t index)
+{
+	current_mod_index_ = index;
 }
 
 size_t create_engine::current_level_index() const
@@ -468,6 +492,14 @@ void create_engine::init_all_eras()
 	BOOST_FOREACH(const config &era,
 		resources::config_manager->game_config().child_range("era")) {
 		eras_.push_back(std::make_pair(era["name"], era["description"]));
+	}
+}
+
+void create_engine::init_all_mods()
+{
+	BOOST_FOREACH(const config &mod,
+		resources::config_manager->game_config().child_range("modification")) {
+		mods_.push_back(std::make_pair(mod["name"], mod["description"]));
 	}
 }
 

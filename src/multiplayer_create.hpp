@@ -59,9 +59,6 @@ private:
 	int mod_selection_;
 	int level_selection_;
 
-	std::vector<std::string> mod_options_;
-	std::vector<std::string> mod_descriptions_;
-
 	gui::menu eras_menu_;
 	gui::menu levels_menu_;
 	gui::menu mods_menu_;
