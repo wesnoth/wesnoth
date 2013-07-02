@@ -86,8 +86,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	filter_name_(disp.video(), 100, "", true),
 	image_restorer_(NULL),
 	image_rect_(null_rect),
-	dependency_manager_(cfg, disp.video()),
-	engine_(level::USER_MAP, dependency_manager_)
+	engine_(level::USER_MAP, disp)
 {
 	filter_num_players_slider_.set_min(0);
 	filter_num_players_slider_.set_max(9);
@@ -102,7 +101,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 
 	if (size_t(preferences::map()) < level_names.size()) {
 		levels_menu_.move_selection(preferences::map());
-		dependency_manager_.try_scenario_by_index(preferences::map(), true);
+		engine_.set_current_level_index(preferences::map(), true);
 	}
 
 	sync_current_level_with_engine();
@@ -121,7 +120,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 		eras_menu_.move_selection(0);
 	}
 
-	dependency_manager_.try_era_by_index(era_selection_, true);
+	engine_.set_current_era_index(eras_menu_.selection(), true);
 
 	mods_menu_.set_items(engine_.extras_menu_item_names(create_engine::MOD));
 
@@ -215,11 +214,10 @@ void create::process_event()
 	era_selection_ = eras_menu_.selection();
 
 	if (era_changed) {
-		engine_.set_current_era_index(era_selection_);
+		engine_.set_current_era_index(era_selection_, false);
 
 		description_.set_text(engine_.current_extra_description(
 			create_engine::ERA));
-		dependency_manager_.try_era_by_index(era_selection_);
 		synchronize_selections();
 	}
 
@@ -230,7 +228,6 @@ void create::process_event()
 		sync_current_level_with_engine();
 
 		description_.set_text(engine_.current_level().description());
-		dependency_manager_.try_scenario_by_index(levels_menu_.selection());
 		synchronize_selections();
 	}
 
@@ -314,32 +311,33 @@ void create::process_event()
 void create::sync_current_level_with_engine()
 {
 	if (engine_.current_level_type() == level::CAMPAIGN) {
-		engine_.set_current_level_index(levels_menu_.selection());
+		engine_.set_current_level_index(levels_menu_.selection(), false);
 	} else if ((size_t)levels_menu_.selection() < engine_.user_maps_count()) {
 			engine_.set_current_level_type(level::USER_MAP);
-			engine_.set_current_level_index(levels_menu_.selection());
+			engine_.set_current_level_index(levels_menu_.selection(), false);
 	} else {
 		engine_.set_current_level_type(level::SCENARIO);
 		engine_.set_current_level_index(levels_menu_.selection()
-			- engine_.user_maps_count());
+			- engine_.user_maps_count(), false);
 	}
 }
 
 void create::synchronize_selections()
 {
 	DBG_MP << "Synchronizing with the dependency manager" << std::endl;
-	if (era_selection_ != dependency_manager_.get_era_index()) {
-		eras_menu_.move_selection(dependency_manager_.get_era_index());
+	if (era_selection_ != engine_.dependency_manager().get_era_index()) {
+		eras_menu_.move_selection(engine_.dependency_manager().get_era_index());
 		process_event();
 	}
 
-	if (level_selection_ !=	dependency_manager_.get_scenario_index()) {
-		levels_menu_.move_selection(dependency_manager_.get_scenario_index());
+	if (level_selection_ !=	engine_.dependency_manager().get_scenario_index()) {
+		levels_menu_.move_selection(
+			engine_.dependency_manager().get_scenario_index());
+
 		process_event();
 	}
 
-	//TODO: move to the engine
-	//parameters_.active_mods = dependency_manager_.get_modifications();
+	engine_.init_active_mods();
 }
 
 std::vector<std::string> create::levels_menu_item_names() const

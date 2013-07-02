@@ -14,6 +14,7 @@
 #include "multiplayer_create_engine.hpp"
 
 #include "game_config_manager.hpp"
+#include "game_display.hpp"
 #include "game_preferences.hpp"
 #include "filesystem.hpp"
 #include "formula_string_utils.hpp"
@@ -196,8 +197,7 @@ void campaign::set_metadata()
 }
 
 create_engine::create_engine(level::TYPE current_level_type,
-	depcheck::manager& dependency_manager) :
-	dependency_manager_(dependency_manager),
+	game_display& disp) :
 	current_level_type_(current_level_type),
 	current_level_index_(0),
 	current_era_index_(0),
@@ -209,6 +209,7 @@ create_engine::create_engine(level::TYPE current_level_type,
 	eras_(),
 	mods_(),
 	parameters_(),
+	dependency_manager_(resources::config_manager->game_config(), disp.video()),
 	generator_(NULL)
 {
 	get_files_in_dir(get_user_data_dir() + "/editor/maps", &user_map_names_,
@@ -401,14 +402,24 @@ level::TYPE create_engine::current_level_type() const
 	return current_level_type_;
 }
 
-void create_engine::set_current_level_index(const size_t index)
+void create_engine::set_current_level_index(const size_t index,
+	const bool force)
 {
 	current_level_index_ = index;
+
+	//TODO: get rid of this work around
+	size_t dep_index = (current_level_type_ == level::SCENARIO) ?
+		(index + user_maps_count()) : index;
+
+	dependency_manager_.try_scenario_by_index(dep_index, force);
 }
 
-void create_engine::set_current_era_index(const size_t index)
+void create_engine::set_current_era_index(const size_t index,
+	const bool force)
 {
 	current_era_index_ = index;
+
+	dependency_manager_.try_era_by_index(index, force);
 }
 
 void create_engine::set_current_mod_index(const size_t index)
@@ -429,6 +440,16 @@ bool create_engine::generator_assigned() const
 void create_engine::generator_user_config(display& disp)
 {
 	generator_->user_config(disp);
+}
+
+const depcheck::manager& create_engine::dependency_manager() const
+{
+	return dependency_manager_;
+}
+
+void create_engine::init_active_mods()
+{
+	parameters_.active_mods = dependency_manager_.get_modifications();
 }
 
 mp_game_settings& create_engine::get_parameters()

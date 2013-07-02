@@ -117,8 +117,7 @@ private:
 class create_engine
 {
 public:
-	create_engine(level::TYPE current_level_type,
-		depcheck::manager& dependency_manager);
+	create_engine(level::TYPE current_level_type, game_display& disp);
 	~create_engine();
 
 	enum MP_EXTRA { ERA, MOD };
@@ -149,14 +148,18 @@ public:
 	void set_current_level_type(const level::TYPE);
 	level::TYPE current_level_type() const;
 
-	void set_current_level_index(const size_t index);
-	void set_current_era_index(const size_t index);
+	void set_current_level_index(const size_t index, const bool force);
+	void set_current_era_index(const size_t index, const bool force);
 	void set_current_mod_index(const size_t index);
 
 	size_t user_maps_count() const;
 
 	bool generator_assigned() const;
 	void generator_user_config(display& disp);
+
+	const depcheck::manager& dependency_manager() const;
+
+	void init_active_mods();
 
 	mp_game_settings& get_parameters();
 
@@ -174,8 +177,6 @@ private:
 
 	config const* find_selected_level(const std::string& level_type);
 
-	depcheck::manager& dependency_manager_;
-
 	level::TYPE current_level_type_;
 	size_t current_level_index_;
 
@@ -192,6 +193,8 @@ private:
 	std::vector<extras_metadata> mods_;
 
 	mp_game_settings parameters_;
+
+	depcheck::manager dependency_manager_;
 
 	util::scoped_ptr<map_generator> generator_;
 };

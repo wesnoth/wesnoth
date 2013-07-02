@@ -30,7 +30,7 @@ namespace mp {
 class create : public mp::ui
 {
 public:
-	create(game_display& dist, const config& game_config, chat& c, config& gamelist, bool local_players_only);
+	create(game_display& disp, const config& game_config, chat& c, config& gamelist, bool local_players_only);
 	~create();
 
 	mp_game_settings& get_parameters();
@@ -85,8 +85,6 @@ private:
 
 	util::scoped_ptr<surface_restorer> image_restorer_;
 	SDL_Rect image_rect_;
-
-	depcheck::manager dependency_manager_;
 
 	create_engine engine_;
 };
