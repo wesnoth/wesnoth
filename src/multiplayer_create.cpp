@@ -108,7 +108,8 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 
 	sync_current_level_with_engine();
 
-	const std::vector<std::string>& era_names = engine_.eras_menu_item_names();
+	const std::vector<std::string>& era_names =
+		engine_.extras_menu_item_names(create_engine::ERA);
 	if(era_names.empty()) {
 		gui2::show_transient_message(disp.video(), "", _("No eras found."));
 		throw config::error(_("No eras found"));
@@ -123,7 +124,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 
 	dependency_manager_.try_era_by_index(era_selection_, true);
 
-	mods_menu_.set_items(engine_.mods_menu_item_names());
+	mods_menu_.set_items(engine_.extras_menu_item_names(create_engine::MOD));
 
 	BOOST_FOREACH (const std::string& str, preferences::modifications()) {
 		if (cfg.find_child("modification", "id", str))
@@ -229,7 +230,8 @@ void create::process_event()
 	if (era_changed) {
 		engine_.set_current_era_index(era_selection_);
 
-		description_.set_text(engine_.current_era_description());
+		description_.set_text(engine_.current_extra_description(
+			create_engine::ERA));
 		dependency_manager_.try_era_by_index(era_selection_);
 		synchronize_selections();
 	}
@@ -319,7 +321,8 @@ void create::process_event()
 	if (mod_selection_changed) {
 		engine_.set_current_mod_index(mod_selection_);
 
-		description_.set_text(engine_.current_mod_description());
+		description_.set_text(engine_.current_extra_description(
+			create_engine::MOD));
 	}
 }
 
@@ -556,7 +559,7 @@ void create::layout_children(const SDL_Rect& rect)
 	eras_menu_.set_location(xpos, ypos);
 	// Menu dimensions are only updated when items are set. So do this now.
 	int erasel_save = eras_menu_.selection();
-	eras_menu_.set_items(engine_.eras_menu_item_names());
+	eras_menu_.set_items(engine_.extras_menu_item_names(create_engine::ERA));
 	eras_menu_.move_selection(erasel_save);
 	ypos += eras_menu_height;
 	mod_label_.set_location(xpos, ypos);
@@ -566,7 +569,7 @@ void create::layout_children(const SDL_Rect& rect)
 	mods_menu_.set_location(xpos, ypos);
 	// Menu dimensions are only updated when items are set. So do this now.
 	int modsel_save = mods_menu_.selection();
-	mods_menu_.set_items(engine_.mods_menu_item_names());
+	mods_menu_.set_items(engine_.extras_menu_item_names(create_engine::MOD));
 	mods_menu_.move_selection(modsel_save);
 
 	// OK / Cancel buttons

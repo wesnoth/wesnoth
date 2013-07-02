@@ -214,8 +214,8 @@ create_engine::create_engine(level::TYPE current_level_type,
 		NULL, FILE_NAME_ONLY);
 
 	init_all_levels();
-	init_all_eras();
-	init_all_mods();
+	init_extras(ERA);
+	init_extras(MOD);
 
 	parameters_.saved_game = false;
 }
@@ -340,23 +340,16 @@ std::vector<std::string> create_engine::levels_menu_item_names(
 	return menu_names;
 }
 
-std::vector<std::string> create_engine::eras_menu_item_names() const
+std::vector<std::string> create_engine::extras_menu_item_names(
+	const MP_EXTRA extra_type) const
 {
+	const std::vector<extras_metadata>& extras =
+		get_const_extras_by_type(extra_type);
+
 	std::vector<std::string> names;
 
-	BOOST_FOREACH(era_mod_metadata era, eras_) {
-		names.push_back(era.first);
-	}
-
-	return names;
-}
-
-std::vector<std::string> create_engine::mods_menu_item_names() const
-{
-	std::vector<std::string> names;
-
-	BOOST_FOREACH(era_mod_metadata mod, mods_) {
-		names.push_back(mod.first);
+	BOOST_FOREACH(const extras_metadata& extra, extras) {
+		names.push_back(extra.first);
 	}
 
 	return names;
@@ -378,14 +371,14 @@ level& create_engine::current_level() const
 	} // end switch
 }
 
-std::string create_engine::current_era_description() const
+std::string create_engine::current_extra_description(const MP_EXTRA extra_type) const
 {
-	return eras_[current_era_index_].second;
-}
+	const std::vector<extras_metadata>& extras =
+		get_const_extras_by_type(extra_type);
+	const size_t& index = (extra_type == ERA) ?
+		current_era_index_ : current_mod_index_;
 
-std::string create_engine::current_mod_description() const
-{
-	return mods_[current_mod_index_].second;
+	return extras[index].second;
 }
 
 std::string create_engine::current_era_id() const
@@ -425,11 +418,6 @@ void create_engine::set_current_era_index(const size_t index)
 void create_engine::set_current_mod_index(const size_t index)
 {
 	current_mod_index_ = index;
-}
-
-size_t create_engine::current_level_index() const
-{
-	return current_level_index_;
 }
 
 size_t create_engine::user_maps_count() const
@@ -487,20 +475,27 @@ void create_engine::init_all_levels()
 	}
 }
 
-void create_engine::init_all_eras()
+void create_engine::init_extras(const MP_EXTRA extra_type)
 {
-	BOOST_FOREACH(const config &era,
-		resources::config_manager->game_config().child_range("era")) {
-		eras_.push_back(std::make_pair(era["name"], era["description"]));
+	std::vector<extras_metadata>& extras = get_extras_by_type(extra_type);
+	const std::string extra_name = (extra_type == ERA) ? "era" : "modification";
+
+	BOOST_FOREACH(const config &extra,
+		resources::config_manager->game_config().child_range(extra_name)) {
+		extras.push_back(std::make_pair(extra["name"], extra["description"]));
 	}
 }
 
-void create_engine::init_all_mods()
+const std::vector<create_engine::extras_metadata>&
+	create_engine::get_const_extras_by_type(const MP_EXTRA extra_type) const
 {
-	BOOST_FOREACH(const config &mod,
-		resources::config_manager->game_config().child_range("modification")) {
-		mods_.push_back(std::make_pair(mod["name"], mod["description"]));
-	}
+	return (extra_type == ERA) ? eras_ : mods_;
+}
+
+std::vector<create_engine::extras_metadata>&
+	create_engine::get_extras_by_type(const MP_EXTRA extra_type)
+{
+	return (extra_type == ERA) ? eras_ : mods_;
 }
 
 config const* create_engine::find_selected_level(const std::string& level_type)

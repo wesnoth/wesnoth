@@ -121,12 +121,14 @@ public:
 		depcheck::manager& dependency_manager);
 	~create_engine();
 
+	enum MP_EXTRA { ERA, MOD };
+
 	typedef boost::shared_ptr<level> level_ptr;
 	typedef boost::shared_ptr<scenario> scenario_ptr;
 	typedef boost::shared_ptr<user_map> user_map_ptr;
 	typedef boost::shared_ptr<campaign> campaign_ptr;
 
-	typedef std::pair<std::string, std::string> era_mod_metadata;
+	typedef std::pair<std::string, std::string> extras_metadata;
 
 	void init_current_level_data();
 	void init_generated_level_data();
@@ -137,15 +139,12 @@ public:
 
 	std::vector<std::string>
 		levels_menu_item_names(const level::TYPE type) const;
-
-	std::vector<std::string> eras_menu_item_names() const;
-	std::vector<std::string> mods_menu_item_names() const;
+	std::vector<std::string> extras_menu_item_names(
+		const MP_EXTRA extra_type) const;
 
 	level& current_level() const;
 
-	std::string current_era_description() const;
-	std::string current_mod_description() const;
-
+	std::string current_extra_description(const MP_EXTRA extra_type) const;
 	std::string current_era_id() const;
 
 	void set_current_level_type(const level::TYPE);
@@ -154,7 +153,6 @@ public:
 	void set_current_level_index(const size_t index);
 	void set_current_era_index(const size_t index);
 	void set_current_mod_index(const size_t index);
-	size_t current_level_index() const;
 
 	size_t user_maps_count() const;
 
@@ -166,8 +164,12 @@ private:
 	void operator=(const create_engine&);
 
 	void init_all_levels();
-	void init_all_eras();
-	void init_all_mods();
+	void init_extras(const MP_EXTRA extra_type);
+
+	const std::vector<extras_metadata>&
+		get_const_extras_by_type(const MP_EXTRA extra_type) const;
+	std::vector<extras_metadata>&
+		get_extras_by_type(const MP_EXTRA extra_type);
 
 	config const* find_selected_level(const std::string& level_type);
 
@@ -176,6 +178,7 @@ private:
 
 	level::TYPE current_level_type_;
 	size_t current_level_index_;
+
 	size_t current_era_index_;
 	size_t current_mod_index_;
 
@@ -185,8 +188,8 @@ private:
 
 	std::vector<std::string> user_map_names_;
 
-	std::vector<era_mod_metadata> eras_;
-	std::vector<era_mod_metadata> mods_;
+	std::vector<extras_metadata> eras_;
+	std::vector<extras_metadata> mods_;
 
 	util::scoped_ptr<map_generator> generator_;
 };
