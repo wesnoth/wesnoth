@@ -101,7 +101,6 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 
 	if (size_t(preferences::map()) < level_names.size()) {
 		levels_menu_.move_selection(preferences::map());
-		engine_.set_current_level_index(preferences::map(), true);
 	}
 
 	sync_current_level_with_engine();
@@ -119,8 +118,6 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	} else {
 		eras_menu_.move_selection(0);
 	}
-
-	engine_.set_current_era_index(eras_menu_.selection(), true);
 
 	mods_menu_.set_items(engine_.extras_menu_item_names(create_engine::MOD));
 
@@ -214,7 +211,7 @@ void create::process_event()
 	era_selection_ = eras_menu_.selection();
 
 	if (era_changed) {
-		engine_.set_current_era_index(era_selection_, false);
+		engine_.set_current_era_index(era_selection_);
 
 		description_.set_text(engine_.current_extra_description(
 			create_engine::ERA));
@@ -228,13 +225,10 @@ void create::process_event()
 		sync_current_level_with_engine();
 
 		description_.set_text(engine_.current_level().description());
+
 		synchronize_selections();
-	}
 
-	if(level_changed) {
 		tooltips::clear_tooltips(image_rect_);
-
-		engine_.init_current_level_data();
 
 		if (!engine_.current_level().description().empty()) {
 			tooltips::add_tooltip(image_rect_,
@@ -311,15 +305,17 @@ void create::process_event()
 void create::sync_current_level_with_engine()
 {
 	if (engine_.current_level_type() == level::CAMPAIGN) {
-		engine_.set_current_level_index(levels_menu_.selection(), false);
+		engine_.set_current_level_index(levels_menu_.selection());
 	} else if ((size_t)levels_menu_.selection() < engine_.user_maps_count()) {
 			engine_.set_current_level_type(level::USER_MAP);
-			engine_.set_current_level_index(levels_menu_.selection(), false);
+			engine_.set_current_level_index(levels_menu_.selection());
 	} else {
 		engine_.set_current_level_type(level::SCENARIO);
 		engine_.set_current_level_index(levels_menu_.selection()
-			- engine_.user_maps_count(), false);
+			- engine_.user_maps_count());
 	}
+
+	engine_.init_current_level_data();
 }
 
 void create::synchronize_selections()
@@ -330,9 +326,22 @@ void create::synchronize_selections()
 		process_event();
 	}
 
-	if (level_selection_ !=	engine_.dependency_manager().get_scenario_index()) {
-		levels_menu_.move_selection(
-			engine_.dependency_manager().get_scenario_index());
+	if (engine_.current_level_type() != level::CAMPAIGN) {
+		if (engine_.current_level().dependency_id() !=
+			engine_.dependency_manager().get_scenario()) {
+
+			int index = engine_.find_scenario_by_id(
+				engine_.dependency_manager().get_scenario());
+
+			if (index == -1) {
+				return;
+			}
+
+			index = (engine_.current_level_type() == level::SCENARIO) ? (index +
+				engine_.user_maps_count()) : index;
+
+			levels_menu_.move_selection(index);
+		}
 
 		process_event();
 	}

@@ -51,6 +51,11 @@ std::string level::name() const
 	return data_["name"];
 }
 
+std::string level::dependency_id() const
+{
+	return data_["id"];
+}
+
 void level::set_data(const config& data)
 {
 	data_ = data;
@@ -145,9 +150,10 @@ void scenario::set_sides()
 	}
 }
 
-user_map::user_map(const std::string& name) :
+user_map::user_map(const std::string& name, const std::string& dependency_id) :
 	scenario(config()),
-	name_(name)
+	name_(name),
+	dependency_id_(dependency_id)
 {
 }
 
@@ -163,6 +169,11 @@ std::string user_map::description() const
 std::string user_map::name() const
 {
 	return name_;
+}
+
+std::string user_map::dependency_id() const
+{
+	return dependency_id_;
 }
 
 campaign::campaign(const config& data) :
@@ -280,6 +291,10 @@ void create_engine::init_current_level_data()
 
 	if (level != NULL) {
 		current_level().set_data(*level);
+	}
+
+	if (current_level_type_ != level::CAMPAIGN) {
+		dependency_manager_.try_scenario(current_level().dependency_id());
 	}
 }
 
@@ -422,24 +437,16 @@ level::TYPE create_engine::current_level_type() const
 	return current_level_type_;
 }
 
-void create_engine::set_current_level_index(const size_t index,
-	const bool force)
+void create_engine::set_current_level_index(const size_t index)
 {
 	current_level_index_ = index;
-
-	//TODO: get rid of this work around
-	size_t dep_index = (current_level_type_ == level::SCENARIO) ?
-		(index + user_maps_count()) : index;
-
-	dependency_manager_.try_scenario_by_index(dep_index, force);
 }
 
-void create_engine::set_current_era_index(const size_t index,
-	const bool force)
+void create_engine::set_current_era_index(const size_t index)
 {
 	current_era_index_ = index;
 
-	dependency_manager_.try_era_by_index(index, force);
+	dependency_manager_.try_era_by_index(index);
 }
 
 void create_engine::set_current_mod_index(const size_t index)
@@ -460,6 +467,27 @@ bool create_engine::generator_assigned() const
 void create_engine::generator_user_config(display& disp)
 {
 	generator_->user_config(disp);
+}
+
+int create_engine::find_scenario_by_id(const std::string& id) const
+{
+	int i = 0;
+	BOOST_FOREACH(const user_map_ptr& user_map, user_maps_) {
+		if (user_map->dependency_id() == id) {
+			return i;
+		}
+		i++;
+	}
+
+	i = 0;
+	BOOST_FOREACH(const scenario_ptr& scenario, scenarios_) {
+		if (scenario->dependency_id() == id) {
+			return i;
+		}
+		i++;
+	}
+
+	return -1;
 }
 
 const depcheck::manager& create_engine::dependency_manager() const
@@ -495,7 +523,8 @@ void create_engine::init_all_levels()
 	// User maps.
 	for(size_t i = 0; i < user_map_names_.size(); i++)
 	{
-		user_map_ptr new_user_map(new user_map(user_map_names_[i]));
+		user_map_ptr new_user_map(new user_map(user_map_names_[i],
+			user_map_names_[i]));
 		user_maps_.push_back(new_user_map);
 
 		// Since user maps are treated as scenarios,

@@ -42,6 +42,7 @@ public:
 
 	virtual std::string name() const;
 	virtual std::string description() const;
+	virtual std::string dependency_id() const;
 
 	void set_data(const config& data);
 	const config& data() const;
@@ -82,17 +83,19 @@ private:
 class user_map : public scenario
 {
 public:
-	user_map(const std::string& name);
+	user_map(const std::string& name, const std::string& dependency_id);
 	~user_map();
 
 	std::string name() const;
 	std::string description() const;
+	std::string dependency_id() const;
 
 private:
 	user_map(const user_map&);
 	void operator=(const user_map&);
 
 	std::string name_;
+	std::string dependency_id_;
 };
 
 class campaign : public level
@@ -148,8 +151,8 @@ public:
 	void set_current_level_type(const level::TYPE);
 	level::TYPE current_level_type() const;
 
-	void set_current_level_index(const size_t index, const bool force);
-	void set_current_era_index(const size_t index, const bool force);
+	void set_current_level_index(const size_t index);
+	void set_current_era_index(const size_t index);
 	void set_current_mod_index(const size_t index);
 
 	size_t user_maps_count() const;
@@ -157,6 +160,7 @@ public:
 	bool generator_assigned() const;
 	void generator_user_config(display& disp);
 
+	int find_scenario_by_id(const std::string& id) const;
 	const depcheck::manager& dependency_manager() const;
 
 	void init_active_mods();
