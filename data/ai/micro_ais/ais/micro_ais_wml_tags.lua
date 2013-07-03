@@ -593,7 +593,8 @@ function wesnoth.wml_actions.micro_ai(cfg)
         optional_keys = { "release_all_units_at_goal", "release_unit_at_goal", "unique_goals", "use_straight_line" }
         CA_parms = {
             {  -- Note: do not define max_score
-                ca_id = 'goto', eval_name = 'mai_goto_eval', exec_name = 'mai_goto_exec'
+                ca_id = 'goto', eval_name = 'mai_goto_eval', exec_name = 'mai_goto_exec',
+                max_score = cfg.ca_score or 300000
             }
         }
 
