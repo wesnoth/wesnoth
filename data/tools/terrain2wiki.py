@@ -2,7 +2,7 @@
 #-*- coding:utf-8 -*-
 
 """
-A script to create the "Terrain Table" on the TerrainCodesWML wiki page.
+A script to create the "Terrain Table" on the TerrainCodeTableWML wiki page.
 Add the output to the wiki whenever a new terrain is added to mainline.
 """
 
@@ -17,7 +17,8 @@ except ImportError:
     sys.exit(1)
 
 # Where to get terrain images
-terrain_url = "https://sourceforge.net/p/wesnoth/code/ci/master/tree/data/core/images/terrain/%s.png?format=raw"
+terrain_url = "https://raw.github.com/wesnoth/wesnoth-old/master/data/core/images/terrain/%s.png"
+
 
 def parse_terrain(data):
     """
@@ -81,7 +82,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='terrain2wiki is a tool to\
 convert the terrain codes located in terrain.cfg to wiki formatted text.')
     parser.add_argument('-f', '--file', default='data/core/terrain.cfg',
-dest='path', help="The location of the terrain.ctg file.")
+dest='path', help="The location of the terrain.cfg file.")
     parser.add_argument('-o', '--output', default='/tmp/TerrainCodeTableWML',
 dest='output_path', help="The location of the ouput file.")
     args = parser.parse_args()
