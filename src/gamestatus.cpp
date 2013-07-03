@@ -260,7 +260,7 @@ const std::string carryover::to_string(){
 	std::string side = "";
 	side.append("Side " + save_id_ + ": gold " + str_cast<int>(gold_) + " recruits " + get_recruits(false) + " units ");
 	BOOST_FOREACH(const config & u_cfg, recall_list_) {
-		side.append(u_cfg["name"] + ", ");
+		side.append(u_cfg["name"].str() + ", ");
 	}
 	return side;
 }
