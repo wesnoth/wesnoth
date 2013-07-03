@@ -88,7 +88,10 @@ private:
 
 	gui::scrollpane options_pane_;
 
+	std::vector<config const*> entry_points_;
 	bool show_entry_points_;
+
+	bool force_use_map_settings_check_;
 	int num_turns_;
 	mp_game_settings parameters_;
 };

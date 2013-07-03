@@ -92,7 +92,9 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	entry_points_label_(disp.video(), _("Select an entry point:"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	entry_points_combo_(disp, std::vector<std::string>()),
 	options_pane_(disp.video()),
+	entry_points_(),
 	show_entry_points_(false),
+	force_use_map_settings_check_(true),
 	num_turns_(0),
 	parameters_(params)
 {
@@ -176,7 +178,7 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	vision_combo_.set_selected(0);
 
 	// The starting points for campaign.
-	std::vector<std::string> starting_points;
+	std::vector<std::string> entry_point_titles;
 
 	BOOST_FOREACH(const config& scenario,
 		game_config().child_range("multiplayer")) {
@@ -184,16 +186,16 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 		if (!scenario["campaign_id"].empty() &&
 			scenario["allow_new_game"].to_bool(true)) {
 
-			if (!scenario["new_game_title"].empty()) {
-				starting_points.push_back(scenario["new_game_title"]);
-			} else {
-				starting_points.push_back(scenario["name"]);
-			}
+			const std::string& title = (!scenario["new_game_title"].empty()) ?
+				scenario["new_game_title"] : scenario["name"];
+
+			entry_points_.push_back(&scenario);
+			entry_point_titles.push_back(title);
 		}
 	}
 
-	if (starting_points.size() > 1) {
-		entry_points_combo_.set_items(starting_points);
+	if (entry_point_titles.size() > 1) {
+		entry_points_combo_.set_items(entry_point_titles);
 		entry_points_combo_.set_selected(0);
 
 		show_entry_points_ = true;
@@ -312,6 +314,13 @@ void configure::process_event()
 				, disp_.video());
 	}
 
+	if (entry_points_combo_.changed()) {
+		const config& scenario = *entry_points_[entry_points_combo_.selected()];
+		parameters_.scenario_data = scenario;
+
+		force_use_map_settings_check_ = true;
+	}
+
 	// Turns per game
 	const int cur_turns = turns_slider_.value();
 
@@ -384,7 +393,9 @@ void configure::process_event()
 
 	xp_modifier_label_.set_text(buf.str());
 
-	if(use_map_settings_.pressed()) {
+	if(use_map_settings_.pressed() || force_use_map_settings_check_) {
+		force_use_map_settings_check_ = false;
+
 		const bool map_settings = use_map_settings_.checked();
 
 		// If the map settings are wanted use them,
