@@ -189,15 +189,15 @@ function wesnoth.wml_actions.micro_ai(cfg)
         CA_parms = {
             {
                 ca_id = 'attack', eval_name = 'mai_messenger_attack_eval', exec_name = 'mai_messenger_attack_exec',
-                max_score = 300000
+                max_score = cfg.ca_score or 300000
             },
             {
                 ca_id = 'messenger_move', eval_name = 'mai_messenger_move_eval', exec_name = 'mai_messenger_move_exec',
-                max_score = 290000
+                max_score = (cfg.ca_score or 300000) - 1
             },
             {
                 ca_id = 'other_move', eval_name = 'mai_messenger_other_move_eval', exec_name = 'mai_messenger_other_move_exec',
-                max_score = 280000
+                max_score = (cfg.ca_score or 300000) - 2
             },
         }
 

@@ -162,7 +162,7 @@ return {
 
             if attack then
                 self.data.best_attack = attack
-                return 300000
+                return cfg.ca_score or 300000
             end
 
             return 0
@@ -185,7 +185,9 @@ return {
 
             local messenger = wesnoth.get_units{ id = cfg.id, formula = '$this_unit.moves > 0' }[1]
 
-            if messenger then return 290000 end
+            if messenger then
+                return (cfg.ca_score or 300000) - 1
+            end
             return 0
         end
 
@@ -316,7 +318,9 @@ return {
 
             local my_units = wesnoth.get_units{ side = wesnoth.current.side, formula = '$this_unit.moves > 0' }
 
-            if my_units[1] then return 280000 end
+            if my_units[1] then
+                return (cfg.ca_score or 300000) - 2
+            end
             return 0
         end
 
