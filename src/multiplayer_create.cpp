@@ -260,6 +260,8 @@ void create::process_event()
 		std::stringstream players;
 		std::stringstream map_size;
 
+		players << _("Players: ");
+
 		engine_.current_level().set_metadata();
 
 		draw_level_image();
@@ -267,17 +269,25 @@ void create::process_event()
 		switch (engine_.current_level_type()) {
 		case level::SCENARIO:
 		case level::USER_MAP: {
+
 			scenario* current_scenario =
 				dynamic_cast<scenario*>(&engine_.current_level());
 
-			players << _("Players: ") << current_scenario->num_players();
+			players << current_scenario->num_players();
 			map_size << _("Size: ") << current_scenario->map_size();
 
 			break;
 		}
 		case level::CAMPAIGN: {
-			//TODO: add a way to determine
-			// the information about number of players for mp campaigns.
+			campaign* current_campaign =
+				dynamic_cast<campaign*>(&engine_.current_level());
+
+			players << current_campaign->min_players();
+			if (current_campaign->max_players() !=
+				current_campaign->min_players()) {
+
+				players << " to " << current_campaign->max_players();
+			}
 
 			break;
 		}

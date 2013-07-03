@@ -178,7 +178,9 @@ std::string user_map::dependency_id() const
 
 campaign::campaign(const config& data) :
 	level(data),
-	image_label_()
+	image_label_(),
+	min_players_(2),
+	max_players_(2)
 {
 }
 
@@ -205,6 +207,25 @@ surface* campaign::create_image_surface(const SDL_Rect& image_rect)
 void campaign::set_metadata()
 {
 	image_label_ = data_["image"].str();
+
+	int min = data_["min_players"].to_int(2);
+	int max = data_["max_players"].to_int(2);
+
+	min_players_ = max_players_ =  min;
+
+	if (max > min) {
+		max_players_ = max;
+	}
+}
+
+int campaign::min_players() const
+{
+	return min_players_;
+}
+
+int campaign::max_players() const
+{
+	return max_players_;
 }
 
 create_engine::create_engine(level::TYPE current_level_type,

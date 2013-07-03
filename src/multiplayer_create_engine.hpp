@@ -110,11 +110,16 @@ public:
 
 	void set_metadata();
 
+	int min_players() const;
+	int max_players() const;
+
 private:
 	campaign(const campaign&);
 	void operator=(const campaign&);
 
 	std::string image_label_;
+	int min_players_;
+	int max_players_;
 };
 
 class create_engine
