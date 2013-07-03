@@ -12,24 +12,17 @@
    See the COPYING file for more details.
 */
 
-#ifndef UMCD_WML_REPLY_HPP
-#define UMCD_WML_REPLY_HPP
+#ifndef UMCD_ERROR_PACKET_HPP
+#define UMCD_ERROR_PACKET_HPP
 
-#include <ostream>
+#include <string>
+#include "config.hpp"
+#include "umcd/wml_reply.hpp"
 
-#include "umcd/network_data.hpp"
+config make_error_packet(const std::string& message);
+config make_warning_packet(const std::string& message);
 
-class wml_reply
-{
-private:
-   network_data data;
-public:
-   wml_reply();
-   wml_reply(const network_data& data);
-   void send(std::ostream& raw_data_stream) const;
-};
+wml_reply make_error_reply(const std::string& message);
+wml_reply make_warning_reply(const std::string& message);
 
-wml_reply make_reply(const config& metadata, const std::string& data);
-wml_reply make_reply(const config& metadata);
-
-#endif // UMCD_WML_REPLY_HPP
+#endif // UMCD_ERROR_PACKET_HPP

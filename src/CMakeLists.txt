@@ -1019,6 +1019,9 @@ set(wesnoth-schema_validator-dependencies_SRC
 set(umcd_SRC
 	umcd/umcd.cpp
 	umcd/server_options.cpp
+	umcd/special_packet.cpp
+	umcd/wml_reply.cpp
+	umcd/wml_request.cpp
 	serialization/one_hierarchy_validator.cpp
 	${network_implementation_files}
 	${wesnoth-schema_validator-dependencies_SRC}

@@ -28,7 +28,7 @@ public:
       std::cout << "executing request_license_action" << std::endl;
       config reply("request_license");
       reply.child("request_license")["text"] = read_file(request.get_conf()["wesnoth_dir"].str() + "COPYING");
-      return wml_reply(network_data(reply, ""));
+      return make_reply(reply);
    }
 
    virtual boost::shared_ptr<basic_wml_action> clone() const

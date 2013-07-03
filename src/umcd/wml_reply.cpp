@@ -11,25 +11,26 @@
 
    See the COPYING file for more details.
 */
+#include "umcd/wml_reply.hpp"
+#include "serialization/parser.hpp"
 
-#ifndef UMCD_WML_REPLY_HPP
-#define UMCD_WML_REPLY_HPP
+wml_reply::wml_reply(){}
 
-#include <ostream>
+wml_reply::wml_reply(const network_data& data)
+: data(data)
+{}
 
-#include "umcd/network_data.hpp"
-
-class wml_reply
+void wml_reply::send(std::ostream& raw_data_stream) const
 {
-private:
-   network_data data;
-public:
-   wml_reply();
-   wml_reply(const network_data& data);
-   void send(std::ostream& raw_data_stream) const;
-};
+   write(raw_data_stream, data.get_metadata());
+}
 
-wml_reply make_reply(const config& metadata, const std::string& data);
-wml_reply make_reply(const config& metadata);
+wml_reply make_reply(const config& metadata, const std::string& data)
+{
+   return wml_reply(network_data(metadata, data));
+}
 
-#endif // UMCD_WML_REPLY_HPP
+wml_reply make_reply(const config& metadata)
+{
+   return make_reply(metadata, "");
+}

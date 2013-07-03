@@ -25,6 +25,7 @@
 #include "umcd/actions/request_license_action.hpp"
 #include "umcd/wml_reply.hpp"
 #include "umcd/wml_request.hpp"
+#include "umcd/special_packet.hpp"
 
 class wml_protocol
 {
@@ -41,9 +42,17 @@ public:
 
    void handle_request(std::iostream& raw_request_stream) const
    {
-      wml_request request(raw_request_stream, server_config);
-      boost::shared_ptr<basic_wml_action> action = action_factory.make_product(request.name());
-      wml_reply reply = action->execute(request);
+      wml_reply reply;
+      try
+      {
+         wml_request request(raw_request_stream, server_config);
+         boost::shared_ptr<basic_wml_action> action = action_factory.make_product(request.name());
+         reply = action->execute(request);
+      }
+      catch(std::exception&)
+      {
+         reply = make_error_reply("The packet you sent is invalid. It could a protocol bug and administrators have been contacted, the problem should be fixed soon.");
+      }
       reply.send(raw_request_stream);
    }
 };
