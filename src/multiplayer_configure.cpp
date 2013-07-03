@@ -89,7 +89,10 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	password_button_(disp.video(), _("Set Password...")),
 	vision_combo_(disp, std::vector<std::string>()),
 	name_entry_(disp.video(), 32),
+	entry_points_label_(disp.video(), _("Select an entry point:"), font::SIZE_SMALL, font::LOBBY_COLOR),
+	entry_points_combo_(disp, std::vector<std::string>()),
 	options_pane_(disp.video()),
+	show_entry_points_(false),
 	num_turns_(0),
 	parameters_(params)
 {
@@ -172,6 +175,29 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	vision_combo_.set_items(vision_types);
 	vision_combo_.set_selected(0);
 
+	// The starting points for campaign.
+	std::vector<std::string> starting_points;
+
+	BOOST_FOREACH(const config& scenario,
+		game_config().child_range("multiplayer")) {
+
+		if (!scenario["campaign_id"].empty() &&
+			scenario["allow_new_game"].to_bool(true)) {
+
+			if (!scenario["new_game_title"].empty()) {
+				starting_points.push_back(scenario["new_game_title"]);
+			} else {
+				starting_points.push_back(scenario["name"]);
+			}
+		}
+	}
+
+	if (starting_points.size() > 1) {
+		entry_points_combo_.set_items(starting_points);
+		entry_points_combo_.set_selected(0);
+
+		show_entry_points_ = true;
+	}
 
 	utils::string_map i18n_symbols;
 	i18n_symbols["login"] = preferences::login();
@@ -460,6 +486,9 @@ void configure::hide_children(bool hide)
 	vision_combo_.hide(hide);
 	name_entry_.hide(hide);
 
+	entry_points_label_.hide(hide);
+	entry_points_combo_.hide(hide);
+
 	options_pane_.hide(hide);
 }
 
@@ -534,6 +563,14 @@ void configure::layout_children(const SDL_Rect& rect)
 	countdown_action_bonus_slider_.set_width(slider_width);
 	countdown_action_bonus_slider_.set_location(xpos, ypos);
 	ypos += countdown_action_bonus_slider_.height() + border_size;
+
+	if (show_entry_points_) {
+		ypos += border_size;
+		entry_points_label_.set_location(xpos, ypos);
+		ypos += entry_points_label_.height() + border_size;
+		entry_points_combo_.set_location(xpos, ypos);
+		ypos += entry_points_combo_.height() + border_size;
+	}
 
 	// Second column: gameplay settings
 	xpos += first_column_width + column_border_size;

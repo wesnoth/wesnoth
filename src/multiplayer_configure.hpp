@@ -83,8 +83,12 @@ private:
 	gui::combo vision_combo_;
 	gui::textbox name_entry_;
 
+	gui::label entry_points_label_;
+	gui::combo entry_points_combo_;
+
 	gui::scrollpane options_pane_;
 
+	bool show_entry_points_;
 	int num_turns_;
 	mp_game_settings parameters_;
 };
