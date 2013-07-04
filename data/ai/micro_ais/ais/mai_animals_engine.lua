@@ -608,9 +608,9 @@ return {
                         local attacker = wesnoth.get_unit(best_attack.src.x, best_attack.src.y)
                         local defender = wesnoth.get_unit(best_attack.target.x, best_attack.target.y)
                         if cfg.show_pack_number then
-                        W.label { x = attacker.x, y = attacker.y, text = "" }
-                            AH.movefull_stopunit(ai, attacker, best_attack.dst.x, best_attack.dst.y)
+                            W.label { x = attacker.x, y = attacker.y, text = "" }
                         end
+                        AH.movefull_stopunit(ai, attacker, best_attack.dst.x, best_attack.dst.y)
                         if cfg.show_pack_number then
                             self:mai_animals_color_label(attacker.x, attacker.y, pack_number)
                         end
