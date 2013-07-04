@@ -279,21 +279,21 @@ function wesnoth.wml_actions.micro_ai(cfg)
 
         if (cfg.guardian_type == 'stationed_guardian') then
             required_keys = { "id", "distance", "station_x", "station_y", "guard_x", "guard_y" }
-            CA_parms = { { ca_id = 'mai_guardian_stationed', score = 100010, sticky = true } }
+            CA_parms = { { ca_id = 'mai_guardian_stationed', score = cfg.ca_score or 300000, sticky = true } }
 
         elseif (cfg.guardian_type == 'zone_guardian') then
             required_keys = { "id", "filter_location" }
             optional_keys = { "filter_location_enemy", "station_x", "station_y" }
-            CA_parms = { { ca_id = 'mai_guardian_zone', score = 100010, sticky = true } }
+            CA_parms = { { ca_id = 'mai_guardian_zone', score = cfg.ca_score or 300000, sticky = true } }
 
         elseif (cfg.guardian_type == 'return_guardian') then
             required_keys = { "id", "return_x", "return_y" }
-            CA_parms = { { ca_id = 'mai_guardian_return', score = 300000, sticky = true } }
+            CA_parms = { { ca_id = 'mai_guardian_return', score = cfg.ca_score or 100010, sticky = true } }
 
         elseif (cfg.guardian_type == 'coward') then
             required_keys = { "id", "distance" }
             optional_keys = { "seek_x", "seek_y","avoid_x","avoid_y" }
-            CA_parms = { { ca_id = 'mai_guardian_coward', score = 300000, sticky = true } }
+            CA_parms = { { ca_id = 'mai_guardian_coward', score = cfg.ca_score or 300000, sticky = true } }
 
         else
             H.wml_error("[micro_ai] tag (guardian) guardian_type= key is missing or has unknown value")

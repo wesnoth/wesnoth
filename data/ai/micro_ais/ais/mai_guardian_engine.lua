@@ -12,11 +12,8 @@ return {
             local unit = wesnoth.get_units{ id = cfg.id }[1]
 
             -- Check if unit exists as sticky BCAs are not always removed successfully
-            if unit and (unit.moves > 0) then
-                return 300000
-            else
-                return 0
-            end
+            if unit and (unit.moves > 0) then return cfg.ca_score end
+            return 0
         end
 
         -- cfg parameters: id, distance, seek_x, seek_y, avoid_x, avoid_y
@@ -117,9 +114,9 @@ return {
             -- Check if unit exists as sticky BCAs are not always removed successfully
             if unit then
                 if ((unit.x ~= cfg.return_x) or (unit.y ~= cfg.return_y)) then
-                    return 100010
+                    return cfg.ca_score
                 else
-                    return 99990
+                    return cfg.ca_score - 20
                 end
             end
             return 0
@@ -154,9 +151,8 @@ return {
             local unit = wesnoth.get_units { id = cfg.id }[1]
 
             -- Check if unit exists as sticky BCAs are not always removed successfully
-            if unit and (unit.moves > 0) then
-                return 100010
-			end
+            if unit and (unit.moves > 0) then return cfg.ca_score end
+            return 0
         end
 
         --Check if an enemy is detected in filter_location_enemy (or filter_location) and attack it or start the "move" randomly function
@@ -295,11 +291,8 @@ return {
             local unit = wesnoth.get_units { id = cfg.id }[1]
 
             -- Check if unit exists as sticky BCAs are not always removed successfully
-            if unit and (unit.moves > 0) then
-                return 100010
-            else
-                return 0
-            end
+            if unit and (unit.moves > 0) then return cfg.ca_score end
+            return 0
         end
 
         -- cfg parameters: id, distance, s_x, s_y, g_x, g_y
