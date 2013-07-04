@@ -18,6 +18,10 @@ local function add_CAs(side, CA_parms, CA_cfg)
         -- If not, we use the passed id in parms.ca_id
         -- If yes, we add a number to the end of parms.ca_id until we find an id that does not exist yet
         local ca_id, id_found = parms.ca_id, true
+
+        -- If it's a sticky behavior CA, we add the unit id to ca_id
+        if parms.sticky then ca_id = ca_id .. "_" .. CA_cfg.id end
+
         local n = 1
         while id_found do -- This is really just a precaution
             id_found = false
@@ -49,9 +53,10 @@ local function add_CAs(side, CA_parms, CA_cfg)
         }
 
         if parms.sticky then
+            local unit = wesnoth.get_units { id = CA_cfg.id }[1]
             CA.sticky = "yes"
-            CA.unit_x = parms.unit_x
-            CA.unit_y = parms.unit_y
+            CA.unit_x = unit.x
+            CA.unit_y = unit.y
         end
 
         W.modify_ai {
@@ -313,11 +318,10 @@ function wesnoth.wml_actions.micro_ai(cfg)
         if (cfg.guardian_type == 'stationed_guardian') then
             required_keys = { "id", "distance", "station_x", "station_y", "guard_x", "guard_y" }
 
-            local unit = wesnoth.get_units { id = cfg._id }[1]
             CA_parms = {
                 {
-                    ca_id = 'mai_guardian_stationed_' .. cfg.id, eval_name = 'mai_guardian_stationed_eval', exec_name = 'mai_guardian_stationed_exec',
-                    score = 100010, sticky = true, unit_x = unit.x, unit_y = unit.y
+                    ca_id = 'mai_guardian_stationed', eval_name = 'mai_guardian_stationed_eval', exec_name = 'mai_guardian_stationed_exec',
+                    score = 100010, sticky = true
                 }
             }
 
@@ -325,22 +329,20 @@ function wesnoth.wml_actions.micro_ai(cfg)
             required_keys = { "id", "filter_location" }
             optional_keys = { "filter_location_enemy", "station_x", "station_y" }
 
-            local unit = wesnoth.get_units { id = cfg._id }[1]
             CA_parms = {
                 {
-                    ca_id = 'mai_guardian_zone_' .. cfg.id, eval_name = 'mai_guardian_zone_eval', exec_name = 'mai_guardian_zone_exec',
-                    score = 100010, sticky = true, unit_x = unit.x, unit_y = unit.y
+                    ca_id = 'mai_guardian_zone', eval_name = 'mai_guardian_zone_eval', exec_name = 'mai_guardian_zone_exec',
+                    score = 100010, sticky = true
                 }
             }
 
         elseif (cfg.guardian_type == 'return_guardian') then
             required_keys = { "id", "return_x", "return_y" }
 
-            local unit = wesnoth.get_units { id = cfg._id }[1]
             CA_parms = {
                 {
-                    ca_id = 'mai_guardian_return_' .. cfg.id, eval_name = 'mai_guardian_return_eval', exec_name = 'mai_guardian_return_exec',
-                    sticky = true, unit_x = unit.x, unit_y = unit.y
+                    ca_id = 'mai_guardian_return', eval_name = 'mai_guardian_return_eval', exec_name = 'mai_guardian_return_exec',
+                    score = 300000, sticky = true
                 }
             }
 
@@ -348,11 +350,10 @@ function wesnoth.wml_actions.micro_ai(cfg)
             required_keys = { "id", "distance" }
             optional_keys = { "seek_x", "seek_y","avoid_x","avoid_y" }
 
-            local unit = wesnoth.get_units { id = cfg._id }[1]
             CA_parms = {
                 {
-                    ca_id = 'mai_guardian_coward_' .. cfg.id, eval_name = 'mai_guardian_coward_eval', exec_name = 'mai_guardian_coward_exec',
-                    score = 300000, sticky = true, unit_x = unit.x, unit_y = unit.y
+                    ca_id = 'mai_guardian_coward', eval_name = 'mai_guardian_coward_eval', exec_name = 'mai_guardian_coward_exec',
+                    score = 300000, sticky = true
                 }
             }
 
@@ -495,11 +496,10 @@ function wesnoth.wml_actions.micro_ai(cfg)
                 H.wml_error("[micro_ai] tag (hunter_unit) is missing required parameter: id")
             end
 
-            local unit = wesnoth.get_units { id = cfg._id }[1]
             CA_parms = {
                 {
-                    ca_id = "mai_animals_hunter_unit" .. cfg.id, eval_name = 'mai_animals_hunter_unit_eval', exec_name = 'mai_animals_hunter_unit_exec',
-                    score = 300000, sticky = true, unit_x = unit.x, unit_y = unit.y
+                    ca_id = "mai_animals_hunter_unit", eval_name = 'mai_animals_hunter_unit_eval', exec_name = 'mai_animals_hunter_unit_exec',
+                    score = 300000, sticky = true
                 }
             }
 
@@ -517,11 +517,10 @@ function wesnoth.wml_actions.micro_ai(cfg)
             H.wml_error("[micro_ai] tag (patrol_unit) is missing required parameter: id")
         end
 
-        local unit = wesnoth.get_units { id = cfg.id }[1]
         CA_parms = {
             {
-                ca_id = "mai_patrol_" .. cfg.id, eval_name = 'mai_patrol_eval', exec_name = 'mai_patrol_exec',
-                score = 300000, sticky = true, unit_x = unit.x, unit_y = unit.y
+                ca_id = "mai_patrol", eval_name = 'mai_patrol_eval', exec_name = 'mai_patrol_exec',
+                score = 300000, sticky = true
             },
         }
 
