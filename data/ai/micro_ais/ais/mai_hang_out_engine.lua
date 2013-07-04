@@ -1,0 +1,126 @@
+return {
+    init = function(ai, existing_engine)
+
+        local engine = existing_engine or {}
+
+        local H = wesnoth.require "lua/helper.lua"
+        local AH = wesnoth.require "ai/lua/ai_helper.lua"
+        local LS = wesnoth.require "lua/location_set.lua"
+
+        function engine:mai_hang_out_eval(cfg)
+            cfg = cfg or {}
+
+            -- Return 0 if the mobilize condition has previously been met
+            for mobilze in H.child_range(self.data, "hangout_mobilize_units") do
+                if (mobilze.id == cfg.ca_id) then
+                    return 0
+                end
+            end
+
+            -- Otherwise check if any of the mobilize conditions are now met
+            if (cfg.mobilize_condition and wesnoth.eval_conditional(cfg.mobilize_condition))
+                or (cfg.mobilize_on_gold_less_than and (wesnoth.sides[wesnoth.current.side].gold < cfg.mobilize_on_gold_less_than))
+            then
+                table.insert(self.data, { "hangout_mobilize_units" , { id = cfg.ca_id } } )
+
+                -- Need to unmark all units also
+                local units = wesnoth.get_units { side = wesnoth.current.side, { "and", cfg.filter } }
+                for i,u in ipairs(units) do
+                    u.variables.mai_hangout_moved = nil
+                end
+
+                return 0
+            end
+
+            local units = wesnoth.get_units { side = wesnoth.current.side,
+                { "and", cfg.filter }, formula = '$this_unit.moves > 0'
+            }
+            if units[1] then
+                return cfg.ca_score or 170000
+            end
+            return 0
+        end
+
+        function engine:mai_hang_out_exec(cfg)
+            cfg = cfg or {}
+
+            local units = wesnoth.get_units { side = wesnoth.current.side,
+                { "and", cfg.filter }, formula = '$this_unit.moves > 0'
+            }
+            --print('#unit', #units)
+
+            -- Get the locations close to which the units should hang out
+            -- cfg.filter_location defaults to the location of the side leader(s)
+            local filter_location = cfg.filter_location or {
+                { "filter", { side = wesnoth.current.side, canrecruit = "yes" } }
+            }
+            local width, height = wesnoth.get_map_size()
+            local locs = wesnoth.get_locations {
+                x = '1-' .. width,
+                y = '1-' .. height,
+                { "and", filter_location }
+            }
+            --print('#locs', #locs)
+
+            -- Get map for locations to be avoided (defaults to all castle terrain)
+            local avoid = cfg.avoid or { terrain = 'C*,C*^*,*^C*' }
+            local avoid_map = LS.of_pairs(wesnoth.get_locations(avoid))
+
+            local best_hex, best_unit, max_rating = {}, {}, -9e99
+            for i,u in ipairs(units) do
+                -- Only consider units that have not been marked yet
+                if (not u.variables.mai_hangout_moved) then
+                    local best_hex_unit, max_rating_unit = {}, -9e99
+
+                    -- Check out all unoccupied hexes the unit can reach
+                    local reach_map = AH.get_reachable_unocc(u)
+                    reach_map:iter( function(x, y, v)
+                        if (not avoid_map:get(x, y)) then
+                            for k,l in ipairs(locs) do
+                                -- Main rating is the distance from any of the goal hexes
+                                local rating = -H.distance_between(x, y, l[1], l[2])
+
+                                -- Fastest unit moves first
+                                rating = rating + u.max_moves / 100.
+
+                                -- Minor penalty for distance from current position of unit
+                                -- so that there's not too much shuffling around
+                                local rating = rating - H.distance_between(x, y, u.x, u.y) / 1000.
+
+                                if (rating > max_rating_unit) then
+                                    max_rating_unit = rating
+                                    best_hex_unit = {x, y}
+                                end
+                            end
+                        end
+                    end)
+
+                    -- Only consider a unit if the best hex found for it is not its current location
+                    if (best_hex_unit[1] ~= u.x) or (best_hex_unit[2] ~= u.y) then
+                        if (max_rating_unit > max_rating) then
+                            max_rating = max_rating_unit
+                            best_hex, best_unit = best_hex_unit, u
+                        end
+                    end
+                end
+            end
+            --print(best_unit.id, best_unit.x, best_unit.y, best_hex[1], best_hex[2], max_rating)
+
+            -- If no valid locations/units were found or all units are in their
+            -- respective best locations already, we take moves away from all units
+            if (max_rating == -9e99) then
+                for i,u in ipairs(units) do
+                    ai.stopunit_moves(u)
+                    -- Also remove the markers
+                    u.variables.mai_hangout_moved = nil
+                end
+            else
+                -- Otherwise move unit and mark as having been used
+                ai.move(best_unit, best_hex[1], best_hex[2])
+                best_unit.variables.mai_hangout_moved = true
+            end
+        end
+
+        return engine
+    end
+}

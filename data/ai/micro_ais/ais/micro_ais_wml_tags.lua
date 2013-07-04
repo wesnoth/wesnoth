@@ -592,9 +592,19 @@ function wesnoth.wml_actions.micro_ai(cfg)
         required_keys = { "filter", "filter_location" }
         optional_keys = { "release_all_units_at_goal", "release_unit_at_goal", "unique_goals", "use_straight_line" }
         CA_parms = {
-            {  -- Note: do not define max_score
+            {
                 ca_id = 'goto', eval_name = 'mai_goto_eval', exec_name = 'mai_goto_exec',
                 max_score = cfg.ca_score or 300000
+            }
+        }
+
+    --------- Hang Out Micro AI - side-wide AI ------------------------------------
+    elseif (cfg.ai_type == 'hang_out') then
+        optional_keys = { "filter", "filter_location", "avoid", "mobilize_condition", "mobilize_on_gold_less_than" }
+        CA_parms = {
+            {
+                ca_id = 'hang_out', eval_name = 'mai_hang_out_eval', exec_name = 'mai_hang_out_exec',
+                max_score = cfg.ca_score or 170000
             }
         }
 
