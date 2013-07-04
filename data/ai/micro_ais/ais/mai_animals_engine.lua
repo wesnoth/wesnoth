@@ -48,7 +48,7 @@ return {
                 formula = '$this_unit.moves > 0'
             }[1]
 
-            if unit then return 300000 end
+            if unit then return cfg.ca_score end
             return 0
         end
 
@@ -202,11 +202,8 @@ return {
                 { "and", cfg.filter_second }
             }
 
-            if wolves[1] and prey[1] then
-                return 95000
-            else
-                return 0
-            end
+            if wolves[1] and prey[1] then return cfg.ca_score end
+            return 0
         end
 
         function engine:mai_animals_wolves_exec(cfg)
@@ -298,11 +295,8 @@ return {
                 formula = '$this_unit.moves > 0', { "and", cfg.filter }
             }
 
-            if wolves[1] then
-                return 90000
-            else
-                return 0
-            end
+            if wolves[1] then return cfg.ca_score end
+            return 0
         end
 
         function engine:mai_animals_wolves_wander_exec(cfg)
@@ -494,7 +488,7 @@ return {
             -- having to do the full attack evaluation for every single move
             local wolves = wesnoth.get_units { side = wesnoth.current.side, type = unit_type, formula = '$this_unit.attacks_left > 0' }
 
-            if wolves[1] then return 300000 end
+            if wolves[1] then return cfg.ca_score end
             return 0
         end
 
@@ -679,8 +673,7 @@ return {
             -- When there's nothing to attack, the wolves wander and regroup into their packs
             local wolves = wesnoth.get_units { side = wesnoth.current.side, type = unit_type, formula = '$this_unit.moves > 0' }
 
-            if wolves[1] then return 290000 end
-
+            if wolves[1] then return cfg.ca_score end
             return 0
         end
 
@@ -815,7 +808,7 @@ return {
                 formula = '$this_unit.moves > 0'
             }
 
-            if units[1] then return 300000 end
+            if units[1] then return cfg.ca_score end
             return 0
         end
 
@@ -931,7 +924,7 @@ return {
             if enemies[1] then  -- don't use 'formula=' for moves, it's slow
                 local units = wesnoth.get_units { side = wesnoth.current.side }
                 for i,u in ipairs(units) do
-                    if (u.moves > 0) then return 300000 end
+                    if (u.moves > 0) then return cfg.ca_score end
                 end
             end
 
@@ -982,7 +975,7 @@ return {
         function engine:mai_animals_move_swarm_eval(cfg)
             local units = wesnoth.get_units { side = wesnoth.current.side }
             for i,u in ipairs(units) do
-                if (u.moves > 0) then return 290000 end
+                if (u.moves > 0) then return cfg.ca_score end
             end
 
             return 0
@@ -1085,7 +1078,7 @@ return {
             }
             local sheep = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter_second} }
 
-            if enemies[1] and dogs[1] and sheep[1] then return 300000 end
+            if enemies[1] and dogs[1] and sheep[1] then return cfg.ca_score end
             return 0
         end
 
@@ -1205,7 +1198,7 @@ return {
                 }
             }
 
-            if sheep[1] then return 295000 end
+            if sheep[1] then return cfg.ca_score end
             return 0
         end
 
@@ -1247,7 +1240,7 @@ return {
                 { "filter_adjacent", { side = wesnoth.current.side, {"and", cfg.filter} } }
             }
 
-            if sheep[1] then return 290000 end
+            if sheep[1] then return cfg.ca_score end
             return 0
         end
 
@@ -1288,7 +1281,7 @@ return {
                     local herding_area = self:mai_animals_herding_area(cfg)
                     for i,s in ipairs(sheep) do
                         -- If a sheep is found outside the herding area, we want to chase it back
-                        if (not herding_area:get(s.x, s.y)) then return 280000 end
+                        if (not herding_area:get(s.x, s.y)) then return cfg.ca_score end
                     end
                 end
             end
@@ -1363,7 +1356,7 @@ return {
         function engine:mai_animals_sheep_move_eval(cfg)
            -- If nothing else is to be done, the sheep do a random move
             local sheep = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter_second}, formula = '$this_unit.moves > 0' }
-            if sheep[1] then return 270000 end
+            if sheep[1] then return cfg.ca_score end
             return 0
         end
 
@@ -1407,7 +1400,7 @@ return {
                 formula = '$this_unit.moves > 0',
                 { "not", { { "filter_adjacent", { side = wesnoth.current.side, {"and", cfg.filter_second} } } } }
             }
-            if dogs[1] then return 260000 end
+            if dogs[1] then return cfg.ca_score end
             return 0
         end
 
@@ -1455,7 +1448,7 @@ return {
             -- If this gets executed, we'll let the CA black-list itself
 
             if (not cfg.rabbit_type) then return 0 end
-            return 310000
+            return cfg.ca_score
         end
 
         function engine:mai_animals_new_rabbit_exec(cfg)
@@ -1526,11 +1519,8 @@ return {
             }
             --print('#tuskers, #adj_enemies', #tuskers, #adj_enemies)
 
-            if tuskers[1] and adj_enemies[1] then
-                return 300000
-            else
-                return 0
-            end
+            if tuskers[1] and adj_enemies[1] then return cfg.ca_score end
+            return 0
         end
 
         function engine:mai_animals_tusker_attack_exec(cfg)
@@ -1590,9 +1580,9 @@ return {
             local all_tuskers = wesnoth.get_units { side = wesnoth.current.side, type = tusker_type }
 
             -- If there are deer, rabbits or tuskers with moves left -> good
-            if units[1] then return 290000 end
+            if units[1] then return cfg.ca_score end
             -- Or, we move tusklets with this CA, if no tuskers are left (counting those without moves also)
-            if (not all_tuskers[1]) and tusklets[1] then return 290000 end
+            if (not all_tuskers[1]) and tusklets[1] then return cfg.ca_score end
             return 0
         end
 
@@ -1749,11 +1739,8 @@ return {
             local tusklets = wesnoth.get_units { side = wesnoth.current.side, type = cfg.tusklet_type, formula = '$this_unit.moves > 0' }
             local tuskers = wesnoth.get_units { side = wesnoth.current.side, type = cfg.tusker_type }
 
-            if tusklets[1] and tuskers[1] then
-                return 280000
-            else
-                return 0
-            end
+            if tusklets[1] and tuskers[1] then return cfg.ca_score end
+            return 0
         end
 
         function engine:mai_animals_tusklet_exec(cfg)

@@ -304,14 +304,15 @@ function wesnoth.wml_actions.micro_ai(cfg)
         if (cfg.animal_type == 'big_animals') then
             required_keys = { "filter"}
             optional_keys = { "avoid_unit", "filter_location", "filter_location_wander" }
-            CA_parms = { { ca_id = "mai_animals_big", score = 300000 } }
+            CA_parms = { { ca_id = "mai_animals_big", score = cfg.ca_score or 300000 } }
 
         elseif (cfg.animal_type == 'wolves') then
             required_keys = { "filter", "filter_second" }
             optional_keys = { "avoid_type" }
+            local score = cfg.ca_score or 90000
             CA_parms = {
-                { ca_id = "mai_animals_wolves", score = 95000 },
-                { ca_id = "mai_animals_wolves_wander", score = 90000 }
+                { ca_id = "mai_animals_wolves", score = score },
+                { ca_id = "mai_animals_wolves_wander", score = score - 1 }
             }
 
            local wolves_aspects = {
@@ -338,38 +339,42 @@ function wesnoth.wml_actions.micro_ai(cfg)
         elseif (cfg.animal_type == 'herding') then
             required_keys = { "filter_location", "filter", "filter_second", "herd_x", "herd_y" }
             optional_keys = { "attention_distance", "attack_distance" }
+            local score = cfg.ca_score or 300000
             CA_parms = {
-                { ca_id = "mai_animals_herding_attack_close_enemy", score = 300000 },
-                { ca_id = "mai_animals_sheep_runs_enemy", score = 295000 },
-                { ca_id = "mai_animals_sheep_runs_dog", score = 290000 },
-                { ca_id = "mai_animals_herd_sheep", score = 280000 },
-                { ca_id = "mai_animals_sheep_move", score = 270000 },
-                { ca_id = "mai_animals_dog_move", score = 260000 }
+                { ca_id = "mai_animals_herding_attack_close_enemy", score = score },
+                { ca_id = "mai_animals_sheep_runs_enemy", score = score - 1 },
+                { ca_id = "mai_animals_sheep_runs_dog", score = score - 2 },
+                { ca_id = "mai_animals_herd_sheep", score = score - 3 },
+                { ca_id = "mai_animals_sheep_move", score = score - 4 },
+                { ca_id = "mai_animals_dog_move", score = score - 5 }
             }
 
         elseif (cfg.animal_type == 'forest_animals') then
             optional_keys = { "rabbit_type", "rabbit_number", "rabbit_enemy_distance", "rabbit_hole_img",
                 "tusker_type", "tusklet_type", "deer_type", "filter_location"
             }
+            local score = cfg.ca_score or 300000
             CA_parms = {
-                { ca_id = "mai_animals_new_rabbit", score = 310000 },
-                { ca_id = "mai_animals_tusker_attack", score = 300000 },
-                { ca_id = "mai_animals_forest_move", score = 290000 },
-                { ca_id = "mai_animals_tusklet", score = 280000 }
+                { ca_id = "mai_animals_new_rabbit", score = score },
+                { ca_id = "mai_animals_tusker_attack", score = score - 1 },
+                { ca_id = "mai_animals_forest_move", score = score - 2 },
+                { ca_id = "mai_animals_tusklet", score = score - 3 }
             }
 
         elseif (cfg.animal_type == 'swarm') then
             optional_keys = { "scatter_distance", "vision_distance", "enemy_distance" }
+            local score = cfg.ca_score or 300000
             CA_parms = {
-                { ca_id = "mai_animals_scatter_swarm", score = 300000 },
-                { ca_id = "mai_animals_move_swarm", score = 290000 }
+                { ca_id = "mai_animals_scatter_swarm", score = score },
+                { ca_id = "mai_animals_move_swarm", score = score - 1 }
             }
 
         elseif (cfg.animal_type == 'wolves_multipacks') then
             optional_keys = { "type", "pack_size", "show_pack_number" }
+            local score = cfg.ca_score or 300000
             CA_parms = {
-                { ca_id = "mai_animals_wolves_multipacks_attack", score = 300000 },
-                { ca_id = "mai_animals_wolves_multipacks_wander", score = 290000 }
+                { ca_id = "mai_animals_wolves_multipacks_attack", score = score },
+                { ca_id = "mai_animals_wolves_multipacks_wander", score = score - 1 }
             }
 
         elseif (cfg.animal_type == 'hunter_unit') then
@@ -380,7 +385,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
             if (not cfg.id) then
                 H.wml_error("[micro_ai] tag (hunter_unit) is missing required parameter: id")
             end
-            CA_parms = { { ca_id = "mai_animals_hunter_unit", score = 300000, sticky = true } }
+            CA_parms = { { ca_id = "mai_animals_hunter_unit", score = cfg.ca_score or 300000, sticky = true } }
 
         else
             H.wml_error("[micro_ai] tag (animals) animal_type= key is missing or has unknown value")
