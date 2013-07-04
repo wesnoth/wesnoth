@@ -487,7 +487,10 @@ void create::layout_children(const SDL_Rect& rect)
 	// potentially giant image.
 	const int image_width = ca.h < 500 ? 111 : 222;
 	const int menu_width = (ca.w - 3*column_border_size - image_width)/3;
-	const int eras_menu_height = (ca.h / 2 - era_label_.height() - 2*border_size - cancel_game_.height());
+	const int eras_menu_height = (ca.h / 2 - era_label_.height() -
+		2 * border_size - cancel_game_.height());
+	const int mods_menu_height = (ca.h / 2 - mod_label_.height() -
+		2 * border_size - cancel_game_.height());
 
 	// Dialog title
 	ypos += title().height() + border_size;
@@ -526,8 +529,8 @@ void create::layout_children(const SDL_Rect& rect)
 	regenerate_map_.set_location(xpos, ypos);
 	ypos += regenerate_map_.height() + border_size;
 	generator_settings_.set_location(xpos, ypos);
-	ypos += generator_settings_.height() + 4 * border_size;
-	load_game_.set_location(xpos, ypos);
+	ypos += generator_settings_.height() + border_size;
+	load_game_.set_location(xpos, ypos + 4 * border_size);
 
 	// And now the description box
 	description_.set_location(xpos1, std::max(ypos,ypos1));
@@ -535,22 +538,28 @@ void create::layout_children(const SDL_Rect& rect)
 	description_.set_wrap(true);
 	ypos += description_.height() + border_size;
 
-	//Third column: maps menu
+	//Third column: levels menu
 	ypos = ypos_columntop;
 	xpos += menu_width + column_border_size;
-	const int x_offset = (menu_width - switch_levels_menu_.width()) / 2;
-	switch_levels_menu_.set_location(xpos + x_offset, ypos);
 	ypos += switch_levels_menu_.height() + 2 * border_size;
 	level_label_.set_location(xpos, ypos);
 	ypos += level_label_.height() + border_size;
 
+	const int levels_menu_y_offset = (ca.w < 900 || ca.h < 500) ?
+		((cancel_game_.height() + border_size) * -1) : 0;
 	levels_menu_.set_max_width(menu_width);
-	levels_menu_.set_max_height(ca.h + ca.y - ypos);
+	levels_menu_.set_max_height(ca.h + ca.y - ypos + levels_menu_y_offset);
 	levels_menu_.set_location(xpos, ypos);
 	// Menu dimensions are only updated when items are set. So do this now.
 	int levelsel = levels_menu_.selection();
 	levels_menu_.set_items(levels_menu_item_names());
 	levels_menu_.move_selection(levelsel);
+
+	// Set switch_levels_menu_ location according to the levels_menu_.
+	const int switch_levels_menu_x_offset = (levels_menu_.width() -
+		switch_levels_menu_.width()) / 2;
+	switch_levels_menu_.set_location(xpos + switch_levels_menu_x_offset,
+		ypos_columntop);
 
 	//Fourth column: eras & mods menu
 	ypos = ypos_columntop;
@@ -568,7 +577,7 @@ void create::layout_children(const SDL_Rect& rect)
 	mod_label_.set_location(xpos, ypos);
 	ypos += mod_label_.height() + border_size;
 	mods_menu_.set_max_width(menu_width);
-	mods_menu_.set_max_height(ca.h - eras_menu_height);
+	mods_menu_.set_max_height(mods_menu_height);
 	mods_menu_.set_location(xpos, ypos);
 	// Menu dimensions are only updated when items are set. So do this now.
 	int modsel_save = mods_menu_.selection();
@@ -585,9 +594,14 @@ void create::layout_children(const SDL_Rect& rect)
 
 	// Buttons
 	right_button->set_location(ca.x + ca.w - right_button->width(),
-	                           ca.y + ca.h - right_button->height());
+		ca.y + ca.h - right_button->height());
 	left_button->set_location(right_button->location().x - left_button->width() -
-	                          gui::ButtonHPadding, ca.y + ca.h - left_button->height());
+		gui::ButtonHPadding, ca.y + ca.h - left_button->height());
+
+	if (ca.h < 500) {
+		load_game_.set_location(left_button->location().x - load_game_.width() -
+			gui::ButtonHPadding, ca.y + ca.h - load_game_.height());
+	}
 }
 
 } // namespace mp
