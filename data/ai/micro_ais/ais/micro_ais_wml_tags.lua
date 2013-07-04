@@ -9,8 +9,10 @@ local function add_CAs(side, CA_parms, CA_cfg)
     --
     -- Required keys for CA_parms:
     --  - id: is used for both CA id and name
-    --  - eval_name: name of the evaluation function
-    --  - exec_name: name of the execution function
+    --  - score: the evaluation score
+    --
+    -- Optional keys:
+    --  - sticky: (boolean) whether this is a sticky BCA or not
 
     for i,parms in ipairs(CA_parms) do
         -- Make sure the id/name of each CA are unique.
@@ -48,8 +50,8 @@ local function add_CAs(side, CA_parms, CA_cfg)
             id = ca_id,
             name = ca_id,
             max_score = parms.score,
-            evaluation = "return (...):" .. parms.eval_name .. "(" .. AH.serialize(CA_cfg) .. ")",
-            execution = "(...):" .. parms.exec_name .. "(" .. AH.serialize(CA_cfg) .. ")"
+            evaluation = "return (...):" .. parms.ca_id .. "_eval(" .. AH.serialize(CA_cfg) .. ")",
+            execution = "(...):" .. parms.ca_id .. "_exec(" .. AH.serialize(CA_cfg) .. ")"
         }
 
         if parms.sticky then
@@ -149,25 +151,14 @@ function wesnoth.wml_actions.micro_ai(cfg)
     if (cfg.ai_type == 'healer_support') then
         optional_keys = { "aggression", "injured_units_only", "max_threats", "filter", "filter_second" }
         CA_parms = {
-            {
-                ca_id = 'mai_healer_initialize', eval_name = 'mai_healer_initialize_eval', exec_name = 'mai_healer_initialize_exec',
-                score = 999990
-            },
-            {
-                ca_id = 'mai_healer_move', eval_name = 'mai_healer_move_eval', exec_name = 'mai_healer_move_exec',
-                score = 105000
-            },
+            { ca_id = 'mai_healer_initialize', score = 999990 },
+            { ca_id = 'mai_healer_move', score = 105000 },
         }
 
         -- The healers_can_attack CA is only added to the table if aggression ~= 0
         -- But: make sure we always try removal
         if (cfg.action == 'delete') or (tonumber(cfg.aggression) ~= 0) then
-            table.insert(CA_parms,
-                {
-                    ca_id = 'mai_healer_may_attack', eval_name = 'mai_healer_may_attack_eval', exec_name = 'mai_healer_may_attack_exec',
-                    score = 99990
-                }
-            )
+            table.insert(CA_parms, { ca_id = 'mai_healer_may_attack', score = 99990 })
         end
 
     --------- Bottleneck Defense Micro AI - side-wide AI ------------------------------------
@@ -175,14 +166,8 @@ function wesnoth.wml_actions.micro_ai(cfg)
         required_keys = { "x", "y", "enemy_x", "enemy_y" }
         optional_keys = { "healer_x", "healer_y", "leadership_x", "leadership_y", "active_side_leader" }
         CA_parms = {
-            {
-                ca_id = 'mai_bottleneck_move', eval_name = 'mai_bottleneck_move_eval', exec_name = 'mai_bottleneck_move_exec',
-                score = 300000
-            },
-            {
-                ca_id = 'mai_bottleneck_attack', eval_name = 'mai_bottleneck_attack_eval', exec_name = 'mai_bottleneck_attack_exec',
-                score = 290000
-            }
+            { ca_id = 'mai_bottleneck_move', score = 300000 },
+            { ca_id = 'mai_bottleneck_attack', score = 290000 }
         }
 
     --------- Messenger Escort Micro AI - side-wide AI ------------------------------------
@@ -191,47 +176,24 @@ function wesnoth.wml_actions.micro_ai(cfg)
         optional_keys = { "enemy_death_chance", "messenger_death_chance" }
         local score = cfg.ca_score or 300000
         CA_parms = {
-            {
-                ca_id = 'mai_messenger_attack', eval_name = 'mai_messenger_attack_eval', exec_name = 'mai_messenger_attack_exec',
-                score = score
-            },
-            {
-                ca_id = 'mai_messenger_move', eval_name = 'mai_messenger_move_eval', exec_name = 'mai_messenger_move_exec',
-                score = score - 1
-            },
-            {
-                ca_id = 'mai_messenger_other_move', eval_name = 'mai_messenger_other_move_eval', exec_name = 'mai_messenger_other_move_exec',
-                score = score - 2
-            },
+            { ca_id = 'mai_messenger_attack', score = score },
+            { ca_id = 'mai_messenger_move', score = score - 1 },
+            { ca_id = 'mai_messenger_other_move', score = score - 2 }
         }
 
     --------- Lurkers Micro AI - side-wide AI ------------------------------------
     elseif (cfg.ai_type == 'lurkers') then
         required_keys = { "filter", "filter_location" }
         optional_keys = { "stationary", "filter_location_wander" }
-        CA_parms = {
-            {
-                ca_id = 'mai_lurkers_attack', eval_name = 'mai_lurkers_attack_eval', exec_name = 'mai_lurkers_attack_exec',
-                score = 100010
-            },
-        }
+        CA_parms = { { ca_id = 'mai_lurkers_attack', score = 100010 } }
 
     --------- Protect Unit Micro AI - side-wide AI ------------------------------------
     elseif (cfg.ai_type == 'protect_unit') then
         required_keys = { "id", "goal_x", "goal_y" }
         CA_parms = {
-            {
-                ca_id = 'mai_protect_unit_finish', eval_name = 'mai_protect_unit_finish_eval', exec_name = 'mai_protect_unit_finish_exec',
-                score = 300000
-            },
-            {
-                ca_id = 'mai_protect_unit_attack', eval_name = 'mai_protect_unit_attack_eval', exec_name = 'mai_protect_unit_attack_exec',
-                score = 95000
-            },
-            {
-                ca_id = 'mai_protect_unit_move', eval_name = 'mai_protect_unit_move_eval', exec_name = 'mai_protect_unit_move_exec',
-                score = 94000
-            }
+            { ca_id = 'mai_protect_unit_finish',  score = 300000 },
+            { ca_id = 'mai_protect_unit_attack', score = 95000 },
+            { ca_id = 'mai_protect_unit_move', score = 94000 }
         }
 
         -- [unit] tags need to be dealt with separately
@@ -317,45 +279,21 @@ function wesnoth.wml_actions.micro_ai(cfg)
 
         if (cfg.guardian_type == 'stationed_guardian') then
             required_keys = { "id", "distance", "station_x", "station_y", "guard_x", "guard_y" }
-
-            CA_parms = {
-                {
-                    ca_id = 'mai_guardian_stationed', eval_name = 'mai_guardian_stationed_eval', exec_name = 'mai_guardian_stationed_exec',
-                    score = 100010, sticky = true
-                }
-            }
+            CA_parms = { { ca_id = 'mai_guardian_stationed', score = 100010, sticky = true } }
 
         elseif (cfg.guardian_type == 'zone_guardian') then
             required_keys = { "id", "filter_location" }
             optional_keys = { "filter_location_enemy", "station_x", "station_y" }
-
-            CA_parms = {
-                {
-                    ca_id = 'mai_guardian_zone', eval_name = 'mai_guardian_zone_eval', exec_name = 'mai_guardian_zone_exec',
-                    score = 100010, sticky = true
-                }
-            }
+            CA_parms = { { ca_id = 'mai_guardian_zone', score = 100010, sticky = true } }
 
         elseif (cfg.guardian_type == 'return_guardian') then
             required_keys = { "id", "return_x", "return_y" }
-
-            CA_parms = {
-                {
-                    ca_id = 'mai_guardian_return', eval_name = 'mai_guardian_return_eval', exec_name = 'mai_guardian_return_exec',
-                    score = 300000, sticky = true
-                }
-            }
+            CA_parms = { { ca_id = 'mai_guardian_return', score = 300000, sticky = true } }
 
         elseif (cfg.guardian_type == 'coward') then
             required_keys = { "id", "distance" }
             optional_keys = { "seek_x", "seek_y","avoid_x","avoid_y" }
-
-            CA_parms = {
-                {
-                    ca_id = 'mai_guardian_coward', eval_name = 'mai_guardian_coward_eval', exec_name = 'mai_guardian_coward_exec',
-                    score = 300000, sticky = true
-                }
-            }
+            CA_parms = { { ca_id = 'mai_guardian_coward', score = 300000, sticky = true } }
 
         else
             H.wml_error("[micro_ai] tag (guardian) guardian_type= key is missing or has unknown value")
@@ -366,25 +304,14 @@ function wesnoth.wml_actions.micro_ai(cfg)
         if (cfg.animal_type == 'big_animals') then
             required_keys = { "filter"}
             optional_keys = { "avoid_unit", "filter_location", "filter_location_wander" }
-            CA_parms = {
-                {
-                    ca_id = "mai_animals_big", eval_name = 'mai_animals_big_eval', exec_name = 'mai_animals_big_exec',
-                    score = 300000
-                }
-            }
+            CA_parms = { { ca_id = "mai_animals_big", score = 300000 } }
 
         elseif (cfg.animal_type == 'wolves') then
             required_keys = { "filter", "filter_second" }
             optional_keys = { "avoid_type" }
             CA_parms = {
-                {
-                    ca_id = "mai_animals_wolves", eval_name = 'mai_animals_wolves_eval', exec_name = 'mai_animals_wolves_exec',
-                    score = 95000
-                },
-                {
-                    ca_id = "mai_animals_wolves_wander", eval_name = 'mai_animals_wolves_wander_eval', exec_name = 'mai_animals_wolves_wander_exec',
-                    score = 90000
-                }
+                { ca_id = "mai_animals_wolves", score = 95000 },
+                { ca_id = "mai_animals_wolves_wander", score = 90000 }
             }
 
            local wolves_aspects = {
@@ -412,30 +339,12 @@ function wesnoth.wml_actions.micro_ai(cfg)
             required_keys = { "filter_location", "filter", "filter_second", "herd_x", "herd_y" }
             optional_keys = { "attention_distance", "attack_distance" }
             CA_parms = {
-                {
-                    ca_id = "mai_animals_herding_attack_close_enemy", eval_name = 'mai_animals_herding_attack_close_enemy_eval', exec_name = 'mai_animals_herding_attack_close_enemy_exec',
-                    score = 300000
-                },
-                {
-                    ca_id = "mai_animals_sheep_runs_enemy", eval_name = 'mai_animals_sheep_runs_enemy_eval', exec_name = 'mai_animals_sheep_runs_enemy_exec',
-                    score = 295000
-                },
-                {
-                    ca_id = "mai_animals_sheep_runs_dog", eval_name = 'mai_animals_sheep_runs_dog_eval', exec_name = 'mai_animals_sheep_runs_dog_exec',
-                    score = 290000
-                },
-                {
-                    ca_id = "mai_animals_herd_sheep", eval_name = 'mai_animals_herd_sheep_eval', exec_name = 'mai_animals_herd_sheep_exec',
-                    score = 280000
-                },
-                {
-                    ca_id = "mai_animals_sheep_move", eval_name = 'mai_animals_sheep_move_eval', exec_name = 'mai_animals_sheep_move_exec',
-                    score = 270000
-                },
-                {
-                    ca_id = "mai_animals_dog_move", eval_name = 'mai_animals_dog_move_eval', exec_name = 'mai_animals_dog_move_exec',
-                    score = 260000
-                }
+                { ca_id = "mai_animals_herding_attack_close_enemy", score = 300000 },
+                { ca_id = "mai_animals_sheep_runs_enemy", score = 295000 },
+                { ca_id = "mai_animals_sheep_runs_dog", score = 290000 },
+                { ca_id = "mai_animals_herd_sheep", score = 280000 },
+                { ca_id = "mai_animals_sheep_move", score = 270000 },
+                { ca_id = "mai_animals_dog_move", score = 260000 }
             }
 
         elseif (cfg.animal_type == 'forest_animals') then
@@ -443,48 +352,24 @@ function wesnoth.wml_actions.micro_ai(cfg)
                 "tusker_type", "tusklet_type", "deer_type", "filter_location"
             }
             CA_parms = {
-                {
-                    ca_id = "mai_animals_new_rabbit", eval_name = 'mai_animals_new_rabbit_eval', exec_name = 'mai_animals_new_rabbit_exec',
-                    score = 310000
-                },
-                {
-                    ca_id = "mai_animals_tusker_attack", eval_name = 'mai_animals_tusker_attack_eval', exec_name = 'mai_animals_tusker_attack_exec',
-                    score = 300000
-                },
-                {
-                    ca_id = "mai_animals_forest_move", eval_name = 'mai_animals_forest_move_eval', exec_name = 'mai_animals_forest_move_exec',
-                    score = 290000
-                },
-                {
-                    ca_id = "mai_animals_tusklet", eval_name = 'mai_animals_tusklet_eval', exec_name = 'mai_animals_tusklet_exec',
-                    score = 280000
-                }
+                { ca_id = "mai_animals_new_rabbit", score = 310000 },
+                { ca_id = "mai_animals_tusker_attack", score = 300000 },
+                { ca_id = "mai_animals_forest_move", score = 290000 },
+                { ca_id = "mai_animals_tusklet", score = 280000 }
             }
 
         elseif (cfg.animal_type == 'swarm') then
             optional_keys = { "scatter_distance", "vision_distance", "enemy_distance" }
             CA_parms = {
-                {
-                    ca_id = "mai_animals_scatter_swarm", eval_name = 'mai_animals_scatter_swarm_eval', exec_name = 'mai_animals_scatter_swarm_exec',
-                    score = 300000
-                },
-                {
-                    ca_id = "mai_animals_move_swarm", eval_name = 'mai_animals_move_swarm_eval', exec_name = 'mai_animals_move_swarm_exec',
-                    score = 290000
-                }
+                { ca_id = "mai_animals_scatter_swarm", score = 300000 },
+                { ca_id = "mai_animals_move_swarm", score = 290000 }
             }
 
         elseif (cfg.animal_type == 'wolves_multipacks') then
             optional_keys = { "type", "pack_size", "show_pack_number" }
             CA_parms = {
-                {
-                    ca_id = "mai_animals_wolves_multipacks_attack", eval_name = 'mai_animals_wolves_multipacks_attack_eval', exec_name = 'mai_animals_wolves_multipacks_attack_exec',
-                    score = 300000
-                },
-                {
-                    ca_id = "mai_animals_wolves_multipacks_wander", eval_name = 'mai_animals_wolves_multipacks_wander_eval', exec_name = 'mai_animals_wolves_multipacks_wander_exec',
-                    score = 290000
-                }
+                { ca_id = "mai_animals_wolves_multipacks_attack", score = 300000 },
+                { ca_id = "mai_animals_wolves_multipacks_wander", score = 290000 }
             }
 
         elseif (cfg.animal_type == 'hunter_unit') then
@@ -495,13 +380,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
             if (not cfg.id) then
                 H.wml_error("[micro_ai] tag (hunter_unit) is missing required parameter: id")
             end
-
-            CA_parms = {
-                {
-                    ca_id = "mai_animals_hunter_unit", eval_name = 'mai_animals_hunter_unit_eval', exec_name = 'mai_animals_hunter_unit_exec',
-                    score = 300000, sticky = true
-                }
-            }
+            CA_parms = { { ca_id = "mai_animals_hunter_unit", score = 300000, sticky = true } }
 
         else
             H.wml_error("[micro_ai] tag (animals) animal_type= key is missing or has unknown value")
@@ -511,38 +390,21 @@ function wesnoth.wml_actions.micro_ai(cfg)
     elseif (cfg.ai_type == 'patrol_unit') then
         required_keys = { "id", "waypoint_x", "waypoint_y" }
         optional_keys = { "attack", "one_time_only", "out_and_back" }
-
         -- id= key is required also for CA deletion
         if (not cfg.id) then
             H.wml_error("[micro_ai] tag (patrol_unit) is missing required parameter: id")
         end
-
-        CA_parms = {
-            {
-                ca_id = "mai_patrol", eval_name = 'mai_patrol_eval', exec_name = 'mai_patrol_exec',
-                score = 300000, sticky = true
-            },
-        }
+        CA_parms = { { ca_id = "mai_patrol", score = 300000, sticky = true } }
 
     --------- Recruiting Micro AI - side-wide AI ------------------------------------
     elseif (cfg.ai_type == 'recruiting') then
         if (cfg.recruiting_type == 'rushers') then
             optional_keys = { "randomness" }
-            CA_parms = {
-                {
-                    ca_id = "mai_rusher_recruit", eval_name = 'mai_rusher_recruit_eval', exec_name = 'mai_rusher_recruit_exec',
-                    score = 180000
-                }
-            }
+            CA_parms = { { ca_id = "mai_rusher_recruit", score = 180000 } }
 
         elseif (cfg.recruiting_type == 'random') then
             optional_keys = { "skip_low_gold_recruiting", "type", "prob" }
-            CA_parms = {
-                {
-                    ca_id = "mai_random_recruit", eval_name = 'mai_random_recruit_eval', exec_name = 'mai_random_recruit_exec',
-                    score = 180000
-                }
-            }
+            CA_parms = { { ca_id = "mai_random_recruit", score = 180000 } }
 
             -- The 'probability' tags need to be handled separately here
             cfg.type, cfg.prob = {}, {}
@@ -589,22 +451,12 @@ function wesnoth.wml_actions.micro_ai(cfg)
     elseif (cfg.ai_type == 'goto') then
         required_keys = { "filter", "filter_location" }
         optional_keys = { "release_all_units_at_goal", "release_unit_at_goal", "unique_goals", "use_straight_line" }
-        CA_parms = {
-            {
-                ca_id = 'mai_goto', eval_name = 'mai_goto_eval', exec_name = 'mai_goto_exec',
-                score = cfg.ca_score or 300000
-            }
-        }
+        CA_parms = { { ca_id = 'mai_goto', score = cfg.ca_score or 300000 } }
 
     --------- Hang Out Micro AI - side-wide AI ------------------------------------
     elseif (cfg.ai_type == 'hang_out') then
         optional_keys = { "filter", "filter_location", "avoid", "mobilize_condition", "mobilize_on_gold_less_than" }
-        CA_parms = {
-            {
-                ca_id = 'mai_hang_out', eval_name = 'mai_hang_out_eval', exec_name = 'mai_hang_out_exec',
-                score = cfg.ca_score or 170000
-            }
-        }
+        CA_parms = { { ca_id = 'mai_hang_out', score = cfg.ca_score or 170000 } }
 
     -- If we got here, none of the valid ai_types was specified
     else
