@@ -36,7 +36,7 @@ return {
                 { "and", cfg.filter }, formula = '$this_unit.moves > 0'
             }
             if units[1] then
-                return cfg.ca_score or 170000
+                return cfg.ca_score
             end
             return 0
         end

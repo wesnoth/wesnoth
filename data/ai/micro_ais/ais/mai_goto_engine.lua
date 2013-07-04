@@ -69,7 +69,7 @@ return {
             -- Now store units and locs in self.data, so that we don't need to duplicate this in the exec function
             self.data.units, self.data.locs = units, locs
 
-            return cfg.ca_score or 300000
+            return cfg.ca_score
         end
 
         function engine:mai_goto_exec(cfg)

@@ -11,9 +11,6 @@ local function add_CAs(side, CA_parms, CA_cfg)
     --  - id: is used for both CA id and name
     --  - eval_name: name of the evaluation function
     --  - exec_name: name of the execution function
-    --
-    -- Optional keys for CA_parms:
-    --  - max_score: maximum score the CA can return
 
     for i,parms in ipairs(CA_parms) do
         -- Make sure the id/name of each CA are unique.
@@ -38,14 +35,15 @@ local function add_CAs(side, CA_parms, CA_cfg)
             n = n+1
         end
 
-        -- Also pass the ca_id to the eval/exec functions
+        -- Also always pass the ca_id and ca_score to the eval/exec functions
         CA_cfg.ca_id = ca_id
+        CA_cfg.ca_score = parms.score
 
         local CA = {
             engine = "lua",
             id = ca_id,
             name = ca_id,
-            max_score = parms.max_score,  -- This works even if parms.max_score is nil
+            max_score = parms.score,
             evaluation = "return (...):" .. parms.eval_name .. "(" .. AH.serialize(CA_cfg) .. ")",
             execution = "(...):" .. parms.exec_name .. "(" .. AH.serialize(CA_cfg) .. ")"
         }
@@ -148,11 +146,11 @@ function wesnoth.wml_actions.micro_ai(cfg)
         CA_parms = {
             {
                 ca_id = 'mai_healer_initialize', eval_name = 'mai_healer_initialize_eval', exec_name = 'mai_healer_initialize_exec',
-                max_score = 999990
+                score = 999990
             },
             {
                 ca_id = 'mai_healer_move', eval_name = 'mai_healer_move_eval', exec_name = 'mai_healer_move_exec',
-                max_score = 105000
+                score = 105000
             },
         }
 
@@ -162,7 +160,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
             table.insert(CA_parms,
                 {
                     ca_id = 'mai_healer_may_attack', eval_name = 'mai_healer_may_attack_eval', exec_name = 'mai_healer_may_attack_exec',
-                    max_score = 99990
+                    score = 99990
                 }
             )
         end
@@ -174,11 +172,11 @@ function wesnoth.wml_actions.micro_ai(cfg)
         CA_parms = {
             {
                 ca_id = 'mai_bottleneck_move', eval_name = 'mai_bottleneck_move_eval', exec_name = 'mai_bottleneck_move_exec',
-                max_score = 300000
+                score = 300000
             },
             {
                 ca_id = 'mai_bottleneck_attack', eval_name = 'mai_bottleneck_attack_eval', exec_name = 'mai_bottleneck_attack_exec',
-                max_score = 290000
+                score = 290000
             }
         }
 
@@ -186,18 +184,19 @@ function wesnoth.wml_actions.micro_ai(cfg)
     elseif (cfg.ai_type == 'messenger_escort') then
         required_keys = { "id", "waypoint_x", "waypoint_y" }
         optional_keys = { "enemy_death_chance", "messenger_death_chance" }
+        local score = cfg.ca_score or 300000
         CA_parms = {
             {
                 ca_id = 'mai_messenger_attack', eval_name = 'mai_messenger_attack_eval', exec_name = 'mai_messenger_attack_exec',
-                max_score = cfg.ca_score or 300000
+                score = score
             },
             {
                 ca_id = 'mai_messenger_move', eval_name = 'mai_messenger_move_eval', exec_name = 'mai_messenger_move_exec',
-                max_score = (cfg.ca_score or 300000) - 1
+                score = score - 1
             },
             {
                 ca_id = 'mai_messenger_other_move', eval_name = 'mai_messenger_other_move_eval', exec_name = 'mai_messenger_other_move_exec',
-                max_score = (cfg.ca_score or 300000) - 2
+                score = score - 2
             },
         }
 
@@ -208,7 +207,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
         CA_parms = {
             {
                 ca_id = 'mai_lurkers_attack', eval_name = 'mai_lurkers_attack_eval', exec_name = 'mai_lurkers_attack_exec',
-                max_score = 100010
+                score = 100010
             },
         }
 
@@ -218,15 +217,15 @@ function wesnoth.wml_actions.micro_ai(cfg)
         CA_parms = {
             {
                 ca_id = 'mai_protect_unit_finish', eval_name = 'mai_protect_unit_finish_eval', exec_name = 'mai_protect_unit_finish_exec',
-                max_score = 300000
+                score = 300000
             },
             {
                 ca_id = 'mai_protect_unit_attack', eval_name = 'mai_protect_unit_attack_eval', exec_name = 'mai_protect_unit_attack_exec',
-                max_score = 95000
+                score = 95000
             },
             {
                 ca_id = 'mai_protect_unit_move', eval_name = 'mai_protect_unit_move_eval', exec_name = 'mai_protect_unit_move_exec',
-                max_score = 94000
+                score = 94000
             }
         }
 
@@ -318,7 +317,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
             CA_parms = {
                 {
                     ca_id = 'mai_guardian_stationed_' .. cfg.id, eval_name = 'mai_guardian_stationed_eval', exec_name = 'mai_guardian_stationed_exec',
-                    max_score = 100010, sticky = true, unit_x = unit.x, unit_y = unit.y
+                    score = 100010, sticky = true, unit_x = unit.x, unit_y = unit.y
                 }
             }
 
@@ -330,7 +329,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
             CA_parms = {
                 {
                     ca_id = 'mai_guardian_zone_' .. cfg.id, eval_name = 'mai_guardian_zone_eval', exec_name = 'mai_guardian_zone_exec',
-                    max_score = 100010, sticky = true, unit_x = unit.x, unit_y = unit.y
+                    score = 100010, sticky = true, unit_x = unit.x, unit_y = unit.y
                 }
             }
 
@@ -353,7 +352,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
             CA_parms = {
                 {
                     ca_id = 'mai_guardian_coward_' .. cfg.id, eval_name = 'mai_guardian_coward_eval', exec_name = 'mai_guardian_coward_exec',
-                    max_score = 300000, sticky = true, unit_x = unit.x, unit_y = unit.y
+                    score = 300000, sticky = true, unit_x = unit.x, unit_y = unit.y
                 }
             }
 
@@ -369,7 +368,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
             CA_parms = {
                 {
                     ca_id = "mai_animals_big", eval_name = 'mai_animals_big_eval', exec_name = 'mai_animals_big_exec',
-                    max_score = 300000
+                    score = 300000
                 }
             }
 
@@ -379,11 +378,11 @@ function wesnoth.wml_actions.micro_ai(cfg)
             CA_parms = {
                 {
                     ca_id = "mai_animals_wolves", eval_name = 'mai_animals_wolves_eval', exec_name = 'mai_animals_wolves_exec',
-                    max_score = 95000
+                    score = 95000
                 },
                 {
                     ca_id = "mai_animals_wolves_wander", eval_name = 'mai_animals_wolves_wander_eval', exec_name = 'mai_animals_wolves_wander_exec',
-                    max_score = 90000
+                    score = 90000
                 }
             }
 
@@ -414,27 +413,27 @@ function wesnoth.wml_actions.micro_ai(cfg)
             CA_parms = {
                 {
                     ca_id = "mai_animals_herding_attack_close_enemy", eval_name = 'mai_animals_herding_attack_close_enemy_eval', exec_name = 'mai_animals_herding_attack_close_enemy_exec',
-                    max_score = 300000
+                    score = 300000
                 },
                 {
                     ca_id = "mai_animals_sheep_runs_enemy", eval_name = 'mai_animals_sheep_runs_enemy_eval', exec_name = 'mai_animals_sheep_runs_enemy_exec',
-                    max_score = 295000
+                    score = 295000
                 },
                 {
                     ca_id = "mai_animals_sheep_runs_dog", eval_name = 'mai_animals_sheep_runs_dog_eval', exec_name = 'mai_animals_sheep_runs_dog_exec',
-                    max_score = 290000
+                    score = 290000
                 },
                 {
                     ca_id = "mai_animals_herd_sheep", eval_name = 'mai_animals_herd_sheep_eval', exec_name = 'mai_animals_herd_sheep_exec',
-                    max_score = 280000
+                    score = 280000
                 },
                 {
                     ca_id = "mai_animals_sheep_move", eval_name = 'mai_animals_sheep_move_eval', exec_name = 'mai_animals_sheep_move_exec',
-                    max_score = 270000
+                    score = 270000
                 },
                 {
                     ca_id = "mai_animals_dog_move", eval_name = 'mai_animals_dog_move_eval', exec_name = 'mai_animals_dog_move_exec',
-                    max_score = 260000
+                    score = 260000
                 }
             }
 
@@ -445,19 +444,19 @@ function wesnoth.wml_actions.micro_ai(cfg)
             CA_parms = {
                 {
                     ca_id = "mai_animals_new_rabbit", eval_name = 'mai_animals_new_rabbit_eval', exec_name = 'mai_animals_new_rabbit_exec',
-                    max_score = 310000
+                    score = 310000
                 },
                 {
                     ca_id = "mai_animals_tusker_attack", eval_name = 'mai_animals_tusker_attack_eval', exec_name = 'mai_animals_tusker_attack_exec',
-                    max_score = 300000
+                    score = 300000
                 },
                 {
                     ca_id = "mai_animals_forest_move", eval_name = 'mai_animals_forest_move_eval', exec_name = 'mai_animals_forest_move_exec',
-                    max_score = 290000
+                    score = 290000
                 },
                 {
                     ca_id = "mai_animals_tusklet", eval_name = 'mai_animals_tusklet_eval', exec_name = 'mai_animals_tusklet_exec',
-                    max_score = 280000
+                    score = 280000
                 }
             }
 
@@ -466,11 +465,11 @@ function wesnoth.wml_actions.micro_ai(cfg)
             CA_parms = {
                 {
                     ca_id = "mai_animals_scatter_swarm", eval_name = 'mai_animals_scatter_swarm_eval', exec_name = 'mai_animals_scatter_swarm_exec',
-                    max_score = 300000
+                    score = 300000
                 },
                 {
                     ca_id = "mai_animals_move_swarm", eval_name = 'mai_animals_move_swarm_eval', exec_name = 'mai_animals_move_swarm_exec',
-                    max_score = 290000
+                    score = 290000
                 }
             }
 
@@ -479,11 +478,11 @@ function wesnoth.wml_actions.micro_ai(cfg)
             CA_parms = {
                 {
                     ca_id = "mai_animals_wolves_multipacks_attack", eval_name = 'mai_animals_wolves_multipacks_attack_eval', exec_name = 'mai_animals_wolves_multipacks_attack_exec',
-                    max_score = 300000
+                    score = 300000
                 },
                 {
                     ca_id = "mai_animals_wolves_multipacks_wander", eval_name = 'mai_animals_wolves_multipacks_wander_eval', exec_name = 'mai_animals_wolves_multipacks_wander_exec',
-                    max_score = 290000
+                    score = 290000
                 }
             }
 
@@ -500,7 +499,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
             CA_parms = {
                 {
                     ca_id = "mai_animals_hunter_unit" .. cfg.id, eval_name = 'mai_animals_hunter_unit_eval', exec_name = 'mai_animals_hunter_unit_exec',
-                    max_score = 300000, sticky = true, unit_x = unit.x, unit_y = unit.y
+                    score = 300000, sticky = true, unit_x = unit.x, unit_y = unit.y
                 }
             }
 
@@ -522,7 +521,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
         CA_parms = {
             {
                 ca_id = "mai_patrol_" .. cfg.id, eval_name = 'mai_patrol_eval', exec_name = 'mai_patrol_exec',
-                max_score = 300000, sticky = true, unit_x = unit.x, unit_y = unit.y
+                score = 300000, sticky = true, unit_x = unit.x, unit_y = unit.y
             },
         }
 
@@ -533,7 +532,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
             CA_parms = {
                 {
                     ca_id = "mai_rusher_recruit", eval_name = 'mai_rusher_recruit_eval', exec_name = 'mai_rusher_recruit_exec',
-                    max_score = 180000
+                    score = 180000
                 }
             }
 
@@ -542,7 +541,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
             CA_parms = {
                 {
                     ca_id = "mai_random_recruit", eval_name = 'mai_random_recruit_eval', exec_name = 'mai_random_recruit_exec',
-                    max_score = 180000
+                    score = 180000
                 }
             }
 
@@ -594,7 +593,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
         CA_parms = {
             {
                 ca_id = 'mai_goto', eval_name = 'mai_goto_eval', exec_name = 'mai_goto_exec',
-                max_score = cfg.ca_score or 300000
+                score = cfg.ca_score or 300000
             }
         }
 
@@ -604,7 +603,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
         CA_parms = {
             {
                 ca_id = 'mai_hang_out', eval_name = 'mai_hang_out_eval', exec_name = 'mai_hang_out_exec',
-                max_score = cfg.ca_score or 170000
+                score = cfg.ca_score or 170000
             }
         }
 
@@ -648,9 +647,6 @@ function wesnoth.wml_actions.micro_ai(cfg)
         local child = H.get_child(cfg, v)
         if child then CA_cfg[v] = child end
     end
-
-    -- Universal optional keys
-    CA_cfg.ca_score = cfg.ca_score
 
     -- Finally, set up the candidate actions themselves
     if (cfg.action == 'add') then add_CAs(cfg.side, CA_parms, CA_cfg) end
