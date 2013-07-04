@@ -487,7 +487,7 @@ return {
                 self.data.unit = best_unit
                 self.data.hex = best_hex
             end
-            return 300000
+            return cfg.ca_score
         end
 
         function engine:mai_bottleneck_move_exec()
@@ -530,7 +530,7 @@ return {
             self.data.def_map, self.data.healer_map, self.data.leadership_map, self.data.healing_map = nil, nil, nil, nil
         end
 
-        function engine:mai_bottleneck_attack_eval()
+        function engine:mai_bottleneck_attack_eval(cfg)
 
             -- All units with attacks_left and enemies next to them
             -- This will be much easier once the 'attacks' variable is implemented
@@ -593,7 +593,7 @@ return {
                 self.data.target = best_tar
                 self.data.weapon = best_weapon
             end
-            return 290000
+            return cfg.ca_score
         end
 
         function engine:mai_bottleneck_attack_exec()

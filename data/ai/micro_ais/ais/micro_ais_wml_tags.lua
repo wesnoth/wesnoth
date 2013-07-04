@@ -165,9 +165,10 @@ function wesnoth.wml_actions.micro_ai(cfg)
     elseif (cfg.ai_type == 'bottleneck_defense') then
         required_keys = { "x", "y", "enemy_x", "enemy_y" }
         optional_keys = { "healer_x", "healer_y", "leadership_x", "leadership_y", "active_side_leader" }
+        local score = cfg.ca_score or 300000
         CA_parms = {
-            { ca_id = 'mai_bottleneck_move', score = 300000 },
-            { ca_id = 'mai_bottleneck_attack', score = 290000 }
+            { ca_id = 'mai_bottleneck_move', score = score },
+            { ca_id = 'mai_bottleneck_attack', score = score - 1 }
         }
 
     --------- Messenger Escort Micro AI - side-wide AI ------------------------------------
