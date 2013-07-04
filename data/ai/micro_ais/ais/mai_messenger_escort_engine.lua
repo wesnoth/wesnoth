@@ -22,6 +22,7 @@ return {
 
             -- Exclude the hex the unit is currently on
             table.remove(path, 1)
+            if (not path[1]) then return end
 
             -- Is there an enemy unit on the first path hex itself?
             -- This would be caught by the adjacent hex check later, but not in the right order
@@ -214,10 +215,11 @@ return {
                 self.data.next_waypoint = self.data.next_waypoint + 1
             end
 
-            -- In case an enemy is on the waypoint hex:
-            local x, y = wesnoth.find_vacant_tile(
-                waypoints[self.data.next_waypoint][1], waypoints[self.data.next_waypoint][2], messenger
-            )
+            -- In case a unit other than the messenger itself is on the waypoint hex:
+            local x, y = waypoints[self.data.next_waypoint][1], waypoints[self.data.next_waypoint][2]
+            if (messenger.x ~= x) or (messenger.y ~= y) then
+                x, y = wesnoth.find_vacant_tile( x, y, messenger)
+            end
             local next_hop = AH.next_hop(messenger, x, y)
 
             -- Compare this to the "ideal path"
