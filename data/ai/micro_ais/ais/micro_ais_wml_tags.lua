@@ -186,7 +186,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
     elseif (cfg.ai_type == 'lurkers') then
         required_keys = { "filter", "filter_location" }
         optional_keys = { "stationary", "filter_location_wander" }
-        CA_parms = { { ca_id = 'mai_lurkers_attack', score = 100010 } }
+        CA_parms = { { ca_id = 'mai_lurkers_attack', score = cfg.ca_score or 300000 } }
 
     --------- Protect Unit Micro AI - side-wide AI ------------------------------------
     elseif (cfg.ai_type == 'protect_unit') then

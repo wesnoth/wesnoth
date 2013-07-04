@@ -12,11 +12,8 @@ return {
                 { "and", cfg.filter }, formula = '$this_unit.moves > 0'
             }
 
-            local eval = 0
-            if units[1] then eval = 100010 end
-
-            --print("Lurker eval: ",eval)
-            return eval
+            if units[1] then return cfg.ca_score end
+            return 0
         end
 
         function engine:mai_lurkers_attack_exec(cfg)
