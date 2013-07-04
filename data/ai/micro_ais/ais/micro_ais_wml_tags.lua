@@ -8,9 +8,8 @@ local function add_CAs(side, CA_parms, CA_cfg)
     -- CA_cfg is a table with the parameters passed to the eval/exec functions
     --
     -- Required keys for CA_parms:
-    --  - id: is used for both CA id and name
+    --  - ca_id: is used for CA id/name and the eval/exec function names
     --  - score: the evaluation score
-    --
     -- Optional keys:
     --  - sticky: (boolean) whether this is a sticky BCA or not
 
@@ -21,7 +20,7 @@ local function add_CAs(side, CA_parms, CA_cfg)
         -- If yes, we add a number to the end of parms.ca_id until we find an id that does not exist yet
         local ca_id, id_found = parms.ca_id, true
 
-        -- If it's a sticky behavior CA, we add the unit id to ca_id
+        -- If it's a sticky behavior CA, we also add the unit id to ca_id
         if parms.sticky then ca_id = ca_id .. "_" .. CA_cfg.id end
 
         local n = 1
@@ -41,7 +40,7 @@ local function add_CAs(side, CA_parms, CA_cfg)
             n = n+1
         end
 
-        -- Also always pass the ca_id and ca_score to the eval/exec functions
+        -- Always pass the ca_id and ca_score to the eval/exec functions
         CA_cfg.ca_id = ca_id
         CA_cfg.ca_score = parms.score
 
@@ -472,8 +471,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
     end
 
     --------- Now go on to setting up the CAs ---------------------------------
-
-    -- If cfg.ca_id is set, it gets added to the id= key of all CAs
+    -- If cfg.ca_id is set, it gets added to the ca_id= key of all CAs
     -- This allows for selective removal of CAs
     if cfg.ca_id then
         for i,parms in ipairs(CA_parms) do
