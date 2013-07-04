@@ -114,7 +114,7 @@ return {
                 recruit = wesnoth.sides[wesnoth.current.side].recruit[1]
             end
 
-            return 180000
+            return cfg.ca_score
         end
 
         function engine:mai_random_recruit_exec()

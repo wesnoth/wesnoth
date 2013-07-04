@@ -405,11 +405,11 @@ function wesnoth.wml_actions.micro_ai(cfg)
     elseif (cfg.ai_type == 'recruiting') then
         if (cfg.recruiting_type == 'rushers') then
             optional_keys = { "randomness" }
-            CA_parms = { { ca_id = "mai_rusher_recruit", score = 180000 } }
+            CA_parms = { { ca_id = "mai_rusher_recruit", score = cfg.ca_score or 180000 } }
 
         elseif (cfg.recruiting_type == 'random') then
             optional_keys = { "skip_low_gold_recruiting", "type", "prob" }
-            CA_parms = { { ca_id = "mai_random_recruit", score = 180000 } }
+            CA_parms = { { ca_id = "mai_random_recruit", score = cfg.ca_score or 180000 } }
 
             -- The 'probability' tags need to be handled separately here
             cfg.type, cfg.prob = {}, {}
