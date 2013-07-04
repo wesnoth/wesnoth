@@ -150,6 +150,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
     --------- Healer Support Micro AI - side-wide AI ------------------------------------
     if (cfg.ai_type == 'healer_support') then
         optional_keys = { "aggression", "injured_units_only", "max_threats", "filter", "filter_second" }
+        -- Scores for this AI need to be hard-coded, it does not work otherwise
         CA_parms = {
             { ca_id = 'mai_healer_initialize', score = 999990 },
             { ca_id = 'mai_healer_move', score = 105000 },
