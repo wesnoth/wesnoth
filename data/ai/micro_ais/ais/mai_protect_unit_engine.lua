@@ -155,7 +155,7 @@ return {
         end
 
         function engine:mai_protect_unit_move_eval(cfg)
-            -- Always 94000 if one of the units can still move
+            -- Always 94999 if one of the units can still move
             local units = {}
             for i,id in ipairs(cfg.id) do
                 table.insert(units, wesnoth.get_units{ id = id, formula = '$this_unit.moves > 0' }[1])
@@ -174,11 +174,8 @@ return {
             --    W.message { speaker = "narrator", image = "wesnoth-icon.png", caption = "Parameters set to:", message = "Enemy unit weight = " .. self.data.enemy_weight .. "\nMy unit weight = " .. self.data.my_unit_weight .. "\nGoal distance weight = " .. self.data.distance_weight .. "\nTerrain defense weight = " .. self.data.terrain_weight .. "\nBearing: " .. tmp }
             --end
 
-            if units[1] then
-                return 94000
-            else
-                return 0
-            end
+            if units[1] then return 94999 end
+            return 0
         end
 
         function engine:mai_protect_unit_move_exec(cfg)
@@ -414,9 +411,8 @@ return {
             if (max_rating > -9e99) then
                 self.data.best_attack = best_attack
                 return 95000
-            else
-                return 0
             end
+            return 0
         end
 
         function engine:mai_protect_unit_attack_exec()

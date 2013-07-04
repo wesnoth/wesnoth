@@ -192,10 +192,11 @@ function wesnoth.wml_actions.micro_ai(cfg)
     --------- Protect Unit Micro AI - side-wide AI ------------------------------------
     elseif (cfg.ai_type == 'protect_unit') then
         required_keys = { "id", "goal_x", "goal_y" }
+        -- Scores for this AI need to be hard-coded, it does not work otherwise
         CA_parms = {
             { ca_id = 'mai_protect_unit_finish',  score = 300000 },
             { ca_id = 'mai_protect_unit_attack', score = 95000 },
-            { ca_id = 'mai_protect_unit_move', score = 94000 }
+            { ca_id = 'mai_protect_unit_move', score = 94999 }
         }
 
         -- [unit] tags need to be dealt with separately
