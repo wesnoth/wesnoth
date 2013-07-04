@@ -10,7 +10,7 @@ return {
             local patrol = wesnoth.get_units({ id = cfg.id })[1]
 
             -- Check if unit exists as sticky BCAs are not always removed successfully
-            if patrol and (patrol.moves > 0) then return 300000 end
+            if patrol and (patrol.moves > 0) then return cfg.ca_score end
             return 0
         end
 
