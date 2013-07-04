@@ -179,6 +179,8 @@ private:
 	void init_all_levels();
 	void init_extras(const MP_EXTRA extra_type);
 
+	std::vector<level_ptr> get_levels_by_type(level::TYPE type) const;
+
 	const std::vector<extras_metadata>&
 		get_const_extras_by_type(const MP_EXTRA extra_type) const;
 	std::vector<extras_metadata>&

@@ -380,29 +380,10 @@ std::vector<std::string> create_engine::levels_menu_item_names(
 {
 	std::vector<std::string> menu_names;
 
-	switch (type) {
-	case level::SCENARIO: {
-		BOOST_FOREACH(level_ptr level, scenarios_) {
-			menu_names.push_back(level->name() + HELP_STRING_SEPARATOR +
-				level->name());
-		}
-		break;
+	BOOST_FOREACH(level_ptr level, get_levels_by_type(type)) {
+		menu_names.push_back(level->name() + HELP_STRING_SEPARATOR +
+			level->name());
 	}
-	case level::USER_MAP: {
-		BOOST_FOREACH(level_ptr level, user_maps_) {
-			menu_names.push_back(level->name() + HELP_STRING_SEPARATOR +
-				level->name());
-		}
-		break;
-	}
-	case level::CAMPAIGN: {
-		BOOST_FOREACH(level_ptr level, campaigns_) {
-			menu_names.push_back(level->name() + HELP_STRING_SEPARATOR +
-				level->name());
-		}
-		break;
-	}
-	} // end switch
 
 	return menu_names;
 }
@@ -589,6 +570,31 @@ void create_engine::init_extras(const MP_EXTRA extra_type)
 		resources::config_manager->game_config().child_range(extra_name)) {
 		extras.push_back(std::make_pair(extra["name"], extra["description"]));
 	}
+}
+
+std::vector<create_engine::level_ptr>
+	create_engine::get_levels_by_type(level::TYPE type) const
+{
+	std::vector<level_ptr> levels;
+	switch (type) {
+	case level::SCENARIO:
+		BOOST_FOREACH(level_ptr level, scenarios_) {
+			levels.push_back(level);
+		}
+		break;
+	case level::USER_MAP:
+		BOOST_FOREACH(level_ptr level, user_maps_) {
+			levels.push_back(level);
+		}
+		break;
+	case level::CAMPAIGN:
+		BOOST_FOREACH(level_ptr level, campaigns_) {
+			levels.push_back(level);
+		}
+		break;
+	} // end switch
+
+	return levels;
 }
 
 const std::vector<create_engine::extras_metadata>&
