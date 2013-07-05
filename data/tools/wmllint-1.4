@@ -1010,6 +1010,8 @@ def hack_syntax(filename, lines):
     get_hit_sound = None
     defend_image = None
     image_defensive = None
+    in_defend = False
+    defend_frame = None
     has_defense_anim = None
     has_special_notes = False
     image_done = []
@@ -1027,6 +1029,9 @@ def hack_syntax(filename, lines):
                     else:
                         print 'wmllint: "%s", lines %d, %d: unit%s has both outdated image_defensive key and a DEFENSE_ANIM' \
                                 % (filename, image_defensive+1, has_defense_anim+1, unit_id)
+                if defend_frame:
+                    print 'wmllint: "%s", lines %d, %d: unit%s may have both a [defend] animation block and a DEFENSE_ANIM' \
+                          % (filename, defend_frame+1, has_defense_anim+1, unit_id)
             elif unit_id and get_hit_sound:
                 if not defend_image:
                     defend_image = unit_image
@@ -1039,6 +1044,9 @@ def hack_syntax(filename, lines):
                 modcount += 1
                 if image_defensive:
                     image_done.append(image_defensive)
+                if defend_frame:
+                    print 'wmllint: "%s", lines %d, %d: unit%s may have both a [defend] animation block and a DEFENSE_ANIM' \
+                          % (filename, defend_frame+1, get_hit_sound+1, unit_id)
             elif image_defensive:
                 print 'wmllint: "%s", line %d: unit%s has outdated image_defensive key' \
                       % (filename, image_defensive+1, unit_id)
@@ -1049,11 +1057,19 @@ def hack_syntax(filename, lines):
             get_hit_sound = None
             defend_image = None
             image_defensive = None
+            in_defend = False
+            defend_frame = None
             has_defense_anim = None
             has_special_notes = False
         if in_unit:
             if "{DEFENSE_ANIM" in lines[i] and not has_defense_anim:
                 has_defense_anim = i
+            if "[defend]" in lines[i]:
+                in_defend = True
+            if "[/defend]" in lines[i] or "[attack]" in lines[i]:
+                in_defend = False
+            if in_defend and not defend_frame and "[frame]" in lines[i]:
+                defend_frame = i
             else:
                 fields = parse_attribute(lines[i])
                 if fields is None:
@@ -1069,9 +1085,11 @@ def hack_syntax(filename, lines):
                     unit_sound = value
                 elif key == "image" and not unit_image:
                     unit_image = value
-                elif key == "image_defensive" and not defend_image:
+                elif key == "image_defensive" and not image_defensive:
                     defend_image = value
                     image_defensive = i
+                elif key == "image" and in_defend and not defend_image:
+                    defend_image = value
     # If image_defensive is the same image as the one in DEFENSE_ANIM, it is safe to discard
     image_done.reverse()
     for bye in image_done:
