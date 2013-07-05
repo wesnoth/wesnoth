@@ -1002,35 +1002,53 @@ def hack_syntax(filename, lines):
                 lines.insert(i, leader(precomment) + baseindent + "image=wesnoth-icon.png\n")
                 modcount += 1        
             need_image = False
-    # Remove get_hit_sound fields
+    # Remove get_hit_sound fields (and image_defensive, if also present)
     in_unit = False
     unit_id = ""
     unit_image = None
     unit_sound = None
     get_hit_sound = None
+    defend_image = None
+    image_defensive = None
     has_defense_anim = None
     has_special_notes = False
+    image_done = []
     for i in range(len(lines)):
         if "[unit]" in lines[i]:
             in_unit = i+1
             continue
         elif "[/unit]" in lines[i]:
-            if unit_id and get_hit_sound:
-                if has_defense_anim:
+            if has_defense_anim:
+                if get_hit_sound:
                     print 'wmllint: "%s", lines %d, %d: unit%s has both deprecated get_hit_sound key and a DEFENSE_ANIM'%(filename, get_hit_sound+1, has_defense_anim+1, unit_id)
-                else:
-                    new_anim = "{DEFENSE_ANIM %s %s %s}" % \
-                               (unit_image, unit_image, unit_sound)
-                    (key, prefix, val, comment) = parse_attribute(lines[get_hit_sound])
-                    print 'wmllint: "%s", line %d: unit%s gets %s'%(filename, get_hit_sound+1, unit_id, new_anim)
-                    lines[get_hit_sound] = leader(lines[get_hit_sound]) \
-                                           + new_anim + comment
-                    modcount += 1
+                if image_defensive:
+                    if re.search('{DEFENSE_ANIM[A-Z_]* +["(]*' + defend_image, lines[has_defense_anim]):
+                        image_done.append(image_defensive)
+                    else:
+                        print 'wmllint: "%s", lines %d, %d: unit%s has both outdated image_defensive key and a DEFENSE_ANIM' \
+                                % (filename, image_defensive+1, has_defense_anim+1, unit_id)
+            elif unit_id and get_hit_sound:
+                if not defend_image:
+                    defend_image = unit_image
+                new_anim = "{DEFENSE_ANIM %s %s %s}" % \
+                           (defend_image, unit_image, unit_sound)
+                (key, prefix, val, comment) = parse_attribute(lines[get_hit_sound])
+                print 'wmllint: "%s", line %d: unit%s gets %s'%(filename, get_hit_sound+1, unit_id, new_anim)
+                lines[get_hit_sound] = leader(lines[get_hit_sound]) \
+                                       + new_anim + comment
+                modcount += 1
+                if image_defensive:
+                    image_done.append(image_defensive)
+            elif image_defensive:
+                print 'wmllint: "%s", line %d: unit%s has outdated image_defensive key' \
+                      % (filename, image_defensive+1, unit_id)
             in_unit = None
             unit_id = ""
             unit_image = None
             unit_sound = None
             get_hit_sound = None
+            defend_image = None
+            image_defensive = None
             has_defense_anim = None
             has_special_notes = False
         if in_unit:
@@ -1051,6 +1069,16 @@ def hack_syntax(filename, lines):
                     unit_sound = value
                 elif key == "image" and not unit_image:
                     unit_image = value
+                elif key == "image_defensive" and not defend_image:
+                    defend_image = value
+                    image_defensive = i
+    # If image_defensive is the same image as the one in DEFENSE_ANIM, it is safe to discard
+    image_done.reverse()
+    for bye in image_done:
+        print 'wmllint: "%s", line %d: removing outdated attribute (%s)' \
+              % (filename, bye+1, lines[bye].strip())
+        del lines[bye]
+        modcount += 1
     # Boucman's transformation of animation syntax.
     # Wrap this in try/except because some newer animation syntax chokes it.
     try:
