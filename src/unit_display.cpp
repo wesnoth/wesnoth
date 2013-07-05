@@ -152,11 +152,12 @@ namespace unit_display
 /**
  * The path must remain unchanged for the life of this object.
  */
-unit_mover::unit_mover(const std::vector<map_location>& path, bool animate) :
+unit_mover::unit_mover(const std::vector<map_location>& path, bool animate, bool force_scroll) :
 	disp_(game_display::get_singleton()),
 	can_draw_(disp_  &&  !disp_->video().update_locked()  &&
 	          !disp_->video().faked()  &&  path.size() > 1),
 	animate_(animate),
+	force_scroll_(force_scroll),
 	animator_(),
 	wait_until_(INT_MIN),
 	shown_unit_(NULL),
@@ -347,7 +348,7 @@ void unit_mover::proceed_to(unit& u, size_t path_index, bool update, bool wait)
 					temp_unit_ptr_->get_animation()->pause_animation();
 				disp_->scroll_to_tiles(path_.begin() + current_,
 				                       path_.end(), game_display::ONSCREEN,
-				                       true, false, 0.0, false);
+				                       true, false, 0.0, force_scroll_);
 				if ( temp_unit_ptr_->get_animation() )
 					temp_unit_ptr_->get_animation()->restart_animation();
 			}
@@ -482,9 +483,10 @@ void unit_mover::finish(unit &u, map_location::DIRECTION dir)
  * will still display the correct number of units.
  */
 void move_unit(const std::vector<map_location>& path, unit& u,
-               bool animate, map_location::DIRECTION dir)
+               bool animate, map_location::DIRECTION dir,
+               bool force_scroll)
 {
-	unit_mover mover(path, animate);
+	unit_mover mover(path, animate, force_scroll);
 
 	mover.start(u);
 	mover.proceed_to(u, path.size());

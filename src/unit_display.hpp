@@ -43,7 +43,7 @@ namespace unit_display
  */
 class unit_mover : public boost::noncopyable {
 public:
-	explicit unit_mover(const std::vector<map_location>& path, bool animate=true);
+	explicit unit_mover(const std::vector<map_location>& path, bool animate=true, bool force_scroll=false);
 	~unit_mover();
 
 	void start(unit& u);
@@ -59,6 +59,7 @@ private: // data
 	game_display * const disp_;
 	const bool can_draw_;
 	const bool animate_;
+	const bool force_scroll_;
 	unit_animator animator_;
 	int wait_until_;	/// The animation potential to wait until. INT_MIN for no wait; INT_MAX to wait for end.
 	unit * shown_unit_;	/// The unit to be (re-)shown after an animation finishes.
@@ -75,7 +76,8 @@ private: // data
  */
 void move_unit(const std::vector<map_location>& path, unit& u,
 	bool animate=true,
-	map_location::DIRECTION dir=map_location::NDIRECTIONS);
+	map_location::DIRECTION dir=map_location::NDIRECTIONS,
+	bool force_scroll=false);
 
 /**
  * Play a pre-fight animation
