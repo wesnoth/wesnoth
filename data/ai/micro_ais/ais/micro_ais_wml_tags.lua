@@ -49,8 +49,8 @@ local function add_CAs(side, CA_parms, CA_cfg)
             id = ca_id,
             name = ca_id,
             max_score = parms.score,
-            evaluation = "return (...):" .. parms.ca_id .. "_eval(" .. AH.serialize(CA_cfg) .. ")",
-            execution = "(...):" .. parms.ca_id .. "_exec(" .. AH.serialize(CA_cfg) .. ")"
+            evaluation = "return (...):" .. (parms.eval_id or parms.ca_id) .. "_eval(" .. AH.serialize(CA_cfg) .. ")",
+            execution = "(...):" .. (parms.eval_id or parms.ca_id) .. "_exec(" .. AH.serialize(CA_cfg) .. ")"
         }
 
         if parms.sticky then
@@ -475,6 +475,8 @@ function wesnoth.wml_actions.micro_ai(cfg)
     -- This allows for selective removal of CAs
     if cfg.ca_id then
         for i,parms in ipairs(CA_parms) do
+            -- Need to save eval_id first though
+            parms.eval_id = parms.ca_id
             parms.ca_id = parms.ca_id .. '_' .. cfg.ca_id
         end
     end
