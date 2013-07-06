@@ -1269,6 +1269,8 @@ WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 	if(!dummy_unit.get())
 		return;
 
+	const bool force_scroll = cfg["force_scroll"].to_bool(true);
+
 	const std::string x = cfg["x"];
 	const std::string y = cfg["y"];
 
@@ -1276,8 +1278,10 @@ WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 	const std::vector<std::string> yvals = utils::split(y);
 
 	const std::vector<map_location>& path = fake_unit_path(*dummy_unit, xvals, yvals);
-	if (!path.empty())
-		unit_display::move_unit(path, *dummy_unit);
+	if (!path.empty()) {
+		// Always scroll.
+		unit_display::move_unit(path, *dummy_unit, true, map_location::NDIRECTIONS, force_scroll);
+	}
 }
 
 WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)

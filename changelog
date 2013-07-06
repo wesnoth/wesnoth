@@ -8,6 +8,9 @@ Version 1.11.5+dev:
    * Updated translations:
  * Miscellaneous and bug fixes
    * Creating a unit via debug mode now clears fog/shroud around the unit.
+   * [move_unit_fake] now accepts an optional force_scroll= attribute (def. to
+     'yes') that allows scrolling the viewport even when [lock_view] is in
+     effect or Follow Unit Actions is disabled in Advanced Preferences.
 
 Version 1.11.5:
  * Add-ons client:
