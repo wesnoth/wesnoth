@@ -11,6 +11,8 @@ Version 1.11.5+dev:
    * [move_unit_fake] now accepts an optional force_scroll= attribute (def. to
      'yes') that allows scrolling the viewport even when [lock_view] is in
      effect or Follow Unit Actions is disabled in Advanced Preferences.
+   * [move_unit] accepts an optional force_scroll= attribute like
+     [move_unit_fake] above, defaults to using the [move_unit_fake] default.
 
 Version 1.11.5:
  * Add-ons client:

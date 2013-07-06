@@ -652,6 +652,7 @@ function wml_actions.move_unit(cfg)
 	local to_x = tostring(cfg.to_x) or helper.wml_error(coordinate_error)
 	local to_y = tostring(cfg.to_y) or helper.wml_error(coordinate_error)
 	local fire_event = cfg.fire_event
+	local muf_force_scroll = cfg.force_scroll
 	local check_passability = cfg.check_passability; if check_passability == nil then check_passability = true end
 	cfg = helper.literal(cfg)
 	cfg.to_x, cfg.to_y, cfg.fire_event = nil, nil, nil
@@ -692,7 +693,8 @@ function wml_actions.move_unit(cfg)
 				image_mods = current_unit.image_mods,
 				side = current_unit_cfg.side,
 				x = move_string_x,
-				y = move_string_y
+				y = move_string_y,
+				force_scroll = muf_force_scroll
 			}
 			local x2, y2 = current_unit.x, current_unit.y
 			current_unit.x, current_unit.y = x, y
