@@ -33,7 +33,7 @@ $stats = array();
 if(!isset($_GET['package'])){
 	$package = 'alloff';
 }else{
-	$package = $_GET['package'];
+	$package = parameter_get('package');
 }
 
 if(!isset($_GET['version'])){
@@ -42,7 +42,7 @@ if(!isset($_GET['version'])){
 // 'master':  show stats from master
 	$version = 'branch';
 }else{
-	$version = $_GET['version'];
+	$version = parameter_get('version');
 }
 
 if(!isset($_GET['order']) || $_GET['order'] != 'alpha'){
@@ -149,7 +149,7 @@ if($package=='alloff' || $package == 'allcore'){
 		}
 	}
 }else{
-	$package = $_GET['package'];
+	$package = parameter_get('package');
 	$statsfile = $version . "stats";
 	if (!file_exists("stats/" . $package . "/" . $statsfile)) {
 		$nostats=true;

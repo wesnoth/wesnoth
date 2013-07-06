@@ -88,4 +88,11 @@ function getpackage($string) {
 	return str_replace("wesnoth-","",$string);
 }
 
+//
+// Get a GET variable cleaned up for possible XSS exploits.
+//
+function parameter_get($name) {
+	return htmlspecialchars($_GET[$name], ENT_QUOTES, 'UTF-8');
+}
+
 ?>

@@ -32,13 +32,13 @@ $stats = array();
 if(!isset($_GET['version'])){
         $version = 'master';
 }else{
-	$version = $_GET['version'];
+	$version = parameter_get('version');
 }
 
 if(!isset($_GET['lang'])){
         $lang = '';
 }else{
-	$lang = $_GET['lang'];
+	$lang = parameter_get('lang');
 }
 
 if($lang != "") {

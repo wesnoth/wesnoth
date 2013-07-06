@@ -29,7 +29,7 @@ $stats = array();
 if(!isset($_GET['package'])){
 	$package = 'alloff';
 }else{
-	$package = $_GET['package'];
+	$package = parameter_get('package');
 }
 
 if(!isset($_GET['order']) || $_GET['order'] != 'alpha'){
@@ -96,7 +96,7 @@ if($package=='alloff'){
 		}
 	}
 }else{
-	$package = $_GET['package'];
+	$package = parameter_get('package');
 	if (!file_exists("stats/" . $package . "/stats")) {
 		$nostats=true;
 	}else{
