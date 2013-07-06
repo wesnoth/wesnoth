@@ -613,6 +613,9 @@ unit_movetypes = []
 races = []
 unit_races = []
 
+# Will be used to move files to _main.cfg
+is_main = []
+
 def sanity_check(filename, lines):
     "Perform sanity and consistency checks on input lines."
     modified = False
@@ -880,8 +883,11 @@ def sanity_check(filename, lines):
         if m:
             usage[m.group(1)] = m.group(2).strip()
     # Check for textdomain strings; should be exactly one, on line 1
+    # We will also take the opportunity to check if the file is a top-level main
     textdomains = []
     for i in range(len(lines)):
+        if ("[campaign]" or "[binary_path]" or "[textdomain]") in lines[i] and not filename.endswith("_main.cfg"):
+            is_main.append(filename)
         if "#textdomain" in lines[i]:
             textdomains.append(i+1)
     if not textdomains:
@@ -2197,13 +2203,24 @@ if __name__ == '__main__':
                     sys.stderr.write("wmllint: internal error on %s\n" % fn)
                     (exc_type, exc_value, exc_traceback) = sys.exc_info()
                     raise exc_type, exc_value, exc_traceback
-            # Time for map file renames
+            # Time for map and main file renames
             # FIXME: We should make some effort to rename mask files.
-            if not revert and not diffs and not fn.endswith(".map") and not fn.endswith(".mask") and is_map(fn):
-                mover = vcmove(fn, fn + ".map")
-                print mover
-                if not dryrun:
-                    os.system(mover)
+            if not revert and not diffs:
+                if not fn.endswith(".map") and not fn.endswith(".mask") and is_map(fn):
+                    mover = vcmove(fn, fn + ".map")
+                    print mover
+                    if not dryrun:
+                        os.system(mover)
+                elif fn in is_main and os.path.isdir(fn.replace('.cfg', '')):
+                    main = fn.replace('.cfg', '/_main.cfg')
+                    if os.path.exists(main):
+                        print 'wmllint: both "%s" and "%s" topfiles exist' % (fn, main)
+                    else:
+                        print 'wmllint: renaming "%s" to "%s"' % (fn, main)
+                        if not dryrun:
+                            os.rename(fn, main)
+                            if os.path.exists(backup):
+                                os.rename(backup, main + '-bak')
     # Constency-check everything we got from the file scans
     consistency_check()
 
