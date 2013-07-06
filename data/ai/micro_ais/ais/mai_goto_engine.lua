@@ -108,7 +108,7 @@ return {
                 enemy_attack_map = BC.get_attack_map(enemies)
             end
 
-            local closest_hex, best_unit, max_rating = {}, {}, -9e99
+            local closest_hex, best_path, best_unit, max_rating = {}, nil, {}, -9e99
             for i,u in ipairs(units) do
                 for i,l in ipairs(locs) do
 
@@ -135,7 +135,7 @@ return {
                                 return custom_cost(x, y, u, enemy_map, enemy_attack_map, cfg.avoid_enemies)
                             end)
                         else
-                            path, cost = wesnoth.find_path(u, l[1], l[2])
+                            path, cost = wesnoth.find_path(u, l[1], l[2], { ignore_units = cfg.ignore_units })
                         end
 
                         -- Make all hexes within the unit's current MP equaivalent
@@ -153,6 +153,7 @@ return {
                         if (rating > max_rating) then
                             max_rating = rating
                             closest_hex, best_unit = l, u
+                            best_path = path
                         end
                     end
                 end
@@ -166,29 +167,30 @@ return {
                 self.data[str]:insert(closest_hex[1], closest_hex[2])
             end
 
-            -- If avoid_enemies is set, we need to pick farthest reachable hex along that path
-            if cfg.avoid_enemies then
-                local path, cost = wesnoth.find_path(best_unit, closest_hex[1], closest_hex[2],
-                    function(x, y, current_cost)
-                    return custom_cost(x, y, best_unit, enemy_map, enemy_attack_map, cfg.avoid_enemies)
-                end)
+            -- If any of the non-standard path finding options were used,
+            -- we need to pick the farthest reachable hex along that path
+            -- For simplicity, we simply do it for all kinds of pathfinding here,
+            -- rather than using ai_helper.next_hop for the standard
+            -- Also, straight-line does not produce a path, so we do that first
+            if not best_path then
+                best_path = wesnoth.find_path(best_unit, closest_hex[1], closest_hex[2])
+            end
 
-                -- Now go through the hexes along that path, use normal path finding
-                closest_hex = path[1]
-                for i = 2,#path do
-                    local sub_path, sub_cost = wesnoth.find_path(best_unit, path[i][1], path[i][2], cfg)
-                    if sub_cost <= best_unit.moves then
-                        local unit_in_way = wesnoth.get_unit(path[i][1], path[i][2])
-                        if not unit_in_way then
-                            closest_hex = path[i]
-                        end
-                    else
-                        break
+            -- Now go through the hexes along that path, use normal path finding
+            closest_hex = best_path[1]
+            for i = 2,#best_path do
+                local sub_path, sub_cost = wesnoth.find_path(best_unit, best_path[i][1], best_path[i][2], cfg)
+                if sub_cost <= best_unit.moves then
+                    local unit_in_way = wesnoth.get_unit(best_path[i][1], best_path[i][2])
+                    if not unit_in_way then
+                        closest_hex = best_path[i]
                     end
+                else
+                    break
                 end
             end
 
-            AH.movefull_outofway_stopunit(ai, best_unit, closest_hex[1], closest_hex[2])
+            ai.move_full(best_unit, closest_hex[1], closest_hex[2])
 
             -- If release_unit_at_goal= or release_all_units_at_goal= key is set:
             -- Check if the unit made it to one of the goal hexes
