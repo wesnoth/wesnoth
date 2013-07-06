@@ -456,8 +456,8 @@ function wesnoth.wml_actions.micro_ai(cfg)
 
     --------- Goto Micro AI - side-wide AI ------------------------------------
     elseif (cfg.ai_type == 'goto') then
-        required_keys = { "filter", "filter_location" }
-        optional_keys = { "avoid_enemies", "release_all_units_at_goal", "release_unit_at_goal", "unique_goals", "use_straight_line" }
+        required_keys = { "filter_location" }
+        optional_keys = { "avoid_enemies", "filter", "release_all_units_at_goal", "release_unit_at_goal", "unique_goals", "use_straight_line" }
         CA_parms = { { ca_id = 'mai_goto', score = cfg.ca_score or 300000 } }
 
     --------- Hang Out Micro AI - side-wide AI ------------------------------------
