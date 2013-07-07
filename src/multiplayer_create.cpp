@@ -87,7 +87,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	image_restorer_(NULL),
 	image_rect_(null_rect),
 	available_level_types_(),
-	engine_(level::USER_MAP, disp)
+	engine_(level::SCENARIO, disp)
 {
 	filter_num_players_slider_.set_min(0);
 	filter_num_players_slider_.set_max(9);
@@ -99,6 +99,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	std::vector<level_type_info> all_level_types;
 	all_level_types.push_back(std::make_pair(level::SCENARIO, "Scenarios"));
 	all_level_types.push_back(std::make_pair(level::CAMPAIGN, "Campaigns"));
+	all_level_types.push_back(std::make_pair(level::USER_MAP, "User Maps"));
 
 	std::vector<std::string> combo_level_names;
 
@@ -120,7 +121,8 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	level_type_combo_.set_items(combo_level_names);
 	level_type_combo_.set_selected(0);
 
-	const std::vector<std::string>& level_names = levels_menu_item_names();
+	const std::vector<std::string>& level_names =
+		engine_.levels_menu_item_names();
 
 	levels_menu_.set_items(level_names);
 	levels_menu_.set_numeric_keypress_selection(false);
@@ -129,7 +131,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 		levels_menu_.move_selection(preferences::map());
 	}
 
-	sync_current_level_with_engine();
+	engine_.set_current_level(levels_menu_.selection());
 
 	const std::vector<std::string>& era_names =
 		engine_.extras_menu_item_names(create_engine::ERA);
@@ -213,9 +215,9 @@ void create::process_event()
 
 		engine_.set_current_level_type(type);
 
-		sync_current_level_with_engine();
+		engine_.set_current_level(levels_menu_.selection());
 
-		levels_menu_.set_items(levels_menu_item_names());
+		levels_menu_.set_items(engine_.levels_menu_item_names());
 		level_selection_ = -1;
 	}
 
@@ -242,7 +244,7 @@ void create::process_event()
 	level_selection_ = levels_menu_.selection();
 
 	if (level_changed) {
-		sync_current_level_with_engine();
+		engine_.set_current_level(levels_menu_.selection());
 
 		description_.set_text(engine_.current_level().description());
 
@@ -332,22 +334,6 @@ void create::process_event()
 	}
 }
 
-void create::sync_current_level_with_engine()
-{
-	if (engine_.current_level_type() == level::CAMPAIGN) {
-		engine_.set_current_level_index(levels_menu_.selection());
-	} else if ((size_t)levels_menu_.selection() < engine_.user_maps_count()) {
-		engine_.set_current_level_type(level::USER_MAP);
-		engine_.set_current_level_index(levels_menu_.selection());
-	} else {
-		engine_.set_current_level_type(level::SCENARIO);
-		engine_.set_current_level_index(levels_menu_.selection()
-			- engine_.user_maps_count());
-	}
-
-	engine_.init_current_level_data();
-}
-
 void create::synchronize_selections()
 {
 	DBG_MP << "Synchronizing with the dependency manager" << std::endl;
@@ -367,9 +353,6 @@ void create::synchronize_selections()
 				return;
 			}
 
-			index = (engine_.current_level_type() == level::SCENARIO) ? (index +
-				engine_.user_maps_count()) : index;
-
 			levels_menu_.move_selection(index);
 		}
 
@@ -377,30 +360,6 @@ void create::synchronize_selections()
 	}
 
 	engine_.init_active_mods();
-}
-
-std::vector<std::string> create::levels_menu_item_names() const
-{
-	switch (engine_.current_level_type()) {
-	case level::SCENARIO:
-	case level::USER_MAP: {
-		const std::vector<std::string>& scenarios =
-			engine_.levels_menu_item_names(level::SCENARIO);
-		const std::vector<std::string>& user_maps =
-			engine_.levels_menu_item_names(level::USER_MAP);
-
-		std::vector<std::string> names;
-		names.reserve(scenarios.size() + user_maps.size());
-		names.insert(names.end(), user_maps.begin(), user_maps.end());
-		names.insert(names.end(), scenarios.begin(), scenarios.end());
-
-		return names;
-	}
-	case level::CAMPAIGN:
-	default: {
-		return engine_.levels_menu_item_names(level::CAMPAIGN);
-	}
-	} // end switch
 }
 
 void create::draw_level_image() const
@@ -574,7 +533,7 @@ void create::layout_children(const SDL_Rect& rect)
 	levels_menu_.set_location(xpos, ypos);
 	// Menu dimensions are only updated when items are set. So do this now.
 	int levelsel = levels_menu_.selection();
-	levels_menu_.set_items(levels_menu_item_names());
+	levels_menu_.set_items(engine_.levels_menu_item_names());
 	levels_menu_.move_selection(levelsel);
 
 	// Place game type combo and label in the middle of levels menu

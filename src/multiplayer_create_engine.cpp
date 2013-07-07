@@ -375,12 +375,11 @@ void create_engine::prepare_for_saved_game()
 	parameters_.scenario_data.clear();
 }
 
-std::vector<std::string> create_engine::levels_menu_item_names(
-	const level::TYPE type) const
+std::vector<std::string> create_engine::levels_menu_item_names() const
 {
 	std::vector<std::string> menu_names;
 
-	BOOST_FOREACH(level_ptr level, get_levels_by_type(type)) {
+	BOOST_FOREACH(level_ptr level, get_levels_by_type(current_level_type_)) {
 		menu_names.push_back(level->name() + HELP_STRING_SEPARATOR +
 			level->name());
 	}
@@ -439,9 +438,11 @@ level::TYPE create_engine::current_level_type() const
 	return current_level_type_;
 }
 
-void create_engine::set_current_level_index(const size_t index)
+void create_engine::set_current_level(const size_t index)
 {
 	current_level_index_ = index;
+
+	init_current_level_data();
 }
 
 void create_engine::set_current_era_index(const size_t index)
@@ -454,11 +455,6 @@ void create_engine::set_current_era_index(const size_t index)
 void create_engine::set_current_mod_index(const size_t index)
 {
 	current_mod_index_ = index;
-}
-
-size_t create_engine::user_maps_count() const
-{
-	return user_maps_.size();
 }
 
 bool create_engine::generator_assigned() const

@@ -137,7 +137,6 @@ public:
 
 	typedef std::pair<std::string, std::string> extras_metadata;
 
-	void init_current_level_data();
 	void init_generated_level_data();
 
 	void prepare_for_new_level();
@@ -146,8 +145,7 @@ public:
 
 	std::vector<level_ptr> get_levels_by_type(level::TYPE type) const;
 
-	std::vector<std::string>
-		levels_menu_item_names(const level::TYPE type) const;
+	std::vector<std::string> levels_menu_item_names() const;
 	std::vector<std::string> extras_menu_item_names(
 		const MP_EXTRA extra_type) const;
 
@@ -158,11 +156,10 @@ public:
 	void set_current_level_type(const level::TYPE);
 	level::TYPE current_level_type() const;
 
-	void set_current_level_index(const size_t index);
+	void set_current_level(const size_t index);
+
 	void set_current_era_index(const size_t index);
 	void set_current_mod_index(const size_t index);
-
-	size_t user_maps_count() const;
 
 	bool generator_assigned() const;
 	void generator_user_config(display& disp);
@@ -180,6 +177,8 @@ private:
 
 	void init_all_levels();
 	void init_extras(const MP_EXTRA extra_type);
+
+	void init_current_level_data();
 
 	const std::vector<extras_metadata>&
 		get_const_extras_by_type(const MP_EXTRA extra_type) const;

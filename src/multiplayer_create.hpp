@@ -41,11 +41,7 @@ protected:
 	virtual void hide_children(bool hide=true);
 
 private:
-	void sync_current_level_with_engine();
-
 	void synchronize_selections();
-
-	std::vector<std::string> levels_menu_item_names() const;
 
 	void draw_level_image() const;
 
