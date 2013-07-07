@@ -1793,7 +1793,7 @@ void display::draw_minimap()
 		}
 	}
 
-	const surface screen(screen_.getSurface());
+	const surface& screen(screen_.getSurface());
 	clip_rect_setter clip_setter(screen, &area);
 
 	SDL_Color back_color = {31,31,23,255};
