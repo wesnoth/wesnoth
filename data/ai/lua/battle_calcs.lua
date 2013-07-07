@@ -14,8 +14,8 @@ function battle_calcs.unit_attack_info(unit, cache)
     --  - resist_mod: resistance modifiers (multiplicative factors) index by attack type
     --  - alignment: just that
 
-    -- Set up a cache index.  We use id+max_hitpoints+side, since the
-    -- unit can level up.  Side is added to avoid the problem of MP leaders sometimes having
+    -- Set up a cache index. We use id+max_hitpoints+side, since the
+    -- unit can level up. Side is added to avoid the problem of MP leaders sometimes having
     -- the same id when the game is started from the command-line
     local cind = 'UI-' .. unit.id .. unit.max_hitpoints .. unit.side
     --print(cind)
@@ -88,8 +88,8 @@ function battle_calcs.strike_damage(attacker, defender, att_weapon, def_weapon, 
     --
     -- 'cache' can be given to cache strike damage and to pass through to battle_calcs.unit_attack_info()
 
-    -- Set up a cache index.  We use id+max_hitpoints+side for each unit, since the
-    -- unit can level up.  Side is added to avoid the problem of MP leaders sometimes having
+    -- Set up a cache index. We use id+max_hitpoints+side for each unit, since the
+    -- unit can level up. Side is added to avoid the problem of MP leaders sometimes having
     -- the same id when the game is started from the command-line
     -- Also need to add the weapons and lawful_bonus values for each unit
     local att_lawful_bonus = wesnoth.get_time_of_day({ dst[1], dst[2], true }).lawful_bonus
@@ -172,15 +172,15 @@ function battle_calcs.best_weapons(attacker, defender, dst, cache)
     -- dst: attack location, to take terrain time of day, illumination etc. into account
     -- For the defender, the current location is assumed
     -- Ideally, we would do a full attack_rating here for all combinations,
-    -- but that would take too long.  So we simply define the best weapons
+    -- but that would take too long. So we simply define the best weapons
     -- as those that has the biggest difference between
     -- damage done and damage received (the latter divided by 2)
     -- Returns 0 if defender does not have a weapon for this range
     --
     -- 'cache' can be given to cache best weapons
 
-    -- Set up a cache index.  We use id+max_hitpoints+side for each unit, since the
-    -- unit can level up.  Side is added to avoid the problem of MP leaders sometimes having
+    -- Set up a cache index. We use id+max_hitpoints+side for each unit, since the
+    -- unit can level up. Side is added to avoid the problem of MP leaders sometimes having
     -- the same id when the game is started from the command-line
     -- Also need to add the weapons and lawful_bonus values for each unit
     local att_lawful_bonus = wesnoth.get_time_of_day({ dst[1], dst[2], true }).lawful_bonus
@@ -327,7 +327,7 @@ function battle_calcs.battle_outcome_coefficients(cfg, cache)
     -- The result can be cached if variable 'cache' is given
     --
     -- Output: table with the coefficients needed to calculate the distribution for both attacker and defender
-    -- First index: number of hits landed on the defender.  Each of those contains an array of
+    -- First index: number of hits landed on the defender. Each of those contains an array of
     -- coefficient tables, of format:
     -- { num = value, am = value, ah = value, dm = value, dh = value }
     -- This gives one term in a sum of form:
@@ -486,7 +486,7 @@ function battle_calcs.battle_outcome_coefficients(cfg, cache)
     end
 
     -- The probability for the number of hits with the most terms can be skipped
-    -- and 1-sum(other_terms) can be used instead.  Set a flag for which term to skip
+    -- and 1-sum(other_terms) can be used instead. Set a flag for which term to skip
     local max_number, biggest_equation = 0, -1
     for hits,v in pairs(coeffs_att) do
         local number = 0
@@ -650,7 +650,7 @@ function battle_calcs.battle_outcome(attacker, defender, cfg, cache)
     --  - att_weapon/def_weapon: attacker/defender weapon number
     --      if not given, get "best" weapon (Note: both must be given, or they will both be determined)
     --  - dst: { x, y }: the attack location; defaults to { attacker.x, attacker.y }
-    -- cache: to be passed on to other functions.  battle_outcome itself is not cached, too many factors enter
+    -- cache: to be passed on to other functions. battle_outcome itself is not cached, too many factors enter
 
     cfg = cfg or {}
 
@@ -1042,7 +1042,7 @@ function battle_calcs.attack_combo_stats(tmp_attackers, tmp_dsts, defender, cach
 
             -- Note that this is a variance, not a standard deviations (as in, it's squared),
             -- so it does not matter much for low-variance attacks, but takes on large values for
-            -- high variance attacks.  I think that is what we want.
+            -- high variance attacks. I think that is what we want.
             local rating = base_rating + outcome_variance
 
             -- If attacker has attack with 'slow' special, it should always go first
@@ -1246,7 +1246,7 @@ end
 function battle_calcs.relative_damage_map(units, enemies, cache)
     -- Returns a location set map containing the relative damage of
     -- units vs. enemies on the part of the map that the combined units
-    -- can reach.  The damage is calculated as the sum of defender_rating
+    -- can reach. The damage is calculated as the sum of defender_rating
     -- from attack_rating(), and thus (roughly) in gold units.
     -- Also returns the same maps for the own and enemy units only
     -- (with the enemy_damage_map having positive sign, while in the
@@ -1261,7 +1261,7 @@ function battle_calcs.relative_damage_map(units, enemies, cache)
         enemy_attack_maps[i] = battle_calcs.get_attack_map_unit(e, cfg)
     end
 
-    -- Get the damage rating for each unit in 'units'.  It is the maximum
+    -- Get the damage rating for each unit in 'units'. It is the maximum
     -- defender_rating (roughly the damage that it can do in units of gold)
     -- against any of the enemy units
     local unit_ratings = {}
@@ -1357,7 +1357,7 @@ function battle_calcs.get_attack_combos_subset(units, enemy, cfg)
     -- It is also configurable to stop accumulating combinations when certain criteria are met.
     --
     -- The return value is an array of attack combinations, where each element is another
-    -- array of tables containing 'dst' and 'src' fields of the attacking units.  It can be
+    -- array of tables containing 'dst' and 'src' fields of the attacking units. It can be
     -- specified whether the order of the attacks matters or not (see below).
     --
     -- Note: This function is optimized for speed, not elegance
@@ -1379,10 +1379,10 @@ function battle_calcs.get_attack_combos_subset(units, enemy, cfg)
     --         Note 2: there is some overhead involved in reading the time from the system,
     --           so don't use this unless it's needed
     --   - skip_presort: by default, the units are presorted in order of the unit with
-    --       the highest rating first.  This has the advantage of likely finding the best
+    --       the highest rating first. This has the advantage of likely finding the best
     --       (or at least close to the best) attack combination earlier, but it add overhead,
-    --       so it's actually a disadvantage for small numbers of combinations.  skip_presort
-    --       specifies the number of units up to which the presorting is skipped.  Default: 5
+    --       so it's actually a disadvantage for small numbers of combinations. skip_presort
+    --       specifies the number of units up to which the presorting is skipped. Default: 5
 
     cfg = cfg or {}
     cfg.order_matters = cfg.order_matters or false
@@ -1413,7 +1413,7 @@ function battle_calcs.get_attack_combos_subset(units, enemy, cfg)
                     hexes_used[l.dst] = a.src
 
                     -- Set up a string uniquely identifying the unit/attack hex pairs
-                    -- for current_combo.  This is used to exclude pairs that already
+                    -- for current_combo. This is used to exclude pairs that already
                     -- exist in a different order (if 'cfg.order_matters' is not set)
                     -- For this, we also add the numerical value of the attack_hex to
                     -- the 'hexes_used' table (in addition to the line above)
@@ -1466,7 +1466,7 @@ function battle_calcs.get_attack_combos_subset(units, enemy, cfg)
                     hexes_used[l.dst] = nil
 
                     -- *** Important ***: We *only* consider one attack hex per unit, the
-                    -- first that is found in the array of attacks for the unit.  As they
+                    -- first that is found in the array of attacks for the unit. As they
                     -- are sorted by terrain defense, we simply use the first in the table
                     -- the unit can reach that is not occupied
                     -- That's what the 'break' does here:

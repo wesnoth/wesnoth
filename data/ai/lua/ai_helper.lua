@@ -7,7 +7,7 @@ local ai_helper = {}
 ----- Debugging helper functions ------
 
 function ai_helper.show_messages()
-    -- Returns true or false (hard-coded).  To be used to
+    -- Returns true or false (hard-coded). To be used to
     -- show messages if in debug mode
     -- Just edit the following line (easier than trying to set WML variable)
     local show_messages_flag = false
@@ -16,7 +16,7 @@ function ai_helper.show_messages()
 end
 
 function ai_helper.print_exec()
-    -- Returns true or false (hard-coded).  To be used to
+    -- Returns true or false (hard-coded). To be used to
     -- show which CA is being executed if in debug mode
     -- Just edit the following line (easier than trying to set WML variable)
     local print_exec_flag = false
@@ -25,7 +25,7 @@ function ai_helper.print_exec()
 end
 
 function ai_helper.print_eval()
-    -- Returns true or false (hard-coded).  To be used to
+    -- Returns true or false (hard-coded). To be used to
     -- show which CA is being evaluated if in debug mode
     -- Just edit the following line (easier than trying to set WML variable)
     local print_eval_flag = false
@@ -44,7 +44,7 @@ function ai_helper.done_eval_messages(start_time, ca_name)
         W.message{
             speaker = 'narrator',
             caption = 'Evaluation of candidate action ' .. ca_name .. ' took ' .. dt .. ' seconds',
-            message = 'This took a really long time (which it should not).  If you can, would you mind sending us a screen grab of this situation?  Thanks!'
+            message = 'This took a really long time (which it should not). If you can, would you mind sending us a screen grab of this situation?  Thanks!'
         }
     end
 end
@@ -360,7 +360,7 @@ end
 
 function ai_helper.get_passable_locations(location_filter, unit)
     -- Finds all locations matching 'location_filter' that are passable for
-    -- 'unit'.  This also excludes hexes on the map border.
+    -- 'unit'. This also excludes hexes on the map border.
     -- 'unit' is optional: if omitted, all hexes matching the filter, but
     -- excluding border hexes are returned
 
@@ -470,7 +470,7 @@ end
 function ai_helper.xyoff(x, y, ori, hex)
     -- Finds hexes at a certain offset from x,y
     -- ori: direction/orientation: north (0), ne (1), se (2), s (3), sw (4), nw (5)
-    -- hex: string for the hex to be queried.  Possible values:
+    -- hex: string for the hex to be queried. Possible values:
     --   's': self, 'u': up, 'lu': left up, 'ld': left down, 'ru': right up, 'rd': right down
     --   This is all relative "looking" in the direction of 'ori'
     -- returns x,y for the queried hex
@@ -581,7 +581,7 @@ function ai_helper.get_live_units(filter)
         } }
     } }
 
-    -- Combine the two filters.  Doing it this way around is much easier (always works, no ifs required),
+    -- Combine the two filters. Doing it this way around is much easier (always works, no ifs required),
     -- but it means we need to make a copy of the filter above, so that the original does not get changed
     table.insert(live_filter, filter_not_petrified)
 
@@ -1238,7 +1238,7 @@ end
 function ai_helper.get_attack_combos(units, enemy, cfg)
     -- Calculate attack combination result by 'units' on 'enemy'
     -- All the unit/hex combinations are considered, but without specifying the order of the
-    -- attacks.  Use ai_helper.get_attack_combos_full() if order matters.
+    -- attacks. Use ai_helper.get_attack_combos_full() if order matters.
     -- cfg: A config table to be passed on to ai_helper.get_attacks
     -- Return values:
     --   1. Attack combinations in form { dst = src }
@@ -1321,7 +1321,7 @@ function ai_helper.get_attack_combos(units, enemy, cfg)
     -- at this time, this includes all the 'no unit attacks this hex' elements
     -- which have a value of 0 for 'src'
     -- They need to be kept in this part, so that we get the combos that do not
-    -- use the maximum amount of units possible.  They will be eliminated below.
+    -- use the maximum amount of units possible. They will be eliminated below.
     local attack_array = {}
     -- For all values of 'dst'
     for dst,ads in pairs(attacks_dst_src) do
