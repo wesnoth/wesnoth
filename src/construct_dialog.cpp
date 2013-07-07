@@ -425,7 +425,7 @@ void dialog::refresh()
 dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 {
 	CVideo& screen = disp_.video();
-	surface const scr = screen.getSurface();
+	const surface& scr = screen.getSurface();
 
 	dimension_measurements dim;
 	dim.x = xloc;
