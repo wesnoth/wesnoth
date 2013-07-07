@@ -150,10 +150,9 @@ void scenario::set_sides()
 	}
 }
 
-user_map::user_map(const std::string& name, const std::string& dependency_id) :
-	scenario(config()),
-	name_(name),
-	dependency_id_(dependency_id)
+user_map::user_map(const config& data, const std::string& name) :
+	scenario(data),
+	name_(name)
 {
 }
 
@@ -173,7 +172,7 @@ std::string user_map::name() const
 
 std::string user_map::dependency_id() const
 {
-	return dependency_id_;
+	return name_;
 }
 
 campaign::campaign(const config& data) :
@@ -274,49 +273,6 @@ create_engine::create_engine(level::TYPE current_level_type,
 
 create_engine::~create_engine()
 {
-}
-
-void create_engine::init_current_level_data()
-{
-	DBG_MP << "initializing current level data\n";
-
-	generator_.assign(NULL);
-
-	config const* level = NULL;
-
-	switch (current_level_type_) {
-	case level::SCENARIO: {
-		level = find_selected_level("multiplayer");
-
-		break;
-	}
-	case level::USER_MAP: {
-		if (const config &generic_multiplayer =
-			resources::config_manager->game_config().child(
-				"generic_multiplayer")) {
-			config data = generic_multiplayer;
-			data["map_data"] =
-				read_map(user_map_names_[current_level_index_]);
-
-			current_level().set_data(data);
-		}
-
-		break;
-	}
-	case level::CAMPAIGN: {
-		level = find_selected_level("campaign");
-
-		break;
-	}
-	} // end switch
-
-	if (level != NULL) {
-		current_level().set_data(*level);
-	}
-
-	if (current_level_type_ != level::CAMPAIGN) {
-		dependency_manager_.try_scenario(current_level().dependency_id());
-	}
 }
 
 void create_engine::init_generated_level_data()
@@ -442,7 +398,17 @@ void create_engine::set_current_level(const size_t index)
 {
 	current_level_index_ = index;
 
-	init_current_level_data();
+	if (!current_level().data()["map_generation"].empty()) {
+		generator_.assign(create_map_generator(
+			current_level().data()["map_generation"],
+			current_level().data().child("generator")));
+	} else {
+		generator_.assign(NULL);
+	}
+
+	if (current_level_type_ != level::CAMPAIGN) {
+		dependency_manager_.try_scenario(current_level().dependency_id());
+	}
 }
 
 void create_engine::set_current_era_index(const size_t index)
@@ -518,19 +484,28 @@ mp_game_settings& create_engine::get_parameters()
 
 void create_engine::init_all_levels()
 {
-	// User maps.
-	for(size_t i = 0; i < user_map_names_.size(); i++)
-	{
-		user_map_ptr new_user_map(new user_map(user_map_names_[i],
-			user_map_names_[i]));
-		user_maps_.push_back(new_user_map);
+	if (const config &generic_multiplayer =
+		resources::config_manager->game_config().child(
+			"generic_multiplayer")) {
+		config gen_mp_data = generic_multiplayer;
 
-		// Since user maps are treated as scenarios,
-		// some dependency info is required
-		config depinfo;
-		depinfo["id"] = user_map_names_[i];
-		depinfo["name"] = user_map_names_[i];
-		dependency_manager_.insert_element(depcheck::SCENARIO, depinfo, i);
+		// User maps.
+		for(size_t i = 0; i < user_map_names_.size(); i++)
+		{
+			config user_map_data = gen_mp_data;
+			user_map_data["map_data"] = read_map(user_map_names_[i]);
+
+			user_map_ptr new_user_map(new user_map(user_map_data,
+				user_map_names_[i]));
+			user_maps_.push_back(new_user_map);
+
+			// Since user maps are treated as scenarios,
+			// some dependency info is required
+			config depinfo;
+			depinfo["id"] = user_map_names_[i];
+			depinfo["name"] = user_map_names_[i];
+			dependency_manager_.insert_element(depcheck::SCENARIO, depinfo, i);
+		}
 	}
 
 	// Stand-alone scenarios.
@@ -539,8 +514,6 @@ void create_engine::init_all_levels()
 	{
 		if (data["allow_new_game"].to_bool(true))
 		{
-			std::string name = data["name"];
-
 			scenario_ptr new_scenario(new scenario(data));
 			scenarios_.push_back(new_scenario);
 		}
@@ -550,8 +523,6 @@ void create_engine::init_all_levels()
 	BOOST_FOREACH(const config &data,
 		resources::config_manager->game_config().child_range("campaign"))
 	{
-		std::string name = data["name"];
-
 		campaign_ptr new_campaign(new campaign(data));
 		campaigns_.push_back(new_campaign);
 	}
@@ -603,37 +574,6 @@ std::vector<create_engine::extras_metadata>&
 	create_engine::get_extras_by_type(const MP_EXTRA extra_type)
 {
 	return (extra_type == ERA) ? eras_ : mods_;
-}
-
-config const* create_engine::find_selected_level(const std::string& level_type)
-{
-	size_t index = current_level_index_;
-
-	config::const_child_itors levels =
-		resources::config_manager->game_config().child_range(level_type);
-
-	for (; index > 0; --index) {
-		if (levels.first == levels.second) {
-			break;
-		}
-		++levels.first;
-	}
-
-	if (levels.first != levels.second)
-	{
-		const config &level = *levels.first;
-
-		// If the map should be randomly generated.
-		if (!level["map_generation"].empty()) {
-			generator_.assign(create_map_generator(
-				level["map_generation"],
-				level.child("generator")));
-		}
-
-		return &level;
-	}
-
-	return NULL;
 }
 
 } // end namespace mp

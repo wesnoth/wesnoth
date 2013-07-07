@@ -83,7 +83,7 @@ private:
 class user_map : public scenario
 {
 public:
-	user_map(const std::string& name, const std::string& dependency_id);
+	user_map(const config& data, const std::string& name);
 	~user_map();
 
 	std::string name() const;
@@ -95,7 +95,6 @@ private:
 	void operator=(const user_map&);
 
 	std::string name_;
-	std::string dependency_id_;
 };
 
 class campaign : public level
@@ -178,14 +177,10 @@ private:
 	void init_all_levels();
 	void init_extras(const MP_EXTRA extra_type);
 
-	void init_current_level_data();
-
 	const std::vector<extras_metadata>&
 		get_const_extras_by_type(const MP_EXTRA extra_type) const;
 	std::vector<extras_metadata>&
 		get_extras_by_type(const MP_EXTRA extra_type);
-
-	config const* find_selected_level(const std::string& level_type);
 
 	level::TYPE current_level_type_;
 	size_t current_level_index_;
