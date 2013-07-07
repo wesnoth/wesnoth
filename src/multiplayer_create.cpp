@@ -71,21 +71,22 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	filter_num_players_label_(disp.video(), _("Number of players: any"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	map_generator_label_(disp.video(), _("Random map options:"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	era_label_(disp.video(), _("Era:"), font::SIZE_SMALL, font::LOBBY_COLOR),
-	level_label_(disp.video(), _("Maps to play:"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	mod_label_(disp.video(), _("Modifications:"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	map_size_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
 	num_players_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
+	level_type_label_(disp.video(), "Select a game type:", font::SIZE_SMALL, font::LOBBY_COLOR),
 	launch_game_(disp.video(), _("OK")),
 	cancel_game_(disp.video(), _("Cancel")),
 	regenerate_map_(disp.video(), _("Regenerate")),
 	generator_settings_(disp.video(), _("Settings...")),
 	load_game_(disp.video(), _("Load game...")),
-	switch_levels_menu_(disp.video(), _("Switch to campaigns")),
+	level_type_combo_(disp, std::vector<std::string>()),
 	filter_num_players_slider_(disp.video()),
 	description_(disp.video(), 100, "", false),
 	filter_name_(disp.video(), 100, "", true),
 	image_restorer_(NULL),
 	image_rect_(null_rect),
+	available_level_types_(),
 	engine_(level::USER_MAP, disp)
 {
 	filter_num_players_slider_.set_min(0);
@@ -93,6 +94,31 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	filter_num_players_slider_.set_increment(1);
 
 	DBG_MP << "constructing multiplayer create dialog" << std::endl;
+
+	typedef std::pair<level::TYPE, std::string> level_type_info;
+	std::vector<level_type_info> all_level_types;
+	all_level_types.push_back(std::make_pair(level::SCENARIO, "Scenarios"));
+	all_level_types.push_back(std::make_pair(level::CAMPAIGN, "Campaigns"));
+
+	std::vector<std::string> combo_level_names;
+
+	int i = 0;
+	BOOST_FOREACH(level_type_info type_info, all_level_types) {
+		if (!engine_.get_levels_by_type(type_info.first).empty()) {
+			available_level_types_.insert(std::make_pair(i, type_info.first));
+			combo_level_names.push_back(type_info.second);
+		}
+
+		i++;
+	}
+
+	if (combo_level_names.empty()) {
+		gui2::show_transient_message(disp.video(), "", _("No games found."));
+		throw game::error(_("No games found."));
+	}
+
+	level_type_combo_.set_items(combo_level_names);
+	level_type_combo_.set_selected(0);
 
 	const std::vector<std::string>& level_names = levels_menu_item_names();
 
@@ -180,20 +206,14 @@ void create::process_event()
 		}
 	}
 
-	if (switch_levels_menu_.pressed()) {
-		if (engine_.current_level_type() == level::CAMPAIGN) {
-			switch_levels_menu_.set_label(_("Switch to campaigns"));
-			level_label_.set_text(_("Maps to play:"));
+	if (level_type_combo_.changed()) {
+		const int selected = level_type_combo_.selected();
 
-			engine_.set_current_level_type(level::USER_MAP);
-			sync_current_level_with_engine();
-		} else {
-			switch_levels_menu_.set_label(_("Switch to maps"));
-			level_label_.set_text(_("Campaigns to play:"));
+		level::TYPE type = (*available_level_types_.find(selected)).second;
 
-			engine_.set_current_level_type(level::CAMPAIGN);
-			sync_current_level_with_engine();
-		}
+		engine_.set_current_level_type(type);
+
+		sync_current_level_with_engine();
 
 		levels_menu_.set_items(levels_menu_item_names());
 		level_selection_ = -1;
@@ -317,8 +337,8 @@ void create::sync_current_level_with_engine()
 	if (engine_.current_level_type() == level::CAMPAIGN) {
 		engine_.set_current_level_index(levels_menu_.selection());
 	} else if ((size_t)levels_menu_.selection() < engine_.user_maps_count()) {
-			engine_.set_current_level_type(level::USER_MAP);
-			engine_.set_current_level_index(levels_menu_.selection());
+		engine_.set_current_level_type(level::USER_MAP);
+		engine_.set_current_level_index(levels_menu_.selection());
 	} else {
 		engine_.set_current_level_type(level::SCENARIO);
 		engine_.set_current_level_index(levels_menu_.selection()
@@ -439,15 +459,16 @@ void create::hide_children(bool hide)
 	map_generator_label_.hide(hide);
 	map_size_label_.hide(hide);
 	era_label_.hide(hide);
-	level_label_.hide(hide);
 	mod_label_.hide(hide);
 	num_players_label_.hide(hide);
+	level_type_label_.hide(hide);
+
+	level_type_combo_.hide(hide);
 
 	cancel_game_.hide(hide);
 	launch_game_.hide(hide);
 
 	load_game_.hide(hide);
-	switch_levels_menu_.hide(hide);
 
 	regenerate_map_.hide(hide);
 	generator_settings_.hide(hide);
@@ -541,9 +562,10 @@ void create::layout_children(const SDL_Rect& rect)
 	//Third column: levels menu
 	ypos = ypos_columntop;
 	xpos += menu_width + column_border_size;
-	ypos += switch_levels_menu_.height() + 2 * border_size;
-	level_label_.set_location(xpos, ypos);
-	ypos += level_label_.height() + border_size;
+	level_type_label_.set_location(xpos, ypos);
+	ypos += level_type_label_.height() + border_size;
+	level_type_combo_.set_location(xpos, ypos);
+	ypos += level_type_combo_.height() + border_size;
 
 	const int levels_menu_y_offset = (ca.w < 900 || ca.h < 500) ?
 		((cancel_game_.height() + border_size) * -1) : 0;
@@ -555,11 +577,18 @@ void create::layout_children(const SDL_Rect& rect)
 	levels_menu_.set_items(levels_menu_item_names());
 	levels_menu_.move_selection(levelsel);
 
-	// Set switch_levels_menu_ location according to the levels_menu_.
-	const int switch_levels_menu_x_offset = (levels_menu_.width() -
-		switch_levels_menu_.width()) / 2;
-	switch_levels_menu_.set_location(xpos + switch_levels_menu_x_offset,
-		ypos_columntop);
+	// Place game type combo and label in the middle of levels menu
+	// by x axis.
+	const int level_type_combo_x_offset = (levels_menu_.width() -
+		level_type_combo_.width()) / 2;
+	level_type_combo_.set_location(
+		level_type_combo_.location().x + level_type_combo_x_offset,
+		level_type_combo_.location().y);
+	const int level_type_label_x_offset = (levels_menu_.width() -
+		level_type_label_.width()) / 2;
+	level_type_label_.set_location(
+		level_type_label_.location().x + level_type_label_x_offset,
+		level_type_label_.location().y);
 
 	//Fourth column: eras & mods menu
 	ypos = ypos_columntop;

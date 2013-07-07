@@ -66,17 +66,18 @@ private:
 	gui::label filter_num_players_label_;
 	gui::label map_generator_label_;
 	gui::label era_label_;
-	gui::label level_label_;
 	gui::label mod_label_;
 	gui::label map_size_label_;
 	gui::label num_players_label_;
+	gui::label level_type_label_;
 
 	gui::button launch_game_;
 	gui::button cancel_game_;
 	gui::button regenerate_map_;
 	gui::button generator_settings_;
 	gui::button load_game_;
-	gui::button switch_levels_menu_;
+
+	gui::combo level_type_combo_;
 
 	gui::slider filter_num_players_slider_;
 
@@ -85,6 +86,8 @@ private:
 
 	util::scoped_ptr<surface_restorer> image_restorer_;
 	SDL_Rect image_rect_;
+
+	std::map<int, level::TYPE> available_level_types_;
 
 	create_engine engine_;
 };

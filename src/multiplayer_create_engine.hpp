@@ -144,6 +144,8 @@ public:
 	void prepare_for_campaign(const std::string& difficulty);
 	void prepare_for_saved_game();
 
+	std::vector<level_ptr> get_levels_by_type(level::TYPE type) const;
+
 	std::vector<std::string>
 		levels_menu_item_names(const level::TYPE type) const;
 	std::vector<std::string> extras_menu_item_names(
@@ -178,8 +180,6 @@ private:
 
 	void init_all_levels();
 	void init_extras(const MP_EXTRA extra_type);
-
-	std::vector<level_ptr> get_levels_by_type(level::TYPE type) const;
 
 	const std::vector<extras_metadata>&
 		get_const_extras_by_type(const MP_EXTRA extra_type) const;
