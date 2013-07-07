@@ -176,7 +176,6 @@ void arrow::update_symbols()
 	arrow_path_t::const_iterator const arrow_pre_end_hex = path_.end() - 2;
 	arrow_path_t::const_iterator const arrow_end_hex = path_.end() - 1;
 	bool teleport_out = false;
-	bool teleport_in = false;
 
 	arrow_path_t::iterator hex;
 	for (hex = path_.begin(); hex != path_.end(); ++hex)
@@ -189,7 +188,7 @@ void arrow::update_symbols()
 		bool end = false;
 
 		// teleport in if we teleported out last hex
-		teleport_in = teleport_out;
+		bool teleport_in = teleport_out;
 		teleport_out = false;
 
 		// Determine some special cases
