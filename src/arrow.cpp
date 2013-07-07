@@ -175,9 +175,6 @@ void arrow::update_symbols()
 	arrow_path_t::const_iterator const arrow_start_hex = path_.begin();
 	arrow_path_t::const_iterator const arrow_pre_end_hex = path_.end() - 2;
 	arrow_path_t::const_iterator const arrow_end_hex = path_.end() - 1;
-	bool start = false;
-	bool pre_end = false;
-	bool end = false;
 	bool teleport_out = false;
 	bool teleport_in = false;
 
@@ -187,7 +184,9 @@ void arrow::update_symbols()
 		prefix = "";
 		suffix = "";
 		image_filename = "";
-		start = pre_end = end = false;
+		bool start = false;
+		bool pre_end = false;
+		bool end = false;
 
 		// teleport in if we teleported out last hex
 		teleport_in = teleport_out;
