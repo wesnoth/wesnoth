@@ -184,7 +184,7 @@ void context_manager::new_map_dialog()
 	int w = get_map().w();
 	int h = get_map().h();
 	if(gui2::teditor_new_map::execute(w, h, gui_.video())) {
-		const t_translation::t_terrain fill = get_selected_bg_terrain();
+		const t_translation::t_terrain& fill = get_selected_bg_terrain();
 		new_map(w, h, fill, true);
 	}
 }
