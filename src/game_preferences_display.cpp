@@ -1334,7 +1334,7 @@ std::string show_wesnothd_server_search(display& disp)
 	}
 	else
 	{
-		old_path = "";
+		old_path.clear();
 	}
 #ifndef _WIN32
 
