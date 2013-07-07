@@ -59,18 +59,27 @@ function ai_helper.clear_labels()
     end
 end
 
-function ai_helper.put_labels(map, factor)
+function ai_helper.put_labels(map, cfg)
     -- Take map (location set) and put label containing 'value' onto the map
-    -- factor: multiply by 'factor' if set
     -- print 'nan' if element exists but is not a number
+    -- cfg: table with optional parameters:
+    --   - show_coords: (boolean) use hex coordinates as labels instead of value
+    --   - factor=1: (number) if value is a number, multiply by this factor
 
-    factor = factor or 1
+    cfg = cfg or {}
+    local factor = cfg.factor or 1
 
     ai_helper.clear_labels()
+
     map:iter(function(x, y, data)
-          local out = tonumber(data) or 'nan'
-          if (out ~= 'nan') then out = out * factor end
-          W.label { x = x, y = y, text = out }
+        local out
+        if cfg.show_coords then
+            out = x .. ',' .. y
+        else
+            out = tonumber(data) or 'nan'
+        end
+        if (type(out) == 'number') then out = out * factor end
+        W.label { x = x, y = y, text = out }
     end)
 end
 
