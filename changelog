@@ -4,6 +4,15 @@ Version 1.11.5+dev:
      using color-keyed statuses.
    * Circular dependencies are no longer treated as erroneous in terminal
      output.
+ * AI:
+   * Micro AIs:
+     * New Hang Out Micro AI
+     * Any number of Micro AIs can now be combined on the same side
+     * Goto MAI: new parameters avoid_enemies=, ignore_units= and ignore_enemy_at_goal=
+     * Goto MAI: [filter] is now an optional parameter
+     * ca_id is now an optional parameter for all MAIs
+     * ca_score is now an optional parameter for almost all MAIs
+     * Bug fixes for Patrol, Messenger, Multipack Wolves and all Guardian MAIs
  * Language and i18n:
    * Updated translations:
  * Miscellaneous and bug fixes
