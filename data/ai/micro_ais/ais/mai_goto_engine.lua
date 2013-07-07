@@ -135,7 +135,21 @@ return {
                                 return custom_cost(x, y, u, enemy_map, enemy_attack_map, cfg.avoid_enemies)
                             end)
                         else
+                            local enemy_at_goal
+                            if cfg.ignore_enemy_at_goal then
+                                enemy_at_goal = wesnoth.get_unit(l[1], l[2])
+                                if enemy_at_goal and wesnoth.is_enemy(wesnoth.current.side, enemy_at_goal.side) then
+                                     wesnoth.extract_unit(enemy_at_goal)
+                                else
+                                    enemy_at_goal = nil
+                                end
+                            end
                             path, cost = wesnoth.find_path(u, l[1], l[2], { ignore_units = cfg.ignore_units })
+                            if enemy_at_goal then
+                                wesnoth.put_unit(enemy_at_goal.x, enemy_at_goal.y, enemy_at_goal)
+                                --- Give massive penalty for this goal hex
+                                cost = cost + 100
+                            end
                         end
 
                         -- Make all hexes within the unit's current MP equaivalent
@@ -190,7 +204,11 @@ return {
                 end
             end
 
-            ai.move_full(best_unit, closest_hex[1], closest_hex[2])
+            if closest_hex then
+                ai.move_full(best_unit, closest_hex[1], closest_hex[2])
+            else
+                ai.stopunit_moves(best_unit)
+            end
 
             -- If release_unit_at_goal= or release_all_units_at_goal= key is set:
             -- Check if the unit made it to one of the goal hexes
