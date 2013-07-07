@@ -91,15 +91,6 @@ public:
 		msg_label->set_label("");
 	}
 
-	std::string escape(const std::string &str)
-	{
-		// need pango escape here
-		std::string result = utils::replace(str, "&", "&amp;");
-		result = utils::replace(result, "<", "&lt;");
-		result = utils::replace(result, ">", "&gt;");
-		return result;
-	}
-
 	int count_of_pages()
 	{
 		int size = chat_log_history.size();
@@ -126,9 +117,25 @@ public:
 				std::string nick_prefix = "<span color=\""+color+"\">";
 				std::string nick_suffix ="</span> ";
 				if (me) {
-					str << nick_prefix << "&lt;" << escape(preferences::get_chat_timestamp(t.time())) << escape(t.nick()) << escape(t.text().substr(3))<<"&gt;" <<nick_suffix << std::endl;
+					str << nick_prefix
+							<< "&lt;"
+							<< font::escape_text(
+								preferences::get_chat_timestamp(t.time()))
+							<< font::escape_text(t.nick())
+							<< font::escape_text(t.text().substr(3))
+							<<"&gt;"
+							<<nick_suffix
+							<< std::endl;
 				} else {
-					str << nick_prefix << "&lt;" << escape(preferences::get_chat_timestamp(t.time())) << escape(t.nick()) << "&gt;"<< nick_suffix << escape(t.text()) << std::endl;
+					str << nick_prefix
+							<< "&lt;"
+							<< font::escape_text(
+								  preferences::get_chat_timestamp(t.time()))
+							<< font::escape_text(t.nick())
+							<< "&gt;"
+							<< nick_suffix
+							<< font::escape_text(t.text())
+							<< std::endl;
 				}
 			}
 		}

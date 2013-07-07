@@ -169,19 +169,13 @@ void arrow::update_symbols()
 	std::string const mods = "~RC(FF00FF>"+ color_ + ")"; //magenta to current color
 
 	std::string const dirname = "arrows/";
-	map_location::DIRECTION exit_dir = map_location::NDIRECTIONS;
-	map_location::DIRECTION enter_dir = map_location::NDIRECTIONS;
 	std::string prefix = "";
 	std::string suffix = "";
 	std::string image_filename = "";
 	arrow_path_t::const_iterator const arrow_start_hex = path_.begin();
 	arrow_path_t::const_iterator const arrow_pre_end_hex = path_.end() - 2;
 	arrow_path_t::const_iterator const arrow_end_hex = path_.end() - 1;
-	bool start = false;
-	bool pre_end = false;
-	bool end = false;
 	bool teleport_out = false;
-	bool teleport_in = false;
 
 	arrow_path_t::iterator hex;
 	for (hex = path_.begin(); hex != path_.end(); ++hex)
@@ -189,10 +183,12 @@ void arrow::update_symbols()
 		prefix = "";
 		suffix = "";
 		image_filename = "";
-		start = pre_end = end = false;
+		bool start = false;
+		bool pre_end = false;
+		bool end = false;
 
 		// teleport in if we teleported out last hex
-		teleport_in = teleport_out;
+		bool teleport_in = teleport_out;
 		teleport_out = false;
 
 		// Determine some special cases
@@ -206,12 +202,12 @@ void arrow::update_symbols()
 			teleport_out = true;
 
 		// calculate enter and exit directions, if available
-		enter_dir = map_location::NDIRECTIONS;
+		map_location::DIRECTION enter_dir = map_location::NDIRECTIONS;
 		if (!start && !teleport_in)
 		{
 			enter_dir = hex->get_relative_dir(*(hex-1));
 		}
-		exit_dir = map_location::NDIRECTIONS;
+		map_location::DIRECTION exit_dir = map_location::NDIRECTIONS;
 		if (!end && !teleport_out)
 		{
 			exit_dir = hex->get_relative_dir(*(hex+1));

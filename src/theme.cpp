@@ -231,7 +231,7 @@ static void do_resolve_rects(const config& cfg, config& resolved_config, config*
 				ERR_DP << "Use of ref= outside a [resolution] block\n";
 			} else {
 				//DBG_DP << ">> Looking for " << cfg["ref"] << "\n";
-				const config ref = find_ref (cfg["ref"], *resol_cfg);
+				const config& ref = find_ref (cfg["ref"], *resol_cfg);
 
 				if (ref["id"].empty()) {
 					ERR_DP << "Reference to non-existent rect id \"" << cfg["ref"] << "\"\n";

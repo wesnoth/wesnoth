@@ -3226,7 +3226,7 @@ void show_help(display &disp, const section &toplevel_sec,
 	const resize_lock prevent_resizing;
 
 	CVideo& screen = disp.video();
-	surface const scr = screen.getSurface();
+	const surface& scr = screen.getSurface();
 
 	const int width  = std::min<int>(font::relative_size(900), scr->w - font::relative_size(20));
 	const int height = std::min<int>(font::relative_size(800), scr->h - font::relative_size(150));
