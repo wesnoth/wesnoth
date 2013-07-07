@@ -169,7 +169,6 @@ void arrow::update_symbols()
 	std::string const mods = "~RC(FF00FF>"+ color_ + ")"; //magenta to current color
 
 	std::string const dirname = "arrows/";
-	map_location::DIRECTION exit_dir = map_location::NDIRECTIONS;
 	map_location::DIRECTION enter_dir = map_location::NDIRECTIONS;
 	std::string prefix = "";
 	std::string suffix = "";
@@ -211,7 +210,7 @@ void arrow::update_symbols()
 		{
 			enter_dir = hex->get_relative_dir(*(hex-1));
 		}
-		exit_dir = map_location::NDIRECTIONS;
+		map_location::DIRECTION exit_dir = map_location::NDIRECTIONS;
 		if (!end && !teleport_out)
 		{
 			exit_dir = hex->get_relative_dir(*(hex+1));
