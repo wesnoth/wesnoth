@@ -64,6 +64,8 @@ void item_palette::draw_item(const overlay& item, surface& image, std::stringstr
 
 	std::stringstream filename;
 	filename << item.image;
+	if (item.image.empty())
+		filename << item.halo;
 
 	image = image::get_image(filename.str());
 	if(image == NULL) {
