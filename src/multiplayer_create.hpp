@@ -43,7 +43,7 @@ protected:
 private:
 	void synchronize_selections();
 
-	void draw_level_image() const;
+	void draw_level_image();
 
 	std::string select_campaign_difficulty();
 

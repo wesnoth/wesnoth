@@ -102,8 +102,12 @@ void scenario::set_metadata()
 		map_.reset(new gamemap(resources::config_manager->game_config(),
 			map_data));
 	} catch(incorrect_map_format_error& e) {
+		data_["description"] = _("Map could not be loaded: ") + e.message;
+
 		ERR_CF << "map could not be loaded: " << e.message << '\n';
 	} catch(twml_exception& e) {
+		data_["description"] = _("Map could not be loaded.");
+
 		ERR_CF << "map could not be loaded: " << e.dev_message << '\n';
 	}
 
@@ -118,9 +122,14 @@ int scenario::num_players() const
 std::string scenario::map_size() const
 {
 	std::stringstream map_size;
-	map_size << map_.get()->w();
-	map_size << utils::unicode_multiplication_sign;
-	map_size << map_.get()->h();
+
+	if (map_.get() != NULL) {
+		map_size << map_.get()->w();
+		map_size << utils::unicode_multiplication_sign;
+		map_size << map_.get()->h();
+	} else {
+		map_size << _("not available.");
+	}
 
 	return map_size.str();
 }
@@ -162,7 +171,11 @@ user_map::~user_map()
 
 std::string user_map::description() const
 {
-	return _("User made map");
+	if (data_["description"].empty()) {
+		return _("User made map");
+	} else { // map error message
+		return data_["description"];
+	}
 }
 
 std::string user_map::name() const

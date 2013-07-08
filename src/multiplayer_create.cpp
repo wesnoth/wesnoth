@@ -250,16 +250,7 @@ void create::process_event()
 	if (level_changed) {
 		engine_.set_current_level(levels_menu_.selection());
 
-		description_.set_text(engine_.current_level().description());
-
 		synchronize_selections();
-
-		tooltips::clear_tooltips(image_rect_);
-
-		if (!engine_.current_level().description().empty()) {
-			tooltips::add_tooltip(image_rect_,
-				engine_.current_level().description(), "", false);
-		}
 	}
 
 	if (engine_.generator_assigned() && generator_settings_.pressed()) {
@@ -291,6 +282,14 @@ void create::process_event()
 		engine_.current_level().set_metadata();
 
 		draw_level_image();
+
+		description_.set_text(engine_.current_level().description());
+
+		tooltips::clear_tooltips(image_rect_);
+		if (!engine_.current_level().description().empty()) {
+			tooltips::add_tooltip(image_rect_,
+				engine_.current_level().description(), "", false);
+		}
 
 		switch (engine_.current_level_type()) {
 		case level::SCENARIO:
@@ -369,14 +368,22 @@ void create::synchronize_selections()
 	engine_.init_active_mods();
 }
 
-void create::draw_level_image() const
+void create::draw_level_image()
 {
 	boost::scoped_ptr<surface> image(
 		engine_.current_level().create_image_surface(image_rect_));
 
-	SDL_Color back_color = {0,0,0,255};
-	draw_centered_on_background(*image, image_rect_, back_color,
-		video().getSurface());
+	if (image.get() != NULL) {
+		SDL_Color back_color = {0,0,0,255};
+		draw_centered_on_background(*image, image_rect_, back_color,
+			video().getSurface());
+	} else {
+		surface display(disp_.get_screen_surface());
+		sdl_fill_rect(display, &image_rect_,
+			SDL_MapRGB(display->format, 0, 0, 0));
+		update_rect(image_rect_);
+
+	}
 }
 
 std::string create::select_campaign_difficulty()
