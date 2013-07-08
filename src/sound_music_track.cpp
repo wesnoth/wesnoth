@@ -116,9 +116,9 @@ void music_track::resolve()
 		if (!found) {
 			LOG_AUDIO << "No title for music track '" << id_ << "'\n";
 		}
-	}
 
 	ov_clear(&vf);
+	}
 #endif
 
 	LOG_AUDIO << "resolved music track '" << id_ << "' into '" << file_path_ << "'\n";
