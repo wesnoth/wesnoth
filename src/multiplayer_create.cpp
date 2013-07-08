@@ -101,8 +101,11 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	all_level_types.push_back(std::make_pair(level::CAMPAIGN, "Campaigns"));
 	all_level_types.push_back(std::make_pair(level::USER_MAP, "User Maps"));
 	all_level_types.push_back(std::make_pair(level::RANDOM_MAP, "Random Maps"));
-	all_level_types.push_back(std::make_pair(level::SP_CAMPAIGN,
-		"SP Campaigns"));
+
+	if (game_config::debug) {
+		all_level_types.push_back(std::make_pair(level::SP_CAMPAIGN,
+			"SP Campaigns"));
+	}
 
 	std::vector<std::string> combo_level_names;
 
