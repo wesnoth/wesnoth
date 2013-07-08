@@ -100,6 +100,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	all_level_types.push_back(std::make_pair(level::SCENARIO, "Scenarios"));
 	all_level_types.push_back(std::make_pair(level::CAMPAIGN, "Campaigns"));
 	all_level_types.push_back(std::make_pair(level::USER_MAP, "User Maps"));
+	all_level_types.push_back(std::make_pair(level::RANDOM_MAP, "Random Maps"));
 	all_level_types.push_back(std::make_pair(level::SP_CAMPAIGN,
 		"SP Campaigns"));
 
@@ -215,7 +216,7 @@ void create::process_event()
 		const int selected = level_type_combo_.selected();
 
 		engine_.set_current_level_type(available_level_types_[selected]);
-		engine_.set_current_level(levels_menu_.selection());
+		engine_.set_current_level(0);
 
 		levels_menu_.set_items(engine_.levels_menu_item_names());
 		level_selection_ = -1;
@@ -290,7 +291,8 @@ void create::process_event()
 
 		switch (engine_.current_level_type()) {
 		case level::SCENARIO:
-		case level::USER_MAP: {
+		case level::USER_MAP:
+		case level::RANDOM_MAP: {
 
 			scenario* current_scenario =
 				dynamic_cast<scenario*>(&engine_.current_level());

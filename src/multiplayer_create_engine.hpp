@@ -32,7 +32,7 @@ public:
 	level(const config& data);
 	virtual ~level() {};
 
-	enum TYPE { SCENARIO, USER_MAP, CAMPAIGN, SP_CAMPAIGN };
+	enum TYPE { SCENARIO, USER_MAP, RANDOM_MAP, CAMPAIGN, SP_CAMPAIGN};
 
 	virtual bool can_launch_game() const = 0;
 
@@ -97,6 +97,25 @@ private:
 	std::string name_;
 };
 
+class random_map : public scenario
+{
+public:
+	random_map(const config& generator_data);
+	~random_map();
+
+	const config& generator_data() const;
+
+	std::string name() const;
+	std::string description() const;
+	std::string dependency_id() const;
+
+private:
+	random_map(const random_map&);
+	void operator=(const random_map&);
+
+	config generator_data_;
+};
+
 class campaign : public level
 {
 public:
@@ -132,6 +151,7 @@ public:
 	typedef boost::shared_ptr<level> level_ptr;
 	typedef boost::shared_ptr<scenario> scenario_ptr;
 	typedef boost::shared_ptr<user_map> user_map_ptr;
+	typedef boost::shared_ptr<random_map> random_map_ptr;
 	typedef boost::shared_ptr<campaign> campaign_ptr;
 
 	typedef std::pair<std::string, std::string> extras_metadata;
@@ -192,6 +212,7 @@ private:
 	std::vector<user_map_ptr> user_maps_;
 	std::vector<campaign_ptr> campaigns_;
 	std::vector<campaign_ptr> sp_campaigns_;
+	std::vector<random_map_ptr> random_maps_;
 
 	std::vector<std::string> user_map_names_;
 

@@ -175,6 +175,36 @@ std::string user_map::dependency_id() const
 	return name_;
 }
 
+random_map::random_map(const config& generator_data) :
+	scenario(config()),
+	generator_data_(generator_data)
+{
+}
+
+random_map::~random_map()
+{
+}
+
+const config& random_map::generator_data() const
+{
+	return generator_data_;
+}
+
+std::string random_map::name() const
+{
+	return generator_data_["name"];
+}
+
+std::string random_map::description() const
+{
+	return generator_data_["description"];
+}
+
+std::string random_map::dependency_id() const
+{
+	return generator_data_["id"];
+}
+
 campaign::campaign(const config& data) :
 	level(data),
 	image_label_(),
@@ -236,6 +266,7 @@ create_engine::create_engine(game_display& disp) :
 	user_maps_(),
 	campaigns_(),
 	sp_campaigns_(),
+	random_maps_(),
 	user_map_names_(),
 	eras_(),
 	mods_(),
@@ -367,6 +398,9 @@ level& create_engine::current_level() const
 	case level::USER_MAP: {
 		return *user_maps_[current_level_index_];
 	}
+	case level::RANDOM_MAP: {
+		return *random_maps_[current_level_index_];
+	}
 	case level::CAMPAIGN: {
 		return *campaigns_[current_level_index_];
 	}
@@ -401,10 +435,13 @@ void create_engine::set_current_level(const size_t index)
 {
 	current_level_index_ = index;
 
-	if (!current_level().data()["map_generation"].empty()) {
+	if (current_level_type_ == level::RANDOM_MAP) {
+		random_map* current_random_map =
+			dynamic_cast<random_map*>(&current_level());
+
 		generator_.assign(create_map_generator(
-			current_level().data()["map_generation"],
-			current_level().data().child("generator")));
+			current_random_map->generator_data()["map_generation"],
+			current_random_map->generator_data().child("generator")));
 	} else {
 		generator_.assign(NULL);
 	}
@@ -443,6 +480,14 @@ int create_engine::find_scenario_by_id(const std::string& id) const
 	int i = 0;
 	BOOST_FOREACH(const user_map_ptr& user_map, user_maps_) {
 		if (user_map->dependency_id() == id) {
+			return i;
+		}
+		i++;
+	}
+
+	i = 0;
+	BOOST_FOREACH(const random_map_ptr& random_map, random_maps_) {
+		if (random_map->dependency_id() == id) {
 			return i;
 		}
 		i++;
@@ -517,8 +562,10 @@ void create_engine::init_all_levels()
 	BOOST_FOREACH(const config &data,
 		resources::config_manager->game_config().child_range("multiplayer"))
 	{
-		if (data["allow_new_game"].to_bool(true))
-		{
+		if (!data["map_generation"].empty()) {
+			random_map_ptr new_random_map(new random_map(data));
+			random_maps_.push_back(new_random_map);
+		} else if (data["allow_new_game"].to_bool(true)) {
 			scenario_ptr new_scenario(new scenario(data));
 			scenarios_.push_back(new_scenario);
 		}
@@ -563,6 +610,11 @@ std::vector<create_engine::level_ptr>
 		break;
 	case level::USER_MAP:
 		BOOST_FOREACH(level_ptr level, user_maps_) {
+			levels.push_back(level);
+		}
+		break;
+	case level::RANDOM_MAP:
+		BOOST_FOREACH(level_ptr level, random_maps_) {
 			levels.push_back(level);
 		}
 		break;
