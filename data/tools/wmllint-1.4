@@ -2151,6 +2151,15 @@ if __name__ == '__main__':
         if arg.endswith('"'):
             arguments[i] = arg[:-1]
 
+    # Also, Windows does not expand wildcards. This turns on globbing.
+    if sys.platform == 'win32':
+        from glob import glob
+        for arg in arguments:
+            wildarg = glob(arg)
+            arguments.remove(arg)
+            for newarg in wildarg:
+                arguments.append(newarg)
+
     for dir in arguments:
         ofp = None
         if "older" in versions:
