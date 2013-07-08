@@ -17,14 +17,30 @@
 
 #include <boost/shared_ptr.hpp>
 
-template <class ReturnType, class Args>
+namespace{
+struct no_action{};
+}
+
+template <class ReturnType, class Args, class Args2 = no_action>
 class generic_action
+{
+public:
+   typedef generic_action<ReturnType, Args, Args2> this_type;
+   typedef ReturnType return_type;
+
+   virtual return_type execute(Args, Args2) = 0;
+   virtual boost::shared_ptr<this_type> clone() const = 0;
+};
+
+// Specialization for execute with one argument.
+template <class ReturnType, class Args>
+class generic_action<ReturnType, Args, no_action>
 {
 public:
    typedef generic_action<ReturnType, Args> this_type;
    typedef ReturnType return_type;
 
-   virtual return_type execute(Args args) = 0;
+   virtual return_type execute(Args) = 0;
    virtual boost::shared_ptr<this_type> clone() const = 0;
 };
 

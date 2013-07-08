@@ -16,4 +16,4 @@
  */
 #include "serialization/validator.hpp"
 
-bool strict_validation_enabled = false;
+bool strict_validation_enabled = true;

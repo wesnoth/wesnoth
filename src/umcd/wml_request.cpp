@@ -14,10 +14,27 @@
 #include "umcd/wml_request.hpp"
 
 #include <boost/shared_ptr.hpp>
-#include "serialization/one_hierarchy_validator.hpp"
+#include <boost/make_shared.hpp>
+
 #include "serialization/parser.hpp"
 
-void wml_request::check_stream_state(std::istream& raw_data_stream, std::string error_msg)
+wml_request::wml_request(std::istream& raw_data_stream, const validator_ptr& validator)
+{
+   read(data.get_metadata(), raw_data_stream, validator.get());
+   std::cout << "[Info] Request read:\n" << data.get_metadata();
+}
+
+network_data& wml_request::get_data() { return data; }
+
+std::string wml_request::name() const
+{
+   config::all_children_iterator iter = data.get_metadata().ordered_begin();
+   if(iter == data.get_metadata().ordered_end())
+     return "";
+   return iter->key;
+}
+
+static void check_stream_state(std::istream& raw_data_stream, std::string error_msg)
 {
    if(!raw_data_stream.good())
    {
@@ -25,7 +42,7 @@ void wml_request::check_stream_state(std::istream& raw_data_stream, std::string 
    }
 }
 
-std::string wml_request::peek_name(std::istream& raw_data_stream)
+std::string peek_request_name(std::istream& raw_data_stream)
 {
    // Try to read the first tag which is the name of the packet.
    std::string error_msg("Invalid packet. The request name could not have been read.");
@@ -49,25 +66,8 @@ std::string wml_request::peek_name(std::istream& raw_data_stream)
    return request_name;
 }
 
-wml_request::wml_request(std::istream& raw_data_stream, const config& server_conf)
-: server_conf(server_conf)
+wml_request make_request(std::istream& raw_data_stream, const std::string& validator_file_path)
 {
    using namespace schema_validation;
-   std::string request_name = peek_name(raw_data_stream);
-   std::string validator_file = server_conf["wesnoth_dir"].str() + "data/umcd/protocol_schema/"+request_name+".cfg";
-   boost::shared_ptr<one_hierarchy_validator> validator(new one_hierarchy_validator(validator_file));
-   read(data.get_metadata(), raw_data_stream, validator.get());
-   std::cout << "[Info] Request read:\n" << data.get_metadata();
-}
-
-network_data& wml_request::get_data() { return data; }
-
-const config& wml_request::get_conf() const { return server_conf; }
-
-std::string wml_request::name() const
-{
-   config::all_children_iterator iter = data.get_metadata().ordered_begin();
-   if(iter == data.get_metadata().ordered_end())
-     return "";
-   return iter->key;
+   return wml_request(raw_data_stream, boost::make_shared<one_hierarchy_validator>(validator_file_path));
 }

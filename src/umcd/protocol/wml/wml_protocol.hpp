@@ -25,19 +25,32 @@
 #include "umcd/actions/request_license_action.hpp"
 #include "umcd/wml_reply.hpp"
 #include "umcd/wml_request.hpp"
+#include "umcd/request_info.hpp"
 #include "umcd/special_packet.hpp"
 
 class wml_protocol
 {
 private:
+   typedef boost::shared_ptr<request_info> info_ptr;
+   typedef schema_validation::one_hierarchy_validator validator_type;
+
    const config& server_config;
-   generic_factory<basic_wml_action> action_factory;
+   generic_factory<request_info> action_factory;
+
+   template <class Action>
+   void register_request_info(const std::string& request_name)
+   {
+      action_factory.register_product(
+         request_name, 
+         make_request_info<Action, validator_type>(server_config, request_name)
+      );
+   }
 
 public:
    wml_protocol(const config& server_config)
    : server_config(server_config)
    {
-      action_factory.register_product("request_license", boost::make_shared<request_license_action>());
+      register_request_info<request_license_action>("request_license");
    }
 
    void handle_request(std::iostream& raw_request_stream) const
@@ -45,13 +58,14 @@ public:
       wml_reply reply;
       try
       {
-         wml_request request(raw_request_stream, server_config);
-         boost::shared_ptr<basic_wml_action> action = action_factory.make_product(request.name());
-         reply = action->execute(request);
+         std::string request_name = peek_request_name(raw_request_stream);
+         info_ptr info = action_factory.make_product(request_name);
+         wml_request request(raw_request_stream, info->validator());
+         reply = info->action()->execute(request, server_config);
       }
       catch(std::exception&)
       {
-         reply = make_error_reply("The packet you sent is invalid. It could a protocol bug and administrators have been contacted, the problem should be fixed soon.");
+         reply = make_error_reply("The packet you sent is invalid. It could be a protocol bug and administrators have been contacted, the problem should be fixed soon.");
       }
       reply.send(raw_request_stream);
    }

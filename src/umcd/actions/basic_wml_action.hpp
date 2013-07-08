@@ -19,6 +19,6 @@
 #include "umcd/wml_reply.hpp"
 #include "umcd/wml_request.hpp"
 
-typedef generic_action<wml_reply, wml_request&> basic_wml_action;
+typedef generic_action<wml_reply, wml_request&, const config&> basic_wml_action;
 
 #endif // UMCD_BASIC_WML_ACTION_HPP

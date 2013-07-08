@@ -18,23 +18,25 @@
 #include <istream>
 #include <string>
 
+#include "serialization/one_hierarchy_validator.hpp"
+
 #include "umcd/network_data.hpp"
 
 class wml_request
 {
+public:
+   typedef schema_validation::one_hierarchy_validator validator_type;
+   typedef boost::shared_ptr<validator_type> validator_ptr;
 private:
    network_data data;
-   const config& server_conf;
-
-   void check_stream_state(std::istream& raw_data_stream, std::string error_msg);
-   std::string peek_name(std::istream& raw_data_stream);
 
 public:
-   wml_request(std::istream& raw_data_stream, const config& server_conf);
+   wml_request(std::istream& raw_data_stream, const validator_ptr& validator);
    network_data& get_data();
-   const config& get_conf() const;
    std::string name() const;
 };
 
+std::string peek_request_name(std::istream& raw_data_stream);
+wml_request make_request(std::istream& raw_data_stream, const std::string& validator_file_path);
 
 #endif // UMCD_WML_REQUEST_HPP

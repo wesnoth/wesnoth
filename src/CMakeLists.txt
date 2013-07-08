@@ -1016,12 +1016,12 @@ set(wesnoth-schema_validator-dependencies_SRC
 	sha1.cpp
 )
 
-set(umcd_SRC
-	umcd/umcd.cpp
+set(umcd_lib_SRC
 	umcd/server_options.cpp
 	umcd/special_packet.cpp
 	umcd/wml_reply.cpp
 	umcd/wml_request.cpp
+	umcd/request_info.cpp
 	serialization/one_hierarchy_validator.cpp
 	${network_implementation_files}
 	${wesnoth-schema_validator-dependencies_SRC}
@@ -1030,7 +1030,11 @@ set(umcd_SRC
 	loadscreen_empty.cpp
 )
 
-add_executable(umcd ${umcd_SRC})
+set(umcd_SRC
+	umcd/umcd.cpp
+)
+
+add_executable(umcd ${umcd_SRC} ${umcd_lib_SRC})
 target_link_libraries(umcd
 	wesnoth-core
 	wesnoth-schema_validator
@@ -1143,6 +1147,32 @@ install(TARGETS wesmage DESTINATION ${BINDIR})
 
 endif(ENABLE_TOOLS)
 ########### Unit tests ###############
+
+if(ENABLE_UMCD_TESTS)
+
+	add_definitions(-DBOOST_TEST_DYN_LINK)
+
+	set(umcd_test_SRC
+		tests/umcd/test_protocol.cpp
+		${umcd_lib_SRC}
+	)
+
+	add_executable(umcd_test
+		${umcd_test_SRC}
+	)
+	target_link_libraries(umcd_test
+		wesnoth-core
+		wesnoth-schema_validator
+		${server-external-libs}
+		boost_unit_test_framework
+		${Boost_THREAD_LIBRARY}
+	  ${Boost_SYSTEM_LIBRARY}
+	)
+	set_target_properties(umcd_test
+		PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}umcd_test${BINARY_SUFFIX}
+	)
+
+endif(ENABLE_UMCD_TESTS)
 
 if(ENABLE_TESTS)
 

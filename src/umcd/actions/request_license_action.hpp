@@ -23,11 +23,11 @@
 class request_license_action : public basic_wml_action
 {
 public:
-   virtual wml_reply execute(wml_request& request)
+   virtual wml_reply execute(wml_request&, const config& server_config)
    {
       std::cout << "executing request_license_action" << std::endl;
       config reply("request_license");
-      reply.child("request_license")["text"] = read_file(request.get_conf()["wesnoth_dir"].str() + "COPYING");
+      reply.child("request_license")["text"] = read_file(server_config["wesnoth_dir"].str() + "COPYING");
       return make_reply(reply);
    }
 
