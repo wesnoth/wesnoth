@@ -576,9 +576,15 @@ bool game_controller::new_campaign()
 	state_ = game_state();
 	state_.classification().campaign_type = "scenario";
 
-	const config::const_child_itors &ci =
-	    resources::config_manager->game_config().child_range("campaign");
-	std::vector<config> campaigns(ci.first, ci.second);
+	std::vector<config> campaigns;
+	BOOST_FOREACH(const config& campaign,
+		resources::config_manager->game_config().child_range("campaign")) {
+
+		if (campaign["type"] != "mp") {
+			campaigns.push_back(campaign);
+		}
+	}
+
 	mark_completed_campaigns(campaigns);
 	std::stable_sort(campaigns.begin(),campaigns.end(),less_campaigns_rank);
 

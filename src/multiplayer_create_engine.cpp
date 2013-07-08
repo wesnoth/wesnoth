@@ -235,6 +235,7 @@ create_engine::create_engine(game_display& disp) :
 	scenarios_(),
 	user_maps_(),
 	campaigns_(),
+	sp_campaigns_(),
 	user_map_names_(),
 	eras_(),
 	mods_(),
@@ -366,9 +367,12 @@ level& create_engine::current_level() const
 	case level::USER_MAP: {
 		return *user_maps_[current_level_index_];
 	}
-	case level::CAMPAIGN:
-	default: {
+	case level::CAMPAIGN: {
 		return *campaigns_[current_level_index_];
+	}
+	case level::SP_CAMPAIGN:
+	default: {
+		return *sp_campaigns_[current_level_index_];
 	}
 	} // end switch
 }
@@ -405,7 +409,9 @@ void create_engine::set_current_level(const size_t index)
 		generator_.assign(NULL);
 	}
 
-	if (current_level_type_ != level::CAMPAIGN) {
+	if (current_level_type_ != level::CAMPAIGN &&
+		current_level_type_ != level::SP_CAMPAIGN) {
+
 		dependency_manager_.try_scenario(current_level().dependency_id());
 	}
 }
@@ -522,8 +528,15 @@ void create_engine::init_all_levels()
 	BOOST_FOREACH(const config &data,
 		resources::config_manager->game_config().child_range("campaign"))
 	{
-		campaign_ptr new_campaign(new campaign(data));
-		campaigns_.push_back(new_campaign);
+		const std::string& type = data["type"];
+
+		if (type == "mp" || type == "hybrid") {
+			campaign_ptr new_campaign(new campaign(data));
+			campaigns_.push_back(new_campaign);
+		} else {
+			campaign_ptr new_sp_campaign(new campaign(data));
+			sp_campaigns_.push_back(new_sp_campaign);
+		}
 	}
 }
 
@@ -555,6 +568,11 @@ std::vector<create_engine::level_ptr>
 		break;
 	case level::CAMPAIGN:
 		BOOST_FOREACH(level_ptr level, campaigns_) {
+			levels.push_back(level);
+		}
+		break;
+	case level::SP_CAMPAIGN:
+		BOOST_FOREACH(level_ptr level, sp_campaigns_) {
 			levels.push_back(level);
 		}
 		break;

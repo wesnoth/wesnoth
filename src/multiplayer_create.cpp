@@ -100,6 +100,8 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	all_level_types.push_back(std::make_pair(level::SCENARIO, "Scenarios"));
 	all_level_types.push_back(std::make_pair(level::CAMPAIGN, "Campaigns"));
 	all_level_types.push_back(std::make_pair(level::USER_MAP, "User Maps"));
+	all_level_types.push_back(std::make_pair(level::SP_CAMPAIGN,
+		"SP Campaigns"));
 
 	std::vector<std::string> combo_level_names;
 
@@ -188,7 +190,9 @@ void create::process_event()
 
 	if (launch_game_.pressed() || levels_menu_.double_clicked()) {
 		if (engine_.current_level().can_launch_game()) {
-			if (engine_.current_level_type() == level::CAMPAIGN) {
+			if (engine_.current_level_type() == level::CAMPAIGN ||
+				engine_.current_level_type() == level::SP_CAMPAIGN) {
+
 				std::string difficulty = select_campaign_difficulty();
 				if (difficulty == "CANCEL") {
 					return;
@@ -296,7 +300,8 @@ void create::process_event()
 
 			break;
 		}
-		case level::CAMPAIGN: {
+		case level::CAMPAIGN:
+		case level::SP_CAMPAIGN: {
 			campaign* current_campaign =
 				dynamic_cast<campaign*>(&engine_.current_level());
 
@@ -338,7 +343,8 @@ void create::synchronize_selections()
 		process_event();
 	}
 
-	if (engine_.current_level_type() != level::CAMPAIGN) {
+	if (engine_.current_level_type() != level::CAMPAIGN &&
+		engine_.current_level_type() != level::SP_CAMPAIGN) {
 		if (engine_.current_level().dependency_id() !=
 			engine_.dependency_manager().get_scenario()) {
 
