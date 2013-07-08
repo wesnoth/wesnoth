@@ -124,7 +124,7 @@ private:
 class create_engine
 {
 public:
-	create_engine(level::TYPE current_level_type, game_display& disp);
+	create_engine(game_display& disp);
 	~create_engine();
 
 	enum MP_EXTRA { ERA, MOD };

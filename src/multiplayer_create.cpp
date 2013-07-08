@@ -87,7 +87,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	image_restorer_(NULL),
 	image_rect_(null_rect),
 	available_level_types_(),
-	engine_(level::SCENARIO, disp)
+	engine_(disp)
 {
 	filter_num_players_slider_.set_min(0);
 	filter_num_players_slider_.set_max(9);
@@ -103,14 +103,11 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 
 	std::vector<std::string> combo_level_names;
 
-	int i = 0;
 	BOOST_FOREACH(level_type_info type_info, all_level_types) {
 		if (!engine_.get_levels_by_type(type_info.first).empty()) {
-			available_level_types_.insert(std::make_pair(i, type_info.first));
+			available_level_types_.push_back(type_info.first);
 			combo_level_names.push_back(type_info.second);
 		}
-
-		i++;
 	}
 
 	if (combo_level_names.empty()) {
@@ -120,6 +117,8 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 
 	level_type_combo_.set_items(combo_level_names);
 	level_type_combo_.set_selected(0);
+
+	engine_.set_current_level_type(available_level_types_[0]);
 
 	const std::vector<std::string>& level_names =
 		engine_.levels_menu_item_names();
@@ -211,10 +210,7 @@ void create::process_event()
 	if (level_type_combo_.changed()) {
 		const int selected = level_type_combo_.selected();
 
-		level::TYPE type = (*available_level_types_.find(selected)).second;
-
-		engine_.set_current_level_type(type);
-
+		engine_.set_current_level_type(available_level_types_[selected]);
 		engine_.set_current_level(levels_menu_.selection());
 
 		levels_menu_.set_items(engine_.levels_menu_item_names());

@@ -83,7 +83,7 @@ private:
 	util::scoped_ptr<surface_restorer> image_restorer_;
 	SDL_Rect image_rect_;
 
-	std::map<int, level::TYPE> available_level_types_;
+	std::vector<level::TYPE> available_level_types_;
 
 	create_engine engine_;
 };

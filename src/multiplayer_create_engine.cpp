@@ -227,9 +227,8 @@ int campaign::max_players() const
 	return max_players_;
 }
 
-create_engine::create_engine(level::TYPE current_level_type,
-	game_display& disp) :
-	current_level_type_(current_level_type),
+create_engine::create_engine(game_display& disp) :
+	current_level_type_(),
 	current_level_index_(0),
 	current_era_index_(0),
 	current_mod_index_(0),
