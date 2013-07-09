@@ -737,12 +737,12 @@ void set_xp_modifier(int value)
 	preferences::set("mp_xp_modifier", value);
 }
 
-int era()
+std::string era()
 {
-	return lexical_cast_default<int>(preferences::get("mp_era"), 0);
+	return preferences::get("mp_era");
 }
 
-void set_era(int value)
+void set_era(const std::string& value)
 {
 	preferences::set("mp_era", value);
 }

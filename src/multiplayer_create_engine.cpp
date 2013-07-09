@@ -424,14 +424,13 @@ level& create_engine::current_level() const
 	} // end switch
 }
 
-std::string create_engine::current_extra_description(const MP_EXTRA extra_type) const
+const create_engine::extras_metadata& create_engine::current_extra(
+	const MP_EXTRA extra_type) const
 {
-	const std::vector<extras_metadata_ptr>& extras =
-		get_const_extras_by_type(extra_type);
-	const size_t& index = (extra_type == ERA) ?
+	const size_t index = (extra_type == ERA) ?
 		current_era_index_ : current_mod_index_;
 
-	return extras[index]->description;
+	return *get_const_extras_by_type(extra_type)[index];
 }
 
 void create_engine::set_current_level_type(const level::TYPE type)
@@ -509,6 +508,21 @@ int create_engine::find_scenario_by_id(const std::string& id) const
 	i = 0;
 	BOOST_FOREACH(const scenario_ptr& scenario, scenarios_) {
 		if (scenario->dependency_id() == id) {
+			return i;
+		}
+		i++;
+	}
+
+	return -1;
+}
+
+int create_engine::find_extra_by_id(const MP_EXTRA extra_type,
+	const std::string& id) const
+{
+	int i = 0;
+	BOOST_FOREACH(extras_metadata_ptr extra,
+		get_const_extras_by_type(extra_type)) {
+		if (extra->id == id) {
 			return i;
 		}
 		i++;

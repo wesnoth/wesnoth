@@ -146,11 +146,10 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	}
 	eras_menu_.set_items(era_names);
 
-	if (size_t(preferences::era()) < era_names.size()) {
-		eras_menu_.move_selection(preferences::era());
-	} else {
-		eras_menu_.move_selection(0);
-	}
+	// Set era selection according to the preferences, if possible.
+	int era_new_selection = engine_.find_extra_by_id(create_engine::ERA,
+		preferences::era());
+	eras_menu_.move_selection((era_new_selection != -1) ? era_new_selection : 0);
 
 	mods_menu_.set_items(engine_.extras_menu_item_names(create_engine::MOD));
 
@@ -174,6 +173,7 @@ create::~create()
 
 	// Save values for next game
 	DBG_MP << "storing parameter values in preferences" << std::endl;
+	preferences::set_era(engine_.current_extra(create_engine::ERA).id);
 }
 
 mp_game_settings& create::get_parameters()
@@ -239,8 +239,8 @@ void create::process_event()
 	if (era_changed) {
 		engine_.set_current_era_index(era_selection_);
 
-		description_.set_text(engine_.current_extra_description(
-			create_engine::ERA));
+		description_.set_text(engine_.current_extra(
+			create_engine::ERA).description);
 		synchronize_selections();
 	}
 
@@ -334,8 +334,8 @@ void create::process_event()
 	if (mod_selection_changed) {
 		engine_.set_current_mod_index(mod_selection_);
 
-		description_.set_text(engine_.current_extra_description(
-			create_engine::MOD));
+		description_.set_text(engine_.current_extra(
+			create_engine::MOD).description);
 	}
 }
 

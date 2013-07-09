@@ -169,8 +169,8 @@ class acquaintance;
 	int xp_modifier();
 	void set_xp_modifier(int value);
 
-	int era();
-	void set_era(int value);
+	std::string era();
+	void set_era(const std::string& value);
 
 	int map();
 	void set_map(int value);

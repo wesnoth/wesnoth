@@ -176,8 +176,7 @@ public:
 		const MP_EXTRA extra_type) const;
 
 	level& current_level() const;
-
-	std::string current_extra_description(const MP_EXTRA extra_type) const;
+	const extras_metadata& current_extra(const MP_EXTRA extra_type) const;
 
 	void set_current_level_type(const level::TYPE);
 	level::TYPE current_level_type() const;
@@ -191,6 +190,8 @@ public:
 	void generator_user_config(display& disp);
 
 	int find_scenario_by_id(const std::string& id) const;
+	int find_extra_by_id(const MP_EXTRA extra_type, const std::string& id) const;
+
 	const depcheck::manager& dependency_manager() const;
 
 	void init_active_mods();
