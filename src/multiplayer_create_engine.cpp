@@ -390,12 +390,10 @@ std::vector<std::string> create_engine::levels_menu_item_names() const
 std::vector<std::string> create_engine::extras_menu_item_names(
 	const MP_EXTRA extra_type) const
 {
-	const std::vector<extras_metadata_ptr>& extras =
-		get_const_extras_by_type(extra_type);
-
 	std::vector<std::string> names;
 
-	BOOST_FOREACH(extras_metadata_ptr extra, extras) {
+	BOOST_FOREACH(extras_metadata_ptr extra,
+		get_const_extras_by_type(extra_type)) {
 		names.push_back(extra->name);
 	}
 
