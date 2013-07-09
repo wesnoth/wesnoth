@@ -390,13 +390,13 @@ std::vector<std::string> create_engine::levels_menu_item_names() const
 std::vector<std::string> create_engine::extras_menu_item_names(
 	const MP_EXTRA extra_type) const
 {
-	const std::vector<extras_metadata>& extras =
+	const std::vector<extras_metadata_ptr>& extras =
 		get_const_extras_by_type(extra_type);
 
 	std::vector<std::string> names;
 
-	BOOST_FOREACH(const extras_metadata& extra, extras) {
-		names.push_back(extra.first);
+	BOOST_FOREACH(extras_metadata_ptr extra, extras) {
+		names.push_back(extra->name);
 	}
 
 	return names;
@@ -426,12 +426,12 @@ level& create_engine::current_level() const
 
 std::string create_engine::current_extra_description(const MP_EXTRA extra_type) const
 {
-	const std::vector<extras_metadata>& extras =
+	const std::vector<extras_metadata_ptr>& extras =
 		get_const_extras_by_type(extra_type);
 	const size_t& index = (extra_type == ERA) ?
 		current_era_index_ : current_mod_index_;
 
-	return extras[index].second;
+	return extras[index]->description;
 }
 
 void create_engine::set_current_level_type(const level::TYPE type)
@@ -531,16 +531,7 @@ mp_game_settings& create_engine::get_parameters()
 {
 	DBG_MP << "getting parameter values" << std::endl;
 
-	config::const_child_itors era_list = resources::config_manager->
-		game_config().child_range("era");
-	for (int num = current_era_index_; num > 0; --num) {
-		if (era_list.first == era_list.second) {
-			throw config::error(_("Invalid era selected"));
-		}
-		++era_list.first;
-	}
-
-	parameters_.mp_era = (*era_list.first)["id"].str();
+	parameters_.mp_era = eras_[current_era_index_]->id;
 
 	return parameters_;
 }
@@ -602,12 +593,18 @@ void create_engine::init_all_levels()
 
 void create_engine::init_extras(const MP_EXTRA extra_type)
 {
-	std::vector<extras_metadata>& extras = get_extras_by_type(extra_type);
+	std::vector<extras_metadata_ptr>& extras = get_extras_by_type(extra_type);
 	const std::string extra_name = (extra_type == ERA) ? "era" : "modification";
 
 	BOOST_FOREACH(const config &extra,
 		resources::config_manager->game_config().child_range(extra_name)) {
-		extras.push_back(std::make_pair(extra["name"], extra["description"]));
+
+		extras_metadata_ptr new_extras_metadata(new extras_metadata());
+		new_extras_metadata->id = extra["id"].str();
+		new_extras_metadata->name = extra["name"].str();
+		new_extras_metadata->description = extra["description"].str();
+
+		extras.push_back(new_extras_metadata);
 	}
 }
 
@@ -646,13 +643,13 @@ std::vector<create_engine::level_ptr>
 	return levels;
 }
 
-const std::vector<create_engine::extras_metadata>&
+const std::vector<create_engine::extras_metadata_ptr>&
 	create_engine::get_const_extras_by_type(const MP_EXTRA extra_type) const
 {
 	return (extra_type == ERA) ? eras_ : mods_;
 }
 
-std::vector<create_engine::extras_metadata>&
+std::vector<create_engine::extras_metadata_ptr>&
 	create_engine::get_extras_by_type(const MP_EXTRA extra_type)
 {
 	return (extra_type == ERA) ? eras_ : mods_;

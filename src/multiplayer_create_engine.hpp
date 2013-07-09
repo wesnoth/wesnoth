@@ -148,13 +148,20 @@ public:
 
 	enum MP_EXTRA { ERA, MOD };
 
+	struct extras_metadata
+	{
+		std::string id;
+		std::string name;
+		std::string description;
+	};
+
+	typedef boost::shared_ptr<extras_metadata> extras_metadata_ptr;
+
 	typedef boost::shared_ptr<level> level_ptr;
 	typedef boost::shared_ptr<scenario> scenario_ptr;
 	typedef boost::shared_ptr<user_map> user_map_ptr;
 	typedef boost::shared_ptr<random_map> random_map_ptr;
 	typedef boost::shared_ptr<campaign> campaign_ptr;
-
-	typedef std::pair<std::string, std::string> extras_metadata;
 
 	void init_generated_level_data();
 
@@ -197,9 +204,9 @@ private:
 	void init_all_levels();
 	void init_extras(const MP_EXTRA extra_type);
 
-	const std::vector<extras_metadata>&
+	const std::vector<extras_metadata_ptr>&
 		get_const_extras_by_type(const MP_EXTRA extra_type) const;
-	std::vector<extras_metadata>&
+	std::vector<extras_metadata_ptr>&
 		get_extras_by_type(const MP_EXTRA extra_type);
 
 	level::TYPE current_level_type_;
@@ -216,8 +223,8 @@ private:
 
 	std::vector<std::string> user_map_names_;
 
-	std::vector<extras_metadata> eras_;
-	std::vector<extras_metadata> mods_;
+	std::vector<extras_metadata_ptr> eras_;
+	std::vector<extras_metadata_ptr> mods_;
 
 	mp_game_settings parameters_;
 
