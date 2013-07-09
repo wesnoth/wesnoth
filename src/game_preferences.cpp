@@ -747,14 +747,24 @@ void set_era(const std::string& value)
 	preferences::set("mp_era", value);
 }
 
-int map()
+std::string level()
 {
-	return lexical_cast_default<int>(preferences::get("mp_map"), 0);
+	return preferences::get("mp_level");
 }
 
-void set_map(int value)
+void set_level(const std::string& value)
 {
-	preferences::set("mp_map", value);
+	preferences::set("mp_level", value);
+}
+
+int level_type()
+{
+	return lexical_cast_default<int>(preferences::get("mp_level_type"), 0);
+}
+
+void set_level_type(int value)
+{
+	preferences::set("mp_level_type", value);
 }
 
 const std::vector<std::string>& modifications()

@@ -42,7 +42,7 @@ public:
 
 	virtual std::string name() const;
 	virtual std::string description() const;
-	virtual std::string dependency_id() const;
+	virtual std::string id() const;
 
 	void set_data(const config& data);
 	const config& data() const;
@@ -88,7 +88,7 @@ public:
 
 	std::string name() const;
 	std::string description() const;
-	std::string dependency_id() const;
+	std::string id() const;
 
 private:
 	user_map(const user_map&);
@@ -107,7 +107,7 @@ public:
 
 	std::string name() const;
 	std::string description() const;
-	std::string dependency_id() const;
+	std::string id() const;
 
 private:
 	random_map(const random_map&);
@@ -128,6 +128,8 @@ public:
 
 	void set_metadata();
 
+	std::string id() const;
+
 	int min_players() const;
 	int max_players() const;
 
@@ -135,6 +137,7 @@ private:
 	campaign(const campaign&);
 	void operator=(const campaign&);
 
+	std::string id_;
 	std::string image_label_;
 	int min_players_;
 	int max_players_;
@@ -189,7 +192,7 @@ public:
 	bool generator_assigned() const;
 	void generator_user_config(display& disp);
 
-	int find_scenario_by_id(const std::string& id) const;
+	int find_level_by_id(const std::string& id) const;
 	int find_extra_by_id(const MP_EXTRA extra_type, const std::string& id) const;
 
 	const depcheck::manager& dependency_manager() const;

@@ -41,6 +41,8 @@ protected:
 	virtual void hide_children(bool hide=true);
 
 private:
+	void init_level_type_changed(size_t index);
+
 	void synchronize_selections();
 
 	void draw_level_image();

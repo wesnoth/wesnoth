@@ -172,8 +172,10 @@ class acquaintance;
 	std::string era();
 	void set_era(const std::string& value);
 
-	int map();
-	void set_map(int value);
+	std::string level();
+	void set_level(const std::string& value);
+	int level_type();
+	void set_level_type(int value);
 
 	const std::vector<std::string>& modifications();
 	void set_modifications(const std::vector<std::string>& value);

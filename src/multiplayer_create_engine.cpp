@@ -51,7 +51,7 @@ std::string level::name() const
 	return data_["name"];
 }
 
-std::string level::dependency_id() const
+std::string level::id() const
 {
 	return data_["id"];
 }
@@ -183,7 +183,7 @@ std::string user_map::name() const
 	return name_;
 }
 
-std::string user_map::dependency_id() const
+std::string user_map::id() const
 {
 	return name_;
 }
@@ -213,13 +213,14 @@ std::string random_map::description() const
 	return generator_data_["description"];
 }
 
-std::string random_map::dependency_id() const
+std::string random_map::id() const
 {
 	return generator_data_["id"];
 }
 
 campaign::campaign(const config& data) :
 	level(data),
+	id_(data["id"]),
 	image_label_(),
 	min_players_(2),
 	max_players_(2)
@@ -258,6 +259,11 @@ void campaign::set_metadata()
 	if (max > min) {
 		max_players_ = max;
 	}
+}
+
+std::string campaign::id() const
+{
+	return id_;
 }
 
 int campaign::min_players() const
@@ -459,7 +465,7 @@ void create_engine::set_current_level(const size_t index)
 	if (current_level_type_ != level::CAMPAIGN &&
 		current_level_type_ != level::SP_CAMPAIGN) {
 
-		dependency_manager_.try_scenario(current_level().dependency_id());
+		dependency_manager_.try_scenario(current_level().id());
 	}
 }
 
@@ -485,11 +491,11 @@ void create_engine::generator_user_config(display& disp)
 	generator_->user_config(disp);
 }
 
-int create_engine::find_scenario_by_id(const std::string& id) const
+int create_engine::find_level_by_id(const std::string& id) const
 {
 	int i = 0;
 	BOOST_FOREACH(const user_map_ptr& user_map, user_maps_) {
-		if (user_map->dependency_id() == id) {
+		if (user_map->id() == id) {
 			return i;
 		}
 		i++;
@@ -497,7 +503,7 @@ int create_engine::find_scenario_by_id(const std::string& id) const
 
 	i = 0;
 	BOOST_FOREACH(const random_map_ptr& random_map, random_maps_) {
-		if (random_map->dependency_id() == id) {
+		if (random_map->id() == id) {
 			return i;
 		}
 		i++;
@@ -505,7 +511,23 @@ int create_engine::find_scenario_by_id(const std::string& id) const
 
 	i = 0;
 	BOOST_FOREACH(const scenario_ptr& scenario, scenarios_) {
-		if (scenario->dependency_id() == id) {
+		if (scenario->id() == id) {
+			return i;
+		}
+		i++;
+	}
+
+	i = 0;
+	BOOST_FOREACH(const campaign_ptr& campaign, campaigns_) {
+		if (campaign->id() == id) {
+			return i;
+		}
+		i++;
+	}
+
+	i = 0;
+	BOOST_FOREACH(const campaign_ptr& sp_campaign, sp_campaigns_) {
+		if (sp_campaign->id() == id) {
 			return i;
 		}
 		i++;

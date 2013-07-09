@@ -95,6 +95,8 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 
 	DBG_MP << "constructing multiplayer create dialog" << std::endl;
 
+	levels_menu_.set_numeric_keypress_selection(false);
+
 	typedef std::pair<level::TYPE, std::string> level_type_info;
 	std::vector<level_type_info> all_level_types;
 	all_level_types.push_back(std::make_pair(level::SCENARIO, "Scenarios"));
@@ -122,21 +124,29 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	}
 
 	level_type_combo_.set_items(combo_level_names);
-	level_type_combo_.set_selected(0);
 
-	engine_.set_current_level_type(available_level_types_[0]);
+	size_t combo_new_selection = 0;
+	size_t level_new_selection = 0;
 
-	const std::vector<std::string>& level_names =
-		engine_.levels_menu_item_names();
+	// Set level selection according to the preferences, if possible.
+	size_t type_index = 0;
+	BOOST_FOREACH(level::TYPE type, available_level_types_) {
+		if (preferences::level_type() == type) {
+			break;
+		}
+		type_index++;
+	}
+	if (type_index < available_level_types_.size()) {
+		combo_new_selection = type_index;
 
-	levels_menu_.set_items(level_names);
-	levels_menu_.set_numeric_keypress_selection(false);
-
-	if (size_t(preferences::map()) < level_names.size()) {
-		levels_menu_.move_selection(preferences::map());
+		int level_index = engine_.find_level_by_id(preferences::level());
+		if (level_index != -1) {
+			level_new_selection = level_index;
+		}
 	}
 
-	engine_.set_current_level(levels_menu_.selection());
+	level_type_combo_.set_selected(combo_new_selection);
+	init_level_type_changed(level_new_selection);
 
 	const std::vector<std::string>& era_names =
 		engine_.extras_menu_item_names(create_engine::ERA);
@@ -174,6 +184,8 @@ create::~create()
 	// Save values for next game
 	DBG_MP << "storing parameter values in preferences" << std::endl;
 	preferences::set_era(engine_.current_extra(create_engine::ERA).id);
+	preferences::set_level(engine_.current_level().id());
+	preferences::set_level_type(engine_.current_level_type());
 }
 
 mp_game_settings& create::get_parameters()
@@ -216,13 +228,7 @@ void create::process_event()
 	}
 
 	if (level_type_combo_.changed()) {
-		const int selected = level_type_combo_.selected();
-
-		engine_.set_current_level_type(available_level_types_[selected]);
-		engine_.set_current_level(0);
-
-		levels_menu_.set_items(engine_.levels_menu_item_names());
-		level_selection_ = -1;
+		init_level_type_changed(0);
 	}
 
 	if (load_game_.pressed()) {
@@ -339,6 +345,19 @@ void create::process_event()
 	}
 }
 
+void create::init_level_type_changed(size_t index)
+{
+	const int selected = level_type_combo_.selected();
+
+	engine_.set_current_level_type(available_level_types_[selected]);
+	engine_.set_current_level(index);
+
+	levels_menu_.set_items(engine_.levels_menu_item_names());
+	levels_menu_.move_selection(index);
+
+	level_selection_ = -1;
+}
+
 void create::synchronize_selections()
 {
 	DBG_MP << "Synchronizing with the dependency manager" << std::endl;
@@ -349,10 +368,10 @@ void create::synchronize_selections()
 
 	if (engine_.current_level_type() != level::CAMPAIGN &&
 		engine_.current_level_type() != level::SP_CAMPAIGN) {
-		if (engine_.current_level().dependency_id() !=
+		if (engine_.current_level().id() !=
 			engine_.dependency_manager().get_scenario()) {
 
-			int index = engine_.find_scenario_by_id(
+			int index = engine_.find_level_by_id(
 				engine_.dependency_manager().get_scenario());
 
 			if (index == -1) {
