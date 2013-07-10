@@ -80,6 +80,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	regenerate_map_(disp.video(), _("Regenerate")),
 	generator_settings_(disp.video(), _("Settings...")),
 	load_game_(disp.video(), _("Load game...")),
+	choose_mods_(disp.video(), _("Modifications...")),
 	level_type_combo_(disp, std::vector<std::string>()),
 	filter_num_players_slider_(disp.video()),
 	description_(disp.video(), 100, "", false),
@@ -87,6 +88,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	image_restorer_(NULL),
 	image_rect_(null_rect),
 	available_level_types_(),
+	available_mods_(),
 	engine_(disp)
 {
 	filter_num_players_slider_.set_min(0);
@@ -161,6 +163,10 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 		preferences::era());
 	eras_menu_.move_selection((era_new_selection != -1) ? era_new_selection : 0);
 
+	BOOST_FOREACH(const config& mod, cfg.child_range("modification")) {
+		available_mods_.add_child("modification", mod);
+	}
+
 	mods_menu_.set_items(engine_.extras_menu_item_names(create_engine::MOD));
 
 	utils::string_map i18n_symbols;
@@ -186,6 +192,7 @@ create::~create()
 	preferences::set_era(engine_.current_extra(create_engine::ERA).id);
 	preferences::set_level(engine_.current_level().id());
 	preferences::set_level_type(engine_.current_level_type());
+	preferences::set_modifications(engine_.active_mods());
 }
 
 mp_game_settings& create::get_parameters()
@@ -237,6 +244,22 @@ void create::process_event()
 		set_result(LOAD_GAME);
 
 		return;
+	}
+
+	if(choose_mods_.pressed()) {
+		if (available_mods_.empty()) {
+			gui2::show_transient_message(disp_.video(), "",
+			_(	"There are no modifications currently installed." \
+				" To download modifications, connect to the add-ons server" \
+				" by choosing the 'Add-ons' option on the main screen."		));
+		} else {
+			gui2::tmp_create_game_choose_mods
+						dialog(available_mods_, engine_.active_mods());
+
+			dialog.show(disp_.video());
+
+			synchronize_selections();
+		}
 	}
 
 	bool era_changed = era_selection_ != eras_menu_.selection();
@@ -462,6 +485,8 @@ void create::hide_children(bool hide)
 
 	load_game_.hide(hide);
 
+	choose_mods_.hide(hide);
+
 	regenerate_map_.hide(hide);
 	generator_settings_.hide(hide);
 
@@ -502,8 +527,8 @@ void create::layout_children(const SDL_Rect& rect)
 	const int menu_width = (ca.w - 3*column_border_size - image_width)/3;
 	const int eras_menu_height = (ca.h / 2 - era_label_.height() -
 		2 * border_size - cancel_game_.height());
-	const int mods_menu_height = (ca.h / 2 - mod_label_.height() -
-		2 * border_size - cancel_game_.height());
+	//const int mods_menu_height = (ca.h / 2 - mod_label_.height() -
+	//	2 * border_size - cancel_game_.height());
 
 	// Dialog title
 	ypos += title().height() + border_size;
@@ -595,7 +620,9 @@ void create::layout_children(const SDL_Rect& rect)
 	eras_menu_.set_items(engine_.extras_menu_item_names(create_engine::ERA));
 	eras_menu_.move_selection(erasel_save);
 	ypos += eras_menu_height;
-	mod_label_.set_location(xpos, ypos);
+
+	//TODO: use when mods_menu_ would be functional.
+	/*mod_label_.set_location(xpos, ypos);
 	ypos += mod_label_.height() + border_size;
 	mods_menu_.set_max_width(menu_width);
 	mods_menu_.set_max_height(mods_menu_height);
@@ -603,7 +630,8 @@ void create::layout_children(const SDL_Rect& rect)
 	// Menu dimensions are only updated when items are set. So do this now.
 	int modsel_save = mods_menu_.selection();
 	mods_menu_.set_items(engine_.extras_menu_item_names(create_engine::MOD));
-	mods_menu_.move_selection(modsel_save);
+	mods_menu_.move_selection(modsel_save);*/
+	choose_mods_.set_location(xpos, ypos);
 
 	// OK / Cancel buttons
 	gui::button* left_button = &launch_game_;

@@ -558,7 +558,14 @@ const depcheck::manager& create_engine::dependency_manager() const
 
 void create_engine::init_active_mods()
 {
+	dependency_manager_.try_modifications(parameters_.active_mods);
+
 	parameters_.active_mods = dependency_manager_.get_modifications();
+}
+
+std::vector<std::string>& create_engine::active_mods()
+{
+	return parameters_.active_mods;
 }
 
 mp_game_settings& create_engine::get_parameters()
