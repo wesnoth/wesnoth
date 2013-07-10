@@ -2142,23 +2142,26 @@ if __name__ == '__main__':
     else:
         maptransforms = [maptransform1, maptransform2]
 
+    # In certain situations, Windows' command prompt appends a double quote
+    # to the command line parameters. The first block takes care of this issue.
+    # Also, Windows does not expand wildcards. The second turns on globbing.
+    if arguments and sys.platform == 'win32':
+        wildcard = False
+        for i,arg in enumerate(arguments):
+            if arg.endswith('"'):
+                arguments[i] = arg[:-1]
+            if '*' in arg:
+                wildcard = True
+        if wildcard:
+            from glob import glob
+            for arg in arguments:
+                wildarg = glob(arg)
+                arguments.remove(arg)
+                for newarg in wildarg:
+                    arguments.append(newarg)
+
     if not arguments:
         arguments = ["."]
-
-    # in certain situations, Windows' command prompt appends a double quote
-    # to the command line parameters. This block takes care of this issue.
-    for i,arg in enumerate(arguments):
-        if arg.endswith('"'):
-            arguments[i] = arg[:-1]
-
-    # Also, Windows does not expand wildcards. This turns on globbing.
-    if sys.platform == 'win32':
-        from glob import glob
-        for arg in arguments:
-            wildarg = glob(arg)
-            arguments.remove(arg)
-            for newarg in wildarg:
-                arguments.append(newarg)
 
     for dir in arguments:
         ofp = None
