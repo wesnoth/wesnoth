@@ -826,6 +826,8 @@ def sanity_check(filename, lines):
             (key, prefix, value, comment) = parse_attribute(lines[i])
             if "wmllint: ignore" in comment:
                 continue
+            if len(value) == 0:
+                continue
             has_tr_mark = value.lstrip().startswith("_")
             if key == 'role':
                 present.append(value)
