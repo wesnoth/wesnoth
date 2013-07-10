@@ -318,7 +318,10 @@ create_engine::create_engine(game_display& disp) :
 			parameters_.active_mods.push_back(str);
 	}
 
-	dependency_manager_.try_modifications(parameters_.active_mods, true);
+	if (current_level_type_ != level::CAMPAIGN &&
+		current_level_type_ != level::SP_CAMPAIGN) {
+		dependency_manager_.try_modifications(parameters_.active_mods, true);
+	}
 }
 
 create_engine::~create_engine()
@@ -558,7 +561,10 @@ const depcheck::manager& create_engine::dependency_manager() const
 
 void create_engine::init_active_mods()
 {
-	dependency_manager_.try_modifications(parameters_.active_mods);
+	if (current_level_type_ != level::CAMPAIGN &&
+		current_level_type_ != level::SP_CAMPAIGN) {
+		dependency_manager_.try_modifications(parameters_.active_mods);
+	}
 
 	parameters_.active_mods = dependency_manager_.get_modifications();
 }
