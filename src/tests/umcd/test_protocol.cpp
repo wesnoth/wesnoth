@@ -41,28 +41,56 @@ struct umcd_stream
     static const std::string h = "localhost";
     return h;
   }
-
-  static tcp::iostream& stream()
-  {
-    static tcp::iostream tcp_iostream(host(), port());
-    return tcp_iostream;
-  }
 };
+
+void test_stream_state(const tcp::iostream& stream)
+{
+  if(!stream.good())
+  {
+    BOOST_FAIL(stream.error().message());
+  }
+}
+
+void test_exchange(const std::string& request_path, const std::string& reply_validator_path)
+{
+  std::ifstream request_file(request_path.c_str());
+  config request_conf;
+  read(request_conf, request_file);
+  wml_reply reply = make_reply(request_conf);
+
+  tcp::iostream stream(umcd_stream::host(), umcd_stream::port());
+  test_stream_state(stream);
+  reply.send(stream);
+  test_stream_state(stream);
+  BOOST_CHECK_NO_THROW(make_request(stream, reply_validator_path));
+  test_stream_state(stream);
+}
 
 BOOST_AUTO_TEST_SUITE(umcd_common_test_suite)
 
 BOOST_AUTO_TEST_CASE(umcd_bad_request_name)
 {
-  const std::string filename = "../data/umcd/tests/common/bad_request_name.cfg";
+  const std::string request_path = "../data/umcd/tests/common/bad_request_name.cfg";
   const std::string error_reply_cfg_path = "../data/umcd/protocol_schema/error_reply.cfg";
-
-  std::ifstream request_file(filename.c_str());
-  config request_conf;
-  read(request_conf, request_file);
-  wml_reply reply = make_reply(request_conf);
-  reply.send(umcd_stream::stream());
-  wml_request request = make_request(umcd_stream::stream(), error_reply_cfg_path);
-  BOOST_REQUIRE(true);
+  test_exchange(request_path, error_reply_cfg_path);
 }
 
 BOOST_AUTO_TEST_SUITE_END() // umcd_common_test_suite
+
+BOOST_AUTO_TEST_SUITE(umcd_request_license_test_suite)
+
+BOOST_AUTO_TEST_CASE(umcd_request_license_empty_lang)
+{
+  const std::string request_path = "../data/umcd/tests/request_license/request_license_empty_lang.cfg";
+  const std::string license_path = "../data/umcd/protocol_schema/request_license_reply.cfg";
+  test_exchange(request_path, license_path);
+}
+
+BOOST_AUTO_TEST_CASE(umcd_request_license_en_GB)
+{
+  const std::string request_path = "../data/umcd/tests/request_license/request_license_english.cfg";
+  const std::string license_path = "../data/umcd/protocol_schema/request_license_reply.cfg";
+  test_exchange(request_path, license_path);
+}
+
+BOOST_AUTO_TEST_SUITE_END() // umcd_request_license_test_suite

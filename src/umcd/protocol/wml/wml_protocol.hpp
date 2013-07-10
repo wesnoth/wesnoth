@@ -67,7 +67,10 @@ public:
       {
          reply = make_error_reply("The packet you sent is invalid. It could be a protocol bug and administrators have been contacted, the problem should be fixed soon.");
       }
-      reply.send(raw_request_stream);
+      if(raw_request_stream.good())
+      {
+         reply.send(raw_request_stream);
+      }
    }
 };
 

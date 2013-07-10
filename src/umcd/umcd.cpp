@@ -13,11 +13,16 @@
 */
 
 #include <stdexcept>
+
+#include <boost/thread/thread.hpp>
+#include <boost/bind.hpp>
+
 #include "config.hpp"
 
 #include "umcd/server_options.hpp"
 #include "umcd/server/single_threaded/server.hpp"
 #include "umcd/protocol/wml/wml_protocol.hpp"
+#include "umcd/umcd_logger.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -26,8 +31,9 @@ int main(int argc, char *argv[])
     server_options options(argc, argv);
     if(!options.print_info())
     {
+      boost::thread logger_thread(boost::bind(&umcd_logger::run, boost::ref(umcd_logger::get())));
       config cfg = options.build_config();
-      std::cout << "Configuration requested:\n" << cfg;
+      UMCD_LOG(info) << "Configuration requested:\n" << cfg;
 
       wml_protocol protocol(cfg);
       server<wml_protocol> addon_server(cfg, protocol);

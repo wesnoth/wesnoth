@@ -1046,13 +1046,6 @@ target_link_libraries(umcd
 	
 set_target_properties(umcd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}umcd${BINARY_SUFFIX})
 
-if(CMAKE_COMPILER_IS_GNUCXX OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
-	set_target_properties(umcd
-		PROPERTIES COMPILE_FLAGS
-		"-pthread"
-	)
-endif()
-
 install(TARGETS umcd DESTINATION ${BINDIR})
 
 endif(ENABLE_UMCD)
