@@ -20,7 +20,7 @@
 #include "config.hpp"
 
 #include "umcd/server_options.hpp"
-#include "umcd/server/single_threaded/server.hpp"
+#include "umcd/server/multi_threaded/server_mt.hpp"
 #include "umcd/protocol/wml/wml_protocol.hpp"
 #include "umcd/umcd_logger.hpp"
 
@@ -36,13 +36,13 @@ int main(int argc, char *argv[])
       UMCD_LOG(info) << "Configuration requested:\n" << cfg;
 
       wml_protocol protocol(cfg);
-      server<wml_protocol> addon_server(cfg, protocol);
+      server_mt<wml_protocol> addon_server(cfg, protocol);
       addon_server.run();
     }
   }
   catch(std::exception &e)
   {
-    std::cout << e.what() << std::endl;
+    std::cerr << e.what() << std::endl;
   }
   return 0;
 }

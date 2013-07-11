@@ -81,6 +81,7 @@ typename connection<Protocol>::socket_type& connection<Protocol>::get_socket()
 template <class Protocol>
 void connection<Protocol>::start()
 {
+  // Post is threadsafe.
   io_service.post(
     boost::bind(&connection::handle_request, this->shared_from_this()));
 }
@@ -88,7 +89,7 @@ void connection<Protocol>::start()
 template <class Protocol>
 void connection<Protocol>::handle_request()
 {
-  UMCD_LOG_IP(trace, data_stream) << "-- connection::handle_request()";
+  UMCD_LOG_IP(trace, data_stream) << " -- connection::handle_request()";
   protocol.handle_request(data_stream);
 }
 
