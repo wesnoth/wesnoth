@@ -150,11 +150,6 @@ libwesnothd_sources = Split("""
     """)
 libwesnothd = env.Library("wesnothd", libwesnothd_sources)
 
-libumcd_sources = Split("""
-    addon/validation.cpp
-    """)
-libumcd = env.Library("umcd", libumcd_sources, OBJPREFIX = "umcd_")
-
 libwesnoth_sdl_sources = Split("""
     sdl_utils.cpp
     tracer.cpp
@@ -549,27 +544,26 @@ if env["host"] in ["x86_64-nacl", "i686-nacl"]:
     wesnoth_objects += [SConscript("nacl/SConscript")]
 client_env.WesnothProgram("wesnoth", wesnoth_objects, have_client_prereqs)
 
-umcd_sources = Split("""
-    umcd/server_options.cpp
+libumcd_sources = Split("""
     umcd/special_packet.cpp
     umcd/wml_reply.cpp
     umcd/wml_request.cpp
     umcd/request_info.cpp
     umcd/umcd_logger.cpp
     serialization/one_hierarchy_validator.cpp
+    addon/validation.cpp
     """)
+
+umcd_sources = Split("""
+    umcd/server_options.cpp
+    """)
+
+libumcd = env.Library("umcd", libumcd_sources, OBJPREFIX = "umcd_")
 
 if env["PLATFORM"] == "win32": env["fifodir"] = ""
 umcd_sources.extend(env.Object("umcd/umcd.cpp", EXTRA_DEFINE = env['fifodir'] and "FIFODIR='\"$fifodir\"'" or None))
 
 env.WesnothProgram("umcd", umcd_sources + [libwesnoth_core, libwesnothd, libumcd, libschema], have_umcd_prereqs)
-
-umcd_test_sources = Split("""
-    tests/umcd/test_protocol.cpp
-    """)
-
-test = test_env.WesnothProgram("umcd_test", umcd_test_sources +  [libwesnoth_core, libwesnothd, libumcd, libschema], have_umcd_test_prereqs)
-
 
 wesnothd_sources = Split("""
     server/ban.cpp
@@ -657,6 +651,12 @@ test_sources = Split("""
 test_sources.extend(test_env.Object("tests/test_config_cache.cpp"))
 
 test = test_env.WesnothProgram("test", test_sources +  [libwesnoth_extras, libwesnoth_core, libwesnoth_sdl, libwesnoth, libwesnoth_extras, libtest_utils], have_test_prereqs)
+
+umcd_test_sources = Split("""
+    tests/umcd/test_protocol.cpp
+    """)
+
+test_env.WesnothProgram("umcd_test", umcd_test_sources + [libwesnoth_core, libwesnothd, libumcd, libschema], have_umcd_test_prereqs)
 
 create_images_sources = Split("""
     tests/create_images.cpp
