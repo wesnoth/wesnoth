@@ -452,7 +452,14 @@ bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(side_number side
 
 		if (!aiparam.has_attribute("turns") && !aiparam.has_attribute("time_of_day")) {
 			fallback_stage_cfg_ai.append(aiparam);
-		}
+		} else {
+			// Move [goal]s to root of the config, adding turns and time_of_day.
+			BOOST_FOREACH(const config &aigoal, aiparam.child_range("goal")) {
+				config updated_goal_config = aigoal;
+				transfer_turns_and_time_of_day_data(aiparam, updated_goal_config);
+				parsed_cfg.add_child("goal", updated_goal_config);
+			}
+                }
 	}
 	fallback_stage_cfg_ai.clear_children("aspect");
 
