@@ -41,7 +41,7 @@ class server_mt : public basic_server<Protocol>, boost::noncopyable
     std::size_t thread_pool_size;
 
   public:
-    explicit basic_server(const config& cfg, protocol_type& protocol);
+    explicit server_mt(const config& cfg, protocol_type& protocol);
     void run();
 };
 

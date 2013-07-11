@@ -332,6 +332,7 @@ if env["prereqs"]:
     have_umcd_prereqs = have_server_prereqs and \
         CheckAsio(conf) and \
         conf.CheckBoost("program_options", require_version="1.35.0") and \
+        conf.CheckBoost("thread", require_version="1.35.0") and \
         conf.CheckBoost("regex", require_version = "1.35.0") or Warning("UMCD prerequisites are not met. umcd cannot be built.")
 
     env = conf.Finish()
