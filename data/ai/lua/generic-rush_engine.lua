@@ -470,16 +470,16 @@ return {
 
         ------- Place Healers CA --------------
 
-        generic_rush.healer_support_eval = HS.healer_support_eval
+        generic_rush.mai_healer_move_eval = HS.mai_healer_move_eval
 
         function generic_rush:place_healers_eval()
-            if generic_rush:healer_support_eval() > 0 then
+            if generic_rush:mai_healer_move_eval() > 0 then
                 return 95000
             end
             return 0
         end
 
-        generic_rush.place_healers_exec = HS.healer_support_exec
+        generic_rush.place_healers_exec = HS.mai_healer_move_exec
 
         ------- Retreat CA --------------
 
