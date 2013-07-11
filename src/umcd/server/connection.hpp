@@ -21,8 +21,9 @@
 #ifndef SERVER_CONNECTION_HPP
 #define SERVER_CONNECTION_HPP
 
-#include <boost/type_traits.hpp>
+#include "umcd/umcd_logger.hpp"
 
+#include <boost/type_traits.hpp>
 #include <boost/asio.hpp>
 #include <boost/noncopyable.hpp>
 #include <boost/enable_shared_from_this.hpp>
@@ -87,9 +88,8 @@ void connection<Protocol>::start()
 template <class Protocol>
 void connection<Protocol>::handle_request()
 {
-  std::cout << "[Info] enter connection::handle_request()" << std::endl;
+  UMCD_LOG_IP(trace, data_stream) << "-- connection::handle_request()";
   protocol.handle_request(data_stream);
-  std::cout << "[Info] quit connection::handle_request()" << std::endl;
 }
 
 #endif // SERVER_CONNECTION_HPP

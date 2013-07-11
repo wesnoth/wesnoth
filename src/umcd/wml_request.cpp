@@ -16,14 +16,6 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/make_shared.hpp>
 
-#include "serialization/parser.hpp"
-
-wml_request::wml_request(std::istream& raw_data_stream, const validator_ptr& validator)
-{
-   read(data.get_metadata(), raw_data_stream, validator.get());
-   std::cout << "[Info] Request read:\n" << data.get_metadata();
-}
-
 network_data& wml_request::get_data() { return data; }
 
 std::string wml_request::name() const
@@ -64,10 +56,4 @@ std::string peek_request_name(std::istream& raw_data_stream)
    raw_data_stream.putback(first_bracket);
 
    return request_name;
-}
-
-wml_request make_request(std::istream& raw_data_stream, const std::string& validator_file_path)
-{
-   using namespace schema_validation;
-   return wml_request(raw_data_stream, boost::make_shared<one_hierarchy_validator>(validator_file_path));
 }

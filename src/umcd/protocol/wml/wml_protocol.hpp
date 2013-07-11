@@ -16,11 +16,9 @@
 #define UMCD_WML_PROTOCOL_HPP
 
 #include <string>
-#include <vector>
-#include <istream>
-#include <boost/asio.hpp>
 #include <boost/shared_ptr.hpp>
 
+#include "umcd/umcd_logger.hpp"
 #include "umcd/server/generic_factory.hpp"
 #include "umcd/actions/request_license_action.hpp"
 #include "umcd/wml_reply.hpp"
@@ -53,12 +51,18 @@ public:
       register_request_info<request_license_action>("request_license");
    }
 
-   void handle_request(std::iostream& raw_request_stream) const
+   /* Q/A: Why do we template this method? Why not directly use a tcp::iostream from Boost.Asio?
+   We want to separate the Boost.Asio layer from the business layer, so the change to another
+   networking library will be easier (for example to the C++1y standard).
+   */
+   template <class NetworkStream>
+   void handle_request(NetworkStream& raw_request_stream) const
    {
       wml_reply reply;
       try
       {
          std::string request_name = peek_request_name(raw_request_stream);
+         UMCD_LOG_IP(info, raw_request_stream) << " -- request: " << request_name;
          info_ptr info = action_factory.make_product(request_name);
          wml_request request(raw_request_stream, info->validator());
          reply = info->action()->execute(request, server_config);
@@ -66,10 +70,18 @@ public:
       catch(std::exception&)
       {
          reply = make_error_reply("The packet you sent is invalid. It could be a protocol bug and administrators have been contacted, the problem should be fixed soon.");
+         UMCD_LOG_IP(error, raw_request_stream) << " -- invalid request";
       }
-      if(raw_request_stream.good())
+      try
       {
-         reply.send(raw_request_stream);
+         if(raw_request_stream.good())
+         {
+            reply.send(raw_request_stream);
+         }
+      }
+      catch(std::exception& e)
+      {
+         UMCD_LOG_IP(info, raw_request_stream) << " -- unable to send data to the client (" << e.what() << "). Connection dropped.";
       }
    }
 };

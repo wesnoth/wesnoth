@@ -12,6 +12,10 @@
    See the COPYING file for more details.
 */
 
+/* Design rational:
+The license is not shipped with the Wesnoth client because this server can be re-use with different licenses on other server than Wesnoth ones.
+*/
+
 #ifndef UMCD_REQUEST_LICENSE_ACTION_HPP
 #define UMCD_REQUEST_LICENSE_ACTION_HPP
 

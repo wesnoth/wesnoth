@@ -18,7 +18,6 @@
 #include <string>
 #include <array>
 #include <vector>
-#include <boost/asio.hpp>
 
 class echo_protocol
 {

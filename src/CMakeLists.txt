@@ -1022,6 +1022,7 @@ set(umcd_lib_SRC
 	umcd/wml_reply.cpp
 	umcd/wml_request.cpp
 	umcd/request_info.cpp
+	umcd/umcd_logger.cpp
 	serialization/one_hierarchy_validator.cpp
 	${network_implementation_files}
 	${wesnoth-schema_validator-dependencies_SRC}

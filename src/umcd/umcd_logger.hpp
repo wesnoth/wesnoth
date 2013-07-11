@@ -75,7 +75,7 @@ public:
 
    void set_header(const std::string& header)
    {
-      this->header = "[" + header + "]: ";
+      this->header = "[" + header + "] ";
    }
 
    void set_enabled(bool value)
@@ -111,17 +111,10 @@ public:
    }
 };
 
-const char* severity_level_name[] = {
-   "trace",
-   "debug",
-   "info",
-   "warning",
-   "error",
-   "fatal"
-};
-
 class umcd_logger : boost::noncopyable
 {
+   static const char* severity_level_name[];
+
    severity_level current_sev_lvl;
    boost::array<boost::shared_ptr<std::ostream>, nb_severity_level> logging_output;
    boost::array<logging_cache, nb_severity_level> logging_caches;
@@ -189,5 +182,6 @@ public:
 };
 
 #define UMCD_LOG(severity) (umcd_logger::get().get_logger(severity))
+#define UMCD_LOG_IP(severity, stream) ((umcd_logger::get().get_logger(severity)) << stream.rdbuf()->remote_endpoint())
 
 #endif // UMCD_LOGGER_HPP

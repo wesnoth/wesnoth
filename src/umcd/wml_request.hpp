@@ -19,8 +19,9 @@
 #include <string>
 
 #include "serialization/one_hierarchy_validator.hpp"
-
+#include "serialization/parser.hpp"
 #include "umcd/network_data.hpp"
+#include "umcd/umcd_logger.hpp"
 
 class wml_request
 {
@@ -31,12 +32,24 @@ private:
    network_data data;
 
 public:
-   wml_request(std::istream& raw_data_stream, const validator_ptr& validator);
+   template <class InputNetworkStream>
+   wml_request(InputNetworkStream& raw_data_stream, const validator_ptr& validator)
+   {
+      ::read(data.get_metadata(), raw_data_stream, validator.get());
+      UMCD_LOG_IP(debug, raw_data_stream) << " -- request validated.\n";
+   }
+
    network_data& get_data();
    std::string name() const;
 };
 
 std::string peek_request_name(std::istream& raw_data_stream);
-wml_request make_request(std::istream& raw_data_stream, const std::string& validator_file_path);
+
+template <class InputNetworkStream>
+wml_request make_request(InputNetworkStream& raw_data_stream, const std::string& validator_file_path)
+{
+   using namespace schema_validation;
+   return wml_request(raw_data_stream, boost::make_shared<one_hierarchy_validator>(validator_file_path));
+}
 
 #endif // UMCD_WML_REQUEST_HPP

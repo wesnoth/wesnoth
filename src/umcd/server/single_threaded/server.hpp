@@ -25,6 +25,7 @@
 #include <boost/noncopyable.hpp>
 #include <boost/make_shared.hpp>
 #include "umcd/server/connection.hpp"
+#include "umcd/umcd_logger.hpp"
 
 template <class Protocol>
 class server : boost::noncopyable
@@ -73,11 +74,12 @@ server<Protocol>::server(const config &cfg, protocol_type& protocol)
       acceptor.open(endpoint.protocol());
       acceptor.bind(endpoint);
       acceptor.listen();
+      UMCD_LOG(info) << "server: " << endpoint;
       break;
     }
     catch(std::exception &e)
     {
-      std::cerr << e.what() << std::endl;
+      UMCD_LOG(error) << e.what() << "\n";
     }
   }
   if(endpoint_iter == endpoint_end)
