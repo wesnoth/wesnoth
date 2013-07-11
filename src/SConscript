@@ -563,6 +563,13 @@ umcd_sources.extend(env.Object("umcd/umcd.cpp", EXTRA_DEFINE = env['fifodir'] an
 
 env.WesnothProgram("umcd", umcd_sources + [libwesnoth_core, libwesnothd, libumcd, libschema], have_umcd_prereqs)
 
+umcd_test_sources = Split("""
+    tests/umcd/test_protocol.cpp
+    """)
+
+test = test_env.WesnothProgram("umcd_test", umcd_test_sources +  [libwesnoth_core, libwesnothd, libumcd, libschema], have_umcd_test_prereqs)
+
+
 wesnothd_sources = Split("""
     server/ban.cpp
     server/forum_user_handler.cpp

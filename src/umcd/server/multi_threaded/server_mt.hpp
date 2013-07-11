@@ -29,7 +29,7 @@
 #include "umcd/umcd_logger.hpp"
 
 template <class Protocol>
-class server_mt : public basic_server<Protocol>, boost::noncopyable
+class server_mt : public basic_server<Protocol>
 {
   public:
     typedef Protocol protocol_type;

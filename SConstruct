@@ -46,7 +46,7 @@ def OptionalPath(key, val, env):
 
 opts.AddVariables(
     ListVariable('default_targets', 'Targets that will be built if no target is specified in command line.',
-        "wesnoth,wesnothd", Split("wesnoth wesnothd umcd cutter exploder test")),
+        "wesnoth,wesnothd", Split("wesnoth wesnothd umcd umcd_test cutter exploder test")),
     EnumVariable('build', 'Build variant: debug, release profile or base (no subdirectory)', "release", ["release", "debug", "glibcxx_debug", "profile","base"]),
     PathVariable('build_dir', 'Build all intermediate files(objects, test programs, etc) under this dir', "build", PathVariable.PathAccept),
     ('extra_flags_config', 'Extra compiler and linker flags to use for configuration and all builds', ""),
@@ -168,7 +168,7 @@ Important switches include:
 With no arguments, the recipe builds wesnoth and wesnothd.  Available
 build targets include the individual binaries:
 
-    wesnoth wesnothd umcd exploder cutter test
+    wesnoth wesnothd umcd umcd_test exploder cutter test
 
 You can make the following special build targets:
 
@@ -332,7 +332,7 @@ if env["prereqs"]:
     have_umcd_prereqs = have_server_prereqs and \
         CheckAsio(conf) and \
         conf.CheckBoost("program_options", require_version="1.35.0") and \
-        conf.CheckBoost("thread", require_version="1.35.0") and \
+        conf.CheckBoost("thread") and \
         conf.CheckBoost("regex", require_version = "1.35.0") or Warning("UMCD prerequisites are not met. umcd cannot be built.")
 
     env = conf.Finish()
@@ -372,9 +372,15 @@ if env["prereqs"]:
     conf = test_env.Configure(**configure_args)
 
     have_test_prereqs = have_client_prereqs and have_server_prereqs and conf.CheckBoost('unit_test_framework') or Warning("Unit tests are disabled because their prerequisites are not met.")
+    
+    have_umcd_test_prereqs = have_umcd_prereqs and \
+        conf.CheckBoost('unit_test_framework') or Warning("UMCD unit tests prerequisites are not met. umcd_test cannot be built.");
+
     test_env = conf.Finish()
     if not have_test_prereqs and "test" in env["default_targets"]:
         env["default_targets"].remove("test")
+    if not have_umcd_test_prereqs and "umcd_test" in env["default_targets"]:
+        env["default_targets"].remove("umcd_test")
 
     print env.subst("If any config checks fail, look in $build_dir/config.log for details")
     print "If a check fails spuriously due to caching, use --config=force to force its rerun"
@@ -461,10 +467,10 @@ try:
 except:
     pass
 
-Export(Split("env client_env test_env have_umcd_prereqs have_client_prereqs have_server_prereqs have_test_prereqs"))
+Export(Split("env client_env test_env have_umcd_prereqs have_umcd_test_prereqs have_client_prereqs have_server_prereqs have_test_prereqs"))
 SConscript(dirs = Split("po doc packaging/windows packaging/systemd"))
 
-binaries = Split("wesnoth wesnothd cutter exploder umcd test")
+binaries = Split("wesnoth wesnothd cutter exploder umcd umcd_test test")
 builds = {
     "base"          : dict(CCFLAGS   = "$OPT_FLAGS"),    # Don't build in subdirectory
     "debug"         : dict(CCFLAGS   = Split("$DEBUG_FLAGS")),
