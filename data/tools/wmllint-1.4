@@ -1388,7 +1388,7 @@ def hack_syntax(filename, lines):
                     if special.startswith("plague("):
                         insertion += ws + baseindent*2 + "{WEAPON_SPECIAL_PLAGUE_TYPE " + special[7:-1] + "}\n"
                     elif special in ("backstab", "berserk", "charge", "drain",
-                                     "firstrtrike", "magical", "plague",
+                                     "firststrike", "magical", "plague",
                                      "poison", "slow", "stone", "swarm",):
                         insertion += ws + baseindent*2 + "{WEAPON_SPECIAL_" + special.upper() + "}\n"
                     else:
