@@ -8,7 +8,7 @@ return {
         local internal_params = {}
         -- The following external engine creates the CA functions recruit_rushers_eval and recruit_rushers_exec
         -- It also exposes find_best_recruit and find_best_recruit_hex for use by other recruit engines
-        wesnoth.require("ai/lua/generic-recruit_engine.lua").init(ai, internal_recruit_cas, internal_params)
+        wesnoth.require("ai/lua/generic_recruit_engine.lua").init(ai, internal_recruit_cas, internal_params)
 
         function engine:mai_rusher_recruit_eval(cfg)
             internal_params.randomness = cfg.randomness

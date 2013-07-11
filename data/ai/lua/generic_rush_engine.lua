@@ -52,7 +52,7 @@ return {
                 end
             )
         }
-        wesnoth.require("ai/lua/generic-recruit_engine.lua").init(ai, generic_rush, params)
+        wesnoth.require("ai/lua/generic_recruit_engine.lua").init(ai, generic_rush, params)
 
         -------- Castle Switch CA --------------
 
