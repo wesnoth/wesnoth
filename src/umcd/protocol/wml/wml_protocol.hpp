@@ -21,19 +21,28 @@
 #include "umcd/umcd_logger.hpp"
 #include "umcd/server/generic_factory.hpp"
 #include "umcd/actions/request_license_action.hpp"
+#include "umcd/actions/request_umc_upload_action.hpp"
 #include "umcd/wml_reply.hpp"
 #include "umcd/wml_request.hpp"
 #include "umcd/request_info.hpp"
 #include "umcd/special_packet.hpp"
 
+
+/* Q/A: Why do we template this class? Why not directly use a tcp::iostream from Boost.Asio?
+We want to separate the Boost.Asio layer from the business layer, so the change to another
+networking library will be easier (for example to the C++1y standard).
+*/
+template <class NetworkStream>
 class wml_protocol
 {
 private:
-   typedef boost::shared_ptr<request_info> info_ptr;
+   typedef typename basic_wml_action<NetworkStream>::type action_type;
+   typedef request_info<action_type> request_info_type;
+   typedef boost::shared_ptr<request_info_type> info_ptr;
    typedef schema_validation::one_hierarchy_validator validator_type;
 
    const config& server_config;
-   generic_factory<request_info> action_factory;
+   generic_factory<request_info_type> action_factory;
 
    template <class Action>
    void register_request_info(const std::string& request_name)
@@ -48,14 +57,10 @@ public:
    wml_protocol(const config& server_config)
    : server_config(server_config)
    {
-      register_request_info<request_license_action>("request_license");
+      register_request_info<request_license_action<NetworkStream> >("request_license");
+      register_request_info<request_umc_upload_action<NetworkStream> >("request_umc_upload_action");
    }
 
-   /* Q/A: Why do we template this method? Why not directly use a tcp::iostream from Boost.Asio?
-   We want to separate the Boost.Asio layer from the business layer, so the change to another
-   networking library will be easier (for example to the C++1y standard).
-   */
-   template <class NetworkStream>
    void handle_request(NetworkStream& raw_request_stream) const
    {
       wml_reply reply;
@@ -64,7 +69,7 @@ public:
          std::string request_name = peek_request_name(raw_request_stream);
          UMCD_LOG_IP(info, raw_request_stream) << " -- request: " << request_name;
          info_ptr info = action_factory.make_product(request_name);
-         wml_request request(raw_request_stream, info->validator());
+         wml_request<NetworkStream> request(raw_request_stream, info->validator());
          reply = info->action()->execute(request, server_config);
       }
       catch(std::exception&)

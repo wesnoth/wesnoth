@@ -16,6 +16,7 @@
 
 #include <boost/thread/thread.hpp>
 #include <boost/bind.hpp>
+#include <boost/asio.hpp>
 
 #include "config.hpp"
 
@@ -35,8 +36,9 @@ int main(int argc, char *argv[])
       config cfg = options.build_config();
       UMCD_LOG(info) << "Configuration requested:\n" << cfg;
 
-      wml_protocol protocol(cfg);
-      server_mt<wml_protocol> addon_server(cfg, protocol);
+      typedef wml_protocol<boost::asio::ip::tcp::iostream> protocol_type;
+      protocol_type protocol(cfg);
+      server_mt<protocol_type> addon_server(cfg, protocol);
       addon_server.run();
     }
   }

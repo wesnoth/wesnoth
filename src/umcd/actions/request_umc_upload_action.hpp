@@ -12,20 +12,15 @@
    See the COPYING file for more details.
 */
 
-/* Design rational:
-The license is not shipped with the Wesnoth client because this server can be re-use with different licenses on other server than Wesnoth ones.
-*/
-
-#ifndef UMCD_REQUEST_LICENSE_ACTION_HPP
-#define UMCD_REQUEST_LICENSE_ACTION_HPP
+#ifndef UMCD_REQUEST_UMC_UPLOAD_ACTION_HPP
+#define UMCD_REQUEST_UMC_UPLOAD_ACTION_HPP
 
 #include <boost/shared_ptr.hpp>
 #include "filesystem.hpp"
 #include "umcd/actions/basic_wml_action.hpp"
 
-
 template <class NetworkStream>
-class request_license_action : public basic_wml_action<NetworkStream>::type
+class request_umc_upload_action : public basic_wml_action<NetworkStream>::type
 {
 public:
    typedef typename basic_wml_action<NetworkStream>::type base;
@@ -39,8 +34,8 @@ public:
 
    virtual boost::shared_ptr<base> clone() const
    {
-      return boost::shared_ptr<base>(new request_license_action(*this));
+      return boost::shared_ptr<base>(new request_umc_upload_action(*this));
    }
 };
 
-#endif // UMCD_REQUEST_LICENSE_ACTION_HPP
+#endif // UMCD_REQUEST_UMC_UPLOAD_ACTION_HPP

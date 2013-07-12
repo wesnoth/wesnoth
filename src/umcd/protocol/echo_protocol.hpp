@@ -26,7 +26,7 @@ public:
    {
       std::string request_data;
    public:
-      reply(std::iostream& raw_data_stream)
+      reply(std::istream& raw_data_stream)
       {
          raw_data_stream >> request_data;
       }
@@ -38,9 +38,9 @@ public:
    };
    typedef reply reply_type;
 
-   reply_type handle_request(std::iostream& raw_request_stream) const
+   void handle_request(std::iostream& raw_request_stream) const
    {
-      return reply_type(raw_request_stream);
+      reply_type(raw_request_stream).send(raw_data_stream);
    }
 };
 

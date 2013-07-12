@@ -16,16 +16,6 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/make_shared.hpp>
 
-network_data& wml_request::get_data() { return data; }
-
-std::string wml_request::name() const
-{
-   config::all_children_iterator iter = data.get_metadata().ordered_begin();
-   if(iter == data.get_metadata().ordered_end())
-     return "";
-   return iter->key;
-}
-
 static void check_stream_state(std::istream& raw_data_stream, std::string error_msg)
 {
    if(!raw_data_stream.good())
