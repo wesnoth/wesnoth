@@ -203,7 +203,7 @@ public:
 	game_display* disp_;
 
 	connect(game_display& disp, const config& game_config, chat& c,
-			config& gamelist, const mp_game_settings& params, const int num_turns,
+			config& gamelist, const mp_game_settings& params,
 			mp::controller default_controller, bool local_players_only = false);
 
 	virtual void process_event();
@@ -289,7 +289,6 @@ private:
 	game_state state_;
 
 	mp_game_settings params_;
-	int num_turns_;
 
 	/** The list of available sides for the current era. */
 	std::vector<const config *> era_sides_;

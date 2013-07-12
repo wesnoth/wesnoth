@@ -33,7 +33,6 @@ public:
 	~configure();
 
 	mp_game_settings& get_parameters();
-	int num_turns() const { return num_turns_; }
 
 protected:
 	virtual void layout_children(const SDL_Rect& rect);
@@ -92,7 +91,6 @@ private:
 	bool show_entry_points_;
 
 	bool force_use_map_settings_check_;
-	int num_turns_;
 	mp_game_settings parameters_;
 };
 

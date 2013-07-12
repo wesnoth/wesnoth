@@ -95,7 +95,6 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	entry_points_(),
 	show_entry_points_(false),
 	force_use_map_settings_check_(true),
-	num_turns_(0),
 	parameters_(params)
 {
 	// Build the list of scenarios to play
@@ -237,7 +236,7 @@ configure::~configure()
 	if(!parameters_.use_map_settings) {
 		preferences::set_fog(parameters_.fog_game);
 		preferences::set_shroud(parameters_.shroud_game);
-		preferences::set_turns(num_turns_);
+		preferences::set_turns(parameters_.num_turns);
 		preferences::set_random_start_time(parameters_.random_start_time);
 		preferences::set_village_gold(parameters_.village_gold);
 		preferences::set_village_support(parameters_.village_support);
@@ -248,8 +247,6 @@ configure::~configure()
 mp_game_settings& configure::get_parameters()
 {
 	DBG_MP << "getting parameter values from widgets" << std::endl;
-	num_turns_ = turns_slider_.value() < turns_slider_.max_value() ?
-		turns_slider_.value() : -1;
 
 	const int mp_countdown_turn_bonus_val = countdown_turn_bonus_slider_.value() <= countdown_turn_bonus_slider_.max_value() ?
 		countdown_turn_bonus_slider_.value() : -1;
@@ -261,6 +258,8 @@ mp_game_settings& configure::get_parameters()
 		countdown_init_time_slider_.value() : -1;
 	if(mp_countdown_reservoir_time_val > 0 && mp_countdown_init_time_val > mp_countdown_reservoir_time_val)
 		mp_countdown_init_time_val = mp_countdown_reservoir_time_val;
+	const int num_turns_val = turns_slider_.value() <
+		turns_slider_.max_value() ? turns_slider_.value() : -1;
 
 	// Updates the values in the "parameters_" member to match
 	// the values selected by the user with the widgets:
@@ -272,6 +271,7 @@ mp_game_settings& configure::get_parameters()
 	parameters_.mp_countdown_reservoir_time = mp_countdown_reservoir_time_val;
 	parameters_.mp_countdown_action_bonus = mp_countdown_action_bonus_val;
 	parameters_.mp_countdown = countdown_game_.checked();
+	parameters_.num_turns = num_turns_val;
 	parameters_.village_gold = village_gold_slider_.value();
 	parameters_.village_support = village_support_slider_.value();
 	parameters_.xp_modifier = xp_modifier_slider_.value();

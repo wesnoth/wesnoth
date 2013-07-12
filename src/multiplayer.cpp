@@ -474,7 +474,7 @@ static void enter_create_mode(game_display& disp, const config& game_config, mp:
 
 static bool enter_connect_mode(game_display& disp, const config& game_config,
 		mp::chat& chat, config& gamelist, const mp_game_settings& params,
-		const int num_turns, mp::controller default_controller, bool local_players_only = false)
+		mp::controller default_controller, bool local_players_only = false)
 {
 	DBG_MP << "entering connect mode" << std::endl;
 
@@ -487,7 +487,7 @@ static bool enter_connect_mode(game_display& disp, const config& game_config,
 	statistics::fresh_stats();
 
 	{
-		mp::connect ui(disp, game_config, chat, gamelist, params, num_turns, default_controller, local_players_only);
+		mp::connect ui(disp, game_config, chat, gamelist, params, default_controller, local_players_only);
 		run_lobby_loop(disp, ui);
 
 		res = ui.get_result();
@@ -558,8 +558,7 @@ static void enter_create_mode(game_display& disp, const config& game_config, mp:
 				break;
 			case mp::ui::LOAD_GAME:
 				connect_canceled = !enter_connect_mode(disp, game_config, chat,
-					gamelist, params, 0, default_controller,
-					local_players_only);
+					gamelist, params, default_controller, local_players_only);
 				break;
 			case mp::ui::QUIT:
 			default:
@@ -583,19 +582,18 @@ static bool enter_configure_mode(game_display& disp, const config& game_config,
 		connect_canceled = false;
 
 		mp::ui::result res;
-		int num_turns;
 
 		{
 			mp::configure ui(disp, game_config, chat, gamelist, params, local_players_only);
 			run_lobby_loop(disp, ui);
 			res = ui.get_result();
 			params = ui.get_parameters();
-			num_turns = ui.num_turns();
 		}
 
 		switch (res) {
 		case mp::ui::CREATE:
-			connect_canceled = !enter_connect_mode(disp, game_config, chat, gamelist, params, num_turns, default_controller, local_players_only);
+			connect_canceled = !enter_connect_mode(disp, game_config, chat, gamelist, params,
+				default_controller, local_players_only);
 			break;
 		case mp::ui::QUIT:
 		default:
@@ -770,7 +768,7 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 	parameters.name = "multiplayer_The_Freelands";
 
 	// Default values for which at getter function exists
-	int num_turns = settings::get_turns("");
+	parameters.num_turns = settings::get_turns("");
 	parameters.village_gold = settings::get_village_gold("");
 	parameters.village_support = settings::get_village_support("");
 	parameters.xp_modifier = settings::get_xp_modifier("");
@@ -846,7 +844,7 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 	// Should number of turns be determined from scenario data?
 	if (parameters.use_map_settings && parameters.scenario_data["turns"]) {
 		DBG_MP << "setting turns from scenario data: " << parameters.scenario_data["turns"] << std::endl;
-		num_turns = parameters.scenario_data["turns"];
+		parameters.num_turns = parameters.scenario_data["turns"];
 	}
 
 	DBG_MP << "entering connect mode" << std::endl;
@@ -856,7 +854,7 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 	statistics::fresh_stats();
 
 	{
-		mp::connect ui(disp, game_config, chat, gamelist, parameters, num_turns, default_controller, true);
+		mp::connect ui(disp, game_config, chat, gamelist, parameters, default_controller, true);
 
 		// Update the parameters to reflect game start conditions
 		ui.start_game_commandline(cmdline_opts);

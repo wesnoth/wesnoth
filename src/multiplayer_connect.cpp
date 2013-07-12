@@ -1005,7 +1005,7 @@ void connect::side::set_ai_algorithm_commandline(std::string algorithm_name)
 
 
 connect::connect(game_display& disp, const config& game_config,
-		chat& c, config& gamelist, const mp_game_settings& params, const int num_turns,
+		chat& c, config& gamelist, const mp_game_settings& params,
 		mp::controller default_controller, bool local_players_only) :
 	mp::ui(disp, _("Game Lobby: ") + params.name, game_config, c, gamelist),
 	disp_(&disp),
@@ -1013,7 +1013,6 @@ connect::connect(game_display& disp, const config& game_config,
 	level_(),
 	state_(),
 	params_(params),
-	num_turns_(num_turns),
 	era_sides_(),
 	player_types_(),
 	player_factions_(),
@@ -1732,7 +1731,7 @@ void connect::load_game()
 		params_.saved_game = false;
 		params_.mp_scenario = params_.scenario_data["id"].str();
 		level_.merge_with(params_.scenario_data);
-		level_["turns"] = num_turns_;
+		level_["turns"] = params_.num_turns;
 		level_.add_child("multiplayer", params_.to_config());
 
 		// Convert options to events

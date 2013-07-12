@@ -29,6 +29,7 @@ mp_game_settings::mp_game_settings() :
 	mp_era(),
 	mp_scenario(),
 	active_mods(),
+	num_turns(0),
 	village_gold(0),
 	village_support(1),
 	xp_modifier(0),
@@ -59,6 +60,7 @@ mp_game_settings::mp_game_settings(const config& cfg) :
 	mp_era(),
 	mp_scenario(),
 	active_mods(),
+	num_turns(0),
 	village_gold(0),
 	village_support(1),
 	xp_modifier(0),
@@ -90,6 +92,7 @@ mp_game_settings::mp_game_settings(const mp_game_settings& settings)
 	, mp_era(settings.mp_era)
 	, mp_scenario(settings.mp_scenario)
 	, active_mods(settings.active_mods)
+	, num_turns(settings.num_turns)
 	, village_gold(settings.village_gold)
 	, village_support(settings.village_support)
 	, xp_modifier(settings.xp_modifier)
@@ -132,6 +135,7 @@ void mp_game_settings::set_from_config(const config& game_cfg)
 	mp_countdown_turn_bonus = cfg["mp_countdown_turn_bonus"];
 	mp_countdown_reservoir_time = cfg["mp_countdown_reservoir_time"];
 	mp_countdown_action_bonus = cfg["mp_countdown_action_bonus"];
+	num_turns = cfg["mp_num_turns"];
 	village_gold = cfg["mp_village_gold"];
 	village_support = cfg["mp_village_support"];
 	allow_observers = cfg["observer"].to_bool();
@@ -148,6 +152,7 @@ void mp_game_settings::reset()
 	mp_era = "";
 	mp_scenario = "";
 	active_mods.clear();
+	num_turns = 0;
 	village_gold = 0;
 	village_support = 1;
 	xp_modifier = 0;
@@ -177,6 +182,7 @@ config mp_game_settings::to_config() const
 	cfg["mp_countdown_turn_bonus"] = mp_countdown_turn_bonus;
 	cfg["mp_countdown_reservoir_time"] = mp_countdown_reservoir_time;
 	cfg["mp_countdown_action_bonus"] = mp_countdown_action_bonus;
+	cfg["mp_num_turns"] = num_turns;
 	cfg["mp_village_gold"] = village_gold;
 	cfg["mp_village_support"] = village_support;
 	cfg["mp_fog"] = fog_game;
