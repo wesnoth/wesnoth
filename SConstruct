@@ -287,12 +287,11 @@ if env["prereqs"]:
     def CheckANA(conf, do_check):
         if not do_check:
             return True
-        if env["PLATFORM"] == 'win32':
-            conf.env.Append(LIBS = ["libws2_32"])
-        return conf.CheckBoost("system") and \
-            conf.CheckBoost("thread")
+        return conf.CheckAsio()
 
     def CheckAsio(conf):
+        if env["PLATFORM"] == 'win32':
+            conf.env.Append(LIBS = ["libws2_32"])
         return conf.CheckLib("pthread") and \
         conf.CheckBoost("system") and \
         conf.CheckBoost("asio", header_only = True)
