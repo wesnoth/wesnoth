@@ -1388,7 +1388,7 @@ def hack_syntax(filename, lines):
                     if special.startswith("plague("):
                         insertion += ws + baseindent*2 + "{WEAPON_SPECIAL_PLAGUE_TYPE " + special[7:-1] + "}\n"
                     elif special in ("backstab", "berserk", "charge", "drain",
-                                     "firststrike", "magical", "plague",
+                                     "firststrike", "magical", "marksman", "plague",
                                      "poison", "slow", "stone", "swarm",):
                         insertion += ws + baseindent*2 + "{WEAPON_SPECIAL_" + special.upper() + "}\n"
                     else:
@@ -1408,8 +1408,8 @@ def hack_syntax(filename, lines):
                             print "warning: can't convert ancient leadership ability"
                         else:
                             insertion += ws + baseindent*2 + "{ABILITY_LEADERSHIP_LEVEL_"+level+"}\n"
-                    elif ability in ("cures", "heals", "regenerates",
-                                     "skirmisher", "illuminates",
+                    elif ability in ("cures", "heals", "nightstalk", "regenerates",
+                                     "skirmisher", "steadfast", "illuminates",
                                      "teleport", "ambush",):
                         insertion += ws + baseindent*2 + "{ABILITY_" + ability.upper() + "}\n"
                     else:
@@ -1422,7 +1422,8 @@ def hack_syntax(filename, lines):
             if tag == "level":
                 level = value
             if tag == "ability":
-                abilities.append(value)
+                for able in value.split(","):
+                    abilities.append(able.strip())
                 lastability = i
                 lines[i] = ""
             if tag == "special":
