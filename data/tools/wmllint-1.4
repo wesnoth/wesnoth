@@ -1313,12 +1313,12 @@ def hack_syntax(filename, lines):
         elif converting and "[/animation]" in lines[i]:
             lines[i] = lines[i].replace("animation", "attack_anim")
     # Lift [frame] declarations directly within attacks
-    # Note: This assumes that the frame sequence goes last in the [attack] WML
-    # with nothing after it, and will fail if that is not true.
     in_attack = False
     attackname = None
     soundpath = None
     in_sound = False
+    in_frame = False
+    postframe = []
     converting = 0
     for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
@@ -1327,24 +1327,33 @@ def hack_syntax(filename, lines):
             in_attack = True
         elif "[/attack]" in lines[i]:
             if converting:
+                assert attackname != None
                 lines[i] = lines[i].replace("/attack", "/attack_anim")
+                print '"%s", line %d: converting frame in [attack]'%(filename, converting+1)
+                ws = leader(lines[converting])
+                outer = outdent(ws)
+                insertion = outer + "[/attack]\n" \
+                            + outer + "[attack_anim]\n" \
+                            + ws + "[attack_filter]\n" \
+                            + ws + baseindent + "name=" + attackname + "\n" \
+                            + ws + "[/attack_filter]\n"
+                lines[converting] = insertion + lines[converting]
+                if soundpath:
+                    lines[converting] += ws + baseindent + "sound=" + soundpath + "\n"
+                postframe.reverse()
+                for preframe in postframe:
+                    lines[converting] = preframe + lines[converting]
+                modcount += 1
                 converting = 0
             in_attack = False
+            attackname = None
+            soundpath = None
+            in_sound = False
+            in_frame = False
+            postframe = []
         elif ("[frame]" in lines[i] or "[missile_frame]" in lines[i]) and in_attack and converting == 0:
-            assert attackname != None
-            print '"%s", line %d: converting frame in [attack] '%(filename, i+1)
-            ws = leader(lines[i])
-            outer = outdent(ws)
-            insertion = outer + "[/attack]\n" \
-                        + outer + "[attack_anim]\n" \
-                        + ws + "[attack_filter]\n" \
-                        + ws + baseindent + "name=" + attackname + "\n" \
-                        + ws + "[/attack_filter]\n"
-            lines[i] = insertion + lines[i]
-            if soundpath:
-                lines[i] += ws + baseindent + "sound=" + soundpath + "\n"
-            converting += 1
-            modcount += 1
+            converting = i
+            in_frame = True
         elif in_attack:
             fields = lines[i].strip().split('#')
             syntactic = fields[0]
@@ -1365,6 +1374,15 @@ def hack_syntax(filename, lines):
                 in_sound = False
             if in_sound:
                 lines[i] = ""
+            # Move post-frame lines up
+            if "[frame]" in lines[i] or "[missile_frame]" in lines[i]:
+                in_frame = True
+            elif "[/frame]" in lines[i] or "[/missile_frame]" in lines[i]:
+                in_frame = False
+            elif converting and not in_frame:
+                postframe.append(lines[i])
+                lines[i] = ""
+                modcount += 1
     # Upconvert ancient ability declarations from 1.x
     level = None
     abilities = []
