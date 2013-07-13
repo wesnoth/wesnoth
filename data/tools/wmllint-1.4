@@ -1048,7 +1048,7 @@ def hack_syntax(filename, lines):
                 (key, prefix, val, comment) = parse_attribute(lines[get_hit_sound])
                 print 'wmllint: "%s", line %d: unit%s gets %s'%(filename, get_hit_sound+1, unit_id, new_anim)
                 lines[get_hit_sound] = leader(lines[get_hit_sound]) \
-                                       + new_anim + comment
+                                       + new_anim + comment + "\n"
                 modcount += 1
                 if image_defensive:
                     image_done.append(image_defensive)
@@ -1304,7 +1304,7 @@ def hack_syntax(filename, lines):
                      + outer + "[effect]\n" \
                      + ws + "apply_to=new_animation\n"
             after = ws + baseindent + "[attack_filter]\n" \
-                    + ws + baseindent*2 + "name=" + attackname +" \n" \
+                    + ws + baseindent*2 + "name=" + attackname + "\n" \
                     + ws + baseindent + "[/attack_filter]\n"
             lines[i] = before \
                        + lines[i].replace("animation", "attack_anim") \
@@ -1338,7 +1338,7 @@ def hack_syntax(filename, lines):
             insertion = outer + "[/attack]\n" \
                         + outer + "[attack_anim]\n" \
                         + ws + "[attack_filter]\n" \
-                        + ws + baseindent + "name=" + attackname +" \n" \
+                        + ws + baseindent + "name=" + attackname + "\n" \
                         + ws + "[/attack_filter]\n"
             lines[i] = insertion + lines[i]
             if soundpath:
