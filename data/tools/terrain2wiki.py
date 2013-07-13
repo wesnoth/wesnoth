@@ -84,7 +84,7 @@ convert the terrain codes located in terrain.cfg to wiki formatted text.')
     parser.add_argument('-f', '--file', default='data/core/terrain.cfg',
 dest='path', help="The location of the terrain.cfg file.")
     parser.add_argument('-o', '--output', default='/tmp/TerrainCodeTableWML',
-dest='output_path', help="The location of the ouput file.")
+dest='output_path', help="The location of the output file.")
     args = parser.parse_args()
 
     path = args.path
