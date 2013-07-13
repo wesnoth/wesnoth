@@ -17,18 +17,17 @@
 
 #include <boost/make_shared.hpp>
 
-#include "umcd/actions/basic_wml_action.hpp"
+#include "umcd/actions/basic_umcd_action.hpp"
 #include "serialization/one_hierarchy_validator.hpp"
 
-template <class Action>
 class request_info
 {
 public:
    typedef schema_validation::one_hierarchy_validator validator_type;
-   typedef boost::shared_ptr<Action> action_ptr;
+   typedef boost::shared_ptr<basic_umcd_action> action_ptr;
    typedef boost::shared_ptr<validator_type> validator_ptr;
 private:
-   action_ptr wml_action;
+   action_ptr umcd_action;
    validator_ptr request_validator;
 
 public:
@@ -38,37 +37,33 @@ public:
    boost::shared_ptr<request_info> clone() const;
 };
 
-template <class Action>
-request_info<Action>::request_info(const action_ptr& action, const validator_ptr& validator)
-: wml_action(action)
+request_info::request_info(const action_ptr& action, const validator_ptr& validator)
+: umcd_action(action)
 , request_validator(validator)
 {}
 
-template <class Action>
-typename request_info<Action>::action_ptr request_info<Action>::action()
+typename request_info::action_ptr request_info::action()
 {
-   return wml_action;
+   return umcd_action;
 }
 
-template <class Action>
-typename request_info<Action>::validator_ptr request_info<Action>::validator()
+typename request_info::validator_ptr request_info::validator()
 {
    return request_validator;
 }
 
-template <class Action>
-boost::shared_ptr<request_info<Action> > request_info<Action>::clone() const
+boost::shared_ptr<request_info> request_info::clone() const
 {
-   return boost::make_shared<request_info<Action> >(
-      wml_action->clone(), 
+   return boost::make_shared<request_info>(
+      umcd_action->clone(), 
       boost::make_shared<validator_type>(*request_validator)
    );
 }
 
 template <class Action, class Validator>
-boost::shared_ptr<request_info<typename Action::base> > make_request_info(const config& server_conf, const std::string& request_name)
+boost::shared_ptr<request_info> make_request_info(const config& server_conf, const std::string& request_name)
 {
-   return boost::make_shared<request_info<typename Action::base> >(
+   return boost::make_shared<request_info>(
       boost::make_shared<Action>(),
       boost::make_shared<Validator>(
          server_conf["wesnoth_dir"].str() + "data/umcd/protocol_schema/"+request_name+".cfg"));

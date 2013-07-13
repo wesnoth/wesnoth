@@ -23,52 +23,26 @@
 #include "umcd/network_data.hpp"
 #include "umcd/umcd_logger.hpp"
 
-template <class InputNetworkStream>
 class wml_request
 {
 public:
    typedef schema_validation::one_hierarchy_validator validator_type;
    typedef boost::shared_ptr<validator_type> validator_ptr;
+   typedef boost::asio::ip::tcp::iostream network_stream;
 private:
    network_data data;
-   InputNetworkStream& stream;
+   network_stream& stream;
 
 public:
-   wml_request(InputNetworkStream& raw_data_stream, const validator_ptr& validator)
-   : stream(raw_data_stream)
-   {
-      ::read(data.get_metadata(), stream, validator.get());
-      UMCD_LOG_IP(debug, stream) << " -- request validated.\n";
-   }
+   wml_request(network_stream& raw_data_stream, const validator_ptr& validator);
 
    network_data& get_data();
-   InputNetworkStream& get_stream();
+   network_stream& get_stream();
    std::string name() const;
 };
 
-template <class InputNetworkStream>
-network_data& wml_request<InputNetworkStream>::get_data() 
-{ 
-   return data; 
-}
-
-template <class InputNetworkStream>
-std::string wml_request<InputNetworkStream>::name() const
-{
-   config::all_children_iterator iter = data.get_metadata().ordered_begin();
-   if(iter == data.get_metadata().ordered_end())
-     return "";
-   return iter->key;
-}
-
-
 std::string peek_request_name(std::istream& raw_data_stream);
 
-template <class InputNetworkStream>
-wml_request<InputNetworkStream> make_request(InputNetworkStream& raw_data_stream, const std::string& validator_file_path)
-{
-   using namespace schema_validation;
-   return wml_request<InputNetworkStream>(raw_data_stream, boost::make_shared<one_hierarchy_validator>(validator_file_path));
-}
+wml_request make_request(boost::asio::ip::tcp::iostream& raw_data_stream, const std::string& validator_file_path);
 
 #endif // UMCD_WML_REQUEST_HPP

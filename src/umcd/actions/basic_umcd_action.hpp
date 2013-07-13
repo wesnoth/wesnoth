@@ -12,17 +12,13 @@
    See the COPYING file for more details.
 */
 
-#ifndef UMCD_BASIC_WML_ACTION_HPP
-#define UMCD_BASIC_WML_ACTION_HPP
+#ifndef UMCD_BASIC_UMCD_ACTION_HPP
+#define UMCD_BASIC_UMCD_ACTION_HPP
 
 #include "umcd/server/generic_action.hpp"
 #include "umcd/wml_reply.hpp"
 #include "umcd/wml_request.hpp"
 
-template <class NetworkStream>
-struct basic_wml_action
-{
-	typedef generic_action<wml_reply, wml_request<NetworkStream>&, const config&> type;
-};
+typedef generic_action<wml_reply, wml_request&, const config&> basic_umcd_action;
 
 #endif // UMCD_BASIC_WML_ACTION_HPP

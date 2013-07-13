@@ -17,17 +17,17 @@
 
 #include <boost/shared_ptr.hpp>
 #include "filesystem.hpp"
-#include "umcd/actions/basic_wml_action.hpp"
+#include "umcd/actions/basic_umcd_action.hpp"
 
-template <class NetworkStream>
-class request_umc_upload_action : public basic_wml_action<NetworkStream>::type
+class request_umc_upload_action : public basic_umcd_action
 {
 public:
-   typedef typename basic_wml_action<NetworkStream>::type base;
+   typedef basic_umcd_action base;
 
-   virtual wml_reply execute(wml_request<NetworkStream>&, const config& server_config)
+   virtual wml_reply execute(wml_request&, const config& server_config)
    {
-      config reply("request_license");
+
+      config reply("request_umc_upload");
       reply.child("request_license")["text"] = read_file(server_config["wesnoth_dir"].str() + "COPYING");
       return make_reply(reply);
    }

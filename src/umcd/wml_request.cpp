@@ -16,6 +16,31 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/make_shared.hpp>
 
+wml_request::wml_request(network_stream& raw_data_stream, const validator_ptr& validator)
+: stream(raw_data_stream)
+{
+   ::read(data.get_metadata(), stream, validator.get());
+   UMCD_LOG_IP(debug, stream) << " -- request validated.\n";
+}
+
+network_data& wml_request::get_data() 
+{ 
+   return data; 
+}
+
+std::string wml_request::name() const
+{
+   config::all_children_iterator iter = data.get_metadata().ordered_begin();
+   if(iter == data.get_metadata().ordered_end())
+     return "";
+   return iter->key;
+}
+
+wml_request::network_stream& wml_request::get_stream()
+{
+   return stream;
+}
+
 static void check_stream_state(std::istream& raw_data_stream, std::string error_msg)
 {
    if(!raw_data_stream.good())
@@ -46,4 +71,10 @@ std::string peek_request_name(std::istream& raw_data_stream)
    raw_data_stream.putback(first_bracket);
 
    return request_name;
+}
+
+wml_request make_request(boost::asio::ip::tcp::iostream& raw_data_stream, const std::string& validator_file_path)
+{
+   using namespace schema_validation;
+   return wml_request(raw_data_stream, boost::make_shared<one_hierarchy_validator>(validator_file_path));
 }

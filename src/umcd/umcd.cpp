@@ -22,7 +22,7 @@
 
 #include "umcd/server_options.hpp"
 #include "umcd/server/multi_threaded/server_mt.hpp"
-#include "umcd/protocol/wml/wml_protocol.hpp"
+#include "umcd/protocol/wml/umcd_protocol.hpp"
 #include "umcd/umcd_logger.hpp"
 
 int main(int argc, char *argv[])
@@ -36,9 +36,8 @@ int main(int argc, char *argv[])
       config cfg = options.build_config();
       UMCD_LOG(info) << "Configuration requested:\n" << cfg;
 
-      typedef wml_protocol<boost::asio::ip::tcp::iostream> protocol_type;
-      protocol_type protocol(cfg);
-      server_mt<protocol_type> addon_server(cfg, protocol);
+      umcd_protocol protocol(cfg);
+      server_mt<umcd_protocol> addon_server(cfg, protocol);
       addon_server.run();
     }
   }
