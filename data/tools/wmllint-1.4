@@ -980,11 +980,11 @@ def hack_syntax(filename, lines):
                     if syntactic.strip().startswith("name"):
                         description = syntactic.split("=")[1].strip()
                         if not description.startswith('"'):
-                            description = '"' + description + '"\n'
+                            description = '"' + description + '"'
                         # Skip the insertion if this is a dummy declaration
                         # or one modifying an attack inherited from a base unit.
                         if "no-icon" not in comment:
-                            new_line = leader(syntactic) + "description=_"+description
+                            new_line = leader(lines[j]) + "description=_"+description+'\n'
                             if verbose:
                                 print '"%s", line %d: inserting %s' % (filename, i+1, `new_line`)
                             lines.insert(j+1, new_line)
