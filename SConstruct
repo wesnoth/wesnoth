@@ -287,12 +287,11 @@ if env["prereqs"]:
     def CheckANA(conf, do_check):
         if not do_check:
             return True
-        if env["PLATFORM"] == 'win32':
-            conf.env.Append(LIBS = ["libws2_32"])
-        return conf.CheckBoost("system") and \
-            conf.CheckBoost("thread")
+        return conf.CheckAsio()
 
     def CheckAsio(conf):
+        if env["PLATFORM"] == 'win32':
+            conf.env.Append(LIBS = ["libws2_32"])
         return conf.CheckLib("pthread") and \
         conf.CheckBoost("system") and \
         conf.CheckBoost("asio", header_only = True)
@@ -338,12 +337,10 @@ if env["prereqs"]:
     env = conf.Finish()
     client_env = env.Clone()
     conf = client_env.Configure(**configure_args)
-    have_client_prereqs = have_server_prereqs and \
+    have_client_prereqs = have_umcd_prereqs and \
         CheckAsio(conf) and \
         conf.CheckPango("cairo", require_version = "1.21.3") and \
         conf.CheckPKG("fontconfig") and \
-        conf.CheckBoost("program_options", require_version="1.35.0") and \
-        conf.CheckBoost("regex", require_version = "1.35.0") and \
         conf.CheckSDL("SDL_ttf", require_version = "2.0.8") and \
         conf.CheckSDL("SDL_mixer", require_version = '1.2.0') and \
         conf.CheckLib("vorbisfile") and \
@@ -373,8 +370,7 @@ if env["prereqs"]:
 
     have_test_prereqs = have_client_prereqs and have_server_prereqs and conf.CheckBoost('unit_test_framework') or Warning("Unit tests are disabled because their prerequisites are not met.")
     
-    have_umcd_test_prereqs = have_umcd_prereqs and \
-        conf.CheckBoost('unit_test_framework') or Warning("UMCD unit tests prerequisites are not met. umcd_test cannot be built.");
+    have_umcd_test_prereqs = have_umcd_prereqs or Warning("UMCD unit tests prerequisites are not met. umcd_test cannot be built.");
 
     test_env = conf.Finish()
     if not have_test_prereqs and "test" in env["default_targets"]:
