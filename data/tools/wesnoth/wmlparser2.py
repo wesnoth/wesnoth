@@ -149,10 +149,11 @@ class TagNode:
                 r.append(sub)
         return r
 
-    def get_text_val(self, name, default = None, translation = None):
+    def get_text_val(self, name, default = None, translation = None, val = -1):
         """
         Returns the value of the specified attribute. If the attribute
-        is given multiple times, the last value is returned. If the
+        is given multiple times, the value number val is returned (default
+        behaviour being to return the last value). If the
         attribute is not found, the default parameter is returned.
 
         If a translation is specified, it should be a function which
@@ -163,7 +164,7 @@ class TagNode:
         """
         x = self.get_all(att = name)
         if not x: return default
-        return x[-1].get_text(translation)
+        return x[val].get_text(translation)
 
     def append(self, node):
         self.data.append(node)
