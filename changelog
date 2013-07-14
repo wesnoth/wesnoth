@@ -16,6 +16,8 @@ Version 1.11.5+dev:
      * [goal] tags in [ai] blocks with turns= or time_of_day= will now work.
  * Language and i18n:
    * Updated translations:
+ * Lua API:
+   * Added: function wesnoth.find_cost_map().
  * Miscellaneous and bug fixes
    * Creating a unit via debug mode now clears fog/shroud around the unit.
    * [move_unit_fake] now accepts an optional force_scroll= attribute (def. to

@@ -45,6 +45,7 @@
 #include "log.hpp"
 #include "lua_jailbreak_exception.hpp"
 #include "map.hpp"
+#include "map_label.hpp"
 #include "pathfind/pathfind.hpp"
 #include "pathfind/teleport.hpp"
 #include "play_controller.hpp"
@@ -2303,6 +2304,196 @@ static int intf_find_reach(lua_State *L)
 }
 
 /**
+ * Is called with one or more units and builds a cost map.
+ * - Args 1,2: source location. (Or Arg 1: unit. Or Arg 1: table containing a filter)
+ * - Arg 3: optional array of tables with 4 elements (coordinates + side + unit type string)
+ * - Arg 4: optional table (optional fields: ignore_units, ignore_teleport, viewing_side, debug).
+ * - Ret 1: array of triples (coordinates + array of tuples(summed cost + reach counter)).
+ */
+static int intf_find_cost_map(lua_State *L)
+{
+	int arg = 1;
+	const unit *u = luaW_tounit(L, arg, true);
+	vconfig filter = vconfig::unconstructed_vconfig();
+	luaW_tovconfig(L, arg, filter);
+
+	std::vector<const unit*> real_units;
+	typedef std::vector<boost::tuple<map_location, int, std::string> > unit_type_vector;
+	unit_type_vector fake_units;
+
+
+	if (u)  // 1. arg - unit
+	{
+		real_units.push_back(u);
+	}
+	else if (!filter.null())  // 1. arg - filter
+	{
+		unit_map &units = *resources::units;
+		for (unit_map::const_unit_iterator ui = units.begin(), ui_end = units.end();
+		     ui != ui_end; ++ui)
+		{
+			bool on_map = ui->get_location().valid();
+			if (on_map && ui->matches_filter(filter, ui->get_location()))
+			{
+				real_units. push_back(&(*ui));
+			}
+		}
+	}
+	else  // 1. + 2. arg - coordinates
+	{
+		map_location src;
+		src.x = luaL_checkinteger(L, arg) - 1;
+		++arg;
+		src.y = luaL_checkinteger(L, arg) - 1;
+		unit_map::const_unit_iterator ui = resources::units->find(src);
+		if (ui.valid())
+		{
+			real_units.push_back(&(*ui));
+		}
+	}
+	++arg;
+
+	if (lua_istable(L, arg))  // 2. arg - optional types
+	{
+		for (int i = 1, i_end = lua_rawlen(L, arg); i <= i_end; ++i)
+		{
+			map_location src;
+			lua_rawgeti(L, arg, i);
+			if (!lua_istable(L, -1)) return luaL_argerror(L, 1, "unit type table missformed");
+
+			lua_rawgeti(L, -1, 1);
+			if (!lua_isnumber(L, -1)) return luaL_argerror(L, 1, "unit type table missformed");
+			src.x = lua_tointeger(L, -1) - 1;
+			lua_rawgeti(L, -2, 2);
+			if (!lua_isnumber(L, -1)) return luaL_argerror(L, 1, "unit type table missformed");
+			src.y = lua_tointeger(L, -1) - 1;
+
+			lua_rawgeti(L, -3, 3);
+			if (!lua_isnumber(L, -1)) return luaL_argerror(L, 1, "unit type table missformed");
+			int side = lua_tointeger(L, -1);
+
+			lua_rawgeti(L, -4, 4);
+			if (!lua_isstring(L, -1)) return luaL_argerror(L, 1, "unit type table missformed");
+			std::string unit_type = lua_tostring(L, -1);
+
+			boost::tuple<map_location, int, std::string> tuple(src, side, unit_type);
+			fake_units.push_back(tuple);
+
+			lua_pop(L, 5);
+		}
+		++arg;
+	}
+
+	if(real_units.empty() && fake_units.empty())
+	{
+		return luaL_argerror(L, 1, "unit(s) not found");
+	}
+
+	std::vector<team> &teams = *resources::teams;
+	int viewing_side = 0;
+	bool ignore_units = true, see_all = true, ignore_teleport = false, debug = false;
+
+	if (lua_istable(L, arg))  // 4. arg - options
+	{
+		lua_pushstring(L, "ignore_units");
+		lua_rawget(L, arg);
+		if (!lua_isnil(L, -1))
+		{
+			ignore_units = lua_toboolean(L, -1);
+		}
+		lua_pop(L, 1);
+
+		lua_pushstring(L, "ignore_teleport");
+		lua_rawget(L, arg);
+		if (!lua_isnil(L, -1))
+		{
+			ignore_teleport = lua_toboolean(L, -1);
+		}
+		lua_pop(L, 1);
+
+		lua_pushstring(L, "viewing_side");
+		lua_rawget(L, arg);
+		if (!lua_isnil(L, -1))
+		{
+			int i = luaL_checkinteger(L, -1);
+			if (i >= 1 && i <= int(teams.size()))
+			{
+				viewing_side = i;
+				see_all = false;
+			}
+		}
+
+		lua_pushstring(L, "debug");
+		lua_rawget(L, arg);
+		if (!lua_isnil(L, -1))
+		{
+			debug = lua_toboolean(L, -1);
+		}
+
+		lua_pop(L, 1);
+	}
+
+	// build cost_map
+	team &viewing_team = teams[(viewing_side ? viewing_side : 1) - 1];
+	pathfind::full_cost_map cost_map(
+			ignore_units, !ignore_teleport, viewing_team, see_all, ignore_units);
+
+	BOOST_FOREACH(const unit* const u, real_units)
+	{
+		cost_map.add_unit(*u);
+	}
+	BOOST_FOREACH(const unit_type_vector::value_type& fu, fake_units)
+	{
+		const unit_type* ut = unit_types.find(fu.get<2>());
+		cost_map.add_unit(fu.get<0>(), ut, fu.get<1>());
+	}
+
+	const gamemap* map = resources::game_map;
+
+	if (debug)
+	{
+		resources::screen->labels().clear_all();
+		for (int x = 0; x < map->w(); ++x)
+		{
+			for (int y = 0; y < map->h(); ++y)
+			{
+				std::stringstream s;
+				s << cost_map.get_pair_at(x, y).first;
+				s << " / ";
+				s << cost_map.get_pair_at(x, y).second;
+				resources::screen->labels().set_label(map_location(x, y), s.str());
+			}
+		}
+	}
+
+	// create return value
+	lua_createtable(L, map->w() * map->h(), 0);
+	for (int x = 0; x < map->w(); ++x)
+	{
+		for (int y = 0; y < map->h(); ++y)
+		{
+			lua_createtable(L, 4, 0);
+
+			lua_pushinteger(L, x + 1);
+			lua_rawseti(L, -2, 1);
+
+			lua_pushinteger(L, y + 1);
+			lua_rawseti(L, -2, 2);
+
+			lua_createtable(L, 2, 0);
+			lua_pushinteger(L, cost_map.get_pair_at(x, y).first);
+			lua_rawseti(L, -2, 1);
+			lua_pushinteger(L, cost_map.get_pair_at(x, y).second);
+			lua_rawseti(L, -2, 2);
+
+			lua_rawseti(L, -2, 3);
+			lua_rawseti(L, -2, x * map->h() + y + 1);
+		}
+	}
+	return 1;
+}
+
+/**
  * Places a unit on the map.
  * - Args 1,2: (optional) location.
  * - Arg 3: WML table describing a unit, or nothing/nil to delete.
@@ -3736,6 +3927,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "dofile",                   &intf_dofile                   },
 		{ "eval_conditional",         &intf_eval_conditional         },
 		{ "extract_unit",             &intf_extract_unit             },
+		{ "find_cost_map",            &intf_find_cost_map            },
 		{ "find_path",                &intf_find_path                },
 		{ "find_reach",               &intf_find_reach               },
 		{ "find_vacant_tile",         &intf_find_vacant_tile         },
