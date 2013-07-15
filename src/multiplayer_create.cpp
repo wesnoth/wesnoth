@@ -120,7 +120,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 		}
 	}
 
-	if (combo_level_names.empty()) {
+	if (available_level_types_.empty()) {
 		gui2::show_transient_message(disp.video(), "", _("No games found."));
 		throw game::error(_("No games found."));
 	}
@@ -183,9 +183,6 @@ create::~create()
 		return;
 	}
 	DBG_MP << "destructing multiplayer create dialog - a game will be created" << std::endl;
-
-	// Retrieve values
-	get_parameters();
 
 	// Save values for next game
 	DBG_MP << "storing parameter values in preferences" << std::endl;

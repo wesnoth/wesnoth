@@ -497,7 +497,7 @@ void create_engine::generator_user_config(display& disp)
 int create_engine::find_level_by_id(const std::string& id) const
 {
 	int i = 0;
-	BOOST_FOREACH(const user_map_ptr& user_map, user_maps_) {
+	BOOST_FOREACH(user_map_ptr user_map, user_maps_) {
 		if (user_map->id() == id) {
 			return i;
 		}
@@ -505,7 +505,7 @@ int create_engine::find_level_by_id(const std::string& id) const
 	}
 
 	i = 0;
-	BOOST_FOREACH(const random_map_ptr& random_map, random_maps_) {
+	BOOST_FOREACH(random_map_ptr random_map, random_maps_) {
 		if (random_map->id() == id) {
 			return i;
 		}
@@ -513,7 +513,7 @@ int create_engine::find_level_by_id(const std::string& id) const
 	}
 
 	i = 0;
-	BOOST_FOREACH(const scenario_ptr& scenario, scenarios_) {
+	BOOST_FOREACH(scenario_ptr scenario, scenarios_) {
 		if (scenario->id() == id) {
 			return i;
 		}
@@ -521,7 +521,7 @@ int create_engine::find_level_by_id(const std::string& id) const
 	}
 
 	i = 0;
-	BOOST_FOREACH(const campaign_ptr& campaign, campaigns_) {
+	BOOST_FOREACH(campaign_ptr campaign, campaigns_) {
 		if (campaign->id() == id) {
 			return i;
 		}
@@ -529,7 +529,7 @@ int create_engine::find_level_by_id(const std::string& id) const
 	}
 
 	i = 0;
-	BOOST_FOREACH(const campaign_ptr& sp_campaign, sp_campaigns_) {
+	BOOST_FOREACH(campaign_ptr sp_campaign, sp_campaigns_) {
 		if (sp_campaign->id() == id) {
 			return i;
 		}
