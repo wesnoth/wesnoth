@@ -27,6 +27,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map.hpp"
+#include "mp_game_utils.hpp"
 #include "multiplayer_connect.hpp"
 #include "savegame.hpp"
 #include "statistics.hpp"
@@ -1716,111 +1717,28 @@ void connect::load_game()
 {
 	DBG_MP << "loading game parameters" << std::endl;
 
-	if(params_.saved_game) {
-		try{
-			savegame::loadgame load(disp(), game_config(), state_);
-			load.load_multiplayer_game();
-			load.fill_mplevel_config(level_);
-		}
-		catch (load_game_cancelled_exception){
-			set_result(CREATE);
-			return;
-		}
-	} else {
-		level_.clear();
-		params_.saved_game = false;
-		params_.mp_scenario = params_.scenario_data["id"].str();
-		level_.merge_with(params_.scenario_data);
-		level_["turns"] = params_.num_turns;
-		level_.add_child("multiplayer", params_.to_config());
+	level_ = initial_level_config(disp(), params_, state_);
 
-		// Convert options to events
-		//FIXME
-// 		level_.add_child_at("event", mp::options::to_event(params_.options
-// 				.find_child("multiplayer", "id", params_.mp_scenario)), 0);
+	// Load game exception occured.
+	if (level_.empty()) {
+		set_result(CREATE);
+		return;
+	}
 
-		params_.hash = level_.hash();
-		level_["next_underlying_unit_id"] = 0;
-		n_unit::id_manager::instance().clear();
+	if (!params_.saved_game) {
+		era_sides_.clear();
+		BOOST_FOREACH(const config &e,
+			level_.child("era").child_range("multiplayer_side")) {
 
-		if (params_.random_start_time)
-		{
-			if (!tod_manager::is_start_ToD(level_["random_start_time"]))
-			{
-				level_["random_start_time"] = true;
-			}
+			era_sides_.push_back(&e);
 		}
-		else
-		{
-			level_["random_start_time"] = false;
-		}
-
-		level_["experience_modifier"] = params_.xp_modifier;
-		level_["random_seed"] = state_.carryover_sides_start["random_seed"];
 	}
 
 	// Add the map name to the title.
 	append_to_title(" — " + level_["name"].t_str());
 
-
-	std::string era = params_.mp_era;
-	if (params_.saved_game) {
-		if (const config &c = level_.child("snapshot").child("era"))
-			era = c["id"].str();
-	}
-
-	// Initialize the list of sides available for the current era.
-	const config &era_cfg = game_config().find_child("era", "id", era);
-	if (!era_cfg) {
-		if (!params_.saved_game)
-		{
-			utils::string_map i18n_symbols;
-			i18n_symbols["era"] = era;
-			throw config::error(vgettext("Cannot find era $era", i18n_symbols));
-		}
-		// FIXME: @todo We should tell user about missing era but still load game
-		WRN_CF << "Missing era in MP load game " << era << "\n";
-	}
-	else
-	{
-		era_sides_.clear();
-		BOOST_FOREACH(const config &e, era_cfg.child_range("multiplayer_side")) {
-			era_sides_.push_back(&e);
-		}
-		/*config& cfg =*/ level_.add_child("era", era_cfg);
-
-		// Convert options to event
-		//FIXME
-// 		cfg.add_child_at("event", mp::options::to_event
-// 				(params_.options.find_child("era", "id", era)), 0);
-	}
-
-	// Add modifications
-	const std::vector<std::string>& mods = params_.active_mods;
-	for (unsigned i = 0; i<mods.size(); i++) {
-		/*config& cfg = */level_.add_child("modification",
-					game_config().find_child("modification", "id", mods[i]));
-
-		// Convert options to event
-		//FIXME
-// 		cfg.add_child_at("event", mp::options::to_event
-// 				(params_.options.find_child("modification", "id", mods[i])), 0);
-	}
-
 	gold_title_label_.hide(params_.saved_game);
 	income_title_label_.hide(params_.saved_game);
-
-	// This will force connecting clients to be using the same version number as us.
-	level_["version"] = game_config::version;
-
-	level_["observer"] = params_.allow_observers;
-	level_["shuffle_sides"] = params_.shuffle_sides;
-
-	if(level_["objectives"].empty()) {
-		level_["objectives"] = "<big>" + t_string(N_("Victory:"), "wesnoth") +
-			"</big>\n<span foreground=\"#00ff00\">&#8226; " +
-			t_string(N_("Defeat enemy leader(s)"), "wesnoth") + "</span>";
-	}
 }
 
 config* connect::current_config(){

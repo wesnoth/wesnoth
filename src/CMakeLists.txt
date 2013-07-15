@@ -768,6 +768,7 @@ set(wesnoth-main_SRC
 	movetype.cpp
 	mp_depcheck.cpp
 	mp_game_settings.cpp
+	mp_game_utils.cpp
 	multiplayer.cpp
 	multiplayer_configure.cpp
 	multiplayer_connect.cpp
