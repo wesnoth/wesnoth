@@ -159,14 +159,22 @@ void scenario::set_sides()
 	}
 }
 
-user_map::user_map(const config& data, const std::string& name) :
+user_map::user_map(const config& data, const std::string& name, gamemap* map) :
 	scenario(data),
 	name_(name)
 {
+	if (map != NULL) {
+		map_.reset(new gamemap(*map));
+	}
 }
 
 user_map::~user_map()
 {
+}
+
+void user_map::set_metadata()
+{
+	set_sides();
 }
 
 std::string user_map::description() const
@@ -591,21 +599,43 @@ void create_engine::init_all_levels()
 		config gen_mp_data = generic_multiplayer;
 
 		// User maps.
+		int dep_index_offset = 0;
 		for(size_t i = 0; i < user_map_names_.size(); i++)
 		{
 			config user_map_data = gen_mp_data;
 			user_map_data["map_data"] = read_map(user_map_names_[i]);
 
-			user_map_ptr new_user_map(new user_map(user_map_data,
-				user_map_names_[i]));
-			user_maps_.push_back(new_user_map);
+			// Check if a file is actually a map.
+			// Note that invalid maps should be displayed in order to
+			// show error messages in the GUI.
+			bool add_map = true;
+			boost::scoped_ptr<gamemap> map;
+			try {
+				map.reset(new gamemap(resources::config_manager->game_config(),
+					user_map_data["map_data"]));
+			} catch (incorrect_map_format_error& e) {
+				user_map_data["description"] = _("Map could not be loaded: ") +
+					e.message;
 
-			// Since user maps are treated as scenarios,
-			// some dependency info is required
-			config depinfo;
-			depinfo["id"] = user_map_names_[i];
-			depinfo["name"] = user_map_names_[i];
-			dependency_manager_.insert_element(depcheck::SCENARIO, depinfo, i);
+				ERR_CF << "map could not be loaded: " << e.message << '\n';
+			} catch (twml_exception& e) {
+				add_map = false;
+				dep_index_offset++;
+			}
+
+			if (add_map) {
+				user_map_ptr new_user_map(new user_map(user_map_data,
+					user_map_names_[i], map.get()));
+				user_maps_.push_back(new_user_map);
+
+				// Since user maps are treated as scenarios,
+				// some dependency info is required
+				config depinfo;
+				depinfo["id"] = user_map_names_[i];
+				depinfo["name"] = user_map_names_[i];
+				dependency_manager_.insert_element(depcheck::SCENARIO, depinfo,
+				i - dep_index_offset);
+			}
 		}
 	}
 

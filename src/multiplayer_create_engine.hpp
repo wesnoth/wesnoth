@@ -70,21 +70,25 @@ public:
 	int num_players() const;
 	std::string map_size() const;
 
+protected:
+	void set_sides();
+
+	boost::scoped_ptr<gamemap> map_;
+
 private:
 	scenario(const scenario&);
 	void operator=(const scenario&);
 
-	void set_sides();
-
-	boost::scoped_ptr<gamemap> map_;
 	int num_players_;
 };
 
 class user_map : public scenario
 {
 public:
-	user_map(const config& data, const std::string& name);
+	user_map(const config& data, const std::string& name, gamemap* map);
 	~user_map();
+
+	void set_metadata();
 
 	std::string name() const;
 	std::string description() const;
