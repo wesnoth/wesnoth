@@ -204,7 +204,7 @@ public:
 	void init_active_mods();
 	std::vector<std::string>& active_mods();
 
-	mp_game_settings& get_parameters();
+	const mp_game_settings& get_parameters();
 
 private:
 	create_engine(const create_engine&);

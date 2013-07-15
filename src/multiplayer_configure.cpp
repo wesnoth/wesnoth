@@ -216,9 +216,6 @@ configure::~configure()
 	}
 	DBG_MP << "destructing multiplayer configure dialog - a game will be configured" << std::endl;
 
-	// Retrieve values
-	get_parameters();
-
 	// Save values for next game
 	DBG_MP << "storing parameter values in preferences" << std::endl;
 	preferences::set_allow_observers(parameters_.allow_observers);
@@ -244,7 +241,7 @@ configure::~configure()
 	}
 }
 
-mp_game_settings& configure::get_parameters()
+const mp_game_settings& configure::get_parameters()
 {
 	DBG_MP << "getting parameter values from widgets" << std::endl;
 

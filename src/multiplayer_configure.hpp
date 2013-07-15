@@ -32,7 +32,7 @@ public:
 	configure(game_display& dist, const config& game_config, chat& c, config& gamelist, const mp_game_settings& params, bool local_players_only);
 	~configure();
 
-	mp_game_settings& get_parameters();
+	const mp_game_settings& get_parameters();
 
 protected:
 	virtual void layout_children(const SDL_Rect& rect);

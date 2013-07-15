@@ -33,7 +33,7 @@ public:
 	create(game_display& disp, const config& game_config, chat& c, config& gamelist, bool local_players_only);
 	~create();
 
-	mp_game_settings& get_parameters();
+	const mp_game_settings& get_parameters();
 
 protected:
 	virtual void layout_children(const SDL_Rect& rect);

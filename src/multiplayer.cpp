@@ -519,7 +519,7 @@ static bool enter_connect_mode(game_display& disp, const config& game_config,
 }
 
 static bool enter_configure_mode(game_display& disp, const config& game_config,
-		mp::chat& chat, config& gamelist, mp_game_settings& params,
+		mp::chat& chat, config& gamelist, const mp_game_settings& params,
 		mp::controller default_controller, bool local_players_only = false);
 
 static void enter_create_mode(game_display& disp, const config& game_config, mp::chat& chat, config& gamelist, mp::controller default_controller, bool local_players_only)
@@ -543,22 +543,25 @@ static void enter_create_mode(game_display& disp, const config& game_config, mp:
 		} else {
 
 			mp::ui::result res;
-			mp_game_settings params;
+			mp_game_settings new_params;
 
 			{
 				mp::create ui(disp, game_config, chat, gamelist, local_players_only);
 				run_lobby_loop(disp, ui);
 				res = ui.get_result();
-				params = ui.get_parameters();
+				new_params = ui.get_parameters();
 			}
 
 			switch (res) {
 			case mp::ui::CREATE:
-				configure_canceled = !enter_configure_mode(disp, game_config, chat, gamelist, params, default_controller, local_players_only);
+				configure_canceled = !enter_configure_mode(disp, game_config,
+					chat, gamelist, new_params, default_controller,
+					local_players_only);
 				break;
 			case mp::ui::LOAD_GAME:
 				connect_canceled = !enter_connect_mode(disp, game_config, chat,
-					gamelist, params, default_controller, local_players_only);
+					gamelist, new_params, default_controller,
+					local_players_only);
 				break;
 			case mp::ui::QUIT:
 			default:
@@ -571,7 +574,7 @@ static void enter_create_mode(game_display& disp, const config& game_config, mp:
 }
 
 static bool enter_configure_mode(game_display& disp, const config& game_config,
-		mp::chat& chat, config& gamelist, mp_game_settings& params,
+		mp::chat& chat, config& gamelist, const mp_game_settings& params,
 		mp::controller default_controller, bool local_players_only)
 {
 	DBG_MP << "entering configure mode" << std::endl;
@@ -582,18 +585,19 @@ static bool enter_configure_mode(game_display& disp, const config& game_config,
 		connect_canceled = false;
 
 		mp::ui::result res;
+		mp_game_settings new_params;
 
 		{
 			mp::configure ui(disp, game_config, chat, gamelist, params, local_players_only);
 			run_lobby_loop(disp, ui);
 			res = ui.get_result();
-			params = ui.get_parameters();
+			new_params = ui.get_parameters();
 		}
 
 		switch (res) {
 		case mp::ui::CREATE:
-			connect_canceled = !enter_connect_mode(disp, game_config, chat, gamelist, params,
-				default_controller, local_players_only);
+			connect_canceled = !enter_connect_mode(disp, game_config, chat,
+				gamelist, new_params, default_controller, local_players_only);
 			break;
 		case mp::ui::QUIT:
 		default:

@@ -192,7 +192,7 @@ create::~create()
 	preferences::set_modifications(engine_.active_mods());
 }
 
-mp_game_settings& create::get_parameters()
+const mp_game_settings& create::get_parameters()
 {
 	return engine_.get_parameters();
 }

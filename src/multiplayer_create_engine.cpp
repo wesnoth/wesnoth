@@ -582,7 +582,7 @@ std::vector<std::string>& create_engine::active_mods()
 	return parameters_.active_mods;
 }
 
-mp_game_settings& create_engine::get_parameters()
+const mp_game_settings& create_engine::get_parameters()
 {
 	DBG_MP << "getting parameter values" << std::endl;
 
