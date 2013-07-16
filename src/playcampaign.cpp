@@ -31,6 +31,7 @@
 #include "replay_controller.hpp"
 #include "log.hpp"
 #include "map_exception.hpp"
+#include "mp_game_utils.hpp"
 #include "dialogs.hpp"
 #include "gettext.hpp"
 #include "resources.hpp"
@@ -652,39 +653,12 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 					LOG_G << "generated map\n";
 				}
 
-				// Sends scenario data
-				config cfg;
-				config& next_cfg = cfg.add_child("store_next_scenario", *scenario);
-
-				// Adds player information, and other state
-				// information, to the configuration object
-				gamestate.write_snapshot(next_cfg);
-
-				next_cfg["next_scenario"] = (*scenario)["next_scenario"];
-				next_cfg.add_child("snapshot");
-				//move the player information into the hosts gamestate
+				// Move the player information into the hosts gamestate.
 				write_players(gamestate, starting_pos, true, true);
 
-
-
-				next_cfg["random_seed"] = gamestate.carryover_sides_start["random_seed"];
-				next_cfg["random_calls"] = gamestate.carryover_sides_start["random_calls"];
-				next_cfg.add_child("variables", gamestate.carryover_sides_start.child("variables"));
-				next_cfg.add_child("multiplayer", gamestate.mp_settings().to_config());
-
-				//Merge in-game information from carryover_sides_start with scenario to create replay_start
-				next_cfg.add_child("replay_start", *scenario);
-				config gamedata;
-				game_data(gamestate.carryover_sides_start).write_snapshot(gamedata);
-				next_cfg.child("replay_start").merge_with(gamedata);
-
-				//move side information from gamestate into the config that is sent to the other clients
-				next_cfg.clear_children("side");
-				BOOST_FOREACH(config& side, starting_pos.child_range("side")){
-					next_cfg.add_child("side", side);
-				}
-
-				network::send_data(cfg, 0);
+				// Send next scenario data.
+				network::send_data(mp::next_level_config(*scenario, gamestate),
+					0);
 			}
 		}
 

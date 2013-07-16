@@ -139,5 +139,40 @@ config initial_level_config(game_display& disp, mp_game_settings& params,
 	return level;
 }
 
+config next_level_config(const config& level, game_state& state)
+{
+	config next_level;
+
+	config& next_level_data = next_level.add_child("store_next_scenario", level);
+
+	// Adds player information, and other state
+	// information, to the configuration object.
+	state.write_snapshot(next_level_data);
+
+	next_level_data["next_scenario"] = level["next_scenario"];
+	next_level_data.add_child("snapshot");
+
+	next_level_data["random_seed"] = state.carryover_sides_start["random_seed"];
+	next_level_data["random_calls"] = state.carryover_sides_start["random_calls"];
+	next_level_data.add_child("variables", state.carryover_sides_start.child("variables"));
+	next_level_data.add_child("multiplayer", state.mp_settings().to_config());
+
+	// Merge in-game information from carryover_sides_start
+	// with level to create replay_start.
+	next_level_data.add_child("replay_start", level);
+	config gamedata;
+	game_data(state.carryover_sides_start).write_snapshot(gamedata);
+	next_level_data.child("replay_start").merge_with(gamedata);
+
+	// Move side information from state into the config
+	// that is sent to the other clients.
+	next_level_data.clear_children("side");
+	BOOST_FOREACH(const config& side, level.child_range("side")){
+		next_level_data.add_child("side", side);
+	}
+
+	return next_level;
+}
+
 } // end namespace mp
 

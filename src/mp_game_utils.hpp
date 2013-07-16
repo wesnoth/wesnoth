@@ -25,6 +25,8 @@ namespace mp {
 config initial_level_config(game_display& disp, mp_game_settings& params,
 	game_state& state);
 
+config next_level_config(const config& level, game_state& state);
+
 } // end namespace mp
 
 #endif
