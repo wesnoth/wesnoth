@@ -612,9 +612,19 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 			}
 
 			if(io_type == IO_SERVER && scenario != NULL) {
-				if (local_mp_game) {
+				if (local_mp_game && game_config::debug) {
+					config old_carryover_sides_start =
+						gamestate.carryover_sides_start;
 					gamestate.mp_settings().scenario_data = *scenario;
-					mp::goto_mp_connect(disp, game_config, gamestate.mp_settings());
+
+					// Opens mp::connect dialog to get a new gamestate.
+					// Old carryover data is preserved.
+					gamestate = mp::goto_mp_connect(disp, game_config, gamestate.mp_settings());
+					gamestate.carryover_sides_start.merge_with(
+						old_carryover_sides_start);
+
+					starting_pos.merge_with(gamestate.replay_start());
+					scenario = &starting_pos;
 				}
 
 				// Tweaks sides to adapt controllers and descriptions.

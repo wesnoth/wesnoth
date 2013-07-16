@@ -56,7 +56,7 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 void start_client(game_display& disp, const config& game_config,
 		const std::string& host);
 
-void goto_mp_connect(game_display& disp, const config& game_config,
+game_state goto_mp_connect(game_display& disp, const config& game_config,
 	const mp_game_settings& params);
 
 }

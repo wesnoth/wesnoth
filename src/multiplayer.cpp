@@ -900,7 +900,7 @@ void start_client(game_display& disp, const config& game_config,
 	}
 }
 
-void goto_mp_connect(game_display& disp, const config& game_config,
+game_state goto_mp_connect(game_display& disp, const config& game_config,
 	const mp_game_settings& params)
 {
 	mp::ui::result res;
@@ -931,6 +931,7 @@ void goto_mp_connect(game_display& disp, const config& game_config,
 		break;
 	}
 
+	return state;
 }
 
 }
