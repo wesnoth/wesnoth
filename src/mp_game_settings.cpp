@@ -128,6 +128,7 @@ void mp_game_settings::set_from_config(const config& game_cfg)
 	active_mods = utils::split(cfg["active_mods"], ',');
 	xp_modifier = cfg["experience_modifier"];
 	use_map_settings = cfg["mp_use_map_settings"].to_bool();
+	random_start_time = cfg["mp_random_start_time"].to_bool();
 	fog_game = cfg["mp_fog"].to_bool();
 	shroud_game = cfg["mp_shroud"].to_bool();
 	mp_countdown = cfg["mp_countdown"].to_bool();
@@ -188,6 +189,7 @@ config mp_game_settings::to_config() const
 	cfg["mp_fog"] = fog_game;
 	cfg["mp_shroud"] = shroud_game;
 	cfg["mp_use_map_settings"] = use_map_settings;
+	cfg["mp_random_start_time"] = random_start_time;
 	cfg["observer"] = allow_observers;
 	cfg["shuffle_sides"] = shuffle_sides;
 	cfg["savegame"] = saved_game;

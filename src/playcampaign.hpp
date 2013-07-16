@@ -20,7 +20,7 @@
 
 #include "game_end_exceptions.hpp"
 
-class display;
+class game_display;
 class game_state;
 class config;
 class CVideo;
@@ -31,10 +31,11 @@ enum io_type_t {
 	IO_CLIENT
 };
 
-LEVEL_RESULT play_game(display& disp, game_state& state,
+LEVEL_RESULT play_game(game_display& disp, game_state& state,
 		const config& game_config,
 		io_type_t io_type=IO_NONE,
-		bool skip_replay = false);
+		bool skip_replay = false,
+		bool local_mp_game = true);
 
 
 void play_replay(display& disp, game_state& state,

@@ -32,6 +32,7 @@
 #include "log.hpp"
 #include "map_exception.hpp"
 #include "mp_game_utils.hpp"
+#include "multiplayer.hpp"
 #include "dialogs.hpp"
 #include "gettext.hpp"
 #include "resources.hpp"
@@ -349,8 +350,9 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 	return res;
 }
 
-LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_config,
-		io_type_t io_type, bool skip_replay)
+LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
+	const config& game_config, io_type_t io_type, bool skip_replay,
+	bool local_mp_game)
 {
 	std::string type = gamestate.classification().campaign_type;
 	if(type.empty())
@@ -610,6 +612,11 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			}
 
 			if(io_type == IO_SERVER && scenario != NULL) {
+				if (local_mp_game) {
+					gamestate.mp_settings().scenario_data = *scenario;
+					mp::goto_mp_connect(disp, game_config, gamestate.mp_settings());
+				}
+
 				// Tweaks sides to adapt controllers and descriptions.
 				BOOST_FOREACH(config &side, starting_pos.child_range("side"))
 				{

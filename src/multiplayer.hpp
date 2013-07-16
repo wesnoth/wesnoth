@@ -14,6 +14,7 @@
 #ifndef MULTIPLAYER_HPP_INCLUDED
 #define MULTIPLAYER_HPP_INCLUDED
 
+#include "mp_game_settings.hpp"
 #include "multiplayer_ui.hpp"
 #include "commandline_options.hpp"
 
@@ -55,6 +56,8 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 void start_client(game_display& disp, const config& game_config,
 		const std::string& host);
 
+void goto_mp_connect(game_display& disp, const config& game_config,
+	const mp_game_settings& params);
 
 }
 #endif

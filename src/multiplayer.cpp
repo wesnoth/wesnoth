@@ -460,7 +460,7 @@ static void enter_wait_mode(game_display& disp, const config& game_config, mp::c
 	switch (res) {
 	case mp::ui::PLAY:
 		play_game(disp, state, game_config, IO_CLIENT,
-			preferences::skip_mp_replay() && observe);
+			preferences::skip_mp_replay() && observe, false);
 		recorder.clear();
 
 		break;
@@ -502,7 +502,8 @@ static bool enter_connect_mode(game_display& disp, const config& game_config,
 
 	switch (res) {
 	case mp::ui::PLAY:
-		play_game(disp, state, game_config, IO_SERVER);
+		play_game(disp, state, game_config, IO_SERVER, false,
+			default_controller == mp::CNTR_LOCAL);
 		recorder.clear();
 
 		break;
@@ -869,7 +870,8 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 	if (cmdline_opts.multiplayer_label) label = *cmdline_opts.multiplayer_label;
 	recorder.add_log_data("ai_log","ai_label",label);
 
-	play_game(disp, state, game_config, IO_SERVER);
+	play_game(disp, state, game_config, IO_SERVER, false,
+		default_controller == CNTR_LOCAL);
 	recorder.clear();
 }
 
@@ -896,6 +898,39 @@ void start_client(game_display& disp, const config& game_config,
 	case ABORT_SERVER:
 		break;
 	}
+}
+
+void goto_mp_connect(game_display& disp, const config& game_config,
+	const mp_game_settings& params)
+{
+	mp::ui::result res;
+	game_state state;
+	const network::manager net_manager(1,1);
+	network_game_manager m;
+
+	mp::chat chat;
+	config gamelist;
+
+	{
+		mp::connect ui(disp, game_config, chat, gamelist, params, CNTR_LOCAL,
+			true);
+		run_lobby_loop(disp, ui);
+
+		res = ui.get_result();
+		if (res == mp::ui::PLAY) {
+			ui.start_game();
+			state = ui.get_state();
+		}
+	}
+
+	switch (res) {
+	case mp::ui::PLAY:
+	case mp::ui::CREATE:
+	case mp::ui::QUIT:
+	default:
+		break;
+	}
+
 }
 
 }
