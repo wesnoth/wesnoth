@@ -104,6 +104,10 @@ config initial_level_config(game_display& disp, mp_game_settings& params,
 		/*config& cfg =*/
 		level.add_child("era", era_cfg);
 
+		const config& custom_side = resources::config_manager->
+			game_config().find_child("multiplayer_side", "id", "Custom");
+		level.child("era").add_child_at("multiplayer_side", custom_side, 0);
+
 		// Convert options to event
 		//FIXME
 		//cfg.add_child_at("event", mp::options::to_event(

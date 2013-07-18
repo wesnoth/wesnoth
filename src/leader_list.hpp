@@ -26,9 +26,10 @@ class leader_list_manager
 public:
 	static const std::string random_enemy_picture;
 
-	leader_list_manager(const std::vector<const config *> &side_list,
-			gui::combo* leader_combo = NULL, gui::combo* gender_combo = NULL);
+	leader_list_manager(gui::combo* leader_combo = NULL,
+		gui::combo* gender_combo = NULL);
 
+	void set_side_list(const std::vector<const config *> &side_list);
 	void set_leader_combo(gui::combo* combo);
 	void set_gender_combo(gui::combo* combo);
 	void update_leader_list(int side);

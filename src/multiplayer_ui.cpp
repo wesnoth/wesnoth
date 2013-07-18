@@ -876,4 +876,40 @@ int find_suitable_faction(faction_list const &fl, const config &cfg)
 	return res;
 }
 
+std::vector<const config*> available_factions(
+	std::vector<const config*> era_sides, const config& side)
+{
+	std::vector<const config*> available_factions;
+
+	BOOST_FOREACH(const config* faction, era_sides) {
+		if ((*faction)["id"] == "Custom" && side["faction"] != "Custom") {
+			continue;
+		}
+
+		available_factions.push_back(faction);
+	}
+
+	return available_factions;
+}
+
+std::vector<const config*> choosable_factions(
+	std::vector<const config*> available_factions, const config& side,
+	const bool map_settings)
+{
+	std::vector<const config*> choosable_factions(available_factions);
+
+	if (!side["faction"].empty() && map_settings) {
+		int faction_index = find_suitable_faction(choosable_factions, side);
+		if (faction_index >= 0) {
+			const config* faction = choosable_factions[faction_index];
+			choosable_factions.clear();
+			choosable_factions.push_back(faction);
+
+			return choosable_factions;
+		}
+	}
+
+	return choosable_factions;
+}
+
 }// namespace mp

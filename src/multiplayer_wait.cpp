@@ -48,9 +48,10 @@ wait::leader_preview_pane::leader_preview_pane(game_display& disp,
 	color_(color),
 	leader_combo_(disp, std::vector<std::string>()),
 	gender_combo_(disp, std::vector<std::string>()),
-	leaders_(side_list, &leader_combo_, &gender_combo_),
+	leaders_(&leader_combo_, &gender_combo_),
 	selection_(0)
 {
+	leaders_.set_side_list(side_list);
 	leaders_.set_color(color_);
 	set_location(leader_pane_position);
 }
@@ -278,12 +279,12 @@ void wait::join_game(bool observe)
 				leader_sides.push_back(&side);
 			}
 
-			int forced_faction = find_suitable_faction(leader_sides, *side_choice);
-			if (forced_faction >= 0) {
-				const config *f = leader_sides[forced_faction];
-				leader_sides.clear();
-				leader_sides.push_back(f);
-			}
+			const bool use_map_settings =
+				level_.child("multiplayer")["mp_use_map_settings"].to_bool();
+
+			leader_sides = choosable_factions(
+				available_factions(leader_sides, *side_choice),
+				*side_choice, use_map_settings);
 
 			std::vector<std::string> choices;
 			BOOST_FOREACH(const config *s, leader_sides)
@@ -308,22 +309,21 @@ void wait::join_game(bool observe)
 			leader_preview_pane leader_selector(disp(), leader_sides, color);
 			preview_panes.push_back(&leader_selector);
 
-			const int res = gui::show_dialog(disp(), NULL, _("Choose your faction:"), _("Starting position: ") + lexical_cast<std::string>(side_num + 1),
-						gui::OK_CANCEL, &choices, &preview_panes);
-			if(res < 0) {
+			const int faction_choice = gui::show_dialog(disp(), NULL,
+				_("Choose your faction:"), _("Starting position: ") +
+				lexical_cast<std::string>(side_num + 1), gui::OK_CANCEL,
+				&choices, &preview_panes);
+			if(faction_choice < 0) {
 				set_result(QUIT);
 				return;
 			}
-			const int faction_choice = res;
 			leader_choice = leader_selector.get_selected_leader();
 			gender_choice = leader_selector.get_selected_gender();
-
-			assert(static_cast<unsigned>(faction_choice) < leader_sides.size());
 
 			config faction;
 			config& change = faction.add_child("change_faction");
 			change["name"] = preferences::login();
-			change["faction"] = forced_faction >= 0 ? forced_faction : faction_choice;
+			change["faction"] = (*leader_sides[faction_choice])["id"];
 			change["leader"] = leader_choice;
 			change["gender"] = gender_choice;
 			network::send_data(faction, 0);

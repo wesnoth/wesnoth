@@ -26,16 +26,21 @@
 
 const std::string leader_list_manager::random_enemy_picture("units/random-dice.png");
 
-leader_list_manager::leader_list_manager(const std::vector<const config *> &side_list,
-		gui::combo* leader_combo , gui::combo* gender_combo):
+leader_list_manager::leader_list_manager(gui::combo* leader_combo,
+	gui::combo* gender_combo):
 	leaders_(),
 	genders_(),
 	gender_ids_(),
-	side_list_(side_list),
 	leader_combo_(leader_combo),
 	gender_combo_(gender_combo),
 	color_(0)
 {
+}
+
+void leader_list_manager::set_side_list(
+	const std::vector<const config *> &side_list)
+{
+	side_list_ = side_list;
 }
 
 void leader_list_manager::set_leader_combo(gui::combo* combo)
@@ -69,7 +74,7 @@ void leader_list_manager::update_leader_list(int side_index)
 
 	leaders_.clear();
 
-	if (side["random_faction"].to_bool()) {
+	if (side["random_faction"].to_bool() || side["id"] == "Custom") {
 		if(leader_combo_ != NULL) {
 			std::vector<std::string> dummy;
 			dummy.push_back(utils::unicode_em_dash);

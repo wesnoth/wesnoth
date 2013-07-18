@@ -134,6 +134,10 @@ public:
 		void update_controller_ui();
 		void update_ui();
 
+		int selected_faction_index() const;
+
+		config& init_side_config(config& side);
+
 		/**
 		 * The mp::connect widget owning this mp::connect::side.
 		 *
@@ -148,6 +152,12 @@ public:
 		 */
 		config cfg_;
 
+		// All factions which could be played by a side (including Random).
+		std::vector<const config*> available_factions_;
+		// All factions which a side can choose.
+		std::vector<const config*> choosable_factions_;
+		const config* current_faction_;
+
 		// Configurable variables
 		int index_;
 		std::string id_;
@@ -155,7 +165,6 @@ public:
 		std::string save_id_;
 		std::string current_player_;
 		mp::controller controller_;
-		int faction_;
 		int team_;
 		int color_;
 		int gold_;
@@ -295,7 +304,6 @@ private:
 
 	// Lists used for combos
 	std::vector<std::string> player_types_;
-	std::vector<std::string> player_factions_;
 	std::vector<std::string> player_teams_;
 	std::vector<std::string> player_colors_;
 	std::vector<ai::description*> ai_algorithms_;

@@ -67,13 +67,15 @@ namespace mp {
 connect::side::side(connect& parent, const config& cfg, int index) :
 	parent_(&parent),
 	cfg_(cfg),
+	available_factions_(),
+	choosable_factions_(),
+	current_faction_(),
 	index_(index),
 	id_(cfg["id"]),
 	player_id_(cfg["player_id"]),
 	save_id_(cfg["save_id"]),
 	current_player_(cfg["current_player"]),
 	controller_(CNTR_NETWORK),
-	faction_(cfg["faction"]),
 	team_(0),
 	color_(index),
 	gold_(cfg["gold"].to_int(100)),
@@ -102,7 +104,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	allow_player_(cfg["controller"] == "ai" && cfg["allow_player"].empty() ? false : cfg["allow_player"].to_bool(true)),
 	allow_changes_(cfg["allow_changes"].to_bool(true)),
 	enabled_(!parent_->params_.saved_game), changed_(false),
-	llm_(parent.era_sides_, enabled_ ? &combo_leader_ : NULL, enabled_ ? &combo_gender_ : NULL)
+	llm_(enabled_ ? &combo_leader_ : NULL, enabled_ ? &combo_gender_ : NULL)
 {
 	DBG_MP << "initializing side" << std::endl;
 	// convert ai controllers
@@ -136,6 +138,19 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 			}
 		}
 	}
+
+	if (cfg_.has_attribute("recruit") && parent_->params_.use_map_settings) {
+		cfg_["faction"] = "Custom";
+	}
+
+	// Initialize faction lists.
+	available_factions_ = available_factions(parent_->era_sides_, cfg_);
+	choosable_factions_ = choosable_factions(available_factions_, cfg_,
+		parent_->params_.use_map_settings);
+
+	current_faction_ = choosable_factions_[0],
+
+	llm_.set_side_list(choosable_factions_);
 
 	slider_gold_.set_min(20);
 	slider_gold_.set_max(800);
@@ -173,15 +188,13 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	}
 	llm_.set_color(color_);
 
-	update_faction_combo();
-
 	if (const config &ai = cfg.child("ai"))
 		ai_algorithm_ = ai["ai_algorithm"].str();
 	init_ai_algorithm_combo();
 
 	// "Faction name" hack
 	if (!enabled_) {
-		faction_ = 0;
+		current_faction_ = choosable_factions_[0];
 		std::vector<std::string> pseudo_factions;
 		pseudo_factions.push_back(cfg["name"]);
 		combo_faction_.set_items(pseudo_factions);
@@ -276,30 +289,37 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 
 		// Try to pick a faction for the sake of appearance
 		// and for filling in the blanks
-		if(faction_ == 0) {
-			faction_ = find_suitable_faction(parent.era_sides_, cfg);
-			if (faction_ < 0) faction_ = 0;
-			if (faction_) {
-				llm_.update_leader_list(faction_);
-				llm_.update_gender_list(llm_.get_leader());
-				combo_faction_.enable(false);
+		int faction_index = 0;
+		if (choosable_factions_.size() > 1) {
+			faction_index = find_suitable_faction(choosable_factions_, cfg_);
+			if (faction_index < 0) {
+				faction_index = 0;
 			}
 		} else {
 			combo_faction_.enable(false);
 		}
+
+		current_faction_ = choosable_factions_[faction_index];
+
+		llm_.update_leader_list(faction_index);
+		llm_.update_gender_list(llm_.get_leader());
 	}
 
+	update_faction_combo();
 	update_ui();
 }
 
 connect::side::side(const side& a) :
 	parent_(a.parent_), cfg_(a.cfg_),
+	available_factions_(a.available_factions_),
+	choosable_factions_(a.choosable_factions_),
+	current_faction_(a.current_faction_),
 	index_(a.index_), id_(a.id_), player_id_(a.player_id_),  save_id_(a.save_id_),
 	current_player_(a.current_player_),
 	controller_(a.controller_),
-	faction_(a.faction_), team_(a.team_), color_(a.color_),
-	gold_(a.gold_), income_(a.income_), leader_(a.leader_),
-	gender_(a.gender_),
+	team_(a.team_), color_(a.color_),
+	gold_(a.gold_), income_(a.income_),
+	leader_(a.leader_), gender_(a.gender_),
 	ai_algorithm_(a.ai_algorithm_),
 	ready_for_start_(a.ready_for_start_),
 	gold_lock_(a.gold_lock_),
@@ -316,6 +336,7 @@ connect::side::side(const side& a) :
 	allow_player_(a.allow_player_), allow_changes_(a.allow_changes_),
 	enabled_(a.enabled_), changed_(a.changed_), llm_(a.llm_)
 {
+	llm_.set_side_list(choosable_factions_);
 	llm_.set_color(color_);
 	llm_.set_leader_combo((enabled_ && leader_.empty()) ? &combo_leader_ : NULL);
 	llm_.set_gender_combo((enabled_ && leader_.empty()) ? &combo_gender_ : NULL);
@@ -412,8 +433,9 @@ void connect::side::process_event()
 		changed_ = true;
 	}
 	if (combo_faction_.changed() && combo_faction_.selected() >= 0) {
-		faction_ = combo_faction_.selected();
-		llm_.update_leader_list(faction_);
+		const int sel = combo_faction_.selected();
+		current_faction_ = choosable_factions_[sel];
+		llm_.update_leader_list(sel);
 		llm_.update_gender_list(llm_.get_leader());
 		changed_ = true;
 	}
@@ -558,8 +580,7 @@ void connect::side::init_ai_algorithm_combo()
 void connect::side::update_faction_combo()
 {
 	std::vector<std::string> factions;
-	BOOST_FOREACH(const config *faction, parent_->era_sides_)
-	{
+	BOOST_FOREACH(const config* faction, choosable_factions_) {
 		const std::string& name = (*faction)["name"];
 		const std::string& icon = (*faction)["image"];
 		if (!icon.empty()) {
@@ -573,15 +594,18 @@ void connect::side::update_faction_combo()
 		}
 	}
 	combo_faction_.set_items(factions);
-	combo_faction_.set_selected(faction_);
+	combo_faction_.set_selected(selected_faction_index());
 }
 
 void connect::side::update_ui()
 {
 	update_controller_ui();
 
-	if (combo_faction_.selected() != faction_ && combo_faction_.selected() >= 0) {
-		combo_faction_.set_selected(faction_);
+	const int sel = selected_faction_index();
+	if (combo_faction_.selected() != sel &&
+		combo_faction_.selected() >= 0) {
+
+		combo_faction_.set_selected(sel);
 	}
 
 	combo_team_.set_selected(team_);
@@ -600,18 +624,32 @@ void connect::side::update_ui()
 	label_income_.set_text(buf.str());
 }
 
+int connect::side::selected_faction_index() const
+{
+	int index = 0;
+	BOOST_FOREACH(const config* faction, choosable_factions_) {
+		if ((*faction)["id"] == (*current_faction_)["id"]) {
+			return index;
+		}
+
+		index++;
+	}
+
+	return 0;
+}
+
 config connect::side::get_config() const
 {
-	config res;
+	config res = cfg_;
 
 	// If the user is allowed to change type, faction, leader etc,
 	// then import their new values in the config.
-	if(enabled_ && !parent_->era_sides_.empty()) {
+	if(enabled_ && !choosable_factions_.empty()) {
 		// Merge the faction data to res
-		res.append(*(parent_->era_sides_[faction_]));
+		res.append(*current_faction_);
 		res["faction_name"] = res["name"];
 	}
-	res.append(cfg_);
+
 	if (!cfg_.has_attribute("side") || cfg_["side"].to_int() != index_ + 1) {
 		res["side"] = index_ + 1;
 	}
@@ -736,6 +774,7 @@ config connect::side::get_config() const
 		}
 		res.merge_with(trimmed);
 	}
+
 	return res;
 }
 
@@ -827,12 +866,15 @@ void connect::side::import_network_user(const config& data)
 	player_id_ = data["name"].str();
 	controller_ = CNTR_NETWORK;
 
-	if(enabled_ && !parent_->era_sides_.empty()) {
+	if(enabled_ && !choosable_factions_.empty()) {
 		if(combo_faction_.enabled()) {
-			faction_ = data["faction"];
-			if(faction_ > int(parent_->era_sides_.size()))
-				faction_ = 0;
-			llm_.update_leader_list(faction_);
+			BOOST_FOREACH(const config* faction, choosable_factions_) {
+				if ((*faction)["id"] == data["faction"]) {
+					current_faction_ = faction;
+				}
+			}
+
+			llm_.update_leader_list(selected_faction_index());
 			llm_.update_gender_list(llm_.get_leader());
 		}
 		if(combo_leader_.enabled()) {
@@ -857,11 +899,11 @@ void connect::side::reset(mp::controller controller)
 	if ((controller == mp::CNTR_NETWORK) || (controller == mp::CNTR_RESERVED))
 		ready_for_start_ = false;
 
-	if(enabled_ && !parent_->era_sides_.empty()) {
+	if(enabled_ && !choosable_factions_.empty()) {
 		if(combo_faction_.enabled())
-			faction_ = 0;
+			current_faction_ = choosable_factions_[0];
 		if(combo_leader_.enabled())
-			llm_.update_leader_list(faction_);
+			llm_.update_leader_list(selected_faction_index());
 		if (combo_gender_.enabled())
 			llm_.update_gender_list(llm_.get_leader());
 	}
@@ -871,17 +913,17 @@ void connect::side::reset(mp::controller controller)
 
 void connect::side::resolve_random()
 {
-	if(!enabled_ || parent_->era_sides_.empty())
+	if(!enabled_ || choosable_factions_.empty())
 		return;
 
-	if ((*parent_->era_sides_[faction_])["random_faction"].to_bool())
+	if ((*current_faction_)["random_faction"].to_bool())
 	{
 		std::vector<std::string> faction_choices, faction_excepts;
-		faction_choices = utils::split((*parent_->era_sides_[faction_])["choices"]);
+		faction_choices = utils::split((*current_faction_)["choices"]);
 		if(faction_choices.size() == 1 && faction_choices.front() == "") {
 			faction_choices.clear();
 		}
-		faction_excepts = utils::split((*parent_->era_sides_[faction_])["except"]);
+		faction_excepts = utils::split((*current_faction_)["except"]);
 		if(faction_excepts.size() == 1 && faction_excepts.front() == "") {
 			faction_excepts.clear();
 		}
@@ -889,8 +931,7 @@ void connect::side::resolve_random()
 		// Builds the list of sides eligible for choice (nonrandom factions)
 		std::vector<int> nonrandom_sides;
 		int num = -1;
-		BOOST_FOREACH(const config *i, parent_->era_sides_)
-		{
+		BOOST_FOREACH(const config* i, available_factions_) {
 			++num;
 			if (!(*i)["random_faction"].to_bool()) {
 				const std::string& faction_id = (*i)["id"];
@@ -912,30 +953,33 @@ void connect::side::resolve_random()
 			throw config::error(_("Only random sides in the current era."));
 		}
 
-		faction_ = nonrandom_sides[rand() % nonrandom_sides.size()];
+		const int faction_index =
+			nonrandom_sides[rand() % nonrandom_sides.size()];
+		current_faction_ = available_factions_[faction_index];
 	}
 
-	LOG_MP << "FACTION" << (index_ + 1) << ": " << (*parent_->era_sides_[faction_])["name"] << std::endl;
+	LOG_MP << "FACTION" << (index_ + 1) << ": " << (*current_faction_)["name"]
+		<< std::endl;
 
 	bool solved_random_leader = false;
 
 	if (llm_.get_leader() == "random") {
 		// Choose a random leader type, and force gender to be random
 		llm_.set_gender("random");
-		const config& fact = *parent_->era_sides_[faction_];
-		std::vector<std::string> types = utils::split(fact["random_leader"]);
+		std::vector<std::string> types =
+			utils::split((*current_faction_)["random_leader"]);
 		if (!types.empty()) {
 			const int lchoice = rand() % types.size();
 			leader_ = types[lchoice];
 		} else {
 			// If random_leader= doesn't exists, we use leader=
-			types = utils::split(fact["leader"]);
+			types = utils::split((*current_faction_)["leader"]);
 			if (!types.empty()) {
 				const int lchoice = rand() % types.size();
 				leader_ = types[lchoice];
 			} else {
 				utils::string_map i18n_symbols;
-				i18n_symbols["faction"] = fact["name"];
+				i18n_symbols["faction"] = (*current_faction_)["name"];
 				throw config::error(vgettext("Unable to find a leader type for faction $faction", i18n_symbols));
 			}
 		}
@@ -970,13 +1014,10 @@ void connect::side::resolve_random()
 
 void connect::side::set_faction_commandline(std::string faction_name)
 {
-	// Set faction_ (the faction number) according to the name given at the commandline
-	int num = -1;
-	BOOST_FOREACH(const config *i, parent_->era_sides_)
-	{
-		++num;
+	// Set current_faction_ according to the name given at the commandline.
+	BOOST_FOREACH(const config* i, choosable_factions_) {
 		if ((*i)["name"] == faction_name) {
-			faction_ = num;
+			current_faction_ = i;
 			break;
 		}
 	}
@@ -1016,7 +1057,6 @@ connect::connect(game_display& disp, const config& game_config,
 	params_(params),
 	era_sides_(),
 	player_types_(),
-	player_factions_(),
 	player_teams_(),
 	player_colors_(),
 	ai_algorithms_(),
@@ -1620,10 +1660,6 @@ void connect::lists_init()
 	player_types_.push_back(_("Computer Player"));
 	player_types_.push_back(_("Empty"));
 
-	BOOST_FOREACH(const config *faction, era_sides_) {
-		player_factions_.push_back((*faction)["name"]);
-	}
-
 	// AI algorithms
 	const config &era = level_.child("era");
 	ai::configuration::add_era_ai_from_config(era);
@@ -1725,13 +1761,11 @@ void connect::load_game()
 		return;
 	}
 
-	if (!params_.saved_game) {
-		era_sides_.clear();
-		BOOST_FOREACH(const config &e,
-			level_.child("era").child_range("multiplayer_side")) {
+	era_sides_.clear();
+	BOOST_FOREACH(const config &e,
+		level_.child("era").child_range("multiplayer_side")) {
 
-			era_sides_.push_back(&e);
-		}
+		era_sides_.push_back(&e);
 	}
 
 	// Add the map name to the title.
