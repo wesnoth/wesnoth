@@ -2836,7 +2836,7 @@ static void luaW_pushsimdata(lua_State *L, const combatant &cmb)
 }
 
 /**
- * Puts a table at the top of the stack with information about combatants' the weapons .
+ * Puts a table at the top of the stack with information about the weapons of the .
  */
 static void luaW_pushsimweapon(lua_State *L, const battle_context_unit_stats &bcustats)
 {
