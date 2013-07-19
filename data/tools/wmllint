@@ -1084,7 +1084,7 @@ def global_sanity_check(filename, lines):
     recruitment_pattern = {}
     ifdef_stack = [None]
     for i in range(len(lines)):
-    	line = lines[i].strip()
+        line = lines[i].strip()
         if line.startswith("#ifdef") or line.startswith("#ifhave") or line.startswith("#ifver"):
             ifdef_stack.append(line.split()[1])
             continue
