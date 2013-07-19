@@ -2836,6 +2836,56 @@ static void luaW_pushsimdata(lua_State *L, const combatant &cmb)
 }
 
 /**
+ * Puts a table at the top of the stack with information about the combatants' weapons.
+ */
+static void luaW_pushsimweapon(lua_State *L, const battle_context_unit_stats &bcustats)
+{
+
+	lua_createtable(L, 0, 16);
+
+	lua_pushnumber(L, bcustats.num_blows);
+	lua_setfield(L, -2, "num_blows");
+	lua_pushnumber(L, bcustats.damage);
+	lua_setfield(L, -2, "damage");
+	lua_pushnumber(L, bcustats.chance_to_hit);
+	lua_setfield(L, -2, "chance_to_hit");
+	lua_pushboolean(L, bcustats.poisons);
+	lua_setfield(L, -2, "poisons");
+	lua_pushboolean(L, bcustats.slows);
+	lua_setfield(L, -2, "slows");
+	lua_pushboolean(L, bcustats.petrifies);
+	lua_setfield(L, -2, "petrifies");
+	lua_pushboolean(L, bcustats.plagues);
+	lua_setfield(L, -2, "plagues");
+	lua_pushstring(L, bcustats.plague_type.c_str());
+	lua_setfield(L, -2, "plague_type");
+	lua_pushboolean(L, bcustats.backstab_pos);
+	lua_setfield(L, -2, "backstabs");
+	lua_pushnumber(L, bcustats.rounds);
+	lua_setfield(L, -2, "rounds");
+	lua_pushboolean(L, bcustats.firststrike);
+	lua_setfield(L, -2, "firststrike");
+	lua_pushboolean(L, bcustats.drains);
+	lua_setfield(L, -2, "drains");
+	lua_pushnumber(L, bcustats.drain_constant);
+	lua_setfield(L, -2, "drain_constant");
+	lua_pushnumber(L, bcustats.drain_percent);
+	lua_setfield(L, -2, "drain_percent");
+
+	
+	//if we called simulate_combat without giving an explicit weapon this can be useful. 
+	lua_pushnumber(L, bcustats.attack_num);
+	lua_setfield(L, -2, "attack_num");
+	//this is NULL when there is no counter weapon
+	if(bcustats.weapon != NULL)
+	{
+		lua_pushstring(L, bcustats.weapon->id().c_str());
+		lua_setfield(L, -2, "name");
+	}
+
+}
+
+/**
  * Simulates a combat between two units.
  * - Arg 1: attacker userdata.
  * - Arg 2: optional weapon index.
@@ -2843,6 +2893,8 @@ static void luaW_pushsimdata(lua_State *L, const combatant &cmb)
  * - Arg 4: optional weapon index.
  * - Ret 1: attacker results.
  * - Ret 2: defender results.
+ * - Ret 3: info about the attacker weapon.
+ * - Ret 4: info about the defender weapon.
  */
 static int intf_simulate_combat(lua_State *L)
 {
@@ -2871,7 +2923,9 @@ static int intf_simulate_combat(lua_State *L)
 
 	luaW_pushsimdata(L, context.get_attacker_combatant());
 	luaW_pushsimdata(L, context.get_defender_combatant());
-	return 2;
+	luaW_pushsimweapon(L, context.get_attacker_stats());
+	luaW_pushsimweapon(L, context.get_defender_stats());
+	return 4;
 }
 
 /**
