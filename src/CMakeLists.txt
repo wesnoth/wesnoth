@@ -1025,10 +1025,7 @@ set(umcd_lib_SRC
 	umcd/umcd_logger.cpp
 	umcd/protocol/wml/umcd_protocol.cpp
 	serialization/one_hierarchy_validator.cpp
-	${network_implementation_files}
 	${wesnoth-schema_validator-dependencies_SRC}
-	config.cpp
-	addon/validation.cpp
 )
 
 set(umcd_SRC

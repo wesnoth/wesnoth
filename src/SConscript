@@ -545,16 +545,17 @@ if env["host"] in ["x86_64-nacl", "i686-nacl"]:
 client_env.WesnothProgram("wesnoth", wesnoth_objects, have_client_prereqs)
 
 libumcd_sources = Split("""
+    umcd/server_options.cpp
     umcd/special_packet.cpp
     umcd/wml_reply.cpp
     umcd/wml_request.cpp
     umcd/umcd_logger.cpp
+    umcd/request_info.cpp
+    umcd/protocol/wml/umcd_protocol.cpp
     serialization/one_hierarchy_validator.cpp
-    addon/validation.cpp
     """)
 
 umcd_sources = Split("""
-    umcd/server_options.cpp
     """)
 
 libumcd = env.Library("umcd", libumcd_sources, OBJPREFIX = "umcd_")
@@ -562,7 +563,7 @@ libumcd = env.Library("umcd", libumcd_sources, OBJPREFIX = "umcd_")
 if env["PLATFORM"] == "win32": env["fifodir"] = ""
 umcd_sources.extend(env.Object("umcd/umcd.cpp", EXTRA_DEFINE = env['fifodir'] and "FIFODIR='\"$fifodir\"'" or None))
 
-env.WesnothProgram("umcd", umcd_sources + [libwesnoth_core, libwesnothd, libumcd, libschema], have_umcd_prereqs)
+env.WesnothProgram("umcd", umcd_sources + [libwesnoth_core, libumcd, libschema], have_umcd_prereqs)
 
 wesnothd_sources = Split("""
     server/ban.cpp

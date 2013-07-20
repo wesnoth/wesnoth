@@ -19,12 +19,12 @@ request_info::request_info(const action_ptr& action, const validator_ptr& valida
 , request_validator(validator)
 {}
 
-typename request_info::action_ptr request_info::action()
+request_info::action_ptr request_info::action()
 {
    return umcd_action;
 }
 
-typename request_info::validator_ptr request_info::validator()
+request_info::validator_ptr request_info::validator()
 {
    return request_validator;
 }
