@@ -121,7 +121,7 @@ struct scoped_context
 	}
 };
 
-static bool screen_needs_rebuild;
+static bool screen_needs_rebuild = false;
 // The value returned by wml_tracking();
 static size_t internal_wml_tracking = 0;
 
