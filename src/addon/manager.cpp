@@ -105,6 +105,12 @@ void set_addon_pbl_info(const std::string& addon_name, const config& cfg)
 	write(*stream, cfg);
 }
 
+void get_addon_install_info(const std::string& addon_name, config& cfg)
+{
+	scoped_istream stream = istream_file(get_info_file_path(addon_name));
+	read(cfg, *stream);
+}
+
 bool remove_local_addon(const std::string& addon)
 {
 	bool ret = true;
@@ -382,10 +388,8 @@ void refresh_addon_version_info_cache()
 		const std::string& info_file = addon_info_files[i];
 
 		if(file_exists(info_file)) {
-			scoped_istream stream = istream_file(info_file);
-
 			config cfg;
-			read(cfg, *stream);
+			get_addon_install_info(addon, cfg);
 
 			const config& info_cfg = cfg.child("info");
 			if(!info_cfg) {

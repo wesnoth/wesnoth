@@ -82,6 +82,15 @@ void get_addon_pbl_info(const std::string& addon_name, class config& cfg);
  */
 void set_addon_pbl_info(const std::string& addon_name, const class config& cfg);
 
+/**
+ * Gets the installation info (_info.cfg) for an add-on.
+ *
+ * @param addon_name              The add-on's main directory/file name.
+ * @param cfg                     A config object to store the add-on's
+ *                                properties.
+ */
+void get_addon_install_info(const std::string& addon_name, class config& cfg);
+
 /** Returns a list of local add-ons that can be published. */
 std::vector<std::string> available_addons();
 
