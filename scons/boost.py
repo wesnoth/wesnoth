@@ -76,6 +76,12 @@ def CheckBoost(context, boost_lib, require_version = None, header_only = False):
     test_program = """
         #include <boost/%s>
         \n""" % header_name
+    # Pre-1.51 boost versions conflict with C++11-capable compilers
+    if boost_lib == "thread":
+        test_program = """
+        #include <time.h>
+        #undef TIME_UTC
+        \n""" + test_program
     if require_version:
         version = require_version.split(".", 2)
         major = int(version[0])
