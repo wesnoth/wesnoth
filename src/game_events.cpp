@@ -3057,6 +3057,7 @@ WML_HANDLER_FUNCTION(event, /*event_info*/, cfg)
 }
 
 /// Experimental map replace
+/// @todo Finish experimenting.
 WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 {
 	/*
@@ -3136,17 +3137,20 @@ WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 }
 
 /// Experimental data persistence
+/// @todo Finish experimenting.
 WML_HANDLER_FUNCTION(set_global_variable,/**/,pcfg)
 {
 	if (get_replay_source().at_end() || (network::nconnections() != 0))
 		verify_and_set_global_variable(pcfg);
 }
 /// Experimental data persistence
+/// @todo Finish experimenting.
 WML_HANDLER_FUNCTION(get_global_variable,/**/,pcfg)
 {
 	verify_and_get_global_variable(pcfg);
 }
 /// Experimental data persistence
+/// @todo Finish experimenting.
 WML_HANDLER_FUNCTION(clear_global_variable,/**/,pcfg)
 {
 	if (get_replay_source().at_end() || (network::nconnections() != 0))
