@@ -2103,11 +2103,12 @@ WML_HANDLER_FUNCTION(wml_message, /*event_info*/, cfg)
 }
 
 
-typedef std::map<map_location, int> recursion_counter;
 
 class recursion_preventer {
-	static recursion_counter counter_;
+	typedef std::map<map_location, int> t_counter;
+	static t_counter counter_;
 	static const int max_recursion = 10;
+
 	map_location loc_;
 	bool too_many_recursions_;
 
@@ -2116,13 +2117,13 @@ class recursion_preventer {
 		loc_(loc),
 		too_many_recursions_(false)
 	{
-		recursion_counter::iterator inserted = counter_.insert(std::make_pair(loc_, 0)).first;
+		t_counter::iterator inserted = counter_.insert(std::make_pair(loc_, 0)).first;
 		++inserted->second;
 		too_many_recursions_ = inserted->second >= max_recursion;
 	}
 	~recursion_preventer()
 	{
-		recursion_counter::iterator itor = counter_.find(loc_);
+		t_counter::iterator itor = counter_.find(loc_);
 		if (--itor->second == 0)
 		{
 			counter_.erase(itor);
@@ -2134,7 +2135,7 @@ class recursion_preventer {
 	}
 };
 
-recursion_counter recursion_preventer::counter_ = recursion_counter();
+recursion_preventer::t_counter recursion_preventer::counter_;
 
 typedef boost::scoped_ptr<recursion_preventer> recursion_preventer_ptr;
 
