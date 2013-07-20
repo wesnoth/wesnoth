@@ -19,7 +19,8 @@
 
 #include "ya_mapgen.hpp"
 #include "yamg_hexheap.hpp"
-#include <stdio.h>
+#include <cstdio>
+#include <cstring>
 
 //========================== Static parameters =========================
 /*
