@@ -16,14 +16,13 @@
 #define UMCD_REQUEST_INFO_HPP
 
 #include <boost/make_shared.hpp>
-
+#include "serialization/schema_validator.hpp"
 #include "umcd/actions/basic_umcd_action.hpp"
-#include "serialization/one_hierarchy_validator.hpp"
 
 class request_info
 {
 public:
-   typedef schema_validation::one_hierarchy_validator validator_type;
+   typedef schema_validation::schema_validator validator_type;
    typedef boost::shared_ptr<basic_umcd_action> action_ptr;
    typedef boost::shared_ptr<validator_type> validator_ptr;
 private:

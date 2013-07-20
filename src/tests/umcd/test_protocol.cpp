@@ -75,7 +75,7 @@ void test_exchange(const std::string& request_path, const std::string& reply_val
   stream << request_conf_string;
   test_stream_state(stream);
   config response;
-  boost::shared_ptr<schema_validation::one_hierarchy_validator> validator(new schema_validation::one_hierarchy_validator(reply_validator_path));
+  boost::shared_ptr<schema_validation::schema_validator> validator(new schema_validation::schema_validator(reply_validator_path));
   // Should not throw! we don't use BOOST_CHECK_NO_THROW because it doesn't print the message.
   ::read(response, stream, validator.get());
   test_stream_state(stream);

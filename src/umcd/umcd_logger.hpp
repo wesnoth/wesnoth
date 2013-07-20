@@ -20,7 +20,7 @@
 #include <sstream>
 
 #include <boost/thread/mutex.hpp>
-#include <boost/thread/lock_guard.hpp>
+#include <umcd/boost/thread/lock_guard.hpp>
 #include <boost/thread/thread.hpp>
 #include <boost/array.hpp>
 #include <boost/shared_ptr.hpp>

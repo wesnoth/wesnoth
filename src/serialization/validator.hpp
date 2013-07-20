@@ -86,18 +86,6 @@ public:
 							  const std::string &file) = 0;
 
 	/**
-	* Returns true if the validator has validated a complete schema
-	* (under the specific condition of the validator realization).
-	* May be useful if the data end flag is not EOF.
-	* By default, we consider that EOF is expected.
-	* @param cfg Config to be validated.
-	*/
-	virtual bool is_over(const config&) const
-	{
-		return false;
-	}
-
-	/**
 	 * @struct error
 	 * Used to manage with not initialized validators
 	 * Supposed to be thrown from the constructor

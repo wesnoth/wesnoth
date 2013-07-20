@@ -25,48 +25,9 @@
 #include "umcd/server/generic_factory.hpp"
 #include "umcd/wml_reply.hpp"
 #include "umcd/request_info.hpp"
+#include "umcd/num_digits.hpp"
 
 class wml_request;
-
-template <std::size_t v>
-struct num_digits_impl2
-{
-   static const std::size_t value = 1 + num_digits_impl2<v/10>::value;
-};
-
-template <>
-struct num_digits_impl2<10>
-{
-   static const std::size_t value = 2;
-};
-
-template <>
-struct num_digits_impl2<0>
-{
-   static const std::size_t value = 0;
-};
-
-template <std::size_t v>
-struct num_digits_impl
-{
-   static const std::size_t value = num_digits_impl2<v>::value;
-};
-
-template <>
-struct num_digits_impl<0>
-{
-   static const std::size_t value = 1;
-};
-
-template <std::size_t v>
-struct num_digits
-{
-   static const std::size_t value = num_digits_impl<v>::value;
-};
-
-template <std::size_t v>
-const std::size_t num_digits<v>::value;
-
 
 class umcd_protocol : public boost::enable_shared_from_this<umcd_protocol>
 {
@@ -76,7 +37,7 @@ public:
 private:
    typedef basic_umcd_action action_type;
    typedef boost::shared_ptr<request_info> info_ptr;
-   typedef schema_validation::one_hierarchy_validator validator_type;
+   typedef schema_validation::schema_validator validator_type;
    typedef generic_factory<request_info> action_factory_type;
    typedef connection<umcd_protocol> connection_type;
    typedef boost::shared_ptr<connection_type> connection_ptr;
