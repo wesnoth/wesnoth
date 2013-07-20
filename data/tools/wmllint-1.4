@@ -888,7 +888,7 @@ def sanity_check(filename, lines):
     # We will also take the opportunity to check if the file is a top-level main
     textdomains = []
     for i in range(len(lines)):
-        if ("[campaign]" or "[binary_path]" or "[textdomain]") in lines[i] and not filename.endswith("_main.cfg"):
+        if ("[campaign]" in lines[i] or "[binary_path]" in lines[i] or "[textdomain]" in lines[i]) and not filename.endswith("_main.cfg") and not filename in is_main:
             is_main.append(filename)
         if "#textdomain" in lines[i]:
             textdomains.append(i+1)
