@@ -247,15 +247,16 @@ void get_files_in_dir(const std::string &directory,
 			}
 		}
 		// move initialcfg_filename, if present, to the beginning of the vector
-		int foundit = -1;
+		unsigned int foundit = 0;
 		for (unsigned int i = 0; i < files->size(); i++)
 			if (ends_with((*files)[i], "/" + initialcfg_filename)) {
 				foundit = i;
 				break;
 			}
+		// If _initial.cfg needs to be moved (it was found, but not at index 0).
 		if (foundit > 0) {
 			std::string initialcfg = (*files)[foundit];
-			for (unsigned int i = foundit; i > 0; i--)
+			for (unsigned int i = foundit; i > 0; --i)
 				(*files)[i] = (*files)[i-1];
 			(*files)[0] = initialcfg;
 		}
