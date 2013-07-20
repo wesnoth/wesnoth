@@ -122,7 +122,7 @@ struct scoped_context
 };
 
 static bool screen_needs_rebuild = false;
-// The value returned by wml_tracking();
+/// The value returned by wml_tracking();
 static size_t internal_wml_tracking = 0;
 
 namespace {
@@ -560,8 +560,8 @@ namespace {
 
 /**
  * Converts a vconfig to a location (based on x,y=).
- * The default parameter values cause the default return value (if neither x nor
- * y is specified) to equal map_location::null_location.
+ * The default parameter values cause the default return value (if neither
+ * x nor y is specified) to equal map_location::null_location.
  */
 static map_location cfg_to_loc(const vconfig& cfg, int defaultx = -999, int defaulty = -999)
 {
@@ -772,7 +772,8 @@ WML_HANDLER_FUNCTION(place_shroud, /*event_info*/,cfg)
 	toggle_shroud(false,cfg );
 }
 
-/* Implements the lifting and resetting of fog via WML.
+/**
+ * Implements the lifting and resetting of fog via WML.
  * Keeping affect_normal_fog as false causes only the fog override to be affected.
  * Otherwise, fog lifting will be implemented similar to normal sight (cannot be
  * individually reset and ends at the end of the turn), and fog resetting will, in
@@ -955,9 +956,9 @@ WML_HANDLER_FUNCTION(scroll, /*event_info*/, cfg)
 	screen.draw(true,true);
 }
 
-// store time of day config in a WML variable; useful for those who
-// are too lazy to calculate the corresponding time of day for a given turn,
-// or if the turn / time-of-day sequence mutates in a scenario.
+/// Store time of day config in a WML variable. This is useful for those who
+/// are too lazy to calculate the corresponding time of day for a given turn,
+/// or if the turn / time-of-day sequence mutates in a scenario.
 WML_HANDLER_FUNCTION(store_time_of_day, /*event_info*/, cfg)
 {
 	const map_location loc = cfg_to_loc(cfg);
@@ -1261,8 +1262,8 @@ std::vector<map_location> fake_unit_path(const unit& fake_unit, const std::vecto
 
 } //end of anonymous namespace
 
-// Moving a 'unit' - i.e. a dummy unit
-// that is just moving for the visual effect
+/// Moving a 'unit' - i.e. a dummy unit
+/// that is just moving for the visual effect
 WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 {
 	util::unique_ptr<unit> dummy_unit(create_fake_unit(cfg));
@@ -1579,7 +1580,6 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 
 		var=joined_string;
 	}
-
 }
 
 
@@ -1821,7 +1821,7 @@ void change_terrain(const map_location &loc, const t_translation::t_terrain &t,
 	}
 }
 
-// Creating a mask of the terrain
+/// Creating a mask of the terrain
 WML_HANDLER_FUNCTION(terrain_mask, /*event_info*/, cfg)
 {
 	map_location loc = cfg_to_loc(cfg, 1, 1);
@@ -1865,7 +1865,7 @@ static bool try_add_unit_to_recall_list(const map_location& loc, const unit& u)
 	}
 }
 
-// If we should spawn a new unit on the map somewhere
+/// If we should spawn a new unit on the map somewhere
 WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
 {
 	config parsed_cfg = cfg.get_parsed_config();
@@ -1907,7 +1907,7 @@ WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
 
 }
 
-// If we should recall units that match a certain description
+/// If we should recall units that match a certain description.
 WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 {
 	LOG_NG << "recalling unit...\n";
@@ -1947,7 +1947,7 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 				if(!cfg["check_passability"].to_bool(true)) pass_check = NULL;
 				const map_location cfg_loc = cfg_to_loc(cfg);
 
-				//TODO fendrin: comment this monster
+				/// @todo fendrin: comment this monster
 				BOOST_FOREACH(unit_map::const_unit_iterator leader, leaders) {
 					DBG_NG << "...considering " + leader->id() + " as the recalling leader...\n";
 					map_location loc = cfg_loc;
@@ -1985,8 +1985,8 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 			}
 		}
 	}
-	//TODO I don't know about that error throwing. Sometimes a unit is just not available,
-	//the designer needs to check with [have_unit] or fetch the recall event.
+	/// @todo I don't know about that error throwing. Sometimes a unit is just not available;
+	/// the designer needs to check with [have_unit] or fetch the recall event.
 	ERR_NG << "A [recall] tag with the following content failed:\n" << cfg.get_config().debug();
 }
 
@@ -2024,8 +2024,8 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 
 	if ( u != resources::units->end()  &&  (filter.null() || u->matches_filter(filter)) )
 	{
-		//@deprecated This can be removed (and a proper duration=level implemented) after 1.11.2
-		// Don't forget to remove it from wmllint too!
+		///@deprecated This can be removed (and a proper duration=level implemented) after 1.11.2
+		/// Don't forget to remove it from wmllint too!
 		const std::string& duration = cfg["duration"];
 		if (duration == "level") {
 			lg::wml_error << "[object]duration=level is deprecated. Use duration=scenario instead.\n";
@@ -2248,7 +2248,7 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 	}
 }
 
-// Setting of menu items
+/// Setting of menu items
 WML_HANDLER_FUNCTION(set_menu_item, /*event_info*/, cfg)
 {
 	/*
@@ -2365,7 +2365,7 @@ struct unstore_unit_advance_choice: mp_sync::user_choice
 	}
 };
 
-// Unit serialization to variables
+/// Unit serialization to variables
 WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 {
 	const config &var = resources::gamedata->get_variable_cfg(cfg["variable"]);
@@ -2673,7 +2673,7 @@ WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 	}
 }
 
-// Allow undo sets the flag saying whether the event has mutated the game to false
+/// Allow undo sets the flag saying whether the event has mutated the game to false.
 WML_HANDLER_FUNCTION(allow_undo,/*event_info*/,/*cfg*/)
 {
 	current_context->mutated = false;
@@ -2690,7 +2690,7 @@ WML_HANDLER_FUNCTION(open_help,  /*event_info*/, cfg)
 namespace {
 
 /**
- * Helper to handle the speaker part of the message.
+ * Helper to handle the speaker part of [message].
  *
  * @param event_info              event_info of message.
  * @param cfg                     cfg of message.
@@ -2741,7 +2741,7 @@ unit_map::iterator handle_speaker(
 }
 
 /**
- * Helper to handle the image part of the message.
+ * Helper to handle the image part of [message].
  *
  * @param cfg                     cfg of message.
  * @param speaker                 The speaker of the message.
@@ -2764,7 +2764,7 @@ std::string get_image(const vconfig& cfg, unit_map::iterator speaker)
 }
 
 /**
- * Helper to handle the caption part of the message.
+ * Helper to handle the caption part of [message].
  *
  * @param cfg                     cfg of message.
  * @param speaker                 The speaker of the message.
@@ -2850,7 +2850,7 @@ struct message_user_choice : mp_sync::user_choice
 	}
 };
 
-// Display a message dialog
+/// Display a message dialog
 WML_HANDLER_FUNCTION(message, event_info, cfg)
 {
 	// Check if there is any input to be made, if not the message may be skipped
@@ -2989,7 +2989,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 	}
 }
 
-// Adding/removing new time_areas dynamically with Standard Location Filters.
+/// Adding/removing new time_areas dynamically with Standard Location Filters.
 WML_HANDLER_FUNCTION(time_area, /*event_info*/, cfg)
 {
 	log_scope("time_area");
@@ -3022,7 +3022,7 @@ WML_HANDLER_FUNCTION(time_area, /*event_info*/, cfg)
 	}
 }
 
-//Replacing the current time of day schedule
+/// Replacing the current time of day schedule.
 WML_HANDLER_FUNCTION(replace_schedule, /*event_info*/, cfg)
 {
 	if(cfg.get_children("time").empty()) {
@@ -3044,7 +3044,7 @@ WML_HANDLER_FUNCTION(disallow_end_turn, /*event_info*/, /*cfg*/)
 	resources::gamedata->set_allow_end_turn(false);
 }
 
-// Adding new events
+/// Adding new events
 WML_HANDLER_FUNCTION(event, /*event_info*/, cfg)
 {
 	if (cfg["remove"].to_bool(false)) {
@@ -3056,7 +3056,7 @@ WML_HANDLER_FUNCTION(event, /*event_info*/, cfg)
 	}
 }
 
-// Experimental map replace
+/// Experimental map replace
 WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 {
 	/*
@@ -3135,16 +3135,18 @@ WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 	ai::manager::raise_map_changed();
 }
 
-// Experimental data persistence
+/// Experimental data persistence
 WML_HANDLER_FUNCTION(set_global_variable,/**/,pcfg)
 {
 	if (get_replay_source().at_end() || (network::nconnections() != 0))
 		verify_and_set_global_variable(pcfg);
 }
+/// Experimental data persistence
 WML_HANDLER_FUNCTION(get_global_variable,/**/,pcfg)
 {
 	verify_and_get_global_variable(pcfg);
 }
+/// Experimental data persistence
 WML_HANDLER_FUNCTION(clear_global_variable,/**/,pcfg)
 {
 	if (get_replay_source().at_end() || (network::nconnections() != 0))
@@ -3152,7 +3154,6 @@ WML_HANDLER_FUNCTION(clear_global_variable,/**/,pcfg)
 }
 
 /** Handles all the different types of actions that can be triggered by an event. */
-
 static void commit_wmi_commands() {
 	// Commit WML Menu Item command changes
 	while(wmi_command_changes.size() > 0) {
