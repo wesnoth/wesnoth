@@ -36,25 +36,24 @@ class connection
   : public boost::enable_shared_from_this<connection<Protocol> >,
     private boost::noncopyable
 {
-  typedef boost::asio::basic_socket_streambuf<boost::asio::ip::tcp> result_of_rdbuf;
-  typedef boost::asio::ip::tcp::iostream tcp_iostream;
 
 public:
   typedef Protocol protocol_type;
-  typedef boost::remove_pointer<result_of_rdbuf>::type socket_type;
+  typedef boost::asio::ip::tcp::socket socket_type;
 
 private:
-  boost::asio::io_service& io_service;
-  protocol_type& protocol;
-  tcp_iostream data_stream;
+  socket_type socket;
+  boost::shared_ptr<protocol_type> protocol;
 
 public:
   // Construct a connection with the given io_service.
   explicit connection(boost::asio::io_service& io_service,
-      protocol_type& protocol);
+      const boost::shared_ptr<protocol_type>& protocol);
 
   // Get the socket associated with the connection.
   socket_type& get_socket();
+
+  boost::asio::io_service& get_io_service();
 
   // Start the first asynchronous operation for the connection.
   void start();
@@ -66,8 +65,8 @@ private:
 
 template <class Protocol>
 connection<Protocol>::connection(boost::asio::io_service& io_service, 
-  protocol_type& protocol)
-: io_service(io_service)
+  const boost::shared_ptr<protocol_type>& protocol)
+: socket(io_service)
 , protocol(protocol)
 {
 }
@@ -75,22 +74,29 @@ connection<Protocol>::connection(boost::asio::io_service& io_service,
 template <class Protocol>
 typename connection<Protocol>::socket_type& connection<Protocol>::get_socket()
 {
-  return *data_stream.rdbuf();
+  return socket;
+}
+
+template <class Protocol>
+boost::asio::io_service& connection<Protocol>::get_io_service()
+{
+  return socket.get_io_service();
 }
 
 template <class Protocol>
 void connection<Protocol>::start()
 {
+  UMCD_LOG(trace) << "connection<Protocol>::start()";
   // Post is threadsafe.
-  io_service.post(
+  get_io_service().post(
     boost::bind(&connection::handle_request, this->shared_from_this()));
 }
 
 template <class Protocol>
 void connection<Protocol>::handle_request()
 {
-  UMCD_LOG_IP(trace, data_stream) << " -- connection::handle_request()";
-  protocol.handle_request(data_stream);
+  UMCD_LOG(trace) << "connection<Protocol>::handle_request()";
+  protocol->handle_request(this->shared_from_this());
 }
 
 #endif // SERVER_CONNECTION_HPP

@@ -17,11 +17,11 @@
 
 #include <boost/shared_ptr.hpp>
 
-namespace{
-struct no_action{};
+namespace detail{   
+   struct no_action_argument{};
 }
 
-template <class ReturnType, class Args, class Args2 = no_action>
+template <class ReturnType, class Args, class Args2 = detail::no_action_argument>
 class generic_action
 {
 public:
@@ -34,7 +34,7 @@ public:
 
 // Specialization for execute with one argument.
 template <class ReturnType, class Args>
-class generic_action<ReturnType, Args, no_action>
+class generic_action<ReturnType, Args, detail::no_action_argument>
 {
 public:
    typedef generic_action<ReturnType, Args> this_type;

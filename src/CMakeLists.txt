@@ -1021,28 +1021,33 @@ set(umcd_lib_SRC
 	umcd/special_packet.cpp
 	umcd/wml_reply.cpp
 	umcd/wml_request.cpp
+	umcd/request_info.cpp
 	umcd/umcd_logger.cpp
+	umcd/protocol/wml/umcd_protocol.cpp
 	serialization/one_hierarchy_validator.cpp
 	${network_implementation_files}
 	${wesnoth-schema_validator-dependencies_SRC}
 	config.cpp
 	addon/validation.cpp
-	loadscreen_empty.cpp
 )
 
 set(umcd_SRC
 	umcd/umcd.cpp
+	loadscreen_empty.cpp
 )
 
-add_executable(umcd ${umcd_SRC} ${umcd_lib_SRC})
-target_link_libraries(umcd
+add_library(umcd-lib ${LIBRARY_TYPE} EXCLUDE_FROM_ALL ${umcd_lib_SRC})
+
+add_executable(umcd ${umcd_SRC})
+target_link_libraries(umcd 
+	umcd-lib
 	wesnoth-core
 	wesnoth-schema_validator
 	${server-external-libs}
 	${Boost_THREAD_LIBRARY}
-  ${Boost_SYSTEM_LIBRARY}
+	${Boost_SYSTEM_LIBRARY}
 	${LIBINTL_LIBRARIES}
-	)
+)
 	
 set_target_properties(umcd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}umcd${BINARY_SUFFIX})
 
@@ -1147,19 +1152,20 @@ if(ENABLE_UMCD_TESTS)
 
 	set(umcd_test_SRC
 		tests/umcd/test_protocol.cpp
-		${umcd_lib_SRC}
+		loadscreen_empty.cpp
 	)
 
 	add_executable(umcd_test
 		${umcd_test_SRC}
 	)
 	target_link_libraries(umcd_test
+		umcd-lib
 		wesnoth-core
 		wesnoth-schema_validator
 		${server-external-libs}
 		boost_unit_test_framework
 		${Boost_THREAD_LIBRARY}
-	  ${Boost_SYSTEM_LIBRARY}
+	  	${Boost_SYSTEM_LIBRARY}
 	)
 	set_target_properties(umcd_test
 		PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}umcd_test${BINARY_SUFFIX}

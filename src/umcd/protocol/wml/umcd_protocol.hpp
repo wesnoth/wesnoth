@@ -17,74 +17,115 @@
 
 #include <string>
 #include <boost/shared_ptr.hpp>
-
+   
+#include "umcd/actions/basic_umcd_action.hpp"
+#include "umcd/wml_request.hpp"
+#include "umcd/server/connection.hpp"
 #include "umcd/umcd_logger.hpp"
 #include "umcd/server/generic_factory.hpp"
-#include "umcd/actions/request_license_action.hpp"
-#include "umcd/actions/request_umc_upload_action.hpp"
 #include "umcd/wml_reply.hpp"
-#include "umcd/wml_request.hpp"
 #include "umcd/request_info.hpp"
-#include "umcd/special_packet.hpp"
 
+class wml_request;
 
-class umcd_protocol
+template <std::size_t v>
+struct num_digits_impl2
 {
+   static const std::size_t value = 1 + num_digits_impl2<v/10>::value;
+};
+
+template <>
+struct num_digits_impl2<10>
+{
+   static const std::size_t value = 2;
+};
+
+template <>
+struct num_digits_impl2<0>
+{
+   static const std::size_t value = 0;
+};
+
+template <std::size_t v>
+struct num_digits_impl
+{
+   static const std::size_t value = num_digits_impl2<v>::value;
+};
+
+template <>
+struct num_digits_impl<0>
+{
+   static const std::size_t value = 1;
+};
+
+template <std::size_t v>
+struct num_digits
+{
+   static const std::size_t value = num_digits_impl<v>::value;
+};
+
+template <std::size_t v>
+const std::size_t num_digits<v>::value;
+
+
+class umcd_protocol : public boost::enable_shared_from_this<umcd_protocol>
+{
+public:
+   static const std::size_t REQUEST_HEADER_MAX_SIZE = 8192;
+   static const std::size_t MAX_NUMBER_OF_DIGITS = num_digits<REQUEST_HEADER_MAX_SIZE>::value;
 private:
    typedef basic_umcd_action action_type;
    typedef boost::shared_ptr<request_info> info_ptr;
    typedef schema_validation::one_hierarchy_validator validator_type;
+   typedef generic_factory<request_info> action_factory_type;
+   typedef connection<umcd_protocol> connection_type;
+   typedef boost::shared_ptr<connection_type> connection_ptr;
 
    const config& server_config;
-   generic_factory<request_info> action_factory;
+   // The shared_ptr avoid the factory to be copied/duplicated.
+   boost::shared_ptr<action_factory_type> action_factory;
+   connection_ptr client_connection;
+   boost::array<char, MAX_NUMBER_OF_DIGITS> raw_request_size;
+   std::string request_body;
+   wml_reply reply;
+   wml_request request;
 
    template <class Action>
-   void register_request_info(const std::string& request_name)
-   {
-      action_factory.register_product(
-         request_name, 
-         make_request_info<Action, validator_type>(server_config, request_name)
-      );
-   }
+   void register_request_info(const std::string& request_name);
 
 public:
-   typedef boost::asio::ip::tcp::iostream network_stream;
 
-   umcd_protocol(const config& server_config)
-   : server_config(server_config)
-   {
-      register_request_info<request_license_action>("request_license");
-      register_request_info<request_umc_upload_action>("request_umc_upload_action");
-   }
+   // This constructor is only called once in main, so the factory will be created once as well.
+   umcd_protocol(const config& server_config);
 
-   void handle_request(network_stream& raw_request_stream) const
-   {
-      wml_reply reply;
-      try
-      {
-         std::string request_name = peek_request_name(raw_request_stream);
-         UMCD_LOG_IP(info, raw_request_stream) << " -- request: " << request_name;
-         info_ptr info = action_factory.make_product(request_name);
-         wml_request request(raw_request_stream, info->validator());
-         reply = info->action()->execute(request, server_config);
-      }
-      catch(std::exception&)
-      {
-         reply = make_error_reply("The packet you sent is invalid. It could be a protocol bug and administrators have been contacted, the problem should be fixed soon.");
-         UMCD_LOG_IP(error, raw_request_stream) << " -- invalid request";
-      }
-      try
-      {
-         if(raw_request_stream.good())
-         {
-            reply.send(raw_request_stream);
-         }
-      }
-      catch(std::exception& e)
-      {
-         UMCD_LOG_IP(info, raw_request_stream) << " -- unable to send data to the client (" << e.what() << "). Connection dropped.";
-      }
-   }
+   // We only copy shared data.
+   umcd_protocol(const umcd_protocol& protocol);
+
+   wml_reply& get_reply();
+   wml_request& get_request();
+
+   void complete_request(const boost::system::error_code& error, std::size_t bytes_transferred);
+
+   void async_send_reply();
+   void async_send_error(const std::string& error_msg);
+   void async_send_invalid_packet(const std::string &where, const std::exception& e);
+
+   // Precondition: size_of_request must be read.
+   void read_request_body(const boost::system::error_code& error, std::size_t bytes_transferred);
+
+   // Precondition: request_body must be read.
+   void dispatch_request(const boost::system::error_code& error, std::size_t bytes_transferred);
+
+   void handle_request(connection_ptr client);
 };
+
+template <class Action>
+void umcd_protocol::register_request_info(const std::string& request_name)
+{
+   action_factory->register_product(
+      request_name, 
+      make_request_info<Action, validator_type>(server_config, request_name)
+   );
+}
 
 #endif // UMCD_PROTOCOL_HPP

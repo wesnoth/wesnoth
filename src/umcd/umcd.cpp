@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
       config cfg = options.build_config();
       UMCD_LOG(info) << "Configuration requested:\n" << cfg;
 
-      umcd_protocol protocol(cfg);
+      boost::shared_ptr<umcd_protocol> protocol = boost::make_shared<umcd_protocol>(cfg);
       server_mt<umcd_protocol> addon_server(cfg, protocol);
       addon_server.run();
     }

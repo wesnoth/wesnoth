@@ -17,32 +17,29 @@
 
 #include <istream>
 #include <string>
-
-#include "serialization/one_hierarchy_validator.hpp"
-#include "serialization/parser.hpp"
-#include "umcd/network_data.hpp"
+#include "config.hpp"
 #include "umcd/umcd_logger.hpp"
+#include "umcd/server/connection.hpp"
+
+class umcd_protocol;
 
 class wml_request
 {
 public:
-   typedef schema_validation::one_hierarchy_validator validator_type;
-   typedef boost::shared_ptr<validator_type> validator_ptr;
-   typedef boost::asio::ip::tcp::iostream network_stream;
+   typedef connection<umcd_protocol> connection_type;
+   typedef boost::shared_ptr<connection_type> connection_ptr;
 private:
-   network_data data;
-   network_stream& stream;
+   config metadata;
+   connection_ptr client_connection;
 
 public:
-   wml_request(network_stream& raw_data_stream, const validator_ptr& validator);
+   wml_request();
+   wml_request(const connection_ptr& client_connection);
 
-   network_data& get_data();
-   network_stream& get_stream();
-   std::string name() const;
+   config& get_metadata();
+   connection_ptr& get_connection();
 };
 
 std::string peek_request_name(std::istream& raw_data_stream);
-
-wml_request make_request(boost::asio::ip::tcp::iostream& raw_data_stream, const std::string& validator_file_path);
 
 #endif // UMCD_WML_REQUEST_HPP

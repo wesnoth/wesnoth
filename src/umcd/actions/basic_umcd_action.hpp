@@ -16,9 +16,9 @@
 #define UMCD_BASIC_UMCD_ACTION_HPP
 
 #include "umcd/server/generic_action.hpp"
-#include "umcd/wml_reply.hpp"
-#include "umcd/wml_request.hpp"
 
-typedef generic_action<wml_reply, wml_request&, const config&> basic_umcd_action;
+class umcd_protocol;
+
+typedef generic_action<void, boost::shared_ptr<umcd_protocol> > basic_umcd_action;
 
 #endif // UMCD_BASIC_WML_ACTION_HPP

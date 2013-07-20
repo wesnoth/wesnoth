@@ -19,17 +19,21 @@
 #include "filesystem.hpp"
 #include "umcd/actions/basic_umcd_action.hpp"
 
-class request_umc_upload_action : public basic_umcd_action
+class request_umc_upload_action 
+   : public basic_umcd_action
+   , public boost::enable_shared_from_this<request_umc_upload_action>
 {
 public:
    typedef basic_umcd_action base;
 
-   virtual wml_reply execute(wml_request&, const config& server_config)
-   {
+   const config& server_config;
+   
+   request_umc_upload_action(const config& server_config)
+   : server_config(server_config)
+   {}
 
-      config reply("request_umc_upload");
-      reply.child("request_license")["text"] = read_file(server_config["wesnoth_dir"].str() + "COPYING");
-      return make_reply(reply);
+   virtual void execute(boost::shared_ptr<umcd_protocol>)
+   {
    }
 
    virtual boost::shared_ptr<base> clone() const

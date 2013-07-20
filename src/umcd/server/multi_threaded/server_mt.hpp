@@ -41,12 +41,12 @@ class server_mt : public basic_server<Protocol>
     std::size_t thread_pool_size;
 
   public:
-    explicit server_mt(const config& cfg, protocol_type& protocol);
+    explicit server_mt(const config& cfg, const boost::shared_ptr<protocol_type>& protocol);
     void run();
 };
 
 template <class Protocol>
-server_mt<Protocol>::server_mt(const config &cfg, protocol_type& protocol) 
+server_mt<Protocol>::server_mt(const config &cfg, const boost::shared_ptr<protocol_type>& protocol) 
 : base(cfg, protocol)
 {
   thread_pool_size = cfg["threads"];

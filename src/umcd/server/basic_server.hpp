@@ -41,11 +41,11 @@ class basic_server : boost::noncopyable
     boost::asio::ip::tcp::acceptor acceptor;
 
     connection_ptr new_connection;
-    protocol_type& protocol;
+    boost::shared_ptr<protocol_type> protocol;
     bool server_on;
 
   public:
-    explicit basic_server(const config& cfg, protocol_type& protocol);
+    explicit basic_server(const config& cfg, const boost::shared_ptr<protocol_type>& protocol);
     void run();
 
   private:
@@ -55,7 +55,7 @@ class basic_server : boost::noncopyable
 };
 
 template <class Protocol>
-basic_server<Protocol>::basic_server(const config &cfg, protocol_type& protocol) 
+basic_server<Protocol>::basic_server(const config &cfg, const boost::shared_ptr<protocol_type>& protocol) 
 : acceptor(io_service)
 , protocol(protocol)
 , server_on(true)
@@ -111,7 +111,9 @@ void basic_server<Protocol>::run()
 template <class Protocol>
 void basic_server<Protocol>::start_accept()
 {
-  new_connection.reset(new connection_type(io_service, protocol));
+  UMCD_LOG(trace) << "basic_server<Protocol>::start_accept()";
+  protocol = boost::make_shared<protocol_type>(*protocol);
+  new_connection = boost::make_shared<connection_type>(boost::ref(io_service), protocol);
   acceptor.async_accept(new_connection->get_socket(),
     boost::bind(&basic_server::handle_accept, this, boost::asio::placeholders::error)
   );
@@ -120,6 +122,7 @@ void basic_server<Protocol>::start_accept()
 template <class Protocol>
 void basic_server<Protocol>::handle_accept(const boost::system::error_code& e)
 {
+  UMCD_LOG(trace) << "basic_server<Protocol>::handle_accept()";
   if (!e)
   {
     new_connection->start();

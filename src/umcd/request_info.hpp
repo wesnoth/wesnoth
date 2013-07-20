@@ -37,34 +37,11 @@ public:
    boost::shared_ptr<request_info> clone() const;
 };
 
-request_info::request_info(const action_ptr& action, const validator_ptr& validator)
-: umcd_action(action)
-, request_validator(validator)
-{}
-
-typename request_info::action_ptr request_info::action()
-{
-   return umcd_action;
-}
-
-typename request_info::validator_ptr request_info::validator()
-{
-   return request_validator;
-}
-
-boost::shared_ptr<request_info> request_info::clone() const
-{
-   return boost::make_shared<request_info>(
-      umcd_action->clone(), 
-      boost::make_shared<validator_type>(*request_validator)
-   );
-}
-
 template <class Action, class Validator>
 boost::shared_ptr<request_info> make_request_info(const config& server_conf, const std::string& request_name)
 {
    return boost::make_shared<request_info>(
-      boost::make_shared<Action>(),
+      boost::make_shared<Action>(server_conf),
       boost::make_shared<Validator>(
          server_conf["wesnoth_dir"].str() + "data/umcd/protocol_schema/"+request_name+".cfg"));
 }

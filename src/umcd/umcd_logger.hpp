@@ -142,16 +142,21 @@ public:
       return logger;
    }
 
+   void run_once()
+   {
+      for(int sev=0; sev < nb_severity_level; ++sev)
+      {
+         boost::shared_ptr<std::stringstream> log = logging_caches[sev].make_new_cache();
+         *logging_output[sev] << log->str();
+      }
+   }
+
    void run()
    {
-      boost::chrono::seconds time_to_sleep_between_two_log_write(5);
+      boost::chrono::milliseconds time_to_sleep_between_two_log_write(100);
       while(true)
       {
-         for(int sev=0; sev < nb_severity_level; ++sev)
-         {
-            boost::shared_ptr<std::stringstream> log = logging_caches[sev].make_new_cache();
-            *logging_output[sev] << log->str();
-         }
+         run_once();
          boost::this_thread::sleep_for(time_to_sleep_between_two_log_write);
       }
    }
@@ -182,6 +187,6 @@ public:
 };
 
 #define UMCD_LOG(severity) (umcd_logger::get().get_logger(severity))
-#define UMCD_LOG_IP(severity, stream) ((umcd_logger::get().get_logger(severity)) << stream.rdbuf()->remote_endpoint())
+#define UMCD_LOG_IP(severity, socket) ((umcd_logger::get().get_logger(severity)) << socket.remote_endpoint())
 
 #endif // UMCD_LOGGER_HPP

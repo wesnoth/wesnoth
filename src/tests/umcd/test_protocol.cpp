@@ -20,8 +20,8 @@
 #include <boost/asio.hpp>
 
 #include "serialization/parser.hpp"
-#include "umcd/wml_request.hpp"
-#include "umcd/wml_reply.hpp"
+#include "serialization/one_hierarchy_validator.hpp"
+#include "umcd/protocol/wml/umcd_protocol.hpp"
 
 using namespace boost::unit_test;
 using boost::asio::ip::tcp;
@@ -51,18 +51,33 @@ void test_stream_state(const tcp::iostream& stream)
   }
 }
 
+std::string zero_padding(const std::string& value, std::size_t size)
+{
+  std::string res;
+  int missing_zero = size - value.size();
+  for(int i=0; i < missing_zero; ++i)
+    res.push_back('0');
+  return res + value;
+}
+
 void test_exchange(const std::string& request_path, const std::string& reply_validator_path)
 {
   std::ifstream request_file(request_path.c_str());
   config request_conf;
   read(request_conf, request_file);
-  wml_reply reply = make_reply(request_conf);
 
   tcp::iostream stream(umcd_stream::host(), umcd_stream::port());
   test_stream_state(stream);
-  reply.send(stream);
+  std::string request_conf_string = request_conf.to_string();
+  std::string request_size = boost::lexical_cast<std::string>(request_conf_string.size());
+  BOOST_TEST_MESSAGE("max digits = " << umcd_protocol::MAX_NUMBER_OF_DIGITS << " | " <<  zero_padding(request_size, umcd_protocol::MAX_NUMBER_OF_DIGITS));
+  stream << zero_padding(request_size, umcd_protocol::MAX_NUMBER_OF_DIGITS);
+  stream << request_conf_string;
   test_stream_state(stream);
-  BOOST_CHECK_NO_THROW(make_request(stream, reply_validator_path));
+  config response;
+  boost::shared_ptr<schema_validation::one_hierarchy_validator> validator(new schema_validation::one_hierarchy_validator(reply_validator_path));
+  // Should not throw! we don't use BOOST_CHECK_NO_THROW because it doesn't print the message.
+  ::read(response, stream, validator.get());
   test_stream_state(stream);
 }
 
@@ -91,6 +106,21 @@ BOOST_AUTO_TEST_CASE(umcd_request_license_en_GB)
   const std::string request_path = "../data/umcd/tests/request_license/request_license_english.cfg";
   const std::string license_path = "../data/umcd/protocol_schema/request_license_reply.cfg";
   test_exchange(request_path, license_path);
+}
+
+BOOST_AUTO_TEST_SUITE_END() // umcd_request_license_test_suite
+
+BOOST_AUTO_TEST_SUITE(umcd_metaprogramming_tools_suite)
+
+BOOST_AUTO_TEST_CASE(umcd_num_digits)
+{
+  BOOST_CHECK_EQUAL(num_digits<0>::value, 1);
+  BOOST_CHECK_EQUAL(num_digits<9>::value, 1);
+  BOOST_CHECK_EQUAL(num_digits<10>::value, 2);
+  BOOST_CHECK_EQUAL(num_digits<11>::value, 2);
+  BOOST_CHECK_EQUAL(num_digits<100>::value, 3);
+  BOOST_CHECK_EQUAL(num_digits<1000>::value, 4);
+  BOOST_CHECK_EQUAL(num_digits<99999>::value, 5);
 }
 
 BOOST_AUTO_TEST_SUITE_END() // umcd_request_license_test_suite

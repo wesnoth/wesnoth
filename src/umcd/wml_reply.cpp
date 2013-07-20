@@ -16,21 +16,14 @@
 
 wml_reply::wml_reply(){}
 
-wml_reply::wml_reply(const network_data& data)
-: data(data)
-{}
-
-void wml_reply::send(std::ostream& raw_data_stream) const
+wml_reply::wml_reply(const config& metadata)
+: metadata(metadata.to_string())
 {
-   write(raw_data_stream, data.get_metadata());
 }
 
-wml_reply make_reply(const config& metadata, const std::string& data)
+std::vector<boost::asio::const_buffer> wml_reply::to_buffers() const
 {
-   return wml_reply(network_data(metadata, data));
-}
-
-wml_reply make_reply(const config& metadata)
-{
-   return make_reply(metadata, "");
+   std::vector<boost::asio::const_buffer> buffers;
+   buffers.push_back(boost::asio::buffer(metadata));
+   return buffers;
 }

@@ -1305,13 +1305,17 @@ bool config::matches(const config &filter) const
 	return true;
 }
 
-std::string config::debug() const
+std::string config::to_string() const
 {
-	check_valid();
-
 	std::ostringstream outstream;
 	outstream << *this;
 	return outstream.str();
+}
+
+std::string config::debug() const
+{
+	check_valid();
+	return to_string();
 }
 
 std::ostream& operator << (std::ostream& outstream, const config& cfg)

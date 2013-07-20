@@ -33,10 +33,10 @@ config make_warning_packet(const std::string& message)
 
 wml_reply make_error_reply(const std::string& message)
 {
-  return make_reply(make_error_packet(message));
+  return wml_reply(make_error_packet(message));
 }
 
 wml_reply make_warning_reply(const std::string& message)
 {
-  return make_reply(make_warning_packet(message));
+  return wml_reply(make_warning_packet(message));
 }

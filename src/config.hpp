@@ -468,6 +468,7 @@ public:
 	void clear();
 	bool empty() const;
 
+	std::string to_string() const;
 	std::string debug() const;
 	std::string hash() const;
 

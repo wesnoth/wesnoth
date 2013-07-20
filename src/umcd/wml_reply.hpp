@@ -16,20 +16,18 @@
 #define UMCD_WML_REPLY_HPP
 
 #include <ostream>
+#include <boost/asio.hpp>
 
-#include "umcd/network_data.hpp"
+#include "config.hpp"
 
 class wml_reply
 {
-private:
-   network_data data;
 public:
+   std::string metadata;
+   
    wml_reply();
-   wml_reply(const network_data& data);
-   void send(std::ostream& raw_data_stream) const;
+   wml_reply(const config& metadata);
+   std::vector<boost::asio::const_buffer> to_buffers() const;
 };
-
-wml_reply make_reply(const config& metadata, const std::string& data);
-wml_reply make_reply(const config& metadata);
 
 #endif // UMCD_WML_REPLY_HPP
