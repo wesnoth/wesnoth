@@ -521,7 +521,11 @@ namespace game_events {
 		lg::wml_error << message << '\n';
 	}
 
-	std::vector<int> get_sides_vector(const vconfig& cfg)
+	/**
+	 * Gets a vector of sides from side= attribute in a given config node.
+	 * Promotes consistent behavior.
+	 */
+	static std::vector<int> get_sides_vector(const vconfig& cfg)
 	{
 		const config::attribute_value sides = cfg["side"];
 		const vconfig &ssf = cfg.child("filter_side");
