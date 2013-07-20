@@ -90,7 +90,7 @@ struct addon_info
 	 * Write only minimal WML used for state tracking (_info.cfg) files.
 	 *
 	 * This currently only includes the add-on type, upload count,
-	 * and version number.
+	 * title, and version number.
 	 *
 	 * @param cfg Target WML config object.
 	 */
