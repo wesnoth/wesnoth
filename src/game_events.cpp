@@ -3213,8 +3213,8 @@ static bool filter_event(const game_events::event_handler& handler,
 	BOOST_FOREACH(const vconfig &f, filters.get_children("filter_side"))
 	{
 		side_filter ssf(f);
-		const int current_side = resources::controller->current_side();
-		if(!ssf.match(current_side)) return false;
+		if ( !ssf.match(resources::controller->current_side()) )
+			return false;
 	}
 
 	BOOST_FOREACH(const vconfig &f, filters.get_children("filter"))
