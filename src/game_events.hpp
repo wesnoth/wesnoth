@@ -135,8 +135,6 @@ namespace game_events
 		const config::const_child_itors &cfgs,
 		const std::string& type = std::string());
 
-	bool unit_matches_filter(const unit &, const vconfig& filter);
-
 	/** Used for [wml_message]. */
 	void handle_wml_log_message(const config& cfg);
 	/** Used for [deprecated_message]. */

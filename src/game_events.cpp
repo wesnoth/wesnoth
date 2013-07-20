@@ -349,7 +349,7 @@ namespace game_events {
 			int match_count = 0;
 			BOOST_FOREACH(const unit &i, *resources::units)
 			{
-				if(i.hitpoints() > 0 && unit_matches_filter(i, *u)) {
+				if ( i.hitpoints() > 0  &&  i.matches_filter(*u) ) {
 					++match_count;
 					if(counts == default_counts) {
 						// by default a single match is enough, so avoid extra work
@@ -371,7 +371,7 @@ namespace game_events {
 							break;
 						}
 						scoped_recall_unit auto_store("this_unit", team->save_id(), unit - avail_units.begin());
-						if (unit_matches_filter(*unit, *u)) {
+						if ( unit->matches_filter(*u) ) {
 							++match_count;
 						}
 					}
@@ -854,7 +854,7 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 	const vconfig filter = cfg.child("filter");
 	if(!filter.null()) {
 		for (u = resources::units->begin(); u != resources::units->end(); ++u){
-			if(game_events::unit_matches_filter(*u, filter))
+			if ( u->matches_filter(filter) )
 				break;
 		}
 	}
@@ -1727,7 +1727,7 @@ WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 		}
 		unit_map::iterator itor;
 		BOOST_FOREACH(unit &u, *resources::units) {
-			if (game_events::unit_matches_filter(u, filter)) {
+			if ( u.matches_filter(filter) ) {
 				u.set_role(cfg["role"]);
 				found = true;
 				break;
@@ -1951,8 +1951,8 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 				BOOST_FOREACH(unit_map::const_unit_iterator leader, leaders) {
 					DBG_NG << "...considering " + leader->id() + " as the recalling leader...\n";
 					map_location loc = cfg_loc;
-					if ( (leader_filter.null() || leader->matches_filter(leader_filter, leader->get_location())) &&
-							(u->matches_filter(vconfig(leader->recall_filter()), map_location())) ) {
+					if ( (leader_filter.null() || leader->matches_filter(leader_filter))  &&
+					     u->matches_filter(vconfig(leader->recall_filter()), map_location()) ) {
 						DBG_NG << "...matched the leader filter and is able to recall the unit.\n";
 						if(!resources::game_map->on_board(loc))
 							loc = leader->get_location();
@@ -2007,7 +2007,7 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 	map_location loc;
 	if(!filter.null()) {
 		BOOST_FOREACH(const unit &u, *resources::units) {
-			if (game_events::unit_matches_filter(u, filter)) {
+			if ( u.matches_filter(filter) ) {
 				loc = u.get_location();
 				break;
 			}
@@ -2022,7 +2022,7 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 
 	std::string command_type = "then";
 
-	if (u != resources::units->end() && (filter.null() || game_events::unit_matches_filter(*u, filter)))
+	if ( u != resources::units->end()  &&  (filter.null() || u->matches_filter(filter)) )
 	{
 		//@deprecated This can be removed (and a proper duration=level implemented) after 1.11.2
 		// Don't forget to remove it from wmllint too!
@@ -2147,7 +2147,7 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 		secondary_unit = false;
 		for(unit_map::const_unit_iterator unit = resources::units->begin();
 			unit != resources::units->end(); ++unit) {
-				if(game_events::unit_matches_filter(*unit, cfg.child("secondary_unit")))
+				if ( unit->matches_filter(cfg.child("secondary_unit")) )
 				{
 					killer_loc = game_events::entity_location(*unit);
 					secondary_unit = true;
@@ -2162,7 +2162,7 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 	//Find all the dead units first, because firing events ruins unit_map iteration
 	std::vector<unit *> dead_men_walking;
 	BOOST_FOREACH(unit & u, *resources::units){
-		if(game_events::unit_matches_filter(u, cfg)){
+		if ( u.matches_filter(cfg) ) {
 			dead_men_walking.push_back(&u);
 		}
 	}
@@ -2608,7 +2608,7 @@ WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 	std::vector<unit*> healers;
 	if (!healers_filter.null()) {
 		BOOST_FOREACH(unit& u, *units) {
-			if (game_events::unit_matches_filter(u, healers_filter) && u.has_ability_type("heals")) {
+			if ( u.matches_filter(healers_filter) && u.has_ability_type("heals") ) {
 				healers.push_back(&u);
 			}
 		}
@@ -2629,7 +2629,7 @@ WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 			u = units->find(event_info.loc1);
 			if(!u.valid()) return;
 		}
-		else if (!game_events::unit_matches_filter(*u, healed_filter)) continue;
+		else if ( !u->matches_filter(healed_filter) ) continue;
 
 		int heal_amount = u->max_hitpoints() - u->hitpoints();
 		if(amount.blank() || amount == "full") u->set_hitpoints(u->max_hitpoints());
@@ -2713,7 +2713,7 @@ unit_map::iterator handle_speaker(
 		speaker = units->find(event_info.loc2);
 	} else if(speaker_str != "narrator") {
 		for(speaker = units->begin(); speaker != units->end(); ++speaker){
-			if (game_events::unit_matches_filter(*speaker, cfg))
+			if ( speaker->matches_filter(cfg) )
 				break;
 		}
 	}
@@ -3419,11 +3419,6 @@ namespace game_events {
 		}
 		const attack_type attack(cfg);
 		return attack.matches_filter(filter.get_parsed_config());
-	}
-
-	bool unit_matches_filter(const unit &u, const vconfig& filter)
-	{
-		return u.matches_filter(filter, u.get_location());
 	}
 
 	static std::set<std::string> unit_wml_ids;
