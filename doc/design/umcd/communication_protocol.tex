@@ -1,6 +1,26 @@
 \chapter{Communication protocol}
 \label{chapter:communication_protocol}
 
+\section{Document Convention}
+
+The following tokens will be used to further describe an item.
+
+\begin{description}
+\item[?]
+  The current item is optional (request) or should not appear every time under specified conditions (reply).
+\item[*]
+  The current item appears 0, 1 or multiple times.
+\item[+]
+  The current item appears 1 or multiple times.
+\end{description}
+The description of an item can take different formats:
+\begin{description}
+  \item[\textless{}value\textgreater{}]
+    A text between ``\textless{}\textgreater{}'' is replaced with the appropriate value in the current context.
+  \item[\{value\}]
+    A text between  ``\{\}'' is optional.
+\end{description}
+
 
 \section{Server configuration}
 \label{section:communication_protocol:server}
@@ -9,7 +29,7 @@ On the server there are several configuration files:
 \begin{itemize}
 \item
 	The main configuration file, umcd.cfg, this file is stored in the
-	data directory, which is a parameter for the programme. This file is
+	data directory, which is a parameter for the program. This file is
 	further discussed in \cref{section:communication_protocol:server:umcd.cfg}.
 
 \item
@@ -17,41 +37,40 @@ On the server there are several configuration files:
 	directories have the following files:
 	\begin{description}
 	\item[umc.cfg]
-		The config file for the umc, this file is based on the client's
+		The config file for the UMC, this file is based on the client's
 		pbl file. This file is further discussed in
 		\cref{section:communication_protocol:server:umc.cfg}.
 
 	\item[umc.gz]
-		The gzipped umc.
+		The gzipped UMC.
 
 	\item[umc-\emph{lang}.cfg]
-		The configuration file for the translation of the umc. The
+		The configuration file for the translation of the UMC. The
 		\emph{lang} is replace with the locale of the translation.
 		This file is further discussed in
 		\cref{section:communication_protocol:server:umc-lang.cfg}.
 
 	\item[umc-\emph{lang}.gz]
-		The gzipped mo-file for the translation. Note if the
-		compression-ratio for the mo-file is bad, the raw mo-file will be
-		stored instead. The final decision in the matter will be specified
-		later.
+		The gzipped mo-file for the translation.
 
 	\end{description}
 
 \end{itemize}
 
+\subsection{Compressed files}
+
+If the compression ratio is bad, the file could not be zipped. But, to facilitate
+sending data over the network, the files sent will be gather into a tarball (.tar).
 
 \subsection{umcd.cfg}
 \label{section:communication_protocol:server:umcd.cfg}
 
-This file contains the settings of the umcd.
+This file contains the settings of the UMCD.
 
 \begin{lstlisting}
-[umcd_configuration]
-	port = PORT
-	threads = THREADS
-
-[/umcd_configurattion]
+port = PORT
+threads = THREADS
+dir = DIR
 \end{lstlisting}
 
 The keys have the following meaning:
@@ -60,12 +79,14 @@ The keys have the following meaning:
 	The TCP/IP port to listen to for incoming requests.
 
 \item[THREADS]
-	The number of listeners threads to start. A value of $0$ means start as
-	many threads as there are detected hardware cores\footnote{Whether
-	hyper-threading and Co. count as separate cores is unspecified.}.
+	The number of working threads to start. A value of $0$ means start as
+	many threads as there are detected hardware cores or hyperthreading units.
 
+\item[DIR]
+  The directory where the add-ons will be stored.
 \end{description}
 
+The values are not encapsulated into a global markup because we parse the options with \textit{Boost.Program\_options}.
 
 \subsection{umc.cfg}
 \label{section:communication_protocol:server:umc.cfg}
@@ -80,46 +101,52 @@ section.
 The file is specified like:
 \begin{lstlisting}
 [umc]
-	id = ID
-	name = NAME
-	icon = ICON
-	type = TYPE
-	description = DESCRIPTION
-	version = VERSION
-	size = SIZE
-	authors = AUTHORS
-	email = EMAIL
-	uploader_ip_address = UPLOADER_IP_ADDRESS
-	timestamp = TIMESTAMP
-	downloads = DOWNLOADS
-	uploads = UPLOADS
-	password = PASSWORD
-	language = LANGUAGE
-	translatable = TRANSLATABLE
+  [info]
+    id = ID
+    name = NAME
+    description = DESCRIPTION
+    type = TYPE
+    version = VERSION
+    authors = AUTHORS
+    email = EMAIL
+    password = PASSWORD
+  [/info]
+  [language]
+    native_language = NATIVE_LANGUAGE
+    translatable = TRANSLATABLE
+  [/language]
 	[dependencies]?
 		[dependency]+
 			id = ID
 			version? = VERSION_MASK
 		[/dependency]
 	[/dependencies]
+  [state]
+    uploader_ip_address = UPLOADER_IP_ADDRESS
+    timestamp = TIMESTAMP
+    downloads = DOWNLOADS
+    uploads = UPLOADS
+  [/state]
 [/umc]
 \end{lstlisting}
 
 The keys have the following meaning:
 \begin{description}
+
+\item [[info]] The main informations provided by the UMC-creator.
+
+\begin{description}
 \item[ID]
 	The unique id of the content. When uploading this value determines
-	whether an umc is the same umc.
+	whether an UMC is the same UMC.
 
 \item[NAME]
-	The name of the content. This string is not unique. This allows two
-	versions of the UMC on the server. This can be used to allow a new beta
-	next to a stable, as long as the ID differs.
+  The name of the content. This string is not unique. This allows two
+  versions of the UMC on the server. This can be used to allow a new beta
+  next to a stable, as long as the ID differs.
 
-\item[ICON]
-	The icon of the umc, which is shown in the addon-list on the server.
-	TODO it is not yet specified how the icon is transferred to and from the
-	client.
+\item[DESCRIPTION]
+  The description of the UMC.
 
 \item[TYPE]
 	The type of the addon. At the moment the following values are allowed:
@@ -132,25 +159,20 @@ The keys have the following meaning:
 	\item[RPG\_SP]
 		A RPG like single player game. (This also includes builder games in
 		the style of settlers.)
- 
 	\item[RPG\_MP]
 		A RPG like multi-player game. (This also includes builder games in
 		the style of settlers.)
- 
+	\item[MEDIA]
+		 Miscellaneous resources for UMC authors/users, for example, music packs, packages of general-purpose WML, etc.
 	\item[OTHER] Everything that doesn't fit in one of the above.
 	\end{description}
 
-\item[DESCRIPTION]
-	The description of the umc.
-
 \item[VERSION]
-	A string determining the version. The string should formatted like:
-	`x.y.z' or `x.y.z-q'. When doing so the version can be parsed as version
-	number. The `-q' part is sorted alphabetically and is an empty string if
-	omitted, thus sorted first.
-
-\item[SIZE]
-	The size of the umc in bytes packed on the server.
+	A string determining the version. The recommended string format like:
+	`x.y.z' or `x.y.z-q'. The version is parsed as version number and 
+comparisons are done considering all the number and letter
+$a < z < A < Z < 0 < 9 < Empty$, all other characters are parsed as separator.
+For example, ``aZ=4'' is greater than ``aZ'', and ``='' is the separator character.
 
 \item[AUTHORS]
 	A colon separated list of authors of the umc. When there is only one
@@ -162,37 +184,28 @@ The keys have the following meaning:
 	the authors, so make sure it's valid and doesn't need registration.
 	The address is not used in other ways nor shared with third-parties.
 
-\item[UPLOADER\_IP\_ADDRESS]
-	The ip address of the last uploader of the umc.
-
-\item[TIMESTAMP]
-	The timestamp of the last upload. 
-
-\item[DOWNLOADS]
-	The number of times the UMC is downloaded.
-
-\item[UPLOADS]
-	The number of time a new version of the UMC is uploaded.
-
 \item[PASSWORD]
-	The password required to upload a new version of an umc or remove an umc
-	from the server.
+	The password required to upload a new version of an UMC or remove an UMC
+	from the server. See also \cref{section:security:passwordstorage} and \cref{section:security:passwordtransmission}.
 
-\item[LANGUAGE]
-	The language id of the umc. If omitted American English is assumed.
-	This allows umc authors who are not able to create content in English to
-	still create content. However it's still recommended to try to write the
-	content in American English. (TODO determine whether omitted on the
-	server or only during the initial upload, if the latter the server
-	should set it if omitted during the upload.)
-
-\item[TRANSLATABLE]
-	This flag causes the umc to be synchronised with Wescamp. It's advisable
-	to only set the flags when the strings are somewhat stable. This flag
-	can only be set if the language is American English.
 \end{description}
 
-The [dependencies] lists the dependencies of the UMC. This allows the client
+\item [[language]] The items related to the language files of the UMC.
+
+\begin{description}
+
+\item[NATIVE\_LANGUAGE]
+	The native language id of the UMC, and the language in which are the name and the description.
+
+\item[TRANSLATABLE]
+	This flag causes the UMC to be synchronized with Wescamp. It's advisable
+	to only set the flags when the strings are somewhat stable. This flag
+	can only be set if American English is available.
+\end{description}
+
+
+\item[[dependencies]]
+Lists the dependencies of the UMC. This allows the client
 to download all UMC required to use this UMC. The fields mean:
 \begin{description}
 \item[ID]
@@ -226,27 +239,85 @@ to download all UMC required to use this UMC. The fields mean:
 
 \end{description}
 
+\item [[state]] These fields are auto-generated by the server. It's the current state of the UMC.
+
+\begin{description}
+\item[UPLOADER\_IP\_ADDRESS]
+  The ip address of the last uploader of the umc.
+
+\item[TIMESTAMP]
+  The timestamp of the last upload. 
+
+\item[DOWNLOADS]
+  The number of times the UMC is downloaded.
+
+\item[UPLOADS]
+  The number of time a new version of the UMC is uploaded.
+
+\end{description}
+\end{description}
+
 
 \subsection{umc-\emph{lang}.cfg}
 \label{section:communication_protocol:server:umc-lang.cfg}.
 
-The configuration file for the translation of the umc. The
+The configuration file for the translation of the UMC. The
 \emph{lang} is replace with the locale of the translation.
 
 \begin{lstlisting}
 	[language]
-		id = LANGUAGE
-		timestamp = TIMESTAMP
-		translated = TRANSLATED
-		fuzzy = FUZZY
-		untranslated = UNTRANSLATED
-		[translated_umc_strings]
-			name = NAME
-			description = DESCRIPTION
-		[/translated_umc_strings]
+    id = LANGUAGE
+    [translated_umc_strings]
+      name = NAME
+      description = DESCRIPTION
+    [/translated_umc_strings]
+    [po_file_details]
+      size = SIZE
+      timestamp = TIMESTAMP
+      translated = TRANSLATED
+      fuzzy = FUZZY
+      untranslated = UNTRANSLATED
+    [/po_file_details]
 	[/language]
 \end{lstlisting}
 
+\begin{description}
+\item[ID]
+  The id of the language the translation for.
+
+\item[[translated\_umc\_strings]]
+
+  The translation of the name and description, in the language specified by ``ID''.
+
+\begin{description}
+
+\item[NAME]
+  See \cref{section:communication_protocol:server:umc.cfg}
+
+\item[DESCRIPTION]
+  See \cref{section:communication_protocol:server:umc.cfg}
+
+\end{description}
+
+\item [[po\_file\_details]]
+\begin{description}
+\item[SIZE]
+  The size of the po-file.
+
+\item[TIMESTAMP]
+  The timestamp the po-file was last updated.
+
+\item[TRANSLATED]
+  The number of translated strings. Must be \textgreater 0.
+
+\item[FUZZY]
+  The number of strings that are fuzzy.
+  
+\item[UNTRANSLATED]
+  The number of strings that are not translated.
+
+\end{description}
+\end{description}
 
 
 \section{UMC configuration}
@@ -257,262 +328,592 @@ stored on the system of the addon developer and on the server. The file
 contains the following data:
 
 \begin{lstlisting}
-[umc_configuraton]
-	id = ID
-	name = NAME
-	icon = ICON
-	type = TYPE
-	description = DESCRIPTION
-	version = VERSION
-	authors = AUTHORS
-	email = EMAIL
-	password? = PASSWORD
-	language? = LANGUAGE
-	translatable = TRANSLATABLE
-	[dependencies]?
-		[dependency]+
-			id = ID
-			version? = VERSION_MASK
-		[/dependency]
-	[/dependencies]
-[/umc_configration]
+[umc_configuration]
+  [info]
+    id = ID
+    name = NAME
+    type = TYPE
+    description = DESCRIPTION
+    version = VERSION
+    authors = AUTHORS
+    email = EMAIL
+    password = PASSWORD
+  [/info]
+  [language]
+    native_language = NATIVE_LANGUAGE
+    translatable = TRANSLATABLE
+  [/language]
+  [dependencies]?
+    [dependency]+
+      id = ID
+      version? = VERSION_MASK
+    [/dependency]
+  [/dependencies]
+  [image]
+    icon_name = ICON_NAME
+  [/image]
+[/umc_configuration]
 \end{lstlisting}
 
 The keys have the following meaning:
 \begin{description}
-\item[ID]
+\item[[info]]
 	See \cref{section:communication_protocol:server:umc.cfg}.
 
-\item[NAME]
+\item[[language]]
+  See \cref{section:communication_protocol:server:umc.cfg}.
+
+\item[[dependencies]]
 	See \cref{section:communication_protocol:server:umc.cfg}.
 
-\item[ICON]
-	See \cref{section:communication_protocol:server:umc.cfg}.
-
-\item[TYPE]
-	See \cref{section:communication_protocol:server:umc.cfg}.
-
-\item[DESCRIPTION]
-	See \cref{section:communication_protocol:server:umc.cfg}.
-
-\item[VERSION]
-	See \cref{section:communication_protocol:server:umc.cfg}.
-
-\item[AUTHORS]
-	See \cref{section:communication_protocol:server:umc.cfg}.
-
-\item[EMAIL]
-	See \cref{section:communication_protocol:server:umc.cfg}.
-
-\item[PASSWORD]
-	See \cref{section:communication_protocol:server:umc.cfg}.
-
-	It may be omitted, during the initial upload. In that case the first
-	upload results in sending back the password. It's stored in the pbl-file
-	and the author doesn't need to remember it.
-
-\item[LANGUAGE]
-	See \cref{section:communication_protocol:server:umc.cfg}.
-
-\item[TRANSLATABLE]
-	See \cref{section:communication_protocol:server:umc.cfg}.
+\item[[image]]
+\begin{description}
+ \item ICON\_NAME The name of the icon that will be displayed in the umc list.
+\end{description}
 
 \end{description}
 
 \section{Wire}
 \label{section:communication_protocol:wire}
 
-\section{Request campaign list}
-\label{wire:request_campaign_list}
+\subsection{Design rational}
 
-Request:
+\begin{itemize}
+ \item The ID is a technical ID and not the couple campaign name + version which is unique too. So we can change the campaign name without breaking dependencies.
+
+\end{itemize}
+
+
+\subsection{Special packets}
+\label{wire:specialpackets}
+
+Special packets are sent in reply and can appears instead an expected packet or in addition of this packet.
+
+\subsubsection{Error packet}
+\label{wire:specialpackets:errorpacket}
+
+ The server could not understand the request, or a value in a field of the request is wrong or missing.
+In this case an error packet will be sent and it will always take the following form:
 \begin{lstlisting}
-	[request_umc_list]
-	[/requst_umc_list]
+[error_packet]
+  msg = MSG
+[/error_packet]
 \end{lstlisting}
 
-Replay:
+\begin{description}
+ \item MSG Contains a message describing the error.
+\end{description}
+
+The common values of MSG are:
+
+\begin{enumerate}
+ \item The value $<$value$>$ of the field $<$field\_name$>$ is wrong \{because $<$reason$>$\}.
+ \item The value $<$value$>$ of the field $<$field\_name$>$ is missing.
+ \item The field $<$field\_name$>$ is unknown.
+\end{enumerate}
+
+\subsubsection{Warning packet}
+\label{wire:specialpackets:warningpacket}
+
+The server correctly understand the request but the request is not exactly correct for the reasons describe into \textit{msg}.
+\begin{lstlisting}
+[warning_packet]
+  msg = MSG
+[/warning_packet]
+\end{lstlisting}
+
+\begin{description}
+ \item MSG Contains a message describing the warning.
+\end{description}
+
+\subsection{Request campaign list}
+\label{wire:request_campaign_list}
+
+\subsubsection{Request}
+\begin{lstlisting}
+	[request_umc_list]
+    favlang = LANGUAGE
+	[/request_umc_list]
+\end{lstlisting}
+
+The field \textit{favlang} is the favorite language in which the add-ons (title and description for example) must be send. 
+If the content is not fully (or not at all) translated,  the UMC description is downloaded in its native language, 
+and the rest is left to the engine \textit{gettext}.
+\newline
+\subsubsection{Reply}
+
+An error packet can be sent instead of the umc list packet. No special value appears in this packet. See \cref{wire:specialpackets:errorpacket}.
+If the list is empty, no error packet is sent, the list will just appears with no [umc] tag.
+
 \begin{lstlisting}
 	[umc_list]
 		[umc]*
-			id = ID
-			name = NAME
-			type = TYPE
-			description = DESCRIPTION
-			version = VERSION
-			size = SIZE
-			authors = AUTHORS
-			timestamp = TIMESTAMP
-			downloads = DOWNLOADS
-			uploads = UPLOADS
-			language = LANGUAGE
-			[dependencies]?
-				[dependency]+
-					id = ID
-					version? = VERSION_MASK
-				[/dependency]
-			[/dependencies]
-			[languages]?
-				[language]+
-					id = LANGUAGE
-					timestamp = TIMESTAMP
-					translated = TRANSLATED
-					fuzzy = FUZZY
-					untranslated = UNTRANSLATED
-					[translated_umc_strings]
-						name = NAME
-						description = DESCRIPTION
-					[/translated_umc_strings]
-				[/language]
-			[/languages]
+      [info]
+        id = ID
+        type = TYPE
+        version = VERSION
+        size = SIZE
+        authors = AUTHORS
+      [/info]
+      [icon]
+        size = SIZE
+        extension = EXTENSION
+      [/icon]
+      [state]
+        timestamp = TIMESTAMP
+        downloads = DOWNLOADS
+        uploads = UPLOADS
+      [/state]
+      [dependencies]?
+        [dependency]+
+          id = ID
+          version? = VERSION_MASK
+        [/dependency]
+      [/dependencies]
+      [languages]
+        [language] +
+          id = LANGUAGE
+          [translated_umc_strings]
+            name = NAME
+            description = DESCRIPTION
+          [/translated_umc_strings]
+          [po_file_details]
+            size = SIZE
+            timestamp = TIMESTAMP
+            translated = TRANSLATED
+            fuzzy = FUZZY
+            untranslated = UNTRANSLATED
+          [/po_file_details]
+        [/language]
+      [/languages]
 		[/umc]
 	[/umc_list]
 \end{lstlisting}
 
 The fields in [umc] have the following meaning:
 \begin{description}
-\item[ID]
-	See \cref{section:communication_protocol:server:umc.cfg}.
+\item[[info]]
+  See \cref{section:communication_protocol:server:umc.cfg}
 
-\item[NAME]
-	See \cref{section:communication_protocol:server:umc.cfg}.
-
-	The version in [language] is the translated name of the UMC.
-
-\item[TYPE]
-	See \cref{section:communication_protocol:server:umc.cfg}.
-
-\item[DESCRIPTION]
-	See \cref{section:communication_protocol:server:umc.cfg}.
-
-\item[VERSION]
-	See \cref{section:communication_protocol:server:umc.cfg}.
-
-\item[SIZE]
-	See \cref{section:communication_protocol:server:umc.cfg}.
-
-\item[TIMESTAMP]
-	The timestamp of the last upload. For the [umcs] it is the upload
-	of the umc, for the [language] it is the last upload of the
-	po-file. (NOTE MERGE WITH MASTER LIST.)
-
-\item[DOWNLOADS]
-	See \cref{section:communication_protocol:server:umc.cfg}.
-
-\item[UPLOADS]
-	See \cref{section:communication_protocol:server:umc.cfg}.
-
-\item[LANGUAGE]
-	The id of a language locale. The one in [umc] is the language of
-	the UMC. If this language is empty American English is assumed. The UMC
-	is only translatable if this is set to American English (this should be
-	mentioned in the PBL section).
-\end{description}
-
-
-The [dependencies] lists the dependencies of the UMC, See
-\cref{section:communication_protocol:server:umc.cfg}.
-
-The [languages] contains the list of languages the addon is (partly)
-translated to. The fields mean:
 \begin{description}
-\item[ID]
-	The id of the language the translation for.
-
-\item[TIMESTAMP]
-	The timestamp the po-file was last updated. NOTE UNIX stamp, should be
-	at other stamp as well.
-
-\item[TRANSLATED]
-	The number of translated strings, if this entry is $0$, then the entire
-	section is not printed.
-
-\item[FUZZY]
-	The number of strings that are fuzzy.
-	
-\item[UNTRANSLATED]
-	The number of strings that are not translated.
-
-NOTE MAYBE ALSO ADD UP AND DOWNLOAD COUNTER and obviously the SIZE
+ \item SIZE The size of the UMC without translation files (.po).
 \end{description}
 
-The section [translated\_umc\_strings] duplicates some strings from the
-general [umc] section. This version contains the translated string from
-the po file. If not translated or fuzzy it contains the original, just like
-normal with gettext. The keys in this section corrospondent with the ones in
-[campaign].
+\item[[icon]]
 
-\section{Request umc download}
+\begin{description}
+ \item SIZE The size of the icon.
+ \item EXTENSION The extension of the file, or in other word, the file format.
+\end{description}
+
+
+\item[[state]]
+  See \cref{section:communication_protocol:server:umc.cfg}.
+
+\item[[dependencies]] 
+  Lists the dependencies of the UMC, See \cref{section:communication_protocol:server:umc.cfg}.
+
+\item[[languages]]
+  Contains the description of the add-on in the favorite language requested.
+
+If the translation into the favorite language is not available or incomplete, American English is sent.
+If American English is not available or complete, the language depends on the native language of this UMC. 
+We let the engine \textit{gettext} merge the different file considering this order of preference: $favorite >
+American English > native$. So, maximum 3 languages are sent.
+
+\begin{description}
+\item [[language]] See \cref{section:communication_protocol:server:umc-lang.cfg}.
+\end{description}
+\end{description}
+The icons are sent in the order of appearance in the [umc\_list] packet, the size of the icon is specified in the [icon] tag.
+
+\subsection{Request umc download}
 \label{wire:request_umc_download}
 
-This requests to download an umc.
+This requests to download an UMC.
 
-Request:
+\subsubsection{Request}
 \begin{lstlisting}
 	[request_umc_download]
 		id = ID
-		[languages]?
-			[language]*
-				ID = LANGUAGE
-			[/language]
-		[/languages]
-	[/requst_umc_download]
+		language = LANGUAGE
+	[/request_umc_download]
 \end{lstlisting}
 
-The fields are:
 \begin{description}
 \item[ID]
-	The id of the umc to download.
+	The id of the UMC to download.
 
 \item[LANGUAGE]
 	The id of the requested language to download.
 
 \end{description}
 
-Replay:
+\subsubsection{Reply}
+
+An error packet can be sent instead for the common reasons. See \cref{wire:specialpackets:errorpacket}.
+
 \begin{lstlisting}
+  [warning_packet]?
+    msg = MSG
+  [/warning_packet]
 	[umc_download]
 		id = ID
-		status = STATUS
-		[languages]?
+    size = SIZE
+		[languages]
 			[language]+
 				id = LANGUAGE
-				status = STATUS
+        size = SIZE
 			[/language]
 		[/languages]
 	[/umc_download]
 \end{lstlisting}
 
-This is a mirror of the request, only all items have a status field. The
-status can be OK it the file exists and can be downloaded. Or ERROR if not
-possible.
+\begin{description}
+ \item [[warning\_packet]]
+    The warning packet can be sent with the following possible values:
+    \begin{enumerate}
+      \item The language requested is incomplete.
+      \item The language requested is not available.
+    \end{enumerate}
+    See also \cref{wire:specialpackets:warningpacket}.
+  \item[[umc\_download]]
+  \begin{description}
+    \item [ID] The id of the UMC.
+    \item [SIZE] The size of the UMC without translation files (.po).
+    \item [[language]]
+    \begin{description}
+      \item ID The id of the language.
+      \item SIZE The size of the translation file (.po).
+    \end{description}
+  \end{description}
+\end{description}
 
-The files send are in the order of appearance in the request and reply. The
-files are named:
+
+The files send are in the order of appearance in the reply, so first the ID.gz and then
+the ID-LANGUAGE.gz.
 \begin{description}
 \item[ID.gz]
 	The gzipped campaign files. The file is packed in a single config file
 	to be extracted to the local file-system.
 
 \item[ID-LANGUAGE.gz]
-	A gzipped mo-file for a language. If gzip's compression ratio for mo
-	files is too small the mo-file will be send directly.
+	A gzipped mo-file for a language.
 
 \end{description}
 
 
-\section{Request umc change password}
+\subsection{Request UMC change password}
 \label{wire:request_umc_change_password}
 
 This request changes the password.
 
+\subsubsection{Request}
+\begin{lstlisting}
+  [request_change_password]
+    id = ID
+    current_password = CURRENT_PASSWORD
+    new_password = NEW_PASSWORD
+  [/request_change_password]
+\end{lstlisting}
 
-\section{Request umc upload}
+\begin{description}
+\item[ID]
+  The id of the UMC to change the password.
+
+\item[CURRENT\_PASSWORD]
+  The current password of the UMC.
+
+\item[NEW\_PASSWORD]
+  The new password of the UMC.
+\end{description}
+
+\subsubsection{Reply}
+\begin{lstlisting}
+  [umc_change_password]
+    id = ID
+    [error_packet] ?
+      msg = MSG
+    [/error_packet]
+    [warning_packet] ?
+      msg = MSG
+    [/warning_packet]
+  [/umc_change_password]
+\end{lstlisting}
+
+\begin{description}
+\item[id]
+  The id of the UMC to change the password.
+
+\item[[error\_packet]]
+  If this packet appears, then the password could not been changed for the reasons described into this packet.
+  The possible special reasons are:
+  \begin{enumerate}
+    \item The current password is wrong.
+    \item The time between two requests is not respected.
+    \item The new password is too weak.
+  \end{enumerate}
+  See also \cref{wire:specialpackets:errorpacket} for a description.
+
+\item[[warning\_packet]]
+  If this packet appears, the password has been changed but a warning is sent to the user. The warning can take these values:
+  \begin{enumerate}
+    \item The password is weak, you should use a stronger password.
+  \end{enumerate}
+  See also \cref{wire:specialpackets:warningpacket}.
+\end{description}
+If only the ID appears in the packet, the password has been successfully changed.
+
+\subsection{Request a new password}
+\label{wire:request_new_password}
+
+\subsubsection{Request}
+Request a new password because the user forgot it. A new auto-generated password is sent by email.
+\begin{lstlisting}
+  [umc_forgot_password]
+    id = ID
+  [/umc_forgot_password]
+\end{lstlisting}
+\begin{description}
+ \item [ID] The ID of the UMC that the password has been forgotten.
+\end{description}
+
+\subsubsection{Reply}
+
+The reply can be an error packet for the common reasons. See \cref{wire:specialpackets:errorpacket}.
+
+\begin{lstlisting}
+  [umc_forgot_password]
+    id = ID
+    mail = MAIL
+  [/umc_forgot_password]
+\end{lstlisting}
+\begin{description}
+  \item [ID] The ID of the UMC of the forgotten password.
+  \item [MAIL] The address mail where the password has been sent.
+\end{description}
+
+\subsection{Request umc upload}
 \label{wire:request_umc_upload}
 
+Request an upload of a new or an updated version of a UMC.
+A new version have no ID in the .pbl file while an updated version have an ID.
 
-\section{Request umc delete}
+\subsubsection{Request}
+\begin{lstlisting}
+[request_umc_upload] 
+  size = SIZE
+  format = FORMAT
+  [umc_configuration]
+    [info]
+      id = ID
+      name = NAME
+      type = TYPE
+      description = DESCRIPTION
+      version = VERSION
+      authors = AUTHORS
+      email = EMAIL
+      password = PASSWORD
+    [/info]
+    [language]
+      native_language = NATIVE_LANGUAGE
+      translatable = TRANSLATABLE
+    [/language]
+    [dependencies]?
+      [dependency]+
+        id = ID
+        version? = VERSION_MASK
+      [/dependency]
+    [/dependencies]
+    [image]
+      icon_name = ICON_NAME
+    [/image]
+  [/umc_configuration]
+[/request_umc_upload]
+\end{lstlisting}
+\begin{description}
+  \item [SIZE] The size the complete UMC that is sent next.
+  \item [FORMAT] The format of the UMC, this field can take these values: gz or bz2.
+  \item [UMC\_CONFIGURATION] This part is commonly known as the ``pbl file''. See \cref{section:communication_protocol:umc} for details.
+\end{description}
+
+The server will decompressed or unpack this file and will look recursively into the repository to check
+if all the required files are present in respect of the pattern described in their respective section.
+
+The pack must contains, at least:
+
+\begin{enumerate}
+  \item A .pbl file.
+\end{enumerate}
+
+But can also contains:
+
+\begin{enumerate}
+ \item An icon file, the name of the icon file is specified in the .pbl file, so the server will look recursively into the archive.
+\end{enumerate}
+
+
+\subsubsection{Reply}
+
+An error packet can be sent for the common reasons, see \cref{wire:specialpackets:errorpacket}.
+But also for specific reasons:
+
+\begin{enumerate}
+  \item The translatable flag in the .pbl has been set, but no American English translation can be found.
+  \item The file $<$file\_type$>$ is malformed: $<$reason$>$.
+  \item A conflict has been detected: $<$reason$>$.
+  \item Wrong password.
+\end{enumerate}
+
+If no error packet appears, in case of a new version, the ID field in the .pbl is add and
+the following response is sent:
+
+\begin{lstlisting}
+[request_umc_upload]
+  [umc]
+    [info]
+      id = ID
+      type = TYPE
+      version = VERSION
+      size = SIZE
+      authors = AUTHORS
+    [/info]
+    [icon]
+      size = SIZE
+      extension = EXTENSION
+    [/icon]
+    [state]
+      timestamp = TIMESTAMP
+      downloads = DOWNLOADS
+      uploads = UPLOADS
+    [/state]
+    [dependencies]?
+      [dependency]+
+        id = ID
+        version? = VERSION_MASK
+      [/dependency]
+    [/dependencies]
+    [languages]
+      [language] +
+        id = LANGUAGE
+        [translated_umc_strings]
+          name = NAME
+          description = DESCRIPTION
+        [/translated_umc_strings]
+        [po_file_details]
+          size = SIZE
+          timestamp = TIMESTAMP
+          translated = TRANSLATED
+          fuzzy = FUZZY
+          untranslated = UNTRANSLATED
+        [/po_file_details]
+      [/language]
+    [/languages]
+  [/umc]
+[/request_umc_upload]
+\end{lstlisting}
+
+\begin{description}
+  \item [[umc]] In case of a new version, the .pbl file is updated with the ID. See \cref{wire:request_campaign_list}.
+\end{description}
+
+\subsection{Request umc delete}
 \label{wire:request_umc_delete}
 
-\section{Request license}
+\subsubsection{Request}
+\begin{lstlisting}
+[request_umc_delete]
+  id = ID
+  password = PASSWORD
+[/request_umc_delete]
+\end{lstlisting}
+\begin{description}
+  \item [ID] The ID of the UMC we want to delete.
+  \item [PASSWORD] The password of the UMC.
+\end{description}
+
+\subsubsection{Reply}
+
+An error packet can be sent for the common reasons (see \cref{wire:specialpackets:errorpacket}) but also because:
+\begin{enumerate}
+ \item The password is wrong.
+\end{enumerate}
+
+Otherwise, a packet with no field is sent.
+\begin{lstlisting}
+[request_umc_delete]
+[/request_umc_delete]
+\end{lstlisting}
+
+\subsection{Request license}
 \label{wire:request_license}
+
+\subsubsection{Request}
+\begin{lstlisting}
+[request_license]
+  language = LANGUAGE
+[/request_license]
+\end{lstlisting}
+
+\begin{description}
+ \item [LANGUAGE] The language we want the license. 
+\end{description}
+
+\subsubsection{Reply}
+
+The license is sent in the language asked or, if not available, in American English.
+
+\begin{lstlisting}
+[request_license]
+  [warning_packet] ?
+    msg = MSG
+  [/warning_packet]
+  [translated_text] ?
+    [disclaimer]
+      ENGLISH_DISCLAIMER
+    [/disclaimer]
+    [translated_license]
+      TRANSLATED_LICENSE
+    [/translated_license]
+  [/translated_text]
+  [english_text]
+    ENGLISH_LICENSE
+  [/english_text]
+[/request_license]
+\end{lstlisting}
+\vspace{15pt}
+
+\textbf{Note :} The text is not a key value as it can be on multiple lines. We enclosed text in specific markup.
+\begin{description}
+ \item [[warning\_packet]] Can be sent if the language of the license is not the language expected.
+ \item[[translated\_text]] is sent only if there is no warning message before.
+ \item [ENGLISH\_DISCLAIMER] A english disclaimer stating that the translated license has no judicial value.
+ \item [TRANSLATED\_LICENSE] The translated license in the language requested.
+ \item [TEXT] The text of the license in english.
+\end{description}
+
+\section{Text encoding}
+
+The text encoding is important because the server can open the file to verify their validity or to read
+information in the .pbl file.
+
+The strings could be in something else than American English and for this reason, the encoding must be UTF-8.
+
+\section{Security}
+\label{section:security}
+
+\subsection{Password storage}
+\label{section:security:passwordstorage}
+
+The passwords will be stored with a strong hash function such as SHA-512, a salt only knowable by the server is append to this hash. 
+\newline
+
+For example, the library OpenSSL (http://www.openssl.org/docs/crypto/sha.html) provides the algorithm, but an encapsulation in a C++ class would be required.
+
+\subsection{Password transmission}
+\label{section:security:passwordtransmission}
+
+The password will be transmit via Transport Layer Security (TLS) protocol.
+\newline
+
+For example, the Boost.Asio library provides tools to transmits data over a ssl layer.

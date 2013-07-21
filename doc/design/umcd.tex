@@ -10,7 +10,14 @@
 \usepackage{cleveref}
 \usepackage{listings}
 
-\author{M.~de Wever}
+\lstset{
+  tabsize=2
+}
+
+\author{
+  Mark \textsc{de Wever} 
+  \and 
+  Pierre \textsc{Talbot}}
 \title{UMCD design document - DRAFT}
 
 \begin{document}
@@ -23,16 +30,10 @@
 
 \include{umcd/introduction}
 \include{umcd/communication_protocol}
-
-%\include{gui2/introduction}
-%\include{gui2/overall_design}
-%\include{gui2/design_details}
-%\include{gui2/creating_widgets_and_dialogs}
+\include{umcd/uml_design}
 
 \appendix
 
-%\include{gui2/files_for_the_widget}
-%\include{gui2/files_for_the_window}
 
 \end{document}
 
