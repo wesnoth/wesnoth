@@ -32,7 +32,7 @@ public:
    : server_config(server_config)
    {}
 
-   virtual void execute(boost::shared_ptr<umcd_protocol> protocol)
+   virtual void execute(boost::shared_ptr<umcd_protocol> /*protocol*/)
    {
 
    }
