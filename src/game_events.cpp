@@ -86,6 +86,9 @@ static lg::log_domain log_config("config");
 static lg::log_domain log_event_handler("event_handler");
 #define DBG_EH LOG_STREAM(debug, log_event_handler)
 
+
+namespace {
+
 /**
  * State when processing a flight of events or commands.
  */
@@ -96,8 +99,8 @@ struct event_context
 	event_context(bool s): mutated(true), skip_messages(s) {}
 };
 
-static event_context default_context(false);
-static event_context *current_context = &default_context;
+event_context default_context(false);
+event_context *current_context = &default_context;
 
 /**
  * Context state with automatic lifetime handling.
@@ -121,11 +124,10 @@ struct scoped_context
 	}
 };
 
-static bool screen_needs_rebuild = false;
+bool screen_needs_rebuild = false;
 /// The value returned by wml_tracking();
-static size_t internal_wml_tracking = 0;
+size_t internal_wml_tracking = 0;
 
-namespace {
 
 	std::stringstream wml_messages_stream;
 
@@ -197,11 +199,13 @@ void put_wml_message(const std::string& logger, const std::string& message)
 	}
 }
 
+namespace {
+
 /**
  * Helper function for show_wml_errors(), which gathers
  * the messages from a stringstream.
  */
-static void fill_wml_messages_map(std::map<std::string, int>& msg_map, std::stringstream& source)
+void fill_wml_messages_map(std::map<std::string, int>& msg_map, std::stringstream& source)
 {
 	while(true) {
 		std::string msg;
@@ -234,7 +238,7 @@ static void fill_wml_messages_map(std::map<std::string, int>& msg_map, std::stri
  * to be the order in which these messages are encountered.
  * Messages are always written to std::cerr.
  */
-static void show_wml_errors()
+void show_wml_errors()
 {
 	// Get all unique messages in messages,
 	// with the number of encounters for these messages
@@ -258,7 +262,7 @@ static void show_wml_errors()
 	}
 }
 
-static void show_wml_messages()
+void show_wml_messages()
 {
 	// Get all unique messages in messages,
 	// with the number of encounters for these messages
@@ -281,12 +285,18 @@ static void show_wml_messages()
 	}
 }
 
+} // anonymous namespace
+
 typedef void (*wml_handler_function)(
 	const game_events::queued_event &event_info, const vconfig &cfg);
 
+namespace {
+
 typedef std::map<std::string, wml_handler_function> static_wml_action_map;
 /** Map of the default action handlers known of the engine. */
-static static_wml_action_map static_wml_actions;
+static_wml_action_map static_wml_actions;
+
+} // anonymous namespace
 
 /**
  * WML_HANDLER_FUNCTION macro handles auto registration for wml handlers
@@ -333,7 +343,8 @@ namespace game_events {
 
 	bool matches_special_filter(const config &cfg, const vconfig& filter);
 
-	static bool internal_conditional_passed(const vconfig& cond, bool& backwards_compat)
+	namespace {
+	bool internal_conditional_passed(const vconfig& cond, bool& backwards_compat)
 	{
 		static std::vector<std::pair<int,int> > default_counts = utils::parse_ranges("1-99999");
 
@@ -449,6 +460,7 @@ namespace game_events {
 		}
 		return true;
 	}
+	}// anonymous namespace
 
 	bool conditional_passed(const vconfig& cond, bool backwards_compat)
 	{
@@ -521,11 +533,12 @@ namespace game_events {
 		lg::wml_error << message << '\n';
 	}
 
+	namespace {
 	/**
 	 * Gets a vector of sides from side= attribute in a given config node.
 	 * Promotes consistent behavior.
 	 */
-	static std::vector<int> get_sides_vector(const vconfig& cfg)
+	std::vector<int> get_sides_vector(const vconfig& cfg)
 	{
 		const config::attribute_value sides = cfg["side"];
 		const vconfig &ssf = cfg.child("filter_side");
@@ -539,6 +552,7 @@ namespace game_events {
 		side_filter filter(sides.str());
 		return filter.get_teams();
 	}
+	}// anonymous namespace
 
 } // end namespace game_events (1)
 
@@ -546,16 +560,9 @@ namespace {
 
 	std::set<std::string> used_items;
 
-} // end anonymous namespace (2)
-
-static bool events_init() { return resources::screen != 0; }
-
-namespace {
+	inline bool events_init() { return resources::screen != 0; }
 
 	std::deque<game_events::queued_event> events_queue;
-
-
-} // end anonymous namespace (3)
 
 
 /**
@@ -563,15 +570,13 @@ namespace {
  * The default parameter values cause the default return value (if neither
  * x nor y is specified) to equal map_location::null_location.
  */
-static map_location cfg_to_loc(const vconfig& cfg, int defaultx = -999, int defaulty = -999)
+map_location cfg_to_loc(const vconfig& cfg, int defaultx = -999, int defaulty = -999)
 {
 	int x = cfg["x"].to_int(defaultx) - 1;
 	int y = cfg["y"].to_int(defaulty) - 1;
 
 	return map_location(x, y);
 }
-
-namespace {
 
 	class t_event_handlers {
 		typedef std::vector<game_events::event_handler> t_active;
@@ -729,9 +734,7 @@ namespace {
 
 	t_event_handlers event_handlers;
 
-} // end anonymous namespace (4)
-
-static void toggle_shroud(const bool remove, const vconfig& cfg)
+void toggle_shroud(const bool remove, const vconfig& cfg)
 {
 	// Filter the sides.
 	std::vector<int> sides = game_events::get_sides_vector(cfg);
@@ -762,6 +765,8 @@ static void toggle_shroud(const bool remove, const vconfig& cfg)
 	resources::screen->invalidate_all();
 }
 
+}//anonymous namespace
+
 WML_HANDLER_FUNCTION(remove_shroud, /*event_info*/, cfg)
 {
 	toggle_shroud(true,cfg);
@@ -772,6 +777,7 @@ WML_HANDLER_FUNCTION(place_shroud, /*event_info*/,cfg)
 	toggle_shroud(false,cfg );
 }
 
+namespace {
 /**
  * Implements the lifting and resetting of fog via WML.
  * Keeping affect_normal_fog as false causes only the fog override to be affected.
@@ -780,7 +786,7 @@ WML_HANDLER_FUNCTION(place_shroud, /*event_info*/,cfg)
  * addition to removing overrides, extend the specified teams' normal fog to all
  * hexes.
  */
-static void toggle_fog(const bool clear, const vconfig& cfg, const bool affect_normal_fog=false)
+void toggle_fog(const bool clear, const vconfig& cfg, const bool affect_normal_fog=false)
 {
 	// Filter the sides.
 	const vconfig &ssf = cfg.child("filter_side");
@@ -816,6 +822,7 @@ static void toggle_fog(const bool clear, const vconfig& cfg, const bool affect_n
 	resources::screen->recalculate_minimap();
 	resources::screen->invalidate_all();
 }
+}//anonymous namespace
 
 WML_HANDLER_FUNCTION(lift_fog, /*event_info*/, cfg)
 {
@@ -1853,7 +1860,8 @@ WML_HANDLER_FUNCTION(terrain_mask, /*event_info*/, cfg)
 	screen_needs_rebuild = true;
 }
 
-static bool try_add_unit_to_recall_list(const map_location& loc, const unit& u)
+namespace {
+bool try_add_unit_to_recall_list(const map_location& loc, const unit& u)
 {
 	if((*resources::teams)[u.side()-1].persistent()) {
 		(*resources::teams)[u.side()-1].recall_list().push_back(u);
@@ -1864,6 +1872,7 @@ static bool try_add_unit_to_recall_list(const map_location& loc, const unit& u)
 		return false;
 	}
 }
+}//anonymous namespace
 
 /// If we should spawn a new unit on the map somewhere
 WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
@@ -2103,6 +2112,7 @@ WML_HANDLER_FUNCTION(wml_message, /*event_info*/, cfg)
 }
 
 
+namespace {
 
 class recursion_preventer {
 	typedef std::map<map_location, int> t_counter;
@@ -2138,6 +2148,8 @@ class recursion_preventer {
 recursion_preventer::t_counter recursion_preventer::counter_;
 
 typedef boost::scoped_ptr<recursion_preventer> recursion_preventer_ptr;
+
+}//anonymous namespace
 
 WML_HANDLER_FUNCTION(kill, event_info, cfg)
 {
@@ -2332,6 +2344,8 @@ WML_HANDLER_FUNCTION(clear_menu_item, /*event_info*/, cfg)
 	}
 }
 
+namespace {
+
 struct unstore_unit_advance_choice: mp_sync::user_choice
 {
 	int nb_options;
@@ -2364,6 +2378,8 @@ struct unstore_unit_advance_choice: mp_sync::user_choice
 		return cfg;
 	}
 };
+
+}//anonymous namespace
 
 /// Unit serialization to variables
 WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
@@ -2783,7 +2799,6 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 	return caption;
 }
 
-} // namespace
 
 struct message_user_choice : mp_sync::user_choice
 {
@@ -2849,6 +2864,8 @@ struct message_user_choice : mp_sync::user_choice
 		return config();
 	}
 };
+
+}//anonymous namespace
 
 /// Display a message dialog
 WML_HANDLER_FUNCTION(message, event_info, cfg)
@@ -3158,7 +3175,8 @@ WML_HANDLER_FUNCTION(clear_global_variable,/**/,pcfg)
 }
 
 /** Handles all the different types of actions that can be triggered by an event. */
-void commit_wmi_commands() {
+void commit_wmi_commands()
+{
 	// Commit WML Menu Item command changes
 	while(wmi_command_changes.size() > 0) {
 		wmi_command_change wcc = wmi_command_changes.front();
@@ -3194,10 +3212,12 @@ void commit_wmi_commands() {
 	}
 }
 
+namespace {
+
 /**
  * Returns true iff the given event passes all its filters.
  */
-static bool filter_event(const game_events::event_handler& handler,
+bool filter_event(const game_events::event_handler& handler,
                          const game_events::queued_event& ev)
 {
 	const unit_map *units = resources::units;
@@ -3279,7 +3299,7 @@ static bool filter_event(const game_events::event_handler& handler,
 	return true;
 }
 
-static bool process_event(game_events::event_handler& handler, const game_events::queued_event& ev)
+bool process_event(game_events::event_handler& handler, const game_events::queued_event& ev)
 {
 	if(handler.disabled())
 		return false;
@@ -3312,6 +3332,8 @@ static bool process_event(game_events::event_handler& handler, const game_events
 
 	return current_context->mutated;
 }
+
+}//anonymous namespace
 
 namespace game_events {
 
@@ -3427,7 +3449,9 @@ namespace game_events {
 		return attack.matches_filter(filter.get_parsed_config());
 	}
 
-	static std::set<std::string> unit_wml_ids;
+	namespace {
+		std::set<std::string> unit_wml_ids;
+	}//anonymous namespace
 
 	manager::manager(const config& cfg)
 		: variable_manager()
