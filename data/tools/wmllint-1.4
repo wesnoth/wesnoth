@@ -1381,6 +1381,8 @@ def hack_syntax(filename, lines):
     in_attack = False
     attackname = None
     soundpath = None
+    misspath = None
+    soundtime = None
     in_sound = False
     in_frame = False
     postframe = []
@@ -1397,14 +1399,21 @@ def hack_syntax(filename, lines):
                 print '"%s", line %d: converting frame in [attack]'%(filename, converting+1)
                 ws = leader(lines[converting])
                 outer = outdent(ws)
+                if soundpath:
+                    if misspath:
+                        if not soundtime:
+                            soundtime = "-100"
+                            print '"%s", line %d: inserting "-100" for missing time value in SOUND:HIT_AND_MISS' % (filename, converting+1)
+                        lines[converting] = ws + "{SOUND:HIT_AND_MISS %s %s %s}\n" \
+                                            % (soundpath, misspath, soundtime) + lines[converting]
+                    else:
+                        lines[converting] += ws + baseindent + "sound=" + soundpath + "\n"
                 insertion = outer + "[/attack]\n" \
                             + outer + "[attack_anim]\n" \
                             + ws + "[attack_filter]\n" \
                             + ws + baseindent + "name=" + attackname + "\n" \
                             + ws + "[/attack_filter]\n"
                 lines[converting] = insertion + lines[converting]
-                if soundpath:
-                    lines[converting] += ws + baseindent + "sound=" + soundpath + "\n"
                 postframe.reverse()
                 for preframe in postframe:
                     lines[converting] = preframe + lines[converting]
@@ -1413,6 +1422,8 @@ def hack_syntax(filename, lines):
             in_attack = False
             attackname = None
             soundpath = None
+            misspath = None
+            soundtime = None
             in_sound = False
             in_frame = False
             postframe = []
@@ -1427,7 +1438,11 @@ def hack_syntax(filename, lines):
                 comment = fields[1]
             if  not attackname and syntactic.strip().startswith("name"):
                 attackname = syntactic.split("=")[1].strip()
-            if  not soundpath and syntactic.strip().startswith("sound"):
+            elif  not soundtime and syntactic.strip().startswith("time"):
+                soundtime = syntactic.split("=")[1].strip()
+            elif  not misspath and syntactic.strip().startswith("sound_miss"):
+                misspath = syntactic.split("=")[1].strip()
+            elif  not soundpath and syntactic.strip().startswith("sound"):
                 soundpath = syntactic.split("=")[1].strip()
             # Ignore sound tags, and their contents, within [attack]
             if "[sound]" in lines[i]:
@@ -1447,7 +1462,6 @@ def hack_syntax(filename, lines):
             elif converting and not in_frame:
                 postframe.append(lines[i])
                 lines[i] = ""
-                modcount += 1
     # Upconvert old radius usage
     if upconvert and "1.3.7" in versions and "older" not in versions:
         radius_pos = wmlfind("radius=", WmlIterator(lines, filename))
