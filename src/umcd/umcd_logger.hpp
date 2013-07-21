@@ -153,11 +153,12 @@ public:
 
    void run()
    {
-      boost::chrono::milliseconds time_to_sleep_between_two_log_write(100);
       while(true)
       {
          run_once();
-         boost::this_thread::sleep_for(time_to_sleep_between_two_log_write);
+         // NOTE: Replace this function by boost::this_thread::sleep_for when more recent Boost version will be supported.
+         //       (Or better: the C++11 version)
+         boost::this_thread::sleep(boost::posix_time::milliseconds(100));
       }
    }
 
