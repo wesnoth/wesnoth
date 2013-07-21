@@ -31,8 +31,8 @@ public:
    request_umc_upload_action(const config& server_config)
    : server_config(server_config)
    {}
-
-   virtual void execute(boost::shared_ptr<umcd_protocol>)
+   
+   virtual void execute(boost::shared_ptr<umcd_protocol> /*protocol*/)
    {
    }
 
