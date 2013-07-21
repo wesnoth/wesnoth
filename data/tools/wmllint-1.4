@@ -1386,6 +1386,7 @@ def hack_syntax(filename, lines):
     in_sound = False
     in_frame = False
     postframe = []
+    begins = []
     converting = 0
     for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
@@ -1407,7 +1408,14 @@ def hack_syntax(filename, lines):
                         lines[converting] = ws + "{SOUND:HIT_AND_MISS %s %s %s}\n" \
                                             % (soundpath, misspath, soundtime) + lines[converting]
                     else:
-                        lines[converting] += ws + baseindent + "sound=" + soundpath + "\n"
+                        for (when, where) in begins:
+                            if when == soundtime:
+                                lines[where] = leader(lines[where]) + "sound=" + soundpath + "\n" + lines[where]
+                                break
+                            continue
+                        else:
+                            lines[converting] += ws + baseindent + "sound=" + soundpath + "\n"
+                            print '"%s", line %d: no match found for [sound] time (%s), placing sound path in first frame' % (filename, where+1, soundtime)
                 insertion = outer + "[/attack]\n" \
                             + outer + "[attack_anim]\n" \
                             + ws + "[attack_filter]\n" \
@@ -1427,6 +1435,7 @@ def hack_syntax(filename, lines):
             in_sound = False
             in_frame = False
             postframe = []
+            begins = []
         elif ("[frame]" in lines[i] or "[missile_frame]" in lines[i]) and in_attack and converting == 0:
             converting = i
             in_frame = True
@@ -1444,6 +1453,8 @@ def hack_syntax(filename, lines):
                 misspath = syntactic.split("=")[1].strip()
             elif  not soundpath and syntactic.strip().startswith("sound"):
                 soundpath = syntactic.split("=")[1].strip()
+            elif  in_frame and syntactic.strip().startswith("begin"):
+                begins.append((syntactic.split("=")[1].strip(), i))
             # Ignore sound tags, and their contents, within [attack]
             if "[sound]" in lines[i]:
                 print '"%s", line %d: [sound] within [attack] discarded (path will be saved)' % (filename, i+1)
