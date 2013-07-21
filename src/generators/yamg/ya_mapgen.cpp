@@ -1801,7 +1801,7 @@ void ya_mapgen::makeRoads() {
 					// if 'it' is a bridge, we must align it, it->road and l to get a good looking result
 					if (bFlag && (it->road != NULL) && (it->wFlag)) {
 						if (((l->y - it->road->y) == 0)
-								|| (abs(l->x - it->road->x) == 1)) {
+								|| (abs(static_cast<int>(l->x) - static_cast<int>(it->road->x)) == 1)) {
 							cost = costW * 10000; // discard this point
 						}
 					}
