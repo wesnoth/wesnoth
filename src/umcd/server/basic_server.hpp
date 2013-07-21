@@ -21,6 +21,11 @@
 #ifndef SERVER_BASIC_SERVER_HPP
 #define SERVER_BASIC_SERVER_HPP
 
+// boost::thread < 1.51 conflicts with C++11-capable compilers
+#if BOOST_VERSION < 105100
+    #include <time.h>
+    #undef TIME_UTC
+#endif
 #include <boost/asio.hpp>
 #include <boost/noncopyable.hpp>
 #include <boost/make_shared.hpp>

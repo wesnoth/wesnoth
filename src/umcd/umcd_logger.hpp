@@ -19,6 +19,11 @@
 #include <iostream>
 #include <sstream>
 
+// boost::thread < 1.51 conflicts with C++11-capable compilers
+#if BOOST_VERSION < 105100
+    #include <time.h>
+    #undef TIME_UTC
+#endif
 #include <boost/thread/mutex.hpp>
 #include <umcd/boost/thread/lock_guard.hpp>
 #include <boost/thread/thread.hpp>
