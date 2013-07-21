@@ -14,11 +14,7 @@
 
 #include <stdexcept>
 
-// boost::thread < 1.51 conflicts with C++11-capable compilers
-#if BOOST_VERSION < 105100
-    #include <time.h>
-    #undef TIME_UTC
-#endif
+#include "umcd/boost/thread/workaround.hpp"
 #include <boost/thread/thread.hpp>
 #include <boost/bind.hpp>
 #include <boost/asio.hpp>
