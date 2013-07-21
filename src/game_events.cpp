@@ -86,6 +86,8 @@ static lg::log_domain log_config("config");
 static lg::log_domain log_event_handler("event_handler");
 #define DBG_EH LOG_STREAM(debug, log_event_handler)
 
+// This file is in the game_events namespace.
+namespace game_events {
 
 namespace {
 
@@ -288,7 +290,7 @@ void show_wml_messages()
 } // anonymous namespace
 
 typedef void (*wml_handler_function)(
-	const game_events::queued_event &event_info, const vconfig &cfg);
+	const queued_event &event_info, const vconfig &cfg);
 
 namespace {
 
@@ -302,8 +304,8 @@ static_wml_action_map static_wml_actions;
  * WML_HANDLER_FUNCTION macro handles auto registration for wml handlers
  *
  * @param pname wml tag name
- * @param pei the variable name of game_events::queued_event object inside function
- * @param pcfg the variable name of config object inside function
+ * @param pei the variable name of the queued_event object inside the function
+ * @param pcfg the variable name of the config object inside the function
  *
  * You are warned! This is evil macro magic!
  *
@@ -330,16 +332,15 @@ static_wml_action_map static_wml_actions;
  * \endcode
  */
 #define WML_HANDLER_FUNCTION(pname, pei, pcfg) \
-	static void wml_func_##pname(const game_events::queued_event &pei, const vconfig &pcfg); \
+	static void wml_func_##pname(const queued_event &pei, const vconfig &pcfg); \
 	struct wml_func_register_##pname \
 	{ \
 		wml_func_register_##pname() \
 		{ static_wml_actions[#pname] = &wml_func_##pname; } \
 	}; \
 	static wml_func_register_##pname wml_func_register_##pname##_aux;  \
-	static void wml_func_##pname(const game_events::queued_event& pei, const vconfig& pcfg)
+	static void wml_func_##pname(const queued_event& pei, const vconfig& pcfg)
 
-namespace game_events {
 
 	bool matches_special_filter(const config &cfg, const vconfig& filter);
 
@@ -554,7 +555,6 @@ namespace game_events {
 	}
 	}// anonymous namespace
 
-} // end namespace game_events (1)
 
 namespace {
 
@@ -562,7 +562,7 @@ namespace {
 
 	inline bool events_init() { return resources::screen != 0; }
 
-	std::deque<game_events::queued_event> events_queue;
+	std::deque<queued_event> events_queue;
 
 
 /**
@@ -579,7 +579,7 @@ map_location cfg_to_loc(const vconfig& cfg, int defaultx = -999, int defaulty = 
 }
 
 	class t_event_handlers {
-		typedef std::vector<game_events::event_handler> t_active;
+		typedef std::vector<event_handler> t_active;
 	public:
 		typedef t_active::iterator iterator;
 		typedef t_active::const_iterator const_iterator;
@@ -592,10 +592,10 @@ map_location cfg_to_loc(const vconfig& cfg, int defaultx = -999, int defaulty = 
 
 
 		void log_handler(std::stringstream& ss,
-			const std::vector<game_events::event_handler>& handlers,
+			const std::vector<event_handler>& handlers,
 			const std::string& msg) {
 
-			BOOST_FOREACH(const game_events::event_handler& h, handlers){
+			BOOST_FOREACH(const event_handler& h, handlers){
 				const config& cfg = h.get_config();
 				ss << "name=" << cfg["name"] << ", with id=" << cfg["id"] << "; ";
 			}
@@ -625,7 +625,7 @@ map_location cfg_to_loc(const vconfig& cfg, int defaultx = -999, int defaulty = 
 		 * be added if an event with that ID already exists.  This method
 		 * respects this class's buffering functionality.
 		 */
-		void add_event_handler(game_events::event_handler const & new_handler) {
+		void add_event_handler(event_handler const & new_handler) {
 			if(buffering_) {
 				DBG_EH << "buffering event handler for name=" << new_handler.get_config()["name"] <<
 				" with id " << new_handler.get_config()["id"] << "\n";
@@ -637,7 +637,7 @@ map_location cfg_to_loc(const vconfig& cfg, int defaultx = -999, int defaulty = 
 				const config & cfg = new_handler.get_config();
 				std::string id = cfg["id"];
 				if(!id.empty()) {
-					BOOST_FOREACH( game_events::event_handler const & eh, active_) {
+					BOOST_FOREACH( event_handler const & eh, active_ ) {
 						config const & temp_config( eh.get_config());
 						if(id == temp_config["id"]) {
 							DBG_EH << "ignoring event handler for name=" << cfg["name"] <<
@@ -709,7 +709,7 @@ map_location cfg_to_loc(const vconfig& cfg, int defaultx = -999, int defaulty = 
 			remove_buffer_.clear();
 
 			// Commit any spawned events-within-events
-			BOOST_FOREACH( game_events::event_handler const & i ,  insert_buffer_ ){
+			BOOST_FOREACH( event_handler const & i ,  insert_buffer_ ){
 				add_event_handler( i ); }
 			insert_buffer_.clear();
 
@@ -737,7 +737,7 @@ map_location cfg_to_loc(const vconfig& cfg, int defaultx = -999, int defaulty = 
 void toggle_shroud(const bool remove, const vconfig& cfg)
 {
 	// Filter the sides.
-	std::vector<int> sides = game_events::get_sides_vector(cfg);
+	std::vector<int> sides = get_sides_vector(cfg);
 	size_t index;
 
 	// Filter the locations.
@@ -1028,7 +1028,7 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 	const config::const_child_itors &ai = parsed.child_range("ai");
 	std::string switch_ai = cfg["switch_ai"];
 
-	std::vector<int> sides = game_events::get_sides_vector(cfg);
+	std::vector<int> sides = get_sides_vector(cfg);
 	size_t team_index;
 
 	BOOST_FOREACH(const int &side_num, sides)
@@ -2103,12 +2103,12 @@ WML_HANDLER_FUNCTION(print, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(deprecated_message, /*event_info*/, cfg)
 {
-	game_events::handle_deprecated_message( cfg.get_parsed_config() );
+	handle_deprecated_message( cfg.get_parsed_config() );
 }
 
 WML_HANDLER_FUNCTION(wml_message, /*event_info*/, cfg)
 {
-	game_events::handle_wml_log_message( cfg.get_parsed_config() );
+	handle_wml_log_message( cfg.get_parsed_config() );
 }
 
 
@@ -2154,7 +2154,7 @@ typedef boost::scoped_ptr<recursion_preventer> recursion_preventer_ptr;
 WML_HANDLER_FUNCTION(kill, event_info, cfg)
 {
 	bool secondary_unit = cfg.has_child("secondary_unit");
-	game_events::entity_location killer_loc(map_location(0, 0));
+	entity_location killer_loc(map_location(0, 0));
 	if(cfg["fire_event"].to_bool() && secondary_unit)
 	{
 		secondary_unit = false;
@@ -2162,7 +2162,7 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 			unit != resources::units->end(); ++unit) {
 				if ( unit->matches_filter(cfg.child("secondary_unit")) )
 				{
-					killer_loc = game_events::entity_location(*unit);
+					killer_loc = entity_location(*unit);
 					secondary_unit = true;
 					break;
 				}
@@ -2183,9 +2183,9 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 	BOOST_FOREACH(unit * un, dead_men_walking) {
 		map_location loc(un->get_location());
 		bool fire_event = false;
-		game_events::entity_location death_loc(*un);
+		entity_location death_loc(*un);
 		if(!secondary_unit) {
-			killer_loc = game_events::entity_location(*un);
+			killer_loc = entity_location(*un);
 		}
 
 		if (cfg["fire_event"].to_bool())
@@ -2207,7 +2207,7 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 					}
 			}
 		if (fire_event) {
-			game_events::fire("last breath", death_loc, killer_loc);
+			fire("last breath", death_loc, killer_loc);
 		}
 
 		// Visual consequences of the kill.
@@ -2227,7 +2227,7 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 		resources::screen->redraw_minimap();
 
 		if (fire_event) {
-			game_events::fire("die", death_loc, killer_loc);
+			fire("die", death_loc, killer_loc);
 			unit_map::iterator iun = resources::units->find(death_loc);
 			if ( death_loc.matches_unit(iun) ) {
 				resources::units->erase(iun);
@@ -2714,7 +2714,7 @@ namespace {
  * @returns                       The unit who's the speaker or units->end().
  */
 unit_map::iterator handle_speaker(
-		const game_events::queued_event& event_info,
+		const queued_event& event_info,
 		const vconfig& cfg,
 		bool scroll)
 {
@@ -2939,7 +2939,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 			mi != menu_items.end(); ++mi) {
 		std::string msg_str = (*mi)["message"];
 		if (!mi->has_child("show_if")
-			|| game_events::conditional_passed(mi->child("show_if")))
+			|| conditional_passed(mi->child("show_if")))
 		{
 			options.push_back(msg_str);
 			option_events.push_back((*mi).get_children("command"));
@@ -3067,9 +3067,9 @@ WML_HANDLER_FUNCTION(event, /*event_info*/, cfg)
 	if (cfg["remove"].to_bool(false)) {
 		event_handlers.remove_event_handler(cfg["id"]);
 	} else if (!cfg["delayed_variable_substitution"].to_bool(true)) {
-		event_handlers.add_event_handler(game_events::event_handler(cfg.get_parsed_config()));
+		event_handlers.add_event_handler(event_handler(cfg.get_parsed_config()));
 	} else {
-		event_handlers.add_event_handler(game_events::event_handler(cfg.get_config()));
+		event_handlers.add_event_handler(event_handler(cfg.get_config()));
 	}
 }
 
@@ -3196,15 +3196,15 @@ void commit_wmi_commands()
 		mref->command["first_time_only"] = false;
 
 		if(has_current_handler) {
-			BOOST_FOREACH(game_events::event_handler& hand, event_handlers) {
+			BOOST_FOREACH(event_handler& hand, event_handlers) {
 				if(hand.is_menu_item() && hand.matches_name(mref->name)) {
 					LOG_NG << "changing command for " << mref->name << " to:\n" << *wcc.second;
-					hand = game_events::event_handler(mref->command, true);
+					hand = event_handler(mref->command, true);
 				}
 			}
 		} else if(!is_empty_command) {
 			LOG_NG << "setting command for " << mref->name << " to:\n" << *wcc.second;
-			event_handlers.add_event_handler(game_events::event_handler(mref->command, true));
+			event_handlers.add_event_handler(event_handler(mref->command, true));
 		}
 
 		delete wcc.second;
@@ -3217,8 +3217,7 @@ namespace {
 /**
  * Returns true iff the given event passes all its filters.
  */
-bool filter_event(const game_events::event_handler& handler,
-                         const game_events::queued_event& ev)
+bool filter_event(const event_handler& handler, const queued_event& ev)
 {
 	const unit_map *units = resources::units;
 	unit_map::const_iterator unit1 = units->find(ev.loc1);
@@ -3227,7 +3226,7 @@ bool filter_event(const game_events::event_handler& handler,
 
 	BOOST_FOREACH(const vconfig &condition, filters.get_children("filter_condition"))
 	{
-		if (!game_events::conditional_passed(condition)) {
+		if (!conditional_passed(condition)) {
 			return false;
 		}
 	}
@@ -3260,7 +3259,7 @@ bool filter_event(const game_events::event_handler& handler,
 				return false;
 
 			special_matches = special_matches ||
-			                  game_events::matches_special_filter(attack, f);
+			                  matches_special_filter(attack, f);
 		}
 	}
 	if(!special_matches) {
@@ -3288,7 +3287,7 @@ bool filter_event(const game_events::event_handler& handler,
 				return false;
 
 			special_matches = special_matches ||
-			                  game_events::matches_special_filter(attack, f);
+			                  matches_special_filter(attack, f);
 		}
 	}
 	if(!special_matches) {
@@ -3299,7 +3298,7 @@ bool filter_event(const game_events::event_handler& handler,
 	return true;
 }
 
-bool process_event(game_events::event_handler& handler, const game_events::queued_event& ev)
+bool process_event(event_handler& handler, const queued_event& ev)
 {
 	if(handler.disabled())
 		return false;
@@ -3335,14 +3334,13 @@ bool process_event(game_events::event_handler& handler, const game_events::queue
 
 }//anonymous namespace
 
-namespace game_events {
 
 	event_handler::event_handler(const config &cfg, bool imi) :
 		first_time_only_(cfg["first_time_only"].to_bool(true)),
 		disabled_(false), is_menu_item_(imi), cfg_(cfg)
 	{}
 
-	void event_handler::handle_event(const game_events::queued_event& event_info)
+	void event_handler::handle_event(const queued_event& event_info)
 	{
 		if (first_time_only_)
 		{
@@ -3356,13 +3354,13 @@ namespace game_events {
 		handle_event_commands(event_info, vconfig(cfg_));
 	}
 
-	void handle_event_commands(const game_events::queued_event& event_info, const vconfig &cfg)
+	void handle_event_commands(const queued_event& event_info, const vconfig &cfg)
 	{
 		resources::lua_kernel->run_wml_action("command", cfg, event_info);
 	}
 
 	void handle_event_command(const std::string &cmd,
-		const game_events::queued_event &event_info, const vconfig &cfg)
+		const queued_event &event_info, const vconfig &cfg)
 	{
 		log_scope2(log_engine, "handle_event_command");
 		LOG_NG << "handling command '" << cmd << "' from "
@@ -3458,7 +3456,7 @@ namespace game_events {
 	{
 		assert(!manager_running);
 		BOOST_FOREACH(const config &ev, cfg.child_range("event")) {
-			event_handlers.add_event_handler(game_events::event_handler(ev));
+			event_handlers.add_event_handler(event_handler(ev));
 		}
 		BOOST_FOREACH(const std::string &id, utils::split(cfg["unit_wml_ids"])) {
 			unit_wml_ids.insert(id);
@@ -3482,7 +3480,7 @@ namespace game_events {
 		typedef std::pair<std::string, wml_menu_item *> item;
 		BOOST_FOREACH(const item &itor, resources::gamedata->get_wml_menu_items().get_menu_items()) {
 			if (!itor.second->command.empty()) {
-				event_handlers.add_event_handler(game_events::event_handler(itor.second->command, true));
+				event_handlers.add_event_handler(event_handler(itor.second->command, true));
 			}
 			++wmi_count;
 		}
@@ -3494,7 +3492,7 @@ namespace game_events {
 	void write_events(config& cfg)
 	{
 		assert(manager_running);
-		BOOST_FOREACH(const game_events::event_handler &eh, event_handlers) {
+		BOOST_FOREACH(const event_handler &eh, event_handlers) {
 			if ( eh.disabled() || eh.is_menu_item() ) {
 				continue;
 			}
@@ -3550,7 +3548,7 @@ namespace game_events {
 
 		DBG_EH << "raising event: " << event << "\n";
 
-		events_queue.push_back(game_events::queued_event(event,loc1,loc2,data));
+		events_queue.push_back(queued_event(event,loc1,loc2,data));
 	}
 
 	bool fire(const std::string& event,
@@ -3575,7 +3573,7 @@ namespace game_events {
 				WRN_NG << "attempt to add an [event] with empty id=, ignoring \n";
 				continue;
 			}
-			event_handlers.add_event_handler(game_events::event_handler(new_ev));
+			event_handlers.add_event_handler(event_handler(new_ev));
 		}
 	}
 
@@ -3611,7 +3609,7 @@ namespace game_events {
 
 		if(!lg::debug.dont_log("event_handler")) {
 			std::stringstream ss;
-			BOOST_FOREACH(const game_events::queued_event& ev, events_queue) {
+			BOOST_FOREACH(const queued_event& ev, events_queue) {
 				ss << "name=" << ev.name << "; ";
 			}
 			DBG_EH << "processing queued events: " << ss.str() << "\n";
@@ -3623,7 +3621,7 @@ namespace game_events {
 		while(events_queue.empty() == false) {
 			if(pump_manager::count() <= 1)
 				event_handlers.start_buffering();
-			game_events::queued_event ev = events_queue.front();
+			queued_event ev = events_queue.front();
 			events_queue.pop_front();	// pop now for exception safety
 			const std::string& event_name = ev.name;
 
@@ -3636,7 +3634,7 @@ namespace game_events {
 
 			bool init_event_vars = true;
 
-			BOOST_FOREACH(game_events::event_handler& handler, event_handlers) {
+			BOOST_FOREACH(event_handler& handler, event_handlers) {
 				if(!handler.matches_name(event_name))
 					continue;
 				// Set the variables for the event
@@ -3764,4 +3762,4 @@ namespace game_events {
 		       matches_unit(un_it);
 	}
 
-} // end namespace game_events (2)
+} // end namespace game_events

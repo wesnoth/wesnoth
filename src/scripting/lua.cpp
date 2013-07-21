@@ -1718,7 +1718,7 @@ static int intf_set_terrain(lua_State *L)
 		}
 	}
 
-	change_terrain(map_location(x - 1, y - 1), terrain, mode, replace_if_failed);
+	game_events::change_terrain(map_location(x - 1, y - 1), terrain, mode, replace_if_failed);
 	return 0;
 }
 

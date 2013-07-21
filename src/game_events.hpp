@@ -34,15 +34,15 @@
 
 class unit;
 
+namespace game_events
+{
+
 /**
  * Changes a terrain location.
  * Ensures that villages are properly lost and that new terrains are discovered.
  */
 void change_terrain(const map_location &loc, const t_translation::t_terrain &t,
 	gamemap::tmerge_mode mode, bool replace_if_failed);
-
-namespace game_events
-{
 
 	// The game event manager loads the scenario configuration object,
 	// and ensures that events are handled according to the
@@ -88,14 +88,14 @@ namespace game_events
 
 
 	struct queued_event {
-		queued_event(const std::string& name, const game_events::entity_location& loc1,
-				const game_events::entity_location& loc2,
+		queued_event(const std::string& name, const entity_location& loc1,
+				const entity_location& loc2,
 				const config& data)
 			: name(name), loc1(loc1), loc2(loc2),data(data) {}
 
 		std::string name;
-		game_events::entity_location loc1;
-		game_events::entity_location loc2;
+		entity_location loc1;
+		entity_location loc2;
 		config data;
 	};
 
@@ -164,7 +164,7 @@ namespace game_events
 
 	bool pump();
 
-	typedef void (*action_handler)(const game_events::queued_event &, const vconfig &);
+	typedef void (*action_handler)(const queued_event &, const vconfig &);
 
 	/**
 	 * This function can be used to detect when no WML/Lua has been executed.
