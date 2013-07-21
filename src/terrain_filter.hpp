@@ -64,6 +64,7 @@ public:
 	config to_config() const;
 private:
 	bool match_internal(const map_location& loc, const bool ignore_xy) const;
+    void build_config_cache();
 
 	const vconfig cfg_; //config contains WML for a Standard Location Filter
 	const unit_map& units_;
@@ -91,6 +92,13 @@ private:
 	mutable terrain_filter_cache cache_;
 	size_t max_loop_;
 	bool flat_;
+
+    // cached cfg results; match_internal is called *a lot* by the AI
+    bool has_attribute_terrain;
+    bool has_child_filter;
+    bool has_child_filter_vision;
+    bool has_child_ilter_radius;
+    bool has_child_adjacent_location;
 };
 
 #endif
