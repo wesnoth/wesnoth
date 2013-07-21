@@ -180,7 +180,7 @@ namespace {
  * Helper function which determines whether a wml_message text can
  * really be pushed into the wml_messages_stream, and does it.
  */
-static void put_wml_message(const std::string& logger, const std::string& message)
+void put_wml_message(const std::string& logger, const std::string& message)
 {
 	if (logger == "err" || logger == "error") {
 		ERR_WML << message << "\n";
@@ -331,7 +331,7 @@ static static_wml_action_map static_wml_actions;
 
 namespace game_events {
 
-	static bool matches_special_filter(const config &cfg, const vconfig& filter);
+	bool matches_special_filter(const config &cfg, const vconfig& filter);
 
 	static bool internal_conditional_passed(const vconfig& cond, bool& backwards_compat)
 	{
@@ -3158,7 +3158,7 @@ WML_HANDLER_FUNCTION(clear_global_variable,/**/,pcfg)
 }
 
 /** Handles all the different types of actions that can be triggered by an event. */
-static void commit_wmi_commands() {
+void commit_wmi_commands() {
 	// Commit WML Menu Item command changes
 	while(wmi_command_changes.size() > 0) {
 		wmi_command_change wcc = wmi_command_changes.front();
