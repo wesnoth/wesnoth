@@ -1311,7 +1311,9 @@ void ya_mapgen::makeCastles() {
 		// select only if not too close to another castle
 		ca = castles_;
 		while (ca != NULL) {
-			if ((abs(ca->x - it->x) + abs(ca->y - it->y)) > miniDist) {
+			const int dx = ca->x - it->x;
+			const int dy = ca->y - it->y;
+			if ((abs(dx) + abs(dy)) > miniDist) {
 				ca = ca->next;
 			} else
 				break;
