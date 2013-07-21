@@ -21,7 +21,6 @@
 #include <iostream>
 #include <sstream>
 
-
 #include "umcd/boost/thread/workaround.hpp"
 #include <boost/thread/mutex.hpp>
 #include <umcd/boost/thread/lock_guard.hpp>
@@ -30,6 +29,8 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/make_shared.hpp>
 #include <boost/noncopyable.hpp>
+
+#include "boost/date_time/posix_time/posix_time.hpp"
 
 enum severity_level {
    trace,
@@ -41,102 +42,87 @@ enum severity_level {
    nb_severity_level
 };
 
-class logging_cache
+class umcd_logger;
+class log_line;
+
+class log_line_cache
 {
+   umcd_logger& logger;
    bool enabled;
-   std::string header;
-   boost::shared_ptr<std::stringstream> cache;
-   boost::mutex cache_access;
+   severity_level severity;
+   boost::shared_ptr<std::stringstream> line;
+
+   friend class log_line;
+
 public:
-   class logging_cache_chain
-   {
-      private:
-      logging_cache& logcache;
-      public:
-      logging_cache_chain(logging_cache& logcache)
-      : logcache(logcache)
-      {}
 
-      template <class Streamable>
-      logging_cache_chain& operator<<(const Streamable& log)
-      {
-         logcache.write_to_cache(log);
-         return *this;
-      }
-
-      ~logging_cache_chain()
-      {
-         logcache.write_to_cache("\n");
-      }
-   };
-
-   logging_cache()
-   : enabled(true)
-   , header()
-   , cache(boost::make_shared<std::stringstream>())
-   {
-   }
-
-   void set_header(const std::string& header)
-   {
-      this->header = "[" + header + "] ";
-   }
-
-   void set_enabled(bool value)
-   {
-      enabled = value;
-   }
-
-   // Return the old cache
-   boost::shared_ptr<std::stringstream> make_new_cache()
-   {
-      boost::lock_guard<boost::mutex> guard(cache_access);
-      boost::shared_ptr<std::stringstream> old_cache = cache;
-      cache = boost::make_shared<std::stringstream>();
-      return old_cache;
-   }
+   log_line_cache(umcd_logger& logger, severity_level severity);
+   ~log_line_cache();
 
    template <class Streamable>
-   void write_to_cache(const Streamable& log)
+   log_line_cache& operator<<(const Streamable& log)
    {
       if(enabled)
       {
-         boost::lock_guard<boost::mutex> guard(cache_access);
-         *cache << log;
+         *line << log;
       }
+      return *this;
    }
+};
 
-   template <class Streamable>
-   logging_cache_chain operator<<(const Streamable& log)
-   {
-      write_to_cache(header);
-      write_to_cache(log);
-      return logging_cache_chain(*this);
-   }
+struct log_line
+{
+   severity_level severity;
+   std::string data;
+   boost::posix_time::ptime time;
+
+   log_line(const log_line_cache& cache_line)
+   : severity(cache_line.severity)
+   , data(cache_line.line->str())
+   , time(boost::posix_time::second_clock::universal_time())
+   {}
 };
 
 class umcd_logger : boost::noncopyable
 {
    static const char* severity_level_name[];
 
+   typedef std::vector<log_line> cache_type;
+   typedef boost::shared_ptr<cache_type> cache_ptr;
+
    severity_level current_sev_lvl;
    boost::array<boost::shared_ptr<std::ostream>, nb_severity_level> logging_output;
-   boost::array<logging_cache, nb_severity_level> logging_caches;
+
+   boost::mutex cache_access;
+   boost::shared_ptr<cache_type> cache;
 
    umcd_logger()
    : current_sev_lvl(trace)
+   , cache(boost::make_shared<cache_type>())
    {
       int sev;
       for(sev=0; sev <= warning; ++sev)
       {
          logging_output[sev] = boost::make_shared<std::ostream>(std::cout.rdbuf());
-         logging_caches[sev].set_header(severity_level_name[sev]);
       }
       for(; sev < nb_severity_level; ++sev)
       {
          logging_output[sev] = boost::make_shared<std::ostream>(std::cerr.rdbuf());
-         logging_caches[sev].set_header(severity_level_name[sev]);
       }
+   }
+
+   // Returns the old cache.
+   cache_ptr make_new_cache()
+   {
+      cache_ptr old_cache = cache;
+      lock_guard<boost::mutex> guard(cache_access);
+      cache = boost::make_shared<cache_type>();
+      return old_cache;
+   }
+
+   std::string make_header(severity_level sev) const
+   {
+      return std::string("[") + severity_level_name[sev] + "] ";
    }
 
 public:
@@ -146,12 +132,22 @@ public:
       return logger;
    }
 
+   void add_line(const log_line_cache& line)
+   {
+      lock_guard<boost::mutex> guard(cache_access);
+      cache->push_back(log_line(line));
+   }
+
    void run_once()
    {
-      for(int sev=0; sev < nb_severity_level; ++sev)
+      cache_ptr old_cache = make_new_cache();
+      for(std::size_t i=0; i < old_cache->size(); ++i)
       {
-         boost::shared_ptr<std::stringstream> log = logging_caches[sev].make_new_cache();
-         *logging_output[sev] << log->str();
+         const log_line& line = (*old_cache)[i];
+         *logging_output[line.severity] << make_header(line.severity) 
+            << boost::posix_time::to_simple_string(line.time) << ": "
+            << line.data
+            << "\n";
       }
    }
 
@@ -169,15 +165,11 @@ public:
    void set_severity(severity_level level)
    {
       current_sev_lvl = level;
-      int sev;
-      for(sev=0; sev < current_sev_lvl; ++sev)
-      {
-         logging_caches[sev].set_enabled(false);
-      }
-      for(; sev < nb_severity_level; ++sev)
-      {
-         logging_caches[sev].set_enabled(true);
-      }
+   }
+
+   severity_level get_current_severity() const
+   {
+      return current_sev_lvl;
    }
 
    void set_output(severity_level sev, const std::ostream& stream)
@@ -185,9 +177,9 @@ public:
       logging_output[sev] = boost::make_shared<std::ostream>(stream.rdbuf());
    }
 
-   logging_cache& get_logger(severity_level level)
+   log_line_cache get_logger(severity_level level)
    {
-      return logging_caches[level];
+      return log_line_cache(*this, level);
    }
 };
 

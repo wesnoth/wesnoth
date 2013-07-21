@@ -1042,6 +1042,7 @@ target_link_libraries(umcd
 	${server-external-libs}
 	${Boost_THREAD_LIBRARY}
 	${Boost_SYSTEM_LIBRARY}
+	${Boost_DATE_TIME_LIBRARY}
 	${LIBINTL_LIBRARIES}
 )
 	
