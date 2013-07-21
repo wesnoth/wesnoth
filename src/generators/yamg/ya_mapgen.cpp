@@ -343,10 +343,13 @@ std::string ya_mapgen::create_map(const std::vector<std::string>& /*args*/) {
 //    }
 	n = createMap(); // do the job
 	n = (par->haut * par->larg * (YAMG_HEXLONG + 2)) + 100; // allocate buffer for result
-	char buf[n]; // = new char[n];
+	char* buf = new char[n];
 
 	n = getMap(buf); //creates the map in Wesnoth format
-	return buf;
+	const std::string result(buf);
+	delete[] buf;
+	buf = NULL;
+	return result;
 }
 #endif
 
