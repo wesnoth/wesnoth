@@ -34,13 +34,14 @@ libwesnoth_core_sources = Split("""
     """)
 
 libschema_sources = Split("""
-    config_cache.cpp
     serialization/schema_validator.cpp
     serialization/validator.cpp
-    sha1.cpp
     tools/schema/tag.cpp
+    config_cache.cpp
+    sha1.cpp
     """)
 # hack: this prevents libschema from conflicting with liblua
+libschema_sources.extend(env.Object("filesystem_schema", "filesystem.cpp"))
 libschema_sources.extend(env.Object("lua_jailbreak_schema", "lua_jailbreak_exception.cpp"))
 
 libwesnoth_core_sources.extend(env.Object("network_worker.cpp", EXTRA_DEFINE = env['raw_sockets'] and "NETWORK_USE_RAW_SOCKETS" or None))
@@ -545,23 +546,21 @@ if env["host"] in ["x86_64-nacl", "i686-nacl"]:
 client_env.WesnothProgram("wesnoth", wesnoth_objects, have_client_prereqs)
 
 libumcd_sources = Split("""
+    umcd/server_options.cpp
     umcd/special_packet.cpp
     umcd/wml_reply.cpp
     umcd/wml_request.cpp
-    umcd/umcd_logger.cpp
     umcd/request_info.cpp
-    umcd/protocol/wml/umcd_protocol.cpp
+    umcd/umcd_logger.cpp
     addon/validation.cpp
     """)
 
 umcd_sources = Split("""
-    umcd/server_options.cpp
+    umcd/protocol/wml/umcd_protocol.cpp
+    umcd/umcd.cpp
     """)
 
 libumcd = env.Library("umcd", libumcd_sources, OBJPREFIX = "umcd_")
-
-if env["PLATFORM"] == "win32": env["fifodir"] = ""
-umcd_sources.extend(env.Object("umcd/umcd.cpp", EXTRA_DEFINE = env['fifodir'] and "FIFODIR='\"$fifodir\"'" or None))
 
 env.WesnothProgram("umcd", umcd_sources + [libwesnoth_core, libwesnothd, libumcd, libschema], have_umcd_prereqs)
 
