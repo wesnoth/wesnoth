@@ -12,6 +12,8 @@
    See the COPYING file for more details.
 */
 
+// NOTE: Please use the Boost.Log when the supported Boost version will be >= 1.54.
+
 #ifndef UMCD_LOGGER_HPP
 #define UMCD_LOGGER_HPP
 

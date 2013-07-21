@@ -45,6 +45,7 @@ int main(int argc, char *argv[])
   catch(std::exception &e)
   {
     std::cerr << "[Critical]: " << e.what() << std::endl;
+    umcd_logger::get().run_once();
   }
   return 0;
 }
