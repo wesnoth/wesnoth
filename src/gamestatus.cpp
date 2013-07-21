@@ -271,7 +271,7 @@ game_state::game_state(const config& cfg, bool show_replay) :
 		assert(replay_start);
 	}
 
-	can_end_turn_ = snapshot["can_end_turn"].to_bool(true);
+	can_end_turn_ = load_snapshot ? snapshot["can_end_turn"].to_bool(true) : true;
 
 	LOG_NG << "scenario: '" << classification_.scenario << "'\n";
 	LOG_NG << "next_scenario: '" << classification_.next_scenario << "'\n";
