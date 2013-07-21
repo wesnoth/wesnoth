@@ -551,7 +551,7 @@ int ya_mapgen::getMap(char *buf) {
  */
 
 unsigned int ya_mapgen::createEmptyMap() {
-	uint n, m;
+	unsigned int n, m;
 
 	if (parms_->haut > parms_->larg)
 		n = parms_->haut;
@@ -564,9 +564,9 @@ unsigned int ya_mapgen::createEmptyMap() {
 	n = siz_ = m + 1;
 
 	map_ = new yamg_hex **[n * sizeof(yamg_hex **)]; //(yamg_hex ***)malloc(n * sizeof(yamg_hex **));
-	for (uint i = 0; i < n; i++) {
+	for (unsigned int i = 0; i < n; i++) {
 		map_[i] = new yamg_hex *[n * sizeof(yamg_hex **)]; //(yamg_hex **)malloc(n * sizeof(yamg_hex **));
-		for (uint j = 0; j < n; j++)
+		for (unsigned int j = 0; j < n; j++)
 			map_[i][j] = new yamg_hex(j + 1, i + 1);
 	}
 	return YAMG_OK;
