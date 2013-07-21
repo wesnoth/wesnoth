@@ -88,6 +88,7 @@ void umcd_protocol::read_request_body(const boost::system::error_code& error, st
    {
       try
       {
+         // NOTE: We encapsulate the boost::array into a string because it old lexical_cast does not support boost::array. Change this when it'll be supported.
          std::size_t request_size = boost::lexical_cast<std::size_t>(std::string(raw_request_size.data()));
          UMCD_LOG_IP(debug, client_connection->get_socket()) << " -- Request of size: " << request_size;
          if(request_size > REQUEST_HEADER_MAX_SIZE)

@@ -20,6 +20,7 @@
 #include <boost/asio.hpp>
 
 #include "config.hpp"
+#include "game_config.hpp"
 
 #include "umcd/server_options.hpp"
 #include "umcd/server/multi_threaded/server_mt.hpp"
@@ -36,7 +37,8 @@ int main(int argc, char *argv[])
       boost::thread logger_thread(boost::bind(&umcd_logger::run, boost::ref(umcd_logger::get())));
       config cfg = options.build_config();
       UMCD_LOG(info) << "Configuration requested:\n" << cfg;
-
+      // Many classes are tightly coupled with the game path, and in particular with this global variable, so we need to set it.
+      game_config::path = cfg["wesnoth_dir"].str();
       boost::shared_ptr<umcd_protocol> protocol = boost::make_shared<umcd_protocol>(cfg);
       server_mt<umcd_protocol> addon_server(cfg, protocol);
       addon_server.run();

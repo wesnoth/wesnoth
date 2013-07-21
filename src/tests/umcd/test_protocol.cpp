@@ -19,8 +19,8 @@
 #include <boost/bind.hpp>
 #include <boost/asio.hpp>
 
+#include "game_config.hpp"
 #include "serialization/parser.hpp"
-#include "serialization/one_hierarchy_validator.hpp"
 #include "umcd/protocol/wml/umcd_protocol.hpp"
 
 using namespace boost::unit_test;
@@ -60,8 +60,9 @@ std::string zero_padding(const std::string& value, std::size_t size)
   return res + value;
 }
 
-void test_exchange(const std::string& request_path, const std::string& reply_validator_path)
-{
+void test_exchange(const std::string& request_path, const std::string& reply_validator_path, bool no_response=false)
+{      
+  game_config::path = "../";
   std::ifstream request_file(request_path.c_str());
   config request_conf;
   read(request_conf, request_file);
@@ -74,11 +75,15 @@ void test_exchange(const std::string& request_path, const std::string& reply_val
   stream << zero_padding(request_size, umcd_protocol::MAX_NUMBER_OF_DIGITS);
   stream << request_conf_string;
   test_stream_state(stream);
-  config response;
-  boost::shared_ptr<schema_validation::schema_validator> validator(new schema_validation::schema_validator(reply_validator_path));
-  // Should not throw! we don't use BOOST_CHECK_NO_THROW because it doesn't print the message.
-  ::read(response, stream, validator.get());
-  test_stream_state(stream);
+  if(!no_response)
+  {
+    config response;
+    boost::shared_ptr<schema_validation::schema_validator> validator(new schema_validation::schema_validator(reply_validator_path));
+
+    // Should not throw! we don't use BOOST_CHECK_NO_THROW because it doesn't print the message.
+    ::read(response, stream, validator.get());
+    test_stream_state(stream);
+  }
 }
 
 BOOST_AUTO_TEST_SUITE(umcd_common_test_suite)
@@ -109,6 +114,16 @@ BOOST_AUTO_TEST_CASE(umcd_request_license_en_GB)
 }
 
 BOOST_AUTO_TEST_SUITE_END() // umcd_request_license_test_suite
+
+BOOST_AUTO_TEST_SUITE(umcd_request_upload_test_suite)
+
+BOOST_AUTO_TEST_CASE(umcd_request_basic_upload)
+{
+  const std::string request_path = "../data/umcd/tests/request_umc_upload/request_umc_upload_basic.cfg";
+  test_exchange(request_path, "", true);
+}
+
+BOOST_AUTO_TEST_SUITE_END() // umcd_request_upload_test_suite
 
 BOOST_AUTO_TEST_SUITE(umcd_metaprogramming_tools_suite)
 
