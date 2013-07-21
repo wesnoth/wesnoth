@@ -171,6 +171,21 @@ void change_terrain(const map_location &loc, const t_translation::t_terrain &t,
 	 */
 	size_t wml_tracking();
 
+
+	// Declarations that will be more useful after the split:
+
+	/// Add a pending menu item command change.
+	void add_wmi_change(const std::string & id, const config & new_command);
+	/// Removes a pending menu item command change.
+	void remove_wmi_change(const std::string & id);
+
+	/// Handles all the different types of actions that can be triggered by an event.
+	void commit_wmi_commands();
+	bool matches_special_filter(const config &cfg, const vconfig& filter);
+	/// Helper function which determines whether a wml_message text can
+	/// really be pushed into the wml_messages_stream, and does it.
+	void put_wml_message(const std::string& logger, const std::string& message);
+
 } // end namespace game_events
 
 #endif

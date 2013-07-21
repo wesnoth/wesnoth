@@ -342,8 +342,6 @@ static_wml_action_map static_wml_actions;
 	static void wml_func_##pname(const queued_event& pei, const vconfig& pcfg)
 
 
-	bool matches_special_filter(const config &cfg, const vconfig& filter);
-
 	namespace {
 	bool internal_conditional_passed(const vconfig& cond, bool& backwards_compat)
 	{
@@ -2260,6 +2258,28 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 	}
 }
 
+
+/** Add a pending menu item command change. */
+void add_wmi_change(const std::string & id, const config & new_command)
+{
+	wmi_command_changes.push_back(wmi_command_change(id, new config(new_command)));
+}
+
+/** Removes a pending menu item command change. */
+void remove_wmi_change(const std::string & id)
+{
+	std::vector<wmi_command_change>::iterator wcc = wmi_command_changes.begin();
+	while ( wcc != wmi_command_changes.end() ) {
+		if ( wcc->first != id ) {
+			++wcc;
+			continue;
+		}
+		delete wcc->second;
+		wcc->second = NULL;
+		wcc = wmi_command_changes.erase(wcc);
+	}
+}
+
 /// Setting of menu items
 WML_HANDLER_FUNCTION(set_menu_item, /*event_info*/, cfg)
 {
@@ -2305,8 +2325,7 @@ WML_HANDLER_FUNCTION(set_menu_item, /*event_info*/, cfg)
 	if(cfg.has_child("command")) {
 		const vconfig& cmd = cfg.child("command");
 		const bool delayed = cmd["delayed_variable_substitution"].to_bool(true);
-		config* new_command = new config(delayed ? cmd.get_config() : cmd.get_parsed_config());
-		wmi_command_changes.push_back(wmi_command_change(id, new_command));
+		add_wmi_change(id, delayed ? cmd.get_config() : cmd.get_parsed_config());
 	}
 }
 
@@ -2325,16 +2344,7 @@ WML_HANDLER_FUNCTION(clear_menu_item, /*event_info*/, cfg)
 			continue;
 		}
 
-		std::vector<wmi_command_change>::iterator wcc = wmi_command_changes.begin();
-		while(wcc != wmi_command_changes.end()) {
-			if(wcc->first != id) {
-				++wcc;
-				continue;
-			}
-			delete wcc->second;
-			wcc->second = NULL;
-			wcc = wmi_command_changes.erase(wcc);
-		}
+		remove_wmi_change(id);
 		event_handlers.remove_event_handler(id);
 
 		wml_menu_item*& mi = menu_items[id];
