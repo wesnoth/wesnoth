@@ -876,7 +876,7 @@ int find_suitable_faction(faction_list const &fl, const config &cfg)
 	return res;
 }
 
-std::vector<const config*> available_factions(
+std::vector<const config*> init_available_factions(
 	std::vector<const config*> era_sides, const config& side)
 {
 	std::vector<const config*> available_factions;
@@ -892,7 +892,7 @@ std::vector<const config*> available_factions(
 	return available_factions;
 }
 
-std::vector<const config*> choosable_factions(
+std::vector<const config*> init_choosable_factions(
 	std::vector<const config*> available_factions, const config& side,
 	const bool map_settings)
 {

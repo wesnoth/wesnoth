@@ -282,8 +282,8 @@ void wait::join_game(bool observe)
 			const bool use_map_settings =
 				level_.child("multiplayer")["mp_use_map_settings"].to_bool();
 
-			leader_sides = choosable_factions(
-				available_factions(leader_sides, *side_choice),
+			leader_sides = init_choosable_factions(
+				init_available_factions(leader_sides, *side_choice),
 				*side_choice, use_map_settings);
 
 			std::vector<std::string> choices;

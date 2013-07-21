@@ -17,13 +17,14 @@
 #ifndef MULTIPLAYER_CONNECT_H_INCLUDED
 #define MULTIPLAYER_CONNECT_H_INCLUDED
 
+#include "commandline_options.hpp"
 #include "gamestatus.hpp"
 #include "leader_list.hpp"
+#include "multiplayer_connect_engine.hpp"
 #include "multiplayer_ui.hpp"
+#include "widgets/combo_drag.hpp"
 #include "widgets/scrollpane.hpp"
 #include "widgets/slider.hpp"
-#include "widgets/combo_drag.hpp"
-#include "commandline_options.hpp"
 
 namespace ai {
 	struct description;
@@ -34,25 +35,10 @@ namespace mp {
 class connect : public mp::ui
 {
 public:
-	struct connected_user {
-		connected_user(const std::string& name, mp::controller controller,
-				network::connection connection) :
-			name(name), controller(controller), connection(connection)
-		{};
-		std::string name;
-		mp::controller controller;
-		network::connection connection;
-		operator std::string() const
-		{
-			return name;
-		}
-	};
-
-	typedef std::vector<connected_user> connected_user_list;
 
 	class side {
 	public:
-		side(connect& parent, const config& cfg, int index);
+		side(connect& parent, side_engine_ptr engine);
 
 		side(const side& a);
 
@@ -63,52 +49,8 @@ public:
 		/** Returns true if this side changed since last call to changed(). */
 		bool changed();
 
-		/**
-		 * Gets a config object representing this side.
-		 *
-		 * If include_leader is set to true, the config objects include the
-		 * "type=" defining the leader type, else it does not.
-		 */
-		config get_config() const;
-
-		/**
-		 * Returns true if this side is waiting for a network player and
-		 * players allowed.
-		 */
-		bool available(const std::string& name = "") const;
-
-		/** Returns true, if the player has chosen his leader and this side is ready for the game to start */
-		bool ready_for_start() const;
-
-		/** Return true if players are allowed to take this side. */
-		bool allow_player() const;
-
-		/** Sets the controller of a side. */
-		void set_controller(mp::controller controller);
-		mp::controller get_controller() const;
-
 		/** Adds an user to the user list combo. */
-		void update_user_list();
-
-		/** Returns the username of this side. */
-		const std::string& get_current_player() const
-			{ return current_player_; }
-
-		int get_index();
-
-		void set_index(int index);
-
-		const std::string& get_player_id() const;
-
-		/** Sets the username of this side. */
-		void set_player_id(const std::string& player_id);
-
-		/** Sets if the joining player has chosen his leader. */
-		void set_ready_for_start(bool ready_for_start);
-
-		int get_team();
-
-		void set_team(int team);
+		void update_user_list(const std::vector<std::string>& name_list);
 
 		/**
 		 * Imports data from the network into this side, and updates the UI
@@ -119,12 +61,11 @@ public:
 		/** Resets this side to its default state, and updates the UI accordingly. */
 		void reset(mp::controller controller);
 
-		/** Resolves the random leader / factions. */
-		void resolve_random();
-		void set_faction_commandline(std::string faction_name);
-		void set_controller_commandline(std::string controller_name);
-		void set_ai_algorithm_commandline(std::string algorithm_name);
 		void hide_ai_algorithm_combo(bool invis);
+
+		side_engine_ptr engine() { return engine_; }
+		const side_engine_ptr engine() const { return engine_; }
+
 	private:
 		void init_ai_algorithm_combo();
 		void update_ai_algorithm_combo() {hide_ai_algorithm_combo(parent_->hidden());}
@@ -134,10 +75,6 @@ public:
 		void update_controller_ui();
 		void update_ui();
 
-		int selected_faction_index() const;
-
-		config& init_side_config(config& side);
-
 		/**
 		 * The mp::connect widget owning this mp::connect::side.
 		 *
@@ -145,34 +82,7 @@ public:
 		 */
 		connect* parent_;
 
-		/**
-		 * A non-const config. Be careful not to insert keys when only reading.
-		 *
-		 * (Use cfg_.get_attribute().)
-		 */
-		config cfg_;
-
-		// All factions which could be played by a side (including Random).
-		std::vector<const config*> available_factions_;
-		// All factions which a side can choose.
-		std::vector<const config*> choosable_factions_;
-		const config* current_faction_;
-
-		// Configurable variables
-		int index_;
-		std::string id_;
-		std::string player_id_;
-		std::string save_id_;
-		std::string current_player_;
-		mp::controller controller_;
-		int team_;
-		int color_;
-		int gold_;
-		int income_;
-		std::string leader_;
-		std::string gender_;
-		std::string ai_algorithm_;
-		bool ready_for_start_;
+		side_engine_ptr engine_;
 
 		// Flags for controlling the dialog widgets of the game lobby
 		bool gold_lock_;
@@ -195,22 +105,14 @@ public:
 		gui::label label_gold_;
 		gui::label label_income_;
 
-		bool allow_player_;
-		bool allow_changes_;
-		bool enabled_;
 		bool changed_;
-		leader_list_manager llm_;
 	};
-
-	friend class side;
 
 	typedef std::vector<side> side_list;
 
 	/**
 	 * Pointer to the display
 	 */
-	game_display* disp_;
-
 	connect(game_display& disp, const config& game_config, chat& c,
 			config& gamelist, const mp_game_settings& params,
 			mp::controller default_controller, bool local_players_only = false);
@@ -223,14 +125,15 @@ public:
 	 * Returns the game state, which contains all information about the current
 	 * scenario.
 	 */
-	const game_state& get_state();
+	const game_state& get_state() const { return engine_.state(); }
 
 	/**
 	 * Updates the current game state, resolves random factions, and sends a
 	 * "start game" message to the network.
 	 */
-	void start_game();
-	void start_game_commandline(const commandline_options& cmdline_opts);
+	void start_game() { engine_.start_game(); }
+	void start_game_commandline(const commandline_options& cmdline_opts)
+		{ engine_.start_game_commandline(cmdline_opts); }
 
 protected:
 	virtual void layout_children(const SDL_Rect& rect);
@@ -243,37 +146,7 @@ protected:
 	virtual void hide_children(bool hide=true);
 
 private:
-	// Those 2 functions are actually the steps of the (complex)
-	// construction of this class.
-
-	/**
-	 * Called by the constructor to initialize the game from a
-	 * create::parameters structure.
-	 */
-	void load_game();
 	void lists_init();
-
-	/** Convenience function. */
-	config* current_config();
-
-	/** Updates the level_ variable to reflect the sides in the sides_ vector. */
-	void update_level();
-
-	/** Updates the level, and send a diff to the clients. */
-	void update_and_send_diff(bool update_time_of_day = false);
-
-	/** Returns true if there still are sides available for this game. */
-	bool sides_available() const;
-
-	/** Returns true if all sides are ready to start the game. */
-	bool sides_ready() const;
-
-	/**
-	 * Validates whether the game can be started.
-	 *
-	 * returns                       Can the game be started?
-	 */
-	bool can_start_game() const;
 
 	/**
 	 * Updates the state of the player list, the launch button and of the start
@@ -281,26 +154,12 @@ private:
 	 */
 	void update_playerlist_state(bool silent=true);
 
-	/** Returns the index of a player, from its id, or -1 if the player was not found. */
-	connected_user_list::iterator find_player(const std::string& id);
-
-	/** Returns the side which is taken by a given player, or -1 if none was found. */
-	int find_player_side(const std::string& id) const;
-
 	/** Adds a player. */
 	void update_user_combos();
 
 	bool local_only_;
 
-	config level_;
-
-	/** This is the "game state" object which is created by this dialog. */
-	game_state state_;
-
-	mp_game_settings params_;
-
-	/** The list of available sides for the current era. */
-	std::vector<const config *> era_sides_;
+	const mp_game_settings params_;
 
 	// Lists used for combos
 	std::vector<std::string> player_types_;
@@ -308,17 +167,11 @@ private:
 	std::vector<std::string> player_colors_;
 	std::vector<ai::description*> ai_algorithms_;
 
-	// team_name list and "Team" prefix
-	std::vector<std::string> team_names_;
-	std::vector<std::string> user_team_names_;
 	const std::string team_prefix_;
 
 	side_list sides_;
-	connected_user_list users_;
 
 	gui::label waiting_label_;
-
-	controller default_controller_;
 
 	// Widgets
 	gui::scrollpane scroll_pane_;
@@ -336,6 +189,7 @@ private:
 
 	gui::drop_group_manager_ptr combo_control_group_;
 
+	connect_engine engine_;
 }; // end class connect
 
 } // end namespace mp

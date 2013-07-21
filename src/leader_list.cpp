@@ -37,6 +37,13 @@ leader_list_manager::leader_list_manager(gui::combo* leader_combo,
 {
 }
 
+void leader_list_manager::init_combos(gui::combo* leader_combo,
+	gui::combo* gender_combo)
+{
+	leader_combo_ = leader_combo;
+	gender_combo_ = gender_combo;
+}
+
 void leader_list_manager::set_side_list(
 	const std::vector<const config *> &side_list)
 {

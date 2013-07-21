@@ -32,7 +32,7 @@ static lg::log_domain log_config("config");
 
 namespace mp {
 
-config initial_level_config(game_display& disp, mp_game_settings& params,
+config initial_level_config(game_display& disp, const mp_game_settings& params,
 	game_state& state)
 {
 	config level;
@@ -48,8 +48,6 @@ config initial_level_config(game_display& disp, mp_game_settings& params,
 			return config();
 		}
 	} else {
-		level.clear();
-		params.mp_scenario = params.scenario_data["id"].str();
 		level.merge_with(params.scenario_data);
 		level["turns"] = params.num_turns;
 		level.add_child("multiplayer", params.to_config());
@@ -60,7 +58,6 @@ config initial_level_config(game_display& disp, mp_game_settings& params,
 		//	params.options.find_child("multiplayer", "id",
 		//		params.mp_scenario)), 0);
 
-		params.hash = level.hash();
 		level["next_underlying_unit_id"] = 0;
 		n_unit::id_manager::instance().clear();
 
