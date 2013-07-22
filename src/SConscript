@@ -556,8 +556,8 @@ libumcd_sources = Split("""
     """)
 
 umcd_sources = Split("""
-    umcd/protocol/wml/umcd_protocol.cpp
     umcd/umcd.cpp
+    umcd/protocol/wml/umcd_protocol.cpp
     """)
 
 libumcd = env.Library("umcd", libumcd_sources, OBJPREFIX = "umcd_")
@@ -654,6 +654,8 @@ test = test_env.WesnothProgram("test", test_sources +  [libwesnoth_extras, libwe
 umcd_test_sources = Split("""
     tests/umcd/test_protocol.cpp
     """)
+# hack: When umcd_protocol.cpp is added in libumcd_sources, a lot of link errors occurs, so we add it here.
+umcd_test_sources.extend(env.Object("umcd_protocol_test", "umcd/protocol/wml/umcd_protocol.cpp"))
 
 test_env.WesnothProgram("umcd_test", umcd_test_sources + [libwesnoth_core, libwesnothd, libumcd, libschema], have_umcd_test_prereqs)
 
