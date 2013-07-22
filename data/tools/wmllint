@@ -2401,14 +2401,22 @@ if __name__ == '__main__':
         return line
 
     try:
+        # If a backslash comes before a quote, it will be interpreted as an
+        # escape to a literal quote rather than a Windows directory delimiter,
+        # causing Windows to find "no such file or directory". This block deals
+        # with this issue, but it is impossible to handle all cases if multiple
+        # (intended) arguments are involved.
+        if arguments and sys.platform == 'win32':
+            for i,arg in enumerate(arguments):
+                if '"' in arg:
+                    arguments.remove(arg)
+                    arg = re.sub(r'([^ ])"([^ ])', r'\1\\\2', arg)
+                    for new in arg.rstrip('"').split('"'):
+                        arguments.insert(i, new.strip())
+                        i += 1
+
         if not arguments:
             arguments = ["."]
-
-        # in certain situations, Windows' command prompt appends a double quote
-        # to the command line parameters. This block takes care of this issue.
-        for i,arg in enumerate(arguments):
-            if arg.endswith('"'):
-                arguments[i] = arg[:-1]
 
         for dir in arguments:
             ofp = None
