@@ -24,10 +24,13 @@ class wml_reply
 {
 public:
    std::string metadata;
+   std::string size_header;
    
    wml_reply();
    wml_reply(const config& metadata);
    std::vector<boost::asio::const_buffer> to_buffers() const;
 };
+
+std::string make_size_header(size_t num_bytes);
 
 #endif // UMCD_WML_REPLY_HPP

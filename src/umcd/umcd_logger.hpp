@@ -158,7 +158,7 @@ public:
          run_once();
          // NOTE: Replace this function by boost::this_thread::sleep_for when more recent Boost version will be supported.
          //       (Or better: the C++11 version)
-         boost::this_thread::sleep(boost::posix_time::milliseconds(100));
+         //boost::this_thread::sleep(boost::posix_time::milliseconds(100));
       }
    }
 

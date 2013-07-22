@@ -79,7 +79,7 @@ basic_server<Protocol>::basic_server(const config &cfg, const boost::shared_ptr<
       acceptor.open(endpoint.protocol());
       acceptor.bind(endpoint);
       acceptor.listen();
-      UMCD_LOG(info) << "server: " << endpoint;
+      UMCD_LOG(info) << "The server IP is " << endpoint;
       break;
     }
     catch(std::exception &e)
@@ -105,7 +105,11 @@ void basic_server<Protocol>::run()
     }
     catch(std::exception& e)
     {
-      UMCD_LOG(error) << "Exception in basic_server::run(): handler shouldn't launch exception! (" << e.what() << ")";
+      UMCD_LOG(error) << "Exception in basic_server::run(): handler shouldn't launch exception! (" << e.what() << ").";
+    }
+    catch(...)
+    {
+      UMCD_LOG(error) << "Exception in basic_server::run(): handler shouldn't launch exception! (this exception doesn't inherit from std::exception).";
     }
   }
 }
@@ -113,7 +117,7 @@ void basic_server<Protocol>::run()
 template <class Protocol>
 void basic_server<Protocol>::start_accept()
 {
-  UMCD_LOG(trace) << "basic_server<Protocol>::start_accept()";
+  UMCD_LOG(trace) << "in basic_server::start_accept()";
   protocol = boost::make_shared<protocol_type>(*protocol);
   new_connection = boost::make_shared<connection_type>(boost::ref(io_service), protocol);
   acceptor.async_accept(new_connection->get_socket(),
@@ -124,7 +128,7 @@ void basic_server<Protocol>::start_accept()
 template <class Protocol>
 void basic_server<Protocol>::handle_accept(const boost::system::error_code& e)
 {
-  UMCD_LOG(trace) << "basic_server<Protocol>::handle_accept()";
+  UMCD_LOG(trace) << "in basic_server::handle_accept()";
   if (!e)
   {
     new_connection->start();

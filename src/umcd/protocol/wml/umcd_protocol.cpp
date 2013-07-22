@@ -21,7 +21,7 @@
 
 
 const std::size_t umcd_protocol::REQUEST_HEADER_MAX_SIZE;
-const std::size_t umcd_protocol::MAX_NUMBER_OF_DIGITS;
+const std::size_t umcd_protocol::REQUEST_HEADER_SIZE_FIELD_LENGTH;
 
 umcd_protocol::umcd_protocol(const config& server_config)
 : server_config(server_config)
@@ -76,8 +76,14 @@ void umcd_protocol::async_send_error(const std::string& error_msg)
 
 void umcd_protocol::async_send_invalid_packet(const std::string &where, const std::exception& e)
 {
-   async_send_error("The packet you sent is invalid. It could be a protocol bug and administrators have been contacted, the problem should be fixed soon.");
    UMCD_LOG_IP(error, client_connection->get_socket()) << " -- invalid request at " << where << " (" << e.what() << ")";
+   async_send_error("The packet you sent is invalid. It could be a protocol bug and administrators have been contacted, the problem should be fixed soon.");
+}
+
+void umcd_protocol::async_send_invalid_packet(const std::string &where, const twml_exception& e)
+{
+   UMCD_LOG_IP(error, client_connection->get_socket()) << " -- invalid request at " << where << " (user message=" << e.user_message << " ; dev message=" << e.dev_message << ")";
+   async_send_error("The packet you sent is invalid. It could be a protocol bug and administrators have been contacted, the problem should be fixed soon.");
 }
 
 void umcd_protocol::read_request_body(const boost::system::error_code& error, std::size_t)
@@ -88,7 +94,8 @@ void umcd_protocol::read_request_body(const boost::system::error_code& error, st
       try
       {
          // NOTE: We encapsulate the boost::array into a string because it old lexical_cast does not support boost::array. Change this when it'll be supported.
-         std::size_t request_size = boost::lexical_cast<std::size_t>(std::string(raw_request_size.data()));
+         std::string request_size_s = std::string(raw_request_size.data(), raw_request_size.size());
+         std::size_t request_size = boost::lexical_cast<std::size_t>(request_size_s);
          UMCD_LOG_IP(debug, client_connection->get_socket()) << " -- Request of size: " << request_size;
          if(request_size > REQUEST_HEADER_MAX_SIZE)
          {
@@ -123,15 +130,20 @@ void umcd_protocol::dispatch_request(const boost::system::error_code& err, std::
          std::string request_name = peek_request_name(request_stream);
          UMCD_LOG_IP(info, client_connection->get_socket()) << " -- request: " << request_name;
          info_ptr request_info = action_factory->make_product(request_name);
+         UMCD_LOG_IP(info, client_connection->get_socket()) << " -- request:\n" << request_body;
 
          request = wml_request(client_connection);
          // Read into config and validate metadata.
          ::read(request.get_metadata(), request_stream, request_info->validator().get());
-         UMCD_LOG_IP(debug, client_connection->get_socket()) << " -- request validated.\n";
+         UMCD_LOG_IP(debug, client_connection->get_socket()) << " -- request validated.";
 
          request_info->action()->execute(shared_from_this());
       }
-      catch(std::exception& e)
+      catch(const std::exception& e)
+      {
+         async_send_invalid_packet("umcd_protocol::dispatch_request", e);
+      }
+      catch(const twml_exception& e)
       {
          async_send_invalid_packet("umcd_protocol::dispatch_request", e);
       }

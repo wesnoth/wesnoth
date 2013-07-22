@@ -18,6 +18,8 @@
 #include <string>
 #include <boost/shared_ptr.hpp>
    
+#include "wml_exception.hpp"
+
 #include "umcd/actions/basic_umcd_action.hpp"
 #include "umcd/wml_request.hpp"
 #include "umcd/server/connection.hpp"
@@ -33,7 +35,7 @@ class umcd_protocol : public boost::enable_shared_from_this<umcd_protocol>
 {
 public:
    static const std::size_t REQUEST_HEADER_MAX_SIZE = 8192;
-   static const std::size_t MAX_NUMBER_OF_DIGITS = num_digits<REQUEST_HEADER_MAX_SIZE>::value;
+   static const std::size_t REQUEST_HEADER_SIZE_FIELD_LENGTH = 10;
 private:
    typedef basic_umcd_action action_type;
    typedef boost::shared_ptr<request_info> info_ptr;
@@ -46,7 +48,7 @@ private:
    // The shared_ptr avoid the factory to be copied/duplicated.
    boost::shared_ptr<action_factory_type> action_factory;
    connection_ptr client_connection;
-   boost::array<char, MAX_NUMBER_OF_DIGITS> raw_request_size;
+   boost::array<char, REQUEST_HEADER_SIZE_FIELD_LENGTH> raw_request_size;
    std::string request_body;
    wml_reply reply;
    wml_request request;
@@ -70,6 +72,7 @@ public:
    void async_send_reply();
    void async_send_error(const std::string& error_msg);
    void async_send_invalid_packet(const std::string &where, const std::exception& e);
+   void async_send_invalid_packet(const std::string &where, const twml_exception& e);
 
    // Precondition: size_of_request must be read.
    void read_request_body(const boost::system::error_code& error, std::size_t bytes_transferred);
