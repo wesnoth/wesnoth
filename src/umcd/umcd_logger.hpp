@@ -43,7 +43,7 @@ enum severity_level {
 };
 
 class umcd_logger;
-class log_line;
+struct log_line;
 
 class log_line_cache
 {
@@ -52,7 +52,7 @@ class log_line_cache
    severity_level severity;
    boost::shared_ptr<std::stringstream> line;
 
-   friend class log_line;
+   friend struct log_line;
 
 public:
 
