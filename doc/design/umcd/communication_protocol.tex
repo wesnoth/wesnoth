@@ -380,9 +380,14 @@ The keys have the following meaning:
 
 \begin{itemize}
  \item The ID is a technical ID and not the couple campaign name + version which is unique too. So we can change the campaign name without breaking dependencies.
+ \item Why do we send the size before each request packet? If we don't, we must know when to stop reading the request. In the Boost.Asio HTTP server sample, the author uses a parser that retains the state of the parsing whenever the parsing ends. If we do the same, we duplicate the current WML parser. We also should write another complete parser with a validator (if we don't want to parse twice). That's why we prefer to read the entire request first, and then parse it when it completes.
+ \item Why don't we send the size before each reply packet? Because it's not a problem if the client uses a single thread to handle the connection, he can waits — there is just one Wesnoth packet waiting to be handle. The server can't loose time waiting, so we can read the request by chunks to avoid waiting.
 
 \end{itemize}
 
+\subsection{Request packet}
+
+Each request packet (packet sent from the client to the server) begin with a fixed length field of 10 bytes. It contains the size of the request — only the metadata, not the binary data. The size is textual (not binary).
 
 \subsection{Special packets}
 \label{wire:specialpackets}

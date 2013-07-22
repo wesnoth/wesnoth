@@ -60,7 +60,6 @@ void umcd_protocol::complete_request(const boost::system::error_code& error, std
 void umcd_protocol::async_send_reply()
 {
    UMCD_LOG_IP(trace, client_connection->get_socket()) << " -- umcd_protocol::async_send_reply.";
-   UMCD_LOG_IP(debug, client_connection->get_socket()) << " -- Reply sent:\n" << reply.metadata;
    boost::asio::async_write(client_connection->get_socket()
       , reply.to_buffers()
       , boost::bind(&umcd_protocol::complete_request, shared_from_this()
