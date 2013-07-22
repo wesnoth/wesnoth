@@ -174,8 +174,12 @@ void change_terrain(const map_location &loc, const t_translation::t_terrain &t,
 
 	// Declarations that will be more useful after the split:
 
+	/// Create an event handler.
+	void add_event_handler(const config & event);
 	/// Add a pending menu item command change.
 	void add_wmi_change(const std::string & id, const config & new_command);
+	/// Removes an event handler.
+	void remove_event_handler(const std::string & id);
 	/// Removes a pending menu item command change.
 	void remove_wmi_change(const std::string & id);
 
@@ -185,6 +189,23 @@ void change_terrain(const map_location &loc, const t_translation::t_terrain &t,
 	/// Helper function which determines whether a wml_message text can
 	/// really be pushed into the wml_messages_stream, and does it.
 	void put_wml_message(const std::string& logger, const std::string& message);
+
+	/// Checks if an item has been used.
+	bool item_used(const std::string & id);
+	/// Records if an item has been used.
+	void item_used(const std::string & id, bool used);
+	/// Returns whether or not we are skipping messages.
+	bool skip_messages();
+	/// Sets whether or not we are skipping messages.
+	void skip_messages(bool skip);
+	/// Returns whether or not the screen (map visuals) needs to be rebuilt.
+	bool screen_needs_rebuild();
+	/// Sets whether or not the screen (map visuals) needs to be rebuilt.
+	void screen_needs_rebuild(bool rebuild);
+	/// Returns whether or not we believe WML might have changed something.
+	bool context_mutated();
+	/// Sets whether or not we believe WML might have changed something.
+	void context_mutated(bool mutated);
 
 } // end namespace game_events
 

@@ -126,7 +126,7 @@ struct scoped_context
 	}
 };
 
-bool screen_needs_rebuild = false;
+bool does_screen_need_rebuild = false;
 /// The value returned by wml_tracking();
 size_t internal_wml_tracking = 0;
 
@@ -199,6 +199,42 @@ void put_wml_message(const std::string& logger, const std::string& message)
 		LOG_WML << message << "\n";
 		wml_messages_stream << _("Info: ") << message << "\n";
 	}
+}
+
+/** Returns whether or not we are skipping messages. */
+bool skip_messages()
+{
+	return current_context->skip_messages;
+}
+
+/** Sets whether or not we are skipping messages. */
+void skip_messages(bool skip)
+{
+	current_context->skip_messages = skip;
+}
+
+/** Returns whether or not the screen (map visuals) needs to be rebuilt. */
+bool screen_needs_rebuild()
+{
+	return does_screen_need_rebuild;
+}
+
+/** Sets whether or not the screen (map visuals) needs to be rebuilt. */
+void screen_needs_rebuild(bool rebuild)
+{
+	does_screen_need_rebuild = rebuild;
+}
+
+/** Returns whether or not we believe WML might have changed something. */
+bool context_mutated()
+{
+	return current_context->mutated;
+}
+
+/** Sets whether or not we believe WML might have changed something. */
+void context_mutated(bool mutated)
+{
+	current_context->mutated = mutated;
 }
 
 namespace {
@@ -1819,7 +1855,7 @@ void change_terrain(const map_location &loc, const t_translation::t_terrain &t,
 	}
 
 	game_map->set_terrain(loc, new_t);
-	screen_needs_rebuild = true;
+	screen_needs_rebuild(true);
 
 	BOOST_FOREACH(const t_translation::t_terrain &ut, game_map->underlying_union_terrain(loc)) {
 		preferences::encountered_terrains().insert(ut);
@@ -1855,7 +1891,7 @@ WML_HANDLER_FUNCTION(terrain_mask, /*event_info*/, cfg)
 	}
 	bool border = cfg["border"].to_bool();
 	resources::game_map->overlay(mask_map, cfg.get_parsed_config(), loc.x, loc.y, border);
-	screen_needs_rebuild = true;
+	screen_needs_rebuild(true);
 }
 
 namespace {
@@ -1997,6 +2033,29 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 	ERR_NG << "A [recall] tag with the following content failed:\n" << cfg.get_config().debug();
 }
 
+
+/**
+ * Checks if an item has been used.
+ * (An empty id will never be considered used.)
+ */
+bool item_used(const std::string & id)
+{
+	return !id.empty()  &&  used_items.count(id) > 0;
+}
+
+/** Records if an item has been used. */
+void item_used(const std::string & id, bool used)
+{
+	// Empty IDs are not tracked.
+	if ( id.empty() )
+		return;
+
+	if ( used )
+		used_items.insert(id);
+	else
+		used_items.erase(id);
+}
+
 WML_HANDLER_FUNCTION(object, event_info, cfg)
 {
 	const vconfig filter = cfg.child("filter");
@@ -2004,7 +2063,7 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 	std::string id = cfg["id"];
 
 	// If this item has already been used
-	if(id != "" && used_items.count(id))
+	if ( item_used(id) )
 		return;
 
 	std::string image = cfg["image"];
@@ -2049,7 +2108,7 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 		resources::screen->invalidate_unit();
 
 		// Mark this item as used up.
-		used_items.insert(id);
+		item_used(id, true);
 	} else {
 		text = cfg["cannot_use_message"].str();
 		command_type = "else";
@@ -2280,6 +2339,19 @@ void remove_wmi_change(const std::string & id)
 	}
 }
 
+/** Create an event handler. */
+void add_event_handler(const config & handler)
+{
+	event_handlers.add_event_handler(event_handler(handler));
+}
+
+/** Removes an event handler. */
+void remove_event_handler(const std::string & id)
+{
+	event_handlers.remove_event_handler(id);
+}
+
+
 /// Setting of menu items
 WML_HANDLER_FUNCTION(set_menu_item, /*event_info*/, cfg)
 {
@@ -2345,7 +2417,7 @@ WML_HANDLER_FUNCTION(clear_menu_item, /*event_info*/, cfg)
 		}
 
 		remove_wmi_change(id);
-		event_handlers.remove_event_handler(id);
+		remove_event_handler(id);
 
 		wml_menu_item*& mi = menu_items[id];
 		delete mi;
@@ -2602,8 +2674,8 @@ WML_HANDLER_FUNCTION(redraw, /*event_info*/, cfg)
 		}
 		screen.recalculate_minimap();
 	}
-	if (screen_needs_rebuild) {
-		screen_needs_rebuild = false;
+	if ( screen_needs_rebuild() ) {
+		screen_needs_rebuild(false);
 		screen.recalculate_minimap();
 		screen.rebuild_all();
 	}
@@ -2702,7 +2774,7 @@ WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 /// Allow undo sets the flag saying whether the event has mutated the game to false.
 WML_HANDLER_FUNCTION(allow_undo,/*event_info*/,/*cfg*/)
 {
-	current_context->mutated = false;
+	context_mutated(false);
 }
 
 WML_HANDLER_FUNCTION(open_help,  /*event_info*/, cfg)
@@ -2860,7 +2932,7 @@ struct message_user_choice : mp_sync::user_choice
 		resources::screen->draw(true,true);
 
 		if (dlg_result == gui2::twindow::CANCEL) {
-			current_context->skip_messages = true;
+			skip_messages(true);
 		}
 
 		config cfg;
@@ -2892,7 +2964,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 	play_controller *controller = resources::controller;
 	if(!has_input && (
 			 controller->is_skipping_replay() ||
-			 current_context->skip_messages
+			 skip_messages()
 			 ))
 	{
 		return;
@@ -3075,11 +3147,11 @@ WML_HANDLER_FUNCTION(disallow_end_turn, /*event_info*/, /*cfg*/)
 WML_HANDLER_FUNCTION(event, /*event_info*/, cfg)
 {
 	if (cfg["remove"].to_bool(false)) {
-		event_handlers.remove_event_handler(cfg["id"]);
+		remove_event_handler(cfg["id"]);
 	} else if (!cfg["delayed_variable_substitution"].to_bool(true)) {
-		event_handlers.add_event_handler(event_handler(cfg.get_parsed_config()));
+		add_event_handler(cfg.get_parsed_config());
 	} else {
-		event_handlers.add_event_handler(event_handler(cfg.get_config()));
+		add_event_handler(cfg.get_config());
 	}
 }
 
@@ -3159,7 +3231,7 @@ WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 
 	*game_map = map;
 	resources::screen->reload_map();
-	screen_needs_rebuild = true;
+	screen_needs_rebuild(true);
 	ai::manager::raise_map_changed();
 }
 
@@ -3331,15 +3403,15 @@ bool process_event(event_handler& handler, const queued_event& ev)
 		resources::gamedata->last_selected = ev.loc1;
 	}
 
-	if (screen_needs_rebuild) {
-		screen_needs_rebuild = false;
+	if ( screen_needs_rebuild() ) {
+		screen_needs_rebuild(false);
 		game_display *screen = resources::screen;
 		screen->recalculate_minimap();
 		screen->invalidate_all();
 		screen->rebuild_all();
 	}
 
-	return current_context->mutated;
+	return context_mutated();
 }
 
 }//anonymous namespace
@@ -3466,7 +3538,7 @@ bool process_event(event_handler& handler, const queued_event& ev)
 	{
 		assert(!manager_running);
 		BOOST_FOREACH(const config &ev, cfg.child_range("event")) {
-			event_handlers.add_event_handler(event_handler(ev));
+			add_event_handler(ev);
 		}
 		BOOST_FOREACH(const std::string &id, utils::split(cfg["unit_wml_ids"])) {
 			unit_wml_ids.insert(id);
@@ -3483,7 +3555,7 @@ bool process_event(event_handler& handler, const queued_event& ev)
 		if(!used.empty()) {
 			const std::vector<std::string>& v = utils::split(used);
 			for(std::vector<std::string>::const_iterator i = v.begin(); i != v.end(); ++i) {
-				used_items.insert(*i);
+				item_used(*i, true);
 			}
 		}
 		int wmi_count = 0;
@@ -3583,7 +3655,7 @@ bool process_event(event_handler& handler, const queued_event& ev)
 				WRN_NG << "attempt to add an [event] with empty id=, ignoring \n";
 				continue;
 			}
-			event_handlers.add_event_handler(event_handler(new_ev));
+			add_event_handler(new_ev);
 		}
 	}
 
