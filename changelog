@@ -21,7 +21,10 @@ Version 1.4.7+dev:
    * wmllint: update paths from "portraits/core/" to "portraits/", clean up
      get_hit_sound messages, fix endswith()s that presumed unit files use UNIX
      newlines, backport fix for Windows files refusing to be overwritten by
-     a rename, fix second half of "duplicated attack" warning printing to stdout
+     a rename, fix second half of "duplicated attack" warning printing to
+     stdout, enable more abilities and weapon specials to be updated, fix
+     creation of unit description= and DEFENSE_ANIM lines, fix lifing of frames
+     to [attack_anim]
 
 Version 1.4.7:
  * campaigns:
