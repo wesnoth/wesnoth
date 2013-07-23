@@ -95,21 +95,7 @@ public:
     void reset_map();           ///< reset the generator to new use
 
 protected:
-	unsigned int status_;    ///< this is the state of the generator.
-	unsigned int siz_; ///< the 'real' size of the map (used allocation and computing altitudes) 2^n + 1
-	yamg_params *parms_;     ///< its parameter list.
-	yamg_hex ***map_;        ///< the generated map
-	yamg_hex *summits_;      ///< a list of hexes, various purposes
-	yamg_hex *endpoints_;    ///< something to store a list of road startpoints
-	yamg_hex *castles_;      ///< a list of castle keeps
-
-	int table_[M_NUMLEVEL];  ///< array defining layers boundaries.
-    int snow_limit_;               ///< the snow limit floor.
-	unsigned int riv_;       ///< the reference water level
-	const char *terrains_[M_NUMLEVEL]; ///< terrains to use for each layer (overloaded with snow)
-	yamg_hexheap *heap_;          ///< an utility heap to sort hexes
-
-	//----------------- Functions -------------
+    //----------------- Functions -------------
 
     unsigned int create_empty_map(); ///< creates an empty map according parameters height and width
     unsigned int free_map();         ///< frees all memory used
@@ -137,6 +123,19 @@ protected:
     void store_neighbors(yamg_hex *it, unsigned int layMin, unsigned int layMax); ///< get neighbours and store them in the heap
 
 private:
+    unsigned int status_;    ///< this is the state of the generator.
+    unsigned int siz_; ///< the 'real' size of the map (used allocation and computing altitudes) 2^n + 1
+    yamg_params *parms_;     ///< its parameter list.
+    yamg_hex ***map_;        ///< the generated map
+    yamg_hex *summits_;      ///< a list of hexes, various purposes
+    yamg_hex *endpoints_;    ///< something to store a list of road startpoints
+    yamg_hex *castles_;      ///< a list of castle keeps
+
+    int table_[M_NUMLEVEL];  ///< array defining layers boundaries.
+    int snow_limit_;               ///< the snow limit floor.
+    unsigned int riv_;       ///< the reference water level
+    const char *terrains_[M_NUMLEVEL]; ///< terrains to use for each layer (overloaded with snow)
+    yamg_hexheap *heap_;          ///< an utility heap to sort hexes
 };
 
 int m_rand(int limit);                 ///< returns a random number 0 < n < limit
