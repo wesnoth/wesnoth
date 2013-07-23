@@ -39,8 +39,8 @@ public:
     char path[2048];        ///< dest filepath
 #endif
     unsigned int seed;      ///< random seed
-    unsigned int larg;      ///< map width
-    unsigned int haut;      ///< map height
+    unsigned int width;      ///< map width
+    unsigned int height;      ///< map height
     unsigned int rough;     ///< map roughness
     char type;              ///< landscape type
     char season;            ///< season to use

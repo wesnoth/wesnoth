@@ -34,8 +34,8 @@
 
 yamg_params::yamg_params()
     : seed(get_random())
-    , larg(65)
-    , haut(65)
+    , width(65)
+    , height(65)
     , rough(12)
     , type('t')
     , season('s')
@@ -140,7 +140,7 @@ unsigned int yamg_params::verify()
 
     unsigned int result = YAMG_OK;
 
-    if((larg > YAMG_MAPMAXSIZE) || (haut > YAMG_MAPMAXSIZE) )
+    if((width > YAMG_MAPMAXSIZE) || (height > YAMG_MAPMAXSIZE) )
         result |= YAMG_LIMITS;
 
     if((rough > YAMG_ROUGHMAX) || (rough == 0))

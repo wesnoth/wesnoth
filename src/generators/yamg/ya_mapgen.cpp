@@ -342,7 +342,7 @@ std::string ya_mapgen::create_map(const std::vector<std::string>& /*args*/) {
 //        return NULL;
 //    }
     n = create_map(); // do the job
-	n = (par->haut * par->larg * (YAMG_HEXLONG + 2)) + 100; // allocate buffer for result
+    n = (par->height * par->width * (YAMG_HEXLONG + 2)) + 100; // allocate buffer for result
 	char* buf = new char[n];
 
     n = get_map(buf); //creates the map in Wesnoth format
@@ -430,7 +430,7 @@ int ya_mapgen::create_map() {
 	//------- first create an empty map and an empty heap according map dimension.
 
     create_empty_map();
-	heap_ = new yamg_hexheap(parms_->haut * parms_->larg); // this allocate a heap for various uses, we expect it not containing more hexes than the map itself.
+    heap_ = new yamg_hexheap(parms_->height * parms_->width); // this allocate a heap for various uses, we expect it not containing more hexes than the map itself.
 
 	//------- compute altitudes --------
 	unsigned int dim = siz_ - 1;
@@ -464,7 +464,7 @@ int ya_mapgen::create_map() {
 
 	//------- make rivers and lakes. This modify slightly the existing map
     if (parms_->water_ratio != 0) {
-        riv_ = ((parms_->water_ratio * (parms_->larg + parms_->haut))
+        riv_ = ((parms_->water_ratio * (parms_->width + parms_->height))
 				/ YAMG_RIVER_ADAPTATION) + 3;
         make_rivers(); // since this change slightly the mesh, we have to do this before setting base terrains.
 	} else
@@ -528,8 +528,8 @@ int ya_mapgen::get_map(char *buf) {
 	ptr += sprintf(ptr, "border_size=1\nusage=map\n\n");
 
 	//---------- iterate on hexes
-	for (unsigned int y = 0; y < parms_->haut; y++) {
-		for (unsigned int x = 0; x < parms_->larg; x++)
+    for (unsigned int y = 0; y < parms_->height; y++) {
+        for (unsigned int x = 0; x < parms_->width; x++)
             ptr += map_[y][x]->create_terrain_code(ptr);
 		ptr -= 2; // because at the end of line the previous instruction created a ', '
 		ptr += sprintf(ptr, "\n");
@@ -556,10 +556,10 @@ int ya_mapgen::get_map(char *buf) {
 unsigned int ya_mapgen::create_empty_map() {
 	unsigned int n, m;
 
-	if (parms_->haut > parms_->larg)
-		n = parms_->haut;
+    if (parms_->height > parms_->width)
+        n = parms_->height;
 	else
-		n = parms_->larg;
+        n = parms_->width;
 
 	m = 32;
 	while (m < n)
@@ -748,8 +748,8 @@ int ya_mapgen::normalize_map() {
 	maxA = 0;
 	minA = RAND_MAX / 2;
 
-	for (i = 0; i < parms_->haut; i++) {
-		for (j = 0; j < parms_->larg; j++) {
+    for (i = 0; i < parms_->height; i++) {
+        for (j = 0; j < parms_->width; j++) {
 			if (map_[i][j]->alt > maxA)
 				maxA = map_[i][j]->alt;
 			if (map_[i][j]->alt < minA)
@@ -757,8 +757,8 @@ int ya_mapgen::normalize_map() {
 		}
 	}
 
-	for (i = 0; i < parms_->haut; i++) {
-		for (j = 0; j < parms_->larg; j++) {
+    for (i = 0; i < parms_->height; i++) {
+        for (j = 0; j < parms_->width; j++) {
 			map_[i][j]->alt -= minA;
 		}
 	}
@@ -864,8 +864,8 @@ void ya_mapgen::set_base_terrains(int /*range*/)
 		// Note water here has nothing to do with 'sea', i.e. layers 0 and 1, those are drawn in loop 5. Water substitution apply only on higher layers.
 		lev++;
 		bool lFlag = (parms_->type != 'd');
-		for (i = 0; i < parms_->haut; i++) {
-			for (j = 0; j < parms_->larg; j++) {
+        for (i = 0; i < parms_->height; i++) {
+            for (j = 0; j < parms_->width; j++) {
 				if (map_[i][j]->water > riv_) {
 					map_[i][j]->lock = YAMG_LIGHTLOCK; // this will allow terrain reuse for roads, but not for forests
                     map_[i][j]->water_flag = true;
@@ -929,8 +929,8 @@ void ya_mapgen::make_rivers() {
 	// first, calculate the water flood.
 	summits_ = NULL;
 
-	for (i = 0; i < parms_->haut; i++) {
-		for (j = 0; j < parms_->larg; j++) {
+    for (i = 0; i < parms_->height; i++) {
+        for (j = 0; j < parms_->width; j++) {
 			h = map_[i][j];
 			if (!h->done && (h->water == 0)
 					&& (h->alt > table_[YAMG_SHALLSEA])) {
@@ -1181,14 +1181,14 @@ void ya_mapgen::make_burgs() {
 		break;
 	}
 
-	essais = (parms_->haut * parms_->larg * parms_->burgs); // since the random hex selection can result in an endless loop, we set an arbitrary limit
+    essais = (parms_->height * parms_->width * parms_->burgs); // since the random hex selection can result in an endless loop, we set an arbitrary limit
 	num = parms_->burgs;
 	i = 0;
 	j = 0;
 
 	while ((essais-- > 0) && (num > 0)) {
-        i = ((i + m_rand(parms_->haut)) % (parms_->haut - 3));
-        j = ((j + m_rand(parms_->larg)) % (parms_->larg - 3));
+        i = ((i + m_rand(parms_->height)) % (parms_->height - 3));
+        j = ((j + m_rand(parms_->width)) % (parms_->width - 3));
 		if ((i < 2) || (j < 2))
 			continue;
 		it = map_[i][j];
@@ -1300,15 +1300,15 @@ void ya_mapgen::make_castles() {
 	}
 
 	castles_ = NULL;
-	essais = (parms_->haut * parms_->larg * parms_->players); // since the random hex selection can result in an endless loop, we set an arbitrary limit
+    essais = (parms_->height * parms_->width * parms_->players); // since the random hex selection can result in an endless loop, we set an arbitrary limit
 	num = parms_->players;
-	miniDist = (parms_->larg + parms_->haut) / (parms_->players + 1);
+    miniDist = (parms_->width + parms_->height) / (parms_->players + 1);
 	i = 0;
 	j = 0;
 
 	while ((essais-- > 0) && (num > 0)) {
-        i = ((i + m_rand(parms_->haut)) % (parms_->haut - 5)) + 2;
-        j = ((j + m_rand(parms_->larg)) % (parms_->larg - 5)) + 2;
+        i = ((i + m_rand(parms_->height)) % (parms_->height - 5)) + 2;
+        j = ((j + m_rand(parms_->width)) % (parms_->width - 5)) + 2;
 		it = map_[i][j];
 
 		// select only if not too close to another castle
@@ -1385,14 +1385,14 @@ void ya_mapgen::store_neighbors(yamg_hex *it, unsigned int layMin,
 	y = it->y - 1;
 	m = x % 2;
 	k = y - m;
-	z = parms_->haut;
+    z = parms_->height;
 
 	if (y < 3) {
 		p.no = NULL;
 	} else {
 		p.no = map_[y - 1][x];
 	}
-	if (y >= parms_->haut - 2) {
+    if (y >= parms_->height - 2) {
 		p.so = NULL;
 	} else {
 		p.so = map_[y + 1][x];
@@ -1410,7 +1410,7 @@ void ya_mapgen::store_neighbors(yamg_hex *it, unsigned int layMin,
 		else
 			p.sw = map_[y - m + 1][x - 1];
 	}
-	if (x >= parms_->larg - 2) {
+    if (x >= parms_->width - 2) {
 		p.ne = p.se = NULL;
 	} else {
 //        if(k < 0)
@@ -1491,7 +1491,7 @@ void ya_mapgen::make_forests() {
 		break;
 	}
 
-	essais = (parms_->haut * parms_->larg * parms_->forests); // since the random hex selection can result in an endless loop, we set an arbitrary limit
+    essais = (parms_->height * parms_->width * parms_->forests); // since the random hex selection can result in an endless loop, we set an arbitrary limit
 	num = essais / 100;
 	//--- forests can be many little woods or wider areas: the rough parameter tunes this, splitting forests in many little parts if high
 	n = num / parms_->rough;
@@ -1499,8 +1499,8 @@ void ya_mapgen::make_forests() {
 	j = 0;
 
 	while (essais-- > 0) {
-        i = (i + m_rand(parms_->haut)) % parms_->haut;
-        j = (j + m_rand(parms_->larg)) % parms_->larg;
+        i = (i + m_rand(parms_->height)) % parms_->height;
+        j = (j + m_rand(parms_->width)) % parms_->width;
 
 		// select only layer ground & hills hexes, not already covered with forests or something else
 		if (!map_[i][j]->done && (map_[i][j]->layer < YAMG_MOUNTAINS)
@@ -1644,17 +1644,17 @@ void ya_mapgen::make_houses() {
 		break;
 	}
 
-	essais = (parms_->haut * parms_->larg * parms_->vill); // since the random hex selection can result in an endless loop, we set an arbitrary limit
+    essais = (parms_->height * parms_->width * parms_->vill); // since the random hex selection can result in an endless loop, we set an arbitrary limit
 	num = parms_->vill;
-	incx = (4 * parms_->larg) / 5;
-	incy = (4 * parms_->haut) / 5;
+    incx = (4 * parms_->width) / 5;
+    incy = (4 * parms_->height) / 5;
 	i = 0;
 	j = 0;
     clear_done_flag();
 
 	while ((essais-- > 0) && (num > 0)) {
-        i = ((i + (incx) + m_rand(10)) % (parms_->haut - 1));
-        j = ((j + (incy) + m_rand(10)) % (parms_->larg - 1));
+        i = ((i + (incx) + m_rand(10)) % (parms_->height - 1));
+        j = ((j + (incy) + m_rand(10)) % (parms_->width - 1));
 		if ((i < 2) || (j < 2))
 			continue;
 		it = map_[i][j];
@@ -1925,8 +1925,8 @@ yamg_hex *ya_mapgen::sel_neigh(yamg_hex *h) {
 	it = res; // check limits
 	l = NULL;
 	while (it != NULL) {
-		if ((it->x < 1) || (it->x >= parms_->larg) || (it->y < 1)
-				|| (it->y >= parms_->haut)) {
+        if ((it->x < 1) || (it->x >= parms_->width) || (it->y < 1)
+                || (it->y >= parms_->height)) {
 			if (it == res)
 				res = it->next;
 			else {
@@ -1944,8 +1944,8 @@ yamg_hex *ya_mapgen::sel_neigh(yamg_hex *h) {
  This utility clears the 'done' flag on all map hexes
  */
 void ya_mapgen::clear_done_flag() {
-	for (unsigned int i = 0; i < parms_->haut; i++) {
-		for (unsigned int j = 0; j < parms_->larg; j++) {
+    for (unsigned int i = 0; i < parms_->height; i++) {
+        for (unsigned int j = 0; j < parms_->width; j++) {
 			map_[i][j]->done = false;
 		}
 	}
@@ -1966,14 +1966,14 @@ void ya_mapgen::get_neighbors(yamg_hex *h, neighbors *p) {
 	y = h->y - 1;
 	m = x % 2;
 	k = y - m;
-	z = (int) parms_->haut;
+    z = (int) parms_->height;
 
 	if (y < 1) {
 		p->no = NULL;
 	} else {
 		p->no = map_[y - 1][x];
 	}
-	if (y >= parms_->haut - 2) {
+    if (y >= parms_->height - 2) {
 		p->so = NULL;
 	} else {
 		p->so = map_[y + 1][x];
@@ -1991,7 +1991,7 @@ void ya_mapgen::get_neighbors(yamg_hex *h, neighbors *p) {
 		else
 			p->sw = map_[y - m + 1][x - 1];
 	}
-	if (x >= parms_->larg - 2) {
+    if (x >= parms_->width - 2) {
 		p->ne = p->se = NULL;
 	} else {
 		if (k < 0)
