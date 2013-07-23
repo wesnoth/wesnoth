@@ -142,9 +142,4 @@ private:
 int m_rand(int limit);                 ///< returns a random number 0 < n < limit
 void init_rand(unsigned int seed);    ///< init random number generator
 
-#ifdef INTERN_RAND
-void init_genrand(unsigned long s);   ///< embedded RNG initialization
-unsigned long genrand(void);          ///< RNG production
-#endif
-
 #endif // YA_MAPGEN_HPP
