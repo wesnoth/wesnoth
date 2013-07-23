@@ -9,11 +9,10 @@
 *   Constructor
 */
 yamg_hexheap::yamg_hexheap(size_t taille)
+    : last_(0)
+    , max_(taille - 2)
+    , table_(new yamg_hex *[taille * sizeof(yamg_hex *)])
 {
-    //ctor
-    table_ = new yamg_hex *[taille * sizeof(yamg_hex *)];
-    last_ = 0;
-    max_ = taille - 2;
 }
 
 /**

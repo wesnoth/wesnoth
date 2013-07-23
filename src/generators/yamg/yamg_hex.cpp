@@ -13,25 +13,23 @@ char default_over[] = "";
     This constructor initialize the hexes so createTerrainCode() will never produce invalid values.
 */
 yamg_hex::yamg_hex(unsigned int xcoor, unsigned int ycoor)
-{
-    //ctor
-    x = xcoor;
-    y = ycoor;
-    layer = YAMG_GROUND;
-    next = NULL;
-    road = NULL;
-    list = NULL;
-    alt = 0;
-    player = 0;
-    base = default_hex_code;
-    over = default_over;
-    water = 0;
-    key = 0;
-    road_type = R_NONE;
-    done = false;
-    lock = YAMG_UNLOCK;
-    water_flag = false;
-}
+    : next(NULL)
+    , list(NULL)
+    , road(NULL)
+    , x(xcoor)
+    , y(ycoor)
+    , alt(0)
+    , layer(YAMG_GROUND)
+    , base(default_hex_code)
+    , over(default_over)
+    , player(0)
+    , water(0)
+    , key(0)
+    , done(false)
+    , lock(YAMG_UNLOCK)
+    , road_type(R_NONE)
+    , water_flag(false)
+{}
 
 /**
     Write the terrain code of the hex in a buffer.

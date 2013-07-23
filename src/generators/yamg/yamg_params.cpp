@@ -33,35 +33,44 @@
 
 
 yamg_params::yamg_params()
+    : seed(get_random())
+    , larg(65)
+    , haut(65)
+    , rough(12)
+    , type('t')
+    , season('s')
+    , snowlev(M_NUMLEVEL * 10)
+    , water_ratio(100)
+    , alt_mid(0)
+    , alt_nw(0)
+    , alt_ne(0)
+    , alt_se(0)
+    , alt_sw(0)
+    , vill(10)
+    , burgs(4)
+    , forests(20)
+    , players(0)
+    , casthexes(6)
+    , bridges(50)
+    , roads(true)
+    , ro_road(0)
+    , thickness()
+    , base_cust()
+    , forest_cust()
+    , houses_cust()
+    , keeps_castles_cust()
+    , hexes_castles_cust()
+    , base_snow_cust()
+    , roads_cust()
+    , lilies_cust(NULL)
+    , fields_cust(NULL)
+    , bridges_cust(NULL)
 {
     //ctor set defaults values
 #ifdef YAMG_STANDALONE
     strcpy(path,"wesmap.map");           ///< pathname of the file
 #endif
     //TODO
-    seed = get_random();
-    		//148737975;       ///< random seed
-    larg = 65;              ///< map width
-    haut = 65;              ///< map height
-    rough = 12;             ///< map roughness
-    type = 't';             ///< landscape type
-    season = 's';           ///< season to use
-    snowlev = M_NUMLEVEL * 10;   ///< snow level 0-M_NUMLEVEL
-    water_ratio = 100;           ///< water ratio for rivers and lakes
-    alt_mid = 0;             ///< map global altitudes
-    alt_nw = 0;              ///< map altitude NW
-    alt_ne = 0;              ///< map altitude NE
-    alt_se = 0;              ///< map altitude SE
-    alt_sw = 0;              ///< map altitude SW
-    bridges = 50;
-    roads = true;
-    ro_road = 0;
-    vill = 10;              ///< number of isolated houses
-    burgs = 4;              ///< number of villages
-//    towns = 0;              ///< number of towns
-    forests = 20;           ///< forests rate of terrain
-    players = 0;            ///< number of players / castles
-    casthexes = 6;          ///< number of hexes in castles
 
     thickness[YAMG_DEEPSEA] = 10;      ///< layers thickness
     thickness[YAMG_SHALLSEA] = 10;
@@ -87,9 +96,6 @@ yamg_params::yamg_params()
         base_snow_cust[i] = NULL;
     for(i=0; i < 4; i++)
         roads_cust[i] = NULL;
-    lilies_cust = NULL;
-    bridges_cust = NULL;
-    fields_cust = NULL;
 }
 
 yamg_params::~yamg_params()
