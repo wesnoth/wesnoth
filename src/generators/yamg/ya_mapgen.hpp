@@ -44,7 +44,7 @@
 /**
  This structure is used to store one hex and it's neighbors
  */
-struct voisins {
+struct neighbors {
 	yamg_hex *center;
 	yamg_hex *no;
 	yamg_hex *nw;
@@ -130,7 +130,7 @@ protected:
 	void makeHouses();      ///< creates some houses (villages)
 	void makeRoads();       ///< creates roads
 
-    void getVoisins(yamg_hex *h, voisins* p);               ///< get neighbours of some hex
+    void getVoisins(yamg_hex *h, neighbors* p);               ///< get neighbours of some hex
 	int fillWith(const char *over[], yamg_hex *h, int num); ///< utility to fill overlays
 	void clearDoneFlag();                                   ///< reset done flag on all hexes
 	yamg_hex *selNeigh(yamg_hex *it);                       ///< lists the available hexes for roads

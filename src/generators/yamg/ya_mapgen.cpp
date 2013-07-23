@@ -962,7 +962,7 @@ void ya_mapgen::makeRivers() {
  */
 
 int ya_mapgen::calcWContribs(yamg_hex *h) {
-	voisins vo;
+    neighbors vo;
 	yamg_hex *dest;
 
 	if (h->done)
@@ -1076,7 +1076,7 @@ int ya_mapgen::calcWContribs(yamg_hex *h) {
  */
 void ya_mapgen::erodeTerrains(yamg_hex *h, int /*report*/)
 {
-	voisins vo;
+    neighbors vo;
 	int lAlt;
 	yamg_hex *nex, *stack;
 	unsigned int cumul, n, val, oldval;
@@ -1377,7 +1377,7 @@ void ya_mapgen::makeCastles() {
  */
 void ya_mapgen::storeVoisins(yamg_hex *it, unsigned int layMin,
 		unsigned int layMax) {
-	voisins p;
+    neighbors p;
 	unsigned int x, y, m, k, z;
 
 	p.center = it;
@@ -1520,7 +1520,7 @@ void ya_mapgen::makeForests() {
  It stores adjacent hexes of h in the heap, introducing the constraint to be as leveled as possible.
  */
 int ya_mapgen::fillWith(const char *over[], yamg_hex *h, int numb) {
-	voisins v;
+    neighbors v;
 	yamg_hex *it;
 	int lb, lm1, lm2, ls, k, z;
 
@@ -1957,7 +1957,7 @@ void ya_mapgen::clearDoneFlag() {
  -> the result struct to fill.
  <- none.
  */
-void ya_mapgen::getVoisins(yamg_hex *h, voisins *p) {
+void ya_mapgen::getVoisins(yamg_hex *h, neighbors *p) {
 	unsigned int x, y, m;
 	int k, z;
 
