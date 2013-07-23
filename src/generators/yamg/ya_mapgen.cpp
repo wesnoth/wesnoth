@@ -1957,7 +1957,7 @@ void ya_mapgen::clearDoneFlag() {
  -> the result struct to fill.
  <- none.
  */
-void ya_mapgen::getVoisins(yamg_hex *h, pVoisins p) {
+void ya_mapgen::getVoisins(yamg_hex *h, voisins *p) {
 	unsigned int x, y, m;
 	int k, z;
 
