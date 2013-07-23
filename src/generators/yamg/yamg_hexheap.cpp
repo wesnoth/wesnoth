@@ -31,7 +31,7 @@ yamg_hexheap::~yamg_hexheap()
 
     -> ptr to the hex to add
 */
-void yamg_hexheap::addHex(yamg_hex *h) {
+void yamg_hexheap::add_hex(yamg_hex *h) {
 
 	if((last_ >= max_) || (h->done)) // overflow shield
         return;
@@ -56,7 +56,7 @@ void yamg_hexheap::addHex(yamg_hex *h) {
 
     <- ptr on the element
 */
-yamg_hex *yamg_hexheap::pickHex() {
+yamg_hex *yamg_hexheap::pick_hex() {
 yamg_hex *h, *res;
 
 	  if( table_ == NULL || last_ == 0 )
@@ -86,7 +86,7 @@ yamg_hex *h, *res;
     (of course, this don't invalidate sort)
     -> the value to add
 */
-void yamg_hexheap::updateHexes(int val) {
+void yamg_hexheap::update_hexes(int val) {
 
     for(int i = 0; i < last_; i++)
         table_[i]->key += val;
@@ -96,7 +96,7 @@ void yamg_hexheap::updateHexes(int val) {
     Returns the first hex key value
     <- key member of the hex
 */
-int yamg_hexheap::testHex() {
+int yamg_hexheap::test_hex() {
     if(last_ > 0)
         return table_[0]->key;
     else
@@ -106,7 +106,7 @@ int yamg_hexheap::testHex() {
 /**
     Clear all members flag and reset the heap itself
 */
-void yamg_hexheap::clearHeap() {
+void yamg_hexheap::clear_heap() {
     for(int i = 0; i > last_; i++)
         table_[i]->done = false;
     last_ = 0;

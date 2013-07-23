@@ -47,15 +47,15 @@ yamg_params::yamg_params()
     type = 't';             ///< landscape type
     season = 's';           ///< season to use
     snowlev = M_NUMLEVEL * 10;   ///< snow level 0-M_NUMLEVEL
-    wRatio = 100;           ///< water ratio for rivers and lakes
-    altMid = 0;             ///< map global altitudes
-    altNW = 0;              ///< map altitude NW
-    altNE = 0;              ///< map altitude NE
-    altSE = 0;              ///< map altitude SE
-    altSW = 0;              ///< map altitude SW
+    water_ratio = 100;           ///< water ratio for rivers and lakes
+    alt_mid = 0;             ///< map global altitudes
+    alt_nw = 0;              ///< map altitude NW
+    alt_ne = 0;              ///< map altitude NE
+    alt_se = 0;              ///< map altitude SE
+    alt_sw = 0;              ///< map altitude SW
     bridges = 50;
     roads = true;
-    roRoad = 0;
+    ro_road = 0;
     vill = 10;              ///< number of isolated houses
     burgs = 4;              ///< number of villages
 //    towns = 0;              ///< number of towns
@@ -74,54 +74,54 @@ yamg_params::yamg_params()
 
     int i;
     for(i=0; i < M_NUMLEVEL; i++)
-        baseCust[i] = NULL;
+        base_cust[i] = NULL;
     for(i=0; i < 12; i++)
-        forestCust[i] = NULL;
+        forest_cust[i] = NULL;
     for(i=0; i < 14; i++)
-        housesCust[i] = NULL;
+        houses_cust[i] = NULL;
     for(i=0; i < 10; i++)
-        keepsCastlesC[i] = NULL;
+        keeps_castles_cust[i] = NULL;
     for(i=0; i < 10; i++)
-        hexesCastlesC[i] = NULL;
+        hexes_castles_cust[i] = NULL;
     for(i=0; i < M_NUMLEVEL; i++)
-        baseSnowC[i] = NULL;
+        base_snow_cust[i] = NULL;
     for(i=0; i < 4; i++)
-        roadsC[i] = NULL;
-    liliesC = NULL;
-    bridgesC = NULL;
-    fieldsC = NULL;
+        roads_cust[i] = NULL;
+    lilies_cust = NULL;
+    bridges_cust = NULL;
+    fields_cust = NULL;
 }
 
 yamg_params::~yamg_params()
 {
     int i;
     for(i=0; i < M_NUMLEVEL; i++)
-        if(baseCust[i] != NULL)
-            delete baseCust[i];
+        if(base_cust[i] != NULL)
+            delete base_cust[i];
     for(i=0; i < 12; i++)
-        if(forestCust[i] != NULL)
-            delete forestCust[i];
+        if(forest_cust[i] != NULL)
+            delete forest_cust[i];
     for(i=0; i < 14; i++)
-        if(housesCust[i] != NULL)
-            delete housesCust[i];
+        if(houses_cust[i] != NULL)
+            delete houses_cust[i];
     for(i=0; i < 10; i++)
-        if(keepsCastlesC[i] != NULL)
-            delete keepsCastlesC[i];
+        if(keeps_castles_cust[i] != NULL)
+            delete keeps_castles_cust[i];
     for(i=0; i < 10; i++)
-        if(hexesCastlesC[i] != NULL)
-            delete hexesCastlesC[i];
+        if(hexes_castles_cust[i] != NULL)
+            delete hexes_castles_cust[i];
     for(i=0; i < M_NUMLEVEL; i++)
-        if(baseSnowC[i] != NULL)
-            delete baseSnowC[i];
+        if(base_snow_cust[i] != NULL)
+            delete base_snow_cust[i];
     for(i=0; i < 4; i++)
-        if(roadsC[i] != NULL)
-            delete roadsC[i];
-    if(liliesC != NULL)
-        delete liliesC;
-    if(bridgesC != NULL)
-        delete bridgesC;
-    if(fieldsC != NULL)
-        delete fieldsC;
+        if(roads_cust[i] != NULL)
+            delete roads_cust[i];
+    if(lilies_cust != NULL)
+        delete lilies_cust;
+    if(bridges_cust != NULL)
+        delete bridges_cust;
+    if(fields_cust != NULL)
+        delete fields_cust;
 }
 
 
@@ -140,17 +140,17 @@ unsigned int yamg_params::verify()
     if((rough > YAMG_ROUGHMAX) || (rough == 0))
         result |= YAMG_ROUGHOFF;
 
-    if(!findInString(YAMG_TYPES,type))
+    if(!find_in_string(YAMG_TYPES,type))
         result |= YAMG_BADTYPE;
 
-    if(!findInString(YAMG_SEASONS,season))
+    if(!find_in_string(YAMG_SEASONS,season))
         result |= YAMG_BADSEASON;
 
     //TODO this line causes a warning
     if((snowlev > ((M_NUMLEVEL+1) * 10))) // || (snowlev < 0))
         result |= YAMG_SNOW;
 
-    if((altMid > YAMG_ALTMAX) || (altMid < -YAMG_ALTMAX))
+    if((alt_mid > YAMG_ALTMAX) || (alt_mid < -YAMG_ALTMAX))
         result |= YAMG_ALTOFF;
 
     if(vill > YAMG_VILLMAX)
@@ -223,7 +223,7 @@ const char *parmlist[] =
 /**
     Storing custom terrain codes from parameters file
 */
-void yamg_params::storeTerrainCodes(const char *input, const char **table, unsigned int cnt)
+void yamg_params::store_terrain_codes(const char *input, const char **table, unsigned int cnt)
 {
     unsigned int i,l,nt;
     const char *pt;
@@ -255,7 +255,7 @@ void yamg_params::storeTerrainCodes(const char *input, const char **table, unsig
     Read a parameter file
     -> path to file
 */
-unsigned int yamg_params::readParams(const char *ficnom)
+unsigned int yamg_params::read_params(const char *ficnom)
 {
     FILE *f;
     char buf[20000], instr[100], value[2048], *wr = NULL, *ptr, *end;
@@ -455,7 +455,7 @@ unsigned int yamg_params::readParams(const char *ficnom)
 #endif
 
 //----------------- Utils ----------------
-bool findInString(const char *str, char c)
+bool find_in_string(const char *str, char c)
 {
     const char *ptr = str;
 

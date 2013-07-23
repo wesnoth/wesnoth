@@ -53,11 +53,11 @@ class yamg_hex
         int key;                      ///< temporary value for heap sort
         bool done;                    ///< temporary lock flag
         int lock;                     ///< the multi state lock
-        int rType;                    ///< a flag for use with roads drawing
-        bool wFlag;                   ///< marking water terrains
+        int road_type;                    ///< a flag for use with roads drawing
+        bool water_flag;                   ///< marking water terrains
 
 //----------- methods ------------
-        unsigned int createTerrainCode(char *ptr);   ///< build the final output map code
+        unsigned int create_terrain_code(char *ptr);   ///< build the final output map code
 
     protected:
     private:

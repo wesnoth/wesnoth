@@ -6,8 +6,8 @@
 #include "yamg_hex.hpp"
 #include <stdio.h>
 
-char defaultHexCode[] = "Gll"; ///< terrain default value for the constructor
-char defaultOver[] = "";
+char default_hex_code[] = "Gll"; ///< terrain default value for the constructor
+char default_over[] = "";
 
 /**
     This constructor initialize the hexes so createTerrainCode() will never produce invalid values.
@@ -23,14 +23,14 @@ yamg_hex::yamg_hex(unsigned int xcoor, unsigned int ycoor)
     list = NULL;
     alt = 0;
     player = 0;
-    base = defaultHexCode;
-    over = defaultOver;
+    base = default_hex_code;
+    over = default_over;
     water = 0;
     key = 0;
-    rType = R_NONE;
+    road_type = R_NONE;
     done = false;
     lock = YAMG_UNLOCK;
-    wFlag = false;
+    water_flag = false;
 }
 
 /**
@@ -41,7 +41,7 @@ yamg_hex::yamg_hex(unsigned int xcoor, unsigned int ycoor)
     -> pointer where to write.
     <- number of bytes written (always YAMG_HEXLONG)
 */
-unsigned int yamg_hex::createTerrainCode(char *ptrwr) {
+unsigned int yamg_hex::create_terrain_code(char *ptrwr) {
 
 	int n = 0;
 

@@ -89,10 +89,10 @@ public:
 
 //----------------- Methods -------------
 
-	unsigned int setUp(yamg_params *); ///< uses parameter list object to configure
-	int createMap();           ///< do the job, return OK if everything is OK
-	int getMap(char *buf);     ///< write the map to a buffer
-	void resetMap();           ///< reset the generator to new use
+    unsigned int set_up(yamg_params *); ///< uses parameter list object to configure
+    int create_map();           ///< do the job, return OK if everything is OK
+    int get_map(char *buf);     ///< write the map to a buffer
+    void reset_map();           ///< reset the generator to new use
 
 protected:
 	unsigned int status_;    ///< this is the state of the generator.
@@ -104,43 +104,43 @@ protected:
 	yamg_hex *castles_;      ///< a list of castle keeps
 
 	int table_[M_NUMLEVEL];  ///< array defining layers boundaries.
-	int sLim_;               ///< the snow limit floor.
+    int snow_limit_;               ///< the snow limit floor.
 	unsigned int riv_;       ///< the reference water level
 	const char *terrains_[M_NUMLEVEL]; ///< terrains to use for each layer (overloaded with snow)
 	yamg_hexheap *heap_;          ///< an utility heap to sort hexes
 
 	//----------------- Functions -------------
 
-	unsigned int createEmptyMap(); ///< creates an empty map according parameters height and width
-	unsigned int freeMap();         ///< frees all memory used
+    unsigned int create_empty_map(); ///< creates an empty map according parameters height and width
+    unsigned int free_map();         ///< frees all memory used
 
-	void createAltitudes(unsigned int x, unsigned int xm, unsigned int y,
+    void create_altitudes(unsigned int x, unsigned int xm, unsigned int y,
 			unsigned int ym, unsigned int rough); ///< compute hexes altitudes
-	int normalizeMap();             ///< normalize altitudes
-	void setBaseTerrains(int range);    ///< set hexes base terrains
-	void customTerrains();          ///< terrain customization
+    int normalize_map();             ///< normalize altitudes
+    void set_base_terrains(int range);    ///< set hexes base terrains
+    void custom_terrains();          ///< terrain customization
 
-	void makeRivers();              ///< create river and lakes
-	int calcWContribs(yamg_hex *h); ///< calculate rain flowing
-	void erodeTerrains(yamg_hex *h, int report); ///< erode terrains to make rivers
+    void make_rivers();              ///< create river and lakes
+    int calc_water_contribs(yamg_hex *h); ///< calculate rain flowing
+    void erode_terrains(yamg_hex *h, int report); ///< erode terrains to make rivers
 
-	void makeBurgs();       ///< creates the burgs (some agglomerated villages)
-	void makeCastles();     ///< creates the castles
-	void makeForests();     ///< set forests overlays
-	void makeHouses();      ///< creates some houses (villages)
-	void makeRoads();       ///< creates roads
+    void make_burgs();       ///< creates the burgs (some agglomerated villages)
+    void make_castles();     ///< creates the castles
+    void make_forests();     ///< set forests overlays
+    void make_houses();      ///< creates some houses (villages)
+    void make_roads();       ///< creates roads
 
-    void getVoisins(yamg_hex *h, neighbors* p);               ///< get neighbours of some hex
-	int fillWith(const char *over[], yamg_hex *h, int num); ///< utility to fill overlays
-	void clearDoneFlag();                                   ///< reset done flag on all hexes
-	yamg_hex *selNeigh(yamg_hex *it);                       ///< lists the available hexes for roads
-	void storeVoisins(yamg_hex *it, unsigned int layMin, unsigned int layMax); ///< get neighbours and store them in the heap
+    void get_neighbors(yamg_hex *h, neighbors* p);               ///< get neighbours of some hex
+    int fill_with(const char *over[], yamg_hex *h, int num); ///< utility to fill overlays
+    void clear_done_flag();                                   ///< reset done flag on all hexes
+    yamg_hex *sel_neigh(yamg_hex *it);                       ///< lists the available hexes for roads
+    void store_neighbors(yamg_hex *it, unsigned int layMin, unsigned int layMax); ///< get neighbours and store them in the heap
 
 private:
 };
 
-int mRand(int limit);                 ///< returns a random number 0 < n < limit
-void init_Rand(unsigned int seed);    ///< init random number generator
+int m_rand(int limit);                 ///< returns a random number 0 < n < limit
+void init_rand(unsigned int seed);    ///< init random number generator
 
 #ifdef INTERN_RAND
 void init_genrand(unsigned long s);   ///< embedded RNG initialization

@@ -37,11 +37,11 @@ public:
 	int max_;                   ///< memory limit index
 
 	//*********** Methods ************
-	void addHex(yamg_hex *h);   ///< add an hex to the heap
-	yamg_hex *pickHex();        ///< get and remove first hex
-	int testHex();              ///< get key value of first hex
-	void updateHexes(int val);  ///< update all key values
-	void clearHeap();           ///< clear the heap and reset all items 'done' flag in it.
+    void add_hex(yamg_hex *h);   ///< add an hex to the heap
+    yamg_hex *pick_hex();        ///< get and remove first hex
+    int test_hex();              ///< get key value of first hex
+    void update_hexes(int val);  ///< update all key values
+    void clear_heap();           ///< clear the heap and reset all items 'done' flag in it.
 
 protected:
 	//*********** Members ************
