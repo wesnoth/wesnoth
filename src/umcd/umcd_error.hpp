@@ -12,13 +12,11 @@
    See the COPYING file for more details.
 */
 
-#ifndef UMCD_ERRORS_HPP
-#define UMCD_ERRORS_HPP
+#ifndef UMCD_ERROR_HPP
+#define UMCD_ERROR_HPP
 
 #include <boost/system/error_code.hpp>
 #include <boost/array.hpp>
-
-#include "config.hpp"
 
 enum umcd_error
 {
@@ -49,4 +47,4 @@ public:
 boost::system::error_condition make_error_condition(umcd_error e);
 const boost::system::error_category& umcd_category();
 
-#endif // UMCD_ERRORS_HPP
+#endif // UMCD_ERROR_HPP

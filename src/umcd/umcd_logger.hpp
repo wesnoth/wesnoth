@@ -182,8 +182,11 @@ public:
       return log_line_cache(*this, level);
    }
 };
+#define CURRENT_FUNCTION_STRING "in " << BOOST_CURRENT_FUNCTION
 
 #define UMCD_LOG(severity) (umcd_logger::get().get_logger(severity))
 #define UMCD_LOG_IP(severity, socket) ((umcd_logger::get().get_logger(severity)) << socket.remote_endpoint())
+#define UMCD_LOG_IP_FUNCTION_TRACER(socket) (UMCD_LOG_IP(trace, socket) << CURRENT_FUNCTION_STRING)
+#define UMCD_LOG_FUNCTION_TRACER() (UMCD_LOG(trace) << CURRENT_FUNCTION_STRING)
 
 #endif // UMCD_LOGGER_HPP

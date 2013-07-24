@@ -21,12 +21,13 @@
 #ifndef SERVER_BASIC_SERVER_HPP
 #define SERVER_BASIC_SERVER_HPP
 
-
 #include "umcd/boost/thread/workaround.hpp"
 #include <boost/asio.hpp>
 #include <boost/noncopyable.hpp>
 #include <boost/make_shared.hpp>
 #include <boost/thread/thread.hpp>
+#include <boost/current_function.hpp>
+
 #include "umcd/server/connection.hpp"
 #include "umcd/umcd_logger.hpp"
 
@@ -97,6 +98,7 @@ basic_server<Protocol>::basic_server(const config &cfg, const boost::shared_ptr<
 template <class Protocol>
 void basic_server<Protocol>::run()
 {
+  UMCD_LOG_FUNCTION_TRACER();
   while(server_on)
   {
     try
@@ -117,7 +119,7 @@ void basic_server<Protocol>::run()
 template <class Protocol>
 void basic_server<Protocol>::start_accept()
 {
-  UMCD_LOG(trace) << "in basic_server::start_accept()";
+  UMCD_LOG_FUNCTION_TRACER();
   protocol = boost::make_shared<protocol_type>(*protocol);
   new_connection = boost::make_shared<connection_type>(boost::ref(io_service), protocol);
   acceptor.async_accept(new_connection->get_socket(),
@@ -128,7 +130,7 @@ void basic_server<Protocol>::start_accept()
 template <class Protocol>
 void basic_server<Protocol>::handle_accept(const boost::system::error_code& e)
 {
-  UMCD_LOG(trace) << "in basic_server::handle_accept()";
+  UMCD_LOG_IP_FUNCTION_TRACER(new_connection->get_socket());
   if (!e)
   {
     new_connection->start();

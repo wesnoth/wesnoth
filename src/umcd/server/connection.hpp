@@ -29,6 +29,7 @@
 #include <boost/enable_shared_from_this.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/bind.hpp>
+#include <boost/current_function.hpp>
 
 // Represents a single connection from a client.
 template <class Protocol>
@@ -57,10 +58,6 @@ public:
 
   // Start the first asynchronous operation for the connection.
   void start();
-
-private:
-  // Handle request.
-  void handle_request();
 };
 
 template <class Protocol>
@@ -86,17 +83,10 @@ boost::asio::io_service& connection<Protocol>::get_io_service()
 template <class Protocol>
 void connection<Protocol>::start()
 {
-  UMCD_LOG(trace) << "connection<Protocol>::start()";
-  // Post is threadsafe.
+  UMCD_LOG_IP_FUNCTION_TRACER(get_socket());
+  // Post is threadsafe. We want that start() returns immediately to accept other requests.
   get_io_service().post(
-    boost::bind(&connection::handle_request, this->shared_from_this()));
-}
-
-template <class Protocol>
-void connection<Protocol>::handle_request()
-{
-  UMCD_LOG(trace) << "connection<Protocol>::handle_request()";
-  protocol->handle_request(this->shared_from_this());
+    boost::bind(&protocol_type::handle_request, protocol, this->shared_from_this()));
 }
 
 #endif // SERVER_CONNECTION_HPP

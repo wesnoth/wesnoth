@@ -13,6 +13,7 @@
 */
 
 #include <boost/lexical_cast.hpp>
+#include <boost/current_function.hpp>
 
 #include "umcd/protocol/wml/umcd_protocol.hpp"
 #include "umcd/actions/request_license_action.hpp"
@@ -22,6 +23,8 @@
 
 const std::size_t umcd_protocol::REQUEST_HEADER_MAX_SIZE;
 const std::size_t umcd_protocol::REQUEST_HEADER_SIZE_FIELD_LENGTH;
+
+#define FUNCTION_TRACER() UMCD_LOG_IP_FUNCTION_TRACER(client_connection->get_socket())
 
 umcd_protocol::umcd_protocol(const config& server_config)
 : server_config(server_config)
@@ -49,7 +52,7 @@ config& umcd_protocol::get_metadata()
 
 void umcd_protocol::complete_request(const boost::system::error_code& error, std::size_t)
 {
-   UMCD_LOG_IP(trace, client_connection->get_socket()) << " -- umcd_protocol::complete_request.";
+   FUNCTION_TRACER();
    if(error)
    {
       UMCD_LOG_IP(info, client_connection->get_socket()) << " -- unable to send data to the client (" << error.message() << "). Connection dropped.";
@@ -59,7 +62,7 @@ void umcd_protocol::complete_request(const boost::system::error_code& error, std
 
 void umcd_protocol::async_send_reply()
 {
-   UMCD_LOG_IP(trace, client_connection->get_socket()) << " -- umcd_protocol::async_send_reply.";
+   FUNCTION_TRACER();
    boost::asio::async_write(client_connection->get_socket()
       , reply.to_buffers()
       , boost::bind(&umcd_protocol::complete_request, shared_from_this()
@@ -88,7 +91,7 @@ void umcd_protocol::async_send_invalid_packet(const std::string &where, const tw
 
 void umcd_protocol::read_request_body(const boost::system::error_code& error, std::size_t)
 {
-   UMCD_LOG_IP(trace, client_connection->get_socket()) << " -- umcd_protocol::read_request_body.";
+   FUNCTION_TRACER();
    if(!error)
    {
       try
@@ -113,14 +116,14 @@ void umcd_protocol::read_request_body(const boost::system::error_code& error, st
       }
       catch(const std::exception& e)
       {
-         async_send_invalid_packet("umcd_protocol::read_request_body", e);
+         async_send_invalid_packet(BOOST_CURRENT_FUNCTION, e);
       }
    }
 }
 
 void umcd_protocol::dispatch_request(const boost::system::error_code& err, std::size_t)
 {
-   UMCD_LOG_IP(trace, client_connection->get_socket()) << " -- umcd_protocol::dispatch_request.";
+   FUNCTION_TRACER();
    if(!err)
    {
       std::stringstream request_stream(request_body);      
@@ -141,11 +144,11 @@ void umcd_protocol::dispatch_request(const boost::system::error_code& err, std::
       }
       catch(const std::exception& e)
       {
-         async_send_invalid_packet("umcd_protocol::dispatch_request", e);
+         async_send_invalid_packet(BOOST_CURRENT_FUNCTION, e);
       }
       catch(const twml_exception& e)
       {
-         async_send_invalid_packet("umcd_protocol::dispatch_request", e);
+         async_send_invalid_packet(BOOST_CURRENT_FUNCTION, e);
       }
    }
 }
@@ -153,7 +156,7 @@ void umcd_protocol::dispatch_request(const boost::system::error_code& err, std::
 void umcd_protocol::handle_request(connection_ptr client)
 {
    client_connection = client;
-   UMCD_LOG_IP(trace, client_connection->get_socket()) << " -- umcd_protocol::handle_request.";
+   FUNCTION_TRACER(); // Because we trace with the IP, client_connection must be initialized first.
    boost::asio::async_read(client_connection->get_socket(), boost::asio::buffer(raw_request_size)
       , boost::bind(&umcd_protocol::read_request_body, shared_from_this()
          , boost::asio::placeholders::error
