@@ -65,7 +65,7 @@ public:
    umcd_protocol(const umcd_protocol& protocol);
 
    wml_reply& get_reply();
-   wml_request& get_request();
+   config& get_metadata();
 
    void complete_request(const boost::system::error_code& error, std::size_t bytes_transferred);
 

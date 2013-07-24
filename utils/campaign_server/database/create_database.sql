@@ -3,8 +3,8 @@
 -- Database creation.
 -- ---
 
-DROP DATABASE IF EXISTS campaign_server;
-CREATE DATABASE IF NOT EXISTS campaign_server;
+DROP DATABASE IF EXISTS umcd;
+CREATE DATABASE IF NOT EXISTS umcd;
 USE campaign_server;
 
 -- ---

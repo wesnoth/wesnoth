@@ -27,13 +27,42 @@ public:
    typedef basic_umcd_action base;
 
    const config& server_config;
+   boost::shared_ptr<umcd_protocol> protocol;
    
    request_umc_upload_action(const config& server_config)
    : server_config(server_config)
    {}
-   
-   virtual void execute(boost::shared_ptr<umcd_protocol> /*protocol*/)
+
+   const config& get_info(const config& metadata)
    {
+      return metadata.child("request_umc_upload").child("umc_configuration").child("info");
+   }
+
+   bool umc_exists(const config& metadata)
+   {
+      return get_info(metadata).has_attribute("id");
+   }
+
+   void update_umc()
+   {
+   }
+
+   void create_umc()
+   {
+   }
+   
+   virtual void execute(boost::shared_ptr<umcd_protocol> p)
+   {
+      protocol = p;
+      config& metadata = protocol->get_metadata();
+      if(umc_exists(metadata))
+      {
+         update_umc();
+      }
+      else
+      {
+         create_umc();
+      }
    }
 
    virtual boost::shared_ptr<base> clone() const

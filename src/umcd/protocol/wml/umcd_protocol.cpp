@@ -42,9 +42,9 @@ wml_reply& umcd_protocol::get_reply()
    return reply;
 }
 
-wml_request& umcd_protocol::get_request()
+config& umcd_protocol::get_metadata()
 {
-   return request;
+   return request.get_metadata();
 }
 
 void umcd_protocol::complete_request(const boost::system::error_code& error, std::size_t)
