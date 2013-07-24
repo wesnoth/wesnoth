@@ -1023,6 +1023,7 @@ set(umcd_lib_SRC
 	umcd/wml_request.cpp
 	umcd/request_info.cpp
 	umcd/umcd_logger.cpp
+	umcd/umcd_error.cpp
 	umcd/protocol/wml/umcd_protocol.cpp
 	${wesnoth-schema_validator-dependencies_SRC}
 )

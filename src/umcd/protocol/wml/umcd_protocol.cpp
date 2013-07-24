@@ -18,7 +18,7 @@
 #include "umcd/actions/request_license_action.hpp"
 #include "umcd/actions/request_umc_upload_action.hpp"
 #include "umcd/special_packet.hpp"
-
+#include "umcd/umcd_error.hpp"
 
 const std::size_t umcd_protocol::REQUEST_HEADER_MAX_SIZE;
 const std::size_t umcd_protocol::REQUEST_HEADER_SIZE_FIELD_LENGTH;
@@ -99,7 +99,7 @@ void umcd_protocol::read_request_body(const boost::system::error_code& error, st
          UMCD_LOG_IP(debug, client_connection->get_socket()) << " -- Request of size: " << request_size;
          if(request_size > REQUEST_HEADER_MAX_SIZE)
          {
-            async_send_error("The request size is too big.");
+            async_send_error("The request size is too large.");
          }
          else
          {

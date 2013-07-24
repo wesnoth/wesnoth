@@ -5,7 +5,7 @@
 
 DROP DATABASE IF EXISTS umcd;
 CREATE DATABASE IF NOT EXISTS umcd;
-USE campaign_server;
+USE umcd;
 
 -- ---
 -- Table 'Addon'

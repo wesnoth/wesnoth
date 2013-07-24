@@ -27,7 +27,6 @@
 #include "umcd/server/generic_factory.hpp"
 #include "umcd/wml_reply.hpp"
 #include "umcd/request_info.hpp"
-#include "umcd/num_digits.hpp"
 
 class wml_request;
 
