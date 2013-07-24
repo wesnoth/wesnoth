@@ -1966,7 +1966,7 @@ void ya_mapgen::get_neighbors(yamg_hex *h, neighbors *p) {
 	y = h->y - 1;
 	m = x % 2;
 	k = y - m;
-    z = (int) parms_->height;
+    z = static_cast<int>(parms_->height);
 
 	if (y < 1) {
 		p->no = NULL;
@@ -2013,7 +2013,7 @@ int m_rand(int limit) {
 	if (limit == 0)
 		return 0;
 	unsigned int n = rand();
-	return (int) (n % limit);
+	return n % limit;
 }
 
 /**
