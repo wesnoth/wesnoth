@@ -17,6 +17,7 @@
     Implementation file.
 */
 
+#include "global.hpp"
 #include "random.hpp"
 #include "yamg_params.hpp"
 
