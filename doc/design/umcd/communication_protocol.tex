@@ -399,9 +399,9 @@ Special packets are sent in reply and can appears instead an expected packet or 
  The server could not understand the request, or a value in a field of the request is wrong or missing.
 In this case an error packet will be sent and it will always take the following form:
 \begin{lstlisting}
-[error_packet]
+[error]
   msg = MSG
-[/error_packet]
+[/error]
 \end{lstlisting}
 
 \begin{description}
@@ -421,9 +421,9 @@ The common values of MSG are:
 
 The server correctly understand the request but the request is not exactly correct for the reasons describe into \textit{msg}.
 \begin{lstlisting}
-[warning_packet]
+[warning]
   msg = MSG
-[/warning_packet]
+[/warning]
 \end{lstlisting}
 
 \begin{description}
@@ -435,9 +435,9 @@ The server correctly understand the request but the request is not exactly corre
 
 \subsubsection{Request}
 \begin{lstlisting}
-	[request_umc_list]
-    favlang = LANGUAGE
-	[/request_umc_list]
+[request_umc_list]
+  favlang = LANGUAGE
+[/request_umc_list]
 \end{lstlisting}
 
 The field \textit{favlang} is the favorite language in which the add-ons (title and description for example) must be send. 

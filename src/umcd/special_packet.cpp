@@ -23,12 +23,12 @@ static config make_special_packet(const std::string& message, const std::string&
 
 config make_error_packet(const std::string& message)
 {
-  return make_special_packet(message, "error_packet");
+  return make_special_packet(message, "error");
 }
 
 config make_warning_packet(const std::string& message)
 {
-  return make_special_packet(message, "warning_packet");
+  return make_special_packet(message, "warning");
 }
 
 wml_reply make_error_reply(const std::string& message)
