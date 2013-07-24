@@ -32,7 +32,7 @@ std::string umcd_error_category::message(int ev) const
 }
 
 // UMCD Error condition factory.
-inline boost::system::error_condition make_error_condition(umcd_error e)
+boost::system::error_condition make_error_condition(umcd_error e)
 {
   return boost::system::error_condition(e, umcd_category());
 }

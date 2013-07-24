@@ -94,7 +94,7 @@ BOOST_AUTO_TEST_CASE(umcd_bad_request_name)
 {
   const std::string request_path = "../data/umcd/tests/common/bad_request_name.cfg";
   const std::string error_reply_cfg_path = "../data/umcd/protocol_schema/error_reply.cfg";
-  //test_exchange(request_path, error_reply_cfg_path);
+  test_exchange(request_path, error_reply_cfg_path);
 }
 
 BOOST_AUTO_TEST_SUITE_END() // umcd_common_test_suite
@@ -105,14 +105,14 @@ BOOST_AUTO_TEST_CASE(umcd_request_license_empty_lang)
 {
   const std::string request_path = "../data/umcd/tests/request_license/request_license_empty_lang.cfg";
   const std::string license_path = "../data/umcd/protocol_schema/request_license_reply.cfg";
-  //test_exchange(request_path, license_path);
+  test_exchange(request_path, license_path);
 }
 
 BOOST_AUTO_TEST_CASE(umcd_request_license_en_GB)
 {
   const std::string request_path = "../data/umcd/tests/request_license/request_license_english.cfg";
   const std::string license_path = "../data/umcd/protocol_schema/request_license_reply.cfg";
-  //test_exchange(request_path, license_path);
+  test_exchange(request_path, license_path);
 }
 
 BOOST_AUTO_TEST_SUITE_END() // umcd_request_license_test_suite
@@ -126,18 +126,3 @@ BOOST_AUTO_TEST_CASE(umcd_request_basic_upload)
 }
 
 BOOST_AUTO_TEST_SUITE_END() // umcd_request_upload_test_suite
-
-BOOST_AUTO_TEST_SUITE(umcd_metaprogramming_tools_suite)
-
-BOOST_AUTO_TEST_CASE(umcd_num_digits)
-{
-  BOOST_CHECK_EQUAL(num_digits<0>::value, 1);
-  BOOST_CHECK_EQUAL(num_digits<9>::value, 1);
-  BOOST_CHECK_EQUAL(num_digits<10>::value, 2);
-  BOOST_CHECK_EQUAL(num_digits<11>::value, 2);
-  BOOST_CHECK_EQUAL(num_digits<100>::value, 3);
-  BOOST_CHECK_EQUAL(num_digits<1000>::value, 4);
-  BOOST_CHECK_EQUAL(num_digits<99999>::value, 5);
-}
-
-BOOST_AUTO_TEST_SUITE_END() // umcd_request_license_test_suite

@@ -46,6 +46,7 @@ public:
   std::string message(int ev) const;
 };
 
+boost::system::error_condition make_error_condition(umcd_error e);
 const boost::system::error_category& umcd_category();
 
 #endif // UMCD_ERRORS_HPP

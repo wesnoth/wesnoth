@@ -68,22 +68,22 @@ void umcd_protocol::async_send_reply()
    );
 }
 
-void umcd_protocol::async_send_error(const std::string& error_msg)
+void umcd_protocol::async_send_error(const boost::system::error_condition& error)
 {
-   reply = make_error_reply(error_msg);
+   reply = make_error_reply(error.message());
    async_send_reply();
 }
 
 void umcd_protocol::async_send_invalid_packet(const std::string &where, const std::exception& e)
 {
    UMCD_LOG_IP(error, client_connection->get_socket()) << " -- invalid request at " << where << " (" << e.what() << ")";
-   async_send_error("The packet you sent is invalid. It could be a protocol bug and administrators have been contacted, the problem should be fixed soon.");
+   async_send_error(make_error_condition(invalid_packet));
 }
 
 void umcd_protocol::async_send_invalid_packet(const std::string &where, const twml_exception& e)
 {
    UMCD_LOG_IP(error, client_connection->get_socket()) << " -- invalid request at " << where << " (user message=" << e.user_message << " ; dev message=" << e.dev_message << ")";
-   async_send_error("The packet you sent is invalid. It could be a protocol bug and administrators have been contacted, the problem should be fixed soon.");
+   async_send_error(make_error_condition(invalid_packet));
 }
 
 void umcd_protocol::read_request_body(const boost::system::error_code& error, std::size_t)
@@ -99,7 +99,7 @@ void umcd_protocol::read_request_body(const boost::system::error_code& error, st
          UMCD_LOG_IP(debug, client_connection->get_socket()) << " -- Request of size: " << request_size;
          if(request_size > REQUEST_HEADER_MAX_SIZE)
          {
-            async_send_error("The request size is too large.");
+            async_send_error(make_error_condition(request_header_too_large));
          }
          else
          {
