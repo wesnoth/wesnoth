@@ -1036,7 +1036,7 @@ set(umcd_SRC
 add_library(umcd-lib ${LIBRARY_TYPE} EXCLUDE_FROM_ALL ${umcd_lib_SRC})
 
 add_executable(umcd ${umcd_SRC})
-target_link_libraries(umcd 
+target_link_libraries(umcd
 	umcd-lib
 	wesnoth-core
 	wesnoth-schema_validator

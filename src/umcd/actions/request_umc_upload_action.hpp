@@ -16,6 +16,8 @@
 #define UMCD_REQUEST_UMC_UPLOAD_ACTION_HPP
 
 #include <boost/shared_ptr.hpp>
+
+#include "umcd/otl/otl.hpp"
 #include "filesystem.hpp"
 #include "umcd/actions/basic_umcd_action.hpp"
 
