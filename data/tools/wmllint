@@ -526,6 +526,9 @@ linechanges = (
         # Changed before 1.11.5 to incorporate 1.9.0 portraits
         ("portraits/orcs/warlord2.png","portraits/orcs/transparent/grunt-5.png"),
         ("portraits/orcs/warlord4.png","portraits/orcs/transparent/grunt-6.png"),
+        # Changed before 1.11.6 to handle automatically assigned nozoc and leader ellipses
+        ("ellipse=misc/ellipse-nozoc",""),
+        ("ellipse=misc/ellipse-leader",""),
         )
 
 def validate_on_pop(tagstack, closer, filename, lineno):
