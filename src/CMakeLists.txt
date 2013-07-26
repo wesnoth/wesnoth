@@ -1009,6 +1009,14 @@ endif(ENABLE_SERVER)
 
 if(ENABLE_UMCD)
 
+# SQL to cpp class generator.
+
+set(sql2cpp_SRC
+	tools/code_generator/sql2cpp/sql_parser.cpp
+)
+
+# UMCD core.
+
 set(wesnoth-schema_validator-dependencies_SRC
 	${wesnoth-schema_validator_SRC}
 	config_cache.cpp
