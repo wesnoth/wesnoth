@@ -13,7 +13,7 @@ USE umcd;
 -- ---
 
 CREATE TABLE Addon (
-  id smallint NOT NULL AUTO_INCREMENT,
+  id int NOT NULL AUTO_INCREMENT,
   type smallint NOT NULL,
   email varchar(254) NOT NULL, -- see RFC Erratum: http://www.rfc-editor.org/errata_search.php?rfc=3696&eid=1690
   password varchar(256) NOT NULL,
@@ -38,7 +38,7 @@ CREATE TABLE AddonType (
 -- ---
 
 CREATE TABLE Author (
-  id smallint NOT NULL AUTO_INCREMENT,
+  id int NOT NULL AUTO_INCREMENT,
   name varchar(100) NOT NULL UNIQUE,
   CONSTRAINT pk_Author PRIMARY KEY (id)
 );
@@ -49,8 +49,8 @@ CREATE TABLE Author (
 -- ---
 
 CREATE TABLE AddonMaintainers (
-  addon smallint NOT NULL AUTO_INCREMENT,
-  author smallint NOT NULL,
+  addon int NOT NULL AUTO_INCREMENT,
+  author int NOT NULL,
   CONSTRAINT pk_AddonMaintainers PRIMARY KEY (addon, author)
 );
 
@@ -60,16 +60,16 @@ CREATE TABLE AddonMaintainers (
 -- ---
 
 CREATE TABLE AddonVersion (
-  id smallint NOT NULL AUTO_INCREMENT,
+  id int NOT NULL AUTO_INCREMENT,
   name varchar(256) NOT NULL,
   description text NOT NULL,
   version varchar(50) NOT NULL,
-  translation smallint NOT NULL,
+  translation int NOT NULL,
   path_to_addon_data varchar(512) NOT NULL,
-  timestamp DATE NOT NULL,
-  uploader_ip smallint NOT NULL,
-  downloads smallint NOT NULL,
-  uploads smallint NOT NULL,
+  upload_date date NOT NULL,
+  uploader_ip varchar(50) NOT NULL,
+  downloads int NOT NULL,
+  uploads int NOT NULL,
   CONSTRAINT pk_AddonVersion PRIMARY KEY (id)
 );
 
@@ -79,8 +79,8 @@ CREATE TABLE AddonVersion (
 -- ---
     
 CREATE TABLE Historic (
-  main_addon smallint NOT NULL AUTO_INCREMENT,
-  addon_version smallint NOT NULL,
+  main_addon int NOT NULL AUTO_INCREMENT,
+  addon_version varchar(50) NOT NULL,
   CONSTRAINT pk_Historic PRIMARY KEY (main_addon, addon_version)
 );
 
@@ -90,8 +90,8 @@ CREATE TABLE Historic (
 -- ---
     
 CREATE TABLE Dependencies (
-  addon_version smallint NOT NULL AUTO_INCREMENT,
-  dependency smallint NOT NULL,
+  addon_version int NOT NULL AUTO_INCREMENT,
+  dependency int NOT NULL,
   version_mask varchar(110) NOT NULL,
   CONSTRAINT pk_Dependencies PRIMARY KEY (addon_version, dependency)
 );
@@ -113,13 +113,13 @@ CREATE TABLE Language (
 -- ---
     
 CREATE TABLE Translation (
-  id smallint NOT NULL AUTO_INCREMENT,
+  id int NOT NULL AUTO_INCREMENT,
   language smallint NOT NULL,
-  translated_addon smallint NOT NULL,
+  translated_addon int NOT NULL,
   path_to_po_file varchar(512) NOT NULL UNIQUE,
-  fuzzy smallint NOT NULL,
-  translated smallint NOT NULL,
-  untranslated smallint NOT NULL,
+  fuzzy int NOT NULL,
+  translated int NOT NULL,
+  untranslated int NOT NULL,
   timestamp date NOT NULL,
   CONSTRAINT pk_Translation PRIMARY KEY (id)
 );
