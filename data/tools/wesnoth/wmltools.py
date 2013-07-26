@@ -84,7 +84,7 @@ class Forest:
             subtree = []
             if os.path.isdir(dir):	# So we skip .cfgs in a UMC mirror
                 os.path.walk(dir,
-                         lambda arg, dir, names: subtree.extend(map(lambda x: os.path.normpath(os.path.join(dir, x)), names)),
+                         lambda arg, dir, names: subtree.extend([os.path.normpath(os.path.join(dir, x)) for x in names]),
                          None)
             # Always look at _main.cfg first
             subtree.sort(lambda x, y: cmp(x, y) - 2*int(x.endswith("_main.cfg"))  + 2*int(y.endswith("_main.cfg")))
@@ -92,12 +92,12 @@ class Forest:
         for i in range(len(self.forest)):
             # Ignore version-control subdirectories and Emacs tempfiles
             for dirkind in vc_directories + l10n_directories:
-                self.forest[i] = filter(lambda x: dirkind not in x, self.forest[i])
-            self.forest[i] = filter(lambda x: '.#' not in x, self.forest[i])
-            self.forest[i] = filter(lambda x: not os.path.isdir(x), self.forest[i])
+                self.forest[i] = [x for x in self.forest[i] if dirkind not in x]
+            self.forest[i] = [x for x in self.forest[i] if '.#' not in x]
+            self.forest[i] = [x for x in self.forest[i] if not os.path.isdir(x)]
             if exclude:
-                self.forest[i] = filter(lambda x: not re.search(exclude, x), self.forest[i])
-            self.forest[i] = filter(lambda x: not x.endswith("-bak"), self.forest[i])
+                self.forest[i] = [x for x in self.forest[i] if not re.search(exclude, x)]
+            self.forest[i] = [x for x in self.forest[i] if not x.endswith("-bak")]
         # Compute cliques (will be used later for visibility checks)
         self.clique = {}
         counter = 0
@@ -286,7 +286,7 @@ class Reference:
     def dump_references(self):
         "Dump all known references to this definition."
         for (file, refs) in self.references.items():
-            print "    %s: %s" % (file, repr(map(lambda x: x[0], refs))[1:-1])
+            print "    %s: %s" % (file, repr([x[0] for x in refs])[1:-1])
     def __cmp__(self, other):
         "Compare two documentation objects for place in the sort order."
         # Major sort by file, minor by line number.  This presumes that the
@@ -301,7 +301,7 @@ class Reference:
         copy = Reference(self.namespace, self.filename, self.lineno, self.docstring, self.args)
         copy.undef = self.undef
         for filename in self.references:
-            mis = filter(lambda (ln, a): a is not None and not argmatch(self.args, a), self.references[filename])
+            mis = [(ln,a) for (ln,a) in self.references[filename] if a is not None and not argmatch(self.args, a)]
             if mis:
                 copy.references[filename] = mis
         return copy
@@ -488,7 +488,7 @@ class CrossRef:
     def __init__(self, dirpath=[], exclude="", warnlevel=0, progress=False):
         "Build cross-reference object from the specified filelist."
         self.filelist = Forest(dirpath, exclude)
-        self.dirpath = filter(lambda x: not re.search(exclude, x), dirpath)
+        self.dirpath = [x for x in dirpath if not re.search(exclude, x)]
         self.warnlevel = warnlevel
         self.xref = {}
         self.fileref = {}
@@ -794,7 +794,7 @@ class Translations:
         if not t in self.translations:
             try:
                 self.translations[t] = Translation(textdomain, isocode, self.topdir)
-            except TranslationError, e:
+            except TranslationError as e:
                 sys.stderr.write(str(e))
                 self.translations[t] = Translation(textdomain, "C", self.topdir)
         result = self.translations[t].get(key, default)
