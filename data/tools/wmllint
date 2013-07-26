@@ -2427,7 +2427,11 @@ if __name__ == '__main__':
                 for arg in arguments:
                     for wild in glob(arg):
                         newargs.append(wild)
-                arguments = newargs
+                if newargs:
+                    arguments = newargs
+                else:
+                    sys.stderr.write('wmllint: wildcard did not match any files or directories (%s)\n'%arguments)
+                    sys.exit(1)
 
         if not arguments:
             arguments = ["."]
