@@ -531,7 +531,7 @@ linechanges = (
 def validate_on_pop(tagstack, closer, filename, lineno):
     "Validate the stack at the time a new close tag is seen."
     (tag, attributes) = tagstack[-1]
-    ancestors = map(lambda x: x[0], tagstack)
+    ancestors = [x[0] for x in tagstack]
     if verbose >= 3:
         print '"%s", line %d: closing %s I see %s with %s' % (filename, lineno, closer, tag, attributes)
     # Detect a malformation that will cause the game to barf while attempting
@@ -579,7 +579,7 @@ def within(tag):
         else:
             return False
     else:
-        return tag in map(lambda x: x[0], tagstack)
+        return tag in [x[0] for x in tagstack]
 
 def under(tag):
     "Did the specified tag lead the latest context?"
@@ -865,7 +865,7 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
     errlead = '"%s", line %d: ' %  (filename, nav.lineno+1)
     ancestors = nav.ancestors()
     in_definition = "#define" in ancestors
-    in_call = filter(lambda x: x.startswith("{"), ancestors)
+    in_call = [x for x in ancestors if x.startswith("{")]
     ignored = "wmllint: ignore" in nav.text
     parent = None
     if ancestors:
@@ -916,7 +916,7 @@ def global_sanity_check(filename, lines):
     in_unit_type = None
     notecheck = True
     trait_note = dict(notepairs)
-    note_trait = dict(map(lambda p: (p[1], p[0]), notepairs))
+    note_trait = {p[1]:p[0] for p in notepairs}
     for nav in WmllintIterator(lines, filename):
         if "wmllint: notecheck off" in nav.text:
             notecheck = False
@@ -1136,13 +1136,13 @@ def global_sanity_check(filename, lines):
         try:
             (key, prefix, value, comment) = parse_attribute(lines[i])
             if key in ("recruit", "extra_recruit") and value:
-                recruit[ifdef_stack[-1]] = (i+1, map(lambda x: x.strip(), value.split(",")))
+                recruit[ifdef_stack[-1]] = (i+1, [x.strip() for x in value.split(",")])
             elif key == "recruitment_pattern" and value:
                 if not in_ai:
                     print '"%s", line %d: recruitment_pattern outside [ai]' \
                               % (filename, i+1)
                 else:
-                    recruitment_pattern[ifdef_stack[-1]] = (i+1, map(lambda x: x.strip(), value.split(",")))
+                    recruitment_pattern[ifdef_stack[-1]] = (i+1, [x.strip() for x in value.split(",")])
             elif key == "side" and not in_ai:
                 try:
                     if not in_generator and sidecount != int(value):
@@ -1377,7 +1377,7 @@ def global_sanity_check(filename, lines):
                               % (filename, i+1, key)
                     lines[i] = prefix + value.replace("_", "", 1) + comment + '\n'
     # Now that we know who's present, register all these names as spellings
-    declared_spellings[filename] = map(lambda x: x.lower(), present)
+    declared_spellings[filename] = [x.lower() for x in present]
     # Check for textdomain strings; should be exactly one, on line 1
     textdomains = []
     no_text = False
@@ -1421,8 +1421,8 @@ def condition_match(p, q):
 
 def consistency_check():
     "Consistency-check state information picked up by sanity_check"
-    derivedlist = map(lambda x: x[2], derived_units)
-    baselist = map(lambda x: x[3], derived_units)
+    derivedlist = [x[2] for x in derived_units]
+    baselist = [x[3] for x in derived_units]
     derivations = dict(zip(derivedlist, baselist))
     for (filename, recruitdict, patterndict) in sides:
         for (rdifficulty, (rl, recruit)) in recruitdict.items():
@@ -1488,7 +1488,7 @@ def consistency_check():
     # Check that all advancements are known units
     for (unit_id, filename, lineno, advancements) in advances:
         advancements = map(string.strip, advancements.split(","))
-        bad_advancements = filter(lambda x: x not in (unit_types+derivedlist), advancements)
+        bad_advancements = [x for x in advancements if x not in (unit_types+derivedlist)]
         if bad_advancements:
             print '"%s", line %d: %s has unknown advancements %s' \
                   % (filename, lineno, unit_id, bad_advancements)
@@ -1888,7 +1888,7 @@ def translator(filename, mapxforms, textxform):
                     if ',' in line:
                         fields = line.split(",")
                     else:
-                        fields = map(lambda x: x, line)
+                        fields = [x for x in line]
                     outmap.append(fields)
                     if not maskwarn and maptype == 'map' and "_f" in line:
                         print \
@@ -2138,7 +2138,7 @@ def inner_spellcheck(nav, value, spelldict):
         # Hyphenated compounds need all their parts good
         if "-" in lowered:
             parts = lowered.split("-")
-            if filter(lambda w: not w or spelldict.check(w), parts) == parts:
+            if [w for w in parts if not w or spelldict.check(w)] == parts:
                 continue
         # Modifier literals aren't interesting
         if re.match("[+-][0-9]", lowered):
@@ -2179,7 +2179,7 @@ def spellcheck(fn, d):
         else:
             local_spellings += declared_spellings.get(up,[])
             up = os.path.dirname(up)
-    local_spellings = filter(lambda w: not d.check(w), local_spellings)
+    local_spellings = [w for w in local_spellings if not d.check(w)]
     #if local_spellings:
     #    print "%s: inherited local spellings: %s" % (fn, local_spellings)
     map(d.add_to_session, local_spellings)
