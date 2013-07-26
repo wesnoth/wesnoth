@@ -2412,17 +2412,63 @@ if __name__ == '__main__':
         # Windows, if there is a wildcard.
         if arguments and sys.platform == 'win32':
             wildcard = False
+            ugly = False
             newargs = []
             for i,arg in enumerate(arguments):
                 if not wildcard and '*' in arg:
                     wildcard = True
                     from glob import glob
                 if '"' in arg:
+                    if len(arguments)-i > 1:
+                        ugly = True
+                        break
+                    test = arg.split('"', 1)
+                    if " " in test[1].lstrip():
+                        ugly = True
+                        break
+                    sys.stderr.write('\n\nWARNING!! A backslash followed by a quote (\\") is interpreted not as a directory separator and an argument delimiter, but as an escape to a literal quote. Two quotes together ("") will also be interpreted as including a literal quote. Your system sees the file/directory you are targeting as:\n\n%s\n\nAlthough wmllint believes it can resolve this particular instance, please do not repeat this in the future. (If you are using a final backslash at the end of your argument, it is not necessary; also, frontslashes will also be recognized as directory separators.)\n\n\n'%arg)
                     arguments.remove(arg)
                     arg = re.sub(r'([^ ])"([^ ])', r'\1\\\2', arg)
                     for new in arg.rstrip('"').split('"'):
                         arguments.insert(i, new.strip())
                         i += 1
+                        sys.stderr.write('wmllint: resolving address as: %s\n' % new.strip())
+            if ugly:
+                print >>sys.stderr, """
+    WARNING!! Your system will misinterpret a backslash followed by a quote (\\"), or two quotes (""). Hit the up arrow key, edit your command, and press Enter.
+
+        Solutions:
+
+(1) If your problem is adjoining quotes, delete (or move) one of them
+(  "folder\Campaign"" -> "folder\Campaign"  )
+
+(2) If you are using a final backslash at the end of a directory address, it is not necessary
+(  "folder\Campaign\\" -> "folder\Campaign" -- but NOT "folder\Campaign\\"file.cfg -> "folder\Campaign"file.cfg  )
+
+(3) If you add a second backslash, your system will then escape the backslash instead of the quote
+(  "folder\Campaign\\" -> "folder\Campaign\\\\"  )
+
+(4) Frontslashes will also be recognized as directory separators
+(  "folder\Campaign\\" -> "folder/Campaign"  )
+
+(5) If there are no spaces in your address, it is not necessary to use quotes
+(  "folder\Campaign\\" -> folder\Campaign -- but NOT "My Folder\Campaign\\" -> My Folder\Campaign  )
+
+(6) You can move the affected quote
+(  M"y Folder\\"Campaign -> M"y Fold"er\Campaign -- but NOT Fil"es and Folders\My Folder\\"Campaign -> Fil"es and Folders\M"y Folder\Campaign  )
+
+        Explanation:
+
+Windows' use of the backslash as a directory separator is clashing with the use of the backslash as an escape. Your system interprets '\\"' as an escape for a literal quote character. Two quotes together are also interpreted as a literal quote.
+
+'"Campaign\\"' is interpreted as 'Campaign"' instead of 'Campaign\\'.
+'"My Folder\\"Campaign' is interpreted as 'My Folder"Campaign' (not 'My Folder\Campaign').
+'"My Folder\Campaign\\" "My Folder\\Another_Campaign"' is interpreted as 'My Folder\Campaign" My' and 'Folder\\Another_Campaign'.
+
+In your case, your system interprets your arguments as:
+
+    %s""" % arguments
+                sys.exit(1)
             if wildcard:
                 for arg in arguments:
                     for wild in glob(arg):
