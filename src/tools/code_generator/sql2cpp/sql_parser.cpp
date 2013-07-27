@@ -12,29 +12,11 @@
    See the COPYING file for more details.
 */
 
-//  This example shows how to create a simple lexer recognizing a couple of 
-//  different tokens aimed at a simple language and how to use this lexer with 
-//  a grammar. It shows how to associate attributes to tokens and how to access the 
-//  token attributes from inside the grammar.
-//
-//  Additionally, this example demonstrates, how to define a token set usable 
-//  as the skip parser during parsing, allowing to define several tokens to be 
-//  ignored.
-//
-//  The main purpose of this example is to show how inheritance can be used to 
-//  overload parts of a base grammar and add token definitions to a base lexer.
-//
-//  Further, it shows how you can use the 'omit' attribute type specifier 
-//  for token definitions to force the token to have no attribute (expose an 
-//  unused attribute).
-//
-//  This example recognizes a very simple programming language having 
-//  assignment statements and if and while control structures. Look at the file
-//  example5.input for an example.
-
 #include <boost/spirit/include/qi.hpp>
 #include <boost/spirit/include/lex_lexertl.hpp>
 #include <boost/spirit/include/phoenix_operator.hpp>
+#include <boost/spirit/include/phoenix_core.hpp>
+#include <boost/spirit/include/phoenix_object.hpp>
 
 #include <iostream>
 #include <fstream>
@@ -50,9 +32,10 @@ struct sql_tokens : lex::lexer<Lexer>
 public:
     // Tokens with no attributes.
     lex::token_def<lex::omit> type_smallint, type_int, type_varchar, type_text, type_date;
-    
-    // Attributed tokens.
-    lex::token_def<unsigned int> data_length;
+    lex::token_def<lex::omit> kw_not_null, kw_auto_increment, kw_unique, kw_default;
+
+    // Attributed tokens. (If you add a new type, don't forget to add it to the lex::lexertl::token definition too).
+    lex::token_def<unsigned int> signed_digit;
     lex::token_def<std::string> identifier;
 
     sql_tokens()
@@ -63,16 +46,26 @@ public:
         type_varchar = "varchar";
         type_text = "text";
         type_date = "date";
-        data_length = "[0-9]+";
+
+        // Keywords.
+        kw_not_null = "not null";
+        kw_auto_increment = "auto_increment";
+        kw_unique = "unique";
+        kw_default = "default";
+
+        // Values.
+        signed_digit = "[+-]?[0-9]+";
 
         // Identifier.
         identifier = "[a-zA-Z][a-zA-Z0-9_]*";
 
-        // associate the tokens and the token set with the lexer
+        // The token must be added in priority order.
         this->self += lex::token_def<>('(') | ')';
         this->self += type_smallint | type_int | type_varchar | type_text |
-                      type_data | data_length;
+                      type_date;
+        this->self += kw_not_null | kw_auto_increment | kw_unique | kw_default;
         this->self += identifier;
+        this->self += signed_digit;
 
         // define the whitespace to ignore.
         this->self("WS")
@@ -90,7 +83,7 @@ struct sql_grammar
 {
     template <typename TokenDef>
     sql_grammar(TokenDef const& tok)
-      : sql_grammar::base_type(program)
+      : sql_grammar::base_type(program, "sql")
     {
         using boost::spirit::_val;
 
@@ -99,15 +92,15 @@ struct sql_grammar
             ;
 
         statement 
-            =   create_statement
+            =   create_statement.alias()
             ;
 
         create_statement
-            =   create_table
+            =   create_table.alias()
             ;
 
         create_table
-            =   create_table_definition
+            =   create_table_definition.alias()
             ;
 
         create_table_definition
@@ -115,28 +108,65 @@ struct sql_grammar
             ;
 
         column_definition
-            =   data_type
+            =   data_type >> *constraint_definition
+            ;
+
+        constraint_definition
+            =   tok.kw_not_null
+            |   tok.kw_auto_increment
+            |   tok.kw_unique
+            |   default_value
+            ;
+
+        default_value
+            =   tok.kw_default >> tok.signed_digit
             ;
 
         data_type
-            =   type_smallint
-            |   type_int
-            |   (type_varchar >> data_length)
-            |   type_text
-            |   type_date
+            =   tok.type_smallint
+            |   tok.type_int
+            |   (tok.type_varchar >> '(' >> tok.signed_digit >> ')')
+            |   tok.type_text
+            |   tok.type_date
             ;
+
+        program.name("program");
+        statement.name("statement");
+        create_statement.name("create statement");
+        create_table.name("create table");
+        create_table_definition.name("create table definition");
+        column_definition.name("column definition");
+        data_type.name("data type");
+        default_value.name("default value");
+        constraint_definition.name("constraint definition");
+
+        using namespace qi::labels;
+        qi::on_error<qi::fail>
+        (
+            program,
+            std::cout
+                << boost::phoenix::val("Error! Expecting ")
+                << _4                               // what failed?
+                << boost::phoenix::val(" here: \"")
+                << boost::phoenix::construct<std::string>(_3, _2)   // iterators to error-pos, end
+                << boost::phoenix::val("\"")
+                << std::endl
+        );
     }
 
     typedef qi::in_state_skipper<Lexer> skipper_type;
 
     qi::rule<Iterator, skipper_type> program, statement;
     qi::rule<Iterator, skipper_type> create_statement, create_table, create_table_definition;
-    qi::rule<Iterator, skipper_type> column_definition, data_type;
+    qi::rule<Iterator, skipper_type> column_definition, data_type, default_value, constraint_definition;
 };
 
-///////////////////////////////////////////////////////////////////////////////
-int main()
+
+int main(int argc, char* argv[])
 {
+    if(argc != 2)
+        exit(1);
+
     // iterator type used to expose the underlying input stream
     typedef std::string::iterator base_iterator_type;
 
@@ -174,7 +204,7 @@ int main()
     sql_tokens tokens;                         // Our lexer
     sql_grammar sql(tokens);                  // Our parser
 
-    std::string str("value smallint");
+    std::string str(argv[1]);
 
     // At this point we generate the iterator pair used to expose the
     // tokenized input stream.
@@ -190,6 +220,7 @@ int main()
     std::string ws("WS");
     bool r = qi::phrase_parse(iter, end, sql, qi::in_state(ws)[tokens.self]);
 
+
     if (r && iter == end)
     {
         std::cout << "-------------------------\n";
@@ -202,7 +233,5 @@ int main()
         std::cout << "Parsing failed\n";
         std::cout << "-------------------------\n";
     }
-
-    std::cout << "Bye... :-) \n\n";
     return 0;
 }

@@ -1015,6 +1015,8 @@ set(sql2cpp_SRC
 	tools/code_generator/sql2cpp/sql_parser.cpp
 )
 
+add_executable(sql2cpp ${sql2cpp_SRC})
+
 # UMCD core.
 
 set(wesnoth-schema_validator-dependencies_SRC
