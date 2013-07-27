@@ -135,7 +135,7 @@ void umcd_protocol::dispatch_request(const boost::system::error_code& err, std::
          info_ptr request_info = action_factory->make_product(request_name);
          UMCD_LOG_IP(info, client_connection->get_socket()) << " -- request:\n" << request_body;
 
-         request = wml_request(client_connection);
+         request = wml_request();
          // Read into config and validate metadata.
          ::read(request.get_metadata(), request_stream, request_info->validator().get());
          UMCD_LOG_IP(debug, client_connection->get_socket()) << " -- request validated.";
