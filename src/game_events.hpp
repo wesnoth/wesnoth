@@ -51,13 +51,18 @@ void change_terrain(const map_location &loc, const t_translation::t_terrain &t,
 	// Thus, a manager object should be created when a scenario is played,
 	// and destroyed at the end of the scenario.
 	struct manager {
-		// Note that references will be maintained,
-		// and must remain valid for the life of the object.
+		/// Note that references will be maintained,
+		/// and must remain valid for the life of the object.
 		manager(const config& scenario_cfg);
 		~manager();
 
+		/// Returns true when a manager exists, so events can be processed.
+		static bool running() { return running_; }
+
 	private:
 		variable::manager variable_manager;
+
+		static bool running_;
 	};
 
 	struct entity_location : public map_location {

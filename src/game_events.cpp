@@ -133,7 +133,6 @@ size_t internal_wml_tracking = 0;
 
 	std::stringstream wml_messages_stream;
 
-	bool manager_running = false;
 	int floating_label = 0;
 
 	typedef std::pair< std::string, config* > wmi_command_change;
@@ -3533,10 +3532,12 @@ bool process_event(event_handler& handler, const queued_event& ev)
 		std::set<std::string> unit_wml_ids;
 	}//anonymous namespace
 
+	bool manager::running_ = false;
+
 	manager::manager(const config& cfg)
 		: variable_manager()
 	{
-		assert(!manager_running);
+		assert(!running_);
 		BOOST_FOREACH(const config &ev, cfg.child_range("event")) {
 			add_event_handler(ev);
 		}
@@ -3545,7 +3546,7 @@ bool process_event(event_handler& handler, const queued_event& ev)
 		}
 
 		resources::lua_kernel = new LuaKernel(cfg);
-		manager_running = true;
+		running_ = true;
 
 		BOOST_FOREACH(static_wml_action_map::value_type &action, static_wml_actions) {
 			resources::lua_kernel->set_wml_action(action.first, action.second);
@@ -3573,7 +3574,7 @@ bool process_event(event_handler& handler, const queued_event& ev)
 
 	void write_events(config& cfg)
 	{
-		assert(manager_running);
+		assert(manager::running());
 		BOOST_FOREACH(const event_handler &eh, event_handlers) {
 			if ( eh.disabled() || eh.is_menu_item() ) {
 				continue;
@@ -3608,8 +3609,8 @@ bool process_event(event_handler& handler, const queued_event& ev)
 	}
 
 	manager::~manager() {
-		assert(manager_running);
-		manager_running = false;
+		assert(running_);
+		running_ = false;
 		events_queue.clear();
 		event_handlers.clear();
 		reports::reset_generators();
@@ -3624,7 +3625,7 @@ bool process_event(event_handler& handler, const queued_event& ev)
 			const entity_location& loc2,
 			const config& data)
 	{
-		assert(manager_running);
+		assert(manager::running());
 		if(!events_init())
 			return;
 
@@ -3638,7 +3639,7 @@ bool process_event(event_handler& handler, const queued_event& ev)
 			const entity_location& loc2,
 			const config& data)
 	{
-		assert(manager_running);
+		assert(manager::running());
 		raise(event,loc1,loc2,data);
 		return pump();
 	}
@@ -3678,7 +3679,7 @@ bool process_event(event_handler& handler, const queued_event& ev)
 		//for the duration of this method
 		wb::real_map real_unit_map;
 
-		assert(manager_running);
+		assert(manager::running());
 		if(!events_init())
 			return false;
 
