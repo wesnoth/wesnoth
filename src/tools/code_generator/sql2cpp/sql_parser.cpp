@@ -60,7 +60,7 @@ public:
         identifier = "[a-zA-Z][a-zA-Z0-9_]*";
 
         // The token must be added in priority order.
-        this->self += lex::token_def<>('(') | ')';
+        this->self += lex::token_def<>('(') | ')' | ',';
         this->self += type_smallint | type_int | type_varchar | type_text |
                       type_date;
         this->self += kw_not_null | kw_auto_increment | kw_unique | kw_default;
@@ -104,11 +104,11 @@ struct sql_grammar
             ;
 
         create_table_definition
-            =   (tok.identifier >> column_definition)
+            =   column_definition % ','     // comma separated list of column_definition.
             ;
 
         column_definition
-            =   data_type >> *constraint_definition
+            =   tok.identifier >> data_type >> *constraint_definition
             ;
 
         constraint_definition
@@ -125,7 +125,7 @@ struct sql_grammar
         data_type
             =   tok.type_smallint
             |   tok.type_int
-            |   (tok.type_varchar >> '(' >> tok.signed_digit >> ')')
+            |   (tok.type_varchar > '(' > tok.signed_digit > ')')
             |   tok.type_text
             |   tok.type_date
             ;
