@@ -324,9 +324,6 @@ void show_wml_messages()
 
 } // anonymous namespace
 
-typedef void (*wml_handler_function)(
-	const queued_event &event_info, const vconfig &cfg);
-
 namespace {
 
 typedef std::map<std::string, wml_handler_function> static_wml_action_map;
@@ -334,6 +331,13 @@ typedef std::map<std::string, wml_handler_function> static_wml_action_map;
 static_wml_action_map static_wml_actions;
 
 } // anonymous namespace
+
+/** Registers a standard action handler. */
+void register_action(const std::string & tag, wml_handler_function handler)
+{
+	static_wml_actions[tag] = handler;
+}
+
 
 /**
  * WML_HANDLER_FUNCTION macro handles auto registration for wml handlers
@@ -358,7 +362,7 @@ static_wml_action_map static_wml_actions;
  * void wml_action_foo(...);
  * struct wml_func_register_foo {
  *   wml_func_register_foo() {
- *     static_wml_actions["foo"] = &wml_func_foo;
+ *     register_action("foo", &wml_func_foo);
  *   } wml_func_register_foo;
  * void wml_func_foo(...)
  * {
@@ -371,7 +375,7 @@ static_wml_action_map static_wml_actions;
 	struct wml_func_register_##pname \
 	{ \
 		wml_func_register_##pname() \
-		{ static_wml_actions[#pname] = &wml_func_##pname; } \
+		{ register_action(#pname, &wml_func_##pname); } \
 	}; \
 	static wml_func_register_##pname wml_func_register_##pname##_aux;  \
 	static void wml_func_##pname(const queued_event& pei, const vconfig& pcfg)
@@ -3611,13 +3615,19 @@ bool process_event(event_handler& handler, const queued_event& ev)
 	manager::~manager() {
 		assert(running_);
 		running_ = false;
-		events_queue.clear();
+		clear_events();
 		event_handlers.clear();
 		reports::reset_generators();
 		delete resources::lua_kernel;
 		resources::lua_kernel = NULL;
 		unit_wml_ids.clear();
 		used_items.clear();
+	}
+
+	/** Clears all events tha have been raised (and not pumped). */
+	void clear_events()
+	{
+		events_queue.clear();
 	}
 
 	void raise(const std::string& event,
