@@ -18,26 +18,16 @@
 #include <istream>
 #include <string>
 #include "config.hpp"
-#include "umcd/umcd_logger.hpp"
-#include "umcd/server/connection.hpp"
-
-class umcd_protocol;
 
 class wml_request
 {
-public:
-   typedef connection<umcd_protocol> connection_type;
-   typedef boost::shared_ptr<connection_type> connection_ptr;
 private:
    config metadata;
-   connection_ptr client_connection;
 
 public:
    wml_request();
-   wml_request(const connection_ptr& client_connection);
 
    config& get_metadata();
-   connection_ptr& get_connection();
 };
 
 std::string peek_request_name(std::istream& raw_data_stream);

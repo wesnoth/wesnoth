@@ -16,10 +16,6 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/make_shared.hpp>
 
-wml_request::wml_request(const connection_ptr& client_connection)
-: client_connection(client_connection)
-{}
-
 wml_request::wml_request(){}
 
 config& wml_request::get_metadata() 
@@ -27,10 +23,6 @@ config& wml_request::get_metadata()
    return metadata; 
 }
 
-wml_request::connection_ptr& wml_request::get_connection()
-{
-   return client_connection;
-}
 
 static void check_stream_state(std::istream& raw_data_stream, std::string error_msg)
 {
