@@ -21,13 +21,12 @@
 
 class wml_request
 {
-private:
-   config metadata;
-
 public:
    wml_request();
-
    config& get_metadata();
+
+private:
+   config metadata_;
 };
 
 std::string peek_request_name(std::istream& raw_data_stream);

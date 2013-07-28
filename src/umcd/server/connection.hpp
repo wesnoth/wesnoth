@@ -42,10 +42,6 @@ public:
   typedef Protocol protocol_type;
   typedef boost::asio::ip::tcp::socket socket_type;
 
-private:
-  socket_type socket;
-  boost::shared_ptr<protocol_type> protocol;
-
 public:
   // Construct a connection with the given io_service.
   explicit connection(boost::asio::io_service& io_service,
@@ -58,26 +54,30 @@ public:
 
   // Start the first asynchronous operation for the connection.
   void start();
+
+private:
+  socket_type socket_;
+  boost::shared_ptr<protocol_type> protocol_;
 };
 
 template <class Protocol>
 connection<Protocol>::connection(boost::asio::io_service& io_service, 
   const boost::shared_ptr<protocol_type>& protocol)
-: socket(io_service)
-, protocol(protocol)
+: socket_(io_service)
+, protocol_(protocol)
 {
 }
 
 template <class Protocol>
 typename connection<Protocol>::socket_type& connection<Protocol>::get_socket()
 {
-  return socket;
+  return socket_;
 }
 
 template <class Protocol>
 boost::asio::io_service& connection<Protocol>::get_io_service()
 {
-  return socket.get_io_service();
+  return socket_.get_io_service();
 }
 
 template <class Protocol>
@@ -86,7 +86,7 @@ void connection<Protocol>::start()
   UMCD_LOG_IP_FUNCTION_TRACER(get_socket());
   // Post is threadsafe. We want that start() returns immediately to accept other requests.
   get_io_service().post(
-    boost::bind(&protocol_type::handle_request, protocol, this->shared_from_this()));
+    boost::bind(&protocol_type::handle_request, protocol_, this->shared_from_this()));
 }
 
 #endif // SERVER_CONNECTION_HPP

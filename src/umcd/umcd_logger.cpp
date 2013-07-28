@@ -24,16 +24,16 @@ const char* umcd_logger::severity_level_name[] = {
 };
 
 log_line_cache::log_line_cache(umcd_logger& logger, severity_level severity)
-: logger(logger)
-, enabled(logger.get_current_severity() <= severity)
-, severity(severity)
-, line(boost::make_shared<std::stringstream>())
+: logger_(logger)
+, enabled_(logger.get_current_severity() <= severity)
+, severity_(severity)
+, line_(boost::make_shared<std::stringstream>())
 {}
 
 log_line_cache::~log_line_cache()
 {
-   if(enabled)
+   if(enabled_)
    {
-      logger.add_line(*this);
+      logger_.add_line(*this);
    }
 }

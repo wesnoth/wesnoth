@@ -29,18 +29,16 @@ class request_license_action : public basic_umcd_action
 {
 public:
    typedef basic_umcd_action base;
-
-   const config& server_config;
    
    request_license_action(const config& server_config)
-   : server_config(server_config)
+   : server_config_(server_config)
    {}
 
    virtual void execute(boost::shared_ptr<umcd_protocol> protocol)
    {
       // NOTE: We don't use the COPYING file because the " are not double quoted, instead we use a preformatted license file with " replaced by "".
       config reply("request_license");
-      reply.child("request_license")["text"] = "\"" + read_file(server_config["wesnoth_dir"].str() + "data/umcd/license.txt") + "\"";
+      reply.child("request_license")["text"] = "\"" + read_file(server_config_["wesnoth_dir"].str() + "data/umcd/license.txt") + "\"";
       protocol->get_reply() = wml_reply(reply);
       protocol->async_send_reply();
    }
@@ -49,6 +47,9 @@ public:
    {
       return boost::shared_ptr<base>(new request_license_action(*this));
    }
+
+private:
+   const config& server_config_;
 };
 
 #endif // UMCD_REQUEST_LICENSE_ACTION_HPP

@@ -40,22 +40,23 @@ class server_mt : public basic_server<Protocol>
     typedef boost::shared_ptr<connection_type> connection_ptr;
     typedef basic_server<Protocol> base;
 
-    std::size_t thread_pool_size;
-
   public:
     explicit server_mt(const config& cfg, const boost::shared_ptr<protocol_type>& protocol);
     void run();
+ 
+  private:
+    std::size_t thread_pool_size_;
 };
 
 template <class Protocol>
 server_mt<Protocol>::server_mt(const config &cfg, const boost::shared_ptr<protocol_type>& protocol) 
 : base(cfg, protocol)
 {
-  thread_pool_size = cfg["threads"];
-  if(thread_pool_size == 0)
+  thread_pool_size_ = cfg["threads"];
+  if(thread_pool_size_ == 0)
   {
-    thread_pool_size = boost::thread::hardware_concurrency();
-    UMCD_LOG(info) << thread_pool_size << " cores found.";
+    thread_pool_size_ = boost::thread::hardware_concurrency();
+    UMCD_LOG(info) << thread_pool_size_ << " cores found.";
   }
 }
 
@@ -64,7 +65,7 @@ void server_mt<Protocol>::run()
 {
   // Create a pool of threads to run all of the io_services.
   std::vector<boost::shared_ptr<boost::thread> > threads;
-  for (std::size_t i = 0; i < thread_pool_size-1; ++i)
+  for (std::size_t i = 0; i < thread_pool_size_-1; ++i)
   {
     boost::shared_ptr<boost::thread> thread = boost::make_shared<boost::thread>(
           boost::bind(&base::run, this));

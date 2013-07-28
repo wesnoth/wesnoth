@@ -36,16 +36,8 @@ class basic_server : boost::noncopyable
 {
   public:
     typedef Protocol protocol_type;
-  protected:
     typedef connection<protocol_type> connection_type;
     typedef boost::shared_ptr<connection_type> connection_ptr;
-
-    boost::asio::io_service io_service;
-    boost::asio::ip::tcp::acceptor acceptor;
-
-    connection_ptr new_connection;
-    boost::shared_ptr<protocol_type> protocol;
-    bool server_on;
 
   public:
     explicit basic_server(const config& cfg, const boost::shared_ptr<protocol_type>& protocol);
@@ -55,19 +47,27 @@ class basic_server : boost::noncopyable
     void start_accept();
     void handle_accept(const boost::system::error_code& e);
     void handle_stop();
+
+  protected:
+    boost::asio::io_service io_service_;
+    boost::asio::ip::tcp::acceptor acceptor_;
+    connection_ptr new_connection_;
+    boost::shared_ptr<protocol_type> protocol_;
+    bool server_on_;
 };
 
 template <class Protocol>
 basic_server<Protocol>::basic_server(const config &cfg, const boost::shared_ptr<protocol_type>& protocol) 
-: acceptor(io_service)
-, protocol(protocol)
-, server_on(true)
+: io_service_()
+, acceptor_(io_service_)
+, protocol_(protocol)
+, server_on_(true)
 {
   using namespace boost::asio::ip;
 
   // Find an endpoint on the port specified, if none found, throw a runtime_error exception.
   std::string port = cfg["port"];
-  tcp::resolver resolver(io_service);
+  tcp::resolver resolver(io_service_);
   tcp::resolver::query query(port, tcp::resolver::query::address_configured);
   tcp::resolver::iterator endpoint_iter = resolver.resolve(query);
   tcp::resolver::iterator endpoint_end;
@@ -77,9 +77,9 @@ basic_server<Protocol>::basic_server(const config &cfg, const boost::shared_ptr<
     try
     {
       tcp::endpoint endpoint(*endpoint_iter);
-      acceptor.open(endpoint.protocol());
-      acceptor.bind(endpoint);
-      acceptor.listen();
+      acceptor_.open(endpoint.protocol());
+      acceptor_.bind(endpoint);
+      acceptor_.listen();
       UMCD_LOG(info) << "The server IP is " << endpoint;
       break;
     }
@@ -99,11 +99,11 @@ template <class Protocol>
 void basic_server<Protocol>::run()
 {
   UMCD_LOG_FUNCTION_TRACER();
-  while(server_on)
+  while(server_on_)
   {
     try
     {
-      io_service.run();
+      io_service_.run();
     }
     catch(std::exception& e)
     {
@@ -120,9 +120,9 @@ template <class Protocol>
 void basic_server<Protocol>::start_accept()
 {
   UMCD_LOG_FUNCTION_TRACER();
-  protocol = boost::make_shared<protocol_type>(*protocol);
-  new_connection = boost::make_shared<connection_type>(boost::ref(io_service), protocol);
-  acceptor.async_accept(new_connection->get_socket(),
+  protocol_ = boost::make_shared<protocol_type>(*protocol_);
+  new_connection_ = boost::make_shared<connection_type>(boost::ref(io_service_), protocol_);
+  acceptor_.async_accept(new_connection_->get_socket(),
     boost::bind(&basic_server::handle_accept, this, boost::asio::placeholders::error)
   );
 }
@@ -130,10 +130,10 @@ void basic_server<Protocol>::start_accept()
 template <class Protocol>
 void basic_server<Protocol>::handle_accept(const boost::system::error_code& e)
 {
-  UMCD_LOG_IP_FUNCTION_TRACER(new_connection->get_socket());
+  UMCD_LOG_IP_FUNCTION_TRACER(new_connection_->get_socket());
   if (!e)
   {
-    new_connection->start();
+    new_connection_->start();
   }
   start_accept();
 }
@@ -141,8 +141,8 @@ void basic_server<Protocol>::handle_accept(const boost::system::error_code& e)
 template <class Protocol>
 void basic_server<Protocol>::handle_stop()
 {
-  server_on = false;
-  io_service.stop();
+  server_on_ = false;
+  io_service_.stop();
 }
 
 #endif // SERVER_BASIC_SERVER_HPP

@@ -27,12 +27,9 @@ class request_umc_upload_action
 {
 public:
    typedef basic_umcd_action base;
-
-   const config& server_config;
-   boost::shared_ptr<umcd_protocol> protocol;
    
    request_umc_upload_action(const config& server_config)
-   : server_config(server_config)
+   : server_config_(server_config)
    {}
 
    const config& get_info(const config& metadata)
@@ -55,8 +52,8 @@ public:
    
    virtual void execute(boost::shared_ptr<umcd_protocol> p)
    {
-      protocol = p;
-      config& metadata = protocol->get_metadata();
+      protocol_ = p;
+      config& metadata = protocol_->get_metadata();
       if(umc_exists(metadata))
       {
          update_umc();
@@ -71,6 +68,10 @@ public:
    {
       return boost::shared_ptr<base>(new request_umc_upload_action(*this));
    }
+
+private:
+   const config& server_config_;
+   boost::shared_ptr<umcd_protocol> protocol_;
 };
 
 #endif // UMCD_REQUEST_UMC_UPLOAD_ACTION_HPP

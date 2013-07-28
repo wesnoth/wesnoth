@@ -22,7 +22,7 @@ wml_request::wml_request(){}
 
 config& wml_request::get_metadata() 
 { 
-   return metadata; 
+   return metadata_; 
 }
 
 

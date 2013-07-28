@@ -24,17 +24,6 @@
 class server_options
 {
   private:
-    std::string header;
-    std::string version;
-    boost::program_options::options_description options_desc;
-    boost::program_options::options_description config_file_options;
-    boost::program_options::variables_map vm;
-
-    std::string port;
-    std::string wesnoth_directory;
-    int threads;
-    std::string config_file_name;
-
     void build_options_desc();
     /**
       @brief Merge command line argument and config file argument.
@@ -69,6 +58,17 @@ class server_options
 
     static const std::string DEFAULT_PORT;
     static const int DEFAULT_THREADS;
+
+private:
+    std::string header_;
+    std::string version_;
+    boost::program_options::options_description options_desc_;
+    boost::program_options::options_description config_file_options_;
+    boost::program_options::variables_map vm_;
+    std::string port_;
+    std::string wesnoth_directory_;
+    int threads_;
+    std::string config_file_name_;
 };
 
 #endif //UMCD_OPTIONS_HPP

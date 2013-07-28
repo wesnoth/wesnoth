@@ -43,15 +43,6 @@ private:
    typedef connection<umcd_protocol> connection_type;
    typedef boost::shared_ptr<connection_type> connection_ptr;
 
-   const config& server_config;
-   // The shared_ptr avoid the factory to be copied/duplicated.
-   boost::shared_ptr<action_factory_type> action_factory;
-   connection_ptr client_connection;
-   boost::array<char, REQUEST_HEADER_SIZE_FIELD_LENGTH> raw_request_size;
-   std::string request_body;
-   wml_reply reply;
-   wml_request request;
-
    template <class Action>
    void register_request_info(const std::string& request_name);
 
@@ -84,14 +75,23 @@ private:
    // Precondition: request_body must be read.
    void dispatch_request(const boost::system::error_code& error, std::size_t bytes_transferred);
 
+private:
+   const config& server_config_;
+   // The shared_ptr avoid the factory to be copied/duplicated.
+   boost::shared_ptr<action_factory_type> action_factory_;
+   connection_ptr client_connection_;
+   boost::array<char, REQUEST_HEADER_SIZE_FIELD_LENGTH> raw_request_size_;
+   std::string request_body_;
+   wml_reply reply_;
+   wml_request request_;
 };
 
 template <class Action>
 void umcd_protocol::register_request_info(const std::string& request_name)
 {
-   action_factory->register_product(
+   action_factory_->register_product(
       request_name, 
-      make_request_info<Action, validator_type>(server_config, request_name)
+      make_request_info<Action, validator_type>(server_config_, request_name)
    );
 }
 

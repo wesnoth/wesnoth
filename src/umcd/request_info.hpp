@@ -26,15 +26,16 @@ public:
    typedef schema_validation::schema_validator validator_type;
    typedef boost::shared_ptr<basic_umcd_action> action_ptr;
    typedef boost::shared_ptr<validator_type> validator_ptr;
-private:
-   action_ptr umcd_action;
-   validator_ptr request_validator;
 
 public:
    request_info(const action_ptr& action, const validator_ptr& validator);
    action_ptr action();
    validator_ptr validator();
    boost::shared_ptr<request_info> clone() const;
+
+private:
+   action_ptr umcd_action_;
+   validator_ptr request_validator_;
 };
 
 template <class Action, class Validator>

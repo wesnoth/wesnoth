@@ -15,24 +15,24 @@
 #include "umcd/request_info.hpp"
 
 request_info::request_info(const action_ptr& action, const validator_ptr& validator)
-: umcd_action(action)
-, request_validator(validator)
+: umcd_action_(action)
+, request_validator_(validator)
 {}
 
 request_info::action_ptr request_info::action()
 {
-   return umcd_action;
+   return umcd_action_;
 }
 
 request_info::validator_ptr request_info::validator()
 {
-   return request_validator;
+   return request_validator_;
 }
 
 boost::shared_ptr<request_info> request_info::clone() const
 {
    return boost::make_shared<request_info>(
-      umcd_action->clone(), 
-      boost::make_shared<validator_type>(*request_validator)
+      umcd_action_->clone(), 
+      boost::make_shared<validator_type>(*request_validator_)
    );
 }

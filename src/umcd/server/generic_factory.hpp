@@ -44,20 +44,21 @@ public:
    typedef boost::shared_ptr<product_type> product_ptr;
 private:
    typedef std::map<identifier_type, product_ptr> id_to_product_map;
-   id_to_product_map products;
 public:
    void register_product(const identifier_type& id, const product_ptr& product)
    {
-      products.insert(std::make_pair(id, product));
+      products_.insert(std::make_pair(id, product));
    }
 
    product_ptr make_product(const identifier_type& id) const
    {
-      typename id_to_product_map::const_iterator product = products.find(id);
-      if(product == products.end())
+      typename id_to_product_map::const_iterator product = products_.find(id);
+      if(product == products_.end())
          throw product_not_found(id);
       return product->second->clone();
    }
+private:
+   id_to_product_map products_;
 };
 
 #endif // SERVER_GENERIC_FACTORY_HPP
