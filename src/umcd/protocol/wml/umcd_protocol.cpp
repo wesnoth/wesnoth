@@ -64,6 +64,8 @@ void umcd_protocol::complete_request(const boost::system::error_code& error, std
 void umcd_protocol::async_send_reply()
 {
    FUNCTION_TRACER();
+   BOOST_ASSERT_MSG(client_connection, "client_connection cannot be equal to null.");
+
    boost::asio::async_write(client_connection->get_socket()
       , reply.to_buffers()
       , boost::bind(&umcd_protocol::complete_request, shared_from_this()
@@ -156,7 +158,7 @@ void umcd_protocol::dispatch_request(const boost::system::error_code& err, std::
 
 void umcd_protocol::handle_request(connection_ptr client)
 {
-   BOOST_ASSERT_MSG(client, "cannot be equal to null.");
+   BOOST_ASSERT_MSG(client, "client cannot be equal to null.");
    client_connection = client;
    FUNCTION_TRACER(); // Because we trace with the IP, client_connection must be initialized first.
    boost::asio::async_read(client_connection->get_socket(), boost::asio::buffer(raw_request_size)

@@ -63,12 +63,17 @@ public:
    // We only copy shared data.
    umcd_protocol(const umcd_protocol& protocol);
 
+   // Precondition: (bool)client == true
+   void handle_request(connection_ptr client);
+   // Precondition: handle_request has been called and connection has been initialized.
+   void async_send_reply();
+
    wml_reply& get_reply();
    config& get_metadata();
 
+private:
    void complete_request(const boost::system::error_code& error, std::size_t bytes_transferred);
 
-   void async_send_reply();
    void async_send_error(const boost::system::error_condition& error);
    void async_send_invalid_packet(const std::string &where, const std::exception& e);
    void async_send_invalid_packet(const std::string &where, const twml_exception& e);
@@ -79,8 +84,6 @@ public:
    // Precondition: request_body must be read.
    void dispatch_request(const boost::system::error_code& error, std::size_t bytes_transferred);
 
-   // Precondition: (bool)client == true
-   void handle_request(connection_ptr client);
 };
 
 template <class Action>
