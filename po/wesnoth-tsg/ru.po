@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-tsg.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-05 11:23+0200\n"
+"POT-Creation-Date: 2013-07-28 18:25+0200\n"
 "PO-Revision-Date: 2012-04-07 03:13+0400\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -119,10 +119,10 @@ msgid "Deoran"
 msgstr "Деоран"
 
 #. [side]: type=Horseman Commander, id=Deoran
-#. [side]: id=Deoran
-#. [side]: type=Lieutenant, id=Plynry
 #. [side]: type=Troll Hero, id=Grek
 #. [side]
+#. [side]: type=Lieutenant, id=Plynry
+#. [side]: id=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:35
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:44
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:35
@@ -148,12 +148,12 @@ msgstr "Южная Стража"
 msgid "Urza Mathin"
 msgstr "Урза Матин"
 
-#. [side]: type=Bandit, id=Urza Mathin
-#. [side]: type=Outlaw, id=Urza Afalas
 #. [side]: type=Rogue, id=Urza Fastik
 #. [side]: type=Outlaw, id=Tharzo Kalain
+#. [side]: type=Outlaw, id=Urza Afalas
 #. [side]: type=Outlaw, id=Urza Nalmath
 #. [side]
+#. [side]: type=Bandit, id=Urza Mathin
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:57
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:66
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:103
@@ -1237,14 +1237,14 @@ msgstr "Долина Слёз"
 msgid "Mal A’kai"
 msgstr "Мал А’кай"
 
+#. [side]: type=Lich, id=Mal M'Brin
+#. [side]: type=Soulless, id=Groth
+#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer, id=Mal A'kai
+#. [side]: type=Outlaw, id=Jera Ilras
+#. [side]: type=Soulless, id=Gruth
 #. [side]: type=Ancient Lich, id=Mal M'Brin
 #. [side]: type=Lich, id=Mal Tera
 #. [side]
-#. [side]: type=Soulless, id=Gruth
-#. [side]: type=Lich, id=Mal M'Brin
-#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer, id=Mal A'kai
-#. [side]: type=Outlaw, id=Jera Ilras
-#. [side]: type=Soulless, id=Groth
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:74
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:117
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:91
@@ -1465,8 +1465,8 @@ msgstr "По крайней мере, ты нас не будешь больше
 msgid "Mebrin! Are you there? We have come to seek your aid!"
 msgstr "Мебрин! Ты здесь? Мы пришли просить тебя о помощи!"
 
-#. [message]: speaker=narrator
 #. [message]: speaker=Kramak
+#. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:548
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:559
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:376
@@ -1851,8 +1851,8 @@ msgstr ""
 msgid "Defeat Urza Afalas"
 msgstr "Победите Урзу Афаласа"
 
-#. [message]: speaker=unit
 #. [message]: speaker=Urza Afalas
+#. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:665
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1120
 msgid "Now I pay for my crimes. But how many others will also suffer for them?"
@@ -2508,8 +2508,8 @@ msgstr "Однако мрачная туча нависла над Деоран�
 msgid "Into the Depths"
 msgstr "В глубины"
 
-#. [side]: type=Ancient Lich, id=Mal M'Brin
 #. [side]: type=Lich, id=Mal M'Brin
+#. [side]: type=Ancient Lich, id=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:49
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:54
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:54

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-05 11:23+0200\n"
+"POT-Creation-Date: 2013-07-28 18:25+0200\n"
 "PO-Revision-Date: 2013-05-12 14:34+0100\n"
 "Last-Translator: trewe <sjrs456@yahoo.fr>\n"
 "Language-Team: wesn-pt-trans\n"
@@ -216,10 +216,10 @@ msgstr "Deoran"
 # File: data/campaigns/The_South_Guard/scenarios/09b_Bandit_Epilogue.cfg, line: 20
 # File: data/campaigns/The_South_Guard/scenarios/10a_Elf_Epilogue.cfg, line: 20
 #. [side]: type=Horseman Commander, id=Deoran
-#. [side]: id=Deoran
-#. [side]: type=Lieutenant, id=Plynry
 #. [side]: type=Troll Hero, id=Grek
 #. [side]
+#. [side]: type=Lieutenant, id=Plynry
+#. [side]: id=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:35
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:44
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:35
@@ -261,12 +261,12 @@ msgstr "Urza Mathin"
 # File: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg, line: 60
 # File: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg, line: 69
 # File: data/campaigns/The_South_Guard/scenarios/08a_Return_to_Kerlath.cfg, line: 107
-#. [side]: type=Bandit, id=Urza Mathin
-#. [side]: type=Outlaw, id=Urza Afalas
 #. [side]: type=Rogue, id=Urza Fastik
 #. [side]: type=Outlaw, id=Tharzo Kalain
+#. [side]: type=Outlaw, id=Urza Afalas
 #. [side]: type=Outlaw, id=Urza Nalmath
 #. [side]
+#. [side]: type=Bandit, id=Urza Mathin
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:57
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:66
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:103
@@ -1878,14 +1878,14 @@ msgstr "Mal A’kai"
 # File: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg, line: 59
 # File: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg, line: 89
 # File: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg, line: 57
+#. [side]: type=Lich, id=Mal M'Brin
+#. [side]: type=Soulless, id=Groth
+#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer, id=Mal A'kai
+#. [side]: type=Outlaw, id=Jera Ilras
+#. [side]: type=Soulless, id=Gruth
 #. [side]: type=Ancient Lich, id=Mal M'Brin
 #. [side]: type=Lich, id=Mal Tera
 #. [side]
-#. [side]: type=Soulless, id=Gruth
-#. [side]: type=Lich, id=Mal M'Brin
-#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer, id=Mal A'kai
-#. [side]: type=Outlaw, id=Jera Ilras
-#. [side]: type=Soulless, id=Groth
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:74
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:117
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:91
@@ -2206,8 +2206,8 @@ msgstr "Mebrin! Estás aí? Viemos à tua ajuda!"
 # File: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg, line: 548
 # File: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg, line: 559
 # File: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg, line: 376
-#. [message]: speaker=narrator
 #. [message]: speaker=Kramak
+#. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:548
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:559
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:376
@@ -2763,8 +2763,8 @@ msgstr "Derrota Urza Afalas"
 # File: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg, line: 1120
 # File: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg, line: 665
 # File: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg, line: 1120
-#. [message]: speaker=unit
 #. [message]: speaker=Urza Afalas
+#. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:665
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1120
 msgid "Now I pay for my crimes. But how many others will also suffer for them?"
@@ -3737,8 +3737,8 @@ msgstr "Nas Profundezas"
 # File: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg, line: 49
 # File: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg, line: 54
 # File: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg, line: 54
-#. [side]: type=Ancient Lich, id=Mal M'Brin
 #. [side]: type=Lich, id=Mal M'Brin
+#. [side]: type=Ancient Lich, id=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:49
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:54
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:54

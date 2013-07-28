@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-05 11:23+0200\n"
+"POT-Creation-Date: 2013-07-28 18:25+0200\n"
 "PO-Revision-Date: 2008-09-24 02:09+0100\n"
 "Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
 "Language-Team: none\n"
@@ -528,88 +528,88 @@ msgid "Polish Translation"
 msgstr "Traducció al polac"
 
 #. [about]
-#: data/core/about.cfg:2435
+#: data/core/about.cfg:2439
 msgid "Portuguese Translation"
 msgstr "Traducció al portugués"
 
 #. [about]
-#: data/core/about.cfg:2449
+#: data/core/about.cfg:2453
 msgid "Portuguese (Brazil) Translation"
 msgstr "Traducció al portugués (Brasil)"
 
 #. [about]
-#: data/core/about.cfg:2503
+#: data/core/about.cfg:2507
 msgid "Romanian Translation"
 msgstr "Traducció al rumà"
 
 #. [about]
-#: data/core/about.cfg:2511
+#: data/core/about.cfg:2515
 msgid "Russian Translation"
 msgstr "Traducció al rus"
 
 #. [about]
-#: data/core/about.cfg:2600
+#: data/core/about.cfg:2604
 #, fuzzy
 #| msgid "Galician Translation"
 msgid "Scottish Gaelic Translation"
 msgstr "Traducció al gallec"
 
 #. [about]
-#: data/core/about.cfg:2609
+#: data/core/about.cfg:2613
 msgid "Serbian Translation"
 msgstr "Traducció al serbi"
 
 #. [about]
-#: data/core/about.cfg:2628
+#: data/core/about.cfg:2632
 msgid "Slovak Translation"
 msgstr "Traducció a l'eslovac"
 
 #. [about]
-#: data/core/about.cfg:2657
+#: data/core/about.cfg:2661
 msgid "Slovenian Translation"
 msgstr "Traducció a l'eslové"
 
 #. [about]
-#: data/core/about.cfg:2673
+#: data/core/about.cfg:2677
 msgid "Spanish Translation"
 msgstr "Traducció al castellà"
 
 #. [about]
-#: data/core/about.cfg:2757
+#: data/core/about.cfg:2761
 msgid "Swedish Translation"
 msgstr "Traducció al suec"
 
 #. [about]
-#: data/core/about.cfg:2798
+#: data/core/about.cfg:2802
 msgid "Turkish Translation"
 msgstr "Traducció al turc"
 
 #. [about]
-#: data/core/about.cfg:2820
+#: data/core/about.cfg:2824
 #, fuzzy
 #| msgid "Romanian Translation"
 msgid "Ukrainian Translation"
 msgstr "Traducció al rumà"
 
 #. [about]
-#: data/core/about.cfg:2833
+#: data/core/about.cfg:2837
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Traducció al valencià"
 
 #. [about]
-#: data/core/about.cfg:2846
+#: data/core/about.cfg:2850
 #, fuzzy
 msgid "Vietnamese Translation"
 msgstr "Traducció al chinenc"
 
 #. [about]
-#: data/core/about.cfg:2865
+#: data/core/about.cfg:2869
 #, fuzzy
 msgid "RACV’s Translation"
 msgstr "Traducció al chinenc"
 
 #. [about]
-#: data/core/about.cfg:2872
+#: data/core/about.cfg:2876
 msgid "Bots"
 msgstr "Robots"
 
@@ -3176,8 +3176,8 @@ msgid "End Scenario"
 msgstr "Fi de l'escenari"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [label]: id=label-hp
 #. [label]: id=selected-label-hp
+#. [label]: id=label-hp
 #: data/themes/default.cfg:214 data/themes/dfool.cfg:238
 #: data/themes/experimental.cfg:188 data/themes/widescreen.cfg:246
 #: data/themes/widescreen.cfg:266 src/menu_events.cpp:218 src/unit.cpp:2455
@@ -3186,8 +3186,8 @@ msgid "HP"
 msgstr "PV"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [label]: id=label-xp
 #. [label]: id=selected-label-xp
+#. [label]: id=label-xp
 #: data/themes/default.cfg:223 data/themes/dfool.cfg:248
 #: data/themes/experimental.cfg:197 data/themes/widescreen.cfg:255
 #: data/themes/widescreen.cfg:275 src/menu_events.cpp:220
@@ -3225,24 +3225,24 @@ msgstr "manteniment"
 msgid "income"
 msgstr "guanys"
 
-#. [unit_level]: id=unit-level
 #. [selected_unit_level]: id=selected-unit-level
+#. [unit_level]: id=unit-level
 #: data/themes/default.cfg:431 data/themes/dfool.cfg:473
 #: data/themes/experimental.cfg:376 data/themes/widescreen.cfg:500
 #: data/themes/widescreen.cfg:626
 msgid "statuspanel^level"
 msgstr "nivell"
 
-#. [unit_moves]: id=unit-moves
 #. [selected_unit_moves]: id=selected-unit-moves
+#. [unit_moves]: id=unit-moves
 #: data/themes/default.cfg:461 data/themes/experimental.cfg:406
 #: data/themes/widescreen.cfg:530 data/themes/widescreen.cfg:656
 #, fuzzy
 msgid "statuspanel^moves"
 msgstr "moviments"
 
-#. [unit_defense]: id=unit-defense
 #. [selected_unit_defense]: id=selected-unit-defense
+#. [unit_defense]: id=unit-defense
 #: data/themes/default.cfg:470 data/themes/experimental.cfg:415
 #: data/themes/widescreen.cfg:539 data/themes/widescreen.cfg:665
 #, fuzzy
@@ -5837,24 +5837,24 @@ msgid_plural "multiplayer_starting_gold^Gold"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/network.cpp:109
+#: src/network.cpp:112
 msgid "invalid network handle"
 msgstr "el gestor de ret és invàlit"
 
-#: src/network.cpp:142 src/network_manager_ana.cpp:780
+#: src/network.cpp:145 src/network_manager_ana.cpp:780
 #: src/network_manager_ana.cpp:787
 msgid "Client disconnected"
 msgstr "Client desconectat"
 
-#: src/network.cpp:398 src/network.cpp:406
+#: src/network.cpp:401 src/network.cpp:409
 msgid "Could not connect to host."
 msgstr "No ha segut possible conectar al servidor."
 
-#: src/network.cpp:571
+#: src/network.cpp:574
 msgid "Could not add socket to socket set"
 msgstr "No s'ha pogut afegir el sòcul."
 
-#: src/network.cpp:583
+#: src/network.cpp:586
 msgid "Could not send initial handshake"
 msgstr "No s'ha pogut establir la conexió inicial."
 

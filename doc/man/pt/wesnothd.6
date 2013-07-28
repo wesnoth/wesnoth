@@ -22,7 +22,7 @@
 .
 .SH NOME
 .
-wesnothd \- Um daemon de rede para a Batalha por \fBWesnoth\fP.
+wesnothd — Um daemon de rede para a Batalha por \fBWesnoth\fP.
 .
 .SH SINOPSE
 .
@@ -51,7 +51,7 @@ executa wesnothd como processo de fundo
 \fB\-h, \-\-help\fP
 explica o que as opções de linha de comando fazem.
 .TP 
-\fB\-\-log\-\fP\fInível\fP\fB=\fP\fIdomínio1\fP\fB,\fP\fIdomínio2\fP\fB,\fP\fI...\fP
+\fB\-\-log\-\fP\fInível\fP\fB=\fP\fIdomínio1\fP\fB,\fP\fIdomínio2\fP\fB,\fP\fI…\fP
 define o nível de gravidade dos domínios de log. \fBall\fP pode ser usado para
 combinar com qualquer domínio de log. Níveis disponíveis: \fBerro\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Por defeito, o nivel \fBerro\fP é usado do
 nível \fBinfo\fP para o domínio \fBservidor\fP.
@@ -81,9 +81,9 @@ liga o log de depuração.
 .P
 [\fItag\fP]
 .IP
-\fIkey\fP="\fIvalor\fP"
+\fIkey\fP=“\fIvalor\fP”
 .IP
-\fIchave\fP="\fIvalor\fP,\fIvalor\fP,..."
+\fIchave\fP=“\fIvalor\fP,\fIvalor\fP,…”
 .P
 [/\fItag\fP]
 .
@@ -116,7 +116,7 @@ usados como jóqueres. Veja \fBglob\fP(7) para mais detalhes. Os valores padrão
 .TP 
 \fBfifo_path\fP
 O caminho para o fifo que exibe os comandos do servidor (o mesmo que /query
-\&... de wesnoth).  Se não especificado, o padrão é o caminho da compilação
+… de wesnoth).  Se não especificado, o padrão é o caminho da compilação
 (padrão: \fB/var/run/socket/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
@@ -142,7 +142,7 @@ A palavra\-passe usada para ganhar privilégios de administrador (por via
 .TP 
 \fBreplay_save_path\fP
 O directório onde o servidor armazena as revisões dos jogos. (não esqueças o
-"/" final!) O padrão é `' que é donde wesnothd fora lançado.
+“/” final!) O padrão é `' que é donde wesnothd fora lançado.
 .TP 
 \fBrestart_command\fP
 O comando que o servidor usa para começar um novo processo de servidor por
@@ -198,7 +198,7 @@ tempo de expulsão.
 O nome de referencia ao tempo de expulsão.
 .TP 
 \fBtempo\fP
-A definição do tempo limite.  O formato é:  %d[%s[%d%s[...]]] onde s são os
+A definição do tempo limite.  O formato é:  %d[%s[%d%s[…]]] onde s são os
 segundos, m os minutos, h as horas, D os dias, M os meses ou Y os anos e %d
 é um valor numérico.  Se nenhum tempo for referido serão assumidos
 minutos. Por exemplo: \fBtime="1D12h30m"\fP resulta num tempo de expulsão de 1

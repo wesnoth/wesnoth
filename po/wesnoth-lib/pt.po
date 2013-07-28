@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-05 11:23+0200\n"
+"POT-Creation-Date: 2013-07-28 18:25+0200\n"
 "PO-Revision-Date: 2013-05-12 14:16+0100\n"
 "Last-Translator: trewe <sjrs456@yahoo.fr>\n"
 "Language-Team: wesn-pt-trans\n"
@@ -1919,8 +1919,8 @@ msgstr "Fronteira de Mapa Falsa e Experimental"
 # File: data/gui/default/window/mp_create_game.cfg, line: 479
 # File: data/core/terrain.cfg, line: 2066
 # File: data/gui/default/window/mp_create_game.cfg, line: 479
-#. [terrain_type]: id=shroud
 #. [toggle_button]: id=shroud
+#. [terrain_type]: id=shroud
 #: data/core/terrain.cfg:2066 data/gui/default/window/mp_create_game.cfg:479
 msgid "Shroud"
 msgstr "Sombra"
@@ -1985,10 +1985,10 @@ msgstr "Impassível"
 # File: src/mapgen_dialog.cpp, line: 110
 # File: src/preferences_display.cpp, line: 273
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=click_dismiss
 #. [button]: id=cancel
 #. [button]: id=ok
 #. [button]: id=close_window
-#. [button]: id=click_dismiss
 #: data/gui/default/widget/window_default.cfg:140
 #: data/gui/default/window/chat_log.cfg:121
 #: data/gui/default/window/gamestate_inspector.cfg:339
@@ -2408,9 +2408,9 @@ msgstr "Anterior"
 # File: data/gui/default/window/editor_settings.cfg, line: 79
 # File: data/gui/default/window/editor_settings.cfg, line: 80
 # File: data/gui/default/window/title_screen.cfg, line: 177
-#. [button]: id=next_tod
 #. [button]: id=next_tip
 #. [button]: id=next_page
+#. [button]: id=next_tod
 #: data/gui/default/window/chat_log.cfg:89
 #: data/gui/default/window/editor_settings.cfg:79
 #: data/gui/default/window/editor_settings.cfg:80
@@ -2455,8 +2455,8 @@ msgstr "Filtro"
 # File: data/gui/default/window/data_manage.cfg, line: 163
 # File: data/gui/default/window/game_load.cfg, line: 263
 # File: data/gui/default/window/mp_server_list.cfg, line: 104
-#. [label]: id=filename
 #. [label]: id=name
+#. [label]: id=filename
 #: data/gui/default/window/data_manage.cfg:163
 #: data/gui/default/window/game_load.cfg:263
 #: data/gui/default/window/mp_server_list.cfg:104
@@ -2898,8 +2898,8 @@ msgstr "Rota da execução"
 # File: src/hotkeys.cpp, line: 1228
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#. [button]: id=cancel
 #. [button]: id=quit
+#. [button]: id=cancel
 #: data/gui/default/window/formula_debugger.cfg:234
 #: data/gui/default/window/lobby_main.cfg:660
 #: data/gui/default/window/title_screen.cfg:232 src/hotkeys.cpp:883
@@ -3135,8 +3135,8 @@ msgstr "Janela de inspecção"
 # File: data/gui/default/window/unit_create.cfg, line: 131
 # File: data/gui/default/window/gamestate_inspector.cfg, line: 153
 # File: data/gui/default/window/unit_create.cfg, line: 131
-#. [label]: id=typename
 #. [label]: id=unit_type
+#. [label]: id=typename
 #: data/gui/default/window/gamestate_inspector.cfg:153
 #: data/gui/default/window/unit_create.cfg:131
 msgid "Type"
@@ -3155,8 +3155,8 @@ msgstr "Variável"
 # File: data/gui/default/window/title_screen.cfg, line: 229
 # File: data/gui/default/window/language_selection.cfg, line: 41
 # File: data/gui/default/window/title_screen.cfg, line: 229
-#. [grid]
 #. [label]
+#. [grid]
 #: data/gui/default/window/language_selection.cfg:41
 #: data/gui/default/window/title_screen.cfg:229
 msgid "Language"
@@ -3737,8 +3737,8 @@ msgstr "Padrão"
 # File: data/gui/default/window/mp_create_game_set_password.cfg, line: 42
 # File: data/gui/default/window/mp_create_game.cfg, line: 226
 # File: data/gui/default/window/mp_create_game_set_password.cfg, line: 42
-#. [label]: id=title
 #. [button]: id=password
+#. [label]: id=title
 #: data/gui/default/window/mp_create_game.cfg:226
 #: data/gui/default/window/mp_create_game_set_password.cfg:42
 msgid "Set Password"
@@ -3872,8 +3872,8 @@ msgstr "Relembrar Senha"
 # File: data/gui/default/window/title_screen.cfg, line: 225
 # File: src/gui/dialogs/game_load.cpp, line: 301
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [label]
 #. [grid]
+#. [label]
 #: data/gui/default/window/mp_method_selection.cfg:39
 #: data/gui/default/window/title_screen.cfg:225
 #: src/gui/dialogs/game_load.cpp:301

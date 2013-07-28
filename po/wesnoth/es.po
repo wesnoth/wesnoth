@@ -23,7 +23,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-05-05 11:23+0200\n"
+"POT-Creation-Date: 2013-07-28 18:25+0200\n"
 "PO-Revision-Date: 2012-06-27 03:00+0200\n"
 "Last-Translator: Aelonin <quianaaelonin@gmail.com>\n"
 "Language-Team: Spanish <http://wiki.wesnoth.org/SpanishTranslation>\n"
@@ -547,84 +547,84 @@ msgid "Polish Translation"
 msgstr "Traducción al polaco"
 
 #. [about]
-#: data/core/about.cfg:2435
+#: data/core/about.cfg:2439
 msgid "Portuguese Translation"
 msgstr "Traducción al portugués"
 
 #. [about]
-#: data/core/about.cfg:2449
+#: data/core/about.cfg:2453
 msgid "Portuguese (Brazil) Translation"
 msgstr "Traducción al portugués (Brasil)"
 
 #. [about]
-#: data/core/about.cfg:2503
+#: data/core/about.cfg:2507
 msgid "Romanian Translation"
 msgstr "Traducción al rumano"
 
 #. [about]
-#: data/core/about.cfg:2511
+#: data/core/about.cfg:2515
 msgid "Russian Translation"
 msgstr "Traducción al ruso"
 
 #. [about]
-#: data/core/about.cfg:2600
+#: data/core/about.cfg:2604
 #, fuzzy
 #| msgid "Galician Translation"
 msgid "Scottish Gaelic Translation"
 msgstr "Traducción al gallego"
 
 #. [about]
-#: data/core/about.cfg:2609
+#: data/core/about.cfg:2613
 msgid "Serbian Translation"
 msgstr "Traducción al serbio"
 
 #. [about]
-#: data/core/about.cfg:2628
+#: data/core/about.cfg:2632
 msgid "Slovak Translation"
 msgstr "Traducción al eslovaco"
 
 #. [about]
-#: data/core/about.cfg:2657
+#: data/core/about.cfg:2661
 msgid "Slovenian Translation"
 msgstr "Traducción al esloveno"
 
 #. [about]
-#: data/core/about.cfg:2673
+#: data/core/about.cfg:2677
 msgid "Spanish Translation"
 msgstr "Traducción al español"
 
 #. [about]
-#: data/core/about.cfg:2757
+#: data/core/about.cfg:2761
 msgid "Swedish Translation"
 msgstr "Traducción al sueco"
 
 #. [about]
-#: data/core/about.cfg:2798
+#: data/core/about.cfg:2802
 msgid "Turkish Translation"
 msgstr "Traducción al turco"
 
 #. [about]
-#: data/core/about.cfg:2820
+#: data/core/about.cfg:2824
 msgid "Ukrainian Translation"
 msgstr "Traducción al ucraniano"
 
 #. [about]
-#: data/core/about.cfg:2833
+#: data/core/about.cfg:2837
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Traducción al valenciano (Catalán del sur)"
 
 #. [about]
-#: data/core/about.cfg:2846
+#: data/core/about.cfg:2850
 msgid "Vietnamese Translation"
 msgstr "Traducción al vietnamita"
 
 #. [about]
-#: data/core/about.cfg:2865
+#: data/core/about.cfg:2869
 msgid "RACV’s Translation"
 msgstr "Traducción al idioma de la RACV"
 
 #. [about]
-#: data/core/about.cfg:2872
+#: data/core/about.cfg:2876
 msgid "Bots"
 msgstr "Robots"
 
@@ -3289,8 +3289,8 @@ msgid "End Scenario"
 msgstr "Finalizar escenario"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [label]: id=label-hp
 #. [label]: id=selected-label-hp
+#. [label]: id=label-hp
 #: data/themes/default.cfg:214 data/themes/dfool.cfg:238
 #: data/themes/experimental.cfg:188 data/themes/widescreen.cfg:246
 #: data/themes/widescreen.cfg:266 src/menu_events.cpp:218 src/unit.cpp:2455
@@ -3299,8 +3299,8 @@ msgid "HP"
 msgstr "PV"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [label]: id=label-xp
 #. [label]: id=selected-label-xp
+#. [label]: id=label-xp
 #: data/themes/default.cfg:223 data/themes/dfool.cfg:248
 #: data/themes/experimental.cfg:197 data/themes/widescreen.cfg:255
 #: data/themes/widescreen.cfg:275 src/menu_events.cpp:220
@@ -3338,23 +3338,23 @@ msgstr "mantenimiento"
 msgid "income"
 msgstr "ingresos"
 
-#. [unit_level]: id=unit-level
 #. [selected_unit_level]: id=selected-unit-level
+#. [unit_level]: id=unit-level
 #: data/themes/default.cfg:431 data/themes/dfool.cfg:473
 #: data/themes/experimental.cfg:376 data/themes/widescreen.cfg:500
 #: data/themes/widescreen.cfg:626
 msgid "statuspanel^level"
 msgstr "nivel"
 
-#. [unit_moves]: id=unit-moves
 #. [selected_unit_moves]: id=selected-unit-moves
+#. [unit_moves]: id=unit-moves
 #: data/themes/default.cfg:461 data/themes/experimental.cfg:406
 #: data/themes/widescreen.cfg:530 data/themes/widescreen.cfg:656
 msgid "statuspanel^moves"
 msgstr "movimientos"
 
-#. [unit_defense]: id=unit-defense
 #. [selected_unit_defense]: id=selected-unit-defense
+#. [unit_defense]: id=unit-defense
 #: data/themes/default.cfg:470 data/themes/experimental.cfg:415
 #: data/themes/widescreen.cfg:539 data/themes/widescreen.cfg:665
 msgid "statuspanel^terrain def."
@@ -5895,24 +5895,24 @@ msgid_plural "multiplayer_starting_gold^Gold"
 msgstr[0] "Oro"
 msgstr[1] "Oro"
 
-#: src/network.cpp:109
+#: src/network.cpp:112
 msgid "invalid network handle"
 msgstr "identificador de red inválido"
 
-#: src/network.cpp:142 src/network_manager_ana.cpp:780
+#: src/network.cpp:145 src/network_manager_ana.cpp:780
 #: src/network_manager_ana.cpp:787
 msgid "Client disconnected"
 msgstr "Cliente desconectado"
 
-#: src/network.cpp:398 src/network.cpp:406
+#: src/network.cpp:401 src/network.cpp:409
 msgid "Could not connect to host."
 msgstr "No ha sido posible conectar con el equipo anfitrión."
 
-#: src/network.cpp:571
+#: src/network.cpp:574
 msgid "Could not add socket to socket set"
 msgstr "No se ha podido añadir una conexión al conjunto de conexiones"
 
-#: src/network.cpp:583
+#: src/network.cpp:586
 msgid "Could not send initial handshake"
 msgstr "No se pudo enviar el saludo inicial"
 
