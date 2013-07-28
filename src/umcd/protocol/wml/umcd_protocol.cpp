@@ -1,15 +1,15 @@
 /*
-   Copyright (C) 2013 by Pierre Talbot <ptalbot@mopong.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+	Copyright (C) 2013 by Pierre Talbot <ptalbot@mopong.net>
+	Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include <boost/lexical_cast.hpp>
@@ -31,8 +31,8 @@ umcd_protocol::umcd_protocol(const config& server_config)
 : server_config_(server_config)
 , action_factory_(boost::make_shared<action_factory_type>())
 {
-   register_request_info<request_license_action>("request_license");
-   register_request_info<request_umc_upload_action>("request_umc_upload");
+	register_request_info<request_license_action>("request_license");
+	register_request_info<request_umc_upload_action>("request_umc_upload");
 }
 
 umcd_protocol::umcd_protocol(const umcd_protocol& protocol)
@@ -43,128 +43,128 @@ umcd_protocol::umcd_protocol(const umcd_protocol& protocol)
 
 wml_reply& umcd_protocol::get_reply()
 {
-   return reply_;
+	return reply_;
 }
 
 config& umcd_protocol::get_metadata()
 {
-   return request_.get_metadata();
+	return request_.get_metadata();
 }
 
 void umcd_protocol::complete_request(const boost::system::error_code& error, std::size_t)
 {
-   FUNCTION_TRACER();
-   if(error)
-   {
-      UMCD_LOG_IP(info, client_connection_->get_socket()) << " -- unable to send data to the client (" << error.message() << "). Connection dropped.";
-      // TODO close socket.
-   }
+	FUNCTION_TRACER();
+	if(error)
+	{
+		UMCD_LOG_IP(info, client_connection_->get_socket()) << " -- unable to send data to the client (" << error.message() << "). Connection dropped.";
+		// TODO close socket.
+	}
 }
 
 void umcd_protocol::async_send_reply()
 {
-   FUNCTION_TRACER();
-   BOOST_ASSERT_MSG(client_connection_, "client_connection cannot be equal to null.");
+	FUNCTION_TRACER();
+	BOOST_ASSERT_MSG(client_connection_, "client_connection cannot be equal to null.");
 
-   boost::asio::async_write(client_connection_->get_socket()
-      , reply_.to_buffers()
-      , boost::bind(&umcd_protocol::complete_request, shared_from_this()
-         , boost::asio::placeholders::error
-         , boost::asio::placeholders::bytes_transferred)
-   );
+	boost::asio::async_write(client_connection_->get_socket()
+		, reply_.to_buffers()
+		, boost::bind(&umcd_protocol::complete_request, shared_from_this()
+			, boost::asio::placeholders::error
+			, boost::asio::placeholders::bytes_transferred)
+	);
 }
 
 void umcd_protocol::async_send_error(const boost::system::error_condition& error)
 {
-   reply_ = make_error_reply(error.message());
-   async_send_reply();
+	reply_ = make_error_reply(error.message());
+	async_send_reply();
 }
 
 void umcd_protocol::async_send_invalid_packet(const std::string &where, const std::exception& e)
 {
-   UMCD_LOG_IP(error, client_connection_->get_socket()) << " -- invalid request at " << where << " (" << e.what() << ")";
-   async_send_error(make_error_condition(invalid_packet));
+	UMCD_LOG_IP(error, client_connection_->get_socket()) << " -- invalid request at " << where << " (" << e.what() << ")";
+	async_send_error(make_error_condition(invalid_packet));
 }
 
 void umcd_protocol::async_send_invalid_packet(const std::string &where, const twml_exception& e)
 {
-   UMCD_LOG_IP(error, client_connection_->get_socket()) << " -- invalid request at " << where 
-                     << " (user message=" << e.user_message << " ; dev message=" << e.dev_message << ")";
-   async_send_error(make_error_condition(invalid_packet));
+	UMCD_LOG_IP(error, client_connection_->get_socket()) << " -- invalid request at " << where 
+										<< " (user message=" << e.user_message << " ; dev message=" << e.dev_message << ")";
+	async_send_error(make_error_condition(invalid_packet));
 }
 
 void umcd_protocol::read_request_body(const boost::system::error_code& error, std::size_t)
 {
-   FUNCTION_TRACER();
-   if(!error)
-   {
-      try
-      {
-         // NOTE: We encapsulate the boost::array into a string because it old lexical_cast does not support boost::array. Change this when it'll be supported.
-         std::string request_size_s = std::string(raw_request_size_.data(), raw_request_size_.size());
-         std::size_t request_size = boost::lexical_cast<std::size_t>(request_size_s);
-         UMCD_LOG_IP(debug, client_connection_->get_socket()) << " -- Request of size: " << request_size;
-         if(request_size > REQUEST_HEADER_MAX_SIZE)
-         {
-            async_send_error(make_error_condition(request_header_too_large));
-         }
-         else
-         {
-            request_body_.resize(request_size);
-            boost::asio::async_read(client_connection_->get_socket(), boost::asio::buffer(&request_body_[0], request_body_.size())
-            , boost::bind(&umcd_protocol::dispatch_request, shared_from_this()
-               , boost::asio::placeholders::error
-               , boost::asio::placeholders::bytes_transferred)
-            );
-         }
-      }
-      catch(const std::exception& e)
-      {
-         async_send_invalid_packet(BOOST_CURRENT_FUNCTION, e);
-      }
-   }
+	FUNCTION_TRACER();
+	if(!error)
+	{
+		try
+		{
+			// NOTE: We encapsulate the boost::array into a string because it old lexical_cast does not support boost::array. Change this when it'll be supported.
+			std::string request_size_s = std::string(raw_request_size_.data(), raw_request_size_.size());
+			std::size_t request_size = boost::lexical_cast<std::size_t>(request_size_s);
+			UMCD_LOG_IP(debug, client_connection_->get_socket()) << " -- Request of size: " << request_size;
+			if(request_size > REQUEST_HEADER_MAX_SIZE)
+			{
+				async_send_error(make_error_condition(request_header_too_large));
+			}
+			else
+			{
+				request_body_.resize(request_size);
+				boost::asio::async_read(client_connection_->get_socket(), boost::asio::buffer(&request_body_[0], request_body_.size())
+					, boost::bind(&umcd_protocol::dispatch_request, shared_from_this()
+					, boost::asio::placeholders::error
+					, boost::asio::placeholders::bytes_transferred)
+				);
+			}
+		}
+		catch(const std::exception& e)
+		{
+			async_send_invalid_packet(BOOST_CURRENT_FUNCTION, e);
+		}
+	}
 }
 
 void umcd_protocol::dispatch_request(const boost::system::error_code& err, std::size_t)
 {
-   FUNCTION_TRACER();
-   if(!err)
-   {
-      std::stringstream request_stream(request_body_);      
-      try
-      {
-         // Retrieve request name.
-         std::string request_name = peek_request_name(request_stream);
-         UMCD_LOG_IP(info, client_connection_->get_socket()) << " -- request: " << request_name;
-         info_ptr request_info = action_factory_->make_product(request_name);
-         UMCD_LOG_IP(info, client_connection_->get_socket()) << " -- request:\n" << request_body_;
+	FUNCTION_TRACER();
+	if(!err)
+	{
+		std::stringstream request_stream(request_body_);      
+		try
+		{
+			// Retrieve request name.
+			std::string request_name = peek_request_name(request_stream);
+			UMCD_LOG_IP(info, client_connection_->get_socket()) << " -- request: " << request_name;
+			info_ptr request_info = action_factory_->make_product(request_name);
+			UMCD_LOG_IP(info, client_connection_->get_socket()) << " -- request:\n" << request_body_;
 
-         request_ = wml_request();
-         // Read into config and validate metadata.
-         ::read(request_.get_metadata(), request_stream, request_info->validator().get());
-         UMCD_LOG_IP(debug, client_connection_->get_socket()) << " -- request validated.";
+			request_ = wml_request();
+			// Read into config and validate metadata.
+			::read(request_.get_metadata(), request_stream, request_info->validator().get());
+			UMCD_LOG_IP(debug, client_connection_->get_socket()) << " -- request validated.";
 
-         request_info->action()->execute(shared_from_this());
-      }
-      catch(const std::exception& e)
-      {
-         async_send_invalid_packet(BOOST_CURRENT_FUNCTION, e);
-      }
-      catch(const twml_exception& e)
-      {
-         async_send_invalid_packet(BOOST_CURRENT_FUNCTION, e);
-      }
-   }
+			request_info->action()->execute(shared_from_this());
+		}
+		catch(const std::exception& e)
+		{
+			async_send_invalid_packet(BOOST_CURRENT_FUNCTION, e);
+		}
+		catch(const twml_exception& e)
+		{
+			async_send_invalid_packet(BOOST_CURRENT_FUNCTION, e);
+		}
+	}
 }
 
 void umcd_protocol::handle_request(connection_ptr client)
 {
-   BOOST_ASSERT_MSG(client, "client cannot be equal to null.");
-   client_connection_ = client;
-   FUNCTION_TRACER(); // Because we trace with the IP, client_connection must be initialized first.
-   boost::asio::async_read(client_connection_->get_socket(), boost::asio::buffer(raw_request_size_)
-      , boost::bind(&umcd_protocol::read_request_body, shared_from_this()
-         , boost::asio::placeholders::error
-         , boost::asio::placeholders::bytes_transferred)
-   );
+	BOOST_ASSERT_MSG(client, "client cannot be equal to null.");
+	client_connection_ = client;
+	FUNCTION_TRACER(); // Because we trace with the IP, client_connection must be initialized first.
+	boost::asio::async_read(client_connection_->get_socket(), boost::asio::buffer(raw_request_size_)
+		, boost::bind(&umcd_protocol::read_request_body, shared_from_this()
+			, boost::asio::placeholders::error
+			, boost::asio::placeholders::bytes_transferred)
+	);
 }
