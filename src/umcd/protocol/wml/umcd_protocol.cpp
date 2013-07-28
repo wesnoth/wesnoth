@@ -14,6 +14,7 @@
 
 #include <boost/lexical_cast.hpp>
 #include <boost/current_function.hpp>
+#include <boost/assert.hpp>
 
 #include "umcd/protocol/wml/umcd_protocol.hpp"
 #include "umcd/actions/request_license_action.hpp"
@@ -155,6 +156,7 @@ void umcd_protocol::dispatch_request(const boost::system::error_code& err, std::
 
 void umcd_protocol::handle_request(connection_ptr client)
 {
+   BOOST_ASSERT_MSG(client, "cannot be equal to null.");
    client_connection = client;
    FUNCTION_TRACER(); // Because we trace with the IP, client_connection must be initialized first.
    boost::asio::async_read(client_connection->get_socket(), boost::asio::buffer(raw_request_size)

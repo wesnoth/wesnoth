@@ -79,6 +79,7 @@ public:
    // Precondition: request_body must be read.
    void dispatch_request(const boost::system::error_code& error, std::size_t bytes_transferred);
 
+   // Precondition: (bool)client == true
    void handle_request(connection_ptr client);
 };
 
