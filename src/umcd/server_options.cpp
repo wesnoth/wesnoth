@@ -14,6 +14,11 @@
 
 #include "umcd/server_options.hpp"
 
+namespace
+{
+  namespace po = boost::program_options;
+}
+
 const std::string server_options::DEFAULT_PORT = "12523";
 const int server_options::DEFAULT_THREADS = 0;
 

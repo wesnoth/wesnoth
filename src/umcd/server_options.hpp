@@ -21,20 +21,14 @@
 #include "config.hpp"
 #include <boost/program_options.hpp>
 
-namespace
-{    
-  namespace po = boost::program_options; 
-}
-
 class server_options
 {
   private:
-
     std::string header;
     std::string version;
-    po::options_description options_desc;
-    po::options_description config_file_options;
-    po::variables_map vm;
+    boost::program_options::options_description options_desc;
+    boost::program_options::options_description config_file_options;
+    boost::program_options::variables_map vm;
 
     std::string port;
     std::string wesnoth_directory;
