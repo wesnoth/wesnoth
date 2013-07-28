@@ -340,6 +340,11 @@ std::string get_screenshot_dir()
 	return get_dir(dir_path);
 }
 
+std::string get_umcd_protocol_schema_dir()
+{
+	return "data/umcd/protocol_schema";
+}
+
 std::string get_next_filename(const std::string& name, const std::string& extension)
 {
 	std::string next_filename;

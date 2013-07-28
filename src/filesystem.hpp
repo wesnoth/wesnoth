@@ -69,6 +69,9 @@ std::string get_intl_dir();
 std::string get_screenshot_dir();
 std::string get_addon_campaigns_dir();
 
+// The location of UMCD directories.
+std::string get_umcd_protocol_schema_dir();
+
 /**
  * Get the next free filename using "name + number (3 digits) + extension"
  * maximum 1000 files then start always giving 999
