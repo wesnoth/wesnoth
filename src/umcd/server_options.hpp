@@ -42,31 +42,31 @@ class server_options
     std::string config_file_name;
 
     void build_options_desc();
-    /*
-      \brief Merge command line argument and config file argument.
+    /**
+      @brief Merge command line argument and config file argument.
     */
     void merge_cfg();
 
   public:
-    /*
-      \brief Accept argument as describe with the "--help" option. 
+    /**
+      @brief Accept argument as describe with the "--help" option. 
              Merge arguments from the command line and the config file (umcd.cfg or file specify in argument).
              The command line arguments override the config file arguments.
-      \post Build a server_options object.
-      \throw If the command line argument are not recognized by the current pattern.
+      @post Build a server_options object.
+      @throw If the command line argument are not recognized by the current pattern.
     */
     server_options(int argc, char* argv[]);
 
-    /*
-      \post: If requested, help or version message is printed.
-      \returns: If the user asked to print help or version message, return true.
+    /**
+      @post: If requested, help or version message is printed.
+      @returns: If the user asked to print help or version message, return true.
                 Otherwise, return false.
     */
     bool print_info();
 
-    /*
-      \brief A config file is builded with the values available to us.
-      \returns: The config file. A value is readed in this priority order:
+    /**
+      @brief A config file is builded with the values available to us.
+      @returns: The config file. A value is readed in this priority order:
                 (1) Command line ;
                 (2) Configuration file ;
                 (3) Default value if any.
