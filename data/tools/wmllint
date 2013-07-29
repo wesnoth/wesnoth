@@ -1101,7 +1101,7 @@ def global_sanity_check(filename, lines):
                 ifdef_stack.append("!" + ifdef_stack[-1])
             continue
         if line.startswith("#endif"):
-            ifdef_stack = [None]
+            ifdef_stack.pop()
             continue
         if "[generator]" in lines[i]:
             in_generator = True
