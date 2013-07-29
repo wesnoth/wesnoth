@@ -387,7 +387,6 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	const int index) :
 	cfg_(cfg),
 	parent_(parent_engine),
-	llm_(NULL, NULL),
 	available_factions_(),
 	choosable_factions_(),
 	current_faction_(),
@@ -407,7 +406,10 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	ready_for_start_(false),
 	allow_player_(cfg["controller"] == "ai" && cfg["allow_player"].empty() ?
 		false : cfg["allow_player"].to_bool(true)),
-	allow_changes_(cfg["allow_changes"].to_bool(true))
+	allow_changes_(cfg["allow_changes"].to_bool(true)),
+	leaders_(),
+	genders_(),
+	gender_ids_()
 {
 	// Tweak the controllers.
 	if (cfg["controller"] == "human_ai" ||
@@ -568,22 +570,10 @@ config side_engine::new_config() const
 	res["allow_changes"] = !parent_.params_.saved_game && allow_changes_;
 
 	if (!parent_.params_.saved_game) {
-		if (leader_.empty()) {
-			res["type"] = llm_.get_leader();
-		} else {
-			res["type"] = leader_;
-		}
+		res["type"] = leader();
 
-		if (gender_.empty()) {
-			std::string dummy = llm_.get_gender();
-			if (!dummy.empty() && dummy != "null" && dummy != "?")
-				res["gender"] = dummy;
-		} else {
-			// If no genders could be resolved, let the unit engine use
-			// the default gender.
-			if (gender_ != "null") {
-				res["gender"] = gender_;
-			}
+		if (!gender_.empty() || gender_ != "null" || gender_ != "?") {
+			res["gender"] = gender_;
 		}
 
 		res["team_name"] = parent_.team_names_[team_];
@@ -639,39 +629,6 @@ config side_engine::new_config() const
 	return res;
 }
 
-void side_engine::import_network_user(const config& data, bool faction_enabled,
-	bool leader_enabled, bool gender_enabled)
-{
-	if (mp_controller_ == CNTR_RESERVED || parent_.params_.saved_game) {
-		ready_for_start_ = true;
-	}
-
-	player_id_ = data["name"].str();
-	mp_controller_ = CNTR_NETWORK;
-
-	if (!parent_.params_.saved_game && !choosable_factions_.empty()) {
-		if (faction_enabled) {
-			BOOST_FOREACH(const config* faction, choosable_factions_) {
-				if ((*faction)["id"] == data["faction"]) {
-					current_faction_ = faction;
-				}
-			}
-
-			update_llm_lists(selected_faction_index());
-		}
-		if (leader_enabled) {
-			llm_.set_leader(data["leader"]);
-			// FIXME: not optimal, but this hack is necessary to do
-			// after updating the leader selection.
-			// Otherwise, gender gets always forced to "male".
-			llm_.update_gender_list(llm_.get_leader());
-		}
-		if (gender_enabled) {
-			llm_.set_gender(data["gender"]);
-		}
-	}
-}
-
 bool side_engine::ready_for_start() const
 {
 	// Sides without players are always ready.
@@ -700,29 +657,6 @@ bool side_engine::available(const std::string& name) const
 	return allow_player_ &&
 		((mp_controller_ == CNTR_NETWORK && player_id_.empty()) ||
 		(mp_controller_ == CNTR_RESERVED && current_player_ == name));
-}
-
-void side_engine::reset(mp::controller controller, bool factions_enabled,
-	bool leaders_enabled, bool genders_enabled)
-{
-	player_id_.clear();
-	mp_controller_  = controller;
-
-	if ((controller == mp::CNTR_NETWORK) || (controller == mp::CNTR_RESERVED)) {
-		ready_for_start_ = false;
-	}
-
-	if (!parent_.params_.saved_game && !choosable_factions_.empty()) {
-		if (factions_enabled) {
-			current_faction_ = choosable_factions_[0];
-		}
-		if (leaders_enabled) {
-			llm_.update_leader_list(selected_faction_index());
-		}
-		if (genders_enabled) {
-			llm_.update_gender_list(llm_.get_leader());
-		}
-	}
 }
 
 void side_engine::resolve_random()
@@ -782,9 +716,9 @@ void side_engine::resolve_random()
 
 	bool solved_random_leader = false;
 
-	if (llm_.get_leader() == "random") {
+	if (leader() == "random") {
 		// Choose a random leader type, and force gender to be random.
-		llm_.set_gender("random");
+		gender_ = "random";
 		std::vector<std::string> types =
 			utils::split((*current_faction_)["random_leader"]);
 		if (!types.empty()) {
@@ -808,9 +742,9 @@ void side_engine::resolve_random()
 	}
 
 	// Resolve random genders "very much" like standard unit code.
-	if (llm_.get_gender() == "random" || solved_random_leader) {
+	if (gender() == "random" || solved_random_leader) {
 		const unit_type *ut =
-			unit_types.find(leader_.empty() ? llm_.get_leader() : leader_);
+			unit_types.find(leader());
 
 		if (ut) {
 			const std::vector<unit_race::GENDER> glist = ut->genders();
@@ -829,8 +763,8 @@ void side_engine::resolve_random()
 					gender_ = "null";
 			}
 		} else {
-			ERR_CF << "cannot obtain genders for invalid leader '" <<
-				(leader_.empty() ? llm_.get_leader() : leader_) << "'.\n";
+			ERR_CF << "cannot obtain genders for invalid leader '" << leader_
+				<< "'.\n";
 			gender_ = "null";
 		}
 	}
@@ -914,58 +848,27 @@ void side_engine::assign_sides_on_drop_target(const int drop_target) {
 	}
 }
 
-void side_engine::update_llm()
+std::string side_engine::leader() const
 {
-	llm_.set_side_list(choosable_factions_);
-	llm_.set_color(color_);
-}
-
-void side_engine::invalidate_llm_combos()
-{
-	llm_.set_leader_combo(NULL);
-	llm_.set_gender_combo(NULL);
-}
-
-void side_engine::init_llm_combos(gui::combo* combo_leader,
-	gui::combo* combo_gender)
-{
-	llm_.init_combos(combo_leader, combo_gender);
-}
-
-void side_engine::set_llm_combos(gui::combo* combo_leader,
-	gui::combo* combo_gender)
-{
-	llm_.set_leader_combo(combo_leader);
-
-	if (combo_gender != NULL) {
-		llm_.set_gender_combo(combo_gender);
+	if (parent_.params_.saved_game) {
+		return _("?");
 	}
+
+	if (leader_.empty()) {
+		return "random";
+	}
+
+	return leader_;
 }
 
-void side_engine::update_llm_lists(const int faction_index)
-{
-	update_llm_leader_list(faction_index);
-	update_llm_gender_list();
-}
 
-void side_engine::update_llm_leader_list(const int faction_index)
+std::string side_engine::gender() const
 {
-	llm_.update_leader_list(faction_index);
-}
+	if (parent_.params_.saved_game || genders_.empty()) {
+		return "null";
+	}
 
-void side_engine::update_llm_gender_list()
-{
-	llm_.update_gender_list(llm_.get_leader());
-}
-
-void side_engine::update_llm_leader_selection(const std::string& leader)
-{
-	llm_.set_leader(leader);
-}
-
-void side_engine::update_llm_gender_selection(const std::string& gender)
-{
-	llm_.set_gender(gender);
+	return gender_;
 }
 
 } // end namespace mp

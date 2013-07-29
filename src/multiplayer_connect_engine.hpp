@@ -17,7 +17,6 @@
 #include "commandline_options.hpp"
 #include "config.hpp"
 #include "gamestatus.hpp"
-#include "leader_list.hpp"
 #include "multiplayer_ui.hpp"
 
 namespace mp {
@@ -120,9 +119,6 @@ public:
 	// Sets a new config representing this side.
 	config new_config() const;
 
-	void import_network_user(const config& data, bool faction_enabled,
-		bool leader_enabled, bool gender_enabled);
-
 	// Returns true, if the player has chosen his/her leader and this side
 	// is ready for the game to start.
 	bool ready_for_start() const;
@@ -133,8 +129,6 @@ public:
 
 	void set_player_from_users_list(const std::string& player_id);
 
-	void reset(mp::controller controller, bool factions_enabled,
-		bool leaders_enabled, bool genders_enabled);
 	void resolve_random();
 
 	int selected_faction_index() const;
@@ -144,17 +138,6 @@ public:
 	void set_ai_algorithm_commandline(const std::string& algorithm_name);
 
 	void assign_sides_on_drop_target(const int drop_target);
-
-	// LLM management.
-	void update_llm();
-	void invalidate_llm_combos();
-	void init_llm_combos(gui::combo* combo_leader, gui::combo* combo_gender);
-	void set_llm_combos(gui::combo* combo_leader, gui::combo* combo_gender);
-	void update_llm_lists(const int faction_index);
-	void update_llm_leader_list(const int faction_index);
-	void update_llm_gender_list();
-	void update_llm_leader_selection(const std::string& leader);
-	void update_llm_gender_selection(const std::string& gender);
 
 
 	/* Setters & Getters */
@@ -182,9 +165,9 @@ public:
 	void set_player_id(const std::string& player_id) { player_id_ = player_id; }
 	const std::string& save_id() const { return save_id_; }
 	const std::string& current_player() const { return current_player_; }
-	const std::string& leader() const { return leader_; }
+	std::string leader() const;
 	void set_leader(const std::string& leader) { leader_ = leader; }
-	const std::string& gender() const { return gender_; }
+	std::string gender() const;
 	void set_gender(const std::string& gender) { gender_ = gender; }
 	const std::string& ai_algorithm() const { return ai_algorithm_; }
 	void set_ai_algorithm(const std::string& ai_algorithm)
@@ -192,6 +175,9 @@ public:
 	void set_ready_for_start(const bool ready_for_start)
 		{ ready_for_start_ = ready_for_start; }
 	bool allow_player() const { return allow_player_; }
+	std::vector<std::string>& leaders() { return leaders_; }
+	std::vector<std::string>& genders() { return genders_; }
+	std::vector<std::string>& gender_ids() { return gender_ids_; }
 
 private:
 	side_engine(const side_engine& engine);
@@ -200,8 +186,6 @@ private:
 	config cfg_;
 
 	connect_engine& parent_;
-
-	leader_list_manager llm_;
 
 	// All factions which could be played by a side (including Random).
 	std::vector<const config*> available_factions_;
@@ -228,6 +212,10 @@ private:
 	bool ready_for_start_;
 	bool allow_player_;
 	bool allow_changes_;
+
+	std::vector<std::string> leaders_;
+	std::vector<std::string> genders_;
+	std::vector<std::string> gender_ids_;
 };
 
 } // end namespace mp

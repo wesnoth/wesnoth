@@ -76,11 +76,6 @@ connect::side::side(connect& parent, side_engine_ptr engine) :
 {
 	DBG_MP << "initializing side" << std::endl;
 
-	if (!parent.params_.saved_game) {
-		engine_->init_llm_combos(&combo_leader_, &combo_gender_);
-	}
-	engine_->update_llm();
-
 	slider_gold_.set_min(20);
 	slider_gold_.set_max(800);
 	slider_gold_.set_increment(25);
@@ -106,6 +101,7 @@ connect::side::side(connect& parent, side_engine_ptr engine) :
 	init_ai_algorithm_combo();
 
 	// "Faction name" hack.
+	int faction_index = 0;
 	if (parent_->params_.saved_game) {
 		engine_->set_current_faction(engine_->choosable_factions()[0]);
 		std::vector<std::string> pseudo_factions;
@@ -177,7 +173,6 @@ connect::side::side(connect& parent, side_engine_ptr engine) :
 		if (!engine_->leader().empty()) {
 			combo_leader_.enable(false);
 			combo_gender_.enable(false);
-			engine_->invalidate_llm_combos();
 			std::vector<std::string> leader_name_pseudolist;
 			const unit_type *leader_name = unit_types.find(engine_->leader());
 			if (!leader_name) {
@@ -207,7 +202,6 @@ connect::side::side(connect& parent, side_engine_ptr engine) :
 
 		// Try to pick a faction for the sake of appearance
 		// and for filling in the blanks.
-		int faction_index = 0;
 		if (engine_->choosable_factions().size() > 1) {
 			faction_index = find_suitable_faction(engine_->choosable_factions(),
 				engine_->cfg());
@@ -220,8 +214,10 @@ connect::side::side(connect& parent, side_engine_ptr engine) :
 
 		engine_->set_current_faction(
 			engine_->choosable_factions()[faction_index]);
-		engine_->update_llm_lists(faction_index);
 	}
+
+	update_leader_list(faction_index);
+	update_gender_list(engine_->leader());
 
 	update_faction_combo();
 	update_ui();
@@ -249,15 +245,13 @@ connect::side::side(const side& a) :
 	label_income_(a.label_income_),
 	changed_(a.changed_)
 {
-	engine_->update_llm();
 	if (!parent_->params_.saved_game && engine_->leader().empty()) {
-		engine_->set_llm_combos(&combo_leader_, &combo_gender_);
-	} else {
-		engine_->invalidate_llm_combos();
+		set_leader_combo();
+		set_gender_combo();
 	}
 	// FIXME: this is an ugly hack to force updating the gender list when
 	// the side widget is initialized. Need an optimal way. -- shadowmaster
-	engine_->update_llm_gender_list();
+	update_gender_list(engine_->leader());
 }
 
 void connect::side::add_widgets_to_scrollpane(gui::scrollpane& pane, int pos)
@@ -335,15 +329,16 @@ void connect::side::process_event()
 
 	if (combo_color_.changed() && combo_color_.selected() >= 0) {
 		engine_->set_color(combo_color_.selected());
-		engine_->update_llm();
 		update_faction_combo();
-		engine_->set_llm_combos(&combo_leader_, &combo_gender_);
+		set_leader_combo();
+		set_gender_combo();
 		changed_ = true;
 	}
 	if (combo_faction_.changed() && combo_faction_.selected() >= 0) {
 		const int sel = combo_faction_.selected();
 		engine_->set_current_faction(engine_->choosable_factions()[sel]);
-		engine_->update_llm_lists(sel);
+		update_leader_list(sel);
+		update_gender_list(engine_->leader());
 		changed_ = true;
 	}
 	if (combo_ai_algorithm_.changed() && combo_ai_algorithm_.selected() >= 0) {
@@ -352,11 +347,13 @@ void connect::side::process_event()
 		changed_ = true;
 	}
 	if (combo_leader_.changed() && combo_leader_.selected() >= 0) {
-		engine_->update_llm_gender_list();
+		engine_->set_leader(engine_->leaders()[combo_leader_.selected()]);
+		update_gender_list(engine_->leader());
 		changed_ = true;
 	}
 	if (combo_gender_.changed() && combo_gender_.selected() >= 0) {
-		engine_->set_llm_combos(&combo_leader_, NULL);
+		engine_->set_gender(engine_->gender_ids()[combo_gender_.selected()]);
+		set_leader_combo();
 		changed_ = true;
 	}
 	if (combo_team_.changed() && combo_team_.selected() >= 0) {
@@ -507,6 +504,191 @@ void connect::side::update_ui()
 	label_income_.set_text(buf.str());
 }
 
+void connect::side::set_leader_combo()
+{
+	int selected = !parent_->params_.saved_game ? combo_leader_.selected() : 0;
+
+	if (!parent_->params_.saved_game) {
+		if (engine_->leaders().empty()) {
+			update_leader_list(0);
+		} else {
+			populate_leader_combo(selected);
+		}
+	}
+}
+
+void connect::side::set_gender_combo()
+{
+	if (!parent_->params_.saved_game) {
+		if (!engine_->leaders().empty()) {
+			update_gender_list(engine_->leader());
+		}
+	}
+}
+
+void connect::side::update_leader_list(int side_index)
+{
+	const config& side = *engine_->choosable_factions()[side_index];
+
+	engine_->leaders().clear();
+
+	if (side["random_faction"].to_bool() || side["id"] == "Custom") {
+		if (!parent_->params_.saved_game) {
+			std::vector<std::string> dummy;
+			dummy.push_back(utils::unicode_em_dash);
+			combo_leader_.enable(false);
+			combo_leader_.set_items(dummy);
+			combo_leader_.set_selected(0);
+		}
+		return;
+	} else {
+		if (!parent_->params_.saved_game) {
+			combo_leader_.enable(true);
+		}
+		if (!parent_->params_.saved_game) {
+			combo_gender_.enable(true);
+		}
+	}
+
+	if (!side["leader"].empty()) {
+		engine_->leaders() = utils::split(side["leader"]);
+	}
+
+	const std::string default_leader = side["type"];
+	const std::string random_leader = "random";
+	size_t default_index = 0;
+
+	BOOST_FOREACH(const std::string& leader, engine_->leaders()) {
+		if (leader == default_leader) {
+			break;
+		}
+		default_index++;
+	}
+
+	if (default_index == engine_->leaders().size()) {
+		engine_->leaders().push_back(default_leader);
+	}
+
+	if (default_leader != random_leader) {
+		engine_->leaders().push_back(random_leader);
+	}
+
+	populate_leader_combo(default_index);
+}
+
+void connect::side::update_gender_list(const std::string& leader)
+{
+	int gender_index = !parent_->params_.saved_game ? combo_gender_.selected() : 0;
+	engine_->genders().clear();
+	engine_->gender_ids().clear();
+	if (leader == "random" || leader == "-" || leader == "?") {
+		// Assume random/unknown leader/faction == unknown gender
+		engine_->gender_ids().push_back("null");
+		engine_->genders().push_back(utils::unicode_em_dash);
+		if (!parent_->params_.saved_game) {
+			combo_gender_.enable(false);
+			combo_gender_.set_items(engine_->genders());
+			combo_gender_.set_selected(0);
+		}
+		return;
+	}
+
+	const unit_type *utp = unit_types.find(leader);
+	if (utp) {
+		const unit_type &ut = *utp;
+		const std::vector<unit_race::GENDER> genders = ut.genders();
+		if ((genders.size() < 2) && (!parent_->params_.saved_game)) {
+			combo_gender_.enable(false);
+		} else {
+			engine_->gender_ids().push_back("random");
+			engine_->genders().push_back(IMAGE_PREFIX + random_enemy_picture +
+				COLUMN_SEPARATOR + _("gender^Random"));
+			if (!parent_->params_.saved_game) {
+				combo_gender_.enable(true);
+			}
+		}
+		BOOST_FOREACH(unit_race::GENDER gender, genders) {
+			const unit_type& utg = ut.get_gender_unit_type(gender);
+
+			// Make the internationalized titles for each gender,
+			// along with the WML ids.
+			if (gender == unit_race::FEMALE) {
+				engine_->gender_ids().push_back(unit_race::s_female);
+				engine_->genders().push_back(IMAGE_PREFIX + utg.image() +
+					get_RC_suffix(utg.flag_rgb()) +
+					COLUMN_SEPARATOR + _("Female ♀"));
+			} else {
+				engine_->gender_ids().push_back(unit_race::s_male);
+				engine_->genders().push_back(IMAGE_PREFIX + utg.image() +
+					get_RC_suffix(utg.flag_rgb()) +
+					COLUMN_SEPARATOR + _("Male ♂"));
+			}
+		}
+		if (!parent_->params_.saved_game) {
+			combo_gender_.set_items(engine_->genders());
+			assert(!engine_->genders().empty());
+			gender_index %= engine_->genders().size();
+			combo_gender_.set_selected(gender_index);
+		}
+	} else {
+		engine_->gender_ids().push_back("random");
+		engine_->genders().push_back(IMAGE_PREFIX + random_enemy_picture +
+			COLUMN_SEPARATOR + _("Random"));
+		if (!parent_->params_.saved_game) {
+			combo_gender_.enable(false);
+			combo_gender_.set_items(engine_->genders());
+			combo_gender_.set_selected(0);
+		}
+	}
+}
+
+void connect::side::populate_leader_combo(int selected_index)
+{
+	std::vector<std::string> leader_strings;
+	BOOST_FOREACH(const std::string& leader, engine_->leaders()) {
+		const unit_type *utp = unit_types.find(leader);
+		if (utp) {
+			std::string gender;
+			if (!parent_->params_.saved_game && !engine_->genders().empty() &&
+				size_t(combo_gender_.selected()) < engine_->genders().size()) {
+
+				gender = engine_->gender_ids()[combo_gender_.selected()];
+			}
+			const unit_type& ut = utp->get_gender_unit_type(gender);
+			leader_strings.push_back(IMAGE_PREFIX + ut.image() +
+				get_RC_suffix(ut.flag_rgb()) + COLUMN_SEPARATOR +
+				ut.type_name());
+		} else {
+			if (leader == "random") {
+				leader_strings.push_back(IMAGE_PREFIX + random_enemy_picture +
+					COLUMN_SEPARATOR + _("Random"));
+			} else {
+				leader_strings.push_back("?");
+			}
+		}
+	}
+
+	if (!parent_->params_.saved_game) {
+		combo_leader_.set_items(leader_strings);
+		combo_leader_.set_selected(selected_index);
+	}
+}
+
+#ifdef LOW_MEM
+std::string connect::side::get_RC_suffix(
+	const std::string& /*unit_color*/) const {
+
+	return "";
+}
+#else
+std::string connect::side::get_RC_suffix(
+	const std::string& unit_color) const {
+
+	return "~RC(" + unit_color + ">" +
+		lexical_cast<std::string>(engine_->color() + 1) + ")";
+}
+#endif
+
 void connect::side::update_user_list(const std::vector<std::string>& name_list) {
 	combo_controller_->set_items(name_list);
 	update_controller_ui();
@@ -514,16 +696,64 @@ void connect::side::update_user_list(const std::vector<std::string>& name_list) 
 
 void connect::side::import_network_user(const config& data)
 {
-	engine_->import_network_user(data, combo_faction_.enabled(),
-		combo_leader_.enabled(), combo_gender_.enabled());
+	if (engine_->mp_controller() == CNTR_RESERVED ||
+		parent_->params_.saved_game) {
+
+		engine_->set_ready_for_start(true);
+	}
+
+	engine_->set_player_id(data["name"]);
+	engine_->set_mp_controller(CNTR_NETWORK);
+
+	if (!parent_->params_.saved_game && !engine_->choosable_factions().empty()) {
+		if (combo_faction_.enabled()) {
+			BOOST_FOREACH(const config* faction,
+				engine_->choosable_factions()) {
+
+				if ((*faction)["id"] == data["faction"]) {
+					engine_->set_current_faction(faction);
+				}
+			}
+
+			update_leader_list(engine_->selected_faction_index());
+		}
+		if (combo_leader_.enabled()) {
+			engine_->set_leader(data["leader"]);
+			// FIXME: not optimal, but this hack is necessary to do
+			// after updating the leader selection.
+			// Otherwise, gender gets always forced to "male".
+			update_gender_list(engine_->leader());
+		}
+		if (combo_gender_.enabled()) {
+			engine_->set_gender(data["gender"]);
+		}
+	}
 
 	update_ui();
 }
 
 void connect::side::reset(mp::controller controller)
 {
-	engine_->reset(controller, combo_faction_.enabled(),
-		combo_leader_.enabled(), combo_gender_.enabled());
+	engine_->set_player_id("");
+	engine_->set_mp_controller(controller);
+
+	if (engine_->mp_controller() == mp::CNTR_NETWORK ||
+		engine_->mp_controller() == mp::CNTR_RESERVED) {
+
+		engine_->set_ready_for_start(false);
+	}
+
+	if (!parent_->params_.saved_game && !engine_->choosable_factions().empty()) {
+		if (combo_leader_.enabled()) {
+			engine_->set_current_faction(engine_->choosable_factions()[0]);
+		}
+		if (combo_leader_.enabled()) {
+			update_leader_list(engine_->selected_faction_index());
+		}
+		if (combo_gender_.enabled()) {
+			update_gender_list(engine_->leader());
+		}
+	}
 
 	update_ui();
 }

@@ -26,6 +26,8 @@
 #include "widgets/scrollpane.hpp"
 #include "widgets/slider.hpp"
 
+const std::string random_enemy_picture("units/random-dice.png");
+
 namespace ai {
 	struct description;
 }
@@ -74,6 +76,13 @@ public:
 		void update_faction_combo();
 		void update_controller_ui();
 		void update_ui();
+
+		void set_leader_combo();
+		void set_gender_combo();
+		void update_leader_list(int side_index);
+		void update_gender_list(const std::string& leader);
+		void populate_leader_combo(int selected_index);
+		std::string get_RC_suffix(const std::string& unit_color) const;
 
 		/**
 		 * The mp::connect widget owning this mp::connect::side.
