@@ -25,7 +25,6 @@ config& wml_request::get_metadata()
 	return metadata_; 
 }
 
-
 static void check_stream_state(std::istream& raw_data_stream, std::string error_msg)
 {
 	if(!raw_data_stream.good())

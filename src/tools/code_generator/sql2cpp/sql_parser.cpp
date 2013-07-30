@@ -14,16 +14,22 @@
 
 #include <boost/spirit/include/qi.hpp>
 #include <boost/spirit/include/lex_lexertl.hpp>
-#include <boost/spirit/include/phoenix_operator.hpp>
-#include <boost/spirit/include/phoenix_core.hpp>
-#include <boost/spirit/include/phoenix_object.hpp>
+#include <boost/spirit/include/phoenix.hpp>
+
+#include <boost/shared_ptr.hpp>
+#include <boost/make_shared.hpp>
+#include <boost/static_assert.hpp>
+
+#include "tools/code_generator/sql2cpp/sql_type.hpp"
 
 #include <iostream>
 #include <fstream>
 #include <string>
 
-using namespace boost::spirit;
-using boost::phoenix::val;
+namespace bs = boost::spirit;
+namespace lex = boost::spirit::lex;
+namespace qi = boost::spirit::qi;
+namespace phx = boost::phoenix;
 
 // Token definition base, defines all tokens for the base grammar below
 template <typename Lexer>
@@ -35,7 +41,7 @@ public:
 	lex::token_def<lex::omit> kw_not_null, kw_auto_increment, kw_unique, kw_default;
 
 	// Attributed tokens. (If you add a new type, don't forget to add it to the lex::lexertl::token definition too).
-	lex::token_def<unsigned int> signed_digit;
+	lex::token_def<std::size_t> signed_digit;
 	lex::token_def<std::string> identifier;
 
 	sql_tokens()
@@ -76,6 +82,45 @@ public:
 	}
 };
 
+template <class synthesized, class inherited = void>
+struct attribute
+{
+	typedef synthesized s_type;
+	typedef inherited i_type;
+	typedef s_type type(i_type);
+};
+
+template <class synthesized>
+struct attribute <synthesized, void>
+{
+	typedef synthesized s_type;
+	typedef s_type type();
+};
+
+template <class inherited>
+struct attribute <void, inherited>
+{
+	typedef inherited i_type;
+	typedef void type(i_type);
+};
+
+class semantic_actions
+{
+public:
+	typedef attribute<boost::shared_ptr<sql::type::base_type> > data_attribute;
+
+	template<class T>
+	void make_data_type(typename data_attribute::s_type& res) const
+	{
+		res = boost::make_shared<T>();
+	}
+
+	void make_varchar_type(typename data_attribute::s_type& res, std::size_t length) const
+	{
+		res = boost::make_shared<sql::type::varchar>(length);
+	}
+};
+
 // Grammar definition, define a little part of the SQL language.
 template <typename Iterator, typename Lexer>
 struct sql_grammar 
@@ -85,8 +130,6 @@ struct sql_grammar
 	sql_grammar(TokenDef const& tok)
 		: sql_grammar::base_type(program, "sql")
 	{
-		using boost::spirit::_val;
-
 		program 
 			=  +statement
 			;
@@ -123,11 +166,11 @@ struct sql_grammar
 			;
 
 		data_type
-			=   tok.type_smallint
-			|   tok.type_int
-			|   (tok.type_varchar > '(' > tok.signed_digit > ')')
-			|   tok.type_text
-			|   tok.type_date
+			=   tok.type_smallint		[phx::bind(&semantic_actions::make_data_type<sql::type::smallint>, &sa_, qi::_val)]
+			|   tok.type_int 				[phx::bind(&semantic_actions::make_data_type<sql::type::integer>, &sa_, qi::_val)]
+			|   (tok.type_varchar > '(' > tok.signed_digit > ')') [phx::bind(&semantic_actions::make_varchar_type, &sa_, qi::_val, qi::_1)]
+			|   tok.type_text 			[phx::bind(&semantic_actions::make_data_type<sql::type::text>, &sa_, qi::_val)]
+			|   tok.type_date			  [phx::bind(&semantic_actions::make_data_type<sql::type::date>, &sa_, qi::_val)]
 			;
 
 		program.name("program");
@@ -145,20 +188,29 @@ struct sql_grammar
 		(
 			program,
 			std::cout
-				<< boost::phoenix::val("Error! Expecting ")
-				<< _4                               // what failed?
-				<< boost::phoenix::val(" here: \"")
-				<< boost::phoenix::construct<std::string>(_3, _2)   // iterators to error-pos, end
-				<< boost::phoenix::val("\"")
+				<< phx::val("Error! Expecting ")
+				<< bs::_4                               // what failed?
+				<< phx::val(" here: \"")
+				<< phx::construct<std::string>(bs::_3, bs::_2)   // iterators to error-pos, end
+				<< phx::val("\"")
 				<< std::endl
 		);
 	}
 
 	typedef qi::in_state_skipper<Lexer> skipper_type;
+	template <class Attribute>
+	struct rule
+	{
+		typedef qi::rule<Iterator, skipper_type, Attribute> type;
+	};
+	typedef qi::rule<Iterator, skipper_type> simple_rule;
 
-	qi::rule<Iterator, skipper_type> program, statement;
-	qi::rule<Iterator, skipper_type> create_statement, create_table, create_table_definition;
-	qi::rule<Iterator, skipper_type> column_definition, data_type, default_value, constraint_definition;
+	semantic_actions sa_;
+
+	simple_rule program, statement;
+	simple_rule create_statement, create_table, create_table_definition;
+	simple_rule column_definition, default_value, constraint_definition;
+	typename rule<typename semantic_actions::data_attribute::type>::type data_type;
 };
 
 
