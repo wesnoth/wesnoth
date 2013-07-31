@@ -11,7 +11,7 @@ sound_extensions = ("ogg", "wav")
 vc_directories = (".git", ".svn")
 l10n_directories = ("l10n",)
 resource_extensions = map_extensions + image_extensions + sound_extensions
-image_reference = r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.-]*\.(png|jpg)(?=(~.*)?)"
+image_reference = r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.-]*\.(png|jpe?g)(?=(~.*)?)"
 
 def is_root(dirname):
     "Is the specified path the filesystem root?"
