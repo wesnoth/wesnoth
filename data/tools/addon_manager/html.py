@@ -14,7 +14,7 @@ def output(path, url, data):
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">""")
-    w("<title>Add-ons for Wesnoth %s</title>" % path)
+    w("<title>Add-ons for Wesnoth %s</title>" % os.path.basename(path))
     w("""\
 <link rel=stylesheet href="style.css" type="text/css">
 <script type="text/javascript" src="jquery.js"></script>
