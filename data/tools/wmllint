@@ -1035,20 +1035,21 @@ def global_sanity_check(filename, lines):
     recruitment_pattern = {}
     ifdef_stack = [None]
     for i in range(len(lines)):
-        if lines[i].startswith("#ifdef") or lines[i].startswith("#ifhave") or lines[i].startswith("#ifver"):
-            ifdef_stack.append(lines[i].strip().split()[1])
+    	line = lines[i].strip()
+        if line.startswith("#ifdef") or line.startswith("#ifhave") or line.startswith("#ifver"):
+            ifdef_stack.append(line.split()[1])
             continue
-        if lines[i].startswith("#ifndef") or lines[i].startswith("#ifnhave") or lines[i].startswith("#ifnver"):
-            ifdef_stack.append("!" + lines[i].strip().split()[1])
+        if line.startswith("#ifndef") or line.startswith("#ifnhave") or line.startswith("#ifnver"):
+            ifdef_stack.append("!" + line.split()[1])
             continue
-        if lines[i].startswith("#else"):
+        if line.startswith("#else"):
             if ifdef_stack[-1].startswith("!"):
                 ifdef_stack.append(ifdef_stack[-1][1:])
             else:
                 ifdef_stack.append("!" + ifdef_stack[-1])
             continue
-        if lines[i].startswith("#endif"):
-            ifdef_stack.pop()
+        if line.startswith("#endif"):
+            ifdef_stack = [None]
             continue
         if "[generator]" in lines[i]:
             in_generator = True
