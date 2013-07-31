@@ -2438,7 +2438,27 @@ if __name__ == '__main__':
                         sys.stderr.write('wmllint: resolving address as: %s\n' % new.strip())
             if ugly:
                 print >>sys.stderr, """
-    WARNING!! Your system will misinterpret a backslash followed by a quote (\\"), or two quotes (""). Hit the up arrow key, edit your command, and press Enter.
+    WARNING!! A backslash followed by a quote (\\"), or two quotes (""), is misinterpreted by your system to mean you want a literal quote character, not a path encloser:
+
+    %s
+
+    After exiting this message: hit the up arrow key, edit your command, and press Enter.
+""" % re.sub(r'"', '-->>"<<--', arg)
+
+                moreugly = raw_input('Press "H" if you need more help, or Enter to exit: ')
+                if moreugly.startswith(('h', 'H')):
+                    print >>sys.stderr, """
+        Explanation:
+
+Windows' use of the backslash as a directory separator is clashing with the use of the backslash as an escape. As an escape, the backslash tells your system that you want a normally special character to be its literal self (or sometimes, that you want a normally ordinary character to have a special meaning). Your system interprets '\\"' as an escape for a literal quote character. Two quotes together are also interpreted as a literal quote.
+
+'"Campaign\\"' is interpreted as 'Campaign"' instead of 'Campaign\\'.
+'"My Folder\\"Campaign' is interpreted as 'My Folder"Campaign' (not 'My Folder\Campaign').
+'"My Folder\Campaign\\" "My Folder\Another_Campaign"' is interpreted as 'My Folder\Campaign" My' and 'Folder\Another_Campaign'.
+
+In your case, your system interprets your arguments as:
+
+    %s
 
         Solutions:
 
@@ -2460,18 +2480,13 @@ if __name__ == '__main__':
 (6) You can move the affected quote
 (  M"y Folder\\"Campaign -> M"y Fold"er\Campaign -- but NOT Fil"es and Folders\My Folder\\"Campaign -> Fil"es and Folders\M"y Folder\Campaign  )
 
-        Explanation:
+        Reminder:
 
-Windows' use of the backslash as a directory separator is clashing with the use of the backslash as an escape. Your system interprets '\\"' as an escape for a literal quote character. Two quotes together are also interpreted as a literal quote.
-
-'"Campaign\\"' is interpreted as 'Campaign"' instead of 'Campaign\\'.
-'"My Folder\\"Campaign' is interpreted as 'My Folder"Campaign' (not 'My Folder\Campaign').
-'"My Folder\Campaign\\" "My Folder\\Another_Campaign"' is interpreted as 'My Folder\Campaign" My' and 'Folder\\Another_Campaign'.
-
-In your case, your system interprets your arguments as:
-
-    %s""" % arguments
-                sys.exit(1)
+(a) Hit the up arrow key. The up and down arrows move through your command history; one press of the up arrow will take you to your last command.
+(b) Edit your command. Use any of the solutions described above.
+(c) Press Enter
+""" % repr(arguments)[1:-1]
+                sys.exit(2)
             if wildcard:
                 for arg in arguments:
                     for wild in glob(arg):
