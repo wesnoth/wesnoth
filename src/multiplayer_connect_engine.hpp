@@ -131,7 +131,12 @@ public:
 
 	void resolve_random();
 
+	// Factions, leaders & genders.
+	void update_choosable_leaders();
+	void update_choosable_genders();
 	int selected_faction_index() const;
+	int selected_leader_index() const;
+	int selected_gender_index() const;
 
 	void set_faction_commandline(const std::string& faction_name);
 	void set_controller_commandline(const std::string& controller_name);
@@ -144,10 +149,17 @@ public:
 
 	const std::vector<const config*>& choosable_factions()
 		{ return choosable_factions_; }
+	const std::vector<std::string>& choosable_leaders()
+		{ return choosable_leaders_; }
+	const std::vector<std::string>& choosable_genders()
+		{ return choosable_genders_; }
 	const config& cfg() const { return cfg_; }
 	const config* current_faction() const { return current_faction_; }
-	void set_current_faction(const config* current_faction)
-		{ current_faction_ = current_faction; }
+	void set_current_faction(const config* current_faction);
+	const std::string& current_leader() const { return current_leader_; }
+	void set_current_leader(const std::string& current_leader);
+	const std::string& current_gender() const { return current_gender_; }
+	void set_current_gender(const std::string& current_gender);
 	controller mp_controller() const { return mp_controller_; }
 	void set_mp_controller(controller mp_controller)
 		{ mp_controller_ = mp_controller; }
@@ -165,23 +177,18 @@ public:
 	void set_player_id(const std::string& player_id) { player_id_ = player_id; }
 	const std::string& save_id() const { return save_id_; }
 	const std::string& current_player() const { return current_player_; }
-	std::string leader() const;
-	void set_leader(const std::string& leader) { leader_ = leader; }
-	std::string gender() const;
-	void set_gender(const std::string& gender) { gender_ = gender; }
 	const std::string& ai_algorithm() const { return ai_algorithm_; }
 	void set_ai_algorithm(const std::string& ai_algorithm)
 		{ai_algorithm_ = ai_algorithm; }
 	void set_ready_for_start(const bool ready_for_start)
 		{ ready_for_start_ = ready_for_start; }
 	bool allow_player() const { return allow_player_; }
-	std::vector<std::string>& leaders() { return leaders_; }
-	std::vector<std::string>& genders() { return genders_; }
-	std::vector<std::string>& gender_ids() { return gender_ids_; }
 
 private:
 	side_engine(const side_engine& engine);
 	void operator=(const connect_engine&);
+
+	void append_leaders_from_faction(const config* faction);
 
 	config cfg_;
 
@@ -189,10 +196,15 @@ private:
 
 	// All factions which could be played by a side (including Random).
 	std::vector<const config*> available_factions_;
-	// All factions which a side can choose.
+
 	std::vector<const config*> choosable_factions_;
+	std::vector<std::string> choosable_leaders_;
+	std::vector<std::string> choosable_genders_;
 
 	const config* current_faction_;
+	std::string current_leader_;
+	std::string current_gender_;
+
 	controller mp_controller_;
 
 	// Configurable variables.
@@ -205,17 +217,11 @@ private:
 	std::string player_id_;
 	std::string save_id_;
 	std::string current_player_;
-	std::string leader_;
-	std::string gender_;
 	std::string ai_algorithm_;
 
 	bool ready_for_start_;
 	bool allow_player_;
 	bool allow_changes_;
-
-	std::vector<std::string> leaders_;
-	std::vector<std::string> genders_;
-	std::vector<std::string> gender_ids_;
 };
 
 } // end namespace mp

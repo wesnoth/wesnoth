@@ -389,7 +389,11 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	parent_(parent_engine),
 	available_factions_(),
 	choosable_factions_(),
-	current_faction_(),
+	choosable_leaders_(),
+	choosable_genders_(),
+	current_faction_(NULL),
+	current_leader_("null"),
+	current_gender_("null"),
 	mp_controller_(CNTR_NETWORK),
 	index_(index),
 	team_(0),
@@ -400,16 +404,11 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	player_id_(cfg["player_id"]),
 	save_id_(cfg["save_id"]),
 	current_player_(cfg["current_player"]),
-	leader_(),
-	gender_(),
 	ai_algorithm_(),
 	ready_for_start_(false),
 	allow_player_(cfg["controller"] == "ai" && cfg["allow_player"].empty() ?
 		false : cfg["allow_player"].to_bool(true)),
-	allow_changes_(cfg["allow_changes"].to_bool(true)),
-	leaders_(),
-	genders_(),
-	gender_ids_()
+	allow_changes_(cfg["allow_changes"].to_bool(true))
 {
 	// Tweak the controllers.
 	if (cfg["controller"] == "human_ai" ||
@@ -444,16 +443,13 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 		}
 	}
 
-	// Set faction lock for custom recruit list.
 	if (!cfg["recruit"].empty() && parent_.params_.use_map_settings) {
+		// Set faction lock for custom recruit list.
 		cfg_["faction"] = "Custom";
+	} else if (parent_.params_.saved_game) {
+		// Set faction lock on previous faction.
+		cfg_["faction_from_recruit"] = true;
 	}
-
-	// Initialize faction lists.
-	available_factions_ = init_available_factions(parent_.era_factions(), cfg_);
-	choosable_factions_ = init_choosable_factions(available_factions_, cfg_,
-		parent_.params_.use_map_settings);
-	current_faction_ = choosable_factions_[0];
 
 	// Initialize team and color.
 	std::vector<std::string>::const_iterator itor =
@@ -469,10 +465,20 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 		color_ = game_config::color_info(cfg["color"]).index() - 1;
 	}
 
+	// Initialize faction lists.
+	available_factions_ = init_available_factions(parent_.era_factions(), cfg_);
+	choosable_factions_ = init_choosable_factions(available_factions_, cfg_,
+		parent_.params_.use_map_settings);
+	current_faction_ = choosable_factions_[0];
+
 	// Initialize ai algorithm.
 	if (const config &ai = cfg.child("ai")) {
 		ai_algorithm_ = ai["ai_algorithm"].str();
 	}
+
+	// Initialize leader and gender lists.
+	update_choosable_leaders();
+	update_choosable_genders();
 }
 
 side_engine::~side_engine()
@@ -570,11 +576,9 @@ config side_engine::new_config() const
 	res["allow_changes"] = !parent_.params_.saved_game && allow_changes_;
 
 	if (!parent_.params_.saved_game) {
-		res["type"] = leader();
-
-		if (!gender_.empty() || gender_ != "null" || gender_ != "?") {
-			res["gender"] = gender_;
-		}
+		res["type"] = (current_leader_ != "null") ? current_leader_ : "random";
+		res["gender"] = (current_gender_ != "null") ? current_gender_ :
+			"random";
 
 		res["team_name"] = parent_.team_names_[team_];
 		res["user_team_name"] = parent_.user_team_names_[team_];
@@ -666,6 +670,9 @@ void side_engine::resolve_random()
 	}
 
 	if ((*current_faction_)["random_faction"].to_bool()) {
+		// Choose a random faction, and force leader to be random.
+		current_leader_ = "random";
+
 		std::vector<std::string> faction_choices, faction_excepts;
 
 		faction_choices = utils::split((*current_faction_)["choices"]);
@@ -716,20 +723,20 @@ void side_engine::resolve_random()
 
 	bool solved_random_leader = false;
 
-	if (leader() == "random") {
+	if (current_leader_ == "random") {
 		// Choose a random leader type, and force gender to be random.
-		gender_ = "random";
+		current_gender_ = "random";
 		std::vector<std::string> types =
 			utils::split((*current_faction_)["random_leader"]);
 		if (!types.empty()) {
 			const int lchoice = rand() % types.size();
-			leader_ = types[lchoice];
+			current_leader_ = types[lchoice];
 		} else {
 			// If 'random_leader' doesn't exist, we use 'leader'.
 			types = utils::split((*current_faction_)["leader"]);
 			if (!types.empty()) {
 				const int lchoice = rand() % types.size();
-				leader_ = types[lchoice];
+				current_leader_ = types[lchoice];
 			} else {
 				utils::string_map i18n_symbols;
 				i18n_symbols["faction"] = (*current_faction_)["name"];
@@ -742,9 +749,9 @@ void side_engine::resolve_random()
 	}
 
 	// Resolve random genders "very much" like standard unit code.
-	if (gender() == "random" || solved_random_leader) {
+	if (current_gender_ == "random" || solved_random_leader) {
 		const unit_type *ut =
-			unit_types.find(leader());
+			unit_types.find(current_leader_);
 
 		if (ut) {
 			const std::vector<unit_race::GENDER> glist = ut->genders();
@@ -754,19 +761,129 @@ void side_engine::resolve_random()
 			unit_race::GENDER sgender = glist[gchoice];
 			switch (sgender) {
 				case unit_race::FEMALE:
-					gender_ = unit_race::s_female;
+					current_gender_ = unit_race::s_female;
 					break;
 				case unit_race::MALE:
-					gender_ = unit_race::s_male;
+					current_gender_ = unit_race::s_male;
 					break;
 				default:
-					gender_ = "null";
+					current_gender_ = "null";
 			}
 		} else {
-			ERR_CF << "cannot obtain genders for invalid leader '" << leader_
-				<< "'.\n";
-			gender_ = "null";
+			ERR_CF << "cannot obtain genders for invalid leader '" <<
+				current_leader_ << "'.\n";
+			current_gender_ = "null";
 		}
+	}
+}
+
+void side_engine::update_choosable_leaders()
+{
+	choosable_leaders_.clear();
+
+	if (parent_.params_.saved_game) {
+		// Leader should be determined from savegame data.
+		// TODO: find a proper way to determine
+		// a leader from a savegame.
+		std::string leader;
+		BOOST_FOREACH(const config &side_unit, cfg_.child_range("unit")) {
+			if (side_unit["canrecruit"].to_bool()) {
+				leader = side_unit["type"].str();
+				break;
+			}
+		}
+		if (!leader.empty()) {
+			const unit_type *unit = unit_types.find(leader);
+			if (unit) {
+				choosable_leaders_.push_back(leader);
+			}
+		}
+	} else {
+		if (parent_.params_.use_map_settings &&
+			cfg_.has_attribute("type")) {
+
+			// Leader was explicitly assigned.
+			const unit_type *unit = unit_types.find(cfg_["type"]);
+			if (unit) {
+				choosable_leaders_.push_back(cfg_["type"]);
+			}
+		} else if ((*current_faction_)["id"] == "Custom") {
+			// Allow user to choose a leader from any faction.
+			choosable_leaders_.push_back("random");
+
+			BOOST_FOREACH(const config* faction, available_factions_) {
+				if ((*faction)["id"] != "Random") {
+					append_leaders_from_faction(faction);
+				}
+			}
+		} else if ((*current_faction_)["id"] != "Random") {
+			// Faction leader list consists of "random" + "leader=".
+			choosable_leaders_.push_back("random");
+
+			append_leaders_from_faction(current_faction_);
+		}
+	}
+
+	// If none of the possible leaders could be determined,
+	// use "null" as an indicator for empty leaders list.
+	if (choosable_leaders_.empty()) {
+		choosable_leaders_.push_back("null");
+	}
+}
+
+void side_engine::update_choosable_genders()
+{
+	choosable_genders_.clear();
+
+	if (parent_.params_.saved_game) {
+		std::string gender;
+		BOOST_FOREACH(const config &side_unit, cfg_.child_range("unit")) {
+			if (current_leader_ == side_unit["type"] &&
+				side_unit["canrecruit"].to_bool()) {
+
+				gender = side_unit["gender"].str();
+				break;
+			}
+		}
+		if (!gender.empty()) {
+			choosable_genders_.push_back(gender);
+		}
+	} else {
+		const unit_type* unit = unit_types.find(current_leader_);
+		if (unit) {
+			if (parent_.params_.use_map_settings &&
+				cfg_.has_attribute("type") &&
+				cfg_.has_attribute("gender")) {
+
+				// Gender was explicitly assigned.
+				const unit_type *unit = unit_types.find(current_leader_);
+				if (unit) {
+					BOOST_FOREACH(unit_race::GENDER gender, unit->genders()) {
+						if (cfg_["gender"] == gender) {
+							choosable_genders_.push_back(cfg_["gender"]);
+						}
+					}
+				}
+			} else {
+				if (unit->genders().size() > 1) {
+					choosable_genders_.push_back("random");
+				}
+
+				BOOST_FOREACH(unit_race::GENDER gender, unit->genders()) {
+					if (gender == unit_race::FEMALE) {
+						choosable_genders_.push_back(unit_race::s_female);
+					} else {
+						choosable_genders_.push_back(unit_race::s_male);
+					}
+				}
+			}
+		}
+	}
+
+	// If none of the possible genders could be determined,
+	// use "null" as an indicator for empty genders list.
+	if (choosable_genders_.empty()) {
+		choosable_genders_.push_back("null");
 	}
 }
 
@@ -775,6 +892,34 @@ int side_engine::selected_faction_index() const
 	int index = 0;
 	BOOST_FOREACH(const config* faction, choosable_factions_) {
 		if ((*faction)["id"] == (*current_faction_)["id"]) {
+			return index;
+		}
+
+		index++;
+	}
+
+	return 0;
+}
+
+int side_engine::selected_leader_index() const
+{
+	int index = 0;
+	BOOST_FOREACH(const std::string& leader, choosable_leaders_) {
+		if (current_leader_ == leader) {
+			return index;
+		}
+
+		index++;
+	}
+
+	return 0;
+}
+
+int side_engine::selected_gender_index() const
+{
+	int index = 0;
+	BOOST_FOREACH(const std::string& gender, choosable_genders_) {
+		if (current_gender_ == gender) {
 			return index;
 		}
 
@@ -848,27 +993,33 @@ void side_engine::assign_sides_on_drop_target(const int drop_target) {
 	}
 }
 
-std::string side_engine::leader() const
+void side_engine::set_current_faction(const config* current_faction)
 {
-	if (parent_.params_.saved_game) {
-		return _("?");
-	}
+	current_faction_ = current_faction;
 
-	if (leader_.empty()) {
-		return "random";
-	}
-
-	return leader_;
+	update_choosable_leaders();
+	set_current_leader(choosable_leaders_[0]);
 }
 
-
-std::string side_engine::gender() const
+void side_engine::set_current_leader(const std::string& current_leader)
 {
-	if (parent_.params_.saved_game || genders_.empty()) {
-		return "null";
-	}
+	current_leader_ = current_leader;
 
-	return gender_;
+	update_choosable_genders();
+	set_current_gender(choosable_genders_[0]);
+}
+
+void side_engine::set_current_gender(const std::string& current_gender)
+{
+	current_gender_ = current_gender;
+}
+
+void side_engine::append_leaders_from_faction(const config* faction)
+{
+	const std::vector<std::string>& leaders =
+		utils::split((*faction)["leader"]);
+	choosable_leaders_.insert(choosable_leaders_.end(), leaders.begin(),
+		leaders.end());
 }
 
 } // end namespace mp
