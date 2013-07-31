@@ -12,14 +12,13 @@
 	See the COPYING file for more details.
 */
 #include "umcd/wml_reply.hpp"
-#include "umcd/protocol/wml/umcd_protocol.hpp"
-#include "serialization/parser.hpp"
+#include <boost/lexical_cast.hpp>
 
 wml_reply::wml_reply(){}
 
-wml_reply::wml_reply(const config& metadata)
+wml_reply::wml_reply(const config& metadata, std::size_t header_length)
 : metadata_(metadata.to_string())
-, size_header_(make_size_header(this->metadata_.size()))
+, size_header_(make_size_header(this->metadata_.size(), header_length))
 {
 }
 
@@ -31,10 +30,10 @@ std::vector<boost::asio::const_buffer> wml_reply::to_buffers() const
 	return buffers;
 }
 
-std::string make_size_header(std::size_t num_bytes)
+std::string make_size_header(std::size_t num_bytes, std::size_t header_length)
 {
 	std::string value = boost::lexical_cast<std::string>(num_bytes);
-	int missing_zero = umcd_protocol::REQUEST_HEADER_SIZE_FIELD_LENGTH - value.size();
+	int missing_zero = header_length - value.size();
 	std::string res;
 	for(int i=0; i < missing_zero; ++i)
 		res.push_back('0');

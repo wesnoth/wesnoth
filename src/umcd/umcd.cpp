@@ -39,7 +39,8 @@ int main(int argc, char *argv[])
 			UMCD_LOG(info) << "Configuration requested:\n" << cfg;
 			// Many classes are tightly coupled with the game path, and in particular with this global variable, so we need to set it.
 			game_config::path = cfg["wesnoth_dir"].str();
-			boost::shared_ptr<umcd_protocol> protocol = boost::make_shared<umcd_protocol>(cfg);
+			server_info serverinfo(cfg);
+			boost::shared_ptr<umcd_protocol> protocol = boost::make_shared<umcd_protocol>(serverinfo);
 			server_mt<umcd_protocol> addon_server(cfg, protocol);
 			addon_server.run();
 		}

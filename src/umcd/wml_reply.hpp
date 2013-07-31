@@ -24,7 +24,7 @@ class wml_reply
 {
 public:
 	wml_reply();
-	wml_reply(const config& metadata);
+	wml_reply(const config& metadata, std::size_t header_length);
 	std::vector<boost::asio::const_buffer> to_buffers() const;
 
 private:
@@ -32,6 +32,6 @@ private:
 	std::string size_header_;
 };
 
-std::string make_size_header(size_t num_bytes);
+std::string make_size_header(size_t num_bytes, std::size_t header_length);
 
 #endif // UMCD_WML_REPLY_HPP

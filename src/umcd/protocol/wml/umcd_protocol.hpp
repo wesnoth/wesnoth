@@ -20,17 +20,18 @@
 	 
 #include "wml_exception.hpp"
 
-#include "umcd/actions/basic_umcd_action.hpp"
+#include "umcd/server_info.hpp"
 #include "umcd/wml_request.hpp"
 #include "umcd/server/connection.hpp"
 #include "umcd/umcd_logger.hpp"
-#include "umcd/server/generic_factory.hpp"
 #include "umcd/wml_reply.hpp"
 #include "umcd/request_info.hpp"
 
 class wml_request;
 
-class umcd_protocol : public boost::enable_shared_from_this<umcd_protocol>
+class umcd_protocol : 
+	public boost::enable_shared_from_this<umcd_protocol>
+	//,private boost::noncopyable
 {
 public:
 	static const std::size_t REQUEST_HEADER_MAX_SIZE = 8192;
@@ -39,20 +40,12 @@ public:
 private:
 	typedef basic_umcd_action action_type;
 	typedef boost::shared_ptr<request_info> info_ptr;
-	typedef schema_validation::schema_validator validator_type;
-	typedef generic_factory<request_info> action_factory_type;
 	typedef connection<umcd_protocol> connection_type;
 	typedef boost::shared_ptr<connection_type> connection_ptr;
 
-	template <class Action>
-	void register_request_info(const std::string& request_name);
-
 public:
 	// This constructor is only called once in main, so the factory will be created once as well.
-	umcd_protocol(const config& server_config);
-
-	// We only copy shared data.
-	umcd_protocol(const umcd_protocol& protocol);
+	umcd_protocol(const server_info& serverinfo);
 
 	// Precondition: (bool)client == true
 	void handle_request(connection_ptr client);
@@ -76,23 +69,12 @@ private:
 	void dispatch_request(const boost::system::error_code& error, std::size_t bytes_transferred);
 
 private:
-	const config& server_config_;
-	// The shared_ptr avoid the factory to be copied/duplicated.
-	boost::shared_ptr<action_factory_type> action_factory_;
+	const server_info& server_info_;
 	connection_ptr client_connection_;
 	boost::array<char, REQUEST_HEADER_SIZE_FIELD_LENGTH> raw_request_size_;
 	std::string request_body_;
 	wml_reply reply_;
 	wml_request request_;
 };
-
-template <class Action>
-void umcd_protocol::register_request_info(const std::string& request_name)
-{
-	 action_factory_->register_product(
-			request_name, 
-			make_request_info<Action, validator_type>(server_config_, request_name)
-	 );
-}
 
 #endif // UMCD_PROTOCOL_HPP

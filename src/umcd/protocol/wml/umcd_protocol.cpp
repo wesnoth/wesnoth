@@ -17,8 +17,6 @@
 #include <boost/assert.hpp>
 
 #include "umcd/protocol/wml/umcd_protocol.hpp"
-#include "umcd/actions/request_license_action.hpp"
-#include "umcd/actions/request_umc_upload_action.hpp"
 #include "umcd/special_packet.hpp"
 #include "umcd/umcd_error.hpp"
 
@@ -27,19 +25,10 @@ const std::size_t umcd_protocol::REQUEST_HEADER_SIZE_FIELD_LENGTH;
 
 #define FUNCTION_TRACER() UMCD_LOG_IP_FUNCTION_TRACER(client_connection_->get_socket())
 
-umcd_protocol::umcd_protocol(const config& server_config)
-: server_config_(server_config)
-, action_factory_(boost::make_shared<action_factory_type>())
+umcd_protocol::umcd_protocol(const server_info& serverinfo)
+: server_info_(serverinfo)
 {
-	register_request_info<request_license_action>("request_license");
-	register_request_info<request_umc_upload_action>("request_umc_upload");
 }
-
-umcd_protocol::umcd_protocol(const umcd_protocol& protocol)
-: boost::enable_shared_from_this<umcd_protocol>()
-, server_config_(protocol.server_config_)
-, action_factory_(protocol.action_factory_)
-{}
 
 wml_reply& umcd_protocol::get_reply()
 {
@@ -76,7 +65,7 @@ void umcd_protocol::async_send_reply()
 
 void umcd_protocol::async_send_error(const boost::system::error_condition& error)
 {
-	reply_ = make_error_reply(error.message());
+	reply_ = make_error_reply(error.message(), REQUEST_HEADER_SIZE_FIELD_LENGTH);
 	async_send_reply();
 }
 
@@ -136,7 +125,7 @@ void umcd_protocol::dispatch_request(const boost::system::error_code& err, std::
 			// Retrieve request name.
 			std::string request_name = peek_request_name(request_stream);
 			UMCD_LOG_IP(info, client_connection_->get_socket()) << " -- request: " << request_name;
-			info_ptr request_info = action_factory_->make_product(request_name);
+			info_ptr request_info = server_info_.get_request_info(request_name);
 			UMCD_LOG_IP(info, client_connection_->get_socket()) << " -- request:\n" << request_body_;
 
 			request_ = wml_request();

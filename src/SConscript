@@ -553,6 +553,9 @@ libumcd_sources = Split("""
     umcd/request_info.cpp
     umcd/umcd_logger.cpp
     umcd/umcd_error.cpp
+    umcd/server_info.cpp
+    umcd/actions/request_license_action.cpp
+    umcd/actions/request_umc_upload_action.cpp
     addon/validation.cpp
     """)
 

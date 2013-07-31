@@ -31,12 +31,12 @@ config make_warning_packet(const std::string& message)
 	return make_special_packet(message, "warning");
 }
 
-wml_reply make_error_reply(const std::string& message)
+wml_reply make_error_reply(const std::string& message, std::size_t header_length)
 {
-	return wml_reply(make_error_packet(message));
+	return wml_reply(make_error_packet(message), header_length);
 }
 
-wml_reply make_warning_reply(const std::string& message)
+wml_reply make_warning_reply(const std::string& message, std::size_t header_length)
 {
-	return wml_reply(make_warning_packet(message));
+	return wml_reply(make_warning_packet(message), header_length);
 }
