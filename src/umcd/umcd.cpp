@@ -18,6 +18,7 @@
 #include <boost/thread/thread.hpp>
 #include <boost/bind.hpp>
 #include <boost/asio.hpp>
+#include <boost/function.hpp>
 
 #include "config.hpp"
 #include "game_config.hpp"
@@ -40,8 +41,12 @@ int main(int argc, char *argv[])
 			// Many classes are tightly coupled with the game path, and in particular with this global variable, so we need to set it.
 			game_config::path = cfg["wesnoth_dir"].str();
 			server_info serverinfo(cfg);
-			boost::shared_ptr<umcd_protocol> protocol = boost::make_shared<umcd_protocol>(serverinfo);
-			server_mt<umcd_protocol> addon_server(cfg, protocol);
+			
+			typedef boost::function<boost::shared_ptr<umcd_protocol> (umcd_protocol::io_service_type&)> umcd_protocol_factory;
+			server_mt<umcd_protocol, umcd_protocol_factory> addon_server(
+				cfg,
+				boost::bind(&make_umcd_protocol, _1, boost::cref(serverinfo))
+			);
 			addon_server.run();
 		}
 	}

@@ -22,7 +22,6 @@
 
 #include "umcd/server_info.hpp"
 #include "umcd/wml_request.hpp"
-#include "umcd/server/connection.hpp"
 #include "umcd/umcd_logger.hpp"
 #include "umcd/wml_reply.hpp"
 #include "umcd/request_info.hpp"
@@ -30,30 +29,32 @@
 class wml_request;
 
 class umcd_protocol : 
-	public boost::enable_shared_from_this<umcd_protocol>
-	//,private boost::noncopyable
+		public boost::enable_shared_from_this<umcd_protocol>
+	,	private boost::noncopyable
 {
 public:
 	static const std::size_t REQUEST_HEADER_MAX_SIZE = 8192;
 	static const std::size_t REQUEST_HEADER_SIZE_FIELD_LENGTH = 10;
+	typedef boost::asio::ip::tcp::socket socket_type;
+	typedef boost::asio::io_service io_service_type;
 
 private:
 	typedef basic_umcd_action action_type;
 	typedef boost::shared_ptr<request_info> info_ptr;
-	typedef connection<umcd_protocol> connection_type;
-	typedef boost::shared_ptr<connection_type> connection_ptr;
 
 public:
 	// This constructor is only called once in main, so the factory will be created once as well.
-	umcd_protocol(const server_info& serverinfo);
+	umcd_protocol(io_service_type& io_service, const server_info& serverinfo);
 
 	// Precondition: (bool)client == true
-	void handle_request(connection_ptr client);
+	void handle_request();
 	// Precondition: handle_request has been called and connection has been initialized.
 	void async_send_reply();
 
 	wml_reply& get_reply();
 	config& get_metadata();
+
+	socket_type& socket();
 
 private:
 	void complete_request(const boost::system::error_code& error, std::size_t bytes_transferred);
@@ -70,11 +71,13 @@ private:
 
 private:
 	const server_info& server_info_;
-	connection_ptr client_connection_;
+	socket_type socket_;
 	boost::array<char, REQUEST_HEADER_SIZE_FIELD_LENGTH> raw_request_size_;
 	std::string request_body_;
 	wml_reply reply_;
 	wml_request request_;
 };
+
+boost::shared_ptr<umcd_protocol> make_umcd_protocol(umcd_protocol::io_service_type& io_service, const server_info& serverinfo);
 
 #endif // UMCD_PROTOCOL_HPP

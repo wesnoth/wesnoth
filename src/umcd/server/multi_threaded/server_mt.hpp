@@ -21,36 +21,28 @@
 #ifndef SERVER_MULTI_THREADED_SERVER_HPP
 #define SERVER_MULTI_THREADED_SERVER_HPP
 
-
-#include "umcd/boost/thread/workaround.hpp"
-#include <boost/asio.hpp>
-#include <boost/noncopyable.hpp>
-#include <boost/make_shared.hpp>
-#include <boost/thread/thread.hpp>
 #include "umcd/server/basic_server.hpp"
+#include "umcd/boost/thread/workaround.hpp"
+#include <boost/thread/thread.hpp>
 #include "umcd/umcd_logger.hpp"
 
-template <class Protocol>
-class server_mt : public basic_server<Protocol>
+template <class Protocol, class ProtocolFactory>
+class server_mt : public basic_server<Protocol, ProtocolFactory>
 {
-public:
-	typedef Protocol protocol_type;
 private:
-	typedef connection<protocol_type> connection_type;
-	typedef boost::shared_ptr<connection_type> connection_ptr;
-	typedef basic_server<Protocol> base;
+	typedef basic_server<Protocol, ProtocolFactory> base;
 
 public:
-	explicit server_mt(const config& cfg, const boost::shared_ptr<protocol_type>& protocol);
+	explicit server_mt(const config& cfg, typename base::protocol_factory_type protocol_factory);
 	void run();
 
 private:
 	std::size_t thread_pool_size_;
 };
 
-template <class Protocol>
-server_mt<Protocol>::server_mt(const config &cfg, const boost::shared_ptr<protocol_type>& protocol) 
-: base(cfg, protocol)
+template <class Protocol, class ProtocolFactory>
+server_mt<Protocol, ProtocolFactory>::server_mt(const config &cfg, typename base::protocol_factory_type protocol_factory)
+: base(cfg, protocol_factory)
 {
 	thread_pool_size_ = cfg["threads"];
 	if(thread_pool_size_ == 0)
@@ -60,8 +52,8 @@ server_mt<Protocol>::server_mt(const config &cfg, const boost::shared_ptr<protoc
 	}
 }
 
-template <class Protocol>
-void server_mt<Protocol>::run()
+template <class Protocol, class ProtocolFactory>
+void server_mt<Protocol, ProtocolFactory>::run()
 {
 	// Create a pool of threads to run all of the io_services.
 	std::vector<boost::shared_ptr<boost::thread> > threads;
