@@ -61,7 +61,7 @@ void test_exchange(const std::string& request_path, const std::string& reply_val
   tcp::iostream stream(umcd_stream::host(), umcd_stream::port());
   test_stream_state(stream);
   std::string request_conf_string = request_conf.to_string();
-  stream << make_size_header(request_conf_string.size());
+  stream << make_size_header(request_conf_string.size(), umcd_protocol::REQUEST_HEADER_SIZE_FIELD_LENGTH);
   BOOST_TEST_MESSAGE("Request size sent.");
   stream << request_conf_string;
   BOOST_TEST_MESSAGE("Request sent.");
