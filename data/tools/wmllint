@@ -2347,15 +2347,30 @@ if __name__ == '__main__':
         # escape to a literal quote rather than a Windows directory delimiter,
         # causing Windows to find "no such file or directory". This block deals
         # with this issue, but it is impossible to handle all cases if multiple
-        # (intended) arguments are involved.
+        # (intended) arguments are involved. We also activate globbing on
+        # Windows, if there is a wildcard.
         if arguments and sys.platform == 'win32':
+            wildcard = False
+            newargs = []
             for i,arg in enumerate(arguments):
+                if not wildcard and '*' in arg:
+                    wildcard = True
+                    from glob import glob
                 if '"' in arg:
                     arguments.remove(arg)
                     arg = re.sub(r'([^ ])"([^ ])', r'\1\\\2', arg)
                     for new in arg.rstrip('"').split('"'):
                         arguments.insert(i, new.strip())
                         i += 1
+            if wildcard:
+                for arg in arguments:
+                    for wild in glob(arg):
+                        newargs.append(wild)
+                if newargs:
+                    arguments = newargs
+                else:
+                    sys.stderr.write('wmllint: wildcard did not match any files or directories (%s)\n'%arguments)
+                    sys.exit(2)
 
         if not arguments:
             arguments = ["."]
