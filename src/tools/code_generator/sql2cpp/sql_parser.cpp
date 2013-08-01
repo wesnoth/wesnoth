@@ -21,6 +21,7 @@
 #include <boost/static_assert.hpp>
 
 #include "tools/code_generator/sql2cpp/sql_type.hpp"
+#include "tools/code_generator/sql2cpp/sql_type_constraint.hpp"
 
 #include <iostream>
 #include <fstream>
@@ -80,6 +81,13 @@ public:
 				|		"\\/\\*[^*]*\\*+([^/*][^*]*\\*+)*\\/" // C-style comments
 				;
 	}
+};
+
+struct sql_column
+{
+	std::string column_identifier;
+	boost::shared_ptr<sql::type::base_type> sql_type;
+	std::vector<boost::shared_ptr<sql::base_type_constraint> > constraints;
 };
 
 template <class synthesized, class inherited = void>
