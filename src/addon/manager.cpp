@@ -210,6 +210,7 @@ namespace {
 		files.push_back("#*#");
 		files.push_back("*~");
 		files.push_back("*-bak");
+		files.push_back("Copy of *");
 		files.push_back("*.swp");
 		files.push_back("*.pbl");
 		files.push_back("*.ign");
