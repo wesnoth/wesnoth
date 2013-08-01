@@ -44,7 +44,7 @@ boost::shared_ptr<request_info> make_request_info(const config& server_conf, con
 	return boost::make_shared<request_info>(
 		boost::make_shared<Action>(server_conf),
 		boost::make_shared<Validator>(
-			server_conf["wesnoth_dir"].str() + get_umcd_protocol_schema_dir() + request_name+".cfg"));
+			server_conf["wesnoth_dir"].str() + get_umcd_protocol_schema_dir() + "/" + request_name+".cfg"));
 }
 
 #endif // UMCD_REQUEST_INFO_HPP
