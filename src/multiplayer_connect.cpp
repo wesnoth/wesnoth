@@ -482,22 +482,7 @@ void connect::side::update_user_list(const std::vector<std::string>& name_list) 
 
 void connect::side::import_network_user(const config& data)
 {
-	if (engine_->mp_controller() == CNTR_RESERVED ||
-		parent_->params_.saved_game) {
-
-		engine_->set_ready_for_start(true);
-	}
-
-	engine_->set_player_id(data["name"]);
-	engine_->set_mp_controller(CNTR_NETWORK);
-
-	BOOST_FOREACH(const config* faction, engine_->choosable_factions()) {
-		if ((*faction)["id"] == data["faction"]) {
-			engine_->set_current_faction(faction);
-		}
-	}
-	engine_->set_current_leader(data["leader"]);
-	engine_->set_current_gender(data["gender"]);
+	engine_->import_network_user(data);
 
 	update_faction_combo();
 	update_leader_combo();
@@ -508,30 +493,10 @@ void connect::side::import_network_user(const config& data)
 
 void connect::side::reset(mp::controller controller)
 {
-	engine_->set_player_id("");
-	engine_->set_mp_controller(controller);
+	engine_->reset(controller);
 
-	if (engine_->mp_controller() == mp::CNTR_NETWORK ||
-		engine_->mp_controller() == mp::CNTR_RESERVED) {
-
-		engine_->set_ready_for_start(false);
-	}
-
-	if (!parent_->params_.saved_game && !engine_->choosable_factions().empty()) {
-		if (combo_faction_.enabled()) {
-			engine_->set_current_faction(engine_->choosable_factions()[0]);
-			update_leader_combo();
-			update_gender_combo();
-		}
-		if (combo_leader_.enabled()) {
-			engine_->set_current_leader(engine_->choosable_leaders()[0]);
-			update_gender_combo();
-		}
-		if (combo_gender_.enabled()) {
-			engine_->set_current_gender(engine_->choosable_genders()[0]);
-		}
-	}
-
+	update_leader_combo();
+	update_gender_combo();
 	update_ui();
 }
 
@@ -599,27 +564,7 @@ connect::connect(game_display& disp, const config& game_config,
 
 	update_user_combos();
 
-	// Take the first available side or available side with id == login.
-	int side_choice = -1;
-	for(side_list::const_iterator s = sides_.begin(); s != sides_.end(); ++s) {
-		if (s->engine()->allow_player()) {
-			if (side_choice == -1) {
-				side_choice = s - sides_.begin();
-			}
-			if (s->engine()->current_player() == preferences::login()) {
-				sides_[s - sides_.begin()].engine()->set_player_from_users_list(
-					preferences::login());
-				side_choice = gamemap::MAX_PLAYERS;
-			}
-		}
-	}
-
-	if (side_choice != -1 && side_choice != gamemap::MAX_PLAYERS) {
-		if (sides_[side_choice].engine()->player_id() == "") {
-			sides_[side_choice].engine()->set_player_from_users_list(
-				preferences::login());
-		}
-	}
+	engine_.assign_side();
 
 	append_to_title(" — " + engine_.level()["name"].t_str());
 	gold_title_label_.hide(params_.saved_game);

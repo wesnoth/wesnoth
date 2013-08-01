@@ -62,6 +62,9 @@ public:
 	// Returns true if there are still sides available for this game.
 	bool sides_available() const;
 
+	// Assign a side.
+	void assign_side();
+
 	bool can_start_game() const;
 	void start_game();
 	void start_game_commandline(const commandline_options& cmdline_opts);
@@ -130,6 +133,9 @@ public:
 	void set_player_from_users_list(const std::string& player_id);
 
 	void resolve_random();
+
+	void import_network_user(const config& data);
+	void reset(mp::controller controller);
 
 	// Factions, leaders & genders.
 	void update_choosable_leaders();

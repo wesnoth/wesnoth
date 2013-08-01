@@ -18,6 +18,7 @@
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "map.hpp"
 #include "multiplayer_ui.hpp"
 #include "mp_game_utils.hpp"
 #include "tod_manager.hpp"
@@ -144,6 +145,34 @@ bool connect_engine::sides_available() const
 	}
 
 	return false;
+}
+
+void connect_engine::assign_side()
+{
+	// Take the first available side or available side with id == login.
+	int side_choice = -1;
+	int counter = 0;
+	BOOST_FOREACH(side_engine_ptr side, side_engines_) {
+		if (side->allow_player()) {
+			if (side_choice == -1) {
+				side_choice = counter;
+			}
+			if (side->current_player() == preferences::login()) {
+				side_engines_[counter]->set_player_from_users_list(
+					preferences::login());
+				side_choice = gamemap::MAX_PLAYERS;
+			}
+		}
+
+		counter++;
+	}
+
+	if (side_choice != -1 && side_choice != gamemap::MAX_PLAYERS) {
+		if (side_engines_[side_choice]->player_id() == "") {
+			side_engines_[side_choice]->set_player_from_users_list(
+				preferences::login());
+		}
+	}
 }
 
 bool connect_engine::can_start_game() const
@@ -469,6 +498,8 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	available_factions_ = init_available_factions(parent_.era_factions(), cfg_);
 	choosable_factions_ = init_choosable_factions(available_factions_, cfg_,
 		parent_.params_.use_map_settings);
+
+	assert(!choosable_factions_.empty());
 	current_faction_ = choosable_factions_[0];
 
 	// Initialize ai algorithm.
@@ -491,7 +522,7 @@ config side_engine::new_config() const
 
 	// If the user is allowed to change type, faction, leader etc,
 	// then import their new values in the config.
-	if (!parent_.params_.saved_game && !choosable_factions_.empty()) {
+	if (!parent_.params_.saved_game) {
 		// Merge the faction data to res.
 		res.append(*current_faction_);
 		res["faction_name"] = res["name"];
@@ -665,7 +696,7 @@ bool side_engine::available(const std::string& name) const
 
 void side_engine::resolve_random()
 {
-	if (parent_.params_.saved_game || choosable_factions_.empty()) {
+	if (parent_.params_.saved_game) {
 		return;
 	}
 
@@ -774,6 +805,42 @@ void side_engine::resolve_random()
 				current_leader_ << "'.\n";
 			current_gender_ = "null";
 		}
+	}
+}
+
+void side_engine::import_network_user(const config& data)
+{
+	if (mp_controller_ == CNTR_RESERVED || parent_.params_.saved_game) {
+		ready_for_start_ = true;
+	}
+
+	player_id_ = data["name"].str();
+	mp_controller_ = CNTR_NETWORK;
+
+	BOOST_FOREACH(const config* faction, choosable_factions_) {
+		if ((*faction)["id"] == data["faction"]) {
+			set_current_faction(faction);
+		}
+	}
+	set_current_leader(data["leader"]);
+	set_current_gender(data["gender"]);
+}
+
+void side_engine::reset(mp::controller controller)
+{
+	player_id_.clear();
+	mp_controller_ = controller;
+
+	if (mp_controller_ == mp::CNTR_NETWORK ||
+		mp_controller_ == mp::CNTR_RESERVED) {
+
+		ready_for_start_ = false;
+	}
+
+	if (!parent_.params_.saved_game) {
+		set_current_faction(choosable_factions_[0]);
+		set_current_leader(choosable_leaders_[0]);
+		set_current_gender(choosable_genders_[0]);
 	}
 }
 
