@@ -26,7 +26,7 @@ class side_engine;
 struct connected_user
 {
 	connected_user(const std::string& name, mp::controller controller,
-			network::connection connection) :
+		network::connection connection) :
 		name(name),
 		controller(controller),
 		connection(connection)
@@ -53,41 +53,36 @@ public:
 	config* current_config();
 
 	void add_side_engine(side_engine_ptr engine);
+	void assign_side_for_host();
+
+	// Returns true if there are still sides available for this game.
+	bool sides_available() const;
 
 	// Import all sides into the level.
 	void update_level();
 	// Updates the level and sends a diff to the clients.
 	void update_and_send_diff(bool update_time_of_day = false);
 
-	// Returns true if there are still sides available for this game.
-	bool sides_available() const;
-
-	// Assign a side.
-	void assign_side();
-
 	bool can_start_game() const;
 	void start_game();
 	void start_game_commandline(const commandline_options& cmdline_opts);
 
-	// Network methods.
 	void process_network_connection(const network::connection sock);
 
-	// Returns the index of a player, from its id,
-	// or -1 if the player was not found.
-	connected_user_list::iterator find_player(const std::string& id);
-
+	connected_user_list::iterator find_player_by_id(const std::string& id);
 	// Returns the side which is taken by a given player,
 	// or -1 if none was found.
-	int find_player_side(const std::string& id) const;
+	int find_player_side_index_by_id(const std::string& id) const;
 
 
 	/* Setters & Getters */
 
 	const config& level() const { return level_; }
 	const game_state& state() const { return state_; }
-
-	const std::vector<const config *>& era_factions() const
-		{ return era_factions_; }
+	connected_user_list& users() { return users_; }
+	controller mp_controller() const { return mp_controller_; }
+	std::vector<std::string>& team_names() { return team_names_; }
+	std::vector<std::string>& user_team_names() { return user_team_names_; }
 
 private:
 	connect_engine(const connect_engine&);
@@ -98,18 +93,14 @@ private:
 	config level_;
 	game_state state_;
 
-	game_display& disp_;
 	const mp_game_settings& params_;
-
-	std::vector<side_engine_ptr> side_engines_;
-	std::vector<const config *> era_factions_;
-
-public:
-	connected_user_list users_;
 	controller mp_controller_;
 
+	std::vector<side_engine_ptr> side_engines_;
+	std::vector<const config*> era_factions_;
 	std::vector<std::string> team_names_;
 	std::vector<std::string> user_team_names_;
+	connected_user_list users_;
 };
 
 class side_engine
@@ -119,36 +110,38 @@ public:
 		const int index);
 	~side_engine();
 
-	// Sets a new config representing this side.
+	// Creates a config representing this side.
 	config new_config() const;
 
 	// Returns true, if the player has chosen his/her leader and this side
 	// is ready for the game to start.
 	bool ready_for_start() const;
-
 	// Returns true if this side is waiting for a network player and
 	// players are allowed.
 	bool available(const std::string& name = "") const;
 
 	void set_player_from_users_list(const std::string& player_id);
 
+	void swap_sides_on_drop_target(const int drop_target);
+
 	void resolve_random();
 
-	void import_network_user(const config& data);
 	void reset(mp::controller controller);
 
-	// Factions, leaders & genders.
-	void update_choosable_leaders();
-	void update_choosable_genders();
-	int selected_faction_index() const;
-	int selected_leader_index() const;
-	int selected_gender_index() const;
+	void import_network_user(const config& data);
 
+	void set_current_faction(const config* current_faction);
+	void set_current_leader(const std::string& current_leader);
+	void set_current_gender(const std::string& current_gender);
+
+	int current_faction_index() const;
+	int current_leader_index() const;
+	int current_gender_index() const;
+
+	// Game set up from command line helpers.
 	void set_faction_commandline(const std::string& faction_name);
 	void set_controller_commandline(const std::string& controller_name);
 	void set_ai_algorithm_commandline(const std::string& algorithm_name);
-
-	void assign_sides_on_drop_target(const int drop_target);
 
 
 	/* Setters & Getters */
@@ -160,12 +153,7 @@ public:
 	const std::vector<std::string>& choosable_genders()
 		{ return choosable_genders_; }
 	const config& cfg() const { return cfg_; }
-	const config* current_faction() const { return current_faction_; }
-	void set_current_faction(const config* current_faction);
 	const std::string& current_leader() const { return current_leader_; }
-	void set_current_leader(const std::string& current_leader);
-	const std::string& current_gender() const { return current_gender_; }
-	void set_current_gender(const std::string& current_gender);
 	controller mp_controller() const { return mp_controller_; }
 	void set_mp_controller(controller mp_controller)
 		{ mp_controller_ = mp_controller; }
@@ -185,7 +173,7 @@ public:
 	const std::string& current_player() const { return current_player_; }
 	const std::string& ai_algorithm() const { return ai_algorithm_; }
 	void set_ai_algorithm(const std::string& ai_algorithm)
-		{ai_algorithm_ = ai_algorithm; }
+		{ ai_algorithm_ = ai_algorithm; }
 	void set_ready_for_start(const bool ready_for_start)
 		{ ready_for_start_ = ready_for_start; }
 	bool allow_player() const { return allow_player_; }
@@ -194,11 +182,14 @@ private:
 	side_engine(const side_engine& engine);
 	void operator=(const connect_engine&);
 
+	void update_choosable_leaders();
+	void update_choosable_genders();
 	void append_leaders_from_faction(const config* faction);
 
 	config cfg_;
-
 	connect_engine& parent_;
+
+	controller mp_controller_;
 
 	// All factions which could be played by a side (including Random).
 	std::vector<const config*> available_factions_;
@@ -211,7 +202,9 @@ private:
 	std::string current_leader_;
 	std::string current_gender_;
 
-	controller mp_controller_;
+	bool ready_for_start_;
+	bool allow_player_;
+	bool allow_changes_;
 
 	// Configurable variables.
 	int index_;
@@ -224,10 +217,6 @@ private:
 	std::string save_id_;
 	std::string current_player_;
 	std::string ai_algorithm_;
-
-	bool ready_for_start_;
-	bool allow_player_;
-	bool allow_changes_;
 };
 
 } // end namespace mp

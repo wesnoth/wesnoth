@@ -19,7 +19,6 @@
 
 #include "commandline_options.hpp"
 #include "gamestatus.hpp"
-#include "leader_list.hpp"
 #include "multiplayer_connect_engine.hpp"
 #include "multiplayer_ui.hpp"
 #include "widgets/combo_drag.hpp"
@@ -41,38 +40,38 @@ public:
 	class side {
 	public:
 		side(connect& parent, side_engine_ptr engine);
-
 		side(const side& a);
-
-		void add_widgets_to_scrollpane(gui::scrollpane& pane, int pos);
+		~side();
 
 		void process_event();
 
-		/** Returns true if this side changed since last call to changed(). */
+		// Returns true if this side changed since last call to this method.
 		bool changed();
 
-		/** Adds an user to the user list combo. */
+		// Adds an user to the user list combo.
 		void update_user_list(const std::vector<std::string>& name_list);
 
-		/**
-		 * Imports data from the network into this side, and updates the UI
-		 * accordingly.
-		 */
+		// Imports data from the network into this side, and updates the UI
+		// accordingly.
 		void import_network_user(const config& data);
 
-		/** Resets this side to its default state, and updates the UI accordingly. */
+		// Resets this side to its default state, and updates the UI
+		// accordingly.
 		void reset(mp::controller controller);
 
-		void hide_ai_algorithm_combo(bool invis);
+		void hide_ai_algorithm_combo(bool invisible);
+
+		void add_widgets_to_scrollpane(gui::scrollpane& pane, int pos);
 
 		side_engine_ptr engine() { return engine_; }
 		const side_engine_ptr engine() const { return engine_; }
 
 	private:
 		void init_ai_algorithm_combo();
-		void update_ai_algorithm_combo() {hide_ai_algorithm_combo(parent_->hidden());}
+		void update_ai_algorithm_combo()
+			{ hide_ai_algorithm_combo(parent_->hidden()); }
 
-		/** Fill or refresh the faction combo using the proper team color. */
+		// Update UI methods and their helper(s).
 		void update_faction_combo();
 		void update_leader_combo();
 		void update_gender_combo();
@@ -80,25 +79,23 @@ public:
 		void update_ui();
 		std::string get_RC_suffix(const std::string& unit_color) const;
 
-		/**
-		 * The mp::connect widget owning this mp::connect::side.
-		 *
-		 * Used in the constructor, must be first.
-		 */
+		// The mp::connect widget owning this mp::connect::side.
 		connect* parent_;
-
 		side_engine_ptr engine_;
 
-		// Flags for controlling the dialog widgets of the game lobby
+		// Flags for controlling which configuration widgets should be locked.
 		bool gold_lock_;
 		bool income_lock_;
 		bool team_lock_;
 		bool color_lock_;
 
-		// Widgets for this side
-		gui::label player_number_;
+		bool changed_;
+
+		gui::label label_player_number_;
+		gui::label label_original_controller_;
+		gui::label label_gold_;
+		gui::label label_income_;
 		gui::combo_drag_ptr combo_controller_;
-		gui::label orig_controller_;
 		gui::combo combo_ai_algorithm_;
 		gui::combo combo_faction_;
 		gui::combo combo_leader_;
@@ -107,95 +104,73 @@ public:
 		gui::combo combo_color_;
 		gui::slider slider_gold_;
 		gui::slider slider_income_;
-		gui::label label_gold_;
-		gui::label label_income_;
-
-		bool changed_;
 	};
 
 	typedef std::vector<side> side_list;
 
-	/**
-	 * Pointer to the display
-	 */
 	connect(game_display& disp, const config& game_config, chat& c,
 			config& gamelist, const mp_game_settings& params,
 			mp::controller default_controller, bool local_players_only = false);
+	~connect();
 
-	virtual void process_event();
+	// Returns the game state, which contains all information about the current
+	// scenario.
+	const game_state& state() const { return engine_.state(); }
 
-	void take_reserved_side(connect::side& side, const config& data);
-
-	/**
-	 * Returns the game state, which contains all information about the current
-	 * scenario.
-	 */
-	const game_state& get_state() const { return engine_.state(); }
-
-	/**
-	 * Updates the current game state, resolves random factions, and sends a
-	 * "start game" message to the network.
-	 */
+	// Updates the current game state, resolves random factions, and sends a
+	// "start game" message to the network.
 	void start_game() { engine_.start_game(); }
 	void start_game_commandline(const commandline_options& cmdline_opts)
 		{ engine_.start_game_commandline(cmdline_opts); }
 
 protected:
+	virtual void process_event();
+
 	virtual void layout_children(const SDL_Rect& rect);
+	virtual void hide_children(bool hide = true);
 
-	virtual void process_network_data(const config& data, const network::connection sock);
+	virtual void process_network_data(const config& data,
+		const network::connection sock);
 	virtual void process_network_error(network::error& error);
-	virtual bool accept_connections();
 	virtual void process_network_connection(const network::connection sock);
-
-	virtual void hide_children(bool hide=true);
+	virtual bool accept_connections();
 
 private:
 	void lists_init();
 
-	/**
-	 * Updates the state of the player list, the launch button and of the start
-	 * game label, to reflect the actual state.
-	 */
-	void update_playerlist_state(bool silent=true);
+	void take_reserved_side(connect::side& side, const config& data);
 
-	/** Adds a player. */
+	// Updates the state of the player list, the launch button and of the start
+	// game label, to reflect the actual state.
+	void update_playerlist_state(bool silent = true);
 	void update_user_combos();
 
 	bool local_only_;
 
 	const mp_game_settings params_;
 
-	// Lists used for combos
+	// Lists used for combos.
 	std::vector<std::string> player_types_;
 	std::vector<std::string> player_teams_;
 	std::vector<std::string> player_colors_;
 	std::vector<ai::description*> ai_algorithms_;
 
-	const std::string team_prefix_;
-
 	side_list sides_;
+	connect_engine engine_;
 
 	gui::label waiting_label_;
-
-	// Widgets
-	gui::scrollpane scroll_pane_;
-
 	gui::label type_title_label_;
 	gui::label faction_title_label_;
 	gui::label team_title_label_;
 	gui::label color_title_label_;
 	gui::label gold_title_label_;
 	gui::label income_title_label_;
-
+	gui::scrollpane scroll_pane_;
 	gui::button launch_;
 	gui::button cancel_;
-	gui::button add_local_player_;
-
+	//gui::button add_local_player_;
 	gui::drop_group_manager_ptr combo_control_group_;
-
-	connect_engine engine_;
-}; // end class connect
+};
 
 } // end namespace mp
 

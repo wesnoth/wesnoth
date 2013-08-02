@@ -36,12 +36,24 @@ static lg::log_domain log_mp_connect_engine("mp/connect/engine");
 
 namespace {
 
-const char* controller_names[] = {
+const std::string controller_names[] = {
 	"network",
 	"human",
 	"ai",
 	"null",
 	"reserved"
+};
+
+const std::string attributes_to_trim[] = {
+	"side",
+	"controller",
+	"id",
+	"team_name",
+	"user_team_name",
+	"color",
+	"gold",
+	"income",
+	"allow_changes"
 };
 
 }
@@ -52,21 +64,20 @@ connect_engine::connect_engine(game_display& disp, controller mp_controller,
 	const mp_game_settings& params) :
 	level_(),
 	state_(),
-	disp_(disp),
 	params_(params),
+	mp_controller_(mp_controller),
 	side_engines_(),
 	era_factions_(),
-	users_(),
-	mp_controller_(mp_controller),
 	team_names_(),
-	user_team_names_()
+	user_team_names_(),
+	users_()
 {
 	level_ = initial_level_config(disp, params, state_);
 	if (level_.empty()) {
 		return;
 	}
 
-	BOOST_FOREACH(const config &era,
+	BOOST_FOREACH(const config& era,
 		level_.child("era").child_range("multiplayer_side")) {
 
 		era_factions_.push_back(&era);
@@ -107,6 +118,45 @@ void connect_engine::add_side_engine(side_engine_ptr engine)
 	side_engines_.push_back(engine);
 }
 
+void connect_engine::assign_side_for_host()
+{
+	// Take the first available side or available side with id == login.
+	int side_choice = -1;
+	int counter = 0;
+	BOOST_FOREACH(side_engine_ptr side, side_engines_) {
+		if (side->allow_player()) {
+			if (side_choice == -1) {
+				side_choice = counter;
+			}
+			if (side->current_player() == preferences::login()) {
+				side_engines_[counter]->set_player_from_users_list(
+					preferences::login());
+				side_choice = gamemap::MAX_PLAYERS;
+			}
+		}
+
+		counter++;
+	}
+
+	if (side_choice != -1 && side_choice != gamemap::MAX_PLAYERS) {
+		if (side_engines_[side_choice]->player_id() == "") {
+			side_engines_[side_choice]->set_player_from_users_list(
+				preferences::login());
+		}
+	}
+}
+
+bool connect_engine::sides_available() const
+{
+	BOOST_FOREACH(side_engine_ptr side, side_engines_) {
+		if (side->available()) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
 void connect_engine::update_level()
 {
 	DBG_MP << "updating level" << std::endl;
@@ -133,45 +183,6 @@ void connect_engine::update_and_send_diff(bool update_time_of_day)
 		config scenario_diff;
 		scenario_diff.add_child("scenario_diff", diff);
 		network::send_data(scenario_diff, 0);
-	}
-}
-
-bool connect_engine::sides_available() const
-{
-	BOOST_FOREACH(side_engine_ptr side, side_engines_) {
-		if (side->available()) {
-			return true;
-		}
-	}
-
-	return false;
-}
-
-void connect_engine::assign_side()
-{
-	// Take the first available side or available side with id == login.
-	int side_choice = -1;
-	int counter = 0;
-	BOOST_FOREACH(side_engine_ptr side, side_engines_) {
-		if (side->allow_player()) {
-			if (side_choice == -1) {
-				side_choice = counter;
-			}
-			if (side->current_player() == preferences::login()) {
-				side_engines_[counter]->set_player_from_users_list(
-					preferences::login());
-				side_choice = gamemap::MAX_PLAYERS;
-			}
-		}
-
-		counter++;
-	}
-
-	if (side_choice != -1 && side_choice != gamemap::MAX_PLAYERS) {
-		if (side_engines_[side_choice]->player_id() == "") {
-			side_engines_[side_choice]->set_player_from_users_list(
-				preferences::login());
-		}
 	}
 }
 
@@ -348,7 +359,8 @@ void connect_engine::start_game_commandline(
 
 		// Having hard-coded values here is undesirable,
 		// but that's how it is done in the MP lobby
-		// part of the code also.  Should be replaced by settings/constants in both places
+		// part of the code also.
+		// Should be replaced by settings/constants in both places
 		if (cmdline_opts.multiplayer_ignore_map_settings) {
 			side["gold"] = 100;
 			side["income"] = 1;
@@ -363,7 +375,8 @@ void connect_engine::start_game_commandline(
 
 				if (parameter.get<0>() == side["side"].to_unsigned()) {
 					DBG_MP << "\tsetting side " << side["side"] << " " <<
-						parameter.get<1>() << ": " << parameter.get<2>() << std::endl;
+						parameter.get<1>() << ": " << parameter.get<2>() <<
+							std::endl;
 
 					side[parameter.get<1>()] = parameter.get<2>();
 				}
@@ -382,7 +395,8 @@ void connect_engine::process_network_connection(const network::connection sock)
 	network::send_data(level_, sock);
 }
 
-connected_user_list::iterator connect_engine::find_player(const std::string& id)
+connected_user_list::iterator
+	connect_engine::find_player_by_id(const std::string& id)
 {
 	connected_user_list::iterator itor;
 	for (itor = users_.begin(); itor != users_.end(); ++itor) {
@@ -394,7 +408,7 @@ connected_user_list::iterator connect_engine::find_player(const std::string& id)
 	return itor;
 }
 
-int connect_engine::find_player_side(const std::string& id) const
+int connect_engine::find_player_side_index_by_id(const std::string& id) const
 {
 	size_t i = 0;
 	BOOST_FOREACH(side_engine_ptr side, side_engines_) {
@@ -416,6 +430,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	const int index) :
 	cfg_(cfg),
 	parent_(parent_engine),
+	mp_controller_(CNTR_NETWORK),
 	available_factions_(),
 	choosable_factions_(),
 	choosable_leaders_(),
@@ -423,7 +438,10 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	current_faction_(NULL),
 	current_leader_("null"),
 	current_gender_("null"),
-	mp_controller_(CNTR_NETWORK),
+	ready_for_start_(false),
+	allow_player_(cfg["controller"] == "ai" && cfg["allow_player"].empty() ?
+		false : cfg["allow_player"].to_bool(true)),
+	allow_changes_(cfg["allow_changes"].to_bool(true)),
 	index_(index),
 	team_(0),
 	color_(index),
@@ -433,11 +451,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	player_id_(cfg["player_id"]),
 	save_id_(cfg["save_id"]),
 	current_player_(cfg["current_player"]),
-	ai_algorithm_(),
-	ready_for_start_(false),
-	allow_player_(cfg["controller"] == "ai" && cfg["allow_player"].empty() ?
-		false : cfg["allow_player"].to_bool(true)),
-	allow_changes_(cfg["allow_changes"].to_bool(true))
+	ai_algorithm_()
 {
 	// Tweak the controllers.
 	if (cfg["controller"] == "human_ai" ||
@@ -481,21 +495,26 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	}
 
 	// Initialize team and color.
-	std::vector<std::string>::const_iterator itor =
-		std::find(parent_.team_names_.begin(), parent_.team_names_.end(),
-			cfg["team_name"].str());
-	if (itor == parent_.team_names_.end()) {
+	unsigned team_name_index = 0;
+	BOOST_FOREACH(const std::string& name, parent_.team_names_) {
+		if (name == cfg["team_name"]) {
+			break;
+		}
+
+		team_name_index++;
+	}
+	if (team_name_index >= parent_.team_names_.size()) {
 		assert(!parent_.team_names_.empty());
 		team_ = 0;
 	} else {
-		team_ = itor - parent_.team_names_.begin();
+		team_ = team_name_index;
 	}
 	if (!cfg["color"].empty()) {
 		color_ = game_config::color_info(cfg["color"]).index() - 1;
 	}
 
 	// Initialize faction lists.
-	available_factions_ = init_available_factions(parent_.era_factions(), cfg_);
+	available_factions_ = init_available_factions(parent_.era_factions_, cfg_);
 	choosable_factions_ = init_choosable_factions(available_factions_, cfg_,
 		parent_.params_.use_map_settings);
 
@@ -503,7 +522,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	current_faction_ = choosable_factions_[0];
 
 	// Initialize ai algorithm.
-	if (const config &ai = cfg.child("ai")) {
+	if (const config& ai = cfg.child("ai")) {
 		ai_algorithm_ = ai["ai_algorithm"].str();
 	}
 
@@ -552,13 +571,15 @@ config side_engine::new_config() const
 
 			break;
 		case CNTR_COMPUTER: {
-			if (!parent_.params_.saved_game && !cfg_.has_attribute("saved_id")) {
+			if (!parent_.params_.saved_game &&
+				!cfg_.has_attribute("saved_id")) {
+
 				res["save_id"] = "ai" + res["side"].str();
 			}
 
 			utils::string_map symbols;
 			if (allow_player_) {
-				const config &ai_cfg =
+				const config& ai_cfg =
 					ai::configuration::get_ai_config_for(ai_algorithm_);
 				res.add_child("ai", ai_cfg);
 				symbols["playername"] = ai_cfg["description"];
@@ -645,12 +666,8 @@ config side_engine::new_config() const
 	if (parent_.params_.use_map_settings && !parent_.params_.saved_game) {
 		config trimmed = cfg_;
 
-		static char const *attrs[] = {"side", "controller", "id",
-			"team_name", "user_team_name", "color", "gold",
-			"income", "allow_changes"};
-
-		BOOST_FOREACH(const char *attr, attrs) {
-			trimmed.remove_attribute(attr);
+		BOOST_FOREACH(const std::string& attribute, attributes_to_trim) {
+			trimmed.remove_attribute(attribute);
 		}
 
 		if (mp_controller_ != CNTR_COMPUTER) {
@@ -692,6 +709,41 @@ bool side_engine::available(const std::string& name) const
 	return allow_player_ &&
 		((mp_controller_ == CNTR_NETWORK && player_id_.empty()) ||
 		(mp_controller_ == CNTR_RESERVED && current_player_ == name));
+}
+
+void side_engine::set_player_from_users_list(const std::string& player_id)
+{
+	connected_user_list::iterator i = parent_.find_player_by_id(player_id);
+	if (i != parent_.users_.end()) {
+		player_id_ = player_id;
+		mp_controller_ = i->controller;
+	}
+}
+
+void side_engine::swap_sides_on_drop_target(const int drop_target) {
+	const std::string target_id =
+		parent_.side_engines_[drop_target]->player_id_;
+	const mp::controller target_controller =
+		parent_.side_engines_[drop_target]->mp_controller_;
+	const std::string target_ai =
+		parent_.side_engines_[drop_target]->ai_algorithm_;
+
+	parent_.side_engines_[drop_target]->ai_algorithm_ = ai_algorithm_;
+	if (player_id_.empty()) {
+		parent_.side_engines_[drop_target]->mp_controller_ = mp_controller_;
+	} else {
+		parent_.side_engines_[drop_target]->
+			set_player_from_users_list(player_id_);
+	}
+
+	ai_algorithm_ = target_ai;
+	if (target_id.empty())
+	{
+		mp_controller_ = target_controller;
+		player_id_ = "";
+	} else {
+		set_player_from_users_list(target_id);
+	}
 }
 
 void side_engine::resolve_random()
@@ -808,24 +860,6 @@ void side_engine::resolve_random()
 	}
 }
 
-void side_engine::import_network_user(const config& data)
-{
-	if (mp_controller_ == CNTR_RESERVED || parent_.params_.saved_game) {
-		ready_for_start_ = true;
-	}
-
-	player_id_ = data["name"].str();
-	mp_controller_ = CNTR_NETWORK;
-
-	BOOST_FOREACH(const config* faction, choosable_factions_) {
-		if ((*faction)["id"] == data["faction"]) {
-			set_current_faction(faction);
-		}
-	}
-	set_current_leader(data["leader"]);
-	set_current_gender(data["gender"]);
-}
-
 void side_engine::reset(mp::controller controller)
 {
 	player_id_.clear();
@@ -844,6 +878,117 @@ void side_engine::reset(mp::controller controller)
 	}
 }
 
+void side_engine::import_network_user(const config& data)
+{
+	if (mp_controller_ == CNTR_RESERVED || parent_.params_.saved_game) {
+		ready_for_start_ = true;
+	}
+
+	player_id_ = data["name"].str();
+	mp_controller_ = CNTR_NETWORK;
+
+	BOOST_FOREACH(const config* faction, choosable_factions_) {
+		if ((*faction)["id"] == data["faction"]) {
+			set_current_faction(faction);
+		}
+	}
+	set_current_leader(data["leader"]);
+	set_current_gender(data["gender"]);
+}
+
+void side_engine::set_current_faction(const config* current_faction)
+{
+	current_faction_ = current_faction;
+
+	update_choosable_leaders();
+	set_current_leader(choosable_leaders_[0]);
+}
+
+void side_engine::set_current_leader(const std::string& current_leader)
+{
+	current_leader_ = current_leader;
+
+	update_choosable_genders();
+	set_current_gender(choosable_genders_[0]);
+}
+
+void side_engine::set_current_gender(const std::string& current_gender)
+{
+	current_gender_ = current_gender;
+}
+
+int side_engine::current_faction_index() const
+{
+	int index = 0;
+	BOOST_FOREACH(const config* faction, choosable_factions_) {
+		if ((*faction)["id"] == (*current_faction_)["id"]) {
+			return index;
+		}
+
+		index++;
+	}
+
+	return 0;
+}
+
+int side_engine::current_leader_index() const
+{
+	int index = 0;
+	BOOST_FOREACH(const std::string& leader, choosable_leaders_) {
+		if (current_leader_ == leader) {
+			return index;
+		}
+
+		index++;
+	}
+
+	return 0;
+}
+
+int side_engine::current_gender_index() const
+{
+	int index = 0;
+	BOOST_FOREACH(const std::string& gender, choosable_genders_) {
+		if (current_gender_ == gender) {
+			return index;
+		}
+
+		index++;
+	}
+
+	return 0;
+}
+
+void side_engine::set_faction_commandline(const std::string& faction_name)
+{
+	BOOST_FOREACH(const config* faction, choosable_factions_) {
+		if ((*faction)["name"] == faction_name) {
+			current_faction_ = faction;
+			break;
+		}
+	}
+}
+
+void side_engine::set_controller_commandline(const std::string& controller_name)
+{
+	mp_controller_ = CNTR_LOCAL;
+
+	if (controller_name == "ai") {
+		mp_controller_ = CNTR_COMPUTER;
+	}
+	if (controller_name == "null") {
+		mp_controller_ = CNTR_EMPTY;
+	}
+
+	player_id_ = "";
+}
+
+void side_engine::set_ai_algorithm_commandline(
+	const std::string& algorithm_name)
+{
+	ai_algorithm_ = algorithm_name;
+}
+
 void side_engine::update_choosable_leaders()
 {
 	choosable_leaders_.clear();
@@ -853,7 +998,7 @@ void side_engine::update_choosable_leaders()
 		// TODO: find a proper way to determine
 		// a leader from a savegame.
 		std::string leader;
-		BOOST_FOREACH(const config &side_unit, cfg_.child_range("unit")) {
+		BOOST_FOREACH(const config& side_unit, cfg_.child_range("unit")) {
 			if (side_unit["canrecruit"].to_bool()) {
 				leader = side_unit["type"].str();
 				break;
@@ -904,7 +1049,7 @@ void side_engine::update_choosable_genders()
 
 	if (parent_.params_.saved_game) {
 		std::string gender;
-		BOOST_FOREACH(const config &side_unit, cfg_.child_range("unit")) {
+		BOOST_FOREACH(const config& side_unit, cfg_.child_range("unit")) {
 			if (current_leader_ == side_unit["type"] &&
 				side_unit["canrecruit"].to_bool()) {
 
@@ -952,133 +1097,6 @@ void side_engine::update_choosable_genders()
 	if (choosable_genders_.empty()) {
 		choosable_genders_.push_back("null");
 	}
-}
-
-int side_engine::selected_faction_index() const
-{
-	int index = 0;
-	BOOST_FOREACH(const config* faction, choosable_factions_) {
-		if ((*faction)["id"] == (*current_faction_)["id"]) {
-			return index;
-		}
-
-		index++;
-	}
-
-	return 0;
-}
-
-int side_engine::selected_leader_index() const
-{
-	int index = 0;
-	BOOST_FOREACH(const std::string& leader, choosable_leaders_) {
-		if (current_leader_ == leader) {
-			return index;
-		}
-
-		index++;
-	}
-
-	return 0;
-}
-
-int side_engine::selected_gender_index() const
-{
-	int index = 0;
-	BOOST_FOREACH(const std::string& gender, choosable_genders_) {
-		if (current_gender_ == gender) {
-			return index;
-		}
-
-		index++;
-	}
-
-	return 0;
-}
-
-void side_engine::set_player_from_users_list(const std::string& player_id)
-{
-	connected_user_list::iterator i = parent_.find_player(player_id);
-	if (i != parent_.users_.end()) {
-		player_id_ = player_id;
-		mp_controller_ = i->controller;
-	}
-}
-
-void side_engine::set_faction_commandline(const std::string& faction_name)
-{
-	BOOST_FOREACH(const config* faction, choosable_factions_) {
-		if ((*faction)["name"] == faction_name) {
-			current_faction_ = faction;
-			break;
-		}
-	}
-}
-
-void side_engine::set_controller_commandline(const std::string& controller_name)
-{
-	mp_controller_ = CNTR_LOCAL;
-
-	if (controller_name == "ai") {
-		mp_controller_ = CNTR_COMPUTER;
-	}
-	if (controller_name == "null") {
-		mp_controller_ = CNTR_EMPTY;
-	}
-
-	player_id_ = "";
-}
-
-void side_engine::set_ai_algorithm_commandline(
-	const std::string& algorithm_name)
-{
-	ai_algorithm_ = algorithm_name;
-}
-
-void side_engine::assign_sides_on_drop_target(const int drop_target) {
-	const std::string target_id = parent_.side_engines_[drop_target]->player_id_;
-	const mp::controller target_controller =
-		parent_.side_engines_[drop_target]->mp_controller_;
-	const std::string target_ai =
-		parent_.side_engines_[drop_target]->ai_algorithm_;
-
-	parent_.side_engines_[drop_target]->ai_algorithm_ = ai_algorithm_;
-	if (player_id_.empty()) {
-		parent_.side_engines_[drop_target]->mp_controller_ = mp_controller_;
-	} else {
-		parent_.side_engines_[drop_target]->
-			set_player_from_users_list(player_id_);
-	}
-
-	ai_algorithm_ = target_ai;
-	if (target_id.empty())
-	{
-		mp_controller_ = target_controller;
-		player_id_ = "";
-	} else {
-		set_player_from_users_list(target_id);
-	}
-}
-
-void side_engine::set_current_faction(const config* current_faction)
-{
-	current_faction_ = current_faction;
-
-	update_choosable_leaders();
-	set_current_leader(choosable_leaders_[0]);
-}
-
-void side_engine::set_current_leader(const std::string& current_leader)
-{
-	current_leader_ = current_leader;
-
-	update_choosable_genders();
-	set_current_gender(choosable_genders_[0]);
-}
-
-void side_engine::set_current_gender(const std::string& current_gender)
-{
-	current_gender_ = current_gender;
 }
 
 void side_engine::append_leaders_from_faction(const config* faction)

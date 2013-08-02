@@ -496,7 +496,7 @@ static bool enter_connect_mode(game_display& disp, const config& game_config,
 		// so it must be called before get_level()
 		if (res == mp::ui::PLAY) {
 			ui.start_game();
-			state = ui.get_state();
+			state = ui.state();
 		}
 	}
 
@@ -863,7 +863,7 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 
 		// Update the parameters to reflect game start conditions
 		ui.start_game_commandline(cmdline_opts);
-		state = ui.get_state();
+		state = ui.state();
 	}
 
 	std::string label = "";
@@ -919,7 +919,7 @@ game_state goto_mp_connect(game_display& disp, const config& game_config,
 		res = ui.get_result();
 		if (res == mp::ui::PLAY) {
 			ui.start_game();
-			state = ui.get_state();
+			state = ui.state();
 		}
 	}
 
