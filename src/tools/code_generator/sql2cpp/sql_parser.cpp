@@ -16,6 +16,8 @@
 #include <boost/spirit/include/lex_lexertl.hpp>
 #include <boost/spirit/include/phoenix.hpp>
 
+#include <boost/fusion/include/adapt_struct.hpp>
+
 #include <boost/shared_ptr.hpp>
 #include <boost/make_shared.hpp>
 #include <boost/static_assert.hpp>
@@ -93,6 +95,13 @@ struct sql_column
 	std::vector<boost::shared_ptr<sql::base_type_constraint> > constraints;
 };
 
+BOOST_FUSION_ADAPT_STRUCT(
+	sql_column,
+	(std::string, column_identifier)
+	(boost::shared_ptr<sql::type::base_type>, sql_type)
+	(std::vector<boost::shared_ptr<sql::base_type_constraint> >, constraints)
+)
+
 template <class synthesized, class inherited = void>
 struct attribute
 {
@@ -121,6 +130,7 @@ public:
 	typedef attribute<boost::shared_ptr<sql::type::base_type> > data_attribute;
 	typedef attribute<std::string> default_value_attribute;
 	typedef attribute<boost::shared_ptr<sql::base_type_constraint> > type_constraint_attribute;
+	typedef attribute<sql_column> column_attribute;
 
 	template<class T>
 	void make_data_type(typename data_attribute::s_type& res) const
@@ -175,7 +185,7 @@ struct sql_grammar
 			;
 
 		column_definition
-			=   tok.identifier >> data_type >> *type_constraint
+			%=   tok.identifier >> data_type >> *type_constraint
 			;
 
 		type_constraint
@@ -233,7 +243,7 @@ struct sql_grammar
 
 	simple_rule program, statement;
 	simple_rule create_statement, create_table, create_table_definition;
-	simple_rule column_definition;
+	typename rule<typename semantic_actions::column_attribute::type>::type column_definition;
 	typename rule<typename semantic_actions::type_constraint_attribute::type>::type type_constraint;
 	typename rule<typename semantic_actions::default_value_attribute::type>::type default_value;
 	typename rule<typename semantic_actions::data_attribute::type>::type data_type;
