@@ -196,11 +196,11 @@ class Addon(object):
                 pass
             elif status == "=":
                 # Up to date?
-                logging.warn("Commit to add-on {0} with message {1} has not made any changes".format(self.name, message))
+                logging.warn("Commit to add-on {0} with message '{1}' has not made any changes".format(self.name, message))
             elif status == "!":
-                raise AddonError(self.name, "Commit with message {0} failed for reason {1}".format(message, summary))
+                raise AddonError(self.name, "Commit with message '{0}' failed for reason {1}".format(message, summary))
             else:
-                raise AddonError(self.name, "Commit with message {0} has done something unexpected: {1}".format(message, statusline[0]))
+                raise AddonError(self.name, "Commit with message '{0}' has done something unexpected: {1}".format(message, statusline[0]))
 
     def get_dir(self):
         """Return the directory this add-on's checkout is in.
