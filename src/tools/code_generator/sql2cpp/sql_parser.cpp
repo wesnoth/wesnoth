@@ -127,18 +127,19 @@ struct attribute <void, inherited>
 class semantic_actions
 {
 public:
-	typedef attribute<boost::shared_ptr<sql::type::base_type> > data_attribute;
+	typedef attribute<boost::shared_ptr<sql::type::base_type> > column_type_attribute;
 	typedef attribute<std::string> default_value_attribute;
 	typedef attribute<boost::shared_ptr<sql::base_type_constraint> > type_constraint_attribute;
 	typedef attribute<sql_column> column_attribute;
+	typedef attribute<std::vector<sql_column> > create_table_columns_attribute;
 
 	template<class T>
-	void make_data_type(typename data_attribute::s_type& res) const
+	void make_column_type(typename column_type_attribute::s_type& res) const
 	{
 		res = boost::make_shared<T>();
 	}
 
-	void make_varchar_type(typename data_attribute::s_type& res, std::size_t length) const
+	void make_varchar_type(typename column_type_attribute::s_type& res, std::size_t length) const
 	{
 		res = boost::make_shared<sql::type::varchar>(length);
 	}
@@ -177,15 +178,15 @@ struct sql_grammar
 			;
 
 		create_table
-			=   create_table_definition.alias()
+			=   create_table_columns.alias()
 			;
 
-		create_table_definition
-			=   column_definition % ','     // comma separated list of column_definition.
+		create_table_columns
+			%=   column_definition % ','     // comma separated list of column_definition.
 			;
 
 		column_definition
-			%=   tok.identifier >> data_type >> *type_constraint
+			%=   tok.identifier >> column_type >> *type_constraint
 			;
 
 		type_constraint
@@ -199,21 +200,21 @@ struct sql_grammar
 			%=   tok.kw_default > tok.quoted_string
 			;
 
-		data_type
-			=   tok.type_smallint		[phx::bind(&semantic_actions::make_data_type<sql::type::smallint>, &sa_, qi::_val)]
-			|   tok.type_int 				[phx::bind(&semantic_actions::make_data_type<sql::type::integer>, &sa_, qi::_val)]
+		column_type
+			=   tok.type_smallint		[phx::bind(&semantic_actions::make_column_type<sql::type::smallint>, &sa_, qi::_val)]
+			|   tok.type_int 				[phx::bind(&semantic_actions::make_column_type<sql::type::integer>, &sa_, qi::_val)]
 			|   (tok.type_varchar > '(' > tok.unsigned_digit > ')') [phx::bind(&semantic_actions::make_varchar_type, &sa_, qi::_val, qi::_1)]
-			|   tok.type_text 			[phx::bind(&semantic_actions::make_data_type<sql::type::text>, &sa_, qi::_val)]
-			|   tok.type_date			  [phx::bind(&semantic_actions::make_data_type<sql::type::date>, &sa_, qi::_val)]
+			|   tok.type_text 			[phx::bind(&semantic_actions::make_column_type<sql::type::text>, &sa_, qi::_val)]
+			|   tok.type_date			  [phx::bind(&semantic_actions::make_column_type<sql::type::date>, &sa_, qi::_val)]
 			;
 
 		program.name("program");
 		statement.name("statement");
 		create_statement.name("create statement");
 		create_table.name("create table");
-		create_table_definition.name("create table definition");
+		create_table_columns.name("create table columns");
 		column_definition.name("column definition");
-		data_type.name("data type");
+		column_type.name("column type");
 		default_value.name("default value");
 		type_constraint.name("type constraint");
 
@@ -242,11 +243,12 @@ struct sql_grammar
 	semantic_actions sa_;
 
 	simple_rule program, statement;
-	simple_rule create_statement, create_table, create_table_definition;
+	simple_rule create_statement, create_table;
+	typename rule<typename semantic_actions::create_table_columns_attribute::type>::type create_table_columns;
 	typename rule<typename semantic_actions::column_attribute::type>::type column_definition;
 	typename rule<typename semantic_actions::type_constraint_attribute::type>::type type_constraint;
 	typename rule<typename semantic_actions::default_value_attribute::type>::type default_value;
-	typename rule<typename semantic_actions::data_attribute::type>::type data_type;
+	typename rule<typename semantic_actions::column_type_attribute::type>::type column_type;
 };
 
 
