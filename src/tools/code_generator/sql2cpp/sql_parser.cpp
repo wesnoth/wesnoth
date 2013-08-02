@@ -41,7 +41,8 @@ struct sql_tokens : lex::lexer<Lexer>
 public:
 	// Tokens with no attributes.
 	lex::token_def<lex::omit> type_smallint, type_int, type_varchar, type_text, type_date;
-	lex::token_def<lex::omit> kw_not_null, kw_auto_increment, kw_unique, kw_default;
+	lex::token_def<lex::omit> kw_not_null, kw_auto_increment, kw_unique, kw_default, kw_create,
+		kw_table;
 
 	// Attributed tokens. (If you add a new type, don't forget to add it to the lex::lexertl::token definition too).
 	lex::token_def<int> signed_digit;
@@ -63,6 +64,8 @@ public:
 		kw_auto_increment = "auto_increment";
 		kw_unique = "unique";
 		kw_default = "default";
+		kw_create = "create";
+		kw_table = "table";
 
 		// Values.
 		signed_digit = "[+-]?[0-9]+";
@@ -76,7 +79,8 @@ public:
 		this->self += lex::token_def<>('(') | ')' | ',';
 		this->self += type_smallint | type_int | type_varchar | type_text |
 									type_date;
-		this->self += kw_not_null | kw_auto_increment | kw_unique | kw_default;
+		this->self += kw_not_null | kw_auto_increment | kw_unique | kw_default |
+									kw_create | kw_table;
 		this->self += identifier | unsigned_digit | signed_digit | quoted_string;
 
 		// define the whitespace to ignore.
@@ -100,6 +104,18 @@ BOOST_FUSION_ADAPT_STRUCT(
 	(std::string, column_identifier)
 	(boost::shared_ptr<sql::type::base_type>, sql_type)
 	(std::vector<boost::shared_ptr<sql::base_type_constraint> >, constraints)
+)
+
+struct sql_table
+{
+	std::string table_identifier;
+	std::vector<sql_column> columns;
+};
+
+BOOST_FUSION_ADAPT_STRUCT(
+	sql_table,
+	(std::string, table_identifier)
+	(std::vector<sql_column>, columns)
 )
 
 template <class synthesized, class inherited = void>
@@ -132,6 +148,7 @@ public:
 	typedef attribute<boost::shared_ptr<sql::base_type_constraint> > type_constraint_attribute;
 	typedef attribute<sql_column> column_attribute;
 	typedef attribute<std::vector<sql_column> > create_table_columns_attribute;
+	typedef attribute<sql_table> create_table_attribute;
 
 	template<class T>
 	void make_column_type(typename column_type_attribute::s_type& res) const
@@ -178,7 +195,7 @@ struct sql_grammar
 			;
 
 		create_table
-			=   create_table_columns.alias()
+			%=   tok.kw_create >> tok.kw_table >> tok.identifier >> create_table_columns
 			;
 
 		create_table_columns
@@ -242,8 +259,8 @@ struct sql_grammar
 
 	semantic_actions sa_;
 
-	simple_rule program, statement;
-	simple_rule create_statement, create_table;
+	simple_rule program, statement, create_statement;
+	typename rule<typename semantic_actions::create_table_attribute::type>::type create_table;
 	typename rule<typename semantic_actions::create_table_columns_attribute::type>::type create_table_columns;
 	typename rule<typename semantic_actions::column_attribute::type>::type column_definition;
 	typename rule<typename semantic_actions::type_constraint_attribute::type>::type type_constraint;
