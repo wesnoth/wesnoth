@@ -42,7 +42,8 @@ public:
 	lex::token_def<lex::omit> kw_not_null, kw_auto_increment, kw_unique, kw_default;
 
 	// Attributed tokens. (If you add a new type, don't forget to add it to the lex::lexertl::token definition too).
-	lex::token_def<std::size_t> signed_digit;
+	lex::token_def<int> signed_digit;
+	lex::token_def<std::size_t> unsigned_digit;
 	lex::token_def<std::string> identifier;
 
 	sql_tokens()
@@ -62,6 +63,7 @@ public:
 
 		// Values.
 		signed_digit = "[+-]?[0-9]+";
+		unsigned_digit = "[0-9]+";
 
 		// Identifier.
 		identifier = "[a-zA-Z][a-zA-Z0-9_]*";
@@ -72,7 +74,7 @@ public:
 									type_date;
 		this->self += kw_not_null | kw_auto_increment | kw_unique | kw_default;
 		this->self += identifier;
-		this->self += signed_digit;
+		this->self += unsigned_digit | signed_digit;
 
 		// define the whitespace to ignore.
 		this->self("WS")
@@ -176,7 +178,7 @@ struct sql_grammar
 		data_type
 			=   tok.type_smallint		[phx::bind(&semantic_actions::make_data_type<sql::type::smallint>, &sa_, qi::_val)]
 			|   tok.type_int 				[phx::bind(&semantic_actions::make_data_type<sql::type::integer>, &sa_, qi::_val)]
-			|   (tok.type_varchar > '(' > tok.signed_digit > ')') [phx::bind(&semantic_actions::make_varchar_type, &sa_, qi::_val, qi::_1)]
+			|   (tok.type_varchar > '(' > tok.unsigned_digit > ')') [phx::bind(&semantic_actions::make_varchar_type, &sa_, qi::_val, qi::_1)]
 			|   tok.type_text 			[phx::bind(&semantic_actions::make_data_type<sql::type::text>, &sa_, qi::_val)]
 			|   tok.type_date			  [phx::bind(&semantic_actions::make_data_type<sql::type::date>, &sa_, qi::_val)]
 			;
