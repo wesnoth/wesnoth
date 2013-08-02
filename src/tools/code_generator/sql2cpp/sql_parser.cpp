@@ -76,7 +76,7 @@ public:
 		identifier = "[a-zA-Z][a-zA-Z0-9_]*";
 
 		// The token must be added in priority order.
-		this->self += lex::token_def<>('(') | ')' | ',';
+		this->self += lex::token_def<>('(') | ')' | ',' | ';';
 		this->self += type_smallint | type_int | type_varchar | type_text |
 									type_date;
 		this->self += kw_not_null | kw_auto_increment | kw_unique | kw_default |
@@ -186,7 +186,7 @@ struct sql_grammar
 		: sql_grammar::base_type(program, "program")
 	{
 		program 
-			%=  +statement
+			%=  (statement % ';') >> *qi::lit(';')
 			;
 
 		statement 
@@ -198,7 +198,7 @@ struct sql_grammar
 			;
 
 		create_table
-			%=	tok.kw_table >> tok.identifier >> create_table_columns
+			%=	tok.kw_table >> tok.identifier >> '(' >> create_table_columns >> ')'
 			;
 
 		create_table_columns
