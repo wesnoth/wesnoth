@@ -45,6 +45,7 @@ public:
 	lex::token_def<int> signed_digit;
 	lex::token_def<std::size_t> unsigned_digit;
 	lex::token_def<std::string> identifier;
+	lex::token_def<std::string> quoted_string;
 
 	sql_tokens()
 	{
@@ -64,6 +65,7 @@ public:
 		// Values.
 		signed_digit = "[+-]?[0-9]+";
 		unsigned_digit = "[0-9]+";
+		quoted_string = "\\\"(\\\\.|[^\\\"])*\\\""; // \"(\\.|[^\"])*\"
 
 		// Identifier.
 		identifier = "[a-zA-Z][a-zA-Z0-9_]*";
@@ -73,8 +75,7 @@ public:
 		this->self += type_smallint | type_int | type_varchar | type_text |
 									type_date;
 		this->self += kw_not_null | kw_auto_increment | kw_unique | kw_default;
-		this->self += identifier;
-		this->self += unsigned_digit | signed_digit;
+		this->self += identifier | unsigned_digit | signed_digit | quoted_string;
 
 		// define the whitespace to ignore.
 		this->self("WS")
@@ -118,6 +119,7 @@ class semantic_actions
 {
 public:
 	typedef attribute<boost::shared_ptr<sql::type::base_type> > data_attribute;
+	typedef attribute<std::string> default_value_attribute;
 
 	template<class T>
 	void make_data_type(typename data_attribute::s_type& res) const
@@ -172,7 +174,7 @@ struct sql_grammar
 			;
 
 		default_value
-			=   tok.kw_default >> tok.signed_digit
+			%=   tok.kw_default > tok.quoted_string
 			;
 
 		data_type
@@ -219,7 +221,8 @@ struct sql_grammar
 
 	simple_rule program, statement;
 	simple_rule create_statement, create_table, create_table_definition;
-	simple_rule column_definition, default_value, constraint_definition;
+	simple_rule column_definition, constraint_definition;
+	typename rule<typename semantic_actions::default_value_attribute::type>::type default_value;
 	typename rule<typename semantic_actions::data_attribute::type>::type data_type;
 };
 
@@ -246,7 +249,7 @@ int main(int argc, char* argv[])
 	// used for token_def<> declarations in the token definition class above,  
 	// otherwise compilation errors will occur.
 	typedef lex::lexertl::token<
-		base_iterator_type, boost::mpl::vector<unsigned int, std::string> 
+		base_iterator_type, boost::mpl::vector<int, std::size_t, std::string> 
 	> token_type;
 
 	// Here we use the lexertl based lexer engine.
