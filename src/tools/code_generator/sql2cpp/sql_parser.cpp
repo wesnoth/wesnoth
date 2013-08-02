@@ -120,6 +120,7 @@ class semantic_actions
 public:
 	typedef attribute<boost::shared_ptr<sql::type::base_type> > data_attribute;
 	typedef attribute<std::string> default_value_attribute;
+	typedef attribute<boost::shared_ptr<sql::base_type_constraint> > type_constraint_attribute;
 
 	template<class T>
 	void make_data_type(typename data_attribute::s_type& res) const
@@ -130,6 +131,17 @@ public:
 	void make_varchar_type(typename data_attribute::s_type& res, std::size_t length) const
 	{
 		res = boost::make_shared<sql::type::varchar>(length);
+	}
+
+	template <class T>
+	void make_type_constraint(typename type_constraint_attribute::s_type& res) const
+	{
+		res = boost::make_shared<T>();
+	}
+
+	void make_default_value_constraint(typename type_constraint_attribute::s_type& res, const std::string& default_value) const
+	{
+		res = boost::make_shared<sql::default_value>(default_value);
 	}
 };
 
@@ -163,14 +175,14 @@ struct sql_grammar
 			;
 
 		column_definition
-			=   tok.identifier >> data_type >> *constraint_definition
+			=   tok.identifier >> data_type >> *type_constraint
 			;
 
-		constraint_definition
-			=   tok.kw_not_null
-			|   tok.kw_auto_increment
-			|   tok.kw_unique
-			|   default_value
+		type_constraint
+			=   tok.kw_not_null		[phx::bind(&semantic_actions::make_type_constraint<sql::not_null>, &sa_, qi::_val)]
+			|   tok.kw_auto_increment	[phx::bind(&semantic_actions::make_type_constraint<sql::auto_increment>, &sa_, qi::_val)]
+			|   tok.kw_unique			[phx::bind(&semantic_actions::make_type_constraint<sql::unique>, &sa_, qi::_val)]
+			|   default_value 		[phx::bind(&semantic_actions::make_default_value_constraint, &sa_, qi::_val, qi::_1)]
 			;
 
 		default_value
@@ -193,7 +205,7 @@ struct sql_grammar
 		column_definition.name("column definition");
 		data_type.name("data type");
 		default_value.name("default value");
-		constraint_definition.name("constraint definition");
+		type_constraint.name("type constraint");
 
 		using namespace qi::labels;
 		qi::on_error<qi::fail>
@@ -221,7 +233,8 @@ struct sql_grammar
 
 	simple_rule program, statement;
 	simple_rule create_statement, create_table, create_table_definition;
-	simple_rule column_definition, constraint_definition;
+	simple_rule column_definition;
+	typename rule<typename semantic_actions::type_constraint_attribute::type>::type type_constraint;
 	typename rule<typename semantic_actions::default_value_attribute::type>::type default_value;
 	typename rule<typename semantic_actions::data_attribute::type>::type data_type;
 };

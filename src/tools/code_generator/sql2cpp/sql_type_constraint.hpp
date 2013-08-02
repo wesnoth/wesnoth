@@ -15,8 +15,6 @@
 #ifndef SQL_TYPE_CONSTRAINT_HPP
 #define SQL_TYPE_CONSTRAINT_HPP
 
-#include "tools/code_generator/sql2cpp/sql_type_storage.hpp"
-
 namespace sql{
 
 struct base_type_constraint{};
@@ -30,10 +28,9 @@ struct not_null : base_type_constraint
 struct auto_increment : base_type_constraint
 {};
 
-template <class T>
 struct default_value : base_type_constraint
 {
-	typedef typename sql::type::type_storage<T>::storage_type value_type;
+	typedef std::string value_type;
 	
 	default_value(const value_type& value)
 	: value(value)
