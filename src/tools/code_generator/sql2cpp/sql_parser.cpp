@@ -149,6 +149,9 @@ public:
 	typedef attribute<sql_column> column_attribute;
 	typedef attribute<std::vector<sql_column> > create_table_columns_attribute;
 	typedef attribute<sql_table> create_table_attribute;
+	typedef attribute<sql_table> create_statement_attribute;
+	typedef attribute<sql_table> statement_attribute;
+	typedef attribute<std::vector<sql_table> > program_attribute;
 
 	template<class T>
 	void make_column_type(typename column_type_attribute::s_type& res) const
@@ -176,26 +179,26 @@ public:
 // Grammar definition, define a little part of the SQL language.
 template <typename Iterator, typename Lexer>
 struct sql_grammar 
-	: qi::grammar<Iterator, qi::in_state_skipper<Lexer> >
+	: qi::grammar<Iterator, qi::in_state_skipper<Lexer>, typename semantic_actions::program_attribute::type>
 {
 	template <typename TokenDef>
 	sql_grammar(TokenDef const& tok)
-		: sql_grammar::base_type(program, "sql")
+		: sql_grammar::base_type(program, "program")
 	{
 		program 
-			=  +statement
+			%=  +statement
 			;
 
 		statement 
-			=   create_statement.alias()
+			%=   create_statement
 			;
 
 		create_statement
-			=   create_table.alias()
+			%=   tok.kw_create >> create_table
 			;
 
 		create_table
-			%=   tok.kw_create >> tok.kw_table >> tok.identifier >> create_table_columns
+			%=	tok.kw_table >> tok.identifier >> create_table_columns
 			;
 
 		create_table_columns
@@ -249,6 +252,7 @@ struct sql_grammar
 		);
 	}
 
+private:
 	typedef qi::in_state_skipper<Lexer> skipper_type;
 	template <class Attribute>
 	struct rule
@@ -259,7 +263,10 @@ struct sql_grammar
 
 	semantic_actions sa_;
 
-	simple_rule program, statement, create_statement;
+	//simple_rule program;
+	typename rule<typename semantic_actions::program_attribute::type>::type program;
+	typename rule<typename semantic_actions::statement_attribute::type>::type statement;
+	typename rule<typename semantic_actions::create_statement_attribute::type>::type create_statement;
 	typename rule<typename semantic_actions::create_table_attribute::type>::type create_table;
 	typename rule<typename semantic_actions::create_table_columns_attribute::type>::type create_table_columns;
 	typename rule<typename semantic_actions::column_attribute::type>::type column_definition;
@@ -325,7 +332,8 @@ int main(int argc, char* argv[])
 	// be explicitly wrapped inside a state directive, switching the lexer 
 	// state for the duration of skipping whitespace.
 	std::string ws("WS");
-	bool r = qi::phrase_parse(iter, end, sql, qi::in_state(ws)[tokens.self]);
+	typename semantic_actions::program_attribute::s_type sql_ast;
+	bool r = qi::phrase_parse(iter, end, sql, qi::in_state(ws)[tokens.self], sql_ast);
 
 
 	if (r && iter == end)
