@@ -22,8 +22,6 @@
 #include <boost/make_shared.hpp>
 #include <boost/static_assert.hpp>
 
-#include "filesystem.hpp"
-
 #include "tools/code_generator/sql2cpp/sql_type.hpp"
 #include "tools/code_generator/sql2cpp/sql_type_constraint.hpp"
 
@@ -56,19 +54,19 @@ public:
 	sql_tokens()
 	{
 		// Column data types.
-		type_smallint = "smallint";
-		type_int = "int";
-		type_varchar = "varchar";
-		type_text = "text";
-		type_date = "date";
+		type_smallint = "(?i:smallint)";
+		type_int = "(?i:int)";
+		type_varchar = "(?i:varchar)";
+		type_text = "(?i:text)";
+		type_date = "(?i:date)";
 
 		// Keywords.
-		kw_not_null = "not null";
-		kw_auto_increment = "auto_increment";
-		kw_unique = "unique";
-		kw_default = "default";
-		kw_create = "create";
-		kw_table = "table";
+		kw_not_null = "(?i:not null)";
+		kw_auto_increment = "(?i:auto_increment)";
+		kw_unique = "(?i:unique)";
+		kw_default = "(?i:default)";
+		kw_create = "(?i:create)";
+		kw_table = "(?i:table)";
 
 		// Values.
 		signed_digit = "[+-]?[0-9]+";
