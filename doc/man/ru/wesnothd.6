@@ -53,10 +53,9 @@ wesnothd \- демон многопользовательской игры Би�
 сообщает, что делают параметры командной строки.
 .TP 
 \fB\-\-log\-\fP\fIуровень\fP\fB=\fP\fIдомен1\fP\fB,\fP\fIдомен2\fP\fB,\fP\fI...\fP
-sets the severity level of the log domains.  \fBall\fP can be used to match any
-log domain. Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP.
-By default the \fBerror\fP level is used and the \fBinfo\fP level for the
-\fBserver\fP domain.
+задает уровень для отладочных доменов.  \fBall\fP может соответствовать любому
+отладочному домену. Доступны уровни: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP.  По умолчанию используется уровень \fBerror\fP, а для домена
+\fBserver\fP — уровень \fBinfo\fP.
 .TP 
 \fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ порт\fP
 привязывает сервер к указанному порту. Если порт не указан, используется
@@ -106,8 +105,8 @@ By default the \fBerror\fP level is used and the \fBinfo\fP level for the
 сервера.
 .TP 
 \fBcompress_stored_rooms\fP
-Determines whether the rooms file should be read and written to in
-compressed form. Defaults to \fByes\fP.
+Определяет, нужно ли читать и писать файлы комнат в сжатой форме. Значение
+по умолчанию — \fByes\fP.
 .TP 
 \fBconnections_allowed\fP
 Число разрешенных подключений от одного IP\-адреса. \fB0\fP значит \-
@@ -120,9 +119,9 @@ compressed form. Defaults to \fByes\fP.
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-The path to the fifo you can echo server commands into (same as /query
-\&... from wesnoth).  If not specified defaults to the compile\-time path
-(default: \fB/var/run/socket/wesnothd/socket\fP).
+Путь к fifo, куда можно направлять серверные команды (соответствует команде
+/query ... в wesnoth).  Если не задан, используется файл, заданный при
+компиляции (по умолчанию \fB/var/run/socket/wesnothd/socket\fP)
 .TP 
 \fBmax_messages\fP
 Число разрешенных сообщений в \fBmessages_time_period\fP. (по умолчанию: \fB4\fP)
@@ -157,14 +156,14 @@ The path to the fifo you can echo server commands into (same as /query
 запущен.
 .TP 
 \fBrestart_command\fP
-The command that the server uses to start a new server process via the
-\fBrestart\fP command. (Can only be issued via the fifo. See the
-\fBallow_remote_shutdown\fP setting.)
+Команда, с помощью которой сервер запускает новый серверный процесс через
+команду \fBrestart\fP.  (Может быть подана только через fifo.  См. также
+\fBallow_remote_shutdown\fP.)
 .TP 
 \fBroom_save_file\fP
-Path to a file where the room info should be stored. This file is read on
-server startup and written to later. If empty or not set, rooms are not
-loaded and not saved.
+Путь к файлу, в котором нужно сохранить информацию о комнате.  При запуске
+сервер читает этот файл, а позднее в него пишет.  Если файл пуст или не
+задан, комнаты не загружаются и не сохраняются.
 .TP 
 \fBsave_replays\fP
 Определяет будет ли сервер сохранять повторы игр (по умолчанию: \fBfalse\fP)
@@ -176,11 +175,11 @@ loaded and not saved.
 Пример: \fBversions_accepted="*"\fP принимает строку с любой версией.
 .TP  
 \fBuser_handler\fP
-The name of the user handler to use. Currently available user handlers are
-\fBforum\fP (to connect wesnothd to a phpbb forum database) and \fBsample\fP (a
-sample implementation of the user handler interface, if you use this on
-anything real you are insane). The default value is \fBforum\fP. You must also
-add a \fB[user_handler]\fP section, see below.
+Имя используемого блока работы с пользователями.  Сейчас доступны блоки
+\fBforum\fP (чтобы связать wesnothd с базой данных форума phpbb) и \fBsample\fP
+(имплементация\-заглушка, не пытайтесь в здравом уме использовать ее для
+реальной работы).  По умолчанию используется \fBforum\fP.  Вы также должны
+добавить секцию \fB[user_handler]\fP, см. ниже.
 .
 .SS "Глобальные тэги:"
 .
@@ -200,12 +199,12 @@ add a \fB[user_handler]\fP section, see below.
 заполнителей поведение аналогично \fBversions_accepted\fP.
 .RE
 .P
-\fB[ban_time]\fP A tag to define convenient keywords for temporary ban time
-lengths.
+\fB[ban_time]\fP Тэг, который задает удобные ключевые слова для сроков
+временного бана.
 .RS
 .TP 
 \fBname\fP
-The name used to reference the ban time.
+Имя, которое используется для указания на время бана.
 .TP 
 \fBtime\fP
 Определение длительности времени. Формат: %d[%s[%d%s[...]]] где %s
@@ -224,10 +223,10 @@ The name used to reference the ban time.
 ключи, что и \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Configures the user handler. Available keys vary depending
-on which user handler is set with the \fBuser_handler\fP key. If no
-\fB[user_handler]\fP section is present in the configuration the server will
-run without any nick registration service.
+\fB[user_handler]\fP Настройка блока работы с пользователями.  Доступные ключи
+зависят от того, какой именно блок задан ключом \fBuser_handler\fP.  Если
+секции \fB[user_handler]\fP в конфигурационном файле нет, сервер будет запущен
+без службы регистрации ников.
 .RS
 .TP  
 \fBdb_host\fP
@@ -268,8 +267,9 @@ NOT NULL DEFAULT 0);\fP
 зарегистрированный ник истекает (в днях).
 .RE
 .P
-\fB[mail]\fP Configures an SMTP server through which the user handler can send
-mail. Currently only used by the sample user handler.
+\fB[mail]\fP Настраивает SMTP\-сервер, через который блок работы с
+пользователями может отправлять письма.  Пока что используется только
+блоком\-заглушкой.
 .RS
 .TP  
 \fBserver\fP
@@ -305,7 +305,7 @@ Soliton <soliton.de@gmail.com> и Томасом Баумхаером
 .
 .SH "АВТОРСКОЕ ПРАВО"
 .
-Copyright \(co 2003\-2013 David White <davidnwhite@verizon.net>
+Авторское право \(co Дэвид Уайт, 2003\-2013 <davidnwhite@verizon.net>
 .br
 This is Free Software; this software is licensed under the GPL version 2, as
 published by the Free Software Foundation.  There is NO warranty; not even
