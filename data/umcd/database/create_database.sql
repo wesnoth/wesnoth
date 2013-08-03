@@ -120,7 +120,7 @@ CREATE TABLE Translation (
   fuzzy int NOT NULL,
   translated int NOT NULL,
   untranslated int NOT NULL,
-  timestamp date NOT NULL,
+  upload_date date NOT NULL,
   CONSTRAINT pk_Translation PRIMARY KEY (id)
 );
 

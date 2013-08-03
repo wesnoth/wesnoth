@@ -15,12 +15,14 @@
 #include <boost/spirit/include/qi.hpp>
 #include <boost/spirit/include/lex_lexertl.hpp>
 #include <boost/spirit/include/phoenix.hpp>
-
+#include <boost/spirit/include/karma.hpp>
 #include <boost/fusion/include/adapt_struct.hpp>
 
 #include <boost/shared_ptr.hpp>
 #include <boost/make_shared.hpp>
 #include <boost/static_assert.hpp>
+
+#include "filesystem.hpp"
 
 #include "tools/code_generator/sql2cpp/sql_type.hpp"
 #include "tools/code_generator/sql2cpp/sql_type_constraint.hpp"
@@ -32,6 +34,7 @@
 namespace bs = boost::spirit;
 namespace lex = boost::spirit::lex;
 namespace qi = boost::spirit::qi;
+namespace karma = boost::spirit::karma;
 namespace phx = boost::phoenix;
 
 // Token definition base, defines all tokens for the base grammar below
@@ -275,18 +278,28 @@ private:
 	typename rule<typename semantic_actions::column_type_attribute::type>::type column_type;
 };
 
+std::string file2string(const std::string& filename)
+{
+	std::ifstream s(filename.c_str(), std::ios_base::binary);
+	std::stringstream ss;
+	ss << s.rdbuf();
+	return ss.str();
+}
 
 int main(int argc, char* argv[])
 {
 	if(argc != 2)
-		exit(1);
+	{
+		std::cerr << "usage: " << argv[0] << " schema_filename\n";
+		return 1;
+	}
 
 	// iterator type used to expose the underlying input stream
 	typedef std::string::iterator base_iterator_type;
 
 	// This is the lexer token type to use. The second template parameter lists 
 	// all attribute types used for token_def's during token definition (see 
-	// example5_base_tokens<> above). Here we use the predefined lexertl token 
+	// sql_tokens<> above). Here we use the predefined lexertl token 
 	// type, but any compatible token type may be used instead.
 	//
 	// If you don't list any token attribute types in the following declaration 
@@ -318,11 +331,11 @@ int main(int argc, char* argv[])
 	sql_tokens tokens;                         // Our lexer
 	sql_grammar sql(tokens);                  // Our parser
 
-	std::string str(argv[1]);
+	std::string str(file2string(argv[1]));
 
 	// At this point we generate the iterator pair used to expose the
 	// tokenized input stream.
-	std::string::iterator it = str.begin();
+	base_iterator_type it = str.begin();
 	iterator_type iter = tokens.begin(it, str.end());
 	iterator_type end = tokens.end();
 
