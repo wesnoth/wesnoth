@@ -277,8 +277,9 @@ const char gen_nom[] = "YetAnotherMapGenerator";
 const char def_nom[] = "tempered";
 const char pol_nom[] = "polar";
 const char medi_nom[] = "mediterranean";
-const char trop_nom[] = "tropical";
+const char equ_nom[] = "equatorial";
 const char desert_nom[] = "desert";
+const char cust_nom[] = "custom";
 
 /**
  *** allow_user_config
@@ -310,13 +311,15 @@ std::string ya_mapgen::config_name() const {
 	else
 		switch (parms_->type) {
 		case 'p':
-            return def_nom;
+            return pol_nom;
 		case 'm':
-            return def_nom;
+            return medi_nom;
 		case 'd':
-            return def_nom;
+            return desert_nom;
 		case 'e':
-            return def_nom;
+            return equ_nom;
+        case 'c':
+            return cust_nom;
 		case 't':
 		default:
             return def_nom;
@@ -371,6 +374,7 @@ void ya_mapgen::reset_map() {
 	}
 	if (map_ != NULL)
         free_map();
+	endpoints_ = NULL;
 	status_ = YAMG_EMPTY;
 }
 
@@ -451,14 +455,6 @@ int ya_mapgen::create_map() {
 	}
     create_altitudes(0, dim, 0, dim, M_VARIATION);
 
-	//TODO
-	/* DEBUG **
-	 This allow to verify altitudes: no alt member should be 0
-	 for(unsigned int i=0; i < siz;i++) {
-	 for(unsigned int j=0; j < siz;j++)
-	 if(map[i][j] == 0) dim = 0;
-	 }
-	 */
 	// some altitudes calculations giving back the full range of them
     unsigned int range = normalize_map();
 
@@ -492,9 +488,8 @@ int ya_mapgen::create_map() {
     make_houses();
 
 	//-------- creates roads
-//TODO enabling the roads leads to a segfault when generating twice.
-//    if(parms_->roads)
-//       makeRoads();
+    if(parms_->roads)
+       makeRoads();
 
 	//------- finish map
 	delete heap_;
@@ -772,12 +767,7 @@ int ya_mapgen::normalize_map() {
 	for (i = 0; i < M_NUMLEVEL; i++) {
 		j = (range * parms_->thickness[i]) / fact + j;
 		table_[i] = j;
-	}/*
-	 j = 0; range = maxA - minA;
-	 for(i = 0; i < M_NUMLEVEL; i++) {
-	 j = (range * parms->thickness[i])/100 + j;
-	 table[i] = j;
-	 }*/
+	}
 	return (range);
 }
 
@@ -1378,13 +1368,12 @@ void ya_mapgen::make_castles() {
 void ya_mapgen::store_neighbors(yamg_hex *it, unsigned int layMin,
 		unsigned int layMax) {
     neighbors p;
-	unsigned int x, y, m, k, z;
+	unsigned int x, y, m, z;
 
 	p.center = it;
 	x = it->x - 1;
 	y = it->y - 1;
 	m = x % 2;
-	k = y - m;
     z = parms_->height;
 
 	if (y < 3) {
@@ -1401,26 +1390,26 @@ void ya_mapgen::store_neighbors(yamg_hex *it, unsigned int layMin,
 	if (x < 3) {
 		p.nw = p.sw = NULL;
 	} else {
-//        if(k < 0)
-//            p.nw =NULL;
-//        else
-		p.nw = map_[y - m][x - 1];
-		if (k >= z)
-			p.sw = NULL;
-		else
-			p.sw = map_[y - m + 1][x - 1];
+        if(y < m)
+            p.nw =NULL;
+        else
+        p.nw = map_[y - m][x - 1];
+        if (y >= (z + m))
+            p.sw = NULL;
+        else
+            p.sw = map_[y - m + 1][x - 1];
 	}
     if (x >= parms_->width - 2) {
 		p.ne = p.se = NULL;
 	} else {
-//        if(k < 0)
-//            p.ne = NULL;
-//        else
-		p.ne = map_[y - m][x + 1];
-		if (k >= z)
-			p.se = NULL;
-		else
-			p.se = map_[y - m + 1][x + 1];
+        if(y < m)
+            p.ne = NULL;
+        else
+            p.ne = map_[y - m][x + 1];
+        if ( y >= (z + m) )
+            p.se = NULL;
+        else
+            p.se = map_[y - m + 1][x + 1];
 	}
 
 	if ((p.no != NULL) && (p.no->lock < YAMG_LIGHTLOCK)
@@ -1877,13 +1866,11 @@ void ya_mapgen::make_roads() {
  */
 yamg_hex *ya_mapgen::sel_neigh(yamg_hex *h) {
 	yamg_hex *it, *l, *res = NULL;
-	unsigned int x, y, m; //,k,z;
+	unsigned int x, y, m;
 
 	x = h->x - 1;
 	y = h->y - 1;
 	m = x % 2;
-//    k = y - m;
-//    z = parms->haut;
 
 	if (y > 2) {
 		it = map_[y - 1][x];
@@ -1899,19 +1886,17 @@ yamg_hex *ya_mapgen::sel_neigh(yamg_hex *h) {
 	}
 
 	if ((x > 2) && (y > 1)) {
-//        if((k >= 0)) {
-		it = map_[y - m][x - 1];
-		if ((it->road == NULL) && (it->lock < YAMG_HARDLOCK)) {
-			it->next = res;
-			res = it;
-		}
-		it = map_[y - m][x + 1];
-		if ((it->road == NULL) && (it->lock < YAMG_HARDLOCK)) {
-			it->next = res;
-			res = it;
-		}
-//        }
-		it = map_[y - m + 1][x - 1];
+        it = map_[y - m][x - 1];
+        if ((it->road == NULL) && (it->lock < YAMG_HARDLOCK)) {
+            it->next = res;
+            res = it;
+        }
+        it = map_[y - m][x + 1];
+        if ((it->road == NULL) && (it->lock < YAMG_HARDLOCK)) {
+            it->next = res;
+            res = it;
+        }
+ 		it = map_[y - m + 1][x - 1];
 		if ((it->road == NULL) && (it->lock < YAMG_HARDLOCK)) {
 			it->next = res;
 			res = it;
