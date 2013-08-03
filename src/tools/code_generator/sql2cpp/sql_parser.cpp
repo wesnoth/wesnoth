@@ -264,7 +264,6 @@ private:
 
 	semantic_actions sa_;
 
-	//simple_rule program;
 	typename rule<typename semantic_actions::program_attribute::type>::type program;
 	typename rule<typename semantic_actions::statement_attribute::type>::type statement;
 	typename rule<typename semantic_actions::create_statement_attribute::type>::type create_statement;
@@ -276,6 +275,43 @@ private:
 	typename rule<typename semantic_actions::column_type_attribute::type>::type column_type;
 };
 
+template <typename OutputIterator>
+struct cpp_grammar 
+: karma::grammar<OutputIterator, typename semantic_actions::program_attribute::type>
+{
+	cpp_grammar()
+	: cpp_grammar::base_type(program)
+	{
+		using karma::eol;
+
+		program = create_class % eol;
+		create_class = "struct " << karma::string << "\n" << create_members;
+		create_members = karma::lit("{\n") << *create_member;
+		create_member = karma::string [karma::_1 = phx::at_c<0>(karma::_val)];
+	}
+
+private:
+	template <class Attribute>
+	struct rule
+	{
+		typedef karma::rule<OutputIterator, Attribute> type;
+	};
+
+	typename rule<typename semantic_actions::program_attribute::type>::type program;
+	typename rule<typename semantic_actions::create_table_attribute::type>::type create_class;
+	typename rule<typename semantic_actions::create_table_columns_attribute::type>::type create_members;
+	typename rule<typename semantic_actions::column_attribute::type>::type create_member;
+};
+
+template <typename OutputIterator>
+bool generate_cpp(OutputIterator& sink, typename semantic_actions::program_attribute::s_type const& sql_ast)
+{
+	cpp_grammar<OutputIterator> cpp_grammar;
+	return karma::generate(sink, cpp_grammar, sql_ast);
+}
+
+// Why not using read_file from filesystem.cpp?
+// Because it adds too many dependencies for a single function...
 std::string file2string(const std::string& filename)
 {
 	std::ifstream s(filename.c_str(), std::ios_base::binary);
@@ -346,12 +382,23 @@ int main(int argc, char* argv[])
 	typename semantic_actions::program_attribute::s_type sql_ast;
 	bool r = qi::phrase_parse(iter, end, sql, qi::in_state(ws)[tokens.self], sql_ast);
 
-
 	if (r && iter == end)
 	{
 		std::cout << "-------------------------\n";
 		std::cout << "Parsing succeeded\n";
 		std::cout << "-------------------------\n";
+
+		std::string generated;
+		std::back_insert_iterator<std::string> sink(generated);
+		if(generate_cpp(sink, sql_ast))
+		{
+			std::cout << "Generation succeeded\n";
+			std::cout << generated << std::endl;
+		}
+		else
+		{
+			std::cout << "Generation failed\n";
+		}
 	}
 	else
 	{
