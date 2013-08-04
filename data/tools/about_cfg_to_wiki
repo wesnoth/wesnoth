@@ -19,18 +19,18 @@ def output(text):
     sys.stdout.write(text.encode("utf8"))
 
 if __name__ == "__main__":
-    import optparse
+    import argparse
 
-    option_parser = optparse.OptionParser()
-    option_parser.add_option("-w", "--wesnoth",
+    argument_parser = argparse.ArgumentParser()
+    argument_parser.add_argument("-w", "--wesnoth",
         help="Specify the wesnoth executable to use.")
-    options, args = option_parser.parse_args()
+    args = argument_parser.parse_args()
 
     files = ["data/core/about.cfg"]
     files.extend(glob.glob("data/campaigns/*/_main.cfg"))
 
-    if not options.wesnoth:
-        options.wesnoth = "./wesnoth"
+    if not args.wesnoth:
+        args.wesnoth = "./wesnoth"
 
     # Parse WML.
     class Section:
@@ -42,7 +42,7 @@ if __name__ == "__main__":
 
     for arg in files:
         sections = []
-        wml_parser = wmldata.Parser(options.wesnoth, None, None, False)
+        wml_parser = wmldata.Parser(args.wesnoth, None, None, False)
         wml_parser.parse_file(arg)
         wml = wml_parser
         if not wml.get_all(tag="about"):
