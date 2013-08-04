@@ -499,16 +499,16 @@ if __name__ == "__main__":
         assert_campaignd(campaignd_configured)
         try:
             addons = list_addons(server, options.list_translatable)
-        except libgithub.AddonError, e:
+        except libgithub.AddonError as e:
             print "[ERROR github in {0}] {1}".format(e.addon, str(e.message))
             sys.exit(1)
-        except libgithub.Error, e:
+        except libgithub.Error as e:
             print "[ERROR github] " + str(e)
             sys.exit(1)
-        except socket.error, e:
+        except socket.error as e:
             print "Socket error: " + str(e)
             sys.exit(e[0])
-        except IOError, e:
+        except IOError as e:
             print "Unexpected error occured: " + str(e)
             sys.exit(e[0])
 
@@ -528,16 +528,16 @@ if __name__ == "__main__":
 
         try:
             upload(server, options.upload, target, wescamp, build_sys_dir)
-        except libgithub.AddonError, e:
+        except libgithub.AddonError as e:
             print "[ERROR github in {0}] {1}".format(e.addon, str(e.message))
             sys.exit(1)
-        except libgithub.Error, e:
+        except libgithub.Error as e:
             print "[ERROR github] " + str(e)
             sys.exit(1)
-        except socket.error, e:
+        except socket.error as e:
             print "Socket error: " + str(e)
             sys.exit(e[0])
-        except IOError, e:
+        except IOError as e:
             print "Unexpected error occured: " + str(e)
             sys.exit(e[0])
 
@@ -552,7 +552,7 @@ if __name__ == "__main__":
         error = False
         try:
             addons = list_addons(server, True)
-        except socket.error, e:
+        except socket.error as e:
             print "Socket error: " + str(e)
             sys.exit(e[0])
         for k, v in addons.iteritems():
@@ -561,16 +561,16 @@ if __name__ == "__main__":
                 # Create a new temp dir for every upload.
                 tmp = tempdir()
                 upload(server, k, tmp.path, wescamp, build_sys_dir)
-            except libgithub.AddonError, e:
+            except libgithub.AddonError as e:
                 print "[ERROR github in {0}] {1}".format(e.addon, str(e.message))
                 error = True
-            except libgithub.Error, e:
+            except libgithub.Error as e:
                 print "[ERROR github] in addon '" + k + "'" + str(e)
                 error = True
-            except socket.error, e:
+            except socket.error as e:
                 print "Socket error: " + str(e)
                 error = True
-            except IOError, e:
+            except IOError as e:
                 print "Unexpected error occured: " + str(e)
                 error = True
 
@@ -586,16 +586,16 @@ if __name__ == "__main__":
 
         try:
             checkout(wescamp, auth=git_auth, readonly=(options.checkout_readonly != None))
-        except libgithub.AddonError, e:
+        except libgithub.AddonError as e:
             print "[ERROR github in {0}] {1}".format(e.addon, str(e.message))
             sys.exit(1)
-        except libgithub.Error, e:
+        except libgithub.Error as e:
             print "[ERROR github] " + str(e)
             sys.exit(1)
-        except socket.error, e:
+        except socket.error as e:
             print "Socket error: " + str(e)
             sys.exit(e[0])
-        except IOError, e:
+        except IOError as e:
             print "Unexpected error occured: " + str(e)
             sys.exit(e[0])
 
