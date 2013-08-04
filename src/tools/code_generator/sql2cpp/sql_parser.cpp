@@ -21,6 +21,7 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/make_shared.hpp>
 #include <boost/static_assert.hpp>
+#include <boost/lexical_cast.hpp>
 
 #include "tools/code_generator/sql2cpp/sql_type.hpp"
 #include "tools/code_generator/sql2cpp/sql_type_constraint.hpp"
@@ -275,6 +276,50 @@ private:
 	typename rule<typename semantic_actions::column_type_attribute::type>::type column_type;
 };
 
+struct sql2cpp_type_visitor : sql::type::type_visitor
+{
+	sql2cpp_type_visitor(std::string& res)
+	: res_(res)
+	{}
+
+	virtual void visit(const sql::type::smallint&)
+	{
+		res_ = "short";
+	}
+
+	virtual void visit(const sql::type::integer&)
+	{
+		res_ = "int";
+	}
+
+	virtual void visit(const sql::type::text&)
+	{
+		res_ = "std::string";
+	}
+
+	virtual void visit(const sql::type::date&)
+	{
+		res_ = "boost::posix_time::ptime";
+	}
+
+	virtual void visit(const sql::type::varchar& v)
+	{
+		res_ = "boost::array<char, " + boost::lexical_cast<std::string>(v.length) + ">";
+	}
+
+private:
+	std::string& res_;
+};
+
+struct cpp_semantic_action
+{
+	void type2string(std::string& res, typename semantic_actions::column_type_attribute::s_type const& type)
+	{
+		boost::shared_ptr<sql::type::type_visitor> visitor = boost::make_shared<sql2cpp_type_visitor>(boost::ref(res));
+		type->accept(visitor);
+	}
+};
+
 template <typename OutputIterator>
 struct cpp_grammar 
 : karma::grammar<OutputIterator, typename semantic_actions::program_attribute::type>
@@ -285,12 +330,15 @@ struct cpp_grammar
 		using karma::eol;
 
 		program = create_class % eol;
-		create_class = "struct " << karma::string << "\n" << create_members;
-		create_members = karma::lit("{\n") << *create_member;
-		create_member = karma::string [karma::_1 = phx::at_c<0>(karma::_val)];
+		create_class = "struct " << karma::string << eol << '{' << eol << create_members << "};";
+		create_members = *('\t' << create_member << ";" << eol);
+		create_member = create_member_type[karma::_1 = phx::at_c<1>(karma::_val)] << ' ' << karma::string [karma::_1 = phx::at_c<0>(karma::_val)];
+		create_member_type = karma::string [phx::bind(&cpp_semantic_action::type2string, &cpp_sa_, karma::_1, karma::_val)];
 	}
 
 private:
+	cpp_semantic_action cpp_sa_;
+
 	template <class Attribute>
 	struct rule
 	{
@@ -301,6 +349,7 @@ private:
 	typename rule<typename semantic_actions::create_table_attribute::type>::type create_class;
 	typename rule<typename semantic_actions::create_table_columns_attribute::type>::type create_members;
 	typename rule<typename semantic_actions::column_attribute::type>::type create_member;
+	typename rule<typename semantic_actions::column_type_attribute::type>::type create_member_type;
 };
 
 template <typename OutputIterator>
