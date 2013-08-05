@@ -424,7 +424,8 @@ struct cpp_grammar
 			;
 
 		header 
-			= license_header
+			= license_header << eol
+			<< do_not_modify << eol
 			<< define_header
 			<< includes << eol
 			<< namespace_open << eol
@@ -436,6 +437,12 @@ struct cpp_grammar
 
 		namespace_close
 			= "} // namespace pod\n"
+			;
+
+		do_not_modify
+			=  "// WARNING: This file has been auto-generated with the tool sql2cpp. We keep in sync the SQL schema and the POD classes."
+			<< eol
+			<< "//          Please do not modify this file by hand. Modify the SQL schema and rebuild the project.\n"
 			;
 
 		includes
@@ -463,7 +470,7 @@ struct cpp_grammar
 		license_header 
 			= "/*\n" 
 			<< karma::string [phx::bind(&cpp_semantic_actions::license_header, &cpp_sa_, karma::_1)]
-			<< "\n*/\n\n"
+			<< "\n*/\n"
 			;
 
 		create_class 
@@ -509,6 +516,7 @@ private:
 	simple_rule define_footer;
 	simple_rule license_header;
 	simple_rule namespace_open, namespace_close;
+	simple_rule do_not_modify;
 	typename rule<typename semantic_actions::create_table_columns_attribute::type>::type create_members;
 	typename rule<typename semantic_actions::column_attribute::type>::type create_member;
 	typename rule<typename semantic_actions::column_type_attribute::type>::type create_member_type;
