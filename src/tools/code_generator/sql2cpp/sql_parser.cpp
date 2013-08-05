@@ -388,10 +388,11 @@ struct cpp_grammar
 			;
 
 		define_header
-			= "#ifndef "
-			<< karma::string [phx::bind(&cpp_semantic_action::define_name, &cpp_sa_, karma::_1, karma::_val)]
+			= karma::eps [phx::bind(&cpp_semantic_action::define_name, &cpp_sa_, karma::_a, karma::_val)]
+			<< "#ifndef "
+			<< karma::string [karma::_1 = karma::_a]
 			<< "\n#define "
-			<< karma::string [phx::bind(&cpp_semantic_action::define_name, &cpp_sa_, karma::_1, karma::_val)]
+			<< karma::string [karma::_1 = karma::_a]
 			<< "\n\n"
 			;
 
@@ -438,7 +439,7 @@ private:
 	typename rule<typename semantic_actions::create_table_attribute::type>::type create_file;
 	typename rule<typename semantic_actions::create_table_attribute::type>::type create_class;
 	typename rule<typename semantic_actions::create_table_attribute::type>::type header;
-	typename rule<std::string()>::type define_header;
+	karma::rule<OutputIterator, karma::locals<std::string>, std::string()> define_header;
 	simple_rule footer;
 	simple_rule define_footer;
 	simple_rule license_header;
