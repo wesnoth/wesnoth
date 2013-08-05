@@ -426,8 +426,16 @@ struct cpp_grammar
 		header 
 			= license_header
 			<< define_header
-			<< includes
-			<< eol
+			<< includes << eol
+			<< namespace_open << eol
+			;
+
+		namespace_open
+			= "namespace pod{\n"
+			;
+
+		namespace_close
+			= "} // namespace pod\n"
 			;
 
 		includes
@@ -435,7 +443,8 @@ struct cpp_grammar
 			;
 
 		footer
-			= define_footer.alias()
+			= namespace_close
+			<< define_footer
 			;
 
 		define_footer
@@ -499,6 +508,7 @@ private:
 	simple_rule footer;
 	simple_rule define_footer;
 	simple_rule license_header;
+	simple_rule namespace_open, namespace_close;
 	typename rule<typename semantic_actions::create_table_columns_attribute::type>::type create_members;
 	typename rule<typename semantic_actions::column_attribute::type>::type create_member;
 	typename rule<typename semantic_actions::column_type_attribute::type>::type create_member_type;
