@@ -17,6 +17,7 @@
 #include <boost/spirit/include/phoenix.hpp>
 #include <boost/spirit/include/karma.hpp>
 #include <boost/fusion/include/adapt_struct.hpp>
+#include <boost/fusion/include/std_pair.hpp> 
 
 #include <boost/algorithm/string.hpp>
 #include <boost/shared_ptr.hpp>
@@ -30,6 +31,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <set>
+#include <utility>
 
 namespace bs = boost::spirit;
 namespace lex = boost::spirit::lex;
@@ -327,9 +330,42 @@ private:
 	std::string& res_;
 };
 
-struct cpp_semantic_action
+struct sql2cpp_header_type_visitor : sql::type::type_visitor
 {
-	cpp_semantic_action(const std::string& wesnoth_path)
+	sql2cpp_header_type_visitor(std::string& res)
+	: res_(res)
+	{}
+
+	virtual void visit(const sql::type::smallint&)
+	{}
+
+	virtual void visit(const sql::type::integer&)
+	{}
+
+	virtual void visit(const sql::type::text&)
+	{
+		res_ = "#include <string>";
+	}
+
+	virtual void visit(const sql::type::date&)
+	{
+		res_ = "#include <boost/date_time/posix_time/posix_time.hpp>";
+	}
+
+	virtual void visit(const sql::type::varchar&)
+	{
+		res_ = "#include <boost/array.hpp>";
+	}
+
+private:
+	std::string& res_;
+};
+
+struct cpp_semantic_actions
+{
+	typedef attribute<std::pair<sql_column, std::set<std::string> > > include_attribute;
+
+	cpp_semantic_actions(const std::string& wesnoth_path)
 	: license_header_(file2string(wesnoth_path + get_license_header_file())) 
 	{}
 
@@ -347,6 +383,20 @@ struct cpp_semantic_action
 	void define_name(std::string& res, const std::string& class_name)
 	{
 		res = "UMCD_POD_" + boost::to_upper_copy(class_name) + "_HPP";
+	}
+
+	void includes(std::string& res, typename semantic_actions::create_table_columns_attribute::s_type const& class_members, std::set<std::string>& included)
+	{
+		for(std::size_t i = 0; i < class_members.size(); ++i)
+		{
+			std::string preproc_include;
+			boost::shared_ptr<sql::type::type_visitor> visitor = boost::make_shared<sql2cpp_header_type_visitor>(boost::ref(preproc_include));
+			class_members[i].sql_type->accept(visitor);
+			if(included.insert(preproc_include).second && !preproc_include.empty())
+			{
+				res += preproc_include + "\n";
+			}
+		}
 	}
 
 private:
@@ -375,8 +425,13 @@ struct cpp_grammar
 
 		header 
 			= license_header
-			<< define_header [karma::_1 = phx::at_c<0>(karma::_val)]
-			//<< include
+			<< define_header
+			<< includes
+			<< eol
+			;
+
+		includes
+			= karma::string [phx::bind(&cpp_semantic_actions::includes, &cpp_sa_, karma::_1, karma::_val, karma::_a)]
 			;
 
 		footer
@@ -388,7 +443,7 @@ struct cpp_grammar
 			;
 
 		define_header
-			= karma::eps [phx::bind(&cpp_semantic_action::define_name, &cpp_sa_, karma::_a, karma::_val)]
+			= karma::eps [phx::bind(&cpp_semantic_actions::define_name, &cpp_sa_, karma::_a, karma::_val)]
 			<< "#ifndef "
 			<< karma::string [karma::_1 = karma::_a]
 			<< "\n#define "
@@ -398,7 +453,7 @@ struct cpp_grammar
 
 		license_header 
 			= "/*\n" 
-			<< karma::string [phx::bind(&cpp_semantic_action::license_header, &cpp_sa_, karma::_1)]
+			<< karma::string [phx::bind(&cpp_semantic_actions::license_header, &cpp_sa_, karma::_1)]
 			<< "\n*/\n\n"
 			;
 
@@ -421,12 +476,12 @@ struct cpp_grammar
 			;
 
 		create_member_type 
-			= karma::string [phx::bind(&cpp_semantic_action::type2string, &cpp_sa_, karma::_1, karma::_val)]
+			= karma::string [phx::bind(&cpp_semantic_actions::type2string, &cpp_sa_, karma::_1, karma::_val)]
 			;
 	}
 
 private:
-	cpp_semantic_action cpp_sa_;
+	cpp_semantic_actions cpp_sa_;
 
 	template <class Attribute>
 	struct rule
@@ -440,6 +495,7 @@ private:
 	typename rule<typename semantic_actions::create_table_attribute::type>::type create_class;
 	typename rule<typename semantic_actions::create_table_attribute::type>::type header;
 	karma::rule<OutputIterator, karma::locals<std::string>, std::string()> define_header;
+	karma::rule<OutputIterator, karma::locals<std::set<std::string> >, typename semantic_actions::create_table_columns_attribute::type> includes;
 	simple_rule footer;
 	simple_rule define_footer;
 	simple_rule license_header;
