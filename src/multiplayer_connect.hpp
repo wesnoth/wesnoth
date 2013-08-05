@@ -51,14 +51,7 @@ public:
 		// Adds an user to the user list combo.
 		void update_user_list(const std::vector<std::string>& name_list);
 
-		// Imports data from the network into this side, and updates the UI
-		// accordingly.
-		void import_network_user(const config& data);
-
-		// Resets this side to its default state, and updates the UI
-		// accordingly.
-		void reset(mp::controller controller);
-
+		void update_ui();
 		void hide_ai_algorithm_combo(bool invisible);
 
 		void add_widgets_to_scrollpane(gui::scrollpane& pane, int pos);
@@ -68,15 +61,12 @@ public:
 
 	private:
 		void init_ai_algorithm_combo();
-		void update_ai_algorithm_combo()
-			{ hide_ai_algorithm_combo(parent_->hidden()); }
 
 		// Update UI methods and their helper(s).
 		void update_faction_combo();
 		void update_leader_combo();
 		void update_gender_combo();
 		void update_controller_ui();
-		void update_ui();
 		std::string get_RC_suffix(const std::string& unit_color) const;
 
 		// The mp::connect widget owning this mp::connect::side.
@@ -137,8 +127,6 @@ protected:
 
 private:
 	void lists_init();
-
-	void take_reserved_side(connect::side& side, const config& data);
 
 	// Updates the state of the player list, the launch button and of the start
 	// game label, to reflect the actual state.

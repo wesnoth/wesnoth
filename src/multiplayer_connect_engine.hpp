@@ -19,6 +19,8 @@
 #include "gamestatus.hpp"
 #include "multiplayer_ui.hpp"
 
+#include <boost/tuple/tuple.hpp>
+
 namespace mp {
 
 class side_engine;
@@ -34,14 +36,11 @@ struct connected_user
 	std::string name;
 	mp::controller controller;
 	network::connection connection;
-	operator std::string() const
-	{
-		return name;
-	}
 };
 
 typedef boost::shared_ptr<side_engine> side_engine_ptr;
 typedef std::vector<connected_user> connected_user_list;
+typedef boost::tuple<bool, bool, bool, std::vector<int> > network_res_tuple;
 
 class connect_engine
 {
@@ -67,12 +66,21 @@ public:
 	void start_game();
 	void start_game_commandline(const commandline_options& cmdline_opts);
 
+	// Acts according to the given data and returns tuple
+	// holding information on what has changed.
+	// 0th - quit?
+	// 1st - update UI?
+	// 2nd - silent UI update?
+	// 3rd - side UIs to update.
+	network_res_tuple process_network_data(const config& data,
+		const network::connection sock);
+	// Returns -1 if UI should not be updated at all,
+	// 0 if UI should be updated or (side index + 1)
+	// if some side's UI should be updated as well.
+	int process_network_error(network::error& error);
 	void process_network_connection(const network::connection sock);
 
 	connected_user_list::iterator find_player_by_id(const std::string& id);
-	// Returns the side which is taken by a given player,
-	// or -1 if none was found.
-	int find_player_side_index_by_id(const std::string& id) const;
 
 
 	/* Setters & Getters */
@@ -89,6 +97,10 @@ private:
 	void operator=(const connect_engine&);
 
 	friend side_engine;
+
+	// Returns the side which is taken by a given player,
+	// or -1 if none was found.
+	int find_player_side_index_by_id(const std::string& id) const;
 
 	config level_;
 	game_state state_;
@@ -126,8 +138,10 @@ public:
 
 	void resolve_random();
 
+	// Resets this side to its default state.
 	void reset(mp::controller controller);
 
+	// Imports data from the network into this side.
 	void import_network_user(const config& data);
 
 	void set_current_faction(const config* current_faction);

@@ -34,6 +34,9 @@ static lg::log_domain log_mp_connect_engine("mp/connect/engine");
 #define DBG_MP LOG_STREAM(debug, log_mp_connect_engine)
 #define LOG_MP LOG_STREAM(info, log_mp_connect_engine)
 
+static lg::log_domain log_network("network");
+#define LOG_NW LOG_STREAM(info, log_network)
+
 namespace {
 
 const std::string controller_names[] = {
@@ -387,6 +390,244 @@ void connect_engine::start_game_commandline(
 	// Build the gamestate object after updating the level
 	level_to_gamestate(level_, state_);
 	network::send_data(config("start_game"), 0);
+}
+
+network_res_tuple connect_engine::process_network_data(const config& data,
+	const network::connection sock)
+{
+	network_res_tuple result;
+	result.get<0>() = false;
+	result.get<1>() = false;
+	result.get<2>() = true;
+
+	if (data.child("leave_game")) {
+		result.get<0>() = true;
+		return result;
+	}
+
+	// A side has been dropped.
+	if (!data["side_drop"].empty()) {
+		unsigned side_drop = data["side_drop"].to_int() - 1;
+		result.get<3>().push_back(side_drop);
+
+		if (side_drop < side_engines_.size()) {
+			side_engine_ptr side_to_drop = side_engines_[side_drop];
+
+			connected_user_list::iterator player =
+				find_player_by_id(side_to_drop->player_id());
+			if (player != users_.end()) {
+				users_.erase(player);
+			}
+
+			side_to_drop->reset(side_to_drop->mp_controller());
+
+			update_and_send_diff();
+
+			result.get<1>() = true;
+			return result;
+		}
+	}
+
+	// A player is connecting to the game.
+	if (!data["side"].empty()) {
+		unsigned side_taken = data["side"].to_int() - 1;
+
+		// Checks if the connecting user has a valid and unique name.
+		const std::string name = data["name"];
+		if (name.empty()) {
+			config response;
+			response["failed"] = true;
+			network::send_data(response, sock);
+
+			ERR_CF << "ERROR: No username provided with the side.\n";
+
+			return result;
+		}
+
+		connected_user_list::iterator player = find_player_by_id(name);
+		if (player != users().end()) {
+			 // TODO: Seems like a needless limitation
+			 // to only allow one side per player.
+			if (find_player_side_index_by_id(name) != -1) {
+				config response;
+				response["failed"] = true;
+				response["message"] = "The nickname '" + name +
+					"' is already in use.";
+				network::send_data(response, sock);
+
+				return result;
+			} else {
+				users_.erase(player);
+				config observer_quit;
+				observer_quit.add_child("observer_quit")["name"] = name;
+				network::send_data(observer_quit, 0);
+
+				result.get<1>() = true;
+			}
+		}
+
+		// Assigns this user to a side.
+		if (side_taken < side_engines_.size()) {
+			if (!side_engines_[side_taken]->available(name)) {
+				// This side is already taken.
+				// Try to reassing the player to a different position.
+				side_taken = 0;
+				BOOST_FOREACH(side_engine_ptr s, side_engines_) {
+					if (s->available()) {
+						break;
+					}
+
+					side_taken++;
+				}
+
+				if (side_taken >= side_engines_.size()) {
+					config response;
+					response["failed"] = true;
+					network::send_data(response, sock);
+
+					config res;
+					config& kick = res.add_child("kick");
+					kick["username"] = data["name"];
+					network::send_data(res, 0);
+
+					result.get<1>() = true;
+
+					update_and_send_diff();
+
+					ERR_CF << "ERROR: Couldn't assign a side to '" <<
+						name << "'\n";
+
+					return result;
+				}
+			}
+
+			LOG_CF << "client has taken a valid position\n";
+
+			// Adds the name to the list.
+			users_.push_back(connected_user(name, CNTR_NETWORK, sock));
+
+			result.get<3>().push_back(side_taken);
+			side_engines_[side_taken]->import_network_user(data);
+
+			// Check if more sides are reserved for this player.
+			int side_index = 0;
+			BOOST_FOREACH(side_engine_ptr& s, side_engines_) {
+				if (s->available(data["name"]) &&
+					s->current_player() == data["name"]) {
+
+					result.get<3>().push_back(side_index);
+					s->import_network_user(data);
+				}
+
+				side_index++;
+			}
+
+			result.get<1>() = true;
+			result.get<2>() = false;
+
+			update_and_send_diff();
+
+			LOG_NW << "sent player data\n";
+		} else {
+			ERR_CF << "tried to take illegal side: " << side_taken << "\n";
+
+			config response;
+			response["failed"] = true;
+			network::send_data(response, sock);
+		}
+	}
+
+	if (const config &change_faction = data.child("change_faction")) {
+		int side_taken = find_player_side_index_by_id(change_faction["name"]);
+		if (side_taken != -1) {
+			result.get<3>().push_back(side_taken);
+			side_engines_[side_taken]->import_network_user(change_faction);
+			side_engines_[side_taken]->set_ready_for_start(true);
+
+			result.get<1>() = true;
+
+			update_and_send_diff();
+		}
+	}
+
+	if (const config &c = data.child("observer")) {
+		const t_string &observer_name = c["name"];
+		if (!observer_name.empty()) {
+			connected_user_list::iterator player =
+				find_player_by_id(observer_name);
+			if (player == users_.end()) {
+				users_.push_back(connected_user(observer_name, CNTR_NETWORK,
+					sock));
+
+				result.get<1>() = true;
+
+				update_and_send_diff();
+			}
+		}
+	}
+
+	if (const config &c = data.child("observer_quit")) {
+		const t_string &observer_name = c["name"];
+		if (!observer_name.empty()) {
+			connected_user_list::iterator player =
+				find_player_by_id(observer_name);
+			if (player != users_.end() &&
+				find_player_side_index_by_id(observer_name) == -1) {
+
+				users_.erase(player);
+
+				result.get<1>() = true;
+
+				update_and_send_diff();
+			}
+		}
+	}
+
+	return result;
+}
+
+int connect_engine::process_network_error(network::error& error)
+{
+	// If the problem isn't related to any specific connection,
+	// it's a general error and we should just re-throw the error.
+	// Likewise if we are not a server, we cannot afford any connection
+	// to go down, so also re-throw the error.
+	if (!error.socket || !network::is_server()) {
+		error.disconnect();
+		throw network::error(error.message);
+	}
+
+	int res = -1;
+
+	// A socket has disconnected. Remove it, and resets its side.
+	connected_user_list::iterator user;
+	for(user = users_.begin(); user != users_.end(); ++user) {
+		if (user->connection == error.socket) {
+			int side_index = find_player_side_index_by_id(user->name);
+			if (side_index != -1) {
+				side_engines_[side_index]->reset(mp_controller_);
+
+				res = side_index + 1;
+			} else {
+				res = 0;
+			}
+
+			users_.erase(user);
+
+			break;
+		}
+	}
+
+	// Now disconnect the socket.
+	error.disconnect();
+
+	// If there have been changes to the positions taken,
+	// then notify other players.
+	if (res != -1) {
+		update_and_send_diff();
+	}
+
+	return res;
 }
 
 void connect_engine::process_network_connection(const network::connection sock)

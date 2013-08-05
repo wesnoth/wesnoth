@@ -27,16 +27,7 @@
 #include "map.hpp"
 #include "wml_separators.hpp"
 
-#include <boost/bind.hpp>
 #include <boost/foreach.hpp>
-
-static lg::log_domain log_network("network");
-#define LOG_NW LOG_STREAM(info, log_network)
-
-static lg::log_domain log_config("config");
-#define LOG_CF LOG_STREAM(info, log_config)
-#define WRN_CF LOG_STREAM(warn, log_config)
-#define ERR_CF LOG_STREAM(err, log_config)
 
 static lg::log_domain log_mp_connect("mp/connect");
 #define DBG_MP LOG_STREAM(debug, log_mp_connect)
@@ -124,9 +115,6 @@ connect::side::side(connect& parent, side_engine_ptr engine) :
 			engine_->choosable_factions()[faction_index]);
 	}
 
-	update_faction_combo();
-	update_leader_combo();
-	update_gender_combo();
 	update_ui();
 }
 
@@ -202,7 +190,7 @@ void connect::side::process_event()
 				changed_ = true;
 			}
 		}
-		update_ai_algorithm_combo();
+		hide_ai_algorithm_combo(parent_->hidden());
 	}
 
 	if (combo_controller_->hidden()) {
@@ -284,24 +272,28 @@ void connect::side::update_user_list(
 	update_controller_ui();
 }
 
-void connect::side::import_network_user(const config& data)
+void connect::side::update_ui()
 {
-	engine_->import_network_user(data);
-
 	update_faction_combo();
 	update_leader_combo();
 	update_gender_combo();
 
-	update_ui();
-}
+	update_controller_ui();
 
-void connect::side::reset(mp::controller controller)
-{
-	engine_->reset(controller);
-
-	update_leader_combo();
-	update_gender_combo();
-	update_ui();
+	combo_team_.set_selected(engine_->team());
+	combo_color_.set_selected(engine_->color());
+	slider_gold_.set_value(engine_->gold());
+	label_gold_.set_text(str_cast(engine_->gold()));
+	slider_income_.set_value(engine_->income());
+	std::stringstream buf;
+	if (engine_->income() < 0) {
+		buf << _("(") << engine_->income() << _(")");
+	} else if (engine_->income() > 0) {
+		buf << _("+") << engine_->income();
+	} else {
+		buf << _("Normal");
+	}
+	label_income_.set_text(buf.str());
 }
 
 void connect::side::hide_ai_algorithm_combo(bool invisible)
@@ -467,27 +459,7 @@ void connect::side::update_controller_ui()
 		}
 	}
 
-    update_ai_algorithm_combo();
-}
-
-void connect::side::update_ui()
-{
-	update_controller_ui();
-
-	combo_team_.set_selected(engine_->team());
-	combo_color_.set_selected(engine_->color());
-	slider_gold_.set_value(engine_->gold());
-	label_gold_.set_text(str_cast(engine_->gold()));
-	slider_income_.set_value(engine_->income());
-	std::stringstream buf;
-	if (engine_->income() < 0) {
-		buf << _("(") << engine_->income() << _(")");
-	} else if (engine_->income() > 0) {
-		buf << _("+") << engine_->income();
-	} else {
-		buf << _("Normal");
-	}
-	label_income_.set_text(buf.str());
+	hide_ai_algorithm_combo(parent_->hidden());
 }
 
 #ifdef LOW_MEM
@@ -728,199 +700,32 @@ void connect::process_network_data(const config& data,
 	const network::connection sock)
 {
 	ui::process_network_data(data, sock);
+	network_res_tuple result = engine_.process_network_data(data, sock);
 
-	if (data.child("leave_game")) {
+	if (result.get<0>()) {
 		set_result(QUIT);
-		return;
-	}
-
-	if (!data["side_drop"].empty()) {
-		unsigned side_drop = data["side_drop"].to_int() - 1;
-		if (side_drop < sides_.size()) {
-			connected_user_list::iterator player = engine_.find_player_by_id(
-				sides_[side_drop].engine()->player_id());
-			sides_[side_drop].reset(sides_[side_drop].engine()->
-				mp_controller());
-			if (player != engine_.users().end()) {
-				engine_.users().erase(player);
-				update_user_combos();
-			}
-			engine_.update_and_send_diff();
-			update_playerlist_state(true);
-			return;
-		}
-	}
-
-	if (!data["side"].empty()) {
-		unsigned side_taken = data["side"].to_int() - 1;
-
-		// Checks if the connecting user has a valid and unique name.
-		const std::string name = data["name"];
-		if (name.empty()) {
-			config response;
-			response["failed"] = true;
-			network::send_data(response, sock);
-			ERR_CF << "ERROR: No username provided with the side.\n";
-			return;
-		}
-
-		connected_user_list::iterator player = engine_.find_player_by_id(name);
-		if (player != engine_.users().end()) {
-			 // TODO: Seems like a needless limitation
-			 // to only allow one side per player.
-			if (engine_.find_player_side_index_by_id(name) != -1) {
-				config response;
-				response["failed"] = true;
-				response["message"] = "The nickname '" + name +
-					"' is already in use.";
-				network::send_data(response, sock);
-				return;
-			} else {
-				engine_.users().erase(player);
-				config observer_quit;
-				observer_quit.add_child("observer_quit")["name"] = name;
-				network::send_data(observer_quit, 0);
-				update_user_combos();
-			}
-		}
-
-		// Assigns this user to a side.
-		if (side_taken < sides_.size()) {
-			if (!sides_[side_taken].engine()->available(name)) {
-				// This side is already taken.
-				// Try to reassing the player to a different position.
-				side_taken = 0;
-				BOOST_FOREACH(side& s, sides_) {
-					if (s.engine()->available()) {
-						break;
-					}
-
-					side_taken++;
-				}
-
-				if (side_taken >= sides_.size()) {
-					config response;
-					response["failed"] = true;
-					network::send_data(response, sock);
-					config kick;
-					kick["username"] = data["name"];
-					config res;
-					res.add_child("kick", kick);
-					network::send_data(res, 0);
-					update_user_combos();
-					engine_.update_and_send_diff();
-					ERR_CF << "ERROR: Couldn't assign a side to '" <<
-						name << "'\n";
-					return;
-				}
-			}
-
-			LOG_CF << "client has taken a valid position\n";
-
-			// Adds the name to the list.
-			engine_.users().push_back(connected_user(name, CNTR_NETWORK, sock));
+	} else {
+		if (result.get<1>()) {
 			update_user_combos();
-
-			sides_[side_taken].import_network_user(data);
-
-			// Go thought and check if more sides are reserved
-			// for this player.
-			std::for_each(sides_.begin(), sides_.end(),
-				boost::bind(&connect::take_reserved_side, this, _1, data));
-			update_playerlist_state(false);
-			engine_.update_and_send_diff();
-
-			LOG_NW << "sent player data\n";
-
-		} else {
-			ERR_CF << "tried to take illegal side: " << side_taken << "\n";
-			config response;
-			response["failed"] = true;
-			network::send_data(response, sock);
+			update_playerlist_state(result.get<2>());
 		}
-	}
 
-	if (const config &change_faction = data.child("change_faction")) {
-		int side_taken =
-			engine_.find_player_side_index_by_id(change_faction["name"]);
-		if (side_taken != -1) {
-			sides_[side_taken].import_network_user(change_faction);
-			sides_[side_taken].engine()->set_ready_for_start(true);
-			update_playerlist_state();
-			engine_.update_and_send_diff();
-		}
-	}
-
-	if (const config &c = data.child("observer")) {
-		const t_string &observer_name = c["name"];
-		if (!observer_name.empty()) {
-			connected_user_list::iterator player =
-				engine_.find_player_by_id(observer_name);
-			if (player == engine_.users().end()) {
-				engine_.users().push_back(connected_user(observer_name,
-					CNTR_NETWORK, sock));
-				update_user_combos();
-				update_playerlist_state();
-				engine_.update_and_send_diff();
-			}
-		}
-	}
-	if (const config &c = data.child("observer_quit")) {
-		const t_string &observer_name = c["name"];
-		if (!observer_name.empty()) {
-			connected_user_list::iterator player =
-				engine_.find_player_by_id(observer_name);
-			if (player != engine_.users().end() &&
-				engine_.find_player_side_index_by_id(observer_name) == -1) {
-
-				engine_.users().erase(player);
-				update_user_combos();
-				update_playerlist_state();
-				engine_.update_and_send_diff();
-			}
+		BOOST_FOREACH(int side_index, result.get<3>()) {
+			sides_[side_index].update_ui();
 		}
 	}
 }
 
 void connect::process_network_error(network::error& error)
 {
-	// If the problem isn't related to any specific connection,
-	// it's a general error and we should just re-throw the error.
-	// Likewise if we are not a server, we cannot afford any connection
-	// to go down, so also re-throw the error.
-	if (!error.socket || !network::is_server()) {
-		error.disconnect();
-		throw network::error(error.message);
+	int res = engine_.process_network_error(error);
+
+	if (res > 0) {
+		sides_[res - 1].update_ui();
 	}
 
-	bool changes = false;
-
-	// A socket has disconnected. Remove it, and resets its side.
-	connected_user_list::iterator user;
-	for(user = engine_.users().begin(); user != engine_.users().end(); ++user) {
-		if (user->connection == error.socket) {
-			changes = true;
-
-			int i = engine_.find_player_side_index_by_id(user->name);
-			if (i != -1) {
-				sides_[i].reset(engine_.mp_controller());
-			}
-
-			break;
-		}
-	}
-	if (user != engine_.users().end()) {
-		engine_.users().erase(user);
+	if (res != 1) {
 		update_user_combos();
-	}
-
-	// Now disconnect the socket.
-	error.disconnect();
-
-	// If there have been changes to the positions taken,
-	// then notify other players.
-	if (changes) {
-		engine_.update_and_send_diff();
 		update_playerlist_state();
 	}
 }
@@ -928,7 +733,6 @@ void connect::process_network_error(network::error& error)
 void connect::process_network_connection(const network::connection sock)
 {
 	ui::process_network_connection(sock);
-
 	engine_.process_network_connection(sock);
 }
 
@@ -1056,14 +860,6 @@ void connect::lists_init()
 	}
 }
 
-void connect::take_reserved_side(connect::side& side, const config& data)
-{
-	if (side.engine()->available(data["name"])
-			&& side.engine()->current_player() == data["name"]) {
-		side.import_network_user(data);
-	}
-}
-
 void connect::update_playerlist_state(bool silent)
 {
 	DBG_MP << "updating player list state" << std::endl;
@@ -1092,8 +888,6 @@ void connect::update_playerlist_state(bool silent)
 void connect::update_user_combos()
 {
 	BOOST_FOREACH(side& s, sides_) {
-		bool name_present = false;
-
 		typedef std::vector<std::string> name_list;
 
 		name_list list = player_types_;
@@ -1104,13 +898,6 @@ void connect::update_user_combos()
 
 		BOOST_FOREACH(const connected_user& user, engine_.users()) {
 			list.push_back(user.name);
-			if (user.name == s.engine()->player_id()) {
-				name_present = true;
-			}
-		}
-
-		if (name_present == false) {
-			s.engine()->set_player_id("");
 		}
 
 		s.update_user_list(list);
