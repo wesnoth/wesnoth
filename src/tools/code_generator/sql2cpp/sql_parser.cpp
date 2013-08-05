@@ -11,6 +11,7 @@
 
 	See the COPYING file for more details.
 */
+//#define BOOST_SPIRIT_QI_DEBUG
 
 #include <boost/spirit/include/qi.hpp>
 #include <boost/spirit/include/lex_lexertl.hpp>
@@ -27,6 +28,7 @@
 
 #include "tools/code_generator/sql2cpp/sql_type.hpp"
 #include "tools/code_generator/sql2cpp/sql_type_constraint.hpp"
+#include "tools/code_generator/sql2cpp/sql_constraint.hpp"
 
 #include <iostream>
 #include <fstream>
@@ -63,7 +65,7 @@ public:
 	// Tokens with no attributes.
 	lex::token_def<lex::omit> type_smallint, type_int, type_varchar, type_text, type_date;
 	lex::token_def<lex::omit> kw_not_null, kw_auto_increment, kw_unique, kw_default, kw_create,
-		kw_table;
+		kw_table, kw_constraint, kw_primary_key;
 
 	// Attributed tokens. (If you add a new type, don't forget to add it to the lex::lexertl::token definition too).
 	lex::token_def<int> signed_digit;
@@ -87,6 +89,8 @@ public:
 		kw_default = "(?i:default)";
 		kw_create = "(?i:create)";
 		kw_table = "(?i:table)";
+		kw_constraint = "(?i:constraint)";
+		kw_primary_key = "(?i:primary key)";
 
 		// Values.
 		signed_digit = "[+-]?[0-9]+";
@@ -101,7 +105,7 @@ public:
 		this->self += type_smallint | type_int | type_varchar | type_text |
 									type_date;
 		this->self += kw_not_null | kw_auto_increment | kw_unique | kw_default |
-									kw_create | kw_table;
+									kw_create | kw_table | kw_constraint | kw_primary_key;
 		this->self += identifier | unsigned_digit | signed_digit | quoted_string;
 
 		// define the whitespace to ignore.
@@ -131,12 +135,14 @@ struct sql_table
 {
 	std::string table_identifier;
 	std::vector<sql_column> columns;
+	std::vector<boost::shared_ptr<sql::constraint::base_constraint> > constraints;
 };
 
 BOOST_FUSION_ADAPT_STRUCT(
 	sql_table,
 	(std::string, table_identifier)
 	(std::vector<sql_column>, columns)
+	(std::vector<boost::shared_ptr<sql::constraint::base_constraint> >, constraints)
 )
 
 template <class synthesized, class inherited = void>
@@ -173,6 +179,9 @@ public:
 	typedef attribute<sql_table> create_statement_attribute;
 	typedef attribute<sql_table> statement_attribute;
 	typedef attribute<std::vector<sql_table> > program_attribute;
+	typedef attribute<std::vector<boost::shared_ptr<sql::constraint::base_constraint> > > table_constraints_attribute;
+	typedef attribute<boost::shared_ptr<sql::constraint::base_constraint> > constraint_definition_attribute;
+	typedef attribute<boost::shared_ptr<sql::constraint::base_constraint>, std::string> primary_key_constraint_attribute;
 
 	template<class T>
 	void make_column_type(typename column_type_attribute::s_type& res) const
@@ -194,6 +203,19 @@ public:
 	void make_default_value_constraint(typename type_constraint_attribute::s_type& res, const std::string& default_value) const
 	{
 		res = boost::make_shared<sql::default_value>(default_value);
+	}
+
+	template <class T>
+	void make_constraint(typename constraint_definition_attribute::s_type& res, const std::string& name) const
+	{
+		res = boost::make_shared<T>(boost::ref(name));
+	}
+
+	void make_pk_constraint(typename primary_key_constraint_attribute::s_type& res, 
+							const typename primary_key_constraint_attribute::i_type& name, 
+							const std::vector<std::string>& keys)
+	{
+		res = boost::make_shared<sql::constraint::primary_key>(name, keys);
 	}
 };
 
@@ -219,7 +241,20 @@ struct sql_grammar
 			;
 
 		create_table
-			%=	tok.kw_table >> tok.identifier >> '(' >> create_table_columns >> ')'
+			%=	tok.kw_table >> tok.identifier >> '(' >> create_table_columns >> -(',' >> table_constraints) >> ')'
+			;
+
+		table_constraints
+			%= 	constraint_definition % ','
+			;
+
+		constraint_definition
+			= tok.kw_constraint >> tok.identifier [qi::_a = qi::_1] >> primary_key_constraint(qi::_a) [qi::_val = qi::_1]
+			;
+
+		primary_key_constraint
+			= tok.kw_primary_key >> '(' >> (tok.identifier % ',') [phx::bind(&semantic_actions::make_pk_constraint, &sa_, qi::_val, qi::_r1, qi::_1)]
+			>> ')'
 			;
 
 		create_table_columns
@@ -258,6 +293,22 @@ struct sql_grammar
 		column_type.name("column type");
 		default_value.name("default value");
 		type_constraint.name("type constraint");
+		table_constraints.name("table constraints");
+		constraint_definition.name("constraint definition");
+		primary_key_constraint.name("primary key constraint");
+
+		BOOST_SPIRIT_DEBUG_NODE(program);
+		BOOST_SPIRIT_DEBUG_NODE(statement);
+		BOOST_SPIRIT_DEBUG_NODE(create_statement);
+		BOOST_SPIRIT_DEBUG_NODE(create_table);
+		BOOST_SPIRIT_DEBUG_NODE(create_table_columns);
+		BOOST_SPIRIT_DEBUG_NODE(column_definition);
+		BOOST_SPIRIT_DEBUG_NODE(column_type);
+		BOOST_SPIRIT_DEBUG_NODE(default_value);
+		BOOST_SPIRIT_DEBUG_NODE(type_constraint);
+		BOOST_SPIRIT_DEBUG_NODE(table_constraints);
+		BOOST_SPIRIT_DEBUG_NODE(constraint_definition);
+		BOOST_SPIRIT_DEBUG_NODE(primary_key_constraint);
 
 		using namespace qi::labels;
 		qi::on_error<qi::fail>
@@ -280,6 +331,11 @@ private:
 	{
 		typedef qi::rule<Iterator, skipper_type, Attribute> type;
 	};
+	template <class Attribute, class Locals>
+	struct rule_loc
+	{
+		typedef qi::rule<Iterator, skipper_type, Attribute, Locals> type;
+	};
 	typedef qi::rule<Iterator, skipper_type> simple_rule;
 
 	semantic_actions sa_;
@@ -288,6 +344,10 @@ private:
 	typename rule<typename semantic_actions::statement_attribute::type>::type statement;
 	typename rule<typename semantic_actions::create_statement_attribute::type>::type create_statement;
 	typename rule<typename semantic_actions::create_table_attribute::type>::type create_table;
+	typename rule<typename semantic_actions::table_constraints_attribute::type>::type table_constraints;
+	typename rule_loc<typename semantic_actions::constraint_definition_attribute::type, qi::locals<std::string> >::type constraint_definition;
+	typename rule<typename semantic_actions::primary_key_constraint_attribute::type>::type primary_key_constraint;
+
 	typename rule<typename semantic_actions::create_table_columns_attribute::type>::type create_table_columns;
 	typename rule<typename semantic_actions::column_attribute::type>::type column_definition;
 	typename rule<typename semantic_actions::type_constraint_attribute::type>::type type_constraint;
@@ -475,9 +535,9 @@ struct cpp_grammar
 
 		create_class 
 			= "struct " 
-			<< karma::string 
+			<< karma::string [karma::_1 = phx::at_c<0>(karma::_val)]
 			<< "\n{\n"
-			<< create_members 
+			<< create_members [karma::_1 = phx::at_c<1>(karma::_val)]
 			<< "};\n\n"
 			;
 
