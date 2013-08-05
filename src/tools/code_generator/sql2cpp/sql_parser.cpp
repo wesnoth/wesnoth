@@ -18,6 +18,7 @@
 #include <boost/spirit/include/karma.hpp>
 #include <boost/fusion/include/adapt_struct.hpp>
 
+#include <boost/algorithm/string.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/make_shared.hpp>
 #include <boost/static_assert.hpp>
@@ -35,6 +36,21 @@ namespace lex = boost::spirit::lex;
 namespace qi = boost::spirit::qi;
 namespace karma = boost::spirit::karma;
 namespace phx = boost::phoenix;
+
+// Why not using read_file from filesystem.cpp?
+// Because it adds too many dependencies for a single function...
+std::string file2string(const std::string& filename)
+{
+	std::ifstream s(filename.c_str(), std::ios_base::binary);
+	std::stringstream ss;
+	ss << s.rdbuf();
+	return ss.str();
+}
+
+std::string get_license_header_file()
+{
+	return "data/umcd/license_header.txt";
+}
 
 // Token definition base, defines all tokens for the base grammar below
 template <typename Lexer>
@@ -313,27 +329,99 @@ private:
 
 struct cpp_semantic_action
 {
+	cpp_semantic_action(const std::string& wesnoth_path)
+	: license_header_(file2string(wesnoth_path + get_license_header_file())) 
+	{}
+
 	void type2string(std::string& res, typename semantic_actions::column_type_attribute::s_type const& type)
 	{
 		boost::shared_ptr<sql::type::type_visitor> visitor = boost::make_shared<sql2cpp_type_visitor>(boost::ref(res));
 		type->accept(visitor);
 	}
+
+	void license_header(std::string& res)
+	{
+		res = license_header_;
+	}
+
+	void define_name(std::string& res, const std::string& class_name)
+	{
+		res = "UMCD_POD_" + boost::to_upper_copy(class_name) + "_HPP";
+	}
+
+private:
+	std::string license_header_;
 };
 
 template <typename OutputIterator>
 struct cpp_grammar 
 : karma::grammar<OutputIterator, typename semantic_actions::program_attribute::type>
 {
-	cpp_grammar()
+	cpp_grammar(const std::string& wesnoth_path)
 	: cpp_grammar::base_type(program)
+	, cpp_sa_(wesnoth_path)
 	{
 		using karma::eol;
 
-		program = create_class % eol;
-		create_class = "struct " << karma::string << eol << '{' << eol << create_members << "};";
-		create_members = *('\t' << create_member << ";" << eol);
-		create_member = create_member_type[karma::_1 = phx::at_c<1>(karma::_val)] << ' ' << karma::string [karma::_1 = phx::at_c<0>(karma::_val)];
-		create_member_type = karma::string [phx::bind(&cpp_semantic_action::type2string, &cpp_sa_, karma::_1, karma::_val)];
+		program 
+			= create_file % eol
+			;
+
+		create_file 
+			= header [karma::_1 = karma::_val] 
+			<< create_class [karma::_1 = karma::_val] 
+			<< footer
+			;
+
+		header 
+			= license_header
+			<< define_header [karma::_1 = phx::at_c<0>(karma::_val)]
+			//<< include
+			;
+
+		footer
+			= define_footer.alias()
+			;
+
+		define_footer
+			= "#endif\n"
+			;
+
+		define_header
+			= "#ifndef "
+			<< karma::string [phx::bind(&cpp_semantic_action::define_name, &cpp_sa_, karma::_1, karma::_val)]
+			<< "\n#define "
+			<< karma::string [phx::bind(&cpp_semantic_action::define_name, &cpp_sa_, karma::_1, karma::_val)]
+			<< "\n\n"
+			;
+
+		license_header 
+			= "/*\n" 
+			<< karma::string [phx::bind(&cpp_semantic_action::license_header, &cpp_sa_, karma::_1)]
+			<< "\n*/\n\n"
+			;
+
+		create_class 
+			= "struct " 
+			<< karma::string 
+			<< "\n{\n"
+			<< create_members 
+			<< "};\n\n"
+			;
+
+		create_members 
+			= *('\t' << create_member << ";\n")
+			;
+
+		create_member 
+			= create_member_type [karma::_1 = phx::at_c<1>(karma::_val)] 
+			<< ' ' 
+			<< karma::string [karma::_1 = phx::at_c<0>(karma::_val)]
+			;
+
+		create_member_type 
+			= karma::string [phx::bind(&cpp_semantic_action::type2string, &cpp_sa_, karma::_1, karma::_val)]
+			;
 	}
 
 private:
@@ -344,9 +432,16 @@ private:
 	{
 		typedef karma::rule<OutputIterator, Attribute> type;
 	};
+	typedef karma::rule<OutputIterator> simple_rule;
 
 	typename rule<typename semantic_actions::program_attribute::type>::type program;
+	typename rule<typename semantic_actions::create_table_attribute::type>::type create_file;
 	typename rule<typename semantic_actions::create_table_attribute::type>::type create_class;
+	typename rule<typename semantic_actions::create_table_attribute::type>::type header;
+	typename rule<std::string()>::type define_header;
+	simple_rule footer;
+	simple_rule define_footer;
+	simple_rule license_header;
 	typename rule<typename semantic_actions::create_table_columns_attribute::type>::type create_members;
 	typename rule<typename semantic_actions::column_attribute::type>::type create_member;
 	typename rule<typename semantic_actions::column_type_attribute::type>::type create_member_type;
@@ -355,18 +450,8 @@ private:
 template <typename OutputIterator>
 bool generate_cpp(OutputIterator& sink, typename semantic_actions::program_attribute::s_type const& sql_ast)
 {
-	cpp_grammar<OutputIterator> cpp_grammar;
+	cpp_grammar<OutputIterator> cpp_grammar("../");
 	return karma::generate(sink, cpp_grammar, sql_ast);
-}
-
-// Why not using read_file from filesystem.cpp?
-// Because it adds too many dependencies for a single function...
-std::string file2string(const std::string& filename)
-{
-	std::ifstream s(filename.c_str(), std::ios_base::binary);
-	std::stringstream ss;
-	ss << s.rdbuf();
-	return ss.str();
 }
 
 int main(int argc, char* argv[])

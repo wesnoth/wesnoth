@@ -46,7 +46,6 @@ public:
 	// This constructor is only called once in main, so the factory will be created once as well.
 	umcd_protocol(io_service_type& io_service, const server_info& serverinfo);
 
-	// Precondition: (bool)client == true
 	void handle_request();
 	// Precondition: handle_request has been called and connection has been initialized.
 	void async_send_reply();
