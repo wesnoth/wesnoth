@@ -36,7 +36,8 @@ boost::optional<std::string> launch_daemon()
 	{
 		return std::string("Could not fork and run as a daemon\n");
 	}
-	else if(pid == 0)
+	// For the father processus.
+	else if(pid > 0)
 	{
 		exit(0);
 	}

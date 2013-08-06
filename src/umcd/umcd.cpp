@@ -60,6 +60,10 @@ int main(int argc, char *argv[])
 					UMCD_LOG(warning) << "The server has been launched in frontend mode.";
 				}
 			}
+			else
+			{
+				std::cerr << "oloooo\n";
+			}
 			boost::thread logger_thread(boost::bind(&umcd_logger::run, boost::ref(umcd_logger::get())));
 
 			config cfg = options.read_config();
