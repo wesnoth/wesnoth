@@ -18,6 +18,8 @@
 #define UMCD_LOGGER_HPP
 
 #include <ostream>
+#include <fstream>
+#include <ios>
 #include <iostream>
 #include <sstream>
 #include <map>
@@ -88,6 +90,46 @@ struct log_line
 	{}
 };
 
+class log_stream
+{
+public:
+	virtual boost::shared_ptr<std::ostream> stream() = 0;
+};
+
+class standard_log_stream : public log_stream
+{
+public:
+	standard_log_stream(const std::ostream& log_stream)
+	: stream_(boost::make_shared<std::ostream>(log_stream.rdbuf()))
+	{}
+
+	virtual boost::shared_ptr<std::ostream> stream()
+	{
+		return stream_;
+	}
+
+private:
+	boost::shared_ptr<std::ostream> stream_;
+};
+
+class file_log_stream : public log_stream
+{
+public:
+	file_log_stream(const std::string& filename)
+	: filename_(filename)
+	{}
+
+	virtual boost::shared_ptr<std::ostream> stream()
+	{
+		//return boost::shared_ptr<std::ostream>(new std::ofstream(filename_.c_str(), std::ios_base::out | std::ios_base::app));
+		return boost::make_shared<std::ofstream>(filename_.c_str(), std::ios_base::out | std::ios_base::app);
+	}
+
+private:
+	std::string filename_;
+};
+
+
 class umcd_logger : boost::noncopyable
 {
 	static const char* severity_level_name[];
@@ -110,11 +152,11 @@ class umcd_logger : boost::noncopyable
 		int sev;
 		for(sev=0; sev <= warning; ++sev)
 		{
-			logging_output_[sev] = boost::make_shared<std::ostream>(std::cout.rdbuf());
+			set_output(static_cast<severity_level>(sev), boost::make_shared<standard_log_stream>(std::cout));
 		}
 		for(; sev < nb_severity_level; ++sev)
 		{
-			logging_output_[sev] = boost::make_shared<std::ostream>(std::cerr.rdbuf());
+			set_output(static_cast<severity_level>(sev), boost::make_shared<standard_log_stream>(std::cerr));
 		}
 	}
 
@@ -141,7 +183,7 @@ class umcd_logger : boost::noncopyable
 			boost::algorithm::split(levels_to_stream, log_to_stream, boost::algorithm::is_any_of(" ,"));
 			for(std::size_t i = 0; i < levels_to_stream.size(); ++i)
 			{
-				set_output(level_str2enum_[levels_to_stream[i]], stream);
+				set_output(level_str2enum_[levels_to_stream[i]], boost::make_shared<standard_log_stream>(stream));
 			}
 		}
 	}
@@ -162,10 +204,16 @@ public:
 	void run_once()
 	{
 		cache_ptr old_cache = make_new_cache();
+		boost::array<boost::shared_ptr<std::ostream>, nb_severity_level> log_streams;
+		for(std::size_t i=0; i < nb_severity_level; ++i)
+		{
+			log_streams[i] = logging_output_[i]->stream();
+		}
+
 		for(std::size_t i=0; i < old_cache->size(); ++i)
 		{
 			const log_line& line = (*old_cache)[i];
-			*logging_output_[line.severity] << make_header(line.severity) 
+			*log_streams[line.severity] << make_header(line.severity) 
 				<< boost::posix_time::to_simple_string(line.time) << ": "
 				<< line.data
 				<< "\n";
@@ -183,7 +231,7 @@ public:
 		}
 	}
 
-	void set_config(const config& log_cfg)
+	void load_config(const config& log_cfg)
 	{
 		// Set the severity level.
 		if(log_cfg.has_attribute("log_if_greater_or_equal"))
@@ -205,9 +253,9 @@ public:
 		return current_sev_lvl_;
 	}
 
-	void set_output(severity_level sev, const std::ostream& stream)
+	void set_output(severity_level sev, const boost::shared_ptr<log_stream>& stream)
 	{
-		logging_output_[sev] = boost::make_shared<std::ostream>(stream.rdbuf());
+		logging_output_[sev] = stream;
 	}
 
 	log_line_cache get_logger(severity_level level)
@@ -217,7 +265,7 @@ public:
 
 private:
 	severity_level current_sev_lvl_;
-	boost::array<boost::shared_ptr<std::ostream>, nb_severity_level> logging_output_;
+	boost::array<boost::shared_ptr<log_stream>, nb_severity_level> logging_output_;
 	boost::mutex cache_access_;
 	boost::shared_ptr<cache_type> cache_;
 	std::map<std::string, severity_level> level_str2enum_;

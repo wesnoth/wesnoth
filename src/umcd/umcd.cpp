@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
 			config cfg = options.read_config();
 			init_game_path(options, cfg);
 			options.validate(cfg);
-			umcd_logger::get().set_config(cfg.child("logging"));
+			umcd_logger::get().load_config(cfg.child("logging"));
 
 			if(options.is_daemon())
 			{
