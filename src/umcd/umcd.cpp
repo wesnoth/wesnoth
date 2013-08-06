@@ -28,32 +28,51 @@
 #include "umcd/protocol/wml/umcd_protocol.hpp"
 #include "umcd/umcd_logger.hpp"
 
+void init_game_path(const server_options& opt, const config& cfg)
+{
+	boost::optional<std::string> wesdir = opt.wesnoth_dir(cfg);
+	if(wesdir)
+	{
+		// Many classes are tightly coupled with the game path, and in particular with this global variable, so we need to set it.
+		game_config::path = cfg.child("server_core")["wesnoth_dir"].str();
+	}
+	else
+	{
+		throw std::runtime_error("The field wesnoth_dir is missing in the configuration file.");
+	}
+
+}
+
 int main(int argc, char *argv[])
 {
 	try
 	{
 		server_options options(argc, argv);
-		if(!options.print_info())
+		if(!options.is_info())
 		{
 			boost::thread logger_thread(boost::bind(&umcd_logger::run, boost::ref(umcd_logger::get())));
-			config cfg = options.build_config();
+
+			config cfg = options.read_config();
 			UMCD_LOG(info) << "Configuration requested:\n" << cfg;
-			// Many classes are tightly coupled with the game path, and in particular with this global variable, so we need to set it.
-			game_config::path = cfg["wesnoth_dir"].str();
+			init_game_path(options, cfg);
+
 			server_info serverinfo(cfg);
-			
 			typedef boost::function<boost::shared_ptr<umcd_protocol> (umcd_protocol::io_service_type&)> umcd_protocol_factory;
 			server_mt<umcd_protocol, umcd_protocol_factory> addon_server(
-				cfg,
+				cfg.child("server_core"),
 				boost::bind(&make_umcd_protocol, _1, boost::cref(serverinfo))
 			);
 			addon_server.run();
 		}
 	}
+	catch(const twml_exception& e)
+	{
+		UMCD_LOG(fatal) << " (user message=" << e.user_message << " ; dev message=" << e.dev_message << ")";
+	}
 	catch(std::exception &e)
 	{
-		std::cerr << "[Critical]: " << e.what() << std::endl;
-		umcd_logger::get().run_once();
+		UMCD_LOG(fatal) << e.what();
 	}
+	umcd_logger::get().run_once();
 	return 0;
 }

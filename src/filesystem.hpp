@@ -71,6 +71,8 @@ std::string get_addon_campaigns_dir();
 
 // The location of UMCD directories.
 std::string get_umcd_protocol_schema_dir();
+std::string get_umcd_schema_dir();
+std::string get_umcd_config_file_schema();
 
 /**
  * Get the next free filename using "name + number (3 digits) + extension"

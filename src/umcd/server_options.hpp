@@ -20,44 +20,46 @@
 
 #include "config.hpp"
 #include <boost/program_options.hpp>
+#include <boost/optional.hpp>
 
 class server_options
 {
 private:
 	void build_options_desc();
-	/**
-		@brief Merge command line argument and config file argument.
-	*/
-	void merge_cfg();
 
 public:
 	/**
 		@brief Accept argument as describe with the "--help" option. 
-					 Merge arguments from the command line and the config file (umcd.cfg or file specify in argument).
-					 The command line arguments override the config file arguments.
 		@post Build a server_options object.
-		@throw If the command line argument are not recognized by the current pattern.
+		@throw If the command line arguments are not recognized by the current pattern.
 	*/
 	server_options(int argc, char* argv[]);
 
 	/**
-		@post: If requested, help or version message is printed.
-		@returns: If the user asked to print help or version message, return true.
-							Otherwise, return false.
+	@return True if the command line arguments has only requested version/help information. False if the server should be started.
 	*/
-	bool print_info();
+	bool is_info() const;
+	
+	/**
+	@return True if the server must be launched as a daemon. False if it must be launched as a frontend task.
+	*/
+	bool is_daemon() const;
 
 	/**
-		@brief A config file is builded with the values available to us.
-		@returns: The config file. A value is readed in this priority order:
-							(1) Command line ;
-							(2) Configuration file ;
-							(3) Default value if any.
+	@return The config file validated by the file returned by the function get_umcd_config_file_schema().
 	*/
-	config build_config();
+	config read_config() const;
 
-	static const std::string DEFAULT_PORT;
-	static const int DEFAULT_THREADS;
+	/**
+	@return The Wesnoth directory if available in cfg.
+	*/
+	boost::optional<std::string> wesnoth_dir(const config& cfg) const;
+
+	/**
+	@throw if the config file is incomplete or wrong.
+	@pre game_config::path initialized.
+	*/
+	void validate_cfg(const config& cfg) const;
 
 private:
 	std::string header_;
@@ -65,9 +67,6 @@ private:
 	boost::program_options::options_description options_desc_;
 	boost::program_options::options_description config_file_options_;
 	boost::program_options::variables_map vm_;
-	std::string port_;
-	std::string wesnoth_directory_;
-	int threads_;
 	std::string config_file_name_;
 };
 

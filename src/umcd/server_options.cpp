@@ -13,37 +13,45 @@
 */
 
 #include "umcd/server_options.hpp"
+#include <boost/program_options/errors.hpp>
+#include "filesystem.hpp"
+#include "serialization/schema_validator.hpp"
 
 namespace
 {
 	namespace po = boost::program_options;
 }
 
-const std::string server_options::DEFAULT_PORT = "12523";
-const int server_options::DEFAULT_THREADS = 0;
-
 server_options::server_options(int argc, char* argv[]) : 
-		header_("  Wesnoth campaign server.\n  Development version by Pierre Talbot. Copyright (C) 2013.\n"), 
-		version_("Wesnoth campaign server - Development version")
+		header_("  Wesnoth User Made Content Daemon (UMCD).\n  Development version by Pierre Talbot. Copyright (C) 2013.\n"), 
+		version_("Wesnoth User Made Content Daemon (UMCD) - Development version")
 {
 	build_options_desc();
 
 	// Positional options (we don't need the option "cfg-file" to specify the config file).
 	po::positional_options_description p;
-	p.add("cfg-file", -1);
+	p.add("file,f", -1);
 
 	// Parse the command line.
 	po::store(po::command_line_parser(argc, argv).options(options_desc_).positional(p).run(), vm_);
 	po::notify(vm_);
+
+	// Print info.
+	if(vm_.count("version"))
+	{
+		std::cout << version_ << std::endl;
+	}
+	if(vm_.count("help"))
+	{
+		std::cout << header_ << options_desc_ << std::endl;
+	}
 }
 
 void server_options::build_options_desc()
 {
 	// Help messages.
 	std::string cfg_help_msg("The config file in which we read the server configuration.");
-	std::string port_help_msg("The TCP/IP port to listen to for incoming requests.");
-	std::string threads_help_msg("The number of working threads to start. A value of 0 means start as many threads as there are detected hardware cores.");
-	std::string wesnoth_directory_help_msg("The wesnoth directory.");
+	std::string daemon_msg("Launch the server as a daemon task.");
 
 	// Generic options.
 	po::options_description generic("General options");
@@ -55,58 +63,64 @@ void server_options::build_options_desc()
 	// Options related to the config file.
 	po::options_description file_options("Config file options");
 	file_options.add_options()
-		("cfg-file", po::value<std::string>(&config_file_name_), cfg_help_msg.c_str())
+		("file,f", po::value<std::string>(&config_file_name_), cfg_help_msg.c_str())
 	;
 
 	// Options related to the command line.
-	po::options_description cmdline("Server configuration (override any config file)"); 
+	po::options_description cmdline("Server configuration"); 
 	cmdline.add_options()
-		("port,p", po::value<std::string>(&port_)->default_value(DEFAULT_PORT), port_help_msg.c_str())
-		("threads,t", po::value<int>(&threads_)->default_value(DEFAULT_THREADS), threads_help_msg.c_str())
-		("wesnoth_dir,d", po::value<std::string>(&wesnoth_directory_)->required(), wesnoth_directory_help_msg.c_str())
+		("daemon,d", daemon_msg.c_str())
 	;
 
 	options_desc_.add(generic).add(file_options).add(cmdline);
 	config_file_options_.add(cmdline); 
 }
 
-bool server_options::print_info()
+bool server_options::is_info() const
 {
-	if(vm_.count("version"))
-	{
-		std::cout << version_ << std::endl;
-		return true;
-	}
-	if(vm_.count("help"))
-	{
-		std::cout << header_ << options_desc_ << std::endl;
-		return true;
-	}
-	return false;
+	return (vm_.count("version") || vm_.count("help")) && !vm_.count("file");
 }
 
-void server_options::merge_cfg()
+bool server_options::is_daemon() const
 {
-	std::ifstream cfgfile(config_file_name_.c_str());
-	if(!cfgfile)
-		throw po::reading_file(config_file_name_.c_str());
-
-	po::store(po::parse_config_file(cfgfile, config_file_options_), vm_);
-	po::notify(vm_);
+	return vm_.count("daemon");
 }
 
-config server_options::build_config()
+boost::optional<std::string> server_options::wesnoth_dir(const config& cfg) const
 {
-	if(vm_.count("cfg-file"))
+	boost::optional<std::string> wesdir;
+	if(cfg.has_child("server_core") && cfg.child("server_core").has_attribute("wesnoth_dir"))
 	{
-		merge_cfg();
+		wesdir = cfg.child("server_core")["wesnoth_dir"];
 	}
-
-	config server_cfg;
-	server_cfg["threads"] = threads_;
-	server_cfg["port"] = port_;
-	std::string::const_reverse_iterator it = wesnoth_directory_.rbegin();
-	server_cfg["wesnoth_dir"] = wesnoth_directory_ + ((*it == '/') ? "":"/");
-	return server_cfg;
+	return wesdir;
 }
 
+void server_options::validate_cfg(const config& cfg) const
+{
+	boost::optional<std::string> wesdir = wesnoth_dir(cfg);
+	if(wesdir)
+	{
+		std::string validation_filename = *wesdir + get_umcd_config_file_schema();
+		config dummy;
+		schema_validation::schema_validator validator(validation_filename);
+		::read(dummy, cfg.to_string(), &validator);
+	}
+	else
+	{
+		throw po::validation_error(po::validation_error::at_least_one_value_required, "wesnoth_dir");
+	}
+}
+
+config server_options::read_config() const
+{
+	config cfg;
+	if(vm_.count("file"))
+	{
+		std::ifstream cfgfile(config_file_name_.c_str());
+		if(!cfgfile)
+			throw po::reading_file(config_file_name_.c_str());
+		::read(cfg, cfgfile);
+	}
+	return cfg;
+}

@@ -85,7 +85,7 @@ struct log_line
 };
 
 class umcd_logger : boost::noncopyable
-	{
+{
 	static const char* severity_level_name[];
 
 	typedef std::vector<log_line> cache_type;
