@@ -59,7 +59,7 @@ public:
 	@throw if the config file is incomplete or wrong.
 	@pre game_config::path initialized.
 	*/
-	void validate_cfg(const config& cfg) const;
+	void validate(const config& cfg) const;
 
 private:
 	std::string header_;

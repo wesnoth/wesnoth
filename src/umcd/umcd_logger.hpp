@@ -20,16 +20,20 @@
 #include <ostream>
 #include <iostream>
 #include <sstream>
+#include <map>
+
+#include "config.hpp"
 
 #include "umcd/boost/thread/workaround.hpp"
+#include "umcd/boost/thread/lock_guard.hpp"
 #include <boost/thread/mutex.hpp>
-#include <umcd/boost/thread/lock_guard.hpp>
 #include <boost/thread/thread.hpp>
 #include <boost/array.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/make_shared.hpp>
 #include <boost/noncopyable.hpp>
 #include <boost/date_time/posix_time/posix_time.hpp>
+#include <boost/algorithm/string.hpp>
 
 enum severity_level {
 	trace,
@@ -95,6 +99,14 @@ class umcd_logger : boost::noncopyable
 	: current_sev_lvl_(trace)
 	, cache_(boost::make_shared<cache_type>())
 	{
+		default_logging_output();
+		// Init map "textual representation of the severity level" to "severity level enum".
+		for(int sev=0; sev < nb_severity_level; ++sev)
+			level_str2enum_[severity_level_name[sev]] = static_cast<severity_level>(sev);
+	}
+
+	void default_logging_output()
+	{
 		int sev;
 		for(sev=0; sev <= warning; ++sev)
 		{
@@ -118,6 +130,20 @@ class umcd_logger : boost::noncopyable
 	std::string make_header(severity_level sev) const
 	{
 		return std::string("[") + severity_level_name[sev] + "] ";
+	}
+
+	void set_standard_output(const config& log_cfg, const std::string& stream_name, const std::ostream& stream)
+	{
+		if(log_cfg.has_child(stream_name))
+		{
+			std::string log_to_stream = log_cfg.child(stream_name)["level"].str();
+			std::vector<std::string> levels_to_stream;
+			boost::algorithm::split(levels_to_stream, log_to_stream, boost::algorithm::is_any_of(" ,"));
+			for(std::size_t i = 0; i < levels_to_stream.size(); ++i)
+			{
+				set_output(level_str2enum_[levels_to_stream[i]], stream);
+			}
+		}
 	}
 
 public:
@@ -157,6 +183,18 @@ public:
 		}
 	}
 
+	void set_config(const config& log_cfg)
+	{
+		// Set the severity level.
+		if(log_cfg.has_attribute("log_if_greater_or_equal"))
+		{
+			set_severity(level_str2enum_[log_cfg["log_if_greater_or_equal"].str()]);
+		}
+
+		set_standard_output(log_cfg, "cout", std::cout);
+		set_standard_output(log_cfg, "cerr", std::cerr);
+	}
+
 	void set_severity(severity_level level)
 	{
 		current_sev_lvl_ = level;
@@ -182,6 +220,7 @@ private:
 	boost::array<boost::shared_ptr<std::ostream>, nb_severity_level> logging_output_;
 	boost::mutex cache_access_;
 	boost::shared_ptr<cache_type> cache_;
+	std::map<std::string, severity_level> level_str2enum_;
 };
 
 #define CURRENT_FUNCTION_STRING "in " << BOOST_CURRENT_FUNCTION

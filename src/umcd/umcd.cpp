@@ -41,7 +41,6 @@ void init_game_path(const server_options& opt, const config& cfg)
 	{
 		throw std::runtime_error("The field wesnoth_dir is missing in the configuration file.");
 	}
-
 }
 
 int main(int argc, char *argv[])
@@ -51,6 +50,11 @@ int main(int argc, char *argv[])
 		server_options options(argc, argv);
 		if(!options.is_info())
 		{
+			config cfg = options.read_config();
+			init_game_path(options, cfg);
+			options.validate(cfg);
+			umcd_logger::get().set_config(cfg.child("logging"));
+
 			if(options.is_daemon())
 			{
 				boost::optional<std::string> err = launch_daemon();
@@ -60,15 +64,9 @@ int main(int argc, char *argv[])
 					UMCD_LOG(warning) << "The server has been launched in frontend mode.";
 				}
 			}
-			else
-			{
-				std::cerr << "oloooo\n";
-			}
 			boost::thread logger_thread(boost::bind(&umcd_logger::run, boost::ref(umcd_logger::get())));
 
-			config cfg = options.read_config();
 			UMCD_LOG(info) << "Configuration requested:\n" << cfg;
-			init_game_path(options, cfg);
 
 			server_info serverinfo(cfg);
 			typedef boost::function<boost::shared_ptr<umcd_protocol> (umcd_protocol::io_service_type&)> umcd_protocol_factory;

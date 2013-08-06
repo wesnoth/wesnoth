@@ -96,7 +96,7 @@ boost::optional<std::string> server_options::wesnoth_dir(const config& cfg) cons
 	return wesdir;
 }
 
-void server_options::validate_cfg(const config& cfg) const
+void server_options::validate(const config& cfg) const
 {
 	boost::optional<std::string> wesdir = wesnoth_dir(cfg);
 	if(wesdir)
