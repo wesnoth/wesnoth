@@ -27,6 +27,7 @@
 #include "umcd/server/multi_threaded/server_mt.hpp"
 #include "umcd/protocol/wml/umcd_protocol.hpp"
 #include "umcd/umcd_logger.hpp"
+#include "umcd/daemon.hpp"
 
 void init_game_path(const server_options& opt, const config& cfg)
 {
@@ -50,6 +51,15 @@ int main(int argc, char *argv[])
 		server_options options(argc, argv);
 		if(!options.is_info())
 		{
+			if(options.is_daemon())
+			{
+				boost::optional<std::string> err = launch_daemon();
+				if(err)
+				{
+					UMCD_LOG(error) << *err;
+					UMCD_LOG(warning) << "The server has been launched in frontend mode.";
+				}
+			}
 			boost::thread logger_thread(boost::bind(&umcd_logger::run, boost::ref(umcd_logger::get())));
 
 			config cfg = options.read_config();
