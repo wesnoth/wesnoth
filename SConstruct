@@ -124,6 +124,7 @@ env.SConsignFile("$build_dir/sconsign.dblite")
 
 # Make sure the user's environment is always available
 env['ENV']['PATH'] = os.environ["PATH"]
+env['ENV']['TERM'] = os.environ["TERM"]
 if env["PLATFORM"] == "win32":
     env.Tool("mingw")
 elif env["PLATFORM"] == "sunos":
