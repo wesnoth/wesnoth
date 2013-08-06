@@ -121,8 +121,7 @@ public:
 
 	virtual boost::shared_ptr<std::ostream> stream()
 	{
-		//return boost::shared_ptr<std::ostream>(new std::ofstream(filename_.c_str(), std::ios_base::out | std::ios_base::app));
-		return boost::make_shared<std::ofstream>(filename_.c_str(), std::ios_base::out | std::ios_base::app);
+		return boost::make_shared<std::ofstream>(filename_.c_str(), std::ios_base::app);
 	}
 
 private:
@@ -174,17 +173,32 @@ class umcd_logger : boost::noncopyable
 		return std::string("[") + severity_level_name[sev] + "] ";
 	}
 
+	void set_log_output(const std::string& levels_list, const boost::shared_ptr<log_stream>& stream)
+	{
+		std::vector<std::string> levels_to_stream;
+		boost::algorithm::split(levels_to_stream, levels_list, boost::algorithm::is_any_of(" ,"));
+		for(std::size_t i = 0; i < levels_to_stream.size(); ++i)
+		{
+			set_output(level_str2enum_[levels_to_stream[i]], stream);
+		}
+	}
+
 	void set_standard_output(const config& log_cfg, const std::string& stream_name, const std::ostream& stream)
 	{
 		if(log_cfg.has_child(stream_name))
 		{
 			std::string log_to_stream = log_cfg.child(stream_name)["level"].str();
-			std::vector<std::string> levels_to_stream;
-			boost::algorithm::split(levels_to_stream, log_to_stream, boost::algorithm::is_any_of(" ,"));
-			for(std::size_t i = 0; i < levels_to_stream.size(); ++i)
-			{
-				set_output(level_str2enum_[levels_to_stream[i]], boost::make_shared<standard_log_stream>(stream));
-			}
+			set_log_output(log_to_stream, boost::make_shared<standard_log_stream>(stream));
+		}
+	}
+
+	void set_files_output(const config& log_cfg)
+	{
+		config::const_child_itors frange = log_cfg.child_range("file");
+		for(;frange.first != frange.second; ++(frange.first))
+		{
+			const config& file_detail = *(frange.first);
+			set_log_output(file_detail["level"].str(), boost::make_shared<file_log_stream>(file_detail["filename"].str()));
 		}
 	}
 
@@ -241,6 +255,7 @@ public:
 
 		set_standard_output(log_cfg, "cout", std::cout);
 		set_standard_output(log_cfg, "cerr", std::cerr);
+		set_files_output(log_cfg);
 	}
 
 	void set_severity(severity_level level)
