@@ -17,15 +17,20 @@
     Implementation file.
 */
 
-#include "global.hpp"
-#include "random.hpp"
-#include "yamg_params.hpp"
-
 #ifdef YAMG_STANDALONE
+
 #include <ctype.h>
 #include <string.h>
+#include <stdio.h>
+
+#else
+
+#include "global.hpp"
+#include "random.hpp"
+
 #endif
 
+#include "yamg_params.hpp"
 
 //yamg_params::yamg_params(config& /*cfg*/)
 //{
@@ -34,7 +39,7 @@
 
 
 yamg_params::yamg_params()
-    : seed(get_random())
+    : seed(0)
     , width(65)
     , height(65)
     , rough(12)
@@ -317,10 +322,10 @@ unsigned int yamg_params::read_params(const char *ficnom)
                 sscanf(value,"%u",&seed);
                 break;
             case 2:
-                sscanf(value,"%u",&larg);
+                sscanf(value,"%u",&width);
                 break;
             case 3:
-                sscanf(value,"%u",&haut);
+                sscanf(value,"%u",&height);
                 break;
             case 4:
                 sscanf(value,"%u",&rough);
@@ -336,7 +341,7 @@ unsigned int yamg_params::read_params(const char *ficnom)
                 snowlev -= 10;
                 break;
             case 8:
-                sscanf(value,"%i",&altMid);
+                sscanf(value,"%i",&alt_mid);
                 break;
             case 9:
                 roads = ((*value == 'n') || (*value == 'N')) ? false:true;
@@ -363,7 +368,7 @@ unsigned int yamg_params::read_params(const char *ficnom)
                 sscanf(value,"%u",&players);
                 break;
             case 17:
-                sscanf(value,"%u",&wRatio);
+                sscanf(value,"%u",&water_ratio);
                 break;
             case 18:
                 sscanf(value,"%u",&thickness[0]);
@@ -390,52 +395,52 @@ unsigned int yamg_params::read_params(const char *ficnom)
                 sscanf(value,"%u",&thickness[7]);
                 break;
             case 26:
-                sscanf(value,"%u",&roRoad);
+                sscanf(value,"%u",&ro_road);
                 break;
             case 27:
-                storeTerrainCodes(value, baseCust, M_NUMLEVEL);
+                store_terrain_codes(value, base_cust, M_NUMLEVEL);
                 break;
             case 28:
-                storeTerrainCodes(value, forestCust, 12);
+                store_terrain_codes(value, forest_cust, 12);
                 break;
             case 29:
-                storeTerrainCodes(value, housesCust, 14);
+                store_terrain_codes(value, houses_cust, 14);
                 break;
             case 30:
-                storeTerrainCodes(value, keepsCastlesC, 10);
+                store_terrain_codes(value, keeps_castles_cust, 10);
                 break;
             case 31:
-                storeTerrainCodes(value, hexesCastlesC, 10);
+                store_terrain_codes(value, hexes_castles_cust, 10);
                 break;
             case 32:
-                storeTerrainCodes(value, baseSnowC, M_NUMLEVEL);
+                store_terrain_codes(value, base_snow_cust, M_NUMLEVEL);
                 break;
             case 33:
-                storeTerrainCodes(value, roadsC, 4);
+                store_terrain_codes(value, roads_cust, 4);
                 break;
             case 34:
-                liliesC = new char[10];
-                strncpy(liliesC,value,5);
+                lilies_cust = new char[10];
+                strncpy(lilies_cust,value,5);
                 break;
             case 35:
-                fieldsC = new char[10];
-                strncpy(fieldsC,value,5);
+                fields_cust = new char[10];
+                strncpy(fields_cust,value,5);
                 break;
             case 36:
-                bridgesC = new char[10];
-                strncpy(bridgesC,value,5);
+                bridges_cust = new char[10];
+                strncpy(bridges_cust,value,5);
                 break;
             case 37:
-                sscanf(value,"%u",&altNW);
+                sscanf(value,"%u",&alt_nw);
                 break;
             case 38:
-                sscanf(value,"%u",&altNE);
+                sscanf(value,"%u",&alt_ne);
                 break;
             case 39:
-                sscanf(value,"%u",&altSE);
+                sscanf(value,"%u",&alt_se);
                 break;
             case 40:
-                sscanf(value,"%u",&altSW);
+                sscanf(value,"%u",&alt_sw);
                 break;
 
             default: // unknow parameter
