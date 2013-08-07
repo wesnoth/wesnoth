@@ -92,6 +92,9 @@ public:
 	std::vector<std::string>& team_names() { return team_names_; }
 	std::vector<std::string>& user_team_names() { return user_team_names_; }
 
+protected:
+	std::vector<side_engine_ptr>& side_engines() { return side_engines_; }
+
 private:
 	connect_engine(const connect_engine&);
 	void operator=(const connect_engine&);

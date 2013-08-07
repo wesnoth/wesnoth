@@ -125,6 +125,7 @@ protected:
 	virtual void process_network_connection(const network::connection sock);
 	virtual bool accept_connections();
 
+	connect_engine& engine() { return engine_; }
 private:
 	void lists_init();
 
