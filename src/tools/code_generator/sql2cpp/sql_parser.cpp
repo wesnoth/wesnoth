@@ -65,6 +65,8 @@ public:
 	lex::token_def<lex::omit> type_smallint, type_int, type_varchar, type_text, type_date;
 	lex::token_def<lex::omit> kw_not_null, kw_auto_increment, kw_unique, kw_default, kw_create,
 		kw_table, kw_constraint, kw_primary_key, kw_alter, kw_add;
+  
+  lex::token_def<lex::omit>	ws, comment, cstyle_comment;
 
 	// Attributed tokens. (If you add a new type, don't forget to add it to the lex::lexertl::token definition too).
 	lex::token_def<int> signed_digit;
@@ -94,7 +96,7 @@ public:
 		kw_add = "(?i:add)";
 
 		// Values.
-		signed_digit = "[+-]?[0-9]+";
+		signed_digit = "[-+]?[0-9]+";
 		unsigned_digit = "[0-9]+";
 		quoted_string = "\\\"(\\\\.|[^\\\"])*\\\""; // \"(\\.|[^\"])*\"
 
@@ -110,11 +112,13 @@ public:
 									kw_add;
 		this->self += identifier | unsigned_digit | signed_digit | quoted_string;
 
-		// define the whitespace to ignore.
-		this->self("WS")
-				=		lex::token_def<>("[ \\t\\n]+") 
-				|		"--[^\\n]*\\n"  // Single line comments with --
-				|		"\\/\\*[^*]*\\*+([^/*][^*]*\\*+)*\\/" // C-style comments
+		ws = "[ \\t\\n]+";
+		comment = "--[^\\n]*\\n";  // Single line comments with --
+		cstyle_comment = "\\/\\*[^*]*\\*+([^/*][^*]*\\*+)*\\/"; // C-style comments
+
+		this->self += ws 		[ lex::_pass = lex::pass_flags::pass_ignore ] 
+				| comment 			[ lex::_pass = lex::pass_flags::pass_ignore ]
+				| cstyle_comment[ lex::_pass = lex::pass_flags::pass_ignore ]
 				;
 	}
 };
@@ -131,7 +135,7 @@ BOOST_FUSION_ADAPT_STRUCT(
 	(std::string, column_identifier)
 	(boost::shared_ptr<sql::type::base_type>, sql_type)
 	(std::vector<boost::shared_ptr<sql::base_type_constraint> >, constraints)
-)
+);
 
 struct sql_table
 {
@@ -145,7 +149,7 @@ BOOST_FUSION_ADAPT_STRUCT(
 	(std::string, table_identifier)
 	(std::vector<sql_column>, columns)
 	(std::vector<boost::shared_ptr<sql::constraint::base_constraint> >, constraints)
-)
+);
 
 template <class synthesized, class inherited = void>
 struct attribute
@@ -225,9 +229,9 @@ public:
 };
 
 // Grammar definition, define a little part of the SQL language.
-template <typename Iterator, typename Lexer>
+template <typename Iterator>
 struct sql_grammar 
-	: qi::grammar<Iterator, qi::in_state_skipper<Lexer>, typename semantic_actions::program_attribute::type>
+	: qi::grammar<Iterator, typename semantic_actions::program_attribute::type>
 {
 	template <typename TokenDef>
 	sql_grammar(TokenDef const& tok)
@@ -343,18 +347,17 @@ struct sql_grammar
 	}
 
 private:
-	typedef qi::in_state_skipper<Lexer> skipper_type;
 	template <class Attribute>
 	struct rule
 	{
-		typedef qi::rule<Iterator, skipper_type, Attribute> type;
+		typedef qi::rule<Iterator, Attribute> type;
 	};
 	template <class Attribute, class Locals>
 	struct rule_loc
 	{
-		typedef qi::rule<Iterator, skipper_type, Attribute, Locals> type;
+		typedef qi::rule<Iterator, Attribute, Locals> type;
 	};
-	typedef qi::rule<Iterator, skipper_type> simple_rule;
+	typedef qi::rule<Iterator> simple_rule;
 
 	semantic_actions sa_;
 
@@ -639,7 +642,7 @@ int main(int argc, char* argv[])
 	> token_type;
 
 	// Here we use the lexertl based lexer engine.
-	typedef lex::lexertl::lexer<token_type> lexer_type;
+	typedef lex::lexertl::actor_lexer<token_type> lexer_type;
 
 	// This is the token definition type (derived from the given lexer type).
 	typedef sql_tokens<lexer_type> sql_tokens;
@@ -648,7 +651,7 @@ int main(int argc, char* argv[])
 	typedef sql_tokens::iterator_type iterator_type;
 
 	// this is the type of the grammar to parse
-	typedef sql_grammar<iterator_type, sql_tokens::lexer_def> sql_grammar;
+	typedef sql_grammar<iterator_type> sql_grammar;
 
 	// now we use the types defined above to create the lexer and grammar
 	// object instances needed to invoke the parsing process
@@ -668,9 +671,8 @@ int main(int argc, char* argv[])
 	// Note how we use the lexer defined above as the skip parser. It must
 	// be explicitly wrapped inside a state directive, switching the lexer 
 	// state for the duration of skipping whitespace.
-	std::string ws("WS");
 	typename semantic_actions::program_attribute::s_type sql_ast;
-	bool r = qi::phrase_parse(iter, end, sql, qi::in_state(ws)[tokens.self], sql_ast);
+	bool r = qi::parse(iter, end, sql, sql_ast);
 
 	if (r && iter == end)
 	{
