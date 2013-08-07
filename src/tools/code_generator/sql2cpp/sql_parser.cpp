@@ -11,7 +11,7 @@
 
 	See the COPYING file for more details.
 */
-//#define BOOST_SPIRIT_QI_DEBUG
+#define BOOST_SPIRIT_QI_DEBUG
 
 #include <boost/spirit/include/qi.hpp>
 #include <boost/spirit/include/lex_lexertl.hpp>
@@ -23,7 +23,6 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/make_shared.hpp>
-#include <boost/static_assert.hpp>
 #include <boost/lexical_cast.hpp>
 
 #include "tools/code_generator/sql2cpp/sql_type.hpp"
@@ -65,7 +64,7 @@ public:
 	// Tokens with no attributes.
 	lex::token_def<lex::omit> type_smallint, type_int, type_varchar, type_text, type_date;
 	lex::token_def<lex::omit> kw_not_null, kw_auto_increment, kw_unique, kw_default, kw_create,
-		kw_table, kw_constraint, kw_primary_key;
+		kw_table, kw_constraint, kw_primary_key, kw_alter, kw_add;
 
 	// Attributed tokens. (If you add a new type, don't forget to add it to the lex::lexertl::token definition too).
 	lex::token_def<int> signed_digit;
@@ -83,14 +82,16 @@ public:
 		type_date = "(?i:date)";
 
 		// Keywords.
-		kw_not_null = "(?i:not null)";
+		kw_not_null = "(?i:not +null)";
 		kw_auto_increment = "(?i:auto_increment)";
 		kw_unique = "(?i:unique)";
 		kw_default = "(?i:default)";
 		kw_create = "(?i:create)";
 		kw_table = "(?i:table)";
 		kw_constraint = "(?i:constraint)";
-		kw_primary_key = "(?i:primary key)";
+		kw_primary_key = "(?i:primary +key)";
+		kw_alter = "(?i:alter)";
+		kw_add = "(?i:add)";
 
 		// Values.
 		signed_digit = "[+-]?[0-9]+";
@@ -105,7 +106,8 @@ public:
 		this->self += type_smallint | type_int | type_varchar | type_text |
 									type_date;
 		this->self += kw_not_null | kw_auto_increment | kw_unique | kw_default |
-									kw_create | kw_table | kw_constraint | kw_primary_key;
+									kw_create | kw_table | kw_constraint | kw_primary_key | kw_alter |
+									kw_add;
 		this->self += identifier | unsigned_digit | signed_digit | quoted_string;
 
 		// define the whitespace to ignore.
@@ -177,6 +179,9 @@ public:
 	typedef attribute<std::vector<sql_column> > create_table_columns_attribute;
 	typedef attribute<sql_table> create_table_attribute;
 	typedef attribute<sql_table> create_statement_attribute;
+	typedef attribute<sql_table> alter_statement_attribute;
+	typedef attribute<sql_table> alter_table_attribute;
+	typedef attribute<boost::shared_ptr<sql::constraint::base_constraint> > alter_table_add_attribute;
 	typedef attribute<sql_table> statement_attribute;
 	typedef attribute<std::vector<sql_table> > program_attribute;
 	typedef attribute<std::vector<boost::shared_ptr<sql::constraint::base_constraint> > > table_constraints_attribute;
@@ -234,6 +239,19 @@ struct sql_grammar
 
 		statement 
 			%=   create_statement
+			|		 alter_statement
+			;
+
+		alter_statement
+			%=	 tok.kw_alter >> alter_table
+			;
+
+		alter_table
+			=	 tok.kw_table >> tok.identifier [phx::at_c<0>(qi::_val) = qi::_1] >> (alter_table_add % ',') [phx::at_c<2>(qi::_val) = qi::_1]
+			;
+
+		alter_table_add
+			%=	 tok.kw_add >> constraint_definition
 			;
 
 		create_statement
@@ -268,7 +286,7 @@ struct sql_grammar
 		type_constraint
 			=   tok.kw_not_null		[phx::bind(&semantic_actions::make_type_constraint<sql::not_null>, &sa_, qi::_val)]
 			|   tok.kw_auto_increment	[phx::bind(&semantic_actions::make_type_constraint<sql::auto_increment>, &sa_, qi::_val)]
-			|   tok.kw_unique			[phx::bind(&semantic_actions::make_type_constraint<sql::unique>, &sa_, qi::_val)]
+			|   tok.kw_unique  		[phx::bind(&semantic_actions::make_type_constraint<sql::unique>, &sa_, qi::_val)]
 			|   default_value 		[phx::bind(&semantic_actions::make_default_value_constraint, &sa_, qi::_val, qi::_1)]
 			;
 
@@ -343,6 +361,9 @@ private:
 	typename rule<typename semantic_actions::program_attribute::type>::type program;
 	typename rule<typename semantic_actions::statement_attribute::type>::type statement;
 	typename rule<typename semantic_actions::create_statement_attribute::type>::type create_statement;
+	typename rule<typename semantic_actions::alter_statement_attribute::type>::type alter_statement;
+	typename rule<typename semantic_actions::alter_table_attribute::type>::type alter_table;
+	typename rule<typename semantic_actions::alter_table_add_attribute::type>::type alter_table_add;
 	typename rule<typename semantic_actions::create_table_attribute::type>::type create_table;
 	typename rule<typename semantic_actions::table_constraints_attribute::type>::type table_constraints;
 	typename rule_loc<typename semantic_actions::constraint_definition_attribute::type, qi::locals<std::string> >::type constraint_definition;

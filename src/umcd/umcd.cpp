@@ -43,6 +43,12 @@ void init_game_path(const server_options& opt, const config& cfg)
 	}
 }
 
+void load_config_data(const config& cfg)
+{
+	umcd_logger::get().load_config(cfg.child("logging"));
+	umcd_protocol::load_config(cfg.child("protocol"));
+}
+
 int main(int argc, char *argv[])
 {
 	try
@@ -53,7 +59,7 @@ int main(int argc, char *argv[])
 			config cfg = options.read_config();
 			init_game_path(options, cfg);
 			options.validate(cfg);
-			umcd_logger::get().load_config(cfg.child("logging"));
+			load_config_data(cfg);
 
 			if(options.is_daemon())
 			{

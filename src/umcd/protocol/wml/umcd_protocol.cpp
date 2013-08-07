@@ -20,7 +20,7 @@
 #include "umcd/special_packet.hpp"
 #include "umcd/umcd_error.hpp"
 
-const std::size_t umcd_protocol::REQUEST_HEADER_MAX_SIZE;
+std::size_t umcd_protocol::REQUEST_HEADER_MAX_SIZE = 8192;
 const std::size_t umcd_protocol::REQUEST_HEADER_SIZE_FIELD_LENGTH;
 
 #define FUNCTION_TRACER() UMCD_LOG_IP_FUNCTION_TRACER(socket_)
@@ -41,6 +41,10 @@ config& umcd_protocol::get_metadata()
 	return request_.get_metadata();
 }
 
+void umcd_protocol::load_config(const config& protocol_cfg)
+{
+	REQUEST_HEADER_MAX_SIZE = protocol_cfg["max_header_size"];
+}
 
 umcd_protocol::socket_type& umcd_protocol::socket()
 {

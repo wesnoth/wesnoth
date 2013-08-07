@@ -33,7 +33,7 @@ class umcd_protocol :
 	,	private boost::noncopyable
 {
 public:
-	static const std::size_t REQUEST_HEADER_MAX_SIZE = 8192;
+	static std::size_t REQUEST_HEADER_MAX_SIZE;
 	static const std::size_t REQUEST_HEADER_SIZE_FIELD_LENGTH = 10;
 	typedef boost::asio::ip::tcp::socket socket_type;
 	typedef boost::asio::io_service io_service_type;
@@ -43,6 +43,8 @@ private:
 	typedef boost::shared_ptr<request_info> info_ptr;
 
 public:
+	static void load_config(const config& protocol_cfg);
+
 	// This constructor is only called once in main, so the factory will be created once as well.
 	umcd_protocol(io_service_type& io_service, const server_info& serverinfo);
 
